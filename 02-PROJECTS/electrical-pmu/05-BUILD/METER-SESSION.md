@@ -103,14 +103,15 @@ Ignition to **RUN**, engine not running. Safer, and most lighting works here.
 
 > Two seconds. Longer and you cook the motor.
 
-### 1.9 · Windows — O1 via K5–K8
+### 1.9 · Windows — **SKIP. The windows are manual** `[D-131]`
 
-- **Access:** the R or G wire at the window motor, inside the door. The door card
-  has to come off, or reach through the speaker aperture
-- Run **fully up** and hold the switch for 2 s at the top stop — that is a
-  natural stall, no need to grab anything
-- Both windows, individually
-- Expect 4–6 A running, **10–15 A stalled**
+No motors, no wiring, nothing to measure. Power windows are a deferred luxury
+item — see `../04-SUBSYSTEMS/DEFERRED-FEATURES.md`.
+
+**When motors are eventually fitted**, measure then: run fully up and hold the
+switch for 2 s at the top stop, which is a natural stall. Expect 4–6 A running,
+10–15 A stalled. Set the soft fuse from that reading, and raise O1's limit to
+cover pop-ups plus windows together.
 
 ---
 
@@ -239,8 +240,7 @@ Record it. It becomes the baseline you compare the finished car against.
 | 1.8 | **Wiper LOW**      | D-02 LW wire              |          |                |       |       |
 | 1.8 | **Wiper HIGH**     | D-02 LR wire              |          |                |       |       |
 | 1.8 | **Wiper STALL**    | D-02                      |          |                |       |       |
-| 1.9 | Window DRV         | motor R/G                 |          |                |       |       |
-| 1.9 | Window PASS        | motor R/G                 |          |                |       |       |
+| 1.9 | Windows            | **MANUAL — skip**         |          |                |       |       |
 | 2.1 | Headlight LOW      | E-08 RL wire              |          |                |       |       |
 | 2.1 | Headlight HIGH     | E-08 RY wire              |          |                |       |       |
 | 2.2 | Fuel pump          | B-24 BLg wire             |          |                |       |       |

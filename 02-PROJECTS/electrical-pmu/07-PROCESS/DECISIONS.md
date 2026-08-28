@@ -836,3 +836,48 @@ Both were considered and accepted.
 `[Q-055]` — head unit selection. Worth choosing for: **wireless CarPlay**
 (no cable to the phone), physical volume knob, and a bezel/finish that can be
 integrated rather than obviously aftermarket. Double-DIN aperture already planned.
+
+---
+
+**D-131** — **The windows are MANUAL.** This car has no power window motors,
+switches, regulators or wiring. The factory diagram's I-06, I-07, I-09 and I-11
+describe an option this car doesn't have.
+
+**Power windows are a deferred luxury item**, to be added later alongside heated
+seats and the rest when budget allows.
+
+## What changes now
+
+**Nothing gets deleted. Everything gets capped.** This is exactly the case D-004
+exists for — terminate every cavity now, cap the spares, and adding the feature
+later is uncapping a wire rather than pulling a door and a sill.
+
+| Item | Was | Now |
+|---|---|---|
+| K5–K8 window H-bridges | Populated at the sill | **Sockets fitted, relays not populated** |
+| F8, F9 branch fuses | Fitted | **Positions provisioned, fuses not fitted** |
+| `L4-P` cav 3 — motor bus feed to sill | Live | **Terminated and capped** |
+| `L4-M` cav 9–12 — window commands | Live | **Terminated and capped** |
+| `D1`/`D2` cav 1–2 — motor legs | Live | **Terminated and capped in the door** |
+| `L3-S` ×4 — window switch inputs | Live | **Terminated and capped at the switch panel** |
+| O1 motor bus | Pop-ups + windows | **Pop-ups only** for now |
+
+**Wire is still run, still terminated, still in the door.** Adding motors later
+is: fit the regulators, plug in, populate four relays, fit two fuses, enable the
+logic. **No harness work.**
+
+**D-132** — **The sill node shrinks but stays.** Even with no window motors it
+still carries the door connectors D1/D2, the local ground stud for door returns,
+and the mirror heat branch. The relay sockets and fuse positions are built now
+and left empty.
+
+Building the plate with empty sockets costs a few dollars. Adding a plate behind
+a trim panel on a finished car costs an afternoon.
+
+**D-133** — **O1 motor bus is pop-ups only for now.** Worst case drops from
+~15 A steady / 40 A transient to roughly **8–12 A steady, 25–50 A transient** for
+two pop-up motors. The 25 A channel and its flyback diode are unchanged — sized
+for the eventual full load, not today's.
+
+**No soft-fuse benefit to claim.** Set it for pop-ups at migration; raise it when
+windows arrive.

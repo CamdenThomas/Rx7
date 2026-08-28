@@ -36,8 +36,8 @@ authoritative; other files reference it rather than restating it.**
 | 14 | Headlight HIGH | O3 | | | | | ☐ | ☐ |
 | 15 | Pop-up LEFT | O1 / K1-K2 | | | | | ☐ | ☐ |
 | 16 | Pop-up RIGHT | O1 / K3-K4 | | | | | ☐ | ☐ |
-| 17 | Window DRIVER | O1 / K5-K6 | | | | | ☐ | ☐ |
-| 18 | Window PASSENGER | O1 / K7-K8 | | | | | ☐ | ☐ |
+| 17 | ~~Window DRIVER~~ | — | **MANUAL — not fitted** `[D-131]` | | | | ☐ | n/a |
+| 18 | ~~Window PASSENGER~~ | — | **MANUAL — not fitted.** Wire capped in the door | | | | ☐ | n/a |
 | 19 | Mirrors — heat + motors | O15 | | | | | ☐ | ☐ |
 | 20 | Blower motor | O16 | | | | | ☐ | ☐ |
 | 21 | Comfort bus | O15 | | | | | ☐ | ☐ |

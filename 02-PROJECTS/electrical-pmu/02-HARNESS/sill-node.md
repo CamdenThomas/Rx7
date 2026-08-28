@@ -159,3 +159,57 @@ solved it.
 
 `[V-055]` still open — the sill needs room for 4 relays, 3 fuses and a ground
 stud behind the kick panel. Measure before fabricating the plate.
+
+---
+
+## UPDATE 2026-08 — windows are manual (D-131)
+
+**This car has no power windows.** No motors, regulators, switches or factory
+wiring. The sill node is built anyway, with the window hardware provisioned and
+empty.
+
+### What the sill node actually holds now
+
+| Item | State |
+|---|---|
+| Door connectors D1, D2 | **Live** — door pin, mirror heat, mirror motors |
+| Local ground stud | **Live** — all door returns terminate here |
+| Mirror heat branch fuse | **Live** |
+| K5–K8 relay sockets | **Fitted, empty** |
+| F8, F9 fuse positions | **Provisioned, empty** |
+
+### Why build the plate now
+
+Fitting four empty sockets and two spare fuse positions to a plate on the bench
+costs a few dollars. Adding a plate behind a trim panel on a finished car costs
+an afternoon and means pulling the sill again.
+
+**Build it complete. Populate it later.**
+
+### D1 / D2 cavity state
+
+| Cav | Circuit | State |
+|---|---|---|
+| 1 | Window motor leg A | **Capped in the door** |
+| 2 | Window motor leg B | **Capped in the door** |
+| 3 | Door pin switch | Live |
+| 4 | Mirror motor — common | Live |
+| 5 | Mirror motor — X axis | Live |
+| 6 | Mirror motor — Y axis | Live |
+| 7 | Mirror heat feed | Live |
+| 8 | Ground → sill node | Live |
+
+**The wire goes into the door now** whether or not a motor is on the end of it.
+Pulling a door card once is fine; pulling it twice is a waste of a weekend.
+
+### Adding windows later
+
+1. Fit regulators with motors
+2. Plug into the capped `D1`/`D2` legs
+3. Populate K5–K8
+4. Fit F8, F9
+5. Uncap the switch inputs at `L3-S`, fit switches
+6. Enable the outputs and the interlock logic in the PMU
+
+**No harness work. No connector opened.** See
+`../04-SUBSYSTEMS/DEFERRED-FEATURES.md`.
