@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RX-7 FB — PMU-24 DL Pin Plan, Rev A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E8E9E1;
+  --paper-2:#DFE1D7;
+  --ink:#191C18;
+  --ink-2:#4A4F46;
+  --rule:#B6BAAC;
+  --rule-2:#CDD0C4;
+  --green:#1E5A3C;
+
+  --c25:#A8342B;
+  --c15:#B0711A;
+  --c7:#5B3E8C;
+  --cin:#256C7C;
+  --ccom:#7A6A1E;
+  --cpwr:#2B2E29;
+
+  --disp:'Barlow Condensed',Impact,sans-serif;
+  --body:'Barlow',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:15px;line-height:1.5;
+  padding:0 0 80px;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+/* ---------- masthead ---------- */
+.mast{border-bottom:3px solid var(--ink);padding:34px 0 14px;margin-bottom:6px}
+.mast .eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--ink-2);margin:0 0 10px;
+}
+.mast h1{
+  font-family:var(--disp);font-weight:700;letter-spacing:-.01em;
+  font-size:clamp(34px,7vw,62px);line-height:.94;margin:0;text-transform:uppercase;
+}
+.mast h1 em{font-style:normal;color:var(--green)}
+.mast .sub{
+  font-family:var(--disp);font-weight:500;font-size:clamp(15px,2.4vw,21px);
+  letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);margin:8px 0 0;
+}
+.metabar{
+  display:flex;flex-wrap:wrap;gap:0;border-bottom:1px solid var(--rule);
+  margin-bottom:36px;font-family:var(--mono);font-size:11px;
+}
+.metabar div{
+  padding:8px 16px 8px 0;margin-right:16px;border-right:1px solid var(--rule-2);
+  color:var(--ink-2);
+}
+.metabar div:last-child{border-right:0}
+.metabar b{color:var(--ink);font-weight:500}
+
+/* ---------- sections ---------- */
+section{margin:52px 0 0;scroll-margin-top:20px}
+.shead{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:6px}
+.shead .tag{
+  font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;
+  color:var(--paper);background:var(--ink);padding:3px 8px;white-space:nowrap;
+}
+.shead h2{
+  font-family:var(--disp);font-weight:600;text-transform:uppercase;letter-spacing:.02em;
+  font-size:clamp(21px,3.4vw,30px);margin:0;flex:1;
+}
+.lede{color:var(--ink-2);max-width:74ch;margin:14px 0 22px}
+h3{
+  font-family:var(--disp);font-weight:600;text-transform:uppercase;letter-spacing:.06em;
+  font-size:18px;margin:34px 0 10px;
+}
+p{margin:0 0 12px}
+code,.m{font-family:var(--mono);font-size:.88em}
+
+/* ---------- flow diagram ---------- */
+.flow{
+  border:1px solid var(--rule);background:var(--paper-2);padding:20px;margin:0 0 26px;
+  overflow-x:auto;
+}
+.flow svg{display:block;min-width:640px;width:100%;height:auto}
+
+/* ---------- cavity map (signature) ---------- */
+.cav{border:1px solid var(--rule);background:var(--paper-2);padding:20px 16px;overflow-x:auto}
+.cav svg{display:block;min-width:700px;width:100%;height:auto}
+.caption{
+  font-family:var(--mono);font-size:11px;color:var(--ink-2);
+  margin:10px 2px 0;line-height:1.6;
+}
+.warnbox{
+  border-left:4px solid var(--c25);background:rgba(168,52,43,.07);
+  padding:12px 16px;margin:16px 0;font-size:14px;
+}
+.warnbox b{font-family:var(--disp);text-transform:uppercase;letter-spacing:.06em;font-size:15px}
+
+/* ---------- legend ---------- */
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin:18px 0 0;font-family:var(--mono);font-size:11px}
+.legend span{display:flex;align-items:center;gap:7px;color:var(--ink-2)}
+.sw{width:13px;height:13px;border:1px solid rgba(0,0,0,.35);flex:none}
+
+/* ---------- tables ---------- */
+.tw{overflow-x:auto;margin:0 0 8px;border-top:1px solid var(--ink)}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:13.5px}
+thead th{
+  font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  text-align:left;font-weight:700;color:var(--ink-2);
+  padding:9px 10px;border-bottom:1px solid var(--rule);white-space:nowrap;
+}
+tbody td{padding:8px 10px;border-bottom:1px solid var(--rule-2);vertical-align:top}
+tbody tr:hover{background:rgba(30,90,60,.06)}
+td.pin{font-family:var(--mono);font-weight:700;white-space:nowrap;width:44px}
+td.ch{font-family:var(--mono);font-weight:700;white-space:nowrap}
+td.g,td.col,td.dest{font-family:var(--mono);font-size:12px;white-space:nowrap}
+td.dest{color:var(--green);font-weight:500}
+.sp{color:var(--ink-2);font-style:italic}
+.badge{
+  display:inline-block;font-family:var(--mono);font-size:9.5px;font-weight:700;
+  letter-spacing:.08em;padding:2px 6px;color:#fff;white-space:nowrap;
+}
+.b25{background:var(--c25)} .b15{background:var(--c15)} .b7{background:var(--c7)}
+.bin{background:var(--cin)} .bcom{background:var(--ccom)} .bpwr{background:var(--cpwr)}
+.note{font-size:12px;color:var(--ink-2);font-family:var(--mono);margin:2px 0 26px}
+
+/* ---------- connector cards ---------- */
+.conn{border:1px solid var(--rule);margin:0 0 30px;background:rgba(255,255,255,.28)}
+.conn-h{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;
+  padding:12px 16px;background:var(--ink);color:var(--paper);
+}
+.conn-h .id{font-family:var(--mono);font-weight:700;font-size:16px;letter-spacing:.08em}
+.conn-h .nm{font-family:var(--disp);text-transform:uppercase;letter-spacing:.08em;font-size:19px;font-weight:600;flex:1}
+.conn-h .pn{font-family:var(--mono);font-size:11px;opacity:.75}
+.conn-b{padding:14px 16px 4px}
+.conn-b table{min-width:640px}
+.conn-b .tw{border-top:0}
+.route{
+  font-family:var(--mono);font-size:11px;color:var(--ink-2);
+  padding:0 16px 14px;border-top:1px solid var(--rule-2);margin-top:6px;padding-top:10px;
+}
+
+/* ---------- rules list ---------- */
+ol.rules{counter-reset:r;list-style:none;padding:0;margin:0}
+ol.rules li{
+  counter-increment:r;position:relative;padding:0 0 16px 44px;margin:0;
+  border-bottom:1px solid var(--rule-2);padding-bottom:16px;margin-bottom:16px;
+}
+ol.rules li:last-child{border-bottom:0}
+ol.rules li::before{
+  content:counter(r,decimal-leading-zero);position:absolute;left:0;top:1px;
+  font-family:var(--mono);font-size:12px;font-weight:700;color:var(--green);
+}
+ol.rules b{font-family:var(--disp);text-transform:uppercase;letter-spacing:.05em;font-size:16px;display:block;margin-bottom:2px}
+
+ul.plain{padding-left:18px;margin:0 0 14px}
+ul.plain li{margin-bottom:6px}
+
+footer{
+  margin-top:56px;border-top:2px solid var(--ink);padding-top:12px;
+  font-family:var(--mono);font-size:11px;color:var(--ink-2);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;
+}
+
+@media (max-width:600px){
+  .wrap{padding:0 14px}
+  .metabar div{padding-right:12px;margin-right:12px}
+}
+@media print{
+  body{background:#fff;font-size:11px}
+  .conn,.cav,.flow{break-inside:avoid}
+  tbody tr:hover{background:none}
+  section{break-before:auto}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">1982 Mazda RX-7 FB / GS · Electrical Rebuild</p>
+  <h1>PMU-24 DL<br><em>Pin Plan</em> &amp; Connector Map</h1>
+  <p class="sub">Rev A — full allocation, all 39 cavities terminated</p>
+</header>
+
+<div class="metabar">
+  <div>DEVICE <b>ECUMaster PMU-24 DL</b></div>
+  <div>HOUSING <b>Sicma / FCI 39-pos</b></div>
+  <div>MAIN FEED <b>Stud, 150 A max</b></div>
+  <div>BASELINE <b>12A / Weber 45 DCOE</b></div>
+  <div>RESERVED <b>LS + CD009</b></div>
+</div>
+
+<!-- ============ ARCHITECTURE ============ -->
+<section>
+  <div class="shead"><span class="tag">§1</span><h2>Two-tier architecture</h2></div>
+  <p class="lede">
+    The 39-pin is a <em>device</em> connector, not a harness connector — it stays on the panel and gets
+    opened exactly once. Its wires travel six to eighteen inches to a busbar and to regional bulkhead
+    connectors on the panel edge. Every harness segment plugs into its own region. Expansion means
+    uncapping a reserved wire at a bulkhead, never re-terminating the 39-pin.
+  </p>
+
+  <div class="flow">
+  <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PMU to regional connector architecture">
+    <defs>
+      <marker id="ar" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+        <path d="M0,0 L7,3.5 L0,7 Z" fill="#4A4F46"/>
+      </marker>
+      <style>
+        .lb{font-family:'JetBrains Mono',monospace;font-size:10px;fill:#4A4F46}
+        .lbb{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;fill:#191C18}
+        .lbw{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;fill:#E8E9E1}
+        .ln{stroke:#4A4F46;stroke-width:1.4;fill:none;marker-end:url(#ar)}
+      </style>
+    </defs>
+
+    <!-- battery -->
+    <rect x="12" y="126" width="96" height="46" fill="none" stroke="#191C18" stroke-width="1.6"/>
+    <text class="lbb" x="60" y="145" text-anchor="middle">IONIC S9H</text>
+    <text class="lb"  x="60" y="160" text-anchor="middle">Class-T · disc.</text>
+    <path class="ln" d="M110 149 H160"/>
+    <text class="lb" x="134" y="142" text-anchor="middle">4 AWG</text>
+
+    <!-- PMU -->
+    <rect x="162" y="86" width="150" height="126" fill="#191C18"/>
+    <text class="lbw" x="237" y="112" text-anchor="middle">PMU-24 DL</text>
+    <text class="lbw" x="237" y="130" text-anchor="middle" style="font-size:9px;font-weight:400">STUD +12V</text>
+    <rect x="178" y="140" width="118" height="26" fill="#E8E9E1"/>
+    <text class="lbb" x="237" y="158" text-anchor="middle">39-PIN SICMA</text>
+    <text class="lbw" x="237" y="186" text-anchor="middle" style="font-size:9px;font-weight:400">sealed after build</text>
+    <text class="lbw" x="237" y="199" text-anchor="middle" style="font-size:9px;font-weight:400">— never reopened —</text>
+
+    <!-- panel bus -->
+    <path class="ln" d="M314 149 H366"/>
+    <rect x="368" y="72" width="128" height="154" fill="none" stroke="#1E5A3C" stroke-width="1.8" stroke-dasharray="5 3"/>
+    <text class="lbb" x="432" y="94" text-anchor="middle" style="fill:#1E5A3C">DASH PANEL</text>
+    <text class="lb" x="432" y="110" text-anchor="middle">busbar · 10 relays</text>
+    <text class="lb" x="432" y="124" text-anchor="middle">13 fuses · diodes</text>
+    <text class="lb" x="432" y="138" text-anchor="middle">keep-alive latch</text>
+    <text class="lb" x="432" y="160" text-anchor="middle">— removable —</text>
+    <text class="lb" x="432" y="174" text-anchor="middle">one backer plate</text>
+    <text class="lb" x="432" y="196" text-anchor="middle">2 lugs + 7 plugs</text>
+    <text class="lb" x="432" y="210" text-anchor="middle">= out in minutes</text>
+
+    <!-- regions -->
+    <g>
+      <rect x="600" y="14" width="290" height="26" fill="none" stroke="#191C18"/>
+      <text class="lbb" x="612" y="32">C1</text><text class="lb" x="646" y="32">ENGINE / COWL — firewall pass-through</text>
+      <rect x="600" y="52" width="290" height="26" fill="none" stroke="#191C18"/>
+      <text class="lbb" x="612" y="70">C2</text><text class="lb" x="646" y="70">FRONT END — lights, pop-ups, horn</text>
+      <rect x="600" y="90" width="290" height="26" fill="none" stroke="#191C18"/>
+      <text class="lbb" x="612" y="108">C3</text><text class="lb" x="646" y="108">DASH — switches, blower, comfort bus</text>
+      <rect x="600" y="128" width="290" height="26" fill="none" stroke="#191C18"/>
+      <text class="lbb" x="612" y="146">C4</text><text class="lb" x="646" y="146">REAR BODY — tunnel run to hatch</text>
+      <rect x="600" y="166" width="290" height="26" fill="none" stroke="#191C18"/>
+      <text class="lbb" x="612" y="184">C5</text><text class="lb" x="646" y="184">DOORS / INTERIOR</text>
+      <rect x="600" y="204" width="290" height="26" fill="none" stroke="#191C18"/>
+      <text class="lbb" x="612" y="222">C6</text><text class="lb" x="646" y="222">AUDIO / ACCESSORY</text>
+      <rect x="600" y="242" width="290" height="26" fill="none" stroke="#191C18"/>
+      <text class="lbb" x="612" y="260">C7</text><text class="lb" x="646" y="260">CAN / DIAGNOSTIC PORT</text>
+    </g>
+    <path class="ln" d="M498 130 C548 130 548 27 594 27"/>
+    <path class="ln" d="M498 134 C548 134 548 65 594 65"/>
+    <path class="ln" d="M498 140 C548 140 548 103 594 103"/>
+    <path class="ln" d="M498 149 H594"/>
+    <path class="ln" d="M498 158 C548 158 548 179 594 179"/>
+    <path class="ln" d="M498 164 C548 164 548 217 594 217"/>
+    <path class="ln" d="M498 170 C548 170 548 255 594 255"/>
+
+    <text class="lb" x="432" y="248" text-anchor="middle">grounds never cross a connector —</text>
+    <text class="lb" x="432" y="262" text-anchor="middle">local star node per zone</text>
+  </svg>
+  </div>
+
+  <div class="warnbox">
+    <b>Terminate all 39 cavities now.</b>
+    Reserved channels get real wire run to a capped spare bundle at the relevant bulkhead. A half-pinned
+    connector means pulling the PMU and opening a sealed housing later — which is the exact thing this
+    architecture exists to prevent.
+  </div>
+</section>
+
+<!-- ============ CAVITY MAP ============ -->
+<section>
+  <div class="shead"><span class="tag">§2</span><h2>Cavity map — C0</h2></div>
+  <p class="lede">
+    Every cavity, colored by channel class. Class tells you the terminal size, the wire gauge and the
+    base wire color, so a wire's identity is readable before you ever trace it.
+  </p>
+
+  <div class="cav">
+  <svg viewBox="0 0 940 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="39 pin cavity map">
+    <defs><style>
+      .cn{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;fill:#fff}
+      .cl{font-family:'JetBrains Mono',monospace;font-size:8.5px;fill:#fff;opacity:.92}
+      .rw{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em;fill:#4A4F46}
+    </style></defs>
+
+    <text class="rw" x="4" y="26">ROW 1  ·  PINS 1–13</text>
+    <text class="rw" x="4" y="132">ROW 2  ·  PINS 14–26</text>
+    <text class="rw" x="4" y="238">ROW 3  ·  PINS 27–39</text>
+
+    <!-- ROW 1: 1..13 -->
+    <g transform="translate(4,36)">
+      <g><rect width="66" height="66" fill="#A8342B"/><text class="cn" x="6" y="15">1</text><text class="cl" x="6" y="32">O13</text><text class="cl" x="6" y="44">LS ECU</text><text class="cl" x="6" y="56">rsvd</text></g>
+      <g transform="translate(70,0)"><rect width="66" height="66" fill="#A8342B"/><text class="cn" x="6" y="15">2</text><text class="cl" x="6" y="32">O12</text><text class="cl" x="6" y="44">IGN</text><text class="cl" x="6" y="56">coils</text></g>
+      <g transform="translate(140,0)"><rect width="66" height="66" fill="#B0711A"/><text class="cn" x="6" y="15">3</text><text class="cl" x="6" y="32">O11</text><text class="cl" x="6" y="44">HORN</text></g>
+      <g transform="translate(210,0)"><rect width="66" height="66" fill="#B0711A"/><text class="cn" x="6" y="15">4</text><text class="cl" x="6" y="32">O10</text><text class="cl" x="6" y="44">ACC</text><text class="cl" x="6" y="56">bus</text></g>
+      <g transform="translate(280,0)"><rect width="66" height="66" fill="#B0711A"/><text class="cn" x="6" y="15">5</text><text class="cl" x="6" y="32">O9</text><text class="cl" x="6" y="44">WIPE HI</text></g>
+      <g transform="translate(350,0)"><rect width="66" height="66" fill="#5B3E8C"/><text class="cn" x="6" y="15">6</text><text class="cl" x="6" y="32">O17</text><text class="cl" x="6" y="44">TURN L</text></g>
+      <g transform="translate(420,0)"><rect width="66" height="66" fill="#2B2E29"/><text class="cn" x="6" y="15">7</text><text class="cl" x="6" y="32">+12V</text><text class="cl" x="6" y="44">SW</text><text class="cl" x="6" y="56">wake</text></g>
+      <g transform="translate(490,0)"><rect width="66" height="66" fill="#5B3E8C"/><text class="cn" x="6" y="15">8</text><text class="cl" x="6" y="32">O22</text><text class="cl" x="6" y="44">LATCH</text></g>
+      <g transform="translate(560,0)"><rect width="66" height="66" fill="#B0711A"/><text class="cn" x="6" y="15">9</text><text class="cl" x="6" y="32">O8</text><text class="cl" x="6" y="44">WIPE LO</text><text class="cl" x="6" y="56">brake fn</text></g>
+      <g transform="translate(630,0)"><rect width="66" height="66" fill="#B0711A"/><text class="cn" x="6" y="15">10</text><text class="cl" x="6" y="32">O7</text><text class="cl" x="6" y="44">BRAKE</text></g>
+      <g transform="translate(700,0)"><rect width="66" height="66" fill="#B0711A"/><text class="cn" x="6" y="15">11</text><text class="cl" x="6" y="32">O6</text><text class="cl" x="6" y="44">TAIL/PK</text></g>
+      <g transform="translate(770,0)"><rect width="66" height="66" fill="#A8342B"/><text class="cn" x="6" y="15">12</text><text class="cl" x="6" y="32">O5</text><text class="cl" x="6" y="44">FUEL P</text></g>
+      <g transform="translate(840,0)"><rect width="66" height="66" fill="#A8342B"/><text class="cn" x="6" y="15">13</text><text class="cl" x="6" y="32">O4</text><text class="cl" x="6" y="44">DEFOG</text></g>
+    </g>
+
+    <!-- ROW 2: 14..26 -->
+    <g transform="translate(4,142)">
+      <g><rect width="66" height="66" fill="#A8342B"/><text class="cn" x="6" y="15">14</text><text class="cl" x="6" y="32">O14</text><text class="cl" x="6" y="44">LS FAN</text><text class="cl" x="6" y="56">rsvd</text></g>
+      <g transform="translate(70,0)"><rect width="66" height="66" fill="#2B2E29"/><text class="cn" x="6" y="15">15</text><text class="cl" x="6" y="32">+5V</text><text class="cl" x="6" y="44">ref</text></g>
+      <g transform="translate(140,0)"><rect width="66" height="66" fill="#256C7C"/><text class="cn" x="6" y="15">16</text><text class="cl" x="6" y="32">A2</text><text class="cl" x="6" y="44">WIPE SW</text></g>
+      <g transform="translate(210,0)"><rect width="66" height="66" fill="#256C7C"/><text class="cn" x="6" y="15">17</text><text class="cl" x="6" y="32">A4</text><text class="cl" x="6" y="44">POP L</text></g>
+      <g transform="translate(280,0)"><rect width="66" height="66" fill="#256C7C"/><text class="cn" x="6" y="15">18</text><text class="cl" x="6" y="32">A6</text><text class="cl" x="6" y="44">DOOR</text></g>
+      <g transform="translate(350,0)"><rect width="66" height="66" fill="#256C7C"/><text class="cn" x="6" y="15">19</text><text class="cl" x="6" y="32">A8</text><text class="cl" x="6" y="44">HAZARD</text></g>
+      <g transform="translate(420,0)"><rect width="66" height="66" fill="#5B3E8C"/><text class="cn" x="6" y="15">20</text><text class="cl" x="6" y="32">O19</text><text class="cl" x="6" y="44">REVERSE</text></g>
+      <g transform="translate(490,0)"><rect width="66" height="66" fill="#5B3E8C"/><text class="cn" x="6" y="15">21</text><text class="cl" x="6" y="32">O21</text><text class="cl" x="6" y="44">START</text><text class="cl" x="6" y="56">rly coil</text></g>
+      <g transform="translate(560,0)"><rect width="66" height="66" fill="#256C7C"/><text class="cn" x="6" y="15">22</text><text class="cl" x="6" y="32">A16</text><text class="cl" x="6" y="44">KEY POS</text></g>
+      <g transform="translate(630,0)"><rect width="66" height="66" fill="#7A6A1E"/><text class="cn" x="6" y="15">23</text><text class="cl" x="6" y="32">CAN1H</text><text class="cl" x="6" y="44">diag</text></g>
+      <g transform="translate(700,0)"><rect width="66" height="66" fill="#7A6A1E"/><text class="cn" x="6" y="15">24</text><text class="cl" x="6" y="32">CAN2H</text><text class="cl" x="6" y="44">bus</text></g>
+      <g transform="translate(770,0)"><rect width="66" height="66" fill="#2B2E29"/><text class="cn" x="6" y="15">25</text><text class="cl" x="6" y="32">GND</text><text class="cl" x="6" y="44">10 AWG</text><text class="cl" x="6" y="56">flyback</text></g>
+      <g transform="translate(840,0)"><rect width="66" height="66" fill="#A8342B"/><text class="cn" x="6" y="15">26</text><text class="cl" x="6" y="32">O3</text><text class="cl" x="6" y="44">HL HIGH</text></g>
+    </g>
+
+    <!-- ROW 3: 27..39 -->
+    <g transform="translate(4,248)">
+      <g><rect width="66" height="66" fill="#A8342B"/><text class="cn" x="6" y="15">27</text><text class="cl" x="6" y="32">O15</text><text class="cl" x="6" y="44">COMFORT</text></g>
+      <g transform="translate(70,0)"><rect width="66" height="66" fill="#A8342B"/><text class="cn" x="6" y="15">28</text><text class="cl" x="6" y="32">O16</text><text class="cl" x="6" y="44">BLOWER</text><text class="cl" x="6" y="56">flyback</text></g>
+      <g transform="translate(140,0)"><rect width="66" height="66" fill="#256C7C"/><text class="cn" x="6" y="15">29</text><text class="cl" x="6" y="32">A1</text><text class="cl" x="6" y="44">TURN SW</text></g>
+      <g transform="translate(210,0)"><rect width="66" height="66" fill="#256C7C"/><text class="cn" x="6" y="15">30</text><text class="cl" x="6" y="32">A3</text><text class="cl" x="6" y="44">BRK PED</text></g>
+      <g transform="translate(280,0)"><rect width="66" height="66" fill="#256C7C"/><text class="cn" x="6" y="15">31</text><text class="cl" x="6" y="32">A5</text><text class="cl" x="6" y="44">POP R</text></g>
+      <g transform="translate(350,0)"><rect width="66" height="66" fill="#256C7C"/><text class="cn" x="6" y="15">32</text><text class="cl" x="6" y="32">A7</text><text class="cl" x="6" y="44">FUEL LVL</text></g>
+      <g transform="translate(420,0)"><rect width="66" height="66" fill="#5B3E8C"/><text class="cn" x="6" y="15">33</text><text class="cl" x="6" y="32">O18</text><text class="cl" x="6" y="44">TURN R</text></g>
+      <g transform="translate(490,0)"><rect width="66" height="66" fill="#5B3E8C"/><text class="cn" x="6" y="15">34</text><text class="cl" x="6" y="32">O20</text><text class="cl" x="6" y="44">INTERIOR</text><text class="cl" x="6" y="56">PWM</text></g>
+      <g transform="translate(560,0)"><rect width="66" height="66" fill="#256C7C"/><text class="cn" x="6" y="15">35</text><text class="cl" x="6" y="32">A15</text><text class="cl" x="6" y="44">HL SW</text></g>
+      <g transform="translate(630,0)"><rect width="66" height="66" fill="#7A6A1E"/><text class="cn" x="6" y="15">36</text><text class="cl" x="6" y="32">CAN1L</text><text class="cl" x="6" y="44">diag</text></g>
+      <g transform="translate(700,0)"><rect width="66" height="66" fill="#7A6A1E"/><text class="cn" x="6" y="15">37</text><text class="cl" x="6" y="32">CAN2L</text><text class="cl" x="6" y="44">bus</text></g>
+      <g transform="translate(770,0)"><rect width="66" height="66" fill="#A8342B"/><text class="cn" x="6" y="15">38</text><text class="cl" x="6" y="32">O1</text><text class="cl" x="6" y="44">MOTOR</text><text class="cl" x="6" y="56">flyback</text></g>
+      <g transform="translate(840,0)"><rect width="66" height="66" fill="#A8342B"/><text class="cn" x="6" y="15">39</text><text class="cl" x="6" y="32">O2</text><text class="cl" x="6" y="44">HL LOW</text></g>
+    </g>
+  </svg>
+  </div>
+
+  <div class="legend">
+    <span><i class="sw" style="background:#A8342B"></i>25 A · O1–O5, O12–O16 · 12 AWG · RED</span>
+    <span><i class="sw" style="background:#B0711A"></i>15 A · O6–O11 · 14 AWG · ORN</span>
+    <span><i class="sw" style="background:#5B3E8C"></i>7 A · O17–O24 · 16 AWG · VIO</span>
+    <span><i class="sw" style="background:#256C7C"></i>Analog in · 18 AWG · GRY</span>
+    <span><i class="sw" style="background:#7A6A1E"></i>CAN · 18 AWG tw. pr.</span>
+    <span><i class="sw" style="background:#2B2E29"></i>Power / reference</span>
+  </div>
+
+  <p class="caption">
+    Cavities shown in numeric order, thirteen per row. This is a <b>logical</b> map, not the housing
+    footprint — confirm cavity positions and keyway orientation against the physical connector before
+    you terminate a single wire.
+  </p>
+</section>
+
+<!-- ============ MASTER TABLE ============ -->
+<section>
+  <div class="shead"><span class="tag">§3</span><h2>Master pin schedule</h2></div>
+
+  <h3>Power, ground &amp; communications</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Pin</th><th>Name</th><th>Class</th><th>Circuit</th><th>AWG</th><th>Color</th><th>Goes to</th></tr></thead>
+    <tbody>
+      <tr><td class="pin">STUD</td><td class="ch">+12V BATT</td><td><span class="badge bpwr">MAIN</span></td><td>Main supply, 150 A max constant</td><td class="g">4</td><td class="col">RED</td><td class="dest">Panel lug ← Class-T</td></tr>
+      <tr><td class="pin">25</td><td class="ch">GND</td><td><span class="badge bpwr">GND</span></td><td>Device ground <b>and flyback return for every inductive load</b></td><td class="g">10</td><td class="col">BLK</td><td class="dest">Panel star node, ≤6 in</td></tr>
+      <tr><td class="pin">7</td><td class="ch">+12V SW</td><td><span class="badge bpwr">WAKE</span></td><td>PMU on/off signal — diode-OR from ACC, RUN, hazard, door pin, O22</td><td class="g">18</td><td class="col">BLU</td><td class="dest">Panel diode network</td></tr>
+      <tr><td class="pin">15</td><td class="ch">+5V OUT</td><td><span class="badge bpwr">REF</span></td><td>Ladder &amp; sender reference, 500 mA ceiling</td><td class="g">18</td><td class="col">PNK</td><td class="dest">Split → C2, C3, C4</td></tr>
+      <tr><td class="pin">23</td><td class="ch">CAN1H</td><td><span class="badge bcom">CAN1</span></td><td>Laptop / config. 1 Mbps fixed. <b>No internal termination</b></td><td class="g">18 tw</td><td class="col">YEL</td><td class="dest">C7-1</td></tr>
+      <tr><td class="pin">36</td><td class="ch">CAN1L</td><td><span class="badge bcom">CAN1</span></td><td>Laptop / config</td><td class="g">18 tw</td><td class="col">GRN</td><td class="dest">C7-2</td></tr>
+      <tr><td class="pin">24</td><td class="ch">CAN2H</td><td><span class="badge bcom">CAN2</span></td><td>Keypad, future DCU, cluster, LS ECU. Software termination</td><td class="g">18 tw</td><td class="col">YEL/BLK</td><td class="dest">C3-8 &amp; C1-B4</td></tr>
+      <tr><td class="pin">37</td><td class="ch">CAN2L</td><td><span class="badge bcom">CAN2</span></td><td>Peripheral bus</td><td class="g">18 tw</td><td class="col">GRN/BLK</td><td class="dest">C3-9 &amp; C1-B5</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>25 A outputs — O1–O5, O12–O16</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Pin</th><th>Ch</th><th>Circuit</th><th>Est. draw</th><th>AWG</th><th>Color</th><th>Goes to</th></tr></thead>
+    <tbody>
+      <tr><td class="pin">38</td><td class="ch">O1 ⚡</td><td><b>Motor bus</b> — pop-up + window relay commons. <b>Integrated high-power flyback diode — use it for your worst inductive load.</b></td><td class="g">~20 A pk</td><td class="g">12</td><td class="col">RED/WHT</td><td class="dest">Panel relay bank</td></tr>
+      <tr><td class="pin">39</td><td class="ch">O2</td><td>Headlight LOW</td><td class="g">~10 A</td><td class="g">12</td><td class="col">RED/BLK</td><td class="dest">C2-A1</td></tr>
+      <tr><td class="pin">26</td><td class="ch">O3</td><td>Headlight HIGH</td><td class="g">~12 A</td><td class="g">12</td><td class="col">RED/BRN</td><td class="dest">C2-A2</td></tr>
+      <tr><td class="pin">13</td><td class="ch">O4</td><td>Rear defog grid</td><td class="g">~15 A</td><td class="g">12</td><td class="col">RED/GRN</td><td class="dest">C4-A1</td></tr>
+      <tr><td class="pin">12</td><td class="ch">O5</td><td>Fuel pump (Facet now → Aeromotive Phantom 340 later)</td><td class="g">3–12 A</td><td class="g">12</td><td class="col">RED/YEL</td><td class="dest">C4-A2</td></tr>
+      <tr><td class="pin">2</td><td class="ch">O12</td><td>Ignition / coil feed</td><td class="g">~6 A</td><td class="g">12</td><td class="col">RED/BLU</td><td class="dest">C1-A1</td></tr>
+      <tr><td class="pin">1</td><td class="ch">O13</td><td class="sp">RESERVED — LS ECU + injectors</td><td class="g">~18 A</td><td class="g">12</td><td class="col">RED/ORN</td><td class="dest">C1-A2 (capped)</td></tr>
+      <tr><td class="pin">14</td><td class="ch">O14</td><td class="sp">RESERVED — LS cooling fan(s)</td><td class="g">~25 A</td><td class="g">12</td><td class="col">RED/GRY</td><td class="dest">C1-A3 (capped)</td></tr>
+      <tr><td class="pin">27</td><td class="ch">O15</td><td><b>Comfort bus</b> — heated/cooled seats, heated mirrors, washer nozzles, wiper park de-icer. Fanned out downstream and switched by the DCU when it arrives.</td><td class="g">~20 A</td><td class="g">12</td><td class="col">RED/VIO</td><td class="dest">C3-B1</td></tr>
+      <tr><td class="pin">28</td><td class="ch">O16 ⚡</td><td>Blower motor feed (factory switch + resistor pack sets speed). Second integrated flyback diode.</td><td class="g">~18 A</td><td class="g">12</td><td class="col">RED/PNK</td><td class="dest">C3-B2</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">A/C compressor clutch is NOT here — it stays on the factory switch per the build spec.</p>
+
+  <h3>15 A outputs — O6–O11</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Pin</th><th>Ch</th><th>Circuit</th><th>Est. draw</th><th>AWG</th><th>Color</th><th>Goes to</th></tr></thead>
+    <tbody>
+      <tr><td class="pin">11</td><td class="ch">O6</td><td>Tail / park / side marker / plate — one circuit, LED. Covers both PARK and HEAD positions of the 3-position switch.</td><td class="g">~2 A</td><td class="g">14</td><td class="col">ORN/BRN</td><td class="dest">Split → C2-B1, C4-B1</td></tr>
+      <tr><td class="pin">10</td><td class="ch">O7</td><td>Brake lamps</td><td class="g">~2 A</td><td class="g">14</td><td class="col">ORN/GRN</td><td class="dest">C4-B2</td></tr>
+      <tr><td class="pin">9</td><td class="ch">O8 ⚙</td><td>Wiper LOW. <b>O8 is the only channel with wiper motor braking — wipers must live here.</b> Intermittent is PWM/timer in software; interval control unit deleted.</td><td class="g">4–15 A</td><td class="g">14</td><td class="col">ORN/BLU</td><td class="dest">C1-B1</td></tr>
+      <tr><td class="pin">5</td><td class="ch">O9</td><td>Wiper HIGH</td><td class="g">6–15 A</td><td class="g">14</td><td class="col">ORN/WHT</td><td class="dest">C1-B2</td></tr>
+      <tr><td class="pin">4</td><td class="ch">O10</td><td>Accessory bus — lighter, USB-C, head unit switched feed</td><td class="g">~10 A</td><td class="g">14</td><td class="col">ORN/YEL</td><td class="dest">C6-1</td></tr>
+      <tr><td class="pin">3</td><td class="ch">O11</td><td>Horn</td><td class="g">~6 A</td><td class="g">14</td><td class="col">ORN/BLK</td><td class="dest">C2-B2</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>7 A shared pins — O17–O24 / A9–A16</h3>
+  <p class="note">Software-selectable input or output. Highest-value pins on the device — anything capped here can become either later without touching hardware.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Pin</th><th>Ch</th><th>Mode</th><th>Circuit</th><th>AWG</th><th>Color</th><th>Goes to</th></tr></thead>
+    <tbody>
+      <tr><td class="pin">6</td><td class="ch">O17</td><td><span class="badge b7">OUT</span></td><td>Turn LEFT — PMU flashes natively. <b>No flasher unit anywhere in the car.</b></td><td class="g">16</td><td class="col">VIO/GRN</td><td class="dest">Split → C2-B3, C4-B3</td></tr>
+      <tr><td class="pin">33</td><td class="ch">O18</td><td><span class="badge b7">OUT</span></td><td>Turn RIGHT</td><td class="g">16</td><td class="col">VIO/YEL</td><td class="dest">Split → C2-B4, C4-B4</td></tr>
+      <tr><td class="pin">20</td><td class="ch">O19</td><td><span class="badge b7">OUT</span></td><td>Reverse lamps</td><td class="g">16</td><td class="col">VIO/BLK</td><td class="dest">C4-B5</td></tr>
+      <tr><td class="pin">34</td><td class="ch">O20</td><td><span class="badge b7">PWM</span></td><td>Interior + illuminated details bus — dome, footwells, sills, handles, glovebox, console, trunk, cupholders, ports, vanity. PWM drives the theater fade.</td><td class="g">16</td><td class="col">VIO/WHT</td><td class="dest">C5-B1</td></tr>
+      <tr><td class="pin">21</td><td class="ch">O21</td><td><span class="badge b7">OUT</span></td><td>Start relay coil (relay lives at the starter). Crank interlocks in software.</td><td class="g">16</td><td class="col">VIO/RED</td><td class="dest">C1-B3</td></tr>
+      <tr><td class="pin">8</td><td class="ch">O22</td><td><span class="badge b7">OUT</span></td><td>Keep-alive latch → diode → pin 7. Lets the PMU hold itself awake and shut down on its own timer.</td><td class="g">16</td><td class="col">VIO/BLU</td><td class="dest">Panel diode network</td></tr>
+      <tr><td class="pin">35</td><td class="ch">A15</td><td><span class="badge bin">IN</span></td><td>Headlight switch ladder — OFF / PARK / HEAD. 0–20 V range reads switched 12 V directly.</td><td class="g">18</td><td class="col">GRY/WHT</td><td class="dest">C3-5</td></tr>
+      <tr><td class="pin">22</td><td class="ch">A16</td><td><span class="badge bin">IN</span></td><td>Key position ladder — OFF / ACC / RUN / START</td><td class="g">18</td><td class="col">GRY/RED</td><td class="dest">C3-6</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Dedicated analog inputs — A1–A8</h3>
+  <p class="note">0–5 V, 10-bit. Wire every switch to GROUND with the internal 10 kΩ pull-up — never as switched 12 V.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Pin</th><th>In</th><th>Signal</th><th>Type</th><th>AWG</th><th>Color</th><th>Goes to</th></tr></thead>
+    <tbody>
+      <tr><td class="pin">29</td><td class="ch">A1</td><td>Turn stalk — L / off / R</td><td class="g">3-step ladder</td><td class="g">18</td><td class="col">GRY/GRN</td><td class="dest">C3-1</td></tr>
+      <tr><td class="pin">16</td><td class="ch">A2</td><td>Wiper stalk — off / INT / LO / HI / WASH</td><td class="g">5-step ladder</td><td class="g">18</td><td class="col">GRY/BLU</td><td class="dest">C3-2</td></tr>
+      <tr><td class="pin">30</td><td class="ch">A3</td><td>Brake pedal switch</td><td class="g">switch-to-gnd</td><td class="g">18</td><td class="col">GRY/ORN</td><td class="dest">C3-3</td></tr>
+      <tr><td class="pin">17</td><td class="ch">A4</td><td>Pop-up LEFT position (up / down limits)</td><td class="g">3-step ladder</td><td class="g">18</td><td class="col">GRY/BLK</td><td class="dest">C2-B5</td></tr>
+      <tr><td class="pin">31</td><td class="ch">A5</td><td>Pop-up RIGHT position</td><td class="g">3-step ladder</td><td class="g">18</td><td class="col">GRY/BRN</td><td class="dest">C2-B6</td></tr>
+      <tr><td class="pin">18</td><td class="ch">A6</td><td>Door pins — driver / passenger</td><td class="g">3-step ladder</td><td class="g">18</td><td class="col">GRY/VIO</td><td class="dest">C5-B2</td></tr>
+      <tr><td class="pin">32</td><td class="ch">A7</td><td>Fuel level sender</td><td class="g">resistive</td><td class="g">18</td><td class="col">GRY/YEL</td><td class="dest">C4-B6</td></tr>
+      <tr><td class="pin">19</td><td class="ch">A8</td><td>Hazard switch — also diodes to pin 7 so hazards work with the key out</td><td class="g">switch-to-gnd</td><td class="g">18</td><td class="col">GRY/PNK</td><td class="dest">C3-4</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ============ REGIONAL CONNECTORS ============ -->
+<section>
+  <div class="shead"><span class="tag">§4</span><h2>Regional bulkhead connectors</h2></div>
+  <p class="lede">
+    Seven plugs on the panel edge. Heavy legs (12 AWG, 25 A) need Deutsch <b>DTP</b> — size 12 contacts.
+    DT is size 16, good to 13 A, for everything 14–16 AWG. Signals go on DT or AMPSEAL.
+    Every housing is bought at full cavity count and unused positions are filled with a wire, not a plug.
+  </p>
+
+  <div class="conn">
+    <div class="conn-h"><span class="id">C1</span><span class="nm">Engine &amp; Cowl</span><span class="pn">DTP-04-4P + DT06-12S · firewall pass-through, sealed grommet</span></div>
+    <div class="conn-b"><div class="tw"><table>
+      <thead><tr><th>Cav</th><th>Circuit</th><th>Src</th><th>AWG</th><th>Color</th></tr></thead>
+      <tbody>
+        <tr><td class="pin">A1</td><td>Ignition / coil feed</td><td class="ch">O12</td><td class="g">12</td><td class="col">RED/BLU</td></tr>
+        <tr><td class="pin">A2</td><td class="sp">RESERVED — LS ECU + injectors</td><td class="ch">O13</td><td class="g">12</td><td class="col">RED/ORN</td></tr>
+        <tr><td class="pin">A3</td><td class="sp">RESERVED — LS cooling fan</td><td class="ch">O14</td><td class="g">12</td><td class="col">RED/GRY</td></tr>
+        <tr><td class="pin">A4</td><td class="sp">SPARE heavy</td><td class="ch">—</td><td class="g">12</td><td class="col">RED/—</td></tr>
+        <tr><td class="pin">B1</td><td>Wiper LOW</td><td class="ch">O8</td><td class="g">14</td><td class="col">ORN/BLU</td></tr>
+        <tr><td class="pin">B2</td><td>Wiper HIGH</td><td class="ch">O9</td><td class="g">14</td><td class="col">ORN/WHT</td></tr>
+        <tr><td class="pin">B3</td><td>Start relay coil</td><td class="ch">O21</td><td class="g">16</td><td class="col">VIO/RED</td></tr>
+        <tr><td class="pin">B4</td><td>CAN2 H — future LS ECU</td><td class="ch">P24</td><td class="g">18</td><td class="col">YEL/BLK</td></tr>
+        <tr><td class="pin">B5</td><td>CAN2 L — future LS ECU</td><td class="ch">P37</td><td class="g">18</td><td class="col">GRN/BLK</td></tr>
+        <tr><td class="pin">B6</td><td>Alternator lamp / sense</td><td class="ch">—</td><td class="g">18</td><td class="col">GRY/WHT</td></tr>
+        <tr><td class="pin">B7–B12</td><td class="sp">SPARE ×6 — water temp, oil pressure, VSS, wideband, knock, cam/crank</td><td class="ch">—</td><td class="g">18</td><td class="col">GRY/—</td></tr>
+      </tbody>
+    </table></div></div>
+    <p class="route">ROUTE · panel → passenger footwell → firewall grommet → along inner fender. Local ground stud on the block; nothing returns through this plug.</p>
+  </div>
+
+  <div class="conn">
+    <div class="conn-h"><span class="id">C2</span><span class="nm">Front End</span><span class="pn">DTP-04-4P ×2 + DT06-12S · nose harness</span></div>
+    <div class="conn-b"><div class="tw"><table>
+      <thead><tr><th>Cav</th><th>Circuit</th><th>Src</th><th>AWG</th><th>Color</th></tr></thead>
+      <tbody>
+        <tr><td class="pin">A1</td><td>Headlight LOW</td><td class="ch">O2</td><td class="g">12</td><td class="col">RED/BLK</td></tr>
+        <tr><td class="pin">A2</td><td>Headlight HIGH</td><td class="ch">O3</td><td class="g">12</td><td class="col">RED/BRN</td></tr>
+        <tr><td class="pin">A3</td><td>Pop-up LEFT motor — leg A</td><td class="ch">RLY 1/2</td><td class="g">12</td><td class="col">RED/WHT-1</td></tr>
+        <tr><td class="pin">A4</td><td>Pop-up LEFT motor — leg B</td><td class="ch">RLY 1/2</td><td class="g">12</td><td class="col">RED/WHT-2</td></tr>
+        <tr><td class="pin">A5</td><td>Pop-up RIGHT motor — leg A</td><td class="ch">RLY 3/4</td><td class="g">12</td><td class="col">RED/WHT-3</td></tr>
+        <tr><td class="pin">A6</td><td>Pop-up RIGHT motor — leg B</td><td class="ch">RLY 3/4</td><td class="g">12</td><td class="col">RED/WHT-4</td></tr>
+        <tr><td class="pin">A7–A8</td><td class="sp">SPARE heavy ×2</td><td class="ch">—</td><td class="g">12</td><td class="col">RED/—</td></tr>
+        <tr><td class="pin">B1</td><td>Front park / side marker</td><td class="ch">O6</td><td class="g">14</td><td class="col">ORN/BRN</td></tr>
+        <tr><td class="pin">B2</td><td>Horn</td><td class="ch">O11</td><td class="g">14</td><td class="col">ORN/BLK</td></tr>
+        <tr><td class="pin">B3</td><td>Turn LEFT front</td><td class="ch">O17</td><td class="g">16</td><td class="col">VIO/GRN</td></tr>
+        <tr><td class="pin">B4</td><td>Turn RIGHT front</td><td class="ch">O18</td><td class="g">16</td><td class="col">VIO/YEL</td></tr>
+        <tr><td class="pin">B5</td><td>Pop-up LEFT position ladder</td><td class="ch">A4</td><td class="g">18</td><td class="col">GRY/BLK</td></tr>
+        <tr><td class="pin">B6</td><td>Pop-up RIGHT position ladder</td><td class="ch">A5</td><td class="g">18</td><td class="col">GRY/BRN</td></tr>
+        <tr><td class="pin">B7</td><td>+5V reference</td><td class="ch">P15</td><td class="g">18</td><td class="col">PNK</td></tr>
+        <tr><td class="pin">B8–B12</td><td class="sp">SPARE ×5 — cornering lamps, washer pump, ambient temp sensor, future</td><td class="ch">—</td><td class="g">18</td><td class="col">GRY/—</td></tr>
+      </tbody>
+    </table></div></div>
+    <p class="route">ROUTE · panel → driver kick panel → firewall → across radiator support. Wink switches stay in the cabin on C3 and command the relays on the panel; only motor legs cross this plug.</p>
+  </div>
+
+  <div class="conn">
+    <div class="conn-h"><span class="id">C3</span><span class="nm">Dash &amp; Controls</span><span class="pn">AMPSEAL 23-pos + DTP-04-2P · shortest run in the car</span></div>
+    <div class="conn-b"><div class="tw"><table>
+      <thead><tr><th>Cav</th><th>Circuit</th><th>Src</th><th>AWG</th><th>Color</th></tr></thead>
+      <tbody>
+        <tr><td class="pin">B1</td><td>Comfort bus — seats, mirrors, nozzles, de-icer</td><td class="ch">O15</td><td class="g">12</td><td class="col">RED/VIO</td></tr>
+        <tr><td class="pin">B2</td><td>Blower motor feed</td><td class="ch">O16</td><td class="g">12</td><td class="col">RED/PNK</td></tr>
+        <tr><td class="pin">1</td><td>Turn stalk ladder</td><td class="ch">A1</td><td class="g">18</td><td class="col">GRY/GRN</td></tr>
+        <tr><td class="pin">2</td><td>Wiper stalk ladder</td><td class="ch">A2</td><td class="g">18</td><td class="col">GRY/BLU</td></tr>
+        <tr><td class="pin">3</td><td>Brake pedal switch</td><td class="ch">A3</td><td class="g">18</td><td class="col">GRY/ORN</td></tr>
+        <tr><td class="pin">4</td><td>Hazard switch</td><td class="ch">A8</td><td class="g">18</td><td class="col">GRY/PNK</td></tr>
+        <tr><td class="pin">5</td><td>Headlight switch ladder</td><td class="ch">A15</td><td class="g">18</td><td class="col">GRY/WHT</td></tr>
+        <tr><td class="pin">6</td><td>Key position ladder</td><td class="ch">A16</td><td class="g">18</td><td class="col">GRY/RED</td></tr>
+        <tr><td class="pin">7</td><td>+5V reference</td><td class="ch">P15</td><td class="g">18</td><td class="col">PNK</td></tr>
+        <tr><td class="pin">8</td><td>CAN2 H — keypad, future DCU</td><td class="ch">P24</td><td class="g">18</td><td class="col">YEL/BLK</td></tr>
+        <tr><td class="pin">9</td><td>CAN2 L — keypad, future DCU</td><td class="ch">P37</td><td class="g">18</td><td class="col">GRN/BLK</td></tr>
+        <tr><td class="pin">10</td><td>Wink switch LEFT → relay bank</td><td class="ch">RLY</td><td class="g">18</td><td class="col">GRY/GRN-2</td></tr>
+        <tr><td class="pin">11</td><td>Wink switch RIGHT → relay bank</td><td class="ch">RLY</td><td class="g">18</td><td class="col">GRY/YEL-2</td></tr>
+        <tr><td class="pin">12</td><td>Headlight RAISE command</td><td class="ch">RLY</td><td class="g">18</td><td class="col">GRY/WHT-2</td></tr>
+        <tr><td class="pin">13</td><td>Headlight LOWER command</td><td class="ch">RLY</td><td class="g">18</td><td class="col">GRY/BLK-2</td></tr>
+        <tr><td class="pin">14</td><td>Panel illumination / dimmer</td><td class="ch">O20</td><td class="g">18</td><td class="col">VIO/WHT-2</td></tr>
+        <tr><td class="pin">15–18</td><td>Window switches — DRV up/dn, PASS up/dn</td><td class="ch">RLY</td><td class="g">18</td><td class="col">GRY/VIO-*</td></tr>
+        <tr><td class="pin">19–23</td><td class="sp">SPARE ×5 — DCU, cluster, heated seat knobs, A/C controller</td><td class="ch">—</td><td class="g">18</td><td class="col">GRY/—</td></tr>
+      </tbody>
+    </table></div></div>
+    <p class="route">ROUTE · panel to switch panel, inches. This is the plug the DCU joins later — it needs nothing but cavities 19–23 and the CAN pair already sitting there.</p>
+  </div>
+
+  <div class="conn">
+    <div class="conn-h"><span class="id">C4</span><span class="nm">Rear Body</span><span class="pn">DTP-04-4P + DT06-12S · single tunnel run</span></div>
+    <div class="conn-b"><div class="tw"><table>
+      <thead><tr><th>Cav</th><th>Circuit</th><th>Src</th><th>AWG</th><th>Color</th></tr></thead>
+      <tbody>
+        <tr><td class="pin">A1</td><td>Rear defog grid</td><td class="ch">O4</td><td class="g">12</td><td class="col">RED/GRN</td></tr>
+        <tr><td class="pin">A2</td><td>Fuel pump</td><td class="ch">O5</td><td class="g">12</td><td class="col">RED/YEL</td></tr>
+        <tr><td class="pin">A3–A4</td><td class="sp">SPARE heavy ×2 — in-tank pump upgrade, future</td><td class="ch">—</td><td class="g">12</td><td class="col">RED/—</td></tr>
+        <tr><td class="pin">B1</td><td>Tail / plate / rear marker</td><td class="ch">O6</td><td class="g">14</td><td class="col">ORN/BRN</td></tr>
+        <tr><td class="pin">B2</td><td>Brake lamps</td><td class="ch">O7</td><td class="g">14</td><td class="col">ORN/GRN</td></tr>
+        <tr><td class="pin">B3</td><td>Turn LEFT rear</td><td class="ch">O17</td><td class="g">16</td><td class="col">VIO/GRN</td></tr>
+        <tr><td class="pin">B4</td><td>Turn RIGHT rear</td><td class="ch">O18</td><td class="g">16</td><td class="col">VIO/YEL</td></tr>
+        <tr><td class="pin">B5</td><td>Reverse lamps</td><td class="ch">O19</td><td class="g">16</td><td class="col">VIO/BLK</td></tr>
+        <tr><td class="pin">B6</td><td>Fuel level sender</td><td class="ch">A7</td><td class="g">18</td><td class="col">GRY/YEL</td></tr>
+        <tr><td class="pin">B7</td><td>+5V reference</td><td class="ch">P15</td><td class="g">18</td><td class="col">PNK</td></tr>
+        <tr><td class="pin">B8</td><td class="sp">SPARE — hatch release solenoid</td><td class="ch">—</td><td class="g">14</td><td class="col">ORN/—</td></tr>
+        <tr><td class="pin">B9–B12</td><td class="sp">SPARE ×4 — hatch lamp, third brake, CAN drop, future</td><td class="ch">—</td><td class="g">18</td><td class="col">GRY/—</td></tr>
+      </tbody>
+    </table></div></div>
+    <p class="route">ROUTE · panel → console → tunnel → rear compartment. All rear grounds terminate at the rear ground stud locally — none travel forward through this plug.</p>
+  </div>
+
+  <div class="conn">
+    <div class="conn-h"><span class="id">C5</span><span class="nm">Doors &amp; Interior</span><span class="pn">DTP-04-4P + DT06-08S</span></div>
+    <div class="conn-b"><div class="tw"><table>
+      <thead><tr><th>Cav</th><th>Circuit</th><th>Src</th><th>AWG</th><th>Color</th></tr></thead>
+      <tbody>
+        <tr><td class="pin">A1</td><td>Window motor DRIVER — leg A</td><td class="ch">RLY 5/6</td><td class="g">12</td><td class="col">RED/WHT-5</td></tr>
+        <tr><td class="pin">A2</td><td>Window motor DRIVER — leg B</td><td class="ch">RLY 5/6</td><td class="g">12</td><td class="col">RED/WHT-6</td></tr>
+        <tr><td class="pin">A3</td><td>Window motor PASSENGER — leg A</td><td class="ch">RLY 7/8</td><td class="g">12</td><td class="col">RED/WHT-7</td></tr>
+        <tr><td class="pin">A4</td><td>Window motor PASSENGER — leg B</td><td class="ch">RLY 7/8</td><td class="g">12</td><td class="col">RED/WHT-8</td></tr>
+        <tr><td class="pin">B1</td><td>Interior + illuminated details bus (PWM)</td><td class="ch">O20</td><td class="g">16</td><td class="col">VIO/WHT</td></tr>
+        <tr><td class="pin">B2</td><td>Door pin ladder</td><td class="ch">A6</td><td class="g">18</td><td class="col">GRY/VIO</td></tr>
+        <tr><td class="pin">B3</td><td class="sp">Heated mirror LEFT (off comfort bus)</td><td class="ch">O15</td><td class="g">16</td><td class="col">RED/VIO-1</td></tr>
+        <tr><td class="pin">B4</td><td class="sp">Heated mirror RIGHT</td><td class="ch">O15</td><td class="g">16</td><td class="col">RED/VIO-2</td></tr>
+        <tr><td class="pin">B5–B8</td><td class="sp">SPARE ×4 — mirror motors, courtesy lamps, future</td><td class="ch">—</td><td class="g">18</td><td class="col">GRY/—</td></tr>
+      </tbody>
+    </table></div></div>
+    <p class="route">ROUTE · panel → sill → door boot. Window switches are dash-side on C3 and drive the relays on the panel; only motor legs cross into the door.</p>
+  </div>
+
+  <div class="conn">
+    <div class="conn-h"><span class="id">C6</span><span class="nm">Audio &amp; Accessory</span><span class="pn">DT06-6S</span></div>
+    <div class="conn-b"><div class="tw"><table>
+      <thead><tr><th>Cav</th><th>Circuit</th><th>Src</th><th>AWG</th><th>Color</th></tr></thead>
+      <tbody>
+        <tr><td class="pin">1</td><td>Accessory bus — head unit switched, lighter, USB-C</td><td class="ch">O10</td><td class="g">14</td><td class="col">ORN/YEL</td></tr>
+        <tr><td class="pin">2</td><td>Head unit CONSTANT keep-alive — <b>fused from the busbar, NOT the PMU</b></td><td class="ch">FUSE</td><td class="g">14</td><td class="col">RED</td></tr>
+        <tr><td class="pin">3</td><td>Amp remote turn-on</td><td class="ch">O10</td><td class="g">18</td><td class="col">ORN/YEL-2</td></tr>
+        <tr><td class="pin">4–6</td><td class="sp">SPARE ×3 — DSP wake, sub amp remote, future</td><td class="ch">—</td><td class="g">18</td><td class="col">GRY/—</td></tr>
+      </tbody>
+    </table></div></div>
+    <p class="route">ROUTE · panel → console. Amplifier main power comes off the rear ANL block at the battery, never through here.</p>
+  </div>
+
+  <div class="conn">
+    <div class="conn-h"><span class="id">C7</span><span class="nm">CAN / Diagnostic</span><span class="pn">DTM-04-4P · glovebox or console, capped when not in use</span></div>
+    <div class="conn-b"><div class="tw"><table>
+      <thead><tr><th>Cav</th><th>Circuit</th><th>Src</th><th>AWG</th><th>Color</th></tr></thead>
+      <tbody>
+        <tr><td class="pin">1</td><td>CAN1 H — laptop / config</td><td class="ch">P23</td><td class="g">18 tw</td><td class="col">YEL</td></tr>
+        <tr><td class="pin">2</td><td>CAN1 L — laptop / config</td><td class="ch">P36</td><td class="g">18 tw</td><td class="col">GRN</td></tr>
+        <tr><td class="pin">3</td><td>+12V constant, 2 A fused — powers the interface</td><td class="ch">FUSE</td><td class="g">18</td><td class="col">RED</td></tr>
+        <tr><td class="pin">4</td><td>Ground</td><td class="ch">GND</td><td class="g">18</td><td class="col">BLK</td></tr>
+      </tbody>
+    </table></div></div>
+    <p class="route">CAN1 has no internal termination. Fit a 120 Ω resistor at the PMU end and a second at this port, or the bus will not come up.</p>
+  </div>
+</section>
+
+<!-- ============ RULES ============ -->
+<section>
+  <div class="shead"><span class="tag">§5</span><h2>Build rules</h2></div>
+  <ol class="rules">
+    <li><b>Terminate all 39 cavities</b>Reserved channels get real wire, routed to the correct bulkhead and capped there. The 39-pin is assembled once.</li>
+    <li><b>Wire class reads as color</b>Base color says which channel class it came from — RED for 25 A, ORN for 15 A, VIO for 7 A, GRY for inputs. Tracer says which circuit. You can identify a wire's origin without a diagram.</li>
+    <li><b>Grounds never cross a bulkhead</b>Each zone gets a local star node. The only ground on the panel is pin 25, and it is the shortest, heaviest wire in the car — it carries flyback return for every inductive load on the device.</li>
+    <li><b>Wipers only on O8</b>It is the one channel with motor braking. Nothing else goes there and wipers go nowhere else.</li>
+    <li><b>The worst inductive loads on O1 and O16</b>Only these two carry integrated high-power flyback diodes. Motor bus and blower.</li>
+    <li><b>Switch inputs go to ground</b>A1–A8 read 0–5 V. Use the internal 10 kΩ pull-up and switch to ground. Only A9–A16 read 12 V directly, which is why key and headlight switch live there.</li>
+    <li><b>Ladder every multi-position switch now</b>Retrofitting a resistor ladder onto a switch already wired point-to-point is a re-pin. Wiper stalk, headlight switch, key, turn stalk, pop-up limits, door pins — all ladders from day one.</li>
+    <li><b>Keep a true-constant bus off the PMU</b>The device sleeps. Head unit clock and the diagnostic port feed straight off the busbar through their own fuses. Anything that must survive a PMU shutdown does not belong on an output.</li>
+    <li><b>Set soft fuses from measured current</b>Enable one output at a time on the bench, read live current in the client, then set the limit. Never from a guess, never from the estimates in this document.</li>
+    <li><b>Full cavity count, always</b>Buy every housing at its full position count and fill unused cavities with a capped wire — not a sealing plug. Cheap now, a teardown later.</li>
+  </ol>
+</section>
+
+<footer>
+  <span>RX-7 FB · PMU-24 DL PIN PLAN · REV A</span>
+  <span>Current draw figures are estimates for sizing only — verify on the bench.</span>
+</footer>
+
+</div>
+</body>
+</html>

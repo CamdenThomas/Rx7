@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RX-7 FB — PMU Build Checklist, Rev A</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E8E9E1;--paper-2:#DFE1D7;--ink:#191C18;--ink-2:#4A4F46;
+  --rule:#B6BAAC;--rule-2:#CDD0C4;--green:#1E5A3C;--red:#A8342B;
+  --disp:'Barlow Condensed',sans-serif;--body:'Barlow',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;padding:0 0 80px}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+
+.mast{border-bottom:3px solid var(--ink);padding:34px 0 14px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2);margin:0 0 10px}
+h1{font-family:var(--disp);font-weight:700;font-size:clamp(32px,7vw,58px);line-height:.94;margin:0;text-transform:uppercase}
+h1 em{font-style:normal;color:var(--green)}
+.sub{font-family:var(--disp);font-weight:500;font-size:clamp(15px,2.4vw,20px);letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2);margin:8px 0 0}
+
+.metabar{display:flex;flex-wrap:wrap;border-bottom:1px solid var(--rule);margin-bottom:30px;font-family:var(--mono);font-size:11px}
+.metabar div{padding:8px 16px 8px 0;margin-right:16px;border-right:1px solid var(--rule-2);color:var(--ink-2)}
+.metabar div:last-child{border-right:0}
+.metabar b{color:var(--ink);font-weight:500}
+
+.intro{color:var(--ink-2);max-width:74ch;margin:0 0 12px}
+
+.phase{margin:44px 0 0}
+.ph-h{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:4px;flex-wrap:wrap}
+.ph-h .tag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--paper);background:var(--ink);padding:3px 8px;white-space:nowrap}
+.ph-h h2{font-family:var(--disp);font-weight:600;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(20px,3.2vw,27px);margin:0;flex:1}
+.ph-h .hrs{font-family:var(--mono);font-size:11px;color:var(--ink-2);white-space:nowrap}
+.ph-note{font-family:var(--mono);font-size:11px;color:var(--green);margin:8px 0 14px;letter-spacing:.03em}
+
+ol.ck{list-style:none;padding:0;margin:0 0 6px}
+ol.ck li{
+  position:relative;padding:7px 0 7px 62px;border-bottom:1px solid var(--rule-2);
+}
+ol.ck li:last-child{border-bottom:0}
+ol.ck li .n{
+  position:absolute;left:26px;top:8px;font-family:var(--mono);font-size:11px;
+  font-weight:700;color:var(--ink-2);
+}
+ol.ck li .box{
+  position:absolute;left:0;top:9px;width:14px;height:14px;
+  border:1.5px solid var(--ink);background:transparent;
+}
+ol.ck li b{font-weight:600}
+ol.ck li .why{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
+
+.gate{
+  border-left:4px solid var(--red);background:rgba(168,52,43,.07);
+  padding:11px 15px;margin:14px 0 0;font-size:14px;
+}
+.gate b{font-family:var(--disp);text-transform:uppercase;letter-spacing:.06em;font-size:15px;display:block}
+
+footer{margin-top:52px;border-top:2px solid var(--ink);padding-top:12px;font-family:var(--mono);font-size:11px;color:var(--ink-2)}
+
+@media (max-width:600px){.wrap{padding:0 14px}ol.ck li{padding-left:54px}ol.ck li .n{left:22px}}
+@media print{body{background:#fff;font-size:11px}.phase{break-inside:auto}ol.ck li{break-inside:avoid}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">1982 Mazda RX-7 FB / GS · Electrical Rebuild</p>
+  <h1>Build <em>Checklist</em></h1>
+  <p class="sub">PMU panel · power backbone · harness — 139 steps</p>
+</header>
+
+<div class="metabar">
+  <div>SCOPE <b>PCU, battery, harness</b></div>
+  <div>EXCLUDES <b>DCU · cluster · A/C controller · LS</b></div>
+  <div>EFFORT <b>341–553 hrs</b></div>
+  <div>MATERIALS <b>$5,230–7,045</b></div>
+</div>
+
+<p class="intro">
+  Companion to the Rev A pin plan. Phases 0–2 are laptop and apartment work — do them during semesters.
+  Phases 3–8 need the shop. The car drives on the factory harness until step 116, and drives home at the
+  end of every session after that.
+</p>
+
+<!-- ============================================================ -->
+<section class="phase">
+  <div class="ph-h"><span class="tag">PHASE 0</span><h2>Design &amp; documentation</h2><span class="hrs">55–85 hrs · laptop</span></div>
+  <p class="ph-note">Nothing gets cut, stripped, or ordered until this phase is signed off.</p>
+  <ol class="ck">
+    <li><span class="box"></span><span class="n">001</span>Print the Rev A pin plan. Start a shop binder.</li>
+    <li><span class="box"></span><span class="n">002</span>Download the 1982 FB factory wiring diagram and the FSM electrical section.</li>
+    <li><span class="box"></span><span class="n">003</span>Photograph the entire existing harness in place — wide shots, then a close-up of every connector, branch, and ground point.</li>
+    <li><span class="box"></span><span class="n">004</span>Number every existing connector with tape; log location and function in a sheet.</li>
+    <li><span class="box"></span><span class="n">005</span>Log every previous-owner hack, splice, and your own taps including the wideband.<span class="why">You will rediscover these mid-build otherwise, always at the worst moment.</span></li>
+    <li><span class="box"></span><span class="n">006</span>Photograph and log every existing chassis ground point.</li>
+    <li><span class="box"></span><span class="n">007</span><b>Clamp-meter every load on the running car.</b> Headlights low and high, blower each speed, wiper low and high, defog, fuel pump, horn, tail, brake, turn, reverse, interior. Record inrush and steady state.<span class="why">This is the single most valuable hour in the whole project — it sets every wire gauge and every soft fuse. It cannot be done after the harness comes out.</span></li>
+    <li><span class="box"></span><span class="n">008</span>Measure pop-up motor stall current, both sides.</li>
+    <li><span class="box"></span><span class="n">009</span>Obtain the Sicma 39-position housing drawing or the physical part; confirm cavity geometry against the numeric map in Rev A.</li>
+    <li><span class="box"></span><span class="n">010</span>Build the master circuit spreadsheet: circuit ID, load, measured A, inrush A, gauge, base color, tracer, PMU channel, bulkhead:cavity, route, length.</li>
+    <li><span class="box"></span><span class="n">011</span>Cross-check: all 39 cavities have a destination.</li>
+    <li><span class="box"></span><span class="n">012</span>Cross-check: every relay has a coil source, a terminal 30 feed, and a load path.</li>
+    <li><span class="box"></span><span class="n">013</span>Calculate resistor ladder values — turn stalk, wiper stalk, headlight switch, key, pop-up L, pop-up R, door pins. Target at least 40 ADC counts of separation between states.</li>
+    <li><span class="box"></span><span class="n">014</span>Pick values from the E24 1% series; write the expected ADC reading for each switch position.</li>
+    <li><span class="box"></span><span class="n">015</span>Measure each harness route with string. Add 15% for service loops and routing slack.</li>
+    <li><span class="box"></span><span class="n">016</span>Build the wire cut list: gauge, color, length, quantity.</li>
+    <li><span class="box"></span><span class="n">017</span>Build the connector BOM: housings, wedge locks, contacts plus 20% spare, seals, sealing plugs.</li>
+    <li><span class="box"></span><span class="n">018</span>Draw the panel layout 1:1 on paper — PMU, relay bank, fuse block, busbars, diode network, bulkhead positions, and clearance for the 39-pin lever.</li>
+    <li><span class="box"></span><span class="n">019</span>Mock up the dash structure and verify the panel physically fits with service access.</li>
+    <li><span class="box"></span><span class="n">020</span>Draw the diode-OR wake network schematic with part numbers.</li>
+    <li><span class="box"></span><span class="n">021</span>Draw the pop-up H-bridge relay schematic — terminals 30/85/86/87/87a labeled, limit switch interaction shown.</li>
+    <li><span class="box"></span><span class="n">022</span>Draw the window H-bridge relay schematic.</li>
+    <li><span class="box"></span><span class="n">023</span>Draw the constant-bus schematic: head unit keep-alive and diag port, each with its fuse value.</li>
+    <li><span class="box"></span><span class="n">024</span><b>Freeze the design.</b> Print everything. Date and version it.</li>
+  </ol>
+  <div class="gate"><b>Gate</b>If any of steps 011, 012, or 015 fail, you are not done with Phase 0. Fixing a pin allocation on paper costs minutes; fixing it after crimping costs a housing.</div>
+</section>
+
+<!-- ============================================================ -->
+<section class="phase">
+  <div class="ph-h"><span class="tag">PHASE 1</span><h2>Order &amp; practice</h2><span class="hrs">10–16 hrs · apartment</span></div>
+  <ol class="ck">
+    <li><span class="box"></span><span class="n">025</span>Order the PMU first — longest lead time.</li>
+    <li><span class="box"></span><span class="n">026</span>Order the Ionic S9H. It has been waitlist-only; get in line even if you're months out.</li>
+    <li><span class="box"></span><span class="n">027</span>Place one consolidated wire and connector order.<span class="why">One large order beats five small ones on both shipping and minimum-length pricing.</span></li>
+    <li><span class="box"></span><span class="n">028</span>Order any tools you don't have: Deutsch crimper, AMPSEAL crimper, hydraulic lug crimper, DMM with DC clamp, label printer.</li>
+    <li><span class="box"></span><span class="n">029</span>Order two spare Sicma housings and extra terminals.<span class="why">You will ruin at least one terminal. Having spares means it isn't a two-week stall.</span></li>
+    <li><span class="box"></span><span class="n">030</span>Inventory everything against the BOM on arrival, before starting anything.</li>
+    <li><span class="box"></span><span class="n">031</span>Build crimp coupons: three each of every terminal and gauge combination you'll use.</li>
+    <li><span class="box"></span><span class="n">032</span>Pull-test every coupon. Record the force. Adjust technique until it repeats.</li>
+    <li><span class="box"></span><span class="n">033</span>Practice Deutsch contact insertion and extraction ten times until it's muscle memory.</li>
+    <li><span class="box"></span><span class="n">034</span>Practice adhesive-lined heat shrink until you get consistent adhesive weep at both ends.</li>
+    <li><span class="box"></span><span class="n">035</span>Set up the label printer and lock in a label format.</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<section class="phase">
+  <div class="ph-h"><span class="tag">PHASE 2</span><h2>Bench mule &amp; configuration</h2><span class="hrs">35–55 hrs · apartment</span></div>
+  <p class="ph-note">The step most first-timers skip. Learn the software with nothing at stake.</p>
+  <ol class="ck">
+    <li><span class="box"></span><span class="n">036</span>Build a plywood board, roughly 24 × 36 in.</li>
+    <li><span class="box"></span><span class="n">037</span>Mount a small ground bus and a fused battery feed on the board.</li>
+    <li><span class="box"></span><span class="n">038</span>Mount the PMU using a <b>spare</b> housing — not the real one.</li>
+    <li><span class="box"></span><span class="n">039</span>Terminate a short test pigtail: stud feed, pin 25 ground, pin 7, pin 15, CAN1 pair, six assorted outputs, four inputs.</li>
+    <li><span class="box"></span><span class="n">040</span>Fit a 120 Ω terminator on CAN1. It has no internal termination — the bus will not come up without it.</li>
+    <li><span class="box"></span><span class="n">041</span>Install the PMU client on a Windows machine or VM.</li>
+    <li><span class="box"></span><span class="n">042</span>Connect the USB-to-CAN adapter, power up, confirm the PMU appears.</li>
+    <li><span class="box"></span><span class="n">043</span>Create the project file. Name every channel to match the Rev A schedule exactly.</li>
+    <li><span class="box"></span><span class="n">044</span>Wire a headlight bulb to one output. Verify switching and the live current readout.</li>
+    <li><span class="box"></span><span class="n">045</span>Deliberately short that output. Verify the soft fuse trips. Test retry counts and reset behavior.</li>
+    <li><span class="box"></span><span class="n">046</span>Configure PWM on an LED strip. Tune the theater fade curve until you like it.</li>
+    <li><span class="box"></span><span class="n">047</span>Build one physical resistor ladder on a scrap multi-position switch.</li>
+    <li><span class="box"></span><span class="n">048</span>Read the ADC value at each position. Compare to your calculation. Adjust resistors.</li>
+    <li><span class="box"></span><span class="n">049</span>Write the decode table into the config as a lookup.</li>
+    <li><span class="box"></span><span class="n">050</span>Repeat 047–049 for all six ladder types.</li>
+    <li><span class="box"></span><span class="n">051</span>Configure turn signal flash logic: frequency, hazard override, bulb-out detection from current draw.</li>
+    <li><span class="box"></span><span class="n">052</span>Configure wiper logic: LOW, HIGH, intermittent timer, park sensing, O8 braking.</li>
+    <li><span class="box"></span><span class="n">053</span>Configure headlight logic from the ladder — PARK feeds O6 only, HEAD adds O2.</li>
+    <li><span class="box"></span><span class="n">054</span>Configure the keep-alive latch: pin 7 diode-OR sources, O22 self-hold, shutdown delay.</li>
+    <li><span class="box"></span><span class="n">055</span>Configure crank logic and interlocks on O21.</li>
+    <li><span class="box"></span><span class="n">056</span>Configure fuel pump prime and run behavior.</li>
+    <li><span class="box"></span><span class="n">057</span>Configure the CAN keypad: defog, interior override, spare keys, backlight.</li>
+    <li><span class="box"></span><span class="n">058</span>Set undervoltage and overvoltage warnings appropriate to the lithium's BMS window.</li>
+    <li><span class="box"></span><span class="n">059</span>Configure the built-in inertia switch.</li>
+    <li><span class="box"></span><span class="n">060</span>Enable data logging on the channels you care about.</li>
+    <li><span class="box"></span><span class="n">061</span>Save the config. Back it up. Start a version log — RevA-01, -02, and so on.</li>
+    <li><span class="box"></span><span class="n">062</span>Full bench dry-run: exercise every configured function with real switches and real loads.</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<section class="phase">
+  <div class="ph-h"><span class="tag">PHASE 3</span><h2>Power backbone</h2><span class="hrs">18–28 hrs · shop</span></div>
+  <p class="ph-note">Factory harness untouched. The car is better at the end of this weekend than it was at the start.</p>
+  <ol class="ck">
+    <li><span class="box"></span><span class="n">063</span>Disconnect the factory battery.</li>
+    <li><span class="box"></span><span class="n">064</span>Fabricate and mount the battery box in the rear compartment.</li>
+    <li><span class="box"></span><span class="n">065</span>Mount the Ionic S9H. Secure it against real g-loading in every axis, not just downward.</li>
+    <li><span class="box"></span><span class="n">066</span>Mount the master disconnect within reach.</li>
+    <li><span class="box"></span><span class="n">067</span>Mount the Class-T holder as close to the battery positive as physically possible.</li>
+    <li><span class="box"></span><span class="n">068</span>Cut and hydraulically crimp the battery cables. Adhesive shrink and a boot on every lug.</li>
+    <li><span class="box"></span><span class="n">069</span>Install the rear ground stud: grind to bare metal, star washer, torque to spec, seal with cavity wax.</li>
+    <li><span class="box"></span><span class="n">070</span>Run the 4 AWG main feed forward through the tunnel. Grommet at every pass-through, abrasion loom the full length.</li>
+    <li><span class="box"></span><span class="n">071</span>Terminate the forward end on a temporary insulated junction post.</li>
+    <li><span class="box"></span><span class="n">072</span>Install the front star ground node.</li>
+    <li><span class="box"></span><span class="n">073</span>Reconnect the factory harness to the new feed and ground.</li>
+    <li><span class="box"></span><span class="n">074</span>Start the car. Verify charging voltage at the battery.</li>
+    <li><span class="box"></span><span class="n">075</span>Voltage-drop test while cranking — battery post to starter, and the ground return. Record both.</li>
+    <li><span class="box"></span><span class="n">076</span>Drive it. Should be identical to before, on an entirely new backbone.</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<section class="phase">
+  <div class="ph-h"><span class="tag">PHASE 4</span><h2>Panel build</h2><span class="hrs">45–70 hrs · bench</span></div>
+  <ol class="ck">
+    <li><span class="box"></span><span class="n">077</span>Cut and fold the aluminum backer plate per the 1:1 drawing.</li>
+    <li><span class="box"></span><span class="n">078</span>Deburr, drill, and finish the plate.</li>
+    <li><span class="box"></span><span class="n">079</span>Mount the PMU, standing it off the plate for airflow.</li>
+    <li><span class="box"></span><span class="n">080</span>Mount 16 relay sockets. Populate 10.<span class="why">The six empty sockets are the future-proofing. They cost almost nothing now.</span></li>
+    <li><span class="box"></span><span class="n">081</span>Mount the fuse block.</li>
+    <li><span class="box"></span><span class="n">082</span>Mount the always-hot busbar and the ground bus.</li>
+    <li><span class="box"></span><span class="n">083</span>Mount the bulkhead connector brackets for C1 through C7.</li>
+    <li><span class="box"></span><span class="n">084</span>Run the stud feed from busbar to PMU stud. Torque to spec.</li>
+    <li><span class="box"></span><span class="n">085</span>Run pin 25 ground to the ground bus — the shortest, heaviest path on the plate.<span class="why">Every inductive load's flyback current comes back through this one wire.</span></li>
+    <li><span class="box"></span><span class="n">086</span>Wire the relay bank per the H-bridge schematics. Label every relay position on the plate itself.</li>
+    <li><span class="box"></span><span class="n">087</span>Build the diode-OR wake network on a terminal strip. Label every input to it.</li>
+    <li><span class="box"></span><span class="n">088</span>Build the constant bus — head unit keep-alive and diag port, each individually fused.</li>
+    <li><span class="box"></span><span class="n">089</span><b>Terminate the real 39-pin housing. All 39 cavities.</b> Work in cavity order, checking off each on the printed schedule as it seats.</li>
+    <li><span class="box"></span><span class="n">090</span>Insert the wedge lock. Verify no contact backs out under a light pull.</li>
+    <li><span class="box"></span><span class="n">091</span>Route each wire from the 39-pin to its bulkhead connector and terminate.</li>
+    <li><span class="box"></span><span class="n">092</span>Terminate reserved wires into their bulkhead cavities and cap the far ends.</li>
+    <li><span class="box"></span><span class="n">093</span>Fit sealing plugs only where there is genuinely no wire. There should be almost none.</li>
+    <li><span class="box"></span><span class="n">094</span>Continuity-test every path: 39-pin cavity to bulkhead cavity. Check off all 39, plus every relay leg.</li>
+    <li><span class="box"></span><span class="n">095</span>High-resistance check between adjacent power cavities.</li>
+    <li><span class="box"></span><span class="n">096</span>Label every wire at both ends and every bulkhead connector.</li>
+    <li><span class="box"></span><span class="n">097</span>Bench-power the panel from a current-limited supply.</li>
+    <li><span class="box"></span><span class="n">098</span>Verify each output appears at the correct bulkhead pin with a test lamp.</li>
+    <li><span class="box"></span><span class="n">099</span>Verify each input reads correctly by shorting its bulkhead pin to ground.</li>
+    <li><span class="box"></span><span class="n">100</span>Photograph the finished panel from every angle for the build log.</li>
+  </ol>
+  <div class="gate"><b>Gate</b>The 39-pin does not get opened again after step 090. If step 094 finds a fault, fix it now — this is your last cheap opportunity.</div>
+</section>
+
+<!-- ============================================================ -->
+<section class="phase">
+  <div class="ph-h"><span class="tag">PHASE 5</span><h2>Harness segments</h2><span class="hrs">90–150 hrs · bench</span></div>
+  <p class="ph-note">One segment at a time, in order: C3 → C2 → C4 → C1 → C5 → C6 → C7.</p>
+  <ol class="ck">
+    <li><span class="box"></span><span class="n">101</span>Lay the segment's route out full-scale on the board using your measured lengths.</li>
+    <li><span class="box"></span><span class="n">102</span>Cut every wire to length per the cut list, plus service loop.</li>
+    <li><span class="box"></span><span class="n">103</span>Strip, crimp, and seat contacts in the mating bulkhead housing.</li>
+    <li><span class="box"></span><span class="n">104</span>Fit the wedge lock. Pull-test every contact.</li>
+    <li><span class="box"></span><span class="n">105</span>Terminate the device ends — bulb sockets, motors, switches, senders.</li>
+    <li><span class="box"></span><span class="n">106</span>Continuity-test every wire end to end.</li>
+    <li><span class="box"></span><span class="n">107</span>Tug-test every crimp.</li>
+    <li><span class="box"></span><span class="n">108</span>Label both ends of every wire, and the segment itself.</li>
+    <li><span class="box"></span><span class="n">109</span>Bundle with Tesa tape or loom, branching at the right points. <b>Do not final-wrap.</b></li>
+    <li><span class="box"></span><span class="n">110</span>Bag and tag the finished segment. Return to 101 for the next one.</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<section class="phase">
+  <div class="ph-h"><span class="tag">PHASE 6</span><h2>Install &amp; migrate</h2><span class="hrs">55–90 hrs · shop</span></div>
+  <p class="ph-note">Hard rule: the car drives home at the end of every session. Never start a cutover you can't finish or reverse before dark.</p>
+  <ol class="ck">
+    <li><span class="box"></span><span class="n">111</span>Mount the panel in the dash. Verify the 39-pin lever and all seven bulkheads are reachable in place.</li>
+    <li><span class="box"></span><span class="n">112</span>Connect the main feed and panel ground. Connect no bulkhead yet.</li>
+    <li><span class="box"></span><span class="n">113</span>Power up in the car with <b>all outputs disabled</b>. Confirm CAN comms from the diag port.</li>
+    <li><span class="box"></span><span class="n">114</span>Install segment C3. Flip every switch and verify the entire input layer reads correctly — still zero outputs enabled.<span class="why">You can validate every input in the car before a single load is connected. Use that.</span></li>
+    <li><span class="box"></span><span class="n">115</span>Install the remaining segments physically — routed, secured, grommeted — but leave every load on the factory harness.</li>
+    <li><span class="box"></span><span class="n">116</span>Begin migration in this order: interior and hatch lamps → lighter and USB → horn → wipers and washer → tail/park/marker/plate → brake → turn L and R → reverse → defog → headlights → pop-ups → windows → blower → fuel pump → ignition → start.</li>
+    <li><span class="box"></span><span class="n">117</span>For each circuit: unplug the load from the factory harness at the factory connector.</li>
+    <li><span class="box"></span><span class="n">118</span>Tape the factory end back and label it MIGRATED with the date.</li>
+    <li><span class="box"></span><span class="n">119</span>Connect the load to the new harness.</li>
+    <li><span class="box"></span><span class="n">120</span>Enable that one output with the current limit set just above the value from step 007.</li>
+    <li><span class="box"></span><span class="n">121</span>Operate the load. Read live current in the client. <b>Set the soft fuse from the measured value</b>, not the estimate.</li>
+    <li><span class="box"></span><span class="n">122</span>Voltage-drop test at the device under load. Under 0.5 V.</li>
+    <li><span class="box"></span><span class="n">123</span>Log it: migrated / verified / measured A / soft fuse set / V-drop.</li>
+    <li><span class="box"></span><span class="n">124</span>Before you stop for the day, confirm the car starts and drives. Every day.</li>
+    <li><span class="box"></span><span class="n">125</span>After ignition and start migrate, do a full function check of every circuit in one pass.</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<section class="phase">
+  <div class="ph-h"><span class="tag">PHASE 7</span><h2>Factory harness removal</h2><span class="hrs">8–14 hrs · shop</span></div>
+  <ol class="ck">
+    <li><span class="box"></span><span class="n">126</span>Confirm every circuit on the migration sheet is checked off.</li>
+    <li><span class="box"></span><span class="n">127</span>Drive for a week with the factory harness disconnected but still physically in the car.</li>
+    <li><span class="box"></span><span class="n">128</span>Pull the factory harness out <b>intact</b>. Do not cut it.</li>
+    <li><span class="box"></span><span class="n">129</span>Board it in the shop as a reference. Keep it until after shakedown is complete.</li>
+  </ol>
+</section>
+
+<!-- ============================================================ -->
+<section class="phase">
+  <div class="ph-h"><span class="tag">PHASE 8</span><h2>Shakedown</h2><span class="hrs">25–45 hrs · road</span></div>
+  <ol class="ck">
+    <li><span class="box"></span><span class="n">130</span>Cold start test. Watch the Ionic heater behavior and log battery voltage through the crank.</li>
+    <li><span class="box"></span><span class="n">131</span>Night drive: headlights, high beams, pop-ups, wink, every lighting circuit.</li>
+    <li><span class="box"></span><span class="n">132</span>Wet drive: wipers in all modes, washer, defog.</li>
+    <li><span class="box"></span><span class="n">133</span>Long drive with logging on. Review the log for current spikes, voltage sag, and any soft fuse sitting near a trip.</li>
+    <li><span class="box"></span><span class="n">134</span>Raise any soft fuse that sits too close to real draw. Lower any that's needlessly generous.</li>
+    <li><span class="box"></span><span class="n">135</span>Re-torque every stud and lug after heat cycling.</li>
+    <li><span class="box"></span><span class="n">136</span>Re-check voltage drop on the main feed and ground.</li>
+    <li><span class="box"></span><span class="n">137</span><b>Now</b> do the final loom wrap, tie-down, and grommet sealing.</li>
+    <li><span class="box"></span><span class="n">138</span>Back up the final config, print it, file it with the migration sheet.</li>
+    <li><span class="box"></span><span class="n">139</span>Put a spare set of Deutsch contacts, a wedge tool, and a printed pinout in the car.</li>
+  </ol>
+</section>
+
+<footer>RX-7 FB · PMU BUILD CHECKLIST · REV A · companion to the Rev A pin plan</footer>
+
+</div>
+</body>
+</html>
