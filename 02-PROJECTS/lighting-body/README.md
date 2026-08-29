@@ -90,3 +90,61 @@ re-measured. The second-pass table is already waiting in
 cutoff, and no care in fabrication fixes that — the optic is the problem. Source
 a DOT-compliant sealed unit. Tail lights are a reasonable custom project;
 headlamps are not.
+
+---
+
+## LED bulb conversion — the full list
+
+Moved here from the electrical project 2026-08 (D-123). **Every one of these
+stays stock incandescent until the electrical rebuild is finished.**
+
+| Circuit | Now | Becoming |
+|---|---|---|
+| Tail / park / marker / plate | 8 W, 3.8 W, 6 W incandescent ×8 | LED |
+| Brake | 27/8 W dual filament ×2 | **Custom strip** (D-107) |
+| Turn front | 27 W ×2 | LED |
+| Turn rear | 27 W ×2 | **Custom strip** |
+| Turn indicators | 3.4 W ×2 | LED |
+| Reverse | 27 W ×2 | **Custom strip, white section** |
+| Interior + spot | 5 W | LED |
+| Glove box | 3.4 W | LED |
+| Luggage compartment | ~5 W | LED |
+| Illumination bus | 3.4 / 1.4 W ×7 | LED |
+| **Headlight LOW / HIGH** | `[V-066]` confirm what's fitted | **DOT rectangular LED unit** (L-002) |
+
+**Bulb selection is unconstrained.** Bulb-out detection was dropped (D-047), so
+draw no longer matters for function. Buy on light output and colour.
+
+### Expected current drop
+
+| Circuit | Incandescent | LED |
+|---|---|---|
+| Tail bus, 8 lamps | ~4.4 A | ~3.0 A |
+| Brake | ~3.9 A | ~0.6 A |
+| Turn, per side | ~4.2 A | ~0.65 A |
+| Reverse | ~3.9 A | ~0.6 A |
+| Interior + illumination | ~2.5 A | ~1.0 A |
+
+**Roughly 5–7× lower on most circuits**, which is exactly why L-003 exists — every
+soft fuse set against filament has to be re-measured.
+
+### What does NOT change
+
+**No wiring, no connectors, no cavity assignments, no channel allocation.** Wire
+gauge is set by voltage drop and mechanical robustness, not current (D-016). The
+electrical project hands this one a complete, working lamp harness.
+
+---
+
+## Body scope — to be developed
+
+| Item | Note |
+|---|---|
+| Rust survey | `[K-007]` extent unknown, never assessed |
+| Paint | Sunbeam Silver |
+| Trim and seals | |
+| Tail light apertures and bezels | Where lighting and body meet |
+| Pop-up bucket adaptation | If the headlamp unit needs an adapter plate |
+
+**The lighting fabrication and the body work touch the same panels.** Doing them
+in one pass is the reason this is one project rather than two.

@@ -74,7 +74,6 @@ nothing. Dry side, reachable, no ingress rating needed.
 | V-053 | Battery terminal type — SAE or 3/8 threaded                           | Look at it                       |
 | V-057 | TCAN1042/1051 exact part suffix                                       | TI datasheet                     |
 | V-058 | Display nit rating — 800–1000 min                                     | Vendor spec                      |
-| V-059 | Teensy availability                                                   | Re-check before final boards     |
 
 ### Medium — needs the car
 

@@ -188,8 +188,14 @@ static inline uint8_t can_counter_advanced(uint8_t prev, uint8_t now)
 /* Channel index -> O-number, purely for display. Index 0 is O1. */
 #define CH_INDEX_TO_OUTPUT(i)  ((i) + 1)
 
-/* Temperature encode/decode, -40 offset */
-#define TEMP_ENCODE(c)   ((int8_t)((c) + 40) - 40)
-#define TEMP_DECODE(b)   ((int)(b))
+/* Temperature: stored as plain signed celsius in an int8_t.
+ * Range -128..127 C covers every automotive temperature with room to spare,
+ * so no offset is used. An offset would only add a class of bug. */
+#define TEMP_ENCODE(c)   ((int8_t)(c))
+#define TEMP_DECODE(b)   ((int)(int8_t)(b))
+
+/* Sentinel for "no valid reading". Receivers must blank the field, not
+ * display this value. */
+#define TEMP_INVALID     ((int8_t)-128)
 
 #endif /* CAN_MAP_H */

@@ -51,16 +51,34 @@ neither needs a single thing that's in the post.**
 
 | Phase | State |
 |---|---|
-| Gate 0 · bench kit | **Bought, in transit** |
-| 0 · Documentation & measurement | **Tape-measure half of it is ready now** |
+| Gate 0 · bench kit | **Bought.** Teensys in hand, transceivers + PMU imminent |
+| 0 · Documentation & measurement | **Tape-measure half ready now.** Meter session ~10–12 hrs, not half a day |
 | 1 · Order & practice | Wire order held on T-008 |
 | 2A · PMU configuration | Ready the day the PMU lands |
-| 2B · Firmware | Ready the day the Teensys land. Toolchain can go on now |
+| **2B · Firmware** | **STARTED. Stages 1–3 complete** — see below |
 | 3 · Power backbone | Parts not ordered. Winter break |
 | 4 · Panel build | Blocked on Q-014 / T-007 |
 | 5 · Harness legs | Blocked on T-008 |
 | 6–8 · Install, migrate, shakedown | Summer 2027 |
 | 9 · Modules | Late 2027 → 2028 |
+
+## Firmware progress — `03-MODULES/BENCH-BRINGUP.md`
+
+| Stage | State |
+|---|---|
+| 1 · Toolchain, blink | ✅ Board 1 verified. **Flash + label boards 2 and 3** |
+| 2 · `can_map.h` validation | ✅ **All checks passed.** Found and fixed a real bug in the temperature macros |
+| 3 · CAN loopback, 500 kbps | ✅ **All checks passed.** 5 frames, byte-identical payloads, dispatch and timeout working |
+| 4 · Ladder decode | Sketch written. Needs a pot or a jumper wire |
+| 5 · Tach simulator | Sketch written. Needs one jumper wire |
+| 6 · SD config | Needs a microSD card |
+| 7 · Datalogging | After 6 |
+
+**The entire CAN software stack is proven.** Transceivers replace loopback with a
+wire — none of the existing code gets rewritten.
+
+**Library decision: ACAN_T4, not FlexCAN_T4.** Only ACAN_T4 exposes loopback and
+self-reception cleanly.
 
 ## The three biggest blockers
 

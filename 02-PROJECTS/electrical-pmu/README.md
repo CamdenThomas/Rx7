@@ -48,14 +48,16 @@ Root holds only `STATUS.md` and this file.
 | File | Holds |
 |---|---|
 | `DCU-CLUSTER.md` | DCU and ICU scope, Teensy selection, display capability |
-| `CAN-MESSAGES.md` | The message map. Finalise before firmware |
+| `CAN-MESSAGES.md` | The message map, byte layouts, timeouts, bus load |
+| `can_map.h` | The shared header both Teensys include. **Moves to the firmware repo when one exists** |
 
 ### `04-SUBSYSTEMS/`
 | File | Holds |
 |---|---|
 | `BATTERY-INSTALL.md` | Ionic S9, cargo bin, power backbone |
-| `TAIL-LIGHTS.md` | Custom LED strip design, FMVSS area math |
-| `PARTS-CHANGES.md` | Every part being replaced, and with what |
+| `HEAD-UNIT.md` | Audio, maps, the double-DIN install |
+| `PARTS-CHANGES.md` | **Owns:** what physically changes in this project |
+| `DEFERRED-FEATURES.md` | **Owns:** what's pre-wired and waiting on budget |
 
 ### `05-BUILD/`
 | File | Holds |

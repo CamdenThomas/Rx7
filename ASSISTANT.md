@@ -386,3 +386,203 @@ Section 0 says to read "SPEC.md" and "OPEN.md" at session start. Those are now
 `04-SUBSYSTEMS/` now holds self-contained designs — battery, tail lights, parts
 changes. **Future one-off designs go here**, not in the root: radar subsystem,
 switch panel, cluster bezel, sill node fabrication.
+
+---
+
+# 9 · SECOND AUDIT — 2026-08
+
+From reading `PARTS-CHANGES.md` and `INFOTAINMENT.md` end to end. The findings
+generalise to most of the project.
+
+## THE ROOT PROBLEM — append-only accretion
+
+**I have been appending rather than revising, because appending is cheap and
+safe. It has produced documents where the wrong answer is at the top and the
+right answer is at the bottom.**
+
+Two proven examples:
+
+**`PARTS-CHANGES.md`** — 300+ lines. Opens with "§1 · Lighting — all of it
+changes" and a full LED conversion table. A reader must scroll through **four
+UPDATE sections** to discover lighting moved to another project entirely. §1 is
+now actively false. It also still says "Until `[Q-044]` is answered, the design
+assumes option A" — Q-044 was answered.
+
+**`INFOTAINMENT.md`** — 202 lines before the answer. §1 recommends a hidden
+Bluetooth module. §2 recommends turn-by-turn text. §3 and §8 evaluate three Pi
+paths. §9 says all of it is dead and the answer is a head unit. **Someone reading
+top-down builds an entirely wrong model before reaching the conclusion.**
+
+**The fix, and it is a standing rule from now on:**
+
+> When a decision supersedes content, **revise the section in place** and move
+> the superseded reasoning to a clearly-marked appendix at the bottom, or to
+> `99-ARCHIVE`. Do not append a correction and leave the error above it.
+>
+> A document should be readable top-to-bottom and be correct the whole way down.
+
+- [ ] **I-32 · Rewrite `PARTS-CHANGES.md` from scratch.** Current state only.
+      Lighting gone, blower dead not failing, windows manual, Q-044 answered.
+      Move the superseded reasoning to an appendix
+- [ ] **I-33 · Rewrite `INFOTAINMENT.md` from scratch.** Head unit decision at
+      the top. §1–§8 become "Appendix: options considered", or archive them
+- [ ] **I-34 · Audit every file for the same pattern.** Any file with an "UPDATE"
+      heading that contradicts content above it. Likely: `LOADS.md`,
+      `CONNECTORS.md`, `sill-node.md`, `BOM.md`, `BUY-LIST.md`, `DCU-CLUSTER.md`
+
+## SCOPE LEAKAGE — wiring project holding non-wiring content
+
+- [ ] **I-35 · `PARTS-CHANGES.md` §1 is entirely lighting.** LED conversion
+      table, headlight strip options, Q-044 discussion. **Belongs in
+      `lighting-body/`.** The electrical project's lighting scope is one line:
+      "stock incandescent bulbs, unchanged"
+- [ ] **I-36 · `INFOTAINMENT.md` is not a module.** It sits in `03-MODULES/`
+      alongside the DCU and ICU, but a head unit is an accessory, not a CAN node.
+      **Move to `04-SUBSYSTEMS/`.** `03-MODULES/` should hold only DCU, ICU, CAN
+- [ ] **I-37 · Dead-path content is 90% of `INFOTAINMENT.md`.** Bluetooth
+      modules, ANCS turn-by-turn, three Pi architectures, offline OSM data, GPS
+      modules, graceful shutdown circuits. **None of it is in the project.**
+      Archive it — it's good reasoning, but it isn't this project's content
+- [ ] **I-38 · `DEFERRED-FEATURES.md` and `PARTS-CHANGES.md` overlap.** Heated
+      seats, cooled seats, radar and the LS reservation appear in both. Pick one
+      owner. **Suggest: PARTS-CHANGES owns *what changes*, DEFERRED-FEATURES owns
+      *what's pre-wired and waiting*.** They are different questions
+
+## FACTUAL ERRORS FOUND
+
+- [ ] **I-39 · `PARTS-CHANGES.md` §6 lists "Window motors ×2 — Sill H-bridges"
+      under "Carrying forward unchanged."** The windows are manual (D-131).
+      There are no window motors on this car
+- [ ] **I-40 · `PARTS-CHANGES.md` §2 says the blower is "Original, failing."**
+      It is confirmed dead (K-023). Corrected only in an UPDATE 200 lines below
+- [ ] **I-41 · `PARTS-CHANGES.md` links `TAIL-LIGHTS.md` as a sibling.** That
+      file moved to `lighting-body/`. Broken reference
+- [ ] **I-42 · `PARTS-CHANGES.md` §1 says headlights are "LED enclosed housing."**
+      Cross-check against `V-066` — the car may have 7-inch round sealed beams.
+      Two files disagree about what is currently fitted
+
+## REPRESENTATION
+
+- [ ] **I-43 · No consistent file header.** Some files have `*Rev 2026-08*`, most
+      don't. **Standard header for every file:** title, one-line purpose,
+      `*Rev date · owner-of-this-fact*`
+- [ ] **I-44 · Superseded content is not marked inline.** A reader in the middle
+      of a document cannot tell whether what they're reading is current. **Mark
+      superseded sections with a banner at the section head**, not only at the
+      file foot
+- [ ] **I-45 · `INFOTAINMENT.md` §1–§8 have no supersession markers at all.**
+      Only §9 reveals it. Highest-risk instance of I-44
+- [ ] **I-46 · Long files have no table of contents.** `PARTS-CHANGES.md`,
+      `INFOTAINMENT.md`, `DCU-CLUSTER.md`, `CHECKLIST.md`, `METER-SESSION.md` all
+      exceed 200 lines
+- [ ] **I-47 · Question IDs referenced in prose are often already closed.**
+      Q-044, Q-046, Q-047, Q-050, Q-051 all appear as open in file bodies. Sweep
+      for `[Q-` and `[V-` and check each against `OPEN.md`
+
+## STRUCTURAL
+
+- [ ] **I-48 · `05-BUILD/` mixes procedures with working sheets.** `SAFETY.md`
+      and `METER-SESSION.md` are read-once procedures; `MIGRATION-LOG.md`,
+      `CUT-LIST.md` and `LOGS.md` are filled-in-during-work sheets. Consider
+      `05-BUILD/` and `06-SHEETS/`
+- [ ] **I-49 · `01-DESIGN/` now holds seven files** including `PMU-CONFIG.md`
+      and `PANEL-LAYOUT.md`, which are arguably build documents. Re-check the
+      boundary
+- [ ] **I-50 · `can_map.h` is source code in a documentation tree.** Fine for
+      now, but when firmware starts it wants a repo. Note where it will live
+- [ ] **I-51 · No `lighting-body/` decision log.** It inherited D-107, D-110,
+      D-111 from the electrical project with no local record
+
+## THE ONE RULE THAT PREVENTS MOST OF THIS
+
+**Before appending to any file, read it first.** If the append contradicts
+anything above it, revise instead of appending. Every finding in I-32 through
+I-42 exists because that step was skipped.
+
+---
+
+# 10 · AUDIT CLOSEOUT — 2026-08
+
+**I-01 through I-51 are complete.** Sections 8 and 9 above are the working
+records; this is the result. Future audits append a new numbered section rather
+than editing these.
+
+## Standing rules that came out of it
+
+These are permanent. They exist because each was violated at least once.
+
+**R1 · Read a file before appending to it.** If the append contradicts anything
+above it, **revise instead of appending.** Nearly every finding in the second
+audit existed because this step was skipped.
+
+**R2 · A document must be correct top to bottom.** When a decision supersedes
+content, revise the section in place and move superseded reasoning to a marked
+appendix or `99-ARCHIVE`. Never leave an error above a correction.
+
+**R3 · One owner per fact.** Declared in each file's header line. If two files
+disagree, the owner wins.
+
+**R4 · Scope belongs to the project that owns the work.** Not the project where
+it was first discussed.
+
+**R5 · Every file gets a header:** title, one-line purpose, `*Rev date · owns:
+what*`.
+
+## What was fixed
+
+| Group | Items | Result |
+|---|---|---|
+| **Contradictions** | I-01, I-03, I-07 | Fuel pump conflict, reference index, reorder rule |
+| **Stale files** | I-02, I-04, I-05, I-06 | `dash.md` rewritten, ROADMAP archived, leg files cleaned, `legs/README` rebuilt |
+| **Duplication** | I-08 – I-11 | Owners assigned: LOADS owns current, PIN-MAP owns cavities, MIGRATION-LOG owns migration order, CHECKLIST owns sequence |
+| **Missing files** | I-12 – I-22 | STATUS · GLOSSARY · SAFETY · CAN-MESSAGES · MIGRATION-LOG · CUT-LIST · LOGS created |
+| **Polish** | I-23 – I-28 | Date stamps, factory-file banner, vehicle.md, service history, routing rule, handover path |
+| **Reorganisation** | I-29 – I-31 | Numbered folders, session-opening paths, subsystem pattern |
+| **Accretion** | **I-32 – I-34** | `PARTS-CHANGES.md` and `INFOTAINMENT.md` rewritten clean |
+| **Scope leakage** | **I-35 – I-38** | Lighting out of PARTS-CHANGES · INFOTAINMENT → `04-SUBSYSTEMS/HEAD-UNIT.md` · dead paths archived · DEFERRED-FEATURES vs PARTS-CHANGES ownership declared |
+| **Factual errors** | **I-39 – I-42** | Window motors removed, blower marked DEAD, broken link fixed, headlamp claim flagged to `V-066` |
+| **Representation** | **I-43 – I-47** | Headers, supersession banners, contents blocks, closed-question sweep |
+| **Structure** | **I-48 – I-51** | Boundaries reviewed, `can_map.h` noted, `lighting-body/DECISIONS.md` created |
+
+## Structural decisions made during closeout
+
+**I-48 · `05-BUILD/` stays one folder.** Splitting procedures from working sheets
+would add a folder to save a scroll. Both are shop documents used on the same
+days.
+
+**I-49 · `PMU-CONFIG.md` and `PANEL-LAYOUT.md` stay in `01-DESIGN/`.** Both are
+*specifications* of what to build, not procedures for building. The line is
+"describes the thing" versus "tells you what to do next."
+
+**I-50 · `can_map.h` stays in `03-MODULES/` until firmware starts.** When there
+is a repo it moves there and this copy becomes a pointer. Noted so it isn't
+duplicated into two places that drift.
+
+**I-51 · `lighting-body/DECISIONS.md` created.** Inherited D-107, D-110 and D-111
+keep their electrical-project IDs so cross-references stay valid. Local decisions
+use `L-###`.
+
+## Files created this audit
+
+`04-SUBSYSTEMS/HEAD-UNIT.md` · `04-SUBSYSTEMS/DEFERRED-FEATURES.md` ·
+`../lighting-body/DECISIONS.md`
+
+## Files archived
+
+`2026-08_infotainment-options-considered.md` — the Bluetooth, ANCS and three Pi
+paths. Kept because the Pi minimap is genuinely buildable later if the offline
+aspect ever matters.
+
+## Carried forward — not closed
+
+| Item | Why |
+|---|---|
+| `V-066` | Round or rectangular sealed beams. **Two files disagreed about what's fitted** — now flagged rather than guessed |
+| `I-29` links | Relative paths inside documents still assume the pre-folder layout. Filenames are unique so nothing is ambiguous. Fixed on next touch of each file |
+| Remaining leg files | `front-chassis.md`, `rear-cabin.md`, `engine.md` still restate current figures owned by `LOADS.md`. Corrected on next touch |
+
+## Next audit
+
+Trigger it after the next major scope change, or when any file exceeds ~250 lines
+with more than one UPDATE section. **Those two conditions are what produced this
+one.**
