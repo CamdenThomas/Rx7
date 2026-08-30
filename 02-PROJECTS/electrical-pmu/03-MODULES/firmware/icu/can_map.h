@@ -126,8 +126,8 @@ typedef struct __attribute__((packed)) {
  * battery voltage degrade. See DECISIONS D-083. */
 typedef struct __attribute__((packed)) {
     uint16_t rpm;           /* 1 rpm                         */
-    int8_t   water_c;       /* degC, offset -40              */
-    int8_t   oil_temp_c;    /* degC, offset -40              */
+    int8_t   water_c;       /* degC, plain signed, no offset */
+    int8_t   oil_temp_c;    /* degC, plain signed, no offset */
     uint16_t oil_press_cbar;/* 0.01 bar                      */
     uint8_t  speed_kph;
     uint8_t  counter;
@@ -145,7 +145,7 @@ typedef struct __attribute__((packed)) {
     uint8_t mode;           /* climate_mode_t                */
     uint8_t blower;         /* 0..3                          */
     uint8_t target_c;
-    int8_t  cabin_c;        /* offset -40                    */
+    int8_t  cabin_c;        /* degC, plain signed, no offset */
     uint8_t ac_request;
     uint8_t _rsv[2];
     uint8_t counter;

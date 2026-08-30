@@ -1,11 +1,19 @@
 # BENCH BRING-UP — firmware development sequence
 
-*Rev 2026-08 · owns: firmware development sequence before the car exists*
+*Rev 2026-08-30 · owns: the firmware bring-up stages and what each one proved.*
 
 **In hand:** 3 × Teensy 4.1 · 5 × SN65HVD230 transceivers · **PMU-24 DL** ·
-one micro-USB cable.
+one micro-USB cable (D-140). Still to buy: [`../05-BUILD/BENCH-KIT.md`](../05-BUILD/BENCH-KIT.md).
 
-**Stages 1–3 complete.** The entire CAN software stack is proven.
+**Stages 1–5 complete.** The entire CAN software stack is proven and the
+Stage 4–5 rigs have been absorbed into the ICU firmware, which the 415-assertion
+regression suite (`firmware/tests/`) now covers. Stages 6–7 wait on a microSD
+card.
+
+## Contents
+
+Before you plug anything in · Stages 1–7 · Now that the transceivers are here
+· The PMU is here · What is genuinely blocked · Next sessions
 
 ---
 
@@ -14,7 +22,7 @@ one micro-USB cable.
 > **The Teensy 4.1 is 3.3 V only. It is NOT 5 V tolerant.**
 > Putting 5 V on any GPIO kills the pin, often the chip. Every sensor input in
 > this project needs a divider or a clamp before it touches a Teensy — that's
-> why `DCU-CLUSTER.md` specifies dividers and clamp diodes on all six ICU
+> why [`DCU-CLUSTER.md`](DCU-CLUSTER.md) specifies dividers and clamp diodes on all six ICU
 > sensor inputs.
 >
 > On the bench, drive inputs from **3.3 V, never the 5 V rail.**
@@ -32,7 +40,7 @@ faults for an hour.
 - [x] Install **Teensyduino** — the add-on, not a separate IDE
 - [x] Select board: Teensy 4.1. Set CPU to 600 MHz
 - [x] Blink sketch to the onboard LED
-- [ ] **Repeat on all three boards.** Verify each one before it becomes precious
+- [ ] **Repeat on boards 2 and 3** (`T-048`). Verify each one before it becomes precious
 
 **Label the boards physically.** `ICU`, `DCU`, `SPARE`. You will otherwise flash
 the wrong one at 2 a.m.
@@ -120,13 +128,12 @@ once — the difference between an hour and an evening.
 
 Sketch: `firmware/ladder_decode_test/` — kept as an isolated test rig.
 
-Runs a full self-test with **no hardware at all** — synthetic ADC values against
-every ladder in `01-DESIGN/LADDERS.md`, including the fault bands.
+Ran a full self-test with **no hardware at all** — synthetic ADC values against
+every ladder in [`../01-DESIGN/LADDERS.md`](../01-DESIGN/LADDERS.md), including the fault bands.
 
-- [ ] Upload, Serial Monitor at 115200, confirm all decode checks pass
-- [ ] **With a 10 kΩ pot** between 3.3 V and GND, wiper to A0: sweep it and watch
-      every state appear, with FAULT between them
-- [ ] Without a pot: touch a jumper on A0 to 3.3 V and GND to prove the fault bands
+- [x] Upload, Serial Monitor at 115200, all decode checks pass
+- [x] Fault bands proven with a jumper on A0 to 3.3 V and GND
+- [ ] Optional: sweep a 10 kΩ pot between 3.3 V and GND to watch every state appear with FAULT between them
 
 **3.3 V only. The Teensy 4.1 is not 5 V tolerant.**
 
@@ -145,11 +152,11 @@ an RPM signal to a board with one jumper wire.**
 The same Teensy generates a simulated tach signal on **pin 3** and measures it on
 **pin 4**. Jumper the two.
 
-- [ ] Jumper pin 3 → pin 4
-- [ ] Upload, Serial Monitor at 115200
-- [ ] Sweep 500–8000 rpm, confirm measured tracks generated within 3%
-- [ ] Confirm step changes track
-- [ ] Confirm **zero rpm reads 0**, not the last value
+- [x] Jumper pin 3 → pin 4
+- [x] Upload, Serial Monitor at 115200
+- [x] Sweep 500–8000 rpm, measured tracks generated within 3 %
+- [x] Step changes track
+- [x] **Zero rpm reads 0**, not the last value
 
 **No second board needed.** A single Teensy does both halves — which also means
 it works with the one USB cable you have.
@@ -157,7 +164,7 @@ it works with the one USB cable you have.
 You end up with a validated RPM measurement path **and** a permanent signal
 source for display work later.
 
-> `[V-067]` The sketch assumes **2 pulses per eccentric shaft revolution** for a
+> `V-067` — the sketch assumes **2 pulses per eccentric shaft revolution** for a
 > 2-rotor fed from the leading coil. **Confirm against the real car.** Wrong, and
 > every RPM reading is scaled by a constant — the gauge looks plausible and is
 > simply wrong.
@@ -166,8 +173,9 @@ source for display work later.
 
 ## Stage 6 · SD card — config-as-data
 
-The 4.1 has a microSD slot, and `DCU-CLUSTER.md` §15 specifies layout and
-thresholds as a config file rather than code.
+The 4.1 has a microSD slot, and [`DCU-CLUSTER.md`](DCU-CLUSTER.md) §5 specifies layout and
+thresholds as a config file rather than code. This stage also unlocks
+persistence for `stats.h` (D-162, F-007).
 
 - [ ] `SD.begin(BUILTIN_SDCARD)`, list files
 - [ ] Write a JSON or INI config, read and parse it
@@ -201,7 +209,8 @@ which lets ICU display work proceed without touching the PMU at all.
 > **Solder the header pins onto the SN65HVD230 modules first.** They ship
 > unsoldered.
 >
-> **Blocked on one item:** 120 Ω resistors. See `../05-BUILD/BENCH-KIT.md`.
+> **Blocked on one item:** 120 Ω resistors — not in hand (D-140). See
+> [`../05-BUILD/BENCH-KIT.md`](../05-BUILD/BENCH-KIT.md).
 
 ## The PMU is here — first job
 
@@ -216,12 +225,10 @@ ECUMaster fixes that structure — messages 0x100–0x130 in `can_map.h` are
 | Blocked on | What |
 |---|---|
 | 120 Ω resistors | Real CAN between boards |
-| Display choice `[Q-037]` | Any rendering work |
-| microSD card | Stage 6, config-as-data |
-| The car | Every real sensor value, and `[V-067]` pulses per rev |
-
-**Stages 4 and 5 need nothing that isn't already on the desk** — Stage 4 runs its
-self-test with no hardware, Stage 5 needs one jumper wire.
+| Panel choice `Q-060` | The three `pushDirtyTiles()` calls — everything else renders in the simulator today |
+| microSD card | Stage 6, config-as-data, `stats.h` persistence |
+| `V-065` | Reconciling `can_map.h` 0x100–0x130 against the PMU's real export |
+| The car | Every real sensor value, and `V-067` pulses per rev |
 
 ---
 
@@ -229,15 +236,13 @@ self-test with no hardware, Stage 5 needs one jumper wire.
 
 | Session | Do | Needs | Hours |
 |---|---|---|---|
-| ~~1~~ | ~~Stages 1–3~~ | — | **DONE** |
-| **Next** | **Stages 4 and 5** — ladder decode, tach measurement | Nothing but a jumper wire | 2–3 |
-| Then | Real CAN between two boards | 120 Ω ×4, headers soldered | 2–3 |
+| ~~1–2~~ | ~~Stages 1–5~~ | — | **DONE** |
+| **Next** | Flash and label boards 2 and 3 (`T-048`) | Nothing | 0.5 |
+| Then | Real CAN between two boards, PMU simulator live | 120 Ω ×4, headers soldered | 2–3 |
 | Then | PMU first power-up, `V-065` CAN export | 5 A fuse, flying leads | 3–4 |
-| Then | Stages 6–7, SD config and logging | microSD card | 4–6 |
+| Then | Stages 6–7, SD config, logging, `stats.h` persistence | microSD card | 4–6 |
+| Parallel | DCU firmware skeleton (F-001), conditioning schematics (F-003/F-004) | Nothing | see [`../07-PROCESS/FORWARD-WORK.md`](../07-PROCESS/FORWARD-WORK.md) |
 
-**Stages 4 and 5 are unblocked right now.** Everything after them waits on about
-$10 of parts.
-
-By the end of those you have a validated CAN stack, working sensor decode, a
-tested RPM path and a config system — **with no car, no wiring and no PMU
-dependency.**
+Everything after `T-048` waits on about $10 of parts. By the end of those you
+have a validated CAN stack, a live two-node bus, a config system and
+persistent trip stats — **with no car, no wiring and no PMU dependency.**

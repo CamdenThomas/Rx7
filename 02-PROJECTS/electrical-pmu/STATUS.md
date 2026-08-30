@@ -1,222 +1,175 @@
 # STATUS — where the project is
 
-*Rev 2026-08 · owns: current state. Refresh at the end of every session.*
-*If you read one file after a long gap, read this one.*
+*Rev 2026-08-30 · owns: current state, one dashboard — refreshed at the end of every session. If you read one file after a long gap, read this one. Money figures are [`06-PROCUREMENT/BOM.md`](06-PROCUREMENT/BOM.md)'s; the phase estimates are [`05-BUILD/CHECKLIST.md`](05-BUILD/CHECKLIST.md)'s.*
+
+## Contents
+
+1. In one paragraph · 2. Scope boundary · 3. In hand · 4. Phase state ·
+5. Firmware · 6. Blockers and what to do now · 7. Money · 8. Open decisions ·
+9. Recently settled · 10. Effort and the critical path · 11. If you have been
+away a year
 
 ---
 
-## In one paragraph
+## 1 · In one paragraph
 
-The 1982 RX-7's electrical system is being replaced with an ECUMaster PMU-24 DL,
-a rear-mounted Ionic S9 lithium battery, four modular harness legs, and two
-Teensy CAN modules — a climate DCU and an instrument cluster ICU. **The car runs
-on its stock incandescent bulbs throughout**; LED conversion and custom lamps are
-a separate deferred project. The PMU, battery, Teensys and transceivers are in
-hand. **Firmware Stages 1–3 are complete and the CAN software stack is proven.**
-Nothing has been cut, crimped or installed on the car.
+The 1982 RX-7's electrical system is being replaced with an ECUMaster PMU-24
+DL, a rear-mounted Ionic S9 lithium battery, four modular harness legs plus a
+sill node, and two Teensy 4.1 CAN modules — a climate DCU and an instrument
+cluster ICU. **The car runs on its stock incandescent bulbs throughout**; LED
+conversion and custom lamps are [`../lighting-body/`](../lighting-body/README.md).
+The PMU, battery, three Teensys, five bench transceivers and the clamp meter
+are in hand; two spare housings are inbound. **Firmware Stages 1–5 are
+complete**, the renderer and a 415-assertion test suite exist, and the first
+three meter readings are recorded. Nothing has been cut, crimped or installed
+on the car. Five design packets (`Q-061`–`Q-065`) are waiting on Camden
+before the connector order can be placed.
 
-## Scope boundary
+## 2 · Scope boundary
 
 | This project | `lighting-body/` |
 |---|---|
 | Channels, gauge, connectors, soft fuses, flash logic | LED bulbs, custom tail lights, headlamp units |
-| Working lamps on **stock bulbs** | Any change to what's *in* the socket |
+| Working lamps on **stock bulbs** (D-119) | Any change to what's *in* the socket |
 | Inrush config for filament (D-120) | Second-pass fuse reset after the bulb change (D-122) |
 
-## Hardware in hand
+## 3 · In hand
 
-PMU-24 DL + connector + 39 terminals · Ionic S9 · 3 × Teensy 4.1 ·
-5 × SN65HVD230 · UT210E clamp meter · 1 micro-USB cable · 2 spare housings inbound
+PMU-24 DL with connector, 39 terminals and the USB-to-CAN adapter · Ionic S9 ·
+3 × Teensy 4.1 with pins · 5 × SN65HVD230 (bench only) · UT210E clamp meter ·
+1 micro-USB cable · **2 spare Sicma housings inbound** (`T-045` on arrival).
 
-**Connector confirmed:** 12 large `FCI`, 27 small `FCI 125`, **zero small
-spares**. Pin 1 top-left, opposite the purple lock — orientation closed (D-139).
+**Connector confirmed:** 16 large / 27 small terminals supplied, **zero small
+spares** (D-135 → `T-044`). Pin 1 top-left, opposite the purple lock (D-139).
+Not bought yet: resistors, breadboards, jumpers — [`05-BUILD/BENCH-KIT.md`](05-BUILD/BENCH-KIT.md).
 
-## Phase state
+## 4 · Phase state
 
-| Phase | State |
-|---|---|
-| 0 · Documentation & measurement | **Started.** First meter readings taken. Session is ~10–12 hrs total, not half a day |
-| 1 · Order & practice | Wire order held on T-008 |
-| 2A · PMU configuration | **Unblocked.** PMU in hand. Needs 120 Ω ×4 and a 5 A fuse |
-| **2B · Firmware** | **Stages 1–3 COMPLETE.** 4 and 5 written and unblocked |
-| 3 · Power backbone | Parts not ordered. Winter break |
-| 4 · Panel build | Blocked on Q-014 / T-007 |
-| 5 · Harness legs | Blocked on T-008 |
-| 6–8 · Install, migrate, shakedown | Summer 2027 |
-| 9 · Modules | Late 2027 → 2028 |
+| Phase | Hrs | State |
+|---|---|---|
+| 0 · Documentation & measurement | 55–85 | **Started.** Paperwork done; **3 of 22 outputs measured**; tape-measure session not started; 0.23 ruling pending |
+| 1 · Order & practice | 10–16 | Wire order held on `T-008` and 0.23 |
+| 2A · PMU configuration | 12–20 | **Unblocked, fully specified** in [`PMU-CONFIG.md`](01-DESIGN/PMU-CONFIG.md). Needs 120 Ω × 4 and a 5 A fuse |
+| **2B · Firmware** | 155–325 | **Stages 1–5 complete**, ~90–125 hrs done. Display driver waits on `Q-060`; DCU not started |
+| 3 · Power backbone | 18–28 | Parts not ordered. Winter break |
+| 4 · Panel build | 49–74 | Blocked on `Q-014` / `T-007` |
+| 5 · Harness legs | 98–162 | Blocked on `T-008` |
+| 6–8 · Install, migrate, shakedown | 118–199 | Summer 2027 |
+| 9 · Modules | — | Late 2027 → 2028 |
 
-## Firmware progress
+## 5 · Firmware
 
 | Stage | State |
 |---|---|
-| 1 · Toolchain, blink | ✅ Board 1. **Flash + label boards 2 and 3** |
-| 2 · `can_map.h` validation | ✅ All passed. Found and fixed a real bug in the temperature macros |
-| 3 · CAN loopback, 500 kbps | ✅ All passed. 5 frames, byte-identical payloads, dispatch and timeout working |
-| 4 · Ladder decode | Sketch written. **Unblocked** — self-tests with no hardware |
-| 5 · Tach measurement | Sketch written. **Unblocked** — one jumper, pin 3 → 4 |
-| 6 · SD config | Needs a microSD card |
+| 1 · Toolchain, blink | ✅ Board 1. Boards 2 and 3 still to flash and label (`T-048`) |
+| 2 · `can_map.h` validation | ✅ Found and fixed a real bug in the temperature macros |
+| 3 · CAN loopback, 500 kbps | ✅ 5 frames, byte-identical payloads, dispatch and timeout |
+| 4 · Ladder decode | ✅ Absorbed into `icu.ino` |
+| 5 · Tach measurement | ✅ Absorbed; `tach_simulator/` kept as the RPM source |
+| 6 · SD config | Needs a microSD card — `F-010` |
 | 7 · Datalogging | After 6 |
 
-**Library: ACAN_T4, not FlexCAN_T4.** Only ACAN_T4 exposes loopback cleanly.
+Version `ICU_FW_VERSION 0.3.0-dev`. Library **ACAN_T4**, not FlexCAN_T4.
+The desktop simulator runs the real renderer; `tests/run.bat` must be green
+before any flash.
 
-## The three biggest blockers
+## 6 · Blockers and what to do now
 
 | # | Blocker | Unblocks | Needs |
 |---|---|---|---|
-| 1 | **T-014** clamp every load | Every soft fuse. **Irreversible window** | Meter in hand — session part-done |
-| 2 | **T-007** dash envelope | Panel drawing, panel parts order, Phase 4 | **A tape measure** |
-| 3 | **T-008** harness routes | Cut list, the $1,000–1,700 wire order, Phase 5 | **String** |
+| 1 | **T-014** finish the meter session | Every soft fuse. **Irreversible window** | The meter, in hand — ~8 hrs left |
+| 2 | **T-007** dash envelope | Panel drawing, panel parts, Phase 4 | A tape measure |
+| 3 | **T-008** harness routes | Cut list lengths, the wire order, Phase 5 | String |
+| 4 | **Checklist 0.23** — rule on `Q-061`–`Q-065` | Four functions with no pin; the connector order | Reading [`OPEN.md`](07-PROCESS/OPEN.md) §1 and answering five packets |
 
-## Do now — needs nothing in the post
+**Needs nothing in the post:** the three above · `T-028` sill space · `T-018`
+photographs · `T-019` find the PO splices · `T-029` look at the battery posts
+· `T-049` write down the VIN · install the PMU client and read the `V-065`
+CAN export · `T-048` flash boards 2 and 3.
 
-| Task | Needs |
-|---|---|
-| **Firmware Stages 4 and 5** | A jumper wire |
-| **T-007** dash cavity envelope | Tape measure |
-| **T-008** harness routes, +15% | String |
-| **T-028** sill space | Tape measure |
-| Finish the meter session — parts 1–5 | Meter, in hand |
-| Flash and label boards 2 and 3 | Nothing |
-| Install the PMU client, read `V-065` CAN export | A download |
-| T-018 harness photographs · T-019 find PO splices | A phone, eyes |
+**Agent work available now** ([`07-PROCESS/FORWARD-WORK.md`](07-PROCESS/FORWARD-WORK.md)):
+`F-001` DCU skeleton · `H-001`/`H-002` carrier PCB schematics · `F-003`/`F-004`
+conditioning · `X-002` panel schematic sheet.
 
-## Money
+## 7 · Money
+
+From [`06-PROCUREMENT/BOM.md`](06-PROCUREMENT/BOM.md) §1:
 
 | | |
 |---|---|
-| Committed | ~$3,005–3,405 |
-| Remaining | ~$3,400–6,100 |
-| Project total | ~$6,500–9,500 |
-| **Buy next** | Bench kit remainder, **~$110–165** — see `05-BUILD/BENCH-KIT.md` |
+| Committed | ~$2,950–3,350 |
+| Remaining | ~$3,450–6,200 |
+| Project total | ~$6,400–9,550 |
+| **Buy next** | Bench kit remainder ~$100–150, spare 1.5 mm terminals |
 | Then | Battery mount, Class-T, 2 AWG — ~$540–880, before Phase 3 |
-| **Hold** | Wire and connector order until T-008 |
+| **Hold** | Wire and connector order until `T-008` and 0.23 |
 
-## Open decisions
+## 8 · Open decisions
 
-| ID | Question |
-|---|---|
-| **Q-014** | Dash envelope — a measurement, not a decision. **Blocks Phase 4** |
-| Q-028 | CAN wake latency — not live until the MCU exists |
-| V-069 | Open-barrel crimper die size — confirm against a real terminal |
-| V-065 | PMU's own CAN export format — **gates all firmware** |
-| V-067 | Tach pulses per revolution — confirm against the car |
+| ID | Question | State |
+|---|---|---|
+| **Q-061** | F13 and where the solenoids get an output | packet ready |
+| **Q-062** | Conductors from the dash to the sill | packet ready |
+| **Q-063** | Inhibitor, wiper park, horn input, washer output — no PMU pin | packet ready |
+| **Q-064** | RPM-dependent PMU logic before the ICU exists | packet ready |
+| **Q-065** | Dimmer and passing on A15 | packet ready |
+| **Q-060** | Display panel — the next hardware decision | needs a panel search |
+| **Q-014** | Dash envelope — a measurement, not a decision | `T-007` |
+| Q-028 | CAN wake latency | not live |
+| Q-001 | VIN | `T-049` |
 
-**Only two questions remain open**, and one of them isn't live yet.
+Flagged verifies: `V-065` PMU CAN export (Checklist 2.5) · `V-067` tach pulses
+per rev · `V-069` crimper die size · `V-074` O8 braking vs park input ·
+`V-075` native shutdown delay. The full list is
+[`07-PROCESS/OPEN.md`](07-PROCESS/OPEN.md).
 
-## Recently settled
+## 9 · Recently settled
 
-D-134 PMU received, cavity layout confirmed · D-139 connector orientation closed ·
-D-141 bench mule dropped · D-144 no bench PSU · D-148 start relay on the inner
-fender · D-149 head unit criteria — physical buttons, green LEDs, wireless
-CarPlay, **full passthrough critical** · D-150 **cluster is one wide display**,
-which forces a framebuffer controller rather than plain SPI
+D-168 **SPI dirty-rectangle rendering** is the display interface (supersedes
+D-150's controller recommendation) · D-169 page button by the display ·
+D-170 fit PSRAM · D-171/D-172 L1-S and L3-S allocations as generated · D-148
+start relay on the inner fender · D-144/145 no bench PSU, a 5 A fuse instead ·
+D-141 bench mule dropped · D-140 what was actually bought · D-135 terminal
+count · D-131 the windows are manual.
 
-## Rule that governs the build
+**Housekeeping this session:** Audit 4 — 95 findings, 85 closed
+([`07-PROCESS/AUDITS.md`](07-PROCESS/AUDITS.md)). The pin data now lives in
+three CSVs and everything downstream is generated; `check.py` is clean.
 
-The car drives home at the end of every session. Never start a cutover you can't
-finish or reverse before dark.
+## 10 · Effort and the critical path
 
-## If you have been away a year
-
-`STATUS.md` → project `README.md` → `01-DESIGN/GLOSSARY.md` →
-`01-DESIGN/SPEC.md` → `05-BUILD/CHECKLIST.md`. About forty minutes.
-
----
-
-# PROGRESS ASSESSMENT — 2026-08
-
-## Effort by phase, and what is actually done
-
-| Phase | Est. hrs | Done | State |
-|---|---|---|---|
-| 0 · Documentation & measurement | 55–85 | ~10% | **Paperwork advanced, measurement not started** |
-| 1 · Order & practice | 10–16 | 0 | Held on T-008 |
-| 2A · PMU configuration | 25–40 | ~0 hrs entered, **but fully specified** | See below |
-| **2B · Firmware** | **155–325** | **~80–110 hrs** | **The bulk of what has been achieved** |
-| 3 · Power backbone | 18–28 | 0 | |
-| 4 · Panel build | 49–74 | 0 | Blocked on T-007 |
-| 5 · Harness legs | 98–162 | 0 | Blocked on T-008 |
-| 6 · Install & migrate | 75–125 | 0 | |
-| 7 · Factory harness out | 8–14 | 0 | |
-| 8 · Shakedown | 35–60 | 0 | |
-
-**Roughly 90–125 hours of 531–932 complete — about 12–18%.**
-
-## Where the time actually went
-
-Phase 2B is far further along than the schedule assumed:
-
-| Delivered | |
-|---|---|
-| Bring-up stages 1–5 | All passed |
-| `can_map.h` | Finalised and validated |
-| `cluster_core.h` | ~1000 lines. Framebuffer, dirty tiles, every widget, full layout |
-| `stats.h` | Trip and lifetime accumulators, CSV export, trip page |
-| `icu.ino` | Teensy host, tile push |
-| Desktop simulator | Runs the real firmware, not a mock |
-| Page framework | Drive, diagnostics, trip |
-| PMU simulator | Vehicle model, channel table, scripted drive cycle |
-| **Regression suite** | **415 assertions, 13 groups. Found 4 real bugs** |
-
-**The ICU display side is roughly 60–70% complete.** What remains in 2B: the
-display driver (3 calls, blocked on panel choice), the entire DCU, analog
-conditioning, carrier PCBs, and `V-065` reconciliation.
-
-## Phase 2A is specified but not entered
-
-`PMU-CONFIG.md` now holds every decode table, output expression, interlock and
-timer. **The thinking is done; only typing remains.** Realistically **12–20 hrs**
-rather than 25–40, and it needs nothing but the PMU on a desk.
-
----
-
-## The honest headline
-
-**We are not ahead of schedule. We are consuming the available work faster than
-expected.**
-
-Split the estimate by what it needs:
+**Roughly 90–125 hours of 531–932 complete — about 12–18 %.** Almost all of
+it is Phase 2B firmware, which was scheduled to run through late 2027 and is
+now well ahead.
 
 | | Hours | Done |
 |---|---|---|
-| Laptop work — 2A, 2B, paperwork | 180–365 | **~90–125** |
-| Physical work — measure, order, build, migrate | 333–544 | **0** |
+| Laptop work — 2A, 2B, paperwork | 180–365 | ~90–125 |
+| Physical work — measure, order, build, migrate | 333–544 | 0 |
 
-**Roughly 35% of this project can be done at a desk. About a third of that is
-finished. The other 65% has not started, and none of it can.**
-
-## The rate is about to drop
-
-Remaining laptop work: DCU firmware, carrier PCBs, wiring diagrams,
-troubleshooting guide, conditioning schematics. Call it **60–120 hours.**
-
-**After that, everything left needs measurements, parts, or the car.**
-
-## The critical path
-
-It is not firmware. Firmware was never on it. The path is:
+The rate is about to drop: remaining laptop work is the DCU, carrier PCBs,
+conditioning schematics, the panel sheet — 60–120 hours. After that everything
+needs measurements, parts, or the car. **The critical path was never
+firmware:**
 
 ```
-measure  →  order wire  →  build panel  →  build legs  →  migrate  →  shake down
+measure  →  rule on 0.23  →  order wire  →  build panel  →  build legs  →  migrate  →  shake down
 ```
 
-**Two tape-measure tasks gate all of it:**
+Two tape-measure tasks and one ruling gate 147–236 hours of downstream work
+and take perhaps two hours in daylight plus an evening's reading. July 2027 is
+still real, limited by weekends with the car, not by code.
 
-| | Blocks | Needs |
-|---|---|---|
-| **T-007** dash envelope | Panel drawing, panel order, Phase 4 (49–74 hrs) | Tape measure |
-| **T-008** harness routes | Cut list, the $1,000–1,700 wire order, Phase 5 (98–162 hrs) | String |
+**Rule that governs the build:** the car drives home at the end of every
+session. Never start a cutover you can't finish or reverse before dark.
 
-**Those two tasks gate 147–236 hours of downstream work** — more than a quarter
-of the project — and between them take perhaps two hours in daylight.
+## 11 · If you have been away a year
 
-**T-014**, the clamp session, is the third and the only irreversible one.
-
-## Is July 2027 still real
-
-**Yes, and the firmware lead helps** — Phase 2B was scheduled to run through late
-2027 and is now well ahead, which removes it as a late-stage risk.
-
-But the schedule was never limited by firmware. It is limited by **weekends with
-the car**, and that count has not changed. The next genuine milestone is not code:
-it is a tape measure and a ball of string.
+[`STATUS.md`](STATUS.md) → [`README.md`](README.md) →
+[`01-DESIGN/GLOSSARY.md`](01-DESIGN/GLOSSARY.md) →
+[`01-DESIGN/SPEC.md`](01-DESIGN/SPEC.md) →
+[`02-HARNESS/CAVITY-STATE.md`](02-HARNESS/CAVITY-STATE.md) →
+[`05-BUILD/CHECKLIST.md`](05-BUILD/CHECKLIST.md) →
+[`07-PROCESS/OPEN.md`](07-PROCESS/OPEN.md). About an hour. Then
+[`02-HARNESS/diagrams/architecture.svg`](02-HARNESS/diagrams/architecture.svg)
+for the picture.

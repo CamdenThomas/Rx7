@@ -1,7 +1,14 @@
 # Decision Log — Electrical / PMU
 
-Append-only. Never edit or delete an entry. To reverse, add a new decision and
-mark the old one `SUPERSEDED BY D-0xx`.
+*Rev 2026-08-30 · owns: every decision, D-001 → D-172, append-only. Never edit or delete an entry. To reverse one, add a new decision and put a `> SUPERSEDED BY D-xxx` line under the old one. The registry of every ID is `ID-REGISTRY.md`.*
+
+**Entry format:** `**D-nnn** — [closes Q/V/A/I-nnn, if any] **decision in bold.** Reasoning.`
+Entries are grouped by the round in which they were made; the index below is
+by topic. Later rounds are H2 sections in date order.
+
+## Contents
+
+Index by topic · Architecture · Channel allocation · Wiring rules · Build sequence · Update 2026-08 answers applied (D-065 →) · Round three (D-091 →) · Round four (D-109 →) · Cluster implementation (D-150 →) · Audit 4 (D-168 →)
 
 ## Index by topic
 
@@ -16,12 +23,10 @@ mark the old one `SUPERSEDED BY D-0xx`.
 | **Ladders & schematics** | D-053 no dead shorts · D-054 resistors at the switch · D-055 key ladder sums · D-056 Schottky wake diodes · D-072 horn wake diode |
 | **Build sequence** | D-023 parallel migration · D-024 migration order · D-025 measured soft fuses · D-081 modules join a finished car |
 | **Deletions** | D-038 retract switch · D-047 bulb-out dropped · D-050 chimes dropped · D-097 six subsystems gone · D-105 blinker fault not fixed |
-| **Housekeeping** | D-026 markdown · D-041 Rev B · D-042 archive · D-043 ID permanence · D-101–104 purchases |
-
----
-
-
-Format: `ID | decision | one-line reason`
+| **Housekeeping** | D-026 markdown · D-041 Rev B · D-042 archive · D-043 ID permanence · D-101–104 purchases (→ D-135, D-140) · D-123 lighting split · D-141 bench mule dropped |
+| **Measurement & config** | D-119 migrate on incandescent · D-120 inrush windows · D-122 re-set after LED · D-142 ladders verified in car · D-164 channel schedule · D-165 unmeasured stays disabled · D-166 logic before amps · D-167 A15/A16 bias |
+| **Cluster & ICU** | D-150 one wide display · D-151–158 palette, units, faults, layout · D-159 display off the harness · D-160–163 `stats.h` · D-168 SPI dirty-rectangle · D-169 page button · D-170 PSRAM |
+| **Harness allocations** | D-131 windows manual, bridge provisioned · D-132 sill kept · D-134/139 cavity geometry and pin 1 · D-148 K9 location · D-171 L1-S as generated · D-172 L3-S as generated |
 
 ---
 
@@ -50,11 +55,15 @@ and 7 plugs.
 **D-006** — DCU/MCU, digital gauge cluster, and electronic A/C controls are
 deferred to separate later projects. The car must drive fully on dumb switches.
 
+> SUPERSEDED BY D-075 — the DCU and ICU are in scope; D-081 keeps the dumb-switch rule.
+
 **D-007** — Baseline pinned for the current 12A / Weber configuration. Two 25 A
 channels (O13, O14) reserved for LS ECU/injectors and LS cooling fans.
 
 **D-008** — Relay bank uses 16 sockets, 10 populated. Six empty sockets are
 cheap future-proofing.
+
+> SUPERSEDED BY D-030 (eleven relays) and D-067 (five on the plate, ten sockets).
 
 ## Channel allocation
 
@@ -102,6 +111,8 @@ through its own fuses. Head unit clock and diagnostic port. The PMU sleeps.
 **D-021** — Wink switches and window switches are hardwired to the relay bank,
 not routed through PMU inputs. Only motor legs cross into the doors and nose.
 
+> SUPERSEDED BY D-065 (window switching moved to the sill) and D-131 (the windows are manual; the bridge is provisioned empty). Wink switches still go to the plate.
+
 **D-022** — Housings bought at full cavity count; unused positions filled with a
 capped wire, not a sealing plug.
 
@@ -137,6 +148,8 @@ superseded and need rebuilding against `legs/`.
 windows), the start relay at the starter, the factory A/C clutch relay, and a
 constant-bus master driven by the O22 keep-alive latch.
 
+> SUPERSEDED IN PART BY D-067 (five on the plate), D-131 (K5–K8 provisioned empty) and D-148 (K9 on the inner fender, not at the starter). The count of eleven stands.
+
 **D-031** — Five dash buttons move to the CAN keypad — horn, parking brake sense,
 glove box, hatch release, fuel-door release. Resolves the homeless-input problem
 without consuming PMU pins.
@@ -156,12 +169,18 @@ cannot be plugged into the wrong half.
 (size 16) for all M and low-count S, **TE AMPSEAL** for high-count S,
 **Deutsch DTM** for the diagnostic and keypad drops only.
 
+> SUPERSEDED BY D-052 and D-070 — no AMPSEAL anywhere; every housing is Deutsch DT/DTP/DTM.
+
 **D-035** — 13 leg connectors total: L1 ×2, L2 ×4, L3 ×3, L4 ×4. L2 and L4 need
 two DTP shells each because DTP is only manufactured in 2-way and 4-way and the
 pop-up and window motors need six and four heavy conductors respectively.
 
+> SUPERSEDED BY D-066, D-070 and D-171 — 15 leg housings (L1-S is two DT06-12S); the generated table in `../02-HARNESS/CONNECTORS.md` is the count.
+
 **D-036** — The dash post carries 2 lugs (DP-BAT, DP-GND), the sealed PMU device
 connector (DP-PMU), 2 DTM drops (DP-DIAG, DP-KEY) and 13 leg receptacles.
+
+> SUPERSEDED BY D-070 and D-080 — 15 leg receptacles and four drops (DP-DIAG, DP-KEY, DP-ICU, DP-DCU).
 
 **D-037** — The diagnostic port and keypad grounds are the **only** grounds
 permitted to cross a leg connector, because both are box-adjacent devices with no
@@ -283,6 +302,8 @@ that through a Class-T sized for the 4 AWG PMU feed would blow it. The master
 disconnect sits in the **PMU leg**, so killing it isolates the electrical system
 while the starter cable stays passive.
 
+> AMENDED BY D-091 — the separate runs stand; the PMU feed is 2 AWG, not 4.
+
 **D-062** — Main protection is **Class-T, not ANL or MIDI**. LiFePO4 delivers
 enormous short-circuit current and Class-T is the only common holder with the
 interrupt rating to break it. Mounted as close to battery positive as physically
@@ -297,9 +318,11 @@ a tearing load into a shear load.
 during Phase 3. The L4 harness follows the same route in Phase 5, and adding it
 later means dropping the console again. Costs nothing now.
 
+> AMENDED BY D-091 — the pull string stands; the feed beside it is 2 AWG.
+
 ---
 
-# UPDATE 2026-08 — answers applied
+## UPDATE 2026-08 — answers applied
 
 **D-065** — `[Q-025]` **Window H-bridge relays K5–K8 move to the sill.** Dry,
 accessible, short motor legs. This is the largest structural change since the
@@ -358,10 +381,14 @@ PMU at all. **The DCU is their reader.** The L1-S sensor spares route through th
 dash post to the DCU, not to the PMU. This is the structural reason the DCU is
 mandatory rather than optional once a digital cluster is wanted.
 
+> SUPERSEDED BY D-083 — the ICU, not the DCU, reads the engine sensors. The 'no spare PMU input' finding stands.
+
 **D-077** — **Two nodes, not one: DCU and ICU.** The DCU owns climate, comfort
 switching and sensor acquisition; the ICU owns the instrument display. Separate
 because the cluster is safety-visible and climate control is not — a blend-door
 firmware bug must never blank the tachometer.
+
+> SUPERSEDED BY D-083 — sensor acquisition belongs to the ICU. The two-node split stands.
 
 **D-078** — **Single source of truth per signal.** If the PMU measures it, the ICU
 reads it from CAN — fuel level, battery voltage, key state, output currents. Only
@@ -376,6 +403,8 @@ now**, capped, so the bus is electrically correct before the ECU exists.
 **D-080** — Two new dash-post connectors: **DP-DCU** (DT06-12S, 11 used) and
 **DP-ICU** (DT06-6S, 5 used). Both modules mount inches from the post, so neither
 involves a leg.
+
+> SUPERSEDED BY D-083 — the sensor drop is DP-ICU (DT06-12S, 12 used); DP-DCU is the DT06-6S (5 used).
 
 **D-081** — **The sequencing rule.** The car drives fully on the PMU with dumb
 switches, the factory harness comes out, and the build completes — *then* the DCU
@@ -468,7 +497,7 @@ risk profile than a Sunday drive.
 
 ---
 
-# UPDATE 2026-08 — round three answers
+## UPDATE 2026-08 — round three answers
 
 **D-091** — `[A-009]` **Main feed upgraded to 2 AWG.** Sized for the LS, not the
 12A. ~$40 more now versus pulling the tunnel a second time later. Matches the
@@ -535,6 +564,8 @@ pins, SN65HVD230 5-pack, micro-B cables, 120 Ω and E24 resistors, breadboards,
 jumpers, board materials, practice rotary switch. **Gate 0 closed. Phase 2A and
 2B are fully unblocked** — nothing missing for either.
 
+> SUPERSEDED BY D-140 — resistors, breadboards, jumpers, board materials and the rotary switch were not in fact bought; one cable, not several.
+
 **D-102** — **Three Sicma housings on hand**, each with a full pin set: one from
 the PMU box, two purchased spares. Allocated:
 
@@ -550,11 +581,15 @@ Three is the right number — build, bench, and one mistake.
 three full sets first avoids buying terminals that are already in a bag. Per
 housing the requirement is 12 large (2.8 mm) + 27 small (1.5 mm).
 
+> SUPERSEDED BY D-135 — the count is done: zero small spares. Spares are ordered under T-044.
+
 **D-104** — Housekeeping: **T-016 (diagnose K-008) had been dropped** from the
 open task list during an earlier rewrite. Restored. It is one of only two
 irreversible-window tasks in the project — the other is T-014 — and losing it
 would have meant losing the only chance to find the fault before the harness
 comes out.
+
+> SUPERSEDED BY D-105 — K-008 was traced from the factory diagram (`01-REFERENCE/factory-circuits/FAULT-K008-analysis.md`) and is not being fixed; T-016 is closed by that analysis.
 
 **D-105** — `[K-008 / T-016]` **The blinker fault is not being fixed.** T-016 is
 cancelled.
@@ -623,7 +658,7 @@ Root holds only `README.md` and `STATUS.md`.
 
 ---
 
-# ROUND FOUR ANSWERS — 2026-08
+## ROUND FOUR ANSWERS — 2026-08
 
 **D-109** — `[Q-042]` **IMU fitted to the ICU carrier board.** ~$5 and a few
 traces while the PCB is being laid out. Enables g-meter, lap timing and a level
@@ -948,6 +983,8 @@ map. Then mark the housing (T-043).
 39-pin a one-shot assembly — the cost of being wrong is a housing, a full
 re-terminate and a weekend, against five minutes of confirmation.
 
+> SUPERSEDED BY D-139 — pin 1 position confirmed on the physical part.
+
 ---
 
 **D-139** — `[V-068 CLOSED]` **Connector orientation confirmed** by visual
@@ -1019,6 +1056,8 @@ It is the single behaviour that distinguishes this device from a fuse box, you
 need to recognise it before it happens unexpectedly at speed, and it is genuinely
 unpleasant to meet for the first time on vehicle wiring. A current-limited supply
 makes it a five-minute experiment.
+
+> AMENDED BY D-144 and D-145 — no bench PSU; a 5 A fuse in the feed stands in. The deliberate short itself stays and is `CHECKLIST.md` 2.8 on the desk, or 6.3 in the car.
 
 ---
 
@@ -1101,9 +1140,11 @@ is easier to fabricate and seal.
 `[V-058]` still applies — **800–1000 nits minimum.** A wide panel makes sunlight
 readability more important, not less, because there is more area to wash out.
 
+> SUPERSEDED IN PART BY D-168 — one wide display stands; the controller-panel recommendation does not. SPI with dirty-rectangle rendering from a RAM framebuffer is built and proven.
+
 ---
 
-# CLUSTER IMPLEMENTATION — 2026-08
+## CLUSTER IMPLEMENTATION — 2026-08
 
 *These were all decided while building the ICU firmware and existed only in
 `cluster_core.h`. Recorded here so the reasoning survives the code.*
@@ -1287,3 +1328,43 @@ The bias lifts OFF to ~100 counts so the two are distinguishable.
 
 Same principle as D-053: no valid state may sit at an extreme, because the
 extremes are how faults announce themselves.
+
+---
+
+## AUDIT 4 — 2026-08-30
+
+*Recorded while implementing `AUDITS.md` Audit 4. Each one either closes an
+open ID or records a choice that previously lived only in a code comment or a
+generated table.*
+
+**D-168** — `[I-117]` **The cluster display is driven over SPI with
+dirty-rectangle rendering from a 384 KB RGB332 framebuffer in the Teensy's
+RAM.** Built and proven in `cluster_core.h`; only changed 16 × 16 tiles cross
+the wire, a realistic frame is 2–5 ms, and the 415-assertion suite checks the
+tile logic. Supersedes D-150's recommendation of a controller-based panel
+(RA8875/76), which stays the fallback if a large analogue sweep is ever wanted.
+`Q-060` selects the panel against this interface.
+
+**D-169** — `[Q-058]` **Cluster pages cycle from a small dedicated momentary
+button mounted by the display.** Camden's answer. Wired directly to the
+Teensy, so it does not cross the harness (D-159) and DP-ICU stays at twelve.
+
+**D-170** — `[Q-059]` **Fit 8 MB PSRAM to the Teensy 4.1 pads before the ICU
+board is installed.** ~$8, and much easier on the bench than in the dash. Not
+needed for the framebuffer, which fits in RAM; buys double-buffering and
+logging headroom later.
+
+**D-171** — **L1-S is two DT06-12S housings, L1-S1 and L1-S2, allocated as
+`02-HARNESS/data/connectors.csv` generates them.** L1-S1: O21 start, the six
+ICU engine sensors passing through the post to DP-ICU, +5 V, CAN2 pair, the
+inhibitor (no pin until `Q-063`) and the capped wideband tap. L1-S2: brake
+fluid level to DP-ICU 12 (`A-010`), coolant and oil level capped, three LS
+spares. Replaces the three conflicting L1-S lists in the old PIN-MAP,
+CONNECTORS and engine.md. 15 leg housings, 24 mated pairs.
+
+**D-172** — **L3-S is allocated as generated: L3-S1 (ladders and switch
+inputs), L3-S2 (wake sources, provisioned window commands, deferred radar
+power), L3-S3 (deferred radar link and spares).** Every cavity carries a
+status word from `SPEC.md` §12 — LIVE, PROVISIONED or DEFERRED — so a capped
+wire is never mistaken for a spare. Replaces the D-070 cavity split, whose
+count (2 × 12 + 8 = 32) stands.

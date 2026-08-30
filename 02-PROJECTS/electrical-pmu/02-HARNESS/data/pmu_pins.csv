@@ -1,0 +1,41 @@
+pin,size,ch,name,class,mode,awg,colour,circuit,to,load_type,est_a,meas_a,soft_fuse,sim_limit,inrush_x10,inrush_ms,status,note
+STUD,stud,—,+12V BATT,MAIN,PWR,2,RED,"Main supply, 150 A max constant",DP-BAT ← Class-T 150 A,,,,,,,,LIVE,2 AWG per D-091
+25,L,—,GND,GND,PWR,10,BLK,Device ground + flyback return for every inductive load,"DP-GND, ≤6 in",,,,,,,,LIVE,Shortest heaviest wire on the plate
+7,S,—,+12V SW,WAKE,PWR,16,BLU,"Wake. Diode-OR: ACC, RUN, hazard, door pin, horn, O22 latch",Panel diode strip,,,,,,,,LIVE,D-056 D-072
+15,M,—,+5V OUT,REF,PWR,16,PNK,"Ladder + sender reference, 500 mA ceiling",L1-S1 8 + L2-S 4 + L3-S1 7 + L4-S 4,,,,,,,,LIVE,2.8 mm terminal 211CC3S2120 (D-046)
+23,S,—,CAN1H,CAN1,COMM,16 tw,YEL,"Laptop / config. 1 Mbps fixed, no internal termination",DP-DIAG 1,,,,,,,,LIVE,120 Ω both ends
+36,S,—,CAN1L,CAN1,COMM,16 tw,GRN,Laptop / config,DP-DIAG 2,,,,,,,,LIVE,
+24,S,—,CAN2H,CAN2,COMM,16 tw,YEL/BLK,"Vehicle bus 500 kbps — keypad, ICU, DCU, future LS ECU",L1-S1 9 + DP-KEY 1 + DP-ICU 3 + DP-DCU 4,,,,,,,,LIVE,Software termination at the PMU; 120 Ω at the L1 drop (D-079)
+37,S,—,CAN2L,CAN2,COMM,16 tw,GRN/BLK,Vehicle bus,L1-S1 10 + DP-KEY 2 + DP-ICU 4 + DP-DCU 5,,,,,,,,LIVE,
+38,L,O1,MOTOR_BUS,25A,OUT,12,RED/WHT,Motor bus — K1–K4 on the plate; K5–K8 at the sill are provisioned empty,Relay bank + L4-P 3 (capped),motor,9.5,,,2500,70,400,LIVE,⚡ flyback. Pop-ups only until windows are fitted (D-133)
+39,L,O2,HEAD_LOW,25A,OUT,12,RED/BLK,Headlight LOW,L2-P1 1,LED,3.0,,,800,15,80,LIVE,LED housings as stated — confirm V-066
+26,L,O3,HEAD_HIGH,25A,OUT,12,RED/BRN,Headlight HIGH,L2-P1 2,LED,3.5,,,900,15,80,LIVE,LED housings as stated — confirm V-066
+13,L,O4,DEFOG,25A,OUT,12,RED/GRN,Rear defog grid,L4-P 1,resistive,11.5,,,1600,13,2000,LIVE,Measure cold (D-164)
+12,L,O5,FUEL_PUMP,25A,OUT,12,RED/YEL,Fuel pump — Carter P4070 now; sized for the Aeromotive 340 later,L4-P 2,motor,2.0,,,500,30,150,LIVE,V-054 V-040
+2,L,O12,IGNITION,25A,OUT,12,RED/BLU,Ignition / coil feed,L1-P 1,electronics,5.0,,,800,20,100,LIVE,Measure at 3000 rpm
+1,L,O13,LS_ECU,25A,OUT,12,RED/ORN,RESERVED — LS ECU + injectors,L1-P 2 (capped),reserved,,,disabled,1800,10,0,RESERVED,D-007
+14,L,O14,LS_FAN,25A,OUT,12,RED/GRY,RESERVED — LS cooling fan(s),L1-P 3 (capped),reserved,,,disabled,2500,80,500,RESERVED,D-007
+27,L,O15,COMFORT,25A,OUT,12,RED/VIO,Comfort bus — dumb 25 A feed; the DCU switches loads downstream,L3-P 2 + DCU tap,mixed,14.0,,,2000,15,200,LIVE,Loads themselves are deferred (D-073)
+28,L,O16,BLOWER,25A,OUT,12,RED/PNK,Blower motor feed,L3-P 1,motor,,,from replacement spec,2000,80,600,LIVE,⚡ flyback. Motor is DEAD (K-023) — size from the replacement (D-126)
+11,S,O6,TAIL_PARK,15A,OUT,14,ORN/BRN,Tail / park / marker / plate — PARK and HEAD,L2-M 7 + L4-M 1,filament,4.4,,,800,100,40,LIVE,Inrush window (D-120)
+10,S,O7,BRAKE,15A,OUT,14,ORN/GRN,Brake lamps,L4-M 2,filament,3.9,7.0,9.5,,100,40,LIVE,MEASURED 2026-08 (D-165)
+9,S,O8,WIPE_LOW,15A,OUT,14,ORN/BLU,Wiper LOW — braking channel,L2-M 1,motor,4.0,,,1500,70,300,LIVE,⚙ braking. Measure stall
+5,S,O9,WIPE_HIGH,15A,OUT,14,ORN/WHT,Wiper HIGH,L2-M 2,motor,5.5,,,1500,70,300,LIVE,Measure stall
+4,S,O10,ACCESSORY,15A,OUT,14,ORN/YEL,"Accessory bus — USB-C, head unit switched, ICU + DCU logic",L3-M 1 + DP-ICU 1 + DP-DCU 1 + DP-KEY 3,electronics,2.5,,,1200,20,100,LIVE,Lighter deleted (D-095). Worst case ~10 A with both USB ports loaded
+3,S,O11,HORN,15A,OUT,14,ORN/BLK,Horn pair,L2-M 3,electro-mech,6.0,,,1000,30,80,LIVE,
+6,S,O17,TURN_L,7A,OUT,16,VIO/GRN,Turn LEFT — flashed natively,L2-M 5 + L4-M 5,filament,4.2,3.4,4.5,,100,40,LIVE,MEASURED 2026-08
+33,S,O18,TURN_R,7A,OUT,16,VIO/YEL,Turn RIGHT,L2-M 6 + L4-M 6,filament,4.2,3.4,4.5,,100,40,LIVE,MEASURED 2026-08
+20,S,O19,REVERSE,7A,OUT,16,VIO/BLK,Reverse lamps,L4-M 7,filament,3.9,,,600,100,40,LIVE,Candidate to free as an input — Q-063
+34,S,O20,INTERIOR,7A,PWM,16,VIO/WHT,Interior + details bus and the ICU dimming reference,L4-M 8 + L3-S1 8 + DP-ICU 5,filament,2.5,,,500,100,40,LIVE,Theatre fade
+21,S,O21,START_RLY,7A,OUT,16,VIO/RED,Start relay coil → K9 on the inner fender,L1-S1 1,relay coil,0.2,,,150,20,50,LIVE,D-148. ISO micro coil only — the solenoid current never touches the PMU
+8,S,O22,KEEP_ALIVE,7A,OUT,16,VIO/BLU,Keep-alive latch → diode → pin 7; drives K11,Panel diode strip,logic,0.15,,,100,10,0,LIVE,V-075 — does the PMU have a native shutdown delay that makes this pin free?
+35,S,A15,HEADLIGHT_SW,7A,IN,16,GRY/WHT,Headlight ladder — OFF / PARK / HEAD. Also commands pop-up raise,L3-S1 2,input,,,,700,,,LIVE,Occupies O23. 12 V side 12-bit. Dimmer/pass states — Q-065
+22,S,A16,KEY_POS,7A,IN,16,GRY/RED,Key ladder — OFF / ACC / RUN / START,L3-S1 1,input,,,,700,,,LIVE,Occupies O24. Summed ladder (D-055)
+29,S,A1,TURN_STALK,IN,IN,16,GRY/GRN,Turn stalk — L / off / R,L3-S1 3,input,,,,,,,LIVE,3-step ladder
+16,S,A2,WIPER_STALK,IN,IN,16,GRY/BLU,Wiper stalk — off / INT / LO / HI / WASH,L3-S1 4,input,,,,,,,LIVE,5-step ladder
+30,S,A3,BRAKE_PEDAL,IN,IN,16,GRY/ORN,Brake pedal switch,L3-S1 5,input,,,,,,,LIVE,Switch to ground via 4.7 kΩ
+17,S,A4,POPUP_L,IN,IN,16,GRY/BLK,Pop-up LEFT position,L2-S 1,input,,,,,,,LIVE,3-step ladder — provisional until T-011
+31,S,A5,POPUP_R,IN,IN,16,GRY/BRN,Pop-up RIGHT position,L2-S 2,input,,,,,,,LIVE,3-step ladder — provisional until T-011
+18,S,A6,DOOR_PINS,IN,IN,16,GRY/VIO,Door pins — driver / passenger,L4-S 2,input,,,,,,,LIVE,Tightest ladder in the car
+32,S,A7,FUEL_LEVEL,IN,IN,16,GRY/YEL,Fuel level sender,L4-S 1,input,,,,,,,LIVE,Resistive — V-037
+19,S,A8,HAZARD,IN,IN,16,GRY/PNK,Hazard switch — closure; wake source is a separate conductor,L3-S1 6,input,,,,,,,LIVE,Switch to ground via 4.7 kΩ

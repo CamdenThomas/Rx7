@@ -9,12 +9,17 @@
  *
  * DISPLAY
  *   pushDirtyTiles() below is the only display-specific code. Fill in the
- *   three calls marked TODO once a panel is chosen [Q-037 decided: one wide
- *   panel; interface still open, see CLUSTER-DESIGN.md 5a].
+ *   three calls marked TODO once a panel is chosen (Q-060). The interface is
+ *   decided: SPI with dirty-rectangle tiles from the RAM framebuffer (D-168);
+ *   the arithmetic is in DCU-CLUSTER.md Appendix A.
  *
  *   Until then this compiles and runs with the display calls stubbed out,
  *   and reports real timing over serial.
  */
+
+/* Bump on every change that alters behaviour; log it in 05-BUILD/LOGS.md
+ * and tag the commit. Printed over serial at boot. */
+#define ICU_FW_VERSION "0.3.0-dev"
 
 #include "cluster_core.h"
 
@@ -57,7 +62,8 @@ void setup() {
     Serial.begin(115200);
     while (!Serial && millis() < 3000) {}
 
-    Serial.println("ICU cluster — Teensy host");
+    Serial.print("ICU cluster — Teensy host, firmware ");
+    Serial.println(ICU_FW_VERSION);
     Serial.print("framebuffer bytes: ");
     Serial.println((uint32_t)sizeof(fb.buf));
 

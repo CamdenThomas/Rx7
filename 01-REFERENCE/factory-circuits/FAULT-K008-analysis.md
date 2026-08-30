@@ -1,5 +1,7 @@
 # Fault K-008 — blinker affecting fuel pump and tachometer
 
+*Rev 2026-08-30 · owns: the trace of fault K-008 through the factory diagram. Conclusion: shared grounds X-13/X-15; not fixed in the factory harness (D-105), eliminated by the star-node architecture (D-017).*
+
 > **NOT BEING FIXED — D-105.** This fault dies with the factory harness. It is a
 > shared-ground problem in two body studs, and the new architecture gives every
 > zone a local star node with no ground crossing a bulkhead (D-017). There is no

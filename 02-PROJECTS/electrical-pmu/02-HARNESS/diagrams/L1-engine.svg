@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="810" viewBox="0 0 1180 810" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11">
+<style>.t{fill:#1b1b1b}.d{fill:#5d6d7e}.h{font-weight:700;fill:#1b1b1b}.box{fill:#fff;stroke:#1b1b1b;stroke-width:1.2}.src{fill:#f4f6f6;stroke:#5d6d7e}</style>
+<rect width="1180" height="810" fill="#fbfbf9"/>
+<text x="20" y="30" font-size="18" class="h">L1 · ENGINE leg</text>
+<text x="20" y="48" class="d">Firewall grommet boundary · generated from data/connectors.csv · dashed = provisioned / deferred / reserved · grey = open or spare</text>
+<rect x="20" y="99.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="112.0" class="t">O12</text>
+<rect x="20" y="119.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="132.0" class="t">O13</text>
+<rect x="20" y="139.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="152.0" class="t">O14</text>
+<rect x="20" y="229.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="242.0" class="t">O21</text>
+<rect x="20" y="369.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="382.0" class="t">+5V</text>
+<rect x="20" y="389.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="402.0" class="t">CAN2H</text>
+<rect x="20" y="409.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="422.0" class="t">CAN2L</text>
+<rect x="20" y="427.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="440.0" class="t">DP-ICU 10</text>
+<rect x="20" y="445.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="458.0" class="t">DP-ICU 11</text>
+<rect x="20" y="519.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="532.0" class="t">DP-ICU 12</text>
+<rect x="20" y="537.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="550.0" class="t">DP-ICU 6</text>
+<rect x="20" y="555.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="568.0" class="t">DP-ICU 7</text>
+<rect x="20" y="573.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="586.0" class="t">DP-ICU 8</text>
+<rect x="20" y="591.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="604.0" class="t">DP-ICU 9</text>
+<rect x="20" y="609.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="622.0" class="t">NO PIN — Q-063</text>
+<rect x="380" y="70" width="760" height="108" rx="4" class="box"/>
+<rect x="380" y="70" width="760" height="24" fill="#1b1b1b"/>
+<text x="388" y="86" fill="#fff" font-weight="700">L1-P</text>
+<text x="490" y="86" fill="#ddd">DTP06-4S → DTP04-4P · 4 cav · Dash post</text>
+<text x="388" y="112.0" class="h">1</text>
+<text x="416" y="112.0" class="t">Ignition / coil feed</text>
+<text x="850" y="112.0" class="d">12 RED/BLU</text>
+<text x="980" y="112.0" class="d">LIVE</text>
+<path d="M170,108.0 C 260,108.0 290,108.0 380,108.0" fill="none" stroke="#c0392b" stroke-width="2"/>
+<text x="388" y="132.0" class="h">2</text>
+<text x="416" y="132.0" class="t">RESERVED — LS ECU + injectors</text>
+<text x="850" y="132.0" class="d">12 RED/ORN</text>
+<text x="980" y="132.0" class="d">RESERVED</text>
+<path d="M170,128.0 C 260,128.0 290,128.0 380,128.0" fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="388" y="152.0" class="h">3</text>
+<text x="416" y="152.0" class="t">RESERVED — LS cooling fan</text>
+<text x="850" y="152.0" class="d">12 RED/GRY</text>
+<text x="980" y="152.0" class="d">RESERVED</text>
+<path d="M170,148.0 C 260,148.0 290,148.0 380,148.0" fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="388" y="172.0" class="h">4</text>
+<text x="416" y="172.0" class="t">SPARE heavy</text>
+<text x="850" y="172.0" class="d">12 RED</text>
+<text x="980" y="172.0" class="d">SPARE</text>
+<rect x="380" y="200" width="760" height="268" rx="4" class="box"/>
+<rect x="380" y="200" width="760" height="24" fill="#1b1b1b"/>
+<text x="388" y="216" fill="#fff" font-weight="700">L1-S1</text>
+<text x="490" y="216" fill="#ddd">DT06-12S → DT04-12P · 12 cav · Dash post</text>
+<text x="388" y="242.0" class="h">1</text>
+<text x="416" y="242.0" class="t">Start relay coil → K9 on the inner fender</text>
+<text x="850" y="242.0" class="d">16 VIO/RED</text>
+<text x="980" y="242.0" class="d">LIVE</text>
+<path d="M170,238.0 C 260,238.0 290,238.0 380,238.0" fill="none" stroke="#7d3c98" stroke-width="1.4"/>
+<text x="388" y="262.0" class="h">2</text>
+<text x="416" y="262.0" class="t">Alternator lamp / sense</text>
+<text x="850" y="262.0" class="d">16 GRY/WHT</text>
+<text x="980" y="262.0" class="d">LIVE</text>
+<path d="M170,454.0 C 260,454.0 290,258.0 380,258.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="282.0" class="h">3</text>
+<text x="416" y="282.0" class="t">Water temp sender</text>
+<text x="850" y="282.0" class="d">16 GRY/GRN</text>
+<text x="980" y="282.0" class="d">LIVE</text>
+<path d="M170,546.0 C 260,546.0 290,278.0 380,278.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="302.0" class="h">4</text>
+<text x="416" y="302.0" class="t">Oil pressure sender</text>
+<text x="850" y="302.0" class="d">16 GRY/BLU</text>
+<text x="980" y="302.0" class="d">LIVE</text>
+<path d="M170,564.0 C 260,564.0 290,298.0 380,298.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="322.0" class="h">5</text>
+<text x="416" y="322.0" class="t">Oil temperature sender (new)</text>
+<text x="850" y="322.0" class="d">16 GRY/ORN</text>
+<text x="980" y="322.0" class="d">LIVE</text>
+<path d="M170,582.0 C 260,582.0 290,318.0 380,318.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="342.0" class="h">6</text>
+<text x="416" y="342.0" class="t">Tach pickup (coil primary YG) — shielded</text>
+<text x="850" y="342.0" class="d">16 sh GRY/YEL</text>
+<text x="980" y="342.0" class="d">LIVE</text>
+<path d="M170,600.0 C 260,600.0 290,338.0 380,338.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="362.0" class="h">7</text>
+<text x="416" y="362.0" class="t">VSS pulse (new)</text>
+<text x="850" y="362.0" class="d">16 GRY/VIO</text>
+<text x="980" y="362.0" class="d">LIVE</text>
+<path d="M170,436.0 C 260,436.0 290,358.0 380,358.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="382.0" class="h">8</text>
+<text x="416" y="382.0" class="t">+5 V reference</text>
+<text x="850" y="382.0" class="d">16 PNK</text>
+<text x="980" y="382.0" class="d">LIVE</text>
+<path d="M170,378.0 C 260,378.0 290,378.0 380,378.0" fill="none" stroke="#e91e63" stroke-width="1.4"/>
+<text x="388" y="402.0" class="h">9</text>
+<text x="416" y="402.0" class="t">CAN2 H — engine-bay drop</text>
+<text x="850" y="402.0" class="d">16 tw YEL/BLK</text>
+<text x="980" y="402.0" class="d">LIVE</text>
+<path d="M170,398.0 C 260,398.0 290,398.0 380,398.0" fill="none" stroke="#b7950b" stroke-width="1.4"/>
+<text x="388" y="422.0" class="h">10</text>
+<text x="416" y="422.0" class="t">CAN2 L — engine-bay drop</text>
+<text x="850" y="422.0" class="d">16 tw GRN/BLK</text>
+<text x="980" y="422.0" class="d">LIVE</text>
+<path d="M170,418.0 C 260,418.0 290,418.0 380,418.0" fill="none" stroke="#1e8449" stroke-width="1.4"/>
+<text x="388" y="442.0" class="h">11</text>
+<text x="416" y="442.0" class="t">Inhibitor switch ladder — P/N + R</text>
+<text x="850" y="442.0" class="d">16 GRY/BLK</text>
+<text x="980" y="442.0" class="d">OPEN</text>
+<path d="M170,618.0 C 260,618.0 290,438.0 380,438.0" fill="none" stroke="#aab" stroke-width="1.4"/>
+<text x="388" y="462.0" class="h">12</text>
+<text x="416" y="462.0" class="t">Wideband O2 signal</text>
+<text x="850" y="462.0" class="d">16 GRY/RED</text>
+<text x="980" y="462.0" class="d">SPARE</text>
+<rect x="380" y="490" width="760" height="268" rx="4" class="box"/>
+<rect x="380" y="490" width="760" height="24" fill="#1b1b1b"/>
+<text x="388" y="506" fill="#fff" font-weight="700">L1-S2</text>
+<text x="490" y="506" fill="#ddd">DT06-12S → DT04-12P · 12 cav · Dash post</text>
+<text x="388" y="532.0" class="h">1</text>
+<text x="416" y="532.0" class="t">Brake fluid level switch</text>
+<text x="850" y="532.0" class="d">16 GRY/PNK</text>
+<text x="980" y="532.0" class="d">LIVE</text>
+<path d="M170,528.0 C 260,528.0 290,528.0 380,528.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="552.0" class="h">2</text>
+<text x="416" y="552.0" class="t">Coolant level sensor</text>
+<text x="850" y="552.0" class="d">16 GRY</text>
+<text x="980" y="552.0" class="d">SPARE</text>
+<text x="388" y="572.0" class="h">3</text>
+<text x="416" y="572.0" class="t">Oil level sensor</text>
+<text x="850" y="572.0" class="d">16 GRY</text>
+<text x="980" y="572.0" class="d">SPARE</text>
+<text x="388" y="592.0" class="h">4</text>
+<text x="416" y="592.0" class="t">LS sensor spare — knock</text>
+<text x="850" y="592.0" class="d">16 GRY</text>
+<text x="980" y="592.0" class="d">RESERVED</text>
+<text x="388" y="612.0" class="h">5</text>
+<text x="416" y="612.0" class="t">LS sensor spare — cam/crank</text>
+<text x="850" y="612.0" class="d">16 GRY</text>
+<text x="980" y="612.0" class="d">RESERVED</text>
+<text x="388" y="632.0" class="h">6</text>
+<text x="416" y="632.0" class="t">LS sensor spare</text>
+<text x="850" y="632.0" class="d">16 GRY</text>
+<text x="980" y="632.0" class="d">RESERVED</text>
+<text x="388" y="652.0" class="h">7</text>
+<text x="416" y="652.0" class="t">SPARE</text>
+<text x="850" y="652.0" class="d">16 GRY</text>
+<text x="980" y="652.0" class="d">SPARE</text>
+<text x="388" y="672.0" class="h">8</text>
+<text x="416" y="672.0" class="t">SPARE</text>
+<text x="850" y="672.0" class="d">16 GRY</text>
+<text x="980" y="672.0" class="d">SPARE</text>
+<text x="388" y="692.0" class="h">9</text>
+<text x="416" y="692.0" class="t">SPARE</text>
+<text x="850" y="692.0" class="d">16 GRY</text>
+<text x="980" y="692.0" class="d">SPARE</text>
+<text x="388" y="712.0" class="h">10</text>
+<text x="416" y="712.0" class="t">SPARE</text>
+<text x="850" y="712.0" class="d">16 GRY</text>
+<text x="980" y="712.0" class="d">SPARE</text>
+<text x="388" y="732.0" class="h">11</text>
+<text x="416" y="732.0" class="t">SPARE</text>
+<text x="850" y="732.0" class="d">16 GRY</text>
+<text x="980" y="732.0" class="d">SPARE</text>
+<text x="388" y="752.0" class="h">12</text>
+<text x="416" y="752.0" class="t">SPARE</text>
+<text x="850" y="752.0" class="d">16 GRY</text>
+<text x="980" y="752.0" class="d">SPARE</text>
+</svg>

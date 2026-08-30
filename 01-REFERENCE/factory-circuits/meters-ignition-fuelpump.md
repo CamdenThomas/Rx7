@@ -1,5 +1,7 @@
 # Circuit — Meters, Warning Lights, Ignition, Fuel Pump
 
+*Rev 2026-08-30 · owns: the factory decode of this circuit — devices, wires, logic. The rebuild table at the foot points into the new design and is not its owner; cavities are `02-HARNESS/data/connectors.csv`'s.*
+
 **Source:** Section C page 16, Section B pages 12–13.
 
 ---
@@ -63,28 +65,28 @@ Twin coils, twin igniters — leading and trailing, standard 12A rotary. Feed is
 | Ground | **X-15**                                       |
 
 Simple key-on circuit. No prime logic, no oil-pressure interlock, no inertia
-cutoff. `[K-008]` — the pump grounds at X-15 alongside the rear turn lamps.
+cutoff. K-008 — the pump grounds at X-15 alongside the rear turn lamps.
 
 ## 5 · What this means for the rebuild
 
-| Factory                                    | PMU-24 plan                                                                                           |
-|--------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| Cluster on 10 A GY bus, internal regulator | Cluster is a **later project** (D-006). Senders stay on the factory gauges for now                    |
-| Fuel level sender Y                        | A7 input, C4-B6 — already in SPEC                                                                     |
-| Water temp YW, oil pressure BrY            | C1-B7…B12 spares, reserved                                                                            |
-| Tach signal YG from coil                   | C1 spare. **Route it away from any high-current wire**                                                |
-| Twin coils + igniters on BW                | O12 ignition feed, C1-A1                                                                              |
-| Fuel pump, key-on only                     | O5 with software prime, run-only-with-RPM, and the PMU's built-in inertia switch (Checklist 056, 059) |
-| Warning lamp logic, checkers, oscillator   | All software                                                                                          |
-| Everything grounded at X-13 / X-15         | Zone star nodes (D-017)                                                                               |
+| Factory | PMU-24 plan |
+|---|---|
+| Cluster on 10 A GY bus, internal regulator | The **ICU** replaces the cluster (D-006 → D-075, D-083). The factory cluster stays in place through ICU development (D-090) |
+| Fuel level sender Y | A7 input, **L4-S 1** — the one sender the PMU reads; published on CAN 0x120 |
+| Water temp YW, oil pressure BrY | ICU inputs — **L1-S1 3 → DP-ICU 6**, **L1-S1 4 → DP-ICU 7**. Oil temp (new) L1-S1 5 → DP-ICU 8 |
+| Tach signal YG from coil | **L1-S1 6 → DP-ICU 9**, shielded, opto/comparator at the ICU (D-082). Routed away from every high-current wire |
+| Twin coils + igniters on BW | O12 ignition feed, **L1-P 1** |
+| Fuel pump, key-on only | O5 → **L4-P 2**, with a software prime, the PMU's inertia switch, and run-with-RPM once the ICU publishes rpm — interim rule `Q-064` (Checklist 2.17) |
+| Warning lamp logic, checkers, oscillator | All software, in the ICU |
+| Everything grounded at X-13 / X-15 | Zone star nodes (D-017) |
 
 The fuel pump gains real safety it never had: prime on key-on, cut if the engine
 stops, cut on impact.
 
 ## 6 · Unknowns
 
-| ID    | Unknown                                                                                         | Resolve by          |
-|-------|-------------------------------------------------------------------------------------------------|---------------------|
-| V-037 | Fuel sender resistance range (empty→full) for A7 scaling                                        | Measure at the tank |
-| V-038 | Whether the coolant level unit and oscillator are still fitted                                  | Inspect car         |
-| V-039 | Tach signal type and level — needs conditioning for a PMU input if the cluster is ever replaced | Scope it            |
+| ID | Unknown | Resolve by |
+|---|---|---|
+| V-037 | Fuel sender resistance range, empty → full, for A7 scaling | Measure at the tank, `T-012`, Checklist 0.5 |
+| V-038 | Whether the coolant level unit and oscillator are still fitted | Inspect (A-010 caps the level senders either way) |
+| V-039 → D-082 / `V-067` | Tach signal type and level | Conditioning decided; pulses per rev still to confirm |

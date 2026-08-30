@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="840" viewBox="0 0 1400 840" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11">
+<style>
+.t{fill:#1b1b1b}.d{fill:#5d6d7e}.h{font-weight:700;fill:#1b1b1b}
+.box{fill:#fff;stroke:#1b1b1b;stroke-width:1.2}
+.zone{fill:#f4f6f6;stroke:#5d6d7e;stroke-width:1;stroke-dasharray:4 3}
+.pwr{stroke:#c0392b;stroke-width:3;fill:none}
+.leg{stroke:#1b1b1b;stroke-width:1.6;fill:none}
+.can{stroke:#1f77b4;stroke-width:1.4;fill:none;stroke-dasharray:6 3}
+.gnd{stroke:#7f8c8d;stroke-width:1.2;fill:none}
+.prov{stroke:#1b1b1b;stroke-width:1.2;fill:none;stroke-dasharray:3 3}
+.s{font-size:10;fill:#5d6d7e}.b{fill:#1f77b4}
+</style>
+<rect width="1400" height="840" fill="#fbfbf9"/>
+<text x="20" y="30" font-size="18" class="h">1982 RX-7 FB · electrical architecture</text>
+<text x="20" y="48" class="d">Rev 2026-08-30 · one picture of the whole system · cavities: PIN-MAP.md · relays and fuses: SPEC.md §3 · CAN: CAN-MESSAGES.md</text>
+<text x="20" y="62" class="d">red = heavy feed · black = harness leg · blue dashed = CAN2 · dotted = provisioned or deferred · grey = ground</text>
+<rect x="20" y="80" width="380" height="300" class="zone"/>
+<text x="32" y="98" class="h">REAR — cargo bin, tank, rear lamps, sill</text>
+<rect x="36" y="104" width="180" height="62" class="box" stroke-width="1.2"/>
+<text x="46" y="122" class="h">Ionic S9 lithium</text>
+<text x="46" y="136" class="t">40 Ah · 1,100 CCA · heated</text>
+<text x="46" y="150" class="s">cargo bin — D-002, Phase 3</text>
+<rect x="36" y="186" width="90" height="32" class="box" stroke-width="1.2"/>
+<text x="46" y="204" class="t">Class-T 150A</text>
+<rect x="134" y="186" width="82" height="32" class="box" stroke-width="1.2"/>
+<text x="144" y="204" class="t">Disconnect</text>
+<rect x="36" y="240" width="180" height="44" class="box" stroke-width="1.2"/>
+<text x="46" y="258" class="t">Rear star ground stud</text>
+<text x="46" y="272" class="s">L4 zone node (D-017)</text>
+<rect x="232" y="104" width="160" height="124" class="box" stroke-width="1.2"/>
+<text x="242" y="122" class="h">L4 loads</text>
+<text x="242" y="136" class="t">Defog O4 · pump O5</text>
+<text x="242" y="150" class="t">Tail O6 · brake O7</text>
+<text x="242" y="164" class="t">Turn O17/O18 · rev O19</text>
+<text x="242" y="178" class="t">Interior O20 · fuel A7</text>
+<text x="242" y="192" class="s">solenoids: no output Q-061</text>
+<text x="242" y="205" class="s">starter 1/0 direct D-061</text>
+<rect x="232" y="246" width="160" height="120" class="box" stroke-width="1.2"/>
+<text x="242" y="264" class="h">SILL NODE</text>
+<text x="242" y="278" class="t">K5–K8 sockets, empty</text>
+<text x="242" y="292" class="t">F8 F9 empty · F14</text>
+<text x="242" y="306" class="t">Ground stud · D1 / D2</text>
+<text x="242" y="320" class="s">windows PROV. (D-131)</text>
+<text x="242" y="333" class="s">mirrors DEFERRED (Q-062)</text>
+<path class="pwr" d="M 76 166 L 76 186"/>
+<path class="pwr" d="M 126 202 L 134 202"/>
+<path class="pwr" d="M 216 202 L 224 202 L 224 400 L 520 400 L 520 450"/>
+<text x="232" y="396" class="s">2 AWG through the tunnel, pull string beside it (D-091, D-064)</text>
+<path class="gnd" d="M 175 240 L 175 218"/>
+<path class="gnd" d="M 60 284 L 60 300 L 224 300"/>
+<text x="66" y="297" class="s">2 AWG ground → chassis</text>
+<rect x="420" y="430" width="480" height="370" class="zone"/>
+<text x="432" y="448" class="h">DASH — the black box on the removable plate</text>
+<rect x="440" y="450" width="160" height="30" class="box" stroke-width="1.2"/>
+<text x="450" y="468" class="t">DP-BAT · DP-GND</text>
+<rect x="440" y="490" width="160" height="30" class="box" stroke-width="1.2"/>
+<text x="450" y="508" class="t">Always-hot busbar</text>
+<rect x="440" y="530" width="160" height="30" class="box" stroke-width="1.2"/>
+<text x="450" y="548" class="t">F1–F7, F10–F13</text>
+<rect x="440" y="570" width="160" height="30" class="box" stroke-width="1.2"/>
+<text x="450" y="588" class="t">K11 constant-bus master</text>
+<rect x="440" y="610" width="160" height="30" class="box" stroke-width="1.2"/>
+<text x="450" y="628" class="t">K1–K4 pop-up H-bridges</text>
+<rect x="440" y="650" width="160" height="30" class="box" stroke-width="1.2"/>
+<text x="450" y="668" class="t">Wake diode strip</text>
+<text x="446" y="696" class="s">6 sources → pin 7 (D-072)</text>
+<text x="446" y="709" class="s">ACC RUN hazard horn door latch</text>
+<rect x="640" y="450" width="240" height="170" class="box" stroke-width="2"/>
+<text x="650" y="468" class="h">ECUMaster PMU-24 DL</text>
+<text x="650" y="482" class="t">39-pin Sicma · stud 150 A</text>
+<text x="650" y="496" class="t">10 × 25 A · 6 × 15 A · 8 × 7 A</text>
+<text x="650" y="510" class="t">A1–A8 · A9–A16 shared</text>
+<text x="650" y="524" class="t">CAN1 config · CAN2 vehicle</text>
+<text x="650" y="538" class="s">O13/O14 RESERVED for the LS</text>
+<text x="650" y="551" class="s">O23/O24 used as A15/A16</text>
+<text x="650" y="564" class="s">no analog input free — Q-063</text>
+<text x="650" y="577" class="s">PMU, terminals, Ionic in hand</text>
+<rect x="640" y="640" width="240" height="96" class="box" stroke-width="1.2"/>
+<text x="650" y="658" class="h">Dash-post drops</text>
+<text x="650" y="672" class="t">DP-ICU 12 · DP-DCU 6</text>
+<text x="650" y="686" class="t">DP-DIAG 4 · DP-KEY 4</text>
+<text x="650" y="700" class="s">15 leg receptacles + 4 drops</text>
+<text x="650" y="713" class="s">+ 2 lugs = 24 mated pairs, Deutsch</text>
+<path class="pwr" d="M 600 462 L 640 462"/>
+<path class="pwr" d="M 520 480 L 520 490"/>
+<path class="pwr" d="M 520 520 L 520 530"/>
+<path class="gnd" d="M 600 474 L 640 474"/>
+<path class="leg" d="M 700 450 L 700 150 L 392 150"/>
+<text x="420" y="146" class="t">L4 · REAR — L4-P L4-M L4-S</text>
+<text x="420" y="160" class="s">+ D1 / D2 at the sill node</text>
+<path class="prov" d="M 700 300 L 392 300"/>
+<text x="420" y="296" class="s">window bus, commands, mirror wires — capped</text>
+<rect x="960" y="80" width="420" height="160" class="zone"/>
+<text x="972" y="98" class="h">ENGINE BAY — firewall grommet boundary</text>
+<rect x="976" y="100" width="240" height="130" class="box" stroke-width="1.2"/>
+<text x="986" y="118" class="h">L1 · ENGINE</text>
+<text x="986" y="132" class="t">L1-P 4 · L1-S1 12 · L1-S2 12</text>
+<text x="986" y="146" class="t">Coils O12 · start K9 via O21</text>
+<text x="986" y="160" class="t">6 sensors pass → DP-ICU</text>
+<text x="986" y="174" class="t">CAN2 drop, 120 Ω</text>
+<text x="986" y="188" class="s">inhibitor: no pin — Q-063</text>
+<text x="986" y="201" class="s">LS spares RESERVED, capped</text>
+<rect x="1230" y="100" width="140" height="58" class="box" stroke-width="1.2"/>
+<text x="1240" y="118" class="t">K9 start relay</text>
+<text x="1240" y="132" class="s">inner fender (D-148)</text>
+<text x="1240" y="145" class="s">→ starter solenoid</text>
+<rect x="1230" y="172" width="140" height="58" class="box" stroke-width="1.2"/>
+<text x="1240" y="190" class="t">Alternator B+</text>
+<text x="1240" y="204" class="s">→ distribution post</text>
+<text x="1240" y="217" class="s">sense → ICU</text>
+<path class="leg" d="M 880 470 L 930 470 L 930 165 L 976 165"/>
+<rect x="960" y="260" width="420" height="160" class="zone"/>
+<text x="972" y="278" class="h">FRONT — nose, cowl, buckets</text>
+<rect x="976" y="280" width="330" height="130" class="box" stroke-width="1.2"/>
+<text x="986" y="298" class="h">L2 · FRONT CHASSIS</text>
+<text x="986" y="312" class="t">L2-P1 4 · L2-P2 4 · L2-M 8 · L2-S 6</text>
+<text x="986" y="326" class="t">Head O2/O3 · pop-ups O1 via K1–K4</text>
+<text x="986" y="340" class="t">Wipers O8/O9 · horn O11</text>
+<text x="986" y="354" class="t">Turn O17/O18 · park O6 · A4/A5</text>
+<text x="986" y="368" class="s">washer: no output · park sense: no pin — Q-063</text>
+<text x="986" y="381" class="s">front star ground node</text>
+<path class="leg" d="M 880 490 L 945 490 L 945 345 L 976 345"/>
+<rect x="960" y="440" width="420" height="160" class="zone"/>
+<text x="972" y="458" class="h">DASH FACE — switches, head unit, blower</text>
+<rect x="976" y="460" width="260" height="130" class="box" stroke-width="1.2"/>
+<text x="986" y="478" class="h">L3 · DASH</text>
+<text x="986" y="492" class="t">L3-P 2 · L3-M 2 · L3-S1 S2 S3</text>
+<text x="986" y="506" class="t">Blower O16 · comfort O15 · acc O10</text>
+<text x="986" y="520" class="t">Ladders A1 A2 A3 A6 A8 A15 A16</text>
+<text x="986" y="534" class="t">Wake: ACC RUN hazard horn</text>
+<text x="986" y="548" class="s">window cmds PROVISIONED · radar DEFERRED</text>
+<text x="986" y="561" class="s">dimmer / pass states — Q-065</text>
+<rect x="1250" y="460" width="120" height="130" class="box" stroke-width="1.2"/>
+<text x="1260" y="478" class="h">Keypad</text>
+<text x="1260" y="492" class="t">8-key CAN</text>
+<text x="1260" y="506" class="s">DP-KEY</text>
+<text x="1260" y="519" class="s">defog, hatch,</text>
+<text x="1260" y="532" class="s">fuel door,</text>
+<text x="1260" y="545" class="s">interior override</text>
+<text x="1260" y="558" class="s">A-013: off O10</text>
+<path class="leg" d="M 880 510 L 976 510"/>
+<rect x="960" y="620" width="420" height="180" class="zone"/>
+<text x="972" y="638" class="h">MODULES — behind the dash face; join a finished car (D-081)</text>
+<rect x="976" y="640" width="190" height="150" class="box" stroke-width="1.2"/>
+<text x="986" y="658" class="h">ICU · Teensy 4.1</text>
+<text x="986" y="672" class="t">Cluster 800×480, SPI</text>
+<text x="986" y="686" class="t">dirty-rectangle (D-168)</text>
+<text x="986" y="700" class="t">Reads the 6 engine</text>
+<text x="986" y="714" class="t">sensors itself (D-083)</text>
+<text x="986" y="728" class="s">DP-ICU · panel is Q-060</text>
+<text x="986" y="741" class="s">stages 1–5 done, 0.3.0-dev</text>
+<text x="986" y="754" class="s">button D-169 · PSRAM D-170</text>
+<rect x="1180" y="640" width="190" height="150" class="box" stroke-width="1.2"/>
+<text x="1190" y="658" class="h">DCU · Teensy 4.1</text>
+<text x="1190" y="672" class="t">Climate servos</text>
+<text x="1190" y="686" class="t">Comfort switching</text>
+<text x="1190" y="700" class="t">off O15 (D-073)</text>
+<text x="1190" y="714" class="t">Heat/cool interlock</text>
+<text x="1190" y="728" class="s">DP-DCU · F-001 not started</text>
+<text x="1190" y="741" class="s">keep-alive: V-056</text>
+<text x="1190" y="754" class="s">solenoids? Q-061 option c</text>
+<path class="can" d="M 880 600 L 890 600 L 890 816 L 1388 816 L 1388 70 L 1100 70 L 1100 100"/>
+<path class="can" d="M 1388 525 L 1370 525"/>
+<path class="can" d="M 1388 715 L 1370 715"/>
+<path class="can" d="M 1071 816 L 1071 790"/>
+<text x="430" y="830" class="b">CAN2 · 500 kbps · PMU, keypad, ICU, DCU, future LS ECU (D-079) · 120 Ω at the PMU (software) and at the engine-bay drop</text>
+<text x="1104" y="66" class="b">engine-bay drop, L1-S1 9/10</text>
+<rect x="20" y="430" width="380" height="370" class="zone"/>
+<text x="32" y="448" class="h">HOW TO READ IT</text>
+<text x="32" y="470" class="t">Power: battery → Class-T → disconnect → 2 AWG → DP-BAT</text>
+<text x="32" y="484" class="t">→ PMU stud. The starter is its own run off the</text>
+<text x="32" y="498" class="t">distribution post (D-061).</text>
+<text x="32" y="526" class="t">Four legs leave the dash post, housings by class:</text>
+<text x="32" y="540" class="t">-P 12 AWG DTP · -M 14 AWG DT · -S 16 AWG DT (D-032).</text>
+<text x="32" y="568" class="t">Every zone grounds at its own star node; grounds never</text>
+<text x="32" y="582" class="t">cross a bulkhead (D-017) — which retires fault K-008.</text>
+<text x="32" y="610" class="t">Switches are resistor ladders to ground on A1–A8 and</text>
+<text x="32" y="624" class="t">A15/A16; no switch carries load current (D-018, D-019).</text>
+<text x="32" y="652" class="t">The car drives fully on the PMU with dumb switches</text>
+<text x="32" y="666" class="t">before either module is connected (D-081).</text>
+<text x="32" y="694" class="t">Every cavity carries a status word — LIVE · PROVISIONED</text>
+<text x="32" y="708" class="t">· RESERVED · DEFERRED · OPEN · SPARE (SPEC §12).</text>
+<text x="32" y="722" class="t">Open packets today: Q-061 … Q-065.</text>
+<text x="32" y="750" class="s">Per-leg cavity diagrams (generated by tools/gen.py):</text>
+<text x="32" y="763" class="s">L1-engine · L2-front-chassis · L3-dash · L4-rear-cabin</text>
+<text x="32" y="776" class="s">sill-doors · dash-post-drops. This sheet is hand-drawn.</text>
+</svg>

@@ -1,6 +1,6 @@
 # DEFERRED FEATURES — pre-wired, waiting on budget
 
-*Created 2026-08.*
+*Rev 2026-08-30 · owns: what the harness is built to accept but is not yet fitted, and what fitting each one takes.*
 
 Everything the harness is **built to accept but not yet fitted.** The point of
 this file is that none of these require harness work later — the wire is run,
@@ -26,7 +26,7 @@ housing, a teardown and a weekend.
 
 ---
 
-## 1 · Power windows `[D-131]`
+## 1 · Power windows (D-131)
 
 **The windows are currently manual.** No motors, regulators, switches or factory
 wiring.
@@ -39,7 +39,7 @@ wiring.
 | Window commands ×4 | `L4-M` cav 9–12, 16 AWG | Terminated, capped |
 | Motor legs, driver | `D1` cav 1–2, 14 AWG | Terminated, capped **in the door** |
 | Motor legs, passenger | `D2` cav 1–2, 14 AWG | Terminated, capped in the door |
-| Switch inputs ×4 | `L3-S`, 16 AWG | Terminated, capped at the switch panel |
+| Switch inputs ×4 | `L3-S2` cav 3–6, 16 AWG | Terminated, capped at the switch panel |
 | K5–K8 relay sockets | Sill node | **Fitted, empty** |
 | F8, F9 fuse positions | Sill node | **Provisioned, empty** |
 
@@ -84,7 +84,7 @@ Same comfort bus. 2 × fan modules, ~1.5–2.5 A each, plus ducting.
 **Same upholstery-pass rule**, and more invasive than heat — the fan needs a
 path through the cushion.
 
-`[Q-013]` said in scope. Realistically this is the last thing to arrive.
+In scope (Q-013 → D-048). Realistically this is the last thing to arrive.
 
 ---
 
@@ -93,9 +93,11 @@ path through the cushion.
 | Pre-wired | State |
 |---|---|
 | Mirror heat feed | `D1`/`D2` cav 7, 16 AWG, capped |
-| Mirror heat branch fuse | Sill node, provisioned |
+| Mirror heat branch fuse F14 | Sill node, position provisioned |
+| O15 feed from the dash post to the sill | **Not yet allocated** — `Q-062` |
+| Mirror motor control, dash → sill | **Not yet allocated** — depends on `V-060`, `Q-062` |
 
-Bundled with the new mirrors `[T-031]` — larger, heated, digital control. The
+Bundled with the new mirrors (`T-031`) — larger, heated, digital control. The
 door connector already carries three motor conductors plus heat, exactly 8
 cavities with zero spare (D-092/093).
 
@@ -111,8 +113,10 @@ Cold-weather items. Low cost, low effort, high value in a Fort Collins winter.
 
 ## 6 · Radar subsystem
 
-Concealed sensors front and rear, DCU-managed `[V-061]`. Front sensor conductors
-in `L2`, rear in `L4`. Interface not yet designed.
+Concealed sensors front and rear, DCU-managed (`V-061`). Rear link conductors
+are allocated in `L3-S3` 1–3 → `L4-S` 5–7 and the module's power in `L3-S2`
+7–8; the front sensor wires locally to the module. Interface not yet designed;
+the module's fuse position is part of `Q-061`.
 
 ---
 

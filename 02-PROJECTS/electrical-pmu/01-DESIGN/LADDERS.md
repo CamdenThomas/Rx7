@@ -1,9 +1,13 @@
 # LADDERS — resistor ladder design
 
-All six multi-position switches, calculated. Closes Checklist steps 013 and 014.
+*Rev 2026-08-30 · owns: resistor values and expected ADC readings for every switch ladder.*
 
-**Values are E24 1%.** Every ADC figure below is theoretical — verify on the
-bench (Checklist 047–050) and write the measured value into the config lookup.
+All six multi-position switches, calculated. The decode tables the PMU gets
+are in [`PMU-CONFIG.md`](PMU-CONFIG.md) §1.
+
+**Values are E24 1 %.** Every ADC figure below is theoretical — verification
+against real resistors happens **in the car during Phase 6** (D-142), when the
+switches are genuinely wired; write the measured value into the config lookup.
 
 ---
 
@@ -59,8 +63,9 @@ held briefly, and the widest margin from the fault floor.
 
 ### A4 / A5 · Pop-up position — 3 states each
 
-Two limit switches per side feeding one node. `[V-030]` the internal motor
-pinout is still unknown, so these values are provisional on which contacts exist.
+Two limit switches per side feeding one node. `V-030` / `T-011` — the internal
+motor pinout is still unknown, so these values are provisional on which
+contacts exist.
 
 | State | R (E24) | ADC | Gap |
 |---|---|---|---|
@@ -73,7 +78,8 @@ DOWN state and distinguishable as a fault.
 
 ### A6 · Door pins — 4 states
 
-Two independent switches on one node. **This is the tightest ladder in the car**
+Two independent switches on one node. A fifth state — the luggage-compartment
+switch (`A-012`) — is proposed for this node; re-run the maths before adding it. **This is the tightest ladder in the car**
 because "both doors open" is the parallel combination and lands close to
 "passenger only."
 
@@ -121,10 +127,10 @@ count = V / 20 × 4095
 | PARK | 10 kΩ | 6.00 | **1229** | 1229 |
 | HEAD | 0 Ω (direct) | 12.00 | **2457** | 1228 |
 
-**Note the ambiguity:** OFF and "connector unplugged" both read 0. Unavoidable on
-the 12 V side without a bias resistor. If you want the distinction, add a 100 kΩ
-bias from +5 V to the node — OFF then sits near 100 counts and true open sits at
-0. Cheap; recommended.
+**OFF and "connector unplugged" would both read 0** without a bias. **A 100 kΩ
+bias from +5 V is fitted** (D-167): OFF then sits near 100 counts and a true
+open reads 0. If dimmer HI/LO and PASS move onto this node (`Q-065`) it becomes
+a summed ladder like A16 and the values below change.
 
 ### A16 · Key position — 4 states
 
@@ -143,8 +149,8 @@ Feed each ignition switch output through its own resistor into the shared node.
 Do **not** design this as a single-source ladder — it will read wrong the moment
 two contacts are live together.
 
-`[V-050]` Confirm on the car which ignition switch outputs stay live in RUN and
-START. The FSM shows ACC and IG both live in START on many Mazdas of this era,
+`V-050` / `T-023` — confirm on the car which ignition switch outputs stay live
+in RUN and START. The FSM shows ACC and IG both live in START on many Mazdas of this era,
 but it should be continuity-checked before the resistors are soldered.
 
 ---
@@ -158,13 +164,16 @@ Use 1% metal film, 1/4 W. Dissipation is negligible everywhere (worst case is
 about 2.5 mW). Heat-shrink each resistor individually and pot the cluster if it
 lives anywhere damp.
 
-## Bench procedure (Checklist 047–050)
+## Verification — in the car, Phase 6 (D-142)
 
-1. Build one ladder on a scrap switch.
-2. Read the ADC at every position; compare to the table above.
-3. Adjust values if any gap falls under 40 counts.
-4. Write the **measured** values into the config lookup, not the calculated ones.
-5. Repeat for all six.
+1. With the switch wired, read the ADC at every position in the PMU client;
+   compare to the table above.
+2. Adjust values if any gap falls under 40 counts.
+3. Write the **measured** values into the config lookup ([`PMU-CONFIG.md`](PMU-CONFIG.md) §1),
+   not the calculated ones.
+4. Repeat for all six.
 
-Expect real readings to sit a few counts off — the internal pull-up has tolerance
-and so does the reference.
+Expect real readings to sit a few counts off — the internal pull-up has
+tolerance and so does the reference. The bench ladder rig was dropped with the
+plywood mule (D-141); the firmware decode logic is proven separately by
+`ladder_decode_test`.

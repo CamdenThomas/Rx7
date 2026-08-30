@@ -1,5 +1,7 @@
 # Circuit — Stop, Tail, Parking, Side Marker, License, Back-up
 
+*Rev 2026-08-30 · owns: the factory decode of this circuit — devices, wires, logic. The rebuild table at the foot points into the new design and is not its owner; cavities are `02-HARNESS/data/connectors.csv`'s.*
+
 **Source:** Section F, page 22. All five share this sheet.
 
 ---
@@ -59,18 +61,18 @@ not the M/T switch.
 | Factory | PMU-24 plan |
 |---|---|
 | Stop + horn sharing one 15 A fuse | O7 brake and O11 horn, separate channels and separate soft fuses |
-| Stop light switch carrying lamp current | A3 input, switch-to-ground; O7 carries the load |
-| Stop light checker | Deleted — PMU current sensing does the same job better |
-| RG single marker bus | O6, split at panel to C2-B1 and C4-B1 |
-| Light switch carrying RG current | A15 ladder input, 0–20 V, reads switched 12 V directly |
-| Back-up on shared GY turn bus | O19, its own channel |
-| Inhibitor switch | Feeds O19 logic — becomes a PMU input `[Q-019]` no pin allocated yet |
-| Incandescent 8 W / 3.8 W / 6 W / 27 W | LED throughout |
+| Stop light switch carrying lamp current | A3 input, switch-to-ground (**L3-S1 5**); O7 carries the load to **L4-M 2**. Measured 7.0 A |
+| Stop light checker | Deleted — PMU current sensing does the same job (D-097) |
+| RG single marker bus | O6, split at the panel to **L2-M 7** (front park / markers) and **L4-M 1** (tail / plate / rear markers). Measure on `RG`, not `R` |
+| Light switch carrying RG current | A15 ladder input (**L3-S1 2**), 12 V side, reads switched 12 V with the D-167 bias |
+| Back-up on the shared GY turn bus | O19, its own channel → **L4-M 7** |
+| Inhibitor switch | Laddered onto one input (D-071) at **L1-S1 11** — **no PMU pin is free**, `Q-063` |
+| Incandescent 8 W / 3.8 W / 6 W / 27 W | **Stays incandescent** (D-119); LED is `lighting-body/` |
 
 ## 5 · Unknowns
 
 | ID | Unknown | Resolve by |
 |---|---|---|
-| Q-019 | Reverse trigger — inhibitor switch needs a PMU input, none allocated | Decide with Q-018; both are homeless inputs |
-| V-023 | Whether the cruise control unit is still fitted and wanted | Inspect car |
-| V-024 | Stop light checker present? Some cars had it deleted | Inspect car |
+| Q-019 → D-071 / `Q-063` | Reverse trigger — the inhibitor is laddered; which pin it lands on is the `Q-063` packet | Checklist 0.23 |
+| V-023 → D-097 | Cruise control unit | Gone, explicitly unwanted |
+| V-024 → D-097 | Stop light checker | Deleted from the design |

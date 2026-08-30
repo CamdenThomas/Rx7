@@ -1,16 +1,25 @@
 # CAN MESSAGE MAP
 
-*Draft. Finalise before firmware starts — `[Q-041]`.*
+*Rev 2026-08-30 · owns: the CAN2 message IDs, byte layouts, rates and timeout behaviour. `firmware/icu/can_map.h` is the machine-readable copy; when this file changes, that header and both firmware versions bump together.*
 
-**Bus:** CAN2 · 500 kbps · CAN 2.0B · 11-bit identifiers.
-The PMU is CAN 2.0 only, so the shared bus cannot be FD regardless of what the
-Teensys can do.
+**Bus:** CAN2 · 500 kbps · CAN 2.0B · 11-bit identifiers (D-086). The PMU is
+CAN 2.0 only, so the shared bus cannot be FD regardless of what the Teensys
+can do. **Priority:** lower ID = higher priority — safety and state first,
+telemetry last.
 
-**Priority:** lower ID = higher priority. Safety and state first, telemetry last.
+**Status:** the ICU, DCU and keypad messages (0x200–0x400) are **final**
+(D-106). The PMU messages (0x100–0x130) are **intent** until `V-065` — the
+PMU's own export format is fixed by ECUMaster, not by us, and must be read out
+of the client before anything depends on it.
+
+## Contents
+
+1. Nodes · 2. Message layouts · 3. Timeout behaviour · 4. Bus load ·
+5. Design rules · 6. Before you code
 
 ---
 
-## Nodes
+## 1 · Nodes
 
 | Node | Sends | Receives | Termination |
 |---|---|---|---|
@@ -18,98 +27,17 @@ Teensys can do.
 | CAN keypad | 0x400 | backlight state | — |
 | ICU | 0x200–0x21F | everything | — |
 | DCU | 0x300–0x31F | ICU sensors, keypad | — |
-| LS ECU (future) | 0x500+ | — | **Physical 120 Ω at the engine-bay drop** |
+| LS ECU (future) | 0x500+ | — | **Physical 120 Ω at the engine-bay drop** (D-079) |
 
----
+## 2 · Message layouts
 
-## Messages
+All messages **8 bytes, little-endian**, standard 11-bit ID. **Byte 7 of every
+message is a rolling counter**, incrementing 0–255, so a receiver can detect a
+stalled sender instead of showing stale data as live. Counter comparison is
+`(uint8_t)(now - prev) != 0` — unsigned subtraction wraps the same way the
+counter does ([`BENCH-BRINGUP.md`](BENCH-BRINGUP.md) Stage 2).
 
-### From the PMU
-
-| ID | Contents | Rate |
-|---|---|---|
-| `0x100` | Key state, wake state, global fault flag | 20 Hz |
-| `0x110` | Battery voltage, total current | 10 Hz |
-| `0x120` | Fuel level, output on/off states | 5 Hz |
-| `0x130` | Per-channel current, multiplexed | 5 Hz |
-
-### From the ICU
-
-| ID | Contents | Rate |
-|---|---|---|
-| `0x200` | RPM, water temp, oil pressure, oil temp, road speed | 20 Hz |
-| `0x210` | Sensor fault flags — open circuit, out of range, implausible | 2 Hz |
-
-### From the DCU
-
-| ID | Contents | Rate |
-|---|---|---|
-| `0x300` | Climate state, blower request, A/C request | 5 Hz |
-| `0x310` | Comfort bus states — seat heat, seat cool, mirrors, nozzles, de-icer | 2 Hz |
-| `0x320` | Radar subsystem state and alerts | on change |
-
-### From the keypad
-
-| ID | Contents | Rate |
-|---|---|---|
-| `0x400` | Button states, bitfield | on change |
-
----
-
-## Design rules
-
-**Single source of truth per signal.** If the PMU measures it, the ICU reads it
-from CAN — fuel level, battery voltage, key state, channel currents. Never fit a
-second sender for something already measured (D-078).
-
-**The ICU's critical gauges do not depend on this bus.** RPM, water temp, oil
-pressure, oil temp and speed are all on ICU-local inputs. If CAN2 fails entirely,
-only fuel level and battery voltage go blank (D-083).
-
-**Every message carries a rolling counter**, so a receiver can detect a stalled
-sender rather than displaying stale data as though it were live.
-
-**Timeout behaviour must be explicit.** Define, per message, what the receiver
-shows when it hasn't arrived in N cycles. A gauge frozen at its last value is
-worse than a gauge showing a fault.
-
----
-
-## The private link
-
-A second twisted pair runs DCU ↔ ICU, **capped at both ends** (D-087). Both
-Teensys have spare CAN controllers and one supports CAN-FD.
-
-Not used yet. It exists so climate state, diagnostics or display handoff can move
-off the vehicle bus later without touching either board. Two conductors inside
-the dash — cheap now, impossible later.
-
----
-
-## Before firmware starts
-
-- [ ] Confirm byte layout and scaling for every message
-- [ ] Confirm the PMU's own CAN export format from the client — **the PMU's
-      message structure is fixed by ECUMaster, not by us.** Read it out of the
-      software before designing around it
-- [ ] Decide endianness and stick to it
-- [ ] Write the map into a shared header both Teensys include
-
-**Changing an ID on paper is free. Changing it across three codebases is not.**
-
----
-
-# FINALISED MAP — byte layouts
-
-*2026-08. Closes `[Q-041]` on the design side. One item remains — see §Before you code.*
-
-All messages **8 bytes, little-endian**, standard 11-bit ID. Byte 7 of every
-message is a **rolling counter**, incrementing 0–255, so a receiver can detect a
-stalled sender instead of showing stale data as live.
-
----
-
-## 0x100 · PMU → all · Vehicle state · 20 Hz
+### 0x100 · PMU → all · Vehicle state · 20 Hz
 
 | Byte | Field | Encoding |
 |---|---|---|
@@ -122,7 +50,7 @@ stalled sender instead of showing stale data as live.
 | 6 | reserved | |
 | 7 | counter | |
 
-## 0x110 · PMU → all · Power · 10 Hz
+### 0x110 · PMU → all · Power · 10 Hz
 
 | Byte | Field | Encoding |
 |---|---|---|
@@ -132,21 +60,21 @@ stalled sender instead of showing stale data as live.
 | 5–6 | reserved | |
 | 7 | counter | |
 
-## 0x120 · PMU → all · Outputs · 5 Hz
+### 0x120 · PMU → all · Outputs · 5 Hz
 
 | Byte | Field | Encoding |
 |---|---|---|
-| 0–1 | Fuel level | uint16, 0.1% |
+| 0–1 | Fuel level | uint16, 0.1 % |
 | 2–4 | Output on/off | 24 bits, one per channel O1–O24 |
-| 5–6 | Soft-fuse tripped | 24 bits truncated — see note |
+| 5 | Trip state — channel index | 0–23, cycling |
+| 6 | Trip state — that channel's status | 0 ok · 1 tripped · 2 retrying |
 | 7 | counter | |
 
-> Trip flags need 24 bits but only 16 remain. **Send trip state as a multiplexed
-> byte instead**: byte 5 = channel index, byte 6 = that channel's status. Cycles
-> through all 24 in ~5 s at 5 Hz. Faults latch until cleared, so a slow cycle is
-> fine.
+Trip flags need 24 bits but only 16 remained, so they are multiplexed: byte 5
+= channel index, byte 6 = status. All 24 cycle in ~5 s at 5 Hz. Faults latch
+until cleared, so a slow cycle is fine.
 
-## 0x130 · PMU → all · Per-channel current · 5 Hz, multiplexed
+### 0x130 · PMU → all · Per-channel current · 5 Hz, multiplexed
 
 | Byte | Field | Encoding |
 |---|---|---|
@@ -157,22 +85,25 @@ stalled sender instead of showing stale data as live.
 | 6 | reserved | |
 | 7 | counter | |
 
----
+### 0x200 · ICU → all · Engine sensors · 20 Hz
 
-## 0x200 · ICU → all · Engine sensors · 20 Hz
-
-**The ICU's own inputs.** This is the message that must not depend on anything.
+**The ICU's own inputs.** This is the message that must not depend on
+anything. Stored metric (D-152); the display converts.
 
 | Byte | Field | Encoding |
 |---|---|---|
 | 0–1 | RPM | uint16, 1 rpm |
-| 2 | Water temp | int8, °C, offset −40 |
-| 3 | Oil temp | int8, °C, offset −40 |
+| 2 | Water temp | int8, °C |
+| 3 | Oil temp | int8, °C |
 | 4–5 | Oil pressure | uint16, 0.01 bar |
 | 6 | Road speed | uint8, km/h |
 | 7 | counter | |
 
-## 0x210 · ICU → all · Sensor health · 2 Hz
+The −40 offset in the first draft was removed — `int8_t` covers every
+temperature this car will see, and the offset was a bug class for nothing
+(Stage 2 found the macros self-cancelling).
+
+### 0x210 · ICU → all · Sensor health · 2 Hz
 
 | Byte | Field | Encoding |
 |---|---|---|
@@ -182,21 +113,19 @@ stalled sender instead of showing stale data as live.
 | 3–6 | reserved | |
 | 7 | counter | |
 
----
-
-## 0x300 · DCU → all · Climate · 5 Hz
+### 0x300 · DCU → all · Climate · 5 Hz
 
 | Byte | Field | Encoding |
 |---|---|---|
 | 0 | Mode | 0 off · 1 vent · 2 heat · 3 defrost · 4 A/C |
 | 1 | Blower speed | 0–3 |
 | 2 | Target temp | uint8, °C |
-| 3 | Cabin temp | int8, °C, offset −40 |
+| 3 | Cabin temp | int8, °C |
 | 4 | A/C request | 0 no · 1 yes |
 | 5–6 | reserved | |
 | 7 | counter | |
 
-## 0x310 · DCU → all · Comfort bus · 2 Hz
+### 0x310 · DCU → all · Comfort bus · 2 Hz
 
 | Byte | Field | Encoding |
 |---|---|---|
@@ -208,7 +137,7 @@ stalled sender instead of showing stale data as live.
 | 6 | reserved | |
 | 7 | counter | |
 
-## 0x320 · DCU → all · Radar · on change
+### 0x320 · DCU → all · Radar · on change
 
 | Byte | Field | Encoding |
 |---|---|---|
@@ -218,20 +147,16 @@ stalled sender instead of showing stale data as live.
 | 3–6 | reserved | |
 | 7 | counter | |
 
----
-
-## 0x400 · Keypad → all · Buttons · on change
+### 0x400 · Keypad → all · Buttons · on change
 
 | Byte | Field |
 |---|---|
 | 0 | Button states, bitfield, 8 keys |
-| 1 | Button held ≥1 s, bitfield |
+| 1 | Button held ≥ 1 s, bitfield |
 | 2–6 | reserved |
 | 7 | counter |
 
----
-
-## Timeout behaviour — define it once, obey it everywhere
+## 3 · Timeout behaviour — define it once, obey it everywhere
 
 | Message | Timeout | Receiver shows |
 |---|---|---|
@@ -242,12 +167,11 @@ stalled sender instead of showing stale data as live.
 | 0x300 / 0x310 | 2 s | Climate display shows "—" |
 | 0x400 | none | Buttons are event-driven |
 
-**A gauge frozen at its last value is worse than a gauge showing a fault.** Blank
-or dash it, never hold.
+**A gauge frozen at its last value is worse than a gauge showing a fault.**
+Blank or dash it, never hold. The ICU renders a stale CAN value as dim green
+dashes, distinct from a hardware fault (D-153).
 
----
-
-## Bus load check
+## 4 · Bus load
 
 | ID | Bytes | Hz | bits/s |
 |---|---|---|---|
@@ -261,22 +185,28 @@ or dash it, never hold.
 | 0x310 | 8 | 2 | ~224 |
 | **Total** | | | **~7.7 kbit/s** |
 
-Against **500 kbit/s that is roughly 1.5% bus load.** Enormous headroom, even
+Against 500 kbit/s that is roughly 1.5 % bus load. Enormous headroom, even
 before the LS ECU joins. No reason to raise the bit rate or trim rates.
 
----
+## 5 · Design rules
 
-## Before you code — the one open item
+**Single source of truth per signal** (D-078). If the PMU measures it, the ICU
+reads it from CAN — fuel level, battery voltage, key state, channel currents.
+Never fit a second sender for something already measured.
 
-**Read the PMU's own CAN export format out of the client software first.**
-ECUMaster fixes the PMU's message structure; we do not. Messages 0x100–0x130
-above are the *intent* — the actual IDs and byte layouts must match whatever the
-PMU is configured to transmit.
+**The ICU's critical gauges do not depend on this bus** (D-083). RPM, water
+temp, oil pressure, oil temp and speed are all on ICU-local inputs. If CAN2
+fails entirely, only fuel level and battery voltage go blank.
 
-The ICU, DCU and keypad messages (0x200–0x400) are entirely ours and the layouts
-above are final.
+**Every message carries a rolling counter.** **Timeout behaviour is explicit.**
 
-- [ ] Export the PMU CAN stream definition from the client
-- [ ] Reconcile 0x100–0x130 against it
-- [ ] Write the reconciled map into a shared `can_map.h` both Teensys include
-- [ ] Tag that header. When it changes, both firmware versions bump together
+## 6 · Before you code against the PMU messages
+
+- [ ] `V-065` — export the PMU CAN stream definition from the client
+      (`CHECKLIST.md` 2.5)
+- [ ] Reconcile 0x100–0x130 against it; update `can_map.h` and this file
+      together
+- [ ] Tag the header. When it changes, both firmware versions bump together
+
+Stages 2 and 3 of [`BENCH-BRINGUP.md`](BENCH-BRINGUP.md) already proved packing, round-trip,
+counter wrap and dispatch for every layout above.

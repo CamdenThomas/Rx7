@@ -1,215 +1,105 @@
 # SILL NODE — secondary distribution point
 
+*Rev 2026-08-30 · owns: what the sill plate holds, the door connectors D1/D2, and the sill ground rule. Cavities are [`PIN-MAP.md`](PIN-MAP.md)'s.*
+
 Created by D-065 (window relays at the sill) and D-068 (doors get their own
-connector pair). The sill stops being a pass-through and becomes a small
-distribution node — the only one outside the dash post.
+connector pair). The sill is a small distribution node — the only one outside
+the dash post — and a sub-assembly of the REAR CABIN leg, not a fifth leg: it
+has no independent removal boundary (D-132). Diagram: `diagrams/sill-doors.svg`.
 
 ---
 
-## What lives here
+## What the sill plate holds
 
-| Item | Qty | Note |
+| Item | Qty | State |
 |---|---|---|
-| Window H-bridge relays K5–K8 | 4 | Driver up/down, passenger up/down |
-| Branch fuses F8, F9 | 2 | 15 A each, one per window |
-| Local ground node | 1 | Door returns terminate here, not in the door |
-| Door connectors D1, D2 | 2 | One per door, through the boot |
-| Small backer plate | 1 | Relays + fuses, mounted behind the kick panel or sill trim |
+| Door connectors D1, D2 — `DT06-08S` each (D-092) | 2 | **LIVE** — door pin, mirror motors, mirror heat |
+| Local ground stud | 1 | **LIVE** — every door return terminates here |
+| Mirror heat branch fuse F14 | 1 | DEFERRED — position fitted; conductor from O15 is `Q-062` |
+| Window H-bridge relay sockets K5–K8 | 4 | **PROVISIONED — fitted, empty** (D-131) |
+| Window branch fuse positions F8, F9 | 2 | **PROVISIONED — fitted, empty** |
+| Small backer plate behind the kick panel | 1 | Space to be measured — `V-055` / `T-028` |
 
-**Why this works better than the box:** the motor legs are now inches long
-instead of running the tunnel, the environment is dry and heated, and the relays
-are reachable by pulling one trim panel rather than dropping the dash.
+**Build it complete. Populate it later.** Fitting four empty sockets and two
+spare fuse positions to a plate on the bench costs a few dollars; adding a
+plate behind a trim panel on a finished car costs an afternoon and means
+pulling the sill again.
 
-**Why it is not a fifth leg:** it has no independent removal boundary. It comes
-out with the REAR CABIN leg, as a sub-assembly of it.
+## Door connectors — D1 driver, D2 passenger
 
----
+One `DT06-08S` per door (D-092), exactly eight cavities, zero spare (D-093).
 
-## What crosses the tunnel now
+| Cav | Circuit | AWG | Source | State |
+|---|---|---|---|---|
+| 1 | Window motor — leg A | 14 | K5/K6 (D1) · K7/K8 (D2) at the sill | PROVISIONED — **capped in the door** |
+| 2 | Window motor — leg B | 14 | same | PROVISIONED — capped in the door |
+| 3 | Door pin switch | 16 | A6 ladder via L4-S 2 | LIVE |
+| 4 | Mirror motor — common | 16 | Mirror control — `Q-062` / `V-060` | DEFERRED |
+| 5 | Mirror motor — X axis | 16 | same | DEFERRED |
+| 6 | Mirror motor — Y axis | 16 | same | DEFERRED |
+| 7 | Mirror heat feed | 16 | Sill fuse F14 ← O15 | DEFERRED |
+| 8 | Ground → sill node | 16 | Sill ground stud | LIVE |
 
-**Before D-065** — four 12 AWG motor legs plus commands.
-**After D-065** — one 12 AWG feed plus four 16 AWG commands.
+**The wire goes into the door now** whether or not a motor is on the end of it
+(D-004). Pulling a door card once is fine; pulling it twice is a waste of a
+weekend. 14 AWG is at the very top of the size-16 seal range — it fits, with
+no margin above (D-116).
 
-| Conductor | Class | From | To |
+`V-060` — confirm the chosen mirrors need exactly three motor conductors before
+ordering; some digital units use a serial interface, which would free two
+cavities and change the DCU's job.
+
+## What crosses the tunnel to the sill
+
+| Conductor | Class | Path | State |
 |---|---|---|---|
-| Window motor bus feed | 12 AWG | O1 via L4-P1 cav 3 | Sill relay commons |
-| Window DRV up command | 16 AWG | Dash switch via L3-S → box → L4 | K5 coil |
-| Window DRV down command | 16 AWG | " | K6 coil |
-| Window PASS up command | 16 AWG | " | K7 coil |
-| Window PASS down command | 16 AWG | " | K8 coil |
+| Window motor bus feed | 12 AWG | O1 → L4-P 3 → K5–K8 commons | PROVISIONED, capped |
+| Window commands ×4 | 16 AWG | L3-S2 3–6 → box → L4-M 9–12 → K5–K8 coils | PROVISIONED, capped |
+| Door pin ladder | 16 AWG | D1 3 / D2 3 → L4-S 2 → A6 | LIVE |
+| **O15 comfort feed for mirror heat** | — | **not yet allocated** | `Q-062` |
+| **Mirror motor control from the dash** | — | **not yet allocated** — depends on `V-060` | `Q-062` |
+| **Door-pin wake source** | — | **not yet allocated** | `Q-062` |
 
-**Net effect on the tunnel:** three fewer 12 AWG runs, four more 16 AWG. Less
-copper, less weight, less bend radius, and `L4-P2` disappears entirely.
+Before D-065 four 12 AWG motor legs crossed the tunnel; now one provisioned
+feed and four 16 AWG commands do, and `L4-P2` disappeared entirely (D-066).
 
----
+## Mirrors — option B (D-093)
 
-## Door connectors
-
-### D1 · Driver door
-
-| Cav | Circuit | AWG | Source |
-|---|---|---|---|
-| 1 | Window motor — leg A | 12 | K5/K6 at the sill |
-| 2 | Window motor — leg B | 12 | K5/K6 at the sill |
-| 3 | Heated mirror | 16 | O15 comfort bus via F11 |
-| 4 | Door pin switch | 16 | A6 ladder |
-| 5 | Mirror motor — common | 16 | Dash mirror switch |
-| 6 | Mirror motor — horizontal | 16 | Dash mirror switch |
-| 7 | Mirror motor — vertical | 16 | Dash mirror switch |
-| 8 | Ground | 16 | **Sill node, not the door** |
-
-### D2 · Passenger door
-
-Identical, on K7/K8.
-
-**Housing:** DTP06-2S for the two motor legs + DT06-6S for the rest, per door.
-Or a single DT06-08S if the motor legs drop to 14 AWG — `[Q-033]`.
-
----
-
-## The mirror control problem
-
-`[Q-034]` — **unresolved.** The factory mirror switch (I-01) does both selection
-and direction: it picks which mirror, then which axis and polarity. That means
-the wires from the dash switch to the mirrors are *shared* between both sides,
-with the switch doing the multiplexing.
-
-Two ways to handle it:
-
-| Option | Conductors dash→sill | Note |
-|---|---|---|
-| **A** — Keep the factory shared-bus switch | 3 shared + 1 select | Fewest wires. Requires the original switch to be working |
-| **B** — Independent wiring per mirror | 6 | Simpler to understand, more copper, needs a different switch |
-
-Option A is what the factory did and it is genuinely efficient. It depends on
-V-036 — whether the original switch and mirrors still work.
-
----
+The factory multiplexing mirror switch (I-01) is dead (`V-036` → D-097).
+New mirrors — larger, heated, digital control (`T-031`) — are wired
+independently per side. Nothing of the factory shared-bus scheme is inherited.
 
 ## Ground rule at the sill
 
 **Door grounds terminate at the sill node, not inside the door.** A ground
 crossing the door boot is a ground crossing a flex point, and door boots are
-where harnesses die. Every return in D1 and D2 lands on the sill stud.
+where harnesses die. Every return in D1 and D2 lands on the sill stud. The
+sill node grounds to the chassis locally and does **not** return to the dash
+post (D-017).
 
-The sill node itself grounds to the chassis locally, and does **not** return to
-the dash post.
+## Window H-bridge — provisioned (D-131)
 
----
+Electrically identical to the pop-up bridge; drawn in
+[`../01-DESIGN/SCHEMATICS.md`](../01-DESIGN/SCHEMATICS.md) §3. The car has no power windows today. Adding
+them later ([`../04-SUBSYSTEMS/DEFERRED-FEATURES.md`](../04-SUBSYSTEMS/DEFERRED-FEATURES.md) §1):
+
+1. Fit regulators with motors
+2. Plug into the capped D1/D2 legs
+3. Populate K5–K8
+4. Fit F8, F9
+5. Uncap the switch inputs at L3-S2, fit switches
+6. Enable the outputs and the interlock logic in the PMU
+
+**No harness work. No connector opened.**
 
 ## Build sequence impact
 
-| Checklist step | Change |
+| [`CHECKLIST.md`](../05-BUILD/CHECKLIST.md) step | What the sill adds |
 |---|---|
-| 080 | Mount 16 relay sockets → **10 sockets in the box**, populate 5 |
-| — | **New:** fabricate and mount the sill plate, 4 sockets + 2 fuses |
-| 086 | Relay bank wiring splits between the box and the sill |
-| 101–110 | L4 leg now includes a sill sub-assembly stage |
-| 115 | Sill node installs with the L4 leg, before the doors are connected |
+| 4.4 | Plate: 10 sockets, populate 5 — the other 4 sockets are here, empty |
+| 5.11 | Fabricate the sill plate — 4 sockets, F8/F9/F14 positions, ground stud |
+| 5.13 | Build D1 and D2 |
+| 6.6 | Install the sill node with the L4 leg, before the doors are connected |
 
-**The sill node should be built and bench-tested with the L4 leg**, not
-separately. It is part of that harness, not part of the panel.
-
----
-
-## UPDATE 2026-08 — D-093 mirrors, D-092 door housings
-
-### D1 / D2 · one DT06-08S per door
-
-`[Q-033 answered]` Single housing per door. Window motor legs drop to **14 AWG** —
-ample sill-to-door, and DT size-16 is rated 13 A against a 10–15 A stall.
-
-`[Q-034 answered — option B]` The factory multiplexing mirror switch is dead
-(V-036). New mirrors: **larger, heated, digital control**, wired independently
-per side. No reason to inherit the factory shared-bus scheme.
-
-**The budget lands exactly at 8 cavities:**
-
-| Cav | Circuit | AWG |
-|---|---|---|
-| 1 | Window motor — leg A | 14 |
-| 2 | Window motor — leg B | 14 |
-| 3 | Door pin switch | 16 |
-| 4 | Mirror motor — common | 16 |
-| 5 | Mirror motor — X axis | 16 |
-| 6 | Mirror motor — Y axis | 16 |
-| 7 | Mirror heat feed | 16 |
-| 8 | Ground → **sill node** | 16 |
-
-**Zero spare cavities.** That's tight by design — the alternative was two
-housings per door for one spare each. `[V-060]` confirm the chosen mirrors need
-exactly three motor conductors before ordering; some digital units use a serial
-interface instead, which would free two cavities and change the DCU's job.
-
-### What this removes
-
-Mirror motors no longer consume the L4-S spares. `V-035` (door branch
-oversubscribed) is fully closed — the sill node plus a dedicated door housing
-solved it.
-
-### Sill node, revised
-
-| Item | Qty |
-|---|---|
-| Window H-bridge relays K5–K8 | 4 |
-| Branch fuses F8, F9 | 2 |
-| **Mirror heat branch fuse** | 1 |
-| Local ground stud | 1 |
-| Door connectors D1, D2 | 2 × DT06-08S |
-
-`[V-055]` still open — the sill needs room for 4 relays, 3 fuses and a ground
-stud behind the kick panel. Measure before fabricating the plate.
-
----
-
-## UPDATE 2026-08 — windows are manual (D-131)
-
-**This car has no power windows.** No motors, regulators, switches or factory
-wiring. The sill node is built anyway, with the window hardware provisioned and
-empty.
-
-### What the sill node actually holds now
-
-| Item | State |
-|---|---|
-| Door connectors D1, D2 | **Live** — door pin, mirror heat, mirror motors |
-| Local ground stud | **Live** — all door returns terminate here |
-| Mirror heat branch fuse | **Live** |
-| K5–K8 relay sockets | **Fitted, empty** |
-| F8, F9 fuse positions | **Provisioned, empty** |
-
-### Why build the plate now
-
-Fitting four empty sockets and two spare fuse positions to a plate on the bench
-costs a few dollars. Adding a plate behind a trim panel on a finished car costs
-an afternoon and means pulling the sill again.
-
-**Build it complete. Populate it later.**
-
-### D1 / D2 cavity state
-
-| Cav | Circuit | State |
-|---|---|---|
-| 1 | Window motor leg A | **Capped in the door** |
-| 2 | Window motor leg B | **Capped in the door** |
-| 3 | Door pin switch | Live |
-| 4 | Mirror motor — common | Live |
-| 5 | Mirror motor — X axis | Live |
-| 6 | Mirror motor — Y axis | Live |
-| 7 | Mirror heat feed | Live |
-| 8 | Ground → sill node | Live |
-
-**The wire goes into the door now** whether or not a motor is on the end of it.
-Pulling a door card once is fine; pulling it twice is a waste of a weekend.
-
-### Adding windows later
-
-1. Fit regulators with motors
-2. Plug into the capped `D1`/`D2` legs
-3. Populate K5–K8
-4. Fit F8, F9
-5. Uncap the switch inputs at `L3-S`, fit switches
-6. Enable the outputs and the interlock logic in the PMU
-
-**No harness work. No connector opened.** See
-`../04-SUBSYSTEMS/DEFERRED-FEATURES.md`.
+**The sill node is built and bench-tested with the L4 leg**, not separately.
+It is part of that harness, not part of the panel.

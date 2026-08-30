@@ -1,7 +1,8 @@
 # PANEL LAYOUT — planning
 
-*Blocked on `[Q-014]` / `T-007` for final dimensions. Everything that can be
-decided without the measurement is decided here.*
+*Rev 2026-08-30 · owns: what has to fit on the plate and the layout principles. Blocked on `Q-014` / `T-007` for final dimensions.*
+
+Everything that can be decided without the measurement is decided here.
 
 ---
 
@@ -11,11 +12,11 @@ decided without the measurement is decided here.*
 |---|---|---|
 | **PMU-24 DL** | 131 × 112.1 × 32.5 mm | 3 × Ø6.5 mounting. Connector on the short edge, stud opposite |
 | Relay sockets ×10 | ~26 × 26 mm each | 5 populated: K1–K4, K11 |
-| Fuse block, 13 way | ~120 × 60 mm | ATO/mini |
+| Fuse block, 13 way | ~120 × 60 mm | ATO/mini. F13 is spare (`Q-061`) |
 | Busbar, always-hot | ~100 × 25 mm | |
 | Ground bus | ~100 × 25 mm | |
-| Diode-OR terminal strip | 8 position, ~80 mm | 6 used |
-| **Leg receptacles ×14** | see below | The real space consumer |
+| Diode-OR terminal strip | 8 position, ~80 mm | 6 used (D-072) |
+| **Leg receptacles ×15** | see below | The real space consumer — L1-S is two DT-12s |
 | DP-DIAG, DP-KEY, DP-ICU, DP-DCU | 4 more | |
 | Battery lugs ×2 | M8 studs | |
 
@@ -47,8 +48,8 @@ flyback return for every inductive load.
 **3 · Stud feed short and direct.** Busbar next to the stud.
 
 **4 · Separate the relay bank from the signal receptacles.** K1–K4 switch
-inductively. Signal legs — L1-S, L2-S, L3-S1/S2/S3, L4-S, DP-ICU — should not run
-past them.
+inductively. Signal legs — L1-S1/S2, L2-S, L3-S1/S2/S3, L4-S, DP-ICU — should
+not run past them.
 
 **5 · Group receptacles by leg.** All of L2's four housings adjacent, all of L3's
 five adjacent. A leg comes out as a unit; it should unplug as one.
@@ -71,8 +72,8 @@ the constant-bus fuses that will be checked when something odd happens.
    │            ↑ lever arc                       │
    │  [K1..K4] [K11] [6 spare sockets]            │
    │                                              │
-   ├──── L1 ──┬── L2 ────┬── L3 ──────┬── L4 ─────┤
-   │  P  S S  │ P1 P2 M S│ P M S1 S2 S3│ P  M  S  │
+   ├──── L1 ───┬── L2 ────┬── L3 ──────┬── L4 ─────┤
+   │  P S1 S2  │ P1 P2 M S│ P M S1 S2 S3│ P  M  S  │
    └─────────────────────────────────────────────┘
          DP-DIAG  DP-KEY  DP-ICU  DP-DCU
 ```
@@ -82,7 +83,7 @@ edge if frontage runs short.
 
 ## The measurement that decides everything
 
-`[T-007]` Dash cavity: **width × height × depth**, plus:
+`T-007` — dash cavity: **width × height × depth**, plus:
 
 - Clear arc for the 39-pin lever
 - Depth for the deepest connector plus its backshell and wire bend radius —
@@ -91,8 +92,9 @@ edge if frontage runs short.
 - Somewhere the panel can be unbolted and withdrawn as a unit
 
 **The panel got smaller than originally planned** — the relay bank dropped from
-16 sockets to 10 when K5–K8 moved to the sill (D-067). If space was going to be
-the problem, it is less of one now.
+16 sockets to 10 when K5–K8 moved to the sill (D-067), and those four sockets
+sit empty until power windows are fitted (D-131). If space was going to be the
+problem, it is less of one now.
 
 ## Fabrication
 

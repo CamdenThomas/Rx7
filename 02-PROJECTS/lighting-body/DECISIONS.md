@@ -1,6 +1,6 @@
 # Decision Log — Lighting & Body
 
-*Rev 2026-08 · append-only. Never edit or delete an entry.*
+*Rev 2026-08-30 · owns: this project's decisions — inherited D-107/110/111 and local L-001 … L-004. Append-only; never edit or delete an entry. Open items are `OPEN.md`'s.*
 
 This project inherited three decisions from the electrical rebuild when lighting
 was split out (D-123). They keep their original electrical-project IDs so
@@ -39,7 +39,7 @@ turn-override locally. No backfeed between O6 and O7.
 
 ## Local decisions
 
-**L-001** — `[Q-047]` **Reverse section: 5 cm wide, 2.2 cm strip height.**
+**L-001** — Q-047 → **Reverse section: 5 cm wide, 2.2 cm strip height.**
 
 Backup lamps have **no minimum lens area** federally. But brightness does not
 substitute for area, because a reverse lamp's job is to *light the ground*, not
@@ -48,7 +48,7 @@ instead of a wash, plus glare.
 
 At a nominal 30 cm aperture: 5 cm reverse leaves 25 cm of red, which at 2.0 cm
 is exactly 50 cm². **2.2 cm gives 55 cm² — 10% margin**, so a measurement error
-in `V-063` doesn't put it under the line.
+in `V-063` doesn't put it under the line. Reasoning in `TAIL-LIGHTS.md` §8.
 
 **L-002** — **Headlamps are not a custom-build item.** A strip of LEDs cannot
 produce a beam cutoff, and no care in fabrication fixes that — the optic is the
@@ -60,8 +60,9 @@ is a beam pattern measured across a grid of angles.
 
 **L-003** — **Soft fuses must be re-set after any bulb change.** Values set
 against incandescent are far too generous for LED — a tail circuit set at 6 A
-does not protect a 3 A LED load. Second-pass table is already waiting in
-`../electrical-pmu/05-BUILD/MIGRATION-LOG.md`.
+does not protect a 3 A LED load. The same rule is D-122 on the electrical side;
+the second-pass table is already waiting in
+[`../electrical-pmu/05-BUILD/MIGRATION-LOG.md`](../electrical-pmu/05-BUILD/MIGRATION-LOG.md).
 
 **L-004** — **Hard prerequisite: the electrical rebuild is finished and shaken
 down.** Phases 6, 7 and 8 complete, factory harness out, car driving on the PMU
@@ -72,11 +73,6 @@ change bulbs.
 
 ## Open
 
-| ID | Question |
-|---|---|
-| `Q-048` | Headlamp unit — 4×6 rectangular LED + adapter plate, 5×7, or 7-inch round with a rectangular element |
-| `V-063` | **Tail light aperture dimensions.** Drives the whole design |
-| `V-064` | DOT/SAE LED module source, red and white, with published candela |
-| `V-066` | Does this car use 7-inch round or rectangular sealed beams? |
-| `V-058` | Display nit rating if any screen is involved — 800–1000 minimum |
-| — | Body scope: rust survey `[K-007]`, paint, trim, seals |
+Moved to [`OPEN.md`](OPEN.md) — Q-048, V-063, V-064, V-066. (V-058, the
+display nit rating, was listed here by mistake; it belongs to the ICU and lives
+in the electrical project's `OPEN.md`.)

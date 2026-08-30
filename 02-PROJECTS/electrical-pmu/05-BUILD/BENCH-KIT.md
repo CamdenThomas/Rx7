@@ -1,8 +1,6 @@
 # BENCH KIT
 
-*Rev 2026-08 · owns: materials and tools for Phase 2A and 2B*
-
-Harness materials are in `../06-PROCUREMENT/BOM.md` and `CUT-LIST.md`.
+*Rev 2026-08-30 · owns: materials and tools for Phase 2A and 2B — what is in hand, what is still to buy, and the bench setup. Harness materials are [`../06-PROCUREMENT/BOM.md`](../06-PROCUREMENT/BOM.md)'s and [`CUT-LIST.md`](CUT-LIST.md)'s; what was actually bought is [`../06-PROCUREMENT/BUY-LIST.md`](../06-PROCUREMENT/BUY-LIST.md)'s (D-140).*
 
 ---
 
@@ -13,17 +11,17 @@ Harness materials are in `../06-PROCUREMENT/BOM.md` and `CUT-LIST.md`.
 | Teensy 4.1 | 3 |
 | SN65HVD230 CAN transceiver modules | 5 |
 | Header pins, 0.1" male | ✓ **unsoldered** |
-| micro-USB cables | plenty |
+| micro-USB cable | 1 (D-140 — one was bought, not several) |
 | UNI-T UT210E clamp meter | 1 |
 | PMU-24 DL + connector + 39 terminals | 1 |
-| Spare Sicma housings | 2 inbound |
+| Spare Sicma housings | 2 — **inbound**; `T-027` done, `T-045` checks them on arrival |
 
 **Terminal stock:** 12 large `FCI` of 16 supplied · 27 small `FCI 125` of 27
 supplied — **zero small spares**.
 
 ---
 
-## To buy — ~$98–153
+## To buy — ~$98–153 · **none of this has been bought yet** (D-140)
 
 | # | Item | ~$ | For |
 |---|---|---|---|
@@ -72,14 +70,15 @@ this device from a fuse box.
 
 ### Before Phase 4
 
-**Open-barrel crimper for the FCI terminals** `[V-069]`
+**Open-barrel crimper for the FCI terminals** (`V-069`)
 
 The Sicma/FCI terminals are **open-barrel**. You need ratcheting open-barrel dies
 covering **1.5 mm (14–17 AWG)** and **2.8 mm (10–16 AWG)**.
 
 > **Confirm the die against an actual terminal before buying**, and **order spare
-> 1.5 mm terminals first (T-044)**. You have zero small spares. Make three
-> practice crimps and pull-test them (Checklist 1.9–1.10) before a real one.
+> 1.5 mm terminals first (`T-044`, Checklist 1.8)**. You have zero small spares.
+> Make three practice crimps and pull-test them (Checklist 1.10–1.11) before a
+> real one.
 
 ### Later
 

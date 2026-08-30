@@ -1,14 +1,20 @@
 # PARTS HISTORY
 
-*Source: `Part Dates - Sheet1.pdf`, imported 2026-08. Incomplete — more to come.*
+*Rev 2026-08-30 · owns: every part bought for the car — what, when, where, how much. Imported from `01-REFERENCE/Part Dates - Sheet1.pdf`, 2026-08. Incomplete — more to come. [`modifications.md`](modifications.md) is the summary.*
 
 **Rule: a date means it's installed. No date means it hasn't been done yet.**
 
 ---
 
-# INSTALLED
+## Contents
 
-## August 2025 · Ignition
+Installed — Aug 2025 ignition · Sep 2025 gaskets and service · Nov 2025 Weber · Jul 2026 brakes · Not done · Totals · Cross-references · To add
+
+---
+
+## INSTALLED
+
+### August 2025 · Ignition
 
 | Part | Source | $ | Link |
 |---|---|---|---|
@@ -21,7 +27,7 @@
 
 **Subtotal ≈ $95**
 
-## September 2025 · Engine gaskets, oil service, belt
+### September 2025 · Engine gaskets, oil service, belt
 
 | Part | Source | $ | Link |
 |---|---|---|---|
@@ -35,11 +41,11 @@
 
 **Subtotal ≈ $10 recorded** — most prices not captured
 
-## November 2025 · Weber conversion
+### November 2025 · Weber conversion
 
 The big one. Carburetor, jetting, and the whole fuel system.
 
-### Intake
+#### Intake
 
 | Part | Source | $ | Link |
 |---|---|---|---|
@@ -54,7 +60,7 @@ The big one. Carburetor, jetting, and the whole fuel system.
 | Brake boost fitting | Amazon | 25 | [B07K7KKPTF](https://www.amazon.com/dp/B07K7KKPTF) |
 | Transmission fitting | Amazon | 15 | [B07DR69WQ5](https://www.amazon.com/dp/B07DR69WQ5) |
 
-### Fuel system
+#### Fuel system
 
 | Part | Source | $ | Link |
 |---|---|---|---|
@@ -68,7 +74,7 @@ The big one. Carburetor, jetting, and the whole fuel system.
 
 **Subtotal ≈ $1,398**
 
-## July 2026 · Full brake overhaul + A/C belt + oil change — at 150,000 miles
+### July 2026 · Full brake overhaul + A/C belt + oil change — at 150,000 miles
 
 Both ends done in one pass. Every friction surface, bearing and hydraulic
 cylinder replaced. **System bled — pedal firm, fluid clean.** Engine oil changed
@@ -77,7 +83,7 @@ at the same time.
 **Done deliberately early**, before wear demanded it. Treat these components as
 near-new when planning anything downstream.
 
-### Front
+#### Front
 
 | Part | Source | $ | Link |
 |---|---|---|---|
@@ -86,7 +92,7 @@ near-new when planning anything downstream.
 | Wheel seals | — | — | — |
 | Brake pads | — | — | — |
 
-### Rear
+#### Rear
 
 | Part | Source | $ | Link |
 |---|---|---|---|
@@ -95,7 +101,7 @@ near-new when planning anything downstream.
 | Wheel bearings | — | — | — |
 | Wheel cylinders | — | — | — |
 
-### Belts
+#### Belts
 
 | Part | Source | $ | Link |
 |---|---|---|---|
@@ -106,15 +112,15 @@ rest of the sheet arrives.
 
 ---
 
-# NOT DONE — no date recorded
+## NOT DONE — no date recorded
 
-## Engine
+### Engine
 
 | Part | Source | Link |
 |---|---|---|
 | Air filter | — | — |
 
-## Exhaust — nothing done
+### Exhaust — nothing done
 
 | Part | Source | Link |
 |---|---|---|
@@ -123,11 +129,11 @@ rest of the sheet arrives.
 | Muffler gasket | Racing Beat | [16314](https://www.racingbeat.com/RX7-1975-1985/Exhaust-Gaskets/16314.html) |
 | Muffler mounts | Racing Beat | — |
 
-## Belts
+### Belts
 
 *A/C belt fitted July 2026 — moved to the installed section above.*
 
-## Transmission — nothing done
+### Transmission — nothing done
 
 | Part | Source | Link |
 |---|---|---|
@@ -137,26 +143,26 @@ rest of the sheet arrives.
 | Drain plug gasket | — | — |
 | Filter | RockAuto | [pk 4843812](https://www.rockauto.com/en/moreinfo.php?pk=4843812&cc=1192250&pt=8600&jsn=604) |
 
-## Sensors — nothing done
+### Sensors — nothing done
 
 | Part | Source | Link | Note |
 |---|---|---|---|
-| **Water temp sender** | Mazdatrix | [rear housing, new](https://mazdatrix.com/product/sender-water-temp-all-new-rear-hsg/) | **Feeds the ICU** — see `DCU-CLUSTER.md` §6 |
+| **Water temp sender** | Mazdatrix | [rear housing, new](https://mazdatrix.com/product/sender-water-temp-all-new-rear-hsg/) | **Feeds the ICU** — see [`DCU-CLUSTER.md`](../02-PROJECTS/electrical-pmu/03-MODULES/DCU-CLUSTER.md) §6 |
 | **Oil pressure sender** | — | — | **Feeds the ICU.** Not yet sourced |
 
-## Rear subframe
+### Rear subframe
 
 | Part | Source | Link |
 |---|---|---|
 | Gear oil — Valvoline 75W-90 | Walmart | [link](https://www.walmart.com/ip/Valvoline-Flex-Fill-75W-90-Full-Synthetic-Gear-Oil-1-QT-Squeeze-Pouch/329480316) |
 
-## Front subframe
+### Front subframe
 
 Nothing listed yet.
 
 ---
 
-# Totals
+## Totals
 
 | | ~$ |
 |---|---|
@@ -169,22 +175,22 @@ the alternator belt in particular.
 
 ---
 
-# Cross-references into the electrical project
+## Cross-references into the electrical project
 
 Three items here matter to the PMU build:
 
 | Part | Why |
 |---|---|
-| **Fuel pump** (Pegasus, Nov 2025) | This is the **Carter P4070** on O5. `[V-054]` current draw still unconfirmed |
+| **Fuel pump** (Pegasus, Nov 2025) | This is the **Carter P4070** on O5. `V-054` current draw still unconfirmed |
 | **Water temp sender** (Mazdatrix, not done) | An **ICU input**, not a PMU one. Sourced but not fitted |
 | **Oil pressure sender** (not sourced) | Same — ICU input. Needs sourcing |
 
 Coils and spark plug wires were replaced August 2025, which answers part of
-`[V-001]` — the ignition is a known-good recent install.
+`V-001` — the ignition is a known-good recent install.
 
 ---
 
-# To add when the rest of the list arrives
+## To add when the rest of the list arrives
 
 - Suspension and bushings
 - Brakes

@@ -1,24 +1,31 @@
 # Factory Circuits — decoded from the 1982 wiring diagram
 
-> **Read this before using the "what this means for the rebuild" tables.**
-> Every circuit file ends with a mapping to the new design. Those mapping tables
-> were written against the **archived C1–C7 connector scheme** and reference
-> connectors that no longer exist. **The factory decode above them is still
-> accurate and still authoritative** — only the rebuild mapping is stale.
->
-> For current connector assignments go to
-> `02-PROJECTS/electrical-pmu/legs/PIN-MAP.md`.
+*Rev 2026-08-30 · owns: the factory harness as built — one file per circuit, the frozen [`OEM-RECORD.md`](OEM-RECORD.md), the fuse/bus map, the ground map, the decode process. The factory decode is authoritative; the "what this means for the rebuild" tables at the foot of each circuit file are pointers into the new design, whose truth is the electrical project's.*
+
+> **Using the rebuild tables.** Every circuit file ends with a mapping to the
+> new design. The factory decode above it is accurate and authoritative; the
+> mapping names the leg housing (`L2-M 7`) and channel (`O6`) that now carry
+> the circuit, and the current cavity is always
+> [`02-PROJECTS/electrical-pmu/02-HARNESS/PIN-MAP.md`](../../02-PROJECTS/electrical-pmu/02-HARNESS/PIN-MAP.md)'s.
 
 One file per circuit. Each is the **functional definition** of what the circuit
 is supposed to be, not a forensic trace of the scan. Every wire and connector is
 being replaced, so these exist to capture *logic, devices, and feed topology* —
 the things that survive a rewire.
 
-Source: `01-REFERENCE/1982RX7WiringDiagram.pdf` (31 pages, scanned, no text layer).
+Source: [`1982RX7WiringDiagram.pdf`](1982RX7WiringDiagram.pdf) (31 pages,
+scanned, no text layer). Factory connector codes are a letter and two digits
+(`F-11`); they are not project IDs.
 
 **Current draw and signal types for every circuit here live in one place:**
-`02-PROJECTS/electrical-pmu/LOADS.md`. Leg design needs all loads side by side,
-so they are not duplicated into each circuit file.
+[`02-PROJECTS/electrical-pmu/01-DESIGN/LOADS.md`](../../02-PROJECTS/electrical-pmu/01-DESIGN/LOADS.md)
+and the measured column in [`CHANNEL-SCHEDULE.md`](../../02-PROJECTS/electrical-pmu/01-DESIGN/CHANNEL-SCHEDULE.md). Leg design needs all loads
+side by side, so they are not duplicated into each circuit file.
+
+## Contents
+
+Section → page map · Decode process · Wire colour codes · Fuse & bus map ·
+Ground point map · Status
 
 ## Section → page map
 
@@ -44,7 +51,7 @@ so they are not duplicated into each circuit file.
 2. Crop to the circuit block with Pillow, view.
 3. Read the connector detail table at the bottom of the same page — it gives
    every connector's pin layout and wire color, which removes most guesswork.
-4. Write the circuit file to this folder using the template in `horn.md`.
+4. Write the circuit file to this folder using the template in [`horn.md`](horn.md).
 
 Rasterizing one page at 300 dpi and cropping twice is enough for any single
 circuit on these sheets. Do not rasterize the whole document.
@@ -63,14 +70,6 @@ not gray — a real trap.
 | Y    | Yellow | P    | Pink        |
 | L    | Blue   | V    | Violet      |
 
-## Status
-
-| Circuit    | Section | File      | Status      |
-|------------|---------|-----------|-------------|
-| Horn       | F       | `horn.md` | Done        |
-| All others | —       | —         | Not started |
-
-*(superseded — see the full status table at the end of this file)*
 
 ---
 
@@ -114,22 +113,22 @@ before assuming a circuit is independent — several are not.
 | **X-15** | Rear              | **Fuel pump**, rear lamps, stop lamps, defroster, hatch and fuel-door solenoids                                                   |
 
 X-13 is doing far too much. It is the single busiest node in the car and the
-prime suspect for K-008. See `FAULT-K008-analysis.md`.
+prime suspect for K-008. See [`FAULT-K008-analysis.md`](FAULT-K008-analysis.md) — traced, and not being fixed (D-105).
 
 ## Status
 
 | Circuit                           | Section | File                                | Status                                       |
 |-----------------------------------|---------|-------------------------------------|----------------------------------------------|
-| Horn                              | F       | `horn.md`                           | Done                                         |
-| Turn signals & hazard             | F       | `turn-hazard.md`                    | Done                                         |
-| Stop / tail / marker / back-up    | F       | `stop-tail-marker-backup.md`        | Done                                         |
-| Charging & starting               | A       | `charging-starting.md`              | Done                                         |
-| Meters, ignition, fuel pump       | B, C    | `meters-ignition-fuelpump.md`       | Done                                         |
-| Wipers & washers                  | D       | `wipers-washers.md`                 | Done                                         |
-| Headlights, pop-ups, illumination | E       | `headlights-popups-illumination.md` | Done                                         |
-| Blower, A/C, defroster, audio     | G       | `blower-ac-defroster-audio.md`      | Done                                         |
-| Interior, hatch, accessories      | H       | `interior-hatch-accessories.md`     | Done                                         |
-| Windows & mirrors                 | I       | `windows-mirrors.md`                | Done                                         |
-| **Fault K-008 analysis**          | B, C, F | `FAULT-K008-analysis.md`            | Done                                         |
+| Horn                              | F       | [`horn.md`](horn.md) | Done                                         |
+| Turn signals & hazard             | F       | [`turn-hazard.md`](turn-hazard.md) | Done                                         |
+| Stop / tail / marker / back-up    | F       | [`stop-tail-marker-backup.md`](stop-tail-marker-backup.md) | Done                                         |
+| Charging & starting               | A       | [`charging-starting.md`](charging-starting.md) | Done                                         |
+| Meters, ignition, fuel pump       | B, C    | [`meters-ignition-fuelpump.md`](meters-ignition-fuelpump.md) | Done                                         |
+| Wipers & washers                  | D       | [`wipers-washers.md`](wipers-washers.md) | Done                                         |
+| Headlights, pop-ups, illumination | E       | [`headlights-popups-illumination.md`](headlights-popups-illumination.md) | Done                                         |
+| Blower, A/C, defroster, audio     | G       | [`blower-ac-defroster-audio.md`](blower-ac-defroster-audio.md) | Done                                         |
+| Interior, hatch, accessories      | H       | [`interior-hatch-accessories.md`](interior-hatch-accessories.md) | Done                                         |
+| Windows & mirrors                 | I       | [`windows-mirrors.md`](windows-mirrors.md) | Done                                         |
+| **Fault K-008 analysis**          | B, C, F | [`FAULT-K008-analysis.md`](FAULT-K008-analysis.md) | Done                                         |
 | Emission control detail           | B       | —                                   | Not decoded — mostly obsolete with the Weber |
-| Cruise control detail             | B       | —                                   | Not decoded — pending V-023                  |
+| Cruise control detail             | B       | —                                   | Not decoded — the unit is gone (V-023 → D-097) |

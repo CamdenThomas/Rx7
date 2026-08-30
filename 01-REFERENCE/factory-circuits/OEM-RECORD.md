@@ -1,11 +1,13 @@
 # OEM RECORD — 1982 RX-7 FB factory electrical, as built
 
+*Rev 2026-08-30 · owns: the archival record of the factory harness. FROZEN — content is never edited to reflect design changes; this header and the task pointer below are the only deliberate exceptions (Audit 4, I-105).*
+
 **FROZEN. Do not edit.** This is the archival record of the car as it left the
 factory, decoded from `1982RX7WiringDiagram.pdf`. Design work happens in
 `02-PROJECTS/`; corrections to this file only happen if the *diagram* was
 misread, never to reflect a design change.
 
-Pin labels were read from 170–300 dpi scans — see task T-016.
+Pin labels were read from 170–300 dpi scans — verifying them against the scans is task `T-017` (the task IDs were renumbered by D-043; this line originally said T-016, which is now the cancelled K-008 diagnosis).
 Wire colors: first letter base, second tracer. `GY` = green/yellow, not gray.
 
 ---

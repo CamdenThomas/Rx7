@@ -1,7 +1,6 @@
 # SAFETY
 
-Read once, properly. These are the ways this specific project hurts people or
-burns cars.
+*Rev 2026-08-30 · owns: the hazards specific to this build. Read once, properly — these are the ways this project hurts people or burns cars.*
 
 ---
 
@@ -16,7 +15,7 @@ spanner across the terminals doesn't spark — it welds, and the tool glows.
 
 - **Class-T fuse, not ANL or MIDI.** It is the only common holder with the
   interrupt rating to actually break a lithium short. This is the one fuse not
-  to economize on.
+  to economise on.
 - **Mount it as close to battery positive as physically possible.** The cable
   between post and fuse can never be protected. Make it inches.
 - **Cover terminals whenever the battery is in the car and you are working.**
@@ -24,10 +23,10 @@ spanner across the terminals doesn't spark — it welds, and the tool glows.
 - **Remove rings and watches** before touching either terminal.
 
 **Charging below freezing damages the cells.** The heater exists for this. It
-needs the battery connected to work. `[V-052]`
+needs the battery connected to work (`V-052`).
 
 **Don't let it sit into BMS cutoff.** A deeply discharged pack can be difficult
-or impossible to recover. `[T-022]`
+or impossible to recover (`T-022`).
 
 ## 2 AWG and the tunnel run
 
@@ -38,7 +37,7 @@ capability of the pack.
 - **Grommet every pass-through.** A 2 AWG cable chafing through a bulkhead
   against sheet metal is a fire, not a fault.
 - **Loom the full length.** Not just where it looks vulnerable.
-- Torque every lug and **re-torque after heat cycling** (Checklist 8.7).
+- Torque every lug and **re-torque after heat cycling** ([`CHECKLIST.md`](CHECKLIST.md) 8.7).
 
 ## Working under the car
 
@@ -55,7 +54,7 @@ in this project's scope.
 
 - **No sparks near the tank.** The fuel sender is inside it. Disconnect the
   battery before touching sender wiring.
-- Depressurize before opening any line.
+- Depressurise before opening any line.
 - A fire extinguisher within reach whenever fuel lines are open. **Not in the
   garage — within reach.**
 
@@ -64,7 +63,7 @@ in this project's scope.
 - **Fingers out of the mechanism.** They move fast and don't care.
 - **Battery disconnected** when working in the buckets.
 - During bench testing, remember a stalled motor pulls 15–25 A and gets hot
-  quickly. Two seconds is the limit (`METER-SESSION.md`).
+  quickly. Two seconds is the limit ([`METER-SESSION.md`](METER-SESSION.md) Part 3.2).
 
 ## The meter session specifically
 
@@ -91,4 +90,4 @@ An unlabelled live wire taped back behind a dash is a future short.
 and it is also a safety rule — tired, rushing, in bad light, on a live system.
 
 **The car drives home at the end of every session.** If it can't, you stopped in
-the wrong place.
+the wrong place ([`MIGRATION-LOG.md`](MIGRATION-LOG.md) daily sign-off).

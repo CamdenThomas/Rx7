@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="520" viewBox="0 0 1180 520" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11">
+<style>.t{fill:#1b1b1b}.d{fill:#5d6d7e}.h{font-weight:700;fill:#1b1b1b}.box{fill:#fff;stroke:#1b1b1b;stroke-width:1.2}.src{fill:#f4f6f6;stroke:#5d6d7e}</style>
+<rect width="1180" height="520" fill="#fbfbf9"/>
+<text x="20" y="30" font-size="18" class="h">SILL NODE · door connectors D1 / D2</text>
+<text x="20" y="48" class="d">Sub-node of L4 · generated from data/connectors.csv · dashed = provisioned / deferred / reserved · grey = open or spare</text>
+<rect x="20" y="244.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="257.0" class="t">A6</text>
+<rect x="20" y="262.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="275.0" class="t">K5/K6</text>
+<rect x="20" y="319.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="332.0" class="t">K7/K8</text>
+<rect x="20" y="337.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="350.0" class="t">Mirror control — Q-062</text>
+<rect x="20" y="355.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="368.0" class="t">Sill fuse F14 ← O15 (Q</text>
+<rect x="20" y="373.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="386.0" class="t">Sill ground stud</text>
+<rect x="380" y="70" width="760" height="188" rx="4" class="box"/>
+<rect x="380" y="70" width="760" height="24" fill="#1b1b1b"/>
+<text x="388" y="86" fill="#fff" font-weight="700">D1</text>
+<text x="490" y="86" fill="#ddd">DT06-08S → DT04-08P · 8 cav · Sill node</text>
+<text x="388" y="112.0" class="h">1</text>
+<text x="416" y="112.0" class="t">Window motor — leg A</text>
+<text x="850" y="112.0" class="d">14 RED/WHT</text>
+<text x="980" y="112.0" class="d">PROVISIONED</text>
+<path d="M170,271.0 C 260,271.0 290,108.0 380,108.0" fill="none" stroke="#c0392b" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388" y="132.0" class="h">2</text>
+<text x="416" y="132.0" class="t">Window motor — leg B</text>
+<text x="850" y="132.0" class="d">14 RED/WHT</text>
+<text x="980" y="132.0" class="d">PROVISIONED</text>
+<path d="M170,271.0 C 260,271.0 290,128.0 380,128.0" fill="none" stroke="#c0392b" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388" y="152.0" class="h">3</text>
+<text x="416" y="152.0" class="t">Door pin switch</text>
+<text x="850" y="152.0" class="d">16 GRY/VIO</text>
+<text x="980" y="152.0" class="d">LIVE</text>
+<path d="M170,253.0 C 260,253.0 290,148.0 380,148.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="172.0" class="h">4</text>
+<text x="416" y="172.0" class="t">Mirror motor — common</text>
+<text x="850" y="172.0" class="d">16 GRY/GRN</text>
+<text x="980" y="172.0" class="d">DEFERRED</text>
+<path d="M170,346.0 C 260,346.0 290,168.0 380,168.0" fill="none" stroke="#5d6d7e" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388" y="192.0" class="h">5</text>
+<text x="416" y="192.0" class="t">Mirror motor — X axis</text>
+<text x="850" y="192.0" class="d">16 GRY/BLU</text>
+<text x="980" y="192.0" class="d">DEFERRED</text>
+<path d="M170,346.0 C 260,346.0 290,188.0 380,188.0" fill="none" stroke="#5d6d7e" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388" y="212.0" class="h">6</text>
+<text x="416" y="212.0" class="t">Mirror motor — Y axis</text>
+<text x="850" y="212.0" class="d">16 GRY/ORN</text>
+<text x="980" y="212.0" class="d">DEFERRED</text>
+<path d="M170,346.0 C 260,346.0 290,208.0 380,208.0" fill="none" stroke="#5d6d7e" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388" y="232.0" class="h">7</text>
+<text x="416" y="232.0" class="t">Mirror heat feed</text>
+<text x="850" y="232.0" class="d">16 RED/VIO</text>
+<text x="980" y="232.0" class="d">DEFERRED</text>
+<path d="M170,364.0 C 260,364.0 290,228.0 380,228.0" fill="none" stroke="#c0392b" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388" y="252.0" class="h">8</text>
+<text x="416" y="252.0" class="t">Ground → sill node</text>
+<text x="850" y="252.0" class="d">16 BLK</text>
+<text x="980" y="252.0" class="d">LIVE</text>
+<path d="M170,382.0 C 260,382.0 290,248.0 380,248.0" fill="none" stroke="#212121" stroke-width="1.4"/>
+<rect x="380" y="280" width="760" height="188" rx="4" class="box"/>
+<rect x="380" y="280" width="760" height="24" fill="#1b1b1b"/>
+<text x="388" y="296" fill="#fff" font-weight="700">D2</text>
+<text x="490" y="296" fill="#ddd">DT06-08S → DT04-08P · 8 cav · Sill node</text>
+<text x="388" y="322.0" class="h">1</text>
+<text x="416" y="322.0" class="t">Window motor — leg A</text>
+<text x="850" y="322.0" class="d">14 RED/WHT</text>
+<text x="980" y="322.0" class="d">PROVISIONED</text>
+<path d="M170,328.0 C 260,328.0 290,318.0 380,318.0" fill="none" stroke="#c0392b" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388" y="342.0" class="h">2</text>
+<text x="416" y="342.0" class="t">Window motor — leg B</text>
+<text x="850" y="342.0" class="d">14 RED/WHT</text>
+<text x="980" y="342.0" class="d">PROVISIONED</text>
+<path d="M170,328.0 C 260,328.0 290,338.0 380,338.0" fill="none" stroke="#c0392b" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388" y="362.0" class="h">3</text>
+<text x="416" y="362.0" class="t">Door pin switch</text>
+<text x="850" y="362.0" class="d">16 GRY/VIO</text>
+<text x="980" y="362.0" class="d">LIVE</text>
+<path d="M170,253.0 C 260,253.0 290,358.0 380,358.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="382.0" class="h">4</text>
+<text x="416" y="382.0" class="t">Mirror motor — common</text>
+<text x="850" y="382.0" class="d">16 GRY/GRN</text>
+<text x="980" y="382.0" class="d">DEFERRED</text>
+<path d="M170,346.0 C 260,346.0 290,378.0 380,378.0" fill="none" stroke="#5d6d7e" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388" y="402.0" class="h">5</text>
+<text x="416" y="402.0" class="t">Mirror motor — X axis</text>
+<text x="850" y="402.0" class="d">16 GRY/BLU</text>
+<text x="980" y="402.0" class="d">DEFERRED</text>
+<path d="M170,346.0 C 260,346.0 290,398.0 380,398.0" fill="none" stroke="#5d6d7e" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388" y="422.0" class="h">6</text>
+<text x="416" y="422.0" class="t">Mirror motor — Y axis</text>
+<text x="850" y="422.0" class="d">16 GRY/ORN</text>
+<text x="980" y="422.0" class="d">DEFERRED</text>
+<path d="M170,346.0 C 260,346.0 290,418.0 380,418.0" fill="none" stroke="#5d6d7e" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388" y="442.0" class="h">7</text>
+<text x="416" y="442.0" class="t">Mirror heat feed</text>
+<text x="850" y="442.0" class="d">16 RED/VIO</text>
+<text x="980" y="442.0" class="d">DEFERRED</text>
+<path d="M170,364.0 C 260,364.0 290,438.0 380,438.0" fill="none" stroke="#c0392b" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388" y="462.0" class="h">8</text>
+<text x="416" y="462.0" class="t">Ground → sill node</text>
+<text x="850" y="462.0" class="d">16 BLK</text>
+<text x="980" y="462.0" class="d">LIVE</text>
+<path d="M170,382.0 C 260,382.0 290,458.0 380,458.0" fill="none" stroke="#212121" stroke-width="1.4"/>
+</svg>

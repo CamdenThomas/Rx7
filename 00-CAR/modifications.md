@@ -1,16 +1,13 @@
 # Modification Log
 
-Append-only. Newest at the bottom. One line per change, with date when known.
-
-> **Detailed parts, dates, prices and purchase links: `parts-history.md`.**
-> This file is the summary; that one is the record.
+*Rev 2026-08-30 · owns: what has been changed on the car (M-###), what is planned (P-###), the service history and fluids. Append-only, newest at the bottom. Detailed parts, prices and purchase links are [`parts-history.md`](parts-history.md)'s; this is the summary.*
 
 | # | Date | Area | Change | Notes |
 |---|---|---|---|---|
 | M-001 | Nov 2025 | Fuel | Weber 45 DCOE fitted — Pierce Manifolds K678 kit | Replaced factory carb. ~$1,400 with jetting and fuel system |
-| M-002 | Nov 2025 | Fuel | Carter P4070 fuel pump | Pegasus. `[V-054]` draw unconfirmed |
+| M-002 | Nov 2025 | Fuel | Carter P4070 fuel pump | Pegasus. `V-054` draw unconfirmed — the meter session closes it |
 | M-003 | Nov 2025 | Fuel | Fuel pressure regulator | Pegasus |
-| M-004 | unknown | Engine mgmt | Wideband O2 installed | Tapped into the factory harness — locate and log, T-019 |
+| M-004 | unknown | Engine mgmt | Wideband O2 installed | Tapped into the factory harness — locate and log, `T-019` (K-001) |
 | M-005 | Aug 2025 | Ignition | Coils ×2, cap, rotor, plug wires, plugs | Full ignition refresh |
 | M-006 | Sep 2025 | Engine | Intake head gasket, carb gaskets | |
 | M-007 | Sep 2025 | Service | Oil, pan gasket, drain plug gasket, filter | Mobil 1 High Mileage 10W-30 |
@@ -23,12 +20,12 @@ Append-only. Newest at the bottom. One line per change, with date when known.
 
 | #     | Area       | Change                                  | Project                      |
 |-------|------------|-----------------------------------------|------------------------------|
-| P-001 | Electrical | Full PMU-24 DL rewire                   | `02-PROJECTS/electrical-pmu` |
-| P-002 | Electrical | Ionic S9 heated lithium battery, rear mount — **PURCHASED**   | `02-PROJECTS/electrical-pmu` |
+| P-001 | Electrical | Full PMU-24 DL rewire — **PMU purchased** | [`../02-PROJECTS/electrical-pmu/`](../02-PROJECTS/electrical-pmu/STATUS.md) |
+| P-002 | Electrical | Ionic S9 heated lithium battery, rear mount — **purchased, not fitted** | [`BATTERY-INSTALL.md`](../02-PROJECTS/electrical-pmu/04-SUBSYSTEMS/BATTERY-INSTALL.md) |
 | P-003 | Suspension | Full bushing + wear-point overhaul      | not started                  |
 | P-004 | Steering   | Steering box replacement (sector shaft) | not started                  |
-| P-005 | Brakes     | Rear disc conversion from 84–85 axle    | **Reconsider** — a full rear drum overhaul was done Jul 2026 (M-010). New shoes, drums, bearings and cylinders would be thrown away `[Q-045]` |
-| P-006 | Drivetrain | LS + CD009 swap                         | not started                  |
+| P-005 | Brakes     | Rear disc conversion from 84–85 axle    | **Still planned** (Q-045 → D-113). The Jul 2026 drum overhaul (M-010) was an interim so the car could be driven; it buys time for the axle swap |
+| P-006 | Drivetrain | LS + CD009 swap                         | not started — O13/O14 and the L1 sensor spares are reserved for it |
 
 ---
 

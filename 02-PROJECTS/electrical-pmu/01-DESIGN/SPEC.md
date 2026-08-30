@@ -1,15 +1,27 @@
 # SPEC — Electrical / PMU-24 DL
 
-Canonical. Only current state. No history, no rationale — those live in
-`DECISIONS.md`. If it's here, it's the plan.
+*Rev 2026-08-30 (Rev D) · owns: pin allocation, connector geometry, wire colours, relay and fuse schedule, module split, and the status of every cavity.*
 
-**Rev C** · 12A / Weber baseline · LS + CD009 reserved · DCU + ICU in scope
+Canonical. Current state only — no history, no rationale, no alternatives.
+Those live in [`../07-PROCESS/DECISIONS.md`](../07-PROCESS/DECISIONS.md). If it is here, it is the plan.
+The pin and cavity tables in §4–§8 are **generated** from
+`../02-HARNESS/data/pmu_pins.csv`; edit the CSV and run
+`../07-PROCESS/tools/gen.py`, never the table.
 
-> **Rev C changes:** DCU and digital cluster in full scope (D-075) · sensor
-> acquisition assigned to the ICU, not the DCU (D-083) · window relays moved to
-> the sill, L4-P2 deleted (D-065/066) · relay bank split, 5 in the box (D-067) ·
-> connector schedule final, all Deutsch (D-070) · retract switch deleted (D-038) ·
-> radar detector added (D-039).
+**Baseline:** 12A / Weber · stock incandescent bulbs (D-124) · manual windows,
+power windows provisioned (D-131) · LS + CD009 reserved (D-007) · DCU + ICU in
+scope but joining a finished car (D-075, D-081).
+
+> **Rev D changes (from Rev C):** status column on every cavity · 2 AWG main
+> feed (D-091) · K9 on the inner fender (D-148) · windows PROVISIONED (D-131) ·
+> terminal ranges from pinout v1.2/1.3 · display interface recorded (D-168) ·
+> §13's physical confirmation folded into §11 · all paths current.
+
+## Contents
+
+1. Device · 2. Terminals and wire colour · 3. The black box · 4–8. Pin
+schedule (generated) · 9. Connectors · 10. Modules · 11. Connector geometry ·
+12. Cavity status · 13. Cross-reference
 
 ---
 
@@ -18,7 +30,7 @@ Canonical. Only current state. No history, no rationale — those live in
 | Field | Value |
 |---|---|
 | Device | ECUMaster PMU-24 DL |
-| Housing | Sicma / FCI 39-position — **geometry confirmed, §11** |
+| Housing | Sicma / FCI 39-position — geometry confirmed in the hand, §11 |
 | Main feed | Central stud, 150 A max constant |
 | Outputs | 10 × 25 A (O1–O5, O12–O16) · 6 × 15 A (O6–O11) · 8 × 7 A (O17–O24) |
 | Inputs A1–A8 | Dedicated. 0–5 V, 10-bit. 20 V max |
@@ -31,266 +43,277 @@ O8 has wiper motor braking.
 
 **Current measurement floor:** 25 A ch 0.5 A · 15 A ch 0.2 A · 7 A ch 0.1 A.
 
-**All 16 analog inputs are allocated.** There is no spare. Engine sensors are
-read by the ICU, not the PMU (D-076/083).
+**Every one of the 24 shared-and-dedicated channels is spoken for.** Six of the
+eight shared pins are outputs (O17–O22) and two are inputs (A15, A16). Engine
+sensors are read by the ICU, not the PMU (D-076/083). Four functions still
+need a pin that does not exist — see `Q-063` in [`../07-PROCESS/OPEN.md`](../07-PROCESS/OPEN.md).
 
 ## 2 · Terminals and wire colour
 
 | Terminal | Part | Wire range | Used for |
 |---|---|---|---|
-| 2.8 mm large | 211CC3S3120 | 10–12 AWG | 25 A outputs, GND |
-| 2.8 mm | 211CC3S2120 | 14–16 AWG | Pin 15 (+5 V) |
-| 1.5 mm | 211CC2S2160P | **13–17 AWG** | 15 A / 7 A outputs, inputs, CAN |
+| 2.8 mm large | 211CC3S3120 | 10–12 AWG | The ten 25 A outputs and GND (pin 25) |
+| 2.8 mm | 211CC3S2120 | 14–16 AWG | Pin 15 (+5 V) only |
+| 1.5 mm | 211CC2S2160P | **14–17 AWG** | Every 15 A and 7 A output, every input, CAN |
 
-Signal wire is **16 AWG**, not 18.
+The 1.5 mm range is 14–17 AWG per pinout doc v1.2/1.3 (v1.0 said 13–17).
+Either way **signal wire is 16 AWG, not 18** (D-027), and 14 AWG is the
+heaviest wire any 15 A output can take, with no headroom above it (D-046).
 
 **Base colour encodes channel class. Tracer encodes circuit** (D-016). You can
 identify a wire's origin without a diagram.
 
 | Base | Class | AWG |
 |---|---|---|
-| **RED** | 25 A output | 12 |
+| **RED** | 25 A output; heavy feeds | 12 (2 for the main feed) |
 | **ORN** | 15 A output | 14 |
 | **VIO** | 7 A output | 16 |
-| **GRY** | Analog input | 16 |
+| **GRY** | Analog input, sender and sensor wires | 16 |
 | **PNK** | +5 V reference | 16 |
-| **BLU** | Wake / +12 V SW | 16 |
-| **YEL / GRN** | CAN H / CAN L | 16 tw |
-| **BLK** | Ground | 10 at the panel |
+| **BLU** | Wake sources and switched-12 V relay commands | 16 |
+| **YEL / GRN** | CAN H / CAN L (BLK tracer = CAN2) | 16 twisted |
+| **BLK** | Ground | 10 at the panel, 16 elsewhere |
 
 > This is **not** the factory colour scheme. The factory diagram uses two-letter
-> codes where `GY` means green/yellow, not gray. See `GLOSSARY.md`.
+> codes where `GY` means green/yellow, not gray. See [`GLOSSARY.md`](GLOSSARY.md).
 
 ## 3 · The black box
 
-Removable aluminium backer plate in the dash. Carries the PMU, **5 relays in 10
-sockets**, 13 fuses, always-hot busbar, ground bus, diode-OR wake network,
-constant bus.
+Removable aluminium backer plate in the dash. Carries the PMU, **5 relays in
+10 sockets**, 11 of the 14 fuse positions (F8, F9 and F14 are at the sill), always-hot busbar, ground bus, the diode-OR
+wake strip and the constant bus. Sub-circuits are drawn in [`SCHEMATICS.md`](SCHEMATICS.md).
 
-**Relays — 11 total, only 5 on the plate:**
+### Relays — 11 in the design, 5 on the plate
 
-| Relay | Function | Location |
-|---|---|---|
-| K1–K4 | Pop-up H-bridges | **Plate** |
-| K11 | Constant-bus master | **Plate** |
-| K5–K8 | Window H-bridges | Sill node |
-| K9 | Start relay | Inner fender |
-| K10 | A/C clutch | Engine bay, factory circuit |
+| Relay | Function | Location | State |
+|---|---|---|---|
+| K1–K4 | Pop-up H-bridges, LH and RH | Plate | LIVE |
+| K5–K8 | Window H-bridges, driver and passenger | Sill node | **PROVISIONED** — sockets fitted, relays not populated (D-131) |
+| K9 | Start relay | Inner fender / firewall, engine bay (D-148) | LIVE |
+| K10 | A/C compressor clutch | Engine bay, factory circuit (D-012) | Factory — untouched |
+| K11 | Constant-bus master, driven by O22 | Plate | LIVE |
 
-**Interfaces:** 2 lugs · 14 leg receptacles · DP-DIAG · DP-KEY · DP-ICU · DP-DCU.
+### Fuses
 
-## 4 · Pin schedule — power, ground, comms
+| Fuse | Rating | Feeds | Off | State |
+|---|---|---|---|---|
+| F1 | 15 A | Head unit constant keep-alive | Busbar via K11 | LIVE |
+| F2 | 2 A | Diagnostic port +12 V (DP-DIAG 3) | Busbar | LIVE |
+| F3 | 5 A | Wake diode network supply | Busbar | LIVE |
+| F4 | 10 A | A/C factory circuit | Busbar | LIVE |
+| F5 | 30 A | Amp / audio constant | Busbar via K11 | LIVE |
+| F6 | 10 A | Pop-up motor bus — LH branch | O1 downstream | LIVE |
+| F7 | 10 A | Pop-up motor bus — RH branch | O1 downstream | LIVE |
+| F8 | 15 A | Window motor bus — DRV branch | O1 downstream, **at the sill** | PROVISIONED — position only |
+| F9 | 15 A | Window motor bus — PASS branch | O1 downstream, **at the sill** | PROVISIONED — position only |
+| F10 | 10 A | Comfort bus — heated seats | O15 downstream | LIVE position, loads deferred |
+| F11 | 5 A | Comfort bus — nozzles, de-icer | O15 downstream | LIVE position, loads deferred |
+| F12 | 5 A | Interior lighting branch | O20 downstream | LIVE |
+| F13 | — | **Spare — three claims on it**: DCU climate memory (V-056), radar module feed (D-039), hatch / fuel-door solenoids (V-033) | Busbar | OPEN — `Q-061` |
+| F14 | 5 A | Mirror heat branch | O15 → sill (conductor: `Q-062`), **at the sill** | DEFERRED |
 
-| Pin | Name | Circuit | AWG | Color | To |
+F6–F12 are downstream branch protection — the PMU soft fuse protects the
+channel, these protect each leg off a shared bus.
+
+**Interfaces at the dash post:** 2 lugs (DP-BAT, DP-GND) · 15 leg receptacles (L1-S is two housings)
+· DP-DIAG · DP-KEY · DP-ICU · DP-DCU.
+
+<!-- gen:pins -->
+*Generated by `07-PROCESS/tools/gen.py` from `02-HARNESS/data/*.csv` — edit the CSV, not this table.*
+
+### 4 · Power, ground and comms
+
+| Pin | Name | Circuit | AWG | Colour | To |
 |---|---|---|---|---|---|
-| STUD | +12V BATT | Main supply, 150 A max | 4 | RED | DP-BAT ← Class-T |
-| 25 | GND | Device ground + flyback return, every inductive load | 10 | BLK | DP-GND, ≤6 in |
-| 7 | +12V SW | Wake. Diode-OR: ACC, RUN, hazard, door pin, **horn**, O22 | 16 | BLU | Panel diode network |
-| 15 | +5V OUT | Ladder + sender reference, 500 mA | 16 | PNK | Split → L1-S, L2-S, L3-S, L4-S |
-| 23 | CAN1H | Laptop / config | 16 tw | YEL | DP-DIAG |
-| 36 | CAN1L | Laptop / config | 16 tw | GRN | DP-DIAG |
-| 24 | CAN2H | Keypad, DCU, ICU, future LS ECU | 16 tw | YEL/BLK | L3-S · L1-S · DP-KEY · DP-ICU · DP-DCU |
-| 37 | CAN2L | Peripheral bus | 16 tw | GRN/BLK | same |
+| STUD | +12V BATT | Main supply, 150 A max constant | 2 | RED | DP-BAT ← Class-T 150 A |
+| 25 | GND | Device ground + flyback return for every inductive load | 10 | BLK | DP-GND, ≤6 in |
+| 7 | +12V SW | Wake. Diode-OR: ACC, RUN, hazard, door pin, horn, O22 latch | 16 | BLU | Panel diode strip |
+| 15 | +5V OUT | Ladder + sender reference, 500 mA ceiling | 16 | PNK | L1-S1 8 + L2-S 4 + L3-S1 7 + L4-S 4 |
+| 23 | CAN1H | Laptop / config. 1 Mbps fixed, no internal termination | 16 tw | YEL | DP-DIAG 1 |
+| 36 | CAN1L | Laptop / config | 16 tw | GRN | DP-DIAG 2 |
+| 24 | CAN2H | Vehicle bus 500 kbps — keypad, ICU, DCU, future LS ECU | 16 tw | YEL/BLK | L1-S1 9 + DP-KEY 1 + DP-ICU 3 + DP-DCU 4 |
+| 37 | CAN2L | Vehicle bus | 16 tw | GRN/BLK | L1-S1 10 + DP-KEY 2 + DP-ICU 4 + DP-DCU 5 |
 
-## 5 · Pin schedule — 25 A outputs (12 AWG)
+### 5 · 25 A outputs — 12 AWG, large cavities
 
-Estimates only. Never set a soft fuse from these — see `LOADS.md`.
+Estimates only. Never set a soft fuse from these — the measured column lives in `CHANNEL-SCHEDULE.md`.
 
-| Pin | Ch | Circuit | Est. A | Color | To |
-|---|---|---|---|---|---|
-| 38 | O1 ⚡ | Motor bus — K1–K4 on the plate, K5–K8 at the sill | 8–12 run, 40+ transient | RED/WHT | Relay bank + L4-P 3 |
-| 39 | O2 | Headlight LOW | LED | RED/BLK | L2-P1 1 |
-| 26 | O3 | Headlight HIGH | LED | RED/BRN | L2-P1 2 |
-| 13 | O4 | Rear defog grid | 10–13 | RED/GRN | L4-P 1 |
-| 12 | O5 | Fuel pump | 1–2 now / 8–12 Aeromotive | RED/YEL | L4-P 2 |
-| 2 | O12 | Ignition / coil feed | 4–6 | RED/BLU | L1-P 1 |
-| 1 | O13 | RESERVED — LS ECU + injectors | ~18 | RED/ORN | L1-P 2, capped |
-| 14 | O14 | RESERVED — LS cooling fan(s) | ~25 | RED/GRY | L1-P 3, capped |
-| 27 | O15 | Comfort bus — **DCU switches downstream** | 12–16 | RED/VIO | L3-P 2 + DCU tap |
-| 28 | O16 ⚡ | Blower motor feed | 12–15, 25 inrush | RED/PNK | L3-P 1 |
+| Pin | Ch | Name | Circuit | Est. A | Colour | To | Status |
+|---|---|---|---|---|---|---|---|
+| 38 | O1 | `MOTOR_BUS` | Motor bus — K1–K4 on the plate; K5–K8 at the sill are provisioned empty | 9.5 | RED/WHT | Relay bank + L4-P 3 (capped) | LIVE |
+| 39 | O2 | `HEAD_LOW` | Headlight LOW | 3.0 | RED/BLK | L2-P1 1 | LIVE |
+| 26 | O3 | `HEAD_HIGH` | Headlight HIGH | 3.5 | RED/BRN | L2-P1 2 | LIVE |
+| 13 | O4 | `DEFOG` | Rear defog grid | 11.5 | RED/GRN | L4-P 1 | LIVE |
+| 12 | O5 | `FUEL_PUMP` | Fuel pump — Carter P4070 now; sized for the Aeromotive 340 later | 2.0 | RED/YEL | L4-P 2 | LIVE |
+| 2 | O12 | `IGNITION` | Ignition / coil feed | 5.0 | RED/BLU | L1-P 1 | LIVE |
+| 1 | O13 | `LS_ECU` | RESERVED — LS ECU + injectors | — | RED/ORN | L1-P 2 (capped) | RESERVED |
+| 14 | O14 | `LS_FAN` | RESERVED — LS cooling fan(s) | — | RED/GRY | L1-P 3 (capped) | RESERVED |
+| 27 | O15 | `COMFORT` | Comfort bus — dumb 25 A feed; the DCU switches loads downstream | 14.0 | RED/VIO | L3-P 2 + DCU tap | LIVE |
+| 28 | O16 | `BLOWER` | Blower motor feed | — | RED/PNK | L3-P 1 | LIVE |
 
-## 6 · Pin schedule — 15 A outputs (14 AWG)
+### 6 · 15 A outputs — 14 AWG
 
-| Pin | Ch | Circuit | Est. A | Color | To |
-|---|---|---|---|---|---|
-| 11 | O6 | Tail / park / marker / plate — PARK and HEAD | 3.0 LED | ORN/BRN | Split L2-M 7, L4-M 1 |
-| 10 | O7 | Brake lamps | 0.6 LED | ORN/GRN | L4-M 2 |
-| 9 | O8 ⚙ | Wiper LOW — braking channel | 3–5 run, 12–20 stall | ORN/BLU | L2-M 1 |
-| 5 | O9 | Wiper HIGH | 5–6 run, 12–20 stall | ORN/WHT | L2-M 2 |
-| 4 | O10 | Accessory bus — USB, head unit, **DCU + ICU logic** | `[Q-038]` | ORN/YEL | L3-M 1 |
-| 3 | O11 | Horn | 4–8 | ORN/BLK | L2-M 3 |
+| Pin | Ch | Name | Circuit | Est. A | Colour | To | Status |
+|---|---|---|---|---|---|---|---|
+| 11 | O6 | `TAIL_PARK` | Tail / park / marker / plate — PARK and HEAD | 4.4 | ORN/BRN | L2-M 7 + L4-M 1 | LIVE |
+| 10 | O7 | `BRAKE` | Brake lamps | 3.9 | ORN/GRN | L4-M 2 | LIVE |
+| 9 | O8 | `WIPE_LOW` | Wiper LOW — braking channel | 4.0 | ORN/BLU | L2-M 1 | LIVE |
+| 5 | O9 | `WIPE_HIGH` | Wiper HIGH | 5.5 | ORN/WHT | L2-M 2 | LIVE |
+| 4 | O10 | `ACCESSORY` | Accessory bus — USB-C, head unit switched, ICU + DCU logic | 2.5 | ORN/YEL | L3-M 1 + DP-ICU 1 + DP-DCU 1 + DP-KEY 3 | LIVE |
+| 3 | O11 | `HORN` | Horn pair | 6.0 | ORN/BLK | L2-M 3 | LIVE |
 
-## 7 · Pin schedule — 7 A shared pins
+### 7 · 7 A shared pins — 16 AWG
 
-| Pin | Ch | Mode | Circuit | AWG | Color | To |
+Each of O17–O24 can be an output or an analog input (A9–A16). Six are outputs; O23 and O24 are configured as inputs A15 and A16 — there is no spare on this bank.
+
+| Pin | Ch | Mode | Name | Circuit | Colour | To | Status |
+|---|---|---|---|---|---|---|---|
+| 6 | O17 | OUT | `TURN_L` | Turn LEFT — flashed natively | VIO/GRN | L2-M 5 + L4-M 5 | LIVE |
+| 33 | O18 | OUT | `TURN_R` | Turn RIGHT | VIO/YEL | L2-M 6 + L4-M 6 | LIVE |
+| 20 | O19 | OUT | `REVERSE` | Reverse lamps | VIO/BLK | L4-M 7 | LIVE |
+| 34 | O20 | PWM | `INTERIOR` | Interior + details bus and the ICU dimming reference | VIO/WHT | L4-M 8 + L3-S1 8 + DP-ICU 5 | LIVE |
+| 21 | O21 | OUT | `START_RLY` | Start relay coil → K9 on the inner fender | VIO/RED | L1-S1 1 | LIVE |
+| 8 | O22 | OUT | `KEEP_ALIVE` | Keep-alive latch → diode → pin 7; drives K11 | VIO/BLU | Panel diode strip | LIVE |
+| 35 | A15 | IN | `HEADLIGHT_SW` | Headlight ladder — OFF / PARK / HEAD. Also commands pop-up raise | GRY/WHT | L3-S1 2 | LIVE |
+| 22 | A16 | IN | `KEY_POS` | Key ladder — OFF / ACC / RUN / START | GRY/RED | L3-S1 1 | LIVE |
+
+### 8 · Dedicated inputs A1–A8 — 16 AWG
+
+0–5 V, 10-bit. Every switch goes to ground through a finite resistor (D-053), read against the internal 10 kΩ pull-up. Values in `LADDERS.md`.
+
+| Pin | In | Name | Signal | Colour | To | Status |
 |---|---|---|---|---|---|---|
-| 6 | O17 | OUT | Turn LEFT — flashed natively | 16 | VIO/GRN | Split L2-M 5, L4-M 5 |
-| 33 | O18 | OUT | Turn RIGHT | 16 | VIO/YEL | Split L2-M 6, L4-M 6 |
-| 20 | O19 | OUT | Reverse lamps | 16 | VIO/BLK | L4-M 7 |
-| 34 | O20 | PWM | Interior + details bus, and the ICU dimming reference | 16 | VIO/WHT | L4-M 8, L3-S, DP-ICU 5 |
-| 21 | O21 | OUT | Start relay coil → K9 at the fender | 16 | VIO/RED | L1-S 1 |
-| 8 | O22 | OUT | Keep-alive latch → diode → pin 7; drives K11 | 16 | VIO/BLU | Panel diode network |
-| 35 | A15 | IN | Headlight ladder — OFF/PARK/HEAD. **Also commands pop-up raise** | 16 | GRY/WHT | L3-S 2 |
-| 22 | A16 | IN | Key ladder — OFF/ACC/RUN/START | 16 | GRY/RED | L3-S 1 |
+| 29 | A1 | `TURN_STALK` | Turn stalk — L / off / R | GRY/GRN | L3-S1 3 | LIVE |
+| 16 | A2 | `WIPER_STALK` | Wiper stalk — off / INT / LO / HI / WASH | GRY/BLU | L3-S1 4 | LIVE |
+| 30 | A3 | `BRAKE_PEDAL` | Brake pedal switch | GRY/ORN | L3-S1 5 | LIVE |
+| 17 | A4 | `POPUP_L` | Pop-up LEFT position | GRY/BLK | L2-S 1 | LIVE |
+| 31 | A5 | `POPUP_R` | Pop-up RIGHT position | GRY/BRN | L2-S 2 | LIVE |
+| 18 | A6 | `DOOR_PINS` | Door pins — driver / passenger | GRY/VIO | L4-S 2 | LIVE |
+| 32 | A7 | `FUEL_LEVEL` | Fuel level sender | GRY/YEL | L4-S 1 | LIVE |
+| 19 | A8 | `HAZARD` | Hazard switch — closure; wake source is a separate conductor | GRY/PNK | L3-S1 6 | LIVE |
 
-## 8 · Pin schedule — dedicated inputs A1–A8 (16 AWG)
-
-0–5 V, 10-bit. All switches to ground with the internal 10 kΩ pull-up.
-Ladder values in `LADDERS.md`.
-
-| Pin | In | Signal | Type | Color | To |
-|---|---|---|---|---|---|
-| 29 | A1 | Turn stalk — L / off / R | 3-step ladder | GRY/GRN | L3-S 3 |
-| 16 | A2 | Wiper stalk — off/INT/LO/HI/WASH | 5-step ladder | GRY/BLU | L3-S 4 |
-| 30 | A3 | Brake pedal switch | switch-to-gnd | GRY/ORN | L3-S 5 |
-| 17 | A4 | Pop-up LEFT position | 3-step ladder | GRY/BLK | L2-S 1 |
-| 31 | A5 | Pop-up RIGHT position | 3-step ladder | GRY/BRN | L2-S 2 |
-| 18 | A6 | Door pins — driver / passenger | 3-step ladder | GRY/VIO | L4-S 2 |
-| 32 | A7 | Fuel level sender | resistive | GRY/YEL | L4-S 1 |
-| 19 | A8 | Hazard switch — also diodes to pin 7 | switch-to-gnd | GRY/PNK | L3-S 6 |
-
-**All 39 cavities allocated.** 8 power/comms + 10 × 25 A + 6 × 15 A + 8 shared
-+ 7 dedicated = 39.
-
-**Inhibitor switch** (crank interlock + reverse) is laddered onto one of the
-shared-pin inputs on L1-S per D-071.
+**39 cavities, all allocated:** 7 power/comms + 10 × 25 A + 6 × 15 A + 8 shared + 8 dedicated. Status key: **LIVE** wired and enabled at migration · **PROVISIONED** wire run and capped, hardware fitted empty (D-131) · **RESERVED** capped for the LS swap (D-007) · **DEFERRED** conductor allocated, subsystem not designed · **OPEN** a home is still needed.
+<!-- /gen:pins -->
 
 ## 9 · Connectors — summary
 
-Full detail in `legs/CONNECTORS.md` and `legs/PIN-MAP.md`.
-
-**Everything is Deutsch DT (size 16) or DTP (size 12). No AMPSEAL anywhere** —
-two contact sizes, two crimp dies, one supplier.
+**Everything is Deutsch DT (size 16), DTP (size 12) or DTM (size 20). No
+AMPSEAL anywhere** (D-070) — two crimp dies, one supplier.
 
 | Leg | Connectors |
 |---|---|
-| L1 Engine | L1-P (DTP-4), L1-S (DT-12 ×2) |
-| L2 Front | L2-P1, L2-P2 (DTP-4 ×2), L2-M (DT-8), L2-S (DT-6) |
-| L3 Dash | L3-P (DTP-2), L3-M (DT-2), L3-S1/S2 (DT-12 ×2), L3-S3 (DT-8) |
-| L4 Rear | L4-P (DTP-4), L4-M (DT-12), L4-S (DT-8) |
+| L1 Engine | L1-P (DTP-4) · L1-S1, L1-S2 (DT-12 ×2) |
+| L2 Front | L2-P1, L2-P2 (DTP-4 ×2) · L2-M (DT-8) · L2-S (DT-6) |
+| L3 Dash | L3-P (DTP-2) · L3-M (DT-2) · L3-S1, L3-S2 (DT-12 ×2) · L3-S3 (DT-8) |
+| L4 Rear | L4-P (DTP-4) · L4-M (DT-12) · L4-S (DT-8) |
+| Sill (inside L4) | D1, D2 (DT-8 each, D-092) |
+| Dash post drops | DP-ICU (DT-12) · DP-DCU (DT-6) · DP-DIAG, DP-KEY (DTM-4) |
 
-**14 leg connectors.** Plus at the dash post: DP-BAT, DP-GND, DP-PMU, DP-DIAG,
-DP-KEY, **DP-ICU**, **DP-DCU**. Plus D1/D2 at the sill.
+**15 leg housings (14 codes — L1-S is two housings) + 2 door + 4 drops + 2
+lugs + the device connector = 24 mated pairs.** Housing part numbers and wedgelocks: [`../02-HARNESS/CONNECTORS.md`](../02-HARNESS/CONNECTORS.md).
+Every cavity: [`../02-HARNESS/PIN-MAP.md`](../02-HARNESS/PIN-MAP.md). One diagram per leg:
+`../02-HARNESS/diagrams/`.
 
 ## 10 · Modules — DCU and ICU
 
-Full detail in `DCU-CLUSTER.md`.
+Full detail in [`../03-MODULES/DCU-CLUSTER.md`](../03-MODULES/DCU-CLUSTER.md).
 
-| Node | Owns |
-|---|---|
-| **ICU** | Cluster display **and** tach, water temp, oil pressure, oil temp, VSS, alternator sense |
-| **DCU** | Climate, HVAC servos, comfort bus switching |
+| Node | Owns | Board |
+|---|---|---|
+| **ICU** | Cluster display **and** tach, water temp, oil pressure, oil temp, VSS, alternator sense, brake fluid level | Teensy 4.1 (D-084) |
+| **DCU** | Climate, HVAC servos, comfort bus switching | Teensy 4.1 |
 
-**Rule:** a gauge's sender wires into the box that draws the gauge. If CAN2 fails,
-the ICU still shows every critical gauge from its own inputs.
+**Display:** one wide 800 × 480 panel (D-150) driven over **SPI with
+dirty-rectangle rendering** from a 384 KB RAM framebuffer (D-168). The display
+connects directly to the Teensy behind the bezel and never crosses the harness
+(D-159). Panel selection is `Q-060`.
 
-**Rule:** if the PMU measures it, the ICU reads it from CAN — fuel level, battery
-voltage, key state. Never duplicated.
+**Rule:** a gauge's sender wires into the box that draws the gauge (D-083). If
+CAN2 fails, the ICU still shows every critical gauge from its own inputs.
+
+**Rule:** if the PMU measures it, the ICU reads it from CAN — fuel level,
+battery voltage, key state, channel currents. Never duplicated (D-078).
 
 **Sequencing rule (D-081):** the car drives fully on the PMU with dumb switches,
-the factory harness comes out, and the build completes — *then* the modules join.
+the factory harness comes out, and the build completes — *then* the modules
+join. `Q-064` covers the two PMU functions written against an RPM the PMU
+cannot see until then.
 
-## 11 · Connector geometry — CONFIRMED
+**CAN transceivers:** SN65HVD230 modules on the bench (in hand); TCAN1042/1051
+on the carrier PCBs in the car (D-085). Both are correct — for different
+places.
 
-From the CAD and the pinout device view.
+## 11 · Connector geometry — CONFIRMED in the hand
 
-```
-  1  2  3  4  5  6  7  8  9 10 11 12 13     ← row 1
- 14 15 16 17 18 19 20 21 22 23 24 25 26     ← row 2
- 27 28 29 30 31 32 33 34 35 36 37 38 39     ← row 3
-```
-
-Numbered left→right, top→bottom, **looking at the device**.
-
-**Cavity sizes are not uniform.** Each row is **2 large · 9 small · 2 large**.
-
-| Size | Pins |
-|---|---|
-| **Large (2.8 mm)** | 1, 2, 12, 13, 14, 15, 25, 26, 27, 28, 38, 39 |
-| **Small (1.5 mm)** | all other 27 |
-
-The twelve large cavities land exactly on the ten 25 A outputs, GND, and +5 V.
-**Every 15 A and 7 A output sits in a 1.5 mm cavity** capped at 13–17 AWG — 14 AWG
-is the heaviest wire that can go on O6–O11, with no headroom above it.
-
-**Enclosure:** 131 × 112.1 × 32.5 mm. Mounting 3 × Ø6.5 mm. Connector face on the
-short edge, +12 V stud opposite. Allow clearance for the connector lever.
-
-## 12 · Cross-reference
-
-| Need | File |
-|---|---|
-| Why a decision was made | `DECISIONS.md` |
-| What's undecided | `OPEN.md` |
-| What only Camden can do | `TASKS-CAMDEN.md` |
-| Current draw, signal types | `LOADS.md` |
-| Resistor values | `LADDERS.md` |
-| Wake network, H-bridges, grounds | `SCHEMATICS.md` |
-| Connector cavity assignments | `legs/PIN-MAP.md` |
-| Connector part numbers | `legs/CONNECTORS.md` |
-| Leg contents and boundaries | `legs/engine.md`, `front-chassis.md`, `dash.md`, `rear-cabin.md` |
-| Sill relays and door connectors | `legs/sill-node.md` |
-| DCU / ICU | `DCU-CLUSTER.md` |
-| Battery and backbone | `BATTERY-INSTALL.md` |
-| Parts and money | `BOM.md` |
-| Build sequence | `CHECKLIST.md` |
-| Factory wiring | `../../01-REFERENCE/factory-circuits/` |
-
----
-
-## 13 · Connector — physical confirmation and orientation
-
-*Added 2026-08 on receipt of the PMU (D-134).*
-
-### Confirmed in the hand
-
-| Property | Value |
-|---|---|
-| Large cavities | **12** — matches the CAD map exactly |
-| Small cavities | **27** |
-| Arrangement | Largest cavities **farthest out** in each row — confirms 2 large · 9 small · 2 large |
-| Large terminal marking | `FCI` |
-| Small terminal marking | `FCI 125` |
-
-**The cavity map in §11 is correct and the pin plan is buildable as drawn.**
-
-### Orientation — CONFIRMED ✅ `[V-068 CLOSED]`
-
-**Verified 2026-08 by visual comparison of the physical connector against the
-ECUmaster manual.** Not inferred.
-
-With the PMU flat and upright, connector face toward the viewer: **purple lock on
-the right, pin 1 top-left** — top row, end furthest from the lock.
+From the CAD (D-045) and confirmed on the physical part on receipt (D-134,
+D-139). `[V-068 CLOSED]`.
 
 ```
-   connector face toward you, PMU upright
-   
+   connector face toward you, PMU flat and upright
+
     pin 1                                    pin 13
       ↓                                        ↓
    ┌─────────────────────────────────────────────┐
-   │  ■ ■ □ □ □ □ □ □ □ □ □ ■ ■                 │  row 1   1-13
-   │  ■ ■ □ □ □ □ □ □ □ □ □ ■ ■                 │  row 2  14-26   [PURPLE
-   │  ■ ■ □ □ □ □ □ □ □ □ □ ■ ■                 │  row 3  27-39     LOCK]
+   │  ■ ■ □ □ □ □ □ □ □ □ □ ■ ■                 │  row 1   1–13
+   │  ■ ■ □ □ □ □ □ □ □ □ □ ■ ■                 │  row 2  14–26   [PURPLE
+   │  ■ ■ □ □ □ □ □ □ □ □ □ ■ ■                 │  row 3  27–39     LOCK]
    └─────────────────────────────────────────────┘
       ↑                                        ↑
    pin 27                                   pin 39
-   
-   ■ = large 2.8mm    □ = small 1.5mm
+
+   ■ = large 2.8 mm    □ = small 1.5 mm
 ```
 
-This matches the ECUmaster device view, which shows pin 1 top-left, pin 13
-top-right, pin 27 bottom-left, pin 39 bottom-right.
+Numbered left→right, top→bottom, looking at the device. **Pin 1 is top-left,
+at the end furthest from the purple lock.** Each row is **2 large · 9 small ·
+2 large**; the twelve large cavities are pins 1, 2, 12, 13, 14, 15, 25, 26,
+27, 28, 38, 39 — exactly the ten 25 A outputs, GND and +5 V.
 
-> **Mark the housing** — a paint pen dot beside cavity 1 (T-043). Costs nothing,
-> and the question is never re-asked at the bench with the panel half-built.
+| Property | Confirmed |
+|---|---|
+| Large cavities | 12 — marking `FCI` |
+| Small cavities | 27 — marking `FCI 125` |
+| Terminal stock, housing #1 | 16 large (4 spare) · **27 small (0 spare)** — D-135 |
 
-### Terminal stock
+**Order spare 1.5 mm terminals before Phase 4** (T-044) and **mark the housing
+beside cavity 1** with a paint pen (T-043).
 
-| Size | Supplied | Needed | Spare |
-|---|---|---|---|
-| Large `FCI` | 16 | 12 | **4** |
-| Small `FCI 125` | 27 | 27 | **0** |
+**Enclosure:** 131 × 112.1 × 32.5 mm. Mounting 3 × Ø6.5 mm. Connector face on
+the short edge, +12 V stud opposite. Allow clearance for the connector lever.
 
-**Order spare 1.5 mm terminals before Phase 4.** Zero margin on the size that
-makes up 69% of the connector, on the size that is hardest to crimp, while
-learning to crimp.
+## 12 · Cavity status — the vocabulary
+
+| Status | Means | Examples |
+|---|---|---|
+| **LIVE** | Wired, enabled at migration | Almost everything |
+| **PROVISIONED** | Wire run, terminated and capped; sockets and fuse positions fitted empty | Power windows — K5–K8, F8/F9, L4-P 3, L4-M 9–12, L3-S2 3–6, D1/D2 1–2 (D-131) |
+| **RESERVED** | Capped for the LS swap | O13, O14, L1-S2 4–6, the CAN2 drop (D-007) |
+| **DEFERRED** | Conductor allocated, subsystem not yet designed | Radar link, mirror motors and heat, comfort loads ([`../04-SUBSYSTEMS/DEFERRED-FEATURES.md`](../04-SUBSYSTEMS/DEFERRED-FEATURES.md)) |
+| **OPEN** | Needs a pin or fuse position that does not exist | Inhibitor, wiper park, washer pump, horn input (`Q-063`); solenoids and F13 (`Q-061`); O15 → sill (`Q-062`) |
+| **SPARE** | Capped, no purpose assigned | See [`../02-HARNESS/CAVITY-STATE.md`](../02-HARNESS/CAVITY-STATE.md) |
+
+Nothing gets deleted from a housing. A change of status is a config change
+and an uncapping, never a re-pin (D-004).
+
+## 13 · Cross-reference
+
+| Need | File |
+|---|---|
+| Why a decision was made | [`../07-PROCESS/DECISIONS.md`](../07-PROCESS/DECISIONS.md) |
+| What is undecided | [`../07-PROCESS/OPEN.md`](../07-PROCESS/OPEN.md) |
+| What only Camden can do | [`../07-PROCESS/TASKS-CAMDEN.md`](../07-PROCESS/TASKS-CAMDEN.md) |
+| Estimated draw, method, signal types | [`LOADS.md`](LOADS.md) |
+| Measured draw and soft-fuse values | [`CHANNEL-SCHEDULE.md`](CHANNEL-SCHEDULE.md) |
+| Resistor values | [`LADDERS.md`](LADDERS.md) |
+| Wake network, H-bridges, constant bus, grounds | [`SCHEMATICS.md`](SCHEMATICS.md) |
+| PMU configuration and logic | [`PMU-CONFIG.md`](PMU-CONFIG.md) |
+| Every cavity | [`../02-HARNESS/PIN-MAP.md`](../02-HARNESS/PIN-MAP.md) |
+| What is live / provisioned / open | [`../02-HARNESS/CAVITY-STATE.md`](../02-HARNESS/CAVITY-STATE.md) |
+| Housing part numbers, wedgelocks | [`../02-HARNESS/CONNECTORS.md`](../02-HARNESS/CONNECTORS.md) |
+| Leg contents and boundaries | [`../02-HARNESS/engine.md`](../02-HARNESS/engine.md), [`front-chassis.md`](../02-HARNESS/front-chassis.md), [`dash.md`](../02-HARNESS/dash.md), [`rear-cabin.md`](../02-HARNESS/rear-cabin.md) |
+| Sill relays and door connectors | [`../02-HARNESS/sill-node.md`](../02-HARNESS/sill-node.md) |
+| DCU / ICU | [`../03-MODULES/DCU-CLUSTER.md`](../03-MODULES/DCU-CLUSTER.md) |
+| Battery and backbone | [`../04-SUBSYSTEMS/BATTERY-INSTALL.md`](../04-SUBSYSTEMS/BATTERY-INSTALL.md) |
+| Parts and money | [`../06-PROCUREMENT/BOM.md`](../06-PROCUREMENT/BOM.md) |
+| Build sequence | [`../05-BUILD/CHECKLIST.md`](../05-BUILD/CHECKLIST.md) |
+| Factory wiring | `../../../01-REFERENCE/factory-circuits/` |

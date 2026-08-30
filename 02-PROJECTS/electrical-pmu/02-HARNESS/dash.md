@@ -1,123 +1,93 @@
 # LEG 3 — DASH
 
-*Rev 2026-08 · authoritative cavity assignments live in `PIN-MAP.md`*
+*Rev 2026-08-30 · owns: what is in the dash leg and why. Cavities are [`PIN-MAP.md`](PIN-MAP.md)'s; draw figures are [`../01-DESIGN/LOADS.md`](../01-DESIGN/LOADS.md)'s.*
 
 **Boundary:** the dash structure. Comes out when the dash comes out.
 **Ground:** dash star node, adjacent to the panel.
 **Special:** the panel lives here but is not part of this leg — it is the hub.
+The four drops (DP-ICU, DP-DCU, DP-DIAG, DP-KEY) are box-adjacent and not part
+of this leg either.
+**Housings:** L3-P (DTP-2) · L3-M (DT-2) · L3-S1, L3-S2 (DT-12 ×2) · L3-S3
+(DT-8). Diagram: `diagrams/L3-dash.svg`.
 
 ---
 
-## What's in this leg
+## Inputs — switches and controls
 
-### Inputs — switches and controls
-
-| Device | OEM ref | Signal type | States |
-|---|---|---|---|
-| Key / ignition switch | — | Ladder, 12 V side | OFF/ACC/RUN/START |
-| Headlight switch | E-01 LIGHT | Ladder, 12 V side | OFF/PARK/HEAD |
-| Dimmer / passing | E-01 DIMMER | Software off A15 *(D-051)* | LO/HI/PASS |
-| Turn stalk | F-02 TURN | Ladder to ground | L/off/R |
-| Hazard switch | F-02 HAZARD | Closure + **wake diode** | on/off |
-| Wiper stalk | D-03 | Ladder to ground | 5 states |
-| Brake pedal switch | F-11 | Closure to ground | on/off |
-| Wink switch L/R | — | Closure ×2 → K1–K4 coils | momentary |
-| Window switch DRV/PASS | I-06/07 | Closure ×4 → K5–K8 at the **sill** | momentary |
-| Blower switch | G-15 | Factory switch + resistor pack | OFF/LO/MI/HI |
-| Horn switch | steering pad | Closure + **wake diode** *(D-072)* | momentary |
-| Parking brake switch | C-04 | Closure | on/off |
-| Glove box light switch | H-02 | Closure | on/off |
-| Hatch release button | H-13 | Momentary | — |
-| Fuel-door release button | H-15 | Momentary | — |
-| Defroster | G-24 | **CAN keypad** | on/off |
+| Device | OEM ref | Signal | Goes to | Note |
+|---|---|---|---|---|
+| Key / ignition switch | — | Summed ladder, 12 V side | A16 via L3-S1 1 | ACC and IG contacts also feed the wake strip (L3-S1 12, L3-S2 1) |
+| Headlight switch | E-01 LIGHT | Ladder, 12 V side | A15 via L3-S1 2 | OFF/PARK/HEAD. Also commands the pop-ups (D-038) |
+| Dimmer / passing | E-01 DIMMER | Software off A15 (D-051) — states not yet defined | `Q-065` | |
+| Turn stalk | F-02 TURN | Ladder to ground | A1 via L3-S1 3 | L/off/R |
+| Hazard switch | F-02 HAZARD | Closure + second pole as a wake source | A8 via L3-S1 6; wake L3-S2 2 | |
+| Wiper stalk | D-03 | Ladder to ground | A2 via L3-S1 4 | 5 states |
+| Brake pedal switch | F-11 | Closure to ground | A3 via L3-S1 5 | |
+| Wink switches L / R | new | Closure ×2 → K1–K4 coils | L3-S1 9, 10 | Momentary override (D-038) |
+| Horn switch | steering pad | Closure + wake diode (D-072) | Wake L3-S1 11; **PMU input `Q-063`** | |
+| Window switches DRV/PASS | new, not fitted | Closure ×4 → K5–K8 at the sill | L3-S2 3–6, **capped** | PROVISIONED (D-131) |
+| Blower switch + resistor pack | G-15, G-14 | In the motor path, fed by O16 | via L3-P 1 | Factory switch sets speed; the PMU only enables O16 |
+| Defroster, interior override, spare keys | G-24 → keypad | CAN keypad | DP-KEY | D-031. The factory defrost switch is broken (K-020) and deleted |
+| Parking brake, glove box, hatch, fuel door | C-04, H-02, H-13, H-15 | CAN keypad | DP-KEY | D-031. Hatch and fuel-door *outputs* are `Q-061` |
 
 **No retract switch.** Deleted (D-038) — pop-ups raise from the A15 ladder
 reaching HEAD. Wink switches are momentary overrides.
 
-### Outputs — loads in the dash
+## Outputs — loads in the dash
 
-| Device | On | Note |
-|---|---|---|
-| Blower motor | O16 ⚡ | Flyback channel. Factory resistor pack sets speed |
-| Comfort bus | O15 | **DCU switches downstream** *(D-073)* |
-| Illumination bus | O20 branch | PWM. Rheostat deleted |
-| Glove box light | O20 | LED |
-| USB-C ports | O10 | |
-| Head unit, switched | O10 | Double-DIN *(D-051)* |
-| Head unit, constant | F1 busbar | Off the PMU — it sleeps |
-| **DCU + ICU logic** | O10 | *(D-075)* |
+| Device | On | Goes to | Note |
+|---|---|---|---|
+| Blower motor | O16 ⚡ | L3-P 1 | Motor is DEAD (K-023) — replacement sized from its spec (D-126) |
+| Comfort bus | O15 | L3-P 2 | **DCU switches downstream** (D-073); loads deferred |
+| Accessory bus — USB-C, head unit switched | O10 | L3-M 1 | No lighter (D-095) |
+| Head unit constant | Busbar F1 via K11 | L3-M 2 | Off the PMU — it sleeps (D-020) |
+| Illumination bus | O20 branch | L3-S1 8 | PWM. Rheostat deleted |
+| ICU + DCU logic | O10 | DP-ICU 1, DP-DCU 1 | Drops, not this leg |
+| Radar module | O10 branch, fuse `Q-061` | L3-S2 7, 8 | DEFERRED (`V-061`) |
 
-**No cigarette lighter.** Deleted (D-095) — it was 8–10 A and could trip the
-channel powering the instruments.
-
-Current figures: see `../LOADS.md`. Not duplicated here.
-
-### Deleted from this leg
+## Deleted from this leg
 
 | Device | Why |
 |---|---|
-| Control Processing Unit | Flasher, wiper INT, chime, belt, key reminder → all software |
+| Control Processing Unit | Flasher, wiper INT, chime, belt, key reminder → all software (D-013, D-014, D-050) |
 | Instrument panel dimmer rheostat | O20 PWM replaces it |
 | Retractable headlight switch | D-038 |
 | Cigarette lighter | D-095 |
-| Cruise control unit and switches | **Confirmed gone** *(D-097)* |
-| Power antenna relay + switch | **Confirmed gone** *(D-097)* |
-| Rear wiper switch | **Confirmed gone** *(D-097)* |
-| Oscillator (chime), brake warning checker | Software — then dropped entirely *(D-050)* |
+| Cruise control unit and switches | **Confirmed gone** (D-097) |
+| Power antenna relay + switch | **Confirmed gone** (D-097) |
+| Rear wiper switch | **Confirmed gone** (D-097) |
+| Oscillator (chime), brake warning checker | Software — then dropped entirely (D-050) |
 | Stop light switch as a load-carrier | Becomes a signal input only |
-
----
-
-## Connectors
-
-**Five housings.** Cavity assignments are in `PIN-MAP.md` — this section names
-the housings and explains the shape.
-
-| Code | Housing | Cav | Used | Carries |
-|---|---|---|---|---|
-| **L3-P** | DTP06-2S | 2 | 2 | Blower, comfort bus — 12 AWG |
-| **L3-M** | DT06-2S | 2 | 2 | Accessory bus, head unit constant — 14 AWG |
-| **L3-S1** | DT06-12S | 12 | 12 | Signal |
-| **L3-S2** | DT06-12S | 12 | 12 | Signal |
-| **L3-S3** | DT06-8S | 8 | 5 | Signal |
-
-**AMPSEAL is gone** (D-052/070). Three DT housings instead of one 35-way: cheaper,
-easier to source contacts for, and a connector failure takes out part of the dash
-rather than all of it.
-
-**Plus two module drops at the post**, not part of this leg: `DP-ICU` (DT06-12S,
-carries all six engine sensor inputs) and `DP-DCU` (DT06-6S, power and CAN only).
-
----
+| Rear defrost switch | Broken (K-020); moves to the keypad |
 
 ## Why this leg is shaped the way it is
 
-**Almost entirely signal.** Two heavy conductors against 29 signals. That inverts
-the usual harness assumption — the connectors here are chosen for cavity count,
-not current.
+**Almost entirely signal.** Two heavy conductors, two medium, and 23 signal
+conductors in use across three DT housings. That inverts the usual harness
+assumption — the connectors here are chosen for cavity count, not current.
 
-**Ladders are what make it fit.** Without them the switch inputs alone would need
-15+ pins. With them it is six. Every multi-position switch is laddered from day
-one, because retrofitting one is a re-pin (D-019).
+**Ladders are what make it fit.** Without them the switch inputs alone would
+need 15+ pins. With them it is seven. Every multi-position switch is laddered
+from day one, because retrofitting one is a re-pin (D-019).
+
+**Three DT housings instead of one 35-way AMPSEAL** (D-052, D-070): cheaper,
+easier to source contacts for, and a connector failure takes out part of the
+dash rather than all of it. Nine cavities are spare.
 
 **The Control Processing Unit deletion is the biggest single simplification in
-the project.** One module was doing flasher, wiper intermittent, chime, seat belt
-warning and key reminder. All of it is now config.
+the project.** One module was doing flasher, wiper intermittent, chime, seat
+belt warning and key reminder. All of it is now config.
 
 **Routing:** keep the CAN pairs away from the relay coil commands. Coils switch
 inductively and put spikes back down the bundle.
 
-**Two grounds legitimately cross this leg** — the diagnostic port and keypad
-returns. Both are box-adjacent devices with no zone of their own (D-037).
+**Grounds that cross here** — the diagnostic port, keypad, ICU and DCU returns
+— are box-adjacent devices with no zone of their own (D-037). They are drops,
+not part of the leg.
 
----
+## Later additions land at the drops, not in this leg
 
-## Later additions land here
-
-The DCU and ICU mount inches from the post and join at `DP-DCU` / `DP-ICU`.
-L3-S3 has three spare cavities; the module connectors are separate, so the DCU
-arriving does not consume this leg's spares.
-
-`[Q-014]` — the dash envelope is still unmeasured, and it gates the panel
-drawing. The relay bank dropped from 16 sockets to 10 (D-067), so the panel is
-smaller than when that question was first written.
+The DCU and ICU mount inches from the post and join at `DP-DCU` / `DP-ICU`;
+the module connectors are separate, so the DCU arriving does not consume this
+leg's spares. `Q-014` / `T-007` — the dash envelope is still unmeasured, and
+it gates the panel drawing.

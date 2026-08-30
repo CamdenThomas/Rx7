@@ -1,5 +1,7 @@
 # Circuit — Interior, Doors, Hatch, Fuel Door, Accessories
 
+*Rev 2026-08-30 · owns: the factory decode of this circuit — devices, wires, logic. The rebuild table at the foot points into the new design and is not its owner; cavities are `02-HARNESS/data/connectors.csv`'s.*
+
 **Source:** Section H, page 26.
 
 ---
@@ -58,23 +60,23 @@ Both are solenoid pulls on a 20 A constant feed, switched by a dash button:
 
 ## 5 · What this means for the rebuild
 
-| Factory                                             | PMU-24 plan                                                         |
-|-----------------------------------------------------|---------------------------------------------------------------------|
-| LY constant interior bus                            | O20 PWM interior bus, C5-B1 (D-020 keeps a true constant elsewhere) |
-| Door switches to ground on RY                       | A6 door pin ladder, C5-B2 — same topology, no change needed         |
-| Control Processing Unit (chime, belt, key reminder) | Deleted, all software                                               |
-| Cigarette lighter on LY                             | O10 accessory bus, C6-1                                             |
-| Auto clock on LY constant                           | **Constant bus off the PMU** (D-020) — the PMU sleeps               |
-| Luggage compartment light + switch                  | O20 bus, C4-B9 spare                                                |
-| Hatch release solenoid                              | C4-B8 spare, already reserved in SPEC                               |
-| Fuel-door release solenoid                          | **No channel allocated** — `[V-033]`                                |
-| Glove box light                                     | O20 bus                                                             |
-| Seat belt warning                                   | Software, or dropped                                                |
+| Factory | PMU-24 plan |
+|---|---|
+| LY constant interior bus | O20 PWM interior bus → **L4-M 8** (F12 branch); a true constant lives on the busbar (D-020) |
+| Door switches to ground on RY | A6 door pin ladder — **D1 3 / D2 3 → L4-S 2**; same topology |
+| Control Processing Unit (chime, belt, key reminder) | Deleted; chimes dropped (Q-021 → D-050) |
+| Cigarette lighter on LY | **Deleted** (D-095) |
+| Auto clock on LY constant | Constant bus off the PMU (D-020) — the PMU sleeps |
+| Luggage compartment light + switch | O20 bus; the switch joins the A6 ladder as a fourth state via **L4-S 3** (A-012) |
+| Hatch release solenoid | **L4-M 3** — **no output yet**, `Q-061`. Latch switch broken, K-016 |
+| Fuel-door release solenoid | **L4-M 4** — never existed (V-034 → D-098), new part `T-032`; output `Q-061` |
+| Glove box light | O20 bus |
+| Seat belt warning | Dropped (D-050) |
 
 ## 6 · Unknowns
 
-| ID    | Unknown                                                                      | Resolve by                     |
-|-------|------------------------------------------------------------------------------|--------------------------------|
-| V-033 | Fuel-door release solenoid has no channel. Needs a C4 spare                  | Allocate during next SPEC pass |
-| V-034 | Are the hatch and fuel-door solenoids still working?                         | Inspect car                    |
-| Q-021 | Keep the seat belt warning and key reminder chime in software, or drop them? | Decide                         |
+| ID | Unknown | Resolve by |
+|---|---|---|
+| V-033 | Hatch and fuel-door solenoids have no output | The `Q-061` packet, Checklist 0.23 |
+| V-034 → D-098 | Solenoid state | Hatch switch broken; fuel-door solenoid never existed |
+| Q-021 → D-050 | Chimes | Dropped |

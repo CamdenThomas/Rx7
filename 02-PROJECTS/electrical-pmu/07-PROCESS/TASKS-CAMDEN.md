@@ -1,169 +1,110 @@
 # Camden's Tasks — Electrical / PMU
 
-Physical work, measurements, purchases, sign-offs. Only Camden can clear these.
-**Blocking** means downstream work stops.
+*Rev 2026-08-30 · owns: physical work, measurements, purchases and sign-offs that only Camden can clear. Each task cites the Checklist step it satisfies; the Checklist owns the sequence, this file owns the list. Lighting tasks are `../../lighting-body/TASKS.md`'s.*
+
+**Blocking** means downstream work stops. IDs are permanent; done tasks stay
+listed, struck through.
+
+## Contents
+
+1. Do next · 2. Phase 0 — the meter session · 3. Phase 0 — the tape measure
+session · 4. Before Phase 4 · 5. Decisions and sourcing · 6. Firmware ·
+7. Done
 
 ---
 
-## DONE
+## 1 · Do next
 
-| ID        | Task                                                                                                                                              | Result                                                                                              |
-|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| ~~T-001~~ | Clamp DMM with DC current                                                                                                                         | **PURCHASED** — UT210E. Unblocks T-014, T-015, T-016                                                |
-| ~~T-002~~ | Ionic S9 (heated)                                                                                                                                 | **PURCHASED** — closes V-017                                                                        |
-| ~~T-003~~ | PMU-24 DL                                                                                                                                         | **PURCHASED** — closes V-016, V-018                                                                 |
-| ~~T-013~~ | Sicma cavity geometry                                                                                                                             | **RESOLVED from CAD.** 3×13, L→R T→B, 2 large / 9 small / 2 large per row. SPEC §11                 |
-| ~~T-021~~ | Inventory the PMU box                                                                                                                             | Connector kit **and** USB-to-CAN adapter both included                                              |
-| ~~T-026~~ | Bench kit — 3× Teensy 4.1 w/ pins, SN65HVD230 5-pack, micro-B cables, 120 Ω, E24 assortment, breadboards, jumpers, board materials, rotary switch | **PURCHASED.** Phase 2A and 2B fully unblocked                                                      |
-| ~~T-027~~ | Spare Sicma housings                                                                                                                              | **2 PURCHASED**, each with a full pin set. Three housings total — bench, car, spare                 |
-| ~~T-010~~ | Inspection sweep                                                                                                                                  | **DONE.** Closed V-023, V-024, V-025, V-027, V-029, V-031, V-032, V-034, V-036, V-049 → D-097–D-100 |
-
-## Connector and terminal stock
-
-| Housing | Source          | Terminals                | Allocated to                                        |
-|---------|-----------------|--------------------------|-----------------------------------------------------|
-| #1      | PMU box         | full set, spares unknown | **The car** — the real one, terminated once (D-004) |
-| #2      | Purchased spare | full set, spares unknown | **Bench mule** — test pigtail, Checklist 2.3        |
-| #3      | Purchased spare | full set, spares unknown | **Spare** — untouched until something goes wrong    |
-
-**Terminals deliberately not ordered yet** — pending the stock count below.
-
----
-
-## OPEN — do these next
-
-| ID        | Task                                                                                                                                         | Why                                                             | Blocks           | Status |
-|-----------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|------------------|--------|
-| **T-025** | **Count all three terminal sets by size** — 2.8 mm large / 2.8 mm / 1.5 mm. Need **12 large + 27 small** per housing, plus 20% working spare | Decides whether terminals go on the wire order at all           | Phase 1 ordering | Open   |
-| **T-020** | Compare housing #1 to SPEC §11 — confirm 2 large / 9 small / 2 large per row in the hand                                                     | Ten seconds. Makes the CAD result certain before any crimp      | Before Phase 4   | Open   |
-| T-022     | Check the Ionic's state of charge, keep it above BMS cutoff until fitted                                                                     | A lithium left to self-discharge into cutoff is hard to recover | Now              | Open   |
-
-## OPEN — Phase 0, the meter session
-
-| ID        | Task                                                                                                                                                     | Blocks                                                                           |
-|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-| **T-014** | **Clamp every load — inrush and steady.** Headlights lo/hi, blower each speed, wiper lo/hi, defog, fuel pump, horn, tail, brake, turn, reverse, interior | **BLOCKING.** Sets every gauge and soft fuse. Impossible once the harness is out |
-| ~~T-016~~ | ~~Diagnose K-008~~                                                                                                                                       | **CANCELLED — D-105.** The fault dies with the harness. Not being fixed          |
-| T-015     | Pop-up motor stall current, both sides                                                                                                                   | Sizes the motor bus and relay bank                                               |
-| T-004     | Alternator output rating off the case                                                                                                                    | V-002, V-019                                                                     |
-| T-012     | Fuel sender ohm range, empty → full                                                                                                                      | V-037, sets the A7 divider                                                       |
-| T-011     | Continuity-test pop-up motor internal limit pinout                                                                                                       | V-030, A-007. Adjusts the A4/A5 ladders                                          |
-| T-023     | Continuity-test which ignition outputs stay live in RUN and START                                                                                        | V-050. The A16 key ladder is wrong if this is                                    |
-| T-009     | Confirm the coil / ignitor configuration matches twin coils + twin igniters                                                                              | V-001                                                                            |
-
-## OPEN — Phase 0, the tape measure session
-
-| ID        | Task                                                              | Blocks                                         |
-|-----------|-------------------------------------------------------------------|------------------------------------------------|
-| **T-007** | **Dash cavity envelope** — W × H × D + 39-pin lever clearance     | Q-014. Panel drawing, panel parts order        |
-| T-024     | Cargo bin vs the Group 25 case. Mock in cardboard before cutting  | V-051. Battery tray order                      |
-| T-028     | Sill space behind the kick panel — 4 relays, 3 fuses, ground stud | V-055. Sill plate fabrication                  |
-| **T-008** | Every harness route with string, +15%                             | **The wire cut list**, and the connector order |
-| T-018     | Photograph the entire harness — connectors, branches, grounds     | Reference once the loom is gone                |
-| T-019     | Find and log the wideband tap and every PO splice                 | K-001, K-002                                   |
-| T-029     | Battery terminal type — SAE or 3/8 threaded                       | V-053. Decides which lugs to buy               |
-
-## OPEN — decisions and sourcing
-
-| ID    | Task                                                                                            | Blocks                                        |
-|-------|-------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| T-030 | Answer Q-014, Q-037, Q-042, A-005, A-007 in `OPEN.md`                                           | Panel drawing, display order, PCB layout      |
-| T-031 | **Source the new mirrors** — larger, heated, digital control. Confirm conductor count `[V-060]` | D-093. D1/D2 has zero spare cavities          |
-| T-032 | **Source a fuel-door solenoid** — never existed, this is new                                    | D-098                                         |
-| T-033 | **Source a hatch latch switch** — original is broken                                            | D-098                                         |
-| T-017 | Verify connector pin labels in `01-REFERENCE/factory-circuits/`                                 | Read off scans. Pin letters are the weak link |
-
----
-
-## What's unblocked right now
-
-**Phase 2A — PMU configuration.** 35–55 hrs. You have the PMU, the USB-to-CAN
-adapter, a bench housing, 120 Ω resistors and the board materials. Nothing is
-missing.
-
-**Phase 2B — firmware.** 155–325 hrs. Three Teensys, five transceivers, cables,
-breadboards. Nothing is missing.
-
-Together that's the largest block of work in the project and none of it needs
-the car, the shop, or good weather.
-
----
-
-## NEW TASKS — 2026-08 round four
-
-| ID        | Task                                                                                                                                  | Why                                                                                                                                       | Blocks              | Status |
-|-----------|---------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|---------------------|--------|
-| **T-011** | **Continuity-test the pop-up motor internal limit pinout** — which of WR/YG/R/RY are limits vs drive, at both extremes and mid-travel | `[A-007]` was converted from an assumption to this task (D-112). The A4/A5 ladder values in `LADDERS.md` stay provisional until it's done | Ladder finalisation | Open   |
-| **T-034** | **Measure the tail light aperture** — width, height, depth, mounting `[V-063]`                                                        | Drives the entire tail light design. Target is 5 cm reverse section, 2.2 cm strip height, but that assumes a 30 cm aperture               | Tail light design   | Open   |
-| **T-035** | **Confirm 7-inch round or rectangular sealed beams** on this car `[V-066]`                                                            | Decides whether the headlamp needs an adapter plate                                                                                       | `[Q-048]`           | Open   |
-| **T-036** | Answer `[Q-048]` — which headlamp unit                                                                                                | 4×6 + adapter, 5×7, or 7-inch round with a rectangular element                                                                            | Headlamp order      | Open   |
-| **T-037** | Source **DOT/SAE LED modules** with published candela, red and white `[V-064]`                                                        | Photometry is the hard part of the tail lights, not area                                                                                  | Tail light build    | Open   |
-
-## Reminder — the four measurements that need nothing in the post
-
-| ID        | Task                             | Tool         |
-|-----------|----------------------------------|--------------|
-| **T-007** | Dash cavity envelope             | Tape measure |
-| **T-008** | Harness routes, +15%             | String       |
-| **T-034** | Tail light aperture              | Tape measure |
-| **T-028** | Sill space behind the kick panel | Tape measure |
-
-**T-007 and T-008 are two of the three biggest blockers in the project.** Neither
-needs the meter, the Teensys, or anything else in transit.
-
----
-
-## METER DAY — 2026-08
-
-The clamp meter arrives today. `05-BUILD/METER-SESSION.md` is the step-by-step,
-with access points for every circuit and workarounds for the four broken ones.
-
-| ID                | Task                                                                                                                                                                     | Note                                                                               |
-|-------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| **T-014**         | **The meter session.** Half a day. Parts 1–5 of METER-SESSION.md                                                                                                         | **Irreversible window.** These numbers cannot be recovered once the harness is out |
-| **T-011 + T-015** | **Do these together** (D-127). Continuity-test the pop-up motor pinout with the battery disconnected, then drive it on the identified pins for running and stall current | Guessing the pinout risks the limit switches                                       |
-| **T-040**         | Diagnose the washer pump `[K-022]` — pump, wiring, or switch?                                                                                                            | Decides whether it goes on the parts list                                          |
-| **T-041**         | Confirm the blower is the motor, not the feed — 12 V present at the connector with the switch on? `[K-023]`                                                              |                                                                                    |
-| **T-038**         | **Source a blower motor.** Confirmed dead, on the migration list                                                                                                         | Before Phase 6                                                                     |
-| **T-039**         | Source a washer pump — **only if T-040 says the pump is dead**                                                                                                           |                                                                                    |
-
-### The three readings that matter most
-
-Everything else has headroom. These three size real hardware:
-
-1. **Wiper stall** — sets O8/O9 and the wire gauge
-2. **Pop-up stall** — sets the motor bus and the relay bank
-3. **Defog cold** — grids draw more cold, and the cold figure is the design one
-
-### What can't be measured at all
-
-**The blower.** The motor is dead. O16 stays a 25 A channel with the flyback
-diode and gets its soft fuse set at migration from whatever is fitted (D-126).
-
----
-
-## PMU RECEIVED — 2026-08
-
-| ID | Task | Result |
-|---|---|---|
-| ~~T-020~~ | Confirm cavity layout against SPEC §11 | **CONFIRMED.** 12 large, 27 small, widest farthest out. Pin plan buildable as drawn |
-| ~~T-025~~ | Count terminal stock | **16 large `FCI` (4 spare), 27 small `FCI 125` (zero spare)** |
-
-## NEW — do these before Phase 4
-
-| ID | Task | Why | Status |
+| ID | Task | Why | Checklist |
 |---|---|---|---|
-| ~~T-042~~ | ~~Establish which cavity is pin 1~~ | **CLOSED.** Verified visually against the ECUmaster manual. Pin 1 top-left, opposite the purple lock (D-139) | Done |
-| **T-043** | **Mark the housing** — paint pen dot beside cavity 1 | Costs nothing. Means the question is never re-asked at the bench with the panel half-built | Before Phase 4 |
-| **T-044** | **Order spare 1.5 mm terminals, 211CC2S2160P.** ~15 minimum | Zero spares on the size that is 69% of the connector, hardest to crimp, while learning to crimp | Before Phase 4 |
-| **T-045** | Verify the two inbound ECUmaster housings arrive **with** terminals, not housing-only | If they ship bare the small-terminal shortfall is worse than it looks | On arrival |
+| **T-014** | **Finish the meter session** — 3 of 22 outputs done | **Irreversible window.** These numbers cannot be recovered once the harness is out | 0.1 |
+| **T-007** | **Dash cavity envelope** — W × H × D + 39-pin lever clearance | `Q-014`. Gates the panel drawing, the panel parts order and Phase 4 | 0.8 |
+| **T-008** | **Every harness route with string, +15 %** | Gates the cut list lengths and the wire-and-connector order | 0.11 |
+| T-022 | Check the Ionic's state of charge; keep it above BMS cutoff until fitted | A lithium left to self-discharge into cutoff is hard to recover | G0.4 |
+| T-045 | Verify the two inbound housings arrive **with** terminals, not housing-only | If they ship bare, the small-terminal shortfall is worse than it looks | G0.2 |
+| **T-049** | Record the VIN in `00-CAR/vehicle.md` | `Q-001`. Two minutes | — |
 
-## Firmware — Stages 4 and 5 ready
+**T-007 and T-008 are two of the three biggest blockers in the project.**
+Neither needs anything in the post.
 
-Both sketches written. Neither needs the transceivers.
+## 2 · Phase 0 — the meter session
+
+[`../05-BUILD/METER-SESSION.md`](../05-BUILD/METER-SESSION.md) is the step-by-step, with access points for
+every circuit and workarounds for the four broken ones. ~10–12 hrs across
+sittings.
+
+| ID | Task | Closes | Checklist |
+|---|---|---|---|
+| **T-014** | **Clamp every load, steady and stall** — headlights lo/hi, wiper lo/hi/stall, defog cold, fuel pump, horn, tail on `RG`, hazard on `WG`, reverse, interior, coils at 3000. **Done:** brake, turn L, turn R | every soft fuse; `V-054` | 0.1 |
+| **T-011 + T-015** | **Do these together** (D-127). Continuity-test the pop-up motor pinout with the battery disconnected, then drive it on the identified pins for running and stall current | `V-030`, A-007 → D-112; sizes the motor bus | 0.2, 0.6 |
+| T-004 | Alternator output rating off the case | `V-002`, `V-019` | 0.4 |
+| T-012 | Fuel sender ohm range, empty → full | `V-037`, sets the A7 divider | 0.5 |
+| T-023 | Continuity-test which ignition outputs stay live in RUN and START | `V-050`. The A16 key ladder is wrong if this is | 0.7 |
+| T-009 | Confirm the coil / ignitor configuration matches twin coils + twin igniters | `V-001` | with 0.1 |
+| T-040 | Diagnose the washer pump (K-022) — pump, wiring, or switch? | Decides whether T-039 exists | Part 3.3 |
+| T-041 | Confirm the blower is the motor, not the feed — 12 V at the connector with the switch on? (K-023) | | Part 3.4 |
+
+**The three readings that matter most:** wiper stall (sets O8/O9 and the wire
+gauge), pop-up stall (sets the motor bus and the relay bank), defog cold. The
+blower cannot be measured — O16 stays 25 A with the flyback diode and gets its
+soft fuse at migration from whatever is fitted (D-126).
+
+## 3 · Phase 0 — the tape measure session
+
+| ID | Task | Closes | Checklist |
+|---|---|---|---|
+| **T-007** | **Dash cavity envelope** | `Q-014` | 0.8 |
+| T-024 | Cargo bin vs the Group 25 case. Mock in cardboard before cutting | `V-051` | 0.9 |
+| T-028 | Sill space behind the kick panel — 4 relays, 3 fuse positions, ground stud | `V-055` | 0.10 |
+| **T-008** | Every harness route with string, +15 % | the cut list | 0.11 |
+| T-018 | Photograph the entire harness — connectors, branches, grounds → `01-REFERENCE/photos/` | reference once the loom is gone | 0.12 |
+| T-019 | Find and log the wideband tap and every PO splice | K-001, K-002 | 0.13 |
+| T-029 | Battery terminal type — SAE or 3/8 threaded. **The battery is here; look at it** | `V-053`, decides the lugs | 0.14 |
+
+## 4 · Before Phase 4
+
+| ID | Task | Why | Checklist |
+|---|---|---|---|
+| **T-043** | **Mark the housing** — paint pen dot beside cavity 1 | Costs nothing. The question is never re-asked at the bench with the panel half-built (D-139) | G0.5 |
+| **T-044** | **Order spare 1.5 mm terminals, 211CC2S2160P**, ~15 minimum | Zero spares on the size that is 69 % of the connector, hardest to crimp, while learning to crimp (D-135) | 1.8 |
+
+## 5 · Decisions and sourcing
+
+| ID | Task | Blocks | Checklist |
+|---|---|---|---|
+| **T-030** | **Rule on the five design packets** `Q-061`–`Q-065` in [`OPEN.md`](OPEN.md), and `Q-014` | Four functions have no pin; the connector order | 0.23 |
+| T-031 | **Source the new mirrors** — larger, heated, digital control. Confirm the conductor count (`V-060`) | D-093. D1/D2 has zero spare cavities; `Q-062` | 1.5 |
+| T-032 | **Source a fuel-door solenoid** — never existed, this is new (D-098) | `Q-061` gives it an output | 1.6 |
+| T-033 | **Source a hatch latch switch** — the original is broken (D-098) | | 1.7 |
+| T-038 | **Source a blower motor.** Confirmed dead (K-023) | Before Phase 6 | 1.15 |
+| T-039 | Source a washer pump — **only if T-040 says the pump is dead** | | 1.15 |
+| T-017 | Verify connector pin labels in `01-REFERENCE/factory-circuits/` against the scans | Pin letters are the weak link in every rebuild table | before 0.13 |
+
+## 6 · Firmware
 
 | ID | Task | Hardware |
 |---|---|---|
-| T-046 | Stage 4 — ladder decode. `firmware/ladder_decode_test/` | A pot, or just a jumper to 3.3 V and GND. **3.3 V only** |
-| T-047 | Stage 5 — tach measurement. `firmware/tach_simulator/` | **One jumper wire, pin 3 → pin 4** |
-| T-048 | Flash and label boards 2 and 3 | Nothing |
+| T-048 | Flash and label boards 2 and 3 | Nothing — `firmware/pmu_sim/` on one, `tach_simulator/` on the other |
+
+Stages 1–5 are done ([`../03-MODULES/BENCH-BRINGUP.md`](../03-MODULES/BENCH-BRINGUP.md)). What the bench still
+needs to finish Stage 6 onward is [`../05-BUILD/BENCH-KIT.md`](../05-BUILD/BENCH-KIT.md) items 1–4.
+
+## 7 · Done
+
+| ID | Task | Result |
+|---|---|---|
+| ~~T-001~~ | Clamp DMM with DC current | **Bought** — UT210E |
+| ~~T-002~~ | Ionic S9 (heated) | **Bought** — `V-017` closed |
+| ~~T-003~~ | PMU-24 DL | **Bought** — `V-016`, `V-018` closed |
+| ~~T-010~~ | Inspection sweep | Closed V-023, V-024, V-025, V-027, V-029, V-031, V-032, V-034, V-036, V-049 → D-097–D-100 |
+| ~~T-013~~ | Sicma cavity geometry | Resolved from CAD, then confirmed in the hand (D-134). [`SPEC.md`](../01-DESIGN/SPEC.md) §11 |
+| ~~T-016~~ | ~~Diagnose K-008~~ | **Cancelled** — D-105. Traced from the diagram; dies with the harness |
+| ~~T-020~~ | Compare housing #1 to [`SPEC.md`](../01-DESIGN/SPEC.md) §11 | **Confirmed** — 12 large, 27 small, widest farthest out (D-134) |
+| ~~T-021~~ | Inventory the PMU box | Connector kit **and** USB-to-CAN adapter both included |
+| ~~T-025~~ | Count terminal stock | **16 large (4 spare), 27 small (zero spare)** — D-135 |
+| ~~T-026~~ | Bench kit | **Bought:** 3 × Teensy 4.1 with pins, SN65HVD230 ×5, one micro-B cable, the meter. **Not bought** (D-140): resistors, breadboards, jumpers, board materials, rotary switch — [`BENCH-KIT.md`](../05-BUILD/BENCH-KIT.md) |
+| ~~T-027~~ | Spare Sicma housings | **2 ordered**, each with a full pin set — **inbound**; T-045 checks them on arrival |
+| ~~T-042~~ | Establish which cavity is pin 1 | Verified against the ECUmaster manual and the part. Top-left, opposite the purple lock (D-139) |
+| ~~T-046~~ | Stage 4 — ladder decode | **Passed** (`ladder_decode_test/`) |
+| ~~T-047~~ | Stage 5 — tach measurement | **Passed** (`tach_simulator/`, one jumper) |
+| → lighting | T-034, T-035, T-036, T-037 | Moved to `../../lighting-body/TASKS.md` (D-123) |

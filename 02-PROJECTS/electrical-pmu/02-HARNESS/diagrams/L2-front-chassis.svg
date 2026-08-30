@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="740" viewBox="0 0 1180 740" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11">
+<style>.t{fill:#1b1b1b}.d{fill:#5d6d7e}.h{font-weight:700;fill:#1b1b1b}.box{fill:#fff;stroke:#1b1b1b;stroke-width:1.2}.src{fill:#f4f6f6;stroke:#5d6d7e}</style>
+<rect width="1180" height="740" fill="#fbfbf9"/>
+<text x="20" y="30" font-size="18" class="h">L2 · FRONT CHASSIS leg</text>
+<text x="20" y="48" class="d">Firewall / radiator support boundary · generated from data/connectors.csv · dashed = provisioned / deferred / reserved · grey = open or spare</text>
+<rect x="20" y="99.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="112.0" class="t">O2</text>
+<rect x="20" y="119.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="132.0" class="t">O3</text>
+<rect x="20" y="479.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="492.0" class="t">O6</text>
+<rect x="20" y="497.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="510.0" class="t">O8</text>
+<rect x="20" y="515.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="528.0" class="t">O9</text>
+<rect x="20" y="533.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="546.0" class="t">O11</text>
+<rect x="20" y="551.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="564.0" class="t">O17</text>
+<rect x="20" y="569.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="582.0" class="t">O18</text>
+<rect x="20" y="587.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="600.0" class="t">A4</text>
+<rect x="20" y="605.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="618.0" class="t">A5</text>
+<rect x="20" y="629.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="642.0" class="t">+5V</text>
+<rect x="20" y="647.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="660.0" class="t">K1/K2</text>
+<rect x="20" y="665.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="678.0" class="t">K3/K4</text>
+<rect x="20" y="683.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="696.0" class="t">NO OUTPUT — Q-063</text>
+<rect x="20" y="701.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="714.0" class="t">NO PIN — Q-063</text>
+<rect x="380" y="70" width="760" height="108" rx="4" class="box"/>
+<rect x="380" y="70" width="760" height="24" fill="#1b1b1b"/>
+<text x="388" y="86" fill="#fff" font-weight="700">L2-P1</text>
+<text x="490" y="86" fill="#ddd">DTP06-4S → DTP04-4P · 4 cav · Dash post</text>
+<text x="388" y="112.0" class="h">1</text>
+<text x="416" y="112.0" class="t">Headlight LOW</text>
+<text x="850" y="112.0" class="d">12 RED/BLK</text>
+<text x="980" y="112.0" class="d">LIVE</text>
+<path d="M170,108.0 C 260,108.0 290,108.0 380,108.0" fill="none" stroke="#c0392b" stroke-width="2"/>
+<text x="388" y="132.0" class="h">2</text>
+<text x="416" y="132.0" class="t">Headlight HIGH</text>
+<text x="850" y="132.0" class="d">12 RED/BRN</text>
+<text x="980" y="132.0" class="d">LIVE</text>
+<path d="M170,128.0 C 260,128.0 290,128.0 380,128.0" fill="none" stroke="#c0392b" stroke-width="2"/>
+<text x="388" y="152.0" class="h">3</text>
+<text x="416" y="152.0" class="t">Pop-up LH motor — leg A</text>
+<text x="850" y="152.0" class="d">12 RED/WHT</text>
+<text x="980" y="152.0" class="d">LIVE</text>
+<path d="M170,656.0 C 260,656.0 290,148.0 380,148.0" fill="none" stroke="#c0392b" stroke-width="2"/>
+<text x="388" y="172.0" class="h">4</text>
+<text x="416" y="172.0" class="t">Pop-up LH motor — leg B</text>
+<text x="850" y="172.0" class="d">12 RED/WHT</text>
+<text x="980" y="172.0" class="d">LIVE</text>
+<path d="M170,656.0 C 260,656.0 290,168.0 380,168.0" fill="none" stroke="#c0392b" stroke-width="2"/>
+<rect x="380" y="200" width="760" height="108" rx="4" class="box"/>
+<rect x="380" y="200" width="760" height="24" fill="#1b1b1b"/>
+<text x="388" y="216" fill="#fff" font-weight="700">L2-P2</text>
+<text x="490" y="216" fill="#ddd">DTP06-4S → DTP04-4P · 4 cav · Dash post</text>
+<text x="388" y="242.0" class="h">1</text>
+<text x="416" y="242.0" class="t">Pop-up RH motor — leg A</text>
+<text x="850" y="242.0" class="d">12 RED/WHT</text>
+<text x="980" y="242.0" class="d">LIVE</text>
+<path d="M170,674.0 C 260,674.0 290,238.0 380,238.0" fill="none" stroke="#c0392b" stroke-width="2"/>
+<text x="388" y="262.0" class="h">2</text>
+<text x="416" y="262.0" class="t">Pop-up RH motor — leg B</text>
+<text x="850" y="262.0" class="d">12 RED/WHT</text>
+<text x="980" y="262.0" class="d">LIVE</text>
+<path d="M170,674.0 C 260,674.0 290,258.0 380,258.0" fill="none" stroke="#c0392b" stroke-width="2"/>
+<text x="388" y="282.0" class="h">3</text>
+<text x="416" y="282.0" class="t">SPARE heavy</text>
+<text x="850" y="282.0" class="d">12 RED</text>
+<text x="980" y="282.0" class="d">SPARE</text>
+<text x="388" y="302.0" class="h">4</text>
+<text x="416" y="302.0" class="t">SPARE heavy</text>
+<text x="850" y="302.0" class="d">12 RED</text>
+<text x="980" y="302.0" class="d">SPARE</text>
+<rect x="380" y="330" width="760" height="188" rx="4" class="box"/>
+<rect x="380" y="330" width="760" height="24" fill="#1b1b1b"/>
+<text x="388" y="346" fill="#fff" font-weight="700">L2-M</text>
+<text x="490" y="346" fill="#ddd">DT06-8S → DT04-8P · 8 cav · Dash post</text>
+<text x="388" y="372.0" class="h">1</text>
+<text x="416" y="372.0" class="t">Wiper LOW</text>
+<text x="850" y="372.0" class="d">14 ORN/BLU</text>
+<text x="980" y="372.0" class="d">LIVE</text>
+<path d="M170,506.0 C 260,506.0 290,368.0 380,368.0" fill="none" stroke="#d68910" stroke-width="1.4"/>
+<text x="388" y="392.0" class="h">2</text>
+<text x="416" y="392.0" class="t">Wiper HIGH</text>
+<text x="850" y="392.0" class="d">14 ORN/WHT</text>
+<text x="980" y="392.0" class="d">LIVE</text>
+<path d="M170,524.0 C 260,524.0 290,388.0 380,388.0" fill="none" stroke="#d68910" stroke-width="1.4"/>
+<text x="388" y="412.0" class="h">3</text>
+<text x="416" y="412.0" class="t">Horns — both, spliced at the nose</text>
+<text x="850" y="412.0" class="d">14 ORN/BLK</text>
+<text x="980" y="412.0" class="d">LIVE</text>
+<path d="M170,542.0 C 260,542.0 290,408.0 380,408.0" fill="none" stroke="#d68910" stroke-width="1.4"/>
+<text x="388" y="432.0" class="h">4</text>
+<text x="416" y="432.0" class="t">Washer pump</text>
+<text x="850" y="432.0" class="d">14 ORN/VIO</text>
+<text x="980" y="432.0" class="d">OPEN</text>
+<path d="M170,692.0 C 260,692.0 290,428.0 380,428.0" fill="none" stroke="#aab" stroke-width="1.4"/>
+<text x="388" y="452.0" class="h">5</text>
+<text x="416" y="452.0" class="t">Turn LEFT front</text>
+<text x="850" y="452.0" class="d">16 VIO/GRN</text>
+<text x="980" y="452.0" class="d">LIVE</text>
+<path d="M170,560.0 C 260,560.0 290,448.0 380,448.0" fill="none" stroke="#7d3c98" stroke-width="1.4"/>
+<text x="388" y="472.0" class="h">6</text>
+<text x="416" y="472.0" class="t">Turn RIGHT front</text>
+<text x="850" y="472.0" class="d">16 VIO/YEL</text>
+<text x="980" y="472.0" class="d">LIVE</text>
+<path d="M170,578.0 C 260,578.0 290,468.0 380,468.0" fill="none" stroke="#7d3c98" stroke-width="1.4"/>
+<text x="388" y="492.0" class="h">7</text>
+<text x="416" y="492.0" class="t">Front park / side marker</text>
+<text x="850" y="492.0" class="d">16 ORN/BRN</text>
+<text x="980" y="492.0" class="d">LIVE</text>
+<path d="M170,488.0 C 260,488.0 290,488.0 380,488.0" fill="none" stroke="#d68910" stroke-width="1.4"/>
+<text x="388" y="512.0" class="h">8</text>
+<text x="416" y="512.0" class="t">SPARE — cornering lamp</text>
+<text x="850" y="512.0" class="d">16 ORN</text>
+<text x="980" y="512.0" class="d">SPARE</text>
+<rect x="380" y="540" width="760" height="148" rx="4" class="box"/>
+<rect x="380" y="540" width="760" height="24" fill="#1b1b1b"/>
+<text x="388" y="556" fill="#fff" font-weight="700">L2-S</text>
+<text x="490" y="556" fill="#ddd">DT06-6S → DT04-6P · 6 cav · Dash post</text>
+<text x="388" y="582.0" class="h">1</text>
+<text x="416" y="582.0" class="t">Pop-up LH position ladder</text>
+<text x="850" y="582.0" class="d">16 GRY/BLK</text>
+<text x="980" y="582.0" class="d">LIVE</text>
+<path d="M170,596.0 C 260,596.0 290,578.0 380,578.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="602.0" class="h">2</text>
+<text x="416" y="602.0" class="t">Pop-up RH position ladder</text>
+<text x="850" y="602.0" class="d">16 GRY/BRN</text>
+<text x="980" y="602.0" class="d">LIVE</text>
+<path d="M170,614.0 C 260,614.0 290,598.0 380,598.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="622.0" class="h">3</text>
+<text x="416" y="622.0" class="t">Wiper park sense</text>
+<text x="850" y="622.0" class="d">16 GRY/WHT</text>
+<text x="980" y="622.0" class="d">OPEN</text>
+<path d="M170,710.0 C 260,710.0 290,618.0 380,618.0" fill="none" stroke="#aab" stroke-width="1.4"/>
+<text x="388" y="642.0" class="h">4</text>
+<text x="416" y="642.0" class="t">+5 V reference</text>
+<text x="850" y="642.0" class="d">16 PNK</text>
+<text x="980" y="642.0" class="d">LIVE</text>
+<path d="M170,638.0 C 260,638.0 290,638.0 380,638.0" fill="none" stroke="#e91e63" stroke-width="1.4"/>
+<text x="388" y="662.0" class="h">5</text>
+<text x="416" y="662.0" class="t">SPARE — ambient temp sensor</text>
+<text x="850" y="662.0" class="d">16 GRY</text>
+<text x="980" y="662.0" class="d">SPARE</text>
+<text x="388" y="682.0" class="h">6</text>
+<text x="416" y="682.0" class="t">SPARE</text>
+<text x="850" y="682.0" class="d">16 GRY</text>
+<text x="980" y="682.0" class="d">SPARE</text>
+</svg>

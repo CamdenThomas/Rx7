@@ -1,6 +1,6 @@
 # HEAD UNIT
 
-*Rev 2026-08 · owns: audio, maps and the double-DIN install*
+*Rev 2026-08-30 · owns: audio, maps and the double-DIN install.*
 
 A double-DIN head unit with **wireless CarPlay**. Provides maps, the road-preview
 minimap, iPhone audio and the controls.
@@ -33,17 +33,18 @@ minimap, iPhone audio and the controls.
 |---|---|---|
 | Switched feed | O10 | `L3-M 1`, 14 AWG |
 | Constant keep-alive | **Busbar F1, not the PMU** | `L3-M 2`, 14 AWG |
-| Amp remote turn-on | O10 | Accessory branch |
+| Amp remote turn-on | Head unit's own output | Not a PMU load |
 | Speakers | — | Independent of the PMU entirely |
 
-**Amp main power comes off the rear ANL block at the battery**, never through the
-panel.
+**Amp main power comes off busbar F5 (30 A, behind K11)** or its own fused
+lead from the distribution post — never through the PMU.
 
 **The constant feed is off the busbar deliberately** (D-020). The PMU sleeps; a
 head unit clock that loses time every night is worse than one fuse.
 
 K11, the constant-bus master, can drop that feed on a long park so the clock
-can't flatten the lithium.
+can't flatten the lithium. Selection criteria are D-149; the unit itself is
+still to be chosen.
 
 ---
 

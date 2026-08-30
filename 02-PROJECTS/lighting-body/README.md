@@ -1,8 +1,10 @@
 # LIGHTING & BODY
 
-*Created 2026-08 by splitting lighting out of the electrical project.*
+*Rev 2026-08-30 · owns: the scope and status of the lighting and body project — created 2026-08 by splitting lighting out of the electrical project (D-123). Its decisions are [`DECISIONS.md`](DECISIONS.md)'s, its open items [`OPEN.md`](OPEN.md)'s, its tasks [`TASKS.md`](TASKS.md)'s, its money [`BOM.md`](BOM.md)'s.*
 
-**Status: NOT STARTED. Deferred until the electrical rebuild is finished.**
+**Status: NOT STARTED. Deferred until the electrical rebuild is finished and
+shaken down (L-004).** The only live work is four measurements Camden can take
+any time ([`TASKS.md`](TASKS.md)).
 
 ---
 
@@ -29,11 +31,12 @@ then add.
 | Custom LED tail lights (D-107, D-111) | This project |
 | Headlamp change to a rectangular unit (D-110) | This project |
 | Full LED bulb conversion | This project |
-| `[Q-048]` headlamp unit choice | This project |
-| `[V-063]` tail light aperture | This project |
-| `[V-064]` DOT LED module sourcing | This project |
-| `[V-066]` round vs rectangular sealed beams | This project |
-| ~$345–835 of lighting BOM | This project |
+| `Q-048` headlamp unit choice | [`OPEN.md`](OPEN.md) |
+| `V-063` tail light aperture | [`OPEN.md`](OPEN.md), `T-034` |
+| `V-064` DOT LED module sourcing | [`OPEN.md`](OPEN.md), `T-037` |
+| `V-066` round vs rectangular sealed beams | [`OPEN.md`](OPEN.md), `T-035` |
+| Tasks T-034 … T-037 | [`TASKS.md`](TASKS.md) |
+| ~$400–980 of lighting BOM | [`BOM.md`](BOM.md) |
 
 ## What stayed in electrical
 
@@ -52,14 +55,14 @@ with stock bulbs on them.
 ## Scope
 
 ### Lighting
-- [ ] Custom rear LED strip — thin, stock aperture, white reverse inboard. See `TAIL-LIGHTS.md`
+- [ ] Custom rear LED strip — thin, stock aperture, white reverse inboard. See [`TAIL-LIGHTS.md`](TAIL-LIGHTS.md)
 - [ ] Headlamp units — shorter rectangular, DOT-compliant, inside the retained pop-up buckets
 - [ ] LED conversion of every remaining lamp: park, marker, plate, interior, glovebox, luggage, illumination
 - [ ] Driver PCB ×2 for the tail lights
 - [ ] Re-set every lamp soft fuse after the change (D-122)
 
 ### Body — to be scoped
-- [ ] Rust survey and repair `[K-007]`
+- [ ] Rust survey and repair (K-007)
 - [ ] Paint
 - [ ] Trim and seals
 - [ ] Anything the lighting fabrication touches — bezels, apertures, mounting
@@ -76,15 +79,19 @@ PMU with stock bulbs and soft fuses set from measurement.
 
 | File | Holds |
 |---|---|
-| `TAIL-LIGHTS.md` | Custom LED strip design, FMVSS area math, reverse sizing, headlamp guidance |
+| [`TAIL-LIGHTS.md`](TAIL-LIGHTS.md) | Custom LED strip design, FMVSS area math, reverse sizing, headlamp guidance, process TL-1 … TL-19 |
+| [`DECISIONS.md`](DECISIONS.md) | Inherited D-107/110/111 and local L-001 … L-004 |
+| [`OPEN.md`](OPEN.md) | Q-048, V-063, V-064, V-066 |
+| [`TASKS.md`](TASKS.md) | T-034 … T-037 — the measurements that need nothing else |
+| [`BOM.md`](BOM.md) | The lighting money, ~$400–980 |
 | *(body files to come)* | |
 
 ## The two things to remember when this starts
 
 **Soft fuses set against incandescent are far too generous for LED.** A tail
 circuit set at 6 A does not protect a 3 A LED load. Every lamp circuit gets
-re-measured. The second-pass table is already waiting in
-`../electrical-pmu/05-BUILD/MIGRATION-LOG.md`.
+re-measured (D-122, L-003). The second-pass table is already waiting in
+[`../electrical-pmu/05-BUILD/MIGRATION-LOG.md`](../electrical-pmu/05-BUILD/MIGRATION-LOG.md).
 
 **Headlamps are not a custom-build item.** A strip of LEDs cannot produce a beam
 cutoff, and no care in fabrication fixes that — the optic is the problem. Source
@@ -110,7 +117,7 @@ stays stock incandescent until the electrical rebuild is finished.**
 | Glove box | 3.4 W | LED |
 | Luggage compartment | ~5 W | LED |
 | Illumination bus | 3.4 / 1.4 W ×7 | LED |
-| **Headlight LOW / HIGH** | `[V-066]` confirm what's fitted | **DOT rectangular LED unit** (L-002) |
+| **Headlight LOW / HIGH** | `V-066` confirm what's fitted — [`LOADS.md`](../electrical-pmu/01-DESIGN/LOADS.md) says LED housings, [`TAIL-LIGHTS.md`](TAIL-LIGHTS.md) §8 says 7-inch sealed beams | **DOT rectangular LED unit** (L-002, `Q-048`) |
 
 **Bulb selection is unconstrained.** Bulb-out detection was dropped (D-047), so
 draw no longer matters for function. Buy on light output and colour.
@@ -126,7 +133,9 @@ draw no longer matters for function. Buy on light output and colour.
 | Interior + illumination | ~2.5 A | ~1.0 A |
 
 **Roughly 5–7× lower on most circuits**, which is exactly why L-003 exists — every
-soft fuse set against filament has to be re-measured.
+soft fuse set against filament has to be re-measured. The electrical project's
+measured incandescent figures (brake 7.0 A, turn 3.4 A per side) are in
+[`../electrical-pmu/01-DESIGN/CHANNEL-SCHEDULE.md`](../electrical-pmu/01-DESIGN/CHANNEL-SCHEDULE.md).
 
 ### What does NOT change
 
@@ -140,7 +149,7 @@ electrical project hands this one a complete, working lamp harness.
 
 | Item | Note |
 |---|---|
-| Rust survey | `[K-007]` extent unknown, never assessed |
+| Rust survey | K-007 — extent unknown, never assessed |
 | Paint | Sunbeam Silver |
 | Trim and seals | |
 | Tail light apertures and bezels | Where lighting and body meet |

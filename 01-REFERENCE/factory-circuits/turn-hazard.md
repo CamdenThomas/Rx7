@@ -1,5 +1,7 @@
 # Circuit — Turn Signals & Hazard
 
+*Rev 2026-08-30 · owns: the factory decode of this circuit — devices, wires, logic. The rebuild table at the foot points into the new design and is not its owner; cavities are `02-HARNESS/data/connectors.csv`'s.*
+
 **Source:** Section F, page 22.
 **Type:** Turn = ignition-switched. Hazard = constant-hot (works key-off).
 **Relevant to fault K-008.**
@@ -25,7 +27,7 @@
 | Battery → fusible link 1.25 sq → **WR** constant bus | WR | |
 | WR → X-04 **10 A** → WG → F-02 hazard section | WG | Constant — hazards work with key out |
 | Ignition switch **IG** → BY → X-04 **10 A** → **GY** bus → F-02 turn section | GY | Ignition-switched |
-| GY bus also feeds the back-up light circuit | GY | Shared bus — see `backup-lights.md` |
+| GY bus also feeds the back-up light circuit | GY | Shared bus — see [`stop-tail-marker-backup.md`](stop-tail-marker-backup.md) |
 
 ## 3 · Signal path
 
@@ -64,8 +66,8 @@ star node in each zone and forbids grounds from crossing a bulkhead.
 | Factory | PMU-24 plan | Change |
 |---|---|---|
 | Control Processing Unit flasher | Deleted | PMU flashes O17/O18 natively (D-013) |
-| Combination switch turn contacts | A1 resistor ladder, switch-to-ground | Three states: L / off / R |
-| Hazard on its own constant feed | A8 input + diode to pin 7 | PMU wakes for hazards key-off (A-011) |
-| Separate L and R output wiring | O17 (VIO/GRN), O18 (VIO/YEL) | Split at panel to C2 and C4 |
-| Shared ground at X-13 | Front and rear star nodes | Direct fix for K-008 |
-| 27 W incandescent | LED | Flash rate and bulb-out thresholds must be set from measured LED current, not these wattages |
+| Combination switch turn contacts | A1 resistor ladder, switch-to-ground — **L3-S1 3** | Three states: L / off / R |
+| Hazard on its own constant feed | A8 input (**L3-S1 6**) + second pole to the wake diode strip (**L3-S2 2**) | PMU wakes for hazards key-off (D-056, D-072) |
+| Separate L and R output wiring | O17 (VIO/GRN) → **L2-M 5** + **L4-M 5**; O18 (VIO/YEL) → **L2-M 6** + **L4-M 6** | Split at the panel to the front and rear legs |
+| Shared ground at X-13 | Front and rear star nodes | Direct fix for K-008 (D-105 — not fixed in the factory harness, dies with it) |
+| 27 W incandescent | **Stays incandescent** (D-119). Measured 3.4 A per side | LED is `lighting-body/`; soft fuses re-set after any bulb change (D-122) |

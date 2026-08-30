@@ -1,0 +1,17 @@
+# Built binaries — rebuild with icu_sim/build.bat and tests/run.bat
+*.exe
+*.o
+*.obj
+
+# IDE and OS state
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Generator scratch
+07-PROCESS/tools/__pycache__/
+__pycache__/
+
+# Large PDFs under 01-REFERENCE/ are tracked. If the repo ever gets a remote,
+# move them to Git LFS:  git lfs track "01-REFERENCE/**/*.pdf"

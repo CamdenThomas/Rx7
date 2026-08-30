@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="880.0" viewBox="0 0 1180 880.0" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11">
+<style>.t{fill:#1b1b1b}.d{fill:#5d6d7e}.h{font-weight:700;fill:#1b1b1b}.box{fill:#fff;stroke:#1b1b1b;stroke-width:1.2}.src{fill:#f4f6f6;stroke:#5d6d7e}</style>
+<rect width="1180" height="880.0" fill="#fbfbf9"/>
+<text x="20" y="30" font-size="18" class="h">DASH POST · module and port drops</text>
+<text x="20" y="48" class="d">Box-adjacent, not part of any leg · generated from data/connectors.csv · dashed = provisioned / deferred / reserved · grey = open or spare</text>
+<rect x="20" y="405.6666666666667" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="418.6666666666667" class="t">O10</text>
+<rect x="20" y="423.6666666666667" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="436.6666666666667" class="t">O20</text>
+<rect x="20" y="599.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="612.0" class="t">Busbar F2 (2 A)</text>
+<rect x="20" y="617.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="630.0" class="t">Busbar — fuse position</text>
+<rect x="20" y="635.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="648.0" class="t">CAN1H</text>
+<rect x="20" y="653.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="666.0" class="t">CAN1L</text>
+<rect x="20" y="671.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="684.0" class="t">CAN2H</text>
+<rect x="20" y="689.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="702.0" class="t">CAN2L</text>
+<rect x="20" y="707.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="720.0" class="t">DP-GND</text>
+<rect x="20" y="725.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="738.0" class="t">L1-S1 2</text>
+<rect x="20" y="743.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="756.0" class="t">L1-S1 3</text>
+<rect x="20" y="761.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="774.0" class="t">L1-S1 4</text>
+<rect x="20" y="779.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="792.0" class="t">L1-S1 5</text>
+<rect x="20" y="797.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="810.0" class="t">L1-S1 6</text>
+<rect x="20" y="815.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="828.0" class="t">L1-S1 7</text>
+<rect x="20" y="833.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="846.0" class="t">L1-S2 1</text>
+<rect x="380" y="70" width="760" height="268" rx="4" class="box"/>
+<rect x="380" y="70" width="760" height="24" fill="#1b1b1b"/>
+<text x="388" y="86" fill="#fff" font-weight="700">DP-ICU</text>
+<text x="490" y="86" fill="#ddd">DT06-12S → DT04-12P · 12 cav · Dash post</text>
+<text x="388" y="112.0" class="h">1</text>
+<text x="416" y="112.0" class="t">+12 V switched</text>
+<text x="850" y="112.0" class="d">16 ORN/YEL</text>
+<text x="980" y="112.0" class="d">LIVE</text>
+<path d="M170,414.6666666666667 C 260,414.6666666666667 290,108.0 380,108.0" fill="none" stroke="#d68910" stroke-width="1.4"/>
+<text x="388" y="132.0" class="h">2</text>
+<text x="416" y="132.0" class="t">Ground</text>
+<text x="850" y="132.0" class="d">16 BLK</text>
+<text x="980" y="132.0" class="d">LIVE</text>
+<path d="M170,716.0 C 260,716.0 290,128.0 380,128.0" fill="none" stroke="#212121" stroke-width="1.4"/>
+<text x="388" y="152.0" class="h">3</text>
+<text x="416" y="152.0" class="t">CAN2 H</text>
+<text x="850" y="152.0" class="d">16 tw YEL/BLK</text>
+<text x="980" y="152.0" class="d">LIVE</text>
+<path d="M170,680.0 C 260,680.0 290,148.0 380,148.0" fill="none" stroke="#b7950b" stroke-width="1.4"/>
+<text x="388" y="172.0" class="h">4</text>
+<text x="416" y="172.0" class="t">CAN2 L</text>
+<text x="850" y="172.0" class="d">16 tw GRN/BLK</text>
+<text x="980" y="172.0" class="d">LIVE</text>
+<path d="M170,698.0 C 260,698.0 290,168.0 380,168.0" fill="none" stroke="#1e8449" stroke-width="1.4"/>
+<text x="388" y="192.0" class="h">5</text>
+<text x="416" y="192.0" class="t">Illumination level reference</text>
+<text x="850" y="192.0" class="d">16 VIO/WHT</text>
+<text x="980" y="192.0" class="d">LIVE</text>
+<path d="M170,432.6666666666667 C 260,432.6666666666667 290,188.0 380,188.0" fill="none" stroke="#7d3c98" stroke-width="1.4"/>
+<text x="388" y="212.0" class="h">6</text>
+<text x="416" y="212.0" class="t">Water temp sender</text>
+<text x="850" y="212.0" class="d">16 GRY/GRN</text>
+<text x="980" y="212.0" class="d">LIVE</text>
+<path d="M170,752.0 C 260,752.0 290,208.0 380,208.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="232.0" class="h">7</text>
+<text x="416" y="232.0" class="t">Oil pressure sender</text>
+<text x="850" y="232.0" class="d">16 GRY/BLU</text>
+<text x="980" y="232.0" class="d">LIVE</text>
+<path d="M170,770.0 C 260,770.0 290,228.0 380,228.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="252.0" class="h">8</text>
+<text x="416" y="252.0" class="t">Oil temperature sender</text>
+<text x="850" y="252.0" class="d">16 GRY/ORN</text>
+<text x="980" y="252.0" class="d">LIVE</text>
+<path d="M170,788.0 C 260,788.0 290,248.0 380,248.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="272.0" class="h">9</text>
+<text x="416" y="272.0" class="t">Tach — shielded</text>
+<text x="850" y="272.0" class="d">16 sh GRY/YEL</text>
+<text x="980" y="272.0" class="d">LIVE</text>
+<path d="M170,806.0 C 260,806.0 290,268.0 380,268.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="292.0" class="h">10</text>
+<text x="416" y="292.0" class="t">VSS</text>
+<text x="850" y="292.0" class="d">16 GRY/VIO</text>
+<text x="980" y="292.0" class="d">LIVE</text>
+<path d="M170,824.0 C 260,824.0 290,288.0 380,288.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="312.0" class="h">11</text>
+<text x="416" y="312.0" class="t">Alternator sense</text>
+<text x="850" y="312.0" class="d">16 GRY/WHT</text>
+<text x="980" y="312.0" class="d">LIVE</text>
+<path d="M170,734.0 C 260,734.0 290,308.0 380,308.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="332.0" class="h">12</text>
+<text x="416" y="332.0" class="t">Brake fluid level switch</text>
+<text x="850" y="332.0" class="d">16 GRY/PNK</text>
+<text x="980" y="332.0" class="d">LIVE</text>
+<path d="M170,842.0 C 260,842.0 290,328.0 380,328.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<rect x="380" y="360" width="760" height="148" rx="4" class="box"/>
+<rect x="380" y="360" width="760" height="24" fill="#1b1b1b"/>
+<text x="388" y="376" fill="#fff" font-weight="700">DP-DCU</text>
+<text x="490" y="376" fill="#ddd">DT06-6S → DT04-6P · 6 cav · Dash post</text>
+<text x="388" y="402.0" class="h">1</text>
+<text x="416" y="402.0" class="t">+12 V switched</text>
+<text x="850" y="402.0" class="d">16 ORN/YEL</text>
+<text x="980" y="402.0" class="d">LIVE</text>
+<path d="M170,414.6666666666667 C 260,414.6666666666667 290,398.0 380,398.0" fill="none" stroke="#d68910" stroke-width="1.4"/>
+<text x="388" y="422.0" class="h">2</text>
+<text x="416" y="422.0" class="t">+12 V constant — climate memory</text>
+<text x="850" y="422.0" class="d">16 RED</text>
+<text x="980" y="422.0" class="d">OPEN</text>
+<path d="M170,626.0 C 260,626.0 290,418.0 380,418.0" fill="none" stroke="#aab" stroke-width="1.4"/>
+<text x="388" y="442.0" class="h">3</text>
+<text x="416" y="442.0" class="t">Ground</text>
+<text x="850" y="442.0" class="d">16 BLK</text>
+<text x="980" y="442.0" class="d">LIVE</text>
+<path d="M170,716.0 C 260,716.0 290,438.0 380,438.0" fill="none" stroke="#212121" stroke-width="1.4"/>
+<text x="388" y="462.0" class="h">4</text>
+<text x="416" y="462.0" class="t">CAN2 H</text>
+<text x="850" y="462.0" class="d">16 tw YEL/BLK</text>
+<text x="980" y="462.0" class="d">LIVE</text>
+<path d="M170,680.0 C 260,680.0 290,458.0 380,458.0" fill="none" stroke="#b7950b" stroke-width="1.4"/>
+<text x="388" y="482.0" class="h">5</text>
+<text x="416" y="482.0" class="t">CAN2 L</text>
+<text x="850" y="482.0" class="d">16 tw GRN/BLK</text>
+<text x="980" y="482.0" class="d">LIVE</text>
+<path d="M170,698.0 C 260,698.0 290,478.0 380,478.0" fill="none" stroke="#1e8449" stroke-width="1.4"/>
+<text x="388" y="502.0" class="h">6</text>
+<text x="416" y="502.0" class="t">SPARE</text>
+<text x="850" y="502.0" class="d">16 GRY</text>
+<text x="980" y="502.0" class="d">SPARE</text>
+<rect x="380" y="530" width="760" height="108" rx="4" class="box"/>
+<rect x="380" y="530" width="760" height="24" fill="#1b1b1b"/>
+<text x="388" y="546" fill="#fff" font-weight="700">DP-DIAG</text>
+<text x="490" y="546" fill="#ddd">DTM06-4S → DTM04-4P · 4 cav · Glovebox</text>
+<text x="388" y="572.0" class="h">1</text>
+<text x="416" y="572.0" class="t">CAN1 H</text>
+<text x="850" y="572.0" class="d">16 tw YEL</text>
+<text x="980" y="572.0" class="d">LIVE</text>
+<path d="M170,644.0 C 260,644.0 290,568.0 380,568.0" fill="none" stroke="#b7950b" stroke-width="1.4"/>
+<text x="388" y="592.0" class="h">2</text>
+<text x="416" y="592.0" class="t">CAN1 L</text>
+<text x="850" y="592.0" class="d">16 tw GRN</text>
+<text x="980" y="592.0" class="d">LIVE</text>
+<path d="M170,662.0 C 260,662.0 290,588.0 380,588.0" fill="none" stroke="#1e8449" stroke-width="1.4"/>
+<text x="388" y="612.0" class="h">3</text>
+<text x="416" y="612.0" class="t">+12 V constant</text>
+<text x="850" y="612.0" class="d">16 RED</text>
+<text x="980" y="612.0" class="d">LIVE</text>
+<path d="M170,608.0 C 260,608.0 290,608.0 380,608.0" fill="none" stroke="#c0392b" stroke-width="1.4"/>
+<text x="388" y="632.0" class="h">4</text>
+<text x="416" y="632.0" class="t">Ground</text>
+<text x="850" y="632.0" class="d">16 BLK</text>
+<text x="980" y="632.0" class="d">LIVE</text>
+<path d="M170,716.0 C 260,716.0 290,628.0 380,628.0" fill="none" stroke="#212121" stroke-width="1.4"/>
+<rect x="380" y="660" width="760" height="108" rx="4" class="box"/>
+<rect x="380" y="660" width="760" height="24" fill="#1b1b1b"/>
+<text x="388" y="676" fill="#fff" font-weight="700">DP-KEY</text>
+<text x="490" y="676" fill="#ddd">DTM06-4S → DTM04-4P · 4 cav · Dash</text>
+<text x="388" y="702.0" class="h">1</text>
+<text x="416" y="702.0" class="t">CAN2 H</text>
+<text x="850" y="702.0" class="d">16 tw YEL/BLK</text>
+<text x="980" y="702.0" class="d">LIVE</text>
+<path d="M170,680.0 C 260,680.0 290,698.0 380,698.0" fill="none" stroke="#b7950b" stroke-width="1.4"/>
+<text x="388" y="722.0" class="h">2</text>
+<text x="416" y="722.0" class="t">CAN2 L</text>
+<text x="850" y="722.0" class="d">16 tw GRN/BLK</text>
+<text x="980" y="722.0" class="d">LIVE</text>
+<path d="M170,698.0 C 260,698.0 290,718.0 380,718.0" fill="none" stroke="#1e8449" stroke-width="1.4"/>
+<text x="388" y="742.0" class="h">3</text>
+<text x="416" y="742.0" class="t">+12 V</text>
+<text x="850" y="742.0" class="d">16 ORN/YEL</text>
+<text x="980" y="742.0" class="d">LIVE</text>
+<path d="M170,414.6666666666667 C 260,414.6666666666667 290,738.0 380,738.0" fill="none" stroke="#d68910" stroke-width="1.4"/>
+<text x="388" y="762.0" class="h">4</text>
+<text x="416" y="762.0" class="t">Ground</text>
+<text x="850" y="762.0" class="d">16 BLK</text>
+<text x="980" y="762.0" class="d">LIVE</text>
+<path d="M170,716.0 C 260,716.0 290,758.0 380,758.0" fill="none" stroke="#212121" stroke-width="1.4"/>
+</svg>

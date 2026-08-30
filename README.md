@@ -1,5 +1,7 @@
 # RX-7 — Master File System
 
+*Rev 2026-08-30 · owns: the structure of this tree and the conventions every project under it follows. Project state is each project's [`STATUS.md`](02-PROJECTS/electrical-pmu/STATUS.md); the agent's rules are [`ASSISTANT.md`](ASSISTANT.md).*
+
 Root for every RX-7 project. Car-level facts live at the top and are reused by
 every project underneath. Project folders are self-contained; `00-CAR` is
 permanent.
@@ -8,109 +10,74 @@ permanent.
 
 ```
 Rx7\
-├── README.md              <- you are here. Conventions.
-├── ASSISTANT.md           <- Claude's operating instructions. Read every session.
-├── 00-CAR\                <- permanent. Survives every project.
-│   ├── vehicle.md
-│   ├── modifications.md
-│   └── known-issues.md
+├── README.md                <- you are here. Structure and conventions
+├── ASSISTANT.md             <- Claude's operating rules. Read every session
+├── CLAUDE.md                <- pointer to ASSISTANT.md for Claude Code
+├── 00-CAR\                  <- permanent. Survives every project
+│   ├── README.md
+│   ├── vehicle.md           <- identity, drivetrain, what is fitted today
+│   ├── modifications.md     <- M-### done, P-### planned, service history
+│   ├── known-issues.md      <- K-### faults and quirks
+│   └── parts-history.md     <- what was replaced when
 ├── 01-REFERENCE\
-│   ├── factory-circuits\  <- the 1982 harness, decoded circuit by circuit
-│   └── PMU_info\          <- pinout, manual, CAD
+│   ├── README.md
+│   ├── factory-circuits\    <- the 1982 harness, decoded circuit by circuit
+│   ├── PMU_info\            <- ECUMaster pinout
+│   ├── photos\              <- T-018 harness photographs, by zone
+│   └── Part Dates - Sheet1.pdf
 ├── 02-PROJECTS\
-│   ├── electrical-pmu\    <- the active project
-│   └── lighting-body\     <- deferred. LED lights, custom lamps, body
-└── 99-ARCHIVE\            <- superseded. Never deleted.
+│   ├── electrical-pmu\      <- ACTIVE. PMU, battery, harness, DCU/ICU
+│   └── lighting-body\       <- deferred. LED lights, custom lamps, body
+└── 99-ARCHIVE\              <- superseded. Never deleted; README indexes it
 ```
 
 ## Projects
 
-| Project | State |
-|---|---|
-| **`electrical-pmu/`** | **Active.** PMU, battery, harness, DCU/ICU. Runs on **stock incandescent bulbs** |
-| `lighting-body/` | **Deferred.** LED conversion, custom tail lights, headlamp units, rust and paint. Starts after the electrical rebuild is shaken down |
+| Project | State | Start at |
+|---|---|---|
+| **[`electrical-pmu/`](02-PROJECTS/electrical-pmu/README.md)** | **Active.** PMU, battery, harness, sill node, DCU/ICU. Runs on **stock incandescent bulbs** | [`STATUS.md`](02-PROJECTS/electrical-pmu/STATUS.md) |
+| [`lighting-body/`](02-PROJECTS/lighting-body/README.md) | **Deferred.** LED conversion, custom tail lights, headlamp units, rust and paint. Starts after the electrical rebuild is shaken down | [`README.md`](02-PROJECTS/lighting-body/README.md) |
 
-Lighting was split out 2026-08 (D-123) because none of it is needed to finish the
-car — every lamp channel has 40–74% headroom on filament bulbs.
+Lighting was split out 2026-08 (D-123) because none of it is needed to finish
+the car — every lamp channel has 40–74 % headroom on filament bulbs.
 
-## The electrical project — what's in it
+## The car
 
-**Start here:** `STATUS.md` for where things stand · `GLOSSARY.md` if the
-notation is unfamiliar.
+[`00-CAR/`](00-CAR/README.md) is the permanent record: what the car is, what has
+been done to it, what is wrong with it. Every project cites it and none of them
+own it. [`01-REFERENCE/`](01-REFERENCE/README.md) is the factory harness decoded
+from the 1982 wiring diagram, frozen as [`OEM-RECORD.md`](01-REFERENCE/factory-circuits/OEM-RECORD.md), plus the PMU pinout
+and the photo archive.
 
-| File | Holds |
-|---|---|
-| **STATUS.md** | **Where the project is. Refreshed every session. Read this first** |
-| **GLOSSARY.md** | Every ID prefix, channel, connector code and colour scheme decoded |
-| **SPEC.md** | Canonical. All 39 pins, connector geometry, wire colours, module split. **Rev C** |
-| **DECISIONS.md** | Append-only, D-001…D-105, with a topic index at the top |
-| **OPEN.md** | Questions with answer blocks, assumptions, verify checklist |
-| **TASKS-CAMDEN.md** | Physical work only Camden can do |
-| **CHECKLIST.md** | The build, phase by phase, with checkboxes |
-| **SAFETY.md** | Lithium, 2 AWG, under the car, fuel, the meter session |
-| **LOADS.md** | Estimated draw and signal type, every circuit. **The only source for current figures** |
-| **LADDERS.md** | Resistor values for all six switch ladders |
-| **SCHEMATICS.md** | Wake network, H-bridges, constant bus, ground architecture |
-| **PARTS-CHANGES.md** | Every part being replaced, and with what |
-| **METER-SESSION.md** | Field procedure for the measurement session |
-| **BATTERY-INSTALL.md** | Ionic S9, cargo bin, power backbone |
-| **DCU-CLUSTER.md** | DCU and ICU scope, MCU selection, display capability |
-| **CAN-MESSAGES.md** | The message map. Finalise before firmware |
-| **MIGRATION-LOG.md** | Phase 6 working sheet — the authoritative migration order |
-| **CUT-LIST.md** | Wire cut list and label schedule. Blocked on T-008 |
-| **LOGS.md** | Config versions, firmware versions, photo index, session log |
-| **BOM.md** / **BUY-LIST.md** | Money, and what's already bought |
-| **legs/** | Four harness legs, connectors, pin map, sill node |
+## Conventions — every project
 
-## Reference — the factory car
+**One owner per fact**, declared in each file's header line
+(`*Rev YYYY-MM-DD · owns: …*`). If two files disagree, the owner wins.
 
-`01-REFERENCE/factory-circuits/` holds the 1982 harness decoded from the factory
-diagram: ten circuit files, a frozen `OEM-RECORD.md`, a fuse and ground map, and
-`FAULT-K008-analysis.md` — the blinker/fuel-pump/tach fault traced to two shared
-ground studs.
+**Current-state documents.** A file is correct top to bottom. Superseded
+reasoning goes to a marked appendix or `99-ARCHIVE/`, never left above a
+correction.
 
-## Conventions
+**Append-only decision logs.** `DECISIONS.md` in each project; reverse by a new
+entry marking the old one `> SUPERSEDED BY …`.
 
-**SPEC.md holds only what is true right now.** No history, no rationale.
+**Permanent IDs, never reused.** `D` decision · `Q` question · `A` assumption ·
+`V` verify · `T` Camden task · `K` known issue · `M` modification · `P` planned
+modification · `I` improvement · `L` lighting decision · `F/H/X/Z` forward
+work · `R` standing rule. Three digits; a closed one is cited as
+`Q-038 → D-095`. The full key is
+[`electrical-pmu/01-DESIGN/GLOSSARY.md`](02-PROJECTS/electrical-pmu/01-DESIGN/GLOSSARY.md).
 
-**DECISIONS.md is append-only.** To reverse something, add a new entry marking
-the old one superseded. Never edit a past entry.
+**Generated files are never edited by hand.** Where a project keeps data in
+CSVs (`electrical-pmu/02-HARNESS/data/`), the tables, diagrams and headers
+downstream are regenerated from them.
 
-**OPEN.md** — questions have `**ANSWER:**` blocks. Type into them; answered items
-migrate to DECISIONS on the next pass.
+**Links are relative Markdown links**, checked by
+`electrical-pmu/07-PROCESS/tools/check.py`.
 
-**IDs are permanent and never reused.** `D` decision · `Q` question ·
-`A` assumption · `V` verify · `T` Camden task · `K` known issue · `M` modification.
-Gaps mean something closed.
+## Git
 
-## Session protocol
-
-Name the mode: **DECIDE** (Claude presents packets with defaults, Camden answers),
-**GENERATE** (Claude produces an artifact, Camden reviews), **AUDIT** (Claude
-attacks SPEC for contradictions), **BUILD** (files updated from measured data).
-
-Close with "give me the diff."
-
-## Current state
-
-| Area | State |
-|---|---|
-| **Gate 0** | **CLOSED** — bench kit and 3 connector housings in hand |
-| **Phase 2A · PMU config** | **Unblocked, ready to start** |
-| **Phase 2B · firmware** | **Unblocked, ready to start** |
-| Pin allocation | Done — all 39, geometry confirmed from CAD |
-| Leg + connector design | Done — 14 leg connectors + 2 door, all Deutsch |
-| Resistor ladders | Done — bench verification pending |
-| Panel schematics | Done — wake network, H-bridges, constant bus, grounds |
-| Battery + backbone | Designed, parts listed, 2 AWG feed |
-| DCU / ICU | Scoped, Teensy 4.1 × 2 selected, firmware not started |
-| Load figures | Estimated — **T-014 measurement is the blocking item** |
-| Wire cut list | Blocked on route measurements (T-008) |
-| Panel 1:1 layout | Blocked on the dash envelope (T-007) |
-
-## Next actions
-
-1. **Start Phase 2A or 2B** — both are apartment work and need nothing more.
-2. **Two half-days with the car** — the meter session and the tape measure
-   session clear almost every remaining blocker. See `TASKS-CAMDEN.md`.
-3. **Hold the wire order** until T-008.
+The tree is a git repository. Commit at the end of every session — the agent
+cannot commit from the cloud, so this is Camden's step. `.gitignore` excludes
+built binaries and IDE state; the two large PDFs under `01-REFERENCE/` are
+candidates for Git LFS if the repository ever moves to a remote.

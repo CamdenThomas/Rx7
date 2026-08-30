@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="776.0" viewBox="0 0 1180 776.0" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11">
+<style>.t{fill:#1b1b1b}.d{fill:#5d6d7e}.h{font-weight:700;fill:#1b1b1b}.box{fill:#fff;stroke:#1b1b1b;stroke-width:1.2}.src{fill:#f4f6f6;stroke:#5d6d7e}</style>
+<rect width="1180" height="776.0" fill="#fbfbf9"/>
+<text x="20" y="30" font-size="18" class="h">L4 · REAR CABIN leg</text>
+<text x="20" y="48" class="d">Tunnel entry boundary · generated from data/connectors.csv · dashed = provisioned / deferred / reserved · grey = open or spare</text>
+<rect x="20" y="139.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="152.0" class="t">O1</text>
+<rect x="20" y="157.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="170.0" class="t">O4</text>
+<rect x="20" y="175.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="188.0" class="t">O5</text>
+<rect x="20" y="229.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="242.0" class="t">O6</text>
+<rect x="20" y="249.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="262.0" class="t">O7</text>
+<rect x="20" y="309.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="322.0" class="t">O17</text>
+<rect x="20" y="329.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="342.0" class="t">O18</text>
+<rect x="20" y="349.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="362.0" class="t">O19</text>
+<rect x="20" y="369.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="382.0" class="t">O20</text>
+<rect x="20" y="549.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="562.0" class="t">A6</text>
+<rect x="20" y="567.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="580.0" class="t">A7</text>
+<rect x="20" y="585.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="598.0" class="t">+5V</text>
+<rect x="20" y="603.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="616.0" class="t">L3-S2 3</text>
+<rect x="20" y="621.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="634.0" class="t">L3-S2 4</text>
+<rect x="20" y="639.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="652.0" class="t">L3-S2 5</text>
+<rect x="20" y="657.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="670.0" class="t">L3-S2 6</text>
+<rect x="20" y="675.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="688.0" class="t">NO OUTPUT — Q-061</text>
+<rect x="20" y="693.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="706.0" class="t">pass-through from L3-S</text>
+<rect x="20" y="711.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="724.0" class="t">pass-through from L3-S</text>
+<rect x="20" y="729.0" width="150" height="18" rx="3" class="src"/>
+<text x="26" y="742.0" class="t">pass-through from L3-S</text>
+<rect x="380" y="70" width="760" height="108" rx="4" class="box"/>
+<rect x="380" y="70" width="760" height="24" fill="#1b1b1b"/>
+<text x="388" y="86" fill="#fff" font-weight="700">L4-P</text>
+<text x="490" y="86" fill="#ddd">DTP06-4S → DTP04-4P · 4 cav · Dash post</text>
+<text x="388" y="112.0" class="h">1</text>
+<text x="416" y="112.0" class="t">Rear defog grid</text>
+<text x="850" y="112.0" class="d">12 RED/GRN</text>
+<text x="980" y="112.0" class="d">LIVE</text>
+<path d="M170,166.0 C 260,166.0 290,108.0 380,108.0" fill="none" stroke="#c0392b" stroke-width="2"/>
+<text x="388" y="132.0" class="h">2</text>
+<text x="416" y="132.0" class="t">Fuel pump</text>
+<text x="850" y="132.0" class="d">12 RED/YEL</text>
+<text x="980" y="132.0" class="d">LIVE</text>
+<path d="M170,184.0 C 260,184.0 290,128.0 380,128.0" fill="none" stroke="#c0392b" stroke-width="2"/>
+<text x="388" y="152.0" class="h">3</text>
+<text x="416" y="152.0" class="t">Window motor bus feed → sill K5–K8 commons</text>
+<text x="850" y="152.0" class="d">12 RED/WHT</text>
+<text x="980" y="152.0" class="d">PROVISIONED</text>
+<path d="M170,148.0 C 260,148.0 290,148.0 380,148.0" fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="388" y="172.0" class="h">4</text>
+<text x="416" y="172.0" class="t">SPARE heavy — in-tank pump upgrade</text>
+<text x="850" y="172.0" class="d">12 RED</text>
+<text x="980" y="172.0" class="d">SPARE</text>
+<rect x="380" y="200" width="760" height="268" rx="4" class="box"/>
+<rect x="380" y="200" width="760" height="24" fill="#1b1b1b"/>
+<text x="388" y="216" fill="#fff" font-weight="700">L4-M</text>
+<text x="490" y="216" fill="#ddd">DT06-12S → DT04-12P · 12 cav · Dash post</text>
+<text x="388" y="242.0" class="h">1</text>
+<text x="416" y="242.0" class="t">Tail / plate / rear marker</text>
+<text x="850" y="242.0" class="d">14 ORN/BRN</text>
+<text x="980" y="242.0" class="d">LIVE</text>
+<path d="M170,238.0 C 260,238.0 290,238.0 380,238.0" fill="none" stroke="#d68910" stroke-width="1.4"/>
+<text x="388" y="262.0" class="h">2</text>
+<text x="416" y="262.0" class="t">Brake lamps</text>
+<text x="850" y="262.0" class="d">14 ORN/GRN</text>
+<text x="980" y="262.0" class="d">LIVE</text>
+<path d="M170,258.0 C 260,258.0 290,258.0 380,258.0" fill="none" stroke="#d68910" stroke-width="1.4"/>
+<text x="388" y="282.0" class="h">3</text>
+<text x="416" y="282.0" class="t">Hatch release solenoid</text>
+<text x="850" y="282.0" class="d">14 ORN/RED</text>
+<text x="980" y="282.0" class="d">OPEN</text>
+<path d="M170,684.0 C 260,684.0 290,278.0 380,278.0" fill="none" stroke="#aab" stroke-width="1.4"/>
+<text x="388" y="302.0" class="h">4</text>
+<text x="416" y="302.0" class="t">Fuel-door release solenoid (new)</text>
+<text x="850" y="302.0" class="d">14 ORN/PNK</text>
+<text x="980" y="302.0" class="d">OPEN</text>
+<path d="M170,684.0 C 260,684.0 290,298.0 380,298.0" fill="none" stroke="#aab" stroke-width="1.4"/>
+<text x="388" y="322.0" class="h">5</text>
+<text x="416" y="322.0" class="t">Turn LEFT rear</text>
+<text x="850" y="322.0" class="d">16 VIO/GRN</text>
+<text x="980" y="322.0" class="d">LIVE</text>
+<path d="M170,318.0 C 260,318.0 290,318.0 380,318.0" fill="none" stroke="#7d3c98" stroke-width="1.4"/>
+<text x="388" y="342.0" class="h">6</text>
+<text x="416" y="342.0" class="t">Turn RIGHT rear</text>
+<text x="850" y="342.0" class="d">16 VIO/YEL</text>
+<text x="980" y="342.0" class="d">LIVE</text>
+<path d="M170,338.0 C 260,338.0 290,338.0 380,338.0" fill="none" stroke="#7d3c98" stroke-width="1.4"/>
+<text x="388" y="362.0" class="h">7</text>
+<text x="416" y="362.0" class="t">Reverse lamps</text>
+<text x="850" y="362.0" class="d">16 VIO/BLK</text>
+<text x="980" y="362.0" class="d">LIVE</text>
+<path d="M170,358.0 C 260,358.0 290,358.0 380,358.0" fill="none" stroke="#7d3c98" stroke-width="1.4"/>
+<text x="388" y="382.0" class="h">8</text>
+<text x="416" y="382.0" class="t">Interior + details bus (PWM)</text>
+<text x="850" y="382.0" class="d">16 VIO/WHT</text>
+<text x="980" y="382.0" class="d">LIVE</text>
+<path d="M170,378.0 C 260,378.0 290,378.0 380,378.0" fill="none" stroke="#7d3c98" stroke-width="1.4"/>
+<text x="388" y="402.0" class="h">9</text>
+<text x="416" y="402.0" class="t">Window DRV up command → K5 coil</text>
+<text x="850" y="402.0" class="d">16 BLU/BRN</text>
+<text x="980" y="402.0" class="d">PROVISIONED</text>
+<path d="M170,612.0 C 260,612.0 290,398.0 380,398.0" fill="none" stroke="#2471a3" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388" y="422.0" class="h">10</text>
+<text x="416" y="422.0" class="t">Window DRV down command → K6 coil</text>
+<text x="850" y="422.0" class="d">16 BLU/BLK</text>
+<text x="980" y="422.0" class="d">PROVISIONED</text>
+<path d="M170,630.0 C 260,630.0 290,418.0 380,418.0" fill="none" stroke="#2471a3" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388" y="442.0" class="h">11</text>
+<text x="416" y="442.0" class="t">Window PASS up command → K7 coil</text>
+<text x="850" y="442.0" class="d">16 BLU/VIO</text>
+<text x="980" y="442.0" class="d">PROVISIONED</text>
+<path d="M170,648.0 C 260,648.0 290,438.0 380,438.0" fill="none" stroke="#2471a3" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388" y="462.0" class="h">12</text>
+<text x="416" y="462.0" class="t">Window PASS down command → K8 coil</text>
+<text x="850" y="462.0" class="d">16 BLU/ORN</text>
+<text x="980" y="462.0" class="d">PROVISIONED</text>
+<path d="M170,666.0 C 260,666.0 290,458.0 380,458.0" fill="none" stroke="#2471a3" stroke-width="1.4" stroke-dasharray="6 4"/>
+<rect x="380" y="490" width="760" height="188" rx="4" class="box"/>
+<rect x="380" y="490" width="760" height="24" fill="#1b1b1b"/>
+<text x="388" y="506" fill="#fff" font-weight="700">L4-S</text>
+<text x="490" y="506" fill="#ddd">DT06-8S → DT04-8P · 8 cav · Dash post</text>
+<text x="388" y="532.0" class="h">1</text>
+<text x="416" y="532.0" class="t">Fuel level sender</text>
+<text x="850" y="532.0" class="d">16 GRY/YEL</text>
+<text x="980" y="532.0" class="d">LIVE</text>
+<path d="M170,576.0 C 260,576.0 290,528.0 380,528.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="552.0" class="h">2</text>
+<text x="416" y="552.0" class="t">Door pin ladder — driver + passenger</text>
+<text x="850" y="552.0" class="d">16 GRY/VIO</text>
+<text x="980" y="552.0" class="d">LIVE</text>
+<path d="M170,558.0 C 260,558.0 290,548.0 380,548.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="572.0" class="h">3</text>
+<text x="416" y="572.0" class="t">Luggage compartment switch</text>
+<text x="850" y="572.0" class="d">16 GRY/BRN</text>
+<text x="980" y="572.0" class="d">LIVE</text>
+<path d="M170,558.0 C 260,558.0 290,568.0 380,568.0" fill="none" stroke="#5d6d7e" stroke-width="1.4"/>
+<text x="388" y="592.0" class="h">4</text>
+<text x="416" y="592.0" class="t">+5 V reference</text>
+<text x="850" y="592.0" class="d">16 PNK</text>
+<text x="980" y="592.0" class="d">LIVE</text>
+<path d="M170,594.0 C 260,594.0 290,588.0 380,588.0" fill="none" stroke="#e91e63" stroke-width="1.4"/>
+<text x="388" y="612.0" class="h">5</text>
+<text x="416" y="612.0" class="t">Radar rear sensor link A</text>
+<text x="850" y="612.0" class="d">16 GRY/BRN</text>
+<text x="980" y="612.0" class="d">DEFERRED</text>
+<path d="M170,702.0 C 260,702.0 290,608.0 380,608.0" fill="none" stroke="#5d6d7e" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388" y="632.0" class="h">6</text>
+<text x="416" y="632.0" class="t">Radar rear sensor link B</text>
+<text x="850" y="632.0" class="d">16 GRY/BLU</text>
+<text x="980" y="632.0" class="d">DEFERRED</text>
+<path d="M170,720.0 C 260,720.0 290,628.0 380,628.0" fill="none" stroke="#5d6d7e" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388" y="652.0" class="h">7</text>
+<text x="416" y="652.0" class="t">Radar rear sensor link C</text>
+<text x="850" y="652.0" class="d">16 GRY/ORN</text>
+<text x="980" y="652.0" class="d">DEFERRED</text>
+<path d="M170,738.0 C 260,738.0 290,648.0 380,648.0" fill="none" stroke="#5d6d7e" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388" y="672.0" class="h">8</text>
+<text x="416" y="672.0" class="t">SPARE</text>
+<text x="850" y="672.0" class="d">16 GRY</text>
+<text x="980" y="672.0" class="d">SPARE</text>
+</svg>

@@ -1,5 +1,7 @@
 # Circuit — Headlights, Pop-ups, Illumination
 
+*Rev 2026-08-30 · owns: the factory decode of this circuit — devices, wires, logic. The rebuild table at the foot points into the new design and is not its owner; cavities are `02-HARNESS/data/connectors.csv`'s.*
+
 **Source:** Section E, page 20. The most complex sheet in the book.
 
 ---
@@ -43,7 +45,7 @@ parking/tail circuit. Two independent protection paths.
 | Indicator | 3.4 W retractor indicator light on YG                                    |
 | Feed      | WR constant + R from the light switch                                    |
 
-**Confirms A-003** — each side needs two motor legs forward, so four heavy
+**Confirms A-003** (A-003 → confirmed here) — each side needs two motor legs forward, so four heavy
 conductors to the nose. The limit switches are internal to the motor, which
 means the position ladder on A4/A5 has to pick up those internal contacts.
 
@@ -66,21 +68,22 @@ Ground B → X-13.
 
 ## 5 · What this means for the rebuild
 
-| Factory                        | PMU-24 plan                                                           |
-|--------------------------------|-----------------------------------------------------------------------|
-| Sealed beam 50/40 W on RL / RY | O2 low / O3 high, 12 AWG to C2-A1 / C2-A2                             |
-| Dimmer rheostat E-05           | Deleted — O20 PWM drives illumination (SPEC C3-14)                    |
-| E-01 LIGHT + DIMMER + PASSING  | A15 ladder. **Passing/flash-to-pass needs software logic, not a pin** |
-| E-02 pop-up switch             | C3-12 / C3-13 raise/lower commands to the relay bank                  |
-| Motor internal limit contacts  | A4 / A5 position ladders via C2-B5 / C2-B6                            |
-| 4-wire motors                  | C2-A3…A6, H-bridge relays on the panel                                |
-| Headlight cleaner E-11         | **Not in SPEC** — `[V-029]` almost certainly already gone             |
-| Separate 0.3 sq fusible links  | Soft fuses on O2 / O3                                                 |
+| Factory | PMU-24 plan |
+|---|---|
+| Sealed beam 50/40 W on RL / RY | O2 low → **L2-P1 1**, O3 high → **L2-P1 2**, 12 AWG. What is fitted today is `V-066` |
+| Dimmer rheostat E-05 | Deleted — O20 PWM drives illumination (**L3-S1 8**); the ICU backlight tracks it on DP-ICU 5 |
+| E-01 LIGHT + DIMMER + PASSING | A15 ladder (**L3-S1 2**). Dimmer HIGH/LOW and PASS were put "in software" (Q-020 → D-051) — how they reach A15 is `Q-065` |
+| E-02 pop-up switch | **Deleted** (D-038) — broken anyway (K-021). Pop-ups raise on HEAD from the A15 ladder; wink switches **L3-S1 9/10** are the only manual control |
+| Motor internal limit contacts | A4 / A5 position ladders via **L2-S 1 / 2**, provisional until `T-011` |
+| 4-wire motors | **L2-P1 3/4** (LH) and **L2-P2 1/2** (RH), H-bridges K1–K4 on the plate, F6/F7 branches |
+| Headlight cleaner E-11 | Gone (V-029 → D-097) |
+| Separate 0.3 sq fusible links | Soft fuses on O2 / O3 |
 
 ## 6 · Unknowns
 
-| ID    | Unknown                                                                              | Resolve by                          |
-|-------|--------------------------------------------------------------------------------------|-------------------------------------|
-| V-029 | Is the headlight cleaner system still fitted?                                        | Inspect car — rare, usually deleted |
-| V-030 | Pop-up motor internal limit contact pinout — which of WR/YG/R/RY are limits vs drive | Continuity test the motor, T-003    |
-| Q-020 | Flash-to-pass: software function off the A15 ladder, or its own input?               | Decide with Q-018/Q-019             |
+| ID | Unknown | Resolve by |
+|---|---|---|
+| V-029 → D-097 | Headlight cleaner | Gone |
+| V-030 | Pop-up motor internal limit contact pinout — which of WR/YG/R/RY are limits vs drive | Continuity test, `T-011`, Checklist 0.6 |
+| Q-020 → D-051 / `Q-065` | Flash-to-pass | Software off A15; the ladder states are the `Q-065` packet |
+| V-066 | Round or rectangular sealed beams, and whether LED housings are fitted today | Look — `lighting-body/OPEN.md` |

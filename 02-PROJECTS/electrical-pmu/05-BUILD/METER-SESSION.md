@@ -1,24 +1,34 @@
 # METER SESSION — step by step
 
-*Rev 2026-08. The clamp meter arrives today. This is the procedure.*
+*Rev 2026-08-30 · owns: the clamp-meter procedure — access points, expected figures and the recording sheet. Readings themselves are recorded once, in `../02-HARNESS/data/pmu_pins.csv` → [`../01-DESIGN/CHANNEL-SCHEDULE.md`](../01-DESIGN/CHANNEL-SCHEDULE.md).*
 
-**Tool:** UNI-T UT210E. **DC current.** It defaults to AC on power-up — change it.
+**Tool:** UNI-T UT210E, in hand (`T-001` done). **DC current.** It defaults to
+AC on power-up — change it. **Checklist:** [`CHECKLIST.md`](CHECKLIST.md) 0.1–0.7.
 
-**Budget half a day.** You will not finish in an hour and rushing it costs you
-data you can never recover.
+**Budget ~10–12 hours across two or three sittings**, not an afternoon. The
+first sitting (brake, turn, one wrong-wire attempt at the tail circuit) took
+most of an evening and produced three usable numbers. Rushing costs data that
+cannot be recovered once the harness is out.
+
+## Contents
+
+1. Before you start · 2. The two rules · 3. Where to clamp · Part 1 engine
+off · Part 2 engine running · Part 3 the four broken circuits · Part 4
+parasitic draw · Part 5 not current · Recording sheet · When you're done ·
+Part 6 using the meter — clarifications from the first sitting
 
 ---
 
-## Before you start
+## 1 · Before you start
 
-- [ ] Meter on **DC A**, not AC
+- [ ] Meter on **DC A**, not AC (SELECT toggles it — §Part 6)
 - [ ] Print the recording sheet at the bottom of this file
 - [ ] Car outside or garage door open — **rotary at idle in a closed garage is
       carbon monoxide**
 - [ ] Sleeves rolled, nothing loose, hair tied. Belt and pulleys are spinning
 - [ ] Fire extinguisher within reach, not across the garage
 
-## The two rules that make or break every reading
+## 2 · The two rules that make or break every reading
 
 **1 · Zero the jaw before EVERY reading.** Jaw closed, nothing inside, press
 ZERO. DC clamps drift constantly and an un-zeroed jaw reads a full amp off.
@@ -26,9 +36,7 @@ ZERO. DC clamps drift constantly and an un-zeroed jaw reads a full amp off.
 **2 · Clamp ONE conductor.** Both wires in the jaw reads zero. This is the single
 most common clamp meter mistake and it looks exactly like a dead circuit.
 
----
-
-## Where to clamp — the general rule
+## 3 · Where to clamp — the general rule
 
 **At the device's own connector, on one wire, without unplugging anything.**
 You do not need to break any circuit. That is the whole reason this tool was
@@ -36,35 +44,45 @@ chosen.
 
 If a circuit feeds several devices — the tail bus feeds eight lamps — clamp
 **upstream of the splits**, at the fuse block or the switch output, to get the
-whole circuit at once.
+whole circuit at once. Factory connector codes (E-01, F-11 …) are the
+`01-REFERENCE/factory-circuits/OEM-RECORD.md` codes; wire colours are the
+factory abbreviations from the same file.
 
 ---
 
-# PART 1 · Engine off, key on
+## Part 1 · Engine off, key on
 
 Ignition to **RUN**, engine not running. Safer, and most lighting works here.
 
 ### 1.1 · Tail / park / marker / plate — O6
 
-- **Access:** the R wire at the headlight switch output (E-01), under the dash
-  behind the column shroud. That's upstream of all eight lamps
+- **Access:** the **`RG` wire at the headlight switch output (E-01)**, under
+  the dash behind the column shroud. That is upstream of all eight lamps.
 - Switch to **PARK**. Record. Switch to **HEAD**. Record — should be identical
 - Expect **~4.4 A**
 
-### 1.2 · Brake lamps — O7
+### 1.2 · Brake lamps — O7 · **done — 7.0 A steady, 9.5 A warm-up**
 
 - **Access:** the W wire at the stop light switch (F-11), at the brake pedal
 - Have someone press the pedal, or wedge it
-- Expect **~3.9 A**
+- Recorded 2026-08 against an estimate of 3.9 A — nearly double. Worth
+  confirming the bulbs are the correct 27/8 W and not something larger, but the
+  channel is 15 A and the soft fuse is set at 9.5 A either way
 
-### 1.3 · Turn signals — O17 / O18
+### 1.3 · Turn signals — O17 / O18 · **done per side — 3.4 A**
 
 - **Access:** the GR wire (left) or GO wire (right) at the combination switch
   connector (F-02), under the column
 - Stalk to LEFT. **Read the peak during an ON phase** — it flashes, so watch for
-  the high reading, not the average
-- Repeat RIGHT. Then **HAZARD** — both sides together
-- Expect **~4.2 A per side**, ~8.4 A on hazard
+  the high reading, not the average. Repeat RIGHT
+- **Hazard: clamp the `WG` feed upstream of the hazard switch**, which carries
+  both sides. Clamping `GR` during hazard gives half the circuit and a reading
+  that wanders with the flash cycle (2–3.4 A on the first sitting). Or record
+  left and right and add them
+- Recorded 3.4 A per side against an estimate of 4.2 A — slightly under, normal
+  for aged filaments and a plausible sign one bulb is dim or out. The
+  occasional 3.4 → 2.3 A drop that follows the fuel-pump note is fault K-008
+  happening in front of you; it dies with the harness (D-105)
 
 ### 1.4 · Reverse — O19
 
@@ -103,19 +121,9 @@ Ignition to **RUN**, engine not running. Safer, and most lighting works here.
 
 > Two seconds. Longer and you cook the motor.
 
-### 1.9 · Windows — **SKIP. The windows are manual** `[D-131]`
-
-No motors, no wiring, nothing to measure. Power windows are a deferred luxury
-item — see `../04-SUBSYSTEMS/DEFERRED-FEATURES.md`.
-
-**When motors are eventually fitted**, measure then: run fully up and hold the
-switch for 2 s at the top stop, which is a natural stall. Expect 4–6 A running,
-10–15 A stalled. Set the soft fuse from that reading, and raise O1's limit to
-cover pop-ups plus windows together.
-
 ---
 
-# PART 2 · Engine running
+## Part 2 · Engine running
 
 Idle, charging. **Measure at running voltage** — figures at 12.6 V rest are ~10%
 wrong.
@@ -132,7 +140,7 @@ wrong.
 
 - **Access:** the BLg wire at the pump (B-24), rear of the car
 - Running, at idle
-- Expect **1–3 A** for the Carter P4070. Also closes `[V-054]`
+- Expect **1–3 A** for the Carter P4070. Also closes `V-054`
 
 ### 2.3 · Ignition coils — O12
 
@@ -145,15 +153,15 @@ wrong.
 - **Access:** the WR cable at the alternator B+ (A-09). This is a big cable —
   use the 100 A range
 - At idle with everything off, then everything on
-- Also **read the rating stamped on the case** — closes `[V-002]`
+- Also **read the rating stamped on the case** — closes `V-002` / `T-004`
 
 ---
 
-# PART 3 · The four broken circuits
+## Part 3 · The four broken circuits
 
 **These cannot be measured normally.** Workarounds below.
 
-### 3.1 · Rear defog — O4 · switch broken `[K-020]`
+### 3.1 · Rear defog — O4 · switch broken (K-020)
 
 - **Workaround:** unplug the defrost switch (G-24) and **jumper Y to LG** in the
   connector with a fused lead. That energises the grid without the switch
@@ -162,20 +170,21 @@ wrong.
   figure is the design one
 - Expect **10–13 A cold**
 
-### 3.2 · Pop-up motors — O1 stall · switch broken `[K-021]`
+### 3.2 · Pop-up motors — O1 stall · switch broken (K-021)
 
 - **Workaround:** drive the motor directly. Disconnect the retractor motor
   connector (E-03 / E-04) and apply fused 12 V to the drive pair
-- **Before you do:** `[T-011]` continuity-test the motor first to identify which
+- **Before you do:** `T-011` continuity-test the motor first to identify which
   of WR/YG/R/RY are drive and which are the internal limits. **Do not guess** —
   backfeeding a limit switch can damage it
 - Run a full raise cycle, record. Then hold at the limit for 2 s for stall
 - Expect 4–6 A running, **15–25 A stalled**
 
-> This one is two jobs in one: it closes `[V-030]` and `[T-015]` together.
-> Do the continuity test first, with the battery disconnected.
+> This one is two jobs in one: it closes `V-030` and `T-015` together
+> ([`CHECKLIST.md`](CHECKLIST.md) 0.2 and 0.6). Do the continuity test first, with the battery
+> disconnected.
 
-### 3.3 · Washer pump — not working `[K-022]`
+### 3.3 · Washer pump — not working (K-022)
 
 - **Diagnose before measuring.** Three possibilities:
   1. **Pump dead** — apply fused 12 V directly at the pump (D-01). If it doesn't
@@ -184,9 +193,10 @@ wrong.
      WASH
   3. **Switch fault** — continuity across the WASH position of D-03
 - If the pump runs on direct 12 V, measure it. Expect 3–5 A
-- **Record which it was.** If the pump is dead it goes on the parts list
+- **Record which it was.** If the pump is dead it goes on the parts list. The
+  pump also has no PMU output yet — `Q-063`
 
-### 3.4 · Blower motor — dead `[K-023]`
+### 3.4 · Blower motor — dead (K-023)
 
 - **Cannot be measured.** The motor doesn't run
 - Confirm it's the motor: 12 V present at the connector with the switch on?
@@ -197,7 +207,7 @@ wrong.
 
 ---
 
-# PART 4 · Parasitic draw — do this last
+## Part 4 · Parasitic draw — do this last
 
 Engine off, key out, doors shut, everything closed. **Wait 20 minutes** for
 anything with a timer to sleep.
@@ -211,71 +221,74 @@ Record it. It becomes the baseline you compare the finished car against.
 
 ---
 
-# PART 5 · Not current — while you're there
+## Part 5 · Not current — while you're there
 
-| Item                        | Method                                                                              | Closes              |
-|-----------------------------|-------------------------------------------------------------------------------------|---------------------|
-| **Ignition switch outputs** | Continuity on every output at OFF / ACC / RUN / START. **Which stay live together** | `[V-050]` `[T-023]` |
-| **Fuel sender**             | Resistance, at the current fuel level. Again after a fill                           | `[V-037]` `[T-012]` |
-| **Pop-up limits**           | Continuity, both sides, both extremes, mid-travel                                   | `[V-030]` `[T-011]` |
-| **Door pin switches**       | Continuity, each door open and closed                                               | A6 ladder           |
-
----
-
-# Recording sheet
-
-| #   | Circuit            | Access point              | Steady A | Stall / peak A | Volts | Notes |
-|-----|--------------------|---------------------------|----------|----------------|-------|-------|
-| 1.1 | Tail / park PARK   | E-01 R wire               |          |                |       |       |
-| 1.1 | Tail / park HEAD   | E-01 R wire               |          |                |       |       |
-| 1.2 | Brake              | F-11 W wire               |          |                |       |       |
-| 1.3 | Turn LEFT          | F-02 GR wire              |          |                |       |       |
-| 1.3 | Turn RIGHT         | F-02 GO wire              |          |                |       |       |
-| 1.3 | Hazard both        | F-02                      |          |                |       |       |
-| 1.4 | Reverse            | A-06 RW wire              |          |                |       |       |
-| 1.5 | Interior all       | LY at lamp                |          |                |       |       |
-| 1.6 | Illumination       | E-05 RL wire              |          |                |       |       |
-| 1.7 | Horns pair         | F-09 GY wire              |          |                |       |       |
-| 1.7 | Horn single        | F-09 GY wire              |          |                |       |       |
-| 1.8 | **Wiper LOW**      | D-02 LW wire              |          |                |       |       |
-| 1.8 | **Wiper HIGH**     | D-02 LR wire              |          |                |       |       |
-| 1.8 | **Wiper STALL**    | D-02                      |          |                |       |       |
-| 1.9 | Windows            | **MANUAL — skip**         |          |                |       |       |
-| 2.1 | Headlight LOW      | E-08 RL wire              |          |                |       |       |
-| 2.1 | Headlight HIGH     | E-08 RY wire              |          |                |       |       |
-| 2.2 | Fuel pump          | B-24 BLg wire             |          |                |       |       |
-| 2.3 | Coils idle         | B-18 BW wire              |          |                |       |       |
-| 2.3 | Coils 3000 rpm     | B-18 BW wire              |          |                |       |       |
-| 2.4 | Alternator idle    | A-09 WR cable             |          |                |       |       |
-| 2.4 | Alternator loaded  | A-09 WR cable             |          |                |       |       |
-| 3.1 | **Defog cold**     | grid LG, jumpered         |          |                |       |       |
-| 3.1 | Defog 2 min        | grid LG                   |          |                |       |       |
-| 3.2 | **Pop-up L run**   | E-03, direct 12 V         |          |                |       |       |
-| 3.2 | **Pop-up L stall** | E-03                      |          |                |       |       |
-| 3.2 | **Pop-up R run**   | E-04                      |          |                |       |       |
-| 3.2 | **Pop-up R stall** | E-04                      |          |                |       |       |
-| 3.3 | Washer pump        | D-01, if it runs          |          |                |       |       |
-| 3.4 | Blower             | **DEAD — cannot measure** | —        | —              | —     |       |
-| 4   | **Parasitic**      | battery negative          |          |                |       | mA    |
+| Item | Method | Closes |
+|---|---|---|
+| **Ignition switch outputs** | Continuity on every output at OFF / ACC / RUN / START. **Which stay live together** | `V-050` `T-023` — Checklist 0.7 |
+| **Fuel sender** | Resistance, at the current fuel level. Again after a fill | `V-037` `T-012` — Checklist 0.5 |
+| **Pop-up limits** | Continuity, both sides, both extremes, mid-travel | `V-030` `T-011` — Checklist 0.6 |
+| **Door pin switches** | Continuity, each door open and closed | A6 ladder, [`../01-DESIGN/LADDERS.md`](../01-DESIGN/LADDERS.md) |
 
 ---
 
-# When you're done
+## Recording sheet
 
-Send Claude the sheet. It updates `LOADS.md`, recalculates the provisional
-soft-fuse table, and firms up the A4/A5 ladder values in `LADDERS.md`.
+Print this. Then transcribe it into `pmu_pins.csv` (`meas_a`, and `soft_fuse`
+per the multipliers in [`CHANNEL-SCHEDULE.md`](../01-DESIGN/CHANNEL-SCHEDULE.md)) and run `gen.py`; the schedule,
+[`PIN-MAP.md`](../02-HARNESS/PIN-MAP.md) and `channels.h` update together. Rows marked **done** already
+have their figure in the CSV.
 
-**The wiper stall, pop-up stall and defog cold readings are the three that matter
-most.** Everything else has headroom; those three size real hardware.
+| #   | Circuit            | Access point              | Steady A | Stall / peak A | Volts | Notes            |
+|-----|--------------------|---------------------------|----------|----------------|-------|------------------|
+| 1.1 | Tail / park PARK   | E-01 **RG** wire          |          |                |       |                  |
+| 1.1 | Tail / park HEAD   | E-01 **RG** wire          |          |                |       |                  |
+| 1.2 | Brake              | F-11 W wire               | 7.0      | 9.5            |       | **done** 2026-08 |
+| 1.3 | Turn LEFT          | F-02 GR wire              | 3.4      | —              |       | **done** 2026-08 |
+| 1.3 | Turn RIGHT         | F-02 GO wire              | 3.4      | —              |       | **done** 2026-08 |
+| 1.3 | Hazard both        | **WG** feed               |          |                |       |                  |
+| 1.4 | Reverse            | A-06 RW wire              |          |                |       |                  |
+| 1.5 | Interior all       | LY at lamp                |          |                |       |                  |
+| 1.6 | Illumination       | E-05 RL wire              |          |                |       |                  |
+| 1.7 | Horns pair         | F-09 GY wire              |          |                |       |                  |
+| 1.7 | Horn single        | F-09 GY wire              |          |                |       |                  |
+| 1.8 | **Wiper LOW**      | D-02 LW wire              |          |                |       |                  |
+| 1.8 | **Wiper HIGH**     | D-02 LR wire              |          |                |       |                  |
+| 1.8 | **Wiper STALL**    | D-02                      |          |                |       | 2 s max          |
+| 2.1 | Headlight LOW      | E-08 RL wire              |          |                |       | LED baseline     |
+| 2.1 | Headlight HIGH     | E-08 RY wire              |          |                |       |                  |
+| 2.2 | Fuel pump          | B-24 BLg wire             |          |                |       |                  |
+| 2.3 | Coils idle         | B-18 BW wire              |          |                |       |                  |
+| 2.3 | Coils 3000 rpm     | B-18 BW wire              |          |                |       |                  |
+| 2.4 | Alternator idle    | A-09 WR cable             |          |                |       | 100 A range      |
+| 2.4 | Alternator loaded  | A-09 WR cable             |          |                |       | + case rating    |
+| 3.1 | **Defog cold**     | grid LG, jumpered         |          |                |       |                  |
+| 3.1 | Defog 2 min        | grid LG                   |          |                |       |                  |
+| 3.2 | **Pop-up L run**   | E-03, direct 12 V         |          |                |       |                  |
+| 3.2 | **Pop-up L stall** | E-03                      |          |                |       | 2 s max          |
+| 3.2 | **Pop-up R run**   | E-04                      |          |                |       |                  |
+| 3.2 | **Pop-up R stall** | E-04                      |          |                |       | 2 s max          |
+| 3.3 | Washer pump        | D-01, if it runs          |          |                |       | which fault?     |
+| 3.4 | Blower             | **dead — cannot measure** | —        | —              | —     |                  |
+| 4   | **Parasitic**      | battery negative          |          |                |       | mA, 2 A range    |
+
+**The wiper stall, pop-up stall and defog cold readings are the three that
+matter most.** Everything else has headroom; those three size real hardware.
+
+## When you're done
+
+Send the sheet. The agent enters the figures into the CSV, regenerates, and
+firms up the A4/A5 ladder values in [`../01-DESIGN/LADDERS.md`](../01-DESIGN/LADDERS.md) (Checklist 0.17,
+0.18). Each measured channel then gets its soft fuse entered in the client at
+[`CHECKLIST.md`](CHECKLIST.md) 2.22 and is enabled; unmeasured outputs stay disabled (D-165).
 
 ---
 
-# PART 6 · Using the meter — clarifications from the first session
+## Part 6 · Using the meter — clarifications from the first sitting
 
-*Added 2026-08 after the first attempt. These are the things that weren't
-obvious.*
+*The things that weren't obvious with the meter in hand.*
 
-## Voltage — you need the probes, not the clamp
+### Voltage — you need the probes, not the clamp
 
 **The clamp only measures current.** For voltage you must plug the **test leads**
 into the meter: black into `COM`, red into the `V/Ω` jack.
@@ -287,17 +300,16 @@ Then:
 3. Black probe on a ground, red probe on the point you're measuring
 
 **If the display reads nothing on V with leads connected, you're still in AC
-mode.** SELECT is the fix, not the dial.
+mode.** SELECT is the fix, not the dial. The same button toggles AC/DC on the
+current ranges too.
 
-Same button toggles AC/DC on the current ranges too.
-
-## Peak and inrush — mostly you will NOT catch it, and that's fine
+### Peak and inrush — mostly you will NOT catch it, and that's fine
 
 **A handheld clamp cannot see a 30 ms spike.** Do not chase it.
 
 | What you saw | What it means |
 |---|---|
-| Brake: peaked 9 A, settled 7 A | **Real.** A 27 W filament warms over a few hundred ms — slow enough to catch |
+| Brake: peaked 9.5 A, settled 7 A | **Real.** A 27 W filament warms over a few hundred ms — slow enough to catch |
 | Most circuits: one steady number, no peak | **Normal and expected.** Leave the peak column blank |
 | Nothing to see at all | Fine. Record steady, move on |
 
@@ -308,71 +320,31 @@ Wipers and pop-ups. Nothing else.
 > **Rule: if a peak doesn't present itself within a second or two, there isn't
 > one worth recording. Write the steady value and move on.**
 
-## Reading 0 on a live circuit — the four causes
+**Do not try to catch inrush.** The design already applies a 10× multiplier for
+filament and 7–10× for motors — that is what the inrush window in the PMU config
+is sized against (D-120, [`CHANNEL-SCHEDULE.md`](../01-DESIGN/CHANNEL-SCHEDULE.md)).
+
+### Reading 0 on a live circuit — the four causes
 
 In order of likelihood:
 
 1. **Both conductors in the jaw.** Feed and return cancel to zero. Clamp **one
    wire**
 2. **Jaw not zeroed.** Close it empty, press ZERO, then clamp
-3. **Wrong wire** — see the correction below
+3. **Wrong wire** — the tail circuit on the first sitting read 0 on `R` because
+   `R` is the switch's *input*; the lamp output is `RG` (Part 1.1)
 4. Circuit genuinely off
 
-## CORRECTION — tail/park access point
-
-**Part 1.1 named the wrong wire. My error.**
-
-At the combination switch E-01, **`R` is the wire going *into* the switch** from
-the fuse. **`RG` is the output** that feeds all eight lamps.
-
-| Was | Should be |
-|---|---|
-| ~~E-01 `R` wire~~ | **E-01 `RG` wire** |
-
-Clamp **RG**. It carries the whole tail/park/marker/plate circuit and reads zero
-only when the lights are genuinely off.
-
-## Hazard — why it read 2 to 9 A erratically
+### Why hazard read 2 to 9 A erratically
 
 Hazard flashes **both sides at once**, but `GR` is the **left side only**.
 Clamping one wire gives you half the circuit, and the spread comes from catching
-different points in the flash cycle.
+different points in the flash cycle. Clamp the `WG` feed for the total, or add
+left and right.
 
-**For a total hazard figure, clamp the `WG` feed** upstream of the switch — that
-carries both sides. Or simply record left and right separately and add them.
-
-## First session readings — recorded
-
-| Circuit | Wire | Steady A | Peak A | Note |
-|---|---|---|---|---|
-| Tail / park PARK | E-01 R | **0** | — | Wrong wire — re-measure on **RG** |
-| Tail / park HEAD | E-01 R | **0** | — | Same |
-| Brake | F-11 W | **7** | **9** | Good clean reading. Filament warm-up visible |
-| Turn LEFT | F-02 GR | **3.4** | — | Sometimes drops to 2.3 |
-| Turn RIGHT | F-02 GO | **3.4** | — | Same |
-| Hazard, one wire | F-02 | 2–3.4 | erratic | One side only. Re-do on WG for the total |
-
-### What these numbers already tell us
-
-**Brake at 7 A steady** against an estimate of 3.9 A. **Nearly double.** Worth
-confirming the bulbs are the correct 27/8 W and not something larger — but the
-O7 channel is 15 A, so there is still headroom either way.
-
-**Turn at 3.4 A** against an estimate of 4.2 A. Slightly under, which is normal
-for aged filaments and a plausible sign one indicator bulb is dim or out.
-
-**The 3.4 → 2.3 A drop correlating with fuel pump noise is fault K-008 happening
-in front of you.** Shared-ground modulation, exactly as decoded from the factory
-diagram. It is not being fixed (D-105) — it dies with the harness — but seeing it
-live is good confirmation the diagnosis was right.
-
-## Revised expectations for the rest of the session
+### What to expect per circuit
 
 - **Most lamp circuits: one number.** Steady only
 - **Wipers and pop-ups: two numbers.** Running, then a deliberate 2-second stall
 - **Defog: two numbers.** Cold at switch-on, then again at 2 minutes
 - **Everything else: one number**
-
-**Do not try to catch inrush.** The design already applies a 10× multiplier for
-filament and 7–10× for motors — that is what the inrush window in the PMU config
-is sized against (D-120).
