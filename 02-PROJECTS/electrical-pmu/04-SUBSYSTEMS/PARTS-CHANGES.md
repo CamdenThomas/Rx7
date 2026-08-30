@@ -153,12 +153,3 @@ value, which is the last thing set anyway.
 | `V-052` | Battery heater draw |
 | `T-038` | Source a blower motor |
 | `T-039` | Source a washer pump, if the pump is dead |
-
----
-
-## Appendix — superseded
-
-**LED conversion tables and headlamp strip options** lived here until D-123 moved
-lighting to its own project. **Q-044 pop-up deletion** was considered and
-answered: pop-ups stay (D-110). Both are recorded in
-`../../lighting-body/DECISIONS.md` and `../07-PROCESS/DECISIONS.md`.

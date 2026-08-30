@@ -881,3 +881,409 @@ for the eventual full load, not today's.
 
 **No soft-fuse benefit to claim.** Set it for pop-ups at migration; raise it when
 windows arrive.
+
+---
+
+**D-134** — **PMU-24 DL received. Connector cavity layout CONFIRMED in the hand.**
+`[T-020 closed]`
+
+The supplied housing has **12 large cavities and 27 small** — exactly matching
+SPEC §11 and the CAD-derived map (D-045). The largest cavities sit **farthest
+out** in each row, confirming the **2 large · 9 small · 2 large** per-row pattern.
+
+**The pin plan is buildable as drawn.** This was the last physical unknown.
+
+**D-135** — **Terminal stock counted** `[T-025 closed]`.
+
+| Size | Marking | Supplied | Needed per housing | Spare |
+|---|---|---|---|---|
+| Large 2.8 mm | `FCI` | 16 | 12 | **4** |
+| Small 1.5 mm | `FCI 125` | 27 | 27 | **0** |
+
+**Zero spare small terminals.** With two more housings inbound at presumably the
+same count, the totals become 81 small for 3 housings needing 81 — still zero
+margin.
+
+**Order spare 1.5 mm terminals (211CC2S2160P) before Phase 4.** D-103 estimated
+~15; that is now a firm requirement, not a hypothetical. You will ruin some
+learning to crimp, and a ruined terminal with no spare stops the build.
+
+**D-136** — **Physical orientation reference recorded.** With the PMU sitting
+flat and upright, connector face toward the viewer, **the purple lock is on the
+right-hand side.**
+
+> **This does NOT yet establish where pin 1 is.** The housing is symmetrical in
+> cavity pattern, so the lock position is the only asymmetric feature — but which
+> end of row 1 is pin 1 relative to that lock is **still unverified**.
+>
+> Getting this wrong mirrors all 39 wires. It is the single most expensive
+> mistake available in this project. Logged as `[V-068]`, and it must be closed
+> by positive identification, not inference.
+
+**D-137** — Spare housings ordered from ECUmaster are expected to carry the same
+terminal counts (16 large, 27 small). **Verify on arrival** rather than assume —
+if they ship housing-only, the small-terminal shortfall is worse than it looks.
+
+---
+
+**D-138** — `[V-068 provisionally answered]` **Pin 1 is top-left**, in the top
+row at the end **furthest from the purple lock**, viewed with the PMU flat and
+upright and the connector face toward the viewer. Lock on the right, pin 1 on the
+left.
+
+Row 1 = pins 1–13 · row 2 = 14–26 · row 3 = 27–39, numbering left→right,
+top→bottom. This matches the ECUmaster device view.
+
+**Held as provisional, not closed**, until one positive test. The device view
+establishes numbering but does not show the lock, so aligning drawing to physical
+part relies on both being viewed from the same face. Very likely correct — and
+exactly the assumption that, if wrong, mirrors all 39 wires without being
+discovered until the housing is sealed.
+
+**Confirmation, five minutes, once the PMU is on the bench:** force O2 (pin 39)
+high in the client and meter the bottom-right cavity. 12 V confirms the entire
+map. Then mark the housing (T-043).
+
+**This is not scepticism about Camden's reading.** It is that D-004 makes the
+39-pin a one-shot assembly — the cost of being wrong is a housing, a full
+re-terminate and a weekend, against five minutes of confirmation.
+
+---
+
+**D-139** — `[V-068 CLOSED]` **Connector orientation confirmed** by visual
+comparison of the physical part against the ECUmaster manual. Positive
+identification, not inference.
+
+**Pin 1 is top-left**, top row, end furthest from the purple lock, with the PMU
+flat and upright and the connector face toward the viewer. Lock on the right.
+Row 1 = 1–13, row 2 = 14–26, row 3 = 27–39, left→right, top→bottom.
+
+**This was the last physical unknown blocking Phase 4.** Every one of the 39
+cavities now has a confirmed position, a confirmed size, and an allocated
+circuit. Supersedes D-138's provisional status.
+
+Remaining before the real housing is terminated: spare 1.5 mm terminals (T-044)
+and the housing mark (T-043).
+
+---
+
+**D-140** — **Inventory correction.** These were previously recorded as purchased
+and are **not in hand**: 120 Ω resistors, E24 resistor assortment, breadboards,
+Dupont jumpers, plywood/ground bus/fuse holder, scrap rotary switch.
+
+**Actually in hand:** 3 × Teensy 4.1, 5 × SN65HVD230, one micro-USB cable,
+UT210E clamp meter, PMU-24 DL with connector and 39 terminals, 2 spare housings
+inbound.
+
+**D-141** — **The full plywood bench mule is dropped.** Reduced to a
+current-limited PSU, the laptop, one bulb, a few switches and flying leads.
+**~$140 saved.**
+
+**Reasoning, and it corrects an overstatement of mine:**
+
+"Learn the software with nothing at stake" was presented as the bench's main
+value. But **nothing at stake is already true in the car** — that is exactly what
+the parallel-system architecture provides (D-023). Every circuit stays on the
+factory harness until its own cutover.
+
+**The pin plan is not a bench output.** Channel allocation, gauge, ladder values
+and connector assignments are fixed by design and by the factory decode. No bench
+result changes any of them. The bench is a **learning exercise, not a design
+input** — I framed it as more.
+
+**And Checklist 6.3–6.4 already provide a safe config environment in the car**:
+power up with all outputs disabled, validate the entire input layer before a
+single load is connected.
+
+**What survives the cut, and why:**
+
+| Kept | Reason |
+|---|---|
+| **Current-limited PSU** | Checklist 2.9 deliberately shorts an output. Doing that first on vehicle wiring is a different proposition |
+| 120 Ω × 4 | CAN1 has no internal termination — it will not connect without them |
+| One bulb, a few switches, flying leads | Enough to exercise real logic |
+
+**Dropped:** plywood board, mounted ground bus, and the 15-way test pigtail. The
+pigtail alone would consume **15 of 27 small terminals with zero spares** — it
+was a supply blocker for a convenience.
+
+**D-142** — **Ladder ADC verification moves from bench to car**, during Phase 6,
+when the switches are genuinely wired. That is when real resistances and real ADC
+readings exist, and it removes a category of bench-to-car translation error.
+E24 assortment and practice switch defer accordingly.
+
+**D-143** — **One bench item is non-negotiable: deliberately short an output and
+watch the soft fuse trip and retry** (Checklist 2.9).
+
+It is the single behaviour that distinguishes this device from a fuse box, you
+need to recognise it before it happens unexpectedly at speed, and it is genuinely
+unpleasant to meet for the first time on vehicle wiring. A current-limited supply
+makes it a five-minute experiment.
+
+---
+
+**D-144** — **No bench power supply. Supersedes D-143.**
+
+Camden challenged why the soft-fuse test needs a bench. It doesn't, and my
+reasoning conflated two different things.
+
+**The soft-fuse test moves to the car.** Panel installed, all outputs disabled,
+set one channel's limit to **2 A**, enable only that channel, touch its bulkhead
+pin to ground. The PMU is built for exactly this — solid-state per-channel
+limiting is the product, it opens in milliseconds, and it isn't damaged by doing
+its job. With a low limit the event is undramatic.
+
+**What the PSU was actually protecting against was the first power-up of a
+hand-built panel** — a pinched wire against the backer plate, a terminal one
+cavity out, a busbar stud touching something. That is a **single moment**, not an
+ongoing need.
+
+**D-145** — **The $2 replacement: a 5 A fuse in the main feed for first
+power-up.** Enough for the PMU to boot and talk over CAN; anything shorted blows
+a 5 A fuse instead of melting 2 AWG. Verify, step to 15 A, verify, then fit the
+Class-T for real operation.
+
+Same protection as a current-limited supply, for the one moment it matters.
+
+**D-146** — **Checklist 4.21–4.23 powered panel verification is dropped.**
+Replaced by **4.18 continuity testing**, which needs no power at all and catches
+wrong cavity, missed crimp, swapped pair and short-to-plate — the overwhelming
+majority of build errors. Powered verification happens in the car at Checklist
+6.3, where it was already scheduled.
+
+**D-147** — Bench kit final: **~$110–165.** No PSU, no plywood, no pigtail, no
+speculative test loads. Down from ~$300, and the terminal-supply blocker is gone
+because the 15-way pigtail no longer exists.
+
+**The pattern worth noting across D-141, D-144 and this one:** the bench kept
+being justified by risks the parallel-system architecture had already eliminated.
+Each time it was examined, less of it survived.
+
+---
+
+**D-148** — `[A-005]` **Start relay K9 mounts high on the inner fender or
+firewall**, not at the starter. The relay keeps solenoid current off the PMU; it
+does not need to be adjacent. Pull-in is 15–25 A and 12 AWG over three or four
+feet loses almost nothing. Dry side, reachable, no ingress rating required.
+
+**D-149** — `[Q-055]` **Head unit selection criteria set:**
+
+| Requirement | Note |
+|---|---|
+| Double-DIN | Aperture already in the dash plan |
+| **Physical buttons**, not touch-only | |
+| **Variable LED button colour — set to green** | Matches the illumination scheme |
+| **Wireless CarPlay** | No cable to the phone |
+| **Full passthrough — critical** | Pre-outs, full-range, feeding the external amp. Not speaker-level, not relying on the head unit's internal amplifier |
+
+**Passthrough is the hard requirement.** Many units advertise pre-outs but
+band-limit them or apply fixed EQ. Confirm the signal reaching the amp is
+full-range and unprocessed.
+
+**D-150** — `[Q-037]` **Cluster is ONE WIDE DISPLAY.** Not two round TFTs.
+
+**Hardware consequence — this is not a neutral choice.** A wide panel at
+800×480 cannot be driven by plain SPI at a usable frame rate; a full redraw is
+far too slow. Two options:
+
+| Approach | Note |
+|---|---|
+| **Display controller with its own framebuffer** — RA8875 / RA8876 | SPI carries *commands*, not pixels. The controller holds the image. **Simplest path** |
+| **Parallel interface** driven by the Teensy's FlexIO | Faster, more pins, more work |
+
+**Recommended: a controller-based panel.** It removes the bandwidth problem
+rather than engineering around it, and the Teensy 4.1 has ample headroom for
+everything else the ICU does.
+
+**Also decided by this:** one bezel aperture instead of two round openings, which
+is easier to fabricate and seal.
+
+`[V-058]` still applies — **800–1000 nits minimum.** A wide panel makes sunlight
+readability more important, not less, because there is more area to wash out.
+
+---
+
+# CLUSTER IMPLEMENTATION — 2026-08
+
+*These were all decided while building the ICU firmware and existed only in
+`cluster_core.h`. Recorded here so the reasoning survives the code.*
+
+**D-151** — **Emerald `#009155` is the single lit colour.** RGB332 `0x11`.
+
+RGB332 gives 8 red levels, 8 green, only **4 blue** — and blue is what separates
+emerald from plain green. `b=1` (85) is the one usable step.
+
+**Every lit element is this exact shade**: labels, bar segments, all digits, the
+compass suffix, the pitch angle, the G dot. `C_BRIGHT` and `C_GREEN` are both
+defined as `C_MID`, so nothing can render lighter than anything else by
+accident.
+
+**Unlit is `0x04`, RGB(0, 36, 0)** — a 4:1 ratio against lit, so an unlit
+segment reads as *off* rather than as a dim reading.
+
+Dark tones drop blue to zero: at low luminance a fixed 85 blue dominates and the
+hue turns teal.
+
+**D-152** — **Imperial at the display layer only.** `VehicleState` stores metric
+— °C, centibar — and `cluster_core.h` converts to °F and PSI when drawing.
+
+**The CAN map, `stats.h` and every log therefore stay metric.** A metric display
+mode is one flag away, and stored data never needs reinterpreting. Converting at
+the sensor would have contaminated everything downstream.
+
+**D-153** — **A missing sensor must never render as a real zero.**
+`SensorStatus` accompanies every reading:
+
+| State | Renders as |
+|---|---|
+| `SENSOR_OPEN` | **Amber dashes**, bar becomes a hollow outline |
+| `SENSOR_SHORT` | **Red dashes**, hollow outline |
+| `SENSOR_STALE` | Dim green dashes — CAN stopped, not a hardware fault |
+| `SENSOR_RANGE` | Red — plausible but physically impossible |
+
+Detection is free on resistive senders: a bounded ohm range means the extremes
+are unambiguously faults. **Same principle as the resistor ladders (D-053).**
+
+Zero oil pressure and a disconnected oil pressure sender are completely
+different situations. A gauge that renders them identically is worse than no
+gauge.
+
+**D-154** — **Bar segments are contiguous, gap 0.** Segment widths grew to hold
+the same span. Reads as a solid growing bar rather than a row of tiles.
+
+**D-155** — **Symbols, not words, for the gauge column.** Thermometer, oil can,
+oil can, fuel pump, battery — **and the unit distinguishes the two oils.**
+`PSI` versus `F` is a stronger distinction than two similar silhouettes would be.
+
+The oil can is a **side view** — handle left, body centre, spout rising right —
+matching the warning-lamp symbol used since the 1960s. An earlier top-down
+version was unreadable.
+
+Icons reuse across the gauge column and the tell-tale row deliberately: the
+thermometer means temperature in both places.
+
+**D-156** — **Four named axes in the gauge column**, everything derives from
+them: icon left edge 418, value centre 492, unit centre 544, bar 572–782. Values
+and units are *centred*, not left-aligned, so `63` and `190`, `F` and `PSI`
+share a vertical axis.
+
+Each row computes one horizontal axis, `cy = row_y + BAR_SH/2`, and the icon,
+value and unit all derive from it. Previously each had a hand-tuned offset that
+happened to agree.
+
+**D-157** — **The left column is THREE items, not four.** The G value is the
+circle's label and stays tucked under it with its own small gap; the group
+spaces as one unit against the compass and pitch.
+
+Spacing is by **edge gap, not centre** — the G circle is 100 px tall against 30
+for a readout, so even centre spacing looks wrong.
+
+**D-158** — **Digit fields centre by repositioning slots.** `setCentre()` counts
+significant digits, wipes the old footprint and re-lays the slots so a value
+stays centred under its label as it crosses 10 and 100. Fields that show every
+digit always occupy all N slots.
+
+**D-159** — `[I-64]` **The display does NOT cross the harness.** It connects
+directly to the Teensy inside the dash, on a short ribbon or flying leads.
+
+`DP-ICU` is a DT06-12S carrying **power, ground, CAN2, illumination reference
+and six engine sensor inputs — 11 conductors.** A panel needs SPI or parallel
+data plus backlight power, which is well beyond that.
+
+**Why this is the right split:** the display and the Teensy are inches apart
+behind the same bezel and are removed together as one assembly. Routing a
+high-speed SPI bus through a harness connector would add noise, cost cavities
+and gain nothing.
+
+**Consequence:** `DP-ICU` is correctly sized as-is. Anyone later reading the
+cavity count must not conclude the display was forgotten.
+
+**D-160** — `[I-65]` **`stats.h` thresholds recorded and flagged.**
+
+| Constant | Value | Basis |
+|---|---|---|
+| `REDLINE_RPM` | 7000 | **Drives the tach red zone.** 12A redline `[V-070]` — confirm against the FSM |
+| `HOT_WATER_C` | 105 | Above normal thermostat range, below boiling at pressure |
+| `LOW_OIL_CBAR` | 100 (1.0 bar) | Rotaries want more than a piston engine at idle `[V-071]` |
+| `RUNNING_RPM` | 400 | Above cranking, below idle |
+| `COLD_START_C` | 40 | Below operating temperature |
+| `TANK_GAL_X10` | 159 (15.9 gal) | FB nominal ~60 L `[V-072]` confirm |
+
+**The redline figure matters most** — it sets `RPM_RED` on the tach and the
+`revSeconds` accumulator. Getting it wrong means either a red zone that arrives
+early or one that never warns.
+
+**D-161** — `[I-68]` **IMU specified.** MPU-6050 or ICM-20948 class, I²C, on the
+ICU carrier board (D-109).
+
+**Orientation convention, which must be written down or it will be guessed
+wrong:**
+
+| Axis | Positive direction |
+|---|---|
+| Lateral `latGx100` | **Right** — turning left throws the dot right |
+| Longitudinal `lonGx100` | **Acceleration.** Braking is negative |
+| Pitch `pitchDeg` | **Nose up** — climbing positive, descending negative |
+
+Full scale is ±1.0 g on the G circle and ±45° on pitch.
+
+`[V-073]` — mounting orientation on the PCB must match, or every axis needs a
+sign flip in firmware. Decide the board orientation before the PCB is laid out.
+
+**D-162** — `[I-66]` **`stats.h` is volatile-only for now.** The `life[]`
+accumulator is declared but nothing reads or writes SD yet. It resets at power
+off.
+
+Persistence needs the SD work in Stage 6 and a decision about write frequency —
+writing every second wears the card; writing only at shutdown loses data on a
+power cut. **Probable answer: write on key-off via the PMU's shutdown delay,
+which already exists for exactly this kind of purpose (D-054).**
+
+**D-163** — `[I-67]` **`stats.h` owns the automated figures; `LOGS.md` owns the
+manual ones.** Max speed, max RPM, runtime, distance and peaks come from the
+firmware. Config versions, firmware versions, the photo index and the session
+log stay hand-written — nothing can generate those.
+
+**D-164** — **The channel schedule is the measured-to-configured pipeline.**
+`01-DESIGN/CHANNEL-SCHEDULE.md` holds one row per channel with an empty
+**MEASURED** column. Filling it drives everything downstream: soft-fuse values,
+the PMU config, `channels.h`, the simulator and the diagnostics page.
+
+**Soft-fuse rule, by load type:**
+
+| Type | Limit |
+|---|---|
+| Motors | measured **stall** × 1.10 |
+| Filament lamps | measured steady × 1.35, **plus an inrush window** |
+| Resistive (defog) | measured **cold** × 1.20 |
+| Electronics | measured steady × 1.50 |
+| **Unmeasured** | **output stays DISABLED** |
+
+Round up to the nearest 0.5 A.
+
+**The limit protects the wire, not the load.** A 14 AWG circuit carries far more
+than any of these figures — the soft fuse exists to catch a short or a seizing
+motor, not to police normal operation.
+
+**D-165** — **An output with no measured figure stays disabled.** A guessed limit
+is worse than an output that is off: it either nuisance-trips at the worst
+moment or fails to protect at all, and in both cases it looks configured.
+
+Three of 24 are measured today: **O7 brake 7.0 A, O17/O18 turn 3.4 A per side.**
+
+**D-166** — **The entire PMU logic is enterable without any amp figures.**
+Channel naming, all eight ladder decode tables, every output expression, the
+interlocks, the wake network, flasher, wiper timing and pop-up logic have no
+dependency on measurement.
+
+**Consequence for sequencing:** Phase 2A splits cleanly. Steps 1–7 — the whole
+vehicle logic — can be entered the day the PMU is on a desk. Soft-fuse limits
+and output enabling happen per channel as each measurement arrives, which means
+migration is never blocked waiting on the config.
+
+**D-167** — **A 100 kΩ bias resistor from +5 V on A15 and A16.** These are the
+12 V-side ladders, where OFF reads 0 counts — identical to a disconnected wire.
+The bias lifts OFF to ~100 counts so the two are distinguishable.
+
+Same principle as D-053: no valid state may sit at an extreme, because the
+extremes are how faults announce themselves.

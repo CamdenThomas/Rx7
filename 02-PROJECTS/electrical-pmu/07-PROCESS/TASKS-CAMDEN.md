@@ -139,3 +139,31 @@ Everything else has headroom. These three size real hardware:
 
 **The blower.** The motor is dead. O16 stays a 25 A channel with the flyback
 diode and gets its soft fuse set at migration from whatever is fitted (D-126).
+
+---
+
+## PMU RECEIVED — 2026-08
+
+| ID | Task | Result |
+|---|---|---|
+| ~~T-020~~ | Confirm cavity layout against SPEC §11 | **CONFIRMED.** 12 large, 27 small, widest farthest out. Pin plan buildable as drawn |
+| ~~T-025~~ | Count terminal stock | **16 large `FCI` (4 spare), 27 small `FCI 125` (zero spare)** |
+
+## NEW — do these before Phase 4
+
+| ID | Task | Why | Status |
+|---|---|---|---|
+| ~~T-042~~ | ~~Establish which cavity is pin 1~~ | **CLOSED.** Verified visually against the ECUmaster manual. Pin 1 top-left, opposite the purple lock (D-139) | Done |
+| **T-043** | **Mark the housing** — paint pen dot beside cavity 1 | Costs nothing. Means the question is never re-asked at the bench with the panel half-built | Before Phase 4 |
+| **T-044** | **Order spare 1.5 mm terminals, 211CC2S2160P.** ~15 minimum | Zero spares on the size that is 69% of the connector, hardest to crimp, while learning to crimp | Before Phase 4 |
+| **T-045** | Verify the two inbound ECUmaster housings arrive **with** terminals, not housing-only | If they ship bare the small-terminal shortfall is worse than it looks | On arrival |
+
+## Firmware — Stages 4 and 5 ready
+
+Both sketches written. Neither needs the transceivers.
+
+| ID | Task | Hardware |
+|---|---|---|
+| T-046 | Stage 4 — ladder decode. `firmware/ladder_decode_test/` | A pot, or just a jumper to 3.3 V and GND. **3.3 V only** |
+| T-047 | Stage 5 — tach measurement. `firmware/tach_simulator/` | **One jumper wire, pin 3 → pin 4** |
+| T-048 | Flash and label boards 2 and 3 | Nothing |

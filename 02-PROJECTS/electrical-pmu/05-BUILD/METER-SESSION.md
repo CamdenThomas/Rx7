@@ -267,3 +267,112 @@ soft-fuse table, and firms up the A4/A5 ladder values in `LADDERS.md`.
 
 **The wiper stall, pop-up stall and defog cold readings are the three that matter
 most.** Everything else has headroom; those three size real hardware.
+
+---
+
+# PART 6 · Using the meter — clarifications from the first session
+
+*Added 2026-08 after the first attempt. These are the things that weren't
+obvious.*
+
+## Voltage — you need the probes, not the clamp
+
+**The clamp only measures current.** For voltage you must plug the **test leads**
+into the meter: black into `COM`, red into the `V/Ω` jack.
+
+Then:
+1. Dial to **V**
+2. It defaults to **AC** — press the **SELECT** button to toggle to **DC**.
+   The display should show a small `DC` or a `⎓` symbol
+3. Black probe on a ground, red probe on the point you're measuring
+
+**If the display reads nothing on V with leads connected, you're still in AC
+mode.** SELECT is the fix, not the dial.
+
+Same button toggles AC/DC on the current ranges too.
+
+## Peak and inrush — mostly you will NOT catch it, and that's fine
+
+**A handheld clamp cannot see a 30 ms spike.** Do not chase it.
+
+| What you saw | What it means |
+|---|---|
+| Brake: peaked 9 A, settled 7 A | **Real.** A 27 W filament warms over a few hundred ms — slow enough to catch |
+| Most circuits: one steady number, no peak | **Normal and expected.** Leave the peak column blank |
+| Nothing to see at all | Fine. Record steady, move on |
+
+**Only motors get a deliberate peak measurement**, and it isn't inrush — it's
+**stall**, which is a steady reading you create on purpose by holding the motor.
+Wipers and pop-ups. Nothing else.
+
+> **Rule: if a peak doesn't present itself within a second or two, there isn't
+> one worth recording. Write the steady value and move on.**
+
+## Reading 0 on a live circuit — the four causes
+
+In order of likelihood:
+
+1. **Both conductors in the jaw.** Feed and return cancel to zero. Clamp **one
+   wire**
+2. **Jaw not zeroed.** Close it empty, press ZERO, then clamp
+3. **Wrong wire** — see the correction below
+4. Circuit genuinely off
+
+## CORRECTION — tail/park access point
+
+**Part 1.1 named the wrong wire. My error.**
+
+At the combination switch E-01, **`R` is the wire going *into* the switch** from
+the fuse. **`RG` is the output** that feeds all eight lamps.
+
+| Was | Should be |
+|---|---|
+| ~~E-01 `R` wire~~ | **E-01 `RG` wire** |
+
+Clamp **RG**. It carries the whole tail/park/marker/plate circuit and reads zero
+only when the lights are genuinely off.
+
+## Hazard — why it read 2 to 9 A erratically
+
+Hazard flashes **both sides at once**, but `GR` is the **left side only**.
+Clamping one wire gives you half the circuit, and the spread comes from catching
+different points in the flash cycle.
+
+**For a total hazard figure, clamp the `WG` feed** upstream of the switch — that
+carries both sides. Or simply record left and right separately and add them.
+
+## First session readings — recorded
+
+| Circuit | Wire | Steady A | Peak A | Note |
+|---|---|---|---|---|
+| Tail / park PARK | E-01 R | **0** | — | Wrong wire — re-measure on **RG** |
+| Tail / park HEAD | E-01 R | **0** | — | Same |
+| Brake | F-11 W | **7** | **9** | Good clean reading. Filament warm-up visible |
+| Turn LEFT | F-02 GR | **3.4** | — | Sometimes drops to 2.3 |
+| Turn RIGHT | F-02 GO | **3.4** | — | Same |
+| Hazard, one wire | F-02 | 2–3.4 | erratic | One side only. Re-do on WG for the total |
+
+### What these numbers already tell us
+
+**Brake at 7 A steady** against an estimate of 3.9 A. **Nearly double.** Worth
+confirming the bulbs are the correct 27/8 W and not something larger — but the
+O7 channel is 15 A, so there is still headroom either way.
+
+**Turn at 3.4 A** against an estimate of 4.2 A. Slightly under, which is normal
+for aged filaments and a plausible sign one indicator bulb is dim or out.
+
+**The 3.4 → 2.3 A drop correlating with fuel pump noise is fault K-008 happening
+in front of you.** Shared-ground modulation, exactly as decoded from the factory
+diagram. It is not being fixed (D-105) — it dies with the harness — but seeing it
+live is good confirmation the diagnosis was right.
+
+## Revised expectations for the rest of the session
+
+- **Most lamp circuits: one number.** Steady only
+- **Wipers and pop-ups: two numbers.** Running, then a deliberate 2-second stall
+- **Defog: two numbers.** Cold at switch-on, then again at 2 minutes
+- **Everything else: one number**
+
+**Do not try to catch inrush.** The design already applies a 10× multiplier for
+filament and 7–10× for motors — that is what the inrush window in the PMU config
+is sized against (D-120).

@@ -49,7 +49,20 @@ Root holds only `STATUS.md` and this file.
 |---|---|
 | `DCU-CLUSTER.md` | DCU and ICU scope, Teensy selection, display capability |
 | `CAN-MESSAGES.md` | The message map, byte layouts, timeouts, bus load |
-| `can_map.h` | The shared header both Teensys include. **Moves to the firmware repo when one exists** |
+| `CLUSTER-DESIGN.md` | **Forward scope** — multi-page architecture, diagnostics page. Not yet built |
+| `BENCH-BRINGUP.md` | Firmware bring-up stages 1–7 |
+| **`firmware/`** | **Working C++. See `firmware/README.md`** |
+
+### `03-MODULES/firmware/`
+| Path | Holds |
+|---|---|
+| `README.md` | Folder map, build instructions, simulator controls |
+| **`icu/cluster_core.h`** | **OWNS cluster layout, palette, icons, rendering** |
+| `icu/stats.h` | Trip and lifetime accumulators |
+| `icu/can_map.h` | Shared CAN structs, both nodes include it |
+| `icu/icu.ino` | Teensy host |
+| `icu_sim/` | Desktop preview running the real firmware |
+| `*_test/`, `tach_simulator/` | Stage 2–5 bring-up rigs. All passed |
 
 ### `04-SUBSYSTEMS/`
 | File | Holds |
@@ -78,7 +91,7 @@ Root holds only `STATUS.md` and this file.
 ### `07-PROCESS/`
 | File | Holds |
 |---|---|
-| `DECISIONS.md` | Append-only, D-001…D-105, topic index at the top |
+| `DECISIONS.md` | Append-only, D-001…D-163, topic index at the top |
 | `OPEN.md` | Questions with answer blocks, assumptions, verify checklist |
 | `TASKS-CAMDEN.md` | Physical work only Camden can do |
 
@@ -86,9 +99,23 @@ Root holds only `STATUS.md` and this file.
 
 ## Conventions
 
-**One owner per fact.** `LOADS.md` owns current figures. `PIN-MAP.md` owns cavity
-assignments. `MIGRATION-LOG.md` owns the migration order. `CHECKLIST.md` owns
-build sequence. If two files disagree, the owner wins.
+**One owner per fact.**
+
+| Owner | Owns |
+|---|---|
+| `01-DESIGN/LOADS.md` | Current figures |
+| `01-DESIGN/SPEC.md` | Pin allocation, connector geometry, wire colours |
+| `02-HARNESS/PIN-MAP.md` | Cavity assignments |
+| `05-BUILD/MIGRATION-LOG.md` | Migration order |
+| `05-BUILD/CHECKLIST.md` | Build sequence |
+| `04-SUBSYSTEMS/PARTS-CHANGES.md` | What physically changes |
+| `04-SUBSYSTEMS/DEFERRED-FEATURES.md` | What's pre-wired and waiting |
+| **`03-MODULES/firmware/icu/cluster_core.h`** | **Cluster layout, palette, icons, rendering** |
+| **`03-MODULES/firmware/icu/stats.h`** | **Automated trip and lifetime figures** |
+| `05-BUILD/LOGS.md` | Hand-written logs — config versions, photos, sessions |
+
+If two disagree, the owner wins. **Two of the owners are source files** — the
+prose describes *why*, the code defines *what*.
 
 **`DECISIONS.md` is append-only.** Reverse by adding a new entry marking the old
 superseded. Never edit a past entry.

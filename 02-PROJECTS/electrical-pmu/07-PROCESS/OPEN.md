@@ -1,19 +1,23 @@
 # Open Queue — Electrical / PMU
 
-Questions have an **ANSWER** block. Answered items move to `DECISIONS.md` and
-leave here. **IDs are permanent** — gaps mean something closed.
+*Rev 2026-08 · owns: what is undecided or unconfirmed*
 
-**2026-08:** lighting split into `02-PROJECTS/lighting-body/` (D-123). Q-048,
-V-063, V-064, V-066 moved there.
+Answered items move to `DECISIONS.md` and leave this file. **IDs are permanent** —
+gaps mean something closed.
+
+Questions and verify items are each ordered **easiest to hardest**.
 
 ---
 
-# OPEN QUESTIONS
+# QUESTIONS
 
-### Q-014 · Dash panel envelope
-**Ask:** W × H × D behind the dash, plus 39-pin lever clearance.
-**Blocks:** panel 1:1 drawing, panel parts order, Checklist 0.20–0.21.
-**A tape measure, not a decision.** Needs nothing that's in the post.
+## Q-014 · Dash panel envelope
+**Ask:** W × H × D behind the dash, plus clearance for the 39-pin lever.
+**Blocks:** panel 1:1 drawing, panel parts order, Checklist 0.20–0.21, all of
+Phase 4.
+
+A tape measure. The panel is smaller than originally planned — the relay bank
+dropped from 16 sockets to 10 when the window relays moved to the sill.
 
 **ANSWER:**
 >
@@ -21,14 +25,11 @@ V-063, V-064, V-066 moved there.
 
 ---
 
-### Q-037 · Cluster display format
-**Ask:** Two round TFTs in the factory binnacle shape, or one wide TFT?
-**Rides on it:** bezel fabrication, MCU bandwidth, how much dash character
-survives. Two round on SPI is the easy path; one wide needs a parallel interface
-or display controller to feel smooth.
-**Aesthetic — your call.** Gates the display order.
-**Note:** this is the *instrument cluster*, not exterior lighting. Stays in this
-project.
+## Q-028 · CAN wake latency
+**Ask:** If horn and wink ever move to CAN wake once the MCU exists, what
+wake-to-horn latency is acceptable on a cold boot?
+
+Not live yet. Recorded so it isn't rediscovered.
 
 **ANSWER:**
 >
@@ -36,120 +37,49 @@ project.
 
 ---
 
-### Q-028 · CAN wake latency
-Not live until the MCU exists. Recorded so it isn't rediscovered.
+
+---
+
+# STILL OPEN — module and cluster
+
+## Q-058 · Page switching
+**Ask:** How do you change cluster pages — CAN keypad button, or a long-press on
+a wink switch?
+**Not live** until the multi-page architecture exists. The driving page is built;
+diagnostics and trip pages are forward scope in `CLUSTER-DESIGN.md`.
 
 **ANSWER:**
->
+> unique toggle button closer to dash display just a small button that will cycle through
 >
 
 ---
 
-# ASSUMPTIONS
-
-### A-005 · Start relay location
-**Recommendation:** Not at the starter. Mount K9 **high on the inner fender or
-firewall.** The relay keeps solenoid current off the PMU — it doesn't need to be
-adjacent. Pull-in is 15–25 A and 12 AWG over three or four feet loses almost
-nothing. Dry side, reachable, no ingress rating needed.
+## Q-059 · PSRAM on the Teensy
+**Ask:** Solder 8 MB PSRAM to the Teensy 4.1 pads?
+**Cost:** ~$8, and **much easier before the board is installed.**
+**Buys:** double-buffering, off-screen composition, room for map tiles or logging
+buffers.
+**Not needed today** — the 384 KB framebuffer fits in RAM without it.
+**Recommendation:** fit it. It is the classic thing you regret not doing once the
+board is in the dash.
 
 **ANSWER:**
+>
 > follow recommendations
->
 
 ---
 
-# VERIFY — still open
+## Q-060 · Display panel selection **← next hardware decision**
+**Ask:** Which 800×480 panel?
+**Requirements, in order:**
 
-### Easy
-
-| ID    | Claim                                                                 | Source                           |
-|-------|-----------------------------------------------------------------------|----------------------------------|
-| V-014 | DT size-16 contact current rating. Catalogue confirms size 20 = 7.5 A | TE contacts section, pp. 169–180 |
-| V-047 | Shielded 16 AWG availability; single-end shield grounding             | Wire supplier                    |
-| V-040 | Aeromotive Phantom 340 draw at target pressure                        | Aeromotive spec                  |
-| V-054 | Carter P4070 current draw                                             | Carter spec                      |
-| V-051 | Ionic case dimensions before cutting the cargo bin                    | Tape measure                     |
-| V-052 | Battery heater trigger and draw                                       | Ionic docs / app                 |
-| V-053 | Battery terminal type — SAE or 3/8 threaded                           | Look at it                       |
-| V-057 | TCAN1042/1051 exact part suffix                                       | TI datasheet                     |
-| V-058 | Display nit rating — 800–1000 min                                     | Vendor spec                      |
-
-### Medium — needs the car
-
-| ID    | Claim                                                     |
-|-------|-----------------------------------------------------------|
-| V-002 | Alternator output rating                                  |
-| V-050 | Which ignition outputs stay live in RUN and START — T-023 |
-| V-037 | Fuel sender ohm range                                     |
-| V-030 | Pop-up motor internal limit pinout — T-011                |
-| V-055 | Sill space behind the kick panel                          |
-| V-038 | Coolant level unit and oscillator still fitted            |
-
-### Hard — blocked
-
-| ID    | Claim                                                         | Blocked by                 |
-|-------|---------------------------------------------------------------|----------------------------|
-| V-065 | **PMU's own CAN export format.** ECUMaster fixes it, we don't | The client, once installed |
-| V-019 | Can the 12A alternator carry the migrated load                | T-014                      |
-| V-041 | Will the tach ever feed the PMU                               | Needs a scope              |
-| V-033 | Fuel-door and hatch solenoid channel allocation               | Next SPEC pass             |
-| V-060 | New mirror conductor count and control protocol               | Pick the mirrors           |
-| V-061 | Radar sensor interface                                        | Design the subsystem       |
-
----
-
-# MOVED TO `lighting-body`
-
-| ID    | Was                                             |
-|-------|-------------------------------------------------|
-| Q-048 | Which headlamp unit — 4×6, 5×7, or 7-inch round |
-| V-063 | Tail light aperture dimensions                  |
-| V-064 | DOT/SAE LED module sourcing                     |
-| V-066 | Round or rectangular sealed beams on this car   |
-
----
-
-# RESOLVED
-
-| ID             | Answer                                                                        |
-|----------------|-------------------------------------------------------------------------------|
-| **Q-044**      | **Pop-ups STAY.** Lamp change deferred to the lighting project (D-110, D-123) |
-| Q-042          | IMU fitted to the ICU board (D-109)                                           |
-| Q-041          | CAN message map finalised (D-106)                                             |
-| Q-046          | Tail light driver PCB — **moved to lighting project** (D-111, D-123)          |
-| Q-047          | Reverse section 5 cm, 2.2 cm strip — **moved to lighting project**            |
-| Q-045          | Rear disc conversion still planned; drums were an interim (D-113)             |
-| A-007          | Converted to task T-011 (D-112)                                               |
-| V-044          | **DTP is 2-way and 4-way only** — confirmed from the TE catalogue (D-115)     |
-| V-062          | TE ICT Terminals & Connectors 2018 (D-114)                                    |
-| V-013          | DTP size-12 adequate for 25 A legs                                            |
-| Earlier rounds | Q-010 through Q-039, A-009, V-023 through V-049 → D-065 through D-105         |
-
----
-
-# CLOSED 2026-08 — infotainment
-
-| ID        | Question                              | Answer                                |
-|-----------|---------------------------------------|---------------------------------------|
-| **Q-053** | Head unit, Pi minimap, or Pi cluster? | **Head unit** (D-128)                 |
-| Q-049     | Which Bluetooth A2DP module           | **Moot** — head unit does audio       |
-| Q-050     | Turn-by-turn text or map picture?     | **Moot** — head unit provides the map |
-| Q-051     | Delete the head unit?                 | **No. It stays**                      |
-| Q-052     | Where does a Pi display live?         | **Moot** — no Pi                      |
-| Q-054     | Which map renderer?                   | **Moot** — no renderer                |
-
-## Still open
-
-### Q-055 · Head unit selection
-**Worth paying for:** wireless CarPlay (no cable to the phone), a **physical
-volume knob**, pre-outs rather than speaker-level only, an external control input
-if you want buttons on the keypad or column, and a bezel that can be integrated
-rather than looking obviously aftermarket in a 1982 dash.
-
-Double-DIN aperture is already in the dash plan. Switched feed on O10 via
-`L3-M 1`, constant keep-alive off busbar F1 via `L3-M 2` — **no wiring change**,
-that allocation was never removed.
+| Must have                             | Why                                                                                                                        |
+|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| **800–1000 nits minimum** `[V-058]`   | A wide panel has more area to wash out. **The spec most often omitted from listings — its absence usually means it's low** |
+| **8-bit colour mode (RGB332)**        | Halves SPI traffic. Confirm the controller supports it                                                                     |
+| SPI interface, ILI9488 / ST7796 class | Matches the dirty-rectangle design                                                                                         |
+| Optically bonded or AR treated        | Not an air gap                                                                                                             |
+| Backlight PWM input                   | For O20 illumination tracking                                                                                              |
 
 **ANSWER:**
 >
@@ -157,14 +87,49 @@ that allocation was never removed.
 
 ---
 
-### Q-037 · Cluster display format — unchanged and still open
-Two round TFTs in the factory binnacle shape, or one wide TFT?
+# VERIFY
 
-**The ICU is gauges only** (D-130). No map, no turn-by-turn strip, no BLE module.
-That's back to exactly what D-083 specified — which means this question is
-unaffected by the head unit decision and still needs answering before the display
-order.
+| ID | Claim | Source |
+|---|---|---|
+| **V-070** | **12A redline.** `stats.h` assumes 7000 rpm, which also sets the tach red zone | FSM |
+| V-071 | Minimum acceptable oil pressure for a 12A at idle. Assumed 1.0 bar | FSM / rotary reference |
+| V-072 | FB fuel tank capacity. Assumed 15.9 gal | FSM |
+| **V-073** | **IMU mounting orientation on the ICU PCB** must match the axis convention in D-161, or every axis needs a sign flip | Decide before PCB layout |
 
-**ANSWER:**
->
->
+## Easy — one search, catalogue page, or a look
+
+| ID | Claim | Source |
+|---|---|---|
+| V-053 | Battery terminal type — SAE or 3/8 threaded. Decides which lugs to buy | Look at it |
+| V-051 | Ionic case dimensions before cutting the cargo bin | Tape measure |
+| V-054 | Carter P4070 current draw | Carter spec |
+| V-052 | Battery heater trigger and winter draw | Ionic docs / app |
+| V-014 | DT size-16 contact current rating. Catalogue confirms size 20 = 7.5 A | TE catalogue pp. 169–180 |
+| V-057 | TCAN1042/1051 exact part suffix | TI datasheet |
+| V-047 | Shielded 16 AWG availability; single-end shield grounding | Wire supplier |
+| V-058 | **Display nit rating — 800–1000 minimum.** A wide panel has more area to wash out | Vendor spec |
+| V-069 | **Open-barrel crimper die size.** Confirm against a real terminal before buying | Measure the terminal |
+| V-040 | Aeromotive Phantom 340 draw at target pressure | Aeromotive spec — future part |
+
+## Medium — needs the car
+
+| ID | Claim | Via |
+|---|---|---|
+| V-002 | Alternator output rating | Read the case |
+| V-055 | Sill space behind the kick panel — 4 relays, 3 fuses, ground stud | Tape measure |
+| V-038 | Coolant level unit and oscillator still fitted | Inspect |
+| V-037 | Fuel sender ohm range, empty → full | Measure at the tank |
+| V-050 | Which ignition outputs stay live in RUN and START | T-023 continuity test |
+| V-030 | Pop-up motor internal limit pinout — drive vs limit pins | T-011 continuity test |
+| V-067 | **Tach pulses per revolution.** Assumed 2 for a 2-rotor off the leading coil. Wrong scales every RPM reading by a constant | Meter session or FSM |
+
+## Hard — blocked on something else
+
+| ID | Claim | Blocked by |
+|---|---|---|
+| V-065 | **PMU's own CAN export format.** ECUMaster fixes it, we don't. Gates all firmware | The client — Checklist 2.5 |
+| V-019 | Can the 12A alternator carry the migrated load | Measured draw, T-014 |
+| V-060 | New mirror conductor count and control protocol | Pick the mirrors, T-031 |
+| V-033 | Fuel-door and hatch solenoid channel allocation | Next SPEC pass |
+| V-041 | Will the tach ever feed the PMU directly | Needs a scope |
+| V-061 | Radar sensor interface | Design the subsystem |

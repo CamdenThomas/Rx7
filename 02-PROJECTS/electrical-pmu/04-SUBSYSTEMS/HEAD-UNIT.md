@@ -2,27 +2,8 @@
 
 *Rev 2026-08 · owns: audio, maps and the double-DIN install*
 
-**Decision: a double-DIN head unit with wireless CarPlay** (D-128).
-
-It provides maps, the road-preview minimap, iPhone audio and the controls. The
-ICU stays gauges-only.
-
----
-
-## Why a head unit and not something custom
-
-Three alternatives were designed out in detail and rejected:
-
-| Rejected | Why |
-|---|---|
-| Hidden Bluetooth A2DP module + no screen | Gets audio, gets no map |
-| Turn-by-turn text on the ICU via BLE | Gets instructions, not the road-preview picture that was the actual requirement |
-| Raspberry Pi rendering an offline OSM minimap | 60–120 hrs of firmware, plus a second display subsystem on the critical path |
-
-The full reasoning is archived at
-`99-ARCHIVE/2026-08_infotainment-options-considered.md`. It stays available
-because the Pi path is genuinely buildable later, on a finished car, if the
-offline aspect ever becomes the thing that matters.
+A double-DIN head unit with **wireless CarPlay**. Provides maps, the road-preview
+minimap, iPhone audio and the controls.
 
 ---
 
@@ -66,26 +47,24 @@ can't flatten the lithium.
 
 ---
 
-## Selection `[Q-055]`
+## Selection criteria
 
-Worth paying for:
-
-| Feature | Why |
+| Requirement | Why |
 |---|---|
+| **Double-DIN** | Aperture already in the dash plan |
+| **Physical buttons** | A touchscreen volume slider in a moving car is a mistake you notice every drive |
+| **Variable LED button colour — set to green** | Matches the illumination scheme |
 | **Wireless CarPlay** | No cable to the phone. Most of what makes an install look clean |
-| **Physical volume knob** | A touchscreen volume slider in a moving car is a mistake you notice every drive |
-| **Pre-outs**, not speaker-level only | Feeds the amp properly |
-| External control input | If buttons are wanted on the keypad or column |
+| **Full passthrough — critical** | Pre-outs, full-range, unprocessed, feeding the external amp |
 | An integrable bezel | Rather than obviously aftermarket in a 1982 dash |
 
-**Double-DIN aperture** is already in the dash plan.
+> **Passthrough is the hard requirement.** Many units advertise pre-outs but
+> band-limit them or apply fixed EQ that can't be defeated. Confirm the signal
+> reaching the amp is full-range and unprocessed before buying.
 
 ---
 
-## The trade, stated plainly
+## Known limitation
 
-A bright modern screen in a 1982 dash, and a map that needs cell signal — no
-coverage means no map, which matters in the canyons west of town.
-
-Both were considered and accepted in exchange for the feature existing this year
-instead of in 2028.
+The map needs cell signal. No coverage means no map, which matters in the canyons
+west of town.

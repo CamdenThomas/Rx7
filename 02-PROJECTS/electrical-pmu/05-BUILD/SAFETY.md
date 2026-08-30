@@ -16,7 +16,7 @@ spanner across the terminals doesn't spark — it welds, and the tool glows.
 
 - **Class-T fuse, not ANL or MIDI.** It is the only common holder with the
   interrupt rating to actually break a lithium short. This is the one fuse not
-  to economise on.
+  to economize on.
 - **Mount it as close to battery positive as physically possible.** The cable
   between post and fuse can never be protected. Make it inches.
 - **Cover terminals whenever the battery is in the car and you are working.**
@@ -55,7 +55,7 @@ in this project's scope.
 
 - **No sparks near the tank.** The fuel sender is inside it. Disconnect the
   battery before touching sender wiring.
-- Depressurise before opening any line.
+- Depressurize before opening any line.
 - A fire extinguisher within reach whenever fuel lines are open. **Not in the
   garage — within reach.**
 

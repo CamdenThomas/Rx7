@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>RX-7 ICU cluster mockup</title>
+<style>
+  :root{
+    --blk:#000; --dim:#0b2a0b; --mid:#2f7a2f;
+    --grn:#35e035; --brt:#8dff8d; --red:#ff2a2a; --amb:#ffa32a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#111;color:#8dff8d;
+       font:13px/1.4 ui-monospace,Menlo,Consolas,monospace;padding:18px}
+  h1{font-size:14px;letter-spacing:.18em;text-transform:uppercase;
+     color:#2f7a2f;margin:0 0 14px}
+  #wrap{display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start}
+  canvas{background:#000;border:1px solid #1d3d1d;image-rendering:pixelated}
+  #ctl{min-width:330px;max-width:400px}
+  fieldset{border:1px solid #1d3d1d;margin:0 0 12px;padding:10px 12px}
+  legend{color:#2f7a2f;letter-spacing:.14em;font-size:11px;text-transform:uppercase}
+  label{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:12px}
+  label span:first-child{width:74px;color:#5aa85a}
+  input[type=range]{flex:1;accent-color:#35e035}
+  select{background:#000;color:#8dff8d;border:1px solid #2f7a2f;
+         font:11px ui-monospace,monospace;padding:2px}
+  .val{width:56px;text-align:right;color:#8dff8d}
+  .chk{display:inline-flex;width:auto;margin-right:14px}
+  #stats{border:1px solid #1d3d1d;padding:10px 12px;font-size:11px;color:#5aa85a}
+  #stats b{color:#8dff8d}
+  .note{color:#2f7a2f;font-size:11px;margin-top:10px;line-height:1.6}
+</style>
+</head>
+<body>
+
+<h1>RX-7 · ICU cluster mockup · 800 × 480</h1>
+
+<div id="wrap">
+  <canvas id="cv" width="800" height="480" style="width:800px;height:480px"></canvas>
+
+  <div id="ctl">
+    <fieldset><legend>Live values</legend>
+      <label><span>RPM</span><input type="range" id="rpm" min="0" max="8500" value="900"><span class="val" id="rpmV"></span></label>
+      <label><span>Speed</span><input type="range" id="mph" min="0" max="160" value="0"><span class="val" id="mphV"></span></label>
+      <label><span>Water °C</span><input type="range" id="wat" min="0" max="130" value="88"><span class="val" id="watV"></span></label>
+      <label><span>Oil bar</span><input type="range" id="oip" min="0" max="80" value="45"><span class="val" id="oipV"></span></label>
+      <label><span>Oil °C</span><input type="range" id="oit" min="0" max="150" value="95"><span class="val" id="oitV"></span></label>
+      <label><span>Fuel %</span><input type="range" id="fue" min="0" max="100" value="72"><span class="val" id="fueV"></span></label>
+      <label><span>Volts</span><input type="range" id="vlt" min="90" max="160" value="142"><span class="val" id="vltV"></span></label>
+    </fieldset>
+
+    <fieldset><legend>Sensor state — the point of this mockup</legend>
+      <label><span>Water</span><select id="sWat"></select></label>
+      <label><span>Oil press</span><select id="sOip"></select></label>
+      <label><span>Oil temp</span><select id="sOit"></select></label>
+      <label><span>Fuel</span><select id="sFue"></select></label>
+      <label><span>RPM</span><select id="sRpm"></select></label>
+      <label><span>Speed</span><select id="sMph"></select></label>
+      <label><span>Volts</span><select id="sVlt"></select></label>
+    </fieldset>
+
+    <fieldset><legend>Warnings</legend>
+      <label class="chk"><input type="checkbox" id="wOil"> OIL</label>
+      <label class="chk"><input type="checkbox" id="wTmp"> TEMP</label>
+      <label class="chk"><input type="checkbox" id="wBat"> BATT</label>
+      <label class="chk"><input type="checkbox" id="wBrk"> BRAKE</label>
+      <label class="chk"><input type="checkbox" id="wFue"> FUEL</label>
+    </fieldset>
+
+    <fieldset><legend>Demo</legend>
+      <label class="chk"><input type="checkbox" id="sweep"> Sweep RPM</label>
+      <label class="chk"><input type="checkbox" id="grid" checked> Static grid</label>
+    </fieldset>
+
+    <div id="stats"></div>
+
+    <div class="note">
+      Set any sensor to <b>OPEN</b> to see the disconnected treatment: dashes in
+      amber, and a hollow bar outline. <b>SHORT</b> and <b>STALE</b> each read
+      differently — a missing sensor never looks like a real zero.
+    </div>
+  </div>
+</div>
+
+<script>
+const K = {blk:'#000', dim:'#0b2a0b', mid:'#2f7a2f',
+           grn:'#35e035', brt:'#8dff8d', red:'#ff2a2a', amb:'#ffa32a'};
+
+const cv = document.getElementById('cv');
+const cx = cv.getContext('2d');
+
+let pxCount = 0;
+function rect(x,y,w,h,c){
+  if(w<=0||h<=0) return;
+  cx.fillStyle = c; cx.fillRect(x,y,w,h); pxCount += w*h;
+}
+
+/* ---------- sensor states ---------- */
+const STATES = ['OK','OPEN','SHORT','STALE','RANGE'];
+for(const id of ['sWat','sOip','sOit','sFue','sRpm','sMph','sVlt']){
+  const s = document.getElementById(id);
+  STATES.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;s.appendChild(o)});
+}
+
+/* ---------- seven segment ---------- */
+const SEG=[0x3F,0x06,0x5B,0x4F,0x66,0x6D,0x7D,0x07,0x7F,0x6F];
+const DASH = 0x40;               /* segment g only */
+
+function segRects(x,y,w,h,t){
+  const hh=h/2;
+  return [
+    [x+t,      y,          w-2*t, t    ],  /* a */
+    [x+w-t,    y+t,        t,     hh-t ],  /* b */
+    [x+w-t,    y+hh,       t,     hh-t ],  /* c */
+    [x+t,      y+h-t,      w-2*t, t    ],  /* d */
+    [x,        y+hh,       t,     hh-t ],  /* e */
+    [x,        y+t,        t,     hh-t ],  /* f */
+    [x+t,      y+hh-t/2,   w-2*t, t    ]   /* g */
+  ];
+}
+function digit(x,y,w,h,t,mask,on,off){
+  const r=segRects(x,y,w,h,t);
+  for(let i=0;i<7;i++) rect(...r[i], (mask&(1<<i))?on:off);
+}
+
+/* Draw a numeric field. If fault, draw dashes in the fault colour instead. */
+function digits(x,y,w,h,t,gap,n,value,on,fault){
+  const off = K.dim;
+  if(fault){
+    for(let i=0;i<n;i++) digit(x+i*(w+gap),y,w,h,t,DASH,fault,off);
+    return;
+  }
+  let s = String(Math.max(0,Math.round(value)));
+  while(s.length<n) s=' '+s;
+  for(let i=0;i<n;i++){
+    const ch=s[i];
+    digit(x+i*(w+gap),y,w,h,t, ch===' '?0:SEG[+ch], on, off);
+  }
+}
+
+/* ---------- segmented bar ---------- */
+function bar(x,y,n,sw,sh,gap,lit,redFrom,fault){
+  for(let i=0;i<n;i++){
+    const bx=x+i*(sw+gap);
+    if(fault){
+      /* hollow outline - unmistakably not a reading */
+      rect(bx,y,sw,1,K.amb); rect(bx,y+sh-1,sw,1,K.amb);
+    } else if(i<lit){
+      rect(bx,y,sw,sh,(redFrom>=0&&i>=redFrom)?K.red:K.grn);
+    } else {
+      rect(bx,y,sw,sh,K.dim);
+    }
+  }
+}
+
+/* ---------- tiny 5x7 text, drawn as rects ---------- */
+const FONT={
+  A:[0x1E,0x05,0x05,0x1E],B:[0x1F,0x15,0x15,0x0A],C:[0x0E,0x11,0x11,0x11],
+  D:[0x1F,0x11,0x11,0x0E],E:[0x1F,0x15,0x15,0x11],F:[0x1F,0x05,0x05,0x01],
+  G:[0x0E,0x11,0x15,0x1D],H:[0x1F,0x04,0x04,0x1F],I:[0x11,0x1F,0x11,0x00],
+  K:[0x1F,0x04,0x0A,0x11],L:[0x1F,0x10,0x10,0x10],M:[0x1F,0x02,0x02,0x1F],
+  N:[0x1F,0x02,0x04,0x1F],O:[0x0E,0x11,0x11,0x0E],P:[0x1F,0x05,0x05,0x02],
+  R:[0x1F,0x05,0x0D,0x12],S:[0x12,0x15,0x15,0x09],T:[0x01,0x1F,0x01,0x00],
+  U:[0x0F,0x10,0x10,0x0F],V:[0x07,0x18,0x18,0x07],W:[0x1F,0x08,0x08,0x1F],
+  X:[0x1B,0x04,0x04,0x1B],Y:[0x03,0x1C,0x03,0x00],Z:[0x19,0x15,0x15,0x13],
+  '2':[0x19,0x15,0x15,0x12],'7':[0x01,0x01,0x1D,0x03],'-':[0x04,0x04,0x04,0x04],
+  ' ':[0,0,0,0],'/':[0x18,0x04,0x03,0x00],'.':[0x10,0x00,0x00,0x00]
+};
+function text(str,x,y,s,c){
+  let px=x;
+  for(const ch of str.toUpperCase()){
+    const g=FONT[ch]||FONT[' '];
+    for(let col=0;col<4;col++)
+      for(let row=0;row<5;row++)
+        if(g[col]&(1<<row)) rect(px+col*s,y+row*s,s,s,c);
+    px+=5*s;
+  }
+}
+
+/* ================= LAYOUT ================= */
+const RPM_N=50, RPM_RED=42, RPM_X=52, RPM_Y=44, RPM_SW=12, RPM_SH=30, RPM_GAP=3;
+const BAR_X=548, BAR_Y=178, BAR_STEP=54, BAR_N=14, BAR_SW=13, BAR_SH=20, BAR_GAP=4;
+
+function drawStatic(showGrid){
+  rect(0,0,800,480,K.blk);
+
+  if(showGrid){
+    for(let x=0;x<800;x+=40) rect(x,0,1,480,'#061806');
+    for(let y=0;y<480;y+=40) rect(0,y,800,1,'#061806');
+  }
+
+  /* drafting corner brackets */
+  const B=18,T=2;
+  [[10,10,1,1],[790-B,10,-1,1],[10,470-B,1,-1],[790-B,470-B,-1,-1]].forEach(([x,y])=>{
+    rect(x,y,B,T,K.mid); rect(x,y,T,B,K.mid);
+  });
+
+  /* rpm scale ticks */
+  for(let k=0;k<=8;k++){
+    const x = RPM_X + Math.round(k*(RPM_N*(RPM_SW+RPM_GAP))/8);
+    const tall = 12, sh = 7;
+    rect(x, RPM_Y+RPM_SH+5, 2, (k%1===0)?tall:sh, k>=7?K.red:K.mid);
+    text(String(k), x-3, RPM_Y+RPM_SH+21, 2, k>=7?K.red:K.mid);
+  }
+  text('RPM  x1000', RPM_X, 24, 2, K.mid);
+
+  /* speed label + underline */
+  text('MPH', 268, 322, 4, K.mid);
+  rect(150,308,190,2,K.mid);
+
+  /* right column labels */
+  ['WATER','OIL P','OIL T','FUEL'].forEach((s,i)=>{
+    text(s, 462, BAR_Y+i*BAR_STEP+6, 2, K.mid);
+  });
+  text('VOLTS', 462, BAR_Y+4*BAR_STEP+14, 2, K.mid);
+
+  /* warning row frame */
+  rect(40,410,720,1,K.mid);
+  ['OIL','TEMP','BATT','BRAKE','FUEL'].forEach((s,i)=>{
+    text(s, 62+i*140, 448, 2, K.mid);
+  });
+
+  /* quiet wordmark */
+  text('SA22C', 690, 24, 2, '#173a17');
+}
+
+function faultColour(st){
+  if(st==='OPEN') return K.amb;
+  if(st==='SHORT') return K.red;
+  if(st==='STALE') return K.mid;
+  return null;
+}
+
+function draw(){
+  pxCount=0;
+  const g=id=>+document.getElementById(id).value;
+  const s=id=>document.getElementById(id).value;
+  const c=id=>document.getElementById(id).checked;
+
+  drawStatic(c('grid'));
+
+  const rpmF=faultColour(s('sRpm'));
+  const mphF=faultColour(s('sMph'));
+
+  /* RPM bar */
+  bar(RPM_X,RPM_Y,RPM_N,RPM_SW,RPM_SH,RPM_GAP,
+      Math.round(g('rpm')/8500*RPM_N), RPM_RED, rpmF);
+
+  /* RPM numeric, small, under the bar right side */
+  digits(600,20,16,26,4,5,4, g('rpm'), K.grn, rpmF);
+
+  /* big speed */
+  digits(150,178,70,124,14,18,3, g('mph'), K.brt, mphF);
+
+  /* right column bars */
+  const bars=[
+    ['sWat', g('wat')/130],
+    ['sOip', g('oip')/80 ],
+    ['sOit', g('oit')/150],
+    ['sFue', g('fue')/100]
+  ];
+  bars.forEach(([st,frac],i)=>{
+    const f=faultColour(s(st));
+    bar(BAR_X, BAR_Y+i*BAR_STEP, BAR_N, BAR_SW, BAR_SH, BAR_GAP,
+        Math.round(frac*BAR_N), -1, f);
+  });
+
+  /* volts */
+  const vF=faultColour(s('sVlt'));
+  digits(BAR_X, BAR_Y+4*BAR_STEP, 24, 40, 6, 7, 3, g('vlt'), K.grn, vF);
+  if(!vF) rect(BAR_X+2*(24+7)-5, BAR_Y+4*BAR_STEP+34, 5,5, K.grn);
+
+  /* warnings */
+  const w=[['wOil',0],['wTmp',1],['wBat',2],['wBrk',3],['wFue',4]];
+  w.forEach(([id,i])=>{
+    rect(56+i*140, 424, 96, 18, c(id)?K.red:'#0d0d0d');
+  });
+
+  /* readouts */
+  document.getElementById('rpmV').textContent=g('rpm');
+  document.getElementById('mphV').textContent=g('mph');
+  document.getElementById('watV').textContent=g('wat');
+  document.getElementById('oipV').textContent=(g('oip')/10).toFixed(1);
+  document.getElementById('oitV').textContent=g('oit');
+  document.getElementById('fueV').textContent=g('fue');
+  document.getElementById('vltV').textContent=(g('vlt')/10).toFixed(1);
+
+  const ms=(pxCount/6000000*1000);
+  document.getElementById('stats').innerHTML =
+    'FULL REDRAW cost — what a page transition costs, not a frame<br>'+
+    'pixels <b>'+pxCount.toLocaleString()+'</b> &nbsp; '+
+    (pxCount/(800*480)*100).toFixed(0)+'% of screen<br>'+
+    'at 6 MB/s 8bpp: <b>'+ms.toFixed(1)+' ms</b><br><br>'+
+    'On the Teensy only CHANGED rects are sent.<br>'+
+    'A typical driving frame is 10–30k px ≈ <b>2–5 ms</b>.';
+}
+
+/* wire up */
+document.querySelectorAll('input,select').forEach(e=>{
+  e.addEventListener('input',draw); e.addEventListener('change',draw);
+});
+
+let sweepV=900, dir=1;
+setInterval(()=>{
+  if(document.getElementById('sweep').checked){
+    sweepV+=dir*120;
+    if(sweepV>8300) dir=-1;
+    if(sweepV<800) dir=1;
+    document.getElementById('rpm').value=sweepV;
+    document.getElementById('mph').value=Math.round(sweepV/60);
+    draw();
+  }
+},33);
+
+draw();
+</script>
+</body>
+</html>

@@ -203,3 +203,143 @@ Version after every working step — `RevA-01`, `-02`. Never overwrite. Log each
 `../05-BUILD/LOGS.md`.
 
 **The one time you need to roll back is the one time you won't have kept it.**
+
+---
+
+# LOGIC DEFINITIONS — enter these as written
+
+*Rev 2026-08. Soft-fuse values come from `CHANNEL-SCHEDULE.md`; everything
+below is independent of the amp numbers and can be entered tonight.*
+
+Naming convention: **channel names match `SPEC.md` exactly.** The diagnostics
+page, the simulator and the migration log all use the same strings, so a
+mismatch here shows up as a wrong label on the cluster.
+
+---
+
+## 1 · Analog inputs — decode tables
+
+Enter as **lookup tables with windows**, not thresholds. A reading between
+windows must report FAULT, not snap to the nearest state (D-053).
+
+| Input | Pin | States → ADC centre | Window ± | Fault |
+|---|---|---|---|---|
+| `A1_TURN` | 29 | LEFT 156 · RIGHT 512 · OFF 843 | 55 | <50 or >990 |
+| `A2_WIPER` | 16 | WASH 156 · HIGH 327 · LOW 512 · INT 658 · OFF 843 | 45 | <50 or >990 |
+| `A3_BRAKE` | 30 | PRESSED 327 · RELEASED 1023 | 47 | <50 |
+| `A4_POPUP_L` | 17 | DOWN 254 · UP 512 · MID 843 | 45 | <50, or ~193 = both closed |
+| `A5_POPUP_R` | 31 | same as A4 | 45 | same |
+| `A6_DOOR` | 18 | BOTH 406 · PASS 461 · DRV 785 · CLOSED 1023 | **27** | <50 |
+| `A15_HEADLIGHT` | 35 | OFF 0 · PARK 1229 · HEAD 2457 | 200 | see note |
+| `A16_KEY` | 22 | OFF 0 · ACC 571 · RUN 1210 · START 1743 | 200 | see note |
+
+**A6 is the tightest ladder in the car** — 55 counts between BOTH and PASS, so
+the window is ±27. If it proves marginal on the bench, drop the "both open"
+state; nothing in the config distinguishes it from "passenger open".
+
+**A15/A16 are 12 V side, 12-bit.** Add a **100 kΩ bias from +5 V** so OFF reads
+~100 counts instead of 0 — otherwise OFF and a disconnected wire are identical.
+
+**A16 is not a simple ladder.** ACC stays live in RUN, and both stay live in
+START, so the node sums. Verify against `T-023` before trusting the centres.
+
+---
+
+## 2 · Output logic
+
+Written as boolean expressions. `&&` and `||` as you would expect.
+
+| Channel | Expression |
+|---|---|
+| `HEAD_LOW` | `A15 == HEAD` |
+| `HEAD_HIGH` | `(A15 == HEAD && dimmer == HIGH) \|\| passing` |
+| `TAIL_PARK` | `A15 >= PARK` |
+| `BRAKE` | `A3 == PRESSED` |
+| `TURN_L` | `(A1 == LEFT \|\| hazard) && flasher_phase` |
+| `TURN_R` | `(A1 == RIGHT \|\| hazard) && flasher_phase` |
+| `REVERSE` | `inhibitor == R && A16 >= RUN` |
+| `INTERIOR` | `(A6 != CLOSED \|\| override) — PWM, theatre fade` |
+| `WIPE_LOW` | `A2 == LOW \|\| (A2 == INT && int_timer) \|\| A2 == WASH` |
+| `WIPE_HIGH` | `A2 == HIGH` |
+| `DEFOG` | `keypad_defog && A16 >= RUN` — **15 min auto-off** |
+| `FUEL_PUMP` | `(A16 == START) \|\| (A16 == RUN && rpm > 300)` — prime 3 s |
+| `IGNITION` | `A16 >= RUN` |
+| `ACCESSORY` | `A16 >= ACC` |
+| `HORN` | `horn_switch` |
+| `COMFORT` | `A16 >= RUN` |
+| `START_RLY` | `A16 == START && inhibitor_PN && rpm < 300` |
+| `KEEPALIVE` | self-hold, releases 30 s after last input change |
+| `MOTOR_BUS` | `popup_moving \|\| window_moving` |
+
+**Flasher:** 1.5 Hz, 50% duty, generated in the PMU. **No flasher unit exists
+in the car.** Hazard drives both channels and overrides the stalk.
+
+**Wiper intermittent:** 3 s fixed. Pulse `WIPE_LOW` for one cycle, wait for park
+sense, repeat.
+
+**Wiper park:** on release, hold `WIPE_LOW` until the park switch closes, then
+apply O8 braking. **Never cut power mid-sweep.**
+
+**Pop-ups:** `A15` reaching HEAD raises both. Leaving HEAD lowers both. Wink
+switches momentarily override one side and return it to the ladder state.
+
+---
+
+## 3 · Interlocks — enter these before any output is enabled
+
+| Interlock | Rule |
+|---|---|
+| **Crank** | `START_RLY` only if inhibitor P or N **and** rpm < 300 |
+| **Fuel pump** | Cut if rpm = 0 for > 2 s after prime. Cut on inertia switch |
+| **Pop-up** | Never raise and lower the same side. Never both sides plus both windows |
+| **Window** | Never up and down on the same window |
+| **Motor bus** | Refuse new motor commands above 20 A total on O1 |
+| **Undervoltage** | Warn below 12.0 V. Shed `COMFORT` below 11.5 V |
+| **Overvoltage** | Warn above 15.0 V |
+
+---
+
+## 4 · Wake network
+
+Six diode-OR inputs to pin 7 (D-072):
+
+`ACC` · `RUN` · `hazard switch` · `door pin` · **`horn switch`** · `O22 latch`
+
+Plus a **10 kΩ bleed to ground** so the node cannot float (D-056).
+
+**Shutdown:** 30 s after the last input change with the key off, `O22` releases
+and the PMU sleeps. `K11` drops the constant bus on a long park.
+
+---
+
+## 5 · CAN
+
+**CAN1** — laptop, 1 Mbps fixed, **no internal termination.** Fit 120 Ω at both
+ends or the client will not see the device.
+
+**CAN2** — 500 kbps (D-086), software termination enabled at the PMU end,
+physical 120 Ω at the engine-bay drop (D-079).
+
+**Export the PMU's own message structure before writing any firmware against
+it** — `V-065`. `can_map.h` messages 0x100–0x130 are intent until reconciled.
+
+---
+
+## 6 · Entry order
+
+Everything above is enterable **without a single amp figure**:
+
+1. Name all 39 channels to match `SPEC.md`
+2. Enter the eight decode tables
+3. Enter the output expressions
+4. Enter the interlocks
+5. Enter the wake sources and shutdown timer
+6. Configure the flasher, wiper timer, pop-up logic
+7. Enable data logging
+8. Save as `RevA-01`, log it in `LOGS.md`
+
+**Then, and only then:** enter soft-fuse limits from `CHANNEL-SCHEDULE.md` as
+each measurement arrives, and enable that output.
+
+An output with no measured figure stays **disabled**. That is not a
+limitation — it is the design working.

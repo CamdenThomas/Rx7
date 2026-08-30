@@ -102,11 +102,193 @@ engine instrumentation from the comfort system."**
 
 | Item | Spec | Note |
 |---|---|---|
-| MCU | Teensy 4.1 or RP2040 | Display bandwidth is the driver |
-| Display | `[Q-037]` — round TFTs for a retro pair, or one wide TFT | Decides bezel fabrication |
-| Backlight dimming | PWM, referenced to the PMU's O20 illumination level over CAN | Matches panel dimming automatically |
+| MCU | Teensy 4.1 | |
+| **Display** | **ONE WIDE PANEL** (D-150) | Not two round TFTs |
+| **Display interface** | See §5a — three viable approaches | |
+| Brightness | **800–1000 nits min** `[V-058]` | A wide panel has more area to wash out in sunlight |
+| Backlight dimming | PWM, referenced to O20 illumination over CAN | Matches panel dimming automatically |
+| **IMU** | Accelerometer/gyro (D-109) | G-meter, lap timing, level display |
 | CAN transceiver | 1 | |
-| Power | 12 V → 5 V buck | |
+| Power | 12 V → 5 V buck + load-dump TVS | |
+
+## 5a · Driving a wide panel — the bandwidth problem and three answers
+
+> **SETTLED — Option 3 was chosen and built.** SPI with dirty-rectangle
+> rendering, using a 384 KB framebuffer in RAM and 16×16 tile tracking. See
+> `firmware/icu/cluster_core.h`.
+>
+> §5a and §5b are kept as background: the arithmetic still governs what the
+> cluster can afford, and Option 1 remains the fallback if a large analogue
+> sweep is ever wanted.
+
+### The arithmetic
+
+800 × 480 at 16 bits per pixel = **768 KB per full frame.**
+
+| Interface | Throughput | Full frames/sec |
+|---|---|---|
+| SPI at 60 MHz | ~6 MB/s real | **~8 fps** — unusable |
+| FlexIO 8-bit parallel | ~20 MB/s | ~26 fps |
+| FlexIO 16-bit parallel | ~40 MB/s | ~52 fps |
+| RA8876 controller | commands only | N/A — the controller renders |
+
+### Option 1 · Framebuffer controller — RA8875 / RA8876
+
+The display module carries its own graphics controller and its own memory. The
+Teensy sends **drawing commands** — "line here", "fill this rectangle", "this
+text at this position" — and the controller does the work.
+
+| | |
+|---|---|
+| **Bandwidth** | Trivial. You're sending bytes, not pixels |
+| **CPU load** | Very low. The Teensy is nearly idle |
+| **Effort** | Lowest. Mature libraries exist |
+| **Cost** | Higher — you're buying a controller |
+| **Limitation** | You draw with the controller's primitives. Custom effects are harder |
+
+### Option 2 · FlexIO parallel
+
+The i.MX RT1062 has **FlexIO** peripherals that can be configured as a parallel
+bus and driven by DMA. 8-bit or 16-bit wide.
+
+| | |
+|---|---|
+| **Bandwidth** | 20–40 MB/s. Enough for full-frame redraw at video rates |
+| **CPU load** | Low with DMA — the transfer runs without the core |
+| **Effort** | **Highest.** Fewer libraries, more pins, more debugging |
+| **Cost** | Cheapest panel |
+| **Payoff** | Total freedom. Anything you can render, you can display |
+
+### Option 3 · SPI with dirty-rectangle rendering
+
+**The one worth taking seriously, because a gauge cluster is the ideal case
+for it.**
+
+The 8 fps figure assumes you redraw the whole screen every frame. **A cluster
+doesn't.** The background — bezels, scale markings, labels, static text — is
+drawn once at boot and never touched again. Only needles, digits and warning
+icons move.
+
+If 10% of the screen changes per frame, effective throughput is **10× better** —
+comfortably 60 fps equivalent on plain SPI.
+
+| | |
+|---|---|
+| **Bandwidth** | Fine, *if* you are disciplined about what you redraw |
+| **CPU load** | Moderate — you track dirty regions yourself |
+| **Effort** | Moderate. The discipline is architectural, not hard |
+| **Cost** | Cheapest overall |
+| **Risk** | **One careless full-screen clear and you're at 8 fps.** The constraint has to be respected everywhere |
+
+**Teensy 4.1 has PSRAM pads.** Soldering 8 MB gives you room to hold your own
+framebuffer in RAM, compose there, and push only changed rectangles over SPI.
+
+### Recommendation
+
+**SPI with dirty-rectangle rendering. Option 1 stays in reserve.**
+
+See §5b for the pixel budget — with a simple flat-colour design the headroom is
+much larger than the raw "8 fps" figure suggests.
+
+`[Q-056]` — decide the visual style before the panel is bought. **A digital-style
+readout works on any of the three. A large analogue sweep effectively picks
+Option 1 or 2 for you.**
+
+---
+
+## 5b · The real frame budget
+
+*The bottleneck is the SPI bus, not the Teensy. A 600 MHz M7 with DMA is barely
+working.*
+
+### Throughput, converted to pixels
+
+SPI at 60 MHz gives roughly **6 MB/s** sustained after overhead.
+
+| Colour depth | Bytes/px | Pixels/sec |
+|---|---|---|
+| 16 bpp — RGB565 | 2 | **3.0 M** |
+| **8 bpp — RGB332** | **1** | **6.0 M** |
+
+**A flat green scheme has no use for 16-bit colour.** RGB332 gives 256 colours,
+which is far more than a monochrome-green cluster needs — and it **halves the
+data**. Confirm the panel supports 8-bit colour mode; ILI9341 and several others
+do.
+
+### What that buys per frame
+
+Full screen at 800 × 480 = **384,000 pixels.**
+
+| Target | 16 bpp budget | 8 bpp budget | 8 bpp as % of screen |
+|---|---|---|---|
+| 60 fps | 50,000 px | **100,000 px** | 26% |
+| 30 fps | 100,000 px | **200,000 px** | **52%** |
+| 20 fps | 150,000 px | 300,000 px | 78% |
+
+**At 8 bpp and 30 fps you can redraw over half the screen every frame.**
+
+### What a cluster actually changes
+
+Rough dynamic areas for a wide layout:
+
+| Element | Region | Pixels |
+|---|---|---|
+| Tach digits, large | 220 × 110 | 24,000 |
+| Speed digits | 150 × 90 | 13,500 |
+| Water temp bar | 220 × 30 | 6,600 |
+| Oil pressure bar | 220 × 30 | 6,600 |
+| Oil temp | 110 × 45 | 5,000 |
+| Fuel bar | 220 × 30 | 6,600 |
+| Voltage | 110 × 45 | 5,000 |
+| Warning icons ×8 | 40 × 40 each | 12,800 |
+| **All dynamic regions** | | **~80,000** |
+
+**~21% of the screen is even capable of changing.** And it never all changes at
+once — temperatures move at 1 Hz, fuel slower still.
+
+**Realistic per-frame load: 10,000–30,000 pixels.** That is **2–5 ms** at 8 bpp.
+
+### The honest limits
+
+**You are not frame-rate limited. You are limited by what you choose to animate.**
+
+| Cheap | Expensive |
+|---|---|
+| Digits changing — redraw one glyph, ~3,000 px | Large analogue needle sweeping — dirties a wide arc every frame |
+| Bar graphs — redraw only the delta segment | Gradients and antialiasing — big regions, per-pixel maths |
+| Warning icons on change | Full-screen transitions or animations |
+| Flat fills, hard edges | Photographic backgrounds |
+
+### What a simple green design buys you
+
+1. **8 bpp instead of 16** — halves everything
+2. **Flat fills, no gradients** — a rectangle fill is the fastest operation there is
+3. **Hard-edged glyphs** — no antialiasing means no per-pixel blending
+4. **Small dirty regions** — a 7-segment style digit is a handful of rectangles
+
+**Combined, a flat green cluster is roughly 4× cheaper to render than a
+full-colour skeuomorphic one.**
+
+### Practical targets
+
+| What | Rate | Why |
+|---|---|---|
+| Tach | **30 Hz** | Enough to feel immediate. 60 is imperceptible on digits |
+| Speed | 10 Hz | |
+| Temps, pressure, fuel, voltage | 1–2 Hz | They physically don't move faster |
+| Warnings | **On change, immediately** | |
+
+**At those rates the display is idle most of the time.** The Teensy has room left
+for CAN, all six sensor inputs, the IMU and SD logging without breaking a sweat.
+
+### The one thing to design around
+
+**Never clear the whole screen.** Draw the static background once at boot —
+bezels, scale markings, labels, units — and never touch those pixels again.
+
+One careless `fillScreen()` in a redraw path costs 64 ms at 8 bpp and turns a
+smooth cluster into a stuttering one. **That single discipline is the whole
+technique.**
 
 ---
 

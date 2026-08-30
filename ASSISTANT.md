@@ -586,3 +586,223 @@ aspect ever matters.
 Trigger it after the next major scope change, or when any file exceeds ~250 lines
 with more than one UPDATE section. **Those two conditions are what produced this
 one.**
+
+---
+
+# 11 · THIRD AUDIT — 2026-08, after the ICU firmware
+
+The project gained working C++ firmware and a desktop simulator since the last
+audit. **The documentation has not caught up with the code**, and that is now
+the dominant problem.
+
+## THE ROOT PROBLEM — code became a source of truth, silently
+
+`cluster_core.h` now defines the palette, every layout constant, the icon set,
+the unit conversions and the sensor-fault rendering. **None of that is recorded
+in `DECISIONS.md`.** The docs still describe a design that was superseded while
+it was being built.
+
+Worse: the docs claim canonical status they no longer hold. `README.md` says
+"one owner per fact", but for cluster layout the owner is now a header file that
+the index does not mention.
+
+**The fix is not to duplicate the code into prose.** It is to say plainly which
+facts the source owns, and record the *decisions* that produced it.
+
+- [ ] **I-52 · Record the cluster design decisions.** Emerald `#009155` as the
+      single lit shade · unlit at 4:1 · one-shade rule with `C_BRIGHT == C_MID` ·
+      imperial at the display layer with metric in state and logs · segment bars
+      with zero gap · sensor faults as dashes + hollow outline · symbols not
+      words · the four-axis column layout
+- [ ] **I-53 · Declare `cluster_core.h` the owner of cluster layout** in
+      `README.md` conventions, the way `LOADS.md` owns current figures
+
+## THE INDEX IS WRONG
+
+- [ ] **I-54 · `README.md` does not mention `03-MODULES/firmware/` at all.**
+      Six sketch folders and the real ICU firmware are invisible to anyone
+      reading the index
+- [ ] **I-55 · `README.md` lists `can_map.h` in `03-MODULES/`.** It moved to
+      `firmware/icu/`. Broken path in the file index itself
+- [ ] **I-56 · `README.md` says "D-001…D-105".** Decisions now run past D-150
+- [ ] **I-57 · No `firmware/README.md`.** Nothing explains what each sketch is,
+      which are superseded, or how to build the simulator. **The w64devkit build
+      workflow exists only in a source comment and a chat log**
+
+## DEAD AND SUPERSEDED
+
+- [ ] **I-58 · `cluster-mockup.html` is dead.** Superseded by the real simulator
+      running actual firmware. Archive it — leaving a lookalike beside the real
+      thing invites editing the wrong one
+- [ ] **I-59 · `CLUSTER-DESIGN.md` describes a design that was overtaken.** The
+      multi-page architecture, the "make the static layer elaborate" ideas, the
+      page-refresh table — none of it is what got built. Either mark it as
+      forward-looking scope or fold the live parts into the firmware README
+- [ ] **I-60 · `DCU-CLUSTER.md` §5a/§5b analyse three display approaches.** We
+      committed to SPI + dirty rectangles and built it. That analysis is now
+      background, not a live decision
+- [ ] **I-61 · `BENCH-BRINGUP.md` stages 4 and 5 point at standalone sketches**
+      that the full ICU firmware has absorbed. Mark them done or superseded
+
+## OPEN ITEMS THE CODE ALREADY ANSWERED
+
+- [ ] **I-62 · Sweep `Q-056`, `Q-057`, `Q-058`, `Q-059`.** Q-056 visual style and
+      Q-057 rotating-horizon-vs-bars were both settled by building the thing.
+      Q-059 PSRAM is still genuinely open. Close what's closed
+- [ ] **I-63 · `V-058` display nit rating is now urgent, not "easy".** Panel
+      selection is the next hardware decision and 800–1000 nits is the spec most
+      often omitted from listings
+
+## GAPS THE FIRMWARE EXPOSED
+
+- [ ] **I-64 · How does the display physically connect?** `DP-ICU` is a DT06-12S
+      with 11 conductors used. A panel needs SPI or parallel plus backlight
+      power — far more. **The display almost certainly connects directly to the
+      Teensy inside the dash and never crosses the harness**, but that is
+      nowhere stated, and someone sizing `DP-ICU` later will assume otherwise
+- [ ] **I-65 · `stats.h` thresholds are undocumented magic numbers.**
+      `REDLINE_RPM 7000`, `HOT_WATER_C 105`, `LOW_OIL_CBAR 100`,
+      `TANK_GAL_X10 159`. None verified against a 12A, none recorded as
+      decisions. The redline one in particular drives the tach's red zone
+- [ ] **I-66 · `stats.h` has no persistence.** It says `life[]` reloads at boot;
+      no SD read or write exists. Either write it or mark the struct as
+      volatile-only for now
+- [ ] **I-67 · `LOGS.md` has manual tables `stats.h` now automates** — max
+      speed, max RPM, runtime. Decide which is authoritative and say so
+- [ ] **I-68 · The IMU is decided (D-109) but unspecified.** No part number, no
+      I2C address, no orientation convention. Which axis is lateral matters and
+      is not written down
+- [ ] **I-69 · No archived render of the agreed design.** After a dozen layout
+      iterations there is no image showing what was settled on. A screenshot in
+      `03-MODULES/` costs nothing and is the fastest way back into context
+
+## STILL CARRIED FROM EARLIER AUDITS
+
+- [ ] **I-29 · Relative links** still assume the pre-folder layout. The note is
+      still in `README.md`, which means it still reads as unfixed
+- [ ] **I-70 · Three leg files** — `engine.md`, `front-chassis.md`,
+      `rear-cabin.md` — still restate current figures owned by `LOADS.md`
+
+## STANDING RULE ADDED
+
+**R6 · When code becomes the source of truth for something, say so in the
+index and record the decisions that shaped it.** Code and prose drift silently
+because nothing forces them to agree; the only defence is naming the owner.
+
+---
+
+# 12 · AUDIT 3 CLOSEOUT + FORWARD WORK — 2026-08
+
+## I-52 … I-70 complete
+
+| Item | Result |
+|---|---|
+| I-52 | **D-151…D-158** record every cluster design decision that existed only in code |
+| I-53 | `README.md` conventions table now names `cluster_core.h` and `stats.h` as owners |
+| I-54 | `README.md` documents `firmware/` and every file in it |
+| I-55 | `can_map.h` path corrected to `firmware/icu/` |
+| I-56 | Decision range corrected to D-001…D-163 |
+| I-57 | **`firmware/README.md` created** — folder map, w64devkit build steps, simulator controls |
+| I-58 | `cluster-mockup.html` archived |
+| I-59 | `CLUSTER-DESIGN.md` retitled **forward scope**, banner explains what's built |
+| I-60 | `DCU-CLUSTER.md` §5a marked **settled**, kept as background |
+| I-61 | `BENCH-BRINGUP.md` stages 4 and 5 marked done and absorbed |
+| I-62 | Q-035, Q-056, Q-057, Q-041 closed. Q-058 and Q-059 remain, correctly |
+| I-63 | `V-058` elevated into **Q-060 panel selection**, the next hardware decision |
+| I-64 | **D-159 — the display does not cross the harness.** `DP-ICU` is correctly sized |
+| I-65 | **D-160** — every `stats.h` threshold recorded, three flagged for verification |
+| I-66 | **D-162** — `stats.h` marked volatile-only, persistence scoped |
+| I-67 | **D-163** — `stats.h` owns automated figures, `LOGS.md` owns manual ones |
+| I-68 | **D-161** — IMU class and axis convention fixed |
+| I-69 | Deferred — needs a screenshot only Camden can take |
+| I-70 | Deferred to next touch of each leg file |
+
+**New rule R6:** when code becomes the source of truth, name it in the index and
+record the decisions that shaped it.
+
+---
+
+# FORWARD WORK — what becomes possible next
+
+Ordered by what unblocks the most. **AGENT** items Claude can do now;
+**BLOCKED** items name their gate.
+
+## Firmware — the largest available block
+
+- [ ] **F-01 AGENT · DCU firmware skeleton.** `dcu.ino` + `climate.h` mirroring
+      the ICU structure: CAN node, state struct, servo outputs, comfort
+      switching, heat/cool interlock (D-073). **Nothing blocks this** — the CAN
+      map is final and the pattern is proven
+- [ ] **F-02 AGENT · PMU simulator on the spare Teensy.** Transmit 0x100–0x130
+      so ICU and DCU can be developed against a live bus before the PMU is
+      configured. Turns the third board into a permanent test rig
+- [ ] **F-03 AGENT · Sensor conditioning schematic.** Dividers, RC filters and
+      clamp diodes for all six ICU inputs, with values computed from the sender
+      ranges. Blocked only on `V-037` fuel sender ohms for one of the six
+- [ ] **F-04 AGENT · Tach conditioning circuit.** Opto or comparator, with part
+      numbers. Coil primary spikes well above 12 V (D-082)
+- [ ] **F-05 AGENT · Cluster page framework.** Page enum, switch handling,
+      per-page draw and invalidate. Makes the diagnostics and trip pages
+      additive rather than a rewrite
+- [ ] **F-06 AGENT · Diagnostics page.** 24 channels, live current, soft-fuse
+      setpoint, state. **The thing nothing else can do.** Needs F-05
+- [ ] **F-07 AGENT · SD persistence for `stats.h`.** Write on key-off via the
+      PMU shutdown delay (D-054). Needs a decision on write frequency
+- [ ] **F-08 BLOCKED on Q-060** · Display driver — `pushDirtyTiles()` is three
+      TODO calls away from complete
+- [ ] **F-09 BLOCKED on V-065** · Reconcile `can_map.h` 0x100–0x130 against the
+      PMU's actual export
+
+## Hardware design
+
+- [ ] **H-01 AGENT · ICU carrier PCB schematic.** Teensy socket, TCAN1042, IMU,
+      buck + load-dump TVS, six conditioned inputs, display header. Every part
+      is now decided
+- [ ] **H-02 AGENT · DCU carrier PCB schematic.** Same power section, servo
+      drivers, comfort MOSFETs
+- [ ] **H-03 BLOCKED on T-007** · Panel 1:1 drawing
+- [ ] **H-04 BLOCKED on T-028** · Sill plate drawing
+- [ ] **H-05 AGENT · Dash post bracket layout** — 14 leg receptacles plus four
+      drops, using the mounting clips confirmed in the TE catalogue
+
+## Documentation gaps that will bite later
+
+- [ ] **X-01 AGENT · Wiring diagram set.** One page per leg, generated from
+      `PIN-MAP.md`. The project has no visual wiring reference at all
+- [ ] **X-02 AGENT · Panel schematic sheet.** Relay bank, fuse block, busbars,
+      wake network as one drawing
+- [ ] **X-03 AGENT · Troubleshooting guide.** Symptom → likely cause → which
+      document. Written while the design is fresh, used when it isn't
+- [ ] **X-04 AGENT · Commissioning test card.** Per-circuit pass/fail for
+      Phase 6, tighter than the migration log
+- [ ] **X-05 AGENT · Fix I-70** — strip duplicated current figures from the
+      three remaining leg files
+
+## Thinking further ahead
+
+- [ ] **Z-01 · LS swap electrical plan.** O13, O14, the CAN drop and six sensor
+      spares are reserved. Nobody has written what actually connects to them
+- [ ] **Z-02 · Radar subsystem design** `[V-061]` — concealed sensors front and
+      rear, DCU-managed. Still a placeholder
+- [ ] **Z-03 · Mirror control protocol** `[V-060]` — the door connector has zero
+      spare cavities, so the mirror choice is load-bearing
+- [ ] **Z-04 · Cold-weather behaviour.** Battery heater draw, winter parasitic
+      budget, whether the PMU should shed loads below a temperature
+- [ ] **Z-05 · Failure-mode table.** For each of the ~20 things that can fail,
+      what the driver sees and what still works. The ICU already guarantees
+      gauges survive a CAN loss — nothing else is written down
+
+## Where progress genuinely stops
+
+**Four measurements gate the physical build**, and no amount of design replaces
+them:
+
+| Gate | Blocks |
+|---|---|
+| **T-007** dash envelope | Panel drawing, panel parts, all of Phase 4 |
+| **T-008** harness routes | Cut list, the $1,000–1,700 wire order, Phase 5 |
+| **T-014** clamp every load | Every soft fuse. **Irreversible window** |
+| **T-011** pop-up limit pinout | A4/A5 ladder values |
+
+**Everything on the AGENT list above can be done without them.** That is roughly
+two hundred hours of design and firmware work still available on a laptop.

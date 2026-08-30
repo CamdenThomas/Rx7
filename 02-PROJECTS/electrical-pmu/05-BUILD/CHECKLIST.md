@@ -83,41 +83,72 @@ session. Never start a cutover you can't finish or reverse before dark.
 ---
 
 ## PHASE 2A · PMU CONFIGURATION
-`35–55 hrs · apartment · unblocked today`
+`25–40 hrs · desk · unblocked, PMU in hand`
 
-- [ ] **2.1** [YOU] Build the plywood bench board, ground bus, fused feed
-- [ ] **2.2** [YOU] Mount the PMU using a **spare** housing — never the real one
-- [ ] **2.3** [YOU] Terminate a test pigtail: stud, pin 25, pin 7, pin 15, CAN1 pair, six outputs, four inputs
-- [ ] **2.4** [YOU] **Fit 120 Ω at both ends of CAN1.** No termination = no connection
-- [ ] **2.5** [YOU] Install the PMU client on Windows, connect the USB-to-CAN adapter
-- [ ] **2.6** [YOU] Power up, confirm the PMU appears
-- [ ] **2.7** [YOU] Create the project file, name every channel to match SPEC exactly
-- [ ] **2.8** [YOU] Wire a bulb to one output, verify switching and live current
-- [ ] **2.9** [YOU] Short that output deliberately — verify the soft fuse trips, test retry
-- [ ] **2.10** [YOU] Configure PWM on an LED strip, tune the theatre fade
-- [ ] **2.11** [YOU] Build one ladder on a scrap switch, read ADC at each position
-- [ ] **2.12** [YOU] Compare to `LADDERS.md`, adjust resistors, write the decode table
-- [ ] **2.13** [YOU] Repeat 2.11–2.12 for all six ladders
-- [ ] **2.14** [YOU] Turn signal logic — flash rate, hazard override. **No bulb-out** *(D-047)*
-- [ ] **2.15** [YOU] Wiper logic — LOW, HIGH, intermittent timer, park sensing, O8 braking
-- [ ] **2.16** [YOU] Headlight logic — PARK feeds O6, HEAD adds O2, **pop-ups raise on HEAD** *(D-038)*
-- [ ] **2.17** [YOU] Wink override logic — momentary, returns to ladder state
-- [ ] **2.18** [YOU] Keep-alive latch — pin 7 diode-OR sources, O22 self-hold, shutdown delay
-- [ ] **2.19** [YOU] Crank logic and interlocks on O21
-- [ ] **2.20** [YOU] Fuel pump prime, run-with-RPM, inertia cutoff
-- [ ] **2.21** [YOU] CAN keypad — defog, interior override, spare keys
-- [ ] **2.22** [YOU] Undervoltage / overvoltage warnings for the lithium's BMS window
-- [ ] **2.23** [YOU] Enable data logging
-- [ ] **2.24** [YOU] Save, back up, start a version log — RevA-01, -02…
-- [ ] **2.25** [YOU] Full dry-run: every configured function, real switches, real loads
+### The goal
+
+**Write and prove the entire vehicle logic before the car is touched, so Phase 6
+is a wiring exercise and nothing else.**
+
+Every circuit migration in Phase 6 works by enabling one configured output and
+verifying it. **If the logic isn't written, there is nothing to enable.** Arriving
+at migration without a config means writing software in a cold garage while also
+diagnosing wiring — two unknowns at once, which is how projects stall.
+
+This phase produces the software that runs the car:
+
+| Output | Why it can only be done here |
+|---|---|
+| All 39 channels named to match SPEC | Migration references them by name |
+| Wiper logic — INT timer, park sensing, O8 braking | Complex enough to need iteration |
+| Headlight ladder → O2/O6, pop-up raise on HEAD | Replaces a deleted switch |
+| Turn flash + hazard override | Replaces the deleted flasher unit |
+| Keep-alive latch + shutdown timer | Determines whether the car sleeps properly |
+| Crank interlock, fuel pump prime + RPM cut | **Safety logic. Prove it on a desk** |
+| Inrush windows on every lamp channel | Filament pulls 8–12× — without these, lamps trip on the first flash |
+| **`V-065` CAN export format** | **Gates all of Phase 2B firmware** |
+
+PMU on a desk, laptop over CAN1, flying leads into a **spare** housing, one bulb,
+a few switches.
+
+- [ ] **2.1** [YOU] PMU on the desk. Flying leads into a **spare** housing — never the real one
+- [ ] **2.2** [YOU] **Fit 120 Ω at both ends of CAN1.** No termination = no connection
+- [ ] **2.3** [YOU] Install the PMU client on Windows, connect the USB-to-CAN adapter
+- [ ] **2.4** [YOU] **5 A fuse in the feed**, power up, confirm the PMU appears
+- [ ] **2.5** [YOU] **`V-065`** — export the PMU's CAN message structure from the client. Reconcile against `can_map.h` 0x100–0x130
+- [ ] **2.6** [YOU] Create the project file. Name every channel to match SPEC exactly
+- [ ] **2.7** [YOU] Wire a bulb to one output, verify switching and live current
+- [ ] **2.8** [YOU] **Set that channel's limit to 2 A, short it deliberately.** Watch the soft fuse trip, the retry count, the reset
+- [ ] **2.9** [YOU] Configure PWM, tune the theatre fade
+- [ ] **2.10** [YOU] Turn signal logic — flash rate, hazard override. **No bulb-out** (D-047)
+- [ ] **2.11** [YOU] **Inrush windows on every lamp channel** (D-120) — filament pulls 8–12× for a few ms
+- [ ] **2.12** [YOU] Wiper logic — LOW, HIGH, intermittent timer, park sensing, O8 braking
+- [ ] **2.13** [YOU] Headlight logic — PARK feeds O6, HEAD adds O2, **pop-ups raise on HEAD** (D-038)
+- [ ] **2.14** [YOU] Wink override — momentary, returns to ladder state
+- [ ] **2.15** [YOU] Keep-alive latch — diode-OR sources, O22 self-hold, shutdown delay
+- [ ] **2.16** [YOU] Crank logic and interlocks on O21
+- [ ] **2.17** [YOU] Fuel pump prime, run-with-RPM, inertia cutoff
+- [ ] **2.18** [YOU] CAN keypad — defog, interior override, spare keys
+- [ ] **2.19** [YOU] Undervoltage / overvoltage for the lithium's BMS window
+- [ ] **2.20** [YOU] Enable data logging
+- [ ] **2.21** [YOU] Save, back up, start a version log in `LOGS.md`
+
+> **Ladder ADC verification happens in the car** during Phase 6, when the
+> switches are wired and real resistances exist. Firmware Stage 4 proves the
+> *decode logic*; the car proves the *values*.
 
 ---
 
 ## PHASE 2B · FIRMWARE
 `155–325 hrs · laptop · runs in parallel with everything below`
 
-- [ ] **2.26** [AGENT] Finalise the CAN message map *(Q-041)*
-- [ ] **2.27** [YOU] Two Teensys + two SN65HVD230 + 120 Ω each end, CAN talking
+- [x] **2.26** [AGENT] Finalise the CAN message map — **DONE**, byte layouts in `CAN-MESSAGES.md`
+- [x] **2.27a** [YOU] Toolchain, blink, all boards — **Stage 1**
+- [x] **2.27b** [YOU] `can_map.h` validation — **Stage 2, all passed**
+- [x] **2.27c** [YOU] CAN loopback, no transceiver — **Stage 3, all passed**
+- [ ] **2.27d** [YOU] Ladder decode — **Stage 4 sketch written, unblocked**
+- [ ] **2.27e** [YOU] Tach measurement, one jumper — **Stage 5 sketch written, unblocked**
+- [ ] **2.27f** [YOU] Two Teensys on real CAN — needs 120 Ω ×4 and a 2nd USB cable
 - [ ] **2.28** [YOU] Shared CAN library — send, receive, fault handling
 - [ ] **2.29** [YOU] ICU: analog acquisition + scaling for six sensor inputs
 - [ ] **2.30** [YOU] ICU: tach conditioning circuit, breadboard, verify against a signal generator

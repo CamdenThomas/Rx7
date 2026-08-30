@@ -235,3 +235,62 @@ short edge, +12 V stud opposite. Allow clearance for the connector lever.
 | Parts and money | `BOM.md` |
 | Build sequence | `CHECKLIST.md` |
 | Factory wiring | `../../01-REFERENCE/factory-circuits/` |
+
+---
+
+## 13 · Connector — physical confirmation and orientation
+
+*Added 2026-08 on receipt of the PMU (D-134).*
+
+### Confirmed in the hand
+
+| Property | Value |
+|---|---|
+| Large cavities | **12** — matches the CAD map exactly |
+| Small cavities | **27** |
+| Arrangement | Largest cavities **farthest out** in each row — confirms 2 large · 9 small · 2 large |
+| Large terminal marking | `FCI` |
+| Small terminal marking | `FCI 125` |
+
+**The cavity map in §11 is correct and the pin plan is buildable as drawn.**
+
+### Orientation — CONFIRMED ✅ `[V-068 CLOSED]`
+
+**Verified 2026-08 by visual comparison of the physical connector against the
+ECUmaster manual.** Not inferred.
+
+With the PMU flat and upright, connector face toward the viewer: **purple lock on
+the right, pin 1 top-left** — top row, end furthest from the lock.
+
+```
+   connector face toward you, PMU upright
+   
+    pin 1                                    pin 13
+      ↓                                        ↓
+   ┌─────────────────────────────────────────────┐
+   │  ■ ■ □ □ □ □ □ □ □ □ □ ■ ■                 │  row 1   1-13
+   │  ■ ■ □ □ □ □ □ □ □ □ □ ■ ■                 │  row 2  14-26   [PURPLE
+   │  ■ ■ □ □ □ □ □ □ □ □ □ ■ ■                 │  row 3  27-39     LOCK]
+   └─────────────────────────────────────────────┘
+      ↑                                        ↑
+   pin 27                                   pin 39
+   
+   ■ = large 2.8mm    □ = small 1.5mm
+```
+
+This matches the ECUmaster device view, which shows pin 1 top-left, pin 13
+top-right, pin 27 bottom-left, pin 39 bottom-right.
+
+> **Mark the housing** — a paint pen dot beside cavity 1 (T-043). Costs nothing,
+> and the question is never re-asked at the bench with the panel half-built.
+
+### Terminal stock
+
+| Size | Supplied | Needed | Spare |
+|---|---|---|---|
+| Large `FCI` | 16 | 12 | **4** |
+| Small `FCI 125` | 27 | 27 | **0** |
+
+**Order spare 1.5 mm terminals before Phase 4.** Zero margin on the size that
+makes up 69% of the connector, on the size that is hardest to crimp, while
+learning to crimp.

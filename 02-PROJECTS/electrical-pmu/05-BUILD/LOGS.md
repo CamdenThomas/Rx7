@@ -1,6 +1,12 @@
-# LOGS — config versions, photos, session record
+# LOGS — hand-written records
 
-Three small logs that have nowhere else to live.
+*Rev 2026-08 · owns: things nothing can generate automatically*
+
+> **`firmware/icu/stats.h` owns the automated figures** — max speed, max RPM,
+> peak G, runtime, distance, min oil pressure, seconds above redline. Do not
+> duplicate those here (D-163).
+>
+> This file is for what only a person can record.
 
 ---
 
@@ -76,3 +82,18 @@ One line per working session. Keeps the calendar honest.
 **The estimate is 531–932 hours.** Logging actual hours against phases is the
 only way to know whether that number was any good — and whether July 2027 is
 still real.
+
+---
+
+## Automated stats — where they live
+
+`stats.h` accumulates two sets. **Neither is persisted yet** (D-162):
+
+| Set | Resets |
+|---|---|
+| `trip` | Every wake |
+| `life` | Never — **once SD persistence exists** |
+
+Peaks, totals and faults are listed in `firmware/icu/stats.h`. When persistence
+lands, `statsToCsv()` writes one line per trip and this file gets a pointer to
+the CSV rather than a copy of the numbers.

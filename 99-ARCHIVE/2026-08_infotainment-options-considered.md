@@ -34,7 +34,7 @@ be writing an audio stack to replicate a $20 part.
 
 **Why not wired from the iPhone:** digital audio out of a Lightning or USB-C
 iPhone to a non-Apple device requires an **MFi authentication chip**, and the MFi
-programme is not open to individuals. Analogue via a headphone dongle works but
+program is not open to individuals. Analogue via a headphone dongle works but
 is a worse signal path than Bluetooth for a car.
 
 `[Q-049]` — pick a module. Look for **aptX or AAC support** (iPhone uses AAC),
@@ -69,7 +69,7 @@ the map picture.**
 
 An iPhone broadcasts notifications over BLE via **ANCS** (Apple Notification
 Center Service). A BLE-capable companion chip can subscribe and receive
-navigation prompts — next manoeuvre, street name, distance.
+navigation prompts — next maneuver, street name, distance.
 
 ```
    ┌──────────────────────────────┐
@@ -210,7 +210,7 @@ assumed and the answer changes.*
 ## What you actually want
 
 **Not navigation. Road preview.** A rolling, heading-up view of the road geometry
-ahead so you can read the bends and plan a line — the Forza minimap, or what
+ahead so you can read the bends and plan a line — the forza minimap, or what
 luxury cars call predictive curve display.
 
 **This is a much smaller problem than Google Maps**, and it changes the
@@ -234,7 +234,7 @@ whole US is ~10 GB. Either fits on a cheap SD card.
 
 **No cell signal required.** In the canyons west of Fort Collins that is not a
 minor point — it's the difference between a map that works where you actually
-want it and one that greys out exactly when the road gets interesting.
+want it and one that grays out exactly when the road gets interesting.
 
 CarPlay cannot do this. It needs the phone's data connection.
 
@@ -276,7 +276,7 @@ is squarely inside that.
 
 ### Path 3 · Pi drives the whole cluster — reconsidered
 
-I argued against this last time. **With mitigations it's more defensible than I
+I argued against this last time. **With mitigations, it's more defensible than I
 made it sound**, and it's the only path that puts the minimap *between* the
 gauges on one panel, which is what you asked for.
 
@@ -297,7 +297,7 @@ acquisition** (D-083). The Pi is a *display client* reading CAN. If the Pi dies,
 the data still exists — you've lost the screen, not the measurement. That is a
 meaningfully better position than putting senders on the Pi.
 
-**Boot behaviour matters more than crash behaviour.** You start the car and want
+**Boot behavior matters more than crash behavior.** You start the car and want
 a tachometer immediately. A 10-second black cluster on every cold start is the
 thing you'd actually live with, and it's why the factory cluster staying in place
 during development is worth more than it looked.
@@ -321,7 +321,7 @@ during development is worth more than it looked.
 ```
 
 **Either way the Teensy keeps sensor acquisition.** That decision (D-083) survives
-both paths and it's the one that matters.
+both paths, and it's the one that matters.
 
 ## Hardware this adds
 

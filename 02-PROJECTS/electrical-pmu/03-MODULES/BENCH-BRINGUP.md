@@ -1,12 +1,11 @@
-# BENCH BRING-UP — what you can do tonight
+# BENCH BRING-UP — firmware development sequence
 
 *Rev 2026-08 · owns: firmware development sequence before the car exists*
 
-**You have:** 3 × Teensy 4.1, one micro-USB cable.
-**Tomorrow:** transceivers, PMU.
+**In hand:** 3 × Teensy 4.1 · 5 × SN65HVD230 transceivers · **PMU-24 DL** ·
+one micro-USB cable.
 
-**More is possible tonight than you'd think.** The transceivers gate
-*Teensy-to-Teensy CAN*, not CAN development.
+**Stages 1–3 complete.** The entire CAN software stack is proven.
 
 ---
 
@@ -117,35 +116,53 @@ once — the difference between an hour and an evening.
 | Compiles but no frames return | `mSelfReceptionMode` not set — the chip sends but ignores itself |
 | Payload mismatch | Go back to Stage 2. Something in `can_map.h` regressed |
 
-## Stage 4 · Sensor scaling — a potentiometer is enough
+## Stage 4 · Ladder decode ✅ **DONE — absorbed into the ICU firmware**
 
-- [ ] Wire a pot between **3.3 V and GND**, wiper to an analog pin
-- [ ] Read `analogRead()`, confirm 0–1023 at 10-bit
-- [ ] Switch to `analogReadResolution(12)`, confirm 0–4095
-- [ ] Implement a **ladder decode lookup** from `01-DESIGN/LADDERS.md` — windows,
-      not thresholds, with a FAULT band outside them
-- [ ] Sweep the pot and confirm every state reports correctly, and that between
-      states it reports FAULT rather than snapping to the nearest
+Sketch: `firmware/ladder_decode_test/` — kept as an isolated test rig.
 
-**This validates the A1–A8 decode logic** before a single resistor is soldered.
+Runs a full self-test with **no hardware at all** — synthetic ADC values against
+every ladder in `01-DESIGN/LADDERS.md`, including the fault bands.
 
-## Stage 5 · The tach simulator — two boards, no car
+- [ ] Upload, Serial Monitor at 115200, confirm all decode checks pass
+- [ ] **With a 10 kΩ pot** between 3.3 V and GND, wiper to A0: sweep it and watch
+      every state appear, with FAULT between them
+- [ ] Without a pot: touch a jumper on A0 to 3.3 V and GND to prove the fault bands
 
-This is the one worth doing properly.
+**3.3 V only. The Teensy 4.1 is not 5 V tolerant.**
 
-- [ ] **Board A** generates a square wave on a PWM pin at a known frequency,
-      swept 300–8000 rpm equivalent
-- [ ] **Board B** captures it on a hardware timer input-capture pin
-- [ ] Compute RPM, compare against what A is generating
-- [ ] Test the edges: **zero rpm**, sudden step changes, noise between pulses
+**Windows, not thresholds.** A reading between states reports FAULT rather than
+snapping to the nearest — that is the design, not a bug.
 
-**Cross-connect with a single jumper and a common ground.** Both boards are
-3.3 V so no level shifting.
+> Ladder *verification against real resistors* now happens in the car during
+> Phase 6, when the switches are genuinely wired (D-142). This stage proves the
+> **decode logic**, which is the part that lives in firmware.
 
-You now have a validated RPM measurement path, and a permanent test rig for
-firmware regressions later.
+## Stage 5 · Tach measurement ✅ **DONE — absorbed into the ICU firmware**
 
-> Do the same trick for **VSS** — a second frequency channel is the same code.
+Sketch: `firmware/tach_simulator/` — **kept, and still the fastest way to feed
+an RPM signal to a board with one jumper wire.**
+
+The same Teensy generates a simulated tach signal on **pin 3** and measures it on
+**pin 4**. Jumper the two.
+
+- [ ] Jumper pin 3 → pin 4
+- [ ] Upload, Serial Monitor at 115200
+- [ ] Sweep 500–8000 rpm, confirm measured tracks generated within 3%
+- [ ] Confirm step changes track
+- [ ] Confirm **zero rpm reads 0**, not the last value
+
+**No second board needed.** A single Teensy does both halves — which also means
+it works with the one USB cable you have.
+
+You end up with a validated RPM measurement path **and** a permanent signal
+source for display work later.
+
+> `[V-067]` The sketch assumes **2 pulses per eccentric shaft revolution** for a
+> 2-rotor fed from the leading coil. **Confirm against the real car.** Wrong, and
+> every RPM reading is scaled by a constant — the gauge looks plausible and is
+> simply wrong.
+
+> Same technique covers **VSS** — a second frequency channel is the same code.
 
 ## Stage 6 · SD card — config-as-data
 
@@ -169,23 +186,28 @@ cluster.
 
 ---
 
-## Tomorrow, when the transceivers arrive
+## Now that the transceivers are here
 
 | Step | Needs |
 |---|---|
-| Two Teensys on a real CAN bus | 2 transceivers, twisted pair, **2 × 120 Ω** |
-| Board A simulates PMU messages 0x100–0x130 | The spare board earns its keep |
-| Board B consumes them as the ICU would | |
+| Two Teensys on a real CAN bus | 2 transceivers, twisted pair, **2 × 120 Ω** (not yet bought) |
+| Spare board simulates PMU messages 0x100–0x130 | The third board earns its keep |
+| Second board consumes them as the ICU would | |
 | Three-node bus once the PMU joins | 3rd transceiver |
 
-**The spare Teensy is your PMU simulator** until the real one is configured. That
-lets ICU display work proceed without touching the PMU at all.
+**The spare Teensy is your PMU simulator** until the real one is configured,
+which lets ICU display work proceed without touching the PMU at all.
 
-## When the PMU arrives
+> **Solder the header pins onto the SN65HVD230 modules first.** They ship
+> unsoldered.
+>
+> **Blocked on one item:** 120 Ω resistors. See `../05-BUILD/BENCH-KIT.md`.
 
-**`V-065` is the first job:** read the PMU's actual CAN export format out of the
-client. ECUMaster fixes that structure — messages 0x100–0x130 in `can_map.h` are
-*intent* and must be reconciled against reality before anything depends on them.
+## The PMU is here — first job
+
+**`V-065`:** read the PMU's actual CAN export format out of the client.
+ECUMaster fixes that structure — messages 0x100–0x130 in `can_map.h` are
+**intent** and must be reconciled against reality before anything depends on them.
 
 ---
 
@@ -193,22 +215,28 @@ client. ECUMaster fixes that structure — messages 0x100–0x130 in `can_map.h`
 
 | Blocked on | What |
 |---|---|
-| Transceivers | Real CAN between boards |
-| PMU | `V-065`, real PMU messages, soft-fuse behaviour |
+| 120 Ω resistors | Real CAN between boards |
 | Display choice `[Q-037]` | Any rendering work |
-| The car | Every real sensor value |
+| microSD card | Stage 6, config-as-data |
+| The car | Every real sensor value, and `[V-067]` pulses per rev |
 
-**Everything else on this page can start tonight.**
+**Stages 4 and 5 need nothing that isn't already on the desk** — Stage 4 runs its
+self-test with no hardware, Stage 5 needs one jumper wire.
 
 ---
 
-## Suggested order for the first three sessions
+## Next sessions
 
-| Session | Do | Hours |
-|---|---|---|
-| **Tonight** | Stages 1–3. Toolchain, `can_map.h` validation, CAN loopback | 3–4 |
-| **Tomorrow** | Stage 4–5, then real CAN once transceivers land | 4–5 |
-| **Next** | Stage 6–7, PMU simulator on the spare board | 4–6 |
+| Session | Do | Needs | Hours |
+|---|---|---|---|
+| ~~1~~ | ~~Stages 1–3~~ | — | **DONE** |
+| **Next** | **Stages 4 and 5** — ladder decode, tach measurement | Nothing but a jumper wire | 2–3 |
+| Then | Real CAN between two boards | 120 Ω ×4, headers soldered | 2–3 |
+| Then | PMU first power-up, `V-065` CAN export | 5 A fuse, flying leads | 3–4 |
+| Then | Stages 6–7, SD config and logging | microSD card | 4–6 |
+
+**Stages 4 and 5 are unblocked right now.** Everything after them waits on about
+$10 of parts.
 
 By the end of those you have a validated CAN stack, working sensor decode, a
 tested RPM path and a config system — **with no car, no wiring and no PMU
