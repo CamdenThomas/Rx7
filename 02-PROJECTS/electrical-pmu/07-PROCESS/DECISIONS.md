@@ -1368,3 +1368,45 @@ power), L3-S3 (deferred radar link and spares).** Every cavity carries a
 status word from `SPEC.md` §12 — LIVE, PROVISIONED or DEFERRED — so a capped
 wire is never mistaken for a spare. Replaces the D-070 cavity split, whose
 count (2 × 12 + 8 = 32) stands.
+
+**D-173** — **Fuel pump soft fuse 4.0 A: measured steady 2.38 A × 1.5,
+electronics-style, because an in-line pump offers no practical stall reading.**
+D-164's motor rule wants stall × 1.10, but dead-heading the Carter mid-campaign
+risks more than it teaches. 4.0 A still catches a short or a seized pump, and
+the value is re-set from the Aeromotive 340's spec at that swap (`V-040`).
+
+**D-174** — `[Q-066]` **Suspect and unmeasured LIVE channels get INTERIM soft
+fuses from healthy-expected values; the PMU's own per-channel telemetry on the
+new harness is the real measurement, and its gap against healthy-expected is
+the replacement list.** Camden's call. The degrading factory wiring makes
+clamp readings through sick circuits unreliable — a slow wiper at low current
+cannot be split into wiring drop vs a dying motor by current alone. The fuse
+protects the wire, so a healthy-class value is safe protection. Interim
+values, marked INTERIM in the CSV, re-set from telemetry in the first week
+after migration: O1 25.0 (cap) · O2 4.5 · O3 5.5 · O8/O9 15.0 (cap) ·
+O10 12.0 · O11 10.0 · O12 9.0 · O19 5.5 · O20 3.5 · O21/O22 0.5. Measured
+figures stand (O5 O6 O7 O17 O18). Still to do on the old harness — only what
+it alone can give: parasitic draw, defog cold (O4), voltage-drop tests,
+continuity and ladder items, pop-up limit ID. Closes V-076, V-078, V-079,
+V-080 (redos no longer required); V-021 and V-019 now resolve from telemetry;
+V-077 (alternator health) stays open. Supersedes D-165's unmeasured-stays-
+disabled rule for these channels; D-164's measured rule resumes per channel as
+telemetry arrives.
+
+> AMENDED BY D-175 — interim values raised to channel caps; the
+> telemetry-first principle, closures and campaign scope stand.
+
+**D-175** — `[Q-067]` **Every non-measured LIVE channel's soft fuse sits at
+its channel cap — pure wire protection — until PMU telemetry on the new
+harness supplies the real figure; then D-164 tightening applies per channel.**
+Camden's call, amending D-174's healthy-expected interim values. Consequence,
+accepted knowingly: soft fuses discriminate nothing during shakedown — a
+partial fault (a seizing motor, a chafed strand) draws below the cap and shows
+only in telemetry. **The protection burden moves entirely to harness design
+and build verification:** continuity-test every conductor pin to pin, verify
+every cavity against PIN-MAP.md before first power, and watch telemetry at
+every cutover and through the first week. Caps set: O1 O2 O3 O4 O12 = 25.0 ·
+O8 O9 O10 O11 = 15.0 · O19 O20 O21 O22 = 7.0. Measured channels keep their
+values (O5 4.0 · O6 7.5 · O7 9.5 · O17/O18 4.5). O4's cold figure now comes
+from telemetry on any cold morning. O13/O14 stay disabled (reserved), O15
+until its loads exist, O16 until the replacement blower.

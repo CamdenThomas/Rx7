@@ -35,28 +35,28 @@ struct ChannelSpec {
 /* ---- O1..O24 ---- */
 static const ChannelSpec CH[24] = {
 /*  name            steady  limit  inX10   ms   source      */
-  { "MOTOR BUS",        950,   2500,   70,  400, EST      }, /* O1   ⚡ flyback */
-  { "HEAD LOW",         300,    800,   15,   80, EST      }, /* O2   LED housings as stated — con */
-  { "HEAD HIGH",        350,    900,   15,   80, EST      }, /* O3   LED housings as stated — con */
-  { "DEFOG",           1150,   1600,   13, 2000, EST      }, /* O4   Measure cold (D-164) */
-  { "FUEL PUMP",        200,    500,   30,  150, EST      }, /* O5   V-054 V-040 */
-  { "TAIL PARK",        440,    800,  100,   40, EST      }, /* O6   Inrush window (D-120) */
+  { "MOTOR BUS",        950,   2500,   70,  400, EST      }, /* O1   INTERIM fuse 25 */
+  { "HEAD LOW",         300,   2500,   15,   80, EST      }, /* O2   INTERIM fuse 25 */
+  { "HEAD HIGH",        350,   2500,   15,   80, EST      }, /* O3   INTERIM fuse 25 */
+  { "DEFOG",           1150,   2500,   13, 2000, EST      }, /* O4   INTERIM fuse 25 */
+  { "FUEL PUMP",        238,    400,   30,  150, MEASURED }, /* O5   MEASURED 2026-08 — 2 */
+  { "TAIL PARK",        540,    750,  100,   40, MEASURED }, /* O6   MEASURED 2026-08 — 5 */
   { "BRAKE",            700,    950,  100,   40, MEASURED }, /* O7   MEASURED 2026-08 (D-165) */
-  { "WIPE LOW",         400,   1500,   70,  300, EST      }, /* O8   ⚙ braking */
-  { "WIPE HIGH",        550,   1500,   70,  300, EST      }, /* O9   Measure stall */
-  { "ACCESSORY",        250,   1200,   20,  100, EST      }, /* O10  Lighter deleted (D-095) */
-  { "HORN",             600,   1000,   30,   80, EST      }, /* O11   */
-  { "IGNITION",         500,    800,   20,  100, EST      }, /* O12  Measure at 3000 rpm */
+  { "WIPE LOW",         400,   1500,   70,  300, EST      }, /* O8   INTERIM fuse 15 */
+  { "WIPE HIGH",        550,   1500,   70,  300, EST      }, /* O9   INTERIM fuse 15 */
+  { "ACCESSORY",        250,   1500,   20,  100, EST      }, /* O10  INTERIM fuse 15 */
+  { "HORN",             600,   1500,   30,   80, EST      }, /* O11  INTERIM fuse 15 */
+  { "IGNITION",         500,   2500,   20,  100, EST      }, /* O12  INTERIM fuse 25 */
   { "LS ECU",             0,   1800,   10,    0, RESERVED }, /* O13  D-007 */
   { "LS FAN",             0,   2500,   80,  500, RESERVED }, /* O14  D-007 */
   { "COMFORT",         1400,   2000,   15,  200, EST      }, /* O15  Loads themselves are deferre */
   { "BLOWER",             0,   2000,   80,  600, DEAD     }, /* O16  ⚡ flyback */
   { "TURN L",           340,    450,  100,   40, MEASURED }, /* O17  MEASURED 2026-08 */
   { "TURN R",           340,    450,  100,   40, MEASURED }, /* O18  MEASURED 2026-08 */
-  { "REVERSE",          390,    600,  100,   40, EST      }, /* O19  Candidate to free as an inpu */
-  { "INTERIOR",         250,    500,  100,   40, EST      }, /* O20  Theatre fade */
-  { "START RLY",         20,    150,   20,   50, EST      }, /* O21  D-148 */
-  { "KEEP ALIVE",        15,    100,   10,    0, EST      }, /* O22  V-075 — does the PMU have a  */
+  { "REVERSE",          390,    700,  100,   40, EST      }, /* O19  INTERIM fuse 7 */
+  { "INTERIOR",         250,    700,  100,   40, EST      }, /* O20  INTERIM fuse 7 */
+  { "START RLY",         20,    700,   20,   50, EST      }, /* O21  INTERIM fuse 7 */
+  { "KEEP ALIVE",        15,    700,   10,    0, EST      }, /* O22  INTERIM fuse 7 */
   { "A15 IN",             0,    700,   10,    0, RESERVED }, /* A15  Occupies O23 */
   { "A16 IN",             0,    700,   10,    0, RESERVED }, /* A16  Occupies O24 */
 };

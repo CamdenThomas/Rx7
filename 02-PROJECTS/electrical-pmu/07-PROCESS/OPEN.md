@@ -24,6 +24,11 @@ pin or output until these are answered, and the wire-and-connector order
 feed (D-039) and the hatch / fuel-door solenoids (`V-033`). Which gets it, and
 where do the solenoids get an *output*? They are momentary loads that the
 keypad commands (D-031) but no O-channel drives them.
+*Update 2026-08:* the factory fuel-door release **exists and its switch is
+broken** — it cannot be exercised or measured on the old harness; whether the
+hatch release still works is unknown. The keypad replaces the switch either
+way (D-031); solenoid draw comes from PMU telemetry or the replacement part's
+spec, not the meter session.
 **Options:** (a) solenoids on O10 branches with their own fuse, keypad → PMU
 logic pulses them; (b) a spare 7 A output — none is free, so this means a
 channel swap; (c) solenoids on the DCU's comfort switching, which puts a
@@ -176,7 +181,6 @@ it is the one field a stranger would look for first.
 |---|---|---|
 | V-053 | Battery terminal type — SAE or 3/8 threaded. The battery is in hand; **look at it** before the lug order (`T-029`) | The battery |
 | V-051 | Ionic case dimensions before cutting the cargo bin | Tape measure |
-| V-054 | Carter P4070 current draw | Carter spec, or the meter session |
 | V-052 | Battery heater trigger and winter draw | Ionic docs / app |
 | V-014 | DT size-16 contact current rating. Catalogue confirms size 20 = 7.5 A | TE catalogue pp. 169–180 |
 | V-057 | TCAN1042/1051 exact part suffix | TI datasheet |
@@ -198,7 +202,8 @@ it is the one field a stranger would look for first.
 | V-050 | Which ignition outputs stay live in RUN and START | `T-023` continuity test — Checklist 0.7 |
 | V-030 | Pop-up motor internal limit pinout — drive vs limit pins | `T-011` continuity test — Checklist 0.6 |
 | V-067 | **Tach pulses per revolution.** Assumed 2 for a 2-rotor off the leading coil. Wrong scales every RPM reading by a constant | Meter session or FSM |
-| V-021 | Horn current draw — not on the diagram; estimate 4–8 A the pair | [`METER-SESSION.md`](../05-BUILD/METER-SESSION.md) 1.7, with `T-014` |
+| V-021 | Horn current draw — estimate 4–8 A the pair; interim fuse 10.0 A set | PMU telemetry after migration (D-174) |
+| **V-077** | **Alternator health.** 2026-08 read 0.44 A idle / 0.09 A loaded — not physical (output must RISE with load), but a genuinely weak alternator would also explain electrics worsening day by day. Zero the jaw on the 100 A range, clamp the WR B+ alone, loads on; read battery volts at idle while there: 13.5–14.5 V = charging | Meter session · feeds `V-002` `V-019` |
 
 ## 6 · Verify — blocked on something else
 

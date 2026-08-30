@@ -54,12 +54,16 @@ factory abbreviations from the same file.
 
 Ignition to **RUN**, engine not running. Safer, and most lighting works here.
 
-### 1.1 · Tail / park / marker / plate — O6
+### 1.1 · Tail / park / marker / plate — O6 · **done — 5.4 A, PARK = HEAD**
 
 - **Access:** the **`RG` wire at the headlight switch output (E-01)**, under
   the dash behind the column shroud. That is upstream of all eight lamps.
 - Switch to **PARK**. Record. Switch to **HEAD**. Record — should be identical
 - Expect **~4.4 A**
+- Recorded 2026-08: **5.4 A**, identical in both positions. E-01 carries two
+  `RG` conductors (the bus splits at the switch) — both together in the jaw
+  sums them, which is the correct total here since both flow the same way.
+  5.4 A ≈ eight filaments at ~8 W — accepted. Soft fuse 7.5 A (× 1.35)
 
 ### 1.2 · Brake lamps — O7 · **done — 7.0 A steady, 9.5 A warm-up**
 
@@ -136,11 +140,13 @@ wrong.
   replaces them
 - Low, then high, then **PASS** from the column
 
-### 2.2 · Fuel pump — O5
+### 2.2 · Fuel pump — O5 · **done — 2.38 A**
 
 - **Access:** the BLg wire at the pump (B-24), rear of the car
 - Running, at idle
 - Expect **1–3 A** for the Carter P4070. Also closes `V-054`
+- Recorded 2026-08: **2.38 A** at idle — in range, `V-054` closed. Soft fuse
+  4.0 A (D-173 — no practical stall on an in-line pump)
 
 ### 2.3 · Ignition coils — O12
 
@@ -241,12 +247,12 @@ have their figure in the CSV.
 
 | #   | Circuit            | Access point              | Steady A | Stall / peak A | Volts | Notes            |
 |-----|--------------------|---------------------------|----------|----------------|-------|------------------|
-| 1.1 | Tail / park PARK   | E-01 **RG** wire          |          |                |       |                  |
-| 1.1 | Tail / park HEAD   | E-01 **RG** wire          |          |                |       |                  |
+| 1.1 | Tail / park PARK   | E-01 **RG** wire          | 5.4      |                |       | **done** 2026-08 |
+| 1.1 | Tail / park HEAD   | E-01 **RG** wire          | 5.4      |                |       | **done** 2026-08 |
 | 1.2 | Brake              | F-11 W wire               | 7.0      | 9.5            |       | **done** 2026-08 |
 | 1.3 | Turn LEFT          | F-02 GR wire              | 3.4      | —              |       | **done** 2026-08 |
 | 1.3 | Turn RIGHT         | F-02 GO wire              | 3.4      | —              |       | **done** 2026-08 |
-| 1.3 | Hazard both        | **WG** feed               |          |                |       |                  |
+| 1.3 | Hazard both        | **WG** feed               | ~6.8 max |                |       | wanders 2–7 with flash cycle; max ≈ L+R ✓ — nothing to file, hazard = O17+O18 |
 | 1.4 | Reverse            | A-06 RW wire              |          |                |       |                  |
 | 1.5 | Interior all       | LY at lamp                |          |                |       |                  |
 | 1.6 | Illumination       | E-05 RL wire              |          |                |       |                  |
@@ -257,7 +263,7 @@ have their figure in the CSV.
 | 1.8 | **Wiper STALL**    | D-02                      |          |                |       | 2 s max          |
 | 2.1 | Headlight LOW      | E-08 RL wire              |          |                |       | LED baseline     |
 | 2.1 | Headlight HIGH     | E-08 RY wire              |          |                |       |                  |
-| 2.2 | Fuel pump          | B-24 BLg wire             |          |                |       |                  |
+| 2.2 | Fuel pump          | B-24 BLg wire             | 2.38     |                |       | **done** 2026-08 |
 | 2.3 | Coils idle         | B-18 BW wire              |          |                |       |                  |
 | 2.3 | Coils 3000 rpm     | B-18 BW wire              |          |                |       |                  |
 | 2.4 | Alternator idle    | A-09 WR cable             |          |                |       | 100 A range      |
@@ -348,3 +354,58 @@ left and right.
 - **Wipers and pop-ups: two numbers.** Running, then a deliberate 2-second stall
 - **Defog: two numbers.** Cold at switch-on, then again at 2 minutes
 - **Everything else: one number**
+
+### Second sitting — the four readings that failed sanity (2026-08)
+
+Wiper LOW/HIGH running, tail, hazard and fuel pump all passed sanity and are
+recorded. These four did not — D-174 later ruled the redos moot
+(interim fuses from healthy-expected values); kept for technique:
+
+- **A minus sign is fine; falling with rpm is not.** Negative only means the
+  jaw's arrow faces against current flow — flip the clamp or ignore the sign.
+  But the coil feed must RISE with rpm, and ~2 A looks like one coil's branch,
+  not the pair. Find the BW upstream of the split to both coils (V-076 → D-174)
+- **The alternator cannot make LESS current when you add load.** 0.44 → 0.09 A
+  is an un-zeroed jaw or the wrong conductor — or the alternator really is
+  weak, which would also explain electrics worsening by the day. Zero on the
+  100 A range, clamp the WR alone, then read battery volts at idle:
+  13.5–14.5 V means charging (`V-077`)
+- **A stall reading below running current means the motor never stalled.**
+  Holding the blade lets the linkage slip. Hold the wiper arm at its base
+  (V-079 → D-174)
+- **All four wires in the jaw only sums correctly when the return is chassis
+  ground.** The pop-up read (3 A up / 1 A down) may be real for a case-grounded
+  motor — `T-011` identifies the drive pair; then clamp one wire (V-080 → D-174)
+
+**On the decaying factory harness:** readings taken through corroded wiring
+read LOW, because the loads see less voltage than the new harness will deliver.
+The measured figures are a floor, not a ceiling — the ×1.35 / ×1.10 / ×1.20
+soft-fuse multipliers absorb exactly this. The right response to failing wiring
+is to measure sooner, not to distrust the numbers.
+
+### Voltage-drop testing — wiring or a dying part? (D-174)
+
+The clamp cannot separate a weak motor from weak wiring — this can, and it is
+now the primary old-harness diagnostic. Leads in: black in **COM**, red in
+**V/Ω**. Dial to **V**, press SELECT until the small `DC` / ⎓ symbol shows.
+
+1. **Reference first.** Red probe on the battery **+** post, black on the
+   **−** post, with the circuit under test running. Write it down — say 13.8 V.
+2. **At the load's feed.** Black probe on bare chassis metal — a clean
+   unpainted bolt or bracket (scratch to shiny if needed). Red probe
+   **backprobes** the feed terminal: slide the tip in along the wire from the
+   back of the connector until it touches the terminal metal, connector still
+   mated, circuit still running. Wiper example: engine running, wipers HIGH,
+   wet glass, red probe backprobing the **LR terminal at D-02**.
+3. **Ground side.** Red probe on the load's ground terminal (or the motor
+   case), black on the battery **−** post. That reading IS the ground-path
+   drop — no arithmetic.
+
+**Reading it:** feed drop = step 1 − step 2.
+
+- Feed + ground drop under **~0.8 V** → the wiring is fine; a slow motor is a
+  dying motor → replacement list
+- **1.5 V or more** → the wiring is eating it; the part may well be healthy
+  and wakes up on the new harness
+- Works on any doubtful circuit. Write the load-side voltage in the Volts
+  column of the sheet

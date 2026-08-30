@@ -109,7 +109,7 @@ deferred ([`../04-SUBSYSTEMS/DEFERRED-FEATURES.md`](../04-SUBSYSTEMS/DEFERRED-FE
 | Load | Ch | Factory fuse | Est. A | Conf |
 |---|---|---|---|---|
 | Ignition coils + igniters (twin, 12A) | O12 | — | 4–6, rising with rpm | D |
-| Fuel pump — **Carter P4070** (current) | O5 | 10 A | 1–3 `V-054` | C |
+| Fuel pump — **Carter P4070** (current) | O5 | 10 A | 1–3 (`V-054` → measured 2.38 A) | C |
 | Aeromotive Phantom 340 (planned) | O5 | — | 8–12 at pressure `V-040` | D |
 | Start relay coil (K9) | O21 | — | 0.15–0.2 | C |
 | Horn, pair | O11 | 15 A (shared with stop) | 4–8 | B |

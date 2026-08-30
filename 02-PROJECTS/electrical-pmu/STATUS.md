@@ -20,8 +20,9 @@ cluster ICU. **The car runs on its stock incandescent bulbs throughout**; LED
 conversion and custom lamps are [`../lighting-body/`](../lighting-body/README.md).
 The PMU, battery, three Teensys, five bench transceivers and the clamp meter
 are in hand; two spare housings are inbound. **Firmware Stages 1–5 are
-complete**, the renderer and a 415-assertion test suite exist, and the first
-three meter readings are recorded. Nothing has been cut, crimped or installed
+complete**, the renderer and a 415-assertion test suite exist, and five meter
+readings are recorded (second sitting 2026-08 — fuses at channel caps per D-175; the V-077
+alternator health check stays open). Nothing has been cut, crimped or installed
 on the car. Five design packets (`Q-061`–`Q-065`) are waiting on Camden
 before the connector order can be placed.
 
@@ -47,7 +48,7 @@ Not bought yet: resistors, breadboards, jumpers — [`05-BUILD/BENCH-KIT.md`](05
 
 | Phase | Hrs | State |
 |---|---|---|
-| 0 · Documentation & measurement | 55–85 | **Started.** Paperwork done; **3 of 22 outputs measured**; tape-measure session not started; 0.23 ruling pending |
+| 0 · Documentation & measurement | 55–85 | **Started.** Paperwork done; **5 of 22 outputs measured**, fuses at channel caps until telemetry (D-175); tape-measure session not started; 0.23 ruling pending |
 | 1 · Order & practice | 10–16 | Wire order held on `T-008` and 0.23 |
 | 2A · PMU configuration | 12–20 | **Unblocked, fully specified** in [`PMU-CONFIG.md`](01-DESIGN/PMU-CONFIG.md). Needs 120 Ω × 4 and a 5 A fuse |
 | **2B · Firmware** | 155–325 | **Stages 1–5 complete**, ~90–125 hrs done. Display driver waits on `Q-060`; DCU not started |
@@ -125,7 +126,10 @@ per rev · `V-069` crimper die size · `V-074` O8 braking vs park input ·
 
 ## 9 · Recently settled
 
-D-168 **SPI dirty-rectangle rendering** is the display interface (supersedes
+D-175 **soft fuses at channel caps until PMU telemetry; harness build
+verification carries the protection burden** (Q-067 → D-175) · D-174 **interim soft fuses from healthy-expected values on degraded circuits;
+PMU telemetry after migration is the real measurement** (Q-066 → D-174) · D-173 **fuel pump soft fuse 4.0 A** from the measured 2.38 A (no practical
+stall on an in-line pump) · D-168 **SPI dirty-rectangle rendering** is the display interface (supersedes
 D-150's controller recommendation) · D-169 page button by the display ·
 D-170 fit PSRAM · D-171/D-172 L1-S and L3-S allocations as generated · D-148
 start relay on the inner fender · D-144/145 no bench PSU, a 5 A fuse instead ·
@@ -162,6 +166,11 @@ still real, limited by weekends with the car, not by code.
 
 **Rule that governs the build:** the car drives home at the end of every
 session. Never start a cutover you can't finish or reverse before dark.
+
+**Rule added by D-175:** until telemetry re-sets the fuses, the soft fuses
+protect only the copper. Harness design and build verification carry the whole
+discrimination burden — continuity-test every conductor, verify every cavity
+against PIN-MAP before first power, watch telemetry at every cutover.
 
 ## 11 · If you have been away a year
 

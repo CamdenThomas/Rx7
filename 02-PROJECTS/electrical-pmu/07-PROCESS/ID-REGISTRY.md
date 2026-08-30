@@ -7,16 +7,16 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | Prefix | Total | Open / active |
 |---|---|---|
 | A — Assumptions | 11 | 4 |
-| D — Decisions | 172 | 159 |
+| D — Decisions | 175 | 162 |
 | I — Improvement items (audits) | 95 | 10 |
 | K — Known issues | 23 | 0 |
 | L — Lighting-body decisions | 4 | 4 |
 | M — Modifications | 11 | 0 |
 | P — Planned modifications | 6 | 6 |
-| Q — Questions | 54 | 10 |
+| Q — Questions | 56 | 10 |
 | R — Standing rules | 8 | 8 |
 | T — Camden's tasks | 45 | 31 |
-| V — Verify items | 60 | 36 |
+| V — Verify items | 65 | 36 |
 
 ## A — Assumptions
 
@@ -210,6 +210,9 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | D-170 | active | `[Q-059]` **Fit 8 MB PSRAM to the Teensy 4.1 pads before the ICU | 07-PROCESS/DECISIONS.md |
 | D-171 | active | L1-S is two DT06-12S housings, L1-S1 and L1-S2, allocated as | 07-PROCESS/DECISIONS.md |
 | D-172 | active | L3-S is allocated as generated: L3-S1 (ladders and switch | 07-PROCESS/DECISIONS.md |
+| D-173 | active | Fuel pump soft fuse 4.0 A: measured steady 2.38 A × 1.5, | 07-PROCESS/DECISIONS.md |
+| D-174 | active | `[Q-066]` **Suspect and unmeasured LIVE channels get INTERIM soft | 07-PROCESS/DECISIONS.md |
+| D-175 | active | `[Q-067]` **Every non-measured LIVE channel's soft fuse sits at | 07-PROCESS/DECISIONS.md |
 
 ## I — Improvement items (audits)
 
@@ -433,6 +436,8 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | Q-063 | open | Four signals with no PMU pin | 07-PROCESS/OPEN.md |
 | Q-064 | open | RPM-dependent PMU logic before the ICU exists | 07-PROCESS/OPEN.md |
 | Q-065 | open | Dimmer and passing on A15 | 07-PROCESS/OPEN.md |
+| Q-066 | closed by D-174 | `[Q-066]` **Suspect and unmeasured LIVE channels get INTERIM soft | 07-PROCESS/DECISIONS.md |
+| Q-067 | closed by D-175 | `[Q-067]` **Every non-measured LIVE channel's soft fuse sits at | 07-PROCESS/DECISIONS.md |
 
 ## R — Standing rules
 
@@ -510,7 +515,7 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | V-017 | closed (no decision cites it) |  | — |
 | V-018 | closed (no decision cites it) |  | — |
 | V-019 | open | Can the 12A alternator carry the migrated load | 07-PROCESS/OPEN.md |
-| V-021 | open | Horn current draw — not on the diagram; estimate 4–8 A the pair | 07-PROCESS/OPEN.md |
+| V-021 | open | Horn current draw — estimate 4–8 A the pair; interim fuse 10.0 A set | 07-PROCESS/OPEN.md |
 | V-022 | closed (no decision cites it) |  | — |
 | V-023 | closed (no decision cites it) |  | — |
 | V-024 | closed (no decision cites it) |  | — |
@@ -539,7 +544,7 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | V-051 | open | Ionic case dimensions before cutting the cargo bin | 07-PROCESS/OPEN.md |
 | V-052 | open | Battery heater trigger and winter draw | 07-PROCESS/OPEN.md |
 | V-053 | open | Battery terminal type — SAE or 3/8 threaded. The battery is in hand; **look at it** before the lug order (`T-0… | 07-PROCESS/OPEN.md |
-| V-054 | open | Carter P4070 current draw | 07-PROCESS/OPEN.md |
+| V-054 | closed (no decision cites it) |  | — |
 | V-055 | open | Sill space behind the kick panel — 4 relays, 3 fuse positions, ground stud | 07-PROCESS/OPEN.md |
 | V-056 | open | Does the DCU need a constant keep-alive for climate memory at all — or does it restore from SD on wake | 07-PROCESS/OPEN.md |
 | V-057 | open | TCAN1042/1051 exact part suffix | 07-PROCESS/OPEN.md |
@@ -561,3 +566,8 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | V-073 | open | IMU mounting orientation on the ICU PCB** must match the axis convention in D-161, or every axis needs a sign … | 07-PROCESS/OPEN.md |
 | V-074 | open | Does O8 wiper braking need a park input?** If the PMU's braking feature only works against a park-sense signal… | 07-PROCESS/OPEN.md |
 | V-075 | open | Does the PMU have a native shutdown delay** that makes the O22 self-hold latch unnecessary — freeing pin 8 and… | 07-PROCESS/OPEN.md |
+| V-076 | closed (no decision cites it) |  | — |
+| V-077 | open | Alternator health.** 2026-08 read 0.44 A idle / 0.09 A loaded — not physical (output must RISE with load), but… | 07-PROCESS/OPEN.md |
+| V-078 | closed (no decision cites it) |  | — |
+| V-079 | closed (no decision cites it) |  | — |
+| V-080 | closed (no decision cites it) |  | — |

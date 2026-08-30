@@ -46,32 +46,32 @@ measured at **stall**; the defog grid **cold**; the coils at **3000 rpm**.
 
 | Ch | Circuit | Class | Goes to | AWG | EST A | **MEASURED A** | Type | **SOFT FUSE** |
 |---|---|---|---|---|---|---|---|---|
-| **O1** | Motor bus | 25A | Relay bank + L4-P 3 (capped) | 12 | 9.5 | ______ | motor | ______ |
-| **O2** | Headlight LOW | 25A | L2-P1 1 | 12 | 3.0 | ______ | LED | ______ |
-| **O3** | Headlight HIGH | 25A | L2-P1 2 | 12 | 3.5 | ______ | LED | ______ |
-| **O4** | Rear defog grid | 25A | L4-P 1 | 12 | 11.5 | ______ | resistive | ______ |
-| **O5** | Fuel pump | 25A | L4-P 2 | 12 | 2.0 | ______ | motor | ______ |
-| **O6** | Tail / park / marker / plate | 15A | L2-M 7 + L4-M 1 | 14 | 4.4 | ______ | filament | ______ |
+| **O1** | Motor bus | 25A | Relay bank + L4-P 3 (capped) | 12 | 9.5 | ______ | motor | **25.0** |
+| **O2** | Headlight LOW | 25A | L2-P1 1 | 12 | 3.0 | ______ | LED | **25.0** |
+| **O3** | Headlight HIGH | 25A | L2-P1 2 | 12 | 3.5 | ______ | LED | **25.0** |
+| **O4** | Rear defog grid | 25A | L4-P 1 | 12 | 11.5 | ______ | resistive | **25.0** |
+| **O5** | Fuel pump | 25A | L4-P 2 | 12 | 2.0 | **2.38 MEAS** | motor | **4.0** |
+| **O6** | Tail / park / marker / plate | 15A | L2-M 7 + L4-M 1 | 14 | 4.4 | **5.4 MEAS** | filament | **7.5** |
 | **O7** | Brake lamps | 15A | L4-M 2 | 14 | 3.9 | **7.0 MEAS** | filament | **9.5** |
-| **O8** | Wiper LOW | 15A | L2-M 1 | 14 | 4.0 | ______ | motor | ______ |
-| **O9** | Wiper HIGH | 15A | L2-M 2 | 14 | 5.5 | ______ | motor | ______ |
-| **O10** | Accessory bus | 15A | L3-M 1 + DP-ICU 1 + DP-DCU 1 + DP-KEY 3 | 14 | 2.5 | ______ | electronics | ______ |
-| **O11** | Horn pair | 15A | L2-M 3 | 14 | 6.0 | ______ | electro-mech | ______ |
-| **O12** | Ignition / coil feed | 25A | L1-P 1 | 12 | 5.0 | ______ | electronics | ______ |
+| **O8** | Wiper LOW | 15A | L2-M 1 | 14 | 4.0 | ______ | motor | **15.0** |
+| **O9** | Wiper HIGH | 15A | L2-M 2 | 14 | 5.5 | ______ | motor | **15.0** |
+| **O10** | Accessory bus | 15A | L3-M 1 + DP-ICU 1 + DP-DCU 1 + DP-KEY 3 | 14 | 2.5 | ______ | electronics | **15.0** |
+| **O11** | Horn pair | 15A | L2-M 3 | 14 | 6.0 | ______ | electro-mech | **15.0** |
+| **O12** | Ignition / coil feed | 25A | L1-P 1 | 12 | 5.0 | ______ | electronics | **25.0** |
 | **O13** | RESERVED | 25A | L1-P 2 (capped) | 12 | — | *reserved* | reserved | **disabled** |
 | **O14** | RESERVED | 25A | L1-P 3 (capped) | 12 | — | *reserved* | reserved | **disabled** |
 | **O15** | Comfort bus | 25A | L3-P 2 + DCU tap | 12 | 14.0 | ______ | mixed | ______ |
 | **O16** | Blower motor feed | 25A | L3-P 1 | 12 | — | **motor is DEAD** | motor | **from replacement spec** |
 | **O17** | Turn LEFT | 7A | L2-M 5 + L4-M 5 | 16 | 4.2 | **3.4 MEAS** | filament | **4.5** |
 | **O18** | Turn RIGHT | 7A | L2-M 6 + L4-M 6 | 16 | 4.2 | **3.4 MEAS** | filament | **4.5** |
-| **O19** | Reverse lamps | 7A | L4-M 7 | 16 | 3.9 | ______ | filament | ______ |
-| **O20** | Interior + details bus and the ICU dimming reference | 7A | L4-M 8 + L3-S1 8 + DP-ICU 5 | 16 | 2.5 | ______ | filament | ______ |
-| **O21** | Start relay coil → K9 on the inner fender | 7A | L1-S1 1 | 16 | 0.2 | ______ | relay coil | ______ |
-| **O22** | Keep-alive latch → diode → pin 7; drives K11 | 7A | Panel diode strip | 16 | 0.15 | ______ | logic | ______ |
+| **O19** | Reverse lamps | 7A | L4-M 7 | 16 | 3.9 | ______ | filament | **7.0** |
+| **O20** | Interior + details bus and the ICU dimming reference | 7A | L4-M 8 + L3-S1 8 + DP-ICU 5 | 16 | 2.5 | ______ | filament | **7.0** |
+| **O21** | Start relay coil → K9 on the inner fender | 7A | L1-S1 1 | 16 | 0.2 | ______ | relay coil | **7.0** |
+| **O22** | Keep-alive latch → diode → pin 7; drives K11 | 7A | Panel diode strip | 16 | 0.15 | ______ | logic | **7.0** |
 | **O23** | = **A15** input — Headlight ladder — OFF / PARK / HEAD. Also commands pop-up raise | 7A | L3-S1 2 | 16 | — | *input* | input | **n/a** |
 | **O24** | = **A16** input — Key ladder — OFF / ACC / RUN / START | 7A | L3-S1 1 | 16 | — | *input* | input | **n/a** |
 
-**3 of 22 outputs measured.** The rest are estimates carried since Rev A.
+**5 of 22 outputs measured.** The rest are estimates carried since Rev A.
 <!-- /gen:schedule -->
 
 O16's motor is dead (K-023): its limit comes from the replacement's spec sheet
