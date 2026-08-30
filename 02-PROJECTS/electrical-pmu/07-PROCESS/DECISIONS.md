@@ -1410,3 +1410,13 @@ O8 O9 O10 O11 = 15.0 · O19 O20 O21 O22 = 7.0. Measured channels keep their
 values (O5 4.0 · O6 7.5 · O7 9.5 · O17/O18 4.5). O4's cold figure now comes
 from telemetry on any cold morning. O13/O14 stay disabled (reserved), O15
 until its loads exist, O16 until the replacement blower.
+
+**D-176** — **Part replacement is a separate post-PMU project; the washer-pump
+diagnosis and the volt-drop replace-or-keep tests leave the measurement
+campaign.** Camden's call: parts get replaced after the PMU is in, when it is
+as easy as installing a new part — not clutter inside the wiring project.
+Underperformers are identified by PMU telemetry against healthy-expected draw
+(D-174). METER-SESSION.md rewritten (explicit rewrite request) to hold only
+the remaining work: parasitic, the `V-077` volt check, `T-011` pop-up limits,
+`V-050` ignition continuity, `V-037` sender, door pins. Prior sittings'
+procedure text lives in git history; the figures live in the CSV.

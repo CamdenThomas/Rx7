@@ -7,7 +7,7 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | Prefix | Total | Open / active |
 |---|---|---|
 | A — Assumptions | 11 | 4 |
-| D — Decisions | 175 | 162 |
+| D — Decisions | 176 | 163 |
 | I — Improvement items (audits) | 95 | 10 |
 | K — Known issues | 23 | 0 |
 | L — Lighting-body decisions | 4 | 4 |
@@ -213,6 +213,7 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | D-173 | active | Fuel pump soft fuse 4.0 A: measured steady 2.38 A × 1.5, | 07-PROCESS/DECISIONS.md |
 | D-174 | active | `[Q-066]` **Suspect and unmeasured LIVE channels get INTERIM soft | 07-PROCESS/DECISIONS.md |
 | D-175 | active | `[Q-067]` **Every non-measured LIVE channel's soft fuse sits at | 07-PROCESS/DECISIONS.md |
+| D-176 | active | Part replacement is a separate post-PMU project; the washer-pump | 07-PROCESS/DECISIONS.md |
 
 ## I — Improvement items (audits)
 
@@ -507,7 +508,7 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | ID | Status | What | Lives in |
 |---|---|---|---|
 | V-001 | open | Stock 12A coil / ignitor configuration — one coil per rotor, leading and trailing, as the factory diagram show… | 07-PROCESS/OPEN.md |
-| V-002 | open | Alternator output rating | 07-PROCESS/OPEN.md |
+| V-002 | open | Alternator output rating — the case says only 'B' / Mitsubishi (2026-08), no rating readable | 07-PROCESS/OPEN.md |
 | V-010 | closed by D-045 | `[V-010 RESOLVED]` Connector geometry confirmed from the CAD and the | 07-PROCESS/DECISIONS.md |
 | V-013 | closed by D-100 | `[V-013]` Deutsch DTP size-12 confirmed adequate for the 25 A legs. | 07-PROCESS/DECISIONS.md |
 | V-014 | open | DT size-16 contact current rating. Catalogue confirms size 20 = 7.5 A | 07-PROCESS/OPEN.md |
@@ -567,7 +568,7 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | V-074 | open | Does O8 wiper braking need a park input?** If the PMU's braking feature only works against a park-sense signal… | 07-PROCESS/OPEN.md |
 | V-075 | open | Does the PMU have a native shutdown delay** that makes the O22 self-hold latch unnecessary — freeing pin 8 and… | 07-PROCESS/OPEN.md |
 | V-076 | closed (no decision cites it) |  | — |
-| V-077 | open | Alternator health.** 2026-08 read 0.44 A idle / 0.09 A loaded — not physical (output must RISE with load), but… | 07-PROCESS/OPEN.md |
+| V-077 | open | Alternator health.** Redo 2026-08: 0.8 A idle → 2.5 A with wipers HIGH + hazards — direction now correct, but … | 07-PROCESS/OPEN.md |
 | V-078 | closed (no decision cites it) |  | — |
 | V-079 | closed (no decision cites it) |  | — |
 | V-080 | closed (no decision cites it) |  | — |

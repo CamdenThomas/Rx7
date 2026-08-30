@@ -78,7 +78,7 @@ before any flash.
 
 | # | Blocker | Unblocks | Needs |
 |---|---|---|---|
-| 1 | **T-014** finish the meter session | Every soft fuse. **Irreversible window** | The meter, in hand — ~8 hrs left |
+| 1 | **T-014** meter session — current-draw work DONE (D-175); parasitic + continuity / sender / limit items remain | A4–A7/A16 ladders, wake network, K1–K4 wiring | ~2–3 hrs; list at the end of [`05-BUILD/METER-SESSION.md`](05-BUILD/METER-SESSION.md) |
 | 2 | **T-007** dash envelope | Panel drawing, panel parts, Phase 4 | A tape measure |
 | 3 | **T-008** harness routes | Cut list lengths, the wire order, Phase 5 | String |
 | 4 | **Checklist 0.23** — rule on `Q-061`–`Q-065` | Four functions with no pin; the connector order | Reading [`OPEN.md`](07-PROCESS/OPEN.md) §1 and answering five packets |

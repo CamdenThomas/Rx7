@@ -195,7 +195,7 @@ it is the one field a stranger would look for first.
 
 | ID | Claim | Via |
 |---|---|---|
-| V-002 | Alternator output rating | Read the case — Checklist 0.4 |
+| V-002 | Alternator output rating — the case says only 'B' / Mitsubishi (2026-08), no rating readable | FSM / Mitsubishi part lookup |
 | V-055 | Sill space behind the kick panel — 4 relays, 3 fuse positions, ground stud | Tape measure — Checklist 0.10 |
 | V-038 | Coolant level unit and oscillator still fitted | Inspect |
 | V-037 | Fuel sender ohm range, empty → full | Measure at the tank — Checklist 0.5 |
@@ -203,7 +203,7 @@ it is the one field a stranger would look for first.
 | V-030 | Pop-up motor internal limit pinout — drive vs limit pins | `T-011` continuity test — Checklist 0.6 |
 | V-067 | **Tach pulses per revolution.** Assumed 2 for a 2-rotor off the leading coil. Wrong scales every RPM reading by a constant | Meter session or FSM |
 | V-021 | Horn current draw — estimate 4–8 A the pair; interim fuse 10.0 A set | PMU telemetry after migration (D-174) |
-| **V-077** | **Alternator health.** 2026-08 read 0.44 A idle / 0.09 A loaded — not physical (output must RISE with load), but a genuinely weak alternator would also explain electrics worsening day by day. Zero the jaw on the 100 A range, clamp the WR B+ alone, loads on; read battery volts at idle while there: 13.5–14.5 V = charging | Meter session · feeds `V-002` `V-019` |
+| **V-077** | **Alternator health.** Redo 2026-08: 0.8 A idle → 2.5 A with wipers HIGH + hazards — direction now correct, but the 100 A range is ±~3.5 A down there, so the magnitude is mush. The decisive check is battery volts at idle: 13.5–14.5 V = charging; below ~12.8 V = failing, and likely the day-by-day decay | Volt check at the battery · feeds `V-002` `V-019` |
 
 ## 6 · Verify — blocked on something else
 
