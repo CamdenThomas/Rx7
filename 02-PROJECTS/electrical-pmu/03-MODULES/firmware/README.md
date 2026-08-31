@@ -9,7 +9,7 @@ and lifetime figures (D-163). `icu/can_map.h` is the machine-readable CAN
 map. The prose documents describe *why*; this code defines *what*.
 
 **Version:** `ICU_FW_VERSION` in `icu/icu.ino`, printed at boot. Bump it on
-any behaviour change, log it in `../../05-BUILD/LOGS.md`, tag the commit.
+any behaviour change, log it in `../../04-BUILD/LOGS.md`, tag the commit.
 
 ## Contents
 
@@ -53,7 +53,7 @@ firmware/
 
 **`can_map.h` has three copies** because the Arduino IDE needs the header
 beside each sketch. **`icu/can_map.h` is the master.** When it changes, copy
-it over the two test sketches; `07-PROCESS/tools/check.py` fails if they
+it over the two test sketches; `05-PROCESS/tools/check.py` fails if they
 differ.
 
 **`sim_win32.cpp` includes `../icu/cluster_core.h` directly** — one source of
@@ -125,7 +125,7 @@ compiles every `.cpp` it finds there and will try to build the Win32 host for
 ARM.
 
 `pushDirtyTiles()` in `icu.ino` is **the only display-dependent function in
-the project.** Three `TODO` calls to fill in once a panel is chosen (`Q-060`).
+the project.** Three `TODO` calls to fill in once a panel is chosen (`Q-060` → D-193).
 
 ## 5 · What the renderer guarantees
 
@@ -175,7 +175,7 @@ With the PMU simulator, the ICU can be developed and demonstrated
 blanking, the diagnostics page, `stats.h` accumulation, the RPM capture path,
 ladder decode, and the whole rendering layer. Needs two SN65HVD230 modules
 with their headers soldered, a twisted pair and 120 Ω × 2 —
-`../../05-BUILD/BENCH-KIT.md`.
+`../../04-BUILD/BENCH-KIT.md`.
 
 **What it does not cover — and this is the important limit:** the ICU's
 critical gauges are on **its own analog inputs, not CAN** (D-083). The PMU

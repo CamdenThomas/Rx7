@@ -1,10 +1,13 @@
 # ELECTRICAL / PMU PROJECT
 
-*Rev 2026-08-30 · owns: the map of this project — every file, what it holds, and who owns which fact.*
+*Rev 2026-08-31 · owns: the map of this project — every file, what it holds, and who owns which fact.*
 
 Full replacement of the 1982 RX-7's electrical system: ECUMaster PMU-24 DL,
 rear-mounted Ionic S9 lithium, four modular harness legs plus a sill node, and
 two Teensy 4.1 CAN modules — a climate DCU and an instrument cluster ICU.
+Lighting and body work is deferred scope inside this project (D-201):
+designed in [`01-DESIGN/TAIL-LIGHTS.md`](01-DESIGN/TAIL-LIGHTS.md), started only after the rebuild is
+shaken down (L-004).
 
 **Read [`STATUS.md`](STATUS.md) first.** If the notation is unfamiliar, read
 [`01-DESIGN/GLOSSARY.md`](01-DESIGN/GLOSSARY.md) second. The agent's rules are
@@ -19,15 +22,17 @@ in the root [`ASSISTANT.md`](../../ASSISTANT.md).
 
 ## 1 · Folder map
 
+Five folders, numbered in work order. 04-SUBSYSTEMS and 06-PROCUREMENT were
+retired in the 2026-08-31 consolidation (D-200): battery went to the build
+folder, money went to the process folder, the rest went to `99-ARCHIVE/`.
+
 | Folder | Holds | When you need it |
 |---|---|---|
 | **[`01-DESIGN/`](01-DESIGN/)** | The engineering | Working out *what* to build |
 | **[`02-HARNESS/`](02-HARNESS/)** | Legs, connectors, pin map, cavity state, sill node, the data tables, the diagrams | Working out *where wires go* |
 | **[`03-MODULES/`](03-MODULES/)** | DCU, ICU, CAN, the firmware | Firmware and module hardware |
-| **[`04-SUBSYSTEMS/`](04-SUBSYSTEMS/)** | Battery, head unit, parts changes, deferred features | One self-contained thing at a time |
-| **[`05-BUILD/`](05-BUILD/)** | Checklist, procedures, working sheets, bench kit | In the shop, doing it |
-| **[`06-PROCUREMENT/`](06-PROCUREMENT/)** | BOM, buy record | Spending money |
-| **[`07-PROCESS/`](07-PROCESS/)** | Decisions, open items, tasks, audits, forward work, changelog, the tools | Deciding, recalling why, or checking the tree |
+| **[`04-BUILD/`](04-BUILD/)** | Checklist, procedures, working sheets, battery install, safety | In the shop, doing it |
+| **[`05-PROCESS/`](05-PROCESS/)** | Decisions, open items, tasks, the BOM, audits, forward work, changelog, the tools | Deciding, recalling why, spending, or checking the tree |
 
 Root holds only [`STATUS.md`](STATUS.md) and this file.
 
@@ -42,9 +47,10 @@ Root holds only [`STATUS.md`](STATUS.md) and this file.
 | [`LOADS.md`](01-DESIGN/LOADS.md) | Estimation method and the incandescent design figures; LED figures as an appendix |
 | [`CHANNEL-SCHEDULE.md`](01-DESIGN/CHANNEL-SCHEDULE.md) | The measured-to-configured pipeline — measured current and soft fuse per channel (generated block) |
 | [`LADDERS.md`](01-DESIGN/LADDERS.md) | Resistor values and ADC windows for the switch ladders |
-| [`SCHEMATICS.md`](01-DESIGN/SCHEMATICS.md) | Wake network, H-bridges, constant bus, sill branches, ground architecture |
+| [`SCHEMATICS.md`](01-DESIGN/SCHEMATICS.md) | Wake network, pop-up relays, constant bus, sill branches, ground architecture |
 | [`PMU-CONFIG.md`](01-DESIGN/PMU-CONFIG.md) | Everything to type into the PMU client — decode tables, output logic, interlocks, wake, inrush |
 | [`PANEL-LAYOUT.md`](01-DESIGN/PANEL-LAYOUT.md) | The backer plate — what mounts where. Template until `T-007` |
+| [`TAIL-LIGHTS.md`](01-DESIGN/TAIL-LIGHTS.md) | **Deferred** (L-004) — lighting & body second pass: custom tail lights (TL-1 … TL-19), headlamp sourcing, LED conversion, body scope |
 
 ### `02-HARNESS/`
 
@@ -55,7 +61,7 @@ Root holds only [`STATUS.md`](STATUS.md) and this file.
 | [`data/connectors.csv`](02-HARNESS/data/connectors.csv) | **Source of truth** — every cavity of every housing |
 | [`data/housings.csv`](02-HARNESS/data/housings.csv) | **Source of truth** — housing part numbers, wedgelocks, locations |
 | [`PIN-MAP.md`](02-HARNESS/PIN-MAP.md) | *Generated.* Pin-ordered and housing-ordered views of the CSVs |
-| [`CAVITY-STATE.md`](02-HARNESS/CAVITY-STATE.md) | *Generated.* Every cavity with its status word — what is LIVE, PROVISIONED, RESERVED, DEFERRED, OPEN, SPARE |
+| [`CAVITY-STATE.md`](02-HARNESS/CAVITY-STATE.md) | *Generated.* Every cavity with its status word — what is LIVE, PROVISIONED, RESERVED, DEFERRED, SPARE |
 | [`CONNECTORS.md`](02-HARNESS/CONNECTORS.md) | Series selection, the dash post, accessories; housing table generated |
 | [`engine.md`](02-HARNESS/engine.md) [`front-chassis.md`](02-HARNESS/front-chassis.md) [`dash.md`](02-HARNESS/dash.md) [`rear-cabin.md`](02-HARNESS/rear-cabin.md) | The four legs — *why* each is shaped as it is; cavities come from the CSV |
 | [`sill-node.md`](02-HARNESS/sill-node.md) | The secondary node: K5–K8 sockets, F8/F9/F14, D1/D2 |
@@ -69,56 +75,42 @@ Root holds only [`STATUS.md`](STATUS.md) and this file.
 | [`CAN-MESSAGES.md`](03-MODULES/CAN-MESSAGES.md) | The message map — IDs, byte layouts, rates, timeouts, bus load |
 | [`CLUSTER-DESIGN.md`](03-MODULES/CLUSTER-DESIGN.md) | **Forward scope** — pages beyond the driving page, and what is settled |
 | [`BENCH-BRINGUP.md`](03-MODULES/BENCH-BRINGUP.md) | Firmware bring-up stages 1–7; 1–5 done |
+| [`ICU-CARRIER.md`](03-MODULES/ICU-CARRIER.md) [`DCU-CARRIER.md`](03-MODULES/DCU-CARRIER.md) | The two carrier PCB schematics (H-001, H-002); parts are `V-082`/`V-083` |
 | [`firmware/README.md`](03-MODULES/firmware/README.md) | Folder map, build instructions, tests, simulator controls |
 | **[`firmware/icu/cluster_core.h`](03-MODULES/firmware/icu/cluster_core.h)** | **Owns** cluster layout, palette, icons, rendering |
 | [`firmware/icu/stats.h`](03-MODULES/firmware/icu/stats.h) | **Owns** the automated trip and lifetime figures |
 | [`firmware/icu/can_map.h`](03-MODULES/firmware/icu/can_map.h) | **Master** CAN structs; the two test-sketch copies must match |
 | [`firmware/icu/icu.ino`](03-MODULES/firmware/icu/icu.ino) | Teensy host; `ICU_FW_VERSION` |
 | [`firmware/pmu_sim/channels.h`](03-MODULES/firmware/pmu_sim/channels.h) | *Generated* from `pmu_pins.csv` |
-| `firmware/icu_sim/` · `firmware/tests/` · `firmware/pmu_sim/` | Desktop simulator · regression suite (`run.bat`) · PMU simulator |
+| `firmware/icu_sim/` · `firmware/tests/` · `firmware/pmu_sim/` · `firmware/dcu/` | Desktop simulator · regression suites (`run.bat`) · PMU simulator · DCU firmware |
 
-### `04-SUBSYSTEMS/`
-
-| File | Holds |
-|---|---|
-| [`BATTERY-INSTALL.md`](04-SUBSYSTEMS/BATTERY-INSTALL.md) | Ionic S9, cargo bin, power backbone, the Phase 3 sequence |
-| [`HEAD-UNIT.md`](04-SUBSYSTEMS/HEAD-UNIT.md) | Audio, maps, the double-DIN install |
-| [`PARTS-CHANGES.md`](04-SUBSYSTEMS/PARTS-CHANGES.md) | **Owns** what physically changes in this project |
-| [`DEFERRED-FEATURES.md`](04-SUBSYSTEMS/DEFERRED-FEATURES.md) | **Owns** what is pre-wired and waiting |
-
-### `05-BUILD/`
+### `04-BUILD/`
 
 | File | Holds |
 |---|---|
-| [`CHECKLIST.md`](05-BUILD/CHECKLIST.md) | The build, phase by phase, with checkboxes |
-| [`SAFETY.md`](05-BUILD/SAFETY.md) | Lithium, 2 AWG, under the car, fuel, the meter session |
-| [`METER-SESSION.md`](05-BUILD/METER-SESSION.md) | Clamp-meter procedure, access points, recording sheet |
-| [`MIGRATION-LOG.md`](05-BUILD/MIGRATION-LOG.md) | Phase 6 working sheet — **the migration order** |
-| [`CUT-LIST.md`](05-BUILD/CUT-LIST.md) | Wire cut list and label schedule (structure generated; lengths wait on `T-008`) |
-| [`BENCH-KIT.md`](05-BUILD/BENCH-KIT.md) | What the bench has, what it still needs, tools by phase |
-| [`LOGS.md`](05-BUILD/LOGS.md) | Config versions, firmware versions, photo index, session log |
+| [`CHECKLIST.md`](04-BUILD/CHECKLIST.md) | The build, phase by phase, with checkboxes |
+| [`SAFETY.md`](04-BUILD/SAFETY.md) | Lithium, 2 AWG, under the car, fuel, working with the meter |
+| [`BATTERY-INSTALL.md`](04-BUILD/BATTERY-INSTALL.md) | Ionic S9, cargo bin, power backbone, the Phase 3 sequence |
+| [`MIGRATION-LOG.md`](04-BUILD/MIGRATION-LOG.md) | Phase 6 working sheet — **the migration order** |
+| [`CUT-LIST.md`](04-BUILD/CUT-LIST.md) | Wire cut list and label schedule (structure generated; lengths wait on `T-008`) |
+| [`BENCH-KIT.md`](04-BUILD/BENCH-KIT.md) | In-hand inventory and the in-car commissioning procedure (D-194) |
+| [`LOGS.md`](04-BUILD/LOGS.md) | Config versions, firmware versions, photo index, session log |
 
-### `06-PROCUREMENT/`
-
-| File | Holds |
-|---|---|
-| [`BOM.md`](06-PROCUREMENT/BOM.md) | **Owns the money** — committed, remaining, buy order |
-| [`BUY-LIST.md`](06-PROCUREMENT/BUY-LIST.md) | The record of the first order — what arrived, what didn't, sources |
-
-### `07-PROCESS/`
+### `05-PROCESS/`
 
 | File | Holds |
 |---|---|
-| [`DECISIONS.md`](07-PROCESS/DECISIONS.md) | Append-only, D-001 … D-172, topic index at the top |
-| [`OPEN.md`](07-PROCESS/OPEN.md) | Design packets, questions, verify items, assumptions in force |
-| [`TASKS-CAMDEN.md`](07-PROCESS/TASKS-CAMDEN.md) | Physical work only Camden can do |
-| [`FORWARD-WORK.md`](07-PROCESS/FORWARD-WORK.md) | The agent backlog — F/H/X/Z items |
-| [`AUDITS.md`](07-PROCESS/AUDITS.md) | Every documentation audit and its results; where R1–R8 came from |
-| [`CHANGELOG.md`](07-PROCESS/CHANGELOG.md) | One entry per session |
-| [`ID-REGISTRY.md`](07-PROCESS/ID-REGISTRY.md) | *Generated.* Every ID ever issued, where it lives, open or closed |
-| [`tools/gen.py`](07-PROCESS/tools/gen.py) | Regenerates every generated file and block from the CSVs (`--check` to verify) |
-| [`tools/registry.py`](07-PROCESS/tools/registry.py) | Rebuilds [`ID-REGISTRY.md`](07-PROCESS/ID-REGISTRY.md) and `ids.json` |
-| [`tools/check.py`](07-PROCESS/tools/check.py) | Drift checker — headers, links, closed IDs, old step numbers, copies, generator drift |
+| [`DECISIONS.md`](05-PROCESS/DECISIONS.md) | Append-only decision log, D-001 → and the merged lighting L-series; topic index at the top |
+| [`OPEN.md`](05-PROCESS/OPEN.md) | Questions, verify items, assumptions in force — including the deferred lighting items |
+| [`TASKS-CAMDEN.md`](05-PROCESS/TASKS-CAMDEN.md) | Physical work only Camden can do |
+| [`BOM.md`](05-PROCESS/BOM.md) | **Owns the money** — every purchasable line by wave, plus the re-order part-number reference |
+| [`FORWARD-WORK.md`](05-PROCESS/FORWARD-WORK.md) | The agent backlog — F/H/X/Z items |
+| [`AUDITS.md`](05-PROCESS/AUDITS.md) | Every documentation audit and its results; where R1–R8 came from |
+| [`CHANGELOG.md`](05-PROCESS/CHANGELOG.md) | One entry per session |
+| [`ID-REGISTRY.md`](05-PROCESS/ID-REGISTRY.md) | *Generated.* Every ID ever issued, where it lives, open or closed |
+| [`tools/gen.py`](05-PROCESS/tools/gen.py) | Regenerates every generated file and block from the CSVs (`--check` to verify) |
+| [`tools/registry.py`](05-PROCESS/tools/registry.py) | Rebuilds [`ID-REGISTRY.md`](05-PROCESS/ID-REGISTRY.md) and `ids.json` |
+| [`tools/check.py`](05-PROCESS/tools/check.py) | Drift checker — headers, links, closed IDs, old step numbers, copies, generator drift |
 
 ## 3 · Who owns which fact
 
@@ -134,21 +126,22 @@ If two files disagree, the owner wins (R3).
 | Relays, fuses, terminals, geometry, status vocabulary | [`01-DESIGN/SPEC.md`](01-DESIGN/SPEC.md) |
 | Ladder values | [`01-DESIGN/LADDERS.md`](01-DESIGN/LADDERS.md) |
 | What goes into the PMU client | [`01-DESIGN/PMU-CONFIG.md`](01-DESIGN/PMU-CONFIG.md) |
+| Lighting & body second pass (deferred) | [`01-DESIGN/TAIL-LIGHTS.md`](01-DESIGN/TAIL-LIGHTS.md) |
 | CAN message layouts | [`03-MODULES/CAN-MESSAGES.md`](03-MODULES/CAN-MESSAGES.md) ↔ `firmware/icu/can_map.h` |
 | Cluster layout, palette, rendering | `firmware/icu/cluster_core.h` |
 | Automated trip figures | `firmware/icu/stats.h` |
-| Migration order | [`05-BUILD/MIGRATION-LOG.md`](05-BUILD/MIGRATION-LOG.md) |
-| Build sequence | [`05-BUILD/CHECKLIST.md`](05-BUILD/CHECKLIST.md) |
-| Money | [`06-PROCUREMENT/BOM.md`](06-PROCUREMENT/BOM.md) |
-| What physically changes / what is pre-wired | [`04-SUBSYSTEMS/PARTS-CHANGES.md`](04-SUBSYSTEMS/PARTS-CHANGES.md) / [`DEFERRED-FEATURES.md`](04-SUBSYSTEMS/DEFERRED-FEATURES.md) |
-| Decisions | [`07-PROCESS/DECISIONS.md`](07-PROCESS/DECISIONS.md) |
-| Hand-written logs | [`05-BUILD/LOGS.md`](05-BUILD/LOGS.md) |
+| Migration order | [`04-BUILD/MIGRATION-LOG.md`](04-BUILD/MIGRATION-LOG.md) |
+| Build sequence | [`04-BUILD/CHECKLIST.md`](04-BUILD/CHECKLIST.md) |
+| Money | [`05-PROCESS/BOM.md`](05-PROCESS/BOM.md) |
+| What is pre-wired and waiting | the CSVs → [`CAVITY-STATE.md`](02-HARNESS/CAVITY-STATE.md) (add-later detail archived in `99-ARCHIVE/DEFERRED-FEATURES.md`) |
+| Decisions | [`05-PROCESS/DECISIONS.md`](05-PROCESS/DECISIONS.md) |
+| Hand-written logs | [`04-BUILD/LOGS.md`](04-BUILD/LOGS.md) |
 | Car-level facts, faults, modifications | `00-CAR/` |
 | The factory harness | `01-REFERENCE/factory-circuits/` |
 
 ## 4 · Generated files — never edit by hand
 
-`python 07-PROCESS/tools/gen.py` rewrites these from the three CSVs:
+`python 05-PROCESS/tools/gen.py` rewrites these from the three CSVs:
 [`PIN-MAP.md`](02-HARNESS/PIN-MAP.md), [`CAVITY-STATE.md`](02-HARNESS/CAVITY-STATE.md), `firmware/pmu_sim/channels.h`, the six SVGs
 in `diagrams/`, and the `<!-- gen:… -->` blocks in `SPEC.md`,
 `CHANNEL-SCHEDULE.md`, `CUT-LIST.md` and `CONNECTORS.md`. `gen.py --check`

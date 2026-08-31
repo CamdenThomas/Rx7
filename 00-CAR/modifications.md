@@ -21,7 +21,7 @@
 | #     | Area       | Change                                  | Project                      |
 |-------|------------|-----------------------------------------|------------------------------|
 | P-001 | Electrical | Full PMU-24 DL rewire — **PMU purchased** | [`../02-PROJECTS/electrical-pmu/`](../02-PROJECTS/electrical-pmu/STATUS.md) |
-| P-002 | Electrical | Ionic S9 heated lithium battery, rear mount — **purchased, not fitted** | [`BATTERY-INSTALL.md`](../02-PROJECTS/electrical-pmu/04-SUBSYSTEMS/BATTERY-INSTALL.md) |
+| P-002 | Electrical | Ionic S9 heated lithium battery, rear mount — **purchased, not fitted** | [`BATTERY-INSTALL.md`](../02-PROJECTS/electrical-pmu/04-BUILD/BATTERY-INSTALL.md) |
 | P-003 | Suspension | Full bushing + wear-point overhaul      | not started                  |
 | P-004 | Steering   | Steering box replacement (sector shaft) | not started                  |
 | P-005 | Brakes     | Rear disc conversion from 84–85 axle    | **Still planned** (Q-045 → D-113). The Jul 2026 drum overhaul (M-010) was an interim so the car could be driven; it buys time for the axle swap |

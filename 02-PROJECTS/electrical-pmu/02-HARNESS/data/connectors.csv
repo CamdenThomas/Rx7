@@ -4,7 +4,7 @@ L1-P,2,RESERVED — LS ECU + injectors,O13 (pin 1),12,RED/ORN,RESERVED,Capped at
 L1-P,3,RESERVED — LS cooling fan,O14 (pin 14),12,RED/GRY,RESERVED,Capped
 L1-P,4,SPARE heavy,—,12,RED,SPARE,Capped
 L1-S1,1,Start relay coil → K9 on the inner fender,O21 (pin 21),16,VIO/RED,LIVE,D-148
-L1-S1,2,Alternator lamp / sense,DP-ICU 11,16,GRY/WHT,LIVE,Lamp-driven excitation — divider at the ICU
+L1-S1,2,Alternator BW excitation feed — factory spec,O12 branch via F15 (7.5 A) at the panel,16,BLU/WHT,LIVE,D-198 — the field feed; without it the alternator never charges
 L1-S1,3,Water temp sender,DP-ICU 6,16,GRY/GRN,LIVE,ICU input (D-083)
 L1-S1,4,Oil pressure sender,DP-ICU 7,16,GRY/BLU,LIVE,ICU input
 L1-S1,5,Oil temperature sender (new),DP-ICU 8,16,GRY/ORN,LIVE,ICU input. Sender not yet sourced
@@ -13,7 +13,7 @@ L1-S1,7,VSS pulse (new),DP-ICU 10,16,GRY/VIO,LIVE,ICU input. Sensor not yet sour
 L1-S1,8,+5 V reference,+5V (pin 15),16,PNK,LIVE,
 L1-S1,9,CAN2 H — engine-bay drop,CAN2H (pin 24),16 tw,YEL/BLK,LIVE,120 Ω terminator fitted at the far end in Phase 5 (D-079)
 L1-S1,10,CAN2 L — engine-bay drop,CAN2L (pin 37),16 tw,GRN/BLK,LIVE,
-L1-S1,11,Inhibitor switch ladder — P/N + R,NO PIN — Q-063,16,GRY/BLK,OPEN,D-071 laddered it; no analog pin is free
+L1-S1,11,Inhibitor P/N contact — crank interlock,A4 node (pin 17) — splice at the post,16,GRY/BLK,LIVE,D-187 — 12 kΩ at the switch; 47 kΩ baseline at the connector
 L1-S1,12,Wideband O2 signal,capped,16,GRY/RED,SPARE,"A-011 — not an ICU input; K-001 tap location unknown"
 L1-S2,1,Brake fluid level switch,DP-ICU 12,16,GRY/PNK,LIVE,A-010
 L1-S2,2,Coolant level sensor,capped,16,GRY,SPARE,"A-010 — optional, no ICU cavity"
@@ -21,31 +21,31 @@ L1-S2,3,Oil level sensor,capped,16,GRY,SPARE,"A-010 — optional, no ICU cavity"
 L1-S2,4,LS sensor spare — knock,capped,16,GRY,RESERVED,
 L1-S2,5,LS sensor spare — cam/crank,capped,16,GRY,RESERVED,
 L1-S2,6,LS sensor spare,capped,16,GRY,RESERVED,
-L1-S2,7,SPARE,capped,16,GRY,SPARE,
-L1-S2,8,SPARE,capped,16,GRY,SPARE,
+L1-S2,7,Inhibitor R contact — reverse,A5 node (pin 31) — splice at the post,16,GRY/BRN,LIVE,D-187 — 12 kΩ at the switch
+L1-S2,8,Alternator WB charge-sense,DP-ICU 11 via the post — ICU input at Phase 9,16,GRY/WHT,DEFERRED,D-198; interim charge indication is PMU battery-voltage telemetry
 L1-S2,9,SPARE,capped,16,GRY,SPARE,
 L1-S2,10,SPARE,capped,16,GRY,SPARE,
 L1-S2,11,SPARE,capped,16,GRY,SPARE,
 L1-S2,12,SPARE,capped,16,GRY,SPARE,
 L2-P1,1,Headlight LOW,O2 (pin 39),12,RED/BLK,LIVE,
 L2-P1,2,Headlight HIGH,O3 (pin 26),12,RED/BRN,LIVE,
-L2-P1,3,Pop-up LH motor — leg A,K1/K2 (O1),12,RED/WHT,LIVE,F6 branch
-L2-P1,4,Pop-up LH motor — leg B,K1/K2 (O1),12,RED/WHT,LIVE,
-L2-P2,1,Pop-up RH motor — leg A,K3/K4 (O1),12,RED/WHT,LIVE,F7 branch
-L2-P2,2,Pop-up RH motor — leg B,K3/K4 (O1),12,RED/WHT,LIVE,
+L2-P1,3,Pop-up LH run feed — conductor ID V-081,K1 87 (O1 / F6),12,RED/WHT,LIVE,D-186 — single-direction motor
+L2-P1,4,SPARE — freed by D-186,capped,12,RED/WHT,SPARE,was H-bridge leg B
+L2-P2,1,Pop-up RH run feed — conductor ID V-081,K2 87 (O1 / F7),12,RED/WHT,LIVE,D-186 — single-direction motor
+L2-P2,2,SPARE — freed by D-186,capped,12,RED/WHT,SPARE,was H-bridge leg B
 L2-P2,3,SPARE heavy,—,12,RED,SPARE,Capped
 L2-P2,4,SPARE heavy,—,12,RED,SPARE,Capped
 L2-M,1,Wiper LOW,O8 (pin 9),14,ORN/BLU,LIVE,Braking channel
 L2-M,2,Wiper HIGH,O9 (pin 5),14,ORN/WHT,LIVE,
 L2-M,3,"Horns — both, spliced at the nose",O11 (pin 3),14,ORN/BLK,LIVE,Both horns ground at the front star node
-L2-M,4,Washer pump,NO OUTPUT — Q-063,14,ORN/VIO,OPEN,PMU-driven per D-051; no output is free
+L2-M,4,Washer pump,K12 87 (Q-063 → D-182),14,ORN/VIO,LIVE,Feed detail H-008; pump health T-040 post-PMU (D-176)
 L2-M,5,Turn LEFT front,O17 (pin 6),16,VIO/GRN,LIVE,
 L2-M,6,Turn RIGHT front,O18 (pin 33),16,VIO/YEL,LIVE,
 L2-M,7,Front park / side marker,O6 (pin 11),16,ORN/BRN,LIVE,
 L2-M,8,SPARE — cornering lamp,capped,16,ORN,SPARE,
 L2-S,1,Pop-up LH position ladder,A4 (pin 17),16,GRY/BLK,LIVE,Provisional until T-011
 L2-S,2,Pop-up RH position ladder,A5 (pin 31),16,GRY/BRN,LIVE,Provisional until T-011
-L2-S,3,Wiper park sense,NO PIN — Q-063,16,GRY/WHT,OPEN,Needed by the WIPE_LOW park logic
+L2-S,3,Wiper park sense,Mechanical park at the motor (Q-063 → D-182),16,GRY/WHT,DEFERRED,Kept in case V-074 shows O8 braking needs a park input
 L2-S,4,+5 V reference,+5V (pin 15),16,PNK,LIVE,
 L2-S,5,SPARE — ambient temp sensor,capped,16,GRY,SPARE,
 L2-S,6,SPARE,capped,16,GRY,SPARE,
@@ -61,9 +61,9 @@ L3-S1,5,Brake pedal switch,A3 (pin 30),16,GRY/ORN,LIVE,
 L3-S1,6,Hazard switch — closure,A8 (pin 19),16,GRY/PNK,LIVE,Wake source is L3-S2 2
 L3-S1,7,+5 V reference,+5V (pin 15),16,PNK,LIVE,
 L3-S1,8,Illumination / dimmer branch,O20 (pin 34),16,VIO/WHT,LIVE,PWM
-L3-S1,9,Wink switch LEFT,K1/K2 coils,16,BLU/GRN,LIVE,Momentary override (D-038)
-L3-S1,10,Wink switch RIGHT,K3/K4 coils,16,BLU/YEL,LIVE,
-L3-S1,11,Horn switch — wake source,Diode strip → pin 7,16,BLU/RED,LIVE,D-072. Its PMU input is Q-063
+L3-S1,9,Wink switch LEFT,wink NC-cross wiring (Q-070 → D-189),16,BLU/GRN,LIVE,Momentary SPDT (D-038); request sensing Q-071 → D-190 (pin-7 only)
+L3-S1,10,Wink switch RIGHT,wink NC-cross wiring (Q-070 → D-189),16,BLU/YEL,LIVE,
+L3-S1,11,Horn switch — 12 kΩ at the switch,A8 node (pin 19) — splice at the post,16,GRY/PNK,LIVE,Q-071 → D-190; asleep wake via the plate PNP on this node
 L3-S1,12,ACC — wake source,Diode strip → pin 7,16,BLU/WHT,LIVE,From the ignition switch ACC contact
 L3-S2,1,RUN — wake source,Diode strip → pin 7,16,BLU,LIVE,From the ignition switch IG contact
 L3-S2,2,Hazard switch — wake source,Diode strip → pin 7,16,BLU/PNK,LIVE,Second pole of the hazard switch
@@ -71,7 +71,7 @@ L3-S2,3,Window DRV up command,K5 coil via L4-M 9,16,BLU/BRN,PROVISIONED,D-131 �
 L3-S2,4,Window DRV down command,K6 coil via L4-M 10,16,BLU/BLK,PROVISIONED,Capped
 L3-S2,5,Window PASS up command,K7 coil via L4-M 11,16,BLU/VIO,PROVISIONED,Capped
 L3-S2,6,Window PASS down command,K8 coil via L4-M 12,16,BLU/ORN,PROVISIONED,Capped
-L3-S2,7,Radar module +12 V switched,O10 branch — fuse TBD Q-061,16,ORN/GRY,DEFERRED,V-061
+L3-S2,7,Radar module +12 V switched,O10 branch — fuse TBD Q-061 → D-180,16,ORN/GRY,DEFERRED,V-061
 L3-S2,8,Radar module ground,DP-GND,16,BLK,DEFERRED,
 L3-S2,9,SPARE,capped,16,GRY,SPARE,
 L3-S2,10,SPARE,capped,16,GRY,SPARE,
@@ -88,11 +88,11 @@ L3-S3,8,SPARE,capped,16,GRY,SPARE,
 L4-P,1,Rear defog grid,O4 (pin 13),12,RED/GRN,LIVE,
 L4-P,2,Fuel pump,O5 (pin 12),12,RED/YEL,LIVE,Dedicated ground return at the rear node (K-008 fix)
 L4-P,3,Window motor bus feed → sill K5–K8 commons,O1 (pin 38),12,RED/WHT,PROVISIONED,D-131 — terminated and capped
-L4-P,4,SPARE heavy — in-tank pump upgrade,—,12,RED,SPARE,Candidate for the O15 → sill feed — Q-062
+L4-P,4,SPARE heavy — in-tank pump upgrade,—,12,RED,SPARE,Candidate for the O15 → sill feed — Q-062 → D-181
 L4-M,1,Tail / plate / rear marker,O6 (pin 11),14,ORN/BRN,LIVE,
 L4-M,2,Brake lamps,O7 (pin 10),14,ORN/GRN,LIVE,
-L4-M,3,Hatch release solenoid,NO OUTPUT — Q-061,14,ORN/RED,OPEN,V-033
-L4-M,4,Fuel-door release solenoid (new),NO OUTPUT — Q-061,14,ORN/PNK,OPEN,V-033 — solenoid never existed (D-098)
+L4-M,3,Hatch release solenoid,Fused O10 branch (Q-061 → D-180),14,ORN/RED,PROVISIONED,Latch switch broken (K-016) - T-033
+L4-M,4,Fuel-door release solenoid (new),Fused O10 branch (Q-061 → D-180),14,ORN/PNK,PROVISIONED,Solenoid never existed (D-098) - T-032
 L4-M,5,Turn LEFT rear,O17 (pin 6),16,VIO/GRN,LIVE,
 L4-M,6,Turn RIGHT rear,O18 (pin 33),16,VIO/YEL,LIVE,
 L4-M,7,Reverse lamps,O19 (pin 20),16,VIO/BLK,LIVE,
@@ -112,18 +112,18 @@ L4-S,8,SPARE,capped,16,GRY,SPARE,Seat-belt switch dropped (D-050)
 D1,1,Window motor — leg A,K5/K6 at the sill,14,RED/WHT,PROVISIONED,D-131 — capped in the door
 D1,2,Window motor — leg B,K5/K6 at the sill,14,RED/WHT,PROVISIONED,Capped in the door
 D1,3,Door pin switch,A6 ladder via L4-S 2,16,GRY/VIO,LIVE,
-D1,4,Mirror motor — common,Mirror control — Q-062 / V-060,16,GRY/GRN,DEFERRED,"New mirrors, T-031"
-D1,5,Mirror motor — X axis,Mirror control — Q-062 / V-060,16,GRY/BLU,DEFERRED,
-D1,6,Mirror motor — Y axis,Mirror control — Q-062 / V-060,16,GRY/ORN,DEFERRED,
-D1,7,Mirror heat feed,Sill fuse F14 ← O15 (Q-062),16,RED/VIO,DEFERRED,Capped
+D1,4,Mirror motor — common,Mirror control — Q-062 → D-181 / V-060,16,GRY/GRN,DEFERRED,"New mirrors, T-031"
+D1,5,Mirror motor — X axis,Mirror control — Q-062 → D-181 / V-060,16,GRY/BLU,DEFERRED,
+D1,6,Mirror motor — Y axis,Mirror control — Q-062 → D-181 / V-060,16,GRY/ORN,DEFERRED,
+D1,7,Mirror heat feed,Sill fuse F14 ← O15 (Q-062 → D-181),16,RED/VIO,DEFERRED,Capped
 D1,8,Ground → sill node,Sill ground stud,16,BLK,LIVE,Never grounds in the door
 D2,1,Window motor — leg A,K7/K8 at the sill,14,RED/WHT,PROVISIONED,Capped in the door
 D2,2,Window motor — leg B,K7/K8 at the sill,14,RED/WHT,PROVISIONED,Capped in the door
 D2,3,Door pin switch,A6 ladder via L4-S 2,16,GRY/VIO,LIVE,
-D2,4,Mirror motor — common,Mirror control — Q-062 / V-060,16,GRY/GRN,DEFERRED,
-D2,5,Mirror motor — X axis,Mirror control — Q-062 / V-060,16,GRY/BLU,DEFERRED,
-D2,6,Mirror motor — Y axis,Mirror control — Q-062 / V-060,16,GRY/ORN,DEFERRED,
-D2,7,Mirror heat feed,Sill fuse F14 ← O15 (Q-062),16,RED/VIO,DEFERRED,Capped
+D2,4,Mirror motor — common,Mirror control — Q-062 → D-181 / V-060,16,GRY/GRN,DEFERRED,
+D2,5,Mirror motor — X axis,Mirror control — Q-062 → D-181 / V-060,16,GRY/BLU,DEFERRED,
+D2,6,Mirror motor — Y axis,Mirror control — Q-062 → D-181 / V-060,16,GRY/ORN,DEFERRED,
+D2,7,Mirror heat feed,Sill fuse F14 ← O15 (Q-062 → D-181),16,RED/VIO,DEFERRED,Capped
 D2,8,Ground → sill node,Sill ground stud,16,BLK,LIVE,
 DP-ICU,1,+12 V switched,O10 (pin 4),16,ORN/YEL,LIVE,
 DP-ICU,2,Ground,DP-GND,16,BLK,LIVE,Box-adjacent — the permitted ground crossing (D-037)
@@ -138,7 +138,7 @@ DP-ICU,10,VSS,L1-S1 7,16,GRY/VIO,LIVE,
 DP-ICU,11,Alternator sense,L1-S1 2,16,GRY/WHT,LIVE,
 DP-ICU,12,Brake fluid level switch,L1-S2 1,16,GRY/PNK,LIVE,A-010
 DP-DCU,1,+12 V switched,O10 (pin 4),16,ORN/YEL,LIVE,
-DP-DCU,2,+12 V constant — climate memory,Busbar — fuse position TBD Q-061,16,RED,OPEN,V-056 whether it is needed at all
+DP-DCU,2,+12 V constant - climate memory,Freed - no keep-alive (V-056 → D-191),16,RED,SPARE,Climate memory restores from SD at wake
 DP-DCU,3,Ground,DP-GND,16,BLK,LIVE,
 DP-DCU,4,CAN2 H,CAN2H (pin 24),16 tw,YEL/BLK,LIVE,
 DP-DCU,5,CAN2 L,CAN2L (pin 37),16 tw,GRN/BLK,LIVE,

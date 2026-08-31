@@ -76,7 +76,7 @@ cutoff. K-008 — the pump grounds at X-15 alongside the rear turn lamps.
 | Water temp YW, oil pressure BrY | ICU inputs — **L1-S1 3 → DP-ICU 6**, **L1-S1 4 → DP-ICU 7**. Oil temp (new) L1-S1 5 → DP-ICU 8 |
 | Tach signal YG from coil | **L1-S1 6 → DP-ICU 9**, shielded, opto/comparator at the ICU (D-082). Routed away from every high-current wire |
 | Twin coils + igniters on BW | O12 ignition feed, **L1-P 1** |
-| Fuel pump, key-on only | O5 → **L4-P 2**, with a software prime, the PMU's inertia switch, and run-with-RPM once the ICU publishes rpm — interim rule `Q-064` (Checklist 2.17) |
+| Fuel pump, key-on only | O5 → **L4-P 2**, with a software prime, the PMU's inertia switch, and run-with-RPM once the ICU publishes rpm — interim rule `Q-064` → D-183 (Checklist 2.17) |
 | Warning lamp logic, checkers, oscillator | All software, in the ICU |
 | Everything grounded at X-13 / X-15 | Zone star nodes (D-017) |
 
@@ -87,6 +87,6 @@ stops, cut on impact.
 
 | ID | Unknown | Resolve by |
 |---|---|---|
-| V-037 | Fuel sender resistance range, empty → full, for A7 scaling | Measure at the tank, `T-012`, Checklist 0.5 |
+| V-037 → D-197 | Fuel sender resistance range, empty → full, for A7 scaling | Measure at the tank, `T-012` → D-197, Checklist 0.5 |
 | V-038 | Whether the coolant level unit and oscillator are still fitted | Inspect (A-010 caps the level senders either way) |
 | V-039 → D-082 / `V-067` | Tach signal type and level | Conditioning decided; pulses per rev still to confirm |

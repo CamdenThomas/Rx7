@@ -82,7 +82,7 @@ a shutoff timer (Checklist 2.18 puts the switch on the keypad).
 | Defroster switch | Broken (K-020); moves to the CAN keypad (Checklist 2.18) |
 | 20 A audio feed | O10 accessory bus (**L3-M 1**) + a **separate constant** off the busbar via K11/F1 (**L3-M 2**, D-020) |
 | Power antenna relay + motor | Gone (V-031 → D-097) |
-| Speaker wiring | Not a PMU concern; [`HEAD-UNIT.md`](../../02-PROJECTS/electrical-pmu/04-SUBSYSTEMS/HEAD-UNIT.md) |
+| Speaker wiring | Not a PMU concern; [`HEAD-UNIT.md`](../../99-ARCHIVE/HEAD-UNIT.md) |
 
 ## 6 · Unknowns
 

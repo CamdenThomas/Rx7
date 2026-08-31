@@ -66,13 +66,13 @@ not the M/T switch.
 | RG single marker bus | O6, split at the panel to **L2-M 7** (front park / markers) and **L4-M 1** (tail / plate / rear markers). Measure on `RG`, not `R` |
 | Light switch carrying RG current | A15 ladder input (**L3-S1 2**), 12 V side, reads switched 12 V with the D-167 bias |
 | Back-up on the shared GY turn bus | O19, its own channel → **L4-M 7** |
-| Inhibitor switch | Laddered onto one input (D-071) at **L1-S1 11** — **no PMU pin is free**, `Q-063` |
-| Incandescent 8 W / 3.8 W / 6 W / 27 W | **Stays incandescent** (D-119); LED is `lighting-body/` |
+| Inhibitor switch | Laddered onto one input (D-071) at **L1-S1 11** — **no PMU pin is free**, `Q-063` → D-182 |
+| Incandescent 8 W / 3.8 W / 6 W / 27 W | **Stays incandescent** (D-119); LED is the deferred lighting pass (D-201) |
 
 ## 5 · Unknowns
 
 | ID | Unknown | Resolve by |
 |---|---|---|
-| Q-019 → D-071 / `Q-063` | Reverse trigger — the inhibitor is laddered; which pin it lands on is the `Q-063` packet | Checklist 0.23 |
+| Q-019 → D-071 / `Q-063` → D-182 | Reverse trigger — the inhibitor is laddered; which pin it lands on is the `Q-063` → D-182 packet | Checklist 0.23 |
 | V-023 → D-097 | Cruise control unit | Gone, explicitly unwanted |
 | V-024 → D-097 | Stop light checker | Deleted from the design |

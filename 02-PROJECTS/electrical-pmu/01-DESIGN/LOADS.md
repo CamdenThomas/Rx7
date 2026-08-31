@@ -1,6 +1,6 @@
 # LOADS — estimated current draw and signal types
 
-*Rev 2026-08-30 · owns: the estimation method, the design (worst-case) draw per circuit, and the signal type of every input. Measured figures live in [`CHANNEL-SCHEDULE.md`](CHANNEL-SCHEDULE.md), not here.*
+*Rev 2026-08-31 · owns: the estimation method, the design (worst-case) draw per circuit, and the signal type of every input. Measured figures live in [`CHANNEL-SCHEDULE.md`](CHANNEL-SCHEDULE.md), not here.*
 
 **Every number here is an estimate.** Nothing in this file may be used to set
 a soft fuse — that comes from measurement ([`CHANNEL-SCHEDULE.md`](CHANNEL-SCHEDULE.md), D-164).
@@ -8,8 +8,8 @@ These exist so wire gauge, connector class and relay sizing can be decided
 before the meter session.
 
 **Baseline is stock incandescent bulbs** (D-124). The LED figures are kept in
-the appendix for the `lighting-body` project's second-pass fuse reset (D-122);
-they are not this project's design values.
+the appendix for the deferred lighting second pass (D-122, D-201); they are
+not this build's design values.
 
 ## Contents
 
@@ -72,7 +72,7 @@ the run and by crimp robustness, not by ampacity.
 | Blower | O16 | 20 A | motor is **DEAD** (K-023) — size from the replacement's spec (D-126) | | — |
 | Pop-up motor, each | O1 via K1–K4 | — | 4–6 | 15–25 | D |
 | Pop-up, both together | O1 | — | 8–12 | 25–50 | D |
-| Washer pump | `Q-063` | — | 3–5 | 8 | D |
+| Washer pump | `Q-063` → D-182 | — | 3–5 | 8 | D |
 | Window motors | K5–K8, **provisioned** | 30 A | 4–6 each | 10–15 each | C — measure when fitted |
 
 **O1 motor bus worst case (D-133):** two pop-ups moving = 8–12 A steady,
@@ -102,7 +102,7 @@ enforces the interlock downstream** (D-073) — heated and cooled seats are
 mutually exclusive by definition, and the de-icer only runs when the wipers
 are parked and cold. Realistic simultaneous worst case is heat + mirrors +
 nozzles ≈ 14 A. F10/F11 branch fuses protect each leg. Every comfort load is
-deferred ([`../04-SUBSYSTEMS/DEFERRED-FEATURES.md`](../04-SUBSYSTEMS/DEFERRED-FEATURES.md)); the bus itself is built.
+deferred ([`../02-HARNESS/CAVITY-STATE.md`](../02-HARNESS/CAVITY-STATE.md) lists them); the bus itself is built.
 
 ## 5 · Engine and fuel
 
@@ -113,11 +113,11 @@ deferred ([`../04-SUBSYSTEMS/DEFERRED-FEATURES.md`](../04-SUBSYSTEMS/DEFERRED-FE
 | Aeromotive Phantom 340 (planned) | O5 | — | 8–12 at pressure `V-040` | D |
 | Start relay coil (K9) | O21 | — | 0.15–0.2 | C |
 | Horn, pair | O11 | 15 A (shared with stop) | 4–8 | B |
-| Hatch / fuel-door solenoid | `Q-061` | 20 A | 3–5 momentary | D |
+| Hatch / fuel-door solenoid | `Q-061` → D-180 | 20 A | 3–5 momentary | D |
 | A/C magnet clutch | factory switch, K10 | — | 3–5 | C |
 
-O5 is sized for the Aeromotive, not the Carter (rule in
-[`../04-SUBSYSTEMS/PARTS-CHANGES.md`](../04-SUBSYSTEMS/PARTS-CHANGES.md) §7).
+O5 is sized for the Aeromotive, not the Carter — size the channel for the
+worst plausible replacement (the rule preserved in `99-ARCHIVE/PARTS-CHANGES.md` §7).
 
 ## 6 · Accessory bus — O10
 
@@ -152,7 +152,7 @@ the display backlight sit on the accessory bus.
 |---|---|
 | PMU standby | 150 |
 | Head unit clock, when K11 is closed | 10–20 |
-| DCU standby, if a keep-alive is fitted | `V-056` |
+| DCU standby, if a keep-alive is fitted | `V-056` → D-191 |
 | ICU standby | 0 — fully switched |
 | **Battery heater, winter** | `V-052` |
 
@@ -171,13 +171,13 @@ unknown that matters in a Fort Collins winter.
 | A4 | Pop-up LEFT position | Ladder from **motor-internal** limit contacts | 3 states | Ladder. Pinout by continuity test, `T-011` |
 | A5 | Pop-up RIGHT position | Same | 3 states | Same |
 | A6 | Door pins (+ luggage switch, `A-012`) | Ladder, 2–3 switches | 3–4 states | Factory already switches to ground |
-| A7 | Fuel level sender | **Resistive**, variable | `V-037` | Divider against +5 V ref. Needs the sender's ohm range |
+| A7 | Fuel level sender | **Resistive**, variable | `V-037` → D-197 | Divider against +5 V ref. Needs the sender's ohm range |
 | A8 | Hazard switch | Closure via 4.7 kΩ | on/off | Switch to ground; the wake source is a second pole |
-| A15 | Headlight switch | Ladder, **12 V side** | 3 states (5 with dimmer/pass — `Q-065`) | 0–20 V range, plus a 100 kΩ bias from +5 V (D-167) |
+| A15 | Headlight switch | Ladder, **12 V side** | 3 states (5 with dimmer/pass — `Q-065` → D-184) | 0–20 V range, plus a 100 kΩ bias from +5 V (D-167) |
 | A16 | Key position | Summed ladder, **12 V side** | 4 states | Same. Values are for the *combinations* (D-055) |
 
 Four functions have no input or output yet — inhibitor P/N/R, wiper park
-sense, the washer pump and the horn switch's PMU input. See `Q-063`.
+sense, the washer pump and the horn switch's PMU input. See `Q-063` → D-182.
 
 ## 10 · Signals that are not simple switches
 
@@ -200,9 +200,9 @@ box that draws the gauge reads the sender (D-083).
 
 ## Appendix A — LED figures for the lighting project
 
-Kept for the `lighting-body` second-pass fuse reset (D-122). **Not this
-project's design values.** Working figure 0.3 A per LED bulb, deliberately
-conservative.
+Kept for the deferred lighting second pass (D-122; [`TAIL-LIGHTS.md`](TAIL-LIGHTS.md)).
+**Not this build's design values.** Working figure 0.3 A per LED bulb,
+deliberately conservative.
 
 | Circuit | Ch | Filament A | LED A |
 |---|---|---|---|
@@ -214,6 +214,6 @@ conservative.
 
 Expect draw to drop 5–7× on the lamp circuits. Soft fuses set against
 filament are far too generous for LED, so every lamp circuit is re-measured
-and re-set as a second pass ([`../05-BUILD/MIGRATION-LOG.md`](../05-BUILD/MIGRATION-LOG.md)). Bulb selection
+and re-set as a second pass ([`../04-BUILD/MIGRATION-LOG.md`](../04-BUILD/MIGRATION-LOG.md)). Bulb selection
 is unconstrained — bulb-out detection was dropped (D-047), so draw no longer
 matters for function.

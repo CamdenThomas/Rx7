@@ -24,12 +24,15 @@
 #include <string.h>
 #include <math.h>
 
-/* ================= geometry ================= */
-static const int SCR_W = 800;
+/* ================= geometry =================
+ * 12.3-inch bar panel (D-193): 1280 x 480. At 8bpp the framebuffer is
+ * 614,400 bytes - PSRAM territory on the Teensy (D-170, EXTMEM in
+ * icu.ino); the desktop does not care. */
+static const int SCR_W = 1280;
 static const int SCR_H = 480;
 
 static const int TILE   = 16;                       /* dirty granularity */
-static const int TILES_X = SCR_W / TILE;            /* 50 */
+static const int TILES_X = SCR_W / TILE;            /* 80 */
 static const int TILES_Y = SCR_H / TILE;            /* 30 */
 
 /* ================= palette, RGB332 =================
@@ -685,10 +688,10 @@ public:
     Incline       incline;
     DigitField<2> gNum;
 
-    /* Contiguous segments - gap 0. 50 x 14 = 700, from 46 -> 746. */
-    static const int RPM_N   = 50;
-    static const int RPM_RED = 42;
-    static const int RPM_X   = 46,  RPM_Y = 38;
+    /* Contiguous segments - gap 0. 80 x 14 = 1120, from 80 -> 1200. */
+    static const int RPM_N   = 80;
+    static const int RPM_RED = 66;                  /* 7000 of 8500 */
+    static const int RPM_X   = 80,  RPM_Y = 38;
     static const int RPM_SW  = 14,  RPM_SH = 28, RPM_GAP = 0;
     static const int RPM_PITCH = RPM_SW + RPM_GAP;
     static const int RPM_SPAN  = RPM_N * RPM_PITCH;
@@ -696,19 +699,19 @@ public:
     /* Right column, one axis per element. Everything centres on these.
      *
      *   [icon]      VALUE      UNIT      [============------]
-     *    418         492        544        572 ........... 782
+     *    858         932        984        1012 .......... 1222
      */
-    static const int BAR_ICON_X = 418;                 /* icon left edge   */
-    static const int BAR_VAL_CX = 492;                 /* value centre     */
-    static const int BAR_UNIT_CX = 544;                /* unit centre      */
-    static const int BAR_X = 572, BAR_Y = 120, BAR_STEP = 56;
+    static const int BAR_ICON_X = 858;                 /* icon left edge   */
+    static const int BAR_VAL_CX = 932;                 /* value centre     */
+    static const int BAR_UNIT_CX = 984;                /* unit centre      */
+    static const int BAR_X = 1012, BAR_Y = 120, BAR_STEP = 56;
     static const int BAR_N = 14,  BAR_SW = 15, BAR_SH = 26, BAR_GAP = 0;
 
     static const int VAL_W = 14, VAL_H = 22, VAL_GAP = 4, VAL_T = 4;
     static const int VAL_SPAN = 3*VAL_W + 2*VAL_GAP;   /* 50 */
 
-    /* Centre - speed. 3 digits span 212, centred on 276 -> 170..382. */
-    static const int SPD_CX = 276, SPD_Y = 168;
+    /* Centre - speed. 3 digits span 212, centred on 640 -> 534..746. */
+    static const int SPD_CX = 640, SPD_Y = 168;
     static const int SPD_W = 62,  SPD_H = 132, SPD_GAP = 13, SPD_T = 13;
 
     /* Left column: THREE items. The G value is the circle's LABEL, not a
@@ -730,7 +733,7 @@ public:
      *       value      396..426
      *   margin    54
      */
-    static const int LCOL_CX  = 100;
+    static const int LCOL_CX  = 120;
     static const int LCOL_TOP = 142;
     static const int LCOL_GAP = 42;
     static const int G_LBL_GAP = 8;
@@ -752,7 +755,7 @@ public:
     static const int GNUM_TOP = G_TOP + 2*G_R + G_LBL_GAP;           /* 430 */
     static const int GNUM_CY  = GNUM_TOP + GNUM_H/2;                 /* 445 */
 
-    static const int WARN_Y = 410, WARN_X = 250;
+    static const int WARN_Y = 410, WARN_X = 440;
     static const int WARN_STEP = 92, WARN_SCALE = 2;
 
     /* One row. Every element shares the row's vertical centre line. */
@@ -771,7 +774,7 @@ public:
     void layout() {
         rpmBar.place(RPM_X, RPM_Y, RPM_N, RPM_SW, RPM_SH, RPM_GAP);
         rpmBar.redFrom = RPM_RED;
-        rpmNum.place(596, 8, 16, 24, 5, 4);
+        rpmNum.place(RPM_X + RPM_SPAN - 160, 8, 16, 24, 5, 4);
 
         speedNum.place(SPD_CX - 110, SPD_Y, SPD_W, SPD_H, SPD_GAP, SPD_T);
         speedNum.setCentre(SPD_CX);
@@ -850,7 +853,7 @@ public:
         gmeter.drawStatic(fb);
         drawTextCentred(fb, "G", LCOL_CX + 34, GNUM_CY - 10, 3, C_MID);
 
-        drawText(fb, "SA22C", 700, 14, 2, C_DIM);
+        drawText(fb, "SA22C", SCR_W - 100, 14, 2, C_DIM);
 
         rpmBar.drawTrough(fb);
         water.drawTrough(fb); oilP.drawTrough(fb);
@@ -952,16 +955,16 @@ public:
      * that is what makes this page affordable at all. */
     static const int DG_ROWS = 12;
     static const int DG_TOP  = 56, DG_STEP = 34;
-    static const int DG_COL0 = 18, DG_COL1 = 408;
+    static const int DG_COL0 = 18, DG_COL1 = 658;
     static const int DG_TAG = 0, DG_NAME = 34, DG_CUR = 152,
-                     DG_LIM = 222, DG_BAR = 286, DG_BAR_W = 84;
+                     DG_LIM = 222, DG_BAR = 286, DG_BAR_W = 200;
 
     void drawStaticDiag(Framebuffer &fb) {
         fb.clearAll(C_BLACK);
         drawText(fb, "PMU CHANNELS", 18, 16, 3, C_MID);
         drawText(fb, "A     LIMIT", DG_COL0 + DG_CUR, 34, 1, C_DIM);
         drawText(fb, "A     LIMIT", DG_COL1 + DG_CUR, 34, 1, C_DIM);
-        fb.fillRect(18, 48, 764, 1, C_MID);
+        fb.fillRect(18, 48, SCR_W - 36, 1, C_MID);
 
         for (int i = 0; i < PMU_CHANNELS; i++) {
             int col = (i < DG_ROWS) ? DG_COL0 : DG_COL1;
@@ -1000,7 +1003,7 @@ public:
     void drawStaticTrip(Framebuffer &fb) {
         fb.clearAll(C_BLACK);
         drawText(fb, "TRIP", 18, 16, 3, C_MID);
-        fb.fillRect(18, 48, 764, 1, C_MID);
+        fb.fillRect(18, 48, SCR_W - 36, 1, C_MID);
     }
 };
 

@@ -1,6 +1,6 @@
 # ASSISTANT.md — operating instructions for Claude
 
-*Rev 2026-08-30 · owns: how the agent works in this tree — session protocol, credit rules, edit process, delegation, decision handling, verification, the standing rules R1–R8. Audit history is [`02-PROJECTS/electrical-pmu/07-PROCESS/AUDITS.md`](02-PROJECTS/electrical-pmu/07-PROCESS/AUDITS.md)'s; the agent backlog is [`FORWARD-WORK.md`](02-PROJECTS/electrical-pmu/07-PROCESS/FORWARD-WORK.md)'s.*
+*Rev 2026-08-31 · owns: how the agent works in this tree — session protocol, credit rules, edit process, delegation, decision handling, verification, the standing rules R1–R8. Audit history is [`02-PROJECTS/electrical-pmu/05-PROCESS/AUDITS.md`](02-PROJECTS/electrical-pmu/05-PROCESS/AUDITS.md)'s; the agent backlog is [`FORWARD-WORK.md`](02-PROJECTS/electrical-pmu/05-PROCESS/FORWARD-WORK.md)'s.*
 
 Read this first, every session. It replaces remembered context. If anything here
 conflicts with a habit, this file wins. Rules only — nothing in this file is a
@@ -20,10 +20,10 @@ At session start, read **only**:
 1. This file.
 2. [`02-PROJECTS/electrical-pmu/STATUS.md`](02-PROJECTS/electrical-pmu/STATUS.md) — where the project is.
 3. The specific file the task touches.
-4. [`07-PROCESS/OPEN.md`](02-PROJECTS/electrical-pmu/07-PROCESS/OPEN.md) if the task touches an unresolved item.
+4. [`05-PROCESS/OPEN.md`](02-PROJECTS/electrical-pmu/05-PROCESS/OPEN.md) if the task touches an unresolved item.
 
 Project files live in numbered folders: `01-DESIGN` `02-HARNESS` `03-MODULES`
-`04-SUBSYSTEMS` `05-BUILD` `06-PROCUREMENT` `07-PROCESS`. The project
+`04-BUILD` `05-PROCESS` (renumbered 2026-08-31, D-200). The project
 [`README.md`](02-PROJECTS/electrical-pmu/README.md) is the map and names the
 owner of every fact.
 
@@ -31,7 +31,7 @@ Do **not** read the whole tree. Do **not** search past conversations for
 anything already written to a file. If it's in a file, it's true; cite the file
 and move on. If it's in a **generated block** (`<!-- gen:… -->`) or a generated
 file, the CSV under `02-HARNESS/data/` is the truth — edit that and run
-`07-PROCESS/tools/gen.py`.
+`05-PROCESS/tools/gen.py`.
 
 Camden names the mode. If he doesn't, ask once, in one line:
 `DECIDE / GENERATE / AUDIT / BUILD?`
@@ -209,9 +209,9 @@ Known-unreliable territory — flag automatically:
 
 Camden says "give me the diff." Claude:
 
-1. Runs `python 07-PROCESS/tools/registry.py` and `python 07-PROCESS/tools/check.py`
+1. Runs `python 05-PROCESS/tools/registry.py` and `python 05-PROCESS/tools/check.py`
    and fixes anything they report.
-2. Appends the same five lines to `07-PROCESS/CHANGELOG.md` under today's date.
+2. Appends the same five lines to `05-PROCESS/CHANGELOG.md` under today's date.
 3. Outputs, in ten lines or fewer:
 
 ```

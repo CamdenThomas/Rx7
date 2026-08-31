@@ -4,59 +4,35 @@
  * Includes the SAME cluster_core.h that the desktop simulator uses.
  * Nothing in the renderer changes between the two. Only this file differs.
  *
- * SETUP
- *   Put cluster_core.h in this folder, beside this .ino.
+ * DISPLAY (D-193): 1280x480 RGB332 through a BT817 EVE bridge — see
+ * bt817.h. The BT817 scans its own RAM_G out to the panel; each frame we
+ * push only the dirty tiles. If the BT817 never answers on SPI (not wired
+ * yet), the sketch keeps running headless and reports timing over serial.
  *
- * DISPLAY
- *   pushDirtyTiles() below is the only display-specific code. Fill in the
- *   three calls marked TODO once a panel is chosen (Q-060). The interface is
- *   decided: SPI with dirty-rectangle tiles from the RAM framebuffer (D-168);
- *   the arithmetic is in DCU-CLUSTER.md Appendix A.
- *
- *   Until then this compiles and runs with the display calls stubbed out,
- *   and reports real timing over serial.
+ * MEMORY: the 1280x480 framebuffer is 614,400 B — bigger than any single
+ * on-chip RAM bank, so it lives in EXTMEM (the two PSRAM chips soldered to
+ * the Teensy 4.1 underside pads). WITHOUT PSRAM THE SKETCH HALTS AT BOOT
+ * with a serial message. Solder the chips before flashing for real use.
+ * EXTMEM is not zero-initialised at startup; setup() clears it.
  */
 
 /* Bump on every change that alters behaviour; log it in 05-BUILD/LOGS.md
  * and tag the commit. Printed over serial at boot. */
-#define ICU_FW_VERSION "0.3.0-dev"
+#define ICU_FW_VERSION "0.4.0-dev"
 
 #include "cluster_core.h"
+#include "bt817.h"
 
-Framebuffer  fb;
+EXTMEM Framebuffer fb;          /* 614 KB — PSRAM only */
 Cluster      cluster;
 VehicleState state;
+Bt817        display;
 
-/* ---------------------------------------------------------------
- * The ONLY display-dependent function in the whole project.
- *
- * Walks the dirty tile map and pushes just those tiles. A tile is
- * 16x16 = 256 bytes at 8bpp.
- * --------------------------------------------------------------- */
+extern "C" uint8_t external_psram_size;   /* MB detected at startup, 0 = none */
+
 uint32_t pushDirtyTiles() {
-    uint32_t sent = 0;
-    static uint8_t tileBuf[TILE * TILE];
-
-    for (int ty = 0; ty < TILES_Y; ty++) {
-        for (int tx = 0; tx < TILES_X; tx++) {
-            if (!fb.tileDirty(tx, ty)) continue;
-
-            int x0 = tx * TILE, y0 = ty * TILE;
-            for (int r = 0; r < TILE; r++)
-                memcpy(&tileBuf[r * TILE], &fb.buf[(y0 + r) * SCR_W + x0], TILE);
-
-            /* TODO when the panel is chosen:
-             *   tft.setAddrWindow(x0, y0, TILE, TILE);
-             *   tft.writePixels8bpp(tileBuf, TILE * TILE);
-             */
-            sent += TILE * TILE;
-        }
-    }
-    return sent;
+    return display.pushDirty(fb, TILE, TILES_X, TILES_Y, SCR_W);
 }
-
-/* Merge adjacent dirty tiles into rows before pushing — fewer address-window
- * commands, same pixels. Worth doing once real timing is measurable. */
 
 void setup() {
     Serial.begin(115200);
@@ -64,8 +40,24 @@ void setup() {
 
     Serial.print("ICU cluster — Teensy host, firmware ");
     Serial.println(ICU_FW_VERSION);
+
+    if (external_psram_size == 0) {
+        while (true) {
+            Serial.println("FATAL: no PSRAM detected — framebuffer needs the two");
+            Serial.println("       soldered PSRAM chips (D-170). Halting.");
+            delay(2000);
+        }
+    }
+    Serial.print("PSRAM: "); Serial.print(external_psram_size); Serial.println(" MB");
+    memset(&fb, 0, sizeof(fb));             /* EXTMEM is not auto-cleared */
+
     Serial.print("framebuffer bytes: ");
     Serial.println((uint32_t)sizeof(fb.buf));
+
+    if (display.init(SCR_W, SCR_H))
+        Serial.println("BT817: up, scanout running");
+    else
+        Serial.println("BT817: no answer on SPI — running headless");
 
     cluster.layout();
 

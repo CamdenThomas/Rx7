@@ -86,7 +86,7 @@ The fault dies with the harness — but **components being reused** don't.
 
 | Reused item | Covered by |
 |---|---|
-| Ignition switch — a marginal IG contact would produce the same symptom on the supply side, and the switch becomes the A16 ladder input | **T-023** already continuity-tests which outputs stay live in RUN and START |
+| Ignition switch — a marginal IG contact would produce the same symptom on the supply side, and the switch becomes the A16 ladder input | **T-023 → D-178** already continuity-tests which outputs stay live in RUN and START |
 | Senders, motors, switches with PO splices at the device end | **T-019** already logs every PO splice |
 
 Both are already on the task list for other reasons. No extra work is needed.

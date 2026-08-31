@@ -1,6 +1,6 @@
 # LEG 1 — ENGINE
 
-*Rev 2026-08-30 · owns: what is in the engine leg and why. Cavities are [`PIN-MAP.md`](PIN-MAP.md)'s; draw figures are [`../01-DESIGN/LOADS.md`](../01-DESIGN/LOADS.md)'s.*
+*Rev 2026-08-31 · owns: what is in the engine leg and why. Cavities are [`PIN-MAP.md`](PIN-MAP.md)'s; draw figures are [`../01-DESIGN/LOADS.md`](../01-DESIGN/LOADS.md)'s.*
 
 **Boundary:** firewall grommet. Comes out for engine service or an engine swap.
 **Ground:** local star node on the block. Nothing returns through the firewall.
@@ -14,14 +14,15 @@
 |---|---|---|---|---|
 | Ignition coils (T, L) + igniters | B-18 … B-21 | Out | O12 via L1-P 1 | Twin-coil rotary. Refreshed Aug 2025 (M-005) |
 | Start relay K9 coil | — | Out | O21 via L1-S1 1 | Relay on the **inner fender / firewall** (D-148), not at the starter |
-| Alternator sense | A-08 | In | ICU via L1-S1 2 | Lamp-driven excitation — a divider at the ICU, not a clean digital signal |
+| Alternator BW excitation | A-08 | Out | O12 → F15 → L1-S1 2 | Factory-spec field feed (D-198) — without it the alternator never charges |
+| Alternator WB charge-sense | A-08 | In | L1-S2 8 → DP-ICU 11, capped until Phase 9 | DEFERRED (D-198); PMU voltage telemetry is the interim charge indicator |
 | Water temp sender | C-02 | In | ICU via L1-S1 3 | D-083. New sender sourced, not fitted |
 | Oil pressure sender | C-09 | In | ICU via L1-S1 4 | Not yet sourced |
 | Oil temperature sender | new | In | ICU via L1-S1 5 | Not yet sourced |
 | **Tach pickup** | B-19 YG | In | ICU via L1-S1 6, **shielded** | Coil primary pulse, >12 V spikes — opto or comparator at the ICU (D-082) |
 | VSS | new | In | ICU via L1-S1 7 | Not yet sourced |
 | Brake fluid level | C-05 | In | ICU via L1-S2 1 | Keep — safety (`A-010`) |
-| Inhibitor switch (A/T) | A-06 | In | L1-S1 11 — **no PMU pin yet** | Crank interlock + reverse. `Q-063` |
+| Inhibitor switch (A/T) | A-06 | In | P/N → A4 node via L1-S1 11 · R → A5 node via L1-S2 7 | Crank interlock + reverse lamps (`Q-063` → D-182, D-187) |
 | Coolant level, oil level sensors | C-08, C-06 | In | L1-S2 2–3, capped | Optional; no ICU cavity (`A-010`) |
 | Wideband O2 | K-001 | In | L1-S1 12, capped | Tap location unknown |
 
@@ -62,7 +63,7 @@ sub-harness. K10 is the factory clutch relay.
 | | Value |
 |---|---|
 | Heavy conductors (12 AWG) | 3 used + 1 spare |
-| Signal conductors | L1-S1 11 used of 12 · L1-S2 4 used of 12 |
+| Signal conductors | L1-S1 11 used of 12 · L1-S2 6 allocated of 12 |
 | CAN | 1 twisted pair, terminated at the engine-bay end |
 | Est. peak draw, current engine | ~8 A |
 | Est. peak draw, post-LS | ~30 A |

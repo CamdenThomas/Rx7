@@ -11,7 +11,7 @@
 | [`PMU_info/PMU CAD info/PMU-24.pdf`](PMU_info/PMU%20CAD%20info/PMU-24.pdf) | 2D dimensional drawing | 131 × 112.1 × 32.5 mm, 3 × Ø6.5 mounting. **Source for the cavity layout** (D-045) |
 | [`PMU_info/PMU CAD info/PMU-24.STEP`](PMU_info/PMU%20CAD%20info/PMU-24.STEP) | 3D model | For panel layout and clearance checking |
 | [`PMU_info/PMU CAD info/PMU-24_3D.pdf`](PMU_info/PMU%20CAD%20info/PMU-24_3D.pdf) | 3D views | |
-| [`TS-ICT-T-C-CAT-2018.pdf`](TS-ICT-T-C-CAT-2018.pdf) | **TE Connectivity Industrial & Commercial Transportation** terminals and connectors catalogue, 2018, 256 pages (V-062 → D-114) | DT family pp. 109–132, contacts 169–180, tooling 181–190, CAN 195–207. 15 MB. Does **not** cover the FCI/Sicma 211CC… terminals — those are Ballenger, [`BUY-LIST.md`](../02-PROJECTS/electrical-pmu/06-PROCUREMENT/BUY-LIST.md) §3 |
+| [`TS-ICT-T-C-CAT-2018.pdf`](TS-ICT-T-C-CAT-2018.pdf) | **TE Connectivity Industrial & Commercial Transportation** terminals and connectors catalogue, 2018, 256 pages (V-062 → D-114) | DT family pp. 109–132, contacts 169–180, tooling 181–190, CAN 195–207. 15 MB. Does **not** cover the FCI/Sicma 211CC… terminals — those are Ballenger, [`BOM.md`](../02-PROJECTS/electrical-pmu/05-PROCESS/BOM.md) §9 |
 | [`Part Dates - Sheet1.pdf`](Part%20Dates%20-%20Sheet1.pdf) | Camden's parts sheet — what was bought, when, from where | Imported into [`../00-CAR/parts-history.md`](../00-CAR/parts-history.md); incomplete, more to come |
 | [`photos/`](photos/README.md) | Harness photographs from `T-018`, by zone | Empty until Checklist 0.12. Naming convention in its README |
 

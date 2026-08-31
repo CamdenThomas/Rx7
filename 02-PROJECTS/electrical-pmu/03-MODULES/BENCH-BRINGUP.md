@@ -1,9 +1,9 @@
 # BENCH BRING-UP — firmware development sequence
 
-*Rev 2026-08-30 · owns: the firmware bring-up stages and what each one proved.*
+*Rev 2026-08-31 · owns: the firmware bring-up stages and what each one proved.*
 
 **In hand:** 3 × Teensy 4.1 · 5 × SN65HVD230 transceivers · **PMU-24 DL** ·
-one micro-USB cable (D-140). Still to buy: [`../05-BUILD/BENCH-KIT.md`](../05-BUILD/BENCH-KIT.md).
+one micro-USB cable (D-140). Still to buy: [`../04-BUILD/BENCH-KIT.md`](../04-BUILD/BENCH-KIT.md).
 
 **Stages 1–5 complete.** The entire CAN software stack is proven and the
 Stage 4–5 rigs have been absorbed into the ICU firmware, which the 415-assertion
@@ -13,7 +13,7 @@ card.
 ## Contents
 
 Before you plug anything in · Stages 1–7 · Now that the transceivers are here
-· The PMU is here · What is genuinely blocked · Next sessions
+· The PMU and V-065 · What is genuinely blocked · Next sessions
 
 ---
 
@@ -210,13 +210,15 @@ which lets ICU display work proceed without touching the PMU at all.
 > unsoldered.
 >
 > **Blocked on one item:** 120 Ω resistors — not in hand (D-140). See
-> [`../05-BUILD/BENCH-KIT.md`](../05-BUILD/BENCH-KIT.md).
+> [`../04-BUILD/BENCH-KIT.md`](../04-BUILD/BENCH-KIT.md).
 
-## The PMU is here — first job
+## The PMU and `V-065`
 
 **`V-065`:** read the PMU's actual CAN export format out of the client.
 ECUMaster fixes that structure — messages 0x100–0x130 in `can_map.h` are
-**intent** and must be reconciled against reality before anything depends on them.
+**intent** and must be reconciled against reality before anything depends on
+them. Since D-194 dropped the separate bench phase, this happens at
+Checklist 2.5 — the PMU powered in the car, laptop on DP-DIAG.
 
 ---
 
@@ -225,7 +227,7 @@ ECUMaster fixes that structure — messages 0x100–0x130 in `can_map.h` are
 | Blocked on | What |
 |---|---|
 | 120 Ω resistors | Real CAN between boards |
-| Panel choice `Q-060` | The three `pushDirtyTiles()` calls — everything else renders in the simulator today |
+| Panel choice `Q-060` → D-193 | The three `pushDirtyTiles()` calls — everything else renders in the simulator today |
 | microSD card | Stage 6, config-as-data, `stats.h` persistence |
 | `V-065` | Reconciling `can_map.h` 0x100–0x130 against the PMU's real export |
 | The car | Every real sensor value, and `V-067` pulses per rev |
@@ -241,7 +243,7 @@ ECUMaster fixes that structure — messages 0x100–0x130 in `can_map.h` are
 | Then | Real CAN between two boards, PMU simulator live | 120 Ω ×4, headers soldered | 2–3 |
 | Then | PMU first power-up, `V-065` CAN export | 5 A fuse, flying leads | 3–4 |
 | Then | Stages 6–7, SD config, logging, `stats.h` persistence | microSD card | 4–6 |
-| Parallel | DCU firmware skeleton (F-001), conditioning schematics (F-003/F-004) | Nothing | see [`../07-PROCESS/FORWARD-WORK.md`](../07-PROCESS/FORWARD-WORK.md) |
+| Parallel | DCU firmware skeleton (F-001), conditioning schematics (F-003/F-004) | Nothing | see [`../05-PROCESS/FORWARD-WORK.md`](../05-PROCESS/FORWARD-WORK.md) |
 
 Everything after `T-048` waits on about $10 of parts. By the end of those you
 have a validated CAN stack, a live two-node bus, a config system and

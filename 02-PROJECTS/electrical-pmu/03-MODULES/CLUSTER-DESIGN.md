@@ -1,6 +1,6 @@
 # CLUSTER DESIGN — forward scope
 
-*Rev 2026-08-30 · owns: cluster features not yet finished — the performance page, fault history, persistence. What is built lives in `firmware/icu/cluster_core.h`.*
+*Rev 2026-08-31 · owns: cluster features not yet finished — the performance page, fault history, persistence. What is built lives in `firmware/icu/cluster_core.h`.*
 
 > **The driving cluster is built**, and so is the page framework: drive,
 > diagnostics and trip pages exist in `cluster_core.h`, and `stats.h` feeds
@@ -21,16 +21,17 @@ The realisation · The static layer · Multi-page architecture · Page 2 perform
 
 ## The realisation that changes everything
 
-**800 × 480 at 8 bpp is 384 KB. The Teensy 4.1 has 1 MB of RAM.**
+**1280 × 480 at 8 bpp is 614 KB. It lives in the Teensy's 8 MB PSRAM
+(D-170, as resized by D-193/F-011).**
 
-**The framebuffer fits in RAM.**
+**The framebuffer fits in memory the renderer owns.**
 
 That decouples two things I had been treating as one:
 
 | | Cost | Constraint |
 |---|---|---|
-| **Composing** the image in RAM | CPU cycles at 600 MHz | Effectively free |
-| **Transmitting** changed pixels over SPI | 6 MB/s | The only real limit |
+| **Composing** the image in the framebuffer | CPU cycles at 600 MHz | Effectively free |
+| **Transmitting** changed tiles over QSPI into the BT817's RAM_G (D-193) | link rate — `V-084` sets the clock | The only real limit |
 
 So you can render **anything you like** into the buffer — gradients, blends,
 sub-pixel positioning, complex curves, dithering — and still only send the
@@ -38,16 +39,17 @@ rectangles that changed.
 
 **Complexity of drawing is free. Only motion costs.**
 
-Add PSRAM to the 4.1's pads and you get 8 MB more, enough for double-buffering
-and off-screen composition.
+The PSRAM on the 4.1's pads (fitted before install, D-170) leaves room beyond
+the framebuffer for double-buffering and off-screen composition.
 
 ---
 
 ## The static layer is free forever
 
-Drawn once at boot, never touched. **Boot time is the only cost, and 384 KB is
-64 ms.** You could redraw the entire background ten times during startup and
-nobody would notice.
+Drawn once at boot, never touched. **Boot time is the only cost — a full
+614 KB canvas push is on the order of 100 ms.** You could redraw the entire
+background several times during startup and nobody would notice; instant-on
+(D-192) still holds.
 
 **So make it elaborate.** Things that cost nothing after boot:
 
@@ -70,8 +72,9 @@ nobody would notice.
 
 **Pages you only read while stationary do not need 30 fps.**
 
-A full-screen redraw is 64 ms. As a page *transition* that is imperceptible. So a
-diagnostic page can redraw entirely on entry and then update lazily.
+A full-screen redraw costs on the order of 100 ms. As a page *transition*
+that is imperceptible. So a diagnostic page can redraw entirely on entry and
+then update lazily.
 
 | Page | Refresh | Constraint | State |
 |---|---|---|---|
@@ -176,11 +179,11 @@ worst moment of a drive whether or not you were looking.
 | Resource | Used | Available | Verdict |
 |---|---|---|---|
 | CPU | Rendering + CAN + 6 ADC + IMU + SD | 600 MHz M7 | **Barely working** |
-| RAM | 384 KB framebuffer | 1 MB, plus 8 MB PSRAM optional | Fits |
+| RAM | 614 KB framebuffer | 8 MB PSRAM, fitted (D-170) | Fits |
 | CAN | 1 bus used | 3 controllers | 2 spare |
 | ADC | 6 sensors | 18 inputs | 12 spare |
 | Timers | Tach + VSS capture | Many | Fine |
-| **SPI to display** | **6 MB/s** | — | **The only constraint** |
+| **QSPI to the BT817** | link rate, `V-084` | — | **The only constraint** |
 
 **Nothing on this page is blocked by the Teensy.** G-meter, incline, 24-channel
 diagnostics, trip logging and fault history all fit comfortably.
@@ -204,8 +207,8 @@ None of those are in scope. **The Teensy is the right part.**
 With a RAM framebuffer, the rule becomes: compose freely, but **track which
 rectangles changed and send only those.** Composition is free; transmission is not.
 
-A full-screen push costs 64 ms. As a page transition, invisible. Inside a 30 fps
-loop, fatal.
+A full-screen push costs on the order of 100 ms. As a page transition,
+invisible. Inside a 30 fps loop, fatal.
 
 ---
 
@@ -217,5 +220,5 @@ loop, fatal.
 | Q-057 → D-157 | Incline — a numeric pitch readout in the left column, not a horizon |
 | Q-058 → D-169 | Page switching — a dedicated small button by the display |
 | Q-059 → D-170 | PSRAM — fit it before the board is installed |
-| **Q-060** | **Panel selection — the next hardware decision.** [`OPEN.md`](../07-PROCESS/OPEN.md) |
+| **Q-060 → D-193** | **Panel selection — the next hardware decision.** [`OPEN.md`](../05-PROCESS/OPEN.md) |
 | F-007 | SD persistence for `stats.h` — write on key-off via the PMU shutdown delay (D-162) |

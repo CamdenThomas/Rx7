@@ -14,7 +14,7 @@
 | Body — rust, paint, trim, seals | | **not scoped** | K-007 survey first |
 
 **What stays in the electrical BOM:** every wire, connector, channel and soft
-fuse — [`../electrical-pmu/06-PROCUREMENT/BOM.md`](../electrical-pmu/06-PROCUREMENT/BOM.md).
+fuse — [`../electrical-pmu/06-PROCUREMENT/BOM.md`](../../02-PROJECTS/electrical-pmu/05-PROCESS/BOM.md).
 The IMU stayed there too; it is on the ICU carrier, not a lighting part.
 
 **Sequencing:** this was always last money. It no longer competes with the

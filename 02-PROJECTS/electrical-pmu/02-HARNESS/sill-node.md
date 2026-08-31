@@ -1,6 +1,6 @@
 # SILL NODE — secondary distribution point
 
-*Rev 2026-08-30 · owns: what the sill plate holds, the door connectors D1/D2, and the sill ground rule. Cavities are [`PIN-MAP.md`](PIN-MAP.md)'s.*
+*Rev 2026-08-31 · owns: what the sill plate holds, the door connectors D1/D2, and the sill ground rule. Cavities are [`PIN-MAP.md`](PIN-MAP.md)'s.*
 
 Created by D-065 (window relays at the sill) and D-068 (doors get their own
 connector pair). The sill is a small distribution node — the only one outside
@@ -15,7 +15,7 @@ has no independent removal boundary (D-132). Diagram: `diagrams/sill-doors.svg`.
 |---|---|---|
 | Door connectors D1, D2 — `DT06-08S` each (D-092) | 2 | **LIVE** — door pin, mirror motors, mirror heat |
 | Local ground stud | 1 | **LIVE** — every door return terminates here |
-| Mirror heat branch fuse F14 | 1 | DEFERRED — position fitted; conductor from O15 is `Q-062` |
+| Mirror heat branch fuse F14 | 1 | DEFERRED — position fitted; conductor from O15 is `Q-062` → D-181 |
 | Window H-bridge relay sockets K5–K8 | 4 | **PROVISIONED — fitted, empty** (D-131) |
 | Window branch fuse positions F8, F9 | 2 | **PROVISIONED — fitted, empty** |
 | Small backer plate behind the kick panel | 1 | Space to be measured — `V-055` / `T-028` |
@@ -34,7 +34,7 @@ One `DT06-08S` per door (D-092), exactly eight cavities, zero spare (D-093).
 | 1 | Window motor — leg A | 14 | K5/K6 (D1) · K7/K8 (D2) at the sill | PROVISIONED — **capped in the door** |
 | 2 | Window motor — leg B | 14 | same | PROVISIONED — capped in the door |
 | 3 | Door pin switch | 16 | A6 ladder via L4-S 2 | LIVE |
-| 4 | Mirror motor — common | 16 | Mirror control — `Q-062` / `V-060` | DEFERRED |
+| 4 | Mirror motor — common | 16 | Mirror control — `Q-062` → D-181 / `V-060` | DEFERRED |
 | 5 | Mirror motor — X axis | 16 | same | DEFERRED |
 | 6 | Mirror motor — Y axis | 16 | same | DEFERRED |
 | 7 | Mirror heat feed | 16 | Sill fuse F14 ← O15 | DEFERRED |
@@ -56,9 +56,9 @@ cavities and change the DCU's job.
 | Window motor bus feed | 12 AWG | O1 → L4-P 3 → K5–K8 commons | PROVISIONED, capped |
 | Window commands ×4 | 16 AWG | L3-S2 3–6 → box → L4-M 9–12 → K5–K8 coils | PROVISIONED, capped |
 | Door pin ladder | 16 AWG | D1 3 / D2 3 → L4-S 2 → A6 | LIVE |
-| **O15 comfort feed for mirror heat** | — | **not yet allocated** | `Q-062` |
-| **Mirror motor control from the dash** | — | **not yet allocated** — depends on `V-060` | `Q-062` |
-| **Door-pin wake source** | — | **not yet allocated** | `Q-062` |
+| **O15 comfort feed for mirror heat** | — | **not yet allocated** | `Q-062` → D-181 |
+| **Mirror motor control from the dash** | — | **not yet allocated** — depends on `V-060` | `Q-062` → D-181 |
+| **Door-pin wake source** | — | **not yet allocated** | `Q-062` → D-181 |
 
 Before D-065 four 12 AWG motor legs crossed the tunnel; now one provisioned
 feed and four 16 AWG commands do, and `L4-P2` disappeared entirely (D-066).
@@ -81,7 +81,7 @@ post (D-017).
 
 Electrically identical to the pop-up bridge; drawn in
 [`../01-DESIGN/SCHEMATICS.md`](../01-DESIGN/SCHEMATICS.md) §3. The car has no power windows today. Adding
-them later ([`../04-SUBSYSTEMS/DEFERRED-FEATURES.md`](../04-SUBSYSTEMS/DEFERRED-FEATURES.md) §1):
+them later (add-later detail archived in `99-ARCHIVE/DEFERRED-FEATURES.md` §1):
 
 1. Fit regulators with motors
 2. Plug into the capped D1/D2 legs
@@ -94,9 +94,9 @@ them later ([`../04-SUBSYSTEMS/DEFERRED-FEATURES.md`](../04-SUBSYSTEMS/DEFERRED-
 
 ## Build sequence impact
 
-| [`CHECKLIST.md`](../05-BUILD/CHECKLIST.md) step | What the sill adds |
+| [`CHECKLIST.md`](../04-BUILD/CHECKLIST.md) step | What the sill adds |
 |---|---|
-| 4.4 | Plate: 10 sockets, populate 5 — the other 4 sockets are here, empty |
+| 4.4 | Plate: 10 sockets, populate 4 (K1, K2, K11, K12) — the window sockets are here, empty |
 | 5.11 | Fabricate the sill plate — 4 sockets, F8/F9/F14 positions, ground stud |
 | 5.13 | Build D1 and D2 |
 | 6.6 | Install the sill node with the L4 leg, before the doors are connected |

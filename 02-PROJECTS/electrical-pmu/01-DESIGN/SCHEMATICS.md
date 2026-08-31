@@ -1,9 +1,10 @@
 # SCHEMATICS — panel sub-circuits
 
-*Rev 2026-08-30 · owns: the wake network, the H-bridges, the constant bus and the ground architecture — everything on the plate and at the sill that is not simply a wire from a PMU pin to a receptacle.*
+*Rev 2026-08-31 · owns: the wake network, the H-bridges, the constant bus and the ground architecture — everything on the plate and at the sill that is not simply a wire from a PMU pin to a receptacle.*
 
 Relay and fuse numbering is [`SPEC.md`](SPEC.md) §3's. Cavity numbers are
-[`../02-HARNESS/PIN-MAP.md`](../02-HARNESS/PIN-MAP.md)'s.
+[`../02-HARNESS/PIN-MAP.md`](../02-HARNESS/PIN-MAP.md)'s. The one-page drawing of
+everything here is [`panel-sheet.svg`](panel-sheet.svg) (X-002 — hand-drawn, not generated).
 
 ## Contents
 
@@ -16,15 +17,15 @@ Relay and fuse numbering is [`SPEC.md`](SPEC.md) §3's. Cavity numbers are
 ## 1 · Diode-OR wake network (D-056, D-072)
 
 Pin 7 (+12 V SW) turns the PMU on. Anything that must wake the car feeds it
-through a diode so the sources cannot backfeed each other. **Six inputs on an
-eight-position strip.**
+through a diode so the sources cannot backfeed each other. **Eight inputs —
+the strip is full (D-189, D-190).**
 
 ```
    ACC (key)    ──|>|──┐     L3-S1 12
    RUN (key)    ──|>|──┤     L3-S2 1
    Hazard sw    ──|>|──┤     L3-S2 2
-   Door pin     ──|>|──┼──── PIN 7  (+12V SW)      conductor: Q-062
-   Horn sw      ──|>|──┤     L3-S1 11     │
+   Door pin     ──|>|──┼──── PIN 7  (+12V SW)      sill inverter (D-188)
+   Horn (plate PNP off the A8 node — D-190)──┤ │
    O22 latch    ──|>|──┘     internal     └── 10 kΩ ── GND   (bleed, ensures clean off)
 ```
 
@@ -35,69 +36,67 @@ eight-position strip.**
 | Door pin | Interior lighting and the theatre fade on entry |
 | Horn switch | The horn sounds with the PMU asleep, same as the hazards (D-072) |
 | **O22 self-latch** | Lets the PMU hold itself awake and shut down on its own timer |
+| Wink L / R | A wink must work from asleep — the NO poles feed the strip; the request is pin-7-only, key out or ACC (D-189, `Q-071` → D-190) |
 
 **Diodes:** 1N5819 Schottky, 1 A 40 V. Schottky for the low forward drop —
 a 1N4007's 0.7 V eats into the wake threshold at cold-crank voltage.
 
-**The bleed resistor matters.** Without it, leakage through six diodes can hold
+**The bleed resistor matters.** Without it, leakage through eight diodes can hold
 pin 7 above the turn-off threshold and the PMU never sleeps. 10 kΩ to ground.
 
-**Build:** one 8-position terminal strip, six used. Label every input on the
+**Build:** one 8-position terminal strip, all eight used (the wink NO poles
+took the last two — D-189). Label every input on the
 strip itself. Diodes soldered directly to the strip, band (cathode) toward pin
 7. Supply for the switch-side sources is busbar F3 (5 A).
 
-Two loose ends, both in [`OPEN.md`](../07-PROCESS/OPEN.md): the door-pin wake needs a 12 V-side
-conductor from the sill that is not yet allocated (`Q-062`), and the horn
-switch needs a PMU *input* as well as a wake diode (`Q-063`). `V-075` asks
-whether the PMU's own shutdown delay makes the O22 latch unnecessary.
+The door-pin wake runs through a small PNP inverter at the sill node —
+emitter on the F3 supply, base sensing the A6 conductor through ~220 kΩ,
+output into the door-pin wake diode (`Q-069` → D-188; adds ~54 µA to A6,
+re-verify that ladder at Phase 6). One loose end, in [`OPEN.md`](../05-PROCESS/OPEN.md): the horn reads on
+the A8 ladder in every key position (`Q-071` → D-190; its asleep wake is a
+second plate PNP on the A8 node); winks are pin-7-only — key out or ACC. `V-075` asks whether the PMU's native shutdown delay
+makes the O22 latch unnecessary.
 
 ---
 
-## 2 · Pop-up H-bridges — K1–K4, on the plate
+## 2 · Pop-up run relays — K1 (LH), K2 (RH), on the plate (D-186)
 
-Two SPDT relays per side. This is the classic reversing pair: both relays idle
-to ground, and energising one sends current through the motor in that direction.
+The factory motors spin in **one direction only**: a crank flips the lamp
+over-centre each half-revolution and the internal cam stops the motor at each
+end. There is nothing to reverse — one SPDT relay per side; K3/K4's sockets
+go spare.
 
 ```
               O1 MOTOR BUS (25 A, flyback)
                         │
-          ┌─────────────┴─────────────┐
-          │  F6 (LH) / F7 (RH) 10 A   │
+          ┌─────────────┴──────────────┐
+       F6 (LH) 10 A               F7 (RH) 10 A
       ┌───┴───┐                   ┌───┴───┐
-      │  K1   │ 30            30  │  K2   │
-      │       │                   │       │
-   87a│   │87 │                87a│   │87 │
-      │   │   │                   │   │   │
-     GND  └───┼─── MOTOR A    B ───┘  GND
-              │                   │
-              └─── POP-UP LH ─────┘        L2-P1 3 / 4
-
-   K1 coil: 85 ── GND      K2 coil: 85 ── GND
-            86 ── RAISE cmd          86 ── LOWER cmd
+      │  K1   │30              30 │  K2   │
+      │       │87 ── run feed ──→ │       │87 ── run feed ──→ E-04
+      │       │     E-03 (V-081)  │       │
+      │  87a ─┴─ GND (brake)      │  87a ─┴─ GND (brake)
+      └───┬───┘                   └───┬───┘
+  coil: 85 ── GND              85 ── GND
+        86 ── RUN LH cmd       86 ── RUN RH cmd
 ```
 
-| K1 | K2 | Result |
-|---|---|---|
-| off | off | Both motor legs grounded — **motor braked** (D-057) |
-| **on** | off | A = +12, B = GND — motor runs UP |
-| off | **on** | A = GND, B = +12 — motor runs DOWN |
-| on | on | Both legs at +12 — no current, motor stopped |
+**Raise and lower are the same electrical act.** Energise the relay until
+that side's YG transit contact opens again (limit reached); a **4 s timeout
+with YG still closed = obstruction** — stop and fault, which is exactly what
+the factory indicator signalled by staying lit. Position is tracked in
+software ([`PMU-CONFIG.md`](PMU-CONFIG.md) §2); the wink switches (L3-S1 9/10) run one side a
+single half-cycle. 87a-to-ground gives dynamic braking at rest for free.
+Which E-03/E-04 conductor is the cam-interrupted run feed is `V-081`.
 
-**Both-off = braked** is the important property. The motor cannot coast past
-its limit switch. **K3/K4 are identical** for the right side, on L2-P2 1/2.
-
-**Limit switches are inside the motor** and interrupt drive at the end of
-travel mechanically. The A4/A5 ladders read position so software knows where
-the lamp is — they do not carry motor current. Pinout by continuity test
-(`T-011`); the A4/A5 values in [`LADDERS.md`](LADDERS.md) are provisional until then.
-
-**Command sources:** RAISE / LOWER from the A15 headlight ladder in software
-(D-038); wink switches (L3-S1 9/10) drive one side's pair independently.
+**Coils (D-189):** both fed from O1 through steering diodes, each in series
+with the *opposite* side's wink-switch NC pole — holding a wink blocks the
+other side, so only the winked lamp moves when the PMU runs the half-cycle.
+The wink NO poles feed the wake strip so a wink works from asleep; the request is
+pin-7-only, key out or ACC (`Q-071` → D-190).
 
 **Flyback:** O1 has the integrated high-power diode. Relay *coils* still need
 their own — a 1N4007 across each coil, band to +.
-
----
 
 ## 3 · Window H-bridges — K5–K8, at the sill — PROVISIONED
 
@@ -123,7 +122,7 @@ on the sill plate (D-065), fed by one 12 AWG motor-bus conductor from O1
                                   F9 ─────── D2 1/2 motor legs
 ```
 
-**When windows arrive** ([`../04-SUBSYSTEMS/DEFERRED-FEATURES.md`](../04-SUBSYSTEMS/DEFERRED-FEATURES.md) §1): populate
+**When windows arrive** (add-later detail archived in `99-ARCHIVE/DEFERRED-FEATURES.md` §1): populate
 K5–K8, fit F8/F9, uncap, enable the outputs and the interlock — never UP and
 DOWN on the same window, never both windows plus both pop-ups at once.
 
@@ -142,7 +141,7 @@ any PMU output.
         │            ├── F2   2 A ── Diagnostic port +12 V                     DP-DIAG 3
         │            ├── F3   5 A ── Wake diode network supply
         │            ├── F4  10 A ── A/C factory circuit
-        │            └── F13  —   ── spare — three claims, Q-061
+        │            └── F13  —   ── radar module feed (D-191; deferred, V-061)
         │
         └── PMU STUD (150 A max)
 ```
@@ -163,7 +162,7 @@ nozzles and the de-icer downstream and enforces the heat/cool interlock; the
 PMU carries no comfort logic. Until the DCU exists, F10 (10 A, seats) and F11
 (5 A, nozzles and de-icer) are the only protection between the PMU and the
 comfort loads — size them accordingly. The mirror-heat branch is F14 at the
-sill; the conductor that carries O15 to the sill is `Q-062`.
+sill; the conductor that carries O15 to the sill is `Q-062` → D-181.
 
 ---
 
@@ -192,14 +191,14 @@ the shortest and heaviest wire on the plate and the one to get right.
 
 | Item | Qty | Part |
 |---|---|---|
-| Wake diodes | 8 (6 used) | 1N5819 Schottky 1 A |
+| Wake diodes | 8 (8 used — D-189, D-190) | 1N5819 Schottky 1 A |
 | Wake bleed resistor | 1 | 10 kΩ 1/4 W |
 | A15/A16 bias resistors (D-167) | 2 | 100 kΩ 1/4 W |
-| Relay coil flyback diodes | 5 fitted (+4 with windows) | 1N4007 |
+| Relay coil flyback diodes | 4 fitted (+4 with windows) | 1N4007 |
 | Terminal strip, wake network | 1 | 8-position |
-| Relays, plate | 5 | ISO micro, SPDT (K1–K4, K11) |
-| Relay sockets, plate | 10 | ISO micro — 5 populated |
+| Relays, plate | 4 | ISO micro, SPDT (K1, K2, K11, K12) |
+| Relay sockets, plate | 10 | ISO micro — 4 populated; K3/K4's freed as spares (D-186) |
 | Relay sockets, sill | 4 | ISO micro — **empty** |
-| Fuse block, plate | 13 positions | ATO / mini |
+| Fuse block, plate | 12 positions — F1–F7, F10–F13, F15 | ATO / mini |
 | Fuse positions, sill | 3 | F8, F9 (empty), F14 |
 | Busbars | 2 | always-hot, ground |

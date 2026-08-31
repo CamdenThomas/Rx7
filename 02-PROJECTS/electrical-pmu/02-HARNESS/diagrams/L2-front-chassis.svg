@@ -26,13 +26,13 @@
 <rect x="20" y="629.0" width="150" height="18" rx="3" class="src"/>
 <text x="26" y="642.0" class="t">+5V</text>
 <rect x="20" y="647.0" width="150" height="18" rx="3" class="src"/>
-<text x="26" y="660.0" class="t">K1/K2</text>
+<text x="26" y="660.0" class="t">K1</text>
 <rect x="20" y="665.0" width="150" height="18" rx="3" class="src"/>
-<text x="26" y="678.0" class="t">K3/K4</text>
+<text x="26" y="678.0" class="t">K12</text>
 <rect x="20" y="683.0" width="150" height="18" rx="3" class="src"/>
-<text x="26" y="696.0" class="t">NO OUTPUT — Q-063</text>
+<text x="26" y="696.0" class="t">K2</text>
 <rect x="20" y="701.0" width="150" height="18" rx="3" class="src"/>
-<text x="26" y="714.0" class="t">NO PIN — Q-063</text>
+<text x="26" y="714.0" class="t">Mechanical park at the</text>
 <rect x="380" y="70" width="760" height="108" rx="4" class="box"/>
 <rect x="380" y="70" width="760" height="24" fill="#1b1b1b"/>
 <text x="388" y="86" fill="#fff" font-weight="700">L2-P1</text>
@@ -48,29 +48,27 @@
 <text x="980" y="132.0" class="d">LIVE</text>
 <path d="M170,128.0 C 260,128.0 290,128.0 380,128.0" fill="none" stroke="#c0392b" stroke-width="2"/>
 <text x="388" y="152.0" class="h">3</text>
-<text x="416" y="152.0" class="t">Pop-up LH motor — leg A</text>
+<text x="416" y="152.0" class="t">Pop-up LH run feed — conductor ID V-081</text>
 <text x="850" y="152.0" class="d">12 RED/WHT</text>
 <text x="980" y="152.0" class="d">LIVE</text>
 <path d="M170,656.0 C 260,656.0 290,148.0 380,148.0" fill="none" stroke="#c0392b" stroke-width="2"/>
 <text x="388" y="172.0" class="h">4</text>
-<text x="416" y="172.0" class="t">Pop-up LH motor — leg B</text>
+<text x="416" y="172.0" class="t">SPARE — freed by D-186</text>
 <text x="850" y="172.0" class="d">12 RED/WHT</text>
-<text x="980" y="172.0" class="d">LIVE</text>
-<path d="M170,656.0 C 260,656.0 290,168.0 380,168.0" fill="none" stroke="#c0392b" stroke-width="2"/>
+<text x="980" y="172.0" class="d">SPARE</text>
 <rect x="380" y="200" width="760" height="108" rx="4" class="box"/>
 <rect x="380" y="200" width="760" height="24" fill="#1b1b1b"/>
 <text x="388" y="216" fill="#fff" font-weight="700">L2-P2</text>
 <text x="490" y="216" fill="#ddd">DTP06-4S → DTP04-4P · 4 cav · Dash post</text>
 <text x="388" y="242.0" class="h">1</text>
-<text x="416" y="242.0" class="t">Pop-up RH motor — leg A</text>
+<text x="416" y="242.0" class="t">Pop-up RH run feed — conductor ID V-081</text>
 <text x="850" y="242.0" class="d">12 RED/WHT</text>
 <text x="980" y="242.0" class="d">LIVE</text>
-<path d="M170,674.0 C 260,674.0 290,238.0 380,238.0" fill="none" stroke="#c0392b" stroke-width="2"/>
+<path d="M170,692.0 C 260,692.0 290,238.0 380,238.0" fill="none" stroke="#c0392b" stroke-width="2"/>
 <text x="388" y="262.0" class="h">2</text>
-<text x="416" y="262.0" class="t">Pop-up RH motor — leg B</text>
+<text x="416" y="262.0" class="t">SPARE — freed by D-186</text>
 <text x="850" y="262.0" class="d">12 RED/WHT</text>
-<text x="980" y="262.0" class="d">LIVE</text>
-<path d="M170,674.0 C 260,674.0 290,258.0 380,258.0" fill="none" stroke="#c0392b" stroke-width="2"/>
+<text x="980" y="262.0" class="d">SPARE</text>
 <text x="388" y="282.0" class="h">3</text>
 <text x="416" y="282.0" class="t">SPARE heavy</text>
 <text x="850" y="282.0" class="d">12 RED</text>
@@ -101,8 +99,8 @@
 <text x="388" y="432.0" class="h">4</text>
 <text x="416" y="432.0" class="t">Washer pump</text>
 <text x="850" y="432.0" class="d">14 ORN/VIO</text>
-<text x="980" y="432.0" class="d">OPEN</text>
-<path d="M170,692.0 C 260,692.0 290,428.0 380,428.0" fill="none" stroke="#aab" stroke-width="1.4"/>
+<text x="980" y="432.0" class="d">LIVE</text>
+<path d="M170,674.0 C 260,674.0 290,428.0 380,428.0" fill="none" stroke="#d68910" stroke-width="1.4"/>
 <text x="388" y="452.0" class="h">5</text>
 <text x="416" y="452.0" class="t">Turn LEFT front</text>
 <text x="850" y="452.0" class="d">16 VIO/GRN</text>
@@ -139,8 +137,8 @@
 <text x="388" y="622.0" class="h">3</text>
 <text x="416" y="622.0" class="t">Wiper park sense</text>
 <text x="850" y="622.0" class="d">16 GRY/WHT</text>
-<text x="980" y="622.0" class="d">OPEN</text>
-<path d="M170,710.0 C 260,710.0 290,618.0 380,618.0" fill="none" stroke="#aab" stroke-width="1.4"/>
+<text x="980" y="622.0" class="d">DEFERRED</text>
+<path d="M170,710.0 C 260,710.0 290,618.0 380,618.0" fill="none" stroke="#5d6d7e" stroke-width="1.4" stroke-dasharray="6 4"/>
 <text x="388" y="642.0" class="h">4</text>
 <text x="416" y="642.0" class="t">+5 V reference</text>
 <text x="850" y="642.0" class="d">16 PNK</text>

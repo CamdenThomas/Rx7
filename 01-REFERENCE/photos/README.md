@@ -18,4 +18,4 @@
 **Take more than you think you need.** The harness is coming out and it isn't
 coming back. Wide shot first, then every connector close enough to read the
 wire colours. The index of what was photographed goes in
-[`../../02-PROJECTS/electrical-pmu/05-BUILD/LOGS.md`](../../02-PROJECTS/electrical-pmu/05-BUILD/LOGS.md).
+[`../../02-PROJECTS/electrical-pmu/04-BUILD/LOGS.md`](../../02-PROJECTS/electrical-pmu/04-BUILD/LOGS.md).

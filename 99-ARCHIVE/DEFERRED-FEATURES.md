@@ -94,8 +94,8 @@ In scope (Q-013 → D-048). Realistically this is the last thing to arrive.
 |---|---|
 | Mirror heat feed | `D1`/`D2` cav 7, 16 AWG, capped |
 | Mirror heat branch fuse F14 | Sill node, position provisioned |
-| O15 feed from the dash post to the sill | **Not yet allocated** — `Q-062` |
-| Mirror motor control, dash → sill | **Not yet allocated** — depends on `V-060`, `Q-062` |
+| O15 feed from the dash post to the sill | **Not yet allocated** — `Q-062` → D-181 |
+| Mirror motor control, dash → sill | **Not yet allocated** — depends on `V-060`, `Q-062` → D-181 |
 
 Bundled with the new mirrors (`T-031`) — larger, heated, digital control. The
 door connector already carries three motor conductors plus heat, exactly 8
@@ -116,7 +116,7 @@ Cold-weather items. Low cost, low effort, high value in a Fort Collins winter.
 Concealed sensors front and rear, DCU-managed (`V-061`). Rear link conductors
 are allocated in `L3-S3` 1–3 → `L4-S` 5–7 and the module's power in `L3-S2`
 7–8; the front sensor wires locally to the module. Interface not yet designed;
-the module's fuse position is part of `Q-061`.
+the module's fuse position is part of `Q-061` → D-180.
 
 ---
 

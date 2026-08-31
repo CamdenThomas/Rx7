@@ -1,6 +1,6 @@
 # LEG 3 — DASH
 
-*Rev 2026-08-30 · owns: what is in the dash leg and why. Cavities are [`PIN-MAP.md`](PIN-MAP.md)'s; draw figures are [`../01-DESIGN/LOADS.md`](../01-DESIGN/LOADS.md)'s.*
+*Rev 2026-08-31 · owns: what is in the dash leg and why. Cavities are [`PIN-MAP.md`](PIN-MAP.md)'s; draw figures are [`../01-DESIGN/LOADS.md`](../01-DESIGN/LOADS.md)'s.*
 
 **Boundary:** the dash structure. Comes out when the dash comes out.
 **Ground:** dash star node, adjacent to the panel.
@@ -18,17 +18,17 @@ of this leg either.
 |---|---|---|---|---|
 | Key / ignition switch | — | Summed ladder, 12 V side | A16 via L3-S1 1 | ACC and IG contacts also feed the wake strip (L3-S1 12, L3-S2 1) |
 | Headlight switch | E-01 LIGHT | Ladder, 12 V side | A15 via L3-S1 2 | OFF/PARK/HEAD. Also commands the pop-ups (D-038) |
-| Dimmer / passing | E-01 DIMMER | Software off A15 (D-051) — states not yet defined | `Q-065` | |
+| Dimmer / passing | E-01 DIMMER | Software off A15 (D-051) — states not yet defined | `Q-065` → D-184 | |
 | Turn stalk | F-02 TURN | Ladder to ground | A1 via L3-S1 3 | L/off/R |
 | Hazard switch | F-02 HAZARD | Closure + second pole as a wake source | A8 via L3-S1 6; wake L3-S2 2 | |
 | Wiper stalk | D-03 | Ladder to ground | A2 via L3-S1 4 | 5 states |
 | Brake pedal switch | F-11 | Closure to ground | A3 via L3-S1 5 | |
-| Wink switches L / R | new | Closure ×2 → K1–K4 coils | L3-S1 9, 10 | Momentary override (D-038) |
-| Horn switch | steering pad | Closure + wake diode (D-072) | Wake L3-S1 11; **PMU input `Q-063`** | |
+| Wink switches L / R | new | SPDT ×2 — NC poles cross into K1/K2 coil paths, NO poles feed the wake strip | L3-S1 9, 10 | Momentary override (D-038, D-189) |
+| Horn switch | steering pad | Closure + wake diode (D-072) | Wake L3-S1 11; **PMU input `Q-063` → D-182** | |
 | Window switches DRV/PASS | new, not fitted | Closure ×4 → K5–K8 at the sill | L3-S2 3–6, **capped** | PROVISIONED (D-131) |
 | Blower switch + resistor pack | G-15, G-14 | In the motor path, fed by O16 | via L3-P 1 | Factory switch sets speed; the PMU only enables O16 |
 | Defroster, interior override, spare keys | G-24 → keypad | CAN keypad | DP-KEY | D-031. The factory defrost switch is broken (K-020) and deleted |
-| Parking brake, glove box, hatch, fuel door | C-04, H-02, H-13, H-15 | CAN keypad | DP-KEY | D-031. Hatch and fuel-door *outputs* are `Q-061` |
+| Parking brake, glove box, hatch, fuel door | C-04, H-02, H-13, H-15 | CAN keypad | DP-KEY | D-031. Hatch and fuel-door *outputs* are `Q-061` → D-180 |
 
 **No retract switch.** Deleted (D-038) — pop-ups raise from the A15 ladder
 reaching HEAD. Wink switches are momentary overrides.
@@ -43,7 +43,7 @@ reaching HEAD. Wink switches are momentary overrides.
 | Head unit constant | Busbar F1 via K11 | L3-M 2 | Off the PMU — it sleeps (D-020) |
 | Illumination bus | O20 branch | L3-S1 8 | PWM. Rheostat deleted |
 | ICU + DCU logic | O10 | DP-ICU 1, DP-DCU 1 | Drops, not this leg |
-| Radar module | O10 branch, fuse `Q-061` | L3-S2 7, 8 | DEFERRED (`V-061`) |
+| Radar module | Busbar F13 (`V-056` → D-191) | L3-S2 7, 8 | DEFERRED (`V-061`) |
 
 ## Deleted from this leg
 

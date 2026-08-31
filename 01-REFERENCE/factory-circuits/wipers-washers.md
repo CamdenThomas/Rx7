@@ -51,10 +51,10 @@ allocated. Decide whether it stays.
 | Factory | PMU-24 plan |
 |---|---|
 | Control Processing Unit for intermittent | Deleted (D-014) — software timer on O8 (Checklist 2.12) |
-| Motor internal park switch | Retained as a wire (**L2-S 3**) — **no PMU pin is free**; whether O8 braking needs it is `V-074`, the pin is `Q-063` |
+| Motor internal park switch | Retained as a wire (**L2-S 3**) — **no PMU pin is free**; whether O8 braking needs it is `V-074`, the pin is `Q-063` → D-182 |
 | LO / HI brushes | O8 (braking) → **L2-M 1**; O9 → **L2-M 2** |
 | Combination switch carrying motor current | A2 five-step resistor ladder, switch-to-ground, **L3-S1 4** |
-| Washer motor on the switch directly | PMU-driven (Q-016 → D-051) on **L2-M 4** — **no output is free**, `Q-063`. Pump not working, K-022 |
+| Washer motor on the switch directly | PMU-driven (Q-016 → D-051) on **L2-M 4** — **no output is free**, `Q-063` → D-182. Pump not working, K-022 |
 | Rear wiper + washer | Gone (V-027 → D-097) |
 | Ground at X-13 | Front star node |
 

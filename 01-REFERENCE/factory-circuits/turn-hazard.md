@@ -70,4 +70,4 @@ star node in each zone and forbids grounds from crossing a bulkhead.
 | Hazard on its own constant feed | A8 input (**L3-S1 6**) + second pole to the wake diode strip (**L3-S2 2**) | PMU wakes for hazards key-off (D-056, D-072) |
 | Separate L and R output wiring | O17 (VIO/GRN) → **L2-M 5** + **L4-M 5**; O18 (VIO/YEL) → **L2-M 6** + **L4-M 6** | Split at the panel to the front and rear legs |
 | Shared ground at X-13 | Front and rear star nodes | Direct fix for K-008 (D-105 — not fixed in the factory harness, dies with it) |
-| 27 W incandescent | **Stays incandescent** (D-119). Measured 3.4 A per side | LED is `lighting-body/`; soft fuses re-set after any bulb change (D-122) |
+| 27 W incandescent | **Stays incandescent** (D-119). Measured 3.4 A per side | LED is the deferred lighting pass (D-201); soft fuses re-set after any bulb change (D-122) |

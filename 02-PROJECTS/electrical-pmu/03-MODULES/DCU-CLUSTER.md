@@ -1,6 +1,6 @@
 # DCU & ICU — the two CAN modules
 
-*Rev 2026-08-30 · owns: module scope, the node split, hardware selection, power supply, the sensor set and the display decision. The message map is [`CAN-MESSAGES.md`](CAN-MESSAGES.md)'s; the cluster layout is `firmware/icu/cluster_core.h`'s.*
+*Rev 2026-08-31 · owns: module scope, the node split, hardware selection, power supply, the sensor set and the display decision. The message map is [`CAN-MESSAGES.md`](CAN-MESSAGES.md)'s; the cluster layout is `firmware/icu/cluster_core.h`'s.*
 
 Two Teensy 4.1 nodes on CAN2 (D-084, D-094): a climate **DCU** and an
 instrument cluster **ICU**. In full scope since D-075, joining a finished car
@@ -77,7 +77,7 @@ Cheap now, impossible later.
 | Servo drivers | 3–4 channels | HVAC blend, mode, recirc doors |
 | Comfort switching | 5–6 MOSFET or relay channels | Seats, mirrors, nozzles, de-icer off O15 (D-073) |
 | Power | §8 | |
-| Climate memory | `V-056` — whether a constant keep-alive is needed at all | Fuse position `Q-061` |
+| Climate memory | `V-056` → D-191 — whether a constant keep-alive is needed at all | Fuse position `Q-061` → D-180 |
 
 **Firmware:** not started. `dcu.ino` + `climate.h` mirroring the ICU
 structure is forward-work item F-001 — nothing blocks it.
@@ -87,9 +87,9 @@ structure is forward-work item F-001 — nothing blocks it.
 | Item | Spec | Note |
 |---|---|---|
 | MCU | **Teensy 4.1**, socketed | 8 MB PSRAM to be fitted on the pads (D-170) |
-| **Display** | **One wide 800 × 480 panel** (D-150) | Not two round TFTs. One bezel aperture |
-| **Interface** | **SPI with dirty-rectangle rendering** from a 384 KB RAM framebuffer (D-168) | Built and proven — `firmware/icu/cluster_core.h`. RA8875/76 stays the fallback |
-| Panel | `Q-060` — **the next hardware decision** | 800–1000 nits (`V-058`), RGB332 mode, SPI, optically bonded, backlight PWM |
+| **Display** | **One 12.3″ bar panel, 1280 × 480 canvas** (`Q-060` → D-193; supersedes D-150's 800 × 480) | Instant-on is a hard requirement (D-192). One bezel aperture |
+| **Interface** | **BT817 EVE over QSPI** — dirty-rectangle tiles from a 614 KB PSRAM framebuffer (D-168 as amended by D-193) | Driver written (`firmware/icu/bt817.h`, F-008); timing constants await `V-084` |
+| Glass + bridge | `V-085` decides the chain | (i) SN75LVDS83B → 330-nit 1280 × 480 cluster glass, only if the brow shades it (`T-007`); (ii) TFP410-class HDMI → 900–1000-nit 1920 × 720 panel via its scaler board — the default |
 | Backlight dimming | PWM, referenced to O20 via DP-ICU 5 | Matches panel dimming automatically |
 | **IMU** | MPU-6050 / ICM-20948 class, I²C, on the carrier (D-109, D-161) | G-meter, pitch. Axis convention in D-161; PCB orientation `V-073` |
 | CAN transceiver | TCAN1042 / TCAN1051 (D-085) | |
@@ -136,7 +136,7 @@ every input, opto for the tach — is forward-work item F-003/F-004. **The Teens
 | Code | What | Housing | Used |
 |---|---|---|---|
 | **DP-ICU** | Power, ground, CAN2, dimming reference, six engine sensors, brake fluid | DT06-12S | 12 |
-| **DP-DCU** | Power, constant (if `V-056`), ground, CAN2 | DT06-6S | 5 |
+| **DP-DCU** | Power, constant (if `V-056` → D-191), ground, CAN2 | DT06-6S | 5 |
 
 Every cavity is in [`../02-HARNESS/PIN-MAP.md`](../02-HARNESS/PIN-MAP.md). The DCU also takes a short
 heavy lead off O15 at the plate for the comfort bus it switches, and drives the
@@ -156,7 +156,7 @@ Neither Teensy goes anywhere near raw 12 V.
 | Local | Teensy's onboard 3.3 V | Fine for the MCU |
 
 **The load-dump TVS is not optional.** Both modules are switched from O10, so
-neither has a standby draw to budget — except `V-056`.
+neither has a standby draw to budget — except `V-056` → D-191.
 
 ## 9 · What the modules add
 
@@ -169,8 +169,7 @@ neither has a standby draw to budget — except `V-056`.
 | 9 | Install, calibrate senders, tune the display | 20–35 |
 | 9 | Shakedown — sensor accuracy, legibility at night and in sun | 10–15 |
 
-Money: [`../06-PROCUREMENT/BOM.md`](../06-PROCUREMENT/BOM.md) §"DCU + ICU" — hard parts specified at
-$289–469, display/servos/senders/enclosures $230–500.
+Money: [`../05-PROCESS/BOM.md`](../05-PROCESS/BOM.md) §Wave 3 — the module era, ~$510–1,170.
 
 ## 10 · The sequencing rule that must not break (D-081)
 
@@ -181,7 +180,7 @@ car and are never a dependency for it starting, running, or being legal.
 
 Two PMU functions were written against an RPM the PMU cannot see until the ICU
 publishes 0x200 — the fuel-pump cut and the crank interlock. The interim rule
-is `Q-064`.
+is `Q-064` → D-183.
 
 ---
 

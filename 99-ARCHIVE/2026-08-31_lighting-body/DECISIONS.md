@@ -62,7 +62,7 @@ is a beam pattern measured across a grid of angles.
 against incandescent are far too generous for LED — a tail circuit set at 6 A
 does not protect a 3 A LED load. The same rule is D-122 on the electrical side;
 the second-pass table is already waiting in
-[`../electrical-pmu/05-BUILD/MIGRATION-LOG.md`](../electrical-pmu/05-BUILD/MIGRATION-LOG.md).
+[`../electrical-pmu/05-BUILD/MIGRATION-LOG.md`](../../02-PROJECTS/electrical-pmu/04-BUILD/MIGRATION-LOG.md).
 
 **L-004** — **Hard prerequisite: the electrical rebuild is finished and shaken
 down.** Phases 6, 7 and 8 complete, factory harness out, car driving on the PMU

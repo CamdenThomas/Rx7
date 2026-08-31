@@ -30,7 +30,7 @@ L2-P1 1/2 are unchanged whatever is chosen.
 |---|---|---|---|
 | **V-063** | Stock tail light aperture — width, height, depth, mounting. The whole strip design is scaled from a nominal 30 cm | Tape measure | `T-034` |
 | V-064 | A DOT/SAE-compliant LED module source, red and white, with published candela | Catalogue search | `T-037` |
-| V-066 | 7-inch round or rectangular sealed beams on this car — and whether LED housings are already fitted ([`LOADS.md`](../electrical-pmu/01-DESIGN/LOADS.md) says they are; [`TAIL-LIGHTS.md`](TAIL-LIGHTS.md) §8 assumed round sealed beams) | Look in the bucket | `T-035` |
+| V-066 | 7-inch round or rectangular sealed beams on this car — and whether LED housings are already fitted ([`LOADS.md`](../../02-PROJECTS/electrical-pmu/01-DESIGN/LOADS.md) says they are; [`TAIL-LIGHTS.md`](../../02-PROJECTS/electrical-pmu/01-DESIGN/TAIL-LIGHTS.md) §8 assumed round sealed beams) | Look in the bucket | `T-035` |
 
 ## Body — not yet scoped
 

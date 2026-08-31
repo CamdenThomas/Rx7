@@ -58,9 +58,9 @@ served the factory carburetor.
 | Factory | PMU-24 plan |
 |---|---|
 | Ignition switch ST carrying solenoid current | A16 key ladder input (**L3-S1 1**); O21 drives the start relay K9 coil via **L1-S1 1** — K9 on the inner fender, not at the starter (A-005 → D-148) |
-| Inhibitor switch in series with crank | Becomes a PMU **input**; crank interlock in software (Checklist 2.16). Pin is `Q-063` |
-| Alternator BW excitation via 7.5 A fuse | Alternator lamp / sense → **L1-S1 2 → DP-ICU 11**, an ICU input (D-083), 16 AWG |
-| Alternator WR to battery bus | Unchanged — heavy cable to the distribution post, does not pass through the PMU ([`BATTERY-INSTALL.md`](../../02-PROJECTS/electrical-pmu/04-SUBSYSTEMS/BATTERY-INSTALL.md) §4) |
+| Inhibitor switch in series with crank | Becomes a PMU **input**; crank interlock in software (Checklist 2.16). Pin is `Q-063` → D-182 |
+| Alternator BW excitation via 7.5 A fuse | **Reproduced to factory spec (D-198): O12 branch → F15 (7.5 A) → L1-S1 2 → BW.** BW is the field FEED, not a lamp — the earlier sense-only plan would never have excited the alternator. The WB charge-sense gets **L1-S2 8 → DP-ICU 11** at Phase 9 |
+| Alternator WR to battery bus | Unchanged — heavy cable to the distribution post, does not pass through the PMU ([`BATTERY-INSTALL.md`](../../02-PROJECTS/electrical-pmu/04-BUILD/BATTERY-INSTALL.md) §4) |
 | Hot start / sub-zero hardware | Gone — zero remain post-Weber (V-025 → D-097) |
 
 The alternator's B+ cable and the starter cable never touch the PMU. Only the
@@ -72,4 +72,4 @@ sense wire and the relay coil do.
 |---|---|---|
 | V-025 → D-097 | Cold-start components after the Weber conversion | None remain |
 | V-002 | Alternator output rating | Read the case, `T-004`, Checklist 0.4 |
-| V-026 → V-050 / `Q-063` | Inhibitor switch condition and pin function | Continuity test with `T-023`; pin allocation in `Q-063` |
+| V-026 → V-050 → D-178 / `Q-063` → D-182 | Inhibitor switch condition and pin function | Continuity test with `T-023` → D-178; pin allocation in `Q-063` → D-182 |

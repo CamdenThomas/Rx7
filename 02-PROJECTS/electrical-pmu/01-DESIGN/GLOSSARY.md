@@ -1,6 +1,6 @@
 # GLOSSARY
 
-*Rev 2026-08-30 · owns: every ID prefix, channel code, connector code, colour scheme and term used in shorthand across the project.*
+*Rev 2026-08-31 · owns: every ID prefix, channel code, connector code, colour scheme and term used in shorthand across the project.*
 
 Read this before anything else if the notation is unfamiliar.
 
@@ -10,26 +10,26 @@ Read this before anything else if the notation is unfamiliar.
 
 | Prefix | Means | Lives in |
 |---|---|---|
-| `D-###` | **Decision** — settled, with reasoning. Append-only; reversed by a new entry that marks the old one superseded | [`../07-PROCESS/DECISIONS.md`](../07-PROCESS/DECISIONS.md) |
-| `Q-###` | **Question** — needs Camden's judgement. Presented as a four-line packet | [`../07-PROCESS/OPEN.md`](../07-PROCESS/OPEN.md) |
-| `A-###` | **Assumption** — Claude picked a default, needs a yes/no | [`../07-PROCESS/OPEN.md`](../07-PROCESS/OPEN.md) |
-| `V-###` | **Verify** — a fact to confirm before money is spent | [`../07-PROCESS/OPEN.md`](../07-PROCESS/OPEN.md) |
-| `T-###` | **Task** — physical work only Camden can do | [`../07-PROCESS/TASKS-CAMDEN.md`](../07-PROCESS/TASKS-CAMDEN.md) |
+| `D-###` | **Decision** — settled, with reasoning. Append-only; reversed by a new entry that marks the old one superseded | [`../05-PROCESS/DECISIONS.md`](../05-PROCESS/DECISIONS.md) |
+| `Q-###` | **Question** — needs Camden's judgement. Presented as a four-line packet | [`../05-PROCESS/OPEN.md`](../05-PROCESS/OPEN.md) |
+| `A-###` | **Assumption** — Claude picked a default, needs a yes/no | [`../05-PROCESS/OPEN.md`](../05-PROCESS/OPEN.md) |
+| `V-###` | **Verify** — a fact to confirm before money is spent | [`../05-PROCESS/OPEN.md`](../05-PROCESS/OPEN.md) |
+| `T-###` | **Task** — physical work only Camden can do | [`../05-PROCESS/TASKS-CAMDEN.md`](../05-PROCESS/TASKS-CAMDEN.md) |
 | `K-###` | **Known issue** — a fault or quirk of this car | `../../../00-CAR/known-issues.md` |
 | `M-###` | **Modification** — something already changed on the car | `../../../00-CAR/modifications.md` |
 | `P-###` | **Planned modification** — car-level, not yet done | `../../../00-CAR/modifications.md` |
-| `I-###` | **Improvement** — housekeeping on the documents themselves | [`../07-PROCESS/AUDITS.md`](../07-PROCESS/AUDITS.md) |
+| `I-###` | **Improvement** — housekeeping on the documents themselves | [`../05-PROCESS/AUDITS.md`](../05-PROCESS/AUDITS.md) |
 | `R#` | **Standing rule** for how the documents are kept | `../../../ASSISTANT.md` |
-| `L-###` | **Lighting-body decision** — the lighting project's own log | `../../lighting-body/DECISIONS.md` |
-| `TL-##` | Tail-light process step | `../../lighting-body/TAIL-LIGHTS.md` |
-| `F/H/X/Z-###` | Forward-work items — firmware, hardware, documentation, thinking ahead. Three digits, so `F-003` (a firmware item) is never confused with factory connector `F-03` | [`../07-PROCESS/FORWARD-WORK.md`](../07-PROCESS/FORWARD-WORK.md) |
-| `[VERIFY]` | An unnumbered price or part-number placeholder that has not been checked | inline, mostly [`BOM.md`](../06-PROCUREMENT/BOM.md) |
+| `L-###` | **Lighting decision** — the deferred lighting scope's own series, merged into the main log (D-201) | [`../05-PROCESS/DECISIONS.md`](../05-PROCESS/DECISIONS.md) §Lighting |
+| `TL-##` | Tail-light process step | [`TAIL-LIGHTS.md`](TAIL-LIGHTS.md) |
+| `F/H/X/Z-###` | Forward-work items — firmware, hardware, documentation, thinking ahead. Three digits, so `F-003` (a firmware item) is never confused with factory connector `F-03` | [`../05-PROCESS/FORWARD-WORK.md`](../05-PROCESS/FORWARD-WORK.md) |
+| `[VERIFY]` | An unnumbered price or part-number placeholder that has not been checked | inline, mostly [`BOM.md`](../05-PROCESS/BOM.md) |
 | `A-06`, `F-11`, `X-13` … | **Factory connector and ground codes** — a letter and *two* digits, from the 1982 wiring diagram. Not project IDs | `../../../01-REFERENCE/factory-circuits/OEM-RECORD.md` |
 
 **IDs are permanent and never reused** (D-043). A gap in the numbering means
 something closed. **Cite a closed ID with its closer** — `Q-038 → D-095`,
 never bare — so a reader never mistakes it for live. The status of every ID
-is in [`../07-PROCESS/ID-REGISTRY.md`](../07-PROCESS/ID-REGISTRY.md).
+is in [`../05-PROCESS/ID-REGISTRY.md`](../05-PROCESS/ID-REGISTRY.md).
 
 ## PMU channels
 
@@ -58,8 +58,8 @@ is in [`../07-PROCESS/ID-REGISTRY.md`](../07-PROCESS/ID-REGISTRY.md).
 | **DP-** | Dash post — the box side of any connector. `DP-L3-S2` mates with `L3-S2` |
 | **DP-ICU, DP-DCU, DP-DIAG, DP-KEY** | The four dash-post *drops* — box-adjacent devices, not part of any leg |
 | **D1 / D2** | Door connectors at the sill, driver and passenger |
-| **K1–K11** | Relays. K1–K4 pop-ups (plate), K5–K8 windows (sill, provisioned empty), K9 start (inner fender), K10 A/C (factory), K11 constant-bus master |
-| **F1–F14** | Fuses. F1–F13 on the plate (F13 spare), F8/F9/F14 at the sill |
+| **K1–K12** | Relays. K1/K2 pop-up run LH/RH (plate, D-186; K3/K4 sockets spare), K5–K8 windows (sill, provisioned empty), K9 start (inner fender), K10 A/C (factory), K11 constant-bus master, K12 washer pulse (plate, D-182) |
+| **F1–F15** | Fuses. 12 on the plate — F1–F7, F10–F13 (F13 radar, deferred D-191), F15 exciter (D-198); F8/F9/F14 at the sill |
 | **Status words** | LIVE · PROVISIONED · RESERVED · DEFERRED · OPEN · SPARE — defined in [`SPEC.md`](SPEC.md) §12 |
 
 ## Wire colour scheme — the NEW harness
@@ -126,5 +126,5 @@ factory ground nodes.
 | **Ladder** | A resistor network turning a multi-position switch into one analog input |
 | **Capped spare** | A terminated wire with no load yet, sealed at the bulkhead. Expansion without re-pinning |
 | **Provisioned** | Capped spare *plus* the socket or fuse position fitted empty — adding the feature is populate, uncap, enable |
-| **Irreversible window** | Work that becomes impossible once the harness is out. Only T-014 qualifies |
-| **Give me the diff** | The session-close command. Claude reports CHANGED / LOGGED / OPENED / CLOSED / NEXT and appends it to [`CHANGELOG.md`](../07-PROCESS/CHANGELOG.md) |
+| **Irreversible window** | Work that becomes impossible once the harness is out. Only T-014 → D-197 qualifies |
+| **Give me the diff** | The session-close command. Claude reports CHANGED / LOGGED / OPENED / CLOSED / NEXT and appends it to [`CHANGELOG.md`](../05-PROCESS/CHANGELOG.md) |

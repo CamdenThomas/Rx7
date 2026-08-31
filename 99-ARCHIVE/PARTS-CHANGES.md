@@ -31,7 +31,7 @@ Anything about bulbs or lamps → `../../lighting-body/`.
 project.** They work, they're consumable, and replacing them is the next
 project's job.
 
-Every lamp channel has 40–74% headroom on filament. See [`../01-DESIGN/LOADS.md`](../01-DESIGN/LOADS.md).
+Every lamp channel has 40–74% headroom on filament. See [`../01-DESIGN/LOADS.md`](../02-PROJECTS/electrical-pmu/01-DESIGN/LOADS.md).
 
 **LED conversion, custom tail lights and headlamp units are `lighting-body/`.**
 Hard prerequisite: this project finished and shaken down.
@@ -43,7 +43,7 @@ Hard prerequisite: this project finished and shaken down.
 | Item | State | Replacement | Design implication |
 |---|---|---|---|
 | **Blower motor** | **`DEAD`** — confirmed not working (K-023) | Not chosen — `T-038` | **Cannot be measured.** O16 stays 25 A with the flyback diode and gets sized from the replacement's spec (D-126) |
-| **Washer pump** | **`DIAGNOSE`** — not working (K-022) | Only if the pump itself is dead — `T-040`, then `T-039` | Diagnose before ordering — pump, wiring or switch. Its PMU output is `Q-063` |
+| **Washer pump** | **`DIAGNOSE`** — not working (K-022) | Only if the pump itself is dead — `T-040`, then `T-039` | Diagnose before ordering — pump, wiring or switch. Its PMU output is `Q-063` → D-182 |
 | **Fuel pump** | Carter P4070, working | Aeromotive Phantom 340 eventually | O5 sized for **8–12 A**, not the Carter's 1–3 A. `L4-P` carries a spare heavy cavity |
 | Ionic battery heater | New, unquantified | — | Winter draw `V-052` |
 
@@ -57,13 +57,13 @@ actually fitted that day.
 
 | Item | Note | Status |
 |---|---|---|
-| **Fuel-door solenoid** | Never existed (D-098) — `T-032`. Output `Q-061` | `PENDING` |
+| **Fuel-door solenoid** | Never existed (D-098) — `T-032`. Output `Q-061` → D-180 | `PENDING` |
 | **USB-C ports** | Replacing the deleted lighter | `PENDING` |
 | **Oil temperature sender** | New ICU input | `PENDING` |
 | **VSS sensor** | New ICU input | `PENDING` |
 | **CAN keypad** | Ecumaster 8-key | `CHOSEN` |
 | **DCU + ICU** | Teensy 4.1 ×2 | `CHOSEN` |
-| **Cluster display** | One wide 800 × 480 panel (Q-037 → D-150). Panel choice `Q-060` | `PENDING` |
+| **Cluster display** | One wide 800 × 480 panel (Q-037 → D-150). Panel choice `Q-060` → D-193 | `PENDING` |
 | **Head unit** | Double-DIN, wireless CarPlay, full passthrough — criteria set (Q-055 → D-149) | `PENDING` |
 
 Heated seats, cooled seats, heated nozzles, wiper de-icer and the radar
@@ -76,7 +76,7 @@ subsystem are **pre-wired but deferred** → [`DEFERRED-FEATURES.md`](DEFERRED-F
 | Item | Why | Status |
 |---|---|---|
 | **Hatch latch switch** | Original broken (K-016) — `T-033` | `PENDING` |
-| **Side mirrors** | Larger, heated, digital control (D-093). Factory control dead. Conductor count unconfirmed `V-060`; dash → sill conductors `Q-062` | `PENDING` |
+| **Side mirrors** | Larger, heated, digital control (D-093). Factory control dead. Conductor count unconfirmed `V-060`; dash → sill conductors `Q-062` → D-181 | `PENDING` |
 
 ---
 
@@ -114,12 +114,12 @@ subsystem are **pre-wired but deferred** → [`DEFERRED-FEATURES.md`](DEFERRED-F
 | Starter + solenoid | K9 trigger only; K9 on the inner fender (D-148) |
 | Alternator | Rating unread `V-002` |
 | Ignition coils ×2, igniters ×2 | O12. Refreshed Aug 2025 |
-| Fuel level sender | A7, ohm range unknown `V-037` |
+| Fuel level sender | A7, ohm range unknown `V-037` → D-197 |
 | Door pin switches | Already switch-to-ground |
 | Brake pedal switch | Becomes a signal input |
 | Turn / wiper / headlight stalks | Become resistor ladders |
-| Ignition switch | A16 ladder — continuity test `T-023` |
-| Inhibitor switch | Crank interlock + reverse (D-071) — its PMU pin is `Q-063` |
+| Ignition switch | A16 ladder — continuity test `T-023` → D-178 |
+| Inhibitor switch | Crank interlock + reverse (D-071) — its PMU pin is `Q-063` → D-182 |
 | A/C system entire | Factory circuit, untouched. Low on charge (K-015) |
 
 **Not on this list:** window motors. **The windows are manual** (D-131).
@@ -147,9 +147,9 @@ value, which is the last thing set anyway.
 
 | ID | Item |
 |---|---|
-| `Q-060` | Cluster panel selection |
-| `Q-061` | Where the hatch and fuel-door solenoids get an output |
-| `Q-063` | Where the washer pump gets an output |
+| `Q-060` → D-193 | Cluster panel selection |
+| `Q-061` → D-180 | Where the hatch and fuel-door solenoids get an output |
+| `Q-063` → D-182 | Where the washer pump gets an output |
 | `V-060` | Mirror conductor count |
 | `V-052` | Battery heater draw |
 | `T-038` | Source a blower motor |

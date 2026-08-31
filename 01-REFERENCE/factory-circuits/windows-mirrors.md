@@ -61,7 +61,7 @@ factory section I circuit exists on the diagram, not on the car.
 | 30 A window fuse | O1 motor bus with F8/F9 at the sill — **PROVISIONED**: the bus feed (**L4-P 3**), the command wires (**L3-S2 3–6 → L4-M 9–12**), the K5–K8 sockets and the door legs (**D1/D2 1–2**) are terminated and capped, nothing populated |
 | DPDT window switches in the doors | Would be dash-side commands to the sill relays (D-065) — not fitted |
 | 2-wire motors | **D1/D2 1–2**, 14 AWG — capped in the door |
-| Mirror switch on 10 A constant | New heated, digitally controlled mirrors (Q-022 → D-093, `T-031`). Conductor count `V-060`; dash → sill path `Q-062` |
+| Mirror switch on 10 A constant | New heated, digitally controlled mirrors (Q-022 → D-093, `T-031`). Conductor count `V-060`; dash → sill path `Q-062` → D-181 |
 | Mirror motors, 4 wires per side | **D1/D2 4–6** DEFERRED; mirror heat **D1/D2 7** off sill fuse F14, DEFERRED |
 
 ## 4 · Unknowns

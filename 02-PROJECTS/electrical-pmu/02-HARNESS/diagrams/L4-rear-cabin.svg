@@ -28,15 +28,15 @@
 <rect x="20" y="585.0" width="150" height="18" rx="3" class="src"/>
 <text x="26" y="598.0" class="t">+5V</text>
 <rect x="20" y="603.0" width="150" height="18" rx="3" class="src"/>
-<text x="26" y="616.0" class="t">L3-S2 3</text>
+<text x="26" y="616.0" class="t">Fused O10 branch (Q-06</text>
 <rect x="20" y="621.0" width="150" height="18" rx="3" class="src"/>
-<text x="26" y="634.0" class="t">L3-S2 4</text>
+<text x="26" y="634.0" class="t">L3-S2 3</text>
 <rect x="20" y="639.0" width="150" height="18" rx="3" class="src"/>
-<text x="26" y="652.0" class="t">L3-S2 5</text>
+<text x="26" y="652.0" class="t">L3-S2 4</text>
 <rect x="20" y="657.0" width="150" height="18" rx="3" class="src"/>
-<text x="26" y="670.0" class="t">L3-S2 6</text>
+<text x="26" y="670.0" class="t">L3-S2 5</text>
 <rect x="20" y="675.0" width="150" height="18" rx="3" class="src"/>
-<text x="26" y="688.0" class="t">NO OUTPUT — Q-061</text>
+<text x="26" y="688.0" class="t">L3-S2 6</text>
 <rect x="20" y="693.0" width="150" height="18" rx="3" class="src"/>
 <text x="26" y="706.0" class="t">pass-through from L3-S</text>
 <rect x="20" y="711.0" width="150" height="18" rx="3" class="src"/>
@@ -83,13 +83,13 @@
 <text x="388" y="282.0" class="h">3</text>
 <text x="416" y="282.0" class="t">Hatch release solenoid</text>
 <text x="850" y="282.0" class="d">14 ORN/RED</text>
-<text x="980" y="282.0" class="d">OPEN</text>
-<path d="M170,684.0 C 260,684.0 290,278.0 380,278.0" fill="none" stroke="#aab" stroke-width="1.4"/>
+<text x="980" y="282.0" class="d">PROVISIONED</text>
+<path d="M170,612.0 C 260,612.0 290,278.0 380,278.0" fill="none" stroke="#d68910" stroke-width="1.4" stroke-dasharray="6 4"/>
 <text x="388" y="302.0" class="h">4</text>
 <text x="416" y="302.0" class="t">Fuel-door release solenoid (new)</text>
 <text x="850" y="302.0" class="d">14 ORN/PNK</text>
-<text x="980" y="302.0" class="d">OPEN</text>
-<path d="M170,684.0 C 260,684.0 290,298.0 380,298.0" fill="none" stroke="#aab" stroke-width="1.4"/>
+<text x="980" y="302.0" class="d">PROVISIONED</text>
+<path d="M170,612.0 C 260,612.0 290,298.0 380,298.0" fill="none" stroke="#d68910" stroke-width="1.4" stroke-dasharray="6 4"/>
 <text x="388" y="322.0" class="h">5</text>
 <text x="416" y="322.0" class="t">Turn LEFT rear</text>
 <text x="850" y="322.0" class="d">16 VIO/GRN</text>
@@ -114,22 +114,22 @@
 <text x="416" y="402.0" class="t">Window DRV up command → K5 coil</text>
 <text x="850" y="402.0" class="d">16 BLU/BRN</text>
 <text x="980" y="402.0" class="d">PROVISIONED</text>
-<path d="M170,612.0 C 260,612.0 290,398.0 380,398.0" fill="none" stroke="#2471a3" stroke-width="1.4" stroke-dasharray="6 4"/>
+<path d="M170,630.0 C 260,630.0 290,398.0 380,398.0" fill="none" stroke="#2471a3" stroke-width="1.4" stroke-dasharray="6 4"/>
 <text x="388" y="422.0" class="h">10</text>
 <text x="416" y="422.0" class="t">Window DRV down command → K6 coil</text>
 <text x="850" y="422.0" class="d">16 BLU/BLK</text>
 <text x="980" y="422.0" class="d">PROVISIONED</text>
-<path d="M170,630.0 C 260,630.0 290,418.0 380,418.0" fill="none" stroke="#2471a3" stroke-width="1.4" stroke-dasharray="6 4"/>
+<path d="M170,648.0 C 260,648.0 290,418.0 380,418.0" fill="none" stroke="#2471a3" stroke-width="1.4" stroke-dasharray="6 4"/>
 <text x="388" y="442.0" class="h">11</text>
 <text x="416" y="442.0" class="t">Window PASS up command → K7 coil</text>
 <text x="850" y="442.0" class="d">16 BLU/VIO</text>
 <text x="980" y="442.0" class="d">PROVISIONED</text>
-<path d="M170,648.0 C 260,648.0 290,438.0 380,438.0" fill="none" stroke="#2471a3" stroke-width="1.4" stroke-dasharray="6 4"/>
+<path d="M170,666.0 C 260,666.0 290,438.0 380,438.0" fill="none" stroke="#2471a3" stroke-width="1.4" stroke-dasharray="6 4"/>
 <text x="388" y="462.0" class="h">12</text>
 <text x="416" y="462.0" class="t">Window PASS down command → K8 coil</text>
 <text x="850" y="462.0" class="d">16 BLU/ORN</text>
 <text x="980" y="462.0" class="d">PROVISIONED</text>
-<path d="M170,666.0 C 260,666.0 290,458.0 380,458.0" fill="none" stroke="#2471a3" stroke-width="1.4" stroke-dasharray="6 4"/>
+<path d="M170,684.0 C 260,684.0 290,458.0 380,458.0" fill="none" stroke="#2471a3" stroke-width="1.4" stroke-dasharray="6 4"/>
 <rect x="380" y="490" width="760" height="188" rx="4" class="box"/>
 <rect x="380" y="490" width="760" height="24" fill="#1b1b1b"/>
 <text x="388" y="506" fill="#fff" font-weight="700">L4-S</text>

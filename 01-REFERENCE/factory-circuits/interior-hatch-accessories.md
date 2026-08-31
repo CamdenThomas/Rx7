@@ -68,8 +68,8 @@ Both are solenoid pulls on a 20 A constant feed, switched by a dash button:
 | Cigarette lighter on LY | **Deleted** (D-095) |
 | Auto clock on LY constant | Constant bus off the PMU (D-020) — the PMU sleeps |
 | Luggage compartment light + switch | O20 bus; the switch joins the A6 ladder as a fourth state via **L4-S 3** (A-012) |
-| Hatch release solenoid | **L4-M 3** — **no output yet**, `Q-061`. Latch switch broken, K-016 |
-| Fuel-door release solenoid | **L4-M 4** — never existed (V-034 → D-098), new part `T-032`; output `Q-061` |
+| Hatch release solenoid | **L4-M 3** — **no output yet**, `Q-061` → D-180. Latch switch broken, K-016 |
+| Fuel-door release solenoid | **L4-M 4** — never existed (V-034 → D-098), new part `T-032`; output `Q-061` → D-180 |
 | Glove box light | O20 bus |
 | Seat belt warning | Dropped (D-050) |
 
@@ -77,6 +77,6 @@ Both are solenoid pulls on a 20 A constant feed, switched by a dash button:
 
 | ID | Unknown | Resolve by |
 |---|---|---|
-| V-033 | Hatch and fuel-door solenoids have no output | The `Q-061` packet, Checklist 0.23 |
+| V-033 → D-180 | Hatch and fuel-door solenoids have no output | The `Q-061` → D-180 packet, Checklist 0.23 |
 | V-034 → D-098 | Solenoid state | Hatch switch broken; fuel-door solenoid never existed |
 | Q-021 → D-050 | Chimes | Dropped |

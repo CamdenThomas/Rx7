@@ -14,8 +14,8 @@ Quick facts an agent needs before touching anything:
 - Pin, cavity and housing data live in `02-PROJECTS/electrical-pmu/02-HARNESS/data/*.csv`.
   Everything generated from them ([`PIN-MAP.md`](02-PROJECTS/electrical-pmu/02-HARNESS/PIN-MAP.md), [`CAVITY-STATE.md`](02-PROJECTS/electrical-pmu/02-HARNESS/CAVITY-STATE.md),
   `channels.h`, the SVGs, the `<!-- gen:… -->` blocks) is rewritten by
-  `python 02-PROJECTS/electrical-pmu/07-PROCESS/tools/gen.py`. Never edit those by hand.
-- `python 02-PROJECTS/electrical-pmu/07-PROCESS/tools/check.py` must be clean at session close.
+  `python 02-PROJECTS/electrical-pmu/05-PROCESS/tools/gen.py`. Never edit those by hand.
+- `python 02-PROJECTS/electrical-pmu/05-PROCESS/tools/check.py` must be clean at session close.
 - `DECISIONS.md` is append-only. IDs are permanent. A closed ID is cited as `Q-038 → D-095`.
 - The user is Camden. Physical work, spending and sign-off are his; everything
   that is reading, writing, calculating or cross-checking is the agent's.

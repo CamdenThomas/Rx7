@@ -215,7 +215,7 @@ inline const char *statsCsvHeader() {
  */
 inline void drawTripPage(Framebuffer &fb, const Stats &a, uint16_t mpgX10) {
     const int LX = 30, VX = 300, TOP = 70, STEP = 32;
-    const int RX = 420, RVX = 700;
+    const int RX = 680, RVX = 960;
 
     struct Row { const char *label; int value; int dec; const char *unit; };
 

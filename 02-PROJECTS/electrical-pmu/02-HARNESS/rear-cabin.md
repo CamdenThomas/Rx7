@@ -16,14 +16,14 @@ sill ([`sill-node.md`](sill-node.md)). Diagram: `diagrams/L4-rear-cabin.svg`.
 |---|---|---|---|---|
 | Rear defog grid | G-25 | Out | O4 via L4-P 1 | Measure **cold** |
 | Fuel pump — Carter P4070 | B-24 | Out | O5 via L4-P 2 | Own return at the rear node — the K-008 fix. Sized for the Aeromotive later |
-| Fuel level sender | C-01 | In | A7 via L4-S 1 | Resistive — `V-037` |
+| Fuel level sender | C-01 | In | A7 via L4-S 1 | Resistive — `V-037` → D-197 |
 | Tail / plate / rear markers | F-04/07/08/14/15 | Out | O6 via L4-M 1 | Filament |
 | Brake lamps | F-07/F-08 | Out | O7 via L4-M 2 | **7.0 A measured** |
 | Turn LEFT / RIGHT rear | F-07 / F-08 | Out | O17 / O18 via L4-M 5, 6 | 3.4 A measured per side |
-| Reverse lamps | F-07/F-08 | Out | O19 via L4-M 7 | `Q-063` may move these to the inhibitor's R contact |
+| Reverse lamps | F-07/F-08 | Out | O19 via L4-M 7 | `Q-063` → D-182 may move these to the inhibitor's R contact |
 | Luggage compartment light + switch | H-11, H-12 | Out / In | O20 bus; switch → A6 node via L4-S 3 | `A-012` |
-| Hatch release solenoid | H-14 | Out | L4-M 3 — **no output yet** | `Q-061`. Latch switch broken (K-016) |
-| Fuel-door release solenoid | new | Out | L4-M 4 — **no output yet** | `Q-061`. Never existed (D-098) |
+| Hatch release solenoid | H-14 | Out | L4-M 3 — **no output yet** | `Q-061` → D-180. Latch switch broken (K-016) |
+| Fuel-door release solenoid | new | Out | L4-M 4 — **no output yet** | `Q-061` → D-180. Never existed (D-098) |
 | Rear speakers | G-09/G-10 | — | — | Audio, independent of the PMU |
 
 ## Cabin devices
@@ -39,8 +39,8 @@ sill ([`sill-node.md`](sill-node.md)). Diagram: `diagrams/L4-rear-cabin.svg`.
 |---|---|---|---|---|
 | Door switches LH / RH | H-08, H-07 | In | A6 ladder via D1 3 / D2 3 → L4-S 2 | Already switch-to-ground |
 | Window motors | I-09, I-11 | Out | D1/D2 1–2, **capped in the door** | **Not fitted — windows are manual** (D-131). PROVISIONED |
-| New mirrors — motors | replaces I-03/I-05 | Out | D1/D2 4–6 | DEFERRED. Control protocol `V-060`; dash → sill conductors `Q-062` |
-| New mirrors — heat | new | Out | D1/D2 7 via sill fuse F14 | DEFERRED. O15 → sill conductor `Q-062` |
+| New mirrors — motors | replaces I-03/I-05 | Out | D1/D2 4–6 | DEFERRED. Control protocol `V-060`; dash → sill conductors `Q-062` → D-181 |
+| New mirrors — heat | new | Out | D1/D2 7 via sill fuse F14 | DEFERRED. O15 → sill conductor `Q-062` → D-181 |
 
 ## Devices deleted
 
@@ -86,6 +86,6 @@ K-008.
 with the interior; the door boot is a service point, not a removal boundary.
 
 **Two things still need a conductor across the tunnel** — the O15 feed for
-the mirror heat and whatever the new mirrors need for control (`Q-062`) — and
-two loads need an output that does not exist (`Q-061`). L4-P 4 and L4-S 8 are
+the mirror heat and whatever the new mirrors need for control (`Q-062` → D-181) — and
+two loads need an output that does not exist (`Q-061` → D-180). L4-P 4 and L4-S 8 are
 the spares available.
