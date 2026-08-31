@@ -7,7 +7,7 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | Prefix | Total | Open / active |
 |---|---|---|
 | A — Assumptions | 11 | 4 |
-| D — Decisions | 201 | 188 |
+| D — Decisions | 204 | 191 |
 | I — Improvement items (audits) | 95 | 10 |
 | K — Known issues | 23 | 0 |
 | L — Lighting decisions (deferred scope) | 4 | 4 |
@@ -15,8 +15,8 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | P — Planned modifications | 6 | 6 |
 | Q — Questions | 60 | 4 |
 | R — Standing rules | 8 | 8 |
-| T — Camden's tasks | 36 | 29 |
-| V — Verify items | 71 | 34 |
+| T — Camden's tasks | 37 | 30 |
+| V — Verify items | 81 | 44 |
 
 ## A — Assumptions
 
@@ -239,6 +239,9 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | D-199 | active | V-081 sharpened by sheet E, not closed.** The reference decode | 05-PROCESS/DECISIONS.md |
 | D-200 | active | The tree is consolidated: five project folders, one money page, | 05-PROCESS/DECISIONS.md |
 | D-201 | active | The lighting-body project is dissolved back into electrical-pmu | 05-PROCESS/DECISIONS.md |
+| D-202 | active | One-teardown plan: everything is ordered now, before the tape | 05-PROCESS/DECISIONS.md |
+| D-203 | active | Sourcing calls for the expedited buy, balancing proven parts | 05-PROCESS/DECISIONS.md |
+| D-204 | active | TAIL-LIGHTS.md leaves the active tree.** Camden's "simplify" | 05-PROCESS/DECISIONS.md |
 
 ## I — Improvement items (audits)
 
@@ -487,7 +490,7 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | ID | Status | What | Lives in |
 |---|---|---|---|
 | T-004 | open | Alternator rating from the FSM or the parts counter (case is unreadable) | 05-PROCESS/TASKS-CAMDEN.md |
-| T-007 | open | Dash cavity envelope — W × H × D + 39-pin lever clearance, and how deep the cluster brow s… | 05-PROCESS/TASKS-CAMDEN.md |
+| T-007 | open | Dash cavity envelope — W × H × D + 39-pin lever clearance, centre-stack depth (`V-087`), a… | 05-PROCESS/TASKS-CAMDEN.md |
 | T-008 | open | Every harness route with string, +15 % | 05-PROCESS/TASKS-CAMDEN.md |
 | T-009 | open | Confirm twin coils + twin igniters under the hood | 05-PROCESS/TASKS-CAMDEN.md |
 | T-010 | done | Inspection sweep → D-097–D-100 | 05-PROCESS/TASKS-CAMDEN.md |
@@ -515,13 +518,14 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | T-040 | open | Washer diagnosis — deferred post-PMU (D-176) | 05-PROCESS/TASKS-CAMDEN.md |
 | T-041 | open | Confirm the blower is the motor, not the feed — 12 V at the connector with the switch on? … | 05-PROCESS/TASKS-CAMDEN.md |
 | T-043 | open | Paint-pen dot beside cavity 1 (Wave 0 pen) | 05-PROCESS/TASKS-CAMDEN.md |
-| T-044 | open | Order spare 1.5 mm terminals ×15 + 120 Ω ×4 — Wave 1 cart | 05-PROCESS/TASKS-CAMDEN.md |
+| T-044 | open | Order spare 1.5 mm terminals ×20 + 120 Ω — rides in `T-053` Order 5 | 05-PROCESS/TASKS-CAMDEN.md |
 | T-045 | open | Verify the two inbound housings arrive with terminals | 05-PROCESS/TASKS-CAMDEN.md |
 | T-048 | open | Flash and label boards 2 and 3 (headers need the Phase-5 iron) | 05-PROCESS/TASKS-CAMDEN.md |
 | T-049 | open | Record the VIN in `00-CAR/vehicle.md` | 05-PROCESS/TASKS-CAMDEN.md |
 | T-050 | done | Superseded by D-198 — the factory-spec exciter is wired instead of pre-diagnosing; the alt… | 05-PROCESS/TASKS-CAMDEN.md |
 | T-051 | open | BT817 eval board, then bridge + glass per `V-085` | 05-PROCESS/TASKS-CAMDEN.md |
 | T-052 | open | Pop-up ohm check at E-03 (`V-081`, D-199) — unplugged, ohms R → case and RY → case at park… | 05-PROCESS/TASKS-CAMDEN.md |
+| T-053 | open | Place the five expedited orders — WireBarn wire (§11c table) · DeutschConnector kits · Ama… | 05-PROCESS/TASKS-CAMDEN.md |
 
 ## V — Verify items
 
@@ -598,3 +602,13 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | V-084 | open | BT817 output timing vs the chosen glass** (D-193): pixel clock, sync polarity, and the bridge — SN75LVDS83B se… | 05-PROCESS/OPEN.md |
 | V-085 | open | Which glass** (D-193; absorbs `V-058`): LQ123K1LG03 measured at **330 cd/m²** — chain (i) only works if the bi… | 05-PROCESS/OPEN.md |
 | V-086 | closed (no decision cites it) |  | — |
+| V-087 | open | Centre-stack depth and clear width** behind the radio/ashtray/lighter region — the PMU (131 × 112 × 32.5 mm) i… | 05-PROCESS/OPEN.md |
+| V-088 | open | The relocated amp's old position and the deleted cassette/ashtray/lighter free the space Camden expects; amp +… | 05-PROCESS/OPEN.md |
+| V-089 | open | WireBarn stocks every striped GXL combo in BOM §11c, by the foot, in 12/14/16 | 05-PROCESS/OPEN.md |
+| V-090 | open | DeutschConnector assembly-kit contents (contacts included, genuine), and `1027-003-1200` clip source | 05-PROCESS/OPEN.md |
+| V-091 | open | OptiFuse BLR-I-504 is truly independent-feed, panel-mountable, ATO/ATC | 05-PROCESS/OPEN.md |
+| V-092 | open | Brother HSe sleeve sizes: HSe-211 fits 16 AWG, HSe-221 fits 12–14 AWG finished OD | 05-PROCESS/OPEN.md |
+| V-093 | open | NOCO HM318BKS interior fits the Ionic S9 Group-25 case + terminals + boots | 05-PROCESS/OPEN.md |
+| V-094 | open | MRBF rating for the starter feed (200 A assumed) survives cranking without nuisance-blowing | 05-PROCESS/OPEN.md |
+| V-095 | open | Fine-strand welding cable is acceptable for the 2 AWG runs (loomed, grommeted) vs SGX/marine | 05-PROCESS/OPEN.md |
+| V-096 | open | iCrimp IWD-16/IWD-12 crimps pass the coupon pull tests on genuine solid contacts | 05-PROCESS/OPEN.md |

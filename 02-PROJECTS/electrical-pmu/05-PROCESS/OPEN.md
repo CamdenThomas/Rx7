@@ -84,6 +84,24 @@ it is the one field a stranger would look for first.
 | **V-082** | ICU carrier candidate parts — LMR33630-class buck, SMBJ33A TVS, BAT54S clamps, H11L1/LM393 tach front end ([`ICU-CARRIER.md`](../03-MODULES/ICU-CARRIER.md)) | Datasheets before layout |
 | **V-083** | DCU carrier candidate parts — second buck for the servo rail, AOD4184-class FETs, INA180 shunt amp ([`DCU-CARRIER.md`](../03-MODULES/DCU-CARRIER.md)) | Datasheets before layout |
 
+### Verify — the expedited order (D-202, D-203; see BOM §11)
+
+Every manifest part number and price is a placeholder until it sits in a
+cart at a live price. The two dash-space items close on teardown day 1.
+
+| ID | Claim | Via |
+|---|---|---|
+| **V-087** | **Centre-stack depth and clear width** behind the radio/ashtray/lighter region — the PMU (131 × 112 × 32.5 mm) is assumed to fit there flat with clearance; part of `T-007` | Tape measure, teardown day 1 |
+| V-088 | The relocated amp's old position and the deleted cassette/ashtray/lighter free the space Camden expects; amp + battery + Class-T + disconnect all fit the rear cargo bins | Eyes on it at teardown |
+| V-089 | WireBarn stocks every striped GXL combo in BOM §11c, by the foot, in 12/14/16 | Cart check; fallback Crimpzone / CE Auto |
+| V-090 | DeutschConnector assembly-kit contents (contacts included, genuine), and `1027-003-1200` clip source | Cart check; clips fallback TE/Mouser |
+| V-091 | OptiFuse BLR-I-504 is truly independent-feed, panel-mountable, ATO/ATC | Datasheet before ordering |
+| V-092 | Brother HSe sleeve sizes: HSe-211 fits 16 AWG, HSe-221 fits 12–14 AWG finished OD | Brother compatibility chart |
+| V-093 | NOCO HM318BKS interior fits the Ionic S9 Group-25 case + terminals + boots | Dims vs `V-051` measurement |
+| V-094 | MRBF rating for the starter feed (200 A assumed) survives cranking without nuisance-blowing | Cranking-current data / Ionic docs |
+| V-095 | Fine-strand welding cable is acceptable for the 2 AWG runs (loomed, grommeted) vs SGX/marine | Insulation temp rating on the chosen listing |
+| V-096 | iCrimp IWD-16/IWD-12 crimps pass the coupon pull tests on genuine solid contacts | Checklist 1.10–1.11 — the acceptance gate |
+
 ## 5 · Verify — needs the car
 
 | ID | Claim | Via |
@@ -124,7 +142,7 @@ ones are in [`DECISIONS.md`](DECISIONS.md) (A-005 → D-148, A-007 → D-112, A-
 The lighting second pass does not start until the rebuild is shaken down
 (L-004). The three verifies are ten-minute looks that ride along with the 0B
 tape-measure session (`T-034`/`T-035`/`T-037` in [`TASKS-CAMDEN.md`](TASKS-CAMDEN.md) §6);
-`Q-048` is a catalogue search. Design context: [`../01-DESIGN/TAIL-LIGHTS.md`](../01-DESIGN/TAIL-LIGHTS.md).
+`Q-048` is a catalogue search. Design context: [`TAIL-LIGHTS.md` (archived)](../../../99-ARCHIVE/2026-08-31_lighting-body/TAIL-LIGHTS.md).
 
 ### Q-048 · Headlamp unit
 **Ask:** Which DOT-compliant unit goes in the retained pop-up buckets (D-110,
@@ -148,7 +166,7 @@ L2-P1 1/2 are unchanged whatever is chosen.
 |---|---|---|---|
 | **V-063** | Stock tail light aperture — width, height, depth, mounting. The whole strip design is scaled from a nominal 30 cm | Tape measure | `T-034` |
 | V-064 | A DOT/SAE-compliant LED module source, red and white, with published candela | Catalogue search | `T-037` |
-| V-066 | 7-inch round or rectangular sealed beams on this car — and whether LED housings are already fitted ([`../01-DESIGN/LOADS.md`](../01-DESIGN/LOADS.md) says they are; [`../01-DESIGN/TAIL-LIGHTS.md`](../01-DESIGN/TAIL-LIGHTS.md) §8 assumed round sealed beams) | Look in the bucket | `T-035` |
+| V-066 | 7-inch round or rectangular sealed beams on this car — and whether LED housings are already fitted ([`../01-DESIGN/LOADS.md`](../01-DESIGN/LOADS.md) says they are; [`TAIL-LIGHTS.md` (archived)](../../../99-ARCHIVE/2026-08-31_lighting-body/TAIL-LIGHTS.md) §8 assumed round sealed beams) | Look in the bucket | `T-035` |
 
 **Body — not yet scoped.** Rust extent (K-007), paint, trim and seals. No IDs
 until the survey happens.

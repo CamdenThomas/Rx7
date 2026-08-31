@@ -191,7 +191,7 @@ history), three are partial, four were ruled no-change.
 - [x] **I-138 · P4** · [`CHECKLIST.md`](../04-BUILD/CHECKLIST.md) numbering has gaps — Gaps annotated (0.3, 4.21–4.23, 5.12) with the decision that dropped them
 - [ ] **I-139 · P4** · Wide tables — *partial* — Widest tables split (PIN-MAP per housing, SPEC per size); some remain wide by nature
 - [x] **I-140 · P4** · `00-CAR/known-issues.md` K-numbering — One K table in [`known-issues.md`](../../../00-CAR/known-issues.md)
-- [x] **I-141 · P4** · [`TAIL-LIGHTS.md`](../01-DESIGN/TAIL-LIGHTS.md) §6 lists Q-046 and Q-047 as open — TAIL-LIGHTS cites Q-046/Q-047 as closed
+- [x] **I-141 · P4** · [`TAIL-LIGHTS.md`](../../../99-ARCHIVE/2026-08-31_lighting-body/TAIL-LIGHTS.md) §6 lists Q-046 and Q-047 as open — TAIL-LIGHTS cites Q-046/Q-047 as closed
 
 ### I · Missing structure
 

@@ -71,7 +71,7 @@ off the terminals.
 
 | Item | Spec | ~$ |
 |---|---|---|
-| Battery tray / box, Group 24–27 | NOCO HM426 or equivalent | 30–60 |
+| Battery tray / box, Group 24–31 | **NOCO HM318BKS** (D-203e — the HM426 named earlier is a dual-6V box; fit check `V-093`) | 40–55 |
 | Hold-down frame | Billet clamp + J-hooks, or fabricated aluminum angle | 25–80 |
 | Backing plate | 3–4 mm aluminum or steel, spreads load into the floor (D-063) | 20–40 |
 | Hardware | M8 / 5⁄16 grade 8, nyloc, large fender washers | 15 |
@@ -83,8 +83,8 @@ turns a tearing load into a shear load.
 
 | Item | Spec | ~$ |
 |---|---|---|
-| Class-T fuse block | Blue Sea 5504 or equivalent | 60–90 |
-| Class-T fuse | 150 A — the PMU stud's maximum | 30–50 |
+| Class-T fuse block | **Blue Sea 5007100** — the 110–200 A block (D-203a; the 5502/5504 family starts at 225 A) | 70–95 |
+| Class-T fuse ×2 (one spare) | **Blue Sea 5114**, 150 A — the PMU stud's maximum | 80–110 |
 | Master disconnect | Blue Sea 9003e m-Series, or Longacre | 55–90 |
 | MRBF terminal fuse + holder | For the starter feed, if fused | 35–60 |
 | Distribution post | Blue Sea 2105 PowerPost, insulated | 25–40 |

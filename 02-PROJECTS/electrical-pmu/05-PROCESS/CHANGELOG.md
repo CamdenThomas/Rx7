@@ -7,6 +7,38 @@ CLOSED / NEXT` — the same five lines as the session-close diff.
 
 ---
 
+## 2026-08-31 · DECIDE → GENERATE · Expedited one-teardown buy sourced
+
+Camden's call: order everything now, tear the interior down once, measure
+before cutting instead of before buying.
+
+```
+CHANGED   BOM §11 order manifest — five consolidated carts (WireBarn wire ·
+          DeutschConnector kits · Amazon backbone/tools · Waytek
+          distribution · Ballenger terminals + ECUKB8 direct), ~$2,500–3,550
+          for Waves 0–2 · §11c per-colour wire table computed from
+          connectors.csv (2,525 ft ordered at 1.5× margin, 25 ft floors) ·
+          PANEL-LAYOUT gains the dash-space estimate (PMU fits the freed
+          centre stack on face area; depth is V-087; diagram.pdf identified
+          as factory sheet F, no dimensions in the repo's manuals) ·
+          BATTERY-INSTALL part numbers corrected (Class-T 5007100 + 5114;
+          HM318BKS) · STATUS/CHECKLIST/TASKS re-gated: T-007/T-008 gate
+          cutting, not ordering
+LOGGED    D-202 one-teardown expedite + wire margins · D-203 sourcing calls
+          (independent-feed ATC blocks ×3 — a bussed 12-way can't serve six
+          sources; PT-E300 + HSe shrink labels; iCrimp pair gated on pull
+          tests; welding-cable 2 AWG; ECUKB8 $369 direct)
+OPENED    T-053 place the orders · V-087 centre-stack depth · V-088 amp/bin
+          space · V-089–V-096 sourcing verifies (every price a placeholder
+          until carted)
+CLOSED    nothing — V-069 deliberately stays open (die check before the FCI
+          crimper ships)
+NEXT      Camden: T-053, V-081, then teardown day 1 (full 0B + freeze).
+          Agent: F-004/F-005/F-006 while parts ship
+```
+
+---
+
 ## 2026-08-31 · AUDIT → BUILD · Consolidation — five folders, lighting folded in
 
 Camden's reorganisation (04-SUBSYSTEMS and 06-PROCUREMENT emptied, lighting-body

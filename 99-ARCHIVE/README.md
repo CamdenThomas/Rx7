@@ -14,7 +14,7 @@
 | [`HEAD-UNIT.md`](HEAD-UNIT.md) | Audio, maps, the double-DIN install — moved out of the project in the 2026-08-31 consolidation (D-200) | Still the reference when the head unit is chosen (D-149); wiring is already in the pin plan (O10, busbar F1/F5) |
 | [`PARTS-CHANGES.md`](PARTS-CHANGES.md) | What physically changes in the project — moved out 2026-08-31 (D-200) | The live facts it held are owned by `00-CAR/`, [`LOADS.md`](../02-PROJECTS/electrical-pmu/01-DESIGN/LOADS.md), [`TASKS-CAMDEN.md`](../02-PROJECTS/electrical-pmu/05-PROCESS/TASKS-CAMDEN.md) and [`BOM.md`](../02-PROJECTS/electrical-pmu/05-PROCESS/BOM.md) |
 | [`DEFERRED-FEATURES.md`](DEFERRED-FEATURES.md) | What is pre-wired and waiting, with add-later cost tables — moved out 2026-08-31 (D-200) | Live cavity status is the CSVs → [`CAVITY-STATE.md`](../02-PROJECTS/electrical-pmu/02-HARNESS/CAVITY-STATE.md); the cost tables remain useful here |
-| [`2026-08-31_lighting-body/`](2026-08-31_lighting-body/) | The lighting-body project's five process files (README, DECISIONS, OPEN, TASKS, BOM), as they stood when the project was dissolved back into electrical-pmu (D-201) | [`TAIL-LIGHTS.md`](../02-PROJECTS/electrical-pmu/01-DESIGN/TAIL-LIGHTS.md) + DECISIONS §Lighting + OPEN §8 + TASKS-CAMDEN §6 + BOM Wave 5 |
+| [`2026-08-31_lighting-body/`](2026-08-31_lighting-body/) | The lighting-body project's five process files (README, DECISIONS, OPEN, TASKS, BOM), as they stood when the project was dissolved back into electrical-pmu (D-201) | [`TAIL-LIGHTS.md`](2026-08-31_lighting-body/TAIL-LIGHTS.md) + DECISIONS §Lighting + OPEN §8 + TASKS-CAMDEN §6 + BOM Wave 5 |
 
 ## Why the Rev A HTML files are wrong
 

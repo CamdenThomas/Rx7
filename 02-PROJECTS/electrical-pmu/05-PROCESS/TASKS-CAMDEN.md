@@ -15,17 +15,19 @@
 
 | ID | Task | Why | Checklist |
 |---|---|---|---|
+| **T-053** | **Place the five expedited orders** — WireBarn wire (§11c table) · DeutschConnector kits · Amazon backbone/tools · Waytek distribution · Ballenger terminals + ECUKB8 direct ([`BOM.md`](BOM.md) §11) | D-202 — parts in hand for the one-teardown build; ~$2,500–3,550 | 1.1–1.8 |
 | **T-052** | **Pop-up ohm check at E-03** (`V-081`, D-199) — unplugged, ohms **R → case and RY → case at parked / mid / raised**. One winding reached via different cam segments = single-direction confirmed, K1/K2 drive R + RY bridged, WR capped | Settles the pop-up drive conductors before the L2 leg is pinned. Five minutes with the meter | 0.6 |
-| **T-007** | **Dash cavity envelope** — W × H × D + 39-pin lever clearance, **and how deep the cluster brow shades the aperture** (`V-085` glass call) | `Q-014`. Gates the panel drawing, Wave 2 and Phase 4 | 0.8 |
-| **T-008** | **Every harness route with string, +15 %** | Gates the cut list lengths and the wire order | 0.11 |
+| **T-007** | **Dash cavity envelope** — W × H × D + 39-pin lever clearance, centre-stack depth (`V-087`), **and how deep the cluster brow shades the aperture** (`V-085` glass call) | `Q-014`. Now gates *cutting the plate* and the glass call — not purchases (D-202). Teardown day 1 | 0.8 |
+| **T-008** | **Every harness route with string, +15 %** | Now gates *cutting wire to length* — the wire is ordered with 1.5× margin (D-202). Teardown day 1 | 0.11 |
 | T-043 | Paint-pen dot beside cavity 1 (Wave 0 pen) | Never re-asked mid-build (D-139) | G0.5 |
-| T-044 | Order spare 1.5 mm terminals ×15 + 120 Ω ×4 — Wave 1 cart | Zero small spares while learning to crimp (D-135, D-194) | 1.8 |
+| T-044 | Order spare 1.5 mm terminals ×20 + 120 Ω — rides in `T-053` Order 5 | Zero small spares while learning to crimp (D-135, D-194) | 1.8 |
 | T-022 | Check the Ionic's state of charge; keep it above BMS cutoff | A lithium left to self-discharge into cutoff is hard to recover | G0.4 |
 | T-045 | Verify the two inbound housings arrive **with** terminals | If they ship bare, the shortfall is worse than it looks | G0.2 |
 | **T-049** | Record the VIN in `00-CAR/vehicle.md` | `Q-001`. Two minutes | — |
 
-**T-007 and T-008 gate ~150–240 hours of build.** Neither needs anything in
-the post.
+**T-007 and T-008 still gate ~150–240 hours of build** — but as
+measure-before-cut on teardown day 1, not as order gates (D-202). Neither
+needs anything in the post.
 
 ## 2 · The tape-measure session (with T-007/T-008 above)
 
@@ -87,8 +89,8 @@ a tape measure or a torch and ride along with the §2 session.
 | ID | Task | Closes | Blocks |
 |---|---|---|---|
 | **T-034** | **Measure the tail light aperture** — width, height, depth, mounting | `V-063` | The entire tail light design (TL-1). The 5 cm reverse / 2.2 cm strip figures assume a 30 cm aperture |
-| **T-035** | **Confirm 7-inch round or rectangular sealed beams** on this car, and what is actually fitted today | `V-066` | Whether the headlamp needs an adapter plate; settles the [`../01-DESIGN/LOADS.md`](../01-DESIGN/LOADS.md) vs [`../01-DESIGN/TAIL-LIGHTS.md`](../01-DESIGN/TAIL-LIGHTS.md) disagreement |
+| **T-035** | **Confirm 7-inch round or rectangular sealed beams** on this car, and what is actually fitted today | `V-066` | Whether the headlamp needs an adapter plate; settles the [`../01-DESIGN/LOADS.md`](../01-DESIGN/LOADS.md) vs [`TAIL-LIGHTS.md` (archived)](../../../99-ARCHIVE/2026-08-31_lighting-body/TAIL-LIGHTS.md) disagreement |
 | T-036 | Answer `Q-048` — which headlamp unit | `Q-048` | The headlamp order |
 | T-037 | Source **DOT/SAE LED modules** with published candela, red and white | `V-064` | The tail light build (TL-4). Photometry is the hard part, not area |
 
-The build-phase steps (TL-1 … TL-19) are [`../01-DESIGN/TAIL-LIGHTS.md`](../01-DESIGN/TAIL-LIGHTS.md) §4.
+The build-phase steps (TL-1 … TL-19) are [`TAIL-LIGHTS.md` (archived)](../../../99-ARCHIVE/2026-08-31_lighting-body/TAIL-LIGHTS.md) §4.

@@ -28,6 +28,7 @@ Index by topic · Architecture · Channel allocation · Wiring rules · Build se
 | **Cluster & ICU** | D-150 one wide display · D-151–158 palette, units, faults, layout · D-159 display off the harness · D-160–163 `stats.h` · D-168 SPI dirty-rectangle · D-169 page button · D-170 PSRAM |
 | **Harness allocations** | D-131 windows manual, bridge provisioned · D-132 sill kept · D-134/139 cavity geometry and pin 1 · D-148 K9 location · D-171 L1-S as generated · D-172 L3-S as generated |
 | **Consolidation & lighting** | D-200 folder renumber, BUY-LIST absorbed · D-201 lighting fold-in (amends D-123) · L-001 … L-004 merged |
+| **Expedited order (2026-08-31)** | D-202 one-teardown buy, wire margins · D-203 sourcing calls (Class-T 5007100/5114, independent ATC blocks, PT-E300, iCrimp pair, HM318, ECUKB8) |
 
 ---
 
@@ -1758,3 +1759,68 @@ side; the second-pass table is waiting in
 shaken down.** Phases 6, 7 and 8 complete, factory harness out, car driving
 on the PMU with stock bulbs and soft fuses set from measurement. Only then
 does the lighting pass change bulbs.
+
+---
+
+## EXPEDITED ORDER — 2026-08-31
+
+**D-202** — **One-teardown plan: everything is ordered now, before the tape
+session; measurements confirm before cutting, not before buying.** Camden's
+call. The interior comes apart once — teardown day 1 does every 0B
+measurement (T-007/T-008/T-024/T-028/T-029, plus the lighting looks), and the
+build proceeds with parts already in hand. Because routes and the dash
+envelope are unmeasured at order time, **wire is bought with a 1.5× margin
+and a 25 ft floor per colour** (~2,550 ft ordered vs ~1,150 ft calculated —
+the full per-colour table is `BOM.md` §11c), and contacts/seals go to +30 %
+spare. What T-007/T-008 gate MOVES: they no longer gate any purchase; they
+still gate **cutting the backer plate** and **cutting wire to length**. The
+drive-home rule survives — trim panels off is still a drivable car; the
+factory harness stays live until each circuit migrates (D-023/D-024
+unchanged). Waves 0, 1 and 2 merge into one buy (amends D-196's gating, not
+its wave structure — the BOM keeps waves as install order).
+
+**D-203** — **Sourcing calls for the expedited buy, balancing proven parts
+against price without touching the safety-critical line.** Recorded so the
+cart matches the design:
+(a) **Class-T corrected:** the 150 A block is Blue Sea **5007100**
+(110–200 A; the 5504 named earlier is the 225–400 A family's) with Blue Sea
+**5114** 150 A Class-T fuses ×2 (one spare). Not economised — lithium
+interrupt duty (D-062).
+(b) **Plate fuse block is three 4-position independent-feed ATC blocks**
+(OptiFuse BLR-I-504 class), not one 12-way bussed block — the 12 plate fuses
+draw from six different sources (busbar, K11, O1, O12, O15, O20), which a
+common-bus block cannot serve. 3 × 4 = 12 positions exactly; feeds jumpered
+where shared. Sill keeps its own 3 holders.
+(c) **Labels:** Brother **PT-E300** class printer with **HSe heat-shrink
+tube cartridges** replaces the generic "label printer + sleeve" lines — one
+tool prints directly onto shrink sleeve, which is the D-016/CUT-LIST label
+spec.
+(d) **Crimpers:** genuine HDT-48-00 is the gold standard; the buy is the
+**iCrimp IWD-16 + IWD-12** pair (4-indent, solid and stamped contacts) with
+the existing coupon/pull-test protocol (Checklist 1.10–1.11) as the
+acceptance gate. Open-barrel FCI crimper still waits on the `V-069` die
+check against a real terminal.
+(e) **Battery box:** NOCO **HM318BKS** (Group 24–31) — the HM426 named
+earlier is a dual-6 V box. `V-093` checks the Ionic's Group-25 case in it.
+(f) **Keypad:** ECUMaster **ECUKB8** 8-position, $369, direct from
+ECUMaster USA — Ballenger lists only the 6/12-button unit.
+(g) **2 AWG:** fine-strand copper welding cable, loomed and grommeted per
+SAFETY, over marine-tinned at ~2× the price; lugs stay closed-barrel tinned
+copper, hydraulically crimped.
+(h) **Wire:** GXL by the foot from WireBarn — solid AND striped combos, so
+the D-016 base+tracer scheme survives without buying 60 spools; Crimpzone /
+CE Auto are the fallbacks for any missing combo.
+Vendors consolidate to five orders: WireBarn (wire) · DeutschConnector.com
+(every Deutsch part, genuine) · Amazon (backbone, tools, consumables,
+electronics) · Waytek (fuse blocks, relays, sockets) · Ballenger (FCI
+terminals) + the one ECUMaster direct line. Every part number and price in
+the manifest carries a `V-###` until it is in the cart at a live price.
+
+**D-204** — **TAIL-LIGHTS.md leaves the active tree.** Camden's "simplify"
+commits removed it; the design (FMVSS area maths, TL-1 … TL-19, the headlamp
+sourcing rule) is preserved at
+`99-ARCHIVE/2026-08-31_lighting-body/TAIL-LIGHTS.md` — recovered from git —
+and every live reference now points there. The deferred lighting scope's
+live surface is DECISIONS §Lighting, OPEN §8, TASKS-CAMDEN §6 and BOM
+Wave 5; the archived file is the design reference to pull back out when the
+second pass starts (L-004).

@@ -200,7 +200,7 @@ box that draws the gauge reads the sender (D-083).
 
 ## Appendix A — LED figures for the lighting project
 
-Kept for the deferred lighting second pass (D-122; [`TAIL-LIGHTS.md`](TAIL-LIGHTS.md)).
+Kept for the deferred lighting second pass (D-122; [`TAIL-LIGHTS.md`](../../../99-ARCHIVE/2026-08-31_lighting-body/TAIL-LIGHTS.md)).
 **Not this build's design values.** Working figure 0.3 A per LED bulb,
 deliberately conservative.
 

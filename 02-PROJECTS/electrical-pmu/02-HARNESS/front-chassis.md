@@ -14,7 +14,7 @@ nose, bumper, and pop-up assemblies.
 
 | Device | OEM ref | Direction | Goes to | Note |
 |---|---|---|---|---|
-| Headlight LOW / HIGH | E-08/E-09 | Out | O2 / O3 via L2-P1 1, 2 | Stated as LED housings — `V-066` confirms what is fitted. The lamp unit itself is deferred lighting scope ([`TAIL-LIGHTS.md`](../01-DESIGN/TAIL-LIGHTS.md), D-110, D-201) |
+| Headlight LOW / HIGH | E-08/E-09 | Out | O2 / O3 via L2-P1 1, 2 | Stated as LED housings — `V-066` confirms what is fitted. The lamp unit itself is deferred lighting scope ([`TAIL-LIGHTS.md`](../../../99-ARCHIVE/2026-08-31_lighting-body/TAIL-LIGHTS.md), D-110, D-201) |
 | Pop-up motor LH | E-03 | Out | K1 via L2-P1 3 — run feed, conductor ID `V-081` (L2-P1 4 freed spare, D-186) | Single-direction cam motor. Stays (D-110) |
 | Pop-up motor RH | E-04 | Out | K2 via L2-P2 1 — run feed (L2-P2 2 freed spare, D-186) | |
 | Pop-up limit LH / RH | E-03 / E-04 internal | In | A4 / A5 via L2-S 1, 2 | Ladder, 4 states (D-187). **Inside the motor** — pinout off sheet E (`T-011` → D-177) |

@@ -81,6 +81,27 @@ the constant-bus fuses that will be checked when something odd happens.
 Receptacles along the bottom edge grouped by leg; modules and drops on a second
 edge if frontage runs short.
 
+## Dash space — the expedited estimate (D-202)
+
+Ordered against an estimate; `T-007` confirms on teardown day 1 **before any
+plate is cut**. What is actually known without the tape measure:
+
+| Fact | Value | Source |
+|---|---|---|
+| PMU envelope | 131 × 112.1 × 32.5 mm | CAD, confirmed (SPEC §11) |
+| Receptacle frontage needed | ~450 mm, two edges likely | This file |
+| Cluster aperture (Camden, preliminary) | ~100 mm tall × 260–300 mm wide | Q-014 note |
+| Centre-stack face freed by deleting radio/cassette + ashtray + lighter | ≈ 180 mm wide × ~160–180 mm tall below the HVAC head (shaft-style radio era — the 79–83 opening is ~178 mm wide) | Estimate — `V-087` |
+| Behind-stack depth | **unknown** — the one number that matters | `V-087` / `T-007` |
+| Factory/old amp position | relocates to the rear cargo bin with battery + Class-T + disconnect (space confirmed by eye, `V-088`) | Camden |
+
+**Reading:** the PMU alone fits the freed centre-stack face nearly twice over
+— Camden's hunch holds on face area. The full panel does not fit the stack
+alone: the fuse blocks, relay bank, busbars and ~450 mm of receptacle
+frontage want the region behind/below the glovebox as well, which matches
+the two-edge zoning above. Nothing in the expedited order depends on the
+answer — plate stock is generic sheet, cut after `T-007`.
+
 ## The measurement that decides everything
 
 `T-007` — dash cavity: **width × height × depth**, plus:

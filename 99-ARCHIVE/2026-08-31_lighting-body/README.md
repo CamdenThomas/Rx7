@@ -55,7 +55,7 @@ with stock bulbs on them.
 ## Scope
 
 ### Lighting
-- [ ] Custom rear LED strip — thin, stock aperture, white reverse inboard. See [`TAIL-LIGHTS.md`](../../02-PROJECTS/electrical-pmu/01-DESIGN/TAIL-LIGHTS.md)
+- [ ] Custom rear LED strip — thin, stock aperture, white reverse inboard. See [`TAIL-LIGHTS.md`](TAIL-LIGHTS.md)
 - [ ] Headlamp units — shorter rectangular, DOT-compliant, inside the retained pop-up buckets
 - [ ] LED conversion of every remaining lamp: park, marker, plate, interior, glovebox, luggage, illumination
 - [ ] Driver PCB ×2 for the tail lights
@@ -79,7 +79,7 @@ PMU with stock bulbs and soft fuses set from measurement.
 
 | File | Holds |
 |---|---|
-| [`TAIL-LIGHTS.md`](../../02-PROJECTS/electrical-pmu/01-DESIGN/TAIL-LIGHTS.md) | Custom LED strip design, FMVSS area math, reverse sizing, headlamp guidance, process TL-1 … TL-19 |
+| [`TAIL-LIGHTS.md`](TAIL-LIGHTS.md) | Custom LED strip design, FMVSS area math, reverse sizing, headlamp guidance, process TL-1 … TL-19 |
 | [`DECISIONS.md`](DECISIONS.md) | Inherited D-107/110/111 and local L-001 … L-004 |
 | [`OPEN.md`](OPEN.md) | Q-048, V-063, V-064, V-066 |
 | [`TASKS.md`](TASKS.md) | T-034 … T-037 — the measurements that need nothing else |
@@ -117,7 +117,7 @@ stays stock incandescent until the electrical rebuild is finished.**
 | Glove box | 3.4 W | LED |
 | Luggage compartment | ~5 W | LED |
 | Illumination bus | 3.4 / 1.4 W ×7 | LED |
-| **Headlight LOW / HIGH** | `V-066` confirm what's fitted — [`LOADS.md`](../../02-PROJECTS/electrical-pmu/01-DESIGN/LOADS.md) says LED housings, [`TAIL-LIGHTS.md`](../../02-PROJECTS/electrical-pmu/01-DESIGN/TAIL-LIGHTS.md) §8 says 7-inch sealed beams | **DOT rectangular LED unit** (L-002, `Q-048`) |
+| **Headlight LOW / HIGH** | `V-066` confirm what's fitted — [`LOADS.md`](../../02-PROJECTS/electrical-pmu/01-DESIGN/LOADS.md) says LED housings, [`TAIL-LIGHTS.md`](TAIL-LIGHTS.md) §8 says 7-inch sealed beams | **DOT rectangular LED unit** (L-002, `Q-048`) |
 
 **Bulb selection is unconstrained.** Bulb-out detection was dropped (D-047), so
 draw no longer matters for function. Buy on light output and colour.

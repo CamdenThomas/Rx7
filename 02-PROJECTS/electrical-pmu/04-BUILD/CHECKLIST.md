@@ -48,7 +48,7 @@ legs · 6 install & migrate · 7 factory harness out · 8 shakedown · 9 modules
 > **0A is complete** (D-197). Every figure lives in
 > `../02-HARNESS/data/pmu_pins.csv` → [`CHANNEL-SCHEDULE.md`](../01-DESIGN/CHANNEL-SCHEDULE.md) and [`../01-DESIGN/LADDERS.md`](../01-DESIGN/LADDERS.md).
 
-### 0B — The tape measure session
+### 0B — The tape measure session *(teardown day 1 — the interior comes apart once, D-202; measure everything before anything is cut)*
 - [ ] **0.8** [YOU] **Dash cavity envelope** — W × H × D, plus 39-pin lever clearance (`T-007`, `Q-014`)
 - [ ] **0.9** [YOU] Cargo bin measurements against the Group 25 case (`T-024`)
 - [ ] **0.10** [YOU] Sill space behind the kick panel — 4 relays, 3 fuses, ground stud (`T-028`, `V-055`)
@@ -77,7 +77,7 @@ legs · 6 install & migrate · 7 factory harness out · 8 shakedown · 9 modules
 ## PHASE 1 · ORDER & PRACTICE
 `10–16 hrs · apartment`
 
-- [ ] **1.1** [YOU] Consolidated wire and connector order *(hold until 0.11 — 0.23 is ruled (D-180–D-184))*
+- [ ] **1.1** [YOU] Consolidated wire and connector order — **ungated (D-202)**: place as [`BOM.md`](../05-PROCESS/BOM.md) §11 Orders 1–5 (`T-053`); wire carries 1.5× margin, cutting waits on 0.11
 - [ ] **1.2** [YOU] Order Deutsch crimper, hydraulic lug crimper, label printer, open-barrel FCI crimper (`V-069`)
 - [ ] **1.3** [YOU] Order battery mount, Class-T, disconnect, **2 AWG** cable, lugs (D-091)
 - [ ] **1.4** [YOU] Order the CAN keypad, 8-key

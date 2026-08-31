@@ -5,9 +5,11 @@
 Full replacement of the 1982 RX-7's electrical system: ECUMaster PMU-24 DL,
 rear-mounted Ionic S9 lithium, four modular harness legs plus a sill node, and
 two Teensy 4.1 CAN modules — a climate DCU and an instrument cluster ICU.
-Lighting and body work is deferred scope inside this project (D-201):
-designed in [`01-DESIGN/TAIL-LIGHTS.md`](01-DESIGN/TAIL-LIGHTS.md), started only after the rebuild is
-shaken down (L-004).
+Lighting and body work is deferred scope inside this project (D-201, D-204):
+its open items live in OPEN §8, its tasks in TASKS-CAMDEN §6, its money as
+BOM Wave 5; the design reference is archived at
+[`TAIL-LIGHTS.md`](../../99-ARCHIVE/2026-08-31_lighting-body/TAIL-LIGHTS.md)
+until the second pass starts after shakedown (L-004).
 
 **Read [`STATUS.md`](STATUS.md) first.** If the notation is unfamiliar, read
 [`01-DESIGN/GLOSSARY.md`](01-DESIGN/GLOSSARY.md) second. The agent's rules are
@@ -50,7 +52,7 @@ Root holds only [`STATUS.md`](STATUS.md) and this file.
 | [`SCHEMATICS.md`](01-DESIGN/SCHEMATICS.md) | Wake network, pop-up relays, constant bus, sill branches, ground architecture |
 | [`PMU-CONFIG.md`](01-DESIGN/PMU-CONFIG.md) | Everything to type into the PMU client — decode tables, output logic, interlocks, wake, inrush |
 | [`PANEL-LAYOUT.md`](01-DESIGN/PANEL-LAYOUT.md) | The backer plate — what mounts where. Template until `T-007` |
-| [`TAIL-LIGHTS.md`](01-DESIGN/TAIL-LIGHTS.md) | **Deferred** (L-004) — lighting & body second pass: custom tail lights (TL-1 … TL-19), headlamp sourcing, LED conversion, body scope |
+| *(lighting design — archived, D-204)* [`TAIL-LIGHTS.md`](../../99-ARCHIVE/2026-08-31_lighting-body/TAIL-LIGHTS.md) | **Deferred** (L-004) — tail lights (TL-1 … TL-19), headlamp sourcing; kept in `99-ARCHIVE/` until the second pass starts |
 
 ### `02-HARNESS/`
 
@@ -126,7 +128,7 @@ If two files disagree, the owner wins (R3).
 | Relays, fuses, terminals, geometry, status vocabulary | [`01-DESIGN/SPEC.md`](01-DESIGN/SPEC.md) |
 | Ladder values | [`01-DESIGN/LADDERS.md`](01-DESIGN/LADDERS.md) |
 | What goes into the PMU client | [`01-DESIGN/PMU-CONFIG.md`](01-DESIGN/PMU-CONFIG.md) |
-| Lighting & body second pass (deferred) | [`01-DESIGN/TAIL-LIGHTS.md`](01-DESIGN/TAIL-LIGHTS.md) |
+| Lighting & body second pass (deferred) | DECISIONS §Lighting + OPEN §8 + BOM Wave 5; design archived — [`TAIL-LIGHTS.md`](../../99-ARCHIVE/2026-08-31_lighting-body/TAIL-LIGHTS.md) (D-204) |
 | CAN message layouts | [`03-MODULES/CAN-MESSAGES.md`](03-MODULES/CAN-MESSAGES.md) ↔ `firmware/icu/can_map.h` |
 | Cluster layout, palette, rendering | `firmware/icu/cluster_core.h` |
 | Automated trip figures | `firmware/icu/stats.h` |

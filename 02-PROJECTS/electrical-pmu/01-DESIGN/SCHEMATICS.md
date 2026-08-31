@@ -199,6 +199,6 @@ the shortest and heaviest wire on the plate and the one to get right.
 | Relays, plate | 4 | ISO micro, SPDT (K1, K2, K11, K12) |
 | Relay sockets, plate | 10 | ISO micro — 4 populated; K3/K4's freed as spares (D-186) |
 | Relay sockets, sill | 4 | ISO micro — **empty** |
-| Fuse block, plate | 12 positions — F1–F7, F10–F13, F15 | ATO / mini |
+| Fuse blocks, plate | 12 positions — F1–F7, F10–F13, F15, as 3 × 4-pos **independent-feed** blocks (D-203b — six different sources) | ATO / ATC |
 | Fuse positions, sill | 3 | F8, F9 (empty), F14 |
 | Busbars | 2 | always-hot, ground |

@@ -21,7 +21,7 @@ Read this before anything else if the notation is unfamiliar.
 | `I-###` | **Improvement** — housekeeping on the documents themselves | [`../05-PROCESS/AUDITS.md`](../05-PROCESS/AUDITS.md) |
 | `R#` | **Standing rule** for how the documents are kept | `../../../ASSISTANT.md` |
 | `L-###` | **Lighting decision** — the deferred lighting scope's own series, merged into the main log (D-201) | [`../05-PROCESS/DECISIONS.md`](../05-PROCESS/DECISIONS.md) §Lighting |
-| `TL-##` | Tail-light process step | [`TAIL-LIGHTS.md`](TAIL-LIGHTS.md) |
+| `TL-##` | Tail-light process step | [`TAIL-LIGHTS.md`](../../../99-ARCHIVE/2026-08-31_lighting-body/TAIL-LIGHTS.md) |
 | `F/H/X/Z-###` | Forward-work items — firmware, hardware, documentation, thinking ahead. Three digits, so `F-003` (a firmware item) is never confused with factory connector `F-03` | [`../05-PROCESS/FORWARD-WORK.md`](../05-PROCESS/FORWARD-WORK.md) |
 | `[VERIFY]` | An unnumbered price or part-number placeholder that has not been checked | inline, mostly [`BOM.md`](../05-PROCESS/BOM.md) |
 | `A-06`, `F-11`, `X-13` … | **Factory connector and ground codes** — a letter and *two* digits, from the 1982 wiring diagram. Not project IDs | `../../../01-REFERENCE/factory-circuits/OEM-RECORD.md` |

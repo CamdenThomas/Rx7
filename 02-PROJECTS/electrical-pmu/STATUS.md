@@ -17,7 +17,7 @@ DL, a rear-mounted Ionic S9 lithium battery, four modular harness legs plus a
 sill node, and two Teensy 4.1 CAN modules — a climate DCU and an instrument
 cluster ICU with a 12.3″ instant-on bar display (D-192/D-193). The car stays
 on stock incandescent bulbs; lighting & body is deferred second-pass scope —
-[`01-DESIGN/TAIL-LIGHTS.md`](01-DESIGN/TAIL-LIGHTS.md) (D-201, after shakedown).
+[`TAIL-LIGHTS.md` (archived)](../../99-ARCHIVE/2026-08-31_lighting-body/TAIL-LIGHTS.md) (D-201, after shakedown).
 **The design is complete and the measurement campaign is closed** (D-197):
 every output has a fuse value, every input a final decode table, every cavity
 a destination; the pop-up drive, wake network, horn/wink sensing and fuel
@@ -48,27 +48,31 @@ Sicma housings inbound (`T-045` on arrival). Zero small terminal spares
 | Phase | Hrs | State |
 |---|---|---|
 | 0 · Documentation & measurement | 55–85 | **Meter work DONE (D-197).** Left: the 0B tape-measure session and the design freeze (0.20–0.22) |
-| 1 · Order & practice | 10–16 | Waves 0–1 buyable now; Wave 2 waits on 0B ([`BOM.md`](05-PROCESS/BOM.md)) |
+| 1 · Order & practice | 10–16 | **Waves 0–2 merged into one expedited buy** — the five-store manifest is [`BOM.md`](05-PROCESS/BOM.md) §11 (D-202); nothing gates ordering |
 | 2A · PMU configuration | 12–20 | **In the car** (D-194) — slots after 6.2, fully written in [`PMU-CONFIG.md`](01-DESIGN/PMU-CONFIG.md) |
 | 2B · Firmware | 155–325 | ~100–140 hrs done, ahead of schedule. ICU renders the full 1280×480 panel (F-011) with the BT817 driver written (F-008, timings await `V-084`); DCU logic split out and tested (F-001). All three desktop suites green: 415 + 35 + 33 |
 | 3 · Power backbone | 18–28 | Parts are Wave 2a. Winter break |
-| 4 · Panel build | 49–74 | Blocked on `T-007` only |
-| 5 · Harness legs | 98–162 | Blocked on `T-008` only |
+| 4 · Panel build | 49–74 | Parts ordered (D-202); plate cutting waits on `T-007`, teardown day 1 |
+| 5 · Harness legs | 98–162 | Parts ordered with 1.5× wire margin (D-202); cutting waits on `T-008` |
 | 6–8 · Install, migrate, shakedown | 118–199 | Summer 2027 |
 | 9 · Modules | — | Late 2027 → 2028 |
 
 ## 5 · Do next
 
-**Camden — car and stores:**
+**Camden — stores first, then the car:**
 
-1. **`V-081` ohm check at E-03** — R and RY to case at parked / mid /
+1. **`T-053` — place the five expedited orders** ([`BOM.md`](05-PROCESS/BOM.md) §11,
+   D-202): WireBarn wire per the §11c colour table · DeutschConnector kits ·
+   Amazon backbone/tools · Waytek distribution · Ballenger terminals +
+   ECUKB8 direct. ~$2,500–3,550, nothing gating it
+2. **`V-081` ohm check at E-03** — R and RY to case at parked / mid /
    raised (D-199); settles the pop-up drive conductors in five minutes
-2. **Wave 0 + Wave 1 buys** (~$55 total — [`BOM.md`](05-PROCESS/BOM.md) §3–§4)
-3. **The 0B tape-measure session** — dash envelope **+ how deep the cluster
-   brow shades** (`T-007`, decides the display glass via `V-085`), routes
-   with string (`T-008`), cargo bin (`T-024`), sill (`T-028`), battery posts
-   (`T-029`), photos, VIN
-4. Freeze the design, print it, date it (0.20–0.22) → place the Wave 2 orders
+3. **Teardown day 1** (while parts ship): the full 0B session — dash
+   envelope + centre-stack depth (`T-007`/`V-087`), **how deep the cluster
+   brow shades** (`V-085` glass call), routes with string (`T-008`), cargo
+   bin (`T-024`), sill (`T-028`), battery posts (`T-029`), photos, VIN
+4. Freeze the design, print it, date it (0.20–0.22) → **then cut** plate
+   and wire — measurements gate cutting, not buying (D-202)
 
 **Agent — queued, nothing blocking** ([`05-PROCESS/FORWARD-WORK.md`](05-PROCESS/FORWARD-WORK.md)):
 F-004 tach front end · F-005/F-006 cluster pages + diagnostics screen ·
@@ -77,10 +81,10 @@ F-003 sensor conditioning · X-003/X-004/X-006 docs. (F-011 + F-008 landed
 
 ## 6 · Money
 
-[`BOM.md`](05-PROCESS/BOM.md) §1 — the only ledger: bought ~$2,950–3,350 · Wave 0 ~$30 ·
-Wave 1 ~$20–45 · Wave 2 ~$2,800–4,750 (after 0B) · Wave 3 ~$510–1,170 ·
-Wave 4 conditional. Electrical total ~$6,550–9,900; Wave 5 (lighting,
-after shakedown — D-201) ~$400–980 on top.
+[`BOM.md`](05-PROCESS/BOM.md) §1 — the only ledger: bought ~$2,950–3,350 ·
+**the expedited Waves 0–2 buy ~$2,500–3,550 across five stores (§11, D-202)** ·
+Wave 3 ~$510–1,170 · Wave 4 conditional. Electrical total ~$6,550–9,900;
+Wave 5 (lighting, after shakedown — D-201) ~$400–980 on top.
 
 ## 7 · Open items
 
