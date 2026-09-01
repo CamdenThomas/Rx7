@@ -19,4 +19,4 @@ D2,L4 Rear (sill),Door,DT06-08S,DT04-08P,8,W8S + W8P,Sill node,"Passenger door. 
 DP-ICU,Drop,Module,DT06-12S,DT04-12P,12,W12S + W12P,Dash post,"ICU: power, CAN2, dimming reference, six engine sensors. The display does NOT cross this connector (D-159)"
 DP-DCU,Drop,Module,DT06-6S,DT04-6P,6,W6S + W6P,Dash post,"DCU: power, CAN2. Comfort tap and servo leads are local"
 DP-DIAG,Drop,Port,DTM06-4S,DTM04-4P,4,WM-4S + WM-4P,Glovebox,"CAN1 + 2 A fused constant. 120 Ω here and at the PMU"
-DP-KEY,Drop,Port,DTM06-4S,DTM04-4P,4,WM-4S + WM-4P,Dash,"ECUmaster 8-key keypad: CAN2 + power + ground"
+DP-KEY,Drop,Port,DTM06-4S,DTM04-4P,4,WM-4S + WM-4P,Dash,"Control-panel drop, device deferred (D-210): CAN2 + switched power + ground"

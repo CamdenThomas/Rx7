@@ -1,6 +1,6 @@
 # LOADS — estimated current draw and signal types
 
-*Rev 2026-08-31 · owns: the estimation method, the design (worst-case) draw per circuit, and the signal type of every input. Measured figures live in [`CHANNEL-SCHEDULE.md`](CHANNEL-SCHEDULE.md), not here.*
+*Rev 2026-09-01 · owns: the estimation method, the design (worst-case) draw per circuit, and the signal type of every input. Measured figures live in [`CHANNEL-SCHEDULE.md`](CHANNEL-SCHEDULE.md), not here.*
 
 **Every number here is an estimate.** Nothing in this file may be used to set
 a soft fuse — that comes from measurement ([`CHANNEL-SCHEDULE.md`](CHANNEL-SCHEDULE.md), D-164).
@@ -114,7 +114,7 @@ deferred ([`../02-HARNESS/CAVITY-STATE.md`](../02-HARNESS/CAVITY-STATE.md) lists
 | Start relay coil (K9) | O21 | — | 0.15–0.2 | C |
 | Horn, pair | O11 | 15 A (shared with stop) | 4–8 | B |
 | Hatch / fuel-door solenoid | `Q-061` → D-180 | 20 A | 3–5 momentary | D |
-| A/C magnet clutch | factory switch, K10 | — | 3–5 | C |
+| ~~A/C magnet clutch~~ | — | — | **0 — the A/C system is removed (D-211)** | — |
 
 O5 is sized for the Aeromotive, not the Carter — size the channel for the
 worst plausible replacement (the rule preserved in `99-ARCHIVE/PARTS-CHANGES.md` §7).
@@ -127,7 +127,7 @@ worst plausible replacement (the rule preserved in `99-ARCHIVE/PARTS-CHANGES.md`
 | Head unit, switched | 2–5 | B |
 | DCU logic — MCU, transceiver, regulator | 0.3–0.5 | D |
 | ICU logic + display backlight | 0.5–1.5 | D |
-| CAN keypad | 0.1–0.3 | D |
+| Control panel on DP-PANEL — deferred (D-210) | 0.1–0.3 | D |
 | **Worst case, both ports loaded** | **~10 A on a 15 A channel** | |
 
 The cigarette lighter (8–10 A while heating) is deleted (D-095) — it was the
@@ -191,7 +191,7 @@ sense, the washer pump and the horn switch's PMU input. See `Q-063` → D-182.
 | Alternator sense (BW/WB) | Lamp-driven excitation — a current path through the warning lamp, not a clean digital signal | ICU input, divider |
 | Brake fluid level | Closure | ICU input (`A-010`) |
 | Wideband O2 | 0–5 V analog out | Capped spare in L1-S1; tap location unknown (K-001) |
-| Refrigerant pressure switch, frost switch | Closure | Stay in the factory A/C chain (D-012) |
+| ~~Refrigerant pressure switch, frost switch~~ | — | **Gone with the A/C system (D-211).** The post-swap compressor gets a pressure *transducer* into the DCU, designed with that system |
 
 **The PMU reads none of these** — it has no spare analog input (D-076). The
 box that draws the gauge reads the sender (D-083).

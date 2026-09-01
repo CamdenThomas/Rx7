@@ -1,6 +1,6 @@
 # Camden's Tasks — Electrical / PMU
 
-*Rev 2026-08-31 · owns: physical work, measurements, purchases and sign-offs that only Camden can clear. Each task cites the Checklist step it satisfies; the Checklist owns the sequence, this file owns the list. Deferred lighting tasks are §6 (D-201). Done tasks live struck-through in §5 only — no duplicates (D-196).*
+*Rev 2026-09-01 · owns: physical work, measurements, purchases and sign-offs that only Camden can clear. Each task cites the Checklist step it satisfies; the Checklist owns the sequence, this file owns the list. Deferred lighting tasks are §6 (D-201). Done tasks live struck-through in §5 only — no duplicates (D-196).*
 
 **Blocking** means downstream work stops. IDs are permanent.
 
@@ -15,10 +15,11 @@
 
 | ID | Task | Why | Checklist |
 |---|---|---|---|
-| **T-053** | **Place the five expedited orders** — WireBarn wire (§11c table) · DeutschConnector kits · Amazon backbone/tools · Waytek distribution · Ballenger terminals + ECUKB8 direct ([`BOM.md`](BOM.md) §11) | D-202 — parts in hand for the one-teardown build; ~$2,500–3,550 | 1.1–1.8 |
+| **T-053** | **Pay the four loaded carts, then place WireBarn by hand** — DeutschConnector $1,281 · Amazon $1,561 · Waytek $170 · Ballenger $11 = **$3,024 loaded**; wire per the §11c table is Camden's to order (Cloudflare blocks the agent browser), plus 2 microSD ([`BOM.md`](BOM.md) §11) | D-202 — parts in hand for the one-teardown build; ~$3,570–3,920 all-in | 1.1–1.8 |
 | **T-052** | **Pop-up ohm check at E-03** (`V-081`, D-199) — unplugged, ohms **R → case and RY → case at parked / mid / raised**. One winding reached via different cam segments = single-direction confirmed, K1/K2 drive R + RY bridged, WR capped | Settles the pop-up drive conductors before the L2 leg is pinned. Five minutes with the meter | 0.6 |
 | **T-007** | **Dash cavity envelope** — W × H × D + 39-pin lever clearance, centre-stack depth (`V-087`), **and how deep the cluster brow shades the aperture** (`V-085` glass call) | `Q-014`. Now gates *cutting the plate* and the glass call — not purchases (D-202). Teardown day 1 | 0.8 |
 | **T-008** | **Every harness route with string, +15 %** | Now gates *cutting wire to length* — the wire is ordered with 1.5× margin (D-202). Teardown day 1 | 0.11 |
+| **T-054** | **Strip the A/C system** (D-211). Order: (1) **shop recovers the refrigerant** — it still holds charge per K-015 and venting it is illegal, $50–120; (2) pull compressor, bracket, belt, condenser, receiver/drier and lines; (3) pull the factory interlock chain — G-18, G-19, G-21, G-22, G-23 and the dash A/C switch; (4) **leave the blower, heater core, HVAC case, ducts and doors alone**; (5) box the hardware, don't scrap it. Confirm at step 2 that the compressor is on its own belt (`V-097`) — if it shares one, a shorter belt is needed | Frees ~3–6 hp on the 12A at altitude, 15–25 lb off the nose, and empties the bay before the harness goes in. Not urgent — it can ride with teardown day 1 or wait for a warm Saturday | 0.24 |
 | T-043 | Paint-pen dot beside cavity 1 (Wave 0 pen) | Never re-asked mid-build (D-139) | G0.5 |
 | T-044 | Order spare 1.5 mm terminals ×20 + 120 Ω — rides in `T-053` Order 5 | Zero small spares while learning to crimp (D-135, D-194) | 1.8 |
 | T-022 | Check the Ionic's state of charge; keep it above BMS cutoff | A lithium left to self-discharge into cutoff is hard to recover | G0.4 |

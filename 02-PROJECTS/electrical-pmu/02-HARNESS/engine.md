@@ -1,6 +1,6 @@
 # LEG 1 — ENGINE
 
-*Rev 2026-08-31 · owns: what is in the engine leg and why. Cavities are [`PIN-MAP.md`](PIN-MAP.md)'s; draw figures are [`../01-DESIGN/LOADS.md`](../01-DESIGN/LOADS.md)'s.*
+*Rev 2026-09-01 · owns: what is in the engine leg and why. Cavities are [`PIN-MAP.md`](PIN-MAP.md)'s; draw figures are [`../01-DESIGN/LOADS.md`](../01-DESIGN/LOADS.md)'s.*
 
 **Boundary:** firewall grommet. Comes out for engine service or an engine swap.
 **Ground:** local star node on the block. Nothing returns through the firewall.
@@ -41,13 +41,36 @@ motor/sensor (A-05, A-07). All carb-era. **Confirmed: zero remain post-Weber
 
 Back-up light switch (F-01) — M/T only, car is A/T.
 
-## A/C — kept, untouched (D-012)
+**The entire A/C interlock chain** — No.1 A/C relay (G-18), magnet clutch
+(G-19), refrigerant pressure switch (G-21), frost warning temp switch (G-22),
+diode (G-23) — deleted with the compressor (D-211). See the section below.
 
-No.1 A/C relay (G-18), magnet clutch (G-19), refrigerant pressure switch (G-21),
-frost warning temp switch (G-22), diode (G-23). The whole safety interlock chain
-stays on the factory switch, fed from busbar F4. It does not enter the PMU and
-does not enter this leg's connector count — it is a self-contained factory
-sub-harness. K10 is the factory clutch relay.
+## A/C — removed entirely (D-211, supersedes D-012)
+
+**The whole cooling system leaves the car and nothing is left behind for it.**
+Compressor, bracket, belt, condenser, receiver/drier and lines come out; the
+factory interlock chain goes with them — No.1 A/C relay (G-18), magnet clutch
+(G-19), refrigerant pressure switch (G-21), frost warning temp switch (G-22),
+diode (G-23) and the dash A/C switch. Panel side: **F4 and K10 are deleted**
+([`../01-DESIGN/SPEC.md`](../01-DESIGN/SPEC.md) §3).
+
+**Heat and ventilation are untouched.** Blower motor, heater core, HVAC case,
+ducts and blend doors all stay — O16 → L3-P 1 and the comfort bus are exactly
+as they were. The car loses cooling and nothing else.
+
+**No stub is left in this leg.** That is deliberate and it is the rule that
+makes L1 different from every other leg: hidden interior conductors are run and
+capped for deferred features (D-208(f)), and the engine bay is the one place
+that is not worth it. L1 carries only what the engine currently on the mounts
+needs — no connector to nothing, no cap marking where something used to be.
+When a compressor returns with the swap engine, **this leg is rebuilt from
+scratch** around whatever that system actually is: a PMU-driven clutch output
+and a pressure transducer into the DCU, not a 1982 relay chain. The boundary at
+the firewall grommet is what makes that cheap.
+
+Physical removal is `T-054` — **the refrigerant is recovered by a shop first**
+(K-015 says the system still cools, so it still holds charge; venting it is
+illegal). Hardware is boxed and kept, not scrapped.
 
 ## Reserved — LS swap (D-007)
 
@@ -71,9 +94,18 @@ sub-harness. K10 is the factory clutch relay.
 
 ## Why this leg is shaped the way it is
 
-**This leg shrinks dramatically.** Eighteen carb-era devices delete. What
-remains is ignition, the ICU's six sensors, two interlocks and reserved
-capacity — a fraction of the factory bundle.
+**This leg shrinks dramatically.** Eighteen carb-era devices delete, plus the
+five-device A/C interlock chain (D-211). What remains is ignition, the ICU's six
+sensors, two interlocks and reserved capacity — a fraction of the factory bundle.
+
+**This leg is the one place capped spares are not free.** Everywhere else in
+the car a run-and-cap conductor is hidden, out of the way, and cheaper now than
+a re-pin later. In the engine bay it is visible clutter on a bay that is meant
+to read clean, and it is guaranteed to be wrong: the swap engine's sensors,
+coils, injectors and accessories will not match the stubs left for them. So the
+only capped cavities in L1 are the LS reservations below, which exist
+because L1-P and L1-S2 are terminated once (D-004) and the LS is a known
+quantity — everything else in this leg is live or absent (D-211).
 
 **The tach signal is the one hazard in here.** It shares L1-S1 with the CAN
 pair and the +5 V reference — all low-level, which is correct — and is

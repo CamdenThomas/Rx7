@@ -1,6 +1,6 @@
 # LEG 3 — DASH
 
-*Rev 2026-08-31 · owns: what is in the dash leg and why. Cavities are [`PIN-MAP.md`](PIN-MAP.md)'s; draw figures are [`../01-DESIGN/LOADS.md`](../01-DESIGN/LOADS.md)'s.*
+*Rev 2026-09-01 · owns: what is in the dash leg and why. Cavities are [`PIN-MAP.md`](PIN-MAP.md)'s; draw figures are [`../01-DESIGN/LOADS.md`](../01-DESIGN/LOADS.md)'s.*
 
 **Boundary:** the dash structure. Comes out when the dash comes out.
 **Ground:** dash star node, adjacent to the panel.
@@ -27,8 +27,11 @@ of this leg either.
 | Horn switch | steering pad | Closure + wake diode (D-072) | Wake L3-S1 11; **PMU input `Q-063` → D-182** | |
 | Window switches DRV/PASS | new, not fitted | Closure ×4 → K5–K8 at the sill | L3-S2 3–6, **capped** | PROVISIONED (D-131) |
 | Blower switch + resistor pack | G-15, G-14 | In the motor path, fed by O16 | via L3-P 1 | Factory switch sets speed; the PMU only enables O16 |
-| Defroster, interior override, spare keys | G-24 → keypad | CAN keypad | DP-KEY | D-031. The factory defrost switch is broken (K-020) and deleted |
-| Parking brake, glove box, hatch, fuel door | C-04, H-02, H-13, H-15 | CAN keypad | DP-KEY | D-031. Hatch and fuel-door *outputs* are `Q-061` → D-180 |
+| Defog, hatch release, fuel-door release | G-24 | **Deferred to the custom A/C panel** (D-210) | DP-KEY — drop wired and capped | Factory defrost switch broken (K-020) and deleted. `DEFOG` stays configured and **disabled**; hatch and fuel-door solenoid branches (D-180) are unbuilt |
+| Custom A/C / control panel | — | CAN2 + switched 12 V + ground, 4 conductors | DP-KEY | D-210 — **no keypad is bought.** The drop is the universal set, so whatever panel is designed plugs in |
+| Glove box lamp switch | H-02 | Local closure — lamp only, **no PMU input** | O20 branch | D-209 — manual latch; light on door open |
+
+**No panel buttons in this build (D-210):** the horn stays on the steering pad (A8 via 12 kΩ, D-190) · interior-light override deleted outright · glove box is a lamp switch, not a button · defog, hatch and fuel-door controls wait for the custom panel. **Every switch in the car except the column combination switch is replaced** — schedule and parts: [`../01-DESIGN/SWITCHES.md`](../01-DESIGN/SWITCHES.md).
 
 **No retract switch.** Deleted (D-038) — pop-ups raise from the A15 ladder
 reaching HEAD. Wink switches are momentary overrides.
@@ -58,7 +61,8 @@ reaching HEAD. Wink switches are momentary overrides.
 | Rear wiper switch | **Confirmed gone** (D-097) |
 | Oscillator (chime), brake warning checker | Software — then dropped entirely (D-050) |
 | Stop light switch as a load-carrier | Becomes a signal input only |
-| Rear defrost switch | Broken (K-020); moves to the keypad |
+| Rear defrost switch | Broken (K-020); control moves to the custom A/C panel (D-210) — **no defogger until then** |
+| **A/C switch and its interlock chain** | The compressor is removed (D-211). Nothing to switch — heat, defrost and ventilation are unaffected; F4 and K10 go with it |
 
 ## Why this leg is shaped the way it is
 
@@ -81,7 +85,7 @@ belt warning and key reminder. All of it is now config.
 **Routing:** keep the CAN pairs away from the relay coil commands. Coils switch
 inductively and put spikes back down the bundle.
 
-**Grounds that cross here** — the diagnostic port, keypad, ICU and DCU returns
+**Grounds that cross here** — the diagnostic port, control-panel drop, ICU and DCU returns
 — are box-adjacent devices with no zone of their own (D-037). They are drops,
 not part of the leg.
 

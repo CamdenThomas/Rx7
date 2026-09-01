@@ -7,7 +7,7 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | Prefix | Total | Open / active |
 |---|---|---|
 | A — Assumptions | 11 | 4 |
-| D — Decisions | 204 | 191 |
+| D — Decisions | 211 | 195 |
 | I — Improvement items (audits) | 95 | 10 |
 | K — Known issues | 23 | 0 |
 | L — Lighting decisions (deferred scope) | 4 | 4 |
@@ -15,8 +15,8 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | P — Planned modifications | 6 | 6 |
 | Q — Questions | 60 | 4 |
 | R — Standing rules | 8 | 8 |
-| T — Camden's tasks | 37 | 30 |
-| V — Verify items | 81 | 44 |
+| T — Camden's tasks | 38 | 31 |
+| V — Verify items | 82 | 44 |
 
 ## A — Assumptions
 
@@ -32,7 +32,7 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | A-010 | open | Brake fluid level goes to the ICU on DP-ICU 12 via L1-S2 1. Coolant and oil level are optional, have no ICU ca… | 05-PROCESS/OPEN.md |
 | A-011 | open | The wideband O2 signal (K-001) is carried to the dash on L1-S1 12 and capped. It is not an ICU input and has n… | 05-PROCESS/OPEN.md |
 | A-012 | open | The luggage compartment switch joins the A6 door-pin ladder as a fourth state — re-run the ladder maths before… | 05-PROCESS/OPEN.md |
-| A-013 | open | The CAN keypad is powered from the accessory bus O10 (DP-KEY 3), so it is dead when the car sleeps and cannot … | 05-PROCESS/OPEN.md |
+| A-013 | open | Whatever control panel lands on DP-KEY is powered from the accessory bus O10 (DP-KEY 3), so it is dead when th… | 05-PROCESS/OPEN.md |
 
 ## D — Decisions
 
@@ -49,7 +49,7 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | D-009 | active | O1 (motor bus) and O16 (blower) carry the worst inductive loads, | 05-PROCESS/DECISIONS.md |
 | D-010 | active | Wipers live on O8 and nothing else does. O8 is the only channel with | 05-PROCESS/DECISIONS.md |
 | D-011 | active | O15 assigned as a 25 A comfort bus (heated/cooled seats, heated | 05-PROCESS/DECISIONS.md |
-| D-012 | active | A/C compressor clutch stays on the factory switch, off the PMU. | 05-PROCESS/DECISIONS.md |
+| D-012 | superseded by D-211 | A/C compressor clutch stays on the factory switch, off the PMU. | 05-PROCESS/DECISIONS.md |
 | D-013 | active | Turn signals flashed natively by the PMU. No flasher unit anywhere | 05-PROCESS/DECISIONS.md |
 | D-014 | active | Interval wiper control unit deleted. Intermittent is a software | 05-PROCESS/DECISIONS.md |
 | D-015 | active | Tail / park / side marker / plate is one circuit on O6, covering both | 05-PROCESS/DECISIONS.md |
@@ -68,7 +68,7 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | D-028 | active | Precision analog signals prefer the **A9–A16** bank over A1–A8. | 05-PROCESS/DECISIONS.md |
 | D-029 | active | Four leg connectors replace the seven regional connectors. Legs are | 05-PROCESS/DECISIONS.md |
 | D-030 | active | Relay bank defined at 11: eight H-bridge halves (two pop-ups, two | 05-PROCESS/DECISIONS.md |
-| D-031 | active | Five dash buttons move to the CAN keypad — horn, parking brake sense, | 05-PROCESS/DECISIONS.md |
+| D-031 | superseded by D-209 | Five dash buttons move to the CAN keypad — horn, parking brake sense, | 05-PROCESS/DECISIONS.md |
 | D-032 | active | Power and signal get **separate housings** on every leg. Three | 05-PROCESS/DECISIONS.md |
 | D-033 | active | Connector code scheme: `L<leg><class><index>` leg-side, | 05-PROCESS/DECISIONS.md |
 | D-034 | superseded by D-052 | Series selection: **Deutsch DTP** (size 12) for all P, **Deutsch DT | 05-PROCESS/DECISIONS.md |
@@ -136,7 +136,7 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | D-096 | active | `[V-048]` **Radar is a custom subsystem, not a commercial unit. | 05-PROCESS/DECISIONS.md |
 | D-097 | active | Confirmed **gone and not returning**, removed from all specs and | 05-PROCESS/DECISIONS.md |
 | D-098 | active | `[V-034]` **The fuel-door solenoid never existed** — it is a new | 05-PROCESS/DECISIONS.md |
-| D-099 | active | `[V-032]` A/C is **barely cool, probably low on charge.** Not an | 05-PROCESS/DECISIONS.md |
+| D-099 | superseded by D-211 | `[V-032]` A/C is **barely cool, probably low on charge.** Not an | 05-PROCESS/DECISIONS.md |
 | D-100 | active | `[V-013]` Deutsch DTP size-12 confirmed adequate for the 25 A legs. | 05-PROCESS/DECISIONS.md |
 | D-101 | superseded by D-140 | Bench kit **purchased**: UT210E clamp meter, 3 × Teensy 4.1 with | 05-PROCESS/DECISIONS.md |
 | D-102 | active | Three Sicma housings on hand**, each with a full pin set: one from | 05-PROCESS/DECISIONS.md |
@@ -242,6 +242,13 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | D-202 | active | One-teardown plan: everything is ordered now, before the tape | 05-PROCESS/DECISIONS.md |
 | D-203 | active | Sourcing calls for the expedited buy, balancing proven parts | 05-PROCESS/DECISIONS.md |
 | D-204 | active | TAIL-LIGHTS.md leaves the active tree.** Camden's "simplify" | 05-PROCESS/DECISIONS.md |
+| D-205 | active | Manifest fact-check corrections (2026-09-01).** Line-by-line | 05-PROCESS/DECISIONS.md |
+| D-206 | active | Plate fuse blocks regrouped by source; BLR-I-504 dropped. | 05-PROCESS/DECISIONS.md |
+| D-207 | active | Four of five carts loaded live (2026-09-01).** Working in the | 05-PROCESS/DECISIONS.md |
+| D-208 | active | Luxury package splits off; the legs do not.** Camden's call: | 05-PROCESS/DECISIONS.md |
+| D-209 | active | Switch schedule: the column combination switch stays, every | 05-PROCESS/DECISIONS.md |
+| D-210 | active | No ECUMaster keypad. All three button functions fold into the | 05-PROCESS/DECISIONS.md |
+| D-211 | active | The A/C system comes out. No cooling until the swap engine. | 05-PROCESS/DECISIONS.md |
 
 ## I — Improvement items (audits)
 
@@ -361,7 +368,7 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | K-012 | Gone (D-097) | Headlight cleaner | 00-CAR/known-issues.md |
 | K-013 | Zero remain post-Weber (D-097) | Cold-start hardware — hot-start relay/motor, sub-zero motor/sensor, choke, carb heater | 00-CAR/known-issues.md |
 | K-014 | Dead. New heated mirrors with digital control replace it (D-… | Power mirror control | 00-CAR/known-issues.md |
-| K-015 | Not an electrical fault. Out of scope for the PMU project; d… | A/C barely cool — probably low on charge (D-099) | 00-CAR/known-issues.md |
+| K-015 | Closed by deletion. The whole cooling system is being remove… | A/C barely cool — probably low on charge (D-099 → D-211) | 00-CAR/known-issues.md |
 | K-016 | Needs sourcing — Checklist 1.7 (`T-033`) | Hatch latch switch broken | 00-CAR/known-issues.md |
 | K-017 | New addition, not a migration — Checklist 1.6 (`T-032`, D-09… | Fuel-door solenoid never existed | 00-CAR/known-issues.md |
 | K-018 | Functional — D-040 holds, no software gesture needed to park… | Both retractor manual raise knobs | 00-CAR/known-issues.md |
@@ -525,7 +532,8 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | T-050 | done | Superseded by D-198 — the factory-spec exciter is wired instead of pre-diagnosing; the alt… | 05-PROCESS/TASKS-CAMDEN.md |
 | T-051 | open | BT817 eval board, then bridge + glass per `V-085` | 05-PROCESS/TASKS-CAMDEN.md |
 | T-052 | open | Pop-up ohm check at E-03 (`V-081`, D-199) — unplugged, ohms R → case and RY → case at park… | 05-PROCESS/TASKS-CAMDEN.md |
-| T-053 | open | Place the five expedited orders — WireBarn wire (§11c table) · DeutschConnector kits · Ama… | 05-PROCESS/TASKS-CAMDEN.md |
+| T-053 | open | Pay the four loaded carts, then place WireBarn by hand — DeutschConnector $1,281 · Amazon … | 05-PROCESS/TASKS-CAMDEN.md |
+| T-054 | open | Strip the A/C system (D-211). Order: (1) shop recovers the refrigerant — it still holds ch… | 05-PROCESS/TASKS-CAMDEN.md |
 
 ## V — Verify items
 
@@ -606,9 +614,10 @@ IDs are permanent and never reused (D-043); a gap means something closed. **Cite
 | V-088 | open | The relocated amp's old position and the deleted cassette/ashtray/lighter free the space Camden expects; amp +… | 05-PROCESS/OPEN.md |
 | V-089 | open | WireBarn stocks every striped GXL combo in BOM §11c, by the foot, in 12/14/16 | 05-PROCESS/OPEN.md |
 | V-090 | open | DeutschConnector assembly-kit contents (contacts included, genuine), and `1027-003-1200` clip source | 05-PROCESS/OPEN.md |
-| V-091 | open | OptiFuse BLR-I-504 is truly independent-feed, panel-mountable, ATO/ATC | 05-PROCESS/OPEN.md |
+| V-091 | closed (no decision cites it) |  | — |
 | V-092 | open | Brother HSe sleeve sizes: HSe-211 fits 16 AWG, HSe-221 fits 12–14 AWG finished OD | 05-PROCESS/OPEN.md |
-| V-093 | open | NOCO HM318BKS interior fits the Ionic S9 Group-25 case + terminals + boots | 05-PROCESS/OPEN.md |
+| V-093 | open | NOCO BG27** interior (carted 2026-09-01, D-207 — HM318BKS not listed) fits the Ionic S9 Group-25 case + termin… | 05-PROCESS/OPEN.md |
 | V-094 | open | MRBF rating for the starter feed (200 A assumed) survives cranking without nuisance-blowing | 05-PROCESS/OPEN.md |
 | V-095 | open | Fine-strand welding cable is acceptable for the 2 AWG runs (loomed, grommeted) vs SGX/marine | 05-PROCESS/OPEN.md |
-| V-096 | open | iCrimp IWD-16/IWD-12 crimps pass the coupon pull tests on genuine solid contacts | 05-PROCESS/OPEN.md |
+| V-096 | open | IWISS solid-contact crimper (12/16/20)** — carted in place of the iCrimp pair (D-207) — passes the coupon pull… | 05-PROCESS/OPEN.md |
+| V-097 | open | The A/C compressor runs its own dedicated belt** off the crank, separate from the alternator/water-pump belt —… | 05-PROCESS/OPEN.md |

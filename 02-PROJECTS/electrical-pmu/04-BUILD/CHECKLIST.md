@@ -1,6 +1,6 @@
 # BUILD CHECKLIST
 
-*Rev 2026-08-31 · owns: the build sequence, phase by phase. The migration order inside Phase 6 is [`MIGRATION-LOG.md`](MIGRATION-LOG.md)'s; money is [`../05-PROCESS/BOM.md`](../05-PROCESS/BOM.md)'s.*
+*Rev 2026-09-01 · owns: the build sequence, phase by phase. The migration order inside Phase 6 is [`MIGRATION-LOG.md`](MIGRATION-LOG.md)'s; money is [`../05-PROCESS/BOM.md`](../05-PROCESS/BOM.md)'s.*
 
 Tick as you go. Every step is either **[YOU]** hands-on or **[AGENT]** paperwork
 Claude can do on request. Step IDs are permanent — a gap means a step was
@@ -56,6 +56,7 @@ legs · 6 install & migrate · 7 factory harness out · 8 shakedown · 9 modules
 - [ ] **0.12** [YOU] Photograph the entire harness — every connector, branch, ground (`T-018`) → `01-REFERENCE/photos/`
 - [ ] **0.13** [YOU] Find and log the wideband tap and every PO splice (`T-019`)
 - [ ] **0.14** [YOU] Battery terminal type — SAE or threaded (`T-029`, `V-053`)
+- [ ] **0.24** [YOU] **Strip the A/C system** (`T-054`, D-211) — refrigerant recovered by a shop **first** (K-015: it still holds charge), then compressor, bracket, belt, condenser, drier, lines and the G-18/19/21/22/23 chain. **Blower, heater core and HVAC case stay.** Confirm the dedicated belt (`V-097`). Not a measurement — it rides with teardown because the bay is open anyway, and it can slip to any warm Saturday without blocking a thing
 
 ### 0C — Paper work
 - [x] **0.15** [AGENT] Wire cut list — structure generated from the cavity table; lengths wait on 0.11
@@ -80,7 +81,7 @@ legs · 6 install & migrate · 7 factory harness out · 8 shakedown · 9 modules
 - [ ] **1.1** [YOU] Consolidated wire and connector order — **ungated (D-202)**: place as [`BOM.md`](../05-PROCESS/BOM.md) §11 Orders 1–5 (`T-053`); wire carries 1.5× margin, cutting waits on 0.11
 - [ ] **1.2** [YOU] Order Deutsch crimper, hydraulic lug crimper, label printer, open-barrel FCI crimper (`V-069`)
 - [ ] **1.3** [YOU] Order battery mount, Class-T, disconnect, **2 AWG** cable, lugs (D-091)
-- [ ] **1.4** [YOU] Order the CAN keypad, 8-key
+- [x] **1.4** [YOU] ~~Order the CAN keypad, 8-key~~ — **deleted, D-210.** Defog, hatch and fuel-door controls integrate into the custom A/C panel in the luxury package
 - [ ] **1.5** [YOU] **Source the new mirrors** — larger, heated, digital control (D-093, `T-031`)
 - [ ] **1.6** [YOU] **Source a fuel-door solenoid** — it never existed, this is new (D-098, `T-032`)
 - [ ] **1.7** [YOU] **Source a hatch latch switch** — the original is broken (D-098, `T-033`)
@@ -120,7 +121,7 @@ output and verifies it against telemetry.
 - [ ] **2.15** [YOU] Keep-alive latch — diode-OR sources, O22 self-hold, shutdown delay (`V-075`)
 - [ ] **2.16** [YOU] Crank logic and interlocks on O21 — interim rule per `Q-064` → D-183
 - [ ] **2.17** [YOU] Fuel pump prime, run-with-RPM (`Q-064` → D-183), inertia cutoff
-- [ ] **2.18** [YOU] CAN keypad — defog, interior override, spare keys
+- [x] **2.18** [YOU] ~~CAN keypad~~ — **deleted, D-210.** `DEFOG` stays configured and disabled; `INTERIOR` loses its override term
 - [ ] **2.19** [YOU] Undervoltage / overvoltage for the lithium's BMS window
 - [ ] **2.20** [YOU] Enable data logging
 - [ ] **2.21** [YOU] Save, back up, start the version log in [`LOGS.md`](LOGS.md)
@@ -190,7 +191,7 @@ output and verifies it against telemetry.
 - [ ] **4.2** [YOU] Deburr, drill, finish
 - [ ] **4.3** [YOU] Mount the PMU, standing it off for airflow
 - [ ] **4.4** [YOU] Mount **10 relay sockets, populate 4** — K1, K2, K11, K12 (D-182, D-186). Sockets for K5–K8 are on the sill plate (5.11)
-- [ ] **4.5** [YOU] Mount the fuse block — 12 positions on the plate (F1–F7, F10–F13, F15 exciter D-198); F13 labelled radar, deferred (D-191)
+- [ ] **4.5** [YOU] Mount the fuse block — 11 positions on the plate (F1–F3, F5–F7, F10–F13, F15 exciter D-198); F13 labelled radar, deferred (D-191); **F4 does not exist — A/C deleted (D-211)**
 - [ ] **4.6** [YOU] Mount the always-hot busbar and ground bus
 - [ ] **4.7** [YOU] Mount bracket positions for all 15 leg receptacles + DP-DIAG, DP-KEY, DP-ICU, DP-DCU (`1027-003-1200` clips)
 - [ ] **4.8** [YOU] Stud feed from busbar to PMU stud, torque to spec
@@ -260,7 +261,7 @@ the per-circuit loop; tick each circuit there as it completes.
 - [ ] **6.8** [YOU] Full function check of every circuit in one pass
 
 > **GATE:** the car must complete every function on dumb switches with no CAN
-> module attached except the keypad. If it can't, the DCU has crept onto the
+> module attached except the deferred control panel. If it can't, the DCU has crept onto the
 > critical path and D-081 is violated.
 
 ---

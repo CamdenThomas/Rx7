@@ -1,6 +1,6 @@
 # Decision Log — Electrical / PMU
 
-*Rev 2026-08-31 · owns: every decision, D-001 onward — the electrical D-series plus the merged lighting L-series (D-201) — append-only. Never edit or delete an entry. To reverse one, add a new decision and put a `> SUPERSEDED BY D-xxx` line under the old one. The registry of every ID is `ID-REGISTRY.md`.*
+*Rev 2026-09-01 · owns: every decision, D-001 onward — the electrical D-series plus the merged lighting L-series (D-201) — append-only. Never edit or delete an entry. To reverse one, add a new decision and put a `> SUPERSEDED BY D-xxx` line under the old one. The registry of every ID is `ID-REGISTRY.md`.*
 
 **Entry format:** `**D-nnn** — [closes Q/V/A/I-nnn, if any] **decision in bold.** Reasoning.`
 Entries are grouped by the round in which they were made; the index below is
@@ -15,7 +15,7 @@ Index by topic · Architecture · Channel allocation · Wiring rules · Build se
 | Topic | Decisions |
 |---|---|
 | **Core architecture** | D-001 PMU chosen · D-002 Ionic S9 · D-003 two-tier · D-004 all 39 cavities · D-005 removable panel · D-029 four legs · D-032 power/signal split |
-| **Channel allocation** | D-009 flyback channels · D-010 wipers on O8 · D-011 comfort bus · D-012 A/C on factory switch · D-013 native flashers · D-015 one marker circuit · D-095 lighter deleted |
+| **Channel allocation** | D-009 flyback channels · D-010 wipers on O8 · D-011 comfort bus · D-012 → D-211 A/C deleted, F4 and K10 with it · D-013 native flashers · D-015 one marker circuit · D-095 lighter deleted |
 | **Wiring rules** | D-016 colour = class · D-017 grounds never cross a bulkhead · D-018 switch to ground · D-019 ladder everything · D-020 constant bus off the PMU · D-022 full cavity count · D-027 16 AWG signal · D-091 2 AWG main feed |
 | **Connectors** | D-033 naming scheme · D-034 Deutsch only · D-035/070 housing counts · D-045 cavity geometry confirmed · D-046 terminal sizes · D-092 one housing per door |
 | **Relays & sill** | D-030 eleven relays · D-057 H-bridges brake · D-065 windows to the sill · D-067 five in the box · D-068 door connectors |
@@ -28,7 +28,8 @@ Index by topic · Architecture · Channel allocation · Wiring rules · Build se
 | **Cluster & ICU** | D-150 one wide display · D-151–158 palette, units, faults, layout · D-159 display off the harness · D-160–163 `stats.h` · D-168 SPI dirty-rectangle · D-169 page button · D-170 PSRAM |
 | **Harness allocations** | D-131 windows manual, bridge provisioned · D-132 sill kept · D-134/139 cavity geometry and pin 1 · D-148 K9 location · D-171 L1-S as generated · D-172 L3-S as generated |
 | **Consolidation & lighting** | D-200 folder renumber, BUY-LIST absorbed · D-201 lighting fold-in (amends D-123) · L-001 … L-004 merged |
-| **Expedited order (2026-08-31)** | D-202 one-teardown buy, wire margins · D-203 sourcing calls (Class-T 5007100/5114, independent ATC blocks, PT-E300, iCrimp pair, HM318, ECUKB8) |
+| **Expedited order (2026-08-31)** | D-202 one-teardown buy, wire margins · D-203 sourcing calls (Class-T 5007100/5114, independent ATC blocks, PT-E300, iCrimp pair, HM318, ECUKB8) · D-205 fact-check corrections, savings levers listed · D-206 fuse blocks source-grouped (V-091 failed) · D-207 carts loaded live, substitutions logged · D-208 luxury-package split, K9 sealed mini, legs stay full · D-209 switch schedule, wink stays hardwired · D-210 keypad deleted, controls fold into the custom A/C panel |
+| **Scope subtractions (2026-09-01)** | D-211 A/C system removed — cooling deleted until the swap engine; F4, K10 and the factory interlock chain go with it; heat and ventilation stay |
 
 ---
 
@@ -80,6 +81,9 @@ mirrors, washer nozzles, wiper park de-icer), fanned out downstream. Chosen over
 holding it as a third LS reservation.
 
 **D-012** — A/C compressor clutch stays on the factory switch, off the PMU.
+
+> SUPERSEDED BY D-211 — the compressor is removed. There is no clutch to
+> switch, and F4 and K10 leave the design with it.
 
 **D-013** — Turn signals flashed natively by the PMU. No flasher unit anywhere
 in the car.
@@ -155,6 +159,12 @@ constant-bus master driven by the O22 keep-alive latch.
 **D-031** — Five dash buttons move to the CAN keypad — horn, parking brake sense,
 glove box, hatch release, fuel-door release. Resolves the homeless-input problem
 without consuming PMU pins.
+
+> SUPERSEDED BY D-209 and D-210 — the horn was always on the steering pad and
+> reads into A8 (D-190); interior override and glove box are deleted; and no
+> keypad is bought at all. Defog, hatch release and fuel-door release wait for
+> the custom A/C panel. Parking-brake sense is left homeless and is an open call
+> (SWITCHES.md §7).
 
 **D-032** — Power and signal get **separate housings** on every leg. Three
 reasons: terminal size (size 12 vs size 16 in one shell wastes cavities and
@@ -341,6 +351,9 @@ sill, K9 at the inner fender, K10 in the engine bay on the factory A/C circuit.
 Total is still 11 relays; only five are inside the box. Fuse F8/F9 (window branch
 protection) move to the sill with the relays.
 
+> AMENDED BY D-211 — K10 is deleted with the A/C system. The relay count in
+> this entry is historical; the current tables are `SPEC.md` §3.
+
 **D-068** — `[Q-031]` **The doors get their own connector pair at the sill.**
 Combined with D-065, the sill becomes a real secondary node — relays, branch
 fuses, a local ground, and two door connectors — not just a pass-through.
@@ -396,6 +409,10 @@ firmware bug must never blank the tachometer.
 reads it from CAN — fuel level, battery voltage, key state, output currents. Only
 signals the PMU physically cannot see get a dedicated DCU input. No duplicated
 sensors, no disagreeing gauges.
+
+> AMENDED BY D-210 — four nodes in this build (PMU, DCU, ICU, future LS ECU);
+> the fifth returns when the custom A/C panel lands on DP-KEY. Termination is
+> unchanged: node count never set it.
 
 **D-079** — CAN2 becomes a **five-node bus**: PMU, keypad, DCU, ICU, future LS
 ECU. 120 Ω at exactly two points — PMU software termination at one end, a
@@ -557,6 +574,10 @@ replacing. Both now have to be sourced, not just wired.
 **D-099** — `[V-032]` A/C is **barely cool, probably low on charge.** Not an
 electrical problem and out of scope for this project, but it belongs in
 `known-issues.md` so it isn't rediscovered as a wiring fault.
+
+> SUPERSEDED BY D-211 — the system is removed rather than recharged. The
+> finding survives as one fact: it still holds charge, so it must be recovered
+> by a shop before anything is opened (`T-054`).
 
 **D-100** — `[V-013]` Deutsch DTP size-12 confirmed adequate for the 25 A legs.
 `[V-049]` Both retractor manual raise knobs confirmed working — D-040 holds.
@@ -1824,3 +1845,248 @@ and every live reference now points there. The deferred lighting scope's
 live surface is DECISIONS §Lighting, OPEN §8, TASKS-CAMDEN §6 and BOM
 Wave 5; the archived file is the design reference to pull back out when the
 second pass starts (L-004).
+**D-205** — **Manifest fact-check corrections (2026-09-01).** Line-by-line
+sweep of BOM §11 against SPEC/SCHEMATICS/LADDERS/BATTERY-INSTALL/CHECKLIST
+caught and fixed: (a) **A7 pull-up** — LADDERS §A7 needs 100 Ω 1 % at **1 W**
+(or 2 × 200 Ω ½ W parallel); the E24 kit is ¼ W and silently missed it.
+(b) **2 AWG** was bought at 40 ft against the dash feed only —
+BATTERY-INSTALL lists the rear→starter run separately ("length as
+measured"); per D-202 that gates cutting, not buying, so the order becomes
+35 ft red + 20 ft black and lugs ×10 → ×18. (c) **ATO fuses by explicit
+value** — F2 is 2 A, F15 is 7.5 A; neither ships in cheap assortments.
+(d) Ground studs (3⁄8 stainless + star washers) and PMU standoffs added
+to the hardware line. (e) **Relay line said "Mini ISO" and omitted K9** —
+SCHEMATICS §7 specifies ISO **micro**; ×7 is now K1, K2, K11, K12, K9 + 2
+spare, plus one sealed engine-bay socket for K9 (D-148). (f) Pull-test
+scale (Checklist 1.11), DT removal/wedge tools (1.12, 8.11), pull string
+(D-064), and an optional Ionic 12 V 10 A LiFePO4 charger added. Totals move
+~2,500–3,550 → ~2,550–3,750. **Savings levers listed in §11g but NOT
+taken — Camden's call:** ECUKB8 deferral, 15 ft floors on one-shot
+colours, generic busbars, charger skip. Class-T, MRBF, genuine contacts
+and crimper acceptance stay off the table (D-062, D-203).
+
+**D-206** — **Plate fuse blocks regrouped by source; BLR-I-504 dropped.**
+Live check killed `V-091`: OptiFuse’s “I” suffix means *indicating LED*
+(resellers list it as “ATC w/ Indicating LED”), and OptiFuse’s own page
+describes a common bus — “consolidates 4 circuits”, one 100 A max input.
+No independent-feed 3×4 exists as D-203b assumed. The schedule groups
+cleanly by source instead — busbar: F2/F3/F4/F13 · K11: F1/F5 · O1:
+F6/F7 · O15: F10/F11 · O20: F12 · O12: F15 — so the plate carries
+**one 4-position and three 2-position bussed blocks plus two sealed
+inline ATO holders**: every block single-source, ATO/ATC preserved
+(SPEC §3), same plate area, cheaper than the phantom part. Bussed is
+only wrong when sources mix inside one block; grouped this way it is
+exactly right. Supersedes the block choice in D-203b; the six-source
+constraint itself stands. SCHEMATICS §7 and BOM §11e updated.
+
+**D-207** — **Four of five carts loaded live (2026-09-01).** Working in the
+browser alongside Camden: DeutschConnector $1,241.36 (34 lines, 210 pieces)
+· Amazon $1,488.01 (43 lines) · Waytek $160.86 (5 lines) · Ballenger $11.37
++ ECUMaster $369.00. **Total in carts $3,270.60**; wire still to add.
+**WireBarn could not be loaded** — its Cloudflare check blocks the agent
+browser entirely, so Order 1 is Camden's to place by hand from the §11c
+table, or from the Crimpzone / CE Auto fallbacks.
+Substitutions and their reasons are BOM §11h — the ones that touch the
+design: distribution post 2105 → **Blue Sea 2003** (3/8 stud, same family;
+2105 not retailed on Amazon) · battery box HM318BKS → **NOCO BG27**
+(`V-093` now checks the S9 against BG27) · iCrimp IWD-16+IWD-12 → **one
+IWISS solid-contact crimper** covering sizes 12/16/20 (`V-096`'s coupon
+pull-test is unchanged and still the acceptance gate) · PT-E300VP →
+**PT-E310BT**, its discontinued-model replacement, same HSe/TZe cartridges
+· 2 AWG bought as fixed lengths **45 ft red / 25 ft black** (nearest split
+above the 35/20 D-205 computed; not cut-to-order).
+**The Deutsch cart is $600–800 over its estimate** — the estimate priced
+housings, not both halves of 24 mated pairs as assembly kits with solid
+contacts, which is what CONNECTORS.md §3 and D-202 specify. The cart is
+right and the old figure was wrong. Four trims are listed in §11h, largest
+first (stamped contacts on signal housings only, ~$250–350); **none taken
+— Camden's call at checkout.** Nothing was purchased: every cart waits for
+his review and his payment.
+
+**D-208** — **Luxury package splits off; the legs do not.** Camden's call:
+digital A/C, LED lighting, heated seats and the comfort features become a
+**separate luxury-package project**, not PMU scope. Consequences, checked
+line by line against the carts:
+(a) **No HVAC servos are in any cart, and never were** — they are Wave 3
+(D-081), parked. Nothing A/C-actuating was ordered.
+(b) **The CAN keypad is not A/C.** DP-KEY carries four wires — CAN2 H/L,
++12 V, ground. The eight keys are blank inserts assigned in PMU software:
+horn, defog grid, interior override, glove box, hatch, fuel door (D-031)
+plus two spare. It stays in the order. (Deferring it is still a $369
+cash-flow lever — D-205 §11g — but not an A/C reason.)
+(c) **DP-DCU stays.** It is a dash-post drop, not a leg: the housing pair is
+~$40 and the CAN2 splice that feeds it is cut during Phase 4 anyway.
+Landing it now and capping it is cheaper than splicing the bus later.
+(d) **The legs are NOT consolidated.** They run under carpet, through the
+tunnel and behind panels; D-202 exists so the interior comes apart once.
+A DT-8 pair is ~$50; a second teardown is a weekend. **Box built out full,
+legs full-cavity.** Two findings from checking anyway: **L2-P2 is a
+stale-premise shell** — D-115 kept two DTP-4s for reversible pop-ups,
+D-186 made them single-direction, so L2 is now 4 live size-12 conductors
+that fit one shell; **not collapsed**, because `V-081` is open and a
+two-winding result restores the sixth conductor. And **L3-S3 is the one
+honest drop** — 8 cavities, 3 used, all DEFERRED radar (`V-061`, no design,
+count unconfirmed); if radar joins the luxury package the pair leaves the
+order and L4-S 5/6/7 become SPARE. Not taken — Camden's call.
+(e) **K9 is a sealed MINI ISO relay, not micro** — correcting D-205(e).
+Micro has no weatherproof housing in the catalogue; mini does. K9 gets
+Picker **PC792E-1C-C-12S-DN-X** (sealed, integral diode) ×2 in a Chief
+**75340** weatherproof 5-pin connector ×2. The micro count drops to ×6
+(K1, K2, K11, K12 + 2 spare). K9 is engine-bay on the inner fender (D-148)
+and was always the odd one out; SCHEMATICS §7's "micro" list covers the
+**plate** only, so nothing there changes.
+(f) **Plate fuse blocks carted as 4 × 4-position, not D-206's 1×4 + 3×2.**
+Same money, still one source per block, and it leaves **6 spare fused
+positions on live sources** (K11, O1, O15) — which is exactly where the
+luxury package's loads land without reopening the plate. This is the
+"future-proof array" Camden asked for.
+(g) **Gap found and fixed:** D1 *and* D2 each carry two 14 AWG window-motor
+legs, so the 14 AWG DT-8 assembly kit is ×2. The first cart pass had one.
+(h) **Wave 0 folded into Order 3** — never bought locally. Inline ATO
+holder and 120 Ω CAN terminators are carted; the microSD listing refused
+to add and is Camden's to click.
+
+**D-209** — **Switch schedule: the column combination switch stays, every
+other switch in the car is replaced.** Camden's rule — they are all broken or
+near it, and the dash opens once (D-202). New file
+[`01-DESIGN/SWITCHES.md`](../01-DESIGN/SWITCHES.md) owns the whole
+operator interface; `dash.md` and `SPEC.md` §10 point at it.
+(a) **Stays:** E-01 LIGHT + DIMMER, F-02 TURN + HAZARD, D-03 wiper stalk —
+all column, all laddered. **The horn stays on the steering pad**, reading
+into A8 through 12 kΩ (D-190).
+(b) **Keypad reassigned, amending D-031.** Off it: horn (it is on the wheel
+and always was), interior-light override (not wanted), glove box (a manual
+latch whose lamp lights on door open — a local closure on the O20 branch,
+not a button and not a PMU input). On it: **defog, hatch release, fuel-door
+release**, keys 1–3. **Keys 4–8 are reserved for the luxury package's
+climate and comfort controls** — A/C mode, fan ±, temp ±, seat heat. That
+is where the A/C controls live: the keypad is already wired, already on
+CAN2, and the DCU already consumes frame `0x400`, so the luxury package
+adds software assignments and printed inserts, not harness.
+(c) **Wink stays hardwired and CANNOT be a keypad key** — asked and
+answered. Three reasons, any one sufficient: a wink must work with the key
+out and the keypad is dead asleep on O10 (`A-013`); the NC pole physically
+interrupts the opposite side's K1/K2 coil (D-189), which no CAN frame can
+do; and the NO pole is one of the eight diode-OR wake inputs. **Camden was
+right that they were missing from the order** — they are now: SPDT
+momentary, 1NO+1NC, ×5 (2 used, 3 spare).
+(d) **Bought in Order 3:** wink ×2 · brake pedal switch (RX-7 1982,
+no-cruise variant) · door-pin plunger switches ×6 — doors ×2, glove-box
+lamp, luggage (`A-012`), hatch (K-016), spare · power-window momentary
+rockers ×2. Windows are bought now though the motors are not: L3-S2 3–6 are
+already run and capped, the switches are ~$9, and the console is open in
+this build — the luxury package should never touch dash harness.
+(e) **Still open, listed in SWITCHES.md §7:** the **ignition switch** (column
+but not the combination switch — highest-cycle switch in the car, feeds the
+A16 ladder and both wake contacts; replace it too?) · **parking-brake
+sense** (D-031 parked it on the keypad, which cannot sense — needs a real
+switch into a spare ladder state, or explicit deletion) · the **blower
+speed switch** (rides with the motor choice, K-023 / `T-038`) · the **hatch
+latch** switch (K-016, unsourced, `T-033`).
+(f) **The luxury package is fab and install only — no wiring.** Confirmed by
+Camden and now the governing constraint: every conductor for A/C, heated
+seats, mirrors, windows, radar and LED lighting is run in *this* build.
+That reverses the §11i suggestion to drop `L3-S3`: **the radar leg stays**,
+because its pass-through to L4-S is exactly the kind of run the luxury
+package must not have to make.
+
+**D-210** — **No ECUMaster keypad. All three button functions fold into the
+custom A/C panel.** Camden: no ECUMaster button controls at all. Amends
+D-209(b) one day after it was written, and supersedes what remained of
+D-031. The ECUKB8 is deleted from the manifest and its cart emptied —
+**−$369**, and Order 5 becomes Ballenger-only at $11.37.
+(a) **The drop is still built.** `DP-KEY` stays wired and capped: CAN2 H,
+CAN2 L, +12 V off O10, ground. That is the universal set — CAN, switched
+power, ground — so whatever the panel turns out to be (a keypad after all,
+a DCU faceplate, a custom board) it plugs in. This is what "no wiring in
+the luxury package" means in practice, and it is why the drop is not
+deleted along with the device.
+(b) **Consequences, stated plainly.** `DEFOG` has **no trigger this build**
+— the channel stays configured and disabled, its 15 min auto-off and
+`A16 >= RUN` guard already written for the day the panel lands. **That
+means no rear defogger until the luxury package**; O4 and the grid feed are
+wired, nothing commands them. The hatch keeps opening on its key; the
+fuel-door solenoid never existed anyway (K-017). If a winter without a
+defogger is worse in practice than on paper, one hardwired switch on a
+spare `L3-S2` cavity restores it — offered, not taken.
+(c) **Config corrected, not just documented.** `INTERIOR` was
+`(A6 != CLOSED || keypad_override)` and is now `(A6 != CLOSED)`; `DEFOG`
+was `keypad_defog && A16 >= RUN` and now has no trigger term. Both
+expressions referenced a device that will not exist — left alone they
+would have failed at Phase 2A config entry.
+(d) **CAN2 is a four-node bus now** (PMU, ICU, DCU, future LS ECU),
+five when the panel lands. Termination is unchanged — 120 Ω at the PMU end
+and at the engine-bay far end (D-079); node count never set it. Frame
+`0x400` stays reserved for the panel's buttons.
+(e) **Wink is unaffected and still hardwired.** The three reasons in
+SWITCHES.md §6 apply to the custom panel exactly as they applied to the
+keypad — anything on DP-KEY is dead asleep (`A-013`), a CAN frame cannot
+interrupt the opposite side's K1/K2 coil (D-189), and the NO pole is one of
+the eight wake inputs.
+(f) **Money:** Wave 2 panel build ~$820–1,400 → ~$520–950. The panel moves
+to Wave 5 at $370–600 alongside lighting. Four carts now total $3,023.63.
+
+**D-211** — **The A/C system comes out. No cooling until the swap engine.**
+Camden's call, 2026-09-01. The 12A's compressor, bracket, belt, condenser,
+receiver/drier and lines are removed. The blower motor, heater core, HVAC case,
+every duct and every blend door **stay**. The car keeps heat, defrost and
+ventilation; it loses cooling only, and it loses it until a new compressor
+arrives with a new engine.
+
+Three paths were costed before the call. Recharge on R-12: $470–1,150 and 8–12
+hours, gated on ~$70-per-12-oz refrigerant and a $29 EPA 609 certificate.
+Retrofit to R-134a: $280–560 as a fittings-and-drier shortcut, $600–1,150 done
+properly with barrier hoses and a parallel-flow condenser. Delete: $0–165 and
+2–3 hours. Every part the first two paths buy is bolted to an engine with a swap
+date, and the cooling it buys is one partial summer — Phases 6–8 put the car
+back on the road mid-2027. Camden: not worth $1k however you look at it.
+
+**Electrical consequences — all subtractions. Nothing is added, and no cavity
+moves.**
+
+(a) **F4 (10 A, A/C factory circuit) is deleted.** The plate carries **11 fuse
+positions**: F1–F3, F5–F7, F10–F13, F15. F8/F9/F14 stay at the sill. The blocks
+were carted as 4 × 4-position (D-207), so this is one more spare fused position
+on a live source, not a BOM change.
+
+(b) **K10 is deleted.** It was the factory clutch relay in the engine bay,
+never on the plate. The design relay count goes 10 → 9; populated stays 4.
+
+(c) **The factory A/C sub-harness leaves with the hardware** — No.1 A/C relay
+(G-18), magnet clutch (G-19), refrigerant pressure switch (G-21), frost warning
+temp switch (G-22), diode (G-23), and the dash A/C switch. D-012 had that whole
+interlock chain self-contained and outside every leg's connector count, so
+**not one cavity changes and neither CSV is touched.**
+
+(d) **Nothing is capped for it in the engine bay.** This is the rule that
+separates L1 from every other leg. Hidden interior conductors are run for
+deferred features and capped — that is D-208(f), and it holds for heated seats,
+mirrors, windows and radar. **The engine leg is the exception:** it carries only
+what the engine currently on the mounts needs, no stubs to nothing, no
+connectors marking where something used to be. L1's boundary is the firewall
+grommet and it is built to be cut off and rebuilt from scratch at a swap
+(`engine.md`). A/C wiring returns when a compressor returns, designed around
+whatever that compressor is — a PMU-driven clutch and a pressure transducer,
+not a 1982 relay chain.
+
+(e) **DCU, CAN and firmware are untouched.** Frame `0x300` keeps byte 0 mode 4
+and byte 4 A/C request, both marked RESERVED — they cost nothing and the fields
+are correct again the day a compressor exists. `DP-DCU` and `DP-KEY` are
+unchanged. The custom panel is still Wave 5 (D-210); its A/C control simply
+lands with the compressor rather than before it.
+
+(f) **What the car gains:** ~3–6 hp of parasitic drag returned on a 100 hp 12A
+at 7,000 ft, 15–25 lb off the nose, one less belt (M-011's A/C belt comes
+straight back off), and an engine bay with less in it for the harness install.
+
+**Physical work is `T-054`, and the refrigerant comes first.** K-015 records
+the system as *barely cool*, which means it still holds charge. Venting it is
+illegal under the Clean Air Act, so it goes to a shop for recovery ($50–120)
+before anything is unbolted. The compressor, bracket, condenser and hoses are
+boxed and kept, not scrapped — FB A/C hardware is scarce, and this decision is
+reversible in metal even though it is deliberately not reversible in the
+harness.
+
+> Supersedes D-012 (clutch on the factory switch — there is no clutch) and
+> D-099 / K-015 (barely cool, low on charge — the system leaves instead of
+> being recharged). Amends D-067's relay count.

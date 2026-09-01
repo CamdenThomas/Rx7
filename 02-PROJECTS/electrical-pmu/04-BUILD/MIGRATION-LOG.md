@@ -75,7 +75,7 @@ Rows 6, 22 and 23 gained homes in the 0.23 ruling — washer on K12 (D-182), sol
 - [ ] Every row above ticked
 - [ ] Full function check of every circuit in one pass (Checklist 6.8)
 - [ ] **The car completes every function on dumb switches with no CAN module
-      attached except the keypad.** If it can't, the DCU has crept onto the
+      attached except the deferred control panel.** If it can't, the DCU has crept onto the
       critical path and D-081 is violated
 - [ ] Driven for a week with the factory harness disconnected but still fitted
 

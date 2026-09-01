@@ -75,7 +75,7 @@ Written as boolean expressions; `&&` and `||` as you would expect.
 | `TURN_L` | `(A1 == LEFT \|\| hazard) && flasher_phase` | 10× for 100 ms | 3, 5 s |
 | `TURN_R` | `(A1 == RIGHT \|\| hazard) && flasher_phase` | 10× for 100 ms | 3, 5 s |
 | `REVERSE` | `A5 == REVERSE && A16 >= RUN` — the inhibitor R contact (D-187) | 10× for 100 ms | 3, 5 s |
-| `INTERIOR` | `(A6 != CLOSED \|\| keypad_override)` — PWM, theatre fade | 10× for 100 ms | 3, 5 s |
+| `INTERIOR` | `(A6 != CLOSED)` — PWM, theatre fade. **Override term removed** (D-210 — no keypad) | 10× for 100 ms | 3, 5 s |
 
 > **The inrush windows are the whole reason this section exists.** Cold filament
 > pulls 8–12× steady for a few milliseconds. Without a time characteristic,
@@ -111,10 +111,10 @@ position the first command self-corrects.
 
 | Channel | Expression | Notes |
 |---|---|---|
-| `DEFOG` | `keypad_defog && A16 >= RUN` — **15 min auto-off** | Grid draws more cold |
+| `DEFOG` | **No trigger until the control panel exists** (D-210). Channel configured and disabled; the 15 min auto-off and `A16 >= RUN` guard stay written for the day the panel lands | Grid draws more cold |
 | `FUEL_PUMP` | **Interim (D-183):** `A16 >= RUN`, 3 s prime, inertia-switch cut, no rpm term. **Final:** `(A16 == START) \|\| (A16 == RUN && rpm > 300)` once 0x200 is on the bus | `rpm` arrives on CAN 0x200 from the ICU (`Q-064` → D-183) |
 | `IGNITION` | `A16 >= RUN` | |
-| `ACCESSORY` | `A16 >= ACC` | USB-C, head unit, ICU + DCU logic, keypad |
+| `ACCESSORY` | `A16 >= ACC` | USB-C, head unit, ICU + DCU logic, **DP-PANEL drop** (D-210) |
 | `HORN` | `A8 == HORN \|\| A8 == HAZ_HORN` (`Q-071` → D-190) — asleep, the plate inverter wakes the PMU and the same read fires | |
 | `COMFORT` | `A16 >= RUN` | DCU switches downstream |
 | `START_RLY` | **Interim (D-183):** `A16 == START && inhibitor_PN`. **Final:** adds `&& rpm < 300` at the ICU | `inhibitor_PN` = `A4 == CRANK_OK` (D-187) |

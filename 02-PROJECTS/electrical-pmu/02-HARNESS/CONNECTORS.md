@@ -97,7 +97,7 @@ Everything the legs plug into, plus what the box itself needs.
 | **DP-GND** | Ground bus | Bus bar + ring lugs | Panel ground; pin 25 lands here on 10 AWG, ≤6 in |
 | **DP-PMU** | PMU device connector | Sicma 39-pos | **Sealed once, never reopened** (D-004) |
 | **DP-DIAG** | Diagnostic / CAN1 port | DTM04-4P | Glovebox. 120 Ω here and at the PMU |
-| **DP-KEY** | CAN keypad drop | DTM04-4P | CAN2 + power + ground |
+| **DP-KEY** | Control-panel drop — **device deferred** (D-210) | DTM04-4P | CAN2 + switched power + ground; wired and capped for the custom A/C panel |
 | **DP-ICU** | Instrument cluster unit | DT04-12P | Power, CAN2, dimming reference, six sensors + brake fluid (D-083) |
 | **DP-DCU** | Dash control unit | DT04-6P | Power, CAN2 (D-083) |
 | **DP-L1-P … DP-L4-S** | Leg receptacles ×14 | see §4 | Bracket-mounted on the panel edge with `1027-003-1200` clips |

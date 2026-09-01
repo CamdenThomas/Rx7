@@ -1,9 +1,165 @@
 # CHANGELOG
 
-*Rev 2026-08-31 · owns: one entry per session, newest first — what changed, what was decided, what opened and closed. The `ASSISTANT.md` §7 close step appends here. Individual decisions are `DECISIONS.md`'s; this is the timeline.*
+*Rev 2026-09-01 · owns: one entry per session, newest first — what changed, what was decided, what opened and closed. The `ASSISTANT.md` §7 close step appends here. Individual decisions are `DECISIONS.md`'s; this is the timeline.*
 
 Format: date · mode · one line of scope, then `CHANGED / LOGGED / OPENED /
 CLOSED / NEXT` — the same five lines as the session-close diff.
+
+---
+
+## Contents
+
+Newest first: 2026-09-01 A/C deleted · 2026-09-01 verify · 2026-08-31 expedited buy · 2026-08-31
+consolidation · 2026-08-31 firmware night · 2026-08-30 audit 4 · 2026-08
+audit 3 · ICU firmware · audit 2 · first meter sitting · PMU received ·
+audit 1 · rounds one to four.
+
+---
+
+## 2026-09-01 · DECIDE · A/C system deleted; the engine leg carries nothing for it
+
+Camden costed the three A/C paths and killed the system. Also set the rule
+that separates L1 from every other leg: hidden interior conductors get run
+and capped, the engine bay gets nothing but what the current engine needs.
+
+```
+CHANGED   SPEC §3 — K10 and F4 removed, relays 10→9, plate fuses 12→11,
+          F15 is now the eleventh position · SCHEMATICS constant-bus tree
+          and the "F2/F3/F4 stay live" line · GLOSSARY K/F rows ·
+          LOADS §5 clutch row and the sensor-type table · engine.md §A/C
+          rewritten as removal + a new "capped spares are not free here"
+          paragraph · dash.md deletions table · CAN-MESSAGES 0x300 bytes
+          0 and 4 marked RESERVED (frame unchanged) · BOM §5b fuse-block
+          note and §10 deletions · CHECKLIST 0.24 and 4.5 · STATUS §1/§2/
+          §6/§7 · known-issues K-015 closed by deletion
+LOGGED    D-211 — A/C system removed, cooling gone until the swap engine;
+          heat, defrost, blower and ventilation untouched. Supersedes
+          D-012 and D-099, amends D-067's relay count
+OPENED    V-097 (compressor on its own dedicated belt — five-minute look) ·
+          T-054 / Checklist 0.24 (strip the system; shop recovers the
+          refrigerant first — K-015 says it still holds charge)
+CLOSED    K-015 (barely cool) by deletion rather than repair
+NEXT      BUILD — nothing here gates T-053 or teardown day 1. No CSV
+          changed and no cavity moved, so no gen.py run was needed
+```
+
+---
+
+## 2026-09-01 · DECIDE · Keypad deleted; controls fold into the A/C panel
+
+Camden: no ECUMaster button controls at all. Swept the whole tree for what
+that touches — including two PMU config expressions that would have failed
+at Phase 2A entry.
+
+```
+CHANGED   BOM — ECUKB8 out of Wave 2 and §11f, panel added to Wave 5,
+          Order 5 is Ballenger-only, totals redone · SWITCHES §3 rewritten
+          as the DP-KEY drop · PMU-CONFIG: INTERIOR loses its override
+          term, DEFOG loses its trigger · CSVs + gen.py re-run so SPEC and
+          PIN-MAP stop saying "keypad" · CONNECTORS, dash, GLOSSARY, LOADS,
+          SCHEMATICS, CHECKLIST 1.4/2.18, MIGRATION-LOG, STATUS, T-053
+LOGGED    D-210 — no keypad bought; DP-KEY still built and capped (CAN2 +
+          switched 12 V + ground, the universal set) so the panel is a
+          plug-in; D-031 marked superseded, D-079 amended to four nodes
+OPENED    —
+CLOSED    —
+NEXT      −$369. Four carts $3,024 · wire + microSD by hand · no rear
+          defogger until the panel — say so if that needs a stopgap switch
+```
+
+---
+
+## 2026-09-01 · DECIDE · Switch schedule — the whole operator interface
+
+Camden: the luxury package is fab and install only, no wiring. Everything
+but the column combination switch gets replaced. Wink controls were missing
+from the order entirely.
+
+`
+CHANGED   NEW 01-DESIGN/SWITCHES.md — every control surface, what stays,
+          what is bought, what it feeds · dash.md input table rewritten ·
+          SPEC §10 points at it · BOM Order 3 gains the switch block
+LOGGED    D-209 — column combo switch stays, horn stays on the wheel ·
+          keypad = defog + hatch + fuel door, keys 4–8 RESERVED for
+          luxury-package A/C and comfort (no new wiring, DCU already
+          reads 0x400) · wink CANNOT be a keypad key (dead asleep, NC
+          pole interrupts the opposite coil, NO pole is a wake input) ·
+          L3-S3 radar leg NO LONGER a drop candidate — luxury = install
+          only means every conductor runs now
+OPENED    Four calls in SWITCHES.md §7 — ignition switch, parking-brake
+          sense, blower speed switch, hatch latch
+CLOSED    —
+NEXT      Answer the four §7 calls · Camden reviews and pays · WireBarn
+          and microSD by hand
+`
+
+---
+
+## 2026-09-01 · DECIDE · Luxury package splits off; carts audited
+
+Camden: digital A/C, LED lighting and heated seats become their own
+project. Audited every cart against that line and against the schedule.
+
+`
+CHANGED   BOM §3 Wave 0 folded into Order 3 (never bought locally) · new
+          §11i draws the luxury-package line · Waytek block rewritten —
+          K9 sealed mini + weatherproof connector, micro count 7 → 6,
+          4 × 4-pos fuse blocks with 6 spare live-source positions
+LOGGED    D-208 — no servos in any cart (never were) · keypad is not A/C
+          (4 wires, keys assigned in software) · DP-DCU stays, it is a
+          drop not a leg · legs stay full-cavity, D-202 buys one teardown
+          · K9 is sealed MINI not micro (corrects D-205e) · D2 14 AWG
+          kit gap found and fixed
+OPENED    —
+CLOSED    — (V-081 now also decides whether L2-P2 collapses)
+NEXT      Camden reviews and pays · WireBarn by hand · microSD by hand ·
+          two open calls: drop L3-S3 radar leg? trim Deutsch to stamped?
+`
+
+---
+
+## 2026-09-01 · BUY · Four carts loaded live in the browser
+
+Same session, second half: the manifest became real carts, store by store.
+Nothing purchased — every cart waits on Camden's review and payment.
+
+`
+CHANGED   BOM §11 store table now carries live cart subtotals, not
+          estimates · new §11h records every substitution with its reason
+          and the four trims available on the Deutsch overrun
+LOGGED    D-207 carts loaded — Deutsch ,241.36 · Amazon ,488.01 ·
+          Waytek .86 · Ballenger .37 + ECUMaster .00 =
+          ,270.60, wire still to add
+OPENED    —
+CLOSED    — (V-093 re-aimed at NOCO BG27; V-096 at the IWISS crimper)
+NEXT      Camden reviews five tabs and pays · WireBarn is his to place by
+          hand — Cloudflare blocks the agent browser · then T-053 closes
+`
+
+---
+
+## 2026-09-01 · VERIFY · Manifest fact-checked, two design corrections
+
+Line-by-line audit of BOM §11 against the design docs, then live checks in
+the browser pane. Two catches that would have been order-day surprises.
+
+```
+CHANGED   BOM §11 — A7 100 Ω 1 % 1 W pull-up added (kits are ¼ W) · 2 AWG
+          40 → 55 ft + lugs ×10 → ×18 (the starter feed was unbought) ·
+          explicit 2 A / 7.5 A ATO fuses · ground studs, PMU standoffs,
+          pull string, pull-test scale, DT removal tools, optional LiFePO4
+          charger · relay line: ISO micro (not mini), K9 added + sealed
+          engine-bay socket · §11g savings levers (Camden's call, none
+          taken) · totals ~2,550–3,750
+LOGGED    D-205 fact-check corrections · D-206 fuse blocks source-grouped —
+          V-091 failed live: OptiFuse "BLR-I" = indicating LED, common bus;
+          plate carries 1×4-pos + 3×2-pos bussed + 2 inlines (SCHEMATICS §7)
+OPENED    —
+CLOSED    V-091 → D-206 · ECUKB8 $369 confirmed live at ECUMaster USA
+NEXT      Cart co-pilot session — build the five carts in the browser pane
+          (WireBarn blocks the pane's Cloudflare check; Camden drives that
+          one, or the Crimpzone/CE Auto fallbacks), then T-053
+```
 
 ---
 

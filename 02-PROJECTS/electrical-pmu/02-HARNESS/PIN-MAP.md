@@ -366,13 +366,13 @@ Pin 1 top-left, purple lock on the right, connector face toward you (D-139). Lar
 
 ### DP-KEY · DTM06-4S → DTM04-4P · 4 cav, 4 used · Dash
 
-*ECUmaster 8-key keypad: CAN2 + power + ground*
+*Control-panel drop, device deferred (D-210): CAN2 + switched power + ground*
 
 | Cav | Circuit | Source / destination | AWG | Colour | Status | Note |
 |---|---|---|---|---|---|---|
 | 1 | CAN2 H | CAN2H (pin 24) | 16 tw | YEL/BLK | LIVE |  |
 | 2 | CAN2 L | CAN2L (pin 37) | 16 tw | GRN/BLK | LIVE |  |
-| 3 | +12 V | O10 (pin 4) | 16 | ORN/YEL | LIVE | A-013 — keypad on the accessory bus |
+| 3 | +12 V | O10 (pin 4) | 16 | ORN/YEL | LIVE | A-013 — control panel on the accessory bus |
 | 4 | Ground | DP-GND | 16 | BLK | LIVE | Permitted ground crossing (D-037) |
 
 ---

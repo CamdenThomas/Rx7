@@ -1,6 +1,6 @@
 # CAN MESSAGE MAP
 
-*Rev 2026-08-30 · owns: the CAN2 message IDs, byte layouts, rates and timeout behaviour. `firmware/icu/can_map.h` is the machine-readable copy; when this file changes, that header and both firmware versions bump together.*
+*Rev 2026-09-01 · owns: the CAN2 message IDs, byte layouts, rates and timeout behaviour. `firmware/icu/can_map.h` is the machine-readable copy; when this file changes, that header and both firmware versions bump together.*
 
 **Bus:** CAN2 · 500 kbps · CAN 2.0B · 11-bit identifiers (D-086). The PMU is
 CAN 2.0 only, so the shared bus cannot be FD regardless of what the Teensys
@@ -117,11 +117,11 @@ temperature this car will see, and the offset was a bug class for nothing
 
 | Byte | Field | Encoding |
 |---|---|---|
-| 0 | Mode | 0 off · 1 vent · 2 heat · 3 defrost · 4 A/C |
+| 0 | Mode | 0 off · 1 vent · 2 heat · 3 defrost · 4 A/C — **mode 4 RESERVED, unreachable: no compressor until the swap (D-211)** |
 | 1 | Blower speed | 0–3 |
 | 2 | Target temp | uint8, °C |
 | 3 | Cabin temp | int8, °C |
-| 4 | A/C request | 0 no · 1 yes |
+| 4 | A/C request | 0 no · 1 yes — **RESERVED, always 0 (D-211)**; the field is kept so the frame needs no revision when a compressor returns |
 | 5–6 | reserved | |
 | 7 | counter | |
 

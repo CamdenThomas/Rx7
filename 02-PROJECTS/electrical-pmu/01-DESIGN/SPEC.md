@@ -1,6 +1,6 @@
 # SPEC — Electrical / PMU-24 DL
 
-*Rev 2026-08-31 (Rev D) · owns: pin allocation, connector geometry, wire colours, relay and fuse schedule, module split, and the status of every cavity.*
+*Rev 2026-09-01 (Rev D) · owns: pin allocation, connector geometry, wire colours, relay and fuse schedule, module split, and the status of every cavity.*
 
 Canonical. Current state only — no history, no rationale, no alternatives.
 Those live in [`../05-PROCESS/DECISIONS.md`](../05-PROCESS/DECISIONS.md). If it is here, it is the plan.
@@ -79,10 +79,10 @@ identify a wire's origin without a diagram.
 ## 3 · The black box
 
 Removable aluminium backer plate in the dash. Carries the PMU, **4 relays (D-182, D-186) in
-10 sockets**, 12 of the 15 fuse positions (F8, F9 and F14 are at the sill; F15 is D-198's exciter branch), always-hot busbar, ground bus, the diode-OR
+10 sockets**, 11 of the 14 fuse positions (F8, F9 and F14 are at the sill; F15 is D-198's exciter branch). **K10 and F4 no longer exist — the A/C system is deleted (D-211), which is why the relay and fuse numbering skips them.** Always-hot busbar, ground bus, the diode-OR
 wake strip and the constant bus. Sub-circuits are drawn in [`SCHEMATICS.md`](SCHEMATICS.md).
 
-### Relays — 10 in the design, 4 populated on the plate (D-182, D-186)
+### Relays — 9 in the design, 4 populated on the plate (D-182, D-186, D-211)
 
 | Relay | Function | Location | State |
 |---|---|---|---|
@@ -90,7 +90,6 @@ wake strip and the constant bus. Sub-circuits are drawn in [`SCHEMATICS.md`](SCH
 | K3–K4 | Freed by D-186 | Plate sockets | SPARE |
 | K5–K8 | Window H-bridges, driver and passenger | Sill node | **PROVISIONED** — sockets fitted, relays not populated (D-131) |
 | K9 | Start relay | Inner fender / firewall, engine bay (D-148) | LIVE |
-| K10 | A/C compressor clutch | Engine bay, factory circuit (D-012) | Factory — untouched |
 | K11 | Constant-bus master, driven by O22 | Plate | LIVE |
 | K12 | Washer pump pulse relay (Q-063 → D-182) | Plate — takes a spare socket | DESIGN — circuit detail lands in [`SCHEMATICS.md`](SCHEMATICS.md) with H-008 |
 
@@ -101,7 +100,6 @@ wake strip and the constant bus. Sub-circuits are drawn in [`SCHEMATICS.md`](SCH
 | F1 | 15 A | Head unit constant keep-alive | Busbar via K11 | LIVE |
 | F2 | 2 A | Diagnostic port +12 V (DP-DIAG 3) | Busbar | LIVE |
 | F3 | 5 A | Wake diode network supply | Busbar | LIVE |
-| F4 | 10 A | A/C factory circuit | Busbar | LIVE |
 | F5 | 30 A | Amp / audio constant | Busbar via K11 | LIVE |
 | F6 | 10 A | Pop-up motor bus — LH branch | O1 downstream | LIVE |
 | F7 | 10 A | Pop-up motor bus — RH branch | O1 downstream | LIVE |
@@ -112,7 +110,7 @@ wake strip and the constant bus. Sub-circuits are drawn in [`SCHEMATICS.md`](SCH
 | F12 | 5 A | Interior lighting branch | O20 downstream | LIVE |
 | F13 | — | Radar module feed (D-039; freed by `V-056` → D-191) | Busbar | DEFERRED until `V-061` designs the subsystem |
 | F14 | 5 A | Mirror heat branch | O15 → sill via L4-P 4 (Q-062 → D-181), **at the sill** | DEFERRED |
-| F15 | 7.5 A | Alternator BW excitation — factory-spec field feed (D-198) | O12 downstream, the block's twelfth position | LIVE |
+| F15 | 7.5 A | Alternator BW excitation — factory-spec field feed (D-198) | O12 downstream, the block's eleventh position (D-211 freed the twelfth) | LIVE |
 
 F6–F12 and F15 are downstream branch protection — the PMU soft fuse protects the
 channel, these protect each leg off a shared bus.
@@ -133,7 +131,7 @@ channel, these protect each leg off a shared bus.
 | 15 | +5V OUT | Ladder + sender reference, 500 mA ceiling | 16 | PNK | L1-S1 8 + L2-S 4 + L3-S1 7 + L4-S 4 |
 | 23 | CAN1H | Laptop / config. 1 Mbps fixed, no internal termination | 16 tw | YEL | DP-DIAG 1 |
 | 36 | CAN1L | Laptop / config | 16 tw | GRN | DP-DIAG 2 |
-| 24 | CAN2H | Vehicle bus 500 kbps — keypad, ICU, DCU, future LS ECU | 16 tw | YEL/BLK | L1-S1 9 + DP-KEY 1 + DP-ICU 3 + DP-DCU 4 |
+| 24 | CAN2H | Vehicle bus 500 kbps — ICU, DCU, DP-PANEL (deferred, D-210), future LS ECU | 16 tw | YEL/BLK | L1-S1 9 + DP-KEY 1 + DP-ICU 3 + DP-DCU 4 |
 | 37 | CAN2L | Vehicle bus | 16 tw | GRN/BLK | L1-S1 10 + DP-KEY 2 + DP-ICU 4 + DP-DCU 5 |
 
 ### 5 · 25 A outputs — 12 AWG, large cavities
@@ -313,6 +311,7 @@ and an uncapping, never a re-pin (D-004).
 | Every cavity | [`../02-HARNESS/PIN-MAP.md`](../02-HARNESS/PIN-MAP.md) |
 | What is live / provisioned / open | [`../02-HARNESS/CAVITY-STATE.md`](../02-HARNESS/CAVITY-STATE.md) |
 | Housing part numbers, wedgelocks | [`../02-HARNESS/CONNECTORS.md`](../02-HARNESS/CONNECTORS.md) |
+| Every switch — what stays, what is replaced, what it feeds | [`SWITCHES.md`](SWITCHES.md) |
 | Leg contents and boundaries | [`../02-HARNESS/engine.md`](../02-HARNESS/engine.md), [`front-chassis.md`](../02-HARNESS/front-chassis.md), [`dash.md`](../02-HARNESS/dash.md), [`rear-cabin.md`](../02-HARNESS/rear-cabin.md) |
 | Sill relays and door connectors | [`../02-HARNESS/sill-node.md`](../02-HARNESS/sill-node.md) |
 | DCU / ICU | [`../03-MODULES/DCU-CLUSTER.md`](../03-MODULES/DCU-CLUSTER.md) |

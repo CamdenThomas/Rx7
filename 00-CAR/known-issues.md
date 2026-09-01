@@ -1,6 +1,6 @@
 # Known Issues & Quirks
 
-*Rev 2026-08-31 · owns: every fault, quirk and PO hack of this specific car — K-###. One table per area; add a row the moment something is found. Nothing here is verified unless the row says so.*
+*Rev 2026-09-01 · owns: every fault, quirk and PO hack of this specific car — K-###. One table per area; add a row the moment something is found. Nothing here is verified unless the row says so.*
 
 ## Electrical
 
@@ -38,7 +38,7 @@ telemetry finishing the job at migration (D-174, D-175).
 | K-005 | Age-related rubber degradation throughout the suspension | Full bushing overhaul planned |
 | K-006 | Rear compliance link bushings — improper replacement risks chassis damage | Procedure must be confirmed before attempting |
 | K-007 | Rust — extent not surveyed | Not assessed; the deferred lighting & body pass surveys it (`TAIL-LIGHTS.md` §10, D-201) |
-| K-015 | **A/C barely cool** — probably low on charge (D-099) | Not an electrical fault. Out of scope for the PMU project; do not chase it as a wiring problem |
+| K-015 | **A/C barely cool** — probably low on charge (D-099 → D-211) | **Closed by deletion.** The whole cooling system is being removed rather than repaired (`T-054`); heat and ventilation stay. The one surviving fact: it still cools, so it still holds charge — **a shop recovers the refrigerant before anything is opened** |
 | K-019 | **Coolant has never been fully drained or flushed.** About half was lost and replaced during the Sep 2025 intake removal; what came out looked OK | Not urgent. A proper drain and refill at some point, and eyeball the thermostat and hoses while it's open. Does not block the PMU project |
 
 ## Still to look for

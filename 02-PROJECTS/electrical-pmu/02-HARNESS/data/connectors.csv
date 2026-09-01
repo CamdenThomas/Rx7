@@ -149,5 +149,5 @@ DP-DIAG,3,+12 V constant,Busbar F2 (2 A),16,RED,LIVE,
 DP-DIAG,4,Ground,DP-GND,16,BLK,LIVE,Permitted ground crossing (D-037)
 DP-KEY,1,CAN2 H,CAN2H (pin 24),16 tw,YEL/BLK,LIVE,
 DP-KEY,2,CAN2 L,CAN2L (pin 37),16 tw,GRN/BLK,LIVE,
-DP-KEY,3,+12 V,O10 (pin 4),16,ORN/YEL,LIVE,A-013 — keypad on the accessory bus
+DP-KEY,3,+12 V,O10 (pin 4),16,ORN/YEL,LIVE,A-013 — control panel on the accessory bus
 DP-KEY,4,Ground,DP-GND,16,BLK,LIVE,Permitted ground crossing (D-037)

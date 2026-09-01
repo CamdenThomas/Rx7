@@ -1,6 +1,6 @@
 # Open Queue — Electrical / PMU
 
-*Rev 2026-08-31 · owns: what is undecided (Q), unconfirmed (V) or assumed (A). Answered items move to [`DECISIONS.md`](DECISIONS.md) and leave this file; the ID stays permanent and is cited as `Q-038 → D-095` from then on. [`ID-REGISTRY.md`](ID-REGISTRY.md) lists every ID ever issued.*
+*Rev 2026-09-01 · owns: what is undecided (Q), unconfirmed (V) or assumed (A). Answered items move to [`DECISIONS.md`](DECISIONS.md) and leave this file; the ID stays permanent and is cited as `Q-038 → D-095` from then on. [`ID-REGISTRY.md`](ID-REGISTRY.md) lists every ID ever issued.*
 
 **How to answer:** type under the `ANSWER:` quote, or say it in a session. The
 agent records the D-entry and removes the packet here.
@@ -95,12 +95,13 @@ cart at a live price. The two dash-space items close on teardown day 1.
 | V-088 | The relocated amp's old position and the deleted cassette/ashtray/lighter free the space Camden expects; amp + battery + Class-T + disconnect all fit the rear cargo bins | Eyes on it at teardown |
 | V-089 | WireBarn stocks every striped GXL combo in BOM §11c, by the foot, in 12/14/16 | Cart check; fallback Crimpzone / CE Auto |
 | V-090 | DeutschConnector assembly-kit contents (contacts included, genuine), and `1027-003-1200` clip source | Cart check; clips fallback TE/Mouser |
-| V-091 | OptiFuse BLR-I-504 is truly independent-feed, panel-mountable, ATO/ATC | Datasheet before ordering |
+| V-091 → D-206 | **FAILED 2026-09-01** — OptiFuse “I” = indicating LED; BLR-I-504 is common-bus (“consolidates 4 circuits”, 100 A max total input). Blocks regrouped by source: 1 × 4-pos + 3 × 2-pos bussed + 2 inlines | closed — see BOM §11e |
 | V-092 | Brother HSe sleeve sizes: HSe-211 fits 16 AWG, HSe-221 fits 12–14 AWG finished OD | Brother compatibility chart |
-| V-093 | NOCO HM318BKS interior fits the Ionic S9 Group-25 case + terminals + boots | Dims vs `V-051` measurement |
+| V-093 | **NOCO BG27** interior (carted 2026-09-01, D-207 — HM318BKS not listed) fits the Ionic S9 Group-25 case + terminals + boots | Dims vs `V-051` measurement |
 | V-094 | MRBF rating for the starter feed (200 A assumed) survives cranking without nuisance-blowing | Cranking-current data / Ionic docs |
 | V-095 | Fine-strand welding cable is acceptable for the 2 AWG runs (loomed, grommeted) vs SGX/marine | Insulation temp rating on the chosen listing |
-| V-096 | iCrimp IWD-16/IWD-12 crimps pass the coupon pull tests on genuine solid contacts | Checklist 1.10–1.11 — the acceptance gate |
+| **V-097** | **The A/C compressor runs its own dedicated belt** off the crank, separate from the alternator/water-pump belt — so removing it (D-211, `T-054`) needs no replacement belt and changes no other accessory drive. Assumed true for the FB 12A; M-011 fitted an A/C belt Jul 2026 as a separate item, which supports it | Look at the crank pulley — five minutes, part of `T-054` step 2 |
+| V-096 | **IWISS solid-contact crimper (12/16/20)** — carted in place of the iCrimp pair (D-207) — passes the coupon pull tests on genuine solid contacts | Checklist 1.10–1.11 — the acceptance gate |
 
 ## 5 · Verify — needs the car
 
@@ -109,7 +110,7 @@ cart at a live price. The two dash-space items close on teardown day 1.
 | V-002 | Alternator output rating — the case says only 'B' / Mitsubishi (2026-08), no rating readable | FSM / Mitsubishi part lookup |
 | V-055 | Sill space behind the kick panel — 4 relays, 3 fuse positions, ground stud | Tape measure — Checklist 0.10 |
 | V-038 | Coolant level unit and oscillator still fitted | Inspect |
-| **V-081** | **Pop-up drive conductors** (D-199): sheet E says WR = constant, R + RY = the two commands, YG = indicator — but it reads as reversible while Camden observed one direction (D-186). Decisive: at E-03 unplugged, **ohms R → case and RY → case at parked / mid / raised**. Same winding via different cam segments = single-direction confirmed, K1/K2 drive **R + RY bridged**, WR capped. Two windings = reversible — revisit D-186 before Phase 4 | Five minutes with the meter, before the L2 leg is pinned |
+| **V-081** | **Pop-up drive conductors** (D-199): sheet E says WR = constant, R + RY = the two commands, YG = indicator — but it reads as reversible while Camden observed one direction (D-186). Decisive: at E-03 unplugged, **ohms R → case and RY → case at parked / mid / raised**. Same winding via different cam segments = single-direction confirmed, K1/K2 drive **R + RY bridged**, WR capped. Two windings = reversible — revisit D-186 before Phase 4. **Also decides L2-P2** (D-208): single-direction means L2’s 4 live size-12 conductors collapse into one DTP-4 and the second shell becomes spare | Five minutes with the meter, before the L2 leg is pinned |
 | V-067 | **Tach pulses per revolution.** Assumed 2 for a 2-rotor off the leading coil. Wrong scales every RPM reading by a constant | Meter session or FSM |
 | V-021 | Horn current draw — estimate 4–8 A the pair; fuse at the 15.0 cap (D-175) | PMU telemetry after migration (D-174) |
 
@@ -133,7 +134,7 @@ ones are in [`DECISIONS.md`](DECISIONS.md) (A-005 → D-148, A-007 → D-112, A-
 | A-010 | Brake fluid level goes to the ICU on DP-ICU 12 via L1-S2 1. Coolant and oil level are optional, have no ICU cavity, and are capped in L1-S2 2–3 | `connectors.csv`, [`CAVITY-STATE.md`](../02-HARNESS/CAVITY-STATE.md) |
 | A-011 | The wideband O2 signal (K-001) is carried to the dash on L1-S1 12 and capped. It is not an ICU input and has no display until the LS | `connectors.csv`, [`engine.md`](../02-HARNESS/engine.md) |
 | A-012 | The luggage compartment switch joins the A6 door-pin ladder as a fourth state — re-run the ladder maths before it is added | [`LADDERS.md`](../01-DESIGN/LADDERS.md), L4-S 3 |
-| A-013 | The CAN keypad is powered from the accessory bus O10 (DP-KEY 3), so it is dead when the car sleeps and cannot itself be a wake source | [`PIN-MAP.md`](../02-HARNESS/PIN-MAP.md) DP-KEY, [`SCHEMATICS.md`](../01-DESIGN/SCHEMATICS.md) wake network |
+| A-013 | Whatever control panel lands on DP-KEY is powered from the accessory bus O10 (DP-KEY 3), so it is dead when the car sleeps and cannot itself be a wake source. Holds for the deferred custom A/C panel exactly as it held for the keypad (D-210) | [`PIN-MAP.md`](../02-HARNESS/PIN-MAP.md) DP-KEY, [`SCHEMATICS.md`](../01-DESIGN/SCHEMATICS.md) wake network |
 
 ---
 

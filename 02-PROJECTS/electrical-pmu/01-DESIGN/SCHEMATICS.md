@@ -1,6 +1,6 @@
 # SCHEMATICS — panel sub-circuits
 
-*Rev 2026-08-31 · owns: the wake network, the H-bridges, the constant bus and the ground architecture — everything on the plate and at the sill that is not simply a wire from a PMU pin to a receptacle.*
+*Rev 2026-09-01 · owns: the wake network, the H-bridges, the constant bus and the ground architecture — everything on the plate and at the sill that is not simply a wire from a PMU pin to a receptacle.*
 
 Relay and fuse numbering is [`SPEC.md`](SPEC.md) §3's. Cavity numbers are
 [`../02-HARNESS/PIN-MAP.md`](../02-HARNESS/PIN-MAP.md)'s. The one-page drawing of
@@ -140,15 +140,15 @@ any PMU output.
         │            │         └── F5  30 A ── Amp / audio constant
         │            ├── F2   2 A ── Diagnostic port +12 V                     DP-DIAG 3
         │            ├── F3   5 A ── Wake diode network supply
-        │            ├── F4  10 A ── A/C factory circuit
         │            └── F13  —   ── radar module feed (D-191; deferred, V-061)
+        │                             (F4 deleted with the A/C — D-211)
         │
         └── PMU STUD (150 A max)
 ```
 
 **K11 constant-bus master** sits between the busbar and F1/F5, driven by the
 O22 latch. It lets the box drop the true-constants on a long park so the audio
-keep-alive cannot flatten the lithium. F2, F3 and F4 stay live always.
+keep-alive cannot flatten the lithium. F2 and F3 stay live always.
 
 **Sleeping draw with K11 open:** PMU standby only, ~0.15 A. **With K11
 closed:** plus the head unit clock, 10–20 mA.
@@ -177,7 +177,7 @@ Not a schematic so much as a rule, but it belongs with these.
                 (engine block / front / rear / sill)
 ```
 
-**No ground crosses a leg connector** except the diagnostic port, keypad, ICU
+**No ground crosses a leg connector** except the diagnostic port, DP-KEY, ICU
 and DCU returns (D-037), which are box-adjacent drops. Door grounds terminate
 at the sill stud, never inside the door. The fuel pump gets its own return at
 the rear node — the structural fix for K-008.
@@ -199,6 +199,6 @@ the shortest and heaviest wire on the plate and the one to get right.
 | Relays, plate | 4 | ISO micro, SPDT (K1, K2, K11, K12) |
 | Relay sockets, plate | 10 | ISO micro — 4 populated; K3/K4's freed as spares (D-186) |
 | Relay sockets, sill | 4 | ISO micro — **empty** |
-| Fuse blocks, plate | 12 positions — F1–F7, F10–F13, F15, as 3 × 4-pos **independent-feed** blocks (D-203b — six different sources) | ATO / ATC |
+| Fuse blocks, plate | 12 positions — F1–F7, F10–F13, F15, **grouped by source** (D-206): 4-pos bussed for the busbar four, 2-pos bussed each for K11 / O1 / O15, sealed inlines for F12 and F15 | ATO / ATC |
 | Fuse positions, sill | 3 | F8, F9 (empty), F14 |
 | Busbars | 2 | always-hot, ground |
