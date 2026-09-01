@@ -1,0 +1,41 @@
+pin,cavity_size,channel,name,class,awg,colour,circuit,goes_to,load_type,est_a,meas_a,enable_a,inrush_x,inrush_ms,status,note
+STUD,stud,—,+12V BATT,MAIN,2,RED,"Main supply from the Class-T, 150 A max",Busbar → PMU stud,,,,,,,LIVE,"4 AWG jumper busbar → stud, ≤ 8 in"
+25,L,—,GND,GND,10,BLK,Device ground and flyback return for every inductive load,"GND bus, ≤ 6 in",,,,,,,LIVE,"Shortest, heaviest wire on the plate"
+7,S,—,+12V SW,WAKE,16,BLU,Wake input — diode-OR strip: ACC · RUN · door stage (A6) · horn/hazard/wink stage (A8) · O22 latch,Wake strip common rail,,,,,,,LIVE,10 kΩ bleed to GND on the rail
+15,M,—,+5V OUT,REF,16,PNK,+5 V reference — plate only: the two 100 kΩ bias resistors for A15 / A16,Bias resistors on the plate,,,,,,,LIVE,Nothing in any leg uses +5 V
+23,S,—,CAN1H,CAN1,16 tw,YEL,"Laptop / config bus, 1 Mbps. 120 Ω at BOTH ends (PMU end + port)",DP-DIAG 1,,,,,,,LIVE,
+36,S,—,CAN1L,CAN1,16 tw,GRN,Laptop / config bus,DP-DIAG 2,,,,,,,LIVE,
+24,S,—,CAN2H,CAN2,16 tw,YEL/BLK,"Vehicle bus 500 kbps — software termination ON at the PMU, 120 Ω at the engine-bay drop",L1-S1 9 · DP-ICU 3 · DP-DCU 4 · DP-KEY 1,,,,,,,LIVE,Only the L1 drop is live now; the three dash drops are capped
+37,S,—,CAN2L,CAN2,16 tw,GRN/BLK,Vehicle bus,L1-S1 10 · DP-ICU 4 · DP-DCU 5 · DP-KEY 2,,,,,,,LIVE,
+38,L,O1,MOTOR_BUS,25A,12,RED/WHT,Pop-up motor bus — feeds fuse block C (F6 / F7 → K1 / K2 contacts) and both K1 / K2 coils,Block C in · K1 86 · K2 86 · L4-P 3 (capped),motor,9.5,,25.0,7,400,LIVE,Integrated flyback diode on this channel. Stalls measured: L 12.8 A · R 13.1 A
+39,L,O2,HEAD_LOW,25A,12,RED/BLK,"Headlight LOW, both lamps",L2-P1 1,lamp,3.0,,25.0,3,200,LIVE,
+26,L,O3,HEAD_HIGH,25A,12,RED/BRN,"Headlight HIGH, both lamps + the cluster high-beam indicator",L2-P1 2 · DP-CLU 12,lamp,3.5,,25.0,3,200,LIVE,
+13,L,O4,DEFOG,25A,12,RED/GRN,Rear defog grid — wired; channel configured and DISABLED (no control surface in this build),L4-P 1,resistive,11.5,,25.0,1.3,2000,LIVE,Grid draws most when cold
+12,L,O5,FUEL_PUMP,25A,12,RED/YEL,Fuel pump — Carter P4070,L4-P 2,motor,2.0,2.38,4.0,3,150,LIVE,Measured 2.38 A
+2,L,O12,IGNITION,25A,12,RED/BLU,Ignition — coils and igniters; also the F15 alternator-excitation branch and the F16 cluster branch,L1-P 1 · F15 · F16,electronics,5.0,,25.0,2,100,LIVE,
+1,L,O13,LS_ECU,25A,12,RED/ORN,Reserved for the LS swap — ECU + injectors,L1-P 2 (capped),reserved,,,,,,CAPPED,Output disabled
+14,L,O14,LS_FAN,25A,12,RED/GRY,Reserved for the LS swap — cooling fan,L1-P 3 (capped),reserved,,,,,,CAPPED,Output disabled
+27,L,O15,COMFORT,25A,12,RED/VIO,"Comfort bus — fuse block D (F10 / F11, empty) and the capped dash feed. No live load this build",Block D in · L3-P 2 (capped),mixed,,,,,,LIVE,"Output configured, enabled, nothing connected"
+28,L,O16,BLOWER,25A,12,RED/PNK,Blower motor (new motor — speed selected by the resistor pack and switch on the ground side),L3-P 1,motor,15.0,,25.0,8,600,LIVE,Integrated flyback diode. Expect 12–18 A on HI
+11,S,O6,TAIL_PARK,15A,14,ORN/BRN,Tail · park · side markers · licence,L2-M 7 · L4-M 1,lamp,4.4,5.4,7.5,10,100,LIVE,Measured 5.4 A
+10,S,O7,BRAKE,15A,14,ORN/GRN,Brake lamps,L4-M 2,lamp,3.9,7.0,9.5,10,100,LIVE,Measured 7.0 A
+9,S,O8,WIPE_LOW,15A,14,ORN/BLU,Wiper LOW brush — braking channel; also feeds K12 (washer) contact 30,L2-M 1 · K12 30,motor,4.0,,15.0,7,300,LIVE,Braking ON. Park sense arrives on A3
+5,S,O9,WIPE_HIGH,15A,14,ORN/WHT,Wiper HIGH brush,L2-M 2,motor,5.5,,15.0,7,300,LIVE,
+4,S,O10,ACCESSORY,15A,14,ORN/YEL,"Accessory bus — head unit (ACC), USB-C, K12 coil; three capped module drops",L3-M 1 · K12 86 · DP-ICU 1 · DP-DCU 1 · DP-KEY 3 (capped),electronics,2.5,,15.0,2,100,LIVE,
+3,S,O11,HORN,15A,14,ORN/BLK,"Horns, both",L2-M 3,electro-mech,6.0,,15.0,3,80,LIVE,
+6,S,O17,TURN_L,7A,16,VIO/GRN,Turn LEFT front + rear + cluster indicator — flashed in the PMU,L2-M 5 · L4-M 5 · DP-CLU 10,lamp,4.2,3.4,4.5,10,100,LIVE,Measured 3.4 A
+33,S,O18,TURN_R,7A,16,VIO/YEL,Turn RIGHT front + rear + cluster indicator,L2-M 6 · L4-M 6 · DP-CLU 11,lamp,4.2,3.4,4.5,10,100,LIVE,Measured 3.4 A
+20,S,O19,REVERSE,7A,16,VIO/BLK,Reverse lamps,L4-M 7,lamp,3.9,,7.0,10,100,LIVE,
+34,S,O20,INTERIOR,7A,16,VIO/WHT,"Interior lamp (via F12, PWM theatre fade) + illumination bus (dash lamps, cluster, head unit)",F12 → L4-M 8 · L3-S1 8 · DP-CLU 3 · DP-ICU 5 (capped),lamp,2.5,,7.0,10,100,LIVE,PWM
+21,S,O21,START_RLY,7A,16,VIO/RED,Start relay K9 coil,L1-S1 1,relay coil,0.2,,7.0,2,50,LIVE,
+8,S,O22,KEEP_ALIVE,7A,16,VIO/BLU,Keep-alive — feeds the wake strip through a diode and drives K11 (audio master),Wake strip input 5 · K11 86,logic,0.2,,7.0,2,0,LIVE,
+35,S,A15,HEADLIGHT_SW,IN 12V,16,GRY/WHT,"Headlight switch ladder — OFF / PARK / HEAD-LO / HEAD-HI / PASS (12 V side, 12-bit)",L3-S1 2,input,,,,,,LIVE,Occupies O23. 10 kΩ pull-down + 100 kΩ bias from +5 V
+22,S,A16,KEY_POS,IN 12V,16,GRY/RED,"Key ladder — OFF / ACC / RUN / START (summed, 12 V side, 12-bit)",L3-S1 1,input,,,,,,LIVE,Occupies O24. 10 kΩ pull-down + 100 kΩ bias
+29,S,A1,TURN_STALK,IN,16,GRY/GRN,Turn stalk — LEFT / OFF / RIGHT,L3-S1 3,input,,,,,,LIVE,10 kΩ pull-up
+16,S,A2,WIPER_STALK,IN,16,GRY/BLU,Wiper stalk — WASH / HIGH / LOW / INT / OFF,L3-S1 4,input,,,,,,LIVE,10 kΩ pull-up
+30,S,A3,BRAKE_PARK,IN,16,GRY/ORN,Brake pedal + wiper park sense — 4 states,L3-S1 5 · L2-S 3 (spliced at the post),input,,,,,,LIVE,10 kΩ pull-up
+17,S,A4,POPUP_L,IN,16,GRY/BLK,Pop-up LEFT transit contact + inhibitor P/N contact,L2-S 1 · L1-S1 11 (spliced at the post),input,,,,,,LIVE,10 kΩ pull-up
+31,S,A5,POPUP_R,IN,16,GRY/BRN,Pop-up RIGHT transit contact + inhibitor R contact,L2-S 2 · L1-S2 7 (spliced at the post),input,,,,,,LIVE,10 kΩ pull-up
+18,S,A6,DOOR_PINS,IN,16,GRY/VIO,"Door jamb switches, driver + passenger — 4 states",L4-S 2,input,,,,,,LIVE,10 kΩ pull-up. Also sensed by wake stage 1
+32,S,A7,FUEL_LEVEL,IN,16,GRY/YEL,Fuel sender tap — the factory gauge drives the sender; the PMU only reads the node,Tap on the L4-S 1 → DP-CLU 7 conductor,input,,,,,,LIVE,"1 MΩ pull-down, no pull-up. Calibrate in the car"
+19,S,A8,HAZ_HORN_WINK,IN,16,GRY/PNK,Hazard · horn · wink L · wink R — one summed ladder,L3-S1 6 · L3-S1 11 (spliced at the post),input,,,,,,LIVE,10 kΩ pull-up. Also sensed by wake stage 2

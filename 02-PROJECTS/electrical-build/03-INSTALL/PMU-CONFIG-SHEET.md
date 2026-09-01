@@ -1,0 +1,247 @@
+# PMU CONFIGURATION SHEET
+
+Everything typed into the ECUMaster PMU client, in the order it is entered. Channel names are exact. Nothing here needs a current figure until §5.
+
+
+## Entry order
+
+1. Name all 39 channels (§0)  2. Enter the input decode tables (§1)  3. Enter the output expressions (§2)  4. Enter the rules and interlocks (§3)  5. Wake and shutdown (§4)  6. Save as `RevA-01`  7. After the L3 input check in the car: correct the windows from the live readings, save `RevA-02`  8. Enter the enable-at limits (§5) and, per circuit as it migrates, enable the output.
+
+
+## 0 · Channel names
+
+| Pin | Ch | Name | Type |
+|---|---|---|---|
+| 1 | O13 | `LS_ECU` | output |
+| 2 | O12 | `IGNITION` | output |
+| 3 | O11 | `HORN` | output |
+| 4 | O10 | `ACCESSORY` | output |
+| 5 | O9 | `WIPE_HIGH` | output |
+| 6 | O17 | `TURN_L` | output |
+| 7 | — | `+12V SW` | WAKE |
+| 8 | O22 | `KEEP_ALIVE` | output |
+| 9 | O8 | `WIPE_LOW` | output |
+| 10 | O7 | `BRAKE` | output |
+| 11 | O6 | `TAIL_PARK` | output |
+| 12 | O5 | `FUEL_PUMP` | output |
+| 13 | O4 | `DEFOG` | output |
+| 14 | O14 | `LS_FAN` | output |
+| 15 | — | `+5V OUT` | REF |
+| 16 | A2 | `WIPER_STALK` | input |
+| 17 | A4 | `POPUP_L` | input |
+| 18 | A6 | `DOOR_PINS` | input |
+| 19 | A8 | `HAZ_HORN_WINK` | input |
+| 20 | O19 | `REVERSE` | output |
+| 21 | O21 | `START_RLY` | output |
+| 22 | A16 | `KEY_POS` | input |
+| 23 | — | `CAN1H` | CAN1 |
+| 24 | — | `CAN2H` | CAN2 |
+| 25 | — | `GND` | GND |
+| 26 | O3 | `HEAD_HIGH` | output |
+| 27 | O15 | `COMFORT` | output |
+| 28 | O16 | `BLOWER` | output |
+| 29 | A1 | `TURN_STALK` | input |
+| 30 | A3 | `BRAKE_PARK` | input |
+| 31 | A5 | `POPUP_R` | input |
+| 32 | A7 | `FUEL_LEVEL` | input |
+| 33 | O18 | `TURN_R` | output |
+| 34 | O20 | `INTERIOR` | output |
+| 35 | A15 | `HEADLIGHT_SW` | input |
+| 36 | — | `CAN1L` | CAN1 |
+| 37 | — | `CAN2L` | CAN2 |
+| 38 | O1 | `MOTOR_BUS` | output |
+| 39 | O2 | `HEAD_LOW` | output |
+
+## 1 · Input decode tables
+
+Enter as lookup tables with windows. A reading between windows must report FAULT, not the nearest state. **Pull configuration:** A1–A8 = 10 kΩ pull-UP except A7 = 1 MΩ pull-DOWN · A15, A16 = 10 kΩ pull-DOWN.
+
+
+**A1 `TURN_STALK`** — window ± 55 · FAULT below 50 and above 990
+
+| State | Resistance to ground (bench check) | ADC centre | Live reading | Window entered |
+|---|---|---|---|---|
+| LEFT | 1.8k | 156 | ____ | ____ |
+| RIGHT | 10k | 512 | ____ | ____ |
+| OFF | 47k | 844 | ____ | ____ |
+| OPEN / unplugged | ∞ | 1023 |  | FAULT |
+| SHORT / chafe | 0 | 0 |  | FAULT |
+
+**A2 `WIPER_STALK`** — window ± 45 · FAULT below 50 and above 990
+
+| State | Resistance to ground (bench check) | ADC centre | Live reading | Window entered |
+|---|---|---|---|---|
+| WASH | 1.8k + 1N5819 | 208 | ____ | ____ |
+| HIGH | 4.7k | 327 | ____ | ____ |
+| LOW | 10k | 512 | ____ | ____ |
+| INT | 18k | 658 | ____ | ____ |
+| OFF | 47k | 844 | ____ | ____ |
+| OPEN / unplugged | ∞ | 1023 |  | FAULT |
+| SHORT / chafe | 0 | 0 |  | FAULT |
+
+**A3 `BRAKE_PARK`** — window ± 30 · FAULT below 50 and above 990
+
+| State | Resistance to ground (bench check) | ADC centre | Live reading | Window entered |
+|---|---|---|---|---|
+| BRAKE+PARKED | 4.7k ∥ 12k | 258 | ____ | ____ |
+| BRAKE | 4.7k | 327 | ____ | ____ |
+| PARKED | 12k | 558 | ____ | ____ |
+| OPEN / unplugged | ∞ | 1023 |  | FAULT |
+| SHORT / chafe | 0 | 0 |  | FAULT |
+
+**A4 `POPUP_L`** — window ± 20 · FAULT below 50 and above 990
+
+| State | Resistance to ground (bench check) | ADC centre | Live reading | Window entered |
+|---|---|---|---|---|
+| TRANSIT+PN | 3.3k ∥ 8.2k ∥ 47k | 187 | ____ | ____ |
+| TRANSIT | 3.3k ∥ 47k | 241 | ____ | ____ |
+| CRANK_OK | 8.2k ∥ 47k | 421 | ____ | ____ |
+| IDLE | 47k | 844 | ____ | ____ |
+| OPEN / unplugged | ∞ | 1023 |  | FAULT |
+| SHORT / chafe | 0 | 0 |  | FAULT |
+
+**A5 `POPUP_R`** — window ± 20 · FAULT below 50 and above 990
+
+| State | Resistance to ground (bench check) | ADC centre | Live reading | Window entered |
+|---|---|---|---|---|
+| TRANSIT+R | 3.3k ∥ 8.2k ∥ 47k | 187 | ____ | ____ |
+| TRANSIT | 3.3k ∥ 47k | 241 | ____ | ____ |
+| REVERSE | 8.2k ∥ 47k | 421 | ____ | ____ |
+| IDLE | 47k | 844 | ____ | ____ |
+| OPEN / unplugged | ∞ | 1023 |  | FAULT |
+| SHORT / chafe | 0 | 0 |  | FAULT |
+
+**A6 `DOOR_PINS`** — window ± 27 · FAULT below 50 and above 990
+
+| State | Resistance to ground (bench check) | ADC centre | Live reading | Window entered |
+|---|---|---|---|---|
+| BOTH | 33k ∥ 8.2k | 406 | ____ | ____ |
+| PASS | 8.2k | 461 | ____ | ____ |
+| DRV | 33k | 785 | ____ | ____ |
+| OPEN / unplugged | ∞ | 1023 |  | FAULT |
+| SHORT / chafe | 0 | 0 |  | FAULT |
+
+**A8 `HAZ_HORN_WINK`** — window ± 35 · FAULT below 50 and above 990
+
+| State | Resistance to ground (bench check) | ADC centre | Live reading | Window entered |
+|---|---|---|---|---|
+| HAZ+HORN | 4.7k ∥ 8.2k | 235 | ____ | ____ |
+| HAZARD | 4.7k | 327 | ____ | ____ |
+| HORN | 8.2k | 461 | ____ | ____ |
+| WINK_L | 18k | 658 | ____ | ____ |
+| WINK_R | 33k | 785 | ____ | ____ |
+| OPEN / unplugged | ∞ | 1023 |  | FAULT |
+| SHORT / chafe | 0 | 0 |  | FAULT |
+
+HAZARD is a band 265–370 (hazard alone 327; hazard + either wink 278 / 298 read as HAZARD).
+
+
+**A7 `FUEL_LEVEL`** — three-point lookup with interpolation, read in the car: FULL ____ · MID ____ · EMPTY ____ (the factory gauge drives the sender; this input only observes it). FAULT below 10 and above 1000. If the reading is unstable, leave the channel unused — the cluster's gauge is the instrument.
+
+
+**A15 `HEADLIGHT_SW`** — window ± 75 · 0 = disconnected = FAULT
+
+| State | Contacts live | Node V | ADC centre | Live reading | Window entered |
+|---|---|---|---|---|---|
+| OFF | bias only | 0.45 | 93 | ____ | ____ |
+| PARK | 33k | 2.95 | 604 | ____ | ____ |
+| HEAD_LO | 33k + 15k | 5.86 | 1201 | ____ | ____ |
+| HEAD_HI | 33k + 15k + 8.2k | 8.14 | 1666 | ____ | ____ |
+| PASS | 33k + 15k + 8.2k + 3.3k | 9.99 | 2046 | ____ | ____ |
+
+**A16 `KEY_POS`** — window ± 200 · 0 = disconnected = FAULT
+
+| State | Contacts live | Node V | ADC centre | Live reading | Window entered |
+|---|---|---|---|---|---|
+| OFF | bias only | 0.45 | 93 | ____ | ____ |
+| ACC | 33k | 2.95 | 604 | ____ | ____ |
+| RUN | 33k + 15k | 5.86 | 1201 | ____ | ____ |
+| START | 33k + 15k + 6.8k | 8.41 | 1723 | ____ | ____ |
+
+A15 PASS: any reading ≥ 1750. A16 START: either 1720 or ~1650 depending on whether ACC drops during crank — set the window from the live reading.
+
+
+## 2 · Output expressions
+
+| Channel | Expression | Inrush | Retry |
+|---|---|---|---|
+| HEAD_LOW | A15 == HEAD_LO | 3× for 200 ms | 3 retries, 5 s |
+| HEAD_HIGH | A15 == HEAD_HI  \|\|  A15 == PASS | 3× for 200 ms | 3 retries, 5 s |
+| TAIL_PARK | A15 >= PARK  (hold the previous state while PASS is active) | 10× for 100 ms | 3 retries, 5 s |
+| BRAKE | A3 == BRAKE  \|\|  A3 == BRAKE+PARKED | 10× for 100 ms | 3 retries, 5 s |
+| TURN_L | (A1 == LEFT  \|\|  hazard)  &&  flasher_phase | 10× for 100 ms | 3 retries, 5 s |
+| TURN_R | (A1 == RIGHT  \|\|  hazard)  &&  flasher_phase | 10× for 100 ms | 3 retries, 5 s |
+| REVERSE | A5 == REVERSE  &&  A16 >= RUN | 10× for 100 ms | 3 retries, 5 s |
+| INTERIOR | A6 != CLOSED  — PWM, 1.5 s fade-in, 8 s fade-out after the last door closes | 10× for 100 ms | 3 retries, 5 s |
+| MOTOR_BUS | popup_cycle  (see the pop-up rule below) | 7× for 400 ms | 1 retry |
+| WIPE_LOW | A2 == LOW  \|\|  A2 == WASH  \|\|  (A2 == INT && int_timer)  \|\|  (wiper_latch && A3 not PARKED)  — braking ON | 7× for 300 ms | 3 retries, 5 s |
+| WIPE_HIGH | A2 == HIGH | 7× for 300 ms | 3 retries, 5 s |
+| BLOWER | A16 >= RUN  — speed is selected by the switch on the motor's ground side | 8× for 600 ms | 3 retries, 5 s |
+| DEFOG | (no trigger this build — channel configured, output DISABLED) | 1.3× for 2 s | — |
+| FUEL_PUMP | A16 >= RUN | 3× for 150 ms | 3 retries, 5 s |
+| IGNITION | A16 >= RUN | 2× for 100 ms | 3 retries, 5 s |
+| ACCESSORY | A16 >= ACC | 2× for 100 ms | 3 retries, 5 s |
+| HORN | A8 == HORN  \|\|  A8 == HAZ+HORN | 3× for 80 ms | 3 retries, 5 s |
+| COMFORT | A16 >= RUN  (nothing connected this build) | 2× for 200 ms | 3 retries, 5 s |
+| START_RLY | A16 == START  &&  A4 == CRANK_OK | 2× for 50 ms | — |
+| KEEP_ALIVE | self-hold: ON at any wake; OFF 30 s after the last input change with A16 == OFF and A6 == CLOSED | — | — |
+| LS_ECU · LS_FAN | DISABLED | — | — |
+
+## 3 · Rules and interlocks
+
+| Rule | Definition |
+|---|---|
+| Flasher | 1.5 Hz, 50 % duty, generated in the PMU. `hazard` = A8 == HAZARD \|\| A8 == HAZ+HORN. Hazard overrides the stalk and works with the key out |
+| Pop-up cycle | A15 entering HEAD, or leaving HEAD, or A8 == WINK_L / WINK_R with A16 <= ACC → energise O1 until BOTH A4 and A5 leave TRANSIT (minimum 300 ms). 4 s with either still in TRANSIT = obstruction: O1 off, fault flag. A held wink switch opens the OTHER side's relay coil return, so only the winked lamp moves |
+| Wiper park | When the stalk goes to OFF with the wipers running, hold O8 until A3 reads PARKED (or BRAKE+PARKED), then release — braking stops the arm at park. Intermittent: 3 s pause between full sweeps, each sweep runs until PARKED |
+| Washer | WASH also holds O8 on; K12 closes only while the stalk contact is pressed, so the pump runs only while the driver holds WASH. After release, keep O8 on for two more sweeps |
+| Crank | O21 only in P or N (A4 == CRANK_OK). Release O21 when A16 leaves START |
+| Motor bus | Refuse a new pop-up command while O1 reads above 20 A |
+| Voltage | Warn below 12.0 V. Shed COMFORT below 11.5 V. Warn above 15.0 V |
+| Sleep | Any wake-strip input high wakes the PMU. With no key, no door and nothing on A8, KEEP_ALIVE drops 30 s after the last change and the PMU sleeps; K11 opens with it (audio memory relies on the head unit's own non-volatile memory) |
+
+## 4 · Wake, shutdown, CAN
+
+Wake sources on pin 7: ACC · RUN · door stage · horn/hazard/wink stage · O22 latch. Shutdown: `KEEP_ALIVE` releases 30 s after the last input change with the key OFF and the doors closed; the module sleeps and K11 opens. CAN1: 1 Mbps (fixed). CAN2: 500 kbps, termination ON. Enable data logging: every channel current at 10 Hz, every input at 10 Hz.
+
+
+## 5 · Enable-at limits
+
+The software limit typed in before each output is first enabled. `meas` = measured, keep; `cap` = channel cap, to be tightened from telemetry in shakedown (§7.5 of the install).
+
+| Ch | Name | Enable at (A) | Inrush window | Final limit |
+|---|---|---|---|---|
+| O1 | `MOTOR_BUS` | 25.0 cap | 7× for 400 ms | ____ |
+| O2 | `HEAD_LOW` | 25.0 cap | 3× for 200 ms | ____ |
+| O3 | `HEAD_HIGH` | 25.0 cap | 3× for 200 ms | ____ |
+| O4 | `DEFOG` | 25.0 cap | 1.3× for 2000 ms | ____ |
+| O5 | `FUEL_PUMP` | 4.0 meas | 3× for 150 ms | ____ |
+| O12 | `IGNITION` | 25.0 cap | 2× for 100 ms | ____ |
+| O13 | `LS_ECU` | DISABLED | — | — |
+| O14 | `LS_FAN` | DISABLED | — | — |
+| O15 | `COMFORT` | 25.0 cap | — | ____ |
+| O16 | `BLOWER` | 25.0 cap | 8× for 600 ms | ____ |
+| O6 | `TAIL_PARK` | 7.5 meas | 10× for 100 ms | ____ |
+| O7 | `BRAKE` | 9.5 meas | 10× for 100 ms | ____ |
+| O8 | `WIPE_LOW` | 15.0 cap | 7× for 300 ms | ____ |
+| O9 | `WIPE_HIGH` | 15.0 cap | 7× for 300 ms | ____ |
+| O10 | `ACCESSORY` | 15.0 cap | 2× for 100 ms | ____ |
+| O11 | `HORN` | 15.0 cap | 3× for 80 ms | ____ |
+| O17 | `TURN_L` | 4.5 meas | 10× for 100 ms | ____ |
+| O18 | `TURN_R` | 4.5 meas | 10× for 100 ms | ____ |
+| O19 | `REVERSE` | 7.0 cap | 10× for 100 ms | ____ |
+| O20 | `INTERIOR` | 7.0 cap | 10× for 100 ms | ____ |
+| O21 | `START_RLY` | 7.0 cap | 2× for 50 ms | ____ |
+| O22 | `KEEP_ALIVE` | 7.0 cap | 2× for 0 ms | ____ |
+
+## 6 · Save discipline
+
+Version after every working step — `RevA-01`, `-02`, … Never overwrite. Log each version with the date and what changed:
+
+| Version | Date | What changed | Backed up |
+|---|---|---|---|
+| RevA-01 |  | Names, tables, expressions, rules, wake | ☐ |
+| RevA-02 |  | Windows corrected from live readings | ☐ |
+|  |  |  | ☐ |
+|  |  |  | ☐ |
+|  |  |  | ☐ |

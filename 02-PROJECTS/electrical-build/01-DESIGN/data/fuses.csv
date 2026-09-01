@@ -1,0 +1,21 @@
+id,rating,location,feeds,fed_from,state
+Class-T,150 A,"Cargo bin, at battery +",The whole PMU system — 2 AWG to the dash post,Battery + (through the master disconnect),LIVE
+MRBF,200 A,"Cargo bin, on battery +",Starter main cable (1/0),Battery +,LIVE
+F1,15 A,"Plate, block B (K11)",Head unit memory / constant — L3-M 2,K11 87,LIVE
+F2,2 A,"Plate, block A (busbar)",Diagnostic port +12 V — DP-DIAG 3,Busbar,LIVE
+F3,5 A,"Plate, block A (busbar)","Switch supply — ignition switch, light switch, wake stages — L3-S2 2",Busbar,LIVE
+F5,30 A,"Plate, block B (K11)",Amplifier constant — L4-P 4,K11 87,LIVE
+F6,10 A,"Plate, block C (O1)",Pop-up LH — K1 contact 30,O1,LIVE
+F7,10 A,"Plate, block C (O1)",Pop-up RH — K2 contact 30,O1,LIVE
+F8,—,"Sill plate, sealed inline","Window branch DRV — holder fitted, no fuse",O1 via L4-P 3 (capped),EMPTY
+F9,—,"Sill plate, sealed inline","Window branch PASS — holder fitted, no fuse",O1 via L4-P 3 (capped),EMPTY
+F10,—,"Plate, block D (O15)","Comfort — position fitted, no fuse",O15,EMPTY
+F11,—,"Plate, block D (O15)","Comfort — position fitted, no fuse",O15,EMPTY
+F12,5 A,"Plate, sealed inline",Interior lamp — L4-M 8,O20,LIVE
+F13,—,"Plate, block A (busbar)","Future module — position labelled, no fuse",Busbar,EMPTY
+F14,—,"Sill plate, sealed inline","Mirror heat — holder fitted, no fuse",(unconnected),EMPTY
+F15,7.5 A,"Plate, sealed inline",Alternator excitation — L1-S1 2,O12,LIVE
+F16,5 A,"Plate, sealed inline",Factory cluster IG feed — DP-CLU 1,O12,LIVE
+F17,30 A,"Engine bay, MIDI holder at the starter B+ stud",Start relay K9 contact 30 (10 AWG),Starter B+ stud,LIVE
+F18,100 A,"Engine bay, MIDI holder at the starter B+ stud",Alternator B+ cable (6 AWG),Starter B+ stud ← alternator,LIVE
+F19,3 A,"Plate, block A (busbar)",Courtesy lamps — glove box (L3-S2 10) + luggage (L4-S 8),Busbar,LIVE

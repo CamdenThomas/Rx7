@@ -1,0 +1,256 @@
+# ELECTRICAL BUILD — INSTALLATION
+
+**This is the whole job, in order.** Do the steps as written, tick them as you go, and never skip a check. Every wire, terminal and value you need is in `WIRE-TABLES.md`; everything you type into the module is in `PMU-CONFIG-SHEET.md`; every drawing is in `diagrams/`. The parts are the shopping list, delivered.
+
+**The one rule that governs everything: the car drives home at the end of every session.** Never start a cutover you cannot finish or reverse before dark.
+
+
+## Contents
+
+0 · Safety and the measurement day · 1 · Bench preparation · 2 · Power backbone · 3 · The plate · 4 · The harness legs · 5 · Install and migrate · 6 · Factory harness out · 7 · Shakedown · A · Label format · B · Tests · C · Migration log
+
+
+---
+
+## 0 · Safety, then the measurement day
+
+### Safety — read once, properly
+
+- **The battery is lithium.** A dropped tool across the terminals does not spark, it welds. Boot or tape both terminals whenever the battery is in the car and you are working. Rings and watches off.
+- **Disconnect the battery before touching the 2 AWG feed, the starter cable, the tank sender wiring or anything in the pop-up buckets.** Every time.
+- **Jack stands, always. Chock the wheels — P is not a parking brake.**
+- **No sparks near the tank.** The fuel sender is inside it. Fire extinguisher within reach, not in the next room.
+- **Engine running** (voltage-drop test, first start): belt, fan and pulleys are turning; sleeves rolled, hair tied, garage door open — a rotary at idle in a closed garage is carbon monoxide.
+- **Pop-up mechanisms move fast.** Fingers out of the buckets when the motors are powered. A stalled motor pulls 15–25 A and gets hot in seconds.
+- **Label the factory end of every migrated circuit** `MIGRATED` with the date. An unlabelled live wire taped back behind a dash is a future fire.
+
+### Prerequisites
+
+- The shopping list has arrived and been counted (its last section).
+- The air-conditioning hardware and its wiring are out of the engine bay (a shop recovers the refrigerant first; nothing in that system is part of this build).
+- A dry, lit workspace for the plate and legs, and a weekend with the car for each of §2, §5 and §6.
+
+### The measurement day — interior apart once, everything measured before anything is cut
+
+Nothing below needs a part in hand except a tape measure, a multimeter, string and a camera. **Cut no plate and no wire until every box on this page is filled.**
+
+- [ ] **M-1** **Dash envelope.** Behind the dash, with the radio / cassette / ashtray / lighter removed: clear **width ____ mm · height ____ mm · depth ____ mm** of the centre-stack cavity, and the region behind and below the glovebox: **width ____ · height ____ · depth ____**. Is there 60 mm clear behind the face where receptacles will sit? ☐ yes ☐ no. Can a 131 × 112 mm module sit flat with 40 mm above its connector edge for the lever? ☐ yes ☐ no. The plate outline is drawn from these numbers.
+- [ ] **M-2** **Routes.** Lay string along the exact path each leg will take, from the dash post to the farthest device, and record: **L1 engine ____ ft · L2 front ____ ft · L3 dash ____ ft · L4 rear ____ ft · sill to each door ____ ft.** Add 15 % and write the result in the length column of every cut-list row for that leg (`WIRE-TABLES.md` §C).
+- [ ] **M-3** **Pop-up motor ohm check** — decides how L2-P1 3 and L2-P2 1 land. Unplug the LH motor E-03 (four wires: WR, YG, R, RY). With the meter on ohms, measure **R → motor case** and **RY → motor case** with the lamp **parked**, then **half-raised** (turn the crank by hand), then **fully raised**. Record all six readings. **If the same winding resistance appears on R in some positions and on RY in others** (never both at once), the motor is single-direction with a cam that alternates the feed: **bridge R and RY together** at the motor and land the bridge on L2-P1 3. **If R and RY each read a winding at every position**, land **R only** on L2-P1 3 and cap RY. Write the decision here: ☐ bridge R + RY ☐ R only. Repeat on E-04 (RH) → L2-P2 1.
+- [ ] **M-4** **Cargo bin.** Set the battery box (with the battery inside, terminals booted) where it will live. Mock the hold-down and backing plate in cardboard. Confirm a straight 2 AWG path to the tunnel and a rear ground stud location on bare structural metal within 3 ft. Sketch it.
+- [ ] **M-5** **Battery posts.** Look at the Ionic: SAE tapered posts ☐ or 3/8 threaded studs ☐. This chooses the lug type for the two battery cables. **Sill space** behind the driver kick panel: a 150 × 100 mm plate fits ☐ yes ☐ no (if not, mount the four sockets and three holders on the kick-panel back instead).
+- [ ] **M-6** **Cluster plug.** Unplug the instrument cluster. Identify these factory wires at the plug and confirm each by continuity to the gauge or lamp it serves: GY (ignition feed) · B (ground) · RL (illumination) · YG (tach) · YW (water temp) · BrY (oil pressure) · Y (fuel) · BR (brake warning) · GR (turn L) · GO (turn R) · RY (high beam). **The charge-lamp wire** is the remaining lamp wire: find the CHARGE lamp on the back of the cluster, follow its second terminal to the plug, and write its colour here: ______. Photograph the plug with every wire labelled.
+- [ ] **M-7** **Photographs.** Every factory connector, splice, ground stud (there are three) and bracket, before it is touched. Name each file by zone and subject. These are the only record once the old harness is out.
+
+---
+
+## 1 · Bench preparation
+
+- [ ] **1.1** **Crimp coupons.** Make three crimps of every terminal-and-wire combination you will use: Deutsch size 16 on 16 AWG and on 14 AWG · size 12 on 12 AWG · size 20 on 16 AWG · SICMA 1.5 mm on 16 AWG · SICMA 2.8 mm on 12 AWG · 2 AWG lug (hydraulic). Use the spare contacts — never a kit contact.
+- [ ] **1.2** **Pull-test every coupon** with the hanging scale, wire in one hand, contact clamped in pliers. Minimum before release: **16 AWG 20 lbf (90 N) · 14 AWG 34 lbf (150 N) · 12 AWG 45 lbf (200 N) · 2 AWG lug: cannot be pulled off by hand.** Adjust the crimper (die, depth) until three in a row pass. A crimper that cannot pass this is returned and replaced.
+- [ ] **1.3** **Deutsch practice.** Insert and remove a contact from a spare housing ten times with the removal tool. Fit and remove the wedgelock. A contact must click and must not back out under a firm tug.
+- [ ] **1.4** **Adhesive heat-shrink practice** until the glue weeps evenly at both ends. Do the same on one lug with heavy-wall shrink and a boot.
+- [ ] **1.5** **Label printer.** Load the 6 mm heat-shrink cartridge, print `TEST / L0-X0`, shrink it on a 16 AWG offcut. Lock the format in Appendix A. Print the plate labels (Appendix A, table 3) now.
+- [ ] **1.6** **Ladder resistor sub-assemblies.** For every switch in `WIRE-TABLES.md` §G, solder the resistors (and the one diode) to 4 in leads, heat-shrink each resistor individually, and label the lead with the switch and position. Measure each finished assembly and write the value on its bag. This is an evening's work that makes the dash leg a plug-in job.
+
+---
+
+## 2 · Power backbone — one weekend, factory harness untouched
+
+The car is better at the end of this weekend than at the start, and it drives home. Drawing: `diagrams/01-power-backbone.svg`. Cables: `WIRE-TABLES.md` §E.
+
+- [ ] **2.1** Disconnect the factory battery (negative first). Boot the Ionic's terminals.
+- [ ] **2.2** Fabricate the backing plate from the M-4 mock-up; mount the battery box through the floor with the plate underneath, M8 grade-8 hardware, nyloc nuts, fender washers. Never bolt through sheet metal alone.
+- [ ] **2.3** Fit the battery and the hold-down. Push it hard in every direction — it must not move.
+- [ ] **2.4** Mount the master disconnect within reach from the hatch. Mount the Class-T block **as close to the positive post as physically possible** — inches, not feet.
+- [ ] **2.5** Rear ground stud: grind to bare metal, 3/8 stainless stud, star washer, torque, then cavity wax over the joint.
+- [ ] **2.6** Cut and hydraulically crimp: battery + → disconnect (2 AWG) · disconnect → Class-T (2 AWG) · battery − → rear stud (2 AWG). Heavy-wall adhesive shrink and a boot on every lug.
+- [ ] **2.7** Fit the MRBF holder on the positive post; crimp the starter run (1/0 or 2 AWG) to it. Route it forward under the car or through the tunnel, loomed, P-clipped every 12 in, grommeted at every pass-through, to the starter B+ stud. Do not connect the fuse yet.
+- [ ] **2.8** Run the 2 AWG PMU feed from the Class-T forward through the tunnel to the dash. **Put the pull string in beside it before the console goes back.** Loom the full length, grommet every pass-through.
+- [ ] **2.9** Terminate the forward end on the insulated distribution post, mounted temporarily where the plate will go. This becomes the busbar feed in §5.
+- [ ] **2.10** Front star stud on the radiator support: bare metal, stud, star washer, torque, wax. 10 AWG BLK from the stud to a second bare-metal bolt on the body.
+- [ ] **2.11** Engine block → chassis strap, 2 AWG BLK, ≤ 24 in, bare metal both ends. Fit the two MIDI holders (F17, F18) beside the starter stud; connect the alternator B+ (6 AWG) through F18 to the stud. Leave F17 unwired until §5.
+- [ ] **2.12** Move the factory harness's main feed (the fusible-link side) onto the distribution post, and its main ground onto the front star. The factory harness now runs on the new backbone.
+- [ ] **2.13** Fit the Class-T fuse and the MRBF. Reconnect. Pair the Ionic app; record voltage ____ V, state of charge ____ %, temperature ____ °C.
+- [ ] **2.14** **Start the car.** Charging voltage at the battery with the engine at 2,000 rpm: ____ V (expect 13.8–14.6). If it does not charge, stop here — the alternator or its excitation is the problem and §5 will fix the excitation.
+- [ ] **2.15** **Voltage-drop test while cranking** (meter on DC volts, an assistant on the key): battery + post to starter stud ____ V · battery − post to engine block ____ V. Each under 0.5 V. Higher means a bad crimp or a bad ground — fix it now.
+- [ ] **2.16** **Drive it.** It should be identical to before, on a new backbone.
+
+---
+
+## 3 · The plate — bench
+
+Drawings: `diagrams/02-plate-schematic.svg` (what connects to what) and `diagrams/03-plate-layout.svg` (where it sits). Tables: `WIRE-TABLES.md` §A (the 39 PMU cavities) and §B (every plate conductor). The 39-way connector is terminated **once** and never reopened — every check in this section is the last cheap chance.
+
+- [ ] **3.1** Draw the plate outline 1:1 on paper from M-1. Place every item from the layout drawing as a paper cut-out; confirm the lever arc, 60 mm behind every receptacle, and that blocks A and B can be reached with the plate fitted. Mock it in cardboard in the dash. Only then cut the 3 mm aluminium, deburr, drill, and have it anodised or powder-coated. **Not bare.**
+- [ ] **3.2** Mount: the PMU on three M6 stand-offs · the always-hot busbar beside the stud · the ground bus beside pin 25 · blocks A–D · the three sealed inline holders · ten relay sockets · the 8-position barrier strip · a small perfboard for the two sense stages and the two bias resistors. Fit every 1027-003-1200 clip for the receptacles along the edge(s), grouped by leg.
+- [ ] **3.3** Apply the plate labels (Appendix A, table 3) beside every relay socket and fuse position, empty ones included.
+- [ ] **3.4** Build the wake network on the strip: five 1N5819 diodes, band (cathode) toward the common rail; the rail to pin 7; 10 kΩ from the rail to the ground bus. Build the two sense stages on the perfboard exactly as the schematic: per stage — 100 kΩ node→base · 1 MΩ node→F3 rail · emitter→ground bus · 100 kΩ F3 rail→collector · collector→its strip input. Solder the two 100 kΩ bias resistors from pin 15 to pins 35 and 22.
+- [ ] **3.5** **Terminate the 39-way connector.** Work in cavity order from `WIRE-TABLES.md` §A, ticking each row: strip, crimp the SICMA terminal (large 2.8 mm for pins 1 2 12 13 14 25 26 27 28 38 39, 2.8 mm for pin 15, 1.5 mm for the rest), tug, insert until it clicks, tug again. Leave 18 in of wire on every pin. Mark cavity 1 on the housing with the paint pen before you start.
+- [ ] **3.6** Fit the connector's secondary lock. Try to pull every wire — none may move. Plug the connector onto the PMU and latch the lever once, fully, to prove the arc is clear.
+- [ ] **3.7** Run every conductor in `WIRE-TABLES.md` §B: busbar → stud (4 AWG) · busbar → block A and K11 · K11 → block B · O1 → block C and the K1/K2 feeds · O15 → block D · the O12 taps through F15 and F16 · the O20 tap through F12 · the O10 taps · K12 · the wake strip inputs · the post splices · pin 25 → ground bus. Every splice inside the box is a sealed crimp butt splice, never a twist.
+- [ ] **3.8** Land every leg wire from the PMU on its receptacle pin contact (box side = pin housing `04-…P`), per §A's `Goes to` column, and fit each receptacle into its clip. Fit the wedgelock. Fit dust caps on DP-ICU, DP-DCU, DP-KEY.
+- [ ] **3.9** **Continuity test every path** with the meter (Appendix B, test 1): for each of the 39 cavities, probe the SICMA terminal from the connector face and confirm it reaches every receptacle cavity, relay terminal or strip position §A and §B say it does — and **nothing else**. Tick each row.
+- [ ] **3.10** **Isolation test** (Appendix B, test 2): with nothing plugged in, resistance between every adjacent pair of power cavities on the 39-way and between each power cavity and the ground bus must read open (> 1 MΩ). Any reading means a stray strand — find it now.
+- [ ] **3.11** Fit the four relays (K1 K2 K11 K12) and the fuses for blocks A–D and the three inlines per `WIRE-TABLES.md` §H. Leave the empty positions empty and labelled.
+- [ ] **3.12** Label every plate wire at both ends and photograph the finished plate from every angle. Bag it.
+
+---
+
+## 4 · The harness legs — bench, then the car
+
+Build order: **L3 dash → L2 front → L4 rear + sill → L1 engine.** Every leg's cut list is `WIRE-TABLES.md` §C; its device ends are §G; its grounds are §D. Its drawing is `diagrams/1x-…svg`.
+
+### The device-end rule
+
+Wherever a device still has its factory plug or socket, **keep it**: cut it from the old harness with 150 mm (6 in) of factory lead, and join each factory lead to its new wire with a sealed heat-shrink butt splice of the right size. Where a device has a stud or blade, fit a heat-shrink ring or spade terminal. The factory two-letter colour in §G names which lead gets which new wire. Nothing obsolete has to be sourced.
+
+### For each leg, in this order
+
+- [ ] **4.1** Lay the route out full-scale on the bench from the M-2 length. Cut every wire in that leg's cut list to its length **plus a 150 mm service loop**, both ends labelled at once (Appendix A). Cut the CAPPED wires exactly like the LIVE ones.
+- [ ] **4.2** Strip, crimp the socket contact (leg side = socket housing `06-…S`), tug, insert into its cavity number until it clicks, tug again. Do the housing's cavities in order. Fit the wedgelock; tug every wire once more.
+- [ ] **4.3** Fit the sealing plugs in every PLUG cavity (engine leg only).
+- [ ] **4.4** Terminate the device ends per §G: pigtail joins, ring terminals, the ladder sub-assemblies from 1.6 at each switch, the 47 kΩ baselines at the L2-S connector, the 120 Ω terminator across L1-S1 9/10 under its cap. Make the splices named in §G (headlight branches at the nose, tail bus at the hatch, park/marker bus, horns, coil feed) with sealed butt splices, 14 AWG branches off a 12 AWG trunk where §G says so.
+- [ ] **4.5** Run every ground wire in §D for that zone to its star node and terminate it with a ring.
+- [ ] **4.6** **Continuity test end to end** (Appendix B, test 1): every leg-side cavity to its device terminal, and every ground ring to the node. **Ladder check** (Appendix B, test 3): with the switch connected, measure ohms from the leg-side cavity to ground in every switch position and compare with the table in `PMU-CONFIG-SHEET.md` §1 — the resistance column, not the ADC column. Every position must match within 2 %.
+- [ ] **4.7** Tug-test every crimp. Cap every CAPPED far end: fold the stripped-free end back, adhesive shrink over it, label `CAPPED`.
+- [ ] **4.8** Bundle with cloth tape or loom every 150 mm — **do not final-wrap** until shakedown. Bag and tag the leg.
+
+### Leg-specific notes
+
+- **L3 dash:** the wiper stalk's WASH contact gets two things on one terminal — the 1.8 kΩ + diode ladder leg (band toward the contact) and the plain wire to L3-S2 9. The horn pad's 8.2 kΩ and both wink NO poles' resistors (18 kΩ, 33 kΩ) all join onto the single L3-S1 11 wire behind the dash. Each wink switch's common goes to dash ground and its NC pole to its own L3-S1 wire.
+- **L2 front:** land the pop-up run feeds per the M-3 decision. The 47 kΩ baseline resistors sit in the L2-S plug's back, from cavities 1 and 2 to a ground ring on the front star. The wiper motor's park terminal L gets the 12 kΩ; its LB terminal is capped. Horns get a ground ring under a mounting bolt.
+- **L4 rear + sill:** the fuel pump's return is its own 12 AWG to the rear stud — never shared. Build the sill plate (D1/D2 receptacles, ground stud, four empty sockets, three empty holders) with this leg; the door jamb switches' 33 kΩ and 8.2 kΩ join the L4-S 2 wire at the sill. Every D1/D2 conductor runs through the door boot and is capped inside the door.
+- **L1 engine:** the tach wire is the shielded cable — shield drain to the plate's ground bus at that end only, cut and insulated at the coil end. K9 mounts on the inner fender in its weatherproof socket; its 10 AWG contact wires come from F17 and go to the starter S terminal. The alternator plug: BW to L1-S1 2, WB to L1-S2 8. Nothing capped in this bay except the three LS reserves and the CAN terminator.
+- **DP-CLU:** the factory cluster plug, kept as a pigtail per M-6, lands on the DT-12 per the cluster table in `WIRE-TABLES.md` §C.
+
+---
+
+## 5 · Install and migrate — the car is the bench
+
+The module is configured mounted in the car, powered from the new backbone with every output disabled, through the laptop port. Then circuits move from the factory harness to the new one **one at a time**, in the order in Appendix C, and each one is proven before the next. The factory harness stays live throughout.
+
+- [ ] **5.1** Mount the plate. Verify the lever and every receptacle can be reached with the plate fitted.
+- [ ] **5.2** Connect the 2 AWG feed to the busbar lug (through a 5 A inline fuse **for the first power-up**) and the ground bus to the dash star. **No leg plugged in.** Remove the Class-T fuse from the block; the 5 A holder takes its place for this step.
+- [ ] **5.3** Fit DP-DIAG and plug in the laptop over CAN1 (120 Ω in the plug, 120 Ω at the PMU pins). Power up. **Every output disabled.** No smoke, module visible in the client. Then swap the 5 A for the Class-T.
+- [ ] **5.4** Enter `PMU-CONFIG-SHEET.md` in its entry order — names, decode tables, expressions, rules, wake, CAN — and save it as `RevA-01`. Do not enter limits yet.
+- [ ] **5.5** Plug in **L3 dash** and DP-CLU. With every output still disabled, work every switch and watch the inputs: key OFF/ACC/RUN/START, light switch, dimmer, pass, turn, hazard, wiper positions, wash, brake pedal, horn, both winks, doors. **Write the reading you see into the window column of each decode table**, then enter the tables. Every state must land in its window; anything between windows is a wiring fault to fix now.
+- [ ] **5.6** Enter the enable-at limits (`PMU-CONFIG-SHEET.md` §5). Still nothing enabled.
+- [ ] **5.7** Install L2, L4 + sill and L1 physically — routed, P-clipped, grommeted, connected at both ends — with their loads still on the factory harness. Fit F17 and wire K9. Confirm the car starts and drives on the factory harness with everything in place.
+- [ ] **5.8** **Migrate**, in Appendix C's order, one circuit per sitting, with this loop for every row: (1) unplug the load at its factory connector, label the factory end `MIGRATED` + date and tape it back; (2) connect the load to the new harness; (3) enable that one output at its enable-at value; (4) operate it — read the live current in the client, that is the real measurement; (5) voltage at the device under load must be within 0.5 V of the busbar; (6) fill in the row. The first circuit is the interior lamp; on it, also set the limit to 2 A and short the output deliberately to watch the soft fuse trip and retry.
+- [ ] **5.9** Set every lamp channel's inrush window before enabling it (a cold filament pulls 10× for a few milliseconds; turn signals are the case that bites). Confirm the flasher rate, the hazard override, the theatre fade.
+- [ ] **5.10** Wipers: LOW, HIGH, INT, park at OFF from both speeds, wash with the pump running only while held. Headlights: PARK, HEAD, dimmer, pass; pop-ups raise on HEAD, lower off HEAD, each wink alone with the key out. Crank interlock in P and N only, and never in R or D.
+- [ ] **5.11** **Before you stop, every single day:** the car starts and drives. Sign the daily line in Appendix C.
+- [ ] **5.12** When every row is ticked: full function check of every circuit in one pass, key out, key ACC, key RUN, engine running. Save the config as a new revision.
+
+---
+
+## 6 · Factory harness out
+
+- [ ] **6.1** Every Appendix C row ticked, every factory end labelled `MIGRATED`.
+- [ ] **6.2** Drive a week with the factory harness disconnected at both ends but still in the car.
+- [ ] **6.3** Pull it out **intact** — do not cut it. Remove the factory fuse box, relays and control unit with it.
+- [ ] **6.4** Board it and keep it until after shakedown.
+
+---
+
+## 7 · Shakedown
+
+- [ ] **7.1** Cold start on a cold morning with logging on; watch the battery heater in the app and the voltage through crank.
+- [ ] **7.2** Night drive: park, head, high, pass, pop-ups, winks, every lamp, illumination dimming, cluster indicators.
+- [ ] **7.3** Wet drive: wipers in every mode, park, wash.
+- [ ] **7.4** A long drive with logging. Review the log for every channel: peak current against its limit.
+- [ ] **7.5** Tighten every limit that was at its channel cap to its measured class value (§3 of the design's rule: motors stall × 1.1, lamps × 1.35, resistive cold × 1.2, electronics × 1.5). Save as a new revision.
+- [ ] **7.6** Re-torque every lug and stud after the first heat cycles. Re-check the voltage drop on the main feed and ground.
+- [ ] **7.7** **Now** final-wrap the looms, tie down, seal every grommet.
+- [ ] **7.8** Back up the final config, print `WIRE-TABLES.md` §A and §C, and put them in the car with spare Deutsch contacts, the removal tool and five blade fuses of each value.
+
+---
+
+## A · Label format
+
+Every wire is labelled at **both ends** with printed heat-shrink sleeves, never tape or marker. Both ends carry the same pair, read in opposite order, so any wire picked up anywhere tells you where it came from and where it goes.
+
+| Label | Reads as |
+|---|---|
+| `O8 / L2-M-1` | PMU output O8 → leg 2 medium housing, cavity 1 |
+| `L2-M-1 / WIPER-LW` | leg 2 medium cavity 1 → wiper motor terminal LW |
+| `K1-87 / L2-P1-3` | relay K1 terminal 87 → front power housing 1, cavity 3 |
+| `L4-M-3 / CAPPED` | a capped far end |
+
+Every housing gets its code on the shell, both halves: `L1-P`, `L3-S2`, `D1`, `DP-CLU`.
+
+
+**Plate labels** — on the plate itself beside the position, not on the component:
+
+| Position | Label |
+|---|---|
+| K1 | POPUP-L |
+| K2 | POPUP-R |
+| K3, K4 | SPARE |
+| K11 | AUDIO-MASTER |
+| K12 | WASHER |
+| K5–K8 (sill) | WIN-D-UP · WIN-D-DN · WIN-P-UP · WIN-P-DN |
+| Block A | BUSBAR: F2 DIAG 2A · F3 SWITCH 5A · F19 COURTESY 3A · F13 — |
+| Block B | K11: F1 HEAD-UNIT 15A · F5 AMP 30A · — · — |
+| Block C | O1: F6 POPUP-L 10A · F7 POPUP-R 10A · — · — |
+| Block D | O15: F10 — · F11 — · — · — |
+| Inlines | F12 INTERIOR 5A · F15 ALT-EXCITE 7.5A · F16 CLUSTER 5A |
+| Engine bay | F17 START-RLY 30A · F18 ALTERNATOR 100A |
+| Sill | F8 — · F9 — · F14 — |
+
+## B · Tests
+
+**Test 1 — continuity.** Meter on the beeper. Probe one end, touch every place the wire is supposed to reach: each must beep. Then touch three places it must not reach (a neighbouring cavity, the ground bus, the busbar): none may beep.
+
+**Test 2 — isolation.** Meter on ohms, highest range. Between every pair of adjacent power cavities on the 39-way, and between each power cavity and the ground bus: open (`OL` or > 1 MΩ).
+
+**Test 3 — ladder.** Switch wired, leg unplugged from the plate, meter on ohms from the leg-side cavity to the zone ground. Move the switch through every position and read the resistance; compare with the resistance column of the matching table in `PMU-CONFIG-SHEET.md` §1. Open in a position that should read a value = a broken resistor lead; near zero = a short at the switch.
+
+**Test 4 — voltage drop.** Load running, meter on DC volts between the busbar and the device's + terminal: under 0.5 V. Between the device's − terminal and the busbar's ground: under 0.3 V.
+
+
+## C · Migration log
+
+Least to most consequential, so a bad day never strands the car. Fill it in the car, at the time.
+
+| # | Circuit | Ch | Enable at (A) | Date | Measured A | Limit set | V-drop | Factory end labelled | ✔ |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | Interior lamp | O20 | 7.0 cap |  |  |  |  | ☐ | ☐ |
+| 2 | USB-C + head unit | O10 | 15.0 cap |  |  |  |  | ☐ | ☐ |
+| 3 | Cluster feed + illumination | F16 / O20 | — |  |  |  |  | ☐ | ☐ |
+| 4 | Horn | O11 | 15.0 cap |  |  |  |  | ☐ | ☐ |
+| 5 | Wipers LOW + park | O8 | 15.0 cap |  |  |  |  | ☐ | ☐ |
+| 6 | Wipers HIGH | O9 | 15.0 cap |  |  |  |  | ☐ | ☐ |
+| 7 | Washer | K12 | — |  |  |  |  | ☐ | ☐ |
+| 8 | Tail · park · markers | O6 | 7.5 meas |  |  |  |  | ☐ | ☐ |
+| 9 | Brake lamps | O7 | 9.5 meas |  |  |  |  | ☐ | ☐ |
+| 10 | Turn LEFT | O17 | 4.5 meas |  |  |  |  | ☐ | ☐ |
+| 11 | Turn RIGHT | O18 | 4.5 meas |  |  |  |  | ☐ | ☐ |
+| 12 | Reverse | O19 | 7.0 cap |  |  |  |  | ☐ | ☐ |
+| 13 | Headlight LOW | O2 | 25.0 cap |  |  |  |  | ☐ | ☐ |
+| 14 | Headlight HIGH | O3 | 25.0 cap |  |  |  |  | ☐ | ☐ |
+| 15 | Pop-up LEFT | O1 / K1 | 25.0 cap |  |  |  |  | ☐ | ☐ |
+| 16 | Pop-up RIGHT | O1 / K2 | 25.0 cap |  |  |  |  | ☐ | ☐ |
+| 17 | Blower | O16 | 25.0 cap |  |  |  |  | ☐ | ☐ |
+| 18 | Courtesy lamps | F19 | — |  |  |  |  | ☐ | ☐ |
+| 19 | Amplifier | F5 | — |  |  |  |  | ☐ | ☐ |
+| 20 | Fuel pump + sender | O5 / A7 | 4.0 meas |  |  |  |  | ☐ | ☐ |
+| 21 | Ignition coils + alternator excitation | O12 / F15 | 25.0 cap |  |  |  |  | ☐ | ☐ |
+| 22 | Charge lamp, brake lamp, gauges | DP-CLU | — |  |  |  |  | ☐ | ☐ |
+| 23 | **Start** | O21 / K9 | 7.0 cap |  |  |  |  | ☐ | ☐ |
+
+**Daily sign-off**
+
+| Date | Circuits done | Car starts and drives? | Notes |
+|---|---|---|---|
+|  |  | ☐ |  |
+|  |  | ☐ |  |
+|  |  | ☐ |  |
+|  |  | ☐ |  |
+|  |  | ☐ |  |
+|  |  | ☐ |  |
+|  |  | ☐ |  |
+|  |  | ☐ |  |
+
+**Gate before §6:** every row ticked · full function check passed · driven a week with the factory harness disconnected.

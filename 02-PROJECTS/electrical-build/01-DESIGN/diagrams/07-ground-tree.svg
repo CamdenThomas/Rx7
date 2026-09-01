@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="560" viewBox="0 0 1500 560" font-family="ui-monospace, Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="11">
+<style>
+.t{fill:#1b1b1b}.d{fill:#5d6d7e}.h{font-weight:700;fill:#1b1b1b}.w{fill:#fff}
+.box{fill:#fff;stroke:#1b1b1b;stroke-width:1.2}
+.zone{fill:#f4f6f6;stroke:#5d6d7e;stroke-width:1;stroke-dasharray:4 3}
+.hdr{fill:#1b1b1b}
+.pwr{stroke:#c0392b;stroke-width:3;fill:none}
+.pwr2{stroke:#c0392b;stroke-width:1.8;fill:none}
+.sig{stroke:#1b1b1b;stroke-width:1.3;fill:none}
+.cap{stroke:#7f8c8d;stroke-width:1.2;fill:none;stroke-dasharray:4 3}
+.gnd{stroke:#7f8c8d;stroke-width:1.4;fill:none}
+.can{stroke:#1f77b4;stroke-width:1.4;fill:none;stroke-dasharray:6 3}
+.blu{stroke:#1f77b4;stroke-width:1.3;fill:none}
+.org{stroke:#e67e22;stroke-width:1.6;fill:none}
+.vio{stroke:#8e44ad;stroke-width:1.3;fill:none}
+.gry{stroke:#7f8c8d;stroke-width:1.2;fill:none}
+.pnk{stroke:#e84393;stroke-width:1.2;fill:none}
+.red{stroke:#c0392b;stroke-width:1.6;fill:none}
+.s{font-size:10;fill:#5d6d7e}.b{fill:#1f77b4}.r{fill:#c0392b}
+.mono{font-family:ui-monospace, Menlo, Consolas, 'DejaVu Sans Mono', monospace}
+</style>
+<rect width="1500" height="560" fill="#fbfbf9"/>
+<text x="20" y="30" font-size="18" class="h">Ground tree</text>
+<text x="20" y="48" class="d">One star node per zone · each node straight to bare chassis · the only grounds that cross a connector are the box-adjacent drops</text>
+<rect x="30.0" y="90.0" width="340.0" height="120.0" rx="0" class="box" />
+<text x="38.0" y="106.0" class="h" >ENGINE BLOCK</text>
+<text x="38.0" y="120.0" class="t" >Coils, igniters, senders: case / thread</text>
+<text x="38.0" y="133.0" class="t" >K9 85 · inhibitor BW + RW · fluid switch B</text>
+<text x="38.0" y="146.0" class="t" >Block → chassis strap, 2 AWG (cranking)</text>
+<path d="M 200.0 210.0 L 200.0 290.0" class="gnd"/>
+<line x1="200.0" y1="290.0" x2="200.0" y2="298.0" class="gnd"/>
+<line x1="192.0" y1="298.0" x2="208.0" y2="298.0" class="gnd"/>
+<line x1="195.0" y1="302.0" x2="205.0" y2="302.0" class="gnd"/>
+<line x1="198.0" y1="306.0" x2="202.0" y2="306.0" class="gnd"/>
+<rect x="390.0" y="90.0" width="340.0" height="120.0" rx="0" class="box" />
+<text x="398.0" y="106.0" class="h" >FRONT STAR — radiator support stud</text>
+<text x="398.0" y="120.0" class="t" >Headlights ×2 (14) · pop-up buckets ×2 (14)</text>
+<text x="398.0" y="133.0" class="t" >Combo lamps ×2, markers ×2 (16) · horns ×2 (14)</text>
+<text x="398.0" y="146.0" class="t" >Wiper motor (14) · washer (16) · 47 kΩ baselines</text>
+<text x="398.0" y="159.0" class="t" >Stud → chassis 10 AWG</text>
+<path d="M 560.0 210.0 L 560.0 290.0" class="gnd"/>
+<line x1="560.0" y1="290.0" x2="560.0" y2="298.0" class="gnd"/>
+<line x1="552.0" y1="298.0" x2="568.0" y2="298.0" class="gnd"/>
+<line x1="555.0" y1="302.0" x2="565.0" y2="302.0" class="gnd"/>
+<line x1="558.0" y1="306.0" x2="562.0" y2="306.0" class="gnd"/>
+<rect x="750.0" y="90.0" width="340.0" height="120.0" rx="0" class="box" />
+<text x="758.0" y="106.0" class="h" >DASH STAR — the plate ground bus</text>
+<text x="758.0" y="120.0" class="t" >PMU pin 25 (10 AWG ≤ 6 in) · K1 / K2 87a · K11 85</text>
+<text x="758.0" y="133.0" class="t" >Sense-stage emitters · bleed · tach shield</text>
+<text x="758.0" y="146.0" class="t" >DP-CLU 2 · DP-DIAG 4 · capped drops</text>
+<text x="758.0" y="159.0" class="t" >Blower switch (12) · head unit (14) · USB-C · lamps</text>
+<text x="758.0" y="172.0" class="t" >Switch returns (16) · bus → chassis 10 AWG</text>
+<path d="M 920.0 210.0 L 920.0 290.0" class="gnd"/>
+<line x1="920.0" y1="290.0" x2="920.0" y2="298.0" class="gnd"/>
+<line x1="912.0" y1="298.0" x2="928.0" y2="298.0" class="gnd"/>
+<line x1="915.0" y1="302.0" x2="925.0" y2="302.0" class="gnd"/>
+<line x1="918.0" y1="306.0" x2="922.0" y2="306.0" class="gnd"/>
+<rect x="1110.0" y="90.0" width="340.0" height="120.0" rx="0" class="box" />
+<text x="1118.0" y="106.0" class="h" >REAR STAR — cargo bin stud</text>
+<text x="1118.0" y="120.0" class="t" >Battery − 2 AWG</text>
+<text x="1118.0" y="133.0" class="t" >Defog grid (12) · fuel pump OWN 12 AWG · amp (12)</text>
+<text x="1118.0" y="146.0" class="t" >Fuel sender (16) · combo lamps ×2 · licence · markers</text>
+<text x="1118.0" y="159.0" class="t" >Interior lamp (roof rail) · luggage lamp</text>
+<text x="1118.0" y="172.0" class="t" >Stud → chassis 10 AWG</text>
+<path d="M 1280.0 210.0 L 1280.0 290.0" class="gnd"/>
+<line x1="1280.0" y1="290.0" x2="1280.0" y2="298.0" class="gnd"/>
+<line x1="1272.0" y1="298.0" x2="1288.0" y2="298.0" class="gnd"/>
+<line x1="1275.0" y1="302.0" x2="1285.0" y2="302.0" class="gnd"/>
+<line x1="1278.0" y1="306.0" x2="1282.0" y2="306.0" class="gnd"/>
+<rect x="30.0" y="360.0" width="340.0" height="70.0" rx="0" class="box" />
+<text x="38.0" y="376.0" class="h" >SILL STUD</text>
+<text x="38.0" y="390.0" class="t" >D1 8 / D2 8 (capped)</text>
+<text x="38.0" y="403.0" class="t" >Jamb switches ground through their bodies</text>
+<text x="38.0" y="416.0" class="t" >Stud → chassis 10 AWG</text>
+<path d="M 200.0 430.0 L 200.0 480.0" class="gnd"/>
+<line x1="200.0" y1="480.0" x2="200.0" y2="488.0" class="gnd"/>
+<line x1="192.0" y1="488.0" x2="208.0" y2="488.0" class="gnd"/>
+<line x1="195.0" y1="492.0" x2="205.0" y2="492.0" class="gnd"/>
+<line x1="198.0" y1="496.0" x2="202.0" y2="496.0" class="gnd"/>
+<text x="400.0" y="380.0" class="d" >Never: a ground through a door boot · a ground shared between the fuel pump and a lamp · a ground returned through a leg connector to the plate.</text>
+<text x="400.0" y="398.0" class="d" >Every stud: grind to bare metal · star washer · torque · cavity wax over the finished joint.</text>
+</svg>
