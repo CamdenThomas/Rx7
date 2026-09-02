@@ -1,0 +1,17 @@
+id,rating,location,feeds,fed_from,state
+Class-T,150 A,"Cargo bin, at battery +",The whole PMU system — 2 AWG to the dash post,Battery + (through the master disconnect),LIVE
+MRBF,200 A,"Cargo bin, on battery +",Starter main cable (1/0),Battery +,LIVE
+F1,15 A,"Dash node, block B (K11)",Head unit memory / constant — L3-M 2,K11 87,LIVE
+F2,2 A,"Dash node, block A (busbar)",Diagnostic port +12 V — DP-DIAG 3,Busbar,LIVE
+F3,5 A,"Dash node, block A (busbar)","Switch supply — ignition switch, light switch, wake stages — L3-S2 2",Busbar,LIVE
+F5,30 A,"Dash node, block B (K11)",Amplifier constant — L4-P 4,K11 87,LIVE
+F8,—,"Sill node — position labelled, no holder this build","Window branch DRV — the luxury package fits the holder",O1 via L4-P 3 (capped),EMPTY
+F9,—,"Sill node — position labelled, no holder this build","Window branch PASS — the luxury package fits the holder",O1 via L4-P 3 (capped),EMPTY
+F12,5 A,"Dash node, sealed inline",Interior lamp — L4-M 8,O20,LIVE
+F13,—,"Dash node, block A (busbar)","Future module — position labelled, no fuse",Busbar,EMPTY
+F14,—,"Sill node — position labelled, no holder this build","Mirror heat — the luxury package fits the holder",(unconnected),EMPTY
+F15,7.5 A,"Dash node, sealed inline",Alternator excitation — L1-S1 2,O12,LIVE
+F16,5 A,"Dash node, sealed inline",Factory cluster IG feed — DP-CLU 1,O12,LIVE
+F17,30 A,"Engine bay, MIDI holder at the starter B+ stud",Start relay K9 contact 30 (10 AWG),Starter B+ stud,LIVE
+F18,100 A,"Engine bay, MIDI holder at the starter B+ stud",Alternator B+ cable (6 AWG),Starter B+ stud ← alternator,LIVE
+F19,3 A,"Dash node, block A (busbar)",Courtesy lamps — glove box (L3-S2 10) + luggage (L4-S 8),Busbar,LIVE

@@ -26,10 +26,10 @@
 <path d="M 40.0 90.0 L 40.0 130.0 L 700.0 130.0" class="pwr"/>
 <rect x="186.0" y="124.0" width="28.0" height="12.0" rx="2" class="box" />
 <line x1="186.0" y1="130.0" x2="214.0" y2="130.0" class="sig"/>
-<text x="200.0" y="121.0" class="s" text-anchor="middle">F6 10 A</text>
+<text x="200.0" y="121.0" class="s" text-anchor="middle">O1 splice</text>
 <rect x="506.0" y="124.0" width="28.0" height="12.0" rx="2" class="box" />
 <line x1="506.0" y1="130.0" x2="534.0" y2="130.0" class="sig"/>
-<text x="520.0" y="121.0" class="s" text-anchor="middle">F7 10 A</text>
+<text x="520.0" y="121.0" class="s" text-anchor="middle">O1 splice</text>
 <path d="M 200.0 136.0 L 200.0 180.0" class="pwr2"/>
 <rect x="174.0" y="180.0" width="52.0" height="44.0" rx="3" class="box" />
 <text x="200.0" y="194.0" class="h" text-anchor="middle">K1</text>
@@ -42,12 +42,12 @@
 <rect x="300.0" y="195.0" width="130.0" height="30.0" rx="0" class="box" />
 <text x="308.0" y="211.0" class="h" >E-03 motor LH</text>
 <text x="232.0" y="206.0" class="s" >87</text>
-<text x="300.0" y="240.0" class="s" >via L2-P1 3</text>
+<text x="300.0" y="240.0" class="s" >via L2-P 3</text>
 <path d="M 546.0 210.0 L 620.0 210.0" class="pwr2"/>
 <rect x="620.0" y="195.0" width="130.0" height="30.0" rx="0" class="box" />
 <text x="628.0" y="211.0" class="h" >E-04 motor RH</text>
 <text x="552.0" y="206.0" class="s" >87</text>
-<text x="620.0" y="240.0" class="s" >via L2-P2 1</text>
+<text x="620.0" y="240.0" class="s" >via L2-P 4</text>
 <path d="M 174.0 210.0 L 140.0 210.0" class="gnd"/>
 <line x1="140.0" y1="210.0" x2="140.0" y2="218.0" class="gnd"/>
 <line x1="132.0" y1="218.0" x2="148.0" y2="218.0" class="gnd"/>

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1102" viewBox="0 0 1500 1102" font-family="ui-monospace, Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="11">
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1106" viewBox="0 0 1500 1106" font-family="ui-monospace, Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="11">
 <style>
 .t{fill:#1b1b1b}.d{fill:#5d6d7e}.h{font-weight:700;fill:#1b1b1b}.w{fill:#fff}
 .box{fill:#fff;stroke:#1b1b1b;stroke-width:1.2}
@@ -19,10 +19,10 @@
 .s{font-size:10;fill:#5d6d7e}.b{fill:#1f77b4}.r{fill:#c0392b}
 .mono{font-family:ui-monospace, Menlo, Consolas, 'DejaVu Sans Mono', monospace}
 </style>
-<rect width="1500" height="1102" fill="#fbfbf9"/>
+<rect width="1500" height="1106" fill="#fbfbf9"/>
 <text x="20" y="30" font-size="18" class="h">L3 · DASH leg</text>
-<text x="20" y="48" class="d">Dash structure boundary · dash star ground (the plate GND bus)</text>
-<text x="20.0" y="72.0" class="h" >BOX SIDE — comes from</text>
+<text x="20" y="48" class="d">Dash structure boundary · dash star ground (the dash node GND bus)</text>
+<text x="20.0" y="72.0" class="h" >DASH-NODE SIDE — comes from</text>
 <text x="300.0" y="72.0" class="h" >CONNECTOR — cavity · circuit · wire · state</text>
 <text x="900.0" y="72.0" class="h" >DEVICE END — lands on</text>
 <rect x="300.0" y="84.0" width="560.0" height="26.0" rx="3" class="hdr" />
@@ -31,12 +31,12 @@
 <rect x="300.0" y="110.0" width="560.0" height="22.0" rx="0" class="box" />
 <text x="308.0" y="125.0" class="h" >1</text>
 <text x="330.0" y="125.0" class="t" >Blower motor +</text>
-<text x="700.0" y="125.0" class="b" >12 RED/PNK</text>
+<text x="700.0" y="125.0" class="b" >12 RED</text>
 <text x="800.0" y="125.0" class="t" >LIVE</text>
 <rect x="300.0" y="132.0" width="560.0" height="22.0" rx="0" class="zone" />
 <text x="308.0" y="147.0" class="h" >2</text>
 <text x="330.0" y="147.0" class="t" >Comfort bus</text>
-<text x="700.0" y="147.0" class="b" >12 RED/VIO</text>
+<text x="700.0" y="147.0" class="b" >12 RED</text>
 <text x="800.0" y="147.0" class="d" >CAPPED</text>
 <rect x="300.0" y="172.0" width="560.0" height="26.0" rx="3" class="hdr" />
 <text x="308.0" y="189.0" class="w" font-weight="700">L3-M</text>
@@ -44,7 +44,7 @@
 <rect x="300.0" y="198.0" width="560.0" height="22.0" rx="0" class="box" />
 <text x="308.0" y="213.0" class="h" >1</text>
 <text x="330.0" y="213.0" class="t" >Accessory — head unit ACC + USB-C</text>
-<text x="700.0" y="213.0" class="b" >14 ORN/YEL</text>
+<text x="700.0" y="213.0" class="b" >14 ORN</text>
 <text x="800.0" y="213.0" class="t" >LIVE</text>
 <rect x="300.0" y="220.0" width="560.0" height="22.0" rx="0" class="box" />
 <text x="308.0" y="235.0" class="h" >2</text>
@@ -57,62 +57,61 @@
 <rect x="300.0" y="286.0" width="560.0" height="22.0" rx="0" class="box" />
 <text x="308.0" y="301.0" class="h" >1</text>
 <text x="330.0" y="301.0" class="t" >Key ladder</text>
-<text x="700.0" y="301.0" class="b" >16 GRY/RED</text>
+<text x="700.0" y="301.0" class="b" >16 GRY</text>
 <text x="800.0" y="301.0" class="t" >LIVE</text>
 <rect x="300.0" y="308.0" width="560.0" height="22.0" rx="0" class="box" />
 <text x="308.0" y="323.0" class="h" >2</text>
 <text x="330.0" y="323.0" class="t" >Headlight ladder</text>
-<text x="700.0" y="323.0" class="b" >16 GRY/WHT</text>
+<text x="700.0" y="323.0" class="b" >16 GRY</text>
 <text x="800.0" y="323.0" class="t" >LIVE</text>
 <rect x="300.0" y="330.0" width="560.0" height="22.0" rx="0" class="box" />
 <text x="308.0" y="345.0" class="h" >3</text>
 <text x="330.0" y="345.0" class="t" >Turn stalk ladder</text>
-<text x="700.0" y="345.0" class="b" >16 GRY/GRN</text>
+<text x="700.0" y="345.0" class="b" >16 GRY</text>
 <text x="800.0" y="345.0" class="t" >LIVE</text>
 <rect x="300.0" y="352.0" width="560.0" height="22.0" rx="0" class="box" />
 <text x="308.0" y="367.0" class="h" >4</text>
 <text x="330.0" y="367.0" class="t" >Wiper stalk ladder</text>
-<text x="700.0" y="367.0" class="b" >16 GRY/BLU</text>
+<text x="700.0" y="367.0" class="b" >16 GRY</text>
 <text x="800.0" y="367.0" class="t" >LIVE</text>
 <rect x="300.0" y="374.0" width="560.0" height="22.0" rx="0" class="box" />
 <text x="308.0" y="389.0" class="h" >5</text>
 <text x="330.0" y="389.0" class="t" >Brake pedal switch</text>
-<text x="700.0" y="389.0" class="b" >16 GRY/ORN</text>
+<text x="700.0" y="389.0" class="b" >16 GRY</text>
 <text x="800.0" y="389.0" class="t" >LIVE</text>
 <rect x="300.0" y="396.0" width="560.0" height="22.0" rx="0" class="box" />
 <text x="308.0" y="411.0" class="h" >6</text>
 <text x="330.0" y="411.0" class="t" >Hazard switch</text>
-<text x="700.0" y="411.0" class="b" >16 GRY/PNK</text>
+<text x="700.0" y="411.0" class="b" >16 GRY</text>
 <text x="800.0" y="411.0" class="t" >LIVE</text>
 <rect x="300.0" y="418.0" width="560.0" height="22.0" rx="0" class="zone" />
 <text x="308.0" y="433.0" class="h" >7</text>
-<text x="330.0" y="433.0" class="t" >Spare</text>
-<text x="700.0" y="433.0" class="b" >16 GRY</text>
-<text x="800.0" y="433.0" class="d" >CAPPED</text>
+<text x="330.0" y="433.0" class="t" >— empty</text>
+<text x="800.0" y="433.0" class="d" >PLUG</text>
 <rect x="300.0" y="440.0" width="560.0" height="22.0" rx="0" class="box" />
 <text x="308.0" y="455.0" class="h" >8</text>
 <text x="330.0" y="455.0" class="t" >Illumination bus</text>
-<text x="700.0" y="455.0" class="b" >16 VIO/WHT</text>
+<text x="700.0" y="455.0" class="b" >16 RED</text>
 <text x="800.0" y="455.0" class="t" >LIVE</text>
 <rect x="300.0" y="462.0" width="560.0" height="22.0" rx="0" class="box" />
 <text x="308.0" y="477.0" class="h" >9</text>
 <text x="330.0" y="477.0" class="t" >Wink LEFT — NC pole</text>
-<text x="700.0" y="477.0" class="b" >16 BLU/GRN</text>
+<text x="700.0" y="477.0" class="b" >16 BLU</text>
 <text x="800.0" y="477.0" class="t" >LIVE</text>
 <rect x="300.0" y="484.0" width="560.0" height="22.0" rx="0" class="box" />
 <text x="308.0" y="499.0" class="h" >10</text>
 <text x="330.0" y="499.0" class="t" >Wink RIGHT — NC pole</text>
-<text x="700.0" y="499.0" class="b" >16 BLU/YEL</text>
+<text x="700.0" y="499.0" class="b" >16 BLU</text>
 <text x="800.0" y="499.0" class="t" >LIVE</text>
 <rect x="300.0" y="506.0" width="560.0" height="22.0" rx="0" class="box" />
 <text x="308.0" y="521.0" class="h" >11</text>
 <text x="330.0" y="521.0" class="t" >Horn + wink request</text>
-<text x="700.0" y="521.0" class="b" >16 GRY/BLK</text>
+<text x="700.0" y="521.0" class="b" >16 GRY</text>
 <text x="800.0" y="521.0" class="t" >LIVE</text>
 <rect x="300.0" y="528.0" width="560.0" height="22.0" rx="0" class="box" />
 <text x="308.0" y="543.0" class="h" >12</text>
 <text x="330.0" y="543.0" class="t" >ACC — wake source</text>
-<text x="700.0" y="543.0" class="b" >16 BLU/WHT</text>
+<text x="700.0" y="543.0" class="b" >16 BLU</text>
 <text x="800.0" y="543.0" class="t" >LIVE</text>
 <rect x="300.0" y="568.0" width="560.0" height="26.0" rx="3" class="hdr" />
 <text x="308.0" y="585.0" class="w" font-weight="700">L3-S2</text>
@@ -130,27 +129,27 @@
 <rect x="300.0" y="638.0" width="560.0" height="22.0" rx="0" class="zone" />
 <text x="308.0" y="653.0" class="h" >3</text>
 <text x="330.0" y="653.0" class="t" >Window DRV up command</text>
-<text x="700.0" y="653.0" class="b" >16 BLU/BRN</text>
+<text x="700.0" y="653.0" class="b" >16 BLU</text>
 <text x="800.0" y="653.0" class="d" >CAPPED</text>
 <rect x="300.0" y="660.0" width="560.0" height="22.0" rx="0" class="zone" />
 <text x="308.0" y="675.0" class="h" >4</text>
 <text x="330.0" y="675.0" class="t" >Window DRV down command</text>
-<text x="700.0" y="675.0" class="b" >16 BLU/BLK</text>
+<text x="700.0" y="675.0" class="b" >16 BLU</text>
 <text x="800.0" y="675.0" class="d" >CAPPED</text>
 <rect x="300.0" y="682.0" width="560.0" height="22.0" rx="0" class="zone" />
 <text x="308.0" y="697.0" class="h" >5</text>
 <text x="330.0" y="697.0" class="t" >Window PASS up command</text>
-<text x="700.0" y="697.0" class="b" >16 BLU/VIO</text>
+<text x="700.0" y="697.0" class="b" >16 BLU</text>
 <text x="800.0" y="697.0" class="d" >CAPPED</text>
 <rect x="300.0" y="704.0" width="560.0" height="22.0" rx="0" class="zone" />
 <text x="308.0" y="719.0" class="h" >6</text>
 <text x="330.0" y="719.0" class="t" >Window PASS down command</text>
-<text x="700.0" y="719.0" class="b" >16 BLU/ORN</text>
+<text x="700.0" y="719.0" class="b" >16 BLU</text>
 <text x="800.0" y="719.0" class="d" >CAPPED</text>
 <rect x="300.0" y="726.0" width="560.0" height="22.0" rx="0" class="zone" />
 <text x="308.0" y="741.0" class="h" >7</text>
 <text x="330.0" y="741.0" class="t" >Future module +12 V switched</text>
-<text x="700.0" y="741.0" class="b" >16 ORN/GRY</text>
+<text x="700.0" y="741.0" class="b" >16 RED</text>
 <text x="800.0" y="741.0" class="d" >CAPPED</text>
 <rect x="300.0" y="748.0" width="560.0" height="22.0" rx="0" class="zone" />
 <text x="308.0" y="763.0" class="h" >8</text>
@@ -160,7 +159,7 @@
 <rect x="300.0" y="770.0" width="560.0" height="22.0" rx="0" class="box" />
 <text x="308.0" y="785.0" class="h" >9</text>
 <text x="330.0" y="785.0" class="t" >Washer relay K12 coil return</text>
-<text x="700.0" y="785.0" class="b" >16 BLU/GRY</text>
+<text x="700.0" y="785.0" class="b" >16 BLU</text>
 <text x="800.0" y="785.0" class="t" >LIVE</text>
 <rect x="300.0" y="792.0" width="560.0" height="22.0" rx="0" class="box" />
 <text x="308.0" y="807.0" class="h" >10</text>
@@ -170,234 +169,200 @@
 <rect x="300.0" y="814.0" width="560.0" height="22.0" rx="0" class="box" />
 <text x="308.0" y="829.0" class="h" >11</text>
 <text x="330.0" y="829.0" class="t" >Parking brake switch → brake warning lamp</text>
-<text x="700.0" y="829.0" class="b" >16 GRY/PNK</text>
+<text x="700.0" y="829.0" class="b" >16 GRY</text>
 <text x="800.0" y="829.0" class="t" >LIVE</text>
 <rect x="300.0" y="836.0" width="560.0" height="22.0" rx="0" class="zone" />
 <text x="308.0" y="851.0" class="h" >12</text>
-<text x="330.0" y="851.0" class="t" >Spare</text>
-<text x="700.0" y="851.0" class="b" >16 GRY</text>
-<text x="800.0" y="851.0" class="d" >CAPPED</text>
+<text x="330.0" y="851.0" class="t" >— empty</text>
+<text x="800.0" y="851.0" class="d" >PLUG</text>
 <rect x="300.0" y="876.0" width="560.0" height="26.0" rx="3" class="hdr" />
 <text x="308.0" y="893.0" class="w" font-weight="700">L3-S3</text>
 <text x="390.0" y="893.0" class="w" >DT06-8S → DT04-8P · 8 cav · Dash post</text>
 <rect x="300.0" y="902.0" width="560.0" height="22.0" rx="0" class="zone" />
 <text x="308.0" y="917.0" class="h" >1</text>
 <text x="330.0" y="917.0" class="t" >Future pass-through A</text>
-<text x="700.0" y="917.0" class="b" >16 GRY/BRN</text>
+<text x="700.0" y="917.0" class="b" >16 GRY</text>
 <text x="800.0" y="917.0" class="d" >CAPPED</text>
 <rect x="300.0" y="924.0" width="560.0" height="22.0" rx="0" class="zone" />
 <text x="308.0" y="939.0" class="h" >2</text>
 <text x="330.0" y="939.0" class="t" >Future pass-through B</text>
-<text x="700.0" y="939.0" class="b" >16 GRY/BLU</text>
+<text x="700.0" y="939.0" class="b" >16 GRY</text>
 <text x="800.0" y="939.0" class="d" >CAPPED</text>
 <rect x="300.0" y="946.0" width="560.0" height="22.0" rx="0" class="zone" />
 <text x="308.0" y="961.0" class="h" >3</text>
 <text x="330.0" y="961.0" class="t" >Future pass-through C</text>
-<text x="700.0" y="961.0" class="b" >16 GRY/ORN</text>
+<text x="700.0" y="961.0" class="b" >16 GRY</text>
 <text x="800.0" y="961.0" class="d" >CAPPED</text>
 <rect x="300.0" y="968.0" width="560.0" height="22.0" rx="0" class="zone" />
 <text x="308.0" y="983.0" class="h" >4</text>
-<text x="330.0" y="983.0" class="t" >Spare</text>
-<text x="700.0" y="983.0" class="b" >16 GRY</text>
-<text x="800.0" y="983.0" class="d" >CAPPED</text>
+<text x="330.0" y="983.0" class="t" >— empty</text>
+<text x="800.0" y="983.0" class="d" >PLUG</text>
 <rect x="300.0" y="990.0" width="560.0" height="22.0" rx="0" class="zone" />
 <text x="308.0" y="1005.0" class="h" >5</text>
-<text x="330.0" y="1005.0" class="t" >Spare</text>
-<text x="700.0" y="1005.0" class="b" >16 GRY</text>
-<text x="800.0" y="1005.0" class="d" >CAPPED</text>
+<text x="330.0" y="1005.0" class="t" >— empty</text>
+<text x="800.0" y="1005.0" class="d" >PLUG</text>
 <rect x="300.0" y="1012.0" width="560.0" height="22.0" rx="0" class="zone" />
 <text x="308.0" y="1027.0" class="h" >6</text>
-<text x="330.0" y="1027.0" class="t" >Spare</text>
-<text x="700.0" y="1027.0" class="b" >16 GRY</text>
-<text x="800.0" y="1027.0" class="d" >CAPPED</text>
+<text x="330.0" y="1027.0" class="t" >— empty</text>
+<text x="800.0" y="1027.0" class="d" >PLUG</text>
 <rect x="300.0" y="1034.0" width="560.0" height="22.0" rx="0" class="zone" />
 <text x="308.0" y="1049.0" class="h" >7</text>
-<text x="330.0" y="1049.0" class="t" >Spare</text>
-<text x="700.0" y="1049.0" class="b" >16 GRY</text>
-<text x="800.0" y="1049.0" class="d" >CAPPED</text>
+<text x="330.0" y="1049.0" class="t" >— empty</text>
+<text x="800.0" y="1049.0" class="d" >PLUG</text>
 <rect x="300.0" y="1056.0" width="560.0" height="22.0" rx="0" class="zone" />
 <text x="308.0" y="1071.0" class="h" >8</text>
-<text x="330.0" y="1071.0" class="t" >Spare</text>
-<text x="700.0" y="1071.0" class="b" >16 GRY</text>
-<text x="800.0" y="1071.0" class="d" >CAPPED</text>
+<text x="330.0" y="1071.0" class="t" >— empty</text>
+<text x="800.0" y="1071.0" class="d" >PLUG</text>
 <rect x="20.0" y="112.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="125.0" class="t" >O16 (pin 28)</text>
-<path d="M 270.0 121.0 L 294.0 121.0 L 276.0 121.0 L 300.0 121.0" class="red"/>
+<path d="M 270.0 121.0 L 300.0 121.0" class="red"/>
 <path d="M 860.0 121.0 L 890.0 121.0" class="red"/>
-<text x="900.0" y="125.0" class="t" >New blower motor + terminal (factory LO). Motor − → resistor pack → speed switch → dash grou</text>
+<text x="900.0" y="125.0" class="t" >New blower motor + terminal (factory LO). Motor − → resistor pack → speed switch → dash ground</text>
 <rect x="20.0" y="134.0" width="250.0" height="18.0" rx="3" class="zone" />
-<text x="26.0" y="147.0" class="t" >O15 (pin 27), from block D input</text>
-<path d="M 270.0 143.0 L 294.0 143.0 L 276.0 143.0 L 300.0 143.0" class="cap"/>
+<text x="26.0" y="147.0" class="t" >O15 (pin 27)</text>
+<path d="M 270.0 143.0 L 300.0 143.0" class="cap"/>
 <path d="M 860.0 143.0 L 890.0 143.0" class="cap"/>
 <text x="900.0" y="147.0" class="d" >Capped behind the centre stack</text>
 <rect x="20.0" y="200.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="213.0" class="t" >O10 (pin 4)</text>
-<path d="M 270.0 209.0 L 294.0 209.0 L 276.0 209.0 L 300.0 209.0" class="org"/>
+<path d="M 270.0 209.0 L 300.0 209.0" class="org"/>
 <path d="M 860.0 209.0 L 890.0 209.0" class="org"/>
 <text x="900.0" y="213.0" class="t" >Head unit red (ACC) wire; USB-C module +</text>
 <rect x="20.0" y="222.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="235.0" class="t" >F1 (15 A) ← K11</text>
-<path d="M 270.0 231.0 L 294.0 231.0 L 276.0 231.0 L 300.0 231.0" class="red"/>
+<path d="M 270.0 231.0 L 300.0 231.0" class="red"/>
 <path d="M 860.0 231.0 L 890.0 231.0" class="red"/>
 <text x="900.0" y="235.0" class="t" >Head unit yellow (BATT) wire</text>
 <rect x="20.0" y="288.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="301.0" class="t" >A16 (pin 22)</text>
-<path d="M 270.0 297.0 L 294.0 297.0 L 276.0 297.0 L 300.0 297.0" class="gry"/>
+<path d="M 270.0 297.0 L 300.0 297.0" class="gry"/>
 <path d="M 860.0 297.0 L 890.0 297.0" class="gry"/>
 <text x="900.0" y="301.0" class="t" >Ignition switch: ACC → 33 kΩ · IG → 15 kΩ · ST → 6.8 kΩ, all summed onto this wire</text>
 <rect x="20.0" y="310.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="323.0" class="t" >A15 (pin 35)</text>
-<path d="M 270.0 319.0 L 294.0 319.0 L 276.0 319.0 L 300.0 319.0" class="gry"/>
+<path d="M 270.0 319.0 L 300.0 319.0" class="gry"/>
 <path d="M 860.0 319.0 L 890.0 319.0" class="gry"/>
-<text x="900.0" y="323.0" class="t" >Light switch E-01: PARK → 33 kΩ · HEAD → 15 kΩ · DIMMER-HI → 8.2 kΩ (fed from the HEAD side)</text>
+<text x="900.0" y="323.0" class="t" >Light switch E-01: PARK → 33 kΩ · HEAD → 15 kΩ · DIMMER-HI → 8.2 kΩ (fed from the HEAD side) · PASS → 3.3 kΩ</text>
 <rect x="20.0" y="332.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="345.0" class="t" >A1 (pin 29)</text>
-<path d="M 270.0 341.0 L 294.0 341.0 L 276.0 341.0 L 300.0 341.0" class="gry"/>
+<path d="M 270.0 341.0 L 300.0 341.0" class="gry"/>
 <path d="M 860.0 341.0 L 890.0 341.0" class="gry"/>
 <text x="900.0" y="345.0" class="t" >Stalk F-02: LEFT 1.8 kΩ · RIGHT 10 kΩ · OFF 47 kΩ, contacts to column ground</text>
 <rect x="20.0" y="354.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="367.0" class="t" >A2 (pin 16)</text>
-<path d="M 270.0 363.0 L 294.0 363.0 L 276.0 363.0 L 300.0 363.0" class="gry"/>
+<path d="M 270.0 363.0 L 300.0 363.0" class="gry"/>
 <path d="M 860.0 363.0 L 890.0 363.0" class="gry"/>
-<text x="900.0" y="367.0" class="t" >Stalk D-03: HIGH 4.7 kΩ · LOW 10 kΩ · INT 18 kΩ · OFF 47 kΩ · WASH 1.8 kΩ + 1N5819 (band tow</text>
+<text x="900.0" y="367.0" class="t" >Stalk D-03: HIGH 4.7 kΩ · LOW 10 kΩ · INT 18 kΩ · OFF 47 kΩ · WASH 1.8 kΩ + 1N5819 (band toward the contact)</text>
 <rect x="20.0" y="376.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="389.0" class="t" >A3 (pin 30)</text>
-<path d="M 270.0 385.0 L 294.0 385.0 L 276.0 385.0 L 300.0 385.0" class="gry"/>
+<path d="M 270.0 385.0 L 300.0 385.0" class="gry"/>
 <path d="M 860.0 385.0 L 890.0 385.0" class="gry"/>
 <text x="900.0" y="389.0" class="t" >Pedal switch F-11 through 4.7 kΩ; other terminal → dash ground</text>
 <rect x="20.0" y="398.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="411.0" class="t" >A8 (pin 19)</text>
-<path d="M 270.0 407.0 L 294.0 407.0 L 276.0 407.0 L 300.0 407.0" class="gry"/>
+<path d="M 270.0 407.0 L 300.0 407.0" class="gry"/>
 <path d="M 860.0 407.0 L 890.0 407.0" class="gry"/>
 <text x="900.0" y="411.0" class="t" >Hazard contact through 4.7 kΩ; other terminal → column ground</text>
-<rect x="20.0" y="420.0" width="250.0" height="18.0" rx="3" class="zone" />
-<text x="26.0" y="433.0" class="t" >capped at the post</text>
-<path d="M 270.0 429.0 L 294.0 429.0 L 276.0 429.0 L 300.0 429.0" class="cap"/>
-<path d="M 860.0 429.0 L 890.0 429.0" class="cap"/>
-<text x="900.0" y="433.0" class="d" >Capped behind the dash</text>
+<text x="900.0" y="433.0" class="d" >sealing plug, both halves</text>
 <rect x="20.0" y="442.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="455.0" class="t" >O20 (pin 34)</text>
-<path d="M 270.0 451.0 L 294.0 451.0 L 276.0 451.0 L 300.0 451.0" class="vio"/>
-<path d="M 860.0 451.0 L 890.0 451.0" class="vio"/>
+<path d="M 270.0 451.0 L 300.0 451.0" class="red"/>
+<path d="M 860.0 451.0 L 890.0 451.0" class="red"/>
 <text x="900.0" y="455.0" class="t" >Dash illumination lamps E-06, E-07, E-10 (RL) + head unit illumination wire</text>
 <rect x="20.0" y="464.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="477.0" class="t" >K2 85 (coil return)</text>
-<path d="M 270.0 473.0 L 294.0 473.0 L 276.0 473.0 L 300.0 473.0" class="blu"/>
+<path d="M 270.0 473.0 L 300.0 473.0" class="blu"/>
 <path d="M 860.0 473.0 L 890.0 473.0" class="blu"/>
 <text x="900.0" y="477.0" class="t" >Wink L switch NC terminal; switch common → dash ground</text>
 <rect x="20.0" y="486.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="499.0" class="t" >K1 85 (coil return)</text>
-<path d="M 270.0 495.0 L 294.0 495.0 L 276.0 495.0 L 300.0 495.0" class="blu"/>
+<path d="M 270.0 495.0 L 300.0 495.0" class="blu"/>
 <path d="M 860.0 495.0 L 890.0 495.0" class="blu"/>
 <text x="900.0" y="499.0" class="t" >Wink R switch NC terminal; switch common → dash ground</text>
 <rect x="20.0" y="508.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="521.0" class="t" >A8 node (pin 19), spliced at the post</text>
-<path d="M 270.0 517.0 L 294.0 517.0 L 276.0 517.0 L 300.0 517.0" class="gry"/>
+<path d="M 270.0 517.0 L 300.0 517.0" class="gry"/>
 <path d="M 860.0 517.0 L 890.0 517.0" class="gry"/>
-<text x="900.0" y="521.0" class="t" >Horn pad through 8.2 kΩ · wink L NO through 18 kΩ · wink R NO through 33 kΩ — three resistor</text>
+<text x="900.0" y="521.0" class="t" >Horn pad through 8.2 kΩ · wink L NO through 18 kΩ · wink R NO through 33 kΩ — three resistors joined onto this wire</text>
 <rect x="20.0" y="530.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="543.0" class="t" >Wake strip input 1</text>
-<path d="M 270.0 539.0 L 294.0 539.0 L 276.0 539.0 L 300.0 539.0" class="blu"/>
+<path d="M 270.0 539.0 L 300.0 539.0" class="blu"/>
 <path d="M 860.0 539.0 L 890.0 539.0" class="blu"/>
 <text x="900.0" y="543.0" class="t" >Ignition switch ACC terminal (raw 12 V)</text>
 <rect x="20.0" y="596.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="609.0" class="t" >Wake strip input 2</text>
-<path d="M 270.0 605.0 L 294.0 605.0 L 276.0 605.0 L 300.0 605.0" class="blu"/>
+<path d="M 270.0 605.0 L 300.0 605.0" class="blu"/>
 <path d="M 860.0 605.0 L 890.0 605.0" class="blu"/>
 <text x="900.0" y="609.0" class="t" >Ignition switch IG terminal (raw 12 V)</text>
 <rect x="20.0" y="618.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="631.0" class="t" >F3 (5 A)</text>
-<path d="M 270.0 627.0 L 294.0 627.0 L 276.0 627.0 L 300.0 627.0" class="pnk"/>
+<path d="M 270.0 627.0 L 300.0 627.0" class="pnk"/>
 <path d="M 860.0 627.0 L 890.0 627.0" class="pnk"/>
 <text x="900.0" y="631.0" class="t" >Ignition switch B terminal · light switch E-01 common</text>
 <rect x="20.0" y="640.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="653.0" class="t" >→ L4-M 9</text>
-<path d="M 270.0 649.0 L 294.0 649.0 L 276.0 649.0 L 300.0 649.0" class="cap"/>
+<path d="M 270.0 649.0 L 300.0 649.0" class="cap"/>
 <path d="M 860.0 649.0 L 890.0 649.0" class="cap"/>
 <text x="900.0" y="653.0" class="d" >Capped at the console</text>
 <rect x="20.0" y="662.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="675.0" class="t" >→ L4-M 10</text>
-<path d="M 270.0 671.0 L 294.0 671.0 L 276.0 671.0 L 300.0 671.0" class="cap"/>
+<path d="M 270.0 671.0 L 300.0 671.0" class="cap"/>
 <path d="M 860.0 671.0 L 890.0 671.0" class="cap"/>
 <text x="900.0" y="675.0" class="d" >Capped at the console</text>
 <rect x="20.0" y="684.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="697.0" class="t" >→ L4-M 11</text>
-<path d="M 270.0 693.0 L 294.0 693.0 L 276.0 693.0 L 300.0 693.0" class="cap"/>
+<path d="M 270.0 693.0 L 300.0 693.0" class="cap"/>
 <path d="M 860.0 693.0 L 890.0 693.0" class="cap"/>
 <text x="900.0" y="697.0" class="d" >Capped at the console</text>
 <rect x="20.0" y="706.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="719.0" class="t" >→ L4-M 12</text>
-<path d="M 270.0 715.0 L 294.0 715.0 L 276.0 715.0 L 300.0 715.0" class="cap"/>
+<path d="M 270.0 715.0 L 300.0 715.0" class="cap"/>
 <path d="M 860.0 715.0 L 890.0 715.0" class="cap"/>
 <text x="900.0" y="719.0" class="d" >Capped at the console</text>
 <rect x="20.0" y="728.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="741.0" class="t" >capped at the post</text>
-<path d="M 270.0 737.0 L 294.0 737.0 L 276.0 737.0 L 300.0 737.0" class="cap"/>
+<path d="M 270.0 737.0 L 300.0 737.0" class="cap"/>
 <path d="M 860.0 737.0 L 890.0 737.0" class="cap"/>
 <text x="900.0" y="741.0" class="d" >Capped behind the dash</text>
 <rect x="20.0" y="750.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="763.0" class="t" >DP-GND</text>
-<path d="M 270.0 759.0 L 294.0 759.0 L 276.0 759.0 L 300.0 759.0" class="cap"/>
+<path d="M 270.0 759.0 L 300.0 759.0" class="cap"/>
 <path d="M 860.0 759.0 L 890.0 759.0" class="cap"/>
 <text x="900.0" y="763.0" class="d" >Capped behind the dash</text>
 <rect x="20.0" y="772.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="785.0" class="t" >K12 85</text>
-<path d="M 270.0 781.0 L 294.0 781.0 L 276.0 781.0 L 300.0 781.0" class="blu"/>
+<path d="M 270.0 781.0 L 300.0 781.0" class="blu"/>
 <path d="M 860.0 781.0 L 890.0 781.0" class="blu"/>
-<text x="900.0" y="785.0" class="t" >Wiper stalk D-03 WASH contact (same terminal as the WASH ladder leg); contact&#x27;s other side →</text>
+<text x="900.0" y="785.0" class="t" >Wiper stalk D-03 WASH contact (same terminal as the WASH ladder leg); contact&#x27;s other side → column ground</text>
 <rect x="20.0" y="794.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="807.0" class="t" >F19 (3 A)</text>
-<path d="M 270.0 803.0 L 294.0 803.0 L 276.0 803.0 L 300.0 803.0" class="red"/>
+<path d="M 270.0 803.0 L 300.0 803.0" class="red"/>
 <path d="M 860.0 803.0 L 890.0 803.0" class="red"/>
 <text x="900.0" y="807.0" class="t" >Glove box lamp H-01 +; lamp − → lid switch H-02 → dash ground</text>
 <rect x="20.0" y="816.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="829.0" class="t" >→ DP-CLU 9 (post splice)</text>
-<path d="M 270.0 825.0 L 294.0 825.0 L 276.0 825.0 L 300.0 825.0" class="gry"/>
+<path d="M 270.0 825.0 L 300.0 825.0" class="gry"/>
 <path d="M 860.0 825.0 L 890.0 825.0" class="gry"/>
 <text x="900.0" y="829.0" class="t" >Parking brake switch C-04 terminal BR (switch body grounds through the lever bracket)</text>
-<rect x="20.0" y="838.0" width="250.0" height="18.0" rx="3" class="zone" />
-<text x="26.0" y="851.0" class="t" >capped at the post</text>
-<path d="M 270.0 847.0 L 294.0 847.0 L 276.0 847.0 L 300.0 847.0" class="cap"/>
-<path d="M 860.0 847.0 L 890.0 847.0" class="cap"/>
-<text x="900.0" y="851.0" class="d" >Capped behind the dash</text>
+<text x="900.0" y="851.0" class="d" >sealing plug, both halves</text>
 <rect x="20.0" y="904.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="917.0" class="t" >→ L4-S 5</text>
-<path d="M 270.0 913.0 L 294.0 913.0 L 276.0 913.0 L 300.0 913.0" class="cap"/>
+<path d="M 270.0 913.0 L 300.0 913.0" class="cap"/>
 <path d="M 860.0 913.0 L 890.0 913.0" class="cap"/>
 <text x="900.0" y="917.0" class="d" >Capped behind the dash</text>
 <rect x="20.0" y="926.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="939.0" class="t" >→ L4-S 6</text>
-<path d="M 270.0 935.0 L 294.0 935.0 L 276.0 935.0 L 300.0 935.0" class="cap"/>
+<path d="M 270.0 935.0 L 300.0 935.0" class="cap"/>
 <path d="M 860.0 935.0 L 890.0 935.0" class="cap"/>
 <text x="900.0" y="939.0" class="d" >Capped behind the dash</text>
 <rect x="20.0" y="948.0" width="250.0" height="18.0" rx="3" class="zone" />
 <text x="26.0" y="961.0" class="t" >→ L4-S 7</text>
-<path d="M 270.0 957.0 L 294.0 957.0 L 276.0 957.0 L 300.0 957.0" class="cap"/>
+<path d="M 270.0 957.0 L 300.0 957.0" class="cap"/>
 <path d="M 860.0 957.0 L 890.0 957.0" class="cap"/>
 <text x="900.0" y="961.0" class="d" >Capped behind the dash</text>
-<rect x="20.0" y="970.0" width="250.0" height="18.0" rx="3" class="zone" />
-<text x="26.0" y="983.0" class="t" >capped at the post</text>
-<path d="M 270.0 979.0 L 294.0 979.0 L 276.0 979.0 L 300.0 979.0" class="cap"/>
-<path d="M 860.0 979.0 L 890.0 979.0" class="cap"/>
-<text x="900.0" y="983.0" class="d" >Capped behind the dash</text>
-<rect x="20.0" y="992.0" width="250.0" height="18.0" rx="3" class="zone" />
-<text x="26.0" y="1005.0" class="t" >capped at the post</text>
-<path d="M 270.0 1001.0 L 294.0 1001.0 L 276.0 1001.0 L 300.0 1001.0" class="cap"/>
-<path d="M 860.0 1001.0 L 890.0 1001.0" class="cap"/>
-<text x="900.0" y="1005.0" class="d" >Capped behind the dash</text>
-<rect x="20.0" y="1014.0" width="250.0" height="18.0" rx="3" class="zone" />
-<text x="26.0" y="1027.0" class="t" >capped at the post</text>
-<path d="M 270.0 1023.0 L 294.0 1023.0 L 276.0 1023.0 L 300.0 1023.0" class="cap"/>
-<path d="M 860.0 1023.0 L 890.0 1023.0" class="cap"/>
-<text x="900.0" y="1027.0" class="d" >Capped behind the dash</text>
-<rect x="20.0" y="1036.0" width="250.0" height="18.0" rx="3" class="zone" />
-<text x="26.0" y="1049.0" class="t" >capped at the post</text>
-<path d="M 270.0 1045.0 L 294.0 1045.0 L 276.0 1045.0 L 300.0 1045.0" class="cap"/>
-<path d="M 860.0 1045.0 L 890.0 1045.0" class="cap"/>
-<text x="900.0" y="1049.0" class="d" >Capped behind the dash</text>
-<rect x="20.0" y="1058.0" width="250.0" height="18.0" rx="3" class="zone" />
-<text x="26.0" y="1071.0" class="t" >capped at the post</text>
-<path d="M 270.0 1067.0 L 294.0 1067.0 L 276.0 1067.0 L 300.0 1067.0" class="cap"/>
-<path d="M 860.0 1067.0 L 890.0 1067.0" class="cap"/>
-<text x="900.0" y="1071.0" class="d" >Capped behind the dash</text>
+<text x="900.0" y="983.0" class="d" >sealing plug, both halves</text>
+<text x="900.0" y="1005.0" class="d" >sealing plug, both halves</text>
+<text x="900.0" y="1027.0" class="d" >sealing plug, both halves</text>
+<text x="900.0" y="1049.0" class="d" >sealing plug, both halves</text>
+<text x="900.0" y="1071.0" class="d" >sealing plug, both halves</text>
 </svg>

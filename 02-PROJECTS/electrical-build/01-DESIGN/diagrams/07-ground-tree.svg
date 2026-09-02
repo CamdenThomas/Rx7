@@ -44,7 +44,7 @@
 <line x1="555.0" y1="302.0" x2="565.0" y2="302.0" class="gnd"/>
 <line x1="558.0" y1="306.0" x2="562.0" y2="306.0" class="gnd"/>
 <rect x="750.0" y="90.0" width="340.0" height="120.0" rx="0" class="box" />
-<text x="758.0" y="106.0" class="h" >DASH STAR — the plate ground bus</text>
+<text x="758.0" y="106.0" class="h" >DASH STAR — the dash node ground bus</text>
 <text x="758.0" y="120.0" class="t" >PMU pin 25 (10 AWG ≤ 6 in) · K1 / K2 87a · K11 85</text>
 <text x="758.0" y="133.0" class="t" >Sense-stage emitters · bleed · tach shield</text>
 <text x="758.0" y="146.0" class="t" >DP-CLU 2 · DP-DIAG 4 · capped drops</text>
@@ -77,6 +77,6 @@
 <line x1="192.0" y1="488.0" x2="208.0" y2="488.0" class="gnd"/>
 <line x1="195.0" y1="492.0" x2="205.0" y2="492.0" class="gnd"/>
 <line x1="198.0" y1="496.0" x2="202.0" y2="496.0" class="gnd"/>
-<text x="400.0" y="380.0" class="d" >Never: a ground through a door boot · a ground shared between the fuel pump and a lamp · a ground returned through a leg connector to the plate.</text>
+<text x="400.0" y="380.0" class="d" >Never: a ground through a door boot · a ground shared between the fuel pump and a lamp · a ground returned through a leg connector to the dash node.</text>
 <text x="400.0" y="398.0" class="d" >Every stud: grind to bare metal · star washer · torque · cavity wax over the finished joint.</text>
 </svg>

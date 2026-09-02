@@ -51,7 +51,7 @@
 <text x="44.0" y="396.0" class="t" >The fuel pump has its own return.</text>
 <text x="44.0" y="409.0" class="t" >The engine block is strapped to the body for cranking.</text>
 <rect x="490.0" y="80.0" width="560.0" height="400.0" rx="0" class="zone" />
-<text x="502.0" y="98.0" class="h" >DASH — the removable plate and the five drops</text>
+<text x="502.0" y="98.0" class="h" >DASH — the dash node and the five drops</text>
 <rect x="506.0" y="110.0" width="262.0" height="120.0" rx="0" class="box" />
 <text x="514.0" y="126.0" class="h" >ECUMaster PMU-24 DL</text>
 <text x="514.0" y="140.0" class="t" >39-way SICMA · 150 A stud</text>
@@ -60,7 +60,7 @@
 <text x="514.0" y="179.0" class="t" >CAN1 laptop · CAN2 vehicle</text>
 <text x="514.0" y="192.0" class="t" >every output is a software fuse</text>
 <rect x="778.0" y="110.0" width="256.0" height="120.0" rx="0" class="box" />
-<text x="786.0" y="126.0" class="h" >Plate hardware</text>
+<text x="786.0" y="126.0" class="h" >Dash node hardware</text>
 <text x="786.0" y="140.0" class="t" >always-hot busbar · ground bus</text>
 <text x="786.0" y="153.0" class="t" >fuse blocks A–D, one source each</text>
 <text x="786.0" y="166.0" class="t" >F12 F15 F16 sealed inlines</text>
@@ -75,7 +75,7 @@
 <text x="514.0" y="342.0" class="t" >L3-P 2 · L3-M 2 · L3-S1 12 · L3-S2 12 · L3-S3 8</text>
 <text x="514.0" y="355.0" class="t" >ignition + light switch ladders · turn · wiper · hazard · brake · horn · wink</text>
 <text x="514.0" y="368.0" class="t" >blower · head unit · USB-C · illumination · glove box · parking brake</text>
-<text x="514.0" y="381.0" class="t" >dash star ground = the plate ground bus</text>
+<text x="514.0" y="381.0" class="t" >dash star ground = the dash node ground bus</text>
 <text x="506.0" y="430.0" class="d" >The 2 AWG feed from the Class-T lands on the busbar. The starter cable never comes here.</text>
 <text x="506.0" y="446.0" class="d" >The factory cluster stays: DP-CLU feeds its gauges, lamps and indicators from day one.</text>
 <rect x="1080.0" y="80.0" width="400.0" height="190.0" rx="0" class="zone" />
@@ -93,7 +93,7 @@
 <text x="1092.0" y="308.0" class="h" >FRONT — nose, cowl, buckets</text>
 <rect x="1096.0" y="320.0" width="370.0" height="148.0" rx="0" class="box" />
 <text x="1104.0" y="336.0" class="h" >L2 FRONT leg</text>
-<text x="1104.0" y="350.0" class="t" >L2-P1 4 · L2-P2 4 · L2-M 8 · L2-S 6</text>
+<text x="1104.0" y="350.0" class="t" >L2-M 8 · L2-S 4–6 (plugged)</text>
 <text x="1104.0" y="363.0" class="t" >headlights O2 / O3 · pop-ups K1 / K2 off O1</text>
 <text x="1104.0" y="376.0" class="t" >wipers O8 / O9 · washer K12 · horns O11</text>
 <text x="1104.0" y="389.0" class="t" >turn O17 / O18 · park + markers O6</text>
@@ -110,7 +110,7 @@
 <text x="28.0" y="590.0" class="t" >Power: battery → disconnect → Class-T → 2 AWG → busbar → PMU stud. The starter is its own run off the post.</text>
 <text x="28.0" y="603.0" class="t" >Four legs leave the dash post, cut by what comes out of the car as one piece (engine · nose · dash · rear).</text>
 <text x="28.0" y="616.0" class="t" >Every switch is a resistor ladder to ground on one wire; no switch carries load current.</text>
-<text x="28.0" y="629.0" class="t" >The PMU switches every load and protects every wire with a software fuse. Plate relays exist only where a</text>
+<text x="28.0" y="629.0" class="t" >The PMU switches every load and protects every wire with a software fuse. Dash-node relays exist only where a</text>
 <text x="28.0" y="642.0" class="t" >channel is shared (pop-ups, washer) or a 30 A audio feed must live outside the PMU (K11).</text>
 <text x="28.0" y="655.0" class="t" >Everything the car may gain later has its wire run now, terminated and capped.</text>
 <rect x="760.0" y="560.0" width="720.0" height="150.0" rx="0" class="box" />

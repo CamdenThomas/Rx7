@@ -1,0 +1,12 @@
+id,function,type,location,coil,contacts,state
+K1,Pop-up LH run,"ISO micro SPDT 40 A, integral diode",Dash node,86 ← O1 · 85 → L3-S1 10 (wink R NC → ground),30 ← O1 splice (12 AWG) · 87 → L2-P 3 · 87a → GND bus (dynamic brake),LIVE
+K2,Pop-up RH run,"ISO micro SPDT 40 A, integral diode",Dash node,86 ← O1 · 85 → L3-S1 9 (wink L NC → ground),30 ← O1 splice (12 AWG) · 87 → L2-P 4 · 87a → GND bus,LIVE
+K3,— empty socket,—,Dash node,—,—,SPARE
+K4,— empty socket,—,Dash node,—,—,SPARE
+K5,Window DRV up — empty socket,—,Sill node,—,—,SPARE
+K6,Window DRV down — empty socket,—,Sill node,—,—,SPARE
+K7,Window PASS up — empty socket,—,Sill node,—,—,SPARE
+K8,Window PASS down — empty socket,—,Sill node,—,—,SPARE
+K9,Start relay,"Sealed mini ISO SPDT, integral diode, weatherproof socket","Inner fender, engine bay",86 ← L1-S1 1 (O21) · 85 → block ground,"30 ← F17 (starter B+ stud, 10 AWG) · 87 → starter solenoid S terminal (10 AWG)",LIVE
+K11,Audio master (constant bus),"ISO micro SPDT 40 A, integral diode",Dash node,86 ← O22 · 85 → GND bus,30 ← busbar (10 AWG) · 87 → block B input (10 AWG),LIVE
+K12,Washer pump,"ISO micro SPDT 40 A, integral diode",Dash node,86 ← O10 · 85 → L3-S2 9 (stalk WASH contact → ground),30 ← O8 · 87 → L2-M 4,LIVE

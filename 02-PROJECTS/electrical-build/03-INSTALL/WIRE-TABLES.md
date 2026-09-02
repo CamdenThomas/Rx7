@@ -1,56 +1,56 @@
 # WIRE TABLES
 
-Every conductor in the car. §A the PMU connector · §B the plate · §C the legs, sill and drops (the cut list) · §D grounds · §E heavy cables · §F splices at the post · §G device ends · §H fuses and relays to fit.
+Work sheets for the build, printed from the design (`../01-DESIGN/DESIGN.md`). **The design is the record** — if a row here ever disagrees with it, this sheet is wrong. §A the PMU connector, in termination order · §B the dash node · §C the legs, sill and drops (the cut list) · §D grounds · §E heavy cables. What a wire lands on at the device is the design's §12; what joins what at the dash node is the design's §5.3; which fuses and relays to fit is the design's §3 and §5.1.
 
 
 ## A · The 39-way PMU connector — terminate in this order
 
 | Cav | Terminal | Ch | AWG | Colour | Goes to | ✔ |
 |---|---|---|---|---|---|---|
-| 1 | 2.8 mm large 211CC3S3120 | O13 | 12 | RED/ORN | L1-P 2 (capped) | ☐ |
-| 2 | 2.8 mm large 211CC3S3120 | O12 | 12 | RED/BLU | L1-P 1 · F15 · F16 | ☐ |
-| 3 | 1.5 mm 211CC2S2160P | O11 | 14 | ORN/BLK | L2-M 3 | ☐ |
-| 4 | 1.5 mm 211CC2S2160P | O10 | 14 | ORN/YEL | L3-M 1 · K12 86 · DP-ICU 1 · DP-DCU 1 · DP-KEY 3 (capped) | ☐ |
-| 5 | 1.5 mm 211CC2S2160P | O9 | 14 | ORN/WHT | L2-M 2 | ☐ |
-| 6 | 1.5 mm 211CC2S2160P | O17 | 16 | VIO/GRN | L2-M 5 · L4-M 5 · DP-CLU 10 | ☐ |
+| 1 | 2.8 mm large 211CC3S3120 | O13 | 12 | RED | L1-P 2 (capped) | ☐ |
+| 2 | 2.8 mm large 211CC3S3120 | O12 | 12 | RED | L1-P 1 · F15 · F16 | ☐ |
+| 3 | 1.5 mm 211CC2S2160P | O11 | 14 | ORN | L2-M 3 | ☐ |
+| 4 | 1.5 mm 211CC2S2160P | O10 | 14 | ORN | L3-M 1 · K12 86 · DP-ICU 1 · DP-DCU 1 · DP-KEY 3 (capped) | ☐ |
+| 5 | 1.5 mm 211CC2S2160P | O9 | 14 | ORN | L2-M 2 | ☐ |
+| 6 | 1.5 mm 211CC2S2160P | O17 | 16 | RED | L2-M 5 · L4-M 5 · DP-CLU 10 | ☐ |
 | 7 | 1.5 mm 211CC2S2160P | +12V SW | 16 | BLU | Wake strip common rail | ☐ |
-| 8 | 1.5 mm 211CC2S2160P | O22 | 16 | VIO/BLU | Wake strip input 5 · K11 86 | ☐ |
-| 9 | 1.5 mm 211CC2S2160P | O8 | 14 | ORN/BLU | L2-M 1 · K12 30 | ☐ |
-| 10 | 1.5 mm 211CC2S2160P | O7 | 14 | ORN/GRN | L4-M 2 | ☐ |
-| 11 | 1.5 mm 211CC2S2160P | O6 | 14 | ORN/BRN | L2-M 7 · L4-M 1 | ☐ |
-| 12 | 2.8 mm large 211CC3S3120 | O5 | 12 | RED/YEL | L4-P 2 | ☐ |
-| 13 | 2.8 mm large 211CC3S3120 | O4 | 12 | RED/GRN | L4-P 1 | ☐ |
-| 14 | 2.8 mm large 211CC3S3120 | O14 | 12 | RED/GRY | L1-P 3 (capped) | ☐ |
-| 15 | 2.8 mm 211CC3S2120 | +5V OUT | 16 | PNK | Bias resistors on the plate | ☐ |
-| 16 | 1.5 mm 211CC2S2160P | A2 | 16 | GRY/BLU | L3-S1 4 | ☐ |
-| 17 | 1.5 mm 211CC2S2160P | A4 | 16 | GRY/BLK | L2-S 1 · L1-S1 11 (spliced at the post) | ☐ |
-| 18 | 1.5 mm 211CC2S2160P | A6 | 16 | GRY/VIO | L4-S 2 | ☐ |
-| 19 | 1.5 mm 211CC2S2160P | A8 | 16 | GRY/PNK | L3-S1 6 · L3-S1 11 (spliced at the post) | ☐ |
-| 20 | 1.5 mm 211CC2S2160P | O19 | 16 | VIO/BLK | L4-M 7 | ☐ |
-| 21 | 1.5 mm 211CC2S2160P | O21 | 16 | VIO/RED | L1-S1 1 | ☐ |
-| 22 | 1.5 mm 211CC2S2160P | A16 | 16 | GRY/RED | L3-S1 1 | ☐ |
+| 8 | 1.5 mm 211CC2S2160P | O22 | 16 | RED | Wake strip input 5 · K11 86 | ☐ |
+| 9 | 1.5 mm 211CC2S2160P | O8 | 14 | ORN | L2-M 1 · K12 30 | ☐ |
+| 10 | 1.5 mm 211CC2S2160P | O7 | 14 | ORN | L4-M 2 | ☐ |
+| 11 | 1.5 mm 211CC2S2160P | O6 | 14 | ORN | L2-M 7 · L4-M 1 | ☐ |
+| 12 | 2.8 mm large 211CC3S3120 | O5 | 12 | RED | L4-P 2 | ☐ |
+| 13 | 2.8 mm large 211CC3S3120 | O4 | 12 | RED | L4-P 1 | ☐ |
+| 14 | 2.8 mm large 211CC3S3120 | O14 | 12 | RED | L1-P 3 (capped) | ☐ |
+| 15 | 2.8 mm 211CC3S2120 | +5V OUT | 16 | PNK | Bias resistors on the dash node | ☐ |
+| 16 | 1.5 mm 211CC2S2160P | A2 | 16 | GRY | L3-S1 4 | ☐ |
+| 17 | 1.5 mm 211CC2S2160P | A4 | 16 | GRY | L2-S 1 · L1-S1 11 (spliced at the post) | ☐ |
+| 18 | 1.5 mm 211CC2S2160P | A6 | 16 | GRY | L4-S 2 | ☐ |
+| 19 | 1.5 mm 211CC2S2160P | A8 | 16 | GRY | L3-S1 6 · L3-S1 11 (spliced at the post) | ☐ |
+| 20 | 1.5 mm 211CC2S2160P | O19 | 16 | RED | L4-M 7 | ☐ |
+| 21 | 1.5 mm 211CC2S2160P | O21 | 16 | RED | L1-S1 1 | ☐ |
+| 22 | 1.5 mm 211CC2S2160P | A16 | 16 | GRY | L3-S1 1 | ☐ |
 | 23 | 1.5 mm 211CC2S2160P | CAN1H | 16 tw | YEL | DP-DIAG 1 | ☐ |
-| 24 | 1.5 mm 211CC2S2160P | CAN2H | 16 tw | YEL/BLK | L1-S1 9 · DP-ICU 3 · DP-DCU 4 · DP-KEY 1 | ☐ |
+| 24 | 1.5 mm 211CC2S2160P | CAN2H | 16 tw | YEL | L1-S1 9 · DP-ICU 3 · DP-DCU 4 · DP-KEY 1 | ☐ |
 | 25 | 2.8 mm large 211CC3S3120 | GND | 10 | BLK | GND bus, ≤ 6 in | ☐ |
-| 26 | 2.8 mm large 211CC3S3120 | O3 | 12 | RED/BRN | L2-P1 2 · DP-CLU 12 | ☐ |
-| 27 | 2.8 mm large 211CC3S3120 | O15 | 12 | RED/VIO | Block D in · L3-P 2 (capped) | ☐ |
-| 28 | 2.8 mm large 211CC3S3120 | O16 | 12 | RED/PNK | L3-P 1 | ☐ |
-| 29 | 1.5 mm 211CC2S2160P | A1 | 16 | GRY/GRN | L3-S1 3 | ☐ |
-| 30 | 1.5 mm 211CC2S2160P | A3 | 16 | GRY/ORN | L3-S1 5 · L2-S 3 (spliced at the post) | ☐ |
-| 31 | 1.5 mm 211CC2S2160P | A5 | 16 | GRY/BRN | L2-S 2 · L1-S2 7 (spliced at the post) | ☐ |
-| 32 | 1.5 mm 211CC2S2160P | A7 | 16 | GRY/YEL | Tap on the L4-S 1 → DP-CLU 7 conductor | ☐ |
-| 33 | 1.5 mm 211CC2S2160P | O18 | 16 | VIO/YEL | L2-M 6 · L4-M 6 · DP-CLU 11 | ☐ |
-| 34 | 1.5 mm 211CC2S2160P | O20 | 16 | VIO/WHT | F12 → L4-M 8 · L3-S1 8 · DP-CLU 3 · DP-ICU 5 (capped) | ☐ |
-| 35 | 1.5 mm 211CC2S2160P | A15 | 16 | GRY/WHT | L3-S1 2 | ☐ |
+| 26 | 2.8 mm large 211CC3S3120 | O3 | 12 | RED | L2-P 2 · DP-CLU 12 | ☐ |
+| 27 | 2.8 mm large 211CC3S3120 | O15 | 12 | RED | L3-P 2 (capped) | ☐ |
+| 28 | 2.8 mm large 211CC3S3120 | O16 | 12 | RED | L3-P 1 | ☐ |
+| 29 | 1.5 mm 211CC2S2160P | A1 | 16 | GRY | L3-S1 3 | ☐ |
+| 30 | 1.5 mm 211CC2S2160P | A3 | 16 | GRY | L3-S1 5 · L2-S 3 (spliced at the post) | ☐ |
+| 31 | 1.5 mm 211CC2S2160P | A5 | 16 | GRY | L2-S 2 · L1-S2 7 (spliced at the post) | ☐ |
+| 32 | 1.5 mm 211CC2S2160P | A7 | 16 | GRY | Tap on the L4-S 1 → DP-CLU 7 conductor | ☐ |
+| 33 | 1.5 mm 211CC2S2160P | O18 | 16 | RED | L2-M 6 · L4-M 6 · DP-CLU 11 | ☐ |
+| 34 | 1.5 mm 211CC2S2160P | O20 | 16 | RED | F12 → L4-M 8 · L3-S1 8 · DP-CLU 3 · DP-ICU 5 (capped) | ☐ |
+| 35 | 1.5 mm 211CC2S2160P | A15 | 16 | GRY | L3-S1 2 | ☐ |
 | 36 | 1.5 mm 211CC2S2160P | CAN1L | 16 tw | GRN | DP-DIAG 2 | ☐ |
-| 37 | 1.5 mm 211CC2S2160P | CAN2L | 16 tw | GRN/BLK | L1-S1 10 · DP-ICU 4 · DP-DCU 5 · DP-KEY 2 | ☐ |
-| 38 | 2.8 mm large 211CC3S3120 | O1 | 12 | RED/WHT | Block C in · K1 86 · K2 86 · L4-P 3 (capped) | ☐ |
-| 39 | 2.8 mm large 211CC3S3120 | O2 | 12 | RED/BLK | L2-P1 1 | ☐ |
+| 37 | 1.5 mm 211CC2S2160P | CAN2L | 16 tw | GRN | L1-S1 10 · DP-ICU 4 · DP-DCU 5 · DP-KEY 2 | ☐ |
+| 38 | 2.8 mm large 211CC3S3120 | O1 | 12 | RED | K1 30 · K2 30 · K1 86 · K2 86 · L4-P 3 (capped) | ☐ |
+| 39 | 2.8 mm large 211CC3S3120 | O2 | 12 | RED | L2-P 1 | ☐ |
 
 The stud: 4 AWG RED ring lug from the busbar, torqued.
 
 
-## B · Plate conductors
+## B · Dash-node conductors
 
 | From | To | AWG | Colour | Note | ✔ |
 |---|---|---|---|---|---|
@@ -59,59 +59,56 @@ The stud: 4 AWG RED ring lug from the busbar, torqued.
 | Always-hot busbar | Fuse block A input | 10 | RED |  | ☐ |
 | Always-hot busbar | K11 terminal 30 | 10 | RED |  | ☐ |
 | K11 terminal 87 | Fuse block B input | 10 | RED |  | ☐ |
-| K11 terminal 86 | PMU pin 8 (O22) — tapped at the wake-strip input 5 | 16 | VIO/BLU |  | ☐ |
+| K11 terminal 86 | PMU pin 8 (O22) — tapped at the wake-strip input 5 | 16 | RED |  | ☐ |
 | K11 terminal 85 | GND bus | 16 | BLK |  | ☐ |
-| PMU pin 38 (O1) | Fuse block C input | 12 | RED/WHT |  | ☐ |
-| Fuse block C, F6 out | K1 terminal 30 | 12 | RED/WHT |  | ☐ |
-| Fuse block C, F7 out | K2 terminal 30 | 12 | RED/WHT |  | ☐ |
-| Fuse block C input | K1 terminal 86 and K2 terminal 86 | 16 | RED/WHT | Coils fed straight from the O1 bus | ☐ |
-| K1 terminal 85 | Receptacle L3-S1 10 | 16 | BLU/YEL | Wink R NC pole closes this to ground | ☐ |
-| K2 terminal 85 | Receptacle L3-S1 9 | 16 | BLU/GRN | Wink L NC pole closes this to ground | ☐ |
-| K1 terminal 87 | Receptacle L2-P1 3 | 12 | RED/WHT |  | ☐ |
-| K2 terminal 87 | Receptacle L2-P2 1 | 12 | RED/WHT |  | ☐ |
+| PMU pin 38 (O1) | Splice → K1 terminal 30 · K2 terminal 30 | 12 | RED | Sealed crimp splice; the O1 soft fuse (25 A) protects both 12 AWG branches | ☐ |
+| O1 splice | K1 terminal 86 and K2 terminal 86 | 16 | RED | Coils fed straight from the O1 bus | ☐ |
+| K1 terminal 85 | Receptacle L3-S1 10 | 16 | BLU | Wink R NC pole closes this to ground | ☐ |
+| K2 terminal 85 | Receptacle L3-S1 9 | 16 | BLU | Wink L NC pole closes this to ground | ☐ |
+| K1 terminal 87 | Receptacle L2-P 3 | 12 | RED |  | ☐ |
+| K2 terminal 87 | Receptacle L2-P 4 | 12 | RED |  | ☐ |
 | K1 terminal 87a | GND bus | 12 | BLK | Dynamic braking at rest | ☐ |
 | K2 terminal 87a | GND bus | 12 | BLK |  | ☐ |
-| Fuse block C input | Receptacle L4-P 3 | 12 | RED/WHT | Capped window bus — terminated, no load | ☐ |
-| PMU pin 27 (O15) | Fuse block D input | 12 | RED/VIO |  | ☐ |
-| Fuse block D input | Receptacle L3-P 2 | 12 | RED/VIO | Capped comfort feed | ☐ |
-| PMU pin 2 (O12) | Receptacle L1-P 1 | 12 | RED/BLU |  | ☐ |
-| PMU pin 2 (O12) tap | F15 inline (7.5 A) → receptacle L1-S1 2 | 16 | RED/BLU | Alternator excitation | ☐ |
-| PMU pin 2 (O12) tap | F16 inline (5 A) → receptacle DP-CLU 1 | 16 | RED/BLU | Cluster feed | ☐ |
-| PMU pin 34 (O20) | F12 inline (5 A) → receptacle L4-M 8 | 16 | VIO/WHT | Interior lamp | ☐ |
-| PMU pin 34 (O20) tap | Receptacles L3-S1 8, DP-CLU 3, DP-ICU 5 (capped) | 16 | VIO/WHT | Illumination bus | ☐ |
-| PMU pin 4 (O10) | Receptacle L3-M 1 | 14 | ORN/YEL |  | ☐ |
-| PMU pin 4 (O10) tap | K12 terminal 86; receptacles DP-ICU 1, DP-DCU 1, DP-KEY 3 (capped) | 16 | ORN/YEL |  | ☐ |
-| K12 terminal 85 | Receptacle L3-S2 9 | 16 | BLU/GRY | Stalk WASH contact closes this to ground | ☐ |
-| PMU pin 9 (O8) | Receptacle L2-M 1 and K12 terminal 30 | 14 | ORN/BLU |  | ☐ |
-| K12 terminal 87 | Receptacle L2-M 4 | 14 | ORN/VIO | Washer pump | ☐ |
+| O1 splice | Receptacle L4-P 3 | 12 | RED | Capped window bus — terminated, no load | ☐ |
+| PMU pin 27 (O15) | Receptacle L3-P 2 | 12 | RED | Capped comfort feed — no fuse block this build | ☐ |
+| PMU pin 2 (O12) | Receptacle L1-P 1 | 12 | RED |  | ☐ |
+| PMU pin 2 (O12) tap | F15 inline (7.5 A) → receptacle L1-S1 2 | 16 | RED | Alternator excitation | ☐ |
+| PMU pin 2 (O12) tap | F16 inline (5 A) → receptacle DP-CLU 1 | 16 | RED | Cluster feed | ☐ |
+| PMU pin 34 (O20) | F12 inline (5 A) → receptacle L4-M 8 | 16 | RED | Interior lamp | ☐ |
+| PMU pin 34 (O20) tap | Receptacles L3-S1 8, DP-CLU 3, DP-ICU 5 (capped) | 16 | RED | Illumination bus | ☐ |
+| PMU pin 4 (O10) | Receptacle L3-M 1 | 14 | ORN |  | ☐ |
+| PMU pin 4 (O10) tap | K12 terminal 86; receptacles DP-ICU 1, DP-DCU 1, DP-KEY 3 (capped) | 16 | RED |  | ☐ |
+| K12 terminal 85 | Receptacle L3-S2 9 | 16 | BLU | Stalk WASH contact closes this to ground | ☐ |
+| PMU pin 9 (O8) | Receptacle L2-M 1 and K12 terminal 30 | 14 | ORN |  | ☐ |
+| K12 terminal 87 | Receptacle L2-M 4 | 14 | ORN | Washer pump | ☐ |
 | Fuse block A, F2 out | Receptacle DP-DIAG 3 | 16 | RED |  | ☐ |
 | Fuse block A, F3 out | Receptacle L3-S2 2; wake-stage pull-ups (emitter rail) | 16 | PNK | Switch supply | ☐ |
 | Fuse block A, F19 out | Receptacles L3-S2 10 and L4-S 8 | 16 | RED | Courtesy lamps | ☐ |
 | Fuse block B, F1 out | Receptacle L3-M 2 | 14 | RED | Head unit constant | ☐ |
 | Fuse block B, F5 out | Receptacle L4-P 4 | 12 | RED | Amplifier | ☐ |
-| Receptacle L3-S1 12 | Wake strip input 1 (ACC) | 16 | BLU/WHT |  | ☐ |
+| Receptacle L3-S1 12 | Wake strip input 1 (ACC) | 16 | BLU |  | ☐ |
 | Receptacle L3-S2 1 | Wake strip input 2 (RUN) | 16 | BLU |  | ☐ |
 | Wake stage 1 collector (A6 door) | Wake strip input 3 | 16 | BLU |  | ☐ |
 | Wake stage 2 collector (A8 horn/hazard/wink) | Wake strip input 4 | 16 | BLU |  | ☐ |
-| PMU pin 8 (O22) | Wake strip input 5 | 16 | VIO/BLU |  | ☐ |
+| PMU pin 8 (O22) | Wake strip input 5 | 16 | RED |  | ☐ |
 | Wake strip common rail (after the five 1N5819) | PMU pin 7 (+12V SW) | 16 | BLU | 10 kΩ bleed from this rail to the GND bus | ☐ |
 | PMU pin 15 (+5 V) | 100 kΩ → PMU pin 35 (A15) · 100 kΩ → PMU pin 22 (A16) | 16 | PNK | Bias so a broken wire reads 0, not OFF | ☐ |
-| PMU pin 17 (A4) | Receptacles L2-S 1 and L1-S1 11 (splice) | 16 | GRY/BLK |  | ☐ |
-| PMU pin 31 (A5) | Receptacles L2-S 2 and L1-S2 7 (splice) | 16 | GRY/BRN |  | ☐ |
-| PMU pin 30 (A3) | Receptacles L3-S1 5 and L2-S 3 (splice) | 16 | GRY/ORN |  | ☐ |
-| PMU pin 19 (A8) | Receptacles L3-S1 6 and L3-S1 11 (splice); wake stage 2 base network | 16 | GRY/PNK |  | ☐ |
-| PMU pin 18 (A6) | Receptacle L4-S 2; wake stage 1 base network | 16 | GRY/VIO |  | ☐ |
-| PMU pin 32 (A7) | Tap on the L4-S 1 → DP-CLU 7 conductor | 16 | GRY/YEL | Fuel node tap | ☐ |
-| Receptacle L1-S1 3 | Receptacle DP-CLU 5 (+ DP-ICU 6 tap, capped) | 16 | GRY/GRN | Water temp | ☐ |
-| Receptacle L1-S1 4 | Receptacle DP-CLU 6 (+ DP-ICU 7 tap, capped) | 16 | GRY/BLU | Oil pressure | ☐ |
+| PMU pin 17 (A4) | Receptacles L2-S 1 and L1-S1 11 (splice) | 16 | GRY |  | ☐ |
+| PMU pin 31 (A5) | Receptacles L2-S 2 and L1-S2 7 (splice) | 16 | GRY |  | ☐ |
+| PMU pin 30 (A3) | Receptacles L3-S1 5 and L2-S 3 (splice) | 16 | GRY |  | ☐ |
+| PMU pin 19 (A8) | Receptacles L3-S1 6 and L3-S1 11 (splice); wake stage 2 base network | 16 | GRY |  | ☐ |
+| PMU pin 18 (A6) | Receptacle L4-S 2; wake stage 1 base network | 16 | GRY |  | ☐ |
+| PMU pin 32 (A7) | Tap on the L4-S 1 → DP-CLU 7 conductor | 16 | GRY | Fuel node tap | ☐ |
+| Receptacle L1-S1 3 | Receptacle DP-CLU 5 (+ DP-ICU 6 tap, capped) | 16 | GRY | Water temp | ☐ |
+| Receptacle L1-S1 4 | Receptacle DP-CLU 6 (+ DP-ICU 7 tap, capped) | 16 | GRY | Oil pressure | ☐ |
 | Receptacle L1-S1 6 | Receptacle DP-CLU 4 (+ DP-ICU 9 tap, capped) | 16 sh | shielded | Tach — shield to GND bus at this end only | ☐ |
-| Receptacle L1-S2 8 | Receptacle DP-CLU 8 (+ DP-ICU 11 tap, capped) | 16 | GRY/WHT | Charge lamp | ☐ |
-| Receptacles L1-S2 1 and L3-S2 11 | Receptacle DP-CLU 9 (+ DP-ICU 12 tap, capped) | 16 | GRY/PNK | Brake warning lamp — two switches, one lamp | ☐ |
-| PMU pin 6 (O17) | Receptacles L2-M 5, L4-M 5, DP-CLU 10 | 16 | VIO/GRN |  | ☐ |
-| PMU pin 33 (O18) | Receptacles L2-M 6, L4-M 6, DP-CLU 11 | 16 | VIO/YEL |  | ☐ |
-| PMU pin 26 (O3) | Receptacle L2-P1 2 (12 AWG) + 16 AWG tap → DP-CLU 12 | 12 / 16 | RED/BRN | High beam + indicator | ☐ |
-| PMU pin 11 (O6) | Receptacles L2-M 7 and L4-M 1 | 14 | ORN/BRN |  | ☐ |
-| PMU pins 24 / 37 (CAN2) | L1-S1 9/10 · DP-ICU 3/4 · DP-DCU 4/5 · DP-KEY 1/2 — twisted pairs, spliced | 16 tw | YEL/BLK · GRN/BLK | Software termination ON at the PMU | ☐ |
+| Receptacle L1-S2 8 | Receptacle DP-CLU 8 (+ DP-ICU 11 tap, capped) | 16 | GRY | Charge lamp | ☐ |
+| Receptacles L1-S2 1 and L3-S2 11 | Receptacle DP-CLU 9 (+ DP-ICU 12 tap, capped) | 16 | GRY | Brake warning lamp — two switches, one lamp | ☐ |
+| PMU pin 6 (O17) | Receptacles L2-M 5, L4-M 5, DP-CLU 10 | 16 | RED |  | ☐ |
+| PMU pin 33 (O18) | Receptacles L2-M 6, L4-M 6, DP-CLU 11 | 16 | RED |  | ☐ |
+| PMU pin 26 (O3) | Receptacle L2-P 2 (12 AWG) + 16 AWG tap → DP-CLU 12 | 12 / 16 | RED | High beam + indicator | ☐ |
+| PMU pin 11 (O6) | Receptacles L2-M 7 and L4-M 1 | 14 | ORN |  | ☐ |
+| PMU pins 24 / 37 (CAN2) | L1-S1 9/10 · DP-ICU 3/4 · DP-DCU 4/5 · DP-KEY 1/2 — twisted pairs, spliced | 16 tw | YEL · GRN | Software termination ON at the PMU | ☐ |
 | PMU pins 23 / 36 (CAN1) | Receptacle DP-DIAG 1/2 — twisted pair | 16 tw | YEL · GRN | 120 Ω across pins 23/36 at the PMU connector | ☐ |
 | PMU pin 25 (GND) | GND bus | 10 | BLK | ≤ 6 in | ☐ |
 | GND bus | Chassis, dash star point | 10 | BLK | Bare metal, star washer, torque, cavity wax | ☐ |
@@ -120,37 +117,37 @@ The stud: 4 AWG RED ring lug from the busbar, torqued.
 
 ## C · Cut list — legs, sill, drops
 
-One row per cavity. **Length** = the M-2 route for that leg + 15 % + 150 mm service loop; write it in before cutting. Cut CAPPED wires exactly like LIVE ones; PLUG cavities get a sealing plug and no wire.
+One row per cavity. **Length** = the M-2 route for that leg + 15 % + 150 mm service loop; write it in before cutting. Cut CAPPED wires exactly like LIVE ones; PLUG cavities get a sealing plug in both halves and no wire.
 
 
 ### L1 Engine
 
-| Cavity | Circuit | AWG | Colour | State | Label, plate end | Label, far end | Length | Far end lands on | ✔ |
+| Cavity | Circuit | AWG | Colour | State | Label, dash-node end | Label, far end | Length | Far end lands on | ✔ |
 |---|---|---|---|---|---|---|---|---|---|
-| L1-P 1 | Ignition feed — coils and igniters | 12 | RED/BLU | LIVE | `O12 / L1-P-1` | `L1-P-1 / O12` | ____ | Splice at the coil bracket → BW of coil T, coil L, igniter T, igniter L | ☐ |
-| L1-P 2 | LS swap reserve — ECU + injectors | 12 | RED/ORN | CAPPED | `O13 / L1-P-2` | `L1-P-2 / CAPPED` | ____ | Capped at the bulkhead, 12 in past the grommet | ☐ |
-| L1-P 3 | LS swap reserve — cooling fan | 12 | RED/GRY | CAPPED | `O14 / L1-P-3` | `L1-P-3 / CAPPED` | ____ | Capped at the bulkhead, 12 in past the grommet | ☐ |
+| L1-P 1 | Ignition feed — coils and igniters | 12 | RED | LIVE | `O12 / L1-P-1` | `L1-P-1 / O12` | ____ | Splice at the coil bracket → BW of coil T, coil L, igniter T, igniter L | ☐ |
+| L1-P 2 | LS swap reserve — ECU + injectors | 12 | RED | CAPPED | `O13 / L1-P-2` | `L1-P-2 / CAPPED` | ____ | Capped at the bulkhead, 12 in past the grommet | ☐ |
+| L1-P 3 | LS swap reserve — cooling fan | 12 | RED | CAPPED | `O14 / L1-P-3` | `L1-P-3 / CAPPED` | ____ | Capped at the bulkhead, 12 in past the grommet | ☐ |
 | L1-P 4 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
-| L1-S1 1 | Start relay K9 coil | 16 | VIO/RED | LIVE | `O21 / L1-S1-1` | `L1-S1-1 / O21` | ____ | K9 terminal 86 (inner fender) | ☐ |
-| L1-S1 2 | Alternator excitation (field feed) | 16 | RED/BLU | LIVE | `F15 / L1-S1-2` | `L1-S1-2 / F15` | ____ | Alternator plug A-08, terminal BW | ☐ |
-| L1-S1 3 | Water temperature sender | 16 | GRY/GRN | LIVE | `DP-CLU / L1-S1-3` | `L1-S1-3 / DP-CLU` | ____ | Sender C-02, spade — factory wire YW | ☐ |
-| L1-S1 4 | Oil pressure sender | 16 | GRY/BLU | LIVE | `DP-CLU / L1-S1-4` | `L1-S1-4 / DP-CLU` | ____ | Sender C-09, spade — factory wire BrY | ☐ |
+| L1-S1 1 | Start relay K9 coil | 16 | RED | LIVE | `O21 / L1-S1-1` | `L1-S1-1 / O21` | ____ | K9 terminal 86 (inner fender) | ☐ |
+| L1-S1 2 | Alternator excitation (field feed) | 16 | RED | LIVE | `F15 / L1-S1-2` | `L1-S1-2 / F15` | ____ | Alternator plug A-08, terminal BW | ☐ |
+| L1-S1 3 | Water temperature sender | 16 | GRY | LIVE | `DP-CLU / L1-S1-3` | `L1-S1-3 / DP-CLU` | ____ | Sender C-02, spade — factory wire YW | ☐ |
+| L1-S1 4 | Oil pressure sender | 16 | GRY | LIVE | `DP-CLU / L1-S1-4` | `L1-S1-4 / DP-CLU` | ____ | Sender C-09, spade — factory wire BrY | ☐ |
 | L1-S1 5 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
-| L1-S1 6 | Tachometer pulse — SHIELDED | 16 sh | shielded | LIVE | `DP-CLU / L1-S1-6` | `L1-S1-6 / DP-CLU` | ____ | Coil T (B-18) negative terminal — factory wire YG. Shield grounded at the plate end only | ☐ |
+| L1-S1 6 | Tachometer pulse — SHIELDED | 16 sh | shielded | LIVE | `DP-CLU / L1-S1-6` | `L1-S1-6 / DP-CLU` | ____ | Coil T (B-18) negative terminal — factory wire YG. Shield grounded at the dash node end only | ☐ |
 | L1-S1 7 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
 | L1-S1 8 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
-| L1-S1 9 | CAN2 H — LS ECU drop | 16 tw | YEL/BLK | CAPPED | `CAN2H / L1-S1-9` | `L1-S1-9 / CAPPED` | ____ | Capped in the bay with the 120 Ω terminator across 9/10 | ☐ |
-| L1-S1 10 | CAN2 L — LS ECU drop | 16 tw | GRN/BLK | CAPPED | `CAN2L / L1-S1-10` | `L1-S1-10 / CAPPED` | ____ | Capped with cav 9 | ☐ |
-| L1-S1 11 | Inhibitor switch — P/N contact (crank interlock) | 16 | GRY/BLK | LIVE | `A4 / L1-S1-11` | `L1-S1-11 / A4` | ____ | Inhibitor A-06: 8.2 kΩ in the lead to terminal BY; terminal BW → block ground | ☐ |
+| L1-S1 9 | CAN2 H — LS ECU drop | 16 tw | YEL | CAPPED | `CAN2H / L1-S1-9` | `L1-S1-9 / CAPPED` | ____ | Capped in the bay with the 120 Ω terminator across 9/10 | ☐ |
+| L1-S1 10 | CAN2 L — LS ECU drop | 16 tw | GRN | CAPPED | `CAN2L / L1-S1-10` | `L1-S1-10 / CAPPED` | ____ | Capped with cav 9 | ☐ |
+| L1-S1 11 | Inhibitor switch — P/N contact (crank interlock) | 16 | GRY | LIVE | `A4 / L1-S1-11` | `L1-S1-11 / A4` | ____ | Inhibitor A-06: 8.2 kΩ in the lead to terminal BY; terminal BW → block ground | ☐ |
 | L1-S1 12 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
-| L1-S2 1 | Brake fluid level switch | 16 | GRY/PNK | LIVE | `DP-CLU / L1-S2-1` | `L1-S2-1 / DP-CLU` | ____ | Reservoir switch C-05: terminal BR; terminal B → block ground | ☐ |
+| L1-S2 1 | Brake fluid level switch | 16 | GRY | LIVE | `DP-CLU / L1-S2-1` | `L1-S2-1 / DP-CLU` | ____ | Reservoir switch C-05: terminal BR; terminal B → block ground | ☐ |
 | L1-S2 2 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
 | L1-S2 3 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
 | L1-S2 4 | LS swap reserve — sensor | 16 | GRY | CAPPED | `SPARE / L1-S2-4` | `L1-S2-4 / CAPPED` | ____ | Capped at the bulkhead | ☐ |
 | L1-S2 5 | LS swap reserve — sensor | 16 | GRY | CAPPED | `SPARE / L1-S2-5` | `L1-S2-5 / CAPPED` | ____ | Capped at the bulkhead | ☐ |
 | L1-S2 6 | LS swap reserve — sensor | 16 | GRY | CAPPED | `SPARE / L1-S2-6` | `L1-S2-6 / CAPPED` | ____ | Capped at the bulkhead | ☐ |
-| L1-S2 7 | Inhibitor switch — R contact (reverse lamps) | 16 | GRY/BRN | LIVE | `A5 / L1-S2-7` | `L1-S2-7 / A5` | ____ | Inhibitor A-06: 8.2 kΩ in the lead to terminal GY; terminal RW → block ground | ☐ |
-| L1-S2 8 | Alternator charge-lamp sense | 16 | GRY/WHT | LIVE | `DP-CLU / L1-S2-8` | `L1-S2-8 / DP-CLU` | ____ | Alternator plug A-08, terminal WB | ☐ |
+| L1-S2 7 | Inhibitor switch — R contact (reverse lamps) | 16 | GRY | LIVE | `A5 / L1-S2-7` | `L1-S2-7 / A5` | ____ | Inhibitor A-06: 8.2 kΩ in the lead to terminal GY; terminal RW → block ground | ☐ |
+| L1-S2 8 | Alternator charge-lamp sense | 16 | GRY | LIVE | `DP-CLU / L1-S2-8` | `L1-S2-8 / DP-CLU` | ____ | Alternator plug A-08, terminal WB | ☐ |
 | L1-S2 9 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
 | L1-S2 10 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
 | L1-S2 11 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
@@ -158,163 +155,159 @@ One row per cavity. **Length** = the M-2 route for that leg + 15 % + 150 mm serv
 
 ### L2 Front
 
-| Cavity | Circuit | AWG | Colour | State | Label, plate end | Label, far end | Length | Far end lands on | ✔ |
+| Cavity | Circuit | AWG | Colour | State | Label, dash-node end | Label, far end | Length | Far end lands on | ✔ |
 |---|---|---|---|---|---|---|---|---|---|
-| L2-P1 1 | Headlight LOW, both | 12 | RED/BLK | LIVE | `O2 / L2-P1-1` | `L2-P1-1 / O2` | ____ | Splice at the nose → 14 AWG branch to each lamp plug, terminal RL | ☐ |
-| L2-P1 2 | Headlight HIGH, both | 12 | RED/BRN | LIVE | `O3 / L2-P1-2` | `L2-P1-2 / O3` | ____ | Splice at the nose → 14 AWG branch to each lamp plug, terminal RY | ☐ |
-| L2-P1 3 | Pop-up LH run feed | 12 | RED/WHT | LIVE | `K1-87 / L2-P1-3` | `L2-P1-3 / K1-87` | ____ | Motor E-03 run terminal(s) — R + RY bridged if the ohm check confirms one winding | ☐ |
-| L2-P1 4 | Spare heavy | 12 | RED | CAPPED | `SPARE / L2-P1-4` | `L2-P1-4 / CAPPED` | ____ | Capped at the nose | ☐ |
-| L2-P2 1 | Pop-up RH run feed | 12 | RED/WHT | LIVE | `K2-87 / L2-P2-1` | `L2-P2-1 / K2-87` | ____ | Motor E-04 run terminal(s) — as L2-P1 3 | ☐ |
-| L2-P2 2 | Spare heavy | 12 | RED | CAPPED | `SPARE / L2-P2-2` | `L2-P2-2 / CAPPED` | ____ | Capped at the nose | ☐ |
-| L2-P2 3 | Spare heavy | 12 | RED | CAPPED | `SPARE / L2-P2-3` | `L2-P2-3 / CAPPED` | ____ | Capped at the nose | ☐ |
-| L2-P2 4 | Spare heavy | 12 | RED | CAPPED | `SPARE / L2-P2-4` | `L2-P2-4 / CAPPED` | ____ | Capped at the nose | ☐ |
-| L2-M 1 | Wiper LOW brush | 14 | ORN/BLU | LIVE | `O8 / L2-M-1` | `L2-M-1 / O8` | ____ | Wiper motor D-02, terminal LW | ☐ |
-| L2-M 2 | Wiper HIGH brush | 14 | ORN/WHT | LIVE | `O9 / L2-M-2` | `L2-M-2 / O9` | ____ | Wiper motor D-02, terminal LR | ☐ |
-| L2-M 3 | Horns, both | 14 | ORN/BLK | LIVE | `O11 / L2-M-3` | `L2-M-3 / O11` | ____ | Splice at the nose → each horn's terminal GY | ☐ |
-| L2-M 4 | Washer pump feed | 14 | ORN/VIO | LIVE | `K12-87 / L2-M-4` | `L2-M-4 / K12-87` | ____ | Washer motor D-01, terminal LB | ☐ |
-| L2-M 5 | Turn LEFT front | 16 | VIO/GRN | LIVE | `O17 / L2-M-5` | `L2-M-5 / O17` | ____ | Front combo lamp F-05, terminal GR | ☐ |
-| L2-M 6 | Turn RIGHT front | 16 | VIO/YEL | LIVE | `O18 / L2-M-6` | `L2-M-6 / O18` | ____ | Front combo lamp F-06, terminal GO | ☐ |
-| L2-M 7 | Park + side markers, front | 16 | ORN/BRN | LIVE | `O6 / L2-M-7` | `L2-M-7 / O6` | ____ | Splice at the nose → F-05 RG, F-06 RG, F-12 RG, F-13 RG | ☐ |
-| L2-M 8 | Spare | 16 | ORN | CAPPED | `SPARE / L2-M-8` | `L2-M-8 / CAPPED` | ____ | Capped at the nose | ☐ |
-| L2-S 1 | Pop-up LH transit contact | 16 | GRY/BLK | LIVE | `A4 / L2-S-1` | `L2-S-1 / A4` | ____ | Motor E-03 terminal YG through 3.3 kΩ; 47 kΩ baseline from this cavity to the front star ground | ☐ |
-| L2-S 2 | Pop-up RH transit contact | 16 | GRY/BRN | LIVE | `A5 / L2-S-2` | `L2-S-2 / A5` | ____ | Motor E-04 terminal YG through 3.3 kΩ; 47 kΩ baseline to the front star ground | ☐ |
-| L2-S 3 | Wiper park sense | 16 | GRY/WHT | LIVE | `A3 / L2-S-3` | `L2-S-3 / A3` | ____ | Wiper motor D-02 park terminal L through 12 kΩ. Terminal LB is left unconnected (capped) | ☐ |
-| L2-S 4 | Spare | 16 | GRY | CAPPED | `SPARE / L2-S-4` | `L2-S-4 / CAPPED` | ____ | Capped at the nose | ☐ |
-| L2-S 5 | Spare | 16 | GRY | CAPPED | `SPARE / L2-S-5` | `L2-S-5 / CAPPED` | ____ | Capped at the nose | ☐ |
-| L2-S 6 | Spare | 16 | GRY | CAPPED | `SPARE / L2-S-6` | `L2-S-6 / CAPPED` | ____ | Capped at the nose | ☐ |
+| L2-P 1 | Headlight LOW, both | 12 | RED | LIVE | `O2 / L2-P-1` | `L2-P-1 / O2` | ____ | Splice at the nose → 14 AWG branch to each lamp plug, terminal RL | ☐ |
+| L2-P 2 | Headlight HIGH, both | 12 | RED | LIVE | `O3 / L2-P-2` | `L2-P-2 / O3` | ____ | Splice at the nose → 14 AWG branch to each lamp plug, terminal RY | ☐ |
+| L2-P 3 | Pop-up LH run feed | 12 | RED | LIVE | `K1-87 / L2-P-3` | `L2-P-3 / K1-87` | ____ | Motor E-03 run terminal(s) — R + RY bridged if the ohm check confirms one winding | ☐ |
+| L2-P 4 | Pop-up RH run feed | 12 | RED | LIVE | `K2-87 / L2-P-4` | `L2-P-4 / K2-87` | ____ | Motor E-04 run terminal(s) — as cavity 3 | ☐ |
+| L2-M 1 | Wiper LOW brush | 14 | ORN | LIVE | `O8 / L2-M-1` | `L2-M-1 / O8` | ____ | Wiper motor D-02, terminal LW | ☐ |
+| L2-M 2 | Wiper HIGH brush | 14 | ORN | LIVE | `O9 / L2-M-2` | `L2-M-2 / O9` | ____ | Wiper motor D-02, terminal LR | ☐ |
+| L2-M 3 | Horns, both | 14 | ORN | LIVE | `O11 / L2-M-3` | `L2-M-3 / O11` | ____ | Splice at the nose → each horn's terminal GY | ☐ |
+| L2-M 4 | Washer pump feed | 14 | ORN | LIVE | `K12-87 / L2-M-4` | `L2-M-4 / K12-87` | ____ | Washer motor D-01, terminal LB | ☐ |
+| L2-M 5 | Turn LEFT front | 16 | RED | LIVE | `O17 / L2-M-5` | `L2-M-5 / O17` | ____ | Front combo lamp F-05, terminal GR | ☐ |
+| L2-M 6 | Turn RIGHT front | 16 | RED | LIVE | `O18 / L2-M-6` | `L2-M-6 / O18` | ____ | Front combo lamp F-06, terminal GO | ☐ |
+| L2-M 7 | Park + side markers, front | 16 | RED | LIVE | `O6 / L2-M-7` | `L2-M-7 / O6` | ____ | Splice at the nose → F-05 RG, F-06 RG, F-12 RG, F-13 RG | ☐ |
+| L2-M 8 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
+| L2-S 1 | Pop-up LH transit contact | 16 | GRY | LIVE | `A4 / L2-S-1` | `L2-S-1 / A4` | ____ | Motor E-03 terminal YG through 3.3 kΩ; 47 kΩ baseline from this cavity to the front star ground | ☐ |
+| L2-S 2 | Pop-up RH transit contact | 16 | GRY | LIVE | `A5 / L2-S-2` | `L2-S-2 / A5` | ____ | Motor E-04 terminal YG through 3.3 kΩ; 47 kΩ baseline to the front star ground | ☐ |
+| L2-S 3 | Wiper park sense | 16 | GRY | LIVE | `A3 / L2-S-3` | `L2-S-3 / A3` | ____ | Wiper motor D-02 park terminal L through 12 kΩ. Terminal LB is left unconnected (capped) | ☐ |
+| L2-S 4 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
+| L2-S 5 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
+| L2-S 6 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
 
 ### L3 Dash
 
-| Cavity | Circuit | AWG | Colour | State | Label, plate end | Label, far end | Length | Far end lands on | ✔ |
+| Cavity | Circuit | AWG | Colour | State | Label, dash-node end | Label, far end | Length | Far end lands on | ✔ |
 |---|---|---|---|---|---|---|---|---|---|
-| L3-P 1 | Blower motor + | 12 | RED/PNK | LIVE | `O16 / L3-P-1` | `L3-P-1 / O16` | ____ | New blower motor + terminal (factory LO). Motor − → resistor pack → speed switch → dash ground | ☐ |
-| L3-P 2 | Comfort bus | 12 | RED/VIO | CAPPED | `O15 / L3-P-2` | `L3-P-2 / CAPPED` | ____ | Capped behind the centre stack | ☐ |
-| L3-M 1 | Accessory — head unit ACC + USB-C | 14 | ORN/YEL | LIVE | `O10 / L3-M-1` | `L3-M-1 / O10` | ____ | Head unit red (ACC) wire; USB-C module + | ☐ |
+| L3-P 1 | Blower motor + | 12 | RED | LIVE | `O16 / L3-P-1` | `L3-P-1 / O16` | ____ | New blower motor + terminal (factory LO). Motor − → resistor pack → speed switch → dash ground | ☐ |
+| L3-P 2 | Comfort bus | 12 | RED | CAPPED | `O15 / L3-P-2` | `L3-P-2 / CAPPED` | ____ | Capped behind the centre stack | ☐ |
+| L3-M 1 | Accessory — head unit ACC + USB-C | 14 | ORN | LIVE | `O10 / L3-M-1` | `L3-M-1 / O10` | ____ | Head unit red (ACC) wire; USB-C module + | ☐ |
 | L3-M 2 | Head unit memory / constant | 14 | RED | LIVE | `F1 / L3-M-2` | `L3-M-2 / F1` | ____ | Head unit yellow (BATT) wire | ☐ |
-| L3-S1 1 | Key ladder | 16 | GRY/RED | LIVE | `A16 / L3-S1-1` | `L3-S1-1 / A16` | ____ | Ignition switch: ACC → 33 kΩ · IG → 15 kΩ · ST → 6.8 kΩ, all summed onto this wire | ☐ |
-| L3-S1 2 | Headlight ladder | 16 | GRY/WHT | LIVE | `A15 / L3-S1-2` | `L3-S1-2 / A15` | ____ | Light switch E-01: PARK → 33 kΩ · HEAD → 15 kΩ · DIMMER-HI → 8.2 kΩ (fed from the HEAD side) · PASS → 3.3 kΩ | ☐ |
-| L3-S1 3 | Turn stalk ladder | 16 | GRY/GRN | LIVE | `A1 / L3-S1-3` | `L3-S1-3 / A1` | ____ | Stalk F-02: LEFT 1.8 kΩ · RIGHT 10 kΩ · OFF 47 kΩ, contacts to column ground | ☐ |
-| L3-S1 4 | Wiper stalk ladder | 16 | GRY/BLU | LIVE | `A2 / L3-S1-4` | `L3-S1-4 / A2` | ____ | Stalk D-03: HIGH 4.7 kΩ · LOW 10 kΩ · INT 18 kΩ · OFF 47 kΩ · WASH 1.8 kΩ + 1N5819 (band toward the contact) | ☐ |
-| L3-S1 5 | Brake pedal switch | 16 | GRY/ORN | LIVE | `A3 / L3-S1-5` | `L3-S1-5 / A3` | ____ | Pedal switch F-11 through 4.7 kΩ; other terminal → dash ground | ☐ |
-| L3-S1 6 | Hazard switch | 16 | GRY/PNK | LIVE | `A8 / L3-S1-6` | `L3-S1-6 / A8` | ____ | Hazard contact through 4.7 kΩ; other terminal → column ground | ☐ |
-| L3-S1 7 | Spare | 16 | GRY | CAPPED | `SPARE / L3-S1-7` | `L3-S1-7 / CAPPED` | ____ | Capped behind the dash | ☐ |
-| L3-S1 8 | Illumination bus | 16 | VIO/WHT | LIVE | `O20 / L3-S1-8` | `L3-S1-8 / O20` | ____ | Dash illumination lamps E-06, E-07, E-10 (RL) + head unit illumination wire | ☐ |
-| L3-S1 9 | Wink LEFT — NC pole | 16 | BLU/GRN | LIVE | `K2-85 / L3-S1-9` | `L3-S1-9 / K2-85` | ____ | Wink L switch NC terminal; switch common → dash ground | ☐ |
-| L3-S1 10 | Wink RIGHT — NC pole | 16 | BLU/YEL | LIVE | `K1-85 / L3-S1-10` | `L3-S1-10 / K1-85` | ____ | Wink R switch NC terminal; switch common → dash ground | ☐ |
-| L3-S1 11 | Horn + wink request | 16 | GRY/BLK | LIVE | `A8 / L3-S1-11` | `L3-S1-11 / A8` | ____ | Horn pad through 8.2 kΩ · wink L NO through 18 kΩ · wink R NO through 33 kΩ — three resistors joined onto this wire | ☐ |
-| L3-S1 12 | ACC — wake source | 16 | BLU/WHT | LIVE | `WAKE / L3-S1-12` | `L3-S1-12 / WAKE` | ____ | Ignition switch ACC terminal (raw 12 V) | ☐ |
+| L3-S1 1 | Key ladder | 16 | GRY | LIVE | `A16 / L3-S1-1` | `L3-S1-1 / A16` | ____ | Ignition switch: ACC → 33 kΩ · IG → 15 kΩ · ST → 6.8 kΩ, all summed onto this wire | ☐ |
+| L3-S1 2 | Headlight ladder | 16 | GRY | LIVE | `A15 / L3-S1-2` | `L3-S1-2 / A15` | ____ | Light switch E-01: PARK → 33 kΩ · HEAD → 15 kΩ · DIMMER-HI → 8.2 kΩ (fed from the HEAD side) · PASS → 3.3 kΩ | ☐ |
+| L3-S1 3 | Turn stalk ladder | 16 | GRY | LIVE | `A1 / L3-S1-3` | `L3-S1-3 / A1` | ____ | Stalk F-02: LEFT 1.8 kΩ · RIGHT 10 kΩ · OFF 47 kΩ, contacts to column ground | ☐ |
+| L3-S1 4 | Wiper stalk ladder | 16 | GRY | LIVE | `A2 / L3-S1-4` | `L3-S1-4 / A2` | ____ | Stalk D-03: HIGH 4.7 kΩ · LOW 10 kΩ · INT 18 kΩ · OFF 47 kΩ · WASH 1.8 kΩ + 1N5819 (band toward the contact) | ☐ |
+| L3-S1 5 | Brake pedal switch | 16 | GRY | LIVE | `A3 / L3-S1-5` | `L3-S1-5 / A3` | ____ | Pedal switch F-11 through 4.7 kΩ; other terminal → dash ground | ☐ |
+| L3-S1 6 | Hazard switch | 16 | GRY | LIVE | `A8 / L3-S1-6` | `L3-S1-6 / A8` | ____ | Hazard contact through 4.7 kΩ; other terminal → column ground | ☐ |
+| L3-S1 7 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
+| L3-S1 8 | Illumination bus | 16 | RED | LIVE | `O20 / L3-S1-8` | `L3-S1-8 / O20` | ____ | Dash illumination lamps E-06, E-07, E-10 (RL) + head unit illumination wire | ☐ |
+| L3-S1 9 | Wink LEFT — NC pole | 16 | BLU | LIVE | `K2-85 / L3-S1-9` | `L3-S1-9 / K2-85` | ____ | Wink L switch NC terminal; switch common → dash ground | ☐ |
+| L3-S1 10 | Wink RIGHT — NC pole | 16 | BLU | LIVE | `K1-85 / L3-S1-10` | `L3-S1-10 / K1-85` | ____ | Wink R switch NC terminal; switch common → dash ground | ☐ |
+| L3-S1 11 | Horn + wink request | 16 | GRY | LIVE | `A8 / L3-S1-11` | `L3-S1-11 / A8` | ____ | Horn pad through 8.2 kΩ · wink L NO through 18 kΩ · wink R NO through 33 kΩ — three resistors joined onto this wire | ☐ |
+| L3-S1 12 | ACC — wake source | 16 | BLU | LIVE | `WAKE / L3-S1-12` | `L3-S1-12 / WAKE` | ____ | Ignition switch ACC terminal (raw 12 V) | ☐ |
 | L3-S2 1 | RUN — wake source | 16 | BLU | LIVE | `WAKE / L3-S2-1` | `L3-S2-1 / WAKE` | ____ | Ignition switch IG terminal (raw 12 V) | ☐ |
 | L3-S2 2 | Switch supply +12 V | 16 | PNK | LIVE | `F3 / L3-S2-2` | `L3-S2-2 / F3` | ____ | Ignition switch B terminal · light switch E-01 common | ☐ |
-| L3-S2 3 | Window DRV up command | 16 | BLU/BRN | CAPPED | `L4-M / L3-S2-3` | `L3-S2-3 / CAPPED` | ____ | Capped at the console | ☐ |
-| L3-S2 4 | Window DRV down command | 16 | BLU/BLK | CAPPED | `L4-M / L3-S2-4` | `L3-S2-4 / CAPPED` | ____ | Capped at the console | ☐ |
-| L3-S2 5 | Window PASS up command | 16 | BLU/VIO | CAPPED | `L4-M / L3-S2-5` | `L3-S2-5 / CAPPED` | ____ | Capped at the console | ☐ |
-| L3-S2 6 | Window PASS down command | 16 | BLU/ORN | CAPPED | `L4-M / L3-S2-6` | `L3-S2-6 / CAPPED` | ____ | Capped at the console | ☐ |
-| L3-S2 7 | Future module +12 V switched | 16 | ORN/GRY | CAPPED | `SPARE / L3-S2-7` | `L3-S2-7 / CAPPED` | ____ | Capped behind the dash | ☐ |
+| L3-S2 3 | Window DRV up command | 16 | BLU | CAPPED | `L4-M / L3-S2-3` | `L3-S2-3 / CAPPED` | ____ | Capped at the console | ☐ |
+| L3-S2 4 | Window DRV down command | 16 | BLU | CAPPED | `L4-M / L3-S2-4` | `L3-S2-4 / CAPPED` | ____ | Capped at the console | ☐ |
+| L3-S2 5 | Window PASS up command | 16 | BLU | CAPPED | `L4-M / L3-S2-5` | `L3-S2-5 / CAPPED` | ____ | Capped at the console | ☐ |
+| L3-S2 6 | Window PASS down command | 16 | BLU | CAPPED | `L4-M / L3-S2-6` | `L3-S2-6 / CAPPED` | ____ | Capped at the console | ☐ |
+| L3-S2 7 | Future module +12 V switched | 16 | RED | CAPPED | `SPARE / L3-S2-7` | `L3-S2-7 / CAPPED` | ____ | Capped behind the dash | ☐ |
 | L3-S2 8 | Future module ground | 16 | BLK | CAPPED | `GND / L3-S2-8` | `L3-S2-8 / CAPPED` | ____ | Capped behind the dash | ☐ |
-| L3-S2 9 | Washer relay K12 coil return | 16 | BLU/GRY | LIVE | `K12-85 / L3-S2-9` | `L3-S2-9 / K12-85` | ____ | Wiper stalk D-03 WASH contact (same terminal as the WASH ladder leg); contact's other side → column ground | ☐ |
+| L3-S2 9 | Washer relay K12 coil return | 16 | BLU | LIVE | `K12-85 / L3-S2-9` | `L3-S2-9 / K12-85` | ____ | Wiper stalk D-03 WASH contact (same terminal as the WASH ladder leg); contact's other side → column ground | ☐ |
 | L3-S2 10 | Courtesy — glove box lamp | 16 | RED | LIVE | `F19 / L3-S2-10` | `L3-S2-10 / F19` | ____ | Glove box lamp H-01 +; lamp − → lid switch H-02 → dash ground | ☐ |
-| L3-S2 11 | Parking brake switch → brake warning lamp | 16 | GRY/PNK | LIVE | `DP-CLU / L3-S2-11` | `L3-S2-11 / DP-CLU` | ____ | Parking brake switch C-04 terminal BR (switch body grounds through the lever bracket) | ☐ |
-| L3-S2 12 | Spare | 16 | GRY | CAPPED | `SPARE / L3-S2-12` | `L3-S2-12 / CAPPED` | ____ | Capped behind the dash | ☐ |
-| L3-S3 1 | Future pass-through A | 16 | GRY/BRN | CAPPED | `L4-S / L3-S3-1` | `L3-S3-1 / CAPPED` | ____ | Capped behind the dash | ☐ |
-| L3-S3 2 | Future pass-through B | 16 | GRY/BLU | CAPPED | `L4-S / L3-S3-2` | `L3-S3-2 / CAPPED` | ____ | Capped behind the dash | ☐ |
-| L3-S3 3 | Future pass-through C | 16 | GRY/ORN | CAPPED | `L4-S / L3-S3-3` | `L3-S3-3 / CAPPED` | ____ | Capped behind the dash | ☐ |
-| L3-S3 4 | Spare | 16 | GRY | CAPPED | `SPARE / L3-S3-4` | `L3-S3-4 / CAPPED` | ____ | Capped behind the dash | ☐ |
-| L3-S3 5 | Spare | 16 | GRY | CAPPED | `SPARE / L3-S3-5` | `L3-S3-5 / CAPPED` | ____ | Capped behind the dash | ☐ |
-| L3-S3 6 | Spare | 16 | GRY | CAPPED | `SPARE / L3-S3-6` | `L3-S3-6 / CAPPED` | ____ | Capped behind the dash | ☐ |
-| L3-S3 7 | Spare | 16 | GRY | CAPPED | `SPARE / L3-S3-7` | `L3-S3-7 / CAPPED` | ____ | Capped behind the dash | ☐ |
-| L3-S3 8 | Spare | 16 | GRY | CAPPED | `SPARE / L3-S3-8` | `L3-S3-8 / CAPPED` | ____ | Capped behind the dash | ☐ |
+| L3-S2 11 | Parking brake switch → brake warning lamp | 16 | GRY | LIVE | `DP-CLU / L3-S2-11` | `L3-S2-11 / DP-CLU` | ____ | Parking brake switch C-04 terminal BR (switch body grounds through the lever bracket) | ☐ |
+| L3-S2 12 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
+| L3-S3 1 | Future pass-through A | 16 | GRY | CAPPED | `L4-S / L3-S3-1` | `L3-S3-1 / CAPPED` | ____ | Capped behind the dash | ☐ |
+| L3-S3 2 | Future pass-through B | 16 | GRY | CAPPED | `L4-S / L3-S3-2` | `L3-S3-2 / CAPPED` | ____ | Capped behind the dash | ☐ |
+| L3-S3 3 | Future pass-through C | 16 | GRY | CAPPED | `L4-S / L3-S3-3` | `L3-S3-3 / CAPPED` | ____ | Capped behind the dash | ☐ |
+| L3-S3 4 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
+| L3-S3 5 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
+| L3-S3 6 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
+| L3-S3 7 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
+| L3-S3 8 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
 
 ### L4 Rear
 
-| Cavity | Circuit | AWG | Colour | State | Label, plate end | Label, far end | Length | Far end lands on | ✔ |
+| Cavity | Circuit | AWG | Colour | State | Label, dash-node end | Label, far end | Length | Far end lands on | ✔ |
 |---|---|---|---|---|---|---|---|---|---|
-| L4-P 1 | Rear defog grid | 12 | RED/GRN | LIVE | `O4 / L4-P-1` | `L4-P-1 / O4` | ____ | Grid G-25 terminal LG; grid terminal B → rear star ground (12 AWG) | ☐ |
-| L4-P 2 | Fuel pump + | 12 | RED/YEL | LIVE | `O5 / L4-P-2` | `L4-P-2 / O5` | ____ | Carter P4070 + ; pump − → its OWN 12 AWG to the rear star ground | ☐ |
-| L4-P 3 | Window motor bus feed | 12 | RED/WHT | CAPPED | `O1 / L4-P-3` | `L4-P-3 / CAPPED` | ____ | Capped at the sill plate | ☐ |
+| L4-P 1 | Rear defog grid | 12 | RED | LIVE | `O4 / L4-P-1` | `L4-P-1 / O4` | ____ | Grid G-25 terminal LG; grid terminal B → rear star ground (12 AWG) | ☐ |
+| L4-P 2 | Fuel pump + | 12 | RED | LIVE | `O5 / L4-P-2` | `L4-P-2 / O5` | ____ | Carter P4070 + ; pump − → its OWN 12 AWG to the rear star ground | ☐ |
+| L4-P 3 | Window motor bus feed | 12 | RED | CAPPED | `O1 / L4-P-3` | `L4-P-3 / CAPPED` | ____ | Capped at the sill node | ☐ |
 | L4-P 4 | Amplifier constant feed | 12 | RED | LIVE | `F5 / L4-P-4` | `L4-P-4 / F5` | ____ | Amplifier B+ terminal (cargo bin); amp ground → rear star (12 AWG) | ☐ |
-| L4-M 1 | Tail · licence · rear markers | 14 | ORN/BRN | LIVE | `O6 / L4-M-1` | `L4-M-1 / O6` | ____ | Splice at the hatch → F-07 RG, F-08 RG, F-04 RG (×2), F-14 RG, F-15 RG | ☐ |
-| L4-M 2 | Brake lamps | 14 | ORN/GRN | LIVE | `O7 / L4-M-2` | `L4-M-2 / O7` | ____ | Splice → F-07 G, F-08 G | ☐ |
-| L4-M 3 | Hatch release solenoid | 14 | ORN/RED | CAPPED | `SPARE / L4-M-3` | `L4-M-3 / CAPPED` | ____ | Capped at the hatch | ☐ |
-| L4-M 4 | Fuel-door release solenoid | 14 | ORN/PNK | CAPPED | `SPARE / L4-M-4` | `L4-M-4 / CAPPED` | ____ | Capped at the fuel door | ☐ |
-| L4-M 5 | Turn LEFT rear | 16 | VIO/GRN | LIVE | `O17 / L4-M-5` | `L4-M-5 / O17` | ____ | Rear combo F-07, terminal GR | ☐ |
-| L4-M 6 | Turn RIGHT rear | 16 | VIO/YEL | LIVE | `O18 / L4-M-6` | `L4-M-6 / O18` | ____ | Rear combo F-08, terminal GO | ☐ |
-| L4-M 7 | Reverse lamps | 16 | VIO/BLK | LIVE | `O19 / L4-M-7` | `L4-M-7 / O19` | ____ | Splice → F-07 RW, F-08 RW | ☐ |
-| L4-M 8 | Interior lamp (PWM) | 16 | VIO/WHT | LIVE | `F12 / L4-M-8` | `L4-M-8 / F12` | ____ | Interior/spot lamp H-06 +; lamp − through its own DOOR/OFF/ON switch → roof-rail ground | ☐ |
-| L4-M 9 | Window DRV up command → K5 coil | 16 | BLU/BRN | CAPPED | `L3-S2 / L4-M-9` | `L4-M-9 / CAPPED` | ____ | Capped at the sill plate | ☐ |
-| L4-M 10 | Window DRV down command → K6 coil | 16 | BLU/BLK | CAPPED | `L3-S2 / L4-M-10` | `L4-M-10 / CAPPED` | ____ | Capped at the sill plate | ☐ |
-| L4-M 11 | Window PASS up command → K7 coil | 16 | BLU/VIO | CAPPED | `L3-S2 / L4-M-11` | `L4-M-11 / CAPPED` | ____ | Capped at the sill plate | ☐ |
-| L4-M 12 | Window PASS down command → K8 coil | 16 | BLU/ORN | CAPPED | `L3-S2 / L4-M-12` | `L4-M-12 / CAPPED` | ____ | Capped at the sill plate | ☐ |
-| L4-S 1 | Fuel level sender | 16 | GRY/YEL | LIVE | `DP-CLU / L4-S-1` | `L4-S-1 / DP-CLU` | ____ | Tank sender C-01 terminal Y; sender terminal B → rear star ground (16 AWG). Route apart from L4-P | ☐ |
-| L4-S 2 | Door jamb switches — ladder | 16 | GRY/VIO | LIVE | `A6 / L4-S-2` | `L4-S-2 / A6` | ____ | Splice at the sill → driver jamb switch through 33 kΩ · passenger jamb switch through 8.2 kΩ; each switch grounds through its body | ☐ |
-| L4-S 3 | Spare | 16 | GRY | CAPPED | `SPARE / L4-S-3` | `L4-S-3 / CAPPED` | ____ | Capped at the sill | ☐ |
-| L4-S 4 | Spare | 16 | GRY | CAPPED | `SPARE / L4-S-4` | `L4-S-4 / CAPPED` | ____ | Capped at the sill | ☐ |
-| L4-S 5 | Future pass-through A | 16 | GRY/BRN | CAPPED | `L3-S3 / L4-S-5` | `L4-S-5 / CAPPED` | ____ | Capped at the hatch | ☐ |
-| L4-S 6 | Future pass-through B | 16 | GRY/BLU | CAPPED | `L3-S3 / L4-S-6` | `L4-S-6 / CAPPED` | ____ | Capped at the hatch | ☐ |
-| L4-S 7 | Future pass-through C | 16 | GRY/ORN | CAPPED | `L3-S3 / L4-S-7` | `L4-S-7 / CAPPED` | ____ | Capped at the hatch | ☐ |
+| L4-M 1 | Tail · licence · rear markers | 14 | ORN | LIVE | `O6 / L4-M-1` | `L4-M-1 / O6` | ____ | Splice at the hatch → F-07 RG, F-08 RG, F-04 RG (×2), F-14 RG, F-15 RG | ☐ |
+| L4-M 2 | Brake lamps | 14 | ORN | LIVE | `O7 / L4-M-2` | `L4-M-2 / O7` | ____ | Splice → F-07 G, F-08 G | ☐ |
+| L4-M 3 | Hatch release solenoid | 14 | ORN | CAPPED | `SPARE / L4-M-3` | `L4-M-3 / CAPPED` | ____ | Capped at the hatch | ☐ |
+| L4-M 4 | Fuel-door release solenoid | 14 | ORN | CAPPED | `SPARE / L4-M-4` | `L4-M-4 / CAPPED` | ____ | Capped at the fuel door | ☐ |
+| L4-M 5 | Turn LEFT rear | 16 | RED | LIVE | `O17 / L4-M-5` | `L4-M-5 / O17` | ____ | Rear combo F-07, terminal GR | ☐ |
+| L4-M 6 | Turn RIGHT rear | 16 | RED | LIVE | `O18 / L4-M-6` | `L4-M-6 / O18` | ____ | Rear combo F-08, terminal GO | ☐ |
+| L4-M 7 | Reverse lamps | 16 | RED | LIVE | `O19 / L4-M-7` | `L4-M-7 / O19` | ____ | Splice → F-07 RW, F-08 RW | ☐ |
+| L4-M 8 | Interior lamp (PWM) | 16 | RED | LIVE | `F12 / L4-M-8` | `L4-M-8 / F12` | ____ | Interior/spot lamp H-06 +; lamp − through its own DOOR/OFF/ON switch → roof-rail ground | ☐ |
+| L4-M 9 | Window DRV up command → K5 coil | 16 | BLU | CAPPED | `L3-S2 / L4-M-9` | `L4-M-9 / CAPPED` | ____ | Capped at the sill node | ☐ |
+| L4-M 10 | Window DRV down command → K6 coil | 16 | BLU | CAPPED | `L3-S2 / L4-M-10` | `L4-M-10 / CAPPED` | ____ | Capped at the sill node | ☐ |
+| L4-M 11 | Window PASS up command → K7 coil | 16 | BLU | CAPPED | `L3-S2 / L4-M-11` | `L4-M-11 / CAPPED` | ____ | Capped at the sill node | ☐ |
+| L4-M 12 | Window PASS down command → K8 coil | 16 | BLU | CAPPED | `L3-S2 / L4-M-12` | `L4-M-12 / CAPPED` | ____ | Capped at the sill node | ☐ |
+| L4-S 1 | Fuel level sender | 16 | GRY | LIVE | `DP-CLU / L4-S-1` | `L4-S-1 / DP-CLU` | ____ | Tank sender C-01 terminal Y; sender terminal B → rear star ground (16 AWG). Route apart from L4-P | ☐ |
+| L4-S 2 | Door jamb switches — ladder | 16 | GRY | LIVE | `A6 / L4-S-2` | `L4-S-2 / A6` | ____ | Splice at the sill → driver jamb switch through 33 kΩ · passenger jamb switch through 8.2 kΩ; each switch grounds through its body | ☐ |
+| L4-S 3 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
+| L4-S 4 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
+| L4-S 5 | Future pass-through A | 16 | GRY | CAPPED | `L3-S3 / L4-S-5` | `L4-S-5 / CAPPED` | ____ | Capped at the hatch | ☐ |
+| L4-S 6 | Future pass-through B | 16 | GRY | CAPPED | `L3-S3 / L4-S-6` | `L4-S-6 / CAPPED` | ____ | Capped at the hatch | ☐ |
+| L4-S 7 | Future pass-through C | 16 | GRY | CAPPED | `L3-S3 / L4-S-7` | `L4-S-7 / CAPPED` | ____ | Capped at the hatch | ☐ |
 | L4-S 8 | Courtesy — luggage lamp | 16 | RED | LIVE | `F19 / L4-S-8` | `L4-S-8 / F19` | ____ | Luggage lamp H-11 +; lamp − → lid switch H-12 → rear star ground | ☐ |
 
 ### Sill — doors
 
-| Cavity | Circuit | AWG | Colour | State | Label, plate end | Label, far end | Length | Far end lands on | ✔ |
+| Cavity | Circuit | AWG | Colour | State | Label, dash-node end | Label, far end | Length | Far end lands on | ✔ |
 |---|---|---|---|---|---|---|---|---|---|
-| D1 1 | Window motor leg A | 14 | RED/WHT | CAPPED | `K5/K6-at / D1-1` | `D1-1 / CAPPED` | ____ | Capped inside the door | ☐ |
-| D1 2 | Window motor leg B | 14 | RED/WHT | CAPPED | `K5/K6-at / D1-2` | `D1-2 / CAPPED` | ____ | Capped inside the door | ☐ |
-| D1 3 | Spare | 16 | GRY | CAPPED | `SPARE / D1-3` | `D1-3 / CAPPED` | ____ | Capped inside the door | ☐ |
-| D1 4 | Mirror motor common | 16 | GRY/GRN | CAPPED | `SPARE / D1-4` | `D1-4 / CAPPED` | ____ | Capped inside the door | ☐ |
-| D1 5 | Mirror motor X | 16 | GRY/BLU | CAPPED | `SPARE / D1-5` | `D1-5 / CAPPED` | ____ | Capped inside the door | ☐ |
-| D1 6 | Mirror motor Y | 16 | GRY/ORN | CAPPED | `SPARE / D1-6` | `D1-6 / CAPPED` | ____ | Capped inside the door | ☐ |
-| D1 7 | Mirror heat | 16 | RED/VIO | CAPPED | `F14 / D1-7` | `D1-7 / CAPPED` | ____ | Capped inside the door | ☐ |
+| D1 1 | Window motor leg A | 14 | RED | CAPPED | `K5/K6-at / D1-1` | `D1-1 / CAPPED` | ____ | Capped inside the door | ☐ |
+| D1 2 | Window motor leg B | 14 | RED | CAPPED | `K5/K6-at / D1-2` | `D1-2 / CAPPED` | ____ | Capped inside the door | ☐ |
+| D1 3 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
+| D1 4 | Mirror motor common | 16 | GRY | CAPPED | `SPARE / D1-4` | `D1-4 / CAPPED` | ____ | Capped inside the door | ☐ |
+| D1 5 | Mirror motor X | 16 | GRY | CAPPED | `SPARE / D1-5` | `D1-5 / CAPPED` | ____ | Capped inside the door | ☐ |
+| D1 6 | Mirror motor Y | 16 | GRY | CAPPED | `SPARE / D1-6` | `D1-6 / CAPPED` | ____ | Capped inside the door | ☐ |
+| D1 7 | Mirror heat | 16 | RED | CAPPED | `F14 / D1-7` | `D1-7 / CAPPED` | ____ | Capped inside the door | ☐ |
 | D1 8 | Door ground | 16 | BLK | CAPPED | `SILL-GND / D1-8` | `D1-8 / CAPPED` | ____ | Capped inside the door — lands on the mirror/window ground when fitted | ☐ |
-| D2 1 | Window motor leg A | 14 | RED/WHT | CAPPED | `K7/K8-at / D2-1` | `D2-1 / CAPPED` | ____ | Capped inside the door | ☐ |
-| D2 2 | Window motor leg B | 14 | RED/WHT | CAPPED | `K7/K8-at / D2-2` | `D2-2 / CAPPED` | ____ | Capped inside the door | ☐ |
-| D2 3 | Spare | 16 | GRY | CAPPED | `SPARE / D2-3` | `D2-3 / CAPPED` | ____ | Capped inside the door | ☐ |
-| D2 4 | Mirror motor common | 16 | GRY/GRN | CAPPED | `SPARE / D2-4` | `D2-4 / CAPPED` | ____ | Capped inside the door | ☐ |
-| D2 5 | Mirror motor X | 16 | GRY/BLU | CAPPED | `SPARE / D2-5` | `D2-5 / CAPPED` | ____ | Capped inside the door | ☐ |
-| D2 6 | Mirror motor Y | 16 | GRY/ORN | CAPPED | `SPARE / D2-6` | `D2-6 / CAPPED` | ____ | Capped inside the door | ☐ |
-| D2 7 | Mirror heat | 16 | RED/VIO | CAPPED | `F14 / D2-7` | `D2-7 / CAPPED` | ____ | Capped inside the door | ☐ |
+| D2 1 | Window motor leg A | 14 | RED | CAPPED | `K7/K8-at / D2-1` | `D2-1 / CAPPED` | ____ | Capped inside the door | ☐ |
+| D2 2 | Window motor leg B | 14 | RED | CAPPED | `K7/K8-at / D2-2` | `D2-2 / CAPPED` | ____ | Capped inside the door | ☐ |
+| D2 3 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
+| D2 4 | Mirror motor common | 16 | GRY | CAPPED | `SPARE / D2-4` | `D2-4 / CAPPED` | ____ | Capped inside the door | ☐ |
+| D2 5 | Mirror motor X | 16 | GRY | CAPPED | `SPARE / D2-5` | `D2-5 / CAPPED` | ____ | Capped inside the door | ☐ |
+| D2 6 | Mirror motor Y | 16 | GRY | CAPPED | `SPARE / D2-6` | `D2-6 / CAPPED` | ____ | Capped inside the door | ☐ |
+| D2 7 | Mirror heat | 16 | RED | CAPPED | `F14 / D2-7` | `D2-7 / CAPPED` | ____ | Capped inside the door | ☐ |
 | D2 8 | Door ground | 16 | BLK | CAPPED | `SILL-GND / D2-8` | `D2-8 / CAPPED` | ____ | Capped inside the door | ☐ |
 
 ### Drops
 
-| Cavity | Circuit | AWG | Colour | State | Label, plate end | Label, far end | Length | Far end lands on | ✔ |
+| Cavity | Circuit | AWG | Colour | State | Label, dash-node end | Label, far end | Length | Far end lands on | ✔ |
 |---|---|---|---|---|---|---|---|---|---|
-| DP-CLU 1 | Cluster IG feed | 16 | RED/BLU | LIVE | `F16 / DP-CLU-1` | `DP-CLU-1 / F16` | ____ | Cluster plug — factory GY (ignition feed to the gauges and lamps) | ☐ |
+| DP-CLU 1 | Cluster IG feed | 16 | RED | LIVE | `F16 / DP-CLU-1` | `DP-CLU-1 / F16` | ____ | Cluster plug — factory GY (ignition feed to the gauges and lamps) | ☐ |
 | DP-CLU 2 | Cluster ground | 16 | BLK | LIVE | `GND / DP-CLU-2` | `DP-CLU-2 / GND` | ____ | Cluster plug — factory B | ☐ |
-| DP-CLU 3 | Cluster illumination | 16 | VIO/WHT | LIVE | `O20 / DP-CLU-3` | `DP-CLU-3 / O20` | ____ | Cluster plug — factory RL | ☐ |
+| DP-CLU 3 | Cluster illumination | 16 | RED | LIVE | `O20 / DP-CLU-3` | `DP-CLU-3 / O20` | ____ | Cluster plug — factory RL | ☐ |
 | DP-CLU 4 | Tachometer | 16 sh | shielded | LIVE | `L1-S1 / DP-CLU-4` | `DP-CLU-4 / L1-S1` | ____ | Cluster plug — factory YG | ☐ |
-| DP-CLU 5 | Water temp gauge | 16 | GRY/GRN | LIVE | `L1-S1 / DP-CLU-5` | `DP-CLU-5 / L1-S1` | ____ | Cluster plug — factory YW | ☐ |
-| DP-CLU 6 | Oil pressure gauge | 16 | GRY/BLU | LIVE | `L1-S1 / DP-CLU-6` | `DP-CLU-6 / L1-S1` | ____ | Cluster plug — factory BrY | ☐ |
-| DP-CLU 7 | Fuel gauge | 16 | GRY/YEL | LIVE | `L4-S / DP-CLU-7` | `DP-CLU-7 / L4-S` | ____ | Cluster plug — factory Y | ☐ |
-| DP-CLU 8 | Charge warning lamp | 16 | GRY/WHT | LIVE | `L1-S2 / DP-CLU-8` | `DP-CLU-8 / L1-S2` | ____ | Cluster plug — the charge-lamp terminal (identify at the cluster plug) | ☐ |
-| DP-CLU 9 | Brake warning lamp | 16 | GRY/PNK | LIVE | `L1-S2 / DP-CLU-9` | `DP-CLU-9 / L1-S2` | ____ | Cluster plug — factory BR | ☐ |
-| DP-CLU 10 | Turn LEFT indicator | 16 | VIO/GRN | LIVE | `O17 / DP-CLU-10` | `DP-CLU-10 / O17` | ____ | Cluster plug — factory GR | ☐ |
-| DP-CLU 11 | Turn RIGHT indicator | 16 | VIO/YEL | LIVE | `O18 / DP-CLU-11` | `DP-CLU-11 / O18` | ____ | Cluster plug — factory GO | ☐ |
-| DP-CLU 12 | High-beam indicator | 16 | RED/BRN | LIVE | `O3 / DP-CLU-12` | `DP-CLU-12 / O3` | ____ | Cluster plug — factory RY | ☐ |
+| DP-CLU 5 | Water temp gauge | 16 | GRY | LIVE | `L1-S1 / DP-CLU-5` | `DP-CLU-5 / L1-S1` | ____ | Cluster plug — factory YW | ☐ |
+| DP-CLU 6 | Oil pressure gauge | 16 | GRY | LIVE | `L1-S1 / DP-CLU-6` | `DP-CLU-6 / L1-S1` | ____ | Cluster plug — factory BrY | ☐ |
+| DP-CLU 7 | Fuel gauge | 16 | GRY | LIVE | `L4-S / DP-CLU-7` | `DP-CLU-7 / L4-S` | ____ | Cluster plug — factory Y | ☐ |
+| DP-CLU 8 | Charge warning lamp | 16 | GRY | LIVE | `L1-S2 / DP-CLU-8` | `DP-CLU-8 / L1-S2` | ____ | Cluster plug — the charge-lamp terminal (identify at the cluster plug) | ☐ |
+| DP-CLU 9 | Brake warning lamp | 16 | GRY | LIVE | `L1-S2 / DP-CLU-9` | `DP-CLU-9 / L1-S2` | ____ | Cluster plug — factory BR | ☐ |
+| DP-CLU 10 | Turn LEFT indicator | 16 | RED | LIVE | `O17 / DP-CLU-10` | `DP-CLU-10 / O17` | ____ | Cluster plug — factory GR | ☐ |
+| DP-CLU 11 | Turn RIGHT indicator | 16 | RED | LIVE | `O18 / DP-CLU-11` | `DP-CLU-11 / O18` | ____ | Cluster plug — factory GO | ☐ |
+| DP-CLU 12 | High-beam indicator | 16 | RED | LIVE | `O3 / DP-CLU-12` | `DP-CLU-12 / O3` | ____ | Cluster plug — factory RY | ☐ |
 | DP-DIAG 1 | CAN1 H | 16 tw | YEL | LIVE | `CAN1H / DP-DIAG-1` | `DP-DIAG-1 / CAN1H` | ____ | Laptop port in the glovebox — 120 Ω across 1/2 inside the plug | ☐ |
 | DP-DIAG 2 | CAN1 L | 16 tw | GRN | LIVE | `CAN1L / DP-DIAG-2` | `DP-DIAG-2 / CAN1L` | ____ | Laptop port | ☐ |
 | DP-DIAG 3 | +12 V constant | 16 | RED | LIVE | `F2 / DP-DIAG-3` | `DP-DIAG-3 / F2` | ____ | Laptop port | ☐ |
 | DP-DIAG 4 | Ground | 16 | BLK | LIVE | `GND / DP-DIAG-4` | `DP-DIAG-4 / GND` | ____ | Laptop port | ☐ |
-| DP-ICU 1 | +12 V switched | 16 | ORN/YEL | CAPPED | `O10 / DP-ICU-1` | `DP-ICU-1 / CAPPED` | ____ | Capped at the post | ☐ |
+| DP-ICU 1 | +12 V switched | 16 | RED | CAPPED | `O10 / DP-ICU-1` | `DP-ICU-1 / CAPPED` | ____ | Capped at the post | ☐ |
 | DP-ICU 2 | Ground | 16 | BLK | CAPPED | `GND / DP-ICU-2` | `DP-ICU-2 / CAPPED` | ____ | Capped at the post | ☐ |
-| DP-ICU 3 | CAN2 H | 16 tw | YEL/BLK | CAPPED | `CAN2H / DP-ICU-3` | `DP-ICU-3 / CAPPED` | ____ | Capped at the post | ☐ |
-| DP-ICU 4 | CAN2 L | 16 tw | GRN/BLK | CAPPED | `CAN2L / DP-ICU-4` | `DP-ICU-4 / CAPPED` | ____ | Capped at the post | ☐ |
-| DP-ICU 5 | Illumination reference | 16 | VIO/WHT | CAPPED | `O20 / DP-ICU-5` | `DP-ICU-5 / CAPPED` | ____ | Capped at the post | ☐ |
-| DP-ICU 6 | Water temp (tap) | 16 | GRY/GRN | CAPPED | `TAP / DP-ICU-6` | `DP-ICU-6 / CAPPED` | ____ | Capped at the post | ☐ |
-| DP-ICU 7 | Oil pressure (tap) | 16 | GRY/BLU | CAPPED | `TAP / DP-ICU-7` | `DP-ICU-7 / CAPPED` | ____ | Capped at the post | ☐ |
-| DP-ICU 8 | Spare | 16 | GRY | CAPPED | `SPARE / DP-ICU-8` | `DP-ICU-8 / CAPPED` | ____ | Capped at the post | ☐ |
-| DP-ICU 9 | Tach (tap) | 16 | GRY/YEL | CAPPED | `TAP / DP-ICU-9` | `DP-ICU-9 / CAPPED` | ____ | Capped at the post | ☐ |
-| DP-ICU 10 | Spare | 16 | GRY | CAPPED | `SPARE / DP-ICU-10` | `DP-ICU-10 / CAPPED` | ____ | Capped at the post | ☐ |
-| DP-ICU 11 | Charge sense (tap) | 16 | GRY/WHT | CAPPED | `TAP / DP-ICU-11` | `DP-ICU-11 / CAPPED` | ____ | Capped at the post | ☐ |
-| DP-ICU 12 | Brake warning (tap) | 16 | GRY/PNK | CAPPED | `TAP / DP-ICU-12` | `DP-ICU-12 / CAPPED` | ____ | Capped at the post | ☐ |
-| DP-DCU 1 | +12 V switched | 16 | ORN/YEL | CAPPED | `O10 / DP-DCU-1` | `DP-DCU-1 / CAPPED` | ____ | Capped at the post | ☐ |
-| DP-DCU 2 | Spare | 16 | GRY | CAPPED | `SPARE / DP-DCU-2` | `DP-DCU-2 / CAPPED` | ____ | Capped at the post | ☐ |
+| DP-ICU 3 | CAN2 H | 16 tw | YEL | CAPPED | `CAN2H / DP-ICU-3` | `DP-ICU-3 / CAPPED` | ____ | Capped at the post | ☐ |
+| DP-ICU 4 | CAN2 L | 16 tw | GRN | CAPPED | `CAN2L / DP-ICU-4` | `DP-ICU-4 / CAPPED` | ____ | Capped at the post | ☐ |
+| DP-ICU 5 | Illumination reference | 16 | RED | CAPPED | `O20 / DP-ICU-5` | `DP-ICU-5 / CAPPED` | ____ | Capped at the post | ☐ |
+| DP-ICU 6 | Water temp (tap) | 16 | GRY | CAPPED | `TAP / DP-ICU-6` | `DP-ICU-6 / CAPPED` | ____ | Capped at the post | ☐ |
+| DP-ICU 7 | Oil pressure (tap) | 16 | GRY | CAPPED | `TAP / DP-ICU-7` | `DP-ICU-7 / CAPPED` | ____ | Capped at the post | ☐ |
+| DP-ICU 8 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
+| DP-ICU 9 | Tach (tap) | 16 | GRY | CAPPED | `TAP / DP-ICU-9` | `DP-ICU-9 / CAPPED` | ____ | Capped at the post | ☐ |
+| DP-ICU 10 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
+| DP-ICU 11 | Charge sense (tap) | 16 | GRY | CAPPED | `TAP / DP-ICU-11` | `DP-ICU-11 / CAPPED` | ____ | Capped at the post | ☐ |
+| DP-ICU 12 | Brake warning (tap) | 16 | GRY | CAPPED | `TAP / DP-ICU-12` | `DP-ICU-12 / CAPPED` | ____ | Capped at the post | ☐ |
+| DP-DCU 1 | +12 V switched | 16 | RED | CAPPED | `O10 / DP-DCU-1` | `DP-DCU-1 / CAPPED` | ____ | Capped at the post | ☐ |
+| DP-DCU 2 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
 | DP-DCU 3 | Ground | 16 | BLK | CAPPED | `GND / DP-DCU-3` | `DP-DCU-3 / CAPPED` | ____ | Capped at the post | ☐ |
-| DP-DCU 4 | CAN2 H | 16 tw | YEL/BLK | CAPPED | `CAN2H / DP-DCU-4` | `DP-DCU-4 / CAPPED` | ____ | Capped at the post | ☐ |
-| DP-DCU 5 | CAN2 L | 16 tw | GRN/BLK | CAPPED | `CAN2L / DP-DCU-5` | `DP-DCU-5 / CAPPED` | ____ | Capped at the post | ☐ |
-| DP-DCU 6 | Spare | 16 | GRY | CAPPED | `SPARE / DP-DCU-6` | `DP-DCU-6 / CAPPED` | ____ | Capped at the post | ☐ |
-| DP-KEY 1 | CAN2 H | 16 tw | YEL/BLK | CAPPED | `CAN2H / DP-KEY-1` | `DP-KEY-1 / CAPPED` | ____ | Capped behind the dash | ☐ |
-| DP-KEY 2 | CAN2 L | 16 tw | GRN/BLK | CAPPED | `CAN2L / DP-KEY-2` | `DP-KEY-2 / CAPPED` | ____ | Capped behind the dash | ☐ |
-| DP-KEY 3 | +12 V switched | 16 | ORN/YEL | CAPPED | `O10 / DP-KEY-3` | `DP-KEY-3 / CAPPED` | ____ | Capped behind the dash | ☐ |
+| DP-DCU 4 | CAN2 H | 16 tw | YEL | CAPPED | `CAN2H / DP-DCU-4` | `DP-DCU-4 / CAPPED` | ____ | Capped at the post | ☐ |
+| DP-DCU 5 | CAN2 L | 16 tw | GRN | CAPPED | `CAN2L / DP-DCU-5` | `DP-DCU-5 / CAPPED` | ____ | Capped at the post | ☐ |
+| DP-DCU 6 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
+| DP-KEY 1 | CAN2 H | 16 tw | YEL | CAPPED | `CAN2H / DP-KEY-1` | `DP-KEY-1 / CAPPED` | ____ | Capped behind the dash | ☐ |
+| DP-KEY 2 | CAN2 L | 16 tw | GRN | CAPPED | `CAN2L / DP-KEY-2` | `DP-KEY-2 / CAPPED` | ____ | Capped behind the dash | ☐ |
+| DP-KEY 3 | +12 V switched | 16 | RED | CAPPED | `O10 / DP-KEY-3` | `DP-KEY-3 / CAPPED` | ____ | Capped behind the dash | ☐ |
 | DP-KEY 4 | Ground | 16 | BLK | CAPPED | `GND / DP-KEY-4` | `DP-KEY-4 / CAPPED` | ____ | Capped behind the dash | ☐ |
 
 ## D · Ground wires
@@ -369,120 +362,3 @@ One row per cavity. **Length** = the M-2 route for that leg + 15 % + 150 mm serv
 | Starter B+ stud → F17 → K9 30 | 10 | 4 | RED | ☐ |
 | K9 87 → starter S terminal | 10 | 3 | RED | ☐ |
 | Busbar → PMU stud | 4 | 0.7 | RED | ☐ |
-
-## F · Splices at the post (inside the box)
-
-| Node | Joins |
-|---|---|
-| A3 (pin 30) | L3-S1 5 (brake pedal) + L2-S 3 (wiper park) |
-| A4 (pin 17) | L2-S 1 (pop-up L transit) + L1-S1 11 (inhibitor P/N) |
-| A5 (pin 31) | L2-S 2 (pop-up R transit) + L1-S2 7 (inhibitor R) |
-| A8 (pin 19) | L3-S1 6 (hazard) + L3-S1 11 (horn + winks) + sense stage 2 base network |
-| A6 (pin 18) | L4-S 2 + sense stage 1 base network |
-| A7 (pin 32) | tap on the L4-S 1 → DP-CLU 7 conductor |
-| Water temp | L1-S1 3 → DP-CLU 5 (+ DP-ICU 6 tap, capped) |
-| Oil pressure | L1-S1 4 → DP-CLU 6 (+ DP-ICU 7 tap, capped) |
-| Tach | L1-S1 6 → DP-CLU 4 (+ DP-ICU 9 tap, capped) — shield to ground bus here |
-| Charge lamp | L1-S2 8 → DP-CLU 8 (+ DP-ICU 11 tap, capped) |
-| Brake warning | L1-S2 1 + L3-S2 11 → DP-CLU 9 (+ DP-ICU 12 tap, capped) |
-| O17 / O18 | each → its L2-M, L4-M and DP-CLU cavity |
-| O6 | L2-M 7 + L4-M 1 |
-| O3 | L2-P1 2 (12 AWG) + 16 AWG tap → DP-CLU 12 |
-| O20 | F12 → L4-M 8 · L3-S1 8 · DP-CLU 3 · DP-ICU 5 (capped) |
-| O10 | L3-M 1 · K12 86 · DP-ICU 1 · DP-DCU 1 · DP-KEY 3 (capped) |
-| O12 | L1-P 1 · F15 → L1-S1 2 · F16 → DP-CLU 1 |
-| O1 | Block C input · K1 86 · K2 86 · L4-P 3 (capped) |
-| O15 | Block D input · L3-P 2 (capped) |
-| CAN2 | pins 24/37 → L1-S1 9/10 · DP-ICU 3/4 · DP-DCU 4/5 · DP-KEY 1/2 |
-| F3 | L3-S2 2 · sense-stage rails |
-| F19 | L3-S2 10 · L4-S 8 |
-
-## G · Device ends
-
-| Zone | Device | Terminal → lands on | Ground |
-|---|---|---|---|
-| L1 | **Coils + igniters** — Ignition coil T (B-18), coil L (B-19), igniter T (B-20), igniter L (B-21) | BW on all four → L1-P 1 splice (12 AWG trunk, 14 AWG branches)<br>Coil T negative (YG) → L1-S1 6 shielded core<br>YL (leading pulse) → not used | case/bracket: engine block — no wire |
-| L1 | **Starter** — Starting motor A-01 | Main B+ stud → 1/0 from the battery (through the MRBF)<br>S terminal (factory BW) → K9 87, 10 AWG | case: engine block — no wire |
-| L1 | **Start relay K9** — New, on the inner fender | 30 → F17 ← starter B+ stud, 10 AWG RED<br>87 → starter S, 10 AWG RED<br>86 → L1-S1 1<br>85 → block ground, 16 AWG BLK | — |
-| L1 | **Alternator** — A-08 plug + A-09 B+ ring | BW (excitation) → L1-S1 2<br>WB (lamp sense) → L1-S2 8<br>B+ ring (factory WR) → 6 AWG RED → F18 → starter B+ stud | case: engine block — no wire |
-| L1 | **Inhibitor switch** — A-06, 4-pin | BY → 8.2 kΩ → L1-S1 11<br>BW → block ground, 16 AWG BLK<br>GY → 8.2 kΩ → L1-S2 7<br>RW → block ground, 16 AWG BLK | — |
-| L1 | **Water temp sender** — C-02 | spade (YW) → L1-S1 3 | thread: engine block — no wire |
-| L1 | **Oil pressure sender** — C-09 | spade (BrY) → L1-S1 4 | thread: engine block — no wire |
-| L1 | **Brake fluid level switch** — C-05 | BR → L1-S2 1<br>B → block ground, 16 AWG BLK | — |
-| L1 | **Engine ground strap** — New | Block → 2 AWG BLK → chassis, firewall area, ≤ 24 in | — |
-| L2 | **Headlights** — E-08 LH, E-09 RH | RL (low) → L2-P1 1 splice, 14 AWG branch<br>RY (high) → L2-P1 2 splice, 14 AWG branch<br>B → front star, 14 AWG BLK each | — |
-| L2 | **Pop-up motors** — E-03 LH, E-04 RH | Run terminal(s) R / RY → L2-P1 3 (LH) · L2-P2 1 (RH) — bridged or single per the ohm check<br>WR → capped<br>YG (transit contact) → 3.3 kΩ → L2-S 1 (LH) · L2-S 2 (RH); 47 kΩ baseline at the connector to ground | assembly: front star, 14 AWG BLK strap to each bucket |
-| L2 | **Front combo lamps** — F-05 LH, F-06 RH | GR / GO (turn) → L2-M 5 (LH) · L2-M 6 (RH)<br>RG (park) → L2-M 7 splice<br>B → front star, 16 AWG BLK | — |
-| L2 | **Front side markers** — F-12 LH, F-13 RH | RG → L2-M 7 splice<br>B → front star, 16 AWG BLK | — |
-| L2 | **Horns** — F-09 LH, F-10 RH | GY → L2-M 3 splice<br>case → front star, 14 AWG BLK ring under each mounting bolt | — |
-| L2 | **Wiper motor** — D-02 | LW (low brush) → L2-M 1<br>LR (high brush) → L2-M 2<br>L (park contact out) → 12 kΩ → L2-S 3<br>LB → leave unconnected, capped<br>B → front star, 14 AWG BLK | — |
-| L2 | **Washer pump** — D-01 | LB (+) → L2-M 4<br>LY (−) → front star, 16 AWG BLK | — |
-| L2 | **Front star node** — New — stud on the radiator support | stud → chassis, 10 AWG BLK to a bare-metal bolt | — |
-| L3 | **Ignition switch** — New — electrical portion, 1981–83 FB | B → L3-S2 2<br>ACC → 33 kΩ → L3-S1 1 node; and direct → L3-S1 12<br>IG → 15 kΩ → L3-S1 1 node; and direct → L3-S2 1<br>ST → 6.8 kΩ → L3-S1 1 node | — |
-| L3 | **Light switch** — E-01 LIGHT + DIMMER (column, kept) | common → L3-S2 2<br>PARK contact → 33 kΩ → L3-S1 2<br>HEAD contact → 15 kΩ → L3-S1 2<br>DIMMER HI contact (fed from the HEAD contact side) → 8.2 kΩ → L3-S1 2<br>PASS contact → 3.3 kΩ → L3-S1 2 | — |
-| L3 | **Turn stalk** — F-02 TURN (column, kept) | LEFT → 1.8 kΩ → L3-S1 3<br>RIGHT → 10 kΩ → L3-S1 3<br>OFF → 47 kΩ → L3-S1 3<br>common → column ground, 16 AWG BLK | — |
-| L3 | **Hazard switch** — F-02 HAZARD (column, kept) | contact → 4.7 kΩ → L3-S1 6<br>other side → column ground | — |
-| L3 | **Wiper stalk** — D-03 (column, kept) | HIGH → 4.7 kΩ → L3-S1 4<br>LOW → 10 kΩ → L3-S1 4<br>INT → 18 kΩ → L3-S1 4<br>OFF → 47 kΩ → L3-S1 4<br>WASH contact → 1.8 kΩ + 1N5819 (band to the contact) → L3-S1 4; and direct → L3-S2 9<br>common / contact returns → column ground | — |
-| L3 | **Horn pad** — Steering wheel (kept) | contact → 8.2 kΩ → L3-S1 11<br>return → column ground through the slip ring | — |
-| L3 | **Wink switches** — New — SPDT momentary ×2, dash panel | Wink L common → dash ground<br>Wink L NC → L3-S1 9<br>Wink L NO → 18 kΩ → L3-S1 11 node<br>Wink R common → dash ground<br>Wink R NC → L3-S1 10<br>Wink R NO → 33 kΩ → L3-S1 11 node | — |
-| L3 | **Brake pedal switch** — F-11 (new) | contact → 4.7 kΩ → L3-S1 5<br>other side → dash ground | — |
-| L3 | **Parking brake switch** — C-04 (kept) | BR → L3-S2 11 | body: lever bracket — no wire |
-| L3 | **Blower motor + resistor + switch** — New motor G-14, new resistor pack, new switch G-15 | Motor + → L3-P 1<br>Motor − → resistor pack common<br>Resistor taps → speed switch<br>Switch common → dash ground, 12 AWG BLK | — |
-| L3 | **Head unit** — Aftermarket | Red (ACC) → L3-M 1<br>Yellow (BATT) → L3-M 2<br>Orange (ILLUM) → L3-S1 8<br>Black → dash ground, 14 AWG BLK | — |
-| L3 | **USB-C module** — Aftermarket | + → L3-M 1 branch<br>− → dash ground, 16 AWG BLK | — |
-| L3 | **Dash illumination lamps** — E-06 heater panel, E-07 select lever, E-10 switch panel | RL → L3-S1 8<br>B → dash ground, 16 AWG BLK | — |
-| L3 | **Glove box lamp** — H-01 + switch H-02 | + → L3-S2 10<br>− via the lid switch → dash ground | — |
-| Drop | **Factory cluster** — Instrument cluster plug (kept) | GY (IG feed) → DP-CLU 1<br>B (ground) → DP-CLU 2<br>RL (illumination) → DP-CLU 3<br>YG (tach) → DP-CLU 4<br>YW (water temp) → DP-CLU 5<br>BrY (oil pressure) → DP-CLU 6<br>Y (fuel) → DP-CLU 7<br>charge lamp terminal → DP-CLU 8<br>BR (brake warning) → DP-CLU 9<br>GR (turn L indicator) → DP-CLU 10<br>GO (turn R indicator) → DP-CLU 11<br>RY (high beam indicator) → DP-CLU 12 | — |
-| L4 | **Rear defog grid** — G-25 | LG → L4-P 1<br>B → rear star, 12 AWG BLK | — |
-| L4 | **Fuel pump** — Carter P4070 (B-24 position) | + → L4-P 2<br>− → rear star, its OWN 12 AWG BLK | — |
-| L4 | **Amplifier** — Aftermarket, cargo bin | B+ → L4-P 4<br>GND → rear star, 12 AWG BLK<br>REM → head unit blue wire — audio harness, not this build | — |
-| L4 | **Fuel level sender** — C-01 | Y → L4-S 1<br>B → rear star, 16 AWG BLK | — |
-| L4 | **Rear combo lamps** — F-07 LH, F-08 RH | GR / GO (turn) → L4-M 5 (LH) · L4-M 6 (RH)<br>G (stop) → L4-M 2 splice<br>RW (reverse) → L4-M 7 splice<br>RG (tail) → L4-M 1 splice<br>B → rear star, 16 AWG BLK | — |
-| L4 | **Licence lamps + rear markers** — F-04 ×2, F-14, F-15 | RG → L4-M 1 splice<br>B → rear star, 16 AWG BLK | — |
-| L4 | **Interior / spot lamp** — H-06 | + → L4-M 8<br>− through its DOOR/OFF/ON switch → roof-rail ground, 16 AWG BLK | — |
-| L4 | **Luggage lamp** — H-11 + switch H-12 | + → L4-S 8<br>− via the lid switch → rear star, 16 AWG BLK | — |
-| L4 | **Door jamb switches** — New plunger switches ×2 (B-pillar) | Driver → 33 kΩ → sill splice → L4-S 2<br>Passenger → 8.2 kΩ → sill splice → L4-S 2 | body: switch body grounds in the jamb |
-| L4 | **Rear star node** — New — stud in the cargo bin | stud → chassis, 10 AWG BLK; the battery 2 AWG negative lands here too | — |
-| Sill | **Sill node** — New plate behind the driver kick panel | D1 / D2 receptacles → all conductors capped<br>Ground stud → chassis<br>K5–K8 sockets → fitted, empty<br>F8 / F9 / F14 holders → fitted, empty | — |
-
-**Ladder sub-assemblies to build (step 1.6):** ignition switch: 33 kΩ (ACC) · 15 kΩ (IG) · 6.8 kΩ (ST) · light switch: 33 kΩ (PARK) · 15 kΩ (HEAD) · 8.2 kΩ (DIMMER HI) · 3.3 kΩ (PASS) · turn stalk: 1.8 kΩ · 10 kΩ · 47 kΩ · wiper stalk: 4.7 kΩ · 10 kΩ · 18 kΩ · 47 kΩ · 1.8 kΩ + 1N5819 · hazard: 4.7 kΩ · brake pedal: 4.7 kΩ · horn pad: 8.2 kΩ · wink L: 18 kΩ · wink R: 33 kΩ · inhibitor: 8.2 kΩ ×2 · wiper park: 12 kΩ · pop-up transit: 3.3 kΩ ×2 · L2-S baselines: 47 kΩ ×2 · door jambs: 33 kΩ (driver) · 8.2 kΩ (passenger)
-
-
-## H · Fuses and relays to fit
-
-| Position | Fit | Rating | Where |
-|---|---|---|---|
-| Class-T | fuse | 150 A | Cargo bin, at battery + |
-| MRBF | fuse | 200 A | Cargo bin, on battery + |
-| F1 | fuse | 15 A | Plate, block B (K11) |
-| F2 | fuse | 2 A | Plate, block A (busbar) |
-| F3 | fuse | 5 A | Plate, block A (busbar) |
-| F5 | fuse | 30 A | Plate, block B (K11) |
-| F6 | fuse | 10 A | Plate, block C (O1) |
-| F7 | fuse | 10 A | Plate, block C (O1) |
-| F8 | nothing — label only | — | Sill plate, sealed inline |
-| F9 | nothing — label only | — | Sill plate, sealed inline |
-| F10 | nothing — label only | — | Plate, block D (O15) |
-| F11 | nothing — label only | — | Plate, block D (O15) |
-| F12 | fuse | 5 A | Plate, sealed inline |
-| F13 | nothing — label only | — | Plate, block A (busbar) |
-| F14 | nothing — label only | — | Sill plate, sealed inline |
-| F15 | fuse | 7.5 A | Plate, sealed inline |
-| F16 | fuse | 5 A | Plate, sealed inline |
-| F17 | fuse | 30 A | Engine bay, MIDI holder at the starter B+ stud |
-| F18 | fuse | 100 A | Engine bay, MIDI holder at the starter B+ stud |
-| F19 | fuse | 3 A | Plate, block A (busbar) |
-
-| Relay | Fit | Where |
-|---|---|---|
-| K1 | ISO micro SPDT 40 A, integral diode | Plate |
-| K2 | ISO micro SPDT 40 A, integral diode | Plate |
-| K3 | nothing — socket only | Plate |
-| K4 | nothing — socket only | Plate |
-| K5 | nothing — socket only | Sill plate |
-| K6 | nothing — socket only | Sill plate |
-| K7 | nothing — socket only | Sill plate |
-| K8 | nothing — socket only | Sill plate |
-| K9 | Sealed mini ISO SPDT, integral diode, weatherproof socket | Inner fender, engine bay |
-| K11 | ISO micro SPDT 40 A, integral diode | Plate |
-| K12 | ISO micro SPDT 40 A, integral diode | Plate |

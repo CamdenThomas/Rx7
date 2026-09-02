@@ -94,7 +94,7 @@
 <text x="40.0" y="606.0" class="d" >Contact closed: coil → ground (K12 pulls in), A2 reads WASH (208). The PMU sees WASH and turns O8 on,</text>
 <text x="40.0" y="622.0" class="d" >K12 passes O8 to the pump. Release: the pump stops at once, the wipers finish two sweeps.</text>
 <text x="760.0" y="80.0" class="h" >12 V SUMMED LADDER (A15 headlight · A16 key)</text>
-<text x="760.0" y="98.0" class="s" >PMU input configured 10 kΩ pull-DOWN · 100 kΩ bias from +5 V on the plate</text>
+<text x="760.0" y="98.0" class="s" >PMU input configured 10 kΩ pull-DOWN · 100 kΩ bias from +5 V on the dash node</text>
 <path d="M 760.0 130.0 L 1060.0 130.0" class="gry"/>
 <text x="1070.0" y="134.0" class="s" >→ A16</text>
 <rect x="804.0" y="160.0" width="32.0" height="14.0" rx="2" class="box" />

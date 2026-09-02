@@ -43,7 +43,7 @@ paint — was split out 2026-08 (D-123) and folded back in as **deferred scope**
 of the electrical project 2026-08-31 (D-201): none of it is needed to finish
 the car, and it starts only after the electrical rebuild is shaken down
 (L-004). Its design lives in
-[`TAIL-LIGHTS.md` (archived)](99-ARCHIVE/2026-08-31_lighting-body/TAIL-LIGHTS.md);
+[`TAIL-LIGHTS.md` (archived)](99-ARCHIVE/Electrical/2026-08-31_lighting-body/TAIL-LIGHTS.md);
 its money is BOM Wave 5; its tasks and open items sit in the project's
 process files, marked deferred.
 
