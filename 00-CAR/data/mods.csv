@@ -1,0 +1,12 @@
+id,date,area,change,notes
+M-001,Nov 2025,Fuel,Weber 45 DCOE fitted — Pierce Manifolds K678 kit,"Replaced factory carb. ~$1,400 with jetting and fuel system"
+M-002,Nov 2025,Fuel,Carter P4070 fuel pump,Pegasus. `V-054` draw unconfirmed — the meter session closes it
+M-003,Nov 2025,Fuel,Fuel pressure regulator,Pegasus
+M-004,unknown,Engine mgmt,Wideband O2 installed,"Tapped into the factory harness — locate and log, `T-019` (K-001)"
+M-005,Aug 2025,Ignition,"Coils ×2, cap, rotor, plug wires, plugs",Full ignition refresh
+M-006,Sep 2025,Engine,"Intake head gasket, carb gaskets",
+M-007,Sep 2025,Service,"Oil, pan gasket, drain plug gasket, filter",Mobil 1 High Mileage 10W-30
+M-008,Sep 2025,Belts,Alternator belt,
+M-009,**Jul 2026**,Brakes,"**Front overhaul** — rotor hubs, wheel bearings, seals, pads",Complete front end
+M-010,**Jul 2026**,Brakes,"**Rear overhaul** — shoes, drums, wheel bearings, wheel cylinders",Complete rear end
+M-011,Jul 2026,Belts,A/C belt fitted,

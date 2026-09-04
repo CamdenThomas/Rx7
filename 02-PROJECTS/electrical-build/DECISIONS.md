@@ -2,7 +2,7 @@
 
 Every decision that still governs this project, grouped by the system it touches. Each entry is the decision in bold, then the reasoning. IDs are permanent: a decision is never edited, it is superseded by a newer one that names it, and the superseded one leaves this file. The full chronological log, superseded entries included, is `../../99-ARCHIVE/Electrical/2026-09-02_electrical-pmu/05-PROCESS/DECISIONS-chronological.md`. Decisions that belong to the luxury package or the engine swap live in those projects' own `DECISIONS.md`.
 
-**Latest:** D-212 wire scheme · D-213 one wiring project · D-214 no plate · D-215 the presentation defaults adopted · D-216 two fuse blocks · D-217 one L2 power housing · D-218 spares plugged · D-219 DT for the ports · D-220 the 2026-09-02 order changes · D-221 tables are the record · D-222 the shopping list is the carts.
+**Latest:** D-212 wire scheme · D-213 one wiring project · D-214 no plate · D-215 the presentation defaults adopted · D-216 two fuse blocks · D-217 one L2 power housing · D-218 spares plugged · D-219 DT for the ports · D-220 the 2026-09-02 order changes · D-221 tables are the record · D-222 the shopping list is the carts · **D-223 13 A output caps · D-224 both busbars covered · D-225 one-touch wipe · D-226 ignition layout confirmed · D-227 the wideband stays, the gauge goes · D-228 A/C is on its own belt · D-229 no battery box · D-230 the amp comes off the PMU · D-231 no interim AFR** (2026-09-03).
 
 ## Contents
 
@@ -32,6 +32,8 @@ Every decision that still governs this project, grouped by the system it touches
 
 **D-211 — The A/C system comes out; no cooling until the swap engine.** Compressor, bracket, belt, condenser, receiver/drier and lines are removed (a shop recovers the refrigerant first — venting it is illegal). The blower, heater core, HVAC case, ducts and blend doors stay, so heat, defrost and ventilation are unaffected. Electrically all subtractions: F4 and K10 deleted, the factory interlock chain leaves with the hardware, no cavity moves. **Nothing is capped for it in the engine bay** — the engine leg carries only what the engine on the mounts needs and is rebuilt from scratch at a swap. Its return is `../engine-swap/`.
 
+**D-228 — The A/C compressor runs on its own belt; the D-211 strip is purely subtractive.** Confirmed at the crank pulley, 2026-09-03. Nothing else is driven off that belt, so removing the compressor and bracket needs no shorter belt and does not touch the alternator or water-pump drive. Answers V-097.
+
 **D-202 — One teardown: everything is bought now; measurements confirm before cutting, not before buying.** The interior comes apart once. Wire is bought with a 1.5× margin because the routes are unmeasured at order time; the dash envelope, the routes and the pop-up ohm check gate *cutting*, never purchasing. The drive-home rule survives throughout.
 
 **D-194 — Configure in the car; there is no bench phase.** The PMU is mounted, powered from the new backbone through a 5 A fuse (D-145), and configured over CAN1 with every output disabled before any circuit migrates. Four bench-era rules survive as hard requirements: the 5 A first-power-up fuse; 120 Ω at both CAN1 ends or the client never connects; three practice crimps pull-tested before any real crimp; one circuit at a time, the car drives home every day.
@@ -52,6 +54,8 @@ Every decision that still governs this project, grouped by the system it touches
 
 **D-063 — The battery mounts on a backing plate under the floor, not through sheet metal alone.** A 15 lb mass with live terminals becomes a projectile in a crash; the plate turns a tearing load into a shear load. NOCO BG27 box (D-207), hold-down, M8 grade-8 hardware.
 
+**D-229 — No battery box.** Camden's call, 2026-09-03: the NOCO BG27 leaves the design and the Amazon cart. The backing plate, hold-down and M8 grade-8 hardware of D-063 still carry the crash case — the box was never the structure. What the box *did* provide and now has no owner is terminal insulation and debris protection for a live post in an open cargo bin, so a replacement means of covering the terminals is required before the battery is installed (`Q-103`). Supersedes the box in D-063 and D-207, and the "in a NOCO BG27 box" wording in `01-DESIGN/DESIGN.md` §2. Answers V-093.
+
 **D-064 — A pull string goes into the tunnel beside the 2 AWG feed.** The rear leg follows the same route later, and adding it without the string means dropping the console again.
 
 **D-145 — First power-up of the dash node is through a 5 A fuse in the main feed, not a bench supply.** Enough for the PMU to boot and talk over CAN; anything shorted blows a $2 fuse instead of melting 2 AWG. Verify, then fit the Class-T.
@@ -67,6 +71,16 @@ Every decision that still governs this project, grouped by the system it touches
 **D-003 — Two-tier connector architecture.** The 39-way SICMA is a *device* connector at the dash node; short wires run from it to a receptacle for every leg and drop. Legs plug into the node; the 39-way is never touched again.
 
 **D-020 / D-030 — A true-constant bus lives off the PMU, fed from the always-hot busbar through K11 (the audio master, driven by O22 keep-alive) and block B, plus block A straight off the busbar for the laptop port, the switch supply and the courtesy lamps.** The PMU sleeps; the head unit keeps its memory on its own non-volatile store; nothing draws through the module while it is asleep except the module itself.
+
+**D-224 — Both busbars are covered — the always-hot bar and the ground bus.** Camden's call, 2026-09-03, against the design's original "cover the hot one, leave the ground bare". A bare ground bus in a footwell is not a shock risk but it is a short risk: a dropped tool, a coin or a seat rail bridging the ground bus to the hot bar beside it is exactly the fault the Class-T has to clear. Covers cost a few dollars against a 150 A event. Buy two covered 10-gang bars, or fit Blue Sea 2718 covers to both. Answers Q-101; changes `02-SHOPPING/SHOPPING-LIST.md` §8 (the Waytek cart carries one 78250 today).
+
+**D-230 — The amplifier comes off the PMU entirely; the head unit stays on it.** Camden, 2026-09-03. The audio system is deliberately isolated from every other powered system in the car — its only interface to anything is the pre-amp signal from the head unit to the amp — and the amp already has its own power. The head unit is different: it is woven into the body harness, it needs switched power, illumination, ground and a memory constant, and it stays a PMU load.
+
+*Deleted:* **F5** (30 A, block B) and **L4-P 4** (12 AWG RED, amplifier constant). L4-P 4 becomes a plugged spare under D-218 — a heavy cavity with no named future feature, so it gets sealing plugs in both halves, not a capped wire. Block B goes from F1 + F5 + two spare to **F1 + three spare**.
+
+*Narrowed, not deleted:* K11. D-020/D-030 called it "the audio master"; with F5 gone its only load is F1, the head-unit memory constant, so K11 is now the **head-unit constant master** and the O22 keep-alive latch that drives it is unchanged. The reasoning survives — the head unit must hold memory while the PMU sleeps — the name does not.
+
+*Supersedes* D-215's "L4-P 4 is the amplifier constant". *Opens* `Q-104`: the amp is believed to draw from a rear-cabin junction, and the factory harness is removed at install §6 — if that junction leaves with it, the amp loses its feed on a day nobody is thinking about audio.
 
 **D-216 — Two fuse blocks, not four. Block A (busbar: F2, F3, F19, F13 empty) and block B (K11: F1, F5, two spare). F6/F7 (O1 → K1/K2 contacts) and F10/F11 (O15) are deleted; F8/F9/F14 at the sill are labelled positions with no holder this build.** O1's two branches are identical 12 AWG runs carrying one function, and the output's 25 A soft fuse protects either; O15 has no load until the luxury package, which adds its own block on that output when it lands; the sill holders belong to windows and mirrors that do not exist yet. F12 stays because a shorted interior lamp must not take the illumination bus and cluster feed down with it at night. This is what was carted on 2026-09-02 (two OptiFuse BLR-504, three sealed inlines). Supersedes D-206 and D-208(f).
 
@@ -92,6 +106,8 @@ Every decision that still governs this project, grouped by the system it touches
 
 **D-010 — Wipers live on O8 and nothing else does; O8 is the only channel with wiper-motor braking.** O9 is the high-speed brush. Park is software: hold O8 until A3 reads PARKED, then brake.
 
+**D-225 — One-touch single wipe is in the wiper logic.** A tap of the stalk to LOW and back runs one full sweep and parks: `LOW held < 400 ms → one sweep to PARKED`. Software only — no wire, no part, no cost, and the A3 park state it needs is already read (D-215). Answers V-028; enters `03-INSTALL/PMU-CONFIG-SHEET.md` §3 at install §5.4.
+
 **D-013 / D-014 — Turn signals are flashed natively by the PMU (1.5 Hz); the interval wiper unit is deleted — intermittent is a software timer on O8.** No flasher and no interval unit anywhere in the car.
 
 **D-015 — Tail, park, side markers and licence lamps are one circuit on O6, lit in both PARK and HEAD.** Front on L2-M 7, rear on L4-M 1, spliced at the nose and the hatch.
@@ -116,6 +132,10 @@ Every decision that still governs this project, grouped by the system it touches
 
 **D-210(b) — DEFOG (O4) is configured and disabled; INTERIOR is `A6 != CLOSED` with the theatre fade; there is no keypad term in any expression.**
 
+**D-223 — The enable-at cap on O8, O9, O10 and O11 is 13.0 A, not 15 A.** The 15 A outputs reach their loads through Deutsch DT size-16 contacts rated 13 A continuous, so a 15 A software limit sits outside a component's rating for no gain: the real loads are 4–10 A and the cap only ever acts in a fault, which trips in milliseconds either way. Lowering it costs nothing and keeps every software limit inside every part's rating. O6 and O7 already sit at their measured values (7.5 A, 9.5 A) and are unaffected. Answers V-014; changes `03-INSTALL/PMU-CONFIG-SHEET.md` §5 and `01-DESIGN/DESIGN.md` §4.1.
+
+**D-226 — The ignition layout is factory and untouched: two coils and two igniters, leading and trailing.** Confirmed by eye 2026-09-03. The four BW feeds are not individually traceable without pulling the loom, but nothing about the installation looks disturbed, so the design's assumption stands — L1-P 1 splices to BW on all four (`01-DESIGN/DESIGN.md` §12). Answers V-001. If commissioning shows a coil unfed, the splice count is the first thing to re-open.
+
 ---
 
 ## 5 · Switches, ladders and inputs
@@ -139,6 +159,22 @@ Every decision that still governs this project, grouped by the system it touches
 **D-027 / D-028 — Signal wire is 16 AWG throughout (the PMU's 1.5 mm terminal is specified 13–17 AWG; 18 AWG crimps unreliably), and precision signals prefer the 12-bit A9–A16 bank.**
 
 **D-105 — The factory blinker fault (K-008: shared-ground modulation across body studs X-13 and X-15) is not being fixed.** Every ground in the new harness is a local star node and every conductor is new — there is no mechanism for it to transfer. The old harness comes out intact and is not repaired.
+
+**D-227 — The wideband stays and becomes a proper engine-leg sensor; the AEM gauge head is deleted.** Camden's ruling, 2026-09-03, answering Q-100 and superseding A-011 (which had the signal capped at L1-S1 12, not read by anything, with no display until the swap).
+
+*What is there today:* an AEM 30-0300 wideband kit (owner-installed, for carburettor tuning) whose controller is powered by a piggyback tap stacked into the top-right fuse position of the factory box, feeding a separate gauge head, with the O2 sensor in the exhaust on its own lead.
+
+*What the new harness does:* the O2 sensor and its controller stay — this is the tuning and diagnostic instrument on a carburettored total-loss-oil engine, where a lean condition is expensive, and it stays until the swap makes it an ECU input. The **gauge head is deleted**; its reading is taken over by the ICU display and by data logging. The controller's analog output becomes an ordinary sensor conductor in the L1 engine leg — routed, terminated and read like water temp or oil pressure, not a piggyback tap.
+
+*Power:* the controller runs on the **ignition** feed, not the accessory bus. Two reasons, both Camden's: the kit specifies the sensor heater as powered during cranking, and he wants AFR visible from the moment of the first crank rather than turning the engine over with no mixture reading. This is the one requirement that decides the branch.
+
+*Consequence and limit:* the L1 rule in `01-DESIGN/DESIGN.md` §6 — "this leg carries only what the engine on the mounts needs today" — is satisfied, because the wideband *is* fitted to the engine on the mounts. But every PMU analog input is already allocated (A1–A8 dedicated, A15/A16 shared), so the PMU cannot itself read the signal. Where the conductor lands, what fuses the controller, and which device digitises the reading are the open mechanics — `Q-102`.
+
+**D-231 — There is no interim AFR reading, and no temporary feed is built for one.** Camden, 2026-09-03, answering `Q-102`(c): the engine does not need tuning until the ICU and the digital dash are in the car, so the gap D-227 created is not a gap that costs anything. The rejected alternative was keeping the AEM gauge head alive on its own fused branch through the migration — a fuse, a holder and a conductor that exist only to be removed later, which is precisely the kind of temporary work this build refuses.
+
+*What this means in the harness:* the wideband's two conductors are still run in this build, because the engine leg is built once. They are **capped at the engine end** and the controller and sensor are commissioned with the ICU, not at migration — so nothing powers a sensor heater that nothing reads. The O2 sensor may stay in its bung, unpowered, in the meantime.
+
+*Still open in `Q-102`:* which cavities carry the pair (a), and what fuses the controller when it is finally commissioned (b).
 
 ---
 
@@ -171,6 +207,10 @@ Every decision that still governs this project, grouped by the system it touches
 **D-079 — CAN2's far-end 120 Ω terminator is fitted now, capped in the engine bay across L1-S1 9/10, with the PMU's software termination at the other end.** The bus is electrically correct before any second node exists; node count never sets termination.
 
 **D-159 — The future cluster display does not cross the harness.** DP-ICU carries power, ground, CAN2, the illumination reference and the sensor taps; a display needs a high-speed bus and belongs inches from its controller behind the same bezel.
+
+---
+
+**D-232 — The gauge rule is set by the enable-at limit, not the channel's rating.** 2026-09-03, a clarification the automated check forced: `DESIGN.md` §13 said "12 AWG on 25 A, 14 AWG on 15 A", and four rows already broke it on purpose — the 16 AWG high-beam-indicator tap on O3 and the three 16 AWG capped module drops on O10. A wire has to survive what its protection lets through, and the protection is the software limit: 12 AWG above 15 A, 14 AWG above 13 A, 16 AWG at 13 A and below. A 16 AWG tap off a heavier feed is allowed only where the cavity notes it as a tap, and the check flags any other case. No wire changes.
 
 ---
 
@@ -212,6 +252,6 @@ Every decision that still governs this project, grouped by the system it touches
 
 **D-026 / D-043 — Working files are Markdown; IDs are permanent and never reused; a closed question is cited with its closer.**
 
-**D-221 — The design's tables are the record; the CSV data files and the generator are retired.** `DESIGN.md` §4–§7 hold every pin and cavity; the install plan's work sheets are printed from those rows and must never disagree with them. The CSVs that generated the presentation (pins, cavities, housings, fuses, relays) are archived with the process files for anyone who wants to script against them. Supersedes the generated-tables convention of the old tree.
+**D-233 — The record is `data/*.csv`; every document with a table in it is rendered.** Camden's call, 2026-09-03, after the eleven "downstream edits still to make" showed what hand-mirrored tables cost: one fact in one row, referenced by ID everywhere else. `tools/rx7.py` loads the tables, refuses to build on any contradiction (a cavity without a source, a fuse without a load, a ladder window that overlaps, a cart line below the design's count, an unknown ID) and renders `DESIGN.md`, `GLOSSARY.md`, `SHOPPING-LIST.md`, `INSTALL.md`, `WIRE-TABLES.md`, `PMU-CONFIG-SHEET.md`, `README.md` and `VIEW.html` from `templates/` (the prose) and `data/` (the facts). Derived facts — a pin's destinations, a housing's used count, a wire label, the Deutsch kit counts, ADC centres, totals — are computed, never typed. Generated files carry a banner and are never edited by hand; `DECISIONS.md` and `QUESTIONS.md` stay prose. Supersedes D-221 (the tables were the record and the generator was retired — that put the same row in four files) and revives the intent of the 2026-08-30 CSV convention in a shape that keeps the documents readable.
 
 **D-222 — The shopping list is the four live carts of 2026-09-02 — Waytek $455.04 · WireBarn $382.68 · DeutschConnector.com $944.08 · Amazon $1,096.22 — plus the short list of gaps in `02-SHOPPING/SHOPPING-LIST.md` §8.** Nothing has been purchased; every cart waits for Camden's review and payment. Supersedes D-207's cart figures and the old five-store manifest.

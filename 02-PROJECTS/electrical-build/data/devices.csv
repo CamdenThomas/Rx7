@@ -1,0 +1,43 @@
+id,zone,device,ident,terminals,ground
+DV01,L1,Coils + igniters,"Ignition coil T (B-18), coil L (B-19), igniter T (B-20), igniter L (B-21)","BW on all four → L1-P 1 splice (12 AWG trunk, 14 AWG branches)<br>Coil T negative (YG) → L1-S1 6 shielded core<br>YL (leading pulse) → not used",case/bracket: engine block — no wire
+DV02,L1,Starter,Starting motor A-01,"Main B+ stud → 1/0 from the battery (through the MRBF)<br>S terminal (factory BW) → K9 87, 10 AWG",case: engine block — no wire
+DV03,L1,Start relay K9,"New, on the inner fender","30 → F17 ← starter B+ stud, 10 AWG RED<br>87 → starter S, 10 AWG RED<br>86 → L1-S1 1<br>85 → block ground, 16 AWG BLK",
+DV04,L1,Alternator,A-08 plug + A-09 B+ ring,BW (excitation) → L1-S1 2<br>WB (lamp sense) → L1-S2 8<br>B+ ring (factory WR) → 6 AWG RED → F18 → starter B+ stud,case: engine block — no wire
+DV05,L1,Inhibitor switch,"A-06, 4-pin","BY → 8.2 kΩ → L1-S1 11<br>BW → block ground, 16 AWG BLK<br>GY → 8.2 kΩ → L1-S2 7<br>RW → block ground, 16 AWG BLK",
+DV06,L1,Water temp sender,C-02,spade (YW) → L1-S1 3,thread: engine block — no wire
+DV07,L1,Oil pressure sender,C-09,spade (BrY) → L1-S1 4,thread: engine block — no wire
+DV08,L1,Brake fluid level switch,C-05,"BR → L1-S2 1<br>B → block ground, 16 AWG BLK",
+DV09,L1,Engine ground strap,New,"Block → 2 AWG BLK → chassis, firewall area, ≤ 24 in",
+DV10,L2,Headlights,"E-08 LH, E-09 RH","RL (low) → L2-P 1 splice, 14 AWG branch<br>RY (high) → L2-P 2 splice, 14 AWG branch<br>B → front star, 14 AWG BLK each",
+DV11,L2,Pop-up motors,"E-03 LH, E-04 RH",Run terminal(s) R / RY → L2-P 3 (LH) · L2-P 4 (RH) — bridged or single per the ohm check<br>WR → capped<br>YG (transit contact) → 3.3 kΩ → L2-S 1 (LH) · L2-S 2 (RH); 47 kΩ baseline at the connector to ground,"assembly: front star, 14 AWG BLK strap to each bucket"
+DV12,L2,Front combo lamps,"F-05 LH, F-06 RH","GR / GO (turn) → L2-M 5 (LH) · L2-M 6 (RH)<br>RG (park) → L2-M 7 splice<br>B → front star, 16 AWG BLK",
+DV13,L2,Front side markers,"F-12 LH, F-13 RH","RG → L2-M 7 splice<br>B → front star, 16 AWG BLK",
+DV14,L2,Horns,"F-09 LH, F-10 RH","GY → L2-M 3 splice<br>case → front star, 14 AWG BLK ring under each mounting bolt",
+DV15,L2,Wiper motor,D-02,"LW (low brush) → L2-M 1<br>LR (high brush) → L2-M 2<br>L (park contact out) → 12 kΩ → L2-S 3<br>LB → leave unconnected, capped<br>B → front star, 14 AWG BLK",
+DV16,L2,Washer pump,D-01,"LB (+) → L2-M 4<br>LY (−) → front star, 16 AWG BLK",
+DV17,L2,Front star node,New — stud on the radiator support,"stud → chassis, 10 AWG BLK to a bare-metal bolt",
+DV18,L3,Ignition switch,"New — electrical portion, 1981–83 FB",B → L3-S2 2<br>ACC → 33 kΩ → L3-S1 1 node; and direct → L3-S1 12<br>IG → 15 kΩ → L3-S1 1 node; and direct → L3-S2 1<br>ST → 6.8 kΩ → L3-S1 1 node,
+DV19,L3,Light switch,"E-01 LIGHT + DIMMER (column, kept)",common → L3-S2 2<br>PARK contact → 33 kΩ → L3-S1 2<br>HEAD contact → 15 kΩ → L3-S1 2<br>DIMMER HI contact (fed from the HEAD contact side) → 8.2 kΩ → L3-S1 2<br>PASS contact → 3.3 kΩ → L3-S1 2,
+DV20,L3,Turn stalk,"F-02 TURN (column, kept)","LEFT → 1.8 kΩ → L3-S1 3<br>RIGHT → 10 kΩ → L3-S1 3<br>OFF → 47 kΩ → L3-S1 3<br>common → column ground, 16 AWG BLK",
+DV21,L3,Hazard switch,"F-02 HAZARD (column, kept)",contact → 4.7 kΩ → L3-S1 6<br>other side → column ground,
+DV22,L3,Wiper stalk,"D-03 (column, kept)",HIGH → 4.7 kΩ → L3-S1 4<br>LOW → 10 kΩ → L3-S1 4<br>INT → 18 kΩ → L3-S1 4<br>OFF → 47 kΩ → L3-S1 4<br>WASH contact → 1.8 kΩ + 1N5819 (band to the contact) → L3-S1 4; and direct → L3-S2 9<br>common / contact returns → column ground,
+DV23,L3,Horn pad,Steering wheel (kept),contact → 8.2 kΩ → L3-S1 11<br>return → column ground through the slip ring,
+DV24,L3,Wink switches,"New — SPDT momentary ×2, dash panel",Wink L common → dash ground<br>Wink L NC → L3-S1 9<br>Wink L NO → 18 kΩ → L3-S1 11 node<br>Wink R common → dash ground<br>Wink R NC → L3-S1 10<br>Wink R NO → 33 kΩ → L3-S1 11 node,
+DV25,L3,Brake pedal switch,F-11 (new),contact → 4.7 kΩ → L3-S1 5<br>other side → dash ground,
+DV26,L3,Parking brake switch,C-04 (kept),BR → L3-S2 11,body: lever bracket — no wire
+DV27,L3,Blower motor + resistor + switch,"New motor G-14, new resistor pack, new switch G-15","Motor + → L3-P 1<br>Motor − → resistor pack common<br>Resistor taps → speed switch<br>Switch common → dash ground, 12 AWG BLK",
+DV28,L3,Head unit,Aftermarket,"Red (ACC) → L3-M 1<br>Yellow (BATT) → L3-M 2<br>Orange (ILLUM) → L3-S1 8<br>Black → dash ground, 14 AWG BLK",
+DV29,L3,USB-C module,Aftermarket,"+ → L3-M 1 branch<br>− → dash ground, 16 AWG BLK",
+DV30,L3,Dash illumination lamps,"E-06 heater panel, E-07 select lever, E-10 switch panel","RL → L3-S1 8<br>B → dash ground, 16 AWG BLK",
+DV31,L3,Glove box lamp,H-01 + switch H-02,+ → L3-S2 10<br>− via the lid switch → dash ground,
+DV32,Drop,Factory cluster,Instrument cluster plug (kept),GY (IG feed) → DP-CLU 1<br>B (ground) → DP-CLU 2<br>RL (illumination) → DP-CLU 3<br>YG (tach) → DP-CLU 4<br>YW (water temp) → DP-CLU 5<br>BrY (oil pressure) → DP-CLU 6<br>Y (fuel) → DP-CLU 7<br>charge lamp terminal → DP-CLU 8<br>BR (brake warning) → DP-CLU 9<br>GR (turn L indicator) → DP-CLU 10<br>GO (turn R indicator) → DP-CLU 11<br>RY (high beam indicator) → DP-CLU 12,
+DV33,L4,Rear defog grid,G-25,"LG → L4-P 1<br>B → rear star, 12 AWG BLK",
+DV34,L4,Fuel pump,Carter P4070 (B-24 position),"+ → L4-P 2<br>− → rear star, its OWN 12 AWG BLK",
+DV36,L4,Fuel level sender,C-01,"Y → L4-S 1<br>B → rear star, 16 AWG BLK",
+DV37,L4,Rear combo lamps,"F-07 LH, F-08 RH","GR / GO (turn) → L4-M 5 (LH) · L4-M 6 (RH)<br>G (stop) → L4-M 2 splice<br>RW (reverse) → L4-M 7 splice<br>RG (tail) → L4-M 1 splice<br>B → rear star, 16 AWG BLK",
+DV38,L4,Licence lamps + rear markers,"F-04 ×2, F-14, F-15","RG → L4-M 1 splice<br>B → rear star, 16 AWG BLK",
+DV39,L4,Interior / spot lamp,H-06,"+ → L4-M 8<br>− through its DOOR/OFF/ON switch → roof-rail ground, 16 AWG BLK",
+DV40,L4,Luggage lamp,H-11 + switch H-12,"+ → L4-S 8<br>− via the lid switch → rear star, 16 AWG BLK",
+DV41,L4,Door jamb switches,New plunger switches ×2 (B-pillar),Driver → 33 kΩ → sill splice → L4-S 2<br>Passenger → 8.2 kΩ → sill splice → L4-S 2,body: switch body grounds in the jamb
+DV42,L4,Rear star node,New — stud in the cargo bin,"stud → chassis, 10 AWG BLK; the battery 2 AWG negative lands here too",
+DV43,Sill,Sill node,New panel behind the driver kick panel,"D1 / D2 receptacles → all conductors capped<br>Ground stud → chassis<br>K5–K8 sockets → fitted, empty<br>F8 / F9 / F14 → positions labelled, no holders this build",

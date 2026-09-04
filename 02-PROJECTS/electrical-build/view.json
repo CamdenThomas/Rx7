@@ -1,0 +1,11 @@
+{
+  "tabs": [
+    {"title": "Design",    "file": "01-DESIGN/DESIGN.md", "anchors": true},
+    {"title": "Shopping",  "file": "02-SHOPPING/SHOPPING-LIST.md"},
+    {"title": "Install",   "file": "03-INSTALL/INSTALL.md"},
+    {"title": "Wire tables", "file": "03-INSTALL/WIRE-TABLES.md"},
+    {"title": "PMU config", "file": "03-INSTALL/PMU-CONFIG-SHEET.md"},
+    {"title": "Questions", "file": "QUESTIONS.md"},
+    {"title": "Decisions", "file": "DECISIONS.md", "anchors": true}
+  ]
+}

@@ -1,0 +1,40 @@
+<!-- out: README.md -->
+# ELECTRICAL BUILD — 1982 Mazda RX-7 (FB)
+
+Full replacement of the car's electrical system: a solid-state power module in place of the fuse box and relays, a rear-mounted lithium battery, four modular harness legs, and every switch read as a resistor ladder. The factory instruments stay. Every future feature has its wire run now and capped.
+
+This folder is the whole job in three steps. Read them in order the first time; after that, each one stands alone.
+
+| Step | Folder | What it is |
+|---|---|---|
+| **1 · Understand** | [`01-DESIGN/`](01-DESIGN/DESIGN.md) | The complete design — every pin, wire, fuse, relay, switch, ladder value, logic rule and device terminal, with drawings. [`GLOSSARY.md`](01-DESIGN/GLOSSARY.md) explains the notation. No prices, no build steps. |
+| **2 · Buy** | [`02-SHOPPING/`](02-SHOPPING/SHOPPING-LIST.md) | Every tool and material, by store, with part number and quantity, matched to the live carts. About {{total_all}} all-in. |
+| **3 · Build** | [`03-INSTALL/`](03-INSTALL/INSTALL.md) | The whole job in order — the measurement day, backbone, dash node, legs, install, migration, shakedown — with the cut list ([`WIRE-TABLES.md`](03-INSTALL/WIRE-TABLES.md)) and everything typed into the module ([`PMU-CONFIG-SHEET.md`](03-INSTALL/PMU-CONFIG-SHEET.md)). |
+
+## How this folder is maintained
+
+The three steps above are **rendered**. Every pin, cavity, fuse, relay, ladder value, part and quantity is one row in `data/*.csv`; the prose is in `templates/*.md`; the derivations (a pin's destinations, a housing's used count, a wire label, the Deutsch kit counts, ADC centres, totals) and the integrity checks are in `views.py`. `python tools/rx7.py -p electrical-build build` refuses on any contradiction and then writes every document and `VIEW.html` (the three steps side by side, searchable, every ID a link). Edit a row or a template, never a rendered file — the banner under each title is the tell (D-233).
+
+**Next IDs:** decisions from D-234 · questions from Q-105.
+
+Two files at this level are the project's memory, not steps: [`DECISIONS.md`](DECISIONS.md) — why the design is the way it is, by system — and [`QUESTIONS.md`](QUESTIONS.md) — everything still open, easiest first, with the finishing task list at the top.
+
+## How the three steps fit together
+
+The design is the record. The shopping list is what the design consumes; the install plan is how the design goes into the car. The install plan's tables are printed from the design's rows and must never disagree with them — if they ever do, the design wins and the install table is wrong.
+
+## The car
+
+1982 Mazda RX-7 GS, FB chassis, 12A rotary on a Weber 45 DCOE, automatic. Lamps and bulbs stay stock incandescent. The air-conditioning hardware comes out of the engine bay before the harness goes in; heat, defrost and ventilation are unaffected.
+
+## What the finished car has
+
+Headlights with pop-ups that raise on HEAD and can wink individually with the key out · turn, hazard, brake, tail, reverse · two-speed wipers that park, with wash · horn · blower · interior lamp with a theatre fade · glove box and luggage lamps · a head unit with a managed constant feed (the amplifier has its own power and stays off the module) · the factory gauges, warning lamps and indicators · a laptop port in the glovebox that shows the live current on every circuit · and a capped, labelled wire waiting at every place a future feature will land.
+
+## Scope boundary
+
+Everything the luxury package will add — power windows, mirrors, heated seats, the digital cluster, the climate module, the control panel, LED lamps, the defogger's trigger — is **wired here and capped**, and designed there: [`../luxury-package/`](../luxury-package/). Everything that changes with the engine swap — the engine ECU, its CAN drop, the in-tank pump — is reserved here and designed there: [`../engine-swap/`](../engine-swap/). The history of how this design was reached lives in `../../99-ARCHIVE/Electrical/`.
+
+## If you are the owner
+
+Start with `QUESTIONS.md` §0 — the finishing task list. The three things the design waits on are dimensions only: the dash envelope, the harness routes, and one five-minute ohm check on a pop-up motor. All three are boxes on the first page of the install plan.

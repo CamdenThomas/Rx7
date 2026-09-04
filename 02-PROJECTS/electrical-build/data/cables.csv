@@ -1,0 +1,11 @@
+id,run,awg,ft,colour
+C01,Battery + → master disconnect,2,1.5,RED
+C02,Master disconnect → Class-T block,2,1.0,RED
+C03,Class-T → DP-BAT (through the tunnel to the dash post),2,16,RED
+C04,Battery + → MRBF → starter B+ stud (forward under the car / through the tunnel),1/0 or 2,18,RED
+C05,Battery − → rear ground stud,2,3,BLK
+C06,Engine block → chassis strap,2,2,BLK
+C07,Alternator B+ → F18 → starter B+ stud,6,4,RED
+C08,Starter B+ stud → F17 → K9 30,10,4,RED
+C09,K9 87 → starter S terminal,10,3,RED
+C10,Busbar → PMU stud,4,0.7,RED

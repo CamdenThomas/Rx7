@@ -1,0 +1,17 @@
+id,circuit,ch,rated,design_a,measured_a,basis
+LD01,Headlight LOW / HIGH,O2 / O3,25 A,3.0 / 3.5,,"published, two 55 W lamps"
+LD02,Tail · park · markers · licence,O6,15 A,4.4,5.4,factory wattage 8 W ×4 + 3.8 W ×4 + 6 W ×2
+LD03,Brake lamps,O7,15 A,3.9,7.0,27 W ×2 — measured nearly double the estimate
+LD04,"Turn, per side",O17 / O18,7 A,4.2,3.4,27 W ×2 + indicator
+LD05,Reverse,O19,7 A,3.9,,27 W ×2
+LD06,Interior + illumination,O20,7 A,2.5,,5 W + 3.4 W ×5 + 1.4 W ×2
+LD07,Wiper LOW / HIGH,O8 / O9,15 A,4 / 5.5 running · 12–20 stall,,factory 10 A fuse; aged motor
+LD08,"Pop-up motors, both",O1,25 A,8–12 running · 26 stall,12.8 / 13.1 stall,measured stall per side
+LD09,Blower (new motor),O16,25 A,12–18 on HI,,factory 20 A fuse
+LD10,Rear defog grid,O4,25 A,10–13 cold,,factory 15 A fuse
+LD11,Fuel pump,O5,25 A,2,2.38,measured; the channel is sized for a future in-tank pump
+LD12,Ignition coils + igniters,O12,25 A,"4–6, rising with rpm",1.8 idle · 2.4 at 3000 (one branch),twin coil rotary
+LD13,"Horns, pair",O11,15 A,4–8,,factory 15 A shared fuse
+LD14,Washer pump,K12 ← O8,—,3–5,,class figure
+LD15,"Accessory bus — head unit, USB-C, K12 coil",O10,15 A,~10 worst case,,both USB ports loaded
+LD17,Sleeping draw,—,—,"PMU 150 mA, nothing else",0 on the factory harness,K11 opens when the PMU sleeps

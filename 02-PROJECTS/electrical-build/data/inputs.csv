@@ -1,0 +1,10 @@
+id,title,kind,window,fault_rule
+A1,Turn stalk,ground,55,< 50 = short · > 990 = open
+A2,Wiper stalk,ground,45,< 50 = short · > 990 = open
+A3,Brake pedal + wiper park,ground,30,< 50 = short · > 990 = open
+A4,Pop-up L transit + inhibitor P/N,ground,20,< 50 = short · > 990 = open
+A5,Pop-up R transit + inhibitor R,ground,20,< 50 = short · > 990 = open
+A6,Door jamb switches,ground,27,< 50 = short · > 990 = open
+A8,Hazard · horn · wink,ground,35,< 50 = short · > 990 = open
+A15,Headlight switch,12v,75,0 = disconnected
+A16,Key position,12v,200,0 = disconnected

@@ -1,10 +1,10 @@
 # RX-7 — Master File System
 
-*Rev 2026-08-31 · owns: the structure of this tree and the conventions every project under it follows. Project state is [`STATUS.md`](02-PROJECTS/electrical-pmu/STATUS.md); the agent's rules are [`ASSISTANT.md`](ASSISTANT.md).*
+*Rev 2026-09-03 · owns: the structure of this tree and the conventions every project under it follows. The agent's rules are [`ASSISTANT.md`](ASSISTANT.md); the active project's state is its `QUESTIONS.md` §0.*
 
 Root for every RX-7 project. Car-level facts live at the top and are reused by
 every project underneath. Project folders are self-contained; `00-CAR` is
-permanent.
+permanent and every finished project folds into it.
 
 ## Structure
 
@@ -12,78 +12,68 @@ permanent.
 Rx7\
 ├── README.md                <- you are here. Structure and conventions
 ├── ASSISTANT.md             <- Claude's operating rules. Read every session
-├── CLAUDE.md                <- pointer to ASSISTANT.md for Claude Code
-├── 00-CAR\                  <- permanent. Survives every project
-│   ├── README.md
-│   ├── vehicle.md           <- identity, drivetrain, what is fitted today
-│   ├── modifications.md     <- M-### done, P-### planned, service history
-│   ├── known-issues.md      <- K-### faults and quirks
-│   └── parts-history.md     <- what was replaced when
-├── 01-REFERENCE\
-│   ├── README.md
+├── CLAUDE.md                <- pointer + quick facts for any agent
+├── tools\
+│   └── rx7.py               <- THE tool: data/*.csv + templates/*.md -> documents + VIEW.html
+├── 00-CAR\                  <- permanent. The car itself
+│   ├── data\                <- specs, modifications, known issues, parts history (CSV)
+│   ├── templates\           <- the prose around them
+│   └── *.md                 <- rendered by the tool
+├── 01-REFERENCE\            <- source documents, every one indexed in data/sources.csv
 │   ├── factory-circuits\    <- the 1982 harness, decoded circuit by circuit
-│   ├── PMU_info\            <- ECUMaster pinout
-│   ├── photos\              <- T-018 harness photographs, by zone
-│   └── Part Dates - Sheet1.pdf
+│   ├── PMU_info\            <- ECUMaster pinout, manual, CAD
+│   ├── manuals\             <- workshop manual sections and other documents obtained
+│   └── photos\
 ├── 02-PROJECTS\
-│   └── electrical-pmu\      <- ACTIVE. PMU, battery, harness, DCU/ICU —
-│                               folders 01-DESIGN … 05-PROCESS (D-200);
-│                               lighting & body is its deferred second pass (D-201)
+│   ├── electrical-build\    <- ACTIVE. The harness: 01-DESIGN / 02-SHOPPING / 03-INSTALL
+│   ├── luxury-package\      <- every future feature
+│   └── engine-swap\         <- everything that changes with the engine
 └── 99-ARCHIVE\              <- superseded. Never deleted; README indexes it
 ```
 
-## Projects
+## A project's skeleton (R10)
 
-| Project | State | Start at |
-|---|---|---|
-| **[`electrical-pmu/`](02-PROJECTS/electrical-pmu/README.md)** | **Active.** PMU, battery, harness, sill node, DCU/ICU. Runs on **stock incandescent bulbs** | [`STATUS.md`](02-PROJECTS/electrical-pmu/STATUS.md) |
+```
+<project>\
+├── README.md          <- rendered: the map, the three steps, next IDs
+├── DECISIONS.md       <- prose, by system, append-only: why it is the way it is
+├── QUESTIONS.md       <- prose, easiest first: everything still open; §0 = finishing tasks
+├── data\*.csv         <- THE RECORD. One row per thing, one home per fact, first column = key
+├── templates\*.md     <- the prose of every rendered document, {{view}} lines where tables go
+├── views.py           <- how facts derive from other facts, and the checks (optional)
+├── view.json          <- which documents VIEW.html shows as tabs (optional)
+├── VIEW.html          <- rendered: the three sub-plans side by side, searchable, every ID a link
+└── 01-… 02-… 03-…     <- rendered documents, each with the banner
+```
 
-Lighting & body — LED conversion, custom tail lights, headlamp units, rust and
-paint — was split out 2026-08 (D-123) and folded back in as **deferred scope**
-of the electrical project 2026-08-31 (D-201): none of it is needed to finish
-the car, and it starts only after the electrical rebuild is shaken down
-(L-004). Its design lives in
-[`TAIL-LIGHTS.md` (archived)](99-ARCHIVE/Electrical/2026-08-31_lighting-body/TAIL-LIGHTS.md);
-its money is BOM Wave 5; its tasks and open items sit in the project's
-process files, marked deferred.
-
-## The car
-
-[`00-CAR/`](00-CAR/README.md) is the permanent record: what the car is, what has
-been done to it, what is wrong with it. Every project cites it and none of them
-own it. [`01-REFERENCE/`](01-REFERENCE/README.md) is the factory harness decoded
-from the 1982 wiring diagram, frozen as [`OEM-RECORD.md`](01-REFERENCE/factory-circuits/OEM-RECORD.md), plus the PMU pinout
-and the photo archive.
+`python tools/rx7.py -p <project> build` checks the data and writes every
+rendered file. A red check refuses the build. See `ASSISTANT.md` §1.
 
 ## Conventions — every project
 
-**One owner per fact**, declared in each file's header line
-(`*Rev YYYY-MM-DD · owns: …*`). If two files disagree, the owner wins.
+**One home per fact (R3).** A fact lives in one row. Everywhere else it
+appears is a view of that row — a pin's destinations, a housing's used count,
+a cut-list label, a kit quantity, a total. If it can be computed, it is.
 
-**Current-state documents.** A file is correct top to bottom. Superseded
-reasoning goes to a marked appendix or `99-ARCHIVE/`, never left above a
-correction.
+**Current-state documents (R2).** A rendered file is correct top to bottom
+because its rows and prose are. Superseded reasoning goes to `99-ARCHIVE/`.
 
-**Append-only decision logs.** `DECISIONS.md` in each project; reverse by a new
-entry marking the old one `> SUPERSEDED BY …`.
+**Append-only decision logs.** `DECISIONS.md` in each project, grouped by
+system; a decision is superseded by a newer one that names it.
 
-**Permanent IDs, never reused.** `D` decision · `Q` question · `A` assumption ·
-`V` verify · `T` Camden task · `K` known issue · `M` modification · `P` planned
-modification · `I` improvement · `L` lighting decision · `F/H/X/Z` forward
-work · `R` standing rule. Three digits; a closed one is cited as
-`Q-038 → D-095`. The full key is
-[`electrical-pmu/01-DESIGN/GLOSSARY.md`](02-PROJECTS/electrical-pmu/01-DESIGN/GLOSSARY.md).
+**Permanent IDs, never reused.** `D` decision · `Q` question · `K` known
+issue · `M` modification · `P` planned. Three digits; a closed one is cited as
+`Q-100 → D-227`. Older prefixes (`V A T I L F/H/X/Z R`) belong to the archive.
+Row keys inside `data/` (`L3-S1 4`, `F19`, `P042`, `S017`) are permanent too.
 
-**Generated files are never edited by hand.** Where a project keeps data in
-CSVs (`electrical-pmu/02-HARNESS/data/`), the tables, diagrams and headers
-downstream are regenerated from them.
+**Generated files are never edited by hand (R8).** The banner is the tell.
 
-**Links are relative Markdown links**, checked by
-`electrical-pmu/05-PROCESS/tools/check.py`.
+**Every source document is indexed** in `01-REFERENCE/data/sources.csv` the
+session it lands, and every fact taken from one cites its `S-###`.
 
 ## Git
 
-The tree is a git repository. Commit at the end of every session — the agent
-cannot commit from the cloud, so this is Camden's step. `.gitignore` excludes
-built binaries and IDE state; the two large PDFs under `01-REFERENCE/` are
-candidates for Git LFS if the repository ever moves to a remote.
+The tree is a git repository; the commit is Camden's step. `.gitattributes`
+normalises line endings (the tree is edited from Windows and from a Linux
+sandbox). `.gitignore` excludes built binaries and IDE state. The large PDFs
+under `01-REFERENCE/` are candidates for Git LFS.

@@ -1,0 +1,161 @@
+id,housing,cav,circuit,src,src_note,awg,colour,state,lands_on
+L1-P 1,L1-P,1,Ignition feed — coils and igniters,O12,,12,RED,LIVE,"Splice at the coil bracket → BW of coil T, coil L, igniter T, igniter L"
+L1-P 2,L1-P,2,LS swap reserve — ECU + injectors,O13,,12,RED,CAPPED,"Capped at the bulkhead, 12 in past the grommet"
+L1-P 3,L1-P,3,LS swap reserve — cooling fan,O14,,12,RED,CAPPED,"Capped at the bulkhead, 12 in past the grommet"
+L1-P 4,L1-P,4,,,,,,PLUG,"Sealing plug, size 12"
+L1-S1 1,L1-S1,1,Start relay K9 coil,O21,,16,RED,LIVE,K9 terminal 86 (inner fender)
+L1-S1 2,L1-S1,2,Alternator excitation (field feed),F15,,16,RED,LIVE,"Alternator plug A-08, terminal BW"
+L1-S1 3,L1-S1,3,Water temperature sender,,,16,GRY,LIVE,"Sender C-02, spade — factory wire YW"
+L1-S1 4,L1-S1,4,Oil pressure sender,,,16,GRY,LIVE,"Sender C-09, spade — factory wire BrY"
+L1-S1 5,L1-S1,5,,,,,,PLUG,"Sealing plug, size 16"
+L1-S1 6,L1-S1,6,Tachometer pulse — SHIELDED,,,16 sh,shielded,LIVE,Coil T (B-18) negative terminal — factory wire YG. Shield grounded at the dash node end only
+L1-S1 7,L1-S1,7,,,,,,PLUG,"Sealing plug, size 16"
+L1-S1 8,L1-S1,8,,,,,,PLUG,"Sealing plug, size 16"
+L1-S1 9,L1-S1,9,CAN2 H — LS ECU drop,CAN2H,,16 tw,YEL,CAPPED,Capped in the bay with the 120 Ω terminator across 9/10
+L1-S1 10,L1-S1,10,CAN2 L — LS ECU drop,CAN2L,,16 tw,GRN,CAPPED,Capped with cav 9
+L1-S1 11,L1-S1,11,Inhibitor switch — P/N contact (crank interlock),A4,spliced at the post,16,GRY,LIVE,Inhibitor A-06: 8.2 kΩ in the lead to terminal BY; terminal BW → block ground
+L1-S1 12,L1-S1,12,,,,,,PLUG,"Sealing plug, size 16"
+L1-S2 1,L1-S2,1,Brake fluid level switch,,,16,GRY,LIVE,Reservoir switch C-05: terminal BR; terminal B → block ground
+L1-S2 2,L1-S2,2,,,,,,PLUG,"Sealing plug, size 16"
+L1-S2 3,L1-S2,3,,,,,,PLUG,"Sealing plug, size 16"
+L1-S2 4,L1-S2,4,LS swap reserve — sensor,,,16,GRY,CAPPED,Capped at the bulkhead
+L1-S2 5,L1-S2,5,LS swap reserve — sensor,,,16,GRY,CAPPED,Capped at the bulkhead
+L1-S2 6,L1-S2,6,LS swap reserve — sensor,,,16,GRY,CAPPED,Capped at the bulkhead
+L1-S2 7,L1-S2,7,Inhibitor switch — R contact (reverse lamps),A5,spliced at the post,16,GRY,LIVE,Inhibitor A-06: 8.2 kΩ in the lead to terminal GY; terminal RW → block ground
+L1-S2 8,L1-S2,8,Alternator charge-lamp sense,,,16,GRY,LIVE,"Alternator plug A-08, terminal WB"
+L1-S2 9,L1-S2,9,,,,,,PLUG,"Sealing plug, size 16"
+L1-S2 10,L1-S2,10,,,,,,PLUG,"Sealing plug, size 16"
+L1-S2 11,L1-S2,11,,,,,,PLUG,"Sealing plug, size 16"
+L1-S2 12,L1-S2,12,,,,,,PLUG,"Sealing plug, size 16"
+L2-P 1,L2-P,1,"Headlight LOW, both",O2,,12,RED,LIVE,"Splice at the nose → 14 AWG branch to each lamp plug, terminal RL"
+L2-P 2,L2-P,2,"Headlight HIGH, both",O3,,12,RED,LIVE,"Splice at the nose → 14 AWG branch to each lamp plug, terminal RY"
+L2-P 3,L2-P,3,Pop-up LH run feed,K1 87,,12,RED,LIVE,Motor E-03 run terminal(s) — R + RY bridged if the ohm check confirms one winding
+L2-P 4,L2-P,4,Pop-up RH run feed,K2 87,,12,RED,LIVE,Motor E-04 run terminal(s) — as cavity 3
+L2-M 1,L2-M,1,Wiper LOW brush,O8,,14,ORN,LIVE,"Wiper motor D-02, terminal LW"
+L2-M 2,L2-M,2,Wiper HIGH brush,O9,,14,ORN,LIVE,"Wiper motor D-02, terminal LR"
+L2-M 3,L2-M,3,"Horns, both",O11,,14,ORN,LIVE,Splice at the nose → each horn's terminal GY
+L2-M 4,L2-M,4,Washer pump feed,K12 87,,14,ORN,LIVE,"Washer motor D-01, terminal LB"
+L2-M 5,L2-M,5,Turn LEFT front,O17,,16,RED,LIVE,"Front combo lamp F-05, terminal GR"
+L2-M 6,L2-M,6,Turn RIGHT front,O18,,16,RED,LIVE,"Front combo lamp F-06, terminal GO"
+L2-M 7,L2-M,7,"Park + side markers, front",O6,,16,RED,LIVE,"Splice at the nose → F-05 RG, F-06 RG, F-12 RG, F-13 RG"
+L2-M 8,L2-M,8,,,,,,PLUG,"Sealing plug, size 16"
+L2-S 1,L2-S,1,Pop-up LH transit contact,A4,,16,GRY,LIVE,Motor E-03 terminal YG through 3.3 kΩ; 47 kΩ baseline from this cavity to the front star ground
+L2-S 2,L2-S,2,Pop-up RH transit contact,A5,,16,GRY,LIVE,Motor E-04 terminal YG through 3.3 kΩ; 47 kΩ baseline to the front star ground
+L2-S 3,L2-S,3,Wiper park sense,A3,spliced at the post,16,GRY,LIVE,Wiper motor D-02 park terminal L through 12 kΩ. Terminal LB is left unconnected (capped)
+L2-S 4,L2-S,4,,,,,,PLUG,"Sealing plug, size 16"
+L2-S 5,L2-S,5,,,,,,PLUG,"Sealing plug, size 16"
+L2-S 6,L2-S,6,,,,,,PLUG,"Sealing plug, size 16"
+L3-P 1,L3-P,1,Blower motor +,O16,,12,RED,LIVE,New blower motor + terminal (factory LO). Motor − → resistor pack → speed switch → dash ground
+L3-P 2,L3-P,2,Comfort bus,O15,,12,RED,CAPPED,Capped behind the centre stack
+L3-M 1,L3-M,1,Accessory — head unit ACC + USB-C,O10,,14,ORN,LIVE,Head unit red (ACC) wire; USB-C module +
+L3-M 2,L3-M,2,Head unit memory / constant,F1,,14,RED,LIVE,Head unit yellow (BATT) wire
+L3-S1 1,L3-S1,1,Key ladder,A16,,16,GRY,LIVE,"Ignition switch: ACC → 33 kΩ · IG → 15 kΩ · ST → 6.8 kΩ, all summed onto this wire"
+L3-S1 2,L3-S1,2,Headlight ladder,A15,,16,GRY,LIVE,Light switch E-01: PARK → 33 kΩ · HEAD → 15 kΩ · DIMMER-HI → 8.2 kΩ (fed from the HEAD side) · PASS → 3.3 kΩ
+L3-S1 3,L3-S1,3,Turn stalk ladder,A1,,16,GRY,LIVE,"Stalk F-02: LEFT 1.8 kΩ · RIGHT 10 kΩ · OFF 47 kΩ, contacts to column ground"
+L3-S1 4,L3-S1,4,Wiper stalk ladder,A2,,16,GRY,LIVE,Stalk D-03: HIGH 4.7 kΩ · LOW 10 kΩ · INT 18 kΩ · OFF 47 kΩ · WASH 1.8 kΩ + 1N5819 (band toward the contact)
+L3-S1 5,L3-S1,5,Brake pedal switch,A3,,16,GRY,LIVE,Pedal switch F-11 through 4.7 kΩ; other terminal → dash ground
+L3-S1 6,L3-S1,6,Hazard switch,A8,,16,GRY,LIVE,Hazard contact through 4.7 kΩ; other terminal → column ground
+L3-S1 7,L3-S1,7,,,,,,PLUG,"Sealing plug, size 16"
+L3-S1 8,L3-S1,8,Illumination bus,O20,,16,RED,LIVE,"Dash illumination lamps E-06, E-07, E-10 (RL) + head unit illumination wire"
+L3-S1 9,L3-S1,9,Wink LEFT — NC pole,K2 85,,16,BLU,LIVE,Wink L switch NC terminal; switch common → dash ground
+L3-S1 10,L3-S1,10,Wink RIGHT — NC pole,K1 85,,16,BLU,LIVE,Wink R switch NC terminal; switch common → dash ground
+L3-S1 11,L3-S1,11,Horn + wink request,A8,spliced at the post,16,GRY,LIVE,Horn pad through 8.2 kΩ · wink L NO through 18 kΩ · wink R NO through 33 kΩ — three resistors joined onto this wire
+L3-S1 12,L3-S1,12,ACC — wake source,WAKE 1,,16,BLU,LIVE,Ignition switch ACC terminal (raw 12 V)
+L3-S2 1,L3-S2,1,RUN — wake source,WAKE 2,,16,BLU,LIVE,Ignition switch IG terminal (raw 12 V)
+L3-S2 2,L3-S2,2,Switch supply +12 V,F3,,16,PNK,LIVE,Ignition switch B terminal · light switch E-01 common
+L3-S2 3,L3-S2,3,Window DRV up command,,,16,BLU,CAPPED,Capped at the console
+L3-S2 4,L3-S2,4,Window DRV down command,,,16,BLU,CAPPED,Capped at the console
+L3-S2 5,L3-S2,5,Window PASS up command,,,16,BLU,CAPPED,Capped at the console
+L3-S2 6,L3-S2,6,Window PASS down command,,,16,BLU,CAPPED,Capped at the console
+L3-S2 7,L3-S2,7,Future module +12 V switched,,,16,RED,CAPPED,Capped behind the dash
+L3-S2 8,L3-S2,8,Future module ground,GND,,16,BLK,CAPPED,Capped behind the dash
+L3-S2 9,L3-S2,9,Washer relay K12 coil return,K12 85,,16,BLU,LIVE,Wiper stalk D-03 WASH contact (same terminal as the WASH ladder leg); contact's other side → column ground
+L3-S2 10,L3-S2,10,Courtesy — glove box lamp,F19,,16,RED,LIVE,Glove box lamp H-01 +; lamp − → lid switch H-02 → dash ground
+L3-S2 11,L3-S2,11,Parking brake switch → brake warning lamp,,,16,GRY,LIVE,Parking brake switch C-04 terminal BR (switch body grounds through the lever bracket)
+L3-S2 12,L3-S2,12,,,,,,PLUG,"Sealing plug, size 16"
+L3-S3 1,L3-S3,1,Future pass-through A,,,16,GRY,CAPPED,Capped behind the dash
+L3-S3 2,L3-S3,2,Future pass-through B,,,16,GRY,CAPPED,Capped behind the dash
+L3-S3 3,L3-S3,3,Future pass-through C,,,16,GRY,CAPPED,Capped behind the dash
+L3-S3 4,L3-S3,4,,,,,,PLUG,"Sealing plug, size 16"
+L3-S3 5,L3-S3,5,,,,,,PLUG,"Sealing plug, size 16"
+L3-S3 6,L3-S3,6,,,,,,PLUG,"Sealing plug, size 16"
+L3-S3 7,L3-S3,7,,,,,,PLUG,"Sealing plug, size 16"
+L3-S3 8,L3-S3,8,,,,,,PLUG,"Sealing plug, size 16"
+L4-P 1,L4-P,1,Rear defog grid,O4,,12,RED,LIVE,Grid G-25 terminal LG; grid terminal B → rear star ground (12 AWG)
+L4-P 2,L4-P,2,Fuel pump +,O5,,12,RED,LIVE,Carter P4070 + ; pump − → its OWN 12 AWG to the rear star ground
+L4-P 3,L4-P,3,Window motor bus feed,O1,splice,12,RED,CAPPED,Capped at the sill node
+L4-P 4,L4-P,4,,,,,,PLUG,"Sealing plug, size 12"
+L4-M 1,L4-M,1,Tail · licence · rear markers,O6,,14,ORN,LIVE,"Splice at the hatch → F-07 RG, F-08 RG, F-04 RG (×2), F-14 RG, F-15 RG"
+L4-M 2,L4-M,2,Brake lamps,O7,,14,ORN,LIVE,"Splice → F-07 G, F-08 G"
+L4-M 3,L4-M,3,Hatch release solenoid,,,14,ORN,CAPPED,Capped at the hatch
+L4-M 4,L4-M,4,Fuel-door release solenoid,,,14,ORN,CAPPED,Capped at the fuel door
+L4-M 5,L4-M,5,Turn LEFT rear,O17,,16,RED,LIVE,"Rear combo F-07, terminal GR"
+L4-M 6,L4-M,6,Turn RIGHT rear,O18,,16,RED,LIVE,"Rear combo F-08, terminal GO"
+L4-M 7,L4-M,7,Reverse lamps,O19,,16,RED,LIVE,"Splice → F-07 RW, F-08 RW"
+L4-M 8,L4-M,8,Interior lamp (PWM),F12,,16,RED,LIVE,Interior/spot lamp H-06 +; lamp − through its own DOOR/OFF/ON switch → roof-rail ground
+L4-M 9,L4-M,9,Window DRV up command → K5 coil,L3-S2 3,,16,BLU,CAPPED,Capped at the sill node
+L4-M 10,L4-M,10,Window DRV down command → K6 coil,L3-S2 4,,16,BLU,CAPPED,Capped at the sill node
+L4-M 11,L4-M,11,Window PASS up command → K7 coil,L3-S2 5,,16,BLU,CAPPED,Capped at the sill node
+L4-M 12,L4-M,12,Window PASS down command → K8 coil,L3-S2 6,,16,BLU,CAPPED,Capped at the sill node
+L4-S 1,L4-S,1,Fuel level sender,,,16,GRY,LIVE,Tank sender C-01 terminal Y; sender terminal B → rear star ground (16 AWG). Route apart from L4-P
+L4-S 2,L4-S,2,Door jamb switches — ladder,A6,,16,GRY,LIVE,Splice at the sill → driver jamb switch through 33 kΩ · passenger jamb switch through 8.2 kΩ; each switch grounds through its body
+L4-S 3,L4-S,3,,,,,,PLUG,"Sealing plug, size 16"
+L4-S 4,L4-S,4,,,,,,PLUG,"Sealing plug, size 16"
+L4-S 5,L4-S,5,Future pass-through A,L3-S3 1,,16,GRY,CAPPED,Capped at the hatch
+L4-S 6,L4-S,6,Future pass-through B,L3-S3 2,,16,GRY,CAPPED,Capped at the hatch
+L4-S 7,L4-S,7,Future pass-through C,L3-S3 3,,16,GRY,CAPPED,Capped at the hatch
+L4-S 8,L4-S,8,Courtesy — luggage lamp,F19,,16,RED,LIVE,Luggage lamp H-11 +; lamp − → lid switch H-12 → rear star ground
+D1 1,D1,1,Window motor leg A,K5/K6,,14,RED,CAPPED,Capped inside the door
+D1 2,D1,2,Window motor leg B,K5/K6,,14,RED,CAPPED,Capped inside the door
+D1 3,D1,3,,,,,,PLUG,"Sealing plug, size 16"
+D1 4,D1,4,Mirror motor common,,,16,GRY,CAPPED,Capped inside the door
+D1 5,D1,5,Mirror motor X,,,16,GRY,CAPPED,Capped inside the door
+D1 6,D1,6,Mirror motor Y,,,16,GRY,CAPPED,Capped inside the door
+D1 7,D1,7,Mirror heat,F14,,16,RED,CAPPED,Capped inside the door
+D1 8,D1,8,Door ground,SILL-GND,,16,BLK,CAPPED,Capped inside the door — lands on the mirror/window ground when fitted
+D2 1,D2,1,Window motor leg A,K7/K8,,14,RED,CAPPED,Capped inside the door
+D2 2,D2,2,Window motor leg B,K7/K8,,14,RED,CAPPED,Capped inside the door
+D2 3,D2,3,,,,,,PLUG,"Sealing plug, size 16"
+D2 4,D2,4,Mirror motor common,,,16,GRY,CAPPED,Capped inside the door
+D2 5,D2,5,Mirror motor X,,,16,GRY,CAPPED,Capped inside the door
+D2 6,D2,6,Mirror motor Y,,,16,GRY,CAPPED,Capped inside the door
+D2 7,D2,7,Mirror heat,F14,,16,RED,CAPPED,Capped inside the door
+D2 8,D2,8,Door ground,SILL-GND,,16,BLK,CAPPED,Capped inside the door
+DP-CLU 1,DP-CLU,1,Cluster IG feed,F16,,16,RED,LIVE,Cluster plug — factory GY (ignition feed to the gauges and lamps)
+DP-CLU 2,DP-CLU,2,Cluster ground,GND,,16,BLK,LIVE,Cluster plug — factory B
+DP-CLU 3,DP-CLU,3,Cluster illumination,O20,,16,RED,LIVE,Cluster plug — factory RL
+DP-CLU 4,DP-CLU,4,Tachometer,L1-S1 6,shielded,16 sh,shielded,LIVE,Cluster plug — factory YG
+DP-CLU 5,DP-CLU,5,Water temp gauge,L1-S1 3,,16,GRY,LIVE,Cluster plug — factory YW
+DP-CLU 6,DP-CLU,6,Oil pressure gauge,L1-S1 4,,16,GRY,LIVE,Cluster plug — factory BrY
+DP-CLU 7,DP-CLU,7,Fuel gauge,L4-S 1,A7 taps this conductor,16,GRY,LIVE,Cluster plug — factory Y
+DP-CLU 8,DP-CLU,8,Charge warning lamp,L1-S2 8,,16,GRY,LIVE,Cluster plug — the charge-lamp terminal (identify at the cluster plug)
+DP-CLU 9,DP-CLU,9,Brake warning lamp,L1-S2 1 + L3-S2 11,,16,GRY,LIVE,Cluster plug — factory BR
+DP-CLU 10,DP-CLU,10,Turn LEFT indicator,O17,,16,RED,LIVE,Cluster plug — factory GR
+DP-CLU 11,DP-CLU,11,Turn RIGHT indicator,O18,,16,RED,LIVE,Cluster plug — factory GO
+DP-CLU 12,DP-CLU,12,High-beam indicator,O3,tap,16,RED,LIVE,Cluster plug — factory RY
+DP-DIAG 1,DP-DIAG,1,CAN1 H,CAN1H,,16 tw,YEL,LIVE,Laptop port in the glovebox — 120 Ω across 1/2 inside the plug
+DP-DIAG 2,DP-DIAG,2,CAN1 L,CAN1L,,16 tw,GRN,LIVE,Laptop port
+DP-DIAG 3,DP-DIAG,3,+12 V constant,F2,,16,RED,LIVE,Laptop port
+DP-DIAG 4,DP-DIAG,4,Ground,GND,,16,BLK,LIVE,Laptop port
+DP-ICU 1,DP-ICU,1,+12 V switched,O10,tap,16,RED,CAPPED,Capped at the post
+DP-ICU 2,DP-ICU,2,Ground,GND,,16,BLK,CAPPED,Capped at the post
+DP-ICU 3,DP-ICU,3,CAN2 H,CAN2H,,16 tw,YEL,CAPPED,Capped at the post
+DP-ICU 4,DP-ICU,4,CAN2 L,CAN2L,,16 tw,GRN,CAPPED,Capped at the post
+DP-ICU 5,DP-ICU,5,Illumination reference,O20,,16,RED,CAPPED,Capped at the post
+DP-ICU 6,DP-ICU,6,Water temp (tap),tap L1-S1 3,,16,GRY,CAPPED,Capped at the post
+DP-ICU 7,DP-ICU,7,Oil pressure (tap),tap L1-S1 4,,16,GRY,CAPPED,Capped at the post
+DP-ICU 8,DP-ICU,8,,,,,,PLUG,"Sealing plug, size 16"
+DP-ICU 9,DP-ICU,9,Tach (tap),tap L1-S1 6,,16,GRY,CAPPED,Capped at the post
+DP-ICU 10,DP-ICU,10,,,,,,PLUG,"Sealing plug, size 16"
+DP-ICU 11,DP-ICU,11,Charge sense (tap),tap L1-S2 8,,16,GRY,CAPPED,Capped at the post
+DP-ICU 12,DP-ICU,12,Brake warning (tap),tap DP-CLU 9,,16,GRY,CAPPED,Capped at the post
+DP-DCU 1,DP-DCU,1,+12 V switched,O10,tap,16,RED,CAPPED,Capped at the post
+DP-DCU 2,DP-DCU,2,,,,,,PLUG,"Sealing plug, size 16"
+DP-DCU 3,DP-DCU,3,Ground,GND,,16,BLK,CAPPED,Capped at the post
+DP-DCU 4,DP-DCU,4,CAN2 H,CAN2H,,16 tw,YEL,CAPPED,Capped at the post
+DP-DCU 5,DP-DCU,5,CAN2 L,CAN2L,,16 tw,GRN,CAPPED,Capped at the post
+DP-DCU 6,DP-DCU,6,,,,,,PLUG,"Sealing plug, size 16"
+DP-KEY 1,DP-KEY,1,CAN2 H,CAN2H,,16 tw,YEL,CAPPED,Capped behind the dash
+DP-KEY 2,DP-KEY,2,CAN2 L,CAN2L,,16 tw,GRN,CAPPED,Capped behind the dash
+DP-KEY 3,DP-KEY,3,+12 V switched,O10,tap,16,RED,CAPPED,Capped behind the dash
+DP-KEY 4,DP-KEY,4,Ground,GND,,16,BLK,CAPPED,Capped behind the dash

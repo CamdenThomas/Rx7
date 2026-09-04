@@ -1,0 +1,9 @@
+id,rule,definition
+flasher,Flasher,"1.5 Hz, 50 % duty, generated in the PMU. `hazard` = A8 == HAZARD \|\| A8 == HAZ+HORN. Hazard overrides the stalk and works with the key out"
+pop-up-cycle,Pop-up cycle,"A15 entering HEAD, or leaving HEAD, or A8 == WINK_L / WINK_R with A16 <= ACC → energise O1 until BOTH A4 and A5 leave TRANSIT (minimum 300 ms). 4 s with either still in TRANSIT = obstruction: O1 off, fault flag. A held wink switch opens the OTHER side's relay coil return, so only the winked lamp moves"
+wiper-park,Wiper park,"When the stalk goes to OFF with the wipers running, hold O8 until A3 reads PARKED (or BRAKE+PARKED), then release — braking stops the arm at park. Intermittent: 3 s pause between full sweeps, each sweep runs until PARKED. One-touch: LOW held < 400 ms → one sweep to PARKED (D-225)"
+washer,Washer,"WASH also holds O8 on; K12 closes only while the stalk contact is pressed, so the pump runs only while the driver holds WASH. After release, keep O8 on for two more sweeps"
+crank,Crank,O21 only in P or N (A4 == CRANK_OK). Release O21 when A16 leaves START
+motor-bus,Motor bus,Refuse a new pop-up command while O1 reads above 20 A
+voltage,Voltage,Warn below 12.0 V. Shed COMFORT below 11.5 V. Warn above 15.0 V
+sleep,Sleep,"Any wake-strip input high wakes the PMU. With no key, no door and nothing on A8, KEEP_ALIVE drops 30 s after the last change and the PMU sleeps; K11 opens with it (audio memory relies on the head unit's own non-volatile memory)"

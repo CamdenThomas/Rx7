@@ -1,0 +1,7 @@
+id,run,cable,protection,why
+B1,Battery + → master disconnect → Class-T → dash post busbar,"2 AWG fine-strand, loomed, grommeted, pull string beside it in the tunnel",Class-T 150 A at the battery — the PMU stud's maximum,Class-T is the only common fuse with the interrupt rating to break a lithium short. The disconnect kills the whole electrical system while the starter cable stays passive
+B2,Battery + → MRBF → starter B+ stud,"1/0 (or 2 AWG), loomed",MRBF 200 A on the post,Cranking pulls 300–500 A for a moment; it cannot pass through the 150 A Class-T
+B3,Starter B+ stud → alternator B+,6 AWG,F18 100 A MIDI at the stud,"The alternator charges through the starter cable, as the factory did through its fusible link"
+B4,Starter B+ stud → K9 contact 30,10 AWG,F17 30 A MIDI at the stud,The start relay's contact current never touches the PMU; O21 only drives the coil
+B5,Battery − → rear ground stud,2 AWG,—,"Bare metal, star washer, cavity wax"
+B6,Engine block → chassis,"2 AWG strap, ≤ 24 in",—,The cranking return. Without it the current finds its own path through throttle cables and sender wires

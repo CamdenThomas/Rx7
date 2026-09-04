@@ -1,0 +1,4 @@
+key,value,note
+gaps_est_usd,90,Rough total of the still-to-add lines (§8)
+hardware_est_usd,40,Hardware-store trip after the measurement day (§7)
+label_ends,260,Wire ends to label — sizes the tape order

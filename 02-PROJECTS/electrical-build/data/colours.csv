@@ -1,0 +1,9 @@
+id,family,gauges
+RED,"Power — every PMU output at 12 and 16 AWG, every fused feed, the K11 constant bus, the backbone",2 · 4 · 6 · 10 · 12 · 14 · 16
+ORN,15 A PMU outputs — the 14 AWG runs (O6–O11 and the K12 washer feed),14
+BLK,Ground,2 · 10 · 12 · 14 · 16
+GRY,"Analog inputs — ladders, senders, lamp-sense, sensor pass-throughs",16
+BLU,"Commands — wake sources, relay-coil returns, window commands",16
+PNK,Switch supply from F3 (+12 V always) and the +5 V reference,16
+YEL / GRN,"CAN high / low — both buses, hand-twisted pairs",16
+shielded,"Tachometer pulse, drain grounded at the dash node only",16

@@ -1,0 +1,22 @@
+id,channel,expression,inrush,retry
+HEAD_LOW,HEAD_LOW,A15 == HEAD_LO,3× for 200 ms,"3 retries, 5 s"
+HEAD_HIGH,HEAD_HIGH,A15 == HEAD_HI  \|\|  A15 == PASS,3× for 200 ms,"3 retries, 5 s"
+TAIL_PARK,TAIL_PARK,A15 >= PARK  (hold the previous state while PASS is active),10× for 100 ms,"3 retries, 5 s"
+BRAKE,BRAKE,A3 == BRAKE  \|\|  A3 == BRAKE+PARKED,10× for 100 ms,"3 retries, 5 s"
+TURN_L,TURN_L,(A1 == LEFT  \|\|  hazard)  &&  flasher_phase,10× for 100 ms,"3 retries, 5 s"
+TURN_R,TURN_R,(A1 == RIGHT  \|\|  hazard)  &&  flasher_phase,10× for 100 ms,"3 retries, 5 s"
+REVERSE,REVERSE,A5 == REVERSE  &&  A16 >= RUN,10× for 100 ms,"3 retries, 5 s"
+INTERIOR,INTERIOR,"A6 != CLOSED  — PWM, 1.5 s fade-in, 8 s fade-out after the last door closes",10× for 100 ms,"3 retries, 5 s"
+MOTOR_BUS,MOTOR_BUS,popup_cycle  (see the pop-up rule below),7× for 400 ms,1 retry
+WIPE_LOW,WIPE_LOW,A2 == LOW  \|\|  A2 == WASH  \|\|  (A2 == INT && int_timer)  \|\|  (wiper_latch && A3 not PARKED)  — braking ON,7× for 300 ms,"3 retries, 5 s"
+WIPE_HIGH,WIPE_HIGH,A2 == HIGH,7× for 300 ms,"3 retries, 5 s"
+BLOWER,BLOWER,A16 >= RUN  — speed is selected by the switch on the motor's ground side,8× for 600 ms,"3 retries, 5 s"
+DEFOG,DEFOG,"(no trigger this build — channel configured, output DISABLED)",1.3× for 2 s,—
+FUEL_PUMP,FUEL_PUMP,A16 >= RUN,3× for 150 ms,"3 retries, 5 s"
+IGNITION,IGNITION,A16 >= RUN,2× for 100 ms,"3 retries, 5 s"
+ACCESSORY,ACCESSORY,A16 >= ACC,2× for 100 ms,"3 retries, 5 s"
+HORN,HORN,A8 == HORN  \|\|  A8 == HAZ+HORN,3× for 80 ms,"3 retries, 5 s"
+COMFORT,COMFORT,A16 >= RUN  (nothing connected this build),2× for 200 ms,"3 retries, 5 s"
+START_RLY,START_RLY,A16 == START  &&  A4 == CRANK_OK,2× for 50 ms,—
+KEEP_ALIVE,KEEP_ALIVE,self-hold: ON at any wake; OFF 30 s after the last input change with A16 == OFF and A6 == CLOSED,—,—
+LS_ECU · LS_FAN,LS_ECU · LS_FAN,DISABLED,—,—

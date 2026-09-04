@@ -1,0 +1,23 @@
+id,seq,circuit,ch
+MG01,1,Interior lamp,O20
+MG02,2,USB-C + head unit,O10
+MG03,3,Cluster feed + illumination,F16 / O20
+MG04,4,Horn,O11
+MG05,5,Wipers LOW + park,O8
+MG06,6,Wipers HIGH,O9
+MG07,7,Washer,K12
+MG08,8,Tail · park · markers,O6
+MG09,9,Brake lamps,O7
+MG10,10,Turn LEFT,O17
+MG11,11,Turn RIGHT,O18
+MG12,12,Reverse,O19
+MG13,13,Headlight LOW,O2
+MG14,14,Headlight HIGH,O3
+MG15,15,Pop-up LEFT,O1 / K1
+MG16,16,Pop-up RIGHT,O1 / K2
+MG17,17,Blower,O16
+MG18,18,Courtesy lamps,F19
+MG20,19,Fuel pump + sender,O5 / A7
+MG21,20,Ignition coils + alternator excitation,O12 / F15
+MG22,21,"Charge lamp, brake lamp, gauges",DP-CLU
+MG23,23,**Start**,O21 / K9

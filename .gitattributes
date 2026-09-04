@@ -1,0 +1,6 @@
+# Normalise line endings: the tree is edited from Windows and from a Linux sandbox.
+* text=auto
+*.pdf binary
+*.STEP binary
+*.png binary
+*.jpg binary

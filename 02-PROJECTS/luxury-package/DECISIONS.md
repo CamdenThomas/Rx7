@@ -36,11 +36,15 @@ Decisions that govern this project. The ones below were made inside the electric
 
 **D-084 / D-085 / D-086 / D-088 / D-089 — Teensy 4.1 in both boxes (three bought — one spare), TI TCAN1042/1051 transceivers, CAN 2.0B at 500 kbps with 11-bit IDs (the PMU is not CAN-FD), load-dump TVS on both module supplies (reverse polarity → TVS → filter → automotive buck → the Teensy's 3.3 V), Teensy socketed on its carrier so a heat casualty is a $32 swap.**
 
+**D-303 — Three Teensy 4.1 are in hand with headers; availability is not a project risk and the carriers may commit to the part.** Camden, 2026-09-03 — also transistors with headers, none soldered up. Closes `V-059`; the Adafruit → SparkFun distribution change no longer matters to this project. `V-057` (the TCAN suffix) is still open and is now the only part-availability item ahead of layout.
+
 **D-087 — A private DCU ↔ ICU CAN-FD pair was planned; the electrical build did not run it (D-215).** Both modules sit behind the same bezel — run it there if it is ever wanted.
 
 **D-106 — CAN byte layouts: 8-byte messages, little-endian, byte 7 a rolling counter, explicit timeout per message, a receiver blanks a field rather than holding the last value.** Bus load ~1.5 %. The PMU's own export format (`V-065`) still has to be reconciled.
 
 **D-082 — The tach input gets opto-isolation or a comparator at the ICU.** Coil-primary spikes run well above 12 V.
+
+**D-304 — The tach signal is 2 pulses per crankshaft revolution, taken from the NEGATIVE (primary) side of the TRAILING coil.** Camden, 2026-09-03. The 2 ppr assumption is confirmed, so no RPM scaling constant changes. The *source* is corrected: `01-DESIGN/ICU-CARRIER.md` describes the front end against the **leading** coil, and the electrical build's shielded conductor (L1-S1 6 → DP-CLU 4, tapped to DP-ICU 9) is already drawn from the trailing coil — the design and the car agree, the carrier document does not. Consequence for layout: the H11L1 / LM393 front end must be specified against a trailing-coil primary waveform, which is the inductive-kick side and needs the clamp ahead of the opto, not a clean logic-level input. Closes `V-067`; `01-DESIGN/ICU-CARRIER.md` needs the wording and the front-end spec corrected before layout.
 
 **D-090 — No hardwired oil-pressure lamp; oil pressure is shown by the ICU only.** The factory cluster stays live through ICU development (D-094), which covers the window when the ICU is least trustworthy. Reopen if the car's use changes.
 
@@ -62,11 +66,15 @@ Decisions that govern this project. The ones below were made inside the electric
 
 **D-160 / D-162 / D-163 — `stats.h` thresholds (redline 7000 rpm, hot water 105 °C, low oil 1.0 bar, tank 15.9 gal — all to confirm, `V-070`–`V-072`) · volatile-only until SD persistence exists (probably write on key-off) · the firmware owns automated figures, hand logs own config and firmware versions.**
 
+**D-300 — The three assumed `stats.h` figures are confirmed as assumed: redline 7000 rpm, minimum idle oil pressure 1.0 bar, tank 15.9 gal.** Camden, 2026-09-03. The tach red zone, the over-rev counter, the low-oil warning band and the range calculation all stand as written — no firmware change. Closes `V-070`, `V-071`, `V-072`. Water temp 105 °C was never in doubt and is untouched.
+
 ## Comfort, mirrors, windows, seats
 
 **D-048 / D-074 / D-058 / D-073 — Cooled seats are in scope (fans and ducting on the comfort bus); seat products stay estimates (2 × 4 A heat, 2 × 1.5–2.5 A fans); the heat/cool interlock and comfort-bus switching are the DCU's job, downstream of the dumb O15 feed.**
 
 **D-049 / D-093 — Remote mirror motors kept, plus heated mirrors, with independent wiring per side — slightly larger mirrors with integrated heat and digital controls, new switch.** The door connector budget is exactly 8 conductors per door.
+
+**D-305 — Mirrors do adjustment and heat, and nothing else.** Camden, 2026-09-03: no power fold, no turn-signal repeaters, no puddle lamps, no blind-spot indicators, no memory positions. This settles the conductor budget that `V-060` had left open and that the electrical build was about to commit housings to: three motor conductors, one heat feed and the door ground fit D1/D2's eight cavities exactly as D-092/D-093 allocated them, with the window pair and the door pin, and the spare untouched. **The electrical build needs no change and its door housings stay DT-8.** What remains is sourcing (`Q-300`): the mirror must be a conventional 3-wire motor pair (common + X + Y) with a resistive heat element — not a 5-wire, LIN-bus or module-driven mirror, which would need conductors the doors do not have. Closes `V-060`; `T-031` continues as a sourcing task.
 
 **D-131 — Power windows are a luxury item; the electrical build provisioned everything (see the table above).** Adding them: fit the regulators and motors, plug in D1/D2, populate K5–K8, fit F8/F9, uncap the commands, enable the logic.
 

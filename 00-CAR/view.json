@@ -1,0 +1,9 @@
+{"tabs": [
+  {"title": "Specs", "file": "SPECS.md"},
+  {"title": "Vehicle", "file": "vehicle.md"},
+  {"title": "Modifications", "file": "modifications.md"},
+  {"title": "Known issues", "file": "known-issues.md"},
+  {"title": "Parts history", "file": "parts-history.md"},
+  {"title": "Research notes", "file": "RESEARCH-NOTES.md"},
+  {"title": "Sources", "file": "../01-REFERENCE/README.md"}
+]}
