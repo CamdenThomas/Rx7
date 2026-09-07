@@ -36,7 +36,7 @@ An ECUMaster PMU-24 DL solid-state power module replaces the factory fuse box, r
 | Harness legs | 4 — L1 engine · L2 front · L3 dash · L4 rear (with the sill sub-node) |
 | Leg housings | 14 (L1-S is two housings) + 2 door + 5 dash-post drops + 2 lugs + the PMU connector = **24 mated pairs** |
 | Relays | 4 fitted on the dash node (K1 K2 K11 K12) + K9 in the engine bay · 6 empty sockets (2 dash node, 4 sill) |
-| Fuses | 7 fitted at the dash node + 2 in the engine bay + Class-T + MRBF · 4 labelled empty positions (F8 F9 F13 F14) + 3 spare block positions |
+| Fuses | 8 fitted at the dash node + 2 in the engine bay + Class-T + MRBF · 4 labelled empty positions (F8 F9 F13 F14) + 3 spare block positions |
 | Ground nodes | 5 — engine block · front · dash node · rear · sill |
 
 ---
@@ -45,18 +45,19 @@ An ECUMaster PMU-24 DL solid-state power module replaces the factory fuse box, r
 
 ![backbone](diagrams/01-power-backbone.svg)
 
-The Ionic S9 (LiFePO4, 40 Ah, 1,100 CCA, built-in heater, Group 25 case) sits in the cargo bin clamped against g-load in every axis over a backing plate, both posts booted (no box — D-229; what covers the terminals beyond the boots is `Q-103`). Two runs leave the positive post and they never share a fuse:
+The Ionic S9 (LiFePO4, 40 Ah, 1,100 CCA, built-in heater, Group 25 case) sits in the cargo bin clamped against g-load in every axis over a backing plate, both posts booted (no box — D-229; boots are the whole of the terminal covering, deliberately, so a post stays reachable for a jump start — D-235). Its case measures 170 W × 230 L × 190 H mm (`params.battery_case_mm`, D-239), and its posts are SAE tapered, so every cable end is a brass post clamp with a 3/8 in stud take-off rather than a ring lug (D-234). Two runs leave the positive post and they never share a fuse:
 
 | Run | Cable | Protection | Why |
 |---|---|---|---|
-| Battery + → master disconnect → Class-T → dash post busbar | 2 AWG fine-strand, loomed, grommeted, pull string beside it in the tunnel | Class-T 150 A at the battery — the PMU stud's maximum | Class-T is the only common fuse with the interrupt rating to break a lithium short. The disconnect kills the whole electrical system while the starter cable stays passive |
-| Battery + → MRBF → starter B+ stud | 1/0 (or 2 AWG), loomed | MRBF 200 A on the post | Cranking pulls 300–500 A for a moment; it cannot pass through the 150 A Class-T |
+| Battery + → Class-T → dash post busbar | 2 AWG fine-strand, loomed, grommeted, pull string beside it in the tunnel | Class-T 150 A at the battery — the PMU stud's maximum | Class-T is the only common fuse with the interrupt rating to break a lithium short. The cable between post and fuse is the one length that can never be protected — keep it inches long. The master disconnect is no longer in this leg (D-245) |
+| Battery + → MRBF → starter B+ stud | 1/0 fine-strand, loomed | MRBF 200 A on the post | Cranking pulls 300–500 A briefly and cannot pass through the 150 A Class-T. 1/0 over 18 ft keeps about half a volt at the starter that 2 AWG would have lost (D-246) |
 | Starter B+ stud → alternator B+ | 6 AWG | F18 100 A MIDI at the stud | The alternator charges through the starter cable, as the factory did through its fusible link |
 | Starter B+ stud → K9 contact 30 | 10 AWG | F17 30 A MIDI at the stud | The start relay's contact current never touches the PMU; O21 only drives the coil |
-| Battery − → rear ground stud | 2 AWG | — | Bare metal, star washer, cavity wax |
+| Battery − → master disconnect → rear ground stud | 1/0 fine-strand | — | The disconnect lives here (D-245). Open it and every positive fault in the car loses its return — the starter cable included — so the switch means what the design always claimed. Bare metal, star washer, cavity wax at the stud |
+| Rear ground stud → engine block (through the tunnel) | 1/0, loomed, pulled beside the starter feed | — | The dedicated cranking return (D-246). Without it 400 A crosses the whole unibody through 44-year-old spot welds and seam sealer; the factory never asked the shell to do this because the battery was in the engine bay. B6 stays as the block-to-chassis bond, not the main return |
 | Engine block → chassis | 2 AWG strap, ≤ 24 in | — | The cranking return. Without it the current finds its own path through throttle cables and sender wires |
 
-At the dash post the 2 AWG lands directly on the always-hot busbar. The busbar feeds the PMU stud over a 4 AWG jumper of a few inches and, through fuse block A and relay K11, the handful of loads that must live outside the PMU (§5).
+At the dash post the 2 AWG lands directly on the always-hot busbar. The busbar feeds the PMU stud over a 2 AWG jumper of a few inches (D-241) and, through fuse block A and relay K11, the handful of loads that must live outside the PMU (§5).
 
 
 ---
@@ -68,8 +69,8 @@ At the dash post the 2 AWG lands directly on the always-hot busbar. The busbar f
 | Fuse | Rating | Where | Feeds | Fed from | State |
 |---|---|---|---|---|---|
 | Class-T | 150 A | Cargo bin, at battery + | The whole PMU system — 2 AWG to the dash post | Battery + (through the master disconnect) | LIVE |
-| MRBF | 200 A | Cargo bin, on battery + | Starter main cable (1/0) | Battery + | LIVE |
-| F1 | 15 A | Dash node, block B (K11) | Head unit memory / constant — L3-M 2 | K11 87 | LIVE |
+| MRBF | 200 A | Cargo bin, on battery + | Starter main cable | Battery + | LIVE |
+| F1 | 10 A | Dash node, block B (K11) | Head unit memory / constant — L3-M 2 | K11 87 | LIVE |
 | F2 | 2 A | Dash node, block A (busbar) | Diagnostic port +12 V — DP-DIAG 3 | Busbar | LIVE |
 | F3 | 5 A | Dash node, block A (busbar) | Switch supply — ignition switch, light switch, wake stages — L3-S2 2 | Busbar | LIVE |
 | F8 | — | Sill node — position labelled, no holder this build | Window branch DRV — the luxury package fits the holder | O1 via L4-P 3 (capped) | EMPTY |
@@ -82,15 +83,16 @@ At the dash post the 2 AWG lands directly on the always-hot busbar. The busbar f
 | F17 | 30 A | Engine bay, MIDI holder at the starter B+ stud | Start relay K9 contact 30 (10 AWG) | Starter B+ stud | LIVE |
 | F18 | 100 A | Engine bay, MIDI holder at the starter B+ stud | Alternator B+ cable (6 AWG) | Starter B+ stud ← alternator | LIVE |
 | F19 | 3 A | Dash node, block A (busbar) | Courtesy lamps — glove box (L3-S2 10) + luggage (L4-S 8) | Busbar | LIVE |
+| F20 | 7.5 A | Dash node, sealed inline | Wideband gauge (controller) +12 V — hidden at the dash node | O12 | LIVE |
 
 ### Fuse blocks on the dash node — one source per block
 
 | Block | Input | Position 1 | Position 2 | Position 3 | Position 4 |
 |---|---|---|---|---|---|
 | Block A | Always-hot busbar | F2 2 A | F3 5 A | F19 3 A | F13 (empty) |
-| Block B | K11 87 (head-unit constant) | F1 15 A | spare | spare | spare |
+| Block B | K11 87 (head-unit constant) | F1 10 A | spare | spare | spare |
 
-F12, F15 and F16 are sealed inline holders at the dash node; F8, F9 and F14 are labelled positions at the sill node with no holder until the windows and mirrors arrive; F17 and F18 are bolt-down MIDI holders beside the starter stud. There is no fuse on the O1 → K1 / K2 branches (two identical 12 AWG runs carrying one function; the 25 A soft fuse protects either) and none on O15 (no load this build). F12 stays because a shorted interior lamp must not take the illumination bus and the cluster feed down with it at night.
+F12, F15, F16 and F20 are sealed inline holders at the dash node; F8, F9 and F14 are labelled positions at the sill node with no holder until the windows and mirrors arrive; F17 and F18 are bolt-down MIDI holders beside the starter stud. There is no fuse on the O1 → K1 / K2 branches (two identical 12 AWG runs carrying one function; the 25 A soft fuse protects either) and none on O15 (no load this build). F12 stays because a shorted interior lamp must not take the illumination bus and the cluster feed down with it at night.
 
 
 ### Software limits — the rule
@@ -113,18 +115,18 @@ A limit is set from a measured figure, never from an estimate. Motors: measured 
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | STUD | stud | — | `+12V BATT` | 2 | RED | Main supply from the Class-T, 150 A max | Busbar → PMU stud | — | — | — | LIVE |
 | 25 | L | — | `GND` | 10 | BLK | Device ground and flyback return for every inductive load | GND bus, ≤ 6 in | — | — | — | LIVE |
-| 7 | S | — | `+12V SW` | 16 | BLU | Wake input — diode-OR strip: ACC · RUN · door stage (A6) · horn/hazard/wink stage (A8) · O22 latch | Wake strip common rail | — | — | — | LIVE |
+| 7 | S | — | `+12V SW` | 16 | BLU | Wake input — diode-OR strip: ACC · RUN · door stage (A6) · horn/hazard/wink stage (A8) · brake (D-247) · O22 latch | Wake strip common rail | — | — | — | LIVE |
 | 15 | M | — | `+5V OUT` | 16 | PNK | +5 V reference — dash node only: the two 100 kΩ bias resistors for A15 / A16 | Bias resistors on the dash node | — | — | — | LIVE |
 | 23 | S | CAN1H | `CAN1H` | 16 tw | YEL | Laptop / config bus, 1 Mbps. 120 Ω at BOTH ends (PMU end + port) | DP-DIAG 1 | — | — | — | LIVE |
 | 36 | S | CAN1L | `CAN1L` | 16 tw | GRN | Laptop / config bus | DP-DIAG 2 | — | — | — | LIVE |
 | 24 | S | CAN2H | `CAN2H` | 16 tw | YEL | Vehicle bus 500 kbps — software termination ON at the PMU, 120 Ω at the engine-bay drop | L1-S1 9 · DP-ICU 3 · DP-DCU 4 · DP-KEY 1 | — | — | — | LIVE |
 | 37 | S | CAN2L | `CAN2L` | 16 tw | GRN | Vehicle bus | L1-S1 10 · DP-ICU 4 · DP-DCU 5 · DP-KEY 2 | — | — | — | LIVE |
 | 38 | L | O1 | `MOTOR_BUS` | 12 | RED | Pop-up motor bus — one splice feeds K1 / K2 contacts (30) and both coils (86); the PMU's soft fuse is the branch protection | L4-P 3 (capped) · K1 30 · K2 30 · K1 86 · K2 86 | 9.5 | 25.0 cap | 7× 400 ms | LIVE |
-| 39 | L | O2 | `HEAD_LOW` | 12 | RED | Headlight LOW, both lamps | L2-P 1 | 3.0 | 25.0 cap | 3× 200 ms | LIVE |
-| 26 | L | O3 | `HEAD_HIGH` | 12 | RED | Headlight HIGH, both lamps + the cluster high-beam indicator | L2-P 2 · DP-CLU 12 | 3.5 | 25.0 cap | 3× 200 ms | LIVE |
+| 39 | L | O2 | `HEAD_LOW` | 12 | RED | Headlight LOW, both lamps | L2-P 1 | 3.0 | 13.0 published 3.0 A filament + inrush window; capped at the 14 AWG branch limit (D-243) | 3× 200 ms | LIVE |
+| 26 | L | O3 | `HEAD_HIGH` | 12 | RED | Headlight HIGH, both lamps + the cluster high-beam indicator | L2-P 2 · DP-CLU 12 | 3.5 | 13.0 published 3.5 A filament + inrush window; capped at the 14 AWG branch limit (D-243) | 3× 200 ms | LIVE |
 | 13 | L | O4 | `DEFOG` | 12 | RED | Rear defog grid — wired; channel configured and DISABLED (no control surface in this build) | L4-P 1 | 11.5 | 25.0 cap | 1.3× 2000 ms | LIVE |
 | 12 | L | O5 | `FUEL_PUMP` | 12 | RED | Fuel pump — Carter P4070 | L4-P 2 | 2.0 | **4.0 meas** | 3× 150 ms | LIVE |
-| 2 | L | O12 | `IGNITION` | 12 | RED | Ignition — coils and igniters; also the F15 alternator-excitation branch and the F16 cluster branch | L1-P 1 · F15 → L1-S1 2 · F16 → DP-CLU 1 | 5.0 | 25.0 cap | 2× 100 ms | LIVE |
+| 2 | L | O12 | `IGNITION` | 12 | RED | Ignition — coils and igniters; also the F15 alternator-excitation branch and the F16 cluster branch | L1-P 1 · F15 → L1-S1 2 · F16 → DP-CLU 1 · F20 | 5.0 | 25.0 cap | 2× 100 ms | LIVE |
 | 1 | L | O13 | `LS_ECU` | 12 | RED | Reserved for the LS swap — ECU + injectors | L1-P 2 (capped) | — | — | — | CAPPED |
 | 14 | L | O14 | `LS_FAN` | 12 | RED | Reserved for the LS swap — cooling fan | L1-P 3 (capped) | — | — | — | CAPPED |
 | 27 | L | O15 | `COMFORT` | 12 | RED | Comfort bus — the capped dash feed only. No fuse block this build; the luxury package adds its own on this output | L3-P 2 (capped) | — | — | — | LIVE |
@@ -190,7 +192,7 @@ This is **not** the factory scheme. Factory colours are two-letter codes (first 
 
 ## 5 · The dash node
 
-The dash node is everything between the 2 AWG feed and the harness legs: the PMU, the always-hot busbar, the ground bus, two single-source fuse blocks, three sealed inline fuses, six relay sockets (four populated), the wake strip with its two sense stages, the two bias resistors, and the receptacle for every leg and drop. It is not one plate. It mounts on one or more small carrier panels low in the dash, laid out with the parts in hand once the envelope is measured (§5.4), and the electrical design does not depend on how it is split — every conductor in §5.3 is the same whether the pieces share a panel or not. Nothing on the dash node is spliced anywhere else; every splice in the car is either at the dash node or at a device.
+The dash node is everything between the 2 AWG feed and the harness legs: the PMU, the always-hot busbar, the ground bus, two single-source fuse blocks, four sealed inline fuses, six relay sockets (four populated), the wake strip with its two sense stages, the two bias resistors, the wideband gauge hidden behind the dash (D-244), and the receptacle for every leg and drop. It is not one plate. It mounts on one or more small carrier panels low in the dash, laid out with the parts in hand once the envelope is measured (§5.4), and the electrical design does not depend on how it is split — every conductor in §5.3 is the same whether the pieces share a panel or not. Nothing on the dash node is spliced anywhere else; every splice in the car is either at the dash node or at a device.
 
 ![dash node](diagrams/02-dash-node-schematic.svg)
 
@@ -213,7 +215,7 @@ The dash node is everything between the 2 AWG feed and the harness legs: the PMU
 
 ### 5.2 · Wake circuit
 
-Pin 7 (+12V SW) turns the PMU on. Five sources feed it through one 1N5819 Schottky each on an 8-position barrier strip, with a 10 kΩ bleed from the rail to ground so leakage can never hold the module awake: **ACC** and **RUN** from the ignition switch (raw 12 V, one conductor each), **the door node** and **the horn/hazard/wink node** through the two sense stages, and **O22**, the PMU's own keep-alive latch. The strip has three spare positions.
+Pin 7 (+12V SW) turns the PMU on. Six sources feed it through one 1N5819 Schottky each on an 8-position barrier strip, with a 10 kΩ bleed from the rail to ground so leakage can never hold the module awake: **ACC** and **RUN** from the ignition switch (raw 12 V, one conductor each), **the door node** and **the horn/hazard/wink node** through the two sense stages, **the brake pedal switch's second pole** (D-247, so a pushed or towed car still lights its brake lamps), and **O22**, the PMU's own keep-alive latch. The strip has two spare positions.
 
 
 Two identical NPN sense stages on the dash node (2N3904 / 2N2222 class), one on the A6 node and one on the A8 node. Base ← node through 100 kΩ · 1 MΩ from the node to the F3 rail · emitter → GND bus · collector → 100 kΩ to the F3 rail and → its wake-strip diode. Node idle (open switch): the node sits at ~4–12 V, the transistor is ON, the collector is LOW — no wake. Any switch on that node closes to ground: base falls, transistor OFF, collector rises to 12 V through the pull-up — wake. The 1 MΩ injects ~7 µA into the ladder while awake (about 1.5 ADC counts); the decode windows absorb it.
@@ -227,7 +229,7 @@ O22 (`KEEP_ALIVE`) lets the PMU finish its own shutdown — the interior-lamp fa
 | From | To | AWG | Colour | Note |
 |---|---|---|---|---|
 | DP-BAT lug (2 AWG from the Class-T) | Always-hot busbar stud | 2 | RED | The main feed lands directly on the busbar |
-| Always-hot busbar | PMU +12 V stud | 4 | RED | ≤ 8 in, ring lugs both ends, torque to spec |
+| Always-hot busbar | PMU +12 V stud | 2 | RED | ≤ 8 in, ring lugs both ends, torque to spec — 2 AWG, not 4 (D-241) |
 | Always-hot busbar | Fuse block A input | 10 | RED |  |
 | Always-hot busbar | K11 terminal 30 | 10 | RED |  |
 | K11 terminal 87 | Fuse block B input | 10 | RED |  |
@@ -246,6 +248,8 @@ O22 (`KEEP_ALIVE`) lets the PMU finish its own shutdown — the interior-lamp fa
 | PMU pin 2 (O12) | Receptacle L1-P 1 | 12 | RED |  |
 | PMU pin 2 (O12) tap | F15 inline (7.5 A) → receptacle L1-S1 2 | 16 | RED | Alternator excitation |
 | PMU pin 2 (O12) tap | F16 inline (5 A) → receptacle DP-CLU 1 | 16 | RED | Cluster feed |
+| PMU pin 2 (O12) tap | F20 inline (7.5 A) → wideband gauge +12 V | 16 | RED | Ignition feed so the sensor heater is powered during cranking (D-244) |
+| GND bus | Wideband gauge ground | 16 | BLK | A dash-node device — its ground never crosses a leg |
 | PMU pin 34 (O20) | F12 inline (5 A) → receptacle L4-M 8 | 16 | RED | Interior lamp |
 | PMU pin 34 (O20) tap | Receptacles L3-S1 8, DP-CLU 3, DP-ICU 5 (capped) | 16 | RED | Illumination bus |
 | PMU pin 4 (O10) | Receptacle L3-M 1 | 14 | ORN |  |
@@ -262,7 +266,8 @@ O22 (`KEEP_ALIVE`) lets the PMU finish its own shutdown — the interior-lamp fa
 | Wake stage 1 collector (A6 door) | Wake strip input 3 | 16 | BLU |  |
 | Wake stage 2 collector (A8 horn/hazard/wink) | Wake strip input 4 | 16 | BLU |  |
 | PMU pin 8 (O22) | Wake strip input 5 | 16 | RED |  |
-| Wake strip common rail (after the five 1N5819) | PMU pin 7 (+12V SW) | 16 | BLU | 10 kΩ bleed from this rail to the GND bus |
+| Receptacle L3-S1 7 | Wake strip input 6 (brake) | 16 | BLU | Second pole of the brake switch — the brake wakes the module (D-247) |
+| Wake strip common rail (after the six 1N5819) | PMU pin 7 (+12V SW) | 16 | BLU | 10 kΩ bleed from this rail to the GND bus |
 | PMU pin 15 (+5 V) | 100 kΩ → PMU pin 35 (A15) · 100 kΩ → PMU pin 22 (A16) | 16 | PNK | Bias so a broken wire reads 0, not OFF |
 | PMU pin 17 (A4) | Receptacles L2-S 1 and L1-S1 11 (splice) | 16 | GRY |  |
 | PMU pin 31 (A5) | Receptacles L2-S 2 and L1-S2 7 (splice) | 16 | GRY |  |
@@ -279,7 +284,7 @@ O22 (`KEEP_ALIVE`) lets the PMU finish its own shutdown — the interior-lamp fa
 | PMU pin 33 (O18) | Receptacles L2-M 6, L4-M 6, DP-CLU 11 | 16 | RED |  |
 | PMU pin 26 (O3) | Receptacle L2-P 2 (12 AWG) + 16 AWG tap → DP-CLU 12 | 12 / 16 | RED | High beam + indicator |
 | PMU pin 11 (O6) | Receptacles L2-M 7 and L4-M 1 | 14 | ORN |  |
-| PMU pins 24 / 37 (CAN2) | L1-S1 9/10 · DP-ICU 3/4 · DP-DCU 4/5 · DP-KEY 1/2 — twisted pairs, spliced | 16 tw | YEL · GRN | Software termination ON at the PMU |
+| PMU pins 24 / 37 (CAN2) | L1-S1 9/10 · DP-ICU 3/4 · DP-DCU 4/5 · DP-KEY 1/2 · wideband gauge AEMnet pair (dash node) — twisted pairs, spliced | 16 tw | YEL · GRN | Software termination ON at the PMU |
 | PMU pins 23 / 36 (CAN1) | Receptacle DP-DIAG 1/2 — twisted pair | 16 tw | YEL · GRN | 120 Ω across pins 23/36 at the PMU connector |
 | PMU pin 25 (GND) | GND bus | 10 | BLK | ≤ 6 in |
 | GND bus | Chassis, dash star point | 10 | BLK | Bare metal, star washer, torque, cavity wax |
@@ -293,7 +298,7 @@ There is no layout drawing: the layout is decided with the parts on the bench an
 - **Low and close to the floor**, in the centre-stack cavity freed by the radio, cassette, ashtray and lighter, and the space behind and below the glovebox. Not a sealed box — one would not fit the footwell shape.
 - **Several small carrier panels are fine.** The natural split is (a) the PMU with the ground bus and the always-hot busbar — the three heaviest, shortest wires — and (b) the relays, fuse blocks, wake strip and sense-stage board. The receptacles can sit on their own strip or bracket if that fits the space better.
 - **The 39-way lever needs a clear arc** and must be operable at least once with the panels fitted · **60 mm clear behind every receptacle** · **blocks A and B reachable** with the dash together.
-- **Pin 25 to the ground bus** is the shortest, heaviest wire on the node (10 AWG, ≤ 6 in) · **the busbar sits beside the PMU stud** (4 AWG, ≤ 8 in).
+- **Pin 25 to the ground bus** is the shortest, heaviest wire on the node (10 AWG, ≤ 6 in) · **the busbar sits beside the PMU stud** (2 AWG, ≤ 8 in — D-241).
 - **The always-hot busbar is covered** — it is a live 150 A bar in a footwell.
 - **Relays away from the signal receptacles** · receptacles grouped by leg so a leg unplugs as a unit · the PMU stood off its panel for airflow · no bare aluminium against a live stud.
 - About 500 mm of edge in total for the receptacles.
@@ -322,7 +327,7 @@ A leg is a bundle that can be removed without disturbing any other leg. Every de
 | L2-S | L2 Front | Signal | DT06-6S | DT04-6P | 6 | 3 | W6S + W6P | Dash post | Ladders. Route apart from L2-P |
 | L3-P | L3 Dash | Power | DTP06-2S | DTP04-2P | 2 | 2 | WP-2S + WP-2P | Dash post | Blower + comfort bus |
 | L3-M | L3 Dash | Medium | DT06-2S | DT04-2P | 2 | 2 | W2S + W2P | Dash post | Head unit + USB-C |
-| L3-S1 | L3 Dash | Signal | DT06-12S | DT04-12P | 12 | 11 | W12S + W12P | Dash post | Every ladder and switch input |
+| L3-S1 | L3 Dash | Signal | DT06-12S | DT04-12P | 12 | 12 | W12S + W12P | Dash post | Every ladder and switch input |
 | L3-S2 | L3 Dash | Signal | DT06-12S | DT04-12P | 12 | 11 | W12S + W12P | Dash post | Wake sources, switch supply, courtesy, capped window commands |
 | L3-S3 | L3 Dash | Signal | DT06-8S | DT04-8P | 8 | 3 | W8S + W8P | Dash post | Capped pass-through + plugs |
 | L4-P | L4 Rear | Power | DTP06-4S | DTP04-4P | 4 | 3 | WP-4S + WP-4P | Dash post | Defog, fuel pump, capped window bus |
@@ -445,7 +450,7 @@ A leg is a bundle that can be removed without disturbing any other leg. Every de
 | Cav | Circuit | From (box side) | AWG | Colour | State | Lands on (device end) |
 |---|---|---|---|---|---|---|
 | 1 | Accessory — head unit ACC + USB-C | O10 (pin 4) | 14 | ORN | LIVE | Head unit red (ACC) wire; USB-C module + |
-| 2 | Head unit memory / constant | F1 (15 A) ← K11 | 14 | RED | LIVE | Head unit yellow (BATT) wire |
+| 2 | Head unit memory / constant | F1 (10 A) ← K11 | 14 | RED | LIVE | Head unit yellow (BATT) wire |
 
 **L3-S1** · DT06-12S → DT04-12P · 12 cavities · Every ladder and switch input
 
@@ -457,7 +462,7 @@ A leg is a bundle that can be removed without disturbing any other leg. Every de
 | 4 | Wiper stalk ladder | A2 (pin 16) | 16 | GRY | LIVE | Stalk D-03: HIGH 4.7 kΩ · LOW 10 kΩ · INT 18 kΩ · OFF 47 kΩ · WASH 1.8 kΩ + 1N5819 (band toward the contact) |
 | 5 | Brake pedal switch | A3 (pin 30) | 16 | GRY | LIVE | Pedal switch F-11 through 4.7 kΩ; other terminal → dash ground |
 | 6 | Hazard switch | A8 (pin 19) | 16 | GRY | LIVE | Hazard contact through 4.7 kΩ; other terminal → column ground |
-| 7 | — empty | — | — | — | PLUG | Sealing plug, size 16 |
+| 7 | Brake — wake source | Wake strip input 6 | 16 | BLU | LIVE | Brake pedal switch F-11, second pole; its supply is a branch of the F3 switch supply, spliced in the L3 leg off L3-S2 2 |
 | 8 | Illumination bus | O20 (pin 34) | 16 | RED | LIVE | Dash illumination lamps E-06, E-07, E-10 (RL) + head unit illumination wire |
 | 9 | Wink LEFT — NC pole | K2 85 (coil return) | 16 | BLU | LIVE | Wink L switch NC terminal; switch common → dash ground |
 | 10 | Wink RIGHT — NC pole | K1 85 (coil return) | 16 | BLU | LIVE | Wink R switch NC terminal; switch common → dash ground |
@@ -775,8 +780,8 @@ Written the way it is typed into the PMU client. Channel names match §4.1.
 | BRAKE | A3 == BRAKE  \|\|  A3 == BRAKE+PARKED | 10× for 100 ms | 3 retries, 5 s |
 | TURN_L | (A1 == LEFT  \|\|  hazard)  &&  flasher_phase | 10× for 100 ms | 3 retries, 5 s |
 | TURN_R | (A1 == RIGHT  \|\|  hazard)  &&  flasher_phase | 10× for 100 ms | 3 retries, 5 s |
-| REVERSE | A5 == REVERSE  &&  A16 >= RUN | 10× for 100 ms | 3 retries, 5 s |
-| INTERIOR | A6 != CLOSED  — PWM, 1.5 s fade-in, 8 s fade-out after the last door closes | 10× for 100 ms | 3 retries, 5 s |
+| REVERSE | (A5 == REVERSE \|\| A5 == TRANSIT+R)  &&  A16 >= RUN | 10× for 100 ms | 3 retries, 5 s |
+| INTERIOR | A6 != CLOSED — PWM, 1.5 s fade-in, 8 s fade-out after the last door closes; drops after 10 minutes with a door still open, re-arms when every door closes (D-248) | 10× for 100 ms | 3 retries, 5 s |
 | MOTOR_BUS | popup_cycle  (see the pop-up rule below) | 7× for 400 ms | 1 retry |
 | WIPE_LOW | A2 == LOW  \|\|  A2 == WASH  \|\|  (A2 == INT && int_timer)  \|\|  (wiper_latch && A3 not PARKED)  — braking ON | 7× for 300 ms | 3 retries, 5 s |
 | WIPE_HIGH | A2 == HIGH | 7× for 300 ms | 3 retries, 5 s |
@@ -787,8 +792,8 @@ Written the way it is typed into the PMU client. Channel names match §4.1.
 | ACCESSORY | A16 >= ACC | 2× for 100 ms | 3 retries, 5 s |
 | HORN | A8 == HORN  \|\|  A8 == HAZ+HORN | 3× for 80 ms | 3 retries, 5 s |
 | COMFORT | A16 >= RUN  (nothing connected this build) | 2× for 200 ms | 3 retries, 5 s |
-| START_RLY | A16 == START  &&  A4 == CRANK_OK | 2× for 50 ms | — |
-| KEEP_ALIVE | self-hold: ON at any wake; OFF 30 s after the last input change with A16 == OFF and A6 == CLOSED | — | — |
+| START_RLY | A16 == START  &&  (A4 == CRANK_OK \|\| A4 == TRANSIT+PN) | 2× for 50 ms | — |
+| KEEP_ALIVE | self-hold: ON at any wake; OFF 30 s after the last input change with A16 == OFF and A6 == CLOSED; forced OFF after 30 min with A16 == OFF whatever A6 reads (D-248) | — | — |
 | LS_ECU · LS_FAN | DISABLED | — | — |
 
 ### Rules
@@ -796,13 +801,13 @@ Written the way it is typed into the PMU client. Channel names match §4.1.
 | Rule | Definition |
 |---|---|
 | Flasher | 1.5 Hz, 50 % duty, generated in the PMU. `hazard` = A8 == HAZARD \|\| A8 == HAZ+HORN. Hazard overrides the stalk and works with the key out |
-| Pop-up cycle | A15 entering HEAD, or leaving HEAD, or A8 == WINK_L / WINK_R with A16 <= ACC → energise O1 until BOTH A4 and A5 leave TRANSIT (minimum 300 ms). 4 s with either still in TRANSIT = obstruction: O1 off, fault flag. A held wink switch opens the OTHER side's relay coil return, so only the winked lamp moves |
+| Pop-up cycle | A15 entering HEAD, or leaving HEAD, or A8 == WINK_L / WINK_R with A16 <= ACC → energise O1 until the transit bit clears on BOTH sides (A4 in IDLE/CRANK_OK and A5 in IDLE/REVERSE), minimum 300 ms. 4 s with either still showing transit = obstruction: O1 off, fault flag. A held wink switch opens the OTHER side's relay coil return, so only the winked lamp moves |
 | Wiper park | When the stalk goes to OFF with the wipers running, hold O8 until A3 reads PARKED (or BRAKE+PARKED), then release — braking stops the arm at park. Intermittent: 3 s pause between full sweeps, each sweep runs until PARKED. One-touch: LOW held < 400 ms → one sweep to PARKED (D-225) |
 | Washer | WASH also holds O8 on; K12 closes only while the stalk contact is pressed, so the pump runs only while the driver holds WASH. After release, keep O8 on for two more sweeps |
-| Crank | O21 only in P or N (A4 == CRANK_OK). Release O21 when A16 leaves START |
+| Crank | O21 only in P or N — the inhibitor bit alone, whether or not the left pop-up happens to be in transit (D-240): A4 == CRANK_OK or TRANSIT+PN. Release O21 when A16 leaves START |
 | Motor bus | Refuse a new pop-up command while O1 reads above 20 A |
-| Voltage | Warn below 12.0 V. Shed COMFORT below 11.5 V. Warn above 15.0 V |
-| Sleep | Any wake-strip input high wakes the PMU. With no key, no door and nothing on A8, KEEP_ALIVE drops 30 s after the last change and the PMU sleeps; K11 opens with it (audio memory relies on the head unit's own non-volatile memory) |
+| Voltage | Warn below 12.0 V. Below 11.5 V shed COMFORT, INTERIOR and ACCESSORY (D-248 — COMFORT alone had no load to shed). Warn above 15.0 V |
+| Sleep | Any wake-strip input high wakes the PMU. With no key, no door and nothing on A8, KEEP_ALIVE drops 30 s after the last change and the PMU sleeps; K11 opens with it (audio memory relies on the head unit's own non-volatile memory). A stuck door cannot hold the car awake: with A16 == OFF, KEEP_ALIVE releases after 30 minutes whatever A6 reads (D-248) |
 
 ![popups](diagrams/05-popups-and-wink.svg)
 
@@ -845,7 +850,8 @@ One star node per zone, each straight to bare chassis: the engine block (with it
 | L3 | Brake pedal switch → dash ground | 16 | 1 | 3 |
 | L3 | Turn / hazard / wiper stalk returns → column ground | 16 | 3 | 2 |
 | L4 | Rear star stud → chassis | 10 | 1 | 2 |
-| L4 | Battery − → rear star stud | 2 | 1 | 3 |
+| L4 | Battery − → master disconnect → rear star stud | 1/0 | 1 | 4 |
+| L4 | Rear star stud → engine block — dedicated cranking return | 1/0 | 1 | 18 |
 | L4 | Defog grid B → rear star | 12 | 1 | 6 |
 | L4 | Fuel pump − → rear star (dedicated) | 12 | 1 | 4 |
 | L4 | Fuel sender B → rear star | 16 | 1 | 5 |
@@ -912,7 +918,7 @@ The far end of every conductor. Factory two-letter colours name the terminal on 
 | L3 | **Wiper stalk** — D-03 (column, kept) | HIGH → 4.7 kΩ → L3-S1 4<br>LOW → 10 kΩ → L3-S1 4<br>INT → 18 kΩ → L3-S1 4<br>OFF → 47 kΩ → L3-S1 4<br>WASH contact → 1.8 kΩ + 1N5819 (band to the contact) → L3-S1 4; and direct → L3-S2 9<br>common / contact returns → column ground | — |
 | L3 | **Horn pad** — Steering wheel (kept) | contact → 8.2 kΩ → L3-S1 11<br>return → column ground through the slip ring | — |
 | L3 | **Wink switches** — New — SPDT momentary ×2, dash panel | Wink L common → dash ground<br>Wink L NC → L3-S1 9<br>Wink L NO → 18 kΩ → L3-S1 11 node<br>Wink R common → dash ground<br>Wink R NC → L3-S1 10<br>Wink R NO → 33 kΩ → L3-S1 11 node | — |
-| L3 | **Brake pedal switch** — F-11 (new) | contact → 4.7 kΩ → L3-S1 5<br>other side → dash ground | — |
+| L3 | **Brake pedal switch** — F-11 (new) — two-circuit | Pole 1 → 4.7 kΩ → L3-S1 5 (the A3 ladder)<br>Pole 1 other side → dash ground<br>Pole 2 in ← F3 switch supply, branched off L3-S2 2 in the leg<br>Pole 2 out → L3-S1 7 → wake strip input 6 | — |
 | L3 | **Parking brake switch** — C-04 (kept) | BR → L3-S2 11 | body: lever bracket — no wire |
 | L3 | **Blower motor + resistor + switch** — New motor G-14, new resistor pack, new switch G-15 | Motor + → L3-P 1<br>Motor − → resistor pack common<br>Resistor taps → speed switch<br>Switch common → dash ground, 12 AWG BLK | — |
 | L3 | **Head unit** — Aftermarket | Red (ACC) → L3-M 1<br>Yellow (BATT) → L3-M 2<br>Orange (ILLUM) → L3-S1 8<br>Black → dash ground, 14 AWG BLK | — |
@@ -930,6 +936,7 @@ The far end of every conductor. Factory two-letter colours name the terminal on 
 | L4 | **Door jamb switches** — New plunger switches ×2 (B-pillar) | Driver → 33 kΩ → sill splice → L4-S 2<br>Passenger → 8.2 kΩ → sill splice → L4-S 2 | body: switch body grounds in the jamb |
 | L4 | **Rear star node** — New — stud in the cargo bin | stud → chassis, 10 AWG BLK; the battery 2 AWG negative lands here too | — |
 | Sill | **Sill node** — New panel behind the driver kick panel | D1 / D2 receptacles → all conductors capped<br>Ground stud → chassis<br>K5–K8 sockets → fitted, empty<br>F8 / F9 / F14 → positions labelled, no holders this build | — |
+| L3 | **Wideband AFR gauge (controller)** — AEM 30-0300 X-Series, relocated out of sight | +12 V → F20 (ignition-fed, so the heater is live while cranking)<br>Ground → GND bus, 16 AWG BLK<br>AEMnet CAN H/L → the CAN2 splice at the dash node. The gauge's AEMnet lead ends in a DTM 2-way: **cut the pigtail and butt-splice to the CAN2 pair** — no DTM tooling enters the build (D-219)<br>0–5 V analog out: not used<br>Sensor lead: the gauge's own cable through the firewall grommet to the bung — never cut, never extended | — |
 
 ---
 
@@ -945,7 +952,7 @@ The reviewer's checklist. Every line should be checkable from this folder alone.
 - Every device in §12 has a ground path to its zone's node (§10), and the fuel pump's return is dedicated.
 - Ladder windows in §8 do not overlap; the tightest gaps are A4 / A5 (44 counts) and A6 (55 counts).
 - Every ladder resistor named in §12 appears in the §8 tables with the same value.
-- The wake circuit (§5.2) can wake the PMU from every source that must work with the key out: hazard, horn, wink, door.
+- The wake circuit (§5.2) can wake the PMU from every source that must work with the key out: hazard, horn, wink, door, brake.
 - Nothing in the engine leg is a stub for a future part.
 - Every conductor's gauge is at or above what its output's enable-at limit requires: 12 AWG above 15 A, 14 AWG above 13 A, 16 AWG at 13 A and below and on every signal. A 16 AWG tap off a heavier feed (an indicator, a capped module drop) is allowed only where the cavity notes it as a tap (D-232).
 - The three measurements the design still waits on are only dimensions: the dash envelope for the dash node's panels, the harness routes for wire lengths, and the pop-up motor ohm check that decides whether R and RY are bridged.

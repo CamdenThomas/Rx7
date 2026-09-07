@@ -8,7 +8,7 @@ Work sheets for the build, printed from the design (`../01-DESIGN/DESIGN.md`). *
 
 {{pmu_connector}}
 
-The stud: 4 AWG RED ring lug from the busbar, torqued.
+The stud: 2 AWG RED ring lug from the busbar, torqued (D-241).
 
 
 ## B · Dash-node conductors

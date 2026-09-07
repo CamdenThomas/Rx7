@@ -1,6 +1,8 @@
 # QUESTIONS — everything still open, in the order it has to be answered
 
-One kind of item only: a question is anything not yet settled — a call only the owner can make, a fact to confirm, or a measurement to take. Answer one by writing under it or saying it in a session; it then becomes a `D-` entry in `DECISIONS.md` and leaves this file. IDs are permanent; the ones that came from the old verify/assumption lists keep their old numbers, new ones start at Q-100.
+*Rev 2026-09-04b · owns: what is still undecided, unconfirmed or unmeasured in the electrical build, plus the finishing task list. Rulings are [`DECISIONS.md`](DECISIONS.md)'s; facts are `data/`'s.*
+
+One kind of item only: a question is anything not yet settled — a call only the owner can make, a fact to confirm, or a measurement to take. Answer one by writing under it or saying it in a session; it then becomes a `D-` entry in `DECISIONS.md` and leaves this file. IDs are permanent; the ones that came from the old verify/assumption lists keep their old numbers, new ones run from Q-100.
 
 **The file is split by the one deadline that matters: paying for the carts.**
 
@@ -14,37 +16,38 @@ Nothing in §2 blocks a purchase. Nothing in §1 should wait.
 
 §0 is the finishing task list — the order of work from here to a car driving on the PMU. §3 records what closed. §4 records what left this project and where it went.
 
+> **2026-09-04b.** Five of the six audit packets are ruled — **D-244** (the wideband gauge is the controller; AFR rides CAN2; supersedes D-227 and D-231) · **D-245** (the disconnect moves to the negative) · **D-246** (1/0 starter feed and a dedicated cranking return) · **D-247** (two-circuit brake switch, brake joins the wake strip) · **D-248** (the parasitic-drain rules). **Two questions are left before shopping — `Q-107` and `Q-111`** — and one desk check, `T-017`.
+
 ---
 
 ## 0 · The finishing task list
 
 **A · At the desk, now — no car, no parts**
 
-- [ ] **A1 · Close the cart gaps** (`02-SHOPPING/SHOPPING-LIST.md` §8): at DeutschConnector add DT4P-DC ×1, 0413-204-2005 ×4 (L1-P 4 and L4-P 4, both halves — D-230), 0411-310-1205 ×1, and raise 0462-209-16141 and 0460-215-16141 to 18 each · at WireBarn sign in, confirm the 8 lines, add 16 AWG PNK 25 ft, YEL 50 ft, GRN 50 ft · **swap the Waytek 78250 (uncovered 2301) for two covered Blue Sea 2300 bars (D-224)** · **delete the NOCO BG27 (D-229)** · then pay the four carts. The shopping list §8 is the same list, generated.
-- [ ] **A2 · Order the vehicle parts** — shopping list §6 (brake pedal switch, ignition switch electrical portion, blower motor, resistor pack, speed switch).
-- [ ] **A3 · Check the fuse drawer** against shopping list §9 and buy any missing value locally.
+- [ ] **A1 · Close the cart gaps.** The generated list is `02-SHOPPING/SHOPPING-LIST.md` §8 — work from it, it is derived from the design and cannot drift. The three things that are *not* line items and have to be done by hand: **sign in at WireBarn** before checkout or the cart is lost · **swap the Waytek 78250** (uncovered 2301) for two covered Blue Sea 2300 bars (D-224) · **delete the NOCO BG27** (D-229). Then pay the four carts.
+- [ ] **A2 · Order the vehicle parts** — shopping list §6. The brake pedal switch must be a **two-circuit** switch (D-247); a single-circuit one cannot be fixed later without pulling the pedal box apart again.
+- [ ] **A3 · Check the fuse drawer** against shopping list §9. Two changed: F1 is **10 A** (D-242), and **F20 7.5 A** is new (D-244).
 - [ ] **A4 · Keep the Ionic above its BMS cutoff** while it waits — a lithium left to self-discharge into cutoff is hard to recover. Check it monthly on the app.
-- [ ] **A5 · Answer §1.** Cart-blocking first — `Q-103`, `Q-104`, `V-094`, `V-095`, `V-053`, `V-051` — then the design pair, `Q-102` and `T-017`.
+- [ ] **A5 · Answer `Q-107`** (the fuel-pump oil-pressure gate) and **`Q-111`** (fresh senders, and whether the engine leg carries a sensor supply for Phase 2), then **do `T-017`** (the factory pin letters). Nothing else in §1 is open.
+- [ ] **A6 · At the cart review, apply D-238** to every heavy cable line, 2 AWG and 1/0 alike: the listing must state ≥ 90 °C insulation and 100 % copper. Swap the line before payment if it does not.
 
 **B · One afternoon with the car — nothing cut, no parts needed**
 
 - [ ] **B1 · Strip the A/C system** (D-211, D-228) — a prerequisite of the install plan. Order: a shop recovers the refrigerant first (it still holds charge; venting is illegal) · pull the compressor, bracket, belt, condenser, receiver/drier and lines · pull the factory interlock chain (G-18, G-19, G-21, G-22, G-23 and the dash A/C switch) · leave the blower, heater core, HVAC case, ducts and doors alone · box the hardware, don't scrap it. The compressor is on its own belt (D-228), so nothing else on the crank is disturbed.
-- [ ] **B2 · Photograph the wideband's current install** — the piggyback fuse tap in the factory box, the controller, the gauge head and the sensor lead (M-7 `hacks` set). D-227 moves all of it into the engine leg; the photographs are what make the removal clean.
-- [ ] **B3 · Look at the battery** for `V-053` (post type) and measure it for `V-051`.
-- [ ] **B4 · Trace the amplifier's power lead** for `Q-104` — does it land on something that stays, or on the factory harness that leaves at install §6?
+- [ ] **B2 · Read the part number off the back of the wideband gauge** and photograph the whole install — the fuse-box piggyback tap, the gauge, the sensor lead. D-244 assumes the gauge carries an **AEMnet** pair; if it does not, the fallback (0–5 V into `DP-ICU 8`) is a different wire and a different commissioning date.
 
 **C · The measurement day — interior apart once, before anything is cut** (`03-INSTALL/INSTALL.md` §0, boxes M-1 … M-7)
 
-- [ ] **C1** M-1 dash envelope (closes `Q-014`) · M-2 routes · M-3 pop-up ohm check (closes `V-081`) · M-4 cargo bin (`V-088`, plus the battery cover from `Q-103`) · M-5 posts and sill space (`V-055`) · M-6 cluster plug · M-7 photographs.
-- [ ] **C2** Buy the carrier-panel and backing-plate stock from the hardware store afterwards (shopping list §7) — and the battery-cover stock with it if `Q-103` lands on a fabricated cover.
+- [ ] **C1** M-1 dash envelope, **plus where the wideband gauge hides and whether its fixed sensor lead reaches the bung from there** (closes `Q-014`) · M-2 routes — the tunnel now carries **three** heavy cables, the 2 AWG PMU feed and two 1/0 runs, so measure it for the bundle, not one wire · M-3 pop-up ohm check (closes `V-081`) · M-4 cargo bin (`V-088`) · M-5 sill space (`V-055`) · M-6 cluster plug · M-7 photographs.
+- [ ] **C2** Buy the carrier-panel and backing-plate stock from the hardware store afterwards (shopping list §7). No battery-cover stock — D-235 chose boots alone.
 - [ ] **C3** The luxury package has three ten-minute looks that ride along: the tail-light aperture, what headlamps are actually fitted, and how deep the binnacle brow shades the cluster. See `../luxury-package/QUESTIONS.md`.
 
 **D · When the parts arrive**
 
 - [ ] **D1** Count everything against shopping list §10.
-- [ ] **D2** Fit-check the battery retention and whatever `Q-103` chose to cover the terminals.
+- [ ] **D2** Fit-check the battery retention, the post terminals and the boots — including whether a boot lifts by hand with the terminal stack loaded (D-235's whole point).
 - [ ] **D3** Confirm the two spare 39-way housings carry full terminal sets (16 large, 27 small each) — they are the spares.
-- [ ] **D4** Install §1: crimp coupons and pull tests on every crimper before any real crimp.
+- [ ] **D4** Install §1: crimp coupons and pull tests on every crimper before any real crimp — including the 1/0 dies on the hydraulic crimper (D-246 added two 1/0 runs).
 
 **E · Then the install plan, in its own order** — §2 backbone (one weekend, car drives home) · §3 dash node (bench) · §4 legs (bench) · §5 install and migrate (one circuit per sitting) · §6 factory harness out · §7 shakedown.
 
@@ -52,66 +55,50 @@ Nothing in §2 blocks a purchase. Nothing in §1 should wait.
 
 # 1 · BEFORE SHOPPING — design questions
 
-Eight questions. Six change what is in a cart; two change the drawing. All of them are answerable at the desk, with a look at parts already in hand, or with a look in the cargo bin — none needs the car apart.
+Two questions and one desk check. Neither question changes a cart line; all three have to be settled before the design freezes.
 
-## 1a · Cart-blocking — answer before `T-053` is paid
+**Q-107 · Can the PMU gate the fuel pump on oil pressure?** *(your question, 2026-09-04)*
 
-**Q-103 · What covers the battery terminals now that the box is gone?**
-D-229 deleted the NOCO BG27. Retention is unaffected — D-063's backing plate, hold-down and M8 grade-8 hardware were always the structure, and the box was never load-bearing. What the box also did, and now nothing does, is keep a live 12 V post from meeting a tool, a spare wheel, or a bag of groceries in an open cargo bin. Options: **(a)** terminal boots on both posts plus a fabricated cover panel over the whole install, cut from the same hardware-store stock as the carrier panels after the measurement day; **(b)** a different, lower box that clears the Ionic's case and terminals; **(c)** boots alone, with the installation living behind the cargo trim. **Recommend (a)** — boots cost cents, the panel costs nothing extra because it rides on the C2 hardware-store trip, and unlike (c) it survives the trim being out for other work. Whatever is chosen, the boots are a cart line.
-**Blocks:** the Amazon cart (the BG27 line comes out either way), and the M-4 cargo-bin mock-up.
+**The logic is easy; the input is the problem.** The PMU's expression language does exactly what you described — a prime window, an unconditional crank, and a run condition:
 
-**ANSWER:**
->
->
+```
+FUEL_PUMP = (A16 == START)
+         || (A16 >= RUN && prime_timer < 3 s)
+         || (A16 >= RUN && oil_press > threshold, latched)
+```
 
-**Q-104 · Where does the amplifier actually get its power — and does that survive the factory harness coming out?** *(new, from D-230)*
-D-230 took the amp off the PMU: F5 and L4-P 4 are deleted and the audio system stands alone. The belief is that the amp draws from a rear-cabin junction, possibly straight onto a terminal block with posts built in. **That belief has to be checked, because the factory harness is removed at install §6.** If the amp's feed originates on the factory harness — a junction, a splice, a fused tap — then the day the old loom comes out is the day the amp goes dead, and it will not be a day anyone is thinking about audio.
+What the PMU does not have is a spare analog input to read oil pressure with. A1–A8 are the dedicated bank and all eight are used; A15 and A16 are the two shared pins that are not outputs, and they are the key and headlight ladders. Ten inputs, ten allocated. So the real question is what to give up.
 
-Look at the amp's power lead in the cargo bin and answer one thing: does it terminate on **the battery / a distribution post that stays**, or on **something the factory harness owns**? If the former, nothing more is needed and this closes. If the latter, the amp needs its own fused feed from the rear distribution before §6 — which is audio-side work, not PMU work, but it has to be on the list or it becomes a surprise.
-**Cart impact:** L4-P drops from 4 conductors to 3, so one DTP size-12 contact pair leaves and one sealing-plug pair joins (D-218). ~14 ft of 12 AWG RED is no longer needed — inside the 1.5× margin, no line change.
+**(a) Recommended — A7 stops being `FUEL_LEVEL` and becomes `OIL_PRESS`.** The oil-pressure sender's conductor already lands at the dash node (`N47`: L1-S1 4 → DP-CLU 6). A7's tap moves from the fuel-gauge node onto that one. **No cavity changes, no cart line, one wire moved at the node.** What you give up is the PMU's fuel-level reading — the shakiest input in the car by the design's own admission (D-197: *if the reading is unstable, leave the channel unused; the cluster's gauge is the instrument*), and one the factory gauge shows anyway. And it comes back: `DP-ICU 8` is free again now that the wideband went to CAN (D-244), so the ICU can read the fuel node there and publish it on CAN2, where the PMU logs it as a received channel — but that is **a conductor added while the harness is on the bench**, not later (`../luxury-package/QUESTIONS.md` `Q-301`). Oil pressure is the input that protects the engine; fuel level is the one that tells you to stop for petrol.
 
-**ANSWER:**
->
->
+**(b) The hardware answer, no input needed — the $20 inertia switch** from the original packet, in series with the pump feed at the rear. It covers a crash. It does not cover a stall, a rollover with the key left on, or a burst fuel line, and it trips on potholes.
 
-**V-094 · Does a 200 A MRBF survive cranking?**
-The starter run is fused at the post with a Blue Sea 5187 (200 A). A 12A starter pulls 300–500 A for a fraction of a second; MRBF time-current curves tolerate that, but confirm on the 5187 curve against the Ionic's cranking data before the first start, or a cold morning ends with a blown $17 fuse and no spare. If marginal, the 250 A (5188) is the same holder — a cart swap, not a redesign.
+**(c) Both.** They are cheap and they fail differently — (a) needs a working sender, (b) needs nothing.
 
-**ANSWER:**
->
->
+**Recommend (a).** Three conditions have to go into the config with it, and they are not optional: a **3 s prime window** from key-on so the float bowl fills; **unconditional during START**; and a **latch with a long de-bounce** — once oil pressure has been seen the pump stays on until the key leaves RUN, and a cut only ever follows several seconds of continuous zero. A sender tap is a less trustworthy signal than a pressure switch, and the one thing this must never become is a pump that cuts on a glitch at 60 mph.
 
-**V-095 · Is the carted 2 AWG welding cable rated for the runs?**
-Check the Amazon listing's insulation temperature rating (≥ 90 °C) and that it is copper, not CCA. Fine-strand welding cable is accepted (D-203g) when loomed and grommeted — CCA is not accepted at any price.
+**A fourth condition, for the version of this that arrives later.** Once the ICU exists it will publish oil pressure, temperature and rpm on CAN2, and D-183 already reserves the rpm-qualified rules for that day. **Do not move the interlock onto the bus when it comes.** A safety cut that depends on a message from another module fails in a new way: an ICU reboot, a hung task or a dropped bus is indistinguishable from zero oil pressure, and cutting the pump at speed is far more dangerous than a pump that runs five seconds after a stall. If a CAN-sourced value is ever admitted to this rule it **fails open** — a stale channel reads as *pressure OK*, the pump stays on, and the PMU logs the fault. The interlock lives on the shortest path, the hard-wired A7 node; CAN carries the same number for display and logging.
+
+**Confirm before it is entered:** what this engine's sender actually reads at the node, in ADC counts, at idle and at speed — the same in-car read D-142 does for every ladder. Until that number exists the threshold is a guess, so the gate is entered at commissioning, not on the bench.
+**Costs:** nothing in any cart. It changes the A7 row, `N45`, the A7 decode table, the `FUEL_PUMP` expression, and the fuel-level clause in D-183 / D-197 / D-215.
 
 **ANSWER:**
 >
 >
 
-**V-053 · Battery terminal type — SAE tapered posts or 3/8 threaded studs.**
-Look at the Ionic; it is in hand. It chooses the lug type for both battery cables, and the wrong lug is a re-order that stops the backbone weekend.
+**Q-111 · Fresh senders now, and does the engine leg get a sensor supply and spare sensor cavities for the ICU's sensors later?** *(new, 2026-09-04, from the sensor review)*
 
-**ANSWER:**
->
->
+Two calls that have to be made together, because the engine leg is built once and the firewall grommet is not opening twice.
 
-**V-051 · Ionic case dimensions, with boots on.**
-Tape-measure it. Two things now depend on it: whatever `Q-103` chooses to cover the terminals, and the cargo-bin cut at M-4. It no longer has to fit a box.
+**(a) New senders — yes, and in Phase 1 they must be factory-spec resistive.** The water temp (C-02), oil pressure (C-09) and fuel (C-01) senders are original and their condition is unknown; replacing them is cheap and obviously right. The constraint is that **while the factory cluster is the instrument, a new sender has to drive a 1982 bimetal gauge** — a modern 0–5 V transducer will not. So Phase 1 gets factory-spec replacements, and they are fitted **before** the in-car calibration reads (D-142, D-197), or every lookup table is read twice. Fitting a new tank sender also voids D-197's measured fuel curve (6 Ω full · 31.5 Ω mid · 80 Ω empty) — re-measure it after the swap, not before.
 
-**ANSWER:**
->
->
+**(b) The Phase 2 question — what will a better sensor need that this leg does not have?** When the ICU takes over the instruments, better sensors become possible: a 3-wire pressure transducer, a thermistor with a published curve, a real temperature sensor. Every one of them wants **a regulated supply, a signal and a ground — three conductors where this design runs one** — and there is deliberately **no +5 V in any leg** (D-215). L1-S1 has 4 free cavities and L1-S2 has 6, so the *cavities* exist; the supply does not, and adding one later means the grommet, the leg and the dash.
 
-## 1b · Design correctness — no cart impact, but the design cannot freeze without them
+**Options: (a)** run nothing extra, and accept that Phase 2 sensors must be single-wire resistive types forever. **(b)** Run **one switched sensor-supply conductor** to the engine bay now, capped, plus **two signal spares** — `L1-S2 9`, `10`, `11`, which D-244 has just freed — so a future sensor's regulator can live at the dash node or at the sender. **(c)** Run a +5 V reference out from the dash node: rejected. A 5 V rail down twelve feet of unshielded leg into an engine bay is a noise and fault problem this design has avoided on purpose (D-215).
 
-**Q-102 · The wideband: which cavities, and what fuses it?**
-D-227 ruled that the O2 sensor and its controller stay, the AEM gauge head is deleted, and the signal becomes an ordinary engine-leg sensor conductor on the **ignition** feed. D-231 then closed part (c) — no interim reading, no temporary feed. Two mechanics remain, both cart-neutral.
-
-**(a) Which cavities.** The controller needs its signal carried up to the dash and its power carried down; its ground is local to the engine-block star node and never crosses the leg (D-017/D-037). So the leg carries **two** conductors. L1-S1 has 4 free cavities, L1-S2 has 6. **Recommend L1-S2 9 (signal, GRY) and L1-S2 10 (ignition feed, RED)** — it keeps the pair together in the emptier housing and away from the shielded tach in L1-S1. The signal is low-level analog: route it with the sender wires, not the coil feed. Whether it wants its own shield like the tach does is a judgement — the AEM output is a buffered 0–5 V, which is far more robust than a coil pickup, so plain GRY is probably right.
-
-**(b) What fuses it.** It must be live in RUN *and* START. O12 (`IGNITION`) already feeds F15 (alternator excitation, 7.5 A) and F16 (cluster IG, 5 A), and it is a 25 A channel estimated at 5.0 A — there is ample headroom for a heater that pulls a few amps at warm-up. **Recommend a new 5 A position off O12 at the dash node — F20 — feeding L1-S2 10.** Block B has two spare positions and the value is a drawer item, so the cart does not move. Confirm the controller's actual heater draw from the kit's instructions before setting the value.
-
-**(c) What reads it — CLOSED by D-231.** **Every PMU analog input is already allocated**: A1–A8 are the dedicated bank, A15/A16 take the two shared pins that are not outputs, and the other six shared pins are outputs. The PMU cannot read AFR without giving up one of the ten inputs it already uses. The ICU can — it is a Teensy with spare analog inputs, and DP-ICU cavities 8 and 10 are sealing-plugged today. So: **signal → L1-S2 9 → dash post → DP-ICU 8, read by the ICU, published on CAN2, logged by the PMU as a received channel.** Camden ruled that the resulting gap costs nothing — the engine does not need tuning until the ICU and digital dash are in the car — so **no temporary gauge feed is built** (D-231). The two conductors are run now and capped at the engine end; the controller and sensor are commissioned with the ICU.
+**Recommend (b).** Three conductors, six contacts, about forty feet of 16 AWG inside the existing margin — a few dollars and an hour on the bench, against a firewall grommet and a whole leg later. It is the same trade D-004 and D-218 already made everywhere else, and "a named future feature" is exactly what CAPPED is for. It also covers the LS swap's sensor reservations, which are named but unspecified (L1-S2 4/5/6, D-007).
+**Costs:** 3 × size-16 contacts per half, three cavities that were sealing plugs, no cart line beyond contacts already carried as spares.
+**Blocks:** `L1-S2`'s final cavity state, and the design freeze.
 
 **ANSWER:**
 >
@@ -134,7 +121,7 @@ Nothing here changes what is bought or how the harness is drawn. Each one is ans
 
 These gate **cutting**, never buying (D-202). All four are one session with a tape measure and a meter.
 
-**Q-014 · Dash envelope** — install M-1. The clear width, height and depth of the centre-stack cavity, the glovebox region and the floor under the dash on both sides; lever clearance; 60 mm behind the receptacles. The carrier panels are sized from it, and the panel stock is bought afterwards (C2), so a wrong guess costs nothing but a second trip.
+**Q-014 · Dash envelope** — install M-1. The clear width, height and depth of the centre-stack cavity, the glovebox region and the floor under the dash on both sides; lever clearance; 60 mm behind the receptacles. Two riders now: where the wideband gauge hides, and whether its fixed sensor lead reaches the bung from there (D-244).
 
 **ANSWER:**
 >
@@ -152,7 +139,7 @@ These gate **cutting**, never buying (D-202). All four are one session with a ta
 >
 >
 
-**V-088 · Do the amplifier, battery, Class-T block and disconnect all fit the rear cargo bins?** — install M-4. Mock it in cardboard with the amp in its intended position. With the box gone (D-229) there is more room than the design assumed, and the mock-up now also has to prove whatever `Q-103` chose to cover the terminals.
+**V-088 · Does everything fit the rear cargo bins?** — install M-4. Mock it in cardboard: the battery at 170 × 230 × 190 mm plus boot height (D-239), the new standalone amplifier beside it (D-236), the Class-T block on the positive and the master disconnect now on the negative (D-245). Prove a hand can reach a post to jump-start the car with the boots on (D-235).
 
 **ANSWER:**
 >
@@ -160,12 +147,19 @@ These gate **cutting**, never buying (D-202). All four are one session with a ta
 
 ## 2b · When the parts arrive
 
-No open questions — the arrival checks are §0's D1–D4 boxes, and the one question that lived here (`V-093`, the box fit) closed with D-229.
+No open questions — the arrival checks are §0's D1–D4 boxes.
 
 ## 2c · At configuration — PMU powered in the car, every output disabled (install §5.3–5.6)
 
 **V-075 · Does the PMU have a native shutdown delay that makes the O22 self-hold latch unnecessary?**
 If the client offers a configurable power-down delay on pin 7, the `KEEP_ALIVE` output (pin 8, O22) and its wake-strip diode are redundant and K11 can be driven from that delay instead. Nothing in the harness changes either way — O22's wire is already at the dash node — only the config. Check in the client at §5.4; if yes, log it and simplify `03-INSTALL/PMU-CONFIG-SHEET.md` §4.
+
+**ANSWER:**
+>
+>
+
+**Q-110 · How long does the horn take from asleep?**
+Horn, hazard, wink — and now the brake (D-247) — all work with the key out, and all of them work by *waking the module first*: the stage lifts pin 7, the PMU boots, decodes and drives the output. Nothing in the design says how long that takes, and the horn is the one control whose whole value is in its first 200 milliseconds. Measure it at §5.4 with a stopwatch and a helper: press the pad on a sleeping car, time until it sounds. Under ~200 ms, say nothing more about it. Over ~500 ms, decide whether the horn should hang off the always-hot busbar through its own relay instead — a change this build can still absorb and a finished car cannot. The brake is the same measurement and matters more.
 
 **ANSWER:**
 >
@@ -195,42 +189,34 @@ From the Ionic docs or app: at what temperature the heater runs, and what it dra
 
 Answered items leave the body of the file and land in `DECISIONS.md`. The IDs stay permanent and are cited with their closer.
 
-**2026-09-03 — Camden's answers parsed in:**
+**2026-09-04b — the audit packets, ruled:**
 
 | ID | Closed by | Outcome |
 |---|---|---|
-| `V-014` | D-223 | Follow the recommendation — O8/O9/O10/O11 cap at **13.0 A**, inside the DT size-16 contact rating |
-| `Q-101` | D-224 | **Both** busbars covered, not just the always-hot one. Second covered bar joins the Waytek cart |
-| `V-028` | D-225 | One-touch single wipe **is** wanted — `LOW < 400 ms → one sweep to PARKED`, software only |
-| `V-001` | D-226 | Two coils, two igniters, leading and trailing; looks factory and untampered. Splices not individually traced |
-| `Q-100` | D-227 | Wideband **stays**, AEM gauge head **goes**. Signal becomes an engine-leg sensor conductor on the **ignition** feed, read by the ICU, logged by the PMU. Mechanics → `Q-102` |
-| `V-097` | D-228 | A/C compressor is on its **own belt** — the D-211 strip is purely subtractive |
-| `V-093` | D-229 | **No battery box.** NOCO BG27 leaves the design and the cart; terminal covering → `Q-103` |
-| `Q-102`(c) | D-231 | **No interim AFR and no temporary gauge feed** — the engine is not tuned until the ICU and digital dash are in. The wideband's conductors are run now and capped at the engine end; controller and sensor commission with the ICU |
-| — | D-230 | **The amplifier comes off the PMU.** It has its own power and the audio system is deliberately isolated — its only interface anywhere is the head-unit pre-amp signal. **F5 and L4-P 4 deleted.** The head unit stays a PMU load (body-harness integrated); K11 narrows from "audio master" to head-unit constant master |
+| `Q-102` | D-244 | **The gauge is the controller and stays**, hidden behind the dash on F20, publishing AFR on **CAN2** — the PMU logs it from first start, the ICU displays it later, neither is "first". No engine-leg pair; L1-S2 9/10 stay plugged. **Supersedes D-227 and D-231** |
+| `Q-105` | D-245 | **The master disconnect moves to the battery negative.** Opening it now kills the whole car, starter cable included. Nothing bought |
+| `Q-106` | D-246 | **1/0 starter feed and a dedicated 1/0 cranking return** rear stud → engine block. 400 A stops crossing the unibody. ≈ +$180 net |
+| `Q-108` | D-247 | **Two-circuit brake switch**; pole 2 → `L3-S1 7` → wake strip input 6. A pushed or towed car lights its brake lamps |
+| `Q-109` | D-248 | **Interior lamp times out at 10 min · the 11.5 V shed takes INTERIOR and ACCESSORY · KEEP_ALIVE releases at 30 min with the key off** whatever the doors read |
 
-**Opened by those answers:** `Q-102` (a, b — wideband cavities and fuse) · `Q-103` (battery terminal covering) · `Q-104` (where the amp actually gets power, and whether it survives §6).
+**2026-09-04a — Camden's first six answers, and the four small audit rulings:**
 
-## Downstream edits still to make
-
-D-223, D-224, D-225, D-229 and D-230 were applied to the data on 2026-09-03 (D-233 — one edit per fact, the documents regenerated). One item still waits on a ruling:
-
-| Decision | File | Edit |
+| ID | Closed by | Outcome |
 |---|---|---|
-| **D-227/231** | `data/cavities.csv` L1-S2 · `data/fuses.csv` | Add the wideband pair (signal + ignition-fed heater) and its fuse once `Q-102`(a)(b) is answered |
+| `V-053` | D-234 | **Tapered SAE posts** → brass post clamps with a 3/8 in stud take-off; P095 |
+| `Q-103` | D-235 | **Boots only, no cover panel** — the bin has a lid, and layers are what you strip off for a jump start; P094 |
+| `Q-104` | D-236 | **The whole amplifier goes** with its untraceable feed and all the factory speaker wire; the replacement is standalone off the posts |
+| `V-094` | D-237 | **200 A MRBF confirmed** — cranking sits inside the curve |
+| `V-095` | D-238 | **Cable acceptance is a cart-review line**: ≥ 90 °C, 100 % copper, CCA refused at any price |
+| `V-051` | D-239 | **170 × 230 × 190 mm**, recorded as `params.battery_case_mm` |
+| — | D-240 | A4/A5 transit must never gate crank or reverse — a stuck transit contact would have refused the start relay permanently |
+| — | D-241 | C10 was drawn 4 AWG, carted nowhere, marginal under a 150 A Class-T → 2 AWG |
+| — | D-242 | F1 15 A sat outside the 13 A rating of the DT contact it feeds through → 10 A |
+| — | D-243 | O2/O3 sat at the 25 A cap over 14 AWG branches with a published 3.0/3.5 A load → 13.0 A |
 
----|---|---|
-| **D-230** | `01-DESIGN/DESIGN.md` §3 | Delete the **F5** row from the protection schedule |
-| **D-230** | `01-DESIGN/DESIGN.md` §5.3 | Delete the `Fuse block B, F5 out → Receptacle L4-P 4` row |
-| **D-230** | `01-DESIGN/DESIGN.md` §6 | L4-P: **used 4 → 3**; note becomes "Defog, fuel pump, capped window bus"; cavity 4 becomes PLUG |
-| **D-230** | `01-DESIGN/DESIGN.md` §1 | Fuse count: 8 fitted at the dash node → **7** |
-| **D-230** | `02-SHOPPING/SHOPPING-LIST.md` | One DTP size-12 contact pair out, one sealing-plug pair in; 30 A fuse no longer needed for F5 |
-| **D-229** | `01-DESIGN/DESIGN.md` §2 | Remove "in a NOCO BG27 box" from the Ionic paragraph |
-| **D-229** | `02-SHOPPING/SHOPPING-LIST.md` | Delete the NOCO BG27 line from the Amazon cart |
-| **D-224** | `02-SHOPPING/SHOPPING-LIST.md` §8 | Second covered 10-gang busbar |
-| **D-223** | `03-INSTALL/PMU-CONFIG-SHEET.md` §5 · `DESIGN.md` §4.1 | O8/O9/O10/O11 enable-at **15 A → 13.0 A** |
-| **D-225** | `03-INSTALL/PMU-CONFIG-SHEET.md` §3 | Add `LOW held < 400 ms → one sweep to PARKED` to the wiper rule |
-| **D-227/231** | `01-DESIGN/DESIGN.md` §6 L1 · `WIRE-TABLES.md` | Add the wideband pair once `Q-102`(a)(b) is answered |
+**2026-09-03 — the batch before that:** `V-014` → D-223 · `Q-101` → D-224 · `V-028` → D-225 · `V-001` → D-226 · `Q-100` → D-227 *(superseded by D-244)* · `V-097` → D-228 · `V-093` → D-229 · plus D-230 (the amplifier comes off the PMU), D-232 (the gauge rule) and D-233 (the record is data, rendered).
+
+Every downstream edit from all three batches is applied. The data is the record (D-233), so a ruling reaches every document the moment `build` runs.
 
 ---
 
@@ -247,5 +233,5 @@ Answered elsewhere, or belonging to another project. The IDs stay closed here.
 | V-040 | `../engine-swap/QUESTIONS.md` | Aeromotive in-tank pump draw |
 | Q-001 T-049 | `00-CAR/vehicle.md` | The VIN is a car-level record, not an electrical question |
 | V-074 V-047 V-069 V-087 V-089 V-090 V-091 V-092 V-096 V-038 V-021 V-019 A-010 A-012 A-013 | closed | Answered by the design as built (D-215, D-216, D-218, D-219, D-221) or turned into an install step |
-| A-011 | D-227 | Superseded — the wideband is a live sensor input now, not a capped conductor |
+| A-011 | D-227 → D-244 | Superseded twice — the wideband is a CAN node now, not a capped conductor |
 | T-007 T-008 T-024 T-028 T-029 T-018 T-019 T-052 T-054 T-043 T-044 T-045 T-022 T-004 T-009 T-041 T-038 T-039 T-040 T-053 | §0 above or the install plan | Tasks are the finishing list and the plan's own boxes now, not a separate list |

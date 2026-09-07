@@ -10,7 +10,7 @@ Work sheets for the build, printed from the design (`../01-DESIGN/DESIGN.md`). *
 | Cav | Terminal | Ch | AWG | Colour | Goes to | ✔ |
 |---|---|---|---|---|---|---|
 | 1 | 2.8 mm large 211CC3S3120 | O13 | 12 | RED | L1-P 2 (capped) | ☐ |
-| 2 | 2.8 mm large 211CC3S3120 | O12 | 12 | RED | L1-P 1 · F15 → L1-S1 2 · F16 → DP-CLU 1 | ☐ |
+| 2 | 2.8 mm large 211CC3S3120 | O12 | 12 | RED | L1-P 1 · F15 → L1-S1 2 · F16 → DP-CLU 1 · F20 | ☐ |
 | 3 | 1.5 mm 211CC2S2160P | O11 | 14 | ORN | L2-M 3 | ☐ |
 | 4 | 1.5 mm 211CC2S2160P | O10 | 14 | ORN | L3-M 1 · K12 86 · DP-ICU 1 (capped) · DP-DCU 1 (capped) · DP-KEY 3 (capped) | ☐ |
 | 5 | 1.5 mm 211CC2S2160P | O9 | 14 | ORN | L2-M 2 | ☐ |
@@ -49,7 +49,7 @@ Work sheets for the build, printed from the design (`../01-DESIGN/DESIGN.md`). *
 | 38 | 2.8 mm large 211CC3S3120 | O1 | 12 | RED | L4-P 3 (capped) · K1 30 · K2 30 · K1 86 · K2 86 | ☐ |
 | 39 | 2.8 mm large 211CC3S3120 | O2 | 12 | RED | L2-P 1 | ☐ |
 
-The stud: 4 AWG RED ring lug from the busbar, torqued.
+The stud: 2 AWG RED ring lug from the busbar, torqued (D-241).
 
 
 ## B · Dash-node conductors
@@ -57,7 +57,7 @@ The stud: 4 AWG RED ring lug from the busbar, torqued.
 | From | To | AWG | Colour | Note | ✔ |
 |---|---|---|---|---|---|
 | DP-BAT lug (2 AWG from the Class-T) | Always-hot busbar stud | 2 | RED | The main feed lands directly on the busbar | ☐ |
-| Always-hot busbar | PMU +12 V stud | 4 | RED | ≤ 8 in, ring lugs both ends, torque to spec | ☐ |
+| Always-hot busbar | PMU +12 V stud | 2 | RED | ≤ 8 in, ring lugs both ends, torque to spec — 2 AWG, not 4 (D-241) | ☐ |
 | Always-hot busbar | Fuse block A input | 10 | RED |  | ☐ |
 | Always-hot busbar | K11 terminal 30 | 10 | RED |  | ☐ |
 | K11 terminal 87 | Fuse block B input | 10 | RED |  | ☐ |
@@ -76,6 +76,8 @@ The stud: 4 AWG RED ring lug from the busbar, torqued.
 | PMU pin 2 (O12) | Receptacle L1-P 1 | 12 | RED |  | ☐ |
 | PMU pin 2 (O12) tap | F15 inline (7.5 A) → receptacle L1-S1 2 | 16 | RED | Alternator excitation | ☐ |
 | PMU pin 2 (O12) tap | F16 inline (5 A) → receptacle DP-CLU 1 | 16 | RED | Cluster feed | ☐ |
+| PMU pin 2 (O12) tap | F20 inline (7.5 A) → wideband gauge +12 V | 16 | RED | Ignition feed so the sensor heater is powered during cranking (D-244) | ☐ |
+| GND bus | Wideband gauge ground | 16 | BLK | A dash-node device — its ground never crosses a leg | ☐ |
 | PMU pin 34 (O20) | F12 inline (5 A) → receptacle L4-M 8 | 16 | RED | Interior lamp | ☐ |
 | PMU pin 34 (O20) tap | Receptacles L3-S1 8, DP-CLU 3, DP-ICU 5 (capped) | 16 | RED | Illumination bus | ☐ |
 | PMU pin 4 (O10) | Receptacle L3-M 1 | 14 | ORN |  | ☐ |
@@ -92,7 +94,8 @@ The stud: 4 AWG RED ring lug from the busbar, torqued.
 | Wake stage 1 collector (A6 door) | Wake strip input 3 | 16 | BLU |  | ☐ |
 | Wake stage 2 collector (A8 horn/hazard/wink) | Wake strip input 4 | 16 | BLU |  | ☐ |
 | PMU pin 8 (O22) | Wake strip input 5 | 16 | RED |  | ☐ |
-| Wake strip common rail (after the five 1N5819) | PMU pin 7 (+12V SW) | 16 | BLU | 10 kΩ bleed from this rail to the GND bus | ☐ |
+| Receptacle L3-S1 7 | Wake strip input 6 (brake) | 16 | BLU | Second pole of the brake switch — the brake wakes the module (D-247) | ☐ |
+| Wake strip common rail (after the six 1N5819) | PMU pin 7 (+12V SW) | 16 | BLU | 10 kΩ bleed from this rail to the GND bus | ☐ |
 | PMU pin 15 (+5 V) | 100 kΩ → PMU pin 35 (A15) · 100 kΩ → PMU pin 22 (A16) | 16 | PNK | Bias so a broken wire reads 0, not OFF | ☐ |
 | PMU pin 17 (A4) | Receptacles L2-S 1 and L1-S1 11 (splice) | 16 | GRY |  | ☐ |
 | PMU pin 31 (A5) | Receptacles L2-S 2 and L1-S2 7 (splice) | 16 | GRY |  | ☐ |
@@ -109,7 +112,7 @@ The stud: 4 AWG RED ring lug from the busbar, torqued.
 | PMU pin 33 (O18) | Receptacles L2-M 6, L4-M 6, DP-CLU 11 | 16 | RED |  | ☐ |
 | PMU pin 26 (O3) | Receptacle L2-P 2 (12 AWG) + 16 AWG tap → DP-CLU 12 | 12 / 16 | RED | High beam + indicator | ☐ |
 | PMU pin 11 (O6) | Receptacles L2-M 7 and L4-M 1 | 14 | ORN |  | ☐ |
-| PMU pins 24 / 37 (CAN2) | L1-S1 9/10 · DP-ICU 3/4 · DP-DCU 4/5 · DP-KEY 1/2 — twisted pairs, spliced | 16 tw | YEL · GRN | Software termination ON at the PMU | ☐ |
+| PMU pins 24 / 37 (CAN2) | L1-S1 9/10 · DP-ICU 3/4 · DP-DCU 4/5 · DP-KEY 1/2 · wideband gauge AEMnet pair (dash node) — twisted pairs, spliced | 16 tw | YEL · GRN | Software termination ON at the PMU | ☐ |
 | PMU pins 23 / 36 (CAN1) | Receptacle DP-DIAG 1/2 — twisted pair | 16 tw | YEL · GRN | 120 Ω across pins 23/36 at the PMU connector | ☐ |
 | PMU pin 25 (GND) | GND bus | 10 | BLK | ≤ 6 in | ☐ |
 | GND bus | Chassis, dash star point | 10 | BLK | Bare metal, star washer, torque, cavity wax | ☐ |
@@ -191,7 +194,7 @@ One row per cavity. **Length** = the M-2 route for that leg + 15 % + 150 mm serv
 | L3-S1 4 | Wiper stalk ladder | 16 | GRY | LIVE | `A2 / L3-S1-4` | `L3-S1-4 / A2` | ____ | Stalk D-03: HIGH 4.7 kΩ · LOW 10 kΩ · INT 18 kΩ · OFF 47 kΩ · WASH 1.8 kΩ + 1N5819 (band toward the contact) | ☐ |
 | L3-S1 5 | Brake pedal switch | 16 | GRY | LIVE | `A3 / L3-S1-5` | `L3-S1-5 / A3` | ____ | Pedal switch F-11 through 4.7 kΩ; other terminal → dash ground | ☐ |
 | L3-S1 6 | Hazard switch | 16 | GRY | LIVE | `A8 / L3-S1-6` | `L3-S1-6 / A8` | ____ | Hazard contact through 4.7 kΩ; other terminal → column ground | ☐ |
-| L3-S1 7 | — plug | — | — | PLUG | — | — | — | sealing plug | ☐ |
+| L3-S1 7 | Brake — wake source | 16 | BLU | LIVE | `WAKE / L3-S1-7` | `L3-S1-7 / WAKE` | ____ | Brake pedal switch F-11, second pole; its supply is a branch of the F3 switch supply, spliced in the L3 leg off L3-S2 2 | ☐ |
 | L3-S1 8 | Illumination bus | 16 | RED | LIVE | `O20 / L3-S1-8` | `L3-S1-8 / O20` | ____ | Dash illumination lamps E-06, E-07, E-10 (RL) + head unit illumination wire | ☐ |
 | L3-S1 9 | Wink LEFT — NC pole | 16 | BLU | LIVE | `K2-85 / L3-S1-9` | `L3-S1-9 / K2-85` | ____ | Wink L switch NC terminal; switch common → dash ground | ☐ |
 | L3-S1 10 | Wink RIGHT — NC pole | 16 | BLU | LIVE | `K1-85 / L3-S1-10` | `L3-S1-10 / K1-85` | ____ | Wink R switch NC terminal; switch common → dash ground | ☐ |
@@ -338,7 +341,8 @@ One row per cavity. **Length** = the M-2 route for that leg + 15 % + 150 mm serv
 | L3 | Brake pedal switch → dash ground | 16 | 1 | 3 | ☐ |
 | L3 | Turn / hazard / wiper stalk returns → column ground | 16 | 3 | 2 | ☐ |
 | L4 | Rear star stud → chassis | 10 | 1 | 2 | ☐ |
-| L4 | Battery − → rear star stud | 2 | 1 | 3 | ☐ |
+| L4 | Battery − → master disconnect → rear star stud | 1/0 | 1 | 4 | ☐ |
+| L4 | Rear star stud → engine block — dedicated cranking return | 1/0 | 1 | 18 | ☐ |
 | L4 | Defog grid B → rear star | 12 | 1 | 6 | ☐ |
 | L4 | Fuel pump − → rear star (dedicated) | 12 | 1 | 4 | ☐ |
 | L4 | Fuel sender B → rear star | 16 | 1 | 5 | ☐ |
@@ -352,13 +356,14 @@ One row per cavity. **Length** = the M-2 route for that leg + 15 % + 150 mm serv
 
 | Run | AWG | ≈ ft | Colour | ✔ |
 |---|---|---|---|---|
-| Battery + → master disconnect | 2 | 1.5 | RED | ☐ |
-| Master disconnect → Class-T block | 2 | 1.0 | RED | ☐ |
+| Battery + → Class-T block | 2 | 1.0 | RED | ☐ |
+| Battery − → master disconnect | 1/0 | 1.0 | BLK | ☐ |
 | Class-T → DP-BAT (through the tunnel to the dash post) | 2 | 16 | RED | ☐ |
-| Battery + → MRBF → starter B+ stud (forward under the car / through the tunnel) | 1/0 or 2 | 18 | RED | ☐ |
-| Battery − → rear ground stud | 2 | 3 | BLK | ☐ |
+| Battery + → MRBF → starter B+ stud (forward under the car / through the tunnel) | 1/0 | 18 | RED | ☐ |
+| Master disconnect → rear ground stud | 1/0 | 3 | BLK | ☐ |
 | Engine block → chassis strap | 2 | 2 | BLK | ☐ |
 | Alternator B+ → F18 → starter B+ stud | 6 | 4 | RED | ☐ |
 | Starter B+ stud → F17 → K9 30 | 10 | 4 | RED | ☐ |
 | K9 87 → starter S terminal | 10 | 3 | RED | ☐ |
-| Busbar → PMU stud | 4 | 0.7 | RED | ☐ |
+| Busbar → PMU stud | 2 | 0.7 | RED | ☐ |
+| Rear ground stud → engine block — dedicated cranking return | 1/0 | 18 | BLK | ☐ |

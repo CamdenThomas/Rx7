@@ -35,7 +35,7 @@ Enter as lookup tables with windows. A reading between windows must report FAULT
 HAZARD is a band 265–370 (hazard alone 327; hazard + either wink 278 / 298 read as HAZARD).
 
 
-**A7 `FUEL_LEVEL`** — three-point lookup with interpolation, read in the car: FULL ____ · MID ____ · EMPTY ____ (the factory gauge drives the sender; this input only observes it). FAULT below 10 and above 1000. If the reading is unstable, leave the channel unused — the cluster's gauge is the instrument.
+**A7 `FUEL_LEVEL`** *(the channel `Q-107` proposes to re-point at oil pressure — do not enter this table until that is ruled)* — three-point lookup with interpolation, read in the car: FULL ____ · MID ____ · EMPTY ____ (the factory gauge drives the sender; this input only observes it). FAULT below 10 and above 1000. If the reading is unstable, leave the channel unused — the cluster's gauge is the instrument.
 
 
 {{decode:A15}}
@@ -55,7 +55,7 @@ A15 PASS: any reading ≥ 1750. A16 START: either 1720 or ~1650 depending on whe
 
 ## 4 · Wake, shutdown, CAN
 
-Wake sources on pin 7: ACC · RUN · door stage · horn/hazard/wink stage · O22 latch. Shutdown: `KEEP_ALIVE` releases 30 s after the last input change with the key OFF and the doors closed; the module sleeps and K11 opens. CAN1: 1 Mbps (fixed). CAN2: 500 kbps, termination ON. Enable data logging: every channel current at 10 Hz, every input at 10 Hz.
+Wake sources on pin 7: ACC · RUN · door stage · horn/hazard/wink stage · **brake** (D-247) · O22 latch. Shutdown: `KEEP_ALIVE` releases 30 s after the last input change with the key OFF and the doors closed — and, whatever the doors read, 30 minutes after the key goes OFF (D-248), so a failed door plunger cannot hold the module awake. The module sleeps and K11 opens. CAN1: 1 Mbps (fixed). CAN2: 500 kbps, termination ON. Enable data logging: every channel current at 10 Hz, every input at 10 Hz.
 
 
 ## 5 · Enable-at limits

@@ -138,7 +138,7 @@ Enter as lookup tables with windows. A reading between windows must report FAULT
 HAZARD is a band 265–370 (hazard alone 327; hazard + either wink 278 / 298 read as HAZARD).
 
 
-**A7 `FUEL_LEVEL`** — three-point lookup with interpolation, read in the car: FULL ____ · MID ____ · EMPTY ____ (the factory gauge drives the sender; this input only observes it). FAULT below 10 and above 1000. If the reading is unstable, leave the channel unused — the cluster's gauge is the instrument.
+**A7 `FUEL_LEVEL`** *(the channel `Q-107` proposes to re-point at oil pressure — do not enter this table until that is ruled)* — three-point lookup with interpolation, read in the car: FULL ____ · MID ____ · EMPTY ____ (the factory gauge drives the sender; this input only observes it). FAULT below 10 and above 1000. If the reading is unstable, leave the channel unused — the cluster's gauge is the instrument.
 
 
 **A15 `HEADLIGHT_SW`** — window ± 75 · 0 = disconnected = FAULT
@@ -173,8 +173,8 @@ A15 PASS: any reading ≥ 1750. A16 START: either 1720 or ~1650 depending on whe
 | BRAKE | A3 == BRAKE  \|\|  A3 == BRAKE+PARKED | 10× for 100 ms | 3 retries, 5 s |
 | TURN_L | (A1 == LEFT  \|\|  hazard)  &&  flasher_phase | 10× for 100 ms | 3 retries, 5 s |
 | TURN_R | (A1 == RIGHT  \|\|  hazard)  &&  flasher_phase | 10× for 100 ms | 3 retries, 5 s |
-| REVERSE | A5 == REVERSE  &&  A16 >= RUN | 10× for 100 ms | 3 retries, 5 s |
-| INTERIOR | A6 != CLOSED  — PWM, 1.5 s fade-in, 8 s fade-out after the last door closes | 10× for 100 ms | 3 retries, 5 s |
+| REVERSE | (A5 == REVERSE \|\| A5 == TRANSIT+R)  &&  A16 >= RUN | 10× for 100 ms | 3 retries, 5 s |
+| INTERIOR | A6 != CLOSED — PWM, 1.5 s fade-in, 8 s fade-out after the last door closes; drops after 10 minutes with a door still open, re-arms when every door closes (D-248) | 10× for 100 ms | 3 retries, 5 s |
 | MOTOR_BUS | popup_cycle  (see the pop-up rule below) | 7× for 400 ms | 1 retry |
 | WIPE_LOW | A2 == LOW  \|\|  A2 == WASH  \|\|  (A2 == INT && int_timer)  \|\|  (wiper_latch && A3 not PARKED)  — braking ON | 7× for 300 ms | 3 retries, 5 s |
 | WIPE_HIGH | A2 == HIGH | 7× for 300 ms | 3 retries, 5 s |
@@ -185,8 +185,8 @@ A15 PASS: any reading ≥ 1750. A16 START: either 1720 or ~1650 depending on whe
 | ACCESSORY | A16 >= ACC | 2× for 100 ms | 3 retries, 5 s |
 | HORN | A8 == HORN  \|\|  A8 == HAZ+HORN | 3× for 80 ms | 3 retries, 5 s |
 | COMFORT | A16 >= RUN  (nothing connected this build) | 2× for 200 ms | 3 retries, 5 s |
-| START_RLY | A16 == START  &&  A4 == CRANK_OK | 2× for 50 ms | — |
-| KEEP_ALIVE | self-hold: ON at any wake; OFF 30 s after the last input change with A16 == OFF and A6 == CLOSED | — | — |
+| START_RLY | A16 == START  &&  (A4 == CRANK_OK \|\| A4 == TRANSIT+PN) | 2× for 50 ms | — |
+| KEEP_ALIVE | self-hold: ON at any wake; OFF 30 s after the last input change with A16 == OFF and A6 == CLOSED; forced OFF after 30 min with A16 == OFF whatever A6 reads (D-248) | — | — |
 | LS_ECU · LS_FAN | DISABLED | — | — |
 
 ## 3 · Rules and interlocks
@@ -194,17 +194,17 @@ A15 PASS: any reading ≥ 1750. A16 START: either 1720 or ~1650 depending on whe
 | Rule | Definition |
 |---|---|
 | Flasher | 1.5 Hz, 50 % duty, generated in the PMU. `hazard` = A8 == HAZARD \|\| A8 == HAZ+HORN. Hazard overrides the stalk and works with the key out |
-| Pop-up cycle | A15 entering HEAD, or leaving HEAD, or A8 == WINK_L / WINK_R with A16 <= ACC → energise O1 until BOTH A4 and A5 leave TRANSIT (minimum 300 ms). 4 s with either still in TRANSIT = obstruction: O1 off, fault flag. A held wink switch opens the OTHER side's relay coil return, so only the winked lamp moves |
+| Pop-up cycle | A15 entering HEAD, or leaving HEAD, or A8 == WINK_L / WINK_R with A16 <= ACC → energise O1 until the transit bit clears on BOTH sides (A4 in IDLE/CRANK_OK and A5 in IDLE/REVERSE), minimum 300 ms. 4 s with either still showing transit = obstruction: O1 off, fault flag. A held wink switch opens the OTHER side's relay coil return, so only the winked lamp moves |
 | Wiper park | When the stalk goes to OFF with the wipers running, hold O8 until A3 reads PARKED (or BRAKE+PARKED), then release — braking stops the arm at park. Intermittent: 3 s pause between full sweeps, each sweep runs until PARKED. One-touch: LOW held < 400 ms → one sweep to PARKED (D-225) |
 | Washer | WASH also holds O8 on; K12 closes only while the stalk contact is pressed, so the pump runs only while the driver holds WASH. After release, keep O8 on for two more sweeps |
-| Crank | O21 only in P or N (A4 == CRANK_OK). Release O21 when A16 leaves START |
+| Crank | O21 only in P or N — the inhibitor bit alone, whether or not the left pop-up happens to be in transit (D-240): A4 == CRANK_OK or TRANSIT+PN. Release O21 when A16 leaves START |
 | Motor bus | Refuse a new pop-up command while O1 reads above 20 A |
-| Voltage | Warn below 12.0 V. Shed COMFORT below 11.5 V. Warn above 15.0 V |
-| Sleep | Any wake-strip input high wakes the PMU. With no key, no door and nothing on A8, KEEP_ALIVE drops 30 s after the last change and the PMU sleeps; K11 opens with it (audio memory relies on the head unit's own non-volatile memory) |
+| Voltage | Warn below 12.0 V. Below 11.5 V shed COMFORT, INTERIOR and ACCESSORY (D-248 — COMFORT alone had no load to shed). Warn above 15.0 V |
+| Sleep | Any wake-strip input high wakes the PMU. With no key, no door and nothing on A8, KEEP_ALIVE drops 30 s after the last change and the PMU sleeps; K11 opens with it (audio memory relies on the head unit's own non-volatile memory). A stuck door cannot hold the car awake: with A16 == OFF, KEEP_ALIVE releases after 30 minutes whatever A6 reads (D-248) |
 
 ## 4 · Wake, shutdown, CAN
 
-Wake sources on pin 7: ACC · RUN · door stage · horn/hazard/wink stage · O22 latch. Shutdown: `KEEP_ALIVE` releases 30 s after the last input change with the key OFF and the doors closed; the module sleeps and K11 opens. CAN1: 1 Mbps (fixed). CAN2: 500 kbps, termination ON. Enable data logging: every channel current at 10 Hz, every input at 10 Hz.
+Wake sources on pin 7: ACC · RUN · door stage · horn/hazard/wink stage · **brake** (D-247) · O22 latch. Shutdown: `KEEP_ALIVE` releases 30 s after the last input change with the key OFF and the doors closed — and, whatever the doors read, 30 minutes after the key goes OFF (D-248), so a failed door plunger cannot hold the module awake. The module sleeps and K11 opens. CAN1: 1 Mbps (fixed). CAN2: 500 kbps, termination ON. Enable data logging: every channel current at 10 Hz, every input at 10 Hz.
 
 
 ## 5 · Enable-at limits
@@ -214,8 +214,8 @@ The software limit typed in before each output is first enabled. `meas` = measur
 | Ch | Name | Enable at (A) | Inrush window | Final limit |
 |---|---|---|---|---|
 | O1 | `MOTOR_BUS` | 25.0 cap | 7× 400 ms | ____ |
-| O2 | `HEAD_LOW` | 25.0 cap | 3× 200 ms | ____ |
-| O3 | `HEAD_HIGH` | 25.0 cap | 3× 200 ms | ____ |
+| O2 | `HEAD_LOW` | 13.0 published 3.0 A filament + inrush window; capped at the 14 AWG branch limit (D-243) | 3× 200 ms | ____ |
+| O3 | `HEAD_HIGH` | 13.0 published 3.5 A filament + inrush window; capped at the 14 AWG branch limit (D-243) | 3× 200 ms | ____ |
 | O4 | `DEFOG` | 25.0 cap | 1.3× 2000 ms | ____ |
 | O5 | `FUEL_PUMP` | 4.0 meas | 3× 150 ms | ____ |
 | O12 | `IGNITION` | 25.0 cap | 2× 100 ms | ____ |

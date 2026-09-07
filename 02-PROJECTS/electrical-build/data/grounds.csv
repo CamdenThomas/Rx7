@@ -22,7 +22,8 @@ G20,L3,Wink switch commons → dash ground,16,2,3
 G21,L3,Brake pedal switch → dash ground,16,1,3
 G22,L3,Turn / hazard / wiper stalk returns → column ground,16,3,2
 G23,L4,Rear star stud → chassis,10,1,2
-G24,L4,Battery − → rear star stud,2,1,3
+G24,L4,Battery − → master disconnect → rear star stud,1/0,1,4
+G34,L4,Rear star stud → engine block — dedicated cranking return,1/0,1,18
 G25,L4,Defog grid B → rear star,12,1,6
 G26,L4,Fuel pump − → rear star (dedicated),12,1,4
 G28,L4,Fuel sender B → rear star,16,1,5

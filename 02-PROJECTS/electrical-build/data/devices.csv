@@ -23,7 +23,7 @@ DV21,L3,Hazard switch,"F-02 HAZARD (column, kept)",contact → 4.7 kΩ → L3-S1
 DV22,L3,Wiper stalk,"D-03 (column, kept)",HIGH → 4.7 kΩ → L3-S1 4<br>LOW → 10 kΩ → L3-S1 4<br>INT → 18 kΩ → L3-S1 4<br>OFF → 47 kΩ → L3-S1 4<br>WASH contact → 1.8 kΩ + 1N5819 (band to the contact) → L3-S1 4; and direct → L3-S2 9<br>common / contact returns → column ground,
 DV23,L3,Horn pad,Steering wheel (kept),contact → 8.2 kΩ → L3-S1 11<br>return → column ground through the slip ring,
 DV24,L3,Wink switches,"New — SPDT momentary ×2, dash panel",Wink L common → dash ground<br>Wink L NC → L3-S1 9<br>Wink L NO → 18 kΩ → L3-S1 11 node<br>Wink R common → dash ground<br>Wink R NC → L3-S1 10<br>Wink R NO → 33 kΩ → L3-S1 11 node,
-DV25,L3,Brake pedal switch,F-11 (new),contact → 4.7 kΩ → L3-S1 5<br>other side → dash ground,
+DV25,L3,Brake pedal switch,F-11 (new) — two-circuit,"Pole 1 → 4.7 kΩ → L3-S1 5 (the A3 ladder)<br>Pole 1 other side → dash ground<br>Pole 2 in ← F3 switch supply, branched off L3-S2 2 in the leg<br>Pole 2 out → L3-S1 7 → wake strip input 6",
 DV26,L3,Parking brake switch,C-04 (kept),BR → L3-S2 11,body: lever bracket — no wire
 DV27,L3,Blower motor + resistor + switch,"New motor G-14, new resistor pack, new switch G-15","Motor + → L3-P 1<br>Motor − → resistor pack common<br>Resistor taps → speed switch<br>Switch common → dash ground, 12 AWG BLK",
 DV28,L3,Head unit,Aftermarket,"Red (ACC) → L3-M 1<br>Yellow (BATT) → L3-M 2<br>Orange (ILLUM) → L3-S1 8<br>Black → dash ground, 14 AWG BLK",
@@ -41,3 +41,4 @@ DV40,L4,Luggage lamp,H-11 + switch H-12,"+ → L4-S 8<br>− via the lid switch 
 DV41,L4,Door jamb switches,New plunger switches ×2 (B-pillar),Driver → 33 kΩ → sill splice → L4-S 2<br>Passenger → 8.2 kΩ → sill splice → L4-S 2,body: switch body grounds in the jamb
 DV42,L4,Rear star node,New — stud in the cargo bin,"stud → chassis, 10 AWG BLK; the battery 2 AWG negative lands here too",
 DV43,Sill,Sill node,New panel behind the driver kick panel,"D1 / D2 receptacles → all conductors capped<br>Ground stud → chassis<br>K5–K8 sockets → fitted, empty<br>F8 / F9 / F14 → positions labelled, no holders this build",
+DV44,L3,Wideband AFR gauge (controller),"AEM 30-0300 X-Series, relocated out of sight","+12 V → F20 (ignition-fed, so the heater is live while cranking)<br>Ground → GND bus, 16 AWG BLK<br>AEMnet CAN H/L → the CAN2 splice at the dash node. The gauge's AEMnet lead ends in a DTM 2-way: **cut the pigtail and butt-splice to the CAN2 pair** — no DTM tooling enters the build (D-219)<br>0–5 V analog out: not used<br>Sensor lead: the gauge's own cable through the firewall grommet to the bung — never cut, never extended",

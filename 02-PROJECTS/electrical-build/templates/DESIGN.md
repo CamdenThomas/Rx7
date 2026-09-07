@@ -36,11 +36,11 @@ An ECUMaster PMU-24 DL solid-state power module replaces the factory fuse box, r
 
 ![backbone](diagrams/01-power-backbone.svg)
 
-The Ionic S9 (LiFePO4, 40 Ah, 1,100 CCA, built-in heater, Group 25 case) sits in the cargo bin clamped against g-load in every axis over a backing plate, both posts booted (no box — D-229; what covers the terminals beyond the boots is `Q-103`). Two runs leave the positive post and they never share a fuse:
+The Ionic S9 (LiFePO4, 40 Ah, 1,100 CCA, built-in heater, Group 25 case) sits in the cargo bin clamped against g-load in every axis over a backing plate, both posts booted (no box — D-229; boots are the whole of the terminal covering, deliberately, so a post stays reachable for a jump start — D-235). Its case measures 170 W × 230 L × 190 H mm (`params.battery_case_mm`, D-239), and its posts are SAE tapered, so every cable end is a brass post clamp with a 3/8 in stud take-off rather than a ring lug (D-234). Two runs leave the positive post and they never share a fuse:
 
 {{backbone}}
 
-At the dash post the 2 AWG lands directly on the always-hot busbar. The busbar feeds the PMU stud over a 4 AWG jumper of a few inches and, through fuse block A and relay K11, the handful of loads that must live outside the PMU (§5).
+At the dash post the 2 AWG lands directly on the always-hot busbar. The busbar feeds the PMU stud over a 2 AWG jumper of a few inches (D-241) and, through fuse block A and relay K11, the handful of loads that must live outside the PMU (§5).
 
 
 ---
@@ -55,7 +55,7 @@ At the dash post the 2 AWG lands directly on the always-hot busbar. The busbar f
 
 {{fuse_blocks}}
 
-F12, F15 and F16 are sealed inline holders at the dash node; F8, F9 and F14 are labelled positions at the sill node with no holder until the windows and mirrors arrive; F17 and F18 are bolt-down MIDI holders beside the starter stud. There is no fuse on the O1 → K1 / K2 branches (two identical 12 AWG runs carrying one function; the 25 A soft fuse protects either) and none on O15 (no load this build). F12 stays because a shorted interior lamp must not take the illumination bus and the cluster feed down with it at night.
+F12, F15, F16 and F20 are sealed inline holders at the dash node; F8, F9 and F14 are labelled positions at the sill node with no holder until the windows and mirrors arrive; F17 and F18 are bolt-down MIDI holders beside the starter stud. There is no fuse on the O1 → K1 / K2 branches (two identical 12 AWG runs carrying one function; the 25 A soft fuse protects either) and none on O15 (no load this build). F12 stays because a shorted interior lamp must not take the illumination bus and the cluster feed down with it at night.
 
 
 ### Software limits — the rule
@@ -105,7 +105,7 @@ This is **not** the factory scheme. Factory colours are two-letter codes (first 
 
 ## 5 · The dash node
 
-The dash node is everything between the 2 AWG feed and the harness legs: the PMU, the always-hot busbar, the ground bus, two single-source fuse blocks, three sealed inline fuses, six relay sockets (four populated), the wake strip with its two sense stages, the two bias resistors, and the receptacle for every leg and drop. It is not one plate. It mounts on one or more small carrier panels low in the dash, laid out with the parts in hand once the envelope is measured (§5.4), and the electrical design does not depend on how it is split — every conductor in §5.3 is the same whether the pieces share a panel or not. Nothing on the dash node is spliced anywhere else; every splice in the car is either at the dash node or at a device.
+The dash node is everything between the 2 AWG feed and the harness legs: the PMU, the always-hot busbar, the ground bus, two single-source fuse blocks, four sealed inline fuses, six relay sockets (four populated), the wake strip with its two sense stages, the two bias resistors, the wideband gauge hidden behind the dash (D-244), and the receptacle for every leg and drop. It is not one plate. It mounts on one or more small carrier panels low in the dash, laid out with the parts in hand once the envelope is measured (§5.4), and the electrical design does not depend on how it is split — every conductor in §5.3 is the same whether the pieces share a panel or not. Nothing on the dash node is spliced anywhere else; every splice in the car is either at the dash node or at a device.
 
 ![dash node](diagrams/02-dash-node-schematic.svg)
 
@@ -116,7 +116,7 @@ The dash node is everything between the 2 AWG feed and the harness legs: the PMU
 
 ### 5.2 · Wake circuit
 
-Pin 7 (+12V SW) turns the PMU on. Five sources feed it through one 1N5819 Schottky each on an 8-position barrier strip, with a 10 kΩ bleed from the rail to ground so leakage can never hold the module awake: **ACC** and **RUN** from the ignition switch (raw 12 V, one conductor each), **the door node** and **the horn/hazard/wink node** through the two sense stages, and **O22**, the PMU's own keep-alive latch. The strip has three spare positions.
+Pin 7 (+12V SW) turns the PMU on. Six sources feed it through one 1N5819 Schottky each on an 8-position barrier strip, with a 10 kΩ bleed from the rail to ground so leakage can never hold the module awake: **ACC** and **RUN** from the ignition switch (raw 12 V, one conductor each), **the door node** and **the horn/hazard/wink node** through the two sense stages, **the brake pedal switch's second pole** (D-247, so a pushed or towed car still lights its brake lamps), and **O22**, the PMU's own keep-alive latch. The strip has two spare positions.
 
 
 Two identical NPN sense stages on the dash node (2N3904 / 2N2222 class), one on the A6 node and one on the A8 node. Base ← node through 100 kΩ · 1 MΩ from the node to the F3 rail · emitter → GND bus · collector → 100 kΩ to the F3 rail and → its wake-strip diode. Node idle (open switch): the node sits at ~4–12 V, the transistor is ON, the collector is LOW — no wake. Any switch on that node closes to ground: base falls, transistor OFF, collector rises to 12 V through the pull-up — wake. The 1 MΩ injects ~7 µA into the ladder while awake (about 1.5 ADC counts); the decode windows absorb it.
@@ -136,7 +136,7 @@ There is no layout drawing: the layout is decided with the parts on the bench an
 - **Low and close to the floor**, in the centre-stack cavity freed by the radio, cassette, ashtray and lighter, and the space behind and below the glovebox. Not a sealed box — one would not fit the footwell shape.
 - **Several small carrier panels are fine.** The natural split is (a) the PMU with the ground bus and the always-hot busbar — the three heaviest, shortest wires — and (b) the relays, fuse blocks, wake strip and sense-stage board. The receptacles can sit on their own strip or bracket if that fits the space better.
 - **The 39-way lever needs a clear arc** and must be operable at least once with the panels fitted · **60 mm clear behind every receptacle** · **blocks A and B reachable** with the dash together.
-- **Pin 25 to the ground bus** is the shortest, heaviest wire on the node (10 AWG, ≤ 6 in) · **the busbar sits beside the PMU stud** (4 AWG, ≤ 8 in).
+- **Pin 25 to the ground bus** is the shortest, heaviest wire on the node (10 AWG, ≤ 6 in) · **the busbar sits beside the PMU stud** (2 AWG, ≤ 8 in — D-241).
 - **The always-hot busbar is covered** — it is a live 150 A bar in a footwell.
 - **Relays away from the signal receptacles** · receptacles grouped by leg so a leg unplugs as a unit · the PMU stood off its panel for airflow · no bare aluminium against a live stud.
 - About 500 mm of edge in total for the receptacles.
@@ -363,7 +363,7 @@ The reviewer's checklist. Every line should be checkable from this folder alone.
 - Every device in §12 has a ground path to its zone's node (§10), and the fuel pump's return is dedicated.
 - Ladder windows in §8 do not overlap; the tightest gaps are A4 / A5 (44 counts) and A6 (55 counts).
 - Every ladder resistor named in §12 appears in the §8 tables with the same value.
-- The wake circuit (§5.2) can wake the PMU from every source that must work with the key out: hazard, horn, wink, door.
+- The wake circuit (§5.2) can wake the PMU from every source that must work with the key out: hazard, horn, wink, door, brake.
 - Nothing in the engine leg is a stub for a future part.
 - Every conductor's gauge is at or above what its output's enable-at limit requires: 12 AWG above 15 A, 14 AWG above 13 A, 16 AWG at 13 A and below and on every signal. A 16 AWG tap off a heavier feed (an indicator, a capped module drop) is allowed only where the cavity notes it as a tap (D-232).
 - The three measurements the design still waits on are only dimensions: the dash envelope for the dash node's panels, the harness routes for wire lengths, and the pop-up motor ohm check that decides whether R and RY are bridged.

@@ -8,8 +8,8 @@
 
 | ID | Issue | Status | Impact |
 |---|---|---|---|
-| K-001 | Wideband O2 wiring tapped into the factory harness, location unknown | Find and log — Checklist 0.13 (`T-019`) | Carried to the dash on L1-S1 12 and capped (`A-011`) |
-| K-002 | Previous-owner splices and hacks — extent unknown | Full harness photo survey — Checklist 0.12–0.13 (`T-018`, `T-019`) |  |
+| K-001 | Wideband O2 wiring tapped into the factory harness, location unknown | **Designed out.** The gauge (which is the controller — D-244) moves behind the dash on its own ignition-fed fuse F20 and publishes AFR on CAN2; the piggyback tap in the factory fuse box leaves with the factory harness at install §6 | Photograph the tap, the gauge and the sensor lead before anything is disturbed, and read the part number off the gauge — D-244 assumes it carries an AEMnet pair |
+| K-002 | Previous-owner splices and hacks — extent unknown | Photo survey at install M-7. **One instance is known and is not being traced:** the dash behind the head unit and factory amplifier is badly spliced (owner, 2026-09-04) | Nothing waits on it — the amplifier, its feed and every factory speaker wire leave with the factory harness at install §6 (D-236), and the replacement audio system is standalone (P-007) |
 | K-003 | Interval wiper control unit present | Planned deletion; the timer moves into PMU logic (Checklist 2.12) |  |
 | K-008 | **Turn signals modulate other circuits — fuel pump and tach react to blinker pulses.** Traced from the factory diagram to two shared ground studs: X-13 (flasher, cluster, emission unit) and X-15 (rear lamps, fuel pump) | **Not being fixed — D-105.** It lives in the factory harness's shared grounds and has no path into the new one, which gives every zone a local star node. Observed live during the first meter sitting (turn current dips 3.4 → 2.3 A with the pump note) | Trace: [`../01-REFERENCE/factory-circuits/FAULT-K008-analysis.md`](../01-REFERENCE/factory-circuits/FAULT-K008-analysis.md) |
 | K-009 | Cruise control unit | **Gone** (D-097). Explicitly not wanted | Removed from all specs |

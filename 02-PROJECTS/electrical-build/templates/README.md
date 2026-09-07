@@ -15,7 +15,7 @@ This folder is the whole job in three steps. Read them in order the first time; 
 
 The three steps above are **rendered**. Every pin, cavity, fuse, relay, ladder value, part and quantity is one row in `data/*.csv`; the prose is in `templates/*.md`; the derivations (a pin's destinations, a housing's used count, a wire label, the Deutsch kit counts, ADC centres, totals) and the integrity checks are in `views.py`. `python tools/rx7.py -p electrical-build build` refuses on any contradiction and then writes every document and `VIEW.html` (the three steps side by side, searchable, every ID a link). Edit a row or a template, never a rendered file — the banner under each title is the tell (D-233).
 
-**Next IDs:** decisions from D-234 · questions from Q-105.
+**Next IDs:** decisions from D-244 · questions from Q-111.
 
 Two files at this level are the project's memory, not steps: [`DECISIONS.md`](DECISIONS.md) — why the design is the way it is, by system — and [`QUESTIONS.md`](QUESTIONS.md) — everything still open, easiest first, with the finishing task list at the top.
 
@@ -37,4 +37,4 @@ Everything the luxury package will add — power windows, mirrors, heated seats,
 
 ## If you are the owner
 
-Start with `QUESTIONS.md` §0 — the finishing task list. The three things the design waits on are dimensions only: the dash envelope, the harness routes, and one five-minute ohm check on a pop-up motor. All three are boxes on the first page of the install plan.
+Start with `QUESTIONS.md` §0 — the finishing task list. What the design still waits on is two desk items — `Q-107` (whether the fuel pump gets an oil-pressure gate) and `T-017` (the factory pin letters) — and three measurements: the dash envelope, the harness routes, and one five-minute ohm check on a pop-up motor. The measurements are boxes on the first page of the install plan.

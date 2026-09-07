@@ -40,6 +40,35 @@ Chain (i): RGB → LVDS serializer into 1280 × 480 cluster glass (LQ123K1LG03, 
 >
 >
 
+**Q-301 · How does the ICU read a sender the factory gauge is driving — and what happens if the cluster ever leaves?** *(new, 2026-09-04, from the electrical build's sensor review)*
+
+Every analog sensor on `DP-ICU` is a **tap on a node the factory cluster drives**. The sender is a variable resistor to ground, the gauge supplies the excitation, and the signal is the node voltage. The harness gives the ICU a wire onto that node and nothing else, which sets two requirements for the carrier board.
+
+**(a) The ICU is an observer, not a reader.** Its input has to be high-impedance enough that it does not load the divider and shift the gauge the driver is still looking at. The precedent is already in the electrical build: A7 watches the fuel node through a **1 MΩ pull-down** (D-215) and is calibrated as a **three-point lookup taken in the car** (D-197), never computed from a resistance table, because the node voltage depends on the cluster's own internal supply. Temp and oil get the same treatment — high-Z, clamped, calibrated in situ. **Confirm first** whether these gauges are fed through a *pulsing* constant-voltage regulator, as most Japanese clusters of this era were: if they are, every observer needs averaging in firmware and a single raw sample means nothing. One scope trace at the cluster plug settles it, and it rides along with the electrical build's `M-6`.
+
+**(b) The cluster is the excitation source, so it cannot simply be unplugged.** If the ICU is ever meant to *replace* the factory cluster rather than sit beside it, pulling `DP-CLU` removes the drive and every sender node goes dead. The fix is local — the ICU supplies its own pull-up to its own reference — but it has to be on the board from the first layout, together with a way to disable it while the cluster is still fitted, because two drivers on one node is worse than none.
+
+**Four signal types share the one 12-way drop:** two resistive sender nodes (temp, oil), one pulse train (tach — shielded, trailing coil, `V-082` / D-304), and two lamp-drive lines (charge, brake warning) that are effectively digital, pulled low by the alternator or a switch. Fuel level is **absent by design**: the PMU's A7 owns that node today. If the electrical build's `Q-107` re-points A7 at oil pressure, the fuel tap has to be added to `DP-ICU 8` while the harness is still on the bench — not after.
+**Blocks:** the ICU carrier's analog front end, and `V-082`.
+
+**ANSWER:**
+>
+>
+
+**Q-302 · What feeds the ICU and its display, and does O10 have the headroom?** *(new, 2026-09-04)*
+
+`DP-ICU 1`, `DP-DCU 1` and `DP-KEY 3` are all 16 AWG taps off **O10, the accessory bus** (D-215). O10 already carries the head unit, both USB-C ports and the K12 washer coil, and `LD15` puts that at **~10 A worst case** against a **13.0 A** enable-at cap (D-223). That leaves roughly **3 A for all three modules together** — and a 900–1000 nit bar panel (chain ii, `V-085`) plus its backlight can eat most of it on its own, before the Teensy, the BT817 and the DCU's servo rail are counted.
+
+Note what is *not* in question: the **display never touches the harness** (D-159). It is powered and driven locally by the ICU behind the same bezel. The load being argued about is what the ICU board draws *including* whatever it passes on to the panel.
+
+**Options: (a)** measure the real draw at bench bring-up and, if O10 is short, feed the ICU from the **O15 comfort bus** — 25 A, already run to `L3-P 2` and capped, fanned out by this project's own fuse block (D-011) — keeping `DP-ICU 1` as the logic and wake supply. **(b)** Put the ICU on O15 from the start and leave O10 to the head unit. **(c)** Accept O10 and let the display shed under the 11.5 V rule (D-248).
+**Recommend (a).** It costs nothing now, it uses a bus that exists for exactly this, and the number that settles it does not exist until a board draws current. But the *question* has to be answered before layout, because where the board takes 12 V from changes its input protection and its connector.
+**Blocks:** the ICU carrier's power input, and the O15 fuse block this project adds.
+
+**ANSWER:**
+>
+>
+
 **V-083 · DCU carrier candidate parts** — second buck for the servo rail, AOD4184-class FETs, INA180 shunt amp (`01-DESIGN/DCU-CARRIER.md`). Datasheet-verify before layout.
 
 **ANSWER:**

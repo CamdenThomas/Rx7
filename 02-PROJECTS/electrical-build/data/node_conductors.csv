@@ -1,6 +1,6 @@
 id,src,dst,awg,colour,note
 N01,DP-BAT lug (2 AWG from the Class-T),Always-hot busbar stud,2,RED,The main feed lands directly on the busbar
-N02,Always-hot busbar,PMU +12 V stud,4,RED,"≤ 8 in, ring lugs both ends, torque to spec"
+N02,Always-hot busbar,PMU +12 V stud,2,RED,"≤ 8 in, ring lugs both ends, torque to spec — 2 AWG, not 4 (D-241)"
 N03,Always-hot busbar,Fuse block A input,10,RED,
 N04,Always-hot busbar,K11 terminal 30,10,RED,
 N05,K11 terminal 87,Fuse block B input,10,RED,
@@ -19,6 +19,8 @@ N17,PMU pin 27 (O15),Receptacle L3-P 2,12,RED,Capped comfort feed — no fuse bl
 N18,PMU pin 2 (O12),Receptacle L1-P 1,12,RED,
 N19,PMU pin 2 (O12) tap,F15 inline (7.5 A) → receptacle L1-S1 2,16,RED,Alternator excitation
 N20,PMU pin 2 (O12) tap,F16 inline (5 A) → receptacle DP-CLU 1,16,RED,Cluster feed
+N61,PMU pin 2 (O12) tap,F20 inline (7.5 A) → wideband gauge +12 V,16,RED,Ignition feed so the sensor heater is powered during cranking (D-244)
+N62,GND bus,Wideband gauge ground,16,BLK,A dash-node device — its ground never crosses a leg
 N21,PMU pin 34 (O20),F12 inline (5 A) → receptacle L4-M 8,16,RED,Interior lamp
 N22,PMU pin 34 (O20) tap,"Receptacles L3-S1 8, DP-CLU 3, DP-ICU 5 (capped)",16,RED,Illumination bus
 N23,PMU pin 4 (O10),Receptacle L3-M 1,14,ORN,
@@ -35,7 +37,8 @@ N34,Receptacle L3-S2 1,Wake strip input 2 (RUN),16,BLU,
 N35,Wake stage 1 collector (A6 door),Wake strip input 3,16,BLU,
 N36,Wake stage 2 collector (A8 horn/hazard/wink),Wake strip input 4,16,BLU,
 N37,PMU pin 8 (O22),Wake strip input 5,16,RED,
-N38,Wake strip common rail (after the five 1N5819),PMU pin 7 (+12V SW),16,BLU,10 kΩ bleed from this rail to the GND bus
+N63,Receptacle L3-S1 7,Wake strip input 6 (brake),16,BLU,Second pole of the brake switch — the brake wakes the module (D-247)
+N38,Wake strip common rail (after the six 1N5819),PMU pin 7 (+12V SW),16,BLU,10 kΩ bleed from this rail to the GND bus
 N39,PMU pin 15 (+5 V),100 kΩ → PMU pin 35 (A15) · 100 kΩ → PMU pin 22 (A16),16,PNK,"Bias so a broken wire reads 0, not OFF"
 N40,PMU pin 17 (A4),Receptacles L2-S 1 and L1-S1 11 (splice),16,GRY,
 N41,PMU pin 31 (A5),Receptacles L2-S 2 and L1-S2 7 (splice),16,GRY,
@@ -52,7 +55,7 @@ N51,PMU pin 6 (O17),"Receptacles L2-M 5, L4-M 5, DP-CLU 10",16,RED,
 N52,PMU pin 33 (O18),"Receptacles L2-M 6, L4-M 6, DP-CLU 11",16,RED,
 N53,PMU pin 26 (O3),Receptacle L2-P 2 (12 AWG) + 16 AWG tap → DP-CLU 12,12 / 16,RED,High beam + indicator
 N54,PMU pin 11 (O6),Receptacles L2-M 7 and L4-M 1,14,ORN,
-N55,PMU pins 24 / 37 (CAN2),"L1-S1 9/10 · DP-ICU 3/4 · DP-DCU 4/5 · DP-KEY 1/2 — twisted pairs, spliced",16 tw,YEL · GRN,Software termination ON at the PMU
+N55,PMU pins 24 / 37 (CAN2),"L1-S1 9/10 · DP-ICU 3/4 · DP-DCU 4/5 · DP-KEY 1/2 · wideband gauge AEMnet pair (dash node) — twisted pairs, spliced",16 tw,YEL · GRN,Software termination ON at the PMU
 N56,PMU pins 23 / 36 (CAN1),Receptacle DP-DIAG 1/2 — twisted pair,16 tw,YEL · GRN,120 Ω across pins 23/36 at the PMU connector
 N57,PMU pin 25 (GND),GND bus,10,BLK,≤ 6 in
 N58,GND bus,"Chassis, dash star point",10,BLK,"Bare metal, star washer, torque, cavity wax"

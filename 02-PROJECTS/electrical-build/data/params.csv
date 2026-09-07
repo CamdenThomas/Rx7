@@ -1,4 +1,5 @@
 key,value,note
-gaps_est_usd,90,Rough total of the still-to-add lines (§8)
+gaps_est_usd,320,§8 additions net of the three lines that drop (D-245/D-246 moved the heavy cable to 1/0)
 hardware_est_usd,40,Hardware-store trip after the measurement day (§7)
 label_ends,260,Wire ends to label — sizes the tape order
+battery_case_mm,170 W x 230 L x 190 H,Ionic S9 case measured 2026-09-04 (V-053/V-051 -> D-239); terminals and boots stand above the 190 mm

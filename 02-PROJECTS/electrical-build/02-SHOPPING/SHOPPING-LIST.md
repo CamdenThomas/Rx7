@@ -20,10 +20,10 @@
 | DeutschConnector.com | 26 | $944.08 |
 | Amazon | 49 | $1,096.22 |
 | **Four carts** | **94** | **$2,878.02** |
-| Still to add (§8) | ~10 | ≈ $90 |
+| Still to add (§8) | ~22 | ≈ $320 |
 | Vehicle parts, not yet carted (§6) | 5 | ≈ $175 est |
 | Hardware store, after the measurement day (§7) | — | ≈ $40 est |
-| **Everything** |  | **≈ $3,180** |
+| **Everything** |  | **≈ $3,410** |
 
 ## Already in hand — do not buy
 
@@ -43,13 +43,12 @@ https://www.waytekwire.com/ · **cart $455.04, 11 lines**
 | Waytek # | Item | Qty | Used for |
 |---|---|---|---|
 | 45643 | OptiFuse BLR-504 ATC fuse block, 4-position, bussed input | 2 | Block A (busbar: F2, F3, F19, F13 empty) · Block B (K11: F1, 3 spare) |
-| 46047 | Sealed inline ATC fuse holder, 14 AWG leads | 3 | F12, F15, F16 at the dash node |
 | 75725 | Song Chuan 871-1C-C-D1-12VDC — ISO micro relay 40 A SPDT, integral diode | 4 | K1, K2, K11, K12 (no spare) |
 | 74858 | Picker PC792E-1C-C-12S-DN-X — sealed mini ISO relay SPDT, integral diode | 1 | K9, engine bay |
 | 75340 | Chief weatherproof 5-pin mini relay connector | 1 | K9's socket |
 | 75290 | Panel-mount micro relay socket with terminals | 10 | 6 at the dash node (K1–K4, K11, K12) + 4 at the sill (K5–K8, empty) |
 | WL16-0 | Prysmian GXL 16 AWG **BLACK**, 500 ft spool | 1 | Ground family — 230 ft needed |
-| WL16-2 | Prysmian GXL 16 AWG **RED**, 500 ft spool | 1 | Power family at 16 AWG — 480 ft needed |
+| WL16-2 | Prysmian GXL 16 AWG **RED**, 500 ft spool | 1 | Power family at 16 AWG — 480 ft calculated against a 500 ft spool. That is a 4 % margin: if M-2 measures the routes long, a top-up cut is ordered the same day |
 | WL16-8 | Prysmian GXL 16 AWG **GRAY**, 1000 ft spool | 1 | Analog-input family — 645 ft needed |
 | WL16-6 | Prysmian GXL 16 AWG **BLUE**, 500 ft spool | 1 | Command family — 285 ft needed |
 
@@ -65,8 +64,6 @@ https://www.wirebarn.com/GXL-Wire-By-The-Foot_c_4.html · **cart $382.68, 8 line
 |---|---|---|---|
 | 14 | ORN | 250 | Every 15 A output run (O6–O11) and the washer feed — 190 ft calculated |
 | 14 | RED | 100 | F1 head-unit constant, the capped window motor legs — 52 ft calculated |
-| 14 | BLK | 50 | 14 AWG grounds — 42 ft calculated |
-| 12 | RED | 250 + 100 | Every 25 A output and 12 AWG feed — 336 ft calculated |
 | 12 | BLK | 25 | 12 AWG grounds — 20 ft calculated |
 | 10 | BLK | 25 | Ground-bus and star-stud drops |
 | 10 | RED | 25 | Busbar → block A, K11, block B |
@@ -120,7 +117,7 @@ No spare housing pairs are carted. A ruined housing is a one-week wait — keep 
 | 0460-215-16141 | Pin contact, size 16, **14 AWG**, solid | 7 | **14** + spares = 18 | **raise to 18** |
 | 0462-203-12141 | Socket contact, size 12, solid | 5 | spares | cart |
 | 0460-204-12141 | Pin contact, size 12, solid | 5 | spares | cart |
-| 114017 | Sealing plug, size 16 cavity | 64 | 58 — every PLUG cavity, both halves — the cart carries 6 spare | cart |
+| 114017 | Sealing plug, size 16 cavity | 64 | 56 — every PLUG cavity, both halves — the cart carries 6 spare | cart |
 | 0413-204-2005 | Sealing plug, size 12 cavity | 0 | 4 — L1-P 4 and L4-P 4, both halves | **to add** |
 | 1027-003-1200 | Mounting clip, DT / DTP receptacle | 22 | 21 — every receptacle at the dash node (19) and the sill (2) + 1 spare | cart |
 | 0411-310-1605 | Contact removal tool, size 16 | 1 | toolbox | cart |
@@ -157,7 +154,7 @@ https://www.amazon.com/ · **cart $1,096.22, 49 lines / 55 items**. The cart was
 |---|---|---|---|---|
 | Class-T fuse block with cover, 110–200 A | Blue Sea 5007100 | 1 | 78 | The only fuse type with the interrupt rating for a lithium short |
 | Class-T fuse 150 A | Blue Sea 5114 | 2 | 90 | One fitted, one spare |
-| Master battery disconnect switch | Blue Sea 9003e (m-Series) | 1 | 62 |  |
+| Master battery disconnect switch | Blue Sea 9003e (e-Series) — 350 A continuous, 1500 A cranking | 1 | 62 | On the battery negative (D-245); it now carries the starter return, which its cranking rating covers |
 | Distribution post, 3/8 in stud, insulated | Blue Sea 2003 PowerPost | 1 | 16 | The temporary feed point in install §2; the factory harness feed lands here |
 | MRBF terminal fuse holder | Blue Sea 5191 | 1 | 25 | On the battery + post |
 | MRBF fuse 200 A | Blue Sea 5187 | 1 | 17 |  |
@@ -168,13 +165,18 @@ https://www.amazon.com/ · **cart $1,096.22, 49 lines / 55 items**. The cart was
 | Ground studs 3/8 in stainless | generic | 4 | 16 | Rear, front, dash, sill |
 | Star washers, stainless, assorted | generic kit | 1 | 8 | Under every ground stud and lug |
 | PMU stand-offs M6 × 12 mm, aluminium | generic | 3 | 5 | Airflow under the PMU |
-| 2 AWG fine-strand welding cable RED | TEMCo, 25 ft + 20 ft | 45 ft | 213 | PMU feed through the tunnel, starter run, disconnect links |
-| 2 AWG fine-strand welding cable BLACK | TEMCo, 25 ft | 25 ft | 72 | Battery negative, engine strap |
+| 2 AWG fine-strand welding cable RED | TEMCo, 25 ft + 20 ft | 45 ft | 213 | PMU feed C03 and the Class-T link C01 only — the starter run moved to 1/0 (D-246), so this line DROPS to 25 ft and saves about $90 |
+| 2 AWG fine-strand welding cable BLACK | TEMCo, 25 ft | 25 ft | 72 | Engine block → chassis bonding strap C06 only — the battery negative moved to 1/0 (D-245, D-246), so this line DROPS to 10 ft |
 | 6 AWG cable RED, 5 ft | any SGX / welding | 1 | 15 | Alternator B+ |
+| 1/0 fine-strand welding cable RED | ≥ 90 °C, 100 % copper — same acceptance test as D-238 | 25 ft | 140 | Starter feed C04 (D-246) |
+| 1/0 fine-strand welding cable BLACK | ≥ 90 °C, 100 % copper | 30 ft | 165 | Battery negative C02, disconnect link C05, cranking return C11 (D-245, D-246) |
 | Tinned closed-barrel lugs 2 AWG, 5/16 and 3/8 holes | TEMCo / Selterm | 18 | 45 | Every 2 AWG cable end + practice crimps |
-| Tinned lugs 6 AWG 5/16 (×4) and 1/0 3/8 (×4) | TEMCo / Selterm | 8 | 16 |  |
-| Terminal boots, red and black, 2 AWG / 1/0 | generic | 10 | 15 |  |
+| Tinned lugs 6 AWG 5/16 (×4) | TEMCo / Selterm | 8 | 16 | Alternator B+ cable C07 — the four 1/0 lugs move to P098, so this line DROPS to the four 6 AWG lugs |
+| Tinned closed-barrel lugs 1/0 — 3/8 hole (×8) and 5/16 hole (×4) | 5/16 for the MRBF holder stud, 3/8 for the disconnect, ground studs and block | 12 | 30 | Every 1/0 cable end plus practice crimps (D-246) |
+| Terminal boots, red and black, 2 AWG / 1/0 | generic | 10 | 15 | Every exposed lug on a live stud — four more ends now that the negative side is 1/0 (D-246) |
 | LiFePO4-profile charger 12 V 10 A — OPTIONAL | Ionic 12V 10A | 1 | 110 | A lead-acid charger can ruin the Ionic; skip if one is owned |
+| Tapered-post terminal boots, red and black | must clear the terminal stack and lift off by hand for a jump start | 1 | 8 | The only thing covering a live post now that the box is gone (D-235) |
+| SAE tapered-post battery terminals, brass, with 3/8 in stud take-off, pair | confirm the positive clamp's stud carries the MRBF holder plus the PMU feed lug | 1 | 25 | The Ionic has tapered posts (D-234) - no ring lug bolts to it |
 
 ### Dash node and electronics
 
@@ -222,7 +224,7 @@ RockAuto / PartsGeek / a Mazda specialist. Confirm fit for a **1982 RX-7 GS, FB,
 
 | Item | Spec | Qty | ≈ $ | Note |
 |---|---|---|---|---|
-| Brake pedal (stop lamp) switch, without cruise | Standard SLS-52 class — confirm fit | 1 | 20 | F-11 — the pedal switch is wired into the A3 ladder |
+| Brake pedal (stop lamp) switch, without cruise — TWO circuits | Standard SLS-52 class — confirm fit | 1 | 20 | Pole 1 the A3 ladder, pole 2 the wake strip (D-247) |
 | Ignition switch, electrical portion, 1981–83 RX-7 | search "81-83 RX-7 ignition switch electrical"; NOS or quality reproduction | 1 | 45 | Terminals B, ACC, IG, ST — feeds the A16 ladder and both wake sources |
 | Heater blower motor, 1979–83 RX-7 | Four Seasons 35483 | 1 | 65 | The original is dead (K-023). Confirm fit against the HVAC case on arrival |
 | Blower motor resistor pack, 1979–85 RX-7 | Four Seasons, vehicle fit | 1 | 25 |  |
@@ -243,7 +245,10 @@ Bought with the parts in hand, once M-1 and M-4 in the install plan are filled i
 
 | Store | Item | Qty | Why |
 |---|---|---|---|
+| Waytek | 46047 Sealed inline ATC fuse holder, 14 AWG leads | 3 → 4 | F12, F15, F16 and now F20 — the wideband gauge's feed (D-244) |
 | Waytek | 2300 Blue Sea 2300 busbar, 10-gang 150 A, WITH cover — replaces the uncovered 2301 (78250) in the cart | 1 → 2 | Always-hot bar + ground bus, both covered (D-224). Waytek # for the 2300 to confirm at the cart |
+| WireBarn | GXL 14 AWG BLK | 50 → 75 ft | 14 AWG grounds — 42 ft calculated against 50 ft carted; the same margin problem, smaller money |
+| WireBarn | GXL 12 AWG RED | 250 + 100 → 450 ft | Every 25 A output and 12 AWG feed — 336 ft calculated against 350 ft carted is a 1.04× margin, not the 1.5× D-202 promised on unmeasured routes |
 | WireBarn | GXL 16 AWG PNK | 25 | F3 switch supply and the +5 V reference — 10 ft calculated |
 | WireBarn | GXL 16 AWG YEL | 50 | CAN high, both buses — 33 ft calculated |
 | WireBarn | GXL 16 AWG GRN | 50 | CAN low, both buses — 33 ft calculated |
@@ -252,6 +257,15 @@ Bought with the parts in hand, once M-1 and M-4 in the install plan are filled i
 | DeutschConnector.com | 0413-204-2005 Sealing plug, size 12 cavity | 0 | L1-P 4 and L4-P 4, both halves |
 | DeutschConnector.com | 0411-310-1205 Contact removal tool, size 12 | 0 | 1 — the DTP housings |
 | DeutschConnector.com | DT4P-DC Dust cap, DT 4-way receptacle | 0 | 1 — DP-KEY; add by hand, the site's bot check blocked the scripted add |
+| Amazon | 2 AWG fine-strand welding cable RED | 45 ft → 25 ft | PMU feed C03 and the Class-T link C01 only — the starter run moved to 1/0 (D-246), so this line DROPS to 25 ft and saves about $90 |
+| Amazon | 2 AWG fine-strand welding cable BLACK | 25 ft → 10 ft | Engine block → chassis bonding strap C06 only — the battery negative moved to 1/0 (D-245, D-246), so this line DROPS to 10 ft |
+| Amazon | 1/0 fine-strand welding cable RED | 25 ft | Starter feed C04 (D-246) |
+| Amazon | 1/0 fine-strand welding cable BLACK | 30 ft | Battery negative C02, disconnect link C05, cranking return C11 (D-245, D-246) |
+| Amazon | Tinned lugs 6 AWG 5/16 (×4) | 8 → 4 | Alternator B+ cable C07 — the four 1/0 lugs move to P098, so this line DROPS to the four 6 AWG lugs |
+| Amazon | Tinned closed-barrel lugs 1/0 — 3/8 hole (×8) and 5/16 hole (×4) | 12 | Every 1/0 cable end plus practice crimps (D-246) |
+| Amazon | Terminal boots, red and black, 2 AWG / 1/0 | 10 → 14 | Every exposed lug on a live stud — four more ends now that the negative side is 1/0 (D-246) |
+| Amazon | Tapered-post terminal boots, red and black | 1 | The only thing covering a live post now that the box is gone (D-235) |
+| Amazon | SAE tapered-post battery terminals, brass, with 3/8 in stud take-off, pair | 1 | The Ionic has tapered posts (D-234) - no ring lug bolts to it |
 | Drawer or local | Blade fuses by value — §9 |  |  |
 
 ## 9 · Blade fuses — check the drawer first
@@ -263,11 +277,11 @@ Cheap assortments skip 2 A, 3 A and 7.5 A. What the car needs, with one spare of
 | 2 A | F2 | 2 |
 | 3 A | F19 | 2 |
 | 5 A | F3, F12, F16 + the first-power-up guard | 5 |
-| 7.5 A | F15 | 2 |
-| 15 A | F1 | 2 |
+| 7.5 A | F15, F20 | 3 |
+| 10 A | F1 | 2 |
 
 Plus the two MIDI fuses (F17 30 A, F18 100 A) and the Class-T and MRBF, which are on Amazon above.
 
 ## 10 · When it arrives
 
-Count everything against this list before anything is opened. Housings: 21 codes, two halves each (§3). Wire: four spools + the WireBarn cuts + the three added 16 AWG colours. Contacts: 18 of each 14 AWG type, 16 of each 16–18 AWG type, 5 of each size 12, 58 size-16 plugs, 4 size-12 plugs, 21 clips, 3 dust caps. Report any shortfall before the build starts — a missing housing stops a leg.
+Count everything against this list before anything is opened. Housings: 21 codes, two halves each (§3). Wire: four spools + the WireBarn cuts + the three added 16 AWG colours. Contacts: 18 of each 14 AWG type, 16 of each 16–18 AWG type, 5 of each size 12, 56 size-16 plugs, 4 size-12 plugs, 21 clips, 3 dust caps. Report any shortfall before the build starts — a missing housing stops a leg.

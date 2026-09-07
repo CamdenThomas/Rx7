@@ -49,7 +49,7 @@ Every ID prefix, channel code, connector code, colour and term used in shorthand
 | **Sill node** | A small panel behind the driver kick panel: the two door receptacles, a ground stud, four empty relay sockets and three labelled fuse positions. Part of L4, not a fifth leg |
 | **D1 / D2** | Door connectors at the sill, driver and passenger — every conductor capped this build |
 | **K1–K12** | Relays. K1 / K2 pop-up run LH / RH · K3 / K4 empty sockets · K5–K8 window sockets at the sill, empty · K9 start (inner fender) · K11 head-unit constant master · K12 washer. K10 was deleted with the A/C; the number is not reused |
-| **F1–F19** | Fuses. F1–F3, F5, F12, F13, F15, F16, F19 at the dash node · F8, F9, F14 labelled positions at the sill · F17, F18 in the engine bay. F4, F6, F7, F10, F11 were deleted; the numbers are not reused |
+| **F1–F20** | Fuses. F1–F3, F12, F13, F15, F16, F19, F20 at the dash node · F8, F9, F14 labelled positions at the sill · F17, F18 in the engine bay. F4, F6, F7, F10, F11 were deleted; the numbers are not reused |
 | **LIVE · CAPPED · PLUG · EMPTY** | The status words, defined at the top of `DESIGN.md` |
 | **Capped** | A wire run and terminated in its cavity with its far end sealed and labelled, waiting for a future feature. Adding the feature is uncap, connect, enable — no harness work |
 | **Star node** | One grounding point per zone, straight to bare chassis. Grounds never cross a leg connector |
