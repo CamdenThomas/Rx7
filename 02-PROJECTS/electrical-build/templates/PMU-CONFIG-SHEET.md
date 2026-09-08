@@ -60,7 +60,7 @@ Wake sources on pin 7: ACC · RUN · door stage · horn/hazard/wink stage · **b
 
 ## 5 · Enable-at limits
 
-The software limit typed in before each output is first enabled. `meas` = measured, keep; `cap` = channel cap, to be tightened from telemetry in shakedown (§7.5 of the install).
+The software limit typed in before each output is first enabled. **Sizing is two decisions** (D-250): the flat threshold from the load at ~1.15× measured steady state, the time/I²t curve from the conductor. Inrush is absorbed by the time dimension, never by raising the threshold; motors prefer a stall timer. **Retry and latch split by fault type** — bounded retries then latch on a hard overcurrent, no latch on open-load or thermal, and never a silent latch on a safety channel. **Bulb-out annunciation on O2, O3 and O7** from per-channel undercurrent, which flags without disabling. `meas` = measured, keep; `cap` = channel cap, to be tightened from telemetry in shakedown (§7.5 of the install).
 
 {{enable_at}}
 

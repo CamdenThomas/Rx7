@@ -542,6 +542,9 @@ def need(db, rule):
         return sum((2 if c["state"] == "PLUG" else 1) for c in cavs if c["state"] in ("PLUG", "RESERVED") and housing(db, c["housing"])["class"] == "Power")
     if rule == "contacts14":
         return sum(1 for c in cavs if c["awg"] == "14" and housing(db, c["housing"])["class"] != "Power")
+    if rule.startswith("kit:"):  # one assembly kit per housing half of that type (D-277)
+        t = rule[4:]; alt = t.replace("-8S", "-08S").replace("-8P", "-08P"); side = "leg_side" if "06" in t else "box_side"
+        return sum(1 for h in hs if h[side] in (t, alt))
     if rule == "clips":
         return sum(1 for h in hs if not h["box_side"].startswith("DT13"))  # a module's PCB receptacle needs no post clip (D-270)
     return None
@@ -610,21 +613,15 @@ def v_parts_to_add(db, store):
 
 
 def v_deutsch_kits(db, arg):
-    plug, recep = OrderedDict(), OrderedDict()
-    for h in db.rows("housings"):
-        plug.setdefault(h["leg_side"], []).append(h["code"])
-        recep.setdefault(h["box_side"], []).append(h["code"])
-    order = ["DT06-12S", "DT06-8S", "DT06-6S", "DT06-4S", "DT06-2S", "DTP06-4S", "DTP06-2S"]
+    """The assembly kits: the design's count per kit SKU beside what the cart holds (D-277)."""
+    typ_of = {v: k for k, v in KIT.items() if not k.endswith("08S") and not k.endswith("08P")}
     rows = []
-    for t in order:
-        codes = plug.get(t, []) + (plug.get(t.replace("-8S", "-08S"), []) if "-8S" in t else [])
-        if not codes:
-            continue
-        rt = t.replace("06", "04").replace("S", "P")
-        rcodes = recep.get(rt, []) + (recep.get(rt.replace("-8P", "-08P"), []) if "-8P" in rt else [])
-        rows.append([f"{KIT[t]} · {t} plug kit", str(len(codes)), " · ".join(codes)])
-        rows.append([f"{KIT[rt]} · {rt} receptacle kit", str(len(rcodes)), f"same {NUM[len(rcodes)]}" if len(rcodes) > 1 else rcodes[0]])
-    return T(["Kit", "Qty", "Housings served"], rows)
+    for p in db.rows("parts", "section = 'Assembly kits'"):
+        t = typ_of.get(p["sku"], ""); n = need(db, p["need_rule"]) if p["need_rule"] else None
+        served = re.split(r" — ", p["used_for"], 1)[0]
+        st = "cart" if p["status"] == "cart" else f"**{'drop' if int(p['target']) < qty_num(p['qty']) else 'raise'} to {p['target']}**"
+        rows.append([f"{p['sku']} · {p['item']}", served, str(n if n is not None else ""), p["qty"], st])
+    return T(["Kit", "Housings served", "Design needs", "In cart", "Status"], rows)
 
 
 NUM = {2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eight"}
@@ -632,7 +629,7 @@ NUM = {2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven", 8: "eig
 
 def v_deutsch_contacts(db, arg):
     rows = []
-    for p in db.rows("parts", "store = 'DeutschConnector.com'"):
+    for p in db.rows("parts", "store = 'DeutschConnector.com' AND section != 'Assembly kits'"):
         n = need(db, p["need_rule"]) if p["need_rule"] else None
         u = p["used_for"]
         if n is not None:
@@ -676,7 +673,7 @@ def v_arrival(db, arg):
     g = lambda sku: (c[sku]["target"] or c[sku]["qty"]) if sku in c else "?"
     return (f"Contacts: {g('0462-209-16141')} of each 14 AWG type, {g('0462-201-16141')} of each 16–18 AWG type, "
             f"{g('0462-203-12141')} of each size 12, {need(db, 'plugs16')} size-16 plugs, {need(db, 'plugs12')} size-12 plugs, "
-            f"{need(db, 'clips')} clips, 3 dust caps")
+            f"{need(db, 'clips')} clips, {sum(int(p['target'] or qty_num(p['qty'])) for p in db.rows('parts') if 'Dust cap' in p['item'])} dust caps")
 
 
 import sys as _sys; _sys.path.insert(0, str(__import__("pathlib").Path(__file__).parent)); import harness as _harness  # the master harness sheet (D-275)

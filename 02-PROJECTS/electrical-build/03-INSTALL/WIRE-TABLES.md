@@ -204,7 +204,7 @@ One row per cavity. **Length** = the M-2 route for that leg + 15 % + 150 mm serv
 | L3-S1 4 | Wiper stalk ladder | 16 | GRY | LIVE | `A2 / L3-S1-4` | `L3-S1-4 / A2` | ____ | Stalk D-03: HIGH 4.7 kΩ · LOW 10 kΩ · INT 18 kΩ · OFF 47 kΩ · WASH 1.8 kΩ + 1N5819 (band toward the contact) | ☐ |
 | L3-S1 5 | Brake pedal switch | 16 | GRY | LIVE | `A3 / L3-S1-5` | `L3-S1-5 / A3` | ____ | Pedal switch F-11 through 4.7 kΩ; other terminal → dash ground | ☐ |
 | L3-S1 6 | Hazard switch | 16 | GRY | LIVE | `A8 / L3-S1-6` | `L3-S1-6 / A8` | ____ | Hazard contact through 4.7 kΩ; other terminal → column ground | ☐ |
-| L3-S1 7 | Brake — wake source | 16 | BLU | LIVE | `WAKE / L3-S1-7` | `L3-S1-7 / WAKE` | ____ | Brake pedal switch F-11, second pole; its supply is a branch of the F3 switch supply, spliced in the L3 leg off L3-S2 2 | ☐ |
+| L3-S1 7 | Brake — wake source | 16 | BLU | LIVE | `WAKE / L3-S1-7` | `L3-S1-7 / WAKE` | ____ | Spare P084 adjustable plunger switch on the brake pedal, fed from the F3 switch supply branched off L3-S2 2 in the leg (D-249) | ☐ |
 | L3-S1 8 | Illumination bus | 16 | RED | LIVE | `O20 / L3-S1-8` | `L3-S1-8 / O20` | ____ | Dash illumination lamps E-06, E-07, E-10 (RL) + head unit illumination wire | ☐ |
 | L3-S1 9 | Wink LEFT — NC pole | 16 | BLU | LIVE | `K2-85 / L3-S1-9` | `L3-S1-9 / K2-85` | ____ | Wink L switch NC terminal; switch common → dash ground | ☐ |
 | L3-S1 10 | Wink RIGHT — NC pole | 16 | BLU | LIVE | `K1-85 / L3-S1-10` | `L3-S1-10 / K1-85` | ____ | Wink R switch NC terminal; switch common → dash ground | ☐ |

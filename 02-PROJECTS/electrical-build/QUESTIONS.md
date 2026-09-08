@@ -16,7 +16,7 @@ Nothing in §2 blocks a purchase. Nothing in §1 should wait.
 
 §0 is the finishing task list — the order of work from here to a car driving on the PMU; its block G is the agent's improvement list from the production-car comparison. §3 records what closed. §4 records what left this project and where it went.
 
-> **2026-09-04b.** Five of the six audit packets are ruled — **D-244** (the wideband gauge is the controller; AFR rides CAN2; supersedes D-227 and D-231) · **D-245** (the disconnect moves to the negative) · **D-246** (1/0 starter feed and a dedicated cranking return) · **D-247** (two-circuit brake switch, brake joins the wake strip) · **D-248** (the parasitic-drain rules). **Two questions are left before shopping — `Q-107` and `Q-111`** — and one desk check, `T-017`.
+> **2026-09-04b.** Five of the six audit packets are ruled — **D-244** (the wideband gauge is the controller; AFR rides CAN2; supersedes D-227 and D-231) · **D-245** (the disconnect moves to the negative) · **D-246** (1/0 starter feed and a dedicated cranking return) · **D-247** (two-circuit brake switch, brake joins the wake strip) · **D-248** (the parasitic-drain rules). **Ten questions are left before shopping** — `Q-107` and `Q-111`, plus `Q-112` … `Q-114` and `Q-116` … `Q-121` from the 2026-09-05 and 09-08 sweeps — and one desk check, `T-017`.
 
 > **2026-09-07.** The ICU / modularity session's four packets are ruled: **D-249** (A7 → oil pressure; the fuel pump is gated on it) · **D-250** (sensor supply + two spares in `L1-S2 9/10/11`) · **D-251** (wire is control, CAN is telemetry; fuel level is the ICU's) · **D-252** (the ICU drop is `DP-ICU-A` + `DP-ICU-B`; road-speed conductors `L4-S 3/4`), with luxury **D-306** (the ICU joins early, headless, behind the factory cluster). **§1 is down to the desk check `T-017`.** `Q-112`–`Q-115` are reserved by the unapplied 2026-09-05 future-proofing audit (queued in the Claude Project as `rx7/PENDING-2026-09-05-futureproofing.md`); the next question is Q-118.
 
@@ -38,14 +38,18 @@ Nothing in §2 blocks a purchase. Nothing in §1 should wait.
 
 > **2026-09-08c.** **D-275** — the drawing is a view: `build` now renders one master harness sheet (`01-DESIGN/diagrams/HARNESS.svg`, WireViz) from the tables — battery to part to ground, every conductor — and the twelve hand-drawn SVGs are archived; **A8 is done**. `DESIGN.md` §1 shows whether the sheet is current. Next question Q-133.
 
+> **2026-09-08d.** **D-276** — five more sheets from the same model: `LEG-L1…L4.svg`, one per leg, beginning to end (post housings with their feeds on the left, conductors bundled per housing, parts and grounds on the right; L4 carries the backbone to the dash busbar and the sill node) and `DASH-NODE.svg`. Next question Q-133.
+
+> **2026-09-08e.** **D-277** — the cart dialed to the current design: the fourteen Deutsch kit lines are data with a derived need (12-way drops, 8/6/4/2-way and DTP-2 rise, DTP-4 stays), label tape to four cartridges, a perfboard added, three notes corrected; §8 is the whole delta. One new question, `Q-133` — the three sill fuse holders now, so `L4-P 3/4` end in a holder (recommend yes). Next question Q-134.
+
 ---
 
 ## 0 · The finishing task list
 
 **A · At the desk, now — no car, no parts**
 
-- [ ] **A1 · Close the cart gaps.** The generated list is `02-SHOPPING/SHOPPING-LIST.md` §8 — work from it, it is derived from the design and cannot drift. The three things that are *not* line items and have to be done by hand: **sign in at WireBarn** before checkout or the cart is lost · **swap the Waytek 78250** (uncovered 2301) for two covered Blue Sea 2300 bars (D-224) · **delete the NOCO BG27** (D-229). Then pay the four carts. D-252 adds one DT06-6S / DT04-6P assembly-kit pair and a 6-way dust cap to the DeutschConnector cart; D-253 / D-255 add a DTP-2 pair with a cap (`L3-BLW`) and a DT-8 pair (`L4-S2`); D-256 tips the 16 AWG RED family over its 500 ft spool, so a 50 ft cut joins WireBarn. §8 shows all of it once `build` runs. D-258 takes the `DP-CLU` DT-12 pair *out*; D-270 takes the two ICU receptacle kits and two clips out (the ICU's halves are DT13 headers on its board); D-271 takes about 110 ft of engine-leg wire out and adds sealing plugs. Two 100 Ω 1 W resistors (`P114`) and two ESP32-C3 boards (`P116`) join Amazon. D-274 adds the branch-end receptacles to DeutschConnector: three DT-2 pairs (`P123`), a DT-4 pair (`P124`), a DTP-2 pair and a DT-6 pair, seven dust caps, seven clips and about two dozen sealing plugs (the door receptacles are RESERVED). §8 is the list.
-- [ ] **A2 · Order the vehicle parts** — shopping list §6. The senders are *not* on it: the car's own work and stay (D-261). The brake pedal switch must be a **two-circuit** switch (D-247); a single-circuit one cannot be fixed later without pulling the pedal box apart again.
+- [ ] **A1 · Close the cart gaps.** `02-SHOPPING/SHOPPING-LIST.md` §8 is the whole list of what changes at the four stores — derived from the design, line by line, including the Deutsch kits (D-277); it cannot drift. The three things that are *not* line items: **sign in at WireBarn** before checkout or the cart is lost · **swap the Waytek 78250** (uncovered 2301) for two covered Blue Sea 2300 bars (D-224) · **delete the NOCO BG27** (D-229). The DeutschConnector site's bot check blocks scripted adds — the three dust-cap lines are added by hand. Then pay the four carts.
+- [ ] **A2 · Order the vehicle parts** — shopping list §6. The senders are *not* on it: the car's own work and stay (D-261). The brake pedal switch can be **any 2-terminal type** - the wake contact is a spare P084 plunger on the pedal instead (D-249).
 - [ ] **A3 · Check the fuse drawer** against shopping list §9. Two changed: F1 is **10 A** (D-242), and **F20 7.5 A** is new (D-244).
 - [ ] **A4 · Keep the Ionic above its BMS cutoff** while it waits — a lithium left to self-discharge into cutoff is hard to recover. Check it monthly on the app.
 - [ ] **A5 · Do `T-017`** (the factory pin letters) — the sender and switch letters still matter; the cluster plug's no longer do (D-268). Nothing in §1 gates a cart.
@@ -102,6 +106,91 @@ Nothing in §2 blocks a purchase. Nothing in §1 should wait.
 
 One desk check and three items. `Q-309` wants a yes to (a); `Q-132` a yes or a keep; `Q-128` waits on the BMS protocol. `V-082` is the agent's, at layout. The carrier layout is no longer gated on anything but the enclosure file (D-270). `T-017` has to be done before the design freezes; `Q-309`, `Q-126` and `Q-127` each carry a recommendation and want one word — `Q-126` gates the carrier layout (install §1.20), `Q-127` takes wire *out* of the carts, `Q-309` changes nothing until M-2. `V-082` is the agent's, at layout.
 
+**Q-112 - The blower's speed control depends on two parts that no longer exist.** *(2026-09-05 sweep)*
+The 79-83 resistor pack (P088) and the 4-position speed switch (P089) are both **NLA** - no aftermarket direct fit, the parts that surface are the FC's, used heater panels only. `A2` cannot be completed as written. The deeper problem is topological: with tap selection in the dash, **the tap conductors carry full motor current, 5-20 A**, up to the dash and back, which is what makes two dead parts load-bearing.
+**Options: (a)** keep the switching **at the HVAC case** and run **3 small dash-to-blower conductors** (control/PWM, signal ground, switched +12) - serves a resistor pack driven by relays, a solid-state controller, or the DCU later. **(b)** **PWM the blower directly from O16**, one of only two channels with an integrated high-power flyback diode (D-009): no pack, no controller, no switch, infinitely variable, zero extra conductors. **(c)** Hunt a used pack and panel.
+**Recommend (b), with (a) as the fallback** - confirm first that ECUMaster sanctions PWM on a 25 A channel for a brushed motor. If (b) holds, P088 and P089 leave the vehicle-parts list and K-023 stops depending on a switch nobody sells.
+
+**ANSWER:**
+>
+>
+
+**Q-113 - Alternator sense and phase conductors, run now and capped.** *(2026-09-05 sweep)*
+The FB is an **LR** system: `BW` is the R terminal (ignition-switched regulator wake, under 0.5 A) and `WB` is L (lamp sink). The lamp is decorative - R does the exciting, and O12 -> F15 -> L1-S1 2 is correct for it. The **'86-88 FC 70 A alternator is a bolt-in with the identical two-terminal interface**, ~$120, and the single narrow V-belt caps realistic output around 70-90 A anyway - so that is the sensible ceiling and it needs no wiring change.
+What cannot be fitted today is anything **LS-type** - FD 100 A, GM CS-series, Denso 3-wire - because they need a **sense** wire and use the **lamp as the excitation path**. Two 16 AWG conductors into free `L1-S1` cavities (5, 7, 8, 12 are all sealing plugs) cover it: **S**, whose dash end lands on the **busbar** through a 3-5 A fuse rather than at the alternator stud, and **P** (phase/FR, milliamps, free insurance).
+*Note against D-198:* once the ICU replaces the cluster there is no bulb, so an LS-type unit needs a **100 Ohm 5 W resistor in parallel** on the L line or it may never start charging.
+**Blocks:** L1-S1's final cavity state.
+
+**ANSWER:**
+>
+>
+
+**Q-114 - The wiper park sense is the one place a replacement motor will not fit.** *(2026-09-05 sweep)*
+Replacement two-speed motors sort into five families. The fitted one (Japanese OE pattern) brings the cam out as a **dry SPDT** - what the A3 ladder assumes, and correct. But the most common universal on the shelf today is the **Bosch/SWF/Valeo DIN 72552 family**, which is self-parking: the cam's common is the **low-brush node**, `53a` wants a permanent +12, `53e` is the brake throw, and reading either would put battery volts and brush spikes onto A3.
+**Recommend:** promote **`L2-S 4`** (sealing plug) to a capped `WIPER_PARK_RET` conductor, hold **`L2-M 8`** as a fused park feed, and specify the A3 wiper-park leg as **clamped and 12 V tolerant** at the resistor sub-assembly. Two cavities, and the whole replacement population fits.
+
+**ANSWER:**
+>
+>
+
+**Q-116 - Does CAN2 go to the rear?** *(2026-09-08)*
+CAN2 reaches the engine bay (`L1-S1 9/10`) and the dash drops. **There is no CAN in L4.** A rear node is not hypothetical - the Ionic's BLE telemetry gateway, a reversing camera, tyre pressure, a hatch module - and `L4-S 3` and `4` sit as sealing plugs, exactly a twisted pair, with the YEL/GRN already carted.
+**Recommend:** run the pair now and make the bus a proper line - **engine bay <- dash node -> rear**, 120 Ohm at both physical ends, the PMU's software termination **OFF** so it becomes a short stub rather than an end. A 16 ft unterminated stub off a 500 kbps bus cannot be bolted on later.
+**Flip it if:** the gateway will live behind the dash and BLE reaches the cargo bin reliably - test with a phone before deciding.
+**Costs:** two contacts, carted wire, one 120 Ohm resistor (P070 carries ten), one config change.
+
+**ANSWER:**
+>
+>
+
+**Q-117 - Should the master disconnect go back to the positive side?** *(2026-09-08 - supersedes D-245 if answered)*
+D-245 put the switch in the battery negative, and its reasoning held as far as it went: with the negative open, a positive-to-chassis fault has no return path. The benchmark found three arguments the other way that were not considered.
+**(1) Convention.** ABYC E-9.10.c puts the switch in the cranking-motor supply. NHRA requires the positive side verbatim. NEC 404.2(B) states the general principle - do not switch the grounded conductor. Anyone who works on this car, a first responder included, will expect a positive-side kill.
+**(2) The negative leg is unfused by definition.** Any parallel negative bond - a shunt, a battery monitor sense lead, the pack's BMS or heater return, a trickle charger left connected - silently becomes the return path for the whole system.
+**(3)** With the switch open and the engine running, the battery negative post floats at (Vsys - Vbat) above chassis and sits near spike potential during a load dump.
+**Recommend:** **one positive-side switch at the battery carrying both branches** - the Class-T/PMU leg and the MRBF/starter leg - so opening it genuinely kills the car, on the side everyone expects. Keep post-to-switch-to-fuses in inches, as D-062 already demands. Pair with `Q-119`.
+**Costs:** none - the switch is carted; cable lengths shift by a foot.
+
+**ANSWER:**
+>
+>
+
+**Q-118 - Kick-down: reproduce, delete deliberately, or defer?** *(2026-09-08)*
+The 1982 component list carries a **kick-down switch (B-32)** at the throttle pedal and a **kick-down solenoid (B-33)** on the transmission - two wires, automatic-only. It appears in no cavity, no device row and no decision, and it is **not** on D-097's deliberate-deletion list. Without it the transmission will not force a downshift at wide-open throttle.
+**Options: (a)** reproduce it - one dash-local conductor to the pedal box, one down the tunnel; **(b)** delete it deliberately and log it beside D-097; **(c)** run and cap the tunnel conductor now, decide later.
+**Recommend (c) at minimum** - the tunnel is open once. **Blocks:** the L4 cut list.
+
+**ANSWER:**
+>
+>
+
+**Q-119 - The alternator has no disconnect path, and lithium makes a load dump worse.** *(2026-09-08)*
+ISO 7637-2 pulse **5a** - an unsuppressed load dump on a 12 V system - is **65-87 V for 40-400 ms**. Reports on lithium BMS disconnects run **120 V+**. Two triggers, and the second needs no mistake and never goes away: **opening the master with the engine running** (Blue Sea: *"the voltage will increase due to the sudden elimination of the load. This will burn the diodes out in the rectifier quickly"*), and **the BMS opening while driving** on over-current, cell fault or over-temperature. Lead-acid degrades gracefully and stays in circuit; a BMS opens in milliseconds at full charge current.
+**Two fixes, both cheap. (a)** Swap **P049 from the Blue Sea 9003e to the 9004e** - same single-circuit e-Series switch, same 350 A continuous / 1200 A cranking, but carrying an **Alternator Field Disconnect** pole whose contacts open *slightly before* the main contacts, so the field is dead before the main path breaks. **(b)** Fit a **high-joule TVS across the PMU main feed at the module** - the only thing covering the BMS case.
+**Depends on `V-002`:** AFD only works on an **externally regulated** alternator, and the 1982 diagram draws the regulator inside the alternator envelope. If internal, the aux pole must instead kill the `BW` excitation - which O12 -> F15 already controls, so the PMU can do it in logic given a switch-position input. **Resolve V-002 before ordering.**
+Also ask ECUMaster directly whether the PMU's *"immunity to transients according to ISO 7637"* covers pulse **5a** (unclamped) or only **5b**. Fit the TVS either way.
+
+**ANSWER:**
+>
+>
+
+**Q-120 - The MRBF rating was ruled against a cable that has since changed.** *(2026-09-08 - supersedes D-237 if answered)*
+D-237 fixed the starter fuse at 200 A, correct **when the cable was 2 AWG** (~210 A). D-246 then took it to **1/0 (285 A)** and nobody re-opened the fuse. A fuse protects the cable, not the load, so at 1/0 the 200 A is sized to the load - conservative in the wrong direction - and the Bussmann MRBF curve is unforgiving of a long crank: **200 % (400 A) opens in max 60 s**, 135 % (270 A) in max 900 s. A hot rotary that cranks long walks up that curve.
+**Recommend 250 A** (same 5191 holder, ~$17), then close `V-094` with a clamp meter on the starter cable during a hot start rather than from published curves.
+
+**ANSWER:**
+>
+>
+
+**Q-121 - Pick a limp-home strategy and write it into the install plan.** *(2026-09-08)*
+No PDM vendor documents a bypass, backup module or manual override, and the corpus treats it as accepted risk - *"in the unlikely event that a PDM fails, you are pretty much done, whereas a fuse is always changeable."* The professional mitigation is carrying a spare configured unit. But that is a **racing** answer, and this is a street-registered car where brake lamps, ignition and fuel pump are all software-defined on one module that is not automotive-qualified and lives in a 44-year-old dash.
+**Options, ascending: (a)** keep the config file and a USB-to-CAN cable in the car; **(b)** a one-page written emergency procedure for feeding fuel pump, ignition and brake lamps directly from the busbar; **(c)** carry a pre-configured spare PMU.
+**Recommend (a) + (b)** - together they cost a cable and an afternoon. The design currently has none of the three. Field recovery from a *single* dead output is separate and already possible (D-253).
+
+**ANSWER:**
+>
+>
+
 **T-017 · Verify the connector pin letters in `01-REFERENCE/factory-circuits/` against the diagram scans.**
 The two-letter factory colours in design §12 are what a new wire lands on; a wrong letter there sends a conductor to the wrong terminal, and nothing downstream catches it — continuity testing proves the harness is built as drawn, not that the drawing is right. A desk check with the scans open, before the measurement day. This is the one remaining item where the *design* could still be wrong rather than merely unconfirmed.
 
@@ -114,6 +203,13 @@ The dev board (`P116`) tries the Ionic decode. **The twenty-minute test, yours:*
 
 **ANSWER:**
 >
+>
+
+**Q-133 · Fit the three sill fuse holders now, so `L4-P 3` / `L4-P 4` end in a holder instead of a bare end?** *(new, 2026-09-08, from the cart audit — D-277)*
+Your rule — a future circuit ends in half a connector where it leaves its leg — holds everywhere except the sill node: the window bus `L4-P 3` (12 AWG) and the comfort feed `L4-P 4` land on the F8 / F9 / F14 *positions*, which are labelled but have no holders until the windows and mirrors come, so today those two conductors end bare on the sill panel. **Recommend yes:** three more of the sealed inline ATC holders already in the Waytek cart (46047, about $4 each — 14 AWG leads, fine for the 20 A window fuses and the 10 A mirror heat), fitted empty; each conductor lands in its holder, no fuse means open, and the luxury package drops a fuse in rather than wiring a holder. Cost ≈ $12; no other change. **Say yes or no.**
+
+**ANSWER:**
+> follow recommendations
 >
 
 ---
@@ -133,6 +229,22 @@ These gate **cutting**, never buying (D-202). All four are one session with a ta
 >
 
 **V-081 · Pop-up drive conductors** — install M-3. Ohms R → case and RY → case at parked, half-raised and raised on each motor. One winding reached through different cam segments = bridge R and RY on the run feed; a winding on each at every position = R only, RY capped. This is the one measurement the pin plan waits on (D-186, D-199) — five minutes, before the L2 leg is pinned.
+
+**ANSWER:**
+>
+>
+
+**Q-115 - Road speed: the car may already have a signal, at the dash.** *(2026-09-08)*
+The speedometer is cable-driven and there is no electronic speed signal in the design - a digital cluster needs one. But the 1982 component list carries a **vehicle speed switch (B-29)**: a reed switch **inside the speedometer head** that pulses to ground on a single `BR` wire. It fed cruise control, which D-097 deleted, so it is sitting there unused and **terminating behind the dash**.
+**Check at M-6**, with the cluster out anyway: find the `BR` wire at the speedometer head, confirm it pulses to ground as the cable turns, and count pulses per wheel revolution. If it checks out, road speed costs **one conductor** into a free `L3-S2 12` or `L3-S3` cavity and the tunnel run is deleted from the plan.
+If it does not, the fallback is an inline pass-through sensor at the transmission (3-wire Hall, 12 V square wave, keeps the mechanical speedo alive) on a **4-core 20 AWG overall-shielded cable** - switched +12 fused 2 A, sensor ground, signal, spare - shield grounded at the **dash end only**, to a sealed 4-way at the transmission with an 18 in service loop. Measure the speedo drive thread at both ends before ordering: US sensors are 7/8"-18, Japanese drives are usually metric.
+
+> **Expected values, and the branch each selects (2026-09-08).** A 450 dpi read of the factory diagram shows each motor as a self-contained assembly with an internal relay and a diode in series with each command input - on that reading `WR` is the motor's power path and `R`/`RY` are *relay-coil commands*. `LD08`'s measured 12.8/13.1 A stall says otherwise, if it was taken by feeding `R` or `RY`. This measurement settles it:
+> - **under ~2 Ohm** - a motor winding. The current design is correct; proceed as drawn.
+> - **30-120 Ohm** - a relay coil. Feed `WR` from O1, command `R`/`RY` on 16 AWG signal wire, keep `YG` as travel feedback - and **K1/K2 become unnecessary, freeing two size-12 cavities in L2-P**.
+>
+> **Do not cut or pin the L2 leg before this reading exists.**
+
 
 **ANSWER:**
 >

@@ -55,11 +55,11 @@ Calculated lengths carry a 1.5× margin because the routes are measured after th
 
 Assembly kits = housing + wedgelock + solid nickel contacts for every cavity. Order the **solid** (`-16141` / `-12141`) contact versions, never stamped.
 
-### Housings — one plug (S, leg side) + one receptacle (P, dash-node side) per code
+### Housings — one plug (S, leg side) + one receptacle (P, dash-node side) per code, both bought even where only one is fitted
 
 {{deutsch_kits}}
 
-No spare housing pairs are carted. A ruined housing is a one-week wait — keep the contacts spare instead (below) and never force a wedgelock.
+The counts are derived from the housing table and compared with the cart line by line (D-277): the ICU's two receptacles are DT13 headers on its board (§6b), and the plug half of every branch-end and door receptacle goes on the shelf for the part that will bring it (D-274). No spare housing pairs are carted. A ruined housing is a one-week wait — keep the contacts spare instead (below) and never force a wedgelock.
 
 ### Contacts, plugs, clips, caps, tools
 
@@ -131,4 +131,4 @@ Plus the two MIDI fuses (F17 30 A, F18 100 A) and the Class-T and MRBF, which ar
 
 ## 10 · When it arrives
 
-Count everything against this list before anything is opened. Housings: {{n_housings}} codes, two halves each (§3). Wire: four spools + the WireBarn cuts + the three added 16 AWG colours. {{arrival}}. Report any shortfall before the build starts — a missing housing stops a leg.
+Count everything against this list before anything is opened. Housings: {{n_housings}} codes, two halves each except the ICU's two, whose receptacles are on its board (§3). Wire: four spools + the WireBarn cuts + the three added 16 AWG colours. {{arrival}}. Report any shortfall before the build starts — a missing housing stops a leg.
