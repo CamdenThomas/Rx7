@@ -200,16 +200,17 @@ A15 PASS: any reading ≥ 1750. A16 START: either 1720 or ~1650 depending on whe
 | Crank | O21 only in P or N — the inhibitor bit alone, whether or not the left pop-up happens to be in transit (D-240): A4 == CRANK_OK or TRANSIT+PN. Release O21 when A16 leaves START |
 | Motor bus | Refuse a new pop-up command while O1 reads above 20 A |
 | Voltage | Warn below 12.0 V. Below 11.5 V shed COMFORT, INTERIOR and ACCESSORY (D-248 — COMFORT alone had no load to shed). Warn above 15.0 V |
+| Retry and latch | Split by fault type (D-279). Hard overcurrent: bounded fast retries, then latch, then flag. Open-load or thermal: no latch. NEVER a silent latch on a safety channel — a latched stop lamp or headlamp must annunciate, because a latched-off headlamp at night is worse than a flickering one. Motors trip on a stall timer, not a current spike |
 | Sleep | Any wake-strip input high wakes the PMU. With no key, no door and nothing on A8, KEEP_ALIVE drops 30 s after the last change and the PMU sleeps; K11 opens with it (audio memory relies on the head unit's own non-volatile memory). A stuck door cannot hold the car awake: with A16 == OFF, KEEP_ALIVE releases after 30 minutes whatever A6 reads (D-248) |
 
 ## 4 · Wake, shutdown, CAN
 
-Wake sources on pin 7: ACC · RUN · door stage · horn/hazard/wink stage · **brake** (D-247) · O22 latch. Shutdown: `KEEP_ALIVE` releases 30 s after the last input change with the key OFF and the doors closed — and, whatever the doors read, 30 minutes after the key goes OFF (D-248), so a failed door plunger cannot hold the module awake. The module sleeps and K11 opens. CAN1: 1 Mbps (fixed). CAN2: 500 kbps, termination ON. Enable data logging: every channel current at 10 Hz, every input at 10 Hz.
+Wake sources on pin 7: ACC · RUN · door stage · horn/hazard/wink stage · **brake** (D-278) · O22 latch. Shutdown: `KEEP_ALIVE` releases 30 s after the last input change with the key OFF and the doors closed — and, whatever the doors read, 30 minutes after the key goes OFF (D-248), so a failed door plunger cannot hold the module awake. The module sleeps and K11 opens. CAN1: 1 Mbps (fixed). CAN2: 500 kbps, termination ON. Enable data logging: every channel current at 10 Hz, every input at 10 Hz.
 
 
 ## 5 · Enable-at limits
 
-The software limit typed in before each output is first enabled. **Sizing is two decisions** (D-250): the flat threshold from the load at ~1.15× measured steady state, the time/I²t curve from the conductor. Inrush is absorbed by the time dimension, never by raising the threshold; motors prefer a stall timer. **Retry and latch split by fault type** — bounded retries then latch on a hard overcurrent, no latch on open-load or thermal, and never a silent latch on a safety channel. **Bulb-out annunciation on O2, O3 and O7** from per-channel undercurrent, which flags without disabling. `meas` = measured, keep; `cap` = channel cap, to be tightened from telemetry in shakedown (§7.5 of the install).
+The software limit typed in before each output is first enabled. **Sizing is two decisions** (D-279): the flat threshold from the load at ~1.15× measured steady state, the time/I²t curve from the conductor. Inrush is absorbed by the time dimension, never by raising the threshold; motors prefer a stall timer. **Retry and latch split by fault type** — bounded retries then latch on a hard overcurrent, no latch on open-load or thermal, and never a silent latch on a safety channel. **Bulb-out annunciation on O2, O3 and O7** from per-channel undercurrent, which flags without disabling. `meas` = measured, keep; `cap` = channel cap, to be tightened from telemetry in shakedown (§7.5 of the install).
 
 | Ch | Name | Enable at (A) | Inrush window | Final limit |
 |---|---|---|---|---|

@@ -1,26 +1,26 @@
 <!-- out: README.md -->
-# 00-CAR — the permanent record
+# 1982 MAZDA RX-7 GS — OWNER'S AND SERVICE MANUAL
 
-*Rev 2026-09-03 · owns: the index of the car-level files. Everything here survives every project; projects cite these files and never own their facts.*
+*Rev 2026-09-08 · owns: the index of the manual. Everything here is a fact about the car as it sits in the driveway, or a service instruction for it. How any of it came to be is a project's business, and finished projects live in `../99-ARCHIVE/`. The manual is rendered from `data/` by `tools/rx7.py -p 00-CAR build`; `MANUAL.html` is the whole thing in one page.*
 
-| File | Holds | Add to it when |
+| Chapter | Holds | Changes when |
 |---|---|---|
-| [`vehicle.md`](vehicle.md) | Identity, drivetrain and electrical as fitted **today**, planned drivetrain, chassis notes | The configuration changes |
-| [`SPECS.md`](SPECS.md) | Every factory number with its source — `data/specs.csv` | A number is found in a document |
-| [`modifications.md`](modifications.md) | `M-###` changes made, `P-###` planned, service history, fluids, torque specs | Anything is fitted, serviced or planned |
-| [`known-issues.md`](known-issues.md) | `K-###` faults, quirks and PO hacks, with their impact on the rebuild | Something is found wrong |
-| [`parts-history.md`](parts-history.md) | Every part bought — source, price, link, date | A part is bought |
+| [`vehicle.md`](vehicle.md) | Identity · every system as fitted today · chassis notes | a project completes, or `/rx7-log` records a change |
+| [`SPECS.md`](SPECS.md) | Every factory number with its source — {{count:specs}} rows, each citing an `S-###` document | a number is found in a document |
+| [`MAINTENANCE.md`](MAINTENANCE.md) | The schedule ({{count:intervals}} items with last-done and next-due), the service log, torque quick reference | every visit — `/rx7-log` |
+| [`PROCEDURES.md`](PROCEDURES.md) | How to do things to this car: {{count:procedures}} procedures | a project completes, or one is written |
+| [`modifications.md`](modifications.md) | `M-###` changes made and `P-###` planned | anything is fitted or planned |
+| [`known-issues.md`](known-issues.md) | `K-###` faults, quirks and previous-owner hacks | something is found wrong or fixed |
+| [`parts-history.md`](parts-history.md) | Every part bought — source, price, link, fitted or not | a part is bought or fitted |
+| [`DIAGRAMS.md`](DIAGRAMS.md) | Every as-built drawing, from `systems/*/diagrams/` | a system completes |
+| [`systems/`](systems/) | One chapter per completed project — its as-built tables, drawings and service pages | `/rx7-complete` |
 
-**Rules.** `M`, `P` and `K` IDs are permanent and never reused. A fault that
-is fixed stays in [`known-issues.md`](known-issues.md) with its status updated; a planned item
-that is done moves from `P` to a new `M` row. The factory car as it left the
-line is [`../01-REFERENCE/`](../01-REFERENCE/README.md); the rebuild is
-[`../02-PROJECTS/electrical-build/`](../02-PROJECTS/electrical-build/README.md).
+## System chapters
 
-**One fact a stranger looks for first and cannot find:** the VIN (`Q-001`,
-`T-049`).
+{{systems}}
 
-**How this folder is maintained.** The tables are rows in `data/` (`mods`, `planned`,
-`service`, `fluids`, `issues`, `parts_history`, `specs`); the prose is in `templates/`;
-`python tools/rx7.py -p 00-CAR build` renders these files. Every finished project
-folds its fitted parts and learned numbers in here (ASSISTANT.md §8).
+**Rules.** `M`, `P`, `K`, `PR` and `SV` ids are permanent. A fault that is fixed stays in [`known-issues.md`](known-issues.md) with its status updated; a planned item that is done moves from `P` to a new `M` row. Cells are values, not sentences: dates are `YYYY-MM`, mileages are numbers, statuses are the vocabulary the checks enforce. The manual cites `S-###` sources, `SP-###` specs and its own ids — never a project's `D-` or `Q-`; those live in the archive with the project.
+
+**The one fact a stranger looks for first and cannot find:** the VIN ({{cell:vehicle|vin|value}}).
+
+The factory car as it left the line is [`../01-REFERENCE/`](../01-REFERENCE/README.md). The projects changing it are under [`../02-PROJECTS/`](../02-PROJECTS/); which phase each is in is `python tools/rx7.py status`.

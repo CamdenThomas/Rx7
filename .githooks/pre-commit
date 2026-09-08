@@ -1,0 +1,13 @@
+#!/bin/sh
+# Rx7 pre-commit — the build must be clean and every rendered file current before a commit lands.
+# Install once per clone:  git config core.hooksPath .githooks
+export PYTHONIOENCODING=utf-8
+python tools/rx7.py -a check || { echo "pre-commit: build is refused — fix the data (or run /rx7-clean)"; exit 1; }
+python tools/rx7.py -a build > /dev/null || exit 1
+if ! git diff --quiet -- '*.md' '*.html' ; then
+  echo "pre-commit: the build changed rendered files — they are now staged; commit again"
+  git add -A -- '*.md' '*.html' '*.svg' '*.yml' '*.stamp' '*.h' 2>/dev/null
+  exit 1
+fi
+python tools/triggers.py
+exit 0

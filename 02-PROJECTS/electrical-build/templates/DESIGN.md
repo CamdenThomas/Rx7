@@ -49,7 +49,7 @@ At the dash post the 2 AWG lands directly on the always-hot busbar. The busbar f
 
 **Two layers.** Every PMU output is a software current limit that protects the wire from that pin to the device. Where one output feeds several branches through a bus, each branch gets a blade fuse so a fault on one branch cannot take the others down. The heavy cables are fused at their source.
 
-The flat limit comes from the load, the time curve from the conductor, and inrush rides on the time dimension rather than on a raised threshold (D-250). Retry and latch are split by fault type, and no safety channel latches silently.
+The flat limit comes from the load, the time curve from the conductor, and inrush rides on the time dimension rather than on a raised threshold (D-279). Retry and latch are split by fault type, and no safety channel latches silently.
 
 {{fuses}}
 
@@ -62,7 +62,7 @@ F12, F15, F16 and F20 are sealed inline holders at the dash node; F8, F9 and F14
 
 ### Software limits — the rule
 
-A limit is set from a measured figure, never from an estimate. Motors: measured stall × 1.25 (D-250). Filament lamps: measured steady × 1.35 plus an inrush window (a cold filament pulls 8–12× for a few milliseconds). Resistive: measured cold × 1.20. Electronics: measured steady × 1.50. Round up to 0.5 A. Until a channel has been measured it runs at its channel cap — the limit still protects the wire, because every wire is sized above its limit — and the PMU's own current telemetry provides the measurement in the first week of driving, after which each limit is tightened. The values in §4 are the enable-at values. The four 15 A outputs that reach their loads through DT size-16 contacts (O8–O11) cap at **13.0 A**, the contact's continuous rating (D-223).
+A limit is set from a measured figure, never from an estimate. Motors: measured stall × 1.25 (D-279). Filament lamps: measured steady × 1.35 plus an inrush window (a cold filament pulls 8–12× for a few milliseconds). Resistive: measured cold × 1.20. Electronics: measured steady × 1.50. Round up to 0.5 A. Until a channel has been measured it runs at its channel cap — the limit still protects the wire, because every wire is sized above its limit — and the PMU's own current telemetry provides the measurement in the first week of driving, after which each limit is tightened. The values in §4 are the enable-at values. The four 15 A outputs that reach their loads through DT size-16 contacts (O8–O11) cap at **13.0 A**, the contact's continuous rating (D-223).
 
 
 ---
@@ -116,7 +116,7 @@ The dash node is everything between the 2 AWG feed and the harness legs: the PMU
 
 ### 5.2 · Wake circuit
 
-Pin 7 (+12V SW) turns the PMU on. Six sources feed it through one 1N5819 Schottky each on an 8-position barrier strip, with a 10 kΩ bleed from the rail to ground so leakage can never hold the module awake: **ACC** and **RUN** from the ignition switch (raw 12 V, one conductor each), **the door node** and **the horn/hazard/wink node** through the two sense stages, **a dedicated plunger switch on the brake pedal** (D-249, so a pushed or towed car still lights its brake lamps; the stop-lamp switch itself stays a plain 2-terminal part), and **O22**, the PMU's own keep-alive latch. The strip has two spare positions.
+Pin 7 (+12V SW) turns the PMU on. Six sources feed it through one 1N5819 Schottky each on an 8-position barrier strip, with a 10 kΩ bleed from the rail to ground so leakage can never hold the module awake: **ACC** and **RUN** from the ignition switch (raw 12 V, one conductor each), **the door node** and **the horn/hazard/wink node** through the two sense stages, **a dedicated plunger switch on the brake pedal** (D-278, so a pushed or towed car still lights its brake lamps; the stop-lamp switch itself stays a plain 2-terminal part), and **O22**, the PMU's own keep-alive latch. The strip has two spare positions.
 
 
 Two identical NPN sense stages on the dash node (2N3904 / 2N2222 class), one on the A6 node and one on the A8 node. Base ← node through 100 kΩ · 1 MΩ from the node to the F3 rail · emitter → GND bus · collector → 100 kΩ to the F3 rail and → its wake-strip diode. Node idle (open switch): the node sits at ~4–12 V, the transistor is ON, the collector is LOW — no wake. Any switch on that node closes to ground: base falls, transistor OFF, collector rises to 12 V through the pull-up — wake. The 1 MΩ injects ~7 µA into the ladder while awake (about 1.5 ADC counts); the decode windows absorb it.

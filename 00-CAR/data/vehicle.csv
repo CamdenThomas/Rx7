@@ -1,0 +1,21 @@
+key,section,field,value,note
+year_model,Identity,Year / model,1982 Mazda RX-7,
+generation,Identity,Generation,FB (SA22C),
+trim,Identity,Trim,GS,
+colour,Identity,Colour,Sunbeam Silver,
+vin,Identity,VIN,not recorded,the one fact a stranger looks for first — read it off the plate and set this row
+mileage,Identity,Mileage,153000,the service log carries the reading at each visit
+engine,Drivetrain,Engine,12A rotary,SP-003
+induction,Drivetrain,Induction,Weber 45 DCOE (Pierce Manifolds K678 kit),M-001
+fuel_pump,Drivetrain,Fuel pump,Carter P4070,M-002; draw unconfirmed (V-054)
+fuel_pressure,Drivetrain,Fuel pressure,Holley regulator,M-003
+transmission,Drivetrain,Transmission,3-speed automatic (JATCO 3N71B type),SP-005
+ignition,Drivetrain,Ignition,"Stock 12A twin-coil breakerless; coils, cap, rotor, wires and plugs refreshed 2025-08",M-005; coil / igniter configuration to confirm (V-001)
+battery,Electrical,Battery,"Lead-acid, factory location","Ionic S9 lithium bought, not fitted — electrical build"
+harness,Electrical,Harness,"Factory 1982, unmodified except previous-owner splices",K-002; replaced by the electrical build
+alternator,Electrical,Alternator,"Stock Mitsubishi, 55 A class",SP-078 / SP-079; the 1982 stamp is read at V-002
+pmu,Electrical,Power module,none fitted,ECUMaster PMU-24 DL bought with connector kit and USB-CAN — electrical build
+windows,Electrical,Windows,Manual,"no motors, no wiring"
+headlamps,Electrical,Headlamps,"Pop-up, LED housings fitted by a previous owner",what is fitted is confirmed at the measurement day (luxury V-066)
+ac,Climate,Air conditioning,Fitted and holding charge; barely cools,"K-015 — being removed, not repaired"
+blower,Climate,Blower motor,Dead,K-023

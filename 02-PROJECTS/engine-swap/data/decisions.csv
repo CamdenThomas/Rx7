@@ -1,0 +1,8 @@
+id,system,title,date,status,supersedes,superseded_by,closes,also
+D-007,What the electrical build reserves for the swap,O13 and O14 (25 A) are reserved for the swap engine's ECU/injectors and…,,inherited,,,,
+D-211,What the electrical build reserves for the swap,The engine leg (L1) is built to be cut off at the firewall grommet and…,,inherited,,,,
+D-091,What the electrical build reserves for the swap,"The main feed is 2 AWG, sized for the swap engine, not the 12A",,inherited,,,,
+D-183,What the electrical build reserves for the swap,The PMU's fuel-pump and start-relay rules gain their rpm terms once rpm…,,inherited,,,,
+D-187,What the electrical build reserves for the swap,"The automatic's inhibitor switch is read on A4 (P/N, crank interlock)…",,inherited,,,,
+D-173,What the electrical build reserves for the swap,"The fuel-pump soft fuse (4.0 A, set for the Carter P4070) is re-set…",,inherited,,,,
+D-113,What the electrical build reserves for the swap,The rear disc conversion and the rear axle are still planned,,inherited,,,,

@@ -37,7 +37,7 @@ N34,Receptacle L3-S2 1,Wake strip input 2 (RUN),16,BLU,
 N35,Wake stage 1 collector (A6 door),Wake strip input 3,16,BLU,
 N36,Wake stage 2 collector (A8 horn/hazard/wink),Wake strip input 4,16,BLU,
 N37,PMU pin 8 (O22),Wake strip input 5,16,RED,
-N63,Receptacle L3-S1 7,Wake strip input 6 (brake),16,BLU,Second pole of the brake switch — the brake wakes the module (D-247)
+N63,Receptacle L3-S1 7,Wake strip input 6 (brake),16,BLU,"Brake wake — a spare P084 plunger switch on the pedal, fed from the F3 switch supply, wakes the module (D-278)"
 N38,Wake strip common rail (after the six 1N5819),PMU pin 7 (+12V SW),16,BLU,10 kΩ bleed from this rail to the GND bus
 N39,PMU pin 15 (+5 V),100 kΩ → PMU pin 35 (A15) · 100 kΩ → PMU pin 22 (A16) · 100 Ω 1 W → the oil-pressure node (D-260),16,PNK,"Bias so a broken wire reads 0, not OFF; and the oil sender's excitation"
 N40,PMU pin 17 (A4),Receptacles L2-S 1 and L1-S1 11 (splice),16,GRY,

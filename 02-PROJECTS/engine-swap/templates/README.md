@@ -1,7 +1,7 @@
 <!-- out: README.md -->
 # ENGINE SWAP — 1982 Mazda RX-7 (FB)
 
-*Rev 2026-09-07 · owns: what the swap inherits from the electrical build and what it must give back. Facts are `data/`'s, prose is `templates/`', rendered by `tools/rx7.py -p engine-swap build`. Nothing is decided about the engine yet (D-400 and Q-400 are the first of this project's own).*
+*Rev 2026-09-07 · owns: what the swap inherits from the electrical build and what it must give back. Facts are `data/`'s, prose is `templates/`', rendered by `tools/rx7.py -p engine-swap build`. Nothing is decided about the engine yet (this project's own numbers run from {{next_id:D}} and {{next_id:Q}}).*
 
 The car drives on the new harness first; the swap comes after, on a finished car. The electrical build was drawn so that the swap touches **one leg**: the engine leg `L1` is cut at the firewall grommet and rebuilt from scratch around whatever the engine is (D-211(d)), while the 39-way connector, the dash node and every other leg stay as they are. The table below is the whole interface — every wire the swap will find waiting, what it carries today, and what it has to carry afterwards. The cavity states are the electrical build's (`python tools/rx7.py -p electrical-build get cavities "L1-S2 4"`); only the requirement is this project's.
 

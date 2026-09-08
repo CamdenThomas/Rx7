@@ -1,0 +1,10 @@
+id,metric,op,threshold,workflow,auto,why
+T01,check_problems,>,0,rx7-clean,no,the build is refused — something contradicts something
+T02,duplicate_paragraphs,>=,2,rx7-clean,no,the same paragraph lives in two places — one of them is a view that has not been written
+T03,superseded_cited_bare,>=,5,rx7-clean,no,superseded decisions cited without their successor (R7)
+T04,typed_next_ids,>,0,rx7-clean,no,a next-id is typed in prose instead of {{next_id}}
+T05,answered_waiting,>,0,rx7-answers,no,Camden has answered packets that are not applied
+T06,open_agent_work,>=,1,rx7-plan,no,agent-owned work is open — the planner has something to do
+T07,markdown_in_cells,>=,20,rx7-clean,no,data cells carrying prose — values not sentences
+T08,dangling_other_ids,>=,10,rx7-clean,no,ids cited that no table defines
+T09,days_since_critique,>=,14,rx7-criticize,no,two weeks since a design was last torn apart

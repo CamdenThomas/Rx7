@@ -16,7 +16,7 @@ This folder is the whole job in three steps. Read them in order the first time; 
 
 The three steps above are **rendered**. Every pin, cavity, fuse, relay, ladder value, part and quantity is one row in `data/*.csv`; the prose is in `templates/*.md`; the derivations (a pin's destinations, a housing's used count, a wire label, the Deutsch kit counts, ADC centres, totals) and the integrity checks are in `views.py`. `python tools/rx7.py -p electrical-build build` refuses on any contradiction and then writes every document and `VIEW.html` (the three steps side by side, searchable, every ID a link) — and draws the harness sheets — the master `01-DESIGN/diagrams/HARNESS.svg`, one per leg and the dash node — from the same rows (D-275, D-276). Edit a row or a template, never a rendered file — the banner under each title is the tell (D-233).
 
-**Next IDs:** decisions from D-278 · questions from Q-134 (Q-113–Q-115 are reserved by the 2026-09-05 future-proofing audit).
+**Next IDs:** decisions from D-283 · questions from Q-140 · phase **PLANNING**.
 
 Two files at this level are the project's memory, not steps: [`DECISIONS.md`](DECISIONS.md) — why the design is the way it is, by system — and [`QUESTIONS.md`](QUESTIONS.md) — everything still open, easiest first, with the finishing task list at the top.
 

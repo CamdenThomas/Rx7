@@ -266,9 +266,10 @@ def v_parts_totals(db, arg):
 
 # ------------------------------------------------------------------ work, log, params, counts
 
-def v_work(db, arg):
-    rows = filt(db.rows("work"), arg)
-    return T(["ID", "Kind", "Item", "State", "Gate", "Note"], [[w["id"], w["kind"], w["item"], w["state"], dash(w["gate"]), w["note"]] for w in rows])
+def v_work_kind(db, arg):
+    """{{work_kind:firmware}} — the work rows of one kind (block_title), as the bring-up record reads them."""
+    rows = [w for w in db.rows("work") if w["block_title"] == arg.strip()]
+    return T(["ID", "Item", "Owner", "State", "Gate", "Note"], [[w["id"], w["item"], w["owner"], w["state"], dash(w["gate"]), w["note"]] for w in rows])
 
 
 def v_bringup_log(db, arg):
@@ -284,7 +285,7 @@ def v_counts(db, arg):
     for x in f:
         st[x["state"]] = st.get(x["state"], 0) + 1
     lo, hi = money_sum(db.rows("parts"))
-    open_work = sum(1 for w in db.rows("work") if w["state"] in ("open", "blocked", "specified"))
+    open_work = sum(1 for w in db.rows("work") if w["state"] in ("open", "blocked"))
     return T(["What", "Count"], [["Features", str(len(f))], ["— by state", " · ".join(f"{k} {v}" for k, v in sorted(st.items()))],
                                   ["Provisions consumed from the electrical build", str(len(db.rows("provisions")))],
                                   ["CAN messages / fields", f"{len(db.rows('can_messages'))} / {len(db.rows('can_fields'))}"],
@@ -362,7 +363,7 @@ VIEWS = {
     "provisions": v_provisions, "provision_counts": v_provision_counts, "sensors": v_sensors,
     "can_nodes": v_can_nodes, "can_messages": v_can_messages, "can_layout": v_can_layout, "can_layouts": v_can_layouts,
     "can_busload": v_can_busload, "can_timeouts": v_can_timeouts, "can_drift": v_can_drift,
-    "parts": v_parts, "parts_totals": v_parts_totals, "work": v_work, "bringup_log": v_bringup_log,
+    "parts": v_parts, "parts_totals": v_parts_totals, "work_kind": v_work_kind, "bringup_log": v_bringup_log,
     "params": v_params, "counts": v_counts, "channels_h": v_channels_h,
 }
 
@@ -468,7 +469,7 @@ def c_parts(db):
 
 
 def c_work(db):
-    ok = {"done", "open", "blocked", "specified", "moved", "closed"}
+    ok = {"done", "open", "blocked", "dropped"}
     return [f"work {w['id']}: state {w['state']!r} not in {sorted(ok)}" for w in db.rows("work") if w["state"] not in ok]
 
 

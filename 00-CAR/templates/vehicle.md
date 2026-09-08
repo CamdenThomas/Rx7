@@ -1,59 +1,33 @@
 <!-- out: vehicle.md -->
-# Vehicle
+# VEHICLE — what the car is and what is fitted to it today
 
-*Rev 2026-08-30 · owns: what the car is and what is fitted to it today. Permanent, reused by every project; update in place when the configuration changes.*
+*Rev 2026-09-08 · owns: identity, and every system as it is fitted today. Rendered from `data/vehicle.csv` and `data/as_fitted.csv`; update a row when the configuration changes, never this file. What is *planned* is a project's business ([`modifications.md`](modifications.md) lists the `P-` items).*
 
 ## Identity
 
-| Field | Value  |
-|---|--------|
-| Year / model | 1982 Mazda RX-7 |
-| Generation | FB (SA22C) |
-| Trim | GS     |
-| Color | Sunbeam Silver |
-| VIN | not recorded — `Q-001` / `T-049` |
-| Mileage | 153000 |
+{{vehicle:Identity}}
 
-## Drivetrain — current
+## Drivetrain
 
-| Field | Value |
-|---|---|
-| Engine | 12A rotary |
-| Induction | Weber 45 DCOE |
-| Fuel pump | **Carter P4070** |
-| Fuel pressure | Holley regulator |
-| Transmission | Automatic |
-| Ignition | Stock 12A, coils, cap, rotor, wires and plugs refreshed Aug 2025 (M-005) — `V-001` confirm the coil/ignitor configuration |
+{{vehicle:Drivetrain}}
 
-## Drivetrain — planned
+## Electrical
 
-| Field | Value | Status |
-|---|---|---|
-| Engine | LS swap | Reserved for in the electrical plan (O13, O14, CAN drop, L1-S2 spares), not started |
-| Transmission | CD009 6-speed | Reserved for, not started |
-| Fuel pump | Aeromotive Phantom 340 in-tank | Reserved for, not started |
+{{vehicle:Electrical}}
 
-## Electrical — current
+## Climate
 
-| Field | Value |
-|---|---|
-| Battery | Factory location, lead-acid — **Ionic S9 purchased, not yet fitted** (electrical build, install §2) |
-| Harness | Original factory, unmodified except PO hacks |
-| Alternator | Stock Mitsubishi — 55 A class per the 1980 and 1985 workshop manuals (SP-078, SP-079); the 1982 rating is read off the case at `V-002` |
-| PMU | **ECUMaster PMU-24 DL purchased**, with connector kit and USB-to-CAN adapter. Nothing installed |
-| Windows | **Manual** — no motors, no wiring (D-131) |
-| Headlamps | Currently LED housings (moved to the luxury package with `V-066`); the electrical build runs stock incandescent |
+{{vehicle:Climate}}
 
-## Electrical — planned
+## Every system, as fitted
 
-See [`../02-PROJECTS/electrical-build/01-DESIGN/DESIGN.md`](../02-PROJECTS/electrical-build/01-DESIGN/DESIGN.md); state in its [`QUESTIONS.md`](../02-PROJECTS/electrical-build/QUESTIONS.md) §0. Factory numbers are [`SPECS.md`](SPECS.md).
+{{as_fitted}}
 
-## Chassis notes
+## Chassis notes — facts about the type
 
-Faults and quirks are [`known-issues.md`](known-issues.md); these are facts about the type.
+Faults and quirks of *this* car are [`known-issues.md`](known-issues.md); these are facts about every FB.
 
-- Pre-1983 cars use a non-hardened steering box sector shaft — known failure point.
-- Rear compliance link bushings need correct procedure; improper replacement
-  risks chassis damage.
+- Pre-1983 cars use a non-hardened steering box sector shaft — a known failure point.
+- Rear compliance link bushings need the correct procedure; improper replacement risks chassis damage.
 - Front calipers are the wedge-style unit.
-- Rear disc conversion possible from an 84–85 axle.
+- Rear disc conversion is possible from an 84–85 axle.

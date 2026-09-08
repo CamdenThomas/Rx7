@@ -14,4 +14,4 @@ LD12,Ignition coils + igniters,O12,25 A,"4–6, rising with rpm",1.8 idle · 2.4
 LD13,"Horns, pair",O11,15 A,4–8,,factory 15 A shared fuse
 LD14,Washer pump,K12 ← O8,—,3–5,,class figure
 LD15,"Accessory bus — head unit, USB-C, K12 coil, the ICU (~0.8 A peak, D-273), the road-speed sensor (D-272)",O10,15 A,~10 worst case,,both USB ports loaded
-LD17,Sleeping draw,—,—,VERIFY - assumed PMU 150 mA; a bench measurement of an ECUMaster PMU reports under 20 mA,0 on the factory harness,"D-251: measured at the dash node before the dash closes. Target <=30 mA, accept <=50 mA"
+LD17,Sleeping draw,—,—,VERIFY - assumed PMU 150 mA; a bench measurement of an ECUMaster PMU reports under 20 mA,0 on the factory harness,"D-280: measured at the dash node before the dash closes. Target <=30 mA, accept <=50 mA"

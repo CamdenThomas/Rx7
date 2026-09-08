@@ -1,0 +1,9 @@
+key,value,note
+name,engine-swap,
+kind,mechanical,electrical · electronics · mechanical · body · software
+goal,"Everything that changes with the engine — the engine leg rebuilt around the new engine, ECU, fuel, transmission, axle, A/C",
+phase,PROPOSED,PROPOSED · PLANNING · SOURCING · BUILDING · COMPLETE · PERMANENT
+opened,2026-09-02,
+range_D,400-499,this project's decision numbers
+range_Q,400-499,this project's question numbers
+range_C,400-499,critique findings

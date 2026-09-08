@@ -1,7 +1,7 @@
 pin,cav_size,ch,name,type,awg,colour,circuit,goes_to_fixed,est_a,enable_a,enable_basis,inrush_x,inrush_ms,state,note
 STUD,stud,,+12V BATT,MAIN,2,RED,"Main supply from the Class-T, 150 A max",Busbar → PMU stud,,,,,,LIVE,
 25,L,,GND,GND,10,BLK,Device ground and flyback return for every inductive load,"GND bus, ≤ 6 in",,,,,,LIVE,
-7,S,,+12V SW,WAKE,16,BLU,Wake input — diode-OR strip: ACC · RUN · door stage (A6) · horn/hazard/wink stage (A8) · brake (D-247) · O22 latch,Wake strip common rail,,,,,,LIVE,
+7,S,,+12V SW,WAKE,16,BLU,Wake input — diode-OR strip: ACC · RUN · door stage (A6) · horn/hazard/wink stage (A8) · brake (D-278) · O22 latch,Wake strip common rail,,,,,,LIVE,
 15,M,,+5V OUT,REF,16,PNK,+5 V reference — dash node only: the two 100 kΩ bias resistors for A15 / A16 and the 100 Ω oil-node pull-up (D-260),"Bias resistors + the 100 Ω oil-node pull-up, all on the dash node",,,,,,LIVE,
 23,S,CAN1H,CAN1H,CAN1,16 tw,YEL,"Laptop / config bus, 1 Mbps. 120 Ω at BOTH ends (PMU end + port)",DP-DIAG 1,,,,,,LIVE,
 36,S,CAN1L,CAN1L,CAN1,16 tw,GRN,Laptop / config bus,DP-DIAG 2,,,,,,LIVE,

@@ -1,0 +1,12 @@
+id,item,every_miles,every_months,spec,source,note
+oil,Engine oil and filter,,,"Mobil 1 High Mileage 10W-30, API SD/SE/SF grade",SP-023,"a rotary lives or dies on oil — log every change; the factory interval is in S-002 §0, to be read into this row"
+plugs,Spark plugs,,,"NGK BR8EQ-14, gap 1.4 mm, 13–18 N·m",SP-038 SP-039 SP-040,
+coolant,Coolant drain and refill,,24,,,never fully drained (K-019) — do it with the thermostat and hoses inspected
+brake_fluid,Brake fluid,,24,,,bled 2026-07
+atf,Automatic transmission fluid,,,"Valvoline Dexron VI (bought, not fitted)",,
+diff,Differential oil,,,"Valvoline 75W-90 (bought, not fitted)",,
+air_filter,Air filter,,,"bought, not fitted",,
+fuel_filter,Fuel filter,,,Duralast FF3429DL,,
+belts,"Drive belts — alternator, A/C",,,deflection 13–17 mm at 10 kg,SP-025,A/C belt leaves with the A/C system
+wheel_nuts,Wheel nut torque check,,,9–11 m-kg (65–80 ft-lb),SP-159,
+battery,Battery state of charge,,1,,,"while the Ionic waits unfitted: check monthly on its app, keep it above BMS cutoff"

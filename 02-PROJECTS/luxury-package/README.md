@@ -20,9 +20,9 @@ Everything the car gets **after** it drives on the new harness: the bezel and da
 | CAN messages / fields | 13 / 74 |
 | Sensor and output channels specified | 7 |
 | Parts lines / estimate | 35 / ~$1,427–3,448 |
-| Open work items (agent side) | 15 |
+| Open work items (agent side) | 20 |
 
-**Next IDs:** decisions from D-316 · questions from Q-311.
+**Next IDs:** decisions from D-317 · questions from Q-312 · phase **PLANNING**.
 
 Two files at this level are the project's memory: [`DECISIONS.md`](DECISIONS.md) (why, by system) and [`QUESTIONS.md`](QUESTIONS.md) (§0 is the finishing checklist — what the agent has already done alone and what only the owner can settle).
 

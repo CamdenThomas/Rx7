@@ -11,15 +11,15 @@
 
 ## 2 · Work — bring-up stages and the agent-side backlog
 
-{{work:kind=bring-up}}
+{{work_kind:bring-up}}
 
-{{work:kind=firmware}}
+{{work_kind:firmware}}
 
-{{work:kind=hardware}}
+{{work_kind:hardware}}
 
-{{work:kind=docs}}
+{{work_kind:docs}}
 
-{{work:kind=design}}
+{{work_kind:design}}
 
 ## 3 · The bench mule — what three Teensys buy you
 

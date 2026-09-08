@@ -55,12 +55,12 @@ A15 PASS: any reading ≥ 1750. A16 START: either 1720 or ~1650 depending on whe
 
 ## 4 · Wake, shutdown, CAN
 
-Wake sources on pin 7: ACC · RUN · door stage · horn/hazard/wink stage · **brake** (D-247) · O22 latch. Shutdown: `KEEP_ALIVE` releases 30 s after the last input change with the key OFF and the doors closed — and, whatever the doors read, 30 minutes after the key goes OFF (D-248), so a failed door plunger cannot hold the module awake. The module sleeps and K11 opens. CAN1: 1 Mbps (fixed). CAN2: 500 kbps, termination ON. Enable data logging: every channel current at 10 Hz, every input at 10 Hz.
+Wake sources on pin 7: ACC · RUN · door stage · horn/hazard/wink stage · **brake** (D-278) · O22 latch. Shutdown: `KEEP_ALIVE` releases 30 s after the last input change with the key OFF and the doors closed — and, whatever the doors read, 30 minutes after the key goes OFF (D-248), so a failed door plunger cannot hold the module awake. The module sleeps and K11 opens. CAN1: 1 Mbps (fixed). CAN2: 500 kbps, termination ON. Enable data logging: every channel current at 10 Hz, every input at 10 Hz.
 
 
 ## 5 · Enable-at limits
 
-The software limit typed in before each output is first enabled. **Sizing is two decisions** (D-250): the flat threshold from the load at ~1.15× measured steady state, the time/I²t curve from the conductor. Inrush is absorbed by the time dimension, never by raising the threshold; motors prefer a stall timer. **Retry and latch split by fault type** — bounded retries then latch on a hard overcurrent, no latch on open-load or thermal, and never a silent latch on a safety channel. **Bulb-out annunciation on O2, O3 and O7** from per-channel undercurrent, which flags without disabling. `meas` = measured, keep; `cap` = channel cap, to be tightened from telemetry in shakedown (§7.5 of the install).
+The software limit typed in before each output is first enabled. **Sizing is two decisions** (D-279): the flat threshold from the load at ~1.15× measured steady state, the time/I²t curve from the conductor. Inrush is absorbed by the time dimension, never by raising the threshold; motors prefer a stall timer. **Retry and latch split by fault type** — bounded retries then latch on a hard overcurrent, no latch on open-load or thermal, and never a silent latch on a safety channel. **Bulb-out annunciation on O2, O3 and O7** from per-channel undercurrent, which flags without disabling. `meas` = measured, keep; `cap` = channel cap, to be tightened from telemetry in shakedown (§7.5 of the install).
 
 {{enable_at}}
 

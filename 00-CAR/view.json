@@ -1,9 +1,13 @@
-{"tabs": [
-  {"title": "Specs", "file": "SPECS.md"},
+{"out": "MANUAL.html", "title": "1982 RX-7 GS — Owner's Manual", "tabs": [
+  {"title": "Manual", "file": "README.md"},
   {"title": "Vehicle", "file": "vehicle.md"},
+  {"title": "Specs", "file": "SPECS.md"},
+  {"title": "Maintenance", "file": "MAINTENANCE.md"},
+  {"title": "Procedures", "file": "PROCEDURES.md"},
   {"title": "Modifications", "file": "modifications.md"},
   {"title": "Known issues", "file": "known-issues.md"},
-  {"title": "Parts history", "file": "parts-history.md"},
+  {"title": "Parts", "file": "parts-history.md"},
+  {"title": "Diagrams", "file": "DIAGRAMS.md"},
   {"title": "Research notes", "file": "RESEARCH-NOTES.md"},
   {"title": "Sources", "file": "../01-REFERENCE/README.md"}
 ]}

@@ -1,0 +1,34 @@
+id,section,title,opened,status,owner,ask,closer,closed_on,outcome,blocks,also
+Q-306,1,Stage order — climate before the display's bezel?,2026-09-07,open,camden,one word,,,,,
+Q-305,1,"Who moves the mirrors — a switch in the panel, or the DCU?",2026-09-07,open,camden,one word,,,,,
+Q-307,1,Tank capacity for the range calculation — 15.9 or 16.6 gal?,2026-09-07,open,camden,one word,,,,,
+V-083,1,DCU carrier parts,,open,camden,one word,,,,,
+Q-303,1,A heated washer nozzle (and park de-icer) that fits the FB cowl,2026-09-07,open,camden,one word,,,,,
+Q-300,1,Which mirror?,,open,camden,one word,,,,,
+Q-048,1,Which DOT-compliant headlamp unit goes in the retained pop-up buckets?,,open,camden,one word,,,,,T-036
+V-064,1,"A DOT/SAE LED module source, red and white, with published candela",,open,camden,one word,,,,,T-037
+T-032,1,"The release triggers, and the hatch latch switch (broken, K-016)",,open,camden,one word,,,,,T-033
+V-063,1,Tail-light aperture [M-DAY],,open,camden,one word,,,,,T-034
+V-066,1,What headlamps are actually fitted today [M-DAY],,open,camden,one word,,,,,T-035
+V-065,2,The PMU's real CAN export format,,open,camden,one word,,,,,
+T-048,2,Flash and label boards 2 and 3,,open,camden,one word,,,,,
+V-061,2,Radar sensor interface,,open,camden,one word,,,,,
+Q-028,2,CAN wake latency,,open,camden,one word,,,,,
+Q-301,,,,closed,camden,,closed as moot,2026-09-07,closed as moot,,
+Q-302,,,,closed,camden,,D-313,2026-09-07,D-313,,
+V-060,,,,closed,camden,,"D-305,",2026-09-07,"D-305, `V-067` → D-304, `V-059` → D-303, `V-070`",,
+V-072,,,,closed,camden,,D-300,2026-09-07,D-300 as before.,,
+V-070,,,,closed,camden,,D-300,2026-09-03,D-300,,
+V-071,,,,closed,camden,,D-300,2026-09-03,D-300,,
+V-059,,,,closed,camden,,D-303,2026-09-03,D-303,,
+V-067,,,,closed,camden,,D-304,2026-09-03,D-304,,
+T-031,,,,closed,camden,,D-305,2026-09-03,D-305,,
+V-084,,,,moved,camden,,`../electrical-build/QUESTIONS.md` §1,,"The display went in with the ICU (D-314, electrical D-268); the glass and the bridge are that project's bench items",,
+V-085,,,,moved,camden,,`../electrical-build/QUESTIONS.md` §1,,"The display went in with the ICU (D-314, electrical D-268); the glass and the bridge are that project's bench items",,
+T-051,,,,moved,camden,,`../electrical-build/QUESTIONS.md` §1,,"The display went in with the ICU (D-314, electrical D-268); the glass and the bridge are that project's bench items",,
+V-073,,,,moved,camden,,`../electrical-build/QUESTIONS.md` §1,,"The ICU is the electrical build's device (D-313, electrical D-259) — its carrier layout, its senders and the frame it decodes are that project's questions. Numbers kept",,
+V-082,,,,moved,camden,,`../electrical-build/QUESTIONS.md` §1,,"The ICU is the electrical build's device (D-313, electrical D-259) — its carrier layout, its senders and the frame it decodes are that project's questions. Numbers kept",,
+V-057,,,,moved,camden,,`../electrical-build/QUESTIONS.md` §1,,"The ICU is the electrical build's device (D-313, electrical D-259) — its carrier layout, its senders and the frame it decodes are that project's questions. Numbers kept",,
+Q-304,,,,moved,camden,,`../electrical-build/QUESTIONS.md` §1,,"The ICU is the electrical build's device (D-313, electrical D-259) — its carrier layout, its senders and the frame it decodes are that project's questions. Numbers kept",,
+Q-308,,,,moved,camden,,`../electrical-build/QUESTIONS.md` §1,,"The ICU is the electrical build's device (D-313, electrical D-259) — its carrier layout, its senders and the frame it decodes are that project's questions. Numbers kept",,
+Q-309,,,,moved,camden,,`../electrical-build/QUESTIONS.md` §1,,"The ICU is the electrical build's device (D-313, electrical D-259) — its carrier layout, its senders and the frame it decodes are that project's questions. Numbers kept",,

@@ -66,7 +66,7 @@ At the dash post the 2 AWG lands directly on the always-hot busbar. The busbar f
 
 **Two layers.** Every PMU output is a software current limit that protects the wire from that pin to the device. Where one output feeds several branches through a bus, each branch gets a blade fuse so a fault on one branch cannot take the others down. The heavy cables are fused at their source.
 
-The flat limit comes from the load, the time curve from the conductor, and inrush rides on the time dimension rather than on a raised threshold (D-250). Retry and latch are split by fault type, and no safety channel latches silently.
+The flat limit comes from the load, the time curve from the conductor, and inrush rides on the time dimension rather than on a raised threshold (D-279). Retry and latch are split by fault type, and no safety channel latches silently.
 
 | Fuse | Rating | Where | Feeds | Fed from | State |
 |---|---|---|---|---|---|
@@ -99,7 +99,7 @@ F12, F15, F16 and F20 are sealed inline holders at the dash node; F8, F9 and F14
 
 ### Software limits — the rule
 
-A limit is set from a measured figure, never from an estimate. Motors: measured stall × 1.25 (D-250). Filament lamps: measured steady × 1.35 plus an inrush window (a cold filament pulls 8–12× for a few milliseconds). Resistive: measured cold × 1.20. Electronics: measured steady × 1.50. Round up to 0.5 A. Until a channel has been measured it runs at its channel cap — the limit still protects the wire, because every wire is sized above its limit — and the PMU's own current telemetry provides the measurement in the first week of driving, after which each limit is tightened. The values in §4 are the enable-at values. The four 15 A outputs that reach their loads through DT size-16 contacts (O8–O11) cap at **13.0 A**, the contact's continuous rating (D-223).
+A limit is set from a measured figure, never from an estimate. Motors: measured stall × 1.25 (D-279). Filament lamps: measured steady × 1.35 plus an inrush window (a cold filament pulls 8–12× for a few milliseconds). Resistive: measured cold × 1.20. Electronics: measured steady × 1.50. Round up to 0.5 A. Until a channel has been measured it runs at its channel cap — the limit still protects the wire, because every wire is sized above its limit — and the PMU's own current telemetry provides the measurement in the first week of driving, after which each limit is tightened. The values in §4 are the enable-at values. The four 15 A outputs that reach their loads through DT size-16 contacts (O8–O11) cap at **13.0 A**, the contact's continuous rating (D-223).
 
 
 ---
@@ -117,7 +117,7 @@ A limit is set from a measured figure, never from an estimate. Motors: measured 
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | STUD | stud | — | `+12V BATT` | 2 | RED | Main supply from the Class-T, 150 A max | Busbar → PMU stud | — | — | — | LIVE |
 | 25 | L | — | `GND` | 10 | BLK | Device ground and flyback return for every inductive load | GND bus, ≤ 6 in | — | — | — | LIVE |
-| 7 | S | — | `+12V SW` | 16 | BLU | Wake input — diode-OR strip: ACC · RUN · door stage (A6) · horn/hazard/wink stage (A8) · brake (D-247) · O22 latch | Wake strip common rail | — | — | — | LIVE |
+| 7 | S | — | `+12V SW` | 16 | BLU | Wake input — diode-OR strip: ACC · RUN · door stage (A6) · horn/hazard/wink stage (A8) · brake (D-278) · O22 latch | Wake strip common rail | — | — | — | LIVE |
 | 15 | M | — | `+5V OUT` | 16 | PNK | +5 V reference — dash node only: the two 100 kΩ bias resistors for A15 / A16 and the 100 Ω oil-node pull-up (D-260) | Bias resistors + the 100 Ω oil-node pull-up, all on the dash node | — | — | — | LIVE |
 | 23 | S | CAN1H | `CAN1H` | 16 tw | YEL | Laptop / config bus, 1 Mbps. 120 Ω at BOTH ends (PMU end + port) | DP-DIAG 1 | — | — | — | LIVE |
 | 36 | S | CAN1L | `CAN1L` | 16 tw | GRN | Laptop / config bus | DP-DIAG 2 | — | — | — | LIVE |
@@ -215,7 +215,7 @@ The dash node is everything between the 2 AWG feed and the harness legs: the PMU
 
 ### 5.2 · Wake circuit
 
-Pin 7 (+12V SW) turns the PMU on. Six sources feed it through one 1N5819 Schottky each on an 8-position barrier strip, with a 10 kΩ bleed from the rail to ground so leakage can never hold the module awake: **ACC** and **RUN** from the ignition switch (raw 12 V, one conductor each), **the door node** and **the horn/hazard/wink node** through the two sense stages, **a dedicated plunger switch on the brake pedal** (D-249, so a pushed or towed car still lights its brake lamps; the stop-lamp switch itself stays a plain 2-terminal part), and **O22**, the PMU's own keep-alive latch. The strip has two spare positions.
+Pin 7 (+12V SW) turns the PMU on. Six sources feed it through one 1N5819 Schottky each on an 8-position barrier strip, with a 10 kΩ bleed from the rail to ground so leakage can never hold the module awake: **ACC** and **RUN** from the ignition switch (raw 12 V, one conductor each), **the door node** and **the horn/hazard/wink node** through the two sense stages, **a dedicated plunger switch on the brake pedal** (D-278, so a pushed or towed car still lights its brake lamps; the stop-lamp switch itself stays a plain 2-terminal part), and **O22**, the PMU's own keep-alive latch. The strip has two spare positions.
 
 
 Two identical NPN sense stages on the dash node (2N3904 / 2N2222 class), one on the A6 node and one on the A8 node. Base ← node through 100 kΩ · 1 MΩ from the node to the F3 rail · emitter → GND bus · collector → 100 kΩ to the F3 rail and → its wake-strip diode. Node idle (open switch): the node sits at ~4–12 V, the transistor is ON, the collector is LOW — no wake. Any switch on that node closes to ground: base falls, transistor OFF, collector rises to 12 V through the pull-up — wake. The 1 MΩ injects ~7 µA into the ladder while awake (about 1.5 ADC counts); the decode windows absorb it.
@@ -270,7 +270,7 @@ O22 (`KEEP_ALIVE`) lets the PMU finish its own shutdown — the interior-lamp fa
 | Wake stage 1 collector (A6 door) | Wake strip input 3 | 16 | BLU |  |
 | Wake stage 2 collector (A8 horn/hazard/wink) | Wake strip input 4 | 16 | BLU |  |
 | PMU pin 8 (O22) | Wake strip input 5 | 16 | RED |  |
-| Receptacle L3-S1 7 | Wake strip input 6 (brake) | 16 | BLU | Second pole of the brake switch — the brake wakes the module (D-247) |
+| Receptacle L3-S1 7 | Wake strip input 6 (brake) | 16 | BLU | Brake wake — a spare P084 plunger switch on the pedal, fed from the F3 switch supply, wakes the module (D-278) |
 | Wake strip common rail (after the six 1N5819) | PMU pin 7 (+12V SW) | 16 | BLU | 10 kΩ bleed from this rail to the GND bus |
 | PMU pin 15 (+5 V) | 100 kΩ → PMU pin 35 (A15) · 100 kΩ → PMU pin 22 (A16) · 100 Ω 1 W → the oil-pressure node (D-260) | 16 | PNK | Bias so a broken wire reads 0, not OFF; and the oil sender's excitation |
 | PMU pin 17 (A4) | Receptacles L2-S 1 and L1-S1 11 (splice) | 16 | GRY |  |
@@ -504,7 +504,7 @@ Two DT-2 receptacles on the L2 loom, not at the post, where the future circuits 
 | 4 | Wiper stalk ladder | A2 (pin 16) | 16 | GRY | LIVE | Stalk D-03: HIGH 4.7 kΩ · LOW 10 kΩ · INT 18 kΩ · OFF 47 kΩ · WASH 1.8 kΩ + 1N5819 (band toward the contact) |
 | 5 | Brake pedal switch | A3 (pin 30) | 16 | GRY | LIVE | Pedal switch F-11 through 4.7 kΩ; other terminal → dash ground |
 | 6 | Hazard switch | A8 (pin 19) | 16 | GRY | LIVE | Hazard contact through 4.7 kΩ; other terminal → column ground |
-| 7 | Brake — wake source | Wake strip input 6 | 16 | BLU | LIVE | Spare P084 adjustable plunger switch on the brake pedal, fed from the F3 switch supply branched off L3-S2 2 in the leg (D-249) |
+| 7 | Brake — wake source | Wake strip input 6 | 16 | BLU | LIVE | Spare P084 adjustable plunger switch on the brake pedal, fed from the F3 switch supply branched off L3-S2 2 in the leg (D-278) |
 | 8 | Illumination bus | O20 (pin 34) | 16 | RED | LIVE | Dash illumination lamps E-06, E-07, E-10 (RL) + head unit illumination wire |
 | 9 | Wink LEFT — NC pole | K2 85 (coil return) | 16 | BLU | LIVE | Wink L switch NC terminal; switch common → dash ground |
 | 10 | Wink RIGHT — NC pole | K1 85 (coil return) | 16 | BLU | LIVE | Wink R switch NC terminal; switch common → dash ground |
@@ -915,6 +915,7 @@ Written the way it is typed into the PMU client. Channel names match §4.1.
 | Crank | O21 only in P or N — the inhibitor bit alone, whether or not the left pop-up happens to be in transit (D-240): A4 == CRANK_OK or TRANSIT+PN. Release O21 when A16 leaves START |
 | Motor bus | Refuse a new pop-up command while O1 reads above 20 A |
 | Voltage | Warn below 12.0 V. Below 11.5 V shed COMFORT, INTERIOR and ACCESSORY (D-248 — COMFORT alone had no load to shed). Warn above 15.0 V |
+| Retry and latch | Split by fault type (D-279). Hard overcurrent: bounded fast retries, then latch, then flag. Open-load or thermal: no latch. NEVER a silent latch on a safety channel — a latched stop lamp or headlamp must annunciate, because a latched-off headlamp at night is worse than a flickering one. Motors trip on a stall timer, not a current spike |
 | Sleep | Any wake-strip input high wakes the PMU. With no key, no door and nothing on A8, KEEP_ALIVE drops 30 s after the last change and the PMU sleeps; K11 opens with it (audio memory relies on the head unit's own non-volatile memory). A stuck door cannot hold the car awake: with A16 == OFF, KEEP_ALIVE releases after 30 minutes whatever A6 reads (D-248) |
 
 
@@ -989,7 +990,7 @@ Wire gauge is set by voltage drop over the run and by crimp robustness, not by a
 | Horns, pair | O11 | 15 A | 4–8 | — | factory 15 A shared fuse |
 | Washer pump | K12 ← O8 | — | 3–5 | — | class figure |
 | Accessory bus — head unit, USB-C, K12 coil, the ICU (~0.8 A peak, D-273), the road-speed sensor (D-272) | O10 | 15 A | ~10 worst case | — | both USB ports loaded |
-| Sleeping draw | — | — | VERIFY - assumed PMU 150 mA; a bench measurement of an ECUMaster PMU reports under 20 mA | **0 on the factory harness** | D-251: measured at the dash node before the dash closes. Target <=30 mA, accept <=50 mA |
+| Sleeping draw | — | — | VERIFY - assumed PMU 150 mA; a bench measurement of an ECUMaster PMU reports under 20 mA | **0 on the factory harness** | D-280: measured at the dash node before the dash closes. Target <=30 mA, accept <=50 mA |
 
 ---
 
@@ -1023,7 +1024,7 @@ The far end of every conductor. Factory two-letter colours name the terminal on 
 | L3 | **Wiper stalk** — D-03 (column, kept) | HIGH → 4.7 kΩ → L3-S1 4<br>LOW → 10 kΩ → L3-S1 4<br>INT → 18 kΩ → L3-S1 4<br>OFF → 47 kΩ → L3-S1 4<br>WASH contact → 1.8 kΩ + 1N5819 (band to the contact) → L3-S1 4; and direct → L3-S2 9<br>common / contact returns → column ground | — |
 | L3 | **Horn pad** — Steering wheel (kept) | contact → 8.2 kΩ → L3-S1 11<br>return → column ground through the slip ring | — |
 | L3 | **Wink switches** — New — SPDT momentary ×2, dash panel | Wink L common → dash ground<br>Wink L NC → L3-S1 9<br>Wink L NO → 18 kΩ → L3-S1 11 node<br>Wink R common → dash ground<br>Wink R NC → L3-S1 10<br>Wink R NO → 33 kΩ → L3-S1 11 node | — |
-| L3 | **Brake pedal switch** — F-11 (new) | Contact -> 4.7 kOhm -> L3-S1 5 (the A3 ladder)<br>Other side -> dash ground<br>Wake is NOT taken from this switch - a spare P084 plunger on the pedal feeds L3-S1 7 (D-249) | — |
+| L3 | **Brake pedal switch** — F-11 (new) | Contact -> 4.7 kOhm -> L3-S1 5 (the A3 ladder)<br>Other side -> dash ground<br>Wake is NOT taken from this switch - a spare P084 plunger on the pedal feeds L3-S1 7 (D-278) | — |
 | L3 | **Parking brake switch** — C-04 (kept) | BR → L3-S2 11 | body: lever bracket — no wire |
 | L3 | **Blower motor (luxury package)** — Four Seasons 35483 class, 2-wire — no resistor pack, no speed switch (D-253) | Motor + → L3-BLW 1 (O16 via L3-P 1)<br>Motor − → L3-BLW 2 → dash ground, 12 AWG | Absent this build (K-023) — the receptacle is dust-capped; speed is the ≥ 20 kHz final stage at L3-BLW on the DCU's PWM (D-257) |
 | L3 | **Head unit** — Aftermarket | Red (ACC) → L3-M 1<br>Yellow (BATT) → L3-M 2<br>Orange (ILLUM) → L3-S1 8<br>Black → dash ground, 14 AWG BLK | — |

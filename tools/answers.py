@@ -1,19 +1,25 @@
 # -*- coding: utf-8 -*-
-"""answers.py — list every question packet whose ANSWER block has content, across the projects.
-   python tools/answers.py            (run from the repo root; stdlib only)
-Step 1 of the answer cycle (ASSISTANT.md §10)."""
-import re, sys
+"""answers.py — every question packet Camden has answered, across every project.
+   python tools/answers.py [--json]          (stdlib only; step 1 of /rx7-answers)
+Reads data/questions/<id>.md of every open question and prints the ones whose **ANSWER:** block has text."""
+import json, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
-FILES = sorted(ROOT.glob("02-PROJECTS/*/QUESTIONS.md"))
-PACKET = re.compile(r"\*\*((?:[A-Z]-\d{3}|[A-Z]\d)[^\n]*?)\*\*.*?\*\*ANSWER:\*\*\n((?:>[^\n]*\n?)+)", re.S)
-n = 0
-for f in FILES:
-    s = f.read_text(encoding="utf-8")
-    for m in PACKET.finditer(s):
-        ans = " ".join(l.lstrip("> ").strip() for l in m.group(2).splitlines() if l.strip("> ").strip())
+sys.path.insert(0, str(ROOT / "tools"))
+import rx7  # noqa: E402
+
+found = []
+for d in rx7.all_projects():
+    db = rx7.DB(d)
+    if "questions" not in db.tables:
+        continue
+    for q in db.rows("questions", "status = 'open'"):
+        ans = rx7.answered(db.body("questions", q["id"]))
         if ans:
-            n += 1
-            print(f"## {f.parent.name} | {m.group(1)[:100]}")
-            print("   ", ans)
-print(f"{n} answered packet(s)")
+            found.append({"project": d.name, "id": q["id"], "title": q["title"], "section": q["section"], "answer": ans})
+if "--json" in sys.argv:
+    print(json.dumps(found, ensure_ascii=False, indent=1))
+else:
+    for f in found:
+        print(f"## {f['project']} | {f['id']} · {f['title']}\n    {f['answer']}")
+    print(f"{len(found)} answered packet(s)")

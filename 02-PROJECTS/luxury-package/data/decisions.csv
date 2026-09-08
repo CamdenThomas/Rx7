@@ -1,0 +1,42 @@
+id,system,title,date,status,supersedes,superseded_by,closes,also
+D-208,The boundary — what the electrical build hands over,"This project is fabrication, modules and software; it does no harness…",,inherited,,,,D-215
+D-081,The boundary — what the electrical build hands over,Modules join a finished car,,inherited,,,,
+D-210,The boundary — what the electrical build hands over,No ECUMaster keypad; the control panel is a custom design that lands on…,,inherited,,,,
+D-075,Modules — DCU and ICU,"Two nodes: the DCU (climate, HVAC servos, comfort switching) and the…",,inherited,,,,D-077 D-083
+D-306,Modules — DCU and ICU,"The ICU joins early, headless: a carrier with the analog front end, the…",2026-09-07,standing,,,,
+D-307,Modules — DCU and ICU,Blower speed is the DCU's command and the PMU's PWM: the DCU sends a…,2026-09-07,standing,,,,
+D-308,Modules — DCU and ICU,"The blower's PWM is the final stage's, not the PMU's: the DCU carrier…",2026-09-07,standing,,,,
+D-313,Modules — DCU and ICU,"The ICU is handed to the electrical build: carrier H-001, its channels…",2026-09-07,standing,,,Q-302,
+D-314,Modules — DCU and ICU,"The display goes in with the ICU, by the electrical build; this project…",2026-09-07,standing,,,,
+D-084,Modules — DCU and ICU,"Teensy 4.1 in both boxes (three bought — one spare), TI TCAN1042/1051…",,inherited,,,,D-085 D-086 D-088 D-089
+D-303,Modules — DCU and ICU,Three Teensy 4.1 are in hand with headers; availability is not a…,2026-09-03,standing,,,V-059,
+D-087,Modules — DCU and ICU,A private DCU ↔ ICU CAN-FD pair was planned; the electrical build did…,,inherited,,,,
+D-106,Modules — DCU and ICU,"CAN byte layouts: 8-byte messages, little-endian, byte 7 a rolling…",,inherited,,,,
+D-082,Modules — DCU and ICU,The tach input gets opto-isolation or a comparator at the ICU,,inherited,,,,
+D-304,Modules — DCU and ICU,"The tach signal is 2 pulses per crankshaft revolution, taken from the…",2026-09-03,standing,,,V-067,
+D-090,Modules — DCU and ICU,No hardwired oil-pressure lamp; oil pressure is shown by the ICU only,,inherited,,,,
+D-191,Modules — DCU and ICU,The DCU restores climate memory from SD on wake — no constant keep-alive,,inherited,,,,
+D-183,Modules — DCU and ICU,"Once the ICU (or an engine ECU) puts rpm on CAN, the fuel-pump and…",,inherited,,,,
+D-150,The cluster,"One wide display, instant-on (no OS, no boot sequence — key on, display…",,inherited,,,,D-192 D-193
+D-168,The cluster,Dirty-rectangle rendering from a RAM framebuffer (built and proven…,,inherited,,,,D-170
+D-151,The cluster,D-158 — Rendering rules,,inherited,,,,
+D-159,The cluster,The display does not cross the harness; the page-cycle button is a…,,inherited,,,,D-169
+D-109,The cluster,"An IMU on the ICU carrier (MPU-6050 / ICM-20948 class, I²C); axis…",,inherited,,,,D-161
+D-160,The cluster,"`stats.h` thresholds (redline 7000 rpm, hot water 105 °C, low oil 1.0…",,inherited,,,,D-162 D-163
+D-300,The cluster,The three assumed `stats.h` figures are confirmed as assumed: redline…,2026-09-03,standing,,,V-072 V-070 V-071,
+D-048,"Comfort, mirrors, windows, seats",Cooled seats are in scope (fans and ducting on the comfort bus); seat…,,inherited,,,,D-074 D-058 D-073
+D-049,"Comfort, mirrors, windows, seats","Remote mirror motors kept, plus heated mirrors, with independent wiring…",,inherited,,,,D-093
+D-305,"Comfort, mirrors, windows, seats","Mirrors do adjustment and heat, and nothing else",2026-09-03,standing,,,T-031,
+D-131,"Comfort, mirrors, windows, seats",Power windows are a luxury item; the electrical build provisioned…,,inherited,,,,
+D-180,"Comfort, mirrors, windows, seats",Hatch and fuel-door solenoids on O10 branches with their own fuses…,,inherited,,,,D-181
+D-096,"Comfort, mirrors, windows, seats","Radar is a custom subsystem, not a commercial unit",,inherited,,,,
+D-128,Head unit and audio,A CarPlay head unit does maps and audio; the ICU keeps gauges only,,inherited,,,,D-129 D-130 D-149
+D-201,Lighting — the second pass,Lighting starts only after the electrical rebuild is shaken down…,,inherited,,,,L-004
+D-107,Lighting — the second pass,Custom tail lights: a thin LED strip per side in the stock aperture…,2026-08-31,inherited,,,,L-001 D-111
+D-110,Lighting — the second pass,The pop-ups stay; the headlamp becomes a DOT-compliant sealed unit…,,inherited,,,,L-002
+D-122,Lighting — the second pass,Every soft fuse is re-set after any bulb change,,inherited,,,,L-003
+D-309,The record itself,"The luxury record is data, rendered — the same workflow as the…",2026-09-07,standing,,,,
+D-310,The record itself,Every ICU sender input is a high-Z observer of a gauge-driven node…,2026-09-07,standing,,,,
+D-311,The record itself,`firmware/pmu_sim/channels.h` is rendered by this project's build from…,2026-09-07,standing,,,,
+D-312,The record itself,"The install plan is nine stages, S0 bench → S1 ICU headless → S2…",2026-09-07,standing,,,,
+D-315,The record itself,The release solenoids exist and the harness reaches them; every other…,2026-09-08,standing,,,,

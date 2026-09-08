@@ -1,0 +1,9 @@
+key,value,note
+name,electrical-build,
+kind,electrical,electrical · electronics · mechanical · body · software
+goal,"Replace the factory electrical system: PMU-24 DL, rear lithium battery, four modular harness legs, every switch a ladder; the car drives on it before anything else joins",
+phase,PLANNING,PROPOSED · PLANNING · SOURCING · BUILDING · COMPLETE · PERMANENT
+opened,2026-08,
+range_D,1-299,this project's decision numbers
+range_Q,1-299,this project's question numbers
+range_C,1-299,critique findings

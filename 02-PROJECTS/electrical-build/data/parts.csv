@@ -108,6 +108,7 @@ P071,Amazon,Dash node and electronics,,Schottky diode 1N5819,1N5819,20,,3,est,5 
 P072,Amazon,Dash node and electronics,,NPN transistor 2N3904,2N3904,10,,1,est,2 wake sense stages + spares,cart,,
 P073,Amazon,Dash node and electronics,,"Inline ATC fuse holder, 2-pack",generic,1,,6,est,The 5 A first-power-up guard (install §5.2),cart,,
 P074,Amazon,Dash node and electronics,,"Shielded cable, 16–18 AWG single core with drain, 15 ft",any automotive shielded,1,,15,est,Tach — L1-S1 6 → DP-ICU-B 4 4,cart,,
+P135,Amazon,Dash node and electronics,,"Ignition noise-suppression capacitor, automotive, ~0.47 µF 250 V, ring-lug case",Reproduces the factory condenser B-22 on the coil / igniter supply,2,ea,10,est,O12 branch at the coil bracket (L1-P 1) — this harness runs CAN2 and eight analog ladders past the igniters (D-281),to add,,
 P075,Amazon,Consumables and labels,,**Label tape**,"**Brother TZe-FX231 flexible-ID, 12 mm black on white** (B00X8GRTO8)",3,,45,est,"every conductor end — about 300 conductors in the harness model, two labels each at 45 mm ≈ 27 m; a TZe cartridge is 8 m, so four",raise,,4
 P076,Amazon,Consumables and labels,,"**Clear heat-shrink 3/16 in, 2:1**",generic,3,,20,est,Over every label on the engine leg and under loom,cart,,
 P077,Amazon,Consumables and labels,,"Adhesive-lined heat-shrink assortment 3:1, incl. heavy-wall for lugs",generic,1 kit,,40,est,,cart,,
@@ -117,8 +118,8 @@ P080,Amazon,Consumables and labels,,Tesa 51608 cloth harness tape,Tesa 51608,5 r
 P081,Amazon,Consumables and labels,,"Split loom / braided sleeve assortment, grommet kit, P-clips, pull string 100 ft",generic,1 set,,110,est,,cart,,
 P082,Amazon,Consumables and labels,,"Cavity wax / corrosion inhibitor spray, paint pen",generic,1 set,,20,est,,cart,,
 P083,Amazon,Switches,,"**Momentary pushbutton, 1NO + 1NC, 2-pack**",**DMWD** (B09H29SZYS),1 pk,,12,est,Wink L and wink R. MUST be changeover (NO + NC) — the NC pole is wired,cart,,
-P084,Amazon,Switches,,"Adjustable plunger pin switch, 6-pack",generic,1 pk,,15,est,"Door jambs ×2, glove box, luggage + 2 spare",cart,,
-P085,Vehicle parts,RockAuto / PartsGeek / Mazda specialist,,"Brake pedal (stop lamp) switch, without cruise - any 2-terminal type",Standard SLS-52 class — confirm fit,1,,20,est,The A3 ladder only. The wake contact is a spare P084 plunger on the pedal (D-249),not carted,,
+P084,Amazon,Switches,,"Adjustable plunger pin switch, 6-pack",generic,1 pk,,15,est,"Door jambs ×2, glove box, luggage, the brake-pedal wake contact (D-278) + 1 spare",cart,,
+P085,Vehicle parts,RockAuto / PartsGeek / Mazda specialist,,"Brake pedal (stop lamp) switch, without cruise - any 2-terminal type",Standard SLS-52 class — confirm fit,1,,20,est,The A3 ladder only. The wake contact is a spare P084 plunger on the pedal (D-278),not carted,,
 P086,Vehicle parts,RockAuto / PartsGeek / Mazda specialist,,"Ignition switch, electrical portion, 1981–83 RX-7","search ""81-83 RX-7 ignition switch electrical""; NOS or quality reproduction",1,,45,est,"Terminals B, ACC, IG, ST — feeds the A16 ladder and both wake sources",not carted,,
 P090,Hardware store,After the measurement day,,"Carrier-panel stock for the dash node — 3 mm aluminium or ABS sheet, one or several small pieces",,,,,,Sizes from M-1 and the bench layout (install §3.1),later,,
 P091,Hardware store,After the measurement day,,"Sill-node panel stock, about 150 × 100 mm",,,,,,M-5,later,,

@@ -1,0 +1,149 @@
+id,system,title,date,status,supersedes,superseded_by,closes,also
+D-001,Architecture and scope,ECUMaster PMU-24 DL over a conventional relay/fuse box,,standing,,,,
+D-002,Architecture and scope,"Ionic S9 heated lithium battery, rear-mounted",,standing,,,,
+D-007,Architecture and scope,Baseline pinned for the current 12A / Weber configuration; O13 and O14…,,standing,,,,
+D-081,Architecture and scope,"The car drives fully on the PMU with plain switches, the factory…",,standing,,,,
+D-259,Architecture and scope,"The ICU is a device of this build: designed, built, bench-commissioned…",2026-09-07,standing,,,,
+D-131,Architecture and scope,The windows are manual,,standing,,,,
+D-004,Architecture and scope,All 39 PMU cavities are terminated at build time; reserved channels get…,,standing,,,,
+D-119,Architecture and scope,The car migrates and drives on stock incandescent bulbs,,standing,,,,D-124
+D-209,Architecture and scope,The column combination switch stays; every other switch in the car is…,,standing,,,,
+D-210,Architecture and scope,No ECUMaster keypad; DP-KEY is a generic control-panel drop,,standing,,,,
+D-211,Architecture and scope,The A/C system comes out; no cooling until the swap engine,,standing,,,,
+D-228,Architecture and scope,The A/C compressor runs on its own belt; the D-211 strip is purely…,2026-09-03,standing,,,V-097,
+D-202,Architecture and scope,One teardown: everything is bought now; measurements confirm before…,,standing,,,,
+D-194,Architecture and scope,Configure in the car; there is no bench phase,,standing,,,,
+D-213,Architecture and scope,One wiring project,2026-09-02,standing,,,,
+D-061,Power backbone and battery,The starter feed and the PMU feed are separate runs from the battery…,,standing,,,,D-091
+D-062,Power backbone and battery,"Main protection is Class-T (Blue Sea 5007100 block, 5114 150 A fuse)…",,standing,,,,
+D-203,Power backbone and battery,"The starter run is protected by an MRBF (Blue Sea 5191 holder, 5187 200…",,standing,,,,D-207 D-207
+D-198,Power backbone and battery,The alternator gets its factory-spec excitation circuit: O12 → F15 (7.5…,,standing,,,,
+D-063,Power backbone and battery,"The battery mounts on a backing plate under the floor, not through…",,standing,,,,
+D-229,Power backbone and battery,No battery box,2026-09-03,standing,,,V-093,
+D-064,Power backbone and battery,A pull string goes into the tunnel beside the 2 AWG feed,,standing,,,,
+D-145,Power backbone and battery,First power-up of the dash node is through a 5 A fuse in the main feed…,,standing,,,,
+D-234,Power backbone and battery,"The Ionic has SAE tapered posts, so every battery connection is a brass…",2026-09-04,standing,,,V-053,
+D-235,Power backbone and battery,The terminals are covered by boots and nothing else,2026-09-04,standing,,,Q-103,
+D-237,Power backbone and battery,The 200 A MRBF is right for the starter feed; no upsize,2026-09-04,standing,,,V-094,
+D-238,Power backbone and battery,"The 2 AWG cable is accepted at the cart on two criteria, and CCA is…",2026-09-04,standing,,,V-095,
+D-239,Power backbone and battery,The Ionic S9 case measures 170 W × 230 L × 190 H mm,2026-09-04,standing,,,V-051,
+D-241,Power backbone and battery,"C10, the busbar → PMU stud link, is 2 AWG",2026-09-04,standing,,,,
+D-245,Power backbone and battery,The master disconnect moves to the battery negative,2026-09-04,standing,,,Q-105,
+D-246,Power backbone and battery,"1/0 for the starter feed, and a dedicated 1/0 cranking return from the…",2026-09-04,standing,,,Q-106,
+D-214,The dash node,No backer plate and no sealed box. The dash node mounts on one or more…,2026-09-02,standing,D-005,,,
+D-003,The dash node,Two-tier connector architecture,,standing,,,,
+D-020,The dash node,"A true-constant bus lives off the PMU, fed from the always-hot busbar…",,standing,,,,D-030
+D-224,The dash node,Both busbars are covered — the always-hot bar and the ground bus,2026-09-03,standing,,,Q-101,
+D-230,The dash node,The amplifier comes off the PMU entirely; the head unit stays on it,2026-09-03,standing,,,,
+D-216,The dash node,"Two fuse blocks, not four. Block A (busbar: F2, F3, F19, F13 empty) and…",2026-09-02,standing,D-206 D-208,,,
+D-056,The dash node,The wake network uses 1N5819 Schottky diodes (not 1N4007) with a 10 kΩ…,,standing,,,,
+D-167,The dash node,A 100 kΩ bias resistor from +5 V on A15 and A16,,standing,,,,
+D-186,The dash node,"Pop-up drive is one run relay per side, K1 (LH) and K2 (RH); no H-bridge",,standing,,,,
+D-189,The dash node,"K1 and K2 coils are fed from O1, each in series with the *opposite*…",,standing,,,,
+D-182,The dash node,"The washer pump runs on its own relay K12: coil from O10, coil return…",,standing,,,,
+D-148,The dash node,Start relay K9 is a sealed mini ISO relay (Picker PC792E-1C-C-12S-DN-X…,,standing,,,,D-208
+D-215,The dash node,"The presentation design's defaults are adopted as the design, pin by…",2026-09-01,standing,,,,
+D-236,The dash node,The factory amplifier and every wire that serves it come out; the…,2026-09-04,standing,,,Q-104,
+D-242,The dash node,"F1, the head-unit constant, drops from 15 A to 10 A",2026-09-04,standing,,,,
+D-009,"Outputs, soft fuses and logic",O1 (pop-up motor bus) and O16 (blower) carry the inductive loads…,,standing,,,,
+D-010,"Outputs, soft fuses and logic",Wipers live on O8 and nothing else does; O8 is the only channel with…,,standing,,,,
+D-225,"Outputs, soft fuses and logic",One-touch single wipe is in the wiper logic,2026-09-03,standing,,,V-028,
+D-013,"Outputs, soft fuses and logic",Turn signals are flashed natively by the PMU (1.5 Hz); the interval…,,standing,,,,D-014
+D-015,"Outputs, soft fuses and logic","Tail, park, side markers and licence lamps are one circuit on O6, lit…",,standing,,,,
+D-011,"Outputs, soft fuses and logic","O15 is a 25 A comfort bus for the luxury package (seats, mirror heat…",,standing,,,,
+D-095,"Outputs, soft fuses and logic",The cigarette lighter is deleted,,standing,,,,
+D-047,"Outputs, soft fuses and logic","No bulb-out detection, no load resistors anywhere, no seat-belt or key…",,standing,,,,D-050
+D-038,"Outputs, soft fuses and logic",The retractable-headlight switch is deleted; pop-ups raise when the A15…,,standing,,,,D-040 D-110
+D-164,"Outputs, soft fuses and logic",Soft-fuse rule: motors measured stall × 1.10 · filament lamps steady ×…,,standing,,,,D-165 D-175
+D-120,"Outputs, soft fuses and logic",Every lamp channel gets an inrush window before it is enabled (a cold…,,standing,,,,D-122
+D-166,"Outputs, soft fuses and logic",The entire PMU logic is enterable before any current figure exists,,standing,,,,
+D-183,"Outputs, soft fuses and logic",Interim rules until an engine ECU or cluster module puts rpm on CAN…,,standing,,,,
+D-126,"Outputs, soft fuses and logic","O16's blower limit comes from the replacement motor's spec, then…",,standing,,,,
+D-223,"Outputs, soft fuses and logic","The enable-at cap on O8, O9, O10 and O11 is 13.0 A, not 15 A",2026-09-03,standing,,,V-014,
+D-226,"Outputs, soft fuses and logic",The ignition layout is factory and untouched: two coils and two…,2026-09-03,standing,,,V-001,
+D-243,"Outputs, soft fuses and logic","O2 and O3 are enabled at 13.0 A, not the 25 A channel cap",2026-09-04,standing,,,,
+D-248,"Outputs, soft fuses and logic",Three rules so a door left ajar cannot flatten the Ionic,2026-09-04,standing,,,Q-109,
+D-251,"Outputs, soft fuses and logic","Wire is control, CAN is telemetry. Anything the PMU acts on for the…",2026-09-07,standing,,,,
+D-253,"Outputs, soft fuses and logic",The blower is wired now as a PWM load and nothing else: O16 → `L3-P 1`…,2026-09-07,standing,,,Q-112,
+D-257,"Outputs, soft fuses and logic",The PMU's PWM is software-adjustable from 4 Hz to 400 Hz per output…,2026-09-07,standing,,,,
+D-279,"Outputs, soft fuses and logic","Protection is configured as two decisions, not one, and the policy…",2026-09-08,standing,,,,
+D-280,"Outputs, soft fuses and logic","The sleeping current is a budget and an acceptance test, not an…",2026-09-08,standing,,,,
+D-282,"Outputs, soft fuses and logic",Two details that must not quietly drift,2026-09-08,standing,,,,
+D-018,"Switches, ladders and inputs",Every switch input on A1–A8 is wired to ground with the internal 10 kΩ…,,standing,,,,
+D-019,"Switches, ladders and inputs","Every multi-position switch is a resistor ladder from day one, with the…",,standing,,,,D-054
+D-053,"Switches, ladders and inputs",No valid switch position uses a dead short,,standing,,,,
+D-055,"Switches, ladders and inputs",The A16 key ladder is a *summed* ladder: ACC stays live in RUN and both…,,standing,,,,D-178
+D-184,"Switches, ladders and inputs",A15 is a five-state summed ladder: PARK 33 kΩ · HEAD 15 kΩ ·…,,standing,,,,
+D-187,"Switches, ladders and inputs",A4 and A5 are 4-state transit-plus-inhibitor ladders: the pop-up YG…,,standing,,,,D-071
+D-142,"Switches, ladders and inputs","Ladder windows are verified in the car, from live readings, not on a…",,standing,,,,
+D-027,"Switches, ladders and inputs",Signal wire is 16 AWG throughout (the PMU's 1.5 mm terminal is…,,standing,,,,D-028
+D-105,"Switches, ladders and inputs",The factory blinker fault (K-008: shared-ground modulation across body…,,standing,,,,
+D-244,"Switches, ladders and inputs","The wideband gauge is kept, hidden, as the controller, and AFR reaches…",2026-09-04,standing,D-227 D-231,,Q-102,
+D-240,"Switches, ladders and inputs","A4 and A5 are decoded as two independent bits, and the transit bit…",2026-09-04,standing,,,,
+D-249,"Switches, ladders and inputs",A7 leaves the fuel node and reads the oil-pressure node; the fuel pump…,2026-09-07,standing,,,Q-107,
+D-278,"Switches, ladders and inputs","The brake wake comes from its own plunger switch on the pedal, not from…",2026-09-08,standing,D-247,,,
+D-029,"Legs, connectors and grounds","Four legs, cut by removal boundary, not connector convenience: L1…",,standing,,,,
+D-032,"Legs, connectors and grounds",Power and signal get separate housings on every leg (terminal size…,,standing,,,,D-033
+D-034,"Legs, connectors and grounds","Every housing is genuine Deutsch: DTP (size 12) for `-P`, DT (size 16)…",2026-09-02,standing,,,,D-052 D-070 D-219
+D-115,"Legs, connectors and grounds",DTP is manufactured in 2-way and 4-way only; size 16 seals 14–20 AWG…,,standing,,,,D-116 D-117 D-118
+D-217,"Legs, connectors and grounds","L2 has one power housing, L2-P (DTP 4-way): headlight LOW, headlight…",2026-09-02,standing,,,,
+D-218,"Legs, connectors and grounds","A spare cavity gets sealing plugs in both halves, not a capped wire.…",,standing,D-022,,,
+D-045,"Legs, connectors and grounds","The 39-way connector is 3 rows × 13, numbered left → right, top →…",,standing,,,,D-046 D-134 D-139
+D-065,"Legs, connectors and grounds",The sill node: window relays K5–K8 and fuses F8/F9 belong at the sill…,,standing,,,,D-067 D-068 D-132
+D-092,"Legs, connectors and grounds","One DT06-08S per door: two 14 AWG window-motor legs, a spare, three…",,standing,,,,D-093
+D-069,"Legs, connectors and grounds","Pop-up relays stay at the dash node, not in the nose",,standing,,,,
+D-171,"Legs, connectors and grounds","L1-S is two DT06-12S (L1-S1, L1-S2) and L3-S is three housings…",,standing,,,,D-172
+D-017,"Legs, connectors and grounds",Grounds never cross a leg connector; every zone has one star node…,,standing,,,,D-037
+D-079,"Legs, connectors and grounds","CAN2's far-end 120 Ω terminator is fitted now, capped in the engine bay…",,standing,,,,
+D-159,"Legs, connectors and grounds",The future cluster display does not cross the harness,,standing,,,,
+D-250,"Legs, connectors and grounds",The engine leg carries a switched sensor supply and two signal spares…,2026-09-07,standing,,,Q-111,
+D-261,"Legs, connectors and grounds","The senders that work stay: the water-temp unit (C-02), the…",2026-09-07,standing,,,,
+D-252,"Legs, connectors and grounds","The ICU drop is two housings, not one: `DP-ICU-A`, a DT-6 carrying…",2026-09-07,standing,,,Q-117,
+D-254,"Legs, connectors and grounds",`L4-P 4` is the O15 comfort feed to the sill: 12 AWG off the O15 splice…,2026-09-07,standing,,,Q-118,
+D-255,"Legs, connectors and grounds","A second L4 signal housing, `L4-S2` (DT-8), carries the mirror-adjust…",2026-09-07,standing,,,Q-119,
+D-256,"Legs, connectors and grounds",Two front-end conductors for the climate module: `L2-S 5` is an…,2026-09-07,standing,,,Q-120,
+D-258,"Legs, connectors and grounds","The factory cluster is a peripheral of the ICU, not of the harness…",2026-09-07,standing,,,,
+D-260,"Legs, connectors and grounds","The oil-pressure node is excited by the PMU, not the ICU: a 100 Ω 1 W…",2026-09-07,standing,,,,
+D-263,"Legs, connectors and grounds","The fuel, water-temperature and oil-pressure gauges are bimetal, so the…",2026-09-07,standing,,,Q-123,
+D-265,"Legs, connectors and grounds",The ICU carrier's layout brief: sensor inputs enter on one edge; the…,2026-09-07,standing,,,V-073 V-057,
+D-266,"Legs, connectors and grounds",The wideband's AEMnet frame is confirmed from AEM's own 30-0300 sheet…,2026-09-07,standing,,,Q-304,
+D-269,"Legs, connectors and grounds",The display chain is chain (ii): a 900–1000-nit 1920 × 720 bar panel…,2026-09-08,standing,,,V-085 Q-130 Q-131,
+D-270,"Legs, connectors and grounds",The ICU lives in a protected enclosure with its connector halves built…,2026-09-08,standing,,,Q-126,
+D-273,"Legs, connectors and grounds",The ICU carrier's parts check (`V-082`) is done: five values change…,2026-09-08,standing,,,V-082,
+D-271,"Legs, connectors and grounds","Reserves live at the post, never in the engine bay. The engine leg…",2026-09-08,standing,,,Q-127,
+D-272,"Legs, connectors and grounds",Road speed is a Hall pulse generator on the transmission's speedo-drive…,2026-09-08,standing,,,Q-309,
+D-274,"Legs, connectors and grounds",The chassis principle: a future circuit's conductor ends in a…,2026-09-08,standing,,,Q-132,
+D-268,"Legs, connectors and grounds","The digital display is this build's, installed with the ICU: there is…",2026-09-07,standing,,,Q-129,
+D-267,"Legs, connectors and grounds",The ICU carries a radio co-processor: an ESP32-C3 module on the…,2026-09-07,standing,,,,
+D-262,"Legs, connectors and grounds",The sensor inputs are built to outlive the 12A. Every ICU sender…,2026-09-07,standing,,,,
+D-264,"Legs, connectors and grounds",The 12A's electrical sensors are the three senders and nothing else.…,2026-09-07,standing,,,Q-124 Q-125 Q-308,
+D-232,"Legs, connectors and grounds","The gauge rule is set by the enable-at limit, not the channel's rating",2026-09-03,standing,,,,
+D-281,"Legs, connectors and grounds",The factory ignition noise-suppression condenser is reproduced on the…,2026-09-08,standing,,,,
+D-212,"Wire, labels and materials","Family-colour solid wire, identified by printed labels; no tracers",2026-09-02,standing,D-016,,,
+D-135,"Wire, labels and materials",SICMA terminal spares come from the two spare 39-way housings in hand…,,standing,,,,D-220
+D-220,"Wire, labels and materials","The 2026-09-02 order changes, Camden's own edits to the carts",2026-09-02,standing,,,,
+D-141,"Wire, labels and materials","No bench kit: no bench PSU, no plywood mule, no test pigtail",,standing,,,,D-144 D-147
+D-205,"Wire, labels and materials","Ground studs are 3/8 stainless with star washers (four: rear, front…",,standing,,,,
+D-023,Build sequence,"Parallel-system migration, least to most consequential, ending with…",,standing,,,,D-024
+D-025,Build sequence,Soft fuses are set from current measured live in the client during…,,standing,,,,D-174
+D-176,Build sequence,"Part replacement (a slow wiper motor, a weak pump) is a separate job…",,standing,,,,
+D-177,Build sequence,The pop-up motor pinout comes from factory sheet E (E-03 / E-04: YG top…,,standing,,,,D-199
+D-143,Build sequence,"The deliberate soft-fuse trip is a required step, done in the car on…",,standing,,,,D-145
+D-146,Build sequence,Powered verification of the dash node is replaced by continuity…,,standing,,,,
+D-127,Build sequence,Housekeeping that stands: verify the two spare housings' terminal…,,standing,,,,D-137 D-103
+D-026,The record itself,Working files are Markdown; IDs are permanent and never reused; a…,,standing,,,,D-043
+D-233,The record itself,The record is `data/*.csv`; every document with a table in it is…,2026-09-03,standing,D-221,,,
+D-275,The record itself,"The drawing is a view: one master harness sheet, rendered by `build`…",2026-09-08,standing,,,,
+D-276,The record itself,Five sheets are cut from the harness model beside the master: one per…,2026-09-08,standing,,,,
+D-222,The record itself,The shopping list is the four live carts of 2026-09-02 — Waytek $455.04…,2026-09-02,standing,D-207,,,
+D-277,The record itself,The cart is dialed to the design as it stands after D-272 / D-273 /…,2026-09-08,standing,,,,
+D-005,The dash node,(superseded by D-214),,superseded,,D-214,,
+D-206,The dash node,(superseded by D-216),,superseded,,D-216,,
+D-208,The dash node,(superseded by D-216),,superseded,,D-216,,
+D-227,"Switches, ladders and inputs",(superseded by D-244),,superseded,,D-244,Q-100,
+D-231,"Switches, ladders and inputs",(superseded by D-244),,superseded,,D-244,,
+D-247,"Switches, ladders and inputs",(superseded by D-278),,superseded,,D-278,,
+D-022,"Legs, connectors and grounds",(superseded by D-218),,superseded,,D-218,,
+D-016,"Wire, labels and materials",(superseded by D-212),,superseded,,D-212,,
+D-221,The record itself,(superseded by D-233),,superseded,,D-233,,
+D-207,The record itself,(superseded by D-222),,superseded,,D-222,,

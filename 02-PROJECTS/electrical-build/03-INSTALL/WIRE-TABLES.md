@@ -94,7 +94,7 @@ The stud: 2 AWG RED ring lug from the busbar, torqued (D-241).
 | Wake stage 1 collector (A6 door) | Wake strip input 3 | 16 | BLU |  | ☐ |
 | Wake stage 2 collector (A8 horn/hazard/wink) | Wake strip input 4 | 16 | BLU |  | ☐ |
 | PMU pin 8 (O22) | Wake strip input 5 | 16 | RED |  | ☐ |
-| Receptacle L3-S1 7 | Wake strip input 6 (brake) | 16 | BLU | Second pole of the brake switch — the brake wakes the module (D-247) | ☐ |
+| Receptacle L3-S1 7 | Wake strip input 6 (brake) | 16 | BLU | Brake wake — a spare P084 plunger switch on the pedal, fed from the F3 switch supply, wakes the module (D-278) | ☐ |
 | Wake strip common rail (after the six 1N5819) | PMU pin 7 (+12V SW) | 16 | BLU | 10 kΩ bleed from this rail to the GND bus | ☐ |
 | PMU pin 15 (+5 V) | 100 kΩ → PMU pin 35 (A15) · 100 kΩ → PMU pin 22 (A16) · 100 Ω 1 W → the oil-pressure node (D-260) | 16 | PNK | Bias so a broken wire reads 0, not OFF; and the oil sender's excitation | ☐ |
 | PMU pin 17 (A4) | Receptacles L2-S 1 and L1-S1 11 (splice) | 16 | GRY |  | ☐ |
@@ -204,7 +204,7 @@ One row per cavity. **Length** = the M-2 route for that leg + 15 % + 150 mm serv
 | L3-S1 4 | Wiper stalk ladder | 16 | GRY | LIVE | `A2 / L3-S1-4` | `L3-S1-4 / A2` | ____ | Stalk D-03: HIGH 4.7 kΩ · LOW 10 kΩ · INT 18 kΩ · OFF 47 kΩ · WASH 1.8 kΩ + 1N5819 (band toward the contact) | ☐ |
 | L3-S1 5 | Brake pedal switch | 16 | GRY | LIVE | `A3 / L3-S1-5` | `L3-S1-5 / A3` | ____ | Pedal switch F-11 through 4.7 kΩ; other terminal → dash ground | ☐ |
 | L3-S1 6 | Hazard switch | 16 | GRY | LIVE | `A8 / L3-S1-6` | `L3-S1-6 / A8` | ____ | Hazard contact through 4.7 kΩ; other terminal → column ground | ☐ |
-| L3-S1 7 | Brake — wake source | 16 | BLU | LIVE | `WAKE / L3-S1-7` | `L3-S1-7 / WAKE` | ____ | Spare P084 adjustable plunger switch on the brake pedal, fed from the F3 switch supply branched off L3-S2 2 in the leg (D-249) | ☐ |
+| L3-S1 7 | Brake — wake source | 16 | BLU | LIVE | `WAKE / L3-S1-7` | `L3-S1-7 / WAKE` | ____ | Spare P084 adjustable plunger switch on the brake pedal, fed from the F3 switch supply branched off L3-S2 2 in the leg (D-278) | ☐ |
 | L3-S1 8 | Illumination bus | 16 | RED | LIVE | `O20 / L3-S1-8` | `L3-S1-8 / O20` | ____ | Dash illumination lamps E-06, E-07, E-10 (RL) + head unit illumination wire | ☐ |
 | L3-S1 9 | Wink LEFT — NC pole | 16 | BLU | LIVE | `K2-85 / L3-S1-9` | `L3-S1-9 / K2-85` | ____ | Wink L switch NC terminal; switch common → dash ground | ☐ |
 | L3-S1 10 | Wink RIGHT — NC pole | 16 | BLU | LIVE | `K1-85 / L3-S1-10` | `L3-S1-10 / K1-85` | ____ | Wink R switch NC terminal; switch common → dash ground | ☐ |

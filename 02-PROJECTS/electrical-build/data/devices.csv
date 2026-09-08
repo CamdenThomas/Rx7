@@ -23,7 +23,7 @@ DV21,L3,Hazard switch,"F-02 HAZARD (column, kept)",contact → 4.7 kΩ → L3-S1
 DV22,L3,Wiper stalk,"D-03 (column, kept)",HIGH → 4.7 kΩ → L3-S1 4<br>LOW → 10 kΩ → L3-S1 4<br>INT → 18 kΩ → L3-S1 4<br>OFF → 47 kΩ → L3-S1 4<br>WASH contact → 1.8 kΩ + 1N5819 (band to the contact) → L3-S1 4; and direct → L3-S2 9<br>common / contact returns → column ground,
 DV23,L3,Horn pad,Steering wheel (kept),contact → 8.2 kΩ → L3-S1 11<br>return → column ground through the slip ring,
 DV24,L3,Wink switches,"New — SPDT momentary ×2, dash panel",Wink L common → dash ground<br>Wink L NC → L3-S1 9<br>Wink L NO → 18 kΩ → L3-S1 11 node<br>Wink R common → dash ground<br>Wink R NC → L3-S1 10<br>Wink R NO → 33 kΩ → L3-S1 11 node,
-DV25,L3,Brake pedal switch,F-11 (new),Contact -> 4.7 kOhm -> L3-S1 5 (the A3 ladder)<br>Other side -> dash ground<br>Wake is NOT taken from this switch - a spare P084 plunger on the pedal feeds L3-S1 7 (D-249),
+DV25,L3,Brake pedal switch,F-11 (new),Contact -> 4.7 kOhm -> L3-S1 5 (the A3 ladder)<br>Other side -> dash ground<br>Wake is NOT taken from this switch - a spare P084 plunger on the pedal feeds L3-S1 7 (D-278),
 DV26,L3,Parking brake switch,C-04 (kept),BR → L3-S2 11,body: lever bracket — no wire
 DV27,L3,Blower motor (luxury package),"Four Seasons 35483 class, 2-wire — no resistor pack, no speed switch (D-253)","Motor + → L3-BLW 1 (O16 via L3-P 1)<br>Motor − → L3-BLW 2 → dash ground, 12 AWG",Absent this build (K-023) — the receptacle is dust-capped; speed is the ≥ 20 kHz final stage at L3-BLW on the DCU's PWM (D-257)
 DV28,L3,Head unit,Aftermarket,"Red (ACC) → L3-M 1<br>Yellow (BATT) → L3-M 2<br>Orange (ILLUM) → L3-S1 8<br>Black → dash ground, 14 AWG BLK",

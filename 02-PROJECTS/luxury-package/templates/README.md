@@ -13,7 +13,7 @@ Everything the car gets **after** it drives on the new harness: the bezel and da
 
 {{counts}}
 
-**Next IDs:** decisions from D-316 · questions from Q-311.
+**Next IDs:** decisions from {{next_id:D}} · questions from {{next_id:Q}} · phase **{{phase}}**.
 
 Two files at this level are the project's memory: [`DECISIONS.md`](DECISIONS.md) (why, by system) and [`QUESTIONS.md`](QUESTIONS.md) (§0 is the finishing checklist — what the agent has already done alone and what only the owner can settle).
 

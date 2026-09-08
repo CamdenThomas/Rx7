@@ -1,37 +1,50 @@
-id,kind,item,state,gate,note
-B1,bring-up,"Toolchain — Arduino IDE 2.x, Teensyduino, blink on board 1",done,,2026-08
-B2,bring-up,"Prove can_map.h — packing static_asserts, round-trip, counter wrap",done,,found the self-cancelling TEMP macros
-B3,bring-up,CAN loopback on one board (ACAN_T4),done,,"5 frames, 0 failures"
-B4,bring-up,Ladder decode — windows and fault bands,done,,absorbed into the ICU firmware; real windows are read in the car (D-142)
-B5,bring-up,Tach capture against tach_simulator,done,,±3 % 500–8000 rpm; zero reads 0
-B6,bring-up,SD card — config-as-data with a safe-mode path,open,microSD (LP04),F-010; a corrupt file must still boot
-B7,bring-up,Datalogging skeleton and power-loss test,open,microSD (LP04),
-B8,bring-up,"Two boards on a real bus, PMU simulator live",open,"120 Ω ×4, headers soldered",the spare Teensy is the PMU until V-065
-F-001,firmware,DCU firmware skeleton — dcu.ino + climate.h,done,,33 assertions
-F-003,firmware,Sensor conditioning schematic — the ICU's inputs,moved,,electrical build — data/icu_channels.csv → ICU-CARRIER.md (D-259); the observer values of D-310 are archived
-F-004,firmware,Tach front end for a trailing-coil primary,moved,,electrical build — channel IC04
-F-005,firmware,Cluster page framework,done,,
-F-006,firmware,Diagnostics page,done,,against the PMU simulator; real numbers after V-065
-F-007,firmware,"Odometer and stats persistence — Teensy EEPROM emulation (wear-levelled, every 0.1 mi) as the authoritative odometer copy + microSD as the log, write on key-off",open,B6,"write frequency per D-162; a CUTOVER GATE for the electrical build's display (electrical D-268, D-269) — the odometer must survive a power cycle, card present or not, before MG22"
-F-008,firmware,BT817 driver,done,V-084 timings,35 assertions; the three pushDirtyTiles() calls are finished against the BT817 eval board at the electrical build's install §1.22 (D-314)
-F-009,firmware,Reconcile can_map.h 0x100–0x130 against the PMU's real export,blocked,V-065,electrical install §5.5
-F-010,firmware,Config-as-data,open,B6,
-F-011,firmware,Full 1280 × 480 render,done,,2026-08-31
-F-012,firmware,"Bump can_map.h for the 2026-09-07 map: add icu_body_t 0x218 (fuel_pct u16, fuel_valid u8, rsv[4], counter); pmu_outputs_t fuel_pct → _rsv[2]; dcu_climate_t blower → duty %, _rsv[0] → outside_c; ID_ICU_BODY 0x218, TMO_ICU_BODY 3000; SENS_FUEL bit 5; copy to the three test-sketch folders; bump ICU_FW_VERSION and DCU_FW_VERSION; run tests/run.bat",open,a machine with g++ (w64devkit) — not this one,the data is ahead of the header until this lands; the BRING-UP drift table shows exactly what differs
-F-013,firmware,pmu_sim: consume the regenerated channels.h and re-run the suite,open,F-012's machine,channels.h is now rendered by this project's build from the electrical pin table (D-311)
-F-014,firmware,"Per-signal source arbitration — local input when its channel is configured, else the ECU's CAN frame (0x500+), else dashes (D-153); the source is named in the config file, not the code",open,F-010,"electrical D-262 — at the engine swap most engine signals move to the ECU's frames and the ICU's own inputs go quiet by file, not by board"
-F-015,firmware,"icu_batt_t 0x220 + the UART bridge protocol from the ESP32-C3 (line-based text, 2 Hz, checksum) + the decoder on the C3 for whichever source Q-128 picks",open,electrical Q-128 (source); a machine with g++ for the header,"electrical D-267; the C3's own firmware is a small separate sketch in firmware/icu_radio/ — the BMS / shunt decoder, nothing else"
-H-001,hardware,ICU carrier layout,moved,,"electrical build — install §1.20; its questions were ruled there (D-265), V-082 is checked at layout, Q-126 is the last in front of it"
-H-002,hardware,DCU carrier layout,open,"V-083, Q-305","blower PWM output, ambient input, optional mirror bridges"
-H-006,hardware,"Display bezel mould — foam plug over the binnacle plate, fibreglass skin, finish",open,M-1 aperture measurements; electrical Q-130,FT34; the plate and the display are the electrical build's (D-268)
-X-006,docs,Failure-mode table,done,,DESIGN §9
-X-007,docs,"Archived render of the agreed cluster — icu_sim/sim.exe, +, screenshot",open,Camden,
-Z-002,design,Radar subsystem,open,V-061,
-Z-004,design,"Cold-weather behaviour — battery heater draw, winter parasitic budget",open,electrical V-052,
-X-003,docs,Troubleshooting guide,moved,,electrical build's install plan
-X-004,docs,Commissioning test card,moved,,electrical build's install plan
-H-003,hardware,Panel 1:1 drawing,closed,,no plate — electrical D-214
-H-004,hardware,Sill plate drawing,moved,,electrical build
-H-005,hardware,Dash post bracket layout,moved,,electrical build
-Z-001,design,LS swap electrical plan,moved,,engine-swap project
-Z-003,design,Mirror control protocol,closed,,D-305 + electrical D-255
+id,block,block_title,item,owner,state,gate,note
+A1,A,"Done by the agent alone, 2026-09-07",The record is data,agent,done,,"(D-309). `data/` holds modules, stages, features, provisions, sensors, CAN messages and fields, parts, work, params and the bring-up log; `templates/` the prose; `views.py` the derivations and seven checks; `build` renders README, DESIGN, CAN-MESSAGES, both carriers, SHOPPING-LIST, INSTALL, BRING-UP, `VIEW.html` — and `firmware/pmu_sim/channels.h` (D-311)."
+A2,A,"Done by the agent alone, 2026-09-07",The boundary cannot go stale,agent,done,,Every provision this project counts on is joined live to `../electrical-build/data`; a cavity that changes state or vanishes there refuses this project's build.
+A3,A,"Done by the agent alone, 2026-09-07",Every stale claim found and corrected,agent,done,,"— fuel level ""read by the PMU on A7 / 0x120"" (now the ICU's, 0x218) · the single 12-way `DP-ICU` and its old pinout (now `DP-ICU-A` / `-B`) · sender inputs drawn as pull-up dividers that would have moved the factory needles (now high-Z observers, D-310) · the tach on the leading coil (trailing, D-304) · `DP-DCU 2` as an O15 tap (it is the outside-air sensor) · F10 / F11 branches (deleted; this project's block) · the CAN keypad (custom panel, D-210) · ""five nodes"" (six, with the wideband) · the private DCU ↔ ICU pair (not run) · ""both modules on O10"" (heavy loads on O15) · coolant / oil level ""capped in L1-S2"" (plugs) · ""DCU firmware not started"" (F-001 done) · the fuel-pump rpm rule (primary gate is A7, rpm secondary and fail-open) · 384 KB / 64 ms framebuffer figures (614 KB / ~100 ms) · every link into the dissolved `electrical-pmu` tree."
+A4,A,"Done by the agent alone, 2026-09-07",ICU front end specified,agent,done,,"for all nine inputs and the DCU's — values, pin class, calibration method, CAN field — in `data/sensors.csv` (D-310); the carrier documents are rendered from it."
+A5,A,"Done by the agent alone, 2026-09-07",CAN map as data,agent,done,,"— `0x218`, the `0x300` changes, the AEM vendor frame with its two exceptions, bus load and timeouts computed; the header-drift report in `BRING-UP.md` §1 shows exactly what `can_map.h` lacks."
+A6,A,"Done by the agent alone, 2026-09-07",Failure-mode table,agent,done,,written (X-006) — DESIGN §9.
+A7,A,"Done by the agent alone, 2026-09-07",Money by stage,agent,done,,"— 44 lines from the archived Waves 3–5 plus everything ruled since (blower, final stage, senders, VSS, nozzles, mirrors, O15 block), each with its gating question."
+A8,A,"Done by the agent alone, 2026-09-07",Install plan,agent,done,,"— stages S0–S8 with what plugs into what, per-stage provisions printed from the electrical data (D-312)."
+A9,A,"Done by the agent alone, 2026-09-07",Backlog reconciled,agent,done,,— F-005 / F-006 / F-001 / F-011 marked done; X-003 / X-004 / H-004 / H-005 / Z-001 moved to their owners; H-003 and Z-003 closed; F-012 / F-013 opened with the exact header changes.
+A12,A,"Done by the agent alone, 2026-09-07",The display handed to the electrical build too,agent,done,,"(D-314, 2026-09-07i) — it goes in with the ICU on a plain plate; `T-051` / `V-084` / `V-085` and the glass parts moved with their numbers; `S3` is now the bezel (FT34, H-006, LP29); F-007 is a cutover gate for that project."
+A11,A,"Done by the agent alone, 2026-09-07",The ICU handed to the electrical build,agent,done,,"(D-313, 2026-09-07c) — its features, sensor rows, parts, work items, carrier template and six questions moved with their numbers; `S1` stays as the prerequisite that project delivers; `Q-301` closed as moot and `Q-302` on the F16 backlight feed."
+A10,A,"Done by the agent alone, 2026-09-07",The tool learned the new names,agent,done,,"— `DP-ICU-A`, `DP-ICU-B`, `L3-BLW`, `L4-S2` now cross-link in `VIEW.html` and pass the electrical cavity check."
+B1,B,"Still agent-side, gated on something other than the owner",F-012 / F-013,agent,open,,"— bump `can_map.h` and re-run the suites. Needs a machine with g++ (w64devkit); this one has neither g++ nor arduino-cli, so the change is specified, not made."
+B2,B,"Still agent-side, gated on something other than the owner",F-007 / F-010,agent,open,,— SD persistence and config-as-data. Needs a microSD card (LP04) in a board.
+B3,B,"Still agent-side, gated on something other than the owner",H-002 carrier layout,agent,open,,— everything is specified; the layout waits on `V-083` and `Q-305` below (H-001 is the electrical build's).
+B4,B,"Still agent-side, gated on something other than the owner",Z-002 radar design,agent,open,,— after `V-061`.
+C1,C,The owner's calls,"§1 below, easiest first. Answer one by writing under it or saying it in a session.",camden,open,,
+B5,X,,Tach capture against tach_simulator,agent,done,,*(agent)* ±3 % 500–8000 rpm; zero reads 0
+B6,X,,SD card — config-as-data with a safe-mode path,agent,open,,*(agent)* — gate: microSD (LP04) F-010; a corrupt file must still boot
+B7,X,,Datalogging skeleton and power-loss test,agent,open,,*(agent)* — gate: microSD (LP04)
+B8,X,,"Two boards on a real bus, PMU simulator live",agent,open,,"*(agent)* — gate: 120 Ω ×4, headers soldered the spare Teensy is the PMU until V-065"
+F-001,X,,DCU firmware skeleton — dcu.ino + climate.h,agent,done,,33 assertions
+F-003,X,,Sensor conditioning schematic — the ICU's inputs,agent,dropped,,electrical build — data/icu_channels.csv → ICU-CARRIER.md (D-259); the observer values of D-310 are archived
+F-004,X,,Tach front end for a trailing-coil primary,agent,dropped,,electrical build — channel IC04
+F-005,X,,Cluster page framework,agent,done,,
+F-006,X,,Diagnostics page,agent,done,,against the PMU simulator; real numbers after V-065
+F-007,X,,"Odometer and stats persistence — Teensy EEPROM emulation (wear-levelled, every 0.1 mi) as the authoritative odometer copy + microSD as the log, write on key-off",agent,open,B6,"write frequency per D-162; a CUTOVER GATE for the electrical build's display (electrical D-268, D-269) — the odometer must survive a power cycle, card present or not, before MG22"
+F-008,X,,BT817 driver,agent,done,V-084 timings,35 assertions; the three pushDirtyTiles() calls are finished against the BT817 eval board at the electrical build's install §1.22 (D-314)
+F-009,X,,Reconcile can_map.h 0x100–0x130 against the PMU's real export,agent,blocked,V-065,electrical install §5.5
+F-010,X,,Config-as-data,agent,open,B6,
+F-011,X,,Full 1280 × 480 render,agent,done,,2026-08-31
+F-012,X,,"Bump can_map.h for the 2026-09-07 map: add icu_body_t 0x218 (fuel_pct u16, fuel_valid u8, rsv[4], counter); pmu_outputs_t fuel_pct → _rsv[2]; dcu_climate_t blower → duty %, _rsv[0] → outside_c; ID_ICU_BODY 0x218, TMO_ICU_BODY 3000; SENS_FUEL bit 5; copy to the three test-sketch folders; bump ICU_FW_VERSION and DCU_FW_VERSION; run tests/run.bat",agent,open,a machine with g++ (w64devkit) — not this one,the data is ahead of the header until this lands; the BRING-UP drift table shows exactly what differs
+F-013,X,,pmu_sim: consume the regenerated channels.h and re-run the suite,agent,open,F-012's machine,channels.h is now rendered by this project's build from the electrical pin table (D-311)
+F-014,X,,"Per-signal source arbitration — local input when its channel is configured, else the ECU's CAN frame (0x500+), else dashes (D-153); the source is named in the config file, not the code",agent,open,F-010,"electrical D-262 — at the engine swap most engine signals move to the ECU's frames and the ICU's own inputs go quiet by file, not by board"
+F-015,X,,"icu_batt_t 0x220 + the UART bridge protocol from the ESP32-C3 (line-based text, 2 Hz, checksum) + the decoder on the C3 for whichever source Q-128 picks",agent,open,electrical Q-128 (source); a machine with g++ for the header,"electrical D-267; the C3's own firmware is a small separate sketch in firmware/icu_radio/ — the BMS / shunt decoder, nothing else"
+H-001,X,,ICU carrier layout,agent,dropped,,"electrical build — install §1.20; its questions were ruled there (D-265), V-082 is checked at layout, Q-126 is the last in front of it"
+H-002,X,,DCU carrier layout,agent,open,"V-083, Q-305","blower PWM output, ambient input, optional mirror bridges"
+H-006,X,,"Display bezel mould — foam plug over the binnacle plate, fibreglass skin, finish",agent,open,M-1 aperture measurements; electrical Q-130,FT34; the plate and the display are the electrical build's (D-268)
+X-006,X,,Failure-mode table,agent,done,,DESIGN §9
+X-007,X,,"Archived render of the agreed cluster — icu_sim/sim.exe, +, screenshot",agent,open,Camden,
+Z-002,X,,Radar subsystem,agent,open,V-061,
+Z-004,X,,"Cold-weather behaviour — battery heater draw, winter parasitic budget",agent,open,electrical V-052,
+X-003,X,,Troubleshooting guide,agent,dropped,,electrical build's install plan
+X-004,X,,Commissioning test card,agent,dropped,,electrical build's install plan
+H-003,X,,Panel 1:1 drawing,agent,done,,no plate — electrical D-214
+H-004,X,,Sill plate drawing,agent,dropped,,electrical build
+H-005,X,,Dash post bracket layout,agent,dropped,,electrical build
+Z-001,X,,LS swap electrical plan,agent,dropped,,engine-swap project
+Z-003,X,,Mirror control protocol,agent,done,,D-305 + electrical D-255

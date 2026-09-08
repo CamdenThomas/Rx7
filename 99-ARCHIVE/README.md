@@ -1,10 +1,12 @@
 # ARCHIVE
 
-*Rev 2026-08-31 · owns: the index of superseded work. Nothing here is current. Kept because the reasoning is useful.*
+*Rev 2026-09-08 · owns: the index of superseded work. Nothing here is current. Kept because the reasoning is useful.*
 
 | File | What | Superseded by |
 |---|---|---|
 | [`2026-09-08_hand-drawn-diagrams/`](Electrical/2026-09-08_hand-drawn-diagrams/) | The twelve hand-drawn electrical SVGs (architecture, backbone, dash node, ladders, pop-ups, grounds, four legs, sill, drops) — behind the data since D-252 | The master harness sheet, `02-PROJECTS/electrical-build/01-DESIGN/diagrams/HARNESS.svg`, rendered by `build` (D-275) |
+| [`2026-09-08_system-v2/`](2026-09-08_system-v2/) | The system-v2 transition: the proposal as ruled, the one-time migration script, the old `CLAUDE.md`/`ASSISTANT.md` | `CLAUDE.md`, `WORKFLOWS.md`, `.claude/skills/rx7-*/` — the live system |
+| [`2026-09-08_apply-script/`](Electrical/../2026-09-08_apply-script/) | `apply-rx7-changes.py` — the chat-authored script that carried the 2026-09-05 and 2026-09-08 sweeps into the tree while the device bridge was down; it reused spent IDs and its `patch()` skipped silently on them | The 2026-09-08f repair (electrical `QUESTIONS.md` banner); the rulings it meant to write are D-278–D-282 |
 | [`2026-08_superseded-C1-C7-connector-scheme.md`](Electrical/2026-08_superseded-C1-C7-connector-scheme.md) | Seven regional bulkhead connectors cut by geography | Four-leg design, D-029 |
 | [`2026-08_rx7-pmu24-pin-plan-revA.html`](Electrical/2026-08_rx7-pmu24-pin-plan-revA.html) | Rev A pin plan, generated view | [`SPEC.md`](../02-PROJECTS/electrical-pmu/01-DESIGN/SPEC.md) Rev D and the generated [`PIN-MAP.md`](../02-PROJECTS/electrical-pmu/02-HARNESS/PIN-MAP.md) |
 | [`2026-08_rx7-pmu-build-checklist-revA.html`](Electrical/2026-08_rx7-pmu-build-checklist-revA.html) | Rev A build checklist, generated view, three-digit step numbers | [`CHECKLIST.md`](../02-PROJECTS/electrical-pmu/04-BUILD/CHECKLIST.md) — phase.step numbering |

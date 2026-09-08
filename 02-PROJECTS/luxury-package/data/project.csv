@@ -1,0 +1,9 @@
+key,value,note
+name,luxury-package,
+kind,electronics,electrical · electronics · mechanical · body · software
+goal,"Everything the car gets after it drives on the new harness — bezel and dash plastics, DCU and panel, blower, seats, mirrors, windows, lighting second pass, radar",
+phase,PLANNING,PROPOSED · PLANNING · SOURCING · BUILDING · COMPLETE · PERMANENT
+opened,2026-09-02,
+range_D,300-399,this project's decision numbers
+range_Q,300-399,this project's question numbers
+range_C,300-399,critique findings

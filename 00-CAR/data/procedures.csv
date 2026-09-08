@@ -1,0 +1,3 @@
+id,system,title,when,tools,source
+PR-001,Climate,Recover the refrigerant before opening the A/C system,"before the compressor, condenser or lines are disturbed",a shop with recovery equipment,K-015
+PR-002,Electrical,Keep a stored lithium battery above its BMS cutoff,monthly while the Ionic S9 waits unfitted,the Ionic app,electrical work item A4

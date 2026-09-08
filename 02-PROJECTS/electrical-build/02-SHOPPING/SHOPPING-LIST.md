@@ -20,7 +20,7 @@
 | DeutschConnector.com | 26 | $944.08 |
 | Amazon | 49 | $1,096.22 |
 | **Four carts** | **94** | **$2,878.02** |
-| Still to add (§8) | ~45 | ≈ $320 |
+| Still to add (§8) | ~46 | ≈ $320 |
 | Vehicle parts, not yet carted (§6) | 3 | ≈ $170 est |
 | Hardware store, after the measurement day (§7) | — | ≈ $40 est |
 | **Everything** |  | **≈ $3,410** |
@@ -192,6 +192,7 @@ https://www.amazon.com/ · **cart $1,096.22, 49 lines / 55 items**. The cart was
 | NPN transistor 2N3904 | 2N3904 | 10 | 1 | 2 wake sense stages + spares |
 | Inline ATC fuse holder, 2-pack | generic | 1 | 6 | The 5 A first-power-up guard (install §5.2) |
 | Shielded cable, 16–18 AWG single core with drain, 15 ft | any automotive shielded | 1 | 15 | Tach — L1-S1 6 → DP-ICU-B 4 4 |
+| Ignition noise-suppression capacitor, automotive, ~0.47 µF 250 V, ring-lug case | Reproduces the factory condenser B-22 on the coil / igniter supply | 2 | 10 | O12 branch at the coil bracket (L1-P 1) — this harness runs CAN2 and eight analog ladders past the igniters (D-281) |
 | Perfboard 5 × 7 cm, 2-pack, with M3 standoffs | generic FR-4 | 1 set | 8 | the two wake sense stages and the bias resistors (install §3.2 / §3.4) — nothing in the cart carried them |
 
 ### Consumables and labels
@@ -212,7 +213,7 @@ https://www.amazon.com/ · **cart $1,096.22, 49 lines / 55 items**. The cart was
 | Item | Spec | Qty | ≈ $ | Note |
 |---|---|---|---|---|
 | **Momentary pushbutton, 1NO + 1NC, 2-pack** | **DMWD** (B09H29SZYS) | 1 pk | 12 | Wink L and wink R. MUST be changeover (NO + NC) — the NC pole is wired |
-| Adjustable plunger pin switch, 6-pack | generic | 1 pk | 15 | Door jambs ×2, glove box, luggage + 2 spare |
+| Adjustable plunger pin switch, 6-pack | generic | 1 pk | 15 | Door jambs ×2, glove box, luggage, the brake-pedal wake contact (D-278) + 1 spare |
 
 **Not on Amazon any more, on purpose:** blade fuses (§9), aluminium sheet (§7).
 
@@ -229,7 +230,7 @@ RockAuto / PartsGeek / a Mazda specialist. Confirm fit for a **1982 RX-7 GS, FB,
 | Item | Spec | Qty | ≈ $ | Note |
 |---|---|---|---|---|
 | Road-speed sensor | Hall pulse generator on the transmission's speedo-drive boss, the cable deleted — Dakota Digital SEN-01-4160 / AutoMeter 5291 class, 8 000 or 16 000 pulses per mile, sealed; thread adapter per M-2 | 1 | 105 | IC08 / DV47 — fitted at the meters cutover (D-272); bought after M-2 measures the boss |
-| Brake pedal (stop lamp) switch, without cruise - any 2-terminal type | Standard SLS-52 class — confirm fit | 1 | 20 | The A3 ladder only. The wake contact is a spare P084 plunger on the pedal (D-249) |
+| Brake pedal (stop lamp) switch, without cruise - any 2-terminal type | Standard SLS-52 class — confirm fit | 1 | 20 | The A3 ladder only. The wake contact is a spare P084 plunger on the pedal (D-278) |
 | Ignition switch, electrical portion, 1981–83 RX-7 | search "81-83 RX-7 ignition switch electrical"; NOS or quality reproduction | 1 | 45 | Terminals B, ACC, IG, ST — feeds the A16 ladder and both wake sources |
 
 ## 6b · The ICU carrier — ordered after layout (D-259)
@@ -308,6 +309,7 @@ Bought with the parts in hand, once M-1 and M-4 in the install plan are filled i
 | Amazon | ESP32-C3 module ×2 — Seeed XIAO ESP32C3 class (castellated, fits a header) | 2 | the ICU's radio co-processor (D-267); which source it decodes is Q-128 — on its own 3.3 V LDO (the XIAO's), not the Teensy's 250 mA regulator (D-273) |
 | Amazon | 100 Ω 1 W 1 % metal-film resistor | 2 | add by hand — the kits are ¼ W |
 | Amazon | Terminal boots, red and black, 2 AWG / 1/0 | 10 → 14 | Every exposed lug on a live stud — four more ends now that the negative side is 1/0 (D-246) |
+| Amazon | Ignition noise-suppression capacitor, automotive, ~0.47 µF 250 V, ring-lug case | 2 | O12 branch at the coil bracket (L1-P 1) — this harness runs CAN2 and eight analog ladders past the igniters (D-281) |
 | Amazon | **Label tape** | 3 → 4 | every conductor end — about 300 conductors in the harness model, two labels each at 45 mm ≈ 27 m; a TZe cartridge is 8 m, so four |
 | Amazon | Tapered-post terminal boots, red and black | 1 | The only thing covering a live post now that the box is gone (D-235) |
 | Amazon | SAE tapered-post battery terminals, brass, with 3/8 in stud take-off, pair | 1 | The Ionic has tapered posts (D-234) - no ring lug bolts to it |

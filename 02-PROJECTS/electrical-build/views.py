@@ -881,6 +881,8 @@ def c_dangling(db):
     ch = {p["ch"] for p in db.rows("pins") if p["ch"]}
     pat = re.compile(r"\b(F\d{1,2}|K\d{1,2}|[OA]\d{1,2}|(?:L\d-(?:[PMS]\d?|BLW|NZL|OAT|CMF|WIN|MOD|RDR)|D[12]|DP-[A-Z]+(?:-[A-Z])?) \d{1,2})\b")
     for t, cols in db.tables.items():
+        if t in ("questions", "decisions", "log", "work", "project", "retired"):   # process tables: history may name what is gone
+            continue
         for r in db.rows(t):
             for c in cols:
                 for tok in pat.findall(str(r[c])):
