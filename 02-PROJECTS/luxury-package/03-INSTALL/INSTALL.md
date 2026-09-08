@@ -80,7 +80,7 @@ Parts this stage: 9 lines, ~$257–555 (unpriced lines excluded).
 | `L3-BLW` | housing | DTP06-2S / DTP04-2P, 2-way | HVAC case | DTP-2 at the HVAC case | FT12 Blower motor and its final stage |
 | `O16` | pin | BLOWER — Blower motor — steady feed; speed is the ≥ 20 kHz final stage at L3-BLW on the DCU's PWM (D-257); no motor this build: channel configured and DISABLED (K-023 · D-253) | LIVE | blower feed — configured, DISABLED until the motor exists | FT12 Blower motor and its final stage |
 | `L3-P 2` | cavity | Comfort bus | CAPPED | O15 comfort bus, 12 AWG — this project's fuse block plugs into the L3-CMF receptacle behind the centre stack (electrical D-274) | FT31 Comfort fuse block on O15 |
-| `O15` | pin | COMFORT — Comfort bus — two capped feeds: the dash (L3-P 2) and the sill (L4-P 4 — mirror heat F14 · D-254). No fuse block this build; the luxury package adds its own on this output | LIVE | comfort bus, 25 A, ON in RUN | FT31 Comfort fuse block on O15 |
+| `O15` | pin | COMFORT — Comfort bus — two feeds with no load this build: the dash (L3-P 2 → the L3-CMF receptacle behind the centre stack, D-274) and the sill (L4-P 4 — F14's position, D-254). No fuse block this build; the luxury package adds its own on this output | LIVE | comfort bus, 25 A, ON in RUN | FT31 Comfort fuse block on O15 |
 | `O4` | pin | DEFOG — Rear defog grid — wired; channel configured and DISABLED (no control surface in this build) | LIVE | defog output — wired to the grid, configured, DISABLED | FT16 Rear defog trigger |
 | `L4-P 1` | cavity | Rear defog grid | LIVE | the grid feed | FT16 Rear defog trigger |
 | `L4-M 3` | cavity | Hatch release solenoid | CAPPED | hatch solenoid — the conductor reaches the existing factory solenoid; the post end waits for this project's trigger (D-180, electrical D-274) | FT17 Hatch release solenoid |
@@ -149,7 +149,7 @@ Parts this stage: 2 lines, ~$135–340 (unpriced lines excluded).
 | Ref | Kind | The electrical build says | State today | This project's use | Feature |
 |---|---|---|---|---|---|
 | `L4-P 4` | cavity | Comfort feed → sill (mirror heat F14) | CAPPED | O15 → sill feed for mirror heat, landed at the sill node's F14 position (no holder this build) | FT23 Mirrors — adjustment and heat |
-| `F14` | fuse | location: Sill node — position labelled, no holder this build; feeds: Mirror heat — the luxury package fits the holder; fed_from: (unconnected) | EMPTY | mirror-heat position at the sill — labelled, no holder this build | FT23 Mirrors — adjustment and heat |
+| `F14` | fuse | location: Sill node — position labelled, no holder this build; feeds: Mirror heat — the luxury package fits the holder; fed_from: O15 via L4-P 4 (capped) | EMPTY | mirror-heat position at the sill — labelled, no holder this build | FT23 Mirrors — adjustment and heat |
 | `D1 4` | cavity | Mirror motor common | RESERVED | mirror motor common / X / Y — RESERVED at the sill: pinned on the node side, the door harness is this project's (electrical D-274) | FT23 Mirrors — adjustment and heat |
 | `D1 5` | cavity | Mirror motor X | RESERVED | mirror motor common / X / Y — RESERVED at the sill: pinned on the node side, the door harness is this project's (electrical D-274) | FT23 Mirrors — adjustment and heat |
 | `D1 6` | cavity | Mirror motor Y | RESERVED | mirror motor common / X / Y — RESERVED at the sill: pinned on the node side, the door harness is this project's (electrical D-274) | FT23 Mirrors — adjustment and heat |

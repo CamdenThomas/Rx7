@@ -1,8 +1,8 @@
 id,function,type,location,c86,c85,c30,c87,c87a,state,label
 K1,Pop-up LH run,"ISO micro SPDT 40 A, integral diode",Dash node,O1,L3-S1 10 (wink R NC → ground),O1 splice (12 AWG),L2-P 3,GND bus (dynamic brake),LIVE,POPUP-L
 K2,Pop-up RH run,"ISO micro SPDT 40 A, integral diode",Dash node,O1,L3-S1 9 (wink L NC → ground),O1 splice (12 AWG),L2-P 4,GND bus,LIVE,POPUP-R
-K3,— empty socket,,Dash node,,,,,,SPARE,SPARE
-K4,— empty socket,,Dash node,,,,,,SPARE,SPARE
+K3,"— empty socket; the slot for the hatch / fuel-door release trigger (luxury D-180, D-274)",,Dash node,,,,,,SPARE,SPARE
+K4,"— empty socket; the slot for the hatch / fuel-door release trigger (luxury D-180, D-274)",,Dash node,,,,,,SPARE,SPARE
 K5,Window DRV up — empty socket,,Sill node,,,,,,SPARE,WIN-D-UP
 K6,Window DRV down — empty socket,,Sill node,,,,,,SPARE,WIN-D-DN
 K7,Window PASS up — empty socket,,Sill node,,,,,,SPARE,WIN-P-UP

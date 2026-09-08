@@ -14,8 +14,8 @@ N12,K1 terminal 87,Receptacle L2-P 3,12,RED,
 N13,K2 terminal 87,Receptacle L2-P 4,12,RED,
 N14,K1 terminal 87a,GND bus,12,BLK,Dynamic braking at rest
 N15,K2 terminal 87a,GND bus,12,BLK,
-N16,O1 splice,Receptacle L4-P 3,12,RED,"Capped window bus — terminated, no load"
-N17,PMU pin 27 (O15),Splice → receptacles L3-P 2 and L4-P 4,12,RED,Capped comfort feeds — dash and sill (mirror heat F14 · D-254); no fuse block this build
+N16,O1 splice,Receptacle L4-P 3,12,RED,"Window bus — lands at the sill node's F8 / F9 positions, no load until the windows (D-274)"
+N17,PMU pin 27 (O15),Splice → receptacles L3-P 2 and L4-P 4,12,RED,"Comfort feeds with no load this build — the dash's ends in the L3-CMF receptacle (D-274), the sill's at F14's position (D-254); no fuse block this build"
 N18,PMU pin 2 (O12),Receptacle L1-P 1,12,RED,
 N19,PMU pin 2 (O12) tap,F15 inline (7.5 A) → receptacle L1-S1 2,16,RED,Alternator excitation
 N20,PMU pin 2 (O12) tap,F16 inline (5 A) → receptacle DP-ICU-A 6,16,RED,"The display's backlight, ignition-switched, through the ICU carrier (D-268)"
@@ -24,7 +24,7 @@ N62,GND bus,Wideband gauge ground,16,BLK,A dash-node device — its ground never
 N21,PMU pin 34 (O20),F12 inline (5 A) → receptacle L4-M 8,16,RED,Interior lamp
 N22,PMU pin 34 (O20) tap,"Receptacles L3-S1 8, DP-ICU-A 2",16,RED,Illumination bus — the ICU's dimming reference; the display follows it
 N23,PMU pin 4 (O10),Receptacle L3-M 1,14,ORN,
-N24,PMU pin 4 (O10) tap,"K12 terminal 86; receptacles DP-ICU-A 1, DP-DCU 1, DP-KEY 3 (capped)",16,RED,
+N24,PMU pin 4 (O10) tap,"K12 terminal 86; receptacles DP-ICU-A 1 (live), DP-DCU 1 and DP-KEY 3 (capped)",16,RED,
 N25,K12 terminal 85,Receptacle L3-S2 9,16,BLU,Stalk WASH contact closes this to ground
 N26,PMU pin 9 (O8),Receptacle L2-M 1 and K12 terminal 30,14,ORN,
 N27,K12 terminal 87,Receptacle L2-M 4,14,ORN,Washer pump
@@ -52,10 +52,10 @@ N48,Receptacle L1-S1 6,Receptacle DP-ICU-B 4,16 sh,shielded,Tach — shield to G
 N49,Receptacle L1-S2 8,Receptacle DP-ICU-B 5,16,GRY,"Charge-lamp line (alternator L) — sense only, read by the ICU; the field is excited by F15 (D-198)"
 N50,Receptacles L1-S2 1 and L3-S2 11,Receptacle DP-ICU-B 6,16,GRY,"Brake warning — two switches, one node; read by the ICU"
 N64,Receptacle L4-S 1,Receptacle DP-ICU-B 3,16,GRY,Fuel level — the ICU excites and reads the sender; the display draws it (D-258 · D-268)
-N66,Receptacle L4-S 3,Receptacle DP-ICU-B 8,16,GRY,Road speed signal — capped at both ends (D-252)
-N67,Receptacle L1-S2 11,Receptacle DP-ICU-B 9,16,GRY,Phase-2 sensor signal spare — capped at both ends (D-250 · D-252)
+N66,Receptacle L4-S 3,Receptacle DP-ICU-B 8,16,GRY,"Road speed signal — the pulse generator's, live at the meters cutover (D-272)"
+N67,Receptacle L1-S2 11,Receptacle DP-ICU-B 9,16,GRY,Phase-2 sensor signal spare — RESERVED at the post; the ICU's spare input is idle until the swap (D-250 · D-271)
 N68,"Fuse block B, spare position (fitted when a phase-2 sensor arrives)",Receptacle L1-S2 9,16,RED,"Phase-2 sensor supply — RESERVED at the post, no fuse fitted (D-250 · D-271); the road-speed supply is an O10 tap now (N70, D-272)"
-N69,Receptacle L2-S 5,Receptacle DP-DCU 2,16,GRY,Outside-air temperature — capped at both ends (D-256)
+N69,Receptacle L2-S 5,Receptacle DP-DCU 2,16,GRY,"Outside-air temperature — the thermistor plugs into L2-OAT at the nose; DP-DCU 2 waits for the DCU (D-256, D-274)"
 N70,O10 node (the accessory taps),Receptacle L4-S 4,16,RED,Road-speed pulse generator supply — lives and dies with the ICU; tens of milliamps (D-272)
 N51,PMU pin 6 (O17),"Receptacles L2-M 5, L4-M 5, DP-ICU-B 10 (tap)",16,RED,
 N52,PMU pin 33 (O18),"Receptacles L2-M 6, L4-M 6, DP-ICU-B 11 (tap)",16,RED,

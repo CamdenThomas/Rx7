@@ -20,4 +20,4 @@ MG18,18,Courtesy lamps,F19
 MG20,19,Fuel pump + fuel sender (the ICU's node from D-258),O5 / L4-S 1
 MG21,20,Ignition coils + alternator excitation,O12 / F15
 MG22,21,"Charge line, brake warning, the three senders, the tach and the road-speed pulse generator (D-272) → DP-ICU-B; the ICU and the display go live and the factory cluster goes dark — GATED on the display proven on the bench (install §1.22, D-268)",DP-ICU-B
-MG23,23,**Start**,O21 / K9
+MG23,22,**Start**,O21 / K9

@@ -107,7 +107,7 @@ RockAuto / PartsGeek / a Mazda specialist. Confirm fit for a **1982 RX-7 GS, FB,
 
 ## 6b · The ICU carrier — ordered after layout (D-259)
 
-Board H-001 and its parts, bought once the enclosure is settled (`QUESTIONS.md` §1 — `Q-126`; `V-082` is checked at layout; install §1.20). Nothing here is in a cart yet and nothing here gates the four carts above. `P114` (the oil-node pull-up) is in the Amazon section because it belongs to the dash node, not the board.
+Board H-001 and its parts — the enclosure is ruled (D-270) and every part is checked against its datasheet (D-273); bought at layout (install §1.20). Nothing here is in a cart yet and nothing here gates the four carts above. `P114` (the oil-node pull-up) is in the Amazon section because it belongs to the dash node, not the board.
 
 {{parts:ICU electronics}}
 

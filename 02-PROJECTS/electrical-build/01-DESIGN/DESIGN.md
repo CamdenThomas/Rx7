@@ -4,37 +4,39 @@
 
 **1982 Mazda RX-7 (FB) · 12A / Weber · automatic · full replacement of the factory electrical system.**
 
-This document is the complete design. Everything a reviewer needs to validate it is in this folder: this file, `GLOSSARY.md` for the notation, and the drawings in `diagrams/`. It contains no purchasing information and no build sequence — those live in their own sections and are derived from this one.
+This document is the complete design. Everything a reviewer needs to validate it is in this folder: this file, `GLOSSARY.md` for the notation, and the master harness sheet in `diagrams/` (§1). It contains no purchasing information and no build sequence — those live in their own sections and are derived from this one.
 
 ## What the system is
 
-An ECUMaster PMU-24 DL solid-state power module replaces the factory fuse box, relays, flasher and control unit. Every load in the car is switched by one of its 22 outputs and protected by a software current limit on that output. Every switch in the car is read as a resistor ladder on one wire into one of its analog inputs, so no switch carries load current. A rear-mounted lithium battery feeds the module through a Class-T fuse over a single 2 AWG cable; the starter has its own cable off the battery post. Four harness legs leave the dash node through Deutsch connectors, cut by what comes out of the car as one piece. The factory instrument cluster stays and is fed from day one. Everything the car may gain later — power windows, mirrors, heated seats, a climate module, a digital cluster, a control panel — has its wire run now, terminated and capped, so no future project reopens the interior.
+An ECUMaster PMU-24 DL solid-state power module replaces the factory fuse box, relays, flasher and control unit. Every load in the car is switched by one of its 22 outputs and protected by a software current limit on that output. Every switch in the car is read as a resistor ladder on one wire into one of its analog inputs, so no switch carries load current. A rear-mounted lithium battery feeds the module through a Class-T fuse over a single 2 AWG cable; the starter has its own cable off the battery post. Four harness legs leave the dash node through Deutsch connectors, cut by what comes out of the car as one piece. The ICU and its 12.3-inch display are the instruments, installed with the harness; the factory cluster lives on the factory harness until the meters cutover and leaves with it (D-268). Everything the car may gain later — power windows, mirrors, heated seats, a climate module, a control panel, radar — has its wire run now, ending in a dust-capped receptacle where it leaves its leg (D-274), so no future project reopens the interior.
 
 ## Scope
 
 | In this design | Not in this design |
 |---|---|
-| Battery relocation and the power backbone | Any luxury-package hardware — window motors, mirrors, seat heaters, climate module, digital cluster, control panel, LED lamps, A/C |
-| The dash node — PMU, busbars, fuse blocks, relays, wake circuit | The design of those future subsystems — only their conductors appear here, as capped wires |
+| Battery relocation and the power backbone | Any luxury-package hardware — window motors, mirrors, seat heaters, climate module, control panel, the display's bezel, LED lamps, A/C |
+| The dash node — PMU, busbars, fuse blocks, relays, wake circuit | The design of those future subsystems — only their conductors appear here, each ending in a dust-capped receptacle where it leaves its leg (D-274) |
 | Four harness legs, the sill node, five dash-post drops | The audio system — the amplifier has its own power and is isolated from every other system (D-230); only the head unit is a load here |
-| Every switch, ladder, sender and lamp the car needs to drive, day and night, in rain | The LS engine swap — its outputs, CAN drop and sensor cavities are reserved and capped |
+| Every switch, ladder, sender and lamp the car needs to drive, day and night, in rain | The LS engine swap — its outputs and sensor cavities are RESERVED at the post (D-271); only the CAN terminator drop is in the bay |
 | The ICU and its 12.3-inch display — the instruments from the meters cutover (D-259, D-268) | The bezel and dash plastics around the display |
 
-**Status words used throughout:** **LIVE** — wired, connected, enabled. **CAPPED** — wire run, terminated in its cavity, far end sealed and labelled. **PLUG** — a cavity with no circuit assigned: fitted with a sealing plug in both halves, no wire, no contact. **RESERVED** — the receptacle half is pinned from the PMU or a fuse position at the post, the plug half carries a sealing plug, and no conductor runs down the leg (D-271): the harness is ready for a future engine at the connector, never in the bay. **EMPTY** — relay socket or fuse holder fitted and labelled with nothing in it.
+**Status words used throughout:** **LIVE** — wired, connected, enabled. **CAPPED** — wire run and terminated; its open end is a dust-capped receptacle where the branch leaves its leg (D-274), or a sealed, labelled cavity at the post where the source side waits. **PLUG** — a cavity with no circuit assigned: fitted with a sealing plug in both halves, no wire, no contact. **RESERVED** — the receptacle half is pinned from the PMU or a fuse position at the post, the plug half carries a sealing plug, and no conductor runs down the leg (D-271): the harness is ready for a future engine at the connector, never in the bay. **EMPTY** — relay socket or fuse holder fitted and labelled with nothing in it.
 
 
 ---
 
 ## 1 · The system in one picture
 
-![architecture](diagrams/00-architecture.svg)
+**The master harness sheet** — every conductor from the battery to the part to its ground on one drawing, rendered by `build` from the same tables as this document (D-275): the PMU's 39 pins, every fuse and relay terminal, every housing with its cavities coloured by state (green LIVE · yellow CAPPED · orange RESERVED · grey PLUG), every leg conductor in its colour and gauge, every device terminal, every ground. Each wire row names both of its ends. It is one big sheet by design: open [`diagrams/HARNESS.svg`](diagrams/HARNESS.svg) in a browser to zoom and search it (Ctrl-F finds any ID), or [`diagrams/HARNESS.html`](diagrams/HARNESS.html) for the same drawing with its bill of materials. Rendered from the current data (`83d8bfa8d0eb`).
+
+![the master harness sheet](diagrams/HARNESS.svg)
 
 | Element | Count |
 |---|---|
 | PMU outputs used | 22 of 22 (10 × 25 A · 6 × 15 A · 6 × 7 A) — O13 / O14 reserved for the swap, disabled |
 | PMU analog inputs used | 10 — A1–A8 dedicated, A15 / A16 on the shared 7 A pins |
 | Harness legs | 4 — L1 engine · L2 front · L3 dash · L4 rear (with the sill sub-node) |
-| Leg housings | 15 (L1-S is two housings) + 2 door + 5 dash-post drops + 2 lugs + the PMU connector = **25 mated pairs** |
+| Housings | 15 at the post (L1-S is two housings) + 8 branch-end receptacles on the legs (D-253, D-274) + 2 door (RESERVED at the sill) + 5 dash-post drops (two of them the ICU's DT13 headers, D-270) + 2 lugs + the PMU connector = **33 mated pairs** |
 | Relays | 4 fitted on the dash node (K1 K2 K11 K12) + K9 in the engine bay · 6 empty sockets (2 dash node, 4 sill) |
 | Fuses | 8 fitted at the dash node + 2 in the engine bay + Class-T + MRBF · 4 labelled empty positions (F8 F9 F13 F14) + 3 spare block positions |
 | Ground nodes | 5 — engine block · front · dash node · rear · sill |
@@ -42,8 +44,6 @@ An ECUMaster PMU-24 DL solid-state power module replaces the factory fuse box, r
 ---
 
 ## 2 · Power backbone
-
-![backbone](diagrams/01-power-backbone.svg)
 
 The Ionic S9 (LiFePO4, 40 Ah, 1,100 CCA, built-in heater, Group 25 case) sits in the cargo bin clamped against g-load in every axis over a backing plate, both posts booted (no box — D-229; boots are the whole of the terminal covering, deliberately, so a post stays reachable for a jump start — D-235). Its case measures 170 W × 230 L × 190 H mm (`params.battery_case_mm`, D-239), and its posts are SAE tapered, so every cable end is a brass post clamp with a 3/8 in stud take-off rather than a ring lug (D-234). Two runs leave the positive post and they never share a fuse:
 
@@ -77,7 +77,7 @@ At the dash post the 2 AWG lands directly on the always-hot busbar. The busbar f
 | F9 | — | Sill node — position labelled, no holder this build | Window branch PASS — the luxury package fits the holder | O1 via L4-P 3 (capped) | EMPTY |
 | F12 | 5 A | Dash node, sealed inline | Interior lamp — L4-M 8 | O20 | LIVE |
 | F13 | — | Dash node, block A (busbar) | Future module — position labelled, no fuse | Busbar | EMPTY |
-| F14 | — | Sill node — position labelled, no holder this build | Mirror heat — the luxury package fits the holder | (unconnected) | EMPTY |
+| F14 | — | Sill node — position labelled, no holder this build | Mirror heat — the luxury package fits the holder | O15 via L4-P 4 (capped) | EMPTY |
 | F15 | 7.5 A | Dash node, sealed inline | Alternator excitation — L1-S1 2 | O12 | LIVE |
 | F16 | 5 A | Dash node, sealed inline | The display's backlight, ignition — DP-ICU-A 6 through the ICU carrier (D-268) | O12 | LIVE |
 | F17 | 30 A | Engine bay, MIDI holder at the starter B+ stud | Start relay K9 contact 30 (10 AWG) | Starter B+ stud | LIVE |
@@ -92,7 +92,7 @@ At the dash post the 2 AWG lands directly on the always-hot busbar. The busbar f
 | Block A | Always-hot busbar | F2 2 A | F3 5 A | F19 3 A | F13 (empty) |
 | Block B | K11 87 (head-unit constant) | F1 10 A | spare | spare | spare |
 
-F12, F15, F16 and F20 are sealed inline holders at the dash node; F8, F9 and F14 are labelled positions at the sill node with no holder until the windows and mirrors arrive; F17 and F18 are bolt-down MIDI holders beside the starter stud. There is no fuse on the O1 → K1 / K2 branches (two identical 12 AWG runs carrying one function; the 25 A soft fuse protects either) and none on O15 (no load this build). F12 stays because a shorted interior lamp must not take the illumination bus and the cluster feed down with it at night.
+F12, F15, F16 and F20 are sealed inline holders at the dash node; F8, F9 and F14 are labelled positions at the sill node with no holder until the windows and mirrors arrive; F17 and F18 are bolt-down MIDI holders beside the starter stud. There is no fuse on the O1 → K1 / K2 branches (two identical 12 AWG runs carrying one function; the 25 A soft fuse protects either) and none on O15 (no load this build). F12 stays because a shorted interior lamp must not take the illumination bus — the ICU's dimming reference — down with it at night.
 
 
 ### Software limits — the rule
@@ -129,7 +129,7 @@ A limit is set from a measured figure, never from an estimate. Motors: measured 
 | 2 | L | O12 | `IGNITION` | 12 | RED | Ignition — coils and igniters; also the F15 alternator-excitation branch and the F16 branch (the display's backlight through the ICU) | L1-P 1 · F15 → L1-S1 2 · F16 → DP-ICU-A 6 · F20 | 5.0 | 25.0 cap | 2× 100 ms | LIVE |
 | 1 | L | O13 | `LS_ECU` | 12 | RED | Reserved for the LS swap — ECU + injectors | L1-P 2 (reserved at the post) | — | — | — | CAPPED |
 | 14 | L | O14 | `LS_FAN` | 12 | RED | Reserved for the LS swap — cooling fan | L1-P 3 (reserved at the post) | — | — | — | CAPPED |
-| 27 | L | O15 | `COMFORT` | 12 | RED | Comfort bus — two capped feeds: the dash (L3-P 2) and the sill (L4-P 4 — mirror heat F14 · D-254). No fuse block this build; the luxury package adds its own on this output | L3-P 2 (capped) · L4-P 4 (capped) (spliced at the post) | — | — | — | LIVE |
+| 27 | L | O15 | `COMFORT` | 12 | RED | Comfort bus — two feeds with no load this build: the dash (L3-P 2 → the L3-CMF receptacle behind the centre stack, D-274) and the sill (L4-P 4 — F14's position, D-254). No fuse block this build; the luxury package adds its own on this output | L3-P 2 (capped) · L4-P 4 (capped) (spliced at the post) | — | — | — | LIVE |
 | 28 | L | O16 | `BLOWER` | 12 | RED | Blower motor — steady feed; speed is the ≥ 20 kHz final stage at L3-BLW on the DCU's PWM (D-257); no motor this build: channel configured and DISABLED (K-023 · D-253) | L3-P 1 (capped) | 15.0 | 25.0 cap | 8× 600 ms | LIVE |
 | 11 | S | O6 | `TAIL_PARK` | 14 | ORN | Tail · park · side markers · licence | L2-M 7 · L4-M 1 | 4.4 | **7.5 meas** | 10× 100 ms | LIVE |
 | 10 | S | O7 | `BRAKE` | 14 | ORN | Brake lamps | L4-M 2 | 3.9 | **9.5 meas** | 10× 100 ms | LIVE |
@@ -194,8 +194,6 @@ This is **not** the factory scheme. Factory colours are two-letter codes (first 
 
 The dash node is everything between the 2 AWG feed and the harness legs: the PMU, the always-hot busbar, the ground bus, two single-source fuse blocks, four sealed inline fuses, six relay sockets (four populated), the wake strip with its two sense stages, the two bias resistors, the wideband gauge hidden behind the dash (D-244), and the receptacle for every leg and drop. It is not one plate. It mounts on one or more small carrier panels low in the dash, laid out with the parts in hand once the envelope is measured (§5.4), and the electrical design does not depend on how it is split — every conductor in §5.3 is the same whether the pieces share a panel or not. Nothing on the dash node is spliced anywhere else; every splice in the car is either at the dash node or at a device.
 
-![dash node](diagrams/02-dash-node-schematic.svg)
-
 
 ### 5.1 · Relays
 
@@ -203,8 +201,8 @@ The dash node is everything between the 2 AWG feed and the harness legs: the PMU
 |---|---|---|---|---|---|---|
 | K1 | Pop-up LH run | ISO micro SPDT 40 A, integral diode | Dash node | 86 ← O1 · 85 → L3-S1 10 (wink R NC → ground) | 30 ← O1 splice (12 AWG) · 87 → L2-P 3 · 87a → GND bus (dynamic brake) | LIVE |
 | K2 | Pop-up RH run | ISO micro SPDT 40 A, integral diode | Dash node | 86 ← O1 · 85 → L3-S1 9 (wink L NC → ground) | 30 ← O1 splice (12 AWG) · 87 → L2-P 4 · 87a → GND bus | LIVE |
-| K3 | — empty socket | — | Dash node | — | — | SPARE |
-| K4 | — empty socket | — | Dash node | — | — | SPARE |
+| K3 | — empty socket; the slot for the hatch / fuel-door release trigger (luxury D-180, D-274) | — | Dash node | — | — | SPARE |
+| K4 | — empty socket; the slot for the hatch / fuel-door release trigger (luxury D-180, D-274) | — | Dash node | — | — | SPARE |
 | K5 | Window DRV up — empty socket | — | Sill node | — | — | SPARE |
 | K6 | Window DRV down — empty socket | — | Sill node | — | — | SPARE |
 | K7 | Window PASS up — empty socket | — | Sill node | — | — | SPARE |
@@ -243,8 +241,8 @@ O22 (`KEEP_ALIVE`) lets the PMU finish its own shutdown — the interior-lamp fa
 | K2 terminal 87 | Receptacle L2-P 4 | 12 | RED |  |
 | K1 terminal 87a | GND bus | 12 | BLK | Dynamic braking at rest |
 | K2 terminal 87a | GND bus | 12 | BLK |  |
-| O1 splice | Receptacle L4-P 3 | 12 | RED | Capped window bus — terminated, no load |
-| PMU pin 27 (O15) | Splice → receptacles L3-P 2 and L4-P 4 | 12 | RED | Capped comfort feeds — dash and sill (mirror heat F14 · D-254); no fuse block this build |
+| O1 splice | Receptacle L4-P 3 | 12 | RED | Window bus — lands at the sill node's F8 / F9 positions, no load until the windows (D-274) |
+| PMU pin 27 (O15) | Splice → receptacles L3-P 2 and L4-P 4 | 12 | RED | Comfort feeds with no load this build — the dash's ends in the L3-CMF receptacle (D-274), the sill's at F14's position (D-254); no fuse block this build |
 | PMU pin 2 (O12) | Receptacle L1-P 1 | 12 | RED |  |
 | PMU pin 2 (O12) tap | F15 inline (7.5 A) → receptacle L1-S1 2 | 16 | RED | Alternator excitation |
 | PMU pin 2 (O12) tap | F16 inline (5 A) → receptacle DP-ICU-A 6 | 16 | RED | The display's backlight, ignition-switched, through the ICU carrier (D-268) |
@@ -253,7 +251,7 @@ O22 (`KEEP_ALIVE`) lets the PMU finish its own shutdown — the interior-lamp fa
 | PMU pin 34 (O20) | F12 inline (5 A) → receptacle L4-M 8 | 16 | RED | Interior lamp |
 | PMU pin 34 (O20) tap | Receptacles L3-S1 8, DP-ICU-A 2 | 16 | RED | Illumination bus — the ICU's dimming reference; the display follows it |
 | PMU pin 4 (O10) | Receptacle L3-M 1 | 14 | ORN |  |
-| PMU pin 4 (O10) tap | K12 terminal 86; receptacles DP-ICU-A 1, DP-DCU 1, DP-KEY 3 (capped) | 16 | RED |  |
+| PMU pin 4 (O10) tap | K12 terminal 86; receptacles DP-ICU-A 1 (live), DP-DCU 1 and DP-KEY 3 (capped) | 16 | RED |  |
 | K12 terminal 85 | Receptacle L3-S2 9 | 16 | BLU | Stalk WASH contact closes this to ground |
 | PMU pin 9 (O8) | Receptacle L2-M 1 and K12 terminal 30 | 14 | ORN |  |
 | K12 terminal 87 | Receptacle L2-M 4 | 14 | ORN | Washer pump |
@@ -281,10 +279,10 @@ O22 (`KEEP_ALIVE`) lets the PMU finish its own shutdown — the interior-lamp fa
 | Receptacle L1-S2 8 | Receptacle DP-ICU-B 5 | 16 | GRY | Charge-lamp line (alternator L) — sense only, read by the ICU; the field is excited by F15 (D-198) |
 | Receptacles L1-S2 1 and L3-S2 11 | Receptacle DP-ICU-B 6 | 16 | GRY | Brake warning — two switches, one node; read by the ICU |
 | Receptacle L4-S 1 | Receptacle DP-ICU-B 3 | 16 | GRY | Fuel level — the ICU excites and reads the sender; the display draws it (D-258 · D-268) |
-| Receptacle L4-S 3 | Receptacle DP-ICU-B 8 | 16 | GRY | Road speed signal — capped at both ends (D-252) |
-| Receptacle L1-S2 11 | Receptacle DP-ICU-B 9 | 16 | GRY | Phase-2 sensor signal spare — capped at both ends (D-250 · D-252) |
+| Receptacle L4-S 3 | Receptacle DP-ICU-B 8 | 16 | GRY | Road speed signal — the pulse generator's, live at the meters cutover (D-272) |
+| Receptacle L1-S2 11 | Receptacle DP-ICU-B 9 | 16 | GRY | Phase-2 sensor signal spare — RESERVED at the post; the ICU's spare input is idle until the swap (D-250 · D-271) |
 | Fuse block B, spare position (fitted when a phase-2 sensor arrives) | Receptacle L1-S2 9 | 16 | RED | Phase-2 sensor supply — RESERVED at the post, no fuse fitted (D-250 · D-271); the road-speed supply is an O10 tap now (N70, D-272) |
-| Receptacle L2-S 5 | Receptacle DP-DCU 2 | 16 | GRY | Outside-air temperature — capped at both ends (D-256) |
+| Receptacle L2-S 5 | Receptacle DP-DCU 2 | 16 | GRY | Outside-air temperature — the thermistor plugs into L2-OAT at the nose; DP-DCU 2 waits for the DCU (D-256, D-274) |
 | O10 node (the accessory taps) | Receptacle L4-S 4 | 16 | RED | Road-speed pulse generator supply — lives and dies with the ICU; tens of milliamps (D-272) |
 | PMU pin 6 (O17) | Receptacles L2-M 5, L4-M 5, DP-ICU-B 10 (tap) | 16 | RED |  |
 | PMU pin 33 (O18) | Receptacles L2-M 6, L4-M 6, DP-ICU-B 11 (tap) | 16 | RED |  |
@@ -314,7 +312,7 @@ There is no layout drawing: the layout is decided with the parts on the bench an
 
 ## 6 · The legs
 
-A leg is a bundle that can be removed without disturbing any other leg. Every device in a leg is fed and returned entirely within it; no ground crosses a leg connector. Power and signal ride in separate housings so a 25 A motor feed never shares a bundle with a ladder wire. Leg side is always the socket housing (`06-…S`), box side always the pin housing (`04-…P`), so a leg cannot be plugged into the wrong half.
+A leg is a bundle that can be removed without disturbing any other leg. Every device in a leg is fed and returned entirely within it; no ground crosses a leg connector. Power and signal ride in separate housings so a 25 A motor feed never shares a bundle with a ladder wire. Leg side is always the socket housing (`06-…S`), box side always the pin housing (`04-…P`), so a leg cannot be plugged into the wrong half. The ICU's two receptacles are DT13 PCB headers on its board (D-270); a branch-end receptacle on a leg is the pin half too, and the part that arrives brings the socket plug (D-274).
 
 | Series | Contact | Wire | Rated | Used for |
 |---|---|---|---|---|
@@ -335,13 +333,13 @@ A leg is a bundle that can be removed without disturbing any other leg. Every de
 | L3-M | L3 Dash | Medium | DT06-2S | DT04-2P | 2 | 2 | W2S + W2P | Dash post | Head unit + USB-C |
 | L3-BLW | L3 Dash | Blower | DTP06-2S | DTP04-2P | 2 | 2 | WP-2S + WP-2P | HVAC case | Blower motor receptacle — the motor pigtail (or a final-stage adapter) plugs in; dust-capped this build (D-253) |
 | L3-S1 | L3 Dash | Signal | DT06-12S | DT04-12P | 12 | 12 | W12S + W12P | Dash post | Every ladder and switch input |
-| L3-S2 | L3 Dash | Signal | DT06-12S | DT04-12P | 12 | 11 | W12S + W12P | Dash post | Wake sources, switch supply, courtesy, capped window commands |
-| L3-S3 | L3 Dash | Signal | DT06-8S | DT04-8P | 8 | 3 | W8S + W8P | Dash post | Capped pass-through + plugs |
-| L4-P | L4 Rear | Power | DTP06-4S | DTP04-4P | 4 | 4 | WP-4S + WP-4P | Dash post | Defog, fuel pump, capped window bus |
-| L4-M | L4 Rear | Medium | DT06-12S | DT04-12P | 12 | 12 | W12S + W12P | Dash post | Rear lamps, interior lamp, capped solenoids and window commands |
-| L4-S | L4 Rear | Signal | DT06-8S | DT04-8P | 8 | 8 | W8S + W8P | Dash post | Fuel sender, door ladder, courtesy, capped pass-through |
+| L3-S2 | L3 Dash | Signal | DT06-12S | DT04-12P | 12 | 11 | W12S + W12P | Dash post | Wake sources, switch supply, courtesy, the window commands (→ L3-WIN, D-274) |
+| L3-S3 | L3 Dash | Signal | DT06-8S | DT04-8P | 8 | 3 | W8S + W8P | Dash post | Radar pass-through (→ L3-RDR, D-274) + plugs |
+| L4-P | L4 Rear | Power | DTP06-4S | DTP04-4P | 4 | 4 | WP-4S + WP-4P | Dash post | Defog, fuel pump, the window bus and comfort feed to the sill node |
+| L4-M | L4 Rear | Medium | DT06-12S | DT04-12P | 12 | 12 | W12S + W12P | Dash post | Rear lamps, interior lamp, the release solenoids (wired, awaiting their trigger — D-274), window commands to the sill sockets |
+| L4-S | L4 Rear | Signal | DT06-8S | DT04-8P | 8 | 8 | W8S + W8P | Dash post | Fuel sender, door ladder, road speed (D-272), courtesy, radar pass-through (→ L4-RDR, D-274) |
 | L4-S2 | L4 Rear | Signal | DT06-8S | DT04-8P | 8 | 5 | W8S + W8P | Dash post | Mirror-adjust commands dash → sill (D-255) |
-| D1 | L4 Rear (sill) | Door | DT06-08S | DT04-08P | 8 | 7 | W8S + W8P | Sill node | Driver door — no live conductor this build |
+| D1 | L4 Rear (sill) | Door | DT06-08S | DT04-08P | 8 | 7 | W8S + W8P | Sill node | Driver door — RESERVED: pinned on the node side, sealing plugs in the door plug; the door harness comes with the mirror and the window (D-274) |
 | D2 | L4 Rear (sill) | Door | DT06-08S | DT04-08P | 8 | 7 | W8S + W8P | Sill node | Passenger door — identical to D1 |
 | DP-DIAG | Drop | Port | DT06-4S | DT04-4P | 4 | 4 | W4S + W4P | Glovebox | CAN1 laptop port + 2 A constant. 120 Ω here |
 | DP-ICU-A | Drop | Module | DT06-6S | DT13-06PA | 6 | 6 | W6S | ICU enclosure wall | The ICU's power and bus drop — live from install (D-259): a DT06-6S plug on a 150 mm tail from the dash post mates a flanged DT13 PCB receptacle in the ICU's enclosure wall (D-270); cavities 1 · 3 · 4 · 5 the same as DP-DCU; 6 is the F16 aux, the display's backlight (D-268) |
@@ -358,9 +356,7 @@ A leg is a bundle that can be removed without disturbing any other leg. Every de
 
 ### L1 · ENGINE
 
-**Boundary** the firewall grommet — comes out for engine service or a swap. **Ground** the engine block; nothing returns through the firewall. **Rule** this leg carries only what the engine on the mounts needs today: no capped stubs for future parts — unused cavities get sealing plugs. The three LS reservations are the one exception, because the swap is a known quantity. The tach wire is shielded, grounded at the dash node end only, and rides in the signal housing away from the coil feed.
-
-![L1 · ENGINE](diagrams/10-L1-engine.svg)
+**Boundary** the firewall grommet — comes out for engine service or a swap. **Ground** the engine block; nothing returns through the firewall. **Rule** this leg carries only what the engine on the mounts needs today: no capped stubs for future parts — unused cavities get sealing plugs. The LS reservations are pinned at the post, not run into the bay (RESERVED, D-271). The tach wire is shielded, grounded at the dash node end only, and rides in the signal housing away from the coil feed.
 
 
 **L1-P** · DTP06-4S → DTP04-4P · 4 cavities · 12 AWG, size 12. Unused cavity gets a sealing plug
@@ -409,8 +405,6 @@ A leg is a bundle that can be removed without disturbing any other leg. Every de
 ### L2 · FRONT
 
 **Boundary** firewall to radiator support, cowl included — comes out with the nose, bumper and pop-up assemblies. **Ground** the front star stud on the radiator support. One DTP-4 shell carries both headlight feeds and both pop-up run feeds (the motors are single-direction, so each needs one run conductor). Keep L2-S out of the L2-P bundle: pop-up motor feeds are the noisiest conductors in the nose and the ladders the most sensitive. Horns get a deliberate ground wire — the factory grounded them through their brackets.
-
-![L2 · FRONT](diagrams/11-L2-front.svg)
 
 
 **L2-P** · DTP06-4S → DTP04-4P · 4 cavities · Headlights + both pop-up run feeds
@@ -467,8 +461,6 @@ Two DT-2 receptacles on the L2 loom, not at the post, where the future circuits 
 
 **Boundary** the dash structure. **Ground** the dash node's ground bus. Almost entirely signal: two heavy conductors, two medium and everything else 16 AWG, because every multi-position switch is a ladder on one wire. The dash node and the five drops live here but belong to no leg.
 
-![L3 · DASH](diagrams/12-L3-dash.svg)
-
 
 **L3-P** · DTP06-2S → DTP04-2P · 2 cavities · Blower + comfort bus
 
@@ -501,7 +493,7 @@ Two DT-2 receptacles on the L2 loom, not at the post, where the future circuits 
 | 11 | Horn + wink request | A8 (pin 19), spliced at the post | 16 | GRY | LIVE | Horn pad through 8.2 kΩ · wink L NO through 18 kΩ · wink R NO through 33 kΩ — three resistors joined onto this wire |
 | 12 | ACC — wake source | Wake strip input 1 | 16 | BLU | LIVE | Ignition switch ACC terminal (raw 12 V) |
 
-**L3-S2** · DT06-12S → DT04-12P · 12 cavities · Wake sources, switch supply, courtesy, capped window commands
+**L3-S2** · DT06-12S → DT04-12P · 12 cavities · Wake sources, switch supply, courtesy, the window commands (→ L3-WIN, D-274)
 
 | Cav | Circuit | From (box side) | AWG | Colour | State | Lands on (device end) |
 |---|---|---|---|---|---|---|
@@ -518,7 +510,7 @@ Two DT-2 receptacles on the L2 loom, not at the post, where the future circuits 
 | 11 | Parking brake switch → brake warning lamp | → DP-ICU-B 6 (post splice) | 16 | GRY | LIVE | Parking brake switch C-04 terminal BR (switch body grounds through the lever bracket) |
 | 12 | — empty | — | — | — | PLUG | Sealing plug, size 16 |
 
-**L3-S3** · DT06-8S → DT04-8P · 8 cavities · Capped pass-through + plugs
+**L3-S3** · DT06-8S → DT04-8P · 8 cavities · Radar pass-through (→ L3-RDR, D-274) + plugs
 
 | Cav | Circuit | From (box side) | AWG | Colour | State | Lands on (device end) |
 |---|---|---|---|---|---|---|
@@ -582,10 +574,8 @@ The same pattern for every other future circuit on the leg (D-274): the conducto
 
 **Boundary** the tunnel entry at the console, back to the hatch, plus the sill node, where the door receptacles wait — `D1` / `D2` are RESERVED (D-274): pinned on the node side, sealing plugs in the door plugs, nothing run into a door until its harness comes with the mirror and the window. **Ground** the rear star stud in the cargo bin; the doors ground at the sill stud, never inside a door. The tunnel run is the longest in the car — voltage drop, not current, sets the 12 AWG on the defog and pump feeds. The fuel sender wire is routed apart from the fuel pump feed.
 
-![L4 · REAR](diagrams/13-L4-rear.svg)
 
-
-**L4-P** · DTP06-4S → DTP04-4P · 4 cavities · Defog, fuel pump, capped window bus
+**L4-P** · DTP06-4S → DTP04-4P · 4 cavities · Defog, fuel pump, the window bus and comfort feed to the sill node
 
 | Cav | Circuit | From (box side) | AWG | Colour | State | Lands on (device end) |
 |---|---|---|---|---|---|---|
@@ -594,7 +584,7 @@ The same pattern for every other future circuit on the leg (D-274): the conducto
 | 3 | Window motor bus feed | O1 (pin 38) splice | 12 | RED | CAPPED | Lands at the sill node — the K5–K8 contact feed through the F8 / F9 positions (holders come with the windows); the node is this branch's end (D-274) |
 | 4 | Comfort feed → sill (mirror heat F14) | O15 (pin 27) splice | 12 | RED | CAPPED | Lands at the sill node — F14's labelled position (no holder), this branch's end (D-274); the DCU switches mirror heat through it later (D-254, restores D-181) |
 
-**L4-M** · DT06-12S → DT04-12P · 12 cavities · Rear lamps, interior lamp, capped solenoids and window commands
+**L4-M** · DT06-12S → DT04-12P · 12 cavities · Rear lamps, interior lamp, the release solenoids (wired, awaiting their trigger — D-274), window commands to the sill sockets
 
 | Cav | Circuit | From (box side) | AWG | Colour | State | Lands on (device end) |
 |---|---|---|---|---|---|---|
@@ -611,7 +601,7 @@ The same pattern for every other future circuit on the leg (D-274): the conducto
 | 11 | Window PASS up command → K7 coil | ← L3-S2 5 | 16 | BLU | CAPPED | K7 socket, terminal 86 at the sill node — landed in the empty socket, which is this branch's end; the relay comes with the power windows (D-274) |
 | 12 | Window PASS down command → K8 coil | ← L3-S2 6 | 16 | BLU | CAPPED | K8 socket, terminal 86 at the sill node — landed in the empty socket, which is this branch's end; the relay comes with the power windows (D-274) |
 
-**L4-S** · DT06-8S → DT04-8P · 8 cavities · Fuel sender, door ladder, courtesy, capped pass-through
+**L4-S** · DT06-8S → DT04-8P · 8 cavities · Fuel sender, door ladder, road speed (D-272), courtesy, radar pass-through (→ L4-RDR, D-274)
 
 | Cav | Circuit | From (box side) | AWG | Colour | State | Lands on (device end) |
 |---|---|---|---|---|---|---|
@@ -656,8 +646,6 @@ The rear end of the radar pass-through: a DT-4 receptacle at the rear node, dust
 
 A small panel behind the driver's kick panel: the D1 / D2 receptacles (pinned on the node side and RESERVED — the door plugs carry sealing plugs until the door harness is built, D-274), a ground stud to the chassis, four empty relay sockets and three labelled fuse positions (F8, F9, F14 — the holders come with the windows and mirrors). It is a sub-assembly of the rear leg, not a fifth leg. **No conductor on it is live in this build** — and nothing runs through a door boot: the door receptacles are pinned on the node side and their plugs sealed (RESERVED, D-274), so the door harness is built with the mirror and the window and never touches the leg. The door jamb switches are body-mounted plungers wired at the sill, not through the door connectors.
 
-![sill](diagrams/14-sill-doors.svg)
-
 
 **D1**
 
@@ -689,9 +677,7 @@ A small panel behind the driver's kick panel: the D1 / D2 receptacles (pinned on
 
 ## 7 · Dash-post drops
 
-Five connectors on the dash node edge for devices that sit inches from it and belong to no leg. Their grounds are the only grounds in the car that cross a connector.
-
-![drops](diagrams/15-dash-post-drops.svg)
+Five connectors for devices that sit inches from the dash node and belong to no leg — three receptacles on the node edge and the ICU's two tails into its enclosure (D-270). Their grounds are the only grounds in the car that cross a connector.
 
 
 ### 7.1 · The instruments — the ICU and its display, not a cluster drop
@@ -721,7 +707,7 @@ The ICU's power and bus drop — live from install (D-259). Cavities 1 · 3 · 4
 | 6 | +12 V ignition — the display's backlight (F16) | F16 (5 A) ← O12 | 16 | RED | LIVE | ICU tail A (D-270) — the display's backlight feed through the carrier (D-268) |
 
 ### DP-ICU-B
-The ICU's sensor drop — live from install. The three senders, the tach, the charge and brake lines and the three tell-tale senses **terminate** here: the ICU excites the senders, reads everything, and the display draws it (D-258, D-268) — the harness has no cluster drop. Cavity 7 is a sealing plug (no oil-temperature sender on the 12A, D-264); 8 (road speed, `L4-S 3`) and 9 (the engine-leg spare) are capped and belong to `Q-309` and `Q-127`. Fuel level is here and not on the PMU; A7 reads the oil-pressure node, which the PMU itself excites (D-249, D-260).
+The ICU's sensor drop — live from install. The three senders, the tach, the charge and brake lines and the three tell-tale senses **terminate** here: the ICU excites the senders, reads everything, and the display draws it (D-258, D-268) — the harness has no cluster drop. Cavity 7 is a sealing plug (no oil-temperature sender on the 12A, D-264); 8 is road speed (`L4-S 3`), live at the meters cutover (D-272); 9 is the engine-leg spare, wired to `L1-S2 11` at the post and idle until the swap (D-271). Fuel level is here and not on the PMU; A7 reads the oil-pressure node, which the PMU itself excites (D-249, D-260).
 
 | Cav | Circuit | From | AWG | Colour | State | Lands on |
 |---|---|---|---|---|---|---|
@@ -739,7 +725,7 @@ The ICU's sensor drop — live from install. The three senders, the tach, the ch
 | 12 | High-beam tell-tale sense | O3 (pin 26), tap | 16 | RED | LIVE | ICU tail B (D-270) — the display draws it |
 
 ### DP-DCU
-Future climate module. Power, ground, CAN2 — capped at the post.
+Future climate module. Power, ground, CAN2 and the outside-air line — capped at the post; the thermistor itself plugs into `L2-OAT` at the nose (D-274).
 
 | Cav | Circuit | From | AWG | Colour | State | Lands on |
 |---|---|---|---|---|---|---|
@@ -763,8 +749,6 @@ Future control panel. CAN2, switched 12 V, ground — a dust-capped receptacle a
 ---
 
 ## 8 · Switches and how they are read
-
-![ladders](diagrams/04-switch-ladders.svg)
 
 **The column combination switch stays** (light / dimmer / passing, turn / hazard, wiper / washer) — it is mechanically sound. **Every other switch is new:** ignition switch (electrical portion), brake pedal switch, two wink pushbuttons, four plunger switches (door jambs, glove box, luggage lid). The horn stays on the steering pad.
 
@@ -911,19 +895,15 @@ Written the way it is typed into the PMU client. Channel names match §4.1.
 | Voltage | Warn below 12.0 V. Below 11.5 V shed COMFORT, INTERIOR and ACCESSORY (D-248 — COMFORT alone had no load to shed). Warn above 15.0 V |
 | Sleep | Any wake-strip input high wakes the PMU. With no key, no door and nothing on A8, KEEP_ALIVE drops 30 s after the last change and the PMU sleeps; K11 opens with it (audio memory relies on the head unit's own non-volatile memory). A stuck door cannot hold the car awake: with A16 == OFF, KEEP_ALIVE releases after 30 minutes whatever A6 reads (D-248) |
 
-![popups](diagrams/05-popups-and-wink.svg)
-
 
 ### CAN
 
-**CAN1** — laptop only, 1 Mbps fixed, no internal termination: 120 Ω at the PMU pins and 120 Ω in the DP-DIAG plug, or the client will never see the device. **CAN2** — vehicle bus, 500 kbps, software termination ON at the PMU; the far-end 120 Ω sits capped at the engine-bay drop (L1-S1 9/10). Nothing else is on CAN2 in this build; the three dash drops are capped.
+**CAN1** — laptop only, 1 Mbps fixed, no internal termination: 120 Ω at the PMU pins and 120 Ω in the DP-DIAG plug, or the client will never see the device. **CAN2** — vehicle bus, 500 kbps, software termination ON at the PMU; the far-end 120 Ω sits capped at the engine-bay drop (L1-S1 9/10). On CAN2 this build: the PMU, the ICU (`DP-ICU-A 4/5`) and the wideband gauge's AEMnet (D-244, D-266); `DP-DCU` and `DP-KEY` are capped.
 
 
 ---
 
 ## 10 · Grounds
-
-![grounds](diagrams/07-ground-tree.svg)
 
 One star node per zone, each straight to bare chassis: the engine block (with its own 2 AWG strap to the body), a stud on the radiator support, the dash node's ground bus, a stud in the cargo bin (where the battery negative lands), and a stud at the sill. Every device returns to its zone's node on its own wire, sized to its feed. The fuel pump has a dedicated return — it must never share a ground with a lamp. Pin 25 carries the flyback return for every inductive load on the PMU and is the shortest, heaviest wire on the dash node.
 
@@ -986,7 +966,7 @@ Wire gauge is set by voltage drop over the run and by crimp robustness, not by a
 | Ignition coils + igniters | O12 | 25 A | 4–6, rising with rpm | **1.8 idle · 2.4 at 3000 (one branch)** | twin coil rotary |
 | Horns, pair | O11 | 15 A | 4–8 | — | factory 15 A shared fuse |
 | Washer pump | K12 ← O8 | — | 3–5 | — | class figure |
-| Accessory bus — head unit, USB-C, K12 coil | O10 | 15 A | ~10 worst case | — | both USB ports loaded |
+| Accessory bus — head unit, USB-C, K12 coil, the ICU (~0.8 A peak, D-273), the road-speed sensor (D-272) | O10 | 15 A | ~10 worst case | — | both USB ports loaded |
 | Sleeping draw | — | — | PMU 150 mA, nothing else | **0 on the factory harness** | K11 opens when the PMU sleeps |
 
 ---
@@ -1037,7 +1017,7 @@ The far end of every conductor. Factory two-letter colours name the terminal on 
 | L4 | **Luggage lamp** — H-11 + switch H-12 | + → L4-S 8<br>− via the lid switch → rear star, 16 AWG BLK | — |
 | L4 | **Door jamb switches** — New plunger switches ×2 (B-pillar) | Driver → 33 kΩ → sill splice → L4-S 2<br>Passenger → 8.2 kΩ → sill splice → L4-S 2 | body: switch body grounds in the jamb |
 | L4 | **Rear star node** — New — stud in the cargo bin | stud → chassis, 10 AWG BLK; the battery 2 AWG negative lands here too | — |
-| Sill | **Sill node** — New panel behind the driver kick panel | D1 / D2 receptacles → all conductors capped<br>Ground stud → chassis<br>K5–K8 sockets → fitted, empty<br>F8 / F9 / F14 → positions labelled, no holders this build | — |
+| Sill | **Sill node** — New panel behind the driver kick panel | D1 / D2 receptacles → pinned on the node side, door plugs filled with sealing plugs (RESERVED, D-274)<br>Ground stud → chassis<br>K5–K8 sockets → fitted, empty<br>F8 / F9 / F14 → positions labelled, no holders this build | — |
 | L3 | **Wideband AFR gauge (controller)** — AEM 30-0300 X-Series, relocated out of sight | +12 V → F20 (ignition-fed, so the heater is live while cranking)<br>Ground → GND bus, 16 AWG BLK<br>AEMnet CAN H/L → the CAN2 splice at the dash node. The gauge's AEMnet lead ends in a DTM 2-way: **cut the pigtail and butt-splice to the CAN2 pair** — no DTM tooling enters the build (D-219)<br>0–5 V analog out: not used<br>Sensor lead: the gauge's own cable through the firewall grommet to the bung — never cut, never extended | — |
 | Drop | **ICU — instrument cluster unit** — Carrier H-001 behind the binnacle, Teensy 4.1 socketed (D-259); the display ribbons to it (D-268) | Tail A (DT06-6S from the dash post) → the board's DT13-06PA: DP-ICU-A 1–6 (logic 12 V, illumination reference, ground, CAN2, the F16 backlight feed) · tail B (DT06-12S) → DT13-12PA: DP-ICU-B 1–12 (senders, tach, lamp lines, tell-tale senses; 7 plugged, 8 road speed, 9 the spare input) · BT817 board and the 12.3-inch bar on a ribbon through the enclosure grommet · the ESP32-C3 radio on the board (D-267) · printed ASA / PETG enclosure (D-270) | DP-ICU-A 3 → GND bus |
 | Drop | **Digital display — 12.3-inch bar** — On a plate in the binnacle aperture until the luxury bezel (D-268; luxury FT34) | Ribbon from the ICU carrier — QSPI to the BT817 board, the backlight from the F16 aux through the carrier's switch FET (IC13 / IC21) · page button beside it (IC22) · nothing on the harness | through the ICU — DP-ICU-A 3 |
@@ -1053,7 +1033,7 @@ The reviewer's checklist. Every line should be checkable from this folder alone.
 
 - Every one of the 39 PMU cavities in §4.1 is allocated exactly once, and its `Goes to` appears as a `From` in a cavity table or the dash node list.
 - Every LIVE cavity in §6 and §7 has a box-side source, a wire gauge and colour, and a device terminal it lands on.
-- Every CAPPED cavity has a defined far-end location; every PLUG cavity has a sealing plug in both halves.
+- Every CAPPED cavity has a defined far-end location — a branch-end receptacle or a sealed cavity at the post; every PLUG cavity has a sealing plug in both halves; every RESERVED cavity is pinned on the node side with a sealing plug in the leg plug (D-271, D-274).
 - Every relay has a coil source, a coil return, a contact source and a contact load (§5.1). K9's contact feed is fused (F17).
 - Every fuse in §3 has a source and a load, and every fused branch in the cavity tables names its fuse.
 - Every device in §12 has a ground path to its zone's node (§10), and the fuel pump's return is dedicated.
@@ -1062,7 +1042,7 @@ The reviewer's checklist. Every line should be checkable from this folder alone.
 - The wake circuit (§5.2) can wake the PMU from every source that must work with the key out: hazard, horn, wink, door, brake.
 - Nothing in the engine leg is a stub for a future part.
 - Every conductor's gauge is at or above what its output's enable-at limit requires: 12 AWG above 15 A, 14 AWG above 13 A, 16 AWG at 13 A and below and on every signal. A 16 AWG tap off a heavier feed (an indicator, a capped module drop) is allowed only where the cavity notes it as a tap (D-232).
-- The three measurements the design still waits on are only dimensions: the dash envelope for the dash node's panels, the harness routes for wire lengths, and the pop-up motor ohm check that decides whether R and RY are bridged.
+- The measurements the design still waits on are only dimensions: the dash envelope for the dash node's panels, the harness routes for wire lengths, the binnacle aperture for the display plate, the speedo-drive boss thread for the pulse generator's adapter (D-272), and the pop-up motor ohm check that decides whether R and RY are bridged.
 
 
 *The tables in this file are the record. The install plan's tables are printed from the same rows and must never disagree with them.*

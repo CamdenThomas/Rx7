@@ -239,11 +239,11 @@ RockAuto / PartsGeek / a Mazda specialist. Confirm fit for a **1982 RX-7 GS, FB,
 
 ## 6b · The ICU carrier — ordered after layout (D-259)
 
-Board H-001 and its parts, bought once the enclosure is settled (`QUESTIONS.md` §1 — `Q-126`; `V-082` is checked at layout; install §1.20). Nothing here is in a cart yet and nothing here gates the four carts above. `P114` (the oil-node pull-up) is in the Amazon section because it belongs to the dash node, not the board.
+Board H-001 and its parts — the enclosure is ruled (D-270) and every part is checked against its datasheet (D-273); bought at layout (install §1.20). Nothing here is in a cart yet and nothing here gates the four carts above. `P114` (the oil-node pull-up) is in the Amazon section because it belongs to the dash node, not the board.
 
 | Item | Spec | Qty | ≈ $ | Note |
 |---|---|---|---|---|
-| ICU carrier PCB H-001 | 2 boards, 2-layer, JLCPCB / OSH Park | 2 |  | one fitted, one spare — laid out after Q-126 (the enclosure); V-082 checked at layout |
+| ICU carrier PCB H-001 | 2 boards, 2-layer, JLCPCB / OSH Park | 2 |  | one fitted, one spare — laid out to D-270's enclosure with D-273's parts |
 | CAN transceiver, 3.3 V IO, 5 V bus, VIO pin | SOIC-8, automotive | 2 | 3 | one fitted, one spare — suffix confirmed at V-057 |
 | 12 V → 5 V automotive buck, 3 A | LMR36015-Q1 class (60 V in, 1.5 A) — not the LMR33630: its 36 V maximum sits under the SMBJ33A's ~53 V clamp (D-273) | 1 | 8 | ICU logic rail — ~0.8 A peak with the radio scanning |
 | Load-dump TVS SMBJ33A ×2, SS34 ×4, bulk capacitors |  | 1 | 8 | both 12 V inputs (D-088) |
@@ -254,9 +254,9 @@ Board H-001 and its parts, bought once the enclosure is settled (`QUESTIONS.md` 
 | Enclosure for the carrier behind the binnacle |  | 1 | 20 |  |
 | Deutsch DT13 flanged PCB receptacles, 6-way and 12-way, with their sealing plugs and the flange gaskets | through the enclosure wall; mate the harness's DT06-6S / DT06-12S plugs | 1 | 24 | the ICU's two connector halves live on the board (D-270); one spare of each if the budget allows |
 | BT817 EVE evaluation board | Riverdi / Matrix Orbital / Bridgetek BT817 board — proves the whole chain on the desk before any glass money | 1 | 70 | T-051 — the one order that should not wait; luxury LP05 moved here |
-| 12.3-inch bar display | chain (ii) — 1920 × 720, 900–1000 nit, bonded or AR glass, with its scaler board (V-085 → D-269) | 1 | 150 | V-085 ruled (ii); bought after M-1 sizes the aperture; luxury LP26 moved here |
+| 12.3-inch bar display | chain (ii) — 1920 × 720, 900–1000 nit, bonded or AR glass, with its scaler board (V-085 → D-269) | 1 | 150 | chain (ii) ruled (D-269); bought after M-6 sizes the aperture; luxury LP26 moved here |
 | Display bridge — TFP410-class HDMI encoder | BT817 RGB out → HDMI into the scaler (chain ii, D-269) | 1 | 20 | V-084 confirms timings at install §1.22; luxury LP27 moved here |
-| Page button, panel-mount momentary |  | 1 | 3 | luxury D-169; on the binnacle plate (Q-130) |
+| Page button, panel-mount momentary |  | 1 | 3 | luxury D-169; on the binnacle plate (D-269) |
 
 ## 7 · Hardware store — after the measurement day
 

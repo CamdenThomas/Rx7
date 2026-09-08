@@ -36,6 +36,8 @@ Nothing in §2 blocks a purchase. Nothing in §1 should wait.
 
 > **2026-09-08b.** Answer cycle 3 — **D-272** (road speed: a Hall pulse generator on the transmission's speedo-drive boss, the cable deleted, LIVE at the cutover; the supply is an O10 tap — `Q-309`) · **D-273** (the ICU carrier parts check done — `V-082`: a 60 V buck, a ≥ 60 V backlight switch behind a 4 A fuse, a current IMU, the radio on its own LDO, the LM393 on 5 V) · **D-274** (the chassis principle — every future branch ends in a dust-capped receptacle where it leaves its leg: seven new housings; both release solenoids exist and are wired to; `D1` / `D2` RESERVED at the sill — `Q-132`), with luxury **D-315**. `Q-128`: the ESP32 is confirmed (D-267); the packet now asks only for the source and the nRF Connect look. Next question Q-133.
 
+> **2026-09-08c.** **D-275** — the drawing is a view: `build` now renders one master harness sheet (`01-DESIGN/diagrams/HARNESS.svg`, WireViz) from the tables — battery to part to ground, every conductor — and the twelve hand-drawn SVGs are archived; **A8 is done**. `DESIGN.md` §1 shows whether the sheet is current. Next question Q-133.
+
 ---
 
 ## 0 · The finishing task list
@@ -48,7 +50,6 @@ Nothing in §2 blocks a purchase. Nothing in §1 should wait.
 - [ ] **A4 · Keep the Ionic above its BMS cutoff** while it waits — a lithium left to self-discharge into cutoff is hard to recover. Check it monthly on the app.
 - [ ] **A5 · Do `T-017`** (the factory pin letters) — the sender and switch letters still matter; the cluster plug's no longer do (D-268). Nothing in §1 gates a cart.
 - [ ] **A6 · At the cart review, apply D-238** to every heavy cable line, 2 AWG and 1/0 alike: the listing must state ≥ 90 °C insulation and 100 % copper. Swap the line before payment if it does not.
-- [ ] **A8 · Redraw `01-DESIGN/diagrams/`** — the thirteen SVGs are hand-drawn and behind the data: they still show the single 12-way `DP-ICU` (pre-D-252), the cluster drop (gone, D-258), no `L3-BLW` / `L4-S2`, and the old ground list. Agent work: regenerate them from `data/` (or replace each with a rendered table and keep only the four that add geometry — architecture, backbone, dash node, ground tree). Nothing else reads them; `DESIGN.md`'s prose and tables are right.
 - [ ] **A7 · Apply the 2026-09-05 future-proofing audit** — queued in the Claude Project as `rx7/PENDING-2026-09-05-futureproofing.md` while the device bridge was down. It supersedes D-247 (the brake switch mechanism), opens `Q-113`–`Q-115` (alternator S/P conductors, wiper park, road speed — `Q-112` blower is ruled → D-253, and road speed is ruled → D-272), ; its sender-availability findings are moot (D-261) and its decision numbers start at D-263 when applied.
 
 **B · One afternoon with the car — nothing cut, no parts needed**

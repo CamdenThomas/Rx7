@@ -214,6 +214,7 @@ def v_counts(db, arg):
     n_leg = sum(1 for h in hs if h["where"] == "Dash post" and h["class"] in ("Power", "Medium", "Signal"))
     n_door = sum(1 for h in hs if h["class"] == "Door")
     n_drop = sum(1 for h in hs if h["code"].startswith("DP-"))
+    n_branch = sum(1 for h in hs if h["where"] not in ("Dash post", "Sill node") and not h["code"].startswith("DP-") and h["class"] != "Door")  # branch-end receptacles on the legs (D-253, D-274)
     rl = db.rows("relays")
     fitted = [k["id"] for k in rl if k["state"] == "LIVE" and k["location"] == "Dash node"]
     other = [k["id"] for k in rl if k["state"] == "LIVE" and k["location"] != "Dash node"]
@@ -232,7 +233,7 @@ def v_counts(db, arg):
         ["PMU outputs used", f"{len(outs)} of 22 ({' · '.join(f'{n} × {r}' for r, n in by_rating.items())}) — {' / '.join(reserved)} reserved for the swap, disabled"],
         ["PMU analog inputs used", f"{len(ins)} — " + ", ".join(p["ch"] for p in ins if int(p["ch"][1:]) <= 8) .replace(", ", "–", 0)[:0] + f"A1–A8 dedicated, {' / '.join(p['ch'] for p in ins if int(p['ch'][1:]) > 8)} on the shared 7 A pins"],
         ["Harness legs", f"{len(legs)} — " + " · ".join(f"{l.split()[0]} {l.split()[1].lower()}" for l in sorted({h['leg'] for h in hs if h['leg'].startswith('L') and '(' not in h['leg']})) + " (with the sill sub-node)"],
-        ["Leg housings", f"{n_leg} (L1-S is two housings) + {n_door} door + {n_drop} dash-post drops + 2 lugs + the PMU connector = **{n_leg + n_door + n_drop + 3} mated pairs**"],
+        ["Housings", f"{n_leg} at the post (L1-S is two housings) + {n_branch} branch-end receptacles on the legs (D-253, D-274) + {n_door} door (RESERVED at the sill) + {n_drop} dash-post drops (two of them the ICU's DT13 headers, D-270) + 2 lugs + the PMU connector = **{n_leg + n_branch + n_door + n_drop + 3} mated pairs**"],
         ["Relays", f"{len(fitted)} fitted on the dash node ({' '.join(fitted)}) + {' '.join(other)} in the engine bay · {empty_dash + empty_sill} empty sockets ({empty_dash} dash node, {empty_sill} sill)"],
         ["Fuses", f"{f_dash} fitted at the dash node + {f_eng} in the engine bay + Class-T + MRBF · {len(f_empty)} labelled empty positions ({' '.join(f_empty)}) + {spare_pos} spare block positions"],
         ["Ground nodes", "5 — engine block · front · dash node · rear · sill"],
@@ -678,7 +679,15 @@ def v_arrival(db, arg):
             f"{need(db, 'clips')} clips, 3 dust caps")
 
 
+import sys as _sys; _sys.path.insert(0, str(__import__("pathlib").Path(__file__).parent)); import harness as _harness  # the master harness sheet (D-275)
+
+
+def v_harness_status(db, arg):
+    return _harness.status_line()
+
+
 VIEWS = {
+    "harness_status": v_harness_status,
     "counts": v_counts, "backbone": v_backbone, "fuses": v_fuses, "fuse_blocks": v_fuse_blocks, "pins": v_pins,
     "colours": v_colours, "colours_gloss": v_colours_gloss, "relays": v_relays, "node_conductors": v_node_conductors,
     "series": v_series, "housings": v_housings, "cavities": v_cavities, "ladder": v_ladder, "decode": v_decode,
@@ -890,3 +899,4 @@ def c_dangling(db):
 
 
 CHECKS = [c_pins, c_cavities, c_fuses_relays, c_names, c_ladders, c_shopping, c_ids_cited, c_dangling]
+PRE_BUILD = _harness.pre_build  # runs after the checks pass, before the templates render (D-275)

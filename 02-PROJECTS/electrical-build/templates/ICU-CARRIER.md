@@ -1,7 +1,7 @@
 <!-- out: 01-DESIGN/ICU-CARRIER.md -->
 # ICU CARRIER — board H-001
 
-*Rev 2026-09-07 · owns: the ICU and its display — the instruments of this build. Every channel between `DP-ICU-A` / `DP-ICU-B`, the Teensy 4.1, the display and the radio is a row in `data/icu_channels.csv`; part numbers are `V-082` until verified. The pages the display draws are the luxury package's firmware; the bezel around it is the luxury package's dash plastics.*
+*Rev 2026-09-08 · owns: the ICU and its display — the instruments of this build. Every channel between `DP-ICU-A` / `DP-ICU-B`, the Teensy 4.1, the display and the radio is a row in `data/icu_channels.csv`; the part numbers are checked against their datasheets (D-273). The pages the display draws are the luxury package's firmware; the bezel around it is the luxury package's dash plastics.*
 
 ## What it is
 
@@ -29,7 +29,7 @@ Every analog input ends in the same three parts at the connector edge — series
 
 {{table:icu_channels|kind=display|-kind}}
 
-The 12.3-inch bar is this build's instrument from the meters cutover (D-268). The chain is proved on the desk in order — the BT817 evaluation board first (`T-051`, the one order that should not wait), then the glass (`V-085`: chain ii, the 900–1000-nit 1920 × 720 panel through its scaler, unless M-1 shows the binnacle brow shades a 330-nit cluster glass), then the timings (`V-084`) — and the DRIVE page runs on the bench before the car is touched. It mounts on a plain plate in the binnacle aperture, sized at M-1, which the luxury package's moulded bezel later surrounds or replaces (`Q-130`). The odometer starts from the factory cluster's reading at cutover and persists to the Teensy's microSD (luxury F-007, a cutover gate — `Q-131`). Road speed comes from the pulse generator of `Q-309` from the same day, because the mechanical speedometer leaves with the cluster.
+The 12.3-inch bar is this build's instrument from the meters cutover (D-268). The chain is proved on the desk in order — the BT817 evaluation board first (`T-051`, the one order that should not wait), then the glass (chain ii — the 900–1000-nit 1920 × 720 panel through its scaler, D-269), then the timings (`V-084`, agent work at install §1.22) — and the DRIVE page runs on the bench before the car is touched. It mounts on a plain plate in the binnacle aperture, sized at M-6, which stays as the sub-frame the luxury package's moulded bezel later surrounds (D-269). The odometer starts from the factory cluster's reading at cutover and persists in the Teensy's EEPROM with the microSD as the log (D-269, luxury F-007 — a cutover gate). Road speed comes from the transmission-boss pulse generator (D-272) from the same day, because the mechanical speedometer leaves with the cluster.
 
 ## 4 · On the board — IMU and radio
 
@@ -41,7 +41,7 @@ The radio is the one addition the battery data asked for (D-267): an ESP32-C3 mo
 
 ## 5 · Grounding and EMC
 
-Single pour, star-tied at `DP-ICU-A 3`. Analog inputs enter on one edge; CAN, power, the display header and the radio leave on the other (D-265); every RC lives at the connector edge. The tach shield lands at the dash node end only (node conductor N48). The display header's QSPI lines stay short and away from the tach input. The ESP32-C3's antenna end overhangs the board edge with a 5 mm keep-out and faces an RF-transparent enclosure wall — ABS or polycarbonate, or an external antenna through a die-cast box (`Q-126`); the module sits at the CAN / display edge, as far from the tach comparator as the board allows.
+Single pour, star-tied at `DP-ICU-A 3`. Analog inputs enter on one edge; CAN, power, the display header and the radio leave on the other (D-265); every RC lives at the connector edge. The tach shield lands at the dash node end only (node conductor N48). The display header's QSPI lines stay short and away from the tach input. The ESP32-C3's antenna end overhangs the board edge with a 5 mm keep-out and faces an RF-transparent enclosure wall — the printed ASA / PETG enclosure of D-270, no external antenna needed; the module sits at the CAN / display edge, as far from the tach comparator as the board allows.
 
 ## 6 · Bring-up
 

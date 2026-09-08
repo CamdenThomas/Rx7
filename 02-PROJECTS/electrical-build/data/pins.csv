@@ -15,7 +15,7 @@ STUD,stud,,+12V BATT,MAIN,2,RED,"Main supply from the Class-T, 150 A max",Busbar
 2,L,O12,IGNITION,output,12,RED,Ignition — coils and igniters; also the F15 alternator-excitation branch and the F16 branch (the display's backlight through the ICU),,5.0,25.0,cap,2,100,LIVE,
 1,L,O13,LS_ECU,output,12,RED,Reserved for the LS swap — ECU + injectors,,,,,,,CAPPED,
 14,L,O14,LS_FAN,output,12,RED,Reserved for the LS swap — cooling fan,,,,,,,CAPPED,
-27,L,O15,COMFORT,output,12,RED,Comfort bus — two capped feeds: the dash (L3-P 2) and the sill (L4-P 4 — mirror heat F14 · D-254). No fuse block this build; the luxury package adds its own on this output,,,,,,,LIVE,
+27,L,O15,COMFORT,output,12,RED,"Comfort bus — two feeds with no load this build: the dash (L3-P 2 → the L3-CMF receptacle behind the centre stack, D-274) and the sill (L4-P 4 — F14's position, D-254). No fuse block this build; the luxury package adds its own on this output",,,,,,,LIVE,
 28,L,O16,BLOWER,output,12,RED,Blower motor — steady feed; speed is the ≥ 20 kHz final stage at L3-BLW on the DCU's PWM (D-257); no motor this build: channel configured and DISABLED (K-023 · D-253),,15.0,25.0,cap,8,600,LIVE,
 11,S,O6,TAIL_PARK,output,14,ORN,Tail · park · side markers · licence,,4.4,7.5,meas,10,100,LIVE,
 10,S,O7,BRAKE,output,14,ORN,Brake lamps,,3.9,9.5,meas,10,100,LIVE,

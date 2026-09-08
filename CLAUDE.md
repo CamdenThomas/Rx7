@@ -32,7 +32,7 @@ Every project is `data/*.csv` (facts, one home each) + `templates/*.md`
 
 - **Never read a rendered document to learn a fact.** `DESIGN.md`, `WIRE-TABLES.md`, `PMU-CONFIG-SHEET.md`, `SHOPPING-LIST.md`, `INSTALL.md`, `GLOSSARY.md` and the project `README.md` are outputs of `build`. The rows are in `data/`; the prose is in `templates/`; the derivations are in `views.py`.
 - **`build` refuses on a contradiction.** Fix the data, never the check — unless the check is wrong, in which case fix the check and log why.
-- **Numbering:** electrical decisions continue from **D-275**, luxury from **D-316**. Electrical questions from **Q-133** (Q-113–Q-115 are reserved by the unapplied 2026-09-05 future-proofing audit, queued in the Claude Project as `rx7/PENDING-2026-09-05-futureproofing.md`), luxury from **Q-311**. IDs are permanent; a closed question is cited with its closer.
+- **Numbering:** electrical decisions continue from **D-276**, luxury from **D-316**. Electrical questions from **Q-133** (Q-113–Q-115 are reserved by the unapplied 2026-09-05 future-proofing audit, queued in the Claude Project as `rx7/PENDING-2026-09-05-futureproofing.md`), luxury from **Q-311**. IDs are permanent; a closed question is cited with its closer.
 - **Nothing has been bought, cut or crimped.** Four carts wait for payment; `QUESTIONS.md` §1a lists what blocks paying them.
 - The user is Camden. Physical work, spending, sign-off and `git commit` are his; everything that is reading, writing, calculating or cross-checking is the agent's.
 - Line endings: `.gitattributes` normalises to LF in the repository. The tool writes LF; Windows editors are fine with it.

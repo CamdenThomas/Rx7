@@ -205,7 +205,7 @@ def md_to_html(md: str, anchors: bool = False) -> str:
                 if base and (base / p).exists():
                     svg = (base / p).read_text(encoding="utf-8"); break
             if svg:
-                svg = re.sub(r"<\?xml[^>]*\?>", "", svg)
+                svg = re.sub(r"<\?xml[^>]*\?>|<!DOCTYPE[^>]*>", "", svg)
                 out.append(f'<figure class="diagram" title="{html.escape(alt)}">{svg}</figure>')
             else:
                 out.append(f'<p><i>[diagram: {html.escape(src)}]</i></p>')
@@ -320,13 +320,13 @@ def all_projects():
 def load_views(project: Path):
     vp = project / "views.py"
     if not vp.exists():
-        return dict(GENERIC_VIEWS), []
+        return dict(GENERIC_VIEWS), [], None
     import importlib.util
     spec = importlib.util.spec_from_file_location("views", vp)
     mod = importlib.util.module_from_spec(spec)
     mod.rx7 = sys.modules[__name__]
     spec.loader.exec_module(mod)
-    return {**GENERIC_VIEWS, **getattr(mod, "VIEWS", {})}, getattr(mod, "CHECKS", [])
+    return {**GENERIC_VIEWS, **getattr(mod, "VIEWS", {})}, getattr(mod, "CHECKS", []), getattr(mod, "PRE_BUILD", None)
 
 
 def generic_checks(db: DB):
@@ -478,7 +478,7 @@ table{border-collapse:collapse;margin:.5rem 0 1rem;font-size:13px;width:100%}th,
 th{background:var(--row);position:sticky;top:2.9rem}tr:nth-child(even) td{background:var(--row)}tr.hit td{background:var(--hi)!important}tr.hide{display:none}
 code{font:12px ui-monospace,Consolas,monospace;background:var(--row);padding:0 .25rem;border-radius:3px}pre{background:var(--row);padding:.6rem;overflow:auto}
 a{color:var(--acc)}a.id{text-decoration:none;border-bottom:1px dotted var(--acc)}
-figure.diagram{margin:.5rem 0;overflow:auto;border:1px solid var(--line);border-radius:6px;background:#fff}figure.diagram svg{max-width:100%;height:auto;display:block}
+figure.diagram{margin:.5rem 0;overflow:auto;max-height:85vh;border:1px solid var(--line);border-radius:6px;background:#fff}figure.diagram svg{max-width:none;display:block}
 blockquote{border-left:3px solid var(--line);margin:.4rem 0;padding:.1rem .8rem;color:var(--mut)}
 .box{font-size:1.1em}.flash{animation:fl 1.6s}@keyframes fl{from{background:var(--hi)}to{background:transparent}}
 """
@@ -545,7 +545,7 @@ def main(argv):
     cmd, args = argv[0], argv[1:]
     project = find_project(proj)
     db = DB(project)
-    views, checks = load_views(project)
+    views, checks, pre_build = load_views(project)
 
     if cmd == "tables":
         for t, cols in db.tables.items():
@@ -591,6 +591,9 @@ def main(argv):
         else:
             print("check: clean")
         if cmd == "build":
+            if pre_build:
+                for line in pre_build(project, db):
+                    print("  " + line)
             docs = build(project, views, db)
             for p in docs:
                 print("  wrote", p.relative_to(project))

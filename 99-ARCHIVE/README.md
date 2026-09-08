@@ -4,6 +4,7 @@
 
 | File | What | Superseded by |
 |---|---|---|
+| [`2026-09-08_hand-drawn-diagrams/`](Electrical/2026-09-08_hand-drawn-diagrams/) | The twelve hand-drawn electrical SVGs (architecture, backbone, dash node, ladders, pop-ups, grounds, four legs, sill, drops) — behind the data since D-252 | The master harness sheet, `02-PROJECTS/electrical-build/01-DESIGN/diagrams/HARNESS.svg`, rendered by `build` (D-275) |
 | [`2026-08_superseded-C1-C7-connector-scheme.md`](Electrical/2026-08_superseded-C1-C7-connector-scheme.md) | Seven regional bulkhead connectors cut by geography | Four-leg design, D-029 |
 | [`2026-08_rx7-pmu24-pin-plan-revA.html`](Electrical/2026-08_rx7-pmu24-pin-plan-revA.html) | Rev A pin plan, generated view | [`SPEC.md`](../02-PROJECTS/electrical-pmu/01-DESIGN/SPEC.md) Rev D and the generated [`PIN-MAP.md`](../02-PROJECTS/electrical-pmu/02-HARNESS/PIN-MAP.md) |
 | [`2026-08_rx7-pmu-build-checklist-revA.html`](Electrical/2026-08_rx7-pmu-build-checklist-revA.html) | Rev A build checklist, generated view, three-digit step numbers | [`CHECKLIST.md`](../02-PROJECTS/electrical-pmu/04-BUILD/CHECKLIST.md) — phase.step numbering |
