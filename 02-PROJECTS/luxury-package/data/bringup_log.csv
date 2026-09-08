@@ -1,0 +1,5 @@
+date,board,firmware,event
+2026-08,board 1,—,"Stages B1–B5 complete: toolchain, can_map packing, loopback, ladder decode, tach capture"
+2026-08-31,PC simulator,ICU 0.4.0-dev,F-011 full 1280 × 480 render; F-008 BT817 driver; suites 415 / 35 / 33 green
+2026-09-03,—,—,three Teensy 4.1 in hand with headers (D-303); boards 2 and 3 not yet flashed (T-048)
+2026-09-07,—,—,the record moved to data + templates (D-309); can_map.h is behind the map until F-012

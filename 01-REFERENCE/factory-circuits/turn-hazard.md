@@ -1,6 +1,6 @@
 # Circuit — Turn Signals & Hazard
 
-*Rev 2026-08-30 · owns: the factory decode of this circuit — devices, wires, logic. The rebuild table at the foot points into the new design and is not its owner; cavities are `02-HARNESS/data/connectors.csv`'s.*
+*Rev 2026-09-07 · owns: the factory decode of this circuit — devices, wires, logic. Nothing of the new design lives here; the last section says where it does.*
 
 **Source:** Section F, page 22.
 **Type:** Turn = ignition-switched. Hazard = constant-hot (works key-off).
@@ -63,11 +63,4 @@ star node in each zone and forbids grounds from crossing a bulkhead.
 
 ## 6 · What this means for the rebuild
 
-| Factory | PMU-24 plan | Change |
-|---|---|---|
-| Control Processing Unit flasher | Deleted | PMU flashes O17/O18 natively (D-013) |
-| Combination switch turn contacts | A1 resistor ladder, switch-to-ground — **L3-S1 3** | Three states: L / off / R |
-| Hazard on its own constant feed | A8 input (**L3-S1 6**) + second pole to the wake diode strip (**L3-S2 2**) | PMU wakes for hazards key-off (D-056, D-072) |
-| Separate L and R output wiring | O17 (VIO/GRN) → **L2-M 5** + **L4-M 5**; O18 (VIO/YEL) → **L2-M 6** + **L4-M 6** | Split at the panel to the front and rear legs |
-| Shared ground at X-13 | Front and rear star nodes | Direct fix for K-008 (D-105 — not fixed in the factory harness, dies with it) |
-| 27 W incandescent | **Stays incandescent** (D-119). Measured 3.4 A per side | LED is the deferred lighting pass (D-201); soft fuses re-set after any bulb change (D-122) |
+The rebuild's side of every device and wire above is the electrical build's record, not this file's: find a factory code in its data — `python tools/rx7.py -p electrical-build find "C-02"` — or read the rendered [`DESIGN.md`](../../02-PROJECTS/electrical-build/01-DESIGN/DESIGN.md) §12 (device ends) and [`WIRE-TABLES.md`](../../02-PROJECTS/electrical-build/03-INSTALL/WIRE-TABLES.md). A hand-copied mapping table stood here until 2026-09-07; it had drifted three decisions behind and was removed — one fact, one home. Decisions that shaped this circuit's rebuild: D-013 · D-056 · D-072 · D-105 · D-119 · D-122 · D-201.

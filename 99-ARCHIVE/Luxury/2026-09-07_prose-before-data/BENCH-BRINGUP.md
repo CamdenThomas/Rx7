@@ -29,7 +29,7 @@ Before you plug anything in · Stages 1–7 · Now that the transceivers are her
 
 **One cable, one board at a time.** For two boards running simultaneously you
 need a second cable or a powered hub. Do not try to power a second Teensy from
-the first's 3.3 V pin — the regulator won't like it and you'll chase phantom
+the first's 3.3 V pin — the regulator won't like it, and you'll chase phantom
 faults for an hour.
 
 ---
@@ -189,7 +189,7 @@ cluster.
 
 - [ ] Timestamped CSV append to SD
 - [ ] Test write throughput at your intended log rate
-- [ ] Test **power-loss behaviour** — pull USB mid-write, confirm the card
+- [ ] Test **power-loss behavior** — pull USB mid-write, confirm the card
       survives and the file is readable
 
 ---

@@ -1,4 +1,4 @@
-# AUDIT 4 — representation and organisation of `electrical-pmu`
+# AUDIT 4 — representation and organization of `electrical-pmu`
 
 *2026-08-30 · full read of the tree: 66 Markdown files, the two Rev A HTML
 files, the firmware sources, `.git` history and the Claude Project attached to
@@ -67,7 +67,7 @@ documents the attached Claude Project holds are the HTML files that
 - [ ] **I-73 · P3 · No `CLAUDE.md`.** Claude Code reads a root `CLAUDE.md`
       automatically; nothing reads `ASSISTANT.md` unless told to. A three-line
       `CLAUDE.md` that says "read ASSISTANT.md first, then STATUS.md" closes the
-      gap for every tool that honours the convention.
+      gap for every tool that honors the convention.
 - [ ] **I-74 · P2 · `ASSISTANT.md` says "never produce artifacts — no HTML"
       but the project's only artifacts are HTML.** Either the rule or the project
       contents is wrong. Decide which and make them agree (see I-71).
@@ -101,7 +101,7 @@ documents the attached Claude Project holds are the HTML files that
 - [ ] **I-80 · P4 · `ASSISTANT.md` has no header of its own** (title, purpose,
       rev), while R5 requires one on every file.
 - [ ] **I-81 · P4 · §2 says `TASKS-CAMDEN.md` — "reorder and regroup freely".**
-      In practice it was appended to three times (section D table). The rule is
+      In practice, it was appended to three times (section D table). The rule is
       right; the file doesn't follow it.
 - [ ] **I-82 · P4 · The GLOSSARY says I-## lives in "`ASSISTANT.md` §8".** They
       now span §8–§12 and will move (I-75). Update the pointer when they do.
@@ -140,11 +140,10 @@ documents the attached Claude Project holds are the HTML files that
       `(cite index=…)` chat-export artifacts, and senders "reserved on C1 spare"
       (ICU reads them). **Fix:** rewrite to current state only — one design table
       (incandescent), one measured column pointing at CHANNEL-SCHEDULE, LED
-      figures as a clearly-labelled appendix for `lighting-body/`.
+      figures as a clearly-labeled appendix for `lighting-body/`.
 - [ ] **I-86 · P2 · Current figures now have three owners, not one.** `LOADS.md`
       (estimates), `CHANNEL-SCHEDULE.md` (measured, "owns the measured-to-
-      configured pipeline"), `firmware/pmu_sim/channels.h` ("the machine-
-      readable copy"). The README ownership table names only LOADS. They already
+      configured pipeline"), `firmware/pmu_sim/channels.h` ("the machine-readable copy"). The README ownership table names only LOADS. They already
       disagree: brake is 3.9 A in LOADS, 7.0 A measured in CHANNEL-SCHEDULE and
       `channels.h`; CHANNEL-SCHEDULE says "3 of 24 measured", `firmware/README`
       says "22 of 24 are estimates". **Fix:** one machine-readable table
@@ -244,7 +243,7 @@ correction. Counts are of stacked UPDATE/REVISED/STATUS sections.
       materials and the rotary switch as Bought.** D-140 says they are **not in
       hand** and D-141/D-147 dropped most of them from the kit. `TASKS-CAMDEN.md`
       T-026 repeats the "PURCHASED" list. `BENCH-KIT.md` has them under "To buy".
-- [ ] **I-100 · P1 · `CLUSTER-DESIGN.md` banner says the multi-page
+- [ ] **I-100 · P1 · `CLUSTER-DESIGN.md` banner says the multipage
       architecture, diagnostics page and trip page "do not exist yet"** (lines
       9–10); `STATUS.md` line 157 lists "Page framework — Drive, diagnostics,
       trip" as delivered and `stats.h` as having a trip page. Its "Open" table
@@ -290,7 +289,7 @@ correction. Counts are of stacked UPDATE/REVISED/STATUS sections.
 - [ ] **I-105 · P1 · Task IDs were renumbered (D-043) and the old numbers
       survive in reference files.** `factory-circuits/horn.md` line 63 "Clamp
       meter, T-002" (T-002 is now the Ionic battery); `OEM-RECORD.md` line 8
-      "see task T-016" (T-016 is now the cancelled K-008 diagnosis; the pin-label
+      "see task T-016" (T-016 is now the canceled K-008 diagnosis; the pin-label
       task is T-017). OEM-RECORD is marked FROZEN, so this needs a deliberate
       exception.
 - [ ] **I-106 · P1 · The old three-digit Checklist step numbers are cited in
@@ -304,7 +303,7 @@ correction. Counts are of stacked UPDATE/REVISED/STATUS sections.
       — the version-log step is 2.21; `known-issues.md` K-020 cites "Checklist
       2.21" for the keypad — that is 2.18. **Fix:** either give checklist steps
       stable IDs (`C-###`, like everything else) or stop citing step numbers.
-- [ ] **I-107 · P2 · Path references that point at the pre-reorganisation
+- [ ] **I-107 · P2 · Path references that point at the pre-reorganization
       layout** (bare-name mentions are fine per I-29; these are *paths*):
       `SPEC.md` §9 and §12 `legs/CONNECTORS.md`, `legs/PIN-MAP.md`, `legs/engine.md`,
       `legs/sill-node.md`; `00-CAR/vehicle.md` `02-PROJECTS/electrical-pmu/SPEC.md`;
@@ -405,7 +404,7 @@ correction. Counts are of stacked UPDATE/REVISED/STATUS sections.
 - [ ] **I-121 · P2 · `TASKS-CAMDEN.md` carries lighting-body tasks** T-034,
       T-035, T-036, T-037 (tail-light aperture, sealed-beam type, headlamp unit,
       DOT modules) after D-123 moved that scope out. `lighting-body/` has no task
-      file. Also T-030 (mostly answered), T-046/T-047 (see I-97), and "Checklist
+      file. Also, T-030 (mostly answered), T-046/T-047 (see I-97), and "Checklist
       2.3 test pigtail" for housing #2 (pigtail dropped, D-141).
 - [ ] **I-122 · P2 · `OPEN.md` holds two answered questions.** Q-058 has an
       answer typed in ("unique toggle button … small button that will cycle
@@ -455,7 +454,7 @@ correction. Counts are of stacked UPDATE/REVISED/STATUS sections.
       although D-113 answered it.
 - [ ] **I-130 · P4 · The stated format is not used.** Line 24: "Format: `ID |
       decision | one-line reason`". Entries run to 40 lines with tables and H2
-      sub-sections ("## What changes now", "## What this preserves"), and three H1
+      subsections ("## What changes now", "## What this preserves"), and three H1
       blocks ("# UPDATE …", "# ROUND FOUR ANSWERS", "# CLUSTER IMPLEMENTATION")
       sit between entries. Either drop the format line or hold to a two-tier
       format: one-line decision, optional "Because" paragraph, optional table.
@@ -539,7 +538,7 @@ correction. Counts are of stacked UPDATE/REVISED/STATUS sections.
       `CHANNEL-SCHEDULE.md`, `CUT-LIST.md`, `PMU-CONFIG.md` channel names,
       `channels.h`, `cluster_core.h` labels and the future PMU client config all
       restate one 39-row × ~12-column table by hand. **Fix:** one `channels.csv`
-      (or `.json`) — pin, channel, name, class, AWG, colour, leg connector, cavity,
+      (or `.json`) — pin, channel, name, class, AWG, color, leg connector, cavity,
       device end, est A, measured A, soft fuse, status — and a 40-line script that
       renders the SPEC tables, PIN-MAP, CHANNEL-SCHEDULE, CUT-LIST skeleton and
       `channels.h` from it. Drift becomes impossible rather than forbidden.
@@ -643,7 +642,7 @@ correction. Counts are of stacked UPDATE/REVISED/STATUS sections.
       current design has none.
 - [ ] **I-163 · P3 · A "state of every cavity" export.** 39 PMU cavities + 14
       leg connectors + D1/D2 + 4 drops: what is LIVE, PROVISIONED, RESERVED,
-      SPARE. It is the question every later session asks and today it takes five
+      SPARE. It is the question every later session asks, and today it takes five
       files to answer. Falls out of I-144.
 - [ ] **I-164 · P3 · A CHANGELOG.** DECISIONS records *why*; nothing records
       *what changed in which file when*. `LOGS.md` "Session log" is empty. The

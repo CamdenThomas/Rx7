@@ -1,6 +1,6 @@
 # Circuit — Horn
 
-*Rev 2026-08-30 · owns: the factory decode of this circuit — devices, wires, logic. The rebuild table at the foot points into the new design and is not its owner; cavities are `02-HARNESS/data/connectors.csv`'s.*
+*Rev 2026-09-07 · owns: the factory decode of this circuit — devices, wires, logic. Nothing of the new design lives here; the last section says where it does.*
 
 **Source:** Section F, page 22 (schematic), page 23 (harness routing).
 **Type:** Constant-hot, relay-switched, ground-side triggered.
@@ -46,18 +46,8 @@ current, only coil current, which is why a thin wire and a slip ring survive it.
 
 ## 4 · What this means for the rebuild
 
-| Factory | PMU-24 plan | Change |
-|---|---|---|
-| 15 A fuse shared with stop lights | O11, own 15 A soft fuse | Horn gets its own protected channel |
-| F-16 horn relay | Deleted | PMU output switches the horns directly |
-| GL coil ground → horn switch | Horn switch closure → wake diode to pin 7 (D-072, L3-S1 11). Its PMU *input* is still `Q-063` → D-182 | Same electrical behaviour, no relay |
-| GY output splice to two horns | **L2-M 3**, 14 AWG, splices to both horns at the nose | Same topology |
-| Horns ground via bracket | Front star ground node (D-017) | Deliberate ground, not a bracket |
+The rebuild's side of every device and wire above is the electrical build's record, not this file's: find a factory code in its data — `python tools/rx7.py -p electrical-build find "C-02"` — or read the rendered [`DESIGN.md`](../../02-PROJECTS/electrical-build/01-DESIGN/DESIGN.md) §12 (device ends) and [`WIRE-TABLES.md`](../../02-PROJECTS/electrical-build/03-INSTALL/WIRE-TABLES.md). A hand-copied mapping table stood here until 2026-09-07; it had drifted three decisions behind and was removed — one fact, one home. Decisions that shaped this circuit's rebuild: D-017 · D-072 · D-182.
 
 ## 5 · Unknowns
 
-| ID | Unknown | Resolve by |
-|---|---|---|
-| V-021 | Horn current draw — not stated on the diagram | PMU telemetry after migration (D-174; fuse at the 15.0 cap until then, D-175) |
-| V-022 → D-097 | Both horns present and original | Confirmed on inspection, `T-010` done |
-| Q-018 → D-072 / `Q-063` → D-182 | The horn switch as a PMU input | Wake source settled; the input pin is in the `Q-063` → D-182 packet |
+Every unknown this decode raised has an ID. The open ones live in the projects' `QUESTIONS.md` files (electrical, luxury, engine swap); the closed ones are cited with their closer in the projects' `DECISIONS.md`. This circuit's: Q-018 · Q-063 · T-010 · V-021 · V-022.

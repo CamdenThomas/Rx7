@@ -1,0 +1,12 @@
+{
+  "tabs": [
+    {"title": "Design",      "file": "01-DESIGN/DESIGN.md", "anchors": true},
+    {"title": "CAN map",     "file": "01-DESIGN/CAN-MESSAGES.md"},
+    {"title": "DCU carrier", "file": "01-DESIGN/DCU-CARRIER.md"},
+    {"title": "Shopping",    "file": "02-SHOPPING/SHOPPING-LIST.md"},
+    {"title": "Install",     "file": "03-INSTALL/INSTALL.md"},
+    {"title": "Bring-up",    "file": "03-INSTALL/BRING-UP.md"},
+    {"title": "Questions",   "file": "QUESTIONS.md"},
+    {"title": "Decisions",   "file": "DECISIONS.md", "anchors": true}
+  ]
+}

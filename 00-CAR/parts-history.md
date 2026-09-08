@@ -149,8 +149,8 @@ rest of the sheet arrives.
 
 | Part | Source | Usd | Link | Note |
 |---|---|---|---|---|
-| **Water temp sender** | Mazdatrix |  | [rear housing, new](https://mazdatrix.com/product/sender-water-temp-all-new-rear-hsg/) | **Feeds the ICU** — see [`DCU-CLUSTER.md`](../02-PROJECTS/electrical-pmu/03-MODULES/DCU-CLUSTER.md) §6 |
-| **Oil pressure sender** | — |  | — | **Feeds the ICU.** Not yet sourced |
+| **Water temp sender** | — |  | — | The car's own C-02 works and stays — new wire only (electrical D-261); read by the ICU (`../02-PROJECTS/electrical-build/01-DESIGN/ICU-CARRIER.md`) |
+| **Oil pressure sender** | — |  | — | The car's own C-09 works and stays — new wire only (electrical D-261); read by the PMU's A7 and the ICU |
 
 ### Rear subframe
 

@@ -4,8 +4,8 @@ DV02,L1,Starter,Starting motor A-01,"Main B+ stud → 1/0 from the battery (thro
 DV03,L1,Start relay K9,"New, on the inner fender","30 → F17 ← starter B+ stud, 10 AWG RED<br>87 → starter S, 10 AWG RED<br>86 → L1-S1 1<br>85 → block ground, 16 AWG BLK",
 DV04,L1,Alternator,A-08 plug + A-09 B+ ring,BW (excitation) → L1-S1 2<br>WB (lamp sense) → L1-S2 8<br>B+ ring (factory WR) → 6 AWG RED → F18 → starter B+ stud,case: engine block — no wire
 DV05,L1,Inhibitor switch,"A-06, 4-pin","BY → 8.2 kΩ → L1-S1 11<br>BW → block ground, 16 AWG BLK<br>GY → 8.2 kΩ → L1-S2 7<br>RW → block ground, 16 AWG BLK",
-DV06,L1,Water temp sender,C-02,spade (YW) → L1-S1 3,thread: engine block — no wire
-DV07,L1,Oil pressure sender,C-09,spade (BrY) → L1-S1 4,thread: engine block — no wire
+DV06,L1,Water temp sender,C-02,"spade (YW) → L1-S1 3 — in the rear housing, directly below the oil-pressure sender (unplug it and only the temp gauge stops: confirmed 2026-09-07)",thread: engine block — no wire
+DV07,L1,Oil pressure sender,C-09,"spade (BrY) → L1-S1 4 — the rear-housing gauge port, above the water-temp sender",thread: engine block — no wire
 DV08,L1,Brake fluid level switch,C-05,"BR → L1-S2 1<br>B → block ground, 16 AWG BLK",
 DV09,L1,Engine ground strap,New,"Block → 2 AWG BLK → chassis, firewall area, ≤ 24 in",
 DV10,L2,Headlights,"E-08 LH, E-09 RH","RL (low) → L2-P 1 splice, 14 AWG branch<br>RY (high) → L2-P 2 splice, 14 AWG branch<br>B → front star, 14 AWG BLK each",
@@ -25,12 +25,11 @@ DV23,L3,Horn pad,Steering wheel (kept),contact → 8.2 kΩ → L3-S1 11<br>retur
 DV24,L3,Wink switches,"New — SPDT momentary ×2, dash panel",Wink L common → dash ground<br>Wink L NC → L3-S1 9<br>Wink L NO → 18 kΩ → L3-S1 11 node<br>Wink R common → dash ground<br>Wink R NC → L3-S1 10<br>Wink R NO → 33 kΩ → L3-S1 11 node,
 DV25,L3,Brake pedal switch,F-11 (new) — two-circuit,"Pole 1 → 4.7 kΩ → L3-S1 5 (the A3 ladder)<br>Pole 1 other side → dash ground<br>Pole 2 in ← F3 switch supply, branched off L3-S2 2 in the leg<br>Pole 2 out → L3-S1 7 → wake strip input 6",
 DV26,L3,Parking brake switch,C-04 (kept),BR → L3-S2 11,body: lever bracket — no wire
-DV27,L3,Blower motor + resistor + switch,"New motor G-14, new resistor pack, new switch G-15","Motor + → L3-P 1<br>Motor − → resistor pack common<br>Resistor taps → speed switch<br>Switch common → dash ground, 12 AWG BLK",
+DV27,L3,Blower motor (luxury package),"Four Seasons 35483 class, 2-wire — no resistor pack, no speed switch (D-253)","Motor + → L3-BLW 1 (O16 via L3-P 1)<br>Motor − → L3-BLW 2 → dash ground, 12 AWG",Absent this build (K-023) — the receptacle is dust-capped; speed is the ≥ 20 kHz final stage at L3-BLW on the DCU's PWM (D-257)
 DV28,L3,Head unit,Aftermarket,"Red (ACC) → L3-M 1<br>Yellow (BATT) → L3-M 2<br>Orange (ILLUM) → L3-S1 8<br>Black → dash ground, 14 AWG BLK",
 DV29,L3,USB-C module,Aftermarket,"+ → L3-M 1 branch<br>− → dash ground, 16 AWG BLK",
 DV30,L3,Dash illumination lamps,"E-06 heater panel, E-07 select lever, E-10 switch panel","RL → L3-S1 8<br>B → dash ground, 16 AWG BLK",
 DV31,L3,Glove box lamp,H-01 + switch H-02,+ → L3-S2 10<br>− via the lid switch → dash ground,
-DV32,Drop,Factory cluster,Instrument cluster plug (kept),GY (IG feed) → DP-CLU 1<br>B (ground) → DP-CLU 2<br>RL (illumination) → DP-CLU 3<br>YG (tach) → DP-CLU 4<br>YW (water temp) → DP-CLU 5<br>BrY (oil pressure) → DP-CLU 6<br>Y (fuel) → DP-CLU 7<br>charge lamp terminal → DP-CLU 8<br>BR (brake warning) → DP-CLU 9<br>GR (turn L indicator) → DP-CLU 10<br>GO (turn R indicator) → DP-CLU 11<br>RY (high beam indicator) → DP-CLU 12,
 DV33,L4,Rear defog grid,G-25,"LG → L4-P 1<br>B → rear star, 12 AWG BLK",
 DV34,L4,Fuel pump,Carter P4070 (B-24 position),"+ → L4-P 2<br>− → rear star, its OWN 12 AWG BLK",
 DV36,L4,Fuel level sender,C-01,"Y → L4-S 1<br>B → rear star, 16 AWG BLK",
@@ -42,3 +41,8 @@ DV41,L4,Door jamb switches,New plunger switches ×2 (B-pillar),Driver → 33 kΩ
 DV42,L4,Rear star node,New — stud in the cargo bin,"stud → chassis, 10 AWG BLK; the battery 2 AWG negative lands here too",
 DV43,Sill,Sill node,New panel behind the driver kick panel,"D1 / D2 receptacles → all conductors capped<br>Ground stud → chassis<br>K5–K8 sockets → fitted, empty<br>F8 / F9 / F14 → positions labelled, no holders this build",
 DV44,L3,Wideband AFR gauge (controller),"AEM 30-0300 X-Series, relocated out of sight","+12 V → F20 (ignition-fed, so the heater is live while cranking)<br>Ground → GND bus, 16 AWG BLK<br>AEMnet CAN H/L → the CAN2 splice at the dash node. The gauge's AEMnet lead ends in a DTM 2-way: **cut the pigtail and butt-splice to the CAN2 pair** — no DTM tooling enters the build (D-219)<br>0–5 V analog out: not used<br>Sensor lead: the gauge's own cable through the firewall grommet to the bung — never cut, never extended",
+DV45,Drop,ICU — instrument cluster unit,"Carrier H-001 behind the binnacle, Teensy 4.1 socketed (D-259); the display ribbons to it (D-268)","Tail A (DT06-6S from the dash post) → the board's DT13-06PA: DP-ICU-A 1–6 (logic 12 V, illumination reference, ground, CAN2, the F16 backlight feed) · tail B (DT06-12S) → DT13-12PA: DP-ICU-B 1–12 (senders, tach, lamp lines, tell-tale senses; 7 plugged, 8 road speed, 9 the spare input) · BT817 board and the 12.3-inch bar on a ribbon through the enclosure grommet · the ESP32-C3 radio on the board (D-267) · printed ASA / PETG enclosure (D-270)",DP-ICU-A 3 → GND bus
+DV46,Drop,Digital display — 12.3-inch bar,On a plate in the binnacle aperture until the luxury bezel (D-268; luxury FT34),"Ribbon from the ICU carrier — QSPI to the BT817 board, the backlight from the F16 aux through the carrier's switch FET (IC13 / IC21) · page button beside it (IC22) · nothing on the harness",through the ICU — DP-ICU-A 3
+DV47,L4,Road-speed pulse generator,"Hall pulse generator on the transmission's speedo-drive boss in place of the cable — Dakota Digital SEN-01-4160 / AutoMeter 5291 class, thread adapter per M-2 (P113); fitted at the meters cutover (D-272)","signal → L4-S 3, 18 in service loop<br>+12 V ← L4-S 4 (an O10 tap)<br>ground → rear star, 16 AWG BLK (G35)",rear star
+DV48,L4,Hatch-release solenoid (factory),Exists and is believed to work — Camden 2026-09-08; the latch switch is broken (K-016),"+ ← L4-M 3, through the hinge loop with the tail-lamp conductors<br>− → its factory ground at the latch — confirm continuity to the body at install §4.4<br>trigger: the luxury package's (D-180) — the K3 / K4 sockets at the dash node are the slot",body
+DV49,L4,Fuel-door release solenoid (factory),Exists — Camden 2026-09-08 (K-017 corrected),"+ ← L4-M 4, behind the quarter trim<br>− → its factory ground — confirm at install §4.4<br>trigger: as DV48",body

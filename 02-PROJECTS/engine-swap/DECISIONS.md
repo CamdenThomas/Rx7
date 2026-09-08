@@ -12,13 +12,15 @@ Decisions that already shape this project, inherited from the electrical build o
 
 **D-091 — The main feed is 2 AWG, sized for the swap engine, not the 12A**, so the tunnel is never pulled a second time.
 
-**D-183 — The PMU's fuel-pump and start-relay rules gain their rpm terms once an ECU puts rpm on CAN2** (0x200). The interim rules (key RUN / key START + inhibitor) run until then.
+**D-183 — The PMU's fuel-pump and start-relay rules gain their rpm terms once rpm is on CAN2.** The ICU publishes it on `0x200` from the first drive (electrical D-259); the ECU's own arrives on `0x500+` at the swap. Either is a *secondary*, fail-open term — the primary gate is the hardwired oil-pressure node on A7 (electrical D-249 / D-251).
 
 **D-187 — The automatic's inhibitor switch is read on A4 (P/N, crank interlock) and A5 (R, reverse lamps) through the engine leg (L1-S1 11, L1-S2 7).** Both disappear with the automatic; the transmission that replaces it needs its own P/N and reverse signals into the same two ladder states.
 
 **D-173 — The fuel-pump soft fuse (4.0 A, set for the Carter P4070) is re-set from the in-tank pump's spec at the swap.**
 
 **D-113 — The rear disc conversion and the rear axle are still planned.** The July 2026 drum overhaul was an interim so the car could be driven; the intent is a thoroughly sorted rear axle and engine that then last.
+
+**Electrical D-261 / D-262 — the 12A's senders stay and are read in place; every ICU sensor channel is jumper-and-config, the PMU's A7 takes a sender or a 0–5 V transducer.** What the new engine must deliver to those inputs is the hand-over table in [`README.md`](README.md).
 
 ## Earlier research that still stands
 

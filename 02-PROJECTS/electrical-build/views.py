@@ -54,7 +54,7 @@ def src_parts(src):
 
 
 def is_cavity_ref(tok):
-    return bool(re.fullmatch(r"(L\d-[PMS]\d?|D[12]|DP-[A-Z]+) \d+", tok))
+    return bool(re.fullmatch(r"(L\d-(?:[PMS]\d?|BLW|NZL|OAT|CMF|WIN|MOD|RDR)|D[12]|DP-[A-Z]+(?:-[A-Z])?) \d+", tok))
 
 
 def reverse_links(db, cav_id):
@@ -80,6 +80,8 @@ def src_text(db, c):
     h = housing(db, c["housing"])
     if state == "PLUG":
         return "—"
+    if state == "RESERVED":
+        return (s or "spare") + " — pinned on the node side, no leg conductor"
     if s == "":
         links = reverse_links(db, c["id"])
         if links:
@@ -165,7 +167,7 @@ def goes_to(db, p):
     legs, drops, fuses_, relays_ = [], [], [], []
     for c in db.rows("cavities"):
         if c["src"] == ch:
-            item = c["id"] + (" (capped)" if c["state"] == "CAPPED" else "")
+            item = c["id"] + (" (capped)" if c["state"] == "CAPPED" else " (reserved at the post)" if c["state"] == "RESERVED" else "")
             (drops if c["housing"].startswith("DP-") else legs).append(item)
     splice_note = any(c["src"] == ch and "splice" in c["src_note"] for c in db.rows("cavities"))
     for k in db.rows("relays"):
@@ -312,7 +314,7 @@ def v_cavities(db, code):
     elif not code.startswith("DP-"):
         out.append(f"**{code}** · {h['leg_side']} → {h['box_side']} · {h['cavs']} cavities · {h['note']}\n")
     if code.startswith("DP-") or h["class"] == "Door":
-        hdr = ["Cav", "Circuit", "From", "AWG", "Colour", "State", "Cluster plug" if code == "DP-CLU" else "Lands on"]
+        hdr = ["Cav", "Circuit", "From", "AWG", "Colour", "State", "Lands on"]
     else:
         hdr = ["Cav", "Circuit", "From (box side)", "AWG", "Colour", "State", "Lands on (device end)"]
     rows = []
@@ -438,8 +440,8 @@ def v_node_conductors_check(db, arg):
     return T(["From", "To", "AWG", "Colour", "Note", "✔"], [[n["src"], n["dst"], n["awg"], n["colour"], n["note"], "☐"] for n in db.rows("node_conductors")])
 
 
-CUT_GROUPS = {"L1": ["L1-P", "L1-S1", "L1-S2"], "L2": ["L2-P", "L2-M", "L2-S"], "L3": ["L3-P", "L3-M", "L3-S1", "L3-S2", "L3-S3"],
-              "L4": ["L4-P", "L4-M", "L4-S"], "Sill": ["D1", "D2"], "Drops": ["DP-CLU", "DP-DIAG", "DP-ICU", "DP-DCU", "DP-KEY"]}
+CUT_GROUPS = {"L1": ["L1-P", "L1-S1", "L1-S2"], "L2": ["L2-P", "L2-M", "L2-S", "L2-NZL", "L2-OAT"], "L3": ["L3-P", "L3-M", "L3-S1", "L3-S2", "L3-S3", "L3-BLW", "L3-CMF", "L3-WIN", "L3-MOD", "L3-RDR"],
+              "L4": ["L4-P", "L4-M", "L4-S", "L4-S2", "L4-RDR"], "Sill": ["D1", "D2"], "Drops": ["DP-DIAG", "DP-ICU-A", "DP-ICU-B", "DP-DCU", "DP-KEY"]}
 
 
 def v_cut_list(db, group):
@@ -449,6 +451,9 @@ def v_cut_list(db, group):
             cid = c["id"]; dashed = cid.replace(" ", "-")
             if c["state"] == "PLUG":
                 rows.append([cid, "— plug", "—", "—", "PLUG", "—", "—", "—", "sealing plug", "☐"])
+                continue
+            if c["state"] == "RESERVED":
+                rows.append([cid, c["circuit"], "—", "—", "RESERVED", f"`{label_token(db, c)} / {dashed}`", "—", "—", "no leg conductor — the receptacle cavity is pinned on the node side, the leg plug takes a sealing plug (D-271, D-274)", "☐"])
                 continue
             tok = label_token(db, c)
             near = f"`{tok} / {dashed}`"
@@ -531,13 +536,13 @@ def need(db, rule):
     cavs = db.rows("cavities")
     hs = db.rows("housings")
     if rule == "plugs16":
-        return 2 * sum(1 for c in cavs if c["state"] == "PLUG" and housing(db, c["housing"])["class"] != "Power")
+        return sum((2 if c["state"] == "PLUG" else 1) for c in cavs if c["state"] in ("PLUG", "RESERVED") and housing(db, c["housing"])["class"] != "Power")
     if rule == "plugs12":
-        return 2 * sum(1 for c in cavs if c["state"] == "PLUG" and housing(db, c["housing"])["class"] == "Power")
+        return sum((2 if c["state"] == "PLUG" else 1) for c in cavs if c["state"] in ("PLUG", "RESERVED") and housing(db, c["housing"])["class"] == "Power")
     if rule == "contacts14":
         return sum(1 for c in cavs if c["awg"] == "14" and housing(db, c["housing"])["class"] != "Power")
     if rule == "clips":
-        return len(hs)
+        return sum(1 for h in hs if not h["box_side"].startswith("DT13"))  # a module's PCB receptacle needs no post clip (D-270)
     return None
 
 
@@ -851,7 +856,7 @@ def c_ids_cited(db):
     out = []
     ids = {c["id"] for c in db.rows("cavities")}
     for n in db.rows("node_conductors"):
-        for cav in re.findall(r"(?:L\d-[PMS]\d?|DP-[A-Z]+) \d+", n["src"] + " " + n["dst"]):
+        for cav in re.findall(r"(?:L\d-(?:[PMS]\d?|BLW|NZL|OAT|CMF|WIN|MOD|RDR)|DP-[A-Z]+(?:-[A-Z])?) \d+", n["src"] + " " + n["dst"]):
             if cav not in ids:
                 out.append(f"node_conductors: {n['id']} names unknown cavity {cav}")
         for f in re.findall(r"\bF\d+\b", n["src"] + " " + n["dst"]):
@@ -868,7 +873,7 @@ def c_dangling(db):
     fz = {f["id"] for f in db.rows("fuses")}
     kz = {k["id"] for k in db.rows("relays")}
     ch = {p["ch"] for p in db.rows("pins") if p["ch"]}
-    pat = re.compile(r"\b(F\d{1,2}|K\d{1,2}|[OA]\d{1,2}|(?:L\d-[PMS]\d?|D[12]|DP-[A-Z]+) \d{1,2})\b")
+    pat = re.compile(r"\b(F\d{1,2}|K\d{1,2}|[OA]\d{1,2}|(?:L\d-(?:[PMS]\d?|BLW|NZL|OAT|CMF|WIN|MOD|RDR)|D[12]|DP-[A-Z]+(?:-[A-Z])?) \d{1,2})\b")
     for t, cols in db.tables.items():
         for r in db.rows(t):
             for c in cols:

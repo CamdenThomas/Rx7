@@ -1,6 +1,6 @@
 # Circuit — Interior, Doors, Hatch, Fuel Door, Accessories
 
-*Rev 2026-08-30 · owns: the factory decode of this circuit — devices, wires, logic. The rebuild table at the foot points into the new design and is not its owner; cavities are `02-HARNESS/data/connectors.csv`'s.*
+*Rev 2026-09-07 · owns: the factory decode of this circuit — devices, wires, logic. Nothing of the new design lives here; the last section says where it does.*
 
 **Source:** Section H, page 26.
 
@@ -60,23 +60,8 @@ Both are solenoid pulls on a 20 A constant feed, switched by a dash button:
 
 ## 5 · What this means for the rebuild
 
-| Factory | PMU-24 plan |
-|---|---|
-| LY constant interior bus | O20 PWM interior bus → **L4-M 8** (F12 branch); a true constant lives on the busbar (D-020) |
-| Door switches to ground on RY | A6 door pin ladder — **D1 3 / D2 3 → L4-S 2**; same topology |
-| Control Processing Unit (chime, belt, key reminder) | Deleted; chimes dropped (Q-021 → D-050) |
-| Cigarette lighter on LY | **Deleted** (D-095) |
-| Auto clock on LY constant | Constant bus off the PMU (D-020) — the PMU sleeps |
-| Luggage compartment light + switch | O20 bus; the switch joins the A6 ladder as a fourth state via **L4-S 3** (A-012) |
-| Hatch release solenoid | **L4-M 3** — **no output yet**, `Q-061` → D-180. Latch switch broken, K-016 |
-| Fuel-door release solenoid | **L4-M 4** — never existed (V-034 → D-098), new part `T-032`; output `Q-061` → D-180 |
-| Glove box light | O20 bus |
-| Seat belt warning | Dropped (D-050) |
+The rebuild's side of every device and wire above is the electrical build's record, not this file's: find a factory code in its data — `python tools/rx7.py -p electrical-build find "C-02"` — or read the rendered [`DESIGN.md`](../../02-PROJECTS/electrical-build/01-DESIGN/DESIGN.md) §12 (device ends) and [`WIRE-TABLES.md`](../../02-PROJECTS/electrical-build/03-INSTALL/WIRE-TABLES.md). A hand-copied mapping table stood here until 2026-09-07; it had drifted three decisions behind and was removed — one fact, one home. Decisions that shaped this circuit's rebuild: D-020 · D-050 · D-095 · D-098 · D-180.
 
 ## 6 · Unknowns
 
-| ID | Unknown | Resolve by |
-|---|---|---|
-| V-033 → D-180 | Hatch and fuel-door solenoids have no output | The `Q-061` → D-180 packet, Checklist 0.23 |
-| V-034 → D-098 | Solenoid state | Hatch switch broken; fuel-door solenoid never existed |
-| Q-021 → D-050 | Chimes | Dropped |
+Every unknown this decode raised has an ID. The open ones live in the projects' `QUESTIONS.md` files (electrical, luxury, engine swap); the closed ones are cited with their closer in the projects' `DECISIONS.md`. This circuit's: Q-021 · Q-061 · V-033 · V-034.

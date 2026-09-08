@@ -1,0 +1,75 @@
+id,msg,bytes,field,encoding,note
+0x100/0,0x100,0,Key position,0 OFF · 1 ACC · 2 RUN · 3 START,
+0x100/1,0x100,1,Wake source,bitfield: b0 ACC · b1 RUN · b2 hazard · b3 door · b4 horn · b5 latch,
+0x100/2,0x100,2,Global fault,bitfield: b0 soft-fuse trip · b1 undervolt · b2 overvolt · b3 overtemp,
+0x100/3,0x100,3,Headlight state,0 OFF · 1 PARK · 2 HEAD,
+0x100/4,0x100,4,Turn state,0 off · 1 left · 2 right · 3 hazard,
+0x100/5,0x100,5,Pop-up state,0 down · 1 raising · 2 up · 3 lowering · 4 fault,
+0x100/6,0x100,6,reserved,,
+0x100/7,0x100,7,counter,rolling 0–255,
+0x110/0–1,0x110,0–1,Battery voltage,"uint16, mV",
+0x110/2–3,0x110,2–3,Total current,"uint16, 0.1 A",
+0x110/4,0x110,4,Alternator charging,0 no · 1 yes,
+0x110/5–6,0x110,5–6,reserved,,
+0x110/7,0x110,7,counter,,
+0x120/0–1,0x120,0–1,reserved,,"fuel level moved to the ICU's 0x218 (electrical D-249, D-306)"
+0x120/2–4,0x120,2–4,Output on/off,"24 bits, one per O1–O24",
+0x120/5,0x120,5,Trip state — channel index,"0–23, cycling",
+0x120/6,0x120,6,Trip state — status,0 ok · 1 tripped · 2 retrying,
+0x120/7,0x120,7,counter,,
+0x130/0,0x130,0,Channel index,0–23 = O1–O24,
+0x130/1–2,0x130,1–2,Measured current,"uint16, 0.01 A",
+0x130/3–4,0x130,3–4,Soft-fuse setpoint,"uint16, 0.01 A",
+0x130/5,0x130,5,Channel status,0 off · 1 on · 2 tripped · 3 retrying,
+0x130/6,0x130,6,reserved,,
+0x130/7,0x130,7,counter,,
+0x200/0–1,0x200,0–1,RPM,"uint16, 1 rpm",
+0x200/2,0x200,2,Water temp,"int8, °C",
+0x200/3,0x200,3,Oil temp,"int8, °C",
+0x200/4–5,0x200,4–5,Oil pressure,"uint16, 0.01 bar",
+0x200/6,0x200,6,Road speed,"uint8, km/h",
+0x200/7,0x200,7,counter,,
+0x210/0,0x210,0,Sensor valid,bitfield: b0 RPM · b1 water · b2 oil temp · b3 oil press · b4 VSS · b5 fuel,b5 arrives with F-012
+0x210/1,0x210,1,Sensor fault type,bitfield: b0 open · b1 short · b2 out of range · b3 implausible,
+0x210/2,0x210,2,CAN health,b0 PMU seen · b1 DCU seen · b2 panel seen · b3 AFR seen,b3 with F-012
+0x210/3–6,0x210,3–6,reserved,,
+0x210/7,0x210,7,counter,,
+0x218/0–1,0x218,0–1,Fuel level,"uint16, 0.1 % — three-point lookup calibrated in the car",the measured curve is in electrical D-249
+0x218/2,0x218,2,Fuel sensor valid,0 fault · 1 valid,
+0x218/3–6,0x218,3–6,reserved,,
+0x218/7,0x218,7,counter,,
+0x220/0–1,0x220,0–1,Battery voltage,"uint16, 0.01 V per bit","from the source, not the PMU's own reading"
+0x220/2–3,0x220,2–3,Battery current,"int16, 0.1 A per bit, + = charging",a shunt sees every load; a BMS sees only its own terminals
+0x220/4,0x220,4,State of charge,"uint8, %",the source's own estimate
+0x220/5,0x220,5,Battery temperature,"int8, °C",0x7F = unknown
+0x220/6,0x220,6,Flags,bit 0 source (0 BMS · 1 shunt) · bit 1 heater on · bit 2 charge inhibited (cold) · bit 3 data valid · bit 4 radio link lost,valid = 0 → dashes (D-153)
+0x220/7,0x220,7,counter,,
+0x300/0,0x300,0,Mode,"0 off · 1 vent · 2 heat · 3 defrost · 4 A/C — 4 RESERVED, unreachable until the swap (D-211)",
+0x300/1,0x300,1,Blower duty,"uint8, % 0–100 — what the DCU commands its final stage; telemetry, the PMU does not act on it",D-308
+0x300/2,0x300,2,Target temp,"uint8, °C",
+0x300/3,0x300,3,Cabin temp,"int8, °C",SN11
+0x300/4,0x300,4,A/C request,"0 no · 1 yes — RESERVED, always 0 (D-211)",
+0x300/5,0x300,5,Outside-air temp,"int8, °C","SN12, electrical D-256"
+0x300/6,0x300,6,reserved,,
+0x300/7,0x300,7,counter,,
+0x310/0,0x310,0,Seat heat,b0–1 driver level · b2–3 passenger level,
+0x310/1,0x310,1,Seat cool,b0–1 driver · b2–3 passenger,
+0x310/2,0x310,2,Mirror heat,b0 on,
+0x310/3,0x310,3,Nozzle heat / de-icer,b0 nozzles · b1 park de-icer,
+0x310/4–5,0x310,4–5,Comfort bus current,"uint16, 0.01 A",
+0x310/6,0x310,6,reserved,,
+0x310/7,0x310,7,counter,,
+0x320/0,0x320,0,Alert level,0 none · 1–5,
+0x320/1,0x320,1,Band,bitfield: b0 X · b1 K · b2 Ka · b3 laser,
+0x320/2,0x320,2,Direction,0 unknown · 1 front · 2 rear,
+0x320/3–6,0x320,3–6,reserved,,
+0x320/7,0x320,7,counter,,
+0x400/0,0x400,0,Button states,"bitfield, 8 keys",
+0x400/1,0x400,1,Button held ≥ 1 s,bitfield,
+0x400/2–6,0x400,2–6,reserved,,
+0x400/7,0x400,7,counter,,
+0x180 ext/0–1,0x180 ext,0–1,Lambda,"uint16, 0.0001 λ per bit, big-endian — 0 to 6.5535",AFR = λ × 14.65 (gasoline); confirmed D-266
+0x180 ext/2–3,0x180 ext,2–3,Oxygen,"int16, 0.001 % per bit, big-endian — −32.768 to 32.767 %",confirmed D-266
+0x180 ext/4,0x180 ext,4,System voltage,"uint8, 0.1 V per bit — 0 to 25.5 V",the gauge's own supply reading; confirmed D-266
+0x180 ext/5,0x180 ext,5,reserved (AEM),,
+0x180 ext/6–7,0x180 ext,6–7,Flags (AEM),byte 6: bit 1 LSU4.9 detected · bit 5 free-air cal in use · bit 7 lambda data valid; byte 7: bit 6 sensor fault; other bits reserved,"no rolling counter — AEM's frame, not ours; render dashes unless valid = 1 and fault = 0 (D-153); confirmed D-266"

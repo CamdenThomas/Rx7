@@ -1,0 +1,12 @@
+key,value,unit,source,note
+canvas,1280 × 480,px,D-193,one 12.3-inch bar panel
+framebuffer,614,KB,"D-170, F-011",8 bpp in the 8 MB PSRAM
+full_push_ms,~100,ms,CLUSTER-DESIGN (archived),"a page transition, never inside the 30 fps loop"
+can_bitrate,500,kbps,D-086,"CAN 2.0B, 11-bit — the AEM node is the 29-bit exception (Q-304)"
+frame_bits_std,112,bits,CAN-MESSAGES bus-load method,"8-byte standard frame with stuffing, as the map has always counted it"
+frame_bits_ext,132,bits,same method,8-byte extended frame
+icu_logic_draw,~0.5,A,ICU-CARRIER (archived),Teensy + transceiver + IMU
+display_draw,1.5–3,A,Q-302,a 900–1000-nit panel and its backlight — measure at bring-up
+o10_headroom,~3,A,"Q-302, electrical LD15 / D-223",for all three module drops together
+servo_stall,1–2.5 each,A,DCU-CARRIER (archived),why the servo rail is its own buck
+thresholds,redline 7000 rpm · hot water 105 °C · low oil 1.0 bar · tank 15.9 gal,,"D-300, owned by stats.h",tank capacity vs the brochure's 16.6 gal is Q-307

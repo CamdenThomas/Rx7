@@ -1,7 +1,7 @@
 id,seq,circuit,ch
 MG01,1,Interior lamp,O20
 MG02,2,USB-C + head unit,O10
-MG03,3,Cluster feed + illumination,F16 / O20
+MG03,3,ICU aux feed + illumination (the display's backlight and dimming reference),F16 / O20
 MG04,4,Horn,O11
 MG05,5,Wipers LOW + park,O8
 MG06,6,Wipers HIGH,O9
@@ -15,9 +15,9 @@ MG13,13,Headlight LOW,O2
 MG14,14,Headlight HIGH,O3
 MG15,15,Pop-up LEFT,O1 / K1
 MG16,16,Pop-up RIGHT,O1 / K2
-MG17,17,Blower,O16
+MG17,17,"Blower — receptacle L3-BLW only, no motor (K-023 · D-253)",O16
 MG18,18,Courtesy lamps,F19
-MG20,19,Fuel pump + sender,O5 / A7
+MG20,19,Fuel pump + fuel sender (the ICU's node from D-258),O5 / L4-S 1
 MG21,20,Ignition coils + alternator excitation,O12 / F15
-MG22,21,"Charge lamp, brake lamp, gauges",DP-CLU
+MG22,21,"Charge line, brake warning, the three senders, the tach and the road-speed pulse generator (D-272) → DP-ICU-B; the ICU and the display go live and the factory cluster goes dark — GATED on the display proven on the bench (install §1.22, D-268)",DP-ICU-B
 MG23,23,**Start**,O21 / K9

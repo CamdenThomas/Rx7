@@ -1,0 +1,36 @@
+id,stage,group,item,spec,qty,usd_low,usd_high,status,gate,note
+LP01,S0,in hand,Teensy 4.1 with pins,"PJRC — ICU, DCU, spare",3,0,0,in hand,,D-303; one of them is the PMU simulator until the real one talks
+LP02,S0,in hand,SN65HVD230 transceiver modules,desk parts only (D-085),5,0,0,in hand,,solder the header pins first
+LP03,S0,bench,120 Ω ¼ W resistors,bus termination on the bench,4,2,2,est,,may already be in the electrical build's Amazon cart — check before buying twice
+LP04,S0,bench,microSD cards,"config-as-data and logging, Stage 6–7",2,10,10,est,,
+LP06,S0,carriers,TCAN1042 / TCAN1051 transceivers,"3.3 V logic, 5 V bus, VIO pin — DCU + spare; exact suffix electrical V-057",2,6,6,verify,electrical V-057,the ICU's two are the electrical build's P104
+LP07,S0,carriers,"Carrier PCB H-002 (DCU), two revisions likely","2 boards, 2-layer",2,50,125,est,"V-083, Q-305",H-001 (ICU) is the electrical build's P103 (D-313)
+LP08,S0,carriers,Automotive 12 V → 5 V bucks,"LMR36015-Q1 class, 60 V in — the LMR33630's 36 V sits under the SMBJ33A clamp (electrical D-273): DCU logic, DCU servo rail",2,14,27,verify,V-083,
+LP09,S0,carriers,"Load-dump TVS, reverse diodes, input filters","SMBJ33A ×2, SS34, chokes — the DCU's",1,10,10,est,,not optional (D-088)
+LP11,S0,carriers,"Teensy socket headers, standard 0.1 in female",2 sets — DCU + spare,2,8,8,est,,square pins damage machined sockets — use standard female headers
+LP14,S0,carriers,DCU comfort stage,"AOD4184-class FETs ×7, INA180 + 5 mΩ shunt, servo headers, gate resistors",1,15,25,verify,V-083,
+LP17,S2,climate,Blower motor,"Four Seasons 35483 class, 2-wire, motor only — the squirrel cage transfers",1,37,65,verify,,electrical D-253; the original is dead (K-023)
+LP18,S2,climate,Blower final stage,"low-side PWM controller ≥ 25 A, ≥ 20 kHz, own freewheel diode, logic-level PWM or 0–5 V input — or an OEM-style linear blower regulator",1,15,40,verify,,D-308 / electrical D-257; mounts in the resistor pack's hole for airflow
+LP19,S2,climate,HVAC servos,"hobby-class, metal gear, for the three door cables + 1 spare",4,60,120,est,,after the heater-box teardown shows the cable loads
+LP20,S2,climate,Control panel,"knobs with pointers, two pots, detented mode switch, LED toggle buttons, faceplate, its board",1,60,150,est,"Q-305, D-210",
+LP21,S2,climate,O15 comfort fuse block,"6-position bussed block + fuses, behind the centre stack",1,25,40,est,,FT31
+LP22,S2,climate,Temperature sensors,"10 kΩ NTC ×2 — cabin, outside air",2,10,10,est,,"SN11, SN12"
+LP23,S2,body,Hatch release solenoid,"the factory solenoid, in place",1,0,0,in hand,T-033,The factory hatch solenoid exists (Camden 2026-09-08) — nothing to buy; L4-M 3 reaches it (electrical D-274)
+LP24,S2,body,Hatch latch switch,replacement for the broken factory switch (K-016),1,50,130,verify,T-033,
+LP25,S2,body,Fuel-door release solenoid,"the factory solenoid, in place (K-017 corrected 2026-09-08)",1,0,0,in hand,T-032,The factory fuel-door solenoid exists (Camden 2026-09-08) — nothing to buy; L4-M 4 reaches it (electrical D-274)
+LP29,S3,display,"Display bezel — foam plug, fibreglass cloth, epoxy, filler, primer and finish",shaped over the electrical build's binnacle plate (electrical Q-130); the ICU enclosure is the electrical build's (its Q-126),1,80,200,est,,"FT34 / H-006; the glass, bridge, eval board and page button are the electrical build's P117–P120 (D-314)"
+LP30,S4,comfort,Seat heating elements,2 × ~4 A,2,40,100,est,,
+LP31,S4,comfort,Seat cooling fans and ducting,2 × 1.5–2.5 A,2,40,120,est,,
+LP32,S4,comfort,Heated washer nozzles / park de-icer,only if one fits,1,20,60,verify,Q-303,
+LP33,S4,comfort,Sound deadening,"CLD tiles, MLV, closed-cell foam",1,150,400,est,,
+LP34,S5,mirrors,"Mirrors — heated, 3-wire motors","conventional common + X + Y motors, resistive heat",2,120,300,verify,Q-300,"a 5-wire, LIN or module mirror does not fit the doors (D-305)"
+LP35,S5,mirrors,Mirror switch,only if the DCU does not drive them,1,15,40,verify,Q-305,
+LP36,S6,windows,Window regulators and motors,pair,2,150,400,est,,switches are already in the electrical build's carts
+LP37,S6,windows,"Window relays K5–K8, F8 / F9 holders and fuses",micro relays ×4 + 2 holders,1,40,80,est,,sockets are fitted empty at the sill
+LP38,S7,lighting,"DOT / SAE LED modules, red and white",with published candela,2,80,200,verify,V-064,
+LP39,S7,lighting,Tail-light housings,"fabrication, sealed, stock mounting",2,60,150,est,,
+LP40,S7,lighting,Tail-light driver PCBs,"2 + spares, two revisions likely",2,60,120,est,,D-111
+LP41,S7,lighting,Headlamp units,"DOT rectangular LED on plates, or 7-inch round LED",2,120,300,verify,Q-048,
+LP42,S7,lighting,Headlamp adapter plates,only for a 4×6 in a round bucket,2,20,60,est,Q-048,
+LP43,S7,lighting,LED bulbs,"park, marker, plate, interior, glovebox, luggage, illumination — ~20",1,60,150,est,,then re-set every lamp soft fuse (D-122)
+LP44,S8,radar,Radar sensors and module,custom subsystem,1,,,unpriced,V-061,no estimate until Z-002 exists

@@ -17,9 +17,9 @@ An ECUMaster PMU-24 DL solid-state power module replaces the factory fuse box, r
 | The dash node — PMU, busbars, fuse blocks, relays, wake circuit | The design of those future subsystems — only their conductors appear here, as capped wires |
 | Four harness legs, the sill node, five dash-post drops | The audio system — the amplifier has its own power and is isolated from every other system (D-230); only the head unit is a load here |
 | Every switch, ladder, sender and lamp the car needs to drive, day and night, in rain | The LS engine swap — its outputs, CAN drop and sensor cavities are reserved and capped |
-| The factory cluster, fed from the new harness |  |
+| The ICU and its 12.3-inch display — the instruments from the meters cutover (D-259, D-268) | The bezel and dash plastics around the display |
 
-**Status words used throughout:** **LIVE** — wired, connected, enabled. **CAPPED** — wire run, terminated in its cavity, far end sealed and labelled. **PLUG** — a cavity with no circuit assigned: fitted with a sealing plug in both halves, no wire, no contact. **EMPTY** — relay socket or fuse holder fitted and labelled with nothing in it.
+**Status words used throughout:** **LIVE** — wired, connected, enabled. **CAPPED** — wire run, terminated in its cavity, far end sealed and labelled. **PLUG** — a cavity with no circuit assigned: fitted with a sealing plug in both halves, no wire, no contact. **RESERVED** — the receptacle half is pinned from the PMU or a fuse position at the post, the plug half carries a sealing plug, and no conductor runs down the leg (D-271): the harness is ready for a future engine at the connector, never in the bay. **EMPTY** — relay socket or fuse holder fitted and labelled with nothing in it.
 
 
 ---
@@ -180,6 +180,13 @@ A leg is a bundle that can be removed without disturbing any other leg. Every de
 
 {{cavities:L2-S}}
 
+### L2-NZL · L2-OAT — the front leg's branch ends
+Two DT-2 receptacles on the L2 loom, not at the post, where the future circuits leave the leg (D-274): **L2-NZL** at the cowl carries the heated-nozzle feed (`L2-S 6`) and **L2-OAT** ahead of the radiator the outside-air thermistor (`L2-S 5`). Both are dust-capped; the nozzle harness and the thermistor arrive with their plugs, and nothing is run past the receptacle until they do. Both loads ground at the front star.
+
+{{cavities:L2-NZL}}
+
+{{cavities:L2-OAT}}
+
 ### L3 · DASH
 
 **Boundary** the dash structure. **Ground** the dash node's ground bus. Almost entirely signal: two heavy conductors, two medium and everything else 16 AWG, because every multi-position switch is a ladder on one wire. The dash node and the five drops live here but belong to no leg.
@@ -197,9 +204,25 @@ A leg is a bundle that can be removed without disturbing any other leg. Every de
 
 {{cavities:L3-S3}}
 
+### L3-BLW
+The blower receptacle at the HVAC case — a DTP-2 on the L3 loom, not at the post. The motor is dead (K-023) and is not replaced until the luxury package, so the receptacle is dust-capped; O16 feeds cavity 1 and cavity 2 is the 12 AWG return to the dash ground. Speed is set by a low-side final stage — ≥ 20 kHz, its own freewheel diode across the motor, mounted in the resistor pack's hole for airflow — that plugs in here as an adapter between receptacle and motor, on the DCU's own PWM output; the PMU's PWM tops out at 400 Hz, which a brushed blower would sing at, so O16 is a steady feed (D-257).
+
+{{cavities:L3-BLW}}
+
+### L3-CMF · L3-WIN · L3-MOD · L3-RDR — the dash leg's branch ends
+The same pattern for every other future circuit on the leg (D-274): the conductor stops in a dust-capped receptacle at the point it branches off, and the part that arrives brings the plug. **L3-CMF** (DTP-2, behind the centre stack) is the O15 comfort bus — the luxury package's fuse block plugs in. **L3-WIN** (DT-6, console) carries the four window commands and, on cavity 5, the switch pack's common feed, tapped off the F3 switch supply where `L3-S2 2` passes; the commands land on the K5–K8 sockets at the sill, which is that branch's end. **L3-MOD** (DT-2, behind the dash) is the future module's switched feed and ground. **L3-RDR** (DT-4, behind the dash) is the dash end of the radar pass-through, linked at the post to `L4-S 5–7`.
+
+{{cavities:L3-CMF}}
+
+{{cavities:L3-WIN}}
+
+{{cavities:L3-MOD}}
+
+{{cavities:L3-RDR}}
+
 ### L4 · REAR
 
-**Boundary** the tunnel entry at the console, back to the hatch, plus the sill runs into both doors. **Ground** the rear star stud in the cargo bin; the doors ground at the sill stud, never inside a door. The tunnel run is the longest in the car — voltage drop, not current, sets the 12 AWG on the defog and pump feeds. The fuel sender wire is routed apart from the fuel pump feed.
+**Boundary** the tunnel entry at the console, back to the hatch, plus the sill node, where the door receptacles wait — `D1` / `D2` are RESERVED (D-274): pinned on the node side, sealing plugs in the door plugs, nothing run into a door until its harness comes with the mirror and the window. **Ground** the rear star stud in the cargo bin; the doors ground at the sill stud, never inside a door. The tunnel run is the longest in the car — voltage drop, not current, sets the 12 AWG on the defog and pump feeds. The fuel sender wire is routed apart from the fuel pump feed.
 
 ![L4 · REAR](diagrams/13-L4-rear.svg)
 
@@ -210,9 +233,19 @@ A leg is a bundle that can be removed without disturbing any other leg. Every de
 
 {{cavities:L4-S}}
 
+### L4-S2
+Mirror-adjust commands, dash → sill: one shared common and X/Y per side, capped at the post, spliced at the sill node onto the door receptacles (D-255). A mechanical mirror switch or the climate module's bridges land here later.
+
+{{cavities:L4-S2}}
+
+### L4-RDR — the rear leg's branch end
+The rear end of the radar pass-through: a DT-4 receptacle at the rear node, dust-capped (D-274). The run up the hatch — across the hinge, the one place a dead wire is worst — goes in with the sensor, not now.
+
+{{cavities:L4-RDR}}
+
 ### Sill node and the door connectors
 
-A small panel behind the driver's kick panel: the D1 / D2 receptacles, a ground stud to the chassis, four empty relay sockets and three labelled fuse positions (F8, F9, F14 — the holders come with the windows and mirrors). It is a sub-assembly of the rear leg, not a fifth leg. **No conductor on it is live in this build** — every door wire is run through the door boot and capped inside the door so a future door project never touches the harness. The door jamb switches are body-mounted plungers wired at the sill, not through the door connectors.
+A small panel behind the driver's kick panel: the D1 / D2 receptacles (pinned on the node side and RESERVED — the door plugs carry sealing plugs until the door harness is built, D-274), a ground stud to the chassis, four empty relay sockets and three labelled fuse positions (F8, F9, F14 — the holders come with the windows and mirrors). It is a sub-assembly of the rear leg, not a fifth leg. **No conductor on it is live in this build** — and nothing runs through a door boot: the door receptacles are pinned on the node side and their plugs sealed (RESERVED, D-274), so the door harness is built with the mirror and the window and never touches the leg. The door jamb switches are body-mounted plungers wired at the sill, not through the door connectors.
 
 ![sill](diagrams/14-sill-doors.svg)
 
@@ -230,23 +263,24 @@ Five connectors on the dash node edge for devices that sit inches from it and be
 ![drops](diagrams/15-dash-post-drops.svg)
 
 
-### 7.1 · DP-CLU — the factory cluster
+### 7.1 · The instruments — the ICU and its display, not a cluster drop
 
-![cluster](diagrams/06-cluster-drop.svg)
-
-The car keeps its instruments. One DT-12 drop feeds the cluster's ignition supply (F16), ground, illumination (the O20 PWM bus, so the cluster dims with the rest of the dash), the tachometer pulse from the trailing coil, the water-temperature and oil-pressure senders, the fuel sender, the alternator's lamp terminal, the brake-warning switches and the three indicators. The factory cluster plug is kept as a pigtail and re-terminated, so no cluster pin has to be sourced. The retractor indicator lamp is not used (its YG line is now a ladder input).
-
-{{cavities:DP-CLU}}
+There is no cluster drop and no temporary cluster. Every conductor the factory cluster used to receive — the three senders, the tach pulse, the charge and brake lines, the three tell-tale outputs — terminates at `DP-ICU-A` / `DP-ICU-B`, where the ICU excites the fuel and water-temp senders, reads everything and draws it on a 12.3-inch display ribboned to its own board (D-258, D-268). The oil-pressure node is the one exception to "the ICU excites": the PMU excites it (D-260) so the fuel-pump gate never depends on the ICU. The factory cluster stays alive on the *factory* harness until the meters cutover (MG22, gated on the display proven on the bench) and leaves with that harness at install §6 — nothing in the new harness was ever built for it. The display's backlight is the F16 ignition aux on `DP-ICU-A 6`; the display sits on a plain plate in the binnacle aperture until the luxury package's moulded bezel surrounds it.
 
 ### DP-DIAG
 The laptop port, in the glovebox. CAN1 (with its 120 Ω inside the plug), a 2 A constant and ground. The PMU is configured through this port with the module in the car.
 
 {{cavities:DP-DIAG}}
 
-### DP-ICU
-Future digital-cluster module. Power, ground, CAN2, illumination reference, and taps on the sensor conductors — all capped at the post.
+### DP-ICU-A
+The ICU's power and bus drop — live from install (D-259). Cavities 1 · 3 · 4 · 5 are the same as DP-DCU's, so every module in the car plugs into one six-way pattern (D-252); 6 is the F16 ignition aux — the display's backlight, through the ICU (D-268).
 
-{{cavities:DP-ICU}}
+{{cavities:DP-ICU-A}}
+
+### DP-ICU-B
+The ICU's sensor drop — live from install. The three senders, the tach, the charge and brake lines and the three tell-tale senses **terminate** here: the ICU excites the senders, reads everything, and the display draws it (D-258, D-268) — the harness has no cluster drop. Cavity 7 is a sealing plug (no oil-temperature sender on the 12A, D-264); 8 (road speed, `L4-S 3`) and 9 (the engine-leg spare) are capped and belong to `Q-309` and `Q-127`. Fuel level is here and not on the PMU; A7 reads the oil-pressure node, which the PMU itself excites (D-249, D-260).
+
+{{cavities:DP-ICU-B}}
 
 ### DP-DCU
 Future climate module. Power, ground, CAN2 — capped at the post.
@@ -254,7 +288,7 @@ Future climate module. Power, ground, CAN2 — capped at the post.
 {{cavities:DP-DCU}}
 
 ### DP-KEY
-Future control panel. CAN2, switched 12 V, ground — capped behind the dash.
+Future control panel. CAN2, switched 12 V, ground — a dust-capped receptacle at the post; the panel's tail plugs in.
 
 {{cavities:DP-KEY}}
 
@@ -264,7 +298,7 @@ Future control panel. CAN2, switched 12 V, ground — capped behind the dash.
 
 ![ladders](diagrams/04-switch-ladders.svg)
 
-**The column combination switch stays** (light / dimmer / passing, turn / hazard, wiper / washer) — it is mechanically sound. **Every other switch is new:** ignition switch (electrical portion), brake pedal switch, blower speed switch, two wink pushbuttons, four plunger switches (door jambs, glove box, luggage lid). The horn stays on the steering pad.
+**The column combination switch stays** (light / dimmer / passing, turn / hazard, wiper / washer) — it is mechanically sound. **Every other switch is new:** ignition switch (electrical portion), brake pedal switch, two wink pushbuttons, four plunger switches (door jambs, glove box, luggage lid). The horn stays on the steering pad.
 
 **No state uses a dead short.** Every switch position reaches ground through a resistor, so an open wire reads full scale and a chafed wire reads zero — both are faults, never a position. Resistors are 1 % metal film, 1/4 W, fitted at the switch and heat-shrunk individually; one wire returns to the dash node per ladder. Decode as windows: a reading between windows is a fault, not the nearest state.
 
@@ -288,7 +322,7 @@ Future control panel. CAN2, switched 12 V, ground — capped behind the dash.
 
 {{ladder:A8}}
 
-A7 (fuel) is not a ladder: the factory gauge drives the sender and the PMU taps the node with a 1 MΩ pull-down and no pull-up. Its three-point lookup (FULL / MID / EMPTY) is read in the car at commissioning. A8's HAZARD state is decoded as a band, 265–370, so a wink pressed while the hazards are on reads as HAZARD and does nothing.
+A7 (oil pressure, D-249) is not a ladder: the node is excited by a 100 Ω 1 W pull-up from pin 15 at the dash node (D-260) and read through the same 1 MΩ pull-down as before — negligible against 100 Ω; the ICU reads the same node (D-258). Its threshold — the count below which the fuel-pump gate reads "no oil pressure" — is read in the car at commissioning from the live node at idle and at speed, never entered from a datasheet; the gate itself (START unconditional · 3 s prime · latched with a 5 s de-bounce · fails open on a FAULT reading) is in the logic table. Fuel level is no longer a PMU input: the ICU taps that node on DP-ICU-B 3 and publishes it on CAN2 (D-251). A8's HAZARD state is decoded as a band, 265–370, so a wink pressed while the hazards are on reads as HAZARD and does nothing.
 
 
 ### 8.2 · 12 V summed ladders — A15 and A16 (12-bit, 10 kΩ pull-down, 100 kΩ bias from +5 V)

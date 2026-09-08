@@ -1,6 +1,6 @@
 # FIRMWARE
 
-*Rev 2026-08-30 · owns: cluster layout, palette, rendering, CAN structs and the automated trip figures — in code. This README is the folder map and the build instructions.*
+*Rev 2026-09-07 · owns: cluster layout, palette, rendering, CAN structs and the automated trip figures — in code. This README is the folder map and the build instructions.*
 
 **This folder is a source of truth** (R6). `icu/cluster_core.h` defines the
 palette, every layout constant, the icon set, unit conversions and
@@ -9,7 +9,7 @@ and lifetime figures (D-163). `icu/can_map.h` is the machine-readable CAN
 map. The prose documents describe *why*; this code defines *what*.
 
 **Version:** `ICU_FW_VERSION` in `icu/icu.ino`, printed at boot. Bump it on
-any behaviour change, log it in `../../04-BUILD/LOGS.md`, tag the commit.
+any behaviour change, log it in `../../03-INSTALL/BRING-UP.md` §4 (`data/bringup_log.csv`), tag the commit.
 
 ## Contents
 
@@ -37,7 +37,7 @@ firmware/
 ├── pmu_sim/                 PMU SIMULATOR — the spare Teensy
 │   ├── pmu_sim.ino          CAN TX + serial console + scripted drive cycle
 │   ├── vehicle_model.h      a 1982 RX-7 that behaves like one
-│   └── channels.h           GENERATED from 02-HARNESS/data/pmu_pins.csv — never edit by hand
+│   └── channels.h           RENDERED by `rx7.py -p luxury-package build` from the electrical build's data/pins.csv (D-311) — never edit by hand
 │
 ├── tests/                   REGRESSION SUITE — 415 assertions, 13 groups, found 4 real bugs
 │   ├── test_suite.cpp       runs on the PC: packing, counter wrap, rendering, overlap, dirty tiles, stats
@@ -53,13 +53,10 @@ firmware/
 
 **`can_map.h` has three copies** because the Arduino IDE needs the header
 beside each sketch. **`icu/can_map.h` is the master.** When it changes, copy
-it over the two test sketches; `05-PROCESS/tools/check.py` fails if they
-differ.
+it over the two test sketches and `dcu/`; `python tools/rx7.py -p luxury-package check` fails if the four copies differ.
 
 **`sim_win32.cpp` includes `../icu/cluster_core.h` directly** — one source of
-truth, no second copy to drift. **`channels.h` is generated** from the same
-CSV that produces [`PIN-MAP.md`](../../02-HARNESS/PIN-MAP.md) and [`CHANNEL-SCHEDULE.md`](../../01-DESIGN/CHANNEL-SCHEDULE.md); type measured
-figures into the CSV and run `gen.py`.
+truth, no second copy to drift. **`channels.h` is rendered** from the electrical build's pin table — the same rows that print its DESIGN.md; change a pin row there and rebuild this project (D-311).
 
 ## 2 · Building the simulator
 
@@ -68,7 +65,7 @@ single zip, no installer. Unzip it to `C:\w64devkit` (the path `build.bat`
 assumes) and run `w64devkit.exe`, which opens a shell with g++ on PATH.
 
 ```
-cd "/c/Users/Camden Thomas/Documents/Storage/Rx7/02-PROJECTS/electrical-pmu/03-MODULES/firmware/icu_sim"
+cd "/c/Users/Camden Thomas/Documents/Storage/Rx7/02-PROJECTS/luxury-package/01-DESIGN/firmware/icu_sim"
 ./build.bat          # or: g++ sim_win32.cpp -o sim.exe -std=c++17 -O2 -lgdi32 -luser32
 ./sim.exe
 ```
@@ -129,9 +126,10 @@ the project.** Three `TODO` calls to fill in once a panel is chosen (`Q-060` →
 
 ## 5 · What the renderer guarantees
 
-**Compose freely, transmit sparingly.** The 384 KB framebuffer lives in RAM;
-only changed 16 × 16 tiles go over the wire (D-168). A full-screen push is
-64 ms — fine as a page transition, fatal inside a 30 fps loop.
+**Compose freely, transmit sparingly.** The 614 KB framebuffer lives in the
+8 MB PSRAM (D-170 / D-193); only changed 16 × 16 tiles go over QSPI to the
+BT817 (D-168). A full-screen push is ~100 ms — fine as a page transition,
+fatal inside a 30 fps loop.
 
 **Never call anything that clears the whole screen in a redraw path.** That
 single discipline is what makes the design work.
@@ -174,15 +172,15 @@ With the PMU simulator, the ICU can be developed and demonstrated
 **What that covers:** the CAN receive path, message dispatch, timeout and
 blanking, the diagnostics page, `stats.h` accumulation, the RPM capture path,
 ladder decode, and the whole rendering layer. Needs two SN65HVD230 modules
-with their headers soldered, a twisted pair and 120 Ω × 2 —
-`../../04-BUILD/BENCH-KIT.md`.
+with their headers soldered, a twisted pair and 120 Ω × 2 — the S0 lines of
+`../../02-SHOPPING/SHOPPING-LIST.md`.
 
 **What it does not cover — and this is the important limit:** the ICU's
 critical gauges are on **its own analog inputs, not CAN** (D-083). The PMU
 simulator exercises only the four things that genuinely come from the PMU:
-fuel level, battery voltage, key state and channel telemetry. Pull the PMU
-sim's power and watch: fuel and volts should blank, everything else should
-carry on. **If the whole cluster goes blank, the failure isolation D-083
+battery voltage, key state and channel telemetry — fuel level is the ICU's
+own input since electrical D-249 / D-306. Pull the PMU sim's power and watch:
+volts should blank, everything else should carry on. **If the whole cluster goes blank, the failure isolation D-083
 promises is not actually there.**
 
 **It is not the PMU.** ECUMaster fixes the real message structure, and

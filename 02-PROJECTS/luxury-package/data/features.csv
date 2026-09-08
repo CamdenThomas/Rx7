@@ -1,0 +1,35 @@
+id,feature,group,stage,state,decisions,note
+FT01,ICU — the instrument cluster unit,cluster,—,"moved (electrical, D-259)",electrical D-258 / D-259 (was D-306),"The electrical build designs, builds and installs it with the harness; this project meets a running node and ribbons the display onto it"
+FT02,Fuel level on CAN (frame 0x218),cluster,—,"moved (electrical, D-259)",electrical D-249 / D-251 / D-259,The ICU's signal from the first drive; the frame stays in this project's CAN map — the bus is one map
+FT03,Oil temperature,cluster,—,"moved (electrical, D-259)",electrical D-250 / D-259,Electrical Q-308 picks the sender (its P112); channel IC07 on the ICU
+FT04,Road speed (VSS),cluster,—,"moved (electrical, D-259)",electrical D-252 / D-259,Electrical Q-309 places the sensor (its P113); channel IC08 on the ICU
+FT05,Wideband AFR on the cluster,cluster,—,"moved (electrical, D-259)",electrical D-244 / D-259 / D-266,Decoded by the ICU — the AEMnet frame is confirmed (electrical D-266); this project draws it
+FT06,12.3-inch cluster display,cluster,—,"moved (electrical, D-268)","D-150 / D-192 / D-193, D-159 → electrical D-268","Installed with the ICU by the electrical build, on a plate in the binnacle; this project makes the bezel around it (FT34)"
+FT07,"Performance page — G-meter, pitch",cluster,any,designed,D-109 / D-161 / D-157,"IMU on the ICU carrier (electrical V-073, channel IC23); this project writes the page — live on the display from the electrical build's meters cutover; this project's firmware"
+FT08,Diagnostics page — 24 channels live,cluster,any,built,—,Renders today against the PMU simulator; real values after V-065 — live on the display from the electrical build's meters cutover; this project's firmware
+FT09,Trip / log page,cluster,any,built (volatile),D-160 / D-162 / D-163,SD persistence is F-007 — live on the display from the electrical build's meters cutover; this project's firmware
+FT10,Fault history to SD,cluster,any,designed,—,Every soft-fuse trip with a timestamp — live on the display from the electrical build's meters cutover; this project's firmware
+FT11,Config-as-data on SD with a safe-mode path,cluster,any,designed,—,Bring-up Stage 6 (F-010) — live on the display from the electrical build's meters cutover; this project's firmware
+FT12,Blower motor and its final stage,climate,S2,designed,"D-307 / D-308, electrical D-253 / D-257",2-wire motor on L3-BLW; ≥ 20 kHz low-side final stage on the DCU's PWM; O16 a steady feed
+FT13,"HVAC door servos — mode, blend, recirculate",climate,S2,concept,D-073,Hobby servos pulling the existing door cables; the factory control head leaves with the plastics
+FT14,Control panel,climate,S2,concept,D-210,Custom board on DP-KEY: defog · hatch · fuel door · mode · fan · temperature · recirc · seat knobs; frame 0x400
+FT15,Cabin and outside-air temperature,climate,S2,designed,"D-307, electrical D-256","Display only — no automatic climate control; the outside sensor plugs into L2-OAT at the nose (L2-S 5 → DP-DCU 2, electrical D-256 / D-274), cabin sensor local to the DCU"
+FT16,Rear defog trigger,comfort,S2,designed,"D-210, electrical D-210(b)","O4 is wired and configured, disabled; the panel key enables it over CAN — a comfort command, fails to off"
+FT17,Hatch release solenoid,body,S2,sourcing,D-180,"L4-M 3 runs all the way to the factory solenoid — it exists and is believed to work (Camden 2026-09-08; electrical D-274); the trigger is D-180's, through the K3 / K4 sockets at the dash node; latch switch broken (K-016) — T-033"
+FT18,Fuel-door release solenoid,body,S2,designed,D-180,"L4-M 4 runs to the factory solenoid — it exists (Camden 2026-09-08, K-017 corrected; electrical D-274); the trigger is D-180's — T-032 is now only the trigger, nothing to source"
+FT19,Heated seats,comfort,S4,concept,D-048 / D-073,Elements on the O15 block; knobs on the panel
+FT20,Cooled seats,comfort,S4,concept,D-048 / D-074,Fans and ducting on the O15 block; heat/cool interlock in the DCU
+FT21,Heated washer nozzles / park de-icer,comfort,S4,sourcing,"D-307, electrical D-256",L2-S 6 ends in the L2-NZL receptacle at the cowl (electrical D-274) — only if Q-303 finds a nozzle that fits
+FT22,Sound deadening,comfort,S4,concept,—,CLD / MLV / foam; the carpet-up event that S4's seat wiring rides on
+FT23,Mirrors — adjustment and heat,body,S5,sourcing,"D-049 / D-093 / D-305, electrical D-254 / D-255","3-wire motors + resistive heat; commands on L4-S2; heat on L4-P 4 → F14; Q-300 part, Q-305 who drives them — D1 / D2 RESERVED at the sill: the door harness is built with the mirrors (electrical D-274)"
+FT24,Power windows,body,S6,provisioned,D-131,"Everything is run and capped; motors and regulators are the work — the console switch pack plugs into L3-WIN (its common is cavity 5); D1 / D2 are RESERVED at the sill, so the door harness is this stage's (electrical D-274)"
+FT25,Custom tail lights,lighting,S7,designed,D-107 / D-111 / L-001,"LED strip per side, driver PCB per housing; V-063 aperture, V-064 modules"
+FT26,Headlamp units,lighting,S7,open,D-110 / L-002,Q-048 which DOT unit; V-066 what is fitted today
+FT27,LED bulbs and the soft-fuse reset,lighting,S7,designed,D-122 / L-003,Every lamp channel re-limited after the bulb change
+FT28,Radar,radar,S8,design first,D-096,V-061 — nothing commits until the subsystem exists — L3-RDR behind the dash and L4-RDR at the rear node are the receptacles; the run up the hatch goes in with the sensor (electrical D-274)
+FT29,"Head unit — CarPlay, gauges stay on the cluster",audio,any,criteria set,D-128 / D-129 / D-130 / D-149,Owner's own audio system (car P-007); the harness supplies the head unit's four feeds
+FT30,Parking-brake tell-tale,cluster,—,"moved (electrical, D-259)",D-310 → electrical D-258,"The brake-warning node terminates at the ICU (IC06); one BRAKE tell-tale on the display, as the old cluster had"
+FT31,Comfort fuse block on O15,comfort,S2,designed,"D-011, electrical D-215 / D-216","This project's block plugs into the L3-CMF receptacle behind the centre stack (electrical D-274): servo rail, seats, nozzles, mirror heat (the display's backlight is the F16 aux through the ICU — D-313)"
+FT32,Future dash module,spare,—,reserved,electrical D-215,L3-S2 7 / 8 → the L3-MOD receptacle behind the dash (electrical D-274) — switched 12 V and ground for anything not yet imagined
+FT33,Battery state on the cluster,cluster,S3,designed,"electrical D-267, Q-128","Volts, amps, state of charge, temperature and the heater from the ICU's radio co-processor (frame 0x220); logged by the PMU from the first drive, drawn here at S3"
+FT34,Display bezel — dash plastics around the digital display,cluster,S3,concept,"electrical D-268, Q-130; D-314","A foam plug shaped over the electrical build's binnacle plate — which stays as the sub-frame, 10 mm flange, its holes the bezel's (electrical D-269) — fibreglass skin, filler and finish (H-006); keeps the page button's place"

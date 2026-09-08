@@ -1,7 +1,7 @@
 id,housing,cav,circuit,src,src_note,awg,colour,state,lands_on
 L1-P 1,L1-P,1,Ignition feed — coils and igniters,O12,,12,RED,LIVE,"Splice at the coil bracket → BW of coil T, coil L, igniter T, igniter L"
-L1-P 2,L1-P,2,LS swap reserve — ECU + injectors,O13,,12,RED,CAPPED,"Capped at the bulkhead, 12 in past the grommet"
-L1-P 3,L1-P,3,LS swap reserve — cooling fan,O14,,12,RED,CAPPED,"Capped at the bulkhead, 12 in past the grommet"
+L1-P 2,L1-P,2,LS swap reserve — ECU + injectors,O13,,12,RED,RESERVED,O13 pinned to the receptacle at the post (12 AWG from pin); the L1 plug carries a size-12 sealing plug — the swap's rebuilt leg pins it (D-271)
+L1-P 3,L1-P,3,LS swap reserve — cooling fan,O14,,12,RED,RESERVED,O14 pinned to the receptacle at the post (12 AWG from pin); size-12 sealing plug in the L1 plug (D-271)
 L1-P 4,L1-P,4,,,,,,PLUG,"Sealing plug, size 12"
 L1-S1 1,L1-S1,1,Start relay K9 coil,O21,,16,RED,LIVE,K9 terminal 86 (inner fender)
 L1-S1 2,L1-S1,2,Alternator excitation (field feed),F15,,16,RED,LIVE,"Alternator plug A-08, terminal BW"
@@ -18,14 +18,14 @@ L1-S1 12,L1-S1,12,,,,,,PLUG,"Sealing plug, size 16"
 L1-S2 1,L1-S2,1,Brake fluid level switch,,,16,GRY,LIVE,Reservoir switch C-05: terminal BR; terminal B → block ground
 L1-S2 2,L1-S2,2,,,,,,PLUG,"Sealing plug, size 16"
 L1-S2 3,L1-S2,3,,,,,,PLUG,"Sealing plug, size 16"
-L1-S2 4,L1-S2,4,LS swap reserve — sensor,,,16,GRY,CAPPED,Capped at the bulkhead
-L1-S2 5,L1-S2,5,LS swap reserve — sensor,,,16,GRY,CAPPED,Capped at the bulkhead
-L1-S2 6,L1-S2,6,LS swap reserve — sensor,,,16,GRY,CAPPED,Capped at the bulkhead
+L1-S2 4,L1-S2,4,,,,,,PLUG,"Sealing plug, size 16 — pinned at the swap, when a sensor has a destination (D-271)"
+L1-S2 5,L1-S2,5,,,,,,PLUG,"Sealing plug, size 16 — pinned at the swap, when a sensor has a destination (D-271)"
+L1-S2 6,L1-S2,6,,,,,,PLUG,"Sealing plug, size 16 — pinned at the swap, when a sensor has a destination (D-271)"
 L1-S2 7,L1-S2,7,Inhibitor switch — R contact (reverse lamps),A5,spliced at the post,16,GRY,LIVE,Inhibitor A-06: 8.2 kΩ in the lead to terminal GY; terminal RW → block ground
 L1-S2 8,L1-S2,8,Alternator charge-lamp sense,,,16,GRY,LIVE,"Alternator plug A-08, terminal WB"
-L1-S2 9,L1-S2,9,,,,,,PLUG,"Sealing plug, size 16"
-L1-S2 10,L1-S2,10,,,,,,PLUG,"Sealing plug, size 16"
-L1-S2 11,L1-S2,11,,,,,,PLUG,"Sealing plug, size 16"
+L1-S2 9,L1-S2,9,Phase-2 sensor supply — +12 V switched,,,16,RED,RESERVED,"The spare block-B fuse position is wired to the receptacle cavity (N68), no fuse fitted; sealing plug in the L1 plug (D-271)"
+L1-S2 10,L1-S2,10,,,,,,PLUG,"Sealing plug, size 16 — no oil-temp sender on the 12A and no conductor run for one (D-264)"
+L1-S2 11,L1-S2,11,Phase-2 sensor signal spare,,,16,GRY,RESERVED,Wired across the dash node to DP-ICU-B 9 (N67) — the ICU's spare input reaches the post; sealing plug in the L1 plug (D-271)
 L1-S2 12,L1-S2,12,,,,,,PLUG,"Sealing plug, size 16"
 L2-P 1,L2-P,1,"Headlight LOW, both",O2,,12,RED,LIVE,"Splice at the nose → 14 AWG branch to each lamp plug, terminal RL"
 L2-P 2,L2-P,2,"Headlight HIGH, both",O3,,12,RED,LIVE,"Splice at the nose → 14 AWG branch to each lamp plug, terminal RY"
@@ -43,10 +43,12 @@ L2-S 1,L2-S,1,Pop-up LH transit contact,A4,,16,GRY,LIVE,Motor E-03 terminal YG t
 L2-S 2,L2-S,2,Pop-up RH transit contact,A5,,16,GRY,LIVE,Motor E-04 terminal YG through 3.3 kΩ; 47 kΩ baseline to the front star ground
 L2-S 3,L2-S,3,Wiper park sense,A3,spliced at the post,16,GRY,LIVE,Wiper motor D-02 park terminal L through 12 kΩ. Terminal LB is left unconnected (capped)
 L2-S 4,L2-S,4,,,,,,PLUG,"Sealing plug, size 16"
-L2-S 5,L2-S,5,,,,,,PLUG,"Sealing plug, size 16"
-L2-S 6,L2-S,6,,,,,,PLUG,"Sealing plug, size 16"
-L3-P 1,L3-P,1,Blower motor +,O16,,12,RED,LIVE,New blower motor + terminal (factory LO). Motor − → resistor pack → speed switch → dash ground
-L3-P 2,L3-P,2,Comfort bus,O15,,12,RED,CAPPED,Capped behind the centre stack
+L2-S 5,L2-S,5,Outside-air temperature sensor,,,16,GRY,CAPPED,"L2-OAT 1 — the outside-air sensor receptacle ahead of the radiator, dust-capped; the thermistor's other lead grounds at the front star (D-256, D-274)"
+L2-S 6,L2-S,6,Heated washer nozzles / park de-icer — feed,,,16,RED,CAPPED,"L2-NZL 1 — the nozzle receptacle at the cowl, dust-capped; the nozzle harness plugs in when one fits (luxury Q-303) (D-256, D-274)"
+L3-P 1,L3-P,1,Blower motor +,O16,,12,RED,CAPPED,"L3-BLW 1 — the blower receptacle at the HVAC case (DTP-2), dust-capped; no motor this build (K-023 · D-253)"
+L3-P 2,L3-P,2,Comfort bus,O15,,12,RED,CAPPED,"L3-CMF 1 — the comfort-bus receptacle behind the centre stack, dust-capped; the luxury package's fuse block plugs in (D-274)"
+L3-BLW 1,L3-BLW,1,Blower motor +,L3-P 1,,12,RED,CAPPED,Dust-capped receptacle at the HVAC case — the replacement motor plugs in with the luxury package (K-023 · D-253)
+L3-BLW 2,L3-BLW,2,Blower motor − (return),GND,,12,BLK,CAPPED,"Return to the dash ground, 12 AWG (G15) — the low-side final stage (≥ 20 kHz, its own freewheel diode) plugs in here as an adapter between receptacle and motor (D-257)"
 L3-M 1,L3-M,1,Accessory — head unit ACC + USB-C,O10,,14,ORN,LIVE,Head unit red (ACC) wire; USB-C module +
 L3-M 2,L3-M,2,Head unit memory / constant,F1,,14,RED,LIVE,Head unit yellow (BATT) wire
 L3-S1 1,L3-S1,1,Key ladder,A16,,16,GRY,LIVE,"Ignition switch: ACC → 33 kΩ · IG → 15 kΩ · ST → 6.8 kΩ, all summed onto this wire"
@@ -63,19 +65,19 @@ L3-S1 11,L3-S1,11,Horn + wink request,A8,spliced at the post,16,GRY,LIVE,Horn pa
 L3-S1 12,L3-S1,12,ACC — wake source,WAKE 1,,16,BLU,LIVE,Ignition switch ACC terminal (raw 12 V)
 L3-S2 1,L3-S2,1,RUN — wake source,WAKE 2,,16,BLU,LIVE,Ignition switch IG terminal (raw 12 V)
 L3-S2 2,L3-S2,2,Switch supply +12 V,F3,,16,PNK,LIVE,Ignition switch B terminal · light switch E-01 common
-L3-S2 3,L3-S2,3,Window DRV up command,,,16,BLU,CAPPED,Capped at the console
-L3-S2 4,L3-S2,4,Window DRV down command,,,16,BLU,CAPPED,Capped at the console
-L3-S2 5,L3-S2,5,Window PASS up command,,,16,BLU,CAPPED,Capped at the console
-L3-S2 6,L3-S2,6,Window PASS down command,,,16,BLU,CAPPED,Capped at the console
-L3-S2 7,L3-S2,7,Future module +12 V switched,,,16,RED,CAPPED,Capped behind the dash
-L3-S2 8,L3-S2,8,Future module ground,GND,,16,BLK,CAPPED,Capped behind the dash
+L3-S2 3,L3-S2,3,Window DRV up command,,,16,BLU,CAPPED,"L3-WIN 1 — the window-switch receptacle at the console, dust-capped (D-274)"
+L3-S2 4,L3-S2,4,Window DRV down command,,,16,BLU,CAPPED,"L3-WIN 2 — the window-switch receptacle at the console, dust-capped (D-274)"
+L3-S2 5,L3-S2,5,Window PASS up command,,,16,BLU,CAPPED,"L3-WIN 3 — the window-switch receptacle at the console, dust-capped (D-274)"
+L3-S2 6,L3-S2,6,Window PASS down command,,,16,BLU,CAPPED,"L3-WIN 4 — the window-switch receptacle at the console, dust-capped (D-274)"
+L3-S2 7,L3-S2,7,Future module +12 V switched,,,16,RED,CAPPED,"L3-MOD 1 — the future-module receptacle behind the dash, dust-capped (D-274)"
+L3-S2 8,L3-S2,8,Future module ground,GND,,16,BLK,CAPPED,L3-MOD 2 — with cavity 7 (D-274)
 L3-S2 9,L3-S2,9,Washer relay K12 coil return,K12 85,,16,BLU,LIVE,Wiper stalk D-03 WASH contact (same terminal as the WASH ladder leg); contact's other side → column ground
 L3-S2 10,L3-S2,10,Courtesy — glove box lamp,F19,,16,RED,LIVE,Glove box lamp H-01 +; lamp − → lid switch H-02 → dash ground
 L3-S2 11,L3-S2,11,Parking brake switch → brake warning lamp,,,16,GRY,LIVE,Parking brake switch C-04 terminal BR (switch body grounds through the lever bracket)
 L3-S2 12,L3-S2,12,,,,,,PLUG,"Sealing plug, size 16"
-L3-S3 1,L3-S3,1,Future pass-through A,,,16,GRY,CAPPED,Capped behind the dash
-L3-S3 2,L3-S3,2,Future pass-through B,,,16,GRY,CAPPED,Capped behind the dash
-L3-S3 3,L3-S3,3,Future pass-through C,,,16,GRY,CAPPED,Capped behind the dash
+L3-S3 1,L3-S3,1,Future pass-through A,,,16,GRY,CAPPED,"L3-RDR 1 — the radar pass-through's dash-end receptacle, dust-capped; linked at the post to L4-S 5 (D-274)"
+L3-S3 2,L3-S3,2,Future pass-through B,,,16,GRY,CAPPED,"L3-RDR 2 — the radar pass-through's dash-end receptacle, dust-capped; linked at the post to L4-S 6 (D-274)"
+L3-S3 3,L3-S3,3,Future pass-through C,,,16,GRY,CAPPED,"L3-RDR 3 — the radar pass-through's dash-end receptacle, dust-capped; linked at the post to L4-S 7 (D-274)"
 L3-S3 4,L3-S3,4,,,,,,PLUG,"Sealing plug, size 16"
 L3-S3 5,L3-S3,5,,,,,,PLUG,"Sealing plug, size 16"
 L3-S3 6,L3-S3,6,,,,,,PLUG,"Sealing plug, size 16"
@@ -83,79 +85,103 @@ L3-S3 7,L3-S3,7,,,,,,PLUG,"Sealing plug, size 16"
 L3-S3 8,L3-S3,8,,,,,,PLUG,"Sealing plug, size 16"
 L4-P 1,L4-P,1,Rear defog grid,O4,,12,RED,LIVE,Grid G-25 terminal LG; grid terminal B → rear star ground (12 AWG)
 L4-P 2,L4-P,2,Fuel pump +,O5,,12,RED,LIVE,Carter P4070 + ; pump − → its OWN 12 AWG to the rear star ground
-L4-P 3,L4-P,3,Window motor bus feed,O1,splice,12,RED,CAPPED,Capped at the sill node
-L4-P 4,L4-P,4,,,,,,PLUG,"Sealing plug, size 12"
+L4-P 3,L4-P,3,Window motor bus feed,O1,splice,12,RED,CAPPED,Lands at the sill node — the K5–K8 contact feed through the F8 / F9 positions (holders come with the windows); the node is this branch's end (D-274)
+L4-P 4,L4-P,4,Comfort feed → sill (mirror heat F14),O15,splice,12,RED,CAPPED,"Lands at the sill node — F14's labelled position (no holder), this branch's end (D-274); the DCU switches mirror heat through it later (D-254, restores D-181)"
 L4-M 1,L4-M,1,Tail · licence · rear markers,O6,,14,ORN,LIVE,"Splice at the hatch → F-07 RG, F-08 RG, F-04 RG (×2), F-14 RG, F-15 RG"
 L4-M 2,L4-M,2,Brake lamps,O7,,14,ORN,LIVE,"Splice → F-07 G, F-08 G"
-L4-M 3,L4-M,3,Hatch release solenoid,,,14,ORN,CAPPED,Capped at the hatch
-L4-M 4,L4-M,4,Fuel-door release solenoid,,,14,ORN,CAPPED,Capped at the fuel door
+L4-M 3,L4-M,3,Hatch release solenoid,,,14,ORN,CAPPED,"The hatch-release solenoid's + terminal, through the hinge loop with the tail-lamp conductors — it exists and is believed to work (Camden 2026-09-08, DV48); the post end is capped until the luxury package fits the trigger (D-180; the K3 / K4 sockets are the slot) (D-274)"
+L4-M 4,L4-M,4,Fuel-door release solenoid,,,14,ORN,CAPPED,"The fuel-door solenoid's + terminal behind the quarter trim — it exists (Camden 2026-09-08, DV49; K-017 corrected); the post end is capped until the trigger (D-180) (D-274)"
 L4-M 5,L4-M,5,Turn LEFT rear,O17,,16,RED,LIVE,"Rear combo F-07, terminal GR"
 L4-M 6,L4-M,6,Turn RIGHT rear,O18,,16,RED,LIVE,"Rear combo F-08, terminal GO"
 L4-M 7,L4-M,7,Reverse lamps,O19,,16,RED,LIVE,"Splice → F-07 RW, F-08 RW"
 L4-M 8,L4-M,8,Interior lamp (PWM),F12,,16,RED,LIVE,Interior/spot lamp H-06 +; lamp − through its own DOOR/OFF/ON switch → roof-rail ground
-L4-M 9,L4-M,9,Window DRV up command → K5 coil,L3-S2 3,,16,BLU,CAPPED,Capped at the sill node
-L4-M 10,L4-M,10,Window DRV down command → K6 coil,L3-S2 4,,16,BLU,CAPPED,Capped at the sill node
-L4-M 11,L4-M,11,Window PASS up command → K7 coil,L3-S2 5,,16,BLU,CAPPED,Capped at the sill node
-L4-M 12,L4-M,12,Window PASS down command → K8 coil,L3-S2 6,,16,BLU,CAPPED,Capped at the sill node
+L4-M 9,L4-M,9,Window DRV up command → K5 coil,L3-S2 3,,16,BLU,CAPPED,"K5 socket, terminal 86 at the sill node — landed in the empty socket, which is this branch's end; the relay comes with the power windows (D-274)"
+L4-M 10,L4-M,10,Window DRV down command → K6 coil,L3-S2 4,,16,BLU,CAPPED,"K6 socket, terminal 86 at the sill node — landed in the empty socket, which is this branch's end; the relay comes with the power windows (D-274)"
+L4-M 11,L4-M,11,Window PASS up command → K7 coil,L3-S2 5,,16,BLU,CAPPED,"K7 socket, terminal 86 at the sill node — landed in the empty socket, which is this branch's end; the relay comes with the power windows (D-274)"
+L4-M 12,L4-M,12,Window PASS down command → K8 coil,L3-S2 6,,16,BLU,CAPPED,"K8 socket, terminal 86 at the sill node — landed in the empty socket, which is this branch's end; the relay comes with the power windows (D-274)"
 L4-S 1,L4-S,1,Fuel level sender,,,16,GRY,LIVE,Tank sender C-01 terminal Y; sender terminal B → rear star ground (16 AWG). Route apart from L4-P
 L4-S 2,L4-S,2,Door jamb switches — ladder,A6,,16,GRY,LIVE,Splice at the sill → driver jamb switch through 33 kΩ · passenger jamb switch through 8.2 kΩ; each switch grounds through its body
-L4-S 3,L4-S,3,,,,,,PLUG,"Sealing plug, size 16"
-L4-S 4,L4-S,4,,,,,,PLUG,"Sealing plug, size 16"
-L4-S 5,L4-S,5,Future pass-through A,L3-S3 1,,16,GRY,CAPPED,Capped at the hatch
-L4-S 6,L4-S,6,Future pass-through B,L3-S3 2,,16,GRY,CAPPED,Capped at the hatch
-L4-S 7,L4-S,7,Future pass-through C,L3-S3 3,,16,GRY,CAPPED,Capped at the hatch
+L4-S 3,L4-S,3,Road speed — pulse generator signal,,,16,GRY,LIVE,"Pulse generator on the transmission's speedo-drive boss (DV47, P113), fitted at the meters cutover — signal; 18 in service loop in the tunnel (D-272)"
+L4-S 4,L4-S,4,Road speed — pulse generator supply +12 V,O10,tap,16,RED,LIVE,"Pulse generator supply — an O10 tap (N70), so the sensor lives and dies with the ICU; sensor ground → rear star, G35 (D-272)"
+L4-S 5,L4-S,5,Future pass-through A,L3-S3 1,,16,GRY,CAPPED,"L4-RDR 1 — the pass-through's rear-end receptacle at the rear node, dust-capped; the run up the hatch goes in with the sensor (D-274)"
+L4-S 6,L4-S,6,Future pass-through B,L3-S3 2,,16,GRY,CAPPED,"L4-RDR 2 — the pass-through's rear-end receptacle at the rear node, dust-capped; the run up the hatch goes in with the sensor (D-274)"
+L4-S 7,L4-S,7,Future pass-through C,L3-S3 3,,16,GRY,CAPPED,"L4-RDR 3 — the pass-through's rear-end receptacle at the rear node, dust-capped; the run up the hatch goes in with the sensor (D-274)"
 L4-S 8,L4-S,8,Courtesy — luggage lamp,F19,,16,RED,LIVE,Luggage lamp H-11 +; lamp − → lid switch H-12 → rear star ground
-D1 1,D1,1,Window motor leg A,K5/K6,,14,RED,CAPPED,Capped inside the door
-D1 2,D1,2,Window motor leg B,K5/K6,,14,RED,CAPPED,Capped inside the door
+L4-S2 1,L4-S2,1,Mirror adjust — common (both mirrors),,,16,GRY,CAPPED,Capped at the post; at the sill node spliced to D1 4 and D2 4 (D-255)
+L4-S2 2,L4-S2,2,Mirror adjust — LEFT X,,,16,GRY,CAPPED,Capped at the post; sill node → D1 5 (D-255)
+L4-S2 3,L4-S2,3,Mirror adjust — LEFT Y,,,16,GRY,CAPPED,Capped at the post; sill node → D1 6 (D-255)
+L4-S2 4,L4-S2,4,Mirror adjust — RIGHT X,,,16,GRY,CAPPED,Capped at the post; sill node → D2 5 (D-255)
+L4-S2 5,L4-S2,5,Mirror adjust — RIGHT Y,,,16,GRY,CAPPED,Capped at the post; sill node → D2 6 (D-255)
+L4-S2 6,L4-S2,6,,,,,,PLUG,"Sealing plug, size 16"
+L4-S2 7,L4-S2,7,,,,,,PLUG,"Sealing plug, size 16"
+L4-S2 8,L4-S2,8,,,,,,PLUG,"Sealing plug, size 16"
+D1 1,D1,1,Window motor leg A,K5/K6,,14,RED,RESERVED,Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is built with the mirror and the window (D-274)
+D1 2,D1,2,Window motor leg B,K5/K6,,14,RED,RESERVED,Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is built with the mirror and the window (D-274)
 D1 3,D1,3,,,,,,PLUG,"Sealing plug, size 16"
-D1 4,D1,4,Mirror motor common,,,16,GRY,CAPPED,Capped inside the door
-D1 5,D1,5,Mirror motor X,,,16,GRY,CAPPED,Capped inside the door
-D1 6,D1,6,Mirror motor Y,,,16,GRY,CAPPED,Capped inside the door
-D1 7,D1,7,Mirror heat,F14,,16,RED,CAPPED,Capped inside the door
-D1 8,D1,8,Door ground,SILL-GND,,16,BLK,CAPPED,Capped inside the door — lands on the mirror/window ground when fitted
-D2 1,D2,1,Window motor leg A,K7/K8,,14,RED,CAPPED,Capped inside the door
-D2 2,D2,2,Window motor leg B,K7/K8,,14,RED,CAPPED,Capped inside the door
+D1 4,D1,4,Mirror motor common,L4-S2 1,shared common,16,GRY,RESERVED,Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is built with the mirror and the window (D-274)
+D1 5,D1,5,Mirror motor X,L4-S2 2,,16,GRY,RESERVED,Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is built with the mirror and the window (D-274)
+D1 6,D1,6,Mirror motor Y,L4-S2 3,,16,GRY,RESERVED,Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is built with the mirror and the window (D-274)
+D1 7,D1,7,Mirror heat,F14,,16,RED,RESERVED,Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is built with the mirror and the window (D-274)
+D1 8,D1,8,Door ground,SILL-GND,,16,BLK,RESERVED,Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is built with the mirror and the window (D-274)
+D2 1,D2,1,Window motor leg A,K7/K8,,14,RED,RESERVED,Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is built with the mirror and the window (D-274)
+D2 2,D2,2,Window motor leg B,K7/K8,,14,RED,RESERVED,Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is built with the mirror and the window (D-274)
 D2 3,D2,3,,,,,,PLUG,"Sealing plug, size 16"
-D2 4,D2,4,Mirror motor common,,,16,GRY,CAPPED,Capped inside the door
-D2 5,D2,5,Mirror motor X,,,16,GRY,CAPPED,Capped inside the door
-D2 6,D2,6,Mirror motor Y,,,16,GRY,CAPPED,Capped inside the door
-D2 7,D2,7,Mirror heat,F14,,16,RED,CAPPED,Capped inside the door
-D2 8,D2,8,Door ground,SILL-GND,,16,BLK,CAPPED,Capped inside the door
-DP-CLU 1,DP-CLU,1,Cluster IG feed,F16,,16,RED,LIVE,Cluster plug — factory GY (ignition feed to the gauges and lamps)
-DP-CLU 2,DP-CLU,2,Cluster ground,GND,,16,BLK,LIVE,Cluster plug — factory B
-DP-CLU 3,DP-CLU,3,Cluster illumination,O20,,16,RED,LIVE,Cluster plug — factory RL
-DP-CLU 4,DP-CLU,4,Tachometer,L1-S1 6,shielded,16 sh,shielded,LIVE,Cluster plug — factory YG
-DP-CLU 5,DP-CLU,5,Water temp gauge,L1-S1 3,,16,GRY,LIVE,Cluster plug — factory YW
-DP-CLU 6,DP-CLU,6,Oil pressure gauge,L1-S1 4,,16,GRY,LIVE,Cluster plug — factory BrY
-DP-CLU 7,DP-CLU,7,Fuel gauge,L4-S 1,A7 taps this conductor,16,GRY,LIVE,Cluster plug — factory Y
-DP-CLU 8,DP-CLU,8,Charge warning lamp,L1-S2 8,,16,GRY,LIVE,Cluster plug — the charge-lamp terminal (identify at the cluster plug)
-DP-CLU 9,DP-CLU,9,Brake warning lamp,L1-S2 1 + L3-S2 11,,16,GRY,LIVE,Cluster plug — factory BR
-DP-CLU 10,DP-CLU,10,Turn LEFT indicator,O17,,16,RED,LIVE,Cluster plug — factory GR
-DP-CLU 11,DP-CLU,11,Turn RIGHT indicator,O18,,16,RED,LIVE,Cluster plug — factory GO
-DP-CLU 12,DP-CLU,12,High-beam indicator,O3,tap,16,RED,LIVE,Cluster plug — factory RY
+D2 4,D2,4,Mirror motor common,L4-S2 1,shared common,16,GRY,RESERVED,Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is built with the mirror and the window (D-274)
+D2 5,D2,5,Mirror motor X,L4-S2 4,,16,GRY,RESERVED,Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is built with the mirror and the window (D-274)
+D2 6,D2,6,Mirror motor Y,L4-S2 5,,16,GRY,RESERVED,Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is built with the mirror and the window (D-274)
+D2 7,D2,7,Mirror heat,F14,,16,RED,RESERVED,Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is built with the mirror and the window (D-274)
+D2 8,D2,8,Door ground,SILL-GND,,16,BLK,RESERVED,Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is built with the mirror and the window (D-274)
 DP-DIAG 1,DP-DIAG,1,CAN1 H,CAN1H,,16 tw,YEL,LIVE,Laptop port in the glovebox — 120 Ω across 1/2 inside the plug
 DP-DIAG 2,DP-DIAG,2,CAN1 L,CAN1L,,16 tw,GRN,LIVE,Laptop port
 DP-DIAG 3,DP-DIAG,3,+12 V constant,F2,,16,RED,LIVE,Laptop port
 DP-DIAG 4,DP-DIAG,4,Ground,GND,,16,BLK,LIVE,Laptop port
-DP-ICU 1,DP-ICU,1,+12 V switched,O10,tap,16,RED,CAPPED,Capped at the post
-DP-ICU 2,DP-ICU,2,Ground,GND,,16,BLK,CAPPED,Capped at the post
-DP-ICU 3,DP-ICU,3,CAN2 H,CAN2H,,16 tw,YEL,CAPPED,Capped at the post
-DP-ICU 4,DP-ICU,4,CAN2 L,CAN2L,,16 tw,GRN,CAPPED,Capped at the post
-DP-ICU 5,DP-ICU,5,Illumination reference,O20,,16,RED,CAPPED,Capped at the post
-DP-ICU 6,DP-ICU,6,Water temp (tap),tap L1-S1 3,,16,GRY,CAPPED,Capped at the post
-DP-ICU 7,DP-ICU,7,Oil pressure (tap),tap L1-S1 4,,16,GRY,CAPPED,Capped at the post
-DP-ICU 8,DP-ICU,8,,,,,,PLUG,"Sealing plug, size 16"
-DP-ICU 9,DP-ICU,9,Tach (tap),tap L1-S1 6,,16,GRY,CAPPED,Capped at the post
-DP-ICU 10,DP-ICU,10,,,,,,PLUG,"Sealing plug, size 16"
-DP-ICU 11,DP-ICU,11,Charge sense (tap),tap L1-S2 8,,16,GRY,CAPPED,Capped at the post
-DP-ICU 12,DP-ICU,12,Brake warning (tap),tap DP-CLU 9,,16,GRY,CAPPED,Capped at the post
+DP-ICU-A 1,DP-ICU-A,1,+12 V switched — ICU logic,O10,tap,16,RED,LIVE,ICU tail A — the DT06-6S plug from the post into the ICU's DT13-06PA (D-270)
+DP-ICU-A 2,DP-ICU-A,2,Illumination — the ICU's dimming reference,O20,,16,RED,LIVE,ICU tail A (D-270) — the display dims against the O20 bus
+DP-ICU-A 3,DP-ICU-A,3,Ground,GND,,16,BLK,LIVE,ICU tail A (D-270)
+DP-ICU-A 4,DP-ICU-A,4,CAN2 H,CAN2H,,16 tw,YEL,LIVE,ICU tail A (D-270)
+DP-ICU-A 5,DP-ICU-A,5,CAN2 L,CAN2L,,16 tw,GRN,LIVE,ICU tail A (D-270)
+DP-ICU-A 6,DP-ICU-A,6,+12 V ignition — the display's backlight (F16),F16,,16,RED,LIVE,ICU tail A (D-270) — the display's backlight feed through the carrier (D-268)
+DP-ICU-B 1,DP-ICU-B,1,Water temp sender,L1-S1 3,,16,GRY,LIVE,ICU tail B (D-270) — the ICU excites and reads the sender; the display draws it
+DP-ICU-B 2,DP-ICU-B,2,Oil-pressure node,L1-S1 4,A7 taps this node; 100 Ω 1 W to +5 V at the dash node (D-260),16,GRY,LIVE,ICU tail B (D-270) — a PMU-excited node the ICU reads (D-260); the display draws it
+DP-ICU-B 3,DP-ICU-B,3,Fuel level sender,L4-S 1,,16,GRY,LIVE,ICU tail B (D-270) — the ICU excites and reads the sender; the display draws it
+DP-ICU-B 4,DP-ICU-B,4,Tachometer pulse,L1-S1 6,shielded,16 sh,shielded,LIVE,ICU tail B (D-270) — read by the ICU
+DP-ICU-B 5,DP-ICU-B,5,Charge-lamp line (alternator L),L1-S2 8,,16,GRY,LIVE,ICU tail B (D-270) — read by the ICU; the display draws the CHARGE tell-tale
+DP-ICU-B 6,DP-ICU-B,6,Brake warning — fluid level + parking brake,L1-S2 1 + L3-S2 11,,16,GRY,LIVE,ICU tail B (D-270) — read by the ICU; the display draws one BRAKE tell-tale for both switches
+DP-ICU-B 7,DP-ICU-B,7,,,,,,PLUG,"Sealing plug, size 16 — the ICU's oil-temperature channel IC07 lands here when the swap's rebuilt leg brings a sender (D-264)"
+DP-ICU-B 8,DP-ICU-B,8,Road speed — pulse generator signal,L4-S 3,,16,GRY,LIVE,ICU tail B (D-270) — channel IC08; pulses per mile is a config value (D-272)
+DP-ICU-B 9,DP-ICU-B,9,Phase-2 sensor signal spare,L1-S2 11,,16,GRY,CAPPED,The ICU's spare input (DT13 pin 9) — nothing reads it until the swap brings a sensor; wired to L1-S2 11 at the post (D-271)
+DP-ICU-B 10,DP-ICU-B,10,Turn LEFT tell-tale sense,O17,tap,16,RED,LIVE,ICU tail B (D-270) — the tell-tale follows the real lamps (D-258); the display draws it
+DP-ICU-B 11,DP-ICU-B,11,Turn RIGHT tell-tale sense,O18,tap,16,RED,LIVE,ICU tail B (D-270) — the display draws it
+DP-ICU-B 12,DP-ICU-B,12,High-beam tell-tale sense,O3,tap,16,RED,LIVE,ICU tail B (D-270) — the display draws it
 DP-DCU 1,DP-DCU,1,+12 V switched,O10,tap,16,RED,CAPPED,Capped at the post
-DP-DCU 2,DP-DCU,2,,,,,,PLUG,"Sealing plug, size 16"
+DP-DCU 2,DP-DCU,2,Outside-air temperature (from L2-S 5),L2-S 5,,16,GRY,CAPPED,Capped at the post (D-256)
 DP-DCU 3,DP-DCU,3,Ground,GND,,16,BLK,CAPPED,Capped at the post
 DP-DCU 4,DP-DCU,4,CAN2 H,CAN2H,,16 tw,YEL,CAPPED,Capped at the post
 DP-DCU 5,DP-DCU,5,CAN2 L,CAN2L,,16 tw,GRN,CAPPED,Capped at the post
 DP-DCU 6,DP-DCU,6,,,,,,PLUG,"Sealing plug, size 16"
-DP-KEY 1,DP-KEY,1,CAN2 H,CAN2H,,16 tw,YEL,CAPPED,Capped behind the dash
-DP-KEY 2,DP-KEY,2,CAN2 L,CAN2L,,16 tw,GRN,CAPPED,Capped behind the dash
-DP-KEY 3,DP-KEY,3,+12 V switched,O10,tap,16,RED,CAPPED,Capped behind the dash
-DP-KEY 4,DP-KEY,4,Ground,GND,,16,BLK,CAPPED,Capped behind the dash
+DP-KEY 1,DP-KEY,1,CAN2 H,CAN2H,,16 tw,YEL,CAPPED,Dust-capped receptacle at the post — the control panel's tail plugs in (luxury FT14)
+DP-KEY 2,DP-KEY,2,CAN2 L,CAN2L,,16 tw,GRN,CAPPED,Dust-capped receptacle at the post — the control panel's tail plugs in (luxury FT14)
+DP-KEY 3,DP-KEY,3,+12 V switched,O10,tap,16,RED,CAPPED,Dust-capped receptacle at the post — the control panel's tail plugs in (luxury FT14)
+DP-KEY 4,DP-KEY,4,Ground,GND,,16,BLK,CAPPED,Dust-capped receptacle at the post — the control panel's tail plugs in (luxury FT14)
+L2-NZL 1,L2-NZL,1,Heated-nozzle / de-icer feed,L2-S 6,,16,RED,CAPPED,"Dust-capped receptacle at the cowl — the nozzle harness plugs in; nozzles ground at the front star (D-256, D-274)"
+L2-NZL 2,L2-NZL,2,,,,,,PLUG,"Sealing plug, size 16"
+L2-OAT 1,L2-OAT,1,Outside-air thermistor — signal,L2-S 5,,16,GRY,CAPPED,"Dust-capped receptacle at the nose — the thermistor plugs in, its return to the front star (D-274)"
+L2-OAT 2,L2-OAT,2,,,,,,PLUG,"Sealing plug, size 16"
+L3-CMF 1,L3-CMF,1,O15 comfort bus,L3-P 2,,12,RED,CAPPED,Dust-capped DTP receptacle behind the centre stack — the luxury package's fuse block plugs in (D-274)
+L3-CMF 2,L3-CMF,2,,,,,,PLUG,"Sealing plug, size 12"
+L3-WIN 1,L3-WIN,1,Window DRV up command,L3-S2 3,,16,BLU,CAPPED,Dust-capped receptacle at the console — the switch pack plugs in with the power windows (D-274)
+L3-WIN 2,L3-WIN,2,Window DRV down command,L3-S2 4,,16,BLU,CAPPED,as cavity 1
+L3-WIN 3,L3-WIN,3,Window PASS up command,L3-S2 5,,16,BLU,CAPPED,as cavity 1
+L3-WIN 4,L3-WIN,4,Window PASS down command,L3-S2 6,,16,BLU,CAPPED,as cavity 1
+L3-WIN 5,L3-WIN,5,Window switches — common feed +12 V,tap L3-S2 2,,16,RED,CAPPED,The switch pack's common — a tap off the F3 switch supply where L3-S2 2 passes the console; two relay coils at most (D-274)
+L3-WIN 6,L3-WIN,6,,,,,,PLUG,"Sealing plug, size 16"
+L3-MOD 1,L3-MOD,1,Future module +12 V switched,L3-S2 7,,16,RED,CAPPED,Dust-capped receptacle behind the dash — live when F13 gets a fuse (D-274)
+L3-MOD 2,L3-MOD,2,Future module ground,L3-S2 8,,16,BLK,CAPPED,as cavity 1
+L3-RDR 1,L3-RDR,1,Radar pass-through A,L3-S3 1,,16,GRY,CAPPED,Dust-capped receptacle behind the dash — the radar head's harness plugs in (D-274)
+L3-RDR 2,L3-RDR,2,Radar pass-through B,L3-S3 2,,16,GRY,CAPPED,as cavity 1
+L3-RDR 3,L3-RDR,3,Radar pass-through C,L3-S3 3,,16,GRY,CAPPED,as cavity 1
+L3-RDR 4,L3-RDR,4,,,,,,PLUG,"Sealing plug, size 16"
+L4-RDR 1,L4-RDR,1,Radar pass-through A,L4-S 5,,16,GRY,CAPPED,Dust-capped receptacle at the rear node — the run up the hatch to the sensor goes in with it (D-274)
+L4-RDR 2,L4-RDR,2,Radar pass-through B,L4-S 6,,16,GRY,CAPPED,as cavity 1
+L4-RDR 3,L4-RDR,3,Radar pass-through C,L4-S 7,,16,GRY,CAPPED,as cavity 1
+L4-RDR 4,L4-RDR,4,,,,,,PLUG,"Sealing plug, size 16"

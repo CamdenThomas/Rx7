@@ -45,7 +45,7 @@ Everything typed into the ECUMaster PMU client, in the order it is entered. Chan
 | 29 | A1 | `TURN_STALK` | input |
 | 30 | A3 | `BRAKE_PARK` | input |
 | 31 | A5 | `POPUP_R` | input |
-| 32 | A7 | `FUEL_LEVEL` | input |
+| 32 | A7 | `OIL_PRESS` | input |
 | 33 | O18 | `TURN_R` | output |
 | 34 | O20 | `INTERIOR` | output |
 | 35 | A15 | `HEADLIGHT_SW` | input |
@@ -56,7 +56,7 @@ Everything typed into the ECUMaster PMU client, in the order it is entered. Chan
 
 ## 1 · Input decode tables
 
-Enter as lookup tables with windows. A reading between windows must report FAULT, not the nearest state. **Pull configuration:** A1–A8 = 10 kΩ pull-UP except A7 = 1 MΩ pull-DOWN · A15, A16 = 10 kΩ pull-DOWN.
+Enter as lookup tables with windows. A reading between windows must report FAULT, not the nearest state. **Pull configuration:** A1–A8 = 10 kΩ pull-UP except A7 = 1 MΩ pull-DOWN (its node is excited externally — the 100 Ω from pin 15 at the dash node, D-260) · A15, A16 = 10 kΩ pull-DOWN.
 
 
 **A1 `TURN_STALK`** — window ± 55 · FAULT below 50 and above 990
@@ -138,7 +138,7 @@ Enter as lookup tables with windows. A reading between windows must report FAULT
 HAZARD is a band 265–370 (hazard alone 327; hazard + either wink 278 / 298 read as HAZARD).
 
 
-**A7 `FUEL_LEVEL`** *(the channel `Q-107` proposes to re-point at oil pressure — do not enter this table until that is ruled)* — three-point lookup with interpolation, read in the car: FULL ____ · MID ____ · EMPTY ____ (the factory gauge drives the sender; this input only observes it). FAULT below 10 and above 1000. If the reading is unstable, leave the channel unused — the cluster's gauge is the instrument.
+**A7 `OIL_PRESS`** (`Q-107` → D-249) — a threshold, not a lookup, read in the car: node counts at hot idle ____ · at 3000 rpm ____ · engine off, key RUN ____ → **OIL_MIN = ____** (between the engine-off and hot-idle readings, nearer the idle one). The node is excited by the dash-node 100 Ω pull-up from pin 15 (D-260) — a clean DC node the ICU reads too; nothing pulses. FAULT below 10 and above 1000 — and a FAULT reading counts as *pressure present* for the `FUEL_PUMP` gate (fail open, D-251) while raising a logged fault. Enter `OIL_MIN` at commissioning, never before: until it exists, run `FUEL_PUMP` with the START and 3 s prime terms in place and the oil term forced true.
 
 
 **A15 `HEADLIGHT_SW`** — window ± 75 · 0 = disconnected = FAULT
@@ -178,9 +178,9 @@ A15 PASS: any reading ≥ 1750. A16 START: either 1720 or ~1650 depending on whe
 | MOTOR_BUS | popup_cycle  (see the pop-up rule below) | 7× for 400 ms | 1 retry |
 | WIPE_LOW | A2 == LOW  \|\|  A2 == WASH  \|\|  (A2 == INT && int_timer)  \|\|  (wiper_latch && A3 not PARKED)  — braking ON | 7× for 300 ms | 3 retries, 5 s |
 | WIPE_HIGH | A2 == HIGH | 7× for 300 ms | 3 retries, 5 s |
-| BLOWER | A16 >= RUN  — speed is selected by the switch on the motor's ground side | 8× for 600 ms | 3 retries, 5 s |
+| BLOWER | A16 >= RUN — a steady feed; speed is set by the low-side final stage at L3-BLW on the DCU's own PWM output, ≥ 20 kHz (D-257 — the PMU's PWM tops out at 400 Hz); output DISABLED this build — no motor (K-023 · D-253) | 8× for 600 ms | 3 retries, 5 s |
 | DEFOG | (no trigger this build — channel configured, output DISABLED) | 1.3× for 2 s | — |
-| FUEL_PUMP | A16 >= RUN | 3× for 150 ms | 3 retries, 5 s |
+| FUEL_PUMP | A16 == START  \|\|  (A16 >= RUN && prime_timer < 3 s)  \|\|  (A16 >= RUN && oil_ok) — oil_ok latches when A7 > OIL_MIN and clears only after 5 s of continuous A7 < OIL_MIN or when A16 < RUN; a FAULT reading counts as oil_ok (fail open); OIL_MIN is read in the car at commissioning, never entered on the bench (D-249). No CAN term in this gate, ever (D-251) | 3× for 150 ms | 3 retries, 5 s |
 | IGNITION | A16 >= RUN | 2× for 100 ms | 3 retries, 5 s |
 | ACCESSORY | A16 >= ACC | 2× for 100 ms | 3 retries, 5 s |
 | HORN | A8 == HORN  \|\|  A8 == HAZ+HORN | 3× for 80 ms | 3 retries, 5 s |

@@ -1,6 +1,6 @@
 # Circuit — Charging & Starting
 
-*Rev 2026-08-30 · owns: the factory decode of this circuit — devices, wires, logic. The rebuild table at the foot points into the new design and is not its owner; cavities are `02-HARNESS/data/connectors.csv`'s.*
+*Rev 2026-09-07 · owns: the factory decode of this circuit — devices, wires, logic. Nothing of the new design lives here; the last section says where it does.*
 
 **Source:** Section A, page 10.
 
@@ -55,21 +55,8 @@ served the factory carburetor.
 
 ## 4 · What this means for the rebuild
 
-| Factory | PMU-24 plan |
-|---|---|
-| Ignition switch ST carrying solenoid current | A16 key ladder input (**L3-S1 1**); O21 drives the start relay K9 coil via **L1-S1 1** — K9 on the inner fender, not at the starter (A-005 → D-148) |
-| Inhibitor switch in series with crank | Becomes a PMU **input**; crank interlock in software (Checklist 2.16). Pin is `Q-063` → D-182 |
-| Alternator BW excitation via 7.5 A fuse | **Reproduced to factory spec (D-198): O12 branch → F15 (7.5 A) → L1-S1 2 → BW.** BW is the field FEED, not a lamp — the earlier sense-only plan would never have excited the alternator. The WB charge-sense gets **L1-S2 8 → DP-ICU 11** at Phase 9 |
-| Alternator WR to battery bus | Unchanged — heavy cable to the distribution post, does not pass through the PMU ([`BATTERY-INSTALL.md`](../../02-PROJECTS/electrical-pmu/04-BUILD/BATTERY-INSTALL.md) §4) |
-| Hot start / sub-zero hardware | Gone — zero remain post-Weber (V-025 → D-097) |
-
-The alternator's B+ cable and the starter cable never touch the PMU. Only the
-sense wire and the relay coil do.
+The rebuild's side of every device and wire above is the electrical build's record, not this file's: find a factory code in its data — `python tools/rx7.py -p electrical-build find "C-02"` — or read the rendered [`DESIGN.md`](../../02-PROJECTS/electrical-build/01-DESIGN/DESIGN.md) §12 (device ends) and [`WIRE-TABLES.md`](../../02-PROJECTS/electrical-build/03-INSTALL/WIRE-TABLES.md). A hand-copied mapping table stood here until 2026-09-07; it had drifted three decisions behind and was removed — one fact, one home. Decisions that shaped this circuit's rebuild: D-097 · D-148 · D-182 · D-198.
 
 ## 5 · Unknowns
 
-| ID | Unknown | Resolve by |
-|---|---|---|
-| V-025 → D-097 | Cold-start components after the Weber conversion | None remain |
-| V-002 | Alternator output rating | Read the case, `T-004`, Checklist 0.4 |
-| V-026 → V-050 → D-178 / `Q-063` → D-182 | Inhibitor switch condition and pin function | Continuity test with `T-023` → D-178; pin allocation in `Q-063` → D-182 |
+Every unknown this decode raised has an ID. The open ones live in the projects' `QUESTIONS.md` files (electrical, luxury, engine swap); the closed ones are cited with their closer in the projects' `DECISIONS.md`. This circuit's: Q-063 · T-004 · T-023 · V-002 · V-025 · V-026 · V-050.

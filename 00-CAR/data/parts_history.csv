@@ -48,6 +48,6 @@ PH046,not done,Transmission — nothing done,Pan gasket,RockAuto,,[pk 5047248](h
 PH047,not done,Transmission — nothing done,Fill plug gasket,—,,—,
 PH048,not done,Transmission — nothing done,Drain plug gasket,—,,—,
 PH049,not done,Transmission — nothing done,Filter,RockAuto,,[pk 4843812](https://www.rockauto.com/en/moreinfo.php?pk=4843812&cc=1192250&pt=8600&jsn=604),
-PH050,not done,Sensors — nothing done,**Water temp sender**,Mazdatrix,,"[rear housing, new](https://mazdatrix.com/product/sender-water-temp-all-new-rear-hsg/)",**Feeds the ICU** — see [`DCU-CLUSTER.md`](../02-PROJECTS/electrical-pmu/03-MODULES/DCU-CLUSTER.md) §6
-PH051,not done,Sensors — nothing done,**Oil pressure sender**,—,,—,**Feeds the ICU.** Not yet sourced
+PH050,not needed,Sensors — nothing done,**Water temp sender**,—,,—,The car's own C-02 works and stays — new wire only (electrical D-261); read by the ICU (`../02-PROJECTS/electrical-build/01-DESIGN/ICU-CARRIER.md`)
+PH051,not needed,Sensors — nothing done,**Oil pressure sender**,—,,—,The car's own C-09 works and stays — new wire only (electrical D-261); read by the PMU's A7 and the ICU
 PH052,not done,Rear subframe,Gear oil — Valvoline 75W-90,Walmart,,[link](https://www.walmart.com/ip/Valvoline-Flex-Fill-75W-90-Full-Synthetic-Gear-Oil-1-QT-Squeeze-Pouch/329480316),

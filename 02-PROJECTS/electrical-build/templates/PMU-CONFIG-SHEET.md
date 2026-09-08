@@ -15,7 +15,7 @@ Everything typed into the ECUMaster PMU client, in the order it is entered. Chan
 
 ## 1 · Input decode tables
 
-Enter as lookup tables with windows. A reading between windows must report FAULT, not the nearest state. **Pull configuration:** A1–A8 = 10 kΩ pull-UP except A7 = 1 MΩ pull-DOWN · A15, A16 = 10 kΩ pull-DOWN.
+Enter as lookup tables with windows. A reading between windows must report FAULT, not the nearest state. **Pull configuration:** A1–A8 = 10 kΩ pull-UP except A7 = 1 MΩ pull-DOWN (its node is excited externally — the 100 Ω from pin 15 at the dash node, D-260) · A15, A16 = 10 kΩ pull-DOWN.
 
 
 {{decode:A1}}
@@ -35,7 +35,7 @@ Enter as lookup tables with windows. A reading between windows must report FAULT
 HAZARD is a band 265–370 (hazard alone 327; hazard + either wink 278 / 298 read as HAZARD).
 
 
-**A7 `FUEL_LEVEL`** *(the channel `Q-107` proposes to re-point at oil pressure — do not enter this table until that is ruled)* — three-point lookup with interpolation, read in the car: FULL ____ · MID ____ · EMPTY ____ (the factory gauge drives the sender; this input only observes it). FAULT below 10 and above 1000. If the reading is unstable, leave the channel unused — the cluster's gauge is the instrument.
+**A7 `OIL_PRESS`** (`Q-107` → D-249) — a threshold, not a lookup, read in the car: node counts at hot idle ____ · at 3000 rpm ____ · engine off, key RUN ____ → **OIL_MIN = ____** (between the engine-off and hot-idle readings, nearer the idle one). The node is excited by the dash-node 100 Ω pull-up from pin 15 (D-260) — a clean DC node the ICU reads too; nothing pulses. FAULT below 10 and above 1000 — and a FAULT reading counts as *pressure present* for the `FUEL_PUMP` gate (fail open, D-251) while raising a logged fault. Enter `OIL_MIN` at commissioning, never before: until it exists, run `FUEL_PUMP` with the START and 3 s prime terms in place and the oil term forced true.
 
 
 {{decode:A15}}

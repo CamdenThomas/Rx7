@@ -1,12 +1,8 @@
 # Factory Circuits — decoded from the 1982 wiring diagram
 
-*Rev 2026-08-30 · owns: the factory harness as built — one file per circuit, the frozen [`OEM-RECORD.md`](OEM-RECORD.md), the fuse/bus map, the ground map, the decode process. The factory decode is authoritative; the "what this means for the rebuild" tables at the foot of each circuit file are pointers into the new design, whose truth is the electrical project's.*
+*Rev 2026-09-07 · owns: the factory harness as built — one file per circuit, the frozen [`OEM-RECORD.md`](OEM-RECORD.md), the fuse/bus map, the ground map, the decode process. Nothing about the new design lives here: the rebuild's side of every factory device is the electrical build's data, found by its factory code.*
 
-> **Using the rebuild tables.** Every circuit file ends with a mapping to the
-> new design. The factory decode above it is accurate and authoritative; the
-> mapping names the leg housing (`L2-M 7`) and channel (`O6`) that now carry
-> the circuit, and the current cavity is always
-> [`02-PROJECTS/electrical-pmu/02-HARNESS/PIN-MAP.md`](../../02-PROJECTS/electrical-pmu/02-HARNESS/PIN-MAP.md)'s.
+> **Where the rebuild is.** Each circuit file ends with a pointer, not a table: the factory decode above it is authoritative; what replaces each device is a row in `02-PROJECTS/electrical-build/data/` (`python tools/rx7.py -p electrical-build find "C-02"`) and the rendered `DESIGN.md` §12. The mapping tables that used to sit there were removed on 2026-09-07 — they had drifted (D-249, D-252, D-258 all moved things they still described).
 
 One file per circuit. Each is the **functional definition** of what the circuit
 is supposed to be, not a forensic trace of the scan. Every wire and connector is
@@ -17,10 +13,7 @@ Source: [`1982RX7WiringDiagram.pdf`](1982RX7WiringDiagram.pdf) (31 pages,
 scanned, no text layer). Factory connector codes are a letter and two digits
 (`F-11`); they are not project IDs.
 
-**Current draw and signal types for every circuit here live in one place:**
-[`02-PROJECTS/electrical-pmu/01-DESIGN/LOADS.md`](../../02-PROJECTS/electrical-pmu/01-DESIGN/LOADS.md)
-and the measured column in [`CHANNEL-SCHEDULE.md`](../../02-PROJECTS/electrical-pmu/01-DESIGN/CHANNEL-SCHEDULE.md). Leg design needs all loads
-side by side, so they are not duplicated into each circuit file.
+**Current draw and signal types for every circuit here live in one place:** the electrical build's `data/pins.csv` (`est_a`, `enable_a`, `enable_basis`) and `data/inputs.csv`, rendered in its [`DESIGN.md`](../../02-PROJECTS/electrical-build/01-DESIGN/DESIGN.md) and [`PMU-CONFIG-SHEET.md`](../../02-PROJECTS/electrical-build/03-INSTALL/PMU-CONFIG-SHEET.md). Leg design needs all loads side by side, so they are not duplicated into each circuit file.
 
 ## Contents
 

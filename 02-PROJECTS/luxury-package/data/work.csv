@@ -1,0 +1,37 @@
+id,kind,item,state,gate,note
+B1,bring-up,"Toolchain — Arduino IDE 2.x, Teensyduino, blink on board 1",done,,2026-08
+B2,bring-up,"Prove can_map.h — packing static_asserts, round-trip, counter wrap",done,,found the self-cancelling TEMP macros
+B3,bring-up,CAN loopback on one board (ACAN_T4),done,,"5 frames, 0 failures"
+B4,bring-up,Ladder decode — windows and fault bands,done,,absorbed into the ICU firmware; real windows are read in the car (D-142)
+B5,bring-up,Tach capture against tach_simulator,done,,±3 % 500–8000 rpm; zero reads 0
+B6,bring-up,SD card — config-as-data with a safe-mode path,open,microSD (LP04),F-010; a corrupt file must still boot
+B7,bring-up,Datalogging skeleton and power-loss test,open,microSD (LP04),
+B8,bring-up,"Two boards on a real bus, PMU simulator live",open,"120 Ω ×4, headers soldered",the spare Teensy is the PMU until V-065
+F-001,firmware,DCU firmware skeleton — dcu.ino + climate.h,done,,33 assertions
+F-003,firmware,Sensor conditioning schematic — the ICU's inputs,moved,,electrical build — data/icu_channels.csv → ICU-CARRIER.md (D-259); the observer values of D-310 are archived
+F-004,firmware,Tach front end for a trailing-coil primary,moved,,electrical build — channel IC04
+F-005,firmware,Cluster page framework,done,,
+F-006,firmware,Diagnostics page,done,,against the PMU simulator; real numbers after V-065
+F-007,firmware,"Odometer and stats persistence — Teensy EEPROM emulation (wear-levelled, every 0.1 mi) as the authoritative odometer copy + microSD as the log, write on key-off",open,B6,"write frequency per D-162; a CUTOVER GATE for the electrical build's display (electrical D-268, D-269) — the odometer must survive a power cycle, card present or not, before MG22"
+F-008,firmware,BT817 driver,done,V-084 timings,35 assertions; the three pushDirtyTiles() calls are finished against the BT817 eval board at the electrical build's install §1.22 (D-314)
+F-009,firmware,Reconcile can_map.h 0x100–0x130 against the PMU's real export,blocked,V-065,electrical install §5.5
+F-010,firmware,Config-as-data,open,B6,
+F-011,firmware,Full 1280 × 480 render,done,,2026-08-31
+F-012,firmware,"Bump can_map.h for the 2026-09-07 map: add icu_body_t 0x218 (fuel_pct u16, fuel_valid u8, rsv[4], counter); pmu_outputs_t fuel_pct → _rsv[2]; dcu_climate_t blower → duty %, _rsv[0] → outside_c; ID_ICU_BODY 0x218, TMO_ICU_BODY 3000; SENS_FUEL bit 5; copy to the three test-sketch folders; bump ICU_FW_VERSION and DCU_FW_VERSION; run tests/run.bat",open,a machine with g++ (w64devkit) — not this one,the data is ahead of the header until this lands; the BRING-UP drift table shows exactly what differs
+F-013,firmware,pmu_sim: consume the regenerated channels.h and re-run the suite,open,F-012's machine,channels.h is now rendered by this project's build from the electrical pin table (D-311)
+F-014,firmware,"Per-signal source arbitration — local input when its channel is configured, else the ECU's CAN frame (0x500+), else dashes (D-153); the source is named in the config file, not the code",open,F-010,"electrical D-262 — at the engine swap most engine signals move to the ECU's frames and the ICU's own inputs go quiet by file, not by board"
+F-015,firmware,"icu_batt_t 0x220 + the UART bridge protocol from the ESP32-C3 (line-based text, 2 Hz, checksum) + the decoder on the C3 for whichever source Q-128 picks",open,electrical Q-128 (source); a machine with g++ for the header,"electrical D-267; the C3's own firmware is a small separate sketch in firmware/icu_radio/ — the BMS / shunt decoder, nothing else"
+H-001,hardware,ICU carrier layout,moved,,"electrical build — install §1.20; its questions were ruled there (D-265), V-082 is checked at layout, Q-126 is the last in front of it"
+H-002,hardware,DCU carrier layout,open,"V-083, Q-305","blower PWM output, ambient input, optional mirror bridges"
+H-006,hardware,"Display bezel mould — foam plug over the binnacle plate, fibreglass skin, finish",open,M-1 aperture measurements; electrical Q-130,FT34; the plate and the display are the electrical build's (D-268)
+X-006,docs,Failure-mode table,done,,DESIGN §9
+X-007,docs,"Archived render of the agreed cluster — icu_sim/sim.exe, +, screenshot",open,Camden,
+Z-002,design,Radar subsystem,open,V-061,
+Z-004,design,"Cold-weather behaviour — battery heater draw, winter parasitic budget",open,electrical V-052,
+X-003,docs,Troubleshooting guide,moved,,electrical build's install plan
+X-004,docs,Commissioning test card,moved,,electrical build's install plan
+H-003,hardware,Panel 1:1 drawing,closed,,no plate — electrical D-214
+H-004,hardware,Sill plate drawing,moved,,electrical build
+H-005,hardware,Dash post bracket layout,moved,,electrical build
+Z-001,design,LS swap electrical plan,moved,,engine-swap project
+Z-003,design,Mirror control protocol,closed,,D-305 + electrical D-255

@@ -1,6 +1,6 @@
 # Circuit — Headlights, Pop-ups, Illumination
 
-*Rev 2026-08-30 · owns: the factory decode of this circuit — devices, wires, logic. The rebuild table at the foot points into the new design and is not its owner; cavities are `02-HARNESS/data/connectors.csv`'s.*
+*Rev 2026-09-07 · owns: the factory decode of this circuit — devices, wires, logic. Nothing of the new design lives here; the last section says where it does.*
 
 **Source:** Section E, page 20. The most complex sheet in the book.
 
@@ -68,22 +68,8 @@ Ground B → X-13.
 
 ## 5 · What this means for the rebuild
 
-| Factory | PMU-24 plan |
-|---|---|
-| Sealed beam 50/40 W on RL / RY | O2 low → **L2-P1 1**, O3 high → **L2-P1 2**, 12 AWG. What is fitted today is `V-066` |
-| Dimmer rheostat E-05 | Deleted — O20 PWM drives illumination (**L3-S1 8**); the ICU backlight tracks it on DP-ICU 5 |
-| E-01 LIGHT + DIMMER + PASSING | A15 ladder (**L3-S1 2**). Dimmer HIGH/LOW and PASS were put "in software" (Q-020 → D-051) — how they reach A15 is `Q-065` → D-184 |
-| E-02 pop-up switch | **Deleted** (D-038) — broken anyway (K-021). Pop-ups raise on HEAD from the A15 ladder; wink switches **L3-S1 9/10** are the only manual control |
-| Motor internal limit contacts | A4 / A5 transit + inhibitor ladders via **L2-S 1 / 2** (D-187) |
-| 4-wire motors | Run feed **L2-P1 3** (LH) / **L2-P2 1** (RH) from K1/K2 (D-186); conductor ID per the D-199 check (R + RY bridged if single-direction confirms); F6/F7 branches |
-| Headlight cleaner E-11 | Gone (V-029 → D-097) |
-| Separate 0.3 sq fusible links | Soft fuses on O2 / O3 |
+The rebuild's side of every device and wire above is the electrical build's record, not this file's: find a factory code in its data — `python tools/rx7.py -p electrical-build find "C-02"` — or read the rendered [`DESIGN.md`](../../02-PROJECTS/electrical-build/01-DESIGN/DESIGN.md) §12 (device ends) and [`WIRE-TABLES.md`](../../02-PROJECTS/electrical-build/03-INSTALL/WIRE-TABLES.md). A hand-copied mapping table stood here until 2026-09-07; it had drifted three decisions behind and was removed — one fact, one home. Decisions that shaped this circuit's rebuild: D-038 · D-051 · D-097 · D-184 · D-186 · D-187 · D-199.
 
 ## 6 · Unknowns
 
-| ID | Unknown | Resolve by |
-|---|---|---|
-| V-029 → D-097 | Headlight cleaner | Gone |
-| V-030 → D-177 | Pop-up motor pinout — read off sheet E: YG top · WR left · RY right · R bottom; YG = indicator / position line; assembly grounds locally, not through the connector | Closed off the diagram; limit contacts confirmed at commissioning |
-| Q-020 → D-051 / `Q-065` → D-184 | Flash-to-pass | Software off A15; the ladder states are the `Q-065` → D-184 packet |
-| V-066 | Round or rectangular sealed beams, and whether LED housings are fitted today | Look — `05-PROCESS/OPEN.md` §8, `T-035` |
+Every unknown this decode raised has an ID. The open ones live in the projects' `QUESTIONS.md` files (electrical, luxury, engine swap); the closed ones are cited with their closer in the projects' `DECISIONS.md`. This circuit's: Q-020 · Q-065 · T-035 · V-029 · V-030 · V-066.

@@ -1,0 +1,14 @@
+id,name,sender,rate_hz,timeout_ms,on_timeout,status,note
+0x100,Vehicle state,PMU,20,250,"assume key OFF, warn",intent,Layout fixed by ECUMaster — reconcile at V-065
+0x110,Power,PMU,10,500,"blank the voltage field, never hold",intent,V-065
+0x120,Outputs,PMU,5,1000,blank,intent,Bytes 0–1 were fuel level until D-306; reserved now
+0x130,Per-channel current,PMU,5,1000,blank,intent,"Multiplexed, all 24 channels in ~5 s"
+0x200,Engine sensors,ICU,20,250,ICU-local — this is its own message,final,The frame that must not depend on anything
+0x210,Sensor health,ICU,2,,—,final,A fuel-valid bit joins with the F-012 header bump
+0x218,Body / slow,ICU,2,3000,blank the fuel field; the PMU logs a received-channel fault,final — header not bumped (F-012),Added D-306; oil pressure stays in 0x200 so it outranks fuel on the bus — priority is per frame
+0x220,Battery,ICU,2,3000,blank the battery fields; the PMU logs a received-channel fault,planned — source per electrical Q-128; header not bumped (F-015),"Added electrical D-267: the ICU's radio co-processor republishes the BMS / shunt data; telemetry only (D-251) — SoC may be a secondary, fail-open term in the 11.5 V shed rule"
+0x300,Climate,DCU,5,2000,"climate display shows —; the blower is unaffected, its final stage is on a local wire",final — header not bumped (F-012),"Byte 1 became duty %, byte 5 outside-air temp (D-307 / D-308)"
+0x310,Comfort bus,DCU,2,2000,climate display shows —,final,
+0x320,Radar,DCU,on change,,—,final,Z-002 designs the subsystem
+0x400,Panel buttons,PANEL,on change,,—,final,"Custom panel, not an ECUMaster keypad (D-210)"
+0x180 ext,AFR (AEMnet),WBO,100,500,blank AFR on the cluster; the PMU logs a received-channel fault,confirmed — AEM 30-0300 sheet (electrical D-266),"29-bit extended ID 0x00000180 (menu ID 1; ID 2–16 = 0x181–0x18F), DLC 8, big-endian, no internal termination — the two exceptions to D-086 / D-106; valid = byte 6 bit 7 set and byte 7 bit 6 clear"

@@ -1,6 +1,6 @@
 # Circuit — Stop, Tail, Parking, Side Marker, License, Back-up
 
-*Rev 2026-08-30 · owns: the factory decode of this circuit — devices, wires, logic. The rebuild table at the foot points into the new design and is not its owner; cavities are `02-HARNESS/data/connectors.csv`'s.*
+*Rev 2026-09-07 · owns: the factory decode of this circuit — devices, wires, logic. Nothing of the new design lives here; the last section says where it does.*
 
 **Source:** Section F, page 22. All five share this sheet.
 
@@ -58,21 +58,8 @@ not the M/T switch.
 
 ## 4 · What this means for the rebuild
 
-| Factory | PMU-24 plan |
-|---|---|
-| Stop + horn sharing one 15 A fuse | O7 brake and O11 horn, separate channels and separate soft fuses |
-| Stop light switch carrying lamp current | A3 input, switch-to-ground (**L3-S1 5**); O7 carries the load to **L4-M 2**. Measured 7.0 A |
-| Stop light checker | Deleted — PMU current sensing does the same job (D-097) |
-| RG single marker bus | O6, split at the panel to **L2-M 7** (front park / markers) and **L4-M 1** (tail / plate / rear markers). Measure on `RG`, not `R` |
-| Light switch carrying RG current | A15 ladder input (**L3-S1 2**), 12 V side, reads switched 12 V with the D-167 bias |
-| Back-up on the shared GY turn bus | O19, its own channel → **L4-M 7** |
-| Inhibitor switch | Laddered onto one input (D-071) at **L1-S1 11** — **no PMU pin is free**, `Q-063` → D-182 |
-| Incandescent 8 W / 3.8 W / 6 W / 27 W | **Stays incandescent** (D-119); LED is the deferred lighting pass (D-201) |
+The rebuild's side of every device and wire above is the electrical build's record, not this file's: find a factory code in its data — `python tools/rx7.py -p electrical-build find "C-02"` — or read the rendered [`DESIGN.md`](../../02-PROJECTS/electrical-build/01-DESIGN/DESIGN.md) §12 (device ends) and [`WIRE-TABLES.md`](../../02-PROJECTS/electrical-build/03-INSTALL/WIRE-TABLES.md). A hand-copied mapping table stood here until 2026-09-07; it had drifted three decisions behind and was removed — one fact, one home. Decisions that shaped this circuit's rebuild: D-071 · D-097 · D-119 · D-167 · D-182 · D-201.
 
 ## 5 · Unknowns
 
-| ID | Unknown | Resolve by |
-|---|---|---|
-| Q-019 → D-071 / `Q-063` → D-182 | Reverse trigger — the inhibitor is laddered; which pin it lands on is the `Q-063` → D-182 packet | Checklist 0.23 |
-| V-023 → D-097 | Cruise control unit | Gone, explicitly unwanted |
-| V-024 → D-097 | Stop light checker | Deleted from the design |
+Every unknown this decode raised has an ID. The open ones live in the projects' `QUESTIONS.md` files (electrical, luxury, engine swap); the closed ones are cited with their closer in the projects' `DECISIONS.md`. This circuit's: Q-019 · Q-063 · V-023 · V-024.

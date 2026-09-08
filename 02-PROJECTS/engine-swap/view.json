@@ -1,0 +1,7 @@
+{
+  "tabs": [
+    {"title": "README",    "file": "README.md"},
+    {"title": "Questions", "file": "QUESTIONS.md"},
+    {"title": "Decisions", "file": "DECISIONS.md", "anchors": true}
+  ]
+}

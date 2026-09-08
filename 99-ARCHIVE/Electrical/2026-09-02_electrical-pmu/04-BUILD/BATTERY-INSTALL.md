@@ -91,7 +91,7 @@ turns a tearing load into a shear load.
 
 **Class-T specifically, not ANL or MIDI** (D-062). LiFePO4 can deliver enormous
 short-circuit current, and Class-T has the interrupt rating to actually break
-it. This is the one fuse choice not to economise on.
+it. This is the one fuse choice not to economize on.
 
 ### Cable & termination
 

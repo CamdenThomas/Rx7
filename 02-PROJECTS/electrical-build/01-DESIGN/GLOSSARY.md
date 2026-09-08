@@ -23,7 +23,7 @@ Every ID prefix, channel code, connector code, colour and term used in shorthand
 | Notation | Means |
 |---|---|
 | **O1–O24** | PMU outputs. O1–O5 and O12–O16 are 25 A; O6–O11 are 15 A; O17–O24 are 7 A |
-| **A1–A8** | Dedicated analog inputs. 0–5 V, 10-bit, internal 10 kΩ pull-up (A7 uses a 1 MΩ pull-down) |
+| **A1–A8** | Dedicated analog inputs. 0–5 V, 10-bit, internal 10 kΩ pull-up (A7 uses a 1 MΩ pull-down; its node is excited by the dash-node 100 Ω pull-up from pin 15, D-260) |
 | **A9–A16** | Analog inputs **shared** with O17–O24. 0–20 V, 12-bit. A15 and A16 occupy O23 and O24 |
 | **⚡** | Channel with an integrated high-power flyback diode — O1 and O16 only |
 | **⚙** | Channel with wiper-motor braking — O8 only |
@@ -44,11 +44,12 @@ Every ID prefix, channel code, connector code, colour and term used in shorthand
 | **-S** | Signal housing, 16 AWG, Deutsch DT, size 16 |
 | `L3-S2 7` | Leg 3, second signal housing, cavity 7. On a label: `L3-S2-7` |
 | **06-…S / 04-…P** | Leg side is always the socket housing (`DT06-…S`), dash-node side always the pin housing (`DT04-…P`) — a leg cannot be plugged into the wrong half |
-| **Dash post · DP-** | The row of receptacles at the dash node where every leg plugs in — a location, not a product. **DP-CLU, DP-DIAG, DP-ICU, DP-DCU, DP-KEY** are the five *drops*: devices inches from the node that belong to no leg |
+| **Dash post · DP-** | The row of receptacles at the dash node where every leg plugs in — a location, not a product. **DP-DIAG, DP-ICU-A, DP-ICU-B, DP-DCU, DP-KEY** are the five *drops* (the two ICU drops mate receptacles built into the ICU's enclosure, D-270): devices inches from the node that belong to no leg |
 | **Dash node** | The PMU, busbars, fuse blocks, relays, wake strip and receptacles — mounted on one or more small carrier panels low in the dash. Formerly "the plate" |
 | **Sill node** | A small panel behind the driver kick panel: the two door receptacles, a ground stud, four empty relay sockets and three labelled fuse positions. Part of L4, not a fifth leg |
 | **D1 / D2** | Door connectors at the sill, driver and passenger — every conductor capped this build |
-| **K1–K12** | Relays. K1 / K2 pop-up run LH / RH · K3 / K4 empty sockets · K5–K8 window sockets at the sill, empty · K9 start (inner fender) · K11 head-unit constant master · K12 washer. K10 was deleted with the A/C; the number is not reused |
+| **K1–K12** | Relays. K1 / K2 pop-up run LH / RH · K3 / K4 empty sockets — the slot for the hatch / fuel-door release triggers (luxury D-180, D-274) · K5–K8 window sockets at the sill, empty · K9 start (inner fender) · K11 head-unit constant master · K12 washer. K10 was deleted with the A/C; the number is not reused |
+| **Branch-end receptacle** | Where a future circuit's conductor stops: a dust-capped DT / DTP receptacle at the point the branch leaves its leg, never a capped wire where the device will be — `L2-NZL`, `L2-OAT`, `L3-BLW`, `L3-CMF`, `L3-WIN`, `L3-MOD`, `L3-RDR`, `L4-RDR` (D-253, D-274). The part that arrives brings the plug; the two release solenoids, which exist, are wired to directly |
 | **F1–F20** | Fuses. F1–F3, F12, F13, F15, F16, F19, F20 at the dash node · F8, F9, F14 labelled positions at the sill · F17, F18 in the engine bay. F4, F6, F7, F10, F11 were deleted; the numbers are not reused |
 | **LIVE · CAPPED · PLUG · EMPTY** | The status words, defined at the top of `DESIGN.md` |
 | **Capped** | A wire run and terminated in its cavity with its far end sealed and labelled, waiting for a future feature. Adding the feature is uncap, connect, enable — no harness work |
@@ -95,8 +96,10 @@ Letters match the wiring diagram's section index — `A-06` is section A (chargi
 |---|---|
 | **PMU** | ECUMaster PMU-24 DL. The power controller; owns all switching and the logic |
 | **CAN1** | PMU ↔ laptop, 1 Mbps fixed, **no internal termination** — 120 Ω at both ends or the client never connects |
-| **CAN2** | Vehicle bus, 500 kbps. This build: the PMU only, with the far-end terminator fitted. Future nodes (luxury package): the ICU cluster module, the DCU climate module, the DP-KEY control panel; engine swap: the engine ECU |
-| **ICU / DCU** | The future instrument-cluster and dash-control modules of the luxury package. Only their drops (DP-ICU, DP-DCU) exist here |
+| **CAN2** | Vehicle bus, 500 kbps. This build: the PMU only, with the far-end terminator fitted. Nodes: the PMU and the ICU (this build, D-259), the wideband gauge (a vendor node, D-244); later the DCU and the DP-KEY panel (luxury package) and the engine ECU (engine swap) |
+| **ICU** | The instrument cluster unit — this build's second device (D-259): a Teensy 4.1 carrier behind the binnacle that excites and reads the senders, publishes on CAN2 and drives the **display** on a ribbon (D-268). Drawn in `ICU-CARRIER.md`; its channels are `data/icu_channels.csv` |
+| **Display** | The 12.3-inch bar the ICU draws on — the car's instruments from the meters cutover, on a plate in the binnacle until the luxury package's bezel. The factory cluster stays on the factory harness until then and leaves with it |
+| **DCU** | The luxury package's climate / comfort module. Only its drop (DP-DCU) exists here |
 
 ## Build vocabulary
 

@@ -20,8 +20,8 @@
 | DeutschConnector.com | 26 | $944.08 |
 | Amazon | 49 | $1,096.22 |
 | **Four carts** | **94** | **$2,878.02** |
-| Still to add (§8) | ~22 | ≈ $320 |
-| Vehicle parts, not yet carted (§6) | 5 | ≈ $175 est |
+| Still to add (§8) | ~37 | ≈ $320 |
+| Vehicle parts, not yet carted (§6) | 3 | ≈ $170 est |
 | Hardware store, after the measurement day (§7) | — | ≈ $40 est |
 | **Everything** |  | **≈ $3,410** |
 
@@ -48,8 +48,7 @@ https://www.waytekwire.com/ · **cart $455.04, 11 lines**
 | 75340 | Chief weatherproof 5-pin mini relay connector | 1 | K9's socket |
 | 75290 | Panel-mount micro relay socket with terminals | 10 | 6 at the dash node (K1–K4, K11, K12) + 4 at the sill (K5–K8, empty) |
 | WL16-0 | Prysmian GXL 16 AWG **BLACK**, 500 ft spool | 1 | Ground family — 230 ft needed |
-| WL16-2 | Prysmian GXL 16 AWG **RED**, 500 ft spool | 1 | Power family at 16 AWG — 480 ft calculated against a 500 ft spool. That is a 4 % margin: if M-2 measures the routes long, a top-up cut is ordered the same day |
-| WL16-8 | Prysmian GXL 16 AWG **GRAY**, 1000 ft spool | 1 | Analog-input family — 645 ft needed |
+| WL16-8 | Prysmian GXL 16 AWG **GRAY**, 1000 ft spool | 1 | Analog-input family — ~740 ft needed after D-252 / D-255 / D-256 |
 | WL16-6 | Prysmian GXL 16 AWG **BLUE**, 500 ft spool | 1 | Command family — 285 ft needed |
 
 The four spools are about $355 of the cart. Every 16 AWG wire in the car except pink, the CAN pair and the shielded tach comes off these.
@@ -90,20 +89,20 @@ Assembly kits = housing + wedgelock + solid nickel contacts for every cavity. Or
 
 | Kit | Qty | Housings served |
 |---|---|---|
-| 12SA-201-16141 · DT06-12S plug kit | 7 | L1-S1 · L1-S2 · L3-S1 · L3-S2 · L4-M · DP-CLU · DP-ICU |
-| 12PA-202-16141 · DT04-12P receptacle kit | 7 | same seven |
-| 8SA-201-16141 · DT06-8S plug kit | 5 | L2-M · L3-S3 · L4-S · D1 · D2 |
-| 8PA-202-16141 · DT04-8P receptacle kit | 5 | same five |
-| 6SA-201-16141 · DT06-6S plug kit | 2 | L2-S · DP-DCU |
-| 6PA-202-16141 · DT04-6P receptacle kit | 2 | same two |
-| 4SA-201-16141 · DT06-4S plug kit | 2 | DP-DIAG · DP-KEY |
-| 4PA-202-16141 · DT04-4P receptacle kit | 2 | same two |
-| 2SA-201-16141 · DT06-2S plug kit | 1 | L3-M |
-| 2PA-202-16141 · DT04-2P receptacle kit | 1 | L3-M |
+| 12SA-201-16141 · DT06-12S plug kit | 6 | L1-S1 · L1-S2 · L3-S1 · L3-S2 · L4-M · DP-ICU-B |
+| 12PA-202-16141 · DT04-12P receptacle kit | 5 | same five |
+| 8SA-201-16141 · DT06-8S plug kit | 6 | L2-M · L3-S3 · L4-S · L4-S2 · D1 · D2 |
+| 8PA-202-16141 · DT04-8P receptacle kit | 6 | same six |
+| 6SA-201-16141 · DT06-6S plug kit | 4 | L2-S · DP-ICU-A · DP-DCU · L3-WIN |
+| 6PA-202-16141 · DT04-6P receptacle kit | 3 | same three |
+| 4SA-201-16141 · DT06-4S plug kit | 4 | DP-DIAG · DP-KEY · L3-RDR · L4-RDR |
+| 4PA-202-16141 · DT04-4P receptacle kit | 4 | same four |
+| 2SA-201-16141 · DT06-2S plug kit | 4 | L3-M · L2-NZL · L2-OAT · L3-MOD |
+| 2PA-202-16141 · DT04-2P receptacle kit | 4 | same four |
 | P4S-203-12141 · DTP06-4S plug kit | 3 | L1-P · L2-P · L4-P |
 | P4P-204-12141 · DTP04-4P receptacle kit | 3 | same three |
-| P2S-203-12141 · DTP06-2S plug kit | 1 | L3-P |
-| P2P-204-12141 · DTP04-2P receptacle kit | 1 | L3-P |
+| P2S-203-12141 · DTP06-2S plug kit | 3 | L3-P · L3-BLW · L3-CMF |
+| P2P-204-12141 · DTP04-2P receptacle kit | 3 | same three |
 
 No spare housing pairs are carted. A ruined housing is a one-week wait — keep the contacts spare instead (below) and never force a wedgelock.
 
@@ -117,15 +116,23 @@ No spare housing pairs are carted. A ruined housing is a one-week wait — keep 
 | 0460-215-16141 | Pin contact, size 16, **14 AWG**, solid | 7 | **14** + spares = 18 | **raise to 18** |
 | 0462-203-12141 | Socket contact, size 12, solid | 5 | spares | cart |
 | 0460-204-12141 | Pin contact, size 12, solid | 5 | spares | cart |
-| 114017 | Sealing plug, size 16 cavity | 64 | 56 — every PLUG cavity, both halves — the cart carries 6 spare | cart |
-| 0413-204-2005 | Sealing plug, size 12 cavity | 0 | 4 — L1-P 4 and L4-P 4, both halves | **to add** |
-| 1027-003-1200 | Mounting clip, DT / DTP receptacle | 22 | 21 — every receptacle at the dash node (19) and the sill (2) + 1 spare | cart |
+| 114017 | Sealing plug, size 16 cavity | 64 | **78** Every PLUG cavity, both halves, plus the leg-plug half of every RESERVED cavity (D-271) — 78: the door receptacles are RESERVED at the sill (14) and the seven branch-end receptacles bring ten spare cavities (D-274); plus spares | **raise to 84** |
+| 0413-204-2005 | Sealing plug, size 12 cavity | 0 | **6** L1-P 4 in both halves (a PLUG) + the leg-plug half of L1-P 2 and L1-P 3 (RESERVED, D-271) + L3-CMF 2 in both halves (D-274) — 6 | **raise to 6** |
+| 1027-003-1200 | Mounting clip, DT / DTP receptacle | 22 | **28** One per DT / DTP receptacle at a post or node — 28: 21 after D-258 / D-270, plus the seven branch-end receptacles of D-274 (L2-NZL, L2-OAT, L3-CMF, L3-WIN, L3-MOD, L3-RDR, L4-RDR) | **raise to 28** |
 | 0411-310-1605 | Contact removal tool, size 16 | 1 | toolbox | cart |
 | 114010 | Contact removal tool, size 16 (plastic) | 1 | lives in the car | cart |
 | 0411-310-1205 | Contact removal tool, size 12 | 0 | 1 — the DTP housings | **to add** |
-| DT12P-DC | Dust cap, DT 12-way receptacle | 1 | DP-ICU | cart |
-| DT6P-DC | Dust cap, DT 6-way receptacle | 1 | DP-DCU | cart |
-| DT4P-DC | Dust cap, DT 4-way receptacle | 0 | 1 — DP-KEY; add by hand, the site's bot check blocked the scripted add | **to add** |
+| DT12P-DC | Dust cap, DT 12-way receptacle | 1 | DROPS to 0 — DP-ICU-B is a plug tail into the ICU's own receptacle (D-270); no 12-way receptacle is left capped | **raise to 0** |
+| DT6P-DC | Dust cap, DT 6-way receptacle | 1 | DP-DCU at the post and L3-WIN at the console (D-274) — 2 | **raise to 2** |
+| DT4P-DC | Dust cap, DT 4-way receptacle | 0 | 3 — DP-KEY, L3-RDR, L4-RDR (D-274); add by hand, the site's bot check blocked the scripted add | **to add** |
+| 6SA-201-16141 + 6PA-202-16141 | DT06-6S plug kit + DT04-6P receptacle kit — two more plugs and one more receptacle | 2 | Plugs: L2-S · DP-DCU · DP-ICU-A (its receptacle is the ICU's DT13 header, D-270) · L3-WIN = 4. Receptacles: L2-S · DP-DCU · L3-WIN = 3 (D-274) | **raise to 4 plug kits / 3 receptacle kits** |
+| DTP06-2S + DTP04-2P kits | DTP 2-way plug + receptacle kit — two more pairs | 1 | L3-P · L3-BLW · L3-CMF — the cart holds one pair; the blower receptacle at the HVAC case (D-253) and the comfort-bus receptacle behind the centre stack (D-274) are the other two | **raise to 3** |
+| 8SA-201-16141 + 8PA-202-16141 | DT06-8S plug kit + DT04-8P receptacle kit — one more pair | 5 | L2-M · L3-S3 · L4-S · D1 · D2 · L4-S2 — the cart holds five pairs; the sixth is the mirror-command housing (D-255) | **raise to 6** |
+| DTP receptacle dust cap, 2-way — confirm part number | Dust cap, DTP 2-way receptacle | 0 | L3-BLW at the HVAC case and L3-CMF behind the centre stack, capped until their parts arrive (D-253, D-274) | **to add** |
+| 12SA-201-16141 + 12PA-202-16141 | DT06-12S plug kit + DT04-12P receptacle kit — one plug fewer, two receptacles fewer | 7 | Plugs: L1-S1 · L1-S2 · L3-S1 · L3-S2 · L4-M · DP-ICU-B = 6 (the cluster drop is gone, D-258). Receptacles: 5 — DP-ICU-B's is a DT13 header on the ICU (D-270). DROPS 7 → 6 plug kits and 7 → 5 receptacle kits | **raise to 6** |
+| 2SA-201-16141 + 2PA-202-16141 | DT06-2S plug kit + DT04-2P receptacle kit | 3 | L2-NZL · L2-OAT · L3-MOD — the branch-end receptacles (the cart's one 2-way pair is L3-M's); the plug half of each waits on the shelf for the part (D-274) | **to add** |
+| 4SA-201-16141 + 4PA-202-16141 | DT06-4S plug kit + DT04-4P receptacle kit | 2 | L3-RDR · L4-RDR (the cart's two 4-way pairs are DP-DIAG's and DP-KEY's) (D-274) | **to add** |
+| DT2P-DC (confirm the SKU) | Dust cap, DT 2-way receptacle | 3 | L2-NZL · L2-OAT · L3-MOD (D-274) | **to add** |
 
 ---
 
@@ -182,13 +189,15 @@ https://www.amazon.com/ · **cart $1,096.22, 49 lines / 55 items**. The cart was
 
 | Item | Spec | Qty | ≈ $ | Note |
 |---|---|---|---|---|
+| ESP32-C3 module ×2 — Seeed XIAO ESP32C3 class (castellated, fits a header) | one dev board to try the BMS / shunt decode now, one for the carrier | 2 | 6 | the ICU's radio co-processor (D-267); which source it decodes is Q-128 — on its own 3.3 V LDO (the XIAO's), not the Teensy's 250 mA regulator (D-273) |
+| 100 Ω 1 W 1 % metal-film resistor | the oil-node pull-up at the dash node (D-260) + 1 spare | 2 | 1 | add by hand — the kits are ¼ W |
 | Barrier terminal strip, 8 position, 12 V rated | generic | 2 | 15 | Wake strip + one spare |
 | Metal-film resistor kit, E24 1 %, 1/4 W | generic kit | 1 | 15 | Values used: 1.8k 3.3k 4.7k 6.8k 8.2k 10k 12k 15k 18k 33k 47k 100k 1M |
 | 120 Ω 1 % 1/4 W resistors | generic | 10 | 1 | CAN terminators, 2 used |
 | Schottky diode 1N5819 | 1N5819 | 20 | 3 | 5 wake strip + 1 WASH leg + spares |
 | NPN transistor 2N3904 | 2N3904 | 10 | 1 | 2 wake sense stages + spares |
 | Inline ATC fuse holder, 2-pack | generic | 1 | 6 | The 5 A first-power-up guard (install §5.2) |
-| Shielded cable, 16–18 AWG single core with drain, 15 ft | any automotive shielded | 1 | 15 | Tach — L1-S1 6 → DP-CLU 4 |
+| Shielded cable, 16–18 AWG single core with drain, 15 ft | any automotive shielded | 1 | 15 | Tach — L1-S1 6 → DP-ICU-B 4 4 |
 
 ### Consumables and labels
 
@@ -224,11 +233,30 @@ RockAuto / PartsGeek / a Mazda specialist. Confirm fit for a **1982 RX-7 GS, FB,
 
 | Item | Spec | Qty | ≈ $ | Note |
 |---|---|---|---|---|
+| Road-speed sensor | Hall pulse generator on the transmission's speedo-drive boss, the cable deleted — Dakota Digital SEN-01-4160 / AutoMeter 5291 class, 8 000 or 16 000 pulses per mile, sealed; thread adapter per M-2 | 1 | 105 | IC08 / DV47 — fitted at the meters cutover (D-272); bought after M-2 measures the boss |
 | Brake pedal (stop lamp) switch, without cruise — TWO circuits | Standard SLS-52 class — confirm fit | 1 | 20 | Pole 1 the A3 ladder, pole 2 the wake strip (D-247) |
 | Ignition switch, electrical portion, 1981–83 RX-7 | search "81-83 RX-7 ignition switch electrical"; NOS or quality reproduction | 1 | 45 | Terminals B, ACC, IG, ST — feeds the A16 ladder and both wake sources |
-| Heater blower motor, 1979–83 RX-7 | Four Seasons 35483 | 1 | 65 | The original is dead (K-023). Confirm fit against the HVAC case on arrival |
-| Blower motor resistor pack, 1979–85 RX-7 | Four Seasons, vehicle fit | 1 | 25 |  |
-| Blower speed switch, 4-position rotary, 20 A, ground-side | OEM-type replacement | 1 | 20 |  |
+
+## 6b · The ICU carrier — ordered after layout (D-259)
+
+Board H-001 and its parts, bought once the enclosure is settled (`QUESTIONS.md` §1 — `Q-126`; `V-082` is checked at layout; install §1.20). Nothing here is in a cart yet and nothing here gates the four carts above. `P114` (the oil-node pull-up) is in the Amazon section because it belongs to the dash node, not the board.
+
+| Item | Spec | Qty | ≈ $ | Note |
+|---|---|---|---|---|
+| ICU carrier PCB H-001 | 2 boards, 2-layer, JLCPCB / OSH Park | 2 |  | one fitted, one spare — laid out after Q-126 (the enclosure); V-082 checked at layout |
+| CAN transceiver, 3.3 V IO, 5 V bus, VIO pin | SOIC-8, automotive | 2 | 3 | one fitted, one spare — suffix confirmed at V-057 |
+| 12 V → 5 V automotive buck, 3 A | LMR36015-Q1 class (60 V in, 1.5 A) — not the LMR33630: its 36 V maximum sits under the SMBJ33A's ~53 V clamp (D-273) | 1 | 8 | ICU logic rail — ~0.8 A peak with the radio scanning |
+| Load-dump TVS SMBJ33A ×2, SS34 ×4, bulk capacitors |  | 1 | 8 | both 12 V inputs (D-088) |
+| Front end | 100 Ω 1 W ×2 excitation · 15 kΩ / 10 kΩ and 47 kΩ / 10 kΩ dividers · BAT54S ×12 · LM393 on the 5 V rail with 10 kΩ pull-ups to 3V3 · 5.1 V zener ×2 · 100 kΩ ½ W ×2 · backlight switch ≥ 60 V (SQD50P06-class P-FET or a VN5E-class high-side driver, ≥ 6 A) + 4 A fuse · RC parts | 1 | 16 | values in ICU-CARRIER.md — checked, D-273 |
+| PSRAM 8 MB ×2 | fitted to the ICU's Teensy pads before install | 2 | 5 | the display's framebuffer (luxury D-170) — fitted now so the board never comes out for it |
+| IMU module | LSM6DSO / ICM-42688-P class, I²C — the MPU-6050 and ICM-20948 are not recommended for new designs (D-273) | 1 | 5 | orientation per V-073 before layout; the performance page is the luxury package's |
+| Standard 0.1 in female headers for the Teensy socket |  | 1 | 4 | square pins damage machined sockets — standard female only |
+| Enclosure for the carrier behind the binnacle |  | 1 | 20 |  |
+| Deutsch DT13 flanged PCB receptacles, 6-way and 12-way, with their sealing plugs and the flange gaskets | through the enclosure wall; mate the harness's DT06-6S / DT06-12S plugs | 1 | 24 | the ICU's two connector halves live on the board (D-270); one spare of each if the budget allows |
+| BT817 EVE evaluation board | Riverdi / Matrix Orbital / Bridgetek BT817 board — proves the whole chain on the desk before any glass money | 1 | 70 | T-051 — the one order that should not wait; luxury LP05 moved here |
+| 12.3-inch bar display | chain (ii) — 1920 × 720, 900–1000 nit, bonded or AR glass, with its scaler board (V-085 → D-269) | 1 | 150 | V-085 ruled (ii); bought after M-1 sizes the aperture; luxury LP26 moved here |
+| Display bridge — TFP410-class HDMI encoder | BT817 RGB out → HDMI into the scaler (chain ii, D-269) | 1 | 20 | V-084 confirms timings at install §1.22; luxury LP27 moved here |
+| Page button, panel-mount momentary |  | 1 | 3 | luxury D-169; on the binnacle plate (Q-130) |
 
 ## 7 · Hardware store — after the measurement day
 
@@ -236,6 +264,7 @@ Bought with the parts in hand, once M-1 and M-4 in the install plan are filled i
 
 | Item | Note |
 |---|---|
+| Binnacle plate stock — 3 mm black ABS or aluminium, one piece sized from M-1 | D-268 |
 | Carrier-panel stock for the dash node — 3 mm aluminium or ABS sheet, one or several small pieces | Sizes from M-1 and the bench layout (install §3.1) |
 | Sill-node panel stock, about 150 × 100 mm | M-5 |
 | Battery backing plate stock, 3–4 mm aluminium or steel, sized from the M-4 mock-up | Under the floor, beneath the battery box |
@@ -247,6 +276,7 @@ Bought with the parts in hand, once M-1 and M-4 in the install plan are filled i
 |---|---|---|---|
 | Waytek | 46047 Sealed inline ATC fuse holder, 14 AWG leads | 3 → 4 | F12, F15, F16 and now F20 — the wideband gauge's feed (D-244) |
 | Waytek | 2300 Blue Sea 2300 busbar, 10-gang 150 A, WITH cover — replaces the uncovered 2301 (78250) in the cart | 1 → 2 | Always-hot bar + ground bus, both covered (D-224). Waytek # for the 2300 to confirm at the cart |
+| Waytek | WL16-2 Prysmian GXL 16 AWG **RED**, 500 ft spool | 1 → 500 ft spool + 50 ft cut | Power family at 16 AWG — ~510 ft calculated against a 500 ft spool after D-250 / D-252 / D-256 (L1-S2 9, L4-S 4, L2-S 6): add a 50 ft cut to the WireBarn order |
 | WireBarn | GXL 14 AWG BLK | 50 → 75 ft | 14 AWG grounds — 42 ft calculated against 50 ft carted; the same margin problem, smaller money |
 | WireBarn | GXL 12 AWG RED | 250 + 100 → 450 ft | Every 25 A output and 12 AWG feed — 336 ft calculated against 350 ft carted is a 1.04× margin, not the 1.5× D-202 promised on unmeasured routes |
 | WireBarn | GXL 16 AWG PNK | 25 | F3 switch supply and the +5 V reference — 10 ft calculated |
@@ -254,18 +284,32 @@ Bought with the parts in hand, once M-1 and M-4 in the install plan are filled i
 | WireBarn | GXL 16 AWG GRN | 50 | CAN low, both buses — 33 ft calculated |
 | DeutschConnector.com | 0462-209-16141 Socket contact, size 16, **14 AWG**, solid | 7 → 18 | + spares = 18 (L2-M 1–4, L3-M 1–2, L4-M 1–4, D1 1–2, D2 1–2 — the kits' contacts do not take 14 AWG) |
 | DeutschConnector.com | 0460-215-16141 Pin contact, size 16, **14 AWG**, solid | 7 → 18 | + spares = 18 |
-| DeutschConnector.com | 0413-204-2005 Sealing plug, size 12 cavity | 0 | L1-P 4 and L4-P 4, both halves |
+| DeutschConnector.com | 114017 Sealing plug, size 16 cavity | 64 → 84 | Every PLUG cavity, both halves, plus the leg-plug half of every RESERVED cavity (D-271) — 78: the door receptacles are RESERVED at the sill (14) and the seven branch-end receptacles bring ten spare cavities (D-274); plus spares |
+| DeutschConnector.com | 0413-204-2005 Sealing plug, size 12 cavity | 0 → 6 | L1-P 4 in both halves (a PLUG) + the leg-plug half of L1-P 2 and L1-P 3 (RESERVED, D-271) + L3-CMF 2 in both halves (D-274) — 6 |
+| DeutschConnector.com | 1027-003-1200 Mounting clip, DT / DTP receptacle | 22 → 28 | One per DT / DTP receptacle at a post or node — 28: 21 after D-258 / D-270, plus the seven branch-end receptacles of D-274 (L2-NZL, L2-OAT, L3-CMF, L3-WIN, L3-MOD, L3-RDR, L4-RDR) |
 | DeutschConnector.com | 0411-310-1205 Contact removal tool, size 12 | 0 | 1 — the DTP housings |
-| DeutschConnector.com | DT4P-DC Dust cap, DT 4-way receptacle | 0 | 1 — DP-KEY; add by hand, the site's bot check blocked the scripted add |
+| DeutschConnector.com | DT12P-DC Dust cap, DT 12-way receptacle | 1 → 0 | DROPS to 0 — DP-ICU-B is a plug tail into the ICU's own receptacle (D-270); no 12-way receptacle is left capped |
+| DeutschConnector.com | DT6P-DC Dust cap, DT 6-way receptacle | 1 → 2 | DP-DCU at the post and L3-WIN at the console (D-274) — 2 |
+| DeutschConnector.com | DT4P-DC Dust cap, DT 4-way receptacle | 0 | 3 — DP-KEY, L3-RDR, L4-RDR (D-274); add by hand, the site's bot check blocked the scripted add |
 | Amazon | 2 AWG fine-strand welding cable RED | 45 ft → 25 ft | PMU feed C03 and the Class-T link C01 only — the starter run moved to 1/0 (D-246), so this line DROPS to 25 ft and saves about $90 |
 | Amazon | 2 AWG fine-strand welding cable BLACK | 25 ft → 10 ft | Engine block → chassis bonding strap C06 only — the battery negative moved to 1/0 (D-245, D-246), so this line DROPS to 10 ft |
 | Amazon | 1/0 fine-strand welding cable RED | 25 ft | Starter feed C04 (D-246) |
 | Amazon | 1/0 fine-strand welding cable BLACK | 30 ft | Battery negative C02, disconnect link C05, cranking return C11 (D-245, D-246) |
 | Amazon | Tinned lugs 6 AWG 5/16 (×4) | 8 → 4 | Alternator B+ cable C07 — the four 1/0 lugs move to P098, so this line DROPS to the four 6 AWG lugs |
 | Amazon | Tinned closed-barrel lugs 1/0 — 3/8 hole (×8) and 5/16 hole (×4) | 12 | Every 1/0 cable end plus practice crimps (D-246) |
+| DeutschConnector.com | 6SA-201-16141 + 6PA-202-16141 DT06-6S plug kit + DT04-6P receptacle kit — two more plugs and one more receptacle | 2 → 4 plug kits / 3 receptacle kits | Plugs: L2-S · DP-DCU · DP-ICU-A (its receptacle is the ICU's DT13 header, D-270) · L3-WIN = 4. Receptacles: L2-S · DP-DCU · L3-WIN = 3 (D-274) |
+| DeutschConnector.com | DTP06-2S + DTP04-2P kits DTP 2-way plug + receptacle kit — two more pairs | 1 → 3 | L3-P · L3-BLW · L3-CMF — the cart holds one pair; the blower receptacle at the HVAC case (D-253) and the comfort-bus receptacle behind the centre stack (D-274) are the other two |
+| DeutschConnector.com | 8SA-201-16141 + 8PA-202-16141 DT06-8S plug kit + DT04-8P receptacle kit — one more pair | 5 → 6 | L2-M · L3-S3 · L4-S · D1 · D2 · L4-S2 — the cart holds five pairs; the sixth is the mirror-command housing (D-255) |
+| DeutschConnector.com | DTP receptacle dust cap, 2-way — confirm part number Dust cap, DTP 2-way receptacle | 0 | L3-BLW at the HVAC case and L3-CMF behind the centre stack, capped until their parts arrive (D-253, D-274) |
+| Amazon | ESP32-C3 module ×2 — Seeed XIAO ESP32C3 class (castellated, fits a header) | 2 | the ICU's radio co-processor (D-267); which source it decodes is Q-128 — on its own 3.3 V LDO (the XIAO's), not the Teensy's 250 mA regulator (D-273) |
+| Amazon | 100 Ω 1 W 1 % metal-film resistor | 2 | add by hand — the kits are ¼ W |
+| DeutschConnector.com | 12SA-201-16141 + 12PA-202-16141 DT06-12S plug kit + DT04-12P receptacle kit — one plug fewer, two receptacles fewer | 7 → 6 | Plugs: L1-S1 · L1-S2 · L3-S1 · L3-S2 · L4-M · DP-ICU-B = 6 (the cluster drop is gone, D-258). Receptacles: 5 — DP-ICU-B's is a DT13 header on the ICU (D-270). DROPS 7 → 6 plug kits and 7 → 5 receptacle kits |
 | Amazon | Terminal boots, red and black, 2 AWG / 1/0 | 10 → 14 | Every exposed lug on a live stud — four more ends now that the negative side is 1/0 (D-246) |
 | Amazon | Tapered-post terminal boots, red and black | 1 | The only thing covering a live post now that the box is gone (D-235) |
 | Amazon | SAE tapered-post battery terminals, brass, with 3/8 in stud take-off, pair | 1 | The Ionic has tapered posts (D-234) - no ring lug bolts to it |
+| DeutschConnector.com | 2SA-201-16141 + 2PA-202-16141 DT06-2S plug kit + DT04-2P receptacle kit | 3 | L2-NZL · L2-OAT · L3-MOD — the branch-end receptacles (the cart's one 2-way pair is L3-M's); the plug half of each waits on the shelf for the part (D-274) |
+| DeutschConnector.com | 4SA-201-16141 + 4PA-202-16141 DT06-4S plug kit + DT04-4P receptacle kit | 2 | L3-RDR · L4-RDR (the cart's two 4-way pairs are DP-DIAG's and DP-KEY's) (D-274) |
+| DeutschConnector.com | DT2P-DC (confirm the SKU) Dust cap, DT 2-way receptacle | 3 | L2-NZL · L2-OAT · L3-MOD (D-274) |
 | Drawer or local | Blade fuses by value — §9 |  |  |
 
 ## 9 · Blade fuses — check the drawer first
@@ -284,4 +328,4 @@ Plus the two MIDI fuses (F17 30 A, F18 100 A) and the Class-T and MRBF, which ar
 
 ## 10 · When it arrives
 
-Count everything against this list before anything is opened. Housings: 21 codes, two halves each (§3). Wire: four spools + the WireBarn cuts + the three added 16 AWG colours. Contacts: 18 of each 14 AWG type, 16 of each 16–18 AWG type, 5 of each size 12, 56 size-16 plugs, 4 size-12 plugs, 21 clips, 3 dust caps. Report any shortfall before the build starts — a missing housing stops a leg.
+Count everything against this list before anything is opened. Housings: 30 codes, two halves each (§3). Wire: four spools + the WireBarn cuts + the three added 16 AWG colours. Contacts: 18 of each 14 AWG type, 16 of each 16–18 AWG type, 5 of each size 12, 78 size-16 plugs, 6 size-12 plugs, 28 clips, 3 dust caps. Report any shortfall before the build starts — a missing housing stops a leg.

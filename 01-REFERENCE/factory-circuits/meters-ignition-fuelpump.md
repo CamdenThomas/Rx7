@@ -1,6 +1,6 @@
 # Circuit — Meters, Warning Lights, Ignition, Fuel Pump
 
-*Rev 2026-08-30 · owns: the factory decode of this circuit — devices, wires, logic. The rebuild table at the foot points into the new design and is not its owner; cavities are `02-HARNESS/data/connectors.csv`'s.*
+*Rev 2026-09-07 · owns: the factory decode of this circuit — devices, wires, logic. Nothing of the new design lives here; the last section says where it does.*
 
 **Source:** Section C page 16, Section B pages 12–13.
 
@@ -69,24 +69,8 @@ cutoff. K-008 — the pump grounds at X-15 alongside the rear turn lamps.
 
 ## 5 · What this means for the rebuild
 
-| Factory | PMU-24 plan |
-|---|---|
-| Cluster on 10 A GY bus, internal regulator | The **ICU** replaces the cluster (D-006 → D-075, D-083). The factory cluster stays in place through ICU development (D-090) |
-| Fuel level sender Y | A7 input, **L4-S 1** — the one sender the PMU reads; published on CAN 0x120 |
-| Water temp YW, oil pressure BrY | ICU inputs — **L1-S1 3 → DP-ICU 6**, **L1-S1 4 → DP-ICU 7**. Oil temp (new) L1-S1 5 → DP-ICU 8 |
-| Tach signal YG from coil | **L1-S1 6 → DP-ICU 9**, shielded, opto/comparator at the ICU (D-082). Routed away from every high-current wire |
-| Twin coils + igniters on BW | O12 ignition feed, **L1-P 1** |
-| Fuel pump, key-on only | O5 → **L4-P 2**, with a software prime, the PMU's inertia switch, and run-with-RPM once the ICU publishes rpm — interim rule `Q-064` → D-183 (Checklist 2.17) |
-| Warning lamp logic, checkers, oscillator | All software, in the ICU |
-| Everything grounded at X-13 / X-15 | Zone star nodes (D-017) |
-
-The fuel pump gains real safety it never had: prime on key-on, cut if the engine
-stops, cut on impact.
+The rebuild's side of every device and wire above is the electrical build's record, not this file's: find a factory code in its data — `python tools/rx7.py -p electrical-build find "C-02"` — or read the rendered [`DESIGN.md`](../../02-PROJECTS/electrical-build/01-DESIGN/DESIGN.md) §12 (device ends) and [`WIRE-TABLES.md`](../../02-PROJECTS/electrical-build/03-INSTALL/WIRE-TABLES.md). A hand-copied mapping table stood here until 2026-09-07; it had drifted three decisions behind and was removed — one fact, one home. Decisions that shaped this circuit's rebuild: D-006 · D-017 · D-075 · D-082 · D-083 · D-090 · D-183.
 
 ## 6 · Unknowns
 
-| ID | Unknown | Resolve by |
-|---|---|---|
-| V-037 → D-197 | Fuel sender resistance range, empty → full, for A7 scaling | Measure at the tank, `T-012` → D-197, Checklist 0.5 |
-| V-038 | Whether the coolant level unit and oscillator are still fitted | Inspect (A-010 caps the level senders either way) |
-| V-039 → D-082 / `V-067` | Tach signal type and level | Conditioning decided; pulses per rev still to confirm |
+Every unknown this decode raised has an ID. The open ones live in the projects' `QUESTIONS.md` files (electrical, luxury, engine swap); the closed ones are cited with their closer in the projects' `DECISIONS.md`. This circuit's: A-010 · T-012 · V-037 · V-038 · V-039 · V-067.

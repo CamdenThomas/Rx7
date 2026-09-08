@@ -13,7 +13,7 @@ bottom.** Trigger the next one on the same conditions, or when
 
 1. Audit 1 — the first tree read (I-01 … I-31) · 2. Audit 2 — accretion and
 scope (I-32 … I-51) · 3. Audit 3 — after the ICU firmware (I-52 … I-70) ·
-4. Audit 4 — representation and organisation, 2026-08-30 (I-71 … I-165) ·
+4. Audit 4 — representation and organization, 2026-08-30 (I-71 … I-165) ·
 5. Standing rules
 
 ---
@@ -21,7 +21,7 @@ scope (I-32 … I-51) · 3. Audit 3 — after the ICU firmware (I-52 … I-70) �
 ## 1 · Audit 1 — the first tree read, 2026-08
 
 From a two-pass read of the whole tree. **All 28 items closed**, plus three
-that surfaced during the folder reorganisation.
+that surfaced during the folder reorganization.
 
 | Group | Items | Result |
 |---|---|---|
@@ -32,13 +32,13 @@ that surfaced during the folder reorganisation.
 | **Polish** | I-23 – I-28 | `*Rev YYYY-MM*` stamps; factory-file banner; [`vehicle.md`](../../../00-CAR/vehicle.md) purchases; service history; routing rule **decisions → OPEN, actions → TASKS**; handover path in STATUS |
 | **Reorganisation** | I-29 – I-31 | Numbered folders `01-DESIGN` … `05-PROCESS`; session-opening paths corrected in [`ASSISTANT.md`](../../../ASSISTANT.md) §0; `04-SUBSYSTEMS/` established as the home for self-contained designs |
 
-I-29 (relative links after the reorganisation) was carried "fix on next touch"
+I-29 (relative links after the reorganization) was carried "fix on next touch"
 through two more audits and finally closed by Audit 4's link sweep.
 
 ## 2 · Audit 2 — accretion and scope, 2026-08
 
 From reading [`PARTS-CHANGES.md`](../../../99-ARCHIVE/Electrical/PARTS-CHANGES.md) and `INFOTAINMENT.md` end to end; the findings
-generalised to most of the project. **I-32 … I-51 closed.**
+generalized to most of the project. **I-32 … I-51 closed.**
 
 **The root problem — append-only accretion.** [`PARTS-CHANGES.md`](../../../99-ARCHIVE/Electrical/PARTS-CHANGES.md) opened with a
 full LED conversion table that four UPDATE sections later turned out to belong
@@ -126,7 +126,7 @@ history), three are partial, four were ruled no-change.
 - [x] **I-88 · P2** · Migration order is restated in [`CHECKLIST.md`](../04-BUILD/CHECKLIST.md) Phase 6 (18 items) although [`MIGRATION-LOG.md`](../04-BUILD/MIGRATION-LOG.md) "owns" it (26 rows) — CHECKLIST Phase 6 defers to [`MIGRATION-LOG.md`](../04-BUILD/MIGRATION-LOG.md)
 - [x] **I-89 · P2** · [`CONNECTORS.md`](../02-HARNESS/CONNECTORS.md) contains three master connector lists — [`CONNECTORS.md`](../02-HARNESS/CONNECTORS.md) carries one generated housing table
 - [x] **I-90 · P2** · Total mated-pair count: [`CONNECTORS.md`](../02-HARNESS/CONNECTORS.md) says 20, [`PIN-MAP.md`](../02-HARNESS/PIN-MAP.md) and `02-HARNESS/README.md` say 23 — Defined once in PIN-MAP: 15 leg housings, 24 mated pairs; every file updated
-- [x] **I-91 · P2** · The CAN message map exists four times — One finalised map in [`CAN-MESSAGES.md`](../03-MODULES/CAN-MESSAGES.md); draft removed from DCU-CLUSTER; three `can_map.h` copies identical and checked
+- [x] **I-91 · P2** · The CAN message map exists four times — One finalized map in [`CAN-MESSAGES.md`](../03-MODULES/CAN-MESSAGES.md); draft removed from DCU-CLUSTER; three `can_map.h` copies identical and checked
 - [x] **I-92 · P2** · [`PMU-CONFIG.md`](../01-DESIGN/PMU-CONFIG.md) is two complete documents concatenated — [`PMU-CONFIG.md`](../01-DESIGN/PMU-CONFIG.md) is one document
 - [x] **I-93 · P2** · [`SCHEMATICS.md`](../01-DESIGN/SCHEMATICS.md) shows every sub-circuit twice — [`SCHEMATICS.md`](../01-DESIGN/SCHEMATICS.md) rewritten current-state
 - [x] **I-94 · P2** · `02-HARNESS/README.md` "Elsewhere" links `../LOADS.md` and `../SCHEMATICS.md` — Links fixed; leg counts from the CSV
@@ -138,7 +138,7 @@ history), three are partial, four were ruled no-change.
 - [x] **I-97 · P1** · Stage 4 and 5 status is stated four ways — Stages 1–5 done, stated once in BENCH-BRINGUP and echoed
 - [x] **I-98 · P1** · Whether the spare housings have arrived is stated four ways — Housings: ordered, inbound, `T-045` on arrival — stated the same way everywhere
 - [x] **I-99 · P1** · `BUY-LIST.md` (since absorbed into [`BOM.md`](BOM.md) §9, D-200) "STATUS — bench kit PURCHASED" (line 263) marks 120 Ω resistors, E24 assortment, breadboards, jumpers, board materials and the rotary switch as Bought — BUY-LIST rewritten as a record per D-140
-- [x] **I-100 · P1** · [`CLUSTER-DESIGN.md`](../03-MODULES/CLUSTER-DESIGN.md) banner says the multi-page architecture, diagnostics page and trip page "do not exist yet" — CLUSTER-DESIGN banner corrected
+- [x] **I-100 · P1** · [`CLUSTER-DESIGN.md`](../03-MODULES/CLUSTER-DESIGN.md) banner says the multipage architecture, diagnostics page and trip page "do not exist yet" — CLUSTER-DESIGN banner corrected
 - [x] **I-101 · P1** · [`CHECKLIST.md`](../04-BUILD/CHECKLIST.md) still builds the power windows — Windows provisioned only (D-131) throughout CHECKLIST; 0.3 dropped
 - [x] **I-102 · P1** · [`PARTS-CHANGES.md`](../../../99-ARCHIVE/Electrical/PARTS-CHANGES.md) §3 "Cluster display — Format undecided `[Q-037]`" — PARTS-CHANGES cluster row → D-150/D-168
 - [ ] **I-103 · P2** · [`DEFERRED-FEATURES.md`](../../../99-ARCHIVE/Electrical/DEFERRED-FEATURES.md) is the model for the tree — *no change* — DEFERRED-FEATURES kept as the pattern; headers everywhere follow it
@@ -148,7 +148,7 @@ history), three are partial, four were ruled no-change.
 - [x] **I-104 · P1** · 35 Q-IDs and 25 V-IDs are cited as live in file bodies that [`OPEN.md`](OPEN.md) does not hold — Sweep done; closed IDs cited as `Q-038 → D-095`; `check.py` C5 catches bare closed IDs
 - [x] **I-105 · P1** · Task IDs were renumbered (D-043) and the old numbers survive in reference files — horn.md T-002 → T-001; OEM-RECORD pointer note for T-017
 - [x] **I-106 · P1** · The old three-digit Checklist step numbers are cited in 11 files — All three-digit step numbers mapped to phase.step
-- [x] **I-107 · P2** · Path references that point at the pre-reorganisation layout — Paths corrected
+- [x] **I-107 · P2** · Path references that point at the pre-reorganization layout — Paths corrected
 - [x] **I-108 · P2** · There is not one clickable link in the tree — Every file mention linkified; `check.py` C4 checks link targets exist
 - [x] **I-109 · P2** · [`DECISIONS.md`](DECISIONS.md) index covers D-001…D-105; the file runs to D-167 — Index extended to D-172
 - [x] **I-110 · P2** · [`GLOSSARY.md`](../01-DESIGN/GLOSSARY.md) is missing five ID schemes now in use — GLOSSARY covers D/Q/A/V/T/K/M/P/I/L/R/TL/F/H/X/Z and the status words
@@ -218,7 +218,7 @@ history), three are partial, four were ruled no-change.
 - [x] **I-159 · P4** · `firmware/README.md` hardcodes `C:\Users\Camden Thomas\ Downloads\w64devkit\` — README uses `C:\w64devkit`, matching `build.bat`
 - [x] **I-160 · P4** · Firmware has no version — `ICU_FW_VERSION` 0.3.0-dev, printed at boot, logged in LOGS
 
-### K · Generated artefacts
+### K · Generated artifacts
 
 - [x] **I-161 · P3** · A wiring diagram set — Six leg SVGs in `02-HARNESS/diagrams/`, generated
 - [x] **I-162 · P3** · One architecture picture — `02-HARNESS/diagrams/architecture.svg`

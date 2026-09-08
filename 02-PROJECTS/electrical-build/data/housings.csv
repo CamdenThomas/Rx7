@@ -7,16 +7,25 @@ L2-M,L2 Front,Medium,DT06-8S,DT04-8P,8,W8S + W8P,Dash post,14–16 AWG
 L2-S,L2 Front,Signal,DT06-6S,DT04-6P,6,W6S + W6P,Dash post,Ladders. Route apart from L2-P
 L3-P,L3 Dash,Power,DTP06-2S,DTP04-2P,2,WP-2S + WP-2P,Dash post,Blower + comfort bus
 L3-M,L3 Dash,Medium,DT06-2S,DT04-2P,2,W2S + W2P,Dash post,Head unit + USB-C
+L3-BLW,L3 Dash,Blower,DTP06-2S,DTP04-2P,2,WP-2S + WP-2P,HVAC case,Blower motor receptacle — the motor pigtail (or a final-stage adapter) plugs in; dust-capped this build (D-253)
 L3-S1,L3 Dash,Signal,DT06-12S,DT04-12P,12,W12S + W12P,Dash post,Every ladder and switch input
 L3-S2,L3 Dash,Signal,DT06-12S,DT04-12P,12,W12S + W12P,Dash post,"Wake sources, switch supply, courtesy, capped window commands"
 L3-S3,L3 Dash,Signal,DT06-8S,DT04-8P,8,W8S + W8P,Dash post,Capped pass-through + plugs
 L4-P,L4 Rear,Power,DTP06-4S,DTP04-4P,4,WP-4S + WP-4P,Dash post,"Defog, fuel pump, capped window bus"
 L4-M,L4 Rear,Medium,DT06-12S,DT04-12P,12,W12S + W12P,Dash post,"Rear lamps, interior lamp, capped solenoids and window commands"
 L4-S,L4 Rear,Signal,DT06-8S,DT04-8P,8,W8S + W8P,Dash post,"Fuel sender, door ladder, courtesy, capped pass-through"
+L4-S2,L4 Rear,Signal,DT06-8S,DT04-8P,8,W8S + W8P,Dash post,Mirror-adjust commands dash → sill (D-255)
 D1,L4 Rear (sill),Door,DT06-08S,DT04-08P,8,W8S + W8P,Sill node,Driver door — no live conductor this build
 D2,L4 Rear (sill),Door,DT06-08S,DT04-08P,8,W8S + W8P,Sill node,Passenger door — identical to D1
-DP-CLU,Drop,Cluster,DT06-12S,DT04-12P,12,W12S + W12P,Dash post,"Factory instrument cluster — gauges, indicators, illumination"
 DP-DIAG,Drop,Port,DT06-4S,DT04-4P,4,W4S + W4P,Glovebox,CAN1 laptop port + 2 A constant. 120 Ω here
-DP-ICU,Drop,Module,DT06-12S,DT04-12P,12,W12S + W12P,Dash post,Future cluster module — wired and capped
+DP-ICU-A,Drop,Module,DT06-6S,DT13-06PA,6,W6S,ICU enclosure wall,"The ICU's power and bus drop — live from install (D-259): a DT06-6S plug on a 150 mm tail from the dash post mates a flanged DT13 PCB receptacle in the ICU's enclosure wall (D-270); cavities 1 · 3 · 4 · 5 the same as DP-DCU; 6 is the F16 aux, the display's backlight (D-268)"
+DP-ICU-B,Drop,Module,DT06-12S,DT13-12PA,12,W12S,ICU enclosure wall,"The ICU's sensor drop — live from install: a DT06-12S plug on a 150 mm tail from the post into the enclosure's DT13-12PA (D-270); senders, tach, lamp lines and tell-tale senses terminate here; the display draws all of it (D-258 · D-268)"
 DP-DCU,Drop,Module,DT06-6S,DT04-6P,6,W6S + W6P,Dash post,Future climate module — wired and capped
 DP-KEY,Drop,Port,DT06-4S,DT04-4P,4,W4S + W4P,Dash,Future control panel — wired and capped
+L2-NZL,L2 Front,Signal,DT06-2S,DT04-2P,2,W2S + W2P,Cowl,"Heated-nozzle feed — the branch-end receptacle at the cowl, dust-capped; the nozzle harness plugs in when one fits (luxury Q-303) (D-274)"
+L2-OAT,L2 Front,Signal,DT06-2S,DT04-2P,2,W2S + W2P,Nose,"Outside-air sensor — the branch-end receptacle ahead of the radiator, dust-capped; the DCU's thermistor plugs in (D-274)"
+L3-CMF,L3 Dash,Power,DTP06-2S,DTP04-2P,2,WP-2S + WP-2P,Centre stack,"O15 comfort-bus receptacle behind the centre stack, dust-capped — the luxury package's fuse block plugs in (D-274)"
+L3-WIN,L3 Dash,Signal,DT06-6S,DT04-6P,6,W6S + W6P,Console,"Window-switch receptacle at the console — four commands and the switch common, dust-capped; the switch pack plugs in with the power windows (D-274)"
+L3-MOD,L3 Dash,Signal,DT06-2S,DT04-2P,2,W2S + W2P,Behind the dash,"Future-module receptacle — the F13 feed and a ground, dust-capped (D-274)"
+L3-RDR,L3 Dash,Signal,DT06-4S,DT04-4P,4,W4S + W4P,Behind the dash,"Radar pass-through, dash end — three conductors linked at the post to L4-S 5–7 (D-274)"
+L4-RDR,L4 Rear,Signal,DT06-4S,DT04-4P,4,W4S + W4P,Rear node,"Radar pass-through, rear end — the run up the hatch goes in with the sensor (D-274)"

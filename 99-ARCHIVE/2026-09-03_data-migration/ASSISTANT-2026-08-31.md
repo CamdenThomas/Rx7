@@ -248,7 +248,7 @@ it was first discussed.
 `*Rev YYYY-MM-DD · owns: what*` — one H1, and a Contents line past 200 lines.
 
 **R6 · When code owns a fact, say so in the index** and record the decisions
-that shaped it. Code and prose drift silently; the only defence is naming the
+that shaped it. Code and prose drift silently; the only defense is naming the
 owner.
 
 **R7 · Cite a closed ID with its closer** — `Q-038 → D-095`, never bare — so a

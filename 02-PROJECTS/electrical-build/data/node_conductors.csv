@@ -15,16 +15,16 @@ N13,K2 terminal 87,Receptacle L2-P 4,12,RED,
 N14,K1 terminal 87a,GND bus,12,BLK,Dynamic braking at rest
 N15,K2 terminal 87a,GND bus,12,BLK,
 N16,O1 splice,Receptacle L4-P 3,12,RED,"Capped window bus — terminated, no load"
-N17,PMU pin 27 (O15),Receptacle L3-P 2,12,RED,Capped comfort feed — no fuse block this build
+N17,PMU pin 27 (O15),Splice → receptacles L3-P 2 and L4-P 4,12,RED,Capped comfort feeds — dash and sill (mirror heat F14 · D-254); no fuse block this build
 N18,PMU pin 2 (O12),Receptacle L1-P 1,12,RED,
 N19,PMU pin 2 (O12) tap,F15 inline (7.5 A) → receptacle L1-S1 2,16,RED,Alternator excitation
-N20,PMU pin 2 (O12) tap,F16 inline (5 A) → receptacle DP-CLU 1,16,RED,Cluster feed
+N20,PMU pin 2 (O12) tap,F16 inline (5 A) → receptacle DP-ICU-A 6,16,RED,"The display's backlight, ignition-switched, through the ICU carrier (D-268)"
 N61,PMU pin 2 (O12) tap,F20 inline (7.5 A) → wideband gauge +12 V,16,RED,Ignition feed so the sensor heater is powered during cranking (D-244)
 N62,GND bus,Wideband gauge ground,16,BLK,A dash-node device — its ground never crosses a leg
 N21,PMU pin 34 (O20),F12 inline (5 A) → receptacle L4-M 8,16,RED,Interior lamp
-N22,PMU pin 34 (O20) tap,"Receptacles L3-S1 8, DP-CLU 3, DP-ICU 5 (capped)",16,RED,Illumination bus
+N22,PMU pin 34 (O20) tap,"Receptacles L3-S1 8, DP-ICU-A 2",16,RED,Illumination bus — the ICU's dimming reference; the display follows it
 N23,PMU pin 4 (O10),Receptacle L3-M 1,14,ORN,
-N24,PMU pin 4 (O10) tap,"K12 terminal 86; receptacles DP-ICU 1, DP-DCU 1, DP-KEY 3 (capped)",16,RED,
+N24,PMU pin 4 (O10) tap,"K12 terminal 86; receptacles DP-ICU-A 1, DP-DCU 1, DP-KEY 3 (capped)",16,RED,
 N25,K12 terminal 85,Receptacle L3-S2 9,16,BLU,Stalk WASH contact closes this to ground
 N26,PMU pin 9 (O8),Receptacle L2-M 1 and K12 terminal 30,14,ORN,
 N27,K12 terminal 87,Receptacle L2-M 4,14,ORN,Washer pump
@@ -39,25 +39,31 @@ N36,Wake stage 2 collector (A8 horn/hazard/wink),Wake strip input 4,16,BLU,
 N37,PMU pin 8 (O22),Wake strip input 5,16,RED,
 N63,Receptacle L3-S1 7,Wake strip input 6 (brake),16,BLU,Second pole of the brake switch — the brake wakes the module (D-247)
 N38,Wake strip common rail (after the six 1N5819),PMU pin 7 (+12V SW),16,BLU,10 kΩ bleed from this rail to the GND bus
-N39,PMU pin 15 (+5 V),100 kΩ → PMU pin 35 (A15) · 100 kΩ → PMU pin 22 (A16),16,PNK,"Bias so a broken wire reads 0, not OFF"
+N39,PMU pin 15 (+5 V),100 kΩ → PMU pin 35 (A15) · 100 kΩ → PMU pin 22 (A16) · 100 Ω 1 W → the oil-pressure node (D-260),16,PNK,"Bias so a broken wire reads 0, not OFF; and the oil sender's excitation"
 N40,PMU pin 17 (A4),Receptacles L2-S 1 and L1-S1 11 (splice),16,GRY,
 N41,PMU pin 31 (A5),Receptacles L2-S 2 and L1-S2 7 (splice),16,GRY,
 N42,PMU pin 30 (A3),Receptacles L3-S1 5 and L2-S 3 (splice),16,GRY,
 N43,PMU pin 19 (A8),Receptacles L3-S1 6 and L3-S1 11 (splice); wake stage 2 base network,16,GRY,
 N44,PMU pin 18 (A6),Receptacle L4-S 2; wake stage 1 base network,16,GRY,
-N45,PMU pin 32 (A7),Tap on the L4-S 1 → DP-CLU 7 conductor,16,GRY,Fuel node tap
-N46,Receptacle L1-S1 3,"Receptacle DP-CLU 5 (+ DP-ICU 6 tap, capped)",16,GRY,Water temp
-N47,Receptacle L1-S1 4,"Receptacle DP-CLU 6 (+ DP-ICU 7 tap, capped)",16,GRY,Oil pressure
-N48,Receptacle L1-S1 6,"Receptacle DP-CLU 4 (+ DP-ICU 9 tap, capped)",16 sh,shielded,Tach — shield to GND bus at this end only
-N49,Receptacle L1-S2 8,"Receptacle DP-CLU 8 (+ DP-ICU 11 tap, capped)",16,GRY,Charge lamp
-N50,Receptacles L1-S2 1 and L3-S2 11,"Receptacle DP-CLU 9 (+ DP-ICU 12 tap, capped)",16,GRY,"Brake warning lamp — two switches, one lamp"
-N51,PMU pin 6 (O17),"Receptacles L2-M 5, L4-M 5, DP-CLU 10",16,RED,
-N52,PMU pin 33 (O18),"Receptacles L2-M 6, L4-M 6, DP-CLU 11",16,RED,
-N53,PMU pin 26 (O3),Receptacle L2-P 2 (12 AWG) + 16 AWG tap → DP-CLU 12,12 / 16,RED,High beam + indicator
+N45,PMU pin 32 (A7),"Tap on the L1-S1 4 → DP-ICU-B 2 conductor, at the node",16,GRY,Oil-pressure node tap — the fuel-pump gate reads a PMU-excited node (D-249 · D-260)
+N46,Receptacle L1-S1 3,Receptacle DP-ICU-B 1,16,GRY,Water temp — the ICU excites and reads the sender; the display draws it (D-258 · D-268)
+N47,Receptacle L1-S1 4,Receptacle DP-ICU-B 2 — with the 100 Ω 1 W pull-up to pin 15 and the A7 tap N45 at the node,16,GRY,Oil pressure — a PMU-excited node with two readers (D-260)
+N48,Receptacle L1-S1 6,Receptacle DP-ICU-B 4,16 sh,shielded,Tach — shield to GND bus at this end only
+N49,Receptacle L1-S2 8,Receptacle DP-ICU-B 5,16,GRY,"Charge-lamp line (alternator L) — sense only, read by the ICU; the field is excited by F15 (D-198)"
+N50,Receptacles L1-S2 1 and L3-S2 11,Receptacle DP-ICU-B 6,16,GRY,"Brake warning — two switches, one node; read by the ICU"
+N64,Receptacle L4-S 1,Receptacle DP-ICU-B 3,16,GRY,Fuel level — the ICU excites and reads the sender; the display draws it (D-258 · D-268)
+N66,Receptacle L4-S 3,Receptacle DP-ICU-B 8,16,GRY,Road speed signal — capped at both ends (D-252)
+N67,Receptacle L1-S2 11,Receptacle DP-ICU-B 9,16,GRY,Phase-2 sensor signal spare — capped at both ends (D-250 · D-252)
+N68,"Fuse block B, spare position (fitted when a phase-2 sensor arrives)",Receptacle L1-S2 9,16,RED,"Phase-2 sensor supply — RESERVED at the post, no fuse fitted (D-250 · D-271); the road-speed supply is an O10 tap now (N70, D-272)"
+N69,Receptacle L2-S 5,Receptacle DP-DCU 2,16,GRY,Outside-air temperature — capped at both ends (D-256)
+N70,O10 node (the accessory taps),Receptacle L4-S 4,16,RED,Road-speed pulse generator supply — lives and dies with the ICU; tens of milliamps (D-272)
+N51,PMU pin 6 (O17),"Receptacles L2-M 5, L4-M 5, DP-ICU-B 10 (tap)",16,RED,
+N52,PMU pin 33 (O18),"Receptacles L2-M 6, L4-M 6, DP-ICU-B 11 (tap)",16,RED,
+N53,PMU pin 26 (O3),Receptacle L2-P 2 (12 AWG) + 16 AWG tap → DP-ICU-B 12,12 / 16,RED,High beam + the tell-tale sense
 N54,PMU pin 11 (O6),Receptacles L2-M 7 and L4-M 1,14,ORN,
-N55,PMU pins 24 / 37 (CAN2),"L1-S1 9/10 · DP-ICU 3/4 · DP-DCU 4/5 · DP-KEY 1/2 · wideband gauge AEMnet pair (dash node) — twisted pairs, spliced",16 tw,YEL · GRN,Software termination ON at the PMU
+N55,PMU pins 24 / 37 (CAN2),"L1-S1 9/10 · DP-ICU-A 4/5 · DP-DCU 4/5 · DP-KEY 1/2 · wideband gauge AEMnet pair (dash node) — twisted pairs, spliced",16 tw,YEL · GRN,Software termination ON at the PMU
 N56,PMU pins 23 / 36 (CAN1),Receptacle DP-DIAG 1/2 — twisted pair,16 tw,YEL · GRN,120 Ω across pins 23/36 at the PMU connector
 N57,PMU pin 25 (GND),GND bus,10,BLK,≤ 6 in
 N58,GND bus,"Chassis, dash star point",10,BLK,"Bare metal, star washer, torque, cavity wax"
-N59,GND bus,"Receptacles DP-CLU 2, DP-DIAG 4, DP-ICU 2, DP-DCU 3, DP-KEY 4, L3-S2 8",16,BLK,The permitted ground crossings — all box-adjacent
+N59,GND bus,"Receptacles DP-DIAG 4, DP-ICU-A 3, DP-DCU 3, DP-KEY 4, L3-S2 8",16,BLK,The permitted ground crossings — all box-adjacent
 N60,Every remaining PMU output pin,"Its receptacle, per the pin table",per pin,per pin,"Single conductor, no splice"

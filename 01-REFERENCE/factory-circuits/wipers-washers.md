@@ -1,6 +1,6 @@
 # Circuit — Front & Rear Wiper and Washer
 
-*Rev 2026-08-30 · owns: the factory decode of this circuit — devices, wires, logic. The rebuild table at the foot points into the new design and is not its owner; cavities are `02-HARNESS/data/connectors.csv`'s.*
+*Rev 2026-09-07 · owns: the factory decode of this circuit — devices, wires, logic. Nothing of the new design lives here; the last section says where it does.*
 
 **Source:** Section D, page 18.
 
@@ -48,19 +48,8 @@ allocated. Decide whether it stays.
 
 ## 4 · What this means for the rebuild
 
-| Factory | PMU-24 plan |
-|---|---|
-| Control Processing Unit for intermittent | Deleted (D-014) — software timer on O8 (Checklist 2.12) |
-| Motor internal park switch | Retained as a wire (**L2-S 3**) — **no PMU pin is free**; whether O8 braking needs it is `V-074`, the pin is `Q-063` → D-182 |
-| LO / HI brushes | O8 (braking) → **L2-M 1**; O9 → **L2-M 2** |
-| Combination switch carrying motor current | A2 five-step resistor ladder, switch-to-ground, **L3-S1 4** |
-| Washer motor on the switch directly | PMU-driven (Q-016 → D-051) on **L2-M 4** — **no output is free**, `Q-063` → D-182. Pump not working, K-022 |
-| Rear wiper + washer | Gone (V-027 → D-097) |
-| Ground at X-13 | Front star node |
+The rebuild's side of every device and wire above is the electrical build's record, not this file's: find a factory code in its data — `python tools/rx7.py -p electrical-build find "C-02"` — or read the rendered [`DESIGN.md`](../../02-PROJECTS/electrical-build/01-DESIGN/DESIGN.md) §12 (device ends) and [`WIRE-TABLES.md`](../../02-PROJECTS/electrical-build/03-INSTALL/WIRE-TABLES.md). A hand-copied mapping table stood here until 2026-09-07; it had drifted three decisions behind and was removed — one fact, one home. Decisions that shaped this circuit's rebuild: D-014 · D-051 · D-097 · D-182.
 
 ## 5 · Unknowns
 
-| ID | Unknown | Resolve by |
-|---|---|---|
-| V-027 → D-097 | Rear wiper | Gone, not returning |
-| V-028 | One-touch wipe in software? | Decide during Checklist 2.12 — tracked in `OPEN.md` |
+Every unknown this decode raised has an ID. The open ones live in the projects' `QUESTIONS.md` files (electrical, luxury, engine swap); the closed ones are cited with their closer in the projects' `DECISIONS.md`. This circuit's: V-027 · V-028.

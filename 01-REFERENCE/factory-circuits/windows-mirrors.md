@@ -1,6 +1,6 @@
 # Circuit — Power Windows & Remote Mirrors
 
-*Rev 2026-08-30 · owns: the factory decode of this circuit — devices, wires, logic. The rebuild table at the foot points into the new design and is not its owner; cavities are `02-HARNESS/data/connectors.csv`'s.*
+*Rev 2026-09-07 · owns: the factory decode of this circuit — devices, wires, logic. Nothing of the new design lives here; the last section says where it does.*
 
 **Source:** Section I, page 28.
 
@@ -53,21 +53,8 @@ margin left in C5 if both functions are wanted.
 
 ## 3 · What this means for the rebuild
 
-**This car has manual windows and dead power mirrors** (D-131, K-014). The
-factory section I circuit exists on the diagram, not on the car.
-
-| Factory | PMU-24 plan |
-|---|---|
-| 30 A window fuse | O1 motor bus with F8/F9 at the sill — **PROVISIONED**: the bus feed (**L4-P 3**), the command wires (**L3-S2 3–6 → L4-M 9–12**), the K5–K8 sockets and the door legs (**D1/D2 1–2**) are terminated and capped, nothing populated |
-| DPDT window switches in the doors | Would be dash-side commands to the sill relays (D-065) — not fitted |
-| 2-wire motors | **D1/D2 1–2**, 14 AWG — capped in the door |
-| Mirror switch on 10 A constant | New heated, digitally controlled mirrors (Q-022 → D-093, `T-031`). Conductor count `V-060`; dash → sill path `Q-062` → D-181 |
-| Mirror motors, 4 wires per side | **D1/D2 4–6** DEFERRED; mirror heat **D1/D2 7** off sill fuse F14, DEFERRED |
+The rebuild's side of every device and wire above is the electrical build's record, not this file's: find a factory code in its data — `python tools/rx7.py -p electrical-build find "C-02"` — or read the rendered [`DESIGN.md`](../../02-PROJECTS/electrical-build/01-DESIGN/DESIGN.md) §12 (device ends) and [`WIRE-TABLES.md`](../../02-PROJECTS/electrical-build/03-INSTALL/WIRE-TABLES.md). A hand-copied mapping table stood here until 2026-09-07; it had drifted three decisions behind and was removed — one fact, one home. Decisions that shaped this circuit's rebuild: D-065 · D-093 · D-131 · D-181.
 
 ## 4 · Unknowns
 
-| ID | Unknown | Resolve by |
-|---|---|---|
-| V-035 → D-092 / D-093 | Door connector spare count | One DT06-08S per door, zero spares — the mirror choice is load-bearing |
-| V-036 → D-131 / K-014 | Windows and mirrors working? | Windows are manual; mirror control is dead |
-| Q-022 → D-093 | Keep remote mirror motors? | New mirrors, independent wiring per side |
+Every unknown this decode raised has an ID. The open ones live in the projects' `QUESTIONS.md` files (electrical, luxury, engine swap); the closed ones are cited with their closer in the projects' `DECISIONS.md`. This circuit's: Q-022 · V-035 · V-036.

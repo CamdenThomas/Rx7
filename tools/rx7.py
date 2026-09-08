@@ -173,7 +173,7 @@ def md_to_html(md: str, anchors: bool = False) -> str:
                 m = re.match(r"\*\*([DQ]-\d{3})", text)
                 if m:
                     attr = f' id="{m.group(1)}"'
-                m = re.match(r"\*\*((?:L\d-[PMS]\d?|D[12]|DP-[A-Z]+))\*\*", text)
+                m = re.match(r"\*\*((?:L\d-(?:[PMS]\d?|BLW)|D[12]|DP-[A-Z]+(?:-[A-Z])?))\*\*", text)
                 if m:
                     ctx["housing"] = m.group(1)
             out.append(f"<p{attr}>{inline(text)}</p>")
@@ -190,7 +190,7 @@ def md_to_html(md: str, anchors: bool = False) -> str:
         if m:
             flush(); n = len(m.group(1)); t = m.group(2)
             hid = re.sub(r"[^A-Za-z0-9]+", "-", t).strip("-").lower()
-            m2 = re.search(r"\b(DP-[A-Z]+)\b", t)
+            m2 = re.search(r"\b(DP-[A-Z]+(?:-[A-Z])?|L\d-BLW)\b", t)
             if anchors and m2:
                 ctx["housing"] = m2.group(1)
             out.append(f'<h{n} id="{hid}">{inline(t)}</h{n}>'); i += 1; continue
@@ -267,7 +267,7 @@ def md_to_html(md: str, anchors: bool = False) -> str:
 
 
 CURRENT_DOC_DIR: Path | None = None
-ID_RE = re.compile(r"(?:L\d-[PMS]\d? \d+|D[12] \d+|DP-[A-Z]+ \d+|O\d{1,2}|A\d{1,2}|F\d{1,2}|K\d{1,2}|[DQ]-\d{3}|CAN[12][HL]|STUD|\d{1,2})")
+ID_RE = re.compile(r"(?:L\d-(?:[PMS]\d?|BLW) \d+|D[12] \d+|DP-[A-Z]+(?:-[A-Z])? \d+|O\d{1,2}|A\d{1,2}|F\d{1,2}|K\d{1,2}|[DQ]-\d{3}|CAN[12][HL]|STUD|\d{1,2})")
 
 
 def slug(s):
@@ -484,7 +484,7 @@ blockquote{border-left:3px solid var(--line);margin:.4rem 0;padding:.1rem .8rem;
 """
 
 VIEW_JS = r"""
-const ID=/\b(L\d-[PMS]\d? \d+|D[12] \d+|DP-[A-Z]+ \d+|[DQ]-\d{3}|O\d{1,2}|A\d{1,2}|F\d{1,2}|K\d{1,2})\b/g;
+const ID=/\b(L\d-(?:[PMS]\d?|BLW) \d+|D[12] \d+|DP-[A-Z]+(?:-[A-Z])? \d+|[DQ]-\d{3}|O\d{1,2}|A\d{1,2}|F\d{1,2}|K\d{1,2})\b/g;
 const slug=s=>s.replace(/[^A-Za-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const defs=new Set([...document.querySelectorAll('[id^="row-"],[id^="D-"],[id^="Q-"]')].map(e=>e.id));
 // auto-link IDs that have a definition row
