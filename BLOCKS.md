@@ -24,7 +24,21 @@ advisory - it never refuses a commit.
 **Carried from** Q-048
 **SOLVE:**
 
-### BLK-016 · luxury-package
+### BLK-020 · luxury-package
+**Ask** Which mirror pair - the factory FB power mirror, or a universal 3-wire set?
+**Why** You said search, so here is the search. **Nothing on the market meets the original spec as sold.** Heat is the reason: the compact and universal aftermarket does not make a heated power mirror at all, and the FB's own factory power mirror - a real option on 1981-85 cars - was never offered heated in any year. That is now settled separately: D-332 puts heat on a bonded resistive pad (~$8-20 the pair) on the F14 feed, which is what Mazda itself did on the RX-8, motors on three pins and the heater on two of its own. So this question is only about the **motors**, and three candidates survive that filter.
+**Options**
+- (a) **Factory FB power mirror pair, used OEM** - ~$75/side at autopartone, ~$125/side on eBay, plus the console switch ($40-60) and the chassis pigtail ($48). Direct fit, correct shell, correct connector, and your five conductors at the sill *are* this harness. Zero drilling, zero adapter plate, zero aesthetic risk. **The catch is real:** I could not open the FB wiring diagram, so whether it is two motors or one motor plus an electromagnetic clutch is **unverified** - the pre-1986 Porsche 911 and the VW Vanagon both use a clutch on a similar conductor count, and a clutch cannot be driven by a plain joystick. Used only, 40-year-old motors, glass often hazed. No reproduction exists; Mazda heritage covers FC and FD only
+- (b) **AutoStyle K3 universal set, part AC KT13E** - EUR 116 the pair from voorwindenparts, roughly $150-190 landed. This is the one product where the manufacturer sells the 3-wire scheme as its own part number (the 4-wire BMW variant is AC KT13E4), and AUTODOC's spec table lists it as 3 wires. Set is L+R and deliberately excludes the adjuster knob, which suits your panel. **Catches:** needs drilling and almost certainly a wedge plate for the door curvature; head dimensions are unpublished by everyone, so size is a real unknown; EU import
+- (c) **Smart Fortwo 451 mirror, 2008-2015** - $65-110 each. Among the smallest heated power heads sold, no memory, no fold, no turn signal, 5 pins that read as 3 motor + 2 heat. **Catches:** the pinout is inferred, not verified; needs an adapter plate and a Mercedes connector; sold per side; do not cross-shop the 2016+ 453, which added sensors
+**Recommend** (a), gated on one test you can do in an afternoon: `W-332` is on your list - get one used FB head and ohm it out or bench it, and see whether it has two independent motors or a motor plus a clutch coil. If two motors, (a) wins on fit and connector alone and nothing else comes close. If it is a clutch, go straight to (b), because it is the only candidate where the wiring scheme is a part number rather than a hope - and then confirm the K3 head size before ordering from the EU.
+**Stops** The mirror line in the luxury cart, stage S5, and the door-leg conductor count if a candidate ever needed more than three per side.
+**Carried from** BLK-016, where you chose the search; your answer stays there.
+**SOLVE:**
+
+## SOLVED
+
+### BLK-016 · luxury-package → BLK-020
 **Ask** Which mirror?
 **Why** D-305 fixed the feature set - adjustment and heat only. The doors then fix the part: a conventional 3-wire motor pair (common + X + Y) with a resistive heater on its own feed. A 5-wire, LIN-bus or module-driven mirror needs conductors the doors do not have and never will, so the wiring diagram is the filter, not the photograph.
 **Options**
@@ -33,9 +47,9 @@ advisory - it never refuses a commit.
 **Recommend** (b) - the constraint is narrow enough that the search is mechanical, and it costs you nothing to read the shortlist.
 **Stops** The mirror line in the luxury cart, and the door-leg conductor count if a candidate ever needed more than three.
 **Carried from** Q-300
-**SOLVE:**
+**SOLVE:** b
 
-### BLK-017 · luxury-package
+### BLK-017 · luxury-package → D-329
 **Ask** A heated washer nozzle (and park de-icer) that fits the FB cowl - is there one, and do you want the de-icer on the same feed?
 **Why** The feed is already run: L2-S 6 ending in the L2-NZL receptacle at the cowl (electrical D-274), a comfort-bus load the DCU switches. Your standing condition is that it goes in only if one can be made to work - if none can, the receptacle stays capped and nothing is lost. The open part is whether a wiper-park de-icer strip shares the feed, because that changes the load and the DCU channel.
 **Options**
@@ -45,9 +59,9 @@ advisory - it never refuses a commit.
 **Recommend** (a) for the nozzle, and yes to the de-icer as (c) if the strip's draw fits the channel - I will size it before anything is bought. Nozzles ground at the front star, not through the hood hinge.
 **Stops** The nozzle and de-icer lines in the luxury cart, and the DCU channel budget for the comfort bus.
 **Carried from** Q-303
-**SOLVE:**
+**SOLVE:** change of plans please void the wiper park heater and washer nozzle heater i decided i do not think they are worth it
 
-### BLK-018 · electrical-build
+### BLK-018 · electrical-build → D-330
 **Ask** Battery data: shunt now, shunt later, or BMS only?
 **Why** Your decode answered the part you asked me about, so here it is settled. The Ionic (IC-12V40-S9H, 4S) runs a Telink/HM-10-class transparent-serial module: FFE0/FFE1, one characteristic both directions. Two ways to read it, and the ESP32-C3 can do either in about a hundred lines of NimBLE-Arduino. **(1) Passive scan, no connection at all** - the advertisement's manufacturer data starts with pack millivolts, broadcast continuously, so a scan callback gets pack voltage with no pairing, no connection state, nothing that can hang, and it keeps working while your phone is also connected. **(2) GATT client** - connect, subscribe to FFE1 notifications, parse the 13-byte frame you already cracked (`7E` type `len` | four LE uint16 | checksum `0D`), type 01 being the four cell voltages at ~1.43 mV/count. One connection at a time, so the ESP32 and your phone cannot both be attached. Do both: scan for voltage always, connect only when cell detail is wanted. FEE7 and anything labelled DFU stay untouched, exactly as you said.
 **What is still missing is the reason this is a question.** Type 01 is voltages. **Current and state of charge are not in it**, and getting them means writing commands to FFE1 and guessing message types with no documentation and no guarantee - the pack could also answer nothing useful. A **Victron SmartShunt** (~$130, on the negative at the G4 placement) gives voltage, current, its own state of charge, consumed Ah and temperature over published BLE advertisements or a VE.Direct line, and it sees the amplifier, the ICU and every parasitic leak the BMS cannot see because they are outside it.
@@ -58,9 +72,9 @@ advisory - it never refuses a commit.
 **Recommend** (a). Current is the number that makes the sleeping-current budget (D-280) an acceptance test instead of an estimate, and the bin is open exactly once. Flip to (b) if you would rather see what the BMS alone tells you for a season first - nothing in the harness changes either way, and under D-323 nothing is bought yet.
 **Stops** The battery-data cart line, the G4 shunt placement, and whether SN-class current lands on CAN at all.
 **Carried from** BLK-003, which asked the same thing before your decode; your working notes stay there.
-**SOLVE:**
+**SOLVE:** b no shunt for now as I hope to get the actual bit for bit map of what the BLE would be from Ionic and or decode it myself as it is not encripted.
 
-### BLK-019 · electrical-build
+### BLK-019 · electrical-build → D-331
 **Ask** Which e-Series master switch, and does the PMU get a switch-position input?
 **Why** This is the load-dump question from BLK-003's neighbour, now that two things you have since ruled make it much smaller. You asked what was involved and said it sounds like you should prepare for both - so here is what is actually left. An unsuppressed load dump on a 12 V system is ISO 7637-2 pulse 5a, **65-87 V for 40-400 ms**, and reports on lithium BMS disconnects run **120 V+**. There are two triggers. Opening the master with the engine running is the one you control. **The BMS opening while driving** - over-current, cell fault, over-temperature - needs no mistake from you and never goes away; lead-acid degrades gracefully and stays in circuit, a BMS opens in milliseconds at full charge current.
 **What your rulings already settled.** D-316 fixed the engine leg to the FB/FC alternator, which is **internally regulated**, so the Blue Sea 9004e's Alternator Field Disconnect pole has no external field to open and cannot help directly. But the PMU already owns excitation on O12 -> F15, so the 9004e's auxiliary pole - which opens slightly *before* the main contacts - can instead be read as a **switch-position input**, letting the PMU kill excitation before the main path breaks. D-319 put the switch on the positive side at the battery, which is in the cargo bin, so that input costs one conductor up the L4 leg. A **high-joule TVS across the PMU main feed at the module** goes in either way: it is the only thing that covers the BMS case, and it is a couple of dollars.
@@ -71,10 +85,7 @@ advisory - it never refuses a commit.
 **Recommend** (b). It is the only option that covers the trigger that needs no mistake *and* the one that does, the tunnel is open exactly once, and under D-323 nothing has been bought yet so there is no re-buy to eat. Flip to (a) if you would rather not spend an L4 cavity and a PMU input on a failure mode you can also avoid by habit.
 **Stops** P049's SKU, one L4 cavity, and one PMU input allocation. Also queued as agent work: ask ECUMaster whether the PMU's "immunity per ISO 7637" covers pulse 5a unclamped or only 5b - the TVS goes in regardless of their answer.
 **Carried from** BLK-007; your words stay there.
-**SOLVE:**
-
-## SOLVED
-
+**SOLVE:** b
 ### BLK-001 · electrical-build → D-316
 **Ask** Alternator sense and phase conductors, run now and capped
 **Why** Carried from Q-113
@@ -84,7 +95,8 @@ The FB is an **LR** system: `BW` is the R terminal (ignition-switched regulator 
 What cannot be fitted today is anything **LS-type** - FD 100 A, GM CS-series, Denso 3-wire - because they need a **sense** wire and use the **lamp as the excitation path**. Two 16 AWG conductors into free `L1-S1` cavities (5, 7, 8, 12 are all sealing plugs) cover it: **S**, whose dash end lands on the **busbar** through a 3-5 A fuse rather than at the alternator stud, and **P** (phase/FR, milliamps, free insurance).
 *Note against D-198:* once the ICU replaces the cluster there is no bulb, so an LS-type unit needs a **100 Ohm 5 W resistor in parallel** on the L line or it may never start charging.
 **Blocks:** L1-S1's final cavity state.
-**SOLVE:** prepare only for a FB/FC alternator in the engine leg with no warning light (I don't know if that means I need a resistor for these alternators or not) however the pmu/relay/fuse section should be pinned and wired to work for an alternator id find on most engines id consider swapping in. just like every cuircut in the engine leg, the fuse/relay/pmu are fully dune and future prrof the engine leg is bare bones what i have now no uneeded wires just unpinned spaces on the connector to the relay/fuse/omu fully pinned connector
+**SOLVE:** wire only for a FB/FC alternator in the engine leg with no warning light.
+5however the pmu/relay/fuse section should be pinned and wired to work for an alternator id find on most engines id consider swapping in. just like every cuircut in the engine leg, the fuse/relay/pmu are fully dune and future prrof the engine leg is bare bones what i have now no uneeded wires just unpinned spaces on the connector to the relay/fuse/omu fully pinned connector
 
 ### BLK-002 · electrical-build → D-317
 **Ask** The wiper park sense is the one place a replacement motor will not fit

@@ -44,7 +44,7 @@ L2-S 2,L2-S,2,Pop-up RH transit contact,A5,,16,GRY,LIVE,Motor E-04 terminal YG t
 L2-S 3,L2-S,3,Wiper park sense,A3,spliced at the post,16,GRY,LIVE,Wiper motor D-02 park terminal L through 12 kΩ. Terminal LB is left unconnected (capped)
 L2-S 4,L2-S,4,Wiper park return — future motor family,A3,branch spare,16,GRY,CAPPED,"Run to the wiper branch and left unpinned there: a DIN 72552 motor's park return is pinned into this cavity at the branch, no leg re-run (D-317)"
 L2-S 5,L2-S,5,Outside-air temperature sensor,,,16,GRY,CAPPED,"L2-OAT 1 — the outside-air sensor receptacle ahead of the radiator, dust-capped; the thermistor's other lead grounds at the front star (D-256, D-274)"
-L2-S 6,L2-S,6,Heated washer nozzles / park de-icer — feed,,,16,RED,CAPPED,"L2-NZL 1 — the nozzle receptacle at the cowl, dust-capped; the nozzle harness plugs in when one fits (luxury Q-303) (D-256, D-274)"
+L2-S 6,L2-S,6,,,,,,PLUG,"Sealing plug, size 16 — the heated-nozzle / de-icer feed is cancelled and the L2-NZL receptacle is not fitted (D-329, supersedes D-256)"
 L3-P 1,L3-P,1,Blower motor +,O16,,12,RED,CAPPED,"L3-BLW 1 — the blower receptacle at the HVAC case (DTP-2), dust-capped; no motor this build (K-023 · D-253)"
 L3-P 2,L3-P,2,Comfort bus,O15,,12,RED,CAPPED,"L3-CMF 1 — the comfort-bus receptacle behind the centre stack, dust-capped; the luxury package's fuse block plugs in (D-274)"
 L3-BLW 1,L3-BLW,1,Blower motor +,L3-P 1,,12,RED,CAPPED,Dust-capped receptacle at the HVAC case — the replacement motor plugs in with the luxury package (K-023 · D-253)
@@ -112,7 +112,7 @@ L4-S2 2,L4-S2,2,Mirror adjust — LEFT X,,,16,GRY,CAPPED,Capped at the post; sil
 L4-S2 3,L4-S2,3,Mirror adjust — LEFT Y,,,16,GRY,CAPPED,Capped at the post; sill node → D1 6 (D-255)
 L4-S2 4,L4-S2,4,Mirror adjust — RIGHT X,,,16,GRY,CAPPED,Capped at the post; sill node → D2 5 (D-255)
 L4-S2 5,L4-S2,5,Mirror adjust — RIGHT Y,,,16,GRY,CAPPED,Capped at the post; sill node → D2 6 (D-255)
-L4-S2 6,L4-S2,6,,,,,,PLUG,"Sealing plug, size 16"
+L4-S2 6,L4-S2,6,Master-switch position sense,,to a PMU input (W-331),16,GRY,LIVE,The 9004e's auxiliary pole in the cargo bin; the dash end lands on a PMU input so the module drops O12 excitation before the main contacts open (D-331). L4-S2 had three spare size-16 cavities
 L4-S2 7,L4-S2,7,,,,,,PLUG,"Sealing plug, size 16"
 L4-S2 8,L4-S2,8,,,,,,PLUG,"Sealing plug, size 16"
 D1 1,D1,1,Window motor leg A,K5/K6,,14,RED,RESERVED,Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is built with the mirror and the window (D-274)
@@ -163,8 +163,6 @@ DP-KEY 1,DP-KEY,1,CAN2 H,CAN2H,,16 tw,YEL,CAPPED,Dust-capped receptacle at the p
 DP-KEY 2,DP-KEY,2,CAN2 L,CAN2L,,16 tw,GRN,CAPPED,Dust-capped receptacle at the post — the control panel's tail plugs in (luxury FT14)
 DP-KEY 3,DP-KEY,3,+12 V switched,O10,tap,16,RED,CAPPED,Dust-capped receptacle at the post — the control panel's tail plugs in (luxury FT14)
 DP-KEY 4,DP-KEY,4,Ground,GND,,16,BLK,CAPPED,Dust-capped receptacle at the post — the control panel's tail plugs in (luxury FT14)
-L2-NZL 1,L2-NZL,1,Heated-nozzle / de-icer feed,L2-S 6,,16,RED,CAPPED,"Dust-capped receptacle at the cowl — the nozzle harness plugs in; nozzles ground at the front star (D-256, D-274)"
-L2-NZL 2,L2-NZL,2,,,,,,PLUG,"Sealing plug, size 16"
 L2-OAT 1,L2-OAT,1,Outside-air thermistor — signal,L2-S 5,,16,GRY,CAPPED,"Dust-capped receptacle at the nose — the thermistor plugs in, its return to the front star (D-274)"
 L2-OAT 2,L2-OAT,2,,,,,,PLUG,"Sealing plug, size 16"
 L3-CMF 1,L3-CMF,1,O15 comfort bus,L3-P 2,,12,RED,CAPPED,Dust-capped DTP receptacle behind the centre stack — the luxury package's fuse block plugs in (D-274)

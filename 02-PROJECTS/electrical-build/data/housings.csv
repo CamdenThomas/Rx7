@@ -22,7 +22,6 @@ DP-ICU-A,Drop,Module,DT06-6S,DT13-06PA,6,W6S,ICU enclosure wall,"The ICU's power
 DP-ICU-B,Drop,Module,DT06-12S,DT13-12PA,12,W12S,ICU enclosure wall,"The ICU's sensor drop — live from install: a DT06-12S plug on a 150 mm tail from the post into the enclosure's DT13-12PA (D-270); senders, tach, lamp lines and tell-tale senses terminate here; the display draws all of it (D-258 · D-268)"
 DP-DCU,Drop,Module,DT06-6S,DT04-6P,6,W6S + W6P,Dash post,Future climate module — wired and capped
 DP-KEY,Drop,Port,DT06-4S,DT04-4P,4,W4S + W4P,Dash,Future control panel — wired and capped
-L2-NZL,L2 Front,Signal,DT06-2S,DT04-2P,2,W2S + W2P,Cowl,"Heated-nozzle feed — the branch-end receptacle at the cowl, dust-capped; the nozzle harness plugs in when one fits (luxury Q-303) (D-274)"
 L2-OAT,L2 Front,Signal,DT06-2S,DT04-2P,2,W2S + W2P,Nose,"Outside-air sensor — the branch-end receptacle ahead of the radiator, dust-capped; the DCU's thermistor plugs in (D-274)"
 L3-CMF,L3 Dash,Power,DTP06-2S,DTP04-2P,2,WP-2S + WP-2P,Centre stack,"O15 comfort-bus receptacle behind the centre stack, dust-capped — the luxury package's fuse block plugs in (D-274)"
 L3-WIN,L3 Dash,Signal,DT06-6S,DT04-6P,6,W6S + W6P,Console,"Window-switch receptacle at the console — four commands and the switch common, dust-capped; the switch pack plugs in with the power windows (D-274)"

@@ -43,3 +43,5 @@ D-315,The record itself,The release solenoids exist and the harness reaches them
 D-326,"Comfort, mirrors, windows, seats",The mirrors move on a mechanical switch in the panel; the DCU does mirror heat and nothing else,2026-09-11,standing,,,BLK-012,
 D-327,The record itself,Stage order stands: climate (S2) before the display bezel (S3),2026-09-11,standing,,,BLK-013,
 D-328,The cluster,"The three stats.h constants are fixed from primary sources: redline 7000 rpm, low oil 1.0 bar, tank 16.6 gal",2026-09-11,standing,D-300,,BLK-014,
+D-329,"Comfort, mirrors, windows, seats",The heated washer nozzle and the wiper-park de-icer are cancelled — the comfort bus drops to five switched outputs,2026-09-11,inherited,,,BLK-017,
+D-332,"Comfort, mirrors, windows, seats","Mirror heat is a bonded resistive pad on the F14 feed, not an integrated element",2026-09-11,standing,,,,

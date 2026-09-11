@@ -11,19 +11,19 @@ group. Superseded and withdrawn ones are listed at the end with the decision tha
 replaced each, so any id ever issued can still be found by searching this file for it.
 
 
-**Most recent:** `D-324` The A/C clutch is a DCU-switched comfort load; the PMU is not opened for it · `D-325` The swap ECU is a dash node; no CAN and no ECU in the engine bay · `D-326` The mirrors move on a mechanical switch in the panel; the DCU does mirror heat and nothing else · `D-327` Stage order stands: climate (S2) before the display bezel (S3) · `D-328` The three stats.h constants are fixed from primary sources: redline 7000 rpm, low oil 1.0 bar, tank 16.6 gal
+**Most recent:** `D-328` The three stats.h constants are fixed from primary sources: redline 7000 rpm, low oil 1.0 bar, tank 16.6 gal · `D-329` The heated washer nozzle and the wiper-park de-icer are cancelled; L2-S 6 and the L2-NZL receptacle come out. The outside-air conductor is untouched · `D-330` Battery data comes from the Ionic BMS over BLE; no shunt is bought, and current and state of charge wait on the protocol · `D-331` The master disconnect is the Blue Sea 9004e; its auxiliary pole is a switch-position input so the PMU drops excitation before the main contacts break · `D-332` Mirror heat is a bonded resistive pad on the F14 feed, not an integrated element
 
-Next id: `D-329`.
+Next id: `D-333`.
 
 ## Contents
 
-**electrical-build** — Architecture and scope (15) · Build sequence (9) · Legs, connectors and grounds (39) · Outputs, soft fuses and logic (24) · Power backbone and battery (17) · Switches, ladders and inputs (14) · The dash node (16) · The record itself (6) · Wire, labels and materials (5)
+**electrical-build** — Architecture and scope (15) · Build sequence (9) · Legs, connectors and grounds (39) · Outputs, soft fuses and logic (24) · Power backbone and battery (18) · Switches, ladders and inputs (14) · The dash node (17) · The record itself (6) · Wire, labels and materials (5)
 
 **engine-swap** — What the electrical build reserves for the swap (9)
 
-**luxury-package** — Comfort, mirrors, windows, seats (7) · Head unit and audio (1) · Lighting — the second pass (4) · Modules — DCU and ICU (15) · The boundary — what the electrical build hands over (3) · The cluster (7) · The record itself (6)
+**luxury-package** — Comfort, mirrors, windows, seats (9) · Head unit and audio (1) · Lighting — the second pass (4) · Modules — DCU and ICU (15) · The boundary — what the electrical build hands over (3) · The cluster (7) · The record itself (6)
 
-**Superseded and withdrawn** — 13
+**Superseded and withdrawn** — 14
 
 
 ---
@@ -112,7 +112,7 @@ This **overrides the packet's own recommendation**, which was to pay Waytek, Wir
 
 ## Legs, connectors and grounds
 
-*39 live — D-017 D-029 D-032 D-034 D-045 D-065 D-069 D-079 D-092 D-115 D-159 D-171 D-217 D-218 D-232 D-250 D-252 D-254 D-255 D-256 D-258 D-260 D-261 D-262 D-263 D-264 D-265 D-266 D-267 D-268 D-269 D-270 D-271 D-272 D-273 D-274 D-281 D-283 D-317*
+*39 live — D-017 D-029 D-032 D-034 D-045 D-065 D-069 D-079 D-092 D-115 D-159 D-171 D-217 D-218 D-232 D-250 D-252 D-254 D-255 D-258 D-260 D-261 D-262 D-263 D-264 D-265 D-266 D-267 D-268 D-269 D-270 D-271 D-272 D-273 D-274 D-281 D-283 D-317 D-329*
 
 **D-017 / D-037 — Grounds never cross a leg connector; every zone has one star node straight to bare chassis (engine block, front stud, dash-node ground bus, rear stud, sill stud); pin 25 is the only PMU ground and carries every flyback return.** The five dash-post drops are the one exception: their grounds cross a connector because they are devices inches from the node with no zone of their own.
 
@@ -159,9 +159,6 @@ This **overrides the packet's own recommendation**, which was to pay Waytek, Wir
 
 **D-255 — A second L4 signal housing, `L4-S2` (DT-8), carries the mirror-adjust commands from the dash post to the sill: 1 shared common · 2 LEFT X · 3 LEFT Y · 4 RIGHT X · 5 RIGHT Y · 6–8 plugs; capped at the post, spliced at the sill node onto `D1 4–6` and `D2 4–6`.** Camden's call, 2026-09-07, answering `Q-119`. The doors had their motor conductors (D-093, D-305) and nothing drove them: no dash → sill command existed, and after D-252 `L4` had no spare size-16 cavity, so a dash switch or the DCU could never have moved a mirror without a new run under the sill trim. Five conductors because the two mirrors' commons share one wire when a single switch or driver serves both. A mechanical mirror switch in the panel or the DCU's bridge outputs land on the post receptacle later — dash-node work, no leg touched. Grey 16 AWG, about sixty feet, inside the 1000 ft spool; one DT-8 assembly-kit pair and its contacts join the DeutschConnector cart (`P101`). `L4-S` keeps its name — the keys are permanent.
 *2026-09-07 · closes Q-119*
-
-**D-256 — Two front-end conductors for the climate module: `L2-S 5` is an outside-air temperature sensor (2-wire thermistor at the nose, grounded at the front star) landing on `DP-DCU 2` at the post (`N69`); `L2-S 6` is the heated-nozzle / park-de-icer feed, 16 AWG RED, capped at the cowl; `DP-DCU 6` stays a plug.** Camden's call, 2026-09-07, answering `Q-120`. There is no automatic climate control in this car and none is planned; the outside reading is for display — the DCU publishes it beside cabin temperature and the cluster shows both — and the nozzle feed is a comfort-bus load the DCU switches, conditional on a nozzle that can be made to fit (luxury `Q-303`); if none can, the conductor stays capped and nothing is lost. Four size-16 contacts and about twenty-five feet of wire — but the 16 AWG RED family now calculates at roughly 510 ft against a 500 ft spool (this with `L1-S2 9` and `L4-S 4`), so a 50 ft cut joins the WireBarn order (`P009`).
-*2026-09-07 · closes Q-120*
 
 **D-258 — The factory cluster is a peripheral of the ICU, not of the harness: there is no cluster drop. Every conductor the cluster used to receive terminates at `DP-ICU-A` / `DP-ICU-B`; the ICU excites and reads the fuel and water-temp senders, reads the PMU-excited oil node, drives the cluster's three gauges as a programmable sender (a low-side PWM sink in place of the resistance each gauge used to see) and passes the tach, charge, brake and tell-tale lines straight through — all on a twelve-line CLU pigtail built from the cluster's own connector. `DP-ICU-A 6` is the F16 ignition aux (the cluster's feed now, the display's backlight later); `DP-ICU-B 10–12` are the turn-L, turn-R and high-beam tell-tale senses, tapped off O17, O18 and O3.** Camden's call, 2026-09-07, answering `Q-121`: yes to the ICU taking the cluster's role, with the constraint that the old cluster is intentionally temporary and must leave *without a trace* — no wire in the harness that only it used. A DT-12 drop for the cluster would have been exactly such a trace: twelve conductors and a receptacle on the post with nothing to plug in once the display arrived. Routing the same signals to the ICU instead costs nothing — `DP-ICU-B` already carried six taps on them — and buys three things: the ICU is the single exciter and reader of every sender from day one (no high-impedance observer front end, no calibration against a gauge regulator's pulsing, no hand-over of excitation later — luxury D-310 and Q-301 become moot); the needles can be linearised in software for the first time; and the day the display goes in, one pigtail unplugs. The cluster's own regulator still powers its coils and lamps, from the F16 aux through the ICU. *In the data:* `DP-CLU` and its twelve cavities are deleted (the DT-12 kit pair leaves the Deutsch count; `MG03` / `MG22` re-drawn); `N20`, `N22`, `N45`–`N53`, `N59`, `N64` re-point; `DV32` becomes "temporary, on the ICU's pigtail" and `DV45` is the ICU; `P074`'s shielded cable ends at `DP-ICU-B 4`; the ICU's channels are a new table, `data/icu_channels.csv`, rendered as `01-DESIGN/ICU-CARRIER.md`. Whether the gauges are bimetal or air-core decides the drive stage's PWM frequency, not its topology — `Q-123`, one look at M-6. *Supersedes* D-215's "DP-CLU feeds the factory cluster from day one" and D-252's `DP-ICU-B 10–12` (plugs → tell-tale senses) and `DP-ICU-A 6` (plug → F16 aux); D-252's old → new table still reads for cavities 1–9.
 *2026-09-07*
@@ -225,6 +222,17 @@ This **overrides the packet's own recommendation**, which was to pay Waytek, Wir
 
 **In the data.** `L2-S 4` is promoted from sealing plug to a `WIPER_PARK_RET` conductor, run to the branch and left there. `L2-M 8` is held as the fused park feed for the same reason. The A3 wiper-park leg is specified **clamped and 12 V tolerant** at the resistor sub-assembly, so no replacement motor in any of the five families can damage an input. Two cavities buy the whole replacement population.
 *2026-09-11 · closes BLK-002*
+
+**D-329 — The heated washer nozzle and the wiper-park de-icer are cancelled; `L2-S 6` and the `L2-NZL` receptacle come out. The outside-air conductor is untouched.** Camden's call, 2026-09-11, answering `BLK-017`: "change of plans please void the wiper park heater and washer nozzle heater i decided i do not think they are worth it." Supersedes **D-256**.
+
+D-256 put two front-end conductors in for the climate module and this decision keeps one of them. **`L2-S 5` survives exactly as it was**: the outside-air thermistor at the nose, 16 AWG GRY, grounded at the front star, landing on `DP-DCU 2` at the post through the `L2-OAT` receptacle, with `DP-DCU 6` still a plug. There is no automatic climate control in this car and none is planned; the outside reading is for display, and the cluster shows it beside cabin temperature. That half is untouched and is restated here so one standing decision owns both.
+
+**What comes out.** `L2-S 6` — the 16 AWG RED heated-nozzle / park-de-icer feed — is not run, and the `L2-NZL` DT-2 receptacle at the cowl is not fitted. Both cavities of that housing go with it. This was always conditional: D-256 wrote it as "a comfort-bus load the DCU switches, conditional on a nozzle that can be made to fit", and the condition is now declined rather than unmet. Nothing is stranded — the feed never reached a part.
+
+**Consequences in the data.** `cavities` `L2-S 6` → sealing plug; the `L2-NZL` housing and its two cavities are deleted, which drops the DT-2 count in the Deutsch kits automatically, because D-277 derives those counts from the housing table rather than typing them. The luxury package's comfort bus loses two of its seven switched outputs: `SN16` becomes ×5 — seat heat ×2, seat cool ×2, mirror heat — and stage `S4` loses the nozzle and de-icer from its outcome, its prerequisites and its plug list. Both terms go into `retired.csv` in both projects so they cannot return by accident.
+
+**One number to recheck, not to assume.** D-256 added the 50 ft WireBarn cut `P009` because the 16 AWG RED family calculated at roughly 510 ft against a 500 ft spool, and `L2-S 6` was part of that total. Removing it plausibly drops the family back under the spool, which would delete `P009` — but that is a derived figure and it is recomputed from the wire schedule (`W-329`), never by hand here.
+*2026-09-11 · supersedes D-256 · closes BLK-017*
 
 
 ## Outputs, soft fuses and logic
@@ -311,7 +319,7 @@ Already correct and worth not breaking: every CAN2 drop is fed from **O10**, whi
 
 ## Power backbone and battery
 
-*17 live — D-061 D-062 D-063 D-064 D-145 D-198 D-203 D-229 D-234 D-235 D-238 D-239 D-241 D-246 D-316 D-319 D-321*
+*18 live — D-061 D-062 D-063 D-064 D-145 D-198 D-203 D-229 D-234 D-235 D-238 D-239 D-241 D-246 D-316 D-319 D-321 D-331*
 
 **D-061 / D-091 — The starter feed and the PMU feed are separate runs from the battery post; the PMU feed is 2 AWG.** Cranking pulls 300–500 A briefly and cannot pass through a Class-T sized for the module feed. The master disconnect sits in the PMU leg, so opening it isolates the electrical system while the starter cable stays passive. 2 AWG (not 4) because it is sized for the swap engine, not the 12A — about $40 more now against pulling the tunnel a second time.
 
@@ -377,6 +385,17 @@ D-237 was correct when the cable was 2 AWG (~210 A). **D-246 then took the cable
 **In the data.** `fuses` MRBF → 250 A, same Blue Sea 5191 holder, about $17. `parts` P052 becomes the 250 A fuse; its exact Blue Sea SKU is marked `confirm` and verified before the Amazon cart is paid — which, under D-323, is not yet. `V-094` still closes the question properly with a clamp meter on the starter cable during a hot start, rather than from published curves.
 *2026-09-11 · supersedes D-237 · closes BLK-008*
 
+**D-331 — The master disconnect is the Blue Sea 9004e; its auxiliary pole is a switch-position input so the PMU drops excitation before the main contacts break, and a high-joule TVS goes across the PMU main feed.** Camden's call, 2026-09-11, answering `BLK-019`: option (b).
+
+**The hazard.** An unsuppressed load dump on a 12 V system is ISO 7637-2 pulse **5a — 65–87 V for 40–400 ms**, and reported lithium BMS disconnects run **120 V and above**. There are two triggers. Opening the master with the engine running is the avoidable one. **The BMS opening while driving** — over-current, cell fault, over-temperature — needs no mistake and never goes away: lead-acid degrades gracefully and stays in circuit, a BMS opens in milliseconds at full charge current.
+
+**Why the aux pole is used this way and not the obvious way.** The 9004e carries an Alternator Field Disconnect pole whose contacts open slightly *before* the main contacts. On an externally regulated alternator it opens the field directly. D-316 fixed this car to the FB/FC alternator, which is **internally regulated**, so there is no external field to open. But the PMU already owns excitation on O12 → F15, so the aux pole is read instead as a **switch-position input**: the PMU sees the master about to open and drops excitation in logic before the main path breaks. Same protection, achieved through a channel the design already had.
+
+**The TVS is independent of all of that.** A high-joule TVS across the PMU main feed at the module is the only thing that covers the BMS-opening case, which no switch can anticipate. It goes in whatever else is decided, and it is a couple of dollars. Separately, ECUMaster is to be asked directly whether the PMU's published "immunity according to ISO 7637" covers pulse **5a** unclamped or only **5b** — the TVS is fitted either way, so the answer changes nothing, it only tells us how much margin the module brings on its own.
+
+**In the data.** `parts` `P049` becomes the 9004e; the SKU and price carry `confirm` until the cart is re-priced, which under D-323 has not happened. A high-joule TVS for the PMU main feed becomes its own `parts` row — it is not `P106`, which is the ICU carrier's own protection. The switch-position conductor runs the L4 leg from the cargo bin to the dash and takes a spare size-16 cavity in `L4-S2`, which had three free. **The PMU input it lands on is not assigned here** (`W-331`): `inputs` lists A1–A6, A8, A15 and A16 but not A7, which HO04 uses, so the table does not yet describe the module's real channel set. That is completed against the PMU's channel list first, and if no input is genuinely free it becomes a block rather than a guess.
+*2026-09-11 · closes BLK-019*
+
 
 ## Switches, ladders and inputs
 
@@ -432,7 +451,7 @@ The 1982 component list carries a **kick-down switch (B-32)** at the throttle pe
 
 ## The dash node
 
-*16 live — D-003 D-020 D-056 D-148 D-167 D-182 D-186 D-189 D-214 D-215 D-216 D-224 D-230 D-236 D-242 D-318*
+*17 live — D-003 D-020 D-056 D-148 D-167 D-182 D-186 D-189 D-214 D-215 D-216 D-224 D-230 D-236 D-242 D-318 D-330*
 
 **D-003 — Two-tier connector architecture.** The 39-way SICMA is a *device* connector at the dash node; short wires run from it to a receptacle for every leg and drop. Legs plug into the node; the 39-way is never touched again.
 
@@ -489,6 +508,17 @@ The 1982 component list carries a **kick-down switch (B-32)** at the throttle pe
 
 **In the data.** `cavities` `L1-S1 9` and `L1-S1 10` → PLUG. The engine-swap hand-over `HO03` is rewritten. Nothing is run to the rear, so no L4 cavity changes and the carted 120 Ω resistors (P070, ten of them) are unaffected. The PMU's software termination stays as the design has it, with 120 Ω at both physical ends inside the dash.
 *2026-09-11 · closes BLK-004*
+
+**D-330 — Battery data comes from the Ionic BMS over BLE; no shunt is bought, and current and state of charge wait on the protocol.** Camden's call, 2026-09-11, answering `BLK-018`: "b no shunt for now as I hope to get the actual bit for bit map of what the BLE would be from Ionic and or decode it myself as it is not encripted."
+
+**What is already known and works.** The pack is an `IC-12V40-S9H` — Ionic 12 V 40 Ah S9H, four cells in series. Its BMS runs a Telink/HM-10-class transparent-serial module: service `FFE0`, characteristic `FFE1` used in both directions. Two independent reads, both proven from the car on 2026-09-08: the **advertisement's manufacturer data begins with pack millivolts**, broadcast with no connection at all; and a plain **Read or notification on `FFE1`** returns a framed packet — `7E` start, `01` type, `08` length, four little-endian uint16 cell counts, checksum, `0D` — which decodes at about **1.43 mV per count**, cross-checked because the four counts summed against the advertised pack voltage twice, four minutes apart. At the time of writing that is 3.25 V per cell and 13.0 V at the pack, on a one-count spread, which is a healthy balance.
+
+**How the ESP32-C3 reads it.** Passive scan for the advertisement gives pack voltage with no connection, no pairing, nothing that can hang, and it keeps working while a phone is also connected. A GATT client subscribing to `FFE1` gives the cell frame, one connection at a time. Do both: scan always, connect only when cell detail is wanted. **`FEE7` and anything labelled DFU are never touched** — that is the firmware-update path on the BMS that runs the car's power, and the downside is a bricked pack.
+
+**What this costs, stated plainly.** The type-01 frame is voltages. **Current and state of charge are not in it**, and reaching them means writing commands to `FFE1` against an undocumented protocol, either decoded here or supplied by Ionic. Until that lands the car logs pack and cell voltage and nothing else, and **D-280's sleeping-current target is not readable from the battery** — it stays the bench measurement at install 3.11, which it always was. A Victron SmartShunt remains the fallback that would give current, state of charge, consumed Ah and temperature, and would see every load outside the BMS's own terminals; it is deferred, not rejected, and the cargo bin is open once, so taking it up later is a bin job.
+
+**In the data.** `parts` `P116` (the ESP32-C3 pair) keeps its place with the source now named. No shunt line is added. The CAN map keeps its battery-current and state-of-charge fields defined with no source behind them yet, marked so, rather than deleted — they are the shape the data will take when the protocol is known.
+*2026-09-11 · closes BLK-018*
 
 
 ## The record itself
@@ -588,7 +618,7 @@ The electrical build's counterpart is **D-318**. The consequence here is that `H
 
 ## Comfort, mirrors, windows, seats
 
-*7 live — D-048 D-049 D-096 D-131 D-180 D-305 D-326*
+*9 live — D-048 D-049 D-096 D-131 D-180 D-305 D-326 D-329 D-332*
 
 **D-048 / D-074 / D-058 / D-073 — Cooled seats are in scope (fans and ducting on the comfort bus); seat products stay estimates (2 × 4 A heat, 2 × 1.5–2.5 A fans); the heat/cool interlock and comfort-bus switching are the DCU's job, downstream of the dumb O15 feed.**
 *inherited - owned by another project*
@@ -614,6 +644,20 @@ The electrical build's counterpart is **D-318**. The consequence here is that `H
 
 **In the data.** `sensors` `SN17` is settled: nothing on the carrier, no half-bridges, no CAN message for mirror position. The DCU keeps mirror **heat** on its comfort FET set (`SN16`) through F14. The control panel's layout must now find room for a mechanical mirror control — that is the flip condition, and it is a panel-design constraint rather than an open question. `S5`'s prerequisite is resolved. H-002 can be laid out.
 *2026-09-11 · closes BLK-012*
+
+**D-329 — The heated washer nozzle and the wiper-park de-icer are cancelled — the comfort bus drops to five switched outputs**
+*2026-09-11 · closes BLK-017 · inherited - owned by another project*
+
+**D-332 — Mirror heat is a bonded resistive pad on the F14 feed, not an integrated element.** 2026-09-11, from the sourcing search `BLK-016` asked for.
+
+D-305 fixed the mirror feature set at adjustment and heat. The search for a mirror that delivers both found that **the product does not exist at this size**. Every compact or universal power mirror on the market is unheated: the universal aftermarket (AutoStyle's is the only powered universal found, and the street-rod ranges are manual-only) offers no heated option at all, and the heated electric units that do exist are tow-mirror sized. The factory FB power mirror, which was an option on 1981–85 cars, was never offered with heat in any year.
+
+**So heat is separated from the mirror.** A 12 V self-adhesive resistive heater pad, two wires, roughly $8–20 the pair, bonded to the back of whichever glass is fitted, fed from `L4-P 4` → `F14` and switched by the DCU on `SN16`. This satisfies the original constraint better than an integrated element would, because a pad has no module in it by construction — the thing D-305's "resistive, on its own feed" wording was guarding against.
+
+**It is also what Mazda did.** The one factory drawing that could be read in full — the RX-8's heated mirror — puts motors on three pins and the heater on two separate ones, the element a printed resistive grid fed by its own wires and switched by the rear defogger. Three plus two is the architecture this design already has; only the packaging changes.
+
+**Consequence.** The mirror question narrows to the motors alone, which is what `BLK-020` now asks. No conductor, cavity or fuse changes: `L4-S2 1–5` carry the five commands and `F14` carries the heat, exactly as before.
+*2026-09-11*
 
 
 ## Head unit and audio
@@ -805,4 +849,5 @@ Costs nothing either way: the two plastics events are independent, and S3 needs 
 - `D-237` (electrical-build, superseded) → `D-321` — The 200 A MRBF is right for the starter feed; no upsize
 - `D-245` (electrical-build, superseded) → `D-319` — The master disconnect moves to the battery negative
 - `D-247` (electrical-build, superseded) → `D-278` — (superseded by D-278)
+- `D-256` (electrical-build, superseded) → `D-329` — Two front-end conductors for the climate module: `L2-S 5` is an…
 - `D-300` (luxury-package, superseded) → `D-328` — The three assumed `stats.h` figures are confirmed as assumed: redline…

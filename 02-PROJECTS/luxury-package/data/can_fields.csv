@@ -39,7 +39,7 @@ id,msg,bytes,field,encoding,note
 0x218/3–6,0x218,3–6,reserved,,
 0x218/7,0x218,7,counter,,
 0x220/0–1,0x220,0–1,Battery voltage,"uint16, 0.01 V per bit","from the source, not the PMU's own reading"
-0x220/2–3,0x220,2–3,Battery current,"int16, 0.1 A per bit, + = charging",a shunt sees every load; a BMS sees only its own terminals
+0x220/2–3,0x220,2–3,Battery current,"int16, 0.1 A per bit, + = charging","No source behind it yet: with no shunt (D-330) battery current waits on the Ionic BLE protocol being decoded or supplied. The field keeps its shape; a shunt sees every load, a BMS sees only its own terminals"
 0x220/4,0x220,4,State of charge,"uint8, %",the source's own estimate
 0x220/5,0x220,5,Battery temperature,"int8, °C",0x7F = unknown
 0x220/6,0x220,6,Flags,bit 0 source (0 BMS · 1 shunt) · bit 1 heater on · bit 2 charge inhibited (cold) · bit 3 data valid · bit 4 radio link lost,valid = 0 → dashes (D-153)
