@@ -1,7 +1,33 @@
-# Built binaries — rebuild with icu_sim/build.bat and tests/run.bat
-*.exe
-*.o
-*.obj
+# v3: there are no generated documents in this tree. Anything a view layer ever
+# produces is ignored here so it can never be committed and can never be mistaken
+# for the record. The record is data/*.csv, data/decisions/*.md and BLOCKS.md.
+*.html
+*.svg
+*.stamp
+VIEW.*
+MANUAL.*
+view.json
+outputs/
+!99-ARCHIVE/**/*.html
+!99-ARCHIVE/**/*.svg
+!01-REFERENCE/**/*.html
+
+# Rendered document names from v2 - never regenerate these at the top of an area
+DESIGN.md
+SHOPPING-LIST.md
+INSTALL.md
+QUESTIONS.md
+DECISIONS.md
+LOG.md
+WIRE-TABLES.md
+ANSWERS.md
+!99-ARCHIVE/**
+
+# Scratch
+__pycache__/
+*.py[co]
+*.tmp
+*.typed-in.bak
 
 # IDE and OS state
 .idea/
@@ -9,9 +35,7 @@
 .DS_Store
 Thumbs.db
 
-# Generator scratch
-07-PROCESS/tools/__pycache__/
-__pycache__/
-
-# Large PDFs under 01-REFERENCE/ are tracked. If the repo ever gets a remote,
-# move them to Git LFS:  git lfs track "01-REFERENCE/**/*.pdf"
+# Built binaries
+*.exe
+*.o
+*.obj

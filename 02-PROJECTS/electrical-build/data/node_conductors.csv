@@ -14,8 +14,8 @@ N12,K1 terminal 87,Receptacle L2-P 3,12,RED,
 N13,K2 terminal 87,Receptacle L2-P 4,12,RED,
 N14,K1 terminal 87a,GND bus,12,BLK,Dynamic braking at rest
 N15,K2 terminal 87a,GND bus,12,BLK,
-N16,O1 splice,Receptacle L4-P 3,12,RED,"Window bus — lands at the sill node's F8 / F9 positions, no load until the windows (D-274)"
-N17,PMU pin 27 (O15),Splice → receptacles L3-P 2 and L4-P 4,12,RED,"Comfort feeds with no load this build — the dash's ends in the L3-CMF receptacle (D-274), the sill's at F14's position (D-254); no fuse block this build"
+N16,O1 splice,Receptacle L4-P 3,12,RED,"Window bus — lands in the sill node's F8 / F9 holders, fitted empty (D-283); no load until the windows (D-274)"
+N17,PMU pin 27 (O15),Splice → receptacles L3-P 2 and L4-P 4,12,RED,"Comfort feeds with no load this build — the dash's ends in the L3-CMF receptacle (D-274), the sill's in F14's holder, fitted empty (D-283, D-254); no fuse block this build"
 N18,PMU pin 2 (O12),Receptacle L1-P 1,12,RED,
 N19,PMU pin 2 (O12) tap,F15 inline (7.5 A) → receptacle L1-S1 2,16,RED,Alternator excitation
 N20,PMU pin 2 (O12) tap,F16 inline (5 A) → receptacle DP-ICU-A 6,16,RED,"The display's backlight, ignition-switched, through the ICU carrier (D-268)"

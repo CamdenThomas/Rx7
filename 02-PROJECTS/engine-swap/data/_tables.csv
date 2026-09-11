@@ -1,0 +1,6 @@
+table,purpose
+decisions,"every ruling, permanent, newest last; the body is data/decisions/<id>.md"
+handover,
+log,"what happened, one row per action"
+retired,terms that must no longer appear anywhere
+work,the work list; owner says who does it

@@ -1,15 +1,15 @@
 id,store,section,sku,item,spec,qty,unit,unit_usd,basis,used_for,status,need_rule,target
 P001,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",45643,"OptiFuse BLR-504 ATC fuse block, 4-position, bussed input",,2,ea,,cart,"Block A (busbar: F2, F3, F19, F13 empty) · Block B (K11: F1, 3 spare)",cart,,
-P002,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",46047,"Sealed inline ATC fuse holder, 14 AWG leads",,3,ea,,cart,"F12, F15, F16 and now F20 — the wideband gauge's feed (D-244)",raise,,4
+P002,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",46047,"Sealed inline ATC fuse holder, 14 AWG leads",,3,ea,,cart,"F12, F15, F16, F20 (the wideband gauge's feed, D-244) and the three sill fuses F8 / F9 / F14, their holders fitted empty (D-283)",raise,,7
 P003,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",75725,"Song Chuan 871-1C-C-D1-12VDC — ISO micro relay 40 A SPDT, integral diode",,4,ea,,cart,"K1, K2, K11, K12 (no spare)",cart,,
 P004,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",74858,"Picker PC792E-1C-C-12S-DN-X — sealed mini ISO relay SPDT, integral diode",,1,ea,,cart,"K9, engine bay",cart,,
 P005,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",75340,Chief weatherproof 5-pin mini relay connector,,1,ea,,cart,K9's socket,cart,,
 P006,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",75290,Panel-mount micro relay socket with terminals,,10,ea,,cart,"6 at the dash node (K1–K4, K11, K12) + 4 at the sill (K5–K8, empty)",cart,,
 P007,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",2300,"Blue Sea 2300 busbar, 10-gang 150 A, WITH cover — replaces the uncovered 2301 (78250) in the cart",,1,ea,,cart,"Always-hot bar + ground bus, both covered (D-224). Waytek # for the 2300 to confirm at the cart",raise,,2
-P008,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",WL16-0,"Prysmian GXL 16 AWG **BLACK**, 500 ft spool",,1,ea,,cart,Ground family — 230 ft needed,cart,,
-P009,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",WL16-2,"Prysmian GXL 16 AWG **RED**, 500 ft spool",,1,ea,,cart,"Power family at 16 AWG — ~510 ft calculated against a 500 ft spool after D-250 / D-252 / D-256 (L1-S2 9, L4-S 4, L2-S 6): add a 50 ft cut to the WireBarn order",raise,,500 ft spool + 50 ft cut
-P010,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",WL16-8,"Prysmian GXL 16 AWG **GRAY**, 1000 ft spool",,1,ea,,cart,Analog-input family — ~740 ft needed after D-252 / D-255 / D-256,cart,,
-P011,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",WL16-6,"Prysmian GXL 16 AWG **BLUE**, 500 ft spool",,1,ea,,cart,Command family — 285 ft needed,cart,,
+P008,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",WL16-0,"Prysmian GXL 16 AWG BLACK, 500 ft spool",,1,ea,,cart,Ground family — 230 ft needed,cart,,
+P009,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",WL16-2,"Prysmian GXL 16 AWG RED, 500 ft spool",,1,ea,,cart,"Power family at 16 AWG — ~510 ft calculated against a 500 ft spool after D-250 / D-252 / D-256 (L1-S2 9, L4-S 4, L2-S 6): add a 50 ft cut to the WireBarn order",raise,,500 ft spool + 50 ft cut
+P010,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",WL16-8,"Prysmian GXL 16 AWG GRAY, 1000 ft spool",,1,ea,,cart,Analog-input family — ~740 ft needed after D-252 / D-255 / D-256,cart,,
+P011,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",WL16-6,"Prysmian GXL 16 AWG BLUE, 500 ft spool",,1,ea,,cart,Command family — 285 ft needed,cart,,
 P012,WireBarn,GXL by the foot,,GXL 14 AWG ORN,,250,ft,,cart,Every 15 A output run (O6–O11) and the washer feed — 190 ft calculated,cart,,
 P013,WireBarn,GXL by the foot,,GXL 14 AWG RED,,100,ft,,cart,"F1 head-unit constant and the four short K5–K8 → D1 / D2 wires at the sill node; the door legs themselves are RESERVED (D-274) — about 20 ft calculated, 100 ft carted stays",cart,,
 P014,WireBarn,GXL by the foot,,GXL 14 AWG BLK,,50,ft,,cart,"14 AWG grounds — 42 ft calculated against 50 ft carted; the same margin problem, smaller money",raise,,75 ft
@@ -22,8 +22,8 @@ P020,WireBarn,GXL by the foot,,GXL 16 AWG YEL,,50,ft,,cart,"CAN high, both buses
 P021,WireBarn,GXL by the foot,,GXL 16 AWG GRN,,50,ft,,cart,"CAN low, both buses — 33 ft calculated",to add,,
 P022,DeutschConnector.com,"Contacts, plugs, clips, caps, tools",0462-201-16141,"Socket contact, size 16, 16–18 AWG, solid",,16,ea,,cart,spares (kits cover the cavities),cart,,
 P023,DeutschConnector.com,"Contacts, plugs, clips, caps, tools",0460-202-16141,"Pin contact, size 16, 16–18 AWG, solid",,16,ea,,cart,spares,cart,,
-P024,DeutschConnector.com,"Contacts, plugs, clips, caps, tools",0462-209-16141,"Socket contact, size 16, **14 AWG**, solid",,7,ea,,cart,"+ spares = 18 (L2-M 1–4, L3-M 1–2, L4-M 1–4, D1 1–2, D2 1–2 — the kits' contacts do not take 14 AWG)",raise,contacts14,18
-P025,DeutschConnector.com,"Contacts, plugs, clips, caps, tools",0460-215-16141,"Pin contact, size 16, **14 AWG**, solid",,7,ea,,cart,+ spares = 18,raise,contacts14,18
+P024,DeutschConnector.com,"Contacts, plugs, clips, caps, tools",0462-209-16141,"Socket contact, size 16, 14 AWG, solid",,7,ea,,cart,"+ spares = 18 (L2-M 1–4, L3-M 1–2, L4-M 1–4, D1 1–2, D2 1–2 — the kits' contacts do not take 14 AWG)",raise,contacts14,18
+P025,DeutschConnector.com,"Contacts, plugs, clips, caps, tools",0460-215-16141,"Pin contact, size 16, 14 AWG, solid",,7,ea,,cart,+ spares = 18,raise,contacts14,18
 P026,DeutschConnector.com,"Contacts, plugs, clips, caps, tools",0462-203-12141,"Socket contact, size 12, solid",,5,ea,,cart,spares,cart,,
 P027,DeutschConnector.com,"Contacts, plugs, clips, caps, tools",0460-204-12141,"Pin contact, size 12, solid",,5,ea,,cart,spares,cart,,
 P028,DeutschConnector.com,"Contacts, plugs, clips, caps, tools",114017,"Sealing plug, size 16 cavity",,64,ea,,cart,"Every PLUG cavity, both halves, plus the leg-plug half of every RESERVED cavity (D-271) — 78: the door receptacles are RESERVED at the sill (14) and the seven branch-end receptacles bring ten spare cavities (D-274); plus spares",raise,plugs16,84
@@ -39,7 +39,7 @@ P037,Amazon,Tools,,"Hydraulic lug crimper, 8 AWG – 1/0, with dies",TEMCo TH000
 P038,Amazon,Tools,,"Deutsch solid-contact 4-indent crimper, sizes 12 / 16",IWISS solid-contact Deutsch crimper,1,,139,est,Accepted only after the pull-test coupons pass (install §1.2),cart,,
 P039,Amazon,Tools,,"Open-barrel ratchet crimper, 1.5 mm and 2.8 mm dies",Astro 9477 class,1,,80,est,The PMU's SICMA terminals — check the die on one spare terminal first,cart,,
 P040,Amazon,Tools,,Digital hanging scale 0–50 kg,any,1,,18,est,Crimp pull tests,cart,,
-P041,Amazon,Tools,,**Label printer**,**Brother PT-D220** (B0B1L3BL1G),1,,40,est,Prints the TZe-FX231 tape,cart,,
+P041,Amazon,Tools,,Label printer,Brother PT-D220 (B0B1L3BL1G),1,,40,est,Prints the TZe-FX231 tape,cart,,
 P042,Amazon,Tools,,"Heat gun, 1500 W, two temperatures",any,1,,30,est,,cart,,
 P043,Amazon,Tools,,"Wire strippers 10–22 AWG, flush cutters, needle-nose",Klein / Knipex class,1 set,,70,est,,cart,,
 P044,Amazon,Tools,,Soldering iron + solder,Pinecil / Hakko class,1,,45,est,Ladder resistors and diodes,cart,,
@@ -109,15 +109,15 @@ P072,Amazon,Dash node and electronics,,NPN transistor 2N3904,2N3904,10,,1,est,2 
 P073,Amazon,Dash node and electronics,,"Inline ATC fuse holder, 2-pack",generic,1,,6,est,The 5 A first-power-up guard (install §5.2),cart,,
 P074,Amazon,Dash node and electronics,,"Shielded cable, 16–18 AWG single core with drain, 15 ft",any automotive shielded,1,,15,est,Tach — L1-S1 6 → DP-ICU-B 4 4,cart,,
 P135,Amazon,Dash node and electronics,,"Ignition noise-suppression capacitor, automotive, ~0.47 µF 250 V, ring-lug case",Reproduces the factory condenser B-22 on the coil / igniter supply,2,ea,10,est,O12 branch at the coil bracket (L1-P 1) — this harness runs CAN2 and eight analog ladders past the igniters (D-281),to add,,
-P075,Amazon,Consumables and labels,,**Label tape**,"**Brother TZe-FX231 flexible-ID, 12 mm black on white** (B00X8GRTO8)",3,,45,est,"every conductor end — about 300 conductors in the harness model, two labels each at 45 mm ≈ 27 m; a TZe cartridge is 8 m, so four",raise,,4
-P076,Amazon,Consumables and labels,,"**Clear heat-shrink 3/16 in, 2:1**",generic,3,,20,est,Over every label on the engine leg and under loom,cart,,
+P075,Amazon,Consumables and labels,,Label tape,"Brother TZe-FX231 flexible-ID, 12 mm black on white (B00X8GRTO8)",3,,45,est,"every conductor end — about 300 conductors in the harness model, two labels each at 45 mm ≈ 27 m; a TZe cartridge is 8 m, so four",raise,,4
+P076,Amazon,Consumables and labels,,"Clear heat-shrink 3/16 in, 2:1",generic,3,,20,est,Over every label on the engine leg and under loom,cart,,
 P077,Amazon,Consumables and labels,,"Adhesive-lined heat-shrink assortment 3:1, incl. heavy-wall for lugs",generic,1 kit,,40,est,,cart,,
 P078,Amazon,Consumables and labels,,"Heat-shrink crimp butt splices — 22–18 (×50), 16–14 (×50), 12–10 (×25)","generic, tinned",1 set,,25,est,Every factory-pigtail joint (install §4),cart,,
 P079,Amazon,Consumables and labels,,"Ring terminals, heat-shrink, assorted 16–14 and 12–10, #10 and 3/8",generic,1 kit,,20,est,Ground rings and stud connections,cart,,
 P080,Amazon,Consumables and labels,,Tesa 51608 cloth harness tape,Tesa 51608,5 rolls,,33,est,,cart,,
 P081,Amazon,Consumables and labels,,"Split loom / braided sleeve assortment, grommet kit, P-clips, pull string 100 ft",generic,1 set,,110,est,,cart,,
 P082,Amazon,Consumables and labels,,"Cavity wax / corrosion inhibitor spray, paint pen",generic,1 set,,20,est,,cart,,
-P083,Amazon,Switches,,"**Momentary pushbutton, 1NO + 1NC, 2-pack**",**DMWD** (B09H29SZYS),1 pk,,12,est,Wink L and wink R. MUST be changeover (NO + NC) — the NC pole is wired,cart,,
+P083,Amazon,Switches,,"Momentary pushbutton, 1NO + 1NC, 2-pack",DMWD (B09H29SZYS),1 pk,,12,est,Wink L and wink R. MUST be changeover (NO + NC) — the NC pole is wired,cart,,
 P084,Amazon,Switches,,"Adjustable plunger pin switch, 6-pack",generic,1 pk,,15,est,"Door jambs ×2, glove box, luggage, the brake-pedal wake contact (D-278) + 1 spare",cart,,
 P085,Vehicle parts,RockAuto / PartsGeek / Mazda specialist,,"Brake pedal (stop lamp) switch, without cruise - any 2-terminal type",Standard SLS-52 class — confirm fit,1,,20,est,The A3 ladder only. The wake contact is a spare P084 plunger on the pedal (D-278),not carted,,
 P086,Vehicle parts,RockAuto / PartsGeek / Mazda specialist,,"Ignition switch, electrical portion, 1981–83 RX-7","search ""81-83 RX-7 ignition switch electrical""; NOS or quality reproduction",1,,45,est,"Terminals B, ACC, IG, ST — feeds the A16 ladder and both wake sources",not carted,,

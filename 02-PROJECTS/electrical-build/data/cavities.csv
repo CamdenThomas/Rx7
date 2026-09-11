@@ -85,8 +85,8 @@ L3-S3 7,L3-S3,7,,,,,,PLUG,"Sealing plug, size 16"
 L3-S3 8,L3-S3,8,,,,,,PLUG,"Sealing plug, size 16"
 L4-P 1,L4-P,1,Rear defog grid,O4,,12,RED,LIVE,Grid G-25 terminal LG; grid terminal B → rear star ground (12 AWG)
 L4-P 2,L4-P,2,Fuel pump +,O5,,12,RED,LIVE,Carter P4070 + ; pump − → its OWN 12 AWG to the rear star ground
-L4-P 3,L4-P,3,Window motor bus feed,O1,splice,12,RED,CAPPED,Lands at the sill node — the K5–K8 contact feed through the F8 / F9 positions (holders come with the windows); the node is this branch's end (D-274)
-L4-P 4,L4-P,4,Comfort feed → sill (mirror heat F14),O15,splice,12,RED,CAPPED,"Lands at the sill node — F14's labelled position (no holder), this branch's end (D-274); the DCU switches mirror heat through it later (D-254, restores D-181)"
+L4-P 3,L4-P,3,Window motor bus feed,O1,splice,12,RED,CAPPED,"Lands at the sill node — the K5–K8 contact feed through the F8 / F9 holders, fitted empty (D-283); the node is this branch's end (D-274)"
+L4-P 4,L4-P,4,Comfort feed → sill (mirror heat F14),O15,splice,12,RED,CAPPED,"Lands at the sill node in F14's holder, fitted empty (D-283) — this branch's end (D-274); the DCU switches mirror heat through it later (D-254, restores D-181)"
 L4-M 1,L4-M,1,Tail · licence · rear markers,O6,,14,ORN,LIVE,"Splice at the hatch → F-07 RG, F-08 RG, F-04 RG (×2), F-14 RG, F-15 RG"
 L4-M 2,L4-M,2,Brake lamps,O7,,14,ORN,LIVE,"Splice → F-07 G, F-08 G"
 L4-M 3,L4-M,3,Hatch release solenoid,,,14,ORN,CAPPED,"The hatch-release solenoid's + terminal, through the hinge loop with the tail-lamp conductors — it exists and is believed to work (Camden 2026-09-08, DV48); the post end is capped until the luxury package fits the trigger (D-180; the K3 / K4 sockets are the slot) (D-274)"

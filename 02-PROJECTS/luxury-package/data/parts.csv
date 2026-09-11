@@ -26,7 +26,7 @@ LP33,S4,comfort,Sound deadening,"CLD tiles, MLV, closed-cell foam",1,150,400,est
 LP34,S5,mirrors,"Mirrors — heated, 3-wire motors","conventional common + X + Y motors, resistive heat",2,120,300,verify,Q-300,"a 5-wire, LIN or module mirror does not fit the doors (D-305)"
 LP35,S5,mirrors,Mirror switch,only if the DCU does not drive them,1,15,40,verify,Q-305,
 LP36,S6,windows,Window regulators and motors,pair,2,150,400,est,,switches are already in the electrical build's carts
-LP37,S6,windows,"Window relays K5–K8, F8 / F9 holders and fuses",micro relays ×4 + 2 holders,1,40,80,est,,sockets are fitted empty at the sill
+LP37,S6,windows,Window relays K5–K8 and the F8 / F9 fuses,micro relays ×4 + 2 blade fuses,1,35,70,est,,"sockets are fitted empty at the sill, and the holders too — the electrical build fitted F8 / F9 empty (D-283), so this stage only drops fuses in"
 LP38,S7,lighting,"DOT / SAE LED modules, red and white",with published candela,2,80,200,verify,V-064,
 LP39,S7,lighting,Tail-light housings,"fabrication, sealed, stock mounting",2,60,150,est,,
 LP40,S7,lighting,Tail-light driver PCBs,"2 + spares, two revisions likely",2,60,120,est,,D-111

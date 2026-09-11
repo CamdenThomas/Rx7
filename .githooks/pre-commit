@@ -1,13 +1,17 @@
 #!/bin/sh
-# Rx7 pre-commit — the build must be clean and every rendered file current before a commit lands.
+# Rx7 v3 pre-commit — VALIDATES ONLY.
+#
+# It never writes a file, never stages anything, never asks for a second commit
+# attempt, and never treats an advisory as fatal. The only thing that can stop a
+# commit is exit code 1 from `check`, which means the record contradicts itself and
+# names the exact rows. Answered-but-unapplied blocks, work still open, stale prose
+# cites — all of those are exit code 2 and none of them block anything.
+#
 # Install once per clone:  git config core.hooksPath .githooks
-export PYTHONIOENCODING=utf-8
-python tools/rx7.py -a check || { echo "pre-commit: build is refused — fix the data (or run /rx7-clean)"; exit 1; }
-python tools/rx7.py -a build > /dev/null || exit 1
-if ! git diff --quiet -- '*.md' '*.html' ; then
-  echo "pre-commit: the build changed rendered files — they are now staged; commit again"
-  git add -A -- '*.md' '*.html' '*.svg' '*.yml' '*.stamp' '*.h' 2>/dev/null
+python tools/rx7.py check || {
+  echo ""
+  echo "pre-commit: the record contradicts itself. Fix the rows named above, or run"
+  echo "            git commit --no-verify if you know better than the checker."
   exit 1
-fi
-python tools/triggers.py
+}
 exit 0

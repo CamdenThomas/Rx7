@@ -17,8 +17,8 @@ PV40,housing,L3-BLW,FT12,DTP-2 at the HVAC case,,
 PV41,pin,O16,FT12,"blower feed — configured, DISABLED until the motor exists",LIVE,
 PV42,cavity,L3-P 2,FT31,"O15 comfort bus, 12 AWG — this project's fuse block plugs into the L3-CMF receptacle behind the centre stack (electrical D-274)",CAPPED,
 PV43,pin,O15,FT31,"comfort bus, 25 A, ON in RUN",LIVE,
-PV44,cavity,L4-P 4,FT23,"O15 → sill feed for mirror heat, landed at the sill node's F14 position (no holder this build)",CAPPED,electrical D-254
-PV45,fuse,F14,FT23,"mirror-heat position at the sill — labelled, no holder this build",,
+PV44,cavity,L4-P 4,FT23,"O15 → sill feed for mirror heat, landed in the sill node's F14 holder, fitted empty (electrical D-283)",CAPPED,electrical D-254
+PV45,fuse,F14,FT23,mirror-heat fuse at the sill — a sealed inline holder fitted empty by the electrical build (D-283); this stage supplies the 10 A fuse,,electrical D-283
 PV46,pin,O4,FT16,"defog output — wired to the grid, configured, DISABLED",LIVE,
 PV47,cavity,L4-P 1,FT16,the grid feed,LIVE,
 PV48,cavity,L4-M 3,FT17,"hatch solenoid — the conductor reaches the existing factory solenoid; the post end waits for this project's trigger (D-180, electrical D-274)",CAPPED,

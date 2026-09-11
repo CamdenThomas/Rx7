@@ -1,0 +1,27 @@
+table,purpose
+backbone,
+cables,
+carts,
+cavities,
+colours,
+decisions,"every ruling, permanent, newest last; the body is data/decisions/<id>.md"
+devices,
+fuses,
+grounds,
+housings,
+icu_channels,
+inputs,
+ladders,
+loads,
+log,"what happened, one row per action"
+logic,
+migration,
+node_conductors,
+params,named numbers the rest of the record derives from
+parts,every part this project buys or fits
+pins,
+relays,
+retired,terms that must no longer appear anywhere
+rules,
+series,
+work,the work list; owner says who does it

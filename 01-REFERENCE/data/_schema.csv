@@ -1,0 +1,11 @@
+table,column,type,required,ref,note
+sources,id,key,yes,,
+sources,title,text,no,,
+sources,kind,str,no,,
+sources,covers,text,no,,
+sources,url,text,no,,
+sources,format,enum(html|pdf|pdf+step|pdf-scan|web-viewer),no,,
+sources,credibility,enum(primary|secondary|tertiary),no,,
+sources,obtained,bool,no,,
+sources,local_path,str,no,,
+sources,note,text,no,,
