@@ -4,6 +4,12 @@
 slash commands, no second document. If a rule is not here it is not a rule; if you need
 one that is missing, that is a block.*
 
+> **THE PROJECT IS `Rx7-v3`. `Rx7` IS REFERENCE ONLY.**
+> Every read, every write, every command runs in `Rx7-v3`. `Rx7` is the previous system,
+> frozen: open it to look something up, never to change it, and never to run a tool in
+> it. If you are about to touch a path with no `-v3` in it, stop — that is the mistake.
+> §9 has the full rule and the conversion plan.
+
 ---
 
 ## 0 · Start
@@ -378,9 +384,35 @@ Then stop. He clears the blocks and says continue.
 
 ---
 
-## 9 · Machines and paths
+## 9 · The two directories, and the plan
 
-Laptop: `C:\Users\Camden Thomas\Documents\Storage\Rx7-v3`. Desktop `crashs-pc`:
-`C:\Users\USER\Documents\Storage\Rx7-v3`. Both are git clones; pull before you start.
-The previous system is `..\Rx7` — read it for history, never write to it. The Claude
-Project holds one pointer document and nothing else; nothing is ever queued there.
+There are two trees side by side. Confusing them is the easiest serious mistake
+available, so the rule is absolute.
+
+| | Path (laptop) | What it is | What you may do |
+|---|---|---|---|
+| **`Rx7-v3`** | `C:\Users\Camden Thomas\Documents\Storage\Rx7-v3` | **The project.** The live record. | everything |
+| `Rx7` | `C:\Users\Camden Thomas\Documents\Storage\Rx7` | The previous system, **frozen for reference** | read only |
+
+On the desktop `crashs-pc` both sit under `C:\Users\USER\Documents\Storage\` with the
+same two names. Both `Rx7-v3` clones are git; pull before you start.
+
+**`Rx7` is frozen.** It holds the v2 rendered documents, the eleven skills, the old
+1,307-line tool and Camden's own uncommitted work as he left it. Open it to look
+something up — a design paragraph, an old diagram, how something used to read. Never
+write a file in it, never run a tool in it, never run git in it, and never let a path
+without `-v3` appear in a command you are about to execute. A fact worth keeping from it
+is copied into the v3 record, not edited where it lies.
+
+**The plan, in order.** Finish the **data** side in v3 first: every ruling applied, every
+agent work row done, every table declared and clean, the design frozen. Only then the
+visual layer — and that is a separate, later, read-only concern that reads the v3 record
+and writes nothing back to it. Do not start it, sketch it, or write a document "so it can
+be read" before the data side is finished (§1). `DECISIONS.md` is the one generated file
+and it is not the beginning of a view layer.
+
+**When v3 is complete**, `Rx7` is archived wholesale and stops existing as a working
+tree. Until then it is a library, not a workspace.
+
+The Claude Project holds one pointer document and nothing else; nothing is ever queued
+there.
