@@ -31,7 +31,7 @@ decisions,id,key,yes,,
 decisions,system,str,no,,
 decisions,title,text,no,,
 decisions,date,date,no,,
-decisions,status,enum(standing|superseded),no,,
+decisions,status,enum(inherited|standing|superseded|withdrawn),no,,vocabulary owned by tools/rx7.py - do not narrow it per project (2026-09-11)
 decisions,supersedes,str,no,,
 decisions,superseded_by,id,no,,
 decisions,closes,str,no,,
@@ -172,6 +172,6 @@ work,stage,enum(A|B|C|D|E|F|G|V),no,,V added 2026-09-11: the verify/measure/do i
 work,stage_title,str,no,,
 work,item,text,no,,
 work,owner,enum(agent|camden),no,,
-work,state,enum(done|open),no,,
+work,state,enum(blocked|done|dropped|open),no,,vocabulary owned by tools/rx7.py - do not narrow it per project (2026-09-11)
 work,gate,str,no,,
 work,note,text,no,,

@@ -9,4 +9,4 @@ icu_logic_draw,~0.5,A,ICU-CARRIER (archived),Teensy + transceiver + IMU
 display_draw,1.5–3,A,Q-302,a 900–1000-nit panel and its backlight — measure at bring-up
 o10_headroom,~3,A,"Q-302, electrical LD15 / D-223",for all three module drops together
 servo_stall,1–2.5 each,A,DCU-CARRIER (archived),why the servo rail is its own buck
-thresholds,redline 7000 rpm · hot water 105 °C · low oil 1.0 bar · tank 15.9 gal,,"D-300, owned by stats.h",tank capacity vs the brochure's 16.6 gal is Q-307
+thresholds,redline 7000 rpm · hot water 105 °C · low oil 1.0 bar · tank 16.6 gal,,D-328,"tank 16.6 gal from the 1982 brochure S-004, primary (D-328 supersedes D-300); a measured fill would supersede it again"

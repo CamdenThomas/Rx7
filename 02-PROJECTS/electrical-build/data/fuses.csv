@@ -1,6 +1,6 @@
 id,rating,location,block,pos,feeds,fed_from,state,label
 Class-T,150 A,"Cargo bin, at battery +",,,The whole PMU system — 2 AWG to the dash post,Battery + (through the master disconnect),LIVE,MAIN
-MRBF,200 A,"Cargo bin, on battery +",,,Starter main cable,Battery +,LIVE,STARTER
+MRBF,250 A,"Cargo bin, on battery +",,,"Starter main cable — 250 A sized to the 1/0 cable D-246 fitted, not to the load (D-321)",Battery +,LIVE,STARTER
 F1,10 A,"Dash node, block B (K11)",B,1,Head unit memory / constant — L3-M 2,K11 87,LIVE,HEAD-UNIT
 F2,2 A,"Dash node, block A (busbar)",A,1,Diagnostic port +12 V — DP-DIAG 3,Busbar,LIVE,DIAG
 F3,5 A,"Dash node, block A (busbar)",A,2,"Switch supply — ignition switch, light switch, wake stages — L3-S2 2",Busbar,LIVE,SWITCH

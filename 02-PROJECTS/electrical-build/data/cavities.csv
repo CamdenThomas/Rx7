@@ -11,8 +11,8 @@ L1-S1 5,L1-S1,5,,,,,,PLUG,"Sealing plug, size 16"
 L1-S1 6,L1-S1,6,Tachometer pulse — SHIELDED,,,16 sh,shielded,LIVE,Coil T (B-18) negative terminal — factory wire YG. Shield grounded at the dash node end only
 L1-S1 7,L1-S1,7,,,,,,PLUG,"Sealing plug, size 16"
 L1-S1 8,L1-S1,8,,,,,,PLUG,"Sealing plug, size 16"
-L1-S1 9,L1-S1,9,CAN2 H — LS ECU drop,CAN2H,,16 tw,YEL,CAPPED,Capped in the bay with the 120 Ω terminator across 9/10
-L1-S1 10,L1-S1,10,CAN2 L — LS ECU drop,CAN2L,,16 tw,GRN,CAPPED,Capped with cav 9
+L1-S1 9,L1-S1,9,,,,,,PLUG,"Sealing plug, size 16 — the CAN2 engine-bay drop is released; a future ECU is a dash node (D-318, swap D-325)"
+L1-S1 10,L1-S1,10,,,,,,PLUG,"Sealing plug, size 16 — the CAN2 engine-bay drop is released; a future ECU is a dash node (D-318, swap D-325)"
 L1-S1 11,L1-S1,11,Inhibitor switch — P/N contact (crank interlock),A4,spliced at the post,16,GRY,LIVE,Inhibitor A-06: 8.2 kΩ in the lead to terminal BY; terminal BW → block ground
 L1-S1 12,L1-S1,12,,,,,,PLUG,"Sealing plug, size 16"
 L1-S2 1,L1-S2,1,Brake fluid level switch,,,16,GRY,LIVE,Reservoir switch C-05: terminal BR; terminal B → block ground
@@ -38,11 +38,11 @@ L2-M 4,L2-M,4,Washer pump feed,K12 87,,14,ORN,LIVE,"Washer motor D-01, terminal 
 L2-M 5,L2-M,5,Turn LEFT front,O17,,16,RED,LIVE,"Front combo lamp F-05, terminal GR"
 L2-M 6,L2-M,6,Turn RIGHT front,O18,,16,RED,LIVE,"Front combo lamp F-06, terminal GO"
 L2-M 7,L2-M,7,"Park + side markers, front",O6,,16,RED,LIVE,"Splice at the nose → F-05 RG, F-06 RG, F-12 RG, F-13 RG"
-L2-M 8,L2-M,8,,,,,,PLUG,"Sealing plug, size 16"
+L2-M 8,L2-M,8,Wiper park feed — future motor family,F13,held,16,RED,CAPPED,Held as the fused park feed a self-parking motor needs; block A position F13 is its protection when it is taken up (D-317)
 L2-S 1,L2-S,1,Pop-up LH transit contact,A4,,16,GRY,LIVE,Motor E-03 terminal YG through 3.3 kΩ; 47 kΩ baseline from this cavity to the front star ground
 L2-S 2,L2-S,2,Pop-up RH transit contact,A5,,16,GRY,LIVE,Motor E-04 terminal YG through 3.3 kΩ; 47 kΩ baseline to the front star ground
 L2-S 3,L2-S,3,Wiper park sense,A3,spliced at the post,16,GRY,LIVE,Wiper motor D-02 park terminal L through 12 kΩ. Terminal LB is left unconnected (capped)
-L2-S 4,L2-S,4,,,,,,PLUG,"Sealing plug, size 16"
+L2-S 4,L2-S,4,Wiper park return — future motor family,A3,branch spare,16,GRY,CAPPED,"Run to the wiper branch and left unpinned there: a DIN 72552 motor's park return is pinned into this cavity at the branch, no leg re-run (D-317)"
 L2-S 5,L2-S,5,Outside-air temperature sensor,,,16,GRY,CAPPED,"L2-OAT 1 — the outside-air sensor receptacle ahead of the radiator, dust-capped; the thermistor's other lead grounds at the front star (D-256, D-274)"
 L2-S 6,L2-S,6,Heated washer nozzles / park de-icer — feed,,,16,RED,CAPPED,"L2-NZL 1 — the nozzle receptacle at the cowl, dust-capped; the nozzle harness plugs in when one fits (luxury Q-303) (D-256, D-274)"
 L3-P 1,L3-P,1,Blower motor +,O16,,12,RED,CAPPED,"L3-BLW 1 — the blower receptacle at the HVAC case (DTP-2), dust-capped; no motor this build (K-023 · D-253)"

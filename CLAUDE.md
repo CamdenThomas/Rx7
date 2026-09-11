@@ -55,11 +55,30 @@ a row that is not there — each is a refusal naming the exact row.
 anywhere in the tree or the archive; the next `BLK-` from `BLOCKS.md`. A stored counter
 can disagree with reality. Never type an id — `rx7.py new` and `rx7.py block` issue them.
 
-**There are no generated documents in this tree.** No templates, no rendered Markdown,
-no HTML, no diagrams. The v2 view layer is in `99-ARCHIVE/2026-09-11_v2-view-and-tools/`
-and the old tree is still at `..\Rx7` for reference. The visual layer is a separate,
-later, read-only concern; until it exists, do not build one, and do not write a document
-"so it can be read." The record is the deliverable.
+**There is exactly one generated document: `DECISIONS.md`.** Nothing else. No templates,
+no rendered design or shopping or install documents, no HTML, no diagrams. The v2 view
+layer is in `99-ARCHIVE/2026-09-11_v2-view-and-tools/` and the old tree is still at
+`..\Rx7` for reference. The visual layer is a separate, later concern; until it exists,
+do not build one, and do not write a document "so it can be read." The record is the
+deliverable.
+
+`DECISIONS.md` is the exception because it is Camden's record of every call made without
+him, and it has to stay readable and searchable. It is safe to generate where v2's
+documents were not, for four reasons that must all stay true:
+
+- it is a **pure projection** of `decisions.csv` plus the decision bodies — it adds no
+  fact of its own, so it cannot disagree with the record
+- it is **read-only**: he reads it, he never edits it, and nothing in it invites typing
+- `rx7.py decisions` regenerates it whole; run it at the end of **every** run that wrote
+  a decision
+- **nothing gates a commit on whether it is current.** `check` does not look at it. A
+  stale index is fixed by running the command, never by refusing a commit — that trap is
+  what v2's pre-commit hook did, and it is why he could not push.
+
+It is one file for the whole tree, grouped by area and then by the category in each
+decision's `system` column — never by number — so he can read one system's rulings
+together or search the file for an id. Superseded and withdrawn decisions are listed at
+the end with the decision that replaced each, so every id ever issued is still findable.
 
 **Exit codes are the only signal anything may branch on.**
 
@@ -88,6 +107,7 @@ rx7.py find TEXT [-p AREA]               search every cell, decision body and BL
 rx7.py new AREA "title" [col=val ...]    reserve the next D- and stub its body
 rx7.py block "ask" [-p AREA]             append a block to BLOCKS.md
 rx7.py blocks [--answered|--solved]      list blocks
+rx7.py decisions                         regenerate DECISIONS.md (grouped by category)
 rx7.py cites                             advisory: prose cites that no longer resolve
 rx7.py log AREA KIND "what" [refs]       one log row
 ```
@@ -167,7 +187,8 @@ These exist so a small doubt never becomes a conversation.
 | A superseded decision must be cited | Cite it with its closer: `D-247 → D-278`. |
 | An old cite no longer resolves | `rx7.py cites` lists these. Advisory. Fix them when you are already in the file; never let one stop a run. |
 | The record and your memory disagree | The record wins. Always. |
-| You are about to write a document | Don't. See §1 — there are no generated documents. |
+| You are about to write a document | Don't. `DECISIONS.md` is the only one, and `rx7.py decisions` writes it. See §1. |
+| You wrote a decision this run | Run `rx7.py decisions` before you report. |
 
 ---
 
@@ -199,8 +220,15 @@ refuses a block missing any of Ask / Why / Options / Recommend / Stops. If he an
 
 **Lifecycle.** You append it → he types a solution → `rx7.py blocks --answered` finds it
 → you apply it (§6.2) → you move the block under `## SOLVED` with `→ D-###` naming the
-decision it produced. An answered-but-unapplied block is exit code **2**. It never
-refuses a commit. *That single sentence is the whole fix for why he could not push.*
+decision it produced (several, comma-separated, if it produced several). An
+answered-but-unapplied block is exit code **2**. It never refuses a commit. *That single
+sentence is the whole fix for why he could not push.*
+
+**A block that came back unclear is replaced, not ruled.** Move it to `## SOLVED` with
+`→ BLK-###` pointing at a new, plainer block — his words stay where he wrote them, the
+page stops claiming an answer is waiting to be applied, and nothing was guessed. If his
+answer contained a question for you, answer it in the new block's **Why**, then ask only
+the part that actually needs him.
 
 ---
 
@@ -226,8 +254,9 @@ a check in `rx7.py`.
 
 ## 6 · Playbooks
 
-Each of these is one run. Every run ends the same way: `check` clean, a `log` row, and —
-only if blocks have stopped everything — the report in §8.
+Each of these is one run. Every run ends the same way: `check` clean, `rx7.py decisions`
+if a decision was written, a `log` row, and — only if blocks have stopped everything —
+the report in §8.
 
 ### 6.1 · Plan (phase PROPOSED or PLANNING)
 
@@ -269,7 +298,12 @@ only if blocks have stopped everything — the report in §8.
    e. Work rows gated on it: gate met → leave open for 6.1; the ruling did the work →
       `state=done`.
 5. Move each solved block under `## SOLVED` with `→ D-###`.
-6. `check` everything; `log`.
+6. `check` everything; `rx7.py decisions`; `log`.
+
+**An answer you do not fully understand is not a ruling.** "I don't understand the
+question", "it sounds like…", or an answer to a question you did not ask means the block
+was unclear: rewrite it plainer, leave it open, and rule nothing. Guessing his intent
+here is the one way this system can put a wrong fact in the permanent record.
 
 ### 6.3 · Source (phase SOURCING)
 

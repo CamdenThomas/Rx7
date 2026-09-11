@@ -3,7 +3,7 @@ decisions,id,key,yes,,
 decisions,system,str,no,,
 decisions,title,str,no,,
 decisions,date,str,no,,
-decisions,status,enum(inherited),no,,
+decisions,status,enum(inherited|standing|superseded|withdrawn),no,,vocabulary owned by tools/rx7.py - do not narrow it per project (2026-09-11)
 decisions,supersedes,str,no,,
 decisions,superseded_by,str,no,,
 decisions,closes,str,no,,
@@ -26,7 +26,7 @@ work,id,key,yes,,
 work,stage,str,no,,
 work,stage_title,str,no,,
 work,item,str,no,,
-work,owner,str,no,,
-work,state,str,no,,
+work,owner,enum(agent|camden),no,,vocabulary owned by tools/rx7.py - do not narrow it per project (2026-09-11)
+work,state,enum(blocked|done|dropped|open),no,,vocabulary owned by tools/rx7.py - do not narrow it per project (2026-09-11)
 work,gate,str,no,,
 work,note,str,no,,

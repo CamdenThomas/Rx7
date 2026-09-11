@@ -23,7 +23,7 @@ D-151,The cluster,D-158 — Rendering rules,,inherited,,,,
 D-159,The cluster,The display does not cross the harness; the page-cycle button is a…,,inherited,,,,D-169
 D-109,The cluster,"An IMU on the ICU carrier (MPU-6050 / ICM-20948 class, I²C); axis…",,inherited,,,,D-161
 D-160,The cluster,"`stats.h` thresholds (redline 7000 rpm, hot water 105 °C, low oil 1.0…",,inherited,,,,D-162 D-163
-D-300,The cluster,The three assumed `stats.h` figures are confirmed as assumed: redline…,2026-09-03,standing,,,V-072 V-070 V-071,
+D-300,The cluster,The three assumed `stats.h` figures are confirmed as assumed: redline…,2026-09-03,superseded,,D-328,V-072 V-070 V-071,
 D-048,"Comfort, mirrors, windows, seats",Cooled seats are in scope (fans and ducting on the comfort bus); seat…,,inherited,,,,D-074 D-058 D-073
 D-049,"Comfort, mirrors, windows, seats","Remote mirror motors kept, plus heated mirrors, with independent wiring…",,inherited,,,,D-093
 D-305,"Comfort, mirrors, windows, seats","Mirrors do adjustment and heat, and nothing else",2026-09-03,standing,,,T-031,
@@ -40,3 +40,6 @@ D-310,The record itself,Every ICU sender input is a high-Z observer of a gauge-d
 D-311,The record itself,`firmware/pmu_sim/channels.h` is rendered by this project's build from…,2026-09-07,standing,,,,
 D-312,The record itself,"The install plan is nine stages, S0 bench → S1 ICU headless → S2…",2026-09-07,standing,,,,
 D-315,The record itself,The release solenoids exist and the harness reaches them; every other…,2026-09-08,standing,,,,
+D-326,"Comfort, mirrors, windows, seats",The mirrors move on a mechanical switch in the panel; the DCU does mirror heat and nothing else,2026-09-11,standing,,,BLK-012,
+D-327,The record itself,Stage order stands: climate (S2) before the display bezel (S3),2026-09-11,standing,,,BLK-013,
+D-328,The cluster,"The three stats.h constants are fixed from primary sources: redline 7000 rpm, low oil 1.0 bar, tank 16.6 gal",2026-09-11,standing,D-300,,BLK-014,

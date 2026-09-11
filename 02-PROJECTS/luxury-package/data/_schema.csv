@@ -21,7 +21,7 @@ decisions,id,key,yes,,
 decisions,system,str,no,,
 decisions,title,str,no,,
 decisions,date,date,no,,
-decisions,status,enum(inherited|standing),no,,
+decisions,status,enum(inherited|standing|superseded|withdrawn),no,,vocabulary owned by tools/rx7.py - do not narrow it per project (2026-09-11)
 decisions,supersedes,str,no,,
 decisions,superseded_by,str,no,,
 decisions,closes,str,no,,
