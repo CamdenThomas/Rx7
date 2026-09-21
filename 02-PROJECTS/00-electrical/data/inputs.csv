@@ -1,0 +1,17 @@
+id,title,kind,window,fault_rule
+A1,Turn stalk,ground,55,< 50 = short · > 990 = open
+A2,Wiper stalk,ground,45,< 50 = short · > 990 = open
+A3,Brake pedal + wiper park,ground,30,< 50 = short · > 990 = open
+A4,Pop-up L transit + inhibitor P/N,ground,20,< 50 = short · > 990 = open
+A5,Pop-up R transit + inhibitor R,ground,20,< 50 = short · > 990 = open
+A6,Door jamb switches,ground,27,< 50 = short · > 990 = open
+A8,Hazard · horn · wink,ground,35,< 50 = short · > 990 = open
+A15,Headlight switch,12v,75,0 = disconnected
+A16,Key position,12v,200,0 = disconnected
+A7,Oil-pressure node,ground,,"< 20 = short · > 1000 = open; a FAULT reading counts as oil_ok and the pump runs (fail open, D-249)"
+A9,Configured as output O17 TURN_L,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)"
+A10,Configured as output O18 TURN_R,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)"
+A11,Configured as output O19 REVERSE,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)"
+A12,Configured as output O20 INTERIOR,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)"
+A13,Configured as output O21 START_RLY,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)"
+A14,Configured as output O22 KEEP_ALIVE,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)"

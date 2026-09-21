@@ -40,3 +40,20 @@ Thumbs.db
 *.exe
 *.o
 *.obj
+
+# KiCad, under 02-PROJECTS/00-electrical/cad/ only. That folder is not an area and
+# not the view layer (see its README): it is a CAD tool drawing one board. The exported
+# schematic SVG is the exception to the *.svg rule above, because a hardware change is
+# unreviewable without a picture - an S-expression diff of coordinate tuples is not one.
+!02-PROJECTS/00-electrical/cad/**/*.svg
+*.kicad_prl
+*-backups/
+*.kicad_sch-bak
+*.kicad_pcb-bak
+_autosave-*
+fp-info-cache
+*-erc.rpt
+*-drc.rpt
+02-PROJECTS/00-electrical/cad/**/*.pdf
+02-PROJECTS/00-electrical/cad/**/*.net
+02-PROJECTS/00-electrical/cad/**/net.txt

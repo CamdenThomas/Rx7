@@ -1,0 +1,9 @@
+term,retired_by,note
+labelled position,D-283,"F8 / F9 / F14 are holders fitted empty now, not labelled positions"
+holders come with the windows,D-283,the holders are in this build; the luxury package brings only the fuses
+heated washer nozzle,D-329,cancelled 2026-09-11 — not worth it
+park de-icer,D-329,cancelled with the heated nozzle
+L2-NZL,D-329,the cowl receptacle is not fitted
+DP-KEY,D-350,the control panel has no board and no drop - it is the DCU's faceplate on a local ribbon
+L3-WIN,D-350,the window switch pack moved from the console to the centre panel
+aux pole switch-position input,D-351,the 9004e's alternator-field pole is not used and the 9003e has none; the TVS P136 is the load-dump answer

@@ -12,6 +12,11 @@ python tools/rx7.py status
   block; he types the answer after `**SOLVE:**`.
 - **`tools/rx7.py`** — the only tool. Stdlib Python. `check` is the gate: exit 1 means
   the record contradicts itself, and it is the only thing that can stop a commit.
+  `status` prints READY and BLOCKED per area — what can be started now, and what each
+  waiting row waits on. `selftest` tests the gate resolver itself.
+- **`.github/workflows/rx7.yml`** — CI backstop, `selftest` + `check`, for the clone
+  where the hook was never installed. It deliberately does not care whether
+  `DECISIONS.md` is current.
 
 Areas: `00-CAR` (the car as it stands), `01-REFERENCE` (manuals, factory circuits,
 photos), `02-PROJECTS/*` (work in flight), `99-ARCHIVE` (finished process, and the v2

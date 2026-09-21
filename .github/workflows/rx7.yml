@@ -1,0 +1,34 @@
+name: rx7
+
+# The pre-commit hook is the real gate, but core.hooksPath is per-clone: one clone where
+# `git config core.hooksPath .githooks` was never run and an invalid record reaches the
+# branch in silence. This is the backstop that does not depend on either machine being
+# set up correctly.
+#
+# Exit codes are the contract (CLAUDE.md §1): `check` returns 1 only when the record
+# contradicts itself, so this job fails on exactly that and on nothing else. It does NOT
+# check whether DECISIONS.md is current — §1 is explicit that nothing gates a commit on
+# that, and a job that did would rebuild the v2 trap that stopped Camden pushing.
+#
+# Stdlib only. No install step, nothing to keep in sync.
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: the gate resolver's own tests
+        run: python tools/rx7.py selftest
+
+      - name: the record is valid
+        run: python tools/rx7.py check

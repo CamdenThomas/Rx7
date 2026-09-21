@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "icu-carrier")(type "KiCad")(uri "${KIPRJMOD}/icu-carrier.kicad_sym")(options "")(descr "Every symbol this schematic uses, kept with the project so it opens the same on any machine and so nothing depends on which KiCad libraries are installed"))
+)

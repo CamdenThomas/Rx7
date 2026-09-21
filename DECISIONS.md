@@ -11,24 +11,24 @@ group. Superseded and withdrawn ones are listed at the end with the decision tha
 replaced each, so any id ever issued can still be found by searching this file for it.
 
 
-**Most recent:** `D-328` The three stats.h constants are fixed from primary sources: redline 7000 rpm, low oil 1.0 bar, tank 16.6 gal · `D-329` The heated washer nozzle and the wiper-park de-icer are cancelled; L2-S 6 and the L2-NZL receptacle come out. The outside-air conductor is untouched · `D-330` Battery data comes from the Ionic BMS over BLE; no shunt is bought, and current and state of charge wait on the protocol · `D-331` The master disconnect is the Blue Sea 9004e; its auxiliary pole is a switch-position input so the PMU drops excitation before the main contacts break · `D-332` Mirror heat is a bonded resistive pad on the F14 feed, not an integrated element
+**Most recent:** `D-351` The master-switch position sense is dropped and its conductor with it; the disconnect goes back to the simpler 9003e and the TVS stands alone · `D-352` The fuel pump gets a series relay off the ignition switch, K13, as the one mechanical back-stop against a shorted-on output · `D-353` The dead-module limp keeps two feeds, not three: the brake-lamp feed is dropped rather than run constant, and beacons go in the bag instead · `D-354` No PMU output is free, so the release solenoids stay on O10 and ACCESSORY gains a self-clearing release term · `D-355` The control panel is the DCU's faceplate, not its own board: no DP-KEY, no CAN node, a local ribbon to the DCU behind it
 
-Next id: `D-333`.
+Next id: `D-356`.
 
 ## Contents
 
-**electrical-build** — Architecture and scope (15) · Build sequence (9) · Legs, connectors and grounds (39) · Outputs, soft fuses and logic (24) · Power backbone and battery (18) · Switches, ladders and inputs (14) · The dash node (17) · The record itself (6) · Wire, labels and materials (5)
+**00-electrical** — Architecture and scope (15) · Build sequence (11) · Legs, connectors and grounds (40) · Outputs, soft fuses and logic (29) · Power backbone and battery (20) · Switches, ladders and inputs (17) · The dash node (20) · The record itself (8) · Wire, labels and materials (7)
 
-**engine-swap** — What the electrical build reserves for the swap (9)
+**01-luxury** — Comfort, mirrors, windows, seats (9) · Head unit and audio (1) · Lighting — the second pass (4) · Modules — DCU and ICU (15) · The boundary — what the electrical build hands over (4) · The cluster (7) · The record itself (6)
 
-**luxury-package** — Comfort, mirrors, windows, seats (9) · Head unit and audio (1) · Lighting — the second pass (4) · Modules — DCU and ICU (15) · The boundary — what the electrical build hands over (3) · The cluster (7) · The record itself (6)
+**02-engine** — What the electrical build reserves for the swap (9)
 
-**Superseded and withdrawn** — 14
+**Superseded and withdrawn** — 16
 
 
 ---
 
-# electrical-build
+# 00-electrical
 
 
 ## Architecture and scope
@@ -73,7 +73,7 @@ Next id: `D-333`.
 
 ## Build sequence
 
-*9 live — D-023 D-025 D-127 D-143 D-146 D-176 D-177 D-322 D-323*
+*11 live — D-023 D-025 D-127 D-143 D-146 D-176 D-177 D-322 D-323 D-344 D-353*
 
 **D-023 / D-024 — Parallel-system migration, least to most consequential, ending with ignition and start.** The factory harness stays intact and powered until each circuit's own cutover; never both systems on one load; the car drives home at the end of every session.
 
@@ -109,10 +109,38 @@ This **overrides the packet's own recommendation**, which was to pay Waytek, Wir
 **In the data.** `work` `A1` → blocked, gate `design freeze`. The phase gate into SOURCING now carries this decision by name, so no future run can read an empty §1 as permission to pay.
 *2026-09-11 · closes BLK-010*
 
+**D-344 — The limp-home procedure is a table inside the record, not a document; the glovebox kit is three parts; and writing it out found one thing the ruling could not have known.** Agent, 2026-09-12, carrying out `W-322` under D-322.
+
+D-322 ruled that the config file and a USB-to-CAN cable live in the car, plus "a one-page written emergency procedure" feeding fuel pump, ignition and brake lamps directly from the busbar. It also said the procedure "lands in the install record when the install steps exist". The install steps do not exist as rows in v3, and a page written outside the record would be the fifth thing to keep in step with it, so the procedure is a **table**: `recovery`, ten rows, `RC01`–`RC10`, ordered, with a `situation` of *always*, *soft fault* or *dead module*. It prints from the record, so the copy in the glovebox can never quietly diverge from the design.
+
+**What it says, in short.** RC01 is the disconnect, first, before anything, and it says why: a high-side MOSFET fails **short**, so an output can be live with the key out (D-336). RC02 separates a soft fault from a dead module in one look. RC03–RC05 are the roadside fix: laptop on `DP-DIAG`, read `pmu.status` and the per-output status, force the channel or raise that one soft fuse, drive home, and put it back. RC06–RC09 are the dead-module branch: confirm the module and not its supply, then three temporary busbar feeds — fuel pump on the O5 conductor at 10 A, ignition on O12 at **20 A** because it also carries F15's excitation and F16, brake lamps on O7 at 10 A — landed on the conductors at the node, never on the module's pins, with the module's own output disconnected so a half-dead PMU cannot back-feed. RC08 says plainly that the disconnect is now the key. RC10 says a limp-home wire left in place is the next fault.
+
+**The thing D-322 could not have known.** There is **nothing to switch the brake lamps with.** The brake pedal switch F-11 is a ladder contact — 4.7 kΩ to ground into A3 — and the spare P084 plunger beside it is a wake contact at the same signal level. Neither carries lamp current and neither ever will; that is what a ladder is. So a direct feed lights both brake lamps and leaves them lit: rear presence, no brake indication. RC09 says so in those words rather than pretending otherwise, and whether the kit gains a lamp-rated second pedal plunger — fitted at install while the pedal box is open, unwired until needed — is **`BLK-024`**.
+
+**In the data.** New table `recovery`, RC01–RC10. `parts` P138 the USB-to-CAN cable and P139 the three-holder kit, both glovebox items that are never fitted to the car.
+*2026-09-12*
+
+**D-353 — The dead-module limp keeps two feeds, not three. The brake-lamp feed is dropped rather than run constant, and a pair of beacons goes in the bag instead.** Camden's call, 2026-09-13, answering `BLK-024`: option (a), modified. Closes `BLK-024`.
+
+In his words: *"(a), modified — accept the dead-module limp, and **drop the brake-lamp feed** rather than run it constant. No plunger, no toggle, no change at the pedal."*
+
+**Why not the recommendation.** `BLK-024` recommended (c), a second lamp-rated plunger on the brake pedal, fitted while the pedal box is open and left unwired until needed. He rejected it as *"the right answer to the wrong question: it spends a part, a conductor stub and a line of install section 3 to improve a failure that is the least likely of the three PMU failure modes, behind config faults (already covered by RC03–RC05) and harness faults (RC06 already separates these)."* And he rejected running the feed constant on the grounds the block itself raised but did not follow to its conclusion: *"A constantly-lit brake lamp is not rear presence, it is false brake indication, and the drive it exists for is daylight, dry and short — where it buys close to nothing."*
+
+**The reasoning that makes this consistent rather than a retreat.** D-322 found that no PDM vendor documents a bypass and that the industry treats total module failure as accepted risk; a spare configured unit is the professional mitigation and is out on cost. *"This car accepts it too, on the same terms as the fuel pump, the alternator and the coil. The limp kit stays only because it is a ziploc bag that costs ~$18 and no install time — cheap enough to carry, not important enough to build the car around."*
+
+**And it moves the answer to where the hazard actually is.** *"The real hazard is not the drive home, it is being stopped and dark, and that is answered by visibility in the kit rather than by a switch on the pedal."* Magnetic LED beacons or a reflective triangle, $15–25, carried and never fitted.
+
+**In the data.** `recovery` RC07 — two feeds: fuel pump on the `O5` conductor at 10 A, landing on K13 terminal 87 (D-352), and ignition on the `O12` conductor at 20 A, which carries F15's excitation and F16 as well as the coils. The brake feed and its 10 A holder are gone; the landing rule is unchanged. `recovery` RC09 — brake lamps, tail and park join the list of what you do not have, the "ON CONSTANTLY" paragraph and the pointer to this block are deleted, and the beacons instruction goes in. `recovery` RC10 — the bag's contents. `parts` P139 — two holders, not three, plus the beacons. **Install section 3: no change**, and D-278 stands exactly as written — one spare P084 plunger as the wake contact, and any 2-terminal P085 as the stop-lamp switch.
+
+**One thing he added that is worth more than the part the block was arguing about.** *"Commissioning — add a one-time check: pull the PMU's feed in daylight, run RC07, confirm the car starts, runs and drives on the two temporary feeds, then restore. Proving the procedure once is worth more than any part this block considered."* That is **`CK11`**, and it is timed: if it takes more than about twenty minutes at a warm bench it will not happen at the roadside in the rain.
+
+Nothing else moves. `loads` LD03, `logic` BRAKE, `inputs` A3 and `ladders` A3 are untouched — the brake lamps remain a PMU channel driven from the A3 ladder, which is correct whenever the module is alive, and that is every drive but one.
+*2026-09-13 · closes BLK-024*
+
 
 ## Legs, connectors and grounds
 
-*39 live — D-017 D-029 D-032 D-034 D-045 D-065 D-069 D-079 D-092 D-115 D-159 D-171 D-217 D-218 D-232 D-250 D-252 D-254 D-255 D-258 D-260 D-261 D-262 D-263 D-264 D-265 D-266 D-267 D-268 D-269 D-270 D-271 D-272 D-273 D-274 D-281 D-283 D-317 D-329*
+*40 live — D-017 D-029 D-032 D-034 D-045 D-065 D-069 D-092 D-115 D-159 D-171 D-217 D-218 D-232 D-250 D-252 D-254 D-255 D-258 D-260 D-261 D-262 D-263 D-264 D-265 D-266 D-267 D-268 D-269 D-270 D-271 D-272 D-273 D-274 D-281 D-283 D-317 D-329 D-339 D-350*
 
 **D-017 / D-037 — Grounds never cross a leg connector; every zone has one star node straight to bare chassis (engine block, front stud, dash-node ground bus, rear stud, sill stud); pin 25 is the only PMU ground and carries every flyback return.** The five dash-post drops are the one exception: their grounds cross a connector because they are devices inches from the node with no zone of their own.
 
@@ -128,8 +156,6 @@ This **overrides the packet's own recommendation**, which was to pay Waytek, Wir
 **D-065 / D-067 / D-068 / D-132 — The sill node: window relays K5–K8 and fuses F8/F9 belong at the sill (dry, accessible, short motor legs), the doors get their own connector pair there (D1/D2), and the node is built now — sockets fitted empty, fuse positions labelled — even though nothing on it is live.** Building it behind a trim panel on a finished car costs an afternoon; building it now costs a few dollars.
 
 **D-069 — Pop-up relays stay at the dash node, not in the nose.** The nose is the wettest, hottest, most vibration-exposed part of the car.
-
-**D-079 — CAN2's far-end 120 Ω terminator is fitted now, capped in the engine bay across L1-S1 9/10, with the PMU's software termination at the other end.** The bus is electrically correct before any second node exists; node count never sets termination.
 
 **D-092 / D-093 — One DT06-08S per door: two 14 AWG window-motor legs, a spare, three mirror-motor conductors, mirror heat, and the door ground to the sill stud.** Independent wiring per side; the factory multiplexed mirror switch is dead and the mirrors will be new.
 
@@ -234,10 +260,38 @@ D-256 put two front-end conductors in for the climate module and this decision k
 **One number to recheck, not to assume.** D-256 added the 50 ft WireBarn cut `P009` because the 16 AWG RED family calculated at roughly 510 ft against a 500 ft spool, and `L2-S 6` was part of that total. Removing it plausibly drops the family back under the spool, which would delete `P009` — but that is a derived figure and it is recomputed from the wire schedule (`W-329`), never by hand here.
 *2026-09-11 · supersedes D-256 · closes BLK-017*
 
+**D-339 — Two routing rules the production-car benchmark earned: everything enters a module from below or with a drip loop, and the shielded tach core never runs beside a coil lead.** Agent, 2026-09-12, carrying out `G7` and `G11`.
+
+**Water (`G7`).** The classic Mercedes rear-SAM failure is water down a lamp seal or a blocked drain into a module. The FB's equivalents are the cowl seam and the windscreen, and the dash node sits in the footwell under both. `rules water-ingress`: every conductor enters the PMU, the dash node and each sill or rear panel **from below or with a drip loop**; nothing mounts in the **lowest 50 mm** of the footwell; the PMU's 39-way faces **down or sideways, never up**. Written now because moving a bracket while the dash is out costs nothing and moving it afterwards costs the dash. Where the water actually goes when the drains block is `CK04`, a look at M-1 — the rule does not wait on it.
+
+**EMC (`G11`), with one correction to the premise.** The row said "the engine leg carries the CAN2 drop and the tach line past the coils and igniters." **The engine leg no longer carries CAN2 at all.** D-318 released `L1-S1 9` and `10` to sealing plugs and moved every computer, including a future ECU, to the dash node. So the engine-bay exposure is the **shielded tach core** alone — and it is the worst run in the car, because it takes a trailing-coil negative primary past four coil and igniter leads. `rules emc-routing`: it crosses ignition leads at **90°** and never runs parallel to one within **50 mm**, with the drain to the GND bus at the dash-node end only, which the record already specified. CAN2's only remaining exposure is inside the dash, where the same 50 mm applies past the blower and wiper motor leads and the O1 pop-up motor bus.
+
+**In the data.** `rules water-ingress`, `rules emc-routing`, `checks` CK04. Both are install rules, so they govern how L1 and the dash node are **laid**, not only how they are drawn. No wire, no part, no cavity.
+*2026-09-12*
+
+**D-350 — The control panel is the DCU's faceplate, so `DP-KEY` and `L3-WIN` are deleted, `DP-DCU` gets a constant feed and a wake line, and parked operation becomes a PMU gate rather than a connector.** Camden's call, 2026-09-13, answering `BLK-021` — and not with any of the three options it offered. Closes `BLK-021`. The luxury side is `D-355`, which supersedes `D-210`.
+
+In his words: *"Neither (a), (b) nor (c) — the premise changes. The panel is the DCU's faceplate, not its own board (this resolves D-210's open half), so `DP-KEY` is deleted and the question moves to `DP-DCU`, which gets a constant feed and a wake line. Parked operation is then gated per-feature in the PMU, not at the connector."*
+
+**Why the premise changes.** `BLK-021` asked whether to buy the panel a constant feed and a wake line at `DP-KEY`, and priced three answers. All three assumed the panel was a CAN node with a board. It is not. *"A dumb faceplate has no MCU and no CAN node. It does not need `DP-KEY`'s CAN2 pair, switched 12 V and ground — it needs a local cable to the DCU sitting inches behind it in the same centre stack. Sixteen to twenty conductors for a key matrix plus rotary encoders is trivial as a ribbon and impossible as a Deutsch drop, so the local cable is the only shape that works anyway."* Option (c)'s DT-6 was buying a constant feed for a board that will not exist.
+
+**And the scope grew.** The window switch pack moves from the console to the centre panel, so `L3-WIN` goes with `DP-KEY`. The mirror control **stays hardwired at the old E-02 position** — five conductors straight to the dash post, no DCU, no CAN. *"`DP-DCU` is a DT-6 with one spare cavity and cannot carry the mirror commands, which originate at the post in the first place. Mirror adjust is the one function where software configuration buys nothing."* That closes luxury `Q-305`, and it settles the placement D-326 left open: D-326 already ruled the mirrors move on a mechanical switch with zero electronics, and said the panel's layout would have to find room for it. It does not — the control stays where Mazda put it.
+
+**Parked behaviour is a gate, not a power decision.** Every panel key carries an `A16` precondition **except** hatch release and fuel-door release, the two that exist to work parked. *"A16 is a ladder read, never a CAN term, so the PMU refuses regardless of what the panel sends"* — a hard floor under FT16's fail-to-off pattern, and what stops a bag bumping the defog key while the car is being unloaded. Most of it is already covered: `O15` is ON in RUN, so seat heat, the HVAC servos and mirror heat cannot be woken by a stray press. Only defog (`O4`) and the windows (`O1`) sit outside that bus.
+
+**No retained-accessory timer for the windows.** *"A timer would instead hold the module awake after EVERY key-off, against D-248's 30 s sleep and LD17's 30 mA target, to serve a case that almost never happens."* A press reaches the DCU on its constant feed, the DCU's wake line pulls the PMU up, the window runs. The cost is a perceptible delay on the first press after sleep and nothing after that. Accepted.
+
+**In the data.** `cavities` and `housings`: `DP-KEY` 1–4 and `L3-WIN` 1–6 deleted with both housings; `L3-S2 3–6` re-terminate at the centre panel; `DP-DCU 1` becomes a **constant** feed and `DP-DCU 6`, the housing's last spare, becomes the DCU's wake request. `fuses`: **F22**, 3 A, sealed inline off the busbar — assigned here rather than in the answer because that was the free-position job the ruling left to the record. Block A's F13 was not taken: D-274 has it for `L3-MOD`. `pins`: pin 7's wake strip gains a seventh diode-OR input, CAN2H/L drop the `DP-KEY` destination, and O10's consumer list drops the `DP-KEY` tap. `logic` `DEFOG` gains its trigger — the row read "no trigger this build", so this is the trigger and not an edit. `parts`: P124 and P129 4 → 3, P036 3 → 2, P099 4 → 3, P128 3 → 2, P035 2 → 1. `devices`: **DV52** the hardwired mirror control at E-02, **DV53** the faceplate on its ribbon, tapping `L3-S1 8` so it dims with the dash. `retired`: both housing names, in both areas.
+
+**Two consequences worth naming.** The constant feed is a permanent draw on the always-hot busbar that did not exist before — the DCU asleep is on D-280's sleeping budget now, and `CK02` is where that shows up. And D-341's tap audit listed `DP-KEY 3` among the five 16 AWG conductors on a 13 A channel; it is four now. That body is frozen (R4) and the finding is unchanged: every one of them is a tap carrying milliamps.
+
+**What this does not settle.** The windows share `O1` with the pop-up bus, whose retry class is `guarded` because a trip there means an obstruction — and a window reaching its stop is a legitimate spike that reads the same way. Camden: *"Needs its own ruling."* It is **`BLK-026`**.
+*2026-09-13 · closes BLK-021*
+
 
 ## Outputs, soft fuses and logic
 
-*24 live — D-009 D-010 D-011 D-013 D-015 D-038 D-047 D-095 D-120 D-126 D-164 D-166 D-183 D-223 D-225 D-226 D-243 D-248 D-251 D-253 D-257 D-279 D-280 D-282*
+*29 live — D-009 D-010 D-011 D-013 D-015 D-038 D-047 D-095 D-120 D-126 D-164 D-166 D-183 D-223 D-225 D-226 D-243 D-248 D-251 D-253 D-257 D-279 D-280 D-282 D-334 D-335 D-336 D-352 D-354*
 
 **D-009 — O1 (pop-up motor bus) and O16 (blower) carry the inductive loads, because they are the only two channels with integrated high-power flyback diodes.**
 
@@ -316,10 +370,91 @@ Already correct and worth not breaking: every CAN2 drop is fed from **O10**, whi
 *Field recovery from a dead output runs through the 25 A class only.* O13 / O14 (the swap's reserve) and O15 (comfort) are unallocated; **there is no spare 15 A or 7 A output**. A failed 15 A or 7 A channel therefore moves to a 25 A output with its enable-at re-set — the wire is unchanged and the 25 A channel is the more capable one. Written here because the alternative is working it out at the roadside (`Q-139` decides the limp-home strategy around it).
 *2026-09-08*
 
+**D-334 — An output's healthy current is a band around a measured baseline, never a typed number; the low half of the band is the module's own Min Current parameter, and channels below the module's measurement floor get no band at all.** Agent, 2026-09-12, carrying out `G1` against the PMU manual §9.1.
+
+`G1` asked for "a `healthy_a` band per output in `pins.csv`, recorded at shakedown, and PMU logic rows that flag a lamp channel reading under half its baseline or a motor over 1.5× it." Two things changed in the doing.
+
+**It is one stored number, not a band, because the band is derived (R2).** `pins.baseline_a` holds the current measured live at shakedown; the thresholds are `0.5 × baseline_a` low and `1.5 × baseline_a` high, and storing them would be two more numbers to drift. Nothing about `enable_a` changes — the soft fuse protects the wire and is sized from the conductor (D-279), and health is a different question asked of the same measurement.
+
+**The low half already exists in the module.** The PMU's **Min Current** parameter raises status **2 UNDERCURRENT** and — this is the part that makes it usable — **does not switch the output off**. D-279 already said undercurrent is an annunciator and no logic may be built on it; the manual agrees in the same words. So bulb-out costs one configuration field per channel, not a function. The high half is a written function, because the module has no "running high but under the fuse" concept.
+
+**The floor is the real constraint, and it rules two channels out.** Below a per-class threshold the PMU clips its own measurement to zero: about **0.5 A typical and up to 2 A** on the 25 A outputs, about **0.2 A** on the 15 A outputs, about **0.1 A** on the 7 A outputs. A channel whose baseline is not comfortably above its floor cannot have a band without crying wolf every time it is on. **O21 (start relay, 0.2 A) and O22 (keep-alive, 0.2 A)** are both 7 A channels sitting on their floor: they get none, and that is written down rather than discovered at shakedown. The 25 A channels are the ones to watch — HEAD_LOW at 3.0 A and HEAD_HIGH at 3.5 A are only a little above a floor that can be as high as 2 A, which is exactly why the number is measured and not computed from `est_a`.
+
+**In the data.** `pins.baseline_a` added, blank on every row until CK01 fills it. `rules health-band` carries the derivation and the floors. `checks` CK01 is the shakedown box: exercise each circuit, read `pmu.oN.current` in the client, record the steady figure, and treat a gap of more than about 20 % against `est_a` as a tired part rather than a bad reading — which is D-025's replacement list, arriving as a by-product.
+*2026-09-12*
+
+**D-335 — Retry is four named classes, not one rule and not three, and the pop-up bus is the one that must not retry.** Agent, 2026-09-12, carrying out `G2` under D-279's policy.
+
+D-279 split retry and latch by fault type but left every channel carrying the same "3 retries, 5 s". `G2` asked for three classes. Writing them out produced four, because one channel does not fit any of the three and pretending it does would be worse than an extra name.
+
+- **lamp** — 3 retries at 5 s, then latch **and annunciate**. A latched stop lamp or headlamp that says nothing is worse than a flickering one (D-279). Eleven channels, including the accessory and comfort buses and the horn.
+- **motor** — 5 retries at 15 s, no latch. A wiper stalled in snow or a blower against a blocked box is a thermal event that clears; the stall timer governs, not a current spike. Wipers high and low, blower, defog.
+- **critical** — 1 retry at 2 s, then off until the key leaves RUN. A fuel pump or an ignition that trips twice in three seconds is a fault, and quietly retrying it forever is how a chafe becomes a fire. Fuel pump, ignition, start relay.
+- **guarded** — 1 retry, then off and flag. **O1, the pop-up motor bus, and only O1.** An overcurrent here does not mean a marginal load; it means something is physically in the way, and a hand is the something. D-279 already noted O1 has no headroom — it sits at the 25 A ceiling against a measured 26 A both-sides stall — so its real handler is the D-186 obstruction timeout and retry exists only to ride out a cold morning.
+- **none** — keep-alive and the two capped swap channels.
+
+**Why a name and not just numbers.** The point of the column is that a channel cannot quietly differ from its peers: adding an output means choosing a class, and the class is the argument. The parameters map one-to-one onto the module's own Retry count / Retry every / Retry forever fields, so this is configuration, not firmware.
+
+**In the data.** `logic.retry_class` added and set on all 21 rows; `logic.retry` rewritten from prose to the class's parameters; `rules retry-class` holds the definitions and the reasoning. No wire, no part.
+*2026-09-12*
+
+**D-336 — The PMU cannot report an output stuck ON. The condition is inferable from output voltage against output state, it is annunciation only, and the master disconnect stays the one hard kill.** Agent, 2026-09-12, reading the PMU manual §6.1 for `G3`.
+
+`G3`'s premise is right and it is the failure mode this whole architecture inherits: **a relay fails open, a high-side MOSFET fails short.** An output stuck on runs its load with the key out and the module asleep.
+
+**The manual is silent, and definitively so.** The complete output-status vocabulary is `0 OFF · 1 ACTIVE · 2 UNDERCURRENT · 3 OVERCURRENT · 7 THERMAL SHUTDOWN`. Every one of them is a story about how much current is flowing through an output the module believes it is driving. There is no state for "commanded off and still live", and no fault code, LED colour or CAN bit for it.
+
+**It is detectable, and that is worth having.** The PMU measures **voltage** on every output — 0–16 V on the 25 A and 15 A pins, 0–20 V on the 7 A pins — and exposes it as `oN.voltage` alongside `oN.active`. Battery volts with `.active = 0` is a shorted switch, and a function saying so is three comparisons. `CK07` is that check at shakedown for O2, O3, O5, O7 and O12.
+
+**But a detector is not a stop.** The thing doing the annunciating is the module that just failed, and the output it would need to drive to warn you is on the same silicon. So the honest statement is: this buys a diagnosis, not a protection. The protection is mechanical and it is the **master disconnect** — which is why `recovery` RC01 is "open the master disconnect before you touch anything", first, before any other step, and why it says a high-side FET fails short rather than assuming the reader knows.
+
+**One thing the row did not know.** The PMU has a built-in **inertia switch** that drops every output when measured acceleration exceeds a configurable threshold, 6 G by default. That covers the crash case properly — as long as the module is alive, which is exactly the case a shorted FET is not.
+
+**In the data.** `checks` CK07. `recovery` RC01 and the whole dead-module branch. `rules health-band` notes that undercurrent annunciates and does not stop. The row's last question — whether **O5, the fuel pump**, gets a series relay off the key's RUN ladder as a hardware back-stop — is Camden's, as the row said, and is **`BLK-023`**.
+*2026-09-12*
+
+**D-352 — The fuel pump gets a series relay, K13, with its coil off the ignition switch — the one mechanical back-stop in the design against a shorted-on output.** Camden's call, 2026-09-13, answering `BLK-023`: **"b"**. Closes `BLK-023`.
+
+**The failure this answers.** D-336 read the PMU manual and found the module has no way to report an output stuck ON: `OFF / ACTIVE / UNDERCURRENT / OVERCURRENT / THERMAL SHUTDOWN` is the whole vocabulary, and every one of them is a story about current through an output the module believes it is driving. The failure mode changed when the fuse box left the car — **a relay fails open and a high-side MOSFET fails short** — so a shorted channel runs its load with the key out and the module asleep. `CK07` detects it from `oN.voltage` against `oN.active`, but a detector is not a stop, and the thing doing the annunciating is the module that just failed.
+
+`O5` is the one channel where that means a fuel pump running unattended rather than an inconvenience. `O21` was already covered (K9 is in series by construction), `O2`/`O3` are annoying rather than dangerous, and `O12` was rejected with option (c): ignition coils with no fuel and no cranking are a static load, and the branch around F15 and F16 is real complexity for a smaller risk.
+
+**How it is wired, and the one thing that is not assumed.** K13 sits at the dash node. Its contact is in the `O5` conductor — the conductor is cut at the node, terminal 30 takes the PMU side and 87 the pump side. **Its coil comes from a branch off `L3-S2 1`, the ignition switch's own IG output, and deliberately not from the PMU**: a back-stop that depends on the module it is backing up is not a back-stop. With the key out the pump cannot run whatever `O5` does.
+
+That leaves one question the drawing cannot answer: **does IG hold through START?** If it drops while cranking, K13 opens mid-crank and the pump stops at exactly the wrong moment. The factory circuit implies it holds — the coils are on IG and the engine fires while cranking — but that is an inference from a 1982 diagram about a switch in a 44-year-old car, which is precisely what R11 says not to conclude. It is **`CK10`**, five minutes with the cluster out, before the L3 leg is crimped. If IG does drop, the fix is one more conductor from the switch's ST terminal, diode-OR'd into the coil with a 1N5819 out of P071 — one wire and twenty cents, decided by a measurement instead of a guess.
+
+**The cost, stated.** One relay's worth of new failure surface in a circuit that had none, and a fifth socket at the dash node — `K3` and `K4` are empty but earmarked for the luxury package's hatch and fuel-door release triggers (D-180, D-274), so they were never spare.
+
+**A side effect worth having.** `recovery` RC07's limp-home fuel feed now lands on K13 terminal 87, downstream of the relay, so with a dead module the key still gates the pump exactly as it does with a live one. The dead-PMU drive got slightly safer as a by-product of this.
+
+**In the data.** `relays` K13. `node_conductors` N69–N72. `parts` P003 4 → 5 relays, P006 10 → 11 sockets. `checks` CK10. `recovery` RC07's detail.
+*2026-09-13 · closes BLK-023*
+
+**D-354 — The scan found no free PMU output, so the release solenoids stay on `O10` and ACCESSORY gains a short self-clearing release term.** Camden's call, 2026-09-13, answering `BLK-025`: **"Scan for an open output, if one exists b, if not a"**. Closes `BLK-025`. This is the scan and its result.
+
+**The problem.** D-350 solves the panel's power and the DCU's wake, and the actuators still do nothing: D-180 put both release solenoids on `O10` branches and `O10` is ACCESSORY, `A16 >= ACC`. Solving the connector did not solve the output.
+
+**The scan, in full, because the answer turns on it.** Twenty-two outputs are configured, `O1`–`O22`, and `O23`/`O24`'s pins are the `A15` and `A16` ladders, so all 24 output positions are accounted for (D-333). Working through the ones that look free:
+
+- **`O13` and `O14`** are the only outputs with no load at all — and both are the LS swap's reserves, pinned to `L1-P 2 / L1-P 3` at the post under D-271. Taking one **forecloses** something Camden has said he wants, which CLAUDE.md §3 puts squarely out of my hands, and the pins face the engine bay while the solenoids are on the L4 rear leg, so it is a re-termination as well as a foreclosure. **Not open.**
+- **`O4` DEFOG** is configured and disabled with no control surface — and D-350, the very ruling this one serves, just gave it the panel's defog key as its trigger. **Not open.**
+- **`O16` BLOWER** is configured and disabled because there is no motor this build; the luxury package brings one (D-253). **Not open.**
+- **`O15` COMFORT** is live with nothing connected, and the luxury package's fuse block plugs into it (D-274). **Not open.**
+- **`O19` REVERSE and `O22` KEEP_ALIVE** were `BLK-022`'s candidates for exactly this kind of reallocation, and D-351 declined to spend either. **Not open.**
+
+**So: no open output, and therefore (a).** `ACCESSORY` becomes `A16 >= ACC || release_pulse`, the pulse measured in hundreds of milliseconds and self-clearing, raised only by a hatch or fuel-door release command. The other `O10` consumers — the head unit, the USB ports, the ICU — coming up for the length of that pulse is harmless. It costs one expression term against option (b)'s whole output.
+
+**If a spare output ever appears cheaply,** (b) is still the cleaner shape and is worth revisiting then: nothing else on the channel would wake with them. `BLK-026` is the next thing to go looking, and it will find the same empty cupboard.
+
+**In the data.** `logic` ACCESSORY's expression. `loads` LD15 — the two solenoids were not in its consumer list at all, which is how a channel quietly acquires a load nobody budgeted; they are in it now, marked as a pulse rather than a steady draw, and the ~10 A worst case is unchanged because a release does not coincide with both USB ports loaded. `pins` `O10`'s circuit text.
+
+**What this confirms about the module.** Two rulings in two days have now gone looking for a spare channel and found none. That is not a coincidence to note in passing — it is the state of the design, `rules spare-capacity` says so, and the next feature that needs a channel is going to have to buy one.
+*2026-09-13 · closes BLK-025*
+
 
 ## Power backbone and battery
 
-*18 live — D-061 D-062 D-063 D-064 D-145 D-198 D-203 D-229 D-234 D-235 D-238 D-239 D-241 D-246 D-316 D-319 D-321 D-331*
+*20 live — D-061 D-062 D-063 D-064 D-145 D-198 D-203 D-229 D-234 D-235 D-238 D-239 D-241 D-246 D-316 D-319 D-321 D-337 D-347 D-351*
 
 **D-061 / D-091 — The starter feed and the PMU feed are separate runs from the battery post; the PMU feed is 2 AWG.** Cranking pulls 300–500 A briefly and cannot pass through a Class-T sized for the module feed. The master disconnect sits in the PMU leg, so opening it isolates the electrical system while the starter cable stays passive. 2 AWG (not 4) because it is sized for the swap engine, not the 12A — about $40 more now against pulling the tunnel a second time.
 
@@ -385,21 +520,53 @@ D-237 was correct when the cable was 2 AWG (~210 A). **D-246 then took the cable
 **In the data.** `fuses` MRBF → 250 A, same Blue Sea 5191 holder, about $17. `parts` P052 becomes the 250 A fuse; its exact Blue Sea SKU is marked `confirm` and verified before the Amazon cart is paid — which, under D-323, is not yet. `V-094` still closes the question properly with a clamp meter on the starter cable during a hot start, rather than from published curves.
 *2026-09-11 · supersedes D-237 · closes BLK-008*
 
-**D-331 — The master disconnect is the Blue Sea 9004e; its auxiliary pole is a switch-position input so the PMU drops excitation before the main contacts break, and a high-joule TVS goes across the PMU main feed.** Camden's call, 2026-09-11, answering `BLK-019`: option (b).
+**D-337 — ECUMaster publishes no quiescent or sleep current for the PMU, so D-280's bench measurement is the only number this design will ever have.** Agent, 2026-09-12, answering `G4`(a) against the manual.
 
-**The hazard.** An unsuppressed load dump on a 12 V system is ISO 7637-2 pulse **5a — 65–87 V for 40–400 ms**, and reported lithium BMS disconnects run **120 V and above**. There are two triggers. Opening the master with the engine running is the avoidable one. **The BMS opening while driving** — over-current, cell fault, over-temperature — needs no mistake and never goes away: lead-acid degrades gracefully and stays in circuit, a BMS opens in milliseconds at full charge current.
+`G4` asked me to "read the PMU's real sleep current from the manual and compute days-to-BMS-cutoff against the Ionic's capacity". The manual has no such figure. The specification tables give operating voltage (6–22 V), operating temperature, CPU, connectors and weight, and for outputs and inputs they are exhaustive — but there is no standby, sleep, quiescent or off-state current anywhere in 163 pages. D-280 already said as much and it is now confirmed rather than assumed.
 
-**Why the aux pole is used this way and not the obvious way.** The 9004e carries an Alternator Field Disconnect pole whose contacts open slightly *before* the main contacts. On an externally regulated alternator it opens the field directly. D-316 fixed this car to the FB/FC alternator, which is **internally regulated**, so there is no external field to open. But the PMU already owns excitation on O12 → F15, so the aux pole is read instead as a **switch-position input**: the PMU sees the master about to open and drops excitation in logic before the main path breaks. Same protection, achieved through a channel the design already had.
+**So the computation cannot be done and the arithmetic is already recorded.** D-280 carries it: on the 40 Ah pack, roughly **11 days at 150 mA and 80 days at 20 mA** before the BMS cuts off, with a bench measurement of an ECUMaster PMU reported at **under 20 mA**. The design's target is **≤ 30 mA, accept ≤ 50 mA**. Nothing here improves on that; what it does is close the door on getting the number from paper.
 
-**The TVS is independent of all of that.** A high-joule TVS across the PMU main feed at the module is the only thing that covers the BMS-opening case, which no switch can anticipate. It goes in whatever else is decided, and it is a couple of dollars. Separately, ECUMaster is to be asked directly whether the PMU's published "immunity according to ISO 7637" covers pulse **5a** unclamped or only **5b** — the TVS is fitted either way, so the answer changes nothing, it only tells us how much margin the module brings on its own.
+**Two things this run adds to it.** The pack's own cut-off is now recorded — **8.0 V** (00-CAR SP-232) — so the endpoint of that arithmetic is a real number rather than "flat". And `G4`'s (b), the clamp-meter box, is `CK02`: on the **battery negative cable**, engine off, one hour after key-off, which is a different reading from install 3.11's PMU-only bench figure and is the one that catches the amplifier, the head unit's constant through K11, the always-hot courtesy lamps on F19 and the pack's own BMS. Both are wanted; neither substitutes for the other.
 
-**In the data.** `parts` `P049` becomes the 9004e; the SKU and price carry `confirm` until the cart is re-priced, which under D-323 has not happened. A high-joule TVS for the PMU main feed becomes its own `parts` row — it is not `P106`, which is the ICU carrier's own protection. The switch-position conductor runs the L4 leg from the cargo bin to the dash and takes a spare size-16 cavity in `L4-S2`, which had three free. **The PMU input it lands on is not assigned here** (`W-331`): `inputs` lists A1–A6, A8, A15 and A16 but not A7, which HO04 uses, so the table does not yet describe the module's real channel set. That is completed against the PMU's channel list first, and if no input is genuinely free it becomes a block rather than a guess.
-*2026-09-11 · closes BLK-019*
+**`G4`(c) is already ruled and was not re-asked.** The row proposed a Victron SmartShunt as `Q-128`. **D-330 declined it** on 2026-09-11 and took battery data from the Ionic's own BMS over BLE instead, deferring the shunt rather than rejecting it. A solved question governs every case like it.
+
+**In the data.** `checks` CK02. `work` G4 done. No part, no wire, no change to LD17 — the estimate stands as an estimate until CK02 replaces it.
+*2026-09-12*
+
+**D-347 — The Ionic pack's own limits go into `00-CAR`, and the finding is that the factory charging band's top sits above the pack's ceiling.** Agent, 2026-09-12, carrying out `G5`.
+
+`G5` asked for the alternator's regulated voltage to be recorded at install 2.14 and the pack's maximum charge voltage to go into `00-CAR` from its sheet, "and if the alternator sits above it, the fix is the regulator, not the battery."
+
+**The pack, published.** Maximum charge **14.6 ± 0.1 V**, recommended float **13.9 ± 0.1 V**, discharge cut-off **8.0 V**, operating −20 to +60 °C. (`00-CAR` SP-231, SP-232 — vendor specification, marked `secondary`.)
+
+**The car, published.** SP-081 already carried the factory regulated-voltage specification: **14.2–15.2 V**.
+
+**Those two bands do not nest.** The top of what this car's charging system is *supposed* to do is **0.6 V above** what the battery will accept, and a healthy 44-year-old Mitsubishi alternator sitting at 15.0 V is in factory specification and over-charging a LiFePO4 pack every time the car runs. This is not a hypothetical about a tired regulator; it is the design point. Which end of that band this particular alternator sits at is `CK03` — battery posts, engine warm, 2000 rpm, lights off then on — and it is a five-minute reading with a real decision behind it.
+
+**Low-temperature charging, the other half of `G5`.** The Ionic's heater is the answer and it looks like it costs the sleeping budget nothing: self-heating packs of this class energise the pad only from an **active charging source**, roughly −20 to +5 °C on and off at +10 °C, and take nothing from the pack when no charger is connected. If that holds for the S9H it also dissolves `V-052`'s premise, which assumed a heater that could run for hours off the pack. **Ionic does not publish the S9H's own figures**, so SP-233 records it as `unverified` and the ask rides along with the BLE protocol request already going to them (`W-330b`).
+
+**In the data.** `00-CAR` SP-231, SP-232, SP-233. `checks` CK03. `work` G5 and V-052. No wire and no part — and if CK03 comes back high, the fix is a regulator, exactly as the row said.
+*2026-09-12*
+
+**D-351 — The master-switch position sense is dropped and its conductor is not run. The disconnect goes back to the simpler 9003e, and the TVS stands alone as the load-dump protection.** Camden's call, 2026-09-13, answering `BLK-022`. Closes `BLK-022`. *Supersedes* **D-331**.
+
+In his words: *"no need to keep the wiring for later i will not be digging that up to change it after this projetc, so sorta option d but keep the harness free of the wiring for the switch and swap the switch back to the simpler version, I as the only future owner will be very aware and never turn the swtich while the car is running no need for the failsafe"*
+
+**This goes further than option (d), and deliberately.** (d) said drop the sense but leave `L4-S2 6` in place and capped at both ends, on the theory that a spare conductor in a leg being cut anyway is cheap insurance. He declined the insurance for a reason that is his to give and is the correct kind of reason: he is the only future owner of this car, he will not open the master with the engine running, and he will not pull the interior apart later to use a wire he chose not to need. A capped conductor that will never be picked up is not a provision, it is a wire.
+
+**What D-331 ruled and what survives.** D-331 chose the Blue Sea **9004e** specifically for its Alternator Field Disconnect pole, read as a switch-position input so the PMU could drop `O12` excitation before the main contacts opened. With no sense, the aux pole has no job and the 9004e has no reason to be the part — so **P049 becomes the 9003e**, same e-Series, 350 A continuous and 1500 A cranking, which is what D-245 named before D-331 upgraded it.
+
+**Everything D-331 said about the hazard still stands, and so does its answer to it.** An unsuppressed load dump is ISO 7637-2 pulse 5a, 65–87 V for 40–400 ms, and a lithium BMS disconnect is reported at 120 V and above. There are two triggers and the aux pole only ever covered one: opening the master with the engine running, the avoidable one. **The BMS opening while driving needs no mistake and no switch can anticipate it** — over-current, cell fault, over-temperature, and a BMS opens in milliseconds at full charge current where a lead-acid would degrade gracefully and stay in circuit. The high-joule TVS across the PMU main feed, **P136**, is the part that covers that, it was always going in regardless, and it is now the whole of the load-dump answer rather than half of it. The question to ECUMaster about whether the PMU's published ISO 7637 immunity covers pulse 5a unclamped is unaffected: the TVS is fitted either way and the answer only says how much margin the module brings on its own.
+
+**In the data.** `cavities` `L4-S2 6` → PLUG, size 16 — the conductor is not run and `L4-S2` goes back to three spare cavities. `parts` P049 → 9003e, with the aux-pole sentence removed from `used_for` and the SKU still carrying `confirm` because under D-323 nothing has been priced. `recovery` RC01 → the 9003e, and the line about the aux pole dropping excitation first is replaced with the plain instruction: shut the engine down before you open it. `retired` gains *aux pole switch-position input*. `W-331` is done and was done; `BLK-022` was its last open end.
+
+**No PMU channel is freed by this.** D-333 established that all 39 positions are allocated; the sense had nowhere to land, which is why this was a block. Dropping it does not create a spare — it removes a claimant. That matters for `BLK-025` and `BLK-026`, both of which went looking.
+*2026-09-13 · supersedes D-331 · closes BLK-022*
 
 
 ## Switches, ladders and inputs
 
-*14 live — D-018 D-019 D-027 D-053 D-055 D-105 D-142 D-184 D-187 D-240 D-244 D-249 D-278 D-320*
+*17 live — D-018 D-019 D-027 D-053 D-055 D-105 D-142 D-184 D-187 D-240 D-244 D-249 D-278 D-320 D-338 D-343 D-348*
 
 **D-018 — Every switch input on A1–A8 is wired to ground with the internal 10 kΩ pull-up, never to 12 V. Only A9–A16 read 12 V directly, which is why the key and the headlight switch live there.**
 
@@ -448,10 +615,60 @@ The 1982 component list carries a **kick-down switch (B-32)** at the throttle pe
 **In the data.** This needs a dash-local conductor to the pedal box, a tunnel conductor to the transmission, and a feed with its own protection. Those cavity and fuse assignments are agent work (`W-320`) against the free positions in the L3 and L4 housings rather than guesses made here; the tunnel is open once, so the assignment lands before the L4 cut list is fixed. The switch and solenoid become `devices` rows so the record stops treating them as absent.
 *2026-09-11 · closes BLK-006*
 
+**D-338 — The PMU has a native delayed turn-off, so the keep-alive *expression* can move into it. The O22 conductor, its wake-strip diode and its drive to K11 do not move.** Agent, 2026-09-12, answering `V-075` from the manual §16.7.
+
+`V-075` asked whether a configurable power-down delay makes the O22 self-hold latch unnecessary. **It exists.** The *Delayed turn off* panel (F9 in the client) gives **Turn off minimum time**, **Turn off maximum time** and a **Turn off channel**, and it requires exactly the wiring this design already has — a separate battery feed at the stud and a switched 12 V at pin 7. While the module is in that state `pmu.isTurningOff` reads 1, and turning the ignition back on restarts it half a second later.
+
+**What may move.** D-248's rule set — release 30 s after the last input change with the key off and every door closed, and force release after 30 minutes whatever the doors read — is an expression today, held up by O22 feeding its own wake pin through a diode. That is a self-hold loop written in logic, and the panel does the same thing in the module's own firmware, with the force-off as a maximum time instead of a timer the logic has to run.
+
+**What does not move, and this is the point of writing it down.** `V-075` said "the `KEEP_ALIVE` output (pin 8, O22) and its wake-strip diode are redundant and K11 can be driven from that delay instead." Only the first half survives contact with the pin list. **O22 also drives K11**, the head unit's constant master, and there is no spare output to hand that job to — D-333 has just established there is not one free position on the module. And the wake-strip diode costs nothing to leave in place while removing it is a wiring change at the dash node. So: the conductor stays, the diode stays, K11 stays on O22, and only the expression is a candidate to move. That is the reading that keeps the most options open, and it is free.
+
+**One number the manual does not give.** It does not say what range *Turn off maximum time* accepts, and D-248 needs 30 minutes. If the field tops out below that, the expression stays exactly as written and nothing is lost. That is **`CK06`**, in the client at install §5.4 — a two-minute look, not a measurement on the car.
+
+**In the data.** `checks` CK06; `work` V-075 done. `rules sleep` and `logic KEEP_ALIVE` are unchanged until CK06 says the panel can hold 30 minutes.
+*2026-09-12*
+
+**D-343 — The kick-down gets its own 5 A inline fuse off the ignition output and three conductors, and it rides the tunnel run the road-speed pair is already using.** Agent, 2026-09-12, carrying out `W-320` under D-320.
+
+D-320 ruled the kick-down reproduced and operational and left the cavity and fuse assignment to `W-320`, against free positions rather than guesses made in the ruling. Here it is.
+
+**The circuit, as the factory had it.** Kick-down switch **B-32** at the throttle pedal closes at wide-open throttle and energises solenoid **B-33** on the transmission. No module is involved, and none can be: D-333 has just established that the PMU has no free channel to read the switch or drive the solenoid with. That is fine — a direct switch-to-solenoid circuit is what the car had and what D-320 asked to keep.
+
+**The feed: F21, 5 A, sealed inline off O12.** This follows the pattern F15, F16 and F20 already set for ignition-switched dash-node loads, and it means the kick-down is dead with the key out, which is correct. It deliberately does **not** come off F3: F3's 5 A also carries the ignition switch, the light switch and every wake stage, so a shorted solenoid there would take out all of them at once and leave the car with no inputs at all.
+
+**The three conductors.**
+- `L3-S2 12` — supply, F21 to the switch at the pedal. This was the last free cavity in that housing, which is worth knowing before anything else asks for one.
+- `L3-S3 4` — the switch's other terminal back to the dash post, linked there to the L4 leg. It lands in L3-S3 only because L3-S2 is now full; four positions remain in L3-S3.
+- `L4-S2 7` — post to the solenoid, down the tunnel. It shares the **RT21** run with the road-speed pair `L4-S 3 / 4`, so the tunnel still opens once (D-202) and the bundle grows by one 16 AWG conductor.
+
+The solenoid grounds on its own transmission case, as it always did — continuity to the body is confirmed at install §4 rather than assumed, because a 44-year-old case ground is exactly the kind of thing that is fine until it is not.
+
+**In the data.** `fuses` F21; `cavities` L3-S2 12, L3-S3 4, L4-S2 7; `devices` DV50 the switch and DV51 the solenoid; `parts` P137, one more sealed inline holder on the P002 line. `routes` RT21 names the shared tunnel run. The design no longer treats the kick-down as absent.
+*2026-09-12*
+
+**D-348 — `T-017` is done: every factory terminal letter the design lands a wire on has been read off the scans and all of them are right. Reading the scans found three things that are not, and each is now a row.** Agent, 2026-09-12, against `01-REFERENCE/factory-circuits/1982RX7WiringDiagram.pdf`.
+
+`T-017` was described as "the one remaining item where the *design* could still be wrong rather than merely unconfirmed", and the reason is precise: continuity testing proves the harness is built as drawn, not that the drawing is right. A wrong terminal letter sends a new conductor to the wrong terminal and nothing downstream catches it.
+
+**Pass one, by machine.** Every factory terminal letter claimed anywhere in `cavities.lands_on` or `devices.terminals`, checked against `OEM-RECORD.md`'s master component list: **69 claims, zero disagreements.** The only flags were switch *position* names — LOW, HIGH, INT, OFF — being read as colour codes, which is a defect in the regular expression and not in the record. This half catches a transcription slip between the frozen OEM record and the design; it cannot catch a slip in the OEM record itself.
+
+**Pass two, the scans.** Pages 10, 13, 16, 18, 20, 22 and 26 read as images at source resolution — sections **A** charging and starting, **B** ignition, kickdown and fuel pump, **C** meters, **D** wipers and washers, **E** headlights and illumination, **F** turn, stop, horn and markers, **H** interior, hatch and fuel door. That is every factory component the design lands a conductor on; section G contributes only `G-25` (LG, B) and section I nothing in this build. The connector tables at the foot of each page are legible and unambiguous.
+
+**Confirmed, letter by letter.** `A-01` BW for the automatic — the diagram gives BY for M/T and BW for A/T, and the design correctly takes the A/T wire. `A-06` BY, GY, BW, RW. `A-08` BW and WB. `A-09` WR. `B-18` YG on the trailing coil and `B-19` YL on the leading, which is exactly the way round the tach depends on. `B-32` two bullets, **BW in and BR out**, fed from the ignition-switched BW bus, with `B-33` grounding on its own case — the kick-down topology D-343 assigned before this check, unchanged by it. `C-01` Y and B, `C-02` YW, `C-04` BR, `C-05` BR and B, `C-09` BrY. `D-01` LB and LY. `D-02` LW, LR, L, LB and a separate B. `E-03` / `E-04` WR, YG, R, RY. `E-08` / `E-09` RL, RY, B. `E-06`, `E-07`, `E-10` RL and B. `F-04` RG, B. `F-05` RG, B, GR and `F-06` RG, B, GO. `F-07` GR, RW, G, RG, B and `F-08` the same with GO. `F-09` / `F-10` GY. `F-12` to `F-15` B and RG. `H-13` LR, GR; `H-14` GR, B; `H-15` LR, GB; `H-16` GB, B — so both release solenoids do have their own ground wire, which is what DV48 and DV49 said to confirm.
+
+**Finding one: the headlight load was wrong, and its own row said so.** `LD01` carried `design_a` **3.0 / 3.5 A** with the basis "published, two 55 W lamps". Two 55 W lamps is 8.1 A; 3.0 A is about one filament. The section E scan settles it — **60/50 W halogen per lamp** — so LOW is 100 W and HIGH is 120 W, **7.4 A and 8.9 A at 13.5 V**. `LD01` and `pins` O2 / O3 are corrected. Nothing about protection changes: `enable_a` stays 13.0 A on both, capped at the 14 AWG branch limit by D-243, and 8.9 A fits it comfortably. What changes is the 12 V budget and the number D-025's soft-fuse exercise starts from. Worth noting the pattern this sits in: `LD02`'s wattage arithmetic checks exactly against the same page, and `LD03` already reads "measured nearly double the estimate". Which bulbs are actually in the car is unknown and `BLK-015` may make them LED, so `CK01` remains the number that counts.
+
+**Finding two: `V-081` measures the wrong number of terminals.** The pop-up motor connector `E-03` / `E-04` is a **four-way** — WR, YG, R, RY — and in the factory circuit **WR is the motor's feed** off the 1.25 sq fusible link while R and RY are the up and down commands from the switch. The design caps WR and drives R / RY instead. `V-081` as written ohms only "R → case and RY → case", which cannot distinguish those topologies, and it is the one measurement the whole pin plan waits on (D-186, D-199), taken once, before the L2 leg is pinned. **`CK08`** replaces it: every pair and every terminal to case, at parked, half-raised and raised, on each motor. Five minutes more on a five-minute job.
+
+**Finding three: `DV15` reads the wiper motor's park terminals the opposite way round from the diagram.** The design says "L (park contact out) → 12 kΩ → `L2-S 3`" and caps LB. The section D scan shows **L as the feed into the park switch and LB as what the switch returns**, and the new design's A3 ladder wants a contact that closes to *ground*, which neither of them may do. **`CK09`** ohms L and LB against case and each other, parked and mid-sweep. The leg can absorb either answer because D-317 already reserved `L2-S 4` as a park return for a future motor family — but only if this is ohmed before the branch is crimped.
+
+**What is deliberately not claimed.** Nothing here says the *car* matches the diagram. A 44-year-old harness has been repaired, and the diagram is a 1982 document read at 170–300 dpi. This closes the question of whether the **design** transcribed the factory record correctly. Whether the wire in the loom is the colour the book says is `M-6` and `A5`, with a meter, and R11 stands: where a measurement and this record disagree, the measurement wins.
+*2026-09-12*
+
 
 ## The dash node
 
-*17 live — D-003 D-020 D-056 D-148 D-167 D-182 D-186 D-189 D-214 D-215 D-216 D-224 D-230 D-236 D-242 D-318 D-330*
+*20 live — D-003 D-020 D-056 D-148 D-167 D-182 D-186 D-189 D-214 D-215 D-216 D-224 D-230 D-236 D-242 D-318 D-330 D-333 D-345 D-346*
 
 **D-003 — Two-tier connector architecture.** The 39-way SICMA is a *device* connector at the dash node; short wires run from it to a receptacle for every leg and drop. Legs plug into the node; the 39-way is never touched again.
 
@@ -520,10 +737,49 @@ The 1982 component list carries a **kick-down switch (B-32)** at the throttle pe
 **In the data.** `parts` `P116` (the ESP32-C3 pair) keeps its place with the source now named. No shunt line is added. The CAN map keeps its battery-current and state-of-charge fields defined with no source behind them yet, marked so, rather than deleted — they are the shape the data will take when the protocol is known.
 *2026-09-11 · closes BLK-018*
 
+**D-333 — The PMU-24 DL's channel set is complete: it has sixteen analog channels, six of them are configured as outputs, and not one of the 39 positions is spare.** Agent, 2026-09-12, against `01-REFERENCE/PMU_info/PMU-24_Pinout_v1.0.pdf` and the manual's specification tables, completing `W-331` as D-331 required.
+
+D-331 ended by saying the input for the master-switch position sense "is not assigned here" and that `inputs` "lists A1–A6, A8, A15 and A16 but not A7, so the table does not yet describe the module's real channel set." It does now, and the answer is worse than a missing row.
+
+**What the module actually has.** Eight dedicated analog inputs **A1–A8**, 10-bit, 0–5 V, 20 V maximum, with software-selectable 10 kΩ pull-up or pull-down. Eight more channels **A9–A16** that **share their pins with outputs O17–O24** — 12-bit, 0–20 V, 30 V maximum, configurable as input *or* 7 A high-side output, one or the other. Then O1–O5 and O12–O16 at 25 A, and O6–O11 at 15 A, on their own pins.
+
+**What this design does with them.** A1–A8 are all used: turn stalk, wiper stalk, brake and park, pop-up L, pop-up R, door jambs, **the oil-pressure node (A7)** and the hazard/horn/wink ladder. A9–A14 are all configured as **outputs** — O17 turn L, O18 turn R, O19 reverse, O20 interior, O21 start relay, O22 keep-alive. A15 and A16 are the headlight and key ladders, on the 12-bit side because they are read on the 12 V rail. O1–O16 are all assigned, with O13 and O14 capped for the swap. Counting: 22 outputs + 10 inputs + `+12V sw` + `+5V out` + ground + two CAN pairs = 39. **Every position.**
+
+**So there is no free input and no free output.** `G12` asked me to write the expansion path down and assumed "all 22 outputs are allocated (two to the swap) and all ten inputs"; the truth is sixteen channels, not ten, and the six that look like spare inputs are already outputs. This is not a shortage that turns up at commissioning — it turns up the first time anyone wants one more thing, which is now.
+
+**In the data.** `inputs` gains A7 and gains A9–A14 as `kind=output`, so the table finally describes the module's channel set rather than a subset of it; the enum widened to take `output`, deliberately, and `_tables` says what the table is now for. `rules spare-capacity` writes the growth path down: it starts at a relay socket, a fuse position, the O15 comfort bus, a capped module drop, or a second PMU — never at a channel. **`W-331` cannot be finished** and becomes `BLK-022`: which channel gives way, or does the sense go. The `L4-S2 6` conductor stays as drawn until that is answered.
+*2026-09-12*
+
+**D-345 — The ICU publishes the pack and the four cells as voltage, on two frames at 2 Hz, and leaves current, state of charge and temperature undefined rather than publishing zeros.** Agent, 2026-09-12, carrying out `W-330` under D-330.
+
+D-330 chose the Ionic BMS over BLE and no shunt, and left the reader and the CAN publication to `W-330`.
+
+**The reader.** The ESP32-C3 does both proven reads and nothing else. A **passive advertisement scan** gives pack millivolts with no connection, no pairing and nothing that can hang, and it keeps working while a phone is also connected. A **GATT client on `FFE1`** (service `FFE0`) gives the type-01 cell frame — `7E 01 08`, four little-endian uint16 cell counts at about 1.43 mV per count, checksum, `0D` — one connection at a time, opened only when cell detail is wanted. **Never a write. `FFE7` and anything labelled DFU are never touched**, at any point, by any code path: that is the firmware-update door on the BMS that runs the car's power, and the downside is a bricked pack in the cargo bin. Bring-up on a dev board (P116) before anything talks to the car's pack.
+
+**The publication.** `0x220` at 2 Hz — pack mV, cell 1 mV, cell 2 mV, flags. `0x221` at 2 Hz — cell 3 mV, cell 4 mV, the spread in mV, flags. The flags are freshness, not health: advertisement fresh (under 10 s), GATT connected, cell frame fresh, checksum failed. The spread is derived on the ICU because it is the number that actually says something about the pack — one count of spread is a healthy balance, and a widening spread over months is the thing worth watching.
+
+**What is not published, and why that is a decision.** The type-01 frame carries **voltages only**. Pack current, state of charge and temperature have no source, so they are **not on the bus at all** — not as zero, not as 0xFF. A zero on a bus is a number and someone will eventually believe it, on a gauge or in a log, and a battery reading 0 A while cranking is worse than a battery reading nothing. The fields stay defined in the CAN map with no source behind them, marked so, which is the shape they take the day the protocol is known. That day is `W-330b` — the ask to Ionic — and D-330's deferred SmartShunt is still the fallback that would answer it with hardware.
+
+**In the data.** `icu_channels` IC24 rewritten: the reader, the frames, the prohibition, and the bring-up cross-check that the four cell counts summed must agree with the advertised pack voltage, which is how the 1.43 mV scale was confirmed in the first place.
+*2026-09-12*
+
+**D-346 — CAN2's second 120 Ω terminator is at the dash node. D-079 is superseded on the terminator's location and stands on everything else.** Agent, 2026-09-12, applying a consequence D-318 stated and the rows never received. *Supersedes* **D-079**.
+
+D-079 fitted the far-end terminator "in the engine bay, capped across `L1-S1 9/10`", with the PMU's software termination at the other end, and its principle — the bus is electrically correct before any second node exists, and node count never sets termination — is untouched and remains the rule.
+
+**Then D-318 deleted the engine-bay drop.** Camden ruled that CAN never leaves the dashboard: no rear node, no engine-bay drop, and every computer including a future ECU is a dash node. `L1-S1 9` and `10` went back to sealing plugs and, in D-318's own words, "the terminator moves to the dash node, which becomes a physical end of the bus rather than the middle of it."
+
+**The rows did not follow.** `pins` pin 24 still read "120 Ω at the engine-bay drop" and both CAN2 pins still listed `L1-S1 9` and `L1-S1 10` among their destinations — cavities that are sealing plugs. Anyone reading the pin table would have built a bus with one terminator and a stub to nowhere. This decision exists so the supersession is visible in `DECISIONS.md` and searching for D-079 leads here.
+
+**Where it physically goes.** Across the CAN2 pair at the **dash node itself**, at the end of the run — not inside any drop's plug. That keeps the bus a line with two ends, the PMU and the node, and leaves `DP-ICU-A`, `DP-DCU` and `DP-KEY` as short stubs off a properly terminated backbone, all of them inside the dash and none long enough to matter at 500 kbps. Putting it in a drop's plug would have made the terminator depend on which module is fitted, and `DP-KEY` is dust-capped this build.
+
+**In the data.** `pins` pin 24 circuit and destinations, pin 37 destinations. The ten carted 120 Ω resistors (P070) are unaffected — D-318 already said so. CAN1's two terminators, at the PMU and inside the `DP-DIAG` plug, are a separate bus and unchanged.
+*2026-09-12 · supersedes D-079*
+
 
 ## The record itself
 
-*6 live — D-026 D-222 D-233 D-275 D-276 D-277*
+*8 live — D-026 D-222 D-233 D-275 D-276 D-277 D-340 D-349*
 
 **D-026 / D-043 — Working files are Markdown; IDs are permanent and never reused; a closed question is cited with its closer.**
 
@@ -542,10 +798,34 @@ The 1982 component list carries a **kick-down switch (B-32)** at the throttle pe
 **D-277 — The cart is dialed to the design as it stands after D-272 / D-273 / D-274, and the Deutsch assembly kits are data.** Camden, 2026-09-08: make the cart perfect — everything the current plan needs and nothing it no longer needs, and every future circuit wired into its main leg and ending in half a connector where it diverges, both halves bought, one fitted. The kit lines were the one place the cart was prose ("the cart holds two pairs"); they are now fourteen lines, one per kit SKU, each with the quantity the cart holds and a `kit:<type>` need rule derived from the housing table, so `build` refuses the moment a housing is added or changed without its kit — the same rule the sealing plugs and clips already lived under. Against the housings today: 12-way plugs drop 7 → 6 and receptacles 7 → 5 (D-258, D-270); 8-way 5 → 6 pairs (L4-S2); 6-way plugs 2 → 4 and receptacles 2 → 3; 4-way 2 → 4 pairs; 2-way 1 → 4 pairs; DTP-2 1 → 3 pairs; DTP-4 stays at 3. Checked and confirmed: sealing plugs (84 / 6), clips (28), the 14 AWG contacts (18 of each), dust caps (2 × 6-way, 3 × 4-way, 3 × 2-way, 2 × DTP-2, no 12-way), relays and their ten sockets, the four inlines, the backbone cable, lugs and boots after D-245 / D-246, the three added 16 AWG colours. Corrected: the label tape to four cartridges (about 300 conductors, two ends each — three cartridges was short), the 14 AWG RED note (the door legs are RESERVED; only the four K5–K8 → D1 / D2 wires remain), the ICU enclosure line (printed ASA / PETG, D-270), and a perfboard for the sense stages and bias resistors, which no line carried. The rule itself holds everywhere but one place: `L4-P 3` and `L4-P 4` end at the sill node's F8 / F9 / F14 positions, which have no holders this build — a bare end on the harness. `Q-133` → D-283 ruled the three holders in now, fitted empty. Extends D-222 / D-238; the §8 gap list is derived from these lines and is the whole of what changes at the four stores.
 *2026-09-08*
 
+**D-340 — Two conventions written down: a cavity number is the number moulded into the housing, and the fuse-lid card is a query rather than a document.** Agent, 2026-09-12, carrying out `G14` and `G10`.
+
+**Cavity numbers (`G14`).** Every OEM harness print states its view convention at the top — wire side or mating side — because a mirror-image reading is the classic way to build a perfect harness backwards. This record has no such convention and does not need one, and that is the thing to say out loud: **a cavity number here is the number moulded into the housing itself.** Read it off the part. That is a reason the DT family suits this build — the number is on the moulding, so there is nothing to mirror. A factory plug is different: `lands_on` carries Mazda's terminal **letter** from the factory diagram, not a cavity number, and the two never share a cell. The row asked for one sentence at the head of a wire-tables document; in v3 the home for a convention is `rules`, where the check can see it.
+
+**The fuse-lid card (`G10`).** Every OEM junction block carries its map on the lid; here the map is a config sheet in a binder, which is the same problem one layer up. The row asked for "a template and a view". **CLAUDE.md §1 forbids the view**, and rightly: `DECISIONS.md` is the one generated document and the visual layer is a later concern. But the card's content is entirely derived, so it does not need a template — it needs a query, and `rules fuse-lid-card` carries the two `sql` lines that print it: the outputs with their circuits and soft-fuse limits, and the fuse positions with their labels and feeds. Printed and laminated when there is something to print with, one at the dash node and one in the glovebox beside the laptop port. Because it is a query it can never disagree with the record, which is the only reason a card is allowed to exist at all.
+
+**In the data.** `rules cavity-numbers`, `rules fuse-lid-card`. Nothing generated, nothing to keep in step.
+*2026-09-12*
+
+**D-349 — The project directories are `00-electrical`, `01-luxury` and `02-engine`. The directory name is the area's identity, `_project.csv`'s `name` follows it, and the decision bodies keep the old paths on purpose.** Agent, 2026-09-13, carrying out a rename Camden made in the file system.
+
+`02-PROJECTS/electrical-build` became `00-electrical`, `luxury-package` became `01-luxury`, and `engine-swap` became `02-engine`. The record stayed valid through it because `rx7.py` finds areas by scanning for `data/_tables.csv`, not from a list — but 137 references across 40 files did not.
+
+**The directory name is the identity.** `resolve_area` matches the directory and nothing else, so `rx7.py sql electrical-build` stopped working the moment the folder moved. `_project.csv`'s `name` was still the old string and is not read by the tool at all, which made it a second home for the area's name that could disagree with the first (R2). It now matches the directory in all three areas. One name, and it is the one the commands take.
+
+**What was carried across.** `.gitignore`, and this is the one that mattered: line 48 is `!02-PROJECTS/.../cad/**/*.svg`, the negation that lets the ICU carrier's schematic picture be committed at all under the tree-wide `*.svg` rule. Stale, that picture would have been silently ignored and a hardware change would have gone in unreviewable — which is the exact failure CONVENTIONS §4 exists to prevent. Then `_project.csv` in all three areas; live prose in `00-CAR`, `01-REFERENCE`, all three project areas, `BLOCKS.md`'s block headers, `CLAUDE.md`, the `cad/` documents and the schematic's title block; and `tools/rx7.py`, whose gate documentation and selftest fixtures both named areas that no longer exist.
+
+**What was deliberately left alone, and why it is not an oversight.** **Eleven decision bodies** still say `electrical-build`, and `99-ARCHIVE` says it everywhere. R4: a decision, once written, is never edited. Those bodies are the record of what was decided on the day it was decided, and the paths in them were correct then. Rewriting eleven frozen files to chase a cosmetic rename is exactly the churn R4 exists to stop, and it would put the tree one careless regex away from a changed ruling. **So: anything older than 2026-09-13 that says `electrical-build` means `00-electrical`, `luxury-package` means `01-luxury`, and `engine-swap` means `02-engine`.** That sentence is why this decision exists — one home for the fact, instead of eleven edits.
+
+`DECISIONS.md` is regenerated from those bodies, so it carries the old names too. That is correct: it is a projection and adds no fact of its own.
+
+**One thing this does not do.** It does not teach `resolve_area` to accept an old name or an alias. Two ways to name an area is the same drift in a new coat. If a rename happens again, this is the pass to repeat.
+*2026-09-13*
+
 
 ## Wire, labels and materials
 
-*5 live — D-135 D-141 D-205 D-212 D-220*
+*7 live — D-135 D-141 D-205 D-212 D-220 D-341 D-342*
 
 **D-135 / D-220 — SICMA terminal spares come from the two spare 39-way housings in hand (54 small, 32 large), so there is no Ballenger order.** Zero spares in the car's own set is why the practice crimps use the spare sets first.
 
@@ -559,61 +839,36 @@ The 1982 component list carries a **kick-down switch (B-32)** at the throttle pe
 **D-220 — The 2026-09-02 order changes, Camden's own edits to the carts:** the wink switches are the DMWD 1NO+1NC momentary 2-pack (replacing a 5-pack); the ATC fuse assortment is out — the drawer is checked and any missing value bought locally; the 12 × 24 aluminium sheet is out (D-214); a stainless star-washer kit and three clear heat-shrink packs are in; relays are bought without spares; no spare housing pairs.
 *2026-09-02*
 
+**D-341 — The bundle-derating audit finds nothing to change: every 16 AWG conductor on a channel enabled above 10 A is a tap already marked as one, and no conductor in this harness, at any gauge, is loaded continuously above 10 A.** Agent, 2026-09-12, carrying out `G8`.
 
----
+`G8`'s concern is a good one. OEMs run sealed 1.5 mm contacts at about **10 A continuous in a loom**, not at their 13 A single-contact rating, because a bundle cannot shed heat the way a bench test can — and D-232 lets 16 AWG sit at exactly 13.0 A. The question was which conductors that actually bites.
 
-# engine-swap
+**The query.** Five 16 AWG conductors sit on a channel enabled above 10 A: `DP-ICU-A 1`, `DP-DCU 1`, `DP-KEY 3` and `L4-S 4` off **O10** at 13.0 A, and `DP-ICU-B 12` off **O3** at 13.0 A. **All five already carry `src_note=tap`**, which is precisely the exception D-232 wrote — four of them are the cases D-232 named and the fifth is the road-speed sensor supply D-272 added later, correctly marked when it was added.
 
+**And none of them carries current.** The ICU's logic rail draws about 0.8 A peak; the two capped module drops draw nothing; the road-speed sensor draws milliamps; the high-beam tell-tale sense is an input to a divider. The 13.0 A is the **channel's soft fuse**, sized to protect the 14 AWG branch behind it, not a description of the conductor's load. That distinction is the whole answer.
 
-## What the electrical build reserves for the swap
+**Checked the other way too.** No 14 AWG conductor is loaded above 10 A either: O8 and O9 are held at 13.0 A by the DT contact rating (D-223) but draw 4.0 A and 5.5 A; O11 is enabled at 13.0 A and draws 6.0 A. The largest continuous load in the harness on anything smaller than 12 AWG is the horn at 6.0 A. There is nothing for OEM bundle derating to bite on.
 
-*9 live — D-007 D-091 D-113 D-173 D-183 D-187 D-211 D-324 D-325*
+**In the data.** Nothing. That is the finding, and it is worth a decision precisely so nobody runs the query again in six months.
+*2026-09-12*
 
-**D-007 — O13 and O14 (25 A) are reserved for the swap engine's ECU/injectors and cooling fan**, wired to the engine leg and capped at the bulkhead (L1-P 2, L1-P 3). Three 16 AWG sensor spares (L1-S2 4–6) and the CAN2 drop (L1-S1 9/10, with the bus's far-end 120 Ω terminator across it) are capped in the same place.
-*inherited - owned by another project*
+**D-342 — Route lengths become a measured table. The wire schedule, and `W-329` with it, wait on M-2 rather than on another estimate.** Agent, 2026-09-12, carrying out `G13` and re-gating `W-329`.
 
-**D-091 — The main feed is 2 AWG, sized for the swap engine, not the 12A**, so the tunnel is never pulled a second time.
-*inherited - owned by another project*
+`W-329` asked me to recompute the 16 AWG RED family after D-329 removed `L2-S 6`, and D-329 was explicit that this is "a derived figure … recomputed from the wire schedule, never by hand here." **It cannot be recomputed, because the record contains no lengths.** Not one: `cavities` has gauge and colour and destination but no distance, `cables` has feet for the eleven heavy runs and nothing else does. The ~510 ft that D-256 quoted against a 500 ft spool was never derived from the cavity table — it was D-202's hand estimate at 1.5×, and subtracting one front-leg conductor from it by eye would be exactly the hand arithmetic D-329 refused.
 
-**D-113 — The rear disc conversion and the rear axle are still planned.** The July 2026 drum overhaul was an interim so the car could be driven; the intent is a thoroughly sorted rear axle and engine that then last.
+**Rivian's lesson is the right one and it is not about the estimate.** They took 1.6 miles of wire out by *measuring* what a zonal layout needed. Here the footage is the design, and it is the one derived fact still typed.
 
-**Electrical D-261 / D-262 — the 12A's senders stay and are read in place; every ICU sensor channel is jumper-and-config, the PMU's A7 takes a sender or a 0–5 V transducer.** What the new engine must deliver to those inputs is the hand-over table in [`README.md`](README.md).
-*inherited - owned by another project*
+**So the table exists now and the numbers wait.** `routes` — leg, from, to, via, feet — with **21 rows and every `ft` blank**: the five L1 runs, four L2, five L3, five L4 and the sill, each naming the grommet or path the tape follows. M-2 is now a checklist rather than a memory test, which matters because the interior comes apart once (D-202) and a route not measured that day is a route estimated forever. The cut length stays 1.5× the measured route.
 
-**D-173 — The fuel-pump soft fuse (4.0 A, set for the Carter P4070) is re-set from the in-tank pump's spec at the swap.**
-*inherited - owned by another project*
+**Consequence for the carts.** `W-329` is gated on `G13` and `G13` on `C1`'s M-2. If the 16 AWG RED family does come in under the 500 ft spool, `P009` — the 50 ft WireBarn cut D-256 added — leaves the order. Nothing is paid before then anyway (D-323), so the sequence costs nothing.
 
-**D-183 — The PMU's fuel-pump and start-relay rules gain their rpm terms once rpm is on CAN2.** The ICU publishes it on `0x200` from the first drive (electrical D-259); the ECU's own arrives on `0x500+` at the swap. Either is a *secondary*, fail-open term — the primary gate is the hardwired oil-pressure node on A7 (electrical D-249 / D-251).
-*inherited - owned by another project*
-
-**D-187 — The automatic's inhibitor switch is read on A4 (P/N, crank interlock) and A5 (R, reverse lamps) through the engine leg (L1-S1 11, L1-S2 7).** Both disappear with the automatic; the transmission that replaces it needs its own P/N and reverse signals into the same two ladder states.
-*inherited - owned by another project*
-
-**D-211(d) — The engine leg (L1) is built to be cut off at the firewall grommet and rebuilt from scratch at the swap.** It carries only what the 12A on the mounts needs today — no stubs to nothing, no connectors marking where something used to be. The reservations above are the only exceptions. Everything else about the new engine's wiring — ECU, sensors, fans, a PMU-driven A/C clutch and pressure transducer — is designed here, around whatever the engine is.
-
-**D-211 — The 12A's A/C system comes out and cooling returns with the new engine.** The compressor, bracket, condenser and hoses are boxed and kept (FB A/C hardware is scarce). The new system is a new compressor on the new engine, a PMU-driven clutch and a pressure transducer — not the 1982 relay chain.
-*inherited - owned by another project*
-
-**D-324 — The A/C clutch is a DCU-switched comfort load; the PMU is not opened for it.** Camden's call, 2026-09-11, answering `BLK-011`: "I want all A/C comfort controls together manged by the dcu no pmu tear down and change up."
-
-D-211 said "a PMU-driven clutch and a pressure transducer", but every one of the PMU's 22 outputs is allocated — O13 and O14 are this project's ECU and cooling fan. Rather than re-allocate a channel and reopen a 39-way connector that D-004 assembles once, the clutch joins the comfort group where the rest of the A/C controls already are.
-
-**The arrangement.** The clutch is a relay whose coil the **DCU** switches on one of its seven comfort FETs (luxury `SN16`, parts under luxury `V-083`), contact fed from the luxury package's **O15 comfort block**. The pressure transducer goes to a **DCU input**. The A/C toggle is already drawn on the control panel (luxury D-210). No PMU output, no harness change, and the clutch feed runs from the O15 block into the rebuilt engine leg at the swap — which suits D-271, since the leg is built from scratch then anyway.
-
-**What this forecloses, accepted.** The clutch cannot engage with the DCU down. That is the correct trade for a comfort load: it matches D-081's principle that modules add capability to a finished car and are never a dependency for it starting, running or being legal.
-*2026-09-11 · closes BLK-011*
-
-**D-325 — The swap ECU is a dash node; no CAN and no ECU in the engine bay.** Camden's call, 2026-09-11, inside `BLK-004`: "I do not want the ecu in the engine bay … I want as stripped clean of an engine bay as possible and do not want to put anything there unless there is no way to avoid it. The ECU will also be a dash node localized with all the other computers and more intricate wiring, then only the small branches travel everywhere."
-
-The electrical build's counterpart is **D-318**. The consequence here is that `HO03` changes shape: CAN2 no longer reaches the bay, `L1-S1 9` and `10` return to sealing plugs, and the far-end 120 Ω terminator moves to the dash node. A future ECU joins the bus **at the dash**, at 0x500+ as luxury's CAN map already allocates, and what leaves the dash for the engine is only the sensor and actuator branches the rebuilt leg pins.
-
-**What this asks of the swap.** The ECU must be one that tolerates a cabin mounting and a longer sensor harness — which is the normal case for every ECU worth fitting, and is how the factory mounted its own control units. Long runs to crank and cam sensors are shielded, as `L1-S1 6` already is for the tach. Nothing about this reserves less: O13 and O14 stay the ECU and fan channels (D-007), and the leg still ends at the firewall grommet (D-211).
-*2026-09-11 · closes BLK-004*
+**In the data.** New table `routes`, 21 rows, `ft` blank. `work` G13 gated on C1, W-329 gated on G13, both with the reason in the note rather than in someone's memory.
+*2026-09-12*
 
 
 ---
 
-# luxury-package
+# 01-luxury
 
 
 ## Comfort, mirrors, windows, seats
@@ -737,7 +992,7 @@ D-305 fixed the mirror feature set at adjustment and heat. The search for a mirr
 
 ## The boundary — what the electrical build hands over
 
-*3 live — D-081 D-208 D-210*
+*4 live — D-081 D-208 D-210 D-355*
 
 **D-081 — Modules join a finished car.** The PMU harness drives, shakes down and has its factory harness removed first; nothing here is a dependency for the car starting, running or being legal.
 *inherited - owned by another project*
@@ -768,6 +1023,27 @@ D-305 fixed the mirror feature set at adjustment and heat. The search for a mirr
 
 **D-209(b)(e) — Still to design here:** the parking-brake sense (no input in the PMU build — a switch into a spare ladder state, or a CAN node), and the hatch latch switch (K-016, broken, unsourced).
 *inherited - owned by another project*
+
+**D-355 — The control panel is the DCU's faceplate: no board of its own, no CAN node, no `DP-KEY`, and a local ribbon to the DCU sitting behind it.** Camden's call, 2026-09-13, answering electrical `BLK-021`. *Supersedes* **D-210**. The harness side is electrical **D-350**.
+
+**What D-210 said and what survives.** D-210 ruled out an ECUMaster keypad, made the panel a custom design, reserved frame `0x400` for it, and kept the wink switches hardwired in the electrical build because they must work with the panel asleep and their NC poles interrupt the pop-up relay coils. **All of that stands.** What changes is the half D-210 left open — `modules` recorded the panel's board as *"Own board, or the DCU's faceplate"* — and the consequence that followed from picking the wrong half: that it *"lands on DP-KEY"*.
+
+In Camden's words: *"The panel is the DCU's faceplate, not its own board (this resolves D-210's open half), so `DP-KEY` is deleted."* And the reason it was never really a choice: *"A dumb faceplate has no MCU and no CAN node… Sixteen to twenty conductors for a key matrix plus rotary encoders is trivial as a ribbon and impossible as a Deutsch drop, so the local cable is the only shape that works anyway."*
+
+**The DCU changes shape to carry it.** `DP-DCU 1` becomes a **constant** feed on its own inline fuse rather than the `O10` accessory tap it was, because the DCU has to be alive with the key out to see a panel press; and `DP-DCU 6`, the housing's one spare cavity, becomes the DCU's **wake request** into the PMU's diode-OR strip. The housing is full now — which is why the mirror commands cannot live on it, and they never needed to.
+
+**Mirrors: D-326 with its placement settled.** D-326 already ruled that the mirrors move on a mechanical switch wired straight to `L4-S2` at the post, with zero electronics and no CAN message, and it noted the panel's layout would have to find room for that control. It does not: the control **stays at the old E-02 position**, five conductors to the dash post, exactly where Mazda put it. *"Mirror adjust is the one function where software configuration buys nothing."* That closes **`Q-305`** — who drives the mirrors — and leaves `Q-300`, which pair to buy, open as `BLK-020` gated on `W-332`'s bench test.
+
+**Windows move to the centre panel.** The switch pack leaves the console: `L3-WIN` is deleted and `L3-S2 3–6` terminate at the panel with every other key.
+
+**Parked behaviour is a PMU gate.** Every key carries an `A16` precondition **except** hatch release and fuel-door release. `A16` is a ladder read and never a CAN term, so the PMU refuses regardless of what the panel sends — a hard floor under FT16's fail-to-off pattern, and what stops a bag bumping the defog key while the car is being unloaded. No retained-accessory timer for the windows: it would hold the module awake after every key-off against D-248's 30 s sleep and LD17's 30 mA target, to serve a case that almost never happens. A perceptible delay on the first press after sleep, and nothing after that.
+
+**Rotary encoders, not potentiometers**, for temperature, fan and the seat knobs — the DCU defines detents and range in firmware, so the faceplate carries no calibration of its own. And the key list loses **A/C mode**: K-015 closed A/C by deletion and there is no compressor, so the key is HVAC mode.
+
+**In the data.** `provisions` PV34–PV37 and PV101–PV105 deleted; PV65–PV68 re-terminate at the panel; PV26 becomes the constant feed and PV32 the wake line. `modules` PANEL and DCU. `features` FT14, FT16, FT23, FT24. `retired` gains `DP-KEY` and `L3-WIN` in both areas. S2's prerequisites are unchanged in substance — the panel is still designed before H-002 goes to layout — but it is now one board, not two.
+
+**Open, and named so it is not lost.** The windows share `O1` with the pop-up motor bus, whose retry class is `guarded` because a trip there means an obstruction, and a window reaching its stop is a legitimate spike that reads exactly the same. Camden: *"Needs its own ruling."* It is electrical **`BLK-026`**.
+*2026-09-13 · supersedes D-210*
 
 
 ## The cluster
@@ -833,21 +1109,74 @@ Costs nothing either way: the two plastics events are independent, and S3 needs 
 
 ---
 
+# 02-engine
+
+
+## What the electrical build reserves for the swap
+
+*9 live — D-007 D-091 D-113 D-173 D-183 D-187 D-211 D-324 D-325*
+
+**D-007 — O13 and O14 (25 A) are reserved for the swap engine's ECU/injectors and cooling fan**, wired to the engine leg and capped at the bulkhead (L1-P 2, L1-P 3). Three 16 AWG sensor spares (L1-S2 4–6) and the CAN2 drop (L1-S1 9/10, with the bus's far-end 120 Ω terminator across it) are capped in the same place.
+*inherited - owned by another project*
+
+**D-091 — The main feed is 2 AWG, sized for the swap engine, not the 12A**, so the tunnel is never pulled a second time.
+*inherited - owned by another project*
+
+**D-113 — The rear disc conversion and the rear axle are still planned.** The July 2026 drum overhaul was an interim so the car could be driven; the intent is a thoroughly sorted rear axle and engine that then last.
+
+**Electrical D-261 / D-262 — the 12A's senders stay and are read in place; every ICU sensor channel is jumper-and-config, the PMU's A7 takes a sender or a 0–5 V transducer.** What the new engine must deliver to those inputs is the hand-over table in [`README.md`](README.md).
+*inherited - owned by another project*
+
+**D-173 — The fuel-pump soft fuse (4.0 A, set for the Carter P4070) is re-set from the in-tank pump's spec at the swap.**
+*inherited - owned by another project*
+
+**D-183 — The PMU's fuel-pump and start-relay rules gain their rpm terms once rpm is on CAN2.** The ICU publishes it on `0x200` from the first drive (electrical D-259); the ECU's own arrives on `0x500+` at the swap. Either is a *secondary*, fail-open term — the primary gate is the hardwired oil-pressure node on A7 (electrical D-249 / D-251).
+*inherited - owned by another project*
+
+**D-187 — The automatic's inhibitor switch is read on A4 (P/N, crank interlock) and A5 (R, reverse lamps) through the engine leg (L1-S1 11, L1-S2 7).** Both disappear with the automatic; the transmission that replaces it needs its own P/N and reverse signals into the same two ladder states.
+*inherited - owned by another project*
+
+**D-211(d) — The engine leg (L1) is built to be cut off at the firewall grommet and rebuilt from scratch at the swap.** It carries only what the 12A on the mounts needs today — no stubs to nothing, no connectors marking where something used to be. The reservations above are the only exceptions. Everything else about the new engine's wiring — ECU, sensors, fans, a PMU-driven A/C clutch and pressure transducer — is designed here, around whatever the engine is.
+
+**D-211 — The 12A's A/C system comes out and cooling returns with the new engine.** The compressor, bracket, condenser and hoses are boxed and kept (FB A/C hardware is scarce). The new system is a new compressor on the new engine, a PMU-driven clutch and a pressure transducer — not the 1982 relay chain.
+*inherited - owned by another project*
+
+**D-324 — The A/C clutch is a DCU-switched comfort load; the PMU is not opened for it.** Camden's call, 2026-09-11, answering `BLK-011`: "I want all A/C comfort controls together manged by the dcu no pmu tear down and change up."
+
+D-211 said "a PMU-driven clutch and a pressure transducer", but every one of the PMU's 22 outputs is allocated — O13 and O14 are this project's ECU and cooling fan. Rather than re-allocate a channel and reopen a 39-way connector that D-004 assembles once, the clutch joins the comfort group where the rest of the A/C controls already are.
+
+**The arrangement.** The clutch is a relay whose coil the **DCU** switches on one of its seven comfort FETs (luxury `SN16`, parts under luxury `V-083`), contact fed from the luxury package's **O15 comfort block**. The pressure transducer goes to a **DCU input**. The A/C toggle is already drawn on the control panel (luxury D-210). No PMU output, no harness change, and the clutch feed runs from the O15 block into the rebuilt engine leg at the swap — which suits D-271, since the leg is built from scratch then anyway.
+
+**What this forecloses, accepted.** The clutch cannot engage with the DCU down. That is the correct trade for a comfort load: it matches D-081's principle that modules add capability to a finished car and are never a dependency for it starting, running or being legal.
+*2026-09-11 · closes BLK-011*
+
+**D-325 — The swap ECU is a dash node; no CAN and no ECU in the engine bay.** Camden's call, 2026-09-11, inside `BLK-004`: "I do not want the ecu in the engine bay … I want as stripped clean of an engine bay as possible and do not want to put anything there unless there is no way to avoid it. The ECU will also be a dash node localized with all the other computers and more intricate wiring, then only the small branches travel everywhere."
+
+The electrical build's counterpart is **D-318**. The consequence here is that `HO03` changes shape: CAN2 no longer reaches the bay, `L1-S1 9` and `10` return to sealing plugs, and the far-end 120 Ω terminator moves to the dash node. A future ECU joins the bus **at the dash**, at 0x500+ as luxury's CAN map already allocates, and what leaves the dash for the engine is only the sensor and actuator branches the rebuilt leg pins.
+
+**What this asks of the swap.** The ECU must be one that tolerates a cabin mounting and a longer sensor harness — which is the normal case for every ECU worth fitting, and is how the factory mounted its own control units. Long runs to crank and cam sensors are shielded, as `L1-S1 6` already is for the tach. Nothing about this reserves less: O13 and O14 stay the ECU and fan channels (D-007), and the leg still ends at the firewall grommet (D-211).
+*2026-09-11 · closes BLK-004*
+
+
+---
+
 # Superseded and withdrawn
 
 *Kept so every id ever issued can be found by searching for it.*
 
-- `D-005` (electrical-build, superseded) → `D-214` — (superseded by D-214)
-- `D-016` (electrical-build, superseded) → `D-212` — (superseded by D-212)
-- `D-022` (electrical-build, superseded) → `D-218` — (superseded by D-218)
-- `D-206` (electrical-build, superseded) → `D-216` — (superseded by D-216)
-- `D-207` (electrical-build, superseded) → `D-222` — (superseded by D-222)
-- `D-208` (electrical-build, superseded) → `D-216` — (superseded by D-216)
-- `D-221` (electrical-build, superseded) → `D-233` — (superseded by D-233)
-- `D-227` (electrical-build, superseded) → `D-244` — (superseded by D-244)
-- `D-231` (electrical-build, superseded) → `D-244` — (superseded by D-244)
-- `D-237` (electrical-build, superseded) → `D-321` — The 200 A MRBF is right for the starter feed; no upsize
-- `D-245` (electrical-build, superseded) → `D-319` — The master disconnect moves to the battery negative
-- `D-247` (electrical-build, superseded) → `D-278` — (superseded by D-278)
-- `D-256` (electrical-build, superseded) → `D-329` — Two front-end conductors for the climate module: `L2-S 5` is an…
-- `D-300` (luxury-package, superseded) → `D-328` — The three assumed `stats.h` figures are confirmed as assumed: redline…
+- `D-005` (00-electrical, superseded) → `D-214` — (superseded by D-214)
+- `D-016` (00-electrical, superseded) → `D-212` — (superseded by D-212)
+- `D-022` (00-electrical, superseded) → `D-218` — (superseded by D-218)
+- `D-079` (00-electrical, superseded) → `D-346` — CAN2's far-end 120 Ω terminator is fitted now, capped in the engine bay…
+- `D-206` (00-electrical, superseded) → `D-216` — (superseded by D-216)
+- `D-207` (00-electrical, superseded) → `D-222` — (superseded by D-222)
+- `D-208` (00-electrical, superseded) → `D-216` — (superseded by D-216)
+- `D-221` (00-electrical, superseded) → `D-233` — (superseded by D-233)
+- `D-227` (00-electrical, superseded) → `D-244` — (superseded by D-244)
+- `D-231` (00-electrical, superseded) → `D-244` — (superseded by D-244)
+- `D-237` (00-electrical, superseded) → `D-321` — The 200 A MRBF is right for the starter feed; no upsize
+- `D-245` (00-electrical, superseded) → `D-319` — The master disconnect moves to the battery negative
+- `D-247` (00-electrical, superseded) → `D-278` — (superseded by D-278)
+- `D-256` (00-electrical, superseded) → `D-329` — Two front-end conductors for the climate module: `L2-S 5` is an…
+- `D-300` (01-luxury, superseded) → `D-328` — The three assumed `stats.h` figures are confirmed as assumed: redline…
+- `D-331` (00-electrical, superseded) → `D-351` — The master disconnect is the Blue Sea 9004e; its auxiliary pole is a switch-position input so the PMU drops excitation before the main contacts break

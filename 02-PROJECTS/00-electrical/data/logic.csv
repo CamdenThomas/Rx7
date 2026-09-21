@@ -1,0 +1,22 @@
+id,channel,expression,inrush,retry_class,retry
+HEAD_LOW,HEAD_LOW,A15 == HEAD_LO,3× for 200 ms,lamp,"3 at 5 s, then latch and annunciate"
+HEAD_HIGH,HEAD_HIGH,A15 == HEAD_HI  \|\|  A15 == PASS,3× for 200 ms,lamp,"3 at 5 s, then latch and annunciate"
+TAIL_PARK,TAIL_PARK,A15 >= PARK  (hold the previous state while PASS is active),10× for 100 ms,lamp,"3 at 5 s, then latch and annunciate"
+BRAKE,BRAKE,A3 == BRAKE  \|\|  A3 == BRAKE+PARKED,10× for 100 ms,lamp,"3 at 5 s, then latch and annunciate"
+TURN_L,TURN_L,(A1 == LEFT  \|\|  hazard)  &&  flasher_phase,10× for 100 ms,lamp,"3 at 5 s, then latch and annunciate"
+TURN_R,TURN_R,(A1 == RIGHT  \|\|  hazard)  &&  flasher_phase,10× for 100 ms,lamp,"3 at 5 s, then latch and annunciate"
+REVERSE,REVERSE,(A5 == REVERSE || A5 == TRANSIT+R)  &&  A16 >= RUN,10× for 100 ms,lamp,"3 at 5 s, then latch and annunciate"
+INTERIOR,INTERIOR,"A6 != CLOSED — PWM, 1.5 s fade-in, 8 s fade-out after the last door closes; drops after 10 minutes with a door still open, re-arms when every door closes (D-248)",10× for 100 ms,lamp,"3 at 5 s, then latch and annunciate"
+MOTOR_BUS,MOTOR_BUS,popup_cycle  (see the pop-up rule below),7× for 400 ms,guarded,"1, then off and flag - a trip means an obstruction"
+WIPE_LOW,WIPE_LOW,A2 == LOW  \|\|  A2 == WASH  \|\|  (A2 == INT && int_timer)  \|\|  (wiper_latch && A3 not PARKED)  — braking ON,7× for 300 ms,motor,"5 at 15 s, no latch - the stall timer governs"
+WIPE_HIGH,WIPE_HIGH,A2 == HIGH,7× for 300 ms,motor,"5 at 15 s, no latch - the stall timer governs"
+BLOWER,BLOWER,"A16 >= RUN — a steady feed; speed is set by the low-side final stage at L3-BLW on the DCU's own PWM output, ≥ 20 kHz (D-257 — the PMU's PWM tops out at 400 Hz); output DISABLED this build — no motor (K-023 · D-253)",8× for 600 ms,motor,"5 at 15 s, no latch - the stall timer governs"
+DEFOG,DEFOG,"A16 >= ACC && panel_defog  - the panel key over CAN, with a HARD A16 floor read from the ladder and never from the bus, so a bag bumping the key with the car asleep cannot switch 11.5 A of grid (D-350). Output stays DISABLED until the luxury panel exists",1.3× for 2 s,motor,"5 at 15 s, no latch - the stall timer governs"
+FUEL_PUMP,FUEL_PUMP,"A16 == START  \|\|  (A16 >= RUN && prime_timer < 3 s)  \|\|  (A16 >= RUN && oil_ok) — oil_ok latches when A7 > OIL_MIN and clears only after 5 s of continuous A7 < OIL_MIN or when A16 < RUN; a FAULT reading counts as oil_ok (fail open); OIL_MIN is read in the car at commissioning, never entered on the bench (D-249). No CAN term in this gate, ever (D-251)",3× for 150 ms,critical,"1 at 2 s, then off until the key leaves RUN"
+IGNITION,IGNITION,A16 >= RUN,2× for 100 ms,critical,"1 at 2 s, then off until the key leaves RUN"
+ACCESSORY,ACCESSORY,A16 >= ACC || release_pulse  - where release_pulse is short and self-clearing (hundreds of ms) and is raised only by the hatch or fuel-door release command. It exists because both solenoids sit on O10 branches (D-180) and O10 was ACCESSORY: solving the panel's power did not solve the output (D-354). The other O10 consumers coming up for the length of the pulse is harmless,2× for 100 ms,lamp,"3 at 5 s, then latch and annunciate"
+HORN,HORN,A8 == HORN  \|\|  A8 == HAZ+HORN,3× for 80 ms,lamp,"3 at 5 s, then latch and annunciate"
+COMFORT,COMFORT,A16 >= RUN  (nothing connected this build),2× for 200 ms,lamp,"3 at 5 s, then latch and annunciate"
+START_RLY,START_RLY,A16 == START  &&  (A4 == CRANK_OK || A4 == TRANSIT+PN),2× for 50 ms,critical,"1 at 2 s, then off until the key leaves RUN"
+KEEP_ALIVE,KEEP_ALIVE,self-hold: ON at any wake; OFF 30 s after the last input change with A16 == OFF and A6 == CLOSED; forced OFF after 30 min with A16 == OFF whatever A6 reads (D-248),—,none,—
+LS_ECU · LS_FAN,LS_ECU · LS_FAN,DISABLED,—,none,—

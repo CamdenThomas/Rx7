@@ -51,7 +51,7 @@ WORK_OWNER = ("agent", "camden")
 # Columns whose vocabulary THIS TOOL owns, not the project. Every area's _schema.csv must
 # declare exactly these, so the same column cannot mean different things in two projects.
 # (Inferring them per project from the values that happened to exist produced four false
-# refusals on 2026-09-11 - `blocked` work, a `standing` engine-swap decision. R7.)
+# refusals on 2026-09-11 - `blocked` work, a `standing` 02-engine decision. R7.)
 VOCAB = {
     ("decisions", "status"): "enum(" + "|".join(sorted(DEC_STATUS)) + ")",
     ("work", "state"): "enum(" + "|".join(sorted(WORK_STATE)) + ")",
@@ -278,42 +278,288 @@ def parse_blocks():
                     "Camden has nowhere to answer"
                 )
         else:
-            if not b["closer"]:
-                problems.append(
-                    f"BLOCKS.md: {b['id']} (line {b['line']}) is under SOLVED with no "
-                    "→ D-### naming the decision it produced"
-                )
-            if not b["solution"]:
-                problems.append(
-                    f"BLOCKS.md: {b['id']} (line {b['line']}) is under SOLVED with an empty SOLVE"
-                )
+            # There is no SOLVED section any more: an answered block is applied through the
+            # record, becomes a decision whose `closes` names it, and is then deleted from
+            # this page. DECISIONS.md is where a settled question lives. A block still
+            # sitting under a SOLVED heading is therefore work that was never finished.
+            problems.append(
+                f"BLOCKS.md: {b['id']} (line {b['line']}) is under a SOLVED heading. That "
+                "section no longer exists — apply the answer, write the decision with "
+                "closes={id}, then delete the block from this page.".format(id=b["id"])
+            )
     return blocks, problems
 
 
 def next_block_num(blocks):
-    return (max([b["num"] for b in blocks], default=0)) + 1
+    """Highest BLK ever issued, plus one — still derived, never stored (R5).
+
+    A block is DELETED from BLOCKS.md once its answer is a decision, so the page alone no
+    longer knows how high the numbering went: the decisions do, in `closes`. Counting only
+    the page would hand out BLK-016 twice, and an id that means two things is the one
+    mistake this record cannot recover from."""
+    highest = max([b["num"] for b in blocks], default=0)
+    for a in areas():
+        _, rows = read_table(a, "decisions")
+        for r in rows:
+            for tok in re.split(r"[\s,;]+", (r.get("closes") or "")):
+                m = re.match(r"^BLK-(\d+)$", tok)
+                if m:
+                    highest = max(highest, int(m.group(1)))
+    for f in (ROOT / "99-ARCHIVE").rglob("*.md"):
+        try:
+            for m in re.finditer(r"\bBLK-(\d{1,4})\b", f.read_text(encoding="utf-8", errors="ignore")):
+                highest = max(highest, int(m.group(1)))
+        except OSError:
+            pass
+    return highest + 1
 
 
 def append_block(num: int, area: str, ask: str) -> None:
     text = BLOCKS_MD.read_text(encoding="utf-8") if BLOCKS_MD.exists() else (
-        "# BLOCKS\n\n## OPEN\n\n## SOLVED\n"
+        "# BLOCKS\n\n## OPEN\n"
     )
     entry = (
         f"### BLK-{num:03d} · {area}\n"
         f"**Ask** {ask}\n"
+        f"**Opened** {today()}\n"
         f"**Why** \n"
         f"**Options**\n- (a) \n- (b) \n"
         f"**Recommend** \n"
         f"**Stops** \n"
         f"**SOLVE:**\n\n"
     )
-    marker = "\n## SOLVED"
-    if marker in text:
-        i = text.index(marker)
-        text = text[:i].rstrip("\n") + "\n\n" + entry + text[i:]
-    else:
-        text = text.rstrip("\n") + "\n\n" + entry
+    text = text.rstrip("\n") + "\n\n" + entry
     BLOCKS_MD.write_text(text, encoding="utf-8", newline="\n")
+
+
+# ------------------------------------------------------------------------- gates
+#
+# `work.gate` holds REFERENCES, all of which must be met before the row can be started.
+# Nothing else: prose belongs in `note`. The references, resolved across the whole tree:
+#
+#   D-274                 met when that decision is standing or inherited
+#   BLK-020               met when that block is gone from BLOCKS.md and a decision
+#                         names it in `closes` — i.e. it has been answered and applied
+#   A5                    met when that work row is done or dropped, in this area
+#   01-luxury:F-012  the same, in another area (work ids are only unique per area)
+#   phase:SOURCING        met when the owning area is at that phase or past it
+#
+# An empty gate is met. READY is every open row whose gate is met; that list is the only
+# answer to "what can be started now", and §6.1 takes its work from it.
+#
+# Why this is code and not a convention: a gate that quietly never opens looks exactly
+# like a finished project — the planner reports "nothing to do" and stops. Nothing else
+# in the tree can tell those two apart, so the check has to (R7).
+
+GATE_SPLIT = re.compile(r"[\s,;]+")
+WORK_REF_RE = re.compile(r"^(?:(?P<area>[A-Za-z0-9_.-]+):)?(?P<id>[A-Za-z]{1,4}-?\d{1,4}[a-z]?)$")
+PHASE_REF_RE = re.compile(r"^phase:(?P<phase>[A-Za-z]+)$")
+GATE_DONE = ("done", "dropped")
+GATE_LIVE_DEC = ("standing", "inherited")
+
+_TREE = None
+
+
+def tree_index(fresh: bool = False):
+    """Every gate-addressable fact in the tree, read straight from the CSVs and BLOCKS.md.
+
+    {"decisions": {id: status}, "blocks": {id: section}, "phase": {area: phase},
+     "work": {(area, id): state}, "work_ids": {id: [area…]}, "row": {(area, id): row}}
+    """
+    global _TREE
+    if _TREE is not None and not fresh:
+        return _TREE
+    idx = {"decisions": {}, "blocks": {}, "phase": {}, "work": {}, "work_ids": {}, "row": {}}
+    for a in areas():
+        name = a.name
+        _, prow = read_table(a, "_project")
+        kv = {(r.get("key") or "").strip(): (r.get("value") or "").strip() for r in prow}
+        idx["phase"][name] = kv.get("phase", "")
+        _, drows = read_table(a, "decisions")
+        for r in drows:
+            i = (r.get("id") or "").strip()
+            if i:
+                idx["decisions"][i] = (r.get("status") or "").strip()
+        _, wrows = read_table(a, "work")
+        for r in wrows:
+            i = (r.get("id") or "").strip()
+            if not i:
+                continue
+            idx["work"][(name, i)] = (r.get("state") or "").strip()
+            idx["work_ids"].setdefault(i, []).append(name)
+            idx["row"][(name, i)] = r
+    for b in parse_blocks()[0]:
+        idx["blocks"][b["id"]] = b["section"]
+    # A block leaves BLOCKS.md the moment its answer is a decision, so "was it answered?"
+    # is not a section any more — it is whether a decision says it closed it. That is the
+    # one home for the fact (R2), and it is why a gate on a removed block still resolves.
+    closed = set()
+    for a in areas():
+        _, drows = read_table(a, "decisions")
+        for r in drows:
+            for tok in re.split(r"[\s,;]+", (r.get("closes") or "")):
+                if tok.startswith("BLK-"):
+                    closed.add(tok)
+    idx["blocks_closed"] = closed
+    _TREE = idx
+    return idx
+
+
+def parse_gate(cell: str):
+    return [x for x in GATE_SPLIT.split((cell or "").strip()) if x]
+
+
+def _resolve_work(ref_area, wid, area, idx):
+    """Which area owns the work id this reference names — [] none, >1 ambiguous."""
+    if ref_area:
+        return sorted({x for x in idx["work_ids"].get(wid, []) if x == ref_area})
+    if (area, wid) in idx["work"]:
+        return [area]
+    return sorted(set(idx["work_ids"].get(wid, [])))
+
+
+def gate_ref_state(ref: str, area: str, idx=None):
+    """(met, why). `why` starts with '?' when the reference resolves to nothing at all."""
+    idx = idx or tree_index()
+    m = PHASE_REF_RE.match(ref)
+    if m:
+        want = m.group("phase").upper()
+        if want not in PHASES:
+            return False, f"? unknown phase {want!r}"
+        have = idx["phase"].get(area, "")
+        if have not in PHASES:
+            return False, f"? {area} has no phase to compare"
+        return PHASES.index(have) >= PHASES.index(want), f"phase {want} (now {have or '-'})"
+    if ref in idx["decisions"]:
+        st = idx["decisions"][ref]
+        return st in GATE_LIVE_DEC, f"{ref} {st}"
+    if ref in idx["blocks"]:
+        return False, f"{ref} open"
+    if ref in idx.get("blocks_closed", ()):
+        return True, f"{ref} closed"
+    m = WORK_REF_RE.match(ref)
+    if m:
+        wid = m.group("id")
+        hits = _resolve_work(m.group("area"), wid, area, idx)
+        if len(hits) > 1:
+            return False, f"? {ref} is ambiguous ({', '.join(hits)}) — qualify it as <area>:{wid}"
+        if hits:
+            st = idx["work"].get((hits[0], wid), "")
+            label = wid if hits[0] == area else f"{hits[0]}:{wid}"
+            return st in GATE_DONE, f"{label} {st or 'unknown'}"
+        if ref.startswith("D-"):
+            return False, f"? {ref} is no decision in the tree"
+        if ref.startswith("BLK-"):
+            return False, f"? {ref} is no block in BLOCKS.md"
+        return False, f"? {ref} is no decision, block or work item in the tree"
+    return False, (f"? {ref!r} is not a reference — a gate holds D-/BLK-/work ids and "
+                   f"phase:<PHASE>, nothing else; prose belongs in `note`")
+
+
+def gate_state(cell: str, area: str, idx=None):
+    """(met, unmet_reasons, bad_refs) for a whole gate cell."""
+    idx = idx or tree_index()
+    unmet, bad = [], []
+    for ref in parse_gate(cell):
+        ok, why = gate_ref_state(ref, area, idx)
+        if why.startswith("?"):
+            bad.append(why[2:])
+        elif not ok:
+            unmet.append(why)
+    return (not unmet and not bad), unmet, bad
+
+
+def gate_cycles(idx=None):
+    """Every dependency ring among work items, tree-wide, as readable chains."""
+    idx = idx or tree_index()
+    edges = {}
+    for (ar, wid) in idx["work"]:
+        outs = []
+        for ref in parse_gate(idx["row"][(ar, wid)].get("gate", "")):
+            if PHASE_REF_RE.match(ref) or ref in idx["decisions"] or ref in idx["blocks"]:
+                continue
+            m = WORK_REF_RE.match(ref)
+            if not m:
+                continue
+            hits = _resolve_work(m.group("area"), m.group("id"), ar, idx)
+            if len(hits) == 1:
+                outs.append((hits[0], m.group("id")))
+        edges[(ar, wid)] = outs
+    colour, cycles = {}, []
+
+    def walk(n, stack):
+        colour[n] = 1
+        for nxt in edges.get(n, ()):
+            if colour.get(nxt) == 1:
+                i = stack.index(nxt) if nxt in stack else 0
+                cycles.append(" -> ".join(f"{x}:{y}" for x, y in stack[i:] + [nxt]))
+            elif colour.get(nxt, 0) == 0:
+                walk(nxt, stack + [nxt])
+        colour[n] = 2
+
+    for n in edges:
+        if colour.get(n, 0) == 0:
+            walk(n, [n])
+    return sorted(set(cycles))
+
+
+def ready_report(area: str, idx=None):
+    """(ready, blocked) for one area's open work. Each entry is (id, row, [reasons])."""
+    idx = idx or tree_index()
+    ready, blocked = [], []
+    for (ar, wid), st in idx["work"].items():
+        if ar != area or st != "open":
+            continue
+        row = idx["row"][(ar, wid)]
+        met, unmet, bad = gate_state(row.get("gate", ""), ar, idx)
+        (ready if met else blocked).append((wid, row, unmet + bad))
+    order = lambda t: (t[1].get("stage", ""), t[0])
+    return sorted(ready, key=order), sorted(blocked, key=order)
+
+
+def walled_off(area: str, idx=None):
+    """'' unless this area has open work, none startable, and every blocker is its own.
+
+    All-blocked on a BLOCK or on another area is a real state — it means something waits
+    on Camden, which is exit code 2 and refuses nothing. All-blocked on your own rows or
+    your own phase cannot be true, so it is a contradiction and refuses (exit 1).
+    """
+    idx = idx or tree_index()
+    ready, blocked = ready_report(area, idx)
+    if ready or not blocked:
+        return ""
+    for _, row, _ in blocked:
+        for ref in parse_gate(row.get("gate", "")):
+            if ref in idx["blocks"]:
+                return ""
+            m = WORK_REF_RE.match(ref)
+            if m and ref not in idx["decisions"]:
+                hits = _resolve_work(m.group("area"), m.group("id"), area, idx)
+                if hits and hits[0] != area:
+                    return ""
+    return (f"{area}: all {len(blocked)} open work row(s) are gated on this area's own rows "
+            f"or its own phase, so nothing here can ever start — a gate is wrong")
+
+
+def check_gates(area: Path, idx=None) -> list[str]:
+    """Gates are structure, so they are checked like structure (R7)."""
+    if not (area / "data" / "work.csv").exists():
+        return []
+    idx = idx or tree_index()
+    name = area.name
+    p = []
+    _, rows = read_table(area, "work")
+    for r in rows:
+        wid = (r.get("id") or "").strip()
+        for bad in gate_state(r.get("gate", ""), name, idx)[2]:
+            p.append(f"{rel(area)}:work:{wid}: gate — {bad}")
+    for chain in gate_cycles(idx):
+        if any(n.split(":", 1)[0] == name for n in chain.split(" -> ")):
+            p.append(f"{rel(area)}:work: dependency ring {chain}")
+    wall = walled_off(name, idx)
+    if wall:
+        p.append(f"{rel(area)}:work: {wall.split(': ', 1)[1]}")
+    return p
 
 
 # ------------------------------------------------------------------------ checks
@@ -402,6 +648,7 @@ def check_area(area: Path, keyidx) -> list[str]:
                             )
     p += check_decisions(area)
     p += check_phase(area)
+    p += check_gates(area)
     return p
 
 
@@ -457,6 +704,7 @@ def check_phase(area: Path) -> list[str]:
 
 def run_check(sel=None):
     keyidx = load_keys()
+    tree_index(fresh=True)
     problems = []
     for a in sel or areas():
         problems += check_area(a, keyidx)
@@ -478,6 +726,13 @@ def unresolved_cites():
     for d in (ROOT / "99-ARCHIVE").rglob("D-*.md"):
         known.add(d.stem)
     known |= {b["id"] for b in parse_blocks()[0]}
+    # A block that has been answered and applied is deleted from BLOCKS.md, so the only
+    # remaining record that it ever existed is the decision that closed it. Prose citing
+    # it is still correct and must not be reported as dangling.
+    for a in areas():
+        _, drows = read_table(a, "decisions")
+        for r in drows:
+            known |= {t for t in re.split(r"[\s,;]+", (r.get("closes") or "")) if t.startswith("BLK-")}
     out = []
     for a in areas():
         for f in sorted((a / "data").glob("*.csv")):
@@ -512,6 +767,7 @@ def cmd_status(args):
     waiting = [b for b in open_b if b["solution"]]
     stuck = [b for b in open_b if not b["solution"]]
 
+    idx = tree_index()
     print(f"RECORD   {'valid' if not problems else str(len(problems)) + ' problem(s)'}")
     for a in areas():
         _, prow = read_table(a, "_project")
@@ -522,17 +778,74 @@ def cmd_status(args):
             ag = sum(1 for r in w if r.get("state") == "open" and r.get("owner") == "agent")
             cm = sum(1 for r in w if r.get("state") == "open" and r.get("owner") == "camden")
             line += f" work: {ag} agent / {cm} camden"
+        alone, standing = decisions_made_alone(a)
+        if standing:
+            line += f"   decisions {len(standing)} ({len(alone)} nobody was asked)"
         print(line)
+        print_queue(a.name, idx)
     print(f"BLOCKS   {len(stuck)} unanswered, {len(waiting)} answered and not yet applied")
     for b in stuck:
-        print(f"  {b['id']} {b['area']}: {b['fields'].get('Ask','')[:88]}")
+        print(f"  {b['id']} {b['area']}: {b['fields'].get('Ask','')[:80]}{block_age(b)}")
     for b in waiting:
-        print(f"  {b['id']} {b['area']}: ANSWERED - apply it")
+        print(f"  {b['id']} {b['area']}: ANSWERED - apply it{block_age(b)}")
     if problems:
         return RC_INVALID
     if waiting or stuck:
         return RC_WAITING
     return RC_OK
+
+
+def days_since(iso: str):
+    """Whole days from an ISO date to today; None if the text is not a date."""
+    m = re.match(r"^(\d{4})-(\d{2})-(\d{2})$", (iso or "").strip())
+    if not m:
+        return None
+    return (datetime.date.today() - datetime.date(*(int(x) for x in m.groups()))).days
+
+
+def block_age(b) -> str:
+    d = days_since(b["fields"].get("Opened", ""))
+    return f"  ({d}d)" if d is not None else ""
+
+
+def decisions_made_alone(area: Path):
+    """(alone, standing) — standing decisions that closed nothing at all.
+
+    Not a stored flag: §3 already partitions every ruling into one he answered and one
+    made alone, and `closes` says which — a BLK- (or, from v2, a Q-/V- question) means he
+    ruled it; empty means nobody was asked. One home per fact (R2).
+
+    It is a number to watch, not a refusal: some of these are the small calls §3 exists to
+    authorise. It earns its place in `status` because nothing else in the tree counts how
+    much of the design was settled without him."""
+    _, rows = read_table(area, "decisions")
+    standing = [r for r in rows if (r.get("status") or "").strip() == "standing"]
+    alone = [(r.get("id") or "").strip() for r in standing if not (r.get("closes") or "").strip()]
+    return alone, standing
+
+
+def print_queue(area: str, idx, limit=6):
+    """READY and BLOCKED — the only two lists that answer 'what can start now'."""
+    ready, blocked = ready_report(area, idx)
+    if not ready and not blocked:
+        return
+    if ready:
+        by_owner = {}
+        for wid, row, _ in ready:
+            by_owner.setdefault(row.get("owner", "?"), []).append((wid, row))
+        print("   ready: " + " · ".join(f"{o} {len(v)}" for o, v in sorted(by_owner.items()))
+              + (f"   blocked {len(blocked)}" if blocked else ""))
+        for owner, items in sorted(by_owner.items()):
+            for wid, row in items[:limit]:
+                print(f"     {owner:<7} {wid:<7} {(row.get('item') or '')[:70]}")
+            if len(items) > limit:
+                print(f"     {'':<7} {'':<7} … {len(items) - limit} more")
+    else:
+        print(f"   ready: nothing — all {len(blocked)} open row(s) are gated")
+    for wid, row, why in blocked[:limit]:
+        print(f"     blocked {wid:<7} {(row.get('item') or '')[:46]:<46} waits on {', '.join(why) or '?'}")
+    if len(blocked) > limit:
+        print(f"     blocked … {len(blocked) - limit} more")
 
 
 def cmd_tables(args):
@@ -760,7 +1073,7 @@ def cmd_decisions(args):
             body = bp.read_text(encoding="utf-8", errors="replace").strip() if bp.exists() else ""
             # Only superseded and withdrawn are dead. `inherited` is a LIVE decision that
             # another project owns and this one reads — burying it here would hide every
-            # engine-swap ruling, all seven of which are inherited.
+            # 02-engine ruling, all seven of which are inherited.
             if st in ("superseded", "withdrawn"):
                 dead.append((num, i, a.name, st, r, body))
                 continue
@@ -851,9 +1164,13 @@ def cmd_blocks(args):
         print(x)
     if problems:
         return RC_INVALID
-    sel = [b for b in blocks if b["section"] == ("SOLVED" if args.solved else "OPEN")]
+    sel = [b for b in blocks if b["section"] == "OPEN"]
     if args.answered:
-        sel = [b for b in blocks if b["section"] == "OPEN" and b["solution"]]
+        sel = [b for b in sel if b["solution"]]
+    if args.solved:
+        print("solved blocks are not kept here — they are decisions. "
+              "`rx7.py find BLK-0xx` or read DECISIONS.md.")
+        return RC_WAITING
     for b in sel:
         print(f"{b['id']} · {b['area'] or '-'} · {'answered' if b['solution'] else 'waiting'}")
         print(f"   ask:   {b['fields'].get('Ask','')}")
@@ -861,6 +1178,87 @@ def cmd_blocks(args):
             print(f"   solve: {b['solution']}")
     print(f"({len(sel)} block(s))")
     return RC_OK if sel else RC_WAITING
+
+
+def cmd_selftest(args):
+    """The gate resolver's own tests. In memory: reads nothing, writes nothing.
+
+    `check` asks whether THIS tree's gates are sound. This asks whether the thing that
+    decides that is itself right — because a resolver that wrongly calls a gate 'met'
+    puts the planner to work on something that is not ready, and one that wrongly calls
+    it 'unmet' stops the project with no error anywhere. Both fail silently (R7)."""
+    A, B = "00-electrical", "01-luxury"
+    fails = []
+
+    def mk(rows, phase="PLANNING", blocks=None):
+        # BLK-900 is still on the page (open). BLK-901 is gone from the page and named in
+        # some decision's `closes` — that is what "answered and applied" means now.
+        idx = {"decisions": {"D-900": "standing", "D-901": "superseded"},
+               "blocks": dict(blocks or {"BLK-900": "OPEN"}),
+               "blocks_closed": {"BLK-901"},
+               "phase": {A: phase, B: "PLANNING"},
+               "work": {}, "work_ids": {}, "row": {}}
+        for wid, gate, state in rows:
+            idx["work"][(A, wid)] = state
+            idx["work_ids"].setdefault(wid, []).append(A)
+            idx["row"][(A, wid)] = {"id": wid, "gate": gate, "state": state,
+                                    "owner": "agent", "item": wid, "stage": "A"}
+        return idx
+
+    def expect(label, got, want=True):
+        if bool(got) != want:
+            fails.append(label)
+            print(f"FAIL {label}   got={got!r}")
+        else:
+            print(f"PASS {label}")
+
+    idx = mk([("A1", "D-404", "open")])
+    expect("a reference to nothing is refused", gate_state("D-404", A, idx)[2])
+    expect("prose in a gate is refused", gate_state("install M-1", A, idx)[2])
+    expect("a block that does not exist is refused", gate_state("BLK-404", A, idx)[2])
+
+    amb = mk([("A1", "", "open")])
+    amb["work_ids"]["A1"].append(B)
+    amb["work"][(B, "A1")] = "open"
+    expect("an ambiguous unqualified work id is refused", gate_state("A1", "02-engine", amb)[2])
+
+    expect("a dependency ring is found",
+           gate_cycles(mk([("A1", "A2", "open"), ("A2", "A3", "open"), ("A3", "A1", "open")])))
+    expect("an area gated only on itself is refused",
+           walled_off(A, mk([("A1", "A2", "open"), ("A2", "A1", "open")])))
+    expect("an area waiting on a block is NOT refused",
+           walled_off(A, mk([("A1", "BLK-900", "open")])), want=False)
+
+    ext = mk([("A1", f"{B}:F1", "open")])
+    ext["work"][(B, "F1")] = "open"
+    ext["work_ids"].setdefault("F1", []).append(B)
+    ext["row"][(B, "F1")] = {"id": "F1", "gate": "", "state": "open"}
+    expect("an area waiting on another area is NOT refused", walled_off(A, ext), want=False)
+
+    suf = mk([("A1", "W-330b", "open"), ("W-330b", "", "done")])
+    expect("a work id with a letter suffix is a reference, not prose",
+           gate_state("W-330b", A, suf)[2], want=False)
+    expect("a done work id with a letter suffix opens its gate", gate_state("W-330b", A, suf)[0])
+
+    ok = mk([("A1", "A2", "open"), ("A2", "", "done")])
+    expect("an empty gate is met", gate_state("", A, ok)[0])
+    expect("a done work row opens its gate", gate_state("A2", A, ok)[0])
+    expect("an open work row holds its gate shut", gate_state("A1", A, ok)[0], want=False)
+    expect("a standing decision opens its gate", gate_state("D-900", A, ok)[0])
+    expect("a superseded decision does not", gate_state("D-901", A, ok)[0], want=False)
+    expect("a block that became a decision opens its gate", gate_state("BLK-901", A, ok)[0])
+    expect("a block still on the page does not", gate_state("BLK-900", A, ok)[0], want=False)
+    expect("a block that never existed is refused", gate_state("BLK-404", A, ok)[2])
+    expect("the phase reached opens its gate", gate_state("phase:PLANNING", A, ok)[0])
+    expect("a later phase does not", gate_state("phase:BUILDING", A, ok)[0], want=False)
+    expect("several references, one unmet, stays shut", gate_state("D-900 A1", A, ok)[0], want=False)
+    expect("several references, all met, opens", gate_state("D-900 A2 BLK-901", A, ok)[0])
+
+    expect("an ISO date parses", days_since("2026-09-01") is not None)
+    expect("a non-date does not", days_since("soon") is None)
+
+    print(f"\n{len(fails)} failure(s)" if fails else "\nselftest: all pass")
+    return RC_INVALID if fails else RC_OK
 
 
 def cmd_log(args):
@@ -935,6 +1333,9 @@ def main(argv=None):
     p.add_argument("--solved", action="store_true")
     p.add_argument("--answered", action="store_true", help="open blocks Camden has answered")
     p.set_defaults(fn=cmd_blocks)
+
+    p = sub.add_parser("selftest", help="the gate resolver's own tests (in memory; touches nothing)")
+    p.set_defaults(fn=cmd_selftest)
 
     p = sub.add_parser("log", help="append a log row")
     p.add_argument("area"); p.add_argument("kind"); p.add_argument("what"); p.add_argument("refs", nargs="?")

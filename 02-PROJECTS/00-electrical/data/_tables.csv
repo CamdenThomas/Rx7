@@ -1,0 +1,30 @@
+table,purpose
+backbone,
+cables,
+carts,
+cavities,
+checks,"the measurements the design waits on - one row per reading, taken in the car or on the bench"
+colours,
+decisions,"every ruling, permanent, newest last; the body is data/decisions/<id>.md"
+devices,
+fuses,
+grounds,
+housings,
+icu_channels,
+inputs,"the PMU's sixteen analog channels A1-A16 and what each one is - six of them are configured as outputs, so this table is the module's whole channel set, not only its inputs"
+ladders,
+loads,
+log,"what happened, one row per action"
+logic,
+migration,
+node_conductors,
+params,named numbers the rest of the record derives from
+parts,every part this project buys or fits
+pins,
+recovery,"the roadside procedure for a PMU fault - read in the dark, at the side of a road (D-322)"
+relays,
+retired,terms that must no longer appear anywhere
+routes,"leg -> grommet -> node run lengths; ft is measured at M-2 and the wire schedule derives from it, never from a hand estimate"
+rules,
+series,
+work,the work list; owner says who does it

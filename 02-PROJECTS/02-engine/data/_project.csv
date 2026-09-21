@@ -1,0 +1,9 @@
+key,value
+name,02-engine
+kind,mechanical
+goal,"Everything that changes with the engine — the engine leg rebuilt around the new engine, ECU, fuel, transmission, axle, A/C"
+phase,PROPOSED
+opened,2026-09-02
+range_D,400-499
+range_Q,400-499
+range_C,400-499

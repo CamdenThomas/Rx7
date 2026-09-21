@@ -1,0 +1,22 @@
+id,leg,from_node,to_node,via,ft,note
+RT01,L1 Engine,Dash post,Engine-bay junction,"Firewall grommet, passenger side",,the four L1 housings leave the post together
+RT02,L1 Engine,Engine-bay junction,Coils and igniters B-18 to B-21,along the upper rear housing,,carries the L1-P 1 trunk and the shielded tach core - rules emc-routing governs how
+RT03,L1 Engine,Engine-bay junction,Alternator A-08,down the front of the block,,excitation and lamp sense; the 6 AWG B+ is C07 and is measured separately
+RT04,L1 Engine,Engine-bay junction,Water temp C-02 and oil pressure C-09,"rear housing, gauge ports",,"two senders in the same place, one below the other"
+RT05,L1 Engine,Engine-bay junction,"Starter, K9 and the inhibitor A-06",under the intake,,signal only - the heavy cable is C08 / C09
+RT06,L2 Front,Dash post,Nose splice,"Cowl grommet, then along the inner wing",,the longest front run and the one that sets the L2 cut list
+RT07,L2 Front,Nose splice,Each headlight bucket and pop-up motor,across the radiator support,,measure one side; the other is that plus the crossing
+RT08,L2 Front,Nose splice,"Front combo lamps, side markers, horns",radiator support and both inner wings,,
+RT09,L2 Front,Nose splice,Wiper motor D-02 and washer pump D-01,back along the cowl,,"the wiper motor sits at the cowl, so this run doubles back"
+RT10,L3 Dash,Dash post,Steering column,behind the lower dash,,"every ladder: ignition switch, light switch, both stalks, horn pad"
+RT11,L3 Dash,Dash post,Centre stack,across the dash rail,,"head unit, USB-C, illumination, the L3-CMF comfort receptacle"
+RT12,L3 Dash,Dash post,Glovebox,"across the dash rail, passenger side",,the DP-DIAG laptop port and the glovebox lamp
+RT13,L3 Dash,Dash post,Binnacle,up behind the cluster aperture,,"the two ICU tails are 150 mm from the post (D-270) - this is the run to the post, not the tails"
+RT14,L3 Dash,Dash post,HVAC case and pedal box,down the centre,,"blower receptacle, brake switch, the kick-down switch B-32"
+RT15,L4 Rear,Dash post,"Rear node, cargo bin",Tunnel,,"the tunnel carries three heavy cables beside this bundle (C03, C04, C11) - measure it for the bundle, not one wire"
+RT16,L4 Rear,Rear node,"Tail lamps, licence lamps, rear markers","along the quarter, both sides",,
+RT17,L4 Rear,Rear node,Fuel pump and tank sender,under the floor to the tank,,
+RT18,L4 Rear,Rear node,"Hatch release, luggage lamp, the radar pass-through",through the hinge loop,,the hinge loop is a flex point - measure with the hatch open
+RT19,L4 Rear,Dash post,"Sill node, driver kick panel",along the sill,,"window bus, comfort feed, mirror commands"
+RT20,Sill,Sill node,Each door,through the jamb boot,,the door plugs are RESERVED this build (D-274) but the leg is cut now
+RT21,L4 Rear,Dash post,Transmission speedo boss and kick-down solenoid,"Tunnel, with RT15",,road speed L4-S 3 / 4 and the kick-down L4-S2 7 share this run

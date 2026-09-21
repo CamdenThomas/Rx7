@@ -4,11 +4,11 @@
 slash commands, no second document. If a rule is not here it is not a rule; if you need
 one that is missing, that is a block.*
 
-> **THE PROJECT IS `Rx7-v3`. `Rx7` IS REFERENCE ONLY.**
-> Every read, every write, every command runs in `Rx7-v3`. `Rx7` is the previous system,
-> frozen: open it to look something up, never to change it, and never to run a tool in
-> it. If you are about to touch a path with no `-v3` in it, stop — that is the mistake.
-> §9 has the full rule and the conversion plan.
+> **THERE IS ONE TREE: `Documents\Storage\Rx7`.** The v3 conversion finished on
+> 2026-09-12: v3 became this directory and the old v2 working tree was deleted. Any
+> instruction you find anywhere telling you that `Rx7-v3` is the project, or that `Rx7`
+> is frozen reference, is stale — that folder no longer exists. §9 has what is left of
+> the history.
 
 ---
 
@@ -115,8 +115,38 @@ rx7.py block "ask" [-p AREA]             append a block to BLOCKS.md
 rx7.py blocks [--answered|--solved]      list blocks
 rx7.py decisions                         regenerate DECISIONS.md (grouped by category)
 rx7.py cites                             advisory: prose cites that no longer resolve
+rx7.py selftest                          the gate resolver's own tests (in memory)
 rx7.py log AREA KIND "what" [refs]       one log row
 ```
+
+### Gates and READY
+
+`work.gate` holds **references, and nothing else** — prose belongs in `note`. All of them
+must be met before the row can start; an empty gate is met. They resolve across the whole
+tree, so one area can wait on another:
+
+| Reference | Met when |
+|---|---|
+| `D-274` | that decision is standing or inherited |
+| `BLK-020` | that block is under `## SOLVED` |
+| `A5` · `F-012` | that work row is done or dropped, in this area |
+| `01-luxury:F-012` | the same, in another area — **always qualify across areas**, because work ids are only unique within one |
+| `phase:SOURCING` | this area is at that phase or past it |
+
+**READY** is every open row whose gate is met. `status` prints it per owner and prints
+**BLOCKED** with what holds each row, so answering one block visibly moves several rows
+across on the next run. §6.1 takes its work from READY and nowhere else.
+
+`check` refuses a reference that resolves to nothing, an unqualified work id two areas
+could answer, a dependency ring, and an area that has gated every one of its own rows on
+its own rows or its own phase — that last one cannot be true, and it is the failure that
+hides: a walled-off queue and a finished project look identical, because the planner says
+"nothing to do" in both cases. An area whose work all waits on a **block** or on **another
+area** is a real state, not a contradiction: that is exit code 2, and it refuses nothing.
+
+`selftest` checks the resolver itself. A resolver that wrongly calls a gate met sends the
+planner at work that is not ready; one that wrongly calls it unmet stops the project with
+no error printed anywhere. Both are silent, so both get tests (R7).
 
 `set`, `add` and `del` refuse a column that `_schema.csv` does not declare. To add a
 fact that has no column, add the column to `_schema.csv` first — that is a small
@@ -200,10 +230,11 @@ These exist so a small doubt never becomes a conversation.
 
 ## 4 · Blocks
 
-`BLOCKS.md` has two sections, `## OPEN` and `## SOLVED`. A block looks like this:
+`BLOCKS.md` holds **only what is still open**. There is one section, `## OPEN`. A block
+looks like this:
 
 ```
-### BLK-007 · electrical-build
+### BLK-007 · 00-electrical
 **Ask** One sentence, answerable on its own.
 **Why** What changes depending on the answer.
 **Options**
@@ -225,16 +256,24 @@ refuses a block missing any of Ask / Why / Options / Recommend / Stops. If he an
 "unclear — <what is missing>", that is a defect in the block: sharpen it, do not rule it.
 
 **Lifecycle.** You append it → he types a solution → `rx7.py blocks --answered` finds it
-→ you apply it (§6.2) → you move the block under `## SOLVED` with `→ D-###` naming the
-decision it produced (several, comma-separated, if it produced several). An
-answered-but-unapplied block is exit code **2**. It never refuses a commit. *That single
-sentence is the whole fix for why he could not push.*
+→ you apply it through the record (§6.2) → the ruling becomes a decision whose `closes`
+names the block → **you delete the block from this page.** An answered-but-unapplied
+block is exit code **2**. It never refuses a commit. *That single sentence is the whole
+fix for why he could not push.*
 
-**A block that came back unclear is replaced, not ruled.** Move it to `## SOLVED` with
-`→ BLK-###` pointing at a new, plainer block — his words stay where he wrote them, the
-page stops claiming an answer is waiting to be applied, and nothing was guessed. If his
-answer contained a question for you, answer it in the new block's **Why**, then ask only
-the part that actually needs him.
+**Nothing is archived on this page, because nothing needs to be.** A settled question
+lives in `DECISIONS.md`, with his words, the reasoning and the consequences in the data —
+that is what the decision is for, and keeping a second copy here would be two homes for
+one fact (R2). Before deleting a block, confirm three things: the decision exists and is
+`standing`, its `closes` names the block, and its body carries **his answer in his own
+words**. If any of those is missing, finish the job instead of deleting the block. Ids
+are never reused — `rx7.py block` derives the next number from the decisions as well as
+the page, so a deleted BLK-016 can never come back as something else.
+
+**A block that came back unclear is replaced, not ruled.** Write the new, plainer block
+first, carry his words into its **Why** so nothing he typed is lost, then delete the old
+one. If his answer contained a question for you, answer it in the new block's **Why**,
+then ask only the part that actually needs him.
 
 ---
 
@@ -255,6 +294,18 @@ a check in `rx7.py`.
 **R9** Never branch on the words of any output — only its exit code (§1).
 **R10** Scope belongs to the project that owns the work; car-level facts belong to
 `00-CAR`; anything that is a manual, a diagram or a datasheet belongs to `01-REFERENCE`.
+**R11 You cannot see the car.** Every wire table, cavity map, clearance and pin letter in
+this tree was written by something that has never looked at the vehicle, held the
+connector, or put a meter on anything. A measured number always beats your reasoning:
+where the two disagree, the measurement wins and the row is wrong. Never conclude anything
+about a physical part from a verbal description, a photograph, or a datasheet for a part
+nobody has confirmed is the part in the box — there your job is to say *what to measure*,
+and it is a block, not a guess. A dimension, resistance, pin letter or wire length that
+has not been measured carries `confirm` in its note until it has. This is not modesty: the
+design is tens of thousands of rows describing an object you cannot perceive, and the
+failure mode is a harness that is internally perfect and does not fit.
+**R12 A gate holds references, never prose.** Work is taken from READY, never from file
+order. If READY is empty, that is the report.
 
 ---
 
@@ -268,8 +319,9 @@ the report in §8.
 
 1. `status`. If any block is answered, do 6.2 first — an answer can change how an
    earlier work item should be done.
-2. `sql AREA "select id, item, gate, owner, state from work where owner='agent' and state='open'"`.
-   Take the first whose gate is met.
+2. Take the first agent row in **READY** — `status` prints it. Never the next row in file
+   order, and never a BLOCKED one. **READY empty is a report, not permission to take
+   something else**: say what is holding the queue and stop.
 3. Do it through the record only: facts become rows (R1); a derivation becomes a query,
    never a typed number; a fact with no column gets a column (§3). Anything §3 calls big
    becomes a block plus a Camden-owned work row gated on it, and the item stays open with
@@ -303,7 +355,8 @@ the report in §8.
    d. New questions the ruling raises → new blocks.
    e. Work rows gated on it: gate met → leave open for 6.1; the ruling did the work →
       `state=done`.
-5. Move each solved block under `## SOLVED` with `→ D-###`.
+5. Delete each solved block from `BLOCKS.md`, but only after its decision exists, is
+   `standing`, names it in `closes`, and carries his answer in his own words (§4).
 6. `check` everything; `rx7.py decisions`; `log`.
 
 **An answer you do not fully understand is not a ruling.** "I don't understand the
@@ -384,35 +437,27 @@ Then stop. He clears the blocks and says continue.
 
 ---
 
-## 9 · The two directories, and the plan
+## 9 · One tree, and what is left of the old one
 
-There are two trees side by side. Confusing them is the easiest serious mistake
-available, so the rule is absolute.
+`C:\Users\Camden Thomas\Documents\Storage\Rx7` on the laptop,
+`C:\Users\USER\Documents\Storage\Rx7` on the desktop `crashs-pc`. Both are git clones of
+`github.com/CamdenThomas/Rx7`; pull before you start.
 
-| | Path (laptop) | What it is | What you may do |
-|---|---|---|---|
-| **`Rx7-v3`** | `C:\Users\Camden Thomas\Documents\Storage\Rx7-v3` | **The project.** The live record. | everything |
-| `Rx7` | `C:\Users\Camden Thomas\Documents\Storage\Rx7` | The previous system, **frozen for reference** | read only |
+**The v2 working tree is gone.** On 2026-09-12 the v3 record replaced it, after a
+file-by-file check that nothing needed had been left behind: every open question carried
+into a block, a work row or a decision; the firmware byte-identical; the v2 tools, the
+eleven skills and `WORKFLOWS.md` preserved under `99-ARCHIVE/2026-09-11_v2-view-and-tools/`.
+The only rows that vanished were `L2-NZL` and its two cavities, which is D-329 doing its
+job. If you need to know how something used to read, the archive is where it lives now —
+there is no second directory to open, and any instruction that says otherwise is stale.
 
-On the desktop `crashs-pc` both sit under `C:\Users\USER\Documents\Storage\` with the
-same two names. Both `Rx7-v3` clones are git; pull before you start.
-
-**`Rx7` is frozen.** It holds the v2 rendered documents, the eleven skills, the old
-1,307-line tool and Camden's own uncommitted work as he left it. Open it to look
-something up — a design paragraph, an old diagram, how something used to read. Never
-write a file in it, never run a tool in it, never run git in it, and never let a path
-without `-v3` appear in a command you are about to execute. A fact worth keeping from it
-is copied into the v3 record, not edited where it lies.
-
-**The plan, in order.** Finish the **data** side in v3 first: every ruling applied, every
-agent work row done, every table declared and clean, the design frozen. Only then the
-visual layer — and that is a separate, later, read-only concern that reads the v3 record
-and writes nothing back to it. Do not start it, sketch it, or write a document "so it can
-be read" before the data side is finished (§1). `DECISIONS.md` is the one generated file
-and it is not the beginning of a view layer.
-
-**When v3 is complete**, `Rx7` is archived wholesale and stops existing as a working
-tree. Until then it is a library, not a workspace.
+**The visual layer is still a later concern.** `DECISIONS.md` remains the one generated
+file. Do not build a view, a template or a rendered document, and do not write a document
+"so it can be read" (§1). The one exception is
+`02-PROJECTS/00-electrical/cad/`: a KiCad project drawing the ICU carrier's circuit,
+ruled in by Camden on 2026-09-12. It is not an area — no `data/`, so `rx7.py` cannot see
+it — nothing in the record cites it, and if the record and a drawing ever disagree the
+record is right. Its own README is the fence.
 
 The Claude Project holds one pointer document and nothing else; nothing is ever queued
 there.
