@@ -1,12 +1,12 @@
-id,run,awg,ft,colour
-C01,Battery + → master disconnect → Class-T block,2,1.0,RED
-C02,Battery + → master disconnect → MRBF,1/0,1.0,RED
-C03,Class-T → DP-BAT (through the tunnel to the dash post),2,16,RED
-C04,Battery + → MRBF → starter B+ stud (forward under the car / through the tunnel),1/0,18,RED
-C05,Battery − → rear ground stud,1/0,3,BLK
-C06,Engine block → chassis strap,2,2,BLK
-C07,Alternator B+ → F18 → starter B+ stud,6,4,RED
-C08,Starter B+ stud → F17 → K9 30,10,4,RED
-C09,K9 87 → starter S terminal,10,3,RED
-C10,Busbar → PMU stud,2,0.7,RED
-C11,Rear ground stud → engine block — dedicated cranking return,1/0,18,BLK
+id,run,awg,ft,colour,note
+C01,Battery + → master disconnect → Class-T block,2,1.0,RED,"confirm — hand estimate, not measured"
+C02,Battery + → master disconnect → MRBF,1/0,1.0,RED,"confirm — hand estimate, not measured"
+C03,Class-T → DP-BAT (through the tunnel to the dash post),2,16,RED,"confirm — hand estimate, not measured"
+C04,Battery + → MRBF → starter B+ stud (forward under the car / through the tunnel),1/0,18,RED,"confirm — hand estimate, not measured"
+C05,Battery − → rear ground stud,1/0,3,BLK,"confirm — hand estimate, not measured. The only home for this conductor: the heavy battery and bond cables live here and are bought from here (P062 / P097); grounds holds the zone returns (A9, 2026-09-21)"
+C06,Engine block → chassis strap,2,2,BLK,"confirm — hand estimate, not measured. The only home for this conductor: the heavy battery and bond cables live here and are bought from here (P062 / P097); grounds holds the zone returns (A9, 2026-09-21)"
+C07,Alternator B+ → F18 → starter B+ stud,6,4,RED,"confirm — hand estimate, not measured"
+C08,Starter B+ stud → F17 → K9 30,10,4,RED,"confirm — hand estimate, not measured"
+C09,K9 87 → starter S terminal,10,3,RED,"confirm — hand estimate, not measured"
+C10,Busbar → PMU stud,2,0.7,RED,"confirm — hand estimate, not measured"
+C11,Rear ground stud → engine block — dedicated cranking return,1/0,18,BLK,"confirm — hand estimate, not measured. The only home for this conductor: the heavy battery and bond cables live here and are bought from here (P062 / P097); grounds holds the zone returns (A9, 2026-09-21)"

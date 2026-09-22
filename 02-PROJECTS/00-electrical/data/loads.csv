@@ -1,5 +1,5 @@
 id,circuit,ch,rated,design_a,measured_a,basis
-LD01,Headlight LOW / HIGH,O2 / O3,25 A,7.4 / 8.9,,"factory wattage from the section E scan: HALOGEN 60/50 W per lamp, both lamps - LOW 100 W and HIGH 120 W at 13.5 V. The previous figures (3.0 / 3.5) contradicted this row's own stated basis of two 55 W lamps and were about one filament's worth; found by T-017, 2026-09-12. Whatever bulbs are in the car today is not known and BLK-015 may make them LED, so CK01 is the number that counts"
+LD01,Headlight LOW / HIGH,O2 / O3,25 A,7.4 / 8.9,,"factory wattage from the section E scan: HALOGEN 60/50 W per lamp, both lamps - LOW 100 W and HIGH 120 W at 13.5 V. The previous figures (3.0 / 3.5) contradicted this row's own stated basis of two 55 W lamps and were about one filament's worth; found by T-017, 2026-09-12. Whatever bulbs are in the car today is not known, so CK01 is the number that counts; luxury D-358 makes them 4x6 LED units at stage S7, and this row is re-set then"
 LD02,Tail · park · markers · licence,O6,15 A,4.4,5.4,factory wattage 8 W ×4 + 3.8 W ×4 + 6 W ×2
 LD03,Brake lamps,O7,15 A,3.9,7.0,27 W ×2 — measured nearly double the estimate
 LD04,"Turn, per side",O17 / O18,7 A,4.2,3.4,27 W ×2 + indicator

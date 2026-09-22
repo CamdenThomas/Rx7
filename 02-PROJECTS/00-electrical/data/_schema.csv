@@ -9,6 +9,7 @@ cables,run,str,no,,
 cables,awg,enum(1/0|10|2|6),no,,
 cables,ft,num,no,,
 cables,colour,enum(BLK|RED),no,,
+cables,note,text,no,,"R11 - a length nobody has measured carries confirm (2026-09-21)"
 carts,store,key,yes,,
 carts,total_usd,num,no,,
 carts,lines_txt,str,no,,
@@ -57,6 +58,7 @@ grounds,return,str,no,,
 grounds,awg,enum(1/0|10|12|14|16|2),no,,
 grounds,qty,int,no,,
 grounds,ft,int,no,,
+grounds,note,text,no,,"R11 - a length nobody has measured carries confirm (2026-09-21)"
 housings,code,key,yes,,
 housings,leg,str,no,,
 housings,class,enum(Blower|Door|Medium|Module|Port|Power|Signal),no,,
@@ -102,7 +104,7 @@ logic,channel,str,no,,
 logic,expression,text,no,,
 logic,inrush,str,no,,
 logic,retry,str,no,,
-logic,retry_class,enum(critical|guarded|lamp|motor|none),no,,names the retry behaviour; the parameters are in rules retry-class (D-279)
+logic,retry_class,enum(conditional|critical|guarded|lamp|motor|none),no,,names the retry behaviour; the parameters are in rules retry-class (D-279). conditional added 2026-09-21 for MOTOR_BUS (D-357)
 migration,id,key,yes,,
 migration,seq,int,no,,
 migration,circuit,text,no,,
@@ -175,7 +177,7 @@ work,stage_title,str,no,,
 work,item,text,no,,
 work,owner,enum(agent|camden),no,,
 work,state,enum(blocked|done|dropped|open),no,,vocabulary owned by tools/rx7.py - do not narrow it per project (2026-09-11)
-work,gate,str,no,,"references only - D-###, BLK-###, a work id in this area, <area>:<work id>, or phase:<PHASE>; all must be met before the row can start, an empty cell is met, and prose belongs in note (2026-09-12)"
+work,gate,str,no,,"references only - D-###, a block id like 00.18, a work id in this area, <area>:<work id>, or phase:<PHASE>; all must be met before the row can start, an empty cell is met, and prose belongs in note (2026-09-12)"
 work,note,text,no,,
 checks,id,key,yes,,
 checks,when,str,no,,"the step it belongs to - M-1, shakedown, install 2.14, PMU client 5.4"

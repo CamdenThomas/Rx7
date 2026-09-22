@@ -1,8 +1,9 @@
-id,area,change,project
-P-001,Electrical,Full PMU-24 DL rewire — **PMU purchased**,[`../02-PROJECTS/00-electrical/`](../02-PROJECTS/00-electrical/README.md)
-P-002,Electrical,"Ionic S9 heated lithium battery, rear mount — **purchased, not fitted**",00-electrical install §2
-P-003,Suspension,Full bushing + wear-point overhaul,not started
-P-004,Steering,Steering box replacement (sector shaft),not started
-P-005,Brakes,Rear disc conversion from 84–85 axle,**Still planned** (Q-045 → D-113). The Jul 2026 drum overhaul (M-010) was an interim so the car could be driven; it buys time for the axle swap
-P-006,Drivetrain,LS + CD009 swap,not started — O13/O14 and the L1 sensor spares are reserved for it
-P-007,Audio,"Standalone audio system — new amplifier beside the battery on its own fused line off the posts, new speaker cable, new speakers; the head unit is retained","Owner's own work. 00-electrical supplies only the head unit's switched, constant, illumination and ground feeds (D-230, D-236)"
+id,area,change,project,status
+P-001,Electrical,Full PMU-24 DL rewire,02-PROJECTS/00-electrical,"PMU-24 DL bought, not fitted; the car runs on the factory harness"
+P-002,Electrical,"Ionic S9 heated lithium battery, rear mount",02-PROJECTS/00-electrical,"bought, not fitted"
+P-003,Suspension,Full bushing + wear-point overhaul,,not started - no project area yet
+P-004,Steering,Steering box replacement (sector shaft),,not started - no project area yet
+P-005,Brakes,Rear disc conversion from 84–85 axle,02-PROJECTS/02-engine,"still planned, not started; the Jul 2026 drum overhaul (M-010) was an interim so the car could be driven"
+P-006,Drivetrain,LS + CD009 swap,02-PROJECTS/02-engine,project area open (proposed); nothing done on the car. The electrical build reserves outputs and sensor spares for it
+P-007,Audio,"Standalone audio system — new amplifier beside the battery on its own fused line off the posts, new speaker cable, new speakers; the head unit is retained",,"owner's own work, not started; the electrical build supplies only the head unit's switched, constant, illumination and ground feeds"
+P-008,Interior,"Luxury package - dash and interior electronics, blower, seats, mirrors, windows, lighting second pass",02-PROJECTS/01-luxury,not started on the car; follows the electrical build

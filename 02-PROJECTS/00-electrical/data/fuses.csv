@@ -7,8 +7,8 @@ F3,5 A,"Dash node, block A (busbar)",A,2,"Switch supply — ignition switch, lig
 F8,,"Sill node, sealed inline holder fitted — no fuse this build",,,Window branch DRV — the luxury package drops the fuse in (D-283),O1 via L4-P 3 (capped),EMPTY,WIN-DRV
 F9,,"Sill node, sealed inline holder fitted — no fuse this build",,,Window branch PASS — the luxury package drops the fuse in (D-283),O1 via L4-P 3 (capped),EMPTY,WIN-PASS
 F12,5 A,"Dash node, sealed inline",,,Interior lamp — L4-M 8,O20,LIVE,INTERIOR
-F13,,"Dash node, block A (busbar)",A,4,"Future module — position labelled, no fuse",Busbar,EMPTY,—
-F14,,"Sill node, sealed inline holder fitted — no fuse this build",,,Mirror heat — the luxury package drops the fuse in (D-283),O15 via L4-P 4 (capped),EMPTY,MIRROR-HEAT
+F13,,"Dash node, block A (busbar)",A,4,"Two held consumers, no fuse this build: L3-S2 7 → L3-MOD 1, the future module (D-274, kept by D-350); and L2-M 8, a self-parking wiper motor's park feed (D-317). Always-hot - block A is on the busbar",Busbar,EMPTY,—
+F14,,"Sill node, sealed inline holder fitted — no fuse this build",,,Mirror heat — the luxury package drops the fuse in (D-283),"The DCU's high-side mirror-heat switch via DP-DCU-B 9 → L4-P 4 (capped, D-369)",EMPTY,MIRROR-HEAT
 F15,7.5 A,"Dash node, sealed inline",,,Alternator excitation — L1-S1 2,O12,LIVE,ALT-EXCITE
 F16,5 A,"Dash node, sealed inline",,,"The display's backlight, ignition — DP-ICU-A 6 through the ICU carrier (D-268)",O12,LIVE,DISPLAY
 F17,30 A,"Engine bay, MIDI holder at the starter B+ stud",,,Start relay K9 contact 30 (10 AWG),Starter B+ stud,LIVE,START-RLY

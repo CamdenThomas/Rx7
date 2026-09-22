@@ -1,5 +1,11 @@
 # Normalise line endings: the tree is edited from Windows and from a Linux sandbox.
 * text=auto
+# The tool writes LF; with core.autocrlf the checkout wrote CRLF, so every tool write
+# flipped a whole file's line endings and git warned on each one. One ending, everywhere.
+*.csv text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+.githooks/* text eol=lf
 *.pdf binary
 *.STEP binary
 *.png binary

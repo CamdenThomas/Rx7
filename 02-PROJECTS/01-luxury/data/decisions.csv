@@ -1,7 +1,7 @@
 id,system,title,date,status,supersedes,superseded_by,closes,also
-D-208,The boundary — what the electrical build hands over,"This project is fabrication, modules and software; it does no harness…",,inherited,,,,D-215
+D-208,The boundary — what the electrical build hands over,"This project is fabrication, modules and software; it does no harness…",,superseded,,D-216,,D-215
 D-081,The boundary — what the electrical build hands over,Modules join a finished car,,inherited,,,,
-D-210,The boundary — what the electrical build hands over,No ECUMaster keypad; the control panel is a custom design that lands on…,,inherited,,,,
+D-210,The boundary — what the electrical build hands over,No ECUMaster keypad; the control panel is a custom design that lands on…,,superseded,,D-355,,
 D-075,Modules — DCU and ICU,"Two nodes: the DCU (climate, HVAC servos, comfort switching) and the…",,inherited,,,,D-077 D-083
 D-306,Modules — DCU and ICU,"The ICU joins early, headless: a carrier with the analog front end, the…",2026-09-07,standing,,,,
 D-307,Modules — DCU and ICU,Blower speed is the DCU's command and the PMU's PWM: the DCU sends a…,2026-09-07,standing,,,,
@@ -35,14 +35,18 @@ D-201,Lighting — the second pass,Lighting starts only after the electrical reb
 D-107,Lighting — the second pass,Custom tail lights: a thin LED strip per side in the stock aperture…,2026-08-31,inherited,,,,L-001 D-111
 D-110,Lighting — the second pass,The pop-ups stay; the headlamp becomes a DOT-compliant sealed unit…,,inherited,,,,L-002
 D-122,Lighting — the second pass,Every soft fuse is re-set after any bulb change,,inherited,,,,L-003
-D-309,The record itself,"The luxury record is data, rendered — the same workflow as the…",2026-09-07,standing,,,,
+D-309,The record itself,"The luxury record is data, rendered — the same workflow as the…",2026-09-07,superseded,,D-364,,
 D-310,The record itself,Every ICU sender input is a high-Z observer of a gauge-driven node…,2026-09-07,standing,,,,
-D-311,The record itself,`firmware/pmu_sim/channels.h` is rendered by this project's build from…,2026-09-07,standing,,,,
+D-311,The record itself,`firmware/pmu_sim/channels.h` is rendered by this project's build from…,2026-09-07,superseded,,D-364,,
 D-312,The record itself,"The install plan is nine stages, S0 bench → S1 ICU headless → S2…",2026-09-07,standing,,,,
 D-315,The record itself,The release solenoids exist and the harness reaches them; every other…,2026-09-08,standing,,,,
-D-326,"Comfort, mirrors, windows, seats",The mirrors move on a mechanical switch in the panel; the DCU does mirror heat and nothing else,2026-09-11,standing,,,BLK-012,
-D-327,The record itself,Stage order stands: climate (S2) before the display bezel (S3),2026-09-11,standing,,,BLK-013,
-D-328,The cluster,"The three stats.h constants are fixed from primary sources: redline 7000 rpm, low oil 1.0 bar, tank 16.6 gal",2026-09-11,standing,D-300,,BLK-014,
-D-329,"Comfort, mirrors, windows, seats",The heated washer nozzle and the wiper-park de-icer are cancelled — the comfort bus drops to five switched outputs,2026-09-11,inherited,,,BLK-017,
+D-326,"Comfort, mirrors, windows, seats",The mirrors move on a mechanical switch in the panel; the DCU does mirror heat and nothing else,2026-09-11,superseded,,D-359,01.01,
+D-327,The record itself,Stage order stands: climate (S2) before the display bezel (S3),2026-09-11,standing,,,01.02,
+D-328,The cluster,"The three stats.h constants are fixed from primary sources: redline 7000 rpm, low oil 1.0 bar, tank 16.6 gal",2026-09-11,standing,D-300,,01.03,
+D-329,"Comfort, mirrors, windows, seats",(electrical D-329) The heated washer nozzle and the wiper-park de-icer are cancelled; L2-S 6 and the L2-NZL receptacle come out. The outside-air conductor is untouched,2026-09-11,inherited,,,01.06,
 D-332,"Comfort, mirrors, windows, seats","Mirror heat is a bonded resistive pad on the F14 feed, not an integrated element",2026-09-11,standing,,,,
-D-355,The boundary — what the electrical build hands over,"The control panel is the DCU's faceplate, not its own board: no DP-KEY, no CAN node, a local ribbon to the DCU behind it",2026-09-13,standing,D-210,,,BLK-021 · electrical D-350
+D-355,The boundary — what the electrical build hands over,"The control panel is the DCU's faceplate, not its own board: no DP-KEY, no CAN node, a local ribbon to the DCU behind it",2026-09-13,standing,D-210,,,00.13 · electrical D-350
+D-358,Lighting — the second pass,The headlamps are 4x6 rectangular LED units on adapter plates in the retained pop-up buckets,2026-09-21,standing,,,01.04,
+D-359,"Comfort, mirrors, windows, seats","The car's own FB mirrors are kept, and the DCU drives them from a mini thumbstick on the panel with press-to-toggle",2026-09-21,standing,D-326,,01.07,
+D-362,"Comfort, mirrors, windows, seats","The DCU plugs in like the ICU: DT13 flanged receptacles in a printed enclosure wall, the harness on DT06 plug tails",2026-09-21,standing,,,01.08,
+D-364,The record itself,The luxury record is data and is not rendered; pmu_sim/channels.h is hand-synced to electrical pins (F-013),2026-09-21,standing,D-309 D-311,,,

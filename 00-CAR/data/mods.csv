@@ -1,12 +1,14 @@
 id,date,area,change,notes
-M-001,Nov 2025,Fuel,Weber 45 DCOE fitted — Pierce Manifolds K678 kit,"Replaced factory carb. ~$1,400 with jetting and fuel system"
-M-002,Nov 2025,Fuel,Carter P4070 fuel pump,Pegasus. `V-054` draw unconfirmed — the meter session closes it
-M-003,Nov 2025,Fuel,Fuel pressure regulator,Pegasus
-M-004,unknown,Engine mgmt,Wideband O2 installed,"Tapped into the factory harness — locate and log, `T-019` (K-001)"
-M-005,Aug 2025,Ignition,"Coils ×2, cap, rotor, plug wires, plugs",Full ignition refresh
-M-006,Sep 2025,Engine,"Intake head gasket, carb gaskets",
-M-007,Sep 2025,Service,"Oil, pan gasket, drain plug gasket, filter",Mobil 1 High Mileage 10W-30
-M-008,Sep 2025,Belts,Alternator belt,
-M-009,**Jul 2026**,Brakes,"**Front overhaul** — rotor hubs, wheel bearings, seals, pads",Complete front end
-M-010,**Jul 2026**,Brakes,"**Rear overhaul** — shoes, drums, wheel bearings, wheel cylinders",Complete rear end
-M-011,Jul 2026,Belts,A/C belt fitted,
+M-001,2025-11,Fuel,Weber 45 DCOE fitted — Pierce Manifolds K678 kit,Replaced factory carb. Cost with jetting and fuel system: sum of parts_history PH014-PH030
+M-002,2025-11,Fuel,Carter P4070 fuel pump,Pegasus. Current draw not yet measured - confirm
+M-003,2025-11,Fuel,Fuel pressure regulator,Pegasus
+M-004,,Engine mgmt,Wideband O2 installed,Date unknown. Tapped into the factory harness at a point not yet located (K-001)
+M-005,2025-08,Ignition,"Coils ×2, cap, rotor, plug wires, plugs",Full ignition refresh
+M-006,2025-09,Engine,"Intake head gasket, carb gaskets",
+M-007,2025-09,Service,"Oil, pan gasket, drain plug gasket, filter",Mobil 1 High Mileage 10W-30
+M-008,2025-09,Belts,Alternator belt,
+M-009,2026-07,Brakes,"Front overhaul — rotor hubs, wheel bearings, seals, pads",Complete front end
+M-010,2026-07,Brakes,"Rear overhaul — shoes, drums, wheel bearings, wheel cylinders",Complete rear end
+M-011,2026-07,Belts,A/C belt fitted,
+M-012,,Lighting,LED headlamp housings in the pop-ups,"Fitted by a previous owner, date unknown; what is fitted has not been confirmed on the car"
+M-013,,Engine,Oil metering pump disconnected - the engine runs on premix,Date unknown; done with or after the Weber conversion (M-001). Apex-seal oil is now two-stroke oil added to the fuel at every fill. Ratio: confirm - not recorded

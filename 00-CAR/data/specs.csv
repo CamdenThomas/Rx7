@@ -22,7 +22,7 @@ SP-020,Engine,Oil pressure at 3000 rpm,450-550 (64-79),kPa (psi),"S-002,S-003",S
 SP-021,Engine,Oil pressure control valve opening,900 (128),kPa (psi),S-002,p.2-3,primary,Oil filter relief valve opens 100 kPa (14 psi). 1980 FSM (S-003 T:2) lists regulator 5.0 kg/cm2 and front-cover control valve 11.0 kg/cm2.
 SP-022,Engine,Oil pump type,"Trochoid, chain driven",,"S-002,S-003",S-002 p.2-3; S-003 T:1,primary,1980 FSM: 5.0 L/min at 1000 rpm; chain slack limit 12 mm.
 SP-023,Engine,Engine oil grade,"API SD, SE or SF",,"S-002,S-003",S-002 p.2-3; S-003 T:2,primary,"Viscosity by temperature: 10W-30 (0 to 85 F), 10W-40 (0 to 100 F), 10W-50, 20W-40, 20W-50 (above 15 F), 5W-30 below 0 F (S-002 p.2-3 chart; S-003 T:2)."
-SP-024,Engine,Oil metering pump delivery,2.0-2.5 cc per 6 min at 2000 rpm,,S-003,T:2,primary,1980 spec; metering pump feeds engine oil into the carburettor for apex-seal lubrication.
+SP-024,Engine,Oil metering pump delivery,2.0-2.5 cc per 6 min at 2000 rpm,,S-003,T:2,primary,Factory design: the metering pump feeds the carburettor. On this car the carburettor is gone (M-001) and the pump is disconnected - the engine runs on premix (as_fitted Engine)
 SP-025,Engine,Alternator/fan belt deflection,13-17 (0.51-0.67) at 10 kg (22 lb) push,mm (in),S-002,p.3-3,primary,Measured midway between alternator and eccentric-shaft pulleys. 1980 spec 15 +/-2 mm (S-003 T:1). Air-pump belt 11-13 mm.
 SP-026,Engine,Eccentric shaft to alternator pulley ratio,1 : 1.82,,S-003,T:3,primary,1980 spec; useful for alternator rpm at idle (750 x 1.82 = about 1365 alternator rpm).
 SP-027,Fuel,Fuel tank capacity,63 (16.6 US gal per brochure; 16.4 US gal per 1985 FSM),L,"S-004,S-006,S-002",S-004 p.15; S-006 PDF p.21 (printed 27); S-002 p.4A-16,primary,Enlarged from 55 L (14.5 gal) for 1981. Both gallon figures are conversions of 63 L.
@@ -92,7 +92,7 @@ SP-090,Drivetrain,Propeller shaft run-out limit,0.4 (0.016),mm (in),S-003,T:5,pr
 SP-091,Drivetrain,Live axle location,"4-link with Watt linkage, coil springs, rear stabilizer bar",,"S-004,S-002",S-004 p.14; S-002 p.13-2,primary,
 SP-092,Transmission,Automatic gear ratios,"1st 2.458, 2nd 1.458, 3rd 1.000, reverse 2.181",,"S-004,S-003",S-004 p.14; S-003 T:4,primary,Brochure and 1980 FSM (3N71B) agree.
 SP-093,Transmission,ATF type,ATF Type F (Ford M2C33-F),,"S-002,S-003",S-002 p.0-24; S-003 T:4,primary,"Check level engine idling, warm, selector in P, between L and F marks."
-SP-094,Transmission,"ATF capacity (3N71B, 1980 FSM)",6.2 (6.6 US qt),L,S-003,T:4,primary,1985 L4N71B (with OD) holds 7.5 L - not applicable to the 1982 3-speed.
+SP-094,Transmission,"ATF capacity (3N71B, 1980 FSM)","6.2 (6.6 US qt), Type F",L,S-003,T:4,primary,1980 3N71B figure; drain-and-fill takes less. 1985 L4N71B (with OD) holds 7.5 L - not applicable to the 1982 3-speed.
 SP-095,Transmission,Torque converter stall speed (1980 3N71B),2300-2550 after break-in (2250-2500 during break-in),rpm,S-003,T:5,primary,
 SP-096,Transmission,"Manual gear ratios (for reference, 5-speed)","3.674 / 2.217 / 1.432 / 1.000 / 0.825, reverse 3.542",,"S-004,S-003",S-004 p.14; S-003 T:4,primary,Not fitted to this car.
 SP-097,Transmission,A/T electrical,"Inhibitor (neutral safety) switch A-06 (BY/GY, BW/RW), kick-down solenoid fed by 15A ENGINE fuse, select-lever illumination 3.4 W",,S-001,"PDF p.10, p.12, p.20",primary,
@@ -117,7 +117,7 @@ SP-115,Brakes,Rear drum,"200 mm (7.874 in) dia, limit 201 mm; leading/trailing s
 SP-116,Brakes,Rear wheel cylinder bore,19.05 (0.75),mm (in),"S-002,S-003",S-002 p.11-2; S-003 T:6,primary,
 SP-117,Brakes,Master cylinder,"Tandem with fluid-level sensor, bore 20.64 mm (0.813 in)",,"S-002,S-003",S-002 p.11-2; S-003 T:6,primary,Level sensor feeds the brake warning light via checker C-03 (S-001 PDF p.16).
 SP-118,Brakes,Brake booster,"Vacuum multiplier, 8 in",,S-002,p.11-2,primary,Brochure p.14 also mentions the vacuum servo (text cropped in scan).
-SP-119,Brakes,Brake fluid,DOT-3 or DOT-4 (FMVSS 116) or SAE J1703a,,S-002,p.11-2 and 0-21,primary,
+SP-119,Brakes,Brake fluid,DOT-3 or DOT-4 (FMVSS 116) or SAE J1703a,,S-002,p.11-2 and 0-21,primary,"Change every 30,000 mi / 30 months; annually in humid climates or hard use (S-002 p.0-14 and p.0-21)."
 SP-120,Brakes,Brake pedal,free play 7-9 mm (0.28-0.35 in); height 190 +5/-0 mm (7.48 in) from floor,,"S-002,S-003",S-002 p.11-2; S-003 T:6,primary,
 SP-121,Brakes,Parking brake,"Mechanical on rear wheels, floor lever; 3-7 notches at 10 kg (22 lb) pull (1980 spec)",,"S-002,S-003",S-002 p.11-2; S-003 T:6,primary,
 SP-122,Brakes,Stop-lamp checker,Stop light checker F-03 lights cluster warning if a stop bulb fails,,"S-001,S-006",S-001 PDF p.22 and p.16; S-006 PDF p.21 (printed 27),primary,Added for 1981.
@@ -143,27 +143,12 @@ SP-141,Weights,"Curb weight, GS automatic Federal (derived)",2325 (2380 with A/C
 SP-142,Weights,Front/rear weight distribution,50:50 (approx.),,S-024,,unverified,Wikipedia claim; no Mazda figure found.
 SP-143,Capacities,"Engine oil, total with filter (1981-82 spec)",5.2 (5.5 US qt); oil pan 4.2 (4.4 US qt),L,"S-006,S-003",S-006 PDF p.37 (printed 47) ('Full cap 5.2 L'); S-003 T:2,primary,Applies to the 1981-82 12A with the front-mounted (below radiator) oil cooler. DISAGREES with 1985 figure below because the 1983+ 12A moved the cooler to the engine top (S-016).
 SP-144,Capacities,"Engine oil, total with filter (1985 spec)",4.6 (4.9 US qt); oil pan 4.2 (4.4 US qt); filter 0.3 (0.32 US qt),L,S-002,p.2-3,primary,"1983-85 12A. Fill to dipstick, do not trust either figure blindly."
-SP-145,Capacities,Coolant,9.5 (10.0 US qt) with heater,L,"S-002,S-003",S-002 p.3-2; S-003 T:2,primary,
-SP-146,Capacities,Fuel tank,63 (16.6 / 16.4 US gal),L,"S-004,S-002,S-006",S-004 p.15; S-002 p.4A-16; S-006 PDF p.21 (printed 27),primary,
-SP-147,Capacities,Automatic transmission fluid,"6.2 (6.6 US qt), Type F",L,S-003,T:4,primary,1980 3N71B figure; drain-and-fill takes less.
-SP-148,Capacities,Differential oil,1.2 (1.3 US qt) open; 1.6 (1.7 US qt) LSD,L,"S-002,S-003",S-002 p.9-2; S-003 T:5,primary,
-SP-149,Capacities,Steering gear box oil,0.325 (1985) / 0.29 (1980),L,"S-002,S-003",S-002 p.10A-3; S-003 T:6,primary,
 SP-150,Capacities,Front strut damper fluid (1980 spec),225 +5/-0 cc,cc,S-003,T:7,primary,Only relevant if rebuilding original struts.
-SP-151,Capacities,Battery,"45 Ah (M/T) / 55 Ah (A/T, except California)",Ah,S-004,p.14,primary,
-SP-152,Fluids,Engine oil,API SD/SE/SF; 10W-30 or 10W-40 for 0-100 F; 20W-40/20W-50 above 15 F; 5W-30 below 0 F,,"S-002,S-003",S-002 p.2-3; S-003 T:2,primary,
-SP-153,Fluids,Automatic transmission fluid,ATF Type F (M2C33-F),,"S-002,S-003",S-002 p.0-24; S-003 T:4,primary,
-SP-154,Fluids,Differential oil,API GL-5 SAE 90 (80W below 0 F); LSD lubricant if LSD fitted,,"S-002,S-003",S-002 p.9-2; S-003 T:5,primary,
-SP-155,Fluids,Steering gear oil,API GL-4 SAE 90,,"S-002,S-003",S-002 p.10A-3; S-003 T:6,primary,
-SP-156,Fluids,Brake fluid,DOT-3 or DOT-4 (FMVSS 116),,S-002,p.11-2,primary,Change every 2 years / more often in humid climates (S-002 p.0-21).
-SP-157,Fluids,Coolant,Ethylene-glycol based antifreeze/water,,S-002,p.3-2,primary,
-SP-158,Fluids,Sub-zero starting assist fluid,90% antifreeze / 10% water,,S-003,T:3,primary,Except California cars.
-SP-159,Torque,Wheel nuts,9-11 m-kg (65-80 ft-lb),,S-003,T:8,primary,See Wheels.
 SP-160,Torque,Eccentric shaft pulley bolt,100-120 N-m (72-87 ft-lb),,"S-002,S-003",S-002 p.1-50; S-003 T:7,primary,New washer when pulley removed.
 SP-161,Torque,Engine tension bolts (12A),"32-38 N-m (23-27 ft-lb), oiled threads, in sequence",,"S-002,S-003",S-002 p.1-47; S-003 T:7,primary,
 SP-162,Torque,Flywheel / counterweight lock nut,400-500 N-m (289-362 ft-lb),,"S-002,S-003",S-002 p.1-48; S-003 T:7,primary,A/T uses counterweight + drive plate.
 SP-163,Torque,Drive plate to torque converter,3.5-5.0 m-kg (25-36 ft-lb); drive plate to converter weight 4.2-6.3 m-kg (30-46 ft-lb),,S-003,T:7,primary,
 SP-164,Torque,Converter housing to engine,3.2-4.7 m-kg (23-34 ft-lb); housing to transmission case 4.5-5.5 m-kg (33-40 ft-lb),,S-003,T:7,primary,
-SP-165,Torque,Spark plugs,13-18 N-m (9-13 ft-lb),,"S-002,S-003",S-002 p.5-32; S-003 T:7,primary,
 SP-166,Torque,Oil pan bolts,"8-11 N-m (6-8 ft-lb), evenly",,"S-002,S-003",S-002 p.1-51; S-003 T:7,primary,
 SP-167,Torque,Oil pump sprocket nut,32-47 N-m (23-34 ft-lb),,S-002,p.1-49,primary,1980 FSM 3.0-3.5 m-kg (22-25 ft-lb).
 SP-168,Torque,Water pump,18-27 N-m (13-20 ft-lb),,S-002,p.1-56,primary,
@@ -229,6 +214,6 @@ SP-227,Fuses,"Fuse: POWER WINDOW (30 A, BL wire, IG)",30,A,S-001,PDF p.9,primary
 SP-228,Fuses,"Fuse: CRUISE (10 A, Br wire, IG)",10,A,S-001,PDF p.9,primary,Cruise control unit (option).
 SP-229,Fuses,"Fuse: FUEL PUMP (10 A, BLg wire, IG via BW)",10,A,S-001,PDF p.9,primary,Electric fuel pump.
 SP-230,Fuses,Fuse block total,15 fuses (10/15/20/30 A) plus spares; fusible links at front left suspension tower,,"S-001,S-002",S-001 PDF p.9; S-002 p.15-13,primary,"1985 12A block for comparison: HORN/STOP 15, HAZARD 15, TAIL/ILLUM 10, OPENER 20, CIGAR 10, RADIO/ANT 20, METER/BACK 15, ENGINE 20, POWER WIND 30, BLOWER 20, DEFOG 15, WIPER 15, R.WIPER 10, AIR COND 15."
-SP-231,Charging,Ionic IC-12V40-S9H maximum charge voltage,14.6 +/- 0.1,V,Ionic / LithiumHub published specification for the 12 V 40 Ah S9 family,,secondary,"Recommended float 13.9 +/- 0.1 V. This matters because the factory regulated-voltage specification for this car is 14.2-15.2 V (SP-081) and the TOP of that band is above the pack's ceiling: in spec for the car and safe for the battery are not the same range. Which one this alternator sits in is read at install 2.14 (00-electrical CK03). If it is high the fix is the regulator, never the battery."
-SP-232,Charging,Ionic IC-12V40-S9H discharge cut-off,8.0,V,Ionic / LithiumHub published specification,,secondary,"Output range 8.0-14.6 V. The BMS opens at the bottom of that, and a LiFePO4 gives no slow-crank warning first: it is fine, then it is dead, and it can need a charger to wake the BMS. That is what work A4's monthly app check exists for and what CK02's sleeping-current reading is measured against."
-SP-233,Charging,Ionic IC-12V40-S9H self-heater - trigger and draw,not published,,vendor class behaviour only,,unverified,"Self-heating LiFePO4 packs of this class energise the pad from an ACTIVE CHARGING SOURCE between about -20 and +5 C and stop at +10 C, and take nothing from the pack's own capacity when no charger is connected. If that holds for the S9H the heater is not on the sleeping budget at all, which is the question 00-electrical V-052 was asking. Ionic has not published the S9H's own figures - the ask rides along with the BLE protocol request in W-330b. Operating range -4 to 140 F (-20 to 60 C) is published."
+SP-231,Charging,Ionic IC-12V40-S9H maximum charge voltage,14.6 +/- 0.1,V,S-036,,secondary,"Part of 02-PROJECTS/00-electrical, not fitted - the car runs on its lead-acid battery. Recommended float 13.9 +/- 0.1 V. This matters because the factory regulated-voltage specification for this car is 14.2-15.2 V (SP-081) and the TOP of that band is above the pack's ceiling: in spec for the car and safe for the battery are not the same range. Which one this alternator sits in is measured at install (02-PROJECTS/00-electrical checks). If it is high the fix is the regulator, never the battery."
+SP-232,Charging,Ionic IC-12V40-S9H discharge cut-off,8.0,V,S-036,,secondary,"Part of 02-PROJECTS/00-electrical, not fitted. Output range 8.0-14.6 V. The BMS opens at the bottom of that, and a LiFePO4 gives no slow-crank warning first: it is fine, then it is dead, and it can need a charger to wake the BMS. That is what the monthly app check (PR-002) exists for and what the sleeping-current reading is measured against."
+SP-233,Charging,Ionic IC-12V40-S9H self-heater - trigger and draw,not published,,S-036,,unverified,"Part of 02-PROJECTS/00-electrical, not fitted. Self-heating LiFePO4 packs of this class energise the pad from an ACTIVE CHARGING SOURCE between about -20 and +5 C and stop at +10 C, and take nothing from the pack's own capacity when no charger is connected. If that holds for the S9H the heater is not on the sleeping budget at all. Ionic has not published the S9H's own figures; the electrical build has asked for them. Operating range -4 to 140 F (-20 to 60 C) is published."

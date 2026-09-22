@@ -1,7 +1,7 @@
 # cad — drawn by hand, outside the record
 
-*Rev 2026-09-12 · owns: the boundary between this folder and the record. It lives inside
-`00-electrical` because that is the only project that will ever use it.*
+*Rev 2026-09-21 · owns: the boundary between this folder and the record. It lives inside
+`00-electrical`, which owns the ICU; the DCU carrier is drawn here too (D-361).*
 
 **This is not the visual layer.** CLAUDE.md §1 and §9 say the tree has exactly one
 generated document and that the visual layer of the record is a separate, later concern
@@ -26,6 +26,15 @@ The fence, in full:
 | Project | What | Status |
 |---|---|---|
 | `icu-carrier/` | The ICU carrier board as a KiCad 10 schematic | **drawn, rev 0.02, ERC clean** — see its README |
+| `dcu-carrier/` | The DCU carrier (luxury `H-002`) | **not started** — Part B of the guide; connectors ruled (luxury D-362); waits on `V-083`, `V-101`, `W-332`, `H-007` (window drive settled, D-363) |
+| `PCB-AND-3D-GUIDE.md` | Step by step, schematic → layout → 3D model → fit test, for each carrier separately | Camden asked for it 2026-09-21 (D-361) |
+
+**Layout is in, as of 2026-09-21 (D-361).** Camden asked for the full PCB and 3D guide for both
+boards, which lifts `icu-carrier/README.md`'s old "schematic yes, PCB not yet" (ICU layout was
+already his step `F2`). Board layout and the 3D model are part of this folder's job now.
+**Ordering boards is still his, and still money** (`F2`, luxury `LP07`), and nothing in here
+orders anything. The DCU is the luxury package's board. It is drawn here because the tools, the
+conventions and the guide are here, and its spec stays in `01-luxury/data/`.
 
 ## Why a schematic at all
 

@@ -55,7 +55,12 @@ real noise margin, and every sender curve are still unmeasured — drawing them 
 not close them. The sheet carries its own "what this sheet does not know" panel, and
 `TARGET.md §6` is the same list.
 
-## Scope: schematic yes, PCB not yet
+## Scope: schematic yes, PCB not yet — superseded 2026-09-21
+
+> **Layout is now in scope** (D-361): Camden asked for the full layout and 3D guide, and ICU
+> layout was already his step `F2`. Follow `../PCB-AND-3D-GUIDE.md` Part A. The paragraph below
+> is kept for why it used to say no. Its last point still stands: **fabricating** (ordering
+> boards) is money with a lead time, and it stays Camden's.
 
 Capture the schematic. Do not lay out a board until there is a reason to, and "I have a
 schematic" is not one. The carrier can be protoboard for bring-up, and fabricating one is

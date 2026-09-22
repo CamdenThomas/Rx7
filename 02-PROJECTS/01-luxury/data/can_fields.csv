@@ -31,7 +31,7 @@ id,msg,bytes,field,encoding,note
 0x200/7,0x200,7,counter,,
 0x210/0,0x210,0,Sensor valid,bitfield: b0 RPM · b1 water · b2 oil temp · b3 oil press · b4 VSS · b5 fuel,b5 arrives with F-012
 0x210/1,0x210,1,Sensor fault type,bitfield: b0 open · b1 short · b2 out of range · b3 implausible,
-0x210/2,0x210,2,CAN health,b0 PMU seen · b1 DCU seen · b2 panel seen · b3 AFR seen,b3 with F-012
+0x210/2,0x210,2,CAN health,"b0 PMU seen · b1 DCU seen · b2 reserved (was panel seen - the panel has no CAN node, D-355) · b3 AFR seen",b3 with F-012; b2 was 'keypad' in can_map.h
 0x210/3–6,0x210,3–6,reserved,,
 0x210/7,0x210,7,counter,,
 0x218/0–1,0x218,0–1,Fuel level,"uint16, 0.1 % — three-point lookup calibrated in the car",the measured curve is in electrical D-249
@@ -55,7 +55,7 @@ id,msg,bytes,field,encoding,note
 0x310/0,0x310,0,Seat heat,b0–1 driver level · b2–3 passenger level,
 0x310/1,0x310,1,Seat cool,b0–1 driver · b2–3 passenger,
 0x310/2,0x310,2,Mirror heat,b0 on,
-0x310/3,0x310,3,Nozzle heat / de-icer,b0 nozzles · b1 park de-icer,
+0x310/3,0x310,3,"reserved (was nozzle heat / de-icer, D-329)",,firmware still packs nozzle_deice here until F-012
 0x310/4–5,0x310,4–5,Comfort bus current,"uint16, 0.01 A",
 0x310/6,0x310,6,reserved,,
 0x310/7,0x310,7,counter,,
@@ -64,7 +64,7 @@ id,msg,bytes,field,encoding,note
 0x320/2,0x320,2,Direction,0 unknown · 1 front · 2 rear,
 0x320/3–6,0x320,3–6,reserved,,
 0x320/7,0x320,7,counter,,
-0x400/0,0x400,0,Button states,"bitfield, 8 keys",
+0x400/0,0x400,0,Button states,"bitfield, 8 keys","bit assignment is F-016 - FT14 has 9 keys + encoders + the thumbstick press, more than 8"
 0x400/1,0x400,1,Button held ≥ 1 s,bitfield,
 0x400/2–6,0x400,2–6,reserved,,
 0x400/7,0x400,7,counter,,

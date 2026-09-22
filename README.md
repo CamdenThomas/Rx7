@@ -1,4 +1,4 @@
-# Rx7 — v3
+# Rx7
 
 The car's record. One data format, one instruction file, one page to answer on.
 
@@ -22,9 +22,9 @@ Areas: `00-CAR` (the car as it stands), `01-REFERENCE` (manuals, factory circuit
 photos), `02-PROJECTS/*` (work in flight), `99-ARCHIVE` (finished process, and the v2
 view layer this version replaced).
 
-There are **no generated documents** in this tree — no templates, no rendered Markdown,
-no HTML. The visual layer is a separate, later concern. The previous system, with all of
-its rendered documents intact, is still at `..\Rx7`; read it for history, never write
-to it.
+There are **two kinds of generated document**: `DECISIONS.md` (`rx7.py decisions`) and each project's `TODO.md`, its working list (`rx7.py todo`, D-373) — no templates,
+no other rendered Markdown, no HTML. The visual layer is a separate, later concern. The
+previous system (v2) is gone from disk except for `99-ARCHIVE/2026-09-11_v2-view-and-tools/`;
+read that for history, never write to it.
 
 One-time per clone: `git config core.hooksPath .githooks`

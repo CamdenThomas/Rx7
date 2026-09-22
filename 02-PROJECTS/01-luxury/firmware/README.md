@@ -1,6 +1,6 @@
 # FIRMWARE
 
-*Rev 2026-09-07 · owns: cluster layout, palette, rendering, CAN structs and the automated trip figures — in code. This README is the folder map and the build instructions.*
+*Rev 2026-09-21 · owns: cluster layout, palette, rendering, CAN structs and the automated trip figures — in code. This README is the folder map and the build instructions.*
 
 **This folder is a source of truth** (R6). `icu/cluster_core.h` defines the
 palette, every layout constant, the icon set, unit conversions and
@@ -9,7 +9,7 @@ and lifetime figures (D-163). `icu/can_map.h` is the machine-readable CAN
 map. The prose documents describe *why*; this code defines *what*.
 
 **Version:** `ICU_FW_VERSION` in `icu/icu.ino`, printed at boot. Bump it on
-any behaviour change, log it in `../../03-INSTALL/BRING-UP.md` §4 (`data/bringup_log.csv`), tag the commit.
+any behaviour change, log it in `../data/bringup_log.csv` (`rx7.py add 02-PROJECTS/01-luxury bringup_log …`), tag the commit.
 
 ## Contents
 
@@ -37,9 +37,9 @@ firmware/
 ├── pmu_sim/                 PMU SIMULATOR — the spare Teensy
 │   ├── pmu_sim.ino          CAN TX + serial console + scripted drive cycle
 │   ├── vehicle_model.h      a 1982 RX-7 that behaves like one
-│   └── channels.h           RENDERED by `rx7.py -p 01-luxury build` from the electrical build's data/pins.csv (D-311) — never edit by hand
+│   └── channels.h           hand-synced to 02-PROJECTS/00-electrical/data/pins.csv — the v2 generator (D-311) is archived; see work F-013
 │
-├── tests/                   REGRESSION SUITE — 415 assertions, 13 groups, found 4 real bugs
+├── tests/                   REGRESSION SUITES — test_suite 415 · test_bt817 35 · test_dcu 33 assertions (483, 2026-08-31)
 │   ├── test_suite.cpp       runs on the PC: packing, counter wrap, rendering, overlap, dirty tiles, stats
 │   └── run.bat              build + run. Do this after any change to the headers above
 │
@@ -51,12 +51,12 @@ firmware/
     └── cluster_render_test/ pre-cluster_core.h renderer with a counting mock canvas. Superseded
 ```
 
-**`can_map.h` has three copies** because the Arduino IDE needs the header
+**`can_map.h` has four copies** (`icu/`, `dcu/`, `can_map_test/`, `can_loopback_test/`) because the Arduino IDE needs the header
 beside each sketch. **`icu/can_map.h` is the master.** When it changes, copy
-it over the two test sketches and `dcu/`; `python tools/rx7.py -p 01-luxury check` fails if the four copies differ.
+it over the two test sketches and `dcu/`. Nothing checks that the four agree — compare them by hand after every copy.
 
 **`sim_win32.cpp` includes `../icu/cluster_core.h` directly** — one source of
-truth, no second copy to drift. **`channels.h` is rendered** from the electrical build's pin table — the same rows that print its DESIGN.md; change a pin row there and rebuild this project (D-311).
+truth, no second copy to drift. **`channels.h` is not generated any more:** the v2 build that rendered it from the electrical pin table (D-311) is archived, so a pin row changed in `02-PROJECTS/00-electrical/data/pins.csv` is copied into `channels.h` by hand (work F-013).
 
 ## 2 · Building the simulator
 
@@ -65,7 +65,7 @@ single zip, no installer. Unzip it to `C:\w64devkit` (the path `build.bat`
 assumes) and run `w64devkit.exe`, which opens a shell with g++ on PATH.
 
 ```
-cd "/c/Users/Camden Thomas/Documents/Storage/Rx7/02-PROJECTS/01-luxury/01-DESIGN/firmware/icu_sim"
+cd "/c/Users/Camden Thomas/Documents/Storage/Rx7/02-PROJECTS/01-luxury/firmware/icu_sim"
 ./build.bat          # or: g++ sim_win32.cpp -o sim.exe -std=c++17 -O2 -lgdi32 -luser32
 ./sim.exe
 ```
@@ -122,7 +122,7 @@ compiles every `.cpp` it finds there and will try to build the Win32 host for
 ARM.
 
 `pushDirtyTiles()` in `icu.ino` is **the only display-dependent function in
-the project.** Three `TODO` calls to fill in once a panel is chosen (`Q-060` → D-193).
+the project.** Its three `TODO` calls belong to the electrical build now: they are finished against the BT817 eval board at its install §1.22 (D-314, work F-008).
 
 ## 5 · What the renderer guarantees
 
@@ -173,7 +173,7 @@ With the PMU simulator, the ICU can be developed and demonstrated
 blanking, the diagnostics page, `stats.h` accumulation, the RPM capture path,
 ladder decode, and the whole rendering layer. Needs two SN65HVD230 modules
 with their headers soldered, a twisted pair and 120 Ω × 2 — the S0 lines of
-`../../02-SHOPPING/SHOPPING-LIST.md`.
+`../data/parts.csv` (the 120 Ω are electrical P070's spares).
 
 **What it does not cover — and this is the important limit:** the ICU's
 critical gauges are on **its own analog inputs, not CAN** (D-083). The PMU

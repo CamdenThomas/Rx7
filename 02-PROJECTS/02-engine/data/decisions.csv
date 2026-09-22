@@ -6,5 +6,5 @@ D-183,What the electrical build reserves for the swap,The PMU's fuel-pump and st
 D-187,What the electrical build reserves for the swap,"The automatic's inhibitor switch is read on A4 (P/N, crank interlock)…",,inherited,,,,
 D-173,What the electrical build reserves for the swap,"The fuel-pump soft fuse (4.0 A, set for the Carter P4070) is re-set…",,inherited,,,,
 D-113,What the electrical build reserves for the swap,The rear disc conversion and the rear axle are still planned,,inherited,,,,
-D-324,What the electrical build reserves for the swap,The A/C clutch is a DCU-switched comfort load; the PMU is not opened for it,2026-09-11,standing,,,BLK-011,
-D-325,What the electrical build reserves for the swap,The swap ECU is a dash node; no CAN and no ECU in the engine bay,2026-09-11,standing,,,BLK-004,
+D-324,What the electrical build reserves for the swap,The A/C clutch is a DCU-switched comfort load; the PMU is not opened for it,2026-09-11,standing,,,02.01,
+D-325,What the electrical build reserves for the swap,The swap ECU is a dash node; no CAN and no ECU in the engine bay,2026-09-11,standing,,,00.04,

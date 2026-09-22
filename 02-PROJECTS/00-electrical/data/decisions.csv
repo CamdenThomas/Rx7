@@ -8,7 +8,7 @@ D-131,Architecture and scope,The windows are manual,,standing,,,,
 D-004,Architecture and scope,All 39 PMU cavities are terminated at build time; reserved channels get…,,standing,,,,
 D-119,Architecture and scope,The car migrates and drives on stock incandescent bulbs,,standing,,,,D-124
 D-209,Architecture and scope,The column combination switch stays; every other switch in the car is…,,standing,,,,
-D-210,Architecture and scope,No ECUMaster keypad; DP-KEY is a generic control-panel drop,,standing,,,,
+D-210,Architecture and scope,No ECUMaster keypad; DP-KEY is a generic control-panel drop,,superseded,,D-355,,
 D-211,Architecture and scope,The A/C system comes out; no cooling until the swap engine,,standing,,,,
 D-228,Architecture and scope,The A/C compressor runs on its own belt; the D-211 strip is purely…,2026-09-03,standing,,,V-097,
 D-202,Architecture and scope,One teardown: everything is bought now; measurements confirm before…,,standing,,,,
@@ -148,21 +148,21 @@ D-016,"Wire, labels and materials",(superseded by D-212),,superseded,,D-212,,
 D-221,The record itself,(superseded by D-233),,superseded,,D-233,,
 D-207,The record itself,(superseded by D-222),,superseded,,D-222,,
 D-283,"Legs, connectors and grounds","The sill node's F8 / F9 / F14 get their sealed inline holders now, fitted empty — every future circuit ends in a holder or half a connector, none bare",2026-09-08,standing,,,Q-133,
-D-316,Power backbone and battery,"The engine leg is built for the FB/FC alternator only; every other alternator is provided for at the fuse/relay/PMU end, never as wire in the bay",2026-09-11,standing,,,BLK-001,
-D-317,"Legs, connectors and grounds",Future circuits run both conductors down the leg and branch only what the fitted part needs; the wiper park sense is the first case,2026-09-11,standing,,,BLK-002,
-D-318,The dash node,"CAN never leaves the dashboard: no rear node, no engine-bay drop, and every computer including a future ECU is a dash node",2026-09-11,standing,,,BLK-004,
-D-319,Power backbone and battery,The master disconnect returns to the positive side: one switch at the battery carrying both the PMU leg and the starter leg,2026-09-11,standing,D-245,,BLK-005,
-D-320,"Switches, ladders and inputs",The kick-down is reproduced and stays operational,2026-09-11,standing,,,BLK-006,
-D-321,Power backbone and battery,"The starter MRBF goes to 250 A, sized to the 1/0 cable it protects",2026-09-11,standing,D-237,,BLK-008,
-D-322,Build sequence,Limp-home is the config file and a USB-to-CAN cable carried in the car plus a one-page written emergency procedure,2026-09-11,standing,,,BLK-009,
-D-323,Build sequence,Nothing is bought until the design is complete and Camden understands it; no cart is paid early,2026-09-11,standing,,,BLK-010,
-D-329,"Legs, connectors and grounds",The heated washer nozzle and the wiper-park de-icer are cancelled; L2-S 6 and the L2-NZL receptacle come out. The outside-air conductor is untouched,2026-09-11,standing,D-256,,BLK-017,
-D-330,The dash node,"Battery data comes from the Ionic BMS over BLE; no shunt is bought, and current and state of charge wait on the protocol",2026-09-11,standing,,,BLK-018,
-D-331,Power backbone and battery,The master disconnect is the Blue Sea 9004e; its auxiliary pole is a switch-position input so the PMU drops excitation before the main contacts break,2026-09-11,superseded,,D-351,BLK-019,
-D-333,The dash node,"The PMU-24 DL's channel set is complete - sixteen analog channels, six of them running as outputs, and not one position spare",2026-09-12,standing,,,,W-331 · G12 · BLK-022
+D-316,Power backbone and battery,"The engine leg is built for the FB/FC alternator only; every other alternator is provided for at the fuse/relay/PMU end, never as wire in the bay",2026-09-11,standing,,,00.01,
+D-317,"Legs, connectors and grounds",Future circuits run both conductors down the leg and branch only what the fitted part needs; the wiper park sense is the first case,2026-09-11,standing,,,00.02,
+D-318,The dash node,"CAN never leaves the dashboard: no rear node, no engine-bay drop, and every computer including a future ECU is a dash node",2026-09-11,standing,,,00.04,
+D-319,Power backbone and battery,The master disconnect returns to the positive side: one switch at the battery carrying both the PMU leg and the starter leg,2026-09-11,standing,D-245,,00.05,
+D-320,"Switches, ladders and inputs",The kick-down is reproduced and stays operational,2026-09-11,standing,,,00.06,
+D-321,Power backbone and battery,"The starter MRBF goes to 250 A, sized to the 1/0 cable it protects",2026-09-11,standing,D-237,,00.08,
+D-322,Build sequence,Limp-home is the config file and a USB-to-CAN cable carried in the car plus a one-page written emergency procedure,2026-09-11,standing,,,00.09,
+D-323,Build sequence,Nothing is bought until the design is complete and Camden understands it; no cart is paid early,2026-09-11,standing,,,00.10,
+D-329,"Legs, connectors and grounds",The heated washer nozzle and the wiper-park de-icer are cancelled; L2-S 6 and the L2-NZL receptacle come out. The outside-air conductor is untouched,2026-09-11,standing,D-256,,01.06,
+D-330,The dash node,"Battery data comes from the Ionic BMS over BLE; no shunt is bought, and current and state of charge wait on the protocol",2026-09-11,standing,,,00.11,
+D-331,Power backbone and battery,The master disconnect is the Blue Sea 9004e; its auxiliary pole is a switch-position input so the PMU drops excitation before the main contacts break,2026-09-11,superseded,,D-351,00.12,
+D-333,The dash node,"The PMU-24 DL's channel set is complete - sixteen analog channels, six of them running as outputs, and not one position spare",2026-09-12,standing,,,,W-331 · G12 · 00.14
 D-334,"Outputs, soft fuses and logic","Output health is a band around a measured baseline, and the low half of it is the module's own undercurrent flag",2026-09-12,standing,,,,G1 · CK01
 D-335,"Outputs, soft fuses and logic","Retry is four named classes, and the pop-up bus is the one that must not retry",2026-09-12,standing,,,,G2
-D-336,"Outputs, soft fuses and logic",The PMU cannot report an output stuck ON; it is inferred from output voltage against output state and it can only annunciate,2026-09-12,standing,,,,G3 · CK07 · BLK-023
+D-336,"Outputs, soft fuses and logic",The PMU cannot report an output stuck ON; it is inferred from output voltage against output state and it can only annunciate,2026-09-12,standing,,,,G3 · CK07 · 00.15
 D-337,Power backbone and battery,"The PMU publishes no quiescent current, so D-280's measurement is the only number there will ever be",2026-09-12,standing,,,,G4 · CK02
 D-338,"Switches, ladders and inputs","The PMU has a native delayed turn-off; the keep-alive expression may move into it, the wiring does not",2026-09-12,standing,,,,V-075 · CK06
 D-339,"Legs, connectors and grounds","Two routing rules the benchmark earned: water enters from below or not at all, and the tach shield never runs beside a coil lead",2026-09-12,standing,,,,G7 · G11 · CK04
@@ -170,14 +170,26 @@ D-340,The record itself,"Two conventions written down: a cavity number is the mo
 D-341,"Wire, labels and materials","The bundle-derating audit changes nothing, because no conductor in this harness is loaded above 10 A continuous",2026-09-12,standing,,,,G8
 D-342,"Wire, labels and materials",Route lengths become a measured table; the wire schedule and W-329 wait on M-2 rather than on another estimate,2026-09-12,standing,,,,G13 · W-329
 D-343,"Switches, ladders and inputs","The kick-down gets its own inline fuse off the ignition output and three conductors, and rides the tunnel run that is already there",2026-09-12,standing,,,,W-320 · D-320
-D-344,Build sequence,"The limp-home procedure is a table inside the record, and the glovebox kit is three parts",2026-09-12,standing,,,,W-322 · D-322 · BLK-024
+D-344,Build sequence,"The limp-home procedure is a table inside the record, and the glovebox kit is three parts",2026-09-12,standing,,,,W-322 · D-322 · 00.16
 D-345,The dash node,"The ICU's battery frames carry voltage only, and a field with no source is left undefined rather than published as zero",2026-09-12,standing,,,,W-330 · D-330
 D-346,The dash node,CAN2's second terminator is at the dash node,2026-09-12,standing,D-079,,,D-318
 D-347,Power backbone and battery,"The pack's own limits go into 00-CAR, and the factory charging band's top sits above them",2026-09-12,standing,,,,G5 · CK03
 D-348,"Switches, ladders and inputs","T-017 is done: the design's factory terminal letters are right, and reading the scans found three things that are not",2026-09-12,standing,,,,T-017 · CK08 · CK09 · LD01
 D-349,The record itself,"The project directories are renamed 00-electrical / 01-luxury / 02-engine, the directory name is the area's identity, and the decision bodies keep the old paths on purpose",2026-09-13,standing,,,,
-D-350,"Legs, connectors and grounds","The control panel is the DCU's faceplate, not its own board: DP-KEY and L3-WIN are deleted, DP-DCU gets a constant feed and a wake line, and parked behaviour becomes a PMU gate",2026-09-13,standing,,,BLK-021,
-D-351,Power backbone and battery,The master-switch position sense is dropped and its conductor with it; the disconnect goes back to the simpler 9003e and the TVS stands alone,2026-09-13,standing,D-331,,BLK-022,
-D-352,"Outputs, soft fuses and logic","The fuel pump gets a series relay off the ignition switch, K13, as the one mechanical back-stop against a shorted-on output",2026-09-13,standing,,,BLK-023,
-D-353,Build sequence,"The dead-module limp keeps two feeds, not three: the brake-lamp feed is dropped rather than run constant, and beacons go in the bag instead",2026-09-13,standing,,,BLK-024,
-D-354,"Outputs, soft fuses and logic","No PMU output is free, so the release solenoids stay on O10 and ACCESSORY gains a self-clearing release term",2026-09-13,standing,,,BLK-025,
+D-350,"Legs, connectors and grounds","The control panel is the DCU's faceplate, not its own board: DP-KEY and L3-WIN are deleted, DP-DCU gets a constant feed and a wake line, and parked behaviour becomes a PMU gate",2026-09-13,standing,,,00.13,
+D-351,Power backbone and battery,The master-switch position sense is dropped and its conductor with it; the disconnect goes back to the simpler 9003e and the TVS stands alone,2026-09-13,standing,D-331,,00.14,
+D-352,"Outputs, soft fuses and logic","The fuel pump gets a series relay off the ignition switch, K13, as the one mechanical back-stop against a shorted-on output",2026-09-13,standing,,,00.15,
+D-353,Build sequence,"The dead-module limp keeps two feeds, not three: the brake-lamp feed is dropped rather than run constant, and beacons go in the bag instead",2026-09-13,standing,,,00.16,
+D-354,"Outputs, soft fuses and logic","No PMU output is free, so the release solenoids stay on O10 and ACCESSORY gains a self-clearing release term",2026-09-13,standing,,,00.17,
+D-356,The record itself,"Blocks are numbered per project, <prefix>.<n>; every BLK- id is renamed",2026-09-21,standing,,,,
+D-357,"Outputs, soft fuses and logic","MOTOR_BUS takes a conditional retry class: guarded during a pop-up cycle, motor during a window command",2026-09-21,standing,,,00.18,
+D-360,"Legs, connectors and grounds","The mirrors share one clutch line: four DCU lines on L3-S3 5–8, the clutch spliced at the post onto both mirrors",2026-09-21,standing,,,00.19,
+D-361,The record itself,"cad/ holds a step-by-step layout and 3D guide for both carriers, and board layout is no longer fenced out",2026-09-21,standing,,,,
+D-363,"Outputs, soft fuses and logic","Window relays K5–K8 are two textbook reversing pairs: motor leg on 30, fused feed on 87, 87a and 85 to ground; the DCU drives 86 high-side",2026-09-21,standing,,,,
+D-367,Build sequence,"The limp-home fuel-pump feed lands on K13 terminal 30, so the key still switches the pump",2026-09-21,standing,,,00.20,
+D-368,"Switches, ladders and inputs","A3, A6 and A8 get 47 kΩ baselines at the far end, as A4/A5 have, so at rest is a reading and open is a fault",2026-09-21,standing,,,00.21,
+D-369,"Outputs, soft fuses and logic","Mirror heat is switched high-side by the DCU, as D-254 meant: L4-P 4 is fed from the DCU, not the O15 splice",2026-09-21,standing,,,00.22,
+D-370,"Outputs, soft fuses and logic",The DCU picks hatch or fuel door by grounding K3's or K4's coil during the O10 release pulse,2026-09-21,standing,,,00.23,
+D-371,Build sequence,"The BT817 evaluation board is the one exception to D-323: it is bought now, as a design tool",2026-09-21,standing,,,00.24,D-323
+D-372,Build sequence,"Install steps are work rows in stage E, one per step, gated in order - no install table",2026-09-21,standing,,,00.25,
+D-373,The record itself,"Each project gets a generated, read-only TODO.md from its work table - the second generated document",2026-09-21,standing,,,,

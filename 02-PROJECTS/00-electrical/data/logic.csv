@@ -7,7 +7,7 @@ TURN_L,TURN_L,(A1 == LEFT  \|\|  hazard)  &&  flasher_phase,10× for 100 ms,lamp
 TURN_R,TURN_R,(A1 == RIGHT  \|\|  hazard)  &&  flasher_phase,10× for 100 ms,lamp,"3 at 5 s, then latch and annunciate"
 REVERSE,REVERSE,(A5 == REVERSE || A5 == TRANSIT+R)  &&  A16 >= RUN,10× for 100 ms,lamp,"3 at 5 s, then latch and annunciate"
 INTERIOR,INTERIOR,"A6 != CLOSED — PWM, 1.5 s fade-in, 8 s fade-out after the last door closes; drops after 10 minutes with a door still open, re-arms when every door closes (D-248)",10× for 100 ms,lamp,"3 at 5 s, then latch and annunciate"
-MOTOR_BUS,MOTOR_BUS,popup_cycle  (see the pop-up rule below),7× for 400 ms,guarded,"1, then off and flag - a trip means an obstruction"
+MOTOR_BUS,MOTOR_BUS,popup_cycle OR window_req  (see the pop-up rule; window_req is any of the four window keys held in the DCU's 0x400 frame),7× for 400 ms,conditional,"follows the consumer: during a pop-up cycle 1, then off and flag - a trip means an obstruction; during a window command only, 5 at 15 s, no latch - a window at its stop is a normal spike (D-357)"
 WIPE_LOW,WIPE_LOW,A2 == LOW  \|\|  A2 == WASH  \|\|  (A2 == INT && int_timer)  \|\|  (wiper_latch && A3 not PARKED)  — braking ON,7× for 300 ms,motor,"5 at 15 s, no latch - the stall timer governs"
 WIPE_HIGH,WIPE_HIGH,A2 == HIGH,7× for 300 ms,motor,"5 at 15 s, no latch - the stall timer governs"
 BLOWER,BLOWER,"A16 >= RUN — a steady feed; speed is set by the low-side final stage at L3-BLW on the DCU's own PWM output, ≥ 20 kHz (D-257 — the PMU's PWM tops out at 400 Hz); output DISABLED this build — no motor (K-023 · D-253)",8× for 600 ms,motor,"5 at 15 s, no latch - the stall timer governs"

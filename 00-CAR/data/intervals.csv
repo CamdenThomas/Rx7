@@ -1,12 +1,13 @@
 id,item,every_miles,every_months,spec,source,note
-oil,Engine oil and filter,,,"Mobil 1 High Mileage 10W-30, API SD/SE/SF grade",SP-023,"a rotary lives or dies on oil — log every change; the factory interval is in S-002 §0, to be read into this row"
-plugs,Spark plugs,,,"NGK BR8EQ-14, gap 1.4 mm, 13–18 N·m",SP-038 SP-039 SP-040,
-coolant,Coolant drain and refill,,24,,,never fully drained (K-019) — do it with the thermostat and hoses inspected
-brake_fluid,Brake fluid,,24,,,bled 2026-07
-atf,Automatic transmission fluid,,,"Valvoline Dexron VI (bought, not fitted)",,
-diff,Differential oil,,,"Valvoline 75W-90 (bought, not fitted)",,
-air_filter,Air filter,,,"bought, not fitted",,
-fuel_filter,Fuel filter,,,Duralast FF3429DL,,
-belts,"Drive belts — alternator, A/C",,,deflection 13–17 mm at 10 kg,SP-025,A/C belt leaves with the A/C system
-wheel_nuts,Wheel nut torque check,,,9–11 m-kg (65–80 ft-lb),SP-159,
-battery,Battery state of charge,,1,,,"while the Ionic waits unfitted: check monthly on its app, keep it above BMS cutoff"
+oil,Engine oil and filter,7500,7.5,"Mobil 1 High Mileage 10W-30, API SD/SE/SF grade",SP-023; S-002 p.0-13,"Factory schedule (S-002 p.0-13): oil every 7,500 mi / 7.5 months, filter every 15,000 mi / 15 months, first oil change at 2,000 mi; change both more often in dust, long idling or short cold trips. A rotary lives or dies on oil - log every change"
+plugs,Spark plugs,30000,30,"NGK BR8EQ-14, gap 1.4 mm, 13–18 N·m",SP-038 SP-039 SP-040; S-002 p.0-13,"replace every 30,000 mi / 30 months; inspect at 15,000 mi / 15 months (except California cars)"
+coolant,Coolant drain and refill,30000,30,,S-002 p.0-13,"replace every 30,000 mi / 30 months; inspect the cooling system every 15,000 mi / 15 months. Never fully drained (K-019) - do it with the thermostat and hoses inspected"
+brake_fluid,Brake fluid,30000,30,DOT-3 or DOT-4 (FMVSS 116),SP-119; S-002 p.0-14,"replace every 30,000 mi / 30 months; annually for hard or mountain driving or in very humid climates (S-002 p.0-14 remark 6). Bled 2026-07"
+atf,Automatic transmission fluid,30000,30,ATF Type F (Ford M2C33-F) - SP-093,SP-093 SP-094; S-002 p.0-14,"Factory schedule gives no replacement interval, only a level check: at 7,500 mi, then every 30,000 mi / 30 months. Type F only: this box has no friction-modifier-tolerant rebuild on record, and Dexron-family fluids soften its shifts and can make its bands slip"
+diff,Differential oil,30000,30,"Valvoline 75W-90 (bought, not fitted)",SP-087 SP-088; S-002 p.0-14,"replace every 30,000 mi / 30 months; check the level at 7,500 mi"
+air_filter,Air filter,30000,30,,S-002 p.0-13,"replace every 30,000 mi / 30 months, more often in dust or sand. Fitted state and purchase: parts_history PH040"
+fuel_filter,Fuel filter,30000,30,Duralast FF3429DL,S-002 p.0-13,"replace every 30,000 mi / 30 months (recommended by Mazda, except California cars)"
+belts,"Drive belts — alternator, A/C",30000,30,"deflection at 10 kg: alternator 13-17 mm, A/C 10-12 mm",SP-025; S-002 p.0-13 and p.0-15,"inspect every 30,000 mi / 30 months. The A/C belt goes when the A/C is removed (planned: 02-PROJECTS/00-electrical)"
+wheel_nuts,Wheel nut torque check,15000,15,9–11 m-kg (65–80 ft-lb),SP-125; S-002 p.0-14,"factory schedule: tighten bolts and nuts on chassis and body every 15,000 mi / 15 months; re-torque wheel nuts after 50 miles when a wheel has been off"
+battery,Battery state of charge,,1,,,Ionic S9 care - the Ionic belongs to 02-PROJECTS/00-electrical and is not fitted; the car runs on its lead-acid battery. Check monthly on its app and keep it above BMS cutoff while it waits (PR-002); applies to the car once the Ionic is fitted
+premix,Premix - two-stroke oil in the fuel,,,"two-stroke oil, ratio confirm (not recorded)",as_fitted Engine,"Every fill-up, without exception: with the metering pump disconnected this is the only oil the apex seals get"

@@ -1,6 +1,6 @@
 # CLAUDE.md — the Rx7 tree
 
-*Rev 2026-09-11 (v3). This file is the whole instruction set. There are no skills, no
+*Rev 2026-09-21 (v3). This file is the whole instruction set. There are no skills, no
 slash commands, no second document. If a rule is not here it is not a rule; if you need
 one that is missing, that is a block.*
 
@@ -47,6 +47,10 @@ The record is CSV, and it describes itself.
 BLOCKS.md                   the one page Camden writes in
 ```
 
+A car-level ruling that belongs to no project (a fluid, a service call) is a decision in
+`00-CAR/data/decisions.csv`, closing a `CAR.` block; `00-CAR`'s other tables still never
+cite it (§6.6).
+
 An **area** is any directory holding `data/_tables.csv`: `00-CAR` (the car itself, phase
 PERMANENT), `01-REFERENCE` (manuals, factory circuits, photos, sources — PERMANENT), and
 each project under `02-PROJECTS`.
@@ -58,13 +62,14 @@ column, a value that is not its declared type, a duplicate or empty key, a refer
 a row that is not there — each is a refusal naming the exact row.
 
 **No counter is ever stored.** The next `D-` is derived from the highest that exists
-anywhere in the tree or the archive; the next `BLK-` from `BLOCKS.md`. A stored counter
+anywhere in the tree or the archive; a project's next block from the highest number that
+project has used, on the page or in any decision's `closes`. A stored counter
 can disagree with reality. Never type an id — `rx7.py new` and `rx7.py block` issue them.
 
-**There is exactly one generated document: `DECISIONS.md`.** Nothing else. No templates,
+**There are exactly two kinds of generated document: `DECISIONS.md`, and each project's `TODO.md` (D-373).** Nothing else. No templates,
 no rendered design or shopping or install documents, no HTML, no diagrams. The v2 view
-layer is in `99-ARCHIVE/2026-09-11_v2-view-and-tools/` and the old tree is still at
-`..\Rx7` for reference. The visual layer is a separate, later concern; until it exists,
+layer is in `99-ARCHIVE/2026-09-11_v2-view-and-tools/`, and that archive is the only
+place the old tree survives (§9). The visual layer is a separate, later concern; until it exists,
 do not build one, and do not write a document "so it can be read." The record is the
 deliverable.
 
@@ -86,6 +91,14 @@ decision's `system` column — never by number — so he can read one system's r
 together or search the file for an id. Superseded and withdrawn decisions are listed at
 the end with the decision that replaced each, so every id ever issued is still findable.
 
+**`<project>/TODO.md`** (D-373) is the same kind of exception, under the same four rules: a
+pure projection of that project's `work` table, read-only, rebuilt whole by `rx7.py todo`,
+and never looked at by `check`. It is Camden's working list: what he can start today, then
+every row in working order (stages in the order their work can start, each row after what
+it waits on), with its note. It has **no boxes to tick** (R3): he says what he did, the row
+is set through the record, and the file is regenerated. Run `rx7.py todo` at the end of
+**every** run that changed a `work` row.
+
 **Exit codes are the only signal anything may branch on.**
 
 | Code | Means | Effect |
@@ -93,6 +106,7 @@ the end with the decision that replaced each, so every id ever issued is still f
 | `0` | valid / done | — |
 | `1` | **invalid** — the record contradicts itself | the only code that blocks a commit |
 | `2` | nothing to do, or something waits on a person | **blocks nothing, ever** |
+| `3` | a usage error or a crash in `rx7.py` itself | **blocks nothing** — a broken checker is never a verdict on the record |
 
 Never branch on the text of any command's output. Never grep it, never test it for a
 word. If you need a machine-readable fact you do not have, add a command or a column.
@@ -111,12 +125,13 @@ rx7.py del AREA TABLE KEY                delete a row
 rx7.py sql AREA "select ..."             query one area (read-only)
 rx7.py find TEXT [-p AREA]               search every cell, decision body and BLOCKS.md
 rx7.py new AREA "title" [col=val ...]    reserve the next D- and stub its body
-rx7.py block "ask" [-p AREA]             append a block to BLOCKS.md
+rx7.py block "ask" -p AREA               append a block to BLOCKS.md
 rx7.py blocks [--answered|--solved]      list blocks
 rx7.py decisions                         regenerate DECISIONS.md (grouped by category)
+rx7.py todo [-p AREA]                    regenerate each project's TODO.md from its work table
 rx7.py cites                             advisory: prose cites that no longer resolve
 rx7.py selftest                          the gate resolver's own tests (in memory)
-rx7.py log AREA KIND "what" [refs]       one log row
+rx7.py log AREA KIND "what" [refs]       one log row (KIND = the area's log.workflow enum)
 ```
 
 ### Gates and READY
@@ -128,7 +143,7 @@ tree, so one area can wait on another:
 | Reference | Met when |
 |---|---|
 | `D-274` | that decision is standing or inherited |
-| `BLK-020` | that block is under `## SOLVED` |
+| `01.07` | that block is gone from `BLOCKS.md` and a decision names it in `closes` |
 | `A5` · `F-012` | that work row is done or dropped, in this area |
 | `01-luxury:F-012` | the same, in another area — **always qualify across areas**, because work ids are only unique within one |
 | `phase:SOURCING` | this area is at that phase or past it |
@@ -164,8 +179,8 @@ sourcing, or deciding within §3's small list. If a step needs a call only he ca
 write a block and carry on with the rest of the run.
 
 `BLOCKS.md` is the only file Camden ever writes in. Nothing regenerates it: you append
-new blocks and move solved ones to the SOLVED section, and that is all that ever touches
-it. No tool rewrites it, and no output of yours ever invites him to type anywhere else.
+new blocks and delete solved ones once their decision stands (§4), and that is all that
+ever touches it. No tool rewrites it, and no output of yours ever invites him to type anywhere else.
 
 ---
 
@@ -223,18 +238,21 @@ These exist so a small doubt never becomes a conversation.
 | A superseded decision must be cited | Cite it with its closer: `D-247 → D-278`. |
 | An old cite no longer resolves | `rx7.py cites` lists these. Advisory. Fix them when you are already in the file; never let one stop a run. |
 | The record and your memory disagree | The record wins. Always. |
-| You are about to write a document | Don't. `DECISIONS.md` is the only one, and `rx7.py decisions` writes it. See §1. |
+| You are about to write a document | Don't. `DECISIONS.md` and each project's `TODO.md` are the only ones, and `rx7.py decisions` / `rx7.py todo` write them. See §1. |
 | You wrote a decision this run | Run `rx7.py decisions` before you report. |
+| You changed a `work` row this run | Run `rx7.py todo` before you report. |
 
 ---
 
 ## 4 · Blocks
 
-`BLOCKS.md` holds **only what is still open**. There is one section, `## OPEN`. A block
-looks like this:
+`BLOCKS.md` holds **only what is still open**, grouped under one header per project —
+`## 00 · Electrical`, `## 01 · Luxury`, … — and every block sits under its own project's
+header (`check` refuses one that does not). A block looks like this:
 
 ```
-### BLK-007 · 00-electrical
+### 00.07 · A short title
+**Opened** 2026-09-21
 **Ask** One sentence, answerable on its own.
 **Why** What changes depending on the answer.
 **Options**
@@ -246,9 +264,18 @@ looks like this:
 ```
 
 He types after `**SOLVE:**` — on that line or the lines below it, plain sentences, any
-length, no markers to preserve. Blank means unanswered. Ids are `BLK-`, never `B-`: this
-car's factory diagrams already use `B-12` and `D-01` as component codes, and an id family
-must never share a namespace with the subject matter.
+length, no markers to preserve. Blank means unanswered.
+
+**Block ids are `<project>.<number>`** (D-356): `00.01` is the first block ever raised for
+`02-PROJECTS/00-electrical`, `01.07` the seventh for `01-luxury`. The prefix is the project
+directory's two-digit number; `00-CAR` and `01-REFERENCE` use `CAR` and `REF`, because
+`00` and `01` are taken. `rx7.py block "ask" -p AREA` issues the id and files the block
+under its header — `-p` is required. Never `B-`: this car's factory diagrams already use
+`B-12` and `D-01` as component codes, and an id family must never share a namespace with
+the subject matter. And because a bare `13.80` in prose is a voltage, a block id is only
+recognised as structure — a heading, `closes`, a gate. In prose write it as `block 00.07`
+or in backticks. Blocks were `BLK-###` until 2026-09-21; each old id is a `retired` row in
+its project naming the new one.
 
 **The clarity bar.** A block must be answerable from the page alone, with no design in
 front of him — the same three-isolated-workers standard as everything else. `check`
@@ -268,7 +295,7 @@ one fact (R2). Before deleting a block, confirm three things: the decision exist
 `standing`, its `closes` names the block, and its body carries **his answer in his own
 words**. If any of those is missing, finish the job instead of deleting the block. Ids
 are never reused — `rx7.py block` derives the next number from the decisions as well as
-the page, so a deleted BLK-016 can never come back as something else.
+the page, so a deleted 01.05 can never come back as something else.
 
 **A block that came back unclear is replaced, not ruled.** Write the new, plainer block
 first, carry his words into its **Why** so nothing he typed is lost, then delete the old
@@ -312,7 +339,7 @@ order. If READY is empty, that is the report.
 ## 6 · Playbooks
 
 Each of these is one run. Every run ends the same way: `check` clean, `rx7.py decisions`
-if a decision was written, a `log` row, and — only if blocks have stopped everything —
+if a decision was written, `rx7.py todo` if a work row changed, a `log` row, and — only if blocks have stopped everything —
 the report in §8.
 
 ### 6.1 · Plan (phase PROPOSED or PLANNING)
@@ -325,7 +352,7 @@ the report in §8.
 3. Do it through the record only: facts become rows (R1); a derivation becomes a query,
    never a typed number; a fact with no column gets a column (§3). Anything §3 calls big
    becomes a block plus a Camden-owned work row gated on it, and the item stays open with
-   `note=waits on BLK-…`.
+   `note=waits on block 00.…`.
 4. `check`. A refusal is fixed in the data, or becomes a block if the fix is his.
 5. `set work <id> state=done`; `log`.
 6. Repeat until no agent item has a met gate.
@@ -392,7 +419,7 @@ is the reason the sections must each stand alone. Findings get severity (Blocker
 As-built facts and service instructions fold into `00-CAR`; all process — decisions,
 blocks, work, logs, carts — moves to `99-ARCHIVE/<date>_<project>/`; the project's area
 is removed. `00-CAR` states what *is*, never how it was decided: it never cites a `D-` or
-a `BLK-`.
+a block id.
 
 ### 6.7 · Log a service act
 
@@ -427,7 +454,7 @@ read:
 ```
 DID        what got done, by work id
 DECIDED    D-### one line each
-BLOCKED    BLK-### and the one-word ask
+BLOCKED    00.## (project.number) and the one-word ask
 CHANGED    tables and rows touched
 RECORD     valid / N problems
 NEXT       what runs when the blocks are answered
@@ -454,8 +481,10 @@ there is no second directory to open, and any instruction that says otherwise is
 **The visual layer is still a later concern.** `DECISIONS.md` remains the one generated
 file. Do not build a view, a template or a rendered document, and do not write a document
 "so it can be read" (§1). The one exception is
-`02-PROJECTS/00-electrical/cad/`: a KiCad project drawing the ICU carrier's circuit,
-ruled in by Camden on 2026-09-12. It is not an area — no `data/`, so `rx7.py` cannot see
+`02-PROJECTS/00-electrical/cad/`: the KiCad projects for the ICU and DCU carriers —
+schematic, board layout and 3D model, with `PCB-AND-3D-GUIDE.md` as the method — ruled in
+by Camden on 2026-09-12 (the schematic) and widened on 2026-09-21 (layout, both boards,
+D-361). It is not an area — no `data/`, so `rx7.py` cannot see
 it — nothing in the record cites it, and if the record and a drawing ever disagree the
 record is right. Its own README is the fence.
 

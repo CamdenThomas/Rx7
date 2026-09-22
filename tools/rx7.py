@@ -15,9 +15,9 @@ declared table with no file, an undeclared column, a missing column, a bad
 type, a duplicate key, a reference to a row that is not there - each is a
 refusal naming the exact row.
 
-NO COUNTERS ARE EVER STORED. The next D- is max(decisions.id)+1; the next B-
-is max of the ids in BLOCKS.md +1. A stored counter can disagree with reality;
-a derived one cannot.
+NO COUNTERS ARE EVER STORED. The next D- is max(decisions.id)+1; the next
+block in a project is the highest <prefix>.<n> that project has ever used, +1.
+A stored counter can disagree with reality; a derived one cannot.
 
 EXIT CODES ARE THE ONLY SIGNAL A CALLER MAY BRANCH ON:
     0  valid / done
@@ -31,6 +31,7 @@ from __future__ import annotations
 import argparse
 import csv
 import datetime
+import hashlib
 import os
 import re
 import sqlite3
@@ -40,7 +41,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 BLOCKS_MD = ROOT / "BLOCKS.md"
 
-RC_OK, RC_INVALID, RC_WAITING = 0, 1, 2
+# 3 is a usage error or a crash in this tool: never "the record contradicts itself" (§1),
+# so a hook that blocks only on 1 cannot be tripped by a typo or a missing interpreter.
+RC_OK, RC_INVALID, RC_WAITING, RC_USAGE = 0, 1, 2, 3
 
 PHASES = ("PERMANENT", "PROPOSED", "PLANNING", "SOURCING", "BUILDING", "COMPLETE")
 # `inherited` is a decision this project reads but another project owns.
@@ -60,15 +63,28 @@ VOCAB = {
 
 DATE_RE = re.compile(r"^\d{4}-\d{2}(-\d{2})?$")
 ID_RE = re.compile(r"^[A-Z]{1,4}-\d{1,4}$")
-# Blocks are BLK-, never B-: this car's factory diagrams already use B-12, D-01 and
-# friends as component codes, and an id family must never share a namespace with the
-# subject matter. Prose cites are checked by `rx7.py cites` (advisory), never by `check`.
-CITE_RE = re.compile(r"\b(D-\d{3}|BLK-\d{1,4})\b")
-_CLOSER = r"(?:D-\d{3}|BLK-\d{3})"
+# Blocks are numbered per project, <prefix>.<n>: `00.01` is the first block ever raised
+# for 02-PROJECTS/00-electrical, `01.07` the seventh for 01-luxury (D-356). The prefix is
+# the project directory's two-digit number; 00-CAR and 01-REFERENCE would collide with
+# 00 and 01, so theirs are CAR and REF. The number has at least two digits, so no id is
+# shorter than `00.01` — but a bare `13.80` in prose is a voltage, so a block id is only
+# recognised where it is structure: a BLOCKS.md heading, `closes`, a gate. Never in prose.
+# Blocks were BLK-### until 2026-09-21; each old id is a `retired` row in its project.
+BLOCK_ID_RE = re.compile(r"^(\d{2}|CAR|REF)\.(\d{2,3})$")
+BLOCK_PREFIX_FIXED = {"00-CAR": "CAR", "01-REFERENCE": "REF"}
+# Prose cites are checked by `rx7.py cites` (advisory), never by `check`. D- only, three
+# digits only, because this car's factory diagrams use D-01 and B-12 as component codes.
+CITE_RE = re.compile(r"\b(D-\d{3})\b")
+_BID = r"(?:\d{2}|CAR|REF)\.\d{2,3}"
+_CLOSER = rf"(?:D-\d{{3}}|{_BID})"
+# The title may contain → (the house cite style); only a trailing `→ D-###` list is a closer.
 BLOCK_HEAD_RE = re.compile(
-    r"^###\s+BLK-(\d{1,4})\s*(?:·\s*([^→\n]+?))?"
+    rf"^###\s+({_BID})(?![\w.])\s*(?:[·:\-–—]\s*(.*?))?"
     rf"\s*(?:→\s*({_CLOSER}(?:\s*,\s*{_CLOSER})*))?\s*$"
 )
+SOLVE_RE = re.compile(r"^\*{0,2}\s*solve\s*\*{0,2}\s*:\s*\*{0,2}\s*(.*)$|^\*\*solve\*\*\s*(.*)$", re.I)
+# `## 00 · Electrical` — one header per project; every block sits under its own.
+GROUP_HEAD_RE = re.compile(r"^##\s+(\d{2}|CAR|REF)\b")
 FIELD_RE = re.compile(r"^\*\*([A-Za-z]+):?\*\*\s*(.*)$")
 
 BLOCK_FIELDS = ("Ask", "Why", "Options", "Recommend", "Stops")
@@ -110,6 +126,12 @@ def read_table(area: Path, table: str):
 
 def write_table(area: Path, table: str, hdr, dicts) -> None:
     p = area / "data" / f"{table}.csv"
+    # A key the header does not have would be dropped without a word — which is exactly how
+    # `log` wrote nothing but ids and dates from v3's first run to 2026-09-21. Refuse it.
+    stray = sorted({k for d in dicts for k in d if k not in hdr})
+    if stray:
+        die(f"{rel(p)}: refusing to write columns the header does not have: {', '.join(stray)} "
+            "(nothing was written)")
     tmp = p.with_name(p.name + ".tmp")
     with tmp.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f, lineterminator="\n")
@@ -140,7 +162,7 @@ def resolve_area(name: str | None):
     die(f"no area named {name!r} - areas are: " + ", ".join(rel(a) for a in areas()))
 
 
-def die(msg: str, code: int = RC_INVALID):
+def die(msg: str, code: int = RC_USAGE):
     print(msg)
     sys.exit(code)
 
@@ -196,27 +218,100 @@ def bad_value(typ: str, v: str):
 
 # ------------------------------------------------------------------------ blocks
 
+def block_prefix(area: Path):
+    """The block-id prefix an area owns: CAR, REF, or a project's two-digit number."""
+    if area.name in BLOCK_PREFIX_FIXED:
+        return BLOCK_PREFIX_FIXED[area.name]
+    m = re.match(r"^(\d{2})-", area.name)
+    return m.group(1) if m and area.parent.name == "02-PROJECTS" else None
+
+
+def prefix_areas():
+    """{prefix: area} — the only map from a block id to the project it belongs to."""
+    return {p: a for a in areas() if (p := block_prefix(a))}
+
+
+def group_title(area: Path) -> str:
+    """`## 00 · Electrical` — the header a project's blocks sit under on the page."""
+    name = re.sub(r"^\d{2}-", "", area.name).replace("-", " ")
+    return f"## {block_prefix(area)} · {name[:1].upper() + name[1:].lower()}"
+
+
+def read_blocks_text():
+    """(text, is_utf8). A page saved by Notepad as ANSI or UTF-16 must still be READ — his
+    answers are in it — but nothing may be WRITTEN back through a guessed decoding, or a
+    character he typed is silently changed (R3). append_block refuses when is_utf8 is False."""
+    raw = BLOCKS_MD.read_bytes()
+    for enc in ("utf-8-sig",):
+        try:
+            return raw.decode(enc), True
+        except UnicodeDecodeError:
+            pass
+    if raw[:2] in (b"\xff\xfe", b"\xfe\xff"):
+        return raw.decode("utf-16"), False
+    return raw.decode("cp1252", errors="replace"), False
+
+
+# Problems that only mean "a block Claude is still writing" - they refuse a commit, but they
+# must not stop `rx7.py block` from adding the next one in the same pass (§6.2 4d).
+UNFINISHED = set()
+
+
 def parse_blocks():
-    """Return (blocks, problems). Never rewrites the file; refuses rather than guess."""
+    """Return (blocks, problems). Never rewrites the file; refuses rather than guess.
+
+    The page is one `## <prefix> · <Project>` header per project, each block under its
+    own. There is no OPEN section heading: everything on the page is open."""
     if not BLOCKS_MD.exists():
         return [], []
-    lines = BLOCKS_MD.read_text(encoding="utf-8").splitlines()
+    text, _ = read_blocks_text()
+    lines = [l.rstrip("\r") for l in text.split("\n")]
     blocks, problems = [], []
-    section, cur = "OPEN", None
+    owners = prefix_areas()
+    section, group, cur = "OPEN", None, None
     for ln, raw in enumerate(lines, start=1):
         s = raw.strip()
-        if s.upper().startswith("## "):
+        # Inside an answer, only page structure ends it — a `## ` or a `### ` of his own is
+        # part of what he wrote and must not be cut off (R3).
+        structural = (GROUP_HEAD_RE.match(s) or s.upper() in ("## OPEN", "## SOLVED")
+                      or BLOCK_HEAD_RE.match(s))
+        # ...except a line that is plainly an attempt at a block heading (`### 00.7`, `### BLK-…`)
+        # but does not parse: that is a block Claude wrote wrong, and swallowing it would hide it.
+        idlike = re.match(r"^###\s+(BLK-|\d|CAR\b|REF\b)", s)
+        if cur is not None and cur["in_solve"] and not structural and not idlike:
+            cur["solve"].append(raw)
+            continue
+        if s.startswith("## "):
             head = s[3:].strip().upper()
             if head in ("OPEN", "SOLVED"):
                 section = head
+            g = GROUP_HEAD_RE.match(s)
+            group = g.group(1) if g else None
             cur = None
             continue
         m = BLOCK_HEAD_RE.match(s)
+        if not m and s.startswith("### "):
+            # A heading that is not a block would otherwise be swallowed into the previous
+            # block's text — or, worse, hide a new block entirely. Refuse it by name.
+            problems.append(f"BLOCKS.md: line {ln} is a `###` heading that is not a block "
+                            f"(`### <id> · <title>`, e.g. `### 00.19 · …`): {s[:70]!r}")
+            cur = None
+            continue
         if m:
+            bid = m.group(1)
+            prefix, num = BLOCK_ID_RE.match(bid).groups()
+            area = owners.get(prefix)
+            if area is None:
+                problems.append(f"BLOCKS.md: {bid} (line {ln}) — no area owns the prefix {prefix!r}")
+            elif group != prefix:
+                problems.append(f"BLOCKS.md: {bid} (line {ln}) is not under its project's "
+                                f"header `{group_title(area)}`")
             cur = {
-                "id": f"BLK-{int(m.group(1)):03d}",
-                "num": int(m.group(1)),
-                "area": (m.group(2) or "").strip(),
+                "id": bid,
+                "prefix": prefix,
+                "num": int(num),
+                "area": area.name if area else "",
+                "title": (m.group(2) or "").strip(),
                 "closer": m.group(3) or "",
                 "section": section,
                 "line": ln,
@@ -228,18 +323,18 @@ def parse_blocks():
             continue
         if cur is None:
             continue
-        if cur["in_solve"]:
-            cur["solve"].append(raw)
+        sv = SOLVE_RE.match(s)
+        if sv:
+            # `**SOLVE:**`, `SOLVE:`, `solve:` and `**Solve**:` all count: the marker is his
+            # to type near, and a parser that is picky about it loses his answer (R3).
+            cur["in_solve"] = True
+            rest = sv.group(1) if sv.group(1) is not None else (sv.group(2) or "")
+            if rest.strip():
+                cur["solve"].append(rest)
             continue
         f = FIELD_RE.match(s)
         if f:
-            name, rest = f.group(1), f.group(2)
-            if name.upper() == "SOLVE":
-                cur["in_solve"] = True
-                if rest.strip():
-                    cur["solve"].append(rest)
-            else:
-                cur["fields"][name] = rest
+            cur["fields"][f.group(1)] = f.group(2)
             continue
         # continuation of the previous field (options lists, wrapped prose)
         if cur["fields"]:
@@ -261,6 +356,7 @@ def parse_blocks():
             # while the block is still waiting: once Camden has answered it, enumerating
             # the options he did not pick is busywork.
             if not b["solution"]:
+                n0 = len(problems)
                 for need in BLOCK_FIELDS:
                     if need not in b["fields"] or not b["fields"][need].strip():
                         problems.append(
@@ -272,6 +368,7 @@ def parse_blocks():
                             f"BLOCKS.md: {b['id']} (line {b['line']}) has a placeholder in "
                             f"**{need}** - write it or delete the block"
                         )
+                UNFINISHED.update(problems[n0:])
             if not b["in_solve"]:
                 problems.append(
                     f"BLOCKS.md: {b['id']} (line {b['line']}) has no **SOLVE:** line - "
@@ -290,46 +387,97 @@ def parse_blocks():
     return blocks, problems
 
 
-def next_block_num(blocks):
-    """Highest BLK ever issued, plus one — still derived, never stored (R5).
+def _closes_tokens(path: Path):
+    """Every token in the `closes` column of one decisions.csv."""
+    hdr, body = read_csv_rows(path)
+    if "closes" not in hdr:
+        return []
+    i = hdr.index("closes")
+    return [t for row in body if len(row) > i for t in re.split(r"[\s,;·]+", row[i]) if t]
+
+
+def next_block_id(blocks, prefix: str) -> str:
+    """The highest number this project has ever used, plus one — derived, never stored (R5).
 
     A block is DELETED from BLOCKS.md once its answer is a decision, so the page alone no
-    longer knows how high the numbering went: the decisions do, in `closes`. Counting only
-    the page would hand out BLK-016 twice, and an id that means two things is the one
-    mistake this record cannot recover from."""
-    highest = max([b["num"] for b in blocks], default=0)
-    for a in areas():
-        _, rows = read_table(a, "decisions")
-        for r in rows:
-            for tok in re.split(r"[\s,;]+", (r.get("closes") or "")):
-                m = re.match(r"^BLK-(\d+)$", tok)
-                if m:
-                    highest = max(highest, int(m.group(1)))
-    for f in (ROOT / "99-ARCHIVE").rglob("*.md"):
-        try:
-            for m in re.finditer(r"\bBLK-(\d{1,4})\b", f.read_text(encoding="utf-8", errors="ignore")):
-                highest = max(highest, int(m.group(1)))
-        except OSError:
-            pass
-    return highest + 1
+    longer knows how high a project's numbering went: the decisions do, in `closes` —
+    including the decisions of a project that has since been archived. Counting only the
+    page would hand out 00.05 twice, and an id that means two things is the one mistake
+    this record cannot recover from."""
+    highest = max([b["num"] for b in blocks if b["prefix"] == prefix], default=0)
+    files = [a / "data" / "decisions.csv" for a in areas()]
+    files += list((ROOT / "99-ARCHIVE").rglob("decisions.csv"))
+    toks = [t for f in files for t in _closes_tokens(f)]
+    # A block withdrawn WITHOUT a decision (moot, merged) leaves no `closes`; its id goes
+    # into `retired` as a term so the number is still never handed out again.
+    for f in [a / "data" / "retired.csv" for a in areas()] + list((ROOT / "99-ARCHIVE").rglob("retired.csv")):
+        hdr, body = read_csv_rows(f)
+        if "term" in hdr:
+            toks += [row[hdr.index("term")].strip() for row in body]
+    for tok in toks:
+        m = BLOCK_ID_RE.match(tok)
+        if m and m.group(1) == prefix:
+            highest = max(highest, int(m.group(2)))
+    return f"{prefix}.{highest + 1:02d}"
 
 
-def append_block(num: int, area: str, ask: str) -> None:
-    text = BLOCKS_MD.read_text(encoding="utf-8") if BLOCKS_MD.exists() else (
-        "# BLOCKS\n\n## OPEN\n"
-    )
-    entry = (
-        f"### BLK-{num:03d} · {area}\n"
-        f"**Ask** {ask}\n"
-        f"**Opened** {today()}\n"
-        f"**Why** \n"
-        f"**Options**\n- (a) \n- (b) \n"
-        f"**Recommend** \n"
-        f"**Stops** \n"
-        f"**SOLVE:**\n\n"
-    )
-    text = text.rstrip("\n") + "\n\n" + entry
-    BLOCKS_MD.write_text(text, encoding="utf-8", newline="\n")
+def append_block(bid: str, area: Path, ask: str) -> None:
+    """Insert a new block at the end of its project's group, adding the group header if
+    the project has none yet. Every other byte of the page is left exactly as it was."""
+    if BLOCKS_MD.exists():
+        text, is_utf8 = read_blocks_text()
+        if not is_utf8:
+            die("BLOCKS.md is not saved as UTF-8 (Notepad 'ANSI' or 'Unicode'?). Nothing was "
+                "written - re-save it as UTF-8 first, so no character Camden typed is changed.")
+        lines = [l.rstrip("\r") for l in text.split("\n")]
+    else:
+        lines = ["# BLOCKS"]
+    # The generated title must itself parse: no → (it would read as a closer) and no line break.
+    title = re.sub(r"\s+", " ", ask.replace("→", "->")).strip()
+    title = title if len(title) <= 60 else title[:60].rsplit(" ", 1)[0].rstrip(" -,;") + " …"
+    entry = [
+        f"### {bid} · {title}",
+        f"**Ask** {ask}",
+        f"**Opened** {today()}",
+        "**Why** TO WRITE",
+        "**Options** TO WRITE",
+        "**Recommend** TO WRITE",
+        "**Stops** TO WRITE",
+        "**SOLVE:**",
+    ]
+    prefix = block_prefix(area)
+    order = sorted(prefix_areas(), key=lambda p: (p.isdigit(), p))  # CAR, REF, 00, 01 …
+    heads = [(i, GROUP_HEAD_RE.match(l.strip()).group(1)) for i, l in enumerate(lines)
+             if GROUP_HEAD_RE.match(l.strip())]
+    mine = [i for i, p in heads if p == prefix]
+    if mine:
+        # the group ends at the next `## ` of ANY kind, not only the next project header
+        later = [i for i, l in enumerate(lines) if i > mine[0] and l.strip().startswith("## ")]
+        at = later[0] if later else len(lines)
+        new = entry
+        # an empty project reads `*Nothing open.*` under its header — no longer true
+        gone = [i for i in range(mine[0], at) if lines[i].strip() == "*Nothing open.*"]
+        for i in reversed(gone):
+            del lines[i]
+        at -= len(gone)
+    else:
+        after = [i for i, p in heads if p in order and order.index(p) > order.index(prefix)]
+        at = after[0] if after else len(lines)
+        new = [group_title(area), ""] + entry
+    while at > 0 and not lines[at - 1].strip():
+        at -= 1
+    # only BLANK lines at the insertion point are touched - never a line of text
+    while at < len(lines) and not lines[at].strip():
+        del lines[at]
+    lines[at:at] = [""] + new + ([""] if at < len(lines) else [])
+    out = "\n".join(lines).rstrip("\n") + "\n"
+    tmp = BLOCKS_MD.with_name(BLOCKS_MD.name + ".tmp")
+    tmp.write_text(out, encoding="utf-8", newline="\n")
+    tmp.replace(BLOCKS_MD)
+    # Prove it: the new block must parse back as itself, or the page is restored untouched.
+    if not any(b["id"] == bid for b in parse_blocks()[0]):
+        BLOCKS_MD.write_text(text if 'text' in locals() else "", encoding="utf-8", newline="\n")
+        die(f"{bid} did not parse back after writing - BLOCKS.md restored, nothing added")
 
 
 # ------------------------------------------------------------------------- gates
@@ -338,7 +486,7 @@ def append_block(num: int, area: str, ask: str) -> None:
 # Nothing else: prose belongs in `note`. The references, resolved across the whole tree:
 #
 #   D-274                 met when that decision is standing or inherited
-#   BLK-020               met when that block is gone from BLOCKS.md and a decision
+#   01.07                 met when that block is gone from BLOCKS.md and a decision
 #                         names it in `closes` — i.e. it has been answered and applied
 #   A5                    met when that work row is done or dropped, in this area
 #   01-luxury:F-012  the same, in another area (work ids are only unique per area)
@@ -378,8 +526,12 @@ def tree_index(fresh: bool = False):
         _, drows = read_table(a, "decisions")
         for r in drows:
             i = (r.get("id") or "").strip()
-            if i:
-                idx["decisions"][i] = (r.get("status") or "").strip()
+            st = (r.get("status") or "").strip()
+            # The owner's row decides. An `inherited` copy in another area only fills in when
+            # no owner row exists - it must never re-open a decision its owner superseded
+            # (D-208 read `inherited` in luxury after electrical had superseded it).
+            if i and (i not in idx["decisions"] or idx["decisions"][i] == "inherited"):
+                idx["decisions"][i] = st
         _, wrows = read_table(a, "work")
         for r in wrows:
             i = (r.get("id") or "").strip()
@@ -393,13 +545,17 @@ def tree_index(fresh: bool = False):
     # A block leaves BLOCKS.md the moment its answer is a decision, so "was it answered?"
     # is not a section any more — it is whether a decision says it closed it. That is the
     # one home for the fact (R2), and it is why a gate on a removed block still resolves.
+    # Only a STANDING (or inherited) decision closes a block (§4), and a project that has been
+    # archived still closed what it closed.
     closed = set()
-    for a in areas():
-        _, drows = read_table(a, "decisions")
-        for r in drows:
-            for tok in re.split(r"[\s,;]+", (r.get("closes") or "")):
-                if tok.startswith("BLK-"):
-                    closed.add(tok)
+    for f in [a / "data" / "decisions.csv" for a in areas()] + list((ROOT / "99-ARCHIVE").rglob("decisions.csv")):
+        hdr, _b = read_csv_rows(f)
+        if "closes" not in hdr or "status" not in hdr:
+            continue
+        ci, si = hdr.index("closes"), hdr.index("status")
+        for row in _b:
+            if row[si].strip() in GATE_LIVE_DEC:
+                closed |= {t for t in re.split(r"[\s,;·]+", row[ci]) if BLOCK_ID_RE.match(t)}
     idx["blocks_closed"] = closed
     _TREE = idx
     return idx
@@ -432,25 +588,33 @@ def gate_ref_state(ref: str, area: str, idx=None):
         return PHASES.index(have) >= PHASES.index(want), f"phase {want} (now {have or '-'})"
     if ref in idx["decisions"]:
         st = idx["decisions"][ref]
+        if st in ("superseded", "withdrawn"):
+            # It can never open, and silently waiting forever is the failure gates exist to
+            # prevent: name its closer instead.
+            return False, f"? {ref} is {st} - gate on the decision that replaced it"
         return st in GATE_LIVE_DEC, f"{ref} {st}"
     if ref in idx["blocks"]:
         return False, f"{ref} open"
     if ref in idx.get("blocks_closed", ()):
         return True, f"{ref} closed"
+    if BLOCK_ID_RE.match(ref):
+        return False, f"? {ref} is no block on BLOCKS.md and no decision closes it"
     m = WORK_REF_RE.match(ref)
     if m:
         wid = m.group("id")
         hits = _resolve_work(m.group("area"), wid, area, idx)
         if len(hits) > 1:
             return False, f"? {ref} is ambiguous ({', '.join(hits)}) — qualify it as <area>:{wid}"
+        if hits and not m.group("area") and hits[0] != area:
+            short = hits[0]
+            return False, (f"? {ref} is a work row in {short}, not here - qualify it as "
+                           f"{short}:{wid} (§1: always qualify across areas)")
         if hits:
             st = idx["work"].get((hits[0], wid), "")
             label = wid if hits[0] == area else f"{hits[0]}:{wid}"
             return st in GATE_DONE, f"{label} {st or 'unknown'}"
         if ref.startswith("D-"):
             return False, f"? {ref} is no decision in the tree"
-        if ref.startswith("BLK-"):
-            return False, f"? {ref} is no block in BLOCKS.md"
         return False, f"? {ref} is no decision, block or work item in the tree"
     return False, (f"? {ref!r} is not a reference — a gate holds D-/BLK-/work ids and "
                    f"phase:<PHASE>, nothing else; prose belongs in `note`")
@@ -646,6 +810,28 @@ def check_area(area: Path, keyidx) -> list[str]:
                             p.append(
                                 f"{rel(area)}:{t}:{k}: {col}={tok!r} is not a key in {target}"
                             )
+        # A row with more cells than its header loses them on the next write (read_table zips
+        # to the header), so it is refused while the cells are still there to rescue.
+        _raw_hdr, raw_body = read_csv_rows(area / "data" / f"{t}.csv")
+        for i, raw in enumerate(raw_body, start=2):
+            if len(raw) > len(_raw_hdr) and any(x.strip() for x in raw[len(_raw_hdr):]):
+                p.append(f"{rel(area)}:{t} line {i}: {len(raw)} cells under a {len(_raw_hdr)}-column "
+                         "header - the extra cells would be lost on the next write")
+        if t in ("decisions", "log", "retired"):
+            continue
+        for r in rows:
+            k = (r.get(kc) or "").strip()
+            for col, v in r.items():
+                v = v or ""
+                # §6.6: 00-CAR states what IS, never how it was decided.
+                if block_prefix(area) == "CAR":
+                    for hit in re.findall(r"\b(?:D-\d{3}|BLK-\d{1,4})\b", v):
+                        p.append(f"{rel(area)}:{t}:{k}: {col} cites {hit} - 00-CAR never cites a "
+                                 "decision or a block (§6.6); say what the car is")
+                # The cad/ fence: nothing in the record cites a drawing as evidence.
+                if re.search(r"(?<![\w-])cad/", v):
+                    p.append(f"{rel(area)}:{t}:{k}: {col} cites a file in cad/ - the record never "
+                             "cites a drawing (cad/README.md); promote the fact into a row instead")
     p += check_decisions(area)
     p += check_phase(area)
     p += check_gates(area)
@@ -686,6 +872,11 @@ def check_decisions(area: Path) -> list[str]:
             p.append(f"{rel(area)}:decisions:{i}: standing, but data/decisions/{i}.md does not exist")
         if st == "superseded" and not (r.get("superseded_by") or "").strip():
             p.append(f"{rel(area)}:decisions:{i}: superseded with no superseded_by")
+        if st == "standing" and (ddir / f"{i}.md").exists():
+            body = (ddir / f"{i}.md").read_text(encoding="utf-8", errors="replace")
+            if re.search(r"\*\*Decision\.\*\*\s*\*\*Why\.\*\*", body):
+                p.append(f"{rel(area)}:decisions:{i}: standing, but its body is still the empty "
+                         "stub `rx7.py new` wrote - write it or withdraw it")
     if ddir.is_dir():
         for f in sorted(ddir.glob("D-*.md")):
             if f.stem not in ids:
@@ -710,30 +901,75 @@ def run_check(sel=None):
         problems += check_area(a, keyidx)
     _, bp = parse_blocks()
     problems += bp
+    problems += check_supersedes()
+    seen_prefix = {}
+    for a in areas():
+        px = block_prefix(a)
+        if px and px in seen_prefix:
+            problems.append(f"{rel(a)} and {rel(seen_prefix[px])} both own block prefix {px!r} - "
+                            "their block ids would collide; renumber one directory")
+        elif px:
+            seen_prefix[px] = a
     return problems
+
+
+def check_supersedes():
+    """R4 both ways round: a standing decision that supersedes D-x means D-x is superseded,
+    everywhere it has a row, and says by what. §3 calls two standing rulings that disagree a
+    contradiction - which is exactly what an un-marked supersede is (D-355 / D-210 sat that
+    way until 2026-09-21, and a gate on D-210 would have opened)."""
+    rows = {}
+    for a in areas():
+        _, rs = read_table(a, "decisions")
+        for r in rs:
+            i = (r.get("id") or "").strip()
+            if i:
+                rows.setdefault(i, []).append((a, r))
+    p = []
+    for i, lst in rows.items():
+        for a, r in lst:
+            if (r.get("status") or "").strip() != "standing":
+                continue
+            for old in re.findall(r"\bD-\d{3}\b", r.get("supersedes") or ""):
+                for oa, orow in rows.get(old, []):
+                    ost = (orow.get("status") or "").strip()
+                    if ost not in ("superseded", "withdrawn"):
+                        p.append(f"{rel(oa)}:decisions:{old}: {ost or 'no status'}, but {rel(a)} {i} "
+                                 f"supersedes it - set status=superseded, superseded_by={i}")
+    return p
 
 
 def unresolved_cites():
     """ADVISORY ONLY. Ids written inside prose cells are documentation, not structure:
     a cite that no longer resolves is worth knowing about and must never refuse a commit.
     Structural references are the `ref` column in _schema.csv, which `check` does enforce
-    exactly. This scan is deliberately narrow - D- with three digits and BLK- - because
-    this car's own diagrams use two-digit codes like D-01 and B-12 for components."""
+    exactly. This scan is deliberately narrow - D- with three digits only - because this
+    car's own diagrams use two-digit codes like D-01 and B-12 for components, and a block
+    id like `00.18` cannot be told from a number in prose, so it is not scanned at all."""
     known = set()
     for a in areas():
         _, rows = read_table(a, "decisions")
         known |= {(r.get("id") or "").strip() for r in rows}
     for d in (ROOT / "99-ARCHIVE").rglob("D-*.md"):
         known.add(d.stem)
-    known |= {b["id"] for b in parse_blocks()[0]}
-    # A block that has been answered and applied is deleted from BLOCKS.md, so the only
-    # remaining record that it ever existed is the decision that closed it. Prose citing
-    # it is still correct and must not be reported as dangling.
-    for a in areas():
-        _, drows = read_table(a, "decisions")
-        for r in drows:
-            known |= {t for t in re.split(r"[\s,;]+", (r.get("closes") or "")) if t.startswith("BLK-")}
     out = []
+    # retired.csv exists "so it can never come back" - so say where it has.
+    terms = set()
+    for a in areas():
+        _, rr = read_table(a, "retired")
+        terms |= {(r.get("term") or "").strip() for r in rr}
+    terms = {t for t in terms if len(t) >= 5 and not t.startswith("BLK-")}
+    for a in areas():
+        for f in sorted((a / "data").glob("*.csv")):
+            if f.stem.startswith("_") or f.stem in ("decisions", "retired", "log"):
+                continue
+            _, body = read_csv_rows(f)
+            for i, row in enumerate(body, start=2):
+                for cell in row:
+                    low = (cell or "").lower()
+                    for t in terms:
+                        if t.lower() in low:
+                            out.append(f"{rel(a)}:{f.stem} line {i} uses the retired term {t!r}")
     for a in areas():
         for f in sorted((a / "data").glob("*.csv")):
             _, body = read_csv_rows(f)
@@ -812,7 +1048,7 @@ def decisions_made_alone(area: Path):
     """(alone, standing) — standing decisions that closed nothing at all.
 
     Not a stored flag: §3 already partitions every ruling into one he answered and one
-    made alone, and `closes` says which — a BLK- (or, from v2, a Q-/V- question) means he
+    made alone, and `closes` says which — a block id (or, from v2, a Q-/V- question) means he
     ruled it; empty means nobody was asked. One home per fact (R2).
 
     It is a number to watch, not a refusal: some of these are the small calls §3 exists to
@@ -1003,24 +1239,33 @@ def cmd_find(args):
     return RC_OK if n else RC_WAITING
 
 
-def cmd_new(args):
-    a = resolve_area(args.area)
-    hdr, rows = read_table(a, "decisions")
-    nums = [int(m.group(1)) for m in (re.match(r"D-(\d+)$", (r.get("id") or "")) for r in rows) if m]
+def next_decision_id() -> str:
+    """The highest D- anywhere in the tree or the archive, plus one (R5). One derivation, used
+    by `new` and by DECISIONS.md's "Next id" line, so the two can never disagree."""
+    nums = []
     for d in (ROOT / "99-ARCHIVE").rglob("D-*.md"):
         m = re.match(r"D-(\d+)$", d.stem)
         if m:
             nums.append(int(m.group(1)))
-    for other in areas():
-        if other == a:
-            continue
-        _, orows = read_table(other, "decisions")
-        for r in orows:
-            m = re.match(r"D-(\d+)$", (r.get("id") or ""))
-            if m:
-                nums.append(int(m.group(1)))
-    nid = f"D-{max(nums, default=0) + 1:03d}"
+    for f in [a / "data" / "decisions.csv" for a in areas()] + list((ROOT / "99-ARCHIVE").rglob("decisions.csv")):
+        hdr, body = read_csv_rows(f)
+        if "id" in hdr:
+            for row in body:
+                m = re.match(r"D-(\d+)$", row[hdr.index("id")].strip())
+                if m:
+                    nums.append(int(m.group(1)))
+    return f"D-{max(nums, default=0) + 1:03d}"
+
+
+def cmd_new(args):
+    a = resolve_area(args.area)
+    hdr, rows = read_table(a, "decisions")
+    nid = next_decision_id()
     vals = _pairs(args.pairs)
+    stray = [k for k in vals if hdr and k not in hdr]
+    if stray:
+        die(f"decisions has no column {', '.join(stray)} - nothing reserved (a typo here would "
+            "silently lose a `closes`)")
     row = {c: vals.get(c, "") for c in (hdr or ["id", "date", "title", "status", "superseded_by", "closes", "who"])}
     row["id"] = nid
     row["date"] = vals.get("date", today())
@@ -1087,7 +1332,7 @@ def cmd_decisions(args):
     if latest:
         tail = latest[-5:]
         out.append("**Most recent:** " + " · ".join(f"`{i}` {t or ''}".strip() for _, i, _, t in tail))
-        out.append(f"\nNext id: `D-{latest[-1][0] + 1:03d}`.\n")
+        out.append(f"\nNext id: `{next_decision_id()}`.\n")
 
     out.append("## Contents\n")
     for aname in sorted(per):
@@ -1138,6 +1383,151 @@ def cmd_decisions(args):
     return RC_OK
 
 
+TODO_HEADER = """# TODO — {area}
+
+*Generated by `tools/rx7.py todo` from this project's `data/work.csv` (D-373). Never edited by
+hand: it is a projection of that table and adds no fact of its own, so it cannot disagree with
+the record. Nothing gates a commit on whether it is current — if it looks stale, run the
+command. There are no boxes to tick here on purpose: to mark a step done, say what you did
+("E9 done, cables crimped") and the row is set and this file regenerated.*
+
+**▶** ready now · **⏳** waiting on what is named · **✔** done · **✖** dropped.
+*you* = Camden · *agent* = Claude. Full detail of any row:
+`python tools/rx7.py get {rel} work <id>`.
+
+"""
+
+
+def cmd_todo(args):
+    """Regenerate <project>/TODO.md for every project with a `work` table (or one, with -p).
+    Reads: work.csv, plus the tree index for gates (decisions, BLOCKS.md, other areas' work).
+    Writes: <area>/TODO.md and nothing else. Read-only projection, like DECISIONS.md (D-373)."""
+    idx = tree_index(fresh=True)
+    status_rc = RC_OK
+    sel = [resolve_area(args.area)] if args.area else [
+        a for a in areas() if (a / "data" / "work.csv").exists() and (block_prefix(a) or "").isdigit()]
+    for a in sel:
+        _, rows = read_table(a, "work")
+        rows = [r for r in rows if (r.get("id") or "").strip()]
+        by_id = {r["id"].strip(): r for r in rows}
+
+        def status(r):
+            st = (r.get("state") or "").strip()
+            if st in ("done", "dropped"):
+                return st, []
+            met, unmet, bad = gate_state(r.get("gate", ""), a.name, idx)
+            if st == "open" and met:
+                return "ready", []
+            why = unmet + bad
+            if st == "blocked" and not why:
+                why = ["marked blocked - see its note"]
+            return "waiting", why
+
+        memo = {}
+
+        def depth(wid, seen=()):
+            # Working order: a row comes after everything its gate names. Phase gates sit after
+            # the whole design; a gate on another area or a block counts as one step.
+            if wid in memo:
+                return memo[wid]
+            r = by_id[wid]
+            st, _ = status(r)
+            if st in ("ready", "done", "dropped"):
+                memo[wid] = 0
+                return 0
+            d = 1
+            for ref in parse_gate(r.get("gate", "")):
+                if ref.startswith("phase:"):
+                    d = max(d, 50)
+                elif ref in by_id and ref not in seen:
+                    d = max(d, 1 + depth(ref, seen + (wid,)))
+            memo[wid] = d
+            return d
+
+        info = {wid: (status(r), depth(wid)) for wid, r in by_id.items()}
+        num = lambda w: [int(x) if x.isdigit() else x for x in re.split(r"(\d+)", w)]
+        owner = lambda r: "you" if (r.get("owner") or "").strip() == "camden" else "agent"
+        mark = {"ready": "▶", "waiting": "⏳", "done": "✔", "dropped": "✖"}
+
+        _, prow = read_table(a, "_project")
+        kv = {(r.get("key") or "").strip(): (r.get("value") or "").strip() for r in prow}
+        out = [TODO_HEADER.format(area=rel(a), rel=rel(a))]
+        out.append(f"**Phase:** {kv.get('phase', '-')}. " + (f"**Goal:** {kv['goal']}\n" if kv.get("goal") else "\n"))
+
+        ready = sorted((w for w in by_id if info[w][0][0] == "ready"),
+                       key=lambda w: (owner(by_id[w]) != "you", num(w)))
+        n_open = sum(1 for w in by_id if info[w][0][0] in ("ready", "waiting"))
+        n_done = sum(1 for w in by_id if info[w][0][0] == "done")
+        out.append(f"{n_open} open · {len(ready)} ready now · {n_done} done.\n")
+        out.append("## Now — what can be started today\n")
+        for who in ("you", "agent"):
+            items = [w for w in ready if owner(by_id[w]) == who]
+            if items:
+                out.append(f"**{'Yours' if who == 'you' else 'Agent'}:**\n")
+                out += [f"- **{w}** — {(by_id[w].get('item') or '').strip()}" for w in items]
+                out.append("")
+        if not ready:
+            out.append("*Nothing is startable: every open row waits on something below.*\n")
+
+        # stages in the order their open work becomes startable
+        stages = {}
+        for w, r in by_id.items():
+            stages.setdefault((r.get("stage") or "-").strip(), []).append(w)
+        def stage_key(s):
+            open_d = [info[w][1] for w in stages[s] if info[w][0][0] in ("ready", "waiting")]
+            # the stage's typical row, not its earliest - one early row (E2) must not pull the
+            # whole install stage ahead of the parts arriving
+            return (0 if open_d else 1, sorted(open_d)[len(open_d) // 2] if open_d else 0, s)
+        out.append("## Everything, in working order\n")
+        out.append("*Stages in the order their work can start; inside a stage, each row after "
+                   "what it waits on.*\n")
+        for s in sorted(stages, key=stage_key):
+            ws = stages[s]
+            title = next(((by_id[w].get("stage_title") or "").strip() for w in ws
+                          if (by_id[w].get("stage_title") or "").strip()), "")
+            out.append(f"### {s}" + (f" · {title}" if title else "") + "\n")
+            live = sorted((w for w in ws if info[w][0][0] in ("ready", "waiting")),
+                          key=lambda w: (info[w][1], num(w)))
+            for w in live:
+                r = by_id[w]
+                (st, why), _ = info[w]
+                line = f"- {mark[st]} **{w}** — {(r.get('item') or '').strip()}  \n  *{owner(r)}*"
+                if why:
+                    line += " · waits on: " + "; ".join(why)
+                note = re.sub(r"\s+", " ", (r.get("note") or "").strip())
+                if note:
+                    line += f"  \n  {note}"
+                out.append(line)
+            closed = sorted((w for w in ws if info[w][0][0] in ("done", "dropped")), key=num)
+            if closed:
+                out.append(("\n" if live else "") + "*Closed:* " + " · ".join(
+                    f"{mark[info[w][0][0]]} {w}" for w in closed))
+            out.append("")
+        body = "\n".join(out).rstrip() + "\n"
+        path = a / "TODO.md"
+        # R3: Camden may write in this file even though it says not to - and losing his
+        # writing is the worst failure this system has. The file carries a fingerprint of
+        # what the tool wrote; if the text no longer matches it, he has written in it, and
+        # nothing is overwritten until what he wrote has been carried into the record.
+        if path.exists() and not getattr(args, "force", False):
+            old = path.read_text(encoding="utf-8", errors="replace")
+            m = re.search(r"\n<!-- rx7 todo sha256:([0-9a-f]{64}) -->\s*$", old)
+            mine = old[:m.start() + 1] if m else None
+            if not m or hashlib.sha256(mine.encode("utf-8")).hexdigest() != m.group(1):
+                new_lines = set(body.splitlines())
+                added = [l for l in old.splitlines() if l not in new_lines and not l.startswith("<!-- rx7 todo")]
+                print(f"{rel(a)}/TODO.md has been written in by hand - NOT overwritten. Lines that "
+                      "are not the tool's own (carry them into the record, then run with --force):")
+                for l in added[:40]:
+                    print("   " + l)
+                status_rc = RC_WAITING
+                continue
+        path.write_text(body + f"<!-- rx7 todo sha256:{hashlib.sha256(body.encode('utf-8')).hexdigest()} -->\n",
+                        encoding="utf-8", newline="\n")
+        print(f"{rel(a)}/TODO.md written: {n_open} open, {len(ready)} ready")
+    return status_rc
+
+
 def cmd_cites(args):
     out = unresolved_cites()
     for x in out:
@@ -1148,13 +1538,22 @@ def cmd_cites(args):
 
 def cmd_block(args):
     blocks, problems = parse_blocks()
-    if problems:
-        for x in problems:
+    structural = [x for x in problems if x not in UNFINISHED]
+    if structural:
+        for x in structural:
             print(x)
-        die("BLOCKS.md does not parse - fix it before adding a block (nothing was written)")
-    n = next_block_num(blocks)
-    append_block(n, args.area or "-", args.ask)
-    print(f"BLK-{n:03d} appended to BLOCKS.md - fill in Why / Options / Recommend / Stops")
+        die("BLOCKS.md does not parse - fix it before adding a block (nothing was written)", RC_INVALID)
+    if not args.area:
+        die("a block belongs to a project: pass -p AREA - its number comes from that project")
+    area = resolve_area(args.area)
+    prefix = block_prefix(area)
+    if not prefix:
+        die(f"{rel(area)} owns no block prefix - only 00-CAR, 01-REFERENCE and "
+            "02-PROJECTS/NN-* do")
+    bid = next_block_id(blocks, prefix)
+    append_block(bid, area, args.ask)
+    print(f"{bid} appended to BLOCKS.md under {group_title(area)[3:]} - "
+          "fill in Why / Options / Recommend / Stops")
     return RC_OK
 
 
@@ -1169,7 +1568,7 @@ def cmd_blocks(args):
         sel = [b for b in sel if b["solution"]]
     if args.solved:
         print("solved blocks are not kept here — they are decisions. "
-              "`rx7.py find BLK-0xx` or read DECISIONS.md.")
+              "`rx7.py find 00.05` or read DECISIONS.md.")
         return RC_WAITING
     for b in sel:
         print(f"{b['id']} · {b['area'] or '-'} · {'answered' if b['solution'] else 'waiting'}")
@@ -1191,11 +1590,11 @@ def cmd_selftest(args):
     fails = []
 
     def mk(rows, phase="PLANNING", blocks=None):
-        # BLK-900 is still on the page (open). BLK-901 is gone from the page and named in
+        # 00.90 is still on the page (open). 00.91 is gone from the page and named in
         # some decision's `closes` — that is what "answered and applied" means now.
         idx = {"decisions": {"D-900": "standing", "D-901": "superseded"},
-               "blocks": dict(blocks or {"BLK-900": "OPEN"}),
-               "blocks_closed": {"BLK-901"},
+               "blocks": dict(blocks or {"00.90": "OPEN"}),
+               "blocks_closed": {"00.91"},
                "phase": {A: phase, B: "PLANNING"},
                "work": {}, "work_ids": {}, "row": {}}
         for wid, gate, state in rows:
@@ -1215,7 +1614,7 @@ def cmd_selftest(args):
     idx = mk([("A1", "D-404", "open")])
     expect("a reference to nothing is refused", gate_state("D-404", A, idx)[2])
     expect("prose in a gate is refused", gate_state("install M-1", A, idx)[2])
-    expect("a block that does not exist is refused", gate_state("BLK-404", A, idx)[2])
+    expect("a block that does not exist is refused", gate_state("00.94", A, idx)[2])
 
     amb = mk([("A1", "", "open")])
     amb["work_ids"]["A1"].append(B)
@@ -1227,7 +1626,7 @@ def cmd_selftest(args):
     expect("an area gated only on itself is refused",
            walled_off(A, mk([("A1", "A2", "open"), ("A2", "A1", "open")])))
     expect("an area waiting on a block is NOT refused",
-           walled_off(A, mk([("A1", "BLK-900", "open")])), want=False)
+           walled_off(A, mk([("A1", "00.90", "open")])), want=False)
 
     ext = mk([("A1", f"{B}:F1", "open")])
     ext["work"][(B, "F1")] = "open"
@@ -1246,13 +1645,62 @@ def cmd_selftest(args):
     expect("an open work row holds its gate shut", gate_state("A1", A, ok)[0], want=False)
     expect("a standing decision opens its gate", gate_state("D-900", A, ok)[0])
     expect("a superseded decision does not", gate_state("D-901", A, ok)[0], want=False)
-    expect("a block that became a decision opens its gate", gate_state("BLK-901", A, ok)[0])
-    expect("a block still on the page does not", gate_state("BLK-900", A, ok)[0], want=False)
-    expect("a block that never existed is refused", gate_state("BLK-404", A, ok)[2])
+    expect("a block that became a decision opens its gate", gate_state("00.91", A, ok)[0])
+    expect("a block still on the page does not", gate_state("00.90", A, ok)[0], want=False)
+    expect("a block that never existed is refused", gate_state("00.94", A, ok)[2])
     expect("the phase reached opens its gate", gate_state("phase:PLANNING", A, ok)[0])
     expect("a later phase does not", gate_state("phase:BUILDING", A, ok)[0], want=False)
     expect("several references, one unmet, stays shut", gate_state("D-900 A1", A, ok)[0], want=False)
-    expect("several references, all met, opens", gate_state("D-900 A2 BLK-901", A, ok)[0])
+    expect("several references, all met, opens", gate_state("D-900 A2 00.91", A, ok)[0])
+
+    expect("a project block id is a block id", BLOCK_ID_RE.match("00.18"))
+    expect("a car block id is a block id", BLOCK_ID_RE.match("CAR.01"))
+    expect("a one-digit number is not a block id", BLOCK_ID_RE.match("13.8"), want=False)
+    expect("an old BLK- id is not a block id", BLOCK_ID_RE.match("BLK-020"), want=False)
+    expect("an old BLK- id in a gate is refused", gate_state("BLK-020", A, ok)[2])
+    expect("a project's prefix is its directory number",
+           block_prefix(ROOT / "02-PROJECTS" / "07-paint") == "07")
+    expect("00-CAR does not share 00 with a project", block_prefix(ROOT / "00-CAR") == "CAR")
+    expect("a numbered folder outside 02-PROJECTS owns no prefix",
+           block_prefix(ROOT / "99-ARCHIVE" / "03-old"), want=False)
+
+    # --- the page parser and writer, on a scratch copy of BLOCKS.md (never the real one) ---
+    import tempfile
+    global BLOCKS_MD
+    real = BLOCKS_MD
+    elec = next((a for a in areas() if block_prefix(a) == "00"), None)
+    with tempfile.TemporaryDirectory() as td:
+        try:
+            BLOCKS_MD = Path(td) / "BLOCKS.md"
+            head = "# BLOCKS\n\n## 00 · Electrical\n\n"
+            full = ("**Ask** a\n**Why** b\n**Options**\n- (a) x\n**Recommend** a\n**Stops** s\n")
+            BLOCKS_MD.write_text(head + "### 00.90 · one\n" + full + "SOLVE: yes please\n", encoding="utf-8")
+            bl, pr = parse_blocks()
+            expect("an answer after a bare `SOLVE:` is read", bl and bl[0]["solution"] == "yes please")
+            BLOCKS_MD.write_text(head + "### 00.90 · one\n" + full +
+                                 "**SOLVE:** first\n## my notes\nsecond\n", encoding="utf-8")
+            bl, pr = parse_blocks()
+            expect("a `## ` line inside his answer does not cut it off",
+                   bl and "second" in bl[0]["solution"])
+            BLOCKS_MD.write_text(head + "### 00.90 · one\n" + full + "**SOLVE:**\n### 00.7 · short id\n",
+                                 encoding="utf-8")
+            expect("a malformed block heading after an empty answer is refused, not swallowed",
+                   parse_blocks()[1])
+            BLOCKS_MD.write_text(head + "### 00.90 · one\n" + full + "**SOLVE:** yes\n### my own heading\nmore\n",
+                                 encoding="utf-8")
+            bl, pr = parse_blocks()
+            expect("a `###` of his own inside an answer stays his text",
+                   bl and "more" in bl[0]["solution"] and not pr)
+            if elec is not None:
+                BLOCKS_MD.write_text(head + "### 00.90 · one\n" + full + "**SOLVE:**\n", encoding="utf-8")
+                append_block("00.91", elec, "Swap 12 → 14 AWG on L3?")
+                bl, _ = parse_blocks()
+                ids = [b["id"] for b in bl]
+                expect("a block whose ask contains → is added and parses", "00.91" in ids)
+                expect("adding it leaves the previous block unanswered",
+                       bl and bl[0]["id"] == "00.90" and not bl[0]["solution"])
+        finally:
+            BLOCKS_MD = real
 
     expect("an ISO date parses", days_since("2026-09-01") is not None)
     expect("a non-date does not", days_since("soon") is None)
@@ -1264,10 +1712,17 @@ def cmd_selftest(args):
 def cmd_log(args):
     a = resolve_area(args.area)
     hdr, rows = read_table(a, "log")
-    hdr = hdr or ["id", "date", "kind", "what", "refs"]
-    nums = [int(m.group(1)) for m in (re.match(r"L-(\d+)$", (r.get("id") or "")) for r in rows) if m]
+    hdr = hdr or ["id", "date", "workflow", "ids", "summary"]
+    # KIND is the log's `workflow` column, and its vocabulary is the area's declared enum.
+    shdr, srows = read_table(a, "_schema")
+    typ = next(((r.get("type") or "") for r in srows
+                if r.get("table") == "log" and r.get("column") == "workflow"), "")
+    if typ.startswith("enum(") and args.kind not in typ[5:-1].split("|"):
+        die(f"log KIND must be one of {typ[5:-1].replace('|', '/')} - got {args.kind!r} (nothing was written)")
+    nums = [int(m.group(1)) for m in (re.match(r"L-?(\d+)$", (r.get("id") or "")) for r in rows) if m]
     nid = f"L-{max(nums, default=0) + 1:04d}"
-    rows.append({"id": nid, "date": today(), "kind": args.kind, "what": args.what, "refs": args.refs or ""})
+    rows.append({"id": nid, "date": today(), "workflow": args.kind, "ids": args.refs or "",
+                 "summary": args.what})
     write_table(a, "log", hdr, rows)
     print(f"{nid} logged")
     return RC_OK
@@ -1276,7 +1731,13 @@ def cmd_log(args):
 # ------------------------------------------------------------------------- main
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(prog="rx7", description=__doc__.splitlines()[0])
+    class _Parser(argparse.ArgumentParser):
+        def error(self, message):  # argparse's own exit 2 would read as "nothing to do"
+            self.print_usage(sys.stderr)
+            print(f"rx7: {message}", file=sys.stderr)
+            sys.exit(RC_USAGE)
+
+    ap = _Parser(prog="rx7", description=__doc__.splitlines()[0])
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     p = sub.add_parser("check", help="validate the whole record (rc 1 if it contradicts itself)")
@@ -1322,11 +1783,17 @@ def main(argv=None):
     p = sub.add_parser("decisions", help="regenerate DECISIONS.md, grouped by category")
     p.set_defaults(fn=cmd_decisions)
 
+    p = sub.add_parser("todo", help="regenerate each project's TODO.md from its work table")
+    p.add_argument("-p", "--area")
+    p.add_argument("--force", action="store_true",
+                   help="overwrite a TODO.md written in by hand - only after carrying what he wrote")
+    p.set_defaults(fn=cmd_todo)
+
     p = sub.add_parser("cites", help="advisory: prose cites that no longer resolve (never refuses)")
     p.set_defaults(fn=cmd_cites)
 
     p = sub.add_parser("block", help="append a new block to BLOCKS.md")
-    p.add_argument("ask"); p.add_argument("-p", "--area")
+    p.add_argument("ask"); p.add_argument("-p", "--area", required=True)
     p.set_defaults(fn=cmd_block)
 
     p = sub.add_parser("blocks", help="list blocks")
@@ -1352,4 +1819,12 @@ if __name__ == "__main__":
             sys.stderr.reconfigure(encoding="utf-8")
         except Exception:
             pass
-    sys.exit(main())
+    try:
+        sys.exit(main())
+    except SystemExit:
+        raise
+    except Exception:
+        import traceback
+        traceback.print_exc()
+        print("rx7: crashed - that is a bug in the tool, not a verdict on the record (rc 3)")
+        sys.exit(RC_USAGE)

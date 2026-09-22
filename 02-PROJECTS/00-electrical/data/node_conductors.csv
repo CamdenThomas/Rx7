@@ -15,7 +15,7 @@ N13,K2 terminal 87,Receptacle L2-P 4,12,RED,
 N14,K1 terminal 87a,GND bus,12,BLK,Dynamic braking at rest
 N15,K2 terminal 87a,GND bus,12,BLK,
 N16,O1 splice,Receptacle L4-P 3,12,RED,"Window bus — lands in the sill node's F8 / F9 holders, fitted empty (D-283); no load until the windows (D-274)"
-N17,PMU pin 27 (O15),Splice → receptacles L3-P 2 and L4-P 4,12,RED,"Comfort feeds with no load this build — the dash's ends in the L3-CMF receptacle (D-274), the sill's in F14's holder, fitted empty (D-283, D-254); no fuse block this build"
+N17,PMU pin 27 (O15),Receptacle L3-P 2 (L4-P 4 left this splice - D-369),12,RED,"Comfort feeds with no load this build — the dash's ends in the L3-CMF receptacle (D-274), mirror heat now reaches the sill from the DCU instead (D-369); no fuse block this build"
 N18,PMU pin 2 (O12),Receptacle L1-P 1,12,RED,
 N19,PMU pin 2 (O12) tap,F15 inline (7.5 A) → receptacle L1-S1 2,16,RED,Alternator excitation
 N20,PMU pin 2 (O12) tap,F16 inline (5 A) → receptacle DP-ICU-A 6,16,RED,"The display's backlight, ignition-switched, through the ICU carrier (D-268)"
@@ -24,7 +24,7 @@ N62,GND bus,Wideband gauge ground,16,BLK,A dash-node device — its ground never
 N21,PMU pin 34 (O20),F12 inline (5 A) → receptacle L4-M 8,16,RED,Interior lamp
 N22,PMU pin 34 (O20) tap,"Receptacles L3-S1 8, DP-ICU-A 2",16,RED,Illumination bus — the ICU's dimming reference; the display follows it
 N23,PMU pin 4 (O10),Receptacle L3-M 1,14,ORN,
-N24,PMU pin 4 (O10) tap,"K12 terminal 86; receptacles DP-ICU-A 1 (live), DP-DCU 1 and DP-KEY 3 (capped)",16,RED,
+N24,PMU pin 4 (O10) tap,"K12 terminal 86; receptacles DP-ICU-A 1 (live) and L4-S 4 (the road-speed sensor supply, N73); the hatch and fuel-door release branches to L4-M 3 / 4 (capped; through K3 / K4 on N85, the DCU picks which - D-370)",16,RED,"DP-DCU 1 left this output for F22 when it went constant, and the key-panel drop was deleted (D-350)"
 N25,K12 terminal 85,Receptacle L3-S2 9,16,BLU,Stalk WASH contact closes this to ground
 N26,PMU pin 9 (O8),Receptacle L2-M 1 and K12 terminal 30,14,ORN,
 N27,K12 terminal 87,Receptacle L2-M 4,14,ORN,Washer pump
@@ -38,7 +38,7 @@ N35,Wake stage 1 collector (A6 door),Wake strip input 3,16,BLU,
 N36,Wake stage 2 collector (A8 horn/hazard/wink),Wake strip input 4,16,BLU,
 N37,PMU pin 8 (O22),Wake strip input 5,16,RED,
 N63,Receptacle L3-S1 7,Wake strip input 6 (brake),16,BLU,"Brake wake — a spare P084 plunger switch on the pedal, fed from the F3 switch supply, wakes the module (D-278)"
-N38,Wake strip common rail (after the six 1N5819),PMU pin 7 (+12V SW),16,BLU,10 kΩ bleed from this rail to the GND bus
+N38,Wake strip common rail (after the seven 1N5819),PMU pin 7 (+12V SW),16,BLU,10 kΩ bleed from this rail to the GND bus
 N39,PMU pin 15 (+5 V),100 kΩ → PMU pin 35 (A15) · 100 kΩ → PMU pin 22 (A16) · 100 Ω 1 W → the oil-pressure node (D-260),16,PNK,"Bias so a broken wire reads 0, not OFF; and the oil sender's excitation"
 N40,PMU pin 17 (A4),Receptacles L2-S 1 and L1-S1 11 (splice),16,GRY,
 N41,PMU pin 31 (A5),Receptacles L2-S 2 and L1-S2 7 (splice),16,GRY,
@@ -54,18 +54,32 @@ N50,Receptacles L1-S2 1 and L3-S2 11,Receptacle DP-ICU-B 6,16,GRY,"Brake warning
 N64,Receptacle L4-S 1,Receptacle DP-ICU-B 3,16,GRY,Fuel level — the ICU excites and reads the sender; the display draws it (D-258 · D-268)
 N66,Receptacle L4-S 3,Receptacle DP-ICU-B 8,16,GRY,"Road speed signal — the pulse generator's, live at the meters cutover (D-272)"
 N67,Receptacle L1-S2 11,Receptacle DP-ICU-B 9,16,GRY,Phase-2 sensor signal spare — RESERVED at the post; the ICU's spare input is idle until the swap (D-250 · D-271)
-N68,"Fuse block B, spare position (fitted when a phase-2 sensor arrives)",Receptacle L1-S2 9,16,RED,"Phase-2 sensor supply — RESERVED at the post, no fuse fitted (D-250 · D-271); the road-speed supply is an O10 tap now (N70, D-272)"
+N68,"Fuse block B, spare position (fitted when a phase-2 sensor arrives)",Receptacle L1-S2 9,16,RED,"Phase-2 sensor supply — RESERVED at the post, no fuse fitted (D-250 · D-271); the road-speed supply is an O10 tap now (N73, D-272)"
 N69,PMU pin 12 (O5),K13 terminal 30,12,RED,The O5 conductor is cut at the node and both ends land on K13 (D-352)
 N70,K13 terminal 87,Receptacle L4-P 2,12,RED,Onward to the fuel pump
 N51,PMU pin 6 (O17),"Receptacles L2-M 5, L4-M 5, DP-ICU-B 10 (tap)",16,RED,
 N52,PMU pin 33 (O18),"Receptacles L2-M 6, L4-M 6, DP-ICU-B 11 (tap)",16,RED,
 N53,PMU pin 26 (O3),Receptacle L2-P 2 (12 AWG) + 16 AWG tap → DP-ICU-B 12,12 / 16,RED,High beam + the tell-tale sense
 N54,PMU pin 11 (O6),Receptacles L2-M 7 and L4-M 1,14,ORN,
-N55,PMU pins 24 / 37 (CAN2),"L1-S1 9/10 · DP-ICU-A 4/5 · DP-DCU 4/5 · DP-KEY 1/2 · wideband gauge AEMnet pair (dash node) — twisted pairs, spliced",16 tw,YEL · GRN,Software termination ON at the PMU
+N55,PMU pins 24 / 37 (CAN2),"DP-ICU-A 4/5 · DP-DCU 4/5 · wideband gauge AEMnet pair · the 120 Ω terminator at the end of the run (N74) — twisted pairs, spliced, all inside the dash node",16 tw,YEL · GRN,Software termination ON at the PMU; the far-end 120 Ω is at the dash node (D-079 → D-346). CAN never leaves the dash: L1-S1 9 / 10 are sealing plugs (D-318)
 N56,PMU pins 23 / 36 (CAN1),Receptacle DP-DIAG 1/2 — twisted pair,16 tw,YEL · GRN,120 Ω across pins 23/36 at the PMU connector
 N57,PMU pin 25 (GND),GND bus,10,BLK,≤ 6 in
 N58,GND bus,"Chassis, dash star point",10,BLK,"Bare metal, star washer, torque, cavity wax"
-N59,GND bus,"Receptacles DP-DIAG 4, DP-ICU-A 3, DP-DCU 3, DP-KEY 4, L3-S2 8",16,BLK,The permitted ground crossings — all box-adjacent
+N59,GND bus,"Receptacles DP-DIAG 4, DP-ICU-A 3, DP-DCU 3, L3-S2 8",16,BLK,The permitted ground crossings — all box-adjacent. Four since the key-panel drop was deleted (D-350)
 N60,Every remaining PMU output pin,"Its receptacle, per the pin table",per pin,per pin,"Single conductor, no splice"
 N71,Branch off L3-S2 1 (ignition switch IG),K13 terminal 86,16,BLU,Coil feed. Deliberately NOT from the PMU: a back-stop that depends on the module it is backing up is not a back-stop (D-352)
 N72,K13 terminal 85,GND bus,16,BLK,
+N74,"CAN2 pair, end of the run at the dash node",120 Ω 1 % 1/4 W resistor (P070) across CAN2H / CAN2L,—,—,"The bus's second physical end; the PMU's software termination is the first (D-318, D-346). Not inside any drop's plug, so termination never depends on which module is fitted"
+N73,PMU pin 4 (O10) tap,Receptacle L4-S 4,16,RED,Road-speed pulse generator supply — lives and dies with the ICU (D-272). Cited as N70 until D-352 gave that id to K13 → the pump
+N75,Always-hot busbar,F22 inline (3 A) → receptacle DP-DCU 1,16,RED,"DCU logic, constant — capped until the DCU exists (D-350)"
+N76,Receptacle DP-DCU 6,Wake strip input 7 (DCU wake request),16,BLU,The DCU pulls it to wake the PMU on a panel press with the car asleep (D-350); capped until the DCU exists
+N77,"Receptacle L2-S 5 (the outside-air sensor, from L2-OAT 1)",Receptacle DP-DCU 2,16,GRY,"Linked at the post; capped at both ends until the DCU exists (D-256 → D-329, D-274)"
+N78,PMU pin 2 (O12) tap,F21 inline (5 A) → receptacle L3-S2 12,16,RED,Kick-down switch supply — never off F3 (D-320 / W-320)
+N79,"Fuse block A, F13 out (no fuse this build)",Receptacles L3-S2 7 (→ L3-MOD 1) and L2-M 8 (both capped),16,RED,Held always-hot feed for two future consumers: the future module (D-274) and a self-parking wiper motor's park feed (D-317)
+N80,Receptacles L3-S2 3 / 4 / 5 / 6,"Receptacles L4-M 9 / 10 / 11 / 12 — one link each, in order",16,BLU,"Window commands, DCU → the sill's K5–K8 coils; linked at the post, capped until the windows (D-274, D-350)"
+N81,Receptacles L3-S3 1 / 2 / 3,"Receptacles L4-S 5 / 6 / 7 — one link each, in order",16,GRY,"Radar pass-through, linked at the post, capped (D-274)"
+N82,Receptacle L3-S3 4,Receptacle L4-S2 7,16,RED,"Kick-down solenoid command, linked at the post — live (D-320 / W-320)"
+N83,Receptacles L3-S3 5 / 6 / 7 / 8,Receptacles L4-S2 1 / 2 / 4 in order; L3-S3 8 spliced onto both L4-S2 3 and L4-S2 5,16,GRY,"The DCU's mirror lines, linked at the post, capped until S2 (D-360)"
+N84,Receptacle DP-DCU-B 9,Receptacle L4-P 4,16,RED,"Mirror heat feed from the DCU's high-side switch, linked at the post onto the 12 AWG L4-P 4 run, capped until S2 (D-369)"
+N85,PMU pin 4 (O10) tap,K3 and K4 terminals 30 and 86,16,ORN,"The release branch: contact feed and coil feed of both select relays, so the pulse powers them and the DCU's ground on 85 picks one (D-354, D-370). Capped until the relays are fitted - awg confirm against the solenoid current"
+N86,K3 terminal 85 · K4 terminal 85,Receptacles DP-DCU-B 10 · DP-DCU-B 11,16,BLU,"The DCU's two select lines, dash node to the DCU tail, capped until S2 (D-370)"

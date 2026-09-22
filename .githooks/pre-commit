@@ -5,13 +5,33 @@
 # attempt, and never treats an advisory as fatal. The only thing that can stop a
 # commit is exit code 1 from `check`, which means the record contradicts itself and
 # names the exact rows. Answered-but-unapplied blocks, work still open, stale prose
-# cites — all of those are exit code 2 and none of them block anything.
+# cites — all of those are exit code 2 and none of them block anything. Exit code 3
+# (a crash or usage error in the tool) and a missing Python are reported and let
+# through: a broken checker must never be the reason a commit cannot happen — that
+# is the v2 trap this hook exists not to repeat.
 #
 # Install once per clone:  git config core.hooksPath .githooks
-python tools/rx7.py check || {
+
+PY=""
+for cand in python3 python py; do
+  if command -v "$cand" >/dev/null 2>&1 && "$cand" -c "import sys" >/dev/null 2>&1; then
+    PY="$cand"; break
+  fi
+done
+if [ -z "$PY" ]; then
+  echo "pre-commit: no working Python found - the record was NOT checked; committing anyway."
+  exit 0
+fi
+
+"$PY" tools/rx7.py check
+rc=$?
+if [ "$rc" -eq 1 ]; then
   echo ""
   echo "pre-commit: the record contradicts itself. Fix the rows named above, or run"
   echo "            git commit --no-verify if you know better than the checker."
   exit 1
-}
+fi
+if [ "$rc" -ne 0 ]; then
+  echo "pre-commit: rx7.py check exited $rc (not 1) - not a verdict on the record; committing."
+fi
 exit 0

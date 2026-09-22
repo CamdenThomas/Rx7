@@ -17,4 +17,4 @@
 
 **Take more than you think you need.** The harness is coming out and it isn't
 coming back. Wide shot first, then every connector close enough to read the
-wire colours. The index of what was photographed is the folder itself — the file names carry date, zone and subject; the install plan's M-7 box is ticked when it is done ([`../../02-PROJECTS/00-electrical/03-INSTALL/INSTALL.md`](../../02-PROJECTS/00-electrical/03-INSTALL/INSTALL.md)).
+wire colours. The index of what was photographed is the folder itself — the file names carry date, zone and subject; the photo survey is a work row in the electrical build (`python tools/rx7.py find "photo" -p 00-electrical`); the old install plan's M-7 box was in INSTALL.md (v2 document, archived in 99-ARCHIVE/2026-09-11_v2-view-and-tools).

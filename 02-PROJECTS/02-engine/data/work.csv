@@ -1,2 +1,2 @@
 id,stage,stage_title,item,owner,state,gate,note
-V-040,V,"Carried from the v2 question list, 2026-09-11",Aeromotive Phantom 340 draw at target pressure,agent,open,,the Aeromotive datasheet answers it -- Sets the fuel-pump soft fuse when the in-tank pump replaces the Carter P4070 (D-173). From the Aeromotive spec; nothing to do until the pump is chosen.
+V-040,V,"Carried from the v2 question list, 2026-09-11",In-tank pump draw at target pressure,agent,open,,Sets the fuel-pump soft fuse when an in-tank pump replaces the Carter P4070 (D-173). The pump is not chosen - the Aeromotive Phantom 340 is a candidate only; read the draw from the chosen pump's datasheet.

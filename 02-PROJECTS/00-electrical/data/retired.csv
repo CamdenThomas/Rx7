@@ -7,3 +7,21 @@ L2-NZL,D-329,the cowl receptacle is not fitted
 DP-KEY,D-350,the control panel has no board and no drop - it is the DCU's faceplate on a local ribbon
 L3-WIN,D-350,the window switch pack moved from the console to the centre panel
 aux pole switch-position input,D-351,the 9004e's alternator-field pole is not used and the 9003e has none; the TVS P136 is the load-dump answer
+BLK-001,D-356,renumbered 00.01 - blocks are numbered per project
+BLK-002,D-356,renumbered 00.02 - blocks are numbered per project
+BLK-003,D-356,renumbered 00.03 - blocks are numbered per project
+BLK-004,D-356,renumbered 00.04 - blocks are numbered per project
+BLK-005,D-356,renumbered 00.05 - blocks are numbered per project
+BLK-006,D-356,renumbered 00.06 - blocks are numbered per project
+BLK-007,D-356,renumbered 00.07 - blocks are numbered per project
+BLK-008,D-356,renumbered 00.08 - blocks are numbered per project
+BLK-009,D-356,renumbered 00.09 - blocks are numbered per project
+BLK-010,D-356,renumbered 00.10 - blocks are numbered per project
+BLK-018,D-356,renumbered 00.11 - blocks are numbered per project
+BLK-019,D-356,renumbered 00.12 - blocks are numbered per project
+BLK-021,D-356,renumbered 00.13 - blocks are numbered per project
+BLK-022,D-356,renumbered 00.14 - blocks are numbered per project
+BLK-023,D-356,renumbered 00.15 - blocks are numbered per project
+BLK-024,D-356,renumbered 00.16 - blocks are numbered per project
+BLK-025,D-356,renumbered 00.17 - blocks are numbered per project
+BLK-026,D-356,renumbered 00.18 - blocks are numbered per project
