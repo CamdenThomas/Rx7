@@ -13,15 +13,12 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 
 **Phase:** PLANNING. **Goal:** Replace the factory electrical system: PMU-24 DL, rear lithium battery, four modular harness legs, every switch a ladder; the car drives on it before anything else joins
 
-65 open · 13 ready now · 22 done.
+62 open · 8 ready now · 25 done.
 
 ## Now — what can be started today
 
 **Yours:**
 
-- **A3** — Check the fuse drawer
-- **A4** — Keep the Ionic above its BMS cutoff
-- **A5** — The in-car half of `T-017` at M-6
 - **B1** — Strip the A/C system
 - **B2** — Read the part number off the back of the wideband gauge
 - **C1** — M-1 dash envelope, plus where the wideband gauge hides and whether its fixed sensor lead r
@@ -31,42 +28,9 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 - **V-002** — Alternator output rating
 - **W-330b** — Ask Ionic for the BLE protocol map for the IC-12V40-S9H, and for the S9H heater's own figures
 
-**Agent:**
-
-- **A9** — De-duplicate conductors held in both grounds and cables (G24/C05, G34/C11, G01/C06/B6): one home each (R2)
-- **A10** — Re-derive wake stages 1 (A6 door) and 2 (A8 horn/hazard/wink) with the new 47 kΩ baselines (D-368)
-
 ## Everything, in working order
 
 *Stages in the order their work can start; inside a stage, each row after what it waits on.*
-
-### A · At the desk, now — no car, no parts
-
-- ▶ **A3** — Check the fuse drawer  
-  *you*  have good coverage and easy local access
-  against the fuses table - every rating fitted, plus one spare of each (was the v2 shopping list §9, archived — 99-ARCHIVE). Two changed: F1 is **10 A** (D-242), and **F20 7.5 A** is new (D-244).
-- ▶ **A4** — Keep the Ionic above its BMS cutoff  
-  *you*  done no need to keep the reminder
-  while it waits — a lithium left to self-discharge into cutoff is hard to recover. Check it monthly on the app.
-- ▶ **A5** — The in-car half of `T-017` at M-6  
-  *you*  mark to be completed with car interior out in one swoop
-  The DESK half is done - agent, 2026-09-12, D-348: every factory terminal letter the design lands a wire on was read off the diagram scans, sections A, B, C, D, E, F and H, and all of them are right. What is left is the half a meter has to do, at M-6 with the cluster out: confirm the wire in the car is the colour the book says at C-01, C-02, C-04, C-05, C-09, A-06, A-08 and the L1 sender pair. A 44-year-old harness has been repaired. The cluster plug's letters no longer matter (D-268). Two measurements T-017 sharpened ride with this: CK08 (ohm the pop-up motor's FOURTH terminal, WR, which V-081 never asked for) and CK09 (which of the wiper motor's L and LB is the park contact's output - the design and the diagram disagree).
-- ▶ **A9** — De-duplicate conductors held in both grounds and cables (G24/C05, G34/C11, G01/C06/B6): one home each (R2)  
-  *agent*
-- ▶ **A10** — Re-derive wake stages 1 (A6 door) and 2 (A8 horn/hazard/wink) with the new 47 kΩ baselines (D-368)  
-  *agent*  
-  The stages are NPN sense stages at the dash node reading the A6 / A8 lines (N35, N36, N43, N44); their base networks are not in the record. FOUND 2026-09-21: with the v2 values (1 MOhm node to the F3 rail, 100 kOhm node to base) the 47 kOhm baseline alone holds the node at 12 x 47k / 1047k = 0.54 V - below Vbe - so a SHUT door reads as open and the car never sleeps. A stiffer pull-up does not rescue a plain NPN either: with 100 kOhm, shut = 3.84 V but driver door open (33k || 47k) = 1.95 V, still enough to turn it on. So the stage needs a defined threshold (a comparator, or a zener/divider in the base) that sits between the at-rest and every-switch-closed levels on both inputs - or D-368's baseline changes value. The PMU's own input pull-up, awake and asleep, also moves the node: read it from S-028 (ECUMaster PMU manual) before sizing. If no stage works within D-368, this becomes a block. Proven on the bench by CK12
-- ⏳ **A1** — Close the cart gaps  
-  *you* · waits on: phase SOURCING (now PLANNING)  
-  Blocked by D-323: nothing is bought until the design is complete and Camden understands it. No store is paid while any block that changes a line is open.
-- ⏳ **A2** — Order the vehicle parts  
-  *you* · waits on: phase SOURCING (now PLANNING)  
-  — the Vehicle parts rows P085, P086, P113 (was the v2 shopping list §6, archived — 99-ARCHIVE). The senders are *not* on it: the car's own work and stay (D-261). The brake pedal switch can be **any 2-terminal type** - the wake contact is a spare P084 plunger on the pedal instead (D-278).
-- ⏳ **A6** — At the cart review, apply D-238  
-  *you* · waits on: phase SOURCING (now PLANNING)  
-  to every heavy cable line, 2 AWG and 1/0 alike: the listing must state ≥ 90 °C insulation and 100 % copper. Swap the line before payment if it does not.
-
-*Closed:* ✔ A7 · ✔ A8
 
 ### B · One afternoon with the car — nothing cut, no parts needed
 
@@ -149,6 +113,26 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
   Cannot be recomputed yet, and the reason is worth writing down: the cavity table carries no lengths, so the ~510 ft figure D-256 quoted was never derived from it - it was D-202's hand estimate at 1.5x. `routes` is the table that fixes that and M-2 fills it. D-329 said this number is recomputed from the wire schedule and never by hand here, so it waits. If it does drop under the 500 ft spool, P009 leaves the cart.
 
 *Closed:* ✔ T-017 · ✔ V-075 · ✔ W-320 · ✔ W-322 · ✔ W-330 · ✔ W-331
+
+### A · At the desk, now — no car, no parts
+
+- ⏳ **A5** — The in-car half of `T-017` at M-6  
+  *you* · waits on: C1 open  
+  Camden 2026-09-21: "mark to be completed with car interior out in one swoop" - so it rides on the measurement day (C1, M-6). The DESK half is done - agent, 2026-09-12, D-348: every factory terminal letter the design lands a wire on was read off the diagram scans, sections A-F and H, and all are right. Left for the meter, cluster out: the wire colours at C-01, C-02, C-04, C-05, C-09, A-06, A-08 and the L1 sender pair; plus CK08 (ohm the pop-up motor's fourth terminal, WR) and CK09 (which of the wiper motor's L and LB is the park output).
+- ⏳ **A10** — Re-derive wake stages 1 (A6 door) and 2 (A8 horn/hazard/wink) with the new 47 kΩ baselines (D-368)  
+  *agent* · waits on: 00.26 open  
+  Waits on block 00.26 (pulse or held). Worked 2026-09-21, agent. The PMU reads A6/A8 through its own 10 kOhm pull-up to 5 V (S-028: A1-A8 are 0-5 V, 10 bit, pull options 1M down / 10k down / 10k up), so awake the lines sit at: at rest (47k) 4.12 V = 843 counts; A6 DRV 3.30 V, PASS 2.06, BOTH 1.80; A8 WINK_R 3.30, WINK_L 2.83, HORN 2.06, HAZARD 1.50, HAZ+HORN 1.10. Asleep that pull-up is dead, so a stage needs its own excitation, and a permanent one shifts the ladder: v2's 1 MOhm from F3 moves every reading about 12 counts (not the 1.5 v2 claimed) against a 27-count window. FINDINGS: (1) the v2 stage could never wake the PMU - 100 kOhm collector pull-up into the strip's 10 kOhm bleed puts about 1.1 V on pin 7; (2) a plain NPN on a microamp excitation cannot hold its threshold between 47k and 19.4k across 12-14.4 V and -20..70 C (Vbe 0.45-0.65) unless the excitation resistor is at least 57k, and then it cannot drive the strip; (3) a working stage uses parts in the cart: an emitter-follower 2N3904 per side switches the excitation on only while O22 is low (one shared 2N3904 on O22 pulls both follower bases down, so awake the node sees only a reverse-biased EB junction - no ladder shift), about 220k excitation, a 1M/560k base divider on the sense NPN, and a follower output stage to drive pin 7 - 7 of the 10 P072; (4) any stage that holds while a switch is closed keeps pin 7 high with a door ajar, which D-248 and the sleep rule say cannot happen - hence 00.26. Values are written the day 00.26 is answered, and proven by CK12 before anything is soldered.
+- ⏳ **A1** — Close the cart gaps  
+  *you* · waits on: phase SOURCING (now PLANNING)  
+  Blocked by D-323: nothing is bought until the design is complete and Camden understands it. No store is paid while any block that changes a line is open.
+- ⏳ **A2** — Order the vehicle parts  
+  *you* · waits on: phase SOURCING (now PLANNING)  
+  — the Vehicle parts rows P085, P086, P113 (was the v2 shopping list §6, archived — 99-ARCHIVE). The senders are *not* on it: the car's own work and stay (D-261). The brake pedal switch can be **any 2-terminal type** - the wake contact is a spare P084 plunger on the pedal instead (D-278).
+- ⏳ **A6** — At the cart review, apply D-238  
+  *you* · waits on: phase SOURCING (now PLANNING)  
+  to every heavy cable line, 2 AWG and 1/0 alike: the listing must state ≥ 90 °C insulation and 100 % copper. Swap the line before payment if it does not.
+
+*Closed:* ✔ A3 · ✔ A4 · ✔ A7 · ✔ A8 · ✔ A9
 
 ### D · When the parts arrive
 
@@ -264,3 +248,4 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
   Back up the final configuration. In the car: the limp-home kit (recovery RC rows, D-344), a printout of the pins and cavities tables, spare Deutsch contacts, the removal tools and five blade fuses of each value. The electrical project is then ready for CLAUDE.md §6.6 (as-built into 00-CAR, process to the archive).
 
 *Closed:* ✖ E1 · ✔ E3
+<!-- rx7 todo sha256:46634c5108a71603aa90a1cb787b9362772df2de4b38e2f82380190919afb8d9 -->

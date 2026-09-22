@@ -30,3 +30,4 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 - ▶ **V-040** — In-tank pump draw at target pressure  
   *agent*  
   Sets the fuel-pump soft fuse when an in-tank pump replaces the Carter P4070 (D-173). The pump is not chosen - the Aeromotive Phantom 340 is a candidate only; read the draw from the chosen pump's datasheet.
+<!-- rx7 todo sha256:0d30cefdaa30eeb5af89b91b71b9c4a352bb74b26d558f4c2f35ef0fcf0085e5 -->
