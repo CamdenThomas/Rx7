@@ -1,10 +1,10 @@
 # CLAUDE.md — the Rx7 tree
 
-*Rev 2026-09-21 (v3). This file is the whole instruction set. There are no skills, no
+_Rev 2026-09-21 (v3). This file is the whole instruction set. There are no skills, no
 slash commands, no second document. If a rule is not here it is not a rule; if you need
-one that is missing, that is a block.*
+one that is missing, that is a block._
 
-> **THERE IS ONE TREE: `Documents\Storage\Rx7`.** The v3 conversion finished on
+> **THERE IS ONE TREE: `~/docs/storage/Rx7`, on one machine.** The v3 conversion finished on
 > 2026-09-12: v3 became this directory and the old v2 working tree was deleted. Any
 > instruction you find anywhere telling you that `Rx7-v3` is the project, or that `Rx7`
 > is frozen reference, is stale — that folder no longer exists. §9 has what is left of
@@ -19,15 +19,14 @@ python tools/rx7.py status
 ```
 
 Read nothing else until it tells you where things stand. `status` prints: whether the
-record is valid, each area's phase, open work by owner, and the blocks. On Windows the
-tool sets its own encoding; you do not need `PYTHONIOENCODING`.
+record is valid, each area's phase, open work by owner, and the blocks.
 
 Then take **exactly one** of two paths. There is no third.
 
-| | Path | When |
-|---|---|---|
-| **A** | **Do the work.** Read this file for the rule, apply it, move on. | Every doubt that §3 calls small. |
-| **B** | **Write a block.** Append it to `BLOCKS.md` and keep going on everything else. | Every doubt that §3 calls big. |
+|       | Path                                                                           | When                             |
+| ----- | ------------------------------------------------------------------------------ | -------------------------------- |
+| **A** | **Do the work.** Read this file for the rule, apply it, move on.               | Every doubt that §3 calls small. |
+| **B** | **Write a block.** Append it to `BLOCKS.md` and keep going on everything else. | Every doubt that §3 calls big.   |
 
 You never ask Camden a question in chat. You never stop mid-run. You speak to him once,
 per §8, and only when blocks have stopped all remaining progress.
@@ -101,16 +100,16 @@ is set through the record, and the file is regenerated. Run `rx7.py todo` at the
 
 **Exit codes are the only signal anything may branch on.**
 
-| Code | Means | Effect |
-|---|---|---|
-| `0` | valid / done | — |
-| `1` | **invalid** — the record contradicts itself | the only code that blocks a commit |
-| `2` | nothing to do, or something waits on a person | **blocks nothing, ever** |
-| `3` | a usage error or a crash in `rx7.py` itself | **blocks nothing** — a broken checker is never a verdict on the record |
+| Code | Means                                         | Effect                                                                 |
+| ---- | --------------------------------------------- | ---------------------------------------------------------------------- |
+| `0`  | valid / done                                  | —                                                                      |
+| `1`  | **invalid** — the record contradicts itself   | the only code that blocks a commit                                     |
+| `2`  | nothing to do, or something waits on a person | **blocks nothing, ever**                                               |
+| `3`  | a usage error or a crash in `rx7.py` itself   | **blocks nothing** — a broken checker is never a verdict on the record |
 
 Never branch on the text of any command's output. Never grep it, never test it for a
 word. If you need a machine-readable fact you do not have, add a command or a column.
-*This is the rule v2 broke in four places and it is why a clean build could stop a push.*
+_This is the rule v2 broke in four places and it is why a clean build could stop a push._
 
 ### The tool
 
@@ -140,13 +139,13 @@ rx7.py log AREA KIND "what" [refs]       one log row (KIND = the area's log.work
 must be met before the row can start; an empty gate is met. They resolve across the whole
 tree, so one area can wait on another:
 
-| Reference | Met when |
-|---|---|
-| `D-274` | that decision is standing or inherited |
-| `01.07` | that block is gone from `BLOCKS.md` and a decision names it in `closes` |
-| `A5` · `F-012` | that work row is done or dropped, in this area |
+| Reference         | Met when                                                                                                 |
+| ----------------- | -------------------------------------------------------------------------------------------------------- |
+| `D-274`           | that decision is standing or inherited                                                                   |
+| `01.07`           | that block is gone from `BLOCKS.md` and a decision names it in `closes`                                  |
+| `A5` · `F-012`    | that work row is done or dropped, in this area                                                           |
 | `01-luxury:F-012` | the same, in another area — **always qualify across areas**, because work ids are only unique within one |
-| `phase:SOURCING` | this area is at that phase or past it |
+| `phase:SOURCING`  | this area is at that phase or past it                                                                    |
 
 **READY** is every open row whose gate is met. `status` prints it per owner and prints
 **BLOCKED** with what holds each row, so answering one block visibly moves several rows
@@ -222,25 +221,25 @@ governs — apply it, do not re-ask.
 
 These exist so a small doubt never becomes a conversation.
 
-| Doubt | Standing answer |
-|---|---|
-| A check refuses | Fix the data. Never the check — unless the check itself is wrong, in which case fix it and say so in the decision. |
-| A type or enum refuses a legitimate new value | Widen it in `_schema.csv` deliberately, in the same pass, and note why. Never work around it in the data. |
-| A fact has no column | Add the column to `_schema.csv`, then the value. |
-| A fact has no table | Add the table to `_tables.csv` and `_schema.csv`, then the rows. |
-| Two areas both want a fact | It belongs to whoever owns the work. A fact about the car as it stands belongs to `00-CAR`; a fact about what a project will do belongs to the project. |
-| A number could be derived or typed | Derive it. A typed derived number is drift waiting to happen. |
-| A part number cannot be verified | Put the row in with the note `confirm`, keep going, and block it only if buying it wrong costs money. |
-| A quantity is uncertain | Round up to the next sane pack size, note the margin. Wire: 1.5× measured route length. |
-| Units | Millimetres, amps, volts, AWG, ISO dates. Numbers in cells, no units, no formatting, no bold — units belong in the column name or `note`. |
-| A row needs changing | `get` it first, always. |
-| Something is ambiguous in what Camden wrote | Take the reading that keeps the most options open, write it into the record, and note the reading in the decision. If both readings cost money, block it. |
-| A superseded decision must be cited | Cite it with its closer: `D-247 → D-278`. |
-| An old cite no longer resolves | `rx7.py cites` lists these. Advisory. Fix them when you are already in the file; never let one stop a run. |
-| The record and your memory disagree | The record wins. Always. |
-| You are about to write a document | Don't. `DECISIONS.md` and each project's `TODO.md` are the only ones, and `rx7.py decisions` / `rx7.py todo` write them. See §1. |
-| You wrote a decision this run | Run `rx7.py decisions` before you report. |
-| You changed a `work` row this run | Run `rx7.py todo` before you report. |
+| Doubt                                         | Standing answer                                                                                                                                           |
+| --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| A check refuses                               | Fix the data. Never the check — unless the check itself is wrong, in which case fix it and say so in the decision.                                        |
+| A type or enum refuses a legitimate new value | Widen it in `_schema.csv` deliberately, in the same pass, and note why. Never work around it in the data.                                                 |
+| A fact has no column                          | Add the column to `_schema.csv`, then the value.                                                                                                          |
+| A fact has no table                           | Add the table to `_tables.csv` and `_schema.csv`, then the rows.                                                                                          |
+| Two areas both want a fact                    | It belongs to whoever owns the work. A fact about the car as it stands belongs to `00-CAR`; a fact about what a project will do belongs to the project.   |
+| A number could be derived or typed            | Derive it. A typed derived number is drift waiting to happen.                                                                                             |
+| A part number cannot be verified              | Put the row in with the note `confirm`, keep going, and block it only if buying it wrong costs money.                                                     |
+| A quantity is uncertain                       | Round up to the next sane pack size, note the margin. Wire: 1.5× measured route length.                                                                   |
+| Units                                         | Millimetres, amps, volts, AWG, ISO dates. Numbers in cells, no units, no formatting, no bold — units belong in the column name or `note`.                 |
+| A row needs changing                          | `get` it first, always.                                                                                                                                   |
+| Something is ambiguous in what Camden wrote   | Take the reading that keeps the most options open, write it into the record, and note the reading in the decision. If both readings cost money, block it. |
+| A superseded decision must be cited           | Cite it with its closer: `D-247 → D-278`.                                                                                                                 |
+| An old cite no longer resolves                | `rx7.py cites` lists these. Advisory. Fix them when you are already in the file; never let one stop a run.                                                |
+| The record and your memory disagree           | The record wins. Always.                                                                                                                                  |
+| You are about to write a document             | Don't. `DECISIONS.md` and each project's `TODO.md` are the only ones, and `rx7.py decisions` / `rx7.py todo` write them. See §1.                          |
+| You wrote a decision this run                 | Run `rx7.py decisions` before you report.                                                                                                                 |
+| You changed a `work` row this run             | Run `rx7.py todo` before you report.                                                                                                                      |
 
 ---
 
@@ -285,8 +284,8 @@ refuses a block missing any of Ask / Why / Options / Recommend / Stops. If he an
 **Lifecycle.** You append it → he types a solution → `rx7.py blocks --answered` finds it
 → you apply it through the record (§6.2) → the ruling becomes a decision whose `closes`
 names the block → **you delete the block from this page.** An answered-but-unapplied
-block is exit code **2**. It never refuses a commit. *That single sentence is the whole
-fix for why he could not push.*
+block is exit code **2**. It never refuses a commit. _That single sentence is the whole
+fix for why he could not push._
 
 **Nothing is archived on this page, because nothing needs to be.** A settled question
 lives in `DECISIONS.md`, with his words, the reasoning and the consequences in the data —
@@ -326,7 +325,7 @@ this tree was written by something that has never looked at the vehicle, held th
 connector, or put a meter on anything. A measured number always beats your reasoning:
 where the two disagree, the measurement wins and the row is wrong. Never conclude anything
 about a physical part from a verbal description, a photograph, or a datasheet for a part
-nobody has confirmed is the part in the box — there your job is to say *what to measure*,
+nobody has confirmed is the part in the box — there your job is to say _what to measure_,
 and it is a block, not a guess. A dimension, resistance, pin letter or wire length that
 has not been measured carries `confirm` in its note until it has. This is not modesty: the
 design is tens of thousands of rows describing an object you cannot perceive, and the
@@ -374,14 +373,14 @@ the report in §8.
    corrects.
 4. For each ruling, in this order:
    a. `rx7.py new AREA "<title>" closes=… supersedes=…` then write the body: the decision
-      in bold, his words, the reasoning, what it supersedes by id, the consequences in the
-      data.
+   in bold, his words, the reasoning, what it supersedes by id, the consequences in the
+   data.
    b. Every row the ruling changes — `get`, then `set` / `add` / `del`. A ruling that
-      touches three projects is applied to all three in the same pass.
+   touches three projects is applied to all three in the same pass.
    c. Every retired term into `retired.csv` so it can never come back.
    d. New questions the ruling raises → new blocks.
    e. Work rows gated on it: gate met → leave open for 6.1; the ruling did the work →
-      `state=done`.
+   `state=done`.
 5. Delete each solved block from `BLOCKS.md`, but only after its decision exists, is
    `standing`, names it in `closes`, and carries his answer in his own words (§4).
 6. `check` everything; `rx7.py decisions`; `log`.
@@ -418,7 +417,7 @@ is the reason the sections must each stand alone. Findings get severity (Blocker
 
 As-built facts and service instructions fold into `00-CAR`; all process — decisions,
 blocks, work, logs, carts — moves to `99-ARCHIVE/<date>_<project>/`; the project's area
-is removed. `00-CAR` states what *is*, never how it was decided: it never cites a `D-` or
+is removed. `00-CAR` states what _is_, never how it was decided: it never cites a `D-` or
 a block id.
 
 ### 6.7 · Log a service act
@@ -466,9 +465,22 @@ Then stop. He clears the blocks and says continue.
 
 ## 9 · One tree, and what is left of the old one
 
-`C:\Users\Camden Thomas\Documents\Storage\Rx7` on the laptop,
-`C:\Users\USER\Documents\Storage\Rx7` on the desktop `crashs-pc`. Both are git clones of
-`github.com/CamdenThomas/Rx7`; pull before you start.
+**One machine: `/home/crash/docs/storage/Rx7` on Fedora.** Since 2026-09-22 this is the only
+computer the project lives on — there is no laptop and no `crashs-pc` any more, and nothing
+is synced between machines. It is a git clone of `github.com/CamdenThomas/Rx7`; the remote
+is the backup, not a second place to work. Any instruction, script or path that assumes
+Windows (`C:\…`, `.bat`, `.ps1`, `.exe`, w64devkit) is stale.
+
+The tools on this machine, and nothing else:
+
+- `python` / `python3` (3.14) runs `tools/rx7.py`; the pre-commit hook is enabled
+  (`git config core.hooksPath .githooks`, set once per clone).
+- KiCad 10.0.6 system-wide: `kicad`, `kicad-cli` in `/usr/bin`.
+- Firmware: `firmware/tests/run.sh` and `firmware/icu_sim/build.sh` need
+  `sudo dnf install gcc-c++ SDL2-devel` once; flashing a Teensy needs PJRC's udev rule
+  (`firmware/README.md` §4). The car's diagnostic port `DP-DIAG` takes Camden's Windows laptop,
+  which runs ECUMaster's PMU client and nothing else for this project (D-376). It holds no
+  clone, and it is not a second home for the tree.
 
 **The v2 working tree is gone.** On 2026-09-12 the v3 record replaced it, after a
 file-by-file check that nothing needed had been left behind: every open question carried

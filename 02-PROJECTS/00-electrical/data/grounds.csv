@@ -30,3 +30,4 @@ G31,L4,Interior lamp switch → roof-rail ground,16,1,4,"confirm — hand estima
 G32,L4,Luggage lamp switch → rear star,16,1,3,"confirm — hand estimate, not measured"
 G33,Sill,Sill stud → chassis,10,1,2,"confirm — hand estimate, not measured"
 G35,L4,Road-speed pulse generator → rear star,16,1,8,"confirm — hand estimate, not measured"
+G36,L3,DCU comfort returns - DP-DCU-C 6 / 7 → dash ground bus,14,2,3,"D-382: the seat return current never shares the logic ground (DP-DCU 3). Part of the luxury comfort-return harness (LP49); lands on the dash ground bus. confirm - hand estimate, not measured"

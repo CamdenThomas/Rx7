@@ -1,10 +1,14 @@
 table,purpose
 backbone,
+bringup_log,"what the firmware bench has done, dated (D-374)"
 cables,
+can_fields,each frame's byte layout (D-374)
+can_messages,"the one bus map: every frame on CAN2, its sender, rate and timeout (D-374)"
 carts,
 cavities,
 checks,"the measurements the design waits on - one row per reading, taken in the car or on the bench"
 colours,
+dcu_channels,"the DCU carrier's every channel - power, bus, inputs, outputs - as icu_channels is the ICU's (D-374)"
 decisions,"every ruling, permanent, newest last; the body is data/decisions/<id>.md"
 devices,
 fuses,
@@ -17,7 +21,9 @@ loads,
 log,"what happened, one row per action"
 logic,
 migration,
+modules,"the car's CAN nodes - the PMU, the ICU, the DCU, the panel it reads, the wideband (D-374)"
 node_conductors,
+panel_ribbon,"the 20-way ribbon from the control panel to the DCU, one row per conductor - the panel's whole interface (D-380)"
 params,named numbers the rest of the record derives from
 parts,every part this project buys or fits
 pins,
@@ -27,4 +33,5 @@ retired,terms that must no longer appear anywhere
 routes,"leg -> grommet -> node run lengths; ft is measured at M-2 and the wire schedule derives from it, never from a hand estimate"
 rules,
 series,
+wake_stages,"the two asleep-wake circuits on the dash node, part by part (D-375, D-381) - door on A6, horn/hazard/wink on A8"
 work,the work list; owner says who does it

@@ -1,3 +1,4 @@
 id,date,workflow,ids,summary
 L-0001,2026-09-10,session,,text lost: rx7.py log wrote only id and date until 2026-09-21 (fixed that day) - see git log for this date
 L-0002,2026-09-21,repair,HO03 HO11 HO12 HO13 V-040,Audit fixes: range_* rows removed from _project; handover purpose filled; HO03/HO11/HO12/HO13 dangling or present-tense refs corrected; V-040 note says the pump is not chosen
+L-0003,2026-09-23,session,V-040 HO12,V-040 done: pump draw at 58 psi for the candidates; HO12 updated

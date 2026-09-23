@@ -1,0 +1,83 @@
+/*
+ * channels.h — PMU channel table for the simulator
+ *
+ * ============================================================
+ *  HAND-SYNCED from 02-PROJECTS/00-electrical/data/pins.csv (est_a,
+ *  enable_a, enable_basis, inrush_x, inrush_ms, state) on 2026-09-22, F-013.
+ *  The v2 generator is archived (D-311) and v3 has none: when a pin row
+ *  changes, change it here by hand and re-run tests/run.sh. The pins
+ *  table wins over this file.
+ * ============================================================
+ *
+ * Units: 0.01 A, matching CAN 0x130 and cluster_core.h.
+ * inrush: multiplier x10 applied for inrushMs after switch-on.
+ * limit:  the electrical build's enable-at value for the channel (its soft
+ *         fuse — measured where enable_basis says so, else the cap). The real
+ *         PMU output stays DISABLED until measured — this table only drives
+ *         the simulator and the diagnostics page.
+ */
+
+#ifndef CHANNELS_H
+#define CHANNELS_H
+
+#include <stdint.h>
+
+enum ChSrc : uint8_t { EST = 0, MEASURED = 1, DEAD = 2, RESERVED = 3 };
+
+struct ChannelSpec {
+    const char *name;
+    uint16_t    steady;      /* 0.01 A                        */
+    uint16_t    limit;       /* 0.01 A soft fuse, provisional */
+    uint8_t     inrushX10;   /* multiplier x10 -> 100 = 10.0x */
+    uint16_t    inrushMs;
+    ChSrc       src;
+};
+
+/* ---- O1..O24 ---- */
+static const ChannelSpec CH[24] = {
+/*  name            steady  limit  inX10   ms   source      */
+  { "MOTOR BUS",           950,   2500,   70,  400, EST      }, /* O1  enable-at 25.0 A */
+  { "HEAD LOW",            740,   1300,   30,  200, EST      }, /* O2  enable-at 13.0 A */
+  { "HEAD HIGH",           890,   1300,   30,  200, EST      }, /* O3  enable-at 13.0 A */
+  { "DEFOG",              1150,   2500,   13, 2000, EST      }, /* O4  enable-at 25.0 A */
+  { "FUEL PUMP",           200,    400,   30,  150, MEASURED }, /* O5  measured */
+  { "TAIL PARK",           440,    750,  100,  100, MEASURED }, /* O6  measured */
+  { "BRAKE",               390,    950,  100,  100, MEASURED }, /* O7  measured */
+  { "WIPE LOW",            400,   1300,   70,  300, EST      }, /* O8  enable-at 13.0 A */
+  { "WIPE HIGH",           550,   1300,   70,  300, EST      }, /* O9  enable-at 13.0 A */
+  { "ACCESSORY",          1000,   1300,   20,  100, EST      }, /* O10  enable-at 13.0 A */
+  { "HORN",                600,   1300,   30,   80, EST      }, /* O11  enable-at 13.0 A */
+  { "IGNITION",            500,   2500,   20,  100, EST      }, /* O12  enable-at 25.0 A */
+  { "LS ECU",                0,   1800,   10,    0, RESERVED }, /* O13  CAPPED in pins - the engine swap (D-007) */
+  { "LS FAN",                0,   2500,   10,    0, RESERVED }, /* O14  CAPPED in pins - the engine swap (D-007) */
+  { "COMFORT",               0,   2500,   10,    0, EST      }, /* O15  the comfort bus: 25 A (D-011); no est / enable-at in pins yet */
+  { "BLOWER",             1500,   2500,   80,  600, EST      }, /* O16  enable-at 25.0 A - the motor arrives with the luxury package (LP17) */
+  { "TURN L",              420,    450,  100,  100, MEASURED }, /* O17  measured */
+  { "TURN R",              420,    450,  100,  100, MEASURED }, /* O18  measured */
+  { "REVERSE",             390,    700,  100,  100, EST      }, /* O19  enable-at 7.0 A */
+  { "INTERIOR",            250,    700,  100,  100, EST      }, /* O20  enable-at 7.0 A */
+  { "START RLY",            20,    700,   20,   50, EST      }, /* O21  enable-at 7.0 A */
+  { "KEEP ALIVE",           20,    700,   20,    0, EST      }, /* O22  enable-at 7.0 A */
+  { "A15 IN",             0,    700,   10,    0, RESERVED }, /* A15  Occupies O23 */
+  { "A16 IN",             0,    700,   10,    0, RESERVED }, /* A16  Occupies O24 */
+};
+
+/* Channel indices, so the model reads like the schedule rather than
+ * like an array of magic numbers. O23/O24 are configured as inputs A15/A16. */
+enum {
+  O1_MOTOR, O2_HEAD_LO, O3_HEAD_HI, O4_DEFOG, O5_FUEL, O6_TAIL,
+  O7_BRAKE, O8_WIPE_LO, O9_WIPE_HI, O10_ACC, O11_HORN, O12_IGN,
+  O13_LS_ECU, O14_LS_FAN, O15_COMFORT, O16_BLOWER,
+  O17_TURN_L, O18_TURN_R, O19_REVERSE, O20_INTERIOR,
+  O21_START, O22_KEEPALIVE, O23_SPARE, O24_SPARE
+};
+
+/* How many channel currents are still guesses. Printed at boot so the
+ * number in front of you is never mistaken for measured data. */
+inline int estimatedChannelCount() {
+    int n = 0;
+    for (int i = 0; i < 24; i++) if (CH[i].src == EST) n++;
+    return n;
+}
+
+#endif /* CHANNELS_H */

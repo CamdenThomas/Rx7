@@ -1,0 +1,21 @@
+pin,signal,dcu_side,panel_side,note
+1,+3V3,the Teensy's 3.3 V,thumbstick pot supply,nothing else on the panel is powered from it
+2,GND,logic ground,"encoder commons, key-matrix return path",
+3,ROW1,"GPIO, driven low one row at a time",keys: defog · hatch release · fuel-door release,each key through its own 1N4148W to its column (no ghosting with any combination)
+4,ROW2,"GPIO, driven low one row at a time",keys: HVAC mode · recirculate · window DRV up,
+5,ROW3,"GPIO, driven low one row at a time",keys: window DRV down · window PASS up · window PASS down,
+6,COL1,"GPIO in, pull-up, pin-change interrupt",column 1 of the matrix,"asleep: all rows held low, so any key press interrupts and wakes the DCU, which then pulls DP-DCU 6 (SN21)"
+7,COL2,"GPIO in, pull-up, pin-change interrupt",column 2,
+8,COL3,"GPIO in, pull-up, pin-change interrupt",column 3,
+9,ENC_FAN_A,"GPIO in, pull-up (quadrature)",fan encoder A,detents and range in firmware (D-355)
+10,ENC_FAN_B,"GPIO in, pull-up",fan encoder B,
+11,ENC_TEMP_A,"GPIO in, pull-up",temperature encoder A,
+12,ENC_TEMP_B,"GPIO in, pull-up",temperature encoder B,
+13,ENC_SEAT_DRV_A,"GPIO in, pull-up",driver seat encoder A,"one knob per seat: clockwise from OFF = heat 1-3, anticlockwise = cool 1-3 - heat and cool can never both be on (D-073), in the knob as well as the firmware"
+14,ENC_SEAT_DRV_B,"GPIO in, pull-up",driver seat encoder B,
+15,ENC_SEAT_PASS_A,"GPIO in, pull-up",passenger seat encoder A,
+16,ENC_SEAT_PASS_B,"GPIO in, pull-up",passenger seat encoder B,
+17,JOY_X,ADC,thumbstick X wiper,centre and dead band set at commissioning (SN18)
+18,JOY_Y,ADC,thumbstick Y wiper,
+19,JOY_PRESS,"GPIO in, pull-up",thumbstick push switch to GND,toggles LEFT / RIGHT mirror (D-359); also 0x400 bit PK_MIRROR_PRESS
+20,AGND,"analog ground, joined to GND at the carrier",thumbstick pot ground,its own return so the axes don't read the matrix's switching

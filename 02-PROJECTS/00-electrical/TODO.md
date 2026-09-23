@@ -11,9 +11,9 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 `python tools/rx7.py get 02-PROJECTS/00-electrical work <id>`.
 
 
-**Phase:** PLANNING. **Goal:** Replace the factory electrical system: PMU-24 DL, rear lithium battery, four modular harness legs, every switch a ladder; the car drives on it before anything else joins
+**Phase:** PLANNING. **Goal:** Replace the factory electrical system: PMU-24 DL, rear lithium battery, four modular harness legs, every switch a ladder, and both custom modules - the ICU and the DCU, with their firmware; the car drives on it before anything else joins
 
-62 open · 8 ready now · 25 done.
+81 open · 14 ready now · 44 done.
 
 ## Now — what can be started today
 
@@ -24,9 +24,15 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 - **C1** — M-1 dash envelope, plus where the wideband gauge hides and whether its fixed sensor lead r
 - **C3** — The luxury package's looks that ride along on the measurement day: 02-PROJECTS/01-luxury:V-063 (tail-light aperture) and 02-PROJECTS/01-luxury:V-066 (the headlamps fitted today)
 - **C4** — Measure the space behind the binnacle for the ICU enclosure — length, width, depth, mm
-- **F2** — Order the BT817 eval board (P117) now — before the layout — then lay out carrier H-001 around the DT13 headers and order it
+- **F2** — Order the BT817 eval board (P117) now - the layout's display header comes off it
+- **F8** — KiCad, before any measurement (guide steps 1-3): open the project, assign every footprint, make the board file and set its rules
+- **Q-028** — CAN wake latency
+- **T-048** — Flash and label boards 2 and 3
+- **T-049** — Put a microSD card (LP04) in a bench Teensy
 - **V-002** — Alternator output rating
+- **V-102** — Measure the space behind the centre stack for the DCU enclosure — depth, width, height, mm (D-362's flip condition)
 - **W-330b** — Ask Ionic for the BLE protocol map for the IC-12V40-S9H, and for the S9H heater's own figures
+- **X-007** — Archive a render of the agreed cluster - firmware/icu_sim/render.sh draws every page headless to PNG
 
 ## Everything, in working order
 
@@ -56,20 +62,79 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
   *you* · waits on: phase SOURCING (now PLANNING)  
   No battery-cover stock — D-235 chose boots alone.
 
-### F · The ICU — built and commissioned on the bench before the harness goes in (D-259)
+### F · The ICU and the DCU — built, programmed and commissioned on the bench before the harness goes in (D-259, D-374)
 
-- ▶ **F2** — Order the BT817 eval board (P117) now — before the layout — then lay out carrier H-001 around the DT13 headers and order it  
+- ▶ **F2** — Order the BT817 eval board (P117) now - the layout's display header comes off it  
   *you*  
-  The eval board is the one exception to D-323 - order it now (D-371). With the §6b parts (P122 the DT13s); the display header, the PSRAM, the IMU and the radio go on together. Ordering the carrier PCB itself is still after the design is complete (D-323)
+  The one exception to D-323 (D-371). The carrier layout is F8-F11 and ordering the carrier is F12, after the design is complete (D-323).
+- ▶ **F8** — KiCad, before any measurement (guide steps 1-3): open the project, assign every footprint, make the board file and set its rules  
+  *you*  
+  The beginner guide is the method, step by step with the exact menus. J5 and its footprint are already done (F7). Placeholders (DT13s, BT817 header, IMU) carry `PLACEHOLDER - confirm`; the buck stays blank until F13.
+- ▶ **T-048** — Flash and label boards 2 and 3  
+  *you*  
+  flash and label boards 2 and 3 -- once a soldering iron is out. Opportunistic. Moved from the luxury package with its number (D-374).
+- ▶ **T-049** — Put a microSD card (LP04) in a bench Teensy  
+  *you*  
+  LP04 is the part; F-007, F-010 and B7 wait on it Moved from the luxury package with its number (D-374).
+- ▶ **V-102** — Measure the space behind the centre stack for the DCU enclosure — depth, width, height, mm (D-362's flip condition)  
+  *you*  
+  LP47 is drawn around it Moved from the luxury package with its number (D-374).
+- ▶ **X-007** — Archive a render of the agreed cluster - firmware/icu_sim/render.sh draws every page headless to PNG  
+  *you*  
+  Renders made 2026-09-22 with the new headless render.sh (the real renderer, the simulator's demo state). They found and fixed three defects: the trip page drew -198 F / 0 psi / 0.0 V for stats not yet recorded (D-153 - now dashes, with a regression check); the diagnostics page ran 'O10' into its channel name; its column header sat on the title. Suites 425 / 35 / 38 / 32. Waits on Camden: look at the three PNGs (render.sh) and say the cluster is agreed - then they are archived.
+- ⏳ **B7** — Datalogging skeleton and power-loss test  
+  *agent* · waits on: T-049 open  
+  *(agent)* — needs a microSD card (LP04) in a board (T-049) Moved from the luxury package with its number (D-374).
+- ⏳ **B8** — Two boards on a real bus, PMU simulator live  
+  *agent* · waits on: T-048 open  
+  *(agent)* — needs the headers soldered (T-048); the 120 Ω are electrical P070's spares; the spare Teensy is the PMU until V-065 Moved from the luxury package with its number (D-374).
+- ⏳ **F9** — KiCad, before any measurement (guide steps 4-7): pull the parts in, a PROVISIONAL outline, place, route, DRC to zero  
+  *you* · waits on: F8 open  
+  The outline is a working guess until C4 measures the space behind the binnacle: keep the connector face, the grommet face and the RF edge where A5 puts them and expect the board to shrink or grow at F11. Placement and routing are free to redo; nothing here is ordered.
+- ⏳ **F-007** — Odometer and stats persistence — Teensy EEPROM emulation (wear-levelled, every 0.1 mi) as the authoritative odometer copy + microSD as the log, write on key-off  
+  *agent* · waits on: T-049 open  
+  write frequency per D-162; a CUTOVER GATE for the electrical build's display (electrical D-268, D-269) — the odometer must survive a power cycle, card present or not, before MG22 Moved from the luxury package with its number (D-374).
+- ⏳ **F-009** — Prove the PMU's CANbus Export for 0x100-0x130 in the PMU client, or simplify the frames (D-378)  
+  *you* · waits on: marked blocked - see its note  
+  In the client (Windows laptop, D-376), with a PMU on the bench: build 0x100-0x130 as a CANbus Export; prove the bitfield bytes (math channels), 0x130's multiplexed index and a rolling byte-7 counter. Anything that cannot be built becomes a simpler layout (one byte per field; fixed frames instead of 0x130's mux), changed in can_fields first and then in can_map.h. Needs the PMU and the client - the first bench session with them, not the install. · Camden's: it needs the PMU and its client (the Windows laptop, D-376) on the bench. Tell the agent what the client can and can't build; the agent redraws the frames from that.
+- ⏳ **F-010** — Config-as-data on SD with a safe-mode path - a corrupt file must still boot  
+  *agent* · waits on: T-049 open  
+  FT11; was also B6 Moved from the luxury package with its number (D-374).
+- ⏳ **H-002** — DCU carrier layout  
+  *agent* · waits on: 01-luxury:W-332 open  
+  blower PWM output, ambient input, the mirror drivers (SN17) - four channels (D-360), sized from W-332's currents Moved from the luxury package with its number (D-374).
+- ⏳ **F5** — Order DCU carrier H-002 (P144) and its parts, then build it  
+  *you* · waits on: H-002 open  
+  The DCU is this build's now (D-374). Ordering the board is money and stays yours; it waits on H-002's layout, which waits on the parts search (V-083), the comfort currents (V-101), the panel (H-007) and the mirror heads (luxury W-332). The enclosure (P152) is drawn around the laid-out board and V-102's measurement
+- ⏳ **F10** — KiCad, before any measurement (guide step 8): a 3D model on every footprint, both renders, the STEP export  
+  *you* · waits on: F9 open  
+  Vendor models for the DT13s (te.com, for the ordered suffix), the XIAO (Seeed), the Teensy and the IMU breakout. Pin 1 on pad 1 for every one. The fit test itself waits for F11.
+- ⏳ **F14** — ICU CAN plumbing in icu.ino: send 0x200 / 0x210 / 0x218 / 0x220 / 0x221 on their rates, read the C3 on Serial2 (radio_link.h), receive the PMU's frames with D-251's timeouts  
+  *agent* · waits on: B8 open  
+  The ICU sketch renders but sends nothing on CAN yet (found at F-015). The frame builders exist as desk-tested headers; this wires them to ACAN_T4 can1 (D-377: 22 / 23) and is proven on B8's two-board bus. Needs a Teensy toolchain on this machine (arduino-cli + Teensy core) to compile.
+- ⏳ **F-014** — Per-signal source arbitration — local input when its channel is configured, else the ECU's CAN frame (0x500+), else dashes (D-153); the source is named in the config file, not the code  
+  *agent* · waits on: F-010 open  
+  electrical D-262 — at the engine swap most engine signals move to the ECU's frames and the ICU's own inputs go quiet by file, not by board Moved from the luxury package with its number (D-374).
+- ⏳ **F-017** — Bring DCU firmware to D-355/D-359/D-360/D-362 and electrical D-363/D-369/D-370: panel read locally (key matrix, encoders, thumbstick) and 0x400 sent by the DCU; mirror drive (3 half-bridges + shared clutch); four high-side window-command outputs with an up/down interlock (SN22); mirror heat on a high-side switch (SN16); hatch / fuel-door select by grounding K3 or K4 through the release pulse (SN23); wake output on DP-DCU 6; comfort channels 4 low-side + mirror heat (D-329)  
+  *agent* · waits on: H-002 open  
+  pins come from H-002's layout; the 0x400 bits from F-016 Moved from the luxury package with its number (D-374). · The servo rail is sized for one servo moving at a time (D-379): the firmware sequences them.
+- ⏳ **F6** — Bench-commission the DCU: flash F-017, read every panel key, encoder and the thumbstick, drive every output into a lamp  
+  *you* · waits on: F5 open; F-017 open  
+  Every output checked off-at-reset first (dcu_channels SN14, SN16 calibration). The window commands (SN22), release selects (SN23), mirror drive (SN17) and wake (SN21) are tested into lamps and a relay on the bench - their loads are the luxury package's and arrive later. E26 plugs it into the car
+- ⏳ **F11** — The measurement pass: fix the outline to C4's envelope, caliper every MEASURE part, correct footprints and models, DRC again  
+  *you* · waits on: F10 open; C4 open; phase SOURCING (now PLANNING)  
+  The first step that needs hard numbers: C4 (the binnacle space) and the parts in your hand - DT13 flange standoff and pin pitch, the Teensy's underside clearance on its socket (the PSRAM), the eval board's header pitch and keying, the XIAO antenna position, the IMU breakout. The parts come with the cart at SOURCING (D-323). Then F1 draws the enclosure around this board.
 - ⏳ **F1** — Draw the enclosure  
-  *agent* · waits on: F2 open; C4 open  
-  Waits on F2. D-270 is the enclosure's brief - the two DT13 flanges on one face, grommets on the other, an antenna window, ASA or PETG, bosses for the flanges, a gasket groove in the lid - but every dimension in it comes from the carrier's board outline, and there is no board outline: F2 lays out H-001 and there is deliberately no .kicad_pcb. Drawing an enclosure around a board that does not exist yet would be a printed part that does not fit (R11). Agent draws it the day F2 is done.
+  *agent* · waits on: F11 open  
+  Draws the enclosure (D-270: the two DT13 flanges on one face, grommets on the other, an antenna window, ASA or PETG, bosses, a gasket groove) around F11's final board outline and STEP - never around an estimate (R11).
+- ⏳ **F12** — Order ICU carrier H-001 (P103, two boards)  
+  *you* · waits on: F11 open; F1 open  
+  Money, so yours: after the enclosure has been test-fitted around the final STEP (guide A9.5-A9.6) - a printed enclosure and a bare board are the cheapest true fit test.
 - ⏳ **F3** — Build it and bring up the display chain on the bench  
-  *you* · waits on: F2 open  
+  *you* · waits on: F2 open; F12 open  
   — (the v2 install §1.21-1.23): eval board and DRIVE page first, the chain-(ii) panel after M-1 sizes the aperture, `V-084` timings, the odometer persisting in EEPROM and on the card (D-269). MG22 waits for this box; nothing else does.
-- ⏳ **F4** — Land `F-012`  
-  *you* · waits on: 01-luxury:F-012 open  
-  (the `can_map.h` bump, luxury `BRING-UP.md` §1) on a machine with g++ before anything is flashed for the car.
+
+*Closed:* ✔ B5 · ✖ F4 · ✔ F7 · ✔ F13 · ✔ F-001 · ✔ F-005 · ✔ F-006 · ✔ F-008 · ✔ F-011 · ✔ F-012 · ✔ F-013 · ✔ F-015 · ✔ F-016 · ✔ H-007 · ✔ V-083 · ✔ V-100 · ✔ V-101 · ✔ Z-003
 
 ### G · What production cars that wire this way do better — the agent's improvement list
 
@@ -81,6 +146,9 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 
 ### V · Carried from the v2 question list, 2026-09-11
 
+- ▶ **Q-028** — CAN wake latency  
+  *you*  
+  waits also on install 5.4. record the wake-to-horn latency; nothing depends on it yet -- If the horn or the winks ever move to a CAN-node wake, what wake-to-horn latency is acceptable cold? Recorded so it is not rediscovered; on the current design nothing depends on it. Moved from the luxury package with its number (D-374).
 - ▶ **V-002** — Alternator output rating  
   *you*  
   read the rating off the alternator tag -- The case reads only "B" / Mitsubishi. The 1980 and 1985 workshop manuals both give a 55 A Mitsubishi unit (`00-CAR/SPECS.md` SP-078, SP-079 — the 1985 part is A5T30574; the 1981–83 fiche lists N221-18-300R, SP-006); an enthusiast chart says 50 A for base cars (SP-080, unverified). Read the rating stamped on the case to settle which the 1982 GS automatic carries. Nothing in the harness depends on it — F18 is 100 A and the 6 AWG B+ cable carries 100 A — but the charging figures at install 2.14 cannot be called good or bad without it. It also feeds the D-179 no-charge diagnosis: D-198 rebuilt the excitation circuit, and this is the number that says whether a healthy unit is behaving.
@@ -112,16 +180,13 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
   *agent* · waits on: G13 open  
   Cannot be recomputed yet, and the reason is worth writing down: the cavity table carries no lengths, so the ~510 ft figure D-256 quoted was never derived from it - it was D-202's hand estimate at 1.5x. `routes` is the table that fixes that and M-2 fills it. D-329 said this number is recomputed from the wire schedule and never by hand here, so it waits. If it does drop under the 500 ft spool, P009 leaves the cart.
 
-*Closed:* ✔ T-017 · ✔ V-075 · ✔ W-320 · ✔ W-322 · ✔ W-330 · ✔ W-331
+*Closed:* ✔ T-017 · ✔ V-065 · ✔ V-075 · ✔ W-320 · ✔ W-322 · ✔ W-330 · ✔ W-331
 
 ### A · At the desk, now — no car, no parts
 
 - ⏳ **A5** — The in-car half of `T-017` at M-6  
   *you* · waits on: C1 open  
   Camden 2026-09-21: "mark to be completed with car interior out in one swoop" - so it rides on the measurement day (C1, M-6). The DESK half is done - agent, 2026-09-12, D-348: every factory terminal letter the design lands a wire on was read off the diagram scans, sections A-F and H, and all are right. Left for the meter, cluster out: the wire colours at C-01, C-02, C-04, C-05, C-09, A-06, A-08 and the L1 sender pair; plus CK08 (ohm the pop-up motor's fourth terminal, WR) and CK09 (which of the wiper motor's L and LB is the park output).
-- ⏳ **A10** — Re-derive wake stages 1 (A6 door) and 2 (A8 horn/hazard/wink) with the new 47 kΩ baselines (D-368)  
-  *agent* · waits on: 00.26 open  
-  Waits on block 00.26 (pulse or held). Worked 2026-09-21, agent. The PMU reads A6/A8 through its own 10 kOhm pull-up to 5 V (S-028: A1-A8 are 0-5 V, 10 bit, pull options 1M down / 10k down / 10k up), so awake the lines sit at: at rest (47k) 4.12 V = 843 counts; A6 DRV 3.30 V, PASS 2.06, BOTH 1.80; A8 WINK_R 3.30, WINK_L 2.83, HORN 2.06, HAZARD 1.50, HAZ+HORN 1.10. Asleep that pull-up is dead, so a stage needs its own excitation, and a permanent one shifts the ladder: v2's 1 MOhm from F3 moves every reading about 12 counts (not the 1.5 v2 claimed) against a 27-count window. FINDINGS: (1) the v2 stage could never wake the PMU - 100 kOhm collector pull-up into the strip's 10 kOhm bleed puts about 1.1 V on pin 7; (2) a plain NPN on a microamp excitation cannot hold its threshold between 47k and 19.4k across 12-14.4 V and -20..70 C (Vbe 0.45-0.65) unless the excitation resistor is at least 57k, and then it cannot drive the strip; (3) a working stage uses parts in the cart: an emitter-follower 2N3904 per side switches the excitation on only while O22 is low (one shared 2N3904 on O22 pulls both follower bases down, so awake the node sees only a reverse-biased EB junction - no ladder shift), about 220k excitation, a 1M/560k base divider on the sense NPN, and a follower output stage to drive pin 7 - 7 of the 10 P072; (4) any stage that holds while a switch is closed keeps pin 7 high with a door ajar, which D-248 and the sleep rule say cannot happen - hence 00.26. Values are written the day 00.26 is answered, and proven by CK12 before anything is soldered.
 - ⏳ **A1** — Close the cart gaps  
   *you* · waits on: phase SOURCING (now PLANNING)  
   Blocked by D-323: nothing is bought until the design is complete and Camden understands it. No store is paid while any block that changes a line is open.
@@ -132,7 +197,7 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
   *you* · waits on: phase SOURCING (now PLANNING)  
   to every heavy cable line, 2 AWG and 1/0 alike: the listing must state ≥ 90 °C insulation and 100 % copper. Swap the line before payment if it does not.
 
-*Closed:* ✔ A3 · ✔ A4 · ✔ A7 · ✔ A8 · ✔ A9
+*Closed:* ✔ A3 · ✔ A4 · ✔ A7 · ✔ A8 · ✔ A9 · ✔ A10
 
 ### D · When the parts arrive
 
@@ -150,20 +215,20 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 
 ### E · Then the install plan, in its own order
 
-- ⏳ **E2** — Read the factory odometer at the meters cutover (MG22) and record it  
-  *you* · waits on: F3 open  
-  Before the factory cluster goes dark at MG22 - the ICU's own odometer (D-269) starts from this figure. MG22 waits on the display proven on the bench, which is F3
 - ⏳ **E4** — Read the safety rules once, properly, before the first tool touches the car  
   *you* · waits on: D1 open; D4 open; C1 open; B1 open  
   The battery is lithium: boot or tape both terminals whenever you work, rings and watches off - a dropped tool welds. Open the master disconnect before touching the 2 AWG feed, the starter cable, the tank sender or the pop-up buckets. It is on the POSITIVE side (D-319), so opening it removes supply from everything, the starter cable included; before it is fitted, pull the negative lug. Jack stands always, wheels chocked (P is not a parking brake). No sparks near the tank; extinguisher within reach. Engine running: belt/fan clear, garage door open (CO). Pop-ups move fast and a stalled motor pulls 15-25 A. Label the factory end of every migrated circuit MIGRATED + date.
 - ⏳ **E5** — Deutsch and heat-shrink practice on scrap  
   *you* · waits on: E4 open  
   Insert and remove a contact from a spare housing ten times with the removal tool (P031/P032); fit and pull the wedgelock - a contact must click and not back out under a firm tug. Adhesive heat-shrink until the glue weeps evenly at both ends; one lug with heavy-wall shrink and a boot.
+- ⏳ **E2** — Read the factory odometer at the meters cutover (MG22) and record it  
+  *you* · waits on: F3 open  
+  Before the factory cluster goes dark at MG22 - the ICU's own odometer (D-269) starts from this figure. MG22 waits on the display proven on the bench, which is F3
 - ⏳ **E6** — Set up the label printer and print the node labels  
   *you* · waits on: E5 open  
   Format: rules label-format. Print TEST / L0-X0, wrap it on a 16 AWG offcut, clear heat-shrink over it, tug it. Then print the node labels from the label columns: rx7.py sql 02-PROJECTS/00-electrical "select id,label from relays" and "select id,label from fuses".
 - ⏳ **E7** — Build the ladder resistor sub-assemblies  
-  *you* · waits on: E6 open; A10 open  
+  *you* · waits on: E6 open  
   Every resistor (and the one 1N5819) the ladders use, soldered to 4 in leads, each heat-shrunk and the lead labelled with switch and position; measure each and write the value on its bag. The list is the design, not this note: rx7.py sql 02-PROJECTS/00-electrical "select * from ladders" plus the cavity rows naming a kΩ value. Includes the 47 kOhm baselines: L2-S 1 and 2 (A4/A5), and new with D-368 L2-S 3 (A3), the sill splice (A6) and the hazard switch (A8). Do not fit the D-368 baselines in the car until CK12 has passed on the bench (A10 sizes the wake stages first).
 - ⏳ **E8** — Backbone weekend, 1 of 5: the battery in the cargo bin  
   *you* · waits on: E7 open  
@@ -187,14 +252,14 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
   *you* · waits on: E13 open  
   PMU on three M6 stand-offs; covered always-hot busbar beside the stud; ground bus beside pin 25; blocks A and B; the sealed inline holders; the relay sockets; the 8-position barrier strip (P068 - full: seven wake inputs + the rail); the perfboard. Receptacle clips (P030) along the panel edge grouped by leg. Node labels from E6 beside every relay socket and fuse position, empty ones included.
 - ⏳ **E15** — Dash node 3: the wake network and the two sense stages  
-  *you* · waits on: E14 open; A10 open  
+  *you* · waits on: E14 open  
   Seven 1N5819 on the strip, band (cathode) toward the common rail (N38); rail to pin 7; 10 kOhm rail to ground bus. The two NPN sense stages (door, A8) on the perfboard with the base-network values A10 writes into the record for D-368's baselines - not the v2 values. The two 100 kOhm bias resistors from pin 15 to pins 35 and 22. Then CK12 on the bench before the node goes in the car.
 - ⏳ **E16** — Dash node 4: terminate the 39-way PMU connector  
   *you* · waits on: E15 open  
   Cavity order from rx7.py sql 02-PROJECTS/00-electrical "select * from pins"; mark cavity 1 with the paint pen first. Strip, crimp the SICMA terminal (2.8 mm large for the heavy pins, 1.5 mm for the rest - per pins), tug, insert until it clicks, tug again; 18 in of wire on every pin; label each wire before cutting the next. Secondary lock on; pull every wire - none may move; latch the lever once fully to prove the arc is clear. It is terminated once and never reopened.
 - ⏳ **E17** — Dash node 5: every node conductor, every receptacle  
   *you* · waits on: E16 open  
-  Run every row of rx7.py sql 02-PROJECTS/00-electrical "select * from node_conductors" - including the ones since v2: N73 road-speed supply, N74 the CAN2 120 Ohm terminator AT THE NODE (D-346), N75 F22 to DP-DCU 1 (D-355), N76-N78, N79 F13, N80-N83 the post links, N84 mirror heat from DP-DCU-B 9 to L4-P 4 (D-369), N85/N86 the release branch and select lines (D-370). O15 now feeds L3-P 2 only (D-369). Every splice a sealed crimp butt splice. Land every leg wire on its receptacle pin per cavities; sealing plug in every PLUG cavity; wedgelocks. Dust caps: the branch-end receptacles get theirs at E20-E23. DP-ICU-A/B are 150 mm tails into the ICU's DT13s (D-270); DP-DCU and DP-DCU-B are tails to the centre stack ending in DT06 plugs, dust-capped (P140, D-362).
+  Run every row of rx7.py sql 02-PROJECTS/00-electrical "select * from node_conductors" - including the ones since v2: N73 road-speed supply, N74 the CAN2 120 Ohm terminator AT THE NODE (D-346), N75 F22 to DP-DCU 1 (D-355), N76-N78, N79 F13, N80-N83 the post links, N84 mirror heat from DP-DCU-B 9 to L4-P 4 (D-369), N85/N86 the release branch and select lines (D-370). O15 now feeds L3-P 2 only (D-369). Every splice a sealed crimp butt splice. Land every leg wire on its receptacle pin per cavities; sealing plug in every PLUG cavity; wedgelocks. Dust caps: the branch-end receptacles get theirs at E20-E23. DP-ICU-A/B are 150 mm tails into the ICU's DT13s (D-270); DP-DCU and DP-DCU-B are tails to the centre stack ending in DT06 plugs, dust-capped (P140, D-362) until the DCU plugs in at E26 (D-374).
 - ⏳ **E18** — Dash node 6: continuity, isolation, relays, fuses, photos  
   *you* · waits on: E17 open  
   Continuity: each of the 39 cavities reaches every receptacle cavity, relay terminal or strip position the tables say, and nothing else (meter on beeper; touch three places it must NOT reach). Isolation: nothing plugged in, every adjacent pair of power cavities and each power cavity to the ground bus reads open (> 1 MOhm) - any reading is a stray strand. Fit relays K1 K2 K11 K12 K13 (P003) and the fuses per rx7.py sql 02-PROJECTS/00-electrical "select id,rating,block,state from fuses"; empty positions stay empty and labelled (K3/K4 are the luxury package's, LP51). Every node wire labelled at both ends; photograph the finished panels from every angle.
@@ -215,13 +280,13 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
   Same loop as E20. Tach: the shielded cable (P074), drain to the dash node's ground bus at that end only, cut and insulated at the coil end. K9 on the inner fender in its weatherproof socket; its 10 AWG contact wires from F17 to the starter S terminal. Alternator plug: BW to L1-S1 2, WB to L1-S2 8. The ignition suppression condenser P135 on the coil branch at the coil bracket (D-281). L1-S1 9/10 are sealing plugs - the CAN2 terminator is at the dash node now (D-318, D-346). The LS reserves are pinned at the post, not run (D-271).
 - ⏳ **E24** — Install 1: mount the node, first power-up through 5 A, laptop connected  
   *you* · waits on: E23 open  
-  Mount the dash node; prove the lever and every receptacle can be reached. 2 AWG feed to the busbar lug, ground bus to the dash star, NO leg plugged in. First power-up through a 5 A inline bridged across the Class-T block's terminals, so a short melts a 5 A fuse, not 2 AWG. Fit DP-DIAG, laptop over CAN1. Power up with EVERY output disabled: no smoke, module visible. Then swap the 5 A for the Class-T fuse.
+  Mount the dash node; prove the lever and every receptacle can be reached. 2 AWG feed to the busbar lug, ground bus to the dash star, NO leg plugged in. First power-up through a 5 A inline bridged across the Class-T block's terminals, so a short melts a 5 A fuse, not 2 AWG. Fit DP-DIAG, laptop over CAN1. Power up with EVERY output disabled: no smoke, module visible. Then swap the 5 A for the Class-T fuse. The laptop is Camden's Windows laptop, kept only to run ECUMaster's PMU client (D-376).
 - ⏳ **E25** — Install 2: enter the PMU configuration, outputs still disabled  
   *you* · waits on: E24 open  
   The configuration IS the record now (the v2 PMU-CONFIG-SHEET is archived): names and channels from pins, decode tables from inputs + ladders, expressions from logic, the retry classes from rules retry-class (MOTOR_BUS conditional, D-357), wake from rules, CAN from the CAN rows. Save as RevA-01. No limits yet.
-- ⏳ **E26** — Install 3: plug in L3 and the ICU; read every input into its window  
-  *you* · waits on: E25 open  
-  L3 plugged in; the ICU on its two DT13 tails, display on its ribbon. Every output still disabled: key OFF/ACC/RUN/START, light switch, dimmer, pass, turn, hazard, wiper positions, wash, brake, horn, both winks, doors - write the reading into each decode window, then enter the tables. Every state must land in its window; anything between windows is a wiring fault to fix now. Then enter the enable-at limits from pins (enable_a). Still nothing enabled.
+- ⏳ **E26** — Install 3: plug in L3, the ICU and the DCU; read every input into its window  
+  *you* · waits on: E25 open; F6 open  
+  L3 plugged in; the ICU on its two DT13 tails, display on its ribbon; the DCU in its enclosure behind the centre stack on DP-DCU and DP-DCU-B with the panel on its ribbon (D-374) - its luxury loads are not there yet, so its outputs drive capped lines. Every output still disabled: key OFF/ACC/RUN/START, light switch, dimmer, pass, turn, hazard, wiper positions, wash, brake, horn, both winks, doors - write the reading into each decode window, then enter the tables. Every state must land in its window; anything between windows is a wiring fault to fix now. Then enter the enable-at limits from pins (enable_a). Still nothing enabled.
 - ⏳ **E27** — Install 4: L2, L4 + sill and L1 into the car, loads still on the factory harness  
   *you* · waits on: E26 open  
   Route, P-clip, grommet and connect L2, L4 + sill and L1 at both ends with their loads still on the factory harness. Fit F17 and wire K9. The car must start and drive on the factory harness with everything in place.
@@ -248,4 +313,4 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
   Back up the final configuration. In the car: the limp-home kit (recovery RC rows, D-344), a printout of the pins and cavities tables, spare Deutsch contacts, the removal tools and five blade fuses of each value. The electrical project is then ready for CLAUDE.md §6.6 (as-built into 00-CAR, process to the archive).
 
 *Closed:* ✖ E1 · ✔ E3
-<!-- rx7 todo sha256:46634c5108a71603aa90a1cb787b9362772df2de4b38e2f82380190919afb8d9 -->
+<!-- rx7 todo sha256:afbbcaee0608696b2d1018d00394d6ef977ba9decd0d7dcc3e21ae17e0edda96 -->

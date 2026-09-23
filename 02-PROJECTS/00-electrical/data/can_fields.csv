@@ -1,0 +1,86 @@
+id,msg,bytes,field,encoding,note
+0x100/0,0x100,0,Key position,0 OFF · 1 ACC · 2 RUN · 3 START,
+0x100/1,0x100,1,Wake source,bitfield: b0 ACC · b1 RUN · b2 hazard · b3 door · b4 horn · b5 latch,
+0x100/2,0x100,2,Global fault,bitfield: b0 soft-fuse trip · b1 undervolt · b2 overvolt · b3 overtemp,
+0x100/3,0x100,3,Headlight state,0 OFF · 1 PARK · 2 HEAD,
+0x100/4,0x100,4,Turn state,0 off · 1 left · 2 right · 3 hazard,
+0x100/5,0x100,5,Pop-up state,0 down · 1 raising · 2 up · 3 lowering · 4 fault,
+0x100/6,0x100,6,reserved,,
+0x100/7,0x100,7,counter,rolling 0–255,
+0x110/0–1,0x110,0–1,Battery voltage,"uint16, mV",
+0x110/2–3,0x110,2–3,Total current,"uint16, 0.1 A",
+0x110/4,0x110,4,Alternator charging,0 no · 1 yes,
+0x110/5–6,0x110,5–6,reserved,,
+0x110/7,0x110,7,counter,,
+0x120/0–1,0x120,0–1,reserved,,"fuel level moved to the ICU's 0x218 (electrical D-249, D-306)"
+0x120/2–4,0x120,2–4,Output on/off,"24 bits, one per O1–O24",
+0x120/5,0x120,5,Trip state — channel index,"0–23, cycling",
+0x120/6,0x120,6,Trip state — status,0 ok · 1 tripped · 2 retrying,
+0x120/7,0x120,7,counter,,
+0x130/0,0x130,0,Channel index,0–23 = O1–O24,
+0x130/1–2,0x130,1–2,Measured current,"uint16, 0.01 A",
+0x130/3–4,0x130,3–4,Soft-fuse setpoint,"uint16, 0.01 A",
+0x130/5,0x130,5,Channel status,0 off · 1 on · 2 tripped · 3 retrying,
+0x130/6,0x130,6,reserved,,
+0x130/7,0x130,7,counter,,
+0x200/0–1,0x200,0–1,RPM,"uint16, 1 rpm",
+0x200/2,0x200,2,Water temp,"int8, °C",
+0x200/3,0x200,3,Oil temp,"int8, °C",
+0x200/4–5,0x200,4–5,Oil pressure,"uint16, 0.01 bar",
+0x200/6,0x200,6,Road speed,"uint8, km/h",
+0x200/7,0x200,7,counter,,
+0x210/0,0x210,0,Sensor valid,bitfield: b0 RPM · b1 water · b2 oil temp · b3 oil press · b4 VSS · b5 fuel,in can_map.h as SENS_FUEL since F-012
+0x210/1,0x210,1,Sensor fault type,bitfield: b0 open · b1 short · b2 out of range · b3 implausible,
+0x210/2,0x210,2,CAN health,"b0 PMU seen · b1 DCU seen · b2 reserved (was panel seen - the panel has no CAN node, D-355) · b3 AFR seen",CANH_* in can_map.h since F-012; b2 reserved
+0x210/3–6,0x210,3–6,reserved,,
+0x210/7,0x210,7,counter,,
+0x218/0–1,0x218,0–1,Fuel level,"uint16, 0.1 % — three-point lookup calibrated in the car",the measured curve is in electrical D-249
+0x218/2,0x218,2,Fuel sensor valid,0 fault · 1 valid,
+0x218/3–6,0x218,3–6,reserved,,
+0x218/7,0x218,7,counter,,
+0x220/0–1,0x220,0–1,Pack voltage,"uint16, 1 mV per bit",from the BMS's BLE advertisement (D-345); 0 never means 0 V - see the flags
+0x220/2–3,0x220,2–3,Cell 1 voltage,"uint16, 1 mV","type-01 cell frame over GATT FFE1, ~1.43 mV per raw count (D-330)"
+0x220/4–5,0x220,4–5,Cell 2 voltage,"uint16, 1 mV",
+0x220/6,0x220,6,Freshness flags,bitfield: bit 0 advertisement fresh (< 10 s) · bit 1 GATT connected · bit 2 cell frame fresh · bit 3 checksum failed · bit 4 radio link lost (no line from the C3 for 3 s),"freshness, not health (D-345); a stale value is blanked on the cluster (D-153)"
+0x220/7,0x220,7,counter,,
+0x221/0–1,0x221,0–1,Cell 3 voltage,"uint16, 1 mV",
+0x221/2–3,0x221,2–3,Cell 4 voltage,"uint16, 1 mV",
+0x221/4–5,0x221,4–5,Cell spread,"uint16, 1 mV, highest cell minus lowest",derived on the ICU - the number that says something about the pack (D-345)
+0x221/6,0x221,6,Freshness flags,"bitfield, same as 0x220 byte 6",
+0x221/7,0x221,7,counter,,
+0x222/0–1,0x222,0–1,Battery current,"int16, 0.1 A, + = charging","NO SOURCE - defined, never sent until W-330b (D-330, D-345): a zero on the bus is a number and someone will believe it"
+0x222/2,0x222,2,State of charge,"uint8, %",NO SOURCE - as above
+0x222/3,0x222,3,Battery temperature,"int8, °C",NO SOURCE - as above
+0x222/4–6,0x222,4–6,reserved,,
+0x222/7,0x222,7,counter,,
+0x300/0,0x300,0,Mode,"0 off · 1 vent · 2 heat · 3 defrost · 4 A/C — 4 RESERVED, unreachable until the swap (D-211)",
+0x300/1,0x300,1,Blower duty,"uint8, % 0–100 — what the DCU commands its final stage; telemetry, the PMU does not act on it",D-308
+0x300/2,0x300,2,Target temp,"uint8, °C",
+0x300/3,0x300,3,Cabin temp,"int8, °C",SN11
+0x300/4,0x300,4,A/C request,"0 no · 1 yes — RESERVED, always 0 (D-211)",
+0x300/5,0x300,5,Outside-air temp,"int8, °C","SN12, electrical D-256"
+0x300/6,0x300,6,reserved,,
+0x300/7,0x300,7,counter,,
+0x310/0,0x310,0,Seat heat,b0–1 driver level · b2–3 passenger level,
+0x310/1,0x310,1,Seat cool,b0–1 driver · b2–3 passenger,
+0x310/2,0x310,2,Mirror heat,b0 on,
+0x310/3,0x310,3,"reserved (was nozzle heat / de-icer, D-329)",,reserved in can_map.h (_rsv3) since F-012
+0x310/4–5,0x310,4–5,Comfort bus current,"uint16, 0.01 A",
+0x310/6,0x310,6,reserved,,
+0x310/7,0x310,7,counter,,
+0x320/0,0x320,0,Alert level,0 none · 1–5,
+0x320/1,0x320,1,Band,bitfield: b0 X · b1 K · b2 Ka · b3 laser,
+0x320/2,0x320,2,Direction,0 unknown · 1 front · 2 rear,
+0x320/3–6,0x320,3–6,reserved,,
+0x320/7,0x320,7,counter,,
+0x400/0,0x400,0,"Keys down, first eight",bitfield: b0 defog · b1 hatch release · b2 fuel-door release · b3 HVAC mode · b4 recirculate · b5 window DRV up · b6 window DRV down · b7 window PASS up,"1 while the key is held (F-016); the order is the panel's key matrix, H-007"
+0x400/1,0x400,1,"Keys down, the rest",bitfield: b0 window PASS down · b1 mirror thumbstick press · b2-7 reserved,the thumbstick press is also read locally - it toggles LEFT / RIGHT (D-359); it is here for logging
+0x400/2,0x400,2,"Held ≥ 1 s, first eight","bitfield, same bits as byte 0",
+0x400/3,0x400,3,"Held ≥ 1 s, the rest","bitfield, same bits as byte 1",
+0x400/4–6,0x400,4–6,reserved,,
+0x400/7,0x400,7,counter,,
+0x180 ext/0–1,0x180 ext,0–1,Lambda,"uint16, 0.0001 λ per bit, big-endian — 0 to 6.5535",AFR = λ × 14.65 (gasoline); confirmed D-266
+0x180 ext/2–3,0x180 ext,2–3,Oxygen,"int16, 0.001 % per bit, big-endian — −32.768 to 32.767 %",confirmed D-266
+0x180 ext/4,0x180 ext,4,System voltage,"uint8, 0.1 V per bit — 0 to 25.5 V",the gauge's own supply reading; confirmed D-266
+0x180 ext/5,0x180 ext,5,reserved (AEM),,
+0x180 ext/6–7,0x180 ext,6–7,Flags (AEM),byte 6: bit 1 LSU4.9 detected · bit 5 free-air cal in use · bit 7 lambda data valid; byte 7: bit 6 sensor fault; other bits reserved,"no rolling counter — AEM's frame, not ours; render dashes unless valid = 1 and fault = 0 (D-153); confirmed D-266"

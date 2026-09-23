@@ -46,11 +46,11 @@ never needed one.
 8. **Reference designators are KiCad's**, and the channel ids (`IC01`…`IC24`) go in a text field beside the
    block, never as the reference. The channel ids belong to `data/icu_channels.csv`; borrowing them as
    refdes would create a second home for them (R3) and they would drift the first time a row changes.
-9. **Pin NUMBERS on modules and on the Teensy socket are not asserted.** Their pin *names* are real and
-   the connections are real; the numbers are ordinal and are fixed against the actual parts at layout
-   (`F2`). The record assigns no Teensy pin numbers at all, so the Teensy is drawn as the socket it plugs
-   into and every net that reaches the processor ends on a named pin of `J5`. A schematic that quietly
-   picks an answer the record does not have is worse than one with a question mark on it.
+9. **Pin numbers come from the record, never from the sheet.** The Teensy socket `J5` carries the real
+   Teensy 4.1 pad numbers because the record has them (`icu_channels.teensy_pin`, D-377); change a pin
+   there first, then here. Module pin numbers (buck, transceiver, IMU, radio, BT817 header) are fixed
+   against the actual parts at layout. A schematic that quietly picks an answer the record does not have
+   is worse than one with a question mark on it.
 10. **The BAT54S goes one way round, and it is not obvious.** It is a **series** pair — `A → COM → K` —
     so clamping a signal at `COM` needs **A on GROUND** (GND→COM catches a negative excursion) and
     **K on +3V3** (COM→+3V3 catches a positive one). Backwards it clamps nothing on either polarity and
@@ -110,7 +110,7 @@ ERC and a board that works are different claims, and only one of them has been c
 
 `icu-carrier.kicad_sym` holds every symbol the sheet uses — the stock ones flattened, and the functional
 blocks drawn for this board — and `sym-lib-table` points KiCad at it. Nothing depends on which KiCad
-libraries are installed, so the sheet opens the same on the laptop and on `crashs-pc`, ERC has no
+libraries are installed, so the sheet opens the same after a reinstall, ERC has no
 missing-library complaints, and a KiCad upgrade cannot silently change what a symbol means.
 
 Add a symbol to that file, not to a global library.

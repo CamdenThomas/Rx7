@@ -36,10 +36,14 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Built binaries
+# Built binaries (Linux has no extension to match, so each one is named)
 *.exe
 *.o
 *.obj
+02-PROJECTS/00-electrical/firmware/icu_sim/sim
+02-PROJECTS/00-electrical/firmware/tests/test
+02-PROJECTS/00-electrical/firmware/tests/test_bt817
+02-PROJECTS/00-electrical/firmware/tests/test_dcu
 
 # KiCad, under 02-PROJECTS/00-electrical/cad/ only. That folder is not an area and
 # not the view layer (see its README): it is a CAD tool drawing one board. The exported
@@ -57,3 +61,9 @@ fp-info-cache
 02-PROJECTS/00-electrical/cad/**/*.pdf
 02-PROJECTS/00-electrical/cad/**/*.net
 02-PROJECTS/00-electrical/cad/**/net.txt
+02-PROJECTS/00-electrical/firmware/tests/test_radio
+02-PROJECTS/00-electrical/firmware/icu_sim/renders/
+
+# KiCad 10's local history and lock files (per machine, never versioned)
+02-PROJECTS/00-electrical/cad/**/.history/
+02-PROJECTS/00-electrical/cad/**/~*.lck

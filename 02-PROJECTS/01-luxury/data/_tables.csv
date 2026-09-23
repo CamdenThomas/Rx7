@@ -1,15 +1,9 @@
 table,purpose
-bringup_log,
-can_fields,
-can_messages,
 decisions,"every ruling, permanent, newest last; the body is data/decisions/<id>.md"
 features,
 log,"what happened, one row per action"
-modules,
-params,named numbers the rest of the record derives from
 parts,every part this project buys or fits
 provisions,
 retired,terms that must no longer appear anywhere
-sensors,
 stages,
 work,the work list; owner says who does it

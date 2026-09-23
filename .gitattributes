@@ -1,4 +1,5 @@
-# Normalise line endings: the tree is edited from Windows and from a Linux sandbox.
+# One line ending, LF. The tree lives on one Fedora machine (2026-09-22); it was once edited
+# from Windows too, and this is what kept that from flipping files back and forth.
 * text=auto
 # The tool writes LF; with core.autocrlf the checkout wrote CRLF, so every tool write
 # flipped a whole file's line endings and git warned on each one. One ending, everywhere.
@@ -6,6 +7,10 @@
 *.md text eol=lf
 *.py text eol=lf
 .githooks/* text eol=lf
+*.sh text eol=lf
+*.cpp text eol=lf
+*.h text eol=lf
+*.ino text eol=lf
 *.pdf binary
 *.STEP binary
 *.png binary

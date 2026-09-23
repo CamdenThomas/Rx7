@@ -1,5 +1,16 @@
-key,value,note
-gaps_est_usd,332,The v2 shopping list's §8 additions (archived — 99-ARCHIVE) net of the three lines that drop (D-246 moved the heavy cable to 1/0; D-245 → D-319); +$12 for the three sill holders (D-283)
-hardware_est_usd,40,Hardware-store trip after the measurement day (§7)
-label_ends,582,"Wire ends to label - sizes the tape order. Derived 2026-09-21, two ends per conductor: 150 leg cavities that carry a conductor (not PLUG, not a 'same conductor' continuation) + 50 ground conductors (sum of grounds.qty) + 11 cables + 80 node_conductors rows (N60 left out, its pins are in the cavities) = 291 conductors x 2 = 582. A row that splices to several ends counts once, so this is a floor, not a ceiling"
-battery_case_mm,170 W x 230 L x 190 H,Ionic S9 case measured 2026-09-04 (V-053/V-051 -> D-239); terminals and boots stand above the 190 mm
+key,value,unit,source,note
+gaps_est_usd,332,,,The v2 shopping list's §8 additions (archived — 99-ARCHIVE) net of the three lines that drop (D-246 moved the heavy cable to 1/0; D-245 → D-319); +$12 for the three sill holders (D-283)
+hardware_est_usd,40,,,Hardware-store trip after the measurement day (§7)
+label_ends,582,,,"Wire ends to label - sizes the tape order. Derived 2026-09-21, two ends per conductor: 150 leg cavities that carry a conductor (not PLUG, not a 'same conductor' continuation) + 50 ground conductors (sum of grounds.qty) + 11 cables + 80 node_conductors rows (N60 left out, its pins are in the cavities) = 291 conductors x 2 = 582. A row that splices to several ends counts once, so this is a floor, not a ceiling"
+battery_case_mm,170 W x 230 L x 190 H,,,Ionic S9 case measured 2026-09-04 (V-053/V-051 -> D-239); terminals and boots stand above the 190 mm
+canvas,1280 × 480,px,D-193,one 12.3-inch bar panel
+framebuffer,614,KB,"D-170, F-011",8 bpp in the 8 MB PSRAM
+full_push_ms,~165,ms,"arithmetic: 614,400 B x 8 bit / 30 MHz single SPI (D-377)","a page transition, never inside the 30 fps loop. ~250 at the 20 MHz bring-up clock; the archived ~100 assumed QSPI, which the Teensy cannot give the BT817 (its QSPI port carries the PSRAM)"
+can_bitrate,500,kbps,D-086,"CAN 2.0B, 11-bit — the AEM node is the 29-bit exception (electrical D-266)"
+frame_bits_std,112,bits,CAN-MESSAGES bus-load method,"8-byte standard frame with stuffing, as the map has always counted it"
+frame_bits_ext,132,bits,same method,8-byte extended frame
+icu_logic_draw,~0.5,A,ICU-CARRIER (archived),Teensy + transceiver + IMU
+display_draw,1.5–3,A,D-313,a 900–1000-nit panel and its backlight — measure at bring-up
+o10_headroom,~3,A,"D-313, electrical LD15 / D-223","for DP-ICU-A, the only module drop left on O10 (DP-DCU 1 is on F22, D-355)"
+servo_stall,1–2.5 each,A,DCU-CARRIER (archived),why the servo rail is its own buck
+thresholds,redline 7000 rpm · hot water 105 °C · low oil 1.0 bar · tank 16.6 gal,,D-328,"tank 16.6 gal from the 1982 brochure S-004, primary (D-328 supersedes D-300); a measured fill would supersede it again"

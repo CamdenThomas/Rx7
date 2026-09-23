@@ -11,36 +11,18 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 `python tools/rx7.py get 02-PROJECTS/01-luxury work <id>`.
 
 
-**Phase:** PLANNING. **Goal:** Everything the car gets after it drives on the new harness — bezel and dash plastics, DCU and panel, blower, seats, mirrors, windows, lighting second pass, radar
+**Phase:** PLANNING. **Goal:** Everything the car gets after it drives on the new harness - bezel and dash plastics, the panel's faceplate, the loads the DCU drives (blower, servos, seats, mirrors, windows), lighting second pass, radar
 
-31 open · 19 ready now · 22 done.
+24 open · 4 ready now · 17 done.
 
 ## Now — what can be started today
 
 **Yours:**
 
-- **Q-028** — CAN wake latency
 - **T-032** — The release triggers, and the hatch latch switch (broken, K-016)
-- **T-048** — Flash and label boards 2 and 3
-- **T-049** — Put a microSD card (LP04) in a bench Teensy
 - **V-063** — Tail-light aperture [M-DAY]
 - **V-066** — What headlamps are actually fitted today [M-DAY]
-- **V-102** — Measure the space behind the centre stack for the DCU enclosure — depth, width, height, mm (D-362's flip condition)
 - **W-332** — Measure the car's own mirror heads at the door plug
-
-**Agent:**
-
-- **F-012** — Bump can_map.h for the current map: add icu_body_t 0x218 (fuel_pct u16, fuel_valid u8, rsv[4], counter); pmu_outputs_t fuel_pct → _rsv[2]; dcu_climate_t blower → duty %, _rsv[0] → outside_c; ID_ICU_BODY 0x218, TMO_ICU_BODY 3000; SENS_FUEL bit 5; 0x210/2 b3 AFR seen and b2 reserved (the comment still reads 'b2 keypad'); TMO_DCU_COMFORT 2000 for 0x310; 0x310 byte 3 nozzle_deice → reserved, and retire the nozzle / de-icer channels in dcu/ (CMF_COUNT 7 → 5, CMF_NOZZLE / CMF_DEICER, PIN_COMFORT) (D-329); copy to all four can_map.h folders (icu, dcu, can_map_test, can_loopback_test); bump ICU_FW_VERSION and DCU_FW_VERSION; run tests/run.bat
-- **F-015** — icu_batt_t 0x220 + the UART bridge protocol from the ESP32-C3 (line-based text, 2 Hz, checksum) + the Ionic BMS-over-BLE decoder on the C3 (electrical D-330)
-- **F-016** — Assign 0x400's key bits from FT14's key list (9 keys + encoders + thumbstick press)
-- **H-007** — Design the control panel: key matrix, encoders, thumbstick placement, ribbon pinout (D-355, D-359)
-- **V-061** — Radar sensor interface
-- **V-064** — A DOT/SAE LED module source, red and white, with published candela
-- **V-065** — The PMU's real CAN export format
-- **V-083** — DCU carrier parts
-- **V-101** — The comfort loads' currents, for the DCU carrier's track widths
-- **X-007** — Archived render of the agreed cluster — icu_sim/sim.exe, +, screenshot
-- **X-008** — Carry the archived luxury install procedure into work rows, one per step (electrical D-372)
 
 ## Everything, in working order
 
@@ -48,105 +30,87 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 
 ### V · Carried from the v2 question list, 2026-09-11
 
-- ▶ **Q-028** — CAN wake latency  
-  *you*  
-  waits also on install 5.4. record the wake-to-horn latency; nothing depends on it yet -- If the horn or the winks ever move to a CAN-node wake, what wake-to-horn latency is acceptable cold? Recorded so it is not rediscovered; on the current design nothing depends on it.
 - ▶ **T-032** — The release triggers, and the hatch latch switch (broken, K-016)  
   *you*  
   waits also on teardown. test the release triggers and the hatch latch switch -- Both solenoids exist and are wired to — `L4-M 3 / 4` run all the way to them, their post ends capped (electrical D-274). What is left: the trigger per D-180 (the K3 / K4 sockets at the dash node are the slot) and the latch switch (LP24). Nothing to source for the solenoids themselves.
-- ▶ **T-048** — Flash and label boards 2 and 3  
-  *you*  
-  flash and label boards 2 and 3 -- once a soldering iron is out. Opportunistic.
-- ▶ **T-049** — Put a microSD card (LP04) in a bench Teensy  
-  *you*  
-  LP04 is the part; F-007, F-010 and B7 wait on it
-- ▶ **V-061** — Radar sensor interface  
-  *agent*  
-  the radar module interface, documented - custom build, no datasheet to shortcut it. It is the spec Z-002 designs against; the L3-S3 1-3 ↔ L4-S 5-7 pass-through stays capped until Z-002 exists
 - ▶ **V-063** — Tail-light aperture [M-DAY]  
   *you*  
   waits also on M-DAY. a measurement of the tail-light aperture -- — width, height, depth, mounting. D-107's 55 cm² of red against FMVSS 108's 50 has no margin for a wrong assumption.
-- ▶ **V-064** — A DOT/SAE LED module source, red and white, with published candela  
-  *agent*  
-  a sourcing search with published candela -- for the tail-light strips. A module without published candela cannot be shown to meet FMVSS 108 and is not a candidate.
-- ▶ **V-065** — The PMU's real CAN export format  
-  *agent*  
-  the PMU CAN export format is documented -- ECUMaster fixes it. `0x100`–`0x130` are intent until the client's export is read at the electrical install §5.5; every PMU-sourced field in the ICU is written against a guess until then. Read out at the same time whether each PMU **CAN input** carries its own timeout and default — electrical D-251 needs fail-open for anything near a control rule, and a logged fault for `0x218`.
 - ▶ **V-066** — What headlamps are actually fitted today [M-DAY]  
   *you*  
   waits also on M-DAY. a look at what headlamps are fitted -- — round or rectangular, and whether LED housings are already in. It no longer picks the unit - D-358 ruled 4x6 LED on plates - it sizes the adapter plate: the bucket's inner diameter and mounting-hole pattern, in mm.
-- ▶ **V-083** — DCU carrier parts  
-  *agent*  
-  a parts search — two LMR36015-Q1-class 60 V bucks, logic and servo rail (electrical D-273: not the LMR33630, whose 36 V sits under the SMBJ33A clamp); AOD4184-class low-side FETs ×4 (seat heat/cool, D-329) + two small low-side switches for the K3/K4 coils (electrical D-370); five high-side switches - mirror heat (sized by V-101, electrical D-369) and four relay-coil window commands (electrical D-363); INA180 + 5 mΩ; three half-bridges and one clutch driver for the mirrors, sized from W-332 (D-359, D-360). Datasheet-verify before layout. Updated 2026-09-21
-- ▶ **V-101** — The comfort loads' currents, for the DCU carrier's track widths  
-  *agent*  
-  Added 2026-09-21 for the DCU carrier layout, H-002 (D-361). SN16's four low-side FETs and SN13's shunt carry the seat heat ×2 and seat cool ×2 return current through the carrier, and the mirror-heat high-side switch carries the pads' current (electrical D-369); no row gives those currents or the O15 block's fuse sizes (LP21). Source each load's rating; the fuse per position follows, and the tracks are sized to the fuse
-- ▶ **V-102** — Measure the space behind the centre stack for the DCU enclosure — depth, width, height, mm (D-362's flip condition)  
-  *you*  
-  LP47 is drawn around it
 - ▶ **W-332** — Measure the car's own mirror heads at the door plug  
   *you*  
   Camden 2026-09-21: each FB mirror is one motor plus a clutch coil, and the car's own pair is kept (D-359). What the design still needs, per side, off the door plug with the mirror unplugged, in ohms and amps: which pin is the motor pair and which the clutch coil; what the clutch coil returns to (ground, or a motor pin); motor resistance and stall current at 12 V; clutch coil resistance; which clutch state (energised or not) moves the glass up/down. D-360 shares one clutch line between both mirrors and assumes each clutch coil returns to ground: if it returns through a motor pin instead, D-360 is wrong and becomes a block before anything is crimped. Every mirror pin label in the record is confirm until this is in.
 
-*Closed:* ✔ V-100
+*Closed:* ✔ V-061 · ✔ V-064
 
 ### X
 
-- ▶ **F-012** — Bump can_map.h for the current map: add icu_body_t 0x218 (fuel_pct u16, fuel_valid u8, rsv[4], counter); pmu_outputs_t fuel_pct → _rsv[2]; dcu_climate_t blower → duty %, _rsv[0] → outside_c; ID_ICU_BODY 0x218, TMO_ICU_BODY 3000; SENS_FUEL bit 5; 0x210/2 b3 AFR seen and b2 reserved (the comment still reads 'b2 keypad'); TMO_DCU_COMFORT 2000 for 0x310; 0x310 byte 3 nozzle_deice → reserved, and retire the nozzle / de-icer channels in dcu/ (CMF_COUNT 7 → 5, CMF_NOZZLE / CMF_DEICER, PIN_COMFORT) (D-329); copy to all four can_map.h folders (icu, dcu, can_map_test, can_loopback_test); bump ICU_FW_VERSION and DCU_FW_VERSION; run tests/run.bat  
-  *agent*  
-  waits also on a machine with g++ (w64devkit) — not this one. the data is ahead of the header until this lands; the BRING-UP drift table shows exactly what differs
-- ▶ **F-015** — icu_batt_t 0x220 + the UART bridge protocol from the ESP32-C3 (line-based text, 2 Hz, checksum) + the Ionic BMS-over-BLE decoder on the C3 (electrical D-330)  
-  *agent*  
-  waits also on a machine with g++ for the header; current and state of charge wait on electrical W-330b. electrical D-267; the C3's own firmware is a small separate sketch in firmware/icu_radio/ — the BMS decoder, nothing else
-- ▶ **F-016** — Assign 0x400's key bits from FT14's key list (9 keys + encoders + thumbstick press)  
-  *agent*  
-  more than 8 bits - byte 0 alone will not hold it (can_fields 0x400/0); D-355
-- ▶ **H-007** — Design the control panel: key matrix, encoders, thumbstick placement, ribbon pinout (D-355, D-359)  
-  *agent*  
-  the ribbon pinout feeds H-002. The faceplate's look is the owner's call (taste) - a block when the drawing reaches it
-- ▶ **X-007** — Archived render of the agreed cluster — icu_sim/sim.exe, +, screenshot  
-  *agent*  
-  waits also on Camden.
-- ▶ **X-008** — Carry the archived luxury install procedure into work rows, one per step (electrical D-372)  
-  *agent*  
-  Source: 99-ARCHIVE/2026-09-11_v2-view-and-tools/02-PROJECTS/luxury-package/03-INSTALL/INSTALL.md. Same pattern as electrical E3: one camden row per step, gated in order, tools and the measurement in the note. This area's work.stage enum has no install stage - widen it (e.g. I) in _schema.csv first. Check each step against D-355 onwards; the archive predates them
-- ⏳ **B7** — Datalogging skeleton and power-loss test  
-  *agent* · waits on: T-049 open  
-  *(agent)* — needs a microSD card (LP04) in a board (T-049)
-- ⏳ **B8** — Two boards on a real bus, PMU simulator live  
-  *agent* · waits on: T-048 open  
-  *(agent)* — needs the headers soldered (T-048); the 120 Ω are electrical P070's spares; the spare Teensy is the PMU until V-065
-- ⏳ **F-007** — Odometer and stats persistence — Teensy EEPROM emulation (wear-levelled, every 0.1 mi) as the authoritative odometer copy + microSD as the log, write on key-off  
-  *agent* · waits on: T-049 open  
-  write frequency per D-162; a CUTOVER GATE for the electrical build's display (electrical D-268, D-269) — the odometer must survive a power cycle, card present or not, before MG22
-- ⏳ **F-009** — Reconcile can_map.h 0x100–0x130 against the PMU's real export  
-  *agent* · waits on: V-065 open  
-  electrical install §5.5
-- ⏳ **F-010** — Config-as-data on SD with a safe-mode path - a corrupt file must still boot  
-  *agent* · waits on: T-049 open  
-  FT11; was also B6
-- ⏳ **F-013** — Hand-sync pmu_sim/channels.h with 02-PROJECTS/00-electrical pins (O2 7.4 A, O3 8.9 A, O16 LIVE 15 A, O15 25 A …) and re-run the suite  
-  *agent* · waits on: F-012 open  
-  channels.h was rendered by the v2 build (D-311, archived with the v2 tools); no generator exists in v3, so it is edited by hand against 00-electrical pins.csv. The suite re-run needs F-012's machine (g++)
-- ⏳ **H-002** — DCU carrier layout  
-  *agent* · waits on: V-083 open; W-332 open; V-101 open; H-007 open  
-  blower PWM output, ambient input, the mirror drivers (SN17) - four channels (D-360), sized from W-332's currents
 - ⏳ **H-006** — Display bezel mould — foam plug over the binnacle plate, fibreglass skin, finish  
   *agent* · waits on: 00-electrical:C1 open  
   M-1 aperture measurements (electrical C1). FT34; the plate and the display are the electrical build's (D-268) and the plate stays as the bezel's sub-frame (electrical D-269)
+- ⏳ **X-009** — After V-063 measures the tail-light aperture, raise the tail-light choice again as a block with the measured numbers (D-384)  
+  *agent* · waits on: V-063 open  
+  Options as block 01.10 had them: build from automotive LEDs (ams OSRAM LR G6SP.02, V-064) on the LP40 driver boards, or a certified sealed lamp (Truck-Lite 60555R) if it fits the aperture. Add the new block to I15's gate when it is written.
 - ⏳ **Z-002** — Radar subsystem  
-  *agent* · waits on: V-061 open
+  *agent* · waits on: 01.11 open
 - ⏳ **Z-004** — Cold-weather behaviour — battery heater draw, winter parasitic budget  
   *agent* · waits on: 00-electrical:V-052 open  
   V-052 is the electrical build's (the Ionic heater figures, via its W-330b)
-- ⏳ **F-014** — Per-signal source arbitration — local input when its channel is configured, else the ECU's CAN frame (0x500+), else dashes (D-153); the source is named in the config file, not the code  
-  *agent* · waits on: F-010 open  
-  electrical D-262 — at the engine swap most engine signals move to the ECU's frames and the ICU's own inputs go quiet by file, not by board
-- ⏳ **F-017** — Bring DCU firmware to D-355/D-359/D-360/D-362 and electrical D-363/D-369/D-370: panel read locally (key matrix, encoders, thumbstick) and 0x400 sent by the DCU; mirror drive (3 half-bridges + shared clutch); four high-side window-command outputs with an up/down interlock (SN22); mirror heat on a high-side switch (SN16); hatch / fuel-door select by grounding K3 or K4 through the release pulse (SN23); wake output on DP-DCU 6; comfort channels 4 low-side + mirror heat (D-329)  
-  *agent* · waits on: H-002 open; F-016 open  
-  pins come from H-002's layout; the 0x400 bits from F-016
 
-*Closed:* ✔ B5 · ✖ B6 · ✔ F-001 · ✖ F-003 · ✖ F-004 · ✔ F-005 · ✔ F-006 · ✔ F-008 · ✔ F-011 · ✖ H-001 · ✔ H-003 · ✖ H-004 · ✖ H-005 · ✖ X-003 · ✖ X-004 · ✔ X-006 · ✖ Z-001 · ✔ Z-003
+*Closed:* ✖ B6 · ✖ F-003 · ✖ F-004 · ✖ H-001 · ✔ H-003 · ✖ H-004 · ✖ H-005 · ✖ X-003 · ✖ X-004 · ✔ X-006 · ✔ X-008 · ✖ Z-001
+
+### I · Install - the luxury package into the car, one step per row (from the archived INSTALL.md, X-008). Each dash-plastics event is done once, and the car drives home at the end of every session
+
+- ⏳ **I1** — Centre stack apart - the one time: the factory heater control head and its lever cables come out, and the three HVAC servos (LP19) take the cables  
+  *you* · waits on: 00-electrical:E34 open  
+  Modules join a finished car, so this waits on the electrical shakedown (D-081). The DCU and the panel's electronics are already in from electrical E26 (D-374); this project fits what they drive. Servo headers are on the DCU (dcu_channels SN15).
+- ⏳ **I12** — Door cards off, the one time, both doors: bond the mirror heat pads (LP34) to the car's own FB mirror glass, and run the door harnesses (LP48) to D1 / D2 4-7  
+  *you* · waits on: W-332 open  
+  The FB mirror heads are kept (D-359): one motor plus a clutch coil each, driven by the DCU through L3-S3 5-8, already linked at the post to L4-S2 (electrical D-360). Mirror heat is the DCU's high-side switch via DP-DCU-B 9 → L4-P 4 → F14 (electrical D-369); F14's fuse per block 00.28.
+- ⏳ **I2** — Build the O15 comfort fuse block (LP21) behind the centre stack and plug it into L3-CMF (L3-P 2, electrical D-274)  
+  *you* · waits on: I1 open  
+  The fuse per position is block 00.28's ruling. The DCU's servo rail and the mirror-heat supply come off this block into the DCU's comfort receptacle (electrical P153).
+- ⏳ **I3** — Fit the new blower motor (LP17) to L3-BLW with its final stage (LP18) in the return path, and run the DCU's PWM pigtail (SN14) to the final stage  
+  *you* · waits on: I1 open  
+  The final stage mounts in the old resistor pack's hole for airflow (D-308, electrical D-257).
+- ⏳ **I5** — Fit the release relays K3 / K4 (LP51) in the dash node's empty sockets  
+  *you* · waits on: I1 open; T-032 open  
+  T-032 first: the release triggers tested and the broken hatch latch switch dealt with (K-016). The DCU picks hatch or fuel door by grounding K3's or K4's coil during O10's release pulse (electrical D-370).
+- ⏳ **I9** — Binnacle apart - the one time: foam plug over the display plate, fibreglass skin, filler, primer, finish; the page button's place kept; refit  
+  *you* · waits on: H-006 open  
+  The display has been the car's instrument on its plain plate since the electrical build (electrical D-268). Nothing electrical changes: the ribbon and the button are as they were (D-159).
+- ⏳ **I13** — Door cards still off: window regulators and motors (LP36) to D1 / D2 1-2, K5-K8 (LP37) into the sill sockets and the F8 / F9 fuses into their holders  
+  *you* · waits on: I12 open  
+  The window keys are panel keys: the DCU drives K5-K8's coils high-side (electrical D-363); the motor power is the PMU's MOTOR_BUS on O1 (electrical D-357).
+- ⏳ **I15** — Lighting, the second pass: tail lights (the path is block 01.10), headlamp units on adapter plates (D-358), LED bulbs - then re-set every lamp channel's soft fuse from a measurement  
+  *you* · waits on: 00-electrical:E34 open; X-009 open; V-063 open; V-066 open  
+  Only after the electrical shakedown on stock bulbs (L-004). A limit set for a filament does not protect an LED (D-122).
+- ⏳ **I16** — Radar: install the subsystem Z-002 designs, on the L3-RDR / L4-RDR pass-through  
+  *you* · waits on: Z-002 open  
+  What the detector is: D-383 (a concealed speed-trap radar / laser detector); which one is block 01.11. Nothing is uncapped until the system is chosen.
+- ⏳ **I4** — Plug the comfort-return harness (LP49) into the DCU's comfort receptacle (electrical P153), and the servo leads into the DCU's servo headers  
+  *you* · waits on: I2 open; I3 open  
+  The harness is this project's; the receptacle on the DCU is the electrical build's (D-374).
+- ⏳ **I10** — Check the display through the new bezel: noon-sun and night legibility, and instant-on with a stopwatch  
+  *you* · waits on: I9 open  
+  D-192 instant-on.
+- ⏳ **I14** — Test mirrors and windows, then refit the door cards: thumbstick moves each mirror, the press toggles side, heat warms; every window up and down, and up + down on one side never both  
+  *you* · waits on: I13 open  
+  Enable the window logic in the PMU client first. Read each motor's current on the diagnostics page and compare with W-332.
+- ⏳ **I6** — In the PMU client: enable O16 (the blower feed, limit from the motor's sheet, D-126), O4 defog on the 0x400 defog key, and the hatch / fuel-door release on their 0x400 keys  
+  *you* · waits on: I4 open; I5 open  
+  The key bits are 0x400 bytes 0-1 (electrical F-016). On the Windows laptop (electrical D-376).
+- ⏳ **I11** — Carpet up, the one time: sound deadening (LP33), then the seat heating elements (LP30) and cooling fans (LP31) - feeds from the O15 block, returns to the DCU on LP49  
+  *you* · waits on: I4 open  
+  The heated nozzles and park de-icer are cancelled (D-329): L2-S 6 stays a sealing plug. Measure each seat load's current before closing up (V-101's figures are confirm).
+- ⏳ **I7** — Commission climate: servo endpoints, the blower silent at part speed, every comfort switch off through a DCU reset, defog, hatch and fuel-door keys working  
+  *you* · waits on: I6 open  
+  Silent at part speed is what the ≥ 20 kHz final stage is for (D-308). Endpoints are stored with the climate memory (SN15).
+- ⏳ **I8** — Fit the panel's faceplate and knobs (LP20) over the panel, and close the centre stack  
+  *you* · waits on: I7 open  
+  The faceplate's look is Camden's call (taste) - a block when the faceplate is drawn. Illumination from L3-S1 8, dimming with the dash (electrical DV53).
 
 ### A · Done by the agent alone, 2026-09-07
 
@@ -159,4 +123,4 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 ### C · The owner's calls
 
 *Closed:* ✖ C1
-<!-- rx7 todo sha256:188cc707321899c9494e3b8e4d03904c71c7101edb933d3a5da3c2b8f4bb018f -->
+<!-- rx7 todo sha256:687c7c6624f8f63d8a7bfb4f429fc530e2f4e3a489500d68c4591ae48cc2fc5d -->

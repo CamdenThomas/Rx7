@@ -1,0 +1,16 @@
+id,name,sender,rate_hz,timeout_ms,on_timeout,status,note
+0x100,Vehicle state,PMU,20,250,"assume key OFF, warn",intent,A CANbus Export we define (D-378); bytes 1-2 are bitfields the PMU builds with math channels
+0x110,Power,PMU,10,500,"blank the voltage field, never hold",intent,A CANbus Export we define (D-378)
+0x120,Outputs,PMU,5,1000,blank,intent,Bytes 0-1 were fuel level until D-306; reserved now. Bytes 2-4 are a bitfield built by math channels (D-378)
+0x130,Per-channel current,PMU,5,1000,blank,intent,"Multiplexed, all 24 channels in ~5 s - unproven in a CANbus Export (D-378): F-009 proves it or makes it fixed frames"
+0x200,Engine sensors,ICU,20,250,ICU-local — this is its own message,final,The frame that must not depend on anything
+0x210,Sensor health,ICU,2,,—,final,"Fuel-valid is b5 (SENS_FUEL, F-012)"
+0x218,Body / slow,ICU,2,3000,blank the fuel field; the PMU logs a received-channel fault,final,Added D-306; oil pressure stays in 0x200 so it outranks fuel on the bus — priority is per frame
+0x220,Battery - pack and cells 1-2,ICU,2,3000,blank the battery fields; the PMU logs a received-channel fault,final (D-345); in can_map.h since F-015,"Pack voltage from the BMS advertisement, cells from the type-01 frame, via the ICU's ESP32-C3 (D-267, D-330, D-345). Telemetry only (D-251)"
+0x221,Battery - cells 3-4 and spread,ICU,2,3000,blank the cell fields,final (D-345); in can_map.h since F-015,The spread is derived on the ICU (D-345)
+0x222,"Battery - current, SoC, temperature",ICU,not sent,,—,reserved - no source until W-330b (D-345),"Defined so the shape exists; never transmitted while the fields have no source - not as zero, not as 0xFF"
+0x300,Climate,DCU,5,2000,"climate display shows —; the blower is unaffected, its final stage is on a local wire",final,"Byte 1 became duty %, byte 5 outside-air temp (D-307 / D-308)"
+0x310,Comfort bus,DCU,2,2000,climate display shows —,final,
+0x320,Radar,DCU,on change,,—,final,Z-002 designs the subsystem
+0x400,Panel keys,DCU,on change + 2,1000,every key reads released,final,"Sent by the DCU on the panel's behalf - the panel has no CAN node (D-210 → D-355). Ten keys in bytes 0-1, held ≥ 1 s in bytes 2-3 (F-016). On change plus a 2 Hz heartbeat, so a receiver can time out to 'all released' if the DCU dies mid-press; the PMU acts on defog, hatch and fuel door (edges), the windows are the DCU's own outputs"
+0x180 ext,AFR (AEMnet),WBO,100,500,blank AFR on the cluster; the PMU logs a received-channel fault,confirmed from AEM's 30-0300 sheet (electrical D-266); that the fitted gauge is a 30-0300 is confirm — electrical B2,"29-bit extended ID 0x00000180 (menu ID 1; ID 2–16 = 0x181–0x18F), DLC 8, big-endian, no internal termination — the two exceptions to D-086 / D-106; valid = byte 6 bit 7 set and byte 7 bit 6 clear"

@@ -71,15 +71,15 @@ N71,Branch off L3-S2 1 (ignition switch IG),K13 terminal 86,16,BLU,Coil feed. De
 N72,K13 terminal 85,GND bus,16,BLK,
 N74,"CAN2 pair, end of the run at the dash node",120 Ω 1 % 1/4 W resistor (P070) across CAN2H / CAN2L,—,—,"The bus's second physical end; the PMU's software termination is the first (D-318, D-346). Not inside any drop's plug, so termination never depends on which module is fitted"
 N73,PMU pin 4 (O10) tap,Receptacle L4-S 4,16,RED,Road-speed pulse generator supply — lives and dies with the ICU (D-272). Cited as N70 until D-352 gave that id to K13 → the pump
-N75,Always-hot busbar,F22 inline (3 A) → receptacle DP-DCU 1,16,RED,"DCU logic, constant — capped until the DCU exists (D-350)"
-N76,Receptacle DP-DCU 6,Wake strip input 7 (DCU wake request),16,BLU,The DCU pulls it to wake the PMU on a panel press with the car asleep (D-350); capped until the DCU exists
-N77,"Receptacle L2-S 5 (the outside-air sensor, from L2-OAT 1)",Receptacle DP-DCU 2,16,GRY,"Linked at the post; capped at both ends until the DCU exists (D-256 → D-329, D-274)"
+N75,Always-hot busbar,F22 inline (3 A) → receptacle DP-DCU 1,16,RED,"DCU logic, constant — live from E26, when the DCU plugs in (D-350, D-374)"
+N76,Receptacle DP-DCU 6,Wake strip input 7 (DCU wake request),16,BLU,"The DCU pulls it to wake the PMU on a panel press with the car asleep (D-350); live from E26, when the DCU plugs in (D-374)"
+N77,"Receptacle L2-S 5 (the outside-air sensor, from L2-OAT 1)",Receptacle DP-DCU 2,16,GRY,"Linked at the post; live from E26, when the DCU plugs in (D-256 → D-329, D-274)"
 N78,PMU pin 2 (O12) tap,F21 inline (5 A) → receptacle L3-S2 12,16,RED,Kick-down switch supply — never off F3 (D-320 / W-320)
 N79,"Fuse block A, F13 out (no fuse this build)",Receptacles L3-S2 7 (→ L3-MOD 1) and L2-M 8 (both capped),16,RED,Held always-hot feed for two future consumers: the future module (D-274) and a self-parking wiper motor's park feed (D-317)
 N80,Receptacles L3-S2 3 / 4 / 5 / 6,"Receptacles L4-M 9 / 10 / 11 / 12 — one link each, in order",16,BLU,"Window commands, DCU → the sill's K5–K8 coils; linked at the post, capped until the windows (D-274, D-350)"
 N81,Receptacles L3-S3 1 / 2 / 3,"Receptacles L4-S 5 / 6 / 7 — one link each, in order",16,GRY,"Radar pass-through, linked at the post, capped (D-274)"
 N82,Receptacle L3-S3 4,Receptacle L4-S2 7,16,RED,"Kick-down solenoid command, linked at the post — live (D-320 / W-320)"
-N83,Receptacles L3-S3 5 / 6 / 7 / 8,Receptacles L4-S2 1 / 2 / 4 in order; L3-S3 8 spliced onto both L4-S2 3 and L4-S2 5,16,GRY,"The DCU's mirror lines, linked at the post, capped until S2 (D-360)"
-N84,Receptacle DP-DCU-B 9,Receptacle L4-P 4,16,RED,"Mirror heat feed from the DCU's high-side switch, linked at the post onto the 12 AWG L4-P 4 run, capped until S2 (D-369)"
+N83,Receptacles L3-S3 5 / 6 / 7 / 8,Receptacles L4-S2 1 / 2 / 4 in order; L3-S3 8 spliced onto both L4-S2 3 and L4-S2 5,16,GRY,"The DCU's mirror lines, linked at the post, capped at the sill end until the luxury package fits the mirrors (D-360); the DCU end plugs in at E26 (D-374)"
+N84,Receptacle DP-DCU-B 9,Receptacle L4-P 4,16,RED,"Mirror heat feed from the DCU's high-side switch, linked at the post onto the 12 AWG L4-P 4 run, capped at the load end until the luxury package fits the heat pads (D-369); the DCU end plugs in at E26 (D-374)"
 N85,PMU pin 4 (O10) tap,K3 and K4 terminals 30 and 86,16,ORN,"The release branch: contact feed and coil feed of both select relays, so the pulse powers them and the DCU's ground on 85 picks one (D-354, D-370). Capped until the relays are fitted - awg confirm against the solenoid current"
-N86,K3 terminal 85 · K4 terminal 85,Receptacles DP-DCU-B 10 · DP-DCU-B 11,16,BLU,"The DCU's two select lines, dash node to the DCU tail, capped until S2 (D-370)"
+N86,K3 terminal 85 · K4 terminal 85,Receptacles DP-DCU-B 10 · DP-DCU-B 11,16,BLU,"The DCU's two select lines, dash node to the DCU tail, capped at the relay end until the luxury package fits K3 / K4 (D-370); the DCU end plugs in at E26 (D-374)"

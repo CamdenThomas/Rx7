@@ -1,10 +1,15 @@
 {
-  "_comment": "One hook, and it branches on the exit code only - never on the words of any output. v2 had a Stop hook that printed its whole report whenever the text contained 'triggers:', which triggers.py printed even when nothing fired, so every turn ended with a clean report dressed as an alarm. There is no Stop hook here.",
+  "_comment": "One hook, and it branches on the exit code only - never on the words of any output. v2 had a Stop hook that printed its whole report whenever the text contained 'triggers:', which triggers.py printed even when nothing fired, so every turn ended with a clean report dressed as an alarm. There is no Stop hook here. The command is anchored to $CLAUDE_PROJECT_DIR (2026-09-22): a bare tools/hook_check.py broke whenever the shell was not at the repo root.",
   "hooks": {
     "PostToolUse": [
       {
         "matcher": "Edit|Write|MultiEdit",
-        "hooks": [{"type": "command", "command": "python tools/hook_check.py"}]
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/tools/hook_check.py\""
+          }
+        ]
       }
     ]
   }

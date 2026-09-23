@@ -7,7 +7,9 @@ record; this is a drawing of it. Read `../README.md` first: it is the fence.*
 ## Where it stands
 
 **The schematic is drawn, all five blocks, and ERC is clean at zero errors and zero
-warnings.** Power, bus, the nine analog channels plus the illumination reference, both
+warnings** (re-run on the Fedora machine 2026-09-22, after J5 got its real pads and the 5 V buck
+was drawn in full from TI's datasheet: U1 LMR36015FSCQ-Q1 with L2, C20–C26 and R41–R43, F13). The next
+step is the beginner guide, `../PCB-AND-3D-GUIDE.md`, step 1. Power, bus, the nine analog channels plus the illumination reference, both
 pulse inputs, and the display-and-local block. About 200 symbols, 95 named nets.
 
 **It has already earned its keep.** The first pass had **every BAT54S clamp wired
@@ -40,13 +42,14 @@ right.**
 
 **Two things this revision deliberately does not assert, and says so on the sheet:**
 
-- **No Teensy pinout.** The record assigns no Teensy pin numbers anywhere — `icu_channels`
-  says "ADC", "digital, input capture", "QSPI header", "I²C", "Serial2 + 2 GPIO" and
-  stops. So the Teensy is drawn as the **socket** it plugs into (`J5`), with one named
-  functional pin per net that crosses the boundary and ordinal numbers that mean nothing.
-  Putting a pinout here would put facts on the sheet that the record does not have.
-- **No module pin numbers.** The buck, the transceiver, the IMU, the radio and the BT817
-  header are functional blocks. Their pin *names* are real; their pin *numbers* are fixed
+- **The Teensy pinout — asserted since 2026-09-22.** D-377 put every channel's Teensy pin in
+  `icu_channels.teensy_pin`, so `J5` now carries the real Teensy 4.1 pad numbers (pad n = edge
+  pin n, pad 1 = GND at the USB end) and the six power pins it had been missing — VIN on `+5V`,
+  3V3 ×2 on `+3V3`, GND ×3 — along its bottom edge. Its footprint is
+  `icu-carrier.pretty/Teensy41_Socket` (`confirm - not measured`). The SPI nets are named
+  `SPI_*` now, not `QSPI_*` (D-377).
+- **No module pin numbers.** The transceiver, the IMU, the radio and the BT817 header are
+  functional blocks (the buck is not any more: it is the real 12-pin part, F13). Their pin *names* are real; their pin *numbers* are fixed
   against the actual parts at layout (`F2`).
 
 **And R11 applies with full force:** none of this has been measured. A schematic that
@@ -70,12 +73,13 @@ the file exists. There is no `.kicad_pcb` in this folder on purpose.
 
 ## Opening it
 
-KiCad 10.0.6 is installed at `C:\Program Files\KiCad\10.0`; `kicad-cli.exe` is in its
-`bin\`. Open `icu-carrier.kicad_pro` and the sheet is there — A0, five blocked-out areas.
+KiCad 10.0.6 is installed system-wide (`/usr/bin/kicad`, `/usr/bin/kicad-cli`). Open
+`icu-carrier.kicad_pro` and the sheet is there — A0, five blocked-out areas. ERC was re-run on
+this machine on 2026-09-22: 0 errors, 0 warnings.
 
 **Every symbol it uses is in `icu-carrier.kicad_sym`, beside the project**, with a
 `sym-lib-table` pointing at it. Nothing depends on which KiCad libraries happen to be
-installed, so the sheet opens identically on the laptop and on `crashs-pc`, and ERC has no
+installed, so the sheet opens identically after a reinstall or a KiCad upgrade, and ERC has no
 missing-library complaints to make.
 
 ## Checking it

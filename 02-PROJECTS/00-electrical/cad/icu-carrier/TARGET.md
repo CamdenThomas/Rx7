@@ -71,9 +71,8 @@ reads a 0–5 V transducer. Draw them as real jumpers, not as fitted links.
   The bridge → TFP410-class encoder → the 1920 × 720 panel's scaler is off-board (chain ii, D-269).
 - **IC22 page button** — momentary to ground, 10 kΩ pull-up, 100 nF debounce.
 - Teensy 4.1 on 0.1-inch female headers, 8 MB PSRAM on its pads, the IMU, the ESP32-C3 on its own `+3V3`.
-  **Drawn as the socket, `J5`, and nothing more.** The record assigns no Teensy pin numbers anywhere, so
-  every net that reaches the processor ends on a named functional pin and the numbers are ordinal
-  (`CONVENTIONS.md §2.9`). The PSRAM is not on the sheet at all: it solders to the Teensy's underside
+  **Drawn as the socket, `J5`**, with the real Teensy 4.1 pad numbers from `icu_channels.teensy_pin`
+  (D-377) and its VIN / 3V3 / GND pins (`CONVENTIONS.md §2.9`). The PSRAM is not on the sheet at all: it solders to the Teensy's underside
   pads, not to the carrier.
 
 ## 6 · Known open — do not draw a conclusion here

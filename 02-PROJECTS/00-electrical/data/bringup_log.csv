@@ -1,0 +1,6 @@
+date,board,firmware,event
+2026-08,board 1,—,"Stages B1–B5 complete: toolchain, can_map packing, loopback, ladder decode, tach capture"
+2026-08-31,PC simulator,ICU 0.4.0-dev,F-011 full 1280 × 480 render; F-008 BT817 driver; suites 415 / 35 / 33 green
+2026-09-03,—,—,three Teensy 4.1 in hand with headers (D-303); boards 2 and 3 not yet flashed (T-048)
+2026-09-07,—,—,the record moved to data + templates (D-309); can_map.h is behind the map until F-012
+2026-09-22,desk (Fedora container),ICU 0.5.1-dev · DCU 0.2.1-dev,"F-012: can_map.h brought to the map (0x218, SENS_FUEL, CANH_*, blower duty, outside_c, 0x310/3 reserved); suites 420 / 35 / 38 green · F-016: 0x400 is ten panel keys + held bits (panel_keys_t); suites 421 / 35 / 38 green · F-015 battery path (test_radio 32) · trip page dashes for unrecorded stats and diag layout fixes found by render.sh (X-007); suites 425 / 35 / 38 / 32"

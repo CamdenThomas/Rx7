@@ -1,0 +1,26 @@
+id,side,part,value,from,to,role,note
+WS00,shared,Q0 2N3904,,base via WS01 from O22,collector to both Q1 bases,"Awake (O22 on) it pulls both excitation followers' bases low, so the excitation is off and the ladders see only the PMU's own 10 kΩ pull-up - no reading shift",
+WS01,shared,R,10k,O22,Q0 base,Q0 base drive,
+WS02,shared,R,100k,Q0 base,ground,Q0 off when O22 is off (asleep),
+WS10,door,R,100k,"F3 switch supply (+12 V, constant)",Q11 base,Q1's base pull-up; Q0 pulls this low while awake,
+WS11,door,Q1 2N3904,,collector F3 +12 V,emitter to WS12,Excitation follower: on only while asleep (O22 off),"Awake its base is at 0 V and the line at ~4.1 V: the E-B junction is reverse-biased 4.1 V, under the 2N3904's 6 V VEBO"
+WS12,door,R,220k,Q11 emitter,"A6 line (pin 18, N44)","Excitation: asleep, ~11.3 V through 220k into the ladder","Line at rest (47k) 1.99 V at 12.0 V, 2.41 V at 14.4 V; with the highest-resistance pressed state (19.4k) 0.92 V at 12.0 V, 1.11 V at 14.4 V (D-368)"
+WS13,door,R,1M,"A6 line (pin 18, N44)",Q21 base,"Sense divider, top","Base at rest 0.71 V (12.0 V) - 0.86 V (14.4 V): Q2 on. Pressed 0.33-0.40 V: Q2 off, even hot (Vbe >= 0.45 V at 70 °C). Cold at 12.0 V the rest margin is thin - CK12 proves it"
+WS14,door,R,560k,Q21 base,ground,"Sense divider, bottom",
+WS15,door,Q2 2N3904,,emitter ground,collector to WS16 / WS17,"Sense: on at rest and while awake, off while a switch is pressed - its collector RISES on a press","Awake the line sits at 4.12 V, so Q2 is hard on and no pulse is ever made while the PMU is already awake"
+WS16,door,R,100k,F3 +12 V,Q21 collector,Collector pull-up,
+WS17,door,C,1 µF film (P158),Q21 collector,Q31 base,"The edge: a press makes a pulse, a held switch makes nothing more (D-375)","Pulse above threshold ≈ C × (100k + ~320k) ≈ 0.4 s with 1 µF; 2.2 µF gives ≈ 0.9 s. Sized from CK12 (iii), the PMU's boot time - confirm"
+WS18,door,R,470k,Q31 base,ground,Base pull-down: Q3 off between pulses,
+WS19,door,D 1N5819 (P071),cathode Q31 base,anode ground,Base clamp: when the switch is released the edge swings the base about 12 V negative - over the 6 V VEBO without it,A Schottky from the P071 stock; its leakage loads the base a little when hot and shortens the pulse - CK12,
+WS1A,door,Q3 2N3904,,collector F3 +12 V,emitter to wake strip input 3 (N35),Output follower: drives the strip's diode into the 10 kΩ drain at ~10 V for the length of the pulse,The v2 stage failed here: 100 kΩ into the 10 kΩ drain gave ~1.1 V on pin 7 (A10)
+WS20,A8,R,100k,"F3 switch supply (+12 V, constant)",Q12 base,Q1's base pull-up; Q0 pulls this low while awake,
+WS21,A8,Q1 2N3904,,collector F3 +12 V,emitter to WS22,Excitation follower: on only while asleep (O22 off),"Awake its base is at 0 V and the line at ~4.1 V: the E-B junction is reverse-biased 4.1 V, under the 2N3904's 6 V VEBO"
+WS22,A8,R,220k,Q12 emitter,"A8 line (pin 19, N43)","Excitation: asleep, ~11.3 V through 220k into the ladder","Line at rest (47k) 1.99 V at 12.0 V, 2.41 V at 14.4 V; with the highest-resistance pressed state (19.4k) 0.92 V at 12.0 V, 1.11 V at 14.4 V (D-368)"
+WS23,A8,R,1M,"A8 line (pin 19, N43)",Q22 base,"Sense divider, top","Base at rest 0.71 V (12.0 V) - 0.86 V (14.4 V): Q2 on. Pressed 0.33-0.40 V: Q2 off, even hot (Vbe >= 0.45 V at 70 °C). Cold at 12.0 V the rest margin is thin - CK12 proves it"
+WS24,A8,R,560k,Q22 base,ground,"Sense divider, bottom",
+WS25,A8,Q2 2N3904,,emitter ground,collector to WS26 / WS27,"Sense: on at rest and while awake, off while a switch is pressed - its collector RISES on a press","Awake the line sits at 4.12 V, so Q2 is hard on and no pulse is ever made while the PMU is already awake"
+WS26,A8,R,100k,F3 +12 V,Q22 collector,Collector pull-up,
+WS27,A8,C,1 µF film (P158),Q22 collector,Q32 base,"The edge: a press makes a pulse, a held switch makes nothing more (D-375)","Pulse above threshold ≈ C × (100k + ~320k) ≈ 0.4 s with 1 µF; 2.2 µF gives ≈ 0.9 s. Sized from CK12 (iii), the PMU's boot time - confirm"
+WS28,A8,R,470k,Q32 base,ground,Base pull-down: Q3 off between pulses,
+WS29,A8,D 1N5819 (P071),cathode Q32 base,anode ground,Base clamp: when the switch is released the edge swings the base about 12 V negative - over the 6 V VEBO without it,A Schottky from the P071 stock; its leakage loads the base a little when hot and shortens the pulse - CK12,
+WS2A,A8,Q3 2N3904,,collector F3 +12 V,emitter to wake strip input 4 (N36),Output follower: drives the strip's diode into the 10 kΩ drain at ~10 V for the length of the pulse,The v2 stage failed here: 100 kΩ into the 10 kΩ drain gave ~1.1 V on pin 7 (A10)

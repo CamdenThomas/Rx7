@@ -6,8 +6,8 @@ D-075,Modules — DCU and ICU,"Two nodes: the DCU (climate, HVAC servos, comfort
 D-306,Modules — DCU and ICU,"The ICU joins early, headless: a carrier with the analog front end, the…",2026-09-07,standing,,,,
 D-307,Modules — DCU and ICU,Blower speed is the DCU's command and the PMU's PWM: the DCU sends a…,2026-09-07,standing,,,,
 D-308,Modules — DCU and ICU,"The blower's PWM is the final stage's, not the PMU's: the DCU carrier…",2026-09-07,standing,,,,
-D-313,Modules — DCU and ICU,"The ICU is handed to the electrical build: carrier H-001, its channels…",2026-09-07,standing,,,Q-302,
-D-314,Modules — DCU and ICU,"The display goes in with the ICU, by the electrical build; this project…",2026-09-07,standing,,,,
+D-313,Modules — DCU and ICU,"The ICU is handed to the electrical build: carrier H-001, its channels…",2026-09-07,superseded,,D-374,Q-302,
+D-314,Modules — DCU and ICU,"The display goes in with the ICU, by the electrical build; this project…",2026-09-07,superseded,,D-374,,
 D-084,Modules — DCU and ICU,"Teensy 4.1 in both boxes (three bought — one spare), TI TCAN1042/1051…",,inherited,,,,D-085 D-086 D-088 D-089
 D-303,Modules — DCU and ICU,Three Teensy 4.1 are in hand with headers; availability is not a…,2026-09-03,standing,,,V-059,
 D-087,Modules — DCU and ICU,A private DCU ↔ ICU CAN-FD pair was planned; the electrical build did…,,inherited,,,,
@@ -50,3 +50,5 @@ D-358,Lighting — the second pass,The headlamps are 4x6 rectangular LED units o
 D-359,"Comfort, mirrors, windows, seats","The car's own FB mirrors are kept, and the DCU drives them from a mini thumbstick on the panel with press-to-toggle",2026-09-21,standing,D-326,,01.07,
 D-362,"Comfort, mirrors, windows, seats","The DCU plugs in like the ICU: DT13 flanged receptacles in a printed enclosure wall, the harness on DT06 plug tails",2026-09-21,standing,,,01.08,
 D-364,The record itself,The luxury record is data and is not rendered; pmu_sim/channels.h is hand-synced to electrical pins (F-013),2026-09-21,standing,D-309 D-311,,,
+D-383,"Comfort, mirrors, windows, seats","The radar is a speed-trap radar and laser detector, fully concealed: no unit on the windshield, nothing visible but the warning on the cluster",2026-09-23,standing,,,01.09,
+D-384,Lighting,The tail-light path is chosen after the aperture is measured (V-063),2026-09-23,standing,,,01.10,

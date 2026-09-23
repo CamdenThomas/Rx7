@@ -2,8 +2,8 @@ name: rx7
 
 # The pre-commit hook is the real gate, but core.hooksPath is per-clone: one clone where
 # `git config core.hooksPath .githooks` was never run and an invalid record reaches the
-# branch in silence. This is the backstop that does not depend on either machine being
-# set up correctly.
+# branch in silence. This is the backstop that does not depend on the clone being set up
+# correctly.
 #
 # Exit codes are the contract (CLAUDE.md §1): `check` returns 1 only when the record
 # contradicts itself, so this job fails on exactly that and on nothing else. It does NOT

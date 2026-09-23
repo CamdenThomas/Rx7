@@ -1,12 +1,5 @@
 id,kind,ref,feature,role,expect,note
-PV26,cavity,DP-DCU 1,FT31,"DCU logic power - CONSTANT, on its own inline fuse F22 at the dash node, not the O10 tap it was. The DCU has to be alive with the key out to see a panel press (D-355)",CAPPED,electrical D-350
-PV27,cavity,DP-DCU 3,FT31,"DCU logic power, ground, CAN2",CAPPED,
-PV28,cavity,DP-DCU 4,FT31,"DCU logic power, ground, CAN2",CAPPED,
-PV29,cavity,DP-DCU 5,FT31,"DCU logic power, ground, CAN2",CAPPED,
-PV30,cavity,DP-DCU 2,FT15,outside-air temperature from L2-S 5,CAPPED,
 PV31,cavity,L2-S 5,FT15,"outside-air thermistor at the nose, grounded at the front star — ends in the L2-OAT receptacle (electrical D-274)",CAPPED,
-PV32,cavity,DP-DCU 6,FT31,DCU wake request - the DCU pulls the PMU's wake strip when a panel key is pressed with the car asleep; the seventh diode-OR input (D-355). This was the housing's spare and it is now spent,CAPPED,electrical D-350
-PV33,housing,DP-DCU,FT31,DT-6 module drop,,
 PV38,cavity,L3-BLW 1,FT12,blower motor + (O16 via L3-P 1),CAPPED,
 PV39,cavity,L3-BLW 2,FT12,blower return — the final stage inserts here,CAPPED,
 PV40,housing,L3-BLW,FT12,DTP-2 at the HVAC case,,
@@ -76,17 +69,7 @@ PV110,cavity,L3-RDR 3,FT28,Radar pass-through C — the branch-end receptacle th
 PV111,cavity,L4-RDR 1,FT28,Radar pass-through A — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
 PV112,cavity,L4-RDR 2,FT28,Radar pass-through B — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
 PV113,cavity,L4-RDR 3,FT28,Radar pass-through C — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
-PV114,housing,DP-DCU-B,FT31,"DT06-12S command drop at the centre stack, mating the DCU's DT13-12PA (D-362): window commands 1-4, mirror lines 5-8, 9-12 sealing plugs",,electrical housings DP-DCU-B
-PV115,cavity,DP-DCU-B 1,FT24,Window DRV up command (L3-S2 3) - the DCU's window-command output into K5-K8 at the sill (drive per V-100),CAPPED,"D-362, electrical D-350"
-PV116,cavity,DP-DCU-B 2,FT24,Window DRV down command (L3-S2 4) - the DCU's window-command output into K5-K8 at the sill (drive per V-100),CAPPED,"D-362, electrical D-350"
-PV117,cavity,DP-DCU-B 3,FT24,Window PASS up command (L3-S2 5) - the DCU's window-command output into K5-K8 at the sill (drive per V-100),CAPPED,"D-362, electrical D-350"
-PV118,cavity,DP-DCU-B 4,FT24,Window PASS down command (L3-S2 6) - the DCU's window-command output into K5-K8 at the sill (drive per V-100),CAPPED,"D-362, electrical D-350"
-PV119,cavity,DP-DCU-B 5,FT23,"Mirror motor common, both mirrors (L3-S3 5) - the DCU's mirror driver (SN17)",CAPPED,"D-362, electrical D-360"
-PV120,cavity,DP-DCU-B 6,FT23,Mirror LEFT motor (L3-S3 6) - the DCU's mirror driver (SN17),CAPPED,"D-362, electrical D-360"
-PV121,cavity,DP-DCU-B 7,FT23,Mirror RIGHT motor (L3-S3 7) - the DCU's mirror driver (SN17),CAPPED,"D-362, electrical D-360"
-PV122,cavity,DP-DCU-B 8,FT23,"Mirror clutch coils, both mirrors (L3-S3 8) - the DCU's mirror driver (SN17)",CAPPED,"D-362, electrical D-360"
 PV123,cavity,L3-S3 5,FT23,"Mirror motor common, both mirrors - linked at the post to L4-S2 1; the dash leg ends in DP-DCU-B 5 at the DCU",CAPPED,"D-359, electrical D-360"
 PV124,cavity,L3-S3 6,FT23,Mirror LEFT motor - linked at the post to L4-S2 2; the dash leg ends in DP-DCU-B 6 at the DCU,CAPPED,"D-359, electrical D-360"
 PV125,cavity,L3-S3 7,FT23,Mirror RIGHT motor - linked at the post to L4-S2 4; the dash leg ends in DP-DCU-B 7 at the DCU,CAPPED,"D-359, electrical D-360"
 PV126,cavity,L3-S3 8,FT23,"Mirror clutch coils, both mirrors - spliced at the post to L4-S2 3 and L4-S2 5; the dash leg ends in DP-DCU-B 8 at the DCU",CAPPED,"D-359, electrical D-360"
-PV127,fuse,F22,FT31,"DCU logic constant feed, 3 A sealed inline at the dash node, busbar-fed - DP-DCU 1 (D-355)",LIVE,electrical D-350
