@@ -1,0 +1,30 @@
+title: "L1 ENGINE · start circuit · D2 + ELK, no custom code" {near: top-left; shape: text; style.font-size: 22; style.bold: true}
+direction: right
+classes: {
+  red: {style: {stroke: "#d32f2f"; stroke-width: 5}}
+  gry: {style: {stroke: "#8d949e"; stroke-width: 5}}
+  sh: {style: {stroke: "#6b7280"; stroke-width: 5; stroke-dash: 3}}
+  blk: {style: {stroke: "#111111"; stroke-width: 5}}
+}
+L1S1: "L1-S1 · DT06-12S" {shape: sql_table; c1: "Start relay K9 coil"; c2: "Alternator excitation"; c3: "Water temp"; c4: "Oil pressure"; c6: "Tach (shielded)"; c11: "Inhibitor P/N"}
+F17: "F17 · 30 A MIDI" {shape: sql_table; out: ""}
+K9: "K9 start relay" {shape: sql_table; t86: "86"; t30: "30"; t85: "85"; t87: "87"}
+R1: "8.2 kΩ"
+A08: "A-08 Alternator" {shape: sql_table; BW: ""}
+C02: "C-02 Water temp" {shape: sql_table; spade: ""}
+C09: "C-09 Oil pressure" {shape: sql_table; spade: ""}
+B18: "B-18 Coil T" {shape: sql_table; neg: ""}
+A06: "A-06 Inhibitor" {shape: sql_table; BY: ""; BW: ""}
+A01: "A-01 Starter" {shape: sql_table; S: ""}
+GND: "Block ground"
+L1S1.c1 -> K9.t86: "16 RED" {class: red}
+L1S1.c2 -> A08.BW: "16 RED" {class: red}
+L1S1.c3 -> C02.spade: "16 GRY" {class: gry}
+L1S1.c4 -> C09.spade: "16 GRY" {class: gry}
+L1S1.c6 -> B18.neg: "16 sh" {class: sh}
+L1S1.c11 -> R1: "16 GRY" {class: gry}
+R1 -> A06.BY: "16 GRY" {class: gry}
+F17.out -> K9.t30: "10 RED" {class: red}
+K9.t87 -> A01.S: "10 RED" {class: red}
+K9.t85 -> GND: "16 BLK" {class: blk}
+A06.BW -> GND: "16 BLK" {class: blk}

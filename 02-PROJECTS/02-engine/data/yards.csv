@@ -1,0 +1,10 @@
+id,name,city,miles,address,phone,url,inventory,engine_usd,core_usd,note
+YD01,LKQ Pick Your Part Denver 52nd Ave,Denver,60,"1355 W 52nd Ave, Denver CO 80221",(800) 962-2277,https://www.pyp.com/inventory/denver-nd-ave-1231/,"online: VIN, row and space, date set - updated daily",260,75,Engine without accessories. ECM $76 + $5 core; engine harness $55.50 + $5; $3 entry. Hours load by script - check pyp.com or call
+YD02,LKQ Pick Your Part Aurora,Aurora,65,"11602 E 33rd Ave, Aurora CO 80010",(800) 962-2277,https://www.pyp.com/inventory/aurora-1230/,"online: VIN, row and space, date set - updated daily",260,75,Same prices as Denver 52nd
+YD03,U-Pull-&-Pay Denver,Denver,57,"390 W 66th Way, Denver CO 80221",303-650-0490,https://www.upullandpay.com/inventory,"online: VIN, row, date",275.99,57,Engine with accessories. Block with heads $180.99 + $47
+YD04,U-Pull-&-Pay Aurora,Aurora,65,"1370 Zeno St, Aurora CO 80011",303-364-4221,https://www.upullandpay.com/inventory,"online: VIN, row, date",275.99,57,
+YD05,Littleton U-Pull,Littleton,85,"US-85 (Santa Fe Dr) at Aspen Leaf Dr, 6 mi south of C-470",303-791-1380,https://www.littletonupull.com/,"online: year, model and row only - no VIN, no date",275,75,"Mon-Sat 8:30-5:30, Sun 8:30-4; $2 entry. Call for the 8th VIN digit"
+YD06,U-Pull-&-Pay Colorado Springs,Colorado Springs,130,3745 S Hwy 85-87,719-392-5900,https://www.upullandpay.com/inventory,"online: VIN, row, date",275.99,57,Nothing aluminum there on 2026-09-23
+YD07,Andersen's Sales & Salvage,Greeley,30,"1490 E 8th St, Greeley",,https://www.yelp.com/biz/andersens-sales-and-salvage-greeley,none online,,,"A U-pull yard of about 1,500 cars; prices not published - call"
+YD08,Fort Collins Automotive Salvage,Fort Collins,0,"226 12th St, Fort Collins",(970) 484-1000,https://fortcollinsautosalvage.com/,none online,,,Mon-Fri 9-5; its own site reads as full-service
+YD09,Cheyenne Auto & Metal,Cheyenne WY,45,"3001 S Greeley Hwy, Cheyenne WY",(307) 634-5859,,none online,,,Tue-Sat 8-4:30

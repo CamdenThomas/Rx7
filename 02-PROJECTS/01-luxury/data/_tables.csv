@@ -7,3 +7,4 @@ provisions,
 retired,terms that must no longer appear anywhere
 stages,
 work,the work list; owner says who does it
+picks,"part suggestions: one row per product the agent proposes for a parts row, with why, drawbacks and Camden's verdict in his own words; rendered to PICKS.md by rx7.py picks (D-388)"

@@ -65,12 +65,23 @@ anywhere in the tree or the archive; a project's next block from the highest num
 project has used, on the page or in any decision's `closes`. A stored counter
 can disagree with reality. Never type an id — `rx7.py new` and `rx7.py block` issue them.
 
-**There are exactly two kinds of generated document: `DECISIONS.md`, and each project's `TODO.md` (D-373).** Nothing else. No templates,
-no rendered design or shopping or install documents, no HTML, no diagrams. The v2 view
+**There are exactly three kinds of generated document: `DECISIONS.md`, each project's TODO (D-373, D-386), and the two harness-leg drawings in `02-PROJECTS/00-electrical/00-design/diagrams/` (D-385).** Nothing else. No templates,
+no rendered design or shopping or install documents, no HTML, no other diagrams. The v2 view
 layer is in `99-ARCHIVE/2026-09-11_v2-view-and-tools/`, and that archive is the only
-place the old tree survives (§9). The visual layer is a separate, later concern; until it exists,
-do not build one, and do not write a document "so it can be read." The record is the
+place the old tree survives (§9). Beyond the leg drawings, the visual layer is a later concern;
+do not grow it, and do not write a document "so it can be read." The record is the
 deliverable.
+
+**The leg drawings** (D-385) are the same kind of exception, under the same four rules: for
+each leg, `A-pin-ladder.svg` and `B-route-map.svg` are a pure projection of `housings`,
+`cavities`, `devices` and `routes`, read-only, rebuilt whole by `rx7.py diagrams`, and never
+looked at by `check`. The command refuses to write any sheet where a label touches a label
+or sits on a wire (rc 2). Fix that in the layout code, never by loosening the check.
+`00-design/diagrams/README.md` holds the method and the options kept in reserve.
+
+**`<project>/PICKS.md` is not generated** (D-390). It is Camden's second page to write in,
+laid out like `BLOCKS.md`: one entry per product the agent suggests, each ending in an
+`**ANSWER:**` line (§2, §6.9).
 
 `DECISIONS.md` is the exception because it is Camden's record of every call made without
 him, and it has to stay readable and searchable. It is safe to generate where v2's
@@ -97,6 +108,26 @@ every row in working order (stages in the order their work can start, each row a
 it waits on), with its note. It has **no boxes to tick** (R3): he says what he did, the row
 is set through the record, and the file is regenerated. Run `rx7.py todo` at the end of
 **every** run that changed a `work` row.
+
+**A project with `00-design/` and `01-build/` gets two TODOs instead** (D-386; today
+`00-electrical`). Each `work` row's `track` says which list it belongs to:
+
+- **`00-design/TODO.md`** has three parts: Camden's checklist, in working order (☐ can do it
+  now · ⏳ waiting on what is named); every agent row, ready or blocked and by what; and the
+  open blocks. Its last two rows are the design review (§6.5) and Camden's freeze ruling.
+- **`01-build/TODO.md`** is everything physical and everything bought. **Every build row
+  gates on `phase:SOURCING`**, which only the freeze moves, so nothing in build starts before
+  the design is verified.
+
+A new row goes on the track where its work happens: desk, measurement, bench proof or the
+agent's work is design; the cart, the car, and the modules' fabrication are build.
+
+**The car comes apart once** (D-387). `_project` names the row that strips the interior
+(`car_apart`, S1) and the one that puts it back (`car_back`, E35). Each list is split at those
+rows: design Part 1 is everything with the car whole, and S1 waits on all of it; Part 2 is S1,
+the measurements that need the car apart, the review and the freeze. Build Part 3 is the car
+apart, and Part 4 starts at E35. A row's part is derived from its gate, never typed: a row
+that needs the car apart gates on S1.
 
 **Exit codes are the only signal anything may branch on.**
 
@@ -127,7 +158,9 @@ rx7.py new AREA "title" [col=val ...]    reserve the next D- and stub its body
 rx7.py block "ask" -p AREA               append a block to BLOCKS.md
 rx7.py blocks [--answered|--solved]      list blocks
 rx7.py decisions                         regenerate DECISIONS.md (grouped by category)
-rx7.py todo [-p AREA]                    regenerate each project's TODO.md from its work table
+rx7.py todo [-p AREA]                    regenerate each project's TODO (design + build where split)
+rx7.py diagrams                          regenerate each harness leg's pin ladder (A) and route map (B)
+rx7.py picks [-p AREA] [--ask|--answered|--clear]  parts picks: status; append; his answers; tidy
 rx7.py cites                             advisory: prose cites that no longer resolve
 rx7.py selftest                          the gate resolver's own tests (in memory)
 rx7.py log AREA KIND "what" [refs]       one log row (KIND = the area's log.workflow enum)
@@ -177,9 +210,11 @@ says what happened · takes measurements · `git commit`.
 sourcing, or deciding within §3's small list. If a step needs a call only he can make,
 write a block and carry on with the rest of the run.
 
-`BLOCKS.md` is the only file Camden ever writes in. Nothing regenerates it: you append
-new blocks and delete solved ones once their decision stands (§4), and that is all that
-ever touches it. No tool rewrites it, and no output of yours ever invites him to type anywhere else.
+`BLOCKS.md` and each project's `PICKS.md` (D-390) are the only files Camden ever writes in.
+`BLOCKS.md` is for questions; `PICKS.md` is for his verdicts on the parts the agent suggests.
+Nothing regenerates either one. You append to them, and you delete an entry only once what he
+wrote is saved in the record (§4, §6.9). That is all that ever touches them. No tool rewrites
+them, and no output of yours ever invites him to type anywhere else.
 
 ---
 
@@ -237,9 +272,11 @@ These exist so a small doubt never becomes a conversation.
 | A superseded decision must be cited           | Cite it with its closer: `D-247 → D-278`.                                                                                                                 |
 | An old cite no longer resolves                | `rx7.py cites` lists these. Advisory. Fix them when you are already in the file; never let one stop a run.                                                |
 | The record and your memory disagree           | The record wins. Always.                                                                                                                                  |
-| You are about to write a document             | Don't. `DECISIONS.md` and each project's `TODO.md` are the only ones, and `rx7.py decisions` / `rx7.py todo` write them. See §1.                          |
+| You are about to write a document             | Don't. `DECISIONS.md`, each project's TODO and the leg drawings are the only ones, and `rx7.py decisions` / `todo` / `diagrams` write them. See §1. |
 | You wrote a decision this run                 | Run `rx7.py decisions` before you report.                                                                                                                 |
 | You changed a `work` row this run             | Run `rx7.py todo` before you report.                                                                                                                      |
+| You added a proposed pick | Run `rx7.py picks --ask` before you report, which appends it to `PICKS.md`. |
+| You changed `housings`, `cavities`, `devices` or `routes` | Run `rx7.py diagrams` before you report.                                                                                                      |
 
 ---
 
@@ -307,8 +344,8 @@ then ask only the part that actually needs him.
 
 **R1** `get` a row before changing it.
 **R2** One home per fact. If it can be computed, compute it.
-**R3** Nothing you generate may contain a place to type. `BLOCKS.md` is the one entry
-point for his writing, and no parser of his writing may be picky. Losing his writing is
+**R3** Nothing you generate may contain a place to type. `BLOCKS.md` and each `PICKS.md`
+are the only entry points for his writing, and no parser of his writing may be picky. Losing his writing is
 the worst failure this system has; a wrong ruling is recoverable, a lost session is not.
 **R4** A decision, once written, is never edited. It is superseded by a new one that
 names it.
@@ -338,7 +375,7 @@ order. If READY is empty, that is the report.
 ## 6 · Playbooks
 
 Each of these is one run. Every run ends the same way: `check` clean, `rx7.py decisions`
-if a decision was written, `rx7.py todo` if a work row changed, a `log` row, and — only if blocks have stopped everything —
+if a decision was written, `rx7.py todo` if a work row changed, `rx7.py diagrams` if a harness table changed, a `log` row, and — only if blocks have stopped everything —
 the report in §8.
 
 ### 6.1 · Plan (phase PROPOSED or PLANNING)
@@ -434,6 +471,37 @@ opening blocks (every call only he can make, easiest first) and the first work l
 
 ---
 
+### 6.9 · A parts round (D-388, D-390)
+
+Choosing a product is money, so it is always his ruling. A round is how the ruling is asked
+for.
+
+1. Pick the parts to search: rows whose spec is settled (nothing in their gate is open), plus
+   any part whose last pick was vetoed. Read every veto for that part first. His reason
+   rules out a class of product, not just the one item.
+2. For each part, find one **primary** and one **runner-up**. Each gets real listings with
+   prices, the numbers that meet the parts row's spec, why, honest drawbacks, a confidence,
+   and what must still be confirmed (R11: a fit nobody has measured is `confirm`). Add them to
+   `picks`, with the primary `proposed` and the runner-up `reserve`.
+3. Run **`rx7.py picks --ask`**. It **appends** one entry per proposed pick to the project's
+   `PICKS.md`, built from its row: what the part has to be, what meets it, why, drawbacks,
+   what to confirm, where to buy it, the runner-up if he says no, and the recommendation.
+   Every entry ends in `**ANSWER:**`. Never write an entry by hand, and never rewrite the
+   page. He answers any, some or all, whenever he likes, then tells you.
+4. When he says he answered, run `rx7.py picks --answered` and read every answer before
+   touching anything. Classify each the way §6.2 does:
+   - A **yes** makes the pick `accepted`. The yeses in one pass become one decision naming
+     each product, and each parts row is updated (`spec` names the product, the prices,
+     `status` `chosen`).
+   - A **no** makes it `vetoed`. The runner-up is proposed next unless his reason rules it
+     out too; otherwise the search starts again.
+   - A **question or an unclear answer** leaves it `proposed`. Answer the question in the
+     next suggestion for that part, or sharpen the entry.
+
+   His words go in `picks.said`, verbatim, every time. Then `rx7.py picks --clear` removes
+   exactly the entries whose verdict and words are saved. Unanswered entries stay where
+   they are.
+
 ## 7 · Credit rules
 
 One row, one call: `get` / `sql` / `find` to learn a fact, never a whole file. Never
@@ -476,9 +544,9 @@ The tools on this machine, and nothing else:
 - `python` / `python3` (3.14) runs `tools/rx7.py`; the pre-commit hook is enabled
   (`git config core.hooksPath .githooks`, set once per clone).
 - KiCad 10.0.6 system-wide: `kicad`, `kicad-cli` in `/usr/bin`.
-- Firmware: `firmware/tests/run.sh` and `firmware/icu_sim/build.sh` need
+- Firmware (`02-PROJECTS/00-electrical/00-design/firmware/`): `tests/run.sh` and `icu_sim/build.sh` need
   `sudo dnf install gcc-c++ SDL2-devel` once; flashing a Teensy needs PJRC's udev rule
-  (`firmware/README.md` §4). The car's diagnostic port `DP-DIAG` takes Camden's Windows laptop,
+  (its `README.md` §4). The car's diagnostic port `DP-DIAG` takes Camden's Windows laptop,
   which runs ECUMaster's PMU client and nothing else for this project (D-376). It holds no
   clone, and it is not a second home for the tree.
 
@@ -490,10 +558,12 @@ The only rows that vanished were `L2-NZL` and its two cavities, which is D-329 d
 job. If you need to know how something used to read, the archive is where it lives now —
 there is no second directory to open, and any instruction that says otherwise is stale.
 
-**The visual layer is still a later concern.** `DECISIONS.md` remains the one generated
-file. Do not build a view, a template or a rendered document, and do not write a document
-"so it can be read" (§1). The one exception is
-`02-PROJECTS/00-electrical/cad/`: the KiCad projects for the ICU and DCU carriers —
+**The visual layer is still a later concern, apart from the leg drawings.** The generated
+files are `DECISIONS.md`, each project's TODO and the harness-leg drawings in
+`02-PROJECTS/00-electrical/00-design/diagrams/` (D-385, §1). Do not build any other view, template
+or rendered document, and do not write a document "so it can be read" (§1). The one
+hand-drawn exception is
+`02-PROJECTS/00-electrical/00-design/cad/`: the KiCad projects for the ICU and DCU carriers —
 schematic, board layout and 3D model, with `PCB-AND-3D-GUIDE.md` as the method — ruled in
 by Camden on 2026-09-12 (the schematic) and widened on 2026-09-21 (layout, both boards,
 D-361). It is not an area — no `data/`, so `rx7.py` cannot see

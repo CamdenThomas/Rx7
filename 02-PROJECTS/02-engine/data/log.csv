@@ -2,3 +2,8 @@ id,date,workflow,ids,summary
 L-0001,2026-09-10,session,,text lost: rx7.py log wrote only id and date until 2026-09-21 (fixed that day) - see git log for this date
 L-0002,2026-09-21,repair,HO03 HO11 HO12 HO13 V-040,Audit fixes: range_* rows removed from _project; handover purpose filled; HO03/HO11/HO12/HO13 dangling or present-tense refs corrected; V-040 note says the pump is not chosen
 L-0003,2026-09-23,session,V-040 HO12,V-040 done: pump draw at 58 psi for the candidates; HO12 updated
+L-0004,2026-09-23,answers,H-001 D-391,H-001 added from luxury D-391: size the swap's alternator for the luxury loads (Camden's note)
+L-0005,2026-09-23,session,D-393 OP01 OP50 YD01 YD09 SG01 SG16 J1 J2 J3 J4 J5,"D-393: aluminum 5.3 target (L33 > LM4 > LH6/LC9 with AFM delete, LM7 fallback); options, yards, sightings tables; 16 options, 9 yards near Fort Collins, 15 confirmed aluminum donors in Denver/Aurora on 2026-09-23 plus one possible L33 at Littleton; J1-J5"
+L-0006,2026-09-23,session,D-394 02.02 LD01 LD26 LW01 LW39 K1 K2 K3 K4,"D-394: the new engine leg designed backwards from the LS - ls_devices (26), ls_wires (39); power fits L1-P as it is, signals need 54-68 against 24 cavities (block 02.02); K1-K4"
+L-0007,2026-09-23,session,D-395 DS01 TU07,D-395: nine stages (-01 design .. 07 fine-tune); 63 plan rows DS01-DS11 BR01-BR06 BD01-BD08 PO01-PO04 PA01-PA03 RB01-RB08 CP01-CP10 IN01-IN06 TU01-TU07; existing rows re-staged
+L-0008,2026-09-23,answers,D-396 D-395,D-396: stages renumbered 00-08 on his word (supersedes D-395's numbering)

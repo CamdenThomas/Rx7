@@ -56,3 +56,23 @@ work,owner,enum(agent|camden),no,,
 work,state,enum(blocked|done|dropped|open),no,,
 work,gate,str,no,,"references only - D-###, a block id like 00.18, a work id in this area, <area>:<work id>, or phase:<PHASE>; all must be met before the row can start, an empty cell is met, and prose belongs in note (2026-09-12)"
 work,note,text,no,,
+picks,id,key,yes,,
+picks,part,str,yes,parts.id,the parts row this product would fill
+picks,round,int,yes,,the parts round that proposed it - one block per round
+picks,rank,enum(primary|runner-up),yes,,"primary is what he rules on; the runner-up is held and becomes the next proposal if the primary is vetoed, unless his reason rules it out too"
+picks,product,str,yes,,
+picks,maker_pn,str,no,,maker and part number as printed by the maker
+picks,vendor,str,no,,
+picks,url,str,no,,
+picks,usd,num,no,,"price seen when proposed, each - a listing price moves; the cart re-checks it"
+picks,qty,int,no,,
+picks,meets,text,no,,the numbers from the listing or datasheet that meet the parts row's spec
+picks,why,text,no,,
+picks,drawbacks,text,no,,
+picks,confidence,enum(high|medium|low),no,,
+picks,confirm,text,no,,what still needs confirming before money is spent (R11)
+picks,recommend,text,no,,"the Recommend line of its block when the plain one (accept unless the drawbacks outweigh it) is not the honest advice (D-389)"
+picks,verdict,enum(proposed|reserve|accepted|vetoed|withdrawn|unused),yes,,"proposed = an entry on PICKS.md waiting for his answer; reserve = a runner-up held; accepted / vetoed = his verdict, his words in said; withdrawn = the agent took it back (a fact broke it); unused = a runner-up no longer needed, because its part was chosen or his reason ruled it out (D-391)"
+picks,said,text,no,,"his words on this pick, verbatim - a veto's reason steers the next search"
+picks,decided,date,no,,
+picks,decision,id,no,,the decision that ruled it

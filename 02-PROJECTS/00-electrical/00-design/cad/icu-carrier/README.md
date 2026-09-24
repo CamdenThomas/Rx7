@@ -1,7 +1,7 @@
 # ICU carrier — the KiCad project
 
 *Rev 2026-09-12 (rev 0.02 of the sheet) · owns: what this KiCad project is for, what it may
-claim, and how to start. The board's design is `../../data/icu_channels.csv` — that is the
+claim, and how to start. The board's design is `../../../data/icu_channels.csv` — that is the
 record; this is a drawing of it. Read `../README.md` first: it is the fence.*
 
 ## Where it stands

@@ -1,0 +1,239 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1310" height="1392" viewBox="0 0 1310 1392" font-family="Noto Sans, sans-serif">
+<title>L1 Engine - pin ladder</title>
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="30.0" y="40.0" font-size="20" text-anchor="start" font-weight="700" fill="#1f2328">L1 ENGINE · A · PIN LADDER</text>
+<text x="30.0" y="64.0" font-size="12" text-anchor="start" font-weight="400" fill="#57606a">One block per housing, one row per cavity. Every wire runs straight from its cavity to where it lands. Read left to right.</text>
+<rect x="30.0" y="110.0" width="360.0" height="190.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="132.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L1-P  ·  DTP06-4S  ·  Dash post</text>
+<line x1="30" y1="144.0" x2="390" y2="144.0" stroke="#d0d7de"/>
+<circle cx="50" cy="161.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="165.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="165.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Ignition feed — coils and igniters</text>
+<text x="380.0" y="165.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O12</text>
+<path d="M390.0,161.0 L720.0,161.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,161.0 L720.0,161.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="151.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-P-1  ·  12 AWG RED  ·  RT02</text>
+<rect x="720.0" y="147.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="165.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Splice at the coil bracket → BW of coil T, coil L, igniter T, igniter L</text>
+<line x1="30" y1="178.0" x2="390" y2="178.0" stroke="#d0d7de"/>
+<circle cx="50" cy="200.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="204.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="204.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">LS swap reserve — ECU + injectors</text>
+<text x="380.0" y="204.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O13</text>
+<text x="406.0" y="204.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="196.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">O13 pinned to the receptacle at the post (12 AWG from pin); the L1 plug carries a size-12 sealing plug</text>
+<text x="730.0" y="212.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">— the swap's rebuilt leg pins it (D-271)</text>
+<line x1="30" y1="222.0" x2="390" y2="222.0" stroke="#d0d7de"/>
+<circle cx="50" cy="244.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="248.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="248.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">LS swap reserve — cooling fan</text>
+<text x="380.0" y="248.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O14</text>
+<text x="406.0" y="248.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="240.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">O14 pinned to the receptacle at the post (12 AWG from pin); size-12 sealing plug in the L1 plug</text>
+<text x="730.0" y="256.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">(D-271)</text>
+<line x1="30" y1="266.0" x2="390" y2="266.0" stroke="#d0d7de"/>
+<circle cx="50" cy="283.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="287.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="287.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="287.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="287.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 12</text>
+<rect x="30.0" y="336.0" width="360.0" height="462.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="358.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L1-S1  ·  DT06-12S  ·  Dash post</text>
+<line x1="30" y1="370.0" x2="390" y2="370.0" stroke="#d0d7de"/>
+<circle cx="50" cy="387.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="391.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="391.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Start relay K9 coil</text>
+<text x="380.0" y="391.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O21</text>
+<path d="M390.0,387.0 L720.0,387.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,387.0 L720.0,387.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="377.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S1-1  ·  16 AWG RED  ·  RT05</text>
+<rect x="720.0" y="373.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="391.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">K9 terminal 86 (inner fender)</text>
+<line x1="30" y1="404.0" x2="390" y2="404.0" stroke="#d0d7de"/>
+<circle cx="50" cy="421.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="425.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="425.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Alternator excitation (field feed)</text>
+<text x="380.0" y="425.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F15</text>
+<path d="M390.0,421.0 L720.0,421.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,421.0 L720.0,421.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="411.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S1-2  ·  16 AWG RED  ·  RT03</text>
+<rect x="720.0" y="407.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="425.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Alternator plug A-08, terminal BW</text>
+<line x1="30" y1="438.0" x2="390" y2="438.0" stroke="#d0d7de"/>
+<circle cx="50" cy="455.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="459.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="459.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Water temperature sender</text>
+<path d="M390.0,455.0 L720.0,455.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,455.0 L720.0,455.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="445.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S1-3  ·  16 AWG GRY  ·  RT04</text>
+<rect x="720.0" y="441.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="459.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Sender C-02, spade — factory wire YW</text>
+<line x1="30" y1="472.0" x2="390" y2="472.0" stroke="#d0d7de"/>
+<circle cx="50" cy="489.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="493.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="493.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Oil pressure sender</text>
+<path d="M390.0,489.0 L720.0,489.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,489.0 L720.0,489.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="479.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S1-4  ·  16 AWG GRY  ·  RT04</text>
+<rect x="720.0" y="475.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="493.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Sender C-09, spade — factory wire BrY</text>
+<line x1="30" y1="506.0" x2="390" y2="506.0" stroke="#d0d7de"/>
+<circle cx="50" cy="523.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="527.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="527.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="527.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="527.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16</text>
+<line x1="30" y1="540.0" x2="390" y2="540.0" stroke="#d0d7de"/>
+<circle cx="50" cy="557.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="561.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="561.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Tachometer pulse — SHIELDED</text>
+<path d="M390.0,557.0 L720.0,557.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,557.0 L720.0,557.0" fill="none" stroke="#6b7280" stroke-width="5" stroke-linejoin="round"/>
+<path d="M390.0,557.0 L720.0,557.0" fill="none" stroke="#e5e7eb" stroke-width="2" stroke-dasharray="3 3"/>
+<text x="406.0" y="547.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S1-6  ·  16 AWG shielded  ·  RT02</text>
+<rect x="720.0" y="543.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="561.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Coil T (B-18) negative terminal — factory wire YG. Shield grounded at the dash node end only</text>
+<line x1="30" y1="574.0" x2="390" y2="574.0" stroke="#d0d7de"/>
+<circle cx="50" cy="591.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="595.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="595.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="595.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="595.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16</text>
+<line x1="30" y1="608.0" x2="390" y2="608.0" stroke="#d0d7de"/>
+<circle cx="50" cy="625.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="629.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="629.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="629.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="629.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16</text>
+<line x1="30" y1="642.0" x2="390" y2="642.0" stroke="#d0d7de"/>
+<circle cx="50" cy="664.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="668.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
+<text x="70.0" y="668.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="668.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="660.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 — the CAN2 engine-bay drop is released; a future ECU is a dash node (D-318,</text>
+<text x="730.0" y="676.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">swap D-325)</text>
+<line x1="30" y1="686.0" x2="390" y2="686.0" stroke="#d0d7de"/>
+<circle cx="50" cy="708.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="712.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">10</text>
+<text x="70.0" y="712.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="712.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="704.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 — the CAN2 engine-bay drop is released; a future ECU is a dash node (D-318,</text>
+<text x="730.0" y="720.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">swap D-325)</text>
+<line x1="30" y1="730.0" x2="390" y2="730.0" stroke="#d0d7de"/>
+<circle cx="50" cy="747.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="751.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">11</text>
+<text x="70.0" y="751.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Inhibitor switch — P/N contact (crank interlock)</text>
+<text x="380.0" y="751.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A4</text>
+<path d="M390.0,747.0 L720.0,747.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,747.0 L720.0,747.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="737.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S1-11  ·  16 AWG GRY  ·  RT05</text>
+<rect x="650.0" y="740.0" width="44.0" height="14.0" rx="3" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="672.0" y="765.0" font-size="10" text-anchor="middle" font-weight="700" fill="#1f2328">8.2 kΩ</text>
+<rect x="720.0" y="733.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="751.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Inhibitor A-06: 8.2 kΩ in the lead to terminal BY; terminal BW → block ground</text>
+<line x1="30" y1="764.0" x2="390" y2="764.0" stroke="#d0d7de"/>
+<circle cx="50" cy="781.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="785.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">12</text>
+<text x="70.0" y="785.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="785.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="785.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16</text>
+<rect x="30.0" y="834.0" width="360.0" height="462.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="856.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L1-S2  ·  DT06-12S  ·  Dash post</text>
+<line x1="30" y1="868.0" x2="390" y2="868.0" stroke="#d0d7de"/>
+<circle cx="50" cy="885.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="889.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="889.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Brake fluid level switch</text>
+<path d="M390.0,885.0 L720.0,885.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,885.0 L720.0,885.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="875.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S2-1  ·  16 AWG GRY</text>
+<rect x="720.0" y="871.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="889.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Reservoir switch C-05: terminal BR; terminal B → block ground</text>
+<line x1="30" y1="902.0" x2="390" y2="902.0" stroke="#d0d7de"/>
+<circle cx="50" cy="919.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="923.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="923.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="923.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="923.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16</text>
+<line x1="30" y1="936.0" x2="390" y2="936.0" stroke="#d0d7de"/>
+<circle cx="50" cy="953.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="957.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="957.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="957.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="957.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16</text>
+<line x1="30" y1="970.0" x2="390" y2="970.0" stroke="#d0d7de"/>
+<circle cx="50" cy="987.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="991.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="991.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="991.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="991.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 — pinned at the swap, when a sensor has a destination (D-271)</text>
+<line x1="30" y1="1004.0" x2="390" y2="1004.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1021.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1025.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="1025.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="1025.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="1025.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 — pinned at the swap, when a sensor has a destination (D-271)</text>
+<line x1="30" y1="1038.0" x2="390" y2="1038.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1055.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1059.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="1059.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="1059.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="1059.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 — pinned at the swap, when a sensor has a destination (D-271)</text>
+<line x1="30" y1="1072.0" x2="390" y2="1072.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1089.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1093.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="1093.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Inhibitor switch — R contact (reverse lamps)</text>
+<text x="380.0" y="1093.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A5</text>
+<path d="M390.0,1089.0 L720.0,1089.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1089.0 L720.0,1089.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1079.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S2-7  ·  16 AWG GRY  ·  RT05</text>
+<rect x="650.0" y="1082.0" width="44.0" height="14.0" rx="3" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="672.0" y="1107.0" font-size="10" text-anchor="middle" font-weight="700" fill="#1f2328">8.2 kΩ</text>
+<rect x="720.0" y="1075.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1093.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Inhibitor A-06: 8.2 kΩ in the lead to terminal GY; terminal RW → block ground</text>
+<line x1="30" y1="1106.0" x2="390" y2="1106.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1123.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1127.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="1127.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Alternator charge-lamp sense</text>
+<path d="M390.0,1123.0 L720.0,1123.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1123.0 L720.0,1123.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1113.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S2-8  ·  16 AWG GRY  ·  RT03</text>
+<rect x="720.0" y="1109.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1127.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Alternator plug A-08, terminal WB</text>
+<line x1="30" y1="1140.0" x2="390" y2="1140.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1162.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1166.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
+<text x="70.0" y="1166.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Phase-2 sensor supply — +12 V switched</text>
+<text x="406.0" y="1166.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="1158.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">The spare block-B fuse position is wired to the receptacle cavity (N68), no fuse fitted; sealing plug in</text>
+<text x="730.0" y="1174.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">the L1 plug (D-271)</text>
+<line x1="30" y1="1184.0" x2="390" y2="1184.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1201.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1205.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">10</text>
+<text x="70.0" y="1205.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="1205.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="1205.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 — no oil-temp sender on the 12A and no conductor run for one (D-264)</text>
+<line x1="30" y1="1218.0" x2="390" y2="1218.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1240.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1244.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">11</text>
+<text x="70.0" y="1244.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Phase-2 sensor signal spare</text>
+<text x="406.0" y="1244.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="1236.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Wired across the dash node to DP-ICU-B 9 (N67) — the ICU's spare input reaches the post; sealing</text>
+<text x="730.0" y="1252.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">plug in the L1 plug (D-271)</text>
+<line x1="30" y1="1262.0" x2="390" y2="1262.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1279.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1283.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">12</text>
+<text x="70.0" y="1283.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="1283.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="1283.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16</text>
+<path d="M30.0,1342.0 L66.0,1342.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M30.0,1342.0 L66.0,1342.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="76.0" y="1346.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">RED</text>
+<path d="M123.6,1342.0 L159.6,1342.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M123.6,1342.0 L159.6,1342.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="169.6" y="1346.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRY</text>
+<path d="M217.3,1342.0 L253.3,1342.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M217.3,1342.0 L253.3,1342.0" fill="none" stroke="#6b7280" stroke-width="5" stroke-linejoin="round"/>
+<path d="M217.3,1342.0 L253.3,1342.0" fill="none" stroke="#e5e7eb" stroke-width="2" stroke-dasharray="3 3"/>
+<text x="263.3" y="1346.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">shielded core</text>
+<text x="30.0" y="1372.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">Solid wire: live. Dashed: run and capped at the far end. A box on a wire is an inline resistor. Generated by rx7.py diagrams - do not edit.</text>
+</svg>

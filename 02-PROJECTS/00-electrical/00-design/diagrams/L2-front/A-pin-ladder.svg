@@ -1,0 +1,223 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1310" height="1196" viewBox="0 0 1310 1196" font-family="Noto Sans, sans-serif">
+<title>L2 Front - pin ladder</title>
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="30.0" y="40.0" font-size="20" text-anchor="start" font-weight="700" fill="#1f2328">L2 FRONT · A · PIN LADDER</text>
+<text x="30.0" y="64.0" font-size="12" text-anchor="start" font-weight="400" fill="#57606a">One block per housing, one row per cavity. Every wire runs straight from its cavity to where it lands. Read left to right.</text>
+<rect x="30.0" y="110.0" width="360.0" height="170.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="132.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L2-P  ·  DTP06-4S  ·  Dash post</text>
+<line x1="30" y1="144.0" x2="390" y2="144.0" stroke="#d0d7de"/>
+<circle cx="50" cy="161.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="165.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="165.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Headlight LOW, both</text>
+<text x="380.0" y="165.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O2</text>
+<path d="M390.0,161.0 L720.0,161.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,161.0 L720.0,161.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="151.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L2-P-1  ·  12 AWG RED  ·  RT07</text>
+<rect x="720.0" y="147.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="165.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Splice at the nose → 14 AWG branch to each lamp plug, terminal RL</text>
+<line x1="30" y1="178.0" x2="390" y2="178.0" stroke="#d0d7de"/>
+<circle cx="50" cy="195.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="199.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="199.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Headlight HIGH, both</text>
+<text x="380.0" y="199.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O3</text>
+<path d="M390.0,195.0 L720.0,195.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,195.0 L720.0,195.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="185.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L2-P-2  ·  12 AWG RED  ·  RT07</text>
+<rect x="720.0" y="181.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="199.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Splice at the nose → 14 AWG branch to each lamp plug, terminal RY</text>
+<line x1="30" y1="212.0" x2="390" y2="212.0" stroke="#d0d7de"/>
+<circle cx="50" cy="229.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="233.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="233.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Pop-up LH run feed</text>
+<text x="380.0" y="233.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K1 87</text>
+<path d="M390.0,229.0 L720.0,229.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,229.0 L720.0,229.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="219.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L2-P-3  ·  12 AWG RED  ·  RT07</text>
+<rect x="720.0" y="215.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="233.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Motor E-03 run terminal(s) — R + RY bridged if the ohm check confirms one winding</text>
+<line x1="30" y1="246.0" x2="390" y2="246.0" stroke="#d0d7de"/>
+<circle cx="50" cy="263.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="267.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="267.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Pop-up RH run feed</text>
+<text x="380.0" y="267.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K2 87</text>
+<path d="M390.0,263.0 L720.0,263.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,263.0 L720.0,263.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="253.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L2-P-4  ·  12 AWG RED  ·  RT07</text>
+<rect x="720.0" y="249.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="267.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Motor E-04 run terminal(s) — as cavity 3</text>
+<rect x="30.0" y="316.0" width="360.0" height="316.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="338.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L2-M  ·  DT06-8S  ·  Dash post</text>
+<line x1="30" y1="350.0" x2="390" y2="350.0" stroke="#d0d7de"/>
+<circle cx="50" cy="367.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="371.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="371.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Wiper LOW brush</text>
+<text x="380.0" y="371.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O8</text>
+<path d="M390.0,367.0 L720.0,367.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,367.0 L720.0,367.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="357.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L2-M-1  ·  14 AWG ORN  ·  RT09</text>
+<rect x="720.0" y="353.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="371.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Wiper motor D-02, terminal LW</text>
+<line x1="30" y1="384.0" x2="390" y2="384.0" stroke="#d0d7de"/>
+<circle cx="50" cy="401.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="405.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="405.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Wiper HIGH brush</text>
+<text x="380.0" y="405.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O9</text>
+<path d="M390.0,401.0 L720.0,401.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,401.0 L720.0,401.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="391.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L2-M-2  ·  14 AWG ORN  ·  RT09</text>
+<rect x="720.0" y="387.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="405.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Wiper motor D-02, terminal LR</text>
+<line x1="30" y1="418.0" x2="390" y2="418.0" stroke="#d0d7de"/>
+<circle cx="50" cy="435.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="439.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="439.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Horns, both</text>
+<text x="380.0" y="439.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O11</text>
+<path d="M390.0,435.0 L720.0,435.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,435.0 L720.0,435.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="425.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L2-M-3  ·  14 AWG ORN  ·  RT08</text>
+<rect x="720.0" y="421.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="439.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Splice at the nose → each horn's terminal GY</text>
+<line x1="30" y1="452.0" x2="390" y2="452.0" stroke="#d0d7de"/>
+<circle cx="50" cy="469.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="473.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="473.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Washer pump feed</text>
+<text x="380.0" y="473.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K12 87</text>
+<path d="M390.0,469.0 L720.0,469.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,469.0 L720.0,469.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="459.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L2-M-4  ·  14 AWG ORN  ·  RT09</text>
+<rect x="720.0" y="455.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="473.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Washer motor D-01, terminal LB</text>
+<line x1="30" y1="486.0" x2="390" y2="486.0" stroke="#d0d7de"/>
+<circle cx="50" cy="503.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="507.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="507.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Turn LEFT front</text>
+<text x="380.0" y="507.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O17</text>
+<path d="M390.0,503.0 L720.0,503.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,503.0 L720.0,503.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="493.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L2-M-5  ·  16 AWG RED  ·  RT08</text>
+<rect x="720.0" y="489.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="507.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Front combo lamp F-05, terminal GR</text>
+<line x1="30" y1="520.0" x2="390" y2="520.0" stroke="#d0d7de"/>
+<circle cx="50" cy="537.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="541.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="541.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Turn RIGHT front</text>
+<text x="380.0" y="541.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O18</text>
+<path d="M390.0,537.0 L720.0,537.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,537.0 L720.0,537.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="527.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L2-M-6  ·  16 AWG RED  ·  RT08</text>
+<rect x="720.0" y="523.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="541.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Front combo lamp F-06, terminal GO</text>
+<line x1="30" y1="554.0" x2="390" y2="554.0" stroke="#d0d7de"/>
+<circle cx="50" cy="571.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="575.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="575.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Park + side markers, front</text>
+<text x="380.0" y="575.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O6</text>
+<path d="M390.0,571.0 L720.0,571.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,571.0 L720.0,571.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="561.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L2-M-7  ·  16 AWG RED  ·  RT08</text>
+<rect x="720.0" y="557.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="575.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Splice at the nose → F-05 RG, F-06 RG, F-12 RG, F-13 RG</text>
+<line x1="30" y1="588.0" x2="390" y2="588.0" stroke="#d0d7de"/>
+<circle cx="50" cy="610.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="614.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="614.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Wiper park feed — future motor family</text>
+<text x="380.0" y="614.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F13</text>
+<path d="M390.0,610.0 L720.0,610.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,610.0 L720.0,610.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="600.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L2-M-8  ·  16 AWG RED  ·  capped at the far end</text>
+<rect x="720.0" y="591.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="606.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Held as the fused park feed a self-parking motor needs; block A position F13 is its protection when it</text>
+<text x="730.0" y="622.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">is taken up (D-317)</text>
+<rect x="30.0" y="668.0" width="360.0" height="294.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="690.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L2-S  ·  DT06-6S  ·  Dash post</text>
+<line x1="30" y1="702.0" x2="390" y2="702.0" stroke="#d0d7de"/>
+<circle cx="50" cy="719.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="723.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="723.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Pop-up LH transit contact</text>
+<text x="380.0" y="723.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A4</text>
+<path d="M390.0,719.0 L720.0,719.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,719.0 L720.0,719.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="709.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L2-S-1  ·  16 AWG GRY  ·  RT07</text>
+<rect x="720.0" y="705.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="723.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Motor E-03 terminal YG through 3.3 kΩ; 47 kΩ baseline from this cavity to the front star ground</text>
+<line x1="30" y1="736.0" x2="390" y2="736.0" stroke="#d0d7de"/>
+<circle cx="50" cy="753.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="757.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="757.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Pop-up RH transit contact</text>
+<text x="380.0" y="757.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A5</text>
+<path d="M390.0,753.0 L720.0,753.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,753.0 L720.0,753.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="743.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L2-S-2  ·  16 AWG GRY  ·  RT07</text>
+<rect x="720.0" y="739.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="757.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Motor E-04 terminal YG through 3.3 kΩ; 47 kΩ baseline to the front star ground</text>
+<line x1="30" y1="770.0" x2="390" y2="770.0" stroke="#d0d7de"/>
+<circle cx="50" cy="800.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="804.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="804.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Wiper park sense</text>
+<text x="380.0" y="804.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A3</text>
+<path d="M390.0,800.0 L720.0,800.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,800.0 L720.0,800.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="790.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L2-S-3  ·  16 AWG GRY  ·  RT09</text>
+<rect x="650.0" y="793.0" width="44.0" height="14.0" rx="3" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="672.0" y="818.0" font-size="10" text-anchor="middle" font-weight="700" fill="#1f2328">12 kΩ</text>
+<rect x="720.0" y="773.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="788.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">47 kΩ baseline to the front star ground at the L2-S plug, as A4/A5 (D-368) - covers the run to the park</text>
+<text x="730.0" y="804.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">contact; a break in the brake branch reads as brake never pressed. Wiper motor D-02 park terminal L</text>
+<text x="730.0" y="820.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">through 12 kΩ. Terminal LB is left unconnected (capped)</text>
+<line x1="30" y1="830.0" x2="390" y2="830.0" stroke="#d0d7de"/>
+<circle cx="50" cy="852.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="856.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="856.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Wiper park return — future motor family</text>
+<text x="380.0" y="856.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A3</text>
+<path d="M390.0,852.0 L720.0,852.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,852.0 L720.0,852.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="842.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L2-S-4  ·  16 AWG GRY  ·  RT09  ·  capped at the far end</text>
+<rect x="720.0" y="833.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="848.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Run to the wiper branch and left unpinned there: a DIN 72552 motor's park return is pinned into this</text>
+<text x="730.0" y="864.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">cavity at the branch, no leg re-run (D-317)</text>
+<line x1="30" y1="874.0" x2="390" y2="874.0" stroke="#d0d7de"/>
+<circle cx="50" cy="896.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="900.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="900.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Outside-air temperature sensor</text>
+<path d="M390.0,896.0 L720.0,896.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,896.0 L720.0,896.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="886.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L2-S-5  ·  16 AWG GRY  ·  RT06  ·  capped at the far end</text>
+<rect x="720.0" y="877.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="892.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L2-OAT 1 — the outside-air sensor receptacle ahead of the radiator, dust-capped; the thermistor's</text>
+<text x="730.0" y="908.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">other lead grounds at the front star (D-256 → D-329, D-274)</text>
+<line x1="30" y1="918.0" x2="390" y2="918.0" stroke="#d0d7de"/>
+<circle cx="50" cy="940.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="944.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="944.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="944.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="936.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 — the heated-nozzle / de-icer feed is cancelled and the L2-NZL receptacle is not</text>
+<text x="730.0" y="952.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">fitted (D-329, supersedes D-256)</text>
+<rect x="30.0" y="998.0" width="360.0" height="102.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="1020.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L2-OAT  ·  DT06-2S  ·  Nose</text>
+<line x1="30" y1="1032.0" x2="390" y2="1032.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1049.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1053.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="1053.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Outside-air thermistor — signal</text>
+<text x="380.0" y="1053.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L2-S 5</text>
+<path d="M390.0,1049.0 L720.0,1049.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1049.0 L720.0,1049.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1039.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L2-OAT-1  ·  16 AWG GRY  ·  capped at the far end</text>
+<rect x="720.0" y="1035.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1053.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Dust-capped receptacle at the nose — the thermistor plugs in, its return to the front star (D-274)</text>
+<line x1="30" y1="1066.0" x2="390" y2="1066.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1083.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1087.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="1087.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="1087.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="1087.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16</text>
+<path d="M30.0,1146.0 L66.0,1146.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M30.0,1146.0 L66.0,1146.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="76.0" y="1150.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">RED</text>
+<path d="M123.6,1146.0 L159.6,1146.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M123.6,1146.0 L159.6,1146.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="169.6" y="1150.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRY</text>
+<path d="M217.3,1146.0 L253.3,1146.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M217.3,1146.0 L253.3,1146.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<text x="263.3" y="1150.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ORN</text>
+<text x="30.0" y="1176.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">Solid wire: live. Dashed: run and capped at the far end. A box on a wire is an inline resistor. Generated by rx7.py diagrams - do not edit.</text>
+</svg>

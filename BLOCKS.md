@@ -28,7 +28,44 @@ _Nothing open._
 
 ## 00 · Electrical
 
-*Nothing open.*
+### 00.29 · How the car runs during the migration weeks
+**Ask** Between plugging in L3 (E26) and the last migration (E28), how does the car start and drive, when the key and column switches can only be wired to one harness at a time?
+**Opened** 2026-09-23
+**Why** At E26 the new ignition switch and the column switches are wired into the new L3 harness. The ignition switch then becomes a signal only: its B terminal is fed from the 5 A fuse F3 into the key ladder. The light, turn, wiper and hazard switches become resistor ladders. A switch contact cannot also feed a factory relay: the relay coil across the contact swamps the resistor, and the PMU reads nonsense. So from E26 the factory harness has no ignition switch and no light, turn or wiper switch. Yet E27 says "the car must start and drive on the factory harness", and E28 moves one load per sitting and drives the car every day. As written, the car cannot start from E26 until every circuit has migrated. Found in the 2026-09-23 risk review; nothing in the record says how this was meant to work. Since D-387 the interior is out from the measurement day until the end of the build, so the car cannot be driven during the migration either way. That takes away (b)'s main benefit.
+**Options**
+- (a) One cutover weekend. Plug in L3 and migrate every circuit in one go, running E26 to E28 back to back and keeping the migration table as the test order for the day. Nothing extra to buy. The car is off the road for that stretch and is driven only at the end, and a fault found late is found with everything already moved.
+- (b) Loads first, switches last. The factory key and column switches keep running the factory harness while each load moves over. Every migrated output is tested from a temporary switch box: toggles plus the same ladder resistors, about $30, plugged into L3. The real switches move over in one final sitting. The car stays drivable on its unmigrated circuits, but once the lamps have moved they work only from the box, so it should not go on the road between those sittings.
+**Recommend** (a), unless you need the car on the road during the migration weeks. It has fewer temporary wires to get wrong and costs nothing.
+**Stops** The wording of E26 to E28 and the migration table. Nothing already bought changes; (b) adds about $30 of toggles and resistors.
+**SOLVE:**
+
+### 00.30 · One 5 A fuse can stop the engine and put the lights out
+**Ask** Should F3 (the one 5 A fuse behind the key, the light switch, the brake wake and the K13 fuel back-stop) be split, and should ignition and the headlamps hold their state when their ladder reads open?
+**Opened** 2026-09-23
+**Why** F3 feeds four things: the ignition switch's B terminal, the light-switch common, the wake-stage pull-ups and the brake wake plunger. Through the ignition switch it also feeds the K13 fuel-pump back-stop coil. The PMU runs ignition as `A16 >= RUN` and the low beams as `A15 == HEAD_LO`, and nothing holds either output when its ladder reads open. So any of these turns off the ignition, the fuel pump and the headlamps together, at speed:
+- F3 blows;
+- the key-ladder wire breaks;
+- a worn contact opens for a moment.
+
+On top of that, ignition's retry is "1 at 2 s, then off until the key leaves RUN", so one glitch leaves the engine dead until you cycle the key. The factory car fed the coils straight from the key. Found in the 2026-09-23 risk review.
+**Options**
+- (a) Split F3 into two fuses, and hold state on a fault. One fuse feeds the key switch and the K13 coil; the other feeds the light switch and the wake stages, in a free block-B position or one more sealed inline holder (a few dollars). The PMU logic changes so that only a clean OFF reading turns ignition off (an open or fault reading holds RUN while the engine is turning), and the headlamps hold their last state while A15 reads a fault. Costs one fuse position and logic rows.
+- (b) Hold state only. The logic change from (a) with nothing bought; F3 stays one fuse and remains a single point for the key, the lights and the fuel back-stop.
+- (c) Leave it as designed.
+**Recommend** (a). It is a safety call, which is why it is a block and not a silent change.
+**Stops** `fuses` F3 and one new position, node conductor N29, the logic rows IGNITION, HEAD_LOW, HEAD_HIGH, TAIL_PARK and FUEL_PUMP, and the PMU configuration entered at E25.
+**SOLVE:**
+
+### 00.31 · Pull the old harness while the car is apart, or after a week of driving?
+**Ask** With the interior out for the whole build, is the factory harness pulled while the car is still apart, or does the interior go back, the car drive a week on the new harness, and the dash come out a second time to pull it?
+**Opened** 2026-09-23
+**Why** You ruled that the build starts with the interior out and ends with it going back in (D-387). E30 was written for a car that could be driven during the install. It says to drive a week with the factory harness disconnected at both ends but still in the car, as a fallback, then pull it out intact. With the interior out, the car cannot be driven until the interior is back, and pulling the old harness needs the dash out. Both steps cannot happen with the interior out only once.
+**Options**
+- (a) Pull it while apart. After the full function check (E29), pull the factory harness intact, box it and keep it until after shakedown, then put the interior back. The dash comes out once, but the week of driving with the old harness still in the car is lost. If something fails in shakedown, the boxed harness is the fallback, and refitting it is a big job.
+- (b) Drive a week, then pull it. Put the interior back after E29, drive a week with the old harness disconnected in the car, then take the dash out a second time to pull it. This keeps the fallback, but costs a second dash-out, a weekend.
+**Recommend** (a). It matches "interior out once, back in once". E29 already proves every circuit with the car running, and the boxed harness stays kept until shakedown.
+**Stops** E30's wording and where the interior-back step (E35) sits. Nothing bought changes.
+**SOLVE:**
 
 ## 01 · Luxury
 
@@ -47,3 +84,15 @@ _Nothing open._
 ## 02 · Engine
 
 _Nothing open._
+
+### 02.02 · How the bigger engine leg plugs in at the dash post
+**Ask** The swap's engine leg needs 54–68 signal conductors, and the dash post has 24 signal cavities for it. How should the extra conductors connect at the post?
+**Opened** 2026-09-23
+**Why** Working backwards from every LS and CD009 part (D-394, tables `ls_devices` and `ls_wires`), the power side fits the leg's power plug L1-P exactly: coils on O12, injectors on O13, fan on O14, and the A/C clutch in its spare cavity. The signal side does not. With the ECU at the dash (D-325), every injector driver, coil trigger, crank, cam, knock, throttle and sensor wire runs down the leg. That is **54** signal conductors for what the engine must have, and **68** with every option kept (a MAF, narrowband O2s, VVT, purge, oil temperature, a neutral switch). The signal plugs L1-S1 and L1-S2 hold 24. No choice of ECU changes this, because every ECU drives the same wires. Handover row HO14 said "nothing at the dash node changes"; this is where that has to give.
+**Options**
+- (a) **More of the same connector.** L1-P stays as it is, and the signal side grows from two 12-way DT plugs to five (60 cavities) or six (72, room for every option). Same contacts, same crimper (P038) and removal tools already on the cart, same method as every other leg. Costs a few more DT housing pairs (confirm price), room on the dash post for 3–4 more receptacles (measured at M-1), and a bigger firewall grommet.
+- (b) **One high-density plug for the signals.** One ECU-style connector (Deutsch DRC 50–70-way class) replaces L1-S1 and L1-S2. It is smaller at the post, but needs new size-20 crimp tooling and removal tools, and costs more per connector (confirm). It is the one connector in the car unlike all the others.
+- (c) **DTM plugs for the small sensor signals, DT for the drivers.** DTM is the smaller Deutsch family (size 20), so it packs denser at the post. It needs a DTM crimper and removal tool on top of the DT kit.
+**Recommend** (a) with six signal plugs. It is literally the same engine-leg connector at the same post, just more of it, and nothing new to buy in tools or to learn. Change to (b) only if the post has no room for four more receptacles.
+**Stops** The swap's cavity plan (work J8), the dash-post layout for the leg at the swap, and the firewall grommet size. Nothing in today's build changes: the 12A's leg is built now and cut off at the swap (D-211).
+**SOLVE:**

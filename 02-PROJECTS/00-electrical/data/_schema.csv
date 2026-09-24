@@ -25,6 +25,7 @@ cavities,awg,str,no,,
 cavities,colour,str,no,,
 cavities,state,enum(CAPPED|LIVE|PLUG|RESERVED),no,,
 cavities,lands_on,text,no,,
+cavities,route,str,no,routes.id,"the run this conductor follows from the post - ONLY for a conductor with no device at its far end (a node, a receptacle, a socket); otherwise devices.route is the home (D-385)"
 colours,id,key,yes,,
 colours,family,text,no,,
 colours,gauges,str,no,,
@@ -43,6 +44,7 @@ devices,device,str,no,,
 devices,ident,text,no,,
 devices,terminals,text,no,,
 devices,ground,text,no,,
+devices,route,str,no,routes.id,"the run this device's conductors follow from the post - set only where routes.to_node names the device; blank means the record does not say yet (D-385)"
 fuses,id,key,yes,,
 fuses,rating,str,no,,
 fuses,location,str,no,,
@@ -174,13 +176,14 @@ series,wire,str,no,,
 series,rated,str,no,,
 series,used_for,str,no,,
 work,id,key,yes,,
-work,stage,enum(A|B|C|D|E|F|G|V),no,,V added 2026-09-11: the verify/measure/do items carried over from the v2 question list
+work,stage,enum(A|B|C|D|E|F|G|R|S|V|Z),no,,V added 2026-09-11: the verify/measure/do items carried over from the v2 question list; R and Z added 2026-09-23 (D-386): the risk-review rows and the design freeze; S (D-387): the interior strip
 work,stage_title,str,no,,
 work,item,text,no,,
 work,owner,enum(agent|camden),no,,
 work,state,enum(blocked|done|dropped|open),no,,vocabulary owned by tools/rx7.py - do not narrow it per project (2026-09-11)
 work,gate,str,no,,"references only - D-###, a block id like 00.18, a work id in this area, <area>:<work id>, or phase:<PHASE>; all must be met before the row can start, an empty cell is met, and prose belongs in note (2026-09-12)"
 work,note,text,no,,
+work,track,enum(build|design),no,,"which TODO the row lives in (D-386): design = 00-design/TODO.md, everything up to the verified design; build = 01-build/TODO.md, all of it gated on phase:SOURCING, the design freeze"
 checks,id,key,yes,,
 checks,when,str,no,,"the step it belongs to - M-1, shakedown, install 2.14, PMU client 5.4"
 checks,subject,str,no,,

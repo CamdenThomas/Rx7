@@ -1,0 +1,27 @@
+id,device,qty,where,gen,connector,serves,note
+LD01,Fuel injectors,8,"Fuel rails, both banks",both,Gen III EV1 / Gen IV EV6 (USCAR) 2-pin,ECU,
+LD02,Ignition coils,8,"Valve covers, both banks",both,4-pin truck coil (Gen III and Gen IV differ in connector and bracket),ECU,Power ground goes to the head locally; the reference ground goes to the ECU
+LD03,Crank position sensor,1,"Block, rear right (Gen III) / rear (Gen IV)",both,3-pin,ECU,"Gen III 24x, Gen IV 58x - the ECU must support the one bought. Supply voltage differs by generation (confirm)"
+LD04,Cam position sensor,1,Rear of the block top (Gen III) / front cover (Gen IV),both,3-pin,ECU,"Gen III 1x, Gen IV 4x"
+LD05,Manifold pressure (MAP) sensor,1,Intake manifold,both,3-pin,ECU,
+LD06,Intake air temperature sensor,1,"Intake tube, or built into the MAF",both,2-pin,ECU,
+LD07,Mass air flow sensor,1,Intake tube,option,Gen III 3-pin / Gen IV 5-pin (with IAT),ECU,Only if the tune is not speed-density
+LD08,Coolant temperature sensor,1,Cylinder head,both,2-pin,ECU,"The ICU takes it from the ECU over CAN (HO06), so no second sender"
+LD09,Oil pressure sensor,1,"Block, rear top",both,3-pin 5 V transducer (confirm per engine),PMU,"Three readers: the PMU's fuel-pump gate on A7 must be hardwired (D-249, HO04), the ECU, and the ICU's gauge"
+LD10,Knock sensors,2,Valley under the intake (Gen III) / both block sides (Gen IV),both,Gen III 1-pin each / Gen IV 2-pin each,ECU,
+LD11,Upstream oxygen sensors,2,Each header collector,option,4-pin narrowband,ECU,Only if the ECU runs narrowbands; the existing AEM wideband (LD12) may do the job
+LD12,Wideband oxygen sensor (the existing AEM),1,"Exhaust, after the collectors",both,AEM sensor on its own fixed lead to its controller at the dash,bay,Not through the DT housings: its lead passes the grommet as its own cable (D-244 asks whether it reaches). The AFR goes to the ICU over AEMnet
+LD13,Electronic throttle body,1,Intake,both,6-pin,ECU,"The accelerator pedal is in the cabin and wires straight to the ECU, not through the leg"
+LD14,Alternator,1,Front of the engine,both,2-pin control plug plus the B+ stud,PMU,"Gen IV trucks regulate by ECU signal (confirm per unit). B+ is the existing 6 AWG via F18 at the starter stud, bay only"
+LD15,Starter,1,Block,both,B+ stud and S terminal,bay,B+ is the 1/0 backbone and S comes from K9 on the inner fender - both stay in the bay; only K9's coil crosses
+LD16,Electric cooling fan,1,Radiator,both,"2-pin, or a fan controller",PMU,O14 via L1-P 3 (HO02); its return is grounded at the front
+LD17,A/C compressor clutch,1,Front of the engine,both,"1-pin, case grounded",DCU,"Fed from the O15 comfort block through a DCU-switched relay (D-324, HO13)"
+LD18,A/C pressure transducer,1,High-side line,both,3-pin,DCU,To a DCU input (HO13)
+LD19,Cam phaser (VVT) solenoid,1,Front cover,option,2-pin,ECU,2010+ LC9 only - or lock the phaser out and leave it unwired
+LD20,EVAP purge solenoid,1,Intake,option,2-pin,ECU,Only if the emissions rules for this car require it (see work J7)
+LD21,Oil temperature sender,1,Oil pan or filter adapter,option,2-pin NTC,ICU,"For the ICU's oil-temperature gauge (HO07), unless the ECU reads one and sends it over CAN"
+LD22,CD009 reverse lamp switch,1,Transmission,both,2-pin (confirm),PMU,"Into the A5 ladder state REVERSE (HO10, D-187)"
+LD23,CD009 neutral switch,1,Transmission,option,2-pin (confirm it exists on the unit bought),ECU,"For idle control, if the ECU uses it"
+LD24,CD009 vehicle speed sensor,1,Transmission,both,2- or 3-pin (confirm),ECU,Road speed to the ICU through the ECU's frames (HO15)
+LD25,Clutch pedal switch,1,"Pedal box, cabin",both,2-pin,PMU,Replaces the automatic's P/N crank interlock on A4 (HO10). Cabin - not through the leg
+LD26,Engine grounds,1,Heads and block,both,Ring terminals,bay,The block-to-chassis strap (B6) and the cranking return (B7) stay; each head gets a ground for the coils' power returns

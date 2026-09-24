@@ -1,0 +1,40 @@
+id,device,function,class,at_device,crosses,size,bay_join,dash_end,awg,amps,group,optional,note
+LW01,LD01,"Injector feed, +12 V",power,8,1,12,One 12 AWG feed spliced in the bay to 8 branches (18 AWG),PMU O13 via L1-P 2,12,9,,no,About 1 A per injector; O13 is a 25 A channel (HO01)
+LW02,LD01,Injector driver,driver,8,8,16,none,ECU injector outputs 1-8,18,1.2,,no,
+LW03,LD02,"Coil feed, +12 V",power,8,1,12,One 12 AWG feed spliced in the bay to 8 branches (16 AWG),PMU O12 via L1-P 1,12,12,,no,The same channel and cavity that feed the 12A's coils today
+LW04,LD02,Coil trigger (IGT),driver,8,8,16,none,ECU ignition outputs 1-8,18,0.1,,no,Logic-level trigger - route away from the injector drivers
+LW05,LD02,Coil power ground,power_gnd,8,0,-,To a ground stud on each head,—,16,3,,no,Stays in the bay
+LW06,LD02,Coil reference ground,sensor_gnd,8,2,16,Spliced per bank,ECU ignition reference ground,18,0.1,,no,
+LW07,LD03,Crank signal,signal,1,1,16,none,ECU crank input,20,0.01,crank shield,no,Shielded; the drain goes to the ECU end only
+LW08,LD03,Crank supply and ground,ref5v,2,2,16,none,ECU sensor supply and ground,20,0.02,crank shield,no,Supply is 5 V or 12 V by generation (confirm)
+LW09,LD03,Crank shield drain,shield,1,1,16,none,ECU shield ground,20,0,crank shield,no,
+LW10,LD04,Cam signal,signal,1,1,16,none,ECU cam input,20,0.01,cam shield,no,
+LW11,LD04,Cam supply and ground,ref5v,2,2,16,none,ECU sensor supply and ground,20,0.02,cam shield,no,
+LW12,LD04,Cam shield drain,shield,1,1,16,none,ECU shield ground,20,0,cam shield,no,
+LW13,LD05,MAP signal,signal,1,1,16,none,ECU analog input,20,0.01,,no,
+LW14,LD06,IAT signal,signal,1,1,16,none,ECU analog input,20,0.01,,no,
+LW15,LD08,Coolant temperature signal,signal,1,1,16,none,ECU analog input,20,0.01,,no,
+LW16,LD09,Oil pressure signal,signal,1,1,16,none,"PMU A7 (the fuel-pump gate) - the ECU and ICU read it from the PMU, or tap it at the dash",20,0.01,,no,"One sensor, one wire, read at the dash (HO04)"
+LW17,LD13,Throttle position signals 1 and 2,signal,2,2,16,none,ECU throttle position inputs,20,0.01,throttle,no,
+LW18,LD13,Throttle 5 V and ground,ref5v,2,2,16,none,The ECU's dedicated throttle supply and ground,20,0.02,throttle,no,"Kept separate from the other sensors, as every factory DBW harness does"
+LW19,LD13,Throttle motor + and -,motor,2,2,16,none,ECU throttle motor driver,18,5,throttle motor,no,Twisted pair
+LW20,LD05,"Sensor 5 V reference (MAP, oil pressure, others)",ref5v,4,1,16,Spliced in the bay,ECU 5 V reference,20,0.05,,no,"HO08 said no +5 V goes down the leg - that was written for the PMU and ICU; the ECU's own 5 V has to, now that the ECU is at the dash"
+LW21,LD05,"Sensor ground (MAP, IAT, ECT, oil pressure)",sensor_gnd,6,2,16,"Spliced in the bay, never to chassis",ECU sensor ground,20,0.05,,no,
+LW22,LD10,Knock sensor signals,signal,4,4,16,none,ECU knock inputs,20,0,knock shield,no,Gen III: 2 conductors; Gen IV: 4 (2 per sensor) - counted at 4
+LW23,LD10,Knock shield drain,shield,1,1,16,none,ECU shield ground,20,0,knock shield,no,
+LW24,LD07,MAF signal,signal,1,1,16,Its 12 V and ground from the injector feed and the sensor ground,ECU frequency input,20,0.01,,yes,Speed-density drops it
+LW25,LD11,O2 signals,signal,2,2,16,none,ECU O2 inputs,20,0,,yes,
+LW26,LD11,O2 signal lows,sensor_gnd,2,2,16,none,ECU O2 low references,20,0,,yes,
+LW27,LD11,O2 heater feed,power,2,0,-,Spliced from the injector feed in the bay,—,16,3,,yes,
+LW28,LD11,O2 heater control,driver,2,2,16,none,ECU heater drivers,18,1.5,,yes,
+LW29,LD14,Alternator control and lamp / field,signal,2,2,16,none,"Excitation and lamp sense, as the 12A has today (HO11) - or the ECU's regulator control on a Gen IV",18,0.5,,no,
+LW30,LD15,Start relay K9 coil,driver,1,1,16,K9 stays on the inner fender,PMU O21,16,0.2,,no,The same conductor as today's L1-S1 1
+LW31,LD16,Fan feed,power,1,1,12,none,PMU O14 via L1-P 3,12,25,,no,Return grounded at the front
+LW32,LD17,A/C clutch feed,power,1,1,12,none,O15 comfort block through the DCU-switched relay (D-324),14,4,,no,Uses the spare fourth cavity of L1-P
+LW33,LD18,"A/C pressure signal, 5 V, ground",signal,3,3,16,none,DCU input and its own supply,20,0.02,,no,Kept apart from the ECU's sensor grounds
+LW34,LD19,VVT solenoid,driver,2,2,16,none,ECU phaser output,18,1.5,,yes,2010+ LC9 only
+LW35,LD20,EVAP purge,driver,2,1,16,Feed from the injector feed in the bay,ECU purge driver,18,0.5,,yes,
+LW36,LD21,Oil temperature signal and return,signal,2,2,16,none,ICU DP-ICU-B 7 (HO07),20,0,,yes,"Its return goes to the ICU, not the block - the fuel-level lesson on ground offset"
+LW37,LD22,Reverse switch and its return,ladder,2,2,16,Its ladder resistor sits at the switch,PMU A5 ladder (REVERSE),20,0,,no,The return comes back to the dash so the block's ground offset during cranking stays out of the ladder (risk review R3)
+LW38,LD23,Neutral switch,signal,2,2,16,none,ECU input,20,0,,yes,
+LW39,LD24,Vehicle speed signal and return,signal,2,2,16,none,ECU speed input,20,0,vss,no,Shielded if a variable-reluctance type

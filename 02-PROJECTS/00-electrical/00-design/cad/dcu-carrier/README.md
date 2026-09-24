@@ -1,7 +1,7 @@
 # DCU carrier — the KiCad project
 
 *Rev 2026-09-22 · owns: what this KiCad project is for, what it may claim, and when it starts.
-The board's design is `../../data/dcu_channels.csv` — that is the record; this will be a drawing
+The board's design is `../../../data/dcu_channels.csv` — that is the record; this will be a drawing
 of it. Read `../README.md` first: it is the fence.*
 
 ## Where it stands

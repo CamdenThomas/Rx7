@@ -1,0 +1,231 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1368" height="1478" viewBox="0 0 1368 1478" font-family="Noto Sans, sans-serif">
+<title>L3 Dash - route map</title>
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="30.0" y="40.0" font-size="20" text-anchor="start" font-weight="700" fill="#1f2328">L3 DASH · B · ROUTE MAP</text>
+<text x="30.0" y="64.0" font-size="12" text-anchor="start" font-weight="400" fill="#57606a">Where every wire physically runs. Bundle order is branch order, so each wire peels off the outside of the bundle and nothing crosses. Lengths come from routes.ft once measured (M-2).</text>
+<path d="M200.0,325.0 L240.0,325.0 L385.0,180.0 L510.0,180.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,325.0 L240.0,325.0 L385.0,180.0 L510.0,180.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,343.0 L240.0,343.0 L385.0,198.0 L510.0,198.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,343.0 L240.0,343.0 L385.0,198.0 L510.0,198.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,361.0 L240.0,361.0 L385.0,216.0 L510.0,216.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,361.0 L240.0,361.0 L385.0,216.0 L510.0,216.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,379.0 L240.0,379.0 L385.0,234.0 L510.0,234.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,379.0 L240.0,379.0 L385.0,234.0 L510.0,234.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,397.0 L240.0,397.0 L385.0,252.0 L510.0,252.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,397.0 L240.0,397.0 L385.0,252.0 L510.0,252.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,415.0 L240.0,415.0 L385.0,270.0 L510.0,270.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,415.0 L240.0,415.0 L385.0,270.0 L510.0,270.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,433.0 L240.0,433.0 L385.0,288.0 L510.0,288.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,433.0 L240.0,433.0 L385.0,288.0 L510.0,288.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,451.0 L240.0,451.0 L385.0,306.0 L510.0,306.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,451.0 L240.0,451.0 L385.0,306.0 L510.0,306.0" fill="none" stroke="#e8559c" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,469.0 L240.0,469.0 L385.0,324.0 L510.0,324.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,469.0 L240.0,469.0 L385.0,324.0 L510.0,324.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,487.0 L240.0,487.0 L285.0,442.0 L510.0,442.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,487.0 L240.0,487.0 L285.0,442.0 L510.0,442.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,505.0 L240.0,505.0 L285.0,460.0 L510.0,460.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,505.0 L240.0,505.0 L285.0,460.0 L510.0,460.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,523.0 L240.0,523.0 L285.0,478.0 L510.0,478.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,523.0 L240.0,523.0 L285.0,478.0 L510.0,478.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,541.0 L240.0,541.0 L285.0,496.0 L510.0,496.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,541.0 L240.0,541.0 L285.0,496.0 L510.0,496.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,559.0 L240.0,559.0 L285.0,514.0 L510.0,514.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,559.0 L240.0,559.0 L285.0,514.0 L510.0,514.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,577.0 L240.0,577.0 L285.0,532.0 L510.0,532.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,577.0 L240.0,577.0 L285.0,532.0 L510.0,532.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,595.0 L240.0,595.0 L285.0,550.0 L510.0,550.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,595.0 L240.0,595.0 L285.0,550.0 L510.0,550.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,613.0 L240.0,613.0 L285.0,568.0 L510.0,568.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,613.0 L240.0,613.0 L285.0,568.0 L510.0,568.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,631.0 L240.0,631.0 L285.0,586.0 L510.0,586.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,631.0 L240.0,631.0 L285.0,586.0 L510.0,586.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,649.0 L240.0,649.0 L285.0,604.0 L510.0,604.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,649.0 L240.0,649.0 L285.0,604.0 L510.0,604.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,667.0 L240.0,667.0 L285.0,622.0 L510.0,622.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,667.0 L240.0,667.0 L285.0,622.0 L510.0,622.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,685.0 L240.0,685.0 L285.0,640.0 L510.0,640.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,685.0 L240.0,685.0 L285.0,640.0 L510.0,640.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,703.0 L240.0,703.0 L295.0,758.0 L510.0,758.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,703.0 L240.0,703.0 L295.0,758.0 L510.0,758.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,721.0 L240.0,721.0 L395.0,876.0 L510.0,876.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,721.0 L240.0,721.0 L395.0,876.0 L510.0,876.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,739.0 L240.0,739.0 L395.0,894.0 L510.0,894.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,739.0 L240.0,739.0 L395.0,894.0 L510.0,894.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,757.0 L240.0,757.0 L395.0,912.0 L510.0,912.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,757.0 L240.0,757.0 L395.0,912.0 L510.0,912.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,775.0 L240.0,775.0 L395.0,930.0 L510.0,930.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,775.0 L240.0,775.0 L395.0,930.0 L510.0,930.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,793.0 L240.0,793.0 L395.0,948.0 L510.0,948.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,793.0 L240.0,793.0 L395.0,948.0 L510.0,948.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,811.0 L240.0,811.0 L495.0,1066.0 L510.0,1066.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,811.0 L240.0,811.0 L495.0,1066.0 L510.0,1066.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,829.0 L240.0,829.0 L495.0,1084.0 L510.0,1084.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,829.0 L240.0,829.0 L495.0,1084.0 L510.0,1084.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,847.0 L240.0,847.0 L495.0,1102.0 L510.0,1102.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,847.0 L240.0,847.0 L495.0,1102.0 L510.0,1102.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,865.0 L240.0,865.0 L495.0,1120.0 L510.0,1120.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,865.0 L240.0,865.0 L495.0,1120.0 L510.0,1120.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,883.0 L240.0,883.0 L495.0,1138.0 L510.0,1138.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,883.0 L240.0,883.0 L495.0,1138.0 L510.0,1138.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,901.0 L240.0,901.0 L495.0,1156.0 L510.0,1156.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,901.0 L240.0,901.0 L495.0,1156.0 L510.0,1156.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,919.0 L240.0,919.0 L495.0,1174.0 L510.0,1174.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,919.0 L240.0,919.0 L495.0,1174.0 L510.0,1174.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,937.0 L240.0,937.0 L495.0,1192.0 L510.0,1192.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,937.0 L240.0,937.0 L495.0,1192.0 L510.0,1192.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,955.0 L240.0,955.0 L495.0,1210.0 L510.0,1210.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,955.0 L240.0,955.0 L495.0,1210.0 L510.0,1210.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<rect x="50.0" y="291.0" width="150.0" height="698.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="125.0" y="311.0" font-size="13" text-anchor="middle" font-weight="700" fill="#1f2328">Dash post</text>
+<text x="190.0" y="329.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S1 1</text>
+<text x="190.0" y="347.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S1 2</text>
+<text x="190.0" y="365.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S1 3</text>
+<text x="190.0" y="383.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S1 4</text>
+<text x="190.0" y="401.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S1 11</text>
+<text x="190.0" y="419.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S1 12</text>
+<text x="190.0" y="437.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S2 1</text>
+<text x="190.0" y="455.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S2 2</text>
+<text x="190.0" y="473.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S2 9</text>
+<text x="190.0" y="491.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-P 2</text>
+<text x="190.0" y="509.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-M 1</text>
+<text x="190.0" y="527.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-M 2</text>
+<text x="190.0" y="545.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S1 8</text>
+<text x="190.0" y="563.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S2 3</text>
+<text x="190.0" y="581.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S2 4</text>
+<text x="190.0" y="599.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S2 5</text>
+<text x="190.0" y="617.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S2 6</text>
+<text x="190.0" y="635.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S3 5</text>
+<text x="190.0" y="653.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S3 6</text>
+<text x="190.0" y="671.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S3 7</text>
+<text x="190.0" y="689.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S3 8</text>
+<text x="190.0" y="707.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S2 10</text>
+<text x="190.0" y="725.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-P 1</text>
+<text x="190.0" y="743.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S1 5</text>
+<text x="190.0" y="761.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S1 7</text>
+<text x="190.0" y="779.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S2 12</text>
+<text x="190.0" y="797.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S3 4</text>
+<text x="190.0" y="815.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S1 6</text>
+<text x="190.0" y="833.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S1 9</text>
+<text x="190.0" y="851.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S1 10</text>
+<text x="190.0" y="869.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S2 7</text>
+<text x="190.0" y="887.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S2 8</text>
+<text x="190.0" y="905.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S2 11</text>
+<text x="190.0" y="923.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S3 1</text>
+<text x="190.0" y="941.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S3 2</text>
+<text x="190.0" y="959.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L3-S3 3</text>
+<rect x="510.0" y="168.0" width="8.0" height="168.0" rx="1" fill="#1f2328" stroke="#1f2328" stroke-width="1.5"/>
+<text x="530.0" y="162.0" font-size="12" text-anchor="start" font-weight="700" fill="#0b5cad">RT10 · Steering column</text>
+<text x="530.0" y="184.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Ignition switch · ACC</text>
+<text x="655.9" y="184.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S1 1 · Key ladder</text>
+<text x="530.0" y="202.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Light switch · PARK contact</text>
+<text x="693.1" y="202.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S1 2 · Headlight ladder</text>
+<text x="530.0" y="220.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Turn stalk · LEFT</text>
+<text x="631.0" y="220.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S1 3 · Turn stalk ladder</text>
+<text x="530.0" y="238.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Wiper stalk · HIGH</text>
+<text x="643.1" y="238.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S1 4 · Wiper stalk ladder</text>
+<text x="530.0" y="256.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Horn pad · contact</text>
+<text x="644.1" y="256.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S1 11 · Horn + wink request</text>
+<text x="530.0" y="274.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Ignition switch · ACC</text>
+<text x="655.9" y="274.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S1 12 · ACC — wake source</text>
+<text x="530.0" y="292.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Ignition switch · IG</text>
+<text x="646.6" y="292.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S2 1 · RUN — wake source</text>
+<text x="530.0" y="310.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Ignition switch · B</text>
+<text x="641.5" y="310.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S2 2 · Switch supply +12 V</text>
+<text x="530.0" y="328.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Wiper stalk · WASH contact</text>
+<text x="692.1" y="328.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S2 9 · Washer relay K12 coil return</text>
+<text x="530.0" y="348.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">behind the lower dash · length at M-2</text>
+<rect x="510.0" y="430.0" width="8.0" height="222.0" rx="1" fill="#1f2328" stroke="#1f2328" stroke-width="1.5"/>
+<text x="530.0" y="424.0" font-size="12" text-anchor="start" font-weight="700" fill="#0b5cad">RT11 · Centre stack</text>
+<text x="530.0" y="446.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">L3-CMF 1 — the comfort-bus receptacle behind the centre stack, …</text>
+<text x="913.2" y="446.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-P 2 · Comfort bus · capped</text>
+<text x="530.0" y="464.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Head unit · Red (ACC)</text>
+<text x="658.4" y="464.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-M 1 · Accessory — head unit ACC + USB-C</text>
+<text x="530.0" y="482.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Head unit · Yellow (BATT)</text>
+<text x="679.6" y="482.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-M 2 · Head unit memory / constant</text>
+<text x="530.0" y="500.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Head unit · Orange (ILLUM)</text>
+<text x="693.2" y="500.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S1 8 · Illumination bus</text>
+<text x="530.0" y="518.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Terminates in DP-DCU-B, the DT06-12S plug at the DCU in the …</text>
+<text x="892.8" y="518.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S2 3 · Window DRV up command · capped</text>
+<text x="530.0" y="536.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Terminates in DP-DCU-B, the DT06-12S plug at the DCU in the …</text>
+<text x="892.8" y="536.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S2 4 · Window DRV down command · capped</text>
+<text x="530.0" y="554.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Terminates in DP-DCU-B, the DT06-12S plug at the DCU in the …</text>
+<text x="892.8" y="554.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S2 5 · Window PASS up command · capped</text>
+<text x="530.0" y="572.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Terminates in DP-DCU-B, the DT06-12S plug at the DCU in the …</text>
+<text x="892.8" y="572.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S2 6 · Window PASS down command · capped</text>
+<text x="530.0" y="590.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Terminates in DP-DCU-B, the DT06-12S plug at the DCU in the …</text>
+<text x="892.8" y="590.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S3 5 · Mirror motor common (both mirrors) · capped</text>
+<text x="530.0" y="608.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Terminates in DP-DCU-B, the DT06-12S plug at the DCU in the …</text>
+<text x="892.8" y="608.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S3 6 · Mirror LEFT motor · capped</text>
+<text x="530.0" y="626.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Terminates in DP-DCU-B, the DT06-12S plug at the DCU in the …</text>
+<text x="892.8" y="626.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S3 7 · Mirror RIGHT motor · capped</text>
+<text x="530.0" y="644.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Terminates in DP-DCU-B, the DT06-12S plug at the DCU in the …</text>
+<text x="892.8" y="644.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S3 8 · Mirror clutch coils (both mirrors) · capped</text>
+<text x="530.0" y="664.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">across the dash rail · length at M-2</text>
+<rect x="510.0" y="746.0" width="8.0" height="24.0" rx="1" fill="#1f2328" stroke="#1f2328" stroke-width="1.5"/>
+<text x="530.0" y="740.0" font-size="12" text-anchor="start" font-weight="700" fill="#0b5cad">RT12 · Glovebox</text>
+<text x="530.0" y="762.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Glove box lamp · +</text>
+<text x="642.1" y="762.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S2 10 · Courtesy — glove box lamp</text>
+<text x="530.0" y="782.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">across the dash rail, passenger side · length at M-2</text>
+<rect x="510.0" y="864.0" width="8.0" height="96.0" rx="1" fill="#1f2328" stroke="#1f2328" stroke-width="1.5"/>
+<text x="530.0" y="858.0" font-size="12" text-anchor="start" font-weight="700" fill="#0b5cad">RT14 · HVAC case and pedal box</text>
+<text x="530.0" y="880.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Blower motor (luxury package) · Motor +</text>
+<text x="768.1" y="880.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-P 1 · Blower motor + · capped</text>
+<text x="530.0" y="898.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Brake pedal switch · Contact</text>
+<text x="700.3" y="898.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S1 5 · Brake pedal switch</text>
+<text x="530.0" y="916.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Brake pedal switch · Wake is NOT taken from this switch - a spare P084 plunger on the pedal feeds L3-S1 7 (D-278)</text>
+<text x="1174.9" y="916.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S1 7 · Brake — wake source</text>
+<text x="530.0" y="934.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Kick-down switch · One terminal</text>
+<text x="722.1" y="934.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S2 12 · Kick-down switch supply +12 V</text>
+<text x="530.0" y="952.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Kick-down switch · Other terminal</text>
+<text x="732.1" y="952.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S3 4 · Kick-down solenoid command</text>
+<text x="530.0" y="972.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">down the centre · length at M-2</text>
+<rect x="510.0" y="1054.0" width="8.0" height="168.0" rx="1" fill="#1f2328" stroke="#1f2328" stroke-width="1.5" stroke-dasharray="4 3"/>
+<text x="530.0" y="1048.0" font-size="12" text-anchor="start" font-weight="700" fill="#0b5cad">No route in the record yet</text>
+<text x="530.0" y="1070.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Hazard contact through 4.7 kΩ; 47 kΩ baseline to column ground …</text>
+<text x="916.8" y="1070.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S1 6 · Hazard switch</text>
+<text x="530.0" y="1088.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Wink L switch NC terminal; switch common → dash ground</text>
+<text x="867.9" y="1088.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S1 9 · Wink LEFT — NC pole</text>
+<text x="530.0" y="1106.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Wink R switch NC terminal; switch common → dash ground</text>
+<text x="869.0" y="1106.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S1 10 · Wink RIGHT — NC pole</text>
+<text x="530.0" y="1124.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">L3-MOD 1 — the future-module receptacle behind the dash, …</text>
+<text x="887.1" y="1124.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S2 7 · Future module +12 V constant (F13, block A, always-hot) · capped</text>
+<text x="530.0" y="1142.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">L3-MOD 2 — with cavity 7 (D-274)</text>
+<text x="724.7" y="1142.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S2 8 · Future module ground · capped</text>
+<text x="530.0" y="1160.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Parking brake switch C-04 terminal BR (switch body grounds …</text>
+<text x="892.3" y="1160.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S2 11 · Parking brake switch → brake warning lamp</text>
+<text x="530.0" y="1178.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">L3-RDR 1 — the radar pass-through's dash-end receptacle, …</text>
+<text x="877.9" y="1178.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S3 1 · Future pass-through A · capped</text>
+<text x="530.0" y="1196.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">L3-RDR 2 — the radar pass-through's dash-end receptacle, …</text>
+<text x="877.9" y="1196.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S3 2 · Future pass-through B · capped</text>
+<text x="530.0" y="1214.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">L3-RDR 3 — the radar pass-through's dash-end receptacle, …</text>
+<text x="877.9" y="1214.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L3-S3 3 · Future pass-through C · capped</text>
+<text x="530.0" y="1234.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">neither devices.route nor cavities.route says - lands_on names the far end</text>
+<text x="30.0" y="1308.0" font-size="11" text-anchor="start" font-weight="700" fill="#57606a">ROUTES</text>
+<text x="30.0" y="1328.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">RT10</text>
+<text x="80.0" y="1328.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Dash post → Steering column  ·  via behind the lower dash  ·  length: measure at M-2</text>
+<text x="30.0" y="1348.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">RT11</text>
+<text x="80.0" y="1348.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Dash post → Centre stack  ·  via across the dash rail  ·  length: measure at M-2</text>
+<text x="30.0" y="1368.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">RT12</text>
+<text x="80.0" y="1368.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Dash post → Glovebox  ·  via across the dash rail, passenger side  ·  length: measure at M-2</text>
+<text x="30.0" y="1388.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">RT14</text>
+<text x="80.0" y="1388.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Dash post → HVAC case and pedal box  ·  via down the centre  ·  length: measure at M-2</text>
+<path d="M30.0,1428.0 L66.0,1428.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M30.0,1428.0 L66.0,1428.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="76.0" y="1432.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">RED</text>
+<path d="M123.6,1428.0 L159.6,1428.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M123.6,1428.0 L159.6,1428.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="169.6" y="1432.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRY</text>
+<path d="M217.3,1428.0 L253.3,1428.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M217.3,1428.0 L253.3,1428.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="263.3" y="1432.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLU</text>
+<path d="M310.8,1428.0 L346.8,1428.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M310.8,1428.0 L346.8,1428.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<text x="356.8" y="1432.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ORN</text>
+<path d="M407.3,1428.0 L443.3,1428.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M407.3,1428.0 L443.3,1428.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="453.3" y="1432.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLK</text>
+<path d="M499.6,1428.0 L535.6,1428.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M499.6,1428.0 L535.6,1428.0" fill="none" stroke="#e8559c" stroke-width="5" stroke-linejoin="round"/>
+<text x="545.6" y="1432.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">PNK</text>
+<text x="30.0" y="1458.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">Solid: live. Dashed: run and capped. Only wires that leave the post are drawn; sealing plugs and reserved cavities are on sheet A. Generated by rx7.py diagrams - do not edit.</text>
+</svg>

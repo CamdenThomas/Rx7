@@ -1,0 +1,529 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1310" height="2842" viewBox="0 0 1310 2842" font-family="Noto Sans, sans-serif">
+<title>L4 Rear - pin ladder</title>
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="30.0" y="40.0" font-size="20" text-anchor="start" font-weight="700" fill="#1f2328">L4 REAR · A · PIN LADDER</text>
+<text x="30.0" y="64.0" font-size="12" text-anchor="start" font-weight="400" fill="#57606a">One block per housing, one row per cavity. Every wire runs straight from its cavity to where it lands. Read left to right.</text>
+<rect x="30.0" y="110.0" width="360.0" height="206.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="132.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L4-P  ·  DTP06-4S  ·  Dash post</text>
+<line x1="30" y1="144.0" x2="390" y2="144.0" stroke="#d0d7de"/>
+<circle cx="50" cy="161.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="165.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="165.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Rear defog grid</text>
+<text x="380.0" y="165.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O4</text>
+<path d="M390.0,161.0 L720.0,161.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,161.0 L720.0,161.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="151.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-P-1  ·  12 AWG RED</text>
+<rect x="720.0" y="147.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="165.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Grid G-25 terminal LG; grid terminal B → rear star ground (12 AWG)</text>
+<line x1="30" y1="178.0" x2="390" y2="178.0" stroke="#d0d7de"/>
+<circle cx="50" cy="195.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="199.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="199.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Fuel pump +</text>
+<text x="380.0" y="199.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O5</text>
+<path d="M390.0,195.0 L720.0,195.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,195.0 L720.0,195.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="185.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-P-2  ·  12 AWG RED  ·  RT17</text>
+<rect x="720.0" y="181.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="199.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Carter P4070 + ; pump − → its OWN 12 AWG to the rear star ground</text>
+<line x1="30" y1="212.0" x2="390" y2="212.0" stroke="#d0d7de"/>
+<circle cx="50" cy="234.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="238.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="238.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Window motor bus feed</text>
+<text x="380.0" y="238.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O1</text>
+<path d="M390.0,234.0 L720.0,234.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,234.0 L720.0,234.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="224.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-P-3  ·  12 AWG RED  ·  RT19  ·  capped at the far end</text>
+<rect x="720.0" y="215.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="230.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Lands at the sill node — the K5–K8 contact feed through the F8 / F9 holders, fitted empty (D-283); the</text>
+<text x="730.0" y="246.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">node is this branch's end (D-274)</text>
+<line x1="30" y1="256.0" x2="390" y2="256.0" stroke="#d0d7de"/>
+<circle cx="50" cy="286.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="290.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="281.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror heat feed → sill (F14), switched by</text>
+<text x="70.0" y="298.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the DCU</text>
+<text x="380.0" y="290.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU-B 9</text>
+<path d="M390.0,286.0 L720.0,286.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,286.0 L720.0,286.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="276.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-P-4  ·  12 AWG RED  ·  RT19  ·  capped at the far end</text>
+<rect x="720.0" y="259.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="274.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Lands at the sill node in F14's holder, fitted empty (D-283) — this branch's end (D-274). Fed from the</text>
+<text x="730.0" y="290.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">DCU's high-side mirror-heat switch through DP-DCU-B 9 (D-369, as D-254 meant), no longer the O15</text>
+<text x="730.0" y="306.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">splice</text>
+<rect x="30.0" y="352.0" width="360.0" height="518.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="374.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L4-M  ·  DT06-12S  ·  Dash post</text>
+<line x1="30" y1="386.0" x2="390" y2="386.0" stroke="#d0d7de"/>
+<circle cx="50" cy="403.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="407.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="407.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Tail · licence · rear markers</text>
+<text x="380.0" y="407.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O6</text>
+<path d="M390.0,403.0 L720.0,403.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,403.0 L720.0,403.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="393.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-M-1  ·  14 AWG ORN  ·  RT16</text>
+<rect x="720.0" y="389.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="407.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Splice at the hatch → F-07 RG, F-08 RG, F-04 RG (×2), F-14 RG, F-15 RG</text>
+<line x1="30" y1="420.0" x2="390" y2="420.0" stroke="#d0d7de"/>
+<circle cx="50" cy="437.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="441.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="441.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Brake lamps</text>
+<text x="380.0" y="441.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O7</text>
+<path d="M390.0,437.0 L720.0,437.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,437.0 L720.0,437.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="427.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-M-2  ·  14 AWG ORN  ·  RT16</text>
+<rect x="720.0" y="423.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="441.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Splice → F-07 G, F-08 G</text>
+<line x1="30" y1="454.0" x2="390" y2="454.0" stroke="#d0d7de"/>
+<circle cx="50" cy="484.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="488.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="488.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Hatch release solenoid</text>
+<text x="380.0" y="488.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K3 87</text>
+<path d="M390.0,484.0 L720.0,484.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,484.0 L720.0,484.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="474.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-M-3  ·  14 AWG ORN  ·  RT18  ·  capped at the far end</text>
+<rect x="720.0" y="457.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="472.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The hatch-release solenoid's + terminal, through the hinge loop with the tail-lamp conductors — it</text>
+<text x="730.0" y="488.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">exists and is believed to work (Camden 2026-09-08, DV48); the post end is capped until the luxury</text>
+<text x="730.0" y="504.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">package fits the trigger (D-180; the K3 / K4 sockets are the slot) (D-274)</text>
+<line x1="30" y1="514.0" x2="390" y2="514.0" stroke="#d0d7de"/>
+<circle cx="50" cy="536.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="540.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="540.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Fuel-door release solenoid</text>
+<text x="380.0" y="540.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K4 87</text>
+<path d="M390.0,536.0 L720.0,536.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,536.0 L720.0,536.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="526.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-M-4  ·  14 AWG ORN  ·  capped at the far end</text>
+<rect x="720.0" y="517.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="532.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The fuel-door solenoid's + terminal behind the quarter trim — it exists (Camden 2026-09-08, DV49;</text>
+<text x="730.0" y="548.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">K-017 corrected); the post end is capped until the trigger (D-180) (D-274)</text>
+<line x1="30" y1="558.0" x2="390" y2="558.0" stroke="#d0d7de"/>
+<circle cx="50" cy="575.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="579.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="579.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Turn LEFT rear</text>
+<text x="380.0" y="579.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O17</text>
+<path d="M390.0,575.0 L720.0,575.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,575.0 L720.0,575.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="565.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-M-5  ·  16 AWG RED  ·  RT16</text>
+<rect x="720.0" y="561.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="579.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Rear combo F-07, terminal GR</text>
+<line x1="30" y1="592.0" x2="390" y2="592.0" stroke="#d0d7de"/>
+<circle cx="50" cy="609.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="613.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="613.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Turn RIGHT rear</text>
+<text x="380.0" y="613.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O18</text>
+<path d="M390.0,609.0 L720.0,609.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,609.0 L720.0,609.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="599.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-M-6  ·  16 AWG RED  ·  RT16</text>
+<rect x="720.0" y="595.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="613.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Rear combo F-08, terminal GO</text>
+<line x1="30" y1="626.0" x2="390" y2="626.0" stroke="#d0d7de"/>
+<circle cx="50" cy="643.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="647.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="647.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Reverse lamps</text>
+<text x="380.0" y="647.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O19</text>
+<path d="M390.0,643.0 L720.0,643.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,643.0 L720.0,643.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="633.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-M-7  ·  16 AWG RED  ·  RT16</text>
+<rect x="720.0" y="629.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="647.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Splice → F-07 RW, F-08 RW</text>
+<line x1="30" y1="660.0" x2="390" y2="660.0" stroke="#d0d7de"/>
+<circle cx="50" cy="677.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="681.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="681.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Interior lamp (PWM)</text>
+<text x="380.0" y="681.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F12</text>
+<path d="M390.0,677.0 L720.0,677.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,677.0 L720.0,677.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="667.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-M-8  ·  16 AWG RED</text>
+<rect x="720.0" y="663.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="681.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Interior/spot lamp H-06 +; lamp − through its own DOOR/OFF/ON switch → roof-rail ground</text>
+<line x1="30" y1="694.0" x2="390" y2="694.0" stroke="#d0d7de"/>
+<circle cx="50" cy="716.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="720.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
+<text x="70.0" y="720.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Window DRV up command → K5 coil</text>
+<text x="380.0" y="720.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S2 3</text>
+<path d="M390.0,716.0 L720.0,716.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,716.0 L720.0,716.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="706.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-M-9  ·  16 AWG BLU  ·  RT19  ·  capped at the far end</text>
+<rect x="720.0" y="697.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="712.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">K5 socket, terminal 86 at the sill node — landed in the empty socket, which is this branch's end; the</text>
+<text x="730.0" y="728.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">relay comes with the power windows (D-274)</text>
+<line x1="30" y1="738.0" x2="390" y2="738.0" stroke="#d0d7de"/>
+<circle cx="50" cy="760.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="764.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">10</text>
+<text x="70.0" y="764.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Window DRV down command → K6 coil</text>
+<text x="380.0" y="764.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S2 4</text>
+<path d="M390.0,760.0 L720.0,760.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,760.0 L720.0,760.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="750.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-M-10  ·  16 AWG BLU  ·  RT19  ·  capped at the far end</text>
+<rect x="720.0" y="741.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="756.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">K6 socket, terminal 86 at the sill node — landed in the empty socket, which is this branch's end; the</text>
+<text x="730.0" y="772.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">relay comes with the power windows (D-274)</text>
+<line x1="30" y1="782.0" x2="390" y2="782.0" stroke="#d0d7de"/>
+<circle cx="50" cy="804.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="808.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">11</text>
+<text x="70.0" y="808.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Window PASS up command → K7 coil</text>
+<text x="380.0" y="808.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S2 5</text>
+<path d="M390.0,804.0 L720.0,804.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,804.0 L720.0,804.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="794.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-M-11  ·  16 AWG BLU  ·  RT19  ·  capped at the far end</text>
+<rect x="720.0" y="785.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="800.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">K7 socket, terminal 86 at the sill node — landed in the empty socket, which is this branch's end; the</text>
+<text x="730.0" y="816.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">relay comes with the power windows (D-274)</text>
+<line x1="30" y1="826.0" x2="390" y2="826.0" stroke="#d0d7de"/>
+<circle cx="50" cy="848.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="852.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">12</text>
+<text x="70.0" y="852.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Window PASS down command → K8 coil</text>
+<text x="380.0" y="852.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S2 6</text>
+<path d="M390.0,848.0 L720.0,848.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,848.0 L720.0,848.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="838.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-M-12  ·  16 AWG BLU  ·  RT19  ·  capped at the far end</text>
+<rect x="720.0" y="829.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="844.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">K8 socket, terminal 86 at the sill node — landed in the empty socket, which is this branch's end; the</text>
+<text x="730.0" y="860.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">relay comes with the power windows (D-274)</text>
+<rect x="30.0" y="906.0" width="360.0" height="382.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="928.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L4-S  ·  DT06-8S  ·  Dash post</text>
+<line x1="30" y1="940.0" x2="390" y2="940.0" stroke="#d0d7de"/>
+<circle cx="50" cy="957.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="961.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="961.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Fuel level sender</text>
+<path d="M390.0,957.0 L720.0,957.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,957.0 L720.0,957.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="947.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S-1  ·  16 AWG GRY  ·  RT17</text>
+<rect x="720.0" y="943.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="961.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Tank sender C-01 terminal Y; sender terminal B → rear star ground (16 AWG). Route apart from L4-P</text>
+<line x1="30" y1="974.0" x2="390" y2="974.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1004.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1008.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="1008.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Door jamb switches — ladder</text>
+<text x="380.0" y="1008.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A6</text>
+<path d="M390.0,1004.0 L720.0,1004.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1004.0 L720.0,1004.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="994.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S-2  ·  16 AWG GRY  ·  RT19</text>
+<rect x="720.0" y="977.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="992.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">47 kΩ baseline from the sill splice to the sill ground, so all-doors-shut reads 47k and open means a</text>
+<text x="730.0" y="1008.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">break (D-368). Splice at the sill → driver jamb switch through 33 kΩ · passenger jamb switch through</text>
+<text x="730.0" y="1024.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">8.2 kΩ; each switch grounds through its body</text>
+<line x1="30" y1="1034.0" x2="390" y2="1034.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1056.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1060.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="1060.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Road speed — pulse generator signal</text>
+<path d="M390.0,1056.0 L720.0,1056.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1056.0 L720.0,1056.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1046.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S-3  ·  16 AWG GRY  ·  RT21</text>
+<rect x="720.0" y="1037.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1052.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Pulse generator on the transmission's speedo-drive boss (DV47, P113), fitted at the meters cutover —</text>
+<text x="730.0" y="1068.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">signal; 18 in service loop in the tunnel (D-272)</text>
+<line x1="30" y1="1078.0" x2="390" y2="1078.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1100.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1104.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="1104.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Road speed — pulse generator supply +12 V</text>
+<text x="380.0" y="1104.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O10</text>
+<path d="M390.0,1100.0 L720.0,1100.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1100.0 L720.0,1100.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1090.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S-4  ·  16 AWG RED  ·  RT21</text>
+<rect x="720.0" y="1081.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1096.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Pulse generator supply — an O10 tap (N73), so the sensor lives and dies with the ICU; sensor ground</text>
+<text x="730.0" y="1112.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">→ rear star, G35 (D-272)</text>
+<line x1="30" y1="1122.0" x2="390" y2="1122.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1144.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1148.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="1148.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Future pass-through A</text>
+<text x="380.0" y="1148.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S3 1</text>
+<path d="M390.0,1144.0 L720.0,1144.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1144.0 L720.0,1144.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1134.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S-5  ·  16 AWG GRY  ·  RT15  ·  capped at the far end</text>
+<rect x="720.0" y="1125.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1140.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L4-RDR 1 — the pass-through's rear-end receptacle at the rear node, dust-capped; the run up the</text>
+<text x="730.0" y="1156.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">hatch goes in with the sensor (D-274)</text>
+<line x1="30" y1="1166.0" x2="390" y2="1166.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1188.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1192.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="1192.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Future pass-through B</text>
+<text x="380.0" y="1192.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S3 2</text>
+<path d="M390.0,1188.0 L720.0,1188.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1188.0 L720.0,1188.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1178.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S-6  ·  16 AWG GRY  ·  RT15  ·  capped at the far end</text>
+<rect x="720.0" y="1169.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1184.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L4-RDR 2 — the pass-through's rear-end receptacle at the rear node, dust-capped; the run up the</text>
+<text x="730.0" y="1200.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">hatch goes in with the sensor (D-274)</text>
+<line x1="30" y1="1210.0" x2="390" y2="1210.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1232.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1236.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="1236.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Future pass-through C</text>
+<text x="380.0" y="1236.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S3 3</text>
+<path d="M390.0,1232.0 L720.0,1232.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1232.0 L720.0,1232.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1222.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S-7  ·  16 AWG GRY  ·  RT15  ·  capped at the far end</text>
+<rect x="720.0" y="1213.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1228.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L4-RDR 3 — the pass-through's rear-end receptacle at the rear node, dust-capped; the run up the</text>
+<text x="730.0" y="1244.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">hatch goes in with the sensor (D-274)</text>
+<line x1="30" y1="1254.0" x2="390" y2="1254.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1271.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1275.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="1275.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Courtesy — luggage lamp</text>
+<text x="380.0" y="1275.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F19</text>
+<path d="M390.0,1271.0 L720.0,1271.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1271.0 L720.0,1271.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1261.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S-8  ·  16 AWG RED  ·  RT18</text>
+<rect x="720.0" y="1257.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1275.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Luggage lamp H-11 +; lamp − → lid switch H-12 → rear star ground</text>
+<rect x="30.0" y="1324.0" width="360.0" height="392.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="1346.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L4-S2  ·  DT06-8S  ·  Dash post</text>
+<line x1="30" y1="1358.0" x2="390" y2="1358.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1380.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1384.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="1384.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror motor common (both mirrors)</text>
+<text x="380.0" y="1384.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S3 5</text>
+<path d="M390.0,1380.0 L720.0,1380.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1380.0 L720.0,1380.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1370.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S2-1  ·  16 AWG GRY  ·  RT19  ·  capped at the far end</text>
+<rect x="720.0" y="1361.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1376.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Capped at the post, on the DCU's line from L3-S3 (D-360); at the sill node spliced to D1 4 and D2 4</text>
+<text x="730.0" y="1392.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">(D-255). Pin function inside the door is confirm - W-332</text>
+<line x1="30" y1="1402.0" x2="390" y2="1402.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1424.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1428.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="1428.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror LEFT motor</text>
+<text x="380.0" y="1428.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S3 6</text>
+<path d="M390.0,1424.0 L720.0,1424.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1424.0 L720.0,1424.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1414.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S2-2  ·  16 AWG GRY  ·  RT19  ·  capped at the far end</text>
+<rect x="720.0" y="1405.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1420.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Capped at the post, on the DCU's line from L3-S3 (D-360); sill node → D1 5 (D-255). Pin function inside</text>
+<text x="730.0" y="1436.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the door is confirm - W-332</text>
+<line x1="30" y1="1446.0" x2="390" y2="1446.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1468.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1472.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="1472.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror LEFT clutch coil</text>
+<text x="380.0" y="1472.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S3 8</text>
+<path d="M390.0,1468.0 L720.0,1468.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1468.0 L720.0,1468.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1458.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S2-3  ·  16 AWG GRY  ·  RT19  ·  capped at the far end</text>
+<rect x="720.0" y="1449.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1464.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Capped at the post, on the DCU's line from L3-S3 (D-360); sill node → D1 6 (D-255). Pin function inside</text>
+<text x="730.0" y="1480.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the door is confirm - W-332</text>
+<line x1="30" y1="1490.0" x2="390" y2="1490.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1512.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1516.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="1516.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror RIGHT motor</text>
+<text x="380.0" y="1516.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S3 7</text>
+<path d="M390.0,1512.0 L720.0,1512.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1512.0 L720.0,1512.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1502.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S2-4  ·  16 AWG GRY  ·  RT19  ·  capped at the far end</text>
+<rect x="720.0" y="1493.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1508.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Capped at the post, on the DCU's line from L3-S3 (D-360); sill node → D2 5 (D-255). Pin function inside</text>
+<text x="730.0" y="1524.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the door is confirm - W-332</text>
+<line x1="30" y1="1534.0" x2="390" y2="1534.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1556.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1560.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="1560.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror RIGHT clutch coil</text>
+<text x="380.0" y="1560.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S3 8</text>
+<path d="M390.0,1556.0 L720.0,1556.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1556.0 L720.0,1556.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1546.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S2-5  ·  16 AWG GRY  ·  RT19  ·  capped at the far end</text>
+<rect x="720.0" y="1537.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1552.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Capped at the post, on the DCU's line from L3-S3 (D-360); sill node → D2 6 (D-255). Pin function inside</text>
+<text x="730.0" y="1568.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the door is confirm - W-332</text>
+<line x1="30" y1="1578.0" x2="390" y2="1578.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1608.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1612.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="1612.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="1612.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="1596.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 - the master-switch position sense is dropped and its conductor is not run</text>
+<text x="730.0" y="1612.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">(D-351, supersedes D-331). Camden: he is the only future owner, he will not open the master with the</text>
+<text x="730.0" y="1628.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">engine running, and he will not dig the tunnel up to add a wire he declined</text>
+<line x1="30" y1="1638.0" x2="390" y2="1638.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1660.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1664.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="1664.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Kick-down solenoid command (tunnel)</text>
+<text x="380.0" y="1664.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S3 4</text>
+<path d="M390.0,1660.0 L720.0,1660.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1660.0 L720.0,1660.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1650.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S2-7  ·  16 AWG RED  ·  RT14/RT21</text>
+<rect x="720.0" y="1641.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1656.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Kick-down solenoid B-33 on the transmission. Shares the RT21 tunnel run with the road-speed pair;</text>
+<text x="730.0" y="1672.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the solenoid's other side is its factory ground on the case</text>
+<line x1="30" y1="1682.0" x2="390" y2="1682.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1699.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1703.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="1703.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="1703.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="1703.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16</text>
+<rect x="30.0" y="1752.0" width="360.0" height="376.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="1774.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">D1  ·  DT06-8S  ·  Sill node</text>
+<line x1="30" y1="1786.0" x2="390" y2="1786.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1808.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1812.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="1812.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Window motor leg A</text>
+<text x="380.0" y="1812.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K5 30</text>
+<text x="406.0" y="1812.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="1804.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is</text>
+<text x="730.0" y="1820.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">built with the mirror and the window (D-274)</text>
+<line x1="30" y1="1830.0" x2="390" y2="1830.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1852.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1856.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="1856.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Window motor leg B</text>
+<text x="380.0" y="1856.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K6 30</text>
+<text x="406.0" y="1856.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="1848.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is</text>
+<text x="730.0" y="1864.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">built with the mirror and the window (D-274)</text>
+<line x1="30" y1="1874.0" x2="390" y2="1874.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1891.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1895.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="1895.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="1895.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="1895.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16</text>
+<line x1="30" y1="1908.0" x2="390" y2="1908.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1930.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1934.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="1934.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Mirror motor common</text>
+<text x="380.0" y="1934.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L4-S2 1</text>
+<text x="406.0" y="1934.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="1926.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is</text>
+<text x="730.0" y="1942.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">built with the mirror and the window (D-274)</text>
+<line x1="30" y1="1952.0" x2="390" y2="1952.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1974.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1978.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="1978.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Mirror motor</text>
+<text x="380.0" y="1978.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L4-S2 2</text>
+<text x="406.0" y="1978.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="1970.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is</text>
+<text x="730.0" y="1986.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">built with the mirror and the window (D-274)</text>
+<line x1="30" y1="1996.0" x2="390" y2="1996.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2018.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2022.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="2022.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Mirror clutch coil</text>
+<text x="380.0" y="2022.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L4-S2 3</text>
+<text x="406.0" y="2022.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="2014.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is</text>
+<text x="730.0" y="2030.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">built with the mirror and the window (D-274)</text>
+<line x1="30" y1="2040.0" x2="390" y2="2040.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2062.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2066.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="2066.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Mirror heat</text>
+<text x="380.0" y="2066.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F14</text>
+<text x="406.0" y="2066.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="2058.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is</text>
+<text x="730.0" y="2074.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">built with the mirror and the window (D-274)</text>
+<line x1="30" y1="2084.0" x2="390" y2="2084.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2106.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2110.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="2110.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Door ground</text>
+<text x="380.0" y="2110.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SILL-GND</text>
+<text x="406.0" y="2110.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="2102.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is</text>
+<text x="730.0" y="2118.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">built with the mirror and the window (D-274)</text>
+<rect x="30.0" y="2164.0" width="360.0" height="376.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="2186.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">D2  ·  DT06-8S  ·  Sill node</text>
+<line x1="30" y1="2198.0" x2="390" y2="2198.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2220.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2224.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="2224.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Window motor leg A</text>
+<text x="380.0" y="2224.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K7 30</text>
+<text x="406.0" y="2224.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="2216.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is</text>
+<text x="730.0" y="2232.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">built with the mirror and the window (D-274)</text>
+<line x1="30" y1="2242.0" x2="390" y2="2242.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2264.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2268.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="2268.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Window motor leg B</text>
+<text x="380.0" y="2268.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K8 30</text>
+<text x="406.0" y="2268.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="2260.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is</text>
+<text x="730.0" y="2276.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">built with the mirror and the window (D-274)</text>
+<line x1="30" y1="2286.0" x2="390" y2="2286.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2303.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2307.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="2307.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="2307.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="2307.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16</text>
+<line x1="30" y1="2320.0" x2="390" y2="2320.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2342.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2346.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="2346.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Mirror motor common</text>
+<text x="380.0" y="2346.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L4-S2 1</text>
+<text x="406.0" y="2346.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="2338.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is</text>
+<text x="730.0" y="2354.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">built with the mirror and the window (D-274)</text>
+<line x1="30" y1="2364.0" x2="390" y2="2364.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2386.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2390.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="2390.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Mirror motor</text>
+<text x="380.0" y="2390.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L4-S2 4</text>
+<text x="406.0" y="2390.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="2382.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is</text>
+<text x="730.0" y="2398.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">built with the mirror and the window (D-274)</text>
+<line x1="30" y1="2408.0" x2="390" y2="2408.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2430.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2434.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="2434.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Mirror clutch coil</text>
+<text x="380.0" y="2434.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L4-S2 5</text>
+<text x="406.0" y="2434.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="2426.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is</text>
+<text x="730.0" y="2442.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">built with the mirror and the window (D-274)</text>
+<line x1="30" y1="2452.0" x2="390" y2="2452.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2474.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2478.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="2478.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Mirror heat</text>
+<text x="380.0" y="2478.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F14</text>
+<text x="406.0" y="2478.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="2470.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is</text>
+<text x="730.0" y="2486.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">built with the mirror and the window (D-274)</text>
+<line x1="30" y1="2496.0" x2="390" y2="2496.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2518.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2522.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="2522.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Door ground</text>
+<text x="380.0" y="2522.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SILL-GND</text>
+<text x="406.0" y="2522.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="2514.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Pinned on the node side of the sill receptacle; sealing plug in the door plug — the door harness is</text>
+<text x="730.0" y="2530.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">built with the mirror and the window (D-274)</text>
+<rect x="30.0" y="2576.0" width="360.0" height="170.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="2598.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L4-RDR  ·  DT06-4S  ·  Rear node</text>
+<line x1="30" y1="2610.0" x2="390" y2="2610.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2627.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2631.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="2631.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Radar pass-through A</text>
+<text x="380.0" y="2631.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L4-S 5</text>
+<path d="M390.0,2627.0 L720.0,2627.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,2627.0 L720.0,2627.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="2617.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-RDR-1  ·  16 AWG GRY  ·  capped at the far end</text>
+<rect x="720.0" y="2613.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2631.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Dust-capped receptacle at the rear node — the run up the hatch to the sensor goes in with it (D-274)</text>
+<line x1="30" y1="2644.0" x2="390" y2="2644.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2661.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2665.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="2665.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Radar pass-through B</text>
+<text x="380.0" y="2665.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L4-S 6</text>
+<path d="M390.0,2661.0 L720.0,2661.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,2661.0 L720.0,2661.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="2651.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-RDR-2  ·  16 AWG GRY  ·  capped at the far end</text>
+<rect x="720.0" y="2647.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2665.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">as cavity 1</text>
+<line x1="30" y1="2678.0" x2="390" y2="2678.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2695.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2699.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="2699.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Radar pass-through C</text>
+<text x="380.0" y="2699.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L4-S 7</text>
+<path d="M390.0,2695.0 L720.0,2695.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,2695.0 L720.0,2695.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="2685.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-RDR-3  ·  16 AWG GRY  ·  capped at the far end</text>
+<rect x="720.0" y="2681.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2699.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">as cavity 1</text>
+<line x1="30" y1="2712.0" x2="390" y2="2712.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2729.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2733.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="2733.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="2733.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="2733.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16</text>
+<path d="M30.0,2792.0 L66.0,2792.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M30.0,2792.0 L66.0,2792.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="76.0" y="2796.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">RED</text>
+<path d="M123.6,2792.0 L159.6,2792.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M123.6,2792.0 L159.6,2792.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="169.6" y="2796.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRY</text>
+<path d="M217.3,2792.0 L253.3,2792.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M217.3,2792.0 L253.3,2792.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="263.3" y="2796.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLU</text>
+<path d="M310.8,2792.0 L346.8,2792.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M310.8,2792.0 L346.8,2792.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<text x="356.8" y="2796.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ORN</text>
+<text x="30.0" y="2822.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">Solid wire: live. Dashed: run and capped at the far end. A box on a wire is an inline resistor. Generated by rx7.py diagrams - do not edit.</text>
+</svg>

@@ -13,7 +13,7 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 
 **Phase:** PLANNING. **Goal:** Everything the car gets after it drives on the new harness - bezel and dash plastics, the panel's faceplate, the loads the DCU drives (blower, servos, seats, mirrors, windows), lighting second pass, radar
 
-24 open · 4 ready now · 17 done.
+25 open · 5 ready now · 17 done.
 
 ## Now — what can be started today
 
@@ -23,6 +23,10 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 - **V-063** — Tail-light aperture [M-DAY]
 - **V-066** — What headlamps are actually fitted today [M-DAY]
 - **W-332** — Measure the car's own mirror heads at the door plug
+
+**Agent:**
+
+- **X-010** — Parts round 2: front seats with heating and cooling built in, likely power-adjusted (LP52) - find candidates and what each needs from the car
 
 ## Everything, in working order
 
@@ -45,18 +49,21 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 
 *Closed:* ✔ V-061 · ✔ V-064
 
-### X
+### X · Research and design - the agent
 
+- ▶ **X-010** — Parts round 2: front seats with heating and cooling built in, likely power-adjusted (LP52) - find candidates and what each needs from the car  
+  *agent*  
+  D-392. For each candidate seat: donor car or maker, heat and cool built in, power adjustment, how its heat, cool and motors are controlled (their own switches, a seat module, or CAN), feeds and peak currents, side airbag (and what unplugging one means), how it mounts to the FB floor and its width against the FB tunnel and door, price used and new. Then as PICKS.md entries (CLAUDE.md 6.9). The answer decides whether LP30 / LP31 come back
 - ⏳ **H-006** — Display bezel mould — foam plug over the binnacle plate, fibreglass skin, finish  
-  *agent* · waits on: 00-electrical:C1 open  
+  *agent* · waits on: 00-electrical:C1 (a row in 00-electrical, open)  
   M-1 aperture measurements (electrical C1). FT34; the plate and the display are the electrical build's (D-268) and the plate stays as the bezel's sub-frame (electrical D-269)
 - ⏳ **X-009** — After V-063 measures the tail-light aperture, raise the tail-light choice again as a block with the measured numbers (D-384)  
-  *agent* · waits on: V-063 open  
+  *agent* · waits on: V-063 (yours: Tail-light aperture [M-DAY])  
   Options as block 01.10 had them: build from automotive LEDs (ams OSRAM LR G6SP.02, V-064) on the LP40 driver boards, or a certified sealed lamp (Truck-Lite 60555R) if it fits the aperture. Add the new block to I15's gate when it is written.
 - ⏳ **Z-002** — Radar subsystem  
-  *agent* · waits on: 01.11 open
+  *agent* · waits on: block 01.11 (waiting for your answer in BLOCKS.md: Which hidden radar / laser detector, and what the cluster shows)
 - ⏳ **Z-004** — Cold-weather behaviour — battery heater draw, winter parasitic budget  
-  *agent* · waits on: 00-electrical:V-052 open  
+  *agent* · waits on: 00-electrical:V-052 (a row in 00-electrical, open)  
   V-052 is the electrical build's (the Ionic heater figures, via its W-330b)
 
 *Closed:* ✖ B6 · ✖ F-003 · ✖ F-004 · ✖ H-001 · ✔ H-003 · ✖ H-004 · ✖ H-005 · ✖ X-003 · ✖ X-004 · ✔ X-006 · ✔ X-008 · ✖ Z-001
@@ -64,52 +71,52 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 ### I · Install - the luxury package into the car, one step per row (from the archived INSTALL.md, X-008). Each dash-plastics event is done once, and the car drives home at the end of every session
 
 - ⏳ **I1** — Centre stack apart - the one time: the factory heater control head and its lever cables come out, and the three HVAC servos (LP19) take the cables  
-  *you* · waits on: 00-electrical:E34 open  
+  *you* · waits on: 00-electrical:E34 (a row in 00-electrical, open)  
   Modules join a finished car, so this waits on the electrical shakedown (D-081). The DCU and the panel's electronics are already in from electrical E26 (D-374); this project fits what they drive. Servo headers are on the DCU (dcu_channels SN15).
 - ⏳ **I12** — Door cards off, the one time, both doors: bond the mirror heat pads (LP34) to the car's own FB mirror glass, and run the door harnesses (LP48) to D1 / D2 4-7  
-  *you* · waits on: W-332 open  
+  *you* · waits on: W-332 (yours: Measure the car's own mirror heads at the door plug)  
   The FB mirror heads are kept (D-359): one motor plus a clutch coil each, driven by the DCU through L3-S3 5-8, already linked at the post to L4-S2 (electrical D-360). Mirror heat is the DCU's high-side switch via DP-DCU-B 9 → L4-P 4 → F14 (electrical D-369); F14's fuse per block 00.28.
 - ⏳ **I2** — Build the O15 comfort fuse block (LP21) behind the centre stack and plug it into L3-CMF (L3-P 2, electrical D-274)  
-  *you* · waits on: I1 open  
+  *you* · waits on: I1 (yours: Centre stack apart - the one time: the factory heater control head …)  
   The fuse per position is block 00.28's ruling. The DCU's servo rail and the mirror-heat supply come off this block into the DCU's comfort receptacle (electrical P153).
 - ⏳ **I3** — Fit the new blower motor (LP17) to L3-BLW with its final stage (LP18) in the return path, and run the DCU's PWM pigtail (SN14) to the final stage  
-  *you* · waits on: I1 open  
+  *you* · waits on: I1 (yours: Centre stack apart - the one time: the factory heater control head …)  
   The final stage mounts in the old resistor pack's hole for airflow (D-308, electrical D-257).
 - ⏳ **I5** — Fit the release relays K3 / K4 (LP51) in the dash node's empty sockets  
-  *you* · waits on: I1 open; T-032 open  
+  *you* · waits on: I1 (yours: Centre stack apart - the one time: the factory heater control head …); T-032 (yours: The release triggers, and the hatch latch switch (broken, K-016))  
   T-032 first: the release triggers tested and the broken hatch latch switch dealt with (K-016). The DCU picks hatch or fuel door by grounding K3's or K4's coil during O10's release pulse (electrical D-370).
 - ⏳ **I9** — Binnacle apart - the one time: foam plug over the display plate, fibreglass skin, filler, primer, finish; the page button's place kept; refit  
-  *you* · waits on: H-006 open  
+  *you* · waits on: H-006 (agent: Display bezel mould — foam plug over the binnacle plate, …)  
   The display has been the car's instrument on its plain plate since the electrical build (electrical D-268). Nothing electrical changes: the ribbon and the button are as they were (D-159).
 - ⏳ **I13** — Door cards still off: window regulators and motors (LP36) to D1 / D2 1-2, K5-K8 (LP37) into the sill sockets and the F8 / F9 fuses into their holders  
-  *you* · waits on: I12 open  
+  *you* · waits on: I12 (yours: Door cards off, the one time, both doors: bond the mirror heat …)  
   The window keys are panel keys: the DCU drives K5-K8's coils high-side (electrical D-363); the motor power is the PMU's MOTOR_BUS on O1 (electrical D-357).
 - ⏳ **I15** — Lighting, the second pass: tail lights (the path is block 01.10), headlamp units on adapter plates (D-358), LED bulbs - then re-set every lamp channel's soft fuse from a measurement  
-  *you* · waits on: 00-electrical:E34 open; X-009 open; V-063 open; V-066 open  
+  *you* · waits on: 00-electrical:E34 (a row in 00-electrical, open); X-009 (agent: After V-063 measures the tail-light aperture, raise the tail-light …); V-063 (yours: Tail-light aperture [M-DAY]); V-066 (yours: What headlamps are actually fitted today [M-DAY])  
   Only after the electrical shakedown on stock bulbs (L-004). A limit set for a filament does not protect an LED (D-122).
 - ⏳ **I16** — Radar: install the subsystem Z-002 designs, on the L3-RDR / L4-RDR pass-through  
-  *you* · waits on: Z-002 open  
+  *you* · waits on: Z-002 (agent: Radar subsystem)  
   What the detector is: D-383 (a concealed speed-trap radar / laser detector); which one is block 01.11. Nothing is uncapped until the system is chosen.
 - ⏳ **I4** — Plug the comfort-return harness (LP49) into the DCU's comfort receptacle (electrical P153), and the servo leads into the DCU's servo headers  
-  *you* · waits on: I2 open; I3 open  
+  *you* · waits on: I2 (yours: Build the O15 comfort fuse block (LP21) behind the centre stack …); I3 (yours: Fit the new blower motor (LP17) to L3-BLW with its final stage …)  
   The harness is this project's; the receptacle on the DCU is the electrical build's (D-374).
 - ⏳ **I10** — Check the display through the new bezel: noon-sun and night legibility, and instant-on with a stopwatch  
-  *you* · waits on: I9 open  
+  *you* · waits on: I9 (yours: Binnacle apart - the one time: foam plug over the display plate, …)  
   D-192 instant-on.
 - ⏳ **I14** — Test mirrors and windows, then refit the door cards: thumbstick moves each mirror, the press toggles side, heat warms; every window up and down, and up + down on one side never both  
-  *you* · waits on: I13 open  
+  *you* · waits on: I13 (yours: Door cards still off: window regulators and motors (LP36) to D1 / …)  
   Enable the window logic in the PMU client first. Read each motor's current on the diagnostics page and compare with W-332.
 - ⏳ **I6** — In the PMU client: enable O16 (the blower feed, limit from the motor's sheet, D-126), O4 defog on the 0x400 defog key, and the hatch / fuel-door release on their 0x400 keys  
-  *you* · waits on: I4 open; I5 open  
+  *you* · waits on: I4 (yours: Plug the comfort-return harness (LP49) into the DCU's comfort …); I5 (yours: Fit the release relays K3 / K4 (LP51) in the dash node's empty sockets)  
   The key bits are 0x400 bytes 0-1 (electrical F-016). On the Windows laptop (electrical D-376).
 - ⏳ **I11** — Carpet up, the one time: sound deadening (LP33), then the seat heating elements (LP30) and cooling fans (LP31) - feeds from the O15 block, returns to the DCU on LP49  
-  *you* · waits on: I4 open  
+  *you* · waits on: I4 (yours: Plug the comfort-return harness (LP49) into the DCU's comfort …)  
   The heated nozzles and park de-icer are cancelled (D-329): L2-S 6 stays a sealing plug. Measure each seat load's current before closing up (V-101's figures are confirm).
 - ⏳ **I7** — Commission climate: servo endpoints, the blower silent at part speed, every comfort switch off through a DCU reset, defog, hatch and fuel-door keys working  
-  *you* · waits on: I6 open  
+  *you* · waits on: I6 (yours: In the PMU client: enable O16 (the blower feed, limit from the …)  
   Silent at part speed is what the ≥ 20 kHz final stage is for (D-308). Endpoints are stored with the climate memory (SN15).
 - ⏳ **I8** — Fit the panel's faceplate and knobs (LP20) over the panel, and close the centre stack  
-  *you* · waits on: I7 open  
+  *you* · waits on: I7 (yours: Commission climate: servo endpoints, the blower silent at part …)  
   The faceplate's look is Camden's call (taste) - a block when the faceplate is drawn. Illumination from L3-S1 8, dimming with the dash (electrical DV53).
 
 ### A · Done by the agent alone, 2026-09-07
@@ -123,4 +130,4 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 ### C · The owner's calls
 
 *Closed:* ✖ C1
-<!-- rx7 todo sha256:687c7c6624f8f63d8a7bfb4f429fc530e2f4e3a489500d68c4591ae48cc2fc5d -->
+<!-- rx7 todo sha256:622b39c5db9b02e885aec35a0732bc8437c188d22cd15514cda0708f6c560bf7 -->

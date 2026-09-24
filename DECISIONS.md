@@ -11,21 +11,21 @@ group. Superseded and withdrawn ones are listed at the end with the decision tha
 replaced each, so any id ever issued can still be found by searching this file for it.
 
 
-**Most recent:** `D-380` The control panel's electronics: nine keys on a diode-isolated 3 × 3 matrix, four detented encoders, the thumbstick, all on one 20-way IDC ribbon to the DCU · `D-381` The door and A8 wake stages' values: excitation 220k switched off while awake, sense divider 1M / 560k, a 1 µF edge into a follower, pulse about 0.4 s - all confirm until CK12 · `D-382` The DCU's comfort circuits: 7.5 A per seat heater, 5 A per seat cooler, 5 A for mirror heat, and an 8-way DT13 comfort connector with its own two ground pins · `D-383` The radar is a speed-trap radar and laser detector, fully concealed: no unit on the windshield, nothing visible but the warning on the cluster · `D-384` The tail-light path is chosen after the aperture is measured (V-063)
+**Most recent:** `D-391` Parts round 1: eight products accepted - the blower motor, blower final stage, HVAC servos, comfort fuse block, sound deadening, headlamps and both relay sets · `D-392` Seats first: no add-on heater or cooling kit for now - the search is for front seats with heating and cooling built in, likely with electric controls · `D-393` The swap engine is a light, aluminum-block 5.3 LS - L33 first, then LM4, then an LH6 or LC9 with AFM deleted; an iron LM7 is the fallback · `D-394` The new engine leg is designed backwards from every LS and CD009 part: pins, bay joins, conductors that cross, dash ends - and it needs about 55-65 small conductors against the 24 small cavities today · `D-396` The swap's nine stages are numbered 00 to 08: 00 design, 01 buy and retrieve, 02 breakdown, 03 polish, 04 paint, 05 rebuild, 06 car prep, 07 install, 08 fine-tune
 
-Next id: `D-385`.
+Next id: `D-397`.
 
 ## Contents
 
 **00-CAR** — Fluids and service (2)
 
-**00-electrical** — Architecture and scope (15) · Build sequence (14) · Legs, connectors and grounds (46) · Outputs, soft fuses and logic (35) · Power backbone and battery (20) · Switches, ladders and inputs (18) · The dash node (20) · The record itself (12) · Wire, labels and materials (7)
+**00-electrical** — Architecture and scope (15) · Build sequence (16) · Legs, connectors and grounds (47) · Outputs, soft fuses and logic (35) · Power backbone and battery (20) · Switches, ladders and inputs (18) · The dash node (20) · The record itself (12) · Wire, labels and materials (7)
 
-**01-luxury** — Comfort, mirrors, windows, seats (11) · Head unit and audio (1) · Lighting (1) · Lighting — the second pass (5) · Modules — DCU and ICU (13) · The boundary — what the electrical build hands over (2) · The cluster (7) · The record itself (5)
+**01-luxury** — Comfort, mirrors, windows, seats (12) · Head unit and audio (1) · Lighting (1) · Lighting — the second pass (5) · Modules — DCU and ICU (13) · Parts and sourcing (1) · The boundary — what the electrical build hands over (2) · The cluster (7) · The record itself (7)
 
-**02-engine** — What the electrical build reserves for the swap (9)
+**02-engine** — Engine and transmission (3) · What the electrical build reserves for the swap (9)
 
-**Superseded and withdrawn** — 24
+**Superseded and withdrawn** — 26
 
 
 ---
@@ -124,7 +124,7 @@ Next id: `D-385`.
 
 ## Build sequence
 
-*14 live — D-023 D-025 D-127 D-143 D-146 D-176 D-177 D-322 D-323 D-344 D-353 D-367 D-371 D-372*
+*16 live — D-023 D-025 D-127 D-143 D-146 D-176 D-177 D-322 D-323 D-344 D-353 D-367 D-371 D-372 D-386 D-387*
 
 **D-023 / D-024 — Parallel-system migration, least to most consequential, ending with ignition and start.** The factory harness stays intact and powered until each circuit's own cutover; never both systems on one load; the car drives home at the end of every session.
 
@@ -217,10 +217,92 @@ Nothing else moves. `loads` LD03, `logic` BRAKE, `inputs` A3 and `ladders` A3 ar
 **In the data.** Electrical `work` E3 (new); luxury `work` X-008 (new).
 *2026-09-21 · closes 00.25*
 
+**D-386 — The electrical project splits into `00-design/` and `01-build/`, each with its own generated TODO. Nothing in build starts before the design is reviewed and frozen (phase SOURCING), and the 2026-09-23 risk review becomes work and blocks.** Camden's call, 2026-09-23.
+
+**His words.** "factor these into account while remaking TODO. first i changed the directory structure of everything in electrical make sure all paths account, then split TODO into two one for build one for design. everything in build is blocked by a perfect verified design. todo in design muse be a checklist for me and a seperate list of all agent work and what is blocking it."
+
+**The directory structure (his move).** `cad/`, `firmware/`, `diagrams/` and `TODO.md` moved into `02-PROJECTS/00-electrical/00-design/`, and `01-build/` is new; `data/` stays where it was. Every live path was brought to the new layout:
+- `tools/diagrams.py` now writes into `00-design/diagrams/`
+- `.gitignore` covers the firmware binaries, the KiCad rules and the drawings' exception
+- CLAUDE.md §1, §3 and §9
+- the `cad/` README, board READMEs and guide (`../data/` became `../../data/` and `../../../data/`)
+- the firmware README and the X-007 row
+
+Decision bodies and old log rows keep the paths they were written with (R4); `rx7.py cites` lists any that no longer resolve.
+
+**The two TODOs.** `work` gains a `track` column (design | build), and `rx7.py todo` writes one file per track wherever a project has both folders.
+- `00-design/TODO.md` is his checklist in working order (☐ can do it now, ⏳ waiting on what is named), then every agent row, ready or blocked, and what blocks it: whose it is and what it is. The open blocks come last.
+- `01-build/TODO.md` is everything bought and everything physical. **Every build row gates on `phase:SOURCING`** (42 gates added), which only the freeze moves. That is what "blocked by a perfect verified design" means in the record.
+- The marks are the record's state, not boxes to type in (R3).
+
+**Which track.**
+- **Design:** desk work, measurements, bench proofs and the agent's work.
+- **Build:** the cart (A1, A2, A6, C2), stripping the A/C (B1), everything in stages D and E, and the modules' fabrication (F11, F1, F12, F3, F5, F6).
+
+The ICU and DCU final pass (F11) needs the parts in hand, and D-323 buys parts only after the design is complete. So it sits at the start of build rather than blocking the freeze.
+
+**The gate between them.** Z1 (agent) is the §6.5 design review, gated on every other open design row. Z2 (his) is the freeze ruling, gated on Z1. A Blocker or Major finding reopens the design list.
+
+**The risk review, factored in.**
+- **Block `00.29`:** how the car runs between E26 and the last migration. As written it cannot, because the key and the column switches can only be wired to one harness at a time.
+- **Block `00.30`:** split F3, and hold ignition and the headlamps on a ladder fault.
+- **R1, R2:** apply those two blocks.
+- **R3:** the ladder margin budget. A4 and A16 are checked against the cranking ground offset and supply sag, and A4 and A5 against the front-star offset while the pop-ups move. It adds a crank-logging check.
+- **R4:** the channel a surprise takes. None is spare.
+- **R5:** the regulator fallback, for a charge voltage above 14.6 V.
+- **R6 (his):** measure the PMU's sleep current on the bench. The PMU is already bought, per 00-CAR.
+- **W-330b** gains a third question for Ionic: does its BMS refuse charge below 0 °C, or disconnect the pack?
+
+**Two states changed.**
+- A1 goes from `blocked` to `open`, because its freeze gate now does the blocking.
+- F-009 goes from `blocked` to `open`, because it only needed the PMU on the bench and the PMU is bought.
+
+**In the data.**
+- `_schema`: `work.track` is new, and `work.stage` gains R and Z.
+- `work`: `track` is set on every row; R1–R6, Z1 and Z2 are new; 42 build gates are extended; A1, F-009, X-007 and W-330b are changed.
+- `BLOCKS.md`: `00.29` and `00.30` are new.
+- `tools/rx7.py`: `cmd_todo` is rewritten.
+*2026-09-23*
+
+**D-387 — The car comes apart once. The design list ends with the interior stripped (every wire left in place) and the measurements that need it out; the build list starts from the interior out and ends with it back in.** Camden's call, 2026-09-23. It refines D-386.
+
+**His words.** "this is good but we need better sepatation of car apart and not, design todo should end with all things that need dash and inteerior out, then build starts there interiror out to put back in. but make it maore segragated and incude the block step of strip the car inteerior (leave all wirirng)"
+
+**Reading taken.** "The block step" is read as a single step, the strip, not a question in BLOCKS.md.
+
+**The ruling.**
+- **Design Part 1: car whole.** Desk, bench and anything done on the car as it stands.
+- **S1: strip the interior** (new, his). Out come the seats, console, centre stack, dash and cluster (unplugged, not cut), glovebox, carpet, kick and sill panels, and the cargo-bin trim. Nothing electrical is cut, unpinned or moved. Fasteners are bagged and labelled, and every connector and loom run is photographed where it lies (M-7). S1 waits on every Part 1 row, so the car is off the road as short a time as possible.
+- **Design Part 2: interior out.** S1 first, then everything that needs the car apart:
+  - C1 (the measurement day, M-1 to M-7), C3, C4 and V-102 now gate on S1.
+  - A5, Q-014, Q-110, Q-115, V-055, V-081, V-088, G13 and W-329 follow through C1.
+  - H-002 gates on S1 directly, because it waits on the mirror heads measured at the door plug (luxury W-332).
+  - Then the design review (Z1) and his freeze (Z2).
+- **Build Part 3: car apart.** Parts arrive, then the backbone, the dash node, the legs, the migration, the full function check and the factory harness out.
+- **Build Part 4: interior back in.** E35 is new: the cabin looms are final-wrapped and photographed before the dash closes, then the reverse of S1. After it come the shakedown drives, E31 to E34, and E31 now gates on E35.
+- **How it is recorded.** `_project` names the two boundary rows (`car_apart` = S1, `car_back` = E35). `rx7.py todo` derives each row's part from its gate, so no row carries a typed section.
+
+**What this changed, because the car cannot be driven while it is apart.**
+- **E12, E27 and E28** said "start and drive". They now say start and run; the first drive is E31.
+- **E33's final wrap** is now the engine bay only. The cabin looms are wrapped at E35, before the dash goes back.
+- **E30 says to drive a week** with the old harness still in the car, then pull it, which needs the dash out again. That is his call: block `00.31`. E30 and E35 gate on it, and R7 applies the answer.
+- **Block `00.29`** (how the car runs during migration) is sharpened. The car cannot be driven during the migration under either option now.
+
+**Consequence to know.** The car is off the road from S1 until E35. That span includes the design review, the freeze, the sourcing and shipping of every part, and the whole build.
+
+**In the data.**
+- `_schema`: `work.stage` gains S.
+- `_project`: `car_apart` and `car_back` are new.
+- `work`: S1, E35 and R7 are new. The gates of C1, C3, C4, V-102, H-002, E30, E31 and Z1 changed. The notes of E12, E27, E28 and E33 changed, and so did E12's title.
+- `BLOCKS.md`: `00.31` is new and `00.29` is sharpened.
+- `tools/rx7.py`: `cmd_todo` splits by car state.
+- `CLAUDE.md` §1 describes it.
+*2026-09-23*
+
 
 ## Legs, connectors and grounds
 
-*46 live — D-017 D-029 D-032 D-034 D-045 D-065 D-069 D-092 D-115 D-159 D-171 D-217 D-218 D-232 D-250 D-252 D-254 D-255 D-258 D-260 D-261 D-262 D-263 D-264 D-265 D-266 D-267 D-268 D-269 D-270 D-271 D-272 D-273 D-274 D-281 D-283 D-317 D-329 D-339 D-350 D-360 D-377 D-378 D-379 D-380 D-382*
+*47 live — D-017 D-029 D-032 D-034 D-045 D-065 D-069 D-092 D-115 D-159 D-171 D-217 D-218 D-232 D-250 D-252 D-254 D-255 D-258 D-260 D-261 D-262 D-263 D-264 D-265 D-266 D-267 D-268 D-269 D-270 D-271 D-272 D-273 D-274 D-281 D-283 D-317 D-329 D-339 D-350 D-360 D-377 D-378 D-379 D-380 D-382 D-385*
 
 **D-017 / D-037 — Grounds never cross a leg connector; every zone has one star node straight to bare chassis (engine block, front stud, dash-node ground bus, rear stud, sill stud); pin 25 is the only PMU ground and carries every flyback return.** The five dash-post drops are the one exception: their grounds cross a connector because they are devices inches from the node with no zone of their own.
 
@@ -459,6 +541,42 @@ The seat return current goes to ground through the DCU board. At worst it is abo
 
 **In the data.** `housings` DP-DCU-C (new); `cavities` DP-DCU-C 1–8 (new); `grounds` G36 (new, the two returns); `parts` P153 (DT13-08PA); `dcu_channels` SN16, SN25, SN27. Luxury: `parts` LP21 (fuse sizes), LP49 (the DT06-08S plug, contacts, wire and the two grounds); `work` H-002's gate is met on this block.
 *2026-09-23 · closes 00.28*
+
+**D-385 — Every harness leg gets two generated drawings: a pin ladder (A) and a route map (B), in `00-electrical/diagrams/<leg>/`, rebuilt by `rx7.py diagrams`. The four sampled options are kept for a later switch.** Camden's call, 2026-09-23, in conversation after he was shown four options sampled on real L1 data.
+
+**His words.** First: "i want a map of each leg of the harness on an easy to read diagram for my use while building and for the car record for later … we need a way to have the diagrams dialed in color coded and perfect no overlaping text or wires other the a one over one cross." Then, choosing: "all options this round are good store them for futre refrence in case i want to switch, for now follow the A and B plan for each leg, in 00-electrical make a dir diarams with a readme with these options, and a folder for each led with two files for each leg (a and b)."
+
+**The ruling.**
+- **A · Pin ladder.** One block per housing and one row per cavity, with each wire a straight line from its cavity to `cavities.lands_on`. Crossings are impossible by construction.
+- **B · Route map.** The leg as it runs in the car, drawn like a transit map: each wire is its own line, stacked in branch order, so it peels off the outside of the bundle. Bends are 45° only and nothing crosses.
+- **Files.** Each leg's two sheets are `A-pin-ladder.svg` and `B-route-map.svg` in `L1-engine/`, `L2-front/`, `L3-dash/` and `L4-rear/`.
+- **Options kept.** The C (ELK) and D (D2) samples, and the A and B samples, are kept in `diagrams/options/` with the code that drew them. `diagrams/README.md` records each option's verdict.
+
+**Why it is safe to generate.** This amends CLAUDE.md §1, which allowed only `DECISIONS.md` and `TODO.md`, under the same four conditions:
+- the sheets are a pure projection of the record
+- they are read-only
+- they are rebuilt whole by one command
+- nothing gates a commit on them, and `check` never looks at them
+
+**The overlap rule, which is what makes it work.** Every label is measured with the real font before it is placed. A sheet with two touching labels, or a label on a wire, is refused and not written, and the command exits 2. The WireViz sheets (D-275 / D-276) failed because nothing checked the layout.
+
+**Consequences in the data.** Two columns were added, both small (§3: a fact that had no column):
+- **`devices.route`** (ref `routes.id`) is set only where a route's `to_node` or note names the device: DV01–DV07, DV10–DV16, DV18–DV20, DV22, DV23, DV25, DV27–DV29, DV31, DV34, DV36–DV38, DV40, DV41, DV43, DV47, DV48, DV50 and DV51. DV41 (jamb switches) is on RT19 because its conductor ends at the sill splice.
+- **`cavities.route`** is used only for a conductor with no device at its far end:
+  - L2-S 4 on RT09 ("run to the wiper branch")
+  - L2-S 5 on RT06 (the nose)
+  - L3-P 2, L3-S2 3–6 and L3-S3 5–8 on RT11, which RT11's note names
+  - L4-P 3–4, L4-M 9–12 and L4-S2 1–5 on RT19 (the sill node)
+  - L4-S 5–7 on RT15 (the rear-node receptacle)
+
+**Left blank on purpose (R11).** The record does not say which run these take:
+- devices: the brake fluid switch DV08, hazard DV21, wink switches DV24, parking brake DV26, dash illumination DV30, defog DV33, interior lamp DV39 and fuel-door solenoid DV49
+- cavities: L2-M 8, and the L3-MOD and L3-RDR receptacles
+
+They are drawn under "No route in the record yet". Setting the column moves them onto their branch.
+
+**Code.** `tools/diagrams.py` (it needs Pillow for font metrics) is called by `rx7.py diagrams`. Run it at the end of any run that changed `housings`, `cavities`, `devices` or `routes`.
+*2026-09-23*
 
 
 ## Outputs, soft fuses and logic
@@ -1209,7 +1327,7 @@ D-079 fitted the far-end terminator "in the engine bay, capped across `L1-S1 9/1
 
 ## Comfort, mirrors, windows, seats
 
-*11 live — D-048 D-049 D-096 D-131 D-180 D-305 D-329 D-332 D-359 D-362 D-383*
+*12 live — D-048 D-049 D-096 D-131 D-180 D-305 D-329 D-332 D-359 D-362 D-383 D-392*
 
 **D-048 / D-074 / D-058 / D-073 — Cooled seats are in scope (fans and ducting on the comfort bus); seat products stay estimates (2 × 4 A heat, 2 × 1.5–2.5 A fans); the heat/cool interlock and comfort-bus switching are the DCU's job, downstream of the dumb O15 feed.**
 *inherited - owned by another project*
@@ -1280,6 +1398,34 @@ Servo leads, the blower final stage's lead, the cabin sensor and the panel ribbo
 
 **In the data.** `features` FT28 note; `work` Z-002 gate (on block 01.11), V-061's survey stands as the record of what was looked at.
 *2026-09-23 · closes 01.09*
+
+**D-392 — Seats first. No add-on heater or cooling kit for now; the search is for front seats with heating and cooling built in, likely with electric controls.** Camden's call, 2026-09-23, answering PK009 (the seat heater kit) and PK011 (the seat cooling build) on `PICKS.md`.
+
+**His words**, the same on both: "no for now, i want to first look for seats with heating/cooling and likely electric controls"
+
+**The ruling.**
+- **The two picks are vetoed.** PK009 and PK011 are `vetoed`.
+- **Their runner-ups are ruled out too.** The Rostra kit (PK010) and the generic ventilation kit (PK012) are both add-ons, so his reason covers them, and they are `unused`.
+- **LP30 and LP31 go on hold,** not dropped. They come back only if no seat suits.
+- **A new parts row, LP52,** is front seats with heating and cooling built in, probably power-adjusted.
+- **The search is work row X-010** (parts round 2). For each candidate it finds:
+  - the donor car or maker
+  - what heats, cools and moves the seat, and how that is controlled: its own switches, a seat module, or CAN
+  - its feeds and peak currents
+  - any side airbag, and what leaving one unplugged means
+  - how it mounts to the FB floor, and its width against the tunnel and the door
+  - the price, used and new
+
+  Then they go on `PICKS.md` for his answer.
+
+**Why this is bigger than a parts swap.** The design so far assumes add-on pads and fans, switched by the DCU's four low-side comfort channels (electrical D-382) through the O15 block (LP21) and the comfort-return harness (LP49). Seats with their own heating, cooling and motors may bring their own control. Seat motors add loads the O15 bus was not sized for. Whichever seat he chooses, those three are revisited then: channels, fuses and harness. Nothing is changed before a seat is chosen.
+
+**In the data.**
+- `picks`: PK009 and PK011 are `vetoed`, with his words; PK010 and PK012 are `unused`.
+- `parts`: LP30 and LP31 are `hold`; LP52 is new.
+- `features`: the notes on FT19 and FT20.
+- `work`: X-010 is new.
+*2026-09-23*
 
 
 ## Head unit and audio
@@ -1372,6 +1518,41 @@ Servo leads, the blower final stage's lead, the cabin sensor and the panel ribbo
 *2026-09-07*
 
 
+## Parts and sourcing
+
+*1 live — D-391*
+
+**D-391 — Parts round 1: eight products accepted.** Camden's call, 2026-09-23, answering the entries on `PICKS.md` (D-390).
+
+| Pick | Part | Product | Price seen | His words |
+|---|---|---|---|---|
+| PK001 | LP17 blower motor | Four Seasons 35483 | $37 | "i still have to old one with the fanwheel, rock auto is perfect" |
+| PK003 | LP18 blower final stage | Pololu G2 24v21 (#2995) | $57 | "a i will monitor battery life when blasting for hours, (worth noting in enine swap that alternator needs to be beefy)" |
+| PK005 | LP19 HVAC servos | FEETECH FS5115M ×4 | $121–128 | "yes worth the extra for better servos" |
+| PK007 | LP21 comfort fuse block | Blue Sea 5028 | $28–40 | "follow recommendations, i will make space work" |
+| PK013 | LP33 sound deadening | Noico 80 mil CLD + Noico Red CCF ×2 + Trademark 1 lb MLV 60 sq ft | $320–370 | "yes reference heat must be examened later" |
+| PK015 | LP41 headlamps | Grote 94401-5 ×2 | $558–613 | "yes like them" |
+| PK017 | LP51 release relays K3 / K4 | Song Chuan 871-1C-C-D1-12VDC ×2 | $10–14 | "yes" |
+| PK019 | LP37 window relays K5–K8 | Song Chuan 871-1C-C-R1-12VDC ×4, plus F8 / F9 fuses | $24–35 | "yes" |
+
+**What his words add to the record.**
+- **LP17:** the old motor and its fan wheel are in hand, so the wheel transfers. That removes the pick's main drawback. The bore still has to be checked against the 0.268 in shaft.
+- **LP18:** the >= 25 A spec is widened to 21 A in exchange for silence, the reason for the >= 20 kHz stage (D-257). He will watch the battery with the blower on high for hours. The alternator point is engine-swap scope, carried to `02-PROJECTS/02-engine` as work row H-001 in his words.
+- **LP19:** he takes the dearer servos for quality. Four at about $128 slightly overruns the old $60–120 estimate.
+- **LP21:** "follow recommendations" is read as yes. He will fit it behind the centre stack.
+- **LP33:** the heat over the exhaust tunnel is checked before MLV or foam goes there. That is carried in LP33's note, and it rides on I11 (carpet up).
+- **LP41:** accepted at about $558–613 for the pair, over the old $120–300 budget. The depth (73 mm) is still checked against the bucket at V-066.
+
+**Runner-ups.** The runner-ups held for these eight parts (PK002, 004, 006, 008, 014, 016, 018 and 020) are set `unused`. The `picks.verdict` vocabulary gains `unused` for that case.
+
+**In the data.**
+- `parts`: LP17, LP18, LP19, LP21, LP33, LP41, LP51 and LP37 each get a spec naming the product, a price and `status` `chosen`.
+- `picks`: the eight are `accepted`, with his words in `said`.
+- `_schema`: `picks.verdict` gains `unused`.
+- Engine `work`: H-001 is new.
+*2026-09-23*
+
+
 ## The boundary — what the electrical build hands over
 
 *2 live — D-081 D-355*
@@ -1437,7 +1618,7 @@ The flip condition stays live and is cheap to settle: if the tank was ever repla
 
 ## The record itself
 
-*5 live — D-310 D-312 D-315 D-327 D-364*
+*7 live — D-310 D-312 D-315 D-327 D-364 D-388 D-390*
 
 **D-310 — Every ICU sender input is a high-Z observer of a gauge-driven node, never a divider that loads it; and there is one BRAKE tell-tale.** 2026-09-07, from the Q-301 finding. The old carrier draft read water temperature through a 1 kΩ pull-up to 3V3 and oil pressure through 330 Ω — either would have moved the factory needle the driver is still looking at. The front end is now 1 MΩ series → 330 kΩ to ground (×0.248: 12 V reads 2.98 V, 20 V clamps), 100 nF at the ADC pin, BAT54S to 3V3 / GND, calibrated in the car against the gauge (D-142 / electrical D-249) and averaged in firmware if the M-6 scope trace shows a pulsing regulator (Q-301a). Each observer carries a **DNP 100 Ω 1 W pull-up to +5 V behind a jumper** — the local excitation fitted only at S3, when the factory cluster leaves, never while the gauge still drives the node. Fuel joins the same pattern on `DP-ICU-B 3`. The tach front end is specified against the **trailing** coil's negative primary (D-304): 2 × 100 kΩ series, 5.1 V zener + Schottky clamp, comparator with hysteresis, input capture. The brake-warning tap carries fluid level and parking brake on one node, as the factory lamp did, so the cluster shows one BRAKE tell-tale (D-209(b)'s parking-brake sense is answered this way, not with a new input). Values are `data/sensors.csv`'s.
 *2026-09-07*
@@ -1464,10 +1645,174 @@ Costs nothing either way: the two plastics events are independent, and S3 needs 
 **In the data.** Luxury `decisions` D-309 and D-311 set superseded by this decision. Work F-013 was already reworded to the hand-sync by the same scan.
 *2026-09-21 · supersedes D-309 D-311*
 
+**D-388 — Luxury parts are chosen in rounds. The agent proposes a product for each parts row, with why and drawbacks; Camden accepts or vetoes each in one block per round; `PICKS.md` shows where every part stands.** Camden's call, 2026-09-23.
+
+**His words.** "letd dive a little deeper into luxury, specificallu choosing parts!, please fill in the luxury with some file that will be used for part suggestions you provide why and drawbacks then i accept or veto and the search continues"
+
+**Reading taken.** He asked for "some file" to hold the suggestions. The suggestions live in a table, `picks`, and `PICKS.md` is generated from it for him to read. His accept and veto go in the round's block in `BLOCKS.md`, because that is the one file he types in (R3, §2): a generated file he also typed into would be overwritten or refused. If he would rather type verdicts into `PICKS.md` itself, that is a change to R3 for him to ask for.
+
+**How it works (CLAUDE.md §6.9).**
+- Each parts row with a settled spec gets a **primary**, which is `proposed`, and a **runner-up**, which is held in `reserve`. Each carries the numbers that meet the spec, why, honest drawbacks, a confidence, and what to confirm before buying.
+- One block per round numbers the primaries. His answer becomes one decision for the accepted picks, and each accepted product fills its parts row.
+- A veto keeps his words in `picks.said`. The runner-up goes up next round unless his reason rules it out, and otherwise the search starts again.
+- `rx7.py picks` writes `PICKS.md` in four sections: on the table, chosen, vetoed with his reasons, and not yet searched. Like DECISIONS.md, it is a read-only projection that `check` never reads.
+
+**Round 1 (block `01.12`)** puts ten parts on the table: LP17, LP18, LP19, LP21, LP30, LP31, LP33, LP41, LP51 and LP37, as picks PK001 to PK020. Three research agents searched them against the record's specs. Findings the record did not have:
+- **LP17:** the motor ships without its fan wheel, and the factory motor is gone.
+- **LP18:** no board meets every line of the spec. The primary is silent but rated 21 A, under the 25 A spec. The held runner-up meets 25 A but tops out at 20 kHz.
+- **LP30 and LP31:** heater pads cannot be cut and block air. On a seat that is both heated and cooled, the two layouts have to share the seat.
+- **LP41:** no reputable dual-beam DOT 4x6 LED fits the $120–300 budget. The pick is about $558 a pair.
+- **LP51 and LP37:** the sockets take standard micro ISO relays, not "ISO 280". On the Song Chuan diode relay, 86 is the positive side, which matches how K3 and K4 are wired. K5–K8 take the resistor version, because a coil diode shortens contact life when breaking motor current.
+
+Parts not in round 1 wait on a measurement or an open question: LP34 (the glass size, W-332), LP36 (the window regulators), LP38–LP40 (the tail lights, block `01.10`), LP42 (V-066), LP43 (the bulb list), LP44 (block `01.11`), LP24 (T-032), and LP20 and LP29, which are fabricated rather than bought.
+
+**In the data.**
+- `_tables` and `_schema`: `picks` is new.
+- `picks`: PK001 to PK020.
+- `BLOCKS.md`: `01.12` is new.
+- `tools/rx7.py`: `cmd_picks` and `write_projection` are new.
+- CLAUDE.md: §1 names `PICKS.md`, §6.9 is new, and a standing answer is added to §3.
+*2026-09-23*
+
+**D-390 — Parts suggestions live on the project's `PICKS.md`, laid out like `BLOCKS.md`. It has one entry per product, each ending in an `**ANSWER:**` line. He answers any, some or all, whenever he likes, and tells the agent. The agent saves his words into `picks` and only then removes the entry.** Camden's call, 2026-09-23. It supersedes D-389 (one block per suggestion in `BLOCKS.md`) and replaces D-388's generated `PICKS.md`.
+
+**His words.** "one more time plea format this like BLOCKS you sugest all the parts and and i leasure i can answer one any or all, the tell you and you save that info"
+
+**Reading taken.** "Format this like BLOCKS" is read as a page of its own for parts, built the way `BLOCKS.md` is, rather than more blocks on `BLOCKS.md` itself: `BLOCKS.md` keeps the design questions, and `PICKS.md` holds the parts. That reading keeps the most options open, and moving the parts back onto `BLOCKS.md` is one command if he prefers it.
+
+**What changed in the system.**
+- **§2 and R3.** `PICKS.md` becomes his second page to write in, beside `BLOCKS.md`. The rule that protects `BLOCKS.md` now protects both:
+  - nothing regenerates it and no tool rewrites it;
+  - the tool only appends suggestions to it (`rx7.py picks --ask`), and only removes an entry once his verdict and his exact words are saved in `picks` (`--clear`);
+  - the reader is not picky: everything under `**ANSWER:**` up to the next entry is his answer, over any number of lines;
+  - after every append, the page must parse back as it was, or the append is undone.
+- **§1.** `PICKS.md` is no longer a generated document, so there are three kinds again. The status that page showed (chosen, vetoed with his reasons, not yet searched) now prints in the terminal from `rx7.py picks`.
+- **§6.9.** A round is:
+  1. search;
+  2. add the picks to the record;
+  3. `rx7.py picks --ask`;
+  4. he answers and tells the agent;
+  5. `rx7.py picks --answered`;
+  6. yeses become one decision, noes are vetoed with his reason, and questions are answered in the next suggestion for that part;
+  7. `rx7.py picks --clear`.
+
+**Round 1 moved.** Blocks `01.12` to `01.21` had not been answered; every answer line was empty when checked. They were taken off `BLOCKS.md`, and the same ten primaries (PK001 to PK019, odd numbers) are the first ten entries on `02-PROJECTS/01-luxury/PICKS.md`. The old generated `PICKS.md` was deleted after confirming its fingerprint was intact, which proves nobody had typed in it.
+
+**In the data.**
+- `picks.block` is dropped, because entries are keyed by the pick id.
+- `tools/rx7.py`:
+  - new: `parse_picks_page`, `pick_entry`, and `picks --ask / --answered / --clear`;
+  - removed: `write_projection` and the generated page.
+- CLAUDE.md §1, §2, R3, §3 (a standing answer), the tool list and §6.9.
+*2026-09-23 · supersedes D-389*
+
 
 ---
 
 # 02-engine
+
+
+## Engine and transmission
+
+*3 live — D-393 D-394 D-396*
+
+**D-393 — The swap engine is a light, aluminum-block 5.3 LS.** The order of preference:
+1. **L33:** aluminum, no AFM.
+2. **LM4:** aluminum, no AFM.
+3. **LH6 or LC9:** aluminum, with AFM deleted.
+
+An iron LM7 is the fallback if no aluminum engine can be had. Camden's call, 2026-09-23.
+
+**His words.** "can you find me a specific pic an pull junk yard near Fort Collins that is guaranteed to have one of the light iron blocks that id want, write all this in the engine swap project"
+
+**Reading taken.** The light 5.3 blocks are aluminum; the iron ones (LM7, LMG, LY5, LR4) are the heavy ones, about 80 lb more dressed. "Light" is what he wants, so the target is aluminum. If he meant iron, the target is the LM7 (option OP05) and the sightings are searched again for code T.
+
+**What the research found.** It is recorded in the new tables (`options`, `yards`, `sightings`):
+- **Aluminum 5.3s:** common in 2007–2013 trucks as the LC9, less so as the LH6. The L33 (2005–07 extended-cab 1500s) and the LM4 are uncommon.
+- **What a U-pull engine costs:** about $260–276 plus a $57–75 core near Denver.
+- **The transmission:** the CD009 costs about $1,650–2,150 used and delivered. The Sikky adapter ($1,765) needs no bellhousing cutting.
+- **Kits:** no bolt-in LS kit exists for the FB.
+- **The CD009 in an FB:** no documented build was found, so it is the plan's biggest unknown (J3, J4).
+- **The rear axle:** the stock FB axle will not take LS torque (D-113 already plans a new one).
+
+**What "guaranteed" can honestly mean.** No yard can guarantee an engine. On 2026-09-23, 15 aluminum 5.3 donors were confirmed on the lot by the VIN's 8th digit, all in the Denver metro, about 60–65 miles away: two LH6 and thirteen LC9. There were none in Fort Collins, Greeley, Loveland or Cheyenne; those yards publish no inventory. No L33 was confirmed anywhere. One possible L33 is at Littleton (J2). A listing means the car is on the lot, not that its engine is still in it, so J1 calls ahead with the VIN.
+
+**In the data.**
+- `_tables` and `_schema`: `options`, `yards` and `sightings` are new.
+- `options`: OP01–OP50.
+- `yards`: YD01–YD09.
+- `sightings`: SG01–SG16.
+- `work`: J1–J5.
+*2026-09-23*
+
+**D-394 — The swap's new engine leg is designed backwards from every LS and CD009 part.** For each part the design records:
+1. its pins;
+2. what is joined in the bay;
+3. how many conductors cross into the leg;
+4. where each lands at the dash.
+
+The result: the power side fits the leg's power plug L1-P as it is, and the signal side needs 54–68 conductors against the 24 signal cavities today. Camden's call, 2026-09-23.
+
+**His words.** "help me plan the electrical side of engine swap, we will be replacing the entire engine leg, specifically for this design work backwards, ignore the wiring we have and build the electrical system backwards from each Ls part/attachment, this schools then plug in to the same engine leg connecter at the dash post"
+
+**The method.** `ls_devices` lists 26 parts on or around the engine. `ls_wires` gives 39 wire functions. For each function it records:
+- how many wires there are at the device;
+- what is spliced or grounded in the bay;
+- how many conductors cross into the leg;
+- the Deutsch contact size needed;
+- the dash end, gauge, current, twist or shield group, and whether it is optional.
+
+The leg's size is a query over `ls_wires`, never a typed number (R2).
+
+**The rules the design follows.**
+- **Bay joins:** feeds are spliced in the bay (one 12 AWG feed to eight injectors, one to eight coils). Power grounds stay in the bay, at the head studs. Sensor grounds and 5 V references are spliced in the bay but go back to the ECU, never to chassis.
+- **Shields:** crank, cam and knock are shielded, with the drain at the ECU end only.
+- **Returns:** the reverse switch and the oil-temperature sender return to the dash, not the block. That keeps the cranking ground offset (risk review R3) and the fuel-sender lesson out of the readings.
+- **Oil pressure:** one sensor and one wire, read by the PMU's A7 gate (D-249, HO04). The ECU and the ICU get it at the dash.
+
+**What it found.**
+- **Power fits L1-P as it is:**
+  - coils on O12 (L1-P 1, the same cavity that feeds the 12A's coils);
+  - injectors on O13 (L1-P 2);
+  - the fan on O14 (L1-P 3);
+  - the A/C clutch feed from the O15 comfort block in the spare L1-P 4.
+- **Signals do not fit.** 54 required and 68 with every option, against 24 in L1-S1 and L1-S2. No ECU choice changes this. It contradicts handover row HO14 ("nothing at the dash node changes"). How the extra connects at the post is his call: block `02.02`.
+- **HO08 is superseded for the ECU.** It says "no +5 V goes down the leg". That was written for the PMU's and ICU's sensors. The ECU's own 5 V has to go down the leg now that the ECU is at the dash (LW20).
+- **Open until the parts are in hand:** every pin letter, and the generation-specific details (Gen III or Gen IV, D-393). They are `confirm` (R11, work K4).
+
+**Still to decide.**
+- **The ECU:** K1 researches it, then asks him in a block.
+- **The emissions equipment:** K2 checks the rules, which settle the O2 sensors and the purge.
+- **The cavity plan and grommet:** K3, after `02.02`.
+
+**In the data.**
+- `_tables` and `_schema`: `ls_devices` and `ls_wires` are new.
+- `ls_devices`: LD01–LD26.
+- `ls_wires`: LW01–LW39.
+- `work`: K1–K4.
+- `BLOCKS.md`: `02.02` is new.
+*2026-09-23*
+
+**D-396 — The swap's nine stages are numbered 00 to 08.** It supersedes D-395's numbering. The plan, its 63 rows, their gates and the rules D-395 recorded all stand unchanged.
+
+| Stage | Was |
+|---|---|
+| **00 Design** | -01 |
+| **01 Buy and retrieve** | 00 |
+| **02 Breakdown** | 01 |
+| **03 Polish** | 02 |
+| **04 Paint** | 03 |
+| **05 Rebuild** | 04 |
+| **06 Car prep** | 05 |
+| **07 Install** | 06 |
+| **08 Fine-tune** | 07 |
+
+Camden's call, 2026-09-23, correcting the reading D-395 took of "add one to each number".
+
+**His words.** "0-8 please"
+
+**In the data.** `work.stage` and `stage_title` are renumbered on all 73 staged rows. The row ids are unchanged: DS, BR, BD, PO, PA, RB, CP, IN, TU, and the carried J, K and H rows.
+*2026-09-23 · supersedes D-395*
 
 
 ## What the electrical build reserves for the swap
@@ -1546,3 +1891,5 @@ The electrical build's counterpart is **D-318**. The consequence here is that `H
 - `D-314` (01-luxury, superseded) → `D-374` — The display goes in with the ICU, by the electrical build; this project…
 - `D-326` (01-luxury, superseded) → `D-359` — The mirrors move on a mechanical switch in the panel; the DCU does mirror heat and nothing else
 - `D-331` (00-electrical, superseded) → `D-351` — The master disconnect is the Blue Sea 9004e; its auxiliary pole is a switch-position input so the PMU drops excitation before the main contacts break
+- `D-389` (01-luxury, superseded) → `D-390` — Every parts suggestion is its own block, with the full detail and his answer line right under it; rx7.py picks --ask writes them from the picks table
+- `D-395` (02-engine, superseded) → `D-396` — The swap runs in nine stages: -01 design, 00 buy and retrieve, 01 breakdown, 02 polish, 03 paint, 04 rebuild, 05 car prep, 06 install, 07 fine-tune - and the first full plan fills them

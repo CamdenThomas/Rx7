@@ -8,7 +8,7 @@ of the record._
 
 **Three rules, then you never need to think about them again:**
 
-1. **The record is the design.** If this guide, the drawing and a row in `../data/` disagree,
+1. **The record is the design.** If this guide, the drawing and a row in `../../data/` disagree,
    the row wins: `python tools/rx7.py sql 02-PROJECTS/00-electrical "select * from icu_channels"`.
 2. **A drawing is only a guess until you measure the part.** Anything you haven't put calipers
    on is marked `confirm - not measured`, and step 9 is where those get fixed (R11).
@@ -59,7 +59,7 @@ real pins are assigned (D-377), and the Teensy socket footprint is already made 
 3. **The very first time only**, KiCad asks about the global symbol and footprint library
    tables: choose **Copy default global … table (recommended)** both times. That's what makes the
    stock footprints in step 2 findable.
-4. **File → Open Project…** → `02-PROJECTS/00-electrical/cad/icu-carrier/icu-carrier.kicad_pro`.
+4. **File → Open Project…** → `02-PROJECTS/00-electrical/00-design/cad/icu-carrier/icu-carrier.kicad_pro`.
 5. The project window lists the files. Double-click **icu-carrier.kicad_sch** to open the
    **Schematic Editor**.
 
@@ -287,7 +287,7 @@ After each step: **File → Save**, then:
 
 ```
 cd ~/docs/storage/Rx7
-git add 02-PROJECTS/00-electrical/cad/icu-carrier
+git add 02-PROJECTS/00-electrical/00-design/cad/icu-carrier
 git commit -m "ICU carrier: step N"
 ```
 
@@ -315,5 +315,5 @@ Renders, STEP files, DRC reports and backups stay out of git (`.gitignore`).
 The DCU is this build's board too (D-374), but it has no schematic yet, and it waits on the
 agent's rows, not on a measurement: `V-083` (its parts), `V-101` (the comfort currents),
 `H-007` (the panel). Its drawing checklist is `dcu-carrier/TARGET.md`, and its spec is
-`../data/dcu_channels.csv`. Once those rows land, the schematic is drawn, and then this same
+`../../data/dcu_channels.csv`. Once those rows land, the schematic is drawn, and then this same
 guide applies to it: footprints, rules, layout, 3D, measure, fit, order (F5).

@@ -4,3 +4,8 @@ handover,"what the electrical build leaves for the swap engine, interface by int
 log,"what happened, one row per action"
 retired,terms that must no longer appear anywhere
 work,the work list; owner says who does it
+options,"every engine, transmission, adapter, shifter, axle and mount option researched for the LS + CD009 swap, with donors, prices and where to buy (D-393)"
+yards,"self-service junkyards near Fort Collins that can supply the donor engine: address, phone, online inventory, posted prices (D-393)"
+sightings,"specific donor vehicles seen in a yard's online inventory, with the VIN's engine code - a sighting is a lead, never a guarantee (D-393)"
+ls_devices,"every electrical part on or around the LS and the CD009, the start of the backwards design of the new engine leg (D-394)"
+ls_wires,"each device's wires, what is joined in the bay, and how many conductors cross into the leg to the dash post - the leg's size is a query over this table, never a typed number (D-394)"

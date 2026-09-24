@@ -8,3 +8,7 @@ D-173,What the electrical build reserves for the swap,"The fuel-pump soft fuse (
 D-113,What the electrical build reserves for the swap,The rear disc conversion and the rear axle are still planned,,inherited,,,,
 D-324,What the electrical build reserves for the swap,The A/C clutch is a DCU-switched comfort load; the PMU is not opened for it,2026-09-11,standing,,,02.01,
 D-325,What the electrical build reserves for the swap,The swap ECU is a dash node; no CAN and no ECU in the engine bay,2026-09-11,standing,,,00.04,
+D-393,Engine and transmission,"The swap engine is a light, aluminum-block 5.3 LS - L33 first, then LM4, then an LH6 or LC9 with AFM deleted; an iron LM7 is the fallback",2026-09-23,standing,,,,
+D-394,Engine and transmission,"The new engine leg is designed backwards from every LS and CD009 part: pins, bay joins, conductors that cross, dash ends - and it needs about 55-65 small conductors against the 24 small cavities today",2026-09-23,standing,,,,
+D-395,Engine and transmission,"The swap runs in nine stages: -01 design, 00 buy and retrieve, 01 breakdown, 02 polish, 03 paint, 04 rebuild, 05 car prep, 06 install, 07 fine-tune - and the first full plan fills them",2026-09-23,superseded,,D-396,,
+D-396,Engine and transmission,"The swap's nine stages are numbered 00 to 08: 00 design, 01 buy and retrieve, 02 breakdown, 03 polish, 04 paint, 05 rebuild, 06 car prep, 07 install, 08 fine-tune",2026-09-23,standing,D-395,,,

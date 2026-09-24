@@ -30,3 +30,64 @@ work,owner,enum(agent|camden),no,,vocabulary owned by tools/rx7.py - do not narr
 work,state,enum(blocked|done|dropped|open),no,,vocabulary owned by tools/rx7.py - do not narrow it per project (2026-09-11)
 work,gate,str,no,,"references only - D-###, a block id like 00.18, a work id in this area, <area>:<work id>, or phase:<PHASE>; all must be met before the row can start, an empty cell is met, and prose belongs in note (2026-09-12)"
 work,note,str,no,,
+options,id,key,yes,,
+options,system,enum(engine|transmission|adapter|shifter|axle|mounts),yes,,
+options,item,str,yes,,
+options,donors,text,no,,which vehicles and years carry it
+options,block,enum(aluminum|iron|n/a),no,,
+options,afm,enum(yes|no|n/a),no,,"GM Active Fuel Management (cylinder deactivation): yes means it must be deleted for this swap"
+options,weight_lb,int,no,,dressed weight where published - confirm
+options,usd_low,int,no,,
+options,usd_high,int,no,,
+options,where,text,no,,
+options,url,str,no,,
+options,fit,text,no,,how it suits a 1982 FB and what it needs
+options,rank,enum(target|acceptable|fallback|avoid|reference),no,,"target = what the search is for (D-393)"
+options,confidence,enum(high|medium|low),no,,
+options,note,text,no,,sources and what is unverified
+yards,id,key,yes,,
+yards,name,str,yes,,
+yards,city,str,no,,
+yards,miles,int,no,,road distance from Fort Collins - approximate
+yards,address,text,no,,
+yards,phone,str,no,,
+yards,url,str,no,,
+yards,inventory,text,no,,"whether inventory is online, and whether it shows VIN, row and date set"
+yards,engine_usd,num,no,,posted engine price (before core and fees)
+yards,core_usd,num,no,,
+yards,note,text,no,,
+sightings,id,key,yes,,
+sightings,yard,str,yes,yards.id,
+sightings,vehicle,str,yes,,year make model as listed
+sightings,vin,str,no,,
+sightings,code,str,no,,the VIN's 8th character - the engine code
+sightings,engine,str,no,,the RPO the code means
+sightings,block,enum(aluminum|iron|unknown),no,,
+sightings,status,enum(confirmed|probable|iron|gone),yes,,"confirmed = aluminum by the VIN code; probable = model and year fit but no VIN; gone = crushed, sold or the engine already pulled"
+sightings,row,str,no,,
+sightings,set_date,date,no,,when the yard set it on the lot
+sightings,seen,date,yes,,when the online inventory showed it
+sightings,url,str,no,,
+sightings,note,text,no,,
+ls_devices,id,key,yes,,
+ls_devices,device,str,yes,,
+ls_devices,qty,int,no,,
+ls_devices,where,text,no,,where it sits on the engine or in the bay
+ls_devices,gen,enum(both|gen3|gen4|option),no,,"gen3 = L33 / LM4 / LM7 (24x crank, 1x cam); gen4 = LH6 / LC9 (58x crank, 4x cam) - which one is set by the engine actually bought (D-393)"
+ls_devices,connector,text,no,,the factory connector - every pin letter is confirm until read off the part (R11)
+ls_devices,serves,enum(ECU|PMU|DCU|ICU|bay),no,,what at the dash reads or drives it; bay = never leaves the engine bay
+ls_devices,note,text,no,,
+ls_wires,id,key,yes,,
+ls_wires,device,str,yes,ls_devices.id,
+ls_wires,function,str,yes,,
+ls_wires,class,enum(power|driver|signal|ref5v|sensor_gnd|power_gnd|shield|motor|ladder),yes,,
+ls_wires,at_device,int,no,,wires of this function at the device(s)
+ls_wires,crosses,int,no,,conductors of this function that cross into the leg after the bay joins - 0 if it stays in the bay
+ls_wires,size,enum(12|16|-),no,,"Deutsch contact size of the leg cavity it needs: 12 = the DTP power housing, 16 = a DT signal housing"
+ls_wires,bay_join,text,no,,what is spliced or grounded in the bay before the leg
+ls_wires,dash_end,text,no,,where it lands at the dash
+ls_wires,awg,str,no,,
+ls_wires,amps,num,no,,
+ls_wires,group,str,no,,"twisted pair or shield group - a shield's drain goes to the ECU end only"
+ls_wires,optional,enum(yes|no),no,,yes = only if that feature is kept
+ls_wires,note,text,no,,

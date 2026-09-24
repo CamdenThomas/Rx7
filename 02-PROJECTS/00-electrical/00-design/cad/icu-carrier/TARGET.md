@@ -6,10 +6,10 @@
 > This file stays as the checklist, because it is what a re-draw would be checked against.
 
 > **This is a snapshot taken 2026-09-12, not a link.** The live record is
-> `../../data/icu_channels.csv` —
+> `../../../data/icu_channels.csv` —
 > `python tools/rx7.py sql 00-electrical "select * from icu_channels"`. If the CSV and this
 > file disagree, the CSV is right and this file is stale: re-read it rather than trusting what
-> is below. Nothing in the record depends on this file, and nothing in `../../data/` cites it.
+> is below. Nothing in the record depends on this file, and nothing in `../../../data/` cites it.
 
 Draw in this order. Each block is finished when it passes ERC on its own.
 

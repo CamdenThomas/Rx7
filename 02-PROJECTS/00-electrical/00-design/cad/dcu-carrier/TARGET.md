@@ -3,7 +3,7 @@
 *Rev 2026-09-22 (b, after the parts check D-379) · owns: the drawing checklist for the DCU carrier.*
 
 > **This is a snapshot taken 2026-09-22, not a link.** The live record is
-> `../../data/dcu_channels.csv` —
+> `../../../data/dcu_channels.csv` —
 > `python tools/rx7.py sql 02-PROJECTS/00-electrical "select * from dcu_channels"`. If the CSV and
 > this file disagree, the CSV is right and this file is stale. Nothing in the record cites it.
 

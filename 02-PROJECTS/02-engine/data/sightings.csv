@@ -1,0 +1,17 @@
+id,yard,vehicle,vin,code,engine,block,status,row,set_date,seen,url,note
+SG01,YD01,2007 Chevrolet Silverado 1500,2GCEK13MX71515235,M,LH6,aluminum,confirmed,T31 / 4,2026-07-27,2026-09-23,,Aluminum but AFM. Set 58 days - at risk of being crushed
+SG02,YD01,2007 GMC Sierra 1500,3GTEK13M77G516009,M,LH6,aluminum,confirmed,T25 / 8,2026-07-10,2026-09-23,,Set 75 days - probably crushed; call first
+SG03,YD01,2007 Chevrolet Avalanche,3GNFK12327G284259,3,LC9,aluminum,confirmed,T16 / 6,2026-09-10,2026-09-23,,Freshest aluminum car at the nearest yard with hits
+SG04,YD01,2008 Chevrolet Avalanche,3GNFK12328G173261,3,LC9,aluminum,confirmed,T8 / 1,2026-08-19,2026-09-23,,
+SG05,YD01,2008 GMC Sierra 1500,3GTEK13338G221482,3,LC9,aluminum,confirmed,T22 / 2,2026-06-30,2026-09-23,,Set 85 days - likely gone
+SG06,YD01,2008 Chevrolet Suburban 1500,3GNFK16328G191625,3,LC9,aluminum,confirmed,T24 / 10,2026-07-02,2026-09-23,,Set 83 days - likely gone
+SG07,YD01,2012 Chevrolet Suburban 1500,1GNSKJE70CR153046,7,LC9,aluminum,confirmed,T26 / 1,2026-07-15,2026-09-23,,2010+ LC9 has variable valve timing
+SG08,YD02,2010 Chevrolet Suburban 1500,1GNUKJE37AR114408,3,LC9,aluminum,confirmed,44 / 7,2026-09-11,2026-09-23,,Fresh
+SG09,YD02,2007 GMC Yukon XL 1500,1GKFK16387J188335,3,LC9,aluminum,confirmed,45 / 11,2026-09-08,2026-09-23,,Early LC9 without variable valve timing
+SG10,YD02,2010 Chevrolet Silverado 1500,3GCRKSE35AG126917,3,LC9,aluminum,confirmed,34 / 2,2026-09-07,2026-09-23,,
+SG11,YD02,2013 Chevrolet Suburban 1500,1GNSKJE75DR294311,7,LC9,aluminum,confirmed,34 / 7,2026-09-07,2026-09-23,,
+SG12,YD02,2007 Chevrolet Suburban 1500,3GNFK16327G162799,3,LC9,aluminum,confirmed,35 / 10,2026-08-31,2026-09-23,,
+SG13,YD02,2013 GMC Yukon XL 1500,1GKS2KE79DR336076,7,LC9,aluminum,confirmed,35 / 16,2026-08-28,2026-09-23,,
+SG14,YD02,2007 Chevrolet Avalanche,3GNFK12357G310630,3,LC9,aluminum,confirmed,40 / 4,2026-07-29,2026-09-23,,
+SG15,YD04,2012 Chevrolet Silverado 1500,3GCPKSE72CG196226,7,LC9,aluminum,confirmed,107,2026-08-06,2026-09-23,,
+SG16,YD05,2005 Chevrolet Silverado (row 8),,,,unknown,probable,,,2026-09-23,,"The only possible L33 anywhere in range - Littleton shows no VIN; call 303-791-1380 and ask for the 8th VIN digit (B = L33). Littleton also lists 2008 / 2011 Silverados, 2007 / 2008 Sierras, 2003 / 2005 / 2006 TrailBlazer EXTs and a 2006 Envoy XL that fit an aluminum engine by year; most TrailBlazers and Envoys carry the 4.2 six"

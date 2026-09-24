@@ -52,3 +52,8 @@ D-362,"Comfort, mirrors, windows, seats","The DCU plugs in like the ICU: DT13 fl
 D-364,The record itself,The luxury record is data and is not rendered; pmu_sim/channels.h is hand-synced to electrical pins (F-013),2026-09-21,standing,D-309 D-311,,,
 D-383,"Comfort, mirrors, windows, seats","The radar is a speed-trap radar and laser detector, fully concealed: no unit on the windshield, nothing visible but the warning on the cluster",2026-09-23,standing,,,01.09,
 D-384,Lighting,The tail-light path is chosen after the aperture is measured (V-063),2026-09-23,standing,,,01.10,
+D-388,The record itself,"Parts are chosen in rounds: the agent proposes a product per parts row with why and drawbacks, Camden accepts or vetoes in one block per round, and PICKS.md shows where every part stands",2026-09-23,standing,,,,
+D-389,The record itself,"Every parts suggestion is its own block, with the full detail and his answer line right under it; rx7.py picks --ask writes them from the picks table",2026-09-23,superseded,,D-390,,
+D-390,The record itself,"Parts suggestions live on the project's PICKS.md, laid out like BLOCKS.md: one entry per product with an ANSWER line; he answers any, some or all at leisure, the agent saves his words into picks and only then removes the entry",2026-09-23,standing,D-389,,,
+D-391,Parts and sourcing,"Parts round 1: eight products accepted - the blower motor, blower final stage, HVAC servos, comfort fuse block, sound deadening, headlamps and both relay sets",2026-09-23,standing,,,,
+D-392,"Comfort, mirrors, windows, seats","Seats first: no add-on heater or cooling kit for now - the search is for front seats with heating and cooling built in, likely with electric controls",2026-09-23,standing,,,,

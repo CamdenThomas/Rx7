@@ -9,7 +9,7 @@ and lifetime figures (D-163). `icu/can_map.h` is the machine-readable CAN
 map. The prose documents describe *why*; this code defines *what*.
 
 **Version:** `ICU_FW_VERSION` in `icu/icu.ino`, printed at boot. Bump it on
-any behaviour change, log it in `../data/bringup_log.csv` (`rx7.py add 02-PROJECTS/00-electrical bringup_log …`), tag the commit.
+any behaviour change, log it in `../../data/bringup_log.csv` (`rx7.py add 02-PROJECTS/00-electrical bringup_log …`), tag the commit.
 
 ## Contents
 
@@ -68,7 +68,7 @@ sudo dnf install gcc-c++ SDL2-devel
 Then:
 
 ```
-cd ~/docs/storage/Rx7/02-PROJECTS/00-electrical/firmware/icu_sim
+cd ~/docs/storage/Rx7/02-PROJECTS/00-electrical/00-design/firmware/icu_sim
 ./build.sh           # or: g++ sim_sdl.cpp -o sim -std=c++17 -O2 $(sdl2-config --cflags --libs)
 ./sim
 ```
@@ -184,7 +184,7 @@ With the PMU simulator, the ICU can be developed and demonstrated
 blanking, the diagnostics page, `stats.h` accumulation, the RPM capture path,
 ladder decode, and the whole rendering layer. Needs two SN65HVD230 modules
 with their headers soldered, a twisted pair and 120 Ω × 2 — the S0 lines of
-`../data/parts.csv` (the 120 Ω are electrical P070's spares).
+`../../data/parts.csv` (the 120 Ω are electrical P070's spares).
 
 **What it does not cover — and this is the important limit:** the ICU's
 critical gauges are on **its own analog inputs, not CAN** (D-083). The PMU

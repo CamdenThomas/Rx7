@@ -13,17 +13,250 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 
 **Phase:** PROPOSED. **Goal:** Everything that changes with the engine — the engine leg rebuilt around the new engine, ECU, fuel, transmission, axle, A/C
 
-0 open · 0 ready now · 1 done.
+73 open · 17 ready now · 1 done.
 
 ## Now — what can be started today
 
-*Nothing is startable: every open row waits on something below.*
+**Yours:**
+
+- **BR01** — Buy the stands and tools: two engine stands (engine and transmission), a hoist or a hoist rental, a torque wrench to 100 ft-lb, LS balancer puller and installer, compression gauge
+- **J1** — Before any yard trip: call and give the VIN - is the car still on the lot, and is its engine still in it?
+- **J2** — Call Littleton U-Pull about its 2005 Silverado in row 8 - ask for the 8th VIN digit (B means L33)
+- **K4** — With the engine and transmission in hand: read every connector's pin letters and confirm the generation, then correct ls_devices and ls_wires
+- **PA01** — Choose the colours - block, heads, valve covers, brackets and the engine bay (they are seen together)
+
+**Agent:**
+
+- **DS01** — Accessory drive for the FB: alternator, water pump and A/C compressor positions that clear the FB's frame rails and hood
+- **DS02** — Oil pan and pickup that clear the FB's steering linkage and crossmember
+- **DS04** — Cooling system for an LS in the FB: radiator size, electric fan and its draw against O14's 25 A, steam-port routing, overflow
+- **DS05** — Fuel system for the LS: in-tank pump, returnless 58 psi with a filter-regulator, lines and fittings; the O5 soft fuse re-set
+- **DS06** — Clutch pedal and hydraulics - the car is an automatic today: pedal box, clutch master, line, and the CD009's slave
+- **DS08** — Rear axle for LS torque, and its brakes (D-113)
+- **DS09** — Front springs and alignment for the weight change: a dressed aluminum LS is about 500 lb against the 12A's (confirm both weights)
+- **H-001** — Size the swap's alternator for the whole car with the luxury loads on - the blower on high for hours, the seats, the defog, the lights
+- **J3** — Get the CD009's external dimensions - bellhousing, case width and height along its length, shifter position, overall length - with the Sikky adapter fitted
+- **J5** — Re-run the aluminum-donor search before each yard trip - inventory turns over daily
+- **K1** — ECU options for a dash-mounted ECU - then a block for Camden
+- **K2** — Colorado emissions rules for an engine swap in a 1982 car registered in Larimer County
 
 ## Everything, in working order
 
 *Stages in the order their work can start; inside a stage, each row after what it waits on.*
 
+### 00 · 00 Design - every choice made on paper before money is spent
+
+- ▶ **DS01** — Accessory drive for the FB: alternator, water pump and A/C compressor positions that clear the FB's frame rails and hood  
+  *agent*  
+  Truck drives are tall and wide. Compare F-body, Corvette and compact aftermarket brackets; the 1982 GS has no power steering, so the pump is deleted. Feeds the alternator choice (H-001) and the A/C compressor (HO13)
+- ▶ **DS02** — Oil pan and pickup that clear the FB's steering linkage and crossmember  
+  *agent*  
+  Every FB LS build found notched a truck pan or used another pan (options OP50). Candidates: F-body pan, Holley 302-2 swap pan, a notched truck pan. Needs FB front-end measurements
+- ▶ **DS04** — Cooling system for an LS in the FB: radiator size, electric fan and its draw against O14's 25 A, steam-port routing, overflow  
+  *agent*  
+  HO02: the fan is on O14 (25 A). A fan drawing more needs a relay-driven or brushless fan
+- ▶ **DS05** — Fuel system for the LS: in-tank pump, returnless 58 psi with a filter-regulator, lines and fittings; the O5 soft fuse re-set  
+  *agent*  
+  HO12 and V-040 (Aeromotive Phantom 340 ~12.2 A at 58 psi is the candidate). Today's Weber carb setup (Carter P4070, Holley regulator) goes
+- ▶ **DS06** — Clutch pedal and hydraulics - the car is an automatic today: pedal box, clutch master, line, and the CD009's slave  
+  *agent*  
+  An FB manual pedal box and master is the likely route; the CD009 uses an external slave (confirm with the Sikky kit, OP20)
+- ▶ **DS08** — Rear axle for LS torque, and its brakes (D-113)  
+  *agent*  
+  Stock FB axle will not survive (OP40). Options: Drifting Dad Ford 9 bolt-in ($3,500, 6+ months), a shortened Ford 8.8, a Toyota 8. D-113 already plans rear discs
+- ▶ **DS09** — Front springs and alignment for the weight change: a dressed aluminum LS is about 500 lb against the 12A's (confirm both weights)  
+  *agent*  
+  Spring rates and ride height re-chosen from the measured front corner weights
+- ▶ **H-001** — Size the swap's alternator for the whole car with the luxury loads on - the blower on high for hours, the seats, the defog, the lights  
+  *agent*  
+  Camden 2026-09-23 (luxury D-391, answering the blower controller): "worth noting in enine swap that alternator needs to be beefy". The car's own alternator is 55 A class (electrical V-002 reads the tag). Sum the running loads with every comfort load on (electrical loads, luxury parts) and size the swap's alternator with margin, and its regulator against the Ionic's 14.6 V ceiling (00-CAR SP-231)
+- ▶ **J3** — Get the CD009's external dimensions - bellhousing, case width and height along its length, shifter position, overall length - with the Sikky adapter fitted  
+  *agent*  
+  No FB build with a CD009 was found; it fits the FD tunnel, needs fabrication in the FC, and the FB tunnel is smaller still. These numbers are what J4 measures against (options OP10, OP20)
+- ▶ **K1** — ECU options for a dash-mounted ECU - then a block for Camden  
+  *agent*  
+  Candidates: ECUMaster EMU PRO (the PMU's maker), Holley Terminator X Max, a GM E38 / E67 with HP Tuners, Haltech. For each: price, injector and ignition outputs, 24x and 58x trigger support (Gen III or Gen IV, D-393), drive-by-wire, knock, wideband input, CAN into the bus at 0x500+ (HO03), cabin mounting and harness length, tuning tools. Checked against every dash_end in ls_wires
+- ▶ **K2** — Colorado emissions rules for an engine swap in a 1982 car registered in Larimer County  
+  *agent*  
+  Whether the car is in the testing program at all, and if so what a swapped engine must keep (O2 sensors, EVAP purge, catalytic converters). This decides the optional rows LD11 and LD20 in ls_devices. Colorado's rules are believed to tie the equipment to the donor engine - confirm from the state's own pages
+- ⏳ **DS03** — Headers and exhaust routing for the FB, and the catalytic converters if K2 requires them  
+  *agent* · waits on: K2 (agent: Colorado emissions rules for an engine swap in a 1982 car …)  
+  No FB LS header was found off the shelf; builders made their own and fought starter clearance. Look for FC-kit headers that could be adapted
+- ⏳ **J4** — Measure the FB tunnel against the CD009 before buying the transmission  
+  *you* · waits on: J3 (agent: Get the CD009's external dimensions - bellhousing, case width and …)  
+  Width and height along the tunnel from the firewall back, and where the shifter lands, in mm (R11). The car is an automatic today - its tunnel may be roomier. If the CD009 cannot fit without heavy cutting, the T56 (OP11) or the 4L60E (OP12) comes back
+- ⏳ **K3** — Cavity plan: every crossing conductor in ls_wires to a leg cavity, grouped by noise class, plus the firewall grommet size  
+  *agent* · waits on: block 02.02 (waiting for your answer in BLOCKS.md: How the bigger engine leg plugs in at the dash post)  
+  Drivers apart from sensor signals; shielded groups together, drain at the ECU end; the four power conductors on L1-P as they are today. The dash side (ECU to post receptacles) is designed with it once the ECU is chosen (K1)
+- ⏳ **DS07** — Engine and transmission mounts and the crossmember - where the engine sits (set back to the firewall), and the driveshaft length that follows  
+  *agent* · waits on: J4 (yours: Measure the FB tunnel against the CD009 before buying the transmission)  
+  No bolt-in FB kit (OP50): SBC-pattern FB mounts plus LS adapter plates, or custom. The driveshaft is measured once the mounts are set
+- ⏳ **DS10** — The swap budget - a query over options, parts and this plan, never a typed total  
+  *agent* · waits on: DS01 (agent: Accessory drive for the FB: alternator, water pump and A/C …); DS02 (agent: Oil pan and pickup that clear the FB's steering linkage and …); DS03 (agent: Headers and exhaust routing for the FB, and the catalytic …); DS04 (agent: Cooling system for an LS in the FB: radiator size, electric fan …); DS05 (agent: Fuel system for the LS: in-tank pump, returnless 58 psi with a …); DS06 (agent: Clutch pedal and hydraulics - the car is an automatic today: pedal …); DS07 (agent: Engine and transmission mounts and the crossmember - where the …); DS08 (agent: Rear axle for LS torque, and its brakes (D-113))  
+  So the money is known before anything but the engine is bought
+- ⏳ **DS11** — Freeze the swap design - rule it complete, so buying the rest can start  
+  *you* · waits on: DS10 (agent: The swap budget - a query over options, parts and this plan, never …); K1 (agent: ECU options for a dash-mounted ECU - then a block for Camden); K2 (agent: Colorado emissions rules for an engine swap in a 1982 car …); K3 (agent: Cavity plan: every crossing conductor in ls_wires to a leg cavity, …); J4 (yours: Measure the FB tunnel against the CD009 before buying the transmission); H-001 (agent: Size the swap's alternator for the whole car with the luxury loads …); DS09 (agent: Front springs and alignment for the weight change: a dressed …)  
+  The same freeze the electrical project uses: nothing past the engine is bought before this
+
+### 01 · 01 Buy and retrieve - the engine, the transmission and the parts
+
+- ▶ **BR01** — Buy the stands and tools: two engine stands (engine and transmission), a hoist or a hoist rental, a torque wrench to 100 ft-lb, LS balancer puller and installer, compression gauge  
+  *you*  
+  Before the yard trip - the compression gauge goes to the yard
+- ▶ **J1** — Before any yard trip: call and give the VIN - is the car still on the lot, and is its engine still in it?  
+  *you*  
+  Shortlist from sightings (2026-09-23): SG03 2007 Avalanche LC9 PYP Denver 52nd T16/6; SG01 2007 Silverado LH6 same yard T31/4 (58 days - at risk); SG08 2010 Suburban LC9 PYP Aurora 44/7; SG10 2010 Silverado LC9 Aurora 34/2; SG09 2007 Yukon XL LC9 Aurora 45/11. PYP (800) 962-2277. A VIN code confirms the engine the car left the factory with, not that it is still original. Take the whole package: harness, ECU, pedal, MAF, throttle body, fuel rails, coils (options OP01-OP04)
+- ▶ **J2** — Call Littleton U-Pull about its 2005 Silverado in row 8 - ask for the 8th VIN digit (B means L33)  
+  *you*  
+  The only possible L33 in range on 2026-09-23 (SG16). Littleton does not publish VINs: 303-791-1380
+- ▶ **J5** — Re-run the aluminum-donor search before each yard trip - inventory turns over daily  
+  *agent*  
+  Search pyp.com Aurora and Denver 52nd and upullandpay.com by model, check the VIN's 8th digit (B L33, P LM4, M LH6, 3 or 7 LC9; T, 0, J, V, Z, F are iron), and update sightings - mark gone what has left. Cars are crushed about 30-90 days after being set
+- ⏳ **BR02** — At the yard: compression test if allowed, photos, read the VIN's 8th digit and the odometer, then pull the whole package  
+  *you* · waits on: J1 (yours: Before any yard trip: call and give the VIN - is the car still on …); BR01 (yours: Buy the stands and tools: two engine stands (engine and …)  
+  Take: engine with every accessory, complete engine harness, ECU, accelerator pedal, MAF, throttle body, fuel rails and injectors, coils, oil pan, valve covers, the flexplate bolts. Bag and label everything. Avoid 706 heads (cracks)
+- ⏳ **BR03** — Buy the CD009 - a 2005+ unit with a readable tag, its shifter and ideally the clutch fork, slave and hard line  
+  *you* · waits on: J4 (yours: Measure the FB tunnel against the CD009 before buying the transmission); DS11 (yours: Freeze the swap design - rule it complete, so buying the rest can …)  
+  GL-4 fluid only (OP10). Not before the tunnel is measured (J4) and the design frozen
+- ⏳ **BR06** — Buy the car-prep parts on the frozen design: mounts, oil pan, headers, radiator and fan, fuel pump and lines, pedal parts, driveshaft, axle  
+  *you* · waits on: DS11 (yours: Freeze the swap design - rule it complete, so buying the rest can …)  
+  Each from its design row DS01-DS09
+- ⏳ **BR04** — Buy the adapter kit and clutch - Sikky LS to CD00x plus ARP flywheel bolts, and a 350Z clutch and pressure plate  
+  *you* · waits on: BR03 (yours: Buy the CD009 - a 2005+ unit with a readable tag, its shifter and …)  
+  OP20
+- ⏳ **BR05** — Buy the rebuild parts from the breakdown's findings: gasket and seal set, AFM delete kit (LH6 / LC9), timing set, oil pump, water pump, thermostat, knock sensors, plugs, head bolts if the heads come off  
+  *you* · waits on: BD08 (yours: Rule the rebuild scope)  
+  The list is written at BD08 from what the engine actually needs
+
+### 02 · 02 Breakdown - engine and transmission on stands: strip, inspect, measure
+
+- ▶ **K4** — With the engine and transmission in hand: read every connector's pin letters and confirm the generation, then correct ls_devices and ls_wires  
+  *you*  
+  R11: every pin letter and supply voltage in the design is confirm until read off the parts. Gen III vs Gen IV changes the crank, cam, knock and coil details (D-393)
+- ⏳ **BD01** — Engine on the stand: record the VIN code, casting numbers of the block and heads, and the odometer; compression test if the yard did not allow one  
+  *you* · waits on: BR02 (yours: At the yard: compression test if allowed, photos, read the VIN's …)
+- ⏳ **BD02** — Drain every fluid and look at it: oil (milky means coolant, glitter means metal), coolant (oil in it), and cut the oil filter open  
+  *you* · waits on: BD01 (yours: Engine on the stand: record the VIN code, casting numbers of the …)
+- ⏳ **BD03** — Strip the accessories, harness, intake, coils, injectors and rails - photograph, bag and label every part and bolt  
+  *you* · waits on: BD02 (yours: Drain every fluid and look at it: oil (milky means coolant, …)  
+  Keep the donor harness intact - it is the reference for the new leg's pin letters (K4)
+- ⏳ **BD04** — Heads off (needed for the AFM delete on an LH6 / LC9): inspect the cylinder walls, measure the bores, check the lifters and cam lobes, check the heads for cracks  
+  *you* · waits on: BD03 (yours: Strip the accessories, harness, intake, coils, injectors and rails …)  
+  On an L33 the heads may stay on if compression and leak-down were good - decided at BD08
+- ⏳ **BD05** — Oil pan off: inspect the pickup, one main and one rod bearing, the timing chain and oil pump  
+  *you* · waits on: BD03 (yours: Strip the accessories, harness, intake, coils, injectors and rails …)
+- ⏳ **BD06** — The CD009 on its stand: tag, fluid, shift feel through every gear, input shaft play, and remove the Nissan flywheel and clutch  
+  *you* · waits on: BR03 (yours: Buy the CD009 - a 2005+ unit with a readable tag, its shifter and …)
+- ⏳ **BD07** — Rebuild scope from the findings - what is replaced, what is kept, and the parts list for BR05  
+  *agent* · waits on: BD04 (yours: Heads off (needed for the AFM delete on an LH6 / LC9): inspect the …); BD05 (yours: Oil pan off: inspect the pickup, one main and one rod bearing, the …)  
+  Measurements beat the plan (R11): worn bores or bad bearings turn a reseal into a rebuild, which is Camden's call
+- ⏳ **BD08** — Rule the rebuild scope  
+  *you* · waits on: BD07 (agent: Rebuild scope from the findings - what is replaced, what is kept, …)  
+  Reseal only, reseal plus AFM delete, or a full rebuild
+
+### 06 · 06 Car prep - the 12A out, the bay and tunnel, mounts, fuel, cooling, exhaust, axle, pedals, the new leg
+
+- ⏳ **CP01** — The 12A, its automatic, the Weber and the exhaust come out - photographed, then boxed or sold  
+  *you* · waits on: DS11 (yours: Freeze the swap design - rule it complete, so buying the rest can …)  
+  The 12A's engine leg is cut at the firewall grommet here (D-211)
+- ⏳ **CP02** — The bay: strip brackets nothing needs, clean, derust, seam-seal and paint - as clean a bay as D-325 wants  
+  *you* · waits on: CP01 (yours: The 12A, its automatic, the Weber and the exhaust come out - …); PA01 (yours: Choose the colours - block, heads, valve covers, brackets and the …)
+- ⏳ **CP03** — Tunnel work and the shifter opening for the CD009  
+  *you* · waits on: CP01 (yours: The 12A, its automatic, the Weber and the exhaust come out - …); J4 (yours: Measure the FB tunnel against the CD009 before buying the transmission)
+- ⏳ **CP05** — Manual pedal box, clutch master and line  
+  *you* · waits on: CP01 (yours: The 12A, its automatic, the Weber and the exhaust come out - …); BR06 (yours: Buy the car-prep parts on the frozen design: mounts, oil pan, …)
+- ⏳ **CP06** — Fuel system: in-tank pump, lines, filter-regulator; the O5 soft fuse re-set from the pump  
+  *you* · waits on: CP01 (yours: The 12A, its automatic, the Weber and the exhaust come out - …); BR06 (yours: Buy the car-prep parts on the frozen design: mounts, oil pan, …)  
+  HO12
+- ⏳ **CP09** — Build the new engine leg on the cavity plan (K3) and fit the ECU and pedal at the dash  
+  *you* · waits on: K3 (agent: Cavity plan: every crossing conductor in ls_wires to a leg cavity, …); BR06 (yours: Buy the car-prep parts on the frozen design: mounts, oil pan, …)
+- ⏳ **CP04** — Fabricate and fit the mounts and crossmember; trial-fit the engine and transmission  
+  *you* · waits on: CP02 (yours: The bay: strip brackets nothing needs, clean, derust, seam-seal …); CP03 (yours: Tunnel work and the shifter opening for the CD009); BR06 (yours: Buy the car-prep parts on the frozen design: mounts, oil pan, …)
+- ⏳ **CP07** — Cooling: radiator, fan, hoses, overflow  
+  *you* · waits on: CP04 (yours: Fabricate and fit the mounts and crossmember; trial-fit the engine …)
+- ⏳ **CP08** — Rear axle and driveshaft  
+  *you* · waits on: CP04 (yours: Fabricate and fit the mounts and crossmember; trial-fit the engine …); BR06 (yours: Buy the car-prep parts on the frozen design: mounts, oil pan, …)  
+  D-113
+- ⏳ **CP10** — Front springs and ride height for the new weight  
+  *you* · waits on: CP04 (yours: Fabricate and fit the mounts and crossmember; trial-fit the engine …); BR06 (yours: Buy the car-prep parts on the frozen design: mounts, oil pan, …)  
+  DS09
+
+### 03 · 03 Polish - degrease, derust, surface prep
+
+- ⏳ **PO04** — Clean the CD009 case and the adapter parts  
+  *you* · waits on: BD06 (yours: The CD009 on its stand: tag, fluid, shift feel through every gear, …)
+- ⏳ **PO01** — Degrease the block, heads, intake, covers and brackets - a parts washer or hot tank; every opening plugged or taped first  
+  *you* · waits on: BD08 (yours: Rule the rebuild scope)
+- ⏳ **PO02** — Derust the steel parts - brackets, the oil pan if steel, bolts, the flexplate-side hardware: wire wheel, media blast or electrolysis  
+  *you* · waits on: PO01 (yours: Degrease the block, heads, intake, covers and brackets - a parts …)
+- ⏳ **PO03** — Surface prep for paint: scuff, clean, and mask every machined face, gasket surface, bore, thread and sensor port  
+  *you* · waits on: PO02 (yours: Derust the steel parts - brackets, the oil pan if steel, bolts, …)  
+  Nothing that seals or measures gets paint
+
+### 04 · 04 Paint - engine, brackets and the parts that show
+
+- ▶ **PA01** — Choose the colours - block, heads, valve covers, brackets and the engine bay (they are seen together)  
+  *you*  
+  Taste: his call alone
+- ⏳ **PA02** — Prime and paint the block and heads with a high-temperature engine enamel, then the valve covers, brackets and pan; let it cure fully  
+  *you* · waits on: PO03 (yours: Surface prep for paint: scuff, clean, and mask every machined …); PA01 (yours: Choose the colours - block, heads, valve covers, brackets and the …)
+- ⏳ **PA03** — Paint or powder-coat the small parts and hardware  
+  *you* · waits on: PO03 (yours: Surface prep for paint: scuff, clean, and mask every machined …); PA01 (yours: Choose the colours - block, heads, valve covers, brackets and the …)
+
+### 05 · 05 Rebuild - reseal, AFM delete, service parts, assemble, prime
+
+- ⏳ **RB01** — AFM delete (LH6 / LC9): non-AFM lifters and trays, valley cover, cam; AFM switched off in the tune later  
+  *you* · waits on: PA02 (yours: Prime and paint the block and heads with a high-temperature engine …); BR05 (yours: Buy the rebuild parts from the breakdown's findings: gasket and …)  
+  Skipped on an L33 or LM4 (no AFM)
+- ⏳ **RB02** — Timing set, oil pump and front cover seal; degree the cam if it was changed  
+  *you* · waits on: RB01 (yours: AFM delete (LH6 / LC9): non-AFM lifters and trays, valley cover, …)
+- ⏳ **RB03** — Heads back on with new gaskets and new head bolts (the factory bolts are torque-to-yield, single-use)  
+  *you* · waits on: RB02 (yours: Timing set, oil pump and front cover seal; degree the cam if it …)
+- ⏳ **RB04** — Rear main seal, oil pan with its pickup and O-ring (the FB-clearance pan from DS02), windage tray  
+  *you* · waits on: RB03 (yours: Heads back on with new gaskets and new head bolts (the factory …)
+- ⏳ **RB05** — Water pump, thermostat, knock sensors, plugs; injectors cleaned and flow-tested; coils checked  
+  *you* · waits on: RB04 (yours: Rear main seal, oil pan with its pickup and O-ring (the …)
+- ⏳ **RB06** — Intake and valve-cover gaskets, PCV routing, sensors refitted  
+  *you* · waits on: RB05 (yours: Water pump, thermostat, knock sensors, plugs; injectors cleaned …)
+- ⏳ **RB07** — Adapter plate, Sikky flywheel on ARP bolts at spec, clutch and pilot; mate the CD009 and fill it with GL-4  
+  *you* · waits on: RB06 (yours: Intake and valve-cover gaskets, PCV routing, sensors refitted); BR04 (yours: Buy the adapter kit and clutch - Sikky LS to CD00x plus ARP …); PO04 (yours: Clean the CD009 case and the adapter parts)
+- ⏳ **RB08** — Pre-lube the oil system on the stand and turn the engine over by hand  
+  *you* · waits on: RB07 (yours: Adapter plate, Sikky flywheel on ARP bolts at spec, clutch and …)
+
+### 07 · 07 Install - in the car, connected, fluids, first start
+
+- ⏳ **IN01** — Engine and transmission into the car, mounts torqued, driveshaft in  
+  *you* · waits on: RB08 (yours: Pre-lube the oil system on the stand and turn the engine over by hand); CP04 (yours: Fabricate and fit the mounts and crossmember; trial-fit the engine …); CP08 (yours: Rear axle and driveshaft)
+- ⏳ **IN02** — Plumbing: fuel, cooling, exhaust and headers, A/C lines, clutch hydraulics  
+  *you* · waits on: IN01 (yours: Engine and transmission into the car, mounts torqued, driveshaft in); CP05 (yours: Manual pedal box, clutch master and line); CP06 (yours: Fuel system: in-tank pump, lines, filter-regulator; the O5 soft …); CP07 (yours: Cooling: radiator, fan, hoses, overflow)
+- ⏳ **IN03** — Electrical: plug in the new leg, grounds (block strap B6, cranking return B7), battery cable to the starter, K9  
+  *you* · waits on: IN01 (yours: Engine and transmission into the car, mounts torqued, driveshaft in); CP09 (yours: Build the new engine leg on the cavity plan (K3) and fit the ECU …)
+- ⏳ **IN04** — Fluids: oil, coolant with the steam ports bled, clutch fluid; check the CD009's level  
+  *you* · waits on: IN02 (yours: Plumbing: fuel, cooling, exhaust and headers, A/C lines, clutch …)
+- ⏳ **IN05** — Before the first start: oil pressure on the pre-lube, fuel pressure with no leaks, crank and cam signals seen by the ECU, a base map loaded  
+  *you* · waits on: IN03 (yours: Electrical: plug in the new leg, grounds (block strap B6, cranking …); IN04 (yours: Fluids: oil, coolant with the steam ports bled, clutch fluid; …)
+- ⏳ **IN06** — First start and first run: watch oil pressure, leaks, temperature and charging  
+  *you* · waits on: IN05 (yours: Before the first start: oil pressure on the pre-lube, fuel …)
+
+### 08 · 08 Fine-tune - the tune, the shakedown, emissions, the record
+
+- ⏳ **TU01** — Base tune: idle, fuelling on the wideband, timing, AFM off, VVT set or locked  
+  *you* · waits on: IN06 (yours: First start and first run: watch oil pressure, leaks, temperature …)
+- ⏳ **TU02** — CAN integration: the ECU's frames at 0x500+ to the ICU (tach, coolant, road speed), the PMU's rpm terms (D-183), the soft-fuse limits for O12, O13 and O14 from measured currents  
+  *agent* · waits on: IN06 (yours: First start and first run: watch oil pressure, leaks, temperature …)  
+  Handover HO03, HO05, HO06, HO15
+- ⏳ **TU03** — Road test with logging: a hot-day cooling check and a charging check with every comfort load on (H-001)  
+  *you* · waits on: TU01 (yours: Base tune: idle, fuelling on the wideband, timing, AFM off, VVT …)
+- ⏳ **TU04** — A professional or dyno tune  
+  *you* · waits on: TU03 (yours: Road test with logging: a hot-day cooling check and a charging …)
+- ⏳ **TU05** — Alignment and corner balance  
+  *you* · waits on: TU03 (yours: Road test with logging: a hot-day cooling check and a charging …)
+- ⏳ **TU06** — Emissions test and registration, per K2  
+  *you* · waits on: TU04 (yours: A professional or dyno tune)
+- ⏳ **TU07** — The as-built into 00-CAR and the swap's process to the archive (CLAUDE.md 6.6)  
+  *agent* · waits on: TU06 (yours: Emissions test and registration, per K2); TU05 (yours: Alignment and corner balance)
+
 ### V · Carried from the v2 question list, 2026-09-11
 
 *Closed:* ✔ V-040
-<!-- rx7 todo sha256:f28450c9fd70310eb7caa9f3d0b977c19d35fbbf6b3bc94b81ef998746bce44c -->
+<!-- rx7 todo sha256:4b791f27149cb8519a34757bec0a1271d07f9c37c23d7b5e71eca20035557eee -->

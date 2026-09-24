@@ -12,6 +12,9 @@ outputs/
 !99-ARCHIVE/**/*.html
 !99-ARCHIVE/**/*.svg
 !01-REFERENCE/**/*.html
+# The harness-leg drawings (D-385) are generated like DECISIONS.md and committed like it:
+# they are the bench copy and the car record. Only this folder is excepted.
+!02-PROJECTS/00-electrical/00-design/diagrams/**/*.svg
 
 # Rendered document names from v2 - never regenerate these at the top of an area.
 # DECISIONS.md is deliberately absent from this list.
@@ -40,16 +43,16 @@ Thumbs.db
 *.exe
 *.o
 *.obj
-02-PROJECTS/00-electrical/firmware/icu_sim/sim
-02-PROJECTS/00-electrical/firmware/tests/test
-02-PROJECTS/00-electrical/firmware/tests/test_bt817
-02-PROJECTS/00-electrical/firmware/tests/test_dcu
+02-PROJECTS/00-electrical/00-design/firmware/icu_sim/sim
+02-PROJECTS/00-electrical/00-design/firmware/tests/test
+02-PROJECTS/00-electrical/00-design/firmware/tests/test_bt817
+02-PROJECTS/00-electrical/00-design/firmware/tests/test_dcu
 
-# KiCad, under 02-PROJECTS/00-electrical/cad/ only. That folder is not an area and
+# KiCad, under 02-PROJECTS/00-electrical/00-design/cad/ only. That folder is not an area and
 # not the view layer (see its README): it is a CAD tool drawing one board. The exported
 # schematic SVG is the exception to the *.svg rule above, because a hardware change is
 # unreviewable without a picture - an S-expression diff of coordinate tuples is not one.
-!02-PROJECTS/00-electrical/cad/**/*.svg
+!02-PROJECTS/00-electrical/00-design/cad/**/*.svg
 *.kicad_prl
 *-backups/
 *.kicad_sch-bak
@@ -58,12 +61,12 @@ _autosave-*
 fp-info-cache
 *-erc.rpt
 *-drc.rpt
-02-PROJECTS/00-electrical/cad/**/*.pdf
-02-PROJECTS/00-electrical/cad/**/*.net
-02-PROJECTS/00-electrical/cad/**/net.txt
-02-PROJECTS/00-electrical/firmware/tests/test_radio
-02-PROJECTS/00-electrical/firmware/icu_sim/renders/
+02-PROJECTS/00-electrical/00-design/cad/**/*.pdf
+02-PROJECTS/00-electrical/00-design/cad/**/*.net
+02-PROJECTS/00-electrical/00-design/cad/**/net.txt
+02-PROJECTS/00-electrical/00-design/firmware/tests/test_radio
+02-PROJECTS/00-electrical/00-design/firmware/icu_sim/renders/
 
 # KiCad 10's local history and lock files (per machine, never versioned)
-02-PROJECTS/00-electrical/cad/**/.history/
-02-PROJECTS/00-electrical/cad/**/~*.lck
+02-PROJECTS/00-electrical/00-design/cad/**/.history/
+02-PROJECTS/00-electrical/00-design/cad/**/~*.lck

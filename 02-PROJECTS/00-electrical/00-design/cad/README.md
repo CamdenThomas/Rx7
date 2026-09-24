@@ -14,9 +14,9 @@ The fence, in full:
 
 - **This folder is not an area.** No `data/`, no `_tables.csv`, so `rx7.py` does not see it
   at all: `areas()` cannot find it, `check` never reads it, and nothing here can make the
-  record invalid or be made invalid by it. It sits beside `data/`, not inside it.
+  record invalid or be made invalid by it. It sits in `00-design/`, beside `firmware/` and `diagrams/`, and never inside `data/` (moved 2026-09-23, D-386).
 - **The record wins, always.** If a schematic and a row disagree, the row is right and the
-  drawing is stale. Nothing in `../data/` cites a file in here as evidence.
+  drawing is stale. Nothing in `../../data/` cites a file in here as evidence.
 - **A fact worth keeping is promoted, not linked** — it becomes a row, and the drawing
   becomes an illustration of the row.
 - **Camden ruled this in conversation on 2026-09-12**, as a way to learn KiCad on something
@@ -34,7 +34,7 @@ boards, which lifts `icu-carrier/README.md`'s old "schematic yes, PCB not yet" (
 already his step `F2`). Board layout and the 3D model are part of this folder's job now.
 **Ordering boards is still his, and still money** (`F2` for the ICU, `F5` for the DCU), and
 nothing in here orders anything. Both boards are this build's (D-374): their specs are
-`../data/icu_channels.csv` and `../data/dcu_channels.csv`. Only the loads the DCU drives are the
+`../../data/icu_channels.csv` and `../../data/dcu_channels.csv`. Only the loads the DCU drives are the
 luxury package's.
 
 ## Why a schematic at all
