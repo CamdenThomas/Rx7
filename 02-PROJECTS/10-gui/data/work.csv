@@ -1,0 +1,13 @@
+id,stage,stage_title,item,owner,state,gate,note
+A1,A,Decide - Camden's calls,"Fill in SPEC.md - any, some or all of it; blank takes the default",camden,open,,"D-399, D-400. The opening calls (platform 1.1, Claude 7.1, phone 1.4) are in it. Say when some is filled in; answers become decisions and rows"
+B1,B,Groundwork in rx7.py - the agent,"A JSON output from rx7.py for everything the GUI shows: status, blocks, picks, work, decisions",agent,open,A1,"R9 - the GUI never reads printed text. One flag on the existing commands, with its own selftest"
+B2,B,Groundwork in rx7.py - the agent,"A safe writer for his answers: put text under a block's SOLVE line or a pick's ANSWER line, back up first, refuse if the file changed underneath",agent,open,A1,R3 - losing his writing is the worst failure. The GUI calls this; it never edits BLOCKS.md or PICKS.md itself
+C1,C,Design - screens before code,"The jobs list, then the screen list and the flows between screens",agent,open,A1,README steps 1-2. The screen map started 2026-09-24 in the screens table (D-400); the rest waits on SPEC.md
+C2,C,Design - screens before code,"Wireframes, the Blocks screen first",agent,open,C1,README step 3; grey boxes only
+C3,C,Design - screens before code,"Review the wireframes: what is missing, what is in the way",camden,open,C2,taste - his call
+C4,C,Design - screens before code,"The visual design: type, colours in light and dark, spacing, the reusable pieces",agent,open,C3,README step 6
+D1,D,Build - the first vertical slice,"The Blocks screen end to end: backend, interface, reading and saving through B1 and B2",agent,open,B1 B2 C4,README step 7
+D2,D,Build - the first vertical slice,The Claude buttons on the Blocks screen: Explain and Discuss,agent,open,D1,read-only calls; nothing Claude says is written to the record from here
+D3,D,Build - the first vertical slice,Answer one real block through the GUI and say what worked,camden,open,D2,README step 8
+E1,E,Then the rest,"The remaining screens (Home, Picks, TODO, Decisions, Run), one work row each, opened after D3",agent,open,D3,"README steps 9-10, and the launcher entry"
+A2,A,Decide - Camden's calls,"Apply what he wrote in SPEC.md: each answer into a decision or a row, then remove it from the page",agent,open,,D-400. Runs each time he says he filled some in; blanks take the default only once he says the sheet is finished

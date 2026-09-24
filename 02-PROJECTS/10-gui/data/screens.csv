@@ -1,0 +1,15 @@
+id,parent,name,purpose,by,note
+home,,Home,"Where the app opens: two options only, Manual and Projects",camden,
+manual,home,Manual,"The owner's manual for this car: every fact, detail, model, repair and bit of history, perfectly organised - the tool he wishes he had when he started on the car",camden,Reads 00-CAR and 01-REFERENCE
+manual.state,manual,Car state,"What the car is right now: identity, what is fitted in each system, mods, known issues",camden,"00-CAR vehicle, as_fitted, mods, issues, planned"
+manual.diagrams,manual,Diagrams,"The car's diagrams: factory circuits, harness legs, boards, photos",camden,01-REFERENCE factory-circuits and photos; the leg drawings; the KiCad boards
+manual.history,manual,Work and repair history,"Everything done to the car, in order",camden,"00-CAR service, parts_history, mods; the projects' logs once complete"
+manual.parts,manual,Parts and spec sheets,"Every part and factory specification, with its source",camden,"00-CAR specs, parts_history, intervals, procedures; 01-REFERENCE sources"
+projects,home,Projects,The project hub: start a new project or work on a current one,camden,
+projects.new,projects,New project,Start a project,camden,details in SPEC.md 6.2
+project,projects,A project,One project's own home: where it stands and what waits on whom,camden,one per 02-PROJECTS area
+project.blocks,project,Blocks,"One block at a time, laid out for reading, with an answer box and buttons to explain it or discuss it first",camden,"from chat 2026-09-24, the first example he gave"
+project.picks,project,Picks,"One product suggestion at a time, answered yes, no or with a question",agent,suggested
+project.todo,project,TODO,"What can start today, then the rest in working order",agent,suggested
+project.decisions,project,Decisions,"Every ruling, searchable, grouped by system",agent,suggested
+project.run,project,Run,Buttons that start the Claude Code workflows and show their reports,agent,suggested

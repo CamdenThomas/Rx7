@@ -1,0 +1,14 @@
+id,date,by,screen,idea,status,note
+I-001,2026-09-24,camden,project.blocks,one screen i could navigate to will display the blocks with pretty design/format one at a time with a respond text box or a few buttens like chat to discuss an answer or explain the block i need to solve,raw,
+I-002,2026-09-24,camden,,This could be a web tool or desktop or an desktop/ios application i do not mind,raw,later in the same chat he called it the gui web app; SPEC.md 1.1 asks him to confirm
+I-003,2026-09-24,camden,,"this gui tool will be highly connected to calude code via api calls, but delegate tasks to scrips where we can",raw,
+I-004,2026-09-24,camden,home,"a menu/homepage that the app opens to that contains only two options, manual and projects",raw,
+I-005,2026-09-24,camden,manual,"manual will in some very pretty organized manor display both the car state, car diagrams, car work/repair history, car part spec sheet",raw,
+I-006,2026-09-24,camden,manual,"I want this owner's manual to be the exact tool I wish I had when I started working on this car, every fact, detail, model, repair, and history all perfectly organized",raw,
+I-007,2026-09-24,camden,projects,"The projects page will be the project hub, where I can make new projects or work on current projects",raw,
+I-008,2026-09-24,agent,,"A local web app: a Python backend on the Fedora PC (same language as rx7.py), the interface in the browser, a phone reaching it later over a private link",raw,recommended in chat 2026-09-24; SPEC.md 1.1
+I-009,2026-09-24,agent,,"Claude Code in headless mode (claude -p) for Claude's work: his own subscription, inside the tree, following CLAUDE.md; the API only if quick chat needs it",raw,SPEC.md 7.1
+I-010,2026-09-24,agent,,"Answers typed in the GUI are written under SOLVE / ANSWER in BLOCKS.md and PICKS.md by a script, so those pages stay the only entry points for his writing",raw,R3; work row B2
+I-011,2026-09-24,agent,,rx7.py gains a JSON output so the GUI never reads printed text,raw,R9; work row B1
+I-012,2026-09-24,agent,project.picks,"A Picks screen: one product at a time - photo, price, why, drawbacks, runner-up - answered yes, no with a reason, or a question",raw,
+I-013,2026-09-24,agent,project.run,"A Run screen: buttons for apply my answers, plan, review, parts round; watch it run; read its report",raw,

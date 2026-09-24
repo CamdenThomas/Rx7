@@ -1,0 +1,7 @@
+table,purpose
+decisions,"every ruling, permanent, newest last; the body is data/decisions/<id>.md"
+log,"what happened, one row per action"
+retired,terms that must no longer appear anywhere
+work,the work list; owner says who does it
+ideas,"every idea about the GUI raised in chat, as it was said, raw - cleaned up later; Camden's own words verbatim (D-400)"
+screens,"the site map: every screen or page of the web app, its parent and what it is for (D-400)"

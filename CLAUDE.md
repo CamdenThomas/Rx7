@@ -211,8 +211,10 @@ says what happened · takes measurements · `git commit`.
 sourcing, or deciding within §3's small list. If a step needs a call only he can make,
 write a block and carry on with the rest of the run.
 
-`BLOCKS.md` and each project's `PICKS.md` (D-390) are the only files Camden ever writes in.
-`BLOCKS.md` is for questions; `PICKS.md` is for his verdicts on the parts the agent suggests.
+`BLOCKS.md`, each project's `PICKS.md` (D-390) and `02-PROJECTS/10-gui/SPEC.md` (D-400) are
+the only files Camden ever writes in. `BLOCKS.md` is for questions; `PICKS.md` is for his
+verdicts on the parts the agent suggests; `SPEC.md` is the GUI's spec sheet, under
+`PICKS.md`'s rules.
 Nothing regenerates either one. You append to them, and you delete an entry only once what he
 wrote is saved in the record (§4, §6.9). That is all that ever touches them. No tool rewrites
 them, and no output of yours ever invites him to type anywhere else.
@@ -345,8 +347,8 @@ then ask only the part that actually needs him.
 
 **R1** `get` a row before changing it.
 **R2** One home per fact. If it can be computed, compute it.
-**R3** Nothing you generate may contain a place to type. `BLOCKS.md` and each `PICKS.md`
-are the only entry points for his writing, and no parser of his writing may be picky. Losing his writing is
+**R3** Nothing you generate may contain a place to type. `BLOCKS.md`, each `PICKS.md` and
+`10-gui/SPEC.md` are the only entry points for his writing, and no parser of his writing may be picky. Losing his writing is
 the worst failure this system has; a wrong ruling is recoverable, a lost session is not.
 **R4** A decision, once written, is never edited. It is superseded by a new one that
 names it.
@@ -568,7 +570,10 @@ The only rows that vanished were `L2-NZL` and its two cavities, which is D-329 d
 job. If you need to know how something used to read, the archive is where it lives now —
 there is no second directory to open, and any instruction that says otherwise is stale.
 
-**The visual layer is still a later concern, apart from the leg drawings.** The generated
+**The visual layer is being planned as its own project, `02-PROJECTS/10-gui` (D-399):** a
+view and an input over the record that keeps no fact of its own; its `README.md` is
+hand-written at Camden's request. Until that design is ruled, nothing else grows a view.
+**Outside that project the visual layer is still a later concern, apart from the leg drawings.** The generated
 files are `DECISIONS.md`, each project's TODO and the harness-leg drawings in
 `02-PROJECTS/00-electrical/00-design/diagrams/` (D-385, §1). Do not build any other view, template
 or rendered document, and do not write a document "so it can be read" (§1). The one
