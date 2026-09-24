@@ -1,0 +1,21 @@
+id,position,spec_ref,watts,qty,trade,colour,fate,part,circuit,note
+LA01,Headlamps,SP-189,60/50 W,2,round halogen today,white,led-unit,LP41,O2 / O3,"Grote 94401-5 on adapter plates (D-358, D-391)"
+LA02,Front turn and parking lights (one bulb per side),SP-198 SP-204,27/8 W,2,1157 (BAY15d) - confirmed from the 1982 diagram,amber,led-bulb,LP53,"O17 / O18 turn, O6 park",One dual-filament bulb per side does both jobs (00-CAR SP-204 corrected). The software flasher needs no load resistor (D-047)
+LA04,Front side markers,SP-205,3.8 W,2,194 (T10 wedge) - confirmed,amber,led-bulb,LP53,O6,
+LA05,Rear side markers,SP-206,3.8 W,2,194 (T10 wedge) - confirmed,red,led-bulb,LP54,O6,
+LA06,Licence plate lights,SP-203,6 W,2,"89 (BA15s) per charts - UNCERTAIN, an 89 is ~7.5 W not 6 W; read it",white,led-bulb,LP54,O6,
+LA07,Rear turn signals,SP-199,27 W,2,1156,per the tail-light design,custom-lamp,LP38,O17 / O18,Inside the custom tail lights (D-384: the path waits on V-063)
+LA08,Stop / tail,SP-201,27/8 W,4,1157,red,custom-lamp,LP38,O7 / O6,As LA07
+LA09,Back-up (reverse) lights,SP-202,27 W,2,1156,white,custom-lamp,LP38,O19,As LA07
+LA10,Interior dome light,SP-207,5 W,1,31 mm class festoon - measure the length,warm white,led-bulb,LP43,O20,
+LA11,Spot (map) light,SP-208,6 W,1,confirm,warm white,led-bulb,LP43,O20,In the dome unit H-06 on cars with the sunroof
+LA12,Luggage (cargo) light,SP-209,5 W,1,festoon (DE3022 per an FB thread) - measure the length,warm white,led-bulb,LP43,F19,
+LA13,Glove box light,SP-210,3.4 W,1,confirm,warm white,led-bulb,LP43,F19,
+LA14,Ignition key-cylinder ring,SP-212,3.4 W,1,confirm,warm white,led-bulb,LP43,O20 illumination,The new ignition switch (electrical P086) may not carry it - confirm
+LA15,Instrument (meter) illumination,SP-192,3.4 W,,,,removed,,,The factory cluster leaves; the ICU display lights itself (electrical D-268)
+LA16,Cluster indicators and warning lights,SP-190 SP-191 SP-200 SP-211 SP-213 SP-214,1.4-3.4 W,,,,removed,,,Tell-tales on the display (electrical D-268)
+LA17,Heater control illumination,SP-193,1.4 W,1,,,removed,,,The factory control head leaves; the DCU panel is backlit (D-355)
+LA18,Radio illumination,SP-197,3.4 / 1.4 W,1,,,removed,,,The head unit replaces the radio (electrical DV28)
+LA19,Automatic select-lever illumination,SP-194,3.4 W,1,confirm,warm white,until-swap,,O20 illumination,Leaves with the automatic at the engine swap - not worth an LED
+LA20,Switch panel illumination,SP-195,3.4 W,1,confirm,warm white,unknown,,O20 illumination,Whether this panel survives the switch replacement (electrical D-209) is not recorded - confirm at the measurement day
+LA21,Cigarette lighter illumination,SP-196,3.4 W,1,confirm,warm white,unknown,,O20 illumination,Only if the lighter is kept

@@ -187,7 +187,7 @@ SP-200,Bulbs,Turn signal indicators (cluster),3.4 W x 2,W,S-001,PDF p.22,primary
 SP-201,Bulbs,Stop / tail,27/8 W x 2 per side (4 bulbs),W,S-001,PDF p.22,primary,Dual filament; S-019 lists 1157. Stop-lamp checker monitors these.
 SP-202,Bulbs,Back-up lights,27 W x 2,W,S-001,PDF p.22,primary,S-019 lists 1156.
 SP-203,Bulbs,Licence plate lights,6 W x 2,W,S-001,PDF p.22,primary,S-019 lists 89.
-SP-204,Bulbs,Front parking lights,8 W x 2,W,S-001,PDF p.22,primary,Separate bulb from the front turn signal on the 1982 diagram.
+SP-204,Bulbs,Front parking lights,8 W x 2,W,S-001,PDF p.22,primary,"The same bulb as the front turn signal (SP-198): one dual-filament 1157 (BAY15d, 27/8 W) per side - F-05 / F-06 'Front turn & parking light', one 3-wire connector (RG park, GR/GO turn, B ground) on the 1982 diagram p.22 (01-REFERENCE factory-circuits/1982RX7WiringDiagram.pdf); Atkins sells 0000-11-1157A for 79-91. Corrected 2026-09-23 - the earlier note said a separate bulb"
 SP-205,Bulbs,Front side marker,3.8 W x 2,W,S-001,PDF p.22,primary,S-019 lists 194.
 SP-206,Bulbs,Rear side marker,3.8 W x 2,W,S-001,PDF p.22,primary,
 SP-207,Bulbs,Interior (dome) light,5 W,W,S-001,PDF p.26 (sect H),primary,Combined interior and spot (map) light unit H-06. S-019 lists DE3021 festoon.

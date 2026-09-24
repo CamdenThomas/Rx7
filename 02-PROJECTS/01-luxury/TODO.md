@@ -13,7 +13,7 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 
 **Phase:** PLANNING. **Goal:** Everything the car gets after it drives on the new harness - bezel and dash plastics, the panel's faceplate, the loads the DCU drives (blower, servos, seats, mirrors, windows), lighting second pass, radar
 
-25 open · 5 ready now · 17 done.
+26 open · 5 ready now · 17 done.
 
 ## Now — what can be started today
 
@@ -46,6 +46,9 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 - ▶ **W-332** — Measure the car's own mirror heads at the door plug  
   *you*  
   Camden 2026-09-21: each FB mirror is one motor plus a clutch coil, and the car's own pair is kept (D-359). What the design still needs, per side, off the door plug with the mirror unplugged, in ohms and amps: which pin is the motor pair and which the clutch coil; what the clutch coil returns to (ground, or a motor pin); motor resistance and stall current at 12 V; clutch coil resistance; which clutch state (energised or not) moves the glass up/down. D-360 shares one clutch line between both mirrors and assumes each clutch coil returns to ground: if it returns through a motor pin instead, D-360 is wrong and becomes a block before anything is crimped. Every mirror pin label in the record is confirm until this is in.
+- ⏳ **V-067** — Read every bulb's number off the bulb itself, and say whether the switch panel and cigarette lighter stay [M-DAY]  
+  *you* · waits on: 00-electrical:S1 (a row in 00-electrical, open)  
+  D-397: pull each bulb in the lamps table (front turn and park, markers, plate, dome and map, luggage, glove box, key cylinder) and read the number printed on it - the trade numbers in the record come from an aftermarket chart and are unverified. Then LA20 and LA21 get a fate Also: the colour of the rear turn signal's lens (red or amber) - it decides the rear turn LEDs
 
 *Closed:* ✔ V-061 · ✔ V-064
 
@@ -59,7 +62,7 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
   M-1 aperture measurements (electrical C1). FT34; the plate and the display are the electrical build's (D-268) and the plate stays as the bezel's sub-frame (electrical D-269)
 - ⏳ **X-009** — After V-063 measures the tail-light aperture, raise the tail-light choice again as a block with the measured numbers (D-384)  
   *agent* · waits on: V-063 (yours: Tail-light aperture [M-DAY])  
-  Options as block 01.10 had them: build from automotive LEDs (ams OSRAM LR G6SP.02, V-064) on the LP40 driver boards, or a certified sealed lamp (Truck-Lite 60555R) if it fits the aperture. Add the new block to I15's gate when it is written.
+  D-384. Since D-397's research: the certified path must use car-width codes (S / T / I, not S2 / T2 / I6 - the Truck-Lite 60555R is wide-vehicle only), and a fourth path exists that needs no aperture - plug-in LEDs in the factory lamps (pick PK033, PICKS.md). If he chooses that, this row is done
 - ⏳ **Z-002** — Radar subsystem  
   *agent* · waits on: block 01.11 (waiting for your answer in BLOCKS.md: Which hidden radar / laser detector, and what the cluster shows)
 - ⏳ **Z-004** — Cold-weather behaviour — battery heater draw, winter parasitic budget  
@@ -130,4 +133,4 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 ### C · The owner's calls
 
 *Closed:* ✖ C1
-<!-- rx7 todo sha256:622b39c5db9b02e885aec35a0732bc8437c188d22cd15514cda0708f6c560bf7 -->
+<!-- rx7 todo sha256:042d83dbcfe3b7368e26c3cd849bf62304a4346946a4cec043397e1510a29027 -->

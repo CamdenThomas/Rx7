@@ -11,9 +11,9 @@ group. Superseded and withdrawn ones are listed at the end with the decision tha
 replaced each, so any id ever issued can still be found by searching this file for it.
 
 
-**Most recent:** `D-391` Parts round 1: eight products accepted - the blower motor, blower final stage, HVAC servos, comfort fuse block, sound deadening, headlamps and both relay sets · `D-392` Seats first: no add-on heater or cooling kit for now - the search is for front seats with heating and cooling built in, likely with electric controls · `D-393` The swap engine is a light, aluminum-block 5.3 LS - L33 first, then LM4, then an LH6 or LC9 with AFM deleted; an iron LM7 is the fallback · `D-394` The new engine leg is designed backwards from every LS and CD009 part: pins, bay joins, conductors that cross, dash ends - and it needs about 55-65 small conductors against the 24 small cavities today · `D-396` The swap's nine stages are numbered 00 to 08: 00 design, 01 buy and retrieve, 02 breakdown, 03 polish, 04 paint, 05 rebuild, 06 car prep, 07 install, 08 fine-tune
+**Most recent:** `D-392` Seats first: no add-on heater or cooling kit for now - the search is for front seats with heating and cooling built in, likely with electric controls · `D-393` The swap engine is a light, aluminum-block 5.3 LS - L33 first, then LM4, then an LH6 or LC9 with AFM deleted; an iron LM7 is the fallback · `D-394` The new engine leg is designed backwards from every LS and CD009 part: pins, bay joins, conductors that cross, dash ends - and it needs about 55-65 small conductors against the 24 small cavities today · `D-396` The swap's nine stages are numbered 00 to 08: 00 design, 01 buy and retrieve, 02 breakdown, 03 polish, 04 paint, 05 rebuild, 06 car prep, 07 install, 08 fine-tune · `D-397` Every lamp in the car becomes LED: the lamps table lists every factory bulb position, what replaces it or why it goes, and the part that covers it, so the parts rounds cannot miss a lamp
 
-Next id: `D-397`.
+Next id: `D-398`.
 
 ## Contents
 
@@ -21,7 +21,7 @@ Next id: `D-397`.
 
 **00-electrical** — Architecture and scope (15) · Build sequence (16) · Legs, connectors and grounds (47) · Outputs, soft fuses and logic (35) · Power backbone and battery (20) · Switches, ladders and inputs (18) · The dash node (20) · The record itself (12) · Wire, labels and materials (7)
 
-**01-luxury** — Comfort, mirrors, windows, seats (12) · Head unit and audio (1) · Lighting (1) · Lighting — the second pass (5) · Modules — DCU and ICU (13) · Parts and sourcing (1) · The boundary — what the electrical build hands over (2) · The cluster (7) · The record itself (7)
+**01-luxury** — Comfort, mirrors, windows, seats (12) · Head unit and audio (1) · Lighting (1) · Lighting — the second pass (6) · Modules — DCU and ICU (13) · Parts and sourcing (1) · The boundary — what the electrical build hands over (2) · The cluster (7) · The record itself (7)
 
 **02-engine** — Engine and transmission (3) · What the electrical build reserves for the swap (9)
 
@@ -1450,7 +1450,7 @@ Servo leads, the blower final stage's lead, the cabin sensor and the panel ribbo
 
 ## Lighting — the second pass
 
-*5 live — D-107 D-110 D-122 D-201 D-358*
+*6 live — D-107 D-110 D-122 D-201 D-358 D-397*
 
 **D-107 / L-001 / D-111 — Custom tail lights: a thin LED strip per side in the stock aperture, red for tail/brake/turn with a 5 cm white reverse section inboard; 2.2 cm strip height gives 55 cm² of red (FMVSS 108 wants 50 cm² for stop and rear turn); a driver PCB per housing takes tail, brake, turn and reverse as logic inputs and handles intensity, constant-current drive and turn override locally.** Design notes: `../../99-ARCHIVE/Electrical/2026-08-31_lighting-body/TAIL-LIGHTS.md`.
 *2026-08-31 · inherited - owned by another project*
@@ -1472,6 +1472,44 @@ Servo leads, the blower final stage's lead, the cabin sensor and the panel ribbo
 
 **In the data.** `parts` `LP41` (spec, gate) and `LP42` (spec, gate). `features` `FT26`: designed, with this ruling. `stages` `S7`: `Q-048` leaves the prerequisites. `work` `V-066`: its purpose restated. Electrical `loads` `LD01`: its basis notes the headlamps become LED at S7; the electrical build still runs on whatever is fitted, and `CK01` is still the number that counts until then.
 *2026-09-21 · closes 01.04*
+
+**D-397 — Every lamp in the car becomes LED.** The new `lamps` table lists every factory bulb position, what replaces it or why it goes, and the parts row that covers it, so no parts round can miss a lamp. Camden's call, 2026-09-23.
+
+**His words.** "Let's keep going on luxury items, we need a decor and tail lights / blinkers. Actually all lights in the car to led inplace of incandescent ensure luxury part picking gets everything we need"
+
+**The inventory: 21 rows, built from the factory bulb list** (00-CAR SP-188 to SP-214).
+- **An LED unit:** the headlamps (LA01), already chosen, Grote on plates (D-358, D-391).
+- **The custom tail lights:** rear turn, stop/tail and reverse (LA07–LA09). The path still waits on the aperture measurement (D-384, V-063). Candidates are proposed now, but any yes is conditional on the lamp fitting that measurement.
+- **LED bulbs, split into three parts rows** (the old catch-all LP43 was split):
+  - **LP53, front exterior:** front turn, front park and front side markers.
+  - **LP54, rear exterior outside the tail lights:** licence plate and rear side markers.
+  - **LP43, interior:** dome, map, luggage, glove box and key-cylinder ring.
+- **Removed, because the build replaces them:**
+  - the cluster's gauge lighting and every indicator and warning light (the ICU display, electrical D-268);
+  - the heater control light (the DCU panel);
+  - the radio light (the head unit).
+- **Until the swap:** the automatic's select-lever light leaves with the automatic, so it is not worth an LED.
+- **Unknown until the measurement day:** the switch panel light and the cigarette lighter light. Whether either survives is not recorded.
+
+**Electrical facts the LED picks must respect.**
+- **No load resistors.** The PMU makes the flasher in software, so there is no hyperflash (D-047).
+- **Re-baseline every lamp channel.** Lamp-out detection is by output current, so after the change every lamp channel's soft fuse and health band is re-baselined (FT27, D-122).
+- **Dimming.** The dimmed illumination circuits use PWM, so the bulbs on them must dim without flicker.
+- **Polarity.** LED wedge bulbs are often polarity-sensitive, so non-polar is preferred.
+- **Colour.** Amber positions take amber LEDs.
+
+**Honest caveat.** An LED bulb in a housing designed for an incandescent bulb is not FMVSS-certified, so the signal lamps are chosen for their pattern and brightness.
+
+**Not settled.** "A decor" in his words is not yet read. It is taken to mean interior decor or ambient lighting, and he is asked. No row is written for it until he says.
+
+**Before any bulb is bought.** The trade numbers in the record come from an aftermarket chart and are unverified. Work V-067, on the measurement day with the interior out (electrical S1), reads the number printed on each bulb.
+
+**In the data.**
+- `_tables` and `_schema`: `lamps` is new.
+- `lamps`: LA01–LA21.
+- `parts`: LP43 is restated, and LP53 and LP54 are new.
+- `work`: V-067 is new.
+*2026-09-23*
 
 
 ## Modules — DCU and ICU

@@ -76,3 +76,14 @@ picks,verdict,enum(proposed|reserve|accepted|vetoed|withdrawn|unused),yes,,"prop
 picks,said,text,no,,"his words on this pick, verbatim - a veto's reason steers the next search"
 picks,decided,date,no,,
 picks,decision,id,no,,the decision that ruled it
+lamps,id,key,yes,,
+lamps,position,str,yes,,
+lamps,spec_ref,str,no,,the factory bulb in 00-CAR specs
+lamps,watts,str,no,,factory wattage
+lamps,qty,int,no,,
+lamps,trade,str,no,,"bulb trade number / base - confirm until read off the bulb itself (R11, work V-067)"
+lamps,colour,str,no,,the LED colour the position needs
+lamps,fate,enum(led-bulb|led-unit|custom-lamp|removed|until-swap|unknown),yes,,
+lamps,part,str,no,parts.id,the parts row that covers it
+lamps,circuit,str,no,,the PMU channel or feed that lights it
+lamps,note,text,no,,

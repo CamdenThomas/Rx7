@@ -8,3 +8,4 @@ retired,terms that must no longer appear anywhere
 stages,
 work,the work list; owner says who does it
 picks,"part suggestions: one row per product the agent proposes for a parts row, with why, drawbacks and Camden's verdict in his own words; rendered to PICKS.md by rx7.py picks (D-388)"
+lamps,"every factory bulb position in the car, what replaces it (an LED bulb, an LED unit, the custom tail light) or why it goes, and the parts row that covers it - so no parts round misses a lamp (D-397)"
