@@ -27,21 +27,21 @@ PC, opened in a browser?
 - (c) iOS app (needs a Mac to build)
 
 **Default** (a).
-**ANSWER:**
+**ANSWER:** desktop fedora app + andriod app
 
 ### 1.2 · Who uses it
 Only you? Or will anyone else ever look at it, like a mechanic, a friend helping, a
 sponsor, or a buyer if the car is sold?
 
 **Default** Only you. Nobody else sees it.
-**ANSWER:**
+**ANSWER:** This is only for my regular use; however, I would like to be able to show it to a hiring manager alongside the CAN bus microcontroller project for applicable job applications. I am not solving a problem or distributing this app, just for my own benefit, but it should be professional enough to showcase my skillset.
 
 ### 1.3 · Which devices
 Where will you open it? Desktop monitor, laptop, phone, tablet, a screen in the garage?
 Which one matters most?
 
 **Default** The desktop first, and it also works on a phone's browser.
-**ANSWER:**
+**ANSWER:** the desktop PC at my desk or my galaxy phone from the car
 
 ### 1.4 · Reaching it away from home
 Should your phone reach it when you're not at home (in a parts store, at a junkyard), or
@@ -51,7 +51,7 @@ only on home Wi-Fi?
 - (c) Later, not now
 
 **Default** (c).
-**ANSWER:**
+**ANSWER:** Must be accessible anywhwre hence the android phone app, i want to be able to view it 4 states over mid roadtrip at the gas station, when buing motor oil to top off, i just take a quick peak in the manual and boom done and easy. must be as accessable as the book in the glovebox used to be. OFlline allows read or staging respones for next connection, no claude access.
 
 ### 1.5 · In the garage
 Is there Wi-Fi where the car is? Will the laptop or phone be used next to the car with
@@ -59,20 +59,20 @@ dirty hands? (That decides big buttons, a high-contrast mode and offline copies.
 
 **Default** Assume weak Wi-Fi and dirty hands: big touch targets and a readable
 high-contrast mode.
-**ANSWER:**
+**ANSWER:** will be used both at my desk, driving around anywhere, or dirty in the garage, offline as a refference tool (you can write responses that will save to the app, but need connection to write or apply this work) only online allows edits
 
 ### 1.6 · Always on, or started when needed
 - (a) Starts automatically when the PC boots and is always there
 - (b) Starts from Super+P or a menu item when you want it
 
 **Default** (a), so a phone can always reach it.
-**ANSWER:**
+**ANSWER:** not always on, not a web app a real desktop and real ios app, i will open it like any other application
 
 ### 1.7 · Name
 What's the app called? Shown in the browser tab and at the top of the page.
 
 **Default** "Rx7".
-**ANSWER:**
+**ANSWER:** Rx7
 
 ---
 
@@ -83,7 +83,7 @@ Pick three words for how it should feel. Examples: clean, technical, warm, luxur
 retro-80s, Japanese, workshop, minimal, dark, glossy, paper-manual.
 
 **Default** Clean, technical, calm.
-**ANSWER:**
+**ANSWER:** default
 
 ### 2.2 · Things you like the look of
 Name any apps, websites, car dashboards or manuals whose look you like: the RX-7's own
@@ -99,13 +99,13 @@ Name any apps, websites, car dashboards or manuals whose look you like: the RX-7
 - (d) A switch in the app
 
 **Default** (c) and (d).
-**ANSWER:**
+**ANSWER:** a
 
 ### 2.4 · Colours
 Any colours it should use or avoid? A body colour of the car, a brand colour, Mazda red?
 
 **Default** Neutral greys, with one accent colour chosen from the car.
-**ANSWER:**
+**ANSWER:** start by using this color palet: ["#3d5a80","#98c1d9","#e0fbfc","#ee6c4d","#293241"]
 
 ### 2.5 · Density
 - (a) Roomy: big text, one thing at a time
@@ -113,20 +113,20 @@ Any colours it should use or avoid? A body colour of the car, a brand colour, Ma
 - (c) Roomy on the phone, dense on the desktop
 
 **Default** (c).
-**ANSWER:**
+**ANSWER:** c, also depends on window, main menu/home always roomy and style oriented only two options, project pages or manual pages that show lots of numbers and info should feel more tight and condenced
 
 ### 2.6 · Photos and models
 How much should it lean on pictures: photos of the car, 3D models of the boards, rendered
 diagrams? Everywhere, or only where they explain something?
 
 **Default** Only where they explain something.
-**ANSWER:**
+**ANSWER:** also depends on the page, home page should feel pretty and photo rich, some pages will be heavily number/fact and photos will be in the way
 
 ### 2.7 · Animation
 Smooth transitions and small motion, or instant and still?
 
 **Default** Subtle and quick, and off if the device asks for reduced motion.
-**ANSWER:**
+**ANSWER:** Default: Subtle and quick, and off if the device asks for reduced motion.
 
 ---
 
@@ -138,13 +138,13 @@ show there at all? For example: the car's photo, a one-line status ("2 blocks wa
 you"), a search box, the date of the last service.
 
 **Default** The two options, with a small status line under Projects.
-**ANSWER:**
+**ANSWER:** those two are the only planned functional buttons the page should have other pretty things on there
 
 ### 3.2 · What the two options look like
 Two big tiles with a picture each, two plain buttons, or something else?
 
 **Default** Two large tiles, each with a photo and a one-line summary.
-**ANSWER:**
+**ANSWER:** default
 
 ### 3.3 · Getting around
 Once inside, how do you move around?
@@ -153,14 +153,14 @@ Once inside, how do you move around?
 - (c) Both
 
 **Default** (c).
-**ANSWER:**
+**ANSWER:** c
 
 ### 3.4 · Search everywhere
 Should one search box find anything anywhere: a part number, a wire colour, a decision, a
 torque spec, a date?
 
 **Default** Yes, from every screen, with a keyboard shortcut.
-**ANSWER:**
+**ANSWER:** yes search will be a very key part of this tool
 
 ---
 
@@ -171,7 +171,21 @@ In your own words: when you started on this car, what did you waste time on? Wha
 wish you could just look up? This is the most important answer on the sheet.
 
 **Default** None. Only your answer can fill this one.
-**ANSWER:**
+**ANSWER:** hours of research to do anything! Even the official manual was not a stone certain tool it covered all 1979-1985 and include a bunch of crap from imported versions the many transmission options the endless variations of all the types released. And a physical book is lame no search tool other then appendix
+
+The biggest goal is dynamic! This tool should heady to grow and adapt with the car.
+
+This can also extend so much further then the typical manual, links to parts official websites customer service lines, part specs, anything.
+
+This manual will grow faster then the car ever will, by the “end” (there is no real end) the car will have a highly accurate 3D model for every part all designed to combine together to make a real flawless accurate 3d model of the entire car
+
+Every measurement you are making me do now should be a look up in the manual, every current draw for any part I needed to measure before will be a manual look up away
+
+The Claude access should also be a big tool for this manual, I should be able to ask you anything right there
+
+I’m on page 482 I can highlight one word that’s a part name and a mini widow with a data preview will pop up the same screen or a question box will pop up so I can poke a question at you tied the the confusion point.
+
+For every project I have had to do for this car the manual lead to to 5 sources which each led me to 18 more. This should have it all right here in one spot the full 8 book catalog that all possible information about the car now is on my phone accessible anywhere with the car or not for anything I could ever possible wish to check about my car.
 
 ### 4.2 · How it's organised
 What's the top-level order of the Manual?
@@ -182,7 +196,9 @@ What's the top-level order of the Manual?
   system
 
 **Default** (d), with system as the filter everywhere.
-**ANSWER:**
+**ANSWER:** an and b maybe even other systems on top. The real goal of the manual is to take one absolute truth table with no repeat values so inconsistency is impossible, with a complete dynamic order. There should be presets like an and b but this tool should be set up to dynamically retrieve relevant information.
+
+For example I’m useing the manual and I am in view a, it’s great but it sparks a weird specific question like what is the total amount of 12 gauge wire end to end, no manual just says that is have to go sheet by sheet to add the totals. The manual is not a organized book of information it’s a dialed tool take one set of information and organize it to any useful pattern needed
 
 ### 4.3 · Read-only or editable
 Can you change facts from the Manual (fix a spec, add a note, log a repair)? Or does it only
@@ -190,7 +206,7 @@ show them, with changes going through Claude or a form?
 
 **Default** Read-only, plus an "add to history" form and a "this is wrong" button that
 opens a block.
-**ANSWER:**
+**ANSWER:** manual is not editable via the app only via the code, projects have ridged guided edit points like solving blocks then starting the Claude cycle but do not allow me to edit anything more just respond
 
 ### 4.4 · Where each fact came from
 Every fact in the record has a source: a factory manual page, a measurement, a datasheet.
@@ -200,27 +216,27 @@ Should the Manual show it?
 - (c) Never
 
 **Default** (b).
-**ANSWER:**
+**ANSWER:** no, data tables aka one all knowing data source should be obscured/abstracted by the gui interface. The data should waste no effort being readable by human eyes only act as a flawless one source of truth to be referenced by the code and you.
 
 ### 4.5 · Measured or unconfirmed
 Many values carry `confirm`, meaning nobody has measured them yet. Should the Manual mark
 those visibly?
 
 **Default** Yes, with a small badge.
-**ANSWER:**
+**ANSWER:** nothing will ever exist in the manual in this state. The manual is for clear cut undeniable facts. If it is not a backed fact it is not in the manual. This should exist in a project only (if there is unknown in the car data sheets we have in the project rx7 directory move them to a new project named 00-verify (increment all other projects to fix number overlap)). this is critical when I go to view the manual there should only be verified information, and if I want it and it is not there perfect queue to add it to verify then confirm it before adding it to manual. (This is only a temporary project as in the future each project will hold the unknowns until they are complete and all verified data gets added to the manual.)
 
 ### 4.6 · Printing
 Do you want printed or PDF copies, like the pins-and-cavities printout the electrical build
 keeps in the car? Which parts?
 
 **Default** Any Manual page prints cleanly, and there's a "print the in-car kit" button.
-**ANSWER:**
+**ANSWER:** no paper copies.  that is why app must work read offline
 
 ### 4.7 · Offline
 Should the Manual work with no connection, for example in the garage with the PC off?
 
 **Default** No for now; it needs the PC reachable. Offline is revisited later.
-**ANSWER:**
+**ANSWER:** offline read of anything is available but no edit (you can queue responses but not send them)
 
 ---
 
@@ -231,20 +247,20 @@ When you open Car state, what should be at the top? For example: VIN, mileage, e
 photo, what's broken right now, what's changed from factory, what's planned.
 
 **Default** Identity and mileage, then open issues, then each system as fitted.
-**ANSWER:**
+**ANSWER:** default
 
 ### 5.2 · Car state: mileage
 Should you be able to enter the current mileage whenever you drive it, so intervals and
 history stay dated?
 
 **Default** Yes, a one-field "update mileage" on Car state.
-**ANSWER:**
+**ANSWER:** yes. There should be a log drive function or a set odm function when I forget to log each drive. Set odm will actually create a drive log with NaN values for all details other then miles traveled to keep good record that shows when I missed a drive
 
 ### 5.3 · Car state: due and overdue
 Show service intervals as due, overdue or fine (oil, coolant, belts)?
 
 **Default** Yes, a small "due soon" list on Car state.
-**ANSWER:**
+**ANSWER:** default
 
 ### 5.4 · Diagrams: which ones
 Which diagrams belong here? Check any: the factory wiring circuits, the new harness legs,
@@ -252,7 +268,7 @@ the connector pinouts, the ICU/DCU boards and their 3D models, photos of the car
 parts views, vacuum diagrams, anything else.
 
 **Default** All of the ones that exist, grouped by system.
-**ANSWER:**
+**ANSWER:** default
 
 ### 5.5 · Diagrams: how you use them
 What should you be able to do with a diagram? Zoom and pan; tap a wire to see its colour,
@@ -261,14 +277,14 @@ light up; compare the factory circuit with the new harness side by side.
 
 **Default** Zoom, pan and search first. Tap-a-wire comes in a later phase (it needs the
 drawings made clickable).
-**ANSWER:**
+**ANSWER:** default
 
 ### 5.6 · Diagrams: factory scans
 The factory circuits are scanned pages. Are plain scans (zoom only) fine, or should they be
 redrawn over time so they can be searched and clicked?
 
 **Default** Scans for now, redrawn only where you ask.
-**ANSWER:**
+**ANSWER:** scans for now and will be deleted when the electrical project is done. This app has no history of state or projects. When the fact changes the old fact dies and the new fact takes its place. The manual of a car is no place for the diagrams for model 1 that has died
 
 ### 5.7 · History: how it reads
 - (a) One timeline, newest first
@@ -276,28 +292,28 @@ redrawn over time so they can be searched and clicked?
 - (c) A timeline with a system filter
 
 **Default** (c).
-**ANSWER:**
+**ANSWER:** no timeline within manual at all! Just exactly right now physical car nothing about what used to be or what will be. (The exception being service history: this was replaced with this part on this date at this odm) any other history is non existent in manual. Projects will each have their own unique decisions review page as a past history nothing else! Each project will similarly not reference anything in the future other then one start to end project design/plan no possible routes forward just the one plan
 
 ### 5.8 · History: what each entry holds
 Tick what matters: date, mileage, what was done, why, parts used, cost, time it took,
 photos, who did it, what was found wrong, links to the project and decisions behind it.
 
 **Default** All of them, with cost and time optional.
-**ANSWER:**
+**ANSWER:** all of them available only what was done, date and odm are required
 
 ### 5.9 · History: adding entries
 How do you add a repair? A form in the app, telling Claude in plain words ("changed the oil
 at 101,200"), or both?
 
 **Default** Both. The form for quick entries, Claude for anything with detail.
-**ANSWER:**
+**ANSWER:** default
 
 ### 5.10 · History: photos
 Should you be able to add photos from your phone to a history entry or a part? Where should
 they be stored?
 
 **Default** Yes. Stored in the tree under `01-REFERENCE/photos/`, named by date and system.
-**ANSWER:**
+**ANSWER:** yes
 
 ### 5.11 · Parts: what a spec sheet shows
 For one part, tick what you'd want: part number, maker, the specs, where it's fitted, where
@@ -305,21 +321,21 @@ it was bought and the price, the datasheet PDF, photos, torque, fluid, the servi
 substitutes, and the project that chose it.
 
 **Default** All of the ones the record holds.
-**ANSWER:**
+**ANSWER:** default, every part should try and get every detail possible from color to a full CAD 3d model everything
 
 ### 5.12 · Parts: factory specs
 The record holds 218 factory specifications (torques, clearances, capacities). Should they
 sit with the parts, in their own "Specs" list, or both?
 
 **Default** Both: a searchable Specs list, plus each part showing its own.
-**ANSWER:**
+**ANSWER:** default
 
 ### 5.13 · Parts: buying
 Should the parts section show things still to buy, with prices and links, and totals per
 project?
 
 **Default** No. Buying lives in each project; the Manual shows only what's on the car.
-**ANSWER:**
+**ANSWER:** manual only shows what is on the car parts should only list the real parts that or attached installed and functional on the real car
 
 ---
 
