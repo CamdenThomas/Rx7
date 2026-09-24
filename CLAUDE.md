@@ -1,6 +1,6 @@
 # CLAUDE.md — the Rx7 tree
 
-_Rev 2026-09-21 (v3). This file is the whole instruction set. There are no skills, no
+_Rev 2026-09-24 (v3). This file is the whole instruction set. There are no skills, no
 slash commands, no second document. If a rule is not here it is not a rule; if you need
 one that is missing, that is a block._
 
@@ -117,7 +117,8 @@ is set through the record, and the file is regenerated. Run `rx7.py todo` at the
   open blocks. Its last two rows are the design review (§6.5) and Camden's freeze ruling.
 - **`01-build/TODO.md`** is everything physical and everything bought. **Every build row
   gates on `phase:SOURCING`**, which only the freeze moves, so nothing in build starts before
-  the design is verified.
+  the design is verified. The freeze does not close design (D-398, §6.1): a design row opened
+  after it gates the build rows it changes, by id.
 
 A new row goes on the track where its work happens: desk, measurement, bench proof or the
 agent's work is design; the cart, the car, and the modules' fabrication are build.
@@ -378,7 +379,16 @@ Each of these is one run. Every run ends the same way: `check` clean, `rx7.py de
 if a decision was written, `rx7.py todo` if a work row changed, `rx7.py diagrams` if a harness table changed, a `log` row, and — only if blocks have stopped everything —
 the report in §8.
 
-### 6.1 · Plan (phase PROPOSED or PLANNING)
+### 6.1 · Plan (any project, any phase)
+
+**Planning is open in every project at every phase** (D-398). The phase says how far the
+build has got, never whether design may be touched: a project in PROPOSED, SOURCING or
+BUILDING takes design work, blocks and parts rounds exactly as one in PLANNING does, and
+one project's phase never holds another's planning. Past the freeze, new design work never
+moves the phase back. The new row goes on the design track, and every build row it changes
+gets the new row's id in its gate, so only that work waits and the rest of the build carries
+on. Undoing work already done (re-cutting, re-ordering, re-wiring) is §3's irreversible,
+so it is a block.
 
 1. `status`. If any block is answered, do 6.2 first — an answer can change how an
    earlier work item should be done.
@@ -394,7 +404,7 @@ the report in §8.
 6. Repeat until no agent item has a met gate.
 7. **Phase gate.** Every agent design item done, no open block that stops design, no open
    Major review finding → write the design-freeze block. The freeze is his ruling; it
-   moves the phase to SOURCING.
+   moves the phase to SOURCING. It starts the build; it does not end planning.
 
 ### 6.2 · Apply answered blocks
 
@@ -442,7 +452,7 @@ measurement that contradicts the design is a finding: report it, block it if it 
 money, and never soften a check to make it fit. Hand back exactly one thing — the next
 open step whose gate is met, its gate, its tools, and the measurement it wants.
 
-### 6.5 · Review (any phase ≥ PLANNING)
+### 6.5 · Review (any phase)
 
 Changes nothing. Four isolated readers, each given only its own section — the designer,
 the buyer who never sees the design, the builder who only follows instructions, and an
