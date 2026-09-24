@@ -478,10 +478,11 @@ interval due? How: a phone push, an email, a badge in the app?
 ## 10 · Git and safety
 
 ### 10.1 · Commits
-You commit by hand today. Should the app have a "Commit" button (showing what changed and
-asking for a message), or stay out of git?
+Claude now commits and pushes at the end of every run (D-401). Should the app show that
+history (what changed, when, and why), have a "commit now" button, or stay out of git?
 
-**Default** A Commit button that shows the changes and suggests a message you can edit.
+**Default** A read-only list of recent commits on each project's page. Committing stays
+Claude's job.
 **ANSWER:**
 
 ### 10.2 · Things that must never happen
