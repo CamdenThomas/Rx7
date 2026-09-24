@@ -36,7 +36,7 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
   D-399, D-400. The opening calls (platform 1.1, Claude 7.1, phone 1.4) are in it. Say when some is filled in; answers become decisions and rows
 - ▶ **A2** — Apply what he wrote in SPEC.md: each answer into a decision or a row, then remove it from the page  
   *agent*  
-  D-400. Runs each time he says he filled some in; blanks take the default only once he says the sheet is finished
+  D-400, D-402. Runs each time he says he is ready: first copy his answers verbatim from the Notion copy into SPEC.md and commit, then apply. Blanks take the default only once he says the sheet is finished
 
 ### B · Groundwork in rx7.py - the agent
 
@@ -79,4 +79,4 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 - ⏳ **E1** — The remaining screens (Home, Picks, TODO, Decisions, Run), one work row each, opened after D3  
   *agent* · waits on: D3 (yours: Answer one real block through the GUI and say what worked)  
   README steps 9-10, and the launcher entry
-<!-- rx7 todo sha256:b00e956c996ef0d66720880fa4f7cf4610765ece3a782ed15ba5cf25c98e6654 -->
+<!-- rx7 todo sha256:c8a2b43018884bf85dca1280d3fbcfb41301d7e65e0820e82a527b4634c8ca4c -->

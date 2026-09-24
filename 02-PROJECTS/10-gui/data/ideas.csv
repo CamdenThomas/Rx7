@@ -12,3 +12,4 @@ I-010,2026-09-24,agent,,"Answers typed in the GUI are written under SOLVE / ANSW
 I-011,2026-09-24,agent,,rx7.py gains a JSON output so the GUI never reads printed text,raw,R9; work row B1
 I-012,2026-09-24,agent,project.picks,"A Picks screen: one product at a time - photo, price, why, drawbacks, runner-up - answered yes, no with a reason, or a question",raw,
 I-013,2026-09-24,agent,project.run,"A Run screen: buttons for apply my answers, plan, review, parts round; watch it run; read its report",raw,
+I-014,2026-09-24,camden,,I cant not edit the md files while controlling remote so i will answer things on notion just like BLOCKS.md,raw,"a need the GUI should meet: answering BLOCKS, PICKS and SPEC from the phone, away from the PC (D-402)"

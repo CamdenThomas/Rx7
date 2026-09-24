@@ -11,9 +11,9 @@ group. Superseded and withdrawn ones are listed at the end with the decision tha
 replaced each, so any id ever issued can still be found by searching this file for it.
 
 
-**Most recent:** `D-397` Every lamp in the car becomes LED: the lamps table lists every factory bulb position, what replaces it or why it goes, and the part that covers it, so the parts rounds cannot miss a lamp · `D-398` Planning is open in every project at every phase: the phase says how far the build has got, never whether design may be touched · `D-399` The GUI project opens: a view and an input over the record, built on rx7.py and Claude Code, never a second home for any fact · `D-400` SPEC.md is Camden's page to write in for the GUI; every idea raised in chat is written down as it is said, and the screen map starts from his home page of two options · `D-401` The agent commits and pushes: small commits that each say what changed and why, straight to master, never a pull request
+**Most recent:** `D-398` Planning is open in every project at every phase: the phase says how far the build has got, never whether design may be touched · `D-399` The GUI project opens: a view and an input over the record, built on rx7.py and Claude Code, never a second home for any fact · `D-400` SPEC.md is Camden's page to write in for the GUI; every idea raised in chat is written down as it is said, and the screen map starts from his home page of two options · `D-401` The agent commits and pushes: small commits that each say what changed and why, straight to master, never a pull request · `D-402` SPEC.md is answered on a Notion copy while he works remotely; his words are copied verbatim into SPEC.md when he says he is ready
 
-Next id: `D-402`.
+Next id: `D-403`.
 
 ## Contents
 
@@ -25,7 +25,7 @@ Next id: `D-402`.
 
 **02-engine** — Engine and transmission (3) · What the electrical build reserves for the swap (9)
 
-**10-gui** — The project (2)
+**10-gui** — The project (3)
 
 **Superseded and withdrawn** — 26
 
@@ -1938,7 +1938,7 @@ The electrical build's counterpart is **D-318**. The consequence here is that `H
 
 ## The project
 
-*2 live — D-399 D-400*
+*3 live — D-399 D-400 D-402*
 
 # D-399 - The GUI project opens: a view and an input over the record, built on rx7.py and Claude Code, never a second home for any fact
 
@@ -1971,6 +1971,19 @@ The electrical build's counterpart is **D-318**. The consequence here is that `H
 **Platform.** He called it "the gui web app" in passing. That is recorded as an idea (I-002), not a ruling: SPEC.md 1.1 asks him to confirm it, because an answer he did not give directly is not a ruling (§6.2).
 
 **In the data.** `10-gui`: tables `ideas` (I-001-I-013) and `screens` (14 rows: home, manual and its four sections, projects, new project, a project and its pages; his marked `camden`, the suggested ones `agent`). Work: A1 now reads "Fill in SPEC.md"; A2 added (apply what he wrote); C1's note. `CLAUDE.md` §2 and R3 name SPEC.md.
+*2026-09-24*
+
+# D-402 - SPEC.md is answered on a Notion copy while he works remotely; his words are copied verbatim into SPEC.md when he says he is ready
+
+*2026-09-24 - Camden*
+
+**Decision.** **The spec sheet has a Notion copy, "GUI spec sheet (10-gui)" under his Rx7 page in Notion (https://app.notion.com/p/3e545edc13da81ea8300ffd3877e49f8), laid out for Notion: collapsible sections and a blue ✏️ answer box under every question. He answers there, the same way he answers `BLOCKS.md`. When he says he is ready, the agent copies each answer word for word from Notion into `SPEC.md` under the same question's `**ANSWER:**` line, commits that, and only then applies it (A2).** Camden's words, 2026-09-24, in chat: *"please make a copy of spec sheet to notion, please adjust format for notions desplay, I cant not edit the md files while controlling remote so i will answer things on notion just like BLOCKS.md, i will anser what i can and alert you when i am ready to factor the information into the real directory."*
+
+**Why this keeps one home per fact (R2).** The questions and defaults live in `SPEC.md`. The Notion page is where he types, never a second record: nothing is read from it except his answers, and only when he says so. His answers reach the record the same way as ever, through `SPEC.md` and then decisions and rows.
+
+**Keeping his writing safe (R3).** Nothing he typed on Notion is edited, reworded or cleared by the agent. An answer is removed from the Notion page only after it is saved in the record (the same test as `SPEC.md` and `PICKS.md`). A question changed in `SPEC.md` after the copy is changed on the Notion page too, in the same run, without touching any answer there. Unclear answers are handled as §6.2 says: a question typed in a box is answered on the Notion page under it.
+
+**In the data.** `ideas` I-014: he cannot edit the repo's files while working remotely, which the GUI itself should solve. Work A2's note. `CLAUDE.md` §2 names the Notion copy.
 *2026-09-24*
 
 

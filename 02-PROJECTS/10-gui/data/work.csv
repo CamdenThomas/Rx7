@@ -10,4 +10,4 @@ D1,D,Build - the first vertical slice,"The Blocks screen end to end: backend, in
 D2,D,Build - the first vertical slice,The Claude buttons on the Blocks screen: Explain and Discuss,agent,open,D1,read-only calls; nothing Claude says is written to the record from here
 D3,D,Build - the first vertical slice,Answer one real block through the GUI and say what worked,camden,open,D2,README step 8
 E1,E,Then the rest,"The remaining screens (Home, Picks, TODO, Decisions, Run), one work row each, opened after D3",agent,open,D3,"README steps 9-10, and the launcher entry"
-A2,A,Decide - Camden's calls,"Apply what he wrote in SPEC.md: each answer into a decision or a row, then remove it from the page",agent,open,,D-400. Runs each time he says he filled some in; blanks take the default only once he says the sheet is finished
+A2,A,Decide - Camden's calls,"Apply what he wrote in SPEC.md: each answer into a decision or a row, then remove it from the page",agent,open,,"D-400, D-402. Runs each time he says he is ready: first copy his answers verbatim from the Notion copy into SPEC.md and commit, then apply. Blanks take the default only once he says the sheet is finished"

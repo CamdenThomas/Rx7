@@ -215,7 +215,9 @@ write a block and carry on with the rest of the run.
 `BLOCKS.md`, each project's `PICKS.md` (D-390) and `02-PROJECTS/10-gui/SPEC.md` (D-400) are
 the only files Camden ever writes in. `BLOCKS.md` is for questions; `PICKS.md` is for his
 verdicts on the parts the agent suggests; `SPEC.md` is the GUI's spec sheet, under
-`PICKS.md`'s rules.
+`PICKS.md`'s rules. While he works remotely he answers `SPEC.md` on its Notion copy
+(D-402); when he says he is ready, his answers are copied verbatim into `SPEC.md` and
+committed before anything is applied.
 Nothing regenerates either one. You append to them, and you delete an entry only once what he
 wrote is saved in the record (§4, §6.9). That is all that ever touches them. No tool rewrites
 them, and no output of yours ever invites him to type anywhere else.
