@@ -206,3 +206,4 @@ D-385,"Legs, connectors and grounds","Each harness leg gets two generated drawin
 D-386,Build sequence,"The electrical project splits into 00-design and 01-build, each with its own generated TODO; nothing in build starts before the design is reviewed and frozen (phase SOURCING); the 2026-09-23 risk review becomes work and blocks",2026-09-23,standing,,,,
 D-387,Build sequence,The car comes apart once: the design list ends with the interior stripped (all wiring left in place) and the measurements that need it out; the build list starts from the interior out and ends with it back in,2026-09-23,standing,,,,
 D-398,The record itself,"Planning is open in every project at every phase: the phase says how far the build has got, never whether design may be touched",2026-09-24,standing,,,,
+D-401,The record itself,"The agent commits and pushes: small commits that each say what changed and why, straight to master, never a pull request",2026-09-24,standing,,,,

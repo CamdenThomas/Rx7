@@ -205,10 +205,11 @@ decision (§3) and it is how the design grows.
 ## 2 · Who does what
 
 **Camden**: answers blocks in `BLOCKS.md` · spends money · does the physical work and
-says what happened · takes measurements · `git commit`.
+says what happened · takes measurements.
 
 **You**: everything that is reading, writing, calculating, cross-checking, enumerating,
-sourcing, or deciding within §3's small list. If a step needs a call only he can make,
+sourcing, or deciding within §3's small list, and keeping the repository current:
+you commit and push (§6.10, D-401). If a step needs a call only he can make,
 write a block and carry on with the rest of the run.
 
 `BLOCKS.md`, each project's `PICKS.md` (D-390) and `02-PROJECTS/10-gui/SPEC.md` (D-400) are
@@ -378,8 +379,8 @@ order. If READY is empty, that is the report.
 ## 6 · Playbooks
 
 Each of these is one run. Every run ends the same way: `check` clean, `rx7.py decisions`
-if a decision was written, `rx7.py todo` if a work row changed, `rx7.py diagrams` if a harness table changed, a `log` row, and — only if blocks have stopped everything —
-the report in §8.
+if a decision was written, `rx7.py todo` if a work row changed, `rx7.py diagrams` if a harness table changed, a `log` row, a commit and a push (§6.10), and — only if blocks
+have stopped everything — the report in §8.
 
 ### 6.1 · Plan (any project, any phase)
 
@@ -514,6 +515,27 @@ for.
    exactly the entries whose verdict and words are saved. Unanswered entries stay where
    they are.
 
+### 6.10 · Commit and push (the end of every run, D-401)
+
+You commit and push; Camden no longer does. The repository is kept current and its history
+useful:
+
+- **Small commits, one change each**: a decision and the rows it moved, one work item, a
+  tool fix. Never one commit for a whole session of unrelated changes. Order them so each
+  one leaves `check` clean.
+- **The message says what changed and why.** Subject: what changed, ending with the
+  decision ids, e.g. `Luxury: every lamp to LED (D-397)`. Body: the why in a sentence
+  or two, and the work ids and blocks it touches. No "update files", no "wip".
+- **Straight to `master`, then `git push`.** No pull requests and no branches unless
+  Camden asks. Never force-push, never rewrite pushed history, never skip the hook
+  (`--no-verify`).
+- **The hook refusing is rc 1**, the only thing that stops a commit: fix the data and
+  commit again (R8). A failed push (network, auth) is not a refusal: say so in the report
+  and push next run.
+- **Never commit a page he is typing in mid-sentence.** `BLOCKS.md`, `PICKS.md` and
+  `SPEC.md` are committed as they stand, never tidied or reverted to make a commit
+  cleaner.
+
 ## 7 · Credit rules
 
 One row, one call: `get` / `sql` / `find` to learn a fact, never a whole file. Never
@@ -536,6 +558,7 @@ DECIDED    D-### one line each
 BLOCKED    00.## (project.number) and the one-word ask
 CHANGED    tables and rows touched
 RECORD     valid / N problems
+PUSHED     the commits, short hash and subject each, or why the push failed
 NEXT       what runs when the blocks are answered
 ```
 

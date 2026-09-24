@@ -11,19 +11,21 @@ group. Superseded and withdrawn ones are listed at the end with the decision tha
 replaced each, so any id ever issued can still be found by searching this file for it.
 
 
-**Most recent:** `D-392` Seats first: no add-on heater or cooling kit for now - the search is for front seats with heating and cooling built in, likely with electric controls · `D-393` The swap engine is a light, aluminum-block 5.3 LS - L33 first, then LM4, then an LH6 or LC9 with AFM deleted; an iron LM7 is the fallback · `D-394` The new engine leg is designed backwards from every LS and CD009 part: pins, bay joins, conductors that cross, dash ends - and it needs about 55-65 small conductors against the 24 small cavities today · `D-396` The swap's nine stages are numbered 00 to 08: 00 design, 01 buy and retrieve, 02 breakdown, 03 polish, 04 paint, 05 rebuild, 06 car prep, 07 install, 08 fine-tune · `D-397` Every lamp in the car becomes LED: the lamps table lists every factory bulb position, what replaces it or why it goes, and the part that covers it, so the parts rounds cannot miss a lamp
+**Most recent:** `D-397` Every lamp in the car becomes LED: the lamps table lists every factory bulb position, what replaces it or why it goes, and the part that covers it, so the parts rounds cannot miss a lamp · `D-398` Planning is open in every project at every phase: the phase says how far the build has got, never whether design may be touched · `D-399` The GUI project opens: a view and an input over the record, built on rx7.py and Claude Code, never a second home for any fact · `D-400` SPEC.md is Camden's page to write in for the GUI; every idea raised in chat is written down as it is said, and the screen map starts from his home page of two options · `D-401` The agent commits and pushes: small commits that each say what changed and why, straight to master, never a pull request
 
-Next id: `D-398`.
+Next id: `D-402`.
 
 ## Contents
 
 **00-CAR** — Fluids and service (2)
 
-**00-electrical** — Architecture and scope (15) · Build sequence (16) · Legs, connectors and grounds (47) · Outputs, soft fuses and logic (35) · Power backbone and battery (20) · Switches, ladders and inputs (18) · The dash node (20) · The record itself (12) · Wire, labels and materials (7)
+**00-electrical** — Architecture and scope (15) · Build sequence (16) · Legs, connectors and grounds (47) · Outputs, soft fuses and logic (35) · Power backbone and battery (20) · Switches, ladders and inputs (18) · The dash node (20) · The record itself (14) · Wire, labels and materials (7)
 
 **01-luxury** — Comfort, mirrors, windows, seats (12) · Head unit and audio (1) · Lighting (1) · Lighting — the second pass (6) · Modules — DCU and ICU (13) · Parts and sourcing (1) · The boundary — what the electrical build hands over (2) · The cluster (7) · The record itself (7)
 
 **02-engine** — Engine and transmission (3) · What the electrical build reserves for the swap (9)
+
+**10-gui** — The project (2)
 
 **Superseded and withdrawn** — 26
 
@@ -1168,7 +1170,7 @@ D-079 fitted the far-end terminator "in the engine bay, capped across `L1-S1 9/1
 
 ## The record itself
 
-*12 live — D-026 D-222 D-233 D-275 D-276 D-277 D-340 D-349 D-356 D-361 D-373 D-376*
+*14 live — D-026 D-222 D-233 D-275 D-276 D-277 D-340 D-349 D-356 D-361 D-373 D-376 D-398 D-401*
 
 **D-026 / D-043 — Working files are Markdown; IDs are permanent and never reused; a closed question is cited with its closer.**
 
@@ -1275,6 +1277,36 @@ D-079 fitted the far-end terminator "in the engine bay, capped across `L1-S1 9/1
 
 **In the data.** `work` E24 note (the laptop is the Windows laptop); its gate on `00.27` is met. CLAUDE.md §9 names the laptop's one role.
 *2026-09-22 · closes 00.27*
+
+# D-398 - Planning is open in every project at every phase: the phase says how far the build has got, never whether design may be touched
+
+*2026-09-24 - Camden*
+
+**Decision.** **Planning is open in every project at every phase. Design work, blocks and parts rounds may be taken up in any project at any time, whether it is PROPOSED, PLANNING, SOURCING or BUILDING. A project's phase records how far its build has got. It never closes planning, and one project's phase never holds another's.** Camden's call, 2026-09-24, in chat: *"please update the rx7 block structure that allows planning to be open for any project any time"*.
+
+**Why.** Nothing in `tools/rx7.py` limited planning by phase. `block`, `new`, `add` and the gate resolver never read it, and `02-engine` already had READY design rows while PROPOSED. The limit was in the words of `CLAUDE.md`: §6.1 was headed "phase PROPOSED or PLANNING", §6.5 "any phase ≥ PLANNING", and the freeze read as the end of design. That would have stopped a project from being planned at all once its build started, and stopped a new idea (a seat, a lamp, a sensor) from being worked on in a project already buying parts.
+
+**What the freeze still does.** It stays Camden's ruling and still moves a project to SOURCING. Every build row still gates on `phase:SOURCING` (D-386), so nothing is bought or cut before the first verified design. What changes is that the freeze starts the build without ending planning.
+
+**Design opened after the freeze.** The phase never moves back. The new row goes on the design track, and every build row it changes gets the new row's id in its gate, so only the affected work waits and the rest of the build carries on. Undoing work already done (re-cutting, re-ordering, re-wiring) is still §3's irreversible, so it is a block.
+
+**In the data.** No rows change. The phase values, the gates and the tool stay as they are. `CLAUDE.md`: the §1 build-track paragraph, §6.1 (heading, the new opening paragraph, and step 7), and §6.5's heading.
+*2026-09-24*
+
+# D-401 - The agent commits and pushes: small commits that each say what changed and why, straight to master, never a pull request
+
+*2026-09-24 - Camden*
+
+**Decision.** **The agent commits and pushes at the end of every run, straight to `master`, and Camden no longer does. Commits are small, one change each, and each message says what changed and why with its decision ids. There are no pull requests and no branches unless he asks.** Camden's call, 2026-09-24, in chat: *"please adjust the rules of this project, you have full commit and push power, please help me keep the reposity up to date and full of usefull commits but no PR's. then please commit and push all these changes to main"*.
+
+**Why.** §2 left `git commit` to him, so work sat uncommitted between sessions, and the history shows it: "poopy long commit", "begin todo", "pbc part 1", a whole round of decisions in one commit (D-385 - D-396). Committing is not a call only he can make. It records what the run already did, and `check` guards it through the pre-commit hook.
+
+**"main" is `master`.** He said "push to main". The repository's only branch, and GitHub's default, is `master`. Pushing to a new `main` would have split the history into two branches, so "main" is read as the main branch, `master` (§3: the reading that keeps the most options open). Renaming the branch is his call if he wants it.
+
+**The rules** (`CLAUDE.md` §6.10): one change per commit, each leaving `check` clean; a subject that names the change and its decision ids, and a body that gives the why; push after committing; never force-push, rewrite pushed history or skip the hook; a failed push is reported, not retried with force; his writing pages are committed as they stand.
+
+**In the data.** No rows change. `CLAUDE.md`: §2 (Camden no longer commits; the agent keeps the repository current), the run ending in §6, the new §6.10, and a `PUSHED` line in the §8 report.
+*2026-09-24*
 
 
 ## Wire, labels and materials
@@ -1897,6 +1929,49 @@ The electrical build's counterpart is **D-318**. The consequence here is that `H
 
 **What this asks of the swap.** The ECU must be one that tolerates a cabin mounting and a longer sensor harness — which is the normal case for every ECU worth fitting, and is how the factory mounted its own control units. Long runs to crank and cam sensors are shielded, as `L1-S1 6` already is for the tach. Nothing about this reserves less: O13 and O14 stay the ECU and fan channels (D-007), and the leg still ends at the firewall grommet (D-211).
 *2026-09-11 · closes 00.04*
+
+
+---
+
+# 10-gui
+
+
+## The project
+
+*2 live — D-399 D-400*
+
+# D-399 - The GUI project opens: a view and an input over the record, built on rx7.py and Claude Code, never a second home for any fact
+
+*2026-09-24 - Camden*
+
+**Decision.** **A new project, `02-PROJECTS/10-gui`, is opened at phase PROPOSED to design and build a graphical tool for managing this tree. Its `README.md` holds the outline of how a GUI is made and the first plan.** Camden's call, 2026-09-24, in chat: *"please open a new project in rx7 projects. name this project: 10-gui. then please set up the readme to conatin the very basic outline fo the prosses for creating/designing a gui application to manage this project directory. for example one screen i could navigate to will display the blocks with pretty design/format one at a time with a respond text box or a few buttens like chat to discuss an answer or explain the block i need to solve. that is one example, This could be a web tool or desktop or an desktop/ios application i do not mind, this gui tool will be highly connected to calude code via api calls, but delegate tasks to scrips where we can."*
+
+**What this opens that `CLAUDE.md` had closed.** §1 and §9 called the visual layer "a later concern" and allowed no views beyond the generated ones. This project is where that layer is now planned. Until its design is ruled, nothing else in the tree grows a view. The project's `README.md` is hand-written at his request and is not a generated document.
+
+**The constraints the GUI is designed under** (from `CLAUDE.md`, restated in the README):
+- It keeps no fact of its own (R2). It reads the record through `rx7.py` every time.
+- An answer typed in it lands under `**SOLVE:**` in `BLOCKS.md` or `**ANSWER:**` in `PICKS.md` through a script, so those two pages stay the only entry points for his writing (R3). The GUI is a new way to type into them, not a new place.
+- It reads `rx7.py`'s data and exit codes, never its printed text (R9), so `rx7.py` gains a JSON output (B1).
+- Scripts do everything with one right answer. Claude is called for judgement only.
+- It runs on the Fedora PC, from this tree.
+
+**In the data.** New area `02-PROJECTS/10-gui`: `_project`, `_tables`, `_schema`, `decisions`, `work`, `log` and `retired`. Work rows A1-E1: Camden's opening calls first (A1), then the groundwork in `rx7.py` (B1, B2), the design (C1-C4), the first vertical slice (D1-D3) and the rest (E1). `CLAUDE.md` §9: the visual-layer paragraph names this project.
+*2026-09-24*
+
+# D-400 - SPEC.md is Camden's page to write in for the GUI; every idea raised in chat is written down as it is said, and the screen map starts from his home page of two options
+
+*2026-09-24 - Camden*
+
+**Decision.** **`02-PROJECTS/10-gui/SPEC.md` is a third page Camden writes in, alongside `BLOCKS.md` and `PICKS.md`. It is a spec sheet with every question the build needs, each with a default that applies when he leaves it blank. Every idea about the GUI raised in chat goes into the `ideas` table in the same session, as it was said. The site map is the `screens` table, starting from his layout: a home page with two options, Manual and Projects.** Camden's words, 2026-09-24, in chat: *"make sure you are writting down any dieas we talk about we can clean it all up later, first lets define each screen/page of the gui web app"*; *"im invisioning a menu/homepage that the app opens to that contains only two options, manual and projects"*; *"manual will in some very pretty organized manor display both the car state, car diagrams, car work/repair history, car part spec sheet. I want this owner's manual to be the exact tool I wish I had when I started working on this car, every fact, detail, model, repair, and history all perfectly organized"*; *"The projects page will be the project hub, where I can make new projects or work on current projects"*; *"make me a sheet that I can fill out that will give you every detail you need to build this tool with no aid from me. remember dont build the tool just the spec sheet"*.
+
+**Why a third page.** He asked for a sheet to fill out, and R3 allows his writing only on named pages, so the sheet is named here. It follows `PICKS.md`'s rules (D-390): written once, never regenerated or rewritten by any tool, and each answer removed only after it is saved in the record (a decision for a call, a row for a fact) with his words verbatim. Blank answers take the sheet's default only when he says the sheet is finished (work row A2). Until then a blank is unanswered.
+
+**Ideas stay raw.** `ideas` rows keep his words verbatim with status `raw`. The agent's own suggestions are marked `by=agent` and stay suggestions until he keeps them. He asked for a clean-up later, not now, so nothing is merged or dropped without him.
+
+**Platform.** He called it "the gui web app" in passing. That is recorded as an idea (I-002), not a ruling: SPEC.md 1.1 asks him to confirm it, because an answer he did not give directly is not a ruling (§6.2).
+
+**In the data.** `10-gui`: tables `ideas` (I-001-I-013) and `screens` (14 rows: home, manual and its four sections, projects, new project, a project and its pages; his marked `camden`, the suggested ones `agent`). Work: A1 now reads "Fill in SPEC.md"; A2 added (apply what he wrote); C1's note. `CLAUDE.md` §2 and R3 name SPEC.md.
+*2026-09-24*
 
 
 ---
