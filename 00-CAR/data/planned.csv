@@ -1,7 +1,7 @@
 id,area,change,project,status
 P-001,Electrical,Full PMU-24 DL rewire,02-PROJECTS/00-electrical,"PMU-24 DL bought, not fitted; the car runs on the factory harness"
 P-002,Electrical,"Ionic S9 heated lithium battery, rear mount",02-PROJECTS/00-electrical,"bought, not fitted"
-P-003,Suspension,Full bushing + wear-point overhaul,,not started - no project area yet
+P-003,Suspension,Full bushing + wear-point overhaul,,"not started - no project area yet; every bushing and suspension part is in hand (Camden, 2026-09-25)"
 P-004,Steering,Steering box replacement (sector shaft),,not started - no project area yet
 P-005,Brakes,Rear disc conversion from 84–85 axle,02-PROJECTS/02-engine,"still planned, not started; the Jul 2026 drum overhaul was an interim so the car could be driven"
 P-006,Drivetrain,LS + CD009 swap,02-PROJECTS/02-engine,project area open (proposed); nothing done on the car. The electrical build reserves outputs and sensor spares for it

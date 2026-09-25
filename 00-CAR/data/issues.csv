@@ -17,7 +17,7 @@ K-021,Electrical,"Headlamp retractor switch (E-02) broken - the dash switch, not
 K-022,Electrical,Washer fluid pump (D-01) not working,"Not working; cause not diagnosed - pump, wiring or switch. A genuine replacement pump was listed in stock at about 48 USD (2026-09-05)",Diagnose before ordering. planned: 02-PROJECTS/00-electrical gives the pump its own PMU output
 K-023,Electrical,Blower motor (G-14) not working,Confirmed dead - no blower airflow,planned: 02-PROJECTS/01-luxury replaces the motor; 02-PROJECTS/00-electrical wires its PWM circuit
 K-004,Mechanical,"Pre-1983 steering box: non-hardened sector shaft, known wear point",Replacement being researched,
-K-005,Mechanical,Age-related rubber degradation throughout the suspension,Full bushing overhaul planned,
+K-005,Mechanical,Age-related rubber degradation throughout the suspension,"Full bushing overhaul planned; every bushing and suspension part is in hand, none fitted yet",
 K-006,Mechanical,Rear compliance link bushings — improper replacement risks chassis damage,Procedure must be confirmed before attempting,
 K-007,Mechanical,Rust — extent not surveyed,Not surveyed,planned: the body work project (02-PROJECTS/03-beauty) surveys it
 K-015,Mechanical,A/C barely cool - probably low on charge,"Fitted and still cools, so it still holds charge",A shop recovers the refrigerant before anything is opened (PR-001). planned: 02-PROJECTS/00-electrical removes the A/C rather than repairing it; heat and ventilation stay

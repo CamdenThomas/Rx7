@@ -112,6 +112,7 @@ parts,model_at_mm,text,no,,"where the combined 3D model puts it: x y z in mm, on
 parts,model_from,text,no,,what the point comes from
 parts,oem_no,str,no,,"the factory part's Mazda number from the 1981-83 parts catalogue (S-005) for a 1982 US automatic; R/L or inner/outer named in brackets. The catalogue's, not necessarily what is fitted now (part_no)"
 parts,catalogue,str,no,,"where S-005 shows it: file, PDF page and figure"
+parts,applies,enum(not-fitted|replaced),no,,"as specs.applies: blank is on the car now; replaced is a part that has come off, kept so its history still reads; only blank rows reach the Manual (D-417). Added 2026-09-25 for the removed oil metering pump"
 drives,id,key,yes,,the inbox target it came from: drive-<when> or odo-<when>
 drives,date,date,yes,,
 drives,odometer,int,yes,,"the reading at the end of the drive, miles"

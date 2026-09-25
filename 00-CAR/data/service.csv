@@ -3,3 +3,5 @@ SV01,2025-08,,"Ignition refresh — coils, cap, rotor, wires, plugs",plugs,PH001
 SV02,2025-09,,"Oil service, intake gaskets, alternator belt",oil belts,,PT003 PT005,Mobil 1 HM 10W-30; about half the coolant lost and replaced (K-019)
 SV03,2025-11,,Weber 45 DCOE conversion and full fuel system,fuel_filter,,PT006 PT007 PT008 PT009 PT010 PT011 PT012,cost: sum of parts_history PH014-PH030
 SV04,2026-07,150000,"Front and rear brake overhaul, A/C belt, oil change",oil brake_fluid belts,,PT041 PT042 PT043 PT044 PT045 PT046 PT047 PT048 PT049,"every friction surface, bearing and cylinder; system bled, pedal firm, fluid clean"
+SV05,2026-07-20,,New K&N air filter on the Weber 45 DCOE,air_filter,,PT058,
+SV06,2026-08-01,,Wheel nut torque check,wheel_nuts,,,
