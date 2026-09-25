@@ -9,7 +9,14 @@
 
   const table = $derived(app.snapshot?.tables.find((t) => t.area === area && t.table === 'parts'));
   const meta = $derived(app.area(area)?.tables.find((t) => t.name === 'parts'));
-  const cols = $derived(table ? table.columns.filter((c) => c !== 'note') : []);
+  // What a part is and what it costs first; where it comes from and why after.
+  const FIRST = ['item', 'spec', 'qty', 'unit', 'unit_usd', 'status'];
+  const cols = $derived.by(() => {
+    if (!table) return [];
+    const [k, ...rest] = table.columns.filter((c) => c !== 'note');
+    const lead = FIRST.filter((c) => rest.includes(c));
+    return [k, ...lead, ...rest.filter((c) => !lead.includes(c))];
+  });
   const rows = $derived.by(() => {
     if (!table) return [];
     const t = q.trim().toLowerCase();
@@ -17,6 +24,12 @@
   });
   const key = $derived(Math.max(0, table?.columns.indexOf(meta?.key ?? 'id') ?? 0));
   const idx = (c: string) => table!.columns.indexOf(c);
+  // One line per part: prose columns are clipped (the whole text is on hover and on the
+  // part's own page) and numbers line up on the right.
+  const type = (c: string) => meta?.columns.find((x) => x.column === c)?.type ?? 'str';
+  const prose = (c: string) => type(c) === 'text';
+  const number = (c: string) => type(c) === 'int' || type(c) === 'float' || c === 'qty';
+  const label = (c: string) => (c === 'unit_usd' ? 'unit $' : c.replaceAll('_', ' '));
 </script>
 
 {#if !table}
@@ -28,12 +41,18 @@
   </div>
   <div class="wrap">
     <table class="grid">
-      <thead><tr>{#each cols as c (c)}<th>{c}</th>{/each}</tr></thead>
+      <thead><tr>{#each cols as c (c)}<th class:num={number(c)}>{label(c)}</th>{/each}</tr></thead>
       <tbody>
         {#each rows as r (r[key])}
           <tr onclick={() => router.go({ name: 'row', area, table: 'parts', key: r[key] })}>
             {#each cols as c (c)}
-              <td class:mono={c === 'id' || c === meta?.key} class:id={c === meta?.key}>{r[idx(c)]}</td>
+              <td
+                class:mono={c === 'id' || c === meta?.key}
+                class:id={c === meta?.key}
+                class:prose={prose(c)}
+                class:num={number(c)}
+                title={r[idx(c)] || undefined}
+              >{r[idx(c)]}</td>
             {/each}
           </tr>
         {/each}
@@ -91,6 +110,35 @@
   }
   td {
     color: var(--text-2);
+    white-space: nowrap;
+  }
+  td {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  td.prose {
+    max-width: 320px;
+  }
+  .num {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  /* The part's id stays in view while the row scrolls sideways. */
+  th:first-child,
+  td:first-child {
+    position: sticky;
+    left: 0;
+  }
+  th:first-child {
+    z-index: 3;
+  }
+  td:first-child {
+    z-index: 1;
+    background: var(--surface);
+  }
+  tr:hover td:first-child {
+    background: color-mix(in oklab, var(--surface-2) 70%, var(--surface));
   }
   .cards {
     display: none;
