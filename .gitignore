@@ -74,28 +74,28 @@ fp-info-cache
 02-PROJECTS/01-electrical/00-design/cad/**/.history/
 02-PROJECTS/01-electrical/00-design/cad/**/~*.lck
 
-# The Rx7 app (02-PROJECTS/10-gui/app) is source code: its own HTML and SVG are tracked.
+# The Rx7 app (02-APP/app) is source code: its own HTML and SVG are tracked.
 # Its dependencies and build output are not.
-!02-PROJECTS/10-gui/app/**/*.html
-!02-PROJECTS/10-gui/app/**/*.svg
-02-PROJECTS/10-gui/app/node_modules/
-02-PROJECTS/10-gui/app/dist/
-02-PROJECTS/10-gui/app/build/
-02-PROJECTS/10-gui/app/test-results/
-02-PROJECTS/10-gui/app/playwright-report/
-02-PROJECTS/10-gui/app/src-tauri/target/
-02-PROJECTS/10-gui/app/src-tauri/gen/android/**/build/
-02-PROJECTS/10-gui/app/src-tauri/gen/android/.gradle/
-02-PROJECTS/10-gui/app/public/pyodide/
-02-PROJECTS/10-gui/app/public/core/
+!02-APP/app/**/*.html
+!02-APP/app/**/*.svg
+02-APP/app/node_modules/
+02-APP/app/dist/
+02-APP/app/build/
+02-APP/app/test-results/
+02-APP/app/playwright-report/
+02-APP/app/src-tauri/target/
+02-APP/app/src-tauri/gen/android/**/build/
+02-APP/app/src-tauri/gen/android/.gradle/
+02-APP/app/public/pyodide/
+02-APP/app/public/core/
 *.keystore
 *.jks
 keystore.properties
-02-PROJECTS/10-gui/app/public/fixture/
+02-APP/app/public/fixture/
 
 # The purchased 3D model (01-REFERENCE S-037) and what is built from it stay on this PC:
 # the repository is public and the model's licence does not allow passing it on. The
-# renders in 10-gui/app/public/car are committed; the model itself never is.
+# renders in 02-APP/app/public/car are committed; the model itself never is.
 01-REFERENCE/model/*.zip
 01-REFERENCE/model/*.obj
 01-REFERENCE/model/*.glb

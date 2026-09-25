@@ -107,16 +107,17 @@ DATE_RE = re.compile(r"^\d{4}-\d{2}(-\d{2})?$")
 DATETIME_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:\d{2})?$")
 ID_RE = re.compile(r"^[A-Z]{1,4}-\d{1,4}$")
 # Blocks are numbered per project, <prefix>.<n>: `01.12` is the twelfth block raised for
-# 02-PROJECTS/01-electrical, `02.07` the seventh for 02-luxury (D-356). The prefix is
+# 02-PROJECTS/01-electrical, `02.07` the seventh for 03-luxury (D-356). The prefix is
 # the project directory's two-digit number; 00-CAR and 01-REFERENCE would collide with
 # 00 and 01, so theirs are CAR and REF. The number has at least two digits, so no id is
 # shorter than `00.01` — but a bare `13.80` in prose is a voltage, so a block id is only
 # recognised where it is structure: a `blocks` key, `closes`, a gate. Never in prose.
 # Blocks were BLK-### until 2026-09-21; each old id is a `retired` row in its project.
 # The projects moved up one number on 2026-09-25 (D-427): a block id in a decision written
-# before then keeps its old project, and next_block_id never repeats it.
-BLOCK_ID_RE = re.compile(r"^(\d{2}|CAR|REF)\.(\d{2,3})$")
-BLOCK_PREFIX_FIXED = {"00-CAR": "CAR", "01-REFERENCE": "REF"}
+# before then keeps its old project, and next_block_id never repeats it. Engine and luxury
+# then swapped to 02 and 03, and the app left the projects for 02-APP, prefix APP (D-428).
+BLOCK_ID_RE = re.compile(r"^(\d{2}|CAR|REF|APP)\.(\d{2,3})$")
+BLOCK_PREFIX_FIXED = {"00-CAR": "CAR", "01-REFERENCE": "REF", "02-APP": "APP"}
 # Prose cites are checked by `rx7.py cites` (advisory), never by `check`. D- only, three
 # digits only, because this car's factory diagrams use D-01 and B-12 as component codes.
 CITE_RE = re.compile(r"\b(D-\d{3})\b")
@@ -494,7 +495,7 @@ def split_choices(cell: str):
 #   01.07                 met when that block is gone from `blocks` and a decision names it
 #                         in `closes` — i.e. it has been answered and applied
 #   A5                    met when that work row is done or dropped, in this area
-#   02-luxury:F-012  the same, in another area (work ids are only unique per area)
+#   03-luxury:F-012  the same, in another area (work ids are only unique per area)
 #   phase:SOURCING        met when the owning area is at that phase or past it
 #
 # An empty gate is met. READY is every open row whose gate is met; that list is the only
@@ -1216,7 +1217,7 @@ def export_data() -> dict:
     for a in areas():
         tables, cols = schema(a)
         kv = project_kv(a)
-        kind = {"00-CAR": "car", "01-REFERENCE": "reference"}.get(a.name, "project")
+        kind = {"00-CAR": "car", "01-REFERENCE": "reference", "02-APP": "app"}.get(a.name, "project")
         meta = []
         for t in sorted(tables):
             spec = cols.get(t) or []
@@ -1956,7 +1957,7 @@ def cmd_selftest(args):
     puts the planner to work on something that is not ready, and one that wrongly calls
     it 'unmet' stops the project with no error anywhere. Both fail silently (R7). The same
     goes for the writer of his answers: one that loses a character loses his words (R3)."""
-    A, B = "01-electrical", "02-luxury"
+    A, B = "01-electrical", "03-luxury"
     fails = []
 
     def mk(rows, phase="PLANNING", blocks=None):
@@ -1989,7 +1990,7 @@ def cmd_selftest(args):
     amb = mk([("A1", "", "open")])
     amb["work_ids"]["A1"].append(B)
     amb["work"][(B, "A1")] = "open"
-    expect("an ambiguous unqualified work id is refused", gate_state("A1", "03-engine", amb)[2])
+    expect("an ambiguous unqualified work id is refused", gate_state("A1", "02-engine", amb)[2])
 
     expect("a dependency ring is found",
            gate_cycles(mk([("A1", "A2", "open"), ("A2", "A3", "open"), ("A3", "A1", "open")])))

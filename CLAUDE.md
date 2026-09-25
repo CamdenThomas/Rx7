@@ -55,8 +55,8 @@ A car-level ruling that belongs to no project (a fluid, a service call) is a dec
 cite it (§6.6).
 
 An **area** is any directory holding `data/_tables.csv`: `00-CAR` (the car itself, phase
-PERMANENT), `01-REFERENCE` (manuals, factory circuits, photos, sources — PERMANENT), and
-each project under `02-PROJECTS`.
+PERMANENT), `01-REFERENCE` (manuals, factory circuits, photos, sources — PERMANENT), `02-APP`
+(the Rx7 app and its own work, D-428), and each project under `02-PROJECTS`.
 
 **There is one data format.** Everything is a CSV table, including the schema, so the
 description of the record is checked by the same code that checks the record. A table
@@ -72,7 +72,7 @@ project has used, in `blocks` or in any decision's `closes`. A stored counter ca
 with reality. Never type an id — `rx7.py new` and `rx7.py block` issue them.
 
 **There are no pages (D-405).** Blocks, his answers, parts picks, the TODO lists and every
-decision live in the record, and **the Rx7 app** (`02-PROJECTS/10-gui/app`, a desktop app
+decision live in the record, and **the Rx7 app** (`02-APP/app`, a desktop app
 and an Android app) is how he reads and answers them. Do not write a Markdown page for him
 to read or to type in: not a TODO, not an index, not a summary, not a spec sheet. What was
 `BLOCKS.md`, `PICKS.md`, `DECISIONS.md` and each `TODO.md` is now a screen in the app,
@@ -89,7 +89,7 @@ factory figure for a part that has gone is marked `applies=replaced`, never dele
 fitted date is read from the `service` visit whose `fitted` names it, and the odometer is read
 from the newest `drives` or `service` reading. Neither is ever typed.
 
-**Files that stay files.** This one. `02-PROJECTS/10-gui/README.md`, where the app's design
+**Files that stay files.** This one. `02-APP/README.md`, where the app's design
 is pitched, at his request. Code and drawings with the READMEs that belong to them: the
 firmware, the KiCad boards, the tools, the app. The reference write-ups in `01-REFERENCE`
 and `00-CAR/data/procedures/` wait for the Manual's plan (D-407). And `99-ARCHIVE`.
@@ -180,7 +180,7 @@ tree, so one area can wait on another:
 | `D-274`           | that decision is standing or inherited                                                                   |
 | `01.07`           | that block is gone from `blocks` and a decision names it in `closes`                                     |
 | `A5` · `F-012`    | that work row is done or dropped, in this area                                                           |
-| `02-luxury:F-012` | the same, in another area — **always qualify across areas**, because work ids are only unique within one |
+| `03-luxury:F-012` | the same, in another area — **always qualify across areas**, because work ids are only unique within one |
 | `phase:SOURCING`  | this area is at that phase or past it                                                                    |
 
 **READY** is every open row whose gate is met. `status` prints it per owner and prints
@@ -306,9 +306,9 @@ Raise it in one go, every field at once (`rx7.py block -p AREA ask=… why=@why.
 options=@opts.txt recommend=… stops=…`). Long fields go through `@file`.
 
 **Block ids are `<project>.<number>`** (D-356): `01.12` is the twelfth block raised for
-`02-PROJECTS/01-electrical`, `02.07` the seventh for `02-luxury`. The prefix is the project
-directory's two-digit number; `00-CAR` and `01-REFERENCE` use `CAR` and `REF`, because
-`00` and `01` are taken. Never `B-`: this car's factory diagrams already use `B-12` and
+`02-PROJECTS/01-electrical`, `02.07` the seventh for `03-luxury`. The prefix is the project
+directory's two-digit number; `00-CAR`, `01-REFERENCE` and `02-APP` use `CAR`, `REF` and
+`APP`, because they are not numbered projects. Never `B-`: this car's factory diagrams already use `B-12` and
 `D-01` as component codes, and an id family must never share a namespace with the subject
 matter. And because a bare `13.80` in prose is a voltage, a block id is only recognised as
 structure — a `blocks` key, `closes`, a gate. In prose write it as `block 00.07` or in
@@ -316,7 +316,11 @@ backticks. Blocks were `BLK-###` until 2026-09-21; each old id is a `retired` ro
 project naming the new one.
 
 **The projects moved up one number on 2026-09-25** (D-427) to make room for `00-verify`:
-electrical 00 → 01, luxury 01 → 02, engine 02 → 03, beauty 03 → 04; 10-gui kept 10. Open
+electrical 00 → 01, luxury 01 → 02, engine 02 → 03, beauty 03 → 04; 10-gui kept 10. The same
+day Camden swapped engine and luxury and took the app out of the projects (D-428): the tree
+is now `00-verify`, `01-electrical`, `02-engine`, `03-luxury`, `04-beauty`, and `02-APP`
+(was `02-PROJECTS/10-gui`, block prefix `APP`; engine's open `03.02` became `02.12` and
+luxury's `02.11` became `03.12`). Open
 blocks were renumbered and their old ids retired. Decisions and logs are never edited, so a
 block id in one written before that date keeps its old project: `00.NN` there is electrical,
 `01.NN` luxury, `02.NN` engine, `03.NN` beauty. Numbering is derived from every `closes` and
@@ -631,7 +635,7 @@ The tools on this machine, and nothing else:
   (its `README.md` §4). The car's diagnostic port `DP-DIAG` takes Camden's Windows laptop,
   which runs ECUMaster's PMU client and nothing else for this project (D-376). It holds no
   clone, and it is not a second home for the tree.
-- The Rx7 app (`02-PROJECTS/10-gui/app/`): Node 22 and npm (dnf), Rust through rustup in
+- The Rx7 app (`02-APP/app/`): Node 22 and npm (dnf), Rust through rustup in
   `~/.cargo`, the Tauri build libraries (dnf, listed in the app's README), JDK 21 in
   `~/.local/jdk`, and the Android SDK and NDK in `~/Android/Sdk`. The app's README says how
   to build, test and install both apps.
@@ -644,7 +648,7 @@ The only rows that vanished were `L2-NZL` and its two cavities, which is D-329 d
 job. If you need to know how something used to read, the archive is where it lives now —
 there is no second directory to open, and any instruction that says otherwise is stale.
 
-**The visual layer is the Rx7 app, project `02-PROJECTS/10-gui`** (D-399 → D-405). It is a
+**The visual layer is the Rx7 app, `02-APP`** (D-399 → D-405; not a project since D-428). It is a
 view and an input over the record that keeps no fact of its own. Nothing else grows a view.
 The generated files are only the harness-leg drawings in
 `02-PROJECTS/01-electrical/00-design/diagrams/` (D-385, §1). The one hand-drawn exception

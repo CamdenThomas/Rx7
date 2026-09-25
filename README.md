@@ -14,7 +14,7 @@ python tools/rx7.py status
   `status` prints READY and BLOCKED per area — what can be started now, and what each
   waiting row waits on. `export` is the whole record as JSON for the app; `answer` is the
   one writer of Camden's answers. `selftest` tests the gate resolver and that writer.
-- **The Rx7 app** (`02-PROJECTS/10-gui/app/`) — a desktop app for the Fedora PC and an
+- **The Rx7 app** (`02-APP/app/`) — a desktop app for the Fedora PC and an
   Android app for the phone, one design. It shows the car, the projects, the open blocks,
   parts picks, work lists and every decision, and it is where Camden answers. It keeps no
   fact of its own. Its README says how to build and install it.

@@ -57,7 +57,7 @@ CHECKS = {}
 SILVER = (0.46, 0.48, 0.50, 1.0)  # Sunbeam Silver as a linear base colour, as model/build.py has it
 # the FB shell's painted groups: body, bonnet, doors, roof, bumpers, pop-up covers
 PAINTED = ("CARROCERIA", "CAPOT", "PUERTAS", "TECHO", "PARAG_DEL", "PARAG_TRAS", "TAPAFAROS")
-APP_ART = os.path.join(ROOT, "02-PROJECTS", "10-gui", "app", "public", "car")
+APP_ART = os.path.join(ROOT, "02-APP", "app", "public", "car")
 GLASS = None  # set by fb_body()
 VIEWS = {}  # each app render's camera, filled by app_art()
 GROUPS = {}  # the FB shell's named groups (Spanish), kept by fb_body() for locations()

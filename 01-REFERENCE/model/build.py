@@ -7,7 +7,7 @@ Run headless, from the tree root:
 Reads   01-REFERENCE/model/1978-mazda-rx-7-mk1-sa.zip   (kept out of git - README.md)
 Writes  01-REFERENCE/model/rx7.glb                        the app's 3D view (desktop only, out of git)
         01-REFERENCE/model/landmarks.json                 part centres, mm, for route estimates (out of git)
-        02-PROJECTS/10-gui/app/public/car/*.webp          only with --renders: the app's renders come from
+        02-APP/app/public/car/*.webp          only with --renders: the app's renders come from
                                                           blend.py, the FB body, since D-420
 
 Owns no table. Paint is Sunbeam Silver, read from 00-CAR/data/vehicle.csv (row `colour`)
@@ -26,7 +26,7 @@ import zipfile
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 HERE = os.path.join(ROOT, "01-REFERENCE", "model")
 ZIP = os.path.join(HERE, "1978-mazda-rx-7-mk1-sa.zip")
-APP_ART = os.path.join(ROOT, "02-PROJECTS", "10-gui", "app", "public", "car")
+APP_ART = os.path.join(ROOT, "02-APP", "app", "public", "car")
 
 # Sunbeam Silver, as a linear base colour - a metallic mid silver.
 SILVER = (0.46, 0.48, 0.50, 1.0)
