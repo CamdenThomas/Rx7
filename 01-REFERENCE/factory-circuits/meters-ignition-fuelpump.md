@@ -69,7 +69,7 @@ cutoff. K-008 — the pump grounds at X-15 alongside the rear turn lamps.
 
 ## 5 · What this means for the rebuild
 
-The rebuild's side of every device and wire above is the electrical build's record, not this file's: find a factory code in its data — `python tools/rx7.py find "C-02" -p 00-electrical` — and read the device ends and wire runs from the live tables: `python tools/rx7.py sql 02-PROJECTS/00-electrical "select * from devices"` and `... "select * from cavities"`. (The rendered DESIGN.md §12 and WIRE-TABLES.md that used to be linked here were v2 documents, archived in 99-ARCHIVE/2026-09-11_v2-view-and-tools.) A hand-copied mapping table stood here until 2026-09-07; it had drifted three decisions behind and was removed — one fact, one home. Decisions that shaped this circuit's rebuild: D-006 · D-017 · D-075 · D-082 · D-083 · D-090 · D-183.
+The rebuild's side of every device and wire above is the electrical build's record, not this file's: find a factory code in its data — `python tools/rx7.py find "C-02" -p 01-electrical` — and read the device ends and wire runs from the live tables: `python tools/rx7.py sql 02-PROJECTS/01-electrical "select * from devices"` and `... "select * from cavities"`. (The rendered DESIGN.md §12 and WIRE-TABLES.md that used to be linked here were v2 documents, archived in 99-ARCHIVE/2026-09-11_v2-view-and-tools.) A hand-copied mapping table stood here until 2026-09-07; it had drifted three decisions behind and was removed — one fact, one home. Decisions that shaped this circuit's rebuild: D-006 · D-017 · D-075 · D-082 · D-083 · D-090 · D-183.
 
 ## 6 · Unknowns
 

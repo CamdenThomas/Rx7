@@ -80,7 +80,7 @@ try {
   await sleep(1200);
   await shot('home');
 
-  await js("location.hash = '#/p/00-electrical/blocks/00.29'");
+  await js("location.hash = '#/p/01-electrical/blocks/01.29'");
   await until('the block opens', "return !!document.querySelector('.opt')");
   await js("document.querySelectorAll('.opt')[1].click()");
   const words = 'Toggles in a box — “belt and braces”.\nSecond line.';
@@ -92,13 +92,13 @@ try {
   await js("[...document.querySelectorAll('.answer .btn.primary')].find((b) => b.textContent.includes('Save answer')).click()");
   await until('the answer shows as saved', "return !!document.querySelector('.saved')");
 
-  const file = join(tree, '02-PROJECTS/00-electrical/data/inbox/00.29~desktop.csv');
+  const file = join(tree, '02-PROJECTS/01-electrical/data/inbox/01.29~desktop.csv');
   check('rx7.py answer wrote the inbox file', existsSync(file));
   check('his words are in it byte for byte', existsSync(file) && readFileSync(file, 'utf8').includes('"Toggles in a box — “belt and braces”.\nSecond line."'));
-  check('it was committed alone, with his message', git('log', '-1', '--format=%s') === 'Camden answered 00.29 (desktop)' && git('show', '--stat', '--format=', 'HEAD').split('\n').length === 2);
+  check('it was committed alone, with his message', git('log', '-1', '--format=%s') === 'Camden answered 01.29 (desktop)' && git('show', '--stat', '--format=', 'HEAD').split('\n').length === 2);
   let pushed = false;
   for (let i = 0; i < 40 && !pushed; i++) {
-    pushed = execFileSync('git', ['log', '-1', '--format=%s'], { cwd: origin, encoding: 'utf8' }).trim() === 'Camden answered 00.29 (desktop)';
+    pushed = execFileSync('git', ['log', '-1', '--format=%s'], { cwd: origin, encoding: 'utf8' }).trim() === 'Camden answered 01.29 (desktop)';
     if (!pushed) await sleep(250);
   }
   check('and pushed to GitHub in the background', pushed);
@@ -109,25 +109,25 @@ try {
   // A phone answer arrives on GitHub; Sync brings it in.
   const other = join(home, 'phone');
   execFileSync('git', ['clone', '-q', origin, other]);
-  mkdirSync(join(other, '02-PROJECTS/01-luxury/data/inbox'), { recursive: true });
-  writeFileSync(join(other, '02-PROJECTS/01-luxury/data/inbox/PK021~phone.csv'),
+  mkdirSync(join(other, '02-PROJECTS/02-luxury/data/inbox'), { recursive: true });
+  writeFileSync(join(other, '02-PROJECTS/02-luxury/data/inbox/PK021~phone.csv'),
     'id,target,kind,choice,text,context,device,at\nPK021~phone,PK021,pick,yes,,,phone,2026-09-24T20:00:00-06:00\n');
   execFileSync('git', ['-C', other, 'add', '-A']);
   execFileSync('git', ['-C', other, '-c', 'user.name=p', '-c', 'user.email=p@p', 'commit', '-q', '-m', 'Camden answered PK021 (phone)']);
   execFileSync('git', ['-C', other, 'push', '-q']);
   await js("document.querySelector('.sync').click()");
-  await js("location.hash = '#/p/01-luxury/picks'");
+  await js("location.hash = '#/p/02-luxury/picks'");
   await until('the phone\'s answer arrives with Sync', "return [...document.querySelectorAll('.chip')].some((c) => c.textContent.trim() === 'Yes')");
-  check('the phone\'s answer arrives with Sync', existsSync(join(tree, '02-PROJECTS/01-luxury/data/inbox/PK021~phone.csv')));
+  check('the phone\'s answer arrives with Sync', existsSync(join(tree, '02-PROJECTS/02-luxury/data/inbox/PK021~phone.csv')));
   await shot('picks');
 
   // Withdraw his desktop answer: the file goes, in its own commit.
-  await js("location.hash = '#/p/00-electrical/blocks/00.29'");
+  await js("location.hash = '#/p/01-electrical/blocks/01.29'");
   await until('the saved answer shows', "return !!document.querySelector('.saved')");
   await js("[...document.querySelectorAll('.saved .btn')].find((b) => b.textContent.includes('Withdraw')).click()");
   await until('withdrawn in the app', "return !document.querySelector('.saved')");
   check('withdrawing removes the file', !existsSync(file));
-  check('in its own commit', git('log', '-1', '--format=%s') === 'Camden withdrew his answer to 00.29 (desktop)');
+  check('in its own commit', git('log', '-1', '--format=%s') === 'Camden withdrew his answer to 01.29 (desktop)');
 
   await wd('DELETE', `/session/${sid}`);
 } catch (e) {

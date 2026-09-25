@@ -1,5 +1,5 @@
 """Rough harness route lengths from the 3D body (D-416). Owns `routes.model_ft` in
-02-PROJECTS/00-electrical; never touches `routes.ft`, which is measured on the car.
+02-PROJECTS/01-electrical; never touches `routes.ft`, which is measured on the car.
 
     python3 01-REFERENCE/model/estimate.py            print the estimates
     python3 01-REFERENCE/model/estimate.py --write    also set routes.model_ft through rx7.py
@@ -20,7 +20,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
-AREA = "02-PROJECTS/00-electrical"
+AREA = "02-PROJECTS/01-electrical"
 SLACK = 1.15
 CL = 47.0
 

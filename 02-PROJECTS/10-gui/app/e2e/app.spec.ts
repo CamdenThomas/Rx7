@@ -152,7 +152,7 @@ test('follow the recommendation is one tap, and next unanswered moves on', async
 });
 
 test('a pick needs a reason for no', async ({ page }) => {
-  await open(page, '#/p/01-luxury/picks/PK021');
+  await open(page, '#/p/02-luxury/picks/PK021');
   await page.getByRole('radio', { name: /No/ }).click();
   const save = page.getByRole('button', { name: 'Save', exact: true });
   await expect(save).toBeDisabled();
@@ -162,7 +162,7 @@ test('a pick needs a reason for no', async ({ page }) => {
 });
 
 test('his work rows are answered in the list: a check', async ({ page }) => {
-  await open(page, '#/p/00-electrical/todo');
+  await open(page, '#/p/01-electrical/todo');
   const row = page.locator('.wrow').filter({ hasText: 'B2' }).first();
   await row.getByRole('button', { name: 'Done' }).click();
   await expect(row.getByText('Done', { exact: false })).toBeVisible();
@@ -180,7 +180,7 @@ test('search finds a decision by its words and opens it', async ({ page, isMobil
 });
 
 test('a Claude run shows its feed and its report', async ({ page }) => {
-  await open(page, '#/p/00-electrical/run');
+  await open(page, '#/p/01-electrical/run');
   await page.locator('.offer').filter({ hasText: 'Plan' }).getByRole('button', { name: 'Run' }).click();
   await expect(page.locator('.report').first()).toContainText('PUSHED', { timeout: 15_000 });
   await expect(page.getByText('python3 tools/rx7.py status')).toBeVisible();

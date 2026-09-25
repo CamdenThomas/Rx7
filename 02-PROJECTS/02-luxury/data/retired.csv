@@ -1,0 +1,16 @@
+term,retired_by,note
+heated washer nozzle,D-329,cancelled 2026-09-11 — not worth it
+park de-icer,D-329,cancelled with the heated nozzle
+L2-NZL,D-329,the cowl receptacle is not fitted
+DP-KEY,D-355,the panel has no board and no drop; it is the DCU's faceplate on a local ribbon (D-355)
+L3-WIN,D-355,the window switch pack moved from the console to the centre panel (D-355)
+BLK-012,D-356,renumbered 01.01 - blocks are numbered per project
+BLK-013,D-356,renumbered 01.02 - blocks are numbered per project
+BLK-014,D-356,renumbered 01.03 - blocks are numbered per project
+BLK-015,D-356,renumbered 01.04 - blocks are numbered per project
+BLK-016,D-356,renumbered 01.05 - blocks are numbered per project
+BLK-017,D-356,renumbered 01.06 - blocks are numbered per project
+BLK-020,D-356,renumbered 01.07 - blocks are numbered per project
+mechanical mirror switch,D-359,the DCU drives the mirrors from a panel thumbstick; there is no switch at E-02 or on the panel
+3-wire motors,D-359,the mirrors are the car's own - one motor + a clutch coil each; there is no X/Y motor pair
+01.11,D-427,renumbered to 02.11 when luxury became 02 (2026-09-25)

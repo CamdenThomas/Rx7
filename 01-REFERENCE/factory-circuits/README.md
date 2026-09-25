@@ -2,7 +2,7 @@
 
 *Rev 2026-09-07 · owns: the factory harness as built — one file per circuit, the frozen [`OEM-RECORD.md`](OEM-RECORD.md), the fuse/bus map, the ground map, the decode process. Nothing about the new design lives here: the rebuild's side of every factory device is the electrical build's data, found by its factory code.*
 
-> **Where the rebuild is.** Each circuit file ends with a pointer, not a table: the factory decode above it is authoritative; what replaces each device is a row in `02-PROJECTS/00-electrical/data/` (`python tools/rx7.py find "C-02" -p 00-electrical`) and the live tables (`python tools/rx7.py sql 02-PROJECTS/00-electrical "select * from devices"`); the rendered `DESIGN.md` §12 was a v2 document (v2 document, archived in 99-ARCHIVE/2026-09-11_v2-view-and-tools). The mapping tables that used to sit there were removed on 2026-09-07 — they had drifted (D-249, D-252, D-258 all moved things they still described).
+> **Where the rebuild is.** Each circuit file ends with a pointer, not a table: the factory decode above it is authoritative; what replaces each device is a row in `02-PROJECTS/01-electrical/data/` (`python tools/rx7.py find "C-02" -p 01-electrical`) and the live tables (`python tools/rx7.py sql 02-PROJECTS/01-electrical "select * from devices"`); the rendered `DESIGN.md` §12 was a v2 document (v2 document, archived in 99-ARCHIVE/2026-09-11_v2-view-and-tools). The mapping tables that used to sit there were removed on 2026-09-07 — they had drifted (D-249, D-252, D-258 all moved things they still described).
 
 One file per circuit. Each is the **functional definition** of what the circuit
 is supposed to be, not a forensic trace of the scan. Every wire and connector is
@@ -13,7 +13,7 @@ Source: [`1982RX7WiringDiagram.pdf`](1982RX7WiringDiagram.pdf) (31 pages,
 scanned, no text layer). Factory connector codes are a letter and two digits
 (`F-11`); they are not project IDs.
 
-**Current draw and signal types for every circuit here live in one place:** the electrical build's `data/pins.csv` (`est_a`, `enable_a`, `enable_basis`) and `data/inputs.csv`, read live with `python tools/rx7.py sql 02-PROJECTS/00-electrical "select * from pins"` (the rendered DESIGN.md and PMU-CONFIG-SHEET.md were v2 documents, v2 document, archived in 99-ARCHIVE/2026-09-11_v2-view-and-tools). Leg design needs all loads side by side, so they are not duplicated into each circuit file.
+**Current draw and signal types for every circuit here live in one place:** the electrical build's `data/pins.csv` (`est_a`, `enable_a`, `enable_basis`) and `data/inputs.csv`, read live with `python tools/rx7.py sql 02-PROJECTS/01-electrical "select * from pins"` (the rendered DESIGN.md and PMU-CONFIG-SHEET.md were v2 documents, v2 document, archived in 99-ARCHIVE/2026-09-11_v2-view-and-tools). Leg design needs all loads side by side, so they are not duplicated into each circuit file.
 
 ## Contents
 

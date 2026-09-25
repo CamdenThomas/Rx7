@@ -95,7 +95,7 @@ firmware, the KiCad boards, the tools, the app. The reference write-ups in `01-R
 and `00-CAR/data/procedures/` wait for the Manual's plan (D-407). And `99-ARCHIVE`.
 
 **The one generated file type left is the harness-leg drawings** (D-385): for each leg,
-`A-pin-ladder.svg` and `B-route-map.svg` in `02-PROJECTS/00-electrical/00-design/diagrams/`,
+`A-pin-ladder.svg` and `B-route-map.svg` in `02-PROJECTS/01-electrical/00-design/diagrams/`,
 a pure projection of `housings`, `cavities`, `devices` and `routes`, read-only, rebuilt whole
 by `rx7.py diagrams`, and never looked at by `check`. The command refuses to write any sheet
 where a label touches a label or sits on a wire (rc 2). Fix that in the layout code, never
@@ -110,7 +110,7 @@ him, and his ticks are answers (§4): `work.reply` says how he answers his row �
 `|`). His answer arrives in `inbox` and you set the row (§6.4).
 
 **A project whose `work` has a `track` column has two lists** (D-386 → D-405; today
-`00-electrical`). Each row's `track` says which:
+`01-electrical`). Each row's `track` says which:
 
 - **design**: his checklist in working order and every agent row, ready or blocked and by
   what, then the open blocks. Its last two rows are the design review (§6.5) and his freeze
@@ -180,7 +180,7 @@ tree, so one area can wait on another:
 | `D-274`           | that decision is standing or inherited                                                                   |
 | `01.07`           | that block is gone from `blocks` and a decision names it in `closes`                                     |
 | `A5` · `F-012`    | that work row is done or dropped, in this area                                                           |
-| `01-luxury:F-012` | the same, in another area — **always qualify across areas**, because work ids are only unique within one |
+| `02-luxury:F-012` | the same, in another area — **always qualify across areas**, because work ids are only unique within one |
 | `phase:SOURCING`  | this area is at that phase or past it                                                                    |
 
 **READY** is every open row whose gate is met. `status` prints it per owner and prints
@@ -305,8 +305,8 @@ stops      What cannot proceed until this is answered.
 Raise it in one go, every field at once (`rx7.py block -p AREA ask=… why=@why.txt
 options=@opts.txt recommend=… stops=…`). Long fields go through `@file`.
 
-**Block ids are `<project>.<number>`** (D-356): `00.01` is the first block ever raised for
-`02-PROJECTS/00-electrical`, `01.07` the seventh for `01-luxury`. The prefix is the project
+**Block ids are `<project>.<number>`** (D-356): `01.12` is the twelfth block raised for
+`02-PROJECTS/01-electrical`, `02.07` the seventh for `02-luxury`. The prefix is the project
 directory's two-digit number; `00-CAR` and `01-REFERENCE` use `CAR` and `REF`, because
 `00` and `01` are taken. Never `B-`: this car's factory diagrams already use `B-12` and
 `D-01` as component codes, and an id family must never share a namespace with the subject
@@ -314,6 +314,13 @@ matter. And because a bare `13.80` in prose is a voltage, a block id is only rec
 structure — a `blocks` key, `closes`, a gate. In prose write it as `block 00.07` or in
 backticks. Blocks were `BLK-###` until 2026-09-21; each old id is a `retired` row in its
 project naming the new one.
+
+**The projects moved up one number on 2026-09-25** (D-427) to make room for `00-verify`:
+electrical 00 → 01, luxury 01 → 02, engine 02 → 03, beauty 03 → 04; 10-gui kept 10. Open
+blocks were renumbered and their old ids retired. Decisions and logs are never edited, so a
+block id in one written before that date keeps its old project: `00.NN` there is electrical,
+`01.NN` luxury, `02.NN` engine, `03.NN` beauty. Numbering is derived from every `closes` and
+retired id, so no new id repeats an old one.
 
 **The clarity bar.** A block must be answerable from its screen alone, with no design in
 front of him — the same three-isolated-workers standard as everything else. If he answers
@@ -619,7 +626,7 @@ The tools on this machine, and nothing else:
 - `python` / `python3` (3.14) runs `tools/rx7.py`; the pre-commit hook is enabled
   (`git config core.hooksPath .githooks`, set once per clone).
 - KiCad 10.0.6 system-wide: `kicad`, `kicad-cli` in `/usr/bin`.
-- Firmware (`02-PROJECTS/00-electrical/00-design/firmware/`): `tests/run.sh` and `icu_sim/build.sh` need
+- Firmware (`02-PROJECTS/01-electrical/00-design/firmware/`): `tests/run.sh` and `icu_sim/build.sh` need
   `sudo dnf install gcc-c++ SDL2-devel` once; flashing a Teensy needs PJRC's udev rule
   (its `README.md` §4). The car's diagnostic port `DP-DIAG` takes Camden's Windows laptop,
   which runs ECUMaster's PMU client and nothing else for this project (D-376). It holds no
@@ -640,8 +647,8 @@ there is no second directory to open, and any instruction that says otherwise is
 **The visual layer is the Rx7 app, project `02-PROJECTS/10-gui`** (D-399 → D-405). It is a
 view and an input over the record that keeps no fact of its own. Nothing else grows a view.
 The generated files are only the harness-leg drawings in
-`02-PROJECTS/00-electrical/00-design/diagrams/` (D-385, §1). The one hand-drawn exception
-is `02-PROJECTS/00-electrical/00-design/cad/`: the KiCad projects for the ICU and DCU
+`02-PROJECTS/01-electrical/00-design/diagrams/` (D-385, §1). The one hand-drawn exception
+is `02-PROJECTS/01-electrical/00-design/cad/`: the KiCad projects for the ICU and DCU
 carriers — schematic, board layout and 3D model, with `PCB-AND-3D-GUIDE.md` as the method —
 ruled in by Camden on 2026-09-12 (the schematic) and widened on 2026-09-21 (layout, both
 boards, D-361). It is not an area — no `data/`, so `rx7.py` cannot see it — nothing in the

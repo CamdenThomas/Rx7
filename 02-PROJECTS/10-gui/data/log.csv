@@ -16,3 +16,4 @@ L-0014,2026-09-25,session,MC1 D-417,MC1: select any words in the Manual and Ask 
 L-0015,2026-09-25,session,MD1 D-417,"MD1: the Manual's Diagrams (factory circuits by system, each write-up in full) and The car (zones drawn on the renders, each opening its parts); circuits table in 01-REFERENCE"
 L-0016,2026-09-25,session,F1,F1: desktop RPM built and installed with its launcher entry; arm64 debug APK built; bundle targets RPM only (the AppImage step failed and nothing uses it)
 L-0017,2026-09-25,session,NT1 D-426,"NT1: Note beside Ask on any selection in the Manual; notes kept in 00-CAR's inbox as kind=note, never applied; Notes page"
+L-0018,2026-09-25,answers,D-427 10.01,"Block 10.01 ruled (a): 00-verify opened, projects 00-03 moved up one number, open blocks renumbered, closed-block gates moved to their decisions (D-427)"

@@ -155,7 +155,7 @@ fn commit(app: AppHandle, root: PathBuf, path: String, message: String) -> Resul
     }
 }
 
-/// `02-PROJECTS/00-electrical` for `00-electrical`, the way rx7.py names areas.
+/// `02-PROJECTS/01-electrical` for `01-electrical`, the way rx7.py names areas.
 fn area_path(root: &Path, area: &str) -> Result<String, String> {
     for base in [root.to_path_buf(), root.join("02-PROJECTS")] {
         let p = base.join(area);

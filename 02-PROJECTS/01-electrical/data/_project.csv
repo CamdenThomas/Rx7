@@ -1,0 +1,10 @@
+key,value
+name,01-electrical
+kind,electrical
+goal,"Replace the factory electrical system: PMU-24 DL, rear lithium battery, four modular harness legs, every switch a ladder, and both custom modules - the ICU and the DCU, with their firmware; the car drives on it before anything else joins"
+phase,PLANNING
+opened,2026-08
+car_apart,S1
+car_back,E35
+icon,zap
+title,Electrical

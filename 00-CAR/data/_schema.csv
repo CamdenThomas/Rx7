@@ -21,7 +21,7 @@ parts_history,usd,int,no,,whole US dollars; blank when unknown
 parts_history,link,text,no,,
 parts_history,note,text,no,,
 planned,id,key,yes,,
-planned,area,enum(Audio|Body|Brakes|Drivetrain|Electrical|Interior|Steering|Suspension),no,,Interior added 2026-09-21 for the luxury package; Body added 2026-09-25 for 03-beauty (D-424)
+planned,area,enum(Audio|Body|Brakes|Drivetrain|Electrical|Interior|Steering|Suspension),no,,Interior added 2026-09-21 for the luxury package; Body added 2026-09-25 for 04-beauty (D-424)
 planned,change,text,no,,
 planned,project,str,no,,"the project area that owns it (02-PROJECTS/<name>), blank when none exists yet"
 planned,status,text,no,,where it stands on the car

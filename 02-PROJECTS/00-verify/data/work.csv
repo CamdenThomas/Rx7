@@ -1,0 +1,2 @@
+id,stage,stage_title,item,owner,state,gate,note,reply,choices,unit
+V1,V,V What the Manual holds back,"Turn the Manual's held-back list (rx7.py export, manual) into one work row per fact: what to measure, read off the car or look up in a source, owner camden for anything on the car",agent,open,D-427,D-427. The held-back list stays computed; each row here only says how the fact gets backed (R11: a measurement beats a document).,,,

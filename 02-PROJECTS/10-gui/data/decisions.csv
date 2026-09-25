@@ -375,3 +375,20 @@ D-426,The Manual,"A note on any words he selects in the Manual, kept with where 
 - CLAUDE.md sections 4 and 6.2 say kind=note is never applied or deleted by the agent.
 
 **In the data.** 10-gui work NT1 (done). CLAUDE.md sections 4 and 6.2 now name the note kind."
+D-427,The Manual,Unverified facts wait in a new 00-verify project; every project moves up one number,2026-09-25,standing,,,10.01,D-417,"**Decision.** **Facts that are not yet verified wait in a new project, `02-PROJECTS/00-verify`, at the top of the list. Every other numbered project moves up one: 00-electrical is now 01-electrical, 01-luxury 02-luxury, 02-engine 03-engine and 03-beauty 04-beauty. Their open blocks are renumbered with them. 10-gui keeps its number.**
+
+**His words.** Block `10.01` (""Where facts wait until they are verified""), answered in the app on the desktop, 2026-09-25 11:49. He picked option (a), which reads in full: *""(a) A new project 00-verify, as you wrote it, and every project moves up one number (electrical becomes 01, luxury 02 …). Costs a one-time rewrite of every block id and gate; old ids in past commits and decisions stop matching.""* He typed no words and there was no Discuss context.
+
+**Why.** This is his brief (4.5) as he first wrote it. The block set out the cost, and he chose it.
+
+**Reading taken (§3, ambiguous wording).** ""Every project moves up one number"" is read as the run 00-03. 10-gui stays at 10. It sits apart from that run, nothing needs its number, and moving it would renumber its blocks for nothing. If he wants it at 11, that is a row edit and a folder rename, and costs nothing.
+
+**How the rewrite was done.**
+- **Folders.** `git mv`, highest number first so no two projects ever shared a number: 03-beauty to 04-beauty, 02-engine to 03-engine, 01-luxury to 02-luxury, 00-electrical to 01-electrical. Every `_project.name`, cross-area gate (`02-luxury:W-332`, `01-electrical:E35` …), note, `00-CAR` row and file path in code, READMEs, the KiCad sheet, the app and `.gitignore` now names the new folder.
+- **Open blocks.** `01.11` is now `02.11` (the radar detector). `02.02` is now `03.02` (the engine leg at the dash post). `03.01` to `03.11` are now `04.01` to `04.11` (beauty). Each old id is a `retired` row in its project, so the number is never issued again.
+- **Gates on closed blocks** now name the decision that closed the block. This means the same thing and no longer depends on a prefix: electrical A8 `D-360`, A10 `D-375`, E24 `D-376`, E30 and E35 `D-411`, R1 `D-414`, R2 `D-410 D-412`, R7 `D-411`, H-002 `D-362 D-382`; luxury I2 `D-382`.
+- **Decisions and logs are not edited (R4).** A block id in a decision or log row written before today keeps its old meaning: `00.NN` there is an electrical block, `01.NN` a luxury block, `02.NN` an engine block, `03.NN` a beauty block. The next block number is derived from every `closes` and every retired id in the tree, so no new id repeats an old one. 00-verify's first block is `00.34`, electrical's next is `01.12`, luxury's `02.12`, engine's `03.12` and beauty's `04.12`.
+
+**00-verify.** Phase PROPOSED. It holds the work of turning each fact the Manual holds back (D-417: a `confirm` still in a shown cell, an `unverified` spec, or `applies=other-car`) into a backed fact, or marking it as not this car. What is held back is still computed by `rx7.py export`. Nothing is copied into this project. Only the work to check each fact lives here. Its first row, V1, turns that list into one row per fact: what to measure, read or look up.
+
+**In the data.** New area `02-PROJECTS/00-verify` (work V1). Four project folders renamed. 13 open blocks renumbered, with 13 `retired` rows. Twelve gates moved to decisions. `CLAUDE.md` and the tool's comments and selftest name the new folders. Block `10.01` and its inbox row are deleted."

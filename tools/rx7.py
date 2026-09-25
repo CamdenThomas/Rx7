@@ -106,13 +106,15 @@ FILE_KEY_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._~-]*$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}(-\d{2})?$")
 DATETIME_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:\d{2})?$")
 ID_RE = re.compile(r"^[A-Z]{1,4}-\d{1,4}$")
-# Blocks are numbered per project, <prefix>.<n>: `00.01` is the first block ever raised
-# for 02-PROJECTS/00-electrical, `01.07` the seventh for 01-luxury (D-356). The prefix is
+# Blocks are numbered per project, <prefix>.<n>: `01.12` is the twelfth block raised for
+# 02-PROJECTS/01-electrical, `02.07` the seventh for 02-luxury (D-356). The prefix is
 # the project directory's two-digit number; 00-CAR and 01-REFERENCE would collide with
 # 00 and 01, so theirs are CAR and REF. The number has at least two digits, so no id is
 # shorter than `00.01` — but a bare `13.80` in prose is a voltage, so a block id is only
 # recognised where it is structure: a `blocks` key, `closes`, a gate. Never in prose.
 # Blocks were BLK-### until 2026-09-21; each old id is a `retired` row in its project.
+# The projects moved up one number on 2026-09-25 (D-427): a block id in a decision written
+# before then keeps its old project, and next_block_id never repeats it.
 BLOCK_ID_RE = re.compile(r"^(\d{2}|CAR|REF)\.(\d{2,3})$")
 BLOCK_PREFIX_FIXED = {"00-CAR": "CAR", "01-REFERENCE": "REF"}
 # Prose cites are checked by `rx7.py cites` (advisory), never by `check`. D- only, three
@@ -492,7 +494,7 @@ def split_choices(cell: str):
 #   01.07                 met when that block is gone from `blocks` and a decision names it
 #                         in `closes` — i.e. it has been answered and applied
 #   A5                    met when that work row is done or dropped, in this area
-#   01-luxury:F-012  the same, in another area (work ids are only unique per area)
+#   02-luxury:F-012  the same, in another area (work ids are only unique per area)
 #   phase:SOURCING        met when the owning area is at that phase or past it
 #
 # An empty gate is met. READY is every open row whose gate is met; that list is the only
@@ -1880,8 +1882,8 @@ def cmd_picks(args):
 
 
 def cmd_diagrams(args):
-    """Regenerate the two drawings of every harness leg (D-385): 00-electrical/00-design/diagrams/<leg>/
-    A-pin-ladder.svg and B-route-map.svg. Reads 00-electrical housings, cavities, devices and routes;
+    """Regenerate the two drawings of every harness leg (D-385): 01-electrical/00-design/diagrams/<leg>/
+    A-pin-ladder.svg and B-route-map.svg. Reads 01-electrical housings, cavities, devices and routes;
     writes those SVGs and nothing else. A read-only projection: `check` never looks at it and it
     never refuses a commit. rc 2 when a sheet fails the overlap rule and is not written.
     The drawing code is tools/diagrams.py (it needs Pillow, which this file does not)."""
@@ -1954,7 +1956,7 @@ def cmd_selftest(args):
     puts the planner to work on something that is not ready, and one that wrongly calls
     it 'unmet' stops the project with no error anywhere. Both fail silently (R7). The same
     goes for the writer of his answers: one that loses a character loses his words (R3)."""
-    A, B = "00-electrical", "01-luxury"
+    A, B = "01-electrical", "02-luxury"
     fails = []
 
     def mk(rows, phase="PLANNING", blocks=None):
@@ -1987,7 +1989,7 @@ def cmd_selftest(args):
     amb = mk([("A1", "", "open")])
     amb["work_ids"]["A1"].append(B)
     amb["work"][(B, "A1")] = "open"
-    expect("an ambiguous unqualified work id is refused", gate_state("A1", "02-engine", amb)[2])
+    expect("an ambiguous unqualified work id is refused", gate_state("A1", "03-engine", amb)[2])
 
     expect("a dependency ring is found",
            gate_cycles(mk([("A1", "A2", "open"), ("A2", "A3", "open"), ("A3", "A1", "open")])))

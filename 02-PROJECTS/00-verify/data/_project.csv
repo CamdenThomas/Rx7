@@ -1,0 +1,8 @@
+key,value
+name,00-verify
+kind,record
+goal,"Every fact about the car that the Manual holds back - still marked confirm, an unverified spec, or a figure from another model year - checked on the car or against a source until it is a backed fact, or marked as not this car"
+phase,PROPOSED
+opened,2026-09-25
+icon,shield
+title,Verify
