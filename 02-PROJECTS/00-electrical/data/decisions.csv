@@ -1080,3 +1080,14 @@ D-416,,"Route lengths estimated from the 3D body go in their own column, model_f
 - Expect the estimates to be off by 25 % or more either way. Their use is to see which routes are long and to sanity-check a measured `ft` at M-2. A measurement that is far from its estimate is worth a second look, but the measurement wins (R11).
 
 **Why this is small (§3).** It adds a column and rows, costs nothing, and changes nothing that is bought, cut or wired. Deleting the column undoes it."
+D-419,,"P029, the size-12 sealing plug, is TE 114017, not the size-20 0413-204-2005",2026-09-25,standing,,,,,"# P029, the size-12 sealing plug, is TE 114017, not 0413-204-2005
+
+*2026-09-25 - found by the agent during the CAD search (D-418); nobody was asked*
+
+**Decision.** Parts row P029 (the sealing plug for the size-12 DTP cavities at L1-P and L3-CMF, six of them) orders **114017**, not 0413-204-2005.
+
+**Why.** 0413-204-2005 is Deutsch's **size-20** sealing plug for the DTM series (red). TE's own 3D model of it is 2.16 mm across, half the 4.34 mm of 114017. **114017** is the plug for size 12 **and** size 16 cavities (white): DT, DTP and some DTHD housings. Sources: deutschconnector.com's 114017 and 0413-204-2005 pages; buydeutsch.com's 0413-204-2005 page (""Sealing Plug - Size 20""); Newark's 114017 listing (""Contact Size 12/16 Cavity""). The six size-20 plugs would have fallen out of a DTP cavity and left it open to water.
+
+**Small, by §3.** No order had been placed (P029 status `raise`), the part is a few dollars, the design does not change (the same six cavities are plugged), and a manufacturer's datasheet settles it.
+
+**Consequences.** P029: `sku` 114017, `item` says so. It keeps its own need rule (`plugs12`), so the size-12 count stays separate from P028's size-16 count even though the part number is now the same; at the cart they can be one line of 72."
