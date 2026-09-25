@@ -8,6 +8,8 @@
   import { Gauge, Route as RouteIcon } from '@lucide/svelte';
   import DriveDialog from '../components/DriveDialog.svelte';
   import State from './manual/State.svelte';
+  import Systems from './manual/Systems.svelte';
+  import Part from './manual/Part.svelte';
   import Specs from './manual/Specs.svelte';
   import Service from './manual/Service.svelte';
   import { app } from '../lib/app.svelte';
@@ -28,7 +30,7 @@
 
   let dialog = $state<'drive' | 'odo' | null>(null);
 
-  const TABS: ManualPage[] = ['state', 'specs', 'service'];
+  const TABS: ManualPage[] = ['state', 'systems', 'specs', 'service'];
   const on = (t: ManualPage) => (page === 'part' ? t === 'systems' : page === t);
 
   $effect(() => {
@@ -78,6 +80,10 @@
     <div class="content">
       {#if page === 'state'}
         <State {m} />
+      {:else if page === 'systems'}
+        <Systems {m} {id} />
+      {:else if page === 'part'}
+        <Part {m} id={id ?? ''} />
       {:else if page === 'specs'}
         <Specs {m} />
       {:else if page === 'service'}

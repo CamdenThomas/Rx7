@@ -5,7 +5,8 @@
 -->
 <script lang="ts">
   import type { Manual } from '../../lib/model';
-  import { day, miles, part } from '../../lib/manual';
+  import { day, miles } from '../../lib/manual';
+  import PartLink from '../../components/PartLink.svelte';
   import Prose from '../../components/Prose.svelte';
   import DueChip from './DueChip.svelte';
   import Held from './Held.svelte';
@@ -61,7 +62,7 @@
         {#if s.fitted.length}
           <p class="fitted">
             <span class="label">Fitted</span>
-            {#each s.fitted as id, n (id)}{n ? ', ' : ''}{part(id)?.name ?? id}{/each}
+            {#each s.fitted as id, n (id)}{n ? ', ' : ''}<PartLink {id} />{/each}
           </p>
         {/if}
       </li>

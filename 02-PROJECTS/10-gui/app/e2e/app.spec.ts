@@ -51,6 +51,21 @@ test('the Manual: car state, specs by category, the service log, and Set odo as 
   await expect(page.locator('.odo')).toContainText('waiting to be filed');
 });
 
+test('the Manual: systems lead to a system, and a part name to its page', async ({ page }) => {
+  await open(page, '#/manual/systems');
+  const sys = page.locator('.tree .name').first();
+  const name = (await sys.textContent())?.trim() ?? '';
+  await sys.click();
+  await expect(page.getByRole('heading', { name, exact: true })).toBeVisible();
+  const part = page.locator('.parts .plink').first();
+  const partName = (await part.textContent())?.trim() ?? '';
+  await part.click();
+  await expect(page).toHaveURL(/#\/manual\/part\/PT\d+$/);
+  await expect(page.getByRole('heading', { name: partName, exact: true })).toBeVisible();
+  // The crumbs lead back through the system.
+  await expect(page.locator('nav').getByRole('link', { name, exact: true }).first()).toBeVisible();
+});
+
 test('a block is answered with an option and words, kept, changed and withdrawn', async ({ page }) => {
   await open(page, blockUrl(pair.first.id));
   await page.getByRole('radio').first().click();

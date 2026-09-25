@@ -9,6 +9,7 @@
   import { sources, system, value } from '../../lib/manual';
   import { app } from '../../lib/app.svelte';
   import Held from './Held.svelte';
+  import PartLink from '../../components/PartLink.svelte';
 
   let { m }: { m: Manual } = $props();
 
@@ -55,7 +56,7 @@
       {#each g.rows as s (s.id)}
         <div class="row">
           <div class="what">
-            <span class="item">{s.item}</span>
+            <span class="item">{s.item}{#if s.part}<span class="faint">&nbsp;· <PartLink id={s.part} /></span>{/if}</span>
             {#if s.note}<span class="note">{s.note}</span>{/if}
           </div>
           <span class="v num">{value(s)}</span>

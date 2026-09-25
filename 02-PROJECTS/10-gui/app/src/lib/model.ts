@@ -225,6 +225,9 @@ export interface ManualPart {
   maker: string;
   part_no: string;
   factory_code: string;
+  /** Mazda's own part number, and the catalogue page it was read from. */
+  oem_no: string;
+  catalogue: string;
   link: string;
   support: string;
   cad: string;
