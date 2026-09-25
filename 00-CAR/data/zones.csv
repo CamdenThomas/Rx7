@@ -1,0 +1,10 @@
+id,name,order,note
+engine_bay,Engine bay,1,
+front,Front end,2,
+dash,Dash and console,3,
+cabin,Cabin,4,
+doors,Doors,5,
+cargo,Hatch and cargo area,6,
+rear,Rear end,7,
+underbody,Underbody,8,
+corners,Wheels and hubs,9,

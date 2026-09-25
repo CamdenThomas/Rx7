@@ -1,9 +1,4 @@
 table,column,type,required,ref,note
-as_fitted,system,key,yes,,
-as_fitted,state,text,no,,
-as_fitted,since,date,no,,
-as_fitted,chapter,str,no,,
-as_fitted,note,str,no,,
 intervals,id,key,yes,,
 intervals,item,str,no,,
 intervals,every_miles,int,no,,
@@ -16,11 +11,6 @@ issues,section,enum(Electrical|Mechanical),no,,
 issues,issue,text,no,,
 issues,status,text,no,,
 issues,impact,text,no,,
-mods,id,key,yes,,
-mods,date,date,no,,YYYY-MM; blank when unknown
-mods,area,str,no,,
-mods,change,str,no,,
-mods,notes,str,no,,
 parts_history,id,key,yes,,
 parts_history,status,str,no,,
 parts_history,group,str,no,,
@@ -90,3 +80,39 @@ inbox,context,text,no,,"the key points of a Discuss chat, carried into the decis
 inbox,device,enum(desktop|phone),yes,,vocabulary owned by tools/rx7.py
 inbox,at,datetime,yes,,when he saved it
 decisions,body,text,no,,"the decision's full text: the ruling in bold, his words, the reasoning, the consequences (D-405)"
+systems,id,key,yes,,lowercase slug
+systems,name,str,yes,,
+systems,parent,str,no,systems,the system this one belongs to; blank at the top
+systems,order,int,no,,the order the Manual lists them in
+systems,state,text,no,,"what the system is right now, in one line"
+systems,since,date,no,,when it last changed; blank when not recorded
+systems,note,text,no,,
+zones,id,key,yes,,lowercase slug
+zones,name,str,yes,,
+zones,order,int,no,,
+zones,note,text,no,,
+parts,id,key,yes,,"PT### - never a factory component code, which this car's diagrams use (B-12, G-14)"
+parts,name,str,yes,,
+parts,system,str,yes,systems,
+parts,zone,str,no,zones,blank when where it sits is not recorded
+parts,factory,bool,no,,yes: the car's factory part; no: fitted since; blank: not recorded
+parts,maker,str,no,,
+parts,part_no,str,no,,the maker's part number
+parts,factory_code,str,no,,"the component's code on the factory wiring diagram (S-001), e.g. G-14"
+parts,bought,list,no,parts_history,the purchases it was made from
+parts,link,text,no,,the maker's or seller's page for it
+parts,support,text,no,,the maker's customer service: a phone number or a page
+parts,cad,str,no,,"its 3D model, a path in the tree"
+parts,photo,str,no,,a photo under 01-REFERENCE/photos
+parts,note,text,no,,what is true of it now; a value nobody has checked carries confirm and holds the row out of the Manual (R11)
+drives,id,key,yes,,the inbox target it came from: drive-<when> or odo-<when>
+drives,date,date,yes,,
+drives,odometer,int,yes,,"the reading at the end of the drive, miles"
+drives,kind,enum(drive|set),yes,,set: only the reading is known (Set odo) - the miles since the last row are a drive nobody logged
+drives,from,str,no,,
+drives,to,str,no,,
+drives,note,text,no,,his words
+specs,system,str,no,systems,
+specs,part,str,no,parts,"the part it describes, when it describes one"
+specs,applies,enum(not-fitted|other-car|replaced),no,,"blank: this car as it is now. other-car: another year's, trim's or gearbox's figure where this car's differs or is in doubt; replaced: the part it describes is gone or out of use; not-fitted: bought, not on the car. Only blank rows reach the Manual (D-417)"
+service,fitted,list,no,parts,"the parts this visit fitted - a part's fitted date and mileage are read from here, never typed"

@@ -1,0 +1,58 @@
+id,name,system,zone,factory,maker,part_no,factory_code,bought,link,support,cad,photo,note
+PT001,12A rotary engine,engine,engine_bay,yes,Mazda,,,,,,,,
+PT002,Oil metering pump,engine,engine_bay,yes,Mazda,,,,,,,,Disconnected: the engine runs on premix in the fuel
+PT003,Oil filter,engine,engine_bay,no,,,,PH013,https://www.rockauto.com/en/moreinfo.php?pk=56457&cc=1192250&pt=5340,,,,
+PT004,Oil pressure sender,engine,engine_bay,yes,Mazda,,C-09,,,,,,Works
+PT005,Alternator belt,engine,engine_bay,no,,,,PH009,https://www.rockauto.com/en/moreinfo.php?pk=3853&cc=1192250&pt=8900,,,,
+PT006,Weber 45 DCOE carburettor kit,fuel,engine_bay,no,Pierce Manifolds,K678,,PH014 PH015 PH016 PH017 PH018 PH019 PH020,https://www.piercemanifolds.com/Mazada_2A_Weber_Conversion_K678_p/k678.htm,,,,"Jetted with Pegasus pump jets, air correctors, emulsion tubes, main and idle jets and needle valve"
+PT007,Fuel pump,fuel,,no,Carter,P4070,,PH025 PH026,https://www.pegasusautoracing.com/productdetails.asp?RecId=8118,,,,
+PT008,Fuel pressure regulator,fuel,,no,Holley,,,PH027 PH028,https://www.pegasusautoracing.com/productselection.asp?Product=1135,,,,
+PT009,Fuel filter,fuel,,no,Duralast,FF3429DL,,PH029,https://www.autozone.com/filters-and-pcv/fuel-filter/p/duralast-fuel-filter-ff3429dl/830817_0_0,,,,
+PT010,Fuel cut-off,fuel,,no,,,,PH030,https://www.amazon.com/dp/B0C2QJ1518,,,,
+PT011,"Fuel line, 3/8 in",fuel,,no,,,,PH024,https://www.amazon.com/dp/B0CNCN5P1N,,,,
+PT012,Vacuum lines and fittings,engine,engine_bay,no,,,,PH021 PH022 PH023,https://www.amazon.com/dp/B08CT3YDDL,,,,Includes the brake booster and transmission vacuum fittings
+PT013,"Ignition coils, leading and trailing",ignition,engine_bay,no,,,,PH001,https://www.rockauto.com/en/moreinfo.php?pk=15707417&cc=1192250&pt=7060,,,,
+PT014,Distributor,ignition,engine_bay,yes,Mazda,,,,,,,,"Breakerless, with the igniters on its housing"
+PT015,Distributor cap,ignition,engine_bay,no,Duralast,JA980,,PH003,https://www.autozone.com/ignition-tune-up-and-routine-maintenance/distributor-cap/p/duralast-distributor-cap-ja980/1,,,,
+PT016,Distributor rotor,ignition,engine_bay,no,,,,PH004,https://www.rockauto.com/en/moreinfo.php?pk=46521&cc=1192250&pt=7136,,,,
+PT017,Spark plug wires,ignition,engine_bay,no,,,,PH005,https://www.rockauto.com/en/moreinfo.php?pk=644039&cc=1192250&pt=7224,,,,
+PT018,Coil wires,ignition,engine_bay,no,,,,PH002,,,,,
+PT019,Spark plugs,ignition,engine_bay,no,,,,PH006,https://www.rockauto.com/en/moreinfo.php?pk=54628&cc=1192250&pt=7212,,,,
+PT020,Radiator,cooling,front,yes,Mazda,,,,,,,,
+PT021,Water pump,cooling,engine_bay,yes,Mazda,,,,,,,,
+PT022,Thermostat,cooling,engine_bay,yes,Mazda,,,,,,,,
+PT023,Water temperature gauge sender,cooling,engine_bay,yes,Mazda,,C-02,,,,,,Works
+PT024,Battery,electrical,engine_bay,,,,,,,,,,"Lead-acid, in the factory location"
+PT025,Alternator,electrical,engine_bay,yes,,,,,,,,,Its rating has not been read off the car
+PT026,Starter motor,electrical,engine_bay,,,,,,,,,,
+PT027,Wiring harness,electrical,,yes,Mazda,,,,,,,,Previous-owner splices; one known instance is the dash behind the head unit and factory amplifier
+PT028,Wideband O2 gauge and sensor,engine,dash,no,,,,,,,,,Taps into the factory harness at a point not yet located
+PT029,Interval wiper control unit,electrical,,yes,Mazda,,,,,,,,
+PT030,Hatch release solenoid,body,cargo,yes,Mazda,,,,,,,,The hatch latch switch is broken
+PT031,Fuel-door solenoid,body,rear,yes,Mazda,,,,,,,,
+PT032,Power mirror heads,body,doors,yes,Mazda,,,,,,,,Each is one reversible motor plus an electromagnetic clutch coil that selects the axis; the factory mirror switch is dead
+PT033,"Headlamp retractor motors, LH and RH",lighting,front,yes,Mazda,,,,,,,,DC motors with up and down limit switches; both manual raise knobs work
+PT034,Headlamp retractor switch,lighting,dash,yes,Mazda,,E-02,,,,,,Broken: the pop-ups cannot be raised from the dash switch
+PT035,Headlamp units,lighting,front,no,,,,,,,,,LED housings fitted by a previous owner; what is fitted has not been confirmed on the car - confirm
+PT036,Rear defrost switch,electrical,dash,yes,Mazda,,G-24,,,,,,Broken
+PT037,Rear defrost grid,electrical,cargo,yes,Mazda,,,,,,,,Not measured
+PT038,Washer fluid pump,electrical,front,yes,Mazda,,D-01,,,,,,Not working; the cause is not diagnosed
+PT039,Blower motor,climate,dash,yes,Mazda,,G-14,,,,,,Dead - no airflow
+PT040,A/C system,climate,engine_bay,yes,Mazda,,,,,,,,Holds charge and barely cools
+PT041,A/C belt,climate,engine_bay,no,,,,PH039,https://www.rockauto.com/en/moreinfo.php?pk=3972&cc=1192250&pt=8900&jsn=483,,,,
+PT042,Front rotor hubs,brakes,corners,no,,,,PH031,,,,,
+PT043,Front wheel bearings,brakes,corners,no,,,,PH032,,,,,
+PT044,Front wheel seals,brakes,corners,no,,,,PH033,,,,,
+PT045,Front brake pads,brakes,corners,no,,,,PH034,,,,,
+PT046,Rear brake shoes,brakes,corners,no,,,,PH035,,,,,
+PT047,Rear brake drums,brakes,corners,no,,,,PH036,,,,,
+PT048,Rear wheel bearings,brakes,corners,no,,,,PH037,,,,,
+PT049,Rear wheel cylinders,brakes,corners,no,,,,PH038,,,,,
+PT050,Front calipers,brakes,corners,yes,Mazda,,,,,,,,
+PT051,Brake master cylinder,brakes,engine_bay,yes,Mazda,,,,,,,,
+PT052,Brake booster,brakes,engine_bay,yes,Mazda,,,,,,,,
+PT053,Steering gear box,steering,engine_bay,yes,Mazda,,,,,,,,"Pre-1983: the sector shaft is not hardened, a known wear point"
+PT054,Automatic transmission,transmission,underbody,yes,JATCO,3N71B,,,,,,,
+PT055,Rear axle and differential,driveline,underbody,yes,Mazda,,,,,,,,
+PT056,Front struts and coil springs,suspension,corners,yes,Mazda,,,,,,,,Bushings age-degraded
+PT057,Rear coil springs and shock absorbers,suspension,corners,yes,Mazda,,,,,,,,Bushings age-degraded

@@ -7,7 +7,7 @@ K-009,Electrical,Cruise control unit,"In the factory diagram; not wanted. confir
 K-010,Electrical,Rear wiper and washer,In the factory diagram; not wanted; whether it is fitted to this car is not recorded - confirm,planned: 02-PROJECTS/00-electrical does not carry it
 K-011,Electrical,Power antenna,In the factory diagram; not wanted; whether it is fitted to this car is not recorded - confirm,planned: 02-PROJECTS/00-electrical does not carry it
 K-012,Electrical,Headlight cleaner,"In the factory diagram; not wanted. confirm - may be copied from the diagram, not on this car: SP-004 (S-004) does not list a headlight cleaner for the GS and this car is a GS",planned: 02-PROJECTS/00-electrical does not carry it
-K-013,Electrical,"Cold-start hardware — hot-start relay/motor, sub-zero motor/sensor, choke, carb heater",None remain since the Weber conversion (M-001),
+K-013,Electrical,"Cold-start hardware — hot-start relay/motor, sub-zero motor/sensor, choke, carb heater",None remain since the Weber conversion,
 K-014,Electrical,Power mirror control,"The factory mirror switch is dead. The mirror heads are fitted and kept: each is one reversible motor plus an electromagnetic clutch coil that selects the axis (owner, 2026-09-21). Pin-out, resistances and currents not yet measured",The mirrors cannot be adjusted electrically. planned: 02-PROJECTS/01-luxury drives the mirror heads
 K-016,Electrical,Hatch latch switch broken,Broken; the hatch release solenoid itself is fitted,planned: 02-PROJECTS/01-luxury sources the switch; 02-PROJECTS/00-electrical wires the solenoid
 K-017,Electrical,Fuel-door solenoid - exists (owner 2026-09-08; the 2026-09 survey had it as never fitted),Fitted,planned: 02-PROJECTS/00-electrical wires it; the trigger is 02-PROJECTS/01-luxury's

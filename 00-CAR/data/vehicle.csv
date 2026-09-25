@@ -6,16 +6,4 @@ colour,Identity,Colour,Sunbeam Silver,
 vin,Identity,VIN,not recorded,the one fact a stranger looks for first — read it off the plate and set this row
 mileage,Identity,Mileage,153000,as of: unknown - re-read at the meters cutover. The service log carries the reading at each visit
 engine,Drivetrain,Engine,12A rotary,SP-003
-induction,Drivetrain,Induction,Weber 45 DCOE (Pierce Manifolds K678 kit),M-001
-fuel_pump,Drivetrain,Fuel pump,Carter P4070,M-002; current draw not yet measured - confirm
-fuel_pressure,Drivetrain,Fuel pressure,Holley regulator,M-003
 transmission,Drivetrain,Transmission,3-speed automatic (JATCO 3N71B type),SP-005
-ignition,Drivetrain,Ignition,"Stock 12A twin-coil breakerless; coils, cap, rotor, wires and plugs refreshed 2025-08",M-005; coil / igniter configuration not yet confirmed on the car - confirm
-battery,Electrical,Battery,"Lead-acid, factory location","Ionic S9 lithium bought, not fitted - 02-PROJECTS/00-electrical"
-harness,Electrical,Harness,"Factory 1982, unmodified except previous-owner splices",K-002; replacement planned: 02-PROJECTS/00-electrical
-alternator,Electrical,Alternator,"Stock, 50-55 A class - maker and rating confirm","SP-077 (maker not stated for 1982), SP-078 / SP-079 (55 A, 1980 and 1985 FSMs), SP-080 (50 A, enthusiast chart); read the rating stamped on the car's own alternator - confirm"
-pmu,Electrical,Power module,none fitted,"ECUMaster PMU-24 DL bought with connector kit and USB-CAN, not fitted - 02-PROJECTS/00-electrical"
-windows,Electrical,Windows,Manual,"no motors, no wiring"
-headlamps,Electrical,Headlamps,"Pop-up, LED housings fitted by a previous owner",M-012; what is fitted has not been confirmed on the car - confirm
-ac,Climate,Air conditioning,Fitted and holding charge; barely cools,K-015; removal planned: 02-PROJECTS/00-electrical
-blower,Climate,Blower motor,Dead,K-023

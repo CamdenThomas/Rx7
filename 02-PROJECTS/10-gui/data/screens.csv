@@ -1,10 +1,10 @@
 id,parent,name,purpose,by,note
 home,,Home,"Where the app opens: two options only, Manual and Projects",camden,
 manual,home,Manual,"The owner's manual for this car: every fact, detail, model, repair and bit of history, perfectly organised - the tool he wishes he had when he started on the car",camden,Reads 00-CAR and 01-REFERENCE
-manual.state,manual,Car state,"What the car is right now: identity, what is fitted in each system, mods, known issues",camden,"00-CAR vehicle, as_fitted, mods, issues, planned"
-manual.diagrams,manual,Diagrams,"The car's diagrams: factory circuits, harness legs, boards, photos",camden,01-REFERENCE factory-circuits and photos; the leg drawings; the KiCad boards
-manual.history,manual,Work and repair history,"Everything done to the car, in order",camden,"00-CAR service, parts_history, mods; the projects' logs once complete"
-manual.parts,manual,Parts and spec sheets,"Every part and factory specification, with its source",camden,"00-CAR specs, parts_history, intervals, procedures; 01-REFERENCE sources"
+manual.state,manual,Car state,"What the car is right now: identity and odometer with Log drive and Set odo, what is due, known faults, then each system",camden,"D-417. 00-CAR vehicle, drives, service, intervals, issues, systems - verified rows only"
+manual.diagrams,manual,Diagrams,"The car's diagrams: factory circuits, harness legs, boards, photos",camden,"D-417. 01-REFERENCE factory-circuits and photos, grouped by system; the factory scans go when the electrical project completes (his 5.6)"
+manual.history,manual,Service,The service log - the one history the Manual keeps (his 5.7) - and each interval with its next due,camden,"D-417. 00-CAR service, intervals"
+manual.parts,manual,Specs,"Every number about the car, searchable, filtered by system or category, each with its source",camden,D-417. 00-CAR specs - only rows for this car as it is now
 projects,home,Projects,The project hub: start a new project or work on a current one,camden,
 projects.new,projects,New project,Start a project,camden,D-406: a name and one paragraph of goal; Claude opens the area
 project,projects,A project,One project's own home: where it stands and what waits on whom,camden,one per 02-PROJECTS area
@@ -18,3 +18,7 @@ search,home,Search,"One box that finds anything anywhere - decisions, blocks, wo
 settings,home,Settings,"The record's health, the tree folder on the desktop, the GitHub key on the phone",agent,
 decision,project.decisions,A decision,"One decision in full: its text, what it replaced, what cites it",agent,D-406
 row,search,A record row,"Any row of any table, opened from search or a link",agent,
+manual.systems,manual,Systems,"The book view: system, then subsystem, then each part",agent,"D-417. 00-CAR systems, parts"
+manual.car,manual,The car,"The location view: the car's zones on the 3D renders, each opening the parts that sit there",agent,"D-417. 00-CAR zones, parts; the S-037 renders"
+manual.part,manual.systems,A part,"One part: where it is, maker and part number with their links, every spec with its source, its service, the diagrams it appears on",agent,"D-417. 00-CAR parts, specs, service, intervals"
+manual.ask,manual,Ask,Select any words and ask Claude about exactly them; computed answers saved as presets later,camden,"D-417, his 4.1 and 4.2"
