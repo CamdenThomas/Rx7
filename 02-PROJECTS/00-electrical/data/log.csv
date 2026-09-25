@@ -48,3 +48,4 @@ L-0036,2026-09-24,session,R4 D-409,"R4 done (D-409): a surprise takes no PMU cha
 L-0037,2026-09-24,answers,00.30 D-410 00.32 R2 F23 N29 N87,"00.30 (a) applied as D-410: F23 wake supply, N87, dead-feed reads FAULT, IGNITION/FUEL_PUMP/HEAD_*/TAIL_PARK hold on fault; light switch feed raised as block 00.32; R2 gated on it"
 L-0038,2026-09-24,answers,00.31 D-411 E30,"00.31 (a) applied as D-411: factory harness pulled while apart after E29, boxed until shakedown; E30 rewritten"
 L-0039,2026-09-24,answers,F2 F8 P117,"F2 done (BT817 eval board ordered, P117 status ordered) and F8 done (KiCad steps 1-3), from the desktop"
+L-0040,2026-09-24,answers,00.29 00.33 R1 00-CAR:K-025,"00.29 came back as a fact, not a ruling: the car does not start (00-CAR K-025). Replaced by plainer block 00.33 carrying his words; R1 regated"
