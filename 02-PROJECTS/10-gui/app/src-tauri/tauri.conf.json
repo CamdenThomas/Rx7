@@ -33,8 +33,7 @@
   "bundle": {
     "active": true,
     "targets": [
-      "rpm",
-      "appimage"
+      "rpm"
     ],
     "category": "Utility",
     "shortDescription": "The car's record, read and answered",
