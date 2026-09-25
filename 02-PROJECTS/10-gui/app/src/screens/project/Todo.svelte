@@ -138,7 +138,7 @@
       {#if partNote(g.part)}<p class="partnote faint">{partNote(g.part)}</p>{/if}
     {/if}
     {#if g.stage}
-      <h3 class="stage"><span class="mono">{g.stage}</span> {g.title}</h3>
+      <h3 class="stage"><span class="mono">Stage {g.stage}</span> · {g.title}</h3>
     {/if}
     <ul class="rows">
       {#each g.rows as w (w.id)}

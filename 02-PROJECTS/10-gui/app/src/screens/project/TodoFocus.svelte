@@ -46,7 +46,7 @@
     {#if row.track}<span class="chip quiet">{row.track}{row.part ? ` · part ${row.part}` : ''}</span>{/if}
   </header>
   <h2>{row.item}</h2>
-  {#if row.stage_title}<p class="stage faint"><span class="mono">{row.stage}</span> {row.stage_title}</p>{/if}
+  {#if row.stage_title}<p class="stage faint">Stage {row.stage} · {row.stage_title}</p>{/if}
 
   {#if mine}
     <section class="answer card">
