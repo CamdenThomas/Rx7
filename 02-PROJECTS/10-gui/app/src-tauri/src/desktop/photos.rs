@@ -1,5 +1,5 @@
 //! `photo://localhost/<path>` — his photos of the car, read from the tree's
-//! 01-REFERENCE/photos folder and nowhere else.
+//! 01-REFERENCE/photos folder, and the 3D model built in 01-REFERENCE/model (D-415) — nowhere else.
 
 use super::Tree;
 use std::borrow::Cow;
@@ -8,15 +8,20 @@ use tauri::{Manager, UriSchemeContext, Wry};
 
 pub fn serve(ctx: UriSchemeContext<'_, Wry>, req: Request<Vec<u8>>) -> Response<Cow<'static, [u8]>> {
     let root = ctx.app_handle().state::<Tree>().root();
-    let base = root.join("01-REFERENCE/photos");
     let wanted = percent_decode(req.uri().path().trim_start_matches('/'));
     let file = root.join(&wanted);
-    let inside = file.canonicalize().ok().zip(base.canonicalize().ok()).is_some_and(|(f, b)| f.starts_with(b));
+    let inside = file.canonicalize().is_ok_and(|f| {
+        ["01-REFERENCE/photos", "01-REFERENCE/model"]
+            .iter()
+            .filter_map(|b| root.join(b).canonicalize().ok())
+            .any(|b| f.starts_with(b))
+    });
     match (inside, std::fs::read(&file)) {
         (true, Ok(bytes)) => {
             let kind = match file.extension().and_then(|e| e.to_str()).map(str::to_ascii_lowercase).as_deref() {
                 Some("png") => "image/png",
                 Some("webp") => "image/webp",
+                Some("glb") => "model/gltf-binary",
                 _ => "image/jpeg",
             };
             Response::builder().header("Content-Type", kind).body(Cow::Owned(bytes)).unwrap()

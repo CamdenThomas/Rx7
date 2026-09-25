@@ -3,8 +3,8 @@
   else is here to look good — the car, and who it is.
 -->
 <script lang="ts">
-  import { ArrowRight } from '@lucide/svelte';
-  import CarArt from '../components/CarArt.svelte';
+  import { ArrowRight, Rotate3d, Image } from '@lucide/svelte';
+  import CarModel from '../components/CarModel.svelte';
   import Mark from '../components/Mark.svelte';
   import ProjectIcon from '../components/ProjectIcon.svelte';
   import { app } from '../lib/app.svelte';
@@ -29,6 +29,17 @@
   const picks = $derived(app.summaries.reduce((n, s) => n + s.waiting.picks, 0));
   const photos = $derived(app.snapshot?.photos ?? []);
   const hero = $derived(photos.length ? app.platform?.photo(photos[0]) : '');
+
+  // The 3D view (D-415) exists only where the model was built — the desktop, from its tree.
+  const MODEL = '01-REFERENCE/model/rx7.glb';
+  let modelSrc = $state('');
+  let turning = $state(false);
+  $effect(() => {
+    const p = app.platform;
+    if (p?.kind !== 'desktop') return;
+    const url = p.photo(MODEL);
+    fetch(url, { method: 'HEAD' }).then((r) => (modelSrc = r.ok ? url : ''), () => (modelSrc = ''));
+  });
 </script>
 
 <div class="home">
@@ -44,8 +55,15 @@
     <div class="art">
       {#if hero}
         <img src={hero} alt="The car" />
+      {:else if turning && modelSrc}
+        <CarModel src={modelSrc} />
       {:else}
-        <CarArt />
+        <img class="render" src="/car/side.webp" alt="The car in profile, Sunbeam Silver" />
+      {/if}
+      {#if !hero && modelSrc}
+        <button class="btn small ghost turn" onclick={() => (turning = !turning)}>
+          {#if turning}<Image size={15} /> Picture{:else}<Rotate3d size={15} /> Turn it around{/if}
+        </button>
       {/if}
     </div>
   </section>
@@ -53,7 +71,7 @@
   <section class="tiles">
     <a class="tile manual" href={href({ name: 'manual' })}>
       <div class="pic">
-        <div class="crop"><CarArt animate={false} /></div>
+        <img class="crop" src="/car/threequarter.webp" alt="" />
       </div>
       <div class="body">
         <h2>Manual</h2>
@@ -128,6 +146,18 @@
   }
   .art {
     min-width: 0;
+    position: relative;
+  }
+  .art .render {
+    box-shadow: none;
+    border-radius: 0;
+    object-fit: contain;
+    filter: drop-shadow(0 26px 30px rgb(0 0 0 / 0.45));
+  }
+  .turn {
+    position: absolute;
+    left: 12px;
+    top: 12px;
   }
   .art img {
     width: 100%;
@@ -178,10 +208,10 @@
   }
   .crop {
     position: absolute;
-    width: 190%;
-    left: -12%;
-    top: -18%;
-    opacity: 0.9;
+    width: 150%;
+    left: -22%;
+    top: -26%;
+    filter: drop-shadow(0 18px 24px rgb(0 0 0 / 0.5));
   }
   .projects .pic {
     display: grid;

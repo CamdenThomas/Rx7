@@ -1,6 +1,6 @@
 <!-- The Manual: a title and a blurb until it is planned with him (D-407). -->
 <script lang="ts">
-  import CarArt from '../components/CarArt.svelte';
+  // No state: the page holds its place until the Manual is planned.
 </script>
 
 <div class="page narrow manual rise">
@@ -11,7 +11,7 @@
     anything else — and in your pocket anywhere, signal or not. It is being planned with you first, so for now
     this page holds its place.
   </p>
-  <div class="art"><CarArt animate={false} /></div>
+  <img class="art" src="/car/side.webp" alt="The car in profile" />
 </div>
 
 <style>
@@ -31,6 +31,8 @@
     max-width: 640px;
   }
   .art {
+    display: block;
+    width: 100%;
     margin-top: 48px;
     opacity: 0.55;
     mask-image: linear-gradient(180deg, #000 40%, transparent);

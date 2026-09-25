@@ -275,3 +275,24 @@ D-413,,"Auto-apply: the desktop applies his answers 90 seconds after the last on
 **Consequences.**
 - App: `src/lib/autoapply.svelte.ts` (new), `claude.svelte.ts` (the run queue, and phone run requests started once each), `app.svelte.ts`, `ApplyBar.svelte`, `Settings.svelte`, `App.svelte`. Rust: `desktop/git.rs` holds sync while `desktop/claude.rs` has a live process.
 - CLAUDE.md §4 and §6.11 now say an answer waits until Apply is pressed or auto-apply starts the run."
+D-415,,"The 3D model in the app: Sunbeam Silver renders replace the drawn outline, and the desktop turns and repaints the car",2026-09-24,standing,,,,D-404,"# The 3D model in the app: Sunbeam Silver renders replace the drawn outline, and the desktop can turn the car and repaint it
+
+*2026-09-24 - Camden, in chat*
+
+**Decision.**
+- **Renders replace the drawing.** The home hero and the Manual show a side render of the car in Sunbeam Silver, and the Manual tile on Home shows a front three-quarter render. Both are made from the model in 01-REFERENCE (S-037) by `01-REFERENCE/model/build.py`. The hand-drawn outline, `CarArt.svelte`, is removed. A photo in `01-REFERENCE/photos` still takes the hero's place when there is one (D-404).
+- **The desktop can turn the car.** When the model has been built on the PC, the hero gets a ""Turn it around"" button. It opens a 3D view you drag to turn, with a paint picker that resets to Sunbeam Silver. That picker is use 2, the appearance preview: it shows a colour on the real body shape, from any angle. The phone shows the renders only, because the model is not in git.
+- **The seller's number plates are removed** from everything built from the model.
+- **The limit is shown on screen.** The 3D view says it is a 1978 body, and that the FB's bumpers, tail lamps and dash differ.
+
+**His words.**
+> please do 1-3 with 3d model
+
+These are the three uses I had offered in chat: *""1. App artwork: render it in Sunbeam Silver for the home screen and project cards, in place of the hand-drawn outline the app uses now. I could also add a 3D view you can spin. 2. Paint and fitment previews for the luxury project. 3. Rough harness lengths.""* Use 3 is D-416 in 02-PROJECTS/00-electrical.
+
+**Readings taken.**
+- **Use 2.** The luxury record has no paint or wheel choice pending, and the model has the SA's nose and tail, not the FB's. So the tail-light (V-063, X-009), headlamp (V-066) and radar (block 01.11) choices cannot be previewed on it without showing him the wrong car. What the model shows truthfully is the body's shape and a colour on it, so use 2 is the paint picker in the 3D view. A preview of the FB's ends waits for an FB model.
+- **Project cards.** The project hub's cards show each project's icon, not the car, so only the Manual tile on Home and the Manual page got a render.
+- **Out of git.** He was asked in chat whether the zip should stay out of git and has not answered yet. Keeping it out is the reversible reading: the repository is public and the model is a bought file. Committing it later is one line in `.gitignore`.
+
+**Consequences.** App: `CarModel.svelte` (new, three.js loaded only when opened), `Home.svelte`, `Manual.svelte`, `public/car/side.webp` and `threequarter.webp`, and the `three` dependency. `desktop/photos.rs` now also serves `01-REFERENCE/model` (the `.glb` only matters there). The tree: `01-REFERENCE/model/build.py` and `README.md`, and `.gitignore` for the model files."

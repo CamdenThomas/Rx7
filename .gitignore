@@ -92,3 +92,11 @@ fp-info-cache
 *.jks
 keystore.properties
 02-PROJECTS/10-gui/app/public/fixture/
+
+# The purchased 3D model (01-REFERENCE S-037) and what is built from it stay on this PC:
+# the repository is public and the model's licence does not allow passing it on. The
+# renders in 10-gui/app/public/car are committed; the model itself never is.
+01-REFERENCE/model/*.zip
+01-REFERENCE/model/*.obj
+01-REFERENCE/model/*.glb
+01-REFERENCE/model/landmarks.json
