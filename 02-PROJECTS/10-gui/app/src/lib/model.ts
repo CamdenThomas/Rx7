@@ -207,6 +207,8 @@ export interface ManualZone {
   name: string;
   order: string;
   note: string;
+  /** Where the zone sits on the 3D model: boxes of "x0 x1 y0 y1 z0 z1" in mm, ';' between boxes (D-421). */
+  model_box_mm: string;
   parts: string[];
 }
 
@@ -233,6 +235,8 @@ export interface ManualPart {
   cad: string;
   photo: string;
   note: string;
+  /** Where the part sits on the 3D model: "x y z" in mm, ';' between places (D-421). */
+  model_at_mm: string;
   fitted: Fitting | null;
   specs: string[];
   service: string[];
@@ -305,6 +309,17 @@ export interface ManualProcedure {
   body: string;
 }
 
+/** A factory circuit write-up (01-REFERENCE circuits), its text carried when it is Markdown. */
+export interface Circuit {
+  file: string;
+  path: string;
+  title: string;
+  systems: string[];
+  source: string;
+  note: string;
+  body: string;
+}
+
 export interface Held {
   table: string;
   key: string;
@@ -327,6 +342,6 @@ export interface Manual {
   drives: ManualDrive[];
   procedures: ManualProcedure[];
   sources: Record<string, { title: string; url: string; local_path: string }>;
-  circuits: string[];
+  circuits: Circuit[];
   held: Held[];
 }

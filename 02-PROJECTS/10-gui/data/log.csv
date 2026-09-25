@@ -13,3 +13,4 @@ L-0011,2026-09-24,session,MA2 D-417,"MA2: export computes the Manual (shown, hel
 L-0012,2026-09-25,session,MA3 D-417,"MA3: the Manual's Car state, Specs and Service screens, Log drive / Set odo; the drive dialog centred on the phone; e2e block tests read open blocks from the fixture"
 L-0013,2026-09-25,session,MB1 D-417,"MB1: the Manual's Systems view and system pages, a page for each part, and a preview card on every part name; unit pairs read 100 hp @ 6000 rpm"
 L-0014,2026-09-25,session,MC1 D-417,MC1: select any words in the Manual and Ask about this opens the chat with a question about exactly them (desktop)
+L-0015,2026-09-25,session,MD1 D-417,"MD1: the Manual's Diagrams (factory circuits by system, each write-up in full) and The car (zones drawn on the renders, each opening its parts); circuits table in 01-REFERENCE"

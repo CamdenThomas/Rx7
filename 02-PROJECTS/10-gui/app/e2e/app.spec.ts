@@ -81,6 +81,18 @@ test('the Manual: select words and ask Claude about exactly them', async ({ page
   await expect(page.getByLabel('Your question')).toHaveValue(new RegExp(words.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
 });
 
+test('the Manual: a zone on the car opens its parts, and a diagram opens its write-up', async ({ page }) => {
+  await open(page, '#/manual/car');
+  await page.locator('.zones a').first().click();
+  await expect(page).toHaveURL(/#\/manual\/car\/[a-z_]+$/);
+  await expect(page.locator('.zone.on')).toHaveCount(1);
+  await expect(page.locator('.parts .plink').first()).toBeVisible();
+  await page.getByRole('navigation', { name: 'Manual pages' }).getByRole('link', { name: 'Diagrams' }).click();
+  await page.locator('a.card').first().click();
+  await expect(page).toHaveURL(/#\/manual\/diagrams\/[\w-]+$/);
+  await expect(page.locator('.one .body')).toBeVisible();
+});
+
 test('a block is answered with an option and words, kept, changed and withdrawn', async ({ page }) => {
   await open(page, blockUrl(pair.first.id));
   await page.getByRole('radio').first().click();

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { day, miles, pieces, value } from '../src/lib/manual';
+import { boxes, day, hull, miles, pieces, places, project, value } from '../src/lib/manual';
 
 describe('the Manual formats what rx7.py hands it', () => {
   it('writes a unit once', () => {
@@ -20,5 +20,22 @@ describe('the Manual formats what rx7.py hands it', () => {
       { text: 'atkinsrotary.com/contact-us', url: 'https://www.atkinsrotary.com/contact-us/' },
       { text: ')' },
     ]);
+  });
+});
+
+describe('the car view', () => {
+  it('reads boxes and places', () => {
+    expect(boxes('0 1 0 1 0 1')[0]).toHaveLength(8);
+    expect(boxes('0 1 0 1 0 1; 2 3 2 3 2 3')).toHaveLength(2);
+    expect(boxes('')).toEqual([]);
+    expect(places('1 2 3; 4 5 6')).toEqual([[1, 2, 3], [4, 5, 6]]);
+  });
+  it('projects through the camera and wraps a hull', () => {
+    const flat = { width: 200, height: 100, matrix: [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]] };
+    expect(project(flat, [0, 0, 0])).toEqual([100, 50]);
+    expect(project(flat, [1, 1, 0])).toEqual([200, 0]);
+    const h = hull([[0, 0], [2, 0], [1, 1], [2, 2], [0, 2]]);
+    expect(h).toHaveLength(4);
+    expect(h).not.toContainEqual([1, 1]);
   });
 });

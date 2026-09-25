@@ -11,6 +11,8 @@
   import State from './manual/State.svelte';
   import Systems from './manual/Systems.svelte';
   import Part from './manual/Part.svelte';
+  import CarView from './manual/CarView.svelte';
+  import Diagrams from './manual/Diagrams.svelte';
   import Specs from './manual/Specs.svelte';
   import Service from './manual/Service.svelte';
   import { app } from '../lib/app.svelte';
@@ -32,7 +34,7 @@
   let dialog = $state<'drive' | 'odo' | null>(null);
   let body = $state<HTMLElement>();
 
-  const TABS: ManualPage[] = ['state', 'systems', 'specs', 'service'];
+  const TABS: ManualPage[] = ['state', 'systems', 'car', 'specs', 'service', 'diagrams'];
   const on = (t: ManualPage) => (page === 'part' ? t === 'systems' : page === t);
 
   $effect(() => {
@@ -86,10 +88,14 @@
         <Systems {m} {id} />
       {:else if page === 'part'}
         <Part {m} id={id ?? ''} />
+      {:else if page === 'car'}
+        <CarView {m} {id} />
       {:else if page === 'specs'}
         <Specs {m} />
       {:else if page === 'service'}
         <Service {m} />
+      {:else if page === 'diagrams'}
+        <Diagrams {m} {id} />
       {/if}
     </div>
     <AskSelection within={body} />

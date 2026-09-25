@@ -58,3 +58,50 @@ export function pieces(text: string): { text: string; url?: string }[] {
   if (at < (text ?? '').length) out.push({ text: text.slice(at) });
   return out;
 }
+
+// ---- The car view (D-421): the renders carry their cameras in public/car/views.json.
+
+export interface View {
+  width: number;
+  height: number;
+  matrix: number[][];
+}
+
+/** A point on the model, in mm, to a pixel on the render: clip = matrix · [x y z 1]. */
+export function project(v: View, [x, y, z]: number[]): [number, number] {
+  const c = v.matrix.map((r) => r[0] * x + r[1] * y + r[2] * z + r[3]);
+  return [((c[0] / c[3] + 1) / 2) * v.width, ((1 - c[1] / c[3]) / 2) * v.height];
+}
+
+/** "x0 x1 y0 y1 z0 z1; …" → the eight corners of each box. */
+export function boxes(cell: string): number[][][] {
+  return (cell ?? '')
+    .split(';')
+    .map((b) => b.trim().split(/\s+/).map(Number))
+    .filter((n) => n.length === 6 && n.every(Number.isFinite))
+    .map(([x0, x1, y0, y1, z0, z1]) => [x0, x1].flatMap((x) => [y0, y1].flatMap((y) => [z0, z1].map((z) => [x, y, z]))));
+}
+
+/** "x y z; …" → each place. */
+export function places(cell: string): number[][] {
+  return (cell ?? '')
+    .split(';')
+    .map((b) => b.trim().split(/\s+/).map(Number))
+    .filter((n) => n.length === 3 && n.every(Number.isFinite));
+}
+
+/** The convex hull of some points, in order around it (monotone chain). */
+export function hull(points: [number, number][]): [number, number][] {
+  const p = [...points].sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  if (p.length < 3) return p;
+  const cross = (o: number[], a: number[], b: number[]) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+  const half = (pts: [number, number][]) => {
+    const out: [number, number][] = [];
+    for (const q of pts) {
+      while (out.length >= 2 && cross(out[out.length - 2], out[out.length - 1], q) <= 0) out.pop();
+      out.push(q);
+    }
+    return out.slice(0, -1);
+  };
+  return [...half(p), ...half([...p].reverse())];
+}

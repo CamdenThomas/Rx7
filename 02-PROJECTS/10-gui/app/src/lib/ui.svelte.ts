@@ -56,7 +56,11 @@ export function crumbs(r: Route): Crumb[] {
       const list: Crumb = { label: MANUAL_TITLE[r.page], route: r.id ? { name: 'manual', page: r.page } : undefined };
       if (!r.id) return [home, manual, list];
       const m = app.snapshot?.manual;
-      const name = m?.systems.find((x) => x.id === r.id)?.name ?? m?.zones.find((x) => x.id === r.id)?.name ?? r.id;
+      const name =
+        m?.systems.find((x) => x.id === r.id)?.name ??
+        m?.zones.find((x) => x.id === r.id)?.name ??
+        m?.circuits.find((x) => x.file.replace(/\.[^.]+$/, '') === r.id)?.title ??
+        r.id;
       return [home, manual, list, { label: name }];
     }
     case 'projects':
