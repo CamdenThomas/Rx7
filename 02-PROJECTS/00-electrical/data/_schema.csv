@@ -83,8 +83,9 @@ icu_channels,note,text,no,,
 inputs,id,key,yes,,
 inputs,title,str,no,,
 inputs,kind,enum(12v|ground|output),no,,output = the pin is configured as one of O17-O24 and is not an input at all; widened 2026-09-12 so this table can describe the real channel set (D-331 / W-331)
-inputs,window,int,no,,
+inputs,window,int,no,,"± half-width in counts around the live reading (D-142); how it is applied is decode"
 inputs,fault_rule,str,no,,
+inputs,decode,enum(conductance|upward|window),no,,"how the states are told apart - rules ladder-decode; added 2026-09-24 by R3 (D-408)"
 ladders,id,key,yes,,
 ladders,input,str,no,inputs.id,
 ladders,state,str,no,,
