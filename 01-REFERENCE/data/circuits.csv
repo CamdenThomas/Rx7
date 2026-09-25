@@ -1,0 +1,14 @@
+file,title,systems,source,note
+1982RX7WiringDiagram.pdf,"The factory wiring diagram, 1982 (scan)",electrical,S-001,the original every write-up here was decoded from
+OEM-RECORD.md,"The factory harness as built: fuses, buses and grounds",electrical,S-001,
+charging-starting.md,Charging and starting,electrical engine,S-001,
+meters-ignition-fuelpump.md,"Meters, warning lights, ignition and fuel pump",ignition fuel electrical,S-001,
+headlights-popups-illumination.md,"Headlights, pop-ups and illumination",lighting,S-001,
+stop-tail-marker-backup.md,"Stop, tail, parking, side marker, licence and back-up lamps",lighting,S-001,
+turn-hazard.md,Turn signals and hazard,lighting,S-001,
+horn.md,Horn,electrical,S-001,
+wipers-washers.md,Front and rear wipers and washers,body electrical,S-001,
+windows-mirrors.md,Power windows and remote mirrors,body electrical,S-001,
+interior-hatch-accessories.md,"Interior lamps, doors, hatch, fuel door and accessories",body electrical,S-001,
+blower-ac-defroster-audio.md,"Blower, A/C, defroster, audio and power antenna",climate electrical,S-001,
+FAULT-K008-analysis.md,Fault K-008: the blinker upsets the fuel pump and tachometer,electrical lighting fuel,S-001,a known fault traced through the diagram

@@ -51,3 +51,8 @@ blend,shown,bool,yes,,yes: visible in the combined model; no: kept as a hidden o
 blend,fit,text,yes,,"how it is scaled and placed, from which figures"
 blend,check,text,no,,the figure it is checked against and the error found
 blend,note,text,no,,
+circuits,file,key,yes,,the file name in 01-REFERENCE/factory-circuits
+circuits,title,text,yes,,
+circuits,systems,text,yes,,"00-CAR systems ids, space-separated; the first is where the Manual files it"
+circuits,source,text,no,,the source it was decoded from (S- ids)
+circuits,note,text,no,,

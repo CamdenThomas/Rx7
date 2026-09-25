@@ -1398,7 +1398,8 @@ def interval_due(iv: dict, service, odo: dict, today_d):
 def manual_view(today_iso: str = "") -> dict:
     """The Manual, computed. Reads 00-CAR vehicle, systems, zones, parts, specs, service,
     intervals, issues, drives, procedures (and data/procedures/<id>.md), parts_history, and
-    01-REFERENCE sources, factory-circuits and photos. Writes nothing (D-417)."""
+    01-REFERENCE sources, circuits (and the factory-circuits files they name) and photos.
+    Writes nothing (D-417)."""
     car = ROOT / "00-CAR"
     if not (car / "data" / "parts.csv").exists():
         return {}
@@ -1467,8 +1468,17 @@ def manual_view(today_iso: str = "") -> dict:
     sources = {r["id"]: {"title": (r.get("title") or "").strip(), "url": (r.get("url") or "").strip(),
                          "local_path": (r.get("local_path") or "").strip()}
                for r in read_table(ref, "sources")[1]} if (ref / "data" / "sources.csv").exists() else {}
-    circuits = sorted(rel(f) for f in (ref / "factory-circuits").glob("*")
-                      if f.suffix.lower() in (".pdf", ".md") and f.name != "README.md") if (ref / "factory-circuits").is_dir() else []
+    # each circuit write-up with the systems 01-REFERENCE files it under; a Markdown one
+    # carries its text, since the app reads the tree only through this export
+    circuits = []
+    if (ref / "data" / "circuits.csv").exists():
+        for r in map(clean, read_table(ref, "circuits")[1]):
+            f = ref / "factory-circuits" / r["file"]
+            if not f.exists():
+                continue
+            circuits.append({"file": r["file"], "path": rel(f), "title": r["title"], "systems": r["systems"].split(),
+                             "source": r.get("source", ""), "note": r.get("note", ""),
+                             "body": f.read_text(encoding="utf-8") if f.suffix.lower() == ".md" else ""})
 
     return {"today": today_d.isoformat(), "odometer": odo,
             "vehicle": [r for r in shown["vehicle"] if r.get("key") != "mileage"],
@@ -2087,6 +2097,8 @@ def cmd_selftest(args):
 
 def cmd_log(args):
     a = resolve_area(args.area)
+    if "log" not in schema(a)[1]:
+        die(f"'log' is not a declared table in {rel(a)} (nothing was written)")
     hdr, rows = read_table(a, "log")
     hdr = hdr or ["id", "date", "workflow", "ids", "summary"]
     # KIND is the log's `workflow` column, and its vocabulary is the area's declared enum.

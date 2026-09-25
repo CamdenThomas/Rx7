@@ -4,3 +4,4 @@ blocks,"open questions only Camden can answer, one row each; deleted once a deci
 inbox,"his answers waiting to be applied, one file per answer per device (D-405)"
 cad,"every free 3D model, scan and dimensioned drawing found for the car and the projects' parts, one row each; the files are in 01-REFERENCE/model/library and stay out of git (D-418)"
 blend,"each piece of the one combined model (01-REFERENCE/model/blend.py): which cad row it comes from, how it was scaled and placed, and what factory figure checks it (D-418)"
+circuits,"each factory circuit write-up in factory-circuits/ and the wiring diagram itself, with the 00-CAR systems it belongs to, so the Manual's Diagrams page can group them (D-417, MD1)"
