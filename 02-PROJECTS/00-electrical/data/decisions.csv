@@ -1027,3 +1027,10 @@ D-410,electrical,"F3 is split and ignition and the headlamps hold on a ladder fa
 - `rules`: ladder-decode (the supply-dead fault).
 - `blocks`: 00.30 deleted, 00.32 new.
 - `work`: R2 stays open, gated on block 00.32, for the light switch's feed."
+D-411,electrical,"The factory harness comes out while the car is apart, after E29, boxed and kept until after shakedown; the week of driving on it is dropped",2026-09-24,standing,,,00.31,,"**D-411 — The factory harness comes out while the car is apart: after E29's full function check, pull it intact, box it, keep it until after shakedown, then the interior goes back (block 00.31, option a). The week of driving on a disconnected old harness is dropped; the dash comes out once.** Camden, 2026-09-24, in the app.
+
+**His answer.** He chose option (a): ""Pull it while apart. After the full function check (E29), pull the factory harness intact, box it and keep it until after shakedown, then put the interior back. The dash comes out once, but the week of driving with the old harness still in the car is lost. If something fails in shakedown, the boxed harness is the fallback, and refitting it is a big job."" He typed nothing else.
+
+**Why it stands.** It is D-387 carried through: the interior comes out once, at S1, and goes back once, at E35. E30 was written for a car that could be driven during the install, and since D-387 it cannot. E29 already proves every circuit with the engine running, and the boxed harness stays kept until shakedown.
+
+**In the data.** `work` E30: the week of driving is gone, and the harness comes out after E29 with the interior still out. E35 stays gated on E30, so the interior goes back after the harness is out. `blocks` 00.31 is deleted."
