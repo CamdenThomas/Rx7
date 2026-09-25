@@ -101,7 +101,8 @@
   }
   .glow {
     position: absolute;
-    inset: -80px -10vw 0;
+    /* Bleeds past the hero, but never past the window (8px spares a classic scrollbar). */
+    inset: -80px max(-10vw, calc((100% - 100vw) / 2 + 8px)) 0;
     z-index: -1;
     background:
       radial-gradient(ellipse 55% 60% at 68% 55%, color-mix(in oklab, var(--steel) 55%, transparent), transparent 70%),

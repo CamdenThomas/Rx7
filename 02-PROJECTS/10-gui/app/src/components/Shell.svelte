@@ -168,6 +168,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    min-width: 0;
   }
   .find {
     display: inline-flex;
@@ -231,6 +232,21 @@
   main {
     min-height: calc(100dvh - var(--topbar));
     transition: padding-right var(--t) var(--ease);
+  }
+  /* A narrow desktop window: search shrinks to its icon and the sync badge to its dot. */
+  @media (min-width: 760px) and (max-width: 1023px) {
+    .find {
+      width: 34px;
+      padding: 0;
+      justify-content: center;
+    }
+    .find span,
+    .find kbd {
+      display: none;
+    }
+    .right :global(.sync .text) {
+      display: none;
+    }
   }
   @media (min-width: 1100px) {
     main.with-chat {
