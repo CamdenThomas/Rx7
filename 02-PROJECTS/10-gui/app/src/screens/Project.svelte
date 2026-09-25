@@ -22,6 +22,23 @@
   const a = $derived(app.area(area));
   const s = $derived(a ? app.summarise(a) : null);
   const focused = $derived('id' in route && !!route.id);
+  // On a phone the goal and progress are Overview's; the other pages start at their list.
+  const subpage = $derived(route.name !== 'project');
+
+  // The tab row scrolls sideways on a phone: keep the open tab in view, and fade the edge
+  // that has more tabs behind it.
+  let tabRow = $state<HTMLElement>();
+  let more = $state({ left: false, right: false });
+  function edges() {
+    if (!tabRow) return;
+    const { scrollLeft, scrollWidth, clientWidth } = tabRow;
+    more = { left: scrollLeft > 2, right: scrollLeft + clientWidth < scrollWidth - 2 };
+  }
+  $effect(() => {
+    void route.name;
+    tabRow?.querySelector<HTMLElement>('a.on')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    edges();
+  });
 
   const tabs = $derived.by(() => {
     const has = (t: string) => !!a?.tables.some((x) => x.name === t);
@@ -42,7 +59,7 @@
   <div class="page"><p class="muted">There is no project named {area}.</p></div>
 {:else}
   <div class="page project">
-    <header class="head" class:compact={focused}>
+    <header class="head" class:compact={focused} class:subpage>
       <span class="icon"><ProjectIcon name={s.icon} size={focused ? 18 : 24} /></span>
       <div class="titles">
         <div class="t1">
@@ -57,7 +74,14 @@
       {/if}
     </header>
 
-    <nav class="tabs" aria-label="Project pages">
+    <nav
+      class="tabs"
+      class:fade-l={more.left}
+      class:fade-r={more.right}
+      aria-label="Project pages"
+      bind:this={tabRow}
+      onscroll={edges}
+    >
       {#each tabs as t (t.name)}
         <a
           href={href(t.name === 'project' ? { name: 'project', area } : ({ name: t.name, area } as Route))}
@@ -161,6 +185,19 @@
     margin-bottom: 20px;
     overflow-x: auto;
     scrollbar-width: none;
+    --fade: 28px;
+  }
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .tabs.fade-r {
+    mask-image: linear-gradient(to right, #000 calc(100% - var(--fade)), transparent);
+  }
+  .tabs.fade-l {
+    mask-image: linear-gradient(to left, #000 calc(100% - var(--fade)), transparent);
+  }
+  .tabs.fade-l.fade-r {
+    mask-image: linear-gradient(to right, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
   }
   .tabs a {
     position: relative;
@@ -234,6 +271,20 @@
     .tabs {
       margin: 0 calc(-1 * var(--gutter)) 16px;
       padding: 0 var(--gutter);
+    }
+    .tabs a {
+      padding: 10px 10px 12px;
+    }
+    /* Only what waits for him earns room on a phone; the totals are on the pages. */
+    .count:not(.hot) {
+      display: none;
+    }
+    .subpage .goal,
+    .subpage .meter {
+      display: none;
+    }
+    .subpage {
+      margin-bottom: 12px;
     }
   }
 </style>
