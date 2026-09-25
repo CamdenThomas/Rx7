@@ -30,6 +30,8 @@ class App {
   snapshot = $state<Snapshot | null>(null);
   sync = $state<SyncInfo>({ online: true, busy: false, waiting: 0 });
   ready = $state(false);
+  /** On the desktop, whether his answers are applied without a press (D-413; autoapply.svelte.ts). */
+  autoApply = $state(false);
   error = $state<string | null>(null);
 
   areas = $derived(this.snapshot?.areas ?? []);
@@ -163,7 +165,9 @@ class App {
       await this.refresh(false);
       toast(
         out.state === 'committed'
-          ? 'Saved. It waits for Apply.'
+          ? this.autoApply
+            ? 'Saved. Claude applies it once you have been quiet for a minute and a half.'
+            : 'Saved. It waits for Apply.'
           : out.state === 'saved'
             ? 'Saved in the tree. It is committed with your next answer.'
             : 'Saved on this phone. It is sent at the next connection.',

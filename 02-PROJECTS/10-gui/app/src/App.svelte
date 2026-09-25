@@ -16,6 +16,7 @@
   import { app } from './lib/app.svelte';
   import { drafts } from './lib/drafts.svelte';
   import { runs } from './lib/claude.svelte';
+  import { autoApply } from './lib/autoapply.svelte';
   import { router } from './lib/router.svelte';
   import { ui } from './lib/ui.svelte';
 
@@ -25,6 +26,7 @@
     started = true;
     void app.start().then(async () => {
       await Promise.all([drafts.load(), runs.load()]);
+      await autoApply.start();
       runs.startRequested();
     });
   });

@@ -1,7 +1,8 @@
 <!--
   The Apply button at the top of every page with answers (D-406 7.6, 8.4). His answers wait
-  until he presses it; then Claude applies them through the record (CLAUDE.md §6.2). From
-  the phone the press is saved as a request, and the desktop runs it when it next opens.
+  until he presses it; then Claude applies them through the record (CLAUDE.md §6.2). With
+  auto-apply on (D-413) the desktop presses it for him once he has been quiet a while. From
+  the phone the press is saved as a request, and the desktop runs it when it next syncs.
 -->
 <script lang="ts">
   import { Play, LoaderCircle } from '@lucide/svelte';
@@ -38,11 +39,12 @@
       <a href={href({ name: 'run', area })}>Watch it</a>
     {:else if waiting.length}
       <strong>{plural(waiting.length, 'answer')}</strong> saved, waiting to be applied.
+      {#if app.autoApply}<span class="faint">Claude starts on its own a minute and a half after your last one.</span>{/if}
       {#if confirming}<span class="warn">That is a longer run — a few minutes. Apply now?</span>{/if}
     {:else if requested}
-      Apply is requested. The desktop runs it the next time it opens.
+      Apply is requested. The desktop runs it the next time it syncs.
     {:else}
-      Answers you save wait here until you apply them.
+      {app.autoApply ? 'Answers you save are applied on their own.' : 'Answers you save wait here until you apply them.'}
     {/if}
   </p>
   {#if confirming}

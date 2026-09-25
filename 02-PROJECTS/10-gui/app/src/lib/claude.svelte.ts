@@ -155,13 +155,19 @@ function runPrompt(w: Workflow, area: Area | undefined, extra: string) {
 class Runs {
   current = $state<{ record: RunRecord; stream: Stream } | null>(null);
   history = $state<RunRecord[]>([]);
-  #queue: { w: Workflow; area?: string; extra: string; title?: string }[] = [];
+  #queue = $state<{ w: Workflow; area?: string; extra: string; title?: string }[]>([]);
+  #requested = new Set<string>();
 
   async load() {
     this.history = (await app.platform?.kv.get<RunRecord[]>('runs')) ?? [];
   }
 
   busy = $derived(this.current !== null && ['starting', 'running'].includes(this.current.stream.status));
+
+  /** Runs waiting their turn behind the one that is going. */
+  get queued() {
+    return this.#queue.length;
+  }
 
   start(w: Workflow, area?: string, extra = '', title?: string) {
     this.#queue.push({ w, area, extra, title });
@@ -193,10 +199,13 @@ class Runs {
     void this.#next();
   }
 
-  /** Runs he asked for from the phone wait in the inbox as kind=run / kind=project (§6.11). */
+  /** Runs he asked for from the phone wait in the inbox as kind=run / kind=project (§6.11).
+   *  Each request starts once, however often the record is read while it waits. */
   startRequested() {
     if (!app.platform?.canClaude) return;
     for (const a of app.snapshot?.inbox ?? []) {
+      if (a.pending || this.#requested.has(`${a.area}/${a.id}`)) continue;
+      if (a.kind === 'run' || a.kind === 'project') this.#requested.add(`${a.area}/${a.id}`);
       if (a.kind === 'run' && ['apply', 'plan', 'review', 'parts'].includes(a.target)) {
         this.start(a.target as Workflow, a.area,
           `He asked for this run from his phone (${a.at}); it is inbox row ${a.id} in ${app.area(a.area)?.path} — delete that row when the run is done.`);

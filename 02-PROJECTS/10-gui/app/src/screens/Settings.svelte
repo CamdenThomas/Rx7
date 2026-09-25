@@ -1,7 +1,8 @@
 <!-- This device's settings: where the record is, and — on the phone — the key that sends answers. -->
 <script lang="ts">
-  import { KeyRound, FolderOpen, CircleCheck, CircleAlert } from '@lucide/svelte';
+  import { KeyRound, FolderOpen, CircleCheck, CircleAlert, Zap } from '@lucide/svelte';
   import { app } from '../lib/app.svelte';
+  import { autoApply } from '../lib/autoapply.svelte';
   import { ago, plural } from '../lib/text';
   import { toast } from '../lib/toast.svelte';
 
@@ -56,6 +57,20 @@
         <input class="input mono" bind:value={root} aria-label="Tree folder" />
         <button class="btn" onclick={saveRoot}>Use this folder</button>
       </div>
+    </section>
+  {/if}
+
+  {#if p?.canClaude}
+    <section class="card box">
+      <h2><Zap size={18} /> Auto-apply</h2>
+      <p class="muted">
+        Claude applies your answers on its own, a minute and a half after the last one you save here or on the phone. The
+        app checks GitHub for the phone's answers every three minutes while it is open. Off, answers wait for Apply.
+      </p>
+      <label class="toggle">
+        <input type="checkbox" checked={app.autoApply} onchange={(e) => autoApply.set(e.currentTarget.checked)} />
+        Apply my answers automatically
+      </label>
     </section>
   {/if}
 
@@ -124,6 +139,12 @@
   }
   .small {
     font-size: 12.5px;
+  }
+  .toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
   }
   @media (max-width: 759px) {
     .inline {

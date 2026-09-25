@@ -313,8 +313,8 @@ front of him — the same three-isolated-workers standard as everything else. If
 **His answers.** He answers in the app: an option (its letter), "follow the
 recommendation", words, or both — and a Discuss chat's key points ride along in `context`.
 Each answer is a row in the project's `inbox`, saved as its own file
-`data/inbox/<target>~<device>.csv`, and it waits there until he presses Apply or you next
-run. The same table carries his answers to parts picks (`kind=pick`: yes, no or question),
+`data/inbox/<target>~<device>.csv`, and it waits there until he presses Apply, the desktop
+app's auto-apply starts the run (90 seconds after his last answer, D-413), or you next run. The same table carries his answers to parts picks (`kind=pick`: yes, no or question),
 to his own work rows (`kind=work`: done, a value, a choice), and requests for a run from the
 phone (`kind=run`, `kind=project`). An answer in the inbox is exit code **2**. It never
 refuses a commit.
@@ -544,7 +544,10 @@ the TODO page), **Plan** (§6.1), **Review** (§6.5), **Parts round** (§6.9), *
 (§6.8). It is the same run as from the terminal, under every rule here, and it ends with the
 §8 report — the app shows that report to him as the run's result. A run requested from the
 phone arrives as an inbox row `kind=run` (target `apply`, `plan`, `review` or `parts`) in
-the project it is for: do that run, then delete the row.
+the project it is for: do that run, then delete the row. An Apply run the app started on its
+own says so in its prompt (auto-apply, D-413); it is the same §6.2 run. While any run is
+going, the app does not pull or push, so your own `git pull --rebase` and push are the only
+ones in the tree.
 
 Explain, Discuss and the app's chat start you read-only: answer from the record, never
 write, never commit.

@@ -255,3 +255,23 @@ These are the first things to settle in that conversation. They are kept here so
 **What holds now.** The Manual screen shows a title and a blurb, and the home tile opens it. His brief above is the agenda for planning it (work row M1, his).
 
 **In the data.** `work` M1 (Camden: plan the Manual with the agent) is new."
+D-413,,"Auto-apply: the desktop applies his answers 90 seconds after the last one, pulls the phone's every three minutes, and never pulls or pushes under a running Claude",2026-09-24,standing,,,,D-406,"# Auto-apply: the desktop applies his answers without a press, and the app never pulls under a running Claude
+
+*2026-09-24 - Camden, in chat*
+
+**Decision.**
+- **Auto-apply is on.** On the desktop, once the newest answer waiting in a project has been quiet for 90 seconds, the app starts that project's Apply run (CLAUDE.md §6.2) on its own. Several answers saved close together go in one run. A switch in Settings turns it off, and then answers wait for Apply as before. This replaces D-406's line ""Answers wait. An answer is saved and waits until he presses Apply"" (his 7.6 answer ""a""). The Apply button stays, for applying at once.
+- **Phone answers are applied too.** While the desktop app is open it pulls from GitHub every three minutes, so answers and run requests saved on the phone arrive and are applied the same way. With the desktop app closed, they wait until it next opens.
+- **Each answer starts at most one run.** An answer that a run leaves in the inbox waits for a press, so one answer can never start run after run.
+- **The app never pulls or pushes while Claude Code is at work in the tree.** An answer saved during a run is still committed at once. The run's own push carries it, or the sync after the run does.
+
+**His words.**
+> enable auto apply, now also we should consider giving the apps gh control to commit and push answers, solves concurency between phone and computer
+
+**Reading taken: ""gh control"".** Both apps already commit and push his answers themselves. The desktop commits each answer file with git and pushes it. The phone commits through the GitHub API with his key (D-403). Each answer is its own file (`inbox/<target>~<device>.csv`, D-405), so the phone and the desktop never write the same file. The one real concurrency gap was on the desktop. The app's pull ran `git pull --rebase --autostash` even while a Claude run was editing the tree, which could stash and restore files mid-run. Auto-apply makes runs more frequent, so that gap is closed here. Nothing further is taken from ""consider"". If he meant something beyond this, such as the app doing the runs' commits too, it is a new ask.
+
+**Why this is his ruling and not a small one.** Every Apply run is paid for (about 0.85 USD for a one-answer run on 2026-09-24). Auto-apply spends that without a press, so it is money (§3). He asked for it, and the Settings switch undoes it.
+
+**Consequences.**
+- App: `src/lib/autoapply.svelte.ts` (new), `claude.svelte.ts` (the run queue, and phone run requests started once each), `app.svelte.ts`, `ApplyBar.svelte`, `Settings.svelte`, `App.svelte`. Rust: `desktop/git.rs` holds sync while `desktop/claude.rs` has a live process.
+- CLAUDE.md §4 and §6.11 now say an answer waits until Apply is pressed or auto-apply starts the run."
