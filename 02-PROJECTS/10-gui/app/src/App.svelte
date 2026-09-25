@@ -50,7 +50,7 @@
       {#if r.name === 'home'}
         <Home />
       {:else if r.name === 'manual'}
-        <Manual />
+        <Manual page={r.page} id={r.id} />
       {:else if r.name === 'projects'}
         <Projects />
       {:else if r.name === 'new-project'}

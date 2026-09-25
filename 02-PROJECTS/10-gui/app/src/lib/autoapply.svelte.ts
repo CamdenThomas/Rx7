@@ -12,7 +12,7 @@ export const QUIET_MS = 90_000;
 /** How often the desktop pulls from GitHub for the phone's answers. */
 export const POLL_MS = 180_000;
 
-const ANSWER_KINDS = ['block', 'pick', 'work'];
+const ANSWER_KINDS = ['block', 'pick', 'work', 'drive'];
 
 class AutoApply {
   #tried = new Set<string>();

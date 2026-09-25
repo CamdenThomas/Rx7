@@ -1,9 +1,13 @@
 // Every screen has an address, kept in the URL's #fragment so it survives a reload and the
 // back button works on both apps: #/p/00-electrical/blocks/00.29.
 
+/** The Manual's pages (D-417): Car state is the Manual's own address, #/manual. */
+export const MANUAL_PAGES = ['state', 'systems', 'car', 'specs', 'service', 'diagrams', 'part'] as const;
+export type ManualPage = (typeof MANUAL_PAGES)[number];
+
 export type Route =
   | { name: 'home' }
-  | { name: 'manual' }
+  | { name: 'manual'; page?: ManualPage; id?: string }
   | { name: 'projects' }
   | { name: 'new-project' }
   | { name: 'project'; area: string }
@@ -27,8 +31,11 @@ export function parse(hash: string): Route {
   switch (seg[0]) {
     case undefined:
       return { name: 'home' };
-    case 'manual':
-      return { name: 'manual' };
+    case 'manual': {
+      const page = seg[1] as ManualPage | undefined;
+      if (!page || page === 'state' || !MANUAL_PAGES.includes(page)) return { name: 'manual' };
+      return seg[2] ? { name: 'manual', page, id: seg[2] } : { name: 'manual', page };
+    }
     case 'projects':
       return seg[1] === 'new' ? { name: 'new-project' } : { name: 'projects' };
     case 'p': {
@@ -58,7 +65,7 @@ export function href(r: Route): string {
     case 'home':
       return '#/';
     case 'manual':
-      return '#/manual';
+      return r.page && r.page !== 'state' ? `#/manual/${r.page}${r.id ? `/${e(r.id)}` : ''}` : '#/manual';
     case 'projects':
       return '#/projects';
     case 'new-project':

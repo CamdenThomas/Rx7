@@ -128,7 +128,7 @@ export interface RunRecord {
 }
 
 const WHAT: Record<Workflow, string> = {
-  apply: 'CLAUDE.md §6.2 — apply his answers waiting in its inbox (his picks by §6.9 step 4, his work rows by §6.4)',
+  apply: 'CLAUDE.md §6.2 — apply his answers waiting in its inbox (his picks by §6.9 step 4, his work rows by §6.4, his drives by §6.7)',
   plan: 'CLAUDE.md §6.1 — plan: take agent rows from READY until none has a met gate',
   review: 'CLAUDE.md §6.5 — review, changing nothing but the findings',
   parts: 'CLAUDE.md §6.9 — a parts round',

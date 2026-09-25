@@ -1,7 +1,21 @@
 // The screens, driven the way he would drive them, on the web build (a copy of the record,
 // answers kept in the browser, a stand-in Claude). Runs at desktop and at phone size.
 
+import { readFileSync } from 'node:fs';
 import { expect, test, type Page } from '@playwright/test';
+
+// The open blocks come from the fixture, a copy of the live record: a block he answers is
+// deleted, so a test that names one by id breaks on the next run.
+const fixture = JSON.parse(readFileSync(new URL('../public/fixture/export.json', import.meta.url), 'utf8'));
+const openBlocks: { area: string; id: string; recommended: string }[] = fixture.blocks;
+const pair = (() => {
+  for (const b of openBlocks) {
+    const rest = openBlocks.filter((x) => x.area === b.area && x.id !== b.id);
+    if (b.recommended && rest.length) return { area: b.area, first: b, others: rest.map((x) => x.id) };
+  }
+  throw new Error('the fixture needs an area with two open blocks, one of them with a recommendation');
+})();
+const blockUrl = (id: string) => `#/p/${pair.area}/blocks/${id}`;
 
 const open = async (page: Page, hash: string) => {
   await page.goto(`/?claude=fake${hash}`);
@@ -17,16 +31,33 @@ test('home has exactly two ways in, and both lead somewhere', async ({ page }) =
   await expect(page.getByRole('heading', { name: 'What is being done to the car' })).toBeVisible();
   await page.goto('/?claude=fake#/');
   await page.locator('.tiles a').filter({ hasText: 'Manual' }).click();
-  await expect(page.getByText('It is being planned with you first')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Known faults' })).toBeVisible();
+});
+
+test('the Manual: car state, specs by category, the service log, and Set odo as an answer', async ({ page }) => {
+  await open(page, '#/manual');
+  await expect(page.getByRole('heading', { name: 'Due' })).toBeVisible();
+  await expect(page.locator('.odo strong')).toContainText('mi');
+  await page.getByRole('navigation', { name: 'Manual pages' }).getByRole('link', { name: 'Specs' }).click();
+  await expect(page).toHaveURL(/#\/manual\/specs$/);
+  await page.getByRole('button', { name: 'Brakes', exact: true }).click();
+  await expect(page.locator('.group h2')).toHaveCount(1);
+  await page.getByRole('navigation', { name: 'Manual pages' }).getByRole('link', { name: 'Service' }).click();
+  await expect(page.getByRole('heading', { name: 'Service log' })).toBeVisible();
+  await page.getByRole('button', { name: 'Set odo' }).click();
+  await page.getByRole('dialog').locator('input').first().fill('999999');
+  await page.getByRole('button', { name: 'Save', exact: true }).click();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page.locator('.odo')).toContainText('waiting to be filed');
 });
 
 test('a block is answered with an option and words, kept, changed and withdrawn', async ({ page }) => {
-  await open(page, '#/p/00-electrical/blocks/00.29');
-  await page.getByRole('radio', { name: /One cutover weekend/ }).click();
+  await open(page, blockUrl(pair.first.id));
+  await page.getByRole('radio').first().click();
   await page.getByPlaceholder(/Anything to add/).fill('Do it the weekend after the parts arrive.');
   // Leaving and coming back keeps the draft.
-  await page.goto('/?claude=fake#/p/00-electrical/blocks');
-  await page.goto('/?claude=fake#/p/00-electrical/blocks/00.29');
+  await page.goto(`/?claude=fake#/p/${pair.area}/blocks`);
+  await page.goto(`/?claude=fake${blockUrl(pair.first.id)}`);
   await expect(page.getByPlaceholder(/Anything to add/)).toHaveValue('Do it the weekend after the parts arrive.');
   await page.getByRole('button', { name: 'Save answer' }).click();
   await expect(page.getByText('Your answer — (a)')).toBeVisible();
@@ -34,19 +65,21 @@ test('a block is answered with an option and words, kept, changed and withdrawn'
   // The list and the Apply bar say so.
   await page.getByRole('button', { name: /List/ }).first().click();
   await expect(page.getByText('1 answer saved, waiting to be applied.')).toBeVisible();
-  await expect(page.locator('.row').filter({ hasText: '00.29' }).getByText(/Answered · \(a\)/)).toBeVisible();
+  await expect(page.locator('.row').filter({ hasText: pair.first.id }).getByText(/Answered · \(a\)/)).toBeVisible();
   // Withdraw.
-  await page.goto('/?claude=fake#/p/00-electrical/blocks/00.29');
+  await page.goto(`/?claude=fake${blockUrl(pair.first.id)}`);
   await page.getByRole('button', { name: /Withdraw/ }).click();
   await expect(page.getByRole('button', { name: 'Save answer' })).toBeVisible();
 });
 
 test('follow the recommendation is one tap, and next unanswered moves on', async ({ page }) => {
-  await open(page, '#/p/00-electrical/blocks/00.30');
-  await page.getByRole('button', { name: /Follow the recommendation \(a\)/ }).click();
-  await expect(page.getByText('Your answer — (a)')).toBeVisible();
+  await open(page, blockUrl(pair.first.id));
+  const r = pair.first.recommended;
+  await page.getByRole('button', { name: `Follow the recommendation (${r})` }).click();
+  await expect(page.getByText(`Your answer — (${r})`)).toBeVisible();
   await page.getByRole('link', { name: /Next unanswered/ }).click();
-  await expect(page).toHaveURL(/blocks\/00\.31/);
+  await expect(page).not.toHaveURL(new RegExp(`/${pair.first.id.replace('.', '\\.')}$`));
+  expect(pair.others.some((id) => page.url().endsWith(`/${id}`))).toBe(true);
 });
 
 test('a pick needs a reason for no', async ({ page }) => {
@@ -85,7 +118,7 @@ test('a Claude run shows its feed and its report', async ({ page }) => {
 });
 
 test('explain restates a block in plain words', async ({ page }) => {
-  await open(page, '#/p/00-electrical/blocks/00.31');
+  await open(page, blockUrl(pair.first.id));
   await page.getByRole('button', { name: 'Explain' }).click();
   await expect(page.getByText(/In plain words:/)).toBeVisible({ timeout: 10_000 });
 });

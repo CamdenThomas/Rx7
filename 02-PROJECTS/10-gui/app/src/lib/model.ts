@@ -15,6 +15,8 @@ export interface Snapshot {
   tables: RawTable[];
   photos: string[];
   next: Record<string, string>;
+  /** The Manual (D-417): 00-CAR as the car is now, verified rows only. Absent in an old export. */
+  manual?: Manual;
 }
 
 export interface Area {
@@ -133,7 +135,7 @@ export interface Decision {
   cited_in: { area: string; table: string; key: string }[];
 }
 
-export type AnswerKind = 'block' | 'pick' | 'work' | 'run' | 'project';
+export type AnswerKind = 'block' | 'pick' | 'work' | 'run' | 'project' | 'drive';
 
 /** One of his answers, as it sits in an area's inbox (or, on the phone, still on its way). */
 export interface Answer {
@@ -171,4 +173,157 @@ export interface Commit {
   subject: string;
   date: string;
   author: string;
+}
+
+// ---------------------------------------------------------------- the Manual (D-417)
+// rx7.py manual_view(): every field below is computed there, from 00-CAR, and only shown here.
+
+/** A 00-CAR row as the Manual hands it over: its columns, trimmed. */
+export type Row = Record<string, string>;
+
+export interface Odometer {
+  miles: number | null;
+  date: string;
+  /** drive · set · service · vehicle (an undated figure) · '' (none at all) */
+  source: string;
+  ref: string;
+}
+
+export interface ManualSystem {
+  id: string;
+  name: string;
+  parent: string;
+  order: string;
+  state: string;
+  since: string;
+  note: string;
+  children: string[];
+  parts: string[];
+  specs: number;
+}
+
+export interface ManualZone {
+  id: string;
+  name: string;
+  order: string;
+  note: string;
+  parts: string[];
+}
+
+export interface Fitting {
+  service: string;
+  date: string;
+  miles: number | null;
+}
+
+export interface ManualPart {
+  id: string;
+  name: string;
+  system: string;
+  zone: string;
+  factory: string;
+  maker: string;
+  part_no: string;
+  factory_code: string;
+  link: string;
+  support: string;
+  cad: string;
+  photo: string;
+  note: string;
+  fitted: Fitting | null;
+  specs: string[];
+  service: string[];
+  bought: { id: string; part: string; source: string }[];
+}
+
+export interface ManualSpec {
+  id: string;
+  category: string;
+  item: string;
+  value: string;
+  unit: string;
+  source: string;
+  page: string;
+  confidence: string;
+  system: string;
+  part: string;
+  note: string;
+}
+
+export interface ManualService {
+  id: string;
+  date: string;
+  mileage: string;
+  work: string;
+  items: string;
+  parts: string;
+  notes: string;
+  fitted: string[];
+}
+
+export interface Due {
+  last: Fitting | null;
+  next_miles: number | null;
+  next_date: string;
+  status: 'overdue' | 'soon' | 'ok' | 'never' | 'each';
+  miles_left?: number | null;
+  days_left?: number | null;
+}
+
+export interface ManualInterval {
+  id: string;
+  item: string;
+  every_miles: string;
+  every_months: string;
+  spec: string;
+  source: string;
+  note: string;
+  due: Due;
+}
+
+export interface ManualDrive {
+  id: string;
+  date: string;
+  odometer: string;
+  kind: string;
+  from: string;
+  to: string;
+  note: string;
+  miles: number | null;
+}
+
+export interface ManualProcedure {
+  id: string;
+  system: string;
+  title: string;
+  when: string;
+  tools: string;
+  source: string;
+  body: string;
+}
+
+export interface Held {
+  table: string;
+  key: string;
+  label: string;
+  reason: 'confirm' | 'unverified' | 'other-car';
+  why: string;
+}
+
+export interface Manual {
+  today: string;
+  odometer: Odometer;
+  vehicle: Row[];
+  systems: ManualSystem[];
+  zones: ManualZone[];
+  parts: ManualPart[];
+  specs: ManualSpec[];
+  service: ManualService[];
+  intervals: ManualInterval[];
+  issues: Row[];
+  drives: ManualDrive[];
+  procedures: ManualProcedure[];
+  sources: Record<string, { title: string; url: string; local_path: string }>;
+  circuits: string[];
+  held: Held[];
 }
