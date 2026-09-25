@@ -17,14 +17,14 @@ SP-015,Engine,"Compression pressure, minimum limit",6 (85) @ 250 rpm cranking,kg
 SP-016,Engine,"Compression, max difference between chambers",1.5 (21),kg/cm2 (psi),"S-002,S-003",S-002 p.1-12; S-003 T:1,primary,engine,PT001,,Cranking speed 240-250 rpm with Mazda tester 49 0820 280K.
 SP-017,Engine,Intake port timing,"opens 32 deg ATDC, closes 40 deg ABDC",,"S-002,S-003",S-002 p.1-3; S-003 T:1,primary,engine,PT001,,Primary port; 1985 12A and 1980 12A agree.
 SP-018,Engine,Idle speed (A/T),750 in 'D',rpm,"S-002,S-006,S-003",S-002 p.0-8 and 0-17; S-006 PDF p.37 (printed 47); S-003 T:3,primary,engine,PT001,,"Set with idle-compensator tube disconnected and plugged, accessories off, engine warm, dash pot/throttle opener clear of idle stop. M/T 750 rpm in neutral. 1980 spec was 750 +/-25."
-SP-019,Engine,Oil pressure at idle,90-270 (12.8-38.4),kPa (psi),"S-002,S-003",S-002 p.2-5; S-003 T:2,primary,engine,PT001,,"1980 FSM: 0.9-2.7 kg/cm2 (13-38 psi). Measured at rear-housing gauge port with engine warm, A/T in 'D'."
+SP-019,Engine,Oil pressure at idle,90-270 (12.8-38.4),kPa (psi),"S-002,S-003",S-002 p.2-5; S-003 T:2,primary,engine,PT001,other-car,"1980 FSM: 0.9-2.7 kg/cm2 (13-38 psi). Measured at rear-housing gauge port with engine warm, A/T in 'D'."
 SP-020,Engine,Oil pressure at 3000 rpm,450-550 (64-79),kPa (psi),"S-002,S-003",S-002 p.2-5; S-003 T:1,primary,engine,PT001,,1980 FSM: 4.5-5.5 kg/cm2 (64-78 psi).
-SP-021,Engine,Oil pressure control valve opening,900 (128),kPa (psi),S-002,p.2-3,primary,engine,PT001,,Oil filter relief valve opens 100 kPa (14 psi). 1980 FSM (S-003 T:2) lists regulator 5.0 kg/cm2 and front-cover control valve 11.0 kg/cm2.
+SP-021,Engine,Oil pressure control valve opening,900 (128),kPa (psi),S-002,p.2-3,primary,engine,PT001,other-car,Oil filter relief valve opens 100 kPa (14 psi). 1980 FSM (S-003 T:2) lists regulator 5.0 kg/cm2 and front-cover control valve 11.0 kg/cm2.
 SP-022,Engine,Oil pump type,"Trochoid, chain driven",,"S-002,S-003",S-002 p.2-3; S-003 T:1,primary,engine,PT001,,1980 FSM: 5.0 L/min at 1000 rpm; chain slack limit 12 mm.
 SP-023,Engine,Engine oil grade,"API SD, SE or SF",,"S-002,S-003",S-002 p.2-3; S-003 T:2,primary,engine,PT001,,"Viscosity by temperature: 10W-30 (0 to 85 F), 10W-40 (0 to 100 F), 10W-50, 20W-40, 20W-50 (above 15 F), 5W-30 below 0 F (S-002 p.2-3 chart; S-003 T:2)."
-SP-024,Engine,Oil metering pump delivery,2.0-2.5 cc per 6 min at 2000 rpm,,S-003,T:2,primary,engine,PT002,replaced,Factory design: the metering pump feeds the carburettor. On this car the carburettor is gone and the pump is disconnected - the engine runs on premix
+SP-024,Engine,Oil metering pump delivery,2.0-2.5 cc per 6 min at 2000 rpm,,S-003,T:2,primary,engine,PT002,other-car,Factory design: the metering pump feeds the carburettor. On this car the carburettor is gone and the pump is disconnected - the engine runs on premix
 SP-025,Engine,Alternator/fan belt deflection,13-17 (0.51-0.67) at 10 kg (22 lb) push,mm (in),S-002,p.3-3,primary,engine,PT005,,Measured midway between alternator and eccentric-shaft pulleys. 1980 spec 15 +/-2 mm (S-003 T:1). Air-pump belt 11-13 mm.
-SP-026,Engine,Eccentric shaft to alternator pulley ratio,1 : 1.82,,S-003,T:3,primary,engine,PT001,,1980 spec; useful for alternator rpm at idle (750 x 1.82 = about 1365 alternator rpm).
+SP-026,Engine,Eccentric shaft to alternator pulley ratio,1 : 1.82,,S-003,T:3,primary,engine,PT001,other-car,1980 spec; useful for alternator rpm at idle (750 x 1.82 = about 1365 alternator rpm).
 SP-027,Fuel,Fuel tank capacity,63 (16.6 US gal per brochure; 16.4 US gal per 1985 FSM),L,"S-004,S-006,S-002",S-004 p.15; S-006 PDF p.21 (printed 27); S-002 p.4A-16,primary,fuel,,,Enlarged from 55 L (14.5 gal) for 1981. Both gallon figures are conversions of 63 L.
 SP-028,Fuel,Fuel pump type,"Electric, relay controlled (fuel pump cut relay)",,"S-004,S-001,S-002",S-004 p.14; S-001 PDF p.12-14 (sect B); S-002 p.4A-6,primary,fuel,PT007,replaced,Fed by 10A FUEL PUMP fuse (BLg wire) from the IG (BW) circuit; wiring diagram section B shows the pump and control circuit.
 SP-029,Fuel,"Fuel pump pressure (1985 FSM, 12A)",20-25 (2.84-3.54),kPa (psi),S-002,p.4A-16,primary,fuel,PT007,replaced,Feeding capacity 1400 cc/min or more. DISAGREES with 1980 value below - both kept.
@@ -41,18 +41,18 @@ SP-039,Ignition,Spark plug gap,1.4 +/-0.05 (0.055 +/-0.002),mm (in),"S-006,S-002
 SP-040,Ignition,Spark plug tightening torque,13-18 (9-13),N-m (ft-lb),"S-002,S-003",S-002 p.5-32; S-003 T:7,primary,ignition,PT019,,
 SP-041,Ignition,Distributor pick-up coil resistance (1981 spec),1050 +/-10%,ohm,S-006,PDF p.37 (printed 47),primary,ignition,PT014,,DISAGREES with 1985 value below; the 1981-82 distributor/igniter differs from 1985. Check the car's own unit.
 SP-042,Ignition,Distributor pick-up coil resistance (1985 spec),650 +/-50 at 20 C,ohm,S-002,p.5-34,primary,ignition,PT014,other-car,Both leading and trailing pick-ups.
-SP-043,Ignition,Ignition coil primary resistance (1985 spec),1.35 +/-10%,ohm,S-002,p.5-37,primary,ignition,PT013,,Same for leading and trailing coils; measure warm. 1980 coils (LB-84 / FTC-3) were 0.9 +/-0.09 ohm (S-003 T:3) - 1982 coil (part 1480-18-100 / 8245-18-100) to be measured.
+SP-043,Ignition,Ignition coil primary resistance (1985 spec),1.35 +/-10%,ohm,S-002,p.5-37,primary,ignition,PT013,other-car,Same for leading and trailing coils; measure warm. 1980 coils (LB-84 / FTC-3) were 0.9 +/-0.09 ohm (S-003 T:3) - 1982 coil (part 1480-18-100 / 8245-18-100) to be measured.
 SP-044,Ignition,High-tension lead resistance limit,16000 +/-40% max,ohm,S-002,p.5-37,primary,ignition,PT017,,
-SP-045,Ignition,Distributor air gap,0.2-0.6 (0.008-0.024),mm (in),S-003,T:3,primary,ignition,PT014,,1980 spec; 1985 FSM p.5-34 also checks air gap with feeler gauge.
-SP-046,Ignition,"Centrifugal advance, 12A (1985 spec)",T and L: 0 deg at 500 distributor rpm; 12.5 deg at 2063 distributor rpm,,S-002,p.5-3,primary,ignition,PT014,,"1980 spec: 0 deg at 500, max 10 deg at 1500 (S-003 T:3). Distributor turns at eccentric-shaft speed on a rotary - values are distributor rpm."
-SP-047,Ignition,"Vacuum advance, 12A (1985 spec)","T: 0 deg at 100 mmHg, 15 deg at 400 mmHg; L: 0 deg at 100 mmHg, 4.5 deg at 190 mmHg",,S-002,p.5-3,primary,ignition,PT014,,"1980 spec: L 0 at -100, 7.5 at -400 mmHg; T 0 at -200, 15 at -400 mmHg (S-003 T:3)."
+SP-045,Ignition,Distributor air gap,0.2-0.6 (0.008-0.024),mm (in),S-003,T:3,primary,ignition,PT014,other-car,1980 spec; 1985 FSM p.5-34 also checks air gap with feeler gauge.
+SP-046,Ignition,"Centrifugal advance, 12A (1985 spec)",T and L: 0 deg at 500 distributor rpm; 12.5 deg at 2063 distributor rpm,,S-002,p.5-3,primary,ignition,PT014,other-car,"1980 spec: 0 deg at 500, max 10 deg at 1500 (S-003 T:3). Distributor turns at eccentric-shaft speed on a rotary - values are distributor rpm."
+SP-047,Ignition,"Vacuum advance, 12A (1985 spec)","T: 0 deg at 100 mmHg, 15 deg at 400 mmHg; L: 0 deg at 100 mmHg, 4.5 deg at 190 mmHg",,S-002,p.5-3,primary,ignition,PT014,other-car,"1980 spec: L 0 at -100, 7.5 at -400 mmHg; T 0 at -200, 15 at -400 mmHg (S-003 T:3)."
 SP-048,Ignition,Ignition (IG) feed protection,0.5 sq mm fusible link on BW wire from ignition switch IG terminal,,S-001,PDF p.9 and p.10,primary,ignition,,,"Ignition system box on the schematic is fed unfused from BW after this link; the 15A ENGINE fuse feeds emission control, charging (IG side) and A/T kick-down."
 SP-049,Ignition,Tachometer signal,YG wire from trailing (T) ignition coil to cluster tachometer,,S-001,PDF p.16 (sect C),primary,ignition,,,
 SP-050,Cooling,Coolant capacity (with heater),9.5 (10.0 US qt),L,"S-002,S-003",S-002 p.3-2; S-003 T:2,primary,cooling,,,1980 FSM: 8.5 L (9.0 qt) without heater.
 SP-051,Cooling,Thermostat,"wax type; starts 80.5-83.5 C (177-183 F), full open 95 C (203 F), lift 8 mm min",,S-002,p.3-2,primary,cooling,PT022,,"1980 FSM: starts 82 +/-1.5 C, full open 95 C, lift 8-10 mm (S-003 T:2)."
 SP-052,Cooling,Radiator cap valve pressure,75-105 (11-15),kPa (psi),"S-002,S-003",S-002 p.3-2; S-003 T:2,primary,cooling,PT020,,1980 FSM: 0.9 +/-0.15 kg/cm2 (13 +/-2 psi). System pressure test max 1.05 kg/cm2 (15.13 psi) (S-002 p.0-16).
 SP-053,Cooling,Radiator,"Corrugated-fin, with expansion (coolant recovery) tank",,"S-002,S-003",S-002 p.3-2; S-003 T:2,primary,cooling,PT020,,
-SP-054,Cooling,Cooling fan (1985 spec),"390 mm (15.4 in) x 8 blades, thermo-modulated (viscous) fan clutch",,S-002,p.3-2,primary,cooling,,,"1980 FSM: 410 mm, 7 blades, fan clutch 1400 +/-200 rpm at 4200 engine rpm (S-003 T:2). 1982 fan to be confirmed on the car."
+SP-054,Cooling,Cooling fan (1985 spec),"390 mm (15.4 in) x 8 blades, thermo-modulated (viscous) fan clutch",,S-002,p.3-2,primary,cooling,,other-car,"1980 FSM: 410 mm, 7 blades, fan clutch 1400 +/-200 rpm at 4200 engine rpm (S-003 T:2). 1982 fan to be confirmed on the car."
 SP-055,Cooling,Water pump,"Centrifugal, V-belt driven; 150-160 L/min at 6500 engine rpm (1980 spec)",,"S-002,S-003",S-002 p.3-2; S-003 T:2,primary,cooling,PT021,,
 SP-056,Cooling,Antifreeze,Ethylene-glycol base; increase concentration when below -29 C (-20 F),,S-002,p.3-2,primary,cooling,,,
 SP-057,Cooling,Sub-zero starting assist,"Reservoir of 90% antifreeze / 10% water, electric pump (except California)",,"S-003,S-001",S-003 T:3; S-001 PDF p.10,primary,cooling,,replaced,Sub-zero motor and sensor shown on wiring section A (BW/BLg wires).
@@ -93,7 +93,7 @@ SP-091,Drivetrain,Live axle location,"4-link with Watt linkage, coil springs, re
 SP-092,Transmission,Automatic gear ratios,"1st 2.458, 2nd 1.458, 3rd 1.000, reverse 2.181",,"S-004,S-003",S-004 p.14; S-003 T:4,primary,transmission,PT054,,Brochure and 1980 FSM (3N71B) agree.
 SP-093,Transmission,ATF type,ATF Type F (Ford M2C33-F),,"S-002,S-003",S-002 p.0-24; S-003 T:4,primary,transmission,PT054,,"Check level engine idling, warm, selector in P, between L and F marks."
 SP-094,Transmission,"ATF capacity (3N71B, 1980 FSM)","6.2 (6.6 US qt), Type F",L,S-003,T:4,primary,transmission,PT054,,1980 3N71B figure; drain-and-fill takes less. 1985 L4N71B (with OD) holds 7.5 L - not applicable to the 1982 3-speed.
-SP-095,Transmission,Torque converter stall speed (1980 3N71B),2300-2550 after break-in (2250-2500 during break-in),rpm,S-003,T:5,primary,transmission,PT054,,
+SP-095,Transmission,Torque converter stall speed (1980 3N71B),2300-2550 after break-in (2250-2500 during break-in),rpm,S-003,T:5,primary,transmission,PT054,other-car,
 SP-096,Transmission,"Manual gear ratios (for reference, 5-speed)","3.674 / 2.217 / 1.432 / 1.000 / 0.825, reverse 3.542",,"S-004,S-003",S-004 p.14; S-003 T:4,primary,transmission,,other-car,Not fitted to this car.
 SP-097,Transmission,A/T electrical,"Inhibitor (neutral safety) switch A-06 (BY/GY, BW/RW), kick-down solenoid fed by 15A ENGINE fuse, select-lever illumination 3.4 W",,S-001,"PDF p.10, p.12, p.20",primary,transmission,PT054,,
 SP-098,Suspension,Front suspension,"Independent MacPherson strut, coil springs, stabilizer bar, tension rods",,"S-004,S-002",S-004 p.14; S-002 p.13-2,primary,suspension,,,
@@ -109,7 +109,7 @@ SP-107,Steering,Steering gear,"Recirculating ball-nut, variable ratio 17.0-20.0 
 SP-108,Steering,Turns lock-to-lock / turning diameter,3.7 turns; 31.5 ft turning diameter,,S-004,p.14,primary,steering,,,1980 FSM minimum turning radius 4.8 m (15 ft 9 in) agrees.
 SP-109,Steering,Steering wheel free play,5-20 (0.2-0.8),mm (in),S-002,p.10A-3,primary,steering,PT053,,1980 limit 40 mm.
 SP-110,Steering,Maximum wheel angle,"inside 39 deg 40' +/-2 deg, outside 32 deg 14' +/-2 deg",,"S-002,S-003",S-002 p.10A-3; S-003 T:6,primary,steering,,,
-SP-111,Steering,Steering gear oil,"API GL-4 SAE 90, 0.325 L (1985) / 290 cc (1980)",,"S-002,S-003",S-002 p.10A-3; S-003 T:6,primary,steering,PT053,,
+SP-111,Steering,Steering gear oil,"API GL-4 SAE 90, 0.325 L (1985) / 290 cc (1980)",,"S-002,S-003",S-002 p.10A-3; S-003 T:6,primary,steering,PT053,other-car,
 SP-112,Brakes,Brake layout (GS),"Power-assisted front discs, self-adjusting rear drums, dual diagonal hydraulic circuits, differential proportioning valve",,"S-004,S-002",S-004 p.14-15; S-002 p.11-2,primary,brakes,,,GSL: 4-wheel discs. 1985 rear disc caliper bore 34.93 mm if ever retrofitted.
 SP-113,Brakes,Front disc,202 mm effective dia x 18 mm thick; wear limit 17 mm (0.6693 in); lateral run-out max 0.1 mm,,"S-002,S-003",S-002 p.11-2 and 11-7; S-003 T:6,primary,brakes,PT042,,
 SP-114,Brakes,Front caliper piston bore,50.80 (2.0),mm (in),"S-002,S-003",S-002 p.11-2; S-003 T:6,primary,brakes,PT050,,Single-piston sliding caliper; pad lining limit 1 mm (S-002 p.11-8).
@@ -119,7 +119,7 @@ SP-117,Brakes,Master cylinder,"Tandem with fluid-level sensor, bore 20.64 mm (0.
 SP-118,Brakes,Brake booster,"Vacuum multiplier, 8 in",,S-002,p.11-2,primary,brakes,PT052,,Brochure p.14 also mentions the vacuum servo (text cropped in scan).
 SP-119,Brakes,Brake fluid,DOT-3 or DOT-4 (FMVSS 116) or SAE J1703a,,S-002,p.11-2 and 0-21,primary,brakes,,,"Change every 30,000 mi / 30 months; annually in humid climates or hard use (S-002 p.0-14 and p.0-21)."
 SP-120,Brakes,Brake pedal,free play 7-9 mm (0.28-0.35 in); height 190 +5/-0 mm (7.48 in) from floor,,"S-002,S-003",S-002 p.11-2; S-003 T:6,primary,brakes,,,
-SP-121,Brakes,Parking brake,"Mechanical on rear wheels, floor lever; 3-7 notches at 10 kg (22 lb) pull (1980 spec)",,"S-002,S-003",S-002 p.11-2; S-003 T:6,primary,brakes,,,
+SP-121,Brakes,Parking brake,"Mechanical on rear wheels, floor lever; 3-7 notches at 10 kg (22 lb) pull (1980 spec)",,"S-002,S-003",S-002 p.11-2; S-003 T:6,primary,brakes,,other-car,
 SP-122,Brakes,Stop-lamp checker,Stop light checker F-03 lights cluster warning if a stop bulb fails,,"S-001,S-006",S-001 PDF p.22 and p.16; S-006 PDF p.21 (printed 27),primary,brakes,,,Added for 1981.
 SP-123,Wheels,Bolt pattern,4 x 110 mm (4 x 4.33 in),,S-021,,unverified,wheels,,,Enthusiast table only; 1985 FSM wheel section on the server was corrupt so no Mazda page was captured. Universally reported for 1979-85.
 SP-124,Wheels,Wheel stud thread,M12 x 1.5,,S-023,,secondary,wheels,,,Rotary-specialist vendor lug nut listing 'fits all RX-7'.
@@ -157,17 +157,17 @@ SP-170,Torque,Oil cooler pipe (front cover side / cooler side),40-50 N-m (29-36 
 SP-171,Torque,Ring gear bolts,75-85 N-m (51-61 ft-lb),,"S-002,S-003",S-002 p.9-21; S-003 T:7,primary,,,,
 SP-172,Torque,Pinion (companion flange) nut,"130 N-m (94 ft-lb) then tighten to set preload, max 180 N-m (130 ft-lb)",,"S-002,S-003","S-002 p.9-19; S-003 T:7 (13-18 m-kg, 94-130 ft-lb)",primary,,,,Collapsible spacer - replace if 180 N-m exceeded.
 SP-173,Torque,Propeller shaft yoke to axle companion flange,3.5-3.8 m-kg (25-27 ft-lb),,S-003,T:7,primary,,,,
-SP-174,Torque,Steering wheel nut,3.0-4.0 m-kg (22-29 ft-lb),,S-003,T:7,primary,,,,
+SP-174,Torque,Steering wheel nut,3.0-4.0 m-kg (22-29 ft-lb),,S-003,T:7,primary,,,other-car,
 SP-175,Torque,Pitman arm to sector shaft,15-18 m-kg (108-130 ft-lb),,S-003,T:7,primary,,,,
 SP-176,Torque,Tie rod / idler / pitman to centre link and knuckle arm,3.0-4.5 m-kg (22-33 ft-lb); tie-rod lock nut 7-8 m-kg (51-58 ft-lb),,S-003,T:7-8,primary,,,,
 SP-177,Torque,Steering gear housing / idler bracket to frame,4.4-5.5 m-kg (32-40 ft-lb),,S-003,T:7,primary,,,,
 SP-178,Torque,Suspension arm ball joint to knuckle arm,6-8 m-kg (43-58 ft-lb),,S-003,T:8,primary,,,,
 SP-179,Torque,Knuckle arm to strut,6.4-9.5 m-kg (46-69 ft-lb),,S-003,T:8,primary,,,,
 SP-180,Torque,Tension rod to lower arm / to bracket,5.5-6.9 m-kg (40-50 ft-lb) / 11-15 m-kg (80-108 ft-lb),,S-003,T:8,primary,,,,1985 FSM p.13-12: tension rod nut 110-150 N-m (80-108 ft-lb) agrees.
-SP-181,Torque,Front stabilizer bar to lower arm,2.4-3.5 m-kg (17-25 ft-lb),,S-003,T:8,primary,,,,
+SP-181,Torque,Front stabilizer bar to lower arm,2.4-3.5 m-kg (17-25 ft-lb),,S-003,T:8,primary,,,other-car,
 SP-182,Torque,Rear upper / lower links and Watt link bracket,7.7-10.5 m-kg (56-76 ft-lb),,"S-003,S-002",S-003 T:8; S-002 p.13-15,primary,,,,Tighten with vehicle at ride height.
 SP-183,Torque,Rear shock absorber to axle / Watt link to axle,6.5-8.2 m-kg (47-59 ft-lb),,"S-003,S-002",S-003 T:8; S-002 p.13-14,primary,,,,
-SP-184,Torque,Brake tube union nut / flexible hose union,1.3-2.2 m-kg (9-16 ft-lb) / 2.2-2.7 m-kg (16-20 ft-lb),,S-003,T:8,primary,,,,
+SP-184,Torque,Brake tube union nut / flexible hose union,1.3-2.2 m-kg (9-16 ft-lb) / 2.2-2.7 m-kg (16-20 ft-lb),,S-003,T:8,primary,,,other-car,
 SP-185,Torque,"Standard bolts, 6T grade",8 mm 1.6-2.3 m-kg (12-17 ft-lb); 10 mm 3.2-4.7 (23-34); 12 mm 5.6-8.2 (41-59); 14 mm 7.7-10.5 (56-76),,S-003,T:8,primary,,,,Unless otherwise specified.
 SP-186,Torque,"Standard bolts, 8T grade",8 mm 1.8-2.7 m-kg (13-20 ft-lb); 10 mm 3.7-5.5 (27-40); 12 mm 6.4-9.5 (46-69); 14 mm 10.4-14.0 (75-101),,S-003,T:8,primary,,,,
 SP-187,Torque,Seat-belt anchor bolts,39-55 N-m (28.2-39.8 ft-lb),,S-002,p.0-25,primary,,,,
@@ -224,3 +224,19 @@ SP-237,Dimensions,"Underbody: rear frame basic holes (C), left to right",890 (35
 SP-238,Dimensions,"Underbody: rear upper arm fixing holes (F), left to right",1048 (41.26),mm (in),S-002,S-002 p.14-24 (Body checking dimensions),primary,suspension,,,
 SP-239,Dimensions,"Underbody: front frame basic hole (A) height, and fender fixing nut spacing","A 220 (8.66) above the datum line; front fender fixing nuts 1324 (52.13) apart; a third width on the same view, 1060 (41.73) - what it spans is not labelled, confirm on the page",mm (in),S-002,S-002 p.14-24 (Body checking dimensions),primary,body,,,
 SP-240,Dimensions,"Underbody: l1 (engine side, from the front frame basic hole), automatic","right 897 (35.32), left 910 (35.83); lR 26.85 (1.06), lL 32.5 (1.28)",mm (in),S-002,S-002 p.14-24 (Body checking dimensions),primary,body,,,"Manual: right 932, left 945; lR 24, lL 35. The page's side view shows l1 measured lengthwise from A; what point it ends on is not legible - confirm on the page"
+SP-241,Engine,Oil pressure at idle,70-180 (10-26),kPa (psi),S-038,S-038 T:2,primary,engine,PT001,,
+SP-242,Engine,Oil pressure control valve (front cover) operating pressure,1100 (156),kPa (psi),S-038,S-038 T:2,primary,engine,PT001,,Pressure regulator valve (rear housing) 500 kPa (71.1 psi) at 3000 rpm; oil filter relief valve opens 80-120 kPa (11-17 psi).
+SP-243,Engine,Oil metering pump delivery,2.0-2.4 cc per 6 min at 2000 rpm,,S-038,S-038 T:2,primary,engine,PT002,,Factory design: the metering pump feeds the carburettor. On this car the carburettor is gone and the pump is disconnected - the engine runs on premix.
+SP-244,Engine,Eccentric shaft to alternator pulley ratio,1 : 2.08,,S-038,S-038 T:3,primary,engine,PT001,,Alternator rpm at a 750 rpm idle is about 1560.
+SP-245,Charging,Alternator,"12 V 50 A, 12 poles; load test 36 A at 13.5 V below 2500 rpm; brush 18 mm, wear limit 8 mm",,S-038,S-038 T:3,primary,electrical,PT025,,Read the rating stamped on the car's own alternator before sizing the PMU charge input.
+SP-246,Ignition,"Ignition coil primary resistance, leading and trailing",0.9 +/-0.09 at 20 C (68 F); coil type LB-84 or FTC-3,ohm,S-038,S-038 T:3,primary,ignition,PT013,,
+SP-247,Ignition,Distributor air gap,0.5-0.9 (0.020-0.035),mm (in),S-038,S-038 T:3,primary,ignition,PT014,,
+SP-248,Ignition,"Centrifugal advance, leading and trailing",starts 0 deg at 500 rpm; maximum 10 deg at 1750 rpm,,S-038,S-038 T:3,primary,ignition,PT014,,The distributor turns at eccentric-shaft speed on a rotary.
+SP-249,Ignition,Vacuum advance,"leading: 0 deg at -100 mmHg, maximum 7.5 deg at -250 mmHg; trailing: 0 deg at -100 mmHg, maximum 15 deg at -400 mmHg",,S-038,S-038 T:3,primary,ignition,PT014,,
+SP-250,Cooling,Cooling fan,"410 mm (16.1 in), 7 blades; fan drive below 800 rpm at 4200 engine rpm",,S-038,S-038 T:2,primary,cooling,,,Water pump pulley ratio 1 : 1.18 (T:2).
+SP-251,Transmission,Torque converter stall speed,2350-2600 after break-in (2300-2550 during break-in),rpm,S-038,S-038 T:4,primary,transmission,PT054,,
+SP-252,Steering,Steering gear oil,"API GL-4 SAE 90, 190 cc (0.31 US qt)",,S-038,S-038 T:6,primary,steering,PT053,,
+SP-253,Brakes,Parking brake lever travel,6-8 notches at 100 N (22 lb),,S-038,S-038 T:6,primary,brakes,,,
+SP-254,Torque,Steering wheel nut,40-50 N-m (29-36 ft-lb),,S-038,S-038 T:7,primary,,,,
+SP-255,Torque,Front stabilizer bar to suspension lower arm,12-18 N-m (9-13 ft-lb),,S-038,S-038 T:8,primary,,,,
+SP-256,Torque,Brake tube union nut / flexible hose union,13-22 N-m (9-16 ft-lb) / 25-35 N-m (18-25 ft-lb),,S-038,S-038 T:8,primary,,,,

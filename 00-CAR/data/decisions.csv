@@ -75,3 +75,21 @@ Two of those wait on the VIN (00-CAR vehicle row `vin`, not yet read): the '82 h
 **Correction to D-421.** Its body says 20 parts are placed; the count is 18 (7 by the models, 11 at the wheel centres).
 
 **Consequences.** 00-CAR `_schema` (`parts.oem_no`, `parts.catalogue`) and `parts`: oem_no and catalogue on 40 rows, support on 55, link on 18."
+D-423,body,The 1982 workshop manual's technical data is the car's own; 16 specs change to it,2026-09-25,standing,,,,,"# The 1982 workshop manual's technical data is the car's own; 16 specs change to it
+
+*2026-09-25 - Camden, in chat; found and checked by the agent*
+
+**Decision.**
+- **S-038, the 1982 RX-7 Workshop Manual Section T (Technical Data, US)**, is this car's own model year and is the primary source for every figure it gives. Until now the record took those figures from the 1980 (S-003) and 1985 (S-002) manuals.
+- **16 specs** where the 1982 figure differs get a new row from S-038 (SP-241 to SP-256), and the 1980/1985 row they replace is marked `applies=other-car`, so the Manual holds it back and it is kept: oil pressure at idle (70-180 kPa, was 90-270), the front-cover pressure control valve (1100 kPa, was 900), the metering pump (2.0-2.4 cc), the alternator (50 A, load test 36 A; pulley ratio 1 : 2.08, was 55 A and 1 : 1.82), the coils (0.9 ohm, was 1.35), the distributor air gap (0.5-0.9 mm, was 0.2-0.6), both advance curves, the fan (410 mm, 7 blades, was 390 x 8), the stall speed (2350-2600 after break-in), the steering gear oil (190 cc, was 290/325), the parking brake (6-8 notches at 100 N, was 3-7), and three torques: steering wheel nut 40-50 N-m (was 30-40), stabilizer bar to lower arm 12-18 N-m (was 24-35), flexible hose union 25-35 N-m (was 22-27).
+- **35 new sources**, S-038 to S-072: the 1981 and 1983 Section T, the 1983 wiring diagram, the Nikki carburettor manuals, 1980 FSM sections, the 1985 body shop manual and bulletins, Yamamoto's ""Rotary Engine"", the NHTSA recalls, complaints and VIN decoder, the paint code (Sunbeam Silver Metallic, K3), community references, books and videos. The free documents are in `01-REFERENCE/model/library/docs/`, out of git.
+- **Block CAR.03** asks about the steering idler-arm recall, NHTSA 85V108000 (1981-83 RX-7): nothing in the record says whether it was done.
+
+**His words.**
+> now scour all other things and ways you think we can represent information about this car. this should ait the model that is makeing the manual
+
+**How it was checked.** A research agent found the file and listed its figures against the record. Every figure changed here was then read by the agent that wrote this decision on the page itself (S-038 T:1 to T:8), not taken from the list. The scan carries no year on its pages; the year is the foxed.ca archive's label (S-012), and the 1981 and 1983 files from the same archive are different scans. T:1 also prints the 12A rotor housing width as 70 mm, which the combined model derived from the displacement (D-418: 70.02 mm).
+
+**Left as they are, on purpose.** Length and ground clearance: S-038 T:7 gives 4285 mm (169 in) and 160 mm, the US brochure (S-004) 170.1 in and 5.7 in. The brochure is the US-market document for the 1982 car with its 5 mph bumpers, so SP-133 and SP-136 stay; the difference is here for the next reader. SP-080 (50 A, an enthusiast chart, unverified) stays held back; SP-245 now carries the factory 50 A.
+
+**Consequences.** 00-CAR `specs`: SP-241 to SP-256 added; SP-019, SP-021, SP-024, SP-026, SP-043, SP-045, SP-046, SP-047, SP-054, SP-079, SP-095, SP-111, SP-121, SP-174, SP-181, SP-184 set `applies=other-car`. `blocks`: CAR.03. 01-REFERENCE `sources`: S-038 to S-072; `_schema`: `sources.format` gains json and jpg."
