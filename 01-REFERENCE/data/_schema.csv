@@ -25,3 +25,29 @@ inbox,text,text,no,,"his words, verbatim"
 inbox,context,text,no,,"the key points of a Discuss chat, carried into the decision with his words (D-406)"
 inbox,device,enum(desktop|phone),yes,,vocabulary owned by tools/rx7.py
 inbox,at,datetime,yes,,when he saved it
+cad,id,key,yes,,"the manifest slug: subject, site and author"
+cad,category,enum(body|parts|rotary|swap|electrical),yes,,which search found it
+cad,title,str,yes,,as the site titles it
+cad,subject,text,yes,,what physical thing it depicts
+cad,fits,enum(exact|close|different),yes,,"exact: our car's generation or the part the record names; close: a sibling (SA, 13B for the 12A); different: reference only"
+cad,site,str,no,,
+cad,url,text,no,,
+cad,author,str,no,,
+cad,licence,text,no,,verbatim as the site states it
+cad,format,str,no,,
+cad,obtained,bool,yes,,yes: the file is on this PC under local_path
+cad,login,bool,yes,,yes: the site needs an account to download it - Camden can fetch it by hand
+cad,local_path,str,no,,relative to the tree root; out of git
+cad,size_mm,text,no,,"the file's bounding box in mm as stored (not scaled to the real part - see scale); empty where its units could not be told"
+cad,scale,str,no,,"the model's scale to the real part, e.g. 1:1, 0.35, 1:24"
+cad,triangles,int,no,,
+cad,quality,int,no,,"1 crude to 5 accurate CAD, the finder's judgement"
+cad,detail,text,no,,what it has and what it leaves out
+cad,note,text,no,,"checks against the record, provenance, known errors"
+blend,id,key,yes,,the piece's object name in the combined model
+blend,piece,str,yes,,what it is
+blend,source,str,no,cad,"the cad row the geometry comes from; empty for a shape built from record figures alone (then fit names them)"
+blend,shown,bool,yes,,yes: visible in the combined model; no: kept as a hidden overlay
+blend,fit,text,yes,,"how it is scaled and placed, from which figures"
+blend,check,text,no,,the figure it is checked against and the error found
+blend,note,text,no,,

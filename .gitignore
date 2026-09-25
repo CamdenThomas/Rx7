@@ -100,3 +100,10 @@ keystore.properties
 01-REFERENCE/model/*.obj
 01-REFERENCE/model/*.glb
 01-REFERENCE/model/landmarks.json
+
+# The free CAD library (01-REFERENCE/model/library): every downloaded model stays on this PC. Their
+# licences vary (CC-BY, CC-BY-NC, 3D Warehouse, manufacturer terms) and the repository is
+# public, so none is passed on. The catalogue is the record (01-REFERENCE cad table); the
+# scripts that read the files are committed. The blended model built from them is not.
+01-REFERENCE/model/library/
+01-REFERENCE/model/out/

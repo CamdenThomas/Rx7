@@ -15,3 +15,28 @@ D-366,Fluids and service,The oil metering pump is disconnected; the engine runs 
 **Still unknown.** The **ratio** isn't recorded anywhere. It's marked `confirm` in `intervals` premix and `mods` M-013. Camden knows it; it goes into those two rows the next time he says what he mixes. Also unknown is when the pump was disconnected (with the Weber, or after).
 
 **In the data.** `as_fitted` Engine; `mods` M-013 (new); `intervals` premix (new, every fill); `specs` SP-024's note (the factory design, and what this car does instead)."
+D-418,body,"The free CAD library, and one combined model of the FB built from it",2026-09-25,standing,,,,,"# The free CAD library, and one combined model of the FB built from it
+
+*2026-09-25 - Camden, in chat*
+
+**Decision.**
+- **Every free 3D model, scan and dimensioned drawing found** for the FB, its parts, the 12A and 13B, the LS/CD009 swap and the electrical project's parts is catalogued in `01-REFERENCE` table `cad`, one row each: 891 rows, 315 of them on this PC. The other 576 need an account (GrabCAD, Sketchfab, SnapEDA, Thingiverse through a browser) and keep their links, so he can fetch any of them by hand.
+- **The files live in `01-REFERENCE/model/library/`** beside the bought SA model (S-037), and stay out of git like it: the repository is public and the licences vary (CC-BY, CC-BY-NC, 3D Warehouse, manufacturer terms). `model/catalog.py` imports the finders' manifests into `cad`; once imported, the row is the fact's home.
+- **One combined model**, `01-REFERENCE/model/out/rx7-fb.blend` and `.glb`, is built by `model/blend.py` in one frame (mm, x right, y forward, z up, ground z = 0, front axle y = 0). Each piece is a `blend` row naming its source, its fit and the factory figure that checks it. Shown: the FB shell, wheels built from the specs, the 12A, the FB tail lamps. Hidden overlays: the SA body (detail) and an LS3 (the swap's envelope).
+- **The factory underbody figures on S-002 p.14-24** that could be checked by arithmetic are 00-CAR specs SP-234 to SP-240. The pairings on that page that could not be read without doubt are left on the page, not guessed.
+
+**His words.**
+> please do a verry thurrough search for free 3dCAD models of the FB rx7 and of its parts, or any of the parts listed in any of the projects, find any and all douplicates are okay for better overall design and verification. please mafe a folder for all these files, store any and every cad file, then please review and prossess them all into a blend of parts and details, mayne even get 13b or other similar parts for 3D reference. when you have found everything you can please process each to one true model and or fact sheed for the 3d representation of the car, then tell me what you found and how your picture of the car improved
+
+**Readings taken.**
+- **""A folder for all these files"".** `01-REFERENCE/model/library/`, not a new top-level folder: reference material belongs to 01-REFERENCE (R10), and `model/` already held the one 3D model. A folder named `cad/` was tried first and refused by `check`: the cad/ fence belongs to the KiCad boards.
+- **""Fact sheet"".** There are no pages (D-405). The fact sheet is the record: `cad` (what exists), `blend` (what the one model is made of, and how well each piece agrees with the factory), and SP-234 to SP-240.
+- **""One true model"".** Where two sources disagree, the factory figure wins, and every model is scaled or placed to it; the model's own error against the factory is written into `blend.check`. Nothing about the real car is measured from any model (R11). The 12A's position in the bay is an assumption, one line in `blend.py`, until the car is apart.
+- **Out of git.** The same reading as D-415: reversible by one line in `.gitignore`.
+
+**What the checks found.**
+- The free FB shell (3D Warehouse, ""1983 Mazda RX7""), scaled to the factory length, is 1682 mm wide without mirrors (factory 1669, +0.8 %) and its arches sit 2432 mm apart (factory wheelbase 2420, +0.5 %). Its right tail lamp is 480.1 mm long; an independent 1:1 scan of the real housing (Printables 993677) is 479.1 mm. Three independent agreements: the shell's proportions are right.
+- The 12A's housing width, 70.02 mm, is derived from its 573 cc per rotor (SP-010) on the shared 105 / 15 mm trochoid, never typed. The 13B model's housings are 80.0 mm (the 13B's own) and its rotor matches a separate full-size 13B rotor to 1 mm.
+- The bought SA model is 3.4 % wide at the tyre centres against the factory track.
+
+**Consequences.** `01-REFERENCE`: tables `cad` and `blend` (new), `model/catalog.py`, `model/blend.py`, `model/README.md`. `00-CAR`: specs SP-234 to SP-240. `.gitignore`: `model/library/` and `model/out/`. Nothing in the app changes: its 3D view still loads the SA (D-415); moving it to the FB shell is a separate choice."
