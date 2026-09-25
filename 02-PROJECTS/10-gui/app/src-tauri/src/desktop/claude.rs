@@ -13,6 +13,13 @@ use tauri::{AppHandle, Emitter, State};
 #[derive(Default)]
 pub struct Runs(Arc<Mutex<HashMap<String, Child>>>);
 
+impl Runs {
+    /// Whether any Claude Code process — a run or a chat — is alive in the tree.
+    pub fn live(&self) -> bool {
+        self.0.lock().map(|t| !t.is_empty()).unwrap_or(true)
+    }
+}
+
 const RUN_TOOLS: &[&str] = &[
     "Read", "Edit", "Write", "Glob", "Grep",
     "Bash(python3 tools/rx7.py:*)", "Bash(python tools/rx7.py:*)", "Bash(git:*)",

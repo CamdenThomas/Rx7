@@ -4,12 +4,16 @@
 //! which git refuses if it would touch a file being edited; with commits on both sides it
 //! rebases with the working tree stashed and restored. Nothing here force-pushes, amends or
 //! resets (CLAUDE.md §6.10).
+//!
+//! While Claude Code is at work in the tree, the app never pulls or pushes: a rebase under a
+//! run would stash and restore the files it is editing. An answer saved meanwhile is still
+//! committed at once; the run's own push carries it, or the sync after the run does.
 
-use super::{tool, Tree};
+use super::{claude::Runs, tool, Tree};
 use serde::Serialize;
 use std::path::{Path, PathBuf};
 use std::process::Command;
-use tauri::{AppHandle, Emitter, State};
+use tauri::{AppHandle, Emitter, Manager, State};
 
 #[derive(Serialize, Clone, Default)]
 pub struct SyncState {
@@ -86,9 +90,12 @@ pub async fn sync_state(tree: State<'_, Tree>) -> Result<SyncState, String> {
 }
 
 #[tauri::command]
-pub async fn sync(tree: State<'_, Tree>) -> Result<SyncState, String> {
+pub async fn sync(tree: State<'_, Tree>, runs: State<'_, Runs>) -> Result<SyncState, String> {
     let root = tree.root();
-    tauri::async_runtime::spawn_blocking(move || pull_and_push(&root)).await.map_err(|e| e.to_string())
+    let hold = runs.live();
+    tauri::async_runtime::spawn_blocking(move || if hold { state(&root) } else { pull_and_push(&root) })
+        .await
+        .map_err(|e| e.to_string())
 }
 
 #[tauri::command]
@@ -128,7 +135,7 @@ pub fn commit_path(root: &Path, path: &str, message: &str) -> Result<(), String>
 /// Push after a commit without holding the window; the app hears how it went.
 pub fn push_in_background(app: AppHandle, root: PathBuf) {
     std::thread::spawn(move || {
-        let s = pull_and_push(&root);
+        let s = if app.state::<Runs>().live() { state(&root) } else { pull_and_push(&root) };
         let _ = app.emit("sync", s);
     });
 }
