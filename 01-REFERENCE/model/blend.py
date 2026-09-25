@@ -59,6 +59,8 @@ SILVER = (0.46, 0.48, 0.50, 1.0)  # Sunbeam Silver as a linear base colour, as m
 PAINTED = ("CARROCERIA", "CAPOT", "PUERTAS", "TECHO", "PARAG_DEL", "PARAG_TRAS", "TAPAFAROS")
 APP_ART = os.path.join(ROOT, "02-PROJECTS", "10-gui", "app", "public", "car")
 GLASS = None  # set by fb_body()
+VIEWS = {}  # each app render's camera, filled by app_art()
+GROUPS = {}  # the FB shell's named groups (Spanish), kept by fb_body() for locations()
 APP_GLB = os.path.join(ROOT, "01-REFERENCE", "model", "rx7-fb.glb")
 LAMP_TARGET = []  # the FB body's own tail lamp meshes, filled by fb_body()
 
@@ -174,6 +176,8 @@ def fb_body():
     mirror_ids = {id(o) for o in meshes if under(o, "ESPEJOS")}
     panel_ids = {id(o) for o in meshes if any(under(o, w) for w in PAINTED)}
     glass_ids = {id(o) for o in meshes if under(o, "VIDRIOS")}
+    for g in ("RADIADOR", "TAPAFAROS", "LUCES_DEL", "ESPEJOS", "VIDRIOS", "PUERTAS", "CAPOT"):
+        GROUPS[g] = [o for o in meshes if under(o, g)]
     LAMP_TARGET[:] = [o for o in meshes if under(o, "LUCES_TRAS") or under(o, "LUZ_TRAS")]
     bake(objs)
     meshes = [o for o in bpy.data.objects if o in meshes]
@@ -531,6 +535,97 @@ def tail_lamps(body):
     return [o, left]
 
 
+
+# ---- locations for the Manual's "The car" view (D-421) ------------------------------------
+def _pts(objs):
+    return [o.matrix_world @ v.co for o in objs for v in o.data.vertices]
+
+
+def _box(a, b):
+    return [round(a.x), round(b.x), round(a.y), round(b.y), round(a.z), round(b.z)]
+
+
+def locations(body, engine):
+    """Where the models put each zone (a box) and some parts (points), in this file's frame,
+    mm. Every value says what it comes from; none is measured (R11). Written to
+    out/locations.json, and into 00-CAR zones.model_box_mm / parts.model_at_mm by
+    locate.py."""
+    bare = [o for o in body if o not in GROUPS.get("ESPEJOS", [])]
+    mn, mx = bounds(bare)
+    ws = [p for p in _pts(GROUPS["VIDRIOS"])]
+    ws_front = max(ws, key=lambda p: p.y)           # the windscreen's foot: the firewall line
+    glass_rear = min(ws, key=lambda p: p.y)         # the hatch glass's tail
+    rad_mn, rad_mx = bounds(GROUPS["RADIADOR"])
+    door_mn, door_mx = bounds(GROUPS["PUERTAS"])
+    hood_mn, hood_mx = bounds(GROUPS["CAPOT"])
+    hatch = [p for p in ws if p.y < door_mn.y - 100]  # the hatch glass: the glass behind the doors
+    belt = door_mx.z + 50                           # assumed: the dash top, 50 mm above the doors' top (frameless glass: the beltline)
+    rw = TYRE_D / 2
+    zones = {
+        "front": ([mn.x, rad_mn.y, 0], [mx.x, mx.y, hood_mx.z],
+                  "FB shell: from the radiator's back face (RADIADOR) to the nose"),
+        "engine_bay": ([-TRACK_F / 2 + 150, ws_front.y, 150], [TRACK_F / 2 - 150, rad_mn.y, hood_mx.z],
+                       "FB shell: windscreen foot (VIDRIOS) to the radiator (RADIADOR); inside the tyres (SP-132), 150 mm up"),
+        "dash": ([door_mn.x, ws_front.y - 450, 450], [door_mx.x, ws_front.y, belt],
+                 "assumed: 450 mm behind the windscreen foot, 450 mm up to 50 mm above the beltline (PUERTAS top)"),
+        "cabin": ([door_mn.x, door_mn.y - 250, 150], [door_mx.x, ws_front.y - 450, mx.z],
+                  "FB shell: behind the dash to 250 mm past the doors' rear edge (PUERTAS)"),
+        "cargo": ([door_mn.x, glass_rear.y, 400], [door_mx.x, door_mn.y - 250, glass_rear.z + 250],
+                  "FB shell: behind the cabin to the hatch glass's tail (VIDRIOS)"),
+        "rear": ([mn.x, mn.y, 0], [mx.x, glass_rear.y, glass_rear.z],
+                 "FB shell: the hatch glass's tail to the rear bumper"),
+        "underbody": ([mn.x, mn.y, 0], [mx.x, mx.y, 250],
+                      "assumed: the footprint, ground to 250 mm"),
+    }
+    out_z = {}
+    for k, (a, b, why) in zones.items():
+        out_z[k] = {"boxes": [[round(a[0]), round(b[0]), round(a[1]), round(b[1]), round(a[2]), round(b[2])]], "from": why}
+    doors = []
+    for side in (-1, 1):
+        ps = [p for p in _pts(GROUPS["PUERTAS"]) if p.x * side > 0]
+        a = mathutils.Vector([min(p[i] for p in ps) for i in range(3)])
+        b = mathutils.Vector([max(p[i] for p in ps) for i in range(3)])
+        doors.append(_box(a, b))
+    out_z["doors"] = {"boxes": doors, "from": "FB shell: each door (PUERTAS), left and right"}
+    corners = []
+    for x, y in ((-TRACK_F / 2, 0), (TRACK_F / 2, 0), (-TRACK_R / 2, -WHEELBASE), (TRACK_R / 2, -WHEELBASE)):
+        corners.append([round(x - 150), round(x + 150), round(y - rw - 20), round(y + rw + 20), 0, round(TYRE_D + 40)])
+    out_z["corners"] = {"boxes": corners, "from": "specs: wheel centres from SP-131 and SP-132, tyre from SP-128, 150 mm either side"}
+
+    def c(objs):
+        a, b = bounds(objs)
+        return [round(v) for v in (a + b) / 2]
+
+    def sides(objs):
+        out = []
+        for side in (-1, 1):
+            ps = [p for p in _pts(objs) if p.x * side > 0]
+            out.append([round(sum(p[i] for p in ps) / len(ps)) for i in range(3)])
+        return out
+
+    wf = [[round(-TRACK_F / 2), 0, round(rw)], [round(TRACK_F / 2), 0, round(rw)]]
+    wr = [[round(-TRACK_R / 2), round(-WHEELBASE), round(rw)], [round(TRACK_R / 2), round(-WHEELBASE), round(rw)]]
+    spec = "specs: wheel centres from SP-131, SP-132, SP-128"
+    parts = {
+        "PT001": ([c(engine)], "blend: engine_12a, its assumed place (blend.py ENGINE_*)"),
+        "PT020": ([c(GROUPS["RADIADOR"])], "FB shell: RADIADOR"),
+        "PT032": (sides(GROUPS["ESPEJOS"]), "FB shell: ESPEJOS, left and right"),
+        "PT033": (sides([o for o in GROUPS["TAPAFAROS"] if bounds([o])[0].y > 0]), "FB shell: the front pop-up covers (TAPAFAROS); the motor is under each"),
+        "PT035": (sides([o for o in GROUPS["TAPAFAROS"] if bounds([o])[0].y > 0]), "FB shell: the front pop-up covers (TAPAFAROS)"),
+        "PT037": ([[0] + [round(sum(p[i] for p in hatch) / len(hatch)) for i in (1, 2)]], "FB shell: the middle of the hatch glass (VIDRIOS behind the doors)"),
+        "PT055": ([[0, round(-WHEELBASE), round(rw)]], "specs: the rear axle line, SP-131"),
+    }
+    for pid in ("PT042", "PT043", "PT044", "PT045", "PT050", "PT056"):
+        parts[pid] = (wf, spec + ", front")
+    for pid in ("PT046", "PT047", "PT048", "PT049", "PT057"):
+        parts[pid] = (wr, spec + ", rear")
+    out_p = {k: {"points": v[0], "from": v[1]} for k, v in parts.items()}
+    with open(os.path.join(OUT, "locations.json"), "w") as fh:
+        json.dump({"frame": "mm; x right, y forward, z up; ground z = 0; front axle y = 0 (model/README.md)",
+                   "zones": out_z, "parts": out_p}, fh, indent=1, sort_keys=True)
+    CHECKS["locations.firewall_y"] = round(ws_front.y)
+
+
 # ---- the app: its renders and its 3D view (D-420) ---------------------------------------
 def app_frame():
     """The app's 3D view frames the car in centimetres, centred on the ground (CarModel.svelte)."""
@@ -581,6 +676,12 @@ def app_art(objs):
         sc.render.image_settings.file_format = "WEBP"
         sc.render.image_settings.quality = 88
         img.save_render(os.path.join(APP_ART, f"{name}.webp"))
+        bpy.context.view_layer.update()
+        dg = bpy.context.evaluated_depsgraph_get()
+        proj = cam.calc_matrix_camera(dg, x=sc.render.resolution_x, y=sc.render.resolution_y)
+        m = proj @ cam.matrix_world.inverted() @ app_frame()
+        VIEWS[name] = {"width": sc.render.resolution_x, "height": sc.render.resolution_y,
+                       "matrix": [[round(v, 9) for v in row] for row in m]}
         sc.render.image_settings.file_format = "PNG"
     for o in lights + [cam]:
         bpy.data.objects.remove(o)
@@ -648,9 +749,10 @@ def main():
     body = fb_body()
     sa_overlay()
     wheels()
-    engine_12a()
+    engine = engine_12a()
     engine_ls3()
     tail_lamps(body)
+    locations(body, engine)
     for v in ("side", "top", "front", "rear", "three"):
         render("rx7-fb", v)
     cols = bpy.data.collections
@@ -686,6 +788,10 @@ def main():
         for c in hidden:
             c.hide_render = True
         in_frame(app, app_frame(), app_art)
+        with open(os.path.join(APP_ART, "views.json"), "w") as fh:
+            json.dump({"about": "clip = matrix @ [x, y, z, 1] for a point in mm (01-REFERENCE/model/README.md frame); "
+                       "pixel x = (clip.x / clip.w + 1) / 2 * width, y = (1 - clip.y / clip.w) / 2 * height (D-421)",
+                       "views": VIEWS}, fh, indent=1, sort_keys=True)
         thin = []
         for o in app:
             if len(o.data.polygons) > 50000:  # the lamp scans: a million triangles each

@@ -46,10 +46,14 @@ download; its `url` is kept so it can be fetched by hand into `library/<category
 | `out/rx7-fb.blend`, `.glb` | no | the combined model: one collection per `blend` row |
 | `rx7-fb.glb` | no | the app's 3D view (D-420): the FB body, the SA's wheels and the tail-lamp scans, in cm, centred |
 | `out/checks.json`, `*.png` | no | every check against the factory figures, and the renders |
+| `out/locations.json` | no | a box per zone and a point per part the models can place (D-421) |
+| `locate.py` | yes | writes those into 00-CAR `zones.model_box_mm` and `parts.model_at_mm` |
+| `10-gui/app/public/car/views.json` | yes | each app render's camera: frame (mm) to picture (D-421) |
 
 ```
 python3 01-REFERENCE/model/catalog.py --write              # after a new search
-blender -b --factory-startup -P 01-REFERENCE/model/blend.py  # about ten seconds
+blender -b --factory-startup -P 01-REFERENCE/model/blend.py  # about a minute (the app renders)
+python3 01-REFERENCE/model/locate.py --write                  # zone boxes and part points into 00-CAR
 ```
 
 The combined model's frame: millimetres, x to the car's right, y forward, z up, ground at

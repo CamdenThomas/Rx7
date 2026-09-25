@@ -1,10 +1,10 @@
-id,name,order,note
-engine_bay,Engine bay,1,
-front,Front end,2,
-dash,Dash and console,3,
-cabin,Cabin,4,
-doors,Doors,5,
-cargo,Hatch and cargo area,6,
-rear,Rear end,7,
-underbody,Underbody,8,
-corners,Wheels and hubs,9,
+id,name,order,note,model_box_mm,model_from
+engine_bay,Engine bay,1,,-560 560 -642 548 150 862,"FB shell: windscreen foot (VIDRIOS) to the radiator (RADIADOR); inside the tyres (SP-132), 150 mm up"
+front,Front end,2,,-841 841 548 928 0 862,FB shell: from the radiator's back face (RADIADOR) to the nose
+dash,Dash and console,3,,-829 829 -1092 -642 450 910,"assumed: 450 mm behind the windscreen foot, 450 mm up to 50 mm above the beltline (PUERTAS top)"
+cabin,Cabin,4,,-829 829 -2197 -1092 150 1260,FB shell: behind the dash to 250 mm past the doors' rear edge (PUERTAS)
+doors,Doors,5,,-829 -702 -1947 -709 287 860; 702 829 -1947 -708 287 860,"FB shell: each door (PUERTAS), left and right"
+cargo,Hatch and cargo area,6,,-829 829 -3063 -2197 400 1095,FB shell: behind the cabin to the hatch glass's tail (VIDRIOS)
+rear,Rear end,7,,-841 841 -3392 -3063 0 845,FB shell: the hatch glass's tail to the rear bumper
+underbody,Underbody,8,,-841 841 -3392 928 0 250,"assumed: the footprint, ground to 250 mm"
+corners,Wheels and hubs,9,,-860 -560 -315 315 0 629; 560 860 -315 315 0 629; -850 -550 -2735 -2105 0 629; 550 850 -2735 -2105 0 629,"specs: wheel centres from SP-131 and SP-132, tyre from SP-128, 150 mm either side"

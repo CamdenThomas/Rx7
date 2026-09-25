@@ -338,3 +338,23 @@ D-420,,"The app's 3D view and its renders show the FB, not the 1978 SA",2026-09-
 - **Low-poly.** The FB shell is about 13k triangles and has no interior; up close it is faceted. It is the right car at the right size, which the SA was not.
 
 **Consequences.** `02-PROJECTS/10-gui/app`: `Home.svelte` (`MODEL`), `CarModel.svelte` (its header and caveat), `public/car/side.webp` and `threequarter.webp`. `01-REFERENCE/model`: `blend.py` (piece `wheels_sa`, the `carpaint` and glass materials, the app renders and `rx7-fb.glb`), `build.py` (`--renders`), `README.md`. `01-REFERENCE` blend: row `wheels_sa` added; `wheels` (spec-built) is now hidden, kept as the check."
+D-421,,"Where things are: the 3D model places each zone and some parts, and each app render carries its camera",2026-09-25,standing,,,,D-417,"# Where things are: the 3D model places each zone and some parts, and each app render carries its camera
+
+*2026-09-25 - Camden, in chat*
+
+**Decision.**
+- **00-CAR `zones.model_box_mm`** holds a box (x0 x1 y0 y1 z0 z1, mm) for each of the nine zones, and **`parts.model_at_mm`** a point for each part a model or a factory figure can place (20 of 57 today), each with **`model_from`** saying what it comes from. The frame is the combined model's (01-REFERENCE/model/README.md): x right, y forward, z up, ground z = 0, front axle y = 0.
+- **`01-REFERENCE/model/blend.py`** computes them (`out/locations.json`) from the FB shell's named groups (radiator, pop-up covers, mirrors, doors, glass, bonnet), the 12A's assumed place, and the factory wheelbase, track and tyre. **`model/locate.py`** writes them into 00-CAR and owns those four columns.
+- **`app/public/car/views.json`** holds, for each app render (side, threequarter), the 4 x 4 matrix from that frame to the picture. With it the Manual can pin any zone or part on the renders, on the phone too, where the 3D model is not available.
+
+**His words.**
+> switch the app's 3d view to the FB body, now scour all other things and ways you think we can represent information about this car. this should ait the model that is makeing the manual
+
+**Readings taken.**
+- **""Aid the model that is making the Manual"".** D-417 already rules the 3D view as the Manual's location map (""The car"", work row MD1: ""the zones on the 3D renders, each opening its parts""). This gives MD1 its data, so the app screen is a query and holds no fact of its own.
+- **Estimates, named as such.** Like `routes.model_ft` (D-416), the column names say `model_`: none of these is measured (R11), and each row says what it comes from. The zone edges that no model gives (the dash's depth, the underbody's height) are one assumption each in `blend.py`. A measured position, when there is one, goes in its own column and wins.
+- **Parts left empty.** A part no model shows (the oil filter, the coils, the blower) has no point and is found by its zone. The FB shell has no engine bay, so every engine-bay part but the engine itself waits for real CAD or a measurement.
+
+**Checked.** Every part point projected through `views.json` lands on its part in both renders (mirrors on the mirrors, pads and hubs on the wheel centres, the radiator behind the grille). `rx7.py export` carries the new columns into `manual.zones` and `manual.parts`; `selftest` passes.
+
+**Consequences.** 00-CAR `_schema`: `zones.model_box_mm`, `zones.model_from`, `parts.model_at_mm`, `parts.model_from`; the rows. `01-REFERENCE/model`: `blend.py` (`locations`, the render cameras), `locate.py` (new), `README.md`. `10-gui/app/public/car/views.json` (new) and the two renders."

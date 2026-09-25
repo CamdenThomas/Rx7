@@ -92,6 +92,8 @@ zones,id,key,yes,,lowercase slug
 zones,name,str,yes,,
 zones,order,int,no,,
 zones,note,text,no,,
+zones,model_box_mm,text,no,,"where the combined 3D model puts it: x0 x1 y0 y1 z0 z1 in mm, several boxes split by ';' (frame: 01-REFERENCE/model/README.md). A model estimate, never a measurement; written by 01-REFERENCE/model/locate.py"
+zones,model_from,text,no,,what the box comes from
 parts,id,key,yes,,"PT### - never a factory component code, which this car's diagrams use (B-12, G-14)"
 parts,name,str,yes,,
 parts,system,str,yes,systems,
@@ -106,6 +108,8 @@ parts,support,text,no,,the maker's customer service: a phone number or a page
 parts,cad,str,no,,"its 3D model, a path in the tree"
 parts,photo,str,no,,a photo under 01-REFERENCE/photos
 parts,note,text,no,,what is true of it now; a value nobody has checked carries confirm and holds the row out of the Manual (R11)
+parts,model_at_mm,text,no,,"where the combined 3D model puts it: x y z in mm, one point per unit split by ';' (left before right). A model estimate, never a measurement; written by 01-REFERENCE/model/locate.py"
+parts,model_from,text,no,,what the point comes from
 drives,id,key,yes,,the inbox target it came from: drive-<when> or odo-<when>
 drives,date,date,yes,,
 drives,odometer,int,yes,,"the reading at the end of the drive, miles"
