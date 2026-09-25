@@ -10,6 +10,15 @@ import { makeRepo, startFakeGitHub } from './fake-github.mjs';
 
 const TREE = join(import.meta.dirname, '..', '..', '..', '..');
 const PORT = 5199;
+// The block comes from the fixture, a copy of the live record: a block he answers is deleted,
+// so one named by id breaks on the next run. A project's block, so the URL is #/p/<name>/…
+const fixture = JSON.parse(readFileSync(join(import.meta.dirname, '..', 'public', 'fixture', 'export.json'), 'utf8'));
+const areas: { path: string; name: string }[] = fixture.areas;
+const block: { area: string; id: string; title: string } = fixture.blocks.find((b: { area: string }) =>
+  areas.find((a) => a.name === b.area)?.path.startsWith('02-PROJECTS/'),
+);
+const AREA = areas.find((a) => a.name === block.area)?.path ?? '';
+const INBOX = `${AREA}/data/inbox/${block.id}~phone.csv`;
 const WORDS = 'Option (a), but keep the old key switch in a box — “just in case”.\nSecond line, 55.2 mm, µ ✓';
 
 test.describe('the phone', () => {
@@ -33,10 +42,10 @@ test.describe('the phone', () => {
       localStorage.clear();
       localStorage.setItem('rx7-phone:token', JSON.stringify('test-token'));
     });
-    await page.goto(url + '#/p/00-electrical/blocks/00.31');
+    await page.goto(url + `#/p/${block.area}/blocks/${block.id}`);
 
     // The record arrived and was read by the real rx7.py inside the page.
-    await expect(page.getByText('Pull the old harness while the car is apart', { exact: false }).first()).toBeVisible({ timeout: 60_000 });
+    await expect(page.getByText(block.title, { exact: false }).first()).toBeVisible({ timeout: 60_000 });
 
     // Offline — GitHub cannot be reached: the answer is kept on the phone. (The app's own files
     // are on the phone, so only the network to GitHub is cut.)
@@ -46,13 +55,13 @@ test.describe('the phone', () => {
       Object.defineProperty(navigator, 'onLine', { configurable: true, get: () => false });
       window.dispatchEvent(new Event('offline'));
     });
-    await page.getByRole('radio', { name: /Pull it while apart/ }).click();
+    await page.getByRole('radio').first().click();
     await page.getByPlaceholder(/Anything to add/).fill(WORDS);
     await page.getByRole('button', { name: 'Save answer' }).click();
     await expect(page.getByText(/Saved on this phone|Not saved/)).toBeVisible();
     await expect(page.getByText(/Saved on this phone/)).toBeVisible();
     await expect(page.getByText(/on this phone, sent at the next connection/)).toBeVisible();
-    expect(gh.exists('02-PROJECTS/00-electrical/data/inbox/00.31~phone.csv')).toBe(false);
+    expect(gh.exists(INBOX)).toBe(false);
 
     // It survives the app being closed and opened again while still offline.
     await page.reload();
@@ -61,11 +70,11 @@ test.describe('the phone', () => {
     // Back online: it is sent, as one commit holding exactly his words.
     await context.unroute(`http://localhost:${PORT}/**`, cut);
     await page.evaluate(() => window.dispatchEvent(new Event('online')));
-    await expect.poll(() => gh.exists('02-PROJECTS/00-electrical/data/inbox/00.31~phone.csv'), { timeout: 30_000 }).toBe(true);
-    const file = readFileSync(join(repo.dir, '02-PROJECTS/00-electrical/data/inbox/00.31~phone.csv'), 'utf8');
+    await expect.poll(() => gh.exists(INBOX), { timeout: 30_000 }).toBe(true);
+    const file = readFileSync(join(repo.dir, INBOX), 'utf8');
     expect(file).toContain('"Option (a), but keep the old key switch in a box — “just in case”.\nSecond line, 55.2 mm, µ ✓"');
-    expect(file.startsWith('id,target,kind,choice,text,context,device,at\n00.31~phone,00.31,block,a,')).toBe(true);
-    expect(repo.git('log', '-1', '--format=%s')).toBe('Camden answered 00.31 (phone)');
+    expect(file.startsWith(`id,target,kind,choice,text,context,device,at\n${block.id}~phone,${block.id},block,a,`)).toBe(true);
+    expect(repo.git('log', '-1', '--format=%s')).toBe(`Camden answered ${block.id} (phone)`);
 
     // The record is still valid with his answer in it.
     execFileSync('python3', [join(repo.dir, 'tools', 'rx7.py'), 'check'], { cwd: repo.dir });
