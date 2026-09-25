@@ -347,7 +347,7 @@ for you, what you can start today, money spent or left, the last activity, a pho
 
 **Default** Name, phase, a progress bar, "N waiting for you", and the last activity.
 **ANSWER:**
-
+id +default + icon
 ### 6.2 · A new project
 When you press "New project," what do you give it? Name, goal, which systems it touches, a
 rough budget? And then what happens: Claude opens the area and writes its first questions,
@@ -356,7 +356,7 @@ or an empty project waits for you?
 **Default** You give a name and one paragraph of goal. Claude opens the area, writes the
 opening blocks and a first work list, and you land on the project's page.
 **ANSWER:**
-
+default
 ### 6.3 · Inside a project: its pages
 These pages are proposed for each project: Blocks, Picks, TODO, Decisions, Run. Keep all,
 drop any, add any (Parts, Carts, Diagrams, Log, Budget, Photos)?
@@ -399,7 +399,7 @@ one helps?
 
 **Default** (c).
 **ANSWER:**
-
+c + skip to next question button
 ### 7.4 · Explain
 What should "Explain" do? Restate the block in plain words; show what each option would
 mean for the car; draw a picture; say what happens if you don't answer?
@@ -421,7 +421,7 @@ block's Why above your answer; the rest is thrown away.
 
 **Default** (a). Applying writes decisions, so you choose when.
 **ANSWER:**
-
+a
 ### 7.7 · Chat anywhere else
 Should there be a general "ask Claude about the car" chat anywhere else: on every page, in
 the Manual, per project?
@@ -462,7 +462,7 @@ only read it?
 
 **Default** A "Tell Claude what I did" box per row; Claude records it.
 **ANSWER:**
-
+ case by case, some may just be a check like buy part, some will have a text box for entering a value, others may have a dropdown for a multiple chice decition, maybe not all but a way to represent each and respont inline eficently
 ### 8.3 · Decisions
 Just searchable and grouped, or also a "why is it like this?" view that walks back through
 the decisions behind something?
@@ -477,7 +477,8 @@ you watch Claude work live, or just get the report?
 
 **Default** Apply answers, plan, review and parts round, with a live feed you can collapse.
 **ANSWER:**
-
+  each page with a run function should have an apply button at the top, and alist of each thing
+i should be able to enter the list anywhere, and cycle forwards or backwards to nexk or next unanswered from each or return to the list
 ---
 
 ## 9 · Notifications
@@ -488,7 +489,7 @@ interval due? How: a phone push, an email, a badge in the app?
 
 **Default** A badge in the app only, for now.
 **ANSWER:**
-
+ no notifications nessisary
 ---
 
 ## 10 · Git and safety
@@ -512,8 +513,7 @@ keep facts outside the record, never touch the Windows drive. Add your own.
 If it's ever reachable from the phone (1.4), should it ask for a password or PIN?
 
 **Default** No. The private link (Tailscale) only lets your own devices in.
-**ANSWER:**
-
+**ANSWER: desktop/andriod app do not need a password
 ---
 
 ## 11 · Order and priorities
@@ -526,13 +526,13 @@ After the groundwork, which screen should be built first?
 
 **Default** (a), then the hub, then the Manual.
 **ANSWER:**
-
+ leave manual as a temp page with title and blurb we will talk and plan that more first
 ### 11.2 · Must-haves
 Which ideas on this sheet would make the app worthless without them? Which are nice-to-have?
 
 **Default** The Blocks page and search are must-haves; everything else is nice-to-have.
 **ANSWER:**
-
+ the app interface is actually remove the poor expensive md system we have, leave the code for data and facts represented only once and only in the most optimal structure for the gui app and your interaction. this should replace all the md files not supliment them, i use the project directory for code or kicad pcb or anything like that, no more endless md pages. when i choose parts or solve blocks that should factor to the data hub not to a million md files, the gui pulls from the one data hub to display that information in the best way
 ### 11.3 · Time
 Any date you'd like the first usable version by?
 
@@ -549,7 +549,7 @@ walkthrough, simple tools), or just work?
 
 **Default** Plain and commented, with a short "how it works" in the README.
 **ANSWER:**
-
+ code to perfection no clutterl, later we can cleanly go biti by bit for a full understanding
 ---
 
 ## 13 · Anything else
