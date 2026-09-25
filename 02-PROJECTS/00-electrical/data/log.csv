@@ -47,3 +47,4 @@ L-0035,2026-09-24,session,R3 D-408 CK14 CK15 CK16 E26,"R3 done (D-408): fixed la
 L-0036,2026-09-24,session,R4 D-409,"R4 done (D-409): a surprise takes no PMU channel - inputs via ICU + CAN (IC07, then DP-ICU-B 9), switches via the DCU panel, outputs share a channel behind a DCU select; V-081 and Q-115 need none; O4, O13/O14 and a second PMU are his rulings. rules spare-capacity extended"
 L-0037,2026-09-24,answers,00.30 D-410 00.32 R2 F23 N29 N87,"00.30 (a) applied as D-410: F23 wake supply, N87, dead-feed reads FAULT, IGNITION/FUEL_PUMP/HEAD_*/TAIL_PARK hold on fault; light switch feed raised as block 00.32; R2 gated on it"
 L-0038,2026-09-24,answers,00.31 D-411 E30,"00.31 (a) applied as D-411: factory harness pulled while apart after E29, boxed until shakedown; E30 rewritten"
+L-0039,2026-09-24,answers,F2 F8 P117,"F2 done (BT817 eval board ordered, P117 status ordered) and F8 done (KiCad steps 1-3), from the desktop"
