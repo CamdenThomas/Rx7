@@ -13,3 +13,22 @@ Boundary, read from the record before opening:
 - 02-engine: the engine bay is only bare while the engine is out for the LS swap; whether the bay is painted is block `03.04`.
 
 00-CAR `planned` gets P-009 naming this project."
+D-425,scope,"Beauty reshapes the body: spoiler, tail-light aperture, bumper and trim delete, maybe a scoop and a wide body; paint only; seamless",2026-09-25,standing,D-107,,,,"**03-beauty's scope grows to reshape the body, not only repair and paint it: a spoiler, a changed tail-light aperture, maybe a front scoop, the chunky black trim and bumpers removed, and a wide body if the wheels and suspension need one. It is real paint, never a wrap. And the standard for every piece of body work is seamless: when it is done the car must look as if it was designed that way from day one.**
+
+His words (chat, 2026-09-25, verbatim): ""For this session we will be more chat based in remote controlled in, for this project I want to add a spoiler and change the tail light aperture dimensions maybe a front scoop and without a doubt removing the chunky black trim and bumper, tdb depending on wheel choice and suspension finish I might need a wide body too, I want it to be actually painted not a wrap, and I want all my body work to be completely seamless when it's done it must look like it was designed like that from day one""
+
+Reading, per item:
+- **Paint, not a wrap** - a ruling. Option (d) of block `03.01` is withdrawn from it.
+- **Removing the chunky black trim and bumpers** - a ruling (""without a doubt""). What replaces the bumpers and which black parts go is taste: blocks `03.06` and `03.07`.
+- **Spoiler** - a ruling that there is one; its form is block `03.08`.
+- **Tail-light aperture dimensions change** - a ruling that the stock aperture is not kept; its new shape is block `03.09`.
+- **Front scoop** - ""maybe"": not ruled. Block `03.10` asks it.
+- **Wide body** - ""tbd depending on wheel choice and suspension finish"": not ruled, and it waits on a choice no project owns yet (00-CAR planned P-003, suspension, has no area). Block `03.11` asks where wheels and suspension are chosen.
+- **Seamless, as if designed that way from day one** - the project's quality bar. Every body change is moulded in: no visible bolt-on seams, rivets or overlap lines, gaps and panel lines consistent with the factory's, filled holes from removed trim invisible. It governs every design row in this project and every shop brief it writes.
+
+**What it supersedes.** D-107 (01-luxury, inherited) put the LED tail strip ""in the stock aperture"". That premise no longer holds, so D-107 is superseded by this decision on that point, and everything else it said carries forward unchanged: a thin LED strip per side, red for tail, brake and turn with a white reverse section inboard, at least 50 cm² of red per side for stop and rear turn (FMVSS 108; D-107 designed 55), and a driver PCB per housing taking tail, brake, turn and reverse as logic inputs. D-384 stands: the tail-light path is still chosen from measured numbers, now the new aperture's (03-beauty C08) as well as the stock one's (01-luxury V-063).
+
+**Consequences in the data.**
+- 03-beauty: work C06-C10 added; blocks `03.06`-`03.11` raised; `03.01` loses its wrap option; `03.03`, `03.04` and `03.05` carry the seamless bar and the new cutting and welding in their why.
+- 01-luxury: X-009 (raise the tail-light choice) now also waits on 03-beauty C08. Block `01.11` (the hidden detector) gains the finding that metallic paint on a body-colour bumper blocks 24 GHz radar (V-061's note) - the bumpers it would hide behind are now being replaced and painted.
+- 02-engine: a functional scoop would depend on the swap's hood clearance (DS01); C09 waits on it only if block `03.10` asks for one."
