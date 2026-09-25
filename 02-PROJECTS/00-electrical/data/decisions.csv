@@ -1064,3 +1064,19 @@ Consequences in the data:
 - migration: unchanged; its order is now the test order within the one stretch.
 - R1 done by this ruling.
 - Supersedes nothing: the old cutover plan was never ruled, it was carried from the archived INSTALL.md by E3 (D-372)."
+D-416,,"Route lengths estimated from the 3D body go in their own column, model_ft, and are never cut to",2026-09-24,standing,,,,D-202,"# Route lengths estimated from the 3D body go in their own column, model_ft, and are never cut to
+
+*2026-09-24 - Camden, in chat (""please do 1-3 with 3d model""; use 3 is ""rough harness lengths"")*
+
+**Decision.**
+- `routes` gets a column **`model_ft`**: a planning estimate for each route whose ends are on the modelled body. `01-REFERENCE/model/estimate.py` computes it from the 3D body (01-REFERENCE S-037) and writes it through `rx7.py set`.
+- **`ft` is unchanged.** It stays the length measured on the car at M-2, and the wire schedule still derives only from `ft` (D-202: cut length is 1.5 x ft). Nothing is bought or cut to `model_ft`, and no check or cart reads it.
+- **Estimated:** RT06, RT07, RT08, RT15, RT16, RT18, RT19 and RT20. **Not estimated:** the engine-bay routes RT01 to RT05, the dash routes RT10 to RT14, RT09, the tank run RT17 and the tunnel run RT21. The model has no engine bay, no dash internals, no floor pan and no tank, and a number made up there would be a guess dressed as a figure.
+
+**Method, and why each estimate is rough.**
+- The length is taxicab distance along the body's axes between points, times 1.15 for bends and tie-downs. A harness follows panels, not straight lines.
+- **The node positions are assumed.** Nothing in the record places the dash post, nose splice, rear node, sill node or cowl grommet yet. The assumptions are in `estimate.py`, one line each, and moving one moves every route through it.
+- **The body is a 1978 SA made by an artist,** checked only for overall size (length within 0.4 %, wheelbase within 1 %). The FB's front and rear ends differ, which moves the lamp endpoints of RT07, RT08 and RT16 by an unknown amount.
+- Expect the estimates to be off by 25 % or more either way. Their use is to see which routes are long and to sanity-check a measured `ft` at M-2. A measurement that is far from its estimate is worth a second look, but the measurement wins (R11).
+
+**Why this is small (§3).** It adds a column and rows, costs nothing, and changes nothing that is bought, cut or wired. Deleting the column undoes it."

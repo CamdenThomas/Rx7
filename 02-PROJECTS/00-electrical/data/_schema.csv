@@ -203,6 +203,7 @@ routes,from_node,str,no,,
 routes,to_node,str,no,,
 routes,via,str,no,,the grommet or path the tape follows
 routes,ft,num,no,,"measured route length, feet - blank until M-2; the cut length is 1.5x this (D-202)"
+routes,model_ft,num,no,,"planning estimate from the 3D body (01-REFERENCE S-037, model/estimate.py) with assumed node positions - never a cut length, never read by the wire schedule; ft is the measured figure (D-416)"
 routes,note,text,no,,
 dcu_channels,id,key,yes,,
 dcu_channels,kind,enum(bus|input|output|power|sensor),no,,
