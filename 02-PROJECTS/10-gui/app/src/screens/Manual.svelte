@@ -6,6 +6,7 @@
 -->
 <script lang="ts">
   import { Gauge, Route as RouteIcon } from '@lucide/svelte';
+  import AskSelection from '../components/AskSelection.svelte';
   import DriveDialog from '../components/DriveDialog.svelte';
   import State from './manual/State.svelte';
   import Systems from './manual/Systems.svelte';
@@ -29,6 +30,7 @@
   const ODO_FROM: Record<string, string> = { drive: 'a logged drive', set: 'a Set odo', service: 'the service log', vehicle: 'an undated note' };
 
   let dialog = $state<'drive' | 'odo' | null>(null);
+  let body = $state<HTMLElement>();
 
   const TABS: ManualPage[] = ['state', 'systems', 'specs', 'service'];
   const on = (t: ManualPage) => (page === 'part' ? t === 'systems' : page === t);
@@ -77,7 +79,7 @@
       {/each}
     </nav>
 
-    <div class="content">
+    <div class="content" bind:this={body}>
       {#if page === 'state'}
         <State {m} />
       {:else if page === 'systems'}
@@ -90,6 +92,7 @@
         <Service {m} />
       {/if}
     </div>
+    <AskSelection within={body} />
   </div>
   {#if dialog}<DriveDialog mode={dialog} onclose={() => (dialog = null)} />{/if}
 {/if}

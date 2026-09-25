@@ -20,6 +20,6 @@ MA2,MA,"The Manual - M-a: the spine, Car state, Specs, Service","rx7.py: the Man
 MA3,MA,"The Manual - M-a: the spine, Car state, Specs, Service","The app: the Manual's home (Car state), Specs and Service screens, and the Log drive / Set odo buttons",agent,done,MA2,D-417,,,
 MA4,MA,"The Manual - M-a: the spine, Car state, Specs, Service",Read the odometer and press Set odo in the Manual,camden,open,MA3 F1,D-417. The first real reading: the Manual's mileage is 153000 of unknown date until then,,,
 MB1,MB,"The Manual - M-b: Systems, part pages, popups","Systems view, a page for each part, and a preview popup on every part name",agent,done,MA3,D-417,,,
-MC1,MC,The Manual - M-c: Ask from a selection,Select any words in the Manual and ask Claude about exactly them,agent,open,MB1,D-417,,,
+MC1,MC,The Manual - M-c: Ask from a selection,Select any words in the Manual and ask Claude about exactly them,agent,done,MB1,D-417,,,
 MD1,MD,The Manual - M-d: Diagrams and The car,"Diagrams grouped by system, and The car: the zones on the 3D renders, each opening its parts",agent,open,MB1,D-417,,,
 ME1,ME,The Manual - M-e: saved queries,"Computed answers saved as presets (e.g. total 12 AWG end to end), once the harness folds into 00-CAR",agent,open,MC1 00-electrical:E35,"D-417. Most of the questions he gave (4.2) are about the new harness, which reaches 00-CAR only when it is in the car",,,

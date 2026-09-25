@@ -66,6 +66,21 @@ test('the Manual: systems lead to a system, and a part name to its page', async 
   await expect(page.locator('nav').getByRole('link', { name, exact: true }).first()).toBeVisible();
 });
 
+test('the Manual: select words and ask Claude about exactly them', async ({ page, isMobile }) => {
+  test.skip(isMobile, 'the chat is on the desktop');
+  await open(page, '#/manual/specs');
+  const words = (await page.locator('.row .item').first().evaluate((el) => {
+    const r = document.createRange();
+    r.selectNodeContents(el.firstChild as Node);
+    const sel = window.getSelection() as Selection;
+    sel.removeAllRanges();
+    sel.addRange(r);
+    return sel.toString();
+  })).trim();
+  await page.getByRole('button', { name: 'Ask about this' }).click();
+  await expect(page.getByLabel('Your question')).toHaveValue(new RegExp(words.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+});
+
 test('a block is answered with an option and words, kept, changed and withdrawn', async ({ page }) => {
   await open(page, blockUrl(pair.first.id));
   await page.getByRole('radio').first().click();
