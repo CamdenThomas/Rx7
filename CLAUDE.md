@@ -80,6 +80,15 @@ computed from the record every time it is shown. The app keeps no fact of its ow
 the record only through `rx7.py export` (JSON), and writes only his answers, only through
 `rx7.py answer` (or, on the phone, the same function). Nothing in it gates a commit.
 
+**The Manual (D-417)** is the app's view of `00-CAR` as the car is now. `rx7.py export`
+computes it (`manual`). It shows only backed facts: a row still saying `confirm` in a shown
+cell, an `unverified` spec, or a spec or interval whose `applies` is `other-car` is held back
+and listed with the reason. `replaced` and `not-fitted` rows are not facts about the car now,
+and are neither shown nor listed. So an unchecked value keeps its `confirm` (R11), and a
+factory figure for a part that has gone is marked `applies=replaced`, never deleted. A part's
+fitted date is read from the `service` visit whose `fitted` names it, and the odometer is read
+from the newest `drives` or `service` reading. Neither is ever typed.
+
 **Files that stay files.** This one. `02-PROJECTS/10-gui/README.md`, where the app's design
 is pitched, at his request. Code and drawings with the READMEs that belong to them: the
 firmware, the KiCad boards, the tools, the app. The reference write-ups in `01-REFERENCE`
@@ -316,7 +325,8 @@ Each answer is a row in the project's `inbox`, saved as its own file
 `data/inbox/<target>~<device>.csv`, and it waits there until he presses Apply, the desktop
 app's auto-apply starts the run (90 seconds after his last answer, D-413), or you next run. The same table carries his answers to parts picks (`kind=pick`: yes, no or question),
 to his own work rows (`kind=work`: done, a value, a choice), and requests for a run from the
-phone (`kind=run`, `kind=project`). An answer in the inbox is exit code **2**. It never
+phone (`kind=run`, `kind=project`), and, in `00-CAR`, the Manual's Log drive and Set odo
+(`kind=drive`: the choice is the odometer, target `drive-<when>` or `odo-<when>`). An answer in the inbox is exit code **2**. It never
 refuses a commit.
 
 **Lifecycle.** You raise it → he answers in the app → `rx7.py inbox` shows his words → you
@@ -473,6 +483,12 @@ a block id.
 
 One row in `00-CAR`: the work, the mileage, the parts fitted, anything found wrong. No
 project needed.
+
+A `kind=drive` answer is one `drives` row: its id is the answer's target, `date` from its
+`at`, `odometer` its choice, and `kind` is `set` for an `odo-` target and `drive` otherwise.
+His words go into `from`, `to` and `note` as he wrote them. A reading lower than the one
+before it is a finding: raise it, and never write it over. Delete the inbox row once the
+drives row exists.
 
 ### 6.8 · New project
 

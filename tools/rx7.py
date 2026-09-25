@@ -57,9 +57,12 @@ WORK_STATE = ("open", "done", "blocked", "dropped")
 WORK_OWNER = ("agent", "camden")
 # How Camden answers a work row in the app (D-406): a check, a measured value, or a choice.
 WORK_REPLY = ("check", "value", "choice")
-INBOX_KIND = ("block", "pick", "work", "run", "project")
+INBOX_KIND = ("block", "pick", "work", "run", "project", "drive")
 INBOX_DEVICE = ("desktop", "phone")
 RUN_WORKFLOWS = ("apply", "plan", "review", "parts")
+# Log drive and Set odo in the Manual (D-417): the target names the moment, the choice is the
+# odometer reading. drive- is a drive he logged; odo- is a reading with nothing else known.
+DRIVE_TARGET_RE = re.compile(r"^(drive|odo)-\d{8}T\d{6}$")
 
 # Columns whose vocabulary THIS TOOL owns, not the project. Every area's _schema.csv must
 # declare exactly these, so the same column cannot mean different things in two projects.
@@ -416,6 +419,12 @@ def resolve_target(area: Path, target: str, kind: str = ""):
         if kind == "project" and not re.match(r"^[a-z0-9][a-z0-9-]*$", target):
             raise ValueError("a new project's name is lowercase words joined by -")
         return kind, {}
+    if kind == "drive" or (not kind and DRIVE_TARGET_RE.match(target)):
+        if not DRIVE_TARGET_RE.match(target):
+            raise ValueError("a drive is drive-<YYYYMMDDTHHMMSS> or odo-<YYYYMMDDTHHMMSS>")
+        if not (area / "data" / "drives.csv").exists():
+            raise ValueError(f"{rel(area)} keeps no drives - they belong to 00-CAR")
+        return "drive", {}
     if BLOCK_ID_RE.match(target):
         for r in read_table(area, "blocks")[1]:
             if (r.get("id") or "").strip() == target:
@@ -432,6 +441,8 @@ def resolve_target(area: Path, target: str, kind: str = ""):
 def check_choice(kind: str, row: dict, choice: str):
     """Why this choice cannot answer that row, or None."""
     c = (choice or "").strip()
+    if kind == "drive" and not c:
+        return "a drive needs the odometer reading"
     if not c:
         return None
     if kind == "block":
@@ -439,6 +450,8 @@ def check_choice(kind: str, row: dict, choice: str):
         return None if c in letters else f"{c!r} is not one of the options {', '.join(letters)}"
     if kind == "pick":
         return None if c in ("yes", "no", "question") else "a pick is answered yes, no or question"
+    if kind == "drive":
+        return None if re.fullmatch(r"[1-9]\d{0,6}", c) else "an odometer reading is whole miles"
     if kind == "work":
         reply = (row.get("reply") or "check").strip() or "check"
         if reply == "check" and c not in ("done", "not done"):
@@ -1172,7 +1185,8 @@ def work_view(a: Path, idx) -> list[dict]:
 
 def export_data() -> dict:
     """Everything the Rx7 app shows, as one JSON-ready dict (R9: the app never reads words).
-    Reads every table of every area, the archive's decision ids and 01-REFERENCE/photos."""
+    Reads every table of every area, the archive's decision ids and 01-REFERENCE/photos;
+    `manual` is manual_view() (D-417)."""
     problems = run_check()
     idx = tree_index()
     out = {"version": 1, "generated": now_iso(),
@@ -1261,7 +1275,207 @@ def export_data() -> dict:
     if photos.is_dir():
         out["photos"] = sorted(rel(p) for p in photos.rglob("*")
                                if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"))
+    out["manual"] = manual_view()
     return out
+
+
+# ------------------------------------------------------------------------ manual
+#
+# The Manual (D-417): one spine of verified facts about the car as it is now, and every screen
+# a query over it. This is that query. The app shows only what comes out of here and computes
+# nothing of its own; the phone runs this same function.
+#
+# A row reaches the Manual only when it is a backed fact about this car now (his 4.5):
+#   - no shown cell still says `confirm` (R11's marker for a value nobody has checked),
+#   - a spec is not `unverified`, and it is this car's figure (`applies` blank).
+# `other-car` rows and the two above are HELD: they are listed with the reason, because they
+# are what the verify work is made of. `replaced` and `not-fitted` rows are not facts about
+# the car at all (his 5.6, 5.13) and are neither shown nor listed.
+
+CONFIRM_RE = re.compile(r"\bconfirm\b", re.I)
+MANUAL_SHOWN = {
+    "vehicle": ("field", "value", "note"),
+    "systems": ("name", "state", "since", "note"),
+    "zones": ("name", "note"),
+    "parts": ("name", "maker", "part_no", "factory_code", "link", "support", "note"),
+    "specs": ("item", "value", "unit", "source", "page", "note"),
+    "service": ("date", "mileage", "work", "notes"),
+    "intervals": ("item", "every_miles", "every_months", "spec", "note"),
+    "issues": ("issue", "status"),
+    "drives": ("date", "odometer", "from", "to", "note"),
+    "procedures": ("system", "title", "when", "tools"),
+}
+HELD_WHY = {"confirm": "marked confirm - not yet measured or checked on the car",
+            "unverified": "its only source is not a factory document",
+            "other-car": "another year's, trim's or gearbox's figure, and this car's differs or is in doubt"}
+DUE_SOON_MILES, DUE_SOON_DAYS = 1000, 30
+
+
+def manual_hold(table: str, row: dict):
+    """'shown', 'gone' (not a fact about the car now) or a HELD_WHY key."""
+    applies = (row.get("applies") or "").strip()
+    if applies in ("replaced", "not-fitted"):
+        return "gone"
+    if applies == "other-car":
+        return "other-car"
+    if table == "specs" and (row.get("confidence") or "").strip() == "unverified":
+        return "unverified"
+    if any(CONFIRM_RE.search(row.get(c) or "") for c in MANUAL_SHOWN.get(table, ())):
+        return "confirm"
+    return "shown"
+
+
+def _as_date(v: str):
+    """A record date (YYYY-MM or YYYY-MM-DD) as a date; a month is its first day."""
+    v = (v or "").strip()
+    if not DATE_RE.match(v):
+        return None
+    y, m, *d = (int(x) for x in v.split("-"))
+    return datetime.date(y, m, d[0] if d else 1)
+
+
+def _int(v):
+    try:
+        return int(str(v).strip())
+    except (TypeError, ValueError):
+        return None
+
+
+def odometer_now(drives, service, vehicle):
+    """The newest odometer reading: a drive, a Set odo or a service visit, whichever is latest
+    (on the same day, the higher reading). Only when none has one, vehicle.mileage."""
+    seen = []
+    for r in drives:
+        if _int(r.get("odometer")) is not None and _as_date(r.get("date")):
+            seen.append((_as_date(r["date"]), _int(r["odometer"]), (r.get("kind") or "drive").strip(), r["id"]))
+    for r in service:
+        if _int(r.get("mileage")) is not None and _as_date(r.get("date")):
+            seen.append((_as_date(r["date"]), _int(r["mileage"]), "service", r["id"]))
+    if seen:
+        d, miles, source, ref = max(seen)
+        return {"miles": miles, "date": d.isoformat(), "source": source, "ref": ref}
+    v = next((r for r in vehicle if r.get("key") == "mileage"), {})
+    miles = _int(v.get("value"))
+    return {"miles": miles, "date": "", "source": "vehicle" if miles is not None else "", "ref": "mileage"}
+
+
+def interval_due(iv: dict, service, odo: dict, today_d):
+    """When an interval is next due, from the newest service visit whose `items` names it.
+    status: overdue · soon · ok · never (no visit has done it) · each (no interval, e.g. every fill)."""
+    every_mi = _int(iv.get("every_miles"))
+    try:
+        every_mo = float(iv.get("every_months") or "")
+    except ValueError:
+        every_mo = None
+    last = None
+    for r in service:
+        if iv["id"] in (r.get("items") or "").split() and _as_date(r.get("date")):
+            if last is None or _as_date(r["date"]) > _as_date(last["date"]):
+                last = r
+    out = {"last": None, "next_miles": None, "next_date": "", "status": "each"}
+    if not every_mi and not every_mo:
+        return out
+    if not last:
+        out["status"] = "never"
+        return out
+    out["last"] = {"service": last["id"], "date": last["date"], "miles": _int(last.get("mileage"))}
+    if every_mi and out["last"]["miles"] is not None:
+        out["next_miles"] = out["last"]["miles"] + every_mi
+    if every_mo:
+        out["next_date"] = (_as_date(last["date"]) + datetime.timedelta(days=round(every_mo * 30.44))).isoformat()
+    miles_left = out["next_miles"] - odo["miles"] if out["next_miles"] is not None and odo.get("miles") is not None else None
+    days_left = (datetime.date.fromisoformat(out["next_date"]) - today_d).days if out["next_date"] else None
+    if (miles_left is not None and miles_left <= 0) or (days_left is not None and days_left <= 0):
+        out["status"] = "overdue"
+    elif (miles_left is not None and miles_left <= DUE_SOON_MILES) or (days_left is not None and days_left <= DUE_SOON_DAYS):
+        out["status"] = "soon"
+    else:
+        out["status"] = "ok"
+    out["miles_left"], out["days_left"] = miles_left, days_left
+    return out
+
+
+def manual_view(today_iso: str = "") -> dict:
+    """The Manual, computed. Reads 00-CAR vehicle, systems, zones, parts, specs, service,
+    intervals, issues, drives, procedures (and data/procedures/<id>.md), parts_history, and
+    01-REFERENCE sources, factory-circuits and photos. Writes nothing (D-417)."""
+    car = ROOT / "00-CAR"
+    if not (car / "data" / "parts.csv").exists():
+        return {}
+    today_d = datetime.date.fromisoformat(today_iso) if today_iso else datetime.date.today()
+    t = {n: read_table(car, n)[1] for n in ("vehicle", "systems", "zones", "parts", "specs", "service",
+                                            "intervals", "issues", "drives", "procedures", "parts_history")}
+    clean = lambda r: {k: (v or "").strip() for k, v in r.items()}
+    held, shown = [], {}
+    for name in MANUAL_SHOWN:
+        shown[name] = []
+        for r in map(clean, t[name]):
+            why = manual_hold(name, r)
+            if why == "shown":
+                shown[name].append(r)
+            elif why != "gone":
+                label = r.get("item") or r.get("name") or r.get("field") or r.get("issue") or r.get("title") or ""
+                held.append({"table": name, "key": next(iter(r.values()), ""), "label": label,
+                             "reason": why, "why": HELD_WHY[why]})
+    part_ids = {p["id"] for p in shown["parts"]}
+    history = {r["id"]: clean(r) for r in t["parts_history"]}
+
+    # each part's fitting is read from the service visit that fitted it (never typed)
+    fitted = {}
+    for s in sorted(shown["service"], key=lambda r: _as_date(r["date"]) or datetime.date.min):
+        for pid in (s.get("fitted") or "").split():
+            fitted[pid] = {"service": s["id"], "date": s["date"], "miles": _int(s.get("mileage"))}
+    for p in shown["parts"]:
+        p["fitted"] = fitted.get(p["id"])
+        p["specs"] = [s["id"] for s in shown["specs"] if s.get("part") == p["id"]]
+        p["service"] = [s["id"] for s in shown["service"] if p["id"] in (s.get("fitted") or "").split()]
+        p["bought"] = [{"id": b, "part": history.get(b, {}).get("part", ""), "source": history.get(b, {}).get("source", "")}
+                       for b in (p.get("bought") or "").split() if b in history]
+    for s in shown["specs"]:
+        if s.get("part") not in part_ids:
+            s["part"] = ""
+    for s in shown["service"]:
+        s["fitted"] = [x for x in (s.get("fitted") or "").split() if x in part_ids]
+
+    systems = sorted(shown["systems"], key=lambda r: (_int(r.get("order")) or 999, r["name"]))
+    for s in systems:
+        s["children"] = [c["id"] for c in systems if c.get("parent") == s["id"]]
+        s["parts"] = [p["id"] for p in shown["parts"] if p["system"] == s["id"]]
+        s["specs"] = len([x for x in shown["specs"] if x.get("system") == s["id"]])
+    zones = sorted(shown["zones"], key=lambda r: (_int(r.get("order")) or 999, r["name"]))
+    for z in zones:
+        z["parts"] = [p["id"] for p in shown["parts"] if p.get("zone") == z["id"]]
+
+    drives = sorted(shown["drives"], key=lambda r: (_as_date(r["date"]) or datetime.date.min, _int(r["odometer"]) or 0))
+    prev = None
+    for d in drives:
+        d["miles"] = (_int(d["odometer"]) - prev) if prev is not None and _int(d["odometer"]) is not None else None
+        prev = _int(d["odometer"]) if _int(d["odometer"]) is not None else prev
+    odo = odometer_now(drives, shown["service"], t["vehicle"])
+
+    intervals = []
+    for iv in shown["intervals"]:
+        intervals.append(dict(iv, due=interval_due(iv, shown["service"], odo, today_d)))
+    rank = {"overdue": 0, "soon": 1, "never": 2, "ok": 3, "each": 4}
+    intervals.sort(key=lambda iv: (rank[iv["due"]["status"]], iv["due"].get("next_date") or "9999"))
+
+    for pr in shown["procedures"]:
+        f = car / "data" / "procedures" / f"{pr['id']}.md"
+        pr["body"] = f.read_text(encoding="utf-8") if f.exists() else ""
+
+    ref = ROOT / "01-REFERENCE"
+    sources = {r["id"]: {"title": (r.get("title") or "").strip(), "url": (r.get("url") or "").strip(),
+                         "local_path": (r.get("local_path") or "").strip()}
+               for r in read_table(ref, "sources")[1]} if (ref / "data" / "sources.csv").exists() else {}
+    circuits = sorted(rel(f) for f in (ref / "factory-circuits").glob("*")
+                      if f.suffix.lower() in (".pdf", ".md") and f.name != "README.md") if (ref / "factory-circuits").is_dir() else []
+
+    return {"today": today_d.isoformat(), "odometer": odo,
+            "vehicle": [r for r in shown["vehicle"] if r.get("key") != "mileage"],
+            "systems": systems, "zones": zones, "parts": shown["parts"], "specs": shown["specs"],
+            "service": sorted(shown["service"], key=lambda r: _as_date(r["date"]) or datetime.date.min, reverse=True),
+            "intervals": intervals, "issues": shown["issues"], "drives": list(reversed(drives)),
+            "procedures": shown["procedures"], "sources": sources, "circuits": circuits, "held": held}
 
 
 # --------------------------------------------------------------------- commands
@@ -1829,6 +2043,39 @@ def cmd_selftest(args):
         write_table(area, "inbox", hdr, [r2])
         expect("deleting a row removes only its file",
                [f.name for f in folder_files(area, "inbox")] == ["00.30~desktop.csv"])
+
+    # --- the Manual (D-417): what is held back, what is due, where the odometer stands ---
+    expect("a spec for this car is shown", manual_hold("specs", {"item": "Gap", "confidence": "primary"}) == "shown")
+    expect("a value marked confirm is held", manual_hold("parts", {"name": "Pump", "note": "draw 5 A - confirm"}) == "confirm")
+    expect("'confirmed' is not the confirm marker", manual_hold("issues", {"issue": "Blower", "status": "Confirmed dead"}) == "shown")
+    expect("confirm in a column the Manual never shows holds nothing",
+           manual_hold("issues", {"issue": "Blower", "status": "dead", "impact": "confirm later"}) == "shown")
+    expect("an unverified spec is held", manual_hold("specs", {"item": "Offset", "confidence": "unverified"}) == "unverified")
+    expect("another year's figure is held", manual_hold("specs", {"item": "x", "applies": "other-car"}) == "other-car")
+    expect("a replaced part's spec is gone, not held", manual_hold("specs", {"item": "Choke", "applies": "replaced"}) == "gone")
+    svc = [{"id": "SV1", "date": "2026-07", "mileage": "150000", "items": "oil brake_fluid"},
+           {"id": "SV0", "date": "2025-09", "mileage": "", "items": "oil"}]
+    odo = odometer_now([{"id": "odo-1", "date": "2026-09-20", "odometer": "157200", "kind": "set"}], svc, [])
+    expect("the odometer is the newest reading", odo["miles"] == 157200 and odo["source"] == "set")
+    expect("with no drives the odometer is the newest service reading",
+           odometer_now([], svc, [{"key": "mileage", "value": "1"}])["miles"] == 150000)
+    expect("with no reading at all it falls back to vehicle.mileage",
+           odometer_now([], [], [{"key": "mileage", "value": "153000"}])["source"] == "vehicle")
+    today_d = datetime.date(2026, 9, 24)
+    oil = {"id": "oil", "every_miles": "7500", "every_months": "7.5"}
+    expect("an interval is due from the newest visit that did it",
+           interval_due(oil, svc, {"miles": 150100}, today_d)["last"]["service"] == "SV1")
+    expect("under 1000 miles left is soon", interval_due(oil, svc, {"miles": 156800}, today_d)["status"] == "soon")
+    expect("past the miles is overdue", interval_due(oil, svc, {"miles": 157600}, today_d)["status"] == "overdue")
+    expect("past the months is overdue, whatever the miles",
+           interval_due(oil, svc, {"miles": 150100}, datetime.date(2027, 3, 1))["status"] == "overdue")
+    expect("an interval no visit has done is never",
+           interval_due({"id": "atf", "every_miles": "30000"}, svc, {"miles": 1}, today_d)["status"] == "never")
+    expect("an interval with no period is each", interval_due({"id": "premix"}, svc, {"miles": 1}, today_d)["status"] == "each")
+    expect("a drive target is recognised", DRIVE_TARGET_RE.match("odo-20260924T221500"))
+    expect("a drive with no reading is refused", check_choice("drive", {}, ""))
+    expect("a reading that is not whole miles is refused", check_choice("drive", {}, "157,200"))
+    expect("a whole-mile reading is taken", check_choice("drive", {}, "157200") is None)
 
     expect("an ISO date parses", days_since("2026-09-01") is not None)
     expect("a non-date does not", days_since("soon") is None)

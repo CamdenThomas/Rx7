@@ -9,3 +9,4 @@ L-0007,2026-09-24,session,B1 B2 C1 C2 C3 C4 D1 D2 E1 F1 F2 I-015 I-016,"Both app
 L-0008,2026-09-24,session,C3 F1,"C3 done: Camden read the pitch in README.md and kept it as written, no changes; F1 (install) is now ready"
 L-0009,2026-09-24,session,D-417 10.01 M1 MA1 MA2 MA3 MA4 MB1 MC1 MD1 ME1,The Manual planned in chat and ruled (D-417); block 10.01 raised on where unverified facts wait; work MA1-ME1 opened
 L-0010,2026-09-24,session,MA1 D-417,"MA1: the Manual's spine in 00-CAR - systems, zones, 57 parts, drives; specs tied to system and part and marked when not this car's now; as_fitted and mods folded in and retired; vehicle is identity only"
+L-0011,2026-09-24,session,MA2 D-417,"MA2: export computes the Manual (shown, held back with the reason, odometer, due); kind=drive answers; 23 new selftests"

@@ -16,7 +16,7 @@ M1,M,The Manual - planned together,"Plan the Manual with the agent: go through y
 F1,F,Install,"Install the desktop app with a launcher entry, and build the release APK for his Galaxy (arm64)",agent,open,C3,app/README.md has the steps,,,
 F2,F,Install,Install Rx7 on your Galaxy phone and paste your GitHub key in Settings,camden,open,F1,"app/README.md, 'On the phone'",,,
 MA1,MA,"The Manual - M-a: the spine, Car state, Specs, Service","The spine in 00-CAR: systems (replacing the old per-system table), zones, parts (the changes-from-factory list folded in), drives; specs tied to a system and a part, and marked when they are another year's figure or for a part not on the car",agent,done,D-417,D-417,,,
-MA2,MA,"The Manual - M-a: the spine, Car state, Specs, Service","rx7.py: the Manual in export (what is shown, what is held back and why, the odometer, what is due) and the drive answer (Log drive, Set odo), with selftests",agent,open,MA1,D-417,,,
+MA2,MA,"The Manual - M-a: the spine, Car state, Specs, Service","rx7.py: the Manual in export (what is shown, what is held back and why, the odometer, what is due) and the drive answer (Log drive, Set odo), with selftests",agent,done,MA1,D-417,,,
 MA3,MA,"The Manual - M-a: the spine, Car state, Specs, Service","The app: the Manual's home (Car state), Specs and Service screens, and the Log drive / Set odo buttons",agent,open,MA2,D-417,,,
 MA4,MA,"The Manual - M-a: the spine, Car state, Specs, Service",Read the odometer and press Set odo in the Manual,camden,open,MA3 F1,D-417. The first real reading: the Manual's mileage is 153000 of unknown date until then,,,
 MB1,MB,"The Manual - M-b: Systems, part pages, popups","Systems view, a page for each part, and a preview popup on every part name",agent,open,MA3,D-417,,,
