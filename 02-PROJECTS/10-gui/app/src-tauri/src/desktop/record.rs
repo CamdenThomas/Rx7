@@ -1,0 +1,167 @@
+//! The record, through `tools/rx7.py`: `export` to read it, `answer` to save one of Camden's
+//! answers, `del … inbox` to withdraw one. Each saved answer is committed on its own and
+//! pushed in the background, so his phone sees it too.
+
+use super::{git, tool, Tree};
+use serde::Serialize;
+use std::fs;
+use std::path::{Path, PathBuf};
+use std::process::{Command, Output};
+use std::time::{SystemTime, UNIX_EPOCH};
+use tauri::{AppHandle, State};
+
+fn rx7(root: &Path) -> Command {
+    let mut c = Command::new(tool("python3"));
+    c.arg(root.join("tools/rx7.py")).current_dir(root);
+    c
+}
+
+fn said(out: &Output) -> String {
+    let mut s = String::from_utf8_lossy(&out.stdout).trim().to_string();
+    let err = String::from_utf8_lossy(&out.stderr);
+    if !err.trim().is_empty() {
+        s = format!("{s}\n{}", err.trim()).trim().to_string();
+    }
+    s
+}
+
+async fn blocking<T: Send + 'static>(f: impl FnOnce() -> T + Send + 'static) -> Result<T, String> {
+    tauri::async_runtime::spawn_blocking(f).await.map_err(|e| e.to_string())
+}
+
+/// A scratch file for text that must reach rx7.py byte for byte (his words never pass
+/// through a command line).
+struct Scratch(PathBuf);
+
+impl Scratch {
+    fn new(text: &str) -> Result<Self, String> {
+        let stamp = SystemTime::now().duration_since(UNIX_EPOCH).map(|d| d.as_nanos()).unwrap_or(0);
+        let p = std::env::temp_dir().join(format!("rx7-answer-{}-{stamp}.txt", std::process::id()));
+        fs::write(&p, text).map_err(|e| e.to_string())?;
+        Ok(Scratch(p))
+    }
+}
+
+impl Drop for Scratch {
+    fn drop(&mut self) {
+        let _ = fs::remove_file(&self.0);
+    }
+}
+
+#[tauri::command]
+pub fn tree_root(tree: State<Tree>) -> String {
+    tree.root().display().to_string()
+}
+
+#[tauri::command]
+pub fn set_tree_root(tree: State<Tree>, path: String) -> Result<String, String> {
+    let p = PathBuf::from(&path);
+    if !p.join("tools/rx7.py").is_file() {
+        return Err(format!("{path} is not an Rx7 tree (no tools/rx7.py)"));
+    }
+    *tree.0.lock().map_err(|e| e.to_string())? = p;
+    Ok(path)
+}
+
+/// The whole record as rx7.py exports it. An invalid record (rc 1) is still shown — the
+/// app says so; only a crash in the tool (rc 3) is an error here.
+#[tauri::command]
+pub async fn record_export(tree: State<'_, Tree>) -> Result<String, String> {
+    let root = tree.root();
+    blocking(move || {
+        let out = rx7(&root).arg("export").output().map_err(|e| e.to_string())?;
+        match out.status.code() {
+            Some(0) | Some(1) => String::from_utf8(out.stdout).map_err(|e| e.to_string()),
+            _ => Err(said(&out)),
+        }
+    })
+    .await?
+}
+
+#[derive(Serialize)]
+pub struct Saved {
+    path: String,
+    committed: bool,
+    note: String,
+}
+
+#[tauri::command]
+#[allow(clippy::too_many_arguments)]
+pub async fn answer_save(
+    app: AppHandle,
+    tree: State<'_, Tree>,
+    area: String,
+    target: String,
+    kind: Option<String>,
+    choice: String,
+    text: String,
+    context: String,
+    at: String,
+) -> Result<Saved, String> {
+    let root = tree.root();
+    blocking(move || {
+        let words = Scratch::new(&text)?;
+        let notes = Scratch::new(&context)?;
+        let mut c = rx7(&root);
+        c.args(["answer", &area, &target, "--device", "desktop", "--at", &at]);
+        c.arg("--text-file").arg(&words.0).arg("--context-file").arg(&notes.0);
+        if !choice.trim().is_empty() {
+            c.args(["--choice", choice.trim()]);
+        }
+        if let Some(k) = kind.filter(|k| !k.is_empty()) {
+            c.args(["--kind", &k]);
+        }
+        let out = c.output().map_err(|e| e.to_string())?;
+        if !out.status.success() {
+            return Err(said(&out));
+        }
+        let path = format!("{}/data/inbox/{target}~desktop.csv", area_path(&root, &area)?);
+        let message = format!("Camden answered {target} (desktop)");
+        commit(app, root, path, message)
+    })
+    .await?
+}
+
+#[tauri::command]
+pub async fn answer_withdraw(
+    app: AppHandle,
+    tree: State<'_, Tree>,
+    area: String,
+    id: String,
+) -> Result<Saved, String> {
+    let root = tree.root();
+    blocking(move || {
+        let out = rx7(&root).args(["del", &area, "inbox", &id]).output().map_err(|e| e.to_string())?;
+        if !out.status.success() {
+            return Err(said(&out));
+        }
+        let path = format!("{}/data/inbox/{id}.csv", area_path(&root, &area)?);
+        let target = id.rsplit_once('~').map(|(t, _)| t).unwrap_or(&id).to_string();
+        commit(app, root, path, format!("Camden withdrew his answer to {target} (desktop)"))
+    })
+    .await?
+}
+
+/// Commit exactly one inbox file and push in the background. A refused commit (the hook
+/// found the tree invalid, often mid-edit) still leaves his answer saved on disk: it is
+/// committed with the next one, and nothing he typed is lost.
+fn commit(app: AppHandle, root: PathBuf, path: String, message: String) -> Result<Saved, String> {
+    match git::commit_path(&root, &path, &message) {
+        Ok(()) => {
+            git::push_in_background(app, root);
+            Ok(Saved { path, committed: true, note: String::new() })
+        }
+        Err(why) => Ok(Saved { path, committed: false, note: why }),
+    }
+}
+
+/// `02-PROJECTS/00-electrical` for `00-electrical`, the way rx7.py names areas.
+fn area_path(root: &Path, area: &str) -> Result<String, String> {
+    for base in [root.to_path_buf(), root.join("02-PROJECTS")] {
+        let p = base.join(area);
+        if p.join("data/_tables.csv").is_file() {
+            return Ok(p.strip_prefix(root).unwrap_or(&p).display().to_string());
+        }
+    }
+    Err(format!("no area named {area}"))
+}

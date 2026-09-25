@@ -1,0 +1,530 @@
+/* Rx7's design system (D-404). Dark only, built on Camden's five colours; every other tone
+   is mixed from them, so changing a colour means changing it here and nowhere else. */
+
+:root {
+  --ink: #293241;
+  --steel: #3d5a80;
+  --sky: #98c1d9;
+  --foam: #e0fbfc;
+  --ember: #ee6c4d;
+
+  --bg: color-mix(in oklab, var(--ink) 80%, #000);
+  --bg-raise: color-mix(in oklab, var(--ink) 90%, #000);
+  --surface: var(--ink);
+  --surface-2: color-mix(in oklab, var(--ink) 86%, var(--steel));
+  --surface-3: color-mix(in oklab, var(--ink) 68%, var(--steel));
+  --line: color-mix(in oklab, var(--ink) 76%, var(--sky));
+  --line-soft: color-mix(in oklab, var(--ink) 88%, var(--sky));
+  --text: var(--foam);
+  --text-2: color-mix(in oklab, var(--foam) 55%, var(--sky));
+  --text-3: color-mix(in oklab, var(--sky) 72%, var(--ink));
+  --text-4: color-mix(in oklab, var(--sky) 45%, var(--ink));
+  --accent: var(--ember);
+  --accent-2: color-mix(in oklab, var(--ember) 85%, var(--foam));
+  --accent-soft: color-mix(in oklab, var(--ember) 16%, transparent);
+  --accent-line: color-mix(in oklab, var(--ember) 55%, var(--ink));
+  --cool: var(--sky);
+  --cool-soft: color-mix(in oklab, var(--sky) 14%, transparent);
+  --steel-soft: color-mix(in oklab, var(--steel) 45%, transparent);
+
+  --font: 'Inter Variable', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --r-1: 6px;
+  --r-2: 10px;
+  --r-3: 16px;
+  --r-4: 24px;
+  --shadow-1: 0 1px 0 color-mix(in oklab, var(--foam) 5%, transparent) inset, 0 1px 2px rgb(0 0 0 / 0.25);
+  --shadow-2: 0 1px 0 color-mix(in oklab, var(--foam) 6%, transparent) inset, 0 12px 32px -12px rgb(0 0 0 / 0.55);
+  --shadow-3: 0 24px 64px -16px rgb(0 0 0 / 0.7);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --t-fast: 120ms;
+  --t: 200ms;
+
+  --gutter: 16px;
+  --topbar: 56px;
+  --tabbar: 0px;
+  --page: 1240px;
+  --tap: 44px;
+
+  color-scheme: dark;
+  accent-color: var(--ember);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-fast: 0ms;
+    --t: 0ms;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0ms !important;
+    transition-duration: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (min-width: 760px) {
+  :root {
+    --gutter: 28px;
+  }
+}
+
+@media (max-width: 759px) {
+  :root {
+    --tabbar: calc(62px + env(safe-area-inset-bottom));
+    --topbar: calc(52px + env(safe-area-inset-top));
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--bg);
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 15px/1.55 var(--font);
+  font-feature-settings: 'cv11', 'ss01', 'ss03';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--steel) 80%, var(--sky));
+  color: var(--foam);
+}
+
+a {
+  color: var(--sky);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--foam);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-weight: 620;
+  letter-spacing: -0.012em;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus, var(--sky));
+  outline-offset: 2px;
+  border-radius: var(--r-1);
+}
+
+/* ---------------------------------------------------------------- scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 10px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+/* ------------------------------------------------------------------- basics */
+.mono {
+  font-family: var(--mono);
+  font-feature-settings: 'zero', 'ss01';
+  letter-spacing: -0.01em;
+}
+.num {
+  font-variant-numeric: tabular-nums;
+}
+.muted {
+  color: var(--text-2);
+}
+.faint {
+  color: var(--text-3);
+}
+.label {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.page {
+  width: 100%;
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: 20px var(--gutter) calc(48px + var(--tabbar));
+}
+.page.narrow {
+  max-width: 880px;
+}
+
+/* ------------------------------------------------------------------ buttons */
+.btn {
+  --b-bg: var(--surface-2);
+  --b-fg: var(--text);
+  --b-line: var(--line);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--b-line);
+  border-radius: var(--r-2);
+  background: var(--b-bg);
+  color: var(--b-fg);
+  font-weight: 560;
+  font-size: 14px;
+  white-space: nowrap;
+  transition:
+    background var(--t-fast) var(--ease),
+    border-color var(--t-fast) var(--ease),
+    transform var(--t-fast) var(--ease),
+    opacity var(--t-fast);
+  box-shadow: var(--shadow-1);
+}
+.btn:hover {
+  --b-bg: var(--surface-3);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+.btn.primary {
+  --b-bg: var(--ember);
+  --b-fg: #1f1714;
+  --b-line: color-mix(in oklab, var(--ember) 70%, #000);
+  font-weight: 650;
+}
+.btn.primary:hover:not(:disabled) {
+  --b-bg: var(--accent-2);
+}
+.btn.cool {
+  --b-bg: var(--steel);
+  --b-line: color-mix(in oklab, var(--steel) 70%, var(--sky));
+}
+.btn.cool:hover:not(:disabled) {
+  --b-bg: color-mix(in oklab, var(--steel) 85%, var(--sky));
+}
+.btn.ghost {
+  --b-bg: transparent;
+  --b-line: transparent;
+  box-shadow: none;
+  color: var(--text-2);
+}
+.btn.ghost:hover:not(:disabled) {
+  --b-bg: var(--surface-2);
+  color: var(--text);
+}
+.btn.small {
+  min-height: 30px;
+  padding: 0 10px;
+  font-size: 13px;
+  border-radius: var(--r-1);
+}
+.btn.big {
+  min-height: var(--tap);
+  padding: 0 18px;
+  font-size: 15px;
+}
+.btn.icon {
+  padding: 0;
+  width: 36px;
+}
+
+/* -------------------------------------------------------------------- chips */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 560;
+  line-height: 1;
+  white-space: nowrap;
+  background: var(--surface-2);
+  color: var(--text-2);
+  border: 1px solid var(--line-soft);
+}
+.chip.accent {
+  background: var(--accent-soft);
+  color: var(--accent-2);
+  border-color: var(--accent-line);
+}
+.chip.cool {
+  background: var(--cool-soft);
+  color: var(--sky);
+  border-color: color-mix(in oklab, var(--sky) 35%, var(--ink));
+}
+.chip.solid {
+  background: var(--steel);
+  color: var(--foam);
+  border-color: transparent;
+}
+.chip.quiet {
+  background: transparent;
+  border-color: var(--line-soft);
+  color: var(--text-3);
+}
+.id {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-weight: 560;
+  color: var(--sky);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+/* -------------------------------------------------------------------- cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-3);
+  box-shadow: var(--shadow-2);
+}
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-3);
+}
+
+/* ------------------------------------------------------------------- inputs */
+.input,
+.textarea,
+.select {
+  width: 100%;
+  background: var(--bg-raise);
+  border: 1px solid var(--line);
+  border-radius: var(--r-2);
+  padding: 9px 12px;
+  color: var(--text);
+  transition:
+    border-color var(--t-fast),
+    box-shadow var(--t-fast);
+}
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--text-4);
+}
+.input:focus,
+.textarea:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--sky);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--sky) 22%, transparent);
+}
+.textarea {
+  min-height: 96px;
+  resize: vertical;
+  line-height: 1.5;
+}
+.select {
+  appearance: none;
+  padding-right: 34px;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-3) 50%), linear-gradient(135deg, var(--text-3) 50%, transparent 50%);
+  background-position:
+    calc(100% - 17px) 55%,
+    calc(100% - 12px) 55%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+
+/* ----------------------------------------------------------- prose (bodies) */
+.prose {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text);
+}
+.prose > * + * {
+  margin-top: 0.75em;
+}
+.prose strong {
+  font-weight: 640;
+  color: var(--foam);
+}
+.prose em {
+  color: color-mix(in oklab, var(--foam) 80%, var(--sky));
+}
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  font-size: 15px;
+  margin-top: 1.4em;
+  color: var(--foam);
+}
+.prose ul,
+.prose ol {
+  padding-left: 1.3em;
+}
+.prose li + li {
+  margin-top: 0.3em;
+}
+.prose li::marker {
+  color: var(--text-3);
+}
+.prose code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  background: var(--surface-2);
+  border: 1px solid var(--line-soft);
+  padding: 0.05em 0.35em;
+  border-radius: 5px;
+  color: var(--sky);
+}
+.prose pre {
+  font-family: var(--mono);
+  font-size: 13px;
+  background: var(--bg-raise);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-2);
+  padding: 12px 14px;
+  overflow-x: auto;
+}
+.prose a.cite {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  color: var(--sky);
+  border-bottom: 1px dotted color-mix(in oklab, var(--sky) 50%, transparent);
+}
+.prose .table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-2);
+}
+.prose table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13.5px;
+}
+.prose th,
+.prose td {
+  text-align: left;
+  vertical-align: top;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--line-soft);
+}
+.prose th {
+  background: var(--surface-2);
+  font-weight: 600;
+  color: var(--text-2);
+}
+.prose tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ---------------------------------------------------- dense data tables */
+.grid {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+}
+.grid th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--surface-2);
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-3);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+.grid td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--line-soft);
+  vertical-align: top;
+  max-width: 420px;
+}
+.grid tbody tr {
+  cursor: pointer;
+  transition: background var(--t-fast);
+}
+.grid tbody tr:hover {
+  background: color-mix(in oklab, var(--surface-2) 70%, transparent);
+}
+
+/* --------------------------------------------------------------- animation */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.rise {
+  animation: rise var(--t) var(--ease) both;
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "Rx7",
+  "version": "0.1.0",
+  "identifier": "com.camdenthomas.rx7",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "Rx7",
+        "width": 1360,
+        "height": 880,
+        "minWidth": 380,
+        "minHeight": 560,
+        "resizable": true,
+        "backgroundColor": "#222a37",
+        "center": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "rpm",
+      "appimage"
+    ],
+    "category": "Utility",
+    "shortDescription": "The car's record, read and answered",
+    "longDescription": "Rx7 shows every project on Camden's 1982 Mazda RX-7 and is where he answers the questions only he can answer.",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.png"
+    ],
+    "linux": {
+      "rpm": {
+        "release": "1"
+      }
+    },
+    "android": {
+      "minSdkVersion": 26
+    }
+  }
+}

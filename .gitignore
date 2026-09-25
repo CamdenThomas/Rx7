@@ -91,3 +91,4 @@ fp-info-cache
 *.keystore
 *.jks
 keystore.properties
+02-PROJECTS/10-gui/app/public/fixture/
