@@ -358,3 +358,20 @@ D-421,,"Where things are: the 3D model places each zone and some parts, and each
 **Checked.** Every part point projected through `views.json` lands on its part in both renders (mirrors on the mirrors, pads and hubs on the wheel centres, the radiator behind the grille). `rx7.py export` carries the new columns into `manual.zones` and `manual.parts`; `selftest` passes.
 
 **Consequences.** 00-CAR `_schema`: `zones.model_box_mm`, `zones.model_from`, `parts.model_at_mm`, `parts.model_from`; the rows. `01-REFERENCE/model`: `blend.py` (`locations`, the render cameras), `locate.py` (new), `README.md`. `10-gui/app/public/car/views.json` (new) and the two renders."
+D-426,The Manual,"A note on any words he selects in the Manual, kept with where he saw it, never applied",2026-09-25,standing,,,,D-417,"# D-426 - A note on any words he selects in the Manual, kept with where he saw it, never applied
+
+*2026-09-25 - Camden, in chat*
+
+**Decision.** **Selecting words in the Manual offers Note beside Ask, on the desktop and the phone. A note is his words about exactly that selection, saved with where he saw it (the page's address and its breadcrumb) and the words he selected. Notes are a log, not answers: nothing applies them, and each stays until he deletes it. They are listed on the Manual's Notes page, newest first, each linking back to where it was made.**
+
+**His words.** *""while we fine toon there should be a way to add a note if i highligth text, no applu here but a log of notes tied ti where i saw it until the manual is dialed in to the perfect state""*
+
+**Reading.** ""No apply here"" is read as: saving a note starts no run, and no run turns a note into a change. A note that points at a wrong fact is raised with him in chat or as a block when he asks, never acted on silently. ""Until the manual is dialed in"" is read as: the log is kept for as long as he wants it, and only he deletes a note. This keeps every option open: nothing is lost, and nothing changes the record without him.
+
+**How (small, section 3).**
+- A note is a row in 00-CAR's inbox, kind `note`, target `note-<YYYYMMDDTHHMMSS>`. His words are in `text`, and `context` holds `where:`, `page:` and `selected:` lines. It is one file per note, written whole by rx7.py's own `inbox_entry`, the same writer as every answer (R3).
+- rx7.py: `note` joins INBOX_KIND and every area's `inbox.kind` enum. `waiting()` leaves notes out, so `inbox` and `status` count only answers, and a note is never exit code 2. `status` prints a NOTES line instead. The selftests cover his words kept byte for byte, an empty note refused, and a note never waiting.
+- The app: auto-apply and the Apply bar already take only block, pick, work and drive answers. Deleting a note is the existing Withdraw.
+- CLAUDE.md sections 4 and 6.2 say kind=note is never applied or deleted by the agent.
+
+**In the data.** 10-gui work NT1 (done). CLAUDE.md sections 4 and 6.2 now name the note kind."

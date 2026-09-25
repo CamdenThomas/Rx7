@@ -7,7 +7,7 @@
 <script lang="ts">
   import { X } from '@lucide/svelte';
   import { app } from '../lib/app.svelte';
-  import { miles } from '../lib/manual';
+  import { miles, stamp } from '../lib/manual';
 
   let { mode, onclose }: { mode: 'drive' | 'odo'; onclose: () => void } = $props();
 
@@ -21,11 +21,6 @@
   const n = $derived(/^\d{1,7}$/.test(reading.trim()) ? Number(reading.trim()) : null);
   const lower = $derived(n !== null && last?.miles != null && n < last.miles);
   const since = $derived(n !== null && last?.miles != null && n >= last.miles ? n - last.miles : null);
-
-  function stamp(d = new Date()) {
-    const p = (x: number) => String(x).padStart(2, '0');
-    return `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}T${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}`;
-  }
 
   async function save() {
     if (n === null || n < 1 || saving) return;

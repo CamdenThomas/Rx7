@@ -57,12 +57,22 @@ WORK_STATE = ("open", "done", "blocked", "dropped")
 WORK_OWNER = ("agent", "camden")
 # How Camden answers a work row in the app (D-406): a check, a measured value, or a choice.
 WORK_REPLY = ("check", "value", "choice")
-INBOX_KIND = ("block", "pick", "work", "run", "project", "drive")
+INBOX_KIND = ("block", "pick", "work", "run", "project", "drive", "note")
 INBOX_DEVICE = ("desktop", "phone")
 RUN_WORKFLOWS = ("apply", "plan", "review", "parts")
 # Log drive and Set odo in the Manual (D-417): the target names the moment, the choice is the
 # odometer reading. drive- is a drive he logged; odo- is a reading with nothing else known.
 DRIVE_TARGET_RE = re.compile(r"^(drive|odo)-\d{8}T\d{6}$")
+# A note he makes on words he selected in the Manual (D-426): a log, never applied. The
+# target names the moment; `context` says where he was and what he selected.
+NOTE_TARGET_RE = re.compile(r"^note-\d{8}T\d{6}$")
+# Kinds the agent applies; a note stays in the inbox as his log until he deletes it (D-426).
+APPLIED_KINDS = tuple(k for k in INBOX_KIND if k != "note")
+
+
+def waiting(rows):
+    """The inbox rows that wait to be applied: every one but his notes (D-426)."""
+    return [r for r in rows if (r.get("kind") or "").strip() in APPLIED_KINDS]
 
 # Columns whose vocabulary THIS TOOL owns, not the project. Every area's _schema.csv must
 # declare exactly these, so the same column cannot mean different things in two projects.
@@ -425,6 +435,12 @@ def resolve_target(area: Path, target: str, kind: str = ""):
         if not (area / "data" / "drives.csv").exists():
             raise ValueError(f"{rel(area)} keeps no drives - they belong to 00-CAR")
         return "drive", {}
+    if kind == "note" or (not kind and NOTE_TARGET_RE.match(target)):
+        if not NOTE_TARGET_RE.match(target):
+            raise ValueError("a note is note-<YYYYMMDDTHHMMSS>")
+        if not (area / "data" / "parts.csv").exists():
+            raise ValueError(f"{rel(area)} holds no Manual - notes belong to 00-CAR")
+        return "note", {}
     if BLOCK_ID_RE.match(target):
         for r in read_table(area, "blocks")[1]:
             if (r.get("id") or "").strip() == target:
@@ -1505,7 +1521,9 @@ def cmd_check(args):
 def cmd_status(args):
     problems = run_check()
     blocks = open_blocks()
-    inbox = [(a, r) for a in areas() for r in read_table(a, "inbox")[1]]
+    everything = [(a, r) for a in areas() for r in read_table(a, "inbox")[1]]
+    inbox = [(a, r) for a, r in everything if r in waiting([r])]
+    notes = len(everything) - len(inbox)
     answered = {(a.name, (r.get("target") or "").strip()) for a, r in inbox}
     idx = tree_index()
     print(f"RECORD   {'valid' if not problems else str(len(problems)) + ' problem(s)'}")
@@ -1530,6 +1548,8 @@ def cmd_status(args):
     print(f"INBOX    {len(inbox)} answer(s) waiting to be applied")
     for a, r in inbox:
         print(f"  {r.get('target')} {a.name}: {r.get('kind')} from the {r.get('device')} {r.get('at', '')[:16]}")
+    if notes:
+        print(f"NOTES    {notes} of his notes in the Manual's log - kept, never applied (D-426)")
     if problems:
         return RC_INVALID
     if inbox or stuck:
@@ -1814,11 +1834,12 @@ def cmd_answer(args):
 
 
 def cmd_inbox(args):
-    """Every answer waiting to be applied, with his words. rc 2 when there are any."""
+    """Every answer waiting to be applied, with his words. rc 2 when there are any. His notes
+    (kind note, D-426) are a log, not answers, and are not listed."""
     sel = [resolve_area(args.area)] if args.area else areas()
     n = 0
     for a in sel:
-        for r in sorted(read_table(a, "inbox")[1], key=lambda r: r.get("at", "")):
+        for r in sorted(waiting(read_table(a, "inbox")[1]), key=lambda r: r.get("at", "")):
             n += 1
             print(f"{rel(a)} · {r.get('kind')} {r.get('target')} · {r.get('device')} {r.get('at')}")
             if (r.get("choice") or "").strip():
@@ -2086,6 +2107,19 @@ def cmd_selftest(args):
     expect("a drive with no reading is refused", check_choice("drive", {}, ""))
     expect("a reading that is not whole miles is refused", check_choice("drive", {}, "157,200"))
     expect("a whole-mile reading is taken", check_choice("drive", {}, "157200") is None)
+    words = 'He said "this torque looks wrong", then µ ✓\nsecond line'
+    nid, body = inbox_entry("note-20260925T120000", "desktop", "note", "", words,
+                            "where: #/manual/specs\nselected: Wheel nut torque")
+    back = list(csv.DictReader(io.StringIO(body)))[0]
+    expect("a note keeps his words byte for byte", back["text"] == words and back["kind"] == "note")
+    expect("a note's target is recognised", NOTE_TARGET_RE.match(nid.split("~")[0]))
+    expect("a note is never waiting to be applied",
+           waiting([{"kind": "note"}, {"kind": "block"}]) == [{"kind": "block"}])
+    try:
+        inbox_entry("note-20260925T120000", "phone", "note", "", "   ")
+        expect("an empty note is refused", False)
+    except ValueError:
+        expect("an empty note is refused", True)
 
     expect("an ISO date parses", days_since("2026-09-01") is not None)
     expect("a non-date does not", days_since("soon") is None)

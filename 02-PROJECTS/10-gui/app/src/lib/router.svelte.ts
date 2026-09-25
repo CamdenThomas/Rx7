@@ -2,7 +2,7 @@
 // back button works on both apps: #/p/00-electrical/blocks/00.29.
 
 /** The Manual's pages (D-417): Car state is the Manual's own address, #/manual. */
-export const MANUAL_PAGES = ['state', 'systems', 'car', 'specs', 'service', 'diagrams', 'part'] as const;
+export const MANUAL_PAGES = ['state', 'systems', 'car', 'specs', 'service', 'diagrams', 'notes', 'part'] as const;
 export type ManualPage = (typeof MANUAL_PAGES)[number];
 
 export type Route =

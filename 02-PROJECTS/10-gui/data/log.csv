@@ -15,3 +15,4 @@ L-0013,2026-09-25,session,MB1 D-417,"MB1: the Manual's Systems view and system p
 L-0014,2026-09-25,session,MC1 D-417,MC1: select any words in the Manual and Ask about this opens the chat with a question about exactly them (desktop)
 L-0015,2026-09-25,session,MD1 D-417,"MD1: the Manual's Diagrams (factory circuits by system, each write-up in full) and The car (zones drawn on the renders, each opening its parts); circuits table in 01-REFERENCE"
 L-0016,2026-09-25,session,F1,F1: desktop RPM built and installed with its launcher entry; arm64 debug APK built; bundle targets RPM only (the AppImage step failed and nothing uses it)
+L-0017,2026-09-25,session,NT1 D-426,"NT1: Note beside Ask on any selection in the Manual; notes kept in 00-CAR's inbox as kind=note, never applied; Notes page"

@@ -13,6 +13,7 @@
   import Part from './manual/Part.svelte';
   import CarView from './manual/CarView.svelte';
   import Diagrams from './manual/Diagrams.svelte';
+  import Notes from './manual/Notes.svelte';
   import Specs from './manual/Specs.svelte';
   import Service from './manual/Service.svelte';
   import { app } from '../lib/app.svelte';
@@ -34,7 +35,8 @@
   let dialog = $state<'drive' | 'odo' | null>(null);
   let body = $state<HTMLElement>();
 
-  const TABS: ManualPage[] = ['state', 'systems', 'car', 'specs', 'service', 'diagrams'];
+  const TABS: ManualPage[] = ['state', 'systems', 'car', 'specs', 'service', 'diagrams', 'notes'];
+  const noteCount = $derived((app.snapshot?.inbox ?? []).filter((a) => a.area === '00-CAR' && a.kind === 'note').length);
   const on = (t: ManualPage) => (page === 'part' ? t === 'systems' : page === t);
 
   $effect(() => {
@@ -77,7 +79,7 @@
 
     <nav class="tabs" aria-label="Manual pages">
       {#each TABS as t (t)}
-        <a href={href({ name: 'manual', page: t })} class:on={on(t)} aria-current={on(t) ? 'page' : undefined}>{MANUAL_TITLE[t]}</a>
+        <a href={href({ name: 'manual', page: t })} class:on={on(t)} aria-current={on(t) ? 'page' : undefined}>{MANUAL_TITLE[t]}{#if t === 'notes' && noteCount}<span class="count">{noteCount}</span>{/if}</a>
       {/each}
     </nav>
 
@@ -96,6 +98,8 @@
         <Service {m} />
       {:else if page === 'diagrams'}
         <Diagrams {m} {id} />
+      {:else if page === 'notes'}
+        <Notes />
       {/if}
     </div>
     <AskSelection within={body} />
@@ -172,6 +176,11 @@
     font-weight: 560;
     font-size: 14.5px;
     white-space: nowrap;
+  }
+  .count {
+    margin-left: 6px;
+    font-size: 12px;
+    color: var(--text-3);
   }
   .tabs a:hover {
     color: var(--text);

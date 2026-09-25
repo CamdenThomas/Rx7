@@ -97,7 +97,7 @@ blocks,recommend,text,yes,,"names the option it recommends first, e.g. (a), unle
 blocks,stops,text,yes,,what cannot proceed until it is answered
 inbox,id,key,yes,,<target>~<device>; the row is the file data/inbox/<id>.csv (D-405)
 inbox,target,str,yes,,"what it answers: a block, pick or work id; a workflow for kind=run; a name for kind=project"
-inbox,kind,enum(block|drive|pick|project|run|work),yes,,vocabulary owned by tools/rx7.py
+inbox,kind,enum(block|drive|note|pick|project|run|work),yes,,vocabulary owned by tools/rx7.py
 inbox,choice,str,no,,the option letter; yes/no/question; done; a value; a choice - empty when he only wrote words
 inbox,text,text,no,,"his words, verbatim"
 inbox,context,text,no,,"the key points of a Discuss chat, carried into the decision with his words (D-406)"

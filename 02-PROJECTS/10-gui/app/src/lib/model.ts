@@ -135,7 +135,7 @@ export interface Decision {
   cited_in: { area: string; table: string; key: string }[];
 }
 
-export type AnswerKind = 'block' | 'pick' | 'work' | 'run' | 'project' | 'drive';
+export type AnswerKind = 'block' | 'pick' | 'work' | 'run' | 'project' | 'drive' | 'note';
 
 /** One of his answers, as it sits in an area's inbox (or, on the phone, still on its way). */
 export interface Answer {

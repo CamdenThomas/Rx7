@@ -329,6 +329,13 @@ phone (`kind=run`, `kind=project`), and, in `00-CAR`, the Manual's Log drive and
 (`kind=drive`: the choice is the odometer, target `drive-<when>` or `odo-<when>`). An answer in the inbox is exit code **2**. It never
 refuses a commit.
 
+**His notes are not answers (D-426).** A `kind=note` row in `00-CAR`'s inbox (target
+`note-<when>`) is a note he made on words he selected in the Manual. Its `context` holds
+`where:`, `page:` and `selected:`. It is a log he keeps while the Manual is being dialled in:
+no run applies it or deletes it, `inbox` and `status` do not count it as waiting, and only he
+removes one, from the Notes page. Read notes as leads when you work on the Manual, and act on
+one only when he asks.
+
 **Lifecycle.** You raise it → he answers in the app → `rx7.py inbox` shows his words → you
 apply it through the record (§6.2) → the ruling becomes a decision whose `closes` names the
 block → **you delete the block row and its inbox rows.** Before deleting, confirm three
@@ -420,7 +427,8 @@ so it is a block.
    files, then `git stash list`. His phone commits straight to GitHub, so a missed pull is
    the usual cause. Never tell him nothing was answered until you have looked. Never run
    anything that writes until you have.
-3. Classify each: a **ruling** (a letter, "follow recommendation", yes / no / a choice) → a
+3. Classify each (`rx7.py inbox` already leaves out his notes, `kind=note`, which are never
+   applied — §4): a **ruling** (a letter, "follow recommendation", yes / no / a choice) → a
    decision. A **brief** (guidelines, a re-framing, "help me choose") → sharpen the block
    and leave it open. A **question back** → answer it in the block's why and leave it open
    (delete only his inbox row, once his question is carried into the why). A **fact about

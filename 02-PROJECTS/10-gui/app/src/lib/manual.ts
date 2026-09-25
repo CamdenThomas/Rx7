@@ -105,3 +105,27 @@ export function hull(points: [number, number][]): [number, number][] {
   };
   return [...half(p), ...half([...p].reverse())];
 }
+
+// ---- His notes (D-426): words he selected in the Manual, what he wrote about them, and where.
+
+/** A moment as an answer's target stamp: 20260925T112300. */
+export function stamp(d = new Date()): string {
+  const p = (x: number) => String(x).padStart(2, '0');
+  return `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}T${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}`;
+}
+
+export interface Where {
+  where: string;
+  page: string;
+  selected: string;
+}
+
+/** A note's context, as NoteDialog writes it: one "key: value" line each. */
+export function noteContext(w: Where): string {
+  return [`where: ${w.where}`, `page: ${w.page}`, `selected: ${w.selected}`].join('\n');
+}
+
+export function readWhere(context: string): Where {
+  const get = (k: string) => (context ?? '').match(new RegExp(`^${k}: (.*)$`, 'm'))?.[1]?.trim() ?? '';
+  return { where: get('where'), page: get('page'), selected: get('selected') };
+}

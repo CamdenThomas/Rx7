@@ -93,6 +93,33 @@ test('the Manual: a zone on the car opens its parts, and a diagram opens its wri
   await expect(page.locator('.one .body')).toBeVisible();
 });
 
+test('the Manual: a note on selected words is kept with where it was made, until deleted', async ({ page }) => {
+  await open(page, '#/manual/specs');
+  const words = (await page.locator('.row .item').first().evaluate((el) => {
+    const r = document.createRange();
+    r.selectNodeContents(el.firstChild as Node);
+    const sel = window.getSelection() as Selection;
+    sel.removeAllRanges();
+    sel.addRange(r);
+    return sel.toString();
+  })).trim();
+  await page.getByRole('button', { name: 'Note', exact: true }).click();
+  await expect(page.getByRole('dialog').locator('blockquote')).toHaveText(words);
+  await page.getByRole('dialog').locator('textarea').fill('Check this against the 1982 book.\nSecond line.');
+  await page.getByRole('button', { name: 'Save note' }).click();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await page.getByRole('navigation', { name: 'Manual pages' }).getByRole('link', { name: /Notes/ }).click();
+  const note = page.locator('.note').first();
+  await expect(note.locator('blockquote')).toHaveText(words);
+  await expect(note.locator('.words')).toHaveText('Check this against the 1982 book.\nSecond line.');
+  await note.getByRole('link').click();
+  await expect(page).toHaveURL(/#\/manual\/specs$/);
+  await page.goBack();
+  await page.locator('.note').first().getByRole('button', { name: 'Delete note' }).click();
+  await page.locator('.note').first().getByRole('button', { name: 'Delete', exact: true }).click();
+  await expect(page.getByText('No notes yet.')).toBeVisible();
+});
+
 test('a block is answered with an option and words, kept, changed and withdrawn', async ({ page }) => {
   await open(page, blockUrl(pair.first.id));
   await page.getByRole('radio').first().click();
