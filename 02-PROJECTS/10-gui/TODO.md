@@ -13,45 +13,46 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 
 **Phase:** PROPOSED. **Goal:** A GUI over this tree - see where every project stands, answer blocks and picks, and hand work to Claude Code - that reads and writes only through the record and rx7.py, never a copy of its own
 
-12 open · 2 ready now · 0 done.
+12 open · 3 ready now · 2 done.
 
 ## Now — what can be started today
 
 **Yours:**
 
-- **A1** — Fill in SPEC.md - any, some or all of it; blank takes the default
+- **M1** — Plan the Manual with the agent: go through your brief in D-407 (4.1 to 5.13), starting with 4.5 (a 00-verify project and renumbering) and 5.6/5.7 (no history in the Manual)
 
 **Agent:**
 
-- **A2** — Apply what he wrote in SPEC.md: each answer into a decision or a row, then remove it from the page
+- **B0** — Retire the Markdown pages (D-405): blocks, inbox and decision bodies become tables; BLOCKS.md, PICKS.md, the TODO files, DECISIONS.md and SPEC.md are carried into the record and deleted; CLAUDE.md rewritten to match
+- **C1** — The jobs list, then the screen list and the flows between screens
 
 ## Everything, in working order
 
 *Stages in the order their work can start; inside a stage, each row after what it waits on.*
 
-### A · Decide - Camden's calls
+### M · The Manual - planned together
 
-- ▶ **A1** — Fill in SPEC.md - any, some or all of it; blank takes the default  
+- ▶ **M1** — Plan the Manual with the agent: go through your brief in D-407 (4.1 to 5.13), starting with 4.5 (a 00-verify project and renumbering) and 5.6/5.7 (no history in the Manual)  
   *you*  
-  D-399, D-400. The opening calls (platform 1.1, Claude 7.1, phone 1.4) are in it. Say when some is filled in; answers become decisions and rows
-- ▶ **A2** — Apply what he wrote in SPEC.md: each answer into a decision or a row, then remove it from the page  
-  *agent*  
-  D-400, D-402. Runs each time he says he is ready: first copy his answers verbatim from the Notion copy into SPEC.md and commit, then apply. Blanks take the default only once he says the sheet is finished
+  D-407. Until then the Manual screen is a title and a blurb
 
 ### B · Groundwork in rx7.py - the agent
 
+- ▶ **B0** — Retire the Markdown pages (D-405): blocks, inbox and decision bodies become tables; BLOCKS.md, PICKS.md, the TODO files, DECISIONS.md and SPEC.md are carried into the record and deleted; CLAUDE.md rewritten to match  
+  *agent*  
+  11.2. Every open block and every decision body is carried word for word, and a script proves it before any page is deleted
 - ⏳ **B1** — A JSON output from rx7.py for everything the GUI shows: status, blocks, picks, work, decisions  
-  *agent* · waits on: A1 (yours: Fill in SPEC.md - any, some or all of it; blank takes the default)  
+  *agent* · waits on: B0 (agent: Retire the Markdown pages (D-405): blocks, inbox and decision …)  
   R9 - the GUI never reads printed text. One flag on the existing commands, with its own selftest
 - ⏳ **B2** — A safe writer for his answers: put text under a block's SOLVE line or a pick's ANSWER line, back up first, refuse if the file changed underneath  
-  *agent* · waits on: A1 (yours: Fill in SPEC.md - any, some or all of it; blank takes the default)  
-  R3 - losing his writing is the worst failure. The GUI calls this; it never edits BLOCKS.md or PICKS.md itself
+  *agent* · waits on: B0 (agent: Retire the Markdown pages (D-405): blocks, inbox and decision …)  
+  R3 - losing his writing is the worst failure. rx7.py answer is the one writer: one file per answer per device, atomic, and the target must exist. The apps call it (the phone runs the same code)
 
 ### C · Design - screens before code
 
-- ⏳ **C1** — The jobs list, then the screen list and the flows between screens  
-  *agent* · waits on: A1 (yours: Fill in SPEC.md - any, some or all of it; blank takes the default)  
-  README steps 1-2. The screen map started 2026-09-24 in the screens table (D-400); the rest waits on SPEC.md
+- ▶ **C1** — The jobs list, then the screen list and the flows between screens  
+  *agent*  
+  README steps 1-2. Screens start from D-406; the screens table is brought to it
 - ⏳ **C2** — Wireframes, the Blocks screen first  
   *agent* · waits on: C1 (agent: The jobs list, then the screen list and the flows between screens)  
   README step 3; grey boxes only
@@ -79,4 +80,8 @@ command. There are no boxes to tick here on purpose: to mark a step done, say wh
 - ⏳ **E1** — The remaining screens (Home, Picks, TODO, Decisions, Run), one work row each, opened after D3  
   *agent* · waits on: D3 (yours: Answer one real block through the GUI and say what worked)  
   README steps 9-10, and the launcher entry
-<!-- rx7 todo sha256:c8a2b43018884bf85dca1280d3fbcfb41301d7e65e0820e82a527b4634c8ca4c -->
+
+### A · Decide - Camden's calls
+
+*Closed:* ✔ A1 · ✔ A2
+<!-- rx7 todo sha256:4dedd191dfae7708ef9606b36c81285fdbca48ca9a850e3dc514d5d2b70ce381 -->

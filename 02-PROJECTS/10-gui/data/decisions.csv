@@ -1,4 +1,9 @@
 id,system,title,date,status,supersedes,superseded_by,closes,also
-D-399,The project,"The GUI project opens: a view and an input over the record, built on rx7.py and Claude Code, never a second home for any fact",2026-09-24,standing,,,,
-D-400,The project,"SPEC.md is Camden's page to write in for the GUI; every idea raised in chat is written down as it is said, and the screen map starts from his home page of two options",2026-09-24,standing,,,,
-D-402,The project,SPEC.md is answered on a Notion copy while he works remotely; his words are copied verbatim into SPEC.md when he says he is ready,2026-09-24,standing,,,,
+D-399,The project,"The GUI project opens: a view and an input over the record, built on rx7.py and Claude Code, never a second home for any fact",2026-09-24,superseded,,D-405,,
+D-400,The project,"SPEC.md is Camden's page to write in for the GUI; every idea raised in chat is written down as it is said, and the screen map starts from his home page of two options",2026-09-24,superseded,,D-405,,
+D-402,The project,SPEC.md is answered on a Notion copy while he works remotely; his words are copied verbatim into SPEC.md when he says he is ready,2026-09-24,superseded,,D-405,,
+D-403,Platform,"Rx7 is two real apps from one design - a desktop app on the Fedora PC and an Android app on his Galaxy phone - opened like any app; everything readable offline anywhere, answers staged offline and sent on the next connection, edits and Claude only online; no password, no notifications",2026-09-24,standing,,,,
+D-404,Look and feel,"The look: dark only, his five-colour palette, clean technical and calm; a roomy, photo-rich home and dense, tight data pages; subtle motion; finished to a standard he can show a hiring manager",2026-09-24,standing,,,,
+D-405,The record itself,"The app replaces the Markdown pages: blocks, his answers, picks, TODO lists, decisions and the spec sheet live only in the record, and the app is how he reads and answers them",2026-09-24,standing,D-373 D-386 D-390 D-399 D-400 D-402,,,
+D-406,Screens and answering,"Screens and answering: home of two tiles, the project hub, each project's pages, list-and-focus answering with an Apply button at the top of each, Claude Code behind Explain, Discuss, chat and every run",2026-09-24,standing,,,,
+D-407,The Manual,"The Manual is a placeholder page until it is planned with him; his spec answers on it are its brief, verbatim, and nothing in them is applied yet",2026-09-24,standing,,,,

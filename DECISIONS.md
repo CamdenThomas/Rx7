@@ -11,23 +11,23 @@ group. Superseded and withdrawn ones are listed at the end with the decision tha
 replaced each, so any id ever issued can still be found by searching this file for it.
 
 
-**Most recent:** `D-398` Planning is open in every project at every phase: the phase says how far the build has got, never whether design may be touched · `D-399` The GUI project opens: a view and an input over the record, built on rx7.py and Claude Code, never a second home for any fact · `D-400` SPEC.md is Camden's page to write in for the GUI; every idea raised in chat is written down as it is said, and the screen map starts from his home page of two options · `D-401` The agent commits and pushes: small commits that each say what changed and why, straight to master, never a pull request · `D-402` SPEC.md is answered on a Notion copy while he works remotely; his words are copied verbatim into SPEC.md when he says he is ready
+**Most recent:** `D-403` Rx7 is two real apps from one design - a desktop app on the Fedora PC and an Android app on his Galaxy phone - opened like any app; everything readable offline anywhere, answers staged offline and sent on the next connection, edits and Claude only online; no password, no notifications · `D-404` The look: dark only, his five-colour palette, clean technical and calm; a roomy, photo-rich home and dense, tight data pages; subtle motion; finished to a standard he can show a hiring manager · `D-405` The app replaces the Markdown pages: blocks, his answers, picks, TODO lists, decisions and the spec sheet live only in the record, and the app is how he reads and answers them · `D-406` Screens and answering: home of two tiles, the project hub, each project's pages, list-and-focus answering with an Apply button at the top of each, Claude Code behind Explain, Discuss, chat and every run · `D-407` The Manual is a placeholder page until it is planned with him; his spec answers on it are its brief, verbatim, and nothing in them is applied yet
 
-Next id: `D-403`.
+Next id: `D-408`.
 
 ## Contents
 
 **00-CAR** — Fluids and service (2)
 
-**00-electrical** — Architecture and scope (15) · Build sequence (16) · Legs, connectors and grounds (47) · Outputs, soft fuses and logic (35) · Power backbone and battery (20) · Switches, ladders and inputs (18) · The dash node (20) · The record itself (14) · Wire, labels and materials (7)
+**00-electrical** — Architecture and scope (15) · Build sequence (15) · Legs, connectors and grounds (47) · Outputs, soft fuses and logic (35) · Power backbone and battery (20) · Switches, ladders and inputs (18) · The dash node (20) · The record itself (13) · Wire, labels and materials (7)
 
-**01-luxury** — Comfort, mirrors, windows, seats (12) · Head unit and audio (1) · Lighting (1) · Lighting — the second pass (6) · Modules — DCU and ICU (13) · Parts and sourcing (1) · The boundary — what the electrical build hands over (2) · The cluster (7) · The record itself (7)
+**01-luxury** — Comfort, mirrors, windows, seats (12) · Head unit and audio (1) · Lighting (1) · Lighting — the second pass (6) · Modules — DCU and ICU (13) · Parts and sourcing (1) · The boundary — what the electrical build hands over (2) · The cluster (7) · The record itself (6)
 
 **02-engine** — Engine and transmission (3) · What the electrical build reserves for the swap (9)
 
-**10-gui** — The project (3)
+**10-gui** — Look and feel (1) · Platform (1) · Screens and answering (1) · The Manual (1) · The record itself (1)
 
-**Superseded and withdrawn** — 26
+**Superseded and withdrawn** — 32
 
 
 ---
@@ -126,7 +126,7 @@ Next id: `D-403`.
 
 ## Build sequence
 
-*16 live — D-023 D-025 D-127 D-143 D-146 D-176 D-177 D-322 D-323 D-344 D-353 D-367 D-371 D-372 D-386 D-387*
+*15 live — D-023 D-025 D-127 D-143 D-146 D-176 D-177 D-322 D-323 D-344 D-353 D-367 D-371 D-372 D-387*
 
 **D-023 / D-024 — Parallel-system migration, least to most consequential, ending with ignition and start.** The factory harness stays intact and powered until each circuit's own cutover; never both systems on one load; the car drives home at the end of every session.
 
@@ -218,53 +218,6 @@ Nothing else moves. `loads` LD03, `logic` BRAKE, `inputs` A3 and `ladders` A3 ar
 
 **In the data.** Electrical `work` E3 (new); luxury `work` X-008 (new).
 *2026-09-21 · closes 00.25*
-
-**D-386 — The electrical project splits into `00-design/` and `01-build/`, each with its own generated TODO. Nothing in build starts before the design is reviewed and frozen (phase SOURCING), and the 2026-09-23 risk review becomes work and blocks.** Camden's call, 2026-09-23.
-
-**His words.** "factor these into account while remaking TODO. first i changed the directory structure of everything in electrical make sure all paths account, then split TODO into two one for build one for design. everything in build is blocked by a perfect verified design. todo in design muse be a checklist for me and a seperate list of all agent work and what is blocking it."
-
-**The directory structure (his move).** `cad/`, `firmware/`, `diagrams/` and `TODO.md` moved into `02-PROJECTS/00-electrical/00-design/`, and `01-build/` is new; `data/` stays where it was. Every live path was brought to the new layout:
-- `tools/diagrams.py` now writes into `00-design/diagrams/`
-- `.gitignore` covers the firmware binaries, the KiCad rules and the drawings' exception
-- CLAUDE.md §1, §3 and §9
-- the `cad/` README, board READMEs and guide (`../data/` became `../../data/` and `../../../data/`)
-- the firmware README and the X-007 row
-
-Decision bodies and old log rows keep the paths they were written with (R4); `rx7.py cites` lists any that no longer resolve.
-
-**The two TODOs.** `work` gains a `track` column (design | build), and `rx7.py todo` writes one file per track wherever a project has both folders.
-- `00-design/TODO.md` is his checklist in working order (☐ can do it now, ⏳ waiting on what is named), then every agent row, ready or blocked, and what blocks it: whose it is and what it is. The open blocks come last.
-- `01-build/TODO.md` is everything bought and everything physical. **Every build row gates on `phase:SOURCING`** (42 gates added), which only the freeze moves. That is what "blocked by a perfect verified design" means in the record.
-- The marks are the record's state, not boxes to type in (R3).
-
-**Which track.**
-- **Design:** desk work, measurements, bench proofs and the agent's work.
-- **Build:** the cart (A1, A2, A6, C2), stripping the A/C (B1), everything in stages D and E, and the modules' fabrication (F11, F1, F12, F3, F5, F6).
-
-The ICU and DCU final pass (F11) needs the parts in hand, and D-323 buys parts only after the design is complete. So it sits at the start of build rather than blocking the freeze.
-
-**The gate between them.** Z1 (agent) is the §6.5 design review, gated on every other open design row. Z2 (his) is the freeze ruling, gated on Z1. A Blocker or Major finding reopens the design list.
-
-**The risk review, factored in.**
-- **Block `00.29`:** how the car runs between E26 and the last migration. As written it cannot, because the key and the column switches can only be wired to one harness at a time.
-- **Block `00.30`:** split F3, and hold ignition and the headlamps on a ladder fault.
-- **R1, R2:** apply those two blocks.
-- **R3:** the ladder margin budget. A4 and A16 are checked against the cranking ground offset and supply sag, and A4 and A5 against the front-star offset while the pop-ups move. It adds a crank-logging check.
-- **R4:** the channel a surprise takes. None is spare.
-- **R5:** the regulator fallback, for a charge voltage above 14.6 V.
-- **R6 (his):** measure the PMU's sleep current on the bench. The PMU is already bought, per 00-CAR.
-- **W-330b** gains a third question for Ionic: does its BMS refuse charge below 0 °C, or disconnect the pack?
-
-**Two states changed.**
-- A1 goes from `blocked` to `open`, because its freeze gate now does the blocking.
-- F-009 goes from `blocked` to `open`, because it only needed the PMU on the bench and the PMU is bought.
-
-**In the data.**
-- `_schema`: `work.track` is new, and `work.stage` gains R and Z.
-- `work`: `track` is set on every row; R1–R6, Z1 and Z2 are new; 42 build gates are extended; A1, F-009, X-007 and W-330b are changed.
-- `BLOCKS.md`: `00.29` and `00.30` are new.
-- `tools/rx7.py`: `cmd_todo` is rewritten.
-*2026-09-23*
 
 **D-387 — The car comes apart once. The design list ends with the interior stripped (every wire left in place) and the measurements that need it out; the build list starts from the interior out and ends with it back in.** Camden's call, 2026-09-23. It refines D-386.
 
@@ -1170,7 +1123,7 @@ D-079 fitted the far-end terminator "in the engine bay, capped across `L1-S1 9/1
 
 ## The record itself
 
-*14 live — D-026 D-222 D-233 D-275 D-276 D-277 D-340 D-349 D-356 D-361 D-373 D-376 D-398 D-401*
+*13 live — D-026 D-222 D-233 D-275 D-276 D-277 D-340 D-349 D-356 D-361 D-376 D-398 D-401*
 
 **D-026 / D-043 — Working files are Markdown; IDs are permanent and never reused; a closed question is cited with its closer.**
 
@@ -1250,23 +1203,6 @@ D-079 fitted the far-end terminator "in the engine bay, capped across `L1-S1 9/1
 - **Stale rows corrected against standing decisions:** luxury `V-083` (it still named the LMR33630, seven FETs and six half-bridges; D-273, D-329, D-360), `SN16` (it listed the cancelled nozzle and de-icer, D-329), and `LP14`.
 
 **In the data.** Luxury: `work` `V-100`, `V-101` added; `V-083` note; `H-002` and `B3` gates now include `01.08 V-100 V-101`; `sensors` `SN16`; `parts` `LP14`. Outside the record: `cad/PCB-AND-3D-GUIDE.md` new, and `cad/README.md` and `cad/icu-carrier/README.md` updated. Nothing in `data/` cites a file in `cad/` (the fence).
-*2026-09-21*
-
-**D-373 — Each project gets a generated, read-only `TODO.md` from its `work` table: the second kind of generated document.** Camden's call, 2026-09-21, in chat: *"is that todo list in the files? each project (just focus on electrical needs to have that written out so that i can read and work on that list with ease any time"*.
-
-**Why a file at all.** The work list was only rows in `work.csv`, readable through `rx7.py status` (which shows the first few ready rows) or a query. CLAUDE.md §1 allowed exactly one generated document, `DECISIONS.md`, and told the agent not to write a document "so it can be read". Camden asked for exactly that, so this ruling makes the exception, on the same terms that made `DECISIONS.md` safe where v2's documents were not.
-
-**The terms.**
-- **A pure projection** of the project's `work` table plus the gate resolver. It adds no fact of its own and cannot disagree with the record.
-- **Read-only, with no boxes to tick** (R3). He marks progress by saying what he did; the row is set through the record and the file regenerated. `BLOCKS.md` stays the one file he writes in.
-- **`rx7.py todo` rebuilds it whole**, at the end of every run that changed a `work` row.
-- **Nothing gates a commit on it.** `check` does not read it.
-
-**What it shows.** What can be started today (his first, then the agent's), then every row in working order. Stages come in the order their work can start (the stage's typical row, not its earliest), and inside a stage each row follows what it waits on. Each row carries its owner, what it waits on and its note. Closed rows are one line per stage.
-
-**Written with it.** Electrical `work` E3 had just carried the archived install procedure into rows E4–E34, so the electrical `TODO.md` is the whole project end to end, from the A/C strip to the shakedown kit.
-
-**In the tool and the text.** `tools/rx7.py todo [-p AREA]` (`cmd_todo`, reads `work.csv` and the tree index, writes `<area>/TODO.md` only). CLAUDE.md §1 (two kinds of generated document), the tool list, §3's standing answers and §6's run ending. README.md. Files written: `02-PROJECTS/00-electrical/TODO.md`, and the same for 01-luxury and 02-engine.
 *2026-09-21*
 
 **D-376 — ECUMaster's PMU client runs on the Windows laptop Camden already has, kept as a car tool only. The project, its tools and all development stay on the Fedora machine.** Camden's call, 2026-09-22, answering block `00.27`: *"windwos computers remain untouched, the development evirment is now windows, i can sill log on to the windows computer at any time, the windows computers are now for personal use not development but for the pmu software easy peasy"*. Closes `00.27`.
@@ -1688,7 +1624,7 @@ The flip condition stays live and is cheap to settle: if the tank was ever repla
 
 ## The record itself
 
-*7 live — D-310 D-312 D-315 D-327 D-364 D-388 D-390*
+*6 live — D-310 D-312 D-315 D-327 D-364 D-388*
 
 **D-310 — Every ICU sender input is a high-Z observer of a gauge-driven node, never a divider that loads it; and there is one BRAKE tell-tale.** 2026-09-07, from the Q-301 finding. The old carrier draft read water temperature through a 1 kΩ pull-up to 3V3 and oil pressure through 330 Ω — either would have moved the factory needle the driver is still looking at. The front end is now 1 MΩ series → 330 kΩ to ground (×0.248: 12 V reads 2.98 V, 20 V clamps), 100 nF at the ADC pin, BAT54S to 3V3 / GND, calibrated in the car against the gauge (D-142 / electrical D-249) and averaged in firmware if the M-6 scope trace shows a pulsing regulator (Q-301a). Each observer carries a **DNP 100 Ω 1 W pull-up to +5 V behind a jumper** — the local excitation fitted only at S3, when the factory cluster leaves, never while the gauge still drives the node. Fuel joins the same pattern on `DP-ICU-B 3`. The tach front end is specified against the **trailing** coil's negative primary (D-304): 2 × 100 kΩ series, 5.1 V zener + Schottky clamp, comparator with hysteresis, input capture. The brake-warning tap carries fluid level and parking brake on one node, as the factory lamp did, so the cluster shows one BRAKE tell-tale (D-209(b)'s parking-brake sense is answered this way, not with a new input). Values are `data/sensors.csv`'s.
 *2026-09-07*
@@ -1743,38 +1679,6 @@ Parts not in round 1 wait on a measurement or an open question: LP34 (the glass 
 - `tools/rx7.py`: `cmd_picks` and `write_projection` are new.
 - CLAUDE.md: §1 names `PICKS.md`, §6.9 is new, and a standing answer is added to §3.
 *2026-09-23*
-
-**D-390 — Parts suggestions live on the project's `PICKS.md`, laid out like `BLOCKS.md`. It has one entry per product, each ending in an `**ANSWER:**` line. He answers any, some or all, whenever he likes, and tells the agent. The agent saves his words into `picks` and only then removes the entry.** Camden's call, 2026-09-23. It supersedes D-389 (one block per suggestion in `BLOCKS.md`) and replaces D-388's generated `PICKS.md`.
-
-**His words.** "one more time plea format this like BLOCKS you sugest all the parts and and i leasure i can answer one any or all, the tell you and you save that info"
-
-**Reading taken.** "Format this like BLOCKS" is read as a page of its own for parts, built the way `BLOCKS.md` is, rather than more blocks on `BLOCKS.md` itself: `BLOCKS.md` keeps the design questions, and `PICKS.md` holds the parts. That reading keeps the most options open, and moving the parts back onto `BLOCKS.md` is one command if he prefers it.
-
-**What changed in the system.**
-- **§2 and R3.** `PICKS.md` becomes his second page to write in, beside `BLOCKS.md`. The rule that protects `BLOCKS.md` now protects both:
-  - nothing regenerates it and no tool rewrites it;
-  - the tool only appends suggestions to it (`rx7.py picks --ask`), and only removes an entry once his verdict and his exact words are saved in `picks` (`--clear`);
-  - the reader is not picky: everything under `**ANSWER:**` up to the next entry is his answer, over any number of lines;
-  - after every append, the page must parse back as it was, or the append is undone.
-- **§1.** `PICKS.md` is no longer a generated document, so there are three kinds again. The status that page showed (chosen, vetoed with his reasons, not yet searched) now prints in the terminal from `rx7.py picks`.
-- **§6.9.** A round is:
-  1. search;
-  2. add the picks to the record;
-  3. `rx7.py picks --ask`;
-  4. he answers and tells the agent;
-  5. `rx7.py picks --answered`;
-  6. yeses become one decision, noes are vetoed with his reason, and questions are answered in the next suggestion for that part;
-  7. `rx7.py picks --clear`.
-
-**Round 1 moved.** Blocks `01.12` to `01.21` had not been answered; every answer line was empty when checked. They were taken off `BLOCKS.md`, and the same ten primaries (PK001 to PK019, odd numbers) are the first ten entries on `02-PROJECTS/01-luxury/PICKS.md`. The old generated `PICKS.md` was deleted after confirming its fingerprint was intact, which proves nobody had typed in it.
-
-**In the data.**
-- `picks.block` is dropped, because entries are keyed by the pick id.
-- `tools/rx7.py`:
-  - new: `parse_picks_page`, `pick_entry`, and `picks --ask / --answered / --clear`;
-  - removed: `write_projection` and the generated page.
-- CLAUDE.md §1, §2, R3, §3 (a standing answer), the tool list and §6.9.
-*2026-09-23 · supersedes D-389*
 
 
 ---
@@ -1936,55 +1840,255 @@ The electrical build's counterpart is **D-318**. The consequence here is that `H
 # 10-gui
 
 
-## The project
+## Look and feel
 
-*3 live — D-399 D-400 D-402*
+*1 live — D-404*
 
-# D-399 - The GUI project opens: a view and an input over the record, built on rx7.py and Claude Code, never a second home for any fact
+# D-404 - The look: dark only, his five-colour palette, clean technical and calm; a roomy, photo-rich home and dense, tight data pages
 
-*2026-09-24 - Camden*
+*2026-09-24 - Camden, from the spec sheet (SPEC.md 1.2, 2.1-2.7, 12.1)*
 
-**Decision.** **A new project, `02-PROJECTS/10-gui`, is opened at phase PROPOSED to design and build a graphical tool for managing this tree. Its `README.md` holds the outline of how a GUI is made and the first plan.** Camden's call, 2026-09-24, in chat: *"please open a new project in rx7 projects. name this project: 10-gui. then please set up the readme to conatin the very basic outline fo the prosses for creating/designing a gui application to manage this project directory. for example one screen i could navigate to will display the blocks with pretty design/format one at a time with a respond text box or a few buttens like chat to discuss an answer or explain the block i need to solve. that is one example, This could be a web tool or desktop or an desktop/ios application i do not mind, this gui tool will be highly connected to calude code via api calls, but delegate tasks to scrips where we can."*
+**Decision.** **Rx7 is dark only, built on his palette `#3d5a80` `#98c1d9` `#e0fbfc` `#ee6c4d` `#293241`, and it should feel clean, technical and calm. Density follows the page. The home page is roomy, style-led and rich in photos. The pages full of numbers (a project's lists, the tables) are tight and condensed, with no pictures in the way. Motion is subtle and quick, and switches off when the device asks for reduced motion. The whole thing is finished to a standard he can show a hiring manager next to his CAN bus microcontroller project. The code is written to be as clean as possible, with no clutter, so it can later be explained piece by piece.**
 
-**What this opens that `CLAUDE.md` had closed.** §1 and §9 called the visual layer "a later concern" and allowed no views beyond the generated ones. This project is where that layer is now planned. Until its design is ruled, nothing else in the tree grows a view. The project's `README.md` is hand-written at his request and is not a generated document.
+**His words.**
+- 1.2 Who uses it: *"This is only for my regular use; however, I would like to be able to show it to a hiring manager alongside the CAN bus microcontroller project for applicable job applications. I am not solving a problem or distributing this app, just for my own benefit, but it should be professional enough to showcase my skillset."*
+- 2.1 Mood: *"default"* (the default read "Clean, technical, calm")
+- 2.2 Things he likes the look of: left blank; the default reads "None. The style is built from 2.1."
+- 2.3 Light or dark: *"a"* (dark only)
+- 2.4 Colours: *"start by using this color palet: ["#3d5a80","#98c1d9","#e0fbfc","#ee6c4d","#293241"]"*
+- 2.5 Density: *"c, also depends on window, main menu/home always roomy and style oriented only two options, project pages or manual pages that show lots of numbers and info should feel more tight and condenced"*
+- 2.6 Photos: *"also depends on the page, home page should feel pretty and photo rich, some pages will be heavily number/fact and photos will be in the way"*
+- 2.7 Animation: *"Default: Subtle and quick, and off if the device asks for reduced motion."*
+- 12.1 Learning: *"code to perfection no clutterl, later we can cleanly go biti by bit for a full understanding"*
 
-**The constraints the GUI is designed under** (from `CLAUDE.md`, restated in the README):
-- It keeps no fact of its own (R2). It reads the record through `rx7.py` every time.
-- An answer typed in it lands under `**SOLVE:**` in `BLOCKS.md` or `**ANSWER:**` in `PICKS.md` through a script, so those two pages stay the only entry points for his writing (R3). The GUI is a new way to type into them, not a new place.
-- It reads `rx7.py`'s data and exit codes, never its printed text (R9), so `rx7.py` gains a JSON output (B1).
-- Scripts do everything with one right answer. Claude is called for judgement only.
-- It runs on the Fedora PC, from this tree.
+**Readings taken.**
+- **"Start by using" these colours** is taken as the base of the design, not a fixed list. The design system derives its lighter and darker tones from these five and adds no new hue. Changing the palette means changing it in one place.
+- **Photos.** The tree has no photographs of the car yet (`01-REFERENCE/photos/` holds only its README). Until he adds some, the home page uses a drawing of the car made in the same palette. Any photo he adds takes its place with no code change.
+- **2.2 blank** takes the default: the style comes from 2.1.
 
-**In the data.** New area `02-PROJECTS/10-gui`: `_project`, `_tables`, `_schema`, `decisions`, `work`, `log` and `retired`. Work rows A1-E1: Camden's opening calls first (A1), then the groundwork in `rx7.py` (B1, B2), the design (C1-C4), the first vertical slice (D1-D3) and the rest (E1). `CLAUDE.md` §9: the visual-layer paragraph names this project.
+**In the data.** Nothing yet. The visual design and its review are work rows in this project.
 *2026-09-24*
 
-# D-400 - SPEC.md is Camden's page to write in for the GUI; every idea raised in chat is written down as it is said, and the screen map starts from his home page of two options
 
-*2026-09-24 - Camden*
+## Platform
 
-**Decision.** **`02-PROJECTS/10-gui/SPEC.md` is a third page Camden writes in, alongside `BLOCKS.md` and `PICKS.md`. It is a spec sheet with every question the build needs, each with a default that applies when he leaves it blank. Every idea about the GUI raised in chat goes into the `ideas` table in the same session, as it was said. The site map is the `screens` table, starting from his layout: a home page with two options, Manual and Projects.** Camden's words, 2026-09-24, in chat: *"make sure you are writting down any dieas we talk about we can clean it all up later, first lets define each screen/page of the gui web app"*; *"im invisioning a menu/homepage that the app opens to that contains only two options, manual and projects"*; *"manual will in some very pretty organized manor display both the car state, car diagrams, car work/repair history, car part spec sheet. I want this owner's manual to be the exact tool I wish I had when I started working on this car, every fact, detail, model, repair, and history all perfectly organized"*; *"The projects page will be the project hub, where I can make new projects or work on current projects"*; *"make me a sheet that I can fill out that will give you every detail you need to build this tool with no aid from me. remember dont build the tool just the spec sheet"*.
+*1 live — D-403*
 
-**Why a third page.** He asked for a sheet to fill out, and R3 allows his writing only on named pages, so the sheet is named here. It follows `PICKS.md`'s rules (D-390): written once, never regenerated or rewritten by any tool, and each answer removed only after it is saved in the record (a decision for a call, a row for a fact) with his words verbatim. Blank answers take the sheet's default only when he says the sheet is finished (work row A2). Until then a blank is unanswered.
+# D-403 - Rx7 is two real apps from one design - a desktop app on the Fedora PC and an Android app on his Galaxy phone
 
-**Ideas stay raw.** `ideas` rows keep his words verbatim with status `raw`. The agent's own suggestions are marked `by=agent` and stay suggestions until he keeps them. He asked for a clean-up later, not now, so nothing is merged or dropped without him.
+*2026-09-24 - Camden, from the spec sheet (SPEC.md 1.1, 1.3-1.7, 4.6, 4.7, 9.1, 10.3)*
 
-**Platform.** He called it "the gui web app" in passing. That is recorded as an idea (I-002), not a ruling: SPEC.md 1.1 asks him to confirm it, because an answer he did not give directly is not a ruling (§6.2).
+**Decision.** **The GUI is two real, installed apps built from one design: a desktop app on the Fedora PC and an Android app on his Galaxy phone. Each opens like any other application; nothing runs in the background waiting for it. Both apps can read the whole record with no connection at all, anywhere. Offline, he can write answers, and they are kept on the device and sent at the next connection. Changes to the record, and anything Claude does, happen only online. There is no password and there are no notifications. The app is called Rx7.**
 
-**In the data.** `10-gui`: tables `ideas` (I-001-I-013) and `screens` (14 rows: home, manual and its four sections, projects, new project, a project and its pages; his marked `camden`, the suggested ones `agent`). Work: A1 now reads "Fill in SPEC.md"; A2 added (apply what he wrote); C1's note. `CLAUDE.md` §2 and R3 name SPEC.md.
+**His words.**
+- 1.1 Platform: *"desktop fedora app + andriod app"*
+- 1.3 Devices: *"the desktop PC at my desk or my galaxy phone from the car"*
+- 1.4 Away from home: *"Must be accessible anywhwre hence the android phone app, i want to be able to view it 4 states over mid roadtrip at the gas station, when buing motor oil to top off, i just take a quick peak in the manual and boom done and easy. must be as accessable as the book in the glovebox used to be. OFlline allows read or staging respones for next connection, no claude access."*
+- 1.5 In the garage: *"will be used both at my desk, driving around anywhere, or dirty in the garage, offline as a refference tool (you can write responses that will save to the app, but need connection to write or apply this work) only online allows edits"*
+- 1.6 Always on: *"not always on, not a web app a real desktop and real ios app, i will open it like any other application"*
+- 1.7 Name: *"Rx7"*
+- 4.6 Printing: *"no paper copies.  that is why app must work read offline"*
+- 4.7 Offline: *"offline read of anything is available but no edit (you can queue responses but not send them)"*
+- 9.1 Notifications: *"no notifications nessisary"*
+- 10.3 Password: *"desktop/andriod app do not need a password"*
+
+**Reading taken: Android, not iOS.** 1.6 says "real ios app", but 1.1 and 1.4 say Android and 1.3 names his Galaxy phone, which runs Android. The build is Android. iOS is not ruled out: the same design can build for iOS later on a Mac.
+
+**What "anywhere" means for the design.**
+- **The PC can be off.** A phone four states away cannot depend on the desktop. The phone reads the record from the repository's GitHub copy, which D-401 already keeps current at the end of every run. It sends his answers there too.
+- **The phone keeps a copy for offline reading.** The whole record's data is about 1 MB. That copy follows the rules that made generated documents safe (§1): it is a pure projection, it is read-only, it is rebuilt whole on each sync, and nothing gates on it. It never holds a fact the record does not.
+- **Answers are never lost in transit.** An answer typed offline is saved on the phone at once and stays there until GitHub confirms it has been committed.
+- **Claude only online.** On the desktop, Claude Code runs on the PC. How the phone reaches Claude with the PC off is a separate question, raised as its own block.
+
+**What this supersedes.** Nothing earlier decided the platform. The README recommended a local web app (idea I-008), and that recommendation is not taken. D-399's line "It runs on the Fedora PC, from this tree" is restated by D-405, which supersedes D-399.
+
+**In the data.** Nothing yet. The design, the build and the setup steps on his phone are work rows in this project.
 *2026-09-24*
 
-# D-402 - SPEC.md is answered on a Notion copy while he works remotely; his words are copied verbatim into SPEC.md when he says he is ready
 
-*2026-09-24 - Camden*
+## Screens and answering
 
-**Decision.** **The spec sheet has a Notion copy, "GUI spec sheet (10-gui)" under his Rx7 page in Notion (https://app.notion.com/p/3e545edc13da81ea8300ffd3877e49f8), laid out for Notion: collapsible sections and a blue ✏️ answer box under every question. He answers there, the same way he answers `BLOCKS.md`. When he says he is ready, the agent copies each answer word for word from Notion into `SPEC.md` under the same question's `**ANSWER:**` line, commits that, and only then applies it (A2).** Camden's words, 2026-09-24, in chat: *"please make a copy of spec sheet to notion, please adjust format for notions desplay, I cant not edit the md files while controlling remote so i will answer things on notion just like BLOCKS.md, i will anser what i can and alert you when i am ready to factor the information into the real directory."*
+*1 live — D-406*
 
-**Why this keeps one home per fact (R2).** The questions and defaults live in `SPEC.md`. The Notion page is where he types, never a second record: nothing is read from it except his answers, and only when he says so. His answers reach the record the same way as ever, through `SPEC.md` and then decisions and rows.
+# D-406 - Screens and answering: home of two tiles, the project hub, each project's pages, list-and-focus answering with an Apply button at the top of each
 
-**Keeping his writing safe (R3).** Nothing he typed on Notion is edited, reworded or cleared by the agent. An answer is removed from the Notion page only after it is saved in the record (the same test as `SPEC.md` and `PICKS.md`). A question changed in `SPEC.md` after the copy is changed on the Notion page too, in the same run, without touching any answer there. Unclear answers are handled as §6.2 says: a question typed in a box is answered on the Notion page under it.
+*2026-09-24 - Camden, from the spec sheet (SPEC.md 3.1-3.4, 6.1-6.4, 7.1-7.9, 8.1-8.4, 10.1, 11.3)*
 
-**In the data.** `ideas` I-014: he cannot edit the repo's files while working remotely, which the GUI itself should solve. Work A2's note. `CLAUDE.md` §2 names the Notion copy.
+**Decision.**
+- **Home.** It has exactly two working buttons, Manual and Projects, as two large tiles, each with a picture and a one-line summary. Everything else on the page is there to look good.
+- **Getting around.** A menu bar is always on screen, with breadcrumbs under it. Search is the key feature: one search box finds anything anywhere, from every screen, with a keyboard shortcut.
+- **The project hub.** One card per project: its id, name, icon, phase, a progress bar, how many things wait for him, and its last activity. Finished projects sit in a collapsed "Finished" group. "New project" takes a name and one paragraph of goal. Claude then opens the area, writes the opening blocks and a first work list, and he lands on the project's page.
+- **A project's pages.** Blocks, Picks, TODO, Decisions, Parts and Run.
+- **Answering: every page with answers works the same way.** It opens on a list of every item. He can open any item from the list, then step to the previous or next item or to the next unanswered one, or go back to the list. An **Apply** button at the top of the page hands his saved answers to Claude.
+- **Blocks.** One block at a time: its Ask, Why, Options, Recommend and Stops, with the project, how long it has been open, what it unblocks and the decisions it touches. He answers with a button per option, "follow the recommendation" in one tap, a text box for anything else, and a skip to the next question. **Explain** restates the block in plain words, then says what each option would mean for the car. **Discuss** opens a chat beside the block. When he answers, the chat's key points are saved with his answer, and the rest is thrown away.
+- **Answers wait.** An answer is saved and waits until he presses Apply.
+- **Picks.** One product at a time: its picture, price, why, drawbacks and runner-up, with a buy link. He answers yes, no with a reason, or a question.
+- **TODO.** Each of his rows is answered in the way its kind needs: a check (bought, done), a value (a measurement, with its unit), or a choice from a list.
+- **Decisions.** Searchable and grouped, and each one links to what it superseded and what cites it.
+- **Commits.** Each project's page shows a read-only list of recent commits. Committing stays the agent's job.
+- **Claude.** Claude is Claude Code in headless mode, on his subscription, in the tree, following `CLAUDE.md`. There is one chat, reachable from every page, and it knows which page he is on. Every run follows the playbooks and ends with its report. The app warns before a run that is likely to be long, and there is no hard cap.
+- **No date.** There is no date for a first version.
+
+**His words.**
+- 3.1: *"those two are the only planned functional buttons the page should have other pretty things on there"*
+- 3.2: *"default"* · 3.3: *"c"* (both a menu bar and breadcrumbs)
+- 3.4: *"yes search will be a very key part of this tool"*
+- 6.1: *"id +default + icon"* (the default was name, phase, a progress bar, "N waiting for you" and the last activity)
+- 6.2: *"default"*
+- 7.3: *"c + skip to next question button"* ((c) was a button per option, a text box, and "follow recommendation" as one tap)
+- 7.6: *"a"* (saved, waits for Apply)
+- 8.2: *"case by case, some may just be a check like buy part, some will have a text box for entering a value, others may have a dropdown for a multiple chice decition, maybe not all but a way to represent each and respont inline eficently"*
+- 8.4: *"each page with a run function should have an apply button at the top, and alist of each thing / i should be able to enter the list anywhere, and cycle forwards or backwards to nexk or next unanswered from each or return to the list"*
+- Left blank, so the default applies: 6.3, 6.4, 7.1, 7.2, 7.4, 7.5, 7.7, 7.8, 7.9, 8.1, 8.3, 10.1 and 11.3. He said "i have answered every spec", which is when D-400 said blanks take the default.
+
+**Readings taken.**
+- **8.4 and the Run page.** 8.4 puts an Apply button on each page that has answers. The Run page (6.3) stays, but holds only the runs that belong to no single page: Plan, Review and a parts round. It also shows every run's live feed and report.
+- **7.5: where the chat's key points go.** They were to be written into "the block's Why above your answer". The block is the agent's text, so the key points go into the answer itself (`inbox.context`), and the agent carries them into the decision with his words. What he reads is the same, and the block stays what the agent wrote.
+- **6.1: the icon.** Each project names its icon in `_project.csv` (`icon`), chosen from the app's icon set. The agent picks it, and it can be changed in one row.
+- **8.2: the kind of answer.** A row says which kind of answer it takes. `work.reply` is `check`, `value` or `choice`, `work.choices` lists the choices, and `work.unit` gives a value's unit. Rows with no reply set are answered with a check.
+
+**In the data.**
+- `work` in every area gains `reply`, `choices` and `unit`.
+- `_project` gains `icon` in every project.
+- The `screens` table is brought to this map when the design is written (work C1).
 *2026-09-24*
+
+
+## The Manual
+
+*1 live — D-407*
+
+# D-407 - The Manual is a placeholder page until it is planned with him; his spec answers on it are its brief, verbatim, and nothing in them is applied yet
+
+*2026-09-24 - Camden, from the spec sheet (SPEC.md 11.1, 4.1-5.13)*
+
+**Decision.** **The Manual gets a title and a short blurb for now. It is planned in a conversation with him before anything is built. His answers to sections 4 and 5 of the spec sheet are its brief, kept here word for word. Nothing in them is applied yet, including the proposed `00-verify` project and renumbering the projects (4.5).**
+
+**His words.**
+- 11.1 What first: *"leave manual as a temp page with title and blurb we will talk and plan that more first"*
+- 4.1 The tool he wishes he had: *"hours of research to do anything! Even the official manual was not a stone certain tool it covered all 1979-1985 and include a bunch of crap from imported versions the many transmission options the endless variations of all the types released. And a physical book is lame no search tool other then appendix*
+
+  *The biggest goal is dynamic! This tool should heady to grow and adapt with the car.*
+
+  *This can also extend so much further then the typical manual, links to parts official websites customer service lines, part specs, anything.*
+
+  *This manual will grow faster then the car ever will, by the “end” (there is no real end) the car will have a highly accurate 3D model for every part all designed to combine together to make a real flawless accurate 3d model of the entire car*
+
+  *Every measurement you are making me do now should be a look up in the manual, every current draw for any part I needed to measure before will be a manual look up away*
+
+  *The Claude access should also be a big tool for this manual, I should be able to ask you anything right there*
+
+  *I’m on page 482 I can highlight one word that’s a part name and a mini widow with a data preview will pop up the same screen or a question box will pop up so I can poke a question at you tied the the confusion point.*
+
+  *For every project I have had to do for this car the manual lead to to 5 sources which each led me to 18 more. This should have it all right here in one spot the full 8 book catalog that all possible information about the car now is on my phone accessible anywhere with the car or not for anything I could ever possible wish to check about my car."*
+- 4.2 How it's organised: *"an and b maybe even other systems on top. The real goal of the manual is to take one absolute truth table with no repeat values so inconsistency is impossible, with a complete dynamic order. There should be presets like an and b but this tool should be set up to dynamically retrieve relevant information.*
+
+  *For example I’m useing the manual and I am in view a, it’s great but it sparks a weird specific question like what is the total amount of 12 gauge wire end to end, no manual just says that is have to go sheet by sheet to add the totals. The manual is not a organized book of information it’s a dialed tool take one set of information and organize it to any useful pattern needed"*
+- 4.3 Read-only or editable: *"manual is not editable via the app only via the code, projects have ridged guided edit points like solving blocks then starting the Claude cycle but do not allow me to edit anything more just respond"*
+- 4.4 Sources: *"no, data tables aka one all knowing data source should be obscured/abstracted by the gui interface. The data should waste no effort being readable by human eyes only act as a flawless one source of truth to be referenced by the code and you."*
+- 4.5 Unconfirmed values: *"nothing will ever exist in the manual in this state. The manual is for clear cut undeniable facts. If it is not a backed fact it is not in the manual. This should exist in a project only (if there is unknown in the car data sheets we have in the project rx7 directory move them to a new project named 00-verify (increment all other projects to fix number overlap)). this is critical when I go to view the manual there should only be verified information, and if I want it and it is not there perfect queue to add it to verify then confirm it before adding it to manual. (This is only a temporary project as in the future each project will hold the unknowns until they are complete and all verified data gets added to the manual.)"*
+- 4.6 Printing: *"no paper copies.  that is why app must work read offline"* (applied by D-403)
+- 4.7 Offline: *"offline read of anything is available but no edit (you can queue responses but not send them)"* (applied by D-403)
+- 5.1 Car state: *"default"* (identity and mileage, then open issues, then each system as fitted)
+- 5.2 Mileage: *"yes. There should be a log drive function or a set odm function when I forget to log each drive. Set odm will actually create a drive log with NaN values for all details other then miles traveled to keep good record that shows when I missed a drive"*
+- 5.3 Due and overdue: *"default "* (a small "due soon" list on Car state)
+- 5.4 Which diagrams: *"default"* (all that exist, grouped by system)
+- 5.5 Using diagrams: *"default"* (zoom, pan and search first; tap-a-wire later)
+- 5.6 Factory scans: *"scans for now and will be deleted when the electrical project is done. This app has no history of state or projects. When the fact changes the old fact dies and the new fact takes its place. The manual of a car is no place for the diagrams for model 1 that has died"*
+- 5.7 History: *"no timeline within manual at all! Just exactly right now physical car nothing about what used to be or what will be. (The exception being service history: this was replaced with this part on this date at this odm) any other history is non existent in manual. Projects will each have their own unique decisions review page as a past history nothing else! Each project will similarly not reference anything in the future other then one start to end project design/plan no possible routes forward just the one plan "*
+- 5.8 What an entry holds: *"all of them available only what was done, date and odm are required"*
+- 5.9 Adding entries: *"default"* (a form for quick entries, Claude for detail)
+- 5.10 Photos: *"yes"* (stored in the tree under `01-REFERENCE/photos/`, named by date and system)
+- 5.11 A part's spec sheet: *"default, every part should try and get every detail possible from color to a full CAD 3d model everything "*
+- 5.12 Factory specs: *"default"* (a searchable Specs list, and each part shows its own)
+- 5.13 Buying: *"manual only shows what is on the car parts should only list the real parts that or attached installed and functional on the real car"*
+
+**Why nothing is applied yet.** He asked to talk the Manual through first (11.1). Several answers reshape the record beyond the app:
+- 4.5 would move every unconfirmed value in `00-CAR` into a new project and renumber every project. Block ids are numbered by project (D-356), so renumbering changes every block id and every gate that names one.
+- 5.6 and 5.7 remove history and superseded material from what the car's record shows.
+
+These are the first things to settle in that conversation. They are kept here so none of his words are lost.
+
+**What holds now.** The Manual screen shows a title and a blurb, and the home tile opens it. His brief above is the agenda for planning it (work row M1, his).
+
+**In the data.** `work` M1 (Camden: plan the Manual with the agent) is new.
+*2026-09-24*
+
+
+## The record itself
+
+*1 live — D-405*
+
+# D-405 - The app replaces the Markdown pages: blocks, his answers, picks, TODO lists, decisions and the spec sheet live only in the record
+
+*2026-09-24 - Camden, from the spec sheet (SPEC.md 11.2, 10.2)*
+
+**Decision.** **The Markdown pages are retired. From now on:**
+- **Blocks** are rows in each area's `blocks` table, and not entries on `BLOCKS.md`.
+- **His answers** go into each area's `inbox` table until they are applied. This covers answers to blocks, to parts picks and to his work rows.
+- **Decisions** keep their full text in the `body` column of `decisions.csv`, and not in 300 files under `data/decisions/`.
+- **The TODO lists and the decisions index** are shown by the app, computed from `work` and `decisions` each time. They are no longer written as `TODO.md` and `DECISIONS.md`.
+- **The spec sheet** has been applied, by D-403 to D-407 and this decision, and is deleted.
+
+**The app is how he reads and answers all of it. The files in the tree are for code, drawings and the data the app reads.**
+
+**His words.**
+- 11.2 Must-haves: *"the app interface is actually remove the poor expensive md system we have, leave the code for data and facts represented only once and only in the most optimal structure for the gui app and your interaction. this should replace all the md files not supliment them, i use the project directory for code or kicad pcb or anything like that, no more endless md pages. when i choose parts or solve blocks that should factor to the data hub not to a million md files, the gui pulls from the one data hub to display that information in the best way"*
+- 10.2 Things that must never happen: left blank, so the default holds. **The app never loses what he typed, never keeps a fact outside the record, and never touches the Windows drive.**
+
+**Where each thing lives now.**
+
+| Was | Now |
+| --- | --- |
+| `BLOCKS.md`: one entry per open block | `blocks` in each area: `id, title, opened, ask, why, options, recommend, stops`. Each option is one line starting `(a) `, so the app can show it as a button. A block is still deleted once a decision closes it (§4). |
+| His text after `**SOLVE:**` / `**ANSWER:**` | `inbox` in each area: one row per answer, saved as its own file (`data/inbox/<target>~<device>.csv`), so the phone and the desktop can never overwrite each other. Columns: `target, kind, choice, text, context, device, at`. The agent deletes the row once his words are saved in the decision or row it ruled. |
+| `PICKS.md` | Nothing new. `picks` already held every suggestion. His verdict arrives in `inbox`, and his words still end up in `picks.said`. |
+| `TODO.md` (and electrical's two) | The app's TODO page. The working order, the design and build tracks and the four parts (D-387) are computed by `rx7.py export`. |
+| `DECISIONS.md` | The app's Decisions page: searchable, grouped by system, each decision linked to what it superseded and what cites it. |
+| `data/decisions/D-###.md` | `decisions.body` |
+| `SPEC.md` and its Notion copy | Applied, and gone. |
+| Empty `README.md` files in `00-CAR` and three projects | Deleted: they held nothing. |
+
+**What stays a file.**
+- **`CLAUDE.md`**: the agent's instructions, rewritten for this system.
+- **This project's `README.md`**: he asked for the design to be pitched there.
+- **Code and drawings, with the READMEs that belong to them**: KiCad, firmware, the harness-leg drawings (D-385), tools. "i use the project directory for code or kicad pcb or anything like that."
+- **Reference write-ups** (`01-REFERENCE/factory-circuits/*.md`, `00-CAR` procedures): material for the Manual, which waits on its own plan (D-407).
+- **`99-ARCHIVE`**: history, never rewritten.
+
+**How his writing stays safe (R3).** Losing what he typed is still the worst failure the system can have. The app works like this:
+- It saves a draft on the device with every keystroke.
+- When he saves an answer, it writes the answer as a new file that nothing else writes to. The write is atomic, so no half-written file can be left behind.
+- On the phone, it keeps the answer until GitHub confirms the commit.
+- Nothing deletes an `inbox` row except the agent, and only after his words are saved where the answer ruled: a decision body, or `picks.said`.
+
+**Superseded, and what carries over.**
+- **D-373** (each project's generated `TODO.md`) and **D-390** (`PICKS.md`, his second page to write in). Both pages are gone.
+- **D-386**: only the part that wrote two TODO files goes. The rest stands and carries over. Electrical's work has two tracks, design and build, set by `work.track`. Every build row is gated on `phase:SOURCING`. Z1 (the design review) and Z2 (his freeze ruling) close the design list. Which track a row belongs to follows where the work happens. The app shows each track as its own list.
+- **D-399** (the GUI project opens). It carries over, updated. The GUI is a view of the record and a way to answer it, and never a second home for any fact. It reads through `rx7.py`. It never reads the words `rx7.py` prints, only data and exit codes (R9). Scripts do everything that has one right answer, and Claude is called only for judgement. Two of its lines no longer hold:
+  - that he types into `BLOCKS.md` and `PICKS.md` (this decision);
+  - that it runs only on the Fedora PC (D-403).
+- **D-400** (the spec sheet). It carries over, updated. The `ideas` table keeps every idea as it was said, raw until he cleans it up. The `screens` table is the site map. The spec sheet itself is done.
+- **D-402** (answering on a Notion copy): the phone app does that job now. The Notion page can be deleted.
+
+**The rules that made generated pages safe now apply to the app.**
+- It shows the record and adds no fact of its own.
+- Nothing in it gates a commit.
+- It never asks him to type anywhere except into an answer.
+
+**In the data.**
+- **`tools/rx7.py`**:
+  - A table can be stored as a folder of one-row files (`inbox`).
+  - New: `blocks`, `inbox`, `export` (the JSON the app reads, R9) and `answer` (the one writer of his answers).
+  - Removed: `decisions`, `todo`, the page parsers and `picks --ask/--clear`.
+  - `new` writes the body into the table.
+- **Every area**: `blocks`, `inbox` and `decisions.body` are added to `_tables` and `_schema`.
+- **`work`**: gains `reply`, `choices` and `unit` (D-406).
+- **Files**:
+  - Moved into the record, then deleted: the open blocks, and every decision body.
+  - Deleted: `BLOCKS.md`, `DECISIONS.md`, the five TODO files, `PICKS.md`, `SPEC.md` and the four empty READMEs.
+- **`CLAUDE.md`**: §1, §2, §3, §4, §6 and R3 are rewritten, and the root `README.md` is updated.
+*2026-09-24 · supersedes D-373 D-386 D-390 D-399 D-400 D-402*
 
 
 ---
@@ -2017,5 +2121,11 @@ The electrical build's counterpart is **D-318**. The consequence here is that `H
 - `D-314` (01-luxury, superseded) → `D-374` — The display goes in with the ICU, by the electrical build; this project…
 - `D-326` (01-luxury, superseded) → `D-359` — The mirrors move on a mechanical switch in the panel; the DCU does mirror heat and nothing else
 - `D-331` (00-electrical, superseded) → `D-351` — The master disconnect is the Blue Sea 9004e; its auxiliary pole is a switch-position input so the PMU drops excitation before the main contacts break
+- `D-373` (00-electrical, superseded) → `D-405` — Each project gets a generated, read-only TODO.md from its work table - the second generated document
+- `D-386` (00-electrical, superseded) → `D-405` — The electrical project splits into 00-design and 01-build, each with its own generated TODO; nothing in build starts before the design is reviewed and frozen (phase SOURCING); the 2026-09-23 risk review becomes work and blocks
 - `D-389` (01-luxury, superseded) → `D-390` — Every parts suggestion is its own block, with the full detail and his answer line right under it; rx7.py picks --ask writes them from the picks table
+- `D-390` (01-luxury, superseded) → `D-405` — Parts suggestions live on the project's PICKS.md, laid out like BLOCKS.md: one entry per product with an ANSWER line; he answers any, some or all at leisure, the agent saves his words into picks and only then removes the entry
 - `D-395` (02-engine, superseded) → `D-396` — The swap runs in nine stages: -01 design, 00 buy and retrieve, 01 breakdown, 02 polish, 03 paint, 04 rebuild, 05 car prep, 06 install, 07 fine-tune - and the first full plan fills them
+- `D-399` (10-gui, superseded) → `D-405` — The GUI project opens: a view and an input over the record, built on rx7.py and Claude Code, never a second home for any fact
+- `D-400` (10-gui, superseded) → `D-405` — SPEC.md is Camden's page to write in for the GUI; every idea raised in chat is written down as it is said, and the screen map starts from his home page of two options
+- `D-402` (10-gui, superseded) → `D-405` — SPEC.md is answered on a Notion copy while he works remotely; his words are copied verbatim into SPEC.md when he says he is ready

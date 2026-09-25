@@ -192,7 +192,7 @@ D-369,"Outputs, soft fuses and logic","Mirror heat is switched high-side by the 
 D-370,"Outputs, soft fuses and logic",The DCU picks hatch or fuel door by grounding K3's or K4's coil during the O10 release pulse,2026-09-21,standing,,,00.23,
 D-371,Build sequence,"The BT817 evaluation board is the one exception to D-323: it is bought now, as a design tool",2026-09-21,standing,,,00.24,D-323
 D-372,Build sequence,"Install steps are work rows in stage E, one per step, gated in order - no install table",2026-09-21,standing,,,00.25,
-D-373,The record itself,"Each project gets a generated, read-only TODO.md from its work table - the second generated document",2026-09-21,standing,,,,
+D-373,The record itself,"Each project gets a generated, read-only TODO.md from its work table - the second generated document",2026-09-21,superseded,,D-405,,
 D-374,Architecture and scope,"The ICU and the DCU are both this build's, whole: boards, channels, enclosures, connectors, firmware, the panel's electronics and the bus map; the luxury package keeps only the loads the DCU drives and the plastics",2026-09-22,standing,D-313 D-314,,,luxury D-313 · D-314 · D-355 · D-361 · D-362
 D-375,"Outputs, soft fuses and logic","The door and A8 wake stages are pulse (edge) stages: one 1 µF film capacitor per side, so a door left ajar wakes the PMU once and cannot hold it on",2026-09-22,standing,,,00.26,
 D-376,The record itself,"ECUMaster's PMU client runs on the existing Windows laptop, kept as a car tool only; the project and all development stay on the Fedora machine",2026-09-22,standing,,,00.27,
@@ -203,7 +203,7 @@ D-380,"Legs, connectors and grounds","The control panel's electronics: nine keys
 D-381,"Outputs, soft fuses and logic","The door and A8 wake stages' values: excitation 220k switched off while awake, sense divider 1M / 560k, a 1 µF edge into a follower, pulse about 0.4 s - all confirm until CK12",2026-09-23,standing,,,,
 D-382,"Legs, connectors and grounds","The DCU's comfort circuits: 7.5 A per seat heater, 5 A per seat cooler, 5 A for mirror heat, and an 8-way DT13 comfort connector with its own two ground pins",2026-09-23,standing,,,00.28,
 D-385,"Legs, connectors and grounds","Each harness leg gets two generated drawings - a pin ladder (A) and a route map (B) - under 00-electrical/diagrams, rebuilt by rx7.py diagrams; the four options are kept for a later switch",2026-09-23,standing,,,,
-D-386,Build sequence,"The electrical project splits into 00-design and 01-build, each with its own generated TODO; nothing in build starts before the design is reviewed and frozen (phase SOURCING); the 2026-09-23 risk review becomes work and blocks",2026-09-23,standing,,,,
+D-386,Build sequence,"The electrical project splits into 00-design and 01-build, each with its own generated TODO; nothing in build starts before the design is reviewed and frozen (phase SOURCING); the 2026-09-23 risk review becomes work and blocks",2026-09-23,superseded,,D-405,,
 D-387,Build sequence,The car comes apart once: the design list ends with the interior stripped (all wiring left in place) and the measurements that need it out; the build list starts from the interior out and ends with it back in,2026-09-23,standing,,,,
 D-398,The record itself,"Planning is open in every project at every phase: the phase says how far the build has got, never whether design may be touched",2026-09-24,standing,,,,
 D-401,The record itself,"The agent commits and pushes: small commits that each say what changed and why, straight to master, never a pull request",2026-09-24,standing,,,,
