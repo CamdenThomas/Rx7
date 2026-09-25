@@ -16,7 +16,7 @@ so the zip and everything built from it are in `.gitignore`. To restore it, put
 | `rx7.glb` | no | a lighter copy (about 280k triangles, 5 MB) for the app's 3D view (D-415) |
 | `landmarks.json` | no | each part's centre and size in mm, for `estimate.py` |
 | `estimate.py` | yes | rough route lengths into `routes.model_ft` (D-416) |
-| `10-gui/app/public/car/*.webp` | yes | the app's renders: pictures, not the model |
+| `10-gui/app/public/car/*.webp` | yes | the app's renders: pictures, not the model. Written by `blend.py` from the FB since D-420 (`build.py --renders` still makes the SA's) |
 
 ## Build
 
@@ -44,6 +44,7 @@ download; its `url` is kept so it can be fetched by hand into `library/<category
 | `catalog.py` | yes | imports new manifest lines into `cad` (never overwrites a row) |
 | `blend.py` | yes | Blender script: builds the one combined model |
 | `out/rx7-fb.blend`, `.glb` | no | the combined model: one collection per `blend` row |
+| `rx7-fb.glb` | no | the app's 3D view (D-420): the FB body, the SA's wheels and the tail-lamp scans, in cm, centred |
 | `out/checks.json`, `*.png` | no | every check against the factory figures, and the renders |
 
 ```

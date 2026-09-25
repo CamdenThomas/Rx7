@@ -1,8 +1,9 @@
 <!--
-  The car in 3D (D-415): the purchased model built by 01-REFERENCE/model/build.py, turned
-  with the mouse, repainted from the swatch. Desktop only — the model stays on the PC and
-  out of git, so the phone shows the renders instead. It is a 1978 body: the FB's bumpers,
-  tail lamps and dash differ, and nothing is measured from it here.
+  The car in 3D (D-415, D-420): the FB body from the free CAD library, scaled to the factory
+  size, on the bought 1978 model's wheels, built by 01-REFERENCE/model/blend.py. Turned with
+  the mouse, repainted from the swatch (materials named carpaint). Desktop only — the model
+  stays on the PC and out of git, so the phone shows the renders instead. It is low-poly and
+  has no interior, and nothing is measured from it here.
 -->
 <script lang="ts">
   import { onMount } from 'svelte';
@@ -100,7 +101,7 @@
         <button class="btn small ghost" onclick={() => (paint = SILVER)}><RotateCcw size={14} /> Sunbeam Silver</button>
       {/if}
     </div>
-    <p class="caveat faint">A 1978 body — the FB's bumpers, tail lamps and dash differ. Drag to turn it.</p>
+    <p class="caveat faint">The FB body at factory size; the wheels are the 1978 model's. Drag to turn it.</p>
   {/if}
 </div>
 

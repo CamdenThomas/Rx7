@@ -26,6 +26,7 @@ import json
 import math
 import mathutils
 import os
+import sys
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 FILES = os.path.join(ROOT, "01-REFERENCE", "model", "library")
@@ -53,6 +54,12 @@ ENGINE_SHAFT_Z = 360.0        # eccentric shaft height above the ground
 EXPORT_SCALE_13B = 0.35       # ericthepoolboy's parts are 35 % of full size
 
 CHECKS = {}
+SILVER = (0.46, 0.48, 0.50, 1.0)  # Sunbeam Silver as a linear base colour, as model/build.py has it
+# the FB shell's painted groups: body, bonnet, doors, roof, bumpers, pop-up covers
+PAINTED = ("CARROCERIA", "CAPOT", "PUERTAS", "TECHO", "PARAG_DEL", "PARAG_TRAS", "TAPAFAROS")
+APP_ART = os.path.join(ROOT, "02-PROJECTS", "10-gui", "app", "public", "car")
+GLASS = None  # set by fb_body()
+APP_GLB = os.path.join(ROOT, "01-REFERENCE", "model", "rx7-fb.glb")
 LAMP_TARGET = []  # the FB body's own tail lamp meshes, filled by fb_body()
 
 
@@ -165,6 +172,8 @@ def fb_body():
     wheels = [o for o in meshes if under(o, "Rueda")]
     wing = [o for o in meshes if under(o, "a28")]
     mirror_ids = {id(o) for o in meshes if under(o, "ESPEJOS")}
+    panel_ids = {id(o) for o in meshes if any(under(o, w) for w in PAINTED)}
+    glass_ids = {id(o) for o in meshes if under(o, "VIDRIOS")}
     LAMP_TARGET[:] = [o for o in meshes if under(o, "LUCES_TRAS") or under(o, "LUZ_TRAS")]
     bake(objs)
     meshes = [o for o in bpy.data.objects if o in meshes]
@@ -202,7 +211,25 @@ def fb_body():
     CHECKS["fb_body.scale"] = round(s, 4)
     CHECKS["fb_body.overhang_front"] = round(mx.y, 1)
     CHECKS["fb_body.overhang_rear"] = round(-WHEELBASE - mn.y, 1)
-    paint(body, material("sunbeam_silver", (0.46, 0.48, 0.50, 1), 0.8, 0.35))
+    global GLASS
+    GLASS = material("glass", (0.02, 0.025, 0.03, 1), 0.0, 0.04)
+    GLASS.node_tree.nodes["Principled BSDF"].inputs["Transmission Weight"].default_value = 0.6
+    carpaint = material("carpaint", SILVER, 0.85, 0.32)
+    carpaint.node_tree.nodes["Principled BSDF"].inputs["Coat Weight"].default_value = 1.0
+    for o in body:
+        o.data.shade_smooth()
+        o.data.set_sharp_from_angle(angle=math.radians(40))
+        for i, m in enumerate(o.data.materials):
+            if id(o) in glass_ids or (m and "glass" in m.name.lower()):
+                o.data.materials[i] = GLASS
+        if id(o) not in panel_ids:
+            continue
+        for i, m in enumerate(o.data.materials):
+            # every material on a painted panel is its paint, except a lamp's strong colour
+            bsdf = m.node_tree.nodes.get("Principled BSDF") if m and m.use_nodes else None
+            c = bsdf.inputs["Base Color"].default_value if bsdf else (0.8, 0.8, 0.8, 1)
+            if m is None or (m.name != "glass" and max(c[:3]) - min(c[:3]) < 0.5):
+                o.data.materials[i] = carpaint
     move_to(body, collection("fb_body"))
     return body
 
@@ -245,7 +272,36 @@ def sa_overlay():
     track = (max(c.x for c in cs) - min(c.x for c in cs)) * s
     check("sa_overlay.track_at_tyre_centres", track, (TRACK_F + TRACK_R) / 2)
     move_to(meshes, collection("sa_overlay", shown=False))
+    sa_wheels(meshes, tyres)
     return meshes
+
+
+def sa_wheels(meshes, tyres):
+    """The SA's tyre, rim, brake disc and wheel nuts - everything within 320 mm of each tyre
+    centre that is not paint - copied and moved onto the FB's factory track (SP-132). Its
+    tyre is 599 mm across against the FB's derived 589; kept as modelled."""
+    out = []
+    for t in tyres:
+        c = sum(bounds([t]), mathutils.Vector()) / 2
+        parts = []
+        for o in meshes:
+            a, b = bounds([o])
+            oc, size = (a + b) / 2, max(b - a)
+            mat = o.active_material.name if o.active_material else ""
+            if (oc - c).length < 320 and size < 650 and not mat.startswith("carpaint"):
+                parts.append(o)
+        side = 1 if c.x > 0 else -1
+        track = TRACK_F if c.y > -WHEELBASE / 2 else TRACK_R
+        dx = side * track / 2 - c.x
+        for o in parts:
+            n = o.copy()
+            n.data = o.data.copy()
+            n.data.transform(mathutils.Matrix.Translation((dx, 0, 0)))
+            bpy.context.scene.collection.objects.link(n)
+            out.append(n)
+    CHECKS["wheels_sa.parts"] = len(out)
+    move_to(out, collection("wheels_sa"))
+    return out
 
 
 # ---- wheels and tyres, from the specs alone -------------------------------------------
@@ -268,7 +324,7 @@ def wheels():
         r.name = name + "_rim"
         paint([r], steel)
         objs += [t, r]
-    move_to(objs, collection("wheels"))
+    move_to(objs, collection("wheels", shown=False))
     CHECKS["wheels.tyre_diameter"] = round(TYRE_D, 1)
     return objs
 
@@ -475,6 +531,84 @@ def tail_lamps(body):
     return [o, left]
 
 
+# ---- the app: its renders and its 3D view (D-420) ---------------------------------------
+def app_frame():
+    """The app's 3D view frames the car in centimetres, centred on the ground (CarModel.svelte)."""
+    return mathutils.Matrix.Scale(0.1, 4) @ mathutils.Matrix.Translation((0, WHEELBASE / 2, 0))
+
+
+def app_art(objs):
+    """The Home and Manual renders, lit and framed as model/build.py lit the SA (D-415)."""
+    sc = bpy.context.scene
+    keep = (sc.render.engine, sc.render.resolution_x, sc.render.resolution_y, sc.camera, sc.world)
+    sc.render.engine = "CYCLES"
+    sc.cycles.device = "CPU"
+    sc.cycles.samples = 48
+    sc.cycles.use_denoising = True
+    sc.render.film_transparent = True
+    sc.render.resolution_x, sc.render.resolution_y = 1800, 900
+    sc.view_settings.view_transform = "AgX"
+    world = bpy.data.worlds.new("studio")
+    world.use_nodes = True
+    world.node_tree.nodes["Background"].inputs["Color"].default_value = (0.20, 0.24, 0.30, 1)
+    world.node_tree.nodes["Background"].inputs["Strength"].default_value = 0.9
+    sc.world = world
+    lights = []
+    for name, loc, energy, size in (("key", (-400, -300, 500), 1.6e7, 400), ("rim", (500, 400, 300), 9e6, 300),
+                                    ("fill", (500, -400, 120), 4e6, 500)):
+        light = bpy.data.objects.new(name, bpy.data.lights.new(name, "AREA"))
+        light.data.energy, light.data.size = energy, size
+        light.location = loc
+        light.rotation_euler = (mathutils.Vector((0, 0, 50)) - mathutils.Vector(loc)).to_track_quat("-Z", "Y").to_euler()
+        sc.collection.objects.link(light)
+        lights.append(light)
+    lo, hi = bounds(objs)
+    centre = (lo + hi) / 2
+    cam = bpy.data.objects.new("appcam", bpy.data.cameras.new("appcam"))
+    sc.collection.objects.link(cam)
+    sc.camera = cam
+    cam.data.lens = 70
+    cam.data.clip_end = 10000
+    os.makedirs(APP_ART, exist_ok=True)
+    for name, direction, dist in (("side", (-1, 0.0, 0.08), 1150), ("threequarter", (-0.72, 0.66, 0.2), 1150)):
+        d = mathutils.Vector(direction).normalized()
+        cam.location = centre + d * dist
+        cam.rotation_euler = (centre - cam.location).to_track_quat("-Z", "Y").to_euler()
+        png = os.path.join(OUT, f"app-{name}.png")
+        sc.render.filepath = png
+        bpy.ops.render.render(write_still=True)
+        img = bpy.data.images.load(png)
+        sc.render.image_settings.file_format = "WEBP"
+        sc.render.image_settings.quality = 88
+        img.save_render(os.path.join(APP_ART, f"{name}.webp"))
+        sc.render.image_settings.file_format = "PNG"
+    for o in lights + [cam]:
+        bpy.data.objects.remove(o)
+    sc.render.engine, sc.render.resolution_x, sc.render.resolution_y, sc.camera, sc.world = keep
+    sc.render.film_transparent = False
+
+
+def app_model(objs):
+    for o in bpy.data.objects:
+        o.select_set(False)
+    for o in objs:
+        o.select_set(True)
+    bpy.ops.export_scene.gltf(filepath=APP_GLB, export_format="GLB", use_selection=True, export_apply=True,
+                              export_yup=True, export_texcoords=False, export_cameras=False, export_lights=False)
+
+
+def in_frame(objs, m, fn):
+    """Run fn with objs moved into another frame, then move them back."""
+    for o in objs:
+        o.data.transform(m)
+    try:
+        fn(objs)
+    finally:
+        inv = m.inverted()
+        for o in objs:
+            o.data.transform(inv)
+
+
 # ---- output ---------------------------------------------------------------------------
 def render(name, view):
     scn = bpy.context.scene
@@ -527,32 +661,46 @@ def main():
         bpy.context.scene.display.shading.show_xray = xray
         bpy.context.scene.display.shading.xray_alpha = 0.25
 
-    only("fb_body", "wheels", "engine_12a", xray=True)
+    only("fb_body", "wheels_sa", "engine_12a", xray=True)
     render("xray-12a", "side")
     render("xray-12a", "top")
-    only("fb_body", "wheels", "engine_ls3", xray=True)
+    only("fb_body", "wheels_sa", "engine_ls3", xray=True)
     render("xray-ls3", "side")
     render("xray-ls3", "top")
-    only("fb_body", "wheels", "tail_lamps")
+    only("fb_body", "wheels_sa", "tail_lamps")
     render("tail-lamps", "rear")
     render("tail-lamps", "three")
     only("sa_overlay")
     render("sa-overlay", "side")
-    shown_set = ["fb_body", "wheels", "engine_12a"]
+    shown_set = ["fb_body", "wheels_sa", "engine_12a"]
     if "tail_lamps" in cols and CHECKS.get("tail_lamp.icp_rms", 99) <= 25:
         shown_set.append("tail_lamps")
     only(*shown_set)  # the shown set, as exported
     bpy.ops.wm.save_as_mainfile(filepath=os.path.join(OUT, "rx7-fb.blend"))
-    # glTF: shown collections only, metres
-    for o in bpy.data.objects:
-        o.select_set(False)
     shown = [o for o in bpy.data.objects if o.type == "MESH"
              and not any(c.hide_render for c in o.users_collection)]
-    for o in shown:
-        o.data.transform(mathutils.Matrix.Scale(0.001, 4))  # glTF is in metres
-        o.select_set(True)
-    bpy.ops.export_scene.gltf(filepath=os.path.join(OUT, "rx7-fb.glb"), export_format="GLB",
-                              use_selection=True, export_apply=True, export_yup=True)
+    # the app's set: what shows from outside - the engine is inside a closed body
+    app = [o for o in shown if not any(c.name == "engine_12a" for c in o.users_collection)]
+    if "--no-app" not in sys.argv:
+        hidden = [c for c in cols if not c.hide_render and c.name not in ("fb_body", "wheels_sa", "tail_lamps")]
+        for c in hidden:
+            c.hide_render = True
+        in_frame(app, app_frame(), app_art)
+        thin = []
+        for o in app:
+            if len(o.data.polygons) > 50000:  # the lamp scans: a million triangles each
+                d = o.modifiers.new("thin", "DECIMATE")
+                d.ratio = 30000 / len(o.data.polygons)
+                thin.append((o, d))
+        in_frame(app, app_frame(), app_model)
+        for o, d in thin:
+            o.modifiers.remove(d)
+        for c in hidden:
+            c.hide_render = False
+    in_frame(shown, mathutils.Matrix.Scale(0.001, 4), lambda objs: (
+        [o.select_set(o in objs) for o in bpy.data.objects],
+        bpy.ops.export_scene.gltf(filepath=os.path.join(OUT, "rx7-fb.glb"), export_format="GLB",
+                                  use_selection=True, export_apply=True, export_yup=True)))
     with open(os.path.join(OUT, "checks.json"), "w") as fh:
         json.dump(CHECKS, fh, indent=1, sort_keys=True)
     print("CHECKS", json.dumps(CHECKS, sort_keys=True))

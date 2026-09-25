@@ -319,3 +319,22 @@ D-417,The Manual,"The Manual is one spine of verified facts about the car as it 
 **Still his.** Where held-back facts wait, and whether projects are renumbered for a `00-verify` project (his 4.5), is block `10.01`. The Manual does not wait on it: what is held back is computed whichever way he answers.
 
 **In the data.** `10-gui` work: M1 done, new rows MA1-MA4 (M-a) and MB1, MC1, MD1, ME1. `00-CAR` gains `systems`, `zones`, `parts`, `drives` and new `specs` columns in the rows that follow this decision."
+D-420,,"The app's 3D view and its renders show the FB, not the 1978 SA",2026-09-25,standing,,,,D-415,"# The app's 3D view and its renders show the FB, not the 1978 SA
+
+*2026-09-25 - Camden, in chat*
+
+**Decision.**
+- **The desktop 3D view loads `01-REFERENCE/model/rx7-fb.glb`**: the FB body from the free CAD library (D-418, blend row `fb_body`), scaled to the factory size, on the bought SA model's wheels moved onto the FB's factory track, with the scanned FB tail-lamp housings. Its panels share one material named `carpaint`, so the paint picker still repaints the car. The engine is left out of it: the body is closed.
+- **The Home and Manual renders** (`app/public/car/side.webp`, `threequarter.webp`) are rendered from the same set by `01-REFERENCE/model/blend.py`, lit and framed exactly as `build.py` lit the SA, in Sunbeam Silver.
+- **`build.py` no longer writes the renders** unless run with `--renders`; it still builds `rx7.glb` and `landmarks.json` from the SA for the route estimates (D-416), which are unchanged.
+- **The caveat on screen now reads:** ""The FB body at factory size; the wheels are the 1978 model's.""
+
+**His words.**
+> switch the app's 3d view to the FB body
+
+**Readings taken.**
+- **What stays from D-415.** Everything but the source: the paint picker, desktop-only, the phone showing renders, the model out of git. D-415's limit (""a 1978 body..."") is replaced by the new caveat, because it is no longer true.
+- **The wheels.** No free model of any FB wheel exists (D-418's search). The FB GS stock wheel is a 5J x 13 styled steel wheel (SP-126); the SA model's alloy is the nearest real RX-7 wheel and looks it, so it is used and the caveat says so. Its tyre is 599 mm across against the FB's derived 589.
+- **Low-poly.** The FB shell is about 13k triangles and has no interior; up close it is faceted. It is the right car at the right size, which the SA was not.
+
+**Consequences.** `02-PROJECTS/10-gui/app`: `Home.svelte` (`MODEL`), `CarModel.svelte` (its header and caveat), `public/car/side.webp` and `threequarter.webp`. `01-REFERENCE/model`: `blend.py` (piece `wheels_sa`, the `carpaint` and glass materials, the app renders and `rx7-fb.glb`), `build.py` (`--renders`), `README.md`. `01-REFERENCE` blend: row `wheels_sa` added; `wheels` (spec-built) is now hidden, kept as the check."

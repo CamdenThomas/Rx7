@@ -7,7 +7,8 @@ Run headless, from the tree root:
 Reads   01-REFERENCE/model/1978-mazda-rx-7-mk1-sa.zip   (kept out of git - README.md)
 Writes  01-REFERENCE/model/rx7.glb                        the app's 3D view (desktop only, out of git)
         01-REFERENCE/model/landmarks.json                 part centres, mm, for route estimates (out of git)
-        02-PROJECTS/10-gui/app/public/car/*.webp          the app's renders (committed: renders, not the model)
+        02-PROJECTS/10-gui/app/public/car/*.webp          only with --renders: the app's renders come from
+                                                          blend.py, the FB body, since D-420
 
 Owns no table. Paint is Sunbeam Silver, read from 00-CAR/data/vehicle.csv (row `colour`)
 only to name it here; the colour itself is set below.
@@ -163,7 +164,7 @@ def export_glb(meshes):
 def main():
     meshes = load(unzip_obj())
     landmarks(meshes)
-    if "--no-render" not in sys.argv:
+    if "--renders" in sys.argv:  # the app shows the FB since D-420: blend.py writes them
         render(meshes)
     export_glb(meshes)
     print("RX7-MODEL built", len(meshes), "parts")
