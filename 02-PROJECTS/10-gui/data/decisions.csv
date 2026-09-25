@@ -296,3 +296,26 @@ These are the three uses I had offered in chat: *""1. App artwork: render it in 
 - **Out of git.** He was asked in chat whether the zip should stay out of git and has not answered yet. Keeping it out is the reversible reading: the repository is public and the model is a bought file. Committing it later is one line in `.gitignore`.
 
 **Consequences.** App: `CarModel.svelte` (new, three.js loaded only when opened), `Home.svelte`, `Manual.svelte`, `public/car/side.webp` and `threequarter.webp`, and the `three` dependency. `desktop/photos.rs` now also serves `01-REFERENCE/model` (the `.glb` only matters there). The tree: `01-REFERENCE/model/build.py` and `README.md`, and `.gitignore` for the model files."
+D-417,The Manual,"The Manual is one spine of verified facts about the car as it is now, and every screen is a query over it",2026-09-24,standing,,,,D-407,"# D-417 - The Manual is one spine of verified facts about the car as it is now, and every screen is a query over it
+
+*2026-09-24 - Camden, in chat, on the proposed structure (work row M1)*
+
+**Decision.** **The Manual is built as proposed in chat on 2026-09-24. Its basic unit is a part on the car as it is today. Specs, connections, service, photos, links and CAD hang off parts. Every screen (Car state, Systems, The car, Specs, Service, Diagrams, Ask, and a page for each part) is a query over 00-CAR, computed by `rx7.py export`. The app holds no fact of its own. Build order: M-a (spine, Car state, Specs, Service), M-b (Systems, part pages, popups), M-c (Ask from a selection), M-d (Diagrams, the 3D location view), M-e (saved queries).**
+
+**His words.** He asked for ""a suggestion structure for the manual"", read it, and answered: *""please begin this design full swing""*.
+
+**What was proposed and is now ruled.**
+- **The spine, in 00-CAR.** `systems` (the tree, with each system's state now; it replaces `as_fitted`), `zones` (where on the car), `parts` (each installed part: maker, part number, system, zone, links, the maker's support line, photos, CAD), `specs` (every number, now tied to a system and a part), `service` (the only history), `drives` (the odometer log), `procedures`, and 01-REFERENCE `sources`.
+- **Verified only (his 4.5).** A row reaches the Manual only if nothing in it still says `confirm` (R11), a spec is not `unverified`, and it is the figure for this car. A spec from another model year's manual is not a fact about this car (his 4.1: the factory book ""covered all 1979-1985""), so it is held back with the rest. What is held back is computed, never typed, and `export` lists it with the reason.
+- **Now only (his 5.6, 5.7).** The Manual shows the car as it is. The service log is the one history. The factory spec of a part that is no longer on the car (the Nikki carburettor, its choke) is held back. So is a part bought but not fitted (the Ionic battery, his 5.13). The changes-from-factory list `mods` is folded into `parts` (what is fitted now) and `service` (what was done, when), and is removed.
+- **Drives (his 5.2).** *Log drive* and *Set odo* are answers from the app, a new inbox kind `drive`. *Set odo* is a drive with only the odometer filled in, so a missed drive still shows. The current odometer is derived from the newest drive or service reading, never typed.
+- **Read-only (his 4.3).** The app writes only answers. Drives are answers, applied by the agent like every other answer.
+
+**Settled here as small (§3).**
+- **Part granularity.** A part is anything with its own part number or its own spec. Fasteners are grouped per joint. This only decides which rows exist; it is reversible and costs nothing.
+- **The 3D model as the location map.** The bought 1978 SA model (S-037) is a picture, not the FB. It serves only as the map behind *The car* view's zones, and nothing is measured from it (R11). Real CAD replaces it part by part.
+- **Faults on Car state.** A known fault is a fact of now (his 5.1 default already lists open issues). An issue still marked `confirm` is held back.
+
+**Still his.** Where held-back facts wait, and whether projects are renumbered for a `00-verify` project (his 4.5), is block `10.01`. The Manual does not wait on it: what is held back is computed whichever way he answers.
+
+**In the data.** `10-gui` work: M1 done, new rows MA1-MA4 (M-a) and MB1, MC1, MD1, ME1. `00-CAR` gains `systems`, `zones`, `parts`, `drives` and new `specs` columns in the rows that follow this decision."
