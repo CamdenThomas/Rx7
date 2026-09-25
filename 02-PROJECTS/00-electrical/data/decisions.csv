@@ -976,3 +976,26 @@ D-408,electrical,The ladder margin budget (R3): A4 and A5 decode on upward windo
 - `rules`: `ladder-decode` is new and holds the three methods, the formula and the boundaries.
 - `checks`: CK14 (MG23: log A4, A16, the supply and the block offset through a real crank), CK15 (PMU client 5.4: can a function divide, and read the supply voltage), CK16 (MG15 / MG16: log A4, A5 and the front-star offset through a pop-up cycle with the headlamps on).
 - `work`: E26's note says how the new windows are entered; R3 done."
+D-409,electrical,"A surprise takes no PMU channel: an input goes to the ICU and reaches the PMU on CAN, an output shares a PMU channel behind a DCU select as the releases do; V-081's and Q-115's surprises need none",2026-09-24,standing,,,,,"**D-409 — A surprise takes no PMU channel. An input goes to an ICU input and reaches the PMU as a CAN field; a driver's switch goes to the DCU's panel; an output shares an existing PMU channel behind a DCU select, as the releases already do (D-354). The two surprises the risk review named, V-081's pop-up topology and Q-115's speed signal, need no PMU channel at all. Freeing a PMU channel is always his ruling, and the candidates are named with what each costs.** Agent, 2026-09-24, R4 (D-386 risk review). Nobody was asked: this names paths and changes no wire, part or channel.
+
+**The two named surprises.**
+- **V-081 / CK08.** If WR turns out to be the pop-up winding's only supply path, the fix is a feed to WR on each side from the same K1 / K2 run feed (or the O1 splice): a conductor per side, not a channel. L2-P is full (4 of 4), so it is a larger housing or a splice at the nose - a wire change, and his block when CK08 says so. Nothing here concludes which topology the motor has (R11).
+- **Q-115.** Road speed is an ICU input, IC08 at DP-ICU-B 8 (D-272), not a PMU one. If the B-29 reed switch checks out, it lands on the same IC08 through its pull-up jumper, one conductor into L3-S2 12 or L3-S3; if it does not, the Hall sender already in the design is what is used. The PMU gets speed from 0x200 byte 6 either way.
+
+**The order a surprise takes.**
+Inputs:
+1. A signal nothing safety-critical gates on → an ICU input and a field in an ICU frame, which the PMU reads as a CAN input. First IC07 at DP-ICU-B 7 (the oil-temperature stage: its carrier stage is built and it sits under a sealing plug until the swap, D-264), then DP-ICU-B 9 (pre-wired to L1-S2 11, D-271; B2's 0-5 V wideband fallback claims it first). Cost: one conductor to the drop and a firmware config row.
+2. A switch the driver presses → a key on the DCU's panel (SN19) and a CAN field. Config only.
+3. A contact that can join a ladder → a new state on an existing one, one resistor at the switch and the same conductor. Only after the ladder arithmetic says it fits (D-408's decode).
+4. A signal the fuel-pump gate, the crank interlock, the brakes or the lamps act on → it must be on a PMU wire, and no input is free. That is a ruling: the only duplicate the PMU has is A7, which the ICU also reads (IC02), and D-260 chose to keep the pump gate off the ICU.
+
+Outputs:
+1. A low-current or momentary load → share an existing PMU output with the DCU picking which load, by grounding a relay coil during the PMU's pulse (D-354 / D-370: O10 and K3 / K4). The DCU also has the two low-side switch positions D-329 freed on the comfort carrier (confirm they are still on the board at F11).
+2. A comfort-class load → the O15 comfort bus, which carries no load this build, behind the luxury package's own fuses (D-382).
+3. **O4 DEFOG** is the one 25 A output doing nothing this build: wired, configured, disabled, no control surface. Taking it forecloses the rear defog until something else carries it - his ruling.
+4. **O13 / O14** are capped for the swap; borrowing either forecloses the LS / CD009 swap's ECU or fan feed - his ruling, never a default.
+5. A second PMU (the module runs up to five in tandem) - money, his ruling.
+
+**Moving onto CAN to free a channel.** The ICU and DCU duplicate exactly one PMU input, A7 (above). They read no stalk, no ladder and no switch the PMU reads, and the tell-tale senses are ICU inputs on PMU outputs, not PMU channels. So CAN frees nothing for free: every PMU channel is the only reader of its signal, and that is by design - the PMU keeps the car running with both modules dead (recovery, D-322).
+
+**In the data.** `rules spare-capacity` gains the order above as its closing paragraph. R4 done."
