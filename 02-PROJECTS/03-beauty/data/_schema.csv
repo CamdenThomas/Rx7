@@ -1,0 +1,46 @@
+table,column,type,required,ref,note
+decisions,id,key,yes,,
+decisions,system,str,no,,
+decisions,title,str,no,,
+decisions,date,str,no,,
+decisions,status,enum(inherited|standing|superseded|withdrawn),no,,vocabulary owned by tools/rx7.py - do not narrow it per project (2026-09-11)
+decisions,supersedes,str,no,,
+decisions,superseded_by,str,no,,
+decisions,closes,str,no,,
+decisions,also,str,no,,
+log,id,key,yes,,
+log,date,str,no,,
+log,workflow,str,no,,
+log,ids,str,no,,
+log,summary,str,no,,
+retired,term,key,yes,,
+retired,retired_by,str,no,,
+retired,note,str,no,,
+work,id,key,yes,,
+work,stage,str,no,,
+work,stage_title,str,no,,
+work,item,str,no,,
+work,owner,enum(agent|camden),no,,vocabulary owned by tools/rx7.py - do not narrow it per project (2026-09-11)
+work,state,enum(blocked|done|dropped|open),no,,vocabulary owned by tools/rx7.py - do not narrow it per project (2026-09-11)
+work,gate,str,no,,"references only - D-###, a block id like 00.18, a work id in this area, <area>:<work id>, or phase:<PHASE>; all must be met before the row can start, an empty cell is met, and prose belongs in note (2026-09-12)"
+work,note,str,no,,
+blocks,id,key,yes,,"<prefix>.<nn>, issued by rx7.py block (D-356)"
+blocks,title,str,yes,,
+blocks,opened,date,yes,,
+blocks,ask,text,yes,,"one sentence, answerable on its own"
+blocks,why,text,yes,,what changes depending on the answer
+blocks,options,text,yes,,"one per line, each starting (a) , (b) … - the app shows each as a button"
+blocks,recommend,text,yes,,"names the option it recommends first, e.g. (a), unless …"
+blocks,stops,text,yes,,what cannot proceed until it is answered
+inbox,id,key,yes,,<target>~<device>; the row is the file data/inbox/<id>.csv (D-405)
+inbox,target,str,yes,,"what it answers: a block, pick or work id; a workflow for kind=run; a name for kind=project"
+inbox,kind,enum(block|drive|pick|project|run|work),yes,,vocabulary owned by tools/rx7.py
+inbox,choice,str,no,,the option letter; yes/no/question; done; a value; a choice - empty when he only wrote words
+inbox,text,text,no,,"his words, verbatim"
+inbox,context,text,no,,"the key points of a Discuss chat, carried into the decision with his words (D-406)"
+inbox,device,enum(desktop|phone),yes,,vocabulary owned by tools/rx7.py
+inbox,at,datetime,yes,,when he saved it
+decisions,body,text,no,,"the decision's full text: the ruling in bold, his words, the reasoning, the consequences (D-405)"
+work,reply,enum(check|choice|value),no,,"how he answers his row in the app: check (the default), value or choice (D-406)"
+work,choices,str,no,,"for reply=choice: the choices, separated by |"
+work,unit,str,no,,for reply=value: the unit the value is in

@@ -1,0 +1,15 @@
+id,system,title,date,status,supersedes,superseded_by,closes,also,body
+D-424,scope,"Open the Beauty project: body work, paint and tint",2026-09-25,standing,,,,,"**A new project, `02-PROJECTS/03-beauty`, owns how the car looks from outside: body work (rust and dent repair), the paint job, and window tint.** Phase PROPOSED.
+
+His words (chat, 2026-09-25): ""please make a 0X-beaty project in rx7, this project will be about body work and paint job + tint""
+
+Reading: ""0X"" is the next free project number, 03; ""beaty"" is read as ""beauty"", the name he gave it. The title in the app is Beauty.
+
+Boundary, read from the record before opening:
+- 00-CAR `vehicle.colour` is Sunbeam Silver; its paint code is K3 by two vendor catalogues (01-REFERENCE S-059, S-060), neither of which lists it for 1982, so the code is confirm until read off the car's colour plate (R11).
+- 00-CAR SP-004: the GS left the factory with tinted glass. That is a tint in the glass itself, not film; any film goes on top of it, so the darkness he sees is the two multiplied.
+- 00-CAR `issues` K-007, ""Rust - extent not surveyed"", named 01-luxury's lighting and body second pass as the one to survey it. Body work is now this project's by his ruling above, so the rust survey moves here and K-007's impact names 03-beauty. 01-luxury has no work row for it; its goal and its lighting second pass are unchanged.
+- 01-luxury I12-I14 take the door cards off once. Tint film goes on the inside of the glass and needs no door card off, so nothing there waits on this project. The order of paint against the other projects is block `03.05`.
+- 02-engine: the engine bay is only bare while the engine is out for the LS swap; whether the bay is painted is block `03.04`.
+
+00-CAR `planned` gets P-009 naming this project."
