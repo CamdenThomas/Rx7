@@ -40,3 +40,38 @@ D-418,body,"The free CAD library, and one combined model of the FB built from it
 - The bought SA model is 3.4 % wide at the tyre centres against the factory track.
 
 **Consequences.** `01-REFERENCE`: tables `cad` and `blend` (new), `model/catalog.py`, `model/blend.py`, `model/README.md`. `00-CAR`: specs SP-234 to SP-240. `.gitignore`: `model/library/` and `model/out/`. Nothing in the app changes: its 3D view still loads the SA (D-415); moving it to the FB shell is a separate choice."
+D-422,body,"Every part's factory Mazda number and catalogue page, from the 1981-83 parts catalogue",2026-09-25,standing,,,,,"# Every part's factory Mazda number and catalogue page, from the 1981-83 parts catalogue
+
+*2026-09-25 - Camden, in chat; read by the agent from S-005*
+
+**Decision.**
+- **00-CAR `parts` gains `oem_no`** (the factory part's Mazda number for a 1982 US automatic, from S-005) **and `catalogue`** (the file, PDF page and figure where S-005 shows it, with its exploded drawing). They are the catalogue's facts, not a claim about what is fitted now: that stays `part_no`.
+- **40 parts** have both, read with high confidence. The part pages can show the factory drawing (the catalogue page) beside the part, and a replacement can be ordered by number.
+- **`support`** is filled for 55 parts (the maker's or the main supplier's line: Mazdatrix 562-426-7960, Atkins Rotary 360-832-1990, Pierce Manifolds, Holley), and **`link`** for 18 more, each a supplier page for a 1982 RX-7 (RockAuto's catalogue by system). Bare supplier home pages were not stored: `support` already names the supplier.
+
+**His words.**
+> now scour all other things and ways you think we can represent information about this car. this should ait the model that is makeing the manual
+
+**How it was read.** A research agent used the fiche's own alphabetical index (Body-Index PDF pp.133-146) and each page's frame code, and for every part gave the figure, the page and the applicability (year, market, transmission, chassis range). Two were checked by hand against the page: PT020 radiator N202-15-310B (A/T; M/T is N201-15-310B), S-005 Engine-Chassis p.46, 1500A-1; PT033 retractor motors FA01-51-931B (R) and FA01-51-941B (L), Body-Index p.33, 5103A-1. Both match.
+
+**Not stored - medium or low readings, which need a second look before anything is bought:**
+- PT001 12A rotary engine: read as N232-02-000 (low) - Scan of the assembly table is badly degraded; the N23x-02-000 pattern is legible, the exact digits are a best reading. Catalogue notes complete assemblies are s
+- PT010 Fuel cut-off: read as 3919-45-170A (medium) - The factory part is a rollover/cut valve in the fuel line; the fitted item is an aftermarket unit (record links Amazon B0C2QJ1518) - they may not be the same fu
+- PT011 Fuel line, 3/8 in: read as 9935-80-8999 (medium) - Factory bulk hose numbers by size code; fitted line is aftermarket 3/8 in.
+- PT012 Vacuum lines and fittings: read as 9935-10-4999 (low) - Bulk hose numbers only; the fitted set is aftermarket (Amazon kit).
+- PT017 Spark plug wires: read as 0000-18-097B (medium) - Set number is clear. Individual leads: 1480-18-130B, 1480-18-160A, 1480-18-170B, 8871-18-180A; 18140/18150 also cite 0000-18-097B. Which D-code is which plug le
+- PT018 Coil wires: read as 8248-18-110 (low) - Assumed to be the two coil-to-distributor leads from their D-codes (18110/18120, next to the coils); confirm against the illustration. Also covered by set 0000-
+- PT021 Water pump: read as 1757-23-920G (medium) - Clearly printed, but the '-23-' group is unusual for a water pump; confirm with a supplier before ordering. Gasket 1757-15-132; water baffle plate for '82 from 
+- PT024 Battery: read as 0000-80-124K (medium) - Mazda-branded replacement battery number; any group-size battery of the right capacity fits (record SP-059: 55 Ah for Federal A/T).
+- PT027 Wiring harness: read as FA30-67-010D (low) - Front-harness digit is partly obscured (FA30-67-0?0D); no '82 line printed past chassis 622565 - check the VIN. The harness is not bought new; this is for ident
+- PT029 Interval wiper control unit: read as FA02-67-540 (low) - No separate intermittent-wiper amplifier was found in the fiche. FA02-67-540 is the only dash wiper control listed; column switch BA30-66-123 is also a wiper sw
+- PT030 Hatch release solenoid: read as FA01-62-310C (medium) - The fiche gives no separate solenoid part; the power-opener lock is sold whole.
+- PT036 Rear defrost switch: read as B001-66-460 (medium) - First character read as 'B' (the 8/B shapes are close on this scan).
+- PT040 A/C system: read as 0000-67-1265-57 (medium) - The compressor number was not read (the section continues on later pages). Parts for this dealer kit are now largely unobtainable new.
+- PT056 Front struts and coil springs: read as FA01-34-910B (medium) - The R spring prints as 'F001' and the L as 'FA01' - clearly printed, may be a real R/L difference or a fiche typo; confirm before ordering.
+
+Two of those wait on the VIN (00-CAR vehicle row `vin`, not yet read): the '82 harness line stops at chassis FB331..622565, and several numbers change at a chassis number.
+
+**Correction to D-421.** Its body says 20 parts are placed; the count is 18 (7 by the models, 11 at the wheel centres).
+
+**Consequences.** 00-CAR `_schema` (`parts.oem_no`, `parts.catalogue`) and `parts`: oem_no and catalogue on 40 rows, support on 55, link on 18."

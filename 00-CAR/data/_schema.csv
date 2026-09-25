@@ -110,6 +110,8 @@ parts,photo,str,no,,a photo under 01-REFERENCE/photos
 parts,note,text,no,,what is true of it now; a value nobody has checked carries confirm and holds the row out of the Manual (R11)
 parts,model_at_mm,text,no,,"where the combined 3D model puts it: x y z in mm, one point per unit split by ';' (left before right). A model estimate, never a measurement; written by 01-REFERENCE/model/locate.py"
 parts,model_from,text,no,,what the point comes from
+parts,oem_no,str,no,,"the factory part's Mazda number from the 1981-83 parts catalogue (S-005) for a 1982 US automatic; R/L or inner/outer named in brackets. The catalogue's, not necessarily what is fitted now (part_no)"
+parts,catalogue,str,no,,"where S-005 shows it: file, PDF page and figure"
 drives,id,key,yes,,the inbox target it came from: drive-<when> or odo-<when>
 drives,date,date,yes,,
 drives,odometer,int,yes,,"the reading at the end of the drive, miles"
