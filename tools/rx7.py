@@ -1451,6 +1451,12 @@ def manual_view(today_iso: str = "") -> dict:
         p["service"] = [s["id"] for s in shown["service"] if p["id"] in (s.get("fitted") or "").split()]
         p["bought"] = [{"id": b, "part": history.get(b, {}).get("part", ""), "source": history.get(b, {}).get("source", "")}
                        for b in (p.get("bought") or "").split() if b in history]
+    # layers (D-429): a part's parent is the part it sits in; its children are computed here
+    for p in shown["parts"]:
+        if p.get("parent") not in part_ids:
+            p["parent"] = ""
+    for p in shown["parts"]:
+        p["children"] = [c["id"] for c in shown["parts"] if c.get("parent") == p["id"]]
     for s in shown["specs"]:
         if s.get("part") not in part_ids:
             s["part"] = ""

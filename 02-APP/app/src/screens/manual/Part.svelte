@@ -9,6 +9,7 @@
   import { href } from '../../lib/router.svelte';
   import { app } from '../../lib/app.svelte';
   import Linked from '../../components/Linked.svelte';
+  import PartLink from '../../components/PartLink.svelte';
 
   let { m, id }: { m: Manual; id: string } = $props();
 
@@ -16,6 +17,16 @@
   const sys = $derived(p ? system(p.system) : undefined);
   const zone = $derived(p ? m.zones.find((z) => z.id === p.zone) : undefined);
   const specs = $derived(m.specs.filter((s) => p?.specs.includes(s.id)));
+  // Its layers (D-429): the chain of parts it sits in, and what sits in it.
+  const chain = $derived.by(() => {
+    const out = [];
+    let x = p ? m.parts.find((q) => q.id === p.parent) : undefined;
+    while (x && out.length < 12) {
+      out.unshift(x);
+      x = m.parts.find((q) => q.id === x?.parent);
+    }
+    return out;
+  });
   const visits = $derived(m.service.filter((s) => p?.service.includes(s.id)).sort((a, b) => b.date.localeCompare(a.date)));
 
   const facts = $derived(
@@ -48,6 +59,9 @@
         {#if zone}<span>{zone.name}</span>{/if}
         <span class="id">{p.id}</span>
       </p>
+      {#if chain.length}
+        <p class="chain">Part of {#each chain as c, i (c.id)}{i ? ' › ' : ''}<PartLink id={c.id} />{/each}</p>
+      {/if}
       {#if p.note}<p class="note">{p.note}</p>{/if}
     </header>
 
@@ -68,6 +82,15 @@
       </section>
 
       <div class="side">
+        {#if p.children.length}
+          <section>
+            <h3>Inside it <span class="faint">{p.children.length}</span></h3>
+            <ul class="inside">
+              {#each p.children as c (c)}<li><PartLink id={c} />{#if m.parts.find((q) => q.id === c)?.children.length}<span class="faint">&nbsp;· {m.parts.find((q) => q.id === c)?.children.length} inside</span>{/if}</li>{/each}
+            </ul>
+          </section>
+        {/if}
+
         {#if specs.length}
           <section>
             <h3>Specs</h3>
@@ -173,7 +196,7 @@
   }
   .spec {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 130px;
     gap: 12px;
     padding: 9px 0;
     border-top: 1px solid var(--line-soft);
@@ -197,6 +220,20 @@
   }
   .small {
     font-size: 12.5px;
+  }
+  .chain {
+    margin: 0;
+    font-size: 13.5px;
+    color: var(--text-3);
+  }
+  .inside {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 6px 16px;
+    font-size: 14px;
   }
   .bought {
     margin: 0;

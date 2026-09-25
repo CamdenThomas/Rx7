@@ -20,7 +20,9 @@
   const sys = $derived(id ? m.systems.find((s) => s.id === id) : undefined);
   const parent = $derived(sys?.parent ? m.systems.find((s) => s.id === sys.parent) : undefined);
   const family = $derived(sys ? [sys, ...kids(sys)] : []);
-  const parts = $derived(m.parts.filter((p) => family.some((s) => s.id === p.system)));
+  const all = $derived(m.parts.filter((p) => family.some((s) => s.id === p.system)));
+  // The system's top layer: parts not inside another part of the same system (D-429).
+  const parts = $derived(all.filter((p) => !all.some((q) => q.id === p.parent)));
   const byZone = $derived(
     [...new Set(parts.map((p) => p.zone))]
       .sort((a, b) => Number(m.zones.find((z) => z.id === a)?.order ?? 99) - Number(m.zones.find((z) => z.id === b)?.order ?? 99))
@@ -49,7 +51,7 @@
     {/if}
 
     <section>
-      <h3>Parts <span class="faint">{parts.length}</span></h3>
+      <h3>Parts <span class="faint">{parts.length} units · {all.length} parts in all</span></h3>
       {#if !parts.length}<p class="muted">No part of this system is in the Manual yet.</p>{/if}
       {#each byZone as g (g.zone)}
         <div class="zone">
@@ -58,7 +60,7 @@
             {#each g.parts as p (p.id)}
               <li>
                 <PartLink id={p.id} />
-                <span class="faint small">{[p.maker, p.part_no || p.oem_no].filter(Boolean).join(' ')}</span>
+                <span class="faint small">{[p.maker, p.part_no || p.oem_no, p.children.length && `${p.children.length} inside`].filter(Boolean).join(' · ')}</span>
               </li>
             {/each}
           </ul>
@@ -102,7 +104,7 @@
           <a class="kid" href={href({ name: 'manual', page: 'systems', id: k.id })}>{k.name}</a>
         {/each}
         <p class="list small">
-          {#each m.parts.filter((p) => p.system === s.id) as p, n (p.id)}{n ? ' · ' : ''}<PartLink id={p.id} />{/each}
+          {#each m.parts.filter((p) => p.system === s.id && !m.parts.some((q) => q.id === p.parent && q.system === s.id)) as p, n (p.id)}{n ? ' · ' : ''}<PartLink id={p.id} />{/each}
         </p>
       </section>
     {/each}

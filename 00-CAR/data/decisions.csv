@@ -93,3 +93,18 @@ D-423,body,The 1982 workshop manual's technical data is the car's own; 16 specs 
 **Left as they are, on purpose.** Length and ground clearance: S-038 T:7 gives 4285 mm (169 in) and 160 mm, the US brochure (S-004) 170.1 in and 5.7 in. The brochure is the US-market document for the 1982 car with its 5 mph bumpers, so SP-133 and SP-136 stay; the difference is here for the next reader. SP-080 (50 A, an enthusiast chart, unverified) stays held back; SP-245 now carries the factory 50 A.
 
 **Consequences.** 00-CAR `specs`: SP-241 to SP-256 added; SP-019, SP-021, SP-024, SP-026, SP-043, SP-045, SP-046, SP-047, SP-054, SP-079, SP-095, SP-111, SP-121, SP-174, SP-181, SP-184 set `applies=other-car`. `blocks`: CAR.03. 01-REFERENCE `sources`: S-038 to S-072; `_schema`: `sources.format` gains json and jpg."
+D-429,The Manual,"Every part of the car, layer by layer, from the factory catalogue",2026-09-25,standing,,,,D-417,"# D-429 - Every part of the car, layer by layer, from the factory catalogue
+
+*2026-09-25 - Camden, in chat*
+
+**Decision.** **00-CAR's parts list is built from the whole factory parts catalogue (S-005, transcribed into 01-REFERENCE `catalogue`), layer by layer. Each part names the part it sits in (`parts.parent`), so the Manual goes engine > oil pump > rotor set and front combination lamp > bulb. Plain fasteners, generic seals and colour-variant rows stay in the catalogue and are named in the note of the part whose joint they serve.**
+
+**His words.** *""now take full stock of every pert in the car from the aletrator to the light bulbs list everyone, then see what information you have on each part, please then find as much information abot every part find the spec sheet diagrams cad information anything, internal wire diagrams scrape every detail about every part for the caar folder the manual so go through every layer down through each part""*, and asked how to run it: *""Staged, as a workflow (Recommended)""*.
+
+**How.** 278 scanned pages were read by 28 agents, each checked by a second reader (3,734 rows; 21 part numbers keep a ? where the scan is unreadable). Ten section agents then built the parts, each followed by a completeness critic that checked every fitting catalogue row was used and every parent resolves.
+
+**What it means for the Manual (R11).** The catalogue is the factory's list, not a survey of this car:
+- The factory parts known to be gone are `applies=replaced`: the carburettor and its internals, the air cleaner, the metering pump and its tubes. The Pierce manifold's effect on the factory intake manifold carries confirm.
+- Rows that turn on the VIN serial or California vs Federal emissions, and the parts whose presence after the Weber swap is uncertain (air injection, starting assist, altitude compensator), carry confirm in their note. They are held out of the Manual until someone looks.
+
+**In the data.** 00-CAR parts: 916 new rows (PT059-PT974), 49 existing rows given catalogue references and parents, and a new `parent` column. The export computes each part's children. The Manual's part page shows ""Part of"" and ""Inside it"", and a system lists its top-level units."
