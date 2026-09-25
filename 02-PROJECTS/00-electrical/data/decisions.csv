@@ -999,3 +999,31 @@ Outputs:
 **Moving onto CAN to free a channel.** The ICU and DCU duplicate exactly one PMU input, A7 (above). They read no stalk, no ladder and no switch the PMU reads, and the tell-tale senses are ICU inputs on PMU outputs, not PMU channels. So CAN frees nothing for free: every PMU channel is the only reader of its signal, and that is by design - the PMU keeps the car running with both modules dead (recovery, D-322).
 
 **In the data.** `rules spare-capacity` gains the order above as its closing paragraph. R4 done."
+D-410,electrical,"F3 is split and ignition and the headlamps hold on a ladder fault: the wake stages move to F23, a dead switch feed reads as a fault, ignition drops only on a clean OFF or ACC; the light switch's own feed is block 00.32",2026-09-24,standing,,,00.30,,"**D-410 — F3 is split and ignition and the headlamps hold their state on a ladder fault (block 00.30, option a). The wake stages move to their own 3 A fuse, F23. The key's ladder and the light switch's ladder now read a FAULT, never OFF, when their feed dies with a contact closed. Only a clean OFF or ACC turns ignition off; a FAULT holds it while the engine turns (oil_ok). The headlamps hold their last state while A15 reads a FAULT. The last part, a feed of its own for the light switch, needs a conductor that has no free cavity, and is block 00.32.** Camden, 2026-09-24, in the app.
+
+**His answer.** He chose option (a): ""Split F3 into two fuses, and hold state on a fault. One fuse feeds the key switch and the K13 coil; the other feeds the light switch and the wake stages, in a free block-B position or one more sealed inline holder (a few dollars). The PMU logic changes so that only a clean OFF reading turns ignition off (an open or fault reading holds RUN while the engine is turning), and the headlamps hold their last state while A15 reads a fault. Costs one fuse position and logic rows."" He typed nothing else.
+
+**What applying it found.** The option assumed the split costs only a fuse position. It needs a conductor too: the ignition switch's B terminal and the light switch's common are both fed by the one conductor L3-S2 2, which branches in the leg behind the column, and the brake-wake plunger (L3-S1 7) branches off it as well. Every cavity in L3-S1 and L3-S2 is used, and the only unused ones in the leg are L3-S3 1-3, the radar pass-throughs held for block 01.11. Where the light switch's own feed runs is where a wire goes, so it is block 00.32, not something decided here. Everything else in (a) is applied now.
+
+**Where the fuses stand.**
+- **F3** (5 A, block A pos 2) keeps L3-S2 2: the ignition switch's B terminal, and through it the K13 back-stop coil, the light switch common and the brake-wake plunger until block 00.32 moves the light side.
+- **F23** (3 A, sealed inline off the busbar) is new and feeds the wake stages' excitation rail at the dash node, which was the other half of N29. A spare block-B position was not used: block B is fed through K11, which opens when the car sleeps, and the wake stages must be live while it sleeps. N29 now runs F3 to L3-S2 2 only; N87 runs F23 to the wake-stage rail. P002's target goes from 7 to 8 holders.
+
+**How a dead feed reads.** With D-408's decode, a switch whose feed has died still ties the node through its closed contacts to 0 V. That pulls the reading *below* the live OFF reading: by about 20 counts at ACC or PARK, about 44 at RUN or HEAD. With the old ± windows, that sat inside OFF's window, so a blown F3 would have read as the key turned off. Now a reading more than 12 counts below the live OFF reading is a FAULT (supply dead), alongside the open and short rules (`rules ladder-decode`). Confirm at E26: pull F3 with the key at ACC and with the lights at PARK, and read both.
+
+**The logic.**
+- **IGNITION:** on at A16 >= RUN. It turns off only after A16 has read a clean OFF or ACC for 200 ms. On an A16 FAULT it holds its state while oil_ok is true, and drops once oil_ok clears. A FAULT never turns it on from off.
+  - The PMU has no tach of its own, and D-251 keeps CAN out of these gates. Oil pressure is the PMU's own wire-read sign that the engine is turning.
+  - The cost: with the key ladder faulted and the engine running, the key cannot stop the engine. The display says KEY FAULT, and the stop is the master disconnect (recovery RC01), which is what RC01 is for. He chose this.
+- **FUEL_PUMP:** its A16 >= RUN terms read the IGNITION channel's own state instead, so the pump holds with the ignition and never outlives it. oil_ok clears when ignition goes off. There is still no CAN term (D-251).
+- **HEAD_LOW, HEAD_HIGH, TAIL_PARK:** each holds its last state while A15 reads a FAULT, and annunciates LIGHT SWITCH FAULT. The retry classes do not change.
+
+**In the data.**
+- `fuses`: F3 feeds, F23 new.
+- `node_conductors`: N29, N87 new.
+- `wake_stages`: WS10, WS11, WS16, WS1A, WS20, WS21, WS26, WS2A now say F23.
+- `parts`: P002 target and used_for.
+- `logic`: IGNITION, FUEL_PUMP, HEAD_LOW, HEAD_HIGH, TAIL_PARK.
+- `rules`: ladder-decode (the supply-dead fault).
+- `blocks`: 00.30 deleted, 00.32 new.
+- `work`: R2 stays open, gated on block 00.32, for the light switch's feed."

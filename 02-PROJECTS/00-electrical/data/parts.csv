@@ -1,6 +1,6 @@
 id,store,section,sku,item,spec,qty,unit,unit_usd,basis,used_for,status,need_rule,target
 P001,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",45643,"OptiFuse BLR-504 ATC fuse block, 4-position, bussed input",,2,ea,,cart,"Block A (busbar: F2, F3, F19, F13 empty) · Block B (K11: F1, 3 spare)",cart,,
-P002,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",46047,"Sealed inline ATC fuse holder, 14 AWG leads",,3,ea,,cart,"F12, F15, F16, F20 (the wideband gauge's feed, D-244) and the three sill fuses F8 / F9 / F14, their holders fitted empty (D-283)",raise,,7
+P002,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",46047,"Sealed inline ATC fuse holder, 14 AWG leads",,3,ea,,cart,"F12, F15, F16, F20 (the wideband gauge's feed, D-244), F23 (the wake stages, D-410) and the three sill fuses F8 / F9 / F14, their holders fitted empty (D-283)",raise,,8
 P003,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",75725,"Song Chuan 871-1C-C-D1-12VDC — ISO micro relay 40 A SPDT, integral diode",,5,ea,,cart,"K1, K2, K11, K12, K13 (no spare) - K13 is the fuel pump's series relay (D-352)",cart,,
 P004,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",74858,"Picker PC792E-1C-C-12S-DN-X — sealed mini ISO relay SPDT, integral diode",,1,ea,,cart,"K9, engine bay",cart,,
 P005,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",75340,Chief weatherproof 5-pin mini relay connector,,1,ea,,cart,K9's socket,cart,,
