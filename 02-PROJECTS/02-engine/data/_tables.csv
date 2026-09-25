@@ -9,3 +9,5 @@ yards,"self-service junkyards near Fort Collins that can supply the donor engine
 sightings,"specific donor vehicles seen in a yard's online inventory, with the VIN's engine code - a sighting is a lead, never a guarantee (D-393)"
 ls_devices,"every electrical part on or around the LS and the CD009, the start of the backwards design of the new engine leg (D-394)"
 ls_wires,"each device's wires, what is joined in the bay, and how many conductors cross into the leg to the dash post - the leg's size is a query over this table, never a typed number (D-394)"
+blocks,"open questions only Camden can answer, one row each; deleted once a decision closes it (§4, D-405)"
+inbox,"his answers waiting to be applied, one file per answer per device (D-405)"

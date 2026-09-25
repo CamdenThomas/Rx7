@@ -30,7 +30,7 @@ except ValueError:
     sys.exit(0)
 
 parts = rel.parts
-if "data" not in parts and rel.name != "BLOCKS.md":
+if "data" not in parts:
     sys.exit(0)
 if "99-ARCHIVE" in parts:
     sys.exit(0)

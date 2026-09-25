@@ -4,3 +4,4 @@ kind,software
 goal,"A GUI over this tree - see where every project stands, answer blocks and picks, and hand work to Claude Code - that reads and writes only through the record and rx7.py, never a copy of its own"
 phase,PROPOSED
 opened,2026-09-24
+icon,app-window

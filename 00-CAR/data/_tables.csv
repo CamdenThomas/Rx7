@@ -1,7 +1,7 @@
 table,purpose
 as_fitted,"what each system of the car is right now, and since when"
 intervals,service intervals - what to renew and how often
-issues,"known faults and unknowns on the car as it stands"
+issues,known faults and unknowns on the car as it stands
 mods,changes made to the car away from factory
 parts_history,every part bought for the car and whether it is fitted
 planned,changes planned for the car and the project that owns each
@@ -11,3 +11,5 @@ service,every service visit - date and mileage
 specs,factory specifications with source and page
 vehicle,the car's identity and headline configuration today
 decisions,"every car-level ruling (service, fluids, what the car runs on) - the body is data/decisions/<id>.md; the other 00-CAR tables state what IS and never cite these (§6.6)"
+blocks,"open questions only Camden can answer, one row each; deleted once a decision closes it (§4, D-405)"
+inbox,"his answers waiting to be applied, one file per answer per device (D-405)"

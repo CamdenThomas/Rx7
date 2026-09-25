@@ -1,14 +1,155 @@
-id,system,title,date,status,supersedes,superseded_by,closes,also
-D-007,What the electrical build reserves for the swap,O13 and O14 (25 A) are reserved for the swap engine's ECU/injectors and…,,inherited,,,,
-D-211,What the electrical build reserves for the swap,The engine leg (L1) is built to be cut off at the firewall grommet and…,,inherited,,,,
-D-091,What the electrical build reserves for the swap,"The main feed is 2 AWG, sized for the swap engine, not the 12A",,inherited,,,,
-D-183,What the electrical build reserves for the swap,The PMU's fuel-pump and start-relay rules gain their rpm terms once rpm…,,inherited,,,,
-D-187,What the electrical build reserves for the swap,"The automatic's inhibitor switch is read on A4 (P/N, crank interlock)…",,inherited,,,,
-D-173,What the electrical build reserves for the swap,"The fuel-pump soft fuse (4.0 A, set for the Carter P4070) is re-set…",,inherited,,,,
-D-113,What the electrical build reserves for the swap,The rear disc conversion and the rear axle are still planned,,inherited,,,,
-D-324,What the electrical build reserves for the swap,The A/C clutch is a DCU-switched comfort load; the PMU is not opened for it,2026-09-11,standing,,,02.01,
-D-325,What the electrical build reserves for the swap,The swap ECU is a dash node; no CAN and no ECU in the engine bay,2026-09-11,standing,,,00.04,
-D-393,Engine and transmission,"The swap engine is a light, aluminum-block 5.3 LS - L33 first, then LM4, then an LH6 or LC9 with AFM deleted; an iron LM7 is the fallback",2026-09-23,standing,,,,
-D-394,Engine and transmission,"The new engine leg is designed backwards from every LS and CD009 part: pins, bay joins, conductors that cross, dash ends - and it needs about 55-65 small conductors against the 24 small cavities today",2026-09-23,standing,,,,
-D-395,Engine and transmission,"The swap runs in nine stages: -01 design, 00 buy and retrieve, 01 breakdown, 02 polish, 03 paint, 04 rebuild, 05 car prep, 06 install, 07 fine-tune - and the first full plan fills them",2026-09-23,superseded,,D-396,,
-D-396,Engine and transmission,"The swap's nine stages are numbered 00 to 08: 00 design, 01 buy and retrieve, 02 breakdown, 03 polish, 04 paint, 05 rebuild, 06 car prep, 07 install, 08 fine-tune",2026-09-23,standing,D-395,,,
+id,system,title,date,status,supersedes,superseded_by,closes,also,body
+D-007,What the electrical build reserves for the swap,O13 and O14 (25 A) are reserved for the swap engine's ECU/injectors and…,,inherited,,,,,"**D-007 — O13 and O14 (25 A) are reserved for the swap engine's ECU/injectors and cooling fan**, wired to the engine leg and capped at the bulkhead (L1-P 2, L1-P 3). Three 16 AWG sensor spares (L1-S2 4–6) and the CAN2 drop (L1-S1 9/10, with the bus's far-end 120 Ω terminator across it) are capped in the same place."
+D-211,What the electrical build reserves for the swap,The engine leg (L1) is built to be cut off at the firewall grommet and…,,inherited,,,,,"**D-211(d) — The engine leg (L1) is built to be cut off at the firewall grommet and rebuilt from scratch at the swap.** It carries only what the 12A on the mounts needs today — no stubs to nothing, no connectors marking where something used to be. The reservations above are the only exceptions. Everything else about the new engine's wiring — ECU, sensors, fans, a PMU-driven A/C clutch and pressure transducer — is designed here, around whatever the engine is.
+
+**D-211 — The 12A's A/C system comes out and cooling returns with the new engine.** The compressor, bracket, condenser and hoses are boxed and kept (FB A/C hardware is scarce). The new system is a new compressor on the new engine, a PMU-driven clutch and a pressure transducer — not the 1982 relay chain."
+D-091,What the electrical build reserves for the swap,"The main feed is 2 AWG, sized for the swap engine, not the 12A",,inherited,,,,,"**D-091 — The main feed is 2 AWG, sized for the swap engine, not the 12A**, so the tunnel is never pulled a second time."
+D-183,What the electrical build reserves for the swap,The PMU's fuel-pump and start-relay rules gain their rpm terms once rpm…,,inherited,,,,,"**D-183 — The PMU's fuel-pump and start-relay rules gain their rpm terms once rpm is on CAN2.** The ICU publishes it on `0x200` from the first drive (electrical D-259); the ECU's own arrives on `0x500+` at the swap. Either is a *secondary*, fail-open term — the primary gate is the hardwired oil-pressure node on A7 (electrical D-249 / D-251)."
+D-187,What the electrical build reserves for the swap,"The automatic's inhibitor switch is read on A4 (P/N, crank interlock)…",,inherited,,,,,"**D-187 — The automatic's inhibitor switch is read on A4 (P/N, crank interlock) and A5 (R, reverse lamps) through the engine leg (L1-S1 11, L1-S2 7).** Both disappear with the automatic; the transmission that replaces it needs its own P/N and reverse signals into the same two ladder states."
+D-173,What the electrical build reserves for the swap,"The fuel-pump soft fuse (4.0 A, set for the Carter P4070) is re-set…",,inherited,,,,,"**D-173 — The fuel-pump soft fuse (4.0 A, set for the Carter P4070) is re-set from the in-tank pump's spec at the swap.**"
+D-113,What the electrical build reserves for the swap,The rear disc conversion and the rear axle are still planned,,inherited,,,,,"**D-113 — The rear disc conversion and the rear axle are still planned.** The July 2026 drum overhaul was an interim so the car could be driven; the intent is a thoroughly sorted rear axle and engine that then last.
+
+**Electrical D-261 / D-262 — the 12A's senders stay and are read in place; every ICU sensor channel is jumper-and-config, the PMU's A7 takes a sender or a 0–5 V transducer.** What the new engine must deliver to those inputs is the hand-over table in [`README.md`](README.md)."
+D-324,What the electrical build reserves for the swap,The A/C clutch is a DCU-switched comfort load; the PMU is not opened for it,2026-09-11,standing,,,02.01,,"**D-324 — The A/C clutch is a DCU-switched comfort load; the PMU is not opened for it.** Camden's call, 2026-09-11, answering `02.01`: ""I want all A/C comfort controls together manged by the dcu no pmu tear down and change up.""
+
+D-211 said ""a PMU-driven clutch and a pressure transducer"", but every one of the PMU's 22 outputs is allocated — O13 and O14 are this project's ECU and cooling fan. Rather than re-allocate a channel and reopen a 39-way connector that D-004 assembles once, the clutch joins the comfort group where the rest of the A/C controls already are.
+
+**The arrangement.** The clutch is a relay whose coil the **DCU** switches on one of its seven comfort FETs (luxury `SN16`, parts under luxury `V-083`), contact fed from the luxury package's **O15 comfort block**. The pressure transducer goes to a **DCU input**. The A/C toggle is already drawn on the control panel (luxury D-210). No PMU output, no harness change, and the clutch feed runs from the O15 block into the rebuilt engine leg at the swap — which suits D-271, since the leg is built from scratch then anyway.
+
+**What this forecloses, accepted.** The clutch cannot engage with the DCU down. That is the correct trade for a comfort load: it matches D-081's principle that modules add capability to a finished car and are never a dependency for it starting, running or being legal."
+D-325,What the electrical build reserves for the swap,The swap ECU is a dash node; no CAN and no ECU in the engine bay,2026-09-11,standing,,,00.04,,"**D-325 — The swap ECU is a dash node; no CAN and no ECU in the engine bay.** Camden's call, 2026-09-11, inside `00.04`: ""I do not want the ecu in the engine bay … I want as stripped clean of an engine bay as possible and do not want to put anything there unless there is no way to avoid it. The ECU will also be a dash node localized with all the other computers and more intricate wiring, then only the small branches travel everywhere.""
+
+The electrical build's counterpart is **D-318**. The consequence here is that `HO03` changes shape: CAN2 no longer reaches the bay, `L1-S1 9` and `10` return to sealing plugs, and the far-end 120 Ω terminator moves to the dash node. A future ECU joins the bus **at the dash**, at 0x500+ as luxury's CAN map already allocates, and what leaves the dash for the engine is only the sensor and actuator branches the rebuilt leg pins.
+
+**What this asks of the swap.** The ECU must be one that tolerates a cabin mounting and a longer sensor harness — which is the normal case for every ECU worth fitting, and is how the factory mounted its own control units. Long runs to crank and cam sensors are shielded, as `L1-S1 6` already is for the tach. Nothing about this reserves less: O13 and O14 stay the ECU and fan channels (D-007), and the leg still ends at the firewall grommet (D-211)."
+D-393,Engine and transmission,"The swap engine is a light, aluminum-block 5.3 LS - L33 first, then LM4, then an LH6 or LC9 with AFM deleted; an iron LM7 is the fallback",2026-09-23,standing,,,,,"**D-393 — The swap engine is a light, aluminum-block 5.3 LS.** The order of preference:
+1. **L33:** aluminum, no AFM.
+2. **LM4:** aluminum, no AFM.
+3. **LH6 or LC9:** aluminum, with AFM deleted.
+
+An iron LM7 is the fallback if no aluminum engine can be had. Camden's call, 2026-09-23.
+
+**His words.** ""can you find me a specific pic an pull junk yard near Fort Collins that is guaranteed to have one of the light iron blocks that id want, write all this in the engine swap project""
+
+**Reading taken.** The light 5.3 blocks are aluminum; the iron ones (LM7, LMG, LY5, LR4) are the heavy ones, about 80 lb more dressed. ""Light"" is what he wants, so the target is aluminum. If he meant iron, the target is the LM7 (option OP05) and the sightings are searched again for code T.
+
+**What the research found.** It is recorded in the new tables (`options`, `yards`, `sightings`):
+- **Aluminum 5.3s:** common in 2007–2013 trucks as the LC9, less so as the LH6. The L33 (2005–07 extended-cab 1500s) and the LM4 are uncommon.
+- **What a U-pull engine costs:** about $260–276 plus a $57–75 core near Denver.
+- **The transmission:** the CD009 costs about $1,650–2,150 used and delivered. The Sikky adapter ($1,765) needs no bellhousing cutting.
+- **Kits:** no bolt-in LS kit exists for the FB.
+- **The CD009 in an FB:** no documented build was found, so it is the plan's biggest unknown (J3, J4).
+- **The rear axle:** the stock FB axle will not take LS torque (D-113 already plans a new one).
+
+**What ""guaranteed"" can honestly mean.** No yard can guarantee an engine. On 2026-09-23, 15 aluminum 5.3 donors were confirmed on the lot by the VIN's 8th digit, all in the Denver metro, about 60–65 miles away: two LH6 and thirteen LC9. There were none in Fort Collins, Greeley, Loveland or Cheyenne; those yards publish no inventory. No L33 was confirmed anywhere. One possible L33 is at Littleton (J2). A listing means the car is on the lot, not that its engine is still in it, so J1 calls ahead with the VIN.
+
+**In the data.**
+- `_tables` and `_schema`: `options`, `yards` and `sightings` are new.
+- `options`: OP01–OP50.
+- `yards`: YD01–YD09.
+- `sightings`: SG01–SG16.
+- `work`: J1–J5."
+D-394,Engine and transmission,"The new engine leg is designed backwards from every LS and CD009 part: pins, bay joins, conductors that cross, dash ends - and it needs about 55-65 small conductors against the 24 small cavities today",2026-09-23,standing,,,,,"**D-394 — The swap's new engine leg is designed backwards from every LS and CD009 part.** For each part the design records:
+1. its pins;
+2. what is joined in the bay;
+3. how many conductors cross into the leg;
+4. where each lands at the dash.
+
+The result: the power side fits the leg's power plug L1-P as it is, and the signal side needs 54–68 conductors against the 24 signal cavities today. Camden's call, 2026-09-23.
+
+**His words.** ""help me plan the electrical side of engine swap, we will be replacing the entire engine leg, specifically for this design work backwards, ignore the wiring we have and build the electrical system backwards from each Ls part/attachment, this schools then plug in to the same engine leg connecter at the dash post""
+
+**The method.** `ls_devices` lists 26 parts on or around the engine. `ls_wires` gives 39 wire functions. For each function it records:
+- how many wires there are at the device;
+- what is spliced or grounded in the bay;
+- how many conductors cross into the leg;
+- the Deutsch contact size needed;
+- the dash end, gauge, current, twist or shield group, and whether it is optional.
+
+The leg's size is a query over `ls_wires`, never a typed number (R2).
+
+**The rules the design follows.**
+- **Bay joins:** feeds are spliced in the bay (one 12 AWG feed to eight injectors, one to eight coils). Power grounds stay in the bay, at the head studs. Sensor grounds and 5 V references are spliced in the bay but go back to the ECU, never to chassis.
+- **Shields:** crank, cam and knock are shielded, with the drain at the ECU end only.
+- **Returns:** the reverse switch and the oil-temperature sender return to the dash, not the block. That keeps the cranking ground offset (risk review R3) and the fuel-sender lesson out of the readings.
+- **Oil pressure:** one sensor and one wire, read by the PMU's A7 gate (D-249, HO04). The ECU and the ICU get it at the dash.
+
+**What it found.**
+- **Power fits L1-P as it is:**
+  - coils on O12 (L1-P 1, the same cavity that feeds the 12A's coils);
+  - injectors on O13 (L1-P 2);
+  - the fan on O14 (L1-P 3);
+  - the A/C clutch feed from the O15 comfort block in the spare L1-P 4.
+- **Signals do not fit.** 54 required and 68 with every option, against 24 in L1-S1 and L1-S2. No ECU choice changes this. It contradicts handover row HO14 (""nothing at the dash node changes""). How the extra connects at the post is his call: block `02.02`.
+- **HO08 is superseded for the ECU.** It says ""no +5 V goes down the leg"". That was written for the PMU's and ICU's sensors. The ECU's own 5 V has to go down the leg now that the ECU is at the dash (LW20).
+- **Open until the parts are in hand:** every pin letter, and the generation-specific details (Gen III or Gen IV, D-393). They are `confirm` (R11, work K4).
+
+**Still to decide.**
+- **The ECU:** K1 researches it, then asks him in a block.
+- **The emissions equipment:** K2 checks the rules, which settle the O2 sensors and the purge.
+- **The cavity plan and grommet:** K3, after `02.02`.
+
+**In the data.**
+- `_tables` and `_schema`: `ls_devices` and `ls_wires` are new.
+- `ls_devices`: LD01–LD26.
+- `ls_wires`: LW01–LW39.
+- `work`: K1–K4.
+- `BLOCKS.md`: `02.02` is new."
+D-395,Engine and transmission,"The swap runs in nine stages: -01 design, 00 buy and retrieve, 01 breakdown, 02 polish, 03 paint, 04 rebuild, 05 car prep, 06 install, 07 fine-tune - and the first full plan fills them",2026-09-23,superseded,,D-396,,,"**D-395 — The swap runs in nine stages, and the first full plan fills them.**
+
+| Stage | What happens in it |
+|---|---|
+| **-01 Design** | Every choice is made on paper before money is spent. |
+| **00 Buy and retrieve** | The engine, the transmission and the parts. |
+| **01 Breakdown** | Strip, inspect and measure on stands. |
+| **02 Polish** | Degrease, derust, surface prep. |
+| **03 Paint** | The engine, the brackets and the parts that show. |
+| **04 Rebuild** | Reseal, the AFM delete, service parts, assembly, pre-lube. |
+| **05 Car prep** | The 12A out, then the bay, tunnel, mounts, fuel, cooling, exhaust, axle, pedals and the new leg. |
+| **06 Install** | In the car, connected, fluids, first start. |
+| **07 Fine-tune** | The tune, the shakedown, emissions, the record. |
+
+Camden's call, 2026-09-23.
+
+**His words.** ""Now what prep can I do the the engine out of the car aka clean paint reaseal se fluid derust make a stage  stage -02-design, -01-buy-retrieve, 00-breakdown, 01-polish, 02-paint, 03-rebuild, 04-car-prep, 05-install, 06-fine-tune, (add one to each number) then please fill in a full start of a plan for this structure and project""
+
+**Reading taken.** ""Add one to each number"" is applied literally, so -02 becomes -01 and 06 becomes 07. The stages are values of `work.stage` with their titles in `stage_title`, so the project's TODO groups by them. No folders were made, because the plan is rows. If he meant a different numbering (01–09) or folders like the electrical project's, it is a rename.
+
+**The plan: 63 new rows, each gated on what it truly waits for.**
+- **-01 Design:** DS01–DS11. They cover the accessory drive, the FB-clearance oil pan, headers, cooling against O14's 25 A, the returnless fuel system, the clutch pedal and hydraulics (the car is an automatic today), mounts and crossmember, the rear axle (D-113), springs, and a derived budget. DS11 is his design freeze. The rows already in the project join this stage: K1 the ECU, K2 emissions, K3 the cavity plan, J3 and J4 the tunnel, H-001 the alternator.
+- **00 Buy and retrieve:** BR01–BR06. They cover stands and tools, the yard pull (with the list of what to take), the CD009 after the tunnel is measured and the design frozen, the adapter kit and clutch, the rebuild parts from the breakdown's findings, and the car-prep parts. J1, J2 and J5 join this stage.
+- **01 Breakdown:** BD01–BD08. They record the numbers, then read the fluids, strip and label, take the heads off where the AFM delete needs it, and inspect the pan and bearings. The CD009 is checked on its stand. The breakdown ends with his ruling on the rebuild scope, and K4 (read the real pin letters) joins it.
+- **02 Polish:** PO01–PO04. Degrease with every opening plugged, derust the steel, and mask every machined face before paint.
+- **03 Paint:** PA01–PA03. The colours are his call, because the engine and the bay are seen together. Then high-temperature enamel, and the small parts.
+- **04 Rebuild:** RB01–RB08. The AFM delete (LH6 / LC9 only), timing and oil pump, heads on new single-use bolts, rear main and the swap pan, water pump, sensors and injectors, gaskets, the adapter, flywheel, clutch and CD009, then pre-lube.
+- **05 Car prep:** CP01–CP10. The 12A and the automatic out (the old leg is cut here, D-211), then:
+  - a clean bay (D-325), tunnel work and mounts;
+  - the pedal box, fuel, cooling, axle and driveshaft;
+  - the new engine leg and the ECU at the dash;
+  - springs.
+- **06 Install:** IN01–IN06. In the car, plumbing, electrical, fluids, then the checks before the first start: oil pressure, fuel pressure, crank and cam signals. Then the first start.
+- **07 Fine-tune:** TU01–TU07. The base tune, then CAN integration: the ICU and the PMU's rpm terms (D-183), and the soft fuses set from measured currents. Then road tests with a charging check, a dyno tune, alignment, and emissions and registration. Last, the as-built goes into 00-CAR (CLAUDE.md §6.6).
+
+**Rules the plan keeps.**
+- **Nothing past the engine is bought before the design freeze (DS11).** It is the same discipline as the electrical project.
+- **The breakdown's measurements set the rebuild scope, not the plan (R11).** Worn bores or bad bearings turn a reseal into a rebuild.
+- **The donor harness is kept intact** as the reference for the new leg's pin letters."
+D-396,Engine and transmission,"The swap's nine stages are numbered 00 to 08: 00 design, 01 buy and retrieve, 02 breakdown, 03 polish, 04 paint, 05 rebuild, 06 car prep, 07 install, 08 fine-tune",2026-09-23,standing,D-395,,,,"**D-396 — The swap's nine stages are numbered 00 to 08.** It supersedes D-395's numbering. The plan, its 63 rows, their gates and the rules D-395 recorded all stand unchanged.
+
+| Stage | Was |
+|---|---|
+| **00 Design** | -01 |
+| **01 Buy and retrieve** | 00 |
+| **02 Breakdown** | 01 |
+| **03 Polish** | 02 |
+| **04 Paint** | 03 |
+| **05 Rebuild** | 04 |
+| **06 Car prep** | 05 |
+| **07 Install** | 06 |
+| **08 Fine-tune** | 07 |
+
+Camden's call, 2026-09-23, correcting the reading D-395 took of ""add one to each number"".
+
+**His words.** ""0-8 please""
+
+**In the data.** `work.stage` and `stage_title` are renumbered on all 73 staged rows. The row ids are unchanged: DS, BR, BD, PO, PA, RB, CP, IN, TU, and the carried J, K and H rows."

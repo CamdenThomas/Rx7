@@ -7,8 +7,8 @@ name: rx7
 #
 # Exit codes are the contract (CLAUDE.md §1): `check` returns 1 only when the record
 # contradicts itself, so this job fails on exactly that and on nothing else. It does NOT
-# check whether DECISIONS.md is current — §1 is explicit that nothing gates a commit on
-# that, and a job that did would rebuild the v2 trap that stopped Camden pushing.
+# look at anything the app shows or the drawings — nothing generated ever gates a push,
+# and a job that did would rebuild the v2 trap that stopped Camden pushing.
 #
 # Stdlib only. No install step, nothing to keep in sync.
 

@@ -15,6 +15,10 @@ declared table with no file, an undeclared column, a missing column, a bad
 type, a duplicate key, a reference to a row that is not there - each is a
 refusal naming the exact row.
 
+THERE ARE NO PAGES (D-405). Blocks are rows in `blocks`, Camden's answers are
+rows in `inbox`, decisions carry their text in `decisions.body`. The Rx7 app
+reads all of it through `export` and writes his answers through `answer`.
+
 NO COUNTERS ARE EVER STORED. The next D- is max(decisions.id)+1; the next
 block in a project is the highest <prefix>.<n> that project has ever used, +1.
 A stored counter can disagree with reality; a derived one cannot.
@@ -23,23 +27,24 @@ EXIT CODES ARE THE ONLY SIGNAL A CALLER MAY BRANCH ON:
     0  valid / done
     1  invalid - the record contradicts itself. The ONLY code that blocks a commit.
     2  nothing to do, or something is waiting on a person. Advisory. Blocks nothing.
+    3  a usage error or a crash in this tool - never a verdict on the record.
 Never branch on this tool's words, and never grep its output. If a caller needs
-a machine-readable fact it does not have, add a command or a column.
+a machine-readable fact it does not have, add a command or a column: `export`
+is the machine-readable view of everything.
 """
 from __future__ import annotations
 
 import argparse
 import csv
 import datetime
-import hashlib
+import io
+import json
 import os
 import re
-import sqlite3
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-BLOCKS_MD = ROOT / "BLOCKS.md"
 
 # 3 is a usage error or a crash in this tool: never "the record contradicts itself" (§1),
 # so a hook that blocks only on 1 cannot be tripped by a typo or a missing interpreter.
@@ -50,6 +55,11 @@ PHASES = ("PERMANENT", "PROPOSED", "PLANNING", "SOURCING", "BUILDING", "COMPLETE
 DEC_STATUS = ("standing", "superseded", "withdrawn", "inherited")
 WORK_STATE = ("open", "done", "blocked", "dropped")
 WORK_OWNER = ("agent", "camden")
+# How Camden answers a work row in the app (D-406): a check, a measured value, or a choice.
+WORK_REPLY = ("check", "value", "choice")
+INBOX_KIND = ("block", "pick", "work", "run", "project")
+INBOX_DEVICE = ("desktop", "phone")
+RUN_WORKFLOWS = ("apply", "plan", "review", "parts")
 
 # Columns whose vocabulary THIS TOOL owns, not the project. Every area's _schema.csv must
 # declare exactly these, so the same column cannot mean different things in two projects.
@@ -59,39 +69,54 @@ VOCAB = {
     ("decisions", "status"): "enum(" + "|".join(sorted(DEC_STATUS)) + ")",
     ("work", "state"): "enum(" + "|".join(sorted(WORK_STATE)) + ")",
     ("work", "owner"): "enum(" + "|".join(sorted(WORK_OWNER)) + ")",
+    ("work", "reply"): "enum(" + "|".join(sorted(WORK_REPLY)) + ")",
+    ("inbox", "kind"): "enum(" + "|".join(sorted(INBOX_KIND)) + ")",
+    ("inbox", "device"): "enum(" + "|".join(sorted(INBOX_DEVICE)) + ")",
 }
 
+# Tables whose columns the tool and the app depend on. An area that declares one must declare
+# every one of these columns (it may add its own).
+TOOL_COLUMNS = {
+    "blocks": ("id", "title", "opened", "ask", "why", "options", "recommend", "stops"),
+    "inbox": ("id", "target", "kind", "choice", "text", "context", "device", "at"),
+    "decisions": ("id", "system", "title", "date", "status", "supersedes", "superseded_by",
+                  "closes", "also", "body"),
+}
+INBOX_COLUMNS = TOOL_COLUMNS["inbox"]
+
+# A folder table keeps one row per file, data/<table>/<key>.csv, so two writers - the phone
+# committing through GitHub and the desktop committing through git - never touch the same
+# file and can never conflict (D-405). Only the tool may declare one.
+FOLDER_TABLES = ("inbox",)
+FILE_KEY_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._~-]*$")
+
 DATE_RE = re.compile(r"^\d{4}-\d{2}(-\d{2})?$")
+DATETIME_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:\d{2})?$")
 ID_RE = re.compile(r"^[A-Z]{1,4}-\d{1,4}$")
 # Blocks are numbered per project, <prefix>.<n>: `00.01` is the first block ever raised
 # for 02-PROJECTS/00-electrical, `01.07` the seventh for 01-luxury (D-356). The prefix is
 # the project directory's two-digit number; 00-CAR and 01-REFERENCE would collide with
 # 00 and 01, so theirs are CAR and REF. The number has at least two digits, so no id is
 # shorter than `00.01` — but a bare `13.80` in prose is a voltage, so a block id is only
-# recognised where it is structure: a BLOCKS.md heading, `closes`, a gate. Never in prose.
+# recognised where it is structure: a `blocks` key, `closes`, a gate. Never in prose.
 # Blocks were BLK-### until 2026-09-21; each old id is a `retired` row in its project.
 BLOCK_ID_RE = re.compile(r"^(\d{2}|CAR|REF)\.(\d{2,3})$")
 BLOCK_PREFIX_FIXED = {"00-CAR": "CAR", "01-REFERENCE": "REF"}
 # Prose cites are checked by `rx7.py cites` (advisory), never by `check`. D- only, three
 # digits only, because this car's factory diagrams use D-01 and B-12 as component codes.
 CITE_RE = re.compile(r"\b(D-\d{3})\b")
-_BID = r"(?:\d{2}|CAR|REF)\.\d{2,3}"
-_CLOSER = rf"(?:D-\d{{3}}|{_BID})"
-# The title may contain → (the house cite style); only a trailing `→ D-###` list is a closer.
-BLOCK_HEAD_RE = re.compile(
-    rf"^###\s+({_BID})(?![\w.])\s*(?:[·:\-–—]\s*(.*?))?"
-    rf"\s*(?:→\s*({_CLOSER}(?:\s*,\s*{_CLOSER})*))?\s*$"
-)
-SOLVE_RE = re.compile(r"^\*{0,2}\s*solve\s*\*{0,2}\s*:\s*\*{0,2}\s*(.*)$|^\*\*solve\*\*\s*(.*)$", re.I)
-# `## 00 · Electrical` — one header per project; every block sits under its own.
-GROUP_HEAD_RE = re.compile(r"^##\s+(\d{2}|CAR|REF)\b")
-FIELD_RE = re.compile(r"^\*\*([A-Za-z]+):?\*\*\s*(.*)$")
-
-BLOCK_FIELDS = ("Ask", "Why", "Options", "Recommend", "Stops")
+# One option per line in blocks.options, each `(a) …` - the app shows each as a button.
+OPTION_RE = re.compile(r"^\(([a-z])\)\s+(\S.*)$")
+DECISION_STUB = "**Decision.** \n\n**Why.** \n\n**In the data.** "
+STUB_RE = re.compile(r"\*\*Decision\.\*\*\s*\*\*Why\.\*\*")
 
 
 def today() -> str:
     return datetime.date.today().isoformat()
+
+
+def now_iso() -> str:
+    return datetime.datetime.now().astimezone().isoformat(timespec="seconds")
 
 
 def rel(p: Path) -> str:
@@ -101,13 +126,14 @@ def rel(p: Path) -> str:
         return str(p)
 
 
+def natural(s: str):
+    return [int(x) if x.isdigit() else x for x in re.split(r"(\d+)", s or "")]
+
+
 # --------------------------------------------------------------------------- IO
 
-def read_csv_rows(p: Path):
-    if not p.exists():
-        return [], []
-    with p.open(newline="", encoding="utf-8-sig") as f:
-        rows = list(csv.reader(f))
+def read_csv_text(text: str):
+    rows = list(csv.reader(io.StringIO(text)))
     if not rows:
         return [], []
     hdr = [c.strip() for c in rows[0]]
@@ -119,32 +145,76 @@ def read_csv_rows(p: Path):
     return hdr, body
 
 
+def read_csv_rows(p: Path):
+    if not p.exists():
+        return [], []
+    return read_csv_text(p.read_text(encoding="utf-8-sig"))
+
+
+def folder_files(area: Path, table: str):
+    d = area / "data" / table
+    return sorted(d.glob("*.csv")) if d.is_dir() else []
+
+
 def read_table(area: Path, table: str):
+    if table in FOLDER_TABLES:
+        hdr, rows = [], []
+        for f in folder_files(area, table):
+            h, body = read_csv_rows(f)
+            hdr = hdr or h
+            rows += [dict(zip(h, r)) for r in body]
+        return hdr or list(TOOL_COLUMNS.get(table, ())), rows
     hdr, body = read_csv_rows(area / "data" / f"{table}.csv")
     return hdr, [dict(zip(hdr, r)) for r in body]
 
 
+def csv_text(hdr, dicts) -> str:
+    buf = io.StringIO()
+    w = csv.writer(buf, lineterminator="\n")
+    w.writerow(hdr)
+    for d in dicts:
+        w.writerow([(d.get(c, "") or "") for c in hdr])
+    return buf.getvalue()
+
+
+def write_atomic(p: Path, text: str) -> None:
+    p.parent.mkdir(parents=True, exist_ok=True)
+    tmp = p.with_name(p.name + ".tmp")
+    tmp.write_text(text, encoding="utf-8", newline="\n")
+    tmp.replace(p)
+
+
 def write_table(area: Path, table: str, hdr, dicts) -> None:
-    p = area / "data" / f"{table}.csv"
     # A key the header does not have would be dropped without a word — which is exactly how
     # `log` wrote nothing but ids and dates from v3's first run to 2026-09-21. Refuse it.
     stray = sorted({k for d in dicts for k in d if k not in hdr})
     if stray:
-        die(f"{rel(p)}: refusing to write columns the header does not have: {', '.join(stray)} "
-            "(nothing was written)")
-    tmp = p.with_name(p.name + ".tmp")
-    with tmp.open("w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f, lineterminator="\n")
-        w.writerow(hdr)
-        for d in dicts:
-            w.writerow([(d.get(c, "") or "") for c in hdr])
-    tmp.replace(p)
+        die(f"{rel(area)}/data/{table}: refusing to write columns the header does not have: "
+            f"{', '.join(stray)} (nothing was written)")
+    if table in FOLDER_TABLES:
+        # One file per row, named by its key (the first column). Only rows that changed are
+        # written, and only files whose row is gone are removed.
+        d, key = area / "data" / table, hdr[0]
+        keep = set()
+        for row in dicts:
+            k = (row.get(key) or "").strip()
+            if not FILE_KEY_RE.match(k):
+                die(f"{rel(d)}: {k!r} cannot be a file name (nothing was written)")
+            keep.add(k)
+            p, text = d / f"{k}.csv", csv_text(hdr, [row])
+            if not p.exists() or p.read_text(encoding="utf-8") != text:
+                write_atomic(p, text)
+        for f in folder_files(area, table):
+            if f.stem not in keep:
+                f.unlink()
+        return
+    write_atomic(area / "data" / f"{table}.csv", csv_text(hdr, dicts))
 
 
 def areas():
     out = []
     for p in sorted(ROOT.rglob("data/_tables.csv")):
-        if "99-ARCHIVE" in p.parts or ".git" in p.parts:
+        if "99-ARCHIVE" in p.parts or ".git" in p.parts or "node_modules" in p.parts:
             continue
         out.append(p.parent.parent)
     return out
@@ -165,6 +235,11 @@ def resolve_area(name: str | None):
 def die(msg: str, code: int = RC_USAGE):
     print(msg)
     sys.exit(code)
+
+
+def project_kv(area: Path) -> dict:
+    _, rows = read_table(area, "_project")
+    return {(r.get("key") or "").strip(): (r.get("value") or "").strip() for r in rows}
 
 
 # ----------------------------------------------------------------------- schema
@@ -204,6 +279,9 @@ def bad_value(typ: str, v: str):
     elif typ == "date":
         if not DATE_RE.match(v):
             return "is not a date (YYYY-MM-DD or YYYY-MM)"
+    elif typ == "datetime":
+        if not DATETIME_RE.match(v):
+            return "is not a date and time (YYYY-MM-DDTHH:MM:SS+hh:mm)"
     elif typ == "id":
         if not ID_RE.match(v):
             return "is not an id (like D-123)"
@@ -217,6 +295,11 @@ def bad_value(typ: str, v: str):
 
 
 # ------------------------------------------------------------------------ blocks
+#
+# A block is a row in its project's `blocks` table: id, title, opened, ask, why, options,
+# recommend, stops. It stays until a decision closes it, and is then deleted (§4) — the
+# decision is where a settled question lives. His answer is never in this table: it is an
+# `inbox` row until the agent has applied it.
 
 def block_prefix(area: Path):
     """The block-id prefix an area owns: CAR, REF, or a project's two-digit number."""
@@ -231,160 +314,38 @@ def prefix_areas():
     return {p: a for a in areas() if (p := block_prefix(a))}
 
 
-def group_title(area: Path) -> str:
-    """`## 00 · Electrical` — the header a project's blocks sit under on the page."""
-    name = re.sub(r"^\d{2}-", "", area.name).replace("-", " ")
-    return f"## {block_prefix(area)} · {name[:1].upper() + name[1:].lower()}"
-
-
-def read_blocks_text():
-    """(text, is_utf8). A page saved by Notepad as ANSI or UTF-16 must still be READ — his
-    answers are in it — but nothing may be WRITTEN back through a guessed decoding, or a
-    character he typed is silently changed (R3). append_block refuses when is_utf8 is False."""
-    raw = BLOCKS_MD.read_bytes()
-    for enc in ("utf-8-sig",):
-        try:
-            return raw.decode(enc), True
-        except UnicodeDecodeError:
-            pass
-    if raw[:2] in (b"\xff\xfe", b"\xfe\xff"):
-        return raw.decode("utf-16"), False
-    return raw.decode("cp1252", errors="replace"), False
-
-
-# Problems that only mean "a block Claude is still writing" - they refuse a commit, but they
-# must not stop `rx7.py block` from adding the next one in the same pass (§6.2 4d).
-UNFINISHED = set()
-
-
-def parse_blocks():
-    """Return (blocks, problems). Never rewrites the file; refuses rather than guess.
-
-    The page is one `## <prefix> · <Project>` header per project, each block under its
-    own. There is no OPEN section heading: everything on the page is open."""
-    if not BLOCKS_MD.exists():
-        return [], []
-    text, _ = read_blocks_text()
-    lines = [l.rstrip("\r") for l in text.split("\n")]
-    blocks, problems = [], []
-    owners = prefix_areas()
-    section, group, cur = "OPEN", None, None
-    for ln, raw in enumerate(lines, start=1):
-        s = raw.strip()
-        # Inside an answer, only page structure ends it — a `## ` or a `### ` of his own is
-        # part of what he wrote and must not be cut off (R3).
-        structural = (GROUP_HEAD_RE.match(s) or s.upper() in ("## OPEN", "## SOLVED")
-                      or BLOCK_HEAD_RE.match(s))
-        # ...except a line that is plainly an attempt at a block heading (`### 00.7`, `### BLK-…`)
-        # but does not parse: that is a block Claude wrote wrong, and swallowing it would hide it.
-        idlike = re.match(r"^###\s+(BLK-|\d|CAR\b|REF\b)", s)
-        if cur is not None and cur["in_solve"] and not structural and not idlike:
-            cur["solve"].append(raw)
+def parse_options(cell: str):
+    """[(letter, text)] from blocks.options, or None if any line is not `(x) text`."""
+    out = []
+    for line in (cell or "").splitlines():
+        s = line.strip()
+        if not s:
             continue
-        if s.startswith("## "):
-            head = s[3:].strip().upper()
-            if head in ("OPEN", "SOLVED"):
-                section = head
-            g = GROUP_HEAD_RE.match(s)
-            group = g.group(1) if g else None
-            cur = None
-            continue
-        m = BLOCK_HEAD_RE.match(s)
-        if not m and s.startswith("### "):
-            # A heading that is not a block would otherwise be swallowed into the previous
-            # block's text — or, worse, hide a new block entirely. Refuse it by name.
-            problems.append(f"BLOCKS.md: line {ln} is a `###` heading that is not a block "
-                            f"(`### <id> · <title>`, e.g. `### 00.19 · …`): {s[:70]!r}")
-            cur = None
-            continue
-        if m:
-            bid = m.group(1)
-            prefix, num = BLOCK_ID_RE.match(bid).groups()
-            area = owners.get(prefix)
-            if area is None:
-                problems.append(f"BLOCKS.md: {bid} (line {ln}) — no area owns the prefix {prefix!r}")
-            elif group != prefix:
-                problems.append(f"BLOCKS.md: {bid} (line {ln}) is not under its project's "
-                                f"header `{group_title(area)}`")
-            cur = {
-                "id": bid,
-                "prefix": prefix,
-                "num": int(num),
-                "area": area.name if area else "",
-                "title": (m.group(2) or "").strip(),
-                "closer": m.group(3) or "",
-                "section": section,
-                "line": ln,
-                "fields": {},
-                "solve": [],
-                "in_solve": False,
-            }
-            blocks.append(cur)
-            continue
-        if cur is None:
-            continue
-        sv = SOLVE_RE.match(s)
-        if sv:
-            # `**SOLVE:**`, `SOLVE:`, `solve:` and `**Solve**:` all count: the marker is his
-            # to type near, and a parser that is picky about it loses his answer (R3).
-            cur["in_solve"] = True
-            rest = sv.group(1) if sv.group(1) is not None else (sv.group(2) or "")
-            if rest.strip():
-                cur["solve"].append(rest)
-            continue
-        f = FIELD_RE.match(s)
-        if f:
-            cur["fields"][f.group(1)] = f.group(2)
-            continue
-        # continuation of the previous field (options lists, wrapped prose)
-        if cur["fields"]:
-            last = list(cur["fields"])[-1]
-            cur["fields"][last] = (cur["fields"][last] + "\n" + raw).strip()
+        if s.startswith("- "):
+            s = s[2:].strip()
+        m = OPTION_RE.match(s)
+        if not m:
+            return None
+        out.append((m.group(1), m.group(2).strip()))
+    return out
 
-    for b in blocks:
-        b["solution"] = "\n".join(b["solve"]).strip()
-    seen = {}
-    for b in blocks:
-        if b["id"] in seen:
-            problems.append(
-                f"BLOCKS.md: {b['id']} appears twice (lines {seen[b['id']]} and {b['line']})"
-            )
-        else:
-            seen[b["id"]] = b["line"]
-        if b["section"] == "OPEN":
-            # The five fields are the answerable-from-the-page bar, and they only matter
-            # while the block is still waiting: once Camden has answered it, enumerating
-            # the options he did not pick is busywork.
-            if not b["solution"]:
-                n0 = len(problems)
-                for need in BLOCK_FIELDS:
-                    if need not in b["fields"] or not b["fields"][need].strip():
-                        problems.append(
-                            f"BLOCKS.md: {b['id']} (line {b['line']}) is waiting with no **{need}** - "
-                            "it cannot be answered from the page alone"
-                        )
-                    elif "TO WRITE" in b["fields"][need]:
-                        problems.append(
-                            f"BLOCKS.md: {b['id']} (line {b['line']}) has a placeholder in "
-                            f"**{need}** - write it or delete the block"
-                        )
-                UNFINISHED.update(problems[n0:])
-            if not b["in_solve"]:
-                problems.append(
-                    f"BLOCKS.md: {b['id']} (line {b['line']}) has no **SOLVE:** line - "
-                    "Camden has nowhere to answer"
-                )
-        else:
-            # There is no SOLVED section any more: an answered block is applied through the
-            # record, becomes a decision whose `closes` names it, and is then deleted from
-            # this page. DECISIONS.md is where a settled question lives. A block still
-            # sitting under a SOLVED heading is therefore work that was never finished.
-            problems.append(
-                f"BLOCKS.md: {b['id']} (line {b['line']}) is under a SOLVED heading. That "
-                "section no longer exists — apply the answer, write the decision with "
-                "closes={id}, then delete the block from this page.".format(id=b["id"])
-            )
-    return blocks, problems
+
+def recommended_letter(recommend: str, letters) -> str:
+    """The option the Recommend line names first, if it names one: `(a), unless …` → a."""
+    for m in re.finditer(r"\(([a-z])\)", recommend or ""):
+        if m.group(1) in letters:
+            return m.group(1)
+    return ""
+
+
+def open_blocks():
+    """Every block row in the tree, each with its area."""
+    out = []
+    for a in areas():
+        for r in read_table(a, "blocks")[1]:
+            if (r.get("id") or "").strip():
+                out.append(dict(r, _area=a))
+    return out
 
 
 def _closes_tokens(path: Path):
@@ -396,24 +357,24 @@ def _closes_tokens(path: Path):
     return [t for row in body if len(row) > i for t in re.split(r"[\s,;·]+", row[i]) if t]
 
 
-def next_block_id(blocks, prefix: str) -> str:
+def next_block_id(prefix: str) -> str:
     """The highest number this project has ever used, plus one — derived, never stored (R5).
 
-    A block is DELETED from BLOCKS.md once its answer is a decision, so the page alone no
-    longer knows how high a project's numbering went: the decisions do, in `closes` —
-    including the decisions of a project that has since been archived. Counting only the
-    page would hand out 00.05 twice, and an id that means two things is the one mistake
-    this record cannot recover from."""
-    highest = max([b["num"] for b in blocks if b["prefix"] == prefix], default=0)
+    A block is DELETED once its answer is a decision, so the table alone no longer knows how
+    high a project's numbering went: the decisions do, in `closes` — including the decisions
+    of a project that has since been archived. Counting only the table would hand out 00.05
+    twice, and an id that means two things is the one mistake this record cannot recover from."""
+    toks = [(r.get("id") or "").strip() for r in open_blocks()]
     files = [a / "data" / "decisions.csv" for a in areas()]
     files += list((ROOT / "99-ARCHIVE").rglob("decisions.csv"))
-    toks = [t for f in files for t in _closes_tokens(f)]
+    toks += [t for f in files for t in _closes_tokens(f)]
     # A block withdrawn WITHOUT a decision (moot, merged) leaves no `closes`; its id goes
     # into `retired` as a term so the number is still never handed out again.
     for f in [a / "data" / "retired.csv" for a in areas()] + list((ROOT / "99-ARCHIVE").rglob("retired.csv")):
         hdr, body = read_csv_rows(f)
         if "term" in hdr:
             toks += [row[hdr.index("term")].strip() for row in body]
+    highest = 0
     for tok in toks:
         m = BLOCK_ID_RE.match(tok)
         if m and m.group(1) == prefix:
@@ -421,62 +382,76 @@ def next_block_id(blocks, prefix: str) -> str:
     return f"{prefix}.{highest + 1:02d}"
 
 
-def append_block(bid: str, area: Path, ask: str, body: dict | None = None, title: str = "") -> None:
-    """Insert a new block at the end of its project's group, adding the group header if
-    the project has none yet. Every other byte of the page is left exactly as it was.
-    `body` fills Why / Options / Recommend / Stops (each a list of lines) instead of the
-    TO WRITE stubs - used by `picks --ask`, which writes whole blocks from the picks table."""
-    if BLOCKS_MD.exists():
-        text, is_utf8 = read_blocks_text()
-        if not is_utf8:
-            die("BLOCKS.md is not saved as UTF-8 (Notepad 'ANSI' or 'Unicode'?). Nothing was "
-                "written - re-save it as UTF-8 first, so no character Camden typed is changed.")
-        lines = [l.rstrip("\r") for l in text.split("\n")]
-    else:
-        lines = ["# BLOCKS"]
-    # The generated title must itself parse: no → (it would read as a closer) and no line break.
-    title = re.sub(r"\s+", " ", (title or ask).replace("→", "->")).strip()
-    title = title if len(title) <= 60 else title[:60].rsplit(" ", 1)[0].rstrip(" -,;") + " …"
-    entry = [f"### {bid} · {title}", f"**Ask** {ask}", f"**Opened** {today()}"]
-    for field in ("Why", "Options", "Recommend", "Stops"):
-        lines_ = (body or {}).get(field) or ["TO WRITE"]
-        first, rest = (lines_[0], lines_[1:]) if not lines_[0].startswith("- ") else ("", lines_)
-        entry.append(f"**{field}** {first}".rstrip())
-        entry += rest
-    entry.append("**SOLVE:**")
-    prefix = block_prefix(area)
-    order = sorted(prefix_areas(), key=lambda p: (p.isdigit(), p))  # CAR, REF, 00, 01 …
-    heads = [(i, GROUP_HEAD_RE.match(l.strip()).group(1)) for i, l in enumerate(lines)
-             if GROUP_HEAD_RE.match(l.strip())]
-    mine = [i for i, p in heads if p == prefix]
-    if mine:
-        # the group ends at the next `## ` of ANY kind, not only the next project header
-        later = [i for i, l in enumerate(lines) if i > mine[0] and l.strip().startswith("## ")]
-        at = later[0] if later else len(lines)
-        new = entry
-        # an empty project reads `*Nothing open.*` under its header — no longer true
-        gone = [i for i in range(mine[0], at) if lines[i].strip() == "*Nothing open.*"]
-        for i in reversed(gone):
-            del lines[i]
-        at -= len(gone)
-    else:
-        after = [i for i, p in heads if p in order and order.index(p) > order.index(prefix)]
-        at = after[0] if after else len(lines)
-        new = [group_title(area), ""] + entry
-    while at > 0 and not lines[at - 1].strip():
-        at -= 1
-    # only BLANK lines at the insertion point are touched - never a line of text
-    while at < len(lines) and not lines[at].strip():
-        del lines[at]
-    lines[at:at] = [""] + new + ([""] if at < len(lines) else [])
-    out = "\n".join(lines).rstrip("\n") + "\n"
-    tmp = BLOCKS_MD.with_name(BLOCKS_MD.name + ".tmp")
-    tmp.write_text(out, encoding="utf-8", newline="\n")
-    tmp.replace(BLOCKS_MD)
-    # Prove it: the new block must parse back as itself, or the page is restored untouched.
-    if not any(b["id"] == bid for b in parse_blocks()[0]):
-        BLOCKS_MD.write_text(text if 'text' in locals() else "", encoding="utf-8", newline="\n")
-        die(f"{bid} did not parse back after writing - BLOCKS.md restored, nothing added")
+# ------------------------------------------------------------------------- inbox
+#
+# Camden's answers, one row per answer per device, each in its own file (D-405). Written by
+# `answer` on the desktop and by the same function on the phone, which runs this file in the
+# app. Deleted only by the agent, once his words are saved in the decision or row they rule.
+
+def inbox_entry(target: str, device: str, kind: str, choice: str = "", text: str = "",
+                context: str = "", at: str = ""):
+    """(id, file text) for one answer. Pure: validates the shape, touches no file."""
+    if kind not in INBOX_KIND:
+        raise ValueError(f"kind must be one of {'/'.join(INBOX_KIND)}")
+    if device not in INBOX_DEVICE:
+        raise ValueError(f"device must be one of {'/'.join(INBOX_DEVICE)}")
+    iid = f"{target}~{device}"
+    if not FILE_KEY_RE.match(iid):
+        raise ValueError(f"{target!r} cannot be answered - not a plain id")
+    if not (choice or "").strip() and not (text or "").strip():
+        raise ValueError("an answer needs a choice or some words")
+    at = at or now_iso()
+    if not DATETIME_RE.match(at):
+        raise ValueError(f"{at!r} is not a date and time")
+    row = {"id": iid, "target": target, "kind": kind, "choice": choice.strip(), "text": text,
+           "context": context, "device": device, "at": at}
+    return iid, csv_text(list(INBOX_COLUMNS), [row])
+
+
+def resolve_target(area: Path, target: str, kind: str = ""):
+    """(kind, row) for what an answer targets in this area, or raise ValueError saying why."""
+    if kind in ("run", "project"):
+        if kind == "run" and target not in RUN_WORKFLOWS:
+            raise ValueError(f"a run is one of {'/'.join(RUN_WORKFLOWS)}")
+        if kind == "project" and not re.match(r"^[a-z0-9][a-z0-9-]*$", target):
+            raise ValueError("a new project's name is lowercase words joined by -")
+        return kind, {}
+    if BLOCK_ID_RE.match(target):
+        for r in read_table(area, "blocks")[1]:
+            if (r.get("id") or "").strip() == target:
+                return "block", r
+        raise ValueError(f"{target} is not an open block in {rel(area)}")
+    for t, k in (("picks", "pick"), ("work", "work")):
+        if (area / "data" / f"{t}.csv").exists():
+            for r in read_table(area, t)[1]:
+                if (r.get("id") or "").strip() == target:
+                    return k, r
+    raise ValueError(f"{target} is no block, pick or work row in {rel(area)}")
+
+
+def check_choice(kind: str, row: dict, choice: str):
+    """Why this choice cannot answer that row, or None."""
+    c = (choice or "").strip()
+    if not c:
+        return None
+    if kind == "block":
+        letters = [x for x, _ in parse_options(row.get("options", "")) or []]
+        return None if c in letters else f"{c!r} is not one of the options {', '.join(letters)}"
+    if kind == "pick":
+        return None if c in ("yes", "no", "question") else "a pick is answered yes, no or question"
+    if kind == "work":
+        reply = (row.get("reply") or "check").strip() or "check"
+        if reply == "check" and c not in ("done", "not done"):
+            return "a check is answered done or not done"
+        if reply == "choice":
+            opts = split_choices(row.get("choices", ""))
+            if c not in opts:
+                return f"{c!r} is not one of {', '.join(opts)}"
+    return None
+
+
+def split_choices(cell: str):
+    return [x.strip() for x in (cell or "").split("|") if x.strip()]
 
 
 # ------------------------------------------------------------------------- gates
@@ -485,8 +460,8 @@ def append_block(bid: str, area: Path, ask: str, body: dict | None = None, title
 # Nothing else: prose belongs in `note`. The references, resolved across the whole tree:
 #
 #   D-274                 met when that decision is standing or inherited
-#   01.07                 met when that block is gone from BLOCKS.md and a decision
-#                         names it in `closes` — i.e. it has been answered and applied
+#   01.07                 met when that block is gone from `blocks` and a decision names it
+#                         in `closes` — i.e. it has been answered and applied
 #   A5                    met when that work row is done or dropped, in this area
 #   01-luxury:F-012  the same, in another area (work ids are only unique per area)
 #   phase:SOURCING        met when the owning area is at that phase or past it
@@ -508,9 +483,9 @@ _TREE = None
 
 
 def tree_index(fresh: bool = False):
-    """Every gate-addressable fact in the tree, read straight from the CSVs and BLOCKS.md.
+    """Every gate-addressable fact in the tree, read straight from the CSVs.
 
-    {"decisions": {id: status}, "blocks": {id: section}, "phase": {area: phase},
+    {"decisions": {id: status}, "blocks": {id: "OPEN"}, "phase": {area: phase},
      "work": {(area, id): state}, "work_ids": {id: [area…]}, "row": {(area, id): row}}
     """
     global _TREE
@@ -519,9 +494,7 @@ def tree_index(fresh: bool = False):
     idx = {"decisions": {}, "blocks": {}, "phase": {}, "work": {}, "work_ids": {}, "row": {}}
     for a in areas():
         name = a.name
-        _, prow = read_table(a, "_project")
-        kv = {(r.get("key") or "").strip(): (r.get("value") or "").strip() for r in prow}
-        idx["phase"][name] = kv.get("phase", "")
+        idx["phase"][name] = project_kv(a).get("phase", "")
         _, drows = read_table(a, "decisions")
         for r in drows:
             i = (r.get("id") or "").strip()
@@ -539,13 +512,13 @@ def tree_index(fresh: bool = False):
             idx["work"][(name, i)] = (r.get("state") or "").strip()
             idx["work_ids"].setdefault(i, []).append(name)
             idx["row"][(name, i)] = r
-    for b in parse_blocks()[0]:
-        idx["blocks"][b["id"]] = b["section"]
-    # A block leaves BLOCKS.md the moment its answer is a decision, so "was it answered?"
-    # is not a section any more — it is whether a decision says it closed it. That is the
-    # one home for the fact (R2), and it is why a gate on a removed block still resolves.
-    # Only a STANDING (or inherited) decision closes a block (§4), and a project that has been
-    # archived still closed what it closed.
+        for r in read_table(a, "blocks")[1]:
+            if (r.get("id") or "").strip():
+                idx["blocks"][r["id"].strip()] = "OPEN"
+    # A block leaves `blocks` the moment its answer is a decision, so "was it answered?" is
+    # whether a decision says it closed it. That is the one home for the fact (R2), and it is
+    # why a gate on a removed block still resolves. Only a STANDING (or inherited) decision
+    # closes a block (§4), and a project that has been archived still closed what it closed.
     closed = set()
     for f in [a / "data" / "decisions.csv" for a in areas()] + list((ROOT / "99-ARCHIVE").rglob("decisions.csv")):
         hdr, _b = read_csv_rows(f)
@@ -597,7 +570,7 @@ def gate_ref_state(ref: str, area: str, idx=None):
     if ref in idx.get("blocks_closed", ()):
         return True, f"{ref} closed"
     if BLOCK_ID_RE.match(ref):
-        return False, f"? {ref} is no block on BLOCKS.md and no decision closes it"
+        return False, f"? {ref} is no open block and no decision closes it"
     m = WORK_REF_RE.match(ref)
     if m:
         wid = m.group("id")
@@ -615,7 +588,7 @@ def gate_ref_state(ref: str, area: str, idx=None):
         if ref.startswith("D-"):
             return False, f"? {ref} is no decision in the tree"
         return False, f"? {ref} is no decision, block or work item in the tree"
-    return False, (f"? {ref!r} is not a reference — a gate holds D-/BLK-/work ids and "
+    return False, (f"? {ref!r} is not a reference — a gate holds D-/block/work ids and "
                    f"phase:<PHASE>, nothing else; prose belongs in `note`")
 
 
@@ -749,12 +722,17 @@ def check_area(area: Path, keyidx) -> list[str]:
         return [f"{rel(area)}: data/_tables.csv is missing or empty"]
 
     files = {f.stem for f in (area / "data").glob("*.csv") if not f.name.startswith("_")}
+    folders = {t for t in FOLDER_TABLES if (area / "data" / t).is_dir()}
     for t in sorted(files - set(tables)):
         p.append(f"{rel(area)}: data/{t}.csv exists but {t!r} is not declared in _tables.csv")
-    for t in sorted(set(tables) - files):
+    for t in sorted(folders - set(tables)):
+        p.append(f"{rel(area)}: data/{t}/ exists but {t!r} is not declared in _tables.csv")
+    for t in sorted(set(tables) - files - set(FOLDER_TABLES)):
         p.append(f"{rel(area)}: _tables.csv declares {t!r} but data/{t}.csv does not exist")
+    for t in sorted(files & set(FOLDER_TABLES)):
+        p.append(f"{rel(area)}: {t} keeps one row per file in data/{t}/, not in data/{t}.csv")
 
-    for t in sorted(files & set(tables)):
+    for t in sorted(set(tables) & (files | set(FOLDER_TABLES))):
         spec = cols.get(t) or []
         if not spec:
             p.append(f"{rel(area)}:{t} has no columns declared in _schema.csv")
@@ -771,8 +749,16 @@ def check_area(area: Path, keyidx) -> list[str]:
                     f"{rel(area)}:_schema: {t}.{c['column']} is declared {c.get('type')!r} "
                     f"but this column's vocabulary belongs to the tool: it must be {canon}"
                 )
+        declared = [c["column"] for c in spec]
+        for c in TOOL_COLUMNS.get(t, ()):
+            if c not in declared:
+                p.append(f"{rel(area)}:_schema: {t} must declare {c!r} - the tool and the app read it")
+        if t in FOLDER_TABLES:
+            if declared[0] != kc:
+                p.append(f"{rel(area)}:_schema: {t}'s key must be its first column (it names the file)")
+            p += check_folder(area, t, declared, kc)
         hdr, rows = read_table(area, t)
-        want = {c["column"] for c in spec}
+        want = set(declared)
         have = set(hdr)
         for c in sorted(want - have):
             p.append(f"{rel(area)}:{t} is missing declared column {c!r}")
@@ -809,21 +795,26 @@ def check_area(area: Path, keyidx) -> list[str]:
                             p.append(
                                 f"{rel(area)}:{t}:{k}: {col}={tok!r} is not a key in {target}"
                             )
-        # A row with more cells than its header loses them on the next write (read_table zips
-        # to the header), so it is refused while the cells are still there to rescue.
-        _raw_hdr, raw_body = read_csv_rows(area / "data" / f"{t}.csv")
-        for i, raw in enumerate(raw_body, start=2):
-            if len(raw) > len(_raw_hdr) and any(x.strip() for x in raw[len(_raw_hdr):]):
-                p.append(f"{rel(area)}:{t} line {i}: {len(raw)} cells under a {len(_raw_hdr)}-column "
-                         "header - the extra cells would be lost on the next write")
-        if t in ("decisions", "log", "retired"):
+        if t not in FOLDER_TABLES:
+            # A row with more cells than its header loses them on the next write (read_table
+            # zips to the header), so it is refused while the cells are still there to rescue.
+            _raw_hdr, raw_body = read_csv_rows(area / "data" / f"{t}.csv")
+            for i, raw in enumerate(raw_body, start=2):
+                if len(raw) > len(_raw_hdr) and any(x.strip() for x in raw[len(_raw_hdr):]):
+                    p.append(f"{rel(area)}:{t} line {i}: {len(raw)} cells under a {len(_raw_hdr)}-column "
+                             "header - the extra cells would be lost on the next write")
+        if t == "blocks":
+            p += check_blocks(area, rows)
+        if t == "inbox":
+            p += check_inbox(area, rows)
+        if t in ("decisions", "log", "retired", "inbox"):
             continue
         for r in rows:
             k = (r.get(kc) or "").strip()
             for col, v in r.items():
                 v = v or ""
                 # §6.6: 00-CAR states what IS, never how it was decided.
-                if block_prefix(area) == "CAR":
+                if block_prefix(area) == "CAR" and t != "blocks":
                     for hit in re.findall(r"\b(?:D-\d{3}|BLK-\d{1,4})\b", v):
                         p.append(f"{rel(area)}:{t}:{k}: {col} cites {hit} - 00-CAR never cites a "
                                  "decision or a block (§6.6); say what the car is")
@@ -834,6 +825,64 @@ def check_area(area: Path, keyidx) -> list[str]:
     p += check_decisions(area)
     p += check_phase(area)
     p += check_gates(area)
+    return p
+
+
+def check_folder(area: Path, t: str, declared, kc) -> list[str]:
+    """Each file of a folder table is one row, under the declared header, named by its key."""
+    p = []
+    for f in folder_files(area, t):
+        hdr, body = read_csv_rows(f)
+        where = rel(f)
+        if set(hdr) != set(declared):
+            p.append(f"{where}: its header is not {t}'s declared columns")
+            continue
+        if len(body) != 1:
+            p.append(f"{where}: holds {len(body)} rows - a {t} file holds exactly one")
+            continue
+        key = body[0][hdr.index(kc)].strip()
+        if key != f.stem:
+            p.append(f"{where}: its {kc} is {key!r} - the file must be named {key}.csv")
+    return p
+
+
+def check_blocks(area: Path, rows) -> list[str]:
+    """The clarity bar (§4): every block answerable from its row alone."""
+    p, px = [], block_prefix(area)
+    closed = tree_index().get("blocks_closed", set())
+    for r in rows:
+        bid = (r.get("id") or "").strip()
+        m = BLOCK_ID_RE.match(bid)
+        if not m:
+            p.append(f"{rel(area)}:blocks:{bid}: not a block id (<prefix>.<nn>, D-356)")
+            continue
+        if m.group(1) != px:
+            p.append(f"{rel(area)}:blocks:{bid}: this area's blocks are {px}.<nn>")
+        opts = parse_options(r.get("options", ""))
+        if opts is None:
+            p.append(f"{rel(area)}:blocks:{bid}: options must be one per line, each starting "
+                     "(a) , (b) … - the app shows each as a button")
+        elif len(opts) < 2:
+            p.append(f"{rel(area)}:blocks:{bid}: a block offers at least two options")
+        elif [x for x, _ in opts] != [chr(ord("a") + i) for i in range(len(opts))]:
+            p.append(f"{rel(area)}:blocks:{bid}: options are lettered (a), (b), (c) … in order")
+        for col in ("ask", "why", "options", "recommend", "stops", "title"):
+            if "TO WRITE" in (r.get(col) or ""):
+                p.append(f"{rel(area)}:blocks:{bid}: {col} still says TO WRITE")
+        if bid in closed:
+            p.append(f"{rel(area)}:blocks:{bid}: a standing decision closes it - delete the block (§4)")
+    return p
+
+
+def check_inbox(area: Path, rows) -> list[str]:
+    p = []
+    for r in rows:
+        iid = (r.get("id") or "").strip()
+        want = f"{(r.get('target') or '').strip()}~{(r.get('device') or '').strip()}"
+        if iid != want:
+            p.append(f"{rel(area)}:inbox:{iid}: its id must be <target>~<device> ({want})")
+        if not (r.get("choice") or "").strip() and not (r.get("text") or "").strip():
+            p.append(f"{rel(area)}:inbox:{iid}: holds neither a choice nor any words")
     return p
 
 
@@ -851,42 +900,32 @@ def ref_ok(area: Path, target: str, value: str, keyidx) -> bool:
 
 def check_decisions(area: Path) -> list[str]:
     p = []
-    ddir = area / "data" / "decisions"
     if not (area / "data" / "decisions.csv").exists():
         return p
     _, rows = read_table(area, "decisions")
-    ids = set()
     for r in rows:
         i = (r.get("id") or "").strip()
         if not i:
             continue
-        ids.add(i)
         st = (r.get("status") or "").strip()
-        if st and st not in DEC_STATUS:
-            p.append(f"{rel(area)}:decisions:{i}: status {st!r} is not " + "/".join(DEC_STATUS))
+        body = (r.get("body") or "").strip()
         # Only a standing decision must have a body. A superseded, withdrawn or inherited
         # row is allowed to be a tombstone: the id is reserved, the reasoning lives in the
         # decision that replaced it.
-        if st == "standing" and not (ddir / f"{i}.md").exists():
-            p.append(f"{rel(area)}:decisions:{i}: standing, but data/decisions/{i}.md does not exist")
+        if st == "standing" and not body:
+            p.append(f"{rel(area)}:decisions:{i}: standing, but its body is empty")
+        if st == "standing" and STUB_RE.search(body):
+            p.append(f"{rel(area)}:decisions:{i}: standing, but its body is still the empty "
+                     "stub `rx7.py new` wrote - write it or withdraw it")
         if st == "superseded" and not (r.get("superseded_by") or "").strip():
             p.append(f"{rel(area)}:decisions:{i}: superseded with no superseded_by")
-        if st == "standing" and (ddir / f"{i}.md").exists():
-            body = (ddir / f"{i}.md").read_text(encoding="utf-8", errors="replace")
-            if re.search(r"\*\*Decision\.\*\*\s*\*\*Why\.\*\*", body):
-                p.append(f"{rel(area)}:decisions:{i}: standing, but its body is still the empty "
-                         "stub `rx7.py new` wrote - write it or withdraw it")
-    if ddir.is_dir():
-        for f in sorted(ddir.glob("D-*.md")):
-            if f.stem not in ids:
-                p.append(f"{rel(area)}: data/decisions/{f.name} has no row in decisions.csv")
+    if (area / "data" / "decisions").is_dir():
+        p.append(f"{rel(area)}: data/decisions/ exists - decision text lives in decisions.body (D-405)")
     return p
 
 
 def check_phase(area: Path) -> list[str]:
-    _, rows = read_table(area, "_project")
-    kv = {(r.get("key") or "").strip(): (r.get("value") or "").strip() for r in rows}
-    ph = kv.get("phase", "")
+    ph = project_kv(area).get("phase", "")
     if ph and ph not in PHASES:
         return [f"{rel(area)}:_project: phase {ph!r} is not one of " + "/".join(PHASES)]
     return []
@@ -898,8 +937,6 @@ def run_check(sel=None):
     problems = []
     for a in sel or areas():
         problems += check_area(a, keyidx)
-    _, bp = parse_blocks()
-    problems += bp
     problems += check_supersedes()
     seen_prefix = {}
     for a in areas():
@@ -909,6 +946,9 @@ def run_check(sel=None):
                             "their block ids would collide; renumber one directory")
         elif px:
             seen_prefix[px] = a
+    for stray in ("BLOCKS.md", "DECISIONS.md"):
+        if (ROOT / stray).exists():
+            problems.append(f"{stray} exists - blocks and decisions live in the record now (D-405)")
     return problems
 
 
@@ -938,6 +978,17 @@ def check_supersedes():
     return p
 
 
+def archived_decision_ids():
+    ids = set()
+    for d in (ROOT / "99-ARCHIVE").rglob("D-*.md"):
+        ids.add(d.stem)
+    for f in (ROOT / "99-ARCHIVE").rglob("decisions.csv"):
+        hdr, body = read_csv_rows(f)
+        if "id" in hdr:
+            ids |= {row[hdr.index("id")].strip() for row in body}
+    return ids
+
+
 def unresolved_cites():
     """ADVISORY ONLY. Ids written inside prose cells are documentation, not structure:
     a cite that no longer resolves is worth knowing about and must never refuse a commit.
@@ -945,12 +996,10 @@ def unresolved_cites():
     exactly. This scan is deliberately narrow - D- with three digits only - because this
     car's own diagrams use two-digit codes like D-01 and B-12 for components, and a block
     id like `00.18` cannot be told from a number in prose, so it is not scanned at all."""
-    known = set()
+    known = archived_decision_ids()
     for a in areas():
         _, rows = read_table(a, "decisions")
         known |= {(r.get("id") or "").strip() for r in rows}
-    for d in (ROOT / "99-ARCHIVE").rglob("D-*.md"):
-        known.add(d.stem)
     out = []
     # retired.csv exists "so it can never come back" - so say where it has.
     terms = set()
@@ -980,6 +1029,241 @@ def unresolved_cites():
     return sorted(set(out))
 
 
+# ------------------------------------------------------------------------- views
+#
+# What the app shows, computed from the record each time and never stored: the working order
+# of each project's work, what holds each row, and the links between decisions. Reads every
+# area's work, blocks, inbox, picks, parts, decisions and log; writes nothing.
+
+def work_view(a: Path, idx) -> list[dict]:
+    """Every work row of one area with its status, what holds it, and its place in the
+    working order. Reads work and _project, plus the tree index for gates.
+
+    Working order: a row comes after everything its gate names. A project whose work has a
+    `track` column has two tracks, design and build (D-386 → D-405); each is split where the
+    car comes apart and goes back together (D-387): design part 1 is the car whole, part 2
+    starts at `car_apart`; build part 3 is the car apart, part 4 starts at `car_back`."""
+    hdr, rows = read_table(a, "work")
+    rows = [r for r in rows if (r.get("id") or "").strip()]
+    by_id = {r["id"].strip(): r for r in rows}
+    kv = project_kv(a)
+    titles = {(r.get("id") or "").strip(): (r.get("title") or "").strip()
+              for r in read_table(a, "blocks")[1]}
+    answered = {(r.get("target") or "").strip() for ar in areas() for r in read_table(ar, "inbox")[1]}
+
+    def status(r):
+        st = (r.get("state") or "").strip()
+        if st in ("done", "dropped"):
+            return st
+        met, _, _ = gate_state(r.get("gate", ""), a.name, idx)
+        return "ready" if st == "open" and met else "waiting"
+
+    stat = {w: status(r) for w, r in by_id.items()}
+    memo = {}
+
+    def depth(wid, seen=()):
+        # Phase gates sit after the whole design; a gate on another area or a block is one step.
+        if wid in memo:
+            return memo[wid]
+        if stat[wid] in ("ready", "done", "dropped"):
+            memo[wid] = 0
+            return 0
+        d = 1
+        for ref in parse_gate(by_id[wid].get("gate", "")):
+            if ref.startswith("phase:"):
+                d = max(d, 50)
+            elif ref in by_id and ref not in seen:
+                d = max(d, 1 + depth(ref, seen + (wid,)))
+        memo[wid] = d
+        return d
+
+    def blockers(w):
+        r, out = by_id[w], []
+        for ref in parse_gate(r.get("gate", "")):
+            ok, why = gate_ref_state(ref, a.name, idx)
+            if ok:
+                continue
+            if why.startswith("?"):
+                out.append({"ref": ref, "kind": "bad", "label": why[2:]})
+            elif ref.startswith("phase:"):
+                out.append({"ref": ref, "kind": "phase", "label": why,
+                            "freeze": ref[6:].upper() == "SOURCING"})
+            elif ref in by_id:
+                out.append({"ref": ref, "kind": "work", "label": (by_id[ref].get("item") or "").strip(),
+                            "owner": (by_id[ref].get("owner") or "").strip(), "state": stat[ref]})
+            elif ref in idx["blocks"]:
+                out.append({"ref": ref, "kind": "block", "label": titles.get(ref, ""),
+                            "answered": ref in answered})
+            elif ":" in ref:
+                other, wid = ref.split(":", 1)
+                orow = idx["row"].get((other, wid), {})
+                out.append({"ref": ref, "kind": "area-work", "area": other,
+                            "label": (orow.get("item") or "").strip(),
+                            "state": idx["work"].get((other, wid), "")})
+            else:
+                out.append({"ref": ref, "kind": "decision", "label": why})
+        if not out and (r.get("state") or "").strip() == "blocked":
+            out.append({"ref": "", "kind": "marked", "label": "marked blocked - see its note"})
+        return out
+
+    split = "track" in (hdr or [])
+
+    def after(w, root, seen=()):
+        if not root or w not in by_id:
+            return False
+        if w == root:
+            return True
+        return any(g in by_id and g not in seen and after(g, root, seen + (w,))
+                   for g in parse_gate(by_id[w].get("gate", "")))
+
+    apart_row, back_row = kv.get("car_apart", ""), kv.get("car_back", "")
+    track = lambda w: ((by_id[w].get("track") or "design").strip() or "design") if split else ""
+
+    def part(w):
+        if not split:
+            return 0
+        if track(w) == "design":
+            freeze = (by_id[w].get("stage") or "").strip() == "Z"
+            return 2 if (apart_row and (after(w, apart_row) or freeze)) else 1
+        return 4 if (back_row and after(w, back_row)) else 3
+
+    info = {w: {"depth": depth(w), "track": track(w), "part": part(w)} for w in by_id}
+    # Stages in the order their work can start: the stage's typical open row, not its earliest -
+    # one early row must not pull the whole install stage ahead of the parts arriving.
+    groups = {}
+    for w in by_id:
+        groups.setdefault((info[w]["track"], info[w]["part"], (by_id[w].get("stage") or "-").strip()), []).append(w)
+
+    def stage_key(g):
+        live = sorted(info[w]["depth"] for w in groups[g] if stat[w] in ("ready", "waiting"))
+        return (g[0] != "design", g[1], 0 if live else 1, live[len(live) // 2] if live else 0, natural(g[2]))
+
+    rank = {g: i for i, g in enumerate(sorted(groups, key=stage_key))}
+    order = sorted(by_id, key=lambda w: (rank[(info[w]["track"], info[w]["part"],
+                                                (by_id[w].get("stage") or "-").strip())],
+                                          info[w]["depth"], natural(w)))
+    # The design track reads in pure working order (his checklist, D-386); the build track and
+    # an unsplit project read stage by stage. `order` is the second, `seq` the first.
+    seq = {w: n for n, w in enumerate(sorted(by_id, key=lambda w: (
+        info[w]["track"] != "design", info[w]["part"], info[w]["depth"], natural(w))))}
+    out = []
+    for n, w in enumerate(order):
+        r = by_id[w]
+        out.append({
+            "area": a.name, "id": w, "order": n, "seq": seq[w],
+            "stage": (r.get("stage") or "").strip(), "stage_title": (r.get("stage_title") or "").strip(),
+            "item": (r.get("item") or "").strip(), "owner": (r.get("owner") or "").strip(),
+            "state": (r.get("state") or "").strip(), "status": stat[w],
+            "gate": parse_gate(r.get("gate", "")), "blockers": blockers(w) if stat[w] == "waiting" else [],
+            "note": (r.get("note") or "").strip(), "track": info[w]["track"], "part": info[w]["part"],
+            "depth": info[w]["depth"],
+            "reply": (r.get("reply") or "").strip() or "check",
+            "choices": split_choices(r.get("choices", "")), "unit": (r.get("unit") or "").strip(),
+        })
+    # Stage titles belong to the stage, and only one row of a stage may carry it.
+    stage_titles = {}
+    for x in out:
+        if x["stage_title"]:
+            stage_titles.setdefault(x["stage"], x["stage_title"])
+    for x in out:
+        x["stage_title"] = stage_titles.get(x["stage"], "")
+    return out
+
+
+def export_data() -> dict:
+    """Everything the Rx7 app shows, as one JSON-ready dict (R9: the app never reads words).
+    Reads every table of every area, the archive's decision ids and 01-REFERENCE/photos."""
+    problems = run_check()
+    idx = tree_index()
+    out = {"version": 1, "generated": now_iso(),
+           "record": {"valid": not problems, "problems": problems[:100]},
+           "areas": [], "blocks": [], "picks": [], "work": [], "decisions": [], "inbox": [],
+           "log": [], "tables": [], "photos": [], "next": {}}
+    structured = {"blocks", "inbox", "work", "decisions", "log", "retired", "picks"}
+    cites_in = {}
+    for a in areas():
+        tables, cols = schema(a)
+        kv = project_kv(a)
+        kind = {"00-CAR": "car", "01-REFERENCE": "reference"}.get(a.name, "project")
+        meta = []
+        for t in sorted(tables):
+            spec = cols.get(t) or []
+            hdr, rows = read_table(a, t)
+            meta.append({"name": t, "purpose": (tables[t].get("purpose") or "").strip(),
+                         "key": key_column(spec), "rows": len(rows),
+                         "columns": [{k: (c.get(k) or "").strip() for k in
+                                      ("column", "type", "required", "ref", "note")} for c in spec]})
+            if t not in structured:
+                out["tables"].append({"area": a.name, "table": t, "columns": hdr,
+                                      "rows": [[r.get(c, "") for c in hdr] for r in rows]})
+            for r in rows:
+                for col, v in r.items():
+                    for d in set(CITE_RE.findall(v or "")):
+                        cites_in.setdefault(d, []).append({"area": a.name, "table": t,
+                                                           "key": (r.get(key_column(spec) or "") or "").strip()})
+        out["areas"].append({"path": rel(a), "name": a.name, "prefix": block_prefix(a) or "",
+                             "kind": kind, "project": kv, "tables": meta})
+        if block_prefix(a):
+            out["next"][a.name] = next_block_id(block_prefix(a))
+        for r in read_table(a, "inbox")[1]:
+            out["inbox"].append(dict(r, area=a.name))
+        for r in read_table(a, "log")[1][-40:]:
+            out["log"].append(dict(r, area=a.name))
+        if (a / "data" / "work.csv").exists():
+            out["work"] += work_view(a, idx)
+        for r in read_table(a, "decisions")[1]:
+            i = (r.get("id") or "").strip()
+            out["decisions"].append({
+                "area": a.name, "id": i, "system": (r.get("system") or "").strip(),
+                "title": (r.get("title") or "").strip(), "date": (r.get("date") or "").strip(),
+                "status": (r.get("status") or "").strip(),
+                "supersedes": CITE_RE.findall(r.get("supersedes") or ""),
+                "superseded_by": (r.get("superseded_by") or "").strip(),
+                "closes": [t for t in re.split(r"[\s,;·]+", r.get("closes") or "") if t],
+                "also": (r.get("also") or "").strip(), "body": (r.get("body") or "").strip()})
+        if (a / "data" / "picks.csv").exists():
+            _, parts = read_table(a, "parts")
+            part = {(p.get("id") or "").strip(): p for p in parts}
+            for r in read_table(a, "picks")[1]:
+                pr = part.get((r.get("part") or "").strip(), {})
+                out["picks"].append(dict({k: (v or "").strip() for k, v in r.items()}, area=a.name,
+                                         part_item=(pr.get("item") or "").strip(),
+                                         part_spec=(pr.get("spec") or "").strip()))
+    answered = {(e["area"], e["target"]) for e in out["inbox"]}
+    for r in open_blocks():
+        a = r["_area"]
+        opts = parse_options(r.get("options", "")) or []
+        bid = r["id"].strip()
+        text = " ".join(r.get(c, "") or "" for c in ("ask", "why", "options", "recommend", "stops"))
+        out["blocks"].append({
+            "area": a.name, "id": bid, "title": (r.get("title") or "").strip(),
+            "opened": (r.get("opened") or "").strip(), "age": days_since(r.get("opened", "")),
+            "ask": (r.get("ask") or "").strip(), "why": (r.get("why") or "").strip(),
+            "options": [{"letter": x, "text": t} for x, t in opts],
+            "recommend": (r.get("recommend") or "").strip(),
+            "recommended": recommended_letter(r.get("recommend", ""), [x for x, _ in opts]),
+            "stops": (r.get("stops") or "").strip(),
+            "touches": sorted(set(CITE_RE.findall(text)), key=natural),
+            "unblocks": [{"area": ar, "id": w, "item": (row.get("item") or "").strip(),
+                          "owner": (row.get("owner") or "").strip()}
+                         for (ar, w), row in sorted(idx["row"].items())
+                         if bid in parse_gate(row.get("gate", ""))],
+            "answered": (a.name, bid) in answered})
+    by_dec = {}
+    for d in out["decisions"]:
+        by_dec.setdefault(d["id"], []).append(d)
+    for d in out["decisions"]:
+        refs = cites_in.get(d["id"], [])
+        d["cited_by"] = sorted({x["key"] for x in refs if x["table"] == "decisions" and x["key"] != d["id"]},
+                               key=natural)
+        d["cited_in"] = [x for x in refs if x["table"] != "decisions"][:60]
+    photos = ROOT / "01-REFERENCE" / "photos"
+    if photos.is_dir():
+        out["photos"] = sorted(rel(p) for p in photos.rglob("*")
+                               if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"))
+    return out
+
+
 # --------------------------------------------------------------------- commands
 
 def cmd_check(args):
@@ -995,18 +1279,14 @@ def cmd_check(args):
 
 
 def cmd_status(args):
-    keyidx = load_keys()
     problems = run_check()
-    blocks, _ = parse_blocks()
-    open_b = [b for b in blocks if b["section"] == "OPEN"]
-    waiting = [b for b in open_b if b["solution"]]
-    stuck = [b for b in open_b if not b["solution"]]
-
+    blocks = open_blocks()
+    inbox = [(a, r) for a in areas() for r in read_table(a, "inbox")[1]]
+    answered = {(a.name, (r.get("target") or "").strip()) for a, r in inbox}
     idx = tree_index()
     print(f"RECORD   {'valid' if not problems else str(len(problems)) + ' problem(s)'}")
     for a in areas():
-        _, prow = read_table(a, "_project")
-        kv = {(r.get("key") or "").strip(): (r.get("value") or "").strip() for r in prow}
+        kv = project_kv(a)
         line = f"{rel(a):<34} {kv.get('phase','-'):<10}"
         if (a / "data" / "work.csv").exists():
             _, w = read_table(a, "work")
@@ -1018,14 +1298,17 @@ def cmd_status(args):
             line += f"   decisions {len(standing)} ({len(alone)} nobody was asked)"
         print(line)
         print_queue(a.name, idx)
-    print(f"BLOCKS   {len(stuck)} unanswered, {len(waiting)} answered and not yet applied")
+    stuck = [b for b in blocks if (b["_area"].name, b["id"].strip()) not in answered]
+    print(f"BLOCKS   {len(stuck)} unanswered")
     for b in stuck:
-        print(f"  {b['id']} {b['area']}: {b['fields'].get('Ask','')[:80]}{block_age(b)}")
-    for b in waiting:
-        print(f"  {b['id']} {b['area']}: ANSWERED - apply it{block_age(b)}")
+        d = days_since(b.get("opened", ""))
+        print(f"  {b['id']} {b['_area'].name}: {(b.get('ask') or '')[:80]}" + (f"  ({d}d)" if d is not None else ""))
+    print(f"INBOX    {len(inbox)} answer(s) waiting to be applied")
+    for a, r in inbox:
+        print(f"  {r.get('target')} {a.name}: {r.get('kind')} from the {r.get('device')} {r.get('at', '')[:16]}")
     if problems:
         return RC_INVALID
-    if waiting or stuck:
+    if inbox or stuck:
         return RC_WAITING
     return RC_OK
 
@@ -1036,11 +1319,6 @@ def days_since(iso: str):
     if not m:
         return None
     return (datetime.date.today() - datetime.date(*(int(x) for x in m.groups()))).days
-
-
-def block_age(b) -> str:
-    d = days_since(b["fields"].get("Opened", ""))
-    return f"  ({d}d)" if d is not None else ""
 
 
 def decisions_made_alone(area: Path):
@@ -1111,11 +1389,20 @@ def cmd_get(args):
 
 
 def _pairs(items):
+    """col=value pairs. `col=@path` reads the value from a file (a decision body, a block's
+    why); `col=@@text` is a value that really starts with @."""
     out = {}
     for it in items:
         if "=" not in it:
             die(f"{it!r} is not col=value")
         k, v = it.split("=", 1)
+        if v.startswith("@@"):
+            v = v[1:]
+        elif v.startswith("@"):
+            p = Path(v[1:]).expanduser()
+            if not p.is_file():
+                die(f"{k}=@{v[1:]}: no such file (nothing was written)")
+            v = p.read_text(encoding="utf-8").strip("\n")
         out[k.strip()] = v
     return out
 
@@ -1144,7 +1431,8 @@ def cmd_set(args):
     hit.update(vals)
     write_table(a, args.table, hdr, rows)
     for k, v in vals.items():
-        print(f"{args.table}:{args.key} {k}: {before[k]!r} -> {v!r}")
+        show = lambda s: repr(s if len(s) <= 120 else s[:117] + "...")
+        print(f"{args.table}:{args.key} {k}: {show(before[k])} -> {show(v)}")
     return RC_OK
 
 
@@ -1189,6 +1477,7 @@ def cmd_del(args):
 
 
 def cmd_sql(args):
+    import sqlite3  # here, not at the top: the phone runs this file without sqlite3
     a = resolve_area(args.area)
     tables, _ = schema(a)
     con = sqlite3.connect(":memory:")
@@ -1221,38 +1510,26 @@ def cmd_find(args):
     needle = args.text.lower()
     n = 0
     for a in sel:
-        for f in sorted((a / "data").glob("*.csv")):
-            hdr, body = read_csv_rows(f)
-            for i, row in enumerate(body, start=2):
-                if any(needle in (c or "").lower() for c in row):
-                    print(f"{rel(a)}:{f.stem} line {i}: " + " | ".join(row)[:200])
+        tables, cols = schema(a)
+        for t in sorted(tables):
+            kc = key_column(cols.get(t) or []) or ""
+            for r in read_table(a, t)[1]:
+                hits = [c for c, v in r.items() if needle in (v or "").lower()]
+                if hits:
+                    print(f"{rel(a)}:{t}:{(r.get(kc) or '').strip()} ({', '.join(hits)})")
                     n += 1
-        for f in sorted((a / "data" / "decisions").glob("*.md")) if (a / "data" / "decisions").is_dir() else []:
-            if needle in f.read_text(encoding="utf-8", errors="replace").lower():
-                print(f"{rel(a)}:{f.stem} (decision body)")
-                n += 1
-    if BLOCKS_MD.exists() and needle in BLOCKS_MD.read_text(encoding="utf-8").lower():
-        print("BLOCKS.md contains it")
-        n += 1
     print(f"({n} hit(s))")
     return RC_OK if n else RC_WAITING
 
 
 def next_decision_id() -> str:
-    """The highest D- anywhere in the tree or the archive, plus one (R5). One derivation, used
-    by `new` and by DECISIONS.md's "Next id" line, so the two can never disagree."""
-    nums = []
-    for d in (ROOT / "99-ARCHIVE").rglob("D-*.md"):
-        m = re.match(r"D-(\d+)$", d.stem)
-        if m:
-            nums.append(int(m.group(1)))
-    for f in [a / "data" / "decisions.csv" for a in areas()] + list((ROOT / "99-ARCHIVE").rglob("decisions.csv")):
-        hdr, body = read_csv_rows(f)
-        if "id" in hdr:
-            for row in body:
-                m = re.match(r"D-(\d+)$", row[hdr.index("id")].strip())
-                if m:
-                    nums.append(int(m.group(1)))
+    """The highest D- anywhere in the tree or the archive, plus one (R5)."""
+    nums = [int(m.group(1)) for i in archived_decision_ids() if (m := re.match(r"D-(\d+)$", i))]
+    for a in areas():
+        for r in read_table(a, "decisions")[1]:
+            m = re.match(r"D-(\d+)$", (r.get("id") or "").strip())
+            if m:
+                nums.append(int(m.group(1)))
     return f"D-{max(nums, default=0) + 1:03d}"
 
 
@@ -1265,625 +1542,103 @@ def cmd_new(args):
     if stray:
         die(f"decisions has no column {', '.join(stray)} - nothing reserved (a typo here would "
             "silently lose a `closes`)")
-    row = {c: vals.get(c, "") for c in (hdr or ["id", "date", "title", "status", "superseded_by", "closes", "who"])}
+    row = {c: vals.get(c, "") for c in (hdr or list(TOOL_COLUMNS["decisions"]))}
     row["id"] = nid
     row["date"] = vals.get("date", today())
     row["title"] = args.title
     row["status"] = vals.get("status", "standing")
+    row["body"] = vals.get("body") or DECISION_STUB
     write_table(a, "decisions", hdr or list(row), rows + [row])
-    body = a / "data" / "decisions" / f"{nid}.md"
-    body.parent.mkdir(parents=True, exist_ok=True)
-    body.write_text(
-        f"# {nid} - {args.title}\n\n*{row['date']} - {row.get('who') or 'Camden'}*\n\n"
-        "**Decision.** \n\n**Why.** \n\n**In the data.** \n",
-        encoding="utf-8",
-        newline="\n",
-    )
-    print(f"{nid} reserved - write the body in {rel(body)}")
-    return RC_OK
-
-
-DEC_HEADER = """# DECISIONS — every ruling on this car
-
-*Generated by `tools/rx7.py decisions` from every area's `decisions.csv` and
-`data/decisions/<id>.md`. Never edited by hand: it is a projection of those files and
-adds no fact of its own. Regenerated at the end of every run. Nothing ever gates a
-commit on whether it is current — if it is stale, run the command.*
-
-This is the record of what was decided and why, including every small call made without
-you. Standing decisions are grouped by the system they touch, in id order inside each
-group. Superseded and withdrawn ones are listed at the end with the decision that
-replaced each, so any id ever issued can still be found by searching this file for it.
-
-"""
-
-
-def cmd_decisions(args):
-    """Regenerate DECISIONS.md — one file, every area, grouped by category.
-    Reads decisions.csv and data/decisions/*.md in every area. Writes nothing else."""
-    per = {}          # area -> category -> [(num, id, body, row)]
-    dead = []         # superseded / withdrawn / inherited
-    latest = []
-    for a in areas():
-        _, rows = read_table(a, "decisions")
-        for r in rows:
-            i = (r.get("id") or "").strip()
-            if not i:
-                continue
-            m = re.match(r"D-(\d+)$", i)
-            num = int(m.group(1)) if m else 0
-            st = (r.get("status") or "standing").strip()
-            bp = a / "data" / "decisions" / f"{i}.md"
-            body = bp.read_text(encoding="utf-8", errors="replace").strip() if bp.exists() else ""
-            # Only superseded and withdrawn are dead. `inherited` is a LIVE decision that
-            # another project owns and this one reads — burying it here would hide every
-            # 02-engine ruling, all seven of which are inherited.
-            if st in ("superseded", "withdrawn"):
-                dead.append((num, i, a.name, st, r, body))
-                continue
-            cat = (r.get("system") or "Uncategorised").strip() or "Uncategorised"
-            per.setdefault(a.name, {}).setdefault(cat, []).append((num, i, body, r, st))
-            if st == "standing":
-                latest.append((num, i, a.name, (r.get("title") or "").strip()))
-
-    latest.sort()
-    out = [DEC_HEADER]
-    if latest:
-        tail = latest[-5:]
-        out.append("**Most recent:** " + " · ".join(f"`{i}` {t or ''}".strip() for _, i, _, t in tail))
-        out.append(f"\nNext id: `{next_decision_id()}`.\n")
-
-    out.append("## Contents\n")
-    for aname in sorted(per):
-        cats = per[aname]
-        line = " · ".join(f"{c} ({len(cats[c])})" for c in sorted(cats))
-        out.append(f"**{aname}** — {line}\n")
-    if dead:
-        out.append(f"**Superseded and withdrawn** — {len(dead)}\n")
-
-    for aname in sorted(per):
-        out.append(f"\n---\n\n# {aname}\n")
-        for cat in sorted(per[aname]):
-            items = sorted(per[aname][cat])
-            ids = " ".join(i for _, i, _, _, _ in items)
-            out.append(f"\n## {cat}\n")
-            out.append(f"*{len(items)} live — {ids}*\n")
-            for _, i, body, r, st in items:
-                date = (r.get("date") or "").strip()
-                sup = (r.get("supersedes") or "").strip()
-                clo = (r.get("closes") or "").strip()
-                tags = " · ".join(x for x in [date, f"supersedes {sup}" if sup else "",
-                                              f"closes {clo}" if clo else "",
-                                              "inherited - owned by another project"
-                                              if st == "inherited" else ""] if x)
-                if body:
-                    out.append(body)
-                else:
-                    out.append(f"**{i} — {(r.get('title') or '').strip()}**")
-                if tags:
-                    out.append(f"*{tags}*\n")
-                else:
-                    out.append("")
-
-    if dead:
-        out.append("\n---\n\n# Superseded and withdrawn\n")
-        out.append("*Kept so every id ever issued can be found by searching for it.*\n")
-        for num, i, aname, st, r, body in sorted(dead):
-            by = (r.get("superseded_by") or "").strip()
-            title = (r.get("title") or "").strip()
-            arrow = f" → `{by}`" if by else ""
-            out.append(f"- `{i}` ({aname}, {st}){arrow} — {title or '(no title)'}")
-
-    text = "\n".join(out).rstrip() + "\n"
-    (ROOT / "DECISIONS.md").write_text(text, encoding="utf-8", newline="\n")
-    n = sum(len(v) for c in per.values() for v in c.values())
-    print(f"DECISIONS.md written: {n} standing in "
-          f"{sum(len(c) for c in per.values())} categories, {len(dead)} superseded/withdrawn")
-    return RC_OK
-
-
-TODO_HEADER = """# TODO — {area}
-
-*Generated by `tools/rx7.py todo` from this project's `data/work.csv` (D-373). Never edited by
-hand: it is a projection of that table and adds no fact of its own, so it cannot disagree with
-the record. Nothing gates a commit on whether it is current — if it looks stale, run the
-command. There are no boxes to tick here on purpose: to mark a step done, say what you did
-("E9 done, cables crimped") and the row is set and this file regenerated.*
-
-**▶** ready now · **⏳** waiting on what is named · **✔** done · **✖** dropped.
-*you* = Camden · *agent* = Claude. Full detail of any row:
-`python tools/rx7.py get {rel} work <id>`.
-
-"""
-
-
-DESIGN_HEADER = """# Design — {area}
-
-*Generated by `tools/rx7.py todo` from this project's `data/work.csv` (D-373, D-386). Never
-edited by hand: it adds no fact of its own, so it cannot disagree with the record. The marks
-are the record's state, not boxes to tick - to mark a step done, say what you did ("C4 done,
-212 × 96 × 58 mm") and the row is set and this file regenerated. Full detail of any row:
-`python tools/rx7.py get {rel} work <id>`.*
-
-"""
-
-BUILD_HEADER = """# Build — {area}
-
-*Generated by `tools/rx7.py todo` from this project's `data/work.csv` (D-373, D-386). Never
-edited by hand. Full detail of any row: `python tools/rx7.py get {rel} work <id>`.*
-
-**Nothing in this list starts until the design is verified.** Every row waits on the design
-freeze - the design review (Z1) and your ruling (Z2) at the end of
-[the design list](../00-design/TODO.md), which moves the phase to SOURCING. Below, each row
-names only what it waits on besides that.
-
-**▶** ready · **⏳** waiting on what is named · **✔** done · **✖** dropped · *you* = Camden ·
-*agent* = Claude.
-
-"""
-
-
-def cmd_todo(args):
-    """Regenerate each project's TODO from its work table (or one project, with -p).
-    Reads: work.csv, plus the tree index for gates (decisions, BLOCKS.md, other areas' work).
-    Writes, and nothing else - read-only projections, like DECISIONS.md (D-373):
-      a project with 00-design/ and 01-build/ and a work.track column (D-386) gets two files,
-        00-design/TODO.md  Camden's design checklist, then every agent row and what blocks it
-        01-build/TODO.md   the build, all of it waiting on the design freeze (phase SOURCING);
-      any other project gets <area>/TODO.md."""
-    idx = tree_index(fresh=True)
-    status_rc = RC_OK
-    blocks_open = {b["id"]: b for b in parse_blocks()[0]}
-    sel = [resolve_area(args.area)] if args.area else [
-        a for a in areas() if (a / "data" / "work.csv").exists() and (block_prefix(a) or "").isdigit()]
-    for a in sel:
-        hdr, rows = read_table(a, "work")
-        rows = [r for r in rows if (r.get("id") or "").strip()]
-        by_id = {r["id"].strip(): r for r in rows}
-
-        def status(r):
-            st = (r.get("state") or "").strip()
-            if st in ("done", "dropped"):
-                return st, []
-            met, unmet, bad = gate_state(r.get("gate", ""), a.name, idx)
-            if st == "open" and met:
-                return "ready", []
-            why = unmet + bad
-            if st == "blocked" and not why:
-                why = ["marked blocked - see its note"]
-            return "waiting", why
-
-        memo = {}
-
-        def depth(wid, seen=()):
-            # Working order: a row comes after everything its gate names. Phase gates sit after
-            # the whole design; a gate on another area or a block counts as one step.
-            if wid in memo:
-                return memo[wid]
-            r = by_id[wid]
-            st, _ = status(r)
-            if st in ("ready", "done", "dropped"):
-                memo[wid] = 0
-                return 0
-            d = 1
-            for ref in parse_gate(r.get("gate", "")):
-                if ref.startswith("phase:"):
-                    d = max(d, 50)
-                elif ref in by_id and ref not in seen:
-                    d = max(d, 1 + depth(ref, seen + (wid,)))
-            memo[wid] = d
-            return d
-
-        info = {wid: (status(r), depth(wid)) for wid, r in by_id.items()}
-        num = lambda w: [int(x) if x.isdigit() else x for x in re.split(r"(\d+)", w)]
-        owner = lambda r: "you" if (r.get("owner") or "").strip() == "camden" else "agent"
-        item = lambda w: (by_id[w].get("item") or "").strip()
-        mark = {"ready": "▶", "waiting": "⏳", "done": "✔", "dropped": "✖"}
-        note_of = lambda r: re.sub(r"\s+", " ", (r.get("note") or "").strip())
-        _, prow = read_table(a, "_project")
-        kv = {(r.get("key") or "").strip(): (r.get("value") or "").strip() for r in prow}
-        phase_line = f"**Phase:** {kv.get('phase', '-')}. " + (f"**Goal:** {kv['goal']}\n" if kv.get("goal") else "\n")
-
-        def blockers(w, skip_phase=False):
-            """Each unmet gate reference of row w, said so he can act on it: whose it is and what."""
-            r, out = by_id[w], []
-            for ref in parse_gate(r.get("gate", "")):
-                ok, why = gate_ref_state(ref, a.name, idx)
-                if ok:
-                    continue
-                if why.startswith("?"):
-                    out.append(why[2:])
-                elif ref.startswith("phase:"):
-                    if not skip_phase:
-                        out.append(f"the design freeze (phase {ref[6:]}, now {kv.get('phase', '-')})"
-                                   if ref[6:] == "SOURCING" else why)
-                elif ref in by_id:
-                    short = item(ref)
-                    short = short if len(short) <= 70 else short[:67].rsplit(" ", 1)[0] + " …"
-                    out.append(f"{ref} ({'yours' if owner(by_id[ref]) == 'you' else 'agent'}: {short})")
-                elif ref in blocks_open:
-                    b = blocks_open[ref]
-                    state = "answered, not yet applied" if (b.get("solution") or "").strip() else "waiting for your answer"
-                    out.append(f"block {ref} ({state} in BLOCKS.md: {b.get('title', '')})")
-                elif ":" in ref:
-                    other, wid = ref.split(":", 1)
-                    st = idx["work"].get((other, wid), "")
-                    out.append(f"{ref} (a row in {other}, {st or 'unknown'})")
-                else:
-                    out.append(why)
-            if not out and (r.get("state") or "").strip() == "blocked":
-                out.append("marked blocked - see its note")
-            return out
-
-        def ordered(ws):
-            return sorted(ws, key=lambda w: (info[w][1], num(w)))
-
-        def stage_view(ws, skip_phase=False):
-            """The classic body: stages in the order their work can start, rows in working order."""
-            out, stages = [], {}
-            for w in ws:
-                stages.setdefault((by_id[w].get("stage") or "-").strip(), []).append(w)
-
-            def stage_key(s):
-                open_d = [info[w][1] for w in stages[s] if info[w][0][0] in ("ready", "waiting")]
-                # the stage's typical row, not its earliest - one early row must not pull the
-                # whole install stage ahead of the parts arriving
-                return (0 if open_d else 1, sorted(open_d)[len(open_d) // 2] if open_d else 0, s)
-            for s in sorted(stages, key=stage_key):
-                sw = stages[s]
-                title = next(((by_id[w].get("stage_title") or "").strip() for w in sw
-                              if (by_id[w].get("stage_title") or "").strip()), "")
-                out.append(f"### {s}" + (f" · {title}" if title else "") + "\n")
-                live = ordered(w for w in sw if info[w][0][0] in ("ready", "waiting"))
-                for w in live:
-                    r = by_id[w]
-                    st = info[w][0][0]
-                    why = blockers(w, skip_phase)
-                    line = f"- {mark[st]} **{w}** — {item(w)}  \n  *{owner(r)}*"
-                    if why:
-                        line += " · waits on: " + "; ".join(why)
-                    if note_of(r):
-                        line += f"  \n  {note_of(r)}"
-                    out.append(line)
-                closed = sorted((w for w in sw if info[w][0][0] in ("done", "dropped")), key=num)
-                if closed:
-                    out.append(("\n" if live else "") + "*Closed:* " + " · ".join(
-                        f"{mark[info[w][0][0]]} {w}" for w in closed))
-                out.append("")
-            return out
-
-        split = ((a / "00-design").is_dir() and (a / "01-build").is_dir() and "track" in (hdr or []))
-        bodies = {}
-        if not split:
-            out = [TODO_HEADER.format(area=rel(a), rel=rel(a)), phase_line]
-            ready = sorted((w for w in by_id if info[w][0][0] == "ready"),
-                           key=lambda w: (owner(by_id[w]) != "you", num(w)))
-            n_open = sum(1 for w in by_id if info[w][0][0] in ("ready", "waiting"))
-            n_done = sum(1 for w in by_id if info[w][0][0] == "done")
-            out.append(f"{n_open} open · {len(ready)} ready now · {n_done} done.\n")
-            out.append("## Now — what can be started today\n")
-            for who in ("you", "agent"):
-                items = [w for w in ready if owner(by_id[w]) == who]
-                if items:
-                    out.append(f"**{'Yours' if who == 'you' else 'Agent'}:**\n")
-                    out += [f"- **{w}** — {item(w)}" for w in items]
-                    out.append("")
-            if not ready:
-                out.append("*Nothing is startable: every open row waits on something below.*\n")
-            out.append("## Everything, in working order\n")
-            out.append("*Stages in the order their work can start; inside a stage, each row after "
-                       "what it waits on.*\n")
-            out += stage_view(list(by_id))
-            bodies[a / "TODO.md"] = (out, f"{sum(1 for w in by_id if info[w][0][0] in ('ready','waiting'))} open, {len(ready)} ready")
-        else:
-            track = lambda w: (by_id[w].get("track") or "design").strip()
-            dws = [w for w in by_id if track(w) == "design"]
-            bws = [w for w in by_id if track(w) == "build"]
-            live = lambda ws: [w for w in ws if info[w][0][0] in ("ready", "waiting")]
-            shut = lambda ws: sorted((w for w in ws if info[w][0][0] in ("done", "dropped")), key=num)
-
-            # The car's state splits each list in two (D-387). _project names the row that takes
-            # the interior out (car_apart) and the one that puts it back (car_back); a row is on
-            # the far side of one if that row is in its gate, directly or through other rows.
-            def after(w, root, seen=()):
-                if not root or w not in by_id:
-                    return False
-                if w == root:
-                    return True
-                return any(g in by_id and g not in seen and after(g, root, seen + (w,))
-                           for g in parse_gate(by_id[w].get("gate", "")))
-            apart_row, back_row = kv.get("car_apart", ""), kv.get("car_back", "")
-            freeze_rows = {w for w in dws if (by_id[w].get("stage") or "").strip() == "Z"}
-
-            def my_list(ws):
-                out = []
-                for w in ordered(w for w in live(ws) if owner(by_id[w]) == "you"):
-                    r = by_id[w]
-                    why = blockers(w)
-                    if len(why) > 5:
-                        why = [f"{len(why)} earlier rows - everything above this one"]
-                    line = f"- {'☐' if info[w][0][0] == 'ready' else '⏳'} **{w}** — {item(w)}"
-                    if why:
-                        line += "  \n  *waits on:* " + "; ".join(why)
-                    if note_of(r):
-                        line += f"  \n  {note_of(r)}"
-                    out.append(line)
-                done = [w for w in shut(ws) if owner(by_id[w]) == "you"]
-                if done:
-                    out.append("\n*Done:* " + " · ".join(f"{mark[info[w][0][0]]} {w}" for w in done))
-                return out or ["*Nothing of yours here.*"]
-
-            def agent_list(ws):
-                out = []
-                agent = ordered(w for w in live(ws) if owner(by_id[w]) == "agent")
-                ready_a = [w for w in agent if info[w][0][0] == "ready"]
-                wait_a = [w for w in agent if info[w][0][0] == "waiting"]
-                out.append("**Ready — taken on the agent's next run**\n")
-                out += [f"- **{w}** — {item(w)}" for w in ready_a] or ["*None.*"]
-                out.append("")
-                out.append("**Blocked — and by what**\n")
-                for w in wait_a:
-                    bl = blockers(w)
-                    if len(bl) > 5:
-                        refs = [x for x in parse_gate(by_id[w].get("gate", "")) if x in by_id
-                                and info[x][0][0] in ("ready", "waiting")]
-                        yours = sum(1 for x in refs if owner(by_id[x]) == "you")
-                        bl = [f"every other design row - {len(refs)} still open, {yours} yours and "
-                              f"{len(refs) - yours} the agent's"]
-                    out.append(f"- **{w}** — {item(w)}  \n  **Blocked by:** " + "; ".join(bl))
-                if not wait_a:
-                    out.append("*None.*")
-                done = [w for w in shut(ws) if owner(by_id[w]) == "agent"]
-                if done:
-                    out.append("\n*Done:* " + " · ".join(f"{mark[info[w][0][0]]} {w}" for w in done))
-                return out
-
-            whole = [w for w in dws if not after(w, apart_row) and w not in freeze_rows]
-            apart = [w for w in dws if w not in whole]
-            out = [DESIGN_HEADER.format(area=rel(a), rel=rel(a)), phase_line]
-            n_mine = [w for w in live(dws) if owner(by_id[w]) == "you"]
-            n_agent = [w for w in live(dws) if owner(by_id[w]) == "agent"]
-            out.append(f"**Yours:** {sum(1 for w in n_mine if info[w][0][0] == 'ready')} you can do now, "
-                       f"{sum(1 for w in n_mine if info[w][0][0] == 'waiting')} waiting. "
-                       f"**Agent:** {sum(1 for w in n_agent if info[w][0][0] == 'ready')} ready, "
-                       f"{sum(1 for w in n_agent if info[w][0][0] == 'waiting')} blocked.\n")
-            if apart_row:
-                out.append(f"The car stays whole through Part 1. It comes apart once, at **{apart_row}**, "
-                           f"which waits on everything in Part 1; Part 2 is everything that needs it "
-                           f"apart, then the design review and your freeze. [The build list]"
-                           f"(../01-build/TODO.md) picks up from the car apart and ends with it back "
-                           f"together.\n")
-                out.append("## Part 1 · Car whole — desk, bench and the car as it stands\n")
-            out.append("### Your checklist\n")
-            out.append("*In working order. ☐ you can do it now · ⏳ waiting on what is named.*\n")
-            out += my_list(whole)
-            out.append("")
-            out.append("### Agent work\n")
-            out += agent_list(whole)
-            out.append("")
-            if apart_row:
-                out.append(f"## Part 2 · Interior out — {item(apart_row)[0].lower() + item(apart_row)[1:]}, "
-                           f"then everything that needs the car apart\n")
-                out.append("### Your checklist\n")
-                out += my_list(apart)
-                out.append("")
-                out.append("### Agent work\n")
-                out += agent_list(apart)
-                out.append("")
-            mine_blocks = [b for b in blocks_open.values() if b.get("area") == a.name]
-            out.append("## Open blocks — your answers, in BLOCKS.md\n")
-            for b in mine_blocks:
-                state = "answered, not yet applied" if (b.get("solution") or "").strip() else "waiting for your answer"
-                out.append(f"- **{b['id']}** — {b.get('title', '')} · *{state}*")
-            if not mine_blocks:
-                out.append("*None.*")
-            bodies[a / "00-design" / "TODO.md"] = (out, f"{len(live(dws))} open")
-
-            # ---- build
-            out = [BUILD_HEADER.format(area=rel(a), rel=rel(a)), phase_line]
-            out.append(f"{len(live(bws))} steps · {len(shut(bws))} closed.\n")
-            if back_row:
-                before = [w for w in bws if not after(w, back_row)]
-                back = [w for w in bws if w not in before]
-                out.append(f"The car arrives here as the design list left it: interior out "
-                           f"({apart_row or 'the strip'}), every factory wire still in place. It goes back "
-                           f"together once, at **{back_row}**, and is first driven after that.\n")
-                out.append("## Part 3 · Car apart — parts, backbone, dash node, legs, migration\n")
-                out += stage_view(before, skip_phase=True)
-                out.append(f"## Part 4 · Interior back in — {item(back_row)[0].lower() + item(back_row)[1:]}, "
-                           f"then the first drives\n")
-                out += stage_view(back, skip_phase=True)
-            else:
-                out += stage_view(bws, skip_phase=True)
-            bodies[a / "01-build" / "TODO.md"] = (out, f"{len(live(bws))} open")
-
-        for path, (out, summary) in bodies.items():
-            body = "\n".join(out).rstrip() + "\n"
-            # R3: Camden may write in this file even though it says not to - and losing his
-            # writing is the worst failure this system has. The file carries a fingerprint of
-            # what the tool wrote; if the text no longer matches it, he has written in it, and
-            # nothing is overwritten until what he wrote has been carried into the record.
-            if path.exists() and not getattr(args, "force", False):
-                old = path.read_text(encoding="utf-8", errors="replace")
-                m = re.search(r"\n<!-- rx7 todo sha256:([0-9a-f]{64}) -->\s*$", old)
-                mine_txt = old[:m.start() + 1] if m else None
-                if not m or hashlib.sha256(mine_txt.encode("utf-8")).hexdigest() != m.group(1):
-                    new_lines = set(body.splitlines())
-                    added = [l for l in old.splitlines() if l not in new_lines and not l.startswith("<!-- rx7 todo")]
-                    print(f"{rel(path)} has been written in by hand - NOT overwritten. Lines that "
-                          "are not the tool's own (carry them into the record, then run with --force):")
-                    for l in added[:40]:
-                        print("   " + l)
-                    status_rc = RC_WAITING
-                    continue
-            path.write_text(body + f"<!-- rx7 todo sha256:{hashlib.sha256(body.encode('utf-8')).hexdigest()} -->\n",
-                            encoding="utf-8", newline="\n")
-            print(f"{rel(path)} written: {summary}")
-    return status_rc
-
-
-# ------------------------------------------------------------------ the picks page
-#
-# <project>/PICKS.md is Camden's second page to write in (D-390), laid out like BLOCKS.md: one
-# entry per product the agent suggests, each ending in an **ANSWER:** line. He answers any,
-# some or all, whenever he likes, and says so; the agent saves his words into `picks` and only
-# then removes the entry. The tool only ever APPENDS to this page and only ever removes an
-# entry whose verdict and his words are already in the record - it never rewrites it (R3).
-
-PICKS_PAGE_HEAD = """# PICKS — {area}
-
-Parts I suggest for this project, one entry per product. Answer under any of them, whenever you
-like, in any words: yes, no and why, or a question back. Leave the rest blank. Then tell me, and
-I save your answers into the record. An entry leaves this page only once your words are saved.
-A no with a reason steers the next search.
-"""
-PICK_HEAD_RE = re.compile(r"^###\s+(PK\d+)\b")
-ANSWER_RE = re.compile(r"^\*\*ANSWER:?\*\*:?\s*(.*)$", re.I)
-
-
-def picks_page(area: Path) -> Path:
-    return area / "PICKS.md"
-
-
-def parse_picks_page(area: Path):
-    """[{id, answer, start, end}] - never picky: anything under **ANSWER:** up to the next
-    `##`/`###` heading is his answer, whatever it looks like."""
-    p = picks_page(area)
-    if not p.exists():
-        return []
-    lines = p.read_text(encoding="utf-8", errors="replace").replace("\r", "").split("\n")
-    out, cur = [], None
-    for i, l in enumerate(lines):
-        s = l.strip()
-        m = PICK_HEAD_RE.match(s)
-        if m or (s.startswith("## ") and cur):
-            if cur:
-                cur["end"] = i
-                out.append(cur)
-            cur = {"id": m.group(1), "start": i, "answer": [], "in": False} if m else None
-            continue
-        if cur is None:
-            continue
-        a = ANSWER_RE.match(s)
-        if a:
-            cur["in"] = True
-            if a.group(1).strip():
-                cur["answer"].append(a.group(1).strip())
-        elif cur["in"]:
-            cur["answer"].append(l.rstrip())
-    if cur:
-        cur["end"] = len(lines)
-        out.append(cur)
-    for e in out:
-        e["answer"] = "\n".join(e["answer"]).strip()
-    return out
-
-
-def pick_entry(pick: dict, part: dict, reserve: list) -> list:
-    """The page entry for one pick: everything needed to decide, then his answer line."""
-    c = lambda r, k: re.sub(r"\s+", " ", (r.get(k) or "").strip())
-    money = lambda r: (f"${float(r['usd']):,.0f}" if c(r, "usd") else "price unconfirmed") + \
-        (f" × {c(r, 'qty')}" if c(r, "qty") and c(r, "qty") != "1" else "")
-    pid, item = c(pick, "part"), c(part, "item")
-    name = c(pick, "product") + (f" ({c(pick, 'maker_pn')})" if c(pick, "maker_pn") else "")
-    out = [f"### {pick['id']} · {pid} {item} — {c(pick, 'maker_pn') or c(pick, 'product')}",
-           f"**Suggest** {name} · {money(pick)} · round {c(pick, 'round')}"]
-    if c(part, "spec"):
-        out.append(f"**It has to be** {c(part, 'spec')}")
-    for k, label in (("meets", "What meets it"), ("why", "Why this one"), ("drawbacks", "Drawbacks"),
-                     ("confirm", "Confirm before buying"), ("confidence", "Confidence")):
-        if c(pick, k):
-            out.append(f"**{label}** {c(pick, k)}")
-    if c(pick, "vendor") or c(pick, "url"):
-        out.append(f"**Where** {c(pick, 'vendor')}" + (f" — <{c(pick, 'url')}>" if c(pick, "url") else ""))
-    if reserve:
-        r = reserve[0]
-        out.append(f"**If you say no** next up is {c(r, 'product')}"
-                   + (f" ({c(r, 'maker_pn')})" if c(r, "maker_pn") else "")
-                   + f", {money(r)}: {c(r, 'why').rstrip('.')}. Its drawback: {(c(r, 'drawbacks') or '-').rstrip('.')}. "
-                   "Unless your reason rules it out too.")
+    if "body" in vals:
+        print(f"{nid} written")
     else:
-        out.append("**If you say no** the search starts again for this part, steered by your reason.")
-    out.append(f"**Recommend** {c(pick, 'recommend') or 'Yes, unless the drawbacks outweigh it for you.'}")
-    out.append("**ANSWER:**")
-    return out
+        print(f"{nid} reserved - write its body: rx7.py set {rel(a)} decisions {nid} body=@<file>")
+    return RC_OK
+
+
+def cmd_export(args):
+    data = export_data()
+    text = json.dumps(data, ensure_ascii=False, indent=1 if args.pretty else None,
+                      separators=None if args.pretty else (",", ":"))
+    if args.out:
+        write_atomic(Path(args.out), text)
+    else:
+        sys.stdout.write(text)
+    return RC_OK if data["record"]["valid"] else RC_INVALID
+
+
+def cmd_answer(args):
+    """Save one of Camden's answers into the area's inbox: data/inbox/<target>~<device>.csv.
+    The desktop app calls this; the phone calls inbox_entry() itself. Reads blocks, picks and
+    work to check the target; writes that one file and nothing else."""
+    a = resolve_area(args.area)
+    text = args.text or ""
+    if args.text_file:
+        text = Path(args.text_file).read_text(encoding="utf-8")
+    context = Path(args.context_file).read_text(encoding="utf-8") if args.context_file else ""
+    try:
+        kind, row = resolve_target(a, args.target, args.kind or "")
+        why = check_choice(kind, row, args.choice or "")
+        if why:
+            raise ValueError(why)
+        iid, body = inbox_entry(args.target, args.device, kind, args.choice or "", text, context, args.at or "")
+    except ValueError as e:
+        die(f"not saved: {e}")
+    write_atomic(a / "data" / "inbox" / f"{iid}.csv", body)
+    print(f"saved {rel(a)}/data/inbox/{iid}.csv")
+    return RC_OK
+
+
+def cmd_inbox(args):
+    """Every answer waiting to be applied, with his words. rc 2 when there are any."""
+    sel = [resolve_area(args.area)] if args.area else areas()
+    n = 0
+    for a in sel:
+        for r in sorted(read_table(a, "inbox")[1], key=lambda r: r.get("at", "")):
+            n += 1
+            print(f"{rel(a)} · {r.get('kind')} {r.get('target')} · {r.get('device')} {r.get('at')}")
+            if (r.get("choice") or "").strip():
+                print(f"   choice:  {r['choice']}")
+            if (r.get("text") or "").strip():
+                print("   his words: " + r["text"].strip().replace("\n", "\n              "))
+            if (r.get("context") or "").strip():
+                print("   from the discussion: " + r["context"].strip().replace("\n", "\n              "))
+    print(f"({n} answer(s) waiting)")
+    return RC_WAITING if n else RC_OK
 
 
 def cmd_picks(args):
-    """The parts picks (D-388, D-390). Reads: picks.csv, parts.csv, <area>/PICKS.md.
-      picks              where every part stands, printed (no file is written)
-      picks --ask        APPEND an entry to PICKS.md for every proposed pick not on it yet
-      picks --answered   the entries he has answered, with his words (rc 2 if any)
-      picks --clear      remove the entries whose verdict and his words are in `picks`"""
-    rc = RC_OK
+    """Where every parts pick stands (D-388). Reads picks, parts and inbox; writes nothing.
+    His answers to proposed picks arrive in `inbox` (kind pick) - `rx7.py inbox` lists them."""
     sel = [resolve_area(args.area)] if args.area else [a for a in areas() if (a / "data" / "picks.csv").exists()]
     for a in sel:
-        hdr, picks = read_table(a, "picks")
+        _, picks = read_table(a, "picks")
         _, parts = read_table(a, "parts")
-        part = {(r.get("id") or "").strip(): r for r in parts}
         cell = lambda r, k: re.sub(r"\s+", " ", (r.get(k) or "").strip())
-        by_id = {cell(r, "id"): r for r in picks}
-        page = parse_picks_page(a)
-        on_page = {e["id"]: e for e in page}
-        path = picks_page(a)
-        if getattr(args, "ask", False):
-            new = [r for r in picks if cell(r, "verdict") == "proposed" and cell(r, "id") not in on_page]
-            if new:
-                text = path.read_text(encoding="utf-8") if path.exists() else PICKS_PAGE_HEAD.format(area=rel(a))
-                before = text
-                lines = text.rstrip("\n").split("\n")
-                for r in new:
-                    held = [x for x in picks if cell(x, "part") == cell(r, "part") and cell(x, "verdict") == "reserve"]
-                    lines += [""] + pick_entry(r, part.get(cell(r, "part"), {}), held)
-                path.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
-                got = {e["id"] for e in parse_picks_page(a)}
-                if not all(cell(r, "id") in got for r in new) or not set(on_page) <= got:
-                    path.write_text(before, encoding="utf-8", newline="\n")
-                    die(f"{rel(path)} did not parse back after appending - restored, nothing added")
-                print(f"{rel(path)}: {len(new)} suggestion(s) added - " + ", ".join(cell(r, "id") for r in new))
-                page = parse_picks_page(a)
-                on_page = {e["id"]: e for e in page}
-        if getattr(args, "clear", False):
-            done = [e for e in page if cell(by_id.get(e["id"], {}), "verdict") in ("accepted", "vetoed", "withdrawn")
-                    and (cell(by_id.get(e["id"], {}), "said") or cell(by_id.get(e["id"], {}), "verdict") == "withdrawn")]
-            if done:
-                lines = path.read_text(encoding="utf-8").replace("\r", "").split("\n")
-                for e in sorted(done, key=lambda e: -e["start"]):
-                    del lines[e["start"]:e["end"]]
-                text = re.sub(r"\n{3,}", "\n\n", "\n".join(lines)).rstrip("\n") + "\n"
-                path.write_text(text, encoding="utf-8", newline="\n")
-                print(f"{rel(path)}: removed {', '.join(e['id'] for e in done)} (verdict and his words are in picks)")
-                page = parse_picks_page(a)
-        answered = [e for e in page if e["answer"]]
-        if getattr(args, "answered", False):
-            for e in answered:
-                r = by_id.get(e["id"], {})
-                print(f"{e['id']} · {cell(r, 'part')} {cell(r, 'product')}\n   answer: " +
-                      e["answer"].replace("\n", "\n           "))
-            if not answered:
-                print(f"{rel(path)}: nothing answered")
-            rc = max(rc, RC_WAITING if answered else RC_OK)
-            continue
+        waiting = {(r.get("target") or "").strip() for r in read_table(a, "inbox")[1] if r.get("kind") == "pick"}
+        proposed = [r for r in picks if cell(r, "verdict") == "proposed"]
         chosen = [r for r in picks if cell(r, "verdict") == "accepted"]
         vetoed = [r for r in picks if cell(r, "verdict") == "vetoed"]
         touched = {cell(r, "part") for r in picks}
         todo = [r for r in parts if cell(r, "id") not in touched and cell(r, "status") not in ("in hand", "chosen")]
-        print(f"{rel(a)}: {len(page)} on {path.name} ({len(answered)} answered) · {len(chosen)} chosen · "
+        print(f"{rel(a)}: {len(proposed)} proposed ({len(waiting)} answered, not applied) · {len(chosen)} chosen · "
               f"{len(vetoed)} vetoed · {len(todo)} parts not yet searched")
+        for r in proposed:
+            print(f"   {'answered' if cell(r, 'id') in waiting else 'proposed'}  {cell(r, 'id')}  {cell(r, 'part')}  {cell(r, 'product')}")
         for r in chosen:
             print(f"   chosen  {cell(r, 'part')}  {cell(r, 'product')}  {cell(r, 'decision')}")
         for r in vetoed:
             print(f"   vetoed  {cell(r, 'part')}  {cell(r, 'product')} - \"{cell(r, 'said')}\"")
         for r in todo:
             print(f"   search  {cell(r, 'id')}  {cell(r, 'item')}" + (f" (waits on {cell(r, 'gate')})" if cell(r, "gate") else ""))
-    return rc
+    return RC_OK
 
 
 def cmd_diagrams(args):
     """Regenerate the two drawings of every harness leg (D-385): 00-electrical/00-design/diagrams/<leg>/
     A-pin-ladder.svg and B-route-map.svg. Reads 00-electrical housings, cavities, devices and routes;
-    writes those SVGs and nothing else. A read-only projection like DECISIONS.md: `check` never looks
-    at it and it never refuses a commit. rc 2 when a sheet fails the overlap rule and is not written.
+    writes those SVGs and nothing else. A read-only projection: `check` never looks at it and it
+    never refuses a commit. rc 2 when a sheet fails the overlap rule and is not written.
     The drawing code is tools/diagrams.py (it needs Pillow, which this file does not)."""
     sys.path.insert(0, str(ROOT / "tools"))
     import diagrams
@@ -1899,61 +1654,67 @@ def cmd_cites(args):
 
 
 def cmd_block(args):
-    blocks, problems = parse_blocks()
-    structural = [x for x in problems if x not in UNFINISHED]
-    if structural:
-        for x in structural:
-            print(x)
-        die("BLOCKS.md does not parse - fix it before adding a block (nothing was written)", RC_INVALID)
-    if not args.area:
-        die("a block belongs to a project: pass -p AREA - its number comes from that project")
+    """Raise a block: one row in the project's `blocks`, every field written at once. Reads the
+    tree's blocks, decisions and retired terms for the next number; writes that one row."""
     area = resolve_area(args.area)
     prefix = block_prefix(area)
     if not prefix:
-        die(f"{rel(area)} owns no block prefix - only 00-CAR, 01-REFERENCE and "
-            "02-PROJECTS/NN-* do")
-    bid = next_block_id(blocks, prefix)
-    append_block(bid, area, args.ask)
-    print(f"{bid} appended to BLOCKS.md under {group_title(area)[3:]} - "
-          "fill in Why / Options / Recommend / Stops")
+        die(f"{rel(area)} owns no block prefix - only 00-CAR, 01-REFERENCE and 02-PROJECTS/NN-* do")
+    vals = _pairs(args.pairs)
+    need = [c for c in ("ask", "why", "options", "recommend", "stops") if not (vals.get(c) or "").strip()]
+    if need:
+        die(f"a block is answerable from its row alone (§4) - missing {', '.join(need)} (nothing was written)")
+    opts = parse_options(vals["options"])
+    if not opts or len(opts) < 2:
+        die("options: one per line, each starting (a) , (b) … and at least two (nothing was written)")
+    vals["options"] = "\n".join(f"({x}) {t}" for x, t in opts)
+    title = re.sub(r"\s+", " ", vals.get("title") or vals["ask"]).strip()
+    vals["title"] = title if len(title) <= 70 else title[:70].rsplit(" ", 1)[0].rstrip(" -,;") + " …"
+    vals["opened"] = vals.get("opened") or today()
+    vals["id"] = next_block_id(prefix)
+    hdr, rows = read_table(area, "blocks")
+    hdr = hdr or list(TOOL_COLUMNS["blocks"])
+    stray = [k for k in vals if k not in hdr]
+    if stray:
+        die(f"blocks has no column {', '.join(stray)} (nothing was written)")
+    write_table(area, "blocks", hdr, rows + [vals])
+    print(f"{vals['id']} raised in {rel(area)}")
     return RC_OK
 
 
 def cmd_blocks(args):
-    blocks, problems = parse_blocks()
-    for x in problems:
-        print(x)
-    if problems:
-        return RC_INVALID
-    sel = [b for b in blocks if b["section"] == "OPEN"]
-    if args.answered:
-        sel = [b for b in sel if b["solution"]]
-    if args.solved:
-        print("solved blocks are not kept here — they are decisions. "
-              "`rx7.py find 00.05` or read DECISIONS.md.")
-        return RC_WAITING
+    """Open blocks; with --answered, only those with an answer in the inbox (rc 2 if any)."""
+    answers = {}
+    for a in areas():
+        for r in read_table(a, "inbox")[1]:
+            answers.setdefault((a.name, (r.get("target") or "").strip()), []).append(r)
+    sel = [b for b in open_blocks() if not args.answered or (b["_area"].name, b["id"].strip()) in answers]
     for b in sel:
-        print(f"{b['id']} · {b['area'] or '-'} · {'answered' if b['solution'] else 'waiting'}")
-        print(f"   ask:   {b['fields'].get('Ask','')}")
-        if b["solution"]:
-            print(f"   solve: {b['solution']}")
+        mine = answers.get((b["_area"].name, b["id"].strip()), [])
+        print(f"{b['id']} · {b['_area'].name} · {'answered' if mine else 'waiting'} · {b.get('title', '')}")
+        print(f"   ask:   {b.get('ask', '')}")
+        for r in mine:
+            print(f"   {r.get('device')}: {(r.get('choice') or '').strip()} {(r.get('text') or '').strip()}".rstrip())
     print(f"({len(sel)} block(s))")
+    if args.answered:
+        return RC_WAITING if sel else RC_OK
     return RC_OK if sel else RC_WAITING
 
 
 def cmd_selftest(args):
-    """The gate resolver's own tests. In memory: reads nothing, writes nothing.
+    """The tool's own tests, in memory and in a scratch folder: never the real record.
 
     `check` asks whether THIS tree's gates are sound. This asks whether the thing that
     decides that is itself right — because a resolver that wrongly calls a gate 'met'
     puts the planner to work on something that is not ready, and one that wrongly calls
-    it 'unmet' stops the project with no error anywhere. Both fail silently (R7)."""
+    it 'unmet' stops the project with no error anywhere. Both fail silently (R7). The same
+    goes for the writer of his answers: one that loses a character loses his words (R3)."""
     A, B = "00-electrical", "01-luxury"
     fails = []
 
     def mk(rows, phase="PLANNING", blocks=None):
-        # 00.90 is still on the page (open). 00.91 is gone from the page and named in
-        # some decision's `closes` — that is what "answered and applied" means now.
+        # 00.90 is still open (a row in `blocks`). 00.91 is gone from `blocks` and named in
+        # some decision's `closes` — that is what "answered and applied" means.
         idx = {"decisions": {"D-900": "standing", "D-901": "superseded"},
                "blocks": dict(blocks or {"00.90": "OPEN"}),
                "blocks_closed": {"00.91"},
@@ -1974,7 +1735,7 @@ def cmd_selftest(args):
             print(f"PASS {label}")
 
     idx = mk([("A1", "D-404", "open")])
-    expect("a reference to nothing is refused", gate_state("D-404", A, idx)[2])
+    expect("a reference to nothing is refused", gate_state("D-999", A, idx)[2])
     expect("prose in a gate is refused", gate_state("install M-1", A, idx)[2])
     expect("a block that does not exist is refused", gate_state("00.94", A, idx)[2])
 
@@ -2008,7 +1769,7 @@ def cmd_selftest(args):
     expect("a standing decision opens its gate", gate_state("D-900", A, ok)[0])
     expect("a superseded decision does not", gate_state("D-901", A, ok)[0], want=False)
     expect("a block that became a decision opens its gate", gate_state("00.91", A, ok)[0])
-    expect("a block still on the page does not", gate_state("00.90", A, ok)[0], want=False)
+    expect("an open block does not", gate_state("00.90", A, ok)[0], want=False)
     expect("a block that never existed is refused", gate_state("00.94", A, ok)[2])
     expect("the phase reached opens its gate", gate_state("phase:PLANNING", A, ok)[0])
     expect("a later phase does not", gate_state("phase:BUILDING", A, ok)[0], want=False)
@@ -2026,46 +1787,52 @@ def cmd_selftest(args):
     expect("a numbered folder outside 02-PROJECTS owns no prefix",
            block_prefix(ROOT / "99-ARCHIVE" / "03-old"), want=False)
 
-    # --- the page parser and writer, on a scratch copy of BLOCKS.md (never the real one) ---
-    import tempfile
-    global BLOCKS_MD
-    real = BLOCKS_MD
-    elec = next((a for a in areas() if block_prefix(a) == "00"), None)
-    with tempfile.TemporaryDirectory() as td:
+    # --- blocks: the options every answer button comes from ---
+    expect("options one per line parse", parse_options("(a) one\n(b) two") == [("a", "one"), ("b", "two")])
+    expect("options written as a list still parse", parse_options("- (a) one\n- (b) two") == [("a", "one"), ("b", "two")])
+    expect("an option without its letter is refused", parse_options("(a) one\ntwo") is None)
+    expect("the recommended option is found", recommended_letter("(b), unless it rains; (a) otherwise", "ab") == "b")
+    expect("a recommendation naming no option names none", recommended_letter("Yes, if it fits", "ab") == "")
+
+    # --- his answers: written exactly, one file each, never merged ---
+    words = 'Line one, with "quotes", commas; and a → arrow\n\nLine three — ñ 12 µF\n'
+    iid, body = inbox_entry("00.29", "phone", "block", "a", words, "points", "2026-09-24T21:05:00-06:00")
+    hdr, rows = read_csv_text(body)
+    expect("an answer's id is its target and device", iid == "00.29~phone")
+    expect("an answer's words survive the file byte for byte", rows and dict(zip(hdr, rows[0]))["text"] == words)
+    expect("an answer file holds exactly one row under the inbox header",
+           len(rows) == 1 and tuple(hdr) == INBOX_COLUMNS)
+    for bad, label in ((("", "phone", "block", "a"), "an empty target is refused"),
+                       (("00.29", "laptop", "block", "a"), "an unknown device is refused"),
+                       (("00.29", "phone", "block", "", "  "), "an answer with no choice and no words is refused"),
+                       (("../x", "phone", "block", "a"), "a target that is a path is refused")):
         try:
-            BLOCKS_MD = Path(td) / "BLOCKS.md"
-            head = "# BLOCKS\n\n## 00 · Electrical\n\n"
-            full = ("**Ask** a\n**Why** b\n**Options**\n- (a) x\n**Recommend** a\n**Stops** s\n")
-            BLOCKS_MD.write_text(head + "### 00.90 · one\n" + full + "SOLVE: yes please\n", encoding="utf-8")
-            bl, pr = parse_blocks()
-            expect("an answer after a bare `SOLVE:` is read", bl and bl[0]["solution"] == "yes please")
-            BLOCKS_MD.write_text(head + "### 00.90 · one\n" + full +
-                                 "**SOLVE:** first\n## my notes\nsecond\n", encoding="utf-8")
-            bl, pr = parse_blocks()
-            expect("a `## ` line inside his answer does not cut it off",
-                   bl and "second" in bl[0]["solution"])
-            BLOCKS_MD.write_text(head + "### 00.90 · one\n" + full + "**SOLVE:**\n### 00.7 · short id\n",
-                                 encoding="utf-8")
-            expect("a malformed block heading after an empty answer is refused, not swallowed",
-                   parse_blocks()[1])
-            BLOCKS_MD.write_text(head + "### 00.90 · one\n" + full + "**SOLVE:** yes\n### my own heading\nmore\n",
-                                 encoding="utf-8")
-            bl, pr = parse_blocks()
-            expect("a `###` of his own inside an answer stays his text",
-                   bl and "more" in bl[0]["solution"] and not pr)
-            if elec is not None:
-                BLOCKS_MD.write_text(head + "### 00.90 · one\n" + full + "**SOLVE:**\n", encoding="utf-8")
-                append_block("00.91", elec, "Swap 12 → 14 AWG on L3?")
-                bl, _ = parse_blocks()
-                ids = [b["id"] for b in bl]
-                expect("a block whose ask contains → is added and parses", "00.91" in ids)
-                expect("adding it leaves the previous block unanswered",
-                       bl and bl[0]["id"] == "00.90" and not bl[0]["solution"])
-        finally:
-            BLOCKS_MD = real
+            inbox_entry(*bad)
+            expect(label, False)
+        except ValueError:
+            expect(label, True)
+    expect("a pick is answered yes, no or question", check_choice("pick", {}, "maybe"))
+    expect("a choice row takes one of its choices", check_choice("work", {"reply": "choice", "choices": "a|b"}, "c"))
+    expect("a value row takes any value", check_choice("work", {"reply": "value"}, "55.2") is None)
+
+    import tempfile
+    with tempfile.TemporaryDirectory() as td:
+        area = Path(td) / "02-PROJECTS" / "07-test"
+        (area / "data").mkdir(parents=True)
+        hdr = list(INBOX_COLUMNS)
+        r1 = dict(zip(hdr, read_csv_text(body)[1][0]))
+        r2 = dict(r1, id="00.30~desktop", target="00.30", device="desktop")
+        write_table(area, "inbox", hdr, [r1, r2])
+        back = {r["id"]: r for r in read_table(area, "inbox")[1]}
+        expect("a folder table writes one file per row", len(folder_files(area, "inbox")) == 2)
+        expect("a folder table reads back exactly", back.get("00.29~phone", {}).get("text") == words)
+        write_table(area, "inbox", hdr, [r2])
+        expect("deleting a row removes only its file",
+               [f.name for f in folder_files(area, "inbox")] == ["00.30~desktop.csv"])
 
     expect("an ISO date parses", days_since("2026-09-01") is not None)
     expect("a non-date does not", days_since("soon") is None)
+    expect("a date and time is a datetime", not bad_value("datetime", "2026-09-24T21:05:00-06:00"))
 
     print(f"\n{len(fails)} failure(s)" if fails else "\nselftest: all pass")
     return RC_INVALID if fails else RC_OK
@@ -2106,7 +1873,7 @@ def main(argv=None):
     p.add_argument("-p", "--area")
     p.set_defaults(fn=cmd_check)
 
-    p = sub.add_parser("status", help="one screen: record validity, phases, work, blocks")
+    p = sub.add_parser("status", help="one screen: record validity, phases, work, blocks, inbox")
     p.set_defaults(fn=cmd_status)
 
     p = sub.add_parser("tables", help="every declared table in an area, with row counts")
@@ -2117,12 +1884,12 @@ def main(argv=None):
     p.add_argument("area"); p.add_argument("table"); p.add_argument("key")
     p.set_defaults(fn=cmd_get)
 
-    p = sub.add_parser("set", help="change columns on an existing row")
+    p = sub.add_parser("set", help="change columns on an existing row (col=@file reads a file)")
     p.add_argument("area"); p.add_argument("table"); p.add_argument("key")
     p.add_argument("pairs", nargs="+")
     p.set_defaults(fn=cmd_set)
 
-    p = sub.add_parser("add", help="add a row")
+    p = sub.add_parser("add", help="add a row (col=@file reads a file)")
     p.add_argument("area"); p.add_argument("table"); p.add_argument("pairs", nargs="+")
     p.set_defaults(fn=cmd_add)
 
@@ -2134,29 +1901,32 @@ def main(argv=None):
     p.add_argument("area"); p.add_argument("query")
     p.set_defaults(fn=cmd_sql)
 
-    p = sub.add_parser("find", help="search every cell, decision body and BLOCKS.md")
+    p = sub.add_parser("find", help="search every cell of every table, decision bodies included")
     p.add_argument("text"); p.add_argument("-p", "--area")
     p.set_defaults(fn=cmd_find)
 
-    p = sub.add_parser("new", help="reserve the next D- and write its body stub")
+    p = sub.add_parser("new", help="reserve the next D- (body=@file writes its text at once)")
     p.add_argument("area"); p.add_argument("title"); p.add_argument("pairs", nargs="*")
     p.set_defaults(fn=cmd_new)
 
-    p = sub.add_parser("decisions", help="regenerate DECISIONS.md, grouped by category")
-    p.set_defaults(fn=cmd_decisions)
+    p = sub.add_parser("export", help="everything the app shows, as JSON (rc 1 if the record is invalid)")
+    p.add_argument("--out"); p.add_argument("--pretty", action="store_true")
+    p.set_defaults(fn=cmd_export)
 
-    p = sub.add_parser("todo", help="regenerate each project's TODO.md from its work table")
-    p.add_argument("-p", "--area")
-    p.add_argument("--force", action="store_true",
-                   help="overwrite a TODO.md written in by hand - only after carrying what he wrote")
-    p.set_defaults(fn=cmd_todo)
+    p = sub.add_parser("answer", help="save one of his answers into an area's inbox")
+    p.add_argument("area"); p.add_argument("target")
+    p.add_argument("--device", required=True, choices=INBOX_DEVICE)
+    p.add_argument("--kind", choices=INBOX_KIND)
+    p.add_argument("--choice"); p.add_argument("--text"); p.add_argument("--text-file")
+    p.add_argument("--context-file"); p.add_argument("--at")
+    p.set_defaults(fn=cmd_answer)
 
-    p = sub.add_parser("picks", help="parts suggestions: status, or --ask / --answered / --clear on PICKS.md")
+    p = sub.add_parser("inbox", help="his answers waiting to be applied, with his words (rc 2 if any)")
     p.add_argument("-p", "--area")
-    p.add_argument("--ask", action="store_true", help="append every proposed pick not on PICKS.md yet")
-    p.add_argument("--answered", action="store_true", help="list the entries he has answered (rc 2 if any)")
-    p.add_argument("--clear", action="store_true",
-                   help="remove entries whose verdict and his words are already saved in picks")
+    p.set_defaults(fn=cmd_inbox)
+
+    p = sub.add_parser("picks", help="where every parts pick stands")
+    p.add_argument("-p", "--area")
     p.set_defaults(fn=cmd_picks)
 
     p = sub.add_parser("diagrams", help="regenerate each harness leg's pin ladder (A) and route map (B)")
@@ -2165,16 +1935,15 @@ def main(argv=None):
     p = sub.add_parser("cites", help="advisory: prose cites that no longer resolve (never refuses)")
     p.set_defaults(fn=cmd_cites)
 
-    p = sub.add_parser("block", help="append a new block to BLOCKS.md")
-    p.add_argument("ask"); p.add_argument("-p", "--area", required=True)
+    p = sub.add_parser("block", help="raise a block: ask= why= options= recommend= stops= [title=]")
+    p.add_argument("-p", "--area", required=True); p.add_argument("pairs", nargs="+")
     p.set_defaults(fn=cmd_block)
 
-    p = sub.add_parser("blocks", help="list blocks")
-    p.add_argument("--solved", action="store_true")
-    p.add_argument("--answered", action="store_true", help="open blocks Camden has answered")
+    p = sub.add_parser("blocks", help="list open blocks (--answered: those with an answer waiting)")
+    p.add_argument("--answered", action="store_true")
     p.set_defaults(fn=cmd_blocks)
 
-    p = sub.add_parser("selftest", help="the gate resolver's own tests (in memory; touches nothing)")
+    p = sub.add_parser("selftest", help="the tool's own tests (never touches the record)")
     p.set_defaults(fn=cmd_selftest)
 
     p = sub.add_parser("log", help="append a log row")

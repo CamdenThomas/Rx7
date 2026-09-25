@@ -1,60 +1,333 @@
-id,system,title,date,status,supersedes,superseded_by,closes,also
-D-208,The boundary — what the electrical build hands over,"This project is fabrication, modules and software; it does no harness…",,superseded,,D-216,,D-215
-D-081,The boundary — what the electrical build hands over,Modules join a finished car,,inherited,,,,
-D-210,The boundary — what the electrical build hands over,No ECUMaster keypad; the control panel is a custom design that lands on…,,superseded,,D-355,,
-D-075,Modules — DCU and ICU,"Two nodes: the DCU (climate, HVAC servos, comfort switching) and the…",,inherited,,,,D-077 D-083
-D-306,Modules — DCU and ICU,"The ICU joins early, headless: a carrier with the analog front end, the…",2026-09-07,standing,,,,
-D-307,Modules — DCU and ICU,Blower speed is the DCU's command and the PMU's PWM: the DCU sends a…,2026-09-07,standing,,,,
-D-308,Modules — DCU and ICU,"The blower's PWM is the final stage's, not the PMU's: the DCU carrier…",2026-09-07,standing,,,,
-D-313,Modules — DCU and ICU,"The ICU is handed to the electrical build: carrier H-001, its channels…",2026-09-07,superseded,,D-374,Q-302,
-D-314,Modules — DCU and ICU,"The display goes in with the ICU, by the electrical build; this project…",2026-09-07,superseded,,D-374,,
-D-084,Modules — DCU and ICU,"Teensy 4.1 in both boxes (three bought — one spare), TI TCAN1042/1051…",,inherited,,,,D-085 D-086 D-088 D-089
-D-303,Modules — DCU and ICU,Three Teensy 4.1 are in hand with headers; availability is not a…,2026-09-03,standing,,,V-059,
-D-087,Modules — DCU and ICU,A private DCU ↔ ICU CAN-FD pair was planned; the electrical build did…,,inherited,,,,
-D-106,Modules — DCU and ICU,"CAN byte layouts: 8-byte messages, little-endian, byte 7 a rolling…",,inherited,,,,
-D-082,Modules — DCU and ICU,The tach input gets opto-isolation or a comparator at the ICU,,inherited,,,,
-D-304,Modules — DCU and ICU,"The tach signal is 2 pulses per crankshaft revolution, taken from the…",2026-09-03,standing,,,V-067,
-D-090,Modules — DCU and ICU,No hardwired oil-pressure lamp; oil pressure is shown by the ICU only,,inherited,,,,
-D-191,Modules — DCU and ICU,The DCU restores climate memory from SD on wake — no constant keep-alive,,inherited,,,,
-D-183,Modules — DCU and ICU,"Once the ICU (or an engine ECU) puts rpm on CAN, the fuel-pump and…",,inherited,,,,
-D-150,The cluster,"One wide display, instant-on (no OS, no boot sequence — key on, display…",,inherited,,,,D-192 D-193
-D-168,The cluster,Dirty-rectangle rendering from a RAM framebuffer (built and proven…,,inherited,,,,D-170
-D-151,The cluster,D-158 — Rendering rules,,inherited,,,,
-D-159,The cluster,The display does not cross the harness; the page-cycle button is a…,,inherited,,,,D-169
-D-109,The cluster,"An IMU on the ICU carrier (MPU-6050 / ICM-20948 class, I²C); axis…",,inherited,,,,D-161
-D-160,The cluster,"`stats.h` thresholds (redline 7000 rpm, hot water 105 °C, low oil 1.0…",,inherited,,,,D-162 D-163
-D-300,The cluster,The three assumed `stats.h` figures are confirmed as assumed: redline…,2026-09-03,superseded,,D-328,V-072 V-070 V-071,
-D-048,"Comfort, mirrors, windows, seats",Cooled seats are in scope (fans and ducting on the comfort bus); seat…,,inherited,,,,D-074 D-058 D-073
-D-049,"Comfort, mirrors, windows, seats","Remote mirror motors kept, plus heated mirrors, with independent wiring…",,inherited,,,,D-093
-D-305,"Comfort, mirrors, windows, seats","Mirrors do adjustment and heat, and nothing else",2026-09-03,standing,,,T-031,
-D-131,"Comfort, mirrors, windows, seats",Power windows are a luxury item; the electrical build provisioned…,,inherited,,,,
-D-180,"Comfort, mirrors, windows, seats",Hatch and fuel-door solenoids on O10 branches with their own fuses…,,inherited,,,,D-181
-D-096,"Comfort, mirrors, windows, seats","Radar is a custom subsystem, not a commercial unit",,inherited,,,,
-D-128,Head unit and audio,A CarPlay head unit does maps and audio; the ICU keeps gauges only,,inherited,,,,D-129 D-130 D-149
-D-201,Lighting — the second pass,Lighting starts only after the electrical rebuild is shaken down…,,inherited,,,,L-004
-D-107,Lighting — the second pass,Custom tail lights: a thin LED strip per side in the stock aperture…,2026-08-31,inherited,,,,L-001 D-111
-D-110,Lighting — the second pass,The pop-ups stay; the headlamp becomes a DOT-compliant sealed unit…,,inherited,,,,L-002
-D-122,Lighting — the second pass,Every soft fuse is re-set after any bulb change,,inherited,,,,L-003
-D-309,The record itself,"The luxury record is data, rendered — the same workflow as the…",2026-09-07,superseded,,D-364,,
-D-310,The record itself,Every ICU sender input is a high-Z observer of a gauge-driven node…,2026-09-07,standing,,,,
-D-311,The record itself,`firmware/pmu_sim/channels.h` is rendered by this project's build from…,2026-09-07,superseded,,D-364,,
-D-312,The record itself,"The install plan is nine stages, S0 bench → S1 ICU headless → S2…",2026-09-07,standing,,,,
-D-315,The record itself,The release solenoids exist and the harness reaches them; every other…,2026-09-08,standing,,,,
-D-326,"Comfort, mirrors, windows, seats",The mirrors move on a mechanical switch in the panel; the DCU does mirror heat and nothing else,2026-09-11,superseded,,D-359,01.01,
-D-327,The record itself,Stage order stands: climate (S2) before the display bezel (S3),2026-09-11,standing,,,01.02,
-D-328,The cluster,"The three stats.h constants are fixed from primary sources: redline 7000 rpm, low oil 1.0 bar, tank 16.6 gal",2026-09-11,standing,D-300,,01.03,
-D-329,"Comfort, mirrors, windows, seats",(electrical D-329) The heated washer nozzle and the wiper-park de-icer are cancelled; L2-S 6 and the L2-NZL receptacle come out. The outside-air conductor is untouched,2026-09-11,inherited,,,01.06,
-D-332,"Comfort, mirrors, windows, seats","Mirror heat is a bonded resistive pad on the F14 feed, not an integrated element",2026-09-11,standing,,,,
-D-355,The boundary — what the electrical build hands over,"The control panel is the DCU's faceplate, not its own board: no DP-KEY, no CAN node, a local ribbon to the DCU behind it",2026-09-13,standing,D-210,,,00.13 · electrical D-350
-D-358,Lighting — the second pass,The headlamps are 4x6 rectangular LED units on adapter plates in the retained pop-up buckets,2026-09-21,standing,,,01.04,
-D-359,"Comfort, mirrors, windows, seats","The car's own FB mirrors are kept, and the DCU drives them from a mini thumbstick on the panel with press-to-toggle",2026-09-21,standing,D-326,,01.07,
-D-362,"Comfort, mirrors, windows, seats","The DCU plugs in like the ICU: DT13 flanged receptacles in a printed enclosure wall, the harness on DT06 plug tails",2026-09-21,standing,,,01.08,
-D-364,The record itself,The luxury record is data and is not rendered; pmu_sim/channels.h is hand-synced to electrical pins (F-013),2026-09-21,standing,D-309 D-311,,,
-D-383,"Comfort, mirrors, windows, seats","The radar is a speed-trap radar and laser detector, fully concealed: no unit on the windshield, nothing visible but the warning on the cluster",2026-09-23,standing,,,01.09,
-D-384,Lighting,The tail-light path is chosen after the aperture is measured (V-063),2026-09-23,standing,,,01.10,
-D-388,The record itself,"Parts are chosen in rounds: the agent proposes a product per parts row with why and drawbacks, Camden accepts or vetoes in one block per round, and PICKS.md shows where every part stands",2026-09-23,standing,,,,
-D-389,The record itself,"Every parts suggestion is its own block, with the full detail and his answer line right under it; rx7.py picks --ask writes them from the picks table",2026-09-23,superseded,,D-390,,
-D-390,The record itself,"Parts suggestions live on the project's PICKS.md, laid out like BLOCKS.md: one entry per product with an ANSWER line; he answers any, some or all at leisure, the agent saves his words into picks and only then removes the entry",2026-09-23,superseded,D-389,D-405,,
-D-391,Parts and sourcing,"Parts round 1: eight products accepted - the blower motor, blower final stage, HVAC servos, comfort fuse block, sound deadening, headlamps and both relay sets",2026-09-23,standing,,,,
-D-392,"Comfort, mirrors, windows, seats","Seats first: no add-on heater or cooling kit for now - the search is for front seats with heating and cooling built in, likely with electric controls",2026-09-23,standing,,,,
-D-397,Lighting — the second pass,"Every lamp in the car becomes LED: the lamps table lists every factory bulb position, what replaces it or why it goes, and the part that covers it, so the parts rounds cannot miss a lamp",2026-09-23,standing,,,,
+id,system,title,date,status,supersedes,superseded_by,closes,also,body
+D-208,The boundary — what the electrical build hands over,"This project is fabrication, modules and software; it does no harness…",,superseded,,D-216,,D-215,"**D-208(f) / D-215 — This project is fabrication, modules and software; it does no harness work.** Every conductor a luxury feature needs is already run and capped in the electrical build, and its relay sockets and fuse positions are fitted empty. What is waiting (all detail in `../electrical-build/01-DESIGN/DESIGN.md`):
+
+| Provision | Where | For |
+|---|---|---|
+| O15 comfort bus, 25 A, capped twice | L3-P 2 (dash) · L4-P 4 (sill — F14 mirror heat, D-254) | Seats, mirror heat, whatever the DCU switches — this project adds its own fuse block on O15 |
+| Blower receptacle `L3-BLW` (DTP-2) at the HVAC case — O16 feed + 12 AWG return, dust-capped | HVAC case | The replacement blower motor and its ≥ 20 kHz final-stage adapter (D-253 / D-257 / D-308) |
+| O4 defog output, wired to the grid, configured, disabled | L4-P 1 | The defogger — needs only a trigger (a panel key or a hardwired switch on a spare L3-S2 cavity) |
+| Window commands ×4, capped both ends | L3-S2 3–6 → L4-M 9–12 | Power windows: switches at the console, K5–K8 sockets and F8/F9 positions at the sill, motor legs in D1/D2 1–2 |
+| O1 window motor bus feed, capped | L4-P 3 | The K5–K8 contact feed |
+| Mirror motor ×3 + mirror heat, capped in each door; mirror-adjust commands dash → sill | D1/D2 4–7, F14 position at the sill; `L4-S2 1–5` (D-255) | Heated, powered mirrors — a panel switch or the DCU drives `L4-S2` |
+| Future module +12 V switched and ground, capped | L3-S2 7, L3-S2 8 | Any dash module |
+| Pass-through ×3 dash ↔ rear, capped | L3-S3 1–3 ↔ L4-S 5–7 | Radar rear sensor, or anything else needing a dash-to-hatch link |
+| Hatch and fuel-door solenoid outputs, capped | L4-M 3, L4-M 4 | Solenoids on an O10 branch with their own fuses (D-180) |
+| DP-ICU-A — 6-way: switched 12 V, illumination reference, ground, CAN2 (cavities 1 · 3 · 4 · 5 the same as DP-DCU) | dash post | The cluster module's power and bus (D-252) |
+| DP-ICU-B — 12-way, sensors only: taps on water temp, oil pressure, fuel level, tach, charge sense, brake warning; oil-temperature and road-speed conductors run and capped; one spare pre-wired from the engine leg; three plugs | dash post | The cluster module's inputs (D-250 · D-251 · D-252) |
+| DP-DCU — 6-way: switched 12 V, ground, CAN2, outside-air temperature on 2 (from `L2-S 5`, D-256) | dash post | The climate / comfort module |
+| `L2-S 5` outside-air sensor · `L2-S 6` heated-nozzle / de-icer feed, capped at the nose / cowl | front leg | Display temperature; heated nozzles if `Q-303` finds one (D-256) |
+| DP-KEY — 4-way: CAN2, switched 12 V off O10, ground | dash | The custom control panel (D-210) |
+| K3 / K4 empty sockets, F13 position, two spare block-B fuse positions | dash node | Anything else |
+| CAN2 at 500 kbps, far-end 120 Ω already fitted in the engine bay | — | New nodes plug into the drops; termination never changes |"
+D-081,The boundary — what the electrical build hands over,Modules join a finished car,,inherited,,,,,"**D-081 — Modules join a finished car.** The PMU harness drives, shakes down and has its factory harness removed first; nothing here is a dependency for the car starting, running or being legal."
+D-210,The boundary — what the electrical build hands over,No ECUMaster keypad; the control panel is a custom design that lands on…,,superseded,,D-355,,,"**D-210 — No ECUMaster keypad; the control panel is a custom design that lands on DP-KEY.** Its keys: defog, hatch release, fuel-door release, then the climate and comfort controls (A/C mode, fan, temperature, seat heat). Frame `0x400` is reserved for its buttons. The wink switches are hardwired in the electrical build and can never be panel keys (they must work with the panel asleep and their NC poles interrupt the pop-up relay coils).
+
+**D-209(b)(e) — Still to design here:** the parking-brake sense (no input in the PMU build — a switch into a spare ladder state, or a CAN node), and the hatch latch switch (K-016, broken, unsourced)."
+D-075,Modules — DCU and ICU,"Two nodes: the DCU (climate, HVAC servos, comfort switching) and the…",,inherited,,,,D-077 D-083,"**D-075 / D-077 / D-083 — Two nodes: the DCU (climate, HVAC servos, comfort switching) and the ICU (instrument display *and* engine-sensor acquisition).** A gauge's sender wires into the box that draws the gauge — sender → ADC → pixel, no bus hop — so if CAN2 fails the ICU still shows tach, water temp, oil pressure and speed from its own inputs. The DP-ICU taps exist for this."
+D-306,Modules — DCU and ICU,"The ICU joins early, headless: a carrier with the analog front end, the…",2026-09-07,standing,,,,,"**D-306 — The ICU joins early, headless: a carrier with the analog front end, the Teensy and the CAN transceiver, plugged into `DP-ICU-A` / `DP-ICU-B` after the electrical build's shakedown, publishing on CAN2 while the factory cluster stays the instrument; the display and the dash plastics arrive later as a bezel-only event.** Camden's call, 2026-09-07, the module half of the electrical build's `Q-116` (its wiring half is electrical D-251). Every sensor is read once, at the ICU, and every other reader gets it from the bus: the PMU logs rpm, oil pressure, water temperature and fuel level as received channels from the day the node powers up, and D-183's rpm terms can come in years before a screen exists. D-081 holds — nothing that starts, runs or makes the car legal depends on this node — and D-251 forbids it ever becoming a control source: a CAN value in any PMU control rule fails open. Three consequences. **(1) Fuel level is this module's signal.** The electrical build re-pointed A7 at the oil-pressure node for the fuel-pump gate (D-249), so `DP-ICU-B 3` taps the fuel node and the ICU publishes it in a new slow frame, **`0x218` at 2 Hz** (`01-DESIGN/CAN-MESSAGES.md`); the PMU's `0x120` bytes 0–1 become reserved. Oil pressure stays in `0x200` — a lower identifier at 20 Hz — which is what ""oil pressure outranks fuel level"" means on a bus: priority is per frame, never per byte. **(2) D-078 is superseded and restated.** Single source per signal stands: the PMU owns battery voltage, key state, output states and channel currents; the ICU owns rpm, water temp, oil temp, oil pressure, road speed *and fuel level*; the one deliberate double read is the oil-pressure node, watched by the gauge, the PMU's A7 and the ICU, as a cross-check. **(3) The carrier's analog front end is built without the display** — easier, not harder — and its 12 V input stays on `DP-ICU-A 1` (O10) at Teensy-plus-transceiver draw until `Q-302` is measured with a panel attached. The `DP-ICU` cavity map moved (electrical D-252): old 1 → A 1 · 2 → A 3 · 3 → A 4 · 4 → A 5 · 5 → A 2 · 6 → B 1 · 7 → B 2 · 9 → B 4 · 11 → B 5 · 12 → B 6; D-304's ""tapped to DP-ICU 9"" is `DP-ICU-B 4`."
+D-307,Modules — DCU and ICU,Blower speed is the DCU's command and the PMU's PWM: the DCU sends a…,2026-09-07,standing,,,,,"**D-307 — Blower speed is the DCU's command and the PMU's PWM: the DCU sends a duty on `0x300` byte 1, the PMU applies it to O16, and the motor is a 2-wire brushed blower (Four Seasons 35483 class, motor only — the squirrel cage transfers) that this project buys and plugs into `L3-BLW` at the HVAC case; no resistor pack, no speed switch, no blower power stage on the DCU carrier.** Camden's call, 2026-09-07 (electrical `Q-112` → D-253). The DCU's blower output is a CAN field, not a FET — `V-083`'s comfort FETs serve seats, mirror heat and nozzles only. *Fallback, decided at bring-up:* if the PMU's PWM frequency makes the blower hum at part speed, a low-side final stage (an OEM-style blower regulator or a ≥ 20 kHz PWM module, mounted in the resistor pack's hole for airflow) inserts at `L3-BLW` as a plug-in adapter and takes its command from the DCU on a local pigtail — the harness does not change either way. On a lost `0x300` the PMU holds a default duty; the timeout row says so. Two more things the DCU owns from the same session: **outside-air temperature** arrives on `DP-DCU 2` (electrical D-256) and is published in `0x300` byte 5 beside cabin temperature, for the cluster to display — there is no automatic climate control and none is planned; and the **heated-nozzle / park-de-icer feed** is run on `L2-S 6`, conditional on `Q-303`. Mirror adjustment has its conductors (`L4-S2`, electrical D-255); whether a mechanical switch in the panel or the DCU's bridges drive them is this project's choice when the panel is designed — D-305's feature set (adjust and heat only) is unchanged."
+D-308,Modules — DCU and ICU,"The blower's PWM is the final stage's, not the PMU's: the DCU carrier…",2026-09-07,standing,,,,,"**D-308 — The blower's PWM is the final stage's, not the PMU's: the DCU carrier gets one logic-level PWM output (≥ 20 kHz) for a low-side blower final stage that plugs in at `L3-BLW`, bought by this project with the motor; `0x300` byte 1 is the duty the DCU reports, and the PMU never acts on it.** Camden's fact, 2026-09-07 — the PMU's PWM is adjustable 4–400 Hz per output — and electrical D-257's consequence. Amends D-307's control path; everything else in D-307 stands. The module (a ≥ 25 A, ≥ 20 kHz PWM controller with its own freewheel diode and a PWM / 0–5 V input, or an OEM-style linear blower regulator if its heat is acceptable) mounts in the resistor pack's hole for airflow and takes PWM, ground and, if it needs one, +12 V from the DCU on a local pigtail. `V-083` gains the PWM pin; the timeout row for `0x300` no longer involves the PMU — a lost frame leaves the final stage on the DCU's last local command."
+D-313,Modules — DCU and ICU,"The ICU is handed to the electrical build: carrier H-001, its channels…",2026-09-07,superseded,,D-374,Q-302,,"**D-313 — The ICU is handed to the electrical build: carrier H-001, its channels, its parts, its bench commissioning and its layout questions are that project's (electrical D-259); this project keeps the display chain, the pages, the CAN map and the DCU. The display's backlight is the F16 ignition aux on `DP-ICU-A 6`, delivered through the ICU board (electrical D-258) — `Q-302` closes on it, and `Q-301` closes as moot.** Camden's call, 2026-09-07 (electrical `Q-122`: ""the ICU is done and seamless before luxury starts; only the display comes with luxury""). *What moves:* features FT01–FT05 and FT30 (marked *moved*); sensors SN01–SN10 — the observer front end of D-310, superseded with the cluster drop it observed, the rows archived under `99-ARCHIVE/Luxury/2026-09-07b_icu-to-electrical/`; parts LP10 / LP12 / LP13 / LP15 / LP16; work F-003 / F-004 / H-001; the questions `V-073`, `V-082`, `V-057`, `Q-304`, `Q-308`, `Q-309`, numbers kept; and `ICU-CARRIER.md`. *What stays:* `S1` in the stage table, as the prerequisite the other project delivers; the `0x200` / `0x210` / `0x218` frames in the map — the bus is one map; the firmware tree (R6, one source — its sensing half is now specified by the electrical build's `icu_channels.csv`, its rendering half by this project); `T-051`, `V-084`, `V-085`; the O15 block, which no longer carries a ""display backlight if Q-302 says so"" clause. *Supersedes* D-306's timing (""after the electrical build's shakedown"" — the ICU goes in *with* the harness) and its consequence (3); D-310's observer front end and its DNP pull-ups (the ICU excites the senders from day one — electrical D-258; the one BRAKE tell-tale stands); D-312's S1 as a stage of this project. The rest of D-306 — single source per signal, fuel level on `0x218`, D-251's fail-open — is unchanged."
+D-314,Modules — DCU and ICU,"The display goes in with the ICU, by the electrical build; this project…",2026-09-07,superseded,,D-374,,,"**D-314 — The display goes in with the ICU, by the electrical build; this project keeps the bezel. `T-051` (the BT817 evaluation board), `V-085` (the glass), `V-084` (the timings) and parts LP05 / LP26 / LP27 / LP28 move to that project with their numbers; `S3` becomes the dash-plastics stage — a foam-plug-and-fibreglass bezel moulded around the display on the electrical build's binnacle plate (FT34, H-006, LP29); `F-007` (odometer persistence) is a cutover gate for that build; the pages stay this project's firmware.** Camden's call, 2026-09-07 (electrical `Q-129` → D-268): ""install the digital dash display now and leave the dash plastic — a foam and fibreglass mould — to the luxury package."" The reasoning is the electrical build's (its parallel-system migration already keeps the factory cluster alive until the meters cutover, so no temporary cluster was ever needed); the consequence here is that this project no longer owns any part of the instrument except its shape. *Supersedes* D-313's ""keeps the display chain"" clause and D-312's S3; D-159 (the display never crosses the harness) and D-192 (instant-on) stand and are now the electrical build's to honour."
+D-084,Modules — DCU and ICU,"Teensy 4.1 in both boxes (three bought — one spare), TI TCAN1042/1051…",,inherited,,,,D-085 D-086 D-088 D-089,"**D-084 / D-085 / D-086 / D-088 / D-089 — Teensy 4.1 in both boxes (three bought — one spare), TI TCAN1042/1051 transceivers, CAN 2.0B at 500 kbps with 11-bit IDs (the PMU is not CAN-FD), load-dump TVS on both module supplies (reverse polarity → TVS → filter → automotive buck → the Teensy's 3.3 V), Teensy socketed on its carrier so a heat casualty is a $32 swap.**"
+D-303,Modules — DCU and ICU,Three Teensy 4.1 are in hand with headers; availability is not a…,2026-09-03,standing,,,V-059,,"**D-303 — Three Teensy 4.1 are in hand with headers; availability is not a project risk and the carriers may commit to the part.** Camden, 2026-09-03 — also transistors with headers, none soldered up. Closes `V-059`; the Adafruit → SparkFun distribution change no longer matters to this project. `V-057` (the TCAN suffix) is still open and is now the only part-availability item ahead of layout."
+D-087,Modules — DCU and ICU,A private DCU ↔ ICU CAN-FD pair was planned; the electrical build did…,,inherited,,,,,**D-087 — A private DCU ↔ ICU CAN-FD pair was planned; the electrical build did not run it (D-215).** Both modules sit behind the same bezel — run it there if it is ever wanted.
+D-106,Modules — DCU and ICU,"CAN byte layouts: 8-byte messages, little-endian, byte 7 a rolling…",,inherited,,,,,"**D-106 — CAN byte layouts: 8-byte messages, little-endian, byte 7 a rolling counter, explicit timeout per message, a receiver blanks a field rather than holding the last value.** Bus load ~1.5 %. The PMU's own export format (`V-065`) still has to be reconciled."
+D-082,Modules — DCU and ICU,The tach input gets opto-isolation or a comparator at the ICU,,inherited,,,,,**D-082 — The tach input gets opto-isolation or a comparator at the ICU.** Coil-primary spikes run well above 12 V.
+D-304,Modules — DCU and ICU,"The tach signal is 2 pulses per crankshaft revolution, taken from the…",2026-09-03,standing,,,V-067,,"**D-304 — The tach signal is 2 pulses per crankshaft revolution, taken from the NEGATIVE (primary) side of the TRAILING coil.** Camden, 2026-09-03. The 2 ppr assumption is confirmed, so no RPM scaling constant changes. The *source* is corrected: `01-DESIGN/ICU-CARRIER.md` describes the front end against the **leading** coil, and the electrical build's shielded conductor (L1-S1 6 → DP-CLU 4, tapped to DP-ICU 9) is already drawn from the trailing coil — the design and the car agree, the carrier document does not. Consequence for layout: the H11L1 / LM393 front end must be specified against a trailing-coil primary waveform, which is the inductive-kick side and needs the clamp ahead of the opto, not a clean logic-level input. Closes `V-067`; `01-DESIGN/ICU-CARRIER.md` needs the wording and the front-end spec corrected before layout."
+D-090,Modules — DCU and ICU,No hardwired oil-pressure lamp; oil pressure is shown by the ICU only,,inherited,,,,,"**D-090 — No hardwired oil-pressure lamp; oil pressure is shown by the ICU only.** The factory cluster stays live through ICU development (D-094), which covers the window when the ICU is least trustworthy. Reopen if the car's use changes."
+D-191,Modules — DCU and ICU,The DCU restores climate memory from SD on wake — no constant keep-alive,,inherited,,,,,**D-191 — The DCU restores climate memory from SD on wake — no constant keep-alive.** F13 at the dash node therefore goes to the radar feed when that subsystem exists.
+D-183,Modules — DCU and ICU,"Once the ICU (or an engine ECU) puts rpm on CAN, the fuel-pump and…",,inherited,,,,,"**D-183 — Once the ICU (or an engine ECU) puts rpm on CAN, the fuel-pump and start-relay rules gain their rpm terms.** Until then the PMU runs the interim rules."
+D-150,The cluster,"One wide display, instant-on (no OS, no boot sequence — key on, display…",,inherited,,,,D-192 D-193,"**D-150 / D-192 / D-193 — One wide display, instant-on (no OS, no boot sequence — key on, display on): a 12.3″ bar panel on a 1280 × 480 canvas driven by a BT817 EVE over QSPI from the Teensy.** Two bridge chains, decided by `V-085`: RGB → LVDS into 1280 × 480 cluster glass (only if the binnacle brow shades a 330-nit panel), or RGB → HDMI into a 900–1000-nit 1920 × 720 bar panel's scaler board (the default if the brow does not convince)."
+D-168,The cluster,Dirty-rectangle rendering from a RAM framebuffer (built and proven…,,inherited,,,,D-170,"**D-168 / D-170 — Dirty-rectangle rendering from a RAM framebuffer (built and proven, 415-assertion suite); 8 MB PSRAM fitted to the Teensy pads before the board is installed.**"
+D-151,The cluster,D-158 — Rendering rules,,inherited,,,,,"**D-151 – D-158 — Rendering rules:** emerald `#009155` is the single lit colour, unlit is a 4:1 dimmer green · imperial at the display layer only, everything stored metric · a missing sensor never renders as a real zero (open = amber dashes, short = red dashes, stale = dim dashes, out of range = red) · contiguous bar segments · symbols not words in the gauge column · four named axes · three items in the left column · digit fields re-centre."
+D-159,The cluster,The display does not cross the harness; the page-cycle button is a…,,inherited,,,,D-169,**D-159 / D-169 — The display does not cross the harness; the page-cycle button is a small momentary wired directly to the Teensy.**
+D-109,The cluster,"An IMU on the ICU carrier (MPU-6050 / ICM-20948 class, I²C); axis…",,inherited,,,,D-161,"**D-109 / D-161 — An IMU on the ICU carrier (MPU-6050 / ICM-20948 class, I²C); axis convention: lateral positive right, longitudinal positive under acceleration, pitch positive nose-up.** Mounting orientation must match (`V-073`)."
+D-160,The cluster,"`stats.h` thresholds (redline 7000 rpm, hot water 105 °C, low oil 1.0…",,inherited,,,,D-162 D-163,"**D-160 / D-162 / D-163 — `stats.h` thresholds (redline 7000 rpm, hot water 105 °C, low oil 1.0 bar, tank 15.9 gal — all to confirm, `V-070`–`V-072`) · volatile-only until SD persistence exists (probably write on key-off) · the firmware owns automated figures, hand logs own config and firmware versions.**"
+D-300,The cluster,The three assumed `stats.h` figures are confirmed as assumed: redline…,2026-09-03,superseded,,D-328,V-072 V-070 V-071,,"**D-300 — The three assumed `stats.h` figures are confirmed as assumed: redline 7000 rpm, minimum idle oil pressure 1.0 bar, tank 15.9 gal.** Camden, 2026-09-03. The tach red zone, the over-rev counter, the low-oil warning band and the range calculation all stand as written — no firmware change. Closes `V-070`, `V-071`, `V-072`. Water temp 105 °C was never in doubt and is untouched."
+D-048,"Comfort, mirrors, windows, seats",Cooled seats are in scope (fans and ducting on the comfort bus); seat…,,inherited,,,,D-074 D-058 D-073,"**D-048 / D-074 / D-058 / D-073 — Cooled seats are in scope (fans and ducting on the comfort bus); seat products stay estimates (2 × 4 A heat, 2 × 1.5–2.5 A fans); the heat/cool interlock and comfort-bus switching are the DCU's job, downstream of the dumb O15 feed.**"
+D-049,"Comfort, mirrors, windows, seats","Remote mirror motors kept, plus heated mirrors, with independent wiring…",,inherited,,,,D-093,"**D-049 / D-093 — Remote mirror motors kept, plus heated mirrors, with independent wiring per side — slightly larger mirrors with integrated heat and digital controls, new switch.** The door connector budget is exactly 8 conductors per door."
+D-305,"Comfort, mirrors, windows, seats","Mirrors do adjustment and heat, and nothing else",2026-09-03,standing,,,T-031,,"**D-305 — Mirrors do adjustment and heat, and nothing else.** Camden, 2026-09-03: no power fold, no turn-signal repeaters, no puddle lamps, no blind-spot indicators, no memory positions. This settles the conductor budget that `V-060` had left open and that the electrical build was about to commit housings to: three motor conductors, one heat feed and the door ground fit D1/D2's eight cavities exactly as D-092/D-093 allocated them, with the window pair and the door pin, and the spare untouched. **The electrical build needs no change and its door housings stay DT-8.** What remains is sourcing (`Q-300`): the mirror must be a conventional 3-wire motor pair (common + X + Y) with a resistive heat element — not a 5-wire, LIN-bus or module-driven mirror, which would need conductors the doors do not have. Closes `V-060`; `T-031` continues as a sourcing task."
+D-131,"Comfort, mirrors, windows, seats",Power windows are a luxury item; the electrical build provisioned…,,inherited,,,,,"**D-131 — Power windows are a luxury item; the electrical build provisioned everything (see the table above).** Adding them: fit the regulators and motors, plug in D1/D2, populate K5–K8, fit F8/F9, uncap the commands, enable the logic."
+D-180,"Comfort, mirrors, windows, seats",Hatch and fuel-door solenoids on O10 branches with their own fuses…,,inherited,,,,D-181,"**D-180 / D-181 — Hatch and fuel-door solenoids on O10 branches with their own fuses, pulsed by the panel → PMU; mirror heat through F14 at the sill.** Part choice is `T-032` / `T-033`."
+D-096,"Comfort, mirrors, windows, seats","Radar is a custom subsystem, not a commercial unit",,inherited,,,,,"**D-096 — Radar is a custom subsystem, not a commercial unit:** DCU-managed, displayed on the cluster, concealed sensors front and rear. The rear link is the L3-S3 ↔ L4-S pass-through; the front sensor is wired locally to the module (`V-061` designs it)."
+D-128,Head unit and audio,A CarPlay head unit does maps and audio; the ICU keeps gauges only,,inherited,,,,D-129 D-130 D-149,"**D-128 / D-129 / D-130 / D-149 — A CarPlay head unit does maps and audio; the ICU keeps gauges only.** Head-unit criteria: double-DIN, physical buttons, button colour set to green, wireless CarPlay, and **full-range unprocessed pre-outs** feeding the external amp (the hard requirement — many units band-limit or EQ their pre-outs). The harness side (L3-M 1/2, illumination, ground, amplifier feed) is already in the electrical build."
+D-201,Lighting — the second pass,Lighting starts only after the electrical rebuild is shaken down…,,inherited,,,,L-004,"**D-201 / L-004 — Lighting starts only after the electrical rebuild is shaken down: factory harness out, car driving on the PMU with stock bulbs and soft fuses set from measurement.**"
+D-107,Lighting — the second pass,Custom tail lights: a thin LED strip per side in the stock aperture…,2026-08-31,inherited,,,,L-001 D-111,"**D-107 / L-001 / D-111 — Custom tail lights: a thin LED strip per side in the stock aperture, red for tail/brake/turn with a 5 cm white reverse section inboard; 2.2 cm strip height gives 55 cm² of red (FMVSS 108 wants 50 cm² for stop and rear turn); a driver PCB per housing takes tail, brake, turn and reverse as logic inputs and handles intensity, constant-current drive and turn override locally.** Design notes: `../../99-ARCHIVE/Electrical/2026-08-31_lighting-body/TAIL-LIGHTS.md`."
+D-110,Lighting — the second pass,The pop-ups stay; the headlamp becomes a DOT-compliant sealed unit…,,inherited,,,,L-002,**D-110 / L-002 — The pop-ups stay; the headlamp becomes a DOT-compliant sealed unit inside the existing bucket (a strip of LEDs cannot make a beam cutoff).** Which unit is `Q-048`.
+D-122,Lighting — the second pass,Every soft fuse is re-set after any bulb change,,inherited,,,,L-003,**D-122 / L-003 — Every soft fuse is re-set after any bulb change.** A limit set for a filament does not protect an LED.
+D-309,The record itself,"The luxury record is data, rendered — the same workflow as the…",2026-09-07,superseded,,D-364,,,"**D-309 — The luxury record is data, rendered — the same workflow as the electrical build (electrical D-233), on the same three-step skeleton.** Camden's instruction, 2026-09-07: one set of true data, every display reading it, nothing stale against the wiring build. `data/` holds modules, stages, features, provisions, sensors, CAN messages and fields, parts, work, params and the bring-up log; `templates/` the prose; `views.py` the derivations and checks; `python tools/rx7.py -p luxury-package build` renders README, DESIGN, CAN-MESSAGES, ICU-CARRIER, DCU-CARRIER, SHOPPING-LIST, INSTALL, BRING-UP and `VIEW.html`. **The boundary is derived, not typed:** every provision this project consumes is joined live to `../electrical-build/data` at build time, and a cavity that changes state or disappears there refuses this project's build — the mechanism that makes ""no stale information"" a property rather than a promise. The four hand-written design documents (`DCU-CLUSTER.md`, `CLUSTER-DESIGN.md`, `BENCH-BRINGUP.md`, `FORWARD-WORK.md`) are archived under `99-ARCHIVE/Luxury/2026-09-07_prose-before-data/`; their still-true content lives in the templates and `data/work.csv`. `firmware/` stays a source of truth in its own right (R6) and is not rendered — except `pmu_sim/channels.h` (D-311)."
+D-310,The record itself,Every ICU sender input is a high-Z observer of a gauge-driven node…,2026-09-07,standing,,,,,"**D-310 — Every ICU sender input is a high-Z observer of a gauge-driven node, never a divider that loads it; and there is one BRAKE tell-tale.** 2026-09-07, from the Q-301 finding. The old carrier draft read water temperature through a 1 kΩ pull-up to 3V3 and oil pressure through 330 Ω — either would have moved the factory needle the driver is still looking at. The front end is now 1 MΩ series → 330 kΩ to ground (×0.248: 12 V reads 2.98 V, 20 V clamps), 100 nF at the ADC pin, BAT54S to 3V3 / GND, calibrated in the car against the gauge (D-142 / electrical D-249) and averaged in firmware if the M-6 scope trace shows a pulsing regulator (Q-301a). Each observer carries a **DNP 100 Ω 1 W pull-up to +5 V behind a jumper** — the local excitation fitted only at S3, when the factory cluster leaves, never while the gauge still drives the node. Fuel joins the same pattern on `DP-ICU-B 3`. The tach front end is specified against the **trailing** coil's negative primary (D-304): 2 × 100 kΩ series, 5.1 V zener + Schottky clamp, comparator with hysteresis, input capture. The brake-warning tap carries fluid level and parking brake on one node, as the factory lamp did, so the cluster shows one BRAKE tell-tale (D-209(b)'s parking-brake sense is answered this way, not with a new input). Values are `data/sensors.csv`'s."
+D-311,The record itself,`firmware/pmu_sim/channels.h` is rendered by this project's build from…,2026-09-07,superseded,,D-364,,,"**D-311 — `firmware/pmu_sim/channels.h` is rendered by this project's build from the electrical build's `data/pins.csv`.** 2026-09-07. The file's banner claimed a generator and a CSV that no longer exist, and its limits were two rulings behind (O2 / O3 at 13.0 A, electrical D-243). The structure — `ChannelSpec`, the `CH[24]` table, the channel enum, `estimatedChannelCount()` — is unchanged so nothing that includes it needs to change; only the numbers now follow the electrical record. Opens F-013: re-run the test suite against the regenerated file on a machine with g++."
+D-312,The record itself,"The install plan is nine stages, S0 bench → S1 ICU headless → S2…",2026-09-07,standing,,,,,"**D-312 — The install plan is nine stages, S0 bench → S1 ICU headless → S2 climate (panel, DCU, blower) → S3 cluster display → S4 comfort loads → S5 mirrors → S6 windows → S7 lighting → S8 radar, each plugging into capped receptacles and reversible before dark.** 2026-09-07. Ordered by dependency and by dash-plastics events done once each: the centre stack for S2, the binnacle for S3, the door cards for S5 + S6 together, the carpet for S4 with sound deadening. Climate is placed before the display because the car has no heater airflow until the blower returns (electrical D-253) and the headless ICU already works behind the factory cluster; that ordering is `Q-306`, Camden's to flip. Rows in `data/stages.csv`; per-stage provisions and parts print from the data."
+D-315,The record itself,The release solenoids exist and the harness reaches them; every other…,2026-09-08,standing,,,,,"**D-315 — The release solenoids exist and the harness reaches them; every other provision this project plugs into ends in a dust-capped receptacle where it leaves its leg; the door harness is this project's, so `D1` / `D2` are RESERVED at the sill.** 2026-09-08, mirroring electrical D-274 (Camden's `Q-132` answer). Both factory solenoids are on the car and believed working — `LP23` / `LP25` drop to nothing to buy; `T-032` / `T-033` are the trigger (D-180, through the K3 / K4 sockets) and the broken latch switch (`LP24`). The receptacles this project's stages plug into: `L2-NZL` (nozzles, S4), `L2-OAT` (outside air, S2), `L3-CMF` (the O15 block, S2), `L3-WIN` (the window switch pack, S6 — its common on cavity 5), `L3-MOD` (the future module), `L3-RDR` / `L4-RDR` (radar, S8), besides `L3-BLW` (D-253); the door cards' harnesses (S5 + S6) start at the sill receptacles, whose door plugs hold sealing plugs until then. The DCU's two bucks follow electrical D-273 — a 60 V-input part (`LP08`). Data: `provisions` (expectations and sixteen new rows), `features` FT15 / FT17 / FT18 / FT21 / FT23 / FT24 / FT28 / FT31 / FT32, `parts` LP08 / LP23 / LP25."
+D-326,"Comfort, mirrors, windows, seats",The mirrors move on a mechanical switch in the panel; the DCU does mirror heat and nothing else,2026-09-11,superseded,,D-359,01.01,,"**D-326 — The mirrors move on a mechanical switch in the panel; the DCU does mirror heat and nothing else.** Camden's call, 2026-09-11, answering `01.01`: ""follow recommendations"" — option (a).
+
+`L4-S2` carries the five command conductors to the sill either way, so this is a choice about what sits at the dash end. A mechanical mirror switch — joystick plus L/R selector — wired straight to `L4-S2` at the post means **zero electronics**, and the mirrors still move with the DCU off or absent. The alternative put six half-bridges on carrier H-002 and sent the joystick over CAN, which buys a knob-free panel at the cost of firmware, board area, and mirrors that cannot move when the DCU is down.
+
+**In the data.** `sensors` `SN17` is settled: nothing on the carrier, no half-bridges, no CAN message for mirror position. The DCU keeps mirror **heat** on its comfort FET set (`SN16`) through F14. The control panel's layout must now find room for a mechanical mirror control — that is the flip condition, and it is a panel-design constraint rather than an open question. `S5`'s prerequisite is resolved. H-002 can be laid out."
+D-327,The record itself,Stage order stands: climate (S2) before the display bezel (S3),2026-09-11,standing,,,01.02,,"**D-327 — Stage order stands: climate (S2) before the display bezel (S3).** Camden's call, 2026-09-11, answering `01.02`: ""follow recommendations"" — yes.
+
+The plan puts `S2` (control panel, DCU, blower — the centre-stack plastics) ahead of `S3` (the binnacle plastics around the display), because the car has **no heater airflow at all** until the blower returns (electrical D-253), while the display is already in the car and working on its plain plate (electrical D-268). A bare plate is cosmetic; a winter without heat is not. The flip condition — the bare plate bothering him more than the cold — is declined.
+
+Costs nothing either way: the two plastics events are independent, and S3 needs nothing at the harness or at the ICU. Confirms `D-312`'s nine-stage order without changing it."
+D-328,The cluster,"The three stats.h constants are fixed from primary sources: redline 7000 rpm, low oil 1.0 bar, tank 16.6 gal",2026-09-11,standing,D-300,,01.03,,"**D-328 — The three `stats.h` constants are fixed from primary sources: redline 7000 rpm, low oil 1.0 bar, tank 16.6 gal.** Camden's call, 2026-09-11, answering `01.03`: ""16.6"". Supersedes **D-300**, which confirmed all three ""as assumed"".
+
+`stats.h` carried **15.9 gal**, which D-300 recorded as an assumption rather than a source. The **1982 brochure (S-004, primary)** says **16.6 gal**. Two secondary sources disagree and are set aside: S-015 says 16.4, S-016 says the 1981-on tank is 16.5. The primary document wins, and the range calculation is only as good as this constant.
+
+Redline (7000 rpm) and low oil pressure (1.0 bar) carry forward from D-300 unchanged — this decision restates them so one standing decision owns all three and `stats.h` has a single citable home.
+
+The flip condition stays live and is cheap to settle: if the tank was ever replaced, or a measured fill disagrees, a `00-CAR` specs row from the fill supersedes this for the range figure. Hot water (105 °C) is unaffected.
+
+**In the data.** luxury `params` `thresholds` → tank 16.6 gal, cited to D-328 and S-004."
+D-329,"Comfort, mirrors, windows, seats",(electrical D-329) The heated washer nozzle and the wiper-park de-icer are cancelled; L2-S 6 and the L2-NZL receptacle come out. The outside-air conductor is untouched,2026-09-11,inherited,,,01.06,,
+D-332,"Comfort, mirrors, windows, seats","Mirror heat is a bonded resistive pad on the F14 feed, not an integrated element",2026-09-11,standing,,,,,"**D-332 — Mirror heat is a bonded resistive pad on the F14 feed, not an integrated element.** 2026-09-11, from the sourcing search `01.05` asked for.
+
+D-305 fixed the mirror feature set at adjustment and heat. The search for a mirror that delivers both found that **the product does not exist at this size**. Every compact or universal power mirror on the market is unheated: the universal aftermarket (AutoStyle's is the only powered universal found, and the street-rod ranges are manual-only) offers no heated option at all, and the heated electric units that do exist are tow-mirror sized. The factory FB power mirror, which was an option on 1981–85 cars, was never offered with heat in any year.
+
+**So heat is separated from the mirror.** A 12 V self-adhesive resistive heater pad, two wires, roughly $8–20 the pair, bonded to the back of whichever glass is fitted, fed from `L4-P 4` → `F14` and switched by the DCU on `SN16`. This satisfies the original constraint better than an integrated element would, because a pad has no module in it by construction — the thing D-305's ""resistive, on its own feed"" wording was guarding against.
+
+**It is also what Mazda did.** The one factory drawing that could be read in full — the RX-8's heated mirror — puts motors on three pins and the heater on two separate ones, the element a printed resistive grid fed by its own wires and switched by the rear defogger. Three plus two is the architecture this design already has; only the packaging changes.
+
+**Consequence.** The mirror question narrows to the motors alone, which is what `01.07` now asks. No conductor, cavity or fuse changes: `L4-S2 1–5` carry the five commands and `F14` carries the heat, exactly as before."
+D-355,The boundary — what the electrical build hands over,"The control panel is the DCU's faceplate, not its own board: no DP-KEY, no CAN node, a local ribbon to the DCU behind it",2026-09-13,standing,D-210,,,00.13 · electrical D-350,"**D-355 — The control panel is the DCU's faceplate: no board of its own, no CAN node, no `DP-KEY`, and a local ribbon to the DCU sitting behind it.** Camden's call, 2026-09-13, answering electrical `00.13`. *Supersedes* **D-210**. The harness side is electrical **D-350**.
+
+**What D-210 said and what survives.** D-210 ruled out an ECUMaster keypad, made the panel a custom design, reserved frame `0x400` for it, and kept the wink switches hardwired in the electrical build because they must work with the panel asleep and their NC poles interrupt the pop-up relay coils. **All of that stands.** What changes is the half D-210 left open — `modules` recorded the panel's board as *""Own board, or the DCU's faceplate""* — and the consequence that followed from picking the wrong half: that it *""lands on DP-KEY""*.
+
+In Camden's words: *""The panel is the DCU's faceplate, not its own board (this resolves D-210's open half), so `DP-KEY` is deleted.""* And the reason it was never really a choice: *""A dumb faceplate has no MCU and no CAN node… Sixteen to twenty conductors for a key matrix plus rotary encoders is trivial as a ribbon and impossible as a Deutsch drop, so the local cable is the only shape that works anyway.""*
+
+**The DCU changes shape to carry it.** `DP-DCU 1` becomes a **constant** feed on its own inline fuse rather than the `O10` accessory tap it was, because the DCU has to be alive with the key out to see a panel press; and `DP-DCU 6`, the housing's one spare cavity, becomes the DCU's **wake request** into the PMU's diode-OR strip. The housing is full now — which is why the mirror commands cannot live on it, and they never needed to.
+
+**Mirrors: D-326 with its placement settled.** D-326 already ruled that the mirrors move on a mechanical switch wired straight to `L4-S2` at the post, with zero electronics and no CAN message, and it noted the panel's layout would have to find room for that control. It does not: the control **stays at the old E-02 position**, five conductors to the dash post, exactly where Mazda put it. *""Mirror adjust is the one function where software configuration buys nothing.""* That closes **`Q-305`** — who drives the mirrors — and leaves `Q-300`, which pair to buy, open as `01.07` gated on `W-332`'s bench test.
+
+**Windows move to the centre panel.** The switch pack leaves the console: `L3-WIN` is deleted and `L3-S2 3–6` terminate at the panel with every other key.
+
+**Parked behaviour is a PMU gate.** Every key carries an `A16` precondition **except** hatch release and fuel-door release. `A16` is a ladder read and never a CAN term, so the PMU refuses regardless of what the panel sends — a hard floor under FT16's fail-to-off pattern, and what stops a bag bumping the defog key while the car is being unloaded. No retained-accessory timer for the windows: it would hold the module awake after every key-off against D-248's 30 s sleep and LD17's 30 mA target, to serve a case that almost never happens. A perceptible delay on the first press after sleep, and nothing after that.
+
+**Rotary encoders, not potentiometers**, for temperature, fan and the seat knobs — the DCU defines detents and range in firmware, so the faceplate carries no calibration of its own. And the key list loses **A/C mode**: K-015 closed A/C by deletion and there is no compressor, so the key is HVAC mode.
+
+**In the data.** `provisions` PV34–PV37 and PV101–PV105 deleted; PV65–PV68 re-terminate at the panel; PV26 becomes the constant feed and PV32 the wake line. `modules` PANEL and DCU. `features` FT14, FT16, FT23, FT24. `retired` gains `DP-KEY` and `L3-WIN` in both areas. S2's prerequisites are unchanged in substance — the panel is still designed before H-002 goes to layout — but it is now one board, not two.
+
+**Open, and named so it is not lost.** The windows share `O1` with the pop-up motor bus, whose retry class is `guarded` because a trip there means an obstruction, and a window reaching its stop is a legitimate spike that reads exactly the same. Camden: *""Needs its own ruling.""* It is electrical **`00.18`**."
+D-358,Lighting — the second pass,The headlamps are 4x6 rectangular LED units on adapter plates in the retained pop-up buckets,2026-09-21,standing,,,01.04,,"**D-358 — The headlamps are 4x6 rectangular DOT LED units on adapter plates in the retained pop-up buckets.** Camden's call, 2026-09-21, answering `01.04`: **""a""**. Closes `01.04` (carried from `Q-048`).
+
+**The ruling.** Option (a) of three: a 4x6 rectangular LED on an adapter plate, over (b) 5x7 on a plate and (c) a 7-inch round LED with no plate. The recommendation was (c) as the simplest, with no fabrication; he chose the rectangular look, which is his call on how the car reads (taste). The pop-ups stay (D-110). Nothing electrical changes: the feed and the wink relays are the same for every option.
+
+**What it leaves open.** Whether the plates are made or bought is a sourcing call, and it cannot be made before the bucket is measured: `V-066` (what is fitted today) no longer picks the unit, it sizes the plate — the bucket's inner diameter and mounting-hole pattern, in millimetres.
+
+**In the data.** `parts` `LP41` (spec, gate) and `LP42` (spec, gate). `features` `FT26`: designed, with this ruling. `stages` `S7`: `Q-048` leaves the prerequisites. `work` `V-066`: its purpose restated. Electrical `loads` `LD01`: its basis notes the headlamps become LED at S7; the electrical build still runs on whatever is fitted, and `CK01` is still the number that counts until then."
+D-359,"Comfort, mirrors, windows, seats","The car's own FB mirrors are kept, and the DCU drives them from a mini thumbstick on the panel with press-to-toggle",2026-09-21,standing,D-326,,01.07,,"**D-359 — The car's own FB mirrors are kept, and the DCU drives them from a mini thumbstick on the panel, press to toggle side.** Camden's call, 2026-09-21, answering `01.07`: *""1982 Mazda RX-7 side mirrors utilize a single motor plus a clutch coil (magnetic solenoid). I will reuse the mirros i have, but i want the joystich with a press to toggle to be controlled by the dcu. I only say attachd to the dcu as i expect we cant get that already built. (thick xbox joystick but mini)""*. Closes `01.07` (carried from `Q-300` → `01.05`). *Supersedes* **D-326**.
+
+**The fact first.** Each FB mirror head is one reversible motor plus an electromagnetic clutch coil that picks which axis the motor moves. That was the unverified catch on option (a); it is now his statement, recorded in `00-CAR` `K-014`. What is still not known is anything a meter would say — which door-plug pin is which, what the clutch returns to, the resistances and the motor's stall current. `W-332` is rewritten to measure exactly that, and every mirror pin label in the record carries `confirm` until it is done (R11).
+
+**The ruling.** None of the three options as written: no pair is bought. The car's own mirrors stay. A clutch mirror cannot be run by a plain mechanical joystick, which is why he asked for DCU control: a two-axis thumbstick with a push switch on the control panel, press to toggle LEFT/RIGHT, read by the DCU. The DCU picks the clutch state from the axis and the motor polarity from the direction. His words read as *""a DCU is what I expect it takes, since nobody sells this ready-made""* — the reading that keeps the most open. If a ready-made clutch-mirror joystick module ever turns up, it would slot in on the same lines.
+
+**Why it supersedes D-326.** D-326 kept the mirrors on a mechanical switch so they would work with zero electronics and with the DCU down. A mechanical switch cannot drive a motor plus a clutch the way he wants, and he chose DCU control knowing the mirrors will not move with the DCU off. D-355's placement at the old E-02 position goes with it: the control is on the panel, and electrical `DV52` (the owner-fabricated switch) is deleted.
+
+**What it raises.** The DCU sits in the centre stack. The mirrors' five lines already run from the dash post to the doors (`L4-S2 1–5`), but only four free conductors run from the centre stack to the post (`L3-S3 5–8`). How to close that gap changes where wires go, so it is block **`00.19`**, and electrical `A8` routes the lines once it is answered. The carrier layout, `H-002`, now waits on `W-332` (driver sizing) and `00.19` (four channels or five).
+
+**Money.** Down: `LP34` was a mirror pair at $120–300 and is now two bonded heat pads at $8–20 (D-332 is unchanged). `LP35` was a mechanical switch and is now the thumbstick, $5–20, part not yet chosen (`confirm`).
+
+**In the data.** Luxury: `decisions` `D-326` superseded; `parts` `LP34`, `LP35`, and the `Q-305` gates on `LP07` and `LP20`; `sensors` `SN17` (now live: three half-bridges and a clutch driver per side, or one shared); `modules` `PANEL` owns the thumbstick; `features` `FT23`; `stages` `S0`, `S2`, `S5`; `work` `H-002`, `B3`, `W-332`; `retired` ""mechanical mirror switch"" and ""3-wire motors"". Electrical: `devices` `DV52` deleted; `housings` `L4-S2`; `cavities` `L4-S2 1–5` and `D1`/`D2 4–6` relabelled motor common / motor / clutch coil; `work` `A8`. `00-CAR` `issues` `K-014`."
+D-362,"Comfort, mirrors, windows, seats","The DCU plugs in like the ICU: DT13 flanged receptacles in a printed enclosure wall, the harness on DT06 plug tails",2026-09-21,standing,,,01.08,,"**D-362 — The DCU plugs in like the ICU: DT13 flanged receptacles in a printed enclosure wall, with the harness on DT06 plug tails.** Camden's call, 2026-09-21, answering `01.08`: **""a""**. Closes `01.08`.
+
+**The ruling.** The DCU gets the ICU's pattern (electrical D-270): a printed ASA or PETG enclosure (never PLA) with Deutsch DT13 flanged PCB receptacles sealed through one wall, and the harness ending in DT06 plugs on tails, so it comes out in one pull like a bought module. Not taken: (b), an open board on board-mounted headers. It was cheaper and smaller, but unsealed, and it would have added a second connector family to the car. The flip condition still stands: if the space behind the centre stack, which nobody has measured, can't take an enclosure plus mated plugs, this comes back as a block.
+
+**Three connectors:**
+- **`DP-DCU`, a DT13-06PA**: constant 12 V, outside-air temperature, ground, CAN H/L, wake. The harness drop that was a DT04-6P receptacle capped at the dash post becomes a DT06-6S plug on a tail from the post along RT11 to the centre stack. The tail's length is the post-to-DCU route: measure, `confirm`.
+- **`DP-DCU-B`, a DT13-12PA**, a new drop: the four window commands (`L3-S2 3–6`) and the four mirror lines (`L3-S3 5–8`, D-360), which until now ended loose and capped at the centre stack. They now end in a DT06-12S plug. Cavities 9–12 are sealing plugs, kept as spares.
+- **The comfort returns**: seat heat ×2, seat cool ×2 and mirror heat, on a third receptacle of their own (`LP46`), sized once `V-101` gives their currents.
+
+Servo leads, the blower final stage's lead, the cabin sensor and the panel ribbon leave through grommets.
+
+**In the data.** Electrical: `housings` `DP-DCU` (box side, wedgelocks, where, note) and `DP-DCU-B` (new); `cavities` `DP-DCU 1–6`, `DP-DCU-B 1–12` (new), and the `lands_on` of `L3-S2 3–6` and `L3-S3 5–8`. The cart: `P035` receptacle dust cap 1 → 0; `P128` DT04-6P kits need 2 → 1 (target 3 → 2); `P099` DT06-6S text only (the plug was already counted); `P115` DT06-12S kits need 6 → 7 (target 6 → 7); `P028` size-16 sealing plugs need 70 → 74 (target 76 → 80, DP-DCU-B 9–12 in the plug half); `P140` new, the two plug-side dust caps (`confirm` the SKUs). Luxury: `parts` `LP45` (the DT13 pair), `LP46` (comfort-return receptacle, after `V-101`), `LP47` (enclosure); `modules` `DCU` drops; `stages` `S2` plugs_into (`DP-KEY` was deleted by electrical D-350 and was still listed)."
+D-364,The record itself,The luxury record is data and is not rendered; pmu_sim/channels.h is hand-synced to electrical pins (F-013),2026-09-21,standing,D-309 D-311,,,,"**D-364 — The luxury record is data and is not rendered; `firmware/pmu_sim/channels.h` is hand-synced to electrical `pins` (F-013).** Agent, 2026-09-21, a small call under §3: this brings two v2 rulings into line with the instruction set that replaced them. *Supersedes* **D-309** and **D-311**.
+
+**Why.** D-309 made the luxury record ""data, rendered"": templates, `views.py`, and a `build` command writing DESIGN / SHOPPING / INSTALL documents. D-311 had `channels.h` generated by that build from electrical `pins.csv`. v3 (CLAUDE.md §1, 2026-09-11) retired all of it. There is exactly one generated document, `DECISIONS.md`. `rx7.py` has no build command. The v2 view layer is archived in `99-ARCHIVE/2026-09-11_v2-view-and-tools/`. The full-folder scan of 2026-09-21 found both decisions still `standing`, and found `channels.h` quietly drifting as a result: O2/O3 at 3.0/3.5 A against 7.4/8.9 A in `pins`, O16 marked dead against LIVE at 15 A, and O15 on a 20 A placeholder.
+
+**The ruling.** The luxury record is the CSV tables, full stop, like every area. `channels.h` stays hand-written, and luxury work F-013 brings it into line with electrical `pins`. When the two disagree, `pins` is right. D-309's underlying instruction still holds, and is exactly what v3 does: one set of true data, nothing stale against the wiring build.
+
+**In the data.** Luxury `decisions` D-309 and D-311 set superseded by this decision. Work F-013 was already reworded to the hand-sync by the same scan."
+D-383,"Comfort, mirrors, windows, seats","The radar is a speed-trap radar and laser detector, fully concealed: no unit on the windshield, nothing visible but the warning on the cluster",2026-09-23,standing,,,01.09,,"**D-383 — The radar is a speed-trap radar and laser detector, fully concealed: no unit on the windshield, its sensors mounted where they work best, and nothing visible except the warning on the cluster. Not a parking or blind-spot sensor.** Camden's call, 2026-09-23, answering `01.09`: *""no way i will put it on the windsheild as a part, the only goal is taking the strips and putting them in more usefull locatons and have no visable clue other then the light warning display this is for speed traps and radar guns i have zero interest in a parking sensor""*. Closes `01.09`.
+
+**How his words are read.** ""Speed traps and radar guns"" settles the kind: a detector, not proximity radar. That is option (b) of the block in kind, but not its product: the block's (b) was a Valentine One, which is a windshield unit, and he rules that out. ""Taking the strips and putting them in more useful locations"" is read as the detector's sensing parts, the radar receivers and laser sensors, mounted separately and hidden where they see best, with the only visible sign being the warning on the cluster. That is the custom-install class of detector. Which system does that, and how its alert reaches the cluster, is money and the car's looks, so it is block `01.11`, not decided here.
+
+**What holds.** Frame `0x320` already describes a detector: alert level, band (X / K / Ka / laser) and direction (front / rear). It stays as it is. The DCU manages the detector and the cluster shows it (D-096, FT28). The pass-throughs `L3-RDR` / `L4-RDR` stay capped until the system is chosen. Proximity radar (HLK-LD2451 and similar) is out.
+
+**In the data.** `features` FT28 note; `work` Z-002 gate (on block 01.11), V-061's survey stands as the record of what was looked at."
+D-384,Lighting,The tail-light path is chosen after the aperture is measured (V-063),2026-09-23,standing,,,01.10,,"**D-384 — The tail-light path, whether a self-built LED lamp or a certified off-the-shelf lamp, is chosen after the tail-light aperture is measured (V-063).** Camden's call, 2026-09-23, answering `01.10`: **""c""**. Closes `01.10`.
+
+**What it means.** Nothing is bought or drawn for the tail lights until V-063 gives the aperture's size. Then the choice comes back as a new block with the measured numbers in it: build your own from automotive LEDs (ams OSRAM LR G6SP.02, V-064), or a certified sealed lamp such as the Truck-Lite 60555R if it fits. Work row X-009 raises that block the day V-063 is done, and I15 (the lighting install) waits on it.
+
+**In the data.** `work` X-009 (new, agent, gated on V-063); I15 gate."
+D-388,The record itself,"Parts are chosen in rounds: the agent proposes a product per parts row with why and drawbacks, Camden accepts or vetoes in one block per round, and PICKS.md shows where every part stands",2026-09-23,standing,,,,,"**D-388 — Luxury parts are chosen in rounds. The agent proposes a product for each parts row, with why and drawbacks; Camden accepts or vetoes each in one block per round; `PICKS.md` shows where every part stands.** Camden's call, 2026-09-23.
+
+**His words.** ""letd dive a little deeper into luxury, specificallu choosing parts!, please fill in the luxury with some file that will be used for part suggestions you provide why and drawbacks then i accept or veto and the search continues""
+
+**Reading taken.** He asked for ""some file"" to hold the suggestions. The suggestions live in a table, `picks`, and `PICKS.md` is generated from it for him to read. His accept and veto go in the round's block in `BLOCKS.md`, because that is the one file he types in (R3, §2): a generated file he also typed into would be overwritten or refused. If he would rather type verdicts into `PICKS.md` itself, that is a change to R3 for him to ask for.
+
+**How it works (CLAUDE.md §6.9).**
+- Each parts row with a settled spec gets a **primary**, which is `proposed`, and a **runner-up**, which is held in `reserve`. Each carries the numbers that meet the spec, why, honest drawbacks, a confidence, and what to confirm before buying.
+- One block per round numbers the primaries. His answer becomes one decision for the accepted picks, and each accepted product fills its parts row.
+- A veto keeps his words in `picks.said`. The runner-up goes up next round unless his reason rules it out, and otherwise the search starts again.
+- `rx7.py picks` writes `PICKS.md` in four sections: on the table, chosen, vetoed with his reasons, and not yet searched. Like DECISIONS.md, it is a read-only projection that `check` never reads.
+
+**Round 1 (block `01.12`)** puts ten parts on the table: LP17, LP18, LP19, LP21, LP30, LP31, LP33, LP41, LP51 and LP37, as picks PK001 to PK020. Three research agents searched them against the record's specs. Findings the record did not have:
+- **LP17:** the motor ships without its fan wheel, and the factory motor is gone.
+- **LP18:** no board meets every line of the spec. The primary is silent but rated 21 A, under the 25 A spec. The held runner-up meets 25 A but tops out at 20 kHz.
+- **LP30 and LP31:** heater pads cannot be cut and block air. On a seat that is both heated and cooled, the two layouts have to share the seat.
+- **LP41:** no reputable dual-beam DOT 4x6 LED fits the $120–300 budget. The pick is about $558 a pair.
+- **LP51 and LP37:** the sockets take standard micro ISO relays, not ""ISO 280"". On the Song Chuan diode relay, 86 is the positive side, which matches how K3 and K4 are wired. K5–K8 take the resistor version, because a coil diode shortens contact life when breaking motor current.
+
+Parts not in round 1 wait on a measurement or an open question: LP34 (the glass size, W-332), LP36 (the window regulators), LP38–LP40 (the tail lights, block `01.10`), LP42 (V-066), LP43 (the bulb list), LP44 (block `01.11`), LP24 (T-032), and LP20 and LP29, which are fabricated rather than bought.
+
+**In the data.**
+- `_tables` and `_schema`: `picks` is new.
+- `picks`: PK001 to PK020.
+- `BLOCKS.md`: `01.12` is new.
+- `tools/rx7.py`: `cmd_picks` and `write_projection` are new.
+- CLAUDE.md: §1 names `PICKS.md`, §6.9 is new, and a standing answer is added to §3."
+D-389,The record itself,"Every parts suggestion is its own block, with the full detail and his answer line right under it; rx7.py picks --ask writes them from the picks table",2026-09-23,superseded,,D-390,,,"**D-389 — Every parts suggestion is its own block in `BLOCKS.md`, with the full detail and his answer line right under it. `rx7.py picks --ask` writes the blocks from the picks table.** Camden's call, 2026-09-23. It refines D-388, which put a whole round in one block.
+
+**His words.** ""please refactor so i can answer right below each suggestion,""
+
+**The ruling.** Each proposed pick gets its own block, built from its `picks` row:
+- **Ask:** buy this product, at this price, for this part?
+- **Why:** what the part has to be, then what meets it, why this one, its drawbacks, what to confirm before buying, the confidence, and where to buy it.
+- **Options:** (a) accept; (b) veto, with the runner-up that goes up next and its drawback.
+- **Recommend:** the plain advice, or the pick's own `recommend` cell where the plain advice is not the honest one (the headlamps, the blower controller).
+- **Stops:** only that part's line on the cart.
+
+His answer goes on the `**SOLVE:**` line directly under the suggestion. `BLOCKS.md` stays the one file he types in (R3). The existing block machinery applies: `blocks --answered` finds the answers, §6.2 applies them, and the block is deleted once its decision stands. `PICKS.md` becomes the status page. It lists what is on the table by block id, what is chosen, and every veto with his reason.
+
+**Round 1 as blocks.** The single round block `01.12` had not been answered (its SOLVE was empty) and was replaced. Round 1 is now `01.12` (PK001, blower motor) through `01.21` (PK019, window relays), one per primary.
+
+**Consequences in the data.**
+- `picks.recommend` is new, and filled for PK003 and PK015.
+- `picks.block` is reset on PK001 to PK020. The primaries point at their own blocks, and the runner-ups carry none until they are proposed.
+- `tools/rx7.py`:
+  - `append_block` can now write a filled body.
+  - `pick_block` is new.
+  - `picks --ask` is new.
+  - The on-the-table section of `PICKS.md` is now a list by block id.
+- CLAUDE.md §6.9 step 3: pick blocks are never written by hand."
+D-390,The record itself,"Parts suggestions live on the project's PICKS.md, laid out like BLOCKS.md: one entry per product with an ANSWER line; he answers any, some or all at leisure, the agent saves his words into picks and only then removes the entry",2026-09-23,superseded,D-389,D-405,,,"**D-390 — Parts suggestions live on the project's `PICKS.md`, laid out like `BLOCKS.md`. It has one entry per product, each ending in an `**ANSWER:**` line. He answers any, some or all, whenever he likes, and tells the agent. The agent saves his words into `picks` and only then removes the entry.** Camden's call, 2026-09-23. It supersedes D-389 (one block per suggestion in `BLOCKS.md`) and replaces D-388's generated `PICKS.md`.
+
+**His words.** ""one more time plea format this like BLOCKS you sugest all the parts and and i leasure i can answer one any or all, the tell you and you save that info""
+
+**Reading taken.** ""Format this like BLOCKS"" is read as a page of its own for parts, built the way `BLOCKS.md` is, rather than more blocks on `BLOCKS.md` itself: `BLOCKS.md` keeps the design questions, and `PICKS.md` holds the parts. That reading keeps the most options open, and moving the parts back onto `BLOCKS.md` is one command if he prefers it.
+
+**What changed in the system.**
+- **§2 and R3.** `PICKS.md` becomes his second page to write in, beside `BLOCKS.md`. The rule that protects `BLOCKS.md` now protects both:
+  - nothing regenerates it and no tool rewrites it;
+  - the tool only appends suggestions to it (`rx7.py picks --ask`), and only removes an entry once his verdict and his exact words are saved in `picks` (`--clear`);
+  - the reader is not picky: everything under `**ANSWER:**` up to the next entry is his answer, over any number of lines;
+  - after every append, the page must parse back as it was, or the append is undone.
+- **§1.** `PICKS.md` is no longer a generated document, so there are three kinds again. The status that page showed (chosen, vetoed with his reasons, not yet searched) now prints in the terminal from `rx7.py picks`.
+- **§6.9.** A round is:
+  1. search;
+  2. add the picks to the record;
+  3. `rx7.py picks --ask`;
+  4. he answers and tells the agent;
+  5. `rx7.py picks --answered`;
+  6. yeses become one decision, noes are vetoed with his reason, and questions are answered in the next suggestion for that part;
+  7. `rx7.py picks --clear`.
+
+**Round 1 moved.** Blocks `01.12` to `01.21` had not been answered; every answer line was empty when checked. They were taken off `BLOCKS.md`, and the same ten primaries (PK001 to PK019, odd numbers) are the first ten entries on `02-PROJECTS/01-luxury/PICKS.md`. The old generated `PICKS.md` was deleted after confirming its fingerprint was intact, which proves nobody had typed in it.
+
+**In the data.**
+- `picks.block` is dropped, because entries are keyed by the pick id.
+- `tools/rx7.py`:
+  - new: `parse_picks_page`, `pick_entry`, and `picks --ask / --answered / --clear`;
+  - removed: `write_projection` and the generated page.
+- CLAUDE.md §1, §2, R3, §3 (a standing answer), the tool list and §6.9."
+D-391,Parts and sourcing,"Parts round 1: eight products accepted - the blower motor, blower final stage, HVAC servos, comfort fuse block, sound deadening, headlamps and both relay sets",2026-09-23,standing,,,,,"**D-391 — Parts round 1: eight products accepted.** Camden's call, 2026-09-23, answering the entries on `PICKS.md` (D-390).
+
+| Pick | Part | Product | Price seen | His words |
+|---|---|---|---|---|
+| PK001 | LP17 blower motor | Four Seasons 35483 | $37 | ""i still have to old one with the fanwheel, rock auto is perfect"" |
+| PK003 | LP18 blower final stage | Pololu G2 24v21 (#2995) | $57 | ""a i will monitor battery life when blasting for hours, (worth noting in enine swap that alternator needs to be beefy)"" |
+| PK005 | LP19 HVAC servos | FEETECH FS5115M ×4 | $121–128 | ""yes worth the extra for better servos"" |
+| PK007 | LP21 comfort fuse block | Blue Sea 5028 | $28–40 | ""follow recommendations, i will make space work"" |
+| PK013 | LP33 sound deadening | Noico 80 mil CLD + Noico Red CCF ×2 + Trademark 1 lb MLV 60 sq ft | $320–370 | ""yes reference heat must be examened later"" |
+| PK015 | LP41 headlamps | Grote 94401-5 ×2 | $558–613 | ""yes like them"" |
+| PK017 | LP51 release relays K3 / K4 | Song Chuan 871-1C-C-D1-12VDC ×2 | $10–14 | ""yes"" |
+| PK019 | LP37 window relays K5–K8 | Song Chuan 871-1C-C-R1-12VDC ×4, plus F8 / F9 fuses | $24–35 | ""yes"" |
+
+**What his words add to the record.**
+- **LP17:** the old motor and its fan wheel are in hand, so the wheel transfers. That removes the pick's main drawback. The bore still has to be checked against the 0.268 in shaft.
+- **LP18:** the >= 25 A spec is widened to 21 A in exchange for silence, the reason for the >= 20 kHz stage (D-257). He will watch the battery with the blower on high for hours. The alternator point is engine-swap scope, carried to `02-PROJECTS/02-engine` as work row H-001 in his words.
+- **LP19:** he takes the dearer servos for quality. Four at about $128 slightly overruns the old $60–120 estimate.
+- **LP21:** ""follow recommendations"" is read as yes. He will fit it behind the centre stack.
+- **LP33:** the heat over the exhaust tunnel is checked before MLV or foam goes there. That is carried in LP33's note, and it rides on I11 (carpet up).
+- **LP41:** accepted at about $558–613 for the pair, over the old $120–300 budget. The depth (73 mm) is still checked against the bucket at V-066.
+
+**Runner-ups.** The runner-ups held for these eight parts (PK002, 004, 006, 008, 014, 016, 018 and 020) are set `unused`. The `picks.verdict` vocabulary gains `unused` for that case.
+
+**In the data.**
+- `parts`: LP17, LP18, LP19, LP21, LP33, LP41, LP51 and LP37 each get a spec naming the product, a price and `status` `chosen`.
+- `picks`: the eight are `accepted`, with his words in `said`.
+- `_schema`: `picks.verdict` gains `unused`.
+- Engine `work`: H-001 is new."
+D-392,"Comfort, mirrors, windows, seats","Seats first: no add-on heater or cooling kit for now - the search is for front seats with heating and cooling built in, likely with electric controls",2026-09-23,standing,,,,,"**D-392 — Seats first. No add-on heater or cooling kit for now; the search is for front seats with heating and cooling built in, likely with electric controls.** Camden's call, 2026-09-23, answering PK009 (the seat heater kit) and PK011 (the seat cooling build) on `PICKS.md`.
+
+**His words**, the same on both: ""no for now, i want to first look for seats with heating/cooling and likely electric controls""
+
+**The ruling.**
+- **The two picks are vetoed.** PK009 and PK011 are `vetoed`.
+- **Their runner-ups are ruled out too.** The Rostra kit (PK010) and the generic ventilation kit (PK012) are both add-ons, so his reason covers them, and they are `unused`.
+- **LP30 and LP31 go on hold,** not dropped. They come back only if no seat suits.
+- **A new parts row, LP52,** is front seats with heating and cooling built in, probably power-adjusted.
+- **The search is work row X-010** (parts round 2). For each candidate it finds:
+  - the donor car or maker
+  - what heats, cools and moves the seat, and how that is controlled: its own switches, a seat module, or CAN
+  - its feeds and peak currents
+  - any side airbag, and what leaving one unplugged means
+  - how it mounts to the FB floor, and its width against the tunnel and the door
+  - the price, used and new
+
+  Then they go on `PICKS.md` for his answer.
+
+**Why this is bigger than a parts swap.** The design so far assumes add-on pads and fans, switched by the DCU's four low-side comfort channels (electrical D-382) through the O15 block (LP21) and the comfort-return harness (LP49). Seats with their own heating, cooling and motors may bring their own control. Seat motors add loads the O15 bus was not sized for. Whichever seat he chooses, those three are revisited then: channels, fuses and harness. Nothing is changed before a seat is chosen.
+
+**In the data.**
+- `picks`: PK009 and PK011 are `vetoed`, with his words; PK010 and PK012 are `unused`.
+- `parts`: LP30 and LP31 are `hold`; LP52 is new.
+- `features`: the notes on FT19 and FT20.
+- `work`: X-010 is new."
+D-397,Lighting — the second pass,"Every lamp in the car becomes LED: the lamps table lists every factory bulb position, what replaces it or why it goes, and the part that covers it, so the parts rounds cannot miss a lamp",2026-09-23,standing,,,,,"**D-397 — Every lamp in the car becomes LED.** The new `lamps` table lists every factory bulb position, what replaces it or why it goes, and the parts row that covers it, so no parts round can miss a lamp. Camden's call, 2026-09-23.
+
+**His words.** ""Let's keep going on luxury items, we need a decor and tail lights / blinkers. Actually all lights in the car to led inplace of incandescent ensure luxury part picking gets everything we need""
+
+**The inventory: 21 rows, built from the factory bulb list** (00-CAR SP-188 to SP-214).
+- **An LED unit:** the headlamps (LA01), already chosen, Grote on plates (D-358, D-391).
+- **The custom tail lights:** rear turn, stop/tail and reverse (LA07–LA09). The path still waits on the aperture measurement (D-384, V-063). Candidates are proposed now, but any yes is conditional on the lamp fitting that measurement.
+- **LED bulbs, split into three parts rows** (the old catch-all LP43 was split):
+  - **LP53, front exterior:** front turn, front park and front side markers.
+  - **LP54, rear exterior outside the tail lights:** licence plate and rear side markers.
+  - **LP43, interior:** dome, map, luggage, glove box and key-cylinder ring.
+- **Removed, because the build replaces them:**
+  - the cluster's gauge lighting and every indicator and warning light (the ICU display, electrical D-268);
+  - the heater control light (the DCU panel);
+  - the radio light (the head unit).
+- **Until the swap:** the automatic's select-lever light leaves with the automatic, so it is not worth an LED.
+- **Unknown until the measurement day:** the switch panel light and the cigarette lighter light. Whether either survives is not recorded.
+
+**Electrical facts the LED picks must respect.**
+- **No load resistors.** The PMU makes the flasher in software, so there is no hyperflash (D-047).
+- **Re-baseline every lamp channel.** Lamp-out detection is by output current, so after the change every lamp channel's soft fuse and health band is re-baselined (FT27, D-122).
+- **Dimming.** The dimmed illumination circuits use PWM, so the bulbs on them must dim without flicker.
+- **Polarity.** LED wedge bulbs are often polarity-sensitive, so non-polar is preferred.
+- **Colour.** Amber positions take amber LEDs.
+
+**Honest caveat.** An LED bulb in a housing designed for an incandescent bulb is not FMVSS-certified, so the signal lamps are chosen for their pattern and brightness.
+
+**Not settled.** ""A decor"" in his words is not yet read. It is taken to mean interior decor or ambient lighting, and he is asked. No row is written for it until he says.
+
+**Before any bulb is bought.** The trade numbers in the record come from an aftermarket chart and are unverified. Work V-067, on the measurement day with the interior out (electrical S1), reads the number printed on each bulb.
+
+**In the data.**
+- `_tables` and `_schema`: `lamps` is new.
+- `lamps`: LA01–LA21.
+- `parts`: LP43 is restated, and LP53 and LP54 are new.
+- `work`: V-067 is new."

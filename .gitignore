@@ -1,7 +1,6 @@
-# v3: DECISIONS.md is the only generated document in this tree, and it IS committed —
-# it is Camden's record of every ruling. Everything else a view layer ever produces is
-# ignored here so it can never be committed and never be mistaken for the record.
-# The record is data/*.csv, data/decisions/*.md and BLOCKS.md.
+# There are no generated pages (D-405): the record is data/*.csv (and data/inbox/*.csv),
+# and the Rx7 app shows it. Anything else a view layer ever produces is ignored here so it
+# can never be committed and never be mistaken for the record.
 *.html
 *.svg
 *.stamp
@@ -16,8 +15,7 @@ outputs/
 # they are the bench copy and the car record. Only this folder is excepted.
 !02-PROJECTS/00-electrical/00-design/diagrams/**/*.svg
 
-# Rendered document names from v2 - never regenerate these at the top of an area.
-# DECISIONS.md is deliberately absent from this list.
+# Rendered page names from v2 and v3 - never regenerate these (D-405).
 DESIGN.md
 SHOPPING-LIST.md
 INSTALL.md
@@ -25,6 +23,11 @@ QUESTIONS.md
 LOG.md
 WIRE-TABLES.md
 ANSWERS.md
+DECISIONS.md
+BLOCKS.md
+TODO.md
+PICKS.md
+SPEC.md
 !99-ARCHIVE/**
 
 # Scratch
@@ -70,3 +73,21 @@ fp-info-cache
 # KiCad 10's local history and lock files (per machine, never versioned)
 02-PROJECTS/00-electrical/00-design/cad/**/.history/
 02-PROJECTS/00-electrical/00-design/cad/**/~*.lck
+
+# The Rx7 app (02-PROJECTS/10-gui/app) is source code: its own HTML and SVG are tracked.
+# Its dependencies and build output are not.
+!02-PROJECTS/10-gui/app/**/*.html
+!02-PROJECTS/10-gui/app/**/*.svg
+02-PROJECTS/10-gui/app/node_modules/
+02-PROJECTS/10-gui/app/dist/
+02-PROJECTS/10-gui/app/build/
+02-PROJECTS/10-gui/app/test-results/
+02-PROJECTS/10-gui/app/playwright-report/
+02-PROJECTS/10-gui/app/src-tauri/target/
+02-PROJECTS/10-gui/app/src-tauri/gen/android/**/build/
+02-PROJECTS/10-gui/app/src-tauri/gen/android/.gradle/
+02-PROJECTS/10-gui/app/public/pyodide/
+02-PROJECTS/10-gui/app/public/core/
+*.keystore
+*.jks
+keystore.properties

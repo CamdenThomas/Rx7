@@ -35,14 +35,14 @@ options,system,enum(engine|transmission|adapter|shifter|axle|mounts),yes,,
 options,item,str,yes,,
 options,donors,text,no,,which vehicles and years carry it
 options,block,enum(aluminum|iron|n/a),no,,
-options,afm,enum(yes|no|n/a),no,,"GM Active Fuel Management (cylinder deactivation): yes means it must be deleted for this swap"
+options,afm,enum(yes|no|n/a),no,,GM Active Fuel Management (cylinder deactivation): yes means it must be deleted for this swap
 options,weight_lb,int,no,,dressed weight where published - confirm
 options,usd_low,int,no,,
 options,usd_high,int,no,,
 options,where,text,no,,
 options,url,str,no,,
 options,fit,text,no,,how it suits a 1982 FB and what it needs
-options,rank,enum(target|acceptable|fallback|avoid|reference),no,,"target = what the search is for (D-393)"
+options,rank,enum(target|acceptable|fallback|avoid|reference),no,,target = what the search is for (D-393)
 options,confidence,enum(high|medium|low),no,,
 options,note,text,no,,sources and what is unverified
 yards,id,key,yes,,
@@ -88,6 +88,26 @@ ls_wires,bay_join,text,no,,what is spliced or grounded in the bay before the leg
 ls_wires,dash_end,text,no,,where it lands at the dash
 ls_wires,awg,str,no,,
 ls_wires,amps,num,no,,
-ls_wires,group,str,no,,"twisted pair or shield group - a shield's drain goes to the ECU end only"
+ls_wires,group,str,no,,twisted pair or shield group - a shield's drain goes to the ECU end only
 ls_wires,optional,enum(yes|no),no,,yes = only if that feature is kept
 ls_wires,note,text,no,,
+blocks,id,key,yes,,"<prefix>.<nn>, issued by rx7.py block (D-356)"
+blocks,title,str,yes,,
+blocks,opened,date,yes,,
+blocks,ask,text,yes,,"one sentence, answerable on its own"
+blocks,why,text,yes,,what changes depending on the answer
+blocks,options,text,yes,,"one per line, each starting (a) , (b) … - the app shows each as a button"
+blocks,recommend,text,yes,,"names the option it recommends first, e.g. (a), unless …"
+blocks,stops,text,yes,,what cannot proceed until it is answered
+inbox,id,key,yes,,<target>~<device>; the row is the file data/inbox/<id>.csv (D-405)
+inbox,target,str,yes,,"what it answers: a block, pick or work id; a workflow for kind=run; a name for kind=project"
+inbox,kind,enum(block|pick|project|run|work),yes,,vocabulary owned by tools/rx7.py
+inbox,choice,str,no,,the option letter; yes/no/question; done; a value; a choice - empty when he only wrote words
+inbox,text,text,no,,"his words, verbatim"
+inbox,context,text,no,,"the key points of a Discuss chat, carried into the decision with his words (D-406)"
+inbox,device,enum(desktop|phone),yes,,vocabulary owned by tools/rx7.py
+inbox,at,datetime,yes,,when he saved it
+decisions,body,text,no,,"the decision's full text: the ruling in bold, his words, the reasoning, the consequences (D-405)"
+work,reply,enum(check|choice|value),no,,"how he answers his row in the app: check (the default), value or choice (D-406)"
+work,choices,str,no,,"for reply=choice: the choices, separated by |"
+work,unit,str,no,,for reply=value: the unit the value is in

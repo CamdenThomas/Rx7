@@ -1,8 +1,8 @@
 # CLAUDE.md — the Rx7 tree
 
-_Rev 2026-09-24 (v3). This file is the whole instruction set. There are no skills, no
-slash commands, no second document. If a rule is not here it is not a rule; if you need
-one that is missing, that is a block._
+_Rev 2026-09-24 (v3, pages retired — D-405). This file is the whole instruction set. There
+are no skills, no slash commands, no second document. If a rule is not here it is not a
+rule; if you need one that is missing, that is a block._
 
 > **THERE IS ONE TREE: `~/docs/storage/Rx7`, on one machine.** The v3 conversion finished on
 > 2026-09-12: v3 became this directory and the old v2 working tree was deleted. Any
@@ -15,18 +15,21 @@ one that is missing, that is a block._
 ## 0 · Start
 
 ```
+git pull --rebase
 python tools/rx7.py status
 ```
 
-Read nothing else until it tells you where things stand. `status` prints: whether the
-record is valid, each area's phase, open work by owner, and the blocks.
+Pull first, every run: Camden answers from his phone, and the phone commits straight to
+GitHub (D-403). Then read nothing else until `status` tells you where things stand. It
+prints whether the record is valid, each area's phase, open work by owner, the open blocks
+and the answers waiting in the inbox.
 
 Then take **exactly one** of two paths. There is no third.
 
-|       | Path                                                                           | When                             |
-| ----- | ------------------------------------------------------------------------------ | -------------------------------- |
-| **A** | **Do the work.** Read this file for the rule, apply it, move on.               | Every doubt that §3 calls small. |
-| **B** | **Write a block.** Append it to `BLOCKS.md` and keep going on everything else. | Every doubt that §3 calls big.   |
+|       | Path                                                                             | When                             |
+| ----- | -------------------------------------------------------------------------------- | -------------------------------- |
+| **A** | **Do the work.** Read this file for the rule, apply it, move on.                 | Every doubt that §3 calls small. |
+| **B** | **Raise a block.** `rx7.py block` it into the record and keep going on the rest. | Every doubt that §3 calls big.   |
 
 You never ask Camden a question in chat. You never stop mid-run. You speak to him once,
 per §8, and only when blocks have stopped all remaining progress.
@@ -38,12 +41,13 @@ per §8, and only when blocks have stopped all remaining progress.
 The record is CSV, and it describes itself.
 
 ```
-<area>/data/_project.csv    key,value        — name, kind, phase, goal
+<area>/data/_project.csv    key,value        — name, kind, phase, goal, icon
 <area>/data/_tables.csv     table,purpose    — every table that exists
 <area>/data/_schema.csv     table,column,type,required,ref,note
 <area>/data/*.csv           the facts — one row per thing, first column the key
-<area>/data/decisions.csv   every ruling; the body is data/decisions/<id>.md
-BLOCKS.md                   the one page Camden writes in
+<area>/data/decisions.csv   every ruling, its full text in `body`
+<area>/data/blocks.csv      the questions only Camden can answer (§4)
+<area>/data/inbox/*.csv     his answers waiting to be applied, one file per answer (§4)
 ```
 
 A car-level ruling that belongs to no project (a fluid, a service call) is a decision in
@@ -58,66 +62,53 @@ each project under `02-PROJECTS`.
 description of the record is checked by the same code that checks the record. A table
 that is not declared, a declared table with no file, an undeclared column, a missing
 column, a value that is not its declared type, a duplicate or empty key, a reference to
-a row that is not there — each is a refusal naming the exact row.
+a row that is not there — each is a refusal naming the exact row. `inbox` is the one
+folder table: each row is its own file, `data/inbox/<key>.csv`, so the phone and the
+desktop can never write the same file (D-405). `rx7.py` reads and writes it like any other.
 
 **No counter is ever stored.** The next `D-` is derived from the highest that exists
 anywhere in the tree or the archive; a project's next block from the highest number that
-project has used, on the page or in any decision's `closes`. A stored counter
-can disagree with reality. Never type an id — `rx7.py new` and `rx7.py block` issue them.
+project has used, in `blocks` or in any decision's `closes`. A stored counter can disagree
+with reality. Never type an id — `rx7.py new` and `rx7.py block` issue them.
 
-**There are exactly three kinds of generated document: `DECISIONS.md`, each project's TODO (D-373, D-386), and the two harness-leg drawings in `02-PROJECTS/00-electrical/00-design/diagrams/` (D-385).** Nothing else. No templates,
-no rendered design or shopping or install documents, no HTML, no other diagrams. The v2 view
-layer is in `99-ARCHIVE/2026-09-11_v2-view-and-tools/`, and that archive is the only
-place the old tree survives (§9). Beyond the leg drawings, the visual layer is a later concern;
-do not grow it, and do not write a document "so it can be read." The record is the
-deliverable.
+**There are no pages (D-405).** Blocks, his answers, parts picks, the TODO lists and every
+decision live in the record, and **the Rx7 app** (`02-PROJECTS/10-gui/app`, a desktop app
+and an Android app) is how he reads and answers them. Do not write a Markdown page for him
+to read or to type in: not a TODO, not an index, not a summary, not a spec sheet. What was
+`BLOCKS.md`, `PICKS.md`, `DECISIONS.md` and each `TODO.md` is now a screen in the app,
+computed from the record every time it is shown. The app keeps no fact of its own, reads
+the record only through `rx7.py export` (JSON), and writes only his answers, only through
+`rx7.py answer` (or, on the phone, the same function). Nothing in it gates a commit.
 
-**The leg drawings** (D-385) are the same kind of exception, under the same four rules: for
-each leg, `A-pin-ladder.svg` and `B-route-map.svg` are a pure projection of `housings`,
-`cavities`, `devices` and `routes`, read-only, rebuilt whole by `rx7.py diagrams`, and never
-looked at by `check`. The command refuses to write any sheet where a label touches a label
-or sits on a wire (rc 2). Fix that in the layout code, never by loosening the check.
-`00-design/diagrams/README.md` holds the method and the options kept in reserve.
+**Files that stay files.** This one. `02-PROJECTS/10-gui/README.md`, where the app's design
+is pitched, at his request. Code and drawings with the READMEs that belong to them: the
+firmware, the KiCad boards, the tools, the app. The reference write-ups in `01-REFERENCE`
+and `00-CAR/data/procedures/` wait for the Manual's plan (D-407). And `99-ARCHIVE`.
 
-**`<project>/PICKS.md` is not generated** (D-390). It is Camden's second page to write in,
-laid out like `BLOCKS.md`: one entry per product the agent suggests, each ending in an
-`**ANSWER:**` line (§2, §6.9).
+**The one generated file type left is the harness-leg drawings** (D-385): for each leg,
+`A-pin-ladder.svg` and `B-route-map.svg` in `02-PROJECTS/00-electrical/00-design/diagrams/`,
+a pure projection of `housings`, `cavities`, `devices` and `routes`, read-only, rebuilt whole
+by `rx7.py diagrams`, and never looked at by `check`. The command refuses to write any sheet
+where a label touches a label or sits on a wire (rc 2). Fix that in the layout code, never
+by loosening the check. `00-design/diagrams/README.md` holds the method and the options
+kept in reserve.
 
-`DECISIONS.md` is the exception because it is Camden's record of every call made without
-him, and it has to stay readable and searchable. It is safe to generate where v2's
-documents were not, for four reasons that must all stay true:
+**The work list is the `work` table, and the app's TODO page shows it:** what can start
+today, then every row in working order (stages in the order their work can start, each row
+after what it waits on), each with its note. It has **no boxes to tick** for anyone but
+him, and his ticks are answers (§4): `work.reply` says how he answers his row — `check`
+(done), `value` (a measurement in `work.unit`) or `choice` (one of `work.choices`, split on
+`|`). His answer arrives in `inbox` and you set the row (§6.4).
 
-- it is a **pure projection** of `decisions.csv` plus the decision bodies — it adds no
-  fact of its own, so it cannot disagree with the record
-- it is **read-only**: he reads it, he never edits it, and nothing in it invites typing
-- `rx7.py decisions` regenerates it whole; run it at the end of **every** run that wrote
-  a decision
-- **nothing gates a commit on whether it is current.** `check` does not look at it. A
-  stale index is fixed by running the command, never by refusing a commit — that trap is
-  what v2's pre-commit hook did, and it is why he could not push.
+**A project whose `work` has a `track` column has two lists** (D-386 → D-405; today
+`00-electrical`). Each row's `track` says which:
 
-It is one file for the whole tree, grouped by area and then by the category in each
-decision's `system` column — never by number — so he can read one system's rulings
-together or search the file for an id. Superseded and withdrawn decisions are listed at
-the end with the decision that replaced each, so every id ever issued is still findable.
-
-**`<project>/TODO.md`** (D-373) is the same kind of exception, under the same four rules: a
-pure projection of that project's `work` table, read-only, rebuilt whole by `rx7.py todo`,
-and never looked at by `check`. It is Camden's working list: what he can start today, then
-every row in working order (stages in the order their work can start, each row after what
-it waits on), with its note. It has **no boxes to tick** (R3): he says what he did, the row
-is set through the record, and the file is regenerated. Run `rx7.py todo` at the end of
-**every** run that changed a `work` row.
-
-**A project with `00-design/` and `01-build/` gets two TODOs instead** (D-386; today
-`00-electrical`). Each `work` row's `track` says which list it belongs to:
-
-- **`00-design/TODO.md`** has three parts: Camden's checklist, in working order (☐ can do it
-  now · ⏳ waiting on what is named); every agent row, ready or blocked and by what; and the
-  open blocks. Its last two rows are the design review (§6.5) and Camden's freeze ruling.
-- **`01-build/TODO.md`** is everything physical and everything bought. **Every build row
-  gates on `phase:SOURCING`**, which only the freeze moves, so nothing in build starts before
-  the design is verified. The freeze does not close design (D-398, §6.1): a design row opened
+- **design**: his checklist in working order and every agent row, ready or blocked and by
+  what, then the open blocks. Its last two rows are the design review (§6.5) and his freeze
+  ruling.
+- **build**: everything physical and everything bought. **Every build row gates on
+  `phase:SOURCING`**, which only the freeze moves, so nothing in build starts before the
+  design is verified. The freeze does not close design (D-398, §6.1): a design row opened
   after it gates the build rows it changes, by id.
 
 A new row goes on the track where its work happens: desk, measurement, bench proof or the
@@ -140,7 +131,8 @@ that needs the car apart gates on S1.
 | `3`  | a usage error or a crash in `rx7.py` itself   | **blocks nothing** — a broken checker is never a verdict on the record |
 
 Never branch on the text of any command's output. Never grep it, never test it for a
-word. If you need a machine-readable fact you do not have, add a command or a column.
+word. If you need a machine-readable fact you do not have, add a command or a column —
+`rx7.py export` is the machine-readable view of everything.
 _This is the rule v2 broke in four places and it is why a clean build could stop a push._
 
 ### The tool
@@ -150,20 +142,21 @@ rx7.py status                            where everything stands
 rx7.py check [-p AREA]                   validate (rc 1 if the record contradicts itself)
 rx7.py tables AREA                       every declared table, row counts, purpose
 rx7.py get AREA TABLE KEY                one row
-rx7.py set AREA TABLE KEY col=val ...    change an existing row
-rx7.py add AREA TABLE col=val ...        add a row
+rx7.py set AREA TABLE KEY col=val ...    change an existing row   (col=@file reads a file)
+rx7.py add AREA TABLE col=val ...        add a row                (col=@file reads a file)
 rx7.py del AREA TABLE KEY                delete a row
 rx7.py sql AREA "select ..."             query one area (read-only)
-rx7.py find TEXT [-p AREA]               search every cell, decision body and BLOCKS.md
-rx7.py new AREA "title" [col=val ...]    reserve the next D- and stub its body
-rx7.py block "ask" -p AREA               append a block to BLOCKS.md
-rx7.py blocks [--answered|--solved]      list blocks
-rx7.py decisions                         regenerate DECISIONS.md (grouped by category)
-rx7.py todo [-p AREA]                    regenerate each project's TODO (design + build where split)
+rx7.py find TEXT [-p AREA]               search every cell, decision bodies included
+rx7.py new AREA "title" [col=val ...]    reserve the next D- (body=@file writes its text)
+rx7.py block -p AREA ask= why= options= recommend= stops= [title=]   raise a block (§4)
+rx7.py blocks [--answered]               open blocks; --answered: those with an answer waiting
+rx7.py inbox [-p AREA]                   his answers waiting to be applied, his words in full
+rx7.py answer AREA TARGET --device D ... save one of his answers (the app calls this)
+rx7.py export [--out F] [--pretty]       everything the app shows, as JSON
 rx7.py diagrams                          regenerate each harness leg's pin ladder (A) and route map (B)
-rx7.py picks [-p AREA] [--ask|--answered|--clear]  parts picks: status; append; his answers; tidy
+rx7.py picks [-p AREA]                   where every parts pick stands
 rx7.py cites                             advisory: prose cites that no longer resolve
-rx7.py selftest                          the gate resolver's own tests (in memory)
+rx7.py selftest                          the tool's own tests (in memory and a scratch folder)
 rx7.py log AREA KIND "what" [refs]       one log row (KIND = the area's log.workflow enum)
 ```
 
@@ -176,7 +169,7 @@ tree, so one area can wait on another:
 | Reference         | Met when                                                                                                 |
 | ----------------- | -------------------------------------------------------------------------------------------------------- |
 | `D-274`           | that decision is standing or inherited                                                                   |
-| `01.07`           | that block is gone from `BLOCKS.md` and a decision names it in `closes`                                  |
+| `01.07`           | that block is gone from `blocks` and a decision names it in `closes`                                     |
 | `A5` · `F-012`    | that work row is done or dropped, in this area                                                           |
 | `01-luxury:F-012` | the same, in another area — **always qualify across areas**, because work ids are only unique within one |
 | `phase:SOURCING`  | this area is at that phase or past it                                                                    |
@@ -192,9 +185,10 @@ hides: a walled-off queue and a finished project look identical, because the pla
 "nothing to do" in both cases. An area whose work all waits on a **block** or on **another
 area** is a real state, not a contradiction: that is exit code 2, and it refuses nothing.
 
-`selftest` checks the resolver itself. A resolver that wrongly calls a gate met sends the
-planner at work that is not ready; one that wrongly calls it unmet stops the project with
-no error printed anywhere. Both are silent, so both get tests (R7).
+`selftest` checks the resolver itself, and the writer of his answers. A resolver that
+wrongly calls a gate met sends the planner at work that is not ready; one that wrongly calls
+it unmet stops the project with no error printed anywhere. A writer that drops a character
+loses his words. All three are silent, so all three get tests (R7).
 
 `set`, `add` and `del` refuse a column that `_schema.csv` does not declare. To add a
 fact that has no column, add the column to `_schema.csv` first — that is a small
@@ -204,23 +198,18 @@ decision (§3) and it is how the design grows.
 
 ## 2 · Who does what
 
-**Camden**: answers blocks in `BLOCKS.md` · spends money · does the physical work and
-says what happened · takes measurements.
+**Camden**: answers in the Rx7 app — blocks, parts picks and his own work rows · spends
+money · does the physical work and says what happened · takes measurements.
 
 **You**: everything that is reading, writing, calculating, cross-checking, enumerating,
 sourcing, or deciding within §3's small list, and keeping the repository current:
 you commit and push (§6.10, D-401). If a step needs a call only he can make,
-write a block and carry on with the rest of the run.
+raise a block and carry on with the rest of the run.
 
-`BLOCKS.md`, each project's `PICKS.md` (D-390) and `02-PROJECTS/10-gui/SPEC.md` (D-400) are
-the only files Camden ever writes in. `BLOCKS.md` is for questions; `PICKS.md` is for his
-verdicts on the parts the agent suggests; `SPEC.md` is the GUI's spec sheet, under
-`PICKS.md`'s rules. While he works remotely he answers `SPEC.md` on its Notion copy
-(D-402); when he says he is ready, his answers are copied verbatim into `SPEC.md` and
-committed before anything is applied.
-Nothing regenerates either one. You append to them, and you delete an entry only once what he
-wrote is saved in the record (§4, §6.9). That is all that ever touches them. No tool rewrites
-them, and no output of yours ever invites him to type anywhere else.
+**He writes in no file.** Everything he types goes through the app into `inbox`, one file
+per answer, and from there into the record through you (§4, §6.2, §6.9). He may also tell
+you things in chat; that is a ruling or a fact like any other, recorded the same way. Nothing
+you write ever invites him to type anywhere else.
 
 ---
 
@@ -238,7 +227,7 @@ project because asking was the only defined move.
 - a row already in the record, a factory document, or arithmetic settles it
 - a competent builder would call the answer obvious in hindsight
 
-**BIG — write a block. Any one of these is enough:**
+**BIG — raise a block. Any one of these is enough:**
 
 - **money** — changes what is bought, from whom, or the total
 - **irreversible** — undoing it means re-cutting, re-crimping, re-ordering, re-drilling
@@ -255,7 +244,7 @@ time → decide it. Wrong costs his money, his weekend, or a part that must be b
 again → block it.
 
 **Never block the same thing twice.** A solved block governs every case like it. Before
-writing a block, `rx7.py find` the subject: if a decision already rules it, the decision
+raising a block, `rx7.py find` the subject: if a decision already rules it, the decision
 governs — apply it, do not re-ask.
 
 ### Standing answers — the small path, pre-decided
@@ -278,71 +267,71 @@ These exist so a small doubt never becomes a conversation.
 | A superseded decision must be cited           | Cite it with its closer: `D-247 → D-278`.                                                                                                                 |
 | An old cite no longer resolves                | `rx7.py cites` lists these. Advisory. Fix them when you are already in the file; never let one stop a run.                                                |
 | The record and your memory disagree           | The record wins. Always.                                                                                                                                  |
-| You are about to write a document             | Don't. `DECISIONS.md`, each project's TODO and the leg drawings are the only ones, and `rx7.py decisions` / `todo` / `diagrams` write them. See §1. |
-| You wrote a decision this run                 | Run `rx7.py decisions` before you report.                                                                                                                 |
-| You changed a `work` row this run             | Run `rx7.py todo` before you report.                                                                                                                      |
-| You added a proposed pick | Run `rx7.py picks --ask` before you report, which appends it to `PICKS.md`. |
+| You are about to write a document             | Don't. There are no pages (§1); the app shows the record. The leg drawings are the only generated files, and `rx7.py diagrams` writes them.             |
+| A decision's body is long                     | Write it to a scratch file and `rx7.py new AREA "title" … body=@file` (or `set … body=@file`). Never hand-edit `decisions.csv`.                         |
+| A row of his in `work` takes a number or a choice | Set `reply=value` with `unit`, or `reply=choice` with `choices` (`a\|b\|c`), so the app offers the right control (D-406). A plain step needs nothing: `check` is the default. |
 | You changed `housings`, `cavities`, `devices` or `routes` | Run `rx7.py diagrams` before you report.                                                                                                      |
 
 ---
 
 ## 4 · Blocks
 
-`BLOCKS.md` holds **only what is still open**, grouped under one header per project —
-`## 00 · Electrical`, `## 01 · Luxury`, … — and every block sits under its own project's
-header (`check` refuses one that does not). A block looks like this:
+A block is **one row in its project's `blocks` table**, and only what is still open is
+there. The app shows each one on its own screen, with every option as a button. A block has
+exactly these fields, and `check` refuses one missing any:
 
 ```
-### 00.07 · A short title
-**Opened** 2026-09-21
-**Ask** One sentence, answerable on its own.
-**Why** What changes depending on the answer.
-**Options**
-- (a) … — what it costs, what it forecloses
-- (b) … — what it costs, what it forecloses
-**Recommend** (a), unless <the thing that would flip it>.
-**Stops** What cannot proceed until this is answered.
-**SOLVE:**
+id         00.07                        issued by rx7.py block, never typed
+title      A short title
+opened     2026-09-21
+ask        One sentence, answerable on its own.
+why        What changes depending on the answer.
+options    (a) … — what it costs, what it forecloses
+           (b) … — what it costs, what it forecloses      one per line, lettered in order
+recommend  (a), unless <the thing that would flip it>.  name the option first: the app's
+                                                          "follow the recommendation" reads it
+stops      What cannot proceed until this is answered.
 ```
 
-He types after `**SOLVE:**` — on that line or the lines below it, plain sentences, any
-length, no markers to preserve. Blank means unanswered.
+Raise it in one go, every field at once (`rx7.py block -p AREA ask=… why=@why.txt
+options=@opts.txt recommend=… stops=…`). Long fields go through `@file`.
 
 **Block ids are `<project>.<number>`** (D-356): `00.01` is the first block ever raised for
 `02-PROJECTS/00-electrical`, `01.07` the seventh for `01-luxury`. The prefix is the project
 directory's two-digit number; `00-CAR` and `01-REFERENCE` use `CAR` and `REF`, because
-`00` and `01` are taken. `rx7.py block "ask" -p AREA` issues the id and files the block
-under its header — `-p` is required. Never `B-`: this car's factory diagrams already use
-`B-12` and `D-01` as component codes, and an id family must never share a namespace with
-the subject matter. And because a bare `13.80` in prose is a voltage, a block id is only
-recognised as structure — a heading, `closes`, a gate. In prose write it as `block 00.07`
-or in backticks. Blocks were `BLK-###` until 2026-09-21; each old id is a `retired` row in
-its project naming the new one.
+`00` and `01` are taken. Never `B-`: this car's factory diagrams already use `B-12` and
+`D-01` as component codes, and an id family must never share a namespace with the subject
+matter. And because a bare `13.80` in prose is a voltage, a block id is only recognised as
+structure — a `blocks` key, `closes`, a gate. In prose write it as `block 00.07` or in
+backticks. Blocks were `BLK-###` until 2026-09-21; each old id is a `retired` row in its
+project naming the new one.
 
-**The clarity bar.** A block must be answerable from the page alone, with no design in
-front of him — the same three-isolated-workers standard as everything else. `check`
-refuses a block missing any of Ask / Why / Options / Recommend / Stops. If he answers
+**The clarity bar.** A block must be answerable from its screen alone, with no design in
+front of him — the same three-isolated-workers standard as everything else. If he answers
 "unclear — <what is missing>", that is a defect in the block: sharpen it, do not rule it.
 
-**Lifecycle.** You append it → he types a solution → `rx7.py blocks --answered` finds it
-→ you apply it through the record (§6.2) → the ruling becomes a decision whose `closes`
-names the block → **you delete the block from this page.** An answered-but-unapplied
-block is exit code **2**. It never refuses a commit. _That single sentence is the whole
-fix for why he could not push._
+**His answers.** He answers in the app: an option (its letter), "follow the
+recommendation", words, or both — and a Discuss chat's key points ride along in `context`.
+Each answer is a row in the project's `inbox`, saved as its own file
+`data/inbox/<target>~<device>.csv`, and it waits there until he presses Apply or you next
+run. The same table carries his answers to parts picks (`kind=pick`: yes, no or question),
+to his own work rows (`kind=work`: done, a value, a choice), and requests for a run from the
+phone (`kind=run`, `kind=project`). An answer in the inbox is exit code **2**. It never
+refuses a commit.
 
-**Nothing is archived on this page, because nothing needs to be.** A settled question
-lives in `DECISIONS.md`, with his words, the reasoning and the consequences in the data —
-that is what the decision is for, and keeping a second copy here would be two homes for
-one fact (R2). Before deleting a block, confirm three things: the decision exists and is
-`standing`, its `closes` names the block, and its body carries **his answer in his own
-words**. If any of those is missing, finish the job instead of deleting the block. Ids
-are never reused — `rx7.py block` derives the next number from the decisions as well as
-the page, so a deleted 01.05 can never come back as something else.
+**Lifecycle.** You raise it → he answers in the app → `rx7.py inbox` shows his words → you
+apply it through the record (§6.2) → the ruling becomes a decision whose `closes` names the
+block → **you delete the block row and its inbox rows.** Before deleting, confirm three
+things: the decision exists and is `standing`, its `closes` names the block, and its body
+carries **his answer in his own words**. If any of those is missing, finish the job instead
+of deleting. `check` refuses a block that a standing decision already closes. Ids are never
+reused — `rx7.py block` derives the next number from the decisions as well as the table,
+so a deleted 01.05 can never come back as something else.
 
-**A block that came back unclear is replaced, not ruled.** Write the new, plainer block
-first, carry his words into its **Why** so nothing he typed is lost, then delete the old
-one. If his answer contained a question for you, answer it in the new block's **Why**,
-then ask only the part that actually needs him.
+**A block that came back unclear is replaced, not ruled.** Raise the new, plainer block
+first, carry his words into its **why** so nothing he typed is lost, then delete the old
+block and his inbox row. If his answer contained a question for you, answer it in the new
+block's why, then ask only the part that actually needs him.
 
 ---
 
@@ -350,9 +339,11 @@ then ask only the part that actually needs him.
 
 **R1** `get` a row before changing it.
 **R2** One home per fact. If it can be computed, compute it.
-**R3** Nothing you generate may contain a place to type. `BLOCKS.md`, each `PICKS.md` and
-`10-gui/SPEC.md` are the only entry points for his writing, and no parser of his writing may be picky. Losing his writing is
-the worst failure this system has; a wrong ruling is recoverable, a lost session is not.
+**R3** Nothing you generate may contain a place to type. His writing enters only through
+the app, into `inbox` — one file per answer, written whole or not at all — and no reader of
+his writing may be picky. Losing his writing is the worst failure this system has; a wrong
+ruling is recoverable, a lost answer is not. An inbox row is deleted only by you, and only
+once his words are saved where they ruled.
 **R4** A decision, once written, is never edited. It is superseded by a new one that
 names it.
 **R5** Never type an id. Never store a counter.
@@ -380,9 +371,9 @@ order. If READY is empty, that is the report.
 
 ## 6 · Playbooks
 
-Each of these is one run. Every run ends the same way: `check` clean, `rx7.py decisions`
-if a decision was written, `rx7.py todo` if a work row changed, `rx7.py diagrams` if a harness table changed, a `log` row, a commit and a push (§6.10), and — only if blocks
-have stopped everything — the report in §8.
+Each of these is one run. Every run starts with `git pull --rebase` and ends the same way:
+`check` clean, `rx7.py diagrams` if a harness table changed, a `log` row, a commit and a
+push (§6.10), and — only if blocks have stopped everything — the report in §8.
 
 ### 6.1 · Plan (any project, any phase)
 
@@ -395,7 +386,7 @@ gets the new row's id in its gate, so only that work waits and the rest of the b
 on. Undoing work already done (re-cutting, re-ordering, re-wiring) is §3's irreversible,
 so it is a block.
 
-1. `status`. If any block is answered, do 6.2 first — an answer can change how an
+1. `status`. If any answer is in the inbox, do 6.2 first — an answer can change how an
    earlier work item should be done.
 2. Take the first agent row in **READY** — `status` prints it. Never the next row in file
    order, and never a BLOCKED one. **READY empty is a report, not permission to take
@@ -408,34 +399,37 @@ so it is a block.
 5. `set work <id> state=done`; `log`.
 6. Repeat until no agent item has a met gate.
 7. **Phase gate.** Every agent design item done, no open block that stops design, no open
-   Major review finding → write the design-freeze block. The freeze is his ruling; it
+   Major review finding → raise the design-freeze block. The freeze is his ruling; it
    moves the phase to SOURCING. It starts the build; it does not end planning.
 
-### 6.2 · Apply answered blocks
+### 6.2 · Apply his answers
 
-1. `rx7.py blocks --answered`. Read every one before touching anything.
-2. **If it prints none and he says he answered, find the text before doing anything
-   else.** Look in `BLOCKS.md` (was the `**SOLVE:**` line edited away?), then
-   `git diff`, then `git stash list`. Never tell him nothing was answered until you have
-   looked. Never run anything that writes until you have.
-3. Classify each: a **ruling** (yes / no / a choice / "follow recommendations") → a
+1. `git pull --rebase`, then `rx7.py inbox`. Read every answer before touching anything.
+2. **If it shows none and he says he answered, find the text before doing anything
+   else.** Pull again, then look at `git log -5 --stat` and `git status` for `data/inbox/`
+   files, then `git stash list`. His phone commits straight to GitHub, so a missed pull is
+   the usual cause. Never tell him nothing was answered until you have looked. Never run
+   anything that writes until you have.
+3. Classify each: a **ruling** (a letter, "follow recommendation", yes / no / a choice) → a
    decision. A **brief** (guidelines, a re-framing, "help me choose") → sharpen the block
-   and leave it open. A **question back** → answer it in the block body above `**SOLVE:**`
-   and leave it open. A **fact about the car** → `00-CAR` rows plus every project row it
-   corrects.
+   and leave it open. A **question back** → answer it in the block's why and leave it open
+   (delete only his inbox row, once his question is carried into the why). A **fact about
+   the car** → `00-CAR` rows plus every project row it corrects. A letter with words means
+   the option as he qualified it — the words win where they narrow it.
 4. For each ruling, in this order:
-   a. `rx7.py new AREA "<title>" closes=… supersedes=…` then write the body: the decision
-   in bold, his words, the reasoning, what it supersedes by id, the consequences in the
-   data.
+   a. Write the body to a scratch file — the decision in bold, his words (the option he
+   picked, quoted in full, then anything he typed, verbatim, then the Discuss points in
+   `context` if any), the reasoning, what it supersedes by id, the consequences in the
+   data — then `rx7.py new AREA "<title>" closes=… supersedes=… body=@file`.
    b. Every row the ruling changes — `get`, then `set` / `add` / `del`. A ruling that
    touches three projects is applied to all three in the same pass.
    c. Every retired term into `retired.csv` so it can never come back.
    d. New questions the ruling raises → new blocks.
    e. Work rows gated on it: gate met → leave open for 6.1; the ruling did the work →
    `state=done`.
-5. Delete each solved block from `BLOCKS.md`, but only after its decision exists, is
-   `standing`, names it in `closes`, and carries his answer in his own words (§4).
-6. `check` everything; `rx7.py decisions`; `log`.
+5. Delete each solved block's row and its inbox rows, but only after its decision exists,
+   is `standing`, names it in `closes`, and carries his answer in his own words (§4).
+6. `check` everything; `log`.
 
 **An answer you do not fully understand is not a ruling.** "I don't understand the
 question", "it sounds like…", or an answer to a question you did not ask means the block
@@ -451,11 +445,14 @@ wins, and the cart is brought to it.
 
 ### 6.4 · Build (phase BUILDING)
 
-He says what he did. Parse it into: steps done · measurements (number, unit, the step it
-belongs to) · things found · things bought. File each where it lives, `get` first. A
-measurement that contradicts the design is a finding: report it, block it if it costs
-money, and never soften a check to make it fit. Hand back exactly one thing — the next
-open step whose gate is met, its gate, its tools, and the measurement it wants.
+He says what he did — in chat, or as answers to his work rows in the app (`kind=work` in
+the inbox: `done`, a value in the row's `unit`, or one of its `choices`). Parse it into:
+steps done · measurements (number, unit, the step it belongs to) · things found · things
+bought. File each where it lives, `get` first; a measurement goes into the row it measures,
+not only into the work row. A measurement that contradicts the design is a finding: report
+it, block it if it costs money, and never soften a check to make it fit. Delete each inbox
+row once it is filed. Hand back exactly one thing — the next open step whose gate is met,
+its gate, its tools, and the measurement it wants.
 
 ### 6.5 · Review (any phase)
 
@@ -479,14 +476,18 @@ project needed.
 
 ### 6.8 · New project
 
-An area is a directory with `data/_project.csv`, `_tables.csv`, `_schema.csv`,
-`decisions.csv`, `work.csv`, `log.csv`, `retired.csv`. Phase PROPOSED. Read the boundary
-first — `00-CAR` and any sibling table that looks like a hand-over — then write the
-opening blocks (every call only he can make, easiest first) and the first work list.
+An area is a directory with `data/_project.csv` (with an `icon` from the app's icon set),
+`_tables.csv`, `_schema.csv`, `decisions.csv`, `blocks.csv`, `work.csv`, `log.csv`,
+`retired.csv`, and `inbox` declared. Phase PROPOSED. Read the boundary first — `00-CAR` and
+any sibling table that looks like a hand-over — then raise the opening blocks (every call
+only he can make, easiest first) and the first work list. From the app, "New project"
+arrives as a run whose prompt carries his name and goal, or from the phone as an inbox row
+`kind=project` in `00-CAR` (target = the name, text = the goal); delete that row once the
+area exists.
 
 ---
 
-### 6.9 · A parts round (D-388, D-390)
+### 6.9 · A parts round (D-388, D-390 → D-405)
 
 Choosing a product is money, so it is always his ruling. A round is how the ruling is asked
 for.
@@ -497,25 +498,21 @@ for.
 2. For each part, find one **primary** and one **runner-up**. Each gets real listings with
    prices, the numbers that meet the parts row's spec, why, honest drawbacks, a confidence,
    and what must still be confirmed (R11: a fit nobody has measured is `confirm`). Add them to
-   `picks`, with the primary `proposed` and the runner-up `reserve`.
-3. Run **`rx7.py picks --ask`**. It **appends** one entry per proposed pick to the project's
-   `PICKS.md`, built from its row: what the part has to be, what meets it, why, drawbacks,
-   what to confirm, where to buy it, the runner-up if he says no, and the recommendation.
-   Every entry ends in `**ANSWER:**`. Never write an entry by hand, and never rewrite the
-   page. He answers any, some or all, whenever he likes, then tells you.
-4. When he says he answered, run `rx7.py picks --answered` and read every answer before
-   touching anything. Classify each the way §6.2 does:
+   `picks`, with the primary `proposed` and the runner-up `reserve`. The app shows every
+   `proposed` pick as a question at once; there is nothing else to write.
+3. He answers any, some or all, whenever he likes: `yes`, `no` with a reason, or a question.
+4. When answers are in the inbox (`kind=pick`), read every one before touching anything.
+   Classify each the way §6.2 does:
    - A **yes** makes the pick `accepted`. The yeses in one pass become one decision naming
      each product, and each parts row is updated (`spec` names the product, the prices,
      `status` `chosen`).
    - A **no** makes it `vetoed`. The runner-up is proposed next unless his reason rules it
      out too; otherwise the search starts again.
    - A **question or an unclear answer** leaves it `proposed`. Answer the question in the
-     next suggestion for that part, or sharpen the entry.
+     next suggestion for that part (its `why` or `confirm`), or sharpen the pick.
 
-   His words go in `picks.said`, verbatim, every time. Then `rx7.py picks --clear` removes
-   exactly the entries whose verdict and words are saved. Unanswered entries stay where
-   they are.
+   His words go in `picks.said`, verbatim, every time. Then delete exactly the inbox rows
+   whose verdict and words are saved.
 
 ### 6.10 · Commit and push (the end of every run, D-401)
 
@@ -530,21 +527,34 @@ useful:
   or two, and the work ids and blocks it touches. No "update files", no "wip".
 - **Straight to `master`, then `git push`.** No pull requests and no branches unless
   Camden asks. Never force-push, never rewrite pushed history, never skip the hook
-  (`--no-verify`).
+  (`--no-verify`). If the push is refused because the phone committed meanwhile,
+  `git pull --rebase` and push again — inbox files never conflict.
 - **The hook refusing is rc 1**, the only thing that stops a commit: fix the data and
   commit again (R8). A failed push (network, auth) is not a refusal: say so in the report
   and push next run.
-- **Never commit a page he is typing in mid-sentence.** `BLOCKS.md`, `PICKS.md` and
-  `SPEC.md` are committed as they stand, never tidied or reverted to make a commit
-  cleaner.
+- **The app commits too.** Each answer he saves on the desktop is committed and pushed by
+  the app on its own (`Camden answered 00.29 (desktop)`); the phone commits through
+  GitHub. Never amend, squash or revert those commits.
+
+### 6.11 · Runs started from the app
+
+The app starts you headless, in this tree, with a prompt that names one playbook and one
+project: **Apply** (§6.2 for that project, or §6.9 step 4 from the Picks page, or §6.4 from
+the TODO page), **Plan** (§6.1), **Review** (§6.5), **Parts round** (§6.9), **New project**
+(§6.8). It is the same run as from the terminal, under every rule here, and it ends with the
+§8 report — the app shows that report to him as the run's result. A run requested from the
+phone arrives as an inbox row `kind=run` (target `apply`, `plan`, `review` or `parts`) in
+the project it is for: do that run, then delete the row.
+
+Explain, Discuss and the app's chat start you read-only: answer from the record, never
+write, never commit.
 
 ## 7 · Credit rules
 
 One row, one call: `get` / `sql` / `find` to learn a fact, never a whole file. Never
-re-derive what a row or a decision settles. Never rewrite a file to change part of it.
-Never restate the record back to him — report the diff. Batch edits; one `check` at the
-end. One search per unknown fact, then a block. A whole-file write only for a new file or
-a rewrite he named.
+re-derive what a row or a decision settles. Never restate the record back to him — report
+the diff. Batch edits; one `check` at the end. One search per unknown fact, then a block.
+A whole-file write only for a new file or a rewrite he named.
 
 ---
 
@@ -564,7 +574,7 @@ PUSHED     the commits, short hash and subject each, or why the push failed
 NEXT       what runs when the blocks are answered
 ```
 
-Then stop. He clears the blocks and says continue.
+Then stop. He answers in the app and says continue, or presses Apply.
 
 ---
 
@@ -572,9 +582,10 @@ Then stop. He clears the blocks and says continue.
 
 **One machine: `/home/crash/docs/storage/Rx7` on Fedora.** Since 2026-09-22 this is the only
 computer the project lives on — there is no laptop and no `crashs-pc` any more, and nothing
-is synced between machines. It is a git clone of `github.com/CamdenThomas/Rx7`; the remote
-is the backup, not a second place to work. Any instruction, script or path that assumes
-Windows (`C:\…`, `.bat`, `.ps1`, `.exe`, w64devkit) is stale.
+is synced between machines except through GitHub. It is a git clone of
+`github.com/CamdenThomas/Rx7`; the remote is the backup and the phone app's way in (D-403),
+not a second place to work. Any instruction, script or path that assumes Windows (`C:\…`,
+`.bat`, `.ps1`, `.exe`, w64devkit) is stale.
 
 The tools on this machine, and nothing else:
 
@@ -586,6 +597,10 @@ The tools on this machine, and nothing else:
   (its `README.md` §4). The car's diagnostic port `DP-DIAG` takes Camden's Windows laptop,
   which runs ECUMaster's PMU client and nothing else for this project (D-376). It holds no
   clone, and it is not a second home for the tree.
+- The Rx7 app (`02-PROJECTS/10-gui/app/`): Node 22 and npm (dnf), Rust through rustup in
+  `~/.cargo`, the Tauri build libraries (dnf, listed in the app's README), JDK 21 in
+  `~/.local/jdk`, and the Android SDK and NDK in `~/Android/Sdk`. The app's README says how
+  to build, test and install both apps.
 
 **The v2 working tree is gone.** On 2026-09-12 the v3 record replaced it, after a
 file-by-file check that nothing needed had been left behind: every open question carried
@@ -595,20 +610,16 @@ The only rows that vanished were `L2-NZL` and its two cavities, which is D-329 d
 job. If you need to know how something used to read, the archive is where it lives now —
 there is no second directory to open, and any instruction that says otherwise is stale.
 
-**The visual layer is being planned as its own project, `02-PROJECTS/10-gui` (D-399):** a
-view and an input over the record that keeps no fact of its own; its `README.md` is
-hand-written at Camden's request. Until that design is ruled, nothing else grows a view.
-**Outside that project the visual layer is still a later concern, apart from the leg drawings.** The generated
-files are `DECISIONS.md`, each project's TODO and the harness-leg drawings in
-`02-PROJECTS/00-electrical/00-design/diagrams/` (D-385, §1). Do not build any other view, template
-or rendered document, and do not write a document "so it can be read" (§1). The one
-hand-drawn exception is
-`02-PROJECTS/00-electrical/00-design/cad/`: the KiCad projects for the ICU and DCU carriers —
-schematic, board layout and 3D model, with `PCB-AND-3D-GUIDE.md` as the method — ruled in
-by Camden on 2026-09-12 (the schematic) and widened on 2026-09-21 (layout, both boards,
-D-361). It is not an area — no `data/`, so `rx7.py` cannot see
-it — nothing in the record cites it, and if the record and a drawing ever disagree the
-record is right. Its own README is the fence.
+**The visual layer is the Rx7 app, project `02-PROJECTS/10-gui`** (D-399 → D-405). It is a
+view and an input over the record that keeps no fact of its own. Nothing else grows a view.
+The generated files are only the harness-leg drawings in
+`02-PROJECTS/00-electrical/00-design/diagrams/` (D-385, §1). The one hand-drawn exception
+is `02-PROJECTS/00-electrical/00-design/cad/`: the KiCad projects for the ICU and DCU
+carriers — schematic, board layout and 3D model, with `PCB-AND-3D-GUIDE.md` as the method —
+ruled in by Camden on 2026-09-12 (the schematic) and widened on 2026-09-21 (layout, both
+boards, D-361). It is not an area — no `data/`, so `rx7.py` cannot see it — nothing in the
+record cites it, and if the record and a drawing ever disagree the record is right. Its own
+README is the fence.
 
 The Claude Project holds one pointer document and nothing else; nothing is ever queued
 there.

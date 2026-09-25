@@ -73,3 +73,20 @@ decisions,supersedes,str,no,,
 decisions,superseded_by,str,no,,
 decisions,closes,str,no,,
 decisions,also,str,no,,
+blocks,id,key,yes,,"<prefix>.<nn>, issued by rx7.py block (D-356)"
+blocks,title,str,yes,,
+blocks,opened,date,yes,,
+blocks,ask,text,yes,,"one sentence, answerable on its own"
+blocks,why,text,yes,,what changes depending on the answer
+blocks,options,text,yes,,"one per line, each starting (a) , (b) … - the app shows each as a button"
+blocks,recommend,text,yes,,"names the option it recommends first, e.g. (a), unless …"
+blocks,stops,text,yes,,what cannot proceed until it is answered
+inbox,id,key,yes,,<target>~<device>; the row is the file data/inbox/<id>.csv (D-405)
+inbox,target,str,yes,,"what it answers: a block, pick or work id; a workflow for kind=run; a name for kind=project"
+inbox,kind,enum(block|pick|project|run|work),yes,,vocabulary owned by tools/rx7.py
+inbox,choice,str,no,,the option letter; yes/no/question; done; a value; a choice - empty when he only wrote words
+inbox,text,text,no,,"his words, verbatim"
+inbox,context,text,no,,"the key points of a Discuss chat, carried into the decision with his words (D-406)"
+inbox,device,enum(desktop|phone),yes,,vocabulary owned by tools/rx7.py
+inbox,at,datetime,yes,,when he saved it
+decisions,body,text,no,,"the decision's full text: the ruling in bold, his words, the reasoning, the consequences (D-405)"

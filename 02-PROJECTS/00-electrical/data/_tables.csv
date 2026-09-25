@@ -35,3 +35,5 @@ rules,
 series,
 wake_stages,"the two asleep-wake circuits on the dash node, part by part (D-375, D-381) - door on A6, horn/hazard/wink on A8"
 work,the work list; owner says who does it
+blocks,"open questions only Camden can answer, one row each; deleted once a decision closes it (§4, D-405)"
+inbox,"his answers waiting to be applied, one file per answer per device (D-405)"
