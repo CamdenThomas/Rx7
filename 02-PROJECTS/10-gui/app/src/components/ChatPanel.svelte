@@ -27,7 +27,7 @@
     <button class="btn icon ghost small" onclick={() => (convo = new Conversation('Camden opened the chat panel in the Rx7 app.'))} title="New conversation" aria-label="New conversation"><RotateCcw size={15} /></button>
     <button class="btn icon ghost small" onclick={() => (ui.chatOpen = false)} aria-label="Close"><X size={16} /></button>
   </header>
-  <Chat {convo} {prefix} empty="Claude reads the record to answer. It can explain anything on this page, but it never changes the record from here." />
+  <Chat {convo} {prefix} seed={ui.seed} onseeded={() => (ui.seed = '')} empty="Claude reads the record to answer. It can explain anything on this page, but it never changes the record from here." />
 </aside>
 
 <style>

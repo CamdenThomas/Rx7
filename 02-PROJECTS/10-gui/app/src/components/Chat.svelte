@@ -13,9 +13,23 @@
     placeholder = 'Ask anything about the car…',
     prefix = () => '',
     empty = '',
-  }: { convo: Conversation; placeholder?: string; prefix?: () => string; empty?: string } = $props();
+    seed = '',
+    onseeded,
+  }: { convo: Conversation; placeholder?: string; prefix?: () => string; empty?: string; seed?: string; onseeded?: () => void } = $props();
 
   let text = $state('');
+  let box = $state<HTMLTextAreaElement>();
+
+  // A question handed in from outside (the Manual's Ask): into the box, ready to send or change.
+  $effect(() => {
+    if (!seed) return;
+    text = seed;
+    onseeded?.();
+    queueMicrotask(() => {
+      box?.focus();
+      box?.setSelectionRange(text.length, text.length);
+    });
+  });
 
   async function send() {
     const q = text.trim();
@@ -50,7 +64,7 @@
     {/if}
   </div>
   <div class="compose">
-    <textarea bind:value={text} onkeydown={keydown} rows="2" {placeholder} aria-label="Your question"></textarea>
+    <textarea bind:this={box} bind:value={text} onkeydown={keydown} rows="2" {placeholder} aria-label="Your question"></textarea>
     {#if convo.busy}
       <button class="btn icon" onclick={() => convo.stop()} aria-label="Stop"><Square size={15} /></button>
     {:else}
