@@ -56,3 +56,16 @@ circuits,title,text,yes,,
 circuits,systems,text,yes,,"00-CAR systems ids, space-separated; the first is where the Manual files it"
 circuits,source,text,no,,the source it was decoded from (S- ids)
 circuits,note,text,no,,
+catalogue,id,key,yes,,<book>-<pdf page>-<row on the page>
+catalogue,book,enum(BI|EC),yes,,EC: Engine-Chassis 1000A-4600A; BI: Body-Index 0900A-6930A (S-005)
+catalogue,page,int,yes,,the PDF page
+catalogue,figure,str,yes,,"the figure code, e.g. 1400A-1"
+catalogue,figure_title,text,no,,"verbatim, with its model-year note"
+catalogue,dcode,str,no,,the D-CODE: the callout on the figure
+catalogue,description,text,no,,verbatim
+catalogue,part_no,str,no,,"verbatim. A ? marks a character the scan does not show - check it before any order. A two-character value (00, 01, 70) is a colour suffix to the base number on the row above"
+catalogue,qty,str,no,,
+catalogue,model,text,no,,the MODEL/DESCRIPTION column
+catalogue,remarks,text,no,,
+catalogue,fits,enum(no|unclear|yes),yes,,"whether the row applies to this car (1982 US GS, automatic): from the figure's year note and the model column; unclear where it turns on the VIN serial or on California vs Federal emissions, neither of which is recorded"
+catalogue,fits_why,text,no,,the marking that decided fits
