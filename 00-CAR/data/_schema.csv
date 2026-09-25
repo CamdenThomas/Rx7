@@ -125,3 +125,13 @@ specs,system,str,no,systems,
 specs,part,str,no,parts,"the part it describes, when it describes one"
 specs,applies,enum(not-fitted|other-car|replaced),no,,"blank: this car as it is now. other-car: another year's, trim's or gearbox's figure where this car's differs or is in doubt; replaced: the part it describes is gone or out of use; not-fitted: bought, not on the car. Only blank rows reach the Manual (D-417)"
 service,fitted,list,no,parts,"the parts this visit fitted - a part's fitted date and mileage are read from here, never typed"
+terminals,id,key,yes,,<part id>-<terminal label>
+terminals,part,str,yes,parts,
+terminals,terminal,str,yes,,"the label on the part or in the factory diagram (B, F, L, IG, 30, 87...)"
+terminals,function,text,no,,"what it does: supply, ground, field, signal; for a switch, which terminals it joins in each position"
+terminals,inside,text,no,,"what it connects to inside the part (winding, regulator, contact, bulb filament)"
+terminals,wire,str,no,,"the factory wire colour code on it (S-001), e.g. BW"
+terminals,to,text,no,,"where that wire goes: the part, connector or splice"
+terminals,source,str,no,,S- ids
+terminals,page,str,no,,
+terminals,note,text,no,,a terminal nobody has checked on the car carries confirm (R11)

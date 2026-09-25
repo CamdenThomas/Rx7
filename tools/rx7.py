@@ -1415,7 +1415,7 @@ def interval_due(iv: dict, service, odo: dict, today_d):
 
 
 def manual_view(today_iso: str = "") -> dict:
-    """The Manual, computed. Reads 00-CAR vehicle, systems, zones, parts, specs, service,
+    """The Manual, computed. Reads 00-CAR vehicle, systems, zones, parts, specs, service, terminals,
     intervals, issues, drives, procedures (and data/procedures/<id>.md), parts_history, and
     01-REFERENCE sources, circuits (and the factory-circuits files they name) and photos.
     Writes nothing (D-417)."""
@@ -1457,6 +1457,10 @@ def manual_view(today_iso: str = "") -> dict:
             p["parent"] = ""
     for p in shown["parts"]:
         p["children"] = [c["id"] for c in shown["parts"] if c.get("parent") == p["id"]]
+    # its terminals from the factory diagram wait in 00-verify until checked on the car (R11)
+    terms = read_table(car, "terminals")[1] if (car / "data" / "terminals.csv").exists() else []
+    for p in shown["parts"]:
+        p["terminals_held"] = sum(1 for x in terms if (x.get("part") or "").strip() == p["id"])
     for s in shown["specs"]:
         if s.get("part") not in part_ids:
             s["part"] = ""

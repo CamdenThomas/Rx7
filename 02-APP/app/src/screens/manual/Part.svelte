@@ -124,6 +124,10 @@
           </section>
         {/if}
 
+        {#if p.terminals_held}
+          <p class="faint small held">Factory wiring: {p.terminals_held} terminal{p.terminals_held === 1 ? '' : 's'} recorded from the 1982 diagram, held back until checked on the car.</p>
+        {/if}
+
         {#if p.bought.length}
           <section>
             <h3>Bought</h3>
@@ -234,6 +238,9 @@
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 6px 16px;
     font-size: 14px;
+  }
+  .held {
+    margin: 0 0 18px;
   }
   .bought {
     margin: 0;

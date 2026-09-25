@@ -240,3 +240,474 @@ SP-253,Brakes,Parking brake lever travel,6-8 notches at 100 N (22 lb),,S-038,S-0
 SP-254,Torque,Steering wheel nut,40-50 N-m (29-36 ft-lb),,S-038,S-038 T:7,primary,,,,
 SP-255,Torque,Front stabilizer bar to suspension lower arm,12-18 N-m (9-13 ft-lb),,S-038,S-038 T:8,primary,,,,
 SP-256,Torque,Brake tube union nut / flexible hose union,13-22 N-m (9-16 ft-lb) / 25-35 N-m (18-25 ft-lb),,S-038,S-038 T:8,primary,,,,
+SP-257,Charging,Output current test (1985 FSM),90% or more of nominal output at 2500-3000 engine rpm with all loads on,,S-002,"p.5-8, 5-9",primary,electrical,PT025,other-car,1985 12A procedure; no 1982 equivalent found. Nominal for this car is 50 A per S-038.
+SP-258,Charging,"On-car check, key OFF (1980 FSM)",R terminal (BW) and L terminal (WB) both 0 V; B terminal equals battery voltage,V,S-045,80RX7_5 p.5:1-5:2,primary,electrical,PT025,other-car,1980 unit has the same R/L/B/F terminals as the 1982 diagram (S-001 p.10).
+SP-259,Charging,"On-car check, key ON engine stopped: L terminal voltage",about 0.5 (1980); 1-3 is normal field current (1985); near battery voltage = fault,V,"S-045,S-002",S-045 5:1; S-002 p.5-7,primary,electrical,PT025,other-car,"1980 FSM: if L reads near battery voltage, ground F to the rear bracket - L falls = regulator fault, L stays = alternator fault."
+SP-260,Charging,Alternator to mounting bracket clearance,"0.15 max; shim with 0.15, 0.3 or 0.5 mm adjust shims",mm,S-045,80RX7_5 p.5:5,primary,electrical,PT025,other-car,1980 FSM installation step.
+SP-261,Charging,Replacement WAI Global 12278N (new),"12 V 50 A; OE N22118300 / N22118300R00, Mitsubishi A002T21278, A002T23477, A003T21278, A005T20374",A,S-073,Alternator / Generator,secondary,electrical,PT025,,
+SP-262,Charging,Replacement Pure Energy 14550 / Remy 14307 (reman),"55 A; OE N22118300, 817318300B",A,S-073,Alternator / Generator,secondary,electrical,PT025,,55 A units are listed for this car as well as 50 A; read the stamp on the car's own unit.
+SP-263,Charging,Stator winding,"three-phase, star (Y) connected, feeding a 6-diode bridge",,S-001,PDF p.10 (A-08 internal),primary,electrical,PT264,,Drawn inside the 'alternator with regulator' symbol.
+SP-264,Charging,Stator tests,continuity between every pair of leads; no continuity from any lead to the core,,"S-002,S-045",S-002 p.5-15; S-045 5:3,primary,electrical,PT264,other-car,
+SP-265,Charging,Stator lead unsoldering time limit,5 max (1985); 20 max (1980),s,"S-002,S-045",S-002 p.5-14; S-045 5:2,primary,electrical,PT264,other-car,Heat damages the rectifier; use a 200 W class iron.
+SP-266,Charging,Rotor coil resistance between slip rings (1980 FSM),5-6,ohm,S-045,80RX7_5 p.5:4 (PDF p.6),primary,electrical,PT265,other-car,Differs from the 1985 figure 2.0-2.6 ohm (SP-082). No 1982 figure found.
+SP-267,Charging,Rotor ground test,no continuity between either slip ring and the rotor core,,"S-002,S-045",S-002 p.5-15; S-045 5:4,primary,electrical,PT265,other-car,Rough slip rings: skim on a lathe or fine sandpaper (1985).
+SP-268,Charging,Replacement 6202 bearing size,15 x 35 x 11 (bore x OD x width),mm,S-073,"Alternator / Generator End Bearing (Schaeffler 62022Z, front)",secondary,electrical,PT266,,Mazda number 9960-62-202 encodes the 6202 size; confirm on the old bearing.
+SP-269,Charging,Replacement Timken 6202-2RS load ratings,"dynamic 7600, static 3700; grease speed limit 15000 rpm; 0.050 kg",N,S-077,product page,secondary,electrical,PT266,,
+SP-270,Charging,Front bearing replacement,"press in with a socket on the outer race only; pre-lubricated, no lubrication",,"S-002,S-045",S-002 p.5-13; S-045 5:5,primary,electrical,PT266,other-car,
+SP-271,Charging,Replacement 6201-2RS bearing size (slip-ring end),12 x 32 x 10 (bore x OD x width),mm,S-076,product page,secondary,electrical,PT267,,"RockAuto lists 6201-2RS types (SKF 62012RSJ, National 201CC) as commutator-end for this car; confirm on the old bearing."
+SP-272,Charging,Replacement Timken 6201-2RS load ratings,"dynamic 6800, static 3000; grease speed limit 16000 rpm; 0.040 kg",N,S-076,product page,secondary,electrical,PT267,,
+SP-273,Charging,Rear bearing fitting,"press on with the outer-race groove toward the slip rings; stopper spring in the groove, its raised part in the deepest (chamfered) part",,S-002,"p.5-13, 5-18",primary,electrical,PT267,other-car,
+SP-274,Charging,Rectifier layout,"6 main diodes (3 positive, 3 negative) plus a 3-diode trio feeding L and the field",,"S-001,S-002",S-001 PDF p.10; S-002 p.5-6,primary,electrical,PT268,,
+SP-275,Charging,Rectifier diode test,positive side: continuity only from diode lead to heat sink; negative side: only from heat sink to lead; trio: one direction only,,"S-002,S-045","S-002 p.5-16, 5-17; S-045 5:4",primary,electrical,PT268,other-car,
+SP-276,Charging,Replacement AS-PL ARC5017,"6 x 25 A main diodes, 80 mm mounting centres, 93.2 mm OD; crosses Mazda N221-24-510, Mitsubishi A860T06070 / MD607568, Mobiletron RM-66",,S-075,product page,secondary,electrical,PT268,,
+SP-277,Charging,"Regulator check: L to R continuity, coupler off",35-100 (continuity outside this = regulator fault),ohm,S-002,p.5-7,primary,electrical,PT269,other-car,
+SP-278,Charging,Adjustment voltage at L terminal,"14.7 +/- 0.5 at 20 C, about 2500 rpm, charge current under 5 A",V,S-002,"p.5-9, 5-10",primary,electrical,PT269,other-car,Overcharge test: B terminal reaching 15.5 V or more = regulator fault.
+SP-279,Charging,Replacement IM204 (Transpo-type),"12 V, A-circuit, R-L terminals, 14.6 V set; crosses N221-24-520, 8173-24-520, MD607372, MD607570",V,S-074,product page,secondary,electrical,PT269,,
+SP-280,Charging,Replacement SMP VR163 / Wells 1V1083,"crosses N22124520, 817324520, MD607372, MD607570",,S-073,Voltage Regulator,secondary,electrical,PT269,,
+SP-281,Charging,Number of brushes,2,,S-038,T:3,primary,electrical,PT270,,
+SP-282,Charging,Brush spring pressure,3.15-4.26 (11-15 oz),N,S-038,T:3,primary,electrical,PT270,,
+SP-283,Charging,Brush spring pressure limit,"210 g (7.4 oz) or less = replace; new 300-440 g, measured with the brush 2 mm out",g,"S-002,S-045",S-002 p.5-16; S-045 5:5,primary,electrical,PT270,other-car,1980 gives the same 210 g limit and 315-426 g standard.
+SP-284,Charging,Brush soldering,pigtail soldered so the wear-limit line stands 2-3 out of the holder,mm,S-002,p.5-14,primary,electrical,PT270,other-car,
+SP-285,Charging,Replacement SMP JX106,"alternator brush; crosses 817324522, MD602783, MD607373",,S-073,Alternator / Generator Brush,secondary,electrical,PT270,,
+SP-286,Charging,Rear bracket heating to free the rear bearing,"200 W iron on the bearing box 3-4 min, to 50-60 C (122-144 F)",C,S-002,"p.5-12, 5-18",primary,electrical,PT273,other-car,
+SP-287,Electrical,"Starter lock test (A/T, 1982)","4.0 V, less than 1100 A, 31 N-m (22.4 ft-lb)",,S-038,T:3,primary,electrical,PT026,,"1982 figure; SP-069 is the 1980 value (5.0 V, 1050 A). M/T: 5.0 V, under 600 A, 9.6 N-m."
+SP-288,Electrical,"Starter free-running test (A/T, 1982)","11.5 V, less than 100 A, more than 3500 rpm",,S-038,T:3,primary,electrical,PT026,,Confirms the 1985 figure in SP-068 for this year.
+SP-289,Electrical,Number of brushes (A/T),4,,S-038,T:3,primary,electrical,PT026,,"M/T: 3. Brush length 17 mm, wear limit 11.5 mm as SP-071."
+SP-290,Electrical,Starter brush spring tension (A/T),14-26 (49-92 oz),N,S-038,T:3,primary,electrical,PT026,,
+SP-291,Electrical,Commutator mica undercut,0.5-0.8 (0.020-0.031 in),mm,S-038,T:3,primary,electrical,PT026,,
+SP-292,Electrical,Armature shaft to bush clearance,less than 0.2 (0.008 in),mm,S-038,T:3,secondary,electrical,PT026,,"The A/T column prints '0 mm (0.008 in)', read as a misprint of the M/T 'less than 0.2 mm (0.008 in)'."
+SP-293,Electrical,Armature shaft end play,0.1-0.5 (0.004-0.02 in),mm,S-038,T:3,primary,electrical,PT026,,
+SP-294,Electrical,Pinion to stop-collar clearance (pinion gap),0.5-2.0 (0.020-0.079 in),mm,S-038,T:3,primary,electrical,PT026,,Set with washers between the magnetic switch and the front bracket; more washers = smaller gap (S-002 p.5-22).
+SP-295,Electrical,Commutator outer diameter limit (1985 FSM),31 (1.22 in) or less = replace armature,mm,S-002,p.5-26,primary,electrical,PT026,other-car,
+SP-296,Electrical,Commutator runout limit (1985 FSM),0.05 (0.002 in),mm,S-002,p.5-26,primary,electrical,PT026,other-car,
+SP-297,Electrical,"Replacement Pure Energy / Remy / TerrePower 16717 (reman, A/T)","interchange N20218400, N20218400A, N20218400B, Mitsubishi M2T50581",,S-073,Starter Motor,secondary,electrical,PT026,,
+SP-298,Electrical,Voltage required to close solenoid contacts,less than 8,V,S-038,T:3,primary,electrical,PT275,,1982 confirmation of SP-070 (1980).
+SP-299,Electrical,Magnetic switch tests (1980 FSM),"pull-in: 12 V across S and M pulls the plunger; hold-in: with M grounded and S at 12 V, the plunger stays in when the M lead is removed; return: 12 V across M and body, plunger pushed in by hand, is not pulled",,S-045,80RX7_5 p.5:9,primary,electrical,PT275,other-car,
+SP-300,Electrical,On-car check at S terminal while cranking,8 V or more at S with no action = starter fault; under 8 V = wiring fault,V,S-002,p.5-20,primary,electrical,PT275,other-car,A hot switch may not work even at 8 V or more.
+SP-301,Electrical,Replacement SMP SS298 / Wells 1M1169,"3-terminal starter solenoid; interchange 887224736, 175724760, MD602074",,S-073,Starter Solenoid,secondary,electrical,PT275,,"Listed for the A/T, and for the M/T to 10/1981."
+SP-302,Electrical,Number of brushes (A/T starter),4,,S-038,T:3,primary,electrical,PT278,,M/T starter has 3
+SP-303,Electrical,"Brush length, standard (A/T starter)",17,mm,S-038,T:3,primary,electrical,PT278,,0.67 in; S-002 p.5-3 and p.5-27 (1985) give the same
+SP-304,Electrical,"Brush spring tension, standard",14-26,N,S-038,T:3,primary,electrical,PT278,,"49-92 oz; S-002 p.5-27 (1985) gives 1.4-2.6 kg for a new brush, measured when the spring leaves the brush"
+SP-305,Electrical,"Brush spring force, replace at or below",0.9,kg,S-002,5-27,primary,electrical,PT278,other-car,31.75 oz; 1985 manual only; measure with a spring balance at the moment the spring leaves the brush
+SP-306,Electrical,Brush holder insulation test,no continuity between insulated brush holder and plate,,S-002,5-27,primary,electrical,PT278,other-car,1985 manual; brush must also slide freely in its holder
+SP-307,Electrical,Mica undercut depth,0.5-0.8,mm,S-038,T:3,primary,electrical,PT277,,0.020-0.031 in; S-002 p.5-3/5-26 (1985) same; 1985 says undercut when the mica depth has fallen to 0.2 mm or less
+SP-308,Electrical,Armature shaft end play,0.1-0.5,mm,S-038,T:3,primary,electrical,PT277,,"0.004-0.02 in, both transmissions"
+SP-309,Electrical,Commutator runout limit,0.05,mm,S-002,5-26,primary,electrical,PT277,other-car,"0.002 in; at or above this, skim on a lathe or replace; check with the armature on V blocks, bearings without play; 1985 manual"
+SP-310,Electrical,"Commutator outer diameter, replace at or below",31,mm,S-002,5-26,primary,electrical,PT277,other-car,"1.22 in; 1985 manual, the text does not say which starter type it applies to"
+SP-311,Electrical,Armature coil ground test,no continuity between commutator and core,,S-002,5-25,primary,electrical,PT277,other-car,1985 manual; replace the armature if there is continuity
+SP-312,Electrical,"Clearance between armature shaft and bush, limit",0.2,mm,S-038,T:3,unverified,electrical,PT286,,"M/T column reads less than 0.2 mm (0.008 in); in the A/T column the scan shows '0 mm (0.008 in)', and 0.2 is read from the inch figure; confirm on a clean copy"
+SP-313,Electrical,Armature bearings (reduction starter),ball bearing at each end of armature,,S-002,"5-24, 5-28, 5-29",primary,electrical,PT286,other-car,1985 reduction starter; grease both at assembly; confirm on the car
+SP-314,Electrical,Pinion gap (pinion to stop collar),0.5-2.0,mm,S-038,T:3,primary,electrical,PT282,,"0.020-0.079 in; S-002 p.5-3/5-30 (1985) same. Measure with the pinion shifted out by 12 V on S (no more than 20 s); shims between the solenoid and the front bracket set it, and more shims make the gap smaller"
+SP-315,Electrical,"Pinion shaft thrust gap (axial play), max",0.5,mm,S-002,5-29,primary,electrical,PT283,other-car,"0.02 in; 1985 reduction starter; set with the adjusting washer under the centre bracket C washer, centre bracket bolt tight"
+SP-316,Electrical,Overrunning clutch check,"turns freely one way, locks the other",,S-002,5-28,primary,electrical,PT283,other-car,"1985 manual; if it turns both ways or runs rough, replace the pinion shaft assembly"
+SP-317,Electrical,Assembly lubrication,grease armature shaft gear and reduction gear,,S-002,5-29,primary,electrical,PT284,other-car,1985 manual; the lubricant grade is not given
+SP-318,Electrical,Assembly lubrication,grease lever sliding part; slight film on the plunger,,S-002,5-29,primary,electrical,PT285,other-car,1985 manual; the lever must face the correct way
+SP-319,Electrical,Field coil open-circuit test,continuity between field connector and brush,,S-002,5-26,primary,electrical,PT276,other-car,1985 manual; replace the yoke assembly if open
+SP-320,Electrical,Field coil ground test,no continuity between field connector and yoke,,S-002,5-27,primary,electrical,PT276,other-car,1985 manual; also replace the yoke if the field coil or core is loose
+SP-321,Electrical,"Battery type, automatic transmission except California (1982 FSM)",NS70S,,S-038,T:3 (PDF p.5),primary,electrical,PT024,,"Same table: California G60-5 or Y60-5; manual except California G60-5, Y60-5 or NS70S. Agrees with the 1980 figure in SP-061 and the brochure SP-059."
+SP-322,Electrical,"Battery capacity, NS70S (20-hour rate, 1982 FSM)",55,Ah,S-038,T:3 (PDF p.5),primary,electrical,PT024,,G60-5 / Y60-5: 45 Ah.
+SP-323,Electrical,Battery voltage and terminal ground (1982 FSM),12,V,S-038,T:3 (PDF p.5),primary,electrical,PT024,,Negative ground.
+SP-324,Electrical,"Specific gravity at 20 C, fully charged, NS70S",1.280,,S-038,T:3 (PDF p.5),primary,electrical,PT024,,G60-5 / Y60-5: 1.260.
+SP-325,Electrical,"Specific gravity at 20 C, recharge at, NS70S",1.220,,S-038,T:3 (PDF p.5),primary,electrical,PT024,,G60-5 / Y60-5: 1.200.
+SP-326,Electrical,"Quick charge rate (battery out, vent caps off)",6-20,A,S-002,5-5,primary,electrical,PT024,other-car,"1985 FSM: 6 A or above, max 20 A. Slow charge (caps may stay on): under 5 A. No 1982 figure found."
+SP-327,Electrical,Specific gravity vs charge (1985 FSM table),1.280 = 100 %; 1.220 = 75 % (65D23L 1.230),,S-002,5-5,primary,electrical,PT024,other-car,1985 JIS batteries; the 1.280 full-charge figure matches the 1982 NS70S value.
+SP-328,Electrical,Replacement Supercharge NS70: overall length,259,mm,S-078,1,secondary,electrical,PT024,,"Width 173 mm, case height 202 mm, total height 223 mm. Datasheet of a modern sealed JIS NS70, not the 1982 battery; measure the tray, confirm."
+SP-329,Electrical,Replacement Supercharge NS70: width,173,mm,S-078,1,secondary,electrical,PT024,,
+SP-330,Electrical,Replacement Supercharge NS70: total height,223,mm,S-078,1,secondary,electrical,PT024,,Case height 202 mm.
+SP-331,Electrical,Replacement Supercharge NS70: cold cranking amps,615,A,S-078,1,secondary,electrical,PT024,,"70 Ah (20 h), reserve capacity 95 min, weight 17.29 kg."
+SP-332,Electrical,Replacement Supercharge NS70: capacity (20-hour),70,Ah,S-078,1,secondary,electrical,PT024,,
+SP-333,Electrical,"Replacement Supercharge NS70: terminal post bottom diameter, positive / negative",19.5 / 17.9,mm,S-078,1,secondary,electrical,PT024,,"SAE taper 1:9, post height 18.5 +/- 1.5 mm, polarity layout D (positive left). Charging max 14.8 V, float 13.5-13.8 V at 25 C."
+SP-334,Body,Clamp nut (catalogue hardware code),999400602,,S-005,"EC p.61, fig 1850A-1",primary,electrical,PT288,,"Printed on the figure at the clamp bar; size not given, confirm on the car."
+SP-335,Body,Carrier mounting bolt (catalogue hardware code),997960612,,S-005,"EC p.61, fig 1850A-1",primary,electrical,PT288,,"Printed on the figure at the carrier 53260; quantity not given, confirm on the car."
+SP-336,Electrical,Cable clip fasteners (catalogue hardware codes),992761410; 992891053; 997860612,,S-005,"EC p.61, fig 1850A-1",primary,electrical,PT289,,"Printed beside clips 67290 / 67293 and the cable run; which fastener holds which clip is not legible, confirm on the car. 999400600 is also shown at clip 67290."
+SP-337,Electrical,"Positive cable identification (1985 GS, forum)","solid black, with a branch to the fusible link box",,S-080,,unverified,electrical,PT289,other-car,Owner report on a 1985 GS; the negative there is black with a yellow tracer. Confirm on the car before disconnecting.
+SP-338,Electrical,Disconnect / reconnect order,negative cable removed first and installed last,,S-002,5-5,primary,electrical,PT290,other-car,1985 FSM warning; the 1980 FSM (S-045 sec.5 p.5:2) also says disconnect the negative cable before removing the alternator.
+SP-339,Electrical,Ground X-13 locations,LH front suspension tower; under dashboard LH,,S-001,30,primary,electrical,PT027,,two B eyelets on one node; confirm on the car
+SP-340,Electrical,"X-01 front to engine harness connector, cavities",22,count,S-001,30,primary,electrical,PT027,,"3+5+3 per row, two rows; confirm on the car"
+SP-341,Electrical,"X-02 front to in-panel harness connector, cavities",22,count,S-001,30,primary,electrical,PT027,,"3+5+3 per row, two rows; confirm on the car"
+SP-342,Electrical,"X-03 front to rear harness connector, cavities",22,count,S-001,30,primary,electrical,PT027,,"3+5+3 per row, two rows; confirm on the car"
+SP-343,Electrical,Fusible link conductor size,0.3,mm2,S-001,30,primary,electrical,PT316,,"X-07 block, both brown links; the 1985 manual p15-13 gives the same sizes for 12A cars"
+SP-344,Electrical,Insulation colour,brown,,S-001,30,primary,electrical,PT316,,catalogue S-005 BI-107 agrees
+SP-345,Electrical,Circuits protected,retractable headlight motor; headlights,,S-001,30,primary,electrical,PT316,,block labels RETRACTOR and HEAD(LIGHT); 1985 p15-13 says RETRACTOR 0.3sq and HEADLIGHT 0.3sq
+SP-346,Electrical,Catalogue rating as printed,10M OHM,,S-005,BI-107,primary,electrical,PT316,,printed as '(10M OHM)'; meaning unclear
+SP-347,Electrical,Location,"front LH suspension tower, link block",,S-002,15-13,primary,electrical,PT316,other-car,1985 12A cars; S-001 X-07 only labels it 'FROM BATTERY'
+SP-348,Electrical,Fusible link conductor size,1.25,mm2,S-001,"10, 30",primary,electrical,PT317,,MAIN; 1985 manual p15-13 gives the same
+SP-349,Electrical,Insulation colour,black,,S-001,30,primary,electrical,PT317,,catalogue S-005 BI-107 agrees
+SP-350,Electrical,Catalogue rating as printed,7M OHM,,S-005,BI-107,primary,electrical,PT317,,printed as '(7M OHM)'; meaning unclear
+SP-351,Electrical,Location,"front LH suspension tower, link block",,S-002,15-13,primary,electrical,PT317,other-car,1985 12A cars
+SP-352,Electrical,Fuse positions in use,15,count,S-001,30,primary,electrical,PT310,,"7 x 10 A, 4 x 15 A, 3 x 20 A, 1 x 30 A; the catalogue's '82 fuse quantities (8/5/4/1) are one more of each of 10, 15 and 20 A, which suggests spares"
+SP-353,Electrical,Spare fuse positions (1985 block),4,count,S-002,15-13,primary,electrical,PT310,other-car,"1985 block drawing labels four positions 'Spare' (two in the centre column, one on each side)"
+SP-354,Electrical,Location,under dash LH,,S-005,BI-107 (fig 6700A-1),primary,electrical,PT310,,figure draws it below the LH dash; confirm on the car
+SP-355,Electrical,Rating,10,A,S-005,BI-107,primary,electrical,PT312,,
+SP-356,Electrical,Positions on the '82 fuse block,7,count,S-001,30,primary,electrical,PT312,,"outputs: LB, L (ACC); Br, BLg (IG via BW); WG, R (battery); GY (IG via BY)"
+SP-357,Electrical,Rating,15,A,S-005,BI-107,primary,electrical,PT313,,
+SP-358,Electrical,Positions on the '82 fuse block,4,count,S-001,30,primary,electrical,PT313,,"outputs: Y (ACC); GW, LY (battery); BW (IG via BY)"
+SP-359,Electrical,Rating,20,A,S-005,BI-107,primary,electrical,PT314,,
+SP-360,Electrical,Positions on the '82 fuse block,3,count,S-001,30,primary,electrical,PT314,,"outputs: LO, LR (ACC); LR (battery)"
+SP-361,Electrical,Rating,30,A,S-005,BI-107,primary,electrical,PT315,,
+SP-362,Electrical,Positions on the '82 fuse block,1,count,S-001,30,primary,electrical,PT315,,outputs: BL (IG via BW) power windows
+SP-363,Electrical,Contact type,"normally open, single",,S-001,22,primary,electrical,PT300,,
+SP-364,Electrical,Supply fuse,15,A,S-001,"22, 30",primary,electrical,PT300,,"WR -> 15 A -> GW, shared with stop lamps"
+SP-365,Electrical,Location,under dash LH beside the CPU,,S-005,BI-101 (fig 6630A-1),primary,electrical,PT300,,the 1985 manual p15-11 agrees; confirm on the car
+SP-366,Electrical,Supply fuse (radio/antenna),20,A,S-001,24,primary,electrical,PT307,,accessory-side 20 A -> LR; 1985 p15-75 also calls it the radio or antenna fuse (20 A)
+SP-367,Electrical,"Continuity, relay terminals a-c at rest",yes,,S-002,15-75,primary,electrical,PT307,other-car,1985 relay; a-c corresponds to LR-R on the 1982 connector if the pin layout is the same - confirm
+SP-368,Electrical,"Continuity, relay terminals e-g at rest",yes,,S-002,15-75,primary,electrical,PT307,other-car,corresponds to LY-B on the 1982 connector - confirm
+SP-369,Electrical,"Coil continuity, meter (-) on b, (+) on h",yes,,S-002,15-75,primary,electrical,PT307,other-car,"diode in series with the coil, so the check is polarity-dependent; b/h correspond to LG/LR on the 1982 connector - confirm"
+SP-370,Electrical,Harness check: L to ground,"battery voltage with radio ON, key at ACC",,S-002,15-75,primary,electrical,PT307,other-car,
+SP-371,Electrical,Harness check: R to ground,"battery voltage with radio OFF, key at ACC",,S-002,15-75,primary,electrical,PT307,other-car,
+SP-372,Electrical,"Motor test: + on L, - on R",mast UP,,S-002,15-75,primary,electrical,PT307,other-car,
+SP-373,Electrical,"Motor test: + on R, - on LY",mast DOWN,,S-002,15-75,primary,electrical,PT307,other-car,
+SP-374,Electrical,Connector cavities,8,count,S-001,24,primary,electrical,PT307,,"7 used, 1 not used; confirm on the car"
+SP-375,Electrical,Location,under dash LH beside the horn relay and CPU,,S-002,15-11,primary,electrical,PT307,other-car,
+SP-376,Electrical,Identity,hot start relay (3-point relay),,S-083,,secondary,electrical,PT308,,seller listing; the catalogue location agrees; confirm on the car
+SP-377,Electrical,Contact type,"normally open, single",,S-001,10,primary,electrical,PT308,,A-03 hot start relay
+SP-378,Electrical,Connector cavities,6,count,S-001,10,primary,electrical,PT308,,4 used; confirm on the car
+SP-379,Electrical,Location,LH front engine bay beside the choke & check relay,,S-005,BI-101 (fig 6630A-1),primary,electrical,PT308,,1985 p15-11 shows the 12A hot start relay in the same place; confirm on the car
+SP-380,Electrical,Fusible link conductor size,0.5,mm2,S-001,10,primary,electrical,PT322,,"A-02 fusible link, printed '0.5sq'; confirm on the car"
+SP-381,Electrical,Fusible link colour code,G (green),,S-001,10,primary,electrical,PT322,,printed '(G)' on the A-02 connector detail; confirm on the car
+SP-382,Electrical,Connector X-01 (front to engine harness) cavities,22,count,S-001,30,primary,electrical,PT321,,"two rows of 3+5+3; 20 wired, 2 unused (dot view); confirm on the car"
+SP-383,Electrical,Connector X-03 (front to rear harness) cavities,22,count,S-001,30,primary,electrical,PT318,,"two rows of 3+5+3; 21 wired, 1 unused; confirm on the car"
+SP-384,Electrical,Connector X-02 (front to inpane harness) cavities,22,count,S-001,30,primary,electrical,PT325,,"two rows of 3+5+3, all 22 wired; confirm on the car"
+SP-385,Electrical,Connector X-12 (front to inpane harness) cavities,10,count,S-001,30,primary,electrical,PT325,,"2 rows of 5, plus a separate 2-pin connector (RL, GL); confirm on the car"
+SP-386,Electrical,Connector X-10 (to transmission harness) cavities,6,count,S-001,30,primary,electrical,PT323,,"A/T version; plus X-17, two 1-pin connectors (BL, BY); confirm on the car"
+SP-387,Brakes,"Level sensor continuity, float below MIN",continuity,,S-002,15-24,primary,electrical,PT562,other-car,1985 workshop manual Section 15; no 1982 figure found
+SP-388,Brakes,"Level sensor continuity, float above MAX",none,,S-002,15-24,primary,electrical,PT562,other-car,1985 workshop manual Section 15
+SP-389,Brakes,Warning circuit test,jumper BR to B with the engine running and parking brake released: BRAKE lamp lights,,S-002,15-24,primary,electrical,PT562,other-car,1985 workshop manual Section 15
+SP-390,Electrical,Warning lamp it lights (brake warning light),1.4,W,S-001,16,primary,electrical,PT562,,Section C; shared with parking brake switch C-04 and brake warning light checker C-03
+SP-391,Electrical,"Warning circuit feed fuse (meter, GY)",10,A,S-001,16,primary,electrical,PT562,,"IG BY through X-04 10 A to GY, then the lamp to BR"
+SP-392,Electrical,"Circuit fuse (DEFOG, Y wire)",15,A,S-001,24,primary,electrical,PT036,,"X-04 fuse block, ACC side (L feed from the ignition switch ACC terminal) (S-001 p24, p30)"
+SP-393,Electrical,Defroster indicator lamp,3.4,W,S-001,24,primary,electrical,PT036,,"Lamp in the combination meter on LG via X-05, not in the switch"
+SP-394,Electrical,Relay in circuit,none - switch carries grid current,,S-001,24,primary,electrical,PT036,,
+SP-395,Electrical,Switch continuity test,"continuity pressed ON, none OFF",,S-002,15-35,primary,electrical,PT036,other-car,1985 workshop manual
+SP-396,Electrical,Replacement Atkins Rotary B001-66-460: availability,"NLA, listed at 45 USD",,S-089,web,secondary,electrical,PT036,,Atkins lists fitment 1981-83
+SP-397,Electrical,"Filament centre voltage, switch ON",6,V,S-002,15-35,primary,electrical,PT037,other-car,"Same figure (approx. 6 V) in the 1980 manual S-045 Section 15 p15:5; near 12 V = break on the negative side, near 0 V = break on the positive side"
+SP-398,Electrical,Repair paint,Mazda silver paint 2835-77-600,,S-002,15-35,primary,electrical,PT037,other-car,S-045 (1980) p15:5 gives the same part number and names it Dupont No. 4817
+SP-399,Electrical,Repair paint drying,"24 h at 20 C, or 30 min at 60 C",,S-002,15-35,primary,electrical,PT037,other-car,also S-045 p15:5
+SP-400,Electrical,Circuit fuse,15,A,S-001,24,primary,electrical,PT037,,
+SP-401,Electrical,Ground point,X-15 via D-07 (or X-18 without rear wiper),,S-001,24,primary,electrical,PT037,,confirm on the car
+SP-402,Electrical,Functions in the unit,"turn/hazard flasher, intermittent wiper relay, lights-off reminder oscillator, ignition switch light timer, buzzer, seat belt timer, noise suppressor",,S-006,24,primary,electrical,PT301,other-car,"1981 training manual; the 1982 wiring diagram S-001 (sections D, F, H) draws the same functions on the one unit X-16"
+SP-403,Electrical,Location,"under the dashboard, driver's side",,S-006,24,primary,electrical,PT301,other-car,1981 training manual; rx7club: by the hood release
+SP-404,Electrical,Connector,X-16: 17-way plus separate 1-way (GB),,S-001,30,primary,electrical,PT301,,confirm on the car
+SP-405,Electrical,Ground check,continuity between B (terminal J) and body,,S-002,15-33,primary,electrical,PT301,other-car,1985 workshop manual
+SP-406,Electrical,Turn signal test,battery voltage on GW with turn switch on and IG ON; flashing signal on GB,,S-002,15-32,primary,electrical,PT301,other-car,1985 workshop manual
+SP-407,Electrical,Intermittent wiper test,ground LO with IG ON: wiper runs intermittently; else check L and LW voltage,,S-002,15-45,primary,electrical,PT301,other-car,1985 workshop manual
+SP-408,Electrical,Seat belt warning lamp on-time,6,s,S-002,15-25,primary,electrical,PT301,other-car,about 6 s; 1985 workshop manual
+SP-409,Electrical,Seat belt warning lamp,3.4,W,S-001,26,primary,electrical,PT301,,
+SP-410,Electrical,Ignition switch light,3.4,W,S-001,26,primary,electrical,PT301,,timed by the CPU on GL
+SP-411,Electrical,Flasher load per side (front 27 W + rear 27 W + indicator 3.4 W),57.4,W,S-001,22,primary,electrical,PT301,,sum of the bulb ratings on the diagram
+SP-412,Electrical,"Hazard feed fuse (WG, constant)",10,A,S-001,22,primary,electrical,PT301,,
+SP-413,Electrical,"Turn feed fuse (GY, ignition)",10,A,S-001,22,primary,electrical,PT301,,
+SP-414,Electrical,"Wiper / INT feed fuse (L, accessory)",10,A,S-001,18,primary,electrical,PT301,,
+SP-415,Electrical,Replacement Atkins Rotary FA02-67-577: availability,"out of stock, listed at 199 USD, fitment 1981-85",,S-088,web,secondary,electrical,PT303,,"conflicts with the catalogue, which limits FA02-67-577 to '81 serials to 503735 (S-005 BI-101-11)"
+SP-416,Electrical,Connector C-10 cavities used,"6-way: G, YB, LR, YR (two of six cavities not used); B on a separate 1-way",,S-001,16,primary,electrical,PT305,,confirm on the car
+SP-417,Electrical,Replacement Atkins Rotary FA30-67-690A: availability,"NLA, listed at 70 USD, fitment 1981-85",,S-087,web,secondary,electrical,PT305,,
+SP-418,Electrical,Location,left front fender near the battery,,S-087,web,secondary,electrical,PT305,,the 1985 relay location figure (S-002 p15-11) also shows the oscillator at the left front; confirm
+SP-419,Electrical,Wiper switch INT position contacts,AS-SWL and INT-E closed,,S-002,15-15,primary,electrical,PT029,other-car,1985 combination switch table: INT grounds the CPU LO line
+SP-420,Electrical,"Horn circuit fuse (HORN STOP, GW)",15,A,S-001,22,primary,electrical,PT473,,shared with stop lights
+SP-421,Electrical,Switching,ground-side: contact grounds the horn relay coil,,S-001,22,primary,electrical,PT473,,
+SP-422,Electrical,"Meter circuit fuse (X-04, IG side, GY out)",10,A,S-001,16,primary,electrical,PT614,,
+SP-423,Electrical,Harness connectors to the cluster,"X-05 and X-06, round 13-cavity with centre key",,S-001,30,primary,electrical,PT614,,cavity count read from the connector face drawing; confirm on the car
+SP-424,Electrical,Voltmeter scale,8 to 16,V,S-002,15-18,secondary,electrical,PT614,other-car,"1985 Section 15; the 1982 cluster also has a voltmeter (S-001 p16), scale confirm"
+SP-425,Electrical,Voltmeter allowable indication error,2 needle widths,,S-002,15-18,secondary,electrical,PT614,other-car,1985 Section 15
+SP-426,Electrical,Gauge test tool (resistance checker),49 0839 285,,S-045,15:6,secondary,electrical,PT614,other-car,1980 Section 15; same tool in 1985 S-002 p15-19
+SP-427,Electrical,Tachometer allowable range at 1000 rpm,880 to 1060,rpm,S-002,15-18,secondary,electrical,PT620,other-car,"1985 Section 15, at 20 C; tester on the ignition coil negative terminal"
+SP-428,Electrical,Tachometer allowable range at 2000 rpm,1970 to 2150,rpm,S-002,15-18,secondary,electrical,PT620,other-car,"1985, at 20 C"
+SP-429,Electrical,Tachometer allowable range at 3000 rpm,2964 to 3216,rpm,S-002,15-18,secondary,electrical,PT620,other-car,"1985, at 20 C"
+SP-430,Electrical,Tachometer allowable range at 4000 rpm,3976 to 4264,rpm,S-002,15-18,secondary,electrical,PT620,other-car,"1985, at 20 C"
+SP-431,Electrical,Tachometer allowable range at 5000 rpm,4988 to 5312,rpm,S-002,15-18,secondary,electrical,PT620,other-car,"1985, at 20 C"
+SP-432,Electrical,Tachometer allowable range at 6000 rpm,6000 to 6360,rpm,S-002,15-18,secondary,electrical,PT620,other-car,"1985, at 20 C"
+SP-433,Electrical,Tachometer allowable range at 7000 rpm,6965 to 7455,rpm,S-002,15-18,secondary,electrical,PT620,other-car,"1985, at 20 C"
+SP-434,Electrical,Speedometer allowable range at 10 mph,9.0 to 11.5,mph,S-002,15-18,secondary,electrical,PT621,other-car,1985 Section 15
+SP-435,Electrical,Speedometer allowable range at 30 mph,27.0 to 34.5,mph,S-002,15-18,secondary,electrical,PT621,other-car,1985 Section 15
+SP-436,Electrical,Speedometer allowable range at 60 mph,54.0 to 69.0,mph,S-002,15-18,secondary,electrical,PT621,other-car,1985 Section 15
+SP-437,Electrical,Speedometer allowable range at 90 mph,81.0 to 103.5,mph,S-002,15-18,secondary,electrical,PT621,other-car,1985 Section 15
+SP-438,Electrical,Fuel gauge test: checker resistance for F,7,ohm,S-045,15:6,secondary,electrical,PT623,other-car,1980 Fig 15-19; 1985 S-002 p15-19 gives the same 7 / 32.5 / 95
+SP-439,Electrical,Fuel gauge test: checker resistance for 1/2,32.5,ohm,S-045,15:6,secondary,electrical,PT623,other-car,1980 and 1985 agree
+SP-440,Electrical,Fuel gauge test: checker resistance for E,95,ohm,S-045,15:6,secondary,electrical,PT623,other-car,1980 and 1985 agree
+SP-441,Electrical,Temperature gauge test: checker resistance at H,16,ohm,S-045,15:6,secondary,electrical,PT623,other-car,1980 Fig 15-20; 1985 S-002 p15-20 gives 16.1
+SP-442,Electrical,"Temperature gauge test: checker resistance, upper normal mark",21,ohm,S-045,15:6,secondary,electrical,PT623,other-car,1980; 1985 gives 21.1
+SP-443,Electrical,"Temperature gauge test: checker resistance, lower normal mark",104,ohm,S-045,15:6,secondary,electrical,PT623,other-car,1980; 1985 gives 104.1
+SP-444,Electrical,Temperature gauge test: checker resistance at C,233,ohm,S-045,15:6,secondary,electrical,PT623,other-car,1980 and 1985 agree
+SP-445,Electrical,Gauge settling time before judging,2,min,S-045,15:6,secondary,electrical,PT623,other-car,1980; tolerance about 2 needle widths (1985 says twice the needle width)
+SP-446,Lighting,"Factory rating (meter illumination, oil level, high beam, retractor indicators)",3.4,W,S-001,"16, 20",primary,electrical,PT626,,
+SP-447,Lighting,Replacement Eiko 194: current at 14 V design voltage,0.27,A,S-093,1,secondary,electrical,PT626,,
+SP-448,Lighting,Replacement Eiko 194: base and bulb,"W2.1x9.5d miniature wedge, T3-1/4, C-2F filament",,S-093,1,secondary,electrical,PT626,,
+SP-449,Lighting,Replacement Eiko 194: max overall length,26.9,mm,S-093,1,secondary,electrical,PT626,,"MOD 10.2 mm, LCL 14.2 mm"
+SP-450,Lighting,Replacement Eiko 194: light output,25,lm,S-093,1,secondary,electrical,PT626,,rated life 2500 h
+SP-451,Lighting,"Factory rating (brake, stop light, alternator, coolant level warning lamps)",1.4,W,S-001,16,primary,electrical,PT627,,
+SP-452,Lighting,Replacement Eiko 74: current at 14 V design voltage,0.1,A,S-094,1,secondary,electrical,PT627,,
+SP-453,Lighting,Replacement Eiko 74: base and bulb,"W2.1x4.9d sub-miniature wedge, T1-3/4, C-2F filament",,S-094,1,secondary,electrical,PT627,,
+SP-454,Lighting,Replacement Eiko 74: max overall length,20.3,mm,S-094,1,secondary,electrical,PT627,,"MOD 5.9 mm, LCL 10.2 mm"
+SP-455,Lighting,Replacement Eiko 74: light output,8.8,lm,S-094,1,secondary,electrical,PT627,,rated life 1000 h
+SP-456,Lighting,"Bulb held (figure callout 75115, Mazda 0000-11-0194, trade 194)",3.4,W,S-005,"BI p49, fig 5540A-1",primary,electrical,PT628,,The figure pairs socket 55261 with bulb 75115; the rows give 75115 = 0000-11-0194 (A12V 3.4W). Confirm on the car which of the cluster positions use this socket.
+SP-457,Lighting,Quantity in the cluster,9,pcs,S-005,"BI p49, fig 5540A-1",primary,electrical,PT628,,Matches the 9 bulbs 0000-11-0194 in the same figure.
+SP-458,Lighting,Bulb base accepted (from the 194 bulb),T-3 1/4 wedge,,S-095,194 bulb page,secondary,electrical,PT628,,"Derived from the bulb the catalogue fits (194); the 194 is a T-3 1/4 glass wedge, 14 V 0.27 A. Confirm on the car."
+SP-459,Lighting,"Bulb held (figure callout 75115A, Mazda 0000-11-0074, trade 74)",1.4,W,S-005,"BI p49, fig 5540A-1",primary,electrical,PT629,,The figure pairs socket 55261A with bulb 75115A; the rows give 75115A = 0000-11-0074 (1.4W). The S-001 decode also gives the warning lamps as 1.4 W. Confirm on the car.
+SP-460,Lighting,Quantity in the cluster,6,pcs,S-005,"BI p49, fig 5540A-1",primary,electrical,PT629,,Eight 74 bulbs are listed against six of these sockets; where the other two sit is not shown (confirm on the car).
+SP-461,Electrical,Supply fuse (LY constant bus),15,A,S-001,PDF p.26,primary,electrical,PT630,,"X-04 15 A off WR; shared with interior light, lighter, clock, luggage light"
+SP-462,Electrical,Supply fuse (LY constant bus),15,A,S-001,PDF p.26,primary,electrical,PT631,,works with the key out; the 1985 fuse card shows 10 A CIGAR (other car)
+SP-463,Electrical,"Supply fuse (WG, constant)",10,A,S-001,"PDF p.28, p.22",primary,electrical,PT634,,"X-04 10 A off WR (p.28); the hazard feed WG is drawn off a 10 A WR fuse too (p.22), read as the same fuse; confirm on the fuse block"
+SP-464,Electrical,"Switch continuity, left mirror selected","UP: c-d-f, a-b; DOWN: c-b-f, a-d; LEFT: c-d, a-b; RIGHT: c-b, a-d",,S-002,Section 15 p.15-42,primary,electrical,PT634,other-car,"1985 switch letters: a=B ground, b=Lg LH motor, c=feed, d=LgB motor common, e=LgR RH motor, f=LgY solenoids. 1982 uses the same wire colours (S-001 p.28); confirm that the switch is the same"
+SP-465,Electrical,"Switch continuity, right mirror selected","UP: c-d-f, a-e; DOWN: c-e-f, a-d; LEFT: c-d, a-e; RIGHT: c-e, a-d",,S-002,Section 15 p.15-42,primary,electrical,PT634,other-car,same letters as the left-side row
+SP-466,Electrical,Mirror connector continuity (motor pins a-b and solenoid pins c-d),a-b yes; c-d yes; a-c no; b-d no,,S-002,Section 15 p.15-41,primary,electrical,PT634,other-car,mirror side test that goes with the switch; 1985
+SP-467,Electrical,"Supply fuse (LR constant, OPENER)",20,A,S-001,PDF p.26,primary,electrical,PT635,,shared with the glass-hatch release; 1985 card calls it 20 A OPENER (S-002 p.15-13)
+SP-468,Electrical,Switch check,"continuity when pulled ON, none when OFF; LR to ground shows battery voltage with the switch unplugged",,S-002,Section 15 p.15-38 to 15-39,primary,electrical,PT635,other-car,1985 procedure; same wires LR/GB as 1982 S-001 p.26
+SP-469,Electrical,"Supply fuse (rear wiper and washer, L ignition)",10,A,S-001,PDF p.18,primary,electrical,PT637,,fuse feeds the motors; the switch works on the ground side
+SP-470,Electrical,Tail/park feed fuse to the light switch (R),10,A,S-001,"PDF p.20, p.22",primary,electrical,PT638,,"headlight side is fed WG through a 0.3 sq fusible link, not a fuse"
+SP-471,Electrical,Hazard feed fuse (WG) and turn feed fuse (GY),10,A,S-001,PDF p.22,primary,electrical,PT638,,"two separate 10 A fuses; hazard constant, turn on ignition"
+SP-472,Body,Steering wheel nut torque (the wheel comes off to change the switch),40-50,N·m,S-038,T:7,primary,electrical,PT638,,29-36 ft-lb
+SP-473,Electrical,"Light, dimmer and passing switch continuity","OFF: A-D (passing ON adds E-H); PARK: A-B-D (passing ON adds E-H); HEAD LOW: E-C-I, A-B; HEAD HIGH: E-C-H, A-B",,S-045,80RX7_15 p.15:9 (PDF p.11),primary,electrical,PT638,other-car,"1980 switch leads: A RL, B RG, C LR, D LY, E WR, H RW, I RB, F/G/J not used. The 1982 harness colours differ (S-001 E-01: R, WG, RW, R, GL, RL, RY, RG), so the 1982 switch may be wired differently; confirm on the part"
+SP-474,Electrical,Turn signal and hazard switch continuity,"Hazard OFF: left D-E, F-H; neutral D-E; right D-E, F-G. Hazard ON: C-E, F-G-H",,S-045,80RX7_15 p.15:9 (PDF p.11),primary,electrical,PT638,other-car,"1980 leads: A G, B not used, C WL, D GY, E WG, F GR, G GW, H GB. 1982 F-02 carries WG, GW, GY, GR, GO, GB; confirm"
+SP-475,Electrical,Wiper and washer switch continuity,"INT: A-B, D-F; OFF: A-B; LOW: B-F; HIGH: C-F; washer ON: E-F",,S-045,80RX7_15 p.15:9 (PDF p.11),primary,electrical,PT640,other-car,"1980 leads: A Y, B W, C R, D G, E L, F B (ground). 1982 D-03 carries B, LO, LY, LR, LG, LW; confirm"
+SP-476,Electrical,"Horn relay fuse (GW, shared with stop lamps)",15,A,S-001,PDF p.22,primary,electrical,PT642,,the horn contact only switches relay coil current
+SP-477,Electrical,Horn current (adjusted),3.0,A,S-045,80RX7_15_Body_Electrical.pdf p15:5 (PDF p7),primary,electrical,PT647,other-car,"tolerance +/- 0.5 A at 12 V; set with the adjusting screw, each horn separately, tone checked as a pair. 1980 manual; no 1982 figure found in S-038"
+SP-478,Electrical,Circuit fuse (shared with stop lights),15,A,S-001,p22 (section F),primary,electrical,PT647,,GW from the 15 A fuse feeds relay F-16; horns sound on GY
+SP-479,Electrical,Horn current (adjusted),3.0,A,S-045,80RX7_15_Body_Electrical.pdf p15:5 (PDF p7),primary,electrical,PT648,other-car,"tolerance +/- 0.5 A at 12 V; set with the adjusting screw, each horn separately, tone checked as a pair. 1980 manual; no 1982 figure found in S-038"
+SP-480,Electrical,Circuit fuse (shared with stop lights),15,A,S-001,p22 (section F),primary,electrical,PT648,,GW from the 15 A fuse feeds relay F-16; horns sound on GY
+SP-481,Electrical,Power window circuit fuse,30,A,S-001,p28 (section I),primary,electrical,PT646,,"X-04 30 A fuse, BW from ignition switch IG in, BL out to both switches; not fitted on this car"
+SP-482,Electrical,"Supply at switch connector, ignition ON",battery voltage,V,S-002,Section 15 p15-37,primary,electrical,PT646,other-car,"measure BL to body ground; B must show continuity to ground. 1985 manual (one 6-pin switch there, not the 1982 pair of 4-pin switches)"
+SP-483,Electrical,"Actuator solenoid coil resistance (a-b, a-c, a-d)",25-35,ohm,S-002,Section 15 p15-53,primary,electrical,PT650,other-car,a = common; 1985 manual. 1982 actuator FA43-66-310B not confirmed identical
+SP-484,Electrical,Actuator test with ACC checker: engine speed held,2000-3000,rpm,S-002,Section 15 p15-51,primary,electrical,PT650,other-car,"slide switch H, check switch ON with engine running; release above 4000 rpm (p15-53). Needs the ACC checker 49 9200 010"
+SP-485,Engine,Actuator cable free play (12A),7-13,mm,S-002,Section 15 p15-51,primary,electrical,PT651,other-car,pressed lightly at the cable with 100-200 g; set at the adjusting nut. 13B: 6-11 mm
+SP-486,Electrical,Cruise control unit fuse,10,A,S-001,p14 (section B),primary,electrical,PT652,,"X-04 10 A fuse from BW (IG) feeds Br to main switch, stop switch and clutch switch"
+SP-487,Electrical,Unit connector,13,cavities,S-001,p14 (section B),primary,electrical,PT652,,"B-25, 12 wires, one cavity marked not used (6 cavities top row, 7 bottom)"
+SP-488,Lighting,Main switch indicator lamp,3.4,W,S-001,p14 (section B),primary,electrical,PT654,,"lamp inside the C.C. main switch B-31, grounded on B. The 1985 main switch has two 1.4 W lamps (S-002 15-49)"
+SP-489,Lighting,Radio illumination lamp,3.4,W,S-001,p20 (Section E),primary,electrical,PT655,,"fed RG from the combination switch tail circuit, not the dimmed RL bus; confirm the bulb in the unit"
+SP-490,Electrical,"Supply fuse (X-04, shared with power antenna relay and main amp)",20,A,S-001,p24 (Section G),primary,electrical,PT655,,L (ACC) bus -> X-04 20 A -> LR
+SP-491,Electrical,"Speakers in the GS standard system (AM/FM stereo radio with 4 speakers, power amplifier and fader control)",4,count,S-004,p15,primary,electrical,PT655,,"1982 US brochure, RX-7 GS standard equipment"
+SP-492,Electrical,"AM antenna trimmer adjustment: ACC, antenna fully extended, tune a weak station near",1400,kHz,S-002,"Section 15, 15-66 and 15-71",primary,electrical,PT655,other-car,"1985 manual; turn the trimmer screw for maximum sensitivity; the '82 unit's trimmer position not documented, confirm"
+SP-493,Electrical,"Back-up (memory) lead check: voltage to ground while tuning, engine on and off, higher than about",8,V,S-002,"Section 15, 15-74",primary,electrical,PT655,other-car,1985 electronic-tuner only; the '82 full-control radio has no back-up lead in S-001 p24
+SP-494,Electrical,Rated output per channel,5,W,S-005,"BI p105 (6680A-2, 66920A)",primary,electrical,PT660,,"Clarion 0000-81-142C, 5 W x 2, '81 & '82 GS"
+SP-495,Electrical,Output channels,2,count,S-005,"BI p105 (6680A-2, 66920A)",primary,electrical,PT660,,rear LH and rear RH (S-001 p24)
+SP-496,Electrical,Rated output per channel,25,W,S-005,"BI p105 (6680A-2, 66920E)",primary,electrical,PT661,,"Clarion 0000-81-0287-83, 25 W x 2; listed GS & GSL without a year"
+SP-497,Electrical,Output channels,2,count,S-005,"BI p105 (6680A-2, 66920E)",primary,electrical,PT661,,
+SP-498,Electrical,"Speaker nominal size, dual cone",4,in,S-005,"BI p105 (6680A-2, 66960C)",primary,electrical,PT662,,about 102 mm nominal trade size; confirm cut-out on the car
+SP-499,Electrical,"Speaker power rating, nominal (25 W max quoted)",5,W,S-104,thread,unverified,electrical,PT662,other-car,"forum post about first-gen OEM speakers, year not stated; measure"
+SP-500,Electrical,"Rear speaker nominal size, single cone (0000-81-0643)",5,in,S-005,"BI p105 (6680A-2, 66970)",primary,electrical,PT664,,one of two alternatives; GS most likely per S-004 p15; confirm
+SP-501,Electrical,"Rear speaker nominal size, coaxial (0000-81-5216-01)",6.5,in,S-005,"BI p105 (6680A-2, 66970)",primary,electrical,PT664,,the alternative; S-004 p15 lists 2-way coaxial rears for GSL
+SP-502,Electrical,"DIN cord to rear amp, 1985 pinout: 1 out R-R+, 2 battery (amp), 3 out R-L+, 4 out R-R-, 5 out R-L-, 6 ground, E shield",6,pins+shield,S-002,"Section 15, 15-64 and 15-65",primary,electrical,PT657,other-car,1985 AM/FM-MPX tuner to rear amp (System 3); '82 pinout not documented; confirm
+SP-503,Electrical,Diodes fitted,2,count,S-005,"BI p105 (6680A-2, 67242A)",primary,electrical,PT667,,one per head lamp retractor motor per the figure inset; confirm
+SP-504,Electrical,"Fuse feeding the power antenna (X-04 fuse block, LR circuit, fed by the switched L line from the ignition switch X-08, not always live)",20,A,S-001,24,primary,electrical,PT668,,Shares the fuse with the stereo/radio and main amp (S-001 p24); the 1985 manual (S-002 p15-75) calls it the radio or antenna fuse (20 A) and tests with the key at ACC
+SP-505,Electrical,Motor bench test: raises the mast with battery + on L and - on R (motor connector),12,V,S-002,15-75,primary,electrical,PT668,other-car,"1985 manual; the 1982 motor G-02 carries the same L, LY and R wires on S-001 p24; confirm"
+SP-506,Electrical,Motor bench test: lowers the mast with battery + on R and - on LY (motor connector),12,V,S-002,15-75,primary,electrical,PT668,other-car,1985 manual; the wires match S-001 p24 G-02; confirm
+SP-507,Electrical,Relay check at the harness-side antenna connector: battery voltage from L to ground with the radio ON (key at ACC),12,V,S-002,15-75,primary,electrical,PT671,other-car,"1985 manual (connector J-02); if not present, replace the relay"
+SP-508,Electrical,Relay check at the harness-side antenna connector: battery voltage from R to ground with the radio OFF (key at ACC),12,V,S-002,15-75,primary,electrical,PT671,other-car,1985 manual (connector J-02)
+SP-509,Electrical,"Fuse feeding the front washer and wiper (X-04 fuse block, LB circuit, ignition IG)",10,A,S-001,18,primary,electrical,PT038,,
+SP-510,Electrical,Front washer motor check: battery voltage on the feed wire with the ignition ON; motor runs when the switched wire is grounded,12,V,S-002,15-45,primary,electrical,PT038,other-car,"1985 manual names the feed L and the switched wire LY (connector D-02). The 1982 feed is LB (S-001 p18). If the pump does not run with LY grounded, replace it"
+SP-511,Electrical,Replacement Mazda 8532-76-672 (current supply): fits 1979-94 RX-7; shipping weight,0.3,lb,S-106,,secondary,electrical,PT038,,"Atkins Rotary, 99 USD, in stock; Mazdatrix sells the same number at 48.39 USD"
+SP-512,Electrical,"Wiping speed, LOW (motor test, no load)",43-60,rpm,S-045,80RX7_15_Body_Electrical p15:4 (15-B-3),primary,electrical,PT678,other-car,1980 workshop manual; no 1982 figure found (S-038 has no body-electrical table). Same 1979-85 motor family; confirm
+SP-513,Electrical,"Wiping speed, HIGH (motor test, no load)",62-95,rpm,S-045,80RX7_15_Body_Electrical p15:4 (15-B-3),primary,electrical,PT678,other-car,1980 workshop manual; HIGH must exceed LOW by more than 15 rpm; confirm
+SP-514,Electrical,"No-load current, LOW",4,A max,S-045,80RX7_15_Body_Electrical p15:4 (15-B-3),primary,electrical,PT678,other-car,less than 4 A; 1980 workshop manual; confirm
+SP-515,Electrical,"No-load current, HIGH",4,A max,S-045,80RX7_15_Body_Electrical p15:4 (15-B-3),primary,electrical,PT678,other-car,less than 4 A; 1980 workshop manual; confirm
+SP-516,Electrical,Bench test: HIGH speed,"battery + to L, ground LR",,S-045,80RX7_15_Body_Electrical p15:4,primary,electrical,PT678,other-car,"1980 table: ground terminal A (LR), power terminal D (L), ammeter between battery and D. 1985 manual (S-002 15-45) gives the same test with its own letters: + to A, - to C for high (- to B for low); it names no wire colours. Wire colours match the 1982 connector in S-001 p18"
+SP-517,Electrical,Bench test: LOW speed,"battery + to L, ground LW",,S-045,80RX7_15_Body_Electrical p15:4,primary,electrical,PT678,other-car,"1980 table: ground terminal C (LW), power D (L). Same in S-002 15-45"
+SP-518,Electrical,Bench test: auto stop,"battery + to L, ground B, jumper LB to LW",,S-045,80RX7_15_Body_Electrical p15:4,primary,electrical,PT678,other-car,"1980 table: ground E (B), power D (L), jumper between B (LB) and C (LW); motor must stop with blades at the park position"
+SP-519,Electrical,Circuit fuse,10,A,S-001,18 (Section D),primary,electrical,PT678,,IG-switched through fuse X-04 10 A; confirm on the car
+SP-520,Electrical,Speeds,2 + intermittent,,S-001,18 (Section D),primary,electrical,PT678,,LO and HI brushes; intermittent via the Control Processing Unit X-16
+SP-521,Electrical,Connector,"4-pole plug (LW, LR, L, LB) + 1-pole ground plug (B)",,S-001,18 (Section D connector D-02),primary,electrical,PT678,,from S-001 connector view; confirm on the car
+SP-522,Body,Front blade length (aftermarket fitment),432,mm,S-113,"RX-7 table, 1982 row",secondary,electrical,PT686,,listed 17 in driver and passenger (and 17 in rear); confirm by measuring
+SP-523,Electrical,"Feed fuse (IG, X-04 fuse block, shared with rear washer)",10,A,S-001,Section D p18,primary,electrical,PT688,,"Feed L from ignition IG via 10 A fuse, becomes LB at X-03 and L at D-07 into the motor; confirm on the car"
+SP-524,Electrical,Motor control method,"ground-side switched: motor BG lead grounded through D-06 rear wiper & washer switch to B, X-11, X-02, X-13",,S-001,Section D p18,primary,electrical,PT688,,Motor has constant IG feed on L; the cabin switch completes the ground; confirm on the car
+SP-525,Electrical,Internal auto-stop (park) switch,"yes - single contact inside the motor to body ground, keeps the motor running to the park position after the switch is turned off",,S-001,Section D p18,primary,electrical,PT688,,Drawn inside D-05 with its own ground symbol (no connector pin); confirm on the car
+SP-526,Electrical,"Standard equipment, 1982 US",GSL only (listed as GSL addition over GS: rear-window wiper/washer),,S-004,15,primary,electrical,PT688,,Whether this GS has one fitted - confirm on the hatch
+SP-527,Electrical,"Bench test: battery + to motor connector terminal A, - to terminals B and C",motor must turn,,S-002,Section 15 p15-46,primary,electrical,PT688,other-car,"1985 workshop manual only; the page says a battery, no voltage figure; 1982 S-001 shows two harness leads L and BG plus an internal ground, so the A/B/C letters are 1985 - confirm on the car"
+SP-528,Electrical,"Circuit check: voltage between line L and body ground, ignition ON",voltage present (none: check the fuse or repair the harness),,S-002,Section 15 p15-46,primary,electrical,PT688,other-car,1985 manual gives no voltage figure on this page; the troubleshooting table (p15-43) names the fuse R. WIPER; 1982 wiring agrees the L lead is IG-fed (S-001 D p18)
+SP-529,Electrical,Troubleshooting causes when rear wiper does not work,R. WIPER fuse blown; faulty rear wiper motor; faulty rear wiper switch; faulty wiring or ground,,S-002,Section 15 p15-43,primary,electrical,PT688,other-car,"1985 manual; abnormal noise causes listed: brush wear, loose motor mounting screw, insufficient grease in link joint"
+SP-530,Electrical,"Shipping weight, motor 1480-67-450C",3,lb,S-114,,secondary,electrical,PT688,,"Retailer listing weight; listed NLA, fits 1981-85"
+SP-531,Body,Rear wiper blade length (lookup table),17,in,S-113,,unverified,electrical,PT696,,"Blade-size lookup site gives 17 in for driver, passenger and rear, 1979-84 and 1985; no factory source seen - measure the blade on the car; confirm"
+SP-532,Electrical,Key positions,"OFF, ACC, IG, ST",,S-001,"10, 26",primary,electrical,PT708,,switch symbol on Section A and H pages
+SP-533,Electrical,"Supply fusible link (main, X-07)",1.25,mm2,S-001,26,primary,electrical,PT708,,WR from battery via 1.25 sq link to X-08
+SP-534,Electrical,Start circuit fusible link (X-09),0.5,mm2,S-001,10,primary,electrical,PT708,,ST output -> 0.5 sq link -> BY to inhibitor switch and starter
+SP-535,Electrical,IG output fuse to alternator excitation (X-04),15,A,S-001,10,unverified,electrical,PT708,,BY -> fuse -> BW to alternator A-08; the scan is faint and reads 15A (or 7.5A); charging-starting.md says 7.5 A. Read the fuse block on the car - confirm
+SP-536,Electrical,IG output fuse to GY bus (X-04),10,A,S-001,26,primary,electrical,PT708,,BY -> 10 A -> GY
+SP-537,Electrical,ACC output fuse to front wiper (X-04),10,A,S-001,18,primary,electrical,PT708,,L -> 10 A -> L to front wiper motor D-02 and CPU X-16 (the LB on this page comes from the second 10 A fuse)
+SP-538,Electrical,ACC output fuse to rear wiper/washer (X-04),10,A,S-001,18,primary,electrical,PT708,,"L -> second 10 A -> LB (rear washer D-04, rear wiper D-07, front washer D-01)"
+SP-539,Electrical,ACC output fuse to LO bus (X-04),20,A,S-001,26,primary,electrical,PT708,,"L -> 20 A -> LO (glove box light, seat belt light); OEM-RECORD lists LO as WR constant - page 26 draws it from the switch ACC side, confirm"
+SP-540,Electrical,Continuity ACC (1980 switch),C-E,,S-045,"15:10 (pdf p12), Fig 15-32",primary,electrical,PT708,other-car,"1980 terminal letters/colours A BY, B YB, C WR, D BW, E L, F RB, G B, H YB"
+SP-541,Electrical,Continuity ON (1980 switch),C-D-E; F-H,,S-045,15:10 (pdf p12),primary,electrical,PT708,other-car,
+SP-542,Electrical,Continuity START (1980 switch),C-D-A-B; F-G,,S-045,15:10 (pdf p12),primary,electrical,PT708,other-car,E (ACC) is open in START
+SP-543,Electrical,Continuity LOCK (1985 switch),H-I,,S-002,15-14,primary,electrical,PT708,other-car,H-I is the 1985 key reminder contact (closed with key in)
+SP-544,Electrical,Continuity ACC (1985 switch),D-G; H-I,,S-002,15-14,primary,electrical,PT708,other-car,
+SP-545,Electrical,Continuity ON (1985 switch),D-E-F-G; H-I,,S-002,15-14,primary,electrical,PT708,other-car,
+SP-546,Electrical,Continuity START (1985 switch),B-C; A-D-E-F; H-I,,S-002,15-14,primary,electrical,PT708,other-car,
+SP-547,Electrical,Replacement Mazda BA14-66-151A: substitute for NLA BA24-66-155A,BA14-66-151A,,S-117,web,secondary,electrical,PT708,,"Atkins lists BA24-66-155A NLA at 225 USD, says BA14-66-151A may work"
+SP-548,Electrical,Replacement Mazda 1984-85 ignition switch: fits 1981-85,"one extra wire, different plug colours",,S-118,web,unverified,electrical,PT708,,forum statement
+SP-549,Electrical,Contact type,"normally open, closed with key inserted",,S-001,26,primary,electrical,PT709,,H-03 symbol
+SP-550,Electrical,"Supply fuse (LY, X-04 room)",15,A,S-001,26,primary,electrical,PT709,,constant-hot
+SP-551,Electrical,"CPU input (1985: pin N, G wire, IG key reminder switch)",N,,S-002,15-12,primary,electrical,PT709,other-car,1982 wire also G to CPU X-16 per S-001 p26
+SP-552,Electrical,"Supply fuse (X-04, rear wiper/washer)",10,A,S-001,18,primary,electrical,PT701,,on ACC-side L bus
+SP-553,Electrical,Test: voltage at LB with ignition ON,12,V,S-002,15-46,primary,electrical,PT701,other-car,1985 wire colours LB/L match S-001 1982
+SP-554,Electrical,Test: ground L with LB live,"motor must run, else replace",,S-002,15-46,primary,electrical,PT701,other-car,
+SP-555,Electrical,"Memory supply fuse (LY, X-04)",15,A,S-001,26,primary,electrical,PT849,,constant-hot
+SP-556,Electrical,"Ignition supply fuse (GY, X-04)",10,A,S-001,26,primary,electrical,PT849,,
+SP-557,Electrical,Switched load: luggage compartment light,5,W,S-001,26,primary,electrical,PT816,,H-11 on LY 15 A
+SP-558,Electrical,Contact type,closes to body ground when hatch open,,S-001,26,primary,electrical,PT816,,"single-wire RB, case grounded"
+SP-559,Electrical,Switched load: glove box light,3.4,W,S-001,26,primary,electrical,PT832,,H-01 on LO 20 A
+SP-560,Electrical,Contact type,closes to ground when glove box open,,S-001,26,primary,electrical,PT832,,BL and ring-terminal B
+SP-561,Ignition,Condenser capacity,0.24-0.30,uF,S-038,T:3 (PDF p.5),primary,ignition,PT261,,
+SP-562,Ignition,Ignition timing mark location,Eccentric shaft pulley,,S-038,T:3 (PDF p.5),primary,ignition,PT014,,
+SP-563,Ignition,Ignition timing mark colours and pointer,"Leading mark yellow, trailing mark red on the eccentric shaft pulley; read against the indicator pin on the front cover",,"S-006,S-002",S-006 PDF p.34 (printed 44); S-002 p.5-35,primary,ignition,PT014,other-car,"Colours from the 1981 training manual, indicator pin from the 1985 workshop manual; no 1982 source opened states them. Confirm on the car."
+SP-564,Ignition,Timing adjustment method,Leading: loosen the distributor lock nut and rotate the housing. Trailing: loosen the trailing vacuum unit's attaching screws and move the unit,,"S-002,S-006",S-002 p.5-36; S-006 PDF p.34 (printed 44),primary,ignition,PT014,other-car,1985 and 1981 manuals give the same method; no 1982 source opened states it.
+SP-565,Ignition,Distributor installation alignment,Set leading yellow mark on the pulley to the indicator pin; align tally marks on housing and driven gear; turn the housing until the signal rotor protrusion aligns with the pick-up core; tighten lock nut,,S-002,p.5-35,primary,ignition,PT014,other-car,1985 procedure.
+SP-566,Ignition,Pick-up coil signal test,DC ammeter (max graduation 1 mA) across the coupler terminals; the needle must move when a screwdriver on the magnet core is quickly pulled away; test leading and trailing,,S-002,p.5-34,primary,ignition,PT256,other-car,1985 procedure; resistance values are on the distributor (PT014).
+SP-567,Ignition,Air gap remedy,"If the gap between the signal rotor protrusion and pick-up core is out of spec, replace the pick-up coil and bearing assembly or the distributor drive shaft",,S-002,p.5-35,primary,ignition,PT257,other-car,The 0.5-0.9 mm figure is already recorded on PT014 from S-038.
+SP-568,Ignition,Igniter check,Bench circuit with a 12 V test lamp of less than 10 W; switching ON and OFF quickly must make the lamp flash; test each igniter,,S-002,p.5-37,primary,ignition,PT258,other-car,1985 procedure.
+SP-569,Ignition,Replacement Standard Motor Products LX-642: ratings and interchange,"12 V; one connector, male blade terminals; bolt-on; made in Japan; interchange Beck/Arnley 1800041, Delphi DS10035, Kem E5007, ACDelco 88921543 / E1952A, Airtex 6H1162, Wells 55-1662, Duralast JA1098, Mazda E30124910; obsolete",,S-128,product page,secondary,ignition,PT258,,
+SP-570,Ignition,Distributor cap inspection,"Cracks, carbon tracks, burnt and corroded terminals; worn centre contact",,S-002,p.5-33,primary,ignition,PT015,other-car,1985 procedure.
+SP-571,Ignition,Replacement YEC YD306,"Listed for Mazda 8245-24-310B, RX-7",,S-130,product page,secondary,ignition,PT015,,
+SP-572,Ignition,Distributor rotor inspection,Cracks; excessive burning at the end of the metal strip,,S-002,p.5-33,primary,ignition,PT016,other-car,1985 procedure.
+SP-573,Ignition,Replacement Standard Motor Products JR87: construction and interchange,"Plastic body, aluminium contact, push-on, black; interchange 824524303A, 12329681, JR87T, N32218V05",,S-129,moreinfo pk=46521,secondary,ignition,PT016,,
+SP-574,Ignition,High-tension lead handling,"Do not puncture leads with a probe; remove from plugs by grasping and twisting the moulded cap, never by pulling the cord",,S-002,p.5-37 to 5-38,primary,ignition,PT017,other-car,1985 procedure.
+SP-575,Ignition,High-tension lead boot colours,Leading: black boot; trailing: blue boot,,S-006,PDF p.34 (printed 44),primary,ignition,PT017,other-car,1981 training manual; confirm on the car.
+SP-576,Ignition,Replacement NGK coil sold as 8245-18-100,Aftermarket NGK coil sold by Atkins as a replacement for 1980-85 12A/13B; 77.25 USD,,S-121,product page,secondary,ignition,PT013,,OEM Mazda coils are no longer made.
+SP-577,Ignition,Replacement Mazda N236-24-314 (pick-up coil and breaker plate),"Fits 1981-85 RX-7 12A and 13B; Atkins 330.00 USD (out of stock), Mazdatrix 253.86 USD",,S-122,product page,secondary,ignition,PT256,,N236-24-314 is the catalogue's alternative number; Mazdatrix listing via src-mazdatrix-ign.
+SP-578,Identity,NGK stock number,2329 (BR8EQ-14),,S-131,product page,secondary,ignition,PT019,,
+SP-579,Ignition,"Part identity: centre contact (carbon button with spring) inside the distributor cap, bearing on the rotor",1757-24-302,,S-005,"Engine-Chassis PDF p.57 (printed 1-15), fig. 1820A-1, D-code 24 496",primary,ignition,PT263,,Read from the exploded drawing: 24496 is drawn between cap 24310 and rotor 24312. Qty 1. confirm on the car.
+SP-580,Lighting,Retractable headlight switch contacts,"Two ganged poles: UP/ON joins WG (constant feed) to R (motor UP line); OFF/normal joins RW (from light switch, hot when LIGHT is off) to RY (motor DOWN line)",,S-001,"PDF p.20 (sect E, E-02)",primary,lighting,PT034,,from S-001; confirm on the car
+SP-581,Lighting,"Continuity check, retractable headlight switch (1980 4-pin): ON A(WG)-D(R); OFF B(RW)-C(RY)",ohmmeter continuity,,S-045,80RX7_15_Body_Electrical p.15:10 Fig 15-35,primary,lighting,PT034,other-car,1980 switch 8871-66-670 has 4 pins; the same WG-R / RW-RY pairs are drawn for 1982 in S-001 p.20
+SP-582,Lighting,Headlight cleaner switch inside the retractable headlight switch,"LY to cleaner motor E-11 (via X-12), B to ground (X-02, X-13)",,S-001,PDF p.20 (sect E),primary,lighting,PT034,,from S-001; whether a headlight cleaner is fitted on this US car is not known - confirm
+SP-583,Lighting,"Retractor switch test: (WG) hot with switch UP, (RY) hot with switch DOWN; then (R) hot UP and (RY) hot DOWN at the output",voltage check,,S-002,Section 15 p.15-30,primary,lighting,PT034,other-car,1985 cluster switch; same wire colours as the 1982 switch in S-001
+SP-584,Lighting,Retractor motor internal circuit,"R (UP) and RY (DOWN) each enter through a diode to a cam limit switch; its common drives the relay coil to ground; relay NO contact connects WR to the motor, NC contact grounds the motor; YG taps the motor feed through a diode to the 3.4 W retractor indicator",,S-001,"PDF p.20 (sect E, E-03/E-04)",primary,lighting,PT033,,from S-001; confirm with an ohm check on the car
+SP-585,Lighting,Retractor motor feed,own 0.3 sq fusible link on WR (separate from the 0.3 sq WG link and the 1.25 sq main),,S-001,PDF p.20 (sect E),primary,lighting,PT033,,from S-001; confirm
+SP-586,Lighting,Motor check: battery voltage on the R wire at the motor connector with light switch or retractor switch ON (UP); voltage present but no motion = motor ground or motor fault,battery voltage,V,S-002,Section 15 p.15-29,primary,lighting,PT033,other-car,"1985 procedure; motor connector wires WR, YG, R, RY are the same colours as 1982 E-03/E-04"
+SP-587,Lighting,"Manual raise: disconnect battery negative, remove the cover, turn the manual control knob on the motor shaft until the headlight is fully up",procedure,,S-045,80RX7_15_Body_Electrical p.15:1,primary,lighting,PT033,other-car,same procedure in 1985 S-002 Section 14 p.14-16
+SP-588,Lighting,"Lid up-down adjustment with motor: knob to lowest (automatic stop) position, loosen motor mounting bolts and nuts, reconnect link, slide motor fore/aft, tighten",procedure,,S-002,Section 14 p.14-18,primary,lighting,PT590,other-car,1980 S-045 p.15:3 gives the same steps
+SP-589,Body,"Lid height adjustment: loosen lock nut, turn adjusting screw in or out against the stop rubber, tighten lock nut",procedure,,S-002,Section 14 p.14-18,primary,lighting,PT587,other-car,1980 S-045 p.15:3 gives the same steps
+SP-590,Body,"Link to hinge ball pivot: press together by finger until an audible click, not pliers; redo lid up-down adjustment after hinge replacement",procedure,,S-045,80RX7_15_Body_Electrical p.15:2,primary,lighting,PT588,other-car,same caution in 1985 S-002 Section 14 p.14-17
+SP-591,Lighting,"Headlight aim: two adjusting screws per lamp; tyres at pressure, car level and unladen",procedure,,S-045,80RX7_15_Body_Electrical p.15:1,primary,lighting,PT589,other-car,same in 1985 S-002 Section 14 p.14-16
+SP-592,Lighting,"Halogen sealed beam wattage, high/low (GS/GSL halogen)",60/50,W,S-001,PDF p.20 (sect E),primary,lighting,PT035,,the lamp symbol reads 50W/40W (conventional); the note beside it gives halogen 60/50 W. LED units reported fitted - confirm what is on the car
+SP-593,Lighting,Low beam wire / high beam wire,"RY low, RL high",,S-001,PDF p.20 (sect E),primary,lighting,PT035,,RL also feeds the high beam indicator; S-002 15-30 labels RY low and RL high too. Confirm on the car
+SP-594,Lighting,"Replacement Wagner H6024 (2D1): 7 in PAR56 halogen sealed beam, 12.8 V, high 60 W / 4.69 A, low 35 W / 2.73 A, life 150 h high / 450 h low, 178 mm dia, 127 mm long, 3-lug base",60/35,W,S-133,product page,secondary,lighting,PT035,,the same listing title says 35/65 W; wattage varies by brand
+SP-595,Lighting,"Replacement Norman Lamps H6024: 12.8 V, 65 W, PAR56, 7.00 in dia, 5.00 in deep, 3-lug base, 400 h",7.00,in,S-132,product page,secondary,lighting,PT035,,
+SP-596,Brakes,"Brake pedal height (from floor), set by screwing the stop light switch in or out",190 +5/-0,mm,S-038,T:6,primary,lighting,PT557,,"procedure (disconnect wires, loosen lock nut, turn switch, tighten, reconnect) from 1985 S-002 Section 11 p.11-25, same 190 mm figure"
+SP-597,Lighting,Stop light switch contact,normally open; closes GW to W when the brake pedal is pressed,,S-001,"PDF p.22 (sect F, F-11)",primary,lighting,PT557,,from S-001; confirm
+SP-598,Lighting,Stop light switch feed,"15 A STOP/HORN fuse (X-04), constant (works with key off)",A,S-001,PDF p.22 (sect F),primary,lighting,PT557,,
+SP-599,Lighting,"Stop light switch test: test light from W to ground lights with pedal pressed; if not, check GW; if GW is hot, switch faulty or misadjusted",procedure,,S-002,Section 15 p.15-31,primary,lighting,PT557,other-car,1985 connector F-03(F); wire colours GW and W match 1982 F-11
+SP-600,Lighting,"Replacement Mazda H003-66-490A brake light switch, 82-88 RX-7 with cruise control (Mazdatrix, 47.15 USD, in stock)",47.15,USD,S-134,product page,secondary,lighting,PT557,,may be the second of the two switches the catalogue lists - confirm
+SP-601,Lighting,Stop light checker function,"W in from stop switch, G out to both stop lamp filaments, GL to the meter stop-light warning, B ground X-13",,S-001,"PDF p.22 (sect F, F-03)",primary,lighting,PT304,,identity of the catalogue lamp checker relay with F-03 is inferred - confirm
+SP-602,Lighting,"Stop light checker test: test light on G lights with pedal pressed; if W is hot and G is not, checker faulty",procedure,,S-002,Section 15 p.15-31,primary,lighting,PT304,other-car,"1985 connector F-04(F), wires GL, W, G, B"
+SP-603,Lighting,Mounting,"relay bracket under the dash with the C.P.U. and horn relay (catalogue D-code 67660, LAMPC. RELAY)",,S-005,BI p.101 fig 6630A-1,primary,lighting,PT304,,"catalogue lists 67660 RELAY, LAMP CHECKER BE32-67-680A qty 1, '(USE W/O ILLUM. KEY & WARNING LAMP)'; confirm on the car"
+SP-604,Lighting,Retractor relay quantity and fitment,"2 (one per motor), 8871-51-939, 81-82 FB331 500001-700000; 83 uses FA01-51-939 qty 1",,S-005,BI p.33 fig 5103A-1 BI-033-29,primary,lighting,PT594,,
+SP-605,Lighting,Retractor relay contacts,coil via motor limit switch to ground; NO contact WR to motor; NC contact motor to ground (dynamic brake),,S-001,PDF p.20 (sect E),primary,lighting,PT594,,drawn inside the motor outline; confirm
+SP-606,Lighting,"Parking lamp filament load, each side",8,W,S-001,PDF p22 (Section F schematic and connector views),primary,lighting,PT595,,S-001 lamp symbol 8W on RG circuit
+SP-607,Lighting,"Front turn lamp filament load, each side",27,W,S-001,PDF p22 (Section F schematic and connector views),primary,lighting,PT595,,S-001 lamp symbol 27W on GR (LH) / GO (RH)
+SP-608,Lighting,Parking lamp fuse (tail/marker/license bus RG),10,A,S-001,PDF p22 (Section F schematic and connector views),primary,lighting,PT595,,WR constant -> X-04 10A -> R -> E-01 light switch -> RG
+SP-609,Lighting,"Turn signal fuse (ignition, GY bus shared with back-up lights)",10,A,S-001,PDF p22 (Section F schematic and connector views),primary,lighting,PT595,,IG -> BY -> X-04 10A -> GY -> F-02 turn switch
+SP-610,Lighting,Bulbs per lamp,1,,S-005,BI p34 fig 5105A-1,primary,lighting,PT595,,catalogue qty 2 bulbs 0000-11-1157 for 2 lamps
+SP-611,Lighting,Bulb rating (catalogue),12V 27/8,W,S-005,BI p34 fig 5105A-1,primary,lighting,PT596,,
+SP-612,Lighting,Replacement trade 1157: high filament,12.8 V 2.10 A 32 MSCP,,S-141,PDF p18,secondary,lighting,PT596,,Candela miniature lamp catalogue row 19
+SP-613,Lighting,Replacement trade 1157: low filament,14.0 V 0.59 A 3 MSCP,,S-141,PDF p18,secondary,lighting,PT596,,
+SP-614,Lighting,Replacement trade 1157: base,D.C. indexed bayonet (BAY15d),,S-141,PDF p18,secondary,lighting,PT596,,BAY15d designation from src-norman-lamp-pages
+SP-615,Lighting,Replacement trade 1157: maximum overall length,50.8,mm,S-141,PDF p18,secondary,lighting,PT596,,2.00 in
+SP-616,Lighting,Replacement trade 1157: light centre length,31.75,mm,S-141,PDF p18,secondary,lighting,PT596,,1.25 in
+SP-617,Lighting,Replacement trade 1157: rated life high / low filament,1200 / 5000,h,S-141,PDF p18,secondary,lighting,PT596,,
+SP-618,Lighting,Replacement trade 1157: bulb shape and diameter,"S-8, 26.4",mm,S-142,1157.html,secondary,lighting,PT596,,1.04 in diameter
+SP-619,Body,Lens gasket,"FA01-51-063, qty 2",,S-005,BI p34 fig 5105A-1,primary,lighting,PT597,,
+SP-620,Lighting,"Front side marker bulb load, each side",3.8,W,S-001,PDF p22 (Section F schematic and connector views),primary,lighting,PT598,,
+SP-621,Lighting,Circuit,"RG tail/marker bus (lit with park and head positions), not a flashing turn lamp",,S-001,PDF p22 (Section F schematic and connector views),primary,lighting,PT598,,F-12/F-13 wired RG and B only
+SP-622,Lighting,Bulb rating (catalogue),12V 3.8,W,S-005,BI p34 fig 5105A-1,primary,lighting,PT599,,
+SP-623,Lighting,Replacement trade 194: rating,14.0 V 0.27 A 2 MSCP,,S-141,PDF p24,secondary,lighting,PT599,,
+SP-624,Lighting,Replacement trade 194: base and shape,"glass wedge, T-3 1/4",,S-141,PDF p24,secondary,lighting,PT599,,T-3 1/4 from src-norman-lamp-pages
+SP-625,Lighting,Replacement trade 194: maximum overall length,26.9,mm,S-141,PDF p24,secondary,lighting,PT599,,1.06 in
+SP-626,Lighting,Replacement trade 194: light centre length,14.2,mm,S-141,PDF p24,secondary,lighting,PT599,,0.56 in
+SP-627,Lighting,Replacement trade 194: rated life,2500,h,S-141,PDF p24,secondary,lighting,PT599,,Norman lists 1500 h
+SP-628,Body,Lens part numbers,"FA01-51-121 (R), FA01-51-131 (L)",,S-005,BI p34 fig 5105A-1,primary,lighting,PT600,,
+SP-629,Lighting,Stop/tail bulbs per side,2 x 27/8,W,S-001,PDF p22 (Section F schematic and connector views),primary,lighting,PT601,,S-001 '27/8W x2' each side
+SP-630,Lighting,"Rear turn lamp load, each side",27,W,S-001,PDF p22 (Section F schematic and connector views),primary,lighting,PT601,,
+SP-631,Lighting,"Back-up lamp load, each side",27,W,S-001,PDF p22 (Section F schematic and connector views),primary,lighting,PT601,,"A/T path: inhibitor switch A-06 GY in, RY out -> RW"
+SP-632,Lighting,"Stop lamp fuse (constant, shared with horn)",15,A,S-001,PDF p22 (Section F schematic and connector views),primary,lighting,PT601,,WR -> X-04 15A -> GW -> stop light switch F-11 -> W -> stop light checker F-03 -> G
+SP-633,Lighting,Tail lamp fuse (RG bus),10,A,S-001,PDF p22 (Section F schematic and connector views),primary,lighting,PT601,,
+SP-634,Lighting,Turn and back-up fuse (ignition GY bus),10,A,S-001,PDF p22 (Section F schematic and connector views),primary,lighting,PT601,,
+SP-635,Lighting,Connector cavities,6 (5 used),,S-001,PDF p22 (Section F schematic and connector views),primary,lighting,PT601,,"F-07/F-08 view: GR/GO, RW, not used, G, RG, B; confirm on the car"
+SP-636,Body,Lens gaskets,"FA01-51-153A (R), FA01-51-163A (L)",,S-005,BI p35 fig 5110A-1,primary,lighting,PT601,,
+SP-637,Lighting,"Tail light fault check: RG voltage at light switch, then front-to-rear harness connector X-06",procedure,,S-002,Section 15 p15-30,secondary,lighting,PT601,other-car,1985 manual; connector number may differ on 1982
+SP-638,Lighting,Bulb rating (catalogue),12V 27,W,S-005,BI p35 fig 5110A-1,primary,lighting,PT602,,
+SP-639,Lighting,Replacement trade 1156: rating,12.8 V 2.10 A 32 MSCP,,S-141,PDF p18,secondary,lighting,PT602,,
+SP-640,Lighting,Replacement trade 1156: base,S.C. bayonet (BA15s),,S-141,PDF p18,secondary,lighting,PT602,,BA15s from src-norman-lamp-pages
+SP-641,Lighting,Replacement trade 1156: maximum overall length,50.8,mm,S-141,PDF p18,secondary,lighting,PT602,,
+SP-642,Lighting,Replacement trade 1156: light centre length,31.75,mm,S-141,PDF p18,secondary,lighting,PT602,,
+SP-643,Lighting,Replacement trade 1156: rated life,1200,h,S-141,PDF p18,secondary,lighting,PT602,,
+SP-644,Lighting,Bulb rating (catalogue),12V 27/8,W,S-005,BI p35 fig 5110A-1,primary,lighting,PT603,,
+SP-645,Lighting,Replacement trade 1157: high / low filament,12.8 V 2.10 A 32 MSCP / 14.0 V 0.59 A 3 MSCP,,S-141,PDF p18,secondary,lighting,PT603,,same bulb as PT596
+SP-646,Body,Lens part numbers,"FA01-51-151D (R), FA01-51-161D (L)",,S-005,BI p35 fig 5110A-1,primary,lighting,PT604,,
+SP-647,Lighting,"License lamp load, each",6,W,S-001,PDF p22 (Section F schematic and connector views),primary,lighting,PT605,,
+SP-648,Lighting,License lamp fuse (RG bus),10,A,S-001,PDF p22 (Section F schematic and connector views),primary,lighting,PT605,,
+SP-649,Body,Lens gasket,"3874-66-373, qty 2",,S-005,BI p36 fig 5120A-1,primary,lighting,PT605,,
+SP-650,Lighting,Bulb rating (catalogue),12V 6,W,S-005,BI p36 fig 5120A-1,primary,lighting,PT606,,
+SP-651,Lighting,Trade number given by bulb chart,89,,S-019,1982 RX7 bulb chart,unverified,lighting,PT606,,"89 is 13 V 0.58 A (7.5 W), not 6 W; confirm on the removed bulb"
+SP-652,Lighting,Replacement trade 89: rating,13.0 V 0.58 A 6 MSCP,,S-141,PDF p16,secondary,lighting,PT606,,
+SP-653,Lighting,Replacement trade 89: base and shape,"S.C. bayonet (BA15s), G-6",,S-141,PDF p16,secondary,lighting,PT606,,BA15s and G6 from src-norman-lamp-pages
+SP-654,Lighting,Replacement trade 89: maximum overall length,36.6,mm,S-141,PDF p16,secondary,lighting,PT606,,1.44 in
+SP-655,Lighting,Replacement trade 89: light centre length,19.1,mm,S-141,PDF p16,secondary,lighting,PT606,,0.75 in
+SP-656,Lighting,Replacement trade 89: rated life,750,h,S-141,PDF p16,secondary,lighting,PT606,,
+SP-657,Body,Lens part number / quantity,"3874-66-371, 2 per car",,S-005,BI p36 fig 5120A-1,primary,lighting,PT607,,
+SP-658,Lighting,"Circuit: tail / parking / marker bus (lit steady, not flashing)",RG,,S-001,22 (Section F),primary,lighting,PT608,,F-14/F-15 rear side marker lights on RG from E-01 via X-03; confirm on the car
+SP-659,Lighting,"Circuit fuse (X-04, feeds E-01 LIGHT section R wire)",10,A,S-001,22 (Section F),primary,lighting,PT608,,WR constant -> X-04 10 A -> R -> E-01 -> RG
+SP-660,Lighting,Ground point,X-15,,S-001,22 (Section F),primary,lighting,PT608,,B wire from F-14/F-15; confirm on the car
+SP-661,Lighting,Rated power,3.8,W,S-001,"22 (Section F, F-14/F-15)",primary,lighting,PT609,,S-005 BI-036-05 also gives (A12V 3.8W)
+SP-662,Lighting,Rated voltage,12,V,S-005,"BI p36, 5120A-1 BI-036-05",primary,lighting,PT609,,printed as A12V 3.8W
+SP-663,Lighting,Replacement 194 (Candela): design voltage,14.0,V,S-141,"PDF p24 (T-3 1/4 table, line 18)",secondary,lighting,PT609,,trade number from the Mazda number 0000-11-0194
+SP-664,Lighting,Replacement 194 (Candela): current,0.27,A,S-141,PDF p24,secondary,lighting,PT609,,0.27 A x 14 V = 3.78 W
+SP-665,Lighting,Replacement 194 (Candela): mean spherical candlepower,2,MSCP,S-141,PDF p24,secondary,lighting,PT609,,
+SP-666,Lighting,Replacement 194 (Candela): maximum overall length,26.9,mm,S-141,PDF p24,secondary,lighting,PT609,,printed 1.06 in
+SP-667,Lighting,Replacement 194 (Candela): light centre length,14.2,mm,S-141,PDF p24,secondary,lighting,PT609,,printed 0.56 in
+SP-668,Lighting,Replacement 194 (Candela): filament / bulb,C-2F,,S-141,PDF p24,secondary,lighting,PT609,,"T-3 1/4 bulb (3.25/8 in = 10.3 mm diameter), wedge base, fig. 40"
+SP-669,Lighting,Replacement 194 (Candela): average rated life,2500,h,S-141,PDF p24,secondary,lighting,PT609,,
+SP-670,Lighting,Replacement EiKO 194: base,W2.1x9.5d,,S-145,,secondary,lighting,PT609,,"miniature wedge; 25 lm, 0.4 in diameter listed"
+SP-671,Body,Lens colour,red,,S-147,,secondary,lighting,PT610,,used OEM right lens listing; confirm on the car
+SP-672,Lighting,Bulb rating on the wiring diagram (H-11 luggage compartment light),5,W,S-001,26 (Section H),primary,lighting,PT611,,
+SP-673,Lighting,"Circuit fuse (X-04, LY interior bus, constant)",15,A,S-001,26 (Section H),primary,lighting,PT611,,"shared with interior/spot light, lighter, clock, ignition switch light"
+SP-674,Lighting,Rated power,5,W,S-005,"BI p38, 5125A-1 BI-038-02",primary,lighting,PT612,,printed (A12V 5W); S-001 p26 also shows 5 W
+SP-675,Lighting,Rated voltage,12,V,S-005,"BI p38, 5125A-1 BI-038-02",primary,lighting,PT612,,
+SP-676,Electrical,LIGHT section feed fuse (R wire),10,A,S-001,20 (Section E),primary,lighting,PT639,,WR constant -> X-04 10 A -> R -> E-01
+SP-677,Electrical,Headlight / dimmer feed (WG wire) fusible link,0.3,sq mm,S-001,20 (Section E),primary,lighting,PT639,,0.3 sq link at X-07; the same WG also feeds E-02 via X-02
+SP-678,Electrical,Test: RG terminal of the light switch connector reads battery voltage with the switch at the tail light position,12,V,S-002,"Section 15, 15-30",primary,lighting,PT639,other-car,"1985 manual; its E-01(F) 6-pin connector carries the same colours as 1982 (GL, R, RW / RG, RY, RL). Value = battery voltage."
+SP-679,Electrical,Test: R wire of the 6-pin connector reads battery voltage with the light switch at HEAD (pop-up raise command),12,V,S-002,"Section 15, 15-29",primary,lighting,PT639,other-car,1985 manual; value = battery voltage
+SP-680,Lighting,Glove box light (H-01) rating,3.4,W,S-001,PDF p.26,primary,lighting,PT833,,"Section H schematic, H-01 glove box light 3.4W."
+SP-681,Lighting,"Select lever illumination light (E-07, A/T) rating",3.4,W,S-001,PDF p.20,primary,lighting,PT856,,"Section E schematic, E-07 select lever illumination light (for A/T); dimmed via E-05."
+SP-682,Lighting,Center panel illumination bulb rating,3.4,W,S-005,fig 5500A-1 BI-047-15,primary,lighting,PT842,,12 V 3.4 W per the catalogue description; Mazda 0000-11-0194.
+SP-683,Lighting,Center panel illumination bulb rating,1.4,W,S-005,fig 5500A-1 BI-047-22,primary,lighting,PT845,,"1.4 W per the catalogue description; Mazda 0000-11-0074, two on the car."
+SP-684,Lighting,Replacement trade 194: design voltage,14.0,V,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT833,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-685,Lighting,Replacement trade 194: current,0.27,A,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT833,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-686,Lighting,Replacement trade 194: luminous intensity,2,MSCP,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT833,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-687,Lighting,Replacement trade 194: bulb and base,"T-3 1/4 wedge, C-2F filament",,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT833,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-688,Lighting,Replacement trade 194: maximum overall length,1.06,in,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT833,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-689,Lighting,Replacement trade 194: light centre length,0.56,in,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT833,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-690,Lighting,Replacement trade 194: average life,2500,h,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT833,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-691,Lighting,Replacement trade 194: design voltage,14.0,V,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT842,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-692,Lighting,Replacement trade 194: current,0.27,A,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT842,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-693,Lighting,Replacement trade 194: luminous intensity,2,MSCP,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT842,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-694,Lighting,Replacement trade 194: bulb and base,"T-3 1/4 wedge, C-2F filament",,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT842,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-695,Lighting,Replacement trade 194: maximum overall length,1.06,in,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT842,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-696,Lighting,Replacement trade 194: light centre length,0.56,in,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT842,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-697,Lighting,Replacement trade 194: average life,2500,h,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT842,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-698,Lighting,Replacement trade 194: design voltage,14.0,V,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT856,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-699,Lighting,Replacement trade 194: current,0.27,A,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT856,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-700,Lighting,Replacement trade 194: luminous intensity,2,MSCP,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT856,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-701,Lighting,Replacement trade 194: bulb and base,"T-3 1/4 wedge, C-2F filament",,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT856,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-702,Lighting,Replacement trade 194: maximum overall length,1.06,in,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT856,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-703,Lighting,Replacement trade 194: light centre length,0.56,in,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT856,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-704,Lighting,Replacement trade 194: average life,2500,h,S-141,PDF p.24 (T-3 1/4 table line 18),secondary,lighting,PT856,,"Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+SP-705,Lighting,Replacement CML CM194: design voltage / current / MSCP / life,14.0 V / 0.27 A / 2.0 MSCP / 1500 h,,S-149,p.1,secondary,lighting,PT833,,"VCC (Chicago Miniature) T-3 1/4 wedge table; life rating differs from Candela's 2500 h, maker-dependent."
+SP-706,Lighting,Replacement trade 74: design voltage,14.0,V,S-141,PDF p.22 (T-1 3/4 table line 1),secondary,lighting,PT845,,"Datasheet for the trade-number equivalent of Mazda 0000-11-0074 (1.4 W); cross inferred from the Mazda number, confirm the bulb in the socket."
+SP-707,Lighting,Replacement trade 74: current,0.10,A,S-141,PDF p.22 (T-1 3/4 table line 1),secondary,lighting,PT845,,"Datasheet for the trade-number equivalent of Mazda 0000-11-0074 (1.4 W); cross inferred from the Mazda number, confirm the bulb in the socket."
+SP-708,Lighting,Replacement trade 74: luminous intensity,0.70,MSCP,S-141,PDF p.22 (T-1 3/4 table line 1),secondary,lighting,PT845,,"Datasheet for the trade-number equivalent of Mazda 0000-11-0074 (1.4 W); cross inferred from the Mazda number, confirm the bulb in the socket."
+SP-709,Lighting,Replacement trade 74: bulb and base,"T-1 3/4 subminiature wedge, C-2F filament",,S-141,PDF p.22 (T-1 3/4 table line 1),secondary,lighting,PT845,,"Datasheet for the trade-number equivalent of Mazda 0000-11-0074 (1.4 W); cross inferred from the Mazda number, confirm the bulb in the socket."
+SP-710,Lighting,Replacement trade 74: maximum overall length,0.80,in,S-141,PDF p.22 (T-1 3/4 table line 1),secondary,lighting,PT845,,"Datasheet for the trade-number equivalent of Mazda 0000-11-0074 (1.4 W); cross inferred from the Mazda number, confirm the bulb in the socket."
+SP-711,Lighting,Replacement trade 74: light centre length,0.40,in,S-141,PDF p.22 (T-1 3/4 table line 1),secondary,lighting,PT845,,"Datasheet for the trade-number equivalent of Mazda 0000-11-0074 (1.4 W); cross inferred from the Mazda number, confirm the bulb in the socket."
+SP-712,Lighting,Replacement trade 74: average life,500,h,S-141,PDF p.22 (T-1 3/4 table line 1),secondary,lighting,PT845,,"Datasheet for the trade-number equivalent of Mazda 0000-11-0074 (1.4 W); cross inferred from the Mazda number, confirm the bulb in the socket."
+SP-713,Lighting,Spot lamp internal circuit,LY constant feed - spot lamp switch - bulb - case ground; independent of the door switches,,S-001,"PDF p.26 (section H, device H-06)",primary,lighting,PT958,,Read from the schematic box of H-06; confirm on the car
+SP-714,Lighting,"Feed fuse (LY bus, X-04)",15,A,S-001,PDF p.26 (section H),primary,lighting,PT958,,"Constant hot from WR; works with the key out. Shared with interior light, lighter, clock, luggage light, ignition switch light"
+SP-715,Lighting,Fitted to,"GS and GSL (interior mirror with map lamp, FA01-69-220A)",,S-005,"BI-128-02 (lamp, spot: GS & GSL); BI-129-04 (FA01-69-220A W/ MAP LAMP, GS & GSL); figure 6900A-3, Body PDF p.130",primary,lighting,PT958,,S model mirror FA03-69-220A has no map lamp
+SP-716,Lighting,Bulb carried,"0000-11-0194 (69170K, wedge)",,S-005,"BI-129-07 (0000-11-0194); figure 6900A-3, Body PDF p.130",primary,lighting,PT959,,Read from the exploded view: 69170K sits directly on socket 51354 in the W/MAP LAMP group; confirm on the car
+SP-717,Lighting,Fits,1981-1985 RX-7 (12A and 13B),,S-152,,secondary,lighting,PT960,,"Seller fitment; new Mazda part, USD 41.50 on 2026-09-25"
+SP-718,Lighting,Rating (catalogue),10,W,S-005,BI-129-06 (A12V 10W),primary,lighting,PT961,,12 V. S-001 PDF p.26 labels the interior lamp of H-06 as 5 W - the two factory sources disagree; confirm on the car
+SP-719,Lighting,Bulb form,festoon (double-ended),,S-005,"figure 6900A-3, Body PDF p.130 (item 69170J)",primary,lighting,PT961,,"Drawn as a festoon in both the W/O and W/MAP LAMP mirrors, so it is the interior (dome) lamp; confirm on the car"
+SP-720,Lighting,Interior lamp internal circuit,"LY feed - bulb - 3-position switch: ON = case ground, DOOR = RY to door switches H-07/H-08 (ground when a door opens), OFF = open",,S-001,"PDF p.26 (section H, device H-06)",primary,lighting,PT961,,RY also goes to the control processing unit X-16 (lights-off chime). Confirm on the car
+SP-721,Lighting,Replacement DE3175: voltage,13,V,S-151,,secondary,lighting,PT961,,Trade DE3175 assumed from Mazda 0000-11-3175 and the 10 W rating; confirm length on the car
+SP-722,Lighting,Replacement DE3175: current,0.77,A,S-151,,secondary,lighting,PT961,,+/-15 percent; 10 W
+SP-723,Lighting,Replacement DE3175: maximum overall length,32,mm,S-151,,secondary,lighting,PT961,,Bulb diameter 10.5 mm; SV8.5-8 festoon caps; 400 h rated life; 120 lm. Other sellers give 31 mm
+SP-724,Lighting,"Rating (catalogue, this figure)",5,W,S-005,BI-129-07 (A12V 5W),primary,lighting,PT962,,"Same part number is printed 3.8 W (BI-034-07, BI-036-05) and 3.4 W (BI-047-15 and others) elsewhere in S-005; S-001 PDF p.26 labels the spot lamp 6 W. Confirm on the car"
+SP-725,Lighting,Bulb form,"wedge, in socket 51354",,S-005,"figure 6900A-3, Body PDF p.130 (item 69170K)",primary,lighting,PT962,,Map (spot) lamp bulb; only present in the W/MAP LAMP mirror
+SP-726,Lighting,Replacement Eiko 194 (40427): rating,14 V 0.27 A,,S-150,p.1,secondary,lighting,PT962,,"About 3.8 W. Base W2.1x9.5d miniature wedge, bulb T3-1/4, filament C-2F"
+SP-727,Lighting,Replacement Eiko 194 (40427): maximum overall length,26.9,mm,S-150,p.1,secondary,lighting,PT962,,"MOD 10.2 mm, light centre length 14.2 mm, 25 lm, 2500 h rated life"

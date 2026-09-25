@@ -1,0 +1,427 @@
+id,part,terminal,function,inside,wire,to,source,page,note
+PT025-B,PT025,B,main charge output (A-09 ring terminal),positive heat sink of the 6-diode bridge rectifier,WR,battery + via the 1.25 sq main fusible link (X-07) and the WR constant bus,"S-001,S-002",S-001 PDF p.10; S-002 p.5-6,from S-001; always live; confirm on the car
+PT025-R,PT025,R,ignition-sense input to the IC regulator (A-08 coupler),IC regulator voltage-sensing input,BW,ignition switch IG side through fuse X-04 and connector X-01,"S-001,S-045",S-001 PDF p.10; S-045 5:1,R = BW per the 1980 FSM. The fuse label reads 15A in the S-001 scan; the charging-starting write-up says 7.5 A. Confirm both on the car
+PT025-L,PT025,L,charge-indicator / field-supply terminal (A-08 coupler),"diode-trio output, the field coil's positive end and the regulator",WB,choke and check relay (Section B) via connector X-01,"S-001,S-045",S-001 PDF p.10; S-045 5:1,from S-001; the 1982 diagram shows no separate charge lamp on this page; confirm on the car
+PT025-F,PT025,F,field test terminal (no wire),field coil's negative end and the regulator output transistor,,,"S-045,S-002",S-045 5:2; S-002 p.5-6,in a hole about 20 mm deep in the rear housing near B; for tests only; confirm on the car
+PT025-E,PT025,E,ground,"rectifier negative side and the regulator ground, through the case",,engine through the mounting and bracket,"S-001,S-002",S-001 PDF p.10; S-002 p.5-6,case ground; confirm on the car
+PT275-B,PT275,B,battery input,magnetic switch main contact (fixed),,battery + by the starter cable; also feeds the 0.5 sq fusible link A-02 (LW) to the hot-start relay,"S-001,S-045",S-001 PDF p.10; S-045 5:6,battery cable colour not given; the A-02 hot-start feed is likely gone with the cold-start hardware; confirm on the car
+PT275-S,PT275,S,start signal,pull-in coil (S to M) and hold-in coil (S to ground),BW,inhibitor switch A-06 (BY in from ignition switch ST); A-01 1-pin coupler,"S-001,S-002",S-001 PDF p.10; S-002 p.5-19,A/T wire is BW (M/T BY); from S-001; confirm on the car
+PT275-M,PT275,M,motor output,magnetic switch main contact (moving) to the field-coil strap,,starter field coil (internal strap),"S-045,S-002","S-045 5:6, 5:9; S-002 p.5-19",internal link; confirm on the car
+PT026-M,PT026,M,field lead from the solenoid M terminal,"field coil, then brushes and armature",,magnetic switch M terminal (internal strap),"S-001,S-002",S-001 PDF p.10; S-002 p.5-19,internal; confirm on the car
+PT026-E,PT026,E,ground,armature return brushes through the yoke and housing,,engine/transmission through the mounting bolts,"S-001,S-002",S-001 PDF p.10; S-002 p.5-19,case ground; confirm on the car
+PT276-field_lead,PT276,field lead,feeds the series field coil,"series field coil wound on the yoke poles, ending at the two (+) brushes",,solenoid M terminal (nut),S-002,"5-19, 5-23",from the 1985 reduction-starter diagram; not a harness wire; confirm on the car
+PT278-brushes,PT278,(+) brushes,armature supply,two insulated brushes fed by the field coil,,field coil in the yoke,S-002,"5-19, 5-23",1985 manual; confirm on the car
+PT278--_brushes,PT278,(-) brushes,armature ground,two brushes on the grounded plate,,starter body / engine ground,S-002,5-19,1985 manual; confirm on the car
+PT024-T,PT024,+,"Battery positive post, 12 V",positive plates of six series cells,,"Positive cable (PT289) to starting motor B terminal (no connector code; A-01 is the S-terminal lead BY M/T / BW A/T), and via main fusible link 1.25 sq at X-07 to the WR constant bus: ignition switch X-08, alternator B A-09",S-001,Section A (PDF p.10),"Heavy cable, no colour code on S-001; from S-001; confirm on the car."
+PT024--,PT024,-,"Battery negative post, ground",negative plates of six series cells,,Ground cable (PT290) to ground,S-001,Section A (PDF p.10),Ground point not drawn; from S-001; confirm on the car.
+PT289-battery_end,PT289,battery end,Clamp on battery + post,,,PT024 +,S-001,Section A (PDF p.10),from S-001; confirm on the car.
+PT289-starter_end,PT289,starter end,Ring lug on starting motor B terminal,,,Starting motor (PT026) B terminal at the magnetic switch,S-001,Section A (PDF p.10),"S-001 draws the 0.5 sq fusible link A-02 (LW, hot-start relay / No.1 water temp switch) from the motor side of the magnetic switch contacts, not from the B terminal, so it is live only while cranking. from S-001; confirm on the car."
+PT289-X-07,PT289,X-07,Feed to main fusible link 1.25 sq,,WR,"WR constant bus: ignition switch X-08, alternator B (A-09)",S-001,Section A (PDF p.10),S-001 draws battery + to X-07; whether this is a branch of the cable or a separate lead is not shown. from S-001; confirm on the car.
+PT290-battery_end,PT290,battery end,Clamp on battery - post,,,PT024 -,S-001,Section A (PDF p.10),from S-001; confirm on the car.
+PT290-ground_end,PT290,ground end,Ground lug,,,"Ground (body or engine, not drawn)",S-001,Section A (PDF p.10),from S-001; confirm on the car.
+PT300-GW,PT300,GW,feed,"coil end and contact common, joined inside",GW,"X-04 15 A fuse (WR battery bus), shared with the stop light switch",S-001,22,from S-001; confirm on the car
+PT300-GL,PT300,GL,coil ground,other end of coil,GL,horn switch in steering pad via E-01; switch grounds it,S-001,22,from S-001; confirm on the car
+PT300-GY,PT300,GY,output,normally-open contact,GY,horns F-09 LH and F-10 RH in parallel,S-001,22,from S-001; confirm on the car
+PT307-LR_top_1,PT307,LR (top 1),feed,"pole 1 common; at rest to R, energised to L",LR,"X-04 20 A accessory fuse (LR, shared with radio)",S-001,24,"from S-001 G-01 (pin row: top LR R LY B, bottom LG L - LR); energised contact positions read from a coarse scan and the 1985 motor test; confirm on the car"
+PT307-LR_bottom_4,PT307,LR (bottom 4),coil feed,diode then coil,LR,same LR feed,S-001,24,"from S-001 G-01 (pin row: top LR R LY B, bottom LG L - LR); energised contact positions read from a coarse scan and the 1985 motor test; confirm on the car"
+PT307-R,PT307,R,motor down/common,pole 1 at-rest contact; pole 2 energised contact,R,G-02 power antenna motor R via X-03,S-001,24,"from S-001 G-01 (pin row: top LR R LY B, bottom LG L - LR); energised contact positions read from a coarse scan and the 1985 motor test; confirm on the car"
+PT307-LY,PT307,LY,motor,pole 2 at-rest contact (grounded at rest),LY,G-02 power antenna motor LY via X-03,S-001,24,"from S-001 G-01 (pin row: top LR R LY B, bottom LG L - LR); energised contact positions read from a coarse scan and the 1985 motor test; confirm on the car"
+PT307-L,PT307,L,motor up,pole 1 energised contact,L,G-02 power antenna motor L via X-03,S-001,24,"from S-001 G-01 (pin row: top LR R LY B, bottom LG L - LR); energised contact positions read from a coarse scan and the 1985 motor test; confirm on the car"
+PT307-B,PT307,B,ground,pole 2 common,B,X-13 ground,S-001,24,"from S-001 G-01 (pin row: top LR R LY B, bottom LG L - LR); energised contact positions read from a coarse scan and the 1985 motor test; confirm on the car"
+PT307-LG,PT307,LG,coil ground,coil end,LG,radio G-04 (grounds it when radio is on) or power antenna switch G-13 (cars without radio) via X-02,S-001,24,"from S-001 G-01 (pin row: top LR R LY B, bottom LG L - LR); energised contact positions read from a coarse scan and the 1985 motor test; confirm on the car"
+PT307-bottom_3,PT307,(bottom 3),not used,,,,S-001,24,"from S-001 G-01 (pin row: top LR R LY B, bottom LG L - LR); energised contact positions read from a coarse scan and the 1985 motor test; confirm on the car"
+PT308-LW_contact,PT308,LW (contact),feed,normally-open contact,LW,"0.5 sq fusible link A-02 at the starter's battery terminal, through X-10",S-001,10,from S-001; confirm on the car
+PT308-GR,PT308,GR,output,normally-open contact,GR,A-04 hot start motor,S-001,10,from S-001; confirm on the car
+PT308-LW_coil,PT308,LW (coil),coil feed,coil,LW,No.1 water temp switch B-12 (section B) via X-01,S-001,"10, 14",from S-001; confirm on the car
+PT308-B,PT308,B,coil ground,coil,B,X-13 ground,S-001,10,from S-001; confirm on the car
+PT317-in,PT317,in,battery +,1.25 sq black link,,battery +,S-001,30,from S-001; confirm on the car
+PT317-out,PT317,out,main,1.25 sq black link,WR,constant bus: ignition switch X-08 and fuse block X-04,S-001,"10, 30",from S-001; confirm on the car
+PT316-RETRACTOR,PT316,RETRACTOR,out,0.3 sq brown link,WR,retractable headlight motor circuit (section E),S-001,30,from S-001; confirm on the car
+PT316-HEAD,PT316,HEAD,out,0.3 sq brown link,WG,headlight circuit (section E),S-001,30,from S-001; confirm on the car
+PT310-20A-LO,PT310,20A-LO,20 A fuse fed from L (ACC),fuse,LO,blower motor,S-001,30,from S-001 X-04 (feed and rating); 'to' from S-001 p10-28 and OEM-RECORD; confirm on the car
+PT310-15A-Y,PT310,15A-Y,15 A fuse fed from L (ACC),fuse,Y,rear window defroster switch,S-001,30,from S-001 X-04 (feed and rating); 'to' from S-001 p10-28 and OEM-RECORD; confirm on the car
+PT310-20A-LR,PT310,20A-LR,20 A fuse fed from L (ACC),fuse,LR,"radio, stereo, power antenna",S-001,30,from S-001 X-04 (feed and rating); 'to' from S-001 p10-28 and OEM-RECORD; confirm on the car
+PT310-10A-LB,PT310,10A-LB,10 A fuse fed from L (ACC),fuse,LB,front wiper & washer,S-001,30,from S-001 X-04 (feed and rating); 'to' from S-001 p10-28 and OEM-RECORD; confirm on the car
+PT310-10A-L,PT310,10A-L,10 A fuse fed from L (ACC),fuse,L,rear wiper & washer,S-001,30,from S-001 X-04 (feed and rating); 'to' from S-001 p10-28 and OEM-RECORD; confirm on the car
+PT310-30A-BL,PT310,30A-BL,30 A fuse fed from BW (IG),fuse,BL,power windows,S-001,30,from S-001 X-04 (feed and rating); 'to' from S-001 p10-28 and OEM-RECORD; confirm on the car
+PT310-10A-Br,PT310,10A-Br,10 A fuse fed from BW (IG),fuse,Br,"cruise control: stop, clutch and main switches",S-001,30,from S-001 X-04 (feed and rating); 'to' from S-001 p10-28 and OEM-RECORD; confirm on the car
+PT310-10A-BLg,PT310,10A-BLg,10 A fuse fed from BW (IG),fuse,BLg,fuel pump,S-001,30,from S-001 X-04 (feed and rating); 'to' from S-001 p10-28 and OEM-RECORD; confirm on the car
+PT310-20A-LR-2,PT310,20A-LR,20 A fuse fed from WR (battery),fuse,LR,"hatch release, fuel-door release",S-001,30,from S-001 X-04 (feed and rating); 'to' from S-001 p10-28 and OEM-RECORD; confirm on the car
+PT310-15A-GW,PT310,15A-GW,15 A fuse fed from WR (battery),fuse,GW,horn relay and stop light switch,S-001,30,from S-001 X-04 (feed and rating); 'to' from S-001 p10-28 and OEM-RECORD; confirm on the car
+PT310-15A-LY,PT310,15A-LY,15 A fuse fed from WR (battery),fuse,LY,"interior, spot, lighter, clock, luggage, key light",S-001,30,from S-001 X-04 (feed and rating); 'to' from S-001 p10-28 and OEM-RECORD; confirm on the car
+PT310-10A-WG,PT310,10A-WG,10 A fuse fed from WR (battery),fuse,WG,"hazard flasher, remote mirrors",S-001,30,from S-001 X-04 (feed and rating); 'to' from S-001 p10-28 and OEM-RECORD; confirm on the car
+PT310-10A-R,PT310,10A-R,10 A fuse fed from WR (battery),fuse,R,"light switch: tail, park, marker, licence",S-001,30,from S-001 X-04 (feed and rating); 'to' from S-001 p10-28 and OEM-RECORD; confirm on the car
+PT310-10A-GY,PT310,10A-GY,10 A fuse fed from BY (IG),fuse,GY,"turn, back-up, meters",S-001,30,from S-001 X-04 (feed and rating); 'to' from S-001 p10-28 and OEM-RECORD; confirm on the car
+PT310-15A-BW,PT310,15A-BW,15 A fuse fed from BY (IG),fuse,BW,"alternator excitation, ignition coils, igniter, emission and choke parts",S-001,30,from S-001 X-04 (feed and rating); 'to' from S-001 p10-28 and OEM-RECORD; confirm on the car
+PT318-X-03_top_1,PT318,X-03 top 1,"through-connection, circuit not decoded here",conductor,RY,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_top_2,PT318,X-03 top 2,back-up lamp output to rear combination lamps,conductor,RW,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_top_3,PT318,X-03 top 3,"through-connection, circuit not decoded here",conductor,G,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_top_4,PT318,X-03 top 4,"through-connection, circuit not decoded here",conductor,GO,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_top_5,PT318,X-03 top 5,"through-connection, circuit not decoded here",conductor,R,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_top_6,PT318,X-03 top 6,"through-connection, circuit not decoded here",conductor,GR,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_top_7,PT318,X-03 top 7,"through-connection, circuit not decoded here",conductor,LY,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_top_8,PT318,X-03 top 8,"through-connection, circuit not decoded here",conductor,BLg,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_top_9,PT318,X-03 top 9,"through-connection, circuit not decoded here",conductor,GB,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_top_10,PT318,X-03 top 10,"through-connection, circuit not decoded here",conductor,L,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_top_11,PT318,X-03 top 11,"through-connection, circuit not decoded here",conductor,RY,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_bottom_1,PT318,X-03 bottom 1,"through-connection, circuit not decoded here",conductor,BLg,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_bottom_2,PT318,X-03 bottom 2,"through-connection, circuit not decoded here",conductor,RG,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_bottom_3,PT318,X-03 bottom 3,"through-connection, circuit not decoded here",conductor,Y,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_bottom_4,PT318,X-03 bottom 4,"through-connection, circuit not decoded here",conductor,GR,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_bottom_5,PT318,X-03 bottom 5,rear window defroster grid feed,conductor,LG,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_bottom_6,PT318,X-03 bottom 6,"through-connection, circuit not decoded here",conductor,L,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_bottom_7,PT318,X-03 bottom 7,"through-connection, circuit not decoded here",conductor,LY,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_bottom_9,PT318,X-03 bottom 9,"through-connection, circuit not decoded here",conductor,LB,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_bottom_10,PT318,X-03 bottom 10,"through-connection, circuit not decoded here",conductor,BG,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT318-X-03_bottom_11,PT318,X-03 bottom 11,"through-connection, circuit not decoded here",conductor,LB,front harness at X-03,S-001,"22,24,30",from S-001; confirm on the car
+PT319-X-18_a,PT319,X-18 a,grid ground return,conductor,B,defroster grid G-25 (B) to X-18 and on to ground X-15,S-001,"24,30",from S-001; confirm on the car
+PT319-X-18_b,PT319,X-18 b,grid ground return,conductor,B,ground X-15,S-001,"24,30",from S-001; confirm on the car
+PT321-X-01_top_1,PT321,X-01 top 1,"alternator regulator feed (IG, 15 A fuse at X-04, BW) to A-08",conductor,BW,front harness at X-01,S-001,"10,30",from S-001; confirm on the car
+PT321-X-01_top_2,PT321,X-01 top 2,"through-connection, circuit not decoded here",conductor,LB,front harness at X-01,S-001,30,from S-001; confirm on the car
+PT321-X-01_top_3,PT321,X-01 top 3,switching solenoid valve B-08 from emission control unit F,conductor,Lg,front harness at X-01,S-001,30,from S-001; confirm on the car; front-harness side colour BLb
+PT321-X-01_top_4,PT321,X-01 top 4,starter ST signal,conductor,BY,front harness at X-01,S-001,30,from S-001; confirm on the car
+PT321-X-01_top_5,PT321,X-01 top 5,"through-connection, circuit not decoded here",conductor,YW,front harness at X-01,S-001,30,from S-001; confirm on the car
+PT321-X-01_top_6,PT321,X-01 top 6,"through-connection, circuit not decoded here",conductor,GW,front harness at X-01,S-001,30,from S-001; confirm on the car
+PT321-X-01_top_7,PT321,X-01 top 7,"through-connection, circuit not decoded here",conductor,BrW,front harness at X-01,S-001,30,from S-001; confirm on the car
+PT321-X-01_top_8,PT321,X-01 top 8,"through-connection, circuit not decoded here",conductor,GY,front harness at X-01,S-001,30,from S-001; confirm on the car
+PT321-X-01_top_9,PT321,X-01 top 9,"through-connection, circuit not decoded here",conductor,BG,front harness at X-01,S-001,30,from S-001; confirm on the car; front-harness side colour YR
+PT321-X-01_top_11,PT321,X-01 top 11,emission control unit terminal V to short connector B-09,conductor,GB,front harness at X-01,S-001,30,from S-001; confirm on the car
+PT321-X-01_bottom_1,PT321,X-01 bottom 1,sub-zero sensor line (section A),conductor,BLg,front harness at X-01,S-001,30,from S-001; confirm on the car
+PT321-X-01_bottom_2,PT321,X-01 bottom 2,"through-connection, circuit not decoded here",conductor,Br,front harness at X-01,S-001,30,from S-001; confirm on the car; front-harness side colour BR
+PT321-X-01_bottom_3,PT321,X-01 bottom 3,"through-connection, circuit not decoded here",conductor,O,front harness at X-01,S-001,30,from S-001; confirm on the car
+PT321-X-01_bottom_4,PT321,X-01 bottom 4,"through-connection, circuit not decoded here",conductor,GR,front harness at X-01,S-001,30,from S-001; confirm on the car
+PT321-X-01_bottom_5,PT321,X-01 bottom 5,"through-connection, circuit not decoded here",conductor,BR,front harness at X-01,S-001,30,from S-001; confirm on the car
+PT321-X-01_bottom_6,PT321,X-01 bottom 6,"through-connection, circuit not decoded here",conductor,LgY,front harness at X-01,S-001,30,from S-001; confirm on the car; front-harness side colour BrR
+PT321-X-01_bottom_8,PT321,X-01 bottom 8,hot start line,conductor,LW,front harness at X-01,S-001,30,from S-001; confirm on the car
+PT321-X-01_bottom_9,PT321,X-01 bottom 9,"through-connection, circuit not decoded here",conductor,BrY,front harness at X-01,S-001,30,from S-001; confirm on the car
+PT321-X-01_bottom_10,PT321,X-01 bottom 10,"through-connection, circuit not decoded here",conductor,G,front harness at X-01,S-001,30,from S-001; confirm on the car
+PT321-X-01_bottom_11,PT321,X-01 bottom 11,alternator charge sense to choke and check relay,conductor,WB,front harness at X-01,S-001,30,from S-001; confirm on the car
+PT322-ring,PT322,ring,battery feed,fusible element 0.5 sq to the LW connector,,"starting motor battery (B) terminal, shared with the battery cable",S-001,10,from S-001; confirm on the car
+PT322-LW,PT322,LW,protected output,fusible element to the ring terminal,LW,"X-10, then hot start relay A-03 and No.1 water temp switch (section B)",S-001,10,from S-001; confirm on the car
+PT323-X-10_top_1,PT323,X-10 top 1,starter solenoid feed from inhibitor switch (A/T),conductor,BW,inhibitor switch A-06 to starting motor A-01; also sub-zero motor BW,S-001,"10,22,30",from S-001; confirm on the car
+PT323-X-10_top_2,PT323,X-10 top 2,back-up lamp feed (IG 10 A GY bus),conductor,GY,fuse X-04 to inhibitor switch A-06,S-001,"10,22,30",from S-001; confirm on the car
+PT323-X-10_top_3,PT323,X-10 top 3,"inhibitor switch circuit, not decoded",conductor,BR,inhibitor switch A-06; confirm,S-001,"10,22,30",from S-001; confirm on the car
+PT323-X-10_bottom_1,PT323,X-10 bottom 1,hot start feed from fusible link A-02,conductor,LW,fusible link A-02 at the starter to hot start relay A-03,S-001,"10,22,30",from S-001; confirm on the car
+PT323-X-10_bottom_2,PT323,X-10 bottom 2,back-up lamp output,conductor,RW,inhibitor switch A-06 to rear combination lamps via X-03,S-001,"10,22,30",from S-001; confirm on the car
+PT323-X-10_bottom_3,PT323,X-10 bottom 3,start signal to inhibitor switch,conductor,BY,ignition switch ST to inhibitor switch A-06,S-001,"10,22,30",from S-001; confirm on the car
+PT323-X-17_1,PT323,X-17 1,"1-pin, circuit not decoded",conductor,BL,not decoded; confirm,S-001,30,from S-001; confirm on the car
+PT323-X-17_2,PT323,X-17 2,"1-pin, circuit not decoded",conductor,BY,not decoded; confirm,S-001,30,from S-001; confirm on the car
+PT324-BY,PT324,BY,bridge side 1,shorted to GB by the plug,BY,"starter ST signal line (ignition switch ST, emission control unit terminal H)",S-001,12,from S-001; confirm on the car
+PT324-GB,PT324,GB,bridge side 2,shorted to BY by the plug,GB,"X-01, then emission control unit terminal V",S-001,12,from S-001; confirm on the car
+PT325-X-02_bottom_1,PT325,X-02 bottom 1,"through-connection, circuit not decoded here",conductor,WG,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_bottom_2,PT325,X-02 bottom 2,"through-connection, circuit not decoded here",conductor,RW,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_bottom_3,PT325,X-02 bottom 3,"through-connection, circuit not decoded here",conductor,RY,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_bottom_4,PT325,X-02 bottom 4,"through-connection, circuit not decoded here",conductor,RL,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_bottom_5,PT325,X-02 bottom 5,"through-connection, circuit not decoded here",conductor,Br,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_bottom_6,PT325,X-02 bottom 6,"rear window defroster switch feed (ACC, 15 A fuse at X-04)",conductor,Y,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_bottom_7,PT325,X-02 bottom 7,ground (power antenna switch G-13 via X-02 to X-13),conductor,B,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_bottom_8,PT325,X-02 bottom 8,"blower motor feed (ACC, 20 A fuse at X-04)",conductor,LO,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_bottom_9,PT325,X-02 bottom 9,"through-connection, circuit not decoded here",conductor,LW,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_bottom_10,PT325,X-02 bottom 10,"through-connection, circuit not decoded here",conductor,LgY,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_bottom_11,PT325,X-02 bottom 11,"through-connection, circuit not decoded here",conductor,Lg,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_top_1,PT325,X-02 top 1,"through-connection, circuit not decoded here",conductor,LY,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_top_2,PT325,X-02 top 2,"through-connection, circuit not decoded here",conductor,R,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_top_3,PT325,X-02 top 3,"through-connection, circuit not decoded here",conductor,RG,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_top_4,PT325,X-02 top 4,"through-connection, circuit not decoded here",conductor,BR,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_top_5,PT325,X-02 top 5,"through-connection, circuit not decoded here",conductor,BrW,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_top_6,PT325,X-02 top 6,"through-connection, circuit not decoded here",conductor,LG,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_top_7,PT325,X-02 top 7,"through-connection, circuit not decoded here",conductor,LR,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_top_8,PT325,X-02 top 8,"through-connection, circuit not decoded here",conductor,GR,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_top_9,PT325,X-02 top 9,"through-connection, circuit not decoded here",conductor,LG,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_top_10,PT325,X-02 top 10,"through-connection, circuit not decoded here",conductor,LG,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-02_top_11,PT325,X-02 top 11,"through-connection, circuit not decoded here",conductor,LgB,front harness at X-02,S-001,"24,30","from S-001; confirm on the car; rows as in the dot (terminal) view, top row LY..LgB"
+PT325-X-12_top_1,PT325,X-12 top 1,"through-connection, circuit not decoded here",conductor,Br,front harness at X-12,S-001,30,"from S-001; confirm on the car; positions read from the left (male) drawing, the mating view is mirrored"
+PT325-X-12_top_2,PT325,X-12 top 2,"through-connection, circuit not decoded here",conductor,GY,front harness at X-12,S-001,30,"from S-001; confirm on the car; positions read from the left (male) drawing, the mating view is mirrored"
+PT325-X-12_top_3,PT325,X-12 top 3,"through-connection, circuit not decoded here",conductor,BG,front harness at X-12,S-001,30,"from S-001; confirm on the car; positions read from the left (male) drawing, the mating view is mirrored"
+PT325-X-12_top_4,PT325,X-12 top 4,"through-connection, circuit not decoded here",conductor,LR,front harness at X-12,S-001,30,"from S-001; confirm on the car; positions read from the left (male) drawing, the mating view is mirrored"
+PT325-X-12_top_5,PT325,X-12 top 5,"through-connection, circuit not decoded here",conductor,LY,front harness at X-12,S-001,30,"from S-001; confirm on the car; positions read from the left (male) drawing, the mating view is mirrored"
+PT325-X-12_bottom_1,PT325,X-12 bottom 1,"through-connection, circuit not decoded here",conductor,BrB,front harness at X-12,S-001,30,"from S-001; confirm on the car; positions read from the left (male) drawing, the mating view is mirrored"
+PT325-X-12_bottom_2,PT325,X-12 bottom 2,"through-connection, circuit not decoded here",conductor,WG,front harness at X-12,S-001,30,"from S-001; confirm on the car; positions read from the left (male) drawing, the mating view is mirrored"
+PT325-X-12_bottom_3,PT325,X-12 bottom 3,"through-connection, circuit not decoded here",conductor,L,front harness at X-12,S-001,30,"from S-001; confirm on the car; positions read from the left (male) drawing, the mating view is mirrored"
+PT325-X-12_bottom_4,PT325,X-12 bottom 4,"through-connection, circuit not decoded here",conductor,GB,front harness at X-12,S-001,30,"from S-001; confirm on the car; positions read from the left (male) drawing, the mating view is mirrored"
+PT325-X-12_bottom_5,PT325,X-12 bottom 5,"through-connection, circuit not decoded here",conductor,BL,front harness at X-12,S-001,30,"from S-001; confirm on the car; positions read from the left (male) drawing, the mating view is mirrored"
+PT325-X-12_2-pin_a,PT325,X-12 2-pin a,through-connection,conductor,RL,front harness at X-12,S-001,30,from S-001; confirm on the car
+PT325-X-12_2-pin_b,PT325,X-12 2-pin b,through-connection,conductor,GL,front harness at X-12,S-001,30,from S-001; confirm on the car
+PT301-X-16_A,PT301,X-16 A,wiper park (auto-stop) line,common of the intermittent wiper relay contact,LB,front wiper motor D-02 park switch (LB),S-001,18; 30,"letter from the 1985 CPU table (S-002 p15-12), which has the same colours in the same X-16 positions; from S-001; confirm on the car"
+PT301-X-16_B,PT301,X-16 B,INT request,intermittent timer input; grounded by the wiper switch in INT,LO,combination switch D-03 (LO),S-001,18; 30,"letter from the 1985 CPU table (S-002 p15-12), which has the same colours in the same X-16 positions; from S-001; confirm on the car"
+PT301-X-16_C,PT301,X-16 C,ignition feed,powers the oscillator/timer circuits,GY,"X-04 10 A meter fuse, GY bus",S-001,26; 30,"letter from the 1985 CPU table (S-002 p15-12), which has the same colours in the same X-16 positions; from S-001; confirm on the car"
+PT301-X-16_D,PT301,X-16 D,seat belt switch,seat belt timer input,Br,seat belt switch H-04 via X-11/X-02,S-001,26; 30,"letter from the 1985 CPU table (S-002 p15-12), which has the same colours in the same X-16 positions; from S-001; confirm on the car"
+PT301-X-16_E,PT301,X-16 E,ignition key light,ignition switch light timer output (ground side of the lamp),GL,ignition switch light H-05 (3.4 W),S-001,26; 30,"letter from the 1985 CPU table (S-002 p15-12), which has the same colours in the same X-16 positions; from S-001; confirm on the car"
+PT301-X-16_F,PT301,X-16 F,wiper ignition feed,feeds the intermittent relay coil and timer,L,X-04 10 A wiper fuse; also front wiper motor D-02 L,S-001,18; 30,"letter from the 1985 CPU table (S-002 p15-12), which has the same colours in the same X-16 positions; from S-001; confirm on the car"
+PT301-X-16_G,PT301,X-16 G,battery feed,constant supply to the reminder/timer circuits,LY,X-04 15 A fuse (WR side),S-001,26; 30,"the 1985 table gives this cavity as Y (battery); letter from the 1985 CPU table (S-002 p15-12), which has the same colours in the same X-16 positions; from S-001; confirm on the car"
+PT301-X-16_H,PT301,X-16 H,washer signal,washer input to the intermittent timer (wipe while washing),LY,front washer motor D-01 / washer switch D-03 (LY),S-001,18; 30,"letter from the 1985 CPU table (S-002 p15-12), which has the same colours in the same X-16 positions; from S-001; confirm on the car"
+PT301-X-16_J,PT301,X-16 J,ground,common ground of the unit,B,X-13 (under dashboard left),S-001,18; 22; 30,"letter from the 1985 CPU table (S-002 p15-12), which has the same colours in the same X-16 positions; from S-001; confirm on the car"
+PT301-X-16_K,PT301,X-16 K,light switch,lights-on reminder input,RG,combination switch light (tail) circuit RG,S-001,26; 30,"letter from the 1985 CPU table (S-002 p15-12), which has the same colours in the same X-16 positions; from S-001; confirm on the car"
+PT301-X-16_L,PT301,X-16 L,intermittent wiper output,intermittent relay contact output,LG,"combination switch D-03 (LG), then motor LO in INT",S-001,18; 30,"letter from the 1985 CPU table (S-002 p15-12), which has the same colours in the same X-16 positions; from S-001; confirm on the car"
+PT301-X-16_M,PT301,X-16 M,chime drive,reminder oscillator / buzzer output,G,chime X-06 in the meter; also oscillator C-10 G,S-001,16; 26; 30,"letter from the 1985 CPU table (S-002 p15-12), which has the same colours in the same X-16 positions; from S-001; confirm on the car"
+PT301-X-16_N,PT301,X-16 N,key reminder switch,key-in input,G,ignition key reminder switch H-03 (G),S-001,26; 30,"letter from the 1985 CPU table (S-002 p15-12), which has the same colours in the same X-16 positions; from S-001; confirm on the car"
+PT301-X-16_O,PT301,X-16 O,door switch,door-open input,RY,door switches H-07/H-08 and interior light H-06 (RY),S-001,26; 30,"letter from the 1985 CPU table (S-002 p15-12), which has the same colours in the same X-16 positions; from S-001; confirm on the car"
+PT301-X-16_P,PT301,X-16 P,seat belt switch,seat belt timer input (other side),BrW,seat belt switch H-04 via X-11/X-02,S-001,26; 30,"letter from the 1985 CPU table (S-002 p15-12), which has the same colours in the same X-16 positions; from S-001; confirm on the car"
+PT301-X-16_Q,PT301,X-16 Q,flasher input,flasher unit supply from the hazard/turn switch,GW,combination switch F-02 (GW),S-001,22; 30,"letter from the 1985 CPU table (S-002 p15-12), which has the same colours in the same X-16 positions; from S-001; confirm on the car"
+PT301-X-16_R,PT301,X-16 R,flasher output,flasher unit pulsed output,GB,"combination switch F-02 (GB), then GR/GO to the lamps",S-001,22; 30,"letter from the 1985 CPU table (S-002 p15-12), which has the same colours in the same X-16 positions; from S-001; confirm on the car"
+PT301-X-16_S_1-way,PT301,X-16 S (1-way),seat belt warning light,seat belt timer output (ground side of the lamp),GB,seat belt warning light 3.4 W in the meter (X-05 GB),S-001,26; 30,"letter from the 1985 CPU table (S-002 p15-12), which has the same colours in the same X-16 positions; from S-001; confirm on the car"
+PT305-G,PT305,G,chime output,oscillator output,G,chime X-06 (section H) and CPU X-16 G,S-001,16,from S-001; confirm on the car
+PT305-YB,PT305,YB,coolant level warning line,input,YB,coolant level warning light (1.4 W) and coolant level unit C-07,S-001,16,from S-001; confirm on the car
+PT305-LR,PT305,LR,feed,supply from the choke and check relay,LR,choke and check relay (section B),S-001,16,from S-001; confirm on the car
+PT305-YR,PT305,YR,oil level warning line,input,YR,"oil level warning light (3.4 W, X-06) and oil level sensor C-06 (BG via X-01)",S-001,16,from S-001; confirm on the car
+PT305-B,PT305,B,ground,,B,X-13,S-001,16,from S-001; confirm on the car
+PT562-BR,PT562,BR,warning output,"float switch contact, closed at low fluid level",BR,"brake warning light 1.4 W via X-11, X-02, X-05; parking brake switch C-04 and checker C-03 on the same line",S-001,16,from S-001; confirm on the car
+PT562-B,PT562,B,ground,other side of the float switch,B,X-13,S-001,16,from S-001; confirm on the car
+PT036-Y,PT036,Y,feed,switch contact input,Y,X-04 15 A fuse (ACC) via X-02,S-001,24,from S-001; confirm on the car
+PT036-LG,PT036,LG,output,switch contact output,LG,"rear window defroster grid G-25 via X-02/X-03, and indicator lamp 3.4 W in the meter via X-05",S-001,24,from S-001; confirm on the car
+PT037-LG,PT037,LG,feed,"grid bus bar, positive",LG,defroster switch G-24,S-001,24,from S-001; confirm on the car
+PT037-B,PT037,B,ground,"grid bus bar, negative",B,X-15 via D-07 (or X-18),S-001,24,from S-001; confirm on the car
+PT473-horn_contact,PT473,horn contact,horn relay coil ground,momentary contact to ground through the steering shaft,GL,horn relay F-16 (GL) via column connector E-01,S-001,22,from S-001; confirm on the car
+PT614-X-05_GY,PT614,X-05 GY,Ignition feed,"common + of gauges, meters, warning lamps and voltage regulator",GY,"X-04 10 A fuse, BY from ignition switch IG (X-08)",S-001,16,from S-001; confirm on the car
+PT614-X-05_B_two_cavities,PT614,X-05 B (two cavities),Ground,regulator and meter/indicator returns,B,X-13 ground,S-001,16,from S-001; confirm on the car
+PT614-X-05_BrY,PT614,X-05 BrY,Oil pressure gauge signal,"oil pressure gauge coil, fed GY unregulated",BrY,C-09 oil pressure gauge unit via X-01,S-001,16,from S-001; confirm on the car
+PT614-X-05_Y,PT614,X-05 Y,Fuel gauge signal,fuel gauge coil from PT624 output,Y,C-01 fuel tank unit via X-03,S-001,16,from S-001; confirm on the car
+PT614-X-05_YW,PT614,X-05 YW,Water temp gauge signal,temp gauge coil from PT624 output,YW,C-02 water temp gauge unit via X-01,S-001,16,from S-001; confirm on the car
+PT614-X-05_BR,PT614,X-05 BR,Brake warning lamp (1.4 W) return,lamp from GY,BR,"C-03 brake warning checker, C-04 parking brake switch, C-05 fluid level sensor",S-001,16,from S-001; confirm on the car
+PT614-X-05_GL,PT614,X-05 GL,Stop light warning lamp (1.4 W) return,lamp from GY; diode to the alternator lamp circuit,GL,F-03 stop light checker (section F),S-001,16,from S-001; confirm on the car
+PT614-X-05_YL,PT614,X-05 YL,Alternator warning lamp (1.4 W) return,lamp from GY; bulb-check diodes from stop and oil level lamps,YL,choke and check relay (section B) and C-07 coolant level unit,S-001,16,from S-001; confirm on the car
+PT614-X-05_YB,PT614,X-05 YB,Coolant level warning lamp (1.4 W) return,lamp from GY,YB,C-07 coolant level unit,S-001,16,from S-001; confirm on the car
+PT614-X-05_GB,PT614,X-05 GB,Seat belt warning lamp (3.4 W) return,seat belt warning lamp from GY,GB,X-16 control processing unit (section H),S-001,26,from S-001 section H; confirm on the car
+PT614-X-05_LG,PT614,X-05 LG,Rear window defroster indicator lamp (3.4 W) feed,indicator lamp to B at X-05,LG,G-24 rear window defroster switch output via X-02 (section G),S-001,24,from S-001 section G; confirm on the car
+PT614-X-06_YG_tach,PT614,X-06 YG (tach),Tachometer signal,tachometer input,YG,"ignition coil (T) B-18 negative, section B",S-001,16,from S-001; confirm on the car
+PT614-X-06_YG_retractor,PT614,X-06 YG (retractor),Headlight retractor indicator (3.4 W) feed,lamp to B at X-05,YG,E-03/E-04 retractable headlight motors,S-001,20,from S-001; confirm on the car
+PT614-X-06_RL_illumination,PT614,X-06 RL (illumination),Meter illumination (3.4 W) feed,illumination lamps to B at X-06,RL,E-05 instrument panel light control via X-02,S-001,20,from S-001; confirm on the car
+PT614-X-06_RL_high_beam,PT614,X-06 RL (high beam),High beam indicator (3.4 W) feed,lamp to B at X-05,RL,E-01 combination switch DIMMER high output,S-001,20,from S-001; confirm on the car
+PT614-X-06_B,PT614,X-06 B,Illumination ground,meter illumination return,B,X-13 via X-02,S-001,20,from S-001; confirm on the car
+PT614-X-06_YR,PT614,X-06 YR,Oil level warning lamp (3.4 W) return,lamp from GY; diode to alternator lamp circuit,YR,C-10 oscillator and C-06 oil level sensor via X-01,S-001,16,from S-001; confirm on the car
+PT614-X-06_GR,PT614,X-06 GR,Left turn indicator,indicator lamp,GR,F-02 turn switch left output,S-001,30,"colour from S-001 p30, function from the section F write-up; confirm on the car"
+PT614-X-06_GO,PT614,X-06 GO,Right turn indicator,indicator lamp,GO,F-02 turn switch right output,S-001,30,"colour from S-001 p30, function from the section F write-up; confirm on the car"
+PT614-X-06_RG,PT614,X-06 RG,unknown,function not shown in S-001 section C; confirm on the car,RG,,S-001,30,from S-001; confirm on the car
+PT614-X-06_G,PT614,X-06 G,Chime output,chime (lights-off / key reminder),G,"X-16 control processing unit and C-10 oscillator (sections H, C)",S-001,26,from S-001 section H; confirm on the car
+PT614-X-06_LY,PT614,X-06 LY,Chime supply,chime,LY,"LY from the X-04 15 A fuse (battery side, section H)",S-001,26,from S-001 section H; confirm on the car
+PT620-T,PT620,+,Supply,tachometer electronics,GY,IG bus inside the cluster (X-05 GY),S-001,16,from S-001; confirm on the car
+PT620--,PT620,-,Ground,,B,X-05 B to X-13,S-001,16,from S-001; confirm on the car
+PT620-signal,PT620,signal,Pulse input,,YG,X-06 to ignition coil (T) negative,S-001,16,from S-001; confirm on the car
+PT623-fuel,PT623,fuel +,Regulated supply,fuel gauge heater coil,,PT624 output (internal),S-001,16,from S-001; confirm on the car
+PT623-fuel_-,PT623,fuel -,To sender,fuel gauge heater coil,Y,X-05 to C-01 fuel tank unit,S-001,16,from S-001; confirm on the car
+PT623-temp,PT623,temp +,Regulated supply,temperature gauge heater coil,,PT624 output (internal),S-001,16,from S-001; confirm on the car
+PT623-temp_-,PT623,temp -,To sender,temperature gauge heater coil,YW,X-05 to C-02 water temp gauge unit,S-001,16,from S-001; confirm on the car
+PT624-IN,PT624,IN,Ignition supply,regulator input,GY,cluster IG bus from X-05 GY,S-001,16,from S-001; confirm on the car
+PT624-OUT,PT624,OUT,Regulated output,,,fuel and water temperature gauges only (internal),S-001,16,from S-001; confirm on the car
+PT624-E,PT624,E,Ground,,B,X-05 B to X-13,S-001,16,from S-001; confirm on the car
+PT625-RG,PT625,RG,Input from light switch,rheostat top,RG,E-01 combination switch LIGHT output via X-02; also radio/stereo lamps,S-001,20,from S-001; confirm on the car
+PT625-RL,PT625,RL,Dimmed output,rheostat wiper,RL,"meter (X-06), heater, select lever, switch panel and lighter illumination",S-001,20,from S-001; confirm on the car
+PT625-B,PT625,B,Ground,,B,X-02 to X-13,S-001,20,from S-001; confirm on the car
+PT630-LY,PT630,LY,feed,chime sounder + side,LY,X-04 15 A constant via X-06,S-001,PDF p.26,no pin letter in S-001; from S-001; confirm on the car
+PT630-G,PT630,G,trigger (switched to ground),chime sounder - side,G,Control Processing Unit X-16 and C-10 oscillator,S-001,"PDF p.26, p.16",no pin letter in S-001; from S-001; confirm on the car
+PT631-LY,PT631,LY,element feed,"heating element, closes when the knob is pushed in",LY,X-04 15 A constant,S-001,PDF p.26,H-09; from S-001; confirm on the car
+PT631-B,PT631,B,ground,element return and body,B,X-02 to ground X-13,S-001,PDF p.26,H-09; from S-001; confirm on the car
+PT633-RL,PT633,RL,illumination feed,3.4 W bulb,RL,E-05 instrument panel light control (dimmer) via X-02,S-001,"PDF p.20, p.26",H-09 RL cavity; bulb returns to B; from S-001; confirm on the car
+PT634-WG,PT634,WG,feed (switch c),common to both direction contacts,WG,X-04 10 A constant via X-12,S-001,PDF p.28,I-01; letter from the 1985 manual (S-002 p.15-42); from S-001; confirm on the car
+PT634-B,PT634,B,ground (switch a),return for the reversing contacts,B,"I-04 splice, X-02, X-13",S-001,PDF p.28,I-01; from S-001; confirm on the car
+PT634-Lg,PT634,Lg,LH mirror motor (switch b),"motor lead, reversed for L/R and U/D",Lg,"I-03 LH mirror via X-02, I-02",S-001,PDF p.28,I-01; from S-001; confirm on the car
+PT634-LgR,PT634,LgR,RH mirror motor (switch e),"motor lead, reversed",LgR,I-05 RH mirror via I-04 (Lg at the mirror),S-001,PDF p.28,I-01; from S-001; confirm on the car
+PT634-LgB,PT634,LgB,motor common (switch d),"other motor lead, both mirrors",LgB,I-03 and I-05,S-001,PDF p.28,I-01; from S-001; confirm on the car
+PT634-LgY,PT634,LgY,solenoid feed (switch f),energised for UP/DOWN through diodes,LgY,"solenoid in I-03 and I-05, other end B",S-001,PDF p.28,I-01; from S-001; confirm on the car
+PT635-LR,PT635,LR,feed,momentary contact,LR,X-04 20 A constant via X-02,S-001,PDF p.26,H-15; two of four cavities not used; from S-001; confirm on the car
+PT635-GB,PT635,GB,output,momentary contact,GB,"H-16 fuel-door solenoid via X-12, X-03; solenoid grounds at X-15",S-001,PDF p.26,H-15; from S-001; confirm on the car
+PT636-LG,PT636,LG,relay coil ground side,contact to B,LG,"G-01 power antenna relay via X-11, X-02",S-001,PDF p.24,G-13 (without radio); from S-001; confirm on the car
+PT636-B,PT636,B,ground,contact,B,"X-11, X-02, X-13",S-001,PDF p.24,G-13; from S-001; confirm on the car
+PT637-BG,PT637,BG,rear wiper,contact to B,BG,"D-05 rear wiper motor via X-11, X-12, X-03, D-07",S-001,PDF p.18,D-06; from S-001; confirm on the car
+PT637-LW,PT637,LW,rear washer,contact to B,LW,D-04 rear washer motor (L at the motor) via X-11,S-001,PDF p.18,D-06; from S-001; confirm on the car
+PT637-B,PT637,B,ground,common of both contacts,B,"X-11, X-02, X-13",S-001,PDF p.18,D-06; from S-001; confirm on the car
+PT638-R_2-pin,PT638,R (2-pin),tail/park feed,LIGHT section input,R,X-04 10 A off WR,S-001,"PDF p.20, p.26",E-01 2-pin; from S-001; confirm on the car
+PT638-WG_2-pin,PT638,WG (2-pin),headlight feed,LIGHT/DIMMER input,WG,0.3 sq fusible link X-07,S-001,PDF p.20,E-01 2-pin; from S-001; confirm on the car
+PT638-RG,PT638,RG,PARK/HEAD output,LIGHT section,RG,"tail, parking, side-marker, license lamps and E-05 panel light control",S-001,"PDF p.20, p.22",E-01 6-pin; from S-001; confirm on the car
+PT638-RW,PT638,RW,light-switch output,LIGHT section,RW,E-02 retractable headlight switch via X-02,S-001,PDF p.20,E-01 6-pin; from S-001; confirm on the car
+PT638-R_6-pin,PT638,R (6-pin),HEAD output,LIGHT section,R,"R bus: retractor motors, E-02, headlight cleaner",S-001,PDF p.20,E-01 6-pin; from S-001; confirm on the car
+PT638-RL,PT638,RL,"headlight beam feed (the 3.4 W high-beam indicator hangs on this wire, so likely HIGH)",DIMMER,RL,"E-08/E-09 headlights and the 3.4 W high-beam indicator (X-06, X-05)",S-001,PDF p.20,"E-01 6-pin; S-001 names no beam per wire: the indicator is drawn on RL, not RY; from S-001; confirm on the car which wire is high"
+PT638-RY,PT638,RY,"headlight beam feed (likely LOW, by elimination: the indicator is on RL)",DIMMER/PASSING,RY,E-08/E-09 headlights,S-001,PDF p.20,E-01 6-pin; S-001 names no beam per wire; from S-001; confirm on the car which wire is high
+PT638-WG_F-02,PT638,WG (F-02),hazard feed,HAZARD section,WG,X-04 10 A constant,S-001,PDF p.22,F-02; from S-001; confirm on the car
+PT638-GY,PT638,GY,turn feed,TURN section,GY,X-04 10 A ignition (BY),S-001,PDF p.22,F-02; from S-001; confirm on the car
+PT638-GW,PT638,GW,to flasher,HAZARD/TURN,GW,Control Processing Unit (flasher) X-16,S-001,PDF p.22,F-02; from S-001; confirm on the car
+PT638-GB,PT638,GB,from flasher,HAZARD/TURN,GB,Control Processing Unit (flasher) X-16,S-001,PDF p.22,F-02; from S-001; confirm on the car
+PT638-GR,PT638,GR,left turn output,TURN,GR,"F-05, F-07 and LH indicator",S-001,PDF p.22,F-02; from S-001; confirm on the car
+PT638-GO,PT638,GO,right turn output,TURN,GO,"F-06, F-08 and RH indicator",S-001,PDF p.22,F-02; from S-001; confirm on the car
+PT640-B,PT640,B,ground,switch common,B,X-13,S-001,PDF p.18,D-03; from S-001; confirm on the car
+PT640-LW,PT640,LW,wiper LOW,WIPER section,LW,D-02 front wiper motor LO,S-001,PDF p.18,D-03; from S-001; confirm on the car
+PT640-LR,PT640,LR,wiper HIGH,WIPER section,LR,D-02 front wiper motor HI,S-001,PDF p.18,D-03; from S-001; confirm on the car
+PT640-LO,PT640,LO,intermittent,WIPER section,LO,Control Processing Unit X-16,S-001,PDF p.18,D-03; from S-001; confirm on the car
+PT640-LG,PT640,LG,intermittent/one-touch,WIPER section,LG,Control Processing Unit X-16,S-001,PDF p.18,D-03; from S-001; confirm on the car
+PT640-LY,PT640,LY,washer,WASHER push contact,LY,D-01 front washer motor and Control Processing Unit,S-001,PDF p.18,D-03; from S-001; confirm on the car
+PT642-GL,PT642,GL,horn relay coil ground,momentary contact to the column ground,GL,F-16 horn relay via E-01,S-001,PDF p.22,E-01 6-pin; from S-001; confirm on the car
+PT644-RY_RH,PT644,RY (RH),door-open ground,plunger contact to body,RY,H-06 interior/spot light and Control Processing Unit via X-03,S-001,PDF p.26,"H-07; single terminal, grounds through the mount; from S-001; confirm on the car"
+PT644-RY_LH,PT644,RY (LH),door-open ground,plunger contact to body,RY,H-06 interior/spot light and Control Processing Unit via X-03,S-001,PDF p.26,H-08; from S-001; confirm on the car
+PT645-BR,PT645,BR,lever-up ground,contact to body,BR,"brake warning light (1.4 W) in the meter via X-11, X-02, and C-03 checker",S-001,PDF p.16,"C-04 parking brake switch, only if PT645 is that switch; from S-001; confirm on the car"
+PT647-single_spade,PT647,+ (single spade),feed from horn relay,horn coil and contact breaker to the case,GY,"horn relay F-16 output, spliced to both horns",S-001,p22-23,from S-001; which horn (F-09 LH or F-10 RH) is high tone is not shown; confirm on the car
+PT647-case,PT647,case,ground,coil return,,body through the mounting bracket,S-001,p22,not a wire; from S-001; confirm on the car
+PT648-single_spade,PT648,+ (single spade),feed from horn relay,horn coil and contact breaker to the case,GY,"horn relay F-16 output, spliced to both horns",S-001,p22-23,from S-001; which horn (F-09 LH or F-10 RH) is high tone is not shown; confirm on the car
+PT648-case,PT648,case,ground,coil return,,body through the mounting bracket,S-001,p22,not a wire; from S-001; confirm on the car
+PT646-I-06_BL_LH,PT646,I-06 BL (LH),+12 V switched (IG),feeds the up/down contacts,BL,30 A fuse X-04 via X-12/X-11; LH and RH switches share BL through I-06/I-07,S-001,p28,from S-001; confirm on the car
+PT646-I-06_B_LH,PT646,I-06 B (LH),ground,rest contacts: both motor leads to ground when released,B,"X-11, X-02, ground X-13",S-001,p28,rest-to-ground reading is from the 1985 check (S-002 15-37) and the S-001 symbol; confirm on the car
+PT646-I-06_RL_LH,PT646,I-06 RL (LH),motor lead,"to BL in one direction, to B otherwise; which lead is UP not shown",RL,LH motor (RL becomes R at I-08),S-001,p28,from S-001; confirm on the car
+PT646-I-06_GL_LH,PT646,I-06 GL (LH),motor lead,"to BL in one direction, to B otherwise; which lead is UP not shown",GL,LH motor (GL becomes G at I-08),S-001,p28,from S-001; confirm on the car
+PT646-I-07_BL_RH,PT646,I-07 BL (RH),+12 V switched (IG),feeds the up/down contacts,BL,30 A fuse X-04 via X-12/X-11; LH and RH switches share BL through I-06/I-07,S-001,p28,from S-001; confirm on the car
+PT646-I-07_B_RH,PT646,I-07 B (RH),ground,rest contacts: both motor leads to ground when released,B,"X-11, X-02, ground X-13",S-001,p28,rest-to-ground reading is from the 1985 check (S-002 15-37) and the S-001 symbol; confirm on the car
+PT646-I-07_R_RH,PT646,I-07 R (RH),motor lead,"to BL in one direction, to B otherwise; which lead is UP not shown",R,RH motor,S-001,p28,from S-001; confirm on the car
+PT646-I-07_G_RH,PT646,I-07 G (RH),motor lead,"to BL in one direction, to B otherwise; which lead is UP not shown",G,RH motor,S-001,p28,from S-001; confirm on the car
+PT650-B-28_BrB,PT650,B-28 BrB,+12 V common from main switch,"common end of VAC, VENT 1, VENT 2 coils",BrB,"C.C. main switch B-31 via X-11/X-12, also unit B-25",S-001,p14,from S-001; confirm on the car
+PT650-B-28_Br,PT650,B-28 Br,"VAC coil, switched to ground by the unit","VAC solenoid coil (25-35 ohm to common, 1985)",Br,cruise control unit B-25,S-001,p14,colour from S-001; coil name from the 1985 diagram S-002 15-49 (other year); confirm on the car
+PT650-B-28_BrY,PT650,B-28 BrY,"VENT 1 coil, switched to ground by the unit","VENT 1 solenoid coil (25-35 ohm to common, 1985)",BrY,cruise control unit B-25,S-001,p14,colour from S-001; coil name from the 1985 diagram S-002 15-49 (other year); confirm on the car
+PT650-B-28_BrR,PT650,B-28 BrR,"VENT 2 coil, switched to ground by the unit","VENT 2 solenoid coil (25-35 ohm to common, 1985)",BrR,cruise control unit B-25,S-001,p14,colour from S-001; coil name from the 1985 diagram S-002 15-49 (other year); confirm on the car
+PT652-B-25_BrB,PT652,B-25 BrB,power from main switch,,BrB,C.C. main switch B-31 / actuator common,S-001,p14,from S-001; confirm on the car
+PT652-B-25_B,PT652,B-25 B,ground,,B,X-13 ground,S-001,p14,from S-001; confirm on the car
+PT652-B-25_W,PT652,B-25 W,brake signal (stop lamp feed),,W,"stop light switch, section F",S-001,p14,from S-001; confirm on the car
+PT652-B-25_RY,PT652,B-25 RY,cancel input from stop and clutch switches,,RY,B-26 stop switch and B-27 clutch switch (Br fed),S-001,p14,from S-001; confirm on the car
+PT652-B-25_BY,PT652,B-25 BY,SET,,BY,combination switch B-30,S-001,p14,from S-001; confirm on the car
+PT652-B-25_RW,PT652,B-25 RW,COAST,,RW,combination switch B-30,S-001,p14,from S-001; confirm on the car
+PT652-B-25_BrW,PT652,B-25 BrW,RESUME,,BrW,combination switch B-30,S-001,p14,from S-001; confirm on the car
+PT652-B-25_BR,PT652,B-25 BR,vehicle speed pulses,,BR,"vehicle speed switch B-29 (in the speedometer), other side to ground",S-001,p14,from S-001; confirm on the car
+PT652-B-25_Br,PT652,B-25 Br,VAC coil drive,,Br,actuator B-28,S-001,p14,from S-001; confirm on the car
+PT652-B-25_BrY,PT652,B-25 BrY,VENT 1 coil drive,,BrY,actuator B-28,S-001,p14,from S-001; confirm on the car
+PT652-B-25_BrR,PT652,B-25 BrR,VENT 2 coil drive,,BrR,actuator B-28,S-001,p14,from S-001; confirm on the car
+PT652-B-25_BL,PT652,B-25 BL,A/T start/inhibitor signal,,BL,X-17; BY from section A on A/T cars,S-001,p14,"from S-001; BL function read from a dashed 'for A/T' line, uncertain; confirm on the car"
+PT652-B-25,PT652,B-25 *,not used,,,,S-001,p14,from S-001; confirm on the car
+PT653-B-30_BY,PT653,B-30 BY,SET,momentary contact joins BY to B when pushed/turned to SET,BY,cruise control unit B-25 BY,S-001,p14,from S-001; confirm on the car
+PT653-B-30_RW,PT653,B-30 RW,COAST,momentary contact joins RW to B when pushed/turned to COAST,RW,cruise control unit B-25 RW,S-001,p14,from S-001; confirm on the car
+PT653-B-30_BrW,PT653,B-30 BrW,RESUME,momentary contact joins BrW to B when pushed/turned to RESUME,BrW,cruise control unit B-25 BrW,S-001,p14,from S-001; confirm on the car
+PT653-B-30_B,PT653,B-30 B,common ground,common side of all three contacts,B,X-13 ground,S-001,p14,from S-001; confirm on the car
+PT649-B-31_Br,PT649,B-31 Br,main switch feed,switch input,Br,"10 A fuse X-04 (IG, BW) via X-11/X-12",S-001,p14,main switch FA03-66-340 terminals; from S-001; confirm on the car
+PT649-B-31_BrB,PT649,B-31 BrB,main switch output,closed when ON; also feeds the 3.4 W indicator lamp,BrB,unit B-25 and actuator B-28,S-001,p14,main switch FA03-66-340 terminals; from S-001; confirm on the car
+PT649-B-31_B,PT649,B-31 B,ground,indicator lamp return,B,ground,S-001,p14,main switch FA03-66-340 terminals; from S-001; confirm on the car
+PT655-LgW_3-pole,PT655,LgW (3-pole),switched +12 V supply,to the power switch; when ON also feeds the LG antenna-relay contact,LgW,"G-03 stereo position, which passes LR (X-04 20 A, ACC) through its switch",S-001,p24 (Section G),"from S-001; confirm on the car; on a GS with no deck, what joins LR to LgW at G-03 is unknown"
+PT655-RG,PT655,RG,illumination +,3.4 W lamp to case ground,RG,combination switch E-01 tail circuit (Section E p20),S-001,p24 (Section G),from S-001; confirm on the car
+PT655-LG_3-pole,PT655,LG (3-pole),power antenna up signal,"power switch contact, live while radio ON",LG,X-02 -> G-01 power antenna relay coil,S-001,p24 (Section G),from S-001; confirm on the car
+PT655-LG_4-pole,PT655,LG (4-pole),front LH speaker output,"output stage, left",LG,"X-02 -> G-05 front LH speaker (also G-11, unused with main amp)",S-001,p24 (Section G),from S-001; confirm on the car; polarity not marked
+PT655-LW,PT655,LW,front LH speaker output,"output stage, left",LW,"X-02 -> G-05 front LH speaker (also G-11, unused with main amp)",S-001,p24 (Section G),from S-001; confirm on the car; polarity not marked
+PT655-LY,PT655,LY,front RH speaker output,"output stage, right",LY,"G-06 front RH speaker (also G-11, unused with main amp)",S-001,p24 (Section G),from S-001; confirm on the car; polarity not marked
+PT655-LR_4-pole,PT655,LR (4-pole),front RH speaker output,"output stage, right",LR,"G-06 front RH speaker (also G-11, unused with main amp)",S-001,p24 (Section G),"from S-001; confirm on the car; same colour as the LR supply, different circuit"
+PT655-DIN,PT655,DIN,line out to main amp,rear-channel signal,,PT657 DIN cord -> G-08 main amp,S-001,p24 (Section G),from S-001; confirm on the car
+PT655-case,PT655,case,ground,,,radio earth wire PT658 / body,S-001,p24 (Section G),from S-001; confirm on the car
+PT660-L,PT660,L,+12 V supply,,L,G-07 connector -> LR -> X-04 20 A (ACC),S-001,p24 (Section G),from S-001; confirm on the car
+PT660-LR,PT660,LR,rear LH speaker output,,LR,G-09 rear LH speaker,S-001,p24 (Section G),from S-001; confirm on the car; polarity not marked
+PT660-LO,PT660,LO,rear LH speaker output,,LO,G-09 rear LH speaker,S-001,p24 (Section G),from S-001; confirm on the car; polarity not marked
+PT660-LW,PT660,LW,rear RH speaker output,,LW,G-10 rear RH speaker,S-001,p24 (Section G),from S-001; confirm on the car; polarity not marked
+PT660-LB,PT660,LB,rear RH speaker output,,LB,G-10 rear RH speaker,S-001,p24 (Section G),from S-001; confirm on the car; polarity not marked
+PT660-DIN,PT660,DIN,signal input from radio,,,PT657 DIN cord -> G-04 radio,S-001,p24 (Section G),from S-001; confirm on the car
+PT662-LH_LG,PT662,LH: LG,voice coil,coil,LG,radio G-04 via X-02,S-001,p24 (Section G),from S-001; confirm on the car; G-05
+PT662-LH_LW,PT662,LH: LW,voice coil,coil,LW,radio G-04 via X-02,S-001,p24 (Section G),from S-001; confirm on the car; G-05
+PT662-RH_LY,PT662,RH: LY,voice coil,coil,LY,radio G-04,S-001,p24 (Section G),from S-001; confirm on the car; G-06
+PT662-RH_LR,PT662,RH: LR,voice coil,coil,LR,radio G-04,S-001,p24 (Section G),from S-001; confirm on the car; G-06
+PT664-LH_LR,PT664,LH: LR,voice coil,coil,LR,main amp G-08,S-001,p24 (Section G),from S-001; confirm on the car; G-09
+PT664-LH_LO,PT664,LH: LO,voice coil,coil,LO,main amp G-08,S-001,p24 (Section G),from S-001; confirm on the car; G-09
+PT664-RH_LW,PT664,RH: LW,voice coil,coil,LW,main amp G-08,S-001,p24 (Section G),from S-001; confirm on the car; G-10
+PT664-RH_LB,PT664,RH: LB,voice coil,coil,LB,main amp G-08,S-001,p24 (Section G),from S-001; confirm on the car; G-10
+PT038-LB,PT038,LB,+12 V feed (ignition),one side of the pump motor,LB,"X-04 fuse 10 A (L from the ignition switch X-08, LB bus via X-03), shared with the front wiper motor park feed and the rear washer and wiper",S-001,18,from S-001; confirm on the car
+PT038-LY,PT038,LY,switched ground,other side of the pump motor,LY,"D-03 combination switch WASHER contact to ground (B, X-13), and to the control processing unit X-16 (wipe on wash)",S-001,18,from S-001; confirm on the car
+PT671-LR,PT671,LR,"+12 V switched feed (ignition switch, L line)",coil (through a diode) and the relay's switched contact,LR,"X-04 fuse 20 A (LR), fed by L from the ignition switch X-08, via X-12",S-001,24,"from S-001; the fuse input is the switched L line, not WR; confirm on the car"
+PT671-LG,PT671,LG,coil ground (control),the other end of the relay coil,LG,"via X-02: radio G-04 power switch; via X-11: G-13 power antenna switch to ground (B, X-13)",S-001,24,from S-001; confirm on the car. Coil energises when the radio is on or the antenna switch is closed
+PT671-B,PT671,B,ground,the resting contact of the LY changeover,B,X-13 ground,S-001,24,from S-001; confirm on the car
+PT671-L,PT671,L,mast-up output,energised contact: fed when the coil is on,L,"G-02 motor L, via X-03",S-001,24,"from S-001; relay contact arrangement read from the drawing, function from S-002 p15-75; confirm on the car"
+PT671-R,PT671,R,motor common / mast-down feed,changeover: +12 V (LR) when de-energised; return when energised,R,"G-02 motor R, via X-03",S-001,24,from S-001; function from S-002 p15-75; confirm on the car
+PT671-LY,PT671,LY,mast-down return,changeover: to B (ground) when de-energised,LY,"G-02 motor LY, via X-03",S-001,24,from S-001; confirm on the car
+PT668-L,PT668,L,up feed,motor through the up-side limit switch,L,G-01 relay L,S-001,24,"G-02 power antenna motor; from S-001; up = + on L, - on R (S-002 p15-75, 1985); confirm on the car"
+PT668-R,PT668,R,motor common,motor armature,R,G-01 relay R,S-001,24,G-02; from S-001; confirm on the car
+PT668-LY,PT668,LY,down return,motor through the down-side limit switch,LY,G-01 relay LY (to ground when relay off),S-001,24,"G-02; from S-001; down = + on R, - on LY (S-002 p15-75, 1985); confirm on the car"
+PT678-L,PT678,L,Power feed +12 V (IG),"Common brush of the motor, and the park-position contact of the auto-stop switch",L,Ignition IG via fuse X-04 10 A; also CPU X-16,S-001,18,1980 manual calls it terminal D (S-045 15:4); from S-001; confirm on the car
+PT678-LB,PT678,LB,Auto-stop (park) switch output,"Cam-driven changeover in the gear box: joins LB to B (ground) while the blades are away from park, to L at park (armature brake)",LB,"CPU X-16 intermittent relay, then combination switch D-03 (OFF/INT feed to the LO brush)",S-001,18,switch action read from S-001 drawing and the S-045 15:4 auto-stop test; 1980 terminal B; confirm on the car
+PT678-LW,PT678,LW,LOW speed brush,LO brush,LW,Combination switch D-03 LO (grounded in LO; to LB/CPU in OFF/INT),S-001,18,1980 terminal C; from S-001; confirm on the car
+PT678-LR,PT678,LR,HIGH speed brush,HI brush,LR,Combination switch D-03 HI (grounded in HI),S-001,18,1980 terminal A; from S-001; confirm on the car
+PT678-B,PT678,B,Ground,Auto-stop switch ground contact (motor case),B,Ground X-13,S-001,18,separate 1-pole plug; 1980 terminal E; confirm on the car
+PT688-L,PT688,L,"+12 V feed (ignition, 10 A fuse)",one motor brush (armature +),L,D-07 connector (LB side) - X-03 - LB bus - X-04 10 A fuse - ignition IG,S-001,Section D p18,from S-001; bullet connector at D-05; confirm on the car
+PT688-BG,PT688,BG,switched ground (run),"other motor brush (armature -), also joined to the internal park switch",BG,D-07 - X-03 - X-12 - X-11 - D-06 rear wiper & washer switch (wiper contact) - B - X-11 - X-02 - ground X-13,S-001,Section D p18,from S-001; bullet connector at D-05; confirm on the car
+PT688-GND_park,PT688,GND (park),auto-stop ground,"internal park switch contact, closed except at the park position",,body ground at the motor,S-001,Section D p18,"from S-001, drawn as a ground symbol inside D-05 with no connector pin; how it is grounded (case, eyelet or third lead) - confirm on the car"
+PT708-C,PT708,C,battery feed,common contact arm,WR,"X-07 1.25 sq fusible link -> battery +, via X-08",S-001,"10, 26",colour from S-001; letter C from 1980 S-045 Fig 15-32; confirm on the car
+PT708-E,PT708,E,ACC,joined to C in ACC and ON,L,"X-04 10 A (L to front wiper D-02 / CPU), 10 A (LB to rear wiper/washer and front washer), 20 A (LO)",S-001,"18, 26",colour from S-001; letter E from 1980 S-045; confirm on the car
+PT708-D,PT708,D,IG,joined to C in ON and START,BY,X-04 15 A -> BW alternator; X-04 10 A -> GY bus,S-001,"10, 26",S-001 labels IG output BY; 1980 S-045 shows D as BW; confirm on the car
+PT708-A,PT708,A,ST,joined to C in START,BY,X-09 0.5 sq fusible link -> inhibitor switch A-06 -> BW starter,S-001,10,"colour BY after the link from S-001, BY at A per 1980 S-045; confirm on the car"
+PT709-G,PT709,G,switched output,closes to LY with key in,G,Control Processing Unit X-16 (key reminder buzzer),S-001,26,from S-001; confirm on the car
+PT709-LY,PT709,LY,supply,,LY,X-04 15 A room fuse (constant),S-001,26,from S-001; confirm on the car
+PT709-3rd,PT709,3rd,not used,,,,S-001,26,marked not used on S-001 connector view; confirm on the car
+PT701-LB,PT701,LB,feed,motor +,LB,X-03 -> X-04 10 A rear wiper/washer fuse (L bus from ACC),S-001,18,from S-001; confirm on the car
+PT701-L,PT701,L,switched ground,motor -,L,X-03 -> X-12 -> X-11 -> LW at rear wiper & washer switch D-06 -> B ground,S-001,18,from S-001; confirm on the car
+PT849-B,PT849,B,ground,,B,X-02 -> X-13 body ground,S-001,26,from S-001; confirm on the car
+PT849-RG,PT849,RG,illumination,display dimming / lamp,RG,light switch E-01 via X-02,S-001,26,from S-001; confirm on the car
+PT849-LY,PT849,LY,memory supply,,LY,X-04 15 A (constant) via X-02,S-001,26,from S-001; confirm on the car
+PT849-GY,PT849,GY,ignition supply,,GY,X-04 10 A IG bus via X-12,S-001,26,from S-001; confirm on the car
+PT816-RB,PT816,RB,switched ground,contact to case/body when hatch open,RB,"luggage compartment light H-11 (5 W, LY feed)",S-001,26,from S-001; confirm on the car
+PT832-BL,PT832,BL,lamp side,,BL,"glove box light H-01 (3.4 W, LO feed)",S-001,26,from S-001; confirm on the car
+PT832-B,PT832,B,ground,ring terminal,B,X-02 -> X-13 body ground,S-001,26,from S-001; confirm on the car
+PT013-T,PT013,T +,Trailing coil (B-18) positive feed,primary winding supply,BW,"Ignition switch IG via BY and the 15 A fuse on X-04, shared BW bus with leading coil, igniters, condenser, emission control unit B and choke & check relay",S-001,PDF p.12-13 (Section B),from S-001; ring terminal on the coil per the B-18 connector view; confirm on the car
+PT013-T_-,PT013,T -,Trailing coil (B-18) negative,"primary winding, switched to ground by the trailing igniter",YG,Igniter (T) B-20; tachometer (Section C); emission control unit terminal A (B-01),S-001,PDF p.12-13 (Section B),from S-001; confirm on the car
+PT013-T_HT,PT013,T HT,Trailing coil high-tension tower,secondary winding output,,Distributor cap centre (trailing) via coil wire,S-001,PDF p.12-13 (Section B),"HT lead, no colour code; from S-001 symbol; confirm on the car"
+PT013-L,PT013,L +,Leading coil (B-19) positive feed,primary winding supply,BW,Same BW ignition feed as the trailing coil,S-001,PDF p.12-13 (Section B),from S-001; ring terminal on the coil per the B-19 connector view; confirm on the car
+PT013-L_-,PT013,L -,Leading coil (B-19) negative,"primary winding, switched to ground by the leading igniter",YL,Igniter (L) B-21,S-001,PDF p.12-13 (Section B),from S-001; confirm on the car
+PT013-L_HT,PT013,L HT,Leading coil high-tension tower,secondary winding output,,Distributor cap centre (leading) via coil wire,S-001,PDF p.12-13 (Section B),"HT lead, no colour code; from S-001 symbol; confirm on the car"
+PT258-B-20_YG,PT258,B-20 YG,Trailing igniter switched output,switches trailing coil negative to ground on the pick-up signal (inferred from the circuit),YG,Trailing coil (B-18) negative,S-001,PDF p.12-13 (Section B),from S-001; confirm on the car
+PT258-B-20_BW,PT258,B-20 BW,Trailing igniter supply,power supply,BW,Ignition BW feed,S-001,PDF p.12-13 (Section B),from S-001; confirm on the car
+PT258-B-21_YL,PT258,B-21 YL,Leading igniter switched output,switches leading coil negative to ground on the pick-up signal (inferred from the circuit),YL,Leading coil (B-19) negative,S-001,PDF p.12-13 (Section B),from S-001; confirm on the car
+PT258-B-21_BW,PT258,B-21 BW,Leading igniter supply,power supply,BW,Ignition BW feed,S-001,PDF p.12-13 (Section B),from S-001; confirm on the car
+PT258-GND,PT258,GND,Igniter ground,ground,,"Ground (drawn to earth, no colour given)",S-001,PDF p.12-13 (Section B),from S-001; the 1985 check (S-002 p.5-37) also shows a ground terminal; confirm on the car
+PT258-PU,PT258,PU,Pick-up inputs,two leads per pick-up coil into its igniter,,"Pick-up coils (PT256), inside the distributor",S-001,PDF p.12-13 (Section B),"internal, no colour given; from S-001; confirm on the car"
+PT256-2_leads_each_coil,PT256,2 leads (each coil),Pick-up coil signal,magnetic pick-up winding,,"Its igniter (trailing B-20 / leading B-21), inside the distributor",S-001,PDF p.12-13 (Section B),"internal, no colour given; from S-001; confirm on the car"
+PT261-B-22_BW,PT261,B-22 BW,Condenser lead,capacitor to case,BW,Ignition BW feed (radio-noise suppression),S-001,PDF p.12-13 (Section B),from S-001; confirm on the car
+PT261-case,PT261,case,Condenser case,capacitor other plate,,Ground,S-001,PDF p.12-13 (Section B),from S-001; confirm on the car
+PT034-WG,PT034,WG,"supply, constant",common of the UP pole; joined to R when switch ON/UP,WG,"0.3 sq fusible link (X-07) via X-02, shared with E-01 LIGHT",S-001,PDF p.20,from S-001; confirm on the car; E-02 face top row RW WG LY
+PT034-R,PT034,R,"output, headlights UP",joined to WG when switch ON/UP,R,both retractor motors R (E-03/E-04) via X-02; also fed by E-01 in HEAD,S-001,PDF p.20,from S-001; confirm on the car; E-02 bottom row RY R B
+PT034-RW,PT034,RW,"input, down command source",joined to RY when switch OFF,RW,E-01 combination switch LIGHT section (hot when LIGHT is off) via X-02,S-001,PDF p.20,from S-001; confirm on the car
+PT034-RY,PT034,RY,"output, headlights DOWN",joined to RW when switch OFF,RY,both retractor motors RY (E-03/E-04) via X-02,S-001,PDF p.20,from S-001; confirm on the car
+PT034-LY,PT034,LY,headlight cleaner switch,cleaner switch contact to B,LY,headlight cleaner motor E-11 via X-12,S-001,PDF p.20,from S-001; confirm on the car; cleaner may not be fitted
+PT034-B,PT034,B,ground,other side of the cleaner switch,B,X-02 to ground X-13,S-001,PDF p.20,from S-001; confirm on the car
+PT033-WR,PT033,WR,"motor power, constant",relay normally-open contact to motor,WR,own 0.3 sq fusible link (X-07); both motors joined,S-001,PDF p.20,"from S-001; confirm on the car; E-03 LH and E-04 RH same colours; connector cross-shaped: YG top, WR left, RY right, R bottom"
+PT033-R,PT033,R,UP command,"diode to the UP contact of the cam limit switch, then relay coil to ground",R,E-02 R and E-01 R (HEAD),S-001,PDF p.20,from S-001; confirm on the car
+PT033-RY,PT033,RY,DOWN command,"diode to the DOWN contact of the cam limit switch, then relay coil to ground",RY,E-02 RY (from E-01 RW when light off),S-001,PDF p.20,from S-001; confirm on the car
+PT033-YG,PT033,YG,running indicator,motor feed through a diode,YG,"3.4 W retractor indicator lamp in the cluster (X-06), ground X-05/X-13; both motors joined",S-001,PDF p.20,from S-001; confirm on the car
+PT035-RY,PT035,RY,low beam,low beam filament,RY,E-01 DIMMER,S-001,PDF p.20,from S-001; confirm on the car; E-08 LH / E-09 RH; write-up has RL/RY swapped
+PT035-RL,PT035,RL,high beam,high beam filament,RL,E-01 DIMMER and PASSING; also high beam indicator 3.4 W,S-001,PDF p.20,from S-001; confirm on the car
+PT035-B,PT035,B,ground,common of both filaments,B,"X-13 (LH), X-14 (RH)",S-001,PDF p.20,from S-001; confirm on the car
+PT557-GW,PT557,GW,"supply, constant",one side of the pedal contact,GW,15 A STOP/HORN fuse X-04; also horn relay,S-001,PDF p.22,from S-001; confirm on the car
+PT557-W,PT557,W,"output, closed with pedal pressed",other side of the pedal contact,W,F-03 stop light checker W and cruise control unit,S-001,PDF p.22,from S-001; confirm on the car
+PT304-W,PT304,W,input from stop switch,checker sensing path,W,F-11 stop light switch W,S-001,PDF p.22,"from S-001; confirm on the car; F-03 top row W GL, bottom row B G; identity with PT304 inferred"
+PT304-G,PT304,G,output to stop lamps,checker sensing path,G,X-03 to rear combination lamps F-07/F-08 27 W filaments,S-001,PDF p.22,from S-001; confirm on the car
+PT304-GL,PT304,GL,warning output,,GL,meter stop light warning (Section C),S-001,PDF p.22,from S-001; confirm on the car
+PT304-B,PT304,B,ground,,B,X-13,S-001,PDF p.22,from S-001; confirm on the car
+PT595-F-05_RG,PT595,F-05 RG,parking lamp feed,1157 low (8 W) filament to B,RG,"combination switch E-01 LIGHT section (tail/marker bus), fuse X-04 10A; LH",S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT595-F-05_GR,PT595,F-05 GR,turn signal feed,1157 high (27 W) filament to B,GR,"combination switch F-02 turn section, flashed by control processing unit X-16; LH",S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT595-F-05_B,PT595,F-05 B,ground,common return of both filaments,B,ground point X-13; LH,S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT595-F-06_RG,PT595,F-06 RG,parking lamp feed,1157 low (8 W) filament to B,RG,"combination switch E-01 LIGHT section (tail/marker bus), fuse X-04 10A; RH",S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT595-F-06_GO,PT595,F-06 GO,turn signal feed,1157 high (27 W) filament to B,GO,"combination switch F-02 turn section, flashed by control processing unit X-16; RH",S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT595-F-06_B,PT595,F-06 B,ground,common return of both filaments,B,ground point X-14; RH,S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT598-F-12_RG,PT598,F-12 RG,side marker feed,194 filament (3.8 W) to B,RG,tail/marker bus from E-01 light switch; LH,S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT598-F-12_B,PT598,F-12 B,ground,filament return,B,joins F-05 ground to X-13; LH,S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT598-F-13_RG,PT598,F-13 RG,side marker feed,194 filament (3.8 W) to B,RG,tail/marker bus from E-01 light switch; RH,S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT598-F-13_B,PT598,F-13 B,ground,filament return,B,joins F-06 ground to X-14; RH,S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT601-F-07_GR,PT601,F-07 GR,rear turn,1156 (27 W) turn bulb to B,GR,F-02 turn switch via joint X-03; LH,S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT601-F-07_RW,PT601,F-07 RW,back-up,1156 (27 W) back-up bulb to B,RW,"A/T inhibitor switch A-06 (RY -> RW) via X-10, X-03",S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT601-F-07_unused,PT601,F-07 (unused),not used,,,cavity marked not used in S-001 connector view,S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT601-F-07_G,PT601,F-07 G,stop,27 W filaments of both 1157 bulbs in parallel to B,G,stop light checker F-03 output via X-03 (fed W from stop light switch F-11),S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT601-F-07_RG,PT601,F-07 RG,tail,8 W filaments of both 1157 bulbs in parallel to B,RG,tail/marker bus from E-01 light switch via X-03,S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT601-F-07_B,PT601,F-07 B,ground,common return of all four bulbs,B,ground point X-15,S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT601-F-08_GO,PT601,F-08 GO,rear turn,1156 (27 W) turn bulb to B,GO,F-02 turn switch via joint X-03; RH,S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT601-F-08_RW,PT601,F-08 RW,back-up,1156 (27 W) back-up bulb to B,RW,"A/T inhibitor switch A-06 (RY -> RW) via X-10, X-03",S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT601-F-08_unused,PT601,F-08 (unused),not used,,,cavity marked not used in S-001 connector view,S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT601-F-08_G,PT601,F-08 G,stop,27 W filaments of both 1157 bulbs in parallel to B,G,stop light checker F-03 output via X-03 (fed W from stop light switch F-11),S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT601-F-08_RG,PT601,F-08 RG,tail,8 W filaments of both 1157 bulbs in parallel to B,RG,tail/marker bus from E-01 light switch via X-03,S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT601-F-08_B,PT601,F-08 B,ground,common return of all four bulbs,B,ground point X-15,S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT605-F-04_RG,PT605,F-04 RG,license lamp feed,6 W bulb to B (LH and RH lamps in parallel),RG,tail/marker bus from E-01 light switch,S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT605-F-04_B,PT605,F-04 B,ground,bulb return,B,ground point X-15,S-001,PDF p22 (Section F schematic and connector views),from S-001; confirm on the car
+PT608-RG,PT608,RG,"lamp feed, tail/park/marker bus",one end of the 3.8 W filament,RG,"E-01 light switch RG output via X-03 (with tail, license, front marker and parking lamps)",S-001,"22 (F-14 LH, F-15 RH)",from S-001; confirm on the car
+PT608-B,PT608,B,ground,other end of the filament,B,ground point X-15,S-001,"22 (F-14, F-15)",from S-001; confirm on the car
+PT611-LY,PT611,LY,constant feed,one end of the 5 W bulb,LY,X-04 15 A fuse (LY interior bus) via X-03,S-001,26 (H-11),from S-001; confirm on the car
+PT611-RB,PT611,RB,switched ground return,other end of the bulb,RB,"H-12 luggage compartment light switch, which closes to ground",S-001,"26 (H-11, H-12)",from S-001; confirm on the car
+PT639-R_2-pin,PT639,R (2-pin),"LIGHT section feed, constant",pole of the LIGHT section that reaches RG in PARK and HEAD,R,X-04 10 A fuse from the WR constant bus,S-001,20 (E-01 connector detail),from S-001; confirm on the car
+PT639-WG_2-pin,PT639,WG (2-pin),headlight feed,"second LIGHT pole, which passes it to the DIMMER/PASSING section in HEAD",WG,0.3 sq fusible link (X-07); same WG to E-02 via X-02,S-001,20,from S-001; confirm on the car
+PT639-RG_6-pin,PT639,RG (6-pin),tail/parking output (PARK and HEAD),LIGHT section output,RG,"E-05 panel light control; via X-02/X-03 tail, parking, side marker, license lamps; H-10 clock",S-001,"20, 22, 26",from S-001; confirm on the car
+PT639-RW_6-pin,PT639,RW (6-pin),HEAD position output,LIGHT section contact,RW,X-02 -> E-02 retractable headlight switch,S-001,20,from S-001; confirm on the car
+PT639-R_6-pin,PT639,R (6-pin),pop-up raise command in HEAD,LIGHT section contact,R,"R bus: E-03/E-04 retractor motors, E-02, E-11 headlight cleaner motor",S-001,20,from S-001; function per S-002 15-29 (1985); confirm on the car
+PT639-RL_6-pin,PT639,RL (6-pin),headlight beam output (DIMMER); passing contact joins this line,DIMMER / PASSING contacts,RL,E-08/E-09 headlights and the 3.4 W high-beam indicator via X-06,S-001,20,"from S-001; the indicator on RL suggests RL = high beam (1985 manual 15-30 also labels RL high), the reverse of the write-up; confirm on the car"
+PT639-RY_6-pin,PT639,RY (6-pin),headlight beam output (DIMMER),DIMMER contact,RY,E-08/E-09 headlights,S-001,20,from S-001; 1985 manual 15-30 labels RY low beam; confirm on the car
+PT639-GL_6-pin,PT639,GL (6-pin),horn switch (steering pad contact through the switch),"horn contact, closes to ground",GL,F-16 horn relay coil,S-001,"20, 22",from S-001; confirm on the car
+PT639-WG_F-02,PT639,WG (F-02),"hazard feed, constant",hazard section,WG,X-04 10 A fuse from WR,S-001,22 (F-02 connector detail),from S-001; confirm on the car
+PT639-GY_F-02,PT639,GY (F-02),"turn feed, ignition-switched",turn section,GY,IG -> BY -> X-04 10 A -> GY bus (shared with back-up lights),S-001,22,from S-001; confirm on the car
+PT639-GW_F-02,PT639,GW (F-02),flasher line,hazard/turn section,GW,Control processing unit (flasher) X-16,S-001,22,from S-001; confirm on the car
+PT639-GB_F-02,PT639,GB (F-02),flasher line,hazard/turn section,GB,Control processing unit (flasher) X-16,S-001,22,from S-001; confirm on the car
+PT639-GR_F-02,PT639,GR (F-02),left turn output,"turn section, left",GR,"F-05 front LH, F-07 rear LH, LH indicator",S-001,22,from S-001; confirm on the car
+PT639-GO_F-02,PT639,GO (F-02),right turn output,"turn section, right",GO,"F-06 front RH, F-08 rear RH, RH indicator",S-001,22,from S-001; two further F-02 cavities are marked not used; confirm on the car
+PT833-LO,PT833,LO,"12 V feed, switched by the ignition switch ACC position (not constant)",one end of the 3.4 W filament,LO,"fuse block X-04 20 A fuse, fed L from ignition switch ACC terminal at X-08 (switch fed WR from battery via fusible link X-07)",S-001,PDF p.26,from S-001; confirm on the car
+PT833-BL,PT833,BL,switched ground return,other end of the 3.4 W filament,BL,"H-02 glove box light switch, which closes to B ground at X-13 when the lid opens",S-001,PDF p.26,from S-001; confirm on the car
+PT856-RL,PT856,RL,dimmed illumination feed,one end of the 3.4 W filament,RL,"E-05 instrument panel light control (rheostat) output, fed RG from combination switch E-01 in PARK/HEAD",S-001,PDF p.20,from S-001; confirm on the car
+PT856-B,PT856,B,ground,other end of the 3.4 W filament,B,ground X-13 via X-02,S-001,PDF p.20,from S-001; confirm on the car
+PT958-LY,PT958,LY,constant 12 V feed,"to the spot lamp switch, then the bulb (and in parallel to the interior lamp)",LY,X-04 15 A fuse from WR (battery via fusible link),S-001,PDF p.26 (H-06),Harness connector H-06 is on the mirror assembly PT957. From S-001; confirm on the car
+PT958-GND,PT958,GND,ground,bulb return to the lamp case,,body ground through the mirror mounting (drawn as case ground),S-001,PDF p.26 (H-06),No ground wire drawn; from S-001; confirm on the car
+PT961-RY,PT961,RY,door switch ground (DOOR position),interior lamp switch DOOR contact,RY,"door switches H-07 (RH) and H-08 (LH) via X-03, and control processing unit X-16",S-001,PDF p.26 (H-06),Terminal is on the mirror assembly connector H-06 (PT957); from S-001; confirm on the car

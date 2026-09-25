@@ -15,3 +15,4 @@ systems,"the car's systems as a tree, and what each one is right now (the Manual
 zones,where on the car a part sits - the Manual's location view (D-417)
 parts,"every part on the car as it is now, one row each; specs, service and links hang off it (D-417)"
 drives,"the odometer log: each drive he logs, and each Set odo with only the reading (D-417)"
+terminals,"each terminal of an electrical part as the car has it: its label, what it does, what is connected to it inside the part, the factory wire on it and where that goes (D-429)"
