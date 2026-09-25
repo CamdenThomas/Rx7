@@ -1034,3 +1034,19 @@ D-411,electrical,"The factory harness comes out while the car is apart, after E2
 **Why it stands.** It is D-387 carried through: the interior comes out once, at S1, and goes back once, at E35. E30 was written for a car that could be driven during the install, and since D-387 it cannot. E29 already proves every circuit with the engine running, and the boxed harness stays kept until shakedown.
 
 **In the data.** `work` E30: the week of driving is gone, and the harness comes out after E29 with the interior still out. E35 stays gated on E30, so the interior goes back after the harness is out. `blocks` 00.31 is deleted."
+D-412,electrical,"The light switch and brake-wake plunger get their own 3 A inline fuse, F24, in the branch behind the column; the column keeps one supply wire",2026-09-24,standing,,,00.32,,"**The light switch and the brake-wake plunger get their own 3 A sealed inline fuse, F24, in the branch behind the steering column where they leave L3-S2 2 (block 00.32, option a). The column keeps its one supply wire; no connector changes, and the radar keeps all three L3-S3 pass-throughs. A short on the light side or at the brake plunger now blows F24 and leaves F3, the key's fuse, standing.** Camden, 2026-09-24, in the app.
+
+**His answer.** He chose option (a): ""A fuse in the branch. Keep the one wire and put a 3 A sealed inline fuse where the light-switch and brake-switch branch leaves it, behind the column. A short on the light side then blows only that fuse. About $5, no connector change. The fuse sits behind the lower dash panel, not at the dash node with the others."" He typed nothing else.
+
+**Why it is enough.** D-410 already holds ignition and the headlamps on a ladder fault, including a dead feed. What was left was one fault: a short on the light-switch side taking F3, and with it the key, the K13 coil and the ignition switch. F24 (3 A) sits downstream of F3 (5 A), so a light-side short clears F24 first. The one fuse not at the dash node is behind the lower dash panel, which the option named and he accepted.
+
+**What it closes.** Block 00.32. It finishes block 00.30's ruling (D-410): R2 is done.
+
+**In the data.**
+- `fuses`: F24 new (3 A, sealed inline in the L3 leg behind the column, fed from F3 through L3-S2 2); F3's feeds now say the light switch and brake plunger are behind F24.
+- `cavities`: L3-S2 2 and L3-S1 7 name F24 on the branch.
+- `devices`: DV19 (light switch) common now lands through F24.
+- `parts`: P002 target 8 → 9, used_for names F24.
+- `rules`: ladder-decode's E26 confirm now pulls F24 (not F3) at PARK, since F24 is the light switch's feed.
+- `work`: R2 done.
+- `blocks`: 00.32 deleted."

@@ -57,14 +57,14 @@ L3-S1 3,L3-S1,3,Turn stalk ladder,A1,,16,GRY,LIVE,"Stalk F-02: LEFT 1.8 kΩ · R
 L3-S1 4,L3-S1,4,Wiper stalk ladder,A2,,16,GRY,LIVE,Stalk D-03: HIGH 4.7 kΩ · LOW 10 kΩ · INT 18 kΩ · OFF 47 kΩ · WASH 1.8 kΩ + 1N5819 (band toward the contact),
 L3-S1 5,L3-S1,5,Brake pedal switch,A3,,16,GRY,LIVE,Pedal switch F-11 through 4.7 kΩ; other terminal → dash ground,
 L3-S1 6,L3-S1,6,Hazard switch,A8,,16,GRY,LIVE,Hazard contact through 4.7 kΩ; 47 kΩ baseline to column ground at the switch (D-368) - a break in the horn/wink branch reads as those never pressed; other terminal → column ground,
-L3-S1 7,L3-S1,7,Brake — wake source,WAKE 6,,16,BLU,LIVE,"Spare P084 adjustable plunger switch on the brake pedal, fed from the F3 switch supply branched off L3-S2 2 in the leg (D-278)",
+L3-S1 7,L3-S1,7,Brake — wake source,WAKE 6,,16,BLU,LIVE,"Spare P084 adjustable plunger switch on the brake pedal, fed from the F3 switch supply branched off L3-S2 2 in the leg through F24 (D-278, D-412)",
 L3-S1 8,L3-S1,8,Illumination bus,O20,,16,RED,LIVE,"Dash illumination lamps E-06, E-07, E-10 (RL) + head unit illumination wire",
 L3-S1 9,L3-S1,9,Wink LEFT — NC pole,K2 85,,16,BLU,LIVE,Wink L switch NC terminal; switch common → dash ground,
 L3-S1 10,L3-S1,10,Wink RIGHT — NC pole,K1 85,,16,BLU,LIVE,Wink R switch NC terminal; switch common → dash ground,
 L3-S1 11,L3-S1,11,Horn + wink request,A8,spliced at the post,16,GRY,LIVE,Horn pad through 8.2 kΩ · wink L NO through 18 kΩ · wink R NO through 33 kΩ — three resistors joined onto this wire,
 L3-S1 12,L3-S1,12,ACC — wake source,WAKE 1,,16,BLU,LIVE,Ignition switch ACC terminal (raw 12 V),
 L3-S2 1,L3-S2,1,RUN — wake source,WAKE 2,,16,BLU,LIVE,Ignition switch IG terminal (raw 12 V),
-L3-S2 2,L3-S2,2,Switch supply +12 V,F3,,16,PNK,LIVE,Ignition switch B terminal · light switch E-01 common,
+L3-S2 2,L3-S2,2,Switch supply +12 V,F3,,16,PNK,LIVE,"Ignition switch B terminal · light switch E-01 common through F24, the inline fuse on the branch behind the column (D-412)",
 L3-S2 3,L3-S2,3,Window DRV up command,,,16,BLU,CAPPED,"Terminates in DP-DCU-B, the DT06-12S plug at the DCU in the centre stack (luxury D-362); the panel is the DCU's faceplate (D-350). The L3-WIN console receptacle is deleted - the switch pack moved to the centre panel with every other key",RT11
 L3-S2 4,L3-S2,4,Window DRV down command,,,16,BLU,CAPPED,"Terminates in DP-DCU-B, the DT06-12S plug at the DCU in the centre stack (luxury D-362); the panel is the DCU's faceplate (D-350). The L3-WIN console receptacle is deleted - the switch pack moved to the centre panel with every other key",RT11
 L3-S2 5,L3-S2,5,Window PASS up command,,,16,BLU,CAPPED,"Terminates in DP-DCU-B, the DT06-12S plug at the DCU in the centre stack (luxury D-362); the panel is the DCU's faceplate (D-350). The L3-WIN console receptacle is deleted - the switch pack moved to the centre panel with every other key",RT11

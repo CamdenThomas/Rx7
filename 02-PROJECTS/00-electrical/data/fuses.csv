@@ -3,7 +3,7 @@ Class-T,150 A,"Cargo bin, at battery +",,,The whole PMU system — 2 AWG to the 
 MRBF,250 A,"Cargo bin, on battery +",,,"Starter main cable — 250 A sized to the 1/0 cable D-246 fitted, not to the load (D-321)",Battery +,LIVE,STARTER
 F1,10 A,"Dash node, block B (K11)",B,1,Head unit memory / constant — L3-M 2,K11 87,LIVE,HEAD-UNIT
 F2,2 A,"Dash node, block A (busbar)",A,1,Diagnostic port +12 V — DP-DIAG 3,Busbar,LIVE,DIAG
-F3,5 A,"Dash node, block A (busbar)",A,2,"Key supply — ignition switch B terminal (and through it the K13 back-stop coil), and for now the light switch common and the brake-wake plunger, which branch off the same conductor until block 00.32 — L3-S2 2 (D-410)",Busbar,LIVE,SWITCH
+F3,5 A,"Dash node, block A (busbar)",A,2,"Key supply — ignition switch B terminal (and through it the K13 back-stop coil) — L3-S2 2. The light switch common and the brake-wake plunger branch off it behind the column through their own fuse, F24 (D-410, D-412)",Busbar,LIVE,SWITCH
 F8,,"Sill node, sealed inline holder fitted — no fuse this build",,,Window branch DRV — the luxury package drops the fuse in (D-283),O1 via L4-P 3 (capped),EMPTY,WIN-DRV
 F9,,"Sill node, sealed inline holder fitted — no fuse this build",,,Window branch PASS — the luxury package drops the fuse in (D-283),O1 via L4-P 3 (capped),EMPTY,WIN-PASS
 F12,5 A,"Dash node, sealed inline",,,Interior lamp — L4-M 8,O20,LIVE,INTERIOR
@@ -18,3 +18,4 @@ F20,7.5 A,"Dash node, sealed inline",,,Wideband gauge (controller) +12 V — hid
 F21,5 A,"Dash node, sealed inline",,,Kick-down switch supply - L3-S2 12,O12,LIVE,KICK-DOWN
 F22,3 A,"Dash node, sealed inline",,,"DCU logic, constant - DP-DCU 1",Busbar,LIVE,DCU-CONST
 F23,3 A,"Dash node, sealed inline",,,Wake stages' excitation rail (the door and A8 stages) — split off F3 by D-410,Busbar,LIVE,WAKE
+F24,3 A,"Behind the lower dash panel, sealed inline in the L3 leg where the light-switch and brake-wake branch leaves L3-S2 2",,,Light switch E-01 common and the brake-wake plunger (L3-S1 7) — the branch off the key supply (D-412),F3 via L3-S2 2,LIVE,LIGHT-SW

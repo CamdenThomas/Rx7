@@ -17,7 +17,7 @@ DV15,L2,Wiper motor,D-02,"LW (low brush) → L2-M 1<br>LR (high brush) → L2-M 
 DV16,L2,Washer pump,D-01,"LB (+) → L2-M 4<br>LY (−) → front star, 16 AWG BLK",,RT09
 DV17,L2,Front star node,New — stud on the radiator support,"stud → chassis, 10 AWG BLK to a bare-metal bolt",,
 DV18,L3,Ignition switch,"New — electrical portion, 1981–83 FB",B → L3-S2 2<br>ACC → 33 kΩ → L3-S1 1 node; and direct → L3-S1 12<br>IG → 15 kΩ → L3-S1 1 node; and direct → L3-S2 1<br>ST → 6.8 kΩ → L3-S1 1 node,,RT10
-DV19,L3,Light switch,"E-01 LIGHT + DIMMER (column, kept)",common → L3-S2 2<br>PARK contact → 33 kΩ → L3-S1 2<br>HEAD contact → 15 kΩ → L3-S1 2<br>DIMMER HI contact (fed from the HEAD contact side) → 8.2 kΩ → L3-S1 2<br>PASS contact → 3.3 kΩ → L3-S1 2,,RT10
+DV19,L3,Light switch,"E-01 LIGHT + DIMMER (column, kept)",common → F24 → L3-S2 2<br>PARK contact → 33 kΩ → L3-S1 2<br>HEAD contact → 15 kΩ → L3-S1 2<br>DIMMER HI contact (fed from the HEAD contact side) → 8.2 kΩ → L3-S1 2<br>PASS contact → 3.3 kΩ → L3-S1 2,,RT10
 DV20,L3,Turn stalk,"F-02 TURN (column, kept)","LEFT → 1.8 kΩ → L3-S1 3<br>RIGHT → 10 kΩ → L3-S1 3<br>OFF → 47 kΩ → L3-S1 3<br>common → column ground, 16 AWG BLK",,RT10
 DV21,L3,Hazard switch,"F-02 HAZARD (column, kept)",contact → 4.7 kΩ → L3-S1 6<br>other side → column ground,,
 DV22,L3,Wiper stalk,"D-03 (column, kept)",HIGH → 4.7 kΩ → L3-S1 4<br>LOW → 10 kΩ → L3-S1 4<br>INT → 18 kΩ → L3-S1 4<br>OFF → 47 kΩ → L3-S1 4<br>WASH contact → 1.8 kΩ + 1N5819 (band to the contact) → L3-S1 4; and direct → L3-S2 9<br>common / contact returns → column ground,,RT10
