@@ -1,0 +1,26 @@
+{
+  "app": {
+    "security": {
+      "capabilities": [
+        "default",
+        {
+          "identifier": "test-localhost",
+          "description": "Test builds only: the phone may also reach the stand-in GitHub (e2e/fake-github.mjs) on this machine.",
+          "windows": [
+            "main"
+          ],
+          "permissions": [
+            {
+              "identifier": "http:default",
+              "allow": [
+                {
+                  "url": "http://localhost:5199/*"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
