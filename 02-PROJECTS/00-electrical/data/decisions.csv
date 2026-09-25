@@ -1050,3 +1050,17 @@ D-412,electrical,"The light switch and brake-wake plunger get their own 3 A inli
 - `rules`: ladder-decode's E26 confirm now pulls F24 (not F3) at PARK, since F24 is the light switch's feed.
 - `work`: R2 done.
 - `blocks`: 00.32 deleted."
+D-414,,"The new harness goes in all at once: E26 to E28 back to back in the migration table's order, and the car does not start until the last circuit has moved",2026-09-24,standing,,,00.33,,"**The new harness goes in all at once: from E26 the key and column switches feed the PMU, and every circuit moves over in one stretch (E26 to E28 back to back), with the migration table as the test order. The car does not start from E26 until the last circuit (MG23, start) has moved. Nothing extra is bought.**
+
+His answer to block 00.33 (desktop, 2026-09-24T21:40): option (a), with no words added.
+
+The option he chose, in full: ""(a) All at once. Plug in the new column wiring and move every circuit over in one stretch (E26 to E28 back to back), using the migration table as the test order. Nothing extra to buy. The car does not start until the last circuit has moved, and a fault found late is found with everything already moved.""
+
+Reasoning. The key and the column switches can be wired to one harness at a time, and at E26 they become PMU inputs. The old install plan (E27, E28) asked for the car to start and run on the factory harness through the migration, which it cannot once E26 is done. The interior is out for the whole build (D-387) and the car is not driven until E35 either way, so keeping it starting bought nothing but a temporary switch box and more temporary wiring. Option (b), the toggle-switch test box, is not bought.
+
+Consequences in the data:
+- E27: the requirement that the car start and run on the factory harness after L2, L4 + sill and L1 are in is removed; the car does not start from E26 until E28 finishes.
+- E28: ""one circuit per sitting"" becomes one stretch in the migration table's order, the table being the test order; each circuit is still proven alone by the same loop before the next moves, so a fault shows on the circuit that caused it. The daily ""the car starts and runs"" check is removed. MG22 still waits on F3 and E2.
+- migration: unchanged; its order is now the test order within the one stretch.
+- R1 done by this ruling.
+- Supersedes nothing: the old cutover plan was never ruled, it was carried from the archived INSTALL.md by E3 (D-372)."
