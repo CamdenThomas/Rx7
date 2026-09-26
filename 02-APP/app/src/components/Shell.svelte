@@ -43,6 +43,9 @@
 <svelte:window onkeydown={keydown} />
 
 <header class="topbar" class:home={section === 'home'}>
+  {#if app.snapshot && !app.snapshot.record.valid}
+    <div class="invalid" role="status">The record contradicts itself in {app.snapshot.record.problems.length} place{app.snapshot.record.problems.length === 1 ? '' : 's'} - Claude fixes it on its next run. <a href={href({ name: 'settings' })}>See them</a></div>
+  {/if}
   <div class="bar">
     {#if up}
       <a class="back phone-only" href={href(up)} aria-label="Back"><ChevronLeft size={22} /></a>
@@ -100,6 +103,18 @@
 </nav>
 
 <style>
+  .invalid {
+    background: var(--accent-soft);
+    color: var(--accent-2);
+    font-size: 13px;
+    text-align: center;
+    padding: 5px var(--gutter);
+    border-bottom: 1px solid var(--accent-line);
+  }
+  .invalid a {
+    color: inherit;
+    text-decoration: underline;
+  }
   .topbar {
     position: sticky;
     top: 0;

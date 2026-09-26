@@ -1,0 +1,40 @@
+name: app
+
+# The Rx7 app's own checks (plan P43): types and unit tests, only when the app's code changed.
+# Nothing here gates the record; the record's job is rx7.yml.
+
+on:
+  push:
+    paths:
+      - '02-APP/app/**'
+      - '.github/workflows/app.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: app-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: 02-APP/app
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            02-APP/app
+          sparse-checkout-cone-mode: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: 02-APP/app/package-lock.json
+      - run: npm ci
+      - run: npm run check
+      - run: npm test

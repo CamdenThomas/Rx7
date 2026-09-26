@@ -1523,6 +1523,15 @@ def export_data() -> dict:
         d["cited_by"] = sorted({x["key"] for x in refs if x["table"] == "decisions" and x["key"] != d["id"]},
                                key=natural)
         d["cited_in"] = [x for x in refs if x["table"] != "decisions"][:60]
+    # The generated harness drawings (D-385), one pin ladder and one route map per leg, so the
+    # Manual's Diagrams page can show the new harness beside the factory circuits (plan P41).
+    out["diagrams"] = []
+    dg = ROOT / "02-PROJECTS" / "01-electrical" / "00-design" / "diagrams"
+    if dg.is_dir():
+        for leg in sorted(p for p in dg.iterdir() if p.is_dir() and p.name[:1] == "L"):
+            for sheet, fname in (("pin ladder", "A-pin-ladder.svg"), ("route map", "B-route-map.svg")):
+                if (leg / fname).is_file():
+                    out["diagrams"].append({"leg": leg.name, "sheet": sheet, "path": rel(leg / fname)})
     photos = ROOT / "01-REFERENCE" / "photos"
     if photos.is_dir():
         out["photos"] = sorted(rel(p) for p in photos.rglob("*")

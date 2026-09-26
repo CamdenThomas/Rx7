@@ -23,13 +23,21 @@ interface FileCache {
 }
 
 export interface PhoneOptions {
+  /** His things: the outbox, the key, the drafts, the settings. Small, written often. */
   kv: KV;
+  /** The record's copy: the file cache and the snapshot. Big, written per sync. Falls back
+   *  to `kv` when absent (plan P37: two stores, so a torn write of the 6 MB cache can never
+   *  take his unsent answers with it). */
+  cache?: KV;
   fetch: Fetch;
   api?: string;
   raw?: string;
   pyodide?: string;
   repo?: Omit<Repo, 'token'>;
 }
+
+/** How often the phone asks GitHub whether the record moved, while it is in the foreground. */
+export const HEAD_POLL_MS = 180_000;
 
 export const DEFAULT_REPO = { owner: 'CamdenThomas', name: 'Rx7', branch: 'master' };
 
@@ -52,11 +60,12 @@ export function overlay(snap: Snapshot, outbox: Outgoing[]): Snapshot {
 
 export async function phonePlatform(opts: PhoneOptions): Promise<Platform> {
   const { kv } = opts;
+  const store = opts.cache ?? kv;
   const repo = { ...DEFAULT_REPO, ...(opts.repo ?? {}), ...((await kv.get<Repo>('repo')) ?? {}) };
   let token = (await kv.get<string>('token')) ?? '';
   let gh: GitHub = github({ ...repo, token }, opts.fetch, opts.api, opts.raw);
-  let cache: FileCache | null = (await kv.get<FileCache>('files')) ?? null;
-  let snapshot: Snapshot | null = (await kv.get<Snapshot>('snapshot')) ?? null;
+  let cache: FileCache | null = (await store.get<FileCache>('files')) ?? null;
+  let snapshot: Snapshot | null = (await store.get<Snapshot>('snapshot')) ?? null;
   let outbox: Outgoing[] = (await kv.get<Outgoing[]>('outbox')) ?? [];
   let engineHolds: string | null = null;
 
@@ -96,11 +105,23 @@ export async function phonePlatform(opts: PhoneOptions): Promise<Platform> {
       files[e.path] ??= wanted(e.path) === 'text' ? cache!.files[e.path] : { sha: e.sha };
     }
     const next = { commit: head.sha, date: head.date, files };
-    snapshot = await exportRecord(new Map(Object.entries(files).map(([p, f]) => [p, f.text ?? ''])), opts.pyodide);
-    engineHolds = head.sha;
+    // A commit that touched none of the record's files (app code, a README) changes nothing
+    // the phone shows: keep the snapshot and skip the export in WebAssembly (plan P38).
+    if (need.length || !snapshot) {
+      snapshot = await exportRecord(new Map(Object.entries(files).map(([p, f]) => [p, f.text ?? ''])), opts.pyodide);
+      engineHolds = head.sha;
+    }
     cache = next;
-    await kv.set('files', cache);
-    await kv.set('snapshot', snapshot);
+    await store.set('files', cache);
+    await store.set('snapshot', snapshot);
+  };
+
+  /** The inbox path an outgoing answer lands at, resolved against the record as it is now, so a
+   *  project renamed or renumbered since he answered never strands his words (plan P37). */
+  const pathFor = (o: Outgoing): string => {
+    const area = snapshot?.areas.find((a) => a.name === o.answer.area);
+    if (!area) throw new Error(`Your answer to ${o.answer.target} waits: its project ${o.answer.area} is not in the record any more. It stays on this phone.`);
+    return `${area.path}/data/inbox/${o.answer.id}.csv`;
   };
 
   /** Send what is waiting, oldest first. Stops at the first failure and keeps the rest. */
@@ -110,18 +131,19 @@ export async function phonePlatform(opts: PhoneOptions): Promise<Platform> {
       const o = outbox[0];
       const verb = o.op === 'put' ? 'answered' : 'withdrew his answer to';
       const message = `Camden ${verb} ${o.answer.target} (phone)`;
+      const path = pathFor(o);
       if (o.op === 'put') {
-        let sha = cache?.files[o.path]?.sha;
+        let sha = cache?.files[path]?.sha;
         try {
-          await gh.put(o.path, o.body!, message, sha);
+          await gh.put(path, o.body!, message, sha);
         } catch (e) {
           if (!(e instanceof GitHubError) || ![409, 422].includes(e.status)) throw e;
-          sha = await gh.sha(o.path);
-          await gh.put(o.path, o.body!, message, sha);
+          sha = await gh.sha(path);
+          await gh.put(path, o.body!, message, sha);
         }
       } else {
-        const sha = await gh.sha(o.path);
-        if (sha) await gh.remove(o.path, message, sha);
+        const sha = await gh.sha(path);
+        if (sha) await gh.remove(path, message, sha);
       }
       outbox.shift();
       await keepOutbox();
@@ -147,6 +169,12 @@ export async function phonePlatform(opts: PhoneOptions): Promise<Platform> {
 
   window.addEventListener('online', () => void connect(true));
   window.addEventListener('offline', () => publish({ online: false }));
+  // While the app is in front, one small call every few minutes asks whether the record
+  // moved; a full sync only when it did (plan P38).
+  setInterval(() => {
+    if (document.visibilityState !== 'visible' || !navigator.onLine || info.busy) return;
+    gh.head().then((h) => { if (h.sha !== cache?.commit) void connect(true); }).catch(() => undefined);
+  }, HEAD_POLL_MS);
 
   const platform: Platform & { setToken(t: string): Promise<void>; token(): string } = {
     kind: 'phone',
@@ -232,6 +260,8 @@ export async function phonePlatform(opts: PhoneOptions): Promise<Platform> {
       void connect(true);
     },
   };
-  void loadEngine(opts.pyodide).catch(() => undefined);
+  // The Python engine (13 MB of WebAssembly) loads when a sync or a save first needs it,
+  // not at every launch: reading the cached record needs no Python (plan P38).
+  void loadEngine;
   return platform;
 }

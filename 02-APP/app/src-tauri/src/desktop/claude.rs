@@ -21,9 +21,15 @@ impl Runs {
     }
 }
 
+/// What a run may do. git is allowed verb by verb (plan P42): CLAUDE.md §6 forbids force
+/// pushes, history rewrites and --no-verify, and an allowlist that says `git:*` leaves that
+/// to prose alone.
 const RUN_TOOLS: &[&str] = &[
     "Read", "Edit", "Write", "Glob", "Grep",
-    "Bash(python3 tools/rx7.py:*)", "Bash(python tools/rx7.py:*)", "Bash(git:*)",
+    "Bash(python3 tools/rx7.py:*)", "Bash(python tools/rx7.py:*)",
+    "Bash(git pull:*)", "Bash(git add:*)", "Bash(git commit:*)", "Bash(git push:*)", "Bash(git rm:*)", "Bash(git mv:*)",
+    "Bash(git status:*)", "Bash(git log:*)", "Bash(git diff:*)", "Bash(git show:*)", "Bash(git rev-parse:*)",
+    "Bash(git ls-files:*)", "Bash(git stash list:*)",
 ];
 
 /// The read-only commands a chat may run. CLAUDE.md writes `python`, this machine has

@@ -94,6 +94,48 @@ pub async fn record_export(app: AppHandle, tree: State<'_, Tree>) -> Result<Stri
     .await?
 }
 
+/// What the record's export depends on, as one string: HEAD, the uncommitted-file count, and
+/// the newest change under any data folder. Equal fingerprints mean an equal export, so the
+/// window keeps the snapshot it has (plan P38). Never branches on words: it only compares.
+#[tauri::command]
+pub async fn record_fingerprint(tree: State<'_, Tree>) -> Result<String, String> {
+    let root = tree.root();
+    blocking(move || {
+        let head = git::head(&root).unwrap_or_default();
+        let dirty = git::dirty(&root);
+        let mut newest = 0u128;
+        let mut count = 0usize;
+        let mut dirs: Vec<PathBuf> = Vec::new();
+        for base in [root.clone(), root.join("02-PROJECTS")] {
+            if let Ok(rd) = fs::read_dir(&base) {
+                for e in rd.flatten() {
+                    let d = e.path().join("data");
+                    if d.is_dir() {
+                        dirs.push(d);
+                    }
+                }
+            }
+        }
+        while let Some(d) = dirs.pop() {
+            if let Ok(rd) = fs::read_dir(&d) {
+                for e in rd.flatten() {
+                    let p = e.path();
+                    if p.is_dir() {
+                        dirs.push(p);
+                    } else if let Ok(m) = e.metadata() {
+                        count += 1;
+                        if let Ok(t) = m.modified().and_then(|t| t.duration_since(UNIX_EPOCH).map_err(|e| std::io::Error::other(e))) {
+                            newest = newest.max(t.as_nanos());
+                        }
+                    }
+                }
+            }
+        }
+        Ok(format!("{head}:{dirty}:{count}:{newest}"))
+    })
+    .await?
+}
+
 fn cache_path(app: &AppHandle) -> Option<PathBuf> {
     app.path().app_data_dir().ok().map(|d| d.join("export.json"))
 }
@@ -219,6 +261,24 @@ fn commit(app: AppHandle, root: PathBuf, path: String, message: String) -> Resul
             Ok(Saved { path, committed: true, note: String::new() })
         }
         Err(why) => Ok(Saved { path, committed: false, note: why }),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn area_path_finds_top_level_and_project_areas() {
+        let d = tempfile::tempdir().unwrap();
+        for a in ["00-CAR", "02-PROJECTS/01-electrical"] {
+            let data = d.path().join(a).join("data");
+            fs::create_dir_all(&data).unwrap();
+            fs::write(data.join("_tables.csv"), "table,purpose\n").unwrap();
+        }
+        assert_eq!(area_path(d.path(), "00-CAR").unwrap(), "00-CAR");
+        assert_eq!(area_path(d.path(), "01-electrical").unwrap(), "02-PROJECTS/01-electrical");
+        assert!(area_path(d.path(), "09-nowhere").is_err());
     }
 }
 

@@ -24,7 +24,7 @@
       }
     ],
     "security": {
-      "csp": null,
+      "csp": "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' photo: asset: http://asset.localhost data: blob: https://raw.githubusercontent.com; font-src 'self' data:; connect-src 'self' ipc: http://ipc.localhost photo: https://api.github.com https://raw.githubusercontent.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'",
       "capabilities": [
         "default"
       ]

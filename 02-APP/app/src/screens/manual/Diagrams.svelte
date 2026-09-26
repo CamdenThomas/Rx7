@@ -29,6 +29,18 @@
     const url = sources(c.source)[0]?.url;
     if (url) app.platform?.open(url);
   }
+
+  /** The new harness (D-385): each leg's pin ladder and route map, generated from the record. */
+  const legs = $derived.by(() => {
+    const out: { leg: string; sheets: { sheet: string; path: string }[] }[] = [];
+    for (const d of app.snapshot?.diagrams ?? []) {
+      let g = out.find((x) => x.leg === d.leg);
+      if (!g) out.push((g = { leg: d.leg, sheets: [] }));
+      g.sheets.push({ sheet: d.sheet, path: d.path });
+    }
+    return out;
+  });
+  let sheet = $state<{ leg: string; sheet: string; path: string } | null>(null);
 </script>
 
 {#if id && !one}
@@ -49,6 +61,30 @@
     {/if}
   </article>
 {:else}
+  {#if legs.length}
+    <section>
+      <h2>The new harness</h2>
+      <p class="faint small">Generated from the record by rx7.py diagrams (D-385): a pin ladder for the bench and a route map for the bundle, per leg. If a drawing and a row disagree, the row is right.</p>
+      <div class="cards">
+        {#each legs as l (l.leg)}
+          <div class="panel card">
+            <strong>{l.leg}</strong>
+            <span class="sheets">
+              {#each l.sheets as s (s.path)}
+                <button class="btn small" class:on={sheet?.path === s.path} onclick={() => (sheet = sheet?.path === s.path ? null : { leg: l.leg, ...s })}>{s.sheet}</button>
+              {/each}
+            </span>
+          </div>
+        {/each}
+      </div>
+      {#if sheet}
+        <figure class="sheet panel">
+          <figcaption class="faint small">{sheet.leg} · {sheet.sheet} · <a href={app.platform?.photo(sheet.path)} target="_blank" rel="noreferrer">open full size</a></figcaption>
+          <img src={app.platform?.photo(sheet.path)} alt="{sheet.leg} {sheet.sheet}" />
+        </figure>
+      {/if}
+    </section>
+  {/if}
   {#each groups as g (g.id)}
     <section>
       <h2>{g.name}</h2>
@@ -125,5 +161,29 @@
   .body {
     padding: 8px 20px;
     overflow-x: auto;
+  }
+  .sheets {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .sheets .on {
+    border-color: var(--sky);
+    color: var(--sky);
+  }
+  .sheet {
+    margin: 12px 0 0;
+    padding: 10px;
+    overflow: auto;
+    background: #fff;
+  }
+  .sheet img {
+    display: block;
+    max-width: none;
+    min-width: 100%;
+  }
+  .sheet figcaption {
+    margin-bottom: 6px;
+    color: var(--ink);
   }
 </style>

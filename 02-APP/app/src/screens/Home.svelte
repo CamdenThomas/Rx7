@@ -8,7 +8,7 @@
   import Mark from '../components/Mark.svelte';
   import ProjectIcon from '../components/ProjectIcon.svelte';
   import { app } from '../lib/app.svelte';
-  import { href } from '../lib/router.svelte';
+  import { href, router } from '../lib/router.svelte';
   import { plural } from '../lib/text';
 
   const vehicle = $derived.by(() => {
@@ -93,7 +93,7 @@
         <h2>Projects</h2>
         <p>{plural(app.summaries.length, 'project')} in flight, and every question only you can answer.</p>
         {#if waiting}
-          <span class="status"><span class="pip"></span>{blocks ? plural(blocks, 'block') : ''}{blocks && picks ? ' · ' : ''}{picks ? plural(picks, 'pick') : ''} waiting for you</span>
+          <span class="status"><span class="pip"></span>{blocks ? plural(blocks, 'block') : ''}{blocks && picks ? ' · ' : ''}{picks ? plural(picks, 'pick') : ''} waiting for you <button class="all" onclick={(e) => { e.preventDefault(); e.stopPropagation(); router.go({ name: 'waiting' }); }}>see them</button></span>
         {:else}
           <span class="go">Open the projects <ArrowRight size={16} /></span>
         {/if}
@@ -304,5 +304,15 @@
     .planet {
       transform: translate(calc(cos(var(--a)) * 130px), calc(sin(var(--a)) * 58px));
     }
+  }
+  .all {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-decoration: underline;
+    padding: 0;
+    margin-left: 6px;
+    cursor: pointer;
   }
 </style>

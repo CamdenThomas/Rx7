@@ -25,7 +25,7 @@
     return search(docs, query);
   });
 
-  const LABEL: Record<HitKind, string> = { project: 'Project', block: 'Block', decision: 'Decision', work: 'Work', pick: 'Pick', row: 'Row' };
+  const LABEL: Record<HitKind, string> = { project: 'Project', block: 'Block', decision: 'Decision', work: 'Work', pick: 'Pick', part: 'Manual', row: 'Row' };
 
   $effect(() => {
     if (autofocus) input?.focus();

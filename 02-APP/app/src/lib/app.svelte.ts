@@ -3,6 +3,7 @@
 // a second time.
 
 import type { Answer, Area, Block, Decision, Pick, Snapshot, WorkRow } from './model';
+import { drafts } from './drafts.svelte';
 import { choosePlatform, type Platform } from './platform';
 import type { Draft, SaveOutcome, SyncInfo } from './platform/types';
 import { toast } from './toast.svelte';
@@ -51,10 +52,20 @@ class App {
 
   summaries = $derived(this.projects.map((a) => this.summarise(a)));
 
+  /** Resolves the moment the device's platform is chosen, before any record is read, so the
+   *  drafts and the run history load before the first screen (plan P36). */
+  platformReady: Promise<void>;
+  #platformIs!: () => void;
+
+  constructor() {
+    this.platformReady = new Promise((r) => (this.#platformIs = r));
+  }
+
   async start() {
     try {
       const platform = await choosePlatform();
       this.platform = platform;
+      this.#platformIs();
       this.sync = platform.syncInfo();
       platform.onSync((s) => {
         const finished = this.sync.busy && !s.busy;
@@ -194,9 +205,13 @@ class App {
   async withdraw(a: Answer) {
     if (!this.platform) return;
     try {
+      // His words come back into the draft before the answer goes (R3, plan P36): a mis-tap
+      // on Withdraw costs nothing.
+      drafts.set(a.area, a.target, { choice: a.choice, text: a.text, context: a.context });
       await this.platform.withdraw(a);
-      await this.refresh(false);
-      toast('Answer withdrawn.', 'info');
+      if (this.snapshot) this.snapshot = { ...this.snapshot, inbox: this.snapshot.inbox.filter((x) => !(x.area === a.area && x.id === a.id)) };
+      void this.refresh(false);
+      toast('Withdrawn. Your words are back in the box.', 'info');
     } catch (e) {
       toast(`Not withdrawn: ${e instanceof Error ? e.message : String(e)}`, 'warn');
     }

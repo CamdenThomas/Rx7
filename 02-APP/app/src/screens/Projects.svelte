@@ -48,6 +48,7 @@
       <h1>What is being done to the car</h1>
     </div>
     <div class="actions">
+      <a class="btn big" href={href({ name: 'waiting' })}>Waiting for you</a>
       {#if app.platform?.canClaude && readyTotal}
         <button class="btn big" onclick={planAll} disabled={runs.busy || runs.queued > 0} title="One Plan run per project with rows Claude can start now, each under the design-run budget in Settings">
           <Play size={17} /> Plan everything ready · {readyTotal}

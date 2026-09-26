@@ -13,6 +13,7 @@
   import RowPage from './screens/RowPage.svelte';
   import SearchPage from './screens/SearchPage.svelte';
   import Settings from './screens/Settings.svelte';
+  import Waiting from './screens/Waiting.svelte';
   import { app } from './lib/app.svelte';
   import { drafts } from './lib/drafts.svelte';
   import { runs } from './lib/claude.svelte';
@@ -24,6 +25,9 @@
   $effect(() => {
     if (started) return;
     started = true;
+    // Drafts and the run history load as soon as the device is known, before any record is
+    // read, so nothing he types in the first seconds can overwrite them (plan P36).
+    void app.platformReady.then(() => Promise.all([drafts.load(), runs.load()]));
     void app.start().then(async () => {
       await Promise.all([drafts.load(), runs.load()]);
       await autoApply.start();
@@ -63,6 +67,8 @@
         <SearchPage q={r.q} />
       {:else if r.name === 'settings'}
         <Settings />
+      {:else if r.name === 'waiting'}
+        <Waiting />
       {:else}
         <Project route={r} />
       {/if}

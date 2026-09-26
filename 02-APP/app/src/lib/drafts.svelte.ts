@@ -1,6 +1,10 @@
 // What he has typed but not yet saved, kept on this device with every keystroke, so closing
 // the app, losing signal or a crash never costs him a word (R3). A draft is cleared only
 // after the answer it became is safely saved.
+//
+// The store is loaded before the first screen mounts (App.svelte) and MERGED with what was
+// typed meanwhile, never replaced; nothing is written back until the load is done, so a
+// draft typed in the first seconds can never overwrite the ones from yesterday (plan P36).
 
 import { untrack } from 'svelte';
 import { app } from './app.svelte';
@@ -16,12 +20,16 @@ const EMPTY: DraftText = { choice: '', text: '', context: '' };
 class Drafts {
   all = $state<Record<string, DraftText>>({});
   #loaded = false;
+  #dirty = false;
   #timer: ReturnType<typeof setTimeout> | undefined;
 
   async load() {
     if (this.#loaded || !app.platform) return;
-    this.all = (await app.platform.kv.get<Record<string, DraftText>>('drafts')) ?? {};
+    const stored = (await app.platform.kv.get<Record<string, DraftText>>('drafts')) ?? {};
+    // What he typed before the load finished wins over the stored copy of the same draft.
+    this.all = { ...stored, ...untrack(() => $state.snapshot(this.all)) };
     this.#loaded = true;
+    if (this.#dirty) this.#persist(0);
   }
 
   get(area: string, target: string): DraftText {
@@ -53,8 +61,13 @@ class Drafts {
   }
 
   #persist(delay = 120) {
+    this.#dirty = true;
+    if (!this.#loaded) return;
     clearTimeout(this.#timer);
-    this.#timer = setTimeout(() => void app.platform?.kv.set('drafts', $state.snapshot(this.all)), delay);
+    this.#timer = setTimeout(() => {
+      this.#dirty = false;
+      void app.platform?.kv.set('drafts', $state.snapshot(this.all));
+    }, delay);
   }
 }
 

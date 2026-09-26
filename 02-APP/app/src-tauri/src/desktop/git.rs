@@ -155,6 +155,11 @@ pub fn commit_path(root: &Path, path: &str, message: &str) -> Result<(), String>
     git(root, &["commit", "--quiet", "-m", message, "--only", "--", path]).map(|_| ())
 }
 
+/// The commit the tree is at.
+pub fn head(root: &Path) -> Result<String, String> {
+    git(root, &["rev-parse", "HEAD"])
+}
+
 /// Files changed in the tree and not committed - zero means nobody is mid-edit.
 pub fn dirty(root: &Path) -> u32 {
     git(root, &["status", "--porcelain"]).map(|o| o.lines().count() as u32).unwrap_or(0)
@@ -167,6 +172,68 @@ pub fn commit_data(root: &Path, message: &str) -> Result<(), String> {
     let _g = hold();
     git(root, &["add", "-A", "--", "00-CAR/data", "01-REFERENCE/data", "02-APP/data", "02-PROJECTS"])?;
     git(root, &["commit", "--quiet", "-m", message]).map(|_| ())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use std::process::Command;
+
+    fn repo() -> tempfile::TempDir {
+        let d = tempfile::tempdir().unwrap();
+        let run = |args: &[&str]| {
+            assert!(Command::new("git").args(args).current_dir(d.path()).output().unwrap().status.success());
+        };
+        run(&["init", "-q"]);
+        run(&["config", "user.email", "t@t"]);
+        run(&["config", "user.name", "t"]);
+        std::fs::write(d.path().join("a.txt"), "a").unwrap();
+        run(&["add", "a.txt"]);
+        run(&["commit", "-q", "-m", "first"]);
+        d
+    }
+
+    #[test]
+    fn commit_path_commits_exactly_one_file() {
+        let d = repo();
+        std::fs::write(d.path().join("one.csv"), "1").unwrap();
+        std::fs::write(d.path().join("two.csv"), "2").unwrap();
+        commit_path(d.path(), "one.csv", "Camden answered X (desktop)").unwrap();
+        let shown = git(d.path(), &["show", "--stat", "--format=", "HEAD"]).unwrap();
+        assert!(shown.contains("one.csv") && !shown.contains("two.csv"));
+        assert_eq!(dirty(d.path()), 1, "two.csv stays uncommitted");
+        assert_eq!(git(d.path(), &["log", "-1", "--format=%s"]).unwrap(), "Camden answered X (desktop)");
+    }
+
+    #[test]
+    fn head_and_dirty_read_the_repo() {
+        let d = repo();
+        assert_eq!(head(d.path()).unwrap().len(), 40);
+        assert_eq!(dirty(d.path()), 0);
+        std::fs::write(d.path().join("a.txt"), "changed").unwrap();
+        assert_eq!(dirty(d.path()), 1);
+    }
+
+    #[test]
+    fn commits_serialise_under_the_lock() {
+        let d = repo();
+        let root = d.path().to_path_buf();
+        let hs: Vec<_> = (0..4)
+            .map(|i| {
+                let r = root.clone();
+                std::thread::spawn(move || {
+                    let name = format!("f{i}.csv");
+                    std::fs::write(r.join(&name), "x").unwrap();
+                    commit_path(&r, &name, &format!("answer {i}"))
+                })
+            })
+            .collect();
+        for h in hs {
+            h.join().unwrap().unwrap();
+        }
+        let n: usize = git(d.path(), &["rev-list", "--count", "HEAD"]).unwrap().parse().unwrap();
+        assert_eq!(n, 5, "four answers in parallel are four commits, none lost");
+    }
 }
 
 /// Push after a commit without holding the window; the app hears how it went.

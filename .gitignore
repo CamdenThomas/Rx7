@@ -91,7 +91,7 @@ fp-info-cache
 *.keystore
 *.jks
 keystore.properties
-02-APP/app/public/fixture/
+02-APP/app/fixture/
 
 # The purchased 3D model (01-REFERENCE S-037) and what is built from it stay on this PC:
 # the repository is public and the model's licence does not allow passing it on. The
@@ -107,3 +107,4 @@ keystore.properties
 # scripts that read the files are committed. The blended model built from them is not.
 01-REFERENCE/model/library/
 01-REFERENCE/model/out/
+fixture/

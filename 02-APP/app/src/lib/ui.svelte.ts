@@ -44,6 +44,8 @@ export function crumbs(r: Route): Crumb[] {
   switch (r.name) {
     case 'home':
       return [{ label: 'Home' }];
+    case 'waiting':
+      return [home, projects, { label: 'Waiting for you' }];
     case 'manual': {
       if (!r.page) return [home, { label: 'Manual' }];
       const manual: Crumb = { label: 'Manual', route: { name: 'manual' } };

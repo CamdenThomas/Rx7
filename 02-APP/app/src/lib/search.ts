@@ -6,7 +6,7 @@ import type { Route } from './router.svelte';
 import type { Snapshot } from './model';
 import { plain } from './text';
 
-export type HitKind = 'block' | 'decision' | 'work' | 'pick' | 'row' | 'project';
+export type HitKind = 'block' | 'decision' | 'work' | 'pick' | 'row' | 'project' | 'part';
 
 export interface Doc {
   kind: HitKind;
@@ -61,24 +61,30 @@ export function buildIndex(s: Snapshot): Doc[] {
       route: p.verdict === 'proposed' ? { name: 'picks', area: p.area, id: p.id } : { name: 'row', area: p.area, table: 'picks', key: p.id },
     });
   }
+  // A part or a system the Manual shows lands on its Manual page, not the raw row (P40).
+  const manualParts = new Set((s.manual?.parts ?? []).map((p) => p.id));
+  const manualSystems = new Set((s.manual?.systems ?? []).map((x) => x.id));
   for (const t of s.tables) {
     const key = s.areas.find((a) => a.name === t.area)?.tables.find((m) => m.name === t.table)?.key ?? t.columns[0];
     const ki = Math.max(0, t.columns.indexOf(key ?? ''));
     const ti = t.columns.findIndex((c) => TITLE_COLUMNS.includes(c) && c !== key);
     for (const r of t.rows) {
       const id = r[ki] ?? '';
+      const inManual = t.area === '00-CAR' && ((t.table === 'parts' && manualParts.has(id)) || (t.table === 'systems' && manualSystems.has(id)));
       docs.push({
-        kind: 'row', area: t.area, id, sub: t.table,
+        kind: inManual ? 'part' : 'row', area: t.area, id, sub: inManual ? 'Manual' : t.table,
         title: ti >= 0 && r[ti] ? r[ti] : r.filter(Boolean).slice(1, 3).join(' · '),
         text: join(...r),
-        route: { name: 'row', area: t.area, table: t.table, key: id },
+        route: inManual
+          ? { name: 'manual', page: t.table === 'parts' ? 'part' : 'systems', id }
+          : { name: 'row', area: t.area, table: t.table, key: id },
       });
     }
   }
   return docs.map((d) => ({ ...d, hay: d.text.toLowerCase() }));
 }
 
-const KIND_WEIGHT: Record<HitKind, number> = { project: 6, block: 5, decision: 4, pick: 3, work: 3, row: 1 };
+const KIND_WEIGHT: Record<HitKind, number> = { project: 6, block: 5, decision: 4, part: 3, pick: 3, work: 3, row: 1 };
 
 export function search(docs: Doc[], query: string, limit = 60): Hit[] {
   const q = query.trim().toLowerCase();

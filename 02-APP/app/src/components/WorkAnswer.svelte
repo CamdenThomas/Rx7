@@ -9,7 +9,6 @@
   import { app } from '../lib/app.svelte';
   import { drafts } from '../lib/drafts.svelte';
   import type { WorkRow } from '../lib/model';
-  import { toast } from '../lib/toast.svelte';
 
   let { row, big = false, words = '', onSaved }: { row: WorkRow; big?: boolean; words?: string; onSaved?: () => void } = $props();
 
@@ -40,11 +39,7 @@
   const same = $derived(row.reply === 'choice' && row.choices.length > 4 ? lastChoice[row.area] : '');
 
   async function withdraw() {
-    if (!answer) return;
-    // His words come back into the draft before the answer goes, so a mis-tap loses nothing.
-    drafts.set(row.area, row.id, { choice: answer.choice, text: answer.text });
-    await app.withdraw(answer);
-    toast('Withdrawn. Your words are back in the box.', 'info');
+    if (answer) await app.withdraw(answer); // app.withdraw puts his words back in the draft first
   }
 </script>
 

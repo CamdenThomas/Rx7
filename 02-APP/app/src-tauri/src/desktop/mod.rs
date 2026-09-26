@@ -50,6 +50,7 @@ pub fn install(builder: tauri::Builder<tauri::Wry>) -> tauri::Builder<tauri::Wry
             record::set_tree_root,
             record::record_export,
             record::record_cached,
+            record::record_fingerprint,
             record::answer_save,
             record::answer_withdraw,
             record::record_apply,

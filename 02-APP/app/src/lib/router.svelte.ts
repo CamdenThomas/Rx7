@@ -20,6 +20,7 @@ export type Route =
   | { name: 'decision'; id: string }
   | { name: 'row'; area: string; table: string; key: string }
   | { name: 'search'; q: string }
+  | { name: 'waiting' }
   | { name: 'settings' };
 
 const PAGES = ['blocks', 'picks', 'todo', 'decisions', 'parts', 'run'] as const;
@@ -52,6 +53,8 @@ export function parse(hash: string): Route {
       return { name: 'row', area: seg[1] ?? '', table: seg[2] ?? '', key: seg.slice(3).join('/') };
     case 'search':
       return { name: 'search', q: q.get('q') ?? '' };
+    case 'waiting':
+      return { name: 'waiting' };
     case 'settings':
       return { name: 'settings' };
     default:
@@ -86,6 +89,8 @@ export function href(r: Route): string {
       return `#/row/${e(r.area)}/${e(r.table)}/${e(r.key)}`;
     case 'search':
       return `#/search${r.q ? `?q=${e(r.q)}` : ''}`;
+    case 'waiting':
+      return '#/waiting';
     case 'settings':
       return '#/settings';
   }

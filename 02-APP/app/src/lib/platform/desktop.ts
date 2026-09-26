@@ -43,8 +43,14 @@ export async function desktopPlatform(): Promise<Platform> {
   });
   await listen<GitState>('sync', (e) => publish({ ...fromGit(e.payload), busy: false }));
 
+  // The record is exported again only when something under a data folder or HEAD changed:
+  // the 3-minute poll and the sync after a save used to run a 4 s export each, twice (P38).
+  let last: { fp: string; snap: Snapshot } | null = null;
   const exportRecord = async (): Promise<Snapshot> => {
+    const fp = await invoke<string>('record_fingerprint').catch(() => '');
+    if (fp && last && last.fp === fp) return last.snap;
     const snap = JSON.parse(await invoke<string>('record_export')) as Snapshot;
+    if (fp) last = { fp, snap };
     publish({ asOf: snap.generated });
     return snap;
   };
@@ -69,15 +75,22 @@ export async function desktopPlatform(): Promise<Platform> {
     async load(sync) {
       if (sync) {
         publish({ busy: true });
+        let g: Partial<SyncInfo> = {};
         try {
-          const g = await invoke<GitState>('sync');
-          publish({ ...fromGit(g), online: g.online, busy: false });
+          const s = await invoke<GitState>('sync');
+          g = { ...fromGit(s), online: s.online };
         } catch (e) {
-          publish({ busy: false, error: String(e) });
+          g = { error: String(e) };
         }
-      } else {
-        invoke<GitState>('sync_state').then((g) => publish(fromGit(g)), () => undefined);
+        // busy stays true until the export is in, so the listener that reloads after a
+        // sync does not start a second export (plan P38).
+        try {
+          return await exportRecord();
+        } finally {
+          publish({ ...g, busy: false });
+        }
       }
+      invoke<GitState>('sync_state').then((g) => publish(fromGit(g)), () => undefined);
       return exportRecord();
     },
     async save(d: Draft, at: string) {

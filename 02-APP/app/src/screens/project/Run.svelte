@@ -78,6 +78,9 @@
       {/if}
     </section>
   {/if}
+  {#if runs.queued}
+    <p class="faint small">{runs.queued === 1 ? 'One run waits' : `${runs.queued} runs wait`} behind the one that is going.</p>
+  {/if}
 
   <div class="cols">
     <section>
@@ -85,7 +88,7 @@
       {#if !history.length}<p class="faint small">None yet from this device.</p>{/if}
       {#each history as h (h.id)}
         <details class="past">
-          <summary><span class="dot {h.status}"></span> {h.title} <span class="faint">· {ago(h.started)}</span></summary>
+          <summary><span class="dot {h.status}"></span> {h.title} <span class="faint">· {ago(h.started)}{h.cost != null ? ` · ${h.cost.toFixed(2)} USD` : ''}</span></summary>
           {#if h.result}<pre class="report mono">{h.result}</pre>{:else}<p class="faint small">It ended with no report ({h.status}).</p>{/if}
         </details>
       {/each}

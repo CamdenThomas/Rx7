@@ -36,7 +36,6 @@
           ['Part number', p.part_no],
           ['Mazda number', p.oem_no],
           ['Factory code', p.factory_code],
-          ['Catalogue', p.catalogue],
           ['Fitted', p.fitted ? `${day(p.fitted.date)}${p.fitted.miles != null ? ` at ${miles(p.fitted.miles)}` : ''}` : p.factory === 'yes' ? 'From the factory' : ''],
         ].filter(([, v]) => v)
       : [],
@@ -46,10 +45,35 @@
     e.preventDefault();
     app.platform?.open(url);
   }
+
+  /** A held-back part still gets a page (plan P40): its row from 00-CAR, greyed, with the
+   *  reason the Manual holds it and the verify row that would settle it. */
+  const heldPart = $derived.by(() => {
+    if (p) return null;
+    const t = app.snapshot?.tables.find((x) => x.area === '00-CAR' && x.table === 'parts');
+    const r = t?.rows.find((x) => x[t.columns.indexOf('id')] === id);
+    if (!t || !r) return null;
+    const col = (c: string) => r[t.columns.indexOf(c)] ?? '';
+    const held = m.held.find((h) => h.table === 'parts' && h.key === id);
+    const verify = (app.snapshot?.work ?? []).find((w) => w.area === '00-verify' && w.owner === 'camden' && w.status !== 'done' && new RegExp(`\\b${id}\\b`).test(w.item));
+    return { name: col('name'), maker: col('maker'), part_no: col('part_no') || col('oem_no'), system: col('system'), zone: col('zone'), note: col('note'), applies: col('applies'), why: held?.why ?? '', verify };
+  });
+  const catalogueRows = $derived((p?.catalogue ?? '').split(/\s+/).filter(Boolean));
 </script>
 
-{#if !p}
-  <p class="muted">No part {id} in the Manual: it may be held back until it is checked. <a href={href({ name: 'manual', page: 'systems' })}>Every system</a></p>
+{#if !p && heldPart}
+  <article class="held">
+    <header>
+      <h2>{heldPart.name} <span class="chip quiet">{heldPart.applies || 'held back'}</span></h2>
+      <p class="where"><span>{heldPart.system}</span>{#if heldPart.zone}<span>{heldPart.zone}</span>{/if}<span class="id">{id}</span></p>
+      <p class="muted">{heldPart.applies ? `Not a fact about the car now (${heldPart.applies}).` : `The Manual holds this part back: ${heldPart.why || 'not yet checked on the car'}.`}
+        {#if heldPart.verify}It is your row <a href={href({ name: 'todo', area: '00-verify', id: heldPart.verify.id })}>{heldPart.verify.id}</a> in Verify.{/if}</p>
+      {#if heldPart.note}<p class="note">{heldPart.note}</p>{/if}
+      <p class="faint small">{[heldPart.maker, heldPart.part_no].filter(Boolean).join(' · ')}</p>
+    </header>
+  </article>
+{:else if !p}
+  <p class="muted">No part {id} in the record. <a href={href({ name: 'manual', page: 'systems' })}>Every system</a></p>
 {:else}
   <article>
     <header>
@@ -70,6 +94,12 @@
         {#each facts as [k, v] (k)}
           <div class="fact"><span class="label">{k}</span><span>{v}</span></div>
         {/each}
+        {#if catalogueRows.length}
+          <div class="fact"><span class="label">Catalogue</span><span>{#each catalogueRows as c, i (c)}{i ? ' ' : ''}<a class="id" href={href({ name: 'row', area: '01-REFERENCE', table: 'catalogue', key: c })}>{c}</a>{/each}</span></div>
+        {/if}
+        {#if p.photo}
+          <div class="fact photo"><img src={app.platform?.photo(p.photo)} alt={p.name} /></div>
+        {/if}
         {#if p.link}
           <div class="fact"><span class="label">Where to buy</span><span><Linked text={p.link} /></span></div>
         {/if}
