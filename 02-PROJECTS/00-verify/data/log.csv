@@ -4,3 +4,4 @@ L-0002,2026-09-25,session,V1 D-427 D-429,"V1: the held-back list as 304 work row
 L-0003,2026-09-26,answers,A1 A2 A3 A4,"A1-A4 applied: cruise, rear wiper, power antenna and headlamp cleaner not fitted (his choices of 2026-09-25 13:18); 25 parts to applies=not-fitted, K-009..K-012 restated, inbox rows deleted"
 L-0004,2026-09-26,session,K9 K10 K11 I0,"P29: VIN, trim-code, unreadable-scan and car-on-stands rows added; 79 rows gated on them, 8 dash rows on the strip, 80 wiring rows on block VER.02; I15 dropped"
 L-0005,2026-09-26,"Applied VER.01 (D-431) and VER.02 (D-432): both blocks closed and their inbox rows saved. D-432's W1-W30 dropped so far; W31-W80 and D-431's 38-row/parts drop list are still pending, to finish next run.",,"refs=D-431,D-432,VER.01,VER.02"
+L-0006,2026-09-26,answers,B1 B3 B6,"rx7.py apply: 3 answer(s) of his set by rule - B1=yes, as described, B3=yes, as described, B6=not on the car"
