@@ -1,0 +1,270 @@
+{
+ "parts": [
+  {
+   "id": "PT688",
+   "link": "https://www.atkinsrotary.com/81-84-rx7-rear-windshield-wiper-arm-motor-1480-67-450c-.html",
+   "support": "",
+   "cad": "",
+   "note_add": "The 1982 US brochure (S-004 p15) lists the rear-window wiper/washer as GSL standard equipment and not for S or GS, so on this GS it is either a dealer/optional fit or absent - confirm on the hatch. New motor 1480-67-450C is no longer available from Mazda (Atkins, 2026); used only."
+  },
+  {
+   "id": "PT689",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT690",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT691",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Brushes are the wear item the 1985 manual names for abnormal wiper noise (S-002 sec 15 p15-43)."
+  },
+  {
+   "id": "PT692",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Catalogue BI-117-03 lists qty 2 of 8532-76-614 per motor."
+  },
+  {
+   "id": "PT693",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT694",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT695",
+   "link": "https://mazdatrix.com/product/wiper-arm-79-85-rear/",
+   "support": "",
+   "cad": "",
+   "note_add": "Arm 1480-67-421A is discontinued by Mazda (Mazdatrix); the arm bolt cover 8134-76-641 is still sold new by Atkins Rotary and fits only the rear arm."
+  },
+  {
+   "id": "PT696",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT697",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  }
+ ],
+ "specs": [
+  {
+   "part": "PT688",
+   "category": "Electrical",
+   "item": "Feed fuse (IG, X-04 fuse block, shared with rear washer)",
+   "value": "10",
+   "unit": "A",
+   "source": "S-001",
+   "page": "Section D p18",
+   "confidence": "primary",
+   "applies": "",
+   "note": "Feed L from ignition IG via 10 A fuse, becomes LB at X-03 and L at D-07 into the motor; confirm on the car"
+  },
+  {
+   "part": "PT688",
+   "category": "Electrical",
+   "item": "Motor control method",
+   "value": "ground-side switched: motor BG lead grounded through D-06 rear wiper & washer switch to B, X-11, X-02, X-13",
+   "unit": "",
+   "source": "S-001",
+   "page": "Section D p18",
+   "confidence": "primary",
+   "applies": "",
+   "note": "Motor has constant IG feed on L; the cabin switch completes the ground; confirm on the car"
+  },
+  {
+   "part": "PT688",
+   "category": "Electrical",
+   "item": "Internal auto-stop (park) switch",
+   "value": "yes - single contact inside the motor to body ground, keeps the motor running to the park position after the switch is turned off",
+   "unit": "",
+   "source": "S-001",
+   "page": "Section D p18",
+   "confidence": "primary",
+   "applies": "",
+   "note": "Drawn inside D-05 with its own ground symbol (no connector pin); confirm on the car"
+  },
+  {
+   "part": "PT688",
+   "category": "Electrical",
+   "item": "Standard equipment, 1982 US",
+   "value": "GSL only (listed as GSL addition over GS: rear-window wiper/washer)",
+   "unit": "",
+   "source": "S-004",
+   "page": "15",
+   "confidence": "primary",
+   "applies": "",
+   "note": "Whether this GS has one fitted - confirm on the hatch"
+  },
+  {
+   "part": "PT688",
+   "category": "Electrical",
+   "item": "Bench test: battery + to motor connector terminal A, - to terminals B and C",
+   "value": "motor must turn",
+   "unit": "",
+   "source": "S-002",
+   "page": "Section 15 p15-46",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 workshop manual only; the page says a battery, no voltage figure; 1982 S-001 shows two harness leads L and BG plus an internal ground, so the A/B/C letters are 1985 - confirm on the car"
+  },
+  {
+   "part": "PT688",
+   "category": "Electrical",
+   "item": "Circuit check: voltage between line L and body ground, ignition ON",
+   "value": "voltage present (none: check the fuse or repair the harness)",
+   "unit": "",
+   "source": "S-002",
+   "page": "Section 15 p15-46",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual gives no voltage figure on this page; the troubleshooting table (p15-43) names the fuse R. WIPER; 1982 wiring agrees the L lead is IG-fed (S-001 D p18)"
+  },
+  {
+   "part": "PT688",
+   "category": "Electrical",
+   "item": "Troubleshooting causes when rear wiper does not work",
+   "value": "R. WIPER fuse blown; faulty rear wiper motor; faulty rear wiper switch; faulty wiring or ground",
+   "unit": "",
+   "source": "S-002",
+   "page": "Section 15 p15-43",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual; abnormal noise causes listed: brush wear, loose motor mounting screw, insufficient grease in link joint"
+  },
+  {
+   "part": "PT688",
+   "category": "Electrical",
+   "item": "Shipping weight, motor 1480-67-450C",
+   "value": "3",
+   "unit": "lb",
+   "source": "src-atkins-rear-wiper-motor",
+   "page": "",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Retailer listing weight; listed NLA, fits 1981-85"
+  },
+  {
+   "part": "PT696",
+   "category": "Body",
+   "item": "Rear wiper blade length (lookup table)",
+   "value": "17",
+   "unit": "in",
+   "source": "src-mywipersize-rx7",
+   "page": "",
+   "confidence": "unverified",
+   "applies": "",
+   "note": "Blade-size lookup site gives 17 in for driver, passenger and rear, 1979-84 and 1985; no factory source seen - measure the blade on the car; confirm"
+  }
+ ],
+ "terminals": [
+  {
+   "part": "PT688",
+   "terminal": "L",
+   "function": "+12 V feed (ignition, 10 A fuse)",
+   "inside": "one motor brush (armature +)",
+   "wire": "L",
+   "to": "D-07 connector (LB side) - X-03 - LB bus - X-04 10 A fuse - ignition IG",
+   "source": "S-001",
+   "page": "Section D p18",
+   "note": "from S-001; bullet connector at D-05; confirm on the car"
+  },
+  {
+   "part": "PT688",
+   "terminal": "BG",
+   "function": "switched ground (run)",
+   "inside": "other motor brush (armature -), also joined to the internal park switch",
+   "wire": "BG",
+   "to": "D-07 - X-03 - X-12 - X-11 - D-06 rear wiper & washer switch (wiper contact) - B - X-11 - X-02 - ground X-13",
+   "source": "S-001",
+   "page": "Section D p18",
+   "note": "from S-001; bullet connector at D-05; confirm on the car"
+  },
+  {
+   "part": "PT688",
+   "terminal": "GND (park)",
+   "function": "auto-stop ground",
+   "inside": "internal park switch contact, closed except at the park position",
+   "wire": "",
+   "to": "body ground at the motor",
+   "source": "S-001",
+   "page": "Section D p18",
+   "note": "from S-001, drawn as a ground symbol inside D-05 with no connector pin; how it is grounded (case, eyelet or third lead) - confirm on the car"
+  }
+ ],
+ "sources": [
+  {
+   "key": "src-atkins-rear-wiper-motor",
+   "title": "Atkins Rotary - 81-84 RX-7 rear windshield wiper arm motor (1480-67-450C) - NLA",
+   "kind": "web",
+   "covers": "PT688 availability, fitment 1981-85, weight",
+   "url": "https://www.atkinsrotary.com/81-84-rx7-rear-windshield-wiper-arm-motor-1480-67-450c-.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "Out of stock, no longer available, listed $400"
+  },
+  {
+   "key": "src-mazdatrix-rear-wiper-arm",
+   "title": "Mazdatrix - Wiper arm, 79-85 RX-7 rear (1480-67-421A)",
+   "kind": "web",
+   "covers": "PT695 availability",
+   "url": "https://mazdatrix.com/product/wiper-arm-79-85-rear/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "Discontinued by Mazda; last price $62.57"
+  },
+  {
+   "key": "src-atkins-rear-arm-cover",
+   "title": "Atkins Rotary - 81-85 RX-7 rear windshield wiper arm bolt cover (8134-76-641)",
+   "kind": "web",
+   "covers": "PT695 arm cover, in stock new",
+   "url": "https://www.atkinsrotary.com/81-85-Rx7-Rear-Windshield-Wiper-Arm-Bolt-Cover-8134-76-641.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "$4.50, in stock 2026-09; rear only, does not fit front"
+  },
+  {
+   "key": "src-mywipersize-rx7",
+   "title": "MyWiperSize - Mazda RX-7 wiper blade sizes",
+   "kind": "web",
+   "covers": "PT696 rear blade length 17 in (1979-85 per the site)",
+   "url": "https://www.mywipersize.com/make/mazda/rx-7.php",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "Generic lookup table, not a factory source"
+  }
+ ],
+ "cad": []
+}

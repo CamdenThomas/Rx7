@@ -1,0 +1,622 @@
+{
+ "parts": [
+  {
+   "id": "PT013",
+   "link": "https://www.atkinsrotary.com/81-85-Rx7-Ignition-Coil-8245-18-100.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Genuine Mazda coils are no longer made; Atkins sells an aftermarket NGK coil under 8245-18-100 for all 1980-85 12A/13B. S-001 Section B: trailing coil B-18 (BW +, YG -), leading coil B-19 (BW +, YL -); confirm on the car."
+  },
+  {
+   "id": "PT014",
+   "link": "https://www.atkinsrotary.com/81-85-Rx7-Distributor-N249-18-200A-NLA.html",
+   "support": "",
+   "cad": "sketchfab-99115a3a",
+   "note_add": "Leading timing is set by rotating the housing on its lock nut, trailing timing by moving the trailing vacuum unit on its screws (S-002 p.5-36, S-006 p.44). Atkins lists a rebuilt 1981-85 unit as N249-18-200A (NLA)."
+  },
+  {
+   "id": "PT015",
+   "link": "https://www.atkinsrotary.com/80-85-Rx7-Distributor-Cap-8245-24-310B-9U.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Atkins sells 8245-24-310B for all 1980-85 rotaries at 57.00 USD; Mazdatrix lists it as 24-310B-8245 at 58.32 USD."
+  },
+  {
+   "id": "PT016",
+   "link": "https://mazdatrix.com/product/ign-rotor-all-rotary-80-85/",
+   "support": "",
+   "cad": "",
+   "note_add": "Standard Motor Products JR87 crosses to 8245-24-303A (RockAuto)."
+  },
+  {
+   "id": "PT017",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "The 16,000 ohm +/-40% lead limit is per 1 m (39.37 in) of lead (S-002 p.5-37). On 1981 cars the leading leads had black boots and the trailing leads blue (S-006 p.44); confirm on the car."
+  },
+  {
+   "id": "PT018",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT019",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "NGK stock number for BR8EQ-14 is 2329."
+  },
+  {
+   "id": "PT256",
+   "link": "https://www.atkinsrotary.com/81-85-Rx7-Distributor-Pickup-Coil-and-Breaker-Plate-N236-24-314.html",
+   "support": "Atkins Rotary 360-832-1990, Dan@Atkinsrotary.com (https://www.atkinsrotary.com/contact-us/)",
+   "cad": "",
+   "note_add": "N236-24-314 is sold as pick-up coil and breaker plate for all 1981-85 RX-7 (Atkins 330.00 USD, out of stock; Mazdatrix 253.86 USD). Each pick-up coil's two leads run straight into its igniter (S-001 Section B)."
+  },
+  {
+   "id": "PT257",
+   "link": "",
+   "support": "Mazdatrix 562-426-7960, mazdatrix.inc@gmail.com (https://www.mazdatrix.com)",
+   "cad": "",
+   "note_add": "The air gap is measured between the signal rotor's protrusion and the pick-up coil core (S-002 p.5-35)."
+  },
+  {
+   "id": "PT258",
+   "link": "https://mazdatrix.com/product/ign-igniter-used-rx7-81-85-style/",
+   "support": "Mazdatrix 562-426-7960, mazdatrix.inc@gmail.com (https://www.mazdatrix.com)",
+   "cad": "",
+   "note_add": "Aftermarket replacement Standard Motor Products LX-642 (obsolete) crosses to E30124910; Mazdatrix sells used, tested igniters at 135.00 USD. Trailing igniter B-20 (YG, BW), leading B-21 (YL, BW) per S-001; confirm on the car."
+  },
+  {
+   "id": "PT259",
+   "link": "",
+   "support": "Mazdatrix 562-426-7960, mazdatrix.inc@gmail.com (https://www.mazdatrix.com)",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT260",
+   "link": "",
+   "support": "Mazdatrix 562-426-7960, mazdatrix.inc@gmail.com (https://www.mazdatrix.com)",
+   "cad": "",
+   "note_add": "The trailing vacuum unit's position on its attaching screws sets trailing timing (S-002 p.5-36; S-006 p.44)."
+  },
+  {
+   "id": "PT261",
+   "link": "",
+   "support": "Mazdatrix 562-426-7960, mazdatrix.inc@gmail.com (https://www.mazdatrix.com)",
+   "cad": "",
+   "note_add": "Capacity 0.24-0.30 uF (S-038 T:3). Single BW lead (B-22) to the ignition feed, case to ground (S-001 Section B); confirm on the car."
+  },
+  {
+   "id": "PT262",
+   "link": "",
+   "support": "Mazdatrix 562-426-7960, mazdatrix.inc@gmail.com (https://www.mazdatrix.com)",
+   "cad": "",
+   "note_add": ""
+  }
+ ],
+ "specs": [
+  {
+   "part": "PT261",
+   "category": "Ignition",
+   "item": "Condenser capacity",
+   "value": "0.24-0.30",
+   "unit": "uF",
+   "source": "S-038",
+   "page": "T:3 (PDF p.5)",
+   "confidence": "primary",
+   "applies": "",
+   "note": ""
+  },
+  {
+   "part": "PT014",
+   "category": "Ignition",
+   "item": "Ignition timing mark location",
+   "value": "Eccentric shaft pulley",
+   "unit": "",
+   "source": "S-038",
+   "page": "T:3 (PDF p.5)",
+   "confidence": "primary",
+   "applies": "",
+   "note": ""
+  },
+  {
+   "part": "PT014",
+   "category": "Ignition",
+   "item": "Ignition timing mark colours and pointer",
+   "value": "Leading mark yellow, trailing mark red on the eccentric shaft pulley; read against the indicator pin on the front cover",
+   "unit": "",
+   "source": "S-006,S-002",
+   "page": "S-006 PDF p.34 (printed 44); S-002 p.5-35",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "Colours from the 1981 training manual, indicator pin from the 1985 workshop manual; no 1982 source opened states them. Confirm on the car."
+  },
+  {
+   "part": "PT014",
+   "category": "Ignition",
+   "item": "Timing adjustment method",
+   "value": "Leading: loosen the distributor lock nut and rotate the housing. Trailing: loosen the trailing vacuum unit's attaching screws and move the unit",
+   "unit": "",
+   "source": "S-002,S-006",
+   "page": "S-002 p.5-36; S-006 PDF p.34 (printed 44)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 and 1981 manuals give the same method; no 1982 source opened states it."
+  },
+  {
+   "part": "PT014",
+   "category": "Ignition",
+   "item": "Distributor installation alignment",
+   "value": "Set leading yellow mark on the pulley to the indicator pin; align tally marks on housing and driven gear; turn the housing until the signal rotor protrusion aligns with the pick-up core; tighten lock nut",
+   "unit": "",
+   "source": "S-002",
+   "page": "p.5-35",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 procedure."
+  },
+  {
+   "part": "PT256",
+   "category": "Ignition",
+   "item": "Pick-up coil signal test",
+   "value": "DC ammeter (max graduation 1 mA) across the coupler terminals; the needle must move when a screwdriver on the magnet core is quickly pulled away; test leading and trailing",
+   "unit": "",
+   "source": "S-002",
+   "page": "p.5-34",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 procedure; resistance values are on the distributor (PT014)."
+  },
+  {
+   "part": "PT257",
+   "category": "Ignition",
+   "item": "Air gap remedy",
+   "value": "If the gap between the signal rotor protrusion and pick-up core is out of spec, replace the pick-up coil and bearing assembly or the distributor drive shaft",
+   "unit": "",
+   "source": "S-002",
+   "page": "p.5-35",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "The 0.5-0.9 mm figure is already recorded on PT014 from S-038."
+  },
+  {
+   "part": "PT258",
+   "category": "Ignition",
+   "item": "Igniter check",
+   "value": "Bench circuit with a 12 V test lamp of less than 10 W; switching ON and OFF quickly must make the lamp flash; test each igniter",
+   "unit": "",
+   "source": "S-002",
+   "page": "p.5-37",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 procedure."
+  },
+  {
+   "part": "PT258",
+   "category": "Ignition",
+   "item": "Replacement Standard Motor Products LX-642: ratings and interchange",
+   "value": "12 V; one connector, male blade terminals; bolt-on; made in Japan; interchange Beck/Arnley 1800041, Delphi DS10035, Kem E5007, ACDelco 88921543 / E1952A, Airtex 6H1162, Wells 55-1662, Duralast JA1098, Mazda E30124910; obsolete",
+   "unit": "",
+   "source": "src-wrenchmonkey-lx642",
+   "page": "product page",
+   "confidence": "secondary",
+   "applies": "",
+   "note": ""
+  },
+  {
+   "part": "PT015",
+   "category": "Ignition",
+   "item": "Distributor cap inspection",
+   "value": "Cracks, carbon tracks, burnt and corroded terminals; worn centre contact",
+   "unit": "",
+   "source": "S-002",
+   "page": "p.5-33",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 procedure."
+  },
+  {
+   "part": "PT015",
+   "category": "Ignition",
+   "item": "Replacement YEC YD306",
+   "value": "Listed for Mazda 8245-24-310B, RX-7",
+   "unit": "",
+   "source": "src-ebay-yd306",
+   "page": "product page",
+   "confidence": "secondary",
+   "applies": "",
+   "note": ""
+  },
+  {
+   "part": "PT016",
+   "category": "Ignition",
+   "item": "Distributor rotor inspection",
+   "value": "Cracks; excessive burning at the end of the metal strip",
+   "unit": "",
+   "source": "S-002",
+   "page": "p.5-33",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 procedure."
+  },
+  {
+   "part": "PT016",
+   "category": "Ignition",
+   "item": "Replacement Standard Motor Products JR87: construction and interchange",
+   "value": "Plastic body, aluminium contact, push-on, black; interchange 824524303A, 12329681, JR87T, N32218V05",
+   "unit": "",
+   "source": "src-rockauto-jr87",
+   "page": "moreinfo pk=46521",
+   "confidence": "secondary",
+   "applies": "",
+   "note": ""
+  },
+  {
+   "part": "PT017",
+   "category": "Ignition",
+   "item": "High-tension lead handling",
+   "value": "Do not puncture leads with a probe; remove from plugs by grasping and twisting the moulded cap, never by pulling the cord",
+   "unit": "",
+   "source": "S-002",
+   "page": "p.5-37 to 5-38",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 procedure."
+  },
+  {
+   "part": "PT017",
+   "category": "Ignition",
+   "item": "High-tension lead boot colours",
+   "value": "Leading: black boot; trailing: blue boot",
+   "unit": "",
+   "source": "S-006",
+   "page": "PDF p.34 (printed 44)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1981 training manual; confirm on the car."
+  },
+  {
+   "part": "PT013",
+   "category": "Ignition",
+   "item": "Replacement NGK coil sold as 8245-18-100",
+   "value": "Aftermarket NGK coil sold by Atkins as a replacement for 1980-85 12A/13B; 77.25 USD",
+   "unit": "",
+   "source": "src-atkins-coil",
+   "page": "product page",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "OEM Mazda coils are no longer made."
+  },
+  {
+   "part": "PT256",
+   "category": "Ignition",
+   "item": "Replacement Mazda N236-24-314 (pick-up coil and breaker plate)",
+   "value": "Fits 1981-85 RX-7 12A and 13B; Atkins 330.00 USD (out of stock), Mazdatrix 253.86 USD",
+   "unit": "",
+   "source": "src-atkins-pickup",
+   "page": "product page",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "N236-24-314 is the catalogue's alternative number; Mazdatrix listing via src-mazdatrix-ign."
+  },
+  {
+   "part": "PT019",
+   "category": "Identity",
+   "item": "NGK stock number",
+   "value": "2329 (BR8EQ-14)",
+   "unit": "",
+   "source": "src-wrenchmonkey-br8eq14",
+   "page": "product page",
+   "confidence": "secondary",
+   "applies": "",
+   "note": ""
+  }
+ ],
+ "terminals": [
+  {
+   "part": "PT013",
+   "terminal": "T +",
+   "function": "Trailing coil (B-18) positive feed",
+   "inside": "primary winding supply",
+   "wire": "BW",
+   "to": "Ignition switch IG via BY and the 15 A fuse on X-04, shared BW bus with leading coil, igniters, condenser, emission control unit B and choke & check relay",
+   "source": "S-001",
+   "page": "PDF p.12-13 (Section B)",
+   "note": "from S-001; ring terminal on the coil per the B-18 connector view; confirm on the car"
+  },
+  {
+   "part": "PT013",
+   "terminal": "T -",
+   "function": "Trailing coil (B-18) negative",
+   "inside": "primary winding, switched to ground by the trailing igniter",
+   "wire": "YG",
+   "to": "Igniter (T) B-20; tachometer (Section C); emission control unit terminal A (B-01)",
+   "source": "S-001",
+   "page": "PDF p.12-13 (Section B)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT013",
+   "terminal": "T HT",
+   "function": "Trailing coil high-tension tower",
+   "inside": "secondary winding output",
+   "wire": "",
+   "to": "Distributor cap centre (trailing) via coil wire",
+   "source": "S-001",
+   "page": "PDF p.12-13 (Section B)",
+   "note": "HT lead, no colour code; from S-001 symbol; confirm on the car"
+  },
+  {
+   "part": "PT013",
+   "terminal": "L +",
+   "function": "Leading coil (B-19) positive feed",
+   "inside": "primary winding supply",
+   "wire": "BW",
+   "to": "Same BW ignition feed as the trailing coil",
+   "source": "S-001",
+   "page": "PDF p.12-13 (Section B)",
+   "note": "from S-001; ring terminal on the coil per the B-19 connector view; confirm on the car"
+  },
+  {
+   "part": "PT013",
+   "terminal": "L -",
+   "function": "Leading coil (B-19) negative",
+   "inside": "primary winding, switched to ground by the leading igniter",
+   "wire": "YL",
+   "to": "Igniter (L) B-21",
+   "source": "S-001",
+   "page": "PDF p.12-13 (Section B)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT013",
+   "terminal": "L HT",
+   "function": "Leading coil high-tension tower",
+   "inside": "secondary winding output",
+   "wire": "",
+   "to": "Distributor cap centre (leading) via coil wire",
+   "source": "S-001",
+   "page": "PDF p.12-13 (Section B)",
+   "note": "HT lead, no colour code; from S-001 symbol; confirm on the car"
+  },
+  {
+   "part": "PT258",
+   "terminal": "B-20 YG",
+   "function": "Trailing igniter switched output",
+   "inside": "switches trailing coil negative to ground on the pick-up signal (inferred from the circuit)",
+   "wire": "YG",
+   "to": "Trailing coil (B-18) negative",
+   "source": "S-001",
+   "page": "PDF p.12-13 (Section B)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT258",
+   "terminal": "B-20 BW",
+   "function": "Trailing igniter supply",
+   "inside": "power supply",
+   "wire": "BW",
+   "to": "Ignition BW feed",
+   "source": "S-001",
+   "page": "PDF p.12-13 (Section B)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT258",
+   "terminal": "B-21 YL",
+   "function": "Leading igniter switched output",
+   "inside": "switches leading coil negative to ground on the pick-up signal (inferred from the circuit)",
+   "wire": "YL",
+   "to": "Leading coil (B-19) negative",
+   "source": "S-001",
+   "page": "PDF p.12-13 (Section B)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT258",
+   "terminal": "B-21 BW",
+   "function": "Leading igniter supply",
+   "inside": "power supply",
+   "wire": "BW",
+   "to": "Ignition BW feed",
+   "source": "S-001",
+   "page": "PDF p.12-13 (Section B)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT258",
+   "terminal": "GND",
+   "function": "Igniter ground",
+   "inside": "ground",
+   "wire": "",
+   "to": "Ground (drawn to earth, no colour given)",
+   "source": "S-001",
+   "page": "PDF p.12-13 (Section B)",
+   "note": "from S-001; the 1985 check (S-002 p.5-37) also shows a ground terminal; confirm on the car"
+  },
+  {
+   "part": "PT258",
+   "terminal": "PU",
+   "function": "Pick-up inputs",
+   "inside": "two leads per pick-up coil into its igniter",
+   "wire": "",
+   "to": "Pick-up coils (PT256), inside the distributor",
+   "source": "S-001",
+   "page": "PDF p.12-13 (Section B)",
+   "note": "internal, no colour given; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT256",
+   "terminal": "2 leads (each coil)",
+   "function": "Pick-up coil signal",
+   "inside": "magnetic pick-up winding",
+   "wire": "",
+   "to": "Its igniter (trailing B-20 / leading B-21), inside the distributor",
+   "source": "S-001",
+   "page": "PDF p.12-13 (Section B)",
+   "note": "internal, no colour given; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT261",
+   "terminal": "B-22 BW",
+   "function": "Condenser lead",
+   "inside": "capacitor to case",
+   "wire": "BW",
+   "to": "Ignition BW feed (radio-noise suppression)",
+   "source": "S-001",
+   "page": "PDF p.12-13 (Section B)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT261",
+   "terminal": "case",
+   "function": "Condenser case",
+   "inside": "capacitor other plate",
+   "wire": "",
+   "to": "Ground",
+   "source": "S-001",
+   "page": "PDF p.12-13 (Section B)",
+   "note": "from S-001; confirm on the car"
+  }
+ ],
+ "sources": [
+  {
+   "key": "src-atkins-coil",
+   "title": "Atkins Rotary - 80-85 RX-7 Ignition Coil (8245-18-100)",
+   "kind": "web",
+   "covers": "PT013 replacement coil, fitment, price",
+   "url": "https://www.atkinsrotary.com/81-85-Rx7-Ignition-Coil-8245-18-100.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-atkins-pickup",
+   "title": "Atkins Rotary - 81-85 RX-7 Distributor Pickup Coil & Breaker Plate (N236-24-314)",
+   "kind": "web",
+   "covers": "PT256 fitment, price",
+   "url": "https://www.atkinsrotary.com/81-85-Rx7-Distributor-Pickup-Coil-and-Breaker-Plate-N236-24-314.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-atkins-cap",
+   "title": "Atkins Rotary - 80-85 RX-7 Distributor Cap (8245-24-310B)",
+   "kind": "web",
+   "covers": "PT015 fitment, price; links rotor 8245-24-303A",
+   "url": "https://www.atkinsrotary.com/80-85-Rx7-Distributor-Cap-8245-24-310B-9U.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-atkins-dist",
+   "title": "Atkins Rotary - 81-85 RX-7 Rebuilt Distributor (N249-18-200A, NLA)",
+   "kind": "web",
+   "covers": "PT014 rebuilt unit, fitment",
+   "url": "https://www.atkinsrotary.com/81-85-Rx7-Distributor-N249-18-200A-NLA.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-mazdatrix-ign",
+   "title": "Mazdatrix - Coils, Igniters, Distributor Parts",
+   "kind": "web",
+   "covers": "PT013/PT015/PT256/PT258 listings and prices",
+   "url": "https://mazdatrix.com/product-category/ignition-2/coils-igniters-distributor-parts/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-mazdatrix-rotor",
+   "title": "Mazdatrix - Ignition Rotor, all rotary 80-85 (8245-24-303A)",
+   "kind": "web",
+   "covers": "PT016 genuine rotor, price",
+   "url": "https://mazdatrix.com/product/ign-rotor-all-rotary-80-85/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-mazdatrix-igniter",
+   "title": "Mazdatrix - Ignition Igniter used, RX-7 81-85 style",
+   "kind": "web",
+   "covers": "PT258 used tested igniter",
+   "url": "https://mazdatrix.com/product/ign-igniter-used-rx7-81-85-style/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-wrenchmonkey-lx642",
+   "title": "The Wrench Monkey - Standard Motor Products LX-642 Ignition Control Module",
+   "kind": "web",
+   "covers": "PT258 replacement ratings and interchange",
+   "url": "https://www.thewrenchmonkey.ca/brands/standard-motor-products/lx642",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-rockauto-jr87",
+   "title": "RockAuto - Standard Motor Products JR87 distributor rotor",
+   "kind": "web",
+   "covers": "PT016 replacement construction and interchange",
+   "url": "https://www.rockauto.com/en/moreinfo.php?pk=46521&cc=1192250&pt=7136",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-ebay-yd306",
+   "title": "eBay product - YEC YD306 distributor cap for Mazda 824524310B",
+   "kind": "web",
+   "covers": "PT015 replacement",
+   "url": "https://www.ebay.com/p/1129563398",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-wrenchmonkey-br8eq14",
+   "title": "The Wrench Monkey - NGK BR8EQ-14 spark plug",
+   "kind": "web",
+   "covers": "PT019 NGK stock number",
+   "url": "https://www.thewrenchmonkey.ca/brands/ngk/br8eq14",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  }
+ ],
+ "cad": []
+}

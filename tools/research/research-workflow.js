@@ -8,9 +8,12 @@ export const meta = {
 }
 
 const S = args.scratch
+// The findings go straight into the tree (01-REFERENCE/research), never only a scratch folder:
+// five wave-2 batches were lost that way (plan P48).
+const OUT = `${T}/01-REFERENCE/research/research`
 const T = '/home/crash/docs/storage/Rx7'
 
-const RULES = `You research the parts of one real car for its owner's manual: a 1982 US Mazda RX-7 GS (FB), 12A rotary, 3-speed automatic, Sunbeam Silver, about 150,000 miles. Work in ${T}. The owner asked: "find as much information about every part: the spec sheet, diagrams, CAD, anything, internal wire diagrams, every detail, every layer".
+const RULES = `You research the parts of one real car for its owner's manual: a 1982 US Mazda RX-7 GS (FB), 12A rotary, 3-speed automatic, Sunbeam Silver, (the odometer is in rx7.py export, manual.odometer). Work in ${T}. The owner asked: "find as much information about every part: the spec sheet, diagrams, CAD, anything, internal wire diagrams, every detail, every layer".
 
 READ FIRST (with rx7.py, never whole files):
 - Your parts: python tools/rx7.py sql 00-CAR "select * from parts where id in (IDS)"  (parent = the part it sits in; catalogue = its factory catalogue figure and rows; note = what is known; 'confirm' in a note means nobody has checked it on the car).
@@ -68,10 +71,10 @@ const res = await pipeline(
   args.batches,
   (b) => {
     const ids = b.parts.map((x) => `'${x}'`).join(',')
-    return agent(`${RULES.split('IDS').join(ids)}\n\nYOUR BATCH: ${b.id} (system ${b.system}), parts ${b.parts.join(', ')}.\nWRITE TO: ${S}/research/${b.id}.json`,
+    return agent(`${RULES.split('IDS').join(ids)}\n\nYOUR BATCH: ${b.id} (system ${b.system}), parts ${b.parts.join(', ')}.\nWRITE TO: ${OUT}/${b.id}.json`,
       { label: `research ${b.id}`, phase: 'Research', schema: SUMMARY })
   },
-  (sum, b, i) => sum && agent(`You check another agent's research for a car's owner's manual before it enters the permanent record. Work in ${T}. The findings are in ${S}/research/${b.id}.json (keys parts, specs, terminals, sources, cad). Pick 8 rows spread across specs and terminals (take every ${Math.max(1, 3 + (i % 4))}th, plus any that look surprising), open the exact source and page each cites (local PDFs with the Read tool's pages parameter; web sources with WebFetch; source keys are defined in the file's sources array, S- ids in: python tools/rx7.py sql 01-REFERENCE "select id,title,url,local_path from sources where id='S-0xx'"), and confirm the value is really there. Also confirm each new source URL loads and says what its row claims, and that every downloaded local_path exists. Rules the research had to follow: never invent; a 1982-source figure has applies blank, another year's figure alone has applies=other-car; unmeasured terminals/dimensions carry confirm in the note. Drop any row a source does not support, fix any wrong value/page/applies, and write the file back whole. If more than 2 of your 8 were wrong, check 8 more. Return what you did.`,
+  (sum, b, i) => sum && agent(`You check another agent's research for a car's owner's manual before it enters the permanent record. Work in ${T}. The findings are in ${OUT}/${b.id}.json (keys parts, specs, terminals, sources, cad). Pick 8 rows spread across specs and terminals (take every ${Math.max(1, 3 + (i % 4))}th, plus any that look surprising), open the exact source and page each cites (local PDFs with the Read tool's pages parameter; web sources with WebFetch; source keys are defined in the file's sources array, S- ids in: python tools/rx7.py sql 01-REFERENCE "select id,title,url,local_path from sources where id='S-0xx'"), and confirm the value is really there. Also confirm each new source URL loads and says what its row claims, and that every downloaded local_path exists. Rules the research had to follow: never invent; a 1982-source figure has applies blank, another year's figure alone has applies=other-car; unmeasured terminals/dimensions carry confirm in the note. Drop any row a source does not support, fix any wrong value/page/applies, and write the file back whole. If more than 2 of your 8 were wrong, check 8 more. Return what you did.`,
     { label: `check ${b.id}`, phase: 'Source check', schema: CHECK }).then((c) => ({ id: b.id, sum, c })),
 )
 return res.filter(Boolean).map((r) => ({ id: r.id, specs: r.sum.specs, terminals: r.sum.terminals, sources: r.sum.sources_new, cad: r.sum.cad, downloads: r.sum.downloads, empty: r.sum.nothing_found.length, checked: r.c && r.c.checked, dropped: r.c && r.c.dropped, fixed: r.c && r.c.fixed }))

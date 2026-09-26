@@ -1,0 +1,95 @@
+{
+ "parts": [
+  {
+   "id": "PT228",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "No new or reproduction bracket found; used OEM 12A compressor brackets are sold for 1984-85 cars (e.g. https://www.autopartone.com/products/84-85-mazda-rx7-oem-12a-a-c-compressor-bracket), fit to the '82 engine not checked. Listing sold out on 2026-09-25 (USD 75)."
+  },
+  {
+   "id": "PT229",
+   "link": "https://www.autopartone.com/products/84-85-mazda-rx7-oem-12a-a-c-compressor-bracket",
+   "support": "",
+   "cad": "",
+   "note_add": "The Mazda dealer A/C installation instruction (S-048, year not stated) shows this kit as mount MZ-97-A-1 bolted to the engine on two 3/8 in spacers, the compressor hung from it on a 3/8 x 5 in bolt at the bottom and two 3/8 x 1-1/2 in bolts in the top adjusting slots; the rear adjusting-arm bolt also carries the spark plug wire holder. Listing is a used 84-85 bracket; check fit. Listing sold out on 2026-09-25 (USD 75)."
+  }
+ ],
+ "specs": [
+  {
+   "part": "PT229",
+   "category": "Engine",
+   "item": "Mount to engine, front holes: bolts 10 x 1.25 mm x 30 mm with 10 mm lockwashers, qty",
+   "value": "2",
+   "unit": "pcs",
+   "source": "S-048",
+   "page": "p.1 step 3, Diagram 1",
+   "confidence": "secondary",
+   "applies": "other-car",
+   "note": "Mazda dealer A/C installation instruction, year not stated; mount MZ-97-A-1. Two 3/8 in mount spacers (3/4 x 13/32 x 0.394 in) sit between mount and engine at these holes. check"
+  },
+  {
+   "part": "PT229",
+   "category": "Engine",
+   "item": "Mount to engine, top rear hole: bolt 10 x 1.25 mm x 20 mm with 3/8 in lockwasher",
+   "value": "1",
+   "unit": "pcs",
+   "source": "S-048",
+   "page": "p.1 step 3, Diagram 1",
+   "confidence": "secondary",
+   "applies": "other-car",
+   "note": "Year not stated. A 12 x 1.5 mm hex nut with 1/2 in lockwasher goes on the engine stud; tighten all uniformly. Diagram 1 labels a 7/16 lockwasher at this 20 mm bolt, the text says 3/8 in. check"
+  },
+  {
+   "part": "PT229",
+   "category": "Engine",
+   "item": "Mount spacer (between mount and engine), OD x ID x length",
+   "value": "3/4 x 13/32 x 0.394",
+   "unit": "in",
+   "source": "S-048",
+   "page": "p.1 Diagram 1",
+   "confidence": "secondary",
+   "applies": "other-car",
+   "note": "Qty 2. Year not stated; the '82 package lists spacers 0000-67-1983-69 x2 (S-005 BI-087-19, 3/8 x 3/4 OD - 7/16 ID), so the ID differs from this sheet's 13/32; possibly the same spacer. check"
+  },
+  {
+   "part": "PT229",
+   "category": "Engine",
+   "item": "Compressor pivot bolt (bottom of mount, installed from front), 3/8 in NC x 5 in with lockwasher and nut",
+   "value": "1",
+   "unit": "pcs",
+   "source": "S-048",
+   "page": "p.2 step 4",
+   "confidence": "secondary",
+   "applies": "other-car",
+   "note": "Diagram 1 labels a 10 mm x 130 mm bolt with 7/16 lockwasher and 10 mm hex nut at this position. Year not stated. check"
+  },
+  {
+   "part": "PT229",
+   "category": "Engine",
+   "item": "Compressor adjusting bolts (top slots of mount), 3/8 in NC x 1-1/2 in (9.525 x 38.1 mm, zinc coated) with lockwashers, flat washers and nuts",
+   "value": "2",
+   "unit": "pcs",
+   "source": "S-048",
+   "page": "p.2 step 4, p.1 Diagram 1",
+   "confidence": "secondary",
+   "applies": "other-car",
+   "note": "Belt is fitted around crankshaft pulley and compressor clutch, then tensioned by these slots before tightening; the water pump pulley must be rotated to the correct position to fit the belt. No tension figure given. Year not stated. check"
+  },
+  {
+   "part": "PT228",
+   "category": "Engine",
+   "item": "Spark plug wire holder mounting",
+   "value": "rear bolt of compressor bracket adjusting arms",
+   "unit": "",
+   "source": "S-048",
+   "page": "p.2 step 5, Photo 2",
+   "confidence": "secondary",
+   "applies": "other-car",
+   "note": "Year not stated; wires must be clipped into the holder. check"
+  }
+ ],
+ "terminals": [],
+ "sources": [],
+ "cad": []
+}

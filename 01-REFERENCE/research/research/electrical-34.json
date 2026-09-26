@@ -1,0 +1,660 @@
+{
+ "parts": [
+  {
+   "id": "PT698",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 Section D p18 draws the rear washer motor (D-04) and rear wiper on the 1982 US diagram; the rear wiper is recorded as gone from the car (D-097), so the tank may be absent - confirm."
+  },
+  {
+   "id": "PT699",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT700",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT701",
+   "link": "https://www.amazon.com/Mazda-1410-67-530-Windshield-Washer-Pump/dp/B00KWEZZRW",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 D-04: 2-pin, LB feed (ACC-side L bus, X-04 10 A rear wiper fuse) and L to the rear wiper & washer switch, which grounds it. 1410-67-530 is still listed as a genuine Mazda washer pump (shared with 626/B-series)."
+  },
+  {
+   "id": "PT702",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT703",
+   "link": "https://www.amazon.com/Mazda-1981-1985-window-washer-1480-67-510/dp/B017N3PWSQ",
+   "support": "",
+   "cad": "",
+   "note_add": "New OEM 1480-67-510 rear window washer nozzle listed for 1981-85 RX-7."
+  },
+  {
+   "id": "PT708",
+   "link": "https://www.atkinsrotary.com/81-83-Rx7-Ignition-Switch-BA24-66-155A.html",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001: WR in (1.25 sq main link), ACC out L, IG out BY, ST out via 0.5 sq fusible link to BY (inhibitor switch, A/T). BA24-66-155A is NLA at Atkins; BA14-66-151A suggested as substitute; forum says the 84-85 switch fits with one extra wire and different plug colours."
+  },
+  {
+   "id": "PT709",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 H-03: normally open, closed with key in the cylinder; joins LY (constant, X-04 15 A) to G at the Control Processing Unit (X-16), which sounds the key reminder buzzer."
+  },
+  {
+   "id": "PT816",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 H-12 (luggage compartment light switch): single RB wire from the 5 W luggage lamp; the switch closes to body ground when the hatch opens."
+  },
+  {
+   "id": "PT832",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 H-02: BL (from the 3.4 W glove box lamp) and a ring-terminal B to ground (X-02, X-13)."
+  },
+  {
+   "id": "PT849",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 H-10 auto clock: 4-cavity connector B (ground), RG (illumination, light switch), LY (constant, X-04 15 A, keeps time), GY (ignition, X-04 10 A, display)."
+  }
+ ],
+ "specs": [
+  {
+   "part": "PT708",
+   "category": "Electrical",
+   "item": "Key positions",
+   "value": "OFF, ACC, IG, ST",
+   "unit": "",
+   "source": "S-001",
+   "page": "10, 26",
+   "confidence": "primary",
+   "applies": "",
+   "note": "switch symbol on Section A and H pages"
+  },
+  {
+   "part": "PT708",
+   "category": "Electrical",
+   "item": "Supply fusible link (main, X-07)",
+   "value": "1.25",
+   "unit": "mm2",
+   "source": "S-001",
+   "page": "26",
+   "confidence": "primary",
+   "applies": "",
+   "note": "WR from battery via 1.25 sq link to X-08"
+  },
+  {
+   "part": "PT708",
+   "category": "Electrical",
+   "item": "Start circuit fusible link (X-09)",
+   "value": "0.5",
+   "unit": "mm2",
+   "source": "S-001",
+   "page": "10",
+   "confidence": "primary",
+   "applies": "",
+   "note": "ST output -> 0.5 sq link -> BY to inhibitor switch and starter"
+  },
+  {
+   "part": "PT708",
+   "category": "Electrical",
+   "item": "IG output fuse to alternator excitation (X-04)",
+   "value": "15",
+   "unit": "A",
+   "source": "S-001",
+   "page": "10",
+   "confidence": "unverified",
+   "applies": "",
+   "note": "BY -> fuse -> BW to alternator A-08; the scan is faint and reads 15A (or 7.5A); charging-starting.md says 7.5 A. Read the fuse block on the car - confirm"
+  },
+  {
+   "part": "PT708",
+   "category": "Electrical",
+   "item": "IG output fuse to GY bus (X-04)",
+   "value": "10",
+   "unit": "A",
+   "source": "S-001",
+   "page": "26",
+   "confidence": "primary",
+   "applies": "",
+   "note": "BY -> 10 A -> GY"
+  },
+  {
+   "part": "PT708",
+   "category": "Electrical",
+   "item": "ACC output fuse to front wiper (X-04)",
+   "value": "10",
+   "unit": "A",
+   "source": "S-001",
+   "page": "18",
+   "confidence": "primary",
+   "applies": "",
+   "note": "L -> 10 A -> L to front wiper motor D-02 and CPU X-16 (the LB on this page comes from the second 10 A fuse)"
+  },
+  {
+   "part": "PT708",
+   "category": "Electrical",
+   "item": "ACC output fuse to rear wiper/washer (X-04)",
+   "value": "10",
+   "unit": "A",
+   "source": "S-001",
+   "page": "18",
+   "confidence": "primary",
+   "applies": "",
+   "note": "L -> second 10 A -> LB (rear washer D-04, rear wiper D-07, front washer D-01)"
+  },
+  {
+   "part": "PT708",
+   "category": "Electrical",
+   "item": "ACC output fuse to LO bus (X-04)",
+   "value": "20",
+   "unit": "A",
+   "source": "S-001",
+   "page": "26",
+   "confidence": "primary",
+   "applies": "",
+   "note": "L -> 20 A -> LO (glove box light, seat belt light); OEM-RECORD lists LO as WR constant - page 26 draws it from the switch ACC side, confirm"
+  },
+  {
+   "part": "PT708",
+   "category": "Electrical",
+   "item": "Continuity ACC (1980 switch)",
+   "value": "C-E",
+   "unit": "",
+   "source": "S-045",
+   "page": "15:10 (pdf p12), Fig 15-32",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1980 terminal letters/colours A BY, B YB, C WR, D BW, E L, F RB, G B, H YB"
+  },
+  {
+   "part": "PT708",
+   "category": "Electrical",
+   "item": "Continuity ON (1980 switch)",
+   "value": "C-D-E; F-H",
+   "unit": "",
+   "source": "S-045",
+   "page": "15:10 (pdf p12)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": ""
+  },
+  {
+   "part": "PT708",
+   "category": "Electrical",
+   "item": "Continuity START (1980 switch)",
+   "value": "C-D-A-B; F-G",
+   "unit": "",
+   "source": "S-045",
+   "page": "15:10 (pdf p12)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "E (ACC) is open in START"
+  },
+  {
+   "part": "PT708",
+   "category": "Electrical",
+   "item": "Continuity LOCK (1985 switch)",
+   "value": "H-I",
+   "unit": "",
+   "source": "S-002",
+   "page": "15-14",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "H-I is the 1985 key reminder contact (closed with key in)"
+  },
+  {
+   "part": "PT708",
+   "category": "Electrical",
+   "item": "Continuity ACC (1985 switch)",
+   "value": "D-G; H-I",
+   "unit": "",
+   "source": "S-002",
+   "page": "15-14",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": ""
+  },
+  {
+   "part": "PT708",
+   "category": "Electrical",
+   "item": "Continuity ON (1985 switch)",
+   "value": "D-E-F-G; H-I",
+   "unit": "",
+   "source": "S-002",
+   "page": "15-14",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": ""
+  },
+  {
+   "part": "PT708",
+   "category": "Electrical",
+   "item": "Continuity START (1985 switch)",
+   "value": "B-C; A-D-E-F; H-I",
+   "unit": "",
+   "source": "S-002",
+   "page": "15-14",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": ""
+  },
+  {
+   "part": "PT708",
+   "category": "Electrical",
+   "item": "Replacement Mazda BA14-66-151A: substitute for NLA BA24-66-155A",
+   "value": "BA14-66-151A",
+   "unit": "",
+   "source": "src-atkins-ignsw",
+   "page": "web",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Atkins lists BA24-66-155A NLA at 225 USD, says BA14-66-151A may work"
+  },
+  {
+   "part": "PT708",
+   "category": "Electrical",
+   "item": "Replacement Mazda 1984-85 ignition switch: fits 1981-85",
+   "value": "one extra wire, different plug colours",
+   "unit": "",
+   "source": "src-rx7club-ignsw",
+   "page": "web",
+   "confidence": "unverified",
+   "applies": "",
+   "note": "forum statement"
+  },
+  {
+   "part": "PT709",
+   "category": "Electrical",
+   "item": "Contact type",
+   "value": "normally open, closed with key inserted",
+   "unit": "",
+   "source": "S-001",
+   "page": "26",
+   "confidence": "primary",
+   "applies": "",
+   "note": "H-03 symbol"
+  },
+  {
+   "part": "PT709",
+   "category": "Electrical",
+   "item": "Supply fuse (LY, X-04 room)",
+   "value": "15",
+   "unit": "A",
+   "source": "S-001",
+   "page": "26",
+   "confidence": "primary",
+   "applies": "",
+   "note": "constant-hot"
+  },
+  {
+   "part": "PT709",
+   "category": "Electrical",
+   "item": "CPU input (1985: pin N, G wire, IG key reminder switch)",
+   "value": "N",
+   "unit": "",
+   "source": "S-002",
+   "page": "15-12",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1982 wire also G to CPU X-16 per S-001 p26"
+  },
+  {
+   "part": "PT701",
+   "category": "Electrical",
+   "item": "Supply fuse (X-04, rear wiper/washer)",
+   "value": "10",
+   "unit": "A",
+   "source": "S-001",
+   "page": "18",
+   "confidence": "primary",
+   "applies": "",
+   "note": "on ACC-side L bus"
+  },
+  {
+   "part": "PT701",
+   "category": "Electrical",
+   "item": "Test: voltage at LB with ignition ON",
+   "value": "12",
+   "unit": "V",
+   "source": "S-002",
+   "page": "15-46",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 wire colours LB/L match S-001 1982"
+  },
+  {
+   "part": "PT701",
+   "category": "Electrical",
+   "item": "Test: ground L with LB live",
+   "value": "motor must run, else replace",
+   "unit": "",
+   "source": "S-002",
+   "page": "15-46",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": ""
+  },
+  {
+   "part": "PT849",
+   "category": "Electrical",
+   "item": "Memory supply fuse (LY, X-04)",
+   "value": "15",
+   "unit": "A",
+   "source": "S-001",
+   "page": "26",
+   "confidence": "primary",
+   "applies": "",
+   "note": "constant-hot"
+  },
+  {
+   "part": "PT849",
+   "category": "Electrical",
+   "item": "Ignition supply fuse (GY, X-04)",
+   "value": "10",
+   "unit": "A",
+   "source": "S-001",
+   "page": "26",
+   "confidence": "primary",
+   "applies": "",
+   "note": ""
+  },
+  {
+   "part": "PT816",
+   "category": "Electrical",
+   "item": "Switched load: luggage compartment light",
+   "value": "5",
+   "unit": "W",
+   "source": "S-001",
+   "page": "26",
+   "confidence": "primary",
+   "applies": "",
+   "note": "H-11 on LY 15 A"
+  },
+  {
+   "part": "PT816",
+   "category": "Electrical",
+   "item": "Contact type",
+   "value": "closes to body ground when hatch open",
+   "unit": "",
+   "source": "S-001",
+   "page": "26",
+   "confidence": "primary",
+   "applies": "",
+   "note": "single-wire RB, case grounded"
+  },
+  {
+   "part": "PT832",
+   "category": "Electrical",
+   "item": "Switched load: glove box light",
+   "value": "3.4",
+   "unit": "W",
+   "source": "S-001",
+   "page": "26",
+   "confidence": "primary",
+   "applies": "",
+   "note": "H-01 on LO 20 A"
+  },
+  {
+   "part": "PT832",
+   "category": "Electrical",
+   "item": "Contact type",
+   "value": "closes to ground when glove box open",
+   "unit": "",
+   "source": "S-001",
+   "page": "26",
+   "confidence": "primary",
+   "applies": "",
+   "note": "BL and ring-terminal B"
+  }
+ ],
+ "terminals": [
+  {
+   "part": "PT708",
+   "terminal": "C",
+   "function": "battery feed",
+   "inside": "common contact arm",
+   "wire": "WR",
+   "to": "X-07 1.25 sq fusible link -> battery +, via X-08",
+   "source": "S-001",
+   "page": "10, 26",
+   "note": "colour from S-001; letter C from 1980 S-045 Fig 15-32; confirm on the car"
+  },
+  {
+   "part": "PT708",
+   "terminal": "E",
+   "function": "ACC",
+   "inside": "joined to C in ACC and ON",
+   "wire": "L",
+   "to": "X-04 10 A (L to front wiper D-02 / CPU), 10 A (LB to rear wiper/washer and front washer), 20 A (LO)",
+   "source": "S-001",
+   "page": "18, 26",
+   "note": "colour from S-001; letter E from 1980 S-045; confirm on the car"
+  },
+  {
+   "part": "PT708",
+   "terminal": "D",
+   "function": "IG",
+   "inside": "joined to C in ON and START",
+   "wire": "BY",
+   "to": "X-04 15 A -> BW alternator; X-04 10 A -> GY bus",
+   "source": "S-001",
+   "page": "10, 26",
+   "note": "S-001 labels IG output BY; 1980 S-045 shows D as BW; confirm on the car"
+  },
+  {
+   "part": "PT708",
+   "terminal": "A",
+   "function": "ST",
+   "inside": "joined to C in START",
+   "wire": "BY",
+   "to": "X-09 0.5 sq fusible link -> inhibitor switch A-06 -> BW starter",
+   "source": "S-001",
+   "page": "10",
+   "note": "colour BY after the link from S-001, BY at A per 1980 S-045; confirm on the car"
+  },
+  {
+   "part": "PT709",
+   "terminal": "G",
+   "function": "switched output",
+   "inside": "closes to LY with key in",
+   "wire": "G",
+   "to": "Control Processing Unit X-16 (key reminder buzzer)",
+   "source": "S-001",
+   "page": "26",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT709",
+   "terminal": "LY",
+   "function": "supply",
+   "inside": "",
+   "wire": "LY",
+   "to": "X-04 15 A room fuse (constant)",
+   "source": "S-001",
+   "page": "26",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT709",
+   "terminal": "3rd",
+   "function": "not used",
+   "inside": "",
+   "wire": "",
+   "to": "",
+   "source": "S-001",
+   "page": "26",
+   "note": "marked not used on S-001 connector view; confirm on the car"
+  },
+  {
+   "part": "PT701",
+   "terminal": "LB",
+   "function": "feed",
+   "inside": "motor +",
+   "wire": "LB",
+   "to": "X-03 -> X-04 10 A rear wiper/washer fuse (L bus from ACC)",
+   "source": "S-001",
+   "page": "18",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT701",
+   "terminal": "L",
+   "function": "switched ground",
+   "inside": "motor -",
+   "wire": "L",
+   "to": "X-03 -> X-12 -> X-11 -> LW at rear wiper & washer switch D-06 -> B ground",
+   "source": "S-001",
+   "page": "18",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT849",
+   "terminal": "B",
+   "function": "ground",
+   "inside": "",
+   "wire": "B",
+   "to": "X-02 -> X-13 body ground",
+   "source": "S-001",
+   "page": "26",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT849",
+   "terminal": "RG",
+   "function": "illumination",
+   "inside": "display dimming / lamp",
+   "wire": "RG",
+   "to": "light switch E-01 via X-02",
+   "source": "S-001",
+   "page": "26",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT849",
+   "terminal": "LY",
+   "function": "memory supply",
+   "inside": "",
+   "wire": "LY",
+   "to": "X-04 15 A (constant) via X-02",
+   "source": "S-001",
+   "page": "26",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT849",
+   "terminal": "GY",
+   "function": "ignition supply",
+   "inside": "",
+   "wire": "GY",
+   "to": "X-04 10 A IG bus via X-12",
+   "source": "S-001",
+   "page": "26",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT816",
+   "terminal": "RB",
+   "function": "switched ground",
+   "inside": "contact to case/body when hatch open",
+   "wire": "RB",
+   "to": "luggage compartment light H-11 (5 W, LY feed)",
+   "source": "S-001",
+   "page": "26",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT832",
+   "terminal": "BL",
+   "function": "lamp side",
+   "inside": "",
+   "wire": "BL",
+   "to": "glove box light H-01 (3.4 W, LO feed)",
+   "source": "S-001",
+   "page": "26",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT832",
+   "terminal": "B",
+   "function": "ground",
+   "inside": "ring terminal",
+   "wire": "B",
+   "to": "X-02 -> X-13 body ground",
+   "source": "S-001",
+   "page": "26",
+   "note": "from S-001; confirm on the car"
+  }
+ ],
+ "sources": [
+  {
+   "key": "src-atkins-ignsw",
+   "title": "Atkins Rotary - 81-83 RX7 Ignition Switch BA24-66-155A (NLA)",
+   "kind": "web",
+   "covers": "PT708 availability and substitute",
+   "url": "https://www.atkinsrotary.com/81-83-Rx7-Ignition-Switch-BA24-66-155A.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "225 USD, out of stock"
+  },
+  {
+   "key": "src-rx7club-ignsw",
+   "title": "RX7Club - Ignition switch wiring help (1st gen)",
+   "kind": "forum",
+   "covers": "PT708 84-85 switch interchange",
+   "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/ignition-switch-wiring-help-1139329/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-amazon-1410-67-530",
+   "title": "Amazon - Mazda 1410-67-530 washer pump",
+   "kind": "web",
+   "covers": "PT701 listing",
+   "url": "https://www.amazon.com/Mazda-1410-67-530-Windshield-Washer-Pump/dp/B00KWEZZRW",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "page blocked (captcha); listing title confirmed in search results 2026-09-25"
+  },
+  {
+   "key": "src-amazon-1480-67-510",
+   "title": "Amazon - Mazda RX-7 1981-1985 rear window washer nozzle 1480-67-510",
+   "kind": "web",
+   "covers": "PT703 listing",
+   "url": "https://www.amazon.com/Mazda-1981-1985-window-washer-1480-67-510/dp/B017N3PWSQ",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "page blocked (captcha); listing title confirmed in search results 2026-09-25"
+  }
+ ],
+ "cad": []
+}

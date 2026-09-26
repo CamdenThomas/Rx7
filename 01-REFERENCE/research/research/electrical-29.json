@@ -1,0 +1,626 @@
+{
+ "parts": [
+  {
+   "id": "PT646",
+   "link": "https://www.atkinsrotary.com/81-83-Rx7-Power-Window-Switch-FA03-66-350A.html",
+   "support": "",
+   "cad": "",
+   "note_add": "On 1982 power-window cars each door has its own 4-pin switch (I-06 LH: RL, B, GL, BL; I-07 RH: R, B, G, BL) on a 30 A IG fuse (S-001 p28); FA03-66-350A is one switch that serves either side, still sold new (Atkins, 2026)."
+  },
+  {
+   "id": "PT647",
+   "link": "https://www.1aauto.com/mazda-rx-7-horns/mo-c/516-99",
+   "support": "",
+   "cad": "",
+   "note_add": "Single-wire horn: GY from the horn relay F-16, grounded through its bracket; shares the 15 A fuse with the stop lights (S-001 p22). The 1980 manual sets each horn to 3.0 +/- 0.5 A at 12 V with its adjusting screw."
+  },
+  {
+   "id": "PT648",
+   "link": "https://www.1aauto.com/mazda-rx-7-horns/mo-c/516-99",
+   "support": "",
+   "cad": "",
+   "note_add": "Single-wire horn: GY from the horn relay F-16, grounded through its bracket; shares the 15 A fuse with the stop lights (S-001 p22). Which of F-09/F-10 is the low tone is not shown in S-001; confirm on the car."
+  },
+  {
+   "id": "PT649",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "The 1982 system (S-001 p14, section B): main switch B-31 on a 10 A IG fuse (Br) feeds BrB to the unit B-25 and the actuator B-28; stop B-26 and clutch B-27 switches (Br/RY) cancel; set/coast/resume on the combination switch B-30; vehicle speed switch B-29 (BR)."
+  },
+  {
+   "id": "PT650",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "A vacuum servo with three solenoid coils (VAC, VENT 1, VENT 2) on a common BrB feed (S-001 p14; coil names from the 1985 manual)."
+  },
+  {
+   "id": "PT651",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "The actuator inner cable pulls the carburettor throttle lever; free play is set at an adjusting nut (1985 manual 15-51)."
+  },
+  {
+   "id": "PT652",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "13-cavity connector B-25 (12 wires, one cavity unused) (S-001 p14); the 1985 manual tests it through its 13-pin plug with the ACC checker 49 9200 010."
+  },
+  {
+   "id": "PT653",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Three momentary contacts SET (BY), COAST (RW) and RESUME (BrW), each to a common B ground, at connector B-30 (S-001 p14)."
+  },
+  {
+   "id": "PT654",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "The main switch it caps carries a 3.4 W indicator lamp (S-001 p14)."
+  }
+ ],
+ "specs": [
+  {
+   "part": "PT647",
+   "category": "Electrical",
+   "item": "Horn current (adjusted)",
+   "value": "3.0",
+   "unit": "A",
+   "source": "S-045",
+   "page": "80RX7_15_Body_Electrical.pdf p15:5 (PDF p7)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "tolerance +/- 0.5 A at 12 V; set with the adjusting screw, each horn separately, tone checked as a pair. 1980 manual; no 1982 figure found in S-038"
+  },
+  {
+   "part": "PT647",
+   "category": "Electrical",
+   "item": "Circuit fuse (shared with stop lights)",
+   "value": "15",
+   "unit": "A",
+   "source": "S-001",
+   "page": "p22 (section F)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "GW from the 15 A fuse feeds relay F-16; horns sound on GY"
+  },
+  {
+   "part": "PT648",
+   "category": "Electrical",
+   "item": "Horn current (adjusted)",
+   "value": "3.0",
+   "unit": "A",
+   "source": "S-045",
+   "page": "80RX7_15_Body_Electrical.pdf p15:5 (PDF p7)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "tolerance +/- 0.5 A at 12 V; set with the adjusting screw, each horn separately, tone checked as a pair. 1980 manual; no 1982 figure found in S-038"
+  },
+  {
+   "part": "PT648",
+   "category": "Electrical",
+   "item": "Circuit fuse (shared with stop lights)",
+   "value": "15",
+   "unit": "A",
+   "source": "S-001",
+   "page": "p22 (section F)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "GW from the 15 A fuse feeds relay F-16; horns sound on GY"
+  },
+  {
+   "part": "PT646",
+   "category": "Electrical",
+   "item": "Power window circuit fuse",
+   "value": "30",
+   "unit": "A",
+   "source": "S-001",
+   "page": "p28 (section I)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "X-04 30 A fuse, BW from ignition switch IG in, BL out to both switches; not fitted on this car"
+  },
+  {
+   "part": "PT646",
+   "category": "Electrical",
+   "item": "Supply at switch connector, ignition ON",
+   "value": "battery voltage",
+   "unit": "V",
+   "source": "S-002",
+   "page": "Section 15 p15-37",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "measure BL to body ground; B must show continuity to ground. 1985 manual (one 6-pin switch there, not the 1982 pair of 4-pin switches)"
+  },
+  {
+   "part": "PT650",
+   "category": "Electrical",
+   "item": "Actuator solenoid coil resistance (a-b, a-c, a-d)",
+   "value": "25-35",
+   "unit": "ohm",
+   "source": "S-002",
+   "page": "Section 15 p15-53",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "a = common; 1985 manual. 1982 actuator FA43-66-310B not confirmed identical"
+  },
+  {
+   "part": "PT650",
+   "category": "Electrical",
+   "item": "Actuator test with ACC checker: engine speed held",
+   "value": "2000-3000",
+   "unit": "rpm",
+   "source": "S-002",
+   "page": "Section 15 p15-51",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "slide switch H, check switch ON with engine running; release above 4000 rpm (p15-53). Needs the ACC checker 49 9200 010"
+  },
+  {
+   "part": "PT651",
+   "category": "Engine",
+   "item": "Actuator cable free play (12A)",
+   "value": "7-13",
+   "unit": "mm",
+   "source": "S-002",
+   "page": "Section 15 p15-51",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "pressed lightly at the cable with 100-200 g; set at the adjusting nut. 13B: 6-11 mm"
+  },
+  {
+   "part": "PT652",
+   "category": "Electrical",
+   "item": "Cruise control unit fuse",
+   "value": "10",
+   "unit": "A",
+   "source": "S-001",
+   "page": "p14 (section B)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "X-04 10 A fuse from BW (IG) feeds Br to main switch, stop switch and clutch switch"
+  },
+  {
+   "part": "PT652",
+   "category": "Electrical",
+   "item": "Unit connector",
+   "value": "13",
+   "unit": "cavities",
+   "source": "S-001",
+   "page": "p14 (section B)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "B-25, 12 wires, one cavity marked not used (6 cavities top row, 7 bottom)"
+  },
+  {
+   "part": "PT654",
+   "category": "Lighting",
+   "item": "Main switch indicator lamp",
+   "value": "3.4",
+   "unit": "W",
+   "source": "S-001",
+   "page": "p14 (section B)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "lamp inside the C.C. main switch B-31, grounded on B. The 1985 main switch has two 1.4 W lamps (S-002 15-49)"
+  }
+ ],
+ "terminals": [
+  {
+   "part": "PT647",
+   "terminal": "+ (single spade)",
+   "function": "feed from horn relay",
+   "inside": "horn coil and contact breaker to the case",
+   "wire": "GY",
+   "to": "horn relay F-16 output, spliced to both horns",
+   "source": "S-001",
+   "page": "p22-23",
+   "note": "from S-001; which horn (F-09 LH or F-10 RH) is high tone is not shown; confirm on the car"
+  },
+  {
+   "part": "PT647",
+   "terminal": "case",
+   "function": "ground",
+   "inside": "coil return",
+   "wire": "",
+   "to": "body through the mounting bracket",
+   "source": "S-001",
+   "page": "p22",
+   "note": "not a wire; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT648",
+   "terminal": "+ (single spade)",
+   "function": "feed from horn relay",
+   "inside": "horn coil and contact breaker to the case",
+   "wire": "GY",
+   "to": "horn relay F-16 output, spliced to both horns",
+   "source": "S-001",
+   "page": "p22-23",
+   "note": "from S-001; which horn (F-09 LH or F-10 RH) is high tone is not shown; confirm on the car"
+  },
+  {
+   "part": "PT648",
+   "terminal": "case",
+   "function": "ground",
+   "inside": "coil return",
+   "wire": "",
+   "to": "body through the mounting bracket",
+   "source": "S-001",
+   "page": "p22",
+   "note": "not a wire; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT646",
+   "terminal": "I-06 BL (LH)",
+   "function": "+12 V switched (IG)",
+   "inside": "feeds the up/down contacts",
+   "wire": "BL",
+   "to": "30 A fuse X-04 via X-12/X-11; LH and RH switches share BL through I-06/I-07",
+   "source": "S-001",
+   "page": "p28",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT646",
+   "terminal": "I-06 B (LH)",
+   "function": "ground",
+   "inside": "rest contacts: both motor leads to ground when released",
+   "wire": "B",
+   "to": "X-11, X-02, ground X-13",
+   "source": "S-001",
+   "page": "p28",
+   "note": "rest-to-ground reading is from the 1985 check (S-002 15-37) and the S-001 symbol; confirm on the car"
+  },
+  {
+   "part": "PT646",
+   "terminal": "I-06 RL (LH)",
+   "function": "motor lead",
+   "inside": "to BL in one direction, to B otherwise; which lead is UP not shown",
+   "wire": "RL",
+   "to": "LH motor (RL becomes R at I-08)",
+   "source": "S-001",
+   "page": "p28",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT646",
+   "terminal": "I-06 GL (LH)",
+   "function": "motor lead",
+   "inside": "to BL in one direction, to B otherwise; which lead is UP not shown",
+   "wire": "GL",
+   "to": "LH motor (GL becomes G at I-08)",
+   "source": "S-001",
+   "page": "p28",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT646",
+   "terminal": "I-07 BL (RH)",
+   "function": "+12 V switched (IG)",
+   "inside": "feeds the up/down contacts",
+   "wire": "BL",
+   "to": "30 A fuse X-04 via X-12/X-11; LH and RH switches share BL through I-06/I-07",
+   "source": "S-001",
+   "page": "p28",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT646",
+   "terminal": "I-07 B (RH)",
+   "function": "ground",
+   "inside": "rest contacts: both motor leads to ground when released",
+   "wire": "B",
+   "to": "X-11, X-02, ground X-13",
+   "source": "S-001",
+   "page": "p28",
+   "note": "rest-to-ground reading is from the 1985 check (S-002 15-37) and the S-001 symbol; confirm on the car"
+  },
+  {
+   "part": "PT646",
+   "terminal": "I-07 R (RH)",
+   "function": "motor lead",
+   "inside": "to BL in one direction, to B otherwise; which lead is UP not shown",
+   "wire": "R",
+   "to": "RH motor",
+   "source": "S-001",
+   "page": "p28",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT646",
+   "terminal": "I-07 G (RH)",
+   "function": "motor lead",
+   "inside": "to BL in one direction, to B otherwise; which lead is UP not shown",
+   "wire": "G",
+   "to": "RH motor",
+   "source": "S-001",
+   "page": "p28",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT650",
+   "terminal": "B-28 BrB",
+   "function": "+12 V common from main switch",
+   "inside": "common end of VAC, VENT 1, VENT 2 coils",
+   "wire": "BrB",
+   "to": "C.C. main switch B-31 via X-11/X-12, also unit B-25",
+   "source": "S-001",
+   "page": "p14",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT650",
+   "terminal": "B-28 Br",
+   "function": "VAC coil, switched to ground by the unit",
+   "inside": "VAC solenoid coil (25-35 ohm to common, 1985)",
+   "wire": "Br",
+   "to": "cruise control unit B-25",
+   "source": "S-001",
+   "page": "p14",
+   "note": "colour from S-001; coil name from the 1985 diagram S-002 15-49 (other year); confirm on the car"
+  },
+  {
+   "part": "PT650",
+   "terminal": "B-28 BrY",
+   "function": "VENT 1 coil, switched to ground by the unit",
+   "inside": "VENT 1 solenoid coil (25-35 ohm to common, 1985)",
+   "wire": "BrY",
+   "to": "cruise control unit B-25",
+   "source": "S-001",
+   "page": "p14",
+   "note": "colour from S-001; coil name from the 1985 diagram S-002 15-49 (other year); confirm on the car"
+  },
+  {
+   "part": "PT650",
+   "terminal": "B-28 BrR",
+   "function": "VENT 2 coil, switched to ground by the unit",
+   "inside": "VENT 2 solenoid coil (25-35 ohm to common, 1985)",
+   "wire": "BrR",
+   "to": "cruise control unit B-25",
+   "source": "S-001",
+   "page": "p14",
+   "note": "colour from S-001; coil name from the 1985 diagram S-002 15-49 (other year); confirm on the car"
+  },
+  {
+   "part": "PT652",
+   "terminal": "B-25 BrB",
+   "function": "power from main switch",
+   "inside": "",
+   "wire": "BrB",
+   "to": "C.C. main switch B-31 / actuator common",
+   "source": "S-001",
+   "page": "p14",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT652",
+   "terminal": "B-25 B",
+   "function": "ground",
+   "inside": "",
+   "wire": "B",
+   "to": "X-13 ground",
+   "source": "S-001",
+   "page": "p14",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT652",
+   "terminal": "B-25 W",
+   "function": "brake signal (stop lamp feed)",
+   "inside": "",
+   "wire": "W",
+   "to": "stop light switch, section F",
+   "source": "S-001",
+   "page": "p14",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT652",
+   "terminal": "B-25 RY",
+   "function": "cancel input from stop and clutch switches",
+   "inside": "",
+   "wire": "RY",
+   "to": "B-26 stop switch and B-27 clutch switch (Br fed)",
+   "source": "S-001",
+   "page": "p14",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT652",
+   "terminal": "B-25 BY",
+   "function": "SET",
+   "inside": "",
+   "wire": "BY",
+   "to": "combination switch B-30",
+   "source": "S-001",
+   "page": "p14",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT652",
+   "terminal": "B-25 RW",
+   "function": "COAST",
+   "inside": "",
+   "wire": "RW",
+   "to": "combination switch B-30",
+   "source": "S-001",
+   "page": "p14",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT652",
+   "terminal": "B-25 BrW",
+   "function": "RESUME",
+   "inside": "",
+   "wire": "BrW",
+   "to": "combination switch B-30",
+   "source": "S-001",
+   "page": "p14",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT652",
+   "terminal": "B-25 BR",
+   "function": "vehicle speed pulses",
+   "inside": "",
+   "wire": "BR",
+   "to": "vehicle speed switch B-29 (in the speedometer), other side to ground",
+   "source": "S-001",
+   "page": "p14",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT652",
+   "terminal": "B-25 Br",
+   "function": "VAC coil drive",
+   "inside": "",
+   "wire": "Br",
+   "to": "actuator B-28",
+   "source": "S-001",
+   "page": "p14",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT652",
+   "terminal": "B-25 BrY",
+   "function": "VENT 1 coil drive",
+   "inside": "",
+   "wire": "BrY",
+   "to": "actuator B-28",
+   "source": "S-001",
+   "page": "p14",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT652",
+   "terminal": "B-25 BrR",
+   "function": "VENT 2 coil drive",
+   "inside": "",
+   "wire": "BrR",
+   "to": "actuator B-28",
+   "source": "S-001",
+   "page": "p14",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT652",
+   "terminal": "B-25 BL",
+   "function": "A/T start/inhibitor signal",
+   "inside": "",
+   "wire": "BL",
+   "to": "X-17; BY from section A on A/T cars",
+   "source": "S-001",
+   "page": "p14",
+   "note": "from S-001; BL function read from a dashed 'for A/T' line, uncertain; confirm on the car"
+  },
+  {
+   "part": "PT652",
+   "terminal": "B-25 *",
+   "function": "not used",
+   "inside": "",
+   "wire": "",
+   "to": "",
+   "source": "S-001",
+   "page": "p14",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT653",
+   "terminal": "B-30 BY",
+   "function": "SET",
+   "inside": "momentary contact joins BY to B when pushed/turned to SET",
+   "wire": "BY",
+   "to": "cruise control unit B-25 BY",
+   "source": "S-001",
+   "page": "p14",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT653",
+   "terminal": "B-30 RW",
+   "function": "COAST",
+   "inside": "momentary contact joins RW to B when pushed/turned to COAST",
+   "wire": "RW",
+   "to": "cruise control unit B-25 RW",
+   "source": "S-001",
+   "page": "p14",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT653",
+   "terminal": "B-30 BrW",
+   "function": "RESUME",
+   "inside": "momentary contact joins BrW to B when pushed/turned to RESUME",
+   "wire": "BrW",
+   "to": "cruise control unit B-25 BrW",
+   "source": "S-001",
+   "page": "p14",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT653",
+   "terminal": "B-30 B",
+   "function": "common ground",
+   "inside": "common side of all three contacts",
+   "wire": "B",
+   "to": "X-13 ground",
+   "source": "S-001",
+   "page": "p14",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT649",
+   "terminal": "B-31 Br",
+   "function": "main switch feed",
+   "inside": "switch input",
+   "wire": "Br",
+   "to": "10 A fuse X-04 (IG, BW) via X-11/X-12",
+   "source": "S-001",
+   "page": "p14",
+   "note": "main switch FA03-66-340 terminals; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT649",
+   "terminal": "B-31 BrB",
+   "function": "main switch output",
+   "inside": "closed when ON; also feeds the 3.4 W indicator lamp",
+   "wire": "BrB",
+   "to": "unit B-25 and actuator B-28",
+   "source": "S-001",
+   "page": "p14",
+   "note": "main switch FA03-66-340 terminals; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT649",
+   "terminal": "B-31 B",
+   "function": "ground",
+   "inside": "indicator lamp return",
+   "wire": "B",
+   "to": "ground",
+   "source": "S-001",
+   "page": "p14",
+   "note": "main switch FA03-66-340 terminals; from S-001; confirm on the car"
+  }
+ ],
+ "sources": [
+  {
+   "key": "src-atkins-fa0366350a",
+   "title": "Atkins Rotary - 81-83 Rx7 Power Window Switch (FA03-66-350A)",
+   "kind": "web",
+   "covers": "PT646 fitment (1981-83, either side, two per car), price 102 USD",
+   "url": "https://www.atkinsrotary.com/81-83-Rx7-Power-Window-Switch-FA03-66-350A.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "read 2026-09-25"
+  }
+ ],
+ "cad": []
+}

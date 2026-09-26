@@ -1,15 +1,23 @@
 """Merge research/<batch>.json files (Stage 2) into the record: 01-REFERENCE sources and cad,
 00-CAR specs, terminals and parts. Source keys become new S- ids (a URL already in sources
 reuses its id); specs get the next SP- ids; terminals are <part>-<terminal>. Dry run unless
---write. Usage: merge_research.py SCRATCH BATCH_ID_PREFIX... [--write]"""
+--write. Usage: merge_research.py [SCRATCH] BATCH_ID_PREFIX... [--write] [--force]
+SCRATCH defaults to 01-REFERENCE/research in the tree, where every wave's raw output is kept
+(plan P48, 2026-09-26). The merge is idempotent: a spec, terminal or source already in the
+record is skipped, so a batch can be merged twice without doubling anything. Nothing is written
+while a problem is listed unless --force is passed."""
 import csv, glob, json, re, sys
 from pathlib import Path
 
-S = Path(sys.argv[1])
-prefixes = [a for a in sys.argv[2:] if not a.startswith("--") and not a.startswith("keep=")]
-KEEP_CONFIRM = {x for a in sys.argv[2:] if a.startswith("keep=") for x in a[5:].split(",") if x}
+T = Path(__file__).resolve().parents[2]
+_args = [a for a in sys.argv[1:] if not a.startswith("--") and not a.startswith("keep=")]
+if _args and Path(_args[0]).is_dir():
+    S = Path(_args[0]); prefixes = _args[1:]
+else:
+    S = T / "01-REFERENCE" / "research"; prefixes = _args
+KEEP_CONFIRM = {x for a in sys.argv[1:] if a.startswith("keep=") for x in a[5:].split(",") if x}
 WRITE = "--write" in sys.argv
-T = Path("/home/crash/docs/storage/Rx7")
+FORCE = "--force" in sys.argv
 
 
 def load(p):
@@ -35,6 +43,8 @@ nS = max(int(r["id"][2:]) for r in srcs) + 1
 nSP = max(int(r["id"][3:]) for r in specs) + 1
 cad_ids = {r["id"] for r in cads}
 term_ids = {r["id"] for r in terms}
+term_seen = {(r.get("part", ""), r.get("terminal", "").strip(), r.get("wire", "").strip(), r.get("to", "").strip()) for r in terms}
+src_seen = {(r.get("title", "").strip(), r.get("local_path", "").strip()) for r in srcs if not r.get("url", "").strip()}
 spec_seen = {(r.get("part", ""), r.get("item", "").strip().lower(), r.get("value", "").strip()) for r in specs}
 
 EN = {"confidence": {"primary", "secondary", "unverified"}, "applies": {"", "other-car", "not-fitted", "replaced"},
@@ -58,7 +68,12 @@ for f in files:
         if url and url in url_to:
             keymap[s.get("key", "")] = url_to[url]
             continue
+        if not url and (s.get("title", "").strip(), s.get("local_path", "").strip()) in src_seen:
+            keymap[s.get("key", "")] = next(r["id"] for r in srcs if (r.get("title", "").strip(), r.get("local_path", "").strip()) == (s.get("title", "").strip(), s.get("local_path", "").strip()))
+            continue
         sid = f"S-{nS:03d}"; nS += 1
+        if not url:
+            src_seen.add((s.get("title", "").strip(), s.get("local_path", "").strip()))
         keymap[s.get("key", "")] = sid
         fmt = s.get("format", "") if s.get("format", "") in EN["format"] else ""
         cred = s.get("credibility", "") if s.get("credibility", "") in EN["credibility"] else ""
@@ -102,6 +117,10 @@ for f in files:
         pid = t.get("part", "")
         if pid not in part_by or not t.get("terminal"):
             problems.append(f"{b}: terminal for unknown part {pid}"); continue
+        tkey = (pid, t["terminal"].strip(), (t.get("wire") or "").strip(), (t.get("to") or "").strip())
+        if tkey in term_seen:
+            continue
+        term_seen.add(tkey)
         lab = re.sub(r"[^A-Za-z0-9._-]+", "_", t["terminal"].strip()).strip("_") or "T"
         tid = f"{pid}-{lab}"; k = 2
         while tid in term_ids:
@@ -153,6 +172,9 @@ print(f"{len(files)} batch file(s): {n}")
 print(f"{len(problems)} problem(s)")
 for p in problems[:60]:
     print("  " + p)
+if WRITE and problems and not FORCE:
+    print("not written: fix the problems above or pass --force")
+    sys.exit(2)
 if WRITE:
     save(P["parts"], ph, parts); save(P["specs"], sh, specs); save(P["terminals"], th, terms)
     save(R["sources"], oh, srcs); save(R["cad"], ch, cads)

@@ -1,0 +1,23 @@
+{
+ "parts": [
+  {"id": "PT544", "link": "", "support": "", "cad": "", "note_add": "Per the catalogue figure 4000A-1 (S-005 EC-103) this check valve sits at the upper end of the split-air pipe (N201-40-740A) that carries air-pump air to the catalytic converter, joined by the air hose 1480-40-728 and pre-air pipe 1480-40-750; it is not the check valve inside the air control valve. Mazda no longer lists N201-20-730; the later RX-7 check valve 1480-13-730 is a different part."},
+  {"id": "PT545", "link": "", "support": "", "cad": "", "note_add": "S-005 figure 4000A-1 draws it as the long split-air pipe running from the check valve (N201-20-730) back to the catalytic converter."},
+  {"id": "PT546", "link": "", "support": "", "cad": "", "note_add": ""},
+  {"id": "PT547", "link": "", "support": "", "cad": "", "note_add": ""},
+  {"id": "PT548", "link": "", "support": "", "cad": "", "note_add": "No new or reproduction part was found in two searches; a used shield is the likely source."},
+  {"id": "PT549", "link": "", "support": "", "cad": "", "note_add": "No new or reproduction part was found; a used shield is the likely source."},
+  {"id": "PT550", "link": "", "support": "", "cad": "", "note_add": "No new or reproduction part was found; a used shield is the likely source."},
+  {"id": "PT551", "link": "", "support": "", "cad": "", "note_add": "No new or reproduction part was found; a used shield is the likely source."},
+  {"id": "PT973", "link": "http://www.blackdragonauto.com/", "support": "", "cad": "", "note_add": "Reproduction first-gen RX-7 under-hood and emission labels are sold by Black Dragon Automotive (rx7club thread); check that a 1982 label is in their catalogue."},
+  {"id": "PT974", "link": "https://www.ebay.com/itm/144712889309", "support": "", "cad": "", "note_add": "A reproduction 1982 RX-7 vacuum hose routing decal made from an NOS original was listed on eBay; the listing did not open, so check the details."}
+ ],
+ "specs": [
+  {"part": "PT544", "category": "Emissions", "item": "Check valve test (air pipe to catalytic converter): engine speed at which no exhaust gas may leak back at the disconnected air pipe opening", "value": "1500", "unit": "rpm", "source": "S-002", "page": "Section 4A, 4A-20 (PDF p20)", "confidence": "primary", "applies": "other-car", "note": "1985 12A procedure: disconnect the air hose at the rear of the intake manifold, raise engine to 1,500 rpm with the throttle, hold a finger at the air pipe opening; any exhaust gas leakage means replace the check valve. The 1980 manual (S-045 1A:2) gives the same 1,500 rpm test for its check valve at the air control valve. No 1982 source found."}
+ ],
+ "terminals": [],
+ "sources": [
+  {"key": "src-rx7club-fb-labels", "title": "RX7Club 1st-gen forum - emissions labels, under hood labels etc", "kind": "forum", "covers": "Where to buy reproduction under-hood and emission labels for the first-gen RX-7 (Black Dragon Automotive)", "url": "https://www.rx7club.com/1st-gen-general-discussion-207/emissions-labels-under-hood-labels-etc-1067702/", "format": "html", "credibility": "tertiary", "obtained": "yes", "local_path": "", "note": "No part numbers or label contents given"},
+  {"key": "src-ebay-82-vac-decal", "title": "eBay - 1982 Mazda RX7 engine emissions vacuum hose routing decal sticker (reproduction)", "kind": "web", "covers": "Reproduction 1982 vacuum hose routing decal, said to be made from an NOS original", "url": "https://www.ebay.com/itm/144712889309", "format": "html", "credibility": "tertiary", "obtained": "no", "local_path": "", "note": "Page returned 403; description is from the search result only"}
+ ],
+ "cad": []
+}

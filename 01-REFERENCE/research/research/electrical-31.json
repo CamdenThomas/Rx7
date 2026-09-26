@@ -1,0 +1,413 @@
+{
+ "parts": [
+  {
+   "id": "PT668",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 page 24 (section G) draws it as G-01 relay, G-02 motor and G-13 switch, fed from the 20 A LR fuse on the switched L line from the ignition switch; the 1985 manual puts the assembly behind the right rear trunk side trim (other year, confirm where it is on this car). The complete FB assembly FA01-66-930C appears to be no longer available; the 1984-85 FA42-66-930A still lists at Mazda dealers."
+  },
+  {
+   "id": "PT669",
+   "link": "https://www.ebay.com/itm/233671328680",
+   "support": "",
+   "cad": "",
+   "note_add": "Sellers list the mast as FA42-66-941A for 1981-85 (the pole with its nylon drive cord); FB masts do not interchange with 1979-80 masts. The brittle nylon drive cord is the usual failure. Whether FA42-66-941A replaces FA01-66-941A needs confirming."
+  },
+  {
+   "id": "PT670",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "1985 manual: to remove the antenna, take out the right rear trunk side trim, then disconnect the feeder and the connector (other year; confirm)."
+  },
+  {
+   "id": "PT671",
+   "link": "https://knownmotors.com/products/1981-1983-mazda-rx7-fb-power-antenna-relay-fa0167740",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 G-01 has six wires: LR, R, LY and B on one side, LG and L on the other. The coil runs from LR through a diode to LG, and LG is grounded by the radio or by the G-13 antenna switch. A used FB relay was listed under the number FA01-67-740, which differs from the catalogue's FA01-66-947 (confirm)."
+  },
+  {
+   "id": "PT672",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "No test value was found in any source. An rx7club thread (1985 context) says a switch that responds to voltage turns the motor off at the end of travel, which suggests the bi-metal switch is the thermal cut-out at the end of travel (confirm)."
+  },
+  {
+   "id": "PT038",
+   "link": "https://mazdatrix.com/product/bottle-washer-pump-79-85-washer-motor/",
+   "support": "Mazdatrix 562-426-7960; Atkins Rotary https://www.atkinsrotary.com",
+   "cad": "",
+   "note_add": "Still sold new as 8532-76-672: Mazdatrix lists it at 48.39 USD, Atkins at 99 USD. The same pump fits 1979-94 RX-7s and many other Mazdas. S-001 feeds it from the IG 10 A LB fuse, and the combination switch grounds its LY wire. To diagnose, put 12 V across the pump and see if it runs; if it does, the fault is in the circuit (the switch contact tab is the known 1st-gen failure)."
+  },
+  {
+   "id": "PT673",
+   "link": "https://www.atkinsrotary.com/79-83-Rx7-Windshield-Washer-Bottle-0317-67-511A.html",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT674",
+   "link": "https://www.atkinsrotary.com/79-83-Rx7-Windshield-Washer-Bottle-0317-67-511A.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Atkins Rotary sells a 1979-83 12A washer bottle as 0317-67-511A (35 USD, without the cap), a different number from the catalogue's 2522-76-671A; confirm it fits before buying."
+  },
+  {
+   "id": "PT675",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT676",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT677",
+   "link": "https://www.atkinsrotary.com/79-83-Rx7-Front-Windshield-Washer-Nozzle-1011-67-510A.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Still sold new as 1011-67-510A for all 1979-83 RX-7s (Atkins Rotary, 21 USD, in stock); the nozzle gasket 1011-67-511B is sold separately."
+  }
+ ],
+ "specs": [
+  {
+   "part": "PT668",
+   "category": "Electrical",
+   "item": "Fuse feeding the power antenna (X-04 fuse block, LR circuit, fed by the switched L line from the ignition switch X-08, not always live)",
+   "value": "20",
+   "unit": "A",
+   "source": "S-001",
+   "page": "24",
+   "confidence": "primary",
+   "applies": "",
+   "note": "Shares the fuse with the stereo/radio and main amp (S-001 p24); the 1985 manual (S-002 p15-75) calls it the radio or antenna fuse (20 A) and tests with the key at ACC"
+  },
+  {
+   "part": "PT668",
+   "category": "Electrical",
+   "item": "Motor bench test: raises the mast with battery + on L and - on R (motor connector)",
+   "value": "12",
+   "unit": "V",
+   "source": "S-002",
+   "page": "15-75",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual; the 1982 motor G-02 carries the same L, LY and R wires on S-001 p24; confirm"
+  },
+  {
+   "part": "PT668",
+   "category": "Electrical",
+   "item": "Motor bench test: lowers the mast with battery + on R and - on LY (motor connector)",
+   "value": "12",
+   "unit": "V",
+   "source": "S-002",
+   "page": "15-75",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual; the wires match S-001 p24 G-02; confirm"
+  },
+  {
+   "part": "PT671",
+   "category": "Electrical",
+   "item": "Relay check at the harness-side antenna connector: battery voltage from L to ground with the radio ON (key at ACC)",
+   "value": "12",
+   "unit": "V",
+   "source": "S-002",
+   "page": "15-75",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual (connector J-02); if not present, replace the relay"
+  },
+  {
+   "part": "PT671",
+   "category": "Electrical",
+   "item": "Relay check at the harness-side antenna connector: battery voltage from R to ground with the radio OFF (key at ACC)",
+   "value": "12",
+   "unit": "V",
+   "source": "S-002",
+   "page": "15-75",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual (connector J-02)"
+  },
+  {
+   "part": "PT671",
+   "category": "Electrical",
+   "item": "Relay continuity: terminals a-c yes, e-g yes; b-h yes with the meter - on b and + on h (diode in the coil path)",
+   "value": "",
+   "unit": "",
+   "source": "S-002",
+   "page": "15-75",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 relay terminal letters a-h; the 1982 G-01 relay is a six-wire unit (S-001 p24), so its lettering may differ; confirm"
+  },
+  {
+   "part": "PT038",
+   "category": "Electrical",
+   "item": "Fuse feeding the front washer and wiper (X-04 fuse block, LB circuit, ignition IG)",
+   "value": "10",
+   "unit": "A",
+   "source": "S-001",
+   "page": "18",
+   "confidence": "primary",
+   "applies": "",
+   "note": ""
+  },
+  {
+   "part": "PT038",
+   "category": "Electrical",
+   "item": "Front washer motor check: battery voltage on the feed wire with the ignition ON; motor runs when the switched wire is grounded",
+   "value": "12",
+   "unit": "V",
+   "source": "S-002",
+   "page": "15-45",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual names the feed L and the switched wire LY (connector D-02). The 1982 feed is LB (S-001 p18). If the pump does not run with LY grounded, replace it"
+  },
+  {
+   "part": "PT038",
+   "category": "Electrical",
+   "item": "Replacement Mazda 8532-76-672 (current supply): fits 1979-94 RX-7; shipping weight",
+   "value": "0.3",
+   "unit": "lb",
+   "source": "src-atkins-washer-pump",
+   "page": "",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Atkins Rotary, 99 USD, in stock; Mazdatrix sells the same number at 48.39 USD"
+  },
+  {
+   "part": "PT677",
+   "category": "Body",
+   "item": "Front washer nozzle 1011-67-510A: fits all 1979-83 RX-7 12A",
+   "value": "",
+   "unit": "",
+   "source": "src-atkins-washer-nozzle",
+   "page": "",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Gasket 1011-67-511B sold separately"
+  }
+ ],
+ "terminals": [
+  {
+   "part": "PT038",
+   "terminal": "LB",
+   "function": "+12 V feed (ignition)",
+   "inside": "one side of the pump motor",
+   "wire": "LB",
+   "to": "X-04 fuse 10 A (L from the ignition switch X-08, LB bus via X-03), shared with the front wiper motor park feed and the rear washer and wiper",
+   "source": "S-001",
+   "page": "18",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT038",
+   "terminal": "LY",
+   "function": "switched ground",
+   "inside": "other side of the pump motor",
+   "wire": "LY",
+   "to": "D-03 combination switch WASHER contact to ground (B, X-13), and to the control processing unit X-16 (wipe on wash)",
+   "source": "S-001",
+   "page": "18",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT671",
+   "terminal": "LR",
+   "function": "+12 V switched feed (ignition switch, L line)",
+   "inside": "coil (through a diode) and the relay's switched contact",
+   "wire": "LR",
+   "to": "X-04 fuse 20 A (LR), fed by L from the ignition switch X-08, via X-12",
+   "source": "S-001",
+   "page": "24",
+   "note": "from S-001; the fuse input is the switched L line, not WR; confirm on the car"
+  },
+  {
+   "part": "PT671",
+   "terminal": "LG",
+   "function": "coil ground (control)",
+   "inside": "the other end of the relay coil",
+   "wire": "LG",
+   "to": "via X-02: radio G-04 power switch; via X-11: G-13 power antenna switch to ground (B, X-13)",
+   "source": "S-001",
+   "page": "24",
+   "note": "from S-001; confirm on the car. Coil energises when the radio is on or the antenna switch is closed"
+  },
+  {
+   "part": "PT671",
+   "terminal": "B",
+   "function": "ground",
+   "inside": "the resting contact of the LY changeover",
+   "wire": "B",
+   "to": "X-13 ground",
+   "source": "S-001",
+   "page": "24",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT671",
+   "terminal": "L",
+   "function": "mast-up output",
+   "inside": "energised contact: fed when the coil is on",
+   "wire": "L",
+   "to": "G-02 motor L, via X-03",
+   "source": "S-001",
+   "page": "24",
+   "note": "from S-001; relay contact arrangement read from the drawing, function from S-002 p15-75; confirm on the car"
+  },
+  {
+   "part": "PT671",
+   "terminal": "R",
+   "function": "motor common / mast-down feed",
+   "inside": "changeover: +12 V (LR) when de-energised; return when energised",
+   "wire": "R",
+   "to": "G-02 motor R, via X-03",
+   "source": "S-001",
+   "page": "24",
+   "note": "from S-001; function from S-002 p15-75; confirm on the car"
+  },
+  {
+   "part": "PT671",
+   "terminal": "LY",
+   "function": "mast-down return",
+   "inside": "changeover: to B (ground) when de-energised",
+   "wire": "LY",
+   "to": "G-02 motor LY, via X-03",
+   "source": "S-001",
+   "page": "24",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT668",
+   "terminal": "L",
+   "function": "up feed",
+   "inside": "motor through the up-side limit switch",
+   "wire": "L",
+   "to": "G-01 relay L",
+   "source": "S-001",
+   "page": "24",
+   "note": "G-02 power antenna motor; from S-001; up = + on L, - on R (S-002 p15-75, 1985); confirm on the car"
+  },
+  {
+   "part": "PT668",
+   "terminal": "R",
+   "function": "motor common",
+   "inside": "motor armature",
+   "wire": "R",
+   "to": "G-01 relay R",
+   "source": "S-001",
+   "page": "24",
+   "note": "G-02; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT668",
+   "terminal": "LY",
+   "function": "down return",
+   "inside": "motor through the down-side limit switch",
+   "wire": "LY",
+   "to": "G-01 relay LY (to ground when relay off)",
+   "source": "S-001",
+   "page": "24",
+   "note": "G-02; from S-001; down = + on R, - on LY (S-002 p15-75, 1985); confirm on the car"
+  }
+ ],
+ "sources": [
+  {
+   "key": "src-atkins-washer-pump",
+   "title": "Atkins Rotary - 79-94 RX7 Windshield Washer Pump (8532-76-672)",
+   "kind": "web",
+   "covers": "PT038 current supply, price, fitment and cross-fit",
+   "url": "https://www.atkinsrotary.com/79-94-Rx7-Windshield-Washer-Pump-8532-76-672.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "99 USD, in stock, 2026-09"
+  },
+  {
+   "key": "src-mazdatrix-washer-pump",
+   "title": "Mazdatrix - Washer bottle pump, 79-85 washer motor (8532-76-672)",
+   "kind": "web",
+   "covers": "PT038 supply",
+   "url": "https://mazdatrix.com/product/bottle-washer-pump-79-85-washer-motor/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "48.39 USD, in stock, 2026-09"
+  },
+  {
+   "key": "src-atkins-washer-bottle",
+   "title": "Atkins Rotary - 79-83 RX7 Windshield Washer Bottle (0317-67-511A)",
+   "kind": "web",
+   "covers": "PT673/PT674 replacement bottle",
+   "url": "https://www.atkinsrotary.com/79-83-Rx7-Windshield-Washer-Bottle-0317-67-511A.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "35 USD, no cap; its number differs from the catalogue's tank number"
+  },
+  {
+   "key": "src-atkins-washer-nozzle",
+   "title": "Atkins Rotary - 79-83 RX7 Front Windshield Washer Nozzle (1011-67-510A)",
+   "kind": "web",
+   "covers": "PT677 supply",
+   "url": "https://www.atkinsrotary.com/79-83-Rx7-Front-Windshield-Washer-Nozzle-1011-67-510A.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "21 USD, in stock"
+  },
+  {
+   "key": "src-rx7club-antenna",
+   "title": "RX7Club - Antenna help needed (1st gen power antenna)",
+   "kind": "forum",
+   "covers": "PT668/PT669: mast FA42-66-941A, nylon drive cord failure, SA/FB masts not interchangeable",
+   "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/antenna-help-needed-979587/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-rx7club-washer",
+   "title": "RX7Club - Windshield washer pump circuit problem",
+   "kind": "forum",
+   "covers": "PT038 diagnosis: pump runs on direct 12 V; broken combination-switch contact tab",
+   "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/windshield-washer-pump-circuit-problem-200802/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-knownmotors-ant-relay",
+   "title": "Known Motors - 1981-1983 Mazda RX7 FB power antenna relay FA0167740 (used)",
+   "kind": "web",
+   "covers": "PT671 used-part listing and the number it carries",
+   "url": "https://knownmotors.com/products/1981-1983-mazda-rx7-fb-power-antenna-relay-fa0167740",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "sold out, untested"
+  }
+ ],
+ "cad": []
+}

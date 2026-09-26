@@ -1,0 +1,543 @@
+{
+ "parts": [
+  {
+   "id": "PT020",
+   "link": "https://www.atkinsrotary.com/Coolant-System/Mazda-Radiators-and-Parts/79-85-Rx7-Radiators-and-Caps/",
+   "support": "",
+   "cad": "",
+   "note_add": "Automatic car: the radiator carries the transmission oil-cooler hoses, which come off before the radiator (1985 FSM removal order). New factory radiators are no longer available (Atkins lists 79-82 8341-15-310 as NLA); our catalogue number N202-15-310B - check the replacement matches the automatic's cooler fittings."
+  },
+  {
+   "id": "PT021",
+   "link": "https://www.rockauto.com/en/catalog/mazda,1982,rx-7,1.1l+r2,1192250,cooling+system,water+pump,2208",
+   "support": "",
+   "cad": "",
+   "note_add": "Aftermarket pumps listed for this car: GMB 145-1180, Dayco DP1279, Beck/Arnley 131-1937, US Motor Works US9053. Check which catalogue item these replace: Atkins sells the pump as N232-99-153B, the successor of the cover part N232-99-153A."
+  },
+  {
+   "id": "PT022",
+   "link": "https://www.atkinsrotary.com/69-85-Thermostat-8553-15-171.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Atkins' 180 F rotary thermostat 8553-15-171 lists 8553-99-152 among the numbers it replaces. Fit it with the jiggle pin at the top."
+  },
+  {
+   "id": "PT023",
+   "link": "https://www.atkinsrotary.com/81-88-Rx7-Coolant-Temperature-Sensor-8569-18-510A.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Single-wire resistive sender (YW) under the oil filter stand, grounding through its thread; M8x0.75 straight thread sealed with a crush washer."
+  },
+  {
+   "id": "PT181",
+   "link": "https://www.atkinsrotary.com/Coolant-System/Mazda-Radiators-and-Parts/79-85-Rx7-Radiators-and-Caps/79-85-12A-Rx7-Radiator-Cap-8871-15-205.html",
+   "support": "",
+   "cad": "",
+   "note_add": "13 psi cap. Atkins sells 8871-15-205 new (79-85 12A, not 84-85 13B); aftermarket 13 psi equivalents listed for this car include Gates 31527 and Motorad T13."
+  },
+  {
+   "id": "PT182",
+   "link": "https://www.atkinsrotary.com/Coolant-System/Radiator-and-Coolant-Hoses/79-85-Coolant-Hoses/",
+   "support": "",
+   "cad": "",
+   "note_add": "Atkins lists 8871-15-511 (79-82 12A) as out of stock; Racing Beat silicone kit 11480 (upper and lower hoses plus 4 clamps) replaces both hoses."
+  },
+  {
+   "id": "PT183",
+   "link": "https://www.atkinsrotary.com/Coolant-System/Radiator-and-Coolant-Hoses/79-85-Coolant-Hoses/",
+   "support": "",
+   "cad": "",
+   "note_add": "Atkins lists 8871-15-521 (79-82 12A) as out of stock; Racing Beat silicone kit 11480 covers it."
+  },
+  {
+   "id": "PT185",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "The bearing is pressed in by its outer race and held by a snap ring."
+  },
+  {
+   "id": "PT186",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "If the seal seat on the impeller is scored or pitted, replace the impeller along with the seal."
+  },
+  {
+   "id": "PT188",
+   "link": "https://www.atkinsrotary.com/79-85-Rx7-Water-Pump-N232-99-153B.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Sold new only in aluminium as Atkins N232-99-153B (replaces N232-99-153A and 3648-15-130), with the pump gasket; the housing-to-block gasket is separate. Cast-iron versions are no longer made."
+  },
+  {
+   "id": "PT189",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Comes off the shaft in a press, using Mazda adapter 49 1975 145 bolted to the boss."
+  },
+  {
+   "id": "PT190",
+   "link": "https://www.atkinsrotary.com/store/74-85-Rx7-Water-Pump-Pulley-1757-15-151B.html",
+   "support": "",
+   "cad": "",
+   "note_add": "No longer available from Mazda. Atkins makes an aluminium reproduction (1757-15-151B-ARE)."
+  },
+  {
+   "id": "PT193",
+   "link": "https://www.atkinsrotary.com/81-83-rx7-fan-clutch-n201-15-210b-.html",
+   "support": "",
+   "cad": "",
+   "note_add": "N201-15-210B (81-83 12A) is no longer available (NLA at Atkins). The 84-85 12A clutch is N249-15-210B; no source says it interchanges."
+  },
+  {
+   "id": "PT194",
+   "link": "https://www.atkinsrotary.com/81-85-12A-Rx7-Thermostat-Housing-8872-15-170A.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Atkins stocks 8872-15-170A (all 81-85 12A) and says housing 1757-15-172 also fits."
+  },
+  {
+   "id": "PT195",
+   "link": "https://www.atkinsrotary.com/81-85-12A-Rx7-Overflow-Tank-1052-15-350D.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Round bottle. Its successor 1052-15-350D replaces 1052-15-350B and is sold new by Atkins. Check the level with the engine cold: it should sit between the FULL and LOW marks."
+  },
+  {
+   "id": "PT292",
+   "link": "https://www.atkinsrotary.com/79-88-Rx7-Water-Level-Sensor-8553-15-610B.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Screws into the top of the radiator (M11.5x1.25, gasket 8553-15-611), which supports the parent taken. Single wire Br to the coolant level unit."
+  },
+  {
+   "id": "PT293",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Delay unit: lights the COOLANT lamp 9-16 s after the sensor loses contact with coolant (1985 figure)."
+  }
+ ],
+ "specs": [
+  {
+   "part": "PT022",
+   "category": "Cooling",
+   "item": "Thermostat starts to open",
+   "value": "82 +/- 1.5",
+   "unit": "C",
+   "source": "S-038",
+   "page": "T:2 (pdf p.4)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "180 +/- 2.7 F; wax pellet type; fully open at 95 C (203 F). The 1985 manual gives 80.5-83.5 C."
+  },
+  {
+   "part": "PT022",
+   "category": "Cooling",
+   "item": "Thermostat lift, fully open",
+   "value": "8-10",
+   "unit": "mm",
+   "source": "S-038",
+   "page": "T:2 (pdf p.4)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "0.3-0.4 in"
+  },
+  {
+   "part": "PT022",
+   "category": "Cooling",
+   "item": "Installation",
+   "value": "Jiggle pin positioned on the upper side",
+   "unit": "",
+   "source": "S-002",
+   "page": "p.3-5",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 FSM: fitted any other way, the opening temperature changes."
+  },
+  {
+   "part": "PT022",
+   "category": "Cooling",
+   "item": "Replacement Atkins 8553-15-171: rating",
+   "value": "180",
+   "unit": "F",
+   "source": "src-atkins-cooling",
+   "page": "https://www.atkinsrotary.com/69-85-Thermostat-8553-15-171.html",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Fits 1969-85 rotaries; replaces 083915171A, 125915171A, 8553-99-152."
+  },
+  {
+   "part": "PT181",
+   "category": "Cooling",
+   "item": "Pressure cap opens at",
+   "value": "90 +/- 15",
+   "unit": "kPa",
+   "source": "S-038",
+   "page": "T:2 (pdf p.4)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "13.0 +/- 2 psi"
+  },
+  {
+   "part": "PT181",
+   "category": "Cooling",
+   "item": "Cap test",
+   "value": "Hold pressure at 75-105 kPa for about 10 s; replace if it will not reach 75 kPa (11 psi) or opens above 105 kPa (15 psi)",
+   "unit": "",
+   "source": "S-002",
+   "page": "p.3-5",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "Replace the cap if its rubber gasket is damaged."
+  },
+  {
+   "part": "PT181",
+   "category": "Cooling",
+   "item": "Replacement Gates 31527 / Motorad T13: rating",
+   "value": "13",
+   "unit": "psi",
+   "source": "src-rockauto-cooling",
+   "page": "RockAuto 1982 RX-7 radiator cap listing",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Other 13 psi caps listed: SKP SK10229, CSF 4501. Calorstat RC0052 is 16 psi."
+  },
+  {
+   "part": "PT020",
+   "category": "Cooling",
+   "item": "Cooling system pressure test",
+   "value": "Pump the system, warm, to 100 kPa (14 psi) and watch the gauge for about 1 minute; if it drops, inspect hoses and fittings",
+   "unit": "",
+   "source": "S-002",
+   "page": "p.3-5",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": ""
+  },
+  {
+   "part": "PT021",
+   "category": "Cooling",
+   "item": "Pulley ratio, eccentric shaft to pump",
+   "value": "1:1.18",
+   "unit": "",
+   "source": "S-038",
+   "page": "T:2 (pdf p.4)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "V-belt drive. Feed capacity is already SP-055 (150-160 L/min at 6500 rpm, same in 1982)."
+  },
+  {
+   "part": "PT021",
+   "category": "Cooling",
+   "item": "Water pump shaft play limit",
+   "value": "0.5",
+   "unit": "mm",
+   "source": "S-002",
+   "page": "p.3-6",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "0.02 in; measured with a dial indicator at the pulley, moving the pulley up and down without turning it."
+  },
+  {
+   "part": "PT021",
+   "category": "Cooling",
+   "item": "Water pump installation torque",
+   "value": "18-27",
+   "unit": "N-m",
+   "source": "S-002",
+   "page": "p.3-9",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "13-20 ft-lb, tightened evenly in the numbered order; height-adjusting shims go on stud bolts 2 and 4."
+  },
+  {
+   "part": "PT021",
+   "category": "Cooling",
+   "item": "Replacement cross-reference",
+   "value": "GMB 145-1180; Dayco DP1279; FVP US9053; Beck/Arnley 131-1937 (with gasket, metal impeller); US Motor Works US9053",
+   "unit": "",
+   "source": "src-rockauto-cooling",
+   "page": "RockAuto 1982 RX-7 water pump listing",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Listed for the 1982 RX-7 1.1L; check which catalogue item they replace."
+  },
+  {
+   "part": "PT188",
+   "category": "Cooling",
+   "item": "Replacement Atkins N232-99-153B",
+   "value": "Aluminium pump with pump gasket; replaces 3648-15-130, 3648-15-130E, N232-15-130C-PT, N232-99-153, N232-99-153A",
+   "unit": "",
+   "source": "src-atkins-cooling",
+   "page": "https://www.atkinsrotary.com/79-85-Rx7-Water-Pump-N232-99-153B.html",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Fits 79-85 12A and 13B. The housing-to-block gasket is not included."
+  },
+  {
+   "part": "PT190",
+   "category": "Cooling",
+   "item": "Air pump belt deflection (between air pump and water pump pulley)",
+   "value": "12 +/- 1",
+   "unit": "mm",
+   "source": "S-038",
+   "page": "T:1 (pdf p.3)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "0.47 +/- 0.04 in"
+  },
+  {
+   "part": "PT185",
+   "category": "Cooling",
+   "item": "Bearing service",
+   "value": "Inspect for roughness or excess end play; press in by the outer race, check it turns smoothly, refit the snap ring",
+   "unit": "",
+   "source": "S-002",
+   "page": "p.3-8 to 3-9",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": ""
+  },
+  {
+   "part": "PT186",
+   "category": "Cooling",
+   "item": "Seal service",
+   "value": "Press the seal in straight with a pipe, check the lip moves smoothly, coat the lip with coolant; replace the impeller if its seal seat is scored or pitted",
+   "unit": "",
+   "source": "S-002",
+   "page": "p.3-8 to 3-9",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": ""
+  },
+  {
+   "part": "PT189",
+   "category": "Cooling",
+   "item": "Removal tool",
+   "value": "Pulley boss adapter 49 1975 145 (press)",
+   "unit": "",
+   "source": "S-002",
+   "page": "p.3-7",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": ""
+  },
+  {
+   "part": "PT193",
+   "category": "Cooling",
+   "item": "Fan drive check",
+   "value": "Engine cold: turning the fan by hand should meet resistance; no fluid leakage; bimetal not deformed; no bearing play or grease leakage",
+   "unit": "",
+   "source": "S-002",
+   "page": "p.3-4",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 type: thermo-modulated."
+  },
+  {
+   "part": "PT023",
+   "category": "Cooling",
+   "item": "Temperature gauge unit tightening torque",
+   "value": "7-8",
+   "unit": "N-m",
+   "source": "S-038",
+   "page": "T:7 (pdf p.9)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "5-6 ft-lb"
+  },
+  {
+   "part": "PT023",
+   "category": "Cooling",
+   "item": "Resistance at 80 C (176 F)",
+   "value": "53.5 +/- 4.2",
+   "unit": "ohm",
+   "source": "S-002",
+   "page": "p.15-20",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "Unit in heated water, measured with an ohmmeter. The 1985 unit is 8569-18-510A per Atkins (fits 81-88), the same number as ours."
+  },
+  {
+   "part": "PT023",
+   "category": "Cooling",
+   "item": "Thread",
+   "value": "M8x0.75 straight, crush washer",
+   "unit": "",
+   "source": "src-atkins-cooling",
+   "page": "https://www.atkinsrotary.com/81-88-Rx7-Coolant-Temperature-Sensor-8569-18-510A.html",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Under the oil filter stand; check on the car."
+  },
+  {
+   "part": "PT292",
+   "category": "Cooling",
+   "item": "Thread",
+   "value": "M11.5x1.25",
+   "unit": "",
+   "source": "src-atkins-cooling",
+   "page": "https://www.atkinsrotary.com/79-88-Rx7-Water-Level-Sensor-8553-15-610B.html",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Mounts on top of the radiator; gasket 8553-15-611."
+  },
+  {
+   "part": "PT292",
+   "category": "Cooling",
+   "item": "Sensor check",
+   "value": "Remove the sensor with the connector on, not grounded to the body, and start the engine: the lamp lights; then ground the threaded part: if the lamp stays lit the sensor is normal",
+   "unit": "",
+   "source": "S-002",
+   "page": "p.15-24",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "Circuit check: unplug the sensor (Br) and start the engine; the COOLANT lamp must light 9-16 s after starting."
+  },
+  {
+   "part": "PT293",
+   "category": "Electrical",
+   "item": "Warning delay",
+   "value": "9-16",
+   "unit": "s",
+   "source": "S-002",
+   "page": "p.15-24 to 15-25",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "Bench test with a 1.4 W bulb and a switch standing in for the sensor: the bulb stays off with the switch closed and lights 9-16 s after it opens."
+  },
+  {
+   "part": "PT195",
+   "category": "Cooling",
+   "item": "Level check",
+   "value": "Engine cold: coolant near the radiator inlet port, reserve tank between the FULL and LOW marks",
+   "unit": "",
+   "source": "S-002",
+   "page": "p.3-3",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": ""
+  }
+ ],
+ "terminals": [
+  {
+   "part": "PT023",
+   "terminal": "YW",
+   "function": "Sender signal",
+   "inside": "Thermistor (variable resistor) from the terminal to the body; grounds through the thread",
+   "wire": "YW",
+   "to": "via X-01 and X-05 to the water temperature gauge in the cluster (fed from the cluster voltage regulator)",
+   "source": "S-001",
+   "page": "Section C p.16 (pdf p.16)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT292",
+   "terminal": "Br",
+   "function": "Level signal",
+   "inside": "Single probe; drawn in S-001 as a switch to ground",
+   "wire": "Br",
+   "to": "C-07 coolant level unit",
+   "source": "S-001",
+   "page": "Section C p.16 (pdf p.16)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT293",
+   "terminal": "YB",
+   "function": "Lamp drive",
+   "inside": "Warning logic output",
+   "wire": "YB",
+   "to": "coolant level warning light (1.4 W) via X-05; also to C-10 oscillator (chime)",
+   "source": "S-001",
+   "page": "Section C p.16 (pdf p.16)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT293",
+   "terminal": "GY",
+   "function": "Power, ignition",
+   "inside": "Supply",
+   "wire": "GY",
+   "to": "IG via X-04 10 A fuse (GY bus)",
+   "source": "S-001",
+   "page": "Section C p.16 (pdf p.16)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT293",
+   "terminal": "YL",
+   "function": "Charge-warning line input",
+   "inside": "Joins the alternator warning light / choke and check relay line; S-001 does not state its role",
+   "wire": "YL",
+   "to": "alternator warning light and choke and check relay (Section B)",
+   "source": "S-001",
+   "page": "Section C p.16 (pdf p.16)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT293",
+   "terminal": "Br",
+   "function": "Sensor input",
+   "inside": "",
+   "wire": "Br",
+   "to": "C-08 coolant level sensor",
+   "source": "S-001",
+   "page": "Section C p.16 (pdf p.16)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT293",
+   "terminal": "B",
+   "function": "Ground",
+   "inside": "",
+   "wire": "B",
+   "to": "X-13 ground",
+   "source": "S-001",
+   "page": "Section C p.16 (pdf p.16)",
+   "note": "from S-001; confirm on the car"
+  }
+ ],
+ "sources": [
+  {
+   "key": "src-atkins-cooling",
+   "title": "Atkins Rotary - FB RX-7 cooling parts (water pump, pulley, thermostat, housing, cap, hoses, fan clutch, overflow tank, level and temperature sensors)",
+   "kind": "web",
+   "covers": "PT020 PT022 PT023 PT181 PT182 PT183 PT188 PT190 PT193 PT194 PT195 PT292",
+   "url": "https://www.atkinsrotary.com/Coolant-System/Mazda-Radiators-and-Parts/79-85-Rx7-Radiators-and-Caps/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Retail listings read 2026-09-25; item URLs are in the spec page fields."
+  },
+  {
+   "key": "src-rockauto-cooling",
+   "title": "RockAuto - 1982 Mazda RX-7 1.1L R2 cooling system listings (water pump, radiator cap)",
+   "kind": "web",
+   "covers": "PT021 PT181",
+   "url": "https://www.rockauto.com/en/catalog/mazda,1982,rx-7,1.1l+r2,1192250,cooling+system",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Read 2026-09-25; the radiator and thermostat pages returned no parts."
+  },
+  {
+   "key": "src-racingbeat-11480",
+   "title": "Racing Beat - silicone radiator hose kit 11480 for 79-82 RX-7 12A",
+   "kind": "web",
+   "covers": "PT182 PT183",
+   "url": "https://www.racingbeat.com/RX7-1975-1985/Cooling-System/11480.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "4-ply, 5-layer silicone, tested to 300 F; upper and lower hoses plus 4 clamps."
+  }
+ ],
+ "cad": []
+}

@@ -1,0 +1,824 @@
+{
+ "parts": [
+  {
+   "id": "PT630",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 p.26/p.16: a two-wire chime (connector X-06) fed LY constant off the 15 A fuse; its G side is switched to ground by the Control Processing Unit (key reminder, lights-off) and by the C-10 oscillator (coolant/oil level warnings). The 1985 manual (S-002 p.15-12) calls it the buzzer in the meter."
+  },
+  {
+   "id": "PT631",
+   "link": "https://www.atkinsrotary.com/Interior/Mazda-Interior-Switches/",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 p.26: H-09 connector LY (element feed, constant, 15 A fuse), RL (illumination bulb, from the panel light control) and B (ground to X-13 via X-02). No 1981-83 lighter listing found; 84-85 and 86-92 (FB01-66-250) lighters are sold, fit unconfirmed."
+  },
+  {
+   "id": "PT632",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Carries the PT633 bulb; the ring itself has no terminal. Bulb wattage is SP-196."
+  },
+  {
+   "id": "PT633",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "3.4 W (SP-196, S-001 p.20) on RL from E-05 panel light control, ground B; so it dims with the dash. Trade number not found in any source; confirm the bulb type in the car."
+  },
+  {
+   "id": "PT634",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 p.28 draws each mirror as ONE motor plus ONE solenoid (LgY-B), not two motors as windows-mirrors.md says; the 1985 manual (S-002 p.15-42) draws the same. The switch energises the solenoid for up/down and reverses the motor. 1982 feed is WG constant (10 A), 1985 is L from ACC."
+  },
+  {
+   "id": "PT635",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 p.26: H-15 is a 4-cavity connector with two used, LR (20 A constant) and GB to the H-16 solenoid, which grounds at X-15; a momentary contact joins LR to GB."
+  },
+  {
+   "id": "PT636",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 p.24: G-13 'power antenna switch (without radio)', two wires LG and B; it grounds the LG coil side of the G-01 power antenna relay. Cars with the factory radio drive LG from the radio instead."
+  },
+  {
+   "id": "PT637",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 p.18: D-06 has B, BG and LW: one contact grounds BG (rear wiper motor D-05), the other grounds LW (rear washer motor D-04); both motors are fed L on their own 10 A ignition fuse."
+  },
+  {
+   "id": "PT638",
+   "link": "https://www.atkinsrotary.com/81-83-Rx7-Combination-Switch-FA01-66-120.html",
+   "support": "",
+   "cad": "fb-turn-signal-canceler-bridge-printables-themagicd",
+   "note_add": "Atkins Rotary lists FA01-66-120 new at 358.95 USD (2026-09) and the turn-signal switch alone as FA01-66-122. On S-001 it appears as E-01 (light/dimmer/passing, plus the GL horn lead), F-02 (turn/hazard) and D-03 (wiper/washer)."
+  },
+  {
+   "id": "PT640",
+   "link": "https://www.atkinsrotary.com/81-83-Rx7-Windshield-Wiper-Switch-BA30-66-135.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Atkins sells an 81-83 wiper switch as BA30-66-135 (95.00 USD), not the catalogue's BA30-66-123; whether it supersedes it is unconfirmed. S-001 p.18 connector D-03: B, LO, LY / LR, LG, LW."
+  },
+  {
+   "id": "PT641",
+   "link": "https://www.atkinsrotary.com/81-85-Rx7-Turn-Signal-Switch-Cancel-Cam-BA29-66-126.html",
+   "support": "",
+   "cad": "fb-turn-signal-canceler-bridge-printables-themagicd",
+   "note_add": "Still sold new by Atkins Rotary (5.99 USD, fits all 81-85). The printable canceler bridge in the CAD library is the switch-side part the cam strikes."
+  },
+  {
+   "id": "PT642",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 p.22: the horn switch is a ground-side contact on GL through E-01 to the F-16 horn relay coil; it carries only relay coil current."
+  },
+  {
+   "id": "PT644",
+   "link": "https://www.ebay.com/p/1522105390",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 p.26: single-terminal switch on RY that grounds through its body; RY runs to the interior/spot light and the Control Processing Unit. New genuine B001-66-540 is still listed (about 7.50 USD)."
+  },
+  {
+   "id": "PT645",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Mazda's current catalogue names -66-450 parts 'Switch, parking lamp' and sells them as the park brake warning switch (GJ6G-66-450), which supports this being the S-001 C-04 parking brake switch (one BR wire, to ground). Still confirm on the car."
+  }
+ ],
+ "specs": [
+  {
+   "part": "PT630",
+   "category": "Electrical",
+   "item": "Supply fuse (LY constant bus)",
+   "value": "15",
+   "unit": "A",
+   "source": "S-001",
+   "page": "PDF p.26",
+   "confidence": "primary",
+   "applies": "",
+   "note": "X-04 15 A off WR; shared with interior light, lighter, clock, luggage light"
+  },
+  {
+   "part": "PT631",
+   "category": "Electrical",
+   "item": "Supply fuse (LY constant bus)",
+   "value": "15",
+   "unit": "A",
+   "source": "S-001",
+   "page": "PDF p.26",
+   "confidence": "primary",
+   "applies": "",
+   "note": "works with the key out; the 1985 fuse card shows 10 A CIGAR (other car)"
+  },
+  {
+   "part": "PT634",
+   "category": "Electrical",
+   "item": "Supply fuse (WG, constant)",
+   "value": "10",
+   "unit": "A",
+   "source": "S-001",
+   "page": "PDF p.28, p.22",
+   "confidence": "primary",
+   "applies": "",
+   "note": "X-04 10 A off WR (p.28); the hazard feed WG is drawn off a 10 A WR fuse too (p.22), read as the same fuse; confirm on the fuse block"
+  },
+  {
+   "part": "PT634",
+   "category": "Electrical",
+   "item": "Switch continuity, left mirror selected",
+   "value": "UP: c-d-f, a-b; DOWN: c-b-f, a-d; LEFT: c-d, a-b; RIGHT: c-b, a-d",
+   "unit": "",
+   "source": "S-002",
+   "page": "Section 15 p.15-42",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 switch letters: a=B ground, b=Lg LH motor, c=feed, d=LgB motor common, e=LgR RH motor, f=LgY solenoids. 1982 uses the same wire colours (S-001 p.28); confirm that the switch is the same"
+  },
+  {
+   "part": "PT634",
+   "category": "Electrical",
+   "item": "Switch continuity, right mirror selected",
+   "value": "UP: c-d-f, a-e; DOWN: c-e-f, a-d; LEFT: c-d, a-e; RIGHT: c-e, a-d",
+   "unit": "",
+   "source": "S-002",
+   "page": "Section 15 p.15-42",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "same letters as the left-side row"
+  },
+  {
+   "part": "PT634",
+   "category": "Electrical",
+   "item": "Mirror connector continuity (motor pins a-b and solenoid pins c-d)",
+   "value": "a-b yes; c-d yes; a-c no; b-d no",
+   "unit": "",
+   "source": "S-002",
+   "page": "Section 15 p.15-41",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "mirror side test that goes with the switch; 1985"
+  },
+  {
+   "part": "PT635",
+   "category": "Electrical",
+   "item": "Supply fuse (LR constant, OPENER)",
+   "value": "20",
+   "unit": "A",
+   "source": "S-001",
+   "page": "PDF p.26",
+   "confidence": "primary",
+   "applies": "",
+   "note": "shared with the glass-hatch release; 1985 card calls it 20 A OPENER (S-002 p.15-13)"
+  },
+  {
+   "part": "PT635",
+   "category": "Electrical",
+   "item": "Switch check",
+   "value": "continuity when pulled ON, none when OFF; LR to ground shows battery voltage with the switch unplugged",
+   "unit": "",
+   "source": "S-002",
+   "page": "Section 15 p.15-38 to 15-39",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 procedure; same wires LR/GB as 1982 S-001 p.26"
+  },
+  {
+   "part": "PT637",
+   "category": "Electrical",
+   "item": "Supply fuse (rear wiper and washer, L ignition)",
+   "value": "10",
+   "unit": "A",
+   "source": "S-001",
+   "page": "PDF p.18",
+   "confidence": "primary",
+   "applies": "",
+   "note": "fuse feeds the motors; the switch works on the ground side"
+  },
+  {
+   "part": "PT638",
+   "category": "Electrical",
+   "item": "Tail/park feed fuse to the light switch (R)",
+   "value": "10",
+   "unit": "A",
+   "source": "S-001",
+   "page": "PDF p.20, p.22",
+   "confidence": "primary",
+   "applies": "",
+   "note": "headlight side is fed WG through a 0.3 sq fusible link, not a fuse"
+  },
+  {
+   "part": "PT638",
+   "category": "Electrical",
+   "item": "Hazard feed fuse (WG) and turn feed fuse (GY)",
+   "value": "10",
+   "unit": "A",
+   "source": "S-001",
+   "page": "PDF p.22",
+   "confidence": "primary",
+   "applies": "",
+   "note": "two separate 10 A fuses; hazard constant, turn on ignition"
+  },
+  {
+   "part": "PT638",
+   "category": "Body",
+   "item": "Steering wheel nut torque (the wheel comes off to change the switch)",
+   "value": "40-50",
+   "unit": "N·m",
+   "source": "S-038",
+   "page": "T:7",
+   "confidence": "primary",
+   "applies": "",
+   "note": "29-36 ft-lb"
+  },
+  {
+   "part": "PT638",
+   "category": "Electrical",
+   "item": "Light, dimmer and passing switch continuity",
+   "value": "OFF: A-D (passing ON adds E-H); PARK: A-B-D (passing ON adds E-H); HEAD LOW: E-C-I, A-B; HEAD HIGH: E-C-H, A-B",
+   "unit": "",
+   "source": "S-045",
+   "page": "80RX7_15 p.15:9 (PDF p.11)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1980 switch leads: A RL, B RG, C LR, D LY, E WR, H RW, I RB, F/G/J not used. The 1982 harness colours differ (S-001 E-01: R, WG, RW, R, GL, RL, RY, RG), so the 1982 switch may be wired differently; confirm on the part"
+  },
+  {
+   "part": "PT638",
+   "category": "Electrical",
+   "item": "Turn signal and hazard switch continuity",
+   "value": "Hazard OFF: left D-E, F-H; neutral D-E; right D-E, F-G. Hazard ON: C-E, F-G-H",
+   "unit": "",
+   "source": "S-045",
+   "page": "80RX7_15 p.15:9 (PDF p.11)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1980 leads: A G, B not used, C WL, D GY, E WG, F GR, G GW, H GB. 1982 F-02 carries WG, GW, GY, GR, GO, GB; confirm"
+  },
+  {
+   "part": "PT640",
+   "category": "Electrical",
+   "item": "Wiper and washer switch continuity",
+   "value": "INT: A-B, D-F; OFF: A-B; LOW: B-F; HIGH: C-F; washer ON: E-F",
+   "unit": "",
+   "source": "S-045",
+   "page": "80RX7_15 p.15:9 (PDF p.11)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1980 leads: A Y, B W, C R, D G, E L, F B (ground). 1982 D-03 carries B, LO, LY, LR, LG, LW; confirm"
+  },
+  {
+   "part": "PT642",
+   "category": "Electrical",
+   "item": "Horn relay fuse (GW, shared with stop lamps)",
+   "value": "15",
+   "unit": "A",
+   "source": "S-001",
+   "page": "PDF p.22",
+   "confidence": "primary",
+   "applies": "",
+   "note": "the horn contact only switches relay coil current"
+  }
+ ],
+ "terminals": [
+  {
+   "part": "PT630",
+   "terminal": "LY",
+   "function": "feed",
+   "inside": "chime sounder + side",
+   "wire": "LY",
+   "to": "X-04 15 A constant via X-06",
+   "source": "S-001",
+   "page": "PDF p.26",
+   "note": "no pin letter in S-001; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT630",
+   "terminal": "G",
+   "function": "trigger (switched to ground)",
+   "inside": "chime sounder - side",
+   "wire": "G",
+   "to": "Control Processing Unit X-16 and C-10 oscillator",
+   "source": "S-001",
+   "page": "PDF p.26, p.16",
+   "note": "no pin letter in S-001; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT631",
+   "terminal": "LY",
+   "function": "element feed",
+   "inside": "heating element, closes when the knob is pushed in",
+   "wire": "LY",
+   "to": "X-04 15 A constant",
+   "source": "S-001",
+   "page": "PDF p.26",
+   "note": "H-09; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT631",
+   "terminal": "B",
+   "function": "ground",
+   "inside": "element return and body",
+   "wire": "B",
+   "to": "X-02 to ground X-13",
+   "source": "S-001",
+   "page": "PDF p.26",
+   "note": "H-09; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT633",
+   "terminal": "RL",
+   "function": "illumination feed",
+   "inside": "3.4 W bulb",
+   "wire": "RL",
+   "to": "E-05 instrument panel light control (dimmer) via X-02",
+   "source": "S-001",
+   "page": "PDF p.20, p.26",
+   "note": "H-09 RL cavity; bulb returns to B; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT634",
+   "terminal": "WG",
+   "function": "feed (switch c)",
+   "inside": "common to both direction contacts",
+   "wire": "WG",
+   "to": "X-04 10 A constant via X-12",
+   "source": "S-001",
+   "page": "PDF p.28",
+   "note": "I-01; letter from the 1985 manual (S-002 p.15-42); from S-001; confirm on the car"
+  },
+  {
+   "part": "PT634",
+   "terminal": "B",
+   "function": "ground (switch a)",
+   "inside": "return for the reversing contacts",
+   "wire": "B",
+   "to": "I-04 splice, X-02, X-13",
+   "source": "S-001",
+   "page": "PDF p.28",
+   "note": "I-01; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT634",
+   "terminal": "Lg",
+   "function": "LH mirror motor (switch b)",
+   "inside": "motor lead, reversed for L/R and U/D",
+   "wire": "Lg",
+   "to": "I-03 LH mirror via X-02, I-02",
+   "source": "S-001",
+   "page": "PDF p.28",
+   "note": "I-01; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT634",
+   "terminal": "LgR",
+   "function": "RH mirror motor (switch e)",
+   "inside": "motor lead, reversed",
+   "wire": "LgR",
+   "to": "I-05 RH mirror via I-04 (Lg at the mirror)",
+   "source": "S-001",
+   "page": "PDF p.28",
+   "note": "I-01; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT634",
+   "terminal": "LgB",
+   "function": "motor common (switch d)",
+   "inside": "other motor lead, both mirrors",
+   "wire": "LgB",
+   "to": "I-03 and I-05",
+   "source": "S-001",
+   "page": "PDF p.28",
+   "note": "I-01; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT634",
+   "terminal": "LgY",
+   "function": "solenoid feed (switch f)",
+   "inside": "energised for UP/DOWN through diodes",
+   "wire": "LgY",
+   "to": "solenoid in I-03 and I-05, other end B",
+   "source": "S-001",
+   "page": "PDF p.28",
+   "note": "I-01; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT635",
+   "terminal": "LR",
+   "function": "feed",
+   "inside": "momentary contact",
+   "wire": "LR",
+   "to": "X-04 20 A constant via X-02",
+   "source": "S-001",
+   "page": "PDF p.26",
+   "note": "H-15; two of four cavities not used; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT635",
+   "terminal": "GB",
+   "function": "output",
+   "inside": "momentary contact",
+   "wire": "GB",
+   "to": "H-16 fuel-door solenoid via X-12, X-03; solenoid grounds at X-15",
+   "source": "S-001",
+   "page": "PDF p.26",
+   "note": "H-15; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT636",
+   "terminal": "LG",
+   "function": "relay coil ground side",
+   "inside": "contact to B",
+   "wire": "LG",
+   "to": "G-01 power antenna relay via X-11, X-02",
+   "source": "S-001",
+   "page": "PDF p.24",
+   "note": "G-13 (without radio); from S-001; confirm on the car"
+  },
+  {
+   "part": "PT636",
+   "terminal": "B",
+   "function": "ground",
+   "inside": "contact",
+   "wire": "B",
+   "to": "X-11, X-02, X-13",
+   "source": "S-001",
+   "page": "PDF p.24",
+   "note": "G-13; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT637",
+   "terminal": "BG",
+   "function": "rear wiper",
+   "inside": "contact to B",
+   "wire": "BG",
+   "to": "D-05 rear wiper motor via X-11, X-12, X-03, D-07",
+   "source": "S-001",
+   "page": "PDF p.18",
+   "note": "D-06; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT637",
+   "terminal": "LW",
+   "function": "rear washer",
+   "inside": "contact to B",
+   "wire": "LW",
+   "to": "D-04 rear washer motor (L at the motor) via X-11",
+   "source": "S-001",
+   "page": "PDF p.18",
+   "note": "D-06; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT637",
+   "terminal": "B",
+   "function": "ground",
+   "inside": "common of both contacts",
+   "wire": "B",
+   "to": "X-11, X-02, X-13",
+   "source": "S-001",
+   "page": "PDF p.18",
+   "note": "D-06; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT638",
+   "terminal": "R (2-pin)",
+   "function": "tail/park feed",
+   "inside": "LIGHT section input",
+   "wire": "R",
+   "to": "X-04 10 A off WR",
+   "source": "S-001",
+   "page": "PDF p.20, p.26",
+   "note": "E-01 2-pin; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT638",
+   "terminal": "WG (2-pin)",
+   "function": "headlight feed",
+   "inside": "LIGHT/DIMMER input",
+   "wire": "WG",
+   "to": "0.3 sq fusible link X-07",
+   "source": "S-001",
+   "page": "PDF p.20",
+   "note": "E-01 2-pin; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT638",
+   "terminal": "RG",
+   "function": "PARK/HEAD output",
+   "inside": "LIGHT section",
+   "wire": "RG",
+   "to": "tail, parking, side-marker, license lamps and E-05 panel light control",
+   "source": "S-001",
+   "page": "PDF p.20, p.22",
+   "note": "E-01 6-pin; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT638",
+   "terminal": "RW",
+   "function": "light-switch output",
+   "inside": "LIGHT section",
+   "wire": "RW",
+   "to": "E-02 retractable headlight switch via X-02",
+   "source": "S-001",
+   "page": "PDF p.20",
+   "note": "E-01 6-pin; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT638",
+   "terminal": "R (6-pin)",
+   "function": "HEAD output",
+   "inside": "LIGHT section",
+   "wire": "R",
+   "to": "R bus: retractor motors, E-02, headlight cleaner",
+   "source": "S-001",
+   "page": "PDF p.20",
+   "note": "E-01 6-pin; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT638",
+   "terminal": "RL",
+   "function": "headlight beam feed (the 3.4 W high-beam indicator hangs on this wire, so likely HIGH)",
+   "inside": "DIMMER",
+   "wire": "RL",
+   "to": "E-08/E-09 headlights and the 3.4 W high-beam indicator (X-06, X-05)",
+   "source": "S-001",
+   "page": "PDF p.20",
+   "note": "E-01 6-pin; S-001 names no beam per wire: the indicator is drawn on RL, not RY; from S-001; confirm on the car which wire is high"
+  },
+  {
+   "part": "PT638",
+   "terminal": "RY",
+   "function": "headlight beam feed (likely LOW, by elimination: the indicator is on RL)",
+   "inside": "DIMMER/PASSING",
+   "wire": "RY",
+   "to": "E-08/E-09 headlights",
+   "source": "S-001",
+   "page": "PDF p.20",
+   "note": "E-01 6-pin; S-001 names no beam per wire; from S-001; confirm on the car which wire is high"
+  },
+  {
+   "part": "PT638",
+   "terminal": "WG (F-02)",
+   "function": "hazard feed",
+   "inside": "HAZARD section",
+   "wire": "WG",
+   "to": "X-04 10 A constant",
+   "source": "S-001",
+   "page": "PDF p.22",
+   "note": "F-02; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT638",
+   "terminal": "GY",
+   "function": "turn feed",
+   "inside": "TURN section",
+   "wire": "GY",
+   "to": "X-04 10 A ignition (BY)",
+   "source": "S-001",
+   "page": "PDF p.22",
+   "note": "F-02; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT638",
+   "terminal": "GW",
+   "function": "to flasher",
+   "inside": "HAZARD/TURN",
+   "wire": "GW",
+   "to": "Control Processing Unit (flasher) X-16",
+   "source": "S-001",
+   "page": "PDF p.22",
+   "note": "F-02; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT638",
+   "terminal": "GB",
+   "function": "from flasher",
+   "inside": "HAZARD/TURN",
+   "wire": "GB",
+   "to": "Control Processing Unit (flasher) X-16",
+   "source": "S-001",
+   "page": "PDF p.22",
+   "note": "F-02; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT638",
+   "terminal": "GR",
+   "function": "left turn output",
+   "inside": "TURN",
+   "wire": "GR",
+   "to": "F-05, F-07 and LH indicator",
+   "source": "S-001",
+   "page": "PDF p.22",
+   "note": "F-02; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT638",
+   "terminal": "GO",
+   "function": "right turn output",
+   "inside": "TURN",
+   "wire": "GO",
+   "to": "F-06, F-08 and RH indicator",
+   "source": "S-001",
+   "page": "PDF p.22",
+   "note": "F-02; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT640",
+   "terminal": "B",
+   "function": "ground",
+   "inside": "switch common",
+   "wire": "B",
+   "to": "X-13",
+   "source": "S-001",
+   "page": "PDF p.18",
+   "note": "D-03; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT640",
+   "terminal": "LW",
+   "function": "wiper LOW",
+   "inside": "WIPER section",
+   "wire": "LW",
+   "to": "D-02 front wiper motor LO",
+   "source": "S-001",
+   "page": "PDF p.18",
+   "note": "D-03; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT640",
+   "terminal": "LR",
+   "function": "wiper HIGH",
+   "inside": "WIPER section",
+   "wire": "LR",
+   "to": "D-02 front wiper motor HI",
+   "source": "S-001",
+   "page": "PDF p.18",
+   "note": "D-03; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT640",
+   "terminal": "LO",
+   "function": "intermittent",
+   "inside": "WIPER section",
+   "wire": "LO",
+   "to": "Control Processing Unit X-16",
+   "source": "S-001",
+   "page": "PDF p.18",
+   "note": "D-03; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT640",
+   "terminal": "LG",
+   "function": "intermittent/one-touch",
+   "inside": "WIPER section",
+   "wire": "LG",
+   "to": "Control Processing Unit X-16",
+   "source": "S-001",
+   "page": "PDF p.18",
+   "note": "D-03; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT640",
+   "terminal": "LY",
+   "function": "washer",
+   "inside": "WASHER push contact",
+   "wire": "LY",
+   "to": "D-01 front washer motor and Control Processing Unit",
+   "source": "S-001",
+   "page": "PDF p.18",
+   "note": "D-03; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT642",
+   "terminal": "GL",
+   "function": "horn relay coil ground",
+   "inside": "momentary contact to the column ground",
+   "wire": "GL",
+   "to": "F-16 horn relay via E-01",
+   "source": "S-001",
+   "page": "PDF p.22",
+   "note": "E-01 6-pin; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT644",
+   "terminal": "RY (RH)",
+   "function": "door-open ground",
+   "inside": "plunger contact to body",
+   "wire": "RY",
+   "to": "H-06 interior/spot light and Control Processing Unit via X-03",
+   "source": "S-001",
+   "page": "PDF p.26",
+   "note": "H-07; single terminal, grounds through the mount; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT644",
+   "terminal": "RY (LH)",
+   "function": "door-open ground",
+   "inside": "plunger contact to body",
+   "wire": "RY",
+   "to": "H-06 interior/spot light and Control Processing Unit via X-03",
+   "source": "S-001",
+   "page": "PDF p.26",
+   "note": "H-08; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT645",
+   "terminal": "BR",
+   "function": "lever-up ground",
+   "inside": "contact to body",
+   "wire": "BR",
+   "to": "brake warning light (1.4 W) in the meter via X-11, X-02, and C-03 checker",
+   "source": "S-001",
+   "page": "PDF p.16",
+   "note": "C-04 parking brake switch, only if PT645 is that switch; from S-001; confirm on the car"
+  }
+ ],
+ "sources": [
+  {
+   "key": "src-atkins-fa0166120",
+   "title": "Atkins Rotary - 81-83 Rx7 Combination Switch (FA01-66-120)",
+   "kind": "web",
+   "covers": "PT638 listing, price, no-cruise fitment",
+   "url": "https://www.atkinsrotary.com/81-83-Rx7-Combination-Switch-FA01-66-120.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "358.95 USD in stock, 2026-09-25"
+  },
+  {
+   "key": "src-atkins-fa0166122",
+   "title": "Atkins Rotary - 81-83 Rx7 Turn Signal Switch (FA01-66-122)",
+   "kind": "web",
+   "covers": "PT638 turn-signal sub-switch",
+   "url": "https://www.atkinsrotary.com/81-83-Rx7-Turn-Signal-Switch-FA01-66-122.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "99.75 USD; left side behind the combination switch"
+  },
+  {
+   "key": "src-atkins-ba3066135",
+   "title": "Atkins Rotary - 81-83 Rx7 Windshield Wiper Switch (BA30-66-135)",
+   "kind": "web",
+   "covers": "PT640",
+   "url": "https://www.atkinsrotary.com/81-83-Rx7-Windshield-Wiper-Switch-BA30-66-135.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "95.00 USD; also 84-85 GLC, B2000, B2200, 626; number differs from catalogue BA30-66-123"
+  },
+  {
+   "key": "src-atkins-ba2966126",
+   "title": "Atkins Rotary - 81-85 Rx7 Turn Signal Switch Cancel Cam (BA29-66-126)",
+   "kind": "web",
+   "covers": "PT641",
+   "url": "https://www.atkinsrotary.com/81-85-Rx7-Turn-Signal-Switch-Cancel-Cam-BA29-66-126.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "5.99 USD"
+  },
+  {
+   "key": "src-ebay-b00166540",
+   "title": "eBay - Mazda B00166540 Genuine OEM Door Jamb Switch",
+   "kind": "web",
+   "covers": "PT644",
+   "url": "https://www.ebay.com/p/1522105390",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "new, from about 7.48 USD, made in Japan"
+  },
+  {
+   "key": "src-mazdausa-66450",
+   "title": "Mazda USA parts - Switch, parking lamp (GJ6G-66-450, park brake warning switch)",
+   "kind": "catalogue",
+   "covers": "PT645 naming: -66-450 'parking lamp switch' is the park-brake warning switch",
+   "url": "https://parts.mazdausa.com/p/Mazda_2014_Mazda6/SWITCH--PARKING-LAMP/105446398/GJ6G-66-450.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "parts.mazdausa.com returns 403 (Cloudflare) to fetches; search-result titles read \"Switch, parking lamp. Brake, system\", and mazdapartsconnect.com lists GJ6G-66-450 as \"Park Brake Warning Switch\" (checked 2026-09-25); a modern part, used only to read the catalogue name"
+  }
+ ],
+ "cad": []
+}

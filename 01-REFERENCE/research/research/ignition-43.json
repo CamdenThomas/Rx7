@@ -1,0 +1,13 @@
+{
+ "parts": [
+  {"id": "PT263", "link": "", "support": "", "cad": "",
+   "note_add": "Catalogue figure 1820A-1 (S-005 Engine-Chassis PDF p.57, printed 1-15) shows D-code 24496 as the small spring-loaded centre contact (carbon button) that sits in the centre of the distributor cap (24310) and bears on the rotor (24312); it is not a breaker point - the distributor is breakerless. 1985 FSM p.5-33 says to check the cap's centre contact for wear; no wear limit is given. Identification read from the drawing; confirm on the car."}
+ ],
+ "specs": [
+  {"part": "PT263", "category": "Ignition", "item": "Part identity: centre contact (carbon button with spring) inside the distributor cap, bearing on the rotor", "value": "1757-24-302", "unit": "", "source": "S-005", "page": "Engine-Chassis PDF p.57 (printed 1-15), fig. 1820A-1, D-code 24 496", "confidence": "primary", "applies": "", "note": "Read from the exploded drawing: 24496 is drawn between cap 24310 and rotor 24312. Qty 1. confirm on the car."},
+  {"part": "PT263", "category": "Ignition", "item": "Inspection: check the distributor cap centre contact for wear (replace if necessary); no numeric wear limit given", "value": "", "unit": "", "source": "S-002", "page": "Section 5 p.5-33 (PDF p.33), Distributor - Inspection - Distributor cap", "confidence": "primary", "applies": "other-car", "note": "1985 12A breakerless distributor; no 1982 source opened gives an inspection figure."}
+ ],
+ "terminals": [],
+ "sources": [],
+ "cad": []
+}

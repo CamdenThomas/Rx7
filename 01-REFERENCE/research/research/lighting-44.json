@@ -1,0 +1,731 @@
+{
+  "parts": [
+    {
+      "id": "PT304",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Catalogue figure 6630A-1 (S-005 BI p.101) draws the LAMPC. relay (67660) on the relay bracket under the dash beside the C.P.U. and horn relay; this is most likely the F-03 stop light checker of S-001 p.22 (W in, G out to stop lamps, GL to the meter warning, B ground) - confirm. OEM-RECORD.md lists F-03 as Rear, which disagrees with the catalogue drawing - confirm on the car."
+    },
+    {
+      "id": "PT034",
+      "link": "https://www.atkinsrotary.com/81-83-Rx7-Headlight-Switch-FA01-66-670.html",
+      "support": "Atkins Rotary 360-832-1990 (https://www.atkinsrotary.com)",
+      "cad": "",
+      "note_add": "FA01-66-670 is no longer available new (Atkins, NLA); used units are sold by 1st-gen breakers. Per S-001 p.20 the switch also houses the headlight cleaner switch (LY-B)."
+    },
+    {
+      "id": "PT557",
+      "link": "https://mazdatrix.com/product/switch-brake-light-82-88-w-cruise/",
+      "support": "Mazdatrix 562-426-7960 (https://www.mazdatrix.com)",
+      "cad": "",
+      "note_add": "The switch position sets brake pedal height (190 +5/-0 mm, S-038 T:6; procedure S-002 11-25). Mazdatrix sells H003-66-490A as the 82-88 brake light switch for cars with cruise control, which may explain the catalogue qty 2 - confirm."
+    },
+    {
+      "id": "PT035",
+      "link": "https://normanlamps.com/sealed-beam-lamps/halogen-sealed-beam/h6024.html",
+      "support": "Norman Lamps 800-992-8020",
+      "cad": "sealed-beam-par46-par56-grabcad-nicholas",
+      "note_add": "Factory unit is the H6024 7 in PAR56 halogen sealed beam (0000-11-6024-HL), 3-lug base. On the 1982 diagram RY is LOW beam and RL is HIGH beam (RL feeds the high beam indicator); headlights-popups-illumination.md has these swapped."
+    },
+    {
+      "id": "PT033",
+      "link": "https://www.autopartone.com/products/81-83-mazda-rx7-oem-headlight-motor-right",
+      "support": "",
+      "cad": "",
+      "note_add": "S-001 p.20: each motor unit holds a cam limit switch with UP/DOWN diodes and a relay; the relay switches WR to the motor and grounds it (brakes) at rest, and YG lights the 3.4 W retractor indicator while it runs. The motors take their own 0.3 sq fusible link on WR."
+    },
+    {
+      "id": "PT587",
+      "link": "https://www.atkinsrotary.com/79-85-Rx7-Left-Headlight-Cover-8871-51-621A.html",
+      "support": "Atkins Rotary 360-832-1990 (https://www.atkinsrotary.com)",
+      "cad": "",
+      "note_add": "Left lid 8871-51-621A: NLA new, Atkins has remaining NOS stock (185 USD). Lid height is set by the adjusting screw and lock nut against the stop rubber (S-002 14-18)."
+    },
+    {
+      "id": "PT588",
+      "link": "",
+      "support": "Atkins Rotary 360-832-1990 (https://www.atkinsrotary.com)",
+      "cad": "",
+      "note_add": "After replacing a hinge, redo the lid up-down adjustment; the link snaps onto the ball pivot by finger pressure, not pliers (S-002 14-17, S-045 15:2)."
+    },
+    {
+      "id": "PT589",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Sealed beam is held by the retaining ring (screws, rotate counterclockwise to remove) and aimed with the two adjusting screws (S-002 14-16, S-045 15:1)."
+    },
+    {
+      "id": "PT590",
+      "link": "https://www.autopartone.com/products/81-83-mazda-rx7-oem-headlight-motor-right",
+      "support": "",
+      "cad": "",
+      "note_add": "Used 81-83 motors are sold complete with relay, cover boot and mounting bolts. After fitting, set the motor link at its lowest (automatic stop) position with the knob and slide the motor fore/aft on its bolts to adjust the lid (S-002 14-18)."
+    },
+    {
+      "id": "PT591",
+      "link": "https://www.atkinsrotary.com/79-85-Rx7-Short-Headlight-Retractor-Rod-8871-51-936.html",
+      "support": "Atkins Rotary 360-832-1990 (https://www.atkinsrotary.com)",
+      "cad": "sa-fb-headlight-bushing-thingiverse-not-a-penguin",
+      "note_add": "Rod B 8871-51-936 is in stock at Atkins (36.95 USD); rod A 8871-51-934 is NLA (Atkins NOS, includes bushings). A printable TPU bushing for the linkage is in the CAD library."
+    },
+    {
+      "id": "PT592",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "The knob sits on the retractor motor shaft under the boot; disconnect the battery negative before turning it (S-045 15:1, S-002 14-16)."
+    },
+    {
+      "id": "PT593",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "The boot is the cover taken off to reach the manual control knob (S-002 14-16)."
+    },
+    {
+      "id": "PT594",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "S-001 p.20 draws the relay inside each retractor motor unit (dashed box): coil fed through the motor limit switch, contact switches WR to the motor. So one relay per motor, on the motor - confirm. The 83-85 relay FA01-51-939 (Atkins, out of stock) is a different part."
+    }
+  ],
+  "specs": [
+    {
+      "part": "PT034",
+      "category": "Lighting",
+      "item": "Retractable headlight switch contacts",
+      "value": "Two ganged poles: UP/ON joins WG (constant feed) to R (motor UP line); OFF/normal joins RW (from light switch, hot when LIGHT is off) to RY (motor DOWN line)",
+      "unit": "",
+      "source": "S-001",
+      "page": "PDF p.20 (sect E, E-02)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "from S-001; confirm on the car"
+    },
+    {
+      "part": "PT034",
+      "category": "Lighting",
+      "item": "Continuity check, retractable headlight switch (1980 4-pin): ON A(WG)-D(R); OFF B(RW)-C(RY)",
+      "value": "ohmmeter continuity",
+      "unit": "",
+      "source": "S-045",
+      "page": "80RX7_15_Body_Electrical p.15:10 Fig 15-35",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1980 switch 8871-66-670 has 4 pins; the same WG-R / RW-RY pairs are drawn for 1982 in S-001 p.20"
+    },
+    {
+      "part": "PT034",
+      "category": "Lighting",
+      "item": "Headlight cleaner switch inside the retractable headlight switch",
+      "value": "LY to cleaner motor E-11 (via X-12), B to ground (X-02, X-13)",
+      "unit": "",
+      "source": "S-001",
+      "page": "PDF p.20 (sect E)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "from S-001; whether a headlight cleaner is fitted on this US car is not known - confirm"
+    },
+    {
+      "part": "PT034",
+      "category": "Lighting",
+      "item": "Retractor switch test: (WG) hot with switch UP, (RY) hot with switch DOWN; then (R) hot UP and (RY) hot DOWN at the output",
+      "value": "voltage check",
+      "unit": "",
+      "source": "S-002",
+      "page": "Section 15 p.15-30",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1985 cluster switch; same wire colours as the 1982 switch in S-001"
+    },
+    {
+      "part": "PT033",
+      "category": "Lighting",
+      "item": "Retractor motor internal circuit",
+      "value": "R (UP) and RY (DOWN) each enter through a diode to a cam limit switch; its common drives the relay coil to ground; relay NO contact connects WR to the motor, NC contact grounds the motor; YG taps the motor feed through a diode to the 3.4 W retractor indicator",
+      "unit": "",
+      "source": "S-001",
+      "page": "PDF p.20 (sect E, E-03/E-04)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "from S-001; confirm with the D-199 ohm check"
+    },
+    {
+      "part": "PT033",
+      "category": "Lighting",
+      "item": "Retractor motor feed",
+      "value": "own 0.3 sq fusible link on WR (separate from the 0.3 sq WG link and the 1.25 sq main)",
+      "unit": "",
+      "source": "S-001",
+      "page": "PDF p.20 (sect E)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "from S-001; confirm"
+    },
+    {
+      "part": "PT033",
+      "category": "Lighting",
+      "item": "Motor check: battery voltage on the R wire at the motor connector with light switch or retractor switch ON (UP); voltage present but no motion = motor ground or motor fault",
+      "value": "battery voltage",
+      "unit": "V",
+      "source": "S-002",
+      "page": "Section 15 p.15-29",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1985 procedure; motor connector wires WR, YG, R, RY are the same colours as 1982 E-03/E-04"
+    },
+    {
+      "part": "PT033",
+      "category": "Lighting",
+      "item": "Manual raise: disconnect battery negative, remove the cover, turn the manual control knob on the motor shaft until the headlight is fully up",
+      "value": "procedure",
+      "unit": "",
+      "source": "S-045",
+      "page": "80RX7_15_Body_Electrical p.15:1",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "same procedure in 1985 S-002 Section 14 p.14-16"
+    },
+    {
+      "part": "PT590",
+      "category": "Lighting",
+      "item": "Lid up-down adjustment with motor: knob to lowest (automatic stop) position, loosen motor mounting bolts and nuts, reconnect link, slide motor fore/aft, tighten",
+      "value": "procedure",
+      "unit": "",
+      "source": "S-002",
+      "page": "Section 14 p.14-18",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1980 S-045 p.15:3 gives the same steps"
+    },
+    {
+      "part": "PT587",
+      "category": "Body",
+      "item": "Lid height adjustment: loosen lock nut, turn adjusting screw in or out against the stop rubber, tighten lock nut",
+      "value": "procedure",
+      "unit": "",
+      "source": "S-002",
+      "page": "Section 14 p.14-18",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1980 S-045 p.15:3 gives the same steps"
+    },
+    {
+      "part": "PT588",
+      "category": "Body",
+      "item": "Link to hinge ball pivot: press together by finger until an audible click, not pliers; redo lid up-down adjustment after hinge replacement",
+      "value": "procedure",
+      "unit": "",
+      "source": "S-045",
+      "page": "80RX7_15_Body_Electrical p.15:2",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "same caution in 1985 S-002 Section 14 p.14-17"
+    },
+    {
+      "part": "PT589",
+      "category": "Lighting",
+      "item": "Headlight aim: two adjusting screws per lamp; tyres at pressure, car level and unladen",
+      "value": "procedure",
+      "unit": "",
+      "source": "S-045",
+      "page": "80RX7_15_Body_Electrical p.15:1",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "same in 1985 S-002 Section 14 p.14-16"
+    },
+    {
+      "part": "PT035",
+      "category": "Lighting",
+      "item": "Halogen sealed beam wattage, high/low (GS/GSL halogen)",
+      "value": "60/50",
+      "unit": "W",
+      "source": "S-001",
+      "page": "PDF p.20 (sect E)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "the lamp symbol reads 50W/40W (conventional); the note beside it gives halogen 60/50 W. LED units reported fitted - confirm what is on the car"
+    },
+    {
+      "part": "PT035",
+      "category": "Lighting",
+      "item": "Low beam wire / high beam wire",
+      "value": "RY low, RL high",
+      "unit": "",
+      "source": "S-001",
+      "page": "PDF p.20 (sect E)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "RL also feeds the high beam indicator; S-002 15-30 labels RY low and RL high too. Confirm on the car"
+    },
+    {
+      "part": "PT035",
+      "category": "Lighting",
+      "item": "Replacement Wagner H6024 (2D1): 7 in PAR56 halogen sealed beam, 12.8 V, high 60 W / 4.69 A, low 35 W / 2.73 A, life 150 h high / 450 h low, 178 mm dia, 127 mm long, 3-lug base",
+      "value": "60/35",
+      "unit": "W",
+      "source": "src-wagner-h6024",
+      "page": "product page",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "the same listing title says 35/65 W; wattage varies by brand"
+    },
+    {
+      "part": "PT035",
+      "category": "Lighting",
+      "item": "Replacement Norman Lamps H6024: 12.8 V, 65 W, PAR56, 7.00 in dia, 5.00 in deep, 3-lug base, 400 h",
+      "value": "7.00",
+      "unit": "in",
+      "source": "src-norman-h6024",
+      "page": "product page",
+      "confidence": "secondary",
+      "applies": "",
+      "note": ""
+    },
+    {
+      "part": "PT557",
+      "category": "Brakes",
+      "item": "Brake pedal height (from floor), set by screwing the stop light switch in or out",
+      "value": "190 +5/-0",
+      "unit": "mm",
+      "source": "S-038",
+      "page": "T:6",
+      "confidence": "primary",
+      "applies": "",
+      "note": "procedure (disconnect wires, loosen lock nut, turn switch, tighten, reconnect) from 1985 S-002 Section 11 p.11-25, same 190 mm figure"
+    },
+    {
+      "part": "PT557",
+      "category": "Lighting",
+      "item": "Stop light switch contact",
+      "value": "normally open; closes GW to W when the brake pedal is pressed",
+      "unit": "",
+      "source": "S-001",
+      "page": "PDF p.22 (sect F, F-11)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "from S-001; confirm"
+    },
+    {
+      "part": "PT557",
+      "category": "Lighting",
+      "item": "Stop light switch feed",
+      "value": "15 A STOP/HORN fuse (X-04), constant (works with key off)",
+      "unit": "A",
+      "source": "S-001",
+      "page": "PDF p.22 (sect F)",
+      "confidence": "primary",
+      "applies": "",
+      "note": ""
+    },
+    {
+      "part": "PT557",
+      "category": "Lighting",
+      "item": "Stop light switch test: test light from W to ground lights with pedal pressed; if not, check GW; if GW is hot, switch faulty or misadjusted",
+      "value": "procedure",
+      "unit": "",
+      "source": "S-002",
+      "page": "Section 15 p.15-31",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1985 connector F-03(F); wire colours GW and W match 1982 F-11"
+    },
+    {
+      "part": "PT557",
+      "category": "Lighting",
+      "item": "Replacement Mazda H003-66-490A brake light switch, 82-88 RX-7 with cruise control (Mazdatrix, 47.15 USD, in stock)",
+      "value": "47.15",
+      "unit": "USD",
+      "source": "src-mazdatrix-h003-66-490a",
+      "page": "product page",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "may be the second of the two switches the catalogue lists - confirm"
+    },
+    {
+      "part": "PT304",
+      "category": "Lighting",
+      "item": "Stop light checker function",
+      "value": "W in from stop switch, G out to both stop lamp filaments, GL to the meter stop-light warning, B ground X-13",
+      "unit": "",
+      "source": "S-001",
+      "page": "PDF p.22 (sect F, F-03)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "identity of the catalogue lamp checker relay with F-03 is inferred - confirm"
+    },
+    {
+      "part": "PT304",
+      "category": "Lighting",
+      "item": "Stop light checker test: test light on G lights with pedal pressed; if W is hot and G is not, checker faulty",
+      "value": "procedure",
+      "unit": "",
+      "source": "S-002",
+      "page": "Section 15 p.15-31",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1985 connector F-04(F), wires GL, W, G, B"
+    },
+    {
+      "part": "PT304",
+      "category": "Lighting",
+      "item": "Mounting",
+      "value": "relay bracket under the dash with the C.P.U. and horn relay (catalogue D-code 67660, LAMPC. RELAY)",
+      "unit": "",
+      "source": "S-005",
+      "page": "BI p.101 fig 6630A-1",
+      "confidence": "primary",
+      "applies": "",
+      "note": "catalogue lists 67660 RELAY, LAMP CHECKER BE32-67-680A qty 1, '(USE W/O ILLUM. KEY & WARNING LAMP)'; confirm on the car"
+    },
+    {
+      "part": "PT594",
+      "category": "Lighting",
+      "item": "Retractor relay quantity and fitment",
+      "value": "2 (one per motor), 8871-51-939, 81-82 FB331 500001-700000; 83 uses FA01-51-939 qty 1",
+      "unit": "",
+      "source": "S-005",
+      "page": "BI p.33 fig 5103A-1 BI-033-29",
+      "confidence": "primary",
+      "applies": "",
+      "note": ""
+    },
+    {
+      "part": "PT594",
+      "category": "Lighting",
+      "item": "Retractor relay contacts",
+      "value": "coil via motor limit switch to ground; NO contact WR to motor; NC contact motor to ground (dynamic brake)",
+      "unit": "",
+      "source": "S-001",
+      "page": "PDF p.20 (sect E)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "drawn inside the motor outline; confirm"
+    }
+  ],
+  "terminals": [
+    {
+      "part": "PT034",
+      "terminal": "WG",
+      "function": "supply, constant",
+      "inside": "common of the UP pole; joined to R when switch ON/UP",
+      "wire": "WG",
+      "to": "0.3 sq fusible link (X-07) via X-02, shared with E-01 LIGHT",
+      "source": "S-001",
+      "page": "PDF p.20",
+      "note": "from S-001; confirm on the car; E-02 face top row RW WG LY"
+    },
+    {
+      "part": "PT034",
+      "terminal": "R",
+      "function": "output, headlights UP",
+      "inside": "joined to WG when switch ON/UP",
+      "wire": "R",
+      "to": "both retractor motors R (E-03/E-04) via X-02; also fed by E-01 in HEAD",
+      "source": "S-001",
+      "page": "PDF p.20",
+      "note": "from S-001; confirm on the car; E-02 bottom row RY R B"
+    },
+    {
+      "part": "PT034",
+      "terminal": "RW",
+      "function": "input, down command source",
+      "inside": "joined to RY when switch OFF",
+      "wire": "RW",
+      "to": "E-01 combination switch LIGHT section (hot when LIGHT is off) via X-02",
+      "source": "S-001",
+      "page": "PDF p.20",
+      "note": "from S-001; confirm on the car"
+    },
+    {
+      "part": "PT034",
+      "terminal": "RY",
+      "function": "output, headlights DOWN",
+      "inside": "joined to RW when switch OFF",
+      "wire": "RY",
+      "to": "both retractor motors RY (E-03/E-04) via X-02",
+      "source": "S-001",
+      "page": "PDF p.20",
+      "note": "from S-001; confirm on the car"
+    },
+    {
+      "part": "PT034",
+      "terminal": "LY",
+      "function": "headlight cleaner switch",
+      "inside": "cleaner switch contact to B",
+      "wire": "LY",
+      "to": "headlight cleaner motor E-11 via X-12",
+      "source": "S-001",
+      "page": "PDF p.20",
+      "note": "from S-001; confirm on the car; cleaner may not be fitted"
+    },
+    {
+      "part": "PT034",
+      "terminal": "B",
+      "function": "ground",
+      "inside": "other side of the cleaner switch",
+      "wire": "B",
+      "to": "X-02 to ground X-13",
+      "source": "S-001",
+      "page": "PDF p.20",
+      "note": "from S-001; confirm on the car"
+    },
+    {
+      "part": "PT033",
+      "terminal": "WR",
+      "function": "motor power, constant",
+      "inside": "relay normally-open contact to motor",
+      "wire": "WR",
+      "to": "own 0.3 sq fusible link (X-07); both motors joined",
+      "source": "S-001",
+      "page": "PDF p.20",
+      "note": "from S-001; confirm on the car; E-03 LH and E-04 RH same colours; connector cross-shaped: YG top, WR left, RY right, R bottom"
+    },
+    {
+      "part": "PT033",
+      "terminal": "R",
+      "function": "UP command",
+      "inside": "diode to the UP contact of the cam limit switch, then relay coil to ground",
+      "wire": "R",
+      "to": "E-02 R and E-01 R (HEAD)",
+      "source": "S-001",
+      "page": "PDF p.20",
+      "note": "from S-001; confirm on the car"
+    },
+    {
+      "part": "PT033",
+      "terminal": "RY",
+      "function": "DOWN command",
+      "inside": "diode to the DOWN contact of the cam limit switch, then relay coil to ground",
+      "wire": "RY",
+      "to": "E-02 RY (from E-01 RW when light off)",
+      "source": "S-001",
+      "page": "PDF p.20",
+      "note": "from S-001; confirm on the car"
+    },
+    {
+      "part": "PT033",
+      "terminal": "YG",
+      "function": "running indicator",
+      "inside": "motor feed through a diode",
+      "wire": "YG",
+      "to": "3.4 W retractor indicator lamp in the cluster (X-06), ground X-05/X-13; both motors joined",
+      "source": "S-001",
+      "page": "PDF p.20",
+      "note": "from S-001; confirm on the car"
+    },
+    {
+      "part": "PT035",
+      "terminal": "RY",
+      "function": "low beam",
+      "inside": "low beam filament",
+      "wire": "RY",
+      "to": "E-01 DIMMER",
+      "source": "S-001",
+      "page": "PDF p.20",
+      "note": "from S-001; confirm on the car; E-08 LH / E-09 RH; write-up has RL/RY swapped"
+    },
+    {
+      "part": "PT035",
+      "terminal": "RL",
+      "function": "high beam",
+      "inside": "high beam filament",
+      "wire": "RL",
+      "to": "E-01 DIMMER and PASSING; also high beam indicator 3.4 W",
+      "source": "S-001",
+      "page": "PDF p.20",
+      "note": "from S-001; confirm on the car"
+    },
+    {
+      "part": "PT035",
+      "terminal": "B",
+      "function": "ground",
+      "inside": "common of both filaments",
+      "wire": "B",
+      "to": "X-13 (LH), X-14 (RH)",
+      "source": "S-001",
+      "page": "PDF p.20",
+      "note": "from S-001; confirm on the car"
+    },
+    {
+      "part": "PT557",
+      "terminal": "GW",
+      "function": "supply, constant",
+      "inside": "one side of the pedal contact",
+      "wire": "GW",
+      "to": "15 A STOP/HORN fuse X-04; also horn relay",
+      "source": "S-001",
+      "page": "PDF p.22",
+      "note": "from S-001; confirm on the car"
+    },
+    {
+      "part": "PT557",
+      "terminal": "W",
+      "function": "output, closed with pedal pressed",
+      "inside": "other side of the pedal contact",
+      "wire": "W",
+      "to": "F-03 stop light checker W and cruise control unit",
+      "source": "S-001",
+      "page": "PDF p.22",
+      "note": "from S-001; confirm on the car"
+    },
+    {
+      "part": "PT304",
+      "terminal": "W",
+      "function": "input from stop switch",
+      "inside": "checker sensing path",
+      "wire": "W",
+      "to": "F-11 stop light switch W",
+      "source": "S-001",
+      "page": "PDF p.22",
+      "note": "from S-001; confirm on the car; F-03 top row W GL, bottom row B G; identity with PT304 inferred"
+    },
+    {
+      "part": "PT304",
+      "terminal": "G",
+      "function": "output to stop lamps",
+      "inside": "checker sensing path",
+      "wire": "G",
+      "to": "X-03 to rear combination lamps F-07/F-08 27 W filaments",
+      "source": "S-001",
+      "page": "PDF p.22",
+      "note": "from S-001; confirm on the car"
+    },
+    {
+      "part": "PT304",
+      "terminal": "GL",
+      "function": "warning output",
+      "inside": "",
+      "wire": "GL",
+      "to": "meter stop light warning (Section C)",
+      "source": "S-001",
+      "page": "PDF p.22",
+      "note": "from S-001; confirm on the car"
+    },
+    {
+      "part": "PT304",
+      "terminal": "B",
+      "function": "ground",
+      "inside": "",
+      "wire": "B",
+      "to": "X-13",
+      "source": "S-001",
+      "page": "PDF p.22",
+      "note": "from S-001; confirm on the car"
+    }
+  ],
+  "sources": [
+    {
+      "key": "src-norman-h6024",
+      "title": "Norman Lamps - H6024 halogen sealed beam",
+      "kind": "datasheet",
+      "covers": "H6024 ratings and size",
+      "url": "https://normanlamps.com/sealed-beam-lamps/halogen-sealed-beam/h6024.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": ""
+    },
+    {
+      "key": "src-wagner-h6024",
+      "title": "TripleR Truck Parts - Wagner H6024 (2D1) 7 in halogen sealed beam",
+      "kind": "web",
+      "covers": "H6024 per-beam watts, amps, life",
+      "url": "https://triplertruckparts.com/h6024-2d1-7-round-halogen-sealed-beam-headlamp-h-l-12v-35-65w-par56-wagner-lighting/",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "title says 35/65 W, table says 60/35 W"
+    },
+    {
+      "key": "src-mazdatrix-h003-66-490a",
+      "title": "Mazdatrix - Brake light switch 82-88 with cruise (H003-66-490A)",
+      "kind": "web",
+      "covers": "stop switch replacement",
+      "url": "https://mazdatrix.com/product/switch-brake-light-82-88-w-cruise/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": ""
+    },
+    {
+      "key": "src-atkins-fa01-66-670",
+      "title": "Atkins Rotary - 81-83 RX7 Headlight Switch FA01-66-670 (NLA)",
+      "kind": "web",
+      "covers": "retractor switch availability",
+      "url": "https://www.atkinsrotary.com/81-83-Rx7-Headlight-Switch-FA01-66-670.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": ""
+    },
+    {
+      "key": "src-atkins-8871-51-621a",
+      "title": "Atkins Rotary - 79-85 RX7 Left Headlight Cover 8871-51-621A",
+      "kind": "web",
+      "covers": "headlamp lid availability",
+      "url": "https://www.atkinsrotary.com/79-85-Rx7-Left-Headlight-Cover-8871-51-621A.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": ""
+    },
+    {
+      "key": "src-atkins-8871-51-936",
+      "title": "Atkins Rotary - 79-85 RX7 Short Headlight Retractor Rod 8871-51-936",
+      "kind": "web",
+      "covers": "retractor rod B",
+      "url": "https://www.atkinsrotary.com/79-85-Rx7-Short-Headlight-Retractor-Rod-8871-51-936.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": ""
+    },
+    {
+      "key": "src-atkins-8871-51-934",
+      "title": "Atkins Rotary - 79-85 RX7 Long Headlight Retractor Rod 8871-51-934 (NLA, NOS)",
+      "kind": "web",
+      "covers": "retractor rod A",
+      "url": "https://www.atkinsrotary.com/79-85-Rx7-Long-Headlight-Retractor-Rod-8871-51-934.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": ""
+    },
+    {
+      "key": "src-atkins-fa01-51-939",
+      "title": "Atkins Rotary - 83-85 RX7 Head Light Retractor Relay FA01-51-939",
+      "kind": "web",
+      "covers": "83-85 relay (not this car)",
+      "url": "https://www.atkinsrotary.com/83-85-rx7-head-light-retractor-relay-fa01-51-939-",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": ""
+    },
+    {
+      "key": "src-autopartone-motor-r",
+      "title": "Autopartone - 81-83 Mazda RX7 OEM Headlight Motor Right (used)",
+      "kind": "web",
+      "covers": "used motor with relay, boot, bolts",
+      "url": "https://www.autopartone.com/products/81-83-mazda-rx7-oem-headlight-motor-right",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": ""
+    }
+  ],
+  "cad": []
+}

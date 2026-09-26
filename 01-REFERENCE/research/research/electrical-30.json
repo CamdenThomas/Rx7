@@ -1,0 +1,559 @@
+{
+ "parts": [
+  {
+   "id": "PT655",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 p24 (G-04): switched feed LgW comes through the stereo/deck position G-03 from LR (X-04 20 A, ACC), illumination RG 3.4 W, LG to the power antenna relay; speakers LG/LW (front LH) and LY/LR (front RH) on a 4-pole plug; DIN cord to the main amp. Shaft-type radio, not DIN size (src-wrighthere-stereo). confirm: what bridges G-03 on a GS with no tape deck."
+  },
+  {
+   "id": "PT656",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Knobs pull off the radio shafts; the 1980 manual removes the knobs, then the shaft nuts and bezel (S-045 section 15, other-car)."
+  },
+  {
+   "id": "PT657",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Joins the radio to the main amplifier (S-001 p24 'DIN CODE' between G-04 and G-08); carries the rear-channel signal. Pinout for '82 not given; 1985 layout recorded as other-car."
+  },
+  {
+   "id": "PT658",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Radio case ground; S-001 p24 draws the radio grounded through its case, not a harness pin. confirm the earth point on the car."
+  },
+  {
+   "id": "PT659",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT660",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 p24 (G-08): power L from connector G-07 (LR, X-04 20 A), outputs LR/LO to rear LH (G-09) and LW/LB to rear RH (G-10); drives only the rear speakers, the radio drives the fronts. 1985 manual's equivalent 'System 3' puts the 5 W x 2 amp under the rear storage area (S-002 15-63, other-car)."
+  },
+  {
+   "id": "PT661",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "The '82 GS wiring (S-001 p24) shows only one amplifier, the 5 W x 2 main amp; no front power amp appears, so this part is likely not on a '82 GS. confirm on the car."
+  },
+  {
+   "id": "PT662",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Driven directly by the radio: LH G-05 LG/LW, RH G-06 LY/LR (S-001 p24), LH through connector X-02. Factory check (1985 manual, other-car): impedance across one channel should equal the rated impedance, and infinite to body (S-002 15-67, 15-71)."
+  },
+  {
+   "id": "PT663",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "No first-gen grille listed at Atkins Rotary (Sept 2026); used only."
+  },
+  {
+   "id": "PT664",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "The '82 brochure gives two-way coaxial rear speakers only to the GSL (S-004 p15), so the GS rear is most likely the 5 in single cone 0000-81-0643. Driven by the main amp: LH G-09 LR/LO, RH G-10 LW/LB (S-001 p24). confirm on the car."
+  },
+  {
+   "id": "PT665",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Catalogue fig 6680A-2 (S-005 BI p105) draws 66975 running from the dash round the cabin to the rear speakers; it carries the amp-to-rear-speaker circuits LR/LO/LW/LB of S-001 p24. confirm."
+  },
+  {
+   "id": "PT666",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Drawn in the FB331..633361- inset of fig 6680A-2 (S-005 BI p105) next to the amplifier."
+  },
+  {
+   "id": "PT667",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Catalogue fig 6680A-2 (S-005 BI p105) draws the diode (67242A) plugged into the harness at the HEAD LAMP RETRACTOR MOTOR, so the two sit one at each pop-up motor, filed under audio (likely radio noise suppression). confirm on the car."
+  }
+ ],
+ "specs": [
+  {
+   "part": "PT655",
+   "category": "Lighting",
+   "item": "Radio illumination lamp",
+   "value": "3.4",
+   "unit": "W",
+   "source": "S-001",
+   "page": "p20 (Section E)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "fed RG from the combination switch tail circuit, not the dimmed RL bus; confirm the bulb in the unit"
+  },
+  {
+   "part": "PT655",
+   "category": "Electrical",
+   "item": "Supply fuse (X-04, shared with power antenna relay and main amp)",
+   "value": "20",
+   "unit": "A",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "L (ACC) bus -> X-04 20 A -> LR"
+  },
+  {
+   "part": "PT655",
+   "category": "Electrical",
+   "item": "Speakers in the GS standard system (AM/FM stereo radio with 4 speakers, power amplifier and fader control)",
+   "value": "4",
+   "unit": "count",
+   "source": "S-004",
+   "page": "p15",
+   "confidence": "primary",
+   "applies": "",
+   "note": "1982 US brochure, RX-7 GS standard equipment"
+  },
+  {
+   "part": "PT655",
+   "category": "Electrical",
+   "item": "AM antenna trimmer adjustment: ACC, antenna fully extended, tune a weak station near",
+   "value": "1400",
+   "unit": "kHz",
+   "source": "S-002",
+   "page": "Section 15, 15-66 and 15-71",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual; turn the trimmer screw for maximum sensitivity; the '82 unit's trimmer position not documented, confirm"
+  },
+  {
+   "part": "PT655",
+   "category": "Electrical",
+   "item": "Back-up (memory) lead check: voltage to ground while tuning, engine on and off, higher than about",
+   "value": "8",
+   "unit": "V",
+   "source": "S-002",
+   "page": "Section 15, 15-74",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 electronic-tuner only; the '82 full-control radio has no back-up lead in S-001 p24"
+  },
+  {
+   "part": "PT660",
+   "category": "Electrical",
+   "item": "Rated output per channel",
+   "value": "5",
+   "unit": "W",
+   "source": "S-005",
+   "page": "BI p105 (6680A-2, 66920A)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "Clarion 0000-81-142C, 5 W x 2, '81 & '82 GS"
+  },
+  {
+   "part": "PT660",
+   "category": "Electrical",
+   "item": "Output channels",
+   "value": "2",
+   "unit": "count",
+   "source": "S-005",
+   "page": "BI p105 (6680A-2, 66920A)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "rear LH and rear RH (S-001 p24)"
+  },
+  {
+   "part": "PT661",
+   "category": "Electrical",
+   "item": "Rated output per channel",
+   "value": "25",
+   "unit": "W",
+   "source": "S-005",
+   "page": "BI p105 (6680A-2, 66920E)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "Clarion 0000-81-0287-83, 25 W x 2; listed GS & GSL without a year"
+  },
+  {
+   "part": "PT661",
+   "category": "Electrical",
+   "item": "Output channels",
+   "value": "2",
+   "unit": "count",
+   "source": "S-005",
+   "page": "BI p105 (6680A-2, 66920E)",
+   "confidence": "primary",
+   "applies": "",
+   "note": ""
+  },
+  {
+   "part": "PT662",
+   "category": "Electrical",
+   "item": "Speaker nominal size, dual cone",
+   "value": "4",
+   "unit": "in",
+   "source": "S-005",
+   "page": "BI p105 (6680A-2, 66960C)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "about 102 mm nominal trade size; confirm cut-out on the car"
+  },
+  {
+   "part": "PT662",
+   "category": "Electrical",
+   "item": "Speaker power rating, nominal (25 W max quoted)",
+   "value": "5",
+   "unit": "W",
+   "source": "src-rx7club-oem-amps",
+   "page": "thread",
+   "confidence": "unverified",
+   "applies": "other-car",
+   "note": "forum post about first-gen OEM speakers, year not stated; measure"
+  },
+  {
+   "part": "PT664",
+   "category": "Electrical",
+   "item": "Rear speaker nominal size, single cone (0000-81-0643)",
+   "value": "5",
+   "unit": "in",
+   "source": "S-005",
+   "page": "BI p105 (6680A-2, 66970)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "one of two alternatives; GS most likely per S-004 p15; confirm"
+  },
+  {
+   "part": "PT664",
+   "category": "Electrical",
+   "item": "Rear speaker nominal size, coaxial (0000-81-5216-01)",
+   "value": "6.5",
+   "unit": "in",
+   "source": "S-005",
+   "page": "BI p105 (6680A-2, 66970)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "the alternative; S-004 p15 lists 2-way coaxial rears for GSL"
+  },
+  {
+   "part": "PT657",
+   "category": "Electrical",
+   "item": "DIN cord to rear amp, 1985 pinout: 1 out R-R+, 2 battery (amp), 3 out R-L+, 4 out R-R-, 5 out R-L-, 6 ground, E shield",
+   "value": "6",
+   "unit": "pins+shield",
+   "source": "S-002",
+   "page": "Section 15, 15-64 and 15-65",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 AM/FM-MPX tuner to rear amp (System 3); '82 pinout not documented; confirm"
+  },
+  {
+   "part": "PT667",
+   "category": "Electrical",
+   "item": "Diodes fitted",
+   "value": "2",
+   "unit": "count",
+   "source": "S-005",
+   "page": "BI p105 (6680A-2, 67242A)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "one per head lamp retractor motor per the figure inset; confirm"
+  }
+ ],
+ "terminals": [
+  {
+   "part": "PT655",
+   "terminal": "LgW (3-pole)",
+   "function": "switched +12 V supply",
+   "inside": "to the power switch; when ON also feeds the LG antenna-relay contact",
+   "wire": "LgW",
+   "to": "G-03 stereo position, which passes LR (X-04 20 A, ACC) through its switch",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car; on a GS with no deck, what joins LR to LgW at G-03 is unknown"
+  },
+  {
+   "part": "PT655",
+   "terminal": "RG",
+   "function": "illumination +",
+   "inside": "3.4 W lamp to case ground",
+   "wire": "RG",
+   "to": "combination switch E-01 tail circuit (Section E p20)",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT655",
+   "terminal": "LG (3-pole)",
+   "function": "power antenna up signal",
+   "inside": "power switch contact, live while radio ON",
+   "wire": "LG",
+   "to": "X-02 -> G-01 power antenna relay coil",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT655",
+   "terminal": "LG (4-pole)",
+   "function": "front LH speaker output",
+   "inside": "output stage, left",
+   "wire": "LG",
+   "to": "X-02 -> G-05 front LH speaker (also G-11, unused with main amp)",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car; polarity not marked"
+  },
+  {
+   "part": "PT655",
+   "terminal": "LW",
+   "function": "front LH speaker output",
+   "inside": "output stage, left",
+   "wire": "LW",
+   "to": "X-02 -> G-05 front LH speaker (also G-11, unused with main amp)",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car; polarity not marked"
+  },
+  {
+   "part": "PT655",
+   "terminal": "LY",
+   "function": "front RH speaker output",
+   "inside": "output stage, right",
+   "wire": "LY",
+   "to": "G-06 front RH speaker (also G-11, unused with main amp)",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car; polarity not marked"
+  },
+  {
+   "part": "PT655",
+   "terminal": "LR (4-pole)",
+   "function": "front RH speaker output",
+   "inside": "output stage, right",
+   "wire": "LR",
+   "to": "G-06 front RH speaker (also G-11, unused with main amp)",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car; same colour as the LR supply, different circuit"
+  },
+  {
+   "part": "PT655",
+   "terminal": "DIN",
+   "function": "line out to main amp",
+   "inside": "rear-channel signal",
+   "wire": "",
+   "to": "PT657 DIN cord -> G-08 main amp",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT655",
+   "terminal": "case",
+   "function": "ground",
+   "inside": "",
+   "wire": "",
+   "to": "radio earth wire PT658 / body",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT660",
+   "terminal": "L",
+   "function": "+12 V supply",
+   "inside": "",
+   "wire": "L",
+   "to": "G-07 connector -> LR -> X-04 20 A (ACC)",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT660",
+   "terminal": "LR",
+   "function": "rear LH speaker output",
+   "inside": "",
+   "wire": "LR",
+   "to": "G-09 rear LH speaker",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car; polarity not marked"
+  },
+  {
+   "part": "PT660",
+   "terminal": "LO",
+   "function": "rear LH speaker output",
+   "inside": "",
+   "wire": "LO",
+   "to": "G-09 rear LH speaker",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car; polarity not marked"
+  },
+  {
+   "part": "PT660",
+   "terminal": "LW",
+   "function": "rear RH speaker output",
+   "inside": "",
+   "wire": "LW",
+   "to": "G-10 rear RH speaker",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car; polarity not marked"
+  },
+  {
+   "part": "PT660",
+   "terminal": "LB",
+   "function": "rear RH speaker output",
+   "inside": "",
+   "wire": "LB",
+   "to": "G-10 rear RH speaker",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car; polarity not marked"
+  },
+  {
+   "part": "PT660",
+   "terminal": "DIN",
+   "function": "signal input from radio",
+   "inside": "",
+   "wire": "",
+   "to": "PT657 DIN cord -> G-04 radio",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT662",
+   "terminal": "LH: LG",
+   "function": "voice coil",
+   "inside": "coil",
+   "wire": "LG",
+   "to": "radio G-04 via X-02",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car; G-05"
+  },
+  {
+   "part": "PT662",
+   "terminal": "LH: LW",
+   "function": "voice coil",
+   "inside": "coil",
+   "wire": "LW",
+   "to": "radio G-04 via X-02",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car; G-05"
+  },
+  {
+   "part": "PT662",
+   "terminal": "RH: LY",
+   "function": "voice coil",
+   "inside": "coil",
+   "wire": "LY",
+   "to": "radio G-04",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car; G-06"
+  },
+  {
+   "part": "PT662",
+   "terminal": "RH: LR",
+   "function": "voice coil",
+   "inside": "coil",
+   "wire": "LR",
+   "to": "radio G-04",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car; G-06"
+  },
+  {
+   "part": "PT664",
+   "terminal": "LH: LR",
+   "function": "voice coil",
+   "inside": "coil",
+   "wire": "LR",
+   "to": "main amp G-08",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car; G-09"
+  },
+  {
+   "part": "PT664",
+   "terminal": "LH: LO",
+   "function": "voice coil",
+   "inside": "coil",
+   "wire": "LO",
+   "to": "main amp G-08",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car; G-09"
+  },
+  {
+   "part": "PT664",
+   "terminal": "RH: LW",
+   "function": "voice coil",
+   "inside": "coil",
+   "wire": "LW",
+   "to": "main amp G-08",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car; G-10"
+  },
+  {
+   "part": "PT664",
+   "terminal": "RH: LB",
+   "function": "voice coil",
+   "inside": "coil",
+   "wire": "LB",
+   "to": "main amp G-08",
+   "source": "S-001",
+   "page": "p24 (Section G)",
+   "note": "from S-001; confirm on the car; G-10"
+  }
+ ],
+ "sources": [
+  {
+   "key": "src-rx7club-oem-amps",
+   "title": "RX7Club 1st-Generation forum - RX7 OEM amps thread",
+   "kind": "forum",
+   "covers": "first-gen factory Clarion amps (25 W units, '84-'85) and OEM speaker rating 5 W nominal / 25 W max, 4 in front replacements",
+   "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/rx7-oem-amps-970085/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "mostly '84-'85 cars"
+  },
+  {
+   "key": "src-wrighthere-stereo",
+   "title": "Wright-Here.net - First Gen RX-7 Stereo Upgrades",
+   "kind": "web",
+   "covers": "factory 4 in front speakers, shafted radio plus smaller-than-DIN deck opening",
+   "url": "http://wright-here.net/cars/rx7/mods/RX7stereo.html",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "written about a '79"
+  }
+ ],
+ "cad": []
+}

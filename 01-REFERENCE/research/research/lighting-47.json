@@ -1,0 +1,552 @@
+{
+ "parts": [
+  {
+   "id": "PT833",
+   "link": "https://normanlamps.com/194.html",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 H-01: 3.4 W, fed LO from a 20 A fuse, grounded through the lid switch H-02 on BL. North American equivalent is trade 194 (T-3 1/4 wedge); confirm."
+  },
+  {
+   "id": "PT840",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT841",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT842",
+   "link": "https://normanlamps.com/194.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Likely the S-001 E-10 switch panel illumination (3.4 W, RL/B from dimmer E-05); the mapping is not stated in any source, confirm. Trade 194 equivalent."
+  },
+  {
+   "id": "PT843",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT844",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Carries the two 1.4 W bulbs (PT845); S-001 lists a 1.4 W heater illumination E-06 (RL, B) which is probably one of these, confirm."
+  },
+  {
+   "id": "PT845",
+   "link": "https://normanlamps.com/74.html",
+   "support": "",
+   "cad": "",
+   "note_add": "North American equivalent is trade 74 (14 V 0.10 A, T-1 3/4 subminiature wedge); confirm the bulb in the socket."
+  },
+  {
+   "id": "PT848",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT852",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Covers S-001 H-05 ignition switch light (3.4 W, LY feed, GL to the control processing unit which times it)."
+  },
+  {
+   "id": "PT855",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Socket for S-001 E-07 select lever illumination (RL from dimmer E-05, B ground)."
+  },
+  {
+   "id": "PT856",
+   "link": "https://normanlamps.com/194.html",
+   "support": "",
+   "cad": "",
+   "note_add": "S-001 E-07: 3.4 W, dimmer-controlled RL feed. Trade 194 equivalent; confirm."
+  }
+ ],
+ "specs": [
+  {
+   "part": "PT833",
+   "category": "Lighting",
+   "item": "Glove box light (H-01) rating",
+   "value": "3.4",
+   "unit": "W",
+   "source": "S-001",
+   "page": "PDF p.26",
+   "confidence": "primary",
+   "applies": "",
+   "note": "Section H schematic, H-01 glove box light 3.4W."
+  },
+  {
+   "part": "PT856",
+   "category": "Lighting",
+   "item": "Select lever illumination light (E-07, A/T) rating",
+   "value": "3.4",
+   "unit": "W",
+   "source": "S-001",
+   "page": "PDF p.20",
+   "confidence": "primary",
+   "applies": "",
+   "note": "Section E schematic, E-07 select lever illumination light (for A/T); dimmed via E-05."
+  },
+  {
+   "part": "PT842",
+   "category": "Lighting",
+   "item": "Center panel illumination bulb rating",
+   "value": "3.4",
+   "unit": "W",
+   "source": "S-005",
+   "page": "fig 5500A-1 BI-047-15",
+   "confidence": "primary",
+   "applies": "",
+   "note": "12 V 3.4 W per the catalogue description; Mazda 0000-11-0194."
+  },
+  {
+   "part": "PT845",
+   "category": "Lighting",
+   "item": "Center panel illumination bulb rating",
+   "value": "1.4",
+   "unit": "W",
+   "source": "S-005",
+   "page": "fig 5500A-1 BI-047-22",
+   "confidence": "primary",
+   "applies": "",
+   "note": "1.4 W per the catalogue description; Mazda 0000-11-0074, two on the car."
+  },
+  {
+   "part": "PT833",
+   "category": "Lighting",
+   "item": "Replacement trade 194: design voltage",
+   "value": "14.0",
+   "unit": "V",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT833",
+   "category": "Lighting",
+   "item": "Replacement trade 194: current",
+   "value": "0.27",
+   "unit": "A",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT833",
+   "category": "Lighting",
+   "item": "Replacement trade 194: luminous intensity",
+   "value": "2",
+   "unit": "MSCP",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT833",
+   "category": "Lighting",
+   "item": "Replacement trade 194: bulb and base",
+   "value": "T-3 1/4 wedge, C-2F filament",
+   "unit": "",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT833",
+   "category": "Lighting",
+   "item": "Replacement trade 194: maximum overall length",
+   "value": "1.06",
+   "unit": "in",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT833",
+   "category": "Lighting",
+   "item": "Replacement trade 194: light centre length",
+   "value": "0.56",
+   "unit": "in",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT833",
+   "category": "Lighting",
+   "item": "Replacement trade 194: average life",
+   "value": "2500",
+   "unit": "h",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT842",
+   "category": "Lighting",
+   "item": "Replacement trade 194: design voltage",
+   "value": "14.0",
+   "unit": "V",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT842",
+   "category": "Lighting",
+   "item": "Replacement trade 194: current",
+   "value": "0.27",
+   "unit": "A",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT842",
+   "category": "Lighting",
+   "item": "Replacement trade 194: luminous intensity",
+   "value": "2",
+   "unit": "MSCP",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT842",
+   "category": "Lighting",
+   "item": "Replacement trade 194: bulb and base",
+   "value": "T-3 1/4 wedge, C-2F filament",
+   "unit": "",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT842",
+   "category": "Lighting",
+   "item": "Replacement trade 194: maximum overall length",
+   "value": "1.06",
+   "unit": "in",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT842",
+   "category": "Lighting",
+   "item": "Replacement trade 194: light centre length",
+   "value": "0.56",
+   "unit": "in",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT842",
+   "category": "Lighting",
+   "item": "Replacement trade 194: average life",
+   "value": "2500",
+   "unit": "h",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT856",
+   "category": "Lighting",
+   "item": "Replacement trade 194: design voltage",
+   "value": "14.0",
+   "unit": "V",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT856",
+   "category": "Lighting",
+   "item": "Replacement trade 194: current",
+   "value": "0.27",
+   "unit": "A",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT856",
+   "category": "Lighting",
+   "item": "Replacement trade 194: luminous intensity",
+   "value": "2",
+   "unit": "MSCP",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT856",
+   "category": "Lighting",
+   "item": "Replacement trade 194: bulb and base",
+   "value": "T-3 1/4 wedge, C-2F filament",
+   "unit": "",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT856",
+   "category": "Lighting",
+   "item": "Replacement trade 194: maximum overall length",
+   "value": "1.06",
+   "unit": "in",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT856",
+   "category": "Lighting",
+   "item": "Replacement trade 194: light centre length",
+   "value": "0.56",
+   "unit": "in",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT856",
+   "category": "Lighting",
+   "item": "Replacement trade 194: average life",
+   "value": "2500",
+   "unit": "h",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.24 (T-3 1/4 table line 18)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the North American trade-number equivalent of Mazda 0000-11-0194 (12 V 3.4 W); the cross is inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT833",
+   "category": "Lighting",
+   "item": "Replacement CML CM194: design voltage / current / MSCP / life",
+   "value": "14.0 V / 0.27 A / 2.0 MSCP / 1500 h",
+   "unit": "",
+   "source": "src-vcc-t314-wedge",
+   "page": "p.1",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "VCC (Chicago Miniature) T-3 1/4 wedge table; life rating differs from Candela's 2500 h, maker-dependent."
+  },
+  {
+   "part": "PT845",
+   "category": "Lighting",
+   "item": "Replacement trade 74: design voltage",
+   "value": "14.0",
+   "unit": "V",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.22 (T-1 3/4 table line 1)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the trade-number equivalent of Mazda 0000-11-0074 (1.4 W); cross inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT845",
+   "category": "Lighting",
+   "item": "Replacement trade 74: current",
+   "value": "0.10",
+   "unit": "A",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.22 (T-1 3/4 table line 1)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the trade-number equivalent of Mazda 0000-11-0074 (1.4 W); cross inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT845",
+   "category": "Lighting",
+   "item": "Replacement trade 74: luminous intensity",
+   "value": "0.70",
+   "unit": "MSCP",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.22 (T-1 3/4 table line 1)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the trade-number equivalent of Mazda 0000-11-0074 (1.4 W); cross inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT845",
+   "category": "Lighting",
+   "item": "Replacement trade 74: bulb and base",
+   "value": "T-1 3/4 subminiature wedge, C-2F filament",
+   "unit": "",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.22 (T-1 3/4 table line 1)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the trade-number equivalent of Mazda 0000-11-0074 (1.4 W); cross inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT845",
+   "category": "Lighting",
+   "item": "Replacement trade 74: maximum overall length",
+   "value": "0.80",
+   "unit": "in",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.22 (T-1 3/4 table line 1)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the trade-number equivalent of Mazda 0000-11-0074 (1.4 W); cross inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT845",
+   "category": "Lighting",
+   "item": "Replacement trade 74: light centre length",
+   "value": "0.40",
+   "unit": "in",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.22 (T-1 3/4 table line 1)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the trade-number equivalent of Mazda 0000-11-0074 (1.4 W); cross inferred from the Mazda number, confirm the bulb in the socket."
+  },
+  {
+   "part": "PT845",
+   "category": "Lighting",
+   "item": "Replacement trade 74: average life",
+   "value": "500",
+   "unit": "h",
+   "source": "src-candela-minlamp",
+   "page": "PDF p.22 (T-1 3/4 table line 1)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Datasheet for the trade-number equivalent of Mazda 0000-11-0074 (1.4 W); cross inferred from the Mazda number, confirm the bulb in the socket."
+  }
+ ],
+ "terminals": [
+  {
+   "part": "PT833",
+   "terminal": "LO",
+   "function": "12 V feed, switched by the ignition switch ACC position (not constant)",
+   "inside": "one end of the 3.4 W filament",
+   "wire": "LO",
+   "to": "fuse block X-04 20 A fuse, fed L from ignition switch ACC terminal at X-08 (switch fed WR from battery via fusible link X-07)",
+   "source": "S-001",
+   "page": "PDF p.26",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT833",
+   "terminal": "BL",
+   "function": "switched ground return",
+   "inside": "other end of the 3.4 W filament",
+   "wire": "BL",
+   "to": "H-02 glove box light switch, which closes to B ground at X-13 when the lid opens",
+   "source": "S-001",
+   "page": "PDF p.26",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT856",
+   "terminal": "RL",
+   "function": "dimmed illumination feed",
+   "inside": "one end of the 3.4 W filament",
+   "wire": "RL",
+   "to": "E-05 instrument panel light control (rheostat) output, fed RG from combination switch E-01 in PARK/HEAD",
+   "source": "S-001",
+   "page": "PDF p.20",
+   "note": "from S-001; confirm on the car"
+  },
+  {
+   "part": "PT856",
+   "terminal": "B",
+   "function": "ground",
+   "inside": "other end of the 3.4 W filament",
+   "wire": "B",
+   "to": "ground X-13 via X-02",
+   "source": "S-001",
+   "page": "PDF p.20",
+   "note": "from S-001; confirm on the car"
+  }
+ ],
+ "sources": [
+  {
+   "key": "src-candela-minlamp",
+   "title": "Candela Corp. Miniature Lamp and Sealed Beam Catalog",
+   "kind": "catalogue",
+   "covers": "Trade-number bulb tables incl. 74 (T-1 3/4 wedge) and 194 (T-3 1/4 wedge): volts, amps, MSCP, filament, MOL, LCL, life",
+   "url": "https://www.candelacorp.com/products/lighting/pdf/catalog_min.pdf",
+   "format": "pdf",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "01-REFERENCE/model/library/datasheets/PT833/Candela_miniature_lamp_catalog.pdf",
+   "note": "Copy also at datasheets/PT845/."
+  },
+  {
+   "key": "src-vcc-t314-wedge",
+   "title": "VCC (Visual Communications Company / CML) T-3 1/4 Wedge Base lamp datasheet",
+   "kind": "datasheet",
+   "covers": "T-3 1/4 wedge lamps incl. CM194: volts, amps, MSCP, life, filament, outline",
+   "url": "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/8456/T-3%201_4%20Wedge%20Base.pdf",
+   "format": "pdf",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "01-REFERENCE/model/library/datasheets/PT833/VCC_T-3-1-4_Wedge_Base.pdf",
+   "note": ""
+  }
+ ],
+ "cad": []
+}

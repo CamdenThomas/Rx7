@@ -1,0 +1,19 @@
+{
+ "parts": [
+  {"id": "PT628", "link": "https://parts.mazdausa.com/p/Mazda_1986_323/SOCKET/105321227/1316-55-261.html", "support": "", "cad": "", "note_add": "S-005 fig 5540A-1 (BI p49) draws socket 55261 with bulb 75115, the 194 12 V 3.4 W (PT626): this is the socket for the 194 bulbs. The same Mazda number is still listed by Mazda USA as a tachometer socket for the 1986 323; the page refused an automated read, so availability is unconfirmed."},
+  {"id": "PT629", "link": "", "support": "", "cad": "", "note_add": "S-005 fig 5540A-1 (BI p49) draws socket 55261A with bulb 75115A, the 74 1.4 W (PT627): this is the socket for the 74 bulbs. The catalogue lists 6 of these sockets but 8 of the 74 bulbs, so two 74 bulbs sit somewhere else (confirm on the car). No live listing for 3625-55-261 was found."}
+ ],
+ "specs": [
+  {"part": "PT628", "category": "Lighting", "item": "Bulb held (figure callout 75115, Mazda 0000-11-0194, trade 194)", "value": "3.4", "unit": "W", "source": "S-005", "page": "BI p49, fig 5540A-1", "confidence": "primary", "applies": "", "note": "The figure pairs socket 55261 with bulb 75115; the rows give 75115 = 0000-11-0194 (A12V 3.4W). Confirm on the car which of the cluster positions use this socket."},
+  {"part": "PT628", "category": "Lighting", "item": "Quantity in the cluster", "value": "9", "unit": "pcs", "source": "S-005", "page": "BI p49, fig 5540A-1", "confidence": "primary", "applies": "", "note": "Matches the 9 bulbs 0000-11-0194 in the same figure."},
+  {"part": "PT628", "category": "Lighting", "item": "Bulb base accepted (from the 194 bulb)", "value": "T-3 1/4 wedge", "unit": "", "source": "src-wiringdepot-194", "page": "194 bulb page", "confidence": "secondary", "applies": "", "note": "Derived from the bulb the catalogue fits (194); the 194 is a T-3 1/4 glass wedge, 14 V 0.27 A. Confirm on the car."},
+  {"part": "PT629", "category": "Lighting", "item": "Bulb held (figure callout 75115A, Mazda 0000-11-0074, trade 74)", "value": "1.4", "unit": "W", "source": "S-005", "page": "BI p49, fig 5540A-1", "confidence": "primary", "applies": "", "note": "The figure pairs socket 55261A with bulb 75115A; the rows give 75115A = 0000-11-0074 (1.4W). The S-001 decode also gives the warning lamps as 1.4 W. Confirm on the car."},
+  {"part": "PT629", "category": "Lighting", "item": "Quantity in the cluster", "value": "6", "unit": "pcs", "source": "S-005", "page": "BI p49, fig 5540A-1", "confidence": "primary", "applies": "", "note": "Eight 74 bulbs are listed against six of these sockets; where the other two sit is not shown (confirm on the car)."}
+ ],
+ "terminals": [],
+ "sources": [
+  {"key": "src-wiringdepot-194", "title": "Wiring Depot - #194 incandescent bulb, T-3 1/4 wedge, 14 V 0.27 A", "kind": "web", "covers": "Trade 194 bulb ratings and base", "url": "https://www.wiringdepot.com/194-bulb.aspx", "format": "html", "credibility": "tertiary", "obtained": "no", "local_path": "", "note": "Read from the search result summary only. The page gives the base as W2.1x9.2d, where other sellers give W2.1x9.5d."},
+  {"key": "src-mazdausa-1316-55-261", "title": "Mazda USA parts - SOCKET 1316-55-261 (1986 323 tachometer)", "kind": "catalogue", "covers": "Current Mazda listing of the 1316-55-261 socket", "url": "https://parts.mazdausa.com/p/Mazda_1986_323/SOCKET/105321227/1316-55-261.html", "format": "html", "credibility": "secondary", "obtained": "no", "local_path": "", "note": "HTTP 403 to an automated fetch; the listing exists according to the search index."}
+ ],
+ "cad": []
+}

@@ -1,0 +1,280 @@
+{
+ "parts": [
+  {
+   "id": "PT678",
+   "link": "https://www.ebay.com/p/17027485013",
+   "support": "",
+   "cad": "",
+   "note_add": "Two-speed permanent-magnet motor with separate LO and HI brushes, common brush on L (IG feed), switched on the ground side by the combination switch; internal cam park (auto-stop) switch on LB grounds the circuit away from park and joins LB to L at park (S-001 p18, S-045 15:4). 1980 factory test: low 43-60 rpm, high 62-95 rpm, under 4 A no load (other-car; confirm)."
+  },
+  {
+   "id": "PT679",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Holds the three brushes (common, LO, HI); worn brushes are the factory's first cause of abnormal wiper noise (S-002 15-43)."
+  },
+  {
+   "id": "PT680",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Gear box carries the worm gear and the cam-operated park switch (terminal LB) that gives auto-stop (S-001 p18)."
+  },
+  {
+   "id": "PT681",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT682",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT683",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT684",
+   "link": "https://www.printables.com/model/1594937-sa22c-rx7-wiper-refresh-kit",
+   "support": "",
+   "cad": "rx7-sa22c-wiper-refresh-kit-printables-grantd",
+   "note_add": "Printable replacement linkage bushings and motor mounts exist (cad rows rx7-sa22c-wiper-refresh-kit-printables-grantd, fb-wiper-grommet-printables-lovc). Factory: insufficient grease in the link joints causes wiper noise (S-002 15-43)."
+  },
+  {
+   "id": "PT685",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Park the blades at the upper (park) position before removing the arms (S-045 15:3)."
+  },
+  {
+   "id": "PT686",
+   "link": "https://www.mywipersize.com/make/mazda/rx-7.php",
+   "support": "",
+   "cad": "",
+   "note_add": "Aftermarket fitment lists 17 in blades for 1982, driver and passenger (confirm by measuring the fitted blade)."
+  },
+  {
+   "id": "PT687",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  }
+ ],
+ "specs": [
+  {
+   "part": "PT678",
+   "category": "Electrical",
+   "item": "Wiping speed, LOW (motor test, no load)",
+   "value": "43-60",
+   "unit": "rpm",
+   "source": "S-045",
+   "page": "80RX7_15_Body_Electrical p15:4 (15-B-3)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1980 workshop manual; no 1982 figure found (S-038 has no body-electrical table). Same 1979-85 motor family; confirm"
+  },
+  {
+   "part": "PT678",
+   "category": "Electrical",
+   "item": "Wiping speed, HIGH (motor test, no load)",
+   "value": "62-95",
+   "unit": "rpm",
+   "source": "S-045",
+   "page": "80RX7_15_Body_Electrical p15:4 (15-B-3)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1980 workshop manual; HIGH must exceed LOW by more than 15 rpm; confirm"
+  },
+  {
+   "part": "PT678",
+   "category": "Electrical",
+   "item": "No-load current, LOW",
+   "value": "4",
+   "unit": "A max",
+   "source": "S-045",
+   "page": "80RX7_15_Body_Electrical p15:4 (15-B-3)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "less than 4 A; 1980 workshop manual; confirm"
+  },
+  {
+   "part": "PT678",
+   "category": "Electrical",
+   "item": "No-load current, HIGH",
+   "value": "4",
+   "unit": "A max",
+   "source": "S-045",
+   "page": "80RX7_15_Body_Electrical p15:4 (15-B-3)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "less than 4 A; 1980 workshop manual; confirm"
+  },
+  {
+   "part": "PT678",
+   "category": "Electrical",
+   "item": "Bench test: HIGH speed",
+   "value": "battery + to L, ground LR",
+   "unit": "",
+   "source": "S-045",
+   "page": "80RX7_15_Body_Electrical p15:4",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1980 table: ground terminal A (LR), power terminal D (L), ammeter between battery and D. 1985 manual (S-002 15-45) gives the same test with its own letters: + to A, - to C for high (- to B for low); it names no wire colours. Wire colours match the 1982 connector in S-001 p18"
+  },
+  {
+   "part": "PT678",
+   "category": "Electrical",
+   "item": "Bench test: LOW speed",
+   "value": "battery + to L, ground LW",
+   "unit": "",
+   "source": "S-045",
+   "page": "80RX7_15_Body_Electrical p15:4",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1980 table: ground terminal C (LW), power D (L). Same in S-002 15-45"
+  },
+  {
+   "part": "PT678",
+   "category": "Electrical",
+   "item": "Bench test: auto stop",
+   "value": "battery + to L, ground B, jumper LB to LW",
+   "unit": "",
+   "source": "S-045",
+   "page": "80RX7_15_Body_Electrical p15:4",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1980 table: ground E (B), power D (L), jumper between B (LB) and C (LW); motor must stop with blades at the park position"
+  },
+  {
+   "part": "PT678",
+   "category": "Electrical",
+   "item": "Circuit fuse",
+   "value": "10",
+   "unit": "A",
+   "source": "S-001",
+   "page": "18 (Section D)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "IG-switched through fuse X-04 10 A; confirm on the car"
+  },
+  {
+   "part": "PT678",
+   "category": "Electrical",
+   "item": "Speeds",
+   "value": "2 + intermittent",
+   "unit": "",
+   "source": "S-001",
+   "page": "18 (Section D)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "LO and HI brushes; intermittent via the Control Processing Unit X-16"
+  },
+  {
+   "part": "PT678",
+   "category": "Electrical",
+   "item": "Connector",
+   "value": "4-pole plug (LW, LR, L, LB) + 1-pole ground plug (B)",
+   "unit": "",
+   "source": "S-001",
+   "page": "18 (Section D connector D-02)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "from S-001 connector view; confirm on the car"
+  },
+  {
+   "part": "PT686",
+   "category": "Body",
+   "item": "Front blade length (aftermarket fitment)",
+   "value": "432",
+   "unit": "mm",
+   "source": "src-mywipersize",
+   "page": "RX-7 table, 1982 row",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "listed 17 in driver and passenger (and 17 in rear); confirm by measuring"
+  }
+ ],
+ "terminals": [
+  {
+   "part": "PT678",
+   "terminal": "L",
+   "function": "Power feed +12 V (IG)",
+   "inside": "Common brush of the motor, and the park-position contact of the auto-stop switch",
+   "wire": "L",
+   "to": "Ignition IG via fuse X-04 10 A; also CPU X-16",
+   "source": "S-001",
+   "page": "18",
+   "note": "1980 manual calls it terminal D (S-045 15:4); from S-001; confirm on the car"
+  },
+  {
+   "part": "PT678",
+   "terminal": "LB",
+   "function": "Auto-stop (park) switch output",
+   "inside": "Cam-driven changeover in the gear box: joins LB to B (ground) while the blades are away from park, to L at park (armature brake)",
+   "wire": "LB",
+   "to": "CPU X-16 intermittent relay, then combination switch D-03 (OFF/INT feed to the LO brush)",
+   "source": "S-001",
+   "page": "18",
+   "note": "switch action read from S-001 drawing and the S-045 15:4 auto-stop test; 1980 terminal B; confirm on the car"
+  },
+  {
+   "part": "PT678",
+   "terminal": "LW",
+   "function": "LOW speed brush",
+   "inside": "LO brush",
+   "wire": "LW",
+   "to": "Combination switch D-03 LO (grounded in LO; to LB/CPU in OFF/INT)",
+   "source": "S-001",
+   "page": "18",
+   "note": "1980 terminal C; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT678",
+   "terminal": "LR",
+   "function": "HIGH speed brush",
+   "inside": "HI brush",
+   "wire": "LR",
+   "to": "Combination switch D-03 HI (grounded in HI)",
+   "source": "S-001",
+   "page": "18",
+   "note": "1980 terminal A; from S-001; confirm on the car"
+  },
+  {
+   "part": "PT678",
+   "terminal": "B",
+   "function": "Ground",
+   "inside": "Auto-stop switch ground contact (motor case)",
+   "wire": "B",
+   "to": "Ground X-13",
+   "source": "S-001",
+   "page": "18",
+   "note": "separate 1-pole plug; 1980 terminal E; confirm on the car"
+  }
+ ],
+ "sources": [
+  {
+   "key": "src-mywipersize",
+   "title": "MyWiperSize - Mazda RX-7 wiper blade size chart",
+   "kind": "web",
+   "covers": "Aftermarket wiper blade lengths by year for the RX-7, 1982 row",
+   "url": "https://www.mywipersize.com/make/mazda/rx-7.php",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "aftermarket fitment table, not a Mazda figure"
+  }
+ ],
+ "cad": []
+}

@@ -1,0 +1,368 @@
+{
+  "parts": [
+    {
+      "id": "PT024",
+      "link": "https://www.supercharge.com.au/wp-content/uploads/2023/09/NS70-Datasheet-Classic.pdf",
+      "support": "",
+      "cad": "",
+      "note_add": "The 1982 workshop manual (S-038 p.T:3) lists NS70S, 55 Ah (20 h), 12 V negative ground as the battery for an automatic car outside California; S.G. 1.280 fully charged, recharge at 1.220. A modern JIS NS70 is 259 x 173 x 223 mm with SAE taper posts; measure the tray before buying (confirm)."
+    },
+    {
+      "id": "PT288",
+      "link": "https://www.atkinsrotary.com/79-83-Rx7-Battery-Hold-Down-Bracket-8871-56-030A.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Figure 1850A-1 (S-005 EC p.61) shows a bar clamp across the battery top held by a hooked J-rod (clamp bolt 70985A) and nut 999400602, with the tray (56863A) on the carrier (53260) that bolts to the body with 997960612. Clamp 8871-56-030A is retired by Mazda; Atkins Rotary lists it new at USD 52, out of stock on 2026-09-25."
+    },
+    {
+      "id": "PT289",
+      "link": "https://www.partsgeek.com/2s8ms5v-mazda-rx7-battery-cable.html",
+      "support": "",
+      "cad": "fb-battery-lug-thingiverse-benderj",
+      "note_add": "Per S-001 Section A the battery + post feeds the starting motor directly and, through the 1.25 sq main fusible link at X-07, the WR constant bus (ignition switch, alternator B). The A/T cable 8872-67-250B differs from the M/T one; aftermarket SMP cables are listed for 1979-85 RX-7 but none is confirmed to match the A/T routing."
+    },
+    {
+      "id": "PT290",
+      "link": "https://www.partsgeek.com/3h6jfbq-mazda-rx7-battery-cable.html",
+      "support": "",
+      "cad": "fb-battery-lug-thingiverse-benderj",
+      "note_add": "S-001 shows the battery - post straight to ground; the ground point (body or engine) is not drawn, confirm on the car. Retail listing: Standard Motor Products A22-4, negative, 1979-1985 RX-7 (not checked against 8871-67-260A)."
+    }
+  ],
+  "specs": [
+    {
+      "part": "PT024",
+      "category": "Electrical",
+      "item": "Battery type, automatic transmission except California (1982 FSM)",
+      "value": "NS70S",
+      "unit": "",
+      "source": "S-038",
+      "page": "T:3 (PDF p.5)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "Same table: California G60-5 or Y60-5; manual except California G60-5, Y60-5 or NS70S. Agrees with the 1980 figure in SP-061 and the brochure SP-059."
+    },
+    {
+      "part": "PT024",
+      "category": "Electrical",
+      "item": "Battery capacity, NS70S (20-hour rate, 1982 FSM)",
+      "value": "55",
+      "unit": "Ah",
+      "source": "S-038",
+      "page": "T:3 (PDF p.5)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "G60-5 / Y60-5: 45 Ah."
+    },
+    {
+      "part": "PT024",
+      "category": "Electrical",
+      "item": "Battery voltage and terminal ground (1982 FSM)",
+      "value": "12",
+      "unit": "V",
+      "source": "S-038",
+      "page": "T:3 (PDF p.5)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "Negative ground."
+    },
+    {
+      "part": "PT024",
+      "category": "Electrical",
+      "item": "Specific gravity at 20 C, fully charged, NS70S",
+      "value": "1.280",
+      "unit": "",
+      "source": "S-038",
+      "page": "T:3 (PDF p.5)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "G60-5 / Y60-5: 1.260."
+    },
+    {
+      "part": "PT024",
+      "category": "Electrical",
+      "item": "Specific gravity at 20 C, recharge at, NS70S",
+      "value": "1.220",
+      "unit": "",
+      "source": "S-038",
+      "page": "T:3 (PDF p.5)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "G60-5 / Y60-5: 1.200."
+    },
+    {
+      "part": "PT024",
+      "category": "Electrical",
+      "item": "Quick charge rate (battery out, vent caps off)",
+      "value": "6-20",
+      "unit": "A",
+      "source": "S-002",
+      "page": "5-5",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1985 FSM: 6 A or above, max 20 A. Slow charge (caps may stay on): under 5 A. No 1982 figure found."
+    },
+    {
+      "part": "PT024",
+      "category": "Electrical",
+      "item": "Specific gravity vs charge (1985 FSM table)",
+      "value": "1.280 = 100 %; 1.220 = 75 % (65D23L 1.230)",
+      "unit": "",
+      "source": "S-002",
+      "page": "5-5",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1985 JIS batteries; the 1.280 full-charge figure matches the 1982 NS70S value."
+    },
+    {
+      "part": "PT024",
+      "category": "Electrical",
+      "item": "Replacement Supercharge NS70: overall length",
+      "value": "259",
+      "unit": "mm",
+      "source": "src-supercharge-ns70",
+      "page": "1",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "Width 173 mm, case height 202 mm, total height 223 mm. Datasheet of a modern sealed JIS NS70, not the 1982 battery; measure the tray, confirm."
+    },
+    {
+      "part": "PT024",
+      "category": "Electrical",
+      "item": "Replacement Supercharge NS70: width",
+      "value": "173",
+      "unit": "mm",
+      "source": "src-supercharge-ns70",
+      "page": "1",
+      "confidence": "secondary",
+      "applies": "",
+      "note": ""
+    },
+    {
+      "part": "PT024",
+      "category": "Electrical",
+      "item": "Replacement Supercharge NS70: total height",
+      "value": "223",
+      "unit": "mm",
+      "source": "src-supercharge-ns70",
+      "page": "1",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "Case height 202 mm."
+    },
+    {
+      "part": "PT024",
+      "category": "Electrical",
+      "item": "Replacement Supercharge NS70: cold cranking amps",
+      "value": "615",
+      "unit": "A",
+      "source": "src-supercharge-ns70",
+      "page": "1",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "70 Ah (20 h), reserve capacity 95 min, weight 17.29 kg."
+    },
+    {
+      "part": "PT024",
+      "category": "Electrical",
+      "item": "Replacement Supercharge NS70: capacity (20-hour)",
+      "value": "70",
+      "unit": "Ah",
+      "source": "src-supercharge-ns70",
+      "page": "1",
+      "confidence": "secondary",
+      "applies": "",
+      "note": ""
+    },
+    {
+      "part": "PT024",
+      "category": "Electrical",
+      "item": "Replacement Supercharge NS70: terminal post bottom diameter, positive / negative",
+      "value": "19.5 / 17.9",
+      "unit": "mm",
+      "source": "src-supercharge-ns70",
+      "page": "1",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "SAE taper 1:9, post height 18.5 +/- 1.5 mm, polarity layout D (positive left). Charging max 14.8 V, float 13.5-13.8 V at 25 C."
+    },
+    {
+      "part": "PT288",
+      "category": "Body",
+      "item": "Clamp nut (catalogue hardware code)",
+      "value": "999400602",
+      "unit": "",
+      "source": "S-005",
+      "page": "EC p.61, fig 1850A-1",
+      "confidence": "primary",
+      "applies": "",
+      "note": "Printed on the figure at the clamp bar; size not given, confirm on the car."
+    },
+    {
+      "part": "PT288",
+      "category": "Body",
+      "item": "Carrier mounting bolt (catalogue hardware code)",
+      "value": "997960612",
+      "unit": "",
+      "source": "S-005",
+      "page": "EC p.61, fig 1850A-1",
+      "confidence": "primary",
+      "applies": "",
+      "note": "Printed on the figure at the carrier 53260; quantity not given, confirm on the car."
+    },
+    {
+      "part": "PT289",
+      "category": "Electrical",
+      "item": "Cable clip fasteners (catalogue hardware codes)",
+      "value": "992761410; 992891053; 997860612",
+      "unit": "",
+      "source": "S-005",
+      "page": "EC p.61, fig 1850A-1",
+      "confidence": "primary",
+      "applies": "",
+      "note": "Printed beside clips 67290 / 67293 and the cable run; which fastener holds which clip is not legible, confirm on the car. 999400600 is also shown at clip 67290."
+    },
+    {
+      "part": "PT289",
+      "category": "Electrical",
+      "item": "Positive cable identification (1985 GS, forum)",
+      "value": "solid black, with a branch to the fusible link box",
+      "unit": "",
+      "source": "src-rx7club-battery-cables",
+      "page": "",
+      "confidence": "unverified",
+      "applies": "other-car",
+      "note": "Owner report on a 1985 GS; the negative there is black with a yellow tracer. Confirm on the car before disconnecting."
+    },
+    {
+      "part": "PT290",
+      "category": "Electrical",
+      "item": "Disconnect / reconnect order",
+      "value": "negative cable removed first and installed last",
+      "unit": "",
+      "source": "S-002",
+      "page": "5-5",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1985 FSM warning; the 1980 FSM (S-045 sec.5 p.5:2) also says disconnect the negative cable before removing the alternator."
+    }
+  ],
+  "terminals": [
+    {
+      "part": "PT024",
+      "terminal": "+",
+      "function": "Battery positive post, 12 V",
+      "inside": "positive plates of six series cells",
+      "wire": "",
+      "to": "Positive cable (PT289) to starting motor B terminal (no connector code; A-01 is the S-terminal lead BY M/T / BW A/T), and via main fusible link 1.25 sq at X-07 to the WR constant bus: ignition switch X-08, alternator B A-09",
+      "source": "S-001",
+      "page": "Section A (PDF p.10)",
+      "note": "Heavy cable, no colour code on S-001; from S-001; confirm on the car."
+    },
+    {
+      "part": "PT024",
+      "terminal": "-",
+      "function": "Battery negative post, ground",
+      "inside": "negative plates of six series cells",
+      "wire": "",
+      "to": "Ground cable (PT290) to ground",
+      "source": "S-001",
+      "page": "Section A (PDF p.10)",
+      "note": "Ground point not drawn; from S-001; confirm on the car."
+    },
+    {
+      "part": "PT289",
+      "terminal": "battery end",
+      "function": "Clamp on battery + post",
+      "inside": "",
+      "wire": "",
+      "to": "PT024 +",
+      "source": "S-001",
+      "page": "Section A (PDF p.10)",
+      "note": "from S-001; confirm on the car."
+    },
+    {
+      "part": "PT289",
+      "terminal": "starter end",
+      "function": "Ring lug on starting motor B terminal",
+      "inside": "",
+      "wire": "",
+      "to": "Starting motor (PT026) B terminal at the magnetic switch",
+      "source": "S-001",
+      "page": "Section A (PDF p.10)",
+      "note": "S-001 draws the 0.5 sq fusible link A-02 (LW, hot-start relay / No.1 water temp switch) from the motor side of the magnetic switch contacts, not from the B terminal, so it is live only while cranking. from S-001; confirm on the car."
+    },
+    {
+      "part": "PT289",
+      "terminal": "X-07",
+      "function": "Feed to main fusible link 1.25 sq",
+      "inside": "",
+      "wire": "WR",
+      "to": "WR constant bus: ignition switch X-08, alternator B (A-09)",
+      "source": "S-001",
+      "page": "Section A (PDF p.10)",
+      "note": "S-001 draws battery + to X-07; whether this is a branch of the cable or a separate lead is not shown. from S-001; confirm on the car."
+    },
+    {
+      "part": "PT290",
+      "terminal": "battery end",
+      "function": "Clamp on battery - post",
+      "inside": "",
+      "wire": "",
+      "to": "PT024 -",
+      "source": "S-001",
+      "page": "Section A (PDF p.10)",
+      "note": "from S-001; confirm on the car."
+    },
+    {
+      "part": "PT290",
+      "terminal": "ground end",
+      "function": "Ground lug",
+      "inside": "",
+      "wire": "",
+      "to": "Ground (body or engine, not drawn)",
+      "source": "S-001",
+      "page": "Section A (PDF p.10)",
+      "note": "from S-001; confirm on the car."
+    }
+  ],
+  "sources": [
+    {
+      "key": "src-supercharge-ns70",
+      "title": "Supercharge Batteries - NS70 Automotive Battery Datasheet (Classic), rev 23-001",
+      "kind": "datasheet",
+      "covers": "JIS NS70 sealed battery: dimensions, CCA, Ah, RC, SAE terminal data, charging voltages",
+      "url": "https://www.supercharge.com.au/wp-content/uploads/2023/09/NS70-Datasheet-Classic.pdf",
+      "format": "pdf",
+      "credibility": "secondary",
+      "obtained": "yes",
+      "local_path": "01-REFERENCE/model/library/datasheets/PT024/Supercharge_NS70_Classic_Datasheet.pdf",
+      "note": "Same sheet is published by Archer Batteries (archerbatteries.com.au NS70-Product-Datasheet.pdf). Modern replacement, not the 1982 NS70S."
+    },
+    {
+      "key": "src-atkins-holddown",
+      "title": "Atkins Rotary - 79-83 RX7 Battery Hold Down Bracket 8871-56-030A",
+      "kind": "web",
+      "covers": "battery clamp availability and price",
+      "url": "https://www.atkinsrotary.com/79-83-Rx7-Battery-Hold-Down-Bracket-8871-56-030A.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "New, USD 52, out of stock 2026-09-25; says Mazda has retired the part."
+    },
+    {
+      "key": "src-rx7club-battery-cables",
+      "title": "RX7Club 1st-gen forum - Battery cables thread",
+      "kind": "forum",
+      "covers": "1985 GS battery cable colours and routing",
+      "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/battery-cables-1141426/",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Owner reports only."
+    }
+  ],
+  "cad": []
+}

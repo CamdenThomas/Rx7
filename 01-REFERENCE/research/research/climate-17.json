@@ -1,0 +1,156 @@
+{
+  "parts": [
+    {
+      "id": "PT825",
+      "link": "https://www.atkinsrotary.com/81-83-rx7-black-dash-vent-8341-60-713-01-.html",
+      "support": "",
+      "cad": "",
+      "note_add": "No longer supplied by Mazda; Atkins Rotary sells a black reproduction (8341-60-713-01, fits left or right, about $25 in 2026); the red (-10) version is listed NLA."
+    },
+    {
+      "id": "PT865",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "No new or reproduction source found in 2026; used parts from FB breakers only."
+    },
+    {
+      "id": "PT866",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "No new or reproduction source found in 2026; used parts from FB breakers only."
+    },
+    {
+      "id": "PT867",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT868",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT869",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT870",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT871",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT872",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT873",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT874",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT875",
+      "link": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/how-you-remove-dash-center-vents-986953/",
+      "support": "",
+      "cad": "fb-s2-center-dash-vent-printables-jtso",
+      "note_add": "Owners report the centre vent grates snap into a housing held by a small two-screw plate, the housing screwed into the dash pad from behind; removal usually needs the dash out (forum; confirm)."
+    },
+    {
+      "id": "PT876",
+      "link": "",
+      "support": "",
+      "cad": "fb-s2-center-dash-vent-printables-jtso",
+      "note_add": "No new part found; a free public-domain printable model of the 1981-83 centre vent louvre pieces exists."
+    },
+    {
+      "id": "PT877",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    }
+  ],
+  "specs": [
+    {
+      "part": "PT825",
+      "category": "Body",
+      "item": "Replacement Atkins Rotary 8341-60-713-01 (black reproduction): shipping weight",
+      "value": "0.2",
+      "unit": "lb",
+      "source": "src-atkins-dashvent",
+      "page": "product page",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "Retailer listing weight for the reproduction grille; fits left or right side."
+    },
+    {
+      "part": "PT875",
+      "category": "Body",
+      "item": "Centre vent assembly fixing screws",
+      "value": "4",
+      "unit": "count",
+      "source": "src-rx7club-centervent",
+      "page": "thread",
+      "confidence": "unverified",
+      "applies": "",
+      "note": "Owner report: 2 on top, 2 in front; one poster says they screw into the dash pad from the backside; grates held by a small plate with 2 screws. confirm on the car"
+    }
+  ],
+  "terminals": [],
+  "sources": [
+    {
+      "key": "src-atkins-dashvent",
+      "title": "Atkins Rotary - 81-83 RX7 dash (defroster) vent 8341-60-713-01 black / -10 red",
+      "kind": "web",
+      "covers": "PT825 reproduction defroster grille, price and availability",
+      "url": "https://www.atkinsrotary.com/81-83-rx7-black-dash-vent-8341-60-713-01-.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Red version: https://www.atkinsrotary.com/81-83-rx7-red-dash-vent-8341-60-713-10-.html (NLA). Mazda part discontinued; Atkins has them made."
+    },
+    {
+      "key": "src-rx7club-centervent",
+      "title": "RX7Club - how do you remove the dash center vents (1st gen)",
+      "kind": "forum",
+      "covers": "PT875/PT876 centre vent assembly fixing and removal",
+      "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/how-you-remove-dash-center-vents-986953/",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Owner reports on 1st-gen (1979-85) cars; posters do not state model year."
+    }
+  ],
+  "cad": []
+}

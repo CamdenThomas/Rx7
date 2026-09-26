@@ -1,0 +1,295 @@
+{
+  "parts": [
+    {
+      "id": "PT958",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "This is the spot (map) half of wiring-diagram device H-06 'Interior and spot light' (S-001 PDF p.26): constant LY feed, its own on/off switch, bulb to case ground; the existing unassigned S-001 spec 'Spot (map) light 6 W' belongs to this lamp. Catalogue figure 6900A-3 (S-005 Body PDF p.130) draws it inside the W/MAP LAMP interior mirror, GS and GSL only."
+    },
+    {
+      "id": "PT959",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Figure 6900A-3 (S-005 Body PDF p.130) shows socket 51354 carrying the wedge bulb 69170K (0000-11-0194, PT962), not the 10 W festoon 69170J; PT961's parent should probably be PT957 and PT962's PT959 - confirm on the car."
+    },
+    {
+      "id": "PT960",
+      "link": "https://www.atkinsrotary.com/81-85-Rx7-Dome-Light-Lens-FA01-51-351A.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Still sold new as Mazda FA01-51-351A (Atkins Rotary, USD 41.50, fits 1981-85); reproductions are also listed on eBay."
+    },
+    {
+      "id": "PT961",
+      "link": "https://www.replacementlightbulbs.com/lampde3175.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Figure 6900A-3 draws 69170J as a festoon in the mirror body, present with or without the map lamp, so it is the interior (dome) lamp bulb; trade DE3175 (10 W, SV8.5 festoon) matches the catalogue rating. The 1982 wiring diagram labels the interior lamp 5 W, not 10 W - confirm the bulb in the car."
+    },
+    {
+      "id": "PT962",
+      "link": "https://hdsupplysolutions.com/wcsstore/ExtendedSitesCatalogAssetStore/product/fm/additional/37/370008_Specification-PDF.pdf",
+      "support": "",
+      "cad": "",
+      "note_add": "Figure 6900A-3 draws 69170K as a wedge bulb in socket 51354, so this is the map (spot) lamp bulb; Mazda 0000-11-0194 is the trade-194 wedge (3.4/3.8 W elsewhere in S-005), while S-001 labels the spot lamp 6 W and this row says 5 W - confirm on the car."
+    }
+  ],
+  "specs": [
+    {
+      "part": "PT958",
+      "category": "Lighting",
+      "item": "Spot lamp internal circuit",
+      "value": "LY constant feed - spot lamp switch - bulb - case ground; independent of the door switches",
+      "unit": "",
+      "source": "S-001",
+      "page": "PDF p.26 (section H, device H-06)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "Read from the schematic box of H-06; confirm on the car"
+    },
+    {
+      "part": "PT958",
+      "category": "Lighting",
+      "item": "Feed fuse (LY bus, X-04)",
+      "value": "15",
+      "unit": "A",
+      "source": "S-001",
+      "page": "PDF p.26 (section H)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "Constant hot from WR; works with the key out. Shared with interior light, lighter, clock, luggage light, ignition switch light"
+    },
+    {
+      "part": "PT958",
+      "category": "Lighting",
+      "item": "Fitted to",
+      "value": "GS and GSL (interior mirror with map lamp, FA01-69-220A)",
+      "unit": "",
+      "source": "S-005",
+      "page": "BI-128-02 (lamp, spot: GS & GSL); BI-129-04 (FA01-69-220A W/ MAP LAMP, GS & GSL); figure 6900A-3, Body PDF p.130",
+      "confidence": "primary",
+      "applies": "",
+      "note": "S model mirror FA03-69-220A has no map lamp"
+    },
+    {
+      "part": "PT959",
+      "category": "Lighting",
+      "item": "Bulb carried",
+      "value": "0000-11-0194 (69170K, wedge)",
+      "unit": "",
+      "source": "S-005",
+      "page": "BI-129-07 (0000-11-0194); figure 6900A-3, Body PDF p.130",
+      "confidence": "primary",
+      "applies": "",
+      "note": "Read from the exploded view: 69170K sits directly on socket 51354 in the W/MAP LAMP group; confirm on the car"
+    },
+    {
+      "part": "PT960",
+      "category": "Lighting",
+      "item": "Fits",
+      "value": "1981-1985 RX-7 (12A and 13B)",
+      "unit": "",
+      "source": "src-atkins-fa0151351a",
+      "page": "",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "Seller fitment; new Mazda part, USD 41.50 on 2026-09-25"
+    },
+    {
+      "part": "PT961",
+      "category": "Lighting",
+      "item": "Rating (catalogue)",
+      "value": "10",
+      "unit": "W",
+      "source": "S-005",
+      "page": "BI-129-06 (A12V 10W)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "12 V. S-001 PDF p.26 labels the interior lamp of H-06 as 5 W - the two factory sources disagree; confirm on the car"
+    },
+    {
+      "part": "PT961",
+      "category": "Lighting",
+      "item": "Bulb form",
+      "value": "festoon (double-ended)",
+      "unit": "",
+      "source": "S-005",
+      "page": "figure 6900A-3, Body PDF p.130 (item 69170J)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "Drawn as a festoon in both the W/O and W/MAP LAMP mirrors, so it is the interior (dome) lamp; confirm on the car"
+    },
+    {
+      "part": "PT961",
+      "category": "Lighting",
+      "item": "Interior lamp internal circuit",
+      "value": "LY feed - bulb - 3-position switch: ON = case ground, DOOR = RY to door switches H-07/H-08 (ground when a door opens), OFF = open",
+      "unit": "",
+      "source": "S-001",
+      "page": "PDF p.26 (section H, device H-06)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "RY also goes to the control processing unit X-16 (lights-off chime). Confirm on the car"
+    },
+    {
+      "part": "PT961",
+      "category": "Lighting",
+      "item": "Replacement DE3175: voltage",
+      "value": "13",
+      "unit": "V",
+      "source": "src-rlb-de3175",
+      "page": "",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "Trade DE3175 assumed from Mazda 0000-11-3175 and the 10 W rating; confirm length on the car"
+    },
+    {
+      "part": "PT961",
+      "category": "Lighting",
+      "item": "Replacement DE3175: current",
+      "value": "0.77",
+      "unit": "A",
+      "source": "src-rlb-de3175",
+      "page": "",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "+/-15 percent; 10 W"
+    },
+    {
+      "part": "PT961",
+      "category": "Lighting",
+      "item": "Replacement DE3175: maximum overall length",
+      "value": "32",
+      "unit": "mm",
+      "source": "src-rlb-de3175",
+      "page": "",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "Bulb diameter 10.5 mm; SV8.5-8 festoon caps; 400 h rated life; 120 lm. Other sellers give 31 mm"
+    },
+    {
+      "part": "PT962",
+      "category": "Lighting",
+      "item": "Rating (catalogue, this figure)",
+      "value": "5",
+      "unit": "W",
+      "source": "S-005",
+      "page": "BI-129-07 (A12V 5W)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "Same part number is printed 3.8 W (BI-034-07, BI-036-05) and 3.4 W (BI-047-15 and others) elsewhere in S-005; S-001 PDF p.26 labels the spot lamp 6 W. Confirm on the car"
+    },
+    {
+      "part": "PT962",
+      "category": "Lighting",
+      "item": "Bulb form",
+      "value": "wedge, in socket 51354",
+      "unit": "",
+      "source": "S-005",
+      "page": "figure 6900A-3, Body PDF p.130 (item 69170K)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "Map (spot) lamp bulb; only present in the W/MAP LAMP mirror"
+    },
+    {
+      "part": "PT962",
+      "category": "Lighting",
+      "item": "Replacement Eiko 194 (40427): rating",
+      "value": "14 V 0.27 A",
+      "unit": "",
+      "source": "src-eiko-194",
+      "page": "p.1",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "About 3.8 W. Base W2.1x9.5d miniature wedge, bulb T3-1/4, filament C-2F"
+    },
+    {
+      "part": "PT962",
+      "category": "Lighting",
+      "item": "Replacement Eiko 194 (40427): maximum overall length",
+      "value": "26.9",
+      "unit": "mm",
+      "source": "src-eiko-194",
+      "page": "p.1",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "MOD 10.2 mm, light centre length 14.2 mm, 25 lm, 2500 h rated life"
+    }
+  ],
+  "terminals": [
+    {
+      "part": "PT958",
+      "terminal": "LY",
+      "function": "constant 12 V feed",
+      "inside": "to the spot lamp switch, then the bulb (and in parallel to the interior lamp)",
+      "wire": "LY",
+      "to": "X-04 15 A fuse from WR (battery via fusible link)",
+      "source": "S-001",
+      "page": "PDF p.26 (H-06)",
+      "note": "Harness connector H-06 is on the mirror assembly PT957. From S-001; confirm on the car"
+    },
+    {
+      "part": "PT958",
+      "terminal": "GND",
+      "function": "ground",
+      "inside": "bulb return to the lamp case",
+      "wire": "",
+      "to": "body ground through the mirror mounting (drawn as case ground)",
+      "source": "S-001",
+      "page": "PDF p.26 (H-06)",
+      "note": "No ground wire drawn; from S-001; confirm on the car"
+    },
+    {
+      "part": "PT961",
+      "terminal": "RY",
+      "function": "door switch ground (DOOR position)",
+      "inside": "interior lamp switch DOOR contact",
+      "wire": "RY",
+      "to": "door switches H-07 (RH) and H-08 (LH) via X-03, and control processing unit X-16",
+      "source": "S-001",
+      "page": "PDF p.26 (H-06)",
+      "note": "Terminal is on the mirror assembly connector H-06 (PT957); from S-001; confirm on the car"
+    }
+  ],
+  "sources": [
+    {
+      "key": "src-eiko-194",
+      "title": "EiKO 194 (40427) 14V .27A T3-1/4 wedge base - specification sheet",
+      "kind": "datasheet",
+      "covers": "Trade 194 miniature wedge bulb: volts, amps, base, filament, dimensions, life",
+      "url": "https://hdsupplysolutions.com/wcsstore/ExtendedSitesCatalogAssetStore/product/fm/additional/37/370008_Specification-PDF.pdf",
+      "format": "pdf",
+      "credibility": "secondary",
+      "obtained": "yes",
+      "local_path": "01-REFERENCE/model/library/datasheets/PT962/eiko-194-40427-spec.pdf",
+      "note": "Maker sheet hosted by HD Supply; replacement for Mazda 0000-11-0194"
+    },
+    {
+      "key": "src-rlb-de3175",
+      "title": "ReplacementLightBulbs.com - DE-3175 12V 10W 10x31mm festoon",
+      "kind": "web",
+      "covers": "Trade DE3175 festoon: volts, amps, length, diameter, base, life, lumens",
+      "url": "https://www.replacementlightbulbs.com/lampde3175.html",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Seller page; 45 cents each on 2026-09-25"
+    },
+    {
+      "key": "src-atkins-fa0151351a",
+      "title": "Atkins Rotary - 81-85 RX-7 Dome Light Lens FA01-51-351A",
+      "kind": "web",
+      "covers": "Interior/map lamp lens: new Mazda part, price, fitment",
+      "url": "https://www.atkinsrotary.com/81-85-Rx7-Dome-Light-Lens-FA01-51-351A.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "USD 41.50 on 2026-09-25"
+    }
+  ],
+  "cad": []
+}

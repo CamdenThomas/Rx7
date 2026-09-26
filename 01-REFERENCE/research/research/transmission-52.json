@@ -1,0 +1,17 @@
+{
+ "parts": [
+  {"id": "PT326", "link": "https://www.atkinsrotary.com/Transmission/Flex-Plates/", "support": "", "cad": "",
+   "note_add": "Mazda 1758-19-020B is still sold new as the 79-83 RX-7 automatic flex plate (Atkins Rotary). The drive plate goes on over the A/T counterweight, positioned so the hole in the drive plate lines up with the counterweight as the factory figure shows, and both are held by the eccentric-shaft lock nut (see the flywheel/counterweight lock nut torque); mark plate and converter before separating them."}
+ ],
+ "specs": [
+  {"part": "PT326", "category": "Transmission", "item": "Drive plate to torque converter bolts, tightening torque", "value": "35-50", "unit": "N-m", "source": "S-038", "page": "T:7", "confidence": "primary", "applies": "", "note": "25-36 ft-lb. The 1980 manual (S-045 7A:17, S-003 T:7) gives the same 3.5-5.0 m-kg."},
+  {"part": "PT326", "category": "Transmission", "item": "Drive plate to converter weight, tightening torque", "value": "42-63", "unit": "N-m", "source": "S-038", "page": "T:7", "confidence": "primary", "applies": "", "note": "30-46 ft-lb."},
+  {"part": "PT326", "category": "Transmission", "item": "Service tool: wrench for the converter-to-drive plate bolts", "value": "49 0877 435", "unit": "", "source": "S-002", "page": "7B-27", "confidence": "primary", "applies": "other-car", "note": "Same tool number in the 1980 manual (S-045 7A section, removal step 16); no 1982 source seen. Mark the drive plate and converter before removal and realign the marks on refit."},
+  {"part": "PT326", "category": "Transmission", "item": "Replacement Atkins Rotary listing: counterweight to flexplate bolt, Mazda 9978-41-016", "value": "9978-41-016", "unit": "", "source": "src-atkins-flexplates", "page": "", "confidence": "secondary", "applies": "", "note": "Listed as 74-95 RX-7 rear counterweight to flexplate bolt, 5.10 USD at the time of reading; check it matches the bolts on the car."}
+ ],
+ "terminals": [],
+ "sources": [
+  {"key": "src-atkins-flexplates", "title": "Atkins Rotary - Mazda automatic transmission flex plates (79-83 RX-7 1758-19-020B)", "kind": "web", "covers": "PT326 drive plate: 1758-19-020B 79-83 RX-7 automatic, 150 USD, in stock; counterweight-to-flexplate bolt 9978-41-016", "url": "https://www.atkinsrotary.com/Transmission/Flex-Plates/", "format": "html", "credibility": "secondary", "obtained": "no", "local_path": "", "note": "Read 2026-09-25; no dimensions or tooth count given."}
+ ],
+ "cad": []
+}
