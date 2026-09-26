@@ -54,3 +54,4 @@ L-0042,2026-09-24,answers,D-412 00.32 R2 F24 F3 P002 DV19,"Block 00.32 ruled (a)
 L-0043,2026-09-24,answers,D-414 00.33 E27 E28 R1,"Block 00.33 answered (a): the new harness goes in all at once; E27 and E28 reworded, R1 done, block and inbox row deleted"
 L-0044,2026-09-25,repair,D-419 P029,P029 sealing plug corrected to 114017 (size 12/16); 0413-204-2005 is a size-20 DTM plug - found by its TE 3D model measuring 2.16 mm during the CAD search
 L-0045,2026-09-26,session,Q-028 Q-110 S1 Z1,"P04: Q-028 and Q-110 regated onto E25 on the build track (reply=value ms), out of S1 and Z1; block raised on what S1 waits on"
+L-0046,2026-09-26,session,V-002 C4 V-102 Q-014 V-055 Q-110 Q-028 E19 E12 R6 E2 B2,P05: reply=value with a unit on the twelve rows of his that read a number; the two blanks-to-fill removed
