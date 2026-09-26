@@ -24,6 +24,16 @@ merge is idempotent and refuses to write while it reports a problem (`--force` o
 | 2 | engine, fuel, cooling, climate, transmission | 18 | see 00-verify R1 |
 | 3 | brakes, driveline, steering, suspension, wheels, body | 18 | see 00-verify R2, waits on Camden's R0 |
 
+## The OCR text (00-verify R3, 2026-09-26)
+
+Every scanned manual is image-only (pdffonts lists none), so each research agent used to view
+the pages. `ocrmypdf --force-ocr --sidecar` was run once over the 1982 wiring diagram, both parts
+catalogue files, every 1985 workshop section, the three technical-data sections and the body shop
+manual, into `01-REFERENCE/model/library/docs/ocr/<pdf name>.txt` (out of git with the rest of
+the library; 1.3 MB, one form feed per page). The research prompt greps there first and only
+views a page the OCR could not answer. Re-run for a new PDF:
+`ocrmypdf -q -j 8 --force-ocr --sidecar docs/ocr/NAME.txt NAME.pdf - > /dev/null`.
+
 ## Running a wave
 
 1. Take the wave's batches from `batches.json`, e.g. every batch whose `system` is in the wave.
