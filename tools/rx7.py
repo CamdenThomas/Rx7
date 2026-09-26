@@ -1528,7 +1528,7 @@ def export_data() -> dict:
     out["diagrams"] = []
     dg = ROOT / "02-PROJECTS" / "01-electrical" / "00-design" / "diagrams"
     if dg.is_dir():
-        for leg in sorted(p for p in dg.iterdir() if p.is_dir() and p.name[:1] == "L"):
+        for leg in sorted(p for p in dg.iterdir() if p.is_dir() and (p / "A-pin-ladder.svg").is_file()):
             for sheet, fname in (("pin ladder", "A-pin-ladder.svg"), ("route map", "B-route-map.svg")):
                 if (leg / fname).is_file():
                     out["diagrams"].append({"leg": leg.name, "sheet": sheet, "path": rel(leg / fname)})
@@ -1709,9 +1709,24 @@ def manual_view(today_iso: str = "") -> dict:
     terms = read_table(car, "terminals")[1] if (car / "data" / "terminals.csv").exists() else []
     for p in shown["parts"]:
         p["terminals_held"] = sum(1 for x in terms if (x.get("part") or "").strip() == p["id"])
+    # Derived, never typed (R2, plan P50): a spec's system is its part's; a part's Mazda number
+    # is the catalogue row it names when the cell is blank.
+    by_part = {p["id"]: p for p in shown["parts"]}
     for s in shown["specs"]:
         if s.get("part") not in part_ids:
             s["part"] = ""
+        elif by_part[s["part"]].get("system"):
+            s["system"] = by_part[s["part"]]["system"]
+    cat_no = {}
+    if (ROOT / "01-REFERENCE" / "data" / "catalogue.csv").exists():
+        cat_no = {(r.get("id") or "").strip(): (r.get("part_no") or "").strip()
+                  for r in read_table(ROOT / "01-REFERENCE", "catalogue")[1]}
+    for p in shown["parts"]:
+        if not p.get("oem_no"):
+            for tok in (p.get("catalogue") or "").split():
+                if cat_no.get(tok):
+                    p["oem_no"] = cat_no[tok]
+                    break
     for s in shown["service"]:
         s["fitted"] = [x for x in (s.get("fitted") or "").split() if x in part_ids]
 

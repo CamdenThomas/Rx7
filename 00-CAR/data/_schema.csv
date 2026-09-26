@@ -38,7 +38,7 @@ service,id,key,yes,,
 service,date,date,no,,
 service,mileage,int,no,,
 service,work,str,no,,
-service,items,str,no,,
+service,items,list,no,intervals,the intervals this visit renewed (P46)
 service,parts,str,no,,
 service,notes,text,no,,
 specs,id,key,yes,,
@@ -123,7 +123,7 @@ drives,to,str,no,,
 drives,note,text,no,,his words
 specs,system,str,no,systems,
 specs,part,str,no,parts,"the part it describes, when it describes one"
-specs,applies,enum(not-fitted|other-car|replaced),no,,"blank: this car as it is now. other-car: another year's, trim's or gearbox's figure where this car's differs or is in doubt; replaced: the part it describes is gone or out of use; not-fitted: bought, not on the car. Only blank rows reach the Manual (D-417)"
+specs,applies,enum(not-fitted|other-car|replaced),no,,"as intervals.applies: blank is this car now; other-car rows are another year's figure kept as the verify backlog (00-verify stage L), not moved out (P50, 2026-09-26)"
 service,fitted,list,no,parts,"the parts this visit fitted - a part's fitted date and mileage are read from here, never typed"
 terminals,id,key,yes,,<part id>-<terminal label>
 terminals,part,str,yes,parts,
@@ -136,3 +136,6 @@ terminals,source,str,no,,S- ids
 terminals,page,str,no,,
 terminals,note,text,no,,a terminal nobody has checked on the car carries confirm (R11)
 parts,checked,date,no,,"the day Camden confirmed the part on the car (rx7.py apply); a checked row is shown in the Manual even if its note still says confirm (2026-09-26, plan P07)"
+parts,qty,int,no,,"how many of it the car has (was prose in note, plan P44 2026-09-26)"
+parts,supplier,str,no,01-REFERENCE:suppliers,"who to call or buy from, as a suppliers row; support keeps the phone and page for the Manual (P44)"
+terminals,checked,date,no,,the day it was metered or read on the car; until then the row is the 1982 diagram's claim (P47)

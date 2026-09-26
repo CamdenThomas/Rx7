@@ -6,20 +6,20 @@ P004,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",74858,"Picker 
 P005,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",75340,Chief weatherproof 5-pin mini relay connector,,1,ea,,cart,K9's socket,cart,,
 P006,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",75290,Panel-mount micro relay socket with terminals,,11,ea,,cart,"7 at the dash node (K1-K4, K11, K12, K13) + 4 at the sill (K5-K8, empty)",cart,,
 P007,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",2300,"Blue Sea 2300 busbar, 10-gang 150 A, WITH cover — replaces the uncovered 2301 (78250) in the cart",,1,ea,,cart,"Always-hot bar + ground bus, both covered (D-224). Waytek # for the 2300 to confirm at the cart",raise,,2
-P008,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",WL16-0,"Prysmian GXL 16 AWG BLACK, 500 ft spool",,1,ea,,cart,Ground family — 230 ft needed,cart,,
-P009,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",WL16-2,"Prysmian GXL 16 AWG RED, 500 ft spool",,1,ea,,cart,"Power family at 16 AWG — ~510 ft calculated against a 500 ft spool after D-250 / D-252 / D-256 (L1-S2 9, L4-S 4, L2-S 6): add a 50 ft cut to the WireBarn order",raise,,500 ft spool + 50 ft cut
-P010,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",WL16-8,"Prysmian GXL 16 AWG GRAY, 1000 ft spool",,1,ea,,cart,Analog-input family — ~740 ft needed after D-252 / D-255 / D-256,cart,,
-P011,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",WL16-6,"Prysmian GXL 16 AWG BLUE, 500 ft spool",,1,ea,,cart,Command family — 285 ft needed,cart,,
-P012,WireBarn,GXL by the foot,,GXL 14 AWG ORN,,250,ft,,cart,Every 15 A output run (O6–O11) and the washer feed — 190 ft calculated,cart,,
-P013,WireBarn,GXL by the foot,,GXL 14 AWG RED,,100,ft,,cart,"F1 head-unit constant and the four short K5–K8 → D1 / D2 wires at the sill node; the door legs themselves are RESERVED (D-274) — about 20 ft calculated, 100 ft carted stays",cart,,
-P014,WireBarn,GXL by the foot,,GXL 14 AWG BLK,,50,ft,,cart,"14 AWG grounds — 42 ft calculated against 50 ft carted; the same margin problem, smaller money",raise,,75 ft
-P015,WireBarn,GXL by the foot,,GXL 12 AWG RED,,250 + 100,ft,,cart,"Every 25 A output and 12 AWG feed — 336 ft calculated against 350 ft carted is a 1.04× margin, not the 1.5× D-202 promised on unmeasured routes",raise,,450 ft
-P016,WireBarn,GXL by the foot,,GXL 12 AWG BLK,,25,ft,,cart,12 AWG grounds — 20 ft calculated,cart,,
-P017,WireBarn,GXL by the foot,,GXL 10 AWG BLK,,25,ft,,cart,Ground-bus and star-stud drops,cart,,
-P018,WireBarn,GXL by the foot,,GXL 10 AWG RED,,25,ft,,cart,"Busbar → block A, K11, block B",cart,,
-P019,WireBarn,GXL by the foot,,GXL 16 AWG PNK,,25,ft,,cart,F3 switch supply and the +5 V reference — 10 ft calculated,to add,,
-P020,WireBarn,GXL by the foot,,GXL 16 AWG YEL,,50,ft,,cart,"CAN high, both buses — 33 ft calculated",to add,,
-P021,WireBarn,GXL by the foot,,GXL 16 AWG GRN,,50,ft,,cart,"CAN low, both buses — 33 ft calculated",to add,,
+P008,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",WL16-0,"Prysmian GXL 16 AWG BLACK, 500 ft spool",,1,ea,,cart,Ground family — 230 ft needed (footage confirm - a hand estimate until M-2 fills routes.ft; the schedule is cavities x routes.ft x 1.5),cart,,
+P009,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",WL16-2,"Prysmian GXL 16 AWG RED, 500 ft spool",,1,ea,,cart,"Power family at 16 AWG — ~510 ft calculated against a 500 ft spool after D-250 / D-252 / D-256 (L1-S2 9, L4-S 4, L2-S 6): add a 50 ft cut to the WireBarn order (footage confirm - a hand estimate until M-2 fills routes.ft; the schedule is cavities x routes.ft x 1.5)",raise,,500 ft spool + 50 ft cut
+P010,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",WL16-8,"Prysmian GXL 16 AWG GRAY, 1000 ft spool",,1,ea,,cart,Analog-input family — ~740 ft needed after D-252 / D-255 / D-256 (footage confirm - a hand estimate until M-2 fills routes.ft; the schedule is cavities x routes.ft x 1.5),cart,,
+P011,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",WL16-6,"Prysmian GXL 16 AWG BLUE, 500 ft spool",,1,ea,,cart,Command family — 285 ft needed (footage confirm - a hand estimate until M-2 fills routes.ft; the schedule is cavities x routes.ft x 1.5),cart,,
+P012,WireBarn,GXL by the foot,,GXL 14 AWG ORN,,250,ft,,cart,Every 15 A output run (O6–O11) and the washer feed — 190 ft calculated (footage confirm - a hand estimate until M-2 fills routes.ft; the schedule is cavities x routes.ft x 1.5),cart,,
+P013,WireBarn,GXL by the foot,,GXL 14 AWG RED,,100,ft,,cart,"F1 head-unit constant and the four short K5–K8 → D1 / D2 wires at the sill node; the door legs themselves are RESERVED (D-274) — about 20 ft calculated, 100 ft carted stays (footage confirm - a hand estimate until M-2 fills routes.ft; the schedule is cavities x routes.ft x 1.5)",cart,,
+P014,WireBarn,GXL by the foot,,GXL 14 AWG BLK,,50,ft,,cart,"14 AWG grounds — 42 ft calculated against 50 ft carted; the same margin problem, smaller money (footage confirm - a hand estimate until M-2 fills routes.ft; the schedule is cavities x routes.ft x 1.5)",raise,,75 ft
+P015,WireBarn,GXL by the foot,,GXL 12 AWG RED,,350,ft,,cart,"Every 25 A output and 12 AWG feed — 336 ft calculated against 350 ft carted is a 1.04× margin, not the 1.5× D-202 promised on unmeasured routes (footage confirm - a hand estimate until M-2 fills routes.ft; the schedule is cavities x routes.ft x 1.5)",raise,,450 ft
+P016,WireBarn,GXL by the foot,,GXL 12 AWG BLK,,25,ft,,cart,12 AWG grounds — 20 ft calculated (footage confirm - a hand estimate until M-2 fills routes.ft; the schedule is cavities x routes.ft x 1.5),cart,,
+P017,WireBarn,GXL by the foot,,GXL 10 AWG BLK,,25,ft,,cart,Ground-bus and star-stud drops (footage confirm - a hand estimate until M-2 fills routes.ft; the schedule is cavities x routes.ft x 1.5),cart,,
+P018,WireBarn,GXL by the foot,,GXL 10 AWG RED,,25,ft,,cart,"Busbar → block A, K11, block B (footage confirm - a hand estimate until M-2 fills routes.ft; the schedule is cavities x routes.ft x 1.5)",cart,,
+P019,WireBarn,GXL by the foot,,GXL 16 AWG PNK,,25,ft,,cart,F3 switch supply and the +5 V reference — 10 ft calculated (footage confirm - a hand estimate until M-2 fills routes.ft; the schedule is cavities x routes.ft x 1.5),to add,,
+P020,WireBarn,GXL by the foot,,GXL 16 AWG YEL,,50,ft,,cart,"CAN high, both buses — 33 ft calculated (footage confirm - a hand estimate until M-2 fills routes.ft; the schedule is cavities x routes.ft x 1.5)",to add,,
+P021,WireBarn,GXL by the foot,,GXL 16 AWG GRN,,50,ft,,cart,"CAN low, both buses — 33 ft calculated (footage confirm - a hand estimate until M-2 fills routes.ft; the schedule is cavities x routes.ft x 1.5)",to add,,
 P022,DeutschConnector.com,"Contacts, plugs, clips, caps, tools",0462-201-16141,"Socket contact, size 16, 16–18 AWG, solid",,16,ea,,cart,spares (kits cover the cavities),cart,,
 P023,DeutschConnector.com,"Contacts, plugs, clips, caps, tools",0460-202-16141,"Pin contact, size 16, 16–18 AWG, solid",,16,ea,,cart,spares,cart,,
 P024,DeutschConnector.com,"Contacts, plugs, clips, caps, tools",0462-209-16141,"Socket contact, size 16, 14 AWG, solid",,7,ea,,cart,"+ spares = 18 (L2-M 1–4, L3-M 1–2, L4-M 1–4, D1 1–2, D2 1–2 — the kits' contacts do not take 14 AWG)",raise,contacts14,18
@@ -41,7 +41,7 @@ P039,Amazon,Tools,,"Open-barrel ratchet crimper, 1.5 mm and 2.8 mm dies",Astro 9
 P040,Amazon,Tools,,Digital hanging scale 0–50 kg,any,1,,18,est,Crimp pull tests,cart,,
 P041,Amazon,Tools,,Label printer,Brother PT-D220 (B0B1L3BL1G),1,,40,est,Prints the TZe-FX231 tape,cart,,
 P042,Amazon,Tools,,"Heat gun, 1500 W, two temperatures",any,1,,30,est,,cart,,
-P043,Amazon,Tools,,"Wire strippers 10–22 AWG, flush cutters, needle-nose",Klein / Knipex class,1 set,,70,est,,cart,,
+P043,Amazon,Tools,,"Wire strippers 10–22 AWG, flush cutters, needle-nose",Klein / Knipex class,1,set,70,est,,cart,,
 P044,Amazon,Tools,,Soldering iron + solder,Pinecil / Hakko class,1,,45,est,Ladder resistors and diodes,cart,,
 P045,Amazon,Tools,,"Digital multimeter — ohms, DC volts, continuity beeper",any auto-ranging,1,,30,est,The UT210E does current; a plain meter is faster for continuity,cart,,
 P046,Amazon,Tools,,"Torque wrench 1/4 in drive, 2–20 N·m",any,1,,40,est,"Battery lugs, busbar studs, PMU stud",cart,,
@@ -54,15 +54,15 @@ P052,Amazon,Power backbone and battery,,MRBF fuse 250 A,"Blue Sea MRBF 250 A, 51
 P053,Amazon,Power backbone and battery,,"MIDI / AMI fuse holder, sealed, bolt-down",Blue Sea 5006 class,2,,28,est,"F17, F18 beside the starter B+ stud",cart,,
 P054,Amazon,Power backbone and battery,,MIDI fuse 30 A,Blue Sea 5253 class,2,,10,est,"F17, one spare",cart,,
 P055,Amazon,Power backbone and battery,,MIDI fuse 100 A,Blue Sea 5258 class,2,,10,est,"F18, one spare",cart,,
-P057,Amazon,Power backbone and battery,,"Battery hold-down clamp + J-hooks, M8 grade-8 hardware, nyloc, fender washers",generic,1 set,,40,est,The backing-plate stock is §7,cart,,
+P057,Amazon,Power backbone and battery,,"Battery hold-down clamp + J-hooks, M8 grade-8 hardware, nyloc, fender washers",generic,1,set,40,est,The backing-plate stock is §7,cart,,
 P058,Amazon,Power backbone and battery,,Ground studs 3/8 in stainless,generic,4,,16,est,"Rear, front, dash, sill",cart,,
 P059,Amazon,Power backbone and battery,,"Star washers, stainless, assorted",generic kit,1,,8,est,Under every ground stud and lug,cart,,
 P060,Amazon,Power backbone and battery,,"PMU stand-offs M6 × 12 mm, aluminium",generic,3,,5,est,Airflow under the PMU,cart,,
-P061,Amazon,Power backbone and battery,,2 AWG fine-strand welding cable RED,"TEMCo, 25 ft + 20 ft",45 ft,,213,est,"PMU feed C03 and the Class-T link C01 only — the starter run moved to 1/0 (D-246), so this line DROPS to 25 ft and saves about $90",raise,,25 ft
-P062,Amazon,Power backbone and battery,,2 AWG fine-strand welding cable BLACK,"TEMCo, 25 ft",25 ft,,72,est,"Engine block → chassis bonding strap C06 only — the battery negative moved to 1/0 (D-245, D-246), so this line DROPS to 10 ft",raise,,10 ft
+P061,Amazon,Power backbone and battery,,2 AWG fine-strand welding cable RED,"TEMCo, 25 ft + 20 ft",45,ft,213,est,"PMU feed C03 and the Class-T link C01 only — the starter run moved to 1/0 (D-246), so this line DROPS to 25 ft and saves about $90",raise,,25 ft
+P062,Amazon,Power backbone and battery,,2 AWG fine-strand welding cable BLACK,"TEMCo, 25 ft",25,ft,72,est,"Engine block → chassis bonding strap C06 only — the battery negative moved to 1/0 (D-245, D-246), so this line DROPS to 10 ft",raise,,10 ft
 P063,Amazon,Power backbone and battery,,"6 AWG cable RED, 5 ft",any SGX / welding,1,,15,est,Alternator B+,cart,,
-P096,Amazon,Power backbone and battery,,1/0 fine-strand welding cable RED,"≥ 90 °C, 100 % copper — same acceptance test as D-238",25 ft,,140,est,Starter feed C04 (D-246),to add,,
-P097,Amazon,Power backbone and battery,,1/0 fine-strand welding cable BLACK,"≥ 90 °C, 100 % copper",30 ft,,165,est,"Battery negative C05 (straight to the rear ground stud - the disconnect is on the positive, D-245 → D-319) and the cranking return C11 (D-246)",to add,,
+P096,Amazon,Power backbone and battery,,1/0 fine-strand welding cable RED,"≥ 90 °C, 100 % copper — same acceptance test as D-238",25,ft,140,est,Starter feed C04 (D-246),to add,,
+P097,Amazon,Power backbone and battery,,1/0 fine-strand welding cable BLACK,"≥ 90 °C, 100 % copper",30,ft,165,est,"Battery negative C05 (straight to the rear ground stud - the disconnect is on the positive, D-245 → D-319) and the cranking return C11 (D-246)",to add,,
 P064,Amazon,Power backbone and battery,,"Tinned closed-barrel lugs 2 AWG, 5/16 and 3/8 holes",TEMCo / Selterm,18,,45,est,Every 2 AWG cable end + practice crimps,cart,,
 P065,Amazon,Power backbone and battery,,Tinned lugs 6 AWG 5/16 (×4),TEMCo / Selterm,8,,16,est,"Alternator B+ cable C07 — the four 1/0 lugs move to P098, so this line DROPS to the four 6 AWG lugs",raise,,4
 P098,Amazon,Power backbone and battery,,Tinned closed-barrel lugs 1/0 — 3/8 hole (×8) and 5/16 hole (×4),"5/16 for the MRBF holder stud, 3/8 for the disconnect, ground studs and block",12,,30,est,Every 1/0 cable end plus practice crimps (D-246),to add,,
@@ -111,14 +111,14 @@ P074,Amazon,Dash node and electronics,,"Shielded cable, 16–18 AWG single core 
 P135,Amazon,Dash node and electronics,,"Ignition noise-suppression capacitor, automotive, ~0.47 µF 250 V, ring-lug case",Reproduces the factory condenser B-22 on the coil / igniter supply,2,ea,10,est,O12 branch at the coil bracket (L1-P 1) — this harness runs CAN2 and eight analog ladders past the igniters (D-281),to add,,
 P075,Amazon,Consumables and labels,,Label tape,"Brother TZe-FX231 flexible-ID, 12 mm black on white (B00X8GRTO8)",3,,45,est,"every conductor end - params label_ends (582) at 45 mm = about 26 m; a TZe cartridge is 8 m, so four (32 m)",raise,,4
 P076,Amazon,Consumables and labels,,"Clear heat-shrink 3/16 in, 2:1",generic,3,,20,est,Over every label on the engine leg and under loom,cart,,
-P077,Amazon,Consumables and labels,,"Adhesive-lined heat-shrink assortment 3:1, incl. heavy-wall for lugs",generic,1 kit,,40,est,,cart,,
-P078,Amazon,Consumables and labels,,"Heat-shrink crimp butt splices — 22–18 (×50), 16–14 (×50), 12–10 (×25)","generic, tinned",1 set,,25,est,"Every factory-pigtail joint (rules device-end, legs E20-E23)",cart,,
-P079,Amazon,Consumables and labels,,"Ring terminals, heat-shrink, assorted 16–14 and 12–10, #10 and 3/8",generic,1 kit,,20,est,Ground rings and stud connections,cart,,
-P080,Amazon,Consumables and labels,,Tesa 51608 cloth harness tape,Tesa 51608,5 rolls,,33,est,,cart,,
-P081,Amazon,Consumables and labels,,"Split loom / braided sleeve assortment, grommet kit, P-clips, pull string 100 ft",generic,1 set,,110,est,,cart,,
-P082,Amazon,Consumables and labels,,"Cavity wax / corrosion inhibitor spray, paint pen",generic,1 set,,20,est,,cart,,
-P083,Amazon,Switches,,"Momentary pushbutton, 1NO + 1NC, 2-pack",DMWD (B09H29SZYS),1 pk,,12,est,Wink L and wink R. MUST be changeover (NO + NC) — the NC pole is wired,cart,,
-P084,Amazon,Switches,,"Adjustable plunger pin switch, 6-pack",generic,1 pk,,15,est,"Door jambs ×2, glove box, luggage, the brake-pedal wake contact (D-278) + 1 spare",cart,,
+P077,Amazon,Consumables and labels,,"Adhesive-lined heat-shrink assortment 3:1, incl. heavy-wall for lugs",generic,1,,40,est,,cart,,
+P078,Amazon,Consumables and labels,,"Heat-shrink crimp butt splices — 22–18 (×50), 16–14 (×50), 12–10 (×25)","generic, tinned",1,set,25,est,"Every factory-pigtail joint (rules device-end, legs E20-E23)",cart,,
+P079,Amazon,Consumables and labels,,"Ring terminals, heat-shrink, assorted 16–14 and 12–10, #10 and 3/8",generic,1,,20,est,Ground rings and stud connections,cart,,
+P080,Amazon,Consumables and labels,,Tesa 51608 cloth harness tape,Tesa 51608,5,roll,33,est,,cart,,
+P081,Amazon,Consumables and labels,,"Split loom / braided sleeve assortment, grommet kit, P-clips, pull string 100 ft",generic,1,set,110,est,,cart,,
+P082,Amazon,Consumables and labels,,"Cavity wax / corrosion inhibitor spray, paint pen",generic,1,set,20,est,,cart,,
+P083,Amazon,Switches,,"Momentary pushbutton, 1NO + 1NC, 2-pack",DMWD (B09H29SZYS),1,pk,12,est,Wink L and wink R. MUST be changeover (NO + NC) — the NC pole is wired,cart,,
+P084,Amazon,Switches,,"Adjustable plunger pin switch, 6-pack",generic,1,pk,15,est,"Door jambs ×2, glove box, luggage, the brake-pedal wake contact (D-278) + 1 spare",cart,,
 P085,Vehicle parts,RockAuto / PartsGeek / Mazda specialist,,"Brake pedal (stop lamp) switch, without cruise - any 2-terminal type",Standard SLS-52 class — confirm fit,1,,20,est,The A3 ladder only. The wake contact is a spare P084 plunger on the pedal (D-278),not carted,,
 P086,Vehicle parts,RockAuto / PartsGeek / Mazda specialist,,"Ignition switch, electrical portion, 1981–83 RX-7","search ""81-83 RX-7 ignition switch electrical""; NOS or quality reproduction",1,,45,est,"Terminals B, ACC, IG, ST — feeds the A16 ladder and both wake sources",not carted,,
 P090,Hardware store,After the measurement day,,"Carrier-panel stock for the dash node — 3 mm aluminium or ABS sheet, one or several small pieces",,,,,,Sizes from M-1 and the bench layout (E13),later,,
@@ -128,7 +128,7 @@ P093,Hardware store,After the measurement day,,Paint or powder-coat for any alum
 P094,Amazon,Power backbone and battery,,"Tapered-post terminal boots, red and black",must clear the terminal stack and lift off by hand for a jump start,1,pair,8,est,The only thing covering a live post now that the box is gone (D-235),to add,,
 P095,Amazon,Power backbone and battery,,"SAE tapered-post battery terminals, brass, with 3/8 in stud take-off, pair",confirm the positive clamp's stud carries the MRBF holder plus the PMU feed lug,1,pair,25,est,The Ionic has tapered posts (D-234) - no ring lug bolts to it,to add,,
 P125,DeutschConnector.com,"Contacts, plugs, clips, caps, tools",DT2P-DC (confirm the SKU),"Dust cap, DT 2-way receptacle",,3,ea,,cart,"L2-OAT · L3-MOD (D-274). 3 -> 2, the nozzle receptacle cancelled (D-329)",to add,,2
-P134,Amazon,Dash node and electronics,,"Perfboard 5 × 7 cm, 2-pack, with M3 standoffs",generic FR-4,1 set,,8,est,the two wake sense stages and the bias resistors (E14 / E15) — nothing in the cart carried them,to add,,
+P134,Amazon,Dash node and electronics,,"Perfboard 5 × 7 cm, 2-pack, with M3 standoffs",generic FR-4,1,set,8,est,the two wake sense stages and the bias resistors (E14 / E15) — nothing in the cart carried them,to add,,
 P136,Amazon,Power backbone and battery,,High-joule load-dump TVS for the PMU main feed,"Unidirectional, 24 V standoff, >= 5 kW peak pulse power, bolt-down or stud class; sized against ISO 7637-2 pulse 5a - confirm the part before ordering",1,ea,12,est,"Across the PMU main feed at the module - the only protection that covers the BMS opening while driving, which no switch can anticipate (D-331 → D-351). Not P106, which is the ICU carrier's own input protection",to add,confirm,1
 P137,Waytek,"Fuse blocks, relays, sockets, busbar, 16 AWG spools",46047,"Sealed inline ATC fuse holder, 14 AWG leads",as P002,1,ea,,est,"F21, the kick-down feed off O12 (D-320 / W-320) - add one to the P002 count rather than a separate line if the cart is edited before it is paid",to add,,
 P138,Amazon,Dash node and electronics,,"USB-to-CAN interface cable, Ecumaster / PCAN / Kvaser compatible",lives in the car with the config file,1,ea,,est,D-322 limp-home: the roadside fix for a soft PMU fault. Kept in the glovebox with the current config file and a printed copy of the recovery table (RC03),to add,,

@@ -64,7 +64,7 @@ grounds,note,text,no,,R11 - a length nobody has measured carries confirm (2026-0
 housings,code,key,yes,,
 housings,leg,str,no,,
 housings,class,enum(Blower|Door|Medium|Module|Port|Power|Signal),no,,
-housings,leg_side,enum(DT06-08S|DT06-12S|DT06-2S|DT06-4S|DT06-6S|DT06-8S|DTP06-2S|DTP06-4S),no,,
+housings,leg_side,enum(DT06-12S|DT06-2S|DT06-4S|DT06-6S|DT06-8S|DTP06-2S|DTP06-4S),no,,
 housings,box_side,str,no,,
 housings,cavs,int,no,,
 housings,wedgelocks,str,no,,
@@ -83,9 +83,9 @@ icu_channels,note,text,no,,
 inputs,id,key,yes,,
 inputs,title,str,no,,
 inputs,kind,enum(12v|ground|output),no,,output = the pin is configured as one of O17-O24 and is not an input at all; widened 2026-09-12 so this table can describe the real channel set (D-331 / W-331)
-inputs,window,int,no,,"± half-width in counts around the live reading (D-142); how it is applied is decode"
+inputs,window,int,no,,± half-width in counts around the live reading (D-142); how it is applied is decode
 inputs,fault_rule,str,no,,
-inputs,decode,enum(conductance|upward|window),no,,"how the states are told apart - rules ladder-decode; added 2026-09-24 by R3 (D-408)"
+inputs,decode,enum(conductance|upward|window),no,,how the states are told apart - rules ladder-decode; added 2026-09-24 by R3 (D-408)
 ladders,id,key,yes,,
 ladders,input,str,no,inputs.id,
 ladders,state,str,no,,
@@ -129,9 +129,9 @@ parts,section,str,no,,
 parts,sku,str,no,,
 parts,item,text,no,,
 parts,spec,text,no,,
-parts,qty,str,no,,
-parts,unit,enum(ea|ft|pair|set),no,,
-parts,unit_usd,int,no,,
+parts,qty,num,no,,a number; the unit is in unit (P45)
+parts,unit,enum(ea|ft|pair|pk|roll|set),no,,
+parts,unit_usd,num,no,,"US dollars per unit, cents allowed (P45)"
 parts,basis,enum(cart|est),no,,
 parts,used_for,text,no,,
 parts,status,str,no,,
