@@ -10,22 +10,41 @@ name: rx7
 # look at anything the app shows or the drawings — nothing generated ever gates a push,
 # and a job that did would rebuild the v2 trap that stopped Camden pushing.
 #
-# Stdlib only. No install step, nothing to keep in sync.
+# It checks out only what `check` reads (tools, every data folder, the archive: about
+# 15 MB, not the 280 MB tree with its PDFs), one run per branch at a time (an answer
+# saved four times in five seconds is four pushes), and it stops itself after five minutes.
+# Stdlib only. No install step, nothing to keep in sync. (Plan P11, 2026-09-26.)
 
 on:
   push:
-  pull_request:
   workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rx7-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   record:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools
+            00-CAR/data
+            01-REFERENCE/data
+            02-APP/data
+            02-PROJECTS
+            99-ARCHIVE
+          sparse-checkout-cone-mode: true
 
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.13'
+          python-version: '3.14'
 
       - name: the gate resolver's own tests
         run: python tools/rx7.py selftest
