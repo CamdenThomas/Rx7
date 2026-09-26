@@ -1,0 +1,532 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1310" height="2468" viewBox="0 0 1310 2468" font-family="Noto Sans, sans-serif">
+<title>Drop - pin ladder</title>
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="30.0" y="40.0" font-size="20" text-anchor="start" font-weight="700" fill="#1f2328">DROP · A · PIN LADDER</text>
+<text x="30.0" y="64.0" font-size="12" text-anchor="start" font-weight="400" fill="#57606a">One block per housing, one row per cavity. Every wire runs straight from its cavity to where it lands. Read left to right.</text>
+<rect x="30.0" y="110.0" width="360.0" height="170.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="132.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">DP-DIAG  ·  DT06-4S  ·  Glovebox</text>
+<line x1="30" y1="144.0" x2="390" y2="144.0" stroke="#d0d7de"/>
+<circle cx="50" cy="161.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="165.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="165.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">CAN1 H</text>
+<text x="380.0" y="165.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">CAN1H</text>
+<path d="M390.0,161.0 L720.0,161.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,161.0 L720.0,161.0" fill="none" stroke="#f2c318" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="151.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DIAG-1  ·  16 tw AWG YEL</text>
+<rect x="720.0" y="147.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="165.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Laptop port in the glovebox — 120 Ω across 1/2 inside the plug</text>
+<line x1="30" y1="178.0" x2="390" y2="178.0" stroke="#d0d7de"/>
+<circle cx="50" cy="195.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="199.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="199.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">CAN1 L</text>
+<text x="380.0" y="199.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">CAN1L</text>
+<path d="M390.0,195.0 L720.0,195.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,195.0 L720.0,195.0" fill="none" stroke="#2e8b3e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="185.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DIAG-2  ·  16 tw AWG GRN</text>
+<rect x="720.0" y="181.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="199.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Laptop port</text>
+<line x1="30" y1="212.0" x2="390" y2="212.0" stroke="#d0d7de"/>
+<circle cx="50" cy="229.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="233.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="233.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">+12 V constant</text>
+<text x="380.0" y="233.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F2</text>
+<path d="M390.0,229.0 L720.0,229.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,229.0 L720.0,229.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="219.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DIAG-3  ·  16 AWG RED</text>
+<rect x="720.0" y="215.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="233.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Laptop port</text>
+<line x1="30" y1="246.0" x2="390" y2="246.0" stroke="#d0d7de"/>
+<circle cx="50" cy="263.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="267.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="267.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Ground</text>
+<text x="380.0" y="267.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">GND</text>
+<path d="M390.0,263.0 L720.0,263.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,263.0 L720.0,263.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="253.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DIAG-4  ·  16 AWG BLK</text>
+<rect x="720.0" y="249.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="267.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Laptop port</text>
+<rect x="30.0" y="316.0" width="360.0" height="238.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="338.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">DP-ICU-A  ·  DT06-6S  ·  ICU enclosure wall</text>
+<line x1="30" y1="350.0" x2="390" y2="350.0" stroke="#d0d7de"/>
+<circle cx="50" cy="367.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="371.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="371.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">+12 V switched — ICU logic</text>
+<text x="380.0" y="371.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O10</text>
+<path d="M390.0,367.0 L720.0,367.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,367.0 L720.0,367.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="357.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-A-1  ·  16 AWG RED</text>
+<rect x="720.0" y="353.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="371.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ICU tail A — the DT06-6S plug from the post into the ICU's DT13-06PA (D-270)</text>
+<line x1="30" y1="384.0" x2="390" y2="384.0" stroke="#d0d7de"/>
+<circle cx="50" cy="401.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="405.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="405.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Illumination — the ICU's dimming reference</text>
+<text x="380.0" y="405.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O20</text>
+<path d="M390.0,401.0 L720.0,401.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,401.0 L720.0,401.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="391.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-A-2  ·  16 AWG RED</text>
+<rect x="720.0" y="387.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="405.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ICU tail A (D-270) — the display dims against the O20 bus</text>
+<line x1="30" y1="418.0" x2="390" y2="418.0" stroke="#d0d7de"/>
+<circle cx="50" cy="435.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="439.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="439.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Ground</text>
+<text x="380.0" y="439.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">GND</text>
+<path d="M390.0,435.0 L720.0,435.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,435.0 L720.0,435.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="425.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-A-3  ·  16 AWG BLK</text>
+<rect x="720.0" y="421.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="439.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ICU tail A (D-270)</text>
+<line x1="30" y1="452.0" x2="390" y2="452.0" stroke="#d0d7de"/>
+<circle cx="50" cy="469.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="473.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="473.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">CAN2 H</text>
+<text x="380.0" y="473.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">CAN2H</text>
+<path d="M390.0,469.0 L720.0,469.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,469.0 L720.0,469.0" fill="none" stroke="#f2c318" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="459.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-A-4  ·  16 tw AWG YEL</text>
+<rect x="720.0" y="455.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="473.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ICU tail A (D-270)</text>
+<line x1="30" y1="486.0" x2="390" y2="486.0" stroke="#d0d7de"/>
+<circle cx="50" cy="503.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="507.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="507.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">CAN2 L</text>
+<text x="380.0" y="507.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">CAN2L</text>
+<path d="M390.0,503.0 L720.0,503.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,503.0 L720.0,503.0" fill="none" stroke="#2e8b3e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="493.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-A-5  ·  16 tw AWG GRN</text>
+<rect x="720.0" y="489.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="507.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ICU tail A (D-270)</text>
+<line x1="30" y1="520.0" x2="390" y2="520.0" stroke="#d0d7de"/>
+<circle cx="50" cy="537.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="541.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="541.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">+12 V ignition — the display's backlight (F16)</text>
+<text x="380.0" y="541.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F16</text>
+<path d="M390.0,537.0 L720.0,537.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,537.0 L720.0,537.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="527.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-A-6  ·  16 AWG RED</text>
+<rect x="720.0" y="523.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="541.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ICU tail A (D-270) — the display's backlight feed through the carrier (D-268)</text>
+<rect x="30.0" y="590.0" width="360.0" height="476.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="612.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">DP-ICU-B  ·  DT06-12S  ·  ICU enclosure wall</text>
+<line x1="30" y1="624.0" x2="390" y2="624.0" stroke="#d0d7de"/>
+<circle cx="50" cy="641.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="645.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="645.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Water temp sender</text>
+<text x="380.0" y="645.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L1-S1 3</text>
+<path d="M390.0,641.0 L720.0,641.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,641.0 L720.0,641.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="631.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-B-1  ·  16 AWG GRY</text>
+<rect x="720.0" y="627.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="645.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ICU tail B (D-270) — the ICU excites and reads the sender; the display draws it</text>
+<line x1="30" y1="658.0" x2="390" y2="658.0" stroke="#d0d7de"/>
+<circle cx="50" cy="675.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="679.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="679.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Oil-pressure node</text>
+<text x="380.0" y="679.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L1-S1 4</text>
+<path d="M390.0,675.0 L720.0,675.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,675.0 L720.0,675.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="665.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-B-2  ·  16 AWG GRY</text>
+<rect x="720.0" y="661.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="679.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ICU tail B (D-270) — a PMU-excited node the ICU reads (D-260); the display draws it</text>
+<line x1="30" y1="692.0" x2="390" y2="692.0" stroke="#d0d7de"/>
+<circle cx="50" cy="709.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="713.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="713.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Fuel level sender</text>
+<text x="380.0" y="713.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L4-S 1</text>
+<path d="M390.0,709.0 L720.0,709.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,709.0 L720.0,709.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="699.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-B-3  ·  16 AWG GRY</text>
+<rect x="720.0" y="695.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="713.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ICU tail B (D-270) — the ICU excites and reads the sender; the display draws it</text>
+<line x1="30" y1="726.0" x2="390" y2="726.0" stroke="#d0d7de"/>
+<circle cx="50" cy="743.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="747.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="747.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Tachometer pulse</text>
+<text x="380.0" y="747.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L1-S1 6</text>
+<path d="M390.0,743.0 L720.0,743.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,743.0 L720.0,743.0" fill="none" stroke="#6b7280" stroke-width="5" stroke-linejoin="round"/>
+<path d="M390.0,743.0 L720.0,743.0" fill="none" stroke="#e5e7eb" stroke-width="2" stroke-dasharray="3 3"/>
+<text x="406.0" y="733.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-B-4  ·  16 AWG shielded</text>
+<rect x="720.0" y="729.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="747.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ICU tail B (D-270) — read by the ICU</text>
+<line x1="30" y1="760.0" x2="390" y2="760.0" stroke="#d0d7de"/>
+<circle cx="50" cy="777.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="781.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="781.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Charge-lamp line (alternator L)</text>
+<text x="380.0" y="781.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L1-S2 8</text>
+<path d="M390.0,777.0 L720.0,777.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,777.0 L720.0,777.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="767.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-B-5  ·  16 AWG GRY</text>
+<rect x="720.0" y="763.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="781.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ICU tail B (D-270) — read by the ICU; the display draws the CHARGE tell-tale</text>
+<line x1="30" y1="794.0" x2="390" y2="794.0" stroke="#d0d7de"/>
+<circle cx="50" cy="818.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="822.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="813.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Brake warning — fluid level +</text>
+<text x="70.0" y="830.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">parking brake</text>
+<text x="380.0" y="822.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L1-S2 1 + L3-S2 11</text>
+<path d="M390.0,818.0 L720.0,818.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,818.0 L720.0,818.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="808.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-B-6  ·  16 AWG GRY</text>
+<rect x="720.0" y="797.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="822.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ICU tail B (D-270) — read by the ICU; the display draws one BRAKE tell-tale for both switches</text>
+<line x1="30" y1="842.0" x2="390" y2="842.0" stroke="#d0d7de"/>
+<circle cx="50" cy="864.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="868.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="868.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="868.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="860.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 — the ICU's oil-temperature channel IC07 lands here when the swap's rebuilt leg</text>
+<text x="730.0" y="876.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">brings a sender (D-264)</text>
+<line x1="30" y1="886.0" x2="390" y2="886.0" stroke="#d0d7de"/>
+<circle cx="50" cy="903.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="907.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="907.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Road speed — pulse generator signal</text>
+<text x="380.0" y="907.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L4-S 3</text>
+<path d="M390.0,903.0 L720.0,903.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,903.0 L720.0,903.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="893.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-B-8  ·  16 AWG GRY</text>
+<rect x="720.0" y="889.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="907.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ICU tail B (D-270) — channel IC08; pulses per mile is a config value (D-272)</text>
+<line x1="30" y1="920.0" x2="390" y2="920.0" stroke="#d0d7de"/>
+<circle cx="50" cy="942.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="946.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
+<text x="70.0" y="946.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Phase-2 sensor signal spare</text>
+<text x="380.0" y="946.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L1-S2 11</text>
+<path d="M390.0,942.0 L720.0,942.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,942.0 L720.0,942.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="932.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-B-9  ·  16 AWG GRY  ·  capped at the far end</text>
+<rect x="720.0" y="923.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="938.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The ICU's spare input (DT13 pin 9) — nothing reads it until the swap brings a sensor; wired to L1-S2</text>
+<text x="730.0" y="954.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">11 at the post (D-271)</text>
+<line x1="30" y1="964.0" x2="390" y2="964.0" stroke="#d0d7de"/>
+<circle cx="50" cy="981.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="985.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">10</text>
+<text x="70.0" y="985.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Turn LEFT tell-tale sense</text>
+<text x="380.0" y="985.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O17</text>
+<path d="M390.0,981.0 L720.0,981.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,981.0 L720.0,981.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="971.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-B-10  ·  16 AWG RED</text>
+<rect x="720.0" y="967.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="985.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ICU tail B (D-270) — the tell-tale follows the real lamps (D-258); the display draws it</text>
+<line x1="30" y1="998.0" x2="390" y2="998.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1015.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1019.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">11</text>
+<text x="70.0" y="1019.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Turn RIGHT tell-tale sense</text>
+<text x="380.0" y="1019.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O18</text>
+<path d="M390.0,1015.0 L720.0,1015.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1015.0 L720.0,1015.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1005.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-B-11  ·  16 AWG RED</text>
+<rect x="720.0" y="1001.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1019.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ICU tail B (D-270) — the display draws it</text>
+<line x1="30" y1="1032.0" x2="390" y2="1032.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1049.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1053.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">12</text>
+<text x="70.0" y="1053.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">High-beam tell-tale sense</text>
+<text x="380.0" y="1053.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O3</text>
+<path d="M390.0,1049.0 L720.0,1049.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1049.0 L720.0,1049.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1039.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-B-12  ·  16 AWG RED</text>
+<rect x="720.0" y="1035.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1053.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ICU tail B (D-270) — the display draws it</text>
+<rect x="30.0" y="1102.0" width="360.0" height="346.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="1124.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">DP-DCU  ·  DT06-6S  ·  DCU enclosure wall, centre stack</text>
+<line x1="30" y1="1136.0" x2="390" y2="1136.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1166.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1170.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="1170.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">+12 V constant - DCU logic</text>
+<text x="380.0" y="1170.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F22</text>
+<path d="M390.0,1166.0 L720.0,1166.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1166.0 L720.0,1166.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1156.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-1  ·  16 AWG RED</text>
+<rect x="720.0" y="1139.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1154.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DT06-6S plug at the end of the tail to the centre stack, plugged into the DCU at E26, live from</text>
+<text x="730.0" y="1170.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">install (luxury D-362, D-374). CONSTANT, not switched: the DCU has to be alive with the key out to see</text>
+<text x="730.0" y="1186.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">a panel press and pull the wake line (D-350). It was an O10 tap until then</text>
+<line x1="30" y1="1196.0" x2="390" y2="1196.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1218.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1222.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="1222.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Outside-air temperature (from L2-S 5)</text>
+<text x="380.0" y="1222.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L2-S 5</text>
+<path d="M390.0,1218.0 L720.0,1218.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1218.0 L720.0,1218.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1208.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-2  ·  16 AWG GRY</text>
+<rect x="720.0" y="1199.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1214.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DT06-6S plug at the end of the tail to the centre stack, plugged into the DCU at E26, live from</text>
+<text x="730.0" y="1230.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">install (luxury D-362, D-374) (D-256 → D-329)</text>
+<line x1="30" y1="1240.0" x2="390" y2="1240.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1262.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1266.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="1266.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Ground</text>
+<text x="380.0" y="1266.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">GND</text>
+<path d="M390.0,1262.0 L720.0,1262.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1262.0 L720.0,1262.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1252.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-3  ·  16 AWG BLK</text>
+<rect x="720.0" y="1243.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1258.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DT06-6S plug at the end of the tail to the centre stack, plugged into the DCU at E26, live from</text>
+<text x="730.0" y="1274.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">install (luxury D-362, D-374)</text>
+<line x1="30" y1="1284.0" x2="390" y2="1284.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1306.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1310.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="1310.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">CAN2 H</text>
+<text x="380.0" y="1310.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">CAN2H</text>
+<path d="M390.0,1306.0 L720.0,1306.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1306.0 L720.0,1306.0" fill="none" stroke="#f2c318" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1296.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-4  ·  16 tw AWG YEL</text>
+<rect x="720.0" y="1287.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1302.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DT06-6S plug at the end of the tail to the centre stack, plugged into the DCU at E26, live from</text>
+<text x="730.0" y="1318.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">install (luxury D-362, D-374)</text>
+<line x1="30" y1="1328.0" x2="390" y2="1328.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1350.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1354.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="1354.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">CAN2 L</text>
+<text x="380.0" y="1354.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">CAN2L</text>
+<path d="M390.0,1350.0 L720.0,1350.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1350.0 L720.0,1350.0" fill="none" stroke="#2e8b3e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1340.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-5  ·  16 tw AWG GRN</text>
+<rect x="720.0" y="1331.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1346.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DT06-6S plug at the end of the tail to the centre stack, plugged into the DCU at E26, live from</text>
+<text x="730.0" y="1362.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">install (luxury D-362, D-374)</text>
+<line x1="30" y1="1372.0" x2="390" y2="1372.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1410.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1414.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="1414.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">DCU wake request</text>
+<text x="380.0" y="1414.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">WAKE 7</text>
+<path d="M390.0,1410.0 L720.0,1410.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1410.0 L720.0,1410.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1400.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-6  ·  16 AWG BLU</text>
+<rect x="720.0" y="1375.0" width="560.0" height="70.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1390.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DT06-6S plug at the end of the tail to the centre stack, plugged into the DCU at E26, live from</text>
+<text x="730.0" y="1406.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">install (luxury D-362, D-374). The DCU pulls this to wake the PMU when a panel key is pressed with</text>
+<text x="730.0" y="1422.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the car asleep; the seventh diode-OR input on the wake strip (D-350). This was the housing's last</text>
+<text x="730.0" y="1438.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">spare cavity</text>
+<rect x="30.0" y="1484.0" width="360.0" height="532.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="1506.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">DP-DCU-B  ·  DT06-12S  ·  DCU enclosure wall, centre stack</text>
+<line x1="30" y1="1518.0" x2="390" y2="1518.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1540.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1544.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="1544.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Window DRV up command</text>
+<text x="380.0" y="1544.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S2 3</text>
+<path d="M390.0,1540.0 L720.0,1540.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1540.0 L720.0,1540.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1530.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-B-1  ·  16 AWG BLU  ·  capped at the far end</text>
+<rect x="720.0" y="1521.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1536.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's DT13-12PA, plugged in at E26 (luxury D-362, D-374); the far end stays capped until the</text>
+<text x="730.0" y="1552.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">luxury package fits the load</text>
+<line x1="30" y1="1562.0" x2="390" y2="1562.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1584.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1588.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="1588.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Window DRV down command</text>
+<text x="380.0" y="1588.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S2 4</text>
+<path d="M390.0,1584.0 L720.0,1584.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1584.0 L720.0,1584.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1574.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-B-2  ·  16 AWG BLU  ·  capped at the far end</text>
+<rect x="720.0" y="1565.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1580.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's DT13-12PA, plugged in at E26 (luxury D-362, D-374); the far end stays capped until the</text>
+<text x="730.0" y="1596.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">luxury package fits the load</text>
+<line x1="30" y1="1606.0" x2="390" y2="1606.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1628.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1632.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="1632.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Window PASS up command</text>
+<text x="380.0" y="1632.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S2 5</text>
+<path d="M390.0,1628.0 L720.0,1628.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1628.0 L720.0,1628.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1618.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-B-3  ·  16 AWG BLU  ·  capped at the far end</text>
+<rect x="720.0" y="1609.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1624.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's DT13-12PA, plugged in at E26 (luxury D-362, D-374); the far end stays capped until the</text>
+<text x="730.0" y="1640.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">luxury package fits the load</text>
+<line x1="30" y1="1650.0" x2="390" y2="1650.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1672.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1676.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="1676.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Window PASS down command</text>
+<text x="380.0" y="1676.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S2 6</text>
+<path d="M390.0,1672.0 L720.0,1672.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1672.0 L720.0,1672.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1662.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-B-4  ·  16 AWG BLU  ·  capped at the far end</text>
+<rect x="720.0" y="1653.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1668.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's DT13-12PA, plugged in at E26 (luxury D-362, D-374); the far end stays capped until the</text>
+<text x="730.0" y="1684.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">luxury package fits the load</text>
+<line x1="30" y1="1694.0" x2="390" y2="1694.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1716.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1720.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="1720.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror motor common (both mirrors)</text>
+<text x="380.0" y="1720.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S3 5</text>
+<path d="M390.0,1716.0 L720.0,1716.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1716.0 L720.0,1716.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1706.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-B-5  ·  16 AWG GRY  ·  capped at the far end</text>
+<rect x="720.0" y="1697.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1712.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's DT13-12PA, plugged in at E26 (luxury D-362, D-374); the far end stays capped until the</text>
+<text x="730.0" y="1728.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">luxury package fits the load</text>
+<line x1="30" y1="1738.0" x2="390" y2="1738.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1760.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1764.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="1764.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror LEFT motor</text>
+<text x="380.0" y="1764.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S3 6</text>
+<path d="M390.0,1760.0 L720.0,1760.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1760.0 L720.0,1760.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1750.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-B-6  ·  16 AWG GRY  ·  capped at the far end</text>
+<rect x="720.0" y="1741.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1756.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's DT13-12PA, plugged in at E26 (luxury D-362, D-374); the far end stays capped until the</text>
+<text x="730.0" y="1772.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">luxury package fits the load</text>
+<line x1="30" y1="1782.0" x2="390" y2="1782.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1804.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1808.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="1808.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror RIGHT motor</text>
+<text x="380.0" y="1808.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S3 7</text>
+<path d="M390.0,1804.0 L720.0,1804.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1804.0 L720.0,1804.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1794.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-B-7  ·  16 AWG GRY  ·  capped at the far end</text>
+<rect x="720.0" y="1785.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1800.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's DT13-12PA, plugged in at E26 (luxury D-362, D-374); the far end stays capped until the</text>
+<text x="730.0" y="1816.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">luxury package fits the load</text>
+<line x1="30" y1="1826.0" x2="390" y2="1826.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1848.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1852.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="1852.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror clutch coils (both mirrors)</text>
+<text x="380.0" y="1852.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-S3 8</text>
+<path d="M390.0,1848.0 L720.0,1848.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1848.0 L720.0,1848.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1838.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-B-8  ·  16 AWG GRY  ·  capped at the far end</text>
+<rect x="720.0" y="1829.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1844.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's DT13-12PA, plugged in at E26 (luxury D-362, D-374); the far end stays capped until the</text>
+<text x="730.0" y="1860.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">luxury package fits the load</text>
+<line x1="30" y1="1870.0" x2="390" y2="1870.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1892.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1896.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
+<text x="70.0" y="1896.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror heat feed (DCU high-side)</text>
+<text x="380.0" y="1896.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DCU</text>
+<path d="M390.0,1892.0 L720.0,1892.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1892.0 L720.0,1892.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1882.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-B-9  ·  16 AWG RED  ·  capped at the far end</text>
+<rect x="720.0" y="1873.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1888.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's DT13-12PA, plugged in at E26 (D-374); far end capped until the luxury package fits the</text>
+<text x="730.0" y="1904.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">load; linked at the post onto L4-P 4 → F14 at the sill (D-369)</text>
+<line x1="30" y1="1914.0" x2="390" y2="1914.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1931.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1935.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">10</text>
+<text x="70.0" y="1935.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Hatch release select - K3 coil return</text>
+<text x="380.0" y="1935.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K3 85</text>
+<path d="M390.0,1931.0 L720.0,1931.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1931.0 L720.0,1931.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1921.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-B-10  ·  16 AWG BLU  ·  capped at the far end</text>
+<rect x="720.0" y="1917.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1935.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's DT13-12PA; the DCU sinks it during the release pulse to pick the hatch (D-370)</text>
+<line x1="30" y1="1948.0" x2="390" y2="1948.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1965.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1969.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">11</text>
+<text x="70.0" y="1969.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Fuel-door release select - K4 coil return</text>
+<text x="380.0" y="1969.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K4 85</text>
+<path d="M390.0,1965.0 L720.0,1965.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1965.0 L720.0,1965.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1955.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-B-11  ·  16 AWG BLU  ·  capped at the far end</text>
+<rect x="720.0" y="1951.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1969.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's DT13-12PA; the DCU sinks it during the release pulse to pick the fuel door (D-370)</text>
+<line x1="30" y1="1982.0" x2="390" y2="1982.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1999.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2003.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">12</text>
+<text x="70.0" y="2003.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="2003.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="2003.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 - spare</text>
+<rect x="30.0" y="2052.0" width="360.0" height="320.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="2074.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">DP-DCU-C  ·  DT06-8S  ·  DCU enclosure wall, centre stack</text>
+<line x1="30" y1="2086.0" x2="390" y2="2086.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2103.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2107.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="2107.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Seat heat, driver - return</text>
+<text x="380.0" y="2107.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN16</text>
+<path d="M390.0,2103.0 L720.0,2103.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,2103.0 L720.0,2103.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="2093.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-C-1  ·  16 AWG BLK  ·  capped at the far end</text>
+<rect x="720.0" y="2089.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2107.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's DT13-08PA (P153, D-382); the luxury harness LP49 plugs in at I4 - capped until then</text>
+<line x1="30" y1="2120.0" x2="390" y2="2120.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2137.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2141.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="2141.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Seat heat, passenger - return</text>
+<text x="380.0" y="2141.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN16</text>
+<path d="M390.0,2137.0 L720.0,2137.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,2137.0 L720.0,2137.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="2127.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-C-2  ·  16 AWG BLK  ·  capped at the far end</text>
+<rect x="720.0" y="2123.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2141.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's DT13-08PA (P153, D-382); the luxury harness LP49 plugs in at I4 - capped until then</text>
+<line x1="30" y1="2154.0" x2="390" y2="2154.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2171.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2175.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="2175.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Seat cool, driver - return</text>
+<text x="380.0" y="2175.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN16</text>
+<path d="M390.0,2171.0 L720.0,2171.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,2171.0 L720.0,2171.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="2161.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-C-3  ·  16 AWG BLK  ·  capped at the far end</text>
+<rect x="720.0" y="2157.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2175.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's DT13-08PA (P153, D-382); the luxury harness LP49 plugs in at I4 - capped until then</text>
+<line x1="30" y1="2188.0" x2="390" y2="2188.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2205.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2209.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="2209.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Seat cool, passenger - return</text>
+<text x="380.0" y="2209.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN16</text>
+<path d="M390.0,2205.0 L720.0,2205.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,2205.0 L720.0,2205.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="2195.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-C-4  ·  16 AWG BLK  ·  capped at the far end</text>
+<rect x="720.0" y="2191.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2209.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's DT13-08PA (P153, D-382); the luxury harness LP49 plugs in at I4 - capped until then</text>
+<line x1="30" y1="2222.0" x2="390" y2="2222.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2246.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2250.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="2241.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">O15 supply in - servo rail and mirror</text>
+<text x="70.0" y="2258.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">heat</text>
+<text x="380.0" y="2250.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O15 block (L3-P 2)</text>
+<path d="M390.0,2246.0 L720.0,2246.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,2246.0 L720.0,2246.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="2236.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-C-5  ·  16 AWG RED  ·  capped at the far end</text>
+<rect x="720.0" y="2225.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2250.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's DT13-08PA (P153, D-382); the luxury harness LP49 plugs in at I4 - capped until then</text>
+<line x1="30" y1="2270.0" x2="390" y2="2270.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2287.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2291.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="2291.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Power ground</text>
+<text x="380.0" y="2291.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">GND bus</text>
+<path d="M390.0,2287.0 L720.0,2287.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,2287.0 L720.0,2287.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="2277.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-C-6  ·  14 AWG BLK  ·  capped at the far end</text>
+<rect x="720.0" y="2273.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2291.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's DT13-08PA (P153, D-382); the luxury harness LP49 plugs in at I4 - capped until then</text>
+<line x1="30" y1="2304.0" x2="390" y2="2304.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2321.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2325.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="2325.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Power ground</text>
+<text x="380.0" y="2325.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">GND bus</text>
+<path d="M390.0,2321.0 L720.0,2321.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,2321.0 L720.0,2321.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="2311.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-C-7  ·  14 AWG BLK  ·  capped at the far end</text>
+<rect x="720.0" y="2307.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2325.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's DT13-08PA (P153, D-382); the luxury harness LP49 plugs in at I4 - capped until then</text>
+<line x1="30" y1="2338.0" x2="390" y2="2338.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2355.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2359.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="2359.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="2359.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="2359.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 - spare</text>
+<path d="M30.0,2418.0 L66.0,2418.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M30.0,2418.0 L66.0,2418.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="76.0" y="2422.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">RED</text>
+<path d="M123.6,2418.0 L159.6,2418.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M123.6,2418.0 L159.6,2418.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="169.6" y="2422.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRY</text>
+<path d="M217.3,2418.0 L253.3,2418.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M217.3,2418.0 L253.3,2418.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="263.3" y="2422.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLU</text>
+<path d="M310.8,2418.0 L346.8,2418.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M310.8,2418.0 L346.8,2418.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="356.8" y="2422.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLK</text>
+<path d="M403.1,2418.0 L439.1,2418.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M403.1,2418.0 L439.1,2418.0" fill="none" stroke="#2e8b3e" stroke-width="5" stroke-linejoin="round"/>
+<text x="449.1" y="2422.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRN</text>
+<path d="M499.1,2418.0 L535.1,2418.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M499.1,2418.0 L535.1,2418.0" fill="none" stroke="#f2c318" stroke-width="5" stroke-linejoin="round"/>
+<text x="545.1" y="2422.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">YEL</text>
+<path d="M589.7,2418.0 L625.7,2418.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M589.7,2418.0 L625.7,2418.0" fill="none" stroke="#6b7280" stroke-width="5" stroke-linejoin="round"/>
+<path d="M589.7,2418.0 L625.7,2418.0" fill="none" stroke="#e5e7eb" stroke-width="2" stroke-dasharray="3 3"/>
+<text x="635.7" y="2422.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">shielded core</text>
+<text x="30.0" y="2448.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">Solid wire: live. Dashed: run and capped at the far end. A box on a wire is an inline resistor. Generated by rx7.py diagrams - do not edit.</text>
+</svg>

@@ -39,7 +39,21 @@ AREA = ROOT / "02-PROJECTS" / "01-electrical"
 OUT = AREA / "00-design" / "diagrams"
 FONT = Path("/usr/share/fonts/google-noto-vf/NotoSans[wght].ttf")
 
-LEGS = [("L1 Engine", "L1-engine"), ("L2 Front", "L2-front"), ("L3 Dash", "L3-dash"), ("L4 Rear", "L4-rear")]
+def legs():
+    """(leg, folder) for every leg the housings table names (plan P49): 'L1 Engine' -> L1-engine,
+    'L4 Rear (sill)' folds into L4 Rear, and 'Drop' - the ICU/DCU enclosure walls and the
+    diagnostic port - is a leg like the others. Typed nowhere: a new housing leg is a new sheet."""
+    seen = []
+    for h in table("housings"):
+        base = (h.get("leg") or "").split(" (")[0].strip()
+        if base and base not in seen:
+            seen.append(base)
+    out = []
+    for leg in sorted(seen):
+        words = leg.split()
+        folder = leg if len(words) == 1 else f"{words[0]}-{'-'.join(w.lower() for w in words[1:])}"
+        out.append((leg, folder))
+    return out
 
 # insulation colour -> (ink, readable name). A thin dark outline under every wire keeps pale
 # colours visible on paper.
@@ -169,19 +183,28 @@ def table(name):
         return [r for r in csv.DictReader(f)]
 
 
-CAV_RE = re.compile(r"\b((?:L\d-[A-Z0-9]+)|D[12])\s+(\d+)\b(?!\s*[–-]\s*\d)")
 INLINE_RE = re.compile(r"\b\d+(?:\.\d+)?\s*k(?:Ω|Ohm)", re.I)
+
+
+def cav_re():
+    """A cavity reference is a housing CODE from the housings table, a space and a cavity number,
+    or a range 'DP-ICU-A 1–6' (plan P49); built from the table, so a new housing is seen."""
+    codes = sorted({h["code"] for h in table("housings") if h.get("code")}, key=len, reverse=True)
+    alt = "|".join(re.escape(c) for c in codes)
+    return re.compile(rf"(?<![\w-])({alt})\s+(\d+)(?:\s*[–-]\s*(\d+))?\b")
 
 
 def device_ends():
     """{(housing, cav): [(device row, terminal, inline parts)]} from devices.terminals."""
     ends = {}
+    pat = cav_re()
     for d in table("devices"):
         for line in re.split(r"<br>|\n", d.get("terminals") or ""):
             term = re.split(r"\s*(?:→|←|->|<-)\s*", line, maxsplit=1)[0].strip()
             inline = INLINE_RE.findall(line)
-            for h, c in CAV_RE.findall(line):
-                ends.setdefault((h, int(c)), []).append((d, term, inline))
+            for h, c, c2 in pat.findall(line):
+                for n in range(int(c), int(c2 or c) + 1):
+                    ends.setdefault((h, n), []).append((d, term, inline))
     return ends
 
 
@@ -473,10 +496,13 @@ def route_map(leg, folder):
 
 def main() -> int:
     rc = 0
-    for leg, folder in LEGS:
+    routed = {r["leg"] for r in table("routes")}
+    for leg, folder in legs():
         d = OUT / folder
         d.mkdir(parents=True, exist_ok=True)
         for name, fn in (("A-pin-ladder.svg", pin_ladder), ("B-route-map.svg", route_map)):
+            if fn is route_map and not any(r.startswith(leg.split()[0]) for r in routed):
+                continue  # the Drop housings sit at the modules; no route runs to them
             try:
                 svg = fn(leg, folder).svg()
             except Refused as e:

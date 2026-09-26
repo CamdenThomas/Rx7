@@ -42,17 +42,16 @@ firmware/
 │   ├── test_suite.cpp       runs on the PC: packing, counter wrap, rendering, overlap, dirty tiles, stats
 │   └── run.sh               build + run every suite. Do this after any change to the headers above
 │
-└── superseded sketches, kept as isolated test rigs (all passed)
-    ├── can_map_test/        Stage 2 — struct packing, counter wrap        (carries a copy of can_map.h)
-    ├── can_loopback_test/   Stage 3 — CAN with no transceiver             (carries a copy of can_map.h)
+└── bench rigs kept here (both passed)
     ├── ladder_decode_test/  Stage 4 — ladder windows and fault bands
-    ├── tach_simulator/      Stage 5 — RPM capture, one jumper. Still the fastest RPM source
-    └── cluster_render_test/ pre-cluster_core.h renderer with a counting mock canvas. Superseded
+    └── tach_simulator/      Stage 5 — RPM capture, one jumper. Still the fastest RPM source
+    (can_map_test, can_loopback_test and cluster_render_test moved to
+     99-ARCHIVE/2026-09-26_firmware-superseded-sketches/ on 2026-09-26)
 ```
 
-**`can_map.h` has four copies** (`icu/`, `dcu/`, `can_map_test/`, `can_loopback_test/`) because the Arduino IDE needs the header
-beside each sketch. **`icu/can_map.h` is the master.** When it changes, copy
-it over the two test sketches and `dcu/`. Nothing checks that the four agree — compare them by hand after every copy.
+**`can_map.h` has two copies** (`icu/`, `dcu/`) because the Arduino IDE needs the header
+beside each sketch. **`icu/can_map.h` is the master.** When it changes, copy it over `dcu/`.
+`tests/run.sh` refuses to run the suites while the two differ (plan P49, 2026-09-26).
 
 **`sim_sdl.cpp` includes `../icu/cluster_core.h` directly** — one source of
 truth, no second copy to drift. **`channels.h` is not generated any more:** the v2 build that rendered it from the electrical pin table (D-311) is archived, so a pin row changed in `02-PROJECTS/01-electrical/data/pins.csv` is copied into `channels.h` by hand (work F-013).

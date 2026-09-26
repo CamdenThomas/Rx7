@@ -15,6 +15,13 @@ if ! command -v g++ >/dev/null 2>&1; then
   exit 3
 fi
 
+# The master CAN map and the DCU's copy must be one file (plan P49): a drift here is a node
+# that mis-reads every frame, and nothing else checks it.
+if ! cmp -s ../icu/can_map.h ../dcu/can_map.h; then
+  echo "can_map.h drift: dcu/can_map.h differs from icu/can_map.h (the master) - copy the master over it first"
+  exit 1
+fi
+
 suite() {  # name, source, extra flags
   echo "Building $1 ..."
   g++ "$2" -o "$1" -std=c++17 -O2 $3 || { echo "BUILD FAILED: $2"; exit 1; }

@@ -3,7 +3,8 @@
 *Rev 2026-09-23 · owns: which drawings exist, how they are made, and the options held in
 reserve. Ruled by Camden on 2026-09-23 (D-385).*
 
-**Every sheet here is generated. Never edit one by hand.** Rebuild them all with:
+**Every sheet here is generated. Never edit one by hand.** The legs are read from the `housings` table
+(`tools/diagrams.py legs()`): a housing with a new `leg` value gets its own folder on the next run. Rebuild them all with:
 
 ```
 python tools/rx7.py diagrams
@@ -28,6 +29,7 @@ If a drawing and a row ever disagree, the row is right.
 | `L2-front/` | L2-P, L2-M, L2-S, L2-OAT | Dash post → nose splice → RT07–RT09 |
 | `L3-dash/` | L3-P, L3-M, L3-BLW, L3-S1–S3, L3-CMF, L3-MOD, L3-RDR | Dash post → RT10–RT14 |
 | `L4-rear/` | L4-P, L4-M, L4-S, L4-S2, L4-RDR, D1, D2 | Dash post → rear node / sill node / tunnel → RT15–RT21 |
+| `Drop/` | DP-ICU-A, DP-ICU-B, DP-DCU, DP-DCU-B, DP-DCU-C, DP-DIAG — the module enclosure walls and the diagnostic port | no route map: these housings sit at the modules (plan P49, 2026-09-26) |
 
 **A · Pin ladder** is for the bench: pinning, crimping and metering. There is one block per
 housing and one row per cavity, in pin order, including sealing plugs and reserved
@@ -69,10 +71,11 @@ Print from Firefox (Save as PDF) for the bench copy; that embeds the font.
 
 The code is `tools/diagrams.py`. It needs Pillow (`python3-pillow`) for font metrics.
 
-## The options held in reserve — `options/`
+## The options held in reserve — now `99-ARCHIVE/2026-09-26_diagram-options/options/`
 
 Four approaches were sampled on the same real slice (L1-S1 and routes RT01–RT05) before
-A + B was chosen. They are kept here in case you switch:
+A + B was chosen. The samples and the code that drew them moved to the archive on 2026-09-26
+(plan P54); the verdicts stay here in case you switch:
 
 | File | Option | Verdict when sampled |
 |---|---|---|
