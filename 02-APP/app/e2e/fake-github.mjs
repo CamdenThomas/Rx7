@@ -16,7 +16,7 @@ export function makeRepo(tree) {
     if (r === 'tools' || r === 'tools/rx7.py') return true;
     if (/(^|\/)(node_modules|\.git|target|app)(\/|$)/.test(r)) return false;
     if (statSync(p).isDirectory()) return true;
-    return /\/data\/.*\.csv$/.test(r) || /^99-ARCHIVE\/.*(decisions|retired)\.csv$/.test(r) || /^99-ARCHIVE\/.*\/D-\d+\.md$/.test(r);
+    return /\/data\/.*\.csv$/.test(r) || /^99-ARCHIVE\/.*(decisions|retired)\.csv$/.test(r) || /^99-ARCHIVE\/.*\/(DECISIONS|ID-REGISTRY)\.md$/.test(r) || /^99-ARCHIVE\/.*\/D-\d+\.md$/.test(r);
   };
   const walk = (src) => {
     for (const name of readdirSync(src)) {

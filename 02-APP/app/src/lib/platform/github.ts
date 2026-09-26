@@ -126,6 +126,9 @@ export function wanted(path: string): 'text' | 'name' | null {
   if (path === 'tools/rx7.py') return 'text';
   if (path.startsWith('99-ARCHIVE/')) {
     if (/\/(decisions|retired)\.csv$/.test(path)) return 'text';
+    // The v2 pages rx7.py reads for decision ids (cites resolve there; an inherited decision
+    // must be owned somewhere) - about 200 KB, fetched once and cached.
+    if (/\/(DECISIONS|ID-REGISTRY)\.md$/.test(path)) return 'text';
     if (/\/D-\d+\.md$/.test(path)) return 'name';
     return null;
   }
