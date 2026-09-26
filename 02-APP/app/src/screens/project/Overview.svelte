@@ -1,7 +1,9 @@
-<!-- Where the project stands: what waits for him, what Claude can do next, what just happened. -->
+<!--
+  Read-only since 2026-09-26: a phone tap here answered rows by accident, so every row and
+  block opens its own page and is answered there.
+ Where the project stands: what waits for him, what Claude can do next, what just happened. -->
 <script lang="ts">
   import { ArrowRight, CirclePlay } from '@lucide/svelte';
-  import WorkAnswer from '../../components/WorkAnswer.svelte';
   import { app } from '../../lib/app.svelte';
   import type { Commit } from '../../lib/model';
   import { href } from '../../lib/router.svelte';
@@ -48,7 +50,6 @@
           {#each mine.slice(0, 8) as w (w.id)}
             <li>
               <a href={href({ name: 'todo', area, id: w.id })}><CirclePlay size={15} class="play" /><span class="id">{w.id}</span><span class="it">{w.item}</span></a>
-              <WorkAnswer row={w} />
             </li>
           {/each}
         </ul>

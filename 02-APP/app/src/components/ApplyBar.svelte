@@ -5,7 +5,7 @@
   the phone the press is saved as a request, and the desktop runs it when it next syncs.
 -->
 <script lang="ts">
-  import { Play, LoaderCircle } from '@lucide/svelte';
+  import { Play, LoaderCircle, Square } from '@lucide/svelte';
   import { app } from '../lib/app.svelte';
   import { autoApply } from '../lib/autoapply.svelte';
   import { runs } from '../lib/claude.svelte';
@@ -18,6 +18,7 @@
   const waiting = $derived((app.snapshot?.inbox ?? []).filter((a) => a.area === area && kinds.includes(a.kind)));
   const requested = $derived((app.snapshot?.inbox ?? []).some((a) => a.area === area && a.kind === 'run' && a.target === 'apply'));
   const running = $derived(runs.busy && runs.current?.record.area === area);
+  const queuedHere = $derived(runs.queuedFor(area));
   let confirming = $state(false);
 
   async function apply() {
@@ -44,6 +45,8 @@
   <p>
     {#if running}
       <LoaderCircle size={16} class="spinning" /> Claude is applying your answers.
+    {:else if queuedHere}
+      <LoaderCircle size={16} class="spinning" /> This project's Apply waits behind the run that is going.
       <a href={href({ name: 'run', area })}>Watch it</a>
     {:else if waiting.length}
       <strong>{plural(waiting.length, 'answer')}</strong> saved, waiting to be applied.
@@ -59,9 +62,15 @@
   {#if confirming}
     <button class="btn small ghost" onclick={() => (confirming = false)}>Not now</button>
   {/if}
-  <button class="btn primary" disabled={!waiting.length || running || (requested && !app.platform?.canClaude)} onclick={apply}>
-    <Play size={15} /> {app.platform?.canClaude ? 'Apply' : 'Request Apply'}
-  </button>
+  {#if running || queuedHere}
+    <button class="btn" onclick={() => runs.cancel(area)} title="Stop the run that is going, or take this project's run out of the queue">
+      <Square size={14} /> Cancel
+    </button>
+  {:else}
+    <button class="btn primary" disabled={!waiting.length || (requested && !app.platform?.canClaude)} onclick={apply}>
+      <Play size={15} /> {app.platform?.canClaude ? 'Apply' : 'Request Apply'}
+    </button>
+  {/if}
 </div>
 
 <style>

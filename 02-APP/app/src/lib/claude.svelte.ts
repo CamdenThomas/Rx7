@@ -221,9 +221,20 @@ class Runs {
     return this.#queue.length;
   }
 
+  queuedFor(area: string): boolean {
+    return this.#queue.some((q) => q.area === area);
+  }
+
   start(w: Workflow, area?: string, extra = '', title?: string, onEnd?: Queued['onEnd']) {
     this.#queue.push({ w, area, extra, title, onEnd });
     void this.#next();
+  }
+
+  /** Cancel what he just asked for: the run going for this area is stopped, and any run still
+   *  waiting for this area leaves the queue. Nothing already committed is undone. */
+  cancel(area?: string) {
+    this.#queue = this.#queue.filter((q) => area !== undefined && q.area !== area);
+    if (this.current && (area === undefined || this.current.record.area === area) && this.busy) void this.current.stream.stop();
   }
 
   async #next() {
