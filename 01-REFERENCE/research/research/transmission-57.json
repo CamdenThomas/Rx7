@@ -1,0 +1,310 @@
+{
+ "parts": [
+  {
+   "id": "PT410",
+   "link": "https://www.ebay.com/shop/mazda-rx7-automatic-transmission?_nkw=mazda+rx7+automatic+transmission",
+   "support": "",
+   "cad": "",
+   "note_add": "Linkage is adjusted at the T-joint under the car with both the lever and the transmission range lever in N (1980 7A-G-1); used 81-85 A/T selector assemblies with knob turn up on eBay, no new part found."
+  },
+  {
+   "id": "PT411",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Its travel is set by how far the knob is screwed onto the lever (1980 7A-G-2): fully in, then out one turn so the button faces the driver."
+  },
+  {
+   "id": "PT412",
+   "link": "https://www.ebay.com/b/Shift-Knobs-for-1982-Mazda-RX-7/174077/bn_92444902",
+   "support": "",
+   "cad": "",
+   "note_add": "Screws onto the lever with a lock nut; setting the knob one turn out from fully in (button toward the driver) is what makes the P and N-R/D-2 interlock work (1980 7A-G-2). Not stocked new by Atkins (their knob list has no 79-85 automatic knob); used only."
+  },
+  {
+   "id": "PT413",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Must be pressed for P and for N to R and D to 2; if those moves work without the button, the knob is screwed too far in (1980 7A-G-2)."
+  },
+  {
+   "id": "PT419",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "The adjustment point is the T-joint at the lower end of the selector lever operating arm: with the transmission range lever in N (third detent from the rear) the T-joint is set so it enters the arm's hole freely, then the nuts are tightened (1980 7A-G-1)."
+  },
+  {
+   "id": "PT643",
+   "link": "https://parts.mazdausa.com/p/Mazda__/SWITCH--KICK-DOWN/105324524/2691-18-660.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Screw-in plunger switch with a lock nut at the accelerator pedal, two single-pin connectors (B-32 on S-001): BW feed from the ignition switch, BR out to the kick-down solenoid. Mazda still lists 2691-18-660 (catalogued for the 626 as well)."
+  },
+  {
+   "id": "PT854",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Colour code 01 = silver metallic (S-005 BI-053). Lit from behind by the shift indicator bulb and socket (PT855) on the RL illumination bus through connector E-07. No new or reproduction A/T indicator found; Atkins stocks only the M/T upper plate FA01-64-350A-01."
+  }
+ ],
+ "specs": [
+  {
+   "part": "PT410",
+   "category": "Transmission",
+   "item": "Manual linkage adjustment: selector lever position",
+   "value": "N",
+   "unit": "range",
+   "source": "S-045",
+   "page": "7A-G-1 Adjusting Manual Linkage (7A:20; 80RX7_7A_Auto_Trans.pdf p.26)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1980 workshop manual section 7A (3N71B, the same 3-speed family as this car); no 1982 body-section manual exists on disk. Engine idle must be set first. Lever in N, car on stands, T-joint off the lower end of the selector lever operating arm, transmission range lever to N, T-joint adjusted then reconnected, operation checked in every range."
+  },
+  {
+   "part": "PT410",
+   "category": "Transmission",
+   "item": "Manual linkage adjustment: transmission range lever N position",
+   "value": "3",
+   "unit": "detent from rear",
+   "source": "S-045",
+   "page": "7A-G-1 step 4 (7A:20; 80RX7_7A_Auto_Trans.pdf p.26)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1980 workshop manual section 7A (3N71B, the same 3-speed family as this car); no 1982 body-section manual exists on disk. N is the third detent counted from the rear of the transmission."
+  },
+  {
+   "part": "PT410",
+   "category": "Transmission",
+   "item": "Transmission removal: selector rod disconnected at the selector lever",
+   "value": "yes",
+   "unit": "",
+   "source": "S-045",
+   "page": "7A-A step 20 (7A:2; 80RX7_7A_Auto_Trans.pdf p.4)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "Same step in the 1985 manual (S-002 7B p.27 'Disconnect the selector rod at the selector lever')."
+  },
+  {
+   "part": "PT412",
+   "category": "Transmission",
+   "item": "Knob lock nut torque",
+   "value": "1.5-2.0",
+   "unit": "m-kg",
+   "source": "S-045",
+   "page": "7A-G-2 step 6 (7A:20; 80RX7_7A_Auto_Trans.pdf p.26)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "10.8-14.5 ft-lb (about 15-20 N m). 1980 workshop manual section 7A (3N71B, the same 3-speed family as this car); no 1982 body-section manual exists on disk"
+  },
+  {
+   "part": "PT412",
+   "category": "Transmission",
+   "item": "Knob setting: turns out from fully screwed in (push button toward the driver)",
+   "value": "1",
+   "unit": "turn",
+   "source": "S-045",
+   "page": "7A-G-2 steps 1-5 (7A:20; 80RX7_7A_Auto_Trans.pdf p.26)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "Lever in N or D, lock nut loosened, knob lightly screwed fully in, then out one turn. If the lever will not go to P with the button pressed, screw the knob in one turn; if it moves N to R or D to 2 without the button, screw it out. 1980 workshop manual section 7A (3N71B, the same 3-speed family as this car); no 1982 body-section manual exists on disk"
+  },
+  {
+   "part": "PT413",
+   "category": "Transmission",
+   "item": "Interlock: moves that need the push button pressed",
+   "value": "P, N-R, D-2",
+   "unit": "",
+   "source": "S-045",
+   "page": "7A-G-2 steps 4-5 (7A:20; 80RX7_7A_Auto_Trans.pdf p.26)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "With the button pressed the lever must reach P; without it the lever must not pass from N to R or from D to 2. 1980 workshop manual section 7A (3N71B, the same 3-speed family as this car); no 1982 body-section manual exists on disk"
+  },
+  {
+   "part": "PT419",
+   "category": "Transmission",
+   "item": "Linkage adjustment point: T-joint at the selector lever operating arm",
+   "value": "free fit in arm hole",
+   "unit": "",
+   "source": "S-045",
+   "page": "7A-G-1 steps 3-6 (7A:20; 80RX7_7A_Auto_Trans.pdf p.26)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "T-joint attaching nuts loosened and the joint set so it freely enters the hole of the selector lever operating arm with both levers in N, then tightened. 1980 workshop manual section 7A (3N71B, the same 3-speed family as this car); no 1982 body-section manual exists on disk"
+  },
+  {
+   "part": "PT643",
+   "category": "Electrical",
+   "item": "Wiring diagram connector code",
+   "value": "B-32",
+   "unit": "",
+   "source": "S-001",
+   "page": "Section B p.13 (pdf p.13)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "Two separate single-pin connectors, one BW and one BR; the switch is drawn as a single normally-open contact in the kick-down system. Wire colours from S-001; confirm on the car."
+  },
+  {
+   "part": "PT643",
+   "category": "Electrical",
+   "item": "Circuit: ignition switch IG (BW) - kick-down switch - kick-down solenoid B-33 (BR) - ground",
+   "value": "series",
+   "unit": "",
+   "source": "S-001",
+   "page": "Section B p.13 (pdf p.13)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "The BW feed is drawn straight off the ignition switch IG node (connector X-08) with no fuse shown between them; the BR leg passes X-11, X-10 and X-02 to the solenoid on the transmission. Check the fusing on the car."
+  },
+  {
+   "part": "PT643",
+   "category": "Electrical",
+   "item": "Contact type",
+   "value": "normally open, closes at full throttle",
+   "unit": "",
+   "source": "S-045",
+   "page": "7A-G-3 Adjusting Kick-down Switch (7A:20; 80RX7_7A_Auto_Trans.pdf p.26)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "'Normally open' is the contact symbol drawn for B-32 on S-001 Section B p.13 (pdf p.13); 7A-G-3 only sets it: with the accelerator fully depressed the switch is screwed in until it clicks, then half a turn more, so it closes only at the end of pedal travel. 1980 workshop manual section 7A (3N71B, the same 3-speed family as this car); no 1982 body-section manual exists on disk"
+  },
+  {
+   "part": "PT643",
+   "category": "Electrical",
+   "item": "Adjustment: extra turns in after the click at full throttle",
+   "value": "0.5",
+   "unit": "turn",
+   "source": "S-045",
+   "page": "7A-G-3 steps 1-5 (7A:20; 80RX7_7A_Auto_Trans.pdf p.26)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "Connectors off, lock nut loosened, switch backed out a few turns, pedal fully down, switch screwed in until the click is heard, then half a turn more, lock nut tightened, connectors on. 1980 workshop manual section 7A (3N71B, the same 3-speed family as this car); no 1982 body-section manual exists on disk"
+  },
+  {
+   "part": "PT643",
+   "category": "Electrical",
+   "item": "Function",
+   "value": "forces 3-2 and 2-1 downshift at full throttle",
+   "unit": "",
+   "source": "S-002",
+   "page": "Section 7B p.7 Outline, '4-3 Switch & Kickdown Switch' (pdf p.7)",
+   "confidence": "secondary",
+   "applies": "other-car",
+   "note": "1985 4-speed text: 'rapidly shift the gears down from 3rd to 2nd, and from 2nd to 1st'. The 1980 7A road test lists 'the kickdown operates properly' as a check item (S-045 7A:19)."
+  },
+  {
+   "part": "PT643",
+   "category": "Electrical",
+   "item": "1985 combined 4-3/kick-down switch: plunger travel for continuity (C-D terminals)",
+   "value": "7.0-8.0",
+   "unit": "mm",
+   "source": "S-002",
+   "page": "Section 7B p.15, 4-3 Switch and Kickdown Switch (pdf p.15)",
+   "confidence": "secondary",
+   "applies": "other-car",
+   "note": "0.276-0.315 in. The 1985 4-speed uses one switch body carrying both the 4-3 contacts (A-B, 3.5-4.5 mm) and the kick-down contacts; it is a different part from this car's 2691-18-660, so this is a reference figure only. Its adjustment: pedal fully down, stopper set to touch the pedal, lock nut."
+  },
+  {
+   "part": "PT643",
+   "category": "Electrical",
+   "item": "Troubleshooting: no kick-down",
+   "value": "switch adjustment or failure, solenoid, wiring",
+   "unit": "",
+   "source": "S-002",
+   "page": "Section 7B p.13-14 troubleshooting chart (pdf p.13-14)",
+   "confidence": "secondary",
+   "applies": "other-car",
+   "note": "'Kickdown solenoid, kickdown switch & wiring' and 'Improper adjustment or malfunction of kickdown switch' are the listed causes."
+  },
+  {
+   "part": "PT854",
+   "category": "Lighting",
+   "item": "Illumination lamp behind the indicator (bulb in PT855)",
+   "value": "3.4",
+   "unit": "W",
+   "source": "S-001",
+   "page": "Section E p.20, E-07 Select lever illumination light (for A/T) (pdf p.20)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "Fed RL from the instrument panel light control (dimmer) E-05, grounded B; connector E-07 is a single-pin bullet on each wire. Bulb 0000-11-0194 (12 V 3.4 W wedge) per S-005 BI-053. Wire colours from S-001; confirm on the car."
+  },
+  {
+   "part": "PT854",
+   "category": "Body",
+   "item": "Colour code",
+   "value": "01",
+   "unit": "",
+   "source": "S-005",
+   "page": "5570A-1 Console, item 64340A (Body-Index pdf p.53, BI-053, sheet 2-E5)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "01 = silver metallic; the M/T equivalent is plate FA01-64-350A, silver metallic/black 01."
+  }
+ ],
+ "terminals": [
+  {
+   "part": "PT643",
+   "terminal": "1 (BW)",
+   "function": "Feed, ignition-switched",
+   "inside": "One side of a normally-open plunger contact that closes at full accelerator travel",
+   "wire": "BW",
+   "to": "Ignition switch IG terminal node via connector X-08 (no fuse drawn on the sheet)",
+   "source": "S-001",
+   "page": "Section B p.13 (pdf p.13)",
+   "note": "from S-001; S-001 gives no terminal letters, numbered here by wire; single-pin connector B-32; confirm on the car"
+  },
+  {
+   "part": "PT643",
+   "terminal": "2 (BR)",
+   "function": "Output to the kick-down solenoid",
+   "inside": "Other side of the same contact",
+   "wire": "BR",
+   "to": "Kick-down solenoid B-33 on the transmission via X-11, X-10 and X-02; the solenoid's other side goes to ground",
+   "source": "S-001",
+   "page": "Section B p.13 (pdf p.13)",
+   "note": "from S-001; S-001 gives no terminal letters, numbered here by wire; single-pin connector B-32; OEM-RECORD.md lists only BR for B-32, the sheet shows BW and BR; confirm on the car"
+  }
+ ],
+ "sources": [
+  {
+   "key": "src-mazdausa-2691-18-660",
+   "title": "Mazda USA parts - Switch, kick down 2691-18-660",
+   "kind": "web",
+   "covers": "PT643",
+   "url": "https://parts.mazdausa.com/p/Mazda__/SWITCH--KICK-DOWN/105324524/2691-18-660.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Genuine-parts listing still live 2026-09-26; the page blocks scripted fetches (Cloudflare 403), so only the search listing was read: 'Switch, kick down' catalogued for the 626, price shown 60.28 USD. Open in a browser to confirm price and fitment before buying. Checked 2026-09-26: the page and the site search both return Cloudflare 403 to scripts; a search-engine listing of this URL gives its title '2691-18-660 - Switch, kick down' and the dealer mirror (parts.jimellismazdamarietta.com, same catalogue id 105324524) shows it for the Mazda 626 at 60.28 USD MSRP."
+  },
+  {
+   "key": "src-atkins-shifter-boots-81-85",
+   "title": "Atkins Rotary - 81-85 RX-7 shifter boots and interior shifter cover panels",
+   "kind": "web",
+   "covers": "PT854 PT415",
+   "url": "https://www.atkinsrotary.com/Transmission/Shifters-and-Parts/Transmission-Shifter-Boots/81-85-Shifter-Boots/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Read 2026-09-26: every item is for the manual car (inner/middle/outer boots, 81-83 interior shifter cover panel and boot FA01-64-350A-01 at 94.25 USD in stock); nothing for the automatic's boot 1481-46-081A or indicator FA03-64-350."
+  },
+  {
+   "key": "src-atkins-shifter-knobs",
+   "title": "Atkins Rotary - Mazda transmission shifter knobs",
+   "kind": "web",
+   "covers": "PT412",
+   "url": "https://www.atkinsrotary.com/Transmission/Shifters-and-Parts/Transmission-Shifter-Knobs/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Read 2026-09-26: no 79-85 automatic knob listed; the nearest automatic knobs are the 89-91 FC (FC08-46-030A, NLA) and 93-95 FD (FD02-46-030, NLA)."
+  }
+ ],
+ "cad": []
+}

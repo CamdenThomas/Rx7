@@ -16,3 +16,4 @@ L-0014,2026-09-26,apply,D-434 D-435 D-436 D-437 K9 B16 B34 B37 C4,"Applied his a
 L-0015,2026-09-26,answers,R3,rx7.py apply: 1 answer(s) of his set by rule - R3=done
 L-0016,2026-09-26,answers,R0,"Camden's answer to R0 (do it now) recorded in the row; R2 stays gated on R1, which is still open"
 L-0017,2026-09-26,session,,"R1: wave 2 merged from the 13 batch files on disk (266 specs, 54 terminals, 45 sources, 127 part notes); climate-15, fuel-40, transmission-53/54/57 still to run"
+L-0018,2026-09-26,session,,"R1 done: the five lost wave-2 batches re-run and merged (231 specs, 34 terminals, 51 sources, 2 cad, 89 part notes); wave 2 complete, 18 of 18"
