@@ -8,7 +8,7 @@ use std::fs;
 use std::path::{Path, PathBuf};
 use std::process::{Command, Output};
 use std::time::{SystemTime, UNIX_EPOCH};
-use tauri::{AppHandle, State};
+use tauri::{AppHandle, Manager, State};
 
 fn rx7(root: &Path) -> Command {
     let mut c = Command::new(tool("python3"));
@@ -66,16 +66,43 @@ pub fn set_tree_root(tree: State<Tree>, path: String) -> Result<String, String> 
 /// The whole record as rx7.py exports it. An invalid record (rc 1) is still shown — the
 /// app says so; only a crash in the tool (rc 3) is an error here.
 #[tauri::command]
-pub async fn record_export(tree: State<'_, Tree>) -> Result<String, String> {
+pub async fn record_export(app: AppHandle, tree: State<'_, Tree>) -> Result<String, String> {
     let root = tree.root();
+    let cache = cache_path(&app);
     blocking(move || {
         let out = rx7(&root).args(["export", "--stdout"]).output().map_err(|e| e.to_string())?;
         match out.status.code() {
-            Some(0) | Some(1) => String::from_utf8(out.stdout).map_err(|e| e.to_string()),
+            Some(0) | Some(1) => {
+                let text = String::from_utf8(out.stdout).map_err(|e| e.to_string())?;
+                // The last export is kept in the app's own data folder, so the next launch
+                // shows the record at once while the fresh one loads (plan P32). Never in
+                // the tree, never a fact of its own: it is a copy of what export said.
+                if let Some(p) = cache {
+                    if let Some(dir) = p.parent() {
+                        let _ = fs::create_dir_all(dir);
+                    }
+                    let tmp = p.with_extension("json.tmp");
+                    if fs::write(&tmp, &text).is_ok() {
+                        let _ = fs::rename(&tmp, &p);
+                    }
+                }
+                Ok(text)
+            }
             _ => Err(said(&out)),
         }
     })
     .await?
+}
+
+fn cache_path(app: &AppHandle) -> Option<PathBuf> {
+    app.path().app_data_dir().ok().map(|d| d.join("export.json"))
+}
+
+/// The last export this desktop saw, or an empty string when there is none yet.
+#[tauri::command]
+pub async fn record_cached(app: AppHandle) -> Result<String, String> {
+    let p = cache_path(&app);
+    blocking(move || Ok(p.and_then(|p| fs::read_to_string(p).ok()).unwrap_or_default())).await?
 }
 
 #[derive(Serialize)]

@@ -56,7 +56,16 @@ export async function desktopPlatform(): Promise<Platform> {
     kind: 'desktop',
     canClaude: true,
     kv,
-    cached: async () => null,
+    // The last export, kept by the shell in the app's data folder: the screen fills at once
+    // while the fresh read runs (plan P32).
+    cached: async () => {
+      try {
+        const text = await invoke<string>('record_cached');
+        return text ? (JSON.parse(text) as Snapshot) : null;
+      } catch {
+        return null;
+      }
+    },
     async load(sync) {
       if (sync) {
         publish({ busy: true });

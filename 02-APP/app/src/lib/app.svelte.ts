@@ -157,22 +157,33 @@ class App {
     };
   }
 
-  /** Save one answer. The draft is only cleared by the caller once this resolves. */
+  /** Answers saved since the app opened, for the one running toast. */
+  saved = $state(0);
+
+  /**
+   * Save one answer. The draft is only cleared by the caller once this resolves. The answer
+   * is laid over the snapshot at once so the screen moves on without waiting for the record
+   * to be read again; that read happens in the background (plan P32).
+   */
   async save(d: Draft): Promise<SaveOutcome | null> {
     if (!this.platform) return null;
     try {
-      const out = await this.platform.save(d, localIso());
-      await this.refresh(false);
-      toast(
+      const at = localIso();
+      const out = await this.platform.save(d, at);
+      if (this.snapshot) {
+        const device = this.platform.kind === 'phone' ? 'phone' : 'desktop';
+        const kind: Answer['kind'] = d.kind ?? (/^(\d{2}|CAR|REF|APP|VER)\.\d{2,3}$/.test(d.target) ? 'block' : /^PK\d+$/.test(d.target) ? 'pick' : 'work');
+        const ans: Answer = { area: d.area, id: `${d.target}~${device}`, target: d.target, kind, choice: d.choice, text: d.text, context: d.context, device, at, pending: out.state === 'queued' };
+        const inbox = this.snapshot.inbox.filter((a) => !(a.area === d.area && a.target === d.target && a.device === device));
+        this.snapshot = { ...this.snapshot, inbox: [...inbox, ans] };
+      }
+      this.saved += 1;
+      const tail =
         out.state === 'committed'
-          ? this.autoApply
-            ? 'Saved. Claude applies it once you have been quiet for a minute and a half.'
-            : 'Saved. It waits for Apply.'
-          : out.state === 'saved'
-            ? 'Saved in the tree. It is committed with your next answer.'
-            : 'Saved on this phone. It is sent at the next connection.',
-        out.state === 'committed' ? 'ok' : 'info',
-      );
+          ? this.autoApply ? 'ticks and choices apply at once, the rest when you have been quiet a while.' : 'it waits for Apply.'
+          : out.state === 'saved' ? 'in the tree; committed with your next answer.' : 'on this phone; sent at the next connection.';
+      toast(`Saved ${d.target}${this.saved > 1 ? ` · ${this.saved} this session` : ''} — ${tail}`, out.state === 'committed' ? 'ok' : 'info', 'saved');
+      void this.refresh(false);
       return out;
     } catch (e) {
       toast(`Not saved: ${e instanceof Error ? e.message : String(e)}`, 'warn');

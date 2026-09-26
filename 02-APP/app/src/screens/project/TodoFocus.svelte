@@ -7,7 +7,8 @@
   import { app } from '../../lib/app.svelte';
   import { drafts } from '../../lib/drafts.svelte';
   import type { WorkRow } from '../../lib/model';
-  import { href } from '../../lib/router.svelte';
+  import { href, router } from '../../lib/router.svelte';
+  import { inlineMd } from '../../lib/text';
   import { ui } from '../../lib/ui.svelte';
 
   let { row, ids }: { row: WorkRow; ids: string[] } = $props();
@@ -17,6 +18,41 @@
   const answer = $derived(app.answer(area, row.id));
   const mine = $derived(row.owner === 'camden' && (row.status === 'ready' || row.status === 'waiting'));
   const STATUS = { ready: 'Can start now', waiting: 'Waiting', done: 'Done', dropped: 'Dropped' } as const;
+
+  /** The parts the row names (PT ids in its item or note), from 00-CAR, so the question is
+   *  answerable from this screen (plan P30). */
+  const partCards = $derived.by(() => {
+    const t = app.snapshot?.tables.find((x) => x.area === '00-CAR' && x.table === 'parts');
+    if (!t) return [];
+    const ids = [...new Set(`${row.item} ${row.note}`.match(/\bPT\d{3,4}\b/g) ?? [])];
+    const col = (r: string[], c: string) => r[t.columns.indexOf(c)] ?? '';
+    return ids.flatMap((pid) => {
+      const r = t.rows.find((x) => col(x, 'id') === pid);
+      if (!r) return [];
+      return [{
+        id: pid, name: col(r, 'name'), maker: col(r, 'maker'), part_no: col(r, 'part_no') || col(r, 'oem_no'),
+        zone: col(r, 'zone'), system: col(r, 'system'), catalogue: col(r, 'catalogue'), applies: col(r, 'applies'),
+        note: col(r, 'note').replace(/\s+/g, ' ').slice(0, 260),
+      }];
+    });
+  });
+
+  function unanswered(id: string) {
+    const w = app.work(area).find((x) => x.id === id);
+    return !!w && w.owner === 'camden' && w.status === 'ready' && !app.answer(area, id);
+  }
+
+  /** After a save, straight to the next row he has not answered (plan P31). */
+  function advance() {
+    const i = ids.indexOf(row.id);
+    for (let k = 1; k <= ids.length; k++) {
+      const id = ids[(i + k) % ids.length];
+      if (id !== row.id && unanswered(id)) {
+        router.go({ name: 'todo', area, id });
+        return;
+      }
+    }
+  }
 
   $effect(() => {
     ui.context = `work row ${row.id}: ${row.item}`;
@@ -32,8 +68,7 @@
   }
 </script>
 
-<FocusNav {ids} at={row.id} open={(id) => ({ name: 'todo', area, id })} list={{ name: 'todo', area }}
-  unanswered={(id) => { const w = app.work(area).find((x) => x.id === id); return !!w && w.owner === 'camden' && w.status === 'ready' && !app.answer(area, id); }} />
+<FocusNav {ids} at={row.id} open={(id) => ({ name: 'todo', area, id })} list={{ name: 'todo', area }} {unanswered} />
 
 <article class="focus">
   <header>
@@ -45,8 +80,25 @@
     <span class="chip {row.owner === 'camden' ? 'accent' : 'quiet'}">{row.owner === 'camden' ? 'yours' : "Claude's"}</span>
     {#if row.track}<span class="chip quiet">{row.track}{row.part ? ` · part ${row.part}` : ''}</span>{/if}
   </header>
-  <h2>{row.item}</h2>
+  <!-- eslint-disable-next-line svelte/no-at-html-tags — inlineMd() escapes every character first -->
+  <h2>{@html inlineMd(row.item)}</h2>
   {#if row.stage_title}<p class="stage faint">Stage {row.stage} · {row.stage_title}</p>{/if}
+
+  {#if partCards.length}
+    <section class="parts">
+      {#each partCards as p (p.id)}
+        <div class="pcard card">
+          <div class="ptop">
+            <a class="id" href={href({ name: 'row', area: '00-CAR', table: 'parts', key: p.id })}>{p.id}</a>
+            <strong>{p.name}</strong>
+            {#if p.applies}<span class="chip quiet">{p.applies}</span>{/if}
+          </div>
+          <p class="sub faint">{[p.maker, p.part_no].filter(Boolean).join(' · ')}{p.zone ? ` · ${p.zone}` : ''}{p.system ? ` · ${p.system}` : ''}{p.catalogue ? ` · catalogue ${p.catalogue}` : ''}</p>
+          {#if p.note}<p class="pnote">{p.note}</p>{/if}
+        </div>
+      {/each}
+    </section>
+  {/if}
 
   {#if mine}
     <section class="answer card">
@@ -57,7 +109,7 @@
       {:else if answer.text}
         <p class="his">{answer.text}</p>
       {/if}
-      <WorkAnswer {row} big words={draft.text} />
+      <WorkAnswer {row} big words={draft.text} onSaved={advance} />
       {#if row.status === 'waiting' && !answer}<p class="faint small">This row still waits on what is listed below — you can still say it is done if it is.</p>{/if}
     </section>
   {/if}
@@ -122,6 +174,32 @@
   .stage {
     margin-top: -10px;
     font-size: 13px;
+  }
+  .parts {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pcard {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 13.5px;
+  }
+  .ptop {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .sub {
+    font-size: 12.5px;
+  }
+  .pnote {
+    color: var(--text-2);
+    font-size: 13px;
+    line-height: 1.45;
   }
   .label {
     display: block;

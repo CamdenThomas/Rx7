@@ -4,7 +4,10 @@
 
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-function inline(s: string): string {
+/** One line of the record's prose as safe HTML: every id the record uses becomes a link
+ *  (D-### to its decision, PT### to the part's row, S-### to the source, `block X.NN` to a
+ *  search for it), so a row never has to be typed to be followed (plan P30). */
+export function inlineMd(s: string): string {
   const codes: string[] = [];
   let out = esc(s).replace(/`([^`]+)`/g, (_, c: string) => `\u0000${codes.push(`<code>${c}</code>`) - 1}\u0000`);
   out = out
@@ -13,9 +16,14 @@ function inline(s: string): string {
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/(^|[^*\w])\*([^*\s][^*]*?)\*(?!\w)/g, '$1<em>$2</em>')
     .replace(/(^|[\s(])_([^_\s][^_]*?)_(?=[\s).,;:]|$)/g, '$1<em>$2</em>')
-    .replace(/\b(D-\d{3})\b/g, '<a href="#/d/$1" class="cite">$1</a>');
+    .replace(/\b(D-\d{3})\b/g, '<a href="#/d/$1" class="cite">$1</a>')
+    .replace(/\b(PT\d{3,4})\b/g, '<a href="#/row/00-CAR/parts/$1" class="cite">$1</a>')
+    .replace(/\b(S-\d{3})\b/g, '<a href="#/row/01-REFERENCE/sources/$1" class="cite">$1</a>')
+    .replace(/\bblock ((?:\d{2}|CAR|REF|APP|VER)\.\d{2,3})\b/g, 'block <a href="#/search?q=$1" class="cite">$1</a>');
   return out.replace(/\u0000(\d+)\u0000/g, (_, i: string) => codes[Number(i)]);
 }
+
+const inline = inlineMd;
 
 function table(rows: string[]): string {
   const cells = (r: string) => r.trim().replace(/^\||\|$/g, '').split(/(?<!\\)\|/).map((c) => c.trim().replace(/\\\|/g, '|'));

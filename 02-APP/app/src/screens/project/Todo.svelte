@@ -11,7 +11,7 @@
   import { app } from '../../lib/app.svelte';
   import type { Blocker, WorkRow } from '../../lib/model';
   import { href, router } from '../../lib/router.svelte';
-  import { plural } from '../../lib/text';
+  import { inlineMd, plural } from '../../lib/text';
   import { todoView, visible, type Who } from './todoView.svelte';
 
   let { area, id }: { area: string; id?: string } = $props();
@@ -149,7 +149,8 @@
           </span>
           <span class="id">{w.id}</span>
           <div class="body">
-            <p class="item">{w.item}</p>
+            <!-- eslint-disable-next-line svelte/no-at-html-tags — inlineMd() escapes every character first -->
+            <p class="item">{@html inlineMd(w.item)}</p>
             {#if w.blockers.length}
               <p class="waits">
                 waits on

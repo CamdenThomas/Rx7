@@ -3,17 +3,36 @@
   how far it has got, what waits for him, and when it last moved.
 -->
 <script lang="ts">
-  import { Plus } from '@lucide/svelte';
+  import { Plus, Play } from '@lucide/svelte';
   import ProjectIcon from '../components/ProjectIcon.svelte';
   import Progress from '../components/Progress.svelte';
   import { app, type ProjectSummary } from '../lib/app.svelte';
+  import { runs } from '../lib/claude.svelte';
   import { href } from '../lib/router.svelte';
   import { ago, plural } from '../lib/text';
+  import { toast } from '../lib/toast.svelte';
 
   const live = $derived(app.summaries.filter((s) => s.phase !== 'COMPLETE'));
   const finished = $derived(app.summaries.filter((s) => s.phase === 'COMPLETE'));
   // The app keeps its own work in 02-APP, which is not a project (D-428).
   const own = $derived(app.areas.find((a) => a.kind === 'app'));
+
+  /** Claude's rows that can start today and nothing triggers (plan P34): one Plan run per
+   *  area, each under the design-run budget in Settings, queued one after another. */
+  const readyAgent = $derived(
+    app.areas
+      .filter((a) => a.kind === 'project' || a.kind === 'app')
+      .map((a) => ({ area: a.name, n: app.work(a.name).filter((w) => w.owner === 'agent' && w.status === 'ready').length }))
+      .filter((x) => x.n > 0),
+  );
+  const readyTotal = $derived(readyAgent.reduce((s, x) => s + x.n, 0));
+
+  function planAll() {
+    for (const x of readyAgent) {
+      runs.start('plan', x.area, `Plan everything ready (02-APP P34): ${plural(x.n, 'agent row')} READY here. Take them in READY order until none has a met gate or this run's budget is spent; raise blocks for anything §3 calls big and carry on.`);
+    }
+    toast(`${plural(readyAgent.length, 'Plan run')} queued for ${plural(readyTotal, 'row')}.`, 'ok');
+  }
 
   function waitingText(s: ProjectSummary) {
     const w = s.waiting;
@@ -28,7 +47,14 @@
       <p class="label">Projects</p>
       <h1>What is being done to the car</h1>
     </div>
-    <a class="btn primary big" href={href({ name: 'new-project' })}><Plus size={18} /> New project</a>
+    <div class="actions">
+      {#if app.platform?.canClaude && readyTotal}
+        <button class="btn big" onclick={planAll} disabled={runs.busy || runs.queued > 0} title="One Plan run per project with rows Claude can start now, each under the design-run budget in Settings">
+          <Play size={17} /> Plan everything ready · {readyTotal}
+        </button>
+      {/if}
+      <a class="btn primary big" href={href({ name: 'new-project' })}><Plus size={18} /> New project</a>
+    </div>
   </header>
 
   <div class="grid-cards">
