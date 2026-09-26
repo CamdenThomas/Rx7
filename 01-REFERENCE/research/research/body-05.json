@@ -1,0 +1,586 @@
+{
+ "parts": [
+  {
+   "id": "PT795",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "The catalogue's numerical index (S-005 Body-Index p.156) also prints the right panel as 8981-58-020E, so the figure and the index agree; the 8871 pattern remains unconfirmed. No new or reproduction outer door skin found; used doors only."
+  },
+  {
+   "id": "PT796",
+   "link": "https://www.partrequest.com/catalog/glass/mazda/mazda-rx-7",
+   "support": "",
+   "cad": "",
+   "note_add": "Removal per the 1985 manual (S-002 sec.14 p.14-9): regulator handle, inner handle cover, arm rest, trim, inner handle, watershield, then the glass-to-regulator screws and grommets. New glass not found; used glass through salvage listings only."
+  },
+  {
+   "id": "PT797",
+   "link": "https://www.atkinsrotary.com/79-85-Rx7-Window-Channel-Seal-8871-58-605C.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Mazda has discontinued the channel seal 8871-58-605C; Atkins Rotary makes a reproduction (USD 84 each, one per side, fits either side, 2026-09-26). Guides A (8871-58-603 / -59-603) not found for sale."
+  },
+  {
+   "id": "PT798",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT799",
+   "link": "https://www.atkinsrotary.com/Chassis-and-Body/Weather-Strips-Seals/79-85-Mazda-Rx7-Weather-Strips-and-Seals/",
+   "support": "",
+   "cad": "",
+   "note_add": "Still genuine Mazda: Atkins Rotary lists R 8871-58-760 and L 8871-59-760 at USD 107 each, in stock 2026-09-26; dealer sites (Tasca, RealMazdaParts) also list both numbers."
+  },
+  {
+   "id": "PT800",
+   "link": "https://www.autopart3.com/products/79-80-81-82-83-84-85-mazda-rx7-oem-door-hinge-lower-right",
+   "support": "",
+   "cad": "",
+   "note_add": "No new 79-85 hinges found (Atkins' hinge category lists only the 86-88 lower left); used OEM lower right sold by Autopart3 (USD 95, 2026-09-26)."
+  },
+  {
+   "id": "PT801",
+   "link": "https://www.ebay.com/itm/186723600335",
+   "support": "",
+   "cad": "fb-door-lock-guide-printables-lovc",
+   "note_add": "Catalogue (S-005 p.69) gives 8871-58-310E / -59-310E for '81 and '82 models, FQ23-58-310 / -59-310 for '83. The 1985 manual (S-002 sec.14 p.14-11) says to fit a new outer-handle nylon bush (1243-58-411) whenever the lock is reinstalled and to adjust the inner handle for play. No new latch found; used only."
+  },
+  {
+   "id": "PT802",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Adjustable in-and-out and up-and-down by loosening its attaching screws (S-002 sec.14 p.14-9). 8531-58-361 not found for sale new; Atkins lists only the 86-91 and 93-95 strikers."
+  },
+  {
+   "id": "PT803",
+   "link": "https://knownmotors.com/products/79-85-interior-door-handle",
+   "support": "",
+   "cad": "",
+   "note_add": "Used only (Known Motors, USD 15, sold out 2026-09-26); no new 8545-58-330 found."
+  },
+  {
+   "id": "PT804",
+   "link": "https://www.atkinsrotary.com/79-85-Rx7-Inner-Door-Handle-Cup-Trim-8116-58-303.html",
+   "support": "",
+   "cad": "rx7-door-opener-cup-printables-udopoerzgen",
+   "note_add": "Atkins Rotary stocks 8116-58-303 in black and tan (USD 18, fits either side); red and grey no longer available. Mazdatrix sells a machined aluminium black pair (8116-58-303-AL, USD 45) and lists the Mazda colours as discontinued. A free printable cup (cad row) also exists."
+  },
+  {
+   "id": "PT805",
+   "link": "https://www.atkinsrotary.com/79-85-Rx7-Black-Door-Handle-8871-59-410C.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Genuine handles still sold: Atkins Rotary USD 97 (listed under 8871-59-410C, says it fits either side: check against the R/L catalogue numbers); Amazon and eBay sellers offer the 8871-58-410C / -59-410C pair, which is shared with the 1981-84 B2000/B2200 pickup. Fit a new nylon bushing 1243-58-411 when the lock is reinstalled (S-002 sec.14 p.14-11)."
+  },
+  {
+   "id": "PT806",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT807",
+   "link": "https://www.atkinsrotary.com/79-85-Rx7-Window-Regulator.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Genuine manual regulators still sold by Atkins Rotary (USD 210, driver or passenger side, 2026-09-26). Catalogue (S-005 p.69): 8871-58-560A / -59-560A are the S and GS manual units, FA02-58-560 / -59-560 the GSL power units. Adjustment (S-002 sec.14 p.14-10): glass raised fully, horizontal by moving the regulator guide, fore-and-aft by the glass-guide adjusting bolt."
+  },
+  {
+   "id": "PT808",
+   "link": "https://www.atkinsrotary.com/Chassis-and-Body/Doors-and-Parts/Mazda-Window-Crank-Handles/",
+   "support": "",
+   "cad": "",
+   "note_add": "Atkins Rotary lists 8038-58-580A in red (-11) and brown (-72) as no longer available and grey (-65, 84-85) out of stock (USD 35, 2026-09-26); Mazdatrix lists the red one. Catalogue figure p.69 prints the number as 8036-58-580A but the index p.156 reads 8038-58-580A."
+  },
+  {
+   "id": "PT809",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT810",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT811",
+   "link": "https://www.atkinsrotary.com/Chassis-and-Body/Rear-Hatch-Parts/rear-hatch-hinges/",
+   "support": "",
+   "cad": "",
+   "note_add": "The left hinge number resolves: the catalogue's numerical index (S-005 Body-Index p.157) prints 8871-63-210B against figure 6230A-1, and Atkins Rotary lists 8871-63-210B (left) and 8871-62-210B (right) at USD 65 each, both out of stock 2026-09-26. Alignment (S-002 sec.14 p.14-12): weatherstrip top, headlining rear end and rear header pads off, then loosen the hinge nuts with the hatch closed."
+  },
+  {
+   "id": "PT812",
+   "link": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/hatch-latch-differences-1093370/",
+   "support": "",
+   "cad": "",
+   "note_add": "The 1985 manual's figure of this lock (S-002 sec.14 p.14-12, fig 47U14X-034) shows a switch built into the lock body with contact points A and B beside the key cylinder; the lock is adjusted to the striker by loosening its attaching bolts. rx7club: 1981-85 GS/GSL use the power latch FA01-62-310, S models the manual FA02-62-310; 1979-80 latches have a different bolt spacing and do not swap. No new latch found."
+  },
+  {
+   "id": "PT813",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT814",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "8871-62-361 is the same striker loop for all 1979-85 cars (rx7club hatch-latch thread); the lock, not the striker, is moved to align (S-002 sec.14 p.14-12)."
+  },
+  {
+   "id": "PT815",
+   "link": "https://www.liftsupportsdepot.com/strong-arm-4709-gas-charged-hatchback-lift-support/",
+   "support": "",
+   "cad": "",
+   "note_add": "Catalogue (S-005 p.92): S and GS cars take 8341-89-621 x2; the GSL right stay is 1482-89-621 (carries the rear wiper/defroster wiring). Atkins Rotary sells 1482-89-621 as '79-85 Rx7 Rear Hatch Strut' (USD 30, in stock); aftermarket StrongArm 4709 and TRW TSG127001 (USD 12.40) fit 79-85. The 1985 manual: never disassemble the stay, and drill a 2-3 mm hole at the cylinder's lower end to vent it before discarding (S-002 sec.14 p.14-12)."
+  },
+  {
+   "id": "PT819",
+   "link": "https://www.plastics4performance.com/mazda-rx7-fb-lexan-polycarbonate-right-rear-quarter-window",
+   "support": "",
+   "cad": "",
+   "note_add": "Bonded-in glass: removal and fitting follow the windshield method (S-002 sec.14 p.14-22: garnish and glass plate screw off, rear pillar trim, glass nut, damper stay end off, then saw the sealant with piano wire). No new glass found; Plastics4Performance makes pre-curved Lexan polycarbonate replacements (3/4/5 mm, made to order, UK) and salvage listings carry used glass."
+  },
+  {
+   "id": "PT820",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT821",
+   "link": "https://www.atkinsrotary.com/79-85-Rx7-Right-Rear-Quarter-Window-Trim-FA01-51-881A.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Atkins Rotary lists FA01-51-881A (R) and FA01-51-891A (L) as no longer available (2026-09-26)."
+  }
+ ],
+ "specs": [
+  {
+   "part": "PT815",
+   "category": "Body",
+   "item": "Vent hole to drill at the lower end of the cylinder before discarding a stay",
+   "value": "2-3",
+   "unit": "mm",
+   "source": "S-002",
+   "page": "Section 14 Body p.14-12 (PDF p.12)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual; the stay is gas and oil filled and must not be disassembled. Drill cuttings and oil can fly out with force."
+  },
+  {
+   "part": "PT815",
+   "category": "Body",
+   "item": "Replacement StrongArm 4709: extended length",
+   "value": "669.5",
+   "unit": "mm",
+   "source": "src-lsd-strongarm-4709",
+   "page": "product page",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "26.36 in as listed; fits 1979-85 RX-7 hatch, sold each, two per car"
+  },
+  {
+   "part": "PT815",
+   "category": "Body",
+   "item": "Replacement StrongArm 4709: compressed length",
+   "value": "429",
+   "unit": "mm",
+   "source": "src-lsd-strongarm-4709",
+   "page": "product page",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "16.89 in as listed; stroke 9.47 in (240.5 mm)"
+  },
+  {
+   "part": "PT815",
+   "category": "Body",
+   "item": "Replacement StrongArm 4709: force",
+   "value": "187",
+   "unit": "N",
+   "source": "src-lsd-strongarm-4709",
+   "page": "product page",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "42 lbf as listed"
+  },
+  {
+   "part": "PT815",
+   "category": "Body",
+   "item": "Replacement StrongArm 4709: rod diameter",
+   "value": "8",
+   "unit": "mm",
+   "source": "src-lsd-strongarm-4709",
+   "page": "product page",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "cylinder 19 mm; 10 mm ball-socket ends (nylon U-band at the body, U-eyelet at the shaft); with rear defroster and wiper the old wire harness is reused"
+  },
+  {
+   "part": "PT815",
+   "category": "Body",
+   "item": "Damper stays per car, S and GS (8341-89-621)",
+   "value": "2",
+   "unit": "pcs",
+   "source": "S-005",
+   "page": "Body-Index PDF p.92, fig 6230A-1 item 62610",
+   "confidence": "primary",
+   "applies": "",
+   "note": "GSL: right stay 1482-89-621, left 8341-89-621"
+  },
+  {
+   "part": "PT819",
+   "category": "Body",
+   "item": "Glass sealant hardening time at 20 degC",
+   "value": "5",
+   "unit": "h",
+   "source": "S-002",
+   "page": "Section 14 Body p.14-22 (PDF p.22)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual windshield procedure, which the side window installation follows; 24 h at 5 degC"
+  },
+  {
+   "part": "PT819",
+   "category": "Body",
+   "item": "Glass sealant hardening time at 5 degC",
+   "value": "24",
+   "unit": "h",
+   "source": "S-002",
+   "page": "Section 14 Body p.14-22 (PDF p.22)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual; side window installation follows the windshield steps 1-10"
+  },
+  {
+   "part": "PT801",
+   "category": "Body",
+   "item": "Door lock part numbers by model year",
+   "value": "8871-58-310E / 8871-59-310E",
+   "unit": "",
+   "source": "S-005",
+   "page": "Body-Index PDF p.69, fig 5830A-1 item 58310",
+   "confidence": "primary",
+   "applies": "",
+   "note": "'81 and '82 models; '83 model uses FQ23-58-310 / FQ23-59-310"
+  },
+  {
+   "part": "PT807",
+   "category": "Body",
+   "item": "Window regulator part numbers by model",
+   "value": "8871-58-560A / 8871-59-560A",
+   "unit": "",
+   "source": "S-005",
+   "page": "Body-Index PDF p.69, fig 5830A-1 item 58560",
+   "confidence": "primary",
+   "applies": "",
+   "note": "S and GS manual; GSL power regulator FA02-58-560 / FA02-59-560 with arms FA02-58-590 / -59-590"
+  },
+  {
+   "part": "PT811",
+   "category": "Body",
+   "item": "Back door hinge, left, part number",
+   "value": "8871-63-210B",
+   "unit": "",
+   "source": "S-005",
+   "page": "Body-Index PDF p.157 (numerical index, fig 6230A-1 2-K8)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "resolves the partly blank figure entry; right is 8871-62-210B"
+  },
+  {
+   "part": "PT812",
+   "category": "Body",
+   "item": "Back door lock part number, GS and GSL",
+   "value": "FA01-62-310C",
+   "unit": "",
+   "source": "S-005",
+   "page": "Body-Index PDF p.92, fig 6230A-1 item 62310",
+   "confidence": "primary",
+   "applies": "",
+   "note": "S model FA02-62-310B; the remote control opener 8341-62-315 is listed for GS and GSL only"
+  },
+  {
+   "part": "PT799",
+   "category": "Body",
+   "item": "Replacement genuine Mazda door weatherstrip price, each (Atkins Rotary)",
+   "value": "107",
+   "unit": "USD",
+   "source": "src-atkins-fb-weatherstrips",
+   "page": "category page",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "R 8871-58-760 and L 8871-59-760 in stock 2026-09-26"
+  },
+  {
+   "part": "PT797",
+   "category": "Body",
+   "item": "Replacement Atkins Rotary reproduction channel seal 8871-58-605C price, each",
+   "value": "84",
+   "unit": "USD",
+   "source": "src-atkins-window-channel-605c",
+   "page": "product page",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "one per side; Mazda discontinued the original"
+  },
+  {
+   "part": "PT807",
+   "category": "Body",
+   "item": "Replacement genuine manual regulator price, each (Atkins Rotary)",
+   "value": "210",
+   "unit": "USD",
+   "source": "src-atkins-window-regulator-560",
+   "page": "product page",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "driver or passenger side; listed weight 6 lb"
+  },
+  {
+   "part": "PT805",
+   "category": "Body",
+   "item": "Replacement genuine outer handle price, each (Atkins Rotary)",
+   "value": "97",
+   "unit": "USD",
+   "source": "src-atkins-door-handle-410c",
+   "page": "product page",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "listed under 8871-59-410C"
+  }
+ ],
+ "terminals": [],
+ "sources": [
+  {
+   "key": "src-atkins-fb-weatherstrips",
+   "title": "Atkins Rotary - 79-85 Mazda Rx7 Weather Strips & Seals (door seals 8871-58-760 / 8871-59-760, hatch seal, channel seal)",
+   "kind": "web",
+   "covers": "PT799 PT797",
+   "url": "https://www.atkinsrotary.com/Chassis-and-Body/Weather-Strips-Seals/79-85-Mazda-Rx7-Weather-Strips-and-Seals/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Prices and stock read 2026-09-26"
+  },
+  {
+   "key": "src-atkins-door-handle-410c",
+   "title": "Atkins Rotary - 79-85 Rx7 Black Door Handle (8871-59-410C)",
+   "kind": "web",
+   "covers": "PT805",
+   "url": "https://www.atkinsrotary.com/79-85-Rx7-Black-Door-Handle-8871-59-410C.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "USD 97, genuine Mazda; page says fits either side"
+  },
+  {
+   "key": "src-atkins-window-regulator-560",
+   "title": "Atkins Rotary - 79-85 Rx7 Manual Window Regulator (8871-58-560 / 8871-59-560)",
+   "kind": "web",
+   "covers": "PT807",
+   "url": "https://www.atkinsrotary.com/79-85-Rx7-Window-Regulator.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "USD 210 each, OEM"
+  },
+  {
+   "key": "src-atkins-crank-handles",
+   "title": "Atkins Rotary - Mazda Window Crank Handles (8038-58-580A colour variants)",
+   "kind": "web",
+   "covers": "PT808",
+   "url": "https://www.atkinsrotary.com/Chassis-and-Body/Doors-and-Parts/Mazda-Window-Crank-Handles/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "red and brown NLA, grey 84-85 out of stock"
+  },
+  {
+   "key": "src-atkins-window-channel-605c",
+   "title": "Atkins Rotary - 79-85 Rx7 Window Channel Seal (8871-58-605C), reproduction",
+   "kind": "web",
+   "covers": "PT797",
+   "url": "https://www.atkinsrotary.com/79-85-Rx7-Window-Channel-Seal-8871-58-605C.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-atkins-inner-handle-cup-303",
+   "title": "Atkins Rotary - 79-85 Rx7 Inner Door Handle Cup Trim (8116-58-303)",
+   "kind": "web",
+   "covers": "PT804",
+   "url": "https://www.atkinsrotary.com/79-85-Rx7-Inner-Door-Handle-Cup-Trim-8116-58-303.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "USD 18; black and tan available, red and grey NLA"
+  },
+  {
+   "key": "src-atkins-hatch-hinges",
+   "title": "Atkins Rotary - Rear Hatch Hinges (8871-62-210B right, 8871-63-210B left, 79-85)",
+   "kind": "web",
+   "covers": "PT811",
+   "url": "https://www.atkinsrotary.com/Chassis-and-Body/Rear-Hatch-Parts/rear-hatch-hinges/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "USD 65 each, out of stock 2026-09-26"
+  },
+  {
+   "key": "src-atkins-hatch-parts",
+   "title": "Atkins Rotary - Rear Hatch Parts (79-85 Rx7 Rear Hatch Strut 1482-89-621)",
+   "kind": "web",
+   "covers": "PT815 PT812 PT814",
+   "url": "https://www.atkinsrotary.com/Chassis-and-Body/Rear-Hatch-Parts/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "strut USD 30, in stock; product page URL returned 404"
+  },
+  {
+   "key": "src-rx7club-hatch-latch-differences",
+   "title": "RX7Club 1st-gen forum - Hatch latch differences",
+   "kind": "forum",
+   "covers": "PT812 PT814",
+   "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/hatch-latch-differences-1093370/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "latch numbers by year, striker 8871-62-361 same 79-85, bolt spacing differs 79 vs 80+"
+  },
+  {
+   "key": "src-rx7club-hatch-struts",
+   "title": "RX7Club 1st-gen forum - Gas hatch shock replacements / factory hatch struts",
+   "kind": "forum",
+   "covers": "PT815",
+   "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/gas-hatch-shock-replacements-factory-hatch-struts-247536/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "passenger-side strut carries the rear wiper/defogger wiring; mismatched forces twist the hatch"
+  },
+  {
+   "key": "src-lsd-strongarm-4709",
+   "title": "Lift Supports Depot - Strong Arm 4709 gas-charged hatch lift support, 1979-85 Mazda RX-7",
+   "kind": "web",
+   "covers": "PT815",
+   "url": "https://www.liftsupportsdepot.com/strong-arm-4709-gas-charged-hatchback-lift-support/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "dimensions and force of the replacement; out of stock 2026-09-26"
+  },
+  {
+   "key": "src-trw-tsg127001",
+   "title": "TRW Aftermarket - Trunk lid lift support TSG127001, Mazda RX-7 1979-85 and GLC 1981-85",
+   "kind": "web",
+   "covers": "PT815",
+   "url": "https://trwaftermarket.us/products/trunk-lid-lift-support-trw-tsg127001",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "USD 12.40; no dimensions given"
+  },
+  {
+   "key": "src-autopart3-door-hinge-lr",
+   "title": "Autopart3 - 79-85 Mazda RX7 OEM door hinge, lower right (used)",
+   "kind": "web",
+   "covers": "PT800",
+   "url": "https://www.autopart3.com/products/79-80-81-82-83-84-85-mazda-rx7-oem-door-hinge-lower-right",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "USD 95"
+  },
+  {
+   "key": "src-amazon-door-handle-410c",
+   "title": "Amazon - Mazda RX-7 1979-85 and B2000/B2200 1981-84 OEM exterior door handle 8871-59-410C",
+   "kind": "web",
+   "covers": "PT805",
+   "url": "https://www.amazon.com/Mazda-1979-1985-1981-1984-exterior-8871-59-410C/dp/B00MJCKVH4",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "handle shared with the B-series pickup"
+  },
+  {
+   "key": "src-p4p-lexan-quarter",
+   "title": "Plastics4Performance - Mazda RX7 FB Lexan polycarbonate right rear quarter window",
+   "kind": "web",
+   "covers": "PT819",
+   "url": "https://www.plastics4performance.com/mazda-rx7-fb-lexan-polycarbonate-right-rear-quarter-window",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "3/4/5 mm polycarbonate, made to order, not glass"
+  },
+  {
+   "key": "src-knownmotors-interior-handle",
+   "title": "Known Motors - 1979-1985 Mazda RX7 FB interior door handle (used)",
+   "kind": "web",
+   "covers": "PT803",
+   "url": "https://knownmotors.com/products/79-85-interior-door-handle",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "USD 15, sold out"
+  },
+  {
+   "key": "src-mazdatrix-door-window",
+   "title": "Mazdatrix - Door and Window Parts (79-85 inner handle covers, aluminium 8116-58-303-AL)",
+   "kind": "web",
+   "covers": "PT804",
+   "url": "https://mazdatrix.com/product-category/interior/door-and-window-parts/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Mazda colours discontinued; aluminium pair USD 45"
+  },
+  {
+   "key": "src-atkins-quarter-trim-881a",
+   "title": "Atkins Rotary - 79-85 Rx7 Right Rear Quarter Window Trim (FA01-51-881A) - NLA",
+   "kind": "web",
+   "covers": "PT821",
+   "url": "https://www.atkinsrotary.com/79-85-Rx7-Right-Rear-Quarter-Window-Trim-FA01-51-881A.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "left FA01-51-891A also NLA"
+  }
+ ],
+ "cad": []
+}
