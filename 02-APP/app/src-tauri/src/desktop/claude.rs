@@ -3,6 +3,7 @@
 //! Claude Code prints (stream-json) is passed to the window as it comes, untouched.
 
 use super::{tool, Tree};
+use serde::Deserialize;
 use serde_json::json;
 use std::collections::HashMap;
 use std::io::{BufRead, BufReader};
@@ -25,15 +26,33 @@ const RUN_TOOLS: &[&str] = &[
     "Bash(python3 tools/rx7.py:*)", "Bash(python tools/rx7.py:*)", "Bash(git:*)",
 ];
 
-const READ_TOOLS: &[&str] = &[
-    "Read", "Glob", "Grep",
-    "Bash(python3 tools/rx7.py get:*)", "Bash(python3 tools/rx7.py sql:*)",
-    "Bash(python3 tools/rx7.py find:*)", "Bash(python3 tools/rx7.py status:*)",
-    "Bash(python3 tools/rx7.py tables:*)", "Bash(python3 tools/rx7.py blocks:*)",
-    "Bash(python3 tools/rx7.py inbox:*)", "Bash(python3 tools/rx7.py picks:*)",
+/// The read-only commands a chat may run. CLAUDE.md writes `python`, this machine has
+/// `python3`, and the model types either: both spellings are allowed (plan P13).
+const READ_COMMANDS: &[&str] = &[
+    "get", "sql", "find", "status", "tables", "blocks", "inbox", "picks", "cites", "selftest", "export --out",
 ];
 
-fn args(mode: &str, prompt: &str, session: Option<&str>) -> Vec<String> {
+fn read_tools() -> Vec<String> {
+    let mut t: Vec<String> = ["Read", "Glob", "Grep"].map(String::from).to_vec();
+    for c in READ_COMMANDS {
+        t.push(format!("Bash(python3 tools/rx7.py {c}:*)"));
+        t.push(format!("Bash(python tools/rx7.py {c}:*)"));
+    }
+    t
+}
+
+/// What the window chose for this process (plan P06): the model and effort per kind of run,
+/// a spending cap, a fallback when the model is unavailable, and whether the session is kept.
+#[derive(Deserialize, Default, Clone)]
+pub struct RunOpts {
+    pub model: Option<String>,
+    pub effort: Option<String>,
+    pub budget: Option<f64>,
+    pub fallback: Option<String>,
+    pub persist: Option<bool>,
+}
+
+fn args(mode: &str, prompt: &str, session: Option<&str>, opts: &RunOpts) -> Vec<String> {
     let mut a: Vec<String> = ["-p", prompt, "--output-format", "stream-json", "--verbose", "--include-partial-messages"]
         .iter()
         .map(|s| s.to_string())
@@ -42,9 +61,25 @@ fn args(mode: &str, prompt: &str, session: Option<&str>) -> Vec<String> {
         a.extend(["--permission-mode", "acceptEdits", "--allowedTools"].map(String::from));
         a.extend(RUN_TOOLS.iter().map(|s| s.to_string()));
     } else {
-        a.extend(["--model", "sonnet", "--allowedTools"].map(String::from));
-        a.extend(READ_TOOLS.iter().map(|s| s.to_string()));
+        a.push("--allowedTools".into());
+        a.extend(read_tools());
         a.extend(["--disallowedTools", "Edit", "Write", "NotebookEdit"].map(String::from));
+    }
+    let model = opts.model.clone().filter(|m| !m.is_empty()).or_else(|| (mode != "run").then(|| "sonnet".to_string()));
+    if let Some(m) = model {
+        a.extend(["--model".to_string(), m]);
+    }
+    if let Some(e) = opts.effort.as_deref().filter(|e| !e.is_empty()) {
+        a.extend(["--effort".to_string(), e.to_string()]);
+    }
+    if let Some(b) = opts.budget.filter(|b| *b > 0.0) {
+        a.extend(["--max-budget-usd".to_string(), format!("{b}")]);
+    }
+    if let Some(f) = opts.fallback.as_deref().filter(|f| !f.is_empty()) {
+        a.extend(["--fallback-model".to_string(), f.to_string()]);
+    }
+    if opts.persist == Some(false) && session.filter(|s| !s.is_empty()).is_none() {
+        a.push("--no-session-persistence".into());
     }
     if let Some(s) = session.filter(|s| !s.is_empty()) {
         a.extend(["--resume".to_string(), s.to_string()]);
@@ -64,12 +99,14 @@ pub fn claude_start(
     mode: String,
     prompt: String,
     session: Option<String>,
+    opts: Option<RunOpts>,
 ) -> Result<String, String> {
     if id.is_empty() || !id.chars().all(|c| c.is_ascii_alphanumeric() || c == '-') {
         return Err("a run id is letters, digits and -".into());
     }
+    let opts = opts.unwrap_or_default();
     let mut child = Command::new(tool("claude"))
-        .args(args(&mode, &prompt, session.as_deref()))
+        .args(args(&mode, &prompt, session.as_deref(), &opts))
         .current_dir(tree.root())
         .stdin(Stdio::null())
         .stdout(Stdio::piped())

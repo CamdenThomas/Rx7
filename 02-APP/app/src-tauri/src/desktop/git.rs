@@ -13,7 +13,16 @@ use super::{claude::Runs, tool, Tree};
 use serde::Serialize;
 use std::path::{Path, PathBuf};
 use std::process::Command;
+use std::sync::Mutex;
 use tauri::{AppHandle, Emitter, Manager, State};
+
+/// One git operation at a time in this tree (plan P10). Four answers saved in five seconds
+/// once ran four commits and four pull-and-push threads against the same index.
+static GIT: Mutex<()> = Mutex::new(());
+
+fn hold() -> std::sync::MutexGuard<'static, ()> {
+    GIT.lock().unwrap_or_else(|e| e.into_inner())
+}
 
 #[derive(Serialize, Clone, Default)]
 pub struct SyncState {
@@ -62,16 +71,23 @@ fn state(root: &Path) -> SyncState {
     s
 }
 
+/// Fetch, bring the branch up to date, push what is ours. Never over someone's edits: with
+/// changes in the tree that are not committed (a terminal session at work), the merge or
+/// rebase waits and the state says so; a rebase that fails is aborted, never left half done.
 fn pull_and_push(root: &Path) -> SyncState {
+    let _g = hold();
     if let Err(e) = git(root, &["fetch", "--quiet", "origin"]) {
         return SyncState { error: Some(e), ..state(root) };
     }
-    let mut s = state(root);
-    s.online = true;
-    let pulled = match (s.ahead, s.behind) {
-        (_, 0) => Ok(String::new()),
-        (0, _) => git(root, &["merge", "--ff-only", "--quiet", "@{u}"]),
-        _ => git(root, &["pull", "--rebase", "--autostash", "--quiet"]),
+    let s = state(root);
+    let pulled = match (s.ahead, s.behind, s.dirty) {
+        (_, 0, _) => Ok(String::new()),
+        (_, _, d) if d > 0 => Err("The tree has changes that are not committed - someone is working in it. Sync waits.".to_string()),
+        (0, _, _) => git(root, &["merge", "--ff-only", "--quiet", "@{u}"]),
+        _ => git(root, &["pull", "--rebase", "--quiet"]).map_err(|e| {
+            let _ = git(root, &["rebase", "--abort"]);
+            e
+        }),
     };
     let pushed = pulled.and_then(|_| {
         if state(root).ahead > 0 {
@@ -92,10 +108,16 @@ pub async fn sync_state(tree: State<'_, Tree>) -> Result<SyncState, String> {
 #[tauri::command]
 pub async fn sync(tree: State<'_, Tree>, runs: State<'_, Runs>) -> Result<SyncState, String> {
     let root = tree.root();
-    let hold = runs.live();
-    tauri::async_runtime::spawn_blocking(move || if hold { state(&root) } else { pull_and_push(&root) })
-        .await
-        .map_err(|e| e.to_string())
+    let held = runs.live();
+    tauri::async_runtime::spawn_blocking(move || {
+        if held {
+            SyncState { online: true, ..state(&root) }
+        } else {
+            pull_and_push(&root)
+        }
+    })
+    .await
+    .map_err(|e| e.to_string())
 }
 
 #[tauri::command]
@@ -128,14 +150,29 @@ pub async fn git_log(tree: State<'_, Tree>, path: Option<String>, n: Option<u32>
 /// Commit one path and nothing else, whatever else is staged. The pre-commit hook still
 /// runs: if it refuses, the reason comes back and the file stays saved on disk.
 pub fn commit_path(root: &Path, path: &str, message: &str) -> Result<(), String> {
+    let _g = hold();
     git(root, &["add", "--", path])?;
     git(root, &["commit", "--quiet", "-m", message, "--only", "--", path]).map(|_| ())
+}
+
+/// Files changed in the tree and not committed - zero means nobody is mid-edit.
+pub fn dirty(root: &Path) -> u32 {
+    git(root, &["status", "--porcelain"]).map(|o| o.lines().count() as u32).unwrap_or(0)
+}
+
+/// Commit every change under the record's data folders as one commit (what `rx7.py apply`
+/// wrote). The hook still runs. Only called when the tree was clean before the apply, so
+/// nothing of anyone else's can ride along.
+pub fn commit_data(root: &Path, message: &str) -> Result<(), String> {
+    let _g = hold();
+    git(root, &["add", "-A", "--", "00-CAR/data", "01-REFERENCE/data", "02-APP/data", "02-PROJECTS"])?;
+    git(root, &["commit", "--quiet", "-m", message]).map(|_| ())
 }
 
 /// Push after a commit without holding the window; the app hears how it went.
 pub fn push_in_background(app: AppHandle, root: PathBuf) {
     std::thread::spawn(move || {
-        let s = if app.state::<Runs>().live() { state(&root) } else { pull_and_push(&root) };
+        let s = if app.state::<Runs>().live() { SyncState { online: true, ..state(&root) } } else { pull_and_push(&root) };
         let _ = app.emit("sync", s);
     });
 }

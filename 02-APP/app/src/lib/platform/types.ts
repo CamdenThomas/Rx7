@@ -40,6 +40,23 @@ export interface ClaudeHandle {
 
 export type ClaudeMode = 'run' | 'chat';
 
+/** What a Claude process may spend (plan P06): model, effort, a dollar cap, a fallback model,
+ *  and whether its session is kept for --resume. Unset fields leave Claude Code's defaults. */
+export interface ClaudeOpts {
+  model?: string;
+  effort?: string;
+  budget?: number;
+  fallback?: string;
+  persist?: boolean;
+}
+
+/** What `rx7.py apply` did (desktop only): rc 0 = the inbox is clear, 2 = answers wait for a run. */
+export interface Applied {
+  rc: number;
+  said: string;
+  committed: boolean;
+}
+
 export interface Platform {
   kind: 'desktop' | 'phone' | 'web';
   /** Whether Claude can be reached from this device at all (D-403: the desktop, for now). */
@@ -56,7 +73,9 @@ export interface Platform {
   syncInfo(): SyncInfo;
   onSync(listener: (s: SyncInfo) => void): () => void;
   commits(path?: string, n?: number): Promise<Commit[]>;
-  claude(mode: ClaudeMode, prompt: string, session: string | null, onLine: (e: ClaudeLine) => void): Promise<ClaudeHandle>;
+  claude(mode: ClaudeMode, prompt: string, session: string | null, onLine: (e: ClaudeLine) => void, opts?: ClaudeOpts): Promise<ClaudeHandle>;
+  /** Desktop: apply the answers with one right answer by rule, before any Claude run (P07). */
+  applyMechanical?(area: string): Promise<Applied>;
   open(url: string): void;
   photo(path: string): string;
   /** Phone: the GitHub key that lets it send answers. */

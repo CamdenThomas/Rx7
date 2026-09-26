@@ -1,8 +1,9 @@
 <!-- This device's settings: where the record is, and — on the phone — the key that sends answers. -->
 <script lang="ts">
-  import { KeyRound, FolderOpen, CircleCheck, CircleAlert, Zap } from '@lucide/svelte';
+  import { KeyRound, FolderOpen, CircleCheck, CircleAlert, Zap, Cpu } from '@lucide/svelte';
   import { app } from '../lib/app.svelte';
   import { autoApply } from '../lib/autoapply.svelte';
+  import { runs, RUN_CLASS_TITLE, type RunClass, type RunSettings } from '../lib/claude.svelte';
   import { ago, plural } from '../lib/text';
   import { toast } from '../lib/toast.svelte';
 
@@ -32,6 +33,19 @@
   }
 
   const record = $derived(app.snapshot?.record);
+
+  const MODELS = [
+    ['', 'Claude Code’s default (your account setting)'],
+    ['sonnet', 'Sonnet (cheapest, fine for applying answers)'],
+    ['opus', 'Opus'],
+  ];
+  const EFFORTS = ['low', 'medium', 'high', 'xhigh'];
+  const classes: RunClass[] = ['quick', 'design'];
+
+  async function setRun(cls: RunClass, patch: Partial<RunSettings>) {
+    await runs.setSettings({ ...runs.settings, [cls]: { ...runs.settings[cls], ...patch } });
+    toast('Saved for the next run.', 'ok');
+  }
 </script>
 
 <div class="page narrow">
@@ -71,6 +85,31 @@
         <input type="checkbox" checked={app.autoApply} onchange={(e) => autoApply.set(e.currentTarget.checked)} />
         Apply my answers automatically
       </label>
+    </section>
+  {/if}
+
+  {#if p?.canClaude}
+    <section class="card box">
+      <h2><Cpu size={18} /> Claude runs</h2>
+      <p class="muted">
+        Ticks, values, choices and drives are applied by rule, with no model at all. What is left goes to Claude Code,
+        with the model, effort and spending cap set here per kind of run. Every run counts against your subscription's
+        session budget, so the cheaper row is for the runs that only follow a playbook.
+      </p>
+      {#each classes as cls (cls)}
+        <div class="runrow">
+          <strong>{RUN_CLASS_TITLE[cls]}</strong>
+          <div class="inline">
+            <select class="input" aria-label="Model for {RUN_CLASS_TITLE[cls]}" value={runs.settings[cls].model} onchange={(e) => setRun(cls, { model: e.currentTarget.value })}>
+              {#each MODELS as [v, label] (v)}<option value={v}>{label}</option>{/each}
+            </select>
+            <select class="input" aria-label="Effort for {RUN_CLASS_TITLE[cls]}" value={runs.settings[cls].effort} onchange={(e) => setRun(cls, { effort: e.currentTarget.value })}>
+              {#each EFFORTS as ef (ef)}<option value={ef}>effort {ef}</option>{/each}
+            </select>
+            <label class="cap">cap $<input class="input" type="number" min="0" step="1" value={runs.settings[cls].budget} aria-label="Spending cap for {RUN_CLASS_TITLE[cls]}" onchange={(e) => setRun(cls, { budget: Number(e.currentTarget.value) || 0 })} /></label>
+          </div>
+        </div>
+      {/each}
     </section>
   {/if}
 
@@ -145,6 +184,20 @@
     align-items: center;
     gap: 10px;
     cursor: pointer;
+  }
+  .runrow {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .cap {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+  }
+  .cap .input {
+    width: 5em;
   }
   @media (max-width: 759px) {
     .inline {

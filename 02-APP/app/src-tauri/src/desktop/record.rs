@@ -122,6 +122,44 @@ pub async fn answer_save(
     .await?
 }
 
+#[derive(Serialize)]
+pub struct Applied {
+    /// rx7.py apply's exit code: 0 = nothing left in this inbox, 2 = some answers wait for a run.
+    rc: i32,
+    said: String,
+    committed: bool,
+}
+
+/// Apply the answers with one right answer by rule (`rx7.py apply -p AREA`, plan P07): work
+/// ticks, values and choices with no words, and drives. What it wrote is committed as one
+/// commit and pushed. Refuses when the tree has uncommitted changes (someone is working in
+/// it), so nothing of theirs is swept into the commit. Branches on the exit code only (R9).
+#[tauri::command]
+pub async fn record_apply(app: AppHandle, tree: State<'_, Tree>, area: String) -> Result<Applied, String> {
+    let root = tree.root();
+    blocking(move || {
+        if git::dirty(&root) > 0 {
+            return Err("The tree has changes that are not committed - someone is working in it. Apply waits.".into());
+        }
+        let out = rx7(&root).args(["apply", "-p", &area]).output().map_err(|e| e.to_string())?;
+        let rc = out.status.code().unwrap_or(3);
+        let text = said(&out);
+        if rc != 0 && rc != 2 {
+            return Err(text);
+        }
+        let mut committed = false;
+        if git::dirty(&root) > 0 {
+            let message = format!("Applied his answers by rule (rx7.py apply, {area})");
+            committed = git::commit_data(&root, &message).is_ok();
+            if committed {
+                git::push_in_background(app, root.clone());
+            }
+        }
+        Ok(Applied { rc, said: text, committed })
+    })
+    .await?
+}
+
 #[tauri::command]
 pub async fn answer_withdraw(
     app: AppHandle,

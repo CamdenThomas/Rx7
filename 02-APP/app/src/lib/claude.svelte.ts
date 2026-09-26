@@ -4,7 +4,7 @@
 
 import { app } from './app.svelte';
 import type { Area, Block } from './model';
-import type { ClaudeHandle, ClaudeLine } from './platform/types';
+import type { ClaudeHandle, ClaudeLine, ClaudeOpts } from './platform/types';
 import { toast } from './toast.svelte';
 
 export interface FeedItem {
@@ -105,15 +105,47 @@ function describeTool(name: string, input: Record<string, unknown> = {}): string
   }
 }
 
-async function launch(mode: 'run' | 'chat', prompt: string, session: string | null, into: Stream) {
+async function launch(mode: 'run' | 'chat', prompt: string, session: string | null, into: Stream, opts: ClaudeOpts = {}) {
   const p = app.platform;
   if (!p?.canClaude) throw new Error('Claude runs on the desktop for now.');
-  into.attach(await p.claude(mode, prompt, session, (l) => into.take(l)));
+  into.attach(await p.claude(mode, prompt, session, (l) => into.take(l), opts));
 }
 
 // ---------------------------------------------------------------- runs
 
 export type Workflow = 'apply' | 'plan' | 'review' | 'parts' | 'new';
+
+/** What a run may spend (plan P06). `quick` runs apply answers by the playbook; `design` runs
+ *  plan, review and open projects. An empty model means Claude Code's own default. */
+export type RunClass = 'quick' | 'design';
+export interface RunSettings {
+  model: string;
+  effort: string;
+  budget: number;
+}
+export const RUN_CLASS: Record<Workflow, RunClass> = { apply: 'quick', parts: 'quick', plan: 'design', review: 'design', new: 'design' };
+export const RUN_CLASS_TITLE: Record<RunClass, string> = { quick: 'Apply answers and parts rounds', design: 'Plan, review and new projects' };
+export const DEFAULT_RUN_SETTINGS: Record<RunClass, RunSettings> = {
+  quick: { model: 'sonnet', effort: 'medium', budget: 2 },
+  design: { model: '', effort: 'high', budget: 8 },
+};
+
+/** How the harness wants commands written; every short run lost a turn learning it. */
+const HARNESS =
+  'The tree is the working directory and the app pulled from GitHub just before starting you: do not pull again unless a push is refused. Write plain commands - no cd, no $?, no $VAR, no heredoc; one Bash call per step, with several rx7.py calls joined by && where they belong together. The harness shows you a non-zero exit code itself.';
+
+/** His answers waiting, exactly as saved, so the run reads nothing to find them. */
+function inboxFacts(areaName?: string): string {
+  const rows = (app.snapshot?.inbox ?? []).filter(
+    (a) => ['block', 'pick', 'work', 'drive'].includes(a.kind) && !a.pending && (!areaName || a.area === areaName),
+  );
+  if (!rows.length) return '';
+  const line = (a: (typeof rows)[number]) =>
+    `- ${a.area}/${a.id} · ${a.kind} ${a.target} · ${a.choice || '(no choice)'}` +
+    (a.text ? ` · his words: "${a.text.replace(/\s+/g, ' ').slice(0, 400)}"` : '') +
+    (a.context ? ' · a discussion rides along in context' : '');
+  return `His answers waiting in the inbox (id · kind target · choice · words):\n${rows.map(line).join('\n')}`;
+}
 
 export interface RunRecord {
   id: string;
@@ -148,18 +180,36 @@ function runPrompt(w: Workflow, area: Area | undefined, extra: string) {
   return [
     `You were started from the Rx7 app (CLAUDE.md §6.11). Run ${WHAT[w]}${where}.`,
     extra,
-    'Start with git pull --rebase, follow CLAUDE.md exactly, commit and push as §6.10 says, and end with the §8 report — the app shows it to Camden as this run\'s result.',
+    w === 'apply' ? inboxFacts(area?.name) : '',
+    HARNESS,
+    'Follow CLAUDE.md exactly, commit and push as §6.10 says, and end with the §8 report — the app shows it to Camden as this run\'s result.',
   ].filter(Boolean).join('\n\n');
 }
+
+type Queued = { w: Workflow; area?: string; extra: string; title?: string; onEnd?: (status: Status, result: string) => void };
 
 class Runs {
   current = $state<{ record: RunRecord; stream: Stream } | null>(null);
   history = $state<RunRecord[]>([]);
-  #queue = $state<{ w: Workflow; area?: string; extra: string; title?: string }[]>([]);
+  settings = $state<Record<RunClass, RunSettings>>(structuredClone(DEFAULT_RUN_SETTINGS));
+  #queue = $state<Queued[]>([]);
   #requested = new Set<string>();
 
   async load() {
     this.history = (await app.platform?.kv.get<RunRecord[]>('runs')) ?? [];
+    const saved = await app.platform?.kv.get<Partial<Record<RunClass, RunSettings>>>('runSettings');
+    if (saved) this.settings = { ...structuredClone(DEFAULT_RUN_SETTINGS), ...saved };
+  }
+
+  async setSettings(next: Record<RunClass, RunSettings>) {
+    this.settings = next;
+    await app.platform?.kv.set('runSettings', $state.snapshot(next));
+  }
+
+  /** The Claude Code options for one kind of run, from his settings. */
+  optsFor(w: Workflow): ClaudeOpts {
+    const s = this.settings[RUN_CLASS[w]];
+    return { model: s.model || undefined, effort: s.effort || undefined, budget: s.budget || undefined, fallback: s.model ? undefined : 'sonnet' };
   }
 
   busy = $derived(this.current !== null && ['starting', 'running'].includes(this.current.stream.status));
@@ -169,14 +219,14 @@ class Runs {
     return this.#queue.length;
   }
 
-  start(w: Workflow, area?: string, extra = '', title?: string) {
-    this.#queue.push({ w, area, extra, title });
+  start(w: Workflow, area?: string, extra = '', title?: string, onEnd?: Queued['onEnd']) {
+    this.#queue.push({ w, area, extra, title, onEnd });
     void this.#next();
   }
 
   async #next() {
     if (this.busy || !this.#queue.length) return;
-    const { w, area, extra, title } = this.#queue.shift()!;
+    const { w, area, extra, title, onEnd } = this.#queue.shift()!;
     const a = area ? app.area(area) : undefined;
     const record: RunRecord = {
       id: `${Date.now()}`, workflow: w, area: area ?? '', status: 'starting', result: '',
@@ -185,7 +235,9 @@ class Runs {
     const stream = new Stream();
     this.current = { record, stream };
     try {
-      await launch('run', runPrompt(w, a, extra), null, stream);
+      // The pull happens here, before Claude starts, never under it (D-413).
+      await app.refresh(true);
+      await launch('run', runPrompt(w, a, extra), null, stream, this.optsFor(w));
     } catch (e) {
       stream.items = [{ kind: 'error', text: e instanceof Error ? e.message : String(e) }];
       stream.take({ type: 'exit', code: 1 });
@@ -196,6 +248,7 @@ class Runs {
     await app.platform?.kv.set('runs', $state.snapshot(this.history));
     toast(`${record.title}: ${stream.status === 'done' ? 'finished' : stream.status}.`, stream.status === 'done' ? 'ok' : 'warn');
     await app.refresh(true);
+    onEnd?.(stream.status, stream.result);
     void this.#next();
   }
 

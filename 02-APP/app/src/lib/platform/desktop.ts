@@ -6,7 +6,7 @@ import { invoke } from '@tauri-apps/api/core';
 import { listen } from '@tauri-apps/api/event';
 import { openUrl } from '@tauri-apps/plugin-opener';
 import type { Answer, Commit, Snapshot } from '../model';
-import type { ClaudeHandle, ClaudeLine, ClaudeMode, Draft, Platform, SaveOutcome, SyncInfo } from './types';
+import type { Applied, ClaudeHandle, ClaudeLine, ClaudeMode, ClaudeOpts, Draft, Platform, SaveOutcome, SyncInfo } from './types';
 import { tauriKV } from './storage';
 
 interface GitState {
@@ -89,7 +89,8 @@ export async function desktopPlatform(): Promise<Platform> {
       return () => listeners.delete(l);
     },
     commits: (path, n = 20) => invoke<Commit[]>('git_log', { path: path ?? null, n }),
-    async claude(mode: ClaudeMode, prompt: string, session: string | null, onLine: (e: ClaudeLine) => void) {
+    applyMechanical: (area: string) => invoke<Applied>('record_apply', { area }),
+    async claude(mode: ClaudeMode, prompt: string, session: string | null, onLine: (e: ClaudeLine) => void, opts: ClaudeOpts = {}) {
       const id = `c${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
       const unlisten = await listen<string>(`claude:${id}`, (e) => {
         let line: ClaudeLine;
@@ -102,7 +103,7 @@ export async function desktopPlatform(): Promise<Platform> {
         if (line.type === 'exit') unlisten();
       });
       try {
-        await invoke('claude_start', { id, mode, prompt, session });
+        await invoke('claude_start', { id, mode, prompt, session, opts });
       } catch (e) {
         unlisten();
         throw e;

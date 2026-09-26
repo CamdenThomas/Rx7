@@ -7,7 +7,9 @@
 <script lang="ts">
   import { Play, LoaderCircle } from '@lucide/svelte';
   import { app } from '../lib/app.svelte';
+  import { autoApply } from '../lib/autoapply.svelte';
   import { runs } from '../lib/claude.svelte';
+  import { toast } from '../lib/toast.svelte';
   import { href } from '../lib/router.svelte';
   import { plural } from '../lib/text';
 
@@ -25,6 +27,12 @@
         return;
       }
       confirming = false;
+      // First by rule (rx7.py apply: ticks, values, choices, drives); Claude only for the rest.
+      const left = await autoApply.mechanical([area]);
+      if (!left.length) {
+        toast('Applied. Nothing here needed Claude.', 'ok');
+        return;
+      }
       runs.start('apply', area, `He pressed Apply on the ${noun} page: ${plural(waiting.length, 'answer')} of his wait in the inbox.`);
     } else {
       await app.save({ area, target: 'apply', kind: 'run', choice: 'apply', text: '', context: '' });
@@ -39,7 +47,8 @@
       <a href={href({ name: 'run', area })}>Watch it</a>
     {:else if waiting.length}
       <strong>{plural(waiting.length, 'answer')}</strong> saved, waiting to be applied.
-      {#if app.autoApply}<span class="faint">Claude starts on its own a minute and a half after your last one.</span>{/if}
+      {#if autoApply.failed}<span class="warn">{autoApply.failed}</span>
+      {:else if app.autoApply}<span class="faint">Ticks and choices are applied at once; the rest goes to Claude a minute and a half after your last answer.</span>{/if}
       {#if confirming}<span class="warn">That is a longer run — a few minutes. Apply now?</span>{/if}
     {:else if requested}
       Apply is requested. The desktop runs it the next time it syncs.

@@ -51,6 +51,7 @@ pub fn install(builder: tauri::Builder<tauri::Wry>) -> tauri::Builder<tauri::Wry
             record::record_export,
             record::answer_save,
             record::answer_withdraw,
+            record::record_apply,
             git::sync_state,
             git::sync,
             git::git_log,
