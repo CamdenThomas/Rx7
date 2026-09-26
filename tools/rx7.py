@@ -107,7 +107,7 @@ DATE_RE = re.compile(r"^\d{4}-\d{2}(-\d{2})?$")
 DATETIME_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:\d{2})?$")
 ID_RE = re.compile(r"^[A-Z]{1,4}-\d{1,4}$")
 # Blocks are numbered per project, <prefix>.<n>: `01.12` is the twelfth block raised for
-# 02-PROJECTS/01-electrical, `02.07` the seventh for 03-luxury (D-356). The prefix is
+# 02-PROJECTS/01-electrical, `03.07` the seventh for 03-luxury (D-356). The prefix is
 # the project directory's two-digit number; 00-CAR and 01-REFERENCE would collide with
 # 00 and 01, so theirs are CAR and REF. The number has at least two digits, so no id is
 # shorter than `00.01` — but a bare `13.80` in prose is a voltage, so a block id is only

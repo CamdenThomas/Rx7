@@ -1,5 +1,5 @@
 table,purpose
-decisions,"every ruling, permanent, newest last; the body is data/decisions/<id>.md"
+decisions,"every ruling, permanent, newest last; its full text is in body (D-405)"
 features,
 log,"what happened, one row per action"
 parts,every part this project buys or fits

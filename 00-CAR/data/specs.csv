@@ -359,10 +359,10 @@ SP-372,Electrical,"Motor test: + on L, - on R",mast UP,,S-002,15-75,primary,elec
 SP-373,Electrical,"Motor test: + on R, - on LY",mast DOWN,,S-002,15-75,primary,electrical,PT307,other-car,
 SP-374,Electrical,Connector cavities,8,count,S-001,24,primary,electrical,PT307,,"7 used, 1 not used; confirm on the car"
 SP-375,Electrical,Location,under dash LH beside the horn relay and CPU,,S-002,15-11,primary,electrical,PT307,other-car,
-SP-376,Electrical,Identity,hot start relay (3-point relay),,S-083,,secondary,electrical,PT308,,seller listing; the catalogue location agrees; confirm on the car
-SP-377,Electrical,Contact type,"normally open, single",,S-001,10,primary,electrical,PT308,,A-03 hot start relay
-SP-378,Electrical,Connector cavities,6,count,S-001,10,primary,electrical,PT308,,4 used; confirm on the car
-SP-379,Electrical,Location,LH front engine bay beside the choke & check relay,,S-005,BI-101 (fig 6630A-1),primary,electrical,PT308,,1985 p15-11 shows the 12A hot start relay in the same place; confirm on the car
+SP-376,Electrical,Identity,hot start relay (3-point relay),,S-083,,secondary,electrical,PT308,replaced,seller listing; the catalogue location agrees; confirm on the car
+SP-377,Electrical,Contact type,"normally open, single",,S-001,10,primary,electrical,PT308,replaced,A-03 hot start relay
+SP-378,Electrical,Connector cavities,6,count,S-001,10,primary,electrical,PT308,replaced,4 used; confirm on the car
+SP-379,Electrical,Location,LH front engine bay beside the choke & check relay,,S-005,BI-101 (fig 6630A-1),primary,electrical,PT308,replaced,1985 p15-11 shows the 12A hot start relay in the same place; confirm on the car
 SP-380,Electrical,Fusible link conductor size,0.5,mm2,S-001,10,primary,electrical,PT322,,"A-02 fusible link, printed '0.5sq'; confirm on the car"
 SP-381,Electrical,Fusible link colour code,G (green),,S-001,10,primary,electrical,PT322,,printed '(G)' on the A-02 connector detail; confirm on the car
 SP-382,Electrical,Connector X-01 (front to engine harness) cavities,22,count,S-001,30,primary,electrical,PT321,,"two rows of 3+5+3; 20 wired, 2 unused (dot view); confirm on the car"
@@ -464,14 +464,14 @@ SP-477,Electrical,Horn current (adjusted),3.0,A,S-045,80RX7_15_Body_Electrical.p
 SP-478,Electrical,Circuit fuse (shared with stop lights),15,A,S-001,p22 (section F),primary,electrical,PT647,,GW from the 15 A fuse feeds relay F-16; horns sound on GY
 SP-479,Electrical,Horn current (adjusted),3.0,A,S-045,80RX7_15_Body_Electrical.pdf p15:5 (PDF p7),primary,electrical,PT648,other-car,"tolerance +/- 0.5 A at 12 V; set with the adjusting screw, each horn separately, tone checked as a pair. 1980 manual; no 1982 figure found in S-038"
 SP-480,Electrical,Circuit fuse (shared with stop lights),15,A,S-001,p22 (section F),primary,electrical,PT648,,GW from the 15 A fuse feeds relay F-16; horns sound on GY
-SP-481,Electrical,Power window circuit fuse,30,A,S-001,p28 (section I),primary,electrical,PT646,,"X-04 30 A fuse, BW from ignition switch IG in, BL out to both switches; not fitted on this car"
+SP-481,Electrical,Power window circuit fuse,30,A,S-001,p28 (section I),primary,electrical,PT646,not-fitted,"X-04 30 A fuse, BW from ignition switch IG in, BL out to both switches; not fitted on this car"
 SP-482,Electrical,"Supply at switch connector, ignition ON",battery voltage,V,S-002,Section 15 p15-37,primary,electrical,PT646,other-car,"measure BL to body ground; B must show continuity to ground. 1985 manual (one 6-pin switch there, not the 1982 pair of 4-pin switches)"
 SP-483,Electrical,"Actuator solenoid coil resistance (a-b, a-c, a-d)",25-35,ohm,S-002,Section 15 p15-53,primary,electrical,PT650,other-car,a = common; 1985 manual. 1982 actuator FA43-66-310B not confirmed identical
 SP-484,Electrical,Actuator test with ACC checker: engine speed held,2000-3000,rpm,S-002,Section 15 p15-51,primary,electrical,PT650,other-car,"slide switch H, check switch ON with engine running; release above 4000 rpm (p15-53). Needs the ACC checker 49 9200 010"
 SP-485,Engine,Actuator cable free play (12A),7-13,mm,S-002,Section 15 p15-51,primary,electrical,PT651,other-car,pressed lightly at the cable with 100-200 g; set at the adjusting nut. 13B: 6-11 mm
-SP-486,Electrical,Cruise control unit fuse,10,A,S-001,p14 (section B),primary,electrical,PT652,,"X-04 10 A fuse from BW (IG) feeds Br to main switch, stop switch and clutch switch"
-SP-487,Electrical,Unit connector,13,cavities,S-001,p14 (section B),primary,electrical,PT652,,"B-25, 12 wires, one cavity marked not used (6 cavities top row, 7 bottom)"
-SP-488,Lighting,Main switch indicator lamp,3.4,W,S-001,p14 (section B),primary,electrical,PT654,,"lamp inside the C.C. main switch B-31, grounded on B. The 1985 main switch has two 1.4 W lamps (S-002 15-49)"
+SP-486,Electrical,Cruise control unit fuse,10,A,S-001,p14 (section B),primary,electrical,PT652,not-fitted,"X-04 10 A fuse from BW (IG) feeds Br to main switch, stop switch and clutch switch"
+SP-487,Electrical,Unit connector,13,cavities,S-001,p14 (section B),primary,electrical,PT652,not-fitted,"B-25, 12 wires, one cavity marked not used (6 cavities top row, 7 bottom)"
+SP-488,Lighting,Main switch indicator lamp,3.4,W,S-001,p14 (section B),primary,electrical,PT654,not-fitted,"lamp inside the C.C. main switch B-31, grounded on B. The 1985 main switch has two 1.4 W lamps (S-002 15-49)"
 SP-489,Lighting,Radio illumination lamp,3.4,W,S-001,p20 (Section E),primary,electrical,PT655,,"fed RG from the combination switch tail circuit, not the dimmed RL bus; confirm the bulb in the unit"
 SP-490,Electrical,"Supply fuse (X-04, shared with power antenna relay and main amp)",20,A,S-001,p24 (Section G),primary,electrical,PT655,,L (ACC) bus -> X-04 20 A -> LR
 SP-491,Electrical,"Speakers in the GS standard system (AM/FM stereo radio with 4 speakers, power amplifier and fader control)",4,count,S-004,p15,primary,electrical,PT655,,"1982 US brochure, RX-7 GS standard equipment"

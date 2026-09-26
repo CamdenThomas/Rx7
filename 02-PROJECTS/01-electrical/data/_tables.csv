@@ -9,7 +9,7 @@ cavities,
 checks,"the measurements the design waits on - one row per reading, taken in the car or on the bench"
 colours,
 dcu_channels,"the DCU carrier's every channel - power, bus, inputs, outputs - as icu_channels is the ICU's (D-374)"
-decisions,"every ruling, permanent, newest last; the body is data/decisions/<id>.md"
+decisions,"every ruling, permanent, newest last; its full text is in body (D-405)"
 devices,
 fuses,
 grounds,

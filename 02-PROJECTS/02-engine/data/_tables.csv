@@ -1,5 +1,5 @@
 table,purpose
-decisions,"every ruling, permanent, newest last; the body is data/decisions/<id>.md"
+decisions,"every ruling, permanent, newest last; its full text is in body (D-405)"
 handover,"what the electrical build leaves for the swap engine, interface by interface"
 log,"what happened, one row per action"
 retired,terms that must no longer appear anywhere

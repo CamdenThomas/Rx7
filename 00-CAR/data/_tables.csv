@@ -8,7 +8,7 @@ retired,terms that must no longer appear anywhere
 service,every service visit - date and mileage
 specs,factory specifications with source and page
 vehicle,the car's identity and headline configuration today
-decisions,"every car-level ruling (service, fluids, what the car runs on) - the body is data/decisions/<id>.md; the other 00-CAR tables state what IS and never cite these (§6.6)"
+decisions,"every car-level ruling (service, fluids, what the car runs on) - its full text is in body (D-405); the other 00-CAR tables state what IS and never cite these (§6.6)"
 blocks,"open questions only Camden can answer, one row each; deleted once a decision closes it (§4, D-405)"
 inbox,"his answers waiting to be applied, one file per answer per device (D-405)"
 systems,"the car's systems as a tree, and what each one is right now (the Manual's Systems view, D-417)"

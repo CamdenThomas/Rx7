@@ -306,7 +306,7 @@ Raise it in one go, every field at once (`rx7.py block -p AREA ask=… why=@why.
 options=@opts.txt recommend=… stops=…`). Long fields go through `@file`.
 
 **Block ids are `<project>.<number>`** (D-356): `01.12` is the twelfth block raised for
-`02-PROJECTS/01-electrical`, `02.07` the seventh for `03-luxury`. The prefix is the project
+`02-PROJECTS/01-electrical`, `03.07` the seventh for `03-luxury`. The prefix is the project
 directory's two-digit number; `00-CAR`, `01-REFERENCE` and `02-APP` use `CAR`, `REF` and
 `APP`, because they are not numbered projects. Never `B-`: this car's factory diagrams already use `B-12` and
 `D-01` as component codes, and an id family must never share a namespace with the subject
