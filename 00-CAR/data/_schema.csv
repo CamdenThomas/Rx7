@@ -135,3 +135,4 @@ terminals,to,text,no,,"where that wire goes: the part, connector or splice"
 terminals,source,str,no,,S- ids
 terminals,page,str,no,,
 terminals,note,text,no,,a terminal nobody has checked on the car carries confirm (R11)
+parts,checked,date,no,,"the day Camden confirmed the part on the car (rx7.py apply); a checked row is shown in the Manual even if its note still says confirm (2026-09-26, plan P07)"

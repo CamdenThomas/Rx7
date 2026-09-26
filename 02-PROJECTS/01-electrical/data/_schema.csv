@@ -275,3 +275,5 @@ decisions,body,text,no,,"the decision's full text: the ruling in bold, his words
 work,reply,enum(check|choice|value),no,,"how he answers his row in the app: check (the default), value or choice (D-406)"
 work,choices,str,no,,"for reply=choice: the choices, separated by |"
 work,unit,str,no,,for reply=value: the unit the value is in
+work,result,str,no,,"his answer as rx7.py apply set it: done, the value (in unit), or the choice (2026-09-26, plan P07)"
+work,settles,str,no,,"rows his answer flips, as <area>:<table>:<key> separated by spaces; blank means the PT ids named in item (2026-09-26, plan P07)"

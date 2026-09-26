@@ -1331,7 +1331,11 @@ DUE_SOON_MILES, DUE_SOON_DAYS = 1000, 30
 
 
 def manual_hold(table: str, row: dict):
-    """'shown', 'gone' (not a fact about the car now) or a HELD_WHY key."""
+    """'shown', 'gone' (not a fact about the car now) or a HELD_WHY key.
+
+    A part Camden has confirmed on the car (`parts.checked`, a date written by `apply` from
+    his 'yes, as described') is shown whatever its note still says: the doubt the note
+    recorded was his to settle, and he settled it (plan P07, 2026-09-26)."""
     applies = (row.get("applies") or "").strip()
     if applies in ("replaced", "not-fitted"):
         return "gone"
@@ -1339,6 +1343,8 @@ def manual_hold(table: str, row: dict):
         return "other-car"
     if table == "specs" and (row.get("confidence") or "").strip() == "unverified":
         return "unverified"
+    if (row.get("checked") or "").strip():
+        return "shown"
     if any(CONFIRM_RE.search(row.get(c) or "") for c in MANUAL_SHOWN.get(table, ())):
         return "confirm"
     return "shown"
@@ -1865,6 +1871,176 @@ def cmd_inbox(args):
     return RC_WAITING if n else RC_OK
 
 
+# ------------------------------------------------------------------------- apply
+#
+# The answers with one right answer are applied here, by the tool, and Claude is called only
+# for judgement (D-405 carrying D-399; plan P07, 2026-09-26). Two kinds qualify:
+#
+#   work, with no words   a tick, a value or one of the row's choices: the row is set
+#                         (state=done, result=<what he said>) and, where the row names the
+#                         rows it settles (`settles`, or the PT ids in its item), a
+#                         "not fitted" choice marks those parts applies=not-fitted and a
+#                         "yes, as described" choice dates parts.checked.
+#   drive                 one drives row (§6.7); a reading lower than the newest is a
+#                         finding and is left for a run.
+#
+# Everything else - every block, every pick, a work answer with his words, 'not done',
+# 'different part', runs and project requests - is left in the inbox and named, so the run
+# that follows knows exactly what waits. Applied rows' inbox files are deleted here, which
+# is allowed because the row itself now carries his answer (R3, §4).
+
+NOT_FITTED_CHOICES = {"not fitted", "not on the car"}
+FITTED_CHOICES = {"yes, as described", "fitted", "yes", "on the car"}
+PART_ID_RE = re.compile(r"\bPT\d{3,4}\b")
+
+
+def settles_of(area: Path, row: dict):
+    """The rows a work answer flips: `settles` tokens <area>:<table>:<key>, or, when blank, the
+    PT ids its item names as 00-CAR parts."""
+    cell = (row.get("settles") or "").strip()
+    if cell:
+        out = []
+        for tok in cell.split():
+            bits = tok.split(":")
+            if len(bits) != 3:
+                raise ValueError(f"settles token {tok!r} is not <area>:<table>:<key>")
+            out.append((resolve_area(bits[0]), bits[1], bits[2]))
+        return out
+    car = ROOT / "00-CAR"
+    if not (car / "data" / "parts.csv").exists():
+        return []
+    ids = PART_ID_RE.findall(row.get("item") or "")
+    return [(car, "parts", i) for i in dict.fromkeys(ids)]
+
+
+def apply_work(area: Path, row: dict, ans: dict, when: str):
+    """Set one wordless work answer into its row and the rows it settles. Returns the paths it
+    wrote (relative), or raises ValueError with the reason it must wait for a run."""
+    choice = (ans.get("choice") or "").strip()
+    if (row.get("state") or "").strip() != "open":
+        raise ValueError(f"work row {row.get('id')} is {row.get('state') or 'blank'}, not open")
+    why = check_choice("work", row, choice)
+    if why:
+        raise ValueError(why)
+    reply = (row.get("reply") or "check").strip() or "check"
+    if reply == "check" and choice != "done":
+        raise ValueError("'not done' needs a run to read what stopped him")
+    if reply == "choice" and choice.lower() not in NOT_FITTED_CHOICES | FITTED_CHOICES:
+        raise ValueError(f"the choice {choice!r} has no rule; a run reads it")
+    if reply == "value" and (row.get("unit") or "").strip() and not re.fullmatch(r"-?\d+(\.\d+)?( ?x ?-?\d+(\.\d+)?)*", choice):
+        raise ValueError(f"{choice!r} is not a number in {row.get('unit')}; a run reads it")
+    touched = []
+    hdr, rows = read_table(area, "work")
+    for r in rows:
+        if (r.get("id") or "").strip() == (row.get("id") or "").strip():
+            r["state"] = "done"
+            if "result" in hdr:
+                r["result"] = choice
+            if "note" in hdr:
+                tail = f"Answered in the app {when[:10]}: {choice}."
+                r["note"] = ((r.get("note") or "").rstrip() + " " + tail).strip()
+    write_table(area, "work", hdr, rows)
+    touched.append(f"{rel(area)}/data/work.csv")
+    if reply == "choice":
+        flip = "not-fitted" if choice.lower() in NOT_FITTED_CHOICES else "checked"
+        for tarea, table, key in settles_of(area, row):
+            thdr, trows = read_table(tarea, table)
+            hit = [r for r in trows if (r.get(thdr[0]) or "").strip() == key]
+            if not hit:
+                raise ValueError(f"settles {rel(tarea)}:{table}:{key} names no row")
+            if flip == "not-fitted" and "applies" in thdr:
+                hit[0]["applies"] = "not-fitted"
+            elif flip == "checked" and "checked" in thdr:
+                hit[0]["checked"] = when[:10]
+            else:
+                continue
+            write_table(tarea, table, thdr, trows)
+            touched.append(f"{rel(tarea)}/data/{table}.csv")
+    return touched
+
+
+def apply_drive(area: Path, ans: dict):
+    """One drives row from a kind=drive answer (§6.7). A reading lower than the newest one is a
+    finding, not a row."""
+    target = (ans.get("target") or "").strip()
+    reading = (ans.get("choice") or "").strip()
+    why = check_choice("drive", {}, reading)
+    if why:
+        raise ValueError(why)
+    hdr, rows = read_table(area, "drives")
+    if any((r.get("id") or "").strip() == target for r in rows):
+        raise ValueError(f"drives already has {target}")
+    newest = max((_int(r.get("odometer")) or 0 for r in rows), default=0)
+    if int(reading) < newest:
+        raise ValueError(f"reading {reading} is lower than the newest {newest} - a finding for a run")
+    rows.append({"id": target, "date": (ans.get("at") or "")[:10], "odometer": reading,
+                 "kind": "set" if target.startswith("odo-") else "drive",
+                 "from": "", "to": "", "note": (ans.get("text") or "").strip()})
+    write_table(area, "drives", hdr, rows)
+    return [f"{rel(area)}/data/drives.csv"]
+
+
+def log_row(area: Path, kind: str, what: str, refs: str = ""):
+    """Append one log row if the area declares log and its vocabulary allows `kind`."""
+    if "log" not in schema(area)[1]:
+        return False
+    _s, srows = read_table(area, "_schema")
+    typ = next(((r.get("type") or "") for r in srows
+                if r.get("table") == "log" and r.get("column") == "workflow"), "")
+    if typ.startswith("enum(") and kind not in typ[5:-1].split("|"):
+        return False
+    hdr, rows = read_table(area, "log")
+    hdr = hdr or ["id", "date", "workflow", "ids", "summary"]
+    nums = [int(m.group(1)) for m in (re.match(r"L-?(\d+)$", (r.get("id") or "")) for r in rows) if m]
+    rows.append({"id": f"L-{max(nums, default=0) + 1:04d}", "date": today(), "workflow": kind,
+                 "ids": refs, "summary": what})
+    write_table(area, "log", hdr, rows)
+    return True
+
+
+def cmd_apply(args):
+    """Apply every answer that has one right answer; name the rest. rc 0 when nothing is left
+    in the inbox(es) looked at, rc 2 when answers wait for a run, rc 1 if the record is then
+    invalid (what was written stays for the check to name)."""
+    sel = [resolve_area(args.area)] if args.area else areas()
+    applied, left = [], []
+    for a in sel:
+        done_here = []
+        for r in sorted(waiting(read_table(a, "inbox")[1]), key=lambda r: r.get("at", "")):
+            kind = (r.get("kind") or "").strip()
+            target = (r.get("target") or "").strip()
+            try:
+                if kind == "work" and not (r.get("text") or "").strip():
+                    _k, row = resolve_target(a, target, "work")
+                    apply_work(a, row, r, r.get("at") or now_iso())
+                elif kind == "drive":
+                    apply_drive(a, r)
+                else:
+                    raise ValueError("needs judgement" if kind in ("block", "pick") else
+                                     "has his words" if kind == "work" else f"a {kind} request")
+            except ValueError as e:
+                left.append((a, r, str(e)))
+                continue
+            f = a / "data" / "inbox" / f"{r['id']}.csv"
+            if f.exists():
+                f.unlink()
+            done_here.append(f"{target}={r.get('choice', '').strip()}")
+            applied.append((a, r))
+            print(f"applied {rel(a)} {kind} {target}: {r.get('choice', '').strip()}")
+        if done_here:
+            log_row(a, "answers", f"rx7.py apply: {len(done_here)} answer(s) of his set by rule - "
+                    + ", ".join(done_here), " ".join(t.split("=")[0] for t in done_here))
+    for a, r, why in left:
+        print(f"waits for a run: {rel(a)} {r.get('kind')} {r.get('target')} - {why}")
+    problems = run_check(sel)
+    for x in problems:
+        print(x)
+    print(f"({len(applied)} applied, {len(left)} left for a run)")
+    if problems:
+        return RC_INVALID
+    return RC_WAITING if left else RC_OK
+
+
 def cmd_picks(args):
     """Where every parts pick stands (D-388). Reads picks, parts and inbox; writes nothing.
     His answers to proposed picks arrive in `inbox` (kind pick) - `rx7.py inbox` lists them."""
@@ -2230,6 +2406,10 @@ def main(argv=None):
     p = sub.add_parser("inbox", help="his answers waiting to be applied, with his words (rc 2 if any)")
     p.add_argument("-p", "--area")
     p.set_defaults(fn=cmd_inbox)
+
+    p = sub.add_parser("apply", help="apply his answers that have one right answer (wordless work ticks, values, choices; drives); name the rest (rc 2)")
+    p.add_argument("-p", "--area")
+    p.set_defaults(fn=cmd_apply)
 
     p = sub.add_parser("picks", help="where every parts pick stands")
     p.add_argument("-p", "--area")
