@@ -7,11 +7,10 @@ export const meta = {
   ],
 }
 
-const S = args.scratch
+const T = '/home/crash/docs/storage/Rx7'
 // The findings go straight into the tree (01-REFERENCE/research), never only a scratch folder:
 // five wave-2 batches were lost that way (plan P48).
 const OUT = `${T}/01-REFERENCE/research/research`
-const T = '/home/crash/docs/storage/Rx7'
 
 const RULES = `You research the parts of one real car for its owner's manual: a 1982 US Mazda RX-7 GS (FB), 12A rotary, 3-speed automatic, Sunbeam Silver, (the odometer is in rx7.py export, manual.odometer). Work in ${T}. The owner asked: "find as much information about every part: the spec sheet, diagrams, CAD, anything, internal wire diagrams, every detail, every layer".
 
