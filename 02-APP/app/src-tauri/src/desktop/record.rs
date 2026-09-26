@@ -240,7 +240,9 @@ pub async fn answer_withdraw(
 ) -> Result<Saved, String> {
     let root = tree.root();
     blocking(move || {
-        let out = rx7(&root).args(["del", &area, "inbox", &id]).output().map_err(|e| e.to_string())?;
+        // --force: rx7.py del refuses to drop an answer whose words are saved nowhere (R3); the
+        // window is the one caller that may, because it put his words back into his draft first.
+        let out = rx7(&root).args(["del", &area, "inbox", &id, "--force"]).output().map_err(|e| e.to_string())?;
         if !out.status.success() {
             return Err(said(&out));
         }

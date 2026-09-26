@@ -143,7 +143,7 @@ try {
   await js("[...document.querySelectorAll('.saved .btn')].find((b) => b.textContent.includes('Withdraw')).click()");
   await until('withdrawn in the app', "return !document.querySelector('.saved')");
   check('withdrawing removes the file', !existsSync(file));
-  check('in its own commit', git('log', '-1', '--format=%s') === 'Camden withdrew his answer to 01.29 (desktop)');
+  check('in its own commit', git('log', '-1', '--format=%s') === `Camden withdrew his answer to ${BLOCK} (desktop)`);
 
   await wd('DELETE', `/session/${sid}`);
 } catch (e) {
