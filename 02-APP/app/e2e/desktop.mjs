@@ -96,7 +96,7 @@ try {
   await sleep(1200);
   await shot('home');
 
-  await js("location.hash = '#/p/01-electrical/blocks/' + ''");
+  await js(`location.hash = '#/p/01-electrical/blocks/${BLOCK}'`);
   await until('the block opens', "return !!document.querySelector('.opt')");
   await js("document.querySelectorAll('.opt')[1].click()");
   const words = 'Toggles in a box — “belt and braces”.\nSecond line.';
@@ -138,7 +138,7 @@ try {
   await shot('picks');
 
   // Withdraw his desktop answer: the file goes, in its own commit.
-  await js("location.hash = '#/p/01-electrical/blocks/' + ''");
+  await js(`location.hash = '#/p/01-electrical/blocks/${BLOCK}'`);
   await until('the saved answer shows', "return !!document.querySelector('.saved')");
   await js("[...document.querySelectorAll('.saved .btn')].find((b) => b.textContent.includes('Withdraw')).click()");
   await until('withdrawn in the app', "return !document.querySelector('.saved')");

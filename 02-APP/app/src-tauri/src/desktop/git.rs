@@ -67,7 +67,7 @@ fn state(root: &Path) -> SyncState {
         s.ahead = it.next().unwrap_or(0);
         s.behind = it.next().unwrap_or(0);
     }
-    s.dirty = git(root, &["status", "--porcelain"]).map(|o| o.lines().count() as u32).unwrap_or(0);
+    s.dirty = dirty(root);
     s
 }
 
@@ -160,9 +160,10 @@ pub fn head(root: &Path) -> Result<String, String> {
     git(root, &["rev-parse", "HEAD"])
 }
 
-/// Files changed in the tree and not committed - zero means nobody is mid-edit.
+/// Tracked files changed and not committed - zero means nobody is mid-edit. Untracked files
+/// do not count: a merge or rebase never touches them, and a stray file must not stop every sync.
 pub fn dirty(root: &Path) -> u32 {
-    git(root, &["status", "--porcelain"]).map(|o| o.lines().count() as u32).unwrap_or(0)
+    git(root, &["status", "--porcelain", "--untracked-files=no"]).map(|o| o.lines().count() as u32).unwrap_or(0)
 }
 
 /// Commit every change under the record's data folders as one commit (what `rx7.py apply`
