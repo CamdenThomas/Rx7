@@ -62,7 +62,7 @@ first, and the chat's key points ride along with your answer so they reach the d
 answer is saved at once and waits for **Apply** (7.6).
 
 **Apply.** Every answering page has **Apply** at the top. It hands your saved answers to
-Claude Code, which runs the playbook in `CLAUDE.md` (§6.2 for blocks, §6.9 for picks, §6.4
+Claude Code, which runs the playbook in `CLAUDE.md` (the apply playbook for blocks, parts for picks, build
 for TODO). You watch it work live, and its report is the result.
 
 **TODO.** Two lists, **Design** and **Build**, each in working order and split into the

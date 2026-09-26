@@ -1,6 +1,6 @@
 <!--
   New project (D-406 6.2): a name and one paragraph of goal. Claude opens the area, writes the
-  opening blocks and a first work list (CLAUDE.md §6.8), and he lands on the project.
+  opening blocks and a first work list (the new-project playbook), and he lands on the project.
 -->
 <script lang="ts">
   import { app } from '../lib/app.svelte';

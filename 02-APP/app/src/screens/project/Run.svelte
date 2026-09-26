@@ -1,5 +1,5 @@
 <!--
-  Handing work to Claude (D-406 8.4, CLAUDE.md §6.11): the runs that belong to no one page —
+  Handing work to Claude (D-406 8.4, CLAUDE.md §6): the runs that belong to no one page —
   plan, review, a parts round — and every run's live feed and report. Apply lives at the top
   of Blocks, Picks and TODO.
 -->

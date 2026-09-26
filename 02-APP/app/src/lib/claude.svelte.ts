@@ -1,4 +1,4 @@
-// Claude Code, from the app (D-406, CLAUDE.md §6.11). A run is one playbook for one project,
+// Claude Code, from the app (D-406, CLAUDE.md §6). A run is one playbook for one project,
 // with write access, one at a time, ending in the §8 report. A conversation (Explain, Discuss,
 // the chat panel) is read-only and can go on for several turns.
 
@@ -159,13 +159,15 @@ export interface RunRecord {
   cost?: number | null;
 }
 
+/** The playbook each run follows (`rx7.py playbook <name>`, CLAUDE.md §6). */
 const WHAT: Record<Workflow, string> = {
-  apply: 'CLAUDE.md §6.2 — apply his answers waiting in its inbox (his picks by §6.9 step 4, his work rows by §6.4, his drives by §6.7)',
-  plan: 'CLAUDE.md §6.1 — plan: take agent rows from READY until none has a met gate',
-  review: 'CLAUDE.md §6.5 — review, changing nothing but the findings',
-  parts: 'CLAUDE.md §6.9 — a parts round',
-  new: 'CLAUDE.md §6.8 — open a new project',
+  apply: 'the playbook `apply` — his answers waiting in its inbox (picks by the `parts` playbook step 4, work rows with words by `build`, drives by `service`)',
+  plan: 'the playbook `plan` — take agent rows from READY until none has a met gate',
+  review: 'the playbook `review` — changing nothing but the findings',
+  parts: 'the playbook `parts` — a parts round',
+  new: 'the playbook `new` — open a new project',
 };
+const PLAYBOOK: Record<Workflow, string> = { apply: 'apply', plan: 'plan', review: 'review', parts: 'parts', new: 'new' };
 
 export const WORKFLOW_TITLE: Record<Workflow, string> = {
   apply: 'Apply answers',
@@ -178,11 +180,11 @@ export const WORKFLOW_TITLE: Record<Workflow, string> = {
 function runPrompt(w: Workflow, area: Area | undefined, extra: string) {
   const where = area ? ` for ${area.path}` : '';
   return [
-    `You were started from the Rx7 app (CLAUDE.md §6.11). Run ${WHAT[w]}${where}.`,
+    `You were started from the Rx7 app (CLAUDE.md §6). Run ${WHAT[w]}${where}. Read it first: python3 tools/rx7.py playbook ${PLAYBOOK[w]}`,
     extra,
     w === 'apply' ? inboxFacts(area?.name) : '',
     HARNESS,
-    'Follow CLAUDE.md exactly, commit and push as §6.10 says, and end with the §8 report — the app shows it to Camden as this run\'s result.',
+    'Follow CLAUDE.md exactly, commit and push as its §6 says, and end with the §8 report — the app shows it to Camden as this run\'s result.',
   ].filter(Boolean).join('\n\n');
 }
 
@@ -252,7 +254,7 @@ class Runs {
     void this.#next();
   }
 
-  /** Runs he asked for from the phone wait in the inbox as kind=run / kind=project (§6.11).
+  /** Runs he asked for from the phone wait in the inbox as kind=run / kind=project (CLAUDE.md §6).
    *  Each request starts once, however often the record is read while it waits. */
   startRequested() {
     if (!app.platform?.canClaude) return;
@@ -281,7 +283,7 @@ export interface Message {
   text: string;
 }
 
-const READ_ONLY = 'You were started from the Rx7 app, read-only (CLAUDE.md §6.11): answer from the record, never write, never commit. Plain words, short paragraphs, no headings.';
+const READ_ONLY = 'You were started from the Rx7 app, read-only (CLAUDE.md §0): answer from the record, never write, never commit. Plain words, short paragraphs, no headings.';
 
 export function blockText(b: Block): string {
   return [

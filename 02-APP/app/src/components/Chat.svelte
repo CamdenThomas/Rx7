@@ -1,6 +1,6 @@
 <!--
   A conversation with Claude: his questions, Claude's answers streaming in. Used by the chat
-  panel on every page and by Discuss beside a block. Read-only (D-406, CLAUDE.md §6.11).
+  panel on every page and by Discuss beside a block. Read-only (D-406, CLAUDE.md §0).
 -->
 <script lang="ts">
   import { ArrowUp, Square } from '@lucide/svelte';

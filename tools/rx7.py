@@ -570,7 +570,7 @@ def split_choices(cell: str):
 #   phase:SOURCING        met when the owning area is at that phase or past it
 #
 # An empty gate is met. READY is every open row whose gate is met; that list is the only
-# answer to "what can be started now", and §6.1 takes its work from it.
+# answer to "what can be started now", and the plan playbook takes its work from it.
 #
 # Why this is code and not a convention: a gate that quietly never opens looks exactly
 # like a finished project — the planner reports "nothing to do" and stops. Nothing else
@@ -1030,11 +1030,11 @@ def check_area(area: Path, keyidx) -> list[str]:
             k = (r.get(kc) or "").strip()
             for col, v in r.items():
                 v = v or ""
-                # §6.6: 00-CAR states what IS, never how it was decided.
+                # CLAUDE.md §1: 00-CAR states what IS, never how it was decided.
                 if block_prefix(area) == "CAR" and t != "blocks":
                     for hit in re.findall(r"\b(?:D-\d{3}|BLK-\d{1,4})\b", v):
                         p.append(f"{rel(area)}:{t}:{k}: {col} cites {hit} - 00-CAR never cites a "
-                                 "decision or a block (§6.6); say what the car is")
+                                 "decision or a block (CLAUDE.md §1); say what the car is")
                 # The cad/ fence: nothing in the record cites a drawing as evidence.
                 if re.search(r"(?<![\w-])cad/", v):
                     p.append(f"{rel(area)}:{t}:{k}: {col} cites a file in cad/ - the record never "
@@ -2285,7 +2285,7 @@ def cmd_inbox(args):
 #                         rows it settles (`settles`, or the PT ids in its item), a
 #                         "not fitted" choice marks those parts applies=not-fitted and a
 #                         "yes, as described" choice dates parts.checked.
-#   drive                 one drives row (§6.7); a reading lower than the newest is a
+#   drive                 one drives row (the service playbook); a reading lower than the newest is a
 #                         finding and is left for a run.
 #
 # Everything else - every block, every pick, a work answer with his words, 'not done',
@@ -2364,7 +2364,7 @@ def apply_work(area: Path, row: dict, ans: dict, when: str):
 
 
 def apply_drive(area: Path, ans: dict):
-    """One drives row from a kind=drive answer (§6.7). A reading lower than the newest one is a
+    """One drives row from a kind=drive answer (the service playbook). A reading lower than the newest one is a
     finding, not a row."""
     target = (ans.get("target") or "").strip()
     reading = (ans.get("choice") or "").strip()
@@ -2443,6 +2443,25 @@ def cmd_apply(args):
     if problems:
         return RC_INVALID
     return RC_WAITING if left else RC_OK
+
+
+DOC_DIR = ROOT / "tools" / "doc"
+
+
+def cmd_doc(args):
+    """Print one playbook (`playbook NAME`) or one description (`doc TOPIC`) from tools/doc/,
+    the sections of CLAUDE.md v3 a run reads only when it needs them (plan P24). With no name,
+    list what there is."""
+    folder = DOC_DIR / "playbooks" if args.cmd == "playbook" else DOC_DIR
+    have = sorted(p.stem for p in folder.glob("*.md") if p.stem != "README")
+    if not args.name:
+        print(f"{args.cmd}s: " + ", ".join(have))
+        return RC_OK
+    p = folder / f"{args.name}.md"
+    if not p.is_file():
+        die(f"no {args.cmd} named {args.name!r} - there are: {', '.join(have)}")
+    sys.stdout.write(p.read_text(encoding="utf-8"))
+    return RC_OK
 
 
 def cmd_picks(args):
@@ -2979,6 +2998,12 @@ def main(argv=None):
     p = sub.add_parser("apply", help="apply his answers that have one right answer (wordless work ticks, values, choices; drives); name the rest (rc 2)")
     p.add_argument("-p", "--area")
     p.set_defaults(fn=cmd_apply)
+
+    for name, hlp in (("playbook", "print one playbook (plan, apply, source, build, review, complete, service, new, parts)"),
+                      ("doc", "print one description (record, work, blocks, ids, machine)")):
+        p = sub.add_parser(name, help=hlp)
+        p.add_argument("name", nargs="?")
+        p.set_defaults(fn=cmd_doc)
 
     p = sub.add_parser("picks", help="where every parts pick stands")
     p.add_argument("-p", "--area")

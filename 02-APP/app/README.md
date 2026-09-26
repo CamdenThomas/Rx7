@@ -34,7 +34,7 @@ against the files it fetched from GitHub. The app keeps no fact of its own (CLAU
 
 ## What this machine needs
 
-Installed once on the Fedora PC (CLAUDE.md §9):
+Installed once on the Fedora PC (`rx7.py doc machine`):
 
 - `sudo dnf install nodejs npm webkit2gtk4.1-devel openssl-devel curl wget file libappindicator-gtk3-devel librsvg2-devel libxdo-devel gcc gcc-c++ make unzip`
 - Rust through rustup (`~/.cargo`), with the Android targets:

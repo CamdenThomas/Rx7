@@ -1,6 +1,6 @@
 <!--
   The Apply button at the top of every page with answers (D-406 7.6, 8.4). His answers wait
-  until he presses it; then Claude applies them through the record (CLAUDE.md §6.2). With
+  until he presses it; then Claude applies them through the record (the apply playbook). With
   auto-apply on (D-413) the desktop presses it for him once he has been quiet a while. From
   the phone the press is saved as a request, and the desktop runs it when it next syncs.
 -->
