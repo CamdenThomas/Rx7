@@ -30,3 +30,29 @@ D-433,,What the agents gathered is the record of the stock car; Verify keeps onl
 - 00-CAR parts: for the parts those dropped rows covered, the word 'confirm' in the note becomes 'check' (a detail to verify when in hand), so the Manual shows them; the six kept parts keep 'confirm'. Specs from 1982 sources: the same rewrite in `note`; `unverified` specs (a non-factory source) and `other-car` figures stay held - the first is where errors live, the second is what the L rows resolve.
 - Block `CAR.04` (confirm vs check as words, or a column) stays his: the rewrite here uses the words convention the merge already follows and is reversible into a column if he picks (b).
 - Blocks `VER.01` and `VER.02` are deleted by this decision. Plan row 02-APP P29 is done."
+D-434,,The accelerator cable is a stock cable spliced through a custom bracket,2026-09-26,standing,,,VER.03,,"**What's fitted at PT166 is the stock accelerator cable, cut, meeting a custom bracket that carries a new cable end attached to the old bare cable end.**
+
+Camden's call, 2026-09-26, from the desktop app, answering `VER.03`: his words, verbatim: ""stockk accelarator cable end was cut and meets a cutom bracket with a new cable end to attach the old bare cable end"" — read as option (b), describing what is actually routed rather than the catalogued Weber-kit cable (FA01-41-660).
+
+**Reading.** The factory cable was cut; a custom bracket bridges it to a new cable end, which attaches to the old bare cable. Not the catalogued FA01-41-660 kit cable, and not an unmodified factory cable either — a spliced hybrid.
+
+**In the data.** 00-CAR parts PT166: `note` rewritten to describe the splice (bracket + new cable end onto the old bare cable), `checked=2026-09-26`. 00-verify work B16: `state=done` (the ruling answered it). Closes `VER.03`."
+D-435,,"The brake booster vacuum line is new, single-rotor sourced",2026-09-26,standing,,,VER.04,,"**What's fitted at PT567 is a new vacuum line from the brake booster solenoid, connected directly to only one independent rotor's intake manifold.**
+
+Camden's call, 2026-09-26, from the desktop app, answering `VER.04`: his words, verbatim: ""the vacum line from the brake boost solenoid is new and is dirrectlu connected to only one independent rotor intake minofold."" — read as option (b), describing what is actually routed rather than any of the four catalogued factory lines (G001-43-640, 1480-43-830A, 8871-43-836, FA01-43-840).
+
+**Reading.** None of the four factory lines/pipes described in the catalogue remain as such; a new line runs from the brake booster solenoid straight to one rotor housing's independent intake manifold, not a balanced source across both.
+
+**In the data.** 00-CAR parts PT567: `note` rewritten to describe the new line and its single-rotor connection, `checked=2026-09-26`. 00-verify work B34: `state=done` (the ruling answered it). Closes `VER.04`."
+D-436,,The vacuum hose routing label is gone,2026-09-26,standing,,,VER.05,,"**PT974, the vacuum hose routing label, is gone or illegible and is treated as not on the car.**
+
+Camden's call, 2026-09-26, from the desktop app, answering `VER.05`: **""a""**, the recommended option, no words attached.
+
+**In the data.** 00-CAR parts PT974: `note` rewritten to say the label is gone/illegible, `applies=not-fitted`, `checked=2026-09-26` (a not-fitted row does not reach the Manual, D-417). 00-verify work B37: `state=done`. Closes `VER.05`."
+D-437,,LED units sit in the factory headlamp buckets,2026-09-26,standing,,,VER.06,,"**LED units sit in the factory halogen buckets at PT589 (headlamp assembly, R and L); this also settles PT035.**
+
+Camden's call, 2026-09-26, from the desktop app, answering `VER.06`: **""a""**, the recommended option, no words attached.
+
+**Reading.** The factory halogen sealed-beam buckets (PT589) are unchanged; the LED units a previous owner fitted (PT035) sit inside them rather than replacing the buckets themselves.
+
+**In the data.** 00-CAR parts PT589: `note` rewritten to confirm LED units sit in the factory buckets, `checked=2026-09-26`. 00-CAR parts PT035: `note` rewritten to confirm the LED housings sit in the factory buckets (its own open question, settled by the same answer), `checked=2026-09-26`. 00-verify work C4: `state=done`. Closes `VER.06`."
