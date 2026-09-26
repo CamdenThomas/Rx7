@@ -14,7 +14,6 @@ export interface Snapshot {
   log: LogRow[];
   tables: RawTable[];
   photos: string[];
-  next: Record<string, string>;
   /** The Manual (D-417): 00-CAR as the car is now, verified rows only. Absent in an old export. */
   manual?: Manual;
 }

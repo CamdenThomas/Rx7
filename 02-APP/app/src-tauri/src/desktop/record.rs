@@ -69,7 +69,7 @@ pub fn set_tree_root(tree: State<Tree>, path: String) -> Result<String, String> 
 pub async fn record_export(tree: State<'_, Tree>) -> Result<String, String> {
     let root = tree.root();
     blocking(move || {
-        let out = rx7(&root).arg("export").output().map_err(|e| e.to_string())?;
+        let out = rx7(&root).args(["export", "--stdout"]).output().map_err(|e| e.to_string())?;
         match out.status.code() {
             Some(0) | Some(1) => String::from_utf8(out.stdout).map_err(|e| e.to_string()),
             _ => Err(said(&out)),
@@ -103,7 +103,9 @@ pub async fn answer_save(
         let words = Scratch::new(&text)?;
         let notes = Scratch::new(&context)?;
         let mut c = rx7(&root);
-        c.args(["answer", &area, &target, "--device", "desktop", "--at", &at]);
+        // --replace: the window only offers Change on a target he already answered, and the
+        // tool carries his earlier choice and words into context (R3, plan P18).
+        c.args(["answer", &area, &target, "--device", "desktop", "--at", &at, "--replace"]);
         c.arg("--text-file").arg(&words.0).arg("--context-file").arg(&notes.0);
         if !choice.trim().is_empty() {
             c.args(["--choice", choice.trim()]);

@@ -7,7 +7,7 @@ const answer = (target: string, extra: Partial<Answer> = {}): Answer => ({
   area: '01-electrical', id: `${target}~phone`, target, kind: 'block', choice: 'a', text: '', context: '', device: 'phone', at: '2026-09-24T20:00:00-06:00', ...extra,
 });
 const snap = (inbox: Answer[]): Snapshot => ({
-  version: 1, generated: '', record: { valid: true, problems: [] }, areas: [], picks: [], work: [], decisions: [], log: [], tables: [], photos: [], next: {},
+  version: 1, generated: '', record: { valid: true, problems: [] }, areas: [], picks: [], work: [], decisions: [], log: [], tables: [], photos: [],
   inbox, blocks: ['01.29', '01.30'].map((id) => ({ area: '01-electrical', id, answered: false }) as Snapshot['blocks'][number]),
 });
 

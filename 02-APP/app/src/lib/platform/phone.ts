@@ -160,10 +160,20 @@ export async function phonePlatform(opts: PhoneOptions): Promise<Platform> {
     },
     async save(d: Draft, at: string): Promise<SaveOutcome> {
       await prime();
-      const f = await inboxFile(d.area, d.target, d.kind ?? '', d.choice, d.text, d.context, at);
+      // An earlier answer to the same target from this phone (sent, or still in the outbox) is
+      // never overwritten without a trace: its choice and words ride along in context (R3, P18).
+      const earlier =
+        outbox.find((o) => o.op === 'put' && o.answer.area === d.area && o.answer.target === d.target)?.answer ??
+        snapshot?.inbox.find((a) => a.area === d.area && a.target === d.target && a.device === 'phone');
+      let context = d.context;
+      if (earlier && (earlier.choice !== d.choice || earlier.text !== d.text)) {
+        const was = `earlier answer ${earlier.at}: ${earlier.choice} ${earlier.text}`.trim();
+        context = [was, earlier.context, d.context].filter(Boolean).join('\n');
+      }
+      const f = await inboxFile(d.area, d.target, d.kind ?? '', d.choice, d.text, context, at);
       const answer: Answer = {
         area: d.area, id: f.id, target: d.target, kind: f.kind,
-        choice: d.choice, text: d.text, context: d.context, device: 'phone', at, pending: true,
+        choice: d.choice, text: d.text, context, device: 'phone', at, pending: true,
       };
       const path = `${f.areaPath}/data/inbox/${f.id}.csv`;
       outbox = outbox.filter((o) => o.path !== path);

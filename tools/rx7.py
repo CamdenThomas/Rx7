@@ -116,8 +116,13 @@ ID_RE = re.compile(r"^[A-Z]{1,4}-\d{1,4}$")
 # The projects moved up one number on 2026-09-25 (D-427): a block id in a decision written
 # before then keeps its old project, and next_block_id never repeats it. Engine and luxury
 # then swapped to 02 and 03, and the app left the projects for 02-APP, prefix APP (D-428).
-BLOCK_ID_RE = re.compile(r"^(\d{2}|CAR|REF|APP)\.(\d{2,3})$")
-BLOCK_PREFIX_FIXED = {"00-CAR": "CAR", "01-REFERENCE": "REF", "02-APP": "APP"}
+BLOCK_ID_RE = re.compile(r"^(\d{2}|CAR|REF|APP|VER)\.(\d{2,3})$")
+# 00-verify is a record-kind area like 00-CAR (D-427): it takes a word, not the `00` that
+# electrical's history uses (plan P21).
+BLOCK_PREFIX_FIXED = {"00-CAR": "CAR", "01-REFERENCE": "REF", "02-APP": "APP", "00-verify": "VER"}
+# Block ids were renumbered on 2026-09-25 (D-427, D-428). A decision dated before that closes
+# whatever id it names; one dated from then on closes only its own area's ids.
+RENUMBER_DATE = "2026-09-25"
 # Prose cites are checked by `rx7.py cites` (advisory), never by `check`. D- only, three
 # digits only, because this car's factory diagrams use D-01 and B-12 as component codes.
 CITE_RE = re.compile(r"\b(D-\d{3})\b")
@@ -148,8 +153,17 @@ def natural(s: str):
 
 # --------------------------------------------------------------------------- IO
 
-def read_csv_text(text: str):
-    rows = list(csv.reader(io.StringIO(text)))
+class RecordFileError(Exception):
+    """A file of the record cannot be read at all - a byte that is not UTF-8, an unbalanced
+    quote. That is a contradiction in the record (rc 1) naming the file, never a crash of
+    the tool (rc 3), because a crash lets the commit through (plan P19, 2026-09-26)."""
+
+
+def read_csv_text(text: str, where: str = "<text>"):
+    try:
+        rows = list(csv.reader(io.StringIO(text), strict=True))
+    except csv.Error as e:
+        raise RecordFileError(f"{where}: {e} - an unbalanced quote or a broken row; the file cannot be read")
     if not rows:
         return [], []
     hdr = [c.strip() for c in rows[0]]
@@ -161,10 +175,28 @@ def read_csv_text(text: str):
     return hdr, body
 
 
+# Every CSV parsed once per process (plan P15): keyed by path, stale when the file's mtime or
+# size changes, dropped by write_atomic. check read decisions.csv seventeen times before this.
+_FILES: dict = {}
+
+
 def read_csv_rows(p: Path):
     if not p.exists():
         return [], []
-    return read_csv_text(p.read_text(encoding="utf-8-sig"))
+    st = p.stat()
+    stamp = (st.st_mtime_ns, st.st_size)
+    hit = _FILES.get(str(p))
+    if hit is None or hit[0] != stamp:
+        try:
+            with open(p, encoding="utf-8-sig", newline="") as f:
+                text = f.read()
+        except UnicodeDecodeError as e:
+            raise RecordFileError(f"{rel(p)}: byte {e.start} is not UTF-8 - the file cannot be read; "
+                                  "fix or restore it (git shows the last good copy)")
+        hit = (stamp, read_csv_text(text, rel(p)))
+        _FILES[str(p)] = hit
+    hdr, body = hit[1]
+    return list(hdr), list(body)
 
 
 def folder_files(area: Path, table: str):
@@ -194,10 +226,16 @@ def csv_text(hdr, dicts) -> str:
 
 
 def write_atomic(p: Path, text: str) -> None:
+    """Whole or not at all: written to a sibling .tmp, flushed to disk, then renamed over the
+    target, so a crash leaves either the old file or the new one and never an empty one."""
     p.parent.mkdir(parents=True, exist_ok=True)
     tmp = p.with_name(p.name + ".tmp")
-    tmp.write_text(text, encoding="utf-8", newline="\n")
+    with open(tmp, "w", encoding="utf-8", newline="") as f:
+        f.write(text)
+        f.flush()
+        os.fsync(f.fileno())
     tmp.replace(p)
+    _FILES.pop(str(p), None)
 
 
 def write_table(area: Path, table: str, hdr, dicts) -> None:
@@ -227,13 +265,27 @@ def write_table(area: Path, table: str, hdr, dicts) -> None:
     write_atomic(area / "data" / f"{table}.csv", csv_text(hdr, dicts))
 
 
+# The areas live where CLAUDE.md §1 says and nowhere else: ROOT/<area>/data and
+# ROOT/02-PROJECTS/<project>/data. Two globs, cached per process (plan P14). The rglob this
+# replaces walked the app's 18 GB build folder on every call - six times per check.
+_AREAS = None
+
+
 def areas():
-    out = []
-    for p in sorted(ROOT.rglob("data/_tables.csv")):
-        if "99-ARCHIVE" in p.parts or ".git" in p.parts or "node_modules" in p.parts:
-            continue
-        out.append(p.parent.parent)
-    return out
+    global _AREAS
+    if _AREAS is None:
+        found = list(ROOT.glob("*/data/_tables.csv")) + list(ROOT.glob("02-PROJECTS/*/data/_tables.csv"))
+        _AREAS = sorted({p.parent.parent for p in found if "99-ARCHIVE" not in p.parts})
+    return list(_AREAS)
+
+
+def _use_tree(root: Path):
+    """Point the tool at another tree (the selftest's scratch fixture). Returns the old root."""
+    global ROOT, _AREAS, _TREE, _ARCHIVED
+    old = ROOT
+    ROOT, _AREAS, _TREE, _ARCHIVED = root, None, None, None
+    _FILES.clear()
+    return old
 
 
 def resolve_area(name: str | None):
@@ -276,6 +328,25 @@ def key_column(spec) -> str | None:
     return keys[0] if len(keys) == 1 else None
 
 
+def _real_date(v: str) -> bool:
+    """The regex says the shape; this says the calendar agrees (2026-13-45 is no date, P20)."""
+    try:
+        if len(v) == 7:
+            return 1 <= int(v[5:7]) <= 12
+        datetime.date.fromisoformat(v)
+        return True
+    except ValueError:
+        return False
+
+
+def _real_datetime(v: str) -> bool:
+    try:
+        datetime.datetime.fromisoformat(v.replace("Z", "+00:00"))
+        return True
+    except ValueError:
+        return False
+
+
 def bad_value(typ: str, v: str):
     if typ in ("key", "str", "text", "list"):
         return None
@@ -293,10 +364,10 @@ def bad_value(typ: str, v: str):
         if v not in ("yes", "no"):
             return "is not yes/no"
     elif typ == "date":
-        if not DATE_RE.match(v):
+        if not DATE_RE.match(v) or not _real_date(v):
             return "is not a date (YYYY-MM-DD or YYYY-MM)"
     elif typ == "datetime":
-        if not DATETIME_RE.match(v):
+        if not DATETIME_RE.match(v) or not _real_datetime(v):
             return "is not a date and time (YYYY-MM-DDTHH:MM:SS+hh:mm)"
     elif typ == "id":
         if not ID_RE.match(v):
@@ -551,18 +622,48 @@ def tree_index(fresh: bool = False):
     # whether a decision says it closed it. That is the one home for the fact (R2), and it is
     # why a gate on a removed block still resolves. Only a STANDING (or inherited) decision
     # closes a block (§4), and a project that has been archived still closed what it closed.
-    closed = set()
-    for f in [a / "data" / "decisions.csv" for a in areas()] + list((ROOT / "99-ARCHIVE").rglob("decisions.csv")):
+    closed, closed_by = set(), {}
+    for a in areas():
+        hdr, _b = read_csv_rows(a / "data" / "decisions.csv")
+        if "closes" not in hdr or "status" not in hdr:
+            continue
+        ci, si = hdr.index("closes"), hdr.index("status")
+        di = hdr.index("date") if "date" in hdr else None
+        px = block_prefix(a) or ""
+        for row in _b:
+            if row[si].strip() not in GATE_LIVE_DEC:
+                continue
+            old = di is None or not row[di].strip() or row[di].strip() < RENUMBER_DATE
+            for t in re.split(r"[\s,;·]+", row[ci]):
+                if BLOCK_ID_RE.match(t):
+                    closed.add(t)
+                    closed_by.setdefault(t, set()).add("*" if old else px)
+    for f in (ROOT / "99-ARCHIVE").rglob("decisions.csv"):
         hdr, _b = read_csv_rows(f)
         if "closes" not in hdr or "status" not in hdr:
             continue
         ci, si = hdr.index("closes"), hdr.index("status")
         for row in _b:
             if row[si].strip() in GATE_LIVE_DEC:
-                closed |= {t for t in re.split(r"[\s,;·]+", row[ci]) if BLOCK_ID_RE.match(t)}
+                for t in re.split(r"[\s,;·]+", row[ci]):
+                    if BLOCK_ID_RE.match(t):
+                        closed.add(t)
+                        closed_by.setdefault(t, set()).add("*")
     idx["blocks_closed"] = closed
+    idx["closed_by"] = closed_by
     _TREE = idx
     return idx
+
+
+def block_closed(ref: str, idx) -> bool:
+    """Whether a decision closes this block id - for an id issued after the renumbering, only
+    a decision of the area whose prefix it carries (plan P21)."""
+    who = idx.get("closed_by", {}).get(ref)
+    if not who:
+        return ref in idx.get("blocks_closed", ())
+    if "*" in who:
+        return True
+    return ref.split(".")[0] in who
 
 
 def parse_gate(cell: str):
@@ -599,9 +700,11 @@ def gate_ref_state(ref: str, area: str, idx=None):
         return st in GATE_LIVE_DEC, f"{ref} {st}"
     if ref in idx["blocks"]:
         return False, f"{ref} open"
-    if ref in idx.get("blocks_closed", ()):
+    if block_closed(ref, idx):
         return True, f"{ref} closed"
     if BLOCK_ID_RE.match(ref):
+        if ref in idx.get("blocks_closed", ()):
+            return False, f"? {ref} is closed only by another area's decision (the ids were renumbered on {RENUMBER_DATE})"
         return False, f"? {ref} is no open block and no decision closes it"
     m = WORK_REF_RE.match(ref)
     if m:
@@ -653,21 +756,31 @@ def gate_cycles(idx=None):
             if len(hits) == 1:
                 outs.append((hits[0], m.group("id")))
         edges[(ar, wid)] = outs
+    # Iterative depth-first walk with an explicit stack: a long chain must never overflow the
+    # recursion limit, because a crash here exits 3 and lets a commit through (plan P19).
     colour, cycles = {}, []
-
-    def walk(n, stack):
-        colour[n] = 1
-        for nxt in edges.get(n, ()):
-            if colour.get(nxt) == 1:
-                i = stack.index(nxt) if nxt in stack else 0
-                cycles.append(" -> ".join(f"{x}:{y}" for x, y in stack[i:] + [nxt]))
-            elif colour.get(nxt, 0) == 0:
-                walk(nxt, stack + [nxt])
-        colour[n] = 2
-
-    for n in edges:
-        if colour.get(n, 0) == 0:
-            walk(n, [n])
+    for start in edges:
+        if colour.get(start, 0):
+            continue
+        stack = [(start, iter(edges.get(start, ())))]
+        path = [start]
+        colour[start] = 1
+        while stack:
+            node, it = stack[-1]
+            nxt = next(it, None)
+            if nxt is None:
+                colour[node] = 2
+                stack.pop()
+                path.pop()
+                continue
+            c = colour.get(nxt, 0)
+            if c == 1:
+                i = path.index(nxt) if nxt in path else 0
+                cycles.append(" -> ".join(f"{x}:{y}" for x, y in path[i:] + [nxt]))
+            elif c == 0:
+                colour[nxt] = 1
+                stack.append((nxt, iter(edges.get(nxt, ()))))
+                path.append(nxt)
     return sorted(set(cycles))
 
 
@@ -681,7 +794,8 @@ def ready_report(area: str, idx=None):
         row = idx["row"][(ar, wid)]
         met, unmet, bad = gate_state(row.get("gate", ""), ar, idx)
         (ready if met else blocked).append((wid, row, unmet + bad))
-    order = lambda t: (t[1].get("stage", ""), t[0])
+    # Natural order, so A2 comes before A10: the planner takes the FIRST agent row (plan P20).
+    order = lambda t: (natural(t[1].get("stage", "")), natural(t[0]))
     return sorted(ready, key=order), sorted(blocked, key=order)
 
 
@@ -731,6 +845,84 @@ def check_gates(area: Path, idx=None) -> list[str]:
 
 
 # ------------------------------------------------------------------------ checks
+
+def value_problems(area: Path, t: str, spec, r: dict, k: str, keyidx, only=None) -> list[str]:
+    """Every refusal one row earns: a bad type, a required cell empty, a reference to no row.
+    `check` runs it over every row; `set` and `add` run it over the cells they are about to
+    write, so a bad value is refused at the keyboard and not at the commit (plan P17)."""
+    p = []
+    for c in spec:
+        col, typ = c["column"], (c.get("type") or "str")
+        if col not in r or (only is not None and col not in only):
+            continue
+        v = (r[col] or "").strip()
+        if not v:
+            if (c.get("required") or "").lower() == "yes" and typ != "key":
+                p.append(f"{rel(area)}:{t}:{k}: {col} is required but empty")
+            continue
+        why = bad_value(typ, v)
+        if why and not why.startswith("has an unknown declared type"):
+            p.append(f"{rel(area)}:{t}:{k}: {col}={v!r} {why}")
+        target = (c.get("ref") or "").strip()
+        if target:
+            toks = re.split(r"[\s,;|]+", v) if typ == "list" else [v]
+            for tok in [x for x in toks if x]:
+                if not ref_ok(area, target, tok, keyidx):
+                    p.append(f"{rel(area)}:{t}:{k}: {col}={tok!r} is not a key in {target}")
+    return p
+
+
+def ref_target_problem(area: Path, target: str):
+    """Why a `ref` in _schema cannot be checked: `[area:]table[.column]` must name a declared
+    table and, if it names a column, that table's key - values are only ever compared with
+    keys (plan P20)."""
+    aname, rest = target.split(":", 1) if ":" in target else (area.name, target)
+    tname, _, col = rest.partition(".")
+    tarea = next((a for a in areas() if a.name == aname), None)
+    if tarea is None:
+        return f"names no area {aname!r}"
+    tables, cols = schema(tarea)
+    if tname not in tables:
+        return f"names no table {tname!r} in {aname}"
+    kc = key_column(cols.get(tname) or [])
+    if col and kc and col != kc:
+        return f"names column {col!r} but only the key column {kc!r} can be referenced"
+    return ""
+
+
+def check_meta(area: Path) -> list[str]:
+    """The three tables that describe the record are checked too (plan P20): a duplicate
+    `phase` key in _project.csv would silently pick whichever came last."""
+    p = []
+    _, prows = read_table(area, "_project")
+    seen = {}
+    for i, r in enumerate(prows, start=2):
+        k = (r.get("key") or "").strip()
+        if not k:
+            p.append(f"{rel(area)}:_project line {i}: empty key")
+        elif k in seen:
+            p.append(f"{rel(area)}:_project: duplicate key {k!r} (lines {seen[k]} and {i})")
+        else:
+            seen[k] = i
+    _, srows = read_table(area, "_schema")
+    seen = {}
+    for i, r in enumerate(srows, start=2):
+        tc = ((r.get("table") or "").strip(), (r.get("column") or "").strip())
+        if not tc[0] or not tc[1]:
+            p.append(f"{rel(area)}:_schema line {i}: table or column is empty")
+        elif tc in seen:
+            p.append(f"{rel(area)}:_schema: {tc[0]}.{tc[1]} is declared twice (lines {seen[tc]} and {i})")
+        else:
+            seen[tc] = i
+    _, trows = read_table(area, "_tables")
+    seen = {}
+    for i, r in enumerate(trows, start=2):
+        t = (r.get("table") or "").strip()
+        if t in seen:
+            p.append(f"{rel(area)}:_tables: {t!r} is declared twice (lines {seen[t]} and {i})")
+        seen[t] = i
+    return p
+
 
 def load_keys():
     """Global index: (area_name, table) -> set of key values."""
@@ -797,6 +989,18 @@ def check_area(area: Path, keyidx) -> list[str]:
         for c in sorted(have - want):
             p.append(f"{rel(area)}:{t} has column {c!r}, which _schema.csv does not declare")
 
+        # A schema mistake is one problem, not one per row (plan P20/P22).
+        for c in spec:
+            typ = (c.get("type") or "str")
+            if (bad_value(typ, "x") or "").startswith("has an unknown declared type"):
+                p.append(f"{rel(area)}:_schema: {t}.{c['column']} has an unknown type {typ!r}")
+            if (c.get("required") or "").lower() not in ("", "yes", "no"):
+                p.append(f"{rel(area)}:_schema: {t}.{c['column']} required must be yes or no")
+            target = (c.get("ref") or "").strip()
+            if target:
+                bad = ref_target_problem(area, target)
+                if bad:
+                    p.append(f"{rel(area)}:_schema: {t}.{c['column']} ref={target!r} {bad}")
         seen = {}
         for i, r in enumerate(rows, start=2):
             k = (r.get(kc) or "").strip()
@@ -807,26 +1011,7 @@ def check_area(area: Path, keyidx) -> list[str]:
                 p.append(f"{rel(area)}:{t}: duplicate key {k!r} (lines {seen[k]} and {i})")
             else:
                 seen[k] = i
-            for c in spec:
-                col, typ = c["column"], (c.get("type") or "str")
-                if col not in r:
-                    continue
-                v = (r[col] or "").strip()
-                if not v:
-                    if (c.get("required") or "").lower() == "yes" and typ != "key":
-                        p.append(f"{rel(area)}:{t}:{k}: {col} is required but empty")
-                    continue
-                why = bad_value(typ, v)
-                if why:
-                    p.append(f"{rel(area)}:{t}:{k}: {col}={v!r} {why}")
-                target = (c.get("ref") or "").strip()
-                if target:
-                    toks = re.split(r"[\s,;|]+", v) if typ == "list" else [v]
-                    for tok in [x for x in toks if x]:
-                        if not ref_ok(area, target, tok, keyidx):
-                            p.append(
-                                f"{rel(area)}:{t}:{k}: {col}={tok!r} is not a key in {target}"
-                            )
+            p += value_problems(area, t, spec, r, k, keyidx)
         if t not in FOLDER_TABLES:
             # A row with more cells than its header loses them on the next write (read_table
             # zips to the header), so it is refused while the cells are still there to rescue.
@@ -854,6 +1039,7 @@ def check_area(area: Path, keyidx) -> list[str]:
                 if re.search(r"(?<![\w-])cad/", v):
                     p.append(f"{rel(area)}:{t}:{k}: {col} cites a file in cad/ - the record never "
                              "cites a drawing (cad/README.md); promote the fact into a row instead")
+    p += check_meta(area)
     p += check_decisions(area)
     p += check_phase(area)
     p += check_gates(area)
@@ -872,6 +1058,9 @@ def check_folder(area: Path, t: str, declared, kc) -> list[str]:
         if len(body) != 1:
             p.append(f"{where}: holds {len(body)} rows - a {t} file holds exactly one")
             continue
+        if len(body[0]) > len(hdr) and any(x.strip() for x in body[0][len(hdr):]):
+            p.append(f"{where}: {len(body[0])} cells under a {len(hdr)}-column header - the extra "
+                     "cells (his words?) would be lost on the next write")
         key = body[0][hdr.index(kc)].strip()
         if key != f.stem:
             p.append(f"{where}: its {kc} is {key!r} - the file must be named {key}.csv")
@@ -901,6 +1090,9 @@ def check_blocks(area: Path, rows) -> list[str]:
         for col in ("ask", "why", "options", "recommend", "stops", "title"):
             if "TO WRITE" in (r.get(col) or ""):
                 p.append(f"{rel(area)}:blocks:{bid}: {col} still says TO WRITE")
+        if opts and len(opts) >= 2 and not recommended_letter(r.get("recommend", ""), [x for x, _ in opts]):
+            p.append(f"{rel(area)}:blocks:{bid}: recommend must name an option first - '(a), unless …' - "
+                     "the app's 'follow the recommendation' reads that letter")
         if bid in closed:
             p.append(f"{rel(area)}:blocks:{bid}: a standing decision closes it - delete the block (§4)")
     return p
@@ -934,6 +1126,8 @@ def check_decisions(area: Path) -> list[str]:
     p = []
     if not (area / "data" / "decisions.csv").exists():
         return p
+    idx = tree_index()
+    archived = archived_decision_ids()
     _, rows = read_table(area, "decisions")
     for r in rows:
         i = (r.get("id") or "").strip()
@@ -951,6 +1145,17 @@ def check_decisions(area: Path) -> list[str]:
                      "stub `rx7.py new` wrote - write it or withdraw it")
         if st == "superseded" and not (r.get("superseded_by") or "").strip():
             p.append(f"{rel(area)}:decisions:{i}: superseded with no superseded_by")
+        # The two columns gates and ids are derived from must hold ids, not prose (plan P20):
+        # a typo in `closes` would close a phantom block and open every gate on it.
+        known = idx["decisions"].keys() | archived
+        for tok in re.findall(r"\S+", r.get("superseded_by") or ""):
+            tok = tok.strip(",;")
+            if tok and re.match(r"^D-\d+$", tok) and tok not in known:
+                p.append(f"{rel(area)}:decisions:{i}: superseded_by names {tok}, which is no decision anywhere")
+        for tok in re.split(r"[\s,;·]+", r.get("closes") or ""):
+            if tok and not (BLOCK_ID_RE.match(tok) or re.match(r"^[A-Z]{1,4}-\d{1,4}[a-z]?$", tok) or tok == "chat"):
+                p.append(f"{rel(area)}:decisions:{i}: closes has {tok!r}, which is not a block id, "
+                         "a v2 question id or 'chat' - prose belongs in body")
     if (area / "data" / "decisions").is_dir():
         p.append(f"{rel(area)}: data/decisions/ exists - decision text lives in decisions.body (D-405)")
     return p
@@ -997,7 +1202,14 @@ def check_supersedes():
             if i:
                 rows.setdefault(i, []).append((a, r))
     p = []
+    archived = None
     for i, lst in rows.items():
+        # An `inherited` copy with no owner anywhere would open every gate on it (plan P20).
+        if all((r.get("status") or "").strip() == "inherited" for _a, r in lst):
+            archived = archived_decision_ids() if archived is None else archived
+            if i not in archived:
+                p.append(f"{rel(lst[0][0])}:decisions:{i}: inherited, but no area or archive owns it - "
+                         "carry the owner's row or withdraw it")
         for a, r in lst:
             if (r.get("status") or "").strip() != "standing":
                 continue
@@ -1010,14 +1222,36 @@ def check_supersedes():
     return p
 
 
+_ARCHIVED = None
+
+
 def archived_decision_ids():
+    """Every decision id the archive still knows: v3 tables, v2 one-file decisions, and the
+    v2 rendered DECISIONS.md pages (their `**D-### —` headings), so a cite to a v2 ruling
+    resolves instead of counting as nothing (plan P22). Cached per process."""
+    global _ARCHIVED
+    if _ARCHIVED is not None and _ARCHIVED[0] == str(ROOT):
+        return _ARCHIVED[1]
     ids = set()
-    for d in (ROOT / "99-ARCHIVE").rglob("D-*.md"):
+    arch = ROOT / "99-ARCHIVE"
+    for d in arch.rglob("D-*.md"):
         ids.add(d.stem)
-    for f in (ROOT / "99-ARCHIVE").rglob("decisions.csv"):
+    for f in arch.rglob("decisions.csv"):
         hdr, body = read_csv_rows(f)
         if "id" in hdr:
             ids |= {row[hdr.index("id")].strip() for row in body}
+    # v2 pages head each ruling `**D-171 / D-172 — …**` (or `# D-…`), and the v2 registry
+    # lists them as `| D-172 | active |`; only those line shapes count, never a cite in prose.
+    heading = re.compile(r"^(?:\*\*|#{1,4}\s+\**|\|\s*)((?:D-\d{3}\s*/?\s*)+)", re.M)
+    for f in arch.rglob("*.md"):
+        if f.name not in ("DECISIONS.md", "ID-REGISTRY.md"):
+            continue
+        try:
+            for run in heading.findall(f.read_text(encoding="utf-8", errors="replace")):
+                ids |= set(re.findall(r"D-\d{3}", run))
+        except OSError:
+            pass
+    _ARCHIVED = (str(ROOT), ids)
     return ids
 
 
@@ -1044,11 +1278,12 @@ def unresolved_cites():
             if f.stem.startswith("_") or f.stem in ("decisions", "retired", "log"):
                 continue
             _, body = read_csv_rows(f)
+            # Whole terms only: the retired block id 03.05 must not match 203.058 in a note.
+            pats = [(t, re.compile(r"(?<![\w.])" + re.escape(t) + r"(?![\w.])", re.I)) for t in terms]
             for i, row in enumerate(body, start=2):
                 for cell in row:
-                    low = (cell or "").lower()
-                    for t in terms:
-                        if t.lower() in low:
+                    for t, pat in pats:
+                        if pat.search(cell or ""):
                             out.append(f"{rel(a)}:{f.stem} line {i} uses the retired term {t!r}")
     for a in areas():
         for f in sorted((a / "data").glob("*.csv")):
@@ -1211,7 +1446,7 @@ def export_data() -> dict:
     out = {"version": 1, "generated": now_iso(),
            "record": {"valid": not problems, "problems": problems[:100]},
            "areas": [], "blocks": [], "picks": [], "work": [], "decisions": [], "inbox": [],
-           "log": [], "tables": [], "photos": [], "next": {}}
+           "log": [], "tables": [], "photos": []}
     structured = {"blocks", "inbox", "work", "decisions", "log", "retired", "picks"}
     cites_in = {}
     for a in areas():
@@ -1236,8 +1471,6 @@ def export_data() -> dict:
                                                            "key": (r.get(key_column(spec) or "") or "").strip()})
         out["areas"].append({"path": rel(a), "name": a.name, "prefix": block_prefix(a) or "",
                              "kind": kind, "project": kv, "tables": meta})
-        if block_prefix(a):
-            out["next"][a.name] = next_block_id(block_prefix(a))
         for r in read_table(a, "inbox")[1]:
             out["inbox"].append(dict(r, area=a.name))
         for r in read_table(a, "log")[1][-40:]:
@@ -1538,15 +1771,26 @@ def cmd_check(args):
 
 
 def cmd_status(args):
+    """One screen. The default is what an agent acts on (plan P22): the record's verdict with
+    its first problems, each area in one line, EVERY agent row that is READY, his rows and the
+    blocked rows as counts, blocks as one line each, the inbox. `--all` restores the long view
+    with his rows and what blocks each row; `-p AREA` shows one area's queue, blocks and inbox."""
     problems = run_check()
-    blocks = open_blocks()
-    everything = [(a, r) for a in areas() for r in read_table(a, "inbox")[1]]
+    sel = [resolve_area(args.area)] if getattr(args, "area", None) else areas()
+    names = {a.name for a in sel}
+    blocks = [b for b in open_blocks() if b["_area"].name in names]
+    everything = [(a, r) for a in sel for r in read_table(a, "inbox")[1]]
     inbox = [(a, r) for a, r in everything if r in waiting([r])]
     notes = len(everything) - len(inbox)
     answered = {(a.name, (r.get("target") or "").strip()) for a, r in inbox}
     idx = tree_index()
+    full = getattr(args, "all", False)
     print(f"RECORD   {'valid' if not problems else str(len(problems)) + ' problem(s)'}")
-    for a in areas():
+    for x in problems[:5]:
+        print(f"  {x}")
+    if len(problems) > 5:
+        print(f"  … {len(problems) - 5} more (rx7.py check)")
+    for a in sel:
         kv = project_kv(a)
         line = f"{rel(a):<34} {kv.get('phase','-'):<10}"
         if (a / "data" / "work.csv").exists():
@@ -1558,12 +1802,16 @@ def cmd_status(args):
         if standing:
             line += f"   decisions {len(standing)} ({len(alone)} nobody was asked)"
         print(line)
-        print_queue(a.name, idx)
+        if full:
+            print_queue(a.name, idx)
+        else:
+            print_queue_brief(a.name, idx)
     stuck = [b for b in blocks if (b["_area"].name, b["id"].strip()) not in answered]
     print(f"BLOCKS   {len(stuck)} unanswered")
     for b in stuck:
         d = days_since(b.get("opened", ""))
-        print(f"  {b['id']} {b['_area'].name}: {(b.get('ask') or '')[:80]}" + (f"  ({d}d)" if d is not None else ""))
+        what = (b.get("ask") or "")[:80] if full else (b.get("title") or b.get("ask") or "")[:60]
+        print(f"  {b['id']} {b['_area'].name}: {what}" + (f"  ({d}d)" if d is not None else ""))
     print(f"INBOX    {len(inbox)} answer(s) waiting to be applied")
     for a, r in inbox:
         print(f"  {r.get('target')} {a.name}: {r.get('kind')} from the {r.get('device')} {r.get('at', '')[:16]}")
@@ -1574,6 +1822,18 @@ def cmd_status(args):
     if inbox or stuck:
         return RC_WAITING
     return RC_OK
+
+
+def print_queue_brief(area: str, idx):
+    """Every READY agent row in full (the planner's list), everything else as a count."""
+    ready, blocked = ready_report(area, idx)
+    if not ready and not blocked:
+        return
+    agent = [(w, r) for w, r, _ in ready if (r.get("owner") or "") == "agent"]
+    camden = sum(1 for _, r, _ in ready if (r.get("owner") or "") != "agent")
+    print(f"   ready: agent {len(agent)} · camden {camden}   blocked {len(blocked)}")
+    for wid, row in agent:
+        print(f"     agent   {wid:<7} {(row.get('item') or '')[:90]}")
 
 
 def days_since(iso: str):
@@ -1635,16 +1895,35 @@ def cmd_tables(args):
 
 
 def cmd_get(args):
-    a = resolve_area(args.area)
+    """One row. AREA may be `-` for a decision or block id, which are unique tree-wide; COLS
+    names the columns to print (a 7 KB decision body need not ride along, plan P22)."""
+    if args.area == "-":
+        hits = [a for a in areas() if args.table in schema(a)[0]
+                and any((r.get(key_column(schema(a)[1][args.table]) or "id") or "").strip() == args.key
+                        for r in read_table(a, args.table)[1])]
+        if not hits:
+            print(f"{args.table}:{args.key} has no row in any area")
+            return RC_WAITING
+        if len(hits) > 1:
+            die(f"{args.table}:{args.key} exists in {', '.join(rel(a) for a in hits)} - name the area")
+        a = hits[0]
+        print(f"{'area':<18} {rel(a)}")
+    else:
+        a = resolve_area(args.area)
     _, cols = schema(a)
     spec = cols.get(args.table)
     if not spec:
         die(f"{args.table!r} is not a declared table in {rel(a)}")
     kc = key_column(spec)
+    want = set(args.cols or [])
+    for c in want - {c["column"] for c in spec}:
+        die(f"{args.table} has no column {c!r}")
     _, rows = read_table(a, args.table)
     for r in rows:
         if (r.get(kc) or "").strip() == args.key:
             for c in spec:
+                if want and c["column"] not in want:
+                    continue
                 print(f"{c['column']:<18} {r.get(c['column'],'')}")
             return RC_OK
     print(f"{args.table}:{args.key} has no row")
@@ -1661,6 +1940,9 @@ def _pairs(items):
         k, v = it.split("=", 1)
         if v.startswith("@@"):
             v = v[1:]
+        elif v == "-":
+            # The value from stdin, so a long body rides in the same call as its row changes.
+            v = sys.stdin.read().strip("\n")
         elif v.startswith("@"):
             p = Path(v[1:]).expanduser()
             if not p.is_file():
@@ -1690,7 +1972,17 @@ def cmd_set(args):
             break
     if hit is None:
         die(f"{args.table}:{args.key} has no row - use `add`")
+    if args.table == "decisions" and "body" in vals and (hit.get("body") or "").strip() \
+            and not STUB_RE.search(hit.get("body") or "") and not getattr(args, "amend", False):
+        die(f"decisions:{args.key} already has a body - a decision is never edited (R4); supersede "
+            "it with `new`, or pass --amend if you are finishing the same decision (nothing was written)")
     before = {k: hit.get(k, "") for k in vals}
+    trial = dict(hit, **vals)
+    bad = value_problems(a, args.table, spec, trial, args.key, load_keys(), only=set(vals))
+    if bad:
+        for x in bad:
+            print(x)
+        die(f"{len(bad)} problem(s) - nothing was written", RC_INVALID)
     hit.update(vals)
     write_table(a, args.table, hdr, rows)
     for k, v in vals.items():
@@ -1717,7 +2009,13 @@ def cmd_add(args):
     hdr = hdr or declared
     if any((r.get(kc) or "").strip() == vals[kc] for r in rows):
         die(f"{args.table}:{vals[kc]} already exists - use `set`")
-    rows.append({c: vals.get(c, "") for c in hdr})
+    row = {c: vals.get(c, "") for c in hdr}
+    bad = value_problems(a, args.table, spec, row, vals[kc], load_keys())
+    if bad:
+        for x in bad:
+            print(x)
+        die(f"{len(bad)} problem(s) - nothing was written", RC_INVALID)
+    rows.append(row)
     write_table(a, args.table, hdr, rows)
     print(f"{args.table}:{vals[kc]} added")
     return RC_OK
@@ -1731,29 +2029,97 @@ def cmd_del(args):
         die(f"{args.table!r} is not a declared table in {rel(a)}")
     kc = key_column(spec)
     hdr, rows = read_table(a, args.table)
+    gone = [r for r in rows if (r.get(kc) or "").strip() == args.key]
     keep = [r for r in rows if (r.get(kc) or "").strip() != args.key]
-    if len(keep) == len(rows):
+    if not gone:
         die(f"{args.table}:{args.key} has no row")
+    # §4's lifecycle, enforced (plan P17): a block goes only when a standing decision names it
+    # in `closes`, or when a plainer block replaces it (--replaced-by, which retires the id);
+    # an answer with his words goes only once those words are saved somewhere in the record.
+    if args.table == "blocks" and not block_closed(args.key, tree_index(fresh=True)):
+        new = getattr(args, "replaced_by", None)
+        if not new:
+            die(f"blocks:{args.key} is closed by no standing decision - write the decision first (§4), "
+                f"or `del … --replaced-by <new block id>` if a plainer block replaced it (nothing was deleted)")
+        rh, rr = read_table(a, "retired")
+        rh = rh or ["term", "retired_by", "note"]
+        if not any((r.get("term") or "").strip() == args.key for r in rr):
+            rr.append({"term": args.key, "retired_by": new,
+                       "note": f"replaced by a plainer block on {today()}; his words are in its why"})
+            write_table(a, "retired", rh, rr)
+    if args.table == "inbox":
+        words = " ".join((gone[0].get("text") or "").split())
+        if words and not getattr(args, "force", False) and not words_saved(words):
+            die(f"inbox:{args.key} holds his words and they are saved nowhere in the record yet (R3) - "
+                "quote them in the decision, the pick's said, the row's note or the new block's why first "
+                "(nothing was deleted; --force overrides)")
+        if table_is_folder := args.table in FOLDER_TABLES:
+            f = a / "data" / "inbox" / f"{args.key}.csv"
+            if f.exists():
+                f.unlink()
+            print(f"{args.table}:{args.key} deleted")
+            return RC_OK
     write_table(a, args.table, hdr, keep)
     print(f"{args.table}:{args.key} deleted")
     return RC_OK
 
 
+def words_saved(words: str) -> bool:
+    """Whether his words (whitespace-normalised) appear verbatim in any decision body, pick
+    said, work note or block why/ask anywhere in the tree."""
+    homes = (("decisions", "body"), ("picks", "said"), ("work", "note"), ("blocks", "why"), ("blocks", "ask"))
+    for a in areas():
+        tables = schema(a)[0]
+        for t, col in homes:
+            if t not in tables:
+                continue
+            for r in read_table(a, t)[1]:
+                if words in " ".join((r.get(col) or "").split()):
+                    return True
+    return False
+
+
 def cmd_sql(args):
+    """A read-only query over one area, or with AREA `-` over the whole tree (plan P22): each
+    area is a schema named after it (`"01-electrical".work`), and the tables every area shares
+    - work, decisions, blocks, inbox, log, picks, parts - are also one view each with an
+    `area` column."""
     import sqlite3  # here, not at the top: the phone runs this file without sqlite3
-    a = resolve_area(args.area)
-    tables, _ = schema(a)
     con = sqlite3.connect(":memory:")
-    for t in tables:
-        hdr, rows = read_table(a, t)
-        if not hdr:
-            continue
-        cq = ",".join('"%s"' % c for c in hdr)
-        con.execute(f'create table "{t}" ({cq})')
-        con.executemany(
-            f'insert into "{t}" values ({",".join("?" * len(hdr))})',
-            [[r.get(c, "") for c in hdr] for r in rows],
-        )
+
+    def load(a, into):
+        tables, _ = schema(a)
+        cols_of = {}
+        for t in tables:
+            hdr, rows = read_table(a, t)
+            if not hdr:
+                continue
+            cq = ",".join('"%s"' % c for c in hdr)
+            con.execute(f'create table {into}."{t}" ({cq})')
+            con.executemany(
+                f'insert into {into}."{t}" values ({",".join("?" * len(hdr))})',
+                [[r.get(c, "") for c in hdr] for r in rows],
+            )
+            cols_of[t] = hdr
+        return cols_of
+
+    if args.area == "-":
+        shared = {}
+        for a in areas():
+            con.execute(f'attach database \':memory:\' as "{a.name}"')
+            for t, hdr in load(a, f'"{a.name}"').items():
+                shared.setdefault(t, []).append((a.name, hdr))
+        for t, parts in shared.items():
+            if t.startswith("_") or len(parts) < 2:
+                continue
+            cols = sorted({c for _, hdr in parts for c in hdr}, key=lambda c: min(h.index(c) if c in h else 99 for _, h in parts))
+            selects = []
+            for name, hdr in parts:
+                picks = ", ".join(f'"{c}"' if c in hdr else f"'' as \"{c}\"" for c in cols)
+                selects.append(f"select '{name}' as area, {picks} from \"{name}\".\"{t}\"")
+            con.execute(f'create temp view "{t}" as ' + " union all ".join(selects))
+    else:
+        load(resolve_area(args.area), "main")
     try:
         cur = con.execute(args.query)
     except sqlite3.Error as e:
@@ -1769,18 +2135,37 @@ def cmd_sql(args):
 
 
 def cmd_find(args):
+    """Every cell that holds TEXT, with a snippet around the first hit so the row need not be
+    fetched to see why it matched (plan P22). --word matches whole words; --limit caps the list."""
     sel = [resolve_area(args.area)] if args.area else areas()
-    needle = args.text.lower()
-    n = 0
+    if getattr(args, "word", False):
+        pat = re.compile(r"(?<!\w)" + re.escape(args.text) + r"(?!\w)", re.I)
+    else:
+        pat = re.compile(re.escape(args.text), re.I)
+    limit = getattr(args, "limit", None) or 0
+    n = shown = 0
     for a in sel:
         tables, cols = schema(a)
         for t in sorted(tables):
             kc = key_column(cols.get(t) or []) or ""
             for r in read_table(a, t)[1]:
-                hits = [c for c, v in r.items() if needle in (v or "").lower()]
-                if hits:
-                    print(f"{rel(a)}:{t}:{(r.get(kc) or '').strip()} ({', '.join(hits)})")
-                    n += 1
+                hits = [(c, pat.search(v or "")) for c, v in r.items()]
+                hits = [(c, m) for c, m in hits if m]
+                if not hits:
+                    continue
+                n += 1
+                if limit and shown >= limit:
+                    continue
+                shown += 1
+                c, m = hits[0]
+                v = " ".join((r.get(c) or "").split())
+                m = pat.search(v) or m
+                s, e = max(0, m.start() - 60), min(len(v), m.end() + 60)
+                snip = ("…" if s else "") + v[s:e] + ("…" if e < len(v) else "")
+                more = f" +{len(hits) - 1} col" if len(hits) > 1 else ""
+                print(f"{rel(a)}:{t}:{(r.get(kc) or '').strip()} [{c}{more}] {snip}")
+    if limit and n > shown:
+        print(f"… {n - shown} more (raise --limit)")
     print(f"({n} hit(s))")
     return RC_OK if n else RC_WAITING
 
@@ -1820,6 +2205,11 @@ def cmd_new(args):
 
 
 def cmd_export(args):
+    """The whole record as JSON, to a file (--out) or, for the app, to stdout (--stdout). One
+    of the two is required: 3.9 MB poured into an agent's context by a slip was the reason
+    (plan P22)."""
+    if not args.out and not args.stdout:
+        die("export writes 3.9 MB: say where - `--out FILE` (an agent) or `--stdout` (the app)")
     data = export_data()
     text = json.dumps(data, ensure_ascii=False, indent=1 if args.pretty else None,
                       separators=None if args.pretty else (",", ":"))
@@ -1847,7 +2237,21 @@ def cmd_answer(args):
         iid, body = inbox_entry(args.target, args.device, kind, args.choice or "", text, context, args.at or "")
     except ValueError as e:
         die(f"not saved: {e}")
-    write_atomic(a / "data" / "inbox" / f"{iid}.csv", body)
+    f = a / "data" / "inbox" / f"{iid}.csv"
+    if f.exists() and f.read_text(encoding="utf-8") != body:
+        # His earlier answer is never overwritten without a trace (R3, plan P18): the app
+        # passes --replace when he chose Change, and the earlier choice and words ride along.
+        ohdr, orows = read_csv_rows(f)
+        old = dict(zip(ohdr, orows[0])) if orows else {}
+        if not args.replace:
+            die(f"not saved: {rel(f)} already holds his answer of {old.get('at', '?')} "
+                f"({old.get('choice') or 'no choice'}) - pass --replace to answer again; the earlier words are kept in context")
+        earlier = f"earlier answer {old.get('at', '')}: {old.get('choice', '')} {old.get('text', '')}".strip()
+        if old.get("context"):
+            earlier += "\n" + old["context"]
+        context = (earlier + "\n" + context).strip("\n") if context else earlier
+        iid, body = inbox_entry(args.target, args.device, kind, args.choice or "", text, context, args.at or "")
+    write_atomic(f, body)
     print(f"saved {rel(a)}/data/inbox/{iid}.csv")
     return RC_OK
 
@@ -2080,9 +2484,23 @@ def cmd_diagrams(args):
 
 
 def cmd_cites(args):
+    """Advisory. Grouped by the id or term cited, with where (plan P22); `--table T` lists one
+    table's lines in full, for when you are already in that file."""
     out = unresolved_cites()
-    for x in out:
-        print(x)
+    table = getattr(args, "table", None)
+    if table:
+        out = [x for x in out if f":{table} line " in x]
+        for x in out:
+            print(x)
+    else:
+        groups = {}
+        for x in out:
+            m = re.search(r"(cites (D-\d{3})|retired term ('[^']*'))", x)
+            key = (m.group(2) or m.group(3)) if m else x
+            groups.setdefault(key, []).append(x.split(" line ")[0])
+        for key, where in sorted(groups.items(), key=lambda kv: (-len(kv[1]), kv[0])):
+            places = sorted(set(where))
+            print(f"{key}: {len(where)} cell(s) in {', '.join(places[:6])}{' …' if len(places) > 6 else ''}")
     print(f"({len(out)} unresolved cite(s) in prose - advisory, nothing is refused)")
     return RC_WAITING if out else RC_OK
 
@@ -2161,12 +2579,17 @@ def cmd_selftest(args):
                                     "owner": "agent", "item": wid, "stage": "A"}
         return idx
 
+    verbose = getattr(args, "verbose", False)
+    passes = []
+
     def expect(label, got, want=True):
         if bool(got) != want:
             fails.append(label)
             print(f"FAIL {label}   got={got!r}")
         else:
-            print(f"PASS {label}")
+            passes.append(label)
+            if verbose:
+                print(f"PASS {label}")
 
     idx = mk([("A1", "D-404", "open")])
     expect("a reference to nothing is refused", gate_state("D-999", A, idx)[2])
@@ -2314,7 +2737,146 @@ def cmd_selftest(args):
     expect("a non-date does not", days_since("soon") is None)
     expect("a date and time is a datetime", not bad_value("datetime", "2026-09-24T21:05:00-06:00"))
 
-    print(f"\n{len(fails)} failure(s)" if fails else "\nselftest: all pass")
+    # --- the checker itself, on a scratch tree (plan P23): one refusal per class ---
+    # Until now every gate test used a hand-built index and check_area had no test at all,
+    # so a regression that stopped `check` refusing (or made it refuse a clean record and
+    # block every commit) was invisible until the live record hit it (R7).
+    def csvtext(hdr, rows):
+        return csv_text(hdr, [dict(zip(hdr, r)) for r in rows])
+
+    def fixture(td):
+        root = Path(td)
+        (root / "99-ARCHIVE").mkdir()
+        for name in ("00-CAR", "02-PROJECTS/01-one", "02-PROJECTS/02-two"):
+            d = root / name / "data"
+            d.mkdir(parents=True)
+            (d / "inbox").mkdir()
+            (d / "_project.csv").write_text(csvtext(["key", "value"], [["name", name], ["phase", "PLANNING" if "PROJECTS" in name else "PERMANENT"]]), encoding="utf-8")
+            (d / "_tables.csv").write_text(csvtext(["table", "purpose"], [[t, t] for t in ("work", "blocks", "decisions", "inbox", "retired", "log")]), encoding="utf-8")
+            sch = [["work", "id", "key", "yes", "", ""], ["work", "item", "text", "no", "", ""], ["work", "owner", "enum(agent|camden)", "no", "", ""],
+                   ["work", "state", "enum(blocked|done|dropped|open)", "no", "", ""], ["work", "gate", "str", "no", "", ""], ["work", "note", "text", "no", "", ""],
+                   ["work", "reply", "enum(check|choice|value)", "no", "", ""], ["work", "choices", "str", "no", "", ""], ["work", "unit", "str", "no", "", ""],
+                   ["work", "due", "date", "no", "", ""], ["work", "part", "str", "no", "00-CAR:parts", ""]]
+            sch += [["blocks", c, "text" if c not in ("id", "opened") else ("key" if c == "id" else "date"), "yes", "", ""] for c in TOOL_COLUMNS["blocks"]]
+            sch += [["decisions", c, "key" if c == "id" else "enum(inherited|standing|superseded|withdrawn)" if c == "status" else "text", "yes" if c == "id" else "no", "", ""] for c in TOOL_COLUMNS["decisions"]]
+            sch += [["inbox", c, "key" if c == "id" else "enum(" + "|".join(sorted(INBOX_KIND)) + ")" if c == "kind" else "enum(desktop|phone)" if c == "device" else "text", "yes" if c in ("id", "target", "kind", "device", "at") else "no", "", ""] for c in TOOL_COLUMNS["inbox"]]
+            sch += [["retired", "term", "key", "yes", "", ""], ["retired", "retired_by", "str", "no", "", ""], ["retired", "note", "str", "no", "", ""],
+                    ["log", "id", "key", "yes", "", ""], ["log", "date", "date", "no", "", ""], ["log", "workflow", "str", "no", "", ""], ["log", "ids", "str", "no", "", ""], ["log", "summary", "text", "no", "", ""]]
+            if name == "00-CAR":
+                (d / "_tables.csv").write_text(csvtext(["table", "purpose"], [[t, t] for t in ("work", "blocks", "decisions", "inbox", "retired", "log", "parts")]), encoding="utf-8")
+                sch += [["parts", "id", "key", "yes", "", ""], ["parts", "name", "str", "no", "", ""]]
+                (d / "parts.csv").write_text(csvtext(["id", "name"], [["PT001", "Pump"]]), encoding="utf-8")
+            (d / "_schema.csv").write_text(csvtext(["table", "column", "type", "required", "ref", "note"], sch), encoding="utf-8")
+            (d / "work.csv").write_text(csvtext(["id", "item", "owner", "state", "gate", "note", "reply", "choices", "unit", "due", "part"],
+                                                 [["A1", "first", "agent", "done", "", "", "", "", "", "", ""], ["A2", "second", "agent", "open", "A1", "", "", "", "", "", "PT001"]]), encoding="utf-8")
+            (d / "blocks.csv").write_text(csvtext(list(TOOL_COLUMNS["blocks"]), []), encoding="utf-8")
+            (d / "decisions.csv").write_text(csvtext(list(TOOL_COLUMNS["decisions"]),
+                                                      [["D-001", "s", "one", "2026-09-01", "standing", "", "", "", "", "**Decision.** one"]]), encoding="utf-8")
+            (d / "retired.csv").write_text(csvtext(["term", "retired_by", "note"], []), encoding="utf-8")
+            (d / "log.csv").write_text(csvtext(["id", "date", "workflow", "ids", "summary"], []), encoding="utf-8")
+        return root
+
+    def refusals(_unused, mutate=None):
+        # A fresh fixture per case, so one case's damage never leaks into the next.
+        with tempfile.TemporaryDirectory() as td2:
+            root = fixture(td2)
+            old = _use_tree(root)
+            try:
+                if mutate:
+                    mutate(root)
+                return run_check()
+            finally:
+                _use_tree(old)
+
+    def names(problems, *words):
+        return [x for x in problems if all(w in x for w in words)]
+
+    def edit(rel_path, fn):
+        def m(root):
+            p = root / rel_path
+            p.write_text(fn(p.read_text(encoding="utf-8")), encoding="utf-8")
+        return m
+
+    with tempfile.TemporaryDirectory() as td:
+        root = fixture(td)
+        expect("a clean fixture record is valid", refusals(root) == [])
+        one = "02-PROJECTS/01-one/data/"
+        expect("an undeclared table is refused",
+               names(refusals(root, lambda r: (r / one / "stray.csv").write_text("id\nx\n")), "not declared"))
+        expect("a missing declared column is refused",
+               names(refusals(root, edit(one + "work.csv", lambda s: s.replace("id,item,", "id,thing,"))), "missing declared column"))
+        expect("a bad enum value is refused",
+               names(refusals(root, edit(one + "work.csv", lambda s: s.replace("agent,done", "robot,done"))), "owner="))
+        expect("a bad date is refused",
+               names(refusals(root, edit(one + "work.csv", lambda s: s.replace("A1,first,agent,done,,,,,,,", "A1,first,agent,done,,,,,,2026-13-45,"))), "due="))
+        expect("a duplicate key is refused",
+               names(refusals(root, edit(one + "work.csv", lambda s: s + "A1,again,agent,open,,,,,,,\n")), "duplicate key"))
+        expect("an empty key is refused",
+               names(refusals(root, edit(one + "work.csv", lambda s: s + ",noid,agent,open,,,,,,,\n")), "key column"))
+        expect("a dangling cross-area ref is refused",
+               names(refusals(root, edit(one + "work.csv", lambda s: s.replace(",PT001", ",PT999"))), "not a key in 00-CAR:parts"))
+        expect("a gate to nothing is refused",
+               names(refusals(root, edit(one + "work.csv", lambda s: s.replace("open,A1,", "open,A9,"))), "gate"))
+        expect("a dependency ring is refused",
+               names(refusals(root, edit(one + "work.csv", lambda s: s.replace("agent,done,,", "agent,open,A2,"))), "ring"))
+        expect("extra cells beyond the header are refused",
+               names(refusals(root, edit(one + "work.csv", lambda s: s + "A3,x,agent,open,,,,,,,,EXTRA\n")), "cells under"))
+        expect("a standing decision with a stub body is refused",
+               names(refusals(root, edit(one + "decisions.csv", lambda s: s.replace("**Decision.** one", DECISION_STUB.replace("\n", " ")))), "stub"))
+        expect("a closes token that is prose is refused",
+               names(refusals(root, edit(one + "decisions.csv", lambda s: s.replace("standing,,,,,**Decision", "standing,,,the block,,**Decision"))), "closes has"))
+        expect("a block closed by a standing decision but still present is refused",
+               names(refusals(root, lambda r: ((r / one / "blocks.csv").write_text(csvtext(list(TOOL_COLUMNS["blocks"]), [["01.01", "t", "2026-09-01", "ask?", "why", "(a) x\n(b) y", "(a), unless", "stops"]])),
+                                              (r / one / "decisions.csv").write_text(csvtext(list(TOOL_COLUMNS["decisions"]), [["D-001", "s", "one", "2026-09-01", "standing", "", "", "01.01", "", "**Decision.** one"]])))), "delete the block"))
+        expect("a block whose recommend names no option is refused",
+               names(refusals(root, lambda r: (r / one / "blocks.csv").write_text(csvtext(list(TOOL_COLUMNS["blocks"]), [["01.02", "t", "2026-09-01", "ask?", "why", "(a) x\n(b) y", "yes if it fits", "stops"]]))), "recommend must name"))
+        expect("an inbox file whose id is not target~device is refused",
+               names(refusals(root, lambda r: (r / one / "inbox" / "A2~phone.csv").write_text(csvtext(list(INBOX_COLUMNS), [["A2~desktop", "A2", "work", "done", "", "", "desktop", "2026-09-01T10:00"]]))), "inbox"))
+        expect("a duplicate _project key is refused",
+               names(refusals(root, edit(one + "_project.csv", lambda s: s + "phase,BUILDING\n")), "_project", "duplicate"))
+        expect("a ref to a non-key column is refused",
+               names(refusals(root, edit(one + "_schema.csv", lambda s: s.replace("00-CAR:parts,", "00-CAR:parts.name,"))), "only the key column"))
+        expect("an unknown declared type is refused once, not per row",
+               len(names(refusals(root, edit(one + "_schema.csv", lambda s: s.replace("work,item,text,", "work,item,words,"))), "unknown type")) == 1)
+        expect("an inherited decision nobody owns is refused",
+               names(refusals(root, edit(one + "decisions.csv", lambda s: s + 'D-777,s,ghost,2026-09-01,inherited,,,,,\n')), "inherited", "no area"))
+        # ids derive from everywhere they were ever used
+        old = _use_tree(root)
+        try:
+            (root / one / "decisions.csv").write_text(csvtext(list(TOOL_COLUMNS["decisions"]), [["D-001", "s", "one", "2026-09-01", "standing", "", "", "01.03", "", "**Decision.** one"]]), encoding="utf-8")
+            (root / one / "retired.csv").write_text(csvtext(["term", "retired_by", "note"], [["01.05", "01.06", "x"]]), encoding="utf-8")
+            (root / "99-ARCHIVE" / "old").mkdir()
+            (root / "99-ARCHIVE" / "old" / "DECISIONS.md").write_text("# Decisions\n\n**D-120 — old ruling**\n", encoding="utf-8")
+            _use_tree(root)
+            expect("the next block id is one past every closes and retired id", next_block_id("01") == "01.06")
+            expect("the next decision id is one past the tree and the archive's pages", next_decision_id() == "D-121")
+            expect("a v2 DECISIONS.md page resolves a cite", "D-120" in archived_decision_ids())
+            (root / one / "work.csv").write_text(csvtext(["id", "item", "owner", "state", "gate", "note", "reply", "choices", "unit", "due", "part"],
+                                                          [["A10", "ten", "agent", "open", "", "", "", "", "", "", ""], ["A2", "two", "agent", "open", "", "", "", "", "", "", ""]]), encoding="utf-8")
+            tree_index(fresh=True)
+            expect("READY is in natural order (A2 before A10)", [w for w, _, _ in ready_report("01-one")[0]] == ["A2", "A10"])
+            # his words: newline kinds survive the file
+            iid, body = inbox_entry("A2", "phone", "work", "", "one\r\ntwo\rthree\n", "", "2026-09-24T21:05:00-06:00")
+            f = root / one / "inbox" / f"{iid}.csv"
+            write_atomic(f, body)
+            back = dict(zip(*[read_csv_rows(f)[0], read_csv_rows(f)[1][0]]))
+            expect("\\r and \\r\\n in his words survive the file byte for byte", back["text"] == "one\r\ntwo\rthree\n")
+            bad = root / one / "inbox" / "A2~desktop.csv"
+            bad.write_bytes(b"id,target,kind,choice,text,context,device,at\nA2~desktop,A2,work,done,caf\xe9,,desktop,2026-09-01T10:00\n")
+            try:
+                read_table(root / "02-PROJECTS" / "01-one", "inbox")
+                expect("a byte that is not UTF-8 is a refusal naming the file", False)
+            except RecordFileError as e:
+                expect("a byte that is not UTF-8 is a refusal naming the file", "A2~desktop" in str(e))
+            bad.unlink()
+            chain = [[f"C{i}", "c", "agent", "open", f"C{i+1}" if i < 1500 else "", "", "", "", "", "", ""] for i in range(1501)]
+            (root / one / "work.csv").write_text(csvtext(["id", "item", "owner", "state", "gate", "note", "reply", "choices", "unit", "due", "part"], chain), encoding="utf-8")
+            expect("a 1,500-row gate chain does not overflow the cycle walk", gate_cycles(tree_index(fresh=True)) == [])
+        finally:
+            _use_tree(old)
+
+    n = len(passes) + len(fails)
+    print(f"\n{len(fails)} failure(s) of {n}" if fails else f"\nselftest: all {n} pass")
     return RC_INVALID if fails else RC_OK
 
 
@@ -2332,8 +2894,8 @@ def cmd_log(args):
         die(f"log KIND must be one of {typ[5:-1].replace('|', '/')} - got {args.kind!r} (nothing was written)")
     nums = [int(m.group(1)) for m in (re.match(r"L-?(\d+)$", (r.get("id") or "")) for r in rows) if m]
     nid = f"L-{max(nums, default=0) + 1:04d}"
-    rows.append({"id": nid, "date": today(), "workflow": args.kind, "ids": args.refs or "",
-                 "summary": args.what})
+    rows.append({"id": nid, "date": today(), "workflow": args.kind,
+                 "ids": " ".join(args.refs or []), "summary": args.what})
     write_table(a, "log", hdr, rows)
     print(f"{nid} logged")
     return RC_OK
@@ -2355,52 +2917,59 @@ def main(argv=None):
     p.add_argument("-p", "--area")
     p.set_defaults(fn=cmd_check)
 
-    p = sub.add_parser("status", help="one screen: record validity, phases, work, blocks, inbox")
+    p = sub.add_parser("status", help="one screen: the verdict, each area, every READY agent row, blocks, inbox")
+    p.add_argument("-p", "--area"); p.add_argument("--all", action="store_true", help="his rows and what blocks each row too")
     p.set_defaults(fn=cmd_status)
 
     p = sub.add_parser("tables", help="every declared table in an area, with row counts")
     p.add_argument("area")
     p.set_defaults(fn=cmd_tables)
 
-    p = sub.add_parser("get", help="one row")
-    p.add_argument("area"); p.add_argument("table"); p.add_argument("key")
+    p = sub.add_parser("get", help="one row (AREA may be - for a D- or block id; COLS picks columns)")
+    p.add_argument("area"); p.add_argument("table"); p.add_argument("key"); p.add_argument("cols", nargs="*")
     p.set_defaults(fn=cmd_get)
 
-    p = sub.add_parser("set", help="change columns on an existing row (col=@file reads a file)")
+    p = sub.add_parser("set", help="change columns on an existing row (col=@file reads a file, col=- reads stdin); refuses a bad value")
     p.add_argument("area"); p.add_argument("table"); p.add_argument("key")
     p.add_argument("pairs", nargs="+")
+    p.add_argument("--amend", action="store_true", help="finish a decision body that was already written (R4 otherwise refuses)")
     p.set_defaults(fn=cmd_set)
 
     p = sub.add_parser("add", help="add a row (col=@file reads a file)")
     p.add_argument("area"); p.add_argument("table"); p.add_argument("pairs", nargs="+")
     p.set_defaults(fn=cmd_add)
 
-    p = sub.add_parser("del", help="delete a row")
+    p = sub.add_parser("del", help="delete a row (a block only once a decision closes it or --replaced-by; an answer only once its words are saved)")
     p.add_argument("area"); p.add_argument("table"); p.add_argument("key")
+    p.add_argument("--replaced-by", dest="replaced_by", help="the plainer block that replaced this one (retires the id)")
+    p.add_argument("--force", action="store_true", help="delete an inbox row whose words you have saved in a form the tool cannot see")
     p.set_defaults(fn=cmd_del)
 
-    p = sub.add_parser("sql", help="read-only query across one area's tables")
+    p = sub.add_parser("sql", help="read-only query over one area's tables, or every area's with AREA -")
     p.add_argument("area"); p.add_argument("query")
     p.set_defaults(fn=cmd_sql)
 
-    p = sub.add_parser("find", help="search every cell of every table, decision bodies included")
+    p = sub.add_parser("find", help="search every cell of every table with a snippet per hit")
     p.add_argument("text"); p.add_argument("-p", "--area")
+    p.add_argument("--word", action="store_true", help="whole words only")
+    p.add_argument("--limit", type=int, help="show at most N hits")
     p.set_defaults(fn=cmd_find)
 
     p = sub.add_parser("new", help="reserve the next D- (body=@file writes its text at once)")
     p.add_argument("area"); p.add_argument("title"); p.add_argument("pairs", nargs="*")
     p.set_defaults(fn=cmd_new)
 
-    p = sub.add_parser("export", help="everything the app shows, as JSON (rc 1 if the record is invalid)")
-    p.add_argument("--out"); p.add_argument("--pretty", action="store_true")
+    p = sub.add_parser("export", help="everything the app shows, as JSON, to --out FILE or --stdout (rc 1 if the record is invalid)")
+    p.add_argument("--out"); p.add_argument("--stdout", action="store_true"); p.add_argument("--pretty", action="store_true")
     p.set_defaults(fn=cmd_export)
 
-    p = sub.add_parser("answer", help="save one of his answers into an area's inbox")
+    p = sub.add_parser("answer", help="save one of his answers into an area's inbox (--replace to answer a target again; the earlier words are kept)")
     p.add_argument("area"); p.add_argument("target")
     p.add_argument("--device", required=True, choices=INBOX_DEVICE)
     p.add_argument("--kind", choices=INBOX_KIND)
     p.add_argument("--choice"); p.add_argument("--text"); p.add_argument("--text-file")
     p.add_argument("--context-file"); p.add_argument("--at")
+    p.add_argument("--replace", action="store_true")
     p.set_defaults(fn=cmd_answer)
 
     p = sub.add_parser("inbox", help="his answers waiting to be applied, with his words (rc 2 if any)")
@@ -2418,7 +2987,8 @@ def main(argv=None):
     p = sub.add_parser("diagrams", help="regenerate each harness leg's pin ladder (A) and route map (B)")
     p.set_defaults(fn=cmd_diagrams)
 
-    p = sub.add_parser("cites", help="advisory: prose cites that no longer resolve (never refuses)")
+    p = sub.add_parser("cites", help="advisory: prose cites that no longer resolve, grouped (never refuses)")
+    p.add_argument("--table", help="list one table's lines in full")
     p.set_defaults(fn=cmd_cites)
 
     p = sub.add_parser("block", help="raise a block: ask= why= options= recommend= stops= [title=]")
@@ -2429,15 +2999,23 @@ def main(argv=None):
     p.add_argument("--answered", action="store_true")
     p.set_defaults(fn=cmd_blocks)
 
-    p = sub.add_parser("selftest", help="the tool's own tests (never touches the record)")
+    p = sub.add_parser("selftest", help="the tool's own tests (never touches the record); -v prints every pass")
+    p.add_argument("-v", "--verbose", action="store_true")
     p.set_defaults(fn=cmd_selftest)
 
-    p = sub.add_parser("log", help="append a log row")
-    p.add_argument("area"); p.add_argument("kind"); p.add_argument("what"); p.add_argument("refs", nargs="?")
+    p = sub.add_parser("log", help="append a log row (several refs allowed)")
+    p.add_argument("area"); p.add_argument("kind"); p.add_argument("what"); p.add_argument("refs", nargs="*")
     p.set_defaults(fn=cmd_log)
 
     args = ap.parse_args(argv)
-    return args.fn(args) or RC_OK
+    try:
+        return args.fn(args) or RC_OK
+    except RecordFileError as e:
+        # A file the tool cannot read is a contradiction in the record (rc 1), named, so the
+        # hook refuses the commit instead of letting a crash wave it through (plan P19).
+        print(e)
+        print("1 problem(s) - the record contradicts itself. Fix the file named above.")
+        return RC_INVALID
 
 
 if __name__ == "__main__":
