@@ -1,1 +1,19 @@
 id,system,title,date,status,supersedes,superseded_by,closes,also,body
+D-431,,Factory-catalogue fits=yes parts on an unchanged system are backed facts,2026-09-26,standing,,,VER.01,,"**A factory-catalogue part listed for this chassis (fits=yes), on a system nothing has changed, is a fact about the car now without looking at it.**
+
+Camden's call, 2026-09-26, from the desktop app, answering `VER.01`: **""a""**, the recommended option, no words attached.
+
+**The rule.** `confirm` stays on a stage B-K row only where a known change touches the system: the carburettor and air cleaner (the Weber conversion, M-001), emissions equipment whose survival the Weber swap left uncertain (air injection, the altitude compensator, vacuum switching and delay valves, the emission control unit and its label), the removed oil metering pump (D-366), or an optional-equipment row whose fitment is still open (the rear wiper/defogger, tied to stage-A row A2). It also stays wherever the row is already gated on something that resolves it another way: the VIN (`K9`), the trim code (`K10`), a catalogue scan too unclear to read (`K11`), the car on stands (`I0`) or the car apart (`01-electrical:S1`) - those rows are untouched here and settle through their own gate. Everywhere else the row is dropped: the part stays in the record with its catalogue detail, `confirm` comes off it, and the Manual shows it as `from the factory catalogue, not yet seen`.
+
+**What changed today.** 38 stage B-K rows had no gate and none of those exceptions - a colour, VIN-serial or casting variant on a system the Weber conversion never touched (A/C, ignition, ordinary electrical, cooling, interior trim, brakes, suspension, wheels, audio, keys): B1, B18-B22, B24-B26, B29-B31, C1, C2, C4, C5, D5, D10, E1, E2, E6, E9, E12, E32, F1, F2, G4, J1, J3-J7, K1, K4, K5, K7, K8. Each is set `state=dropped`. Their parts (PT077, PT228, PT229, PT240, PT255, PT256, PT263, PT268, PT292, PT322, PT324, PT483, PT198-PT199, PT305, PT589, PT035, PT594, PT311, PT655/657/666, PT553/557, PT645, PT885-887, PT898-900, PT916-919, PT962, PT735, PT795, PT813, PT448, PT492, PT497, PT504, PT516, PT525-530, PT029, PT664, PT667, PT774, PT968) keep their catalogue note but lose the leading `confirm`.
+
+**Left open, untouched by this ruling.** The carburettor/air-cleaner/emissions/metering-pump rows (B3-B16 except B1/B2/B17-B22 as listed, B23, B27, B28, B32-B34, B36, B37, K2), the rear-wiper row G1, every row gated on `K9`/`K10`/`K11`/`I0`/`01-electrical:S1`, and the four K-stage mechanism rows (K9, K10, K11, I0) themselves.
+
+**In the data.** 00-verify `work`: the 38 rows above set `state=dropped`. 00-CAR `parts`: their `note` loses the `confirm` prefix. Closes `VER.01`."
+D-432,,The factory harness is not checked before it comes out,2026-09-26,standing,,,VER.02,,"**The factory harness is not checked before it comes out; a surviving device's terminal labels are confirmed later, when the new leg is pinned to it.**
+
+Camden's call, 2026-09-26, from the desktop app, answering `VER.02`: **""a""**, the recommended option, no words attached.
+
+**The rule.** The 80 stage-W rows (unplug each factory connector, check its terminals' labels and wire colours against the 1982 diagram) are dropped outright: the electrical project takes the whole factory harness out while the car is apart (D-211, D-411), so the wire colours those rows would record go in the bin with it. The 426 researched terminals stay in the record as read from the 1982 diagram, unchecked; nobody unplugs a connector for a harness that is leaving. What survives the rebuild - the devices themselves - gets its terminal labels confirmed anyway when the new leg is pinned to it, in the build rows.
+
+**In the data.** 00-verify `work`: W1-W80 set `state=dropped`. Closes `VER.02`."
