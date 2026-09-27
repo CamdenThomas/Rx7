@@ -1,0 +1,399 @@
+{
+  "parts": [
+    {
+      "id": "PT514",
+      "link": "https://mazdatrix.com/product/front-lower-control-arm-ball-joint-79-85/",
+      "support": "",
+      "cad": "",
+      "note_add": "The factory manual services the arm and ball joint only as an assembly: the ball joint is checked with a spring scale at the knuckle-arm tie-rod hole and the assembly replaced below 4 N (14 oz) (S-038 T:6, S-002 13-9). Mazda arms are NLA (Atkins lists R 8871-49-310 260 USD and L 8871-49-320 250 USD, both out of stock, also numbered FA54-49-310); Mazdatrix sells a press-in ball joint 8871-49-300 (49.74 USD) to rebuild the arm, and Atkins lists adjustable aftermarket arms (14006, 995 USD). Removal needs pullers 49 0118 850C (tie-rod end) and 49 0727 575 (knuckle arm) (S-002 13-9)."
+    },
+    {
+      "id": "PT515",
+      "link": "https://mazdatrix.com/product/susp-bush-stock-79-85-control-arm/",
+      "support": "",
+      "cad": "",
+      "note_add": "OEM 8173-34-460B is in stock at Mazdatrix (27.55 USD); the urethane alternative is Energy Suspension 11.3101 (pair, 12.50 USD at Atkins, reuses the outer shell). Pressed out toward the front and pressed in from the front with tool 49 0419 530, with no lubricant on bushing or bore (S-002 13-10)."
+    },
+    {
+      "id": "PT516",
+      "link": "https://mazdatrix.com/product/boot-ball-joint-79-85-control-arm/",
+      "support": "",
+      "cad": "",
+      "note_add": "OEM 8531-34-565 in stock at Mazdatrix (15.28 USD). Fill the new boot with lithium grease and press it on with installer 49 8038 785 (S-002 13-10)."
+    },
+    {
+      "id": "PT517",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT518",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "No new tension rod is listed by Atkins Rotary or Mazdatrix; what wears is the bushings (PT519). Fitted with the front end into the bracket first: set nut A, then torque nut B, then the two rear nuts at the arm (S-002 13-12)."
+    },
+    {
+      "id": "PT519",
+      "link": "https://www.atkinsrotary.com/79-85-rx7-front-suspension-tension-rod-bushing-8871-34-136b-.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Two per side, four per car. OEM 8871-34-136B is 12.50 USD each at Atkins (out of stock); the polyurethane set is Energy Suspension 11.7101G (23 USD, in stock). The flat face of the bushing goes toward the bracket (S-002 13-12)."
+    },
+    {
+      "id": "PT520",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Comes off and goes on together with the stabilizer bar; the bracket bolts are torqued first, then the bar and tension rod hung from it (S-002 13-11, 13-12)."
+    },
+    {
+      "id": "PT521",
+      "link": "https://www.atkinsrotary.com/79-85-Rx7-Racing-Beat-Front-Sway-Bar-14100.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Stock bar diameter about 23 mm (Energy Suspension's bushing fitment; one owner measured 24 mm): check with calipers. Mazda no longer lists the bar; the usual replacement is Racing Beat 14100 (1.125 in OD, 229.95 USD, keeps the stock links). Removed together with the tension rod brackets (S-002 13-11). The 81-82 protector 8871-34-152 is a catalogue row only."
+    },
+    {
+      "id": "PT522",
+      "link": "https://mazdatrix.com/product-category/suspension/anti-sway-bars/sway-bar-parts/",
+      "support": "",
+      "cad": "",
+      "note_add": "Eight per car. Mazda has discontinued 1243-34-153 (Mazdatrix 4.88 USD each while stock lasts); the polyurethane 8-piece front end link bushing kit is 9.8106 (13.97 USD, Mazdatrix), or Energy Suspension 9.8123G replaces both links whole (23.99 USD, Atkins)."
+    },
+    {
+      "id": "PT523",
+      "link": "https://odparts.ca/products/energy-suspension-79-85-mazda-rx7-black-23mm-front-sway-bar-bushings",
+      "support": "",
+      "cad": "",
+      "note_add": "Mazda has discontinued 8871-34-156A; the replacement is Energy Suspension 11.5101G (pair, sized for a 23 mm bar). Fitted with the split (open end) toward the front, under plate FA01-34-155, and final-tightened after the car is lowered and bounced (S-002 13-12)."
+    },
+    {
+      "id": "PT524",
+      "link": "https://www.atkinsrotary.com/79-85-Rx7-Front-Sway-Bar-End-Link-Bolt-0603-34-157A.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Bolt 0603-34-157A (6.25 USD) and spacer 0603-34-158 (5.00 USD) are in stock at Atkins; discontinued at Mazdatrix. Stack per side: bolt, retainer, rubber bushing, bar, bushing, retainer, spacer, retainer, bushing, lower arm, bushing, retainer, nut (S-002 13-10, 13-12)."
+    }
+  ],
+  "specs": [
+    {
+      "part": "PT514",
+      "category": "Suspension",
+      "item": "Suspension arm to cross member bolt, tightening torque",
+      "value": "40-55",
+      "unit": "N-m",
+      "source": "S-038",
+      "page": "T:8 (PDF p.10)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "29-40 ft-lb; tighten lightly, lower the car and bounce it, then torque (S-002 13-10). Same figure in the 1985 manual."
+    },
+    {
+      "part": "PT514",
+      "category": "Suspension",
+      "item": "Suspension arm ball joint to knuckle arm, tightening torque",
+      "value": "60-80",
+      "unit": "N-m",
+      "source": "S-038",
+      "page": "T:8 (PDF p.10)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "43-58 ft-lb. The 1985 manual gives 95-119 N-m (S-002 13-10) for its own arms; the 1982 figure governs this car."
+    },
+    {
+      "part": "PT514",
+      "category": "Suspension",
+      "item": "Ball joint stud revolving torque, minimum (spring scale at the knuckle-arm tie-rod hole)",
+      "value": "4",
+      "unit": "N",
+      "source": "S-038",
+      "page": "T:6 (PDF p.8)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "14 oz; below this replace the arm and ball joint as an assembly. The 1985 manual gives the same 0.4 kg (14 oz) (S-002 13-9)."
+    },
+    {
+      "part": "PT518",
+      "category": "Suspension",
+      "item": "Tension rod to lower suspension arm, tightening torque",
+      "value": "55-69",
+      "unit": "N-m",
+      "source": "S-038",
+      "page": "T:8 (PDF p.10)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "40-50 ft-lb; same in the 1985 manual (S-002 13-12)."
+    },
+    {
+      "part": "PT518",
+      "category": "Suspension",
+      "item": "Tension rod to bracket nut (B), tightening torque",
+      "value": "110-150",
+      "unit": "N-m",
+      "source": "S-038",
+      "page": "T:8 (PDF p.10)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "80-108 ft-lb; same in the 1985 manual (S-002 13-12)."
+    },
+    {
+      "part": "PT518",
+      "category": "Suspension",
+      "item": "Tension rod front nut (A) setting, distance from rod end to nut face",
+      "value": "10.75",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "13-12",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "+/- 1 mm (0.423 +/- 0.039 in); set nut A to this, then torque nut B (1985 figure 47U13X-030); no 1982 source gives it."
+    },
+    {
+      "part": "PT520",
+      "category": "Suspension",
+      "item": "Tension rod bracket to frame, tightening torque",
+      "value": "76-107",
+      "unit": "N-m",
+      "source": "S-038",
+      "page": "T:8 (PDF p.10)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "55-77 ft-lb."
+    },
+    {
+      "part": "PT523",
+      "category": "Suspension",
+      "item": "Front stabilizer support plate bolt, tightening torque",
+      "value": "38-47",
+      "unit": "N-m",
+      "source": "S-038",
+      "page": "T:8 (PDF p.10)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "27-34 ft-lb; final-tighten after lowering the car and bouncing it (S-002 13-12)."
+    },
+    {
+      "part": "PT524",
+      "category": "Suspension",
+      "item": "Stabilizer bar to suspension lower arm nut, tightening torque",
+      "value": "12-18",
+      "unit": "N-m",
+      "source": "S-038",
+      "page": "T:8 (PDF p.10)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "9-13 ft-lb."
+    },
+    {
+      "part": "PT524",
+      "category": "Suspension",
+      "item": "Stabilizer link nut setting, bolt thread showing above the nut",
+      "value": "13",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "13-12",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "0.512 in (1985 figure 47U13X-028, same figure on 13-10); no 1982 source gives it."
+    },
+    {
+      "part": "PT521",
+      "category": "Suspension",
+      "item": "Front stabilizer bar diameter",
+      "value": "23",
+      "unit": "mm",
+      "source": "src-odparts-es-11-5101g",
+      "page": "",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "Energy Suspension sizes its 79-85 front bar bushing 11.5101 for a 23 mm bar; an rx7club member measured his stock bar at 24 mm (src-rx7club-stock-swaybar). Measure on the car; check."
+    },
+    {
+      "part": "PT521",
+      "category": "Suspension",
+      "item": "Replacement Racing Beat 14100: bar outside diameter",
+      "value": "1.125",
+      "unit": "in",
+      "source": "src-atkins-rb-14100",
+      "page": "",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "28.6 mm; reuses the stock end links; ships with urethane mounting bushings. Describes the replacement, not the stock bar."
+    }
+  ],
+  "terminals": [],
+  "sources": [
+    {
+      "key": "src-mazdatrix-ball-joint-79-85",
+      "title": "Mazdatrix - Front lower control arm ball joint 79-85 RX7 (8871-49-300)",
+      "kind": "web",
+      "covers": "PT514: press-in ball joint 8871-49-300, 49.74 USD, in stock; sold because the complete arms are discontinued; pairs with OEM bushing 8173-34-460B (27.55 USD) or urethane pair 11.3101 (21.67 USD)",
+      "url": "https://mazdatrix.com/product/front-lower-control-arm-ball-joint-79-85/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Read 2026-09-27."
+    },
+    {
+      "key": "src-atkins-control-arm-r-8871-49-310",
+      "title": "Atkins Rotary - 79-85 Rx7 Front Right Control Arm (8871-49-310)",
+      "kind": "web",
+      "covers": "PT514: right arm 8871-49-310, 260 USD, out of stock, NLA from Mazda; also numbered FA54-49-310; shipping weight 4 lb, 18 x 8 x 8 in",
+      "url": "https://www.atkinsrotary.com/79-85-Rx7-Right-Front-Control-Arm-8871-49-310.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Read 2026-09-27."
+    },
+    {
+      "key": "src-atkins-79-85-control-arms-category",
+      "title": "Atkins Rotary - 79-85 Rx7 Control Arms & Bushings category",
+      "kind": "web",
+      "covers": "PT514: left arm 8871-49-320 250 USD out of stock, right 8871-49-310 260 USD out of stock, adjustable aftermarket arms 14006 995 USD out of stock; PT515: Energy Suspension bushing kit 11.3101G 12.50 USD in stock",
+      "url": "https://www.atkinsrotary.com/Suspension-and-Steering/Mazda-Control-Arms/79-85-Rx7-Control-Arms-and-Bushings/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Read 2026-09-27."
+    },
+    {
+      "key": "src-mazdatrix-arm-bushing-8173-34-460b",
+      "title": "Mazdatrix - Control arm bushing stock, 79-85 RX7 (8173-34-460B)",
+      "kind": "web",
+      "covers": "PT515: OEM inner arm bushing 8173-34-460B, 27.55 USD, in stock; urethane pair 11.3101 offered beside it",
+      "url": "https://mazdatrix.com/product/susp-bush-stock-79-85-control-arm/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Read 2026-09-27."
+    },
+    {
+      "key": "src-mazdatrix-bj-boot-8531-34-565",
+      "title": "Mazdatrix - Boot ball joint, 79-85 RX7 control arm (8531-34-565)",
+      "kind": "web",
+      "covers": "PT516: OEM ball joint boot 8531-34-565, 15.28 USD, in stock",
+      "url": "https://mazdatrix.com/product/boot-ball-joint-79-85-control-arm/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Read 2026-09-27."
+    },
+    {
+      "key": "src-atkins-tension-rod-bushing-8871-34-136b",
+      "title": "Atkins Rotary - 79-85 Rx7 Front Suspension Tension Rod Bushing (8871-34-136B)",
+      "kind": "web",
+      "covers": "PT519: OEM tension rod bushing 8871-34-136B, 12.50 USD each, out of stock; two per side, four per car",
+      "url": "https://www.atkinsrotary.com/79-85-rx7-front-suspension-tension-rod-bushing-8871-34-136b-.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Read 2026-09-27."
+    },
+    {
+      "key": "src-atkins-es-11-7101g",
+      "title": "Atkins Rotary - 79-85 Rx7 Energy Suspension Front Tension/Strut Rod Bushing Kit (11.7101G)",
+      "kind": "web",
+      "covers": "PT519: polyurethane tension rod bushing kit ES-11.7101G, 23 USD, in stock, replaces the OEM rubber set",
+      "url": "https://www.atkinsrotary.com/79-85-rx7-energy-suspension-front-tension-strut-rod-bushing-kit-11-7101g-.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Read 2026-09-27. URL corrected 2026-09-27 by the checker: the researched path (without energy-suspension-) returns 404."
+    },
+    {
+      "key": "src-atkins-rb-14100",
+      "title": "Atkins Rotary - 79-85 Rx7 Racing Beat Front Sway Bar (14100)",
+      "kind": "web",
+      "covers": "PT521: Racing Beat replacement front bar RB-14100, 1.125 in OD, 229.95 USD, ships with urethane mounting bushings and lubricant, uses the stock sway bar links",
+      "url": "https://www.atkinsrotary.com/79-85-Rx7-Racing-Beat-Front-Sway-Bar-14100.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Read 2026-09-27."
+    },
+    {
+      "key": "src-odparts-es-11-5101g",
+      "title": "OverDosed Performance - Energy Suspension 79-85 Mazda RX7 23 mm front sway bar bushings (11.5101G)",
+      "kind": "web",
+      "covers": "PT523: Energy Suspension 11.5101G front bar bushing pair sized for a 23 mm bar, fits 1979-85 S/GS, 81-85 GSL, 84-85 GSL-SE; 21.77 CAD",
+      "url": "https://odparts.ca/products/energy-suspension-79-85-mazda-rx7-black-23mm-front-sway-bar-bushings",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Read 2026-09-27."
+    },
+    {
+      "key": "src-rx7club-stock-swaybar-959237",
+      "title": "RX7Club 1st-gen - Stock Swaybar Questions thread",
+      "kind": "forum",
+      "covers": "PT521: front bar 23 mm per Energy Suspension, one member measured 24 mm; rear bar 8871-28-151A 18 mm on 81-82 per parts manual, FA01-28-151 15 mm on 83-85",
+      "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/stock-swaybar-questions-959237/",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Read 2026-09-27."
+    },
+    {
+      "key": "src-mazdatrix-sway-bar-parts",
+      "title": "Mazdatrix - Sway Bar Parts category (79-85 RX-7 rows)",
+      "kind": "web",
+      "covers": "PT523: front bar mounting bushing 8871-34-156A discontinued by Mazda; PT522: end link bushing 1243-34-153 4.88 USD, eight per car, discontinued by Mazda; urethane 8-piece front end link bushing kit 9.8106 13.97 USD in stock; PT524: end link bolt 0603-34-157A 8.52 USD discontinued",
+      "url": "https://mazdatrix.com/product-category/suspension/anti-sway-bars/sway-bar-parts/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Read 2026-09-27."
+    },
+    {
+      "key": "src-atkins-end-link-bolt-0603-34-157a",
+      "title": "Atkins Rotary - 79-85 Rx7 Front Sway Bar End Link Bolt (0603-34-157A)",
+      "kind": "web",
+      "covers": "PT524: end link bolt 0603-34-157A, 6.25 USD, in stock, Mazda; fits all 79-85 12A and 13B",
+      "url": "https://www.atkinsrotary.com/79-85-Rx7-Front-Sway-Bar-End-Link-Bolt-0603-34-157A.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Read 2026-09-27."
+    },
+    {
+      "key": "src-atkins-end-link-spacer-0603-34-158",
+      "title": "Atkins Rotary - 79-85 Rx7 Front Sway Bar End Link Spacer (0603-34-158)",
+      "kind": "web",
+      "covers": "PT524: end link spacer 0603-34-158, 5.00 USD, in stock, Mazda",
+      "url": "https://www.atkinsrotary.com/79-85-Rx7-Front-Sway-Bar-End-Link-Spacer-0603-34-158.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Read 2026-09-27."
+    },
+    {
+      "key": "src-atkins-es-9-8123g",
+      "title": "Atkins Rotary - 79-85 Rx7 Energy Suspension Front/Rear Suspension End Link Set (9.8123G)",
+      "kind": "web",
+      "covers": "PT522/PT524: polyurethane end link set ES-9.8123G, 23.99 USD, two links for one bar with hardware; works with the stock bar and the Racing Beat front bar, not the Racing Beat rear bar 14102",
+      "url": "https://www.atkinsrotary.com/79-85-rx7-front-rear-suspension-end-link-set-9-8123g-.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Read 2026-09-27."
+    }
+  ],
+  "cad": []
+}

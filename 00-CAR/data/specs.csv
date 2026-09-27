@@ -1407,3 +1407,115 @@ SP-1420,Driveline,"Number of teeth, side gear",14,,S-002,Section 9 p.2 (9-2),pri
 SP-1421,Driveline,"Number of teeth, pinion gear",10,,S-002,Section 9 p.2 (9-2),primary,driveline,PT442,other-car,12A and 13B
 SP-1422,Driveline,Differential side bearing preload (without pinion),0.6-2.1,N-m,S-038,p.7 (T:5),primary,driveline,PT444,,5.2-18.2 in-lb
 SP-1423,Driveline,"Case spread L, distance between bearing cap pilot sections",185.428-185.500,mm,S-038,p.7 (T:5),primary,driveline,PT444,,7.3004-7.3033 in; adjusters tightened equally to this after backlash is set (S-002 9-24)
+SP-1424,Steering,"Steering wheel free play, limit",40,mm,S-038,T:5 (PDF p.7),primary,steering,PT053,,1.57 in; the 5-20 mm standard is SP-109
+SP-1425,Steering,Backlash between rack and sector gear,0,mm,S-038,T:6 (PDF p.8),primary,steering,PT053,,adjust to 0 mm at the centre of pitman-arm travel; the 1985 procedure (S-002 p.10A-10) sets it with a dial indicator on the pitman arm end
+SP-1426,Steering,"Worm bearing preload, without sector shaft and column bush",0.2-0.5,N·m,S-038,T:6 (PDF p.8),primary,steering,PT053,,printed 1.7-4.3 in-lb; the 1985 manual states the same figure as 0.2-0.5 kg spring-scale pull at attachment 49 0180 510B on the column shaft end (S-002 p.10A-8)
+SP-1427,Steering,"Worm bearing preload, with sector shaft and column bush",0.6-1.2,N·m,S-038,T:6 (PDF p.8),primary,steering,PT053,,"printed 5.2-10.4 in-lb; the 1985 manual states 0.6-1.2 kg (1.32-2.65 lb) spring-scale pull, measured with the centre link disconnected (S-002 p.10A-9, 10A-10)"
+SP-1428,Steering,"Clearance between sector shaft and housing bush, wear limit",0.1,mm,S-038,T:6 (PDF p.8),primary,steering,PT053,,0.004 in
+SP-1429,Steering,End clearance of adjusting screw and sector shaft,0-0.1,mm,S-038,T:6 (PDF p.8),primary,steering,PT053,,0-0.004 in; the screw sits in the side cover (PT481)
+SP-1430,Steering,"Maximum wheel angle on full lock, inside wheel",39°40' ±2°,deg,S-038,T:6 (PDF p.8),primary,steering,PT053,,same figure in S-002 p.10A-3
+SP-1431,Steering,"Maximum wheel angle on full lock, outside wheel",32°14' ±2°,deg,S-038,T:6 (PDF p.8),primary,steering,PT053,,same figure in S-002 p.10A-3
+SP-1432,Steering,"Torque, steering gear housing to frame",44-53,N·m,S-038,T:7 (PDF p.9),primary,steering,PT053,,32-40 ft-lb; four bolts 8173-32-359 (S-005 EC-094); keep the alignment shim between housing and frame in its original place (S-002 p.10A-9)
+SP-1433,Steering,"Torque, steering gear box end cover lock nut",230-260,N·m,S-038,T:8 (PDF p.10),primary,steering,PT480,,166-188 ft-lb
+SP-1434,Steering,"Torque, steering wheel nut",40-50,N·m,S-038,T:7 (PDF p.9),primary,steering,PT469,,29-36 ft-lb
+SP-1435,Steering,"Torque, pitman arm to sector shaft",150-180,N·m,S-038,T:7 (PDF p.9),primary,steering,PT484,,"S-038 prints 15-18 N·m beside 108-130 ft-lb, a misprint; 108-130 ft-lb is 150-180 N·m and S-002 p.10A-9 and 10A-12 print 150-180 N·m (108-130 ft-lb). Align the identical serrations of arm and shaft"
+SP-1436,Steering,"Torque, pitman arm to center link",30-45,N·m,S-038,T:7 (PDF p.9),primary,steering,PT488,,"22-33 ft-lb, castle nut with new split pin (S-002 p.10A-12 gives the same)"
+SP-1437,Steering,"Torque, idler arm to center link",25-35,N·m,S-038,T:7 (PDF p.9),primary,steering,PT488,,"18-25 ft-lb, castle nut with new split pin (S-002 p.10A-11 gives the same)"
+SP-1438,Steering,"Torque, tie-rod to center link",30-45,N·m,S-038,T:7 (PDF p.9),primary,steering,PT488,,"22-33 ft-lb, castle nut with new split pin (S-002 p.10A-12 gives the same)"
+SP-1439,Steering,"Torque, tie-rod to knuckle arm",30-45,N·m,S-038,T:8 (PDF p.10),primary,steering,PT491,,"22-33 ft-lb, castle nut with new split pin; toe-in must be reset whenever a tie-rod or ball joint is replaced (S-002 p.10A-12)"
+SP-1440,Steering,"Torque, tie-rod lock nut",70-80,N·m,S-038,T:8 (PDF p.10),primary,steering,PT491,,"51-58 ft-lb; the two jam nuts on the adjuster stud (S-002 p.10A-13 figure: lock nut 70-80 N·m, turn the tie-rod toward the arrow to lengthen); Atkins sells the inside and outside nuts as different parts, 9992-21-400 and 9994-41-400"
+SP-1441,Steering,"Knuckle arm ball stud revolving torque, minimum",4,N,S-038,T:6 (PDF p.8),primary,steering,PT491,,printed 'more than 4 N (14 oz)'; the outer tie-rod ball joint at the knuckle arm
+SP-1442,Steering,"Torque, idler arm bracket to frame",44-55,N·m,S-038,T:7 (PDF p.9),primary,steering,PT489,,32-40 ft-lb (S-002 p.10A-11 gives the same)
+SP-1443,Steering,Idler arm revolving torque,20-60,N at 135 mm,S-038,T:6 (PDF p.8),primary,steering,PT489,,"4.4-13.2 lb at 5.315 in, spring scale on the arm; S-002 p.10A-11 gives the same as 2-6 kg (4.4-13.2 lb) and says replace the bushes if it is out of range"
+SP-1444,Steering,"Torque, adjusting cover lock nut",70-100,N·m,S-002,p.10A-9,primary,steering,PT053,other-car,"51-72 ft-lb; 1985 gear (FA54-32-110), the cover that sets worm preload after the end cover; not printed in S-038, which gives only the end cover lock nut"
+SP-1445,Steering,Steering column shaft joints,1,,S-002,p.10A-3,primary,steering,PT053,other-car,"1985 specification table: gear type ball nut, shaft type regular (collapsible), shaft joint type 1 joint"
+SP-1446,Steering,"Special tool, worm preload attachment",49 0180 510B,,S-002,p.10A-8,primary,steering,PT053,other-car,fits the column shaft end for a spring-scale pull; p.10A-10 prints 49 0180 510A
+SP-1447,Steering,"Torque, side cover attaching bolts",45-55,N·m,S-002,p.10A-8,primary,steering,PT481,other-car,33-40 ft-lb; sealing agent on the side cover; screw the sector shaft assembly in counter-clockwise before tightening
+SP-1448,Steering,"Special tool, pitman arm puller",49 0223 695E,,S-002,p.10A-6,primary,steering,PT484,other-car,also p.10A-12; the centre link is pulled off the pitman arm with 49 0118 850C
+SP-1449,Steering,"Special tool, ball joint puller",49 0118 850C,,S-002,p.10A-10,primary,steering,PT488,other-car,"used at the pitman arm, idler arm and both tie-rod joints of the centre link (p.10A-12)"
+SP-1450,Steering,Idler arm bush grease,Lithium base NLGI No. 2,,S-002,p.10A-11,primary,steering,PT490,other-car,fill bush and spindle and pack the bracket on assembly; new split pin on the spindle nut
+SP-1451,Steering,"Special tool, dust seal (boot) installer",49 8038 785,,S-002,p.10A-12,primary,steering,PT494,other-car,pack a small amount of lithium base NLGI No. 2 grease into the seal before fitting; the ball joints themselves are sealed and need no lubrication service (p.10A-10)
+SP-1452,Steering,Replacement Atkins Rotary 2113-32-365: thread and length,"M14x1.5, 113.5 mm",,S-429,,secondary,steering,PT491,,"Atkins lists the maker as Mazda, 19.95 USD, in stock; nuts 9992-21-400 (inside) and 9994-41-400 (outside)"
+SP-1453,Steering,"Replacement XRF Chassis ES2192R: inner tie rod end, 1979-85 RX-7",ES2192R,,S-442,,secondary,steering,PT492,,"two per car; the XRF page lists ES2192R as the inner end for 1979-85, 27.20 USD, and names no Moog part; the outer is ES2355 (eBay product page); confirm the maker and the part before buying"
+SP-1454,Steering,"Replacement Moog ES2355: outer tie rod end, 1979-85 RX-7",ES2355,,S-441,,secondary,steering,PT493,,"two per car; outer (knuckle-arm) end, 1979-85 RX-7 per the eBay product page; inner is ES2192R; Moog's own listing could not be fetched (403)"
+SP-1455,Steering,"Replacement Moog K9369: idler arm, 1979-85 RX-7",K9369,,S-436,,secondary,steering,PT489,,"Moog idler arm; the forum post (factory 8871-32-320A NLA) says it is still listed on the Moog site but has not been available for over a year, and that RockAuto no longer carries the arm or the bushing"
+SP-1456,Suspension,Front coil spring constant,2.16 +/-0.15,kg/mm,S-038,T:7 (PDF p.9),primary,suspension,PT505,,About 121 lb/in. Same table in the 1981 and 1983 Technical Data.
+SP-1457,Suspension,"Front coil spring free length, standard, left",334.5,mm,S-038,T:7 (PDF p.9),primary,suspension,PT505,,"13.17 in. Left and right springs differ (catalogue R F001-34-011A, L FA01-34-011A, S-005 3400A-1). The 1985 manual gives 327 mm for its left spring (S-002 13-3); the 1982 figure governs this car."
+SP-1458,Suspension,"Front coil spring free length, standard, right",325,mm,S-038,T:7 (PDF p.9),primary,suspension,PT505,,12.80 in; the 1985 manual gives the same 325 mm (S-002 13-3).
+SP-1459,Suspension,Front coil spring number of coils,4.8,,S-002,13-3 (Section 13 PDF p.3),primary,suspension,PT505,other-car,1985 specification table; no 1982 source gives a coil count.
+SP-1460,Suspension,Front coil spring coil diameters,123 and 65,mm,S-002,13-3 (Section 13 PDF p.3),primary,suspension,PT505,other-car,1985 table lists both diameters (the spring tapers); the existing PT056 row records only 123 mm.
+SP-1461,Suspension,Replacement Racing Beat 14080 spring set: front spring rate,145,lb/in,S-460,product page,secondary,suspension,PT505,,"Maker states 20% over stock and 1 in lower; describes the replacement, not the factory spring."
+SP-1462,Suspension,Front shock absorber fluid capacity,225 +5/-0,cc,S-038,T:7 (PDF p.9),primary,suspension,PT504,,0.23 +0.05 US qt. Applies to the rebuildable (non-cartridge) strut; the 1985 manual gives the same 225 cc (13.7 cu in) (S-002 13-7).
+SP-1463,Suspension,"Front shock absorber seal cap nut, tightening torque",50-60,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT504,,36-43 ft-lb. For the original oil-filled strut; tighten with the piston rod fully lowered (S-002 13-7). Cap nut and oil seal are replaced with new ones on reassembly (S-002 13-7).
+SP-1464,Suspension,Cap nut spanner size,52,mm,S-002,13-6 (Section 13 PDF p.6),primary,suspension,PT504,other-car,2.05 in spanner or monkey wrench removes the cap nut and seal from the reservoir tube (1985 procedure).
+SP-1465,Suspension,Front shock absorber type,cylindrical double-acting,,S-002,13-3 (Section 13 PDF p.3),primary,suspension,PT504,other-car,1985 specification table.
+SP-1466,Suspension,"Cartridge-type damper cap nut, tightening torque",80-150,N-m,S-002,13-7 (Section 13 PDF p.7),primary,suspension,PT503,other-car,58-108 ft-lb; when a cartridge damper is fitted the oil-fill steps are skipped (1985 manual). No 1982 source gives this figure.
+SP-1467,Suspension,"Replacement KYB 363010 (Excel-G cartridge, 1981-85 RX-7 front): extended length",559,mm,S-444,product page,secondary,suspension,PT503,,22.01 in as listed.
+SP-1468,Suspension,Replacement KYB 363010: compressed length,381,mm,S-444,product page,secondary,suspension,PT503,,"15 in as listed; the same page lists stroke 14.09 in, which does not match extended minus compressed, so it is not recorded."
+SP-1469,Suspension,Replacement KYB 363010: upper thread,M14 x 1.50,,S-444,product page,secondary,suspension,PT503,,"Listed as upper mount type 14x1.50; nitrogen gas-charged twin-tube, no internal rebound spring."
+SP-1470,Suspension,"Piston rod to mounting block, tightening torque",65-82,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT508,,47-59 ft-lb; same in the 1985 manual (S-002 13-8).
+SP-1471,Suspension,"Mounting block to suspension tower, tightening torque",23-30,N-m,S-002,13-8 (Section 13 PDF p.8),primary,suspension,PT508,other-car,17-22 ft-lb; not in the 1982 Technical Data. Refit the block with its triangle mark in its original position; a replaced block needs a wheel alignment (1985 manual).
+SP-1472,Suspension,"Headlamp height difference, left to right, maximum",15,mm,S-002,13-8 (Section 13 PDF p.8),primary,suspension,PT508,other-car,"0.59 in, measured from level ground after fitting the struts; corrected with adjusting plates between mounting block and tower, no more than two per side (1985 manual)."
+SP-1473,Suspension,Replacement Mazda FA01-34-390A (current service mount): bearing inside diameter,16.8,mm,S-451,product page,secondary,suspension,PT508,,Seller figure; supersedes FA01-34-390 per the listing. check against the fitted mount.
+SP-1474,Suspension,Adjusting plate thickness,5,mm,S-453,product page,secondary,suspension,PT508,,Seller says 2-3 can stack per side before the strut-top threads run out; the 1985 manual allows no more than two.
+SP-1475,Suspension,"Knuckle arm to shock absorber, tightening torque",64-95,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT512,,46-69 ft-lb. The 1985 manual gives 95-119 N-m (S-002 13-8) for its own car; the 1982 figure governs this car.
+SP-1476,Suspension,Rear coil spring constant (1982 figure),1.8 +/-0.13,kg/mm,S-038,T:7 (PDF p.9),primary,suspension,PT057,,About 101 lb/in; the 1982 Technical Data gives the same figure as the 1980 row already recorded.
+SP-1477,Suspension,"Rear coil spring free length, standard (1982 figure)",323.5,mm,S-038,T:7 (PDF p.9),primary,suspension,PT057,,12.74 in; same as the 1980 and 1985 figures.
+SP-1478,Suspension,Rear coil spring wire diameter,10.0,mm,S-002,13-3 (Section 13 PDF p.3),primary,suspension,PT057,other-car,0.39 in; 1985 table.
+SP-1479,Suspension,Rear coil spring coil diameter,105,mm,S-002,13-3 (Section 13 PDF p.3),primary,suspension,PT057,other-car,4.13 in; 1985 table.
+SP-1480,Suspension,Rear coil spring number of coils,6.05,,S-002,13-3 (Section 13 PDF p.3),primary,suspension,PT057,other-car,1985 table.
+SP-1481,Suspension,Replacement Racing Beat 14080 spring set: rear spring rate,112,lb/in,S-460,product page,secondary,suspension,PT057,,Maker states 20% over stock and 1 in lower; describes the replacement.
+SP-1482,Suspension,"Rear shock absorber to axle housing, tightening torque",65-82,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT457,,47-59 ft-lb; tighten with the car on its wheels (S-002 13-14). On the left side the lower bolt goes in head inboard (S-002 13-13).
+SP-1483,Suspension,"Rear shock absorber upper nut, tightening torque",13-25,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT457,,9-18 ft-lb.
+SP-1484,Suspension,Rear shock upper stud protrusion above nut,8.2,mm,S-002,13-13 (Section 13 PDF p.13),primary,suspension,PT457,other-car,"0.323 in, the 1985 figure for setting the upper nut on the bushings."
+SP-1485,Suspension,Replacement KYB 343140 (Excel-G rear): extended length,527,mm,S-445,product page,secondary,suspension,PT457,,20.75 in as listed.
+SP-1486,Suspension,Replacement KYB 343140: compressed length,340,mm,S-445,product page,secondary,suspension,PT457,,13.39 in as listed.
+SP-1487,Suspension,Replacement KYB 343140: stroke,187,mm,S-445,product page,secondary,suspension,PT457,,"7.36 in as listed; upper mount type S1 (stud), lower E2 eye 12x32 mm."
+SP-1488,Suspension,"Upper link to axle housing, tightening torque",77-105,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT460,,56-76 ft-lb; tighten with the car lowered on its wheels (S-002 13-17). The rear-end bolt goes in head inboard.
+SP-1489,Suspension,"Upper link to frame, tightening torque",77-105,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT460,,56-76 ft-lb.
+SP-1490,Suspension,"Lower link to axle housing, tightening torque",77-105,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT461,,56-76 ft-lb; tighten with the car lowered on its wheels (S-002 13-17).
+SP-1491,Suspension,"Lower link to frame, tightening torque",77-105,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT461,,56-76 ft-lb.
+SP-1492,Suspension,"Watt link bracket (to axle housing), tightening torque",77-105,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT463,,56-76 ft-lb; same in the 1985 manual (S-002 13-15).
+SP-1493,Suspension,"Watt link to axle housing, tightening torque",65-82,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT462,,47-59 ft-lb.
+SP-1494,Suspension,"Watt link to bracket, tightening torque",65-82,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT462,,47-59 ft-lb; 1985 gives the same for both link ends (S-002 13-15). Fit each link with its painted mark to the front and outside; tighten with the car on its wheels.
+SP-1495,Suspension,Rear stabilizer bar diameter,18,mm,S-005,2810A-1 (Engine-Chassis PDF p.92),primary,suspension,PT464,,"0.71 in; 8871-28-151A for '81 & '82 models (16 mm bar to Oct 1980, 15 mm for '83). check by measuring the bar."
+SP-1496,Suspension,"Rear stabilizer support plate, tightening torque",32-47,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT467,,23-34 ft-lb; final-tighten with the car on its wheels (S-002 13-17).
+SP-1497,Suspension,"Rear stabilizer lock nut (control link), tightening torque",10-16,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT468,,7-12 ft-lb.
+SP-1498,Suspension,Control link bolt protrusion below nut,4.3,mm,S-002,13-17 (Section 13 PDF p.17),primary,suspension,PT468,other-car,"0.169 in, the 1985 figure for setting the end-link nut on the bushings."
+SP-1499,Suspension,"Stabilizer mounting bracket to body frame, tightening torque",38-53,N-m,S-002,13-17 (Section 13 PDF p.17),primary,suspension,PT466,other-car,27-38 ft-lb; not in the 1982 Technical Data.
+SP-1500,Suspension,Rear stabilizer bushing orientation,open end toward rear,,S-002,13-16 (Section 13 PDF p.16),primary,suspension,PT465,other-car,1985 procedure; the front bar's bushing faces front (S-002 13-12).
+SP-1501,Suspension,"Suspension arm to cross member bolt, tightening torque",40-55,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT514,,"29-40 ft-lb; tighten lightly, lower the car and bounce it, then torque (S-002 13-10). Same figure in the 1985 manual."
+SP-1502,Suspension,"Suspension arm ball joint to knuckle arm, tightening torque",60-80,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT514,,43-58 ft-lb. The 1985 manual gives 95-119 N-m (S-002 13-10) for its own arms; the 1982 figure governs this car.
+SP-1503,Suspension,"Ball joint stud revolving torque, minimum (spring scale at the knuckle-arm tie-rod hole)",4,N,S-038,T:6 (PDF p.8),primary,suspension,PT514,,14 oz; below this replace the arm and ball joint as an assembly. The 1985 manual gives the same 0.4 kg (14 oz) (S-002 13-9).
+SP-1504,Suspension,"Tension rod to lower suspension arm, tightening torque",55-69,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT518,,40-50 ft-lb; same in the 1985 manual (S-002 13-12).
+SP-1505,Suspension,"Tension rod to bracket nut (B), tightening torque",110-150,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT518,,80-108 ft-lb; same in the 1985 manual (S-002 13-12).
+SP-1506,Suspension,"Tension rod front nut (A) setting, distance from rod end to nut face",10.75,mm,S-002,13-12,primary,suspension,PT518,other-car,"+/- 1 mm (0.423 +/- 0.039 in); set nut A to this, then torque nut B (1985 figure 47U13X-030); no 1982 source gives it."
+SP-1507,Suspension,"Tension rod bracket to frame, tightening torque",76-107,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT520,,55-77 ft-lb.
+SP-1508,Suspension,"Front stabilizer support plate bolt, tightening torque",38-47,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT523,,27-34 ft-lb; final-tighten after lowering the car and bouncing it (S-002 13-12).
+SP-1509,Suspension,"Stabilizer bar to suspension lower arm nut, tightening torque",12-18,N-m,S-038,T:8 (PDF p.10),primary,suspension,PT524,,9-13 ft-lb.
+SP-1510,Suspension,"Stabilizer link nut setting, bolt thread showing above the nut",13,mm,S-002,13-12,primary,suspension,PT524,other-car,"0.512 in (1985 figure 47U13X-028, same figure on 13-10); no 1982 source gives it."
+SP-1511,Suspension,Front stabilizer bar diameter,23,mm,S-470,,secondary,suspension,PT521,,Energy Suspension sizes its 79-85 front bar bushing 11.5101 for a 23 mm bar; an rx7club member measured his stock bar at 24 mm (src-rx7club-stock-swaybar). Measure on the car; check.
+SP-1512,Suspension,Replacement Racing Beat 14100: bar outside diameter,1.125,in,S-469,,secondary,suspension,PT521,,"28.6 mm; reuses the stock end links; ships with urethane mounting bushings. Describes the replacement, not the stock bar."
+SP-1513,Wheels,"Wheel size, front and rear (steel)",5-J x 13 WDC,,S-038,PDF p8 (T:6),primary,wheels,PT525,,Steel wheel 9965-38-503
+SP-1514,Wheels,"Wheel size, front and rear (aluminium)",5½-JJ x 13 WDC,,S-038,PDF p8 (T:6),primary,wheels,PT525,,Alloy cross-design wheel FA01-89-376
+SP-1515,Wheels,Wheel radial run-out limit (steel),1.0,mm,S-038,PDF p8 (T:6),primary,wheels,PT525,,0.04 in
+SP-1516,Wheels,Wheel radial run-out limit (aluminium),0.5,mm,S-038,PDF p8 (T:6),primary,wheels,PT525,,0.020 in
+SP-1517,Wheels,Wheel lateral run-out limit (steel),1.0,mm,S-038,PDF p8 (T:6),primary,wheels,PT525,,0.04 in
+SP-1518,Wheels,Wheel lateral run-out limit (aluminium),0.5,mm,S-038,PDF p8 (T:6),primary,wheels,PT525,,0.020 in
+SP-1519,Wheels,Bolt pattern (PCD),4 x 110,mm,S-021,,secondary,wheels,PT525,,Stated for all 1979-85 RX-7; check on the car
+SP-1520,Wheels,Wheel offset,20,mm,S-020,,unverified,wheels,PT525,,ET20 listed for both 5Jx13 and 5.5Jx13; not in any factory source opened - check
+SP-1521,Wheels,"Balancing weights, range catalogued",10-60,g,S-005,3700A-1/3700A-2 (Engine-Chassis PDF p100-101),primary,wheels,PT525,,"Steel wheel 9965-53-00xx, alloy wheel 9965-59-00xx, in 5 g steps from 10 to 60 g"
+SP-1522,Wheels,Wheel nut (wheel bolt) tightening torque,90-110,N·m,S-038,PDF p10 (T:8),primary,wheels,PT526,,65-80 ft-lb
+SP-1523,Wheels,Replacement Mazdatrix 0000-04-760: thread,M12 x 1.5,,S-023,,secondary,wheels,PT526,,"Open-top nut, 19 mm hex; stated to fit all 1979-95 RX-7 studs"
+SP-1524,Wheels,Replacement Mazdatrix 0000-04-760: hex size,19,mm,S-023,,secondary,wheels,PT526,,Open-top nut
+SP-1525,Wheels,"Tyre size, front and rear",185/70 HR 13,,S-038,PDF p8 (T:6),primary,wheels,PT530,,165 HR 13 also listed (S model per S-013); catalogue GS/GSL tyre 0000-78-648
+SP-1526,Wheels,"Tyre inflation pressure, front (cold)",180,kPa,S-038,PDF p8 (T:6),primary,wheels,PT530,,26 psi
+SP-1527,Wheels,"Tyre inflation pressure, rear (cold)",180,kPa,S-038,PDF p8 (T:6),primary,wheels,PT530,,26 psi
+SP-1528,Wheels,Tyre radial run-out limit (on wheel),2.5,mm,S-038,PDF p8 (T:6),primary,wheels,PT530,,0.098 in
+SP-1529,Wheels,Tyre lateral run-out limit (on wheel),3.0,mm,S-038,PDF p8 (T:6),primary,wheels,PT530,,0.118 in
+SP-1530,Wheels,Replacement TR413: rim hole diameter,11.5,mm,S-475,,secondary,wheels,PT531,,0.453 in rim hole
+SP-1531,Wheels,Replacement TR413: length,31.75,mm,S-475,,secondary,wheels,PT531,,"1.25 in; rubber snap-in, Schrader core"
+SP-1532,Wheels,Temporary spare wheel size,4-T x 15,,S-038,PDF p8 (T:6),primary,wheels,PT532,,
+SP-1533,Wheels,Temporary spare tyre size,T135/70 D 15,,S-038,PDF p8 (T:6),primary,wheels,PT533,,
+SP-1534,Wheels,Temporary spare tyre inflation pressure,420,kPa,S-038,PDF p8 (T:6),primary,wheels,PT533,,60 psi
+SP-1535,Wheels,Replacement Bridgestone Tracompa T135/70D15: load index and speed rating,99M,,S-476,,secondary,wheels,PT533,,Listing showed all sizes out of stock

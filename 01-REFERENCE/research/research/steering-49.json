@@ -1,0 +1,821 @@
+{
+  "parts": [
+    {
+      "id": "PT053",
+      "link": "https://www.atkinsrotary.com/79-85-Rx7-Rebuilt-Steering-Gear-Box-and-Column-ARE850.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Mazda has discontinued every 79-85 steering box (Mazdatrix). Exchange rebuilds: Atkins Rotary ARE850 box-and-column, 750 USD + 150 core, out of stock; Advantage Steering SKU 70409, 1145 USD + 500 core, 3-year warranty. Atkins' listing gives the fill as 0.31 US qt (290 cc), which supports the 290 cc reading of S-038. Removal takes the bonnet off and the box out through the engine bay; Mazda's labour figure was 4 h. Figure: S-005 Engine-Chassis PDF p.94 (3210A-1)."
+    },
+    {
+      "id": "PT469",
+      "link": "https://www.ebay.com/b/Steering-Wheels-Horns-for-Mazda-RX-7/33704/bn_1435875",
+      "support": "",
+      "cad": "",
+      "note_add": "Nut 40-50 N·m (S-038 T:7). Mark wheel and shaft before removal and pull with a puller; never hammer the column shaft end, it is collapsible and the blow damages the bearing (S-002 p.10A-5, 1985). Only used wheels are on the market (eBay). Figure: S-005 Engine-Chassis PDF p.93 (3200A-1)."
+    },
+    {
+      "id": "PT470",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT471",
+      "link": "https://www.ebay.com/b/Steering-Wheels-Horns-for-Mazda-RX-7/33704/bn_1435875",
+      "support": "",
+      "cad": "",
+      "note_add": "The pad levers off the wheel (protect the spokes) and covers the horn contact set 8871-32-750 (S-005 EC-093, 4-spoke); the contact grounds the GL relay-coil wire through the column, so the wheel nut wrench sounds the horns unless the battery or the horn/stop 15 A fuse is out. Used only (eBay)."
+    },
+    {
+      "id": "PT472",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT475",
+      "link": "https://www.atkinsrotary.com/82-85-rx7-steering-gear-box-housing-fa24-32-120-.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Atkins Rotary listed FA24-32-120 at 350 USD for 82-83 and 84-85 without power steering; NLA, out of stock. Housing-to-frame bolts 44-53 N·m with the alignment shim kept in place."
+    },
+    {
+      "id": "PT476",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Serviced only as a unit: the 1985 manual says do not disassemble the worm shaft and ball nut, and to replace the whole gear if the nut does not run freely on the worm (S-002 p.10A-7)."
+    },
+    {
+      "id": "PT477",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "No longer sold separately (about 200 USD when it was; jimrothe.com); an rx7club owner with two 1982 cars reports the sector shafts differ within the year at the tapered-roller bearing seat (early: removable bearing set, later: a lip). Bush clearance wear limit 0.1 mm; adjusting-screw end clearance 0-0.1 mm (S-038 T:6)."
+    },
+    {
+      "id": "PT478",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT479",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT480",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Lock nut 230-260 N·m (S-038 T:8); the end cover screws in to set worm bearing preload before the lock nut is tightened."
+    },
+    {
+      "id": "PT481",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Side cover bolts 45-55 N·m with sealing agent (S-002 p.10A-8, 1985). The flathead adjusting screw is the weak part: hand-tight only, over-tightening stops return-to-centre (rx7club)."
+    },
+    {
+      "id": "PT482",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT483",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT484",
+      "link": "https://www.atkinsrotary.com/79-85-Rx7-Rebuilt-Pitman-Arm-1757-32-220.html",
+      "support": "",
+      "cad": "",
+      "note_add": "NLA from Mazda (Atkins Rotary); Atkins Rotary sells a rebuilt arm at 199.95 USD, out of stock. Nut 150-180 N·m on matched serrations; pulled with SST 49 0223 695E."
+    },
+    {
+      "id": "PT485",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT486",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT487",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT488",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "No new or reproduction centre link listed by Atkins Rotary or Mazdatrix. Joint nuts: pitman arm 30-45, idler arm 25-35, tie-rods 30-45 N·m, new split pins (S-038 T:7). Figure: S-005 Engine-Chassis PDF p.95 (3230A-1)."
+    },
+    {
+      "id": "PT489",
+      "link": "https://www.atkinsrotary.com/79-85-Rx7-idler-arm-8871-32-320a-.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Recall campaign 17510 (1986-02-01) replaced the idler arm free on '79-'83 RX-7s in the road-salt states because the pin corrodes and seizes; a modified arm went into production from March 1983 - check for a replacement arm on the car. New arms: OEM 8871-32-320A NLA (Atkins 475 USD), Atkins aftermarket 99 USD NLA, Moog K9369 listed but reported unavailable; the usual repair is new bushes (PT490). Bracket bolts 44-55 N·m; revolving torque 20-60 N at 135 mm."
+    },
+    {
+      "id": "PT490",
+      "link": "https://www.atkinsrotary.com/79-85-Rx7-Idler-Arm-Bushing-1524-32-329B.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Atkins Rotary 10.75 USD each, in stock, two per car (replaces 0866-32-329C, 1524-32-329A); Mazdatrix 12.14 USD. Worn bushes show as up-and-down play and a clunk; pack with lithium NLGI No. 2 on assembly."
+    },
+    {
+      "id": "PT491",
+      "link": "https://www.atkinsrotary.com/79-85-Rx7-Tie-Rod-Threaded-Adjuster-Stud-2113-32-365.html",
+      "support": "",
+      "cad": "",
+      "note_add": "The adjuster stud between the two ball joints, M14x1.5 x 113.5 mm (Atkins Rotary, 19.95 USD, in stock; Mazdatrix 22.37 USD); jam nuts 9992-21-400 (inside) and 9994-41-400 (outside), lock nuts 70-80 N·m. Toe-in is reset by turning the studs equally."
+    },
+    {
+      "id": "PT492",
+      "link": "https://atkinsrotary.com/store/79-85-Rx7-Inner-Tie-Rod-End-8531-32-240A.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Atkins Rotary's inner tie rod end 8531-32-240A 'replaces 8531-99-322A', so this set is the INNER joint (centre-link end) and 8021-99-324 (PT493) the outer - check against the figure. Atkins 95 USD in stock, Mazdatrix 84.28 USD; Moog ES2192R."
+    },
+    {
+      "id": "PT493",
+      "link": "https://www.atkinsrotary.com/79-85-Rx7-Outer-Tie-Rod-End-8021-32-280.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Atkins Rotary sells the outer (knuckle-arm) tie rod end as 8021-32-280, 59.25 USD, aftermarket to OEM spec since Mazda discontinued it; the 8021- prefix supports reading the index's B021-99-324 as 8021-99-324 and places this set at the knuckle arm. Moog ES2355. Sealed, no lubrication service."
+    },
+    {
+      "id": "PT494",
+      "link": "https://www.atkinsrotary.com/79-92-Rx7-Tie-Rod-Dust-Boot-8021-32-279.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Atkins Rotary lists the 8021-32-279 boot for 79-91 at 15.95 USD, out of stock. Fitted with installer 49 8038 785 after packing with lithium NLGI No. 2 grease (S-002 p.10A-12)."
+    }
+  ],
+  "specs": [
+    {
+      "part": "PT053",
+      "category": "Steering",
+      "item": "Steering wheel free play, limit",
+      "value": "40",
+      "unit": "mm",
+      "source": "S-038",
+      "page": "T:5 (PDF p.7)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "1.57 in; the 5-20 mm standard is SP-109"
+    },
+    {
+      "part": "PT053",
+      "category": "Steering",
+      "item": "Backlash between rack and sector gear",
+      "value": "0",
+      "unit": "mm",
+      "source": "S-038",
+      "page": "T:6 (PDF p.8)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "adjust to 0 mm at the centre of pitman-arm travel; the 1985 procedure (S-002 p.10A-10) sets it with a dial indicator on the pitman arm end"
+    },
+    {
+      "part": "PT053",
+      "category": "Steering",
+      "item": "Worm bearing preload, without sector shaft and column bush",
+      "value": "0.2-0.5",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "T:6 (PDF p.8)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "printed 1.7-4.3 in-lb; the 1985 manual states the same figure as 0.2-0.5 kg spring-scale pull at attachment 49 0180 510B on the column shaft end (S-002 p.10A-8)"
+    },
+    {
+      "part": "PT053",
+      "category": "Steering",
+      "item": "Worm bearing preload, with sector shaft and column bush",
+      "value": "0.6-1.2",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "T:6 (PDF p.8)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "printed 5.2-10.4 in-lb; the 1985 manual states 0.6-1.2 kg (1.32-2.65 lb) spring-scale pull, measured with the centre link disconnected (S-002 p.10A-9, 10A-10)"
+    },
+    {
+      "part": "PT053",
+      "category": "Steering",
+      "item": "Clearance between sector shaft and housing bush, wear limit",
+      "value": "0.1",
+      "unit": "mm",
+      "source": "S-038",
+      "page": "T:6 (PDF p.8)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "0.004 in"
+    },
+    {
+      "part": "PT053",
+      "category": "Steering",
+      "item": "End clearance of adjusting screw and sector shaft",
+      "value": "0-0.1",
+      "unit": "mm",
+      "source": "S-038",
+      "page": "T:6 (PDF p.8)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "0-0.004 in; the screw sits in the side cover (PT481)"
+    },
+    {
+      "part": "PT053",
+      "category": "Steering",
+      "item": "Maximum wheel angle on full lock, inside wheel",
+      "value": "39°40' ±2°",
+      "unit": "deg",
+      "source": "S-038",
+      "page": "T:6 (PDF p.8)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "same figure in S-002 p.10A-3"
+    },
+    {
+      "part": "PT053",
+      "category": "Steering",
+      "item": "Maximum wheel angle on full lock, outside wheel",
+      "value": "32°14' ±2°",
+      "unit": "deg",
+      "source": "S-038",
+      "page": "T:6 (PDF p.8)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "same figure in S-002 p.10A-3"
+    },
+    {
+      "part": "PT053",
+      "category": "Steering",
+      "item": "Torque, steering gear housing to frame",
+      "value": "44-53",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "T:7 (PDF p.9)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "32-40 ft-lb; four bolts 8173-32-359 (S-005 EC-094); keep the alignment shim between housing and frame in its original place (S-002 p.10A-9)"
+    },
+    {
+      "part": "PT480",
+      "category": "Steering",
+      "item": "Torque, steering gear box end cover lock nut",
+      "value": "230-260",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "T:8 (PDF p.10)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "166-188 ft-lb"
+    },
+    {
+      "part": "PT469",
+      "category": "Steering",
+      "item": "Torque, steering wheel nut",
+      "value": "40-50",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "T:7 (PDF p.9)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "29-36 ft-lb"
+    },
+    {
+      "part": "PT484",
+      "category": "Steering",
+      "item": "Torque, pitman arm to sector shaft",
+      "value": "150-180",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "T:7 (PDF p.9)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "S-038 prints 15-18 N·m beside 108-130 ft-lb, a misprint; 108-130 ft-lb is 150-180 N·m and S-002 p.10A-9 and 10A-12 print 150-180 N·m (108-130 ft-lb). Align the identical serrations of arm and shaft"
+    },
+    {
+      "part": "PT488",
+      "category": "Steering",
+      "item": "Torque, pitman arm to center link",
+      "value": "30-45",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "T:7 (PDF p.9)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "22-33 ft-lb, castle nut with new split pin (S-002 p.10A-12 gives the same)"
+    },
+    {
+      "part": "PT488",
+      "category": "Steering",
+      "item": "Torque, idler arm to center link",
+      "value": "25-35",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "T:7 (PDF p.9)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "18-25 ft-lb, castle nut with new split pin (S-002 p.10A-11 gives the same)"
+    },
+    {
+      "part": "PT488",
+      "category": "Steering",
+      "item": "Torque, tie-rod to center link",
+      "value": "30-45",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "T:7 (PDF p.9)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "22-33 ft-lb, castle nut with new split pin (S-002 p.10A-12 gives the same)"
+    },
+    {
+      "part": "PT491",
+      "category": "Steering",
+      "item": "Torque, tie-rod to knuckle arm",
+      "value": "30-45",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "T:8 (PDF p.10)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "22-33 ft-lb, castle nut with new split pin; toe-in must be reset whenever a tie-rod or ball joint is replaced (S-002 p.10A-12)"
+    },
+    {
+      "part": "PT491",
+      "category": "Steering",
+      "item": "Torque, tie-rod lock nut",
+      "value": "70-80",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "T:8 (PDF p.10)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "51-58 ft-lb; the two jam nuts on the adjuster stud (S-002 p.10A-13 figure: lock nut 70-80 N·m, turn the tie-rod toward the arrow to lengthen); Atkins sells the inside and outside nuts as different parts, 9992-21-400 and 9994-41-400"
+    },
+    {
+      "part": "PT491",
+      "category": "Steering",
+      "item": "Knuckle arm ball stud revolving torque, minimum",
+      "value": "4",
+      "unit": "N",
+      "source": "S-038",
+      "page": "T:6 (PDF p.8)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "printed 'more than 4 N (14 oz)'; the outer tie-rod ball joint at the knuckle arm"
+    },
+    {
+      "part": "PT489",
+      "category": "Steering",
+      "item": "Torque, idler arm bracket to frame",
+      "value": "44-55",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "T:7 (PDF p.9)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "32-40 ft-lb (S-002 p.10A-11 gives the same)"
+    },
+    {
+      "part": "PT489",
+      "category": "Steering",
+      "item": "Idler arm revolving torque",
+      "value": "20-60",
+      "unit": "N at 135 mm",
+      "source": "S-038",
+      "page": "T:6 (PDF p.8)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "4.4-13.2 lb at 5.315 in, spring scale on the arm; S-002 p.10A-11 gives the same as 2-6 kg (4.4-13.2 lb) and says replace the bushes if it is out of range"
+    },
+    {
+      "part": "PT053",
+      "category": "Steering",
+      "item": "Torque, adjusting cover lock nut",
+      "value": "70-100",
+      "unit": "N·m",
+      "source": "S-002",
+      "page": "p.10A-9",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "51-72 ft-lb; 1985 gear (FA54-32-110), the cover that sets worm preload after the end cover; not printed in S-038, which gives only the end cover lock nut"
+    },
+    {
+      "part": "PT053",
+      "category": "Steering",
+      "item": "Steering column shaft joints",
+      "value": "1",
+      "unit": "",
+      "source": "S-002",
+      "page": "p.10A-3",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1985 specification table: gear type ball nut, shaft type regular (collapsible), shaft joint type 1 joint"
+    },
+    {
+      "part": "PT053",
+      "category": "Steering",
+      "item": "Special tool, worm preload attachment",
+      "value": "49 0180 510B",
+      "unit": "",
+      "source": "S-002",
+      "page": "p.10A-8",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "fits the column shaft end for a spring-scale pull; p.10A-10 prints 49 0180 510A"
+    },
+    {
+      "part": "PT481",
+      "category": "Steering",
+      "item": "Torque, side cover attaching bolts",
+      "value": "45-55",
+      "unit": "N·m",
+      "source": "S-002",
+      "page": "p.10A-8",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "33-40 ft-lb; sealing agent on the side cover; screw the sector shaft assembly in counter-clockwise before tightening"
+    },
+    {
+      "part": "PT484",
+      "category": "Steering",
+      "item": "Special tool, pitman arm puller",
+      "value": "49 0223 695E",
+      "unit": "",
+      "source": "S-002",
+      "page": "p.10A-6",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "also p.10A-12; the centre link is pulled off the pitman arm with 49 0118 850C"
+    },
+    {
+      "part": "PT488",
+      "category": "Steering",
+      "item": "Special tool, ball joint puller",
+      "value": "49 0118 850C",
+      "unit": "",
+      "source": "S-002",
+      "page": "p.10A-10",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "used at the pitman arm, idler arm and both tie-rod joints of the centre link (p.10A-12)"
+    },
+    {
+      "part": "PT490",
+      "category": "Steering",
+      "item": "Idler arm bush grease",
+      "value": "Lithium base NLGI No. 2",
+      "unit": "",
+      "source": "S-002",
+      "page": "p.10A-11",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "fill bush and spindle and pack the bracket on assembly; new split pin on the spindle nut"
+    },
+    {
+      "part": "PT494",
+      "category": "Steering",
+      "item": "Special tool, dust seal (boot) installer",
+      "value": "49 8038 785",
+      "unit": "",
+      "source": "S-002",
+      "page": "p.10A-12",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "pack a small amount of lithium base NLGI No. 2 grease into the seal before fitting; the ball joints themselves are sealed and need no lubrication service (p.10A-10)"
+    },
+    {
+      "part": "PT491",
+      "category": "Steering",
+      "item": "Replacement Atkins Rotary 2113-32-365: thread and length",
+      "value": "M14x1.5, 113.5 mm",
+      "unit": "",
+      "source": "src-atkins-tierod-stud",
+      "page": "",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "Atkins lists the maker as Mazda, 19.95 USD, in stock; nuts 9992-21-400 (inside) and 9994-41-400 (outside)"
+    },
+    {
+      "part": "PT492",
+      "category": "Steering",
+      "item": "Replacement XRF Chassis ES2192R: inner tie rod end, 1979-85 RX-7",
+      "value": "ES2192R",
+      "unit": "",
+      "source": "src-xrf-es2192r",
+      "page": "",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "two per car; the XRF page lists ES2192R as the inner end for 1979-85, 27.20 USD, and names no Moog part; the outer is ES2355 (eBay product page); confirm the maker and the part before buying"
+    },
+    {
+      "part": "PT493",
+      "category": "Steering",
+      "item": "Replacement Moog ES2355: outer tie rod end, 1979-85 RX-7",
+      "value": "ES2355",
+      "unit": "",
+      "source": "src-ebay-moog-es2355",
+      "page": "",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "two per car; outer (knuckle-arm) end, 1979-85 RX-7 per the eBay product page; inner is ES2192R; Moog's own listing could not be fetched (403)"
+    },
+    {
+      "part": "PT489",
+      "category": "Steering",
+      "item": "Replacement Moog K9369: idler arm, 1979-85 RX-7",
+      "value": "K9369",
+      "unit": "",
+      "source": "src-rx7club-idler-maint",
+      "page": "",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "Moog idler arm; the forum post (factory 8871-32-320A NLA) says it is still listed on the Moog site but has not been available for over a year, and that RockAuto no longer carries the arm or the bushing"
+    }
+  ],
+  "terminals": [
+    {
+      "part": "PT471",
+      "terminal": "contact",
+      "function": "Horn switch, momentary to ground",
+      "inside": "Pressing the pad closes the horn contact set (8871-32-750, S-005 EC-093) between the GL wire and the column; it carries only the relay coil current",
+      "wire": "GL",
+      "to": "F-16 horn relay coil, via the E-01 column connector; the other side of the contact is column/body ground",
+      "source": "S-001",
+      "page": "Section F p.22 (schematic), p.23 (routing)",
+      "note": "from S-001 and the horn write-up (factory-circuits/horn.md); confirm on the car"
+    }
+  ],
+  "sources": [
+    {
+      "key": "src-atkins-are850",
+      "title": "Atkins Rotary - 79-85 Rx7 Rebuilt Steering Gear Box & Column (ARE850)",
+      "kind": "web",
+      "covers": "PT053 rebuilt exchange box, price, core, fluid",
+      "url": "https://www.atkinsrotary.com/79-85-Rx7-Rebuilt-Steering-Gear-Box-and-Column-ARE850.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "750 USD + 150 core, out of stock 2026-09-27; fits 79-85 without power steering; page states fluid 0.31 US qt (290 cc), 75W-90"
+    },
+    {
+      "key": "src-atkins-housing",
+      "title": "Atkins Rotary - 82-85 Rx7 Steering Gear Box Housing (FA24-32-120) - NLA",
+      "kind": "web",
+      "covers": "PT475",
+      "url": "https://www.atkinsrotary.com/82-85-rx7-steering-gear-box-housing-fa24-32-120-.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "350 USD, out of stock, NLA"
+    },
+    {
+      "key": "src-atkins-pitman",
+      "title": "Atkins Rotary - 79-85 Rx7 Rebuilt Pitman Arm (1757-32-220)",
+      "kind": "web",
+      "covers": "PT484",
+      "url": "https://www.atkinsrotary.com/79-85-Rx7-Rebuilt-Pitman-Arm-1757-32-220.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "199.95 USD, out of stock, NLA from Mazda; fits 79-85 with and without power steering"
+    },
+    {
+      "key": "src-atkins-idler",
+      "title": "Atkins Rotary - 79-85 Rx7 OEM Idler Arm (8871-32-320A) - NLA",
+      "kind": "web",
+      "covers": "PT489",
+      "url": "https://www.atkinsrotary.com/79-85-rx7-idler-arm-8871-32-320a-.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "475 USD, out of stock, NLA; replaces 887132320, 8BS132350Y. The aftermarket arm 8871-32-320A-A (99 USD) is listed as NLA/out of stock on the Idler-Arms category page (atkinsrotary.com/Suspension-and-Steering/Idler-Arms/)"
+    },
+    {
+      "key": "src-atkins-idler-bush",
+      "title": "Atkins Rotary - 79-85 Rx7 Idler Arm Bushing (1524-32-329B)",
+      "kind": "web",
+      "covers": "PT490",
+      "url": "https://www.atkinsrotary.com/79-85-Rx7-Idler-Arm-Bushing-1524-32-329B.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "10.75 USD each, two per car, in stock; replaces 086632329C, 152432329A"
+    },
+    {
+      "key": "src-atkins-tierods",
+      "title": "Atkins Rotary - 79-85 Mazda Rx7 Tie Rods & Ends (category)",
+      "kind": "web",
+      "covers": "PT491 PT492 PT493 PT494",
+      "url": "https://www.atkinsrotary.com/Suspension-and-Steering/Tie-Rods-and-Ends/79-85-Mazda-Rx7-Tie-Rods-and-Ends/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "inner tie rod end 8531-32-240A (replaces 8531-99-322A) 95 USD; outer 8021-32-280 59.25 USD; stud 2113-32-365 19.95; nuts 9992-21-400 / 9994-41-400; boot 8021-32-279 15.95 out of stock"
+    },
+    {
+      "key": "src-atkins-tierod-stud",
+      "title": "Atkins Rotary - 79-85 Rx7 Tie Rod Threaded Adjuster Stud (2113-32-365)",
+      "kind": "web",
+      "covers": "PT491",
+      "url": "https://www.atkinsrotary.com/79-85-Rx7-Tie-Rod-Threaded-Adjuster-Stud-2113-32-365.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "M14x1.5, 113.5 mm long; maker Mazda"
+    },
+    {
+      "key": "src-mazdatrix-inner-tre",
+      "title": "Mazdatrix - Tie Rod End, 79-85 RX7 Inner (8531-32-240A)",
+      "kind": "web",
+      "covers": "PT492 PT491",
+      "url": "https://mazdatrix.com/product/tie-rod-end-79-85-inner/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "84.28 USD; related listed: tie rod 79-85 22.37, outer tie rod end 61.12, polyurethane boots 6.92"
+    },
+    {
+      "key": "src-mazdatrix-idler-bush",
+      "title": "Mazdatrix - Bushing Idler Arm, 79-85 RX7 All (1524-32-329B)",
+      "kind": "web",
+      "covers": "PT490",
+      "url": "https://mazdatrix.com/product/bushing-idler-arm-79-85-all-2/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "12.14 USD, two per car"
+    },
+    {
+      "key": "src-mazdatrix-box-nla",
+      "title": "Mazdatrix - Steering Box, 84-85 Manual (FA54-32-110) - NLA",
+      "kind": "web",
+      "covers": "PT053",
+      "url": "https://mazdatrix.com/product/steering-box-nla-84-85-man/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "'Mazda has discontinued all 79-85 steering boxes'"
+    },
+    {
+      "key": "src-advantage-steering",
+      "title": "Advantage Steering - Mazda RX-7 Manual Steering Gear Box 1980-1985, OE USA Remanufactured (SKU 70409)",
+      "kind": "web",
+      "covers": "PT053",
+      "url": "https://advantagesteering.com/mazda-rx-7-manual-steering-gear-box-1980-1985-oe-usa-remanufactured/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "1145 USD + 500 core, 5 business days, 3-year warranty on core return"
+    },
+    {
+      "key": "src-jimrothe-steering",
+      "title": "Jim Rothe - Mazda RX-7 Steering Box Replacement Tips",
+      "kind": "web",
+      "covers": "PT053 PT477 PT490",
+      "url": "http://www.jimrothe.com/mazda/steering.html",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "owner write-up: box fits all manual-steering 1982-85; new box 565 USD in 2005; sector shaft ~200 USD, no longer sold separately; Mazda labour 4 h; quotes the factory 150-180 N·m pitman and 0.6-1.2 kg preload"
+    },
+    {
+      "key": "src-rx7club-tie-tip",
+      "title": "RX7Club - Tip of the week: Tie rods / pitman arm / idler arm",
+      "kind": "forum",
+      "covers": "PT053 PT489 PT491",
+      "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/tip-week-tie-rods-pitman-arm-idler-arm-890819/",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "1981.5+ box has two adjustments on top: large gland nut and a flathead screw; over-tightening the screw stops return-to-centre"
+    },
+    {
+      "key": "src-rx7club-idler-maint",
+      "title": "RX7Club - Oil Pan Gasket / Idler Arm maintenance",
+      "kind": "forum",
+      "covers": "PT489 PT490",
+      "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/oil-pan-gasket-idler-arm-maintenance-1152649/",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "factory 8871-32-320A NLA; Moog K9369 listed but not available for over a year; RockAuto has neither arm nor bushing; rebuild with Atkins bushings"
+    },
+    {
+      "key": "src-rx7club-82-box",
+      "title": "RX7Club - 82 Steering Box rebuild",
+      "kind": "forum",
+      "covers": "PT053",
+      "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/82-steering-box-rebuild-994414/",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "5-post thread, options quoted: Cardone reman via RockAuto ~350 USD + 150 core, Mazdatrix new 1100 USD (both dated). Says nothing about sector shaft or ball nut availability"
+    },
+    {
+      "key": "src-rx7club-fb-box",
+      "title": "RX7Club - FB steering box",
+      "kind": "forum",
+      "covers": "PT053",
+      "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/fb-steering-box-1029299/",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "recirculating-ball box keeps a dead spot after adjustment; alternatives Re-Speed conversion, FC subframe swap, CP Racing rack (gone)"
+    },
+    {
+      "key": "src-mazda-recall-17510",
+      "title": "Mazda Recall Campaign 17510 (1986-02-01) - Idler Arm Pin Corrosion, '79-'83 RX-7 and others",
+      "kind": "web",
+      "covers": "PT489",
+      "url": "https://workshop-manuals.com/mazda/626/l4-2000_1970cc/steering_and_suspension/steering/idler_arm/component_information/technical_service_bulletins/all_technical_service_bulletins_for_idler_arm/17510/feb/86/recall_idler_arm_pin_corrosion/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "salt-state campaign (IA KY IL IN MI OH WI MN; CT DE ME MD MA NH NJ NY PA RI VT DC WV); free idler arm replacement on '79-'80 and '81-'83 RX-7 among others; modified arm in production from March 1983. The page links a separate August-1985 recall 85V108000 (idler arm breakage), which is not this campaign's number"
+    },
+    {
+      "key": "src-rx7club-sector-screw",
+      "title": "RX7Club - Broken sector shaft adjustment screw (1982)",
+      "kind": "forum",
+      "covers": "PT477",
+      "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/broken-sector-shaft-adjustment-screw-1071795/",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "owner Oaky8, two 1982 cars: the January-1982 sector shaft has a removable bearing set that slides off, the December-1982 shaft has a lip that makes the bearing set a one-way fit; the bearing housing ring differs too"
+    },
+    {
+      "key": "src-ebay-moog-es2355",
+      "title": "eBay product page - Steering Tie Rod End Moog ES2355 fits 79-85 Mazda RX-7",
+      "kind": "web",
+      "covers": "PT493",
+      "url": "https://www.ebay.com/p/76586511",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "Moog ES2355, 1979-85 RX-7, listed as the OUTER end; Moog's own site (moog-suspension-parts.com) refuses automated fetch (403)"
+    },
+    {
+      "key": "src-xrf-es2192r",
+      "title": "XRF Chassis - Mazda RX-7 Inner R/L Tie Rod End (1979-1985) ES2192R",
+      "kind": "web",
+      "covers": "PT492",
+      "url": "https://xrfchassisonline.com/mazda-rx-7-inner-tie-rod-end-1979-1985-es2192r/",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "inner end sold under the industry number ES2192R for 1979-85, 27.20 USD; Moog's own page for the number refuses automated fetch (403)"
+    }
+  ],
+  "cad": []
+}

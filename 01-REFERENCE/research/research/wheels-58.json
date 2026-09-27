@@ -1,0 +1,51 @@
+{
+ "parts": [
+  {"id": "PT525", "link": "https://www.wheel-size.com/size/mazda/rx-7/1982/", "support": "", "cad": "", "note_add": "The 1981-83 parts catalogue lists the cross-design alloy wheel (5½-JJ x 13) for the '82 GS and GSL, while rx7.org's 1982 equipment list (S-013) gives the GS styled steel wheels (5-J x 13) and only the GSL aluminium wheels - check which is on the car."},
+  {"id": "PT526", "link": "https://www.atkinsrotary.com/81-85-12A-Rx7-Lug-Bolt-1029-33-165.html", "support": "", "cad": "", "note_add": "Catalogued as 'bolt, wheel set' but these are the lug nuts; 1029-33-165 is no longer available from Mazda (Atkins Rotary stocks it); open-top M12x1.5 19 mm nuts from Mazdatrix fit all RX-7 studs."},
+  {"id": "PT527", "link": "", "support": "", "cad": "", "note_add": ""},
+  {"id": "PT528", "link": "", "support": "", "cad": "", "note_add": ""},
+  {"id": "PT529", "link": "", "support": "", "cad": "", "note_add": ""},
+  {"id": "PT530", "link": "", "support": "", "cad": "", "note_add": "1982 factory data gives 185/70 HR 13 (GS/GSL) or 165 HR 13 (S) front and rear at 180 kPa (26 psi) cold."},
+  {"id": "PT531", "link": "https://slime.com/products/tire-valves-tr413-tubeless", "support": "", "cad": "", "note_add": "TR413 is the common rubber snap-in valve for a 0.453 in (11.5 mm) rim hole, still sold everywhere."},
+  {"id": "PT532", "link": "", "support": "", "cad": "", "note_add": ""},
+  {"id": "PT533", "link": "https://www.speedytire.com/tires/bridgestone/tempa-spare-tracompa/t135-70d15-138673", "support": "", "cad": "", "note_add": "Factory size T135/70 D 15 at 420 kPa (60 psi); the Bridgestone Tracompa in this size was listed out of stock when checked."},
+  {"id": "PT534", "link": "", "support": "", "cad": "", "note_add": ""},
+  {"id": "PT535", "link": "", "support": "", "cad": "", "note_add": ""},
+  {"id": "PT536", "link": "", "support": "", "cad": "", "note_add": ""},
+  {"id": "PT967", "link": "", "support": "", "cad": "", "note_add": ""},
+  {"id": "PT969", "link": "", "support": "", "cad": "", "note_add": ""},
+  {"id": "PT970", "link": "", "support": "", "cad": "", "note_add": ""}
+ ],
+ "specs": [
+  {"part": "PT525", "category": "Wheels", "item": "Wheel size, front and rear (steel)", "value": "5-J x 13 WDC", "unit": "", "source": "S-038", "page": "PDF p8 (T:6)", "confidence": "primary", "applies": "", "note": "Steel wheel 9965-38-503"},
+  {"part": "PT525", "category": "Wheels", "item": "Wheel size, front and rear (aluminium)", "value": "5½-JJ x 13 WDC", "unit": "", "source": "S-038", "page": "PDF p8 (T:6)", "confidence": "primary", "applies": "", "note": "Alloy cross-design wheel FA01-89-376"},
+  {"part": "PT525", "category": "Wheels", "item": "Wheel radial run-out limit (steel)", "value": "1.0", "unit": "mm", "source": "S-038", "page": "PDF p8 (T:6)", "confidence": "primary", "applies": "", "note": "0.04 in"},
+  {"part": "PT525", "category": "Wheels", "item": "Wheel radial run-out limit (aluminium)", "value": "0.5", "unit": "mm", "source": "S-038", "page": "PDF p8 (T:6)", "confidence": "primary", "applies": "", "note": "0.020 in"},
+  {"part": "PT525", "category": "Wheels", "item": "Wheel lateral run-out limit (steel)", "value": "1.0", "unit": "mm", "source": "S-038", "page": "PDF p8 (T:6)", "confidence": "primary", "applies": "", "note": "0.04 in"},
+  {"part": "PT525", "category": "Wheels", "item": "Wheel lateral run-out limit (aluminium)", "value": "0.5", "unit": "mm", "source": "S-038", "page": "PDF p8 (T:6)", "confidence": "primary", "applies": "", "note": "0.020 in"},
+  {"part": "PT525", "category": "Wheels", "item": "Bolt pattern (PCD)", "value": "4 x 110", "unit": "mm", "source": "S-021", "page": "", "confidence": "secondary", "applies": "", "note": "Stated for all 1979-85 RX-7; check on the car"},
+  {"part": "PT525", "category": "Wheels", "item": "Wheel offset", "value": "20", "unit": "mm", "source": "S-020", "page": "", "confidence": "unverified", "applies": "", "note": "ET20 listed for both 5Jx13 and 5.5Jx13; not in any factory source opened - check"},
+  {"part": "PT525", "category": "Wheels", "item": "Balancing weights, range catalogued", "value": "10-60", "unit": "g", "source": "S-005", "page": "3700A-1/3700A-2 (Engine-Chassis PDF p100-101)", "confidence": "primary", "applies": "", "note": "Steel wheel 9965-53-00xx, alloy wheel 9965-59-00xx, in 5 g steps from 10 to 60 g"},
+  {"part": "PT526", "category": "Wheels", "item": "Wheel nut (wheel bolt) tightening torque", "value": "90-110", "unit": "N·m", "source": "S-038", "page": "PDF p10 (T:8)", "confidence": "primary", "applies": "", "note": "65-80 ft-lb"},
+  {"part": "PT526", "category": "Wheels", "item": "Replacement Mazdatrix 0000-04-760: thread", "value": "M12 x 1.5", "unit": "", "source": "S-023", "page": "", "confidence": "secondary", "applies": "", "note": "Open-top nut, 19 mm hex; stated to fit all 1979-95 RX-7 studs"},
+  {"part": "PT526", "category": "Wheels", "item": "Replacement Mazdatrix 0000-04-760: hex size", "value": "19", "unit": "mm", "source": "S-023", "page": "", "confidence": "secondary", "applies": "", "note": "Open-top nut"},
+  {"part": "PT530", "category": "Wheels", "item": "Tyre size, front and rear", "value": "185/70 HR 13", "unit": "", "source": "S-038", "page": "PDF p8 (T:6)", "confidence": "primary", "applies": "", "note": "165 HR 13 also listed (S model per S-013); catalogue GS/GSL tyre 0000-78-648"},
+  {"part": "PT530", "category": "Wheels", "item": "Tyre inflation pressure, front (cold)", "value": "180", "unit": "kPa", "source": "S-038", "page": "PDF p8 (T:6)", "confidence": "primary", "applies": "", "note": "26 psi"},
+  {"part": "PT530", "category": "Wheels", "item": "Tyre inflation pressure, rear (cold)", "value": "180", "unit": "kPa", "source": "S-038", "page": "PDF p8 (T:6)", "confidence": "primary", "applies": "", "note": "26 psi"},
+  {"part": "PT530", "category": "Wheels", "item": "Tyre radial run-out limit (on wheel)", "value": "2.5", "unit": "mm", "source": "S-038", "page": "PDF p8 (T:6)", "confidence": "primary", "applies": "", "note": "0.098 in"},
+  {"part": "PT530", "category": "Wheels", "item": "Tyre lateral run-out limit (on wheel)", "value": "3.0", "unit": "mm", "source": "S-038", "page": "PDF p8 (T:6)", "confidence": "primary", "applies": "", "note": "0.118 in"},
+  {"part": "PT531", "category": "Wheels", "item": "Replacement TR413: rim hole diameter", "value": "11.5", "unit": "mm", "source": "src-slime-tr413", "page": "", "confidence": "secondary", "applies": "", "note": "0.453 in rim hole"},
+  {"part": "PT531", "category": "Wheels", "item": "Replacement TR413: length", "value": "31.75", "unit": "mm", "source": "src-slime-tr413", "page": "", "confidence": "secondary", "applies": "", "note": "1.25 in; rubber snap-in, Schrader core"},
+  {"part": "PT532", "category": "Wheels", "item": "Temporary spare wheel size", "value": "4-T x 15", "unit": "", "source": "S-038", "page": "PDF p8 (T:6)", "confidence": "primary", "applies": "", "note": ""},
+  {"part": "PT533", "category": "Wheels", "item": "Temporary spare tyre size", "value": "T135/70 D 15", "unit": "", "source": "S-038", "page": "PDF p8 (T:6)", "confidence": "primary", "applies": "", "note": ""},
+  {"part": "PT533", "category": "Wheels", "item": "Temporary spare tyre inflation pressure", "value": "420", "unit": "kPa", "source": "S-038", "page": "PDF p8 (T:6)", "confidence": "primary", "applies": "", "note": "60 psi"},
+  {"part": "PT533", "category": "Wheels", "item": "Replacement Bridgestone Tracompa T135/70D15: load index and speed rating", "value": "99M", "unit": "", "source": "src-speedytire-t135", "page": "", "confidence": "secondary", "applies": "", "note": "Listing showed all sizes out of stock"}
+ ],
+ "terminals": [],
+ "sources": [
+  {"key": "src-slime-tr413", "title": "Slime - Tubeless Tire Valves TR413 product page", "kind": "web", "covers": "TR413 rim hole size, length, core type", "url": "https://slime.com/products/tire-valves-tr413-tubeless", "format": "html", "credibility": "secondary", "obtained": "no", "local_path": "", "note": ""},
+  {"key": "src-speedytire-t135", "title": "SpeedyTire - Bridgestone Tempa Spare Tracompa T135/70D15 99M (138673)", "kind": "web", "covers": "T135/70D15 temporary spare load index/speed rating, availability", "url": "https://www.speedytire.com/tires/bridgestone/tempa-spare-tracompa/t135-70d15-138673", "format": "html", "credibility": "tertiary", "obtained": "no", "local_path": "", "note": "Out of stock when checked 2026-09-27"},
+  {"key": "src-atkins-lugbolt", "title": "Atkins Rotary - 81-85 12A RX7 Lug Bolt 1029-33-165", "kind": "web", "covers": "Availability of wheel nut 1029-33-165", "url": "https://www.atkinsrotary.com/81-85-12A-Rx7-Lug-Bolt-1029-33-165.html", "format": "html", "credibility": "secondary", "obtained": "no", "local_path": "", "note": "No longer available from Mazda; Atkins stocks from another source, USD 12.95 each"}
+ ],
+ "cad": []
+}

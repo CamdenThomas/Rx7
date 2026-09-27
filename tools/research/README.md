@@ -22,7 +22,7 @@ merge is idempotent and refuses to write while it reports a problem (`--force` o
 | --- | --- | --- | --- |
 | 1 | electrical, lighting, ignition | 22 | merged 2026-09-25 |
 | 2 | engine, fuel, cooling, climate, transmission | 18 | see 00-verify R1 |
-| 3 | brakes, driveline, steering, suspension, wheels, body | 18 | see 00-verify R2, waits on Camden's R0 |
+| 3 | brakes, driveline, steering, suspension, wheels, body | 18 | merged 2026-09-27 |
 
 ## The OCR text (00-verify R3, 2026-09-26)
 
