@@ -70,6 +70,9 @@ const CHECK = {
 const res = await pipeline(
   args.batches,
   (b) => {
+    // checkOnly: the research file is already in OUT (a killed run from another session), so
+    // only the source check runs.
+    if (b.checkOnly) return { path: `${OUT}/${b.id}.json`, parts_covered: 0, specs: 0, terminals: 0, sources_new: 0, cad: 0, downloads: 0, nothing_found: [] }
     const ids = b.parts.map((x) => `'${x}'`).join(',')
     return agent(`${RULES.split('IDS').join(ids)}\n\nYOUR BATCH: ${b.id} (system ${b.system}), parts ${b.parts.join(', ')}.\nWRITE TO: ${OUT}/${b.id}.json`,
       { label: `research ${b.id}`, phase: 'Research', schema: SUMMARY })
