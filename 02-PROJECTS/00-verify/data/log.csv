@@ -20,3 +20,4 @@ L-0018,2026-09-26,session,,"R1 done: the five lost wave-2 batches re-run and mer
 L-0019,2026-09-27,session,D-438 K11,"K11 done: 9 of 11 unreadable catalogue numbers settled from the S-005 numeric index; PT493, PT768 stay confirm"
 L-0020,2026-09-27,session,D-439,"L1 L2 L9-L15 done: 1982 figures for 49 specs, 32 cleared or not-fitted, the rest held with the reason"
 L-0021,2026-09-27,session,D-439,"L3-L8 done: 37 electrical specs cleared or backed for 1982 under D-439, the rest held with the reason"
+L-0022,2026-09-27,session,R2,R2: body-04 and body-05 committed unmerged; merge script refused permission in the headless run
