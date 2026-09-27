@@ -1,0 +1,691 @@
+{
+  "parts": [
+    {
+      "id": "PT042",
+      "link": "https://www.atkinsrotary.com/Brake-System/Brake-Rotors/79-85-Rx7-Brake-Rotor-Discs/",
+      "support": "",
+      "cad": "rx7-brake-disk-grabcad-mike",
+      "note_add": "Catalogue 3300A-1 (S-005 Engine-Chassis p.97) lists it as 'plate, hub/disk' 8871-33-251A, qty 2, with the hub cap 0419-33-071, set cover 0259-33-049, tab washer 8531-33-043 and nut 0259-33-042. S-038 p.8 gives the 1982 figures: 18 mm new, 17 mm limit, 0.1 mm run-out, the same as SP-113. Atkins sells a new rotor as 8871-33-251B for 79-83 (69.25 USD, 912 in stock 2026-09-27); the 84-85 rotor FA54-33-251B is a different part. Hub and disc come off as one unit (S-002 p.9-5): cap, split pin, nut lock, adjusting nut, washer, outer bearing."
+    },
+    {
+      "id": "PT043",
+      "link": "https://www.atkinsrotary.com/79-85-Rx7-Front-Inner-Wheel-Bearing-8545-33-047-MV.html",
+      "support": "Atkins Rotary 360-832-1990 (https://www.atkinsrotary.com/contact-us/)",
+      "cad": "",
+      "note_add": "Tapered roller bearings, inner 8545-33-047 (Atkins 32.95 USD, sold as 8545-33-047-MV, 79-85) and outer B002-33-075 (Atkins 17.75 USD, 79-83 only; page says it replaces 8531-33-075 and also fits the 84-85 GLC). The 84-85 RX-7 outer bearing is 1391-33-075 and larger (rx7club thread), so 84-85 listings do not fit. No Timken/Koyo cross found in two searches. Repack with lithium NLGI No.2 and set the preload with a spring scale on a hub bolt (S-002 p.9-6); the 1982 figure is 4.5-6.5 N at the wheel bolt (S-038 p.8)."
+    },
+    {
+      "id": "PT044",
+      "link": "https://www.atkinsrotary.com/79-85-Rx7-Front-Wheel-Bearing-Seal-1312-33-065.html",
+      "support": "Atkins Rotary 360-832-1990 (https://www.atkinsrotary.com/contact-us/)",
+      "cad": "",
+      "note_add": "Atkins sells the seal 1312-33-065 at 8.50 USD (in stock 2026-09-27), cross-references 0398-33-065 and FA54-33-065, fits all 79-85 RX-7 and some 85-87 626. The 1985 manual calls it the grease seal, fitted behind the inner bearing (S-002 p.9-5). No National/SKF cross found; Timken 1975S is for 86-91 only."
+    },
+    {
+      "id": "PT045",
+      "link": "https://www.atkinsrotary.com/79-85-12A-Rx7-Front-Brake-Pad-Set-FA57-49-280.html",
+      "support": "Atkins Rotary 360-832-1990 (https://www.atkinsrotary.com/contact-us/)",
+      "cad": "",
+      "note_add": "Catalogue 'pad, sub set' 8871-49-280A, one set per car (S-005 Engine-Chassis p.97). Mazda's set is no longer available; Atkins sells an OEM-quality set as FA57-49-280 for 79-85 12A at 45.00 USD (2026-09-27), and PartsGeek lists Raybestos SGD76 for 79-85 front (search result only, page blocked). Lining is 9 mm new and 1 mm limit (S-038 p.8). Replace all four pads together, never mix types, and grease the caliper mounting pin and attaching bolt with the grease in the pad kit (S-002 p.11-5)."
+    },
+    {
+      "id": "PT050",
+      "link": "https://www.cardone.com/product/unloaded-caliper-19-644",
+      "support": "",
+      "cad": "rx7-front-caliper-grabcad-mike",
+      "note_add": "Single-piston floating caliper, the lower attaching bolt comes out and the body pivots up on the upper pin to change pads (S-002 p.11-4). No new Mazda caliper found: Atkins' 79-85 caliper category holds only a 1979 mounting support, and Cardone lists a remanufactured caliper 19-644 for 81-85 RX-7 (side not stated, pricing behind a login). Overhaul is with seal kit 8341-49-240 (in stock at Atkins and Mazdatrix) and the piston comes out with compressed air against a wood block (S-002 p.11-6). The 1983 Mitchell brake article (src-mitchell-1983-brakes) is downloaded to 01-REFERENCE/model/library/datasheets/PT050/."
+    },
+    {
+      "id": "PT495",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Catalogue 'cap, hub' 0419-33-071, qty 2 (S-005 Engine-Chassis p.97); 'grease cap' in the 1985 manual, first off when the hub comes apart (S-002 p.9-5). No listing found (one search)."
+    },
+    {
+      "id": "PT496",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "'Mounting adapter' in the 1985 structural view, item 11, bolted to the knuckle; the caliper support and pad clips hang on it (S-002 p.11-4). No listing found."
+    },
+    {
+      "id": "PT497",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Removed by blowing compressed air into the fluid hole against a wood block; scoring or rust means a new piston or caliper, minor marks polish out with crocus cloth (S-002 p.11-6). Bore is 50.80 mm (S-038 p.8)."
+    },
+    {
+      "id": "PT498",
+      "link": "https://mazdatrix.com/product-category/brakes/",
+      "support": "Mazdatrix 562-426-7960, mazdatrix.inc@gmail.com (https://www.mazdatrix.com)",
+      "cad": "",
+      "note_add": "Mazdatrix sells the bleeder 0233-33-691 (79-92 single-piston front) at 10.11 USD, in stock 2026-09-27. Bleed with a tube into a jar of fluid, front and rear circuits separately, reservoir kept at least 3/4 full (S-002 p.11-24)."
+    },
+    {
+      "id": "PT499",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Catalogue 'pin' 8341-33-699, qty 2, sold on its own; 8341-49-290A is 'all the pins' (S-005 Engine-Chassis p.97). Grease from the pad kit goes on the pin at every pad change (S-002 p.11-5)."
+    },
+    {
+      "id": "PT500",
+      "link": "https://www.atkinsrotary.com/80-92-Rx7-Single-Piston-Front-Brake-Caliper-Kit-8341-49-240.html",
+      "support": "Atkins Rotary 360-832-1990 (https://www.atkinsrotary.com/contact-us/)",
+      "cad": "",
+      "note_add": "One kit does both front calipers and includes the grease: Atkins 49.95 USD, Mazdatrix 45.71 USD, both in stock 2026-09-27. The kit's two greases (orange and red) go where the 1985 figure shows; piston seal and dust boot are never reused (S-002 p.11-7)."
+    },
+    {
+      "id": "PT501",
+      "link": "https://mazdatrix.com/product-category/brakes/",
+      "support": "",
+      "cad": "",
+      "note_add": "Mazdatrix lists the 81-85 caliper boot kits as discontinued by Mazda (2026-09-27); Atkins' seal-kit page refers to a companion boot kit but no listing was checked. Boot and retainer come off first in the 1985 overhaul (S-002 p.11-6)."
+    },
+    {
+      "id": "PT502",
+      "link": "https://www.atkinsrotary.com/store/79-85-12A-Rx7-Front-Brake-Pad-Hardware-Kit-8341-49-290A.html",
+      "support": "Atkins Rotary 360-832-1990 (https://www.atkinsrotary.com/contact-us/)",
+      "cad": "",
+      "note_add": "Atkins sells the hardware kit 8341-49-290A for 79-85 12A at 69.99 USD, in stock 2026-09-27; the catalogue says it carries all the pins (S-005 Engine-Chassis p.97). The anti-rattle spring and shims come out with the pads (S-002 p.11-5)."
+    },
+    {
+      "id": "PT553",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Catalogue page 4300A-1 (S-005 Engine-Chassis p.108, sheet 1-N9) read from the image: brake pedal FA01-43-030 '81 M/T S and GS and FA03-43-030 '81 A/T S and GS, both without control switch and both only to FB331 500001-521855; FA02-43-303 M/T GSL and FA05-43-030 A/T GSL, with control switch, no serial limit. The only A/T pedal listed past serial 521855 is FA05-43-030, so a 1982 A/T GS most likely carries it - check the pedal on the car. Suspended type; height is set by turning the stop light switch in its lock nut, free travel by the push rod lock nut (S-002 p.11-25)."
+    },
+    {
+      "id": "PT554",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Catalogue 'bushing, pedal' 1015-46-085, qty 2 on A/T (4 on M/T, which has the clutch pedal too), item 43022 (S-005 Engine-Chassis p.108). No listing found."
+    },
+    {
+      "id": "PT555",
+      "link": "https://www.jimellismazdaparts.com/products/Mazda/B2200/PEDAL-PAD/1808973/022543028A.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Catalogue 'pad, pedal' 0225-43-028A qty 1 on A/T; M/T cars use 8871-43-028A x2 (S-005 Engine-Chassis p.108). The same number is still sold as a B2200 pedal pad by Mazda dealers (Jim Ellis listing, page not opened)."
+    },
+    {
+      "id": "PT556",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Catalogue 'rubber, stopper' B001-43-029, qty 2 on A/T, 3 on M/T (S-005 Engine-Chassis p.108). No listing found."
+    },
+    {
+      "id": "PT568",
+      "link": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/brake-proportioning-valve-963266/",
+      "support": "",
+      "cad": "",
+      "note_add": "Catalogue 'valve, brake pipe' FA07-43-900 on both the drum (S, GS) and disc (GSL) piping pages for '81 and '82; the '83 GSL takes FA48-43-900 (S-005 Engine-Chassis p.111-112). The 1985 manual calls it the differential proportioning valve, sits it on the front pipe between master cylinder and the front and rear lines, and says to match the identification mark on the body when reconnecting the pipes (S-002 p.11-2, 11-26). Owners describe one inlet from the master cylinder and outlets marked F (front) and an arrow (rear), a large hex cap with a copper washer over the piston (rx7club threads). No split point or ratio found in any source."
+    },
+    {
+      "id": "PT569",
+      "link": "https://www.atkinsrotary.com/81-83-12A-Rx7-Front-Brake-Caliper-Flex-Hose-GA02-43-980.html",
+      "support": "Atkins Rotary 360-832-1990 (https://www.atkinsrotary.com/contact-us/)",
+      "cad": "",
+      "note_add": "Atkins sells GA02-43-980 for 81-83 12A at 49.95 USD, in stock 2026-09-27, same hose both sides, two per car. Mazdatrix lists GA02-43-980 as discontinued by Mazda and sells DOT stainless kits instead (81-85 drum 14524-DOT, 68.64 USD). Union torque 25-35 N·m (S-038 p.10). Never let the caliper hang on the hose (S-002 p.9-5)."
+    },
+    {
+      "id": "PT570",
+      "link": "https://mazdatrix.com/product-category/brakes/brake-lines/",
+      "support": "",
+      "cad": "",
+      "note_add": "Catalogue 'hose no.1, flexible' FA07-43-820, one per car on the drum-brake piping (S-005 Engine-Chassis p.111); mazda-parts.com still lists FA07-43-820 as a flex hose (page blocked, from the search index). Mazdatrix's 81-85 drum DOT stainless kit 14524-DOT (68.64 USD) replaces it with the front hoses. Union torque 25-35 N·m (S-038 p.10)."
+    },
+    {
+      "id": "PT571",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Catalogue 'pipe, brake-front' FA07-43-360, item 45250, master cylinder to the valve (S-005 Engine-Chassis p.111). No listing found; union nut 13-22 N·m (S-038 p.10)."
+    },
+    {
+      "id": "PT572",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "'81 and '82 models only; the '83 pipe is FA42-45-280 (S-005 Engine-Chassis p.111). No listing found; union nut 13-22 N·m (S-038 p.10)."
+    },
+    {
+      "id": "PT573",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Catalogue item 45320, no year split (S-005 Engine-Chassis p.111). No listing found; union nut 13-22 N·m (S-038 p.10)."
+    },
+    {
+      "id": "PT574",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "The seven 8595-43-609 protectors are listed for '81 and '82 to FB331 610655; the disc-brake page uses six with spacers 1114-43-608B and cushions 1114-43-609A (S-005 Engine-Chassis p.111-112). No listing found; union nut 13-22 N·m (S-038 p.10)."
+    },
+    {
+      "id": "PT575",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Catalogue item 45360A, the same number on the drum and disc piping pages (S-005 Engine-Chassis p.111-112). No listing found; union nut 13-22 N·m (S-038 p.10)."
+    },
+    {
+      "id": "PT576",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Drum-brake axle pipe; the disc-brake page uses FA18-43-650 instead (S-005 Engine-Chassis p.111-112). No listing found; union nut 13-22 N·m (S-038 p.10)."
+    },
+    {
+      "id": "PT577",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Drum-brake axle pipe; the disc-brake page uses FA18-43-660 instead (S-005 Engine-Chassis p.111-112). No listing found; union nut 13-22 N·m (S-038 p.10)."
+    }
+  ],
+  "specs": [
+    {
+      "part": "PT553",
+      "category": "Brakes",
+      "item": "Brake pedal height from floor",
+      "value": "190 (+5/-0)",
+      "unit": "mm",
+      "source": "S-038",
+      "page": "8",
+      "confidence": "primary",
+      "applies": "",
+      "note": "OCR reads 190 +5/-0 mm (7.48 +0.20/-0 in); S-039 p.8 reads the same and S-040 gives 190-195 mm; set by the stop light switch position (S-002 p.11-25)"
+    },
+    {
+      "part": "PT553",
+      "category": "Brakes",
+      "item": "Brake pedal free travel, before the power brake piston operates",
+      "value": "7-9",
+      "unit": "mm",
+      "source": "S-038",
+      "page": "8",
+      "confidence": "primary",
+      "applies": "",
+      "note": "set at the push rod lock nut (S-002 p.11-25)"
+    },
+    {
+      "part": "PT553",
+      "category": "Brakes",
+      "item": "Pedal type",
+      "value": "suspended",
+      "unit": "",
+      "source": "S-002",
+      "page": "11-2",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1985 specification table; the 1981-83 catalogue figure 4300A-1 shows the same hanging pedal on the master cylinder bracket"
+    },
+    {
+      "part": "PT553",
+      "category": "Brakes",
+      "item": "Brake pedal height (Mitchell 1983 table, RX7)",
+      "value": "190-195",
+      "unit": "mm",
+      "source": "src-mitchell-1983-brakes",
+      "page": "2",
+      "confidence": "secondary",
+      "applies": "other-car",
+      "note": "7.5-7.7 in; agrees with S-038's 190 +5/-0"
+    },
+    {
+      "part": "PT045",
+      "category": "Brakes",
+      "item": "Lining thickness, new / limit",
+      "value": "9 / 1",
+      "unit": "mm",
+      "source": "S-038",
+      "page": "8",
+      "confidence": "primary",
+      "applies": "",
+      "note": "replace all four pads together and never mix types (S-002 p.11-5)"
+    },
+    {
+      "part": "PT043",
+      "category": "Brakes",
+      "item": "Front wheel bearing preload, measured at a wheel bolt",
+      "value": "4.5-6.5",
+      "unit": "N",
+      "source": "S-038",
+      "page": "8",
+      "confidence": "primary",
+      "applies": "",
+      "note": "0.99-1.43 lb pull on a spring scale hooked to a hub bolt, over the seal drag (procedure S-002 p.9-6)"
+    },
+    {
+      "part": "PT043",
+      "category": "Brakes",
+      "item": "Preload setting: adjusting nut first tightened to",
+      "value": "25-30",
+      "unit": "N·m",
+      "source": "S-002",
+      "page": "9-6",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "18-22 ft-lb, hub turned to seat the bearings, nut backed off until finger-loose, then tightened until the spring-scale pull equals seal drag plus 0.45-0.65 kg; S-038 gives 4.5-6.5 N for 1982"
+    },
+    {
+      "part": "PT043",
+      "category": "Brakes",
+      "item": "Bearing and hub grease",
+      "value": "lithium base NLGI No. 2",
+      "unit": "",
+      "source": "S-002",
+      "page": "9-6",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "bearings repacked, not overpacked, hub cavity filled; never spin a bearing with compressed air"
+    },
+    {
+      "part": "PT043",
+      "category": "Brakes",
+      "item": "Bearing type",
+      "value": "tapered roller, inner and outer, with pressed outer races",
+      "unit": "",
+      "source": "S-002",
+      "page": "9-6",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "races driven out through the slots in the hub only when they need replacing"
+    },
+    {
+      "part": "PT050",
+      "category": "Brakes",
+      "item": "Caliper type",
+      "value": "floating single-piston, lower attaching bolt removed and body pivoted up for pad change",
+      "unit": "",
+      "source": "S-002",
+      "page": "11-4",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "structural view items 1-22; catalogue 3300A-1 shows the same caliper for 81-83"
+    },
+    {
+      "part": "PT050",
+      "category": "Brakes",
+      "item": "Replacement Cardone 19-644: remanufactured caliper, 1981-85 RX-7",
+      "value": "19-644",
+      "unit": "",
+      "source": "src-cardone-19-644",
+      "page": "",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "side not stated on the page; new bleeder, stainless hardware clips and mounting pins, bracket where applicable; price behind a login"
+    },
+    {
+      "part": "PT497",
+      "category": "Brakes",
+      "item": "Piston removal",
+      "value": "compressed air into the fluid hole against a hardwood block in the caliper",
+      "unit": "",
+      "source": "S-002",
+      "page": "11-6",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "scoring, scratches or rust on piston or bore means a new piston or caliper; minor marks polished with crocus cloth"
+    },
+    {
+      "part": "PT500",
+      "category": "Brakes",
+      "item": "Seal kit greases",
+      "value": "two kinds, orange and red, applied as the 1985 figure shows",
+      "unit": "",
+      "source": "S-002",
+      "page": "11-7",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "piston seal and dust boot always renewed; piston and bore wetted with brake fluid on assembly"
+    },
+    {
+      "part": "PT498",
+      "category": "Brakes",
+      "item": "Bleeding",
+      "value": "tube from the bleeder into a jar of fluid, pedal pumped full stroke until no bubbles",
+      "unit": "",
+      "source": "S-002",
+      "page": "11-24",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "front and rear circuits bled separately; reservoir kept at least 3/4 full; drained fluid never reused"
+    },
+    {
+      "part": "PT499",
+      "category": "Brakes",
+      "item": "Caliper guide pin torque (Mitchell 1983 table)",
+      "value": "45-55",
+      "unit": "N·m",
+      "source": "src-mitchell-1983-brakes",
+      "page": "11",
+      "confidence": "secondary",
+      "applies": "other-car",
+      "note": "33-40 ft-lb; the table row names no model, RX7 is one of the three models in the article - check"
+    },
+    {
+      "part": "PT569",
+      "category": "Brakes",
+      "item": "Flexible hose union torque",
+      "value": "25-35",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "10",
+      "confidence": "primary",
+      "applies": "",
+      "note": "1982 tightening torque table, brake"
+    },
+    {
+      "part": "PT570",
+      "category": "Brakes",
+      "item": "Flexible hose union torque",
+      "value": "25-35",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "10",
+      "confidence": "primary",
+      "applies": "",
+      "note": "1982 tightening torque table, brake"
+    },
+    {
+      "part": "PT568",
+      "category": "Brakes",
+      "item": "Valve type",
+      "value": "differential proportioning valve on the master cylinder outlet, one inlet, front and rear outlets",
+      "unit": "",
+      "source": "S-002",
+      "page": "11-2",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1985 structural view; connect the pipes to the identification mark on the valve body (S-002 p.11-26)"
+    },
+    {
+      "part": "PT571",
+      "category": "Brakes",
+      "item": "Brake tube union nut torque",
+      "value": "13-22",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "10",
+      "confidence": "primary",
+      "applies": "",
+      "note": "1982 tightening torque table, brake"
+    },
+    {
+      "part": "PT572",
+      "category": "Brakes",
+      "item": "Brake tube union nut torque",
+      "value": "13-22",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "10",
+      "confidence": "primary",
+      "applies": "",
+      "note": "1982 tightening torque table, brake"
+    },
+    {
+      "part": "PT573",
+      "category": "Brakes",
+      "item": "Brake tube union nut torque",
+      "value": "13-22",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "10",
+      "confidence": "primary",
+      "applies": "",
+      "note": "1982 tightening torque table, brake"
+    },
+    {
+      "part": "PT574",
+      "category": "Brakes",
+      "item": "Brake tube union nut torque",
+      "value": "13-22",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "10",
+      "confidence": "primary",
+      "applies": "",
+      "note": "1982 tightening torque table, brake"
+    },
+    {
+      "part": "PT575",
+      "category": "Brakes",
+      "item": "Brake tube union nut torque",
+      "value": "13-22",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "10",
+      "confidence": "primary",
+      "applies": "",
+      "note": "1982 tightening torque table, brake"
+    },
+    {
+      "part": "PT576",
+      "category": "Brakes",
+      "item": "Brake tube union nut torque",
+      "value": "13-22",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "10",
+      "confidence": "primary",
+      "applies": "",
+      "note": "1982 tightening torque table, brake"
+    },
+    {
+      "part": "PT577",
+      "category": "Brakes",
+      "item": "Brake tube union nut torque",
+      "value": "13-22",
+      "unit": "N·m",
+      "source": "S-038",
+      "page": "10",
+      "confidence": "primary",
+      "applies": "",
+      "note": "1982 tightening torque table, brake"
+    }
+  ],
+  "terminals": [],
+  "sources": [
+    {
+      "key": "src-mitchell-1983-brakes",
+      "title": "Mitchell Repair Information - 1983 Mazda RX7 Brake System article (GLC Wagon, Pickups, RX7), rotaryheads.com copy",
+      "kind": "manual",
+      "covers": "PT553 pedal height, PT042 disc, PT499 guide pin torque, front caliper overhaul, proportioning valve description",
+      "url": "https://www.rotaryheads.com/PDF/1st_gen/Mitchell_Service_Manuals/1983/1983%20Brake%20System.pdf",
+      "format": "pdf",
+      "credibility": "secondary",
+      "obtained": "yes",
+      "local_path": "01-REFERENCE/model/library/datasheets/PT050/1983_Mazda_RX7_Brake_System_Mitchell.pdf",
+      "note": "13 pages, 121 kB, text PDF dated 2001 from iluvmyrx7.com; 1983 model year, aftermarket compilation of the Mazda manual - other-car for this record"
+    },
+    {
+      "key": "src-atkins-front-inner-bearing-8545-33-047",
+      "title": "Atkins Rotary - 79-85 Rx7 Front Inner Wheel Bearing (8545-33-047-MV)",
+      "kind": "web",
+      "covers": "PT043 inner bearing price and fitment",
+      "url": "https://www.atkinsrotary.com/79-85-Rx7-Front-Inner-Wheel-Bearing-8545-33-047-MV.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "32.95 USD, in stock 2026-09-27, OEM-quality, no cross numbers"
+    },
+    {
+      "key": "src-atkins-front-outer-bearing-b002-33-075",
+      "title": "Atkins Rotary - 79-83 Rx7 Front Outer Wheel Bearing (B002-33-075)",
+      "kind": "web",
+      "covers": "PT043 outer bearing price, fitment, superseded number",
+      "url": "https://www.atkinsrotary.com/79-83-Rx7-Front-Outer-Wheel-Bearing-B002-33-075.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "17.75 USD, in stock 2026-09-27; replaces 8531-33-075; also 84-85 GLC"
+    },
+    {
+      "key": "src-atkins-front-wheel-seal-1312-33-065",
+      "title": "Atkins Rotary - 79-85 12A & 13B Rx7 Front Wheel Bearing Seal (1312-33-065)",
+      "kind": "web",
+      "covers": "PT044 seal price, fitment, cross numbers",
+      "url": "https://www.atkinsrotary.com/79-85-Rx7-Front-Wheel-Bearing-Seal-1312-33-065.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "8.50 USD, in stock 2026-09-27; crosses 0398-33-065, FA54-33-065"
+    },
+    {
+      "key": "src-atkins-front-pad-set-fa57-49-280",
+      "title": "Atkins Rotary - 79-85 12A Rx7 Front Brake Pad Set (FA57-49-280)",
+      "kind": "web",
+      "covers": "PT045 replacement pad set, OEM set no longer available",
+      "url": "https://www.atkinsrotary.com/79-85-12A-Rx7-Front-Brake-Pad-Set-FA57-49-280.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "45.00 USD 2026-09-27, 'no longer available as an OEM option', OEM-quality aftermarket set"
+    },
+    {
+      "key": "src-atkins-pad-hardware-8341-49-290a",
+      "title": "Atkins Rotary - 79-85 12A Rx7 Front Brake Pad Hardware Kit (8341-49-290A)",
+      "kind": "web",
+      "covers": "PT502 hardware kit price and fitment",
+      "url": "https://www.atkinsrotary.com/store/79-85-12A-Rx7-Front-Brake-Pad-Hardware-Kit-8341-49-290A.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "69.99 USD, in stock 2026-09-27"
+    },
+    {
+      "key": "src-atkins-caliper-seal-kit-8341-49-240",
+      "title": "Atkins Rotary - 80-91 Rx7 Single Piston Front Brake Caliper Kit (8341-49-240)",
+      "kind": "web",
+      "covers": "PT500 seal kit price, contents (seals and grease, both calipers)",
+      "url": "https://www.atkinsrotary.com/80-92-Rx7-Single-Piston-Front-Brake-Caliper-Kit-8341-49-240.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "49.95 USD, in stock 2026-09-27; page recommends a companion boot kit"
+    },
+    {
+      "key": "src-atkins-front-flex-hose-ga02-43-980",
+      "title": "Atkins Rotary - 81-83 12A Rx7 Front Brake Caliper Flex Hose (GA02-43-980)",
+      "kind": "web",
+      "covers": "PT569 front hose price and fitment",
+      "url": "https://www.atkinsrotary.com/81-83-12A-Rx7-Front-Brake-Caliper-Flex-Hose-GA02-43-980.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "49.95 USD, in stock 2026-09-27, one hose fits both sides, two per car; no length given"
+    },
+    {
+      "key": "src-atkins-79-85-calipers",
+      "title": "Atkins Rotary - 79-85 Mazda Rx7 Brake Calipers category",
+      "kind": "web",
+      "covers": "PT050 availability of new calipers",
+      "url": "https://www.atkinsrotary.com/Brake-System/Calipers-and-Parts/Mazda-Brake-Calipers/79-85-Mazda-Rx7-Brake-Calipers/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "2026-09-27 the category holds only a 1979 mounting support 8871-33-280A (85.00 USD); no 81-83 caliper listed"
+    },
+    {
+      "key": "src-mazdatrix-brakes",
+      "title": "Mazdatrix - Brakes category (79-83 front bleeder, caliper kit, boot kits)",
+      "kind": "web",
+      "covers": "PT498 bleeder 0233-33-691, PT500 seal kit, PT501 boot kit discontinued",
+      "url": "https://mazdatrix.com/product-category/brakes/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "2026-09-27: 8341-49-240 45.71 USD 'serves two calipers'; 0233-33-691 10.11 USD; 81-85 boot kits shown at 0.00 USD discontinued by Mazda"
+    },
+    {
+      "key": "src-mazdatrix-brake-lines",
+      "title": "Mazdatrix - Brake Lines category (DOT stainless kits, 79-83 Mazda lines discontinued)",
+      "kind": "web",
+      "covers": "PT569, PT570 replacement stainless hose kits; Mazda 81-83 front flex hose GA02-43-980 discontinued",
+      "url": "https://mazdatrix.com/product-category/brakes/brake-lines/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "2026-09-27: 81-85 drum kit 14524-DOT 68.64 USD, 81-85 disc kit 14523-DOT 107.25 USD; clip 43-635A-W023 5.59 USD; GA02-43-980 shown discontinued by Mazda (no other 79-83 front line listed; 79-80 kit 14520-DOT 68.64 USD)"
+    },
+    {
+      "key": "src-cardone-19-644",
+      "title": "Cardone - Brake Caliper 19-644 (remanufactured, Mazda RX-7 1981-85)",
+      "kind": "web",
+      "covers": "PT050 remanufactured replacement caliper",
+      "url": "https://www.cardone.com/product/unloaded-caliper-19-644",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "side, piston size and price not shown without a login; new bleeder, hardware clips and mounting pins, bracket where applicable"
+    },
+    {
+      "key": "src-rx7club-prop-valve-963266",
+      "title": "RX7Club 1st-gen forum - Brake proportioning valve thread (part numbers by year, ports)",
+      "kind": "forum",
+      "covers": "PT568 part numbers 1979-85 by model, port markings F and arrow",
+      "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/brake-proportioning-valve-963266/",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "lists FA07-43-900 for 81-82 S/GS and GSL and 83-85 S/GS, FA48-43-900 83 GSL, FA66-43-900 84-85 GSL/GSL-SE; matches S-005 p.111-112 for 81-83"
+    },
+    {
+      "key": "src-rx7club-prop-valve-1159310",
+      "title": "RX7Club 1st-gen forum - Brake Proportioning Valve thread (drum vs disc valves, internals)",
+      "kind": "forum",
+      "covers": "PT568 construction (aluminium piston, rubber seals under a large hex cap with copper washer), drum vs disc valve difference",
+      "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/brake-proportioning-valve-1159310/",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "owner reports; no pressures given"
+    },
+    {
+      "key": "src-rx7club-wheel-bearing-402030",
+      "title": "RX7Club 1st-gen forum - Factory part number for wheel bearing wanted",
+      "kind": "forum",
+      "covers": "PT043 84-85 bearing numbers (8545-33-047 inner, 1391-33-075 outer) said to be bigger than 79-83",
+      "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/help-factory-part-number-wheel-bearing-wanted-402030/",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "seal 1312-33-065 common to both ranges"
+    },
+    {
+      "key": "src-jimellis-pedal-pad-0225-43-028a",
+      "title": "Jim Ellis Mazda Parts - Pedal pad 022543028A (B2200 listing)",
+      "kind": "web",
+      "covers": "PT555 same pad number still sold as a dealer part",
+      "url": "https://www.jimellismazdaparts.com/products/Mazda/B2200/PEDAL-PAD/1808973/022543028A.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "page returned 403 on fetch 2026-09-27; fitment and price from the search index only"
+    }
+  ],
+  "cad": []
+}

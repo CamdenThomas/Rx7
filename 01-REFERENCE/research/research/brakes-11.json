@@ -1,0 +1,742 @@
+{
+ "parts": [
+  {
+   "id": "PT051",
+   "link": "https://www.atkinsrotary.com/81-85-12A-Rx7-Brake-Master-Cylinder-FA07-43-400.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Tandem master cylinder with the level-sensor reservoir on top; strips into reservoir set, bushes, joint bolt with check valve and spring, secondary-piston stop bolt and O-ring, stop ring, primary piston, secondary piston and spring (S-002 11-17). On rear-drum cars the check valve goes in with its six-hole face toward the cylinder body (S-002 11-18). Atkins Rotary sells FA07-43-400 new (OEM-quality, 134 USD, in stock, 'fits 12A with drum brakes') and lists FA18-43-400 beside it; an rx7club thread gives FA01-43-400 as the 81-83 S/GS number and FA18-43-400 as GSL, so check the number cast on the car's cylinder. Nisshinbo (Mazda's supplier) makes a limited reproduction, NSB-102, 398 USD via JDM Car Parts. Figure: S-005 Engine-Chassis PDF p.110 (4340A-1)."
+  },
+  {
+   "id": "PT052",
+   "link": "https://www.atkinsrotary.com/81-83-rx7-brake-booster-fa16-43-800-.html",
+   "support": "",
+   "cad": "",
+   "note_add": "FA16-43-800 is NLA at Atkins Rotary (145 USD, out of stock, 'getting very hard to obtain'); the only aftermarket listing found is a PRIOR 9700158 remanufactured unit on RockAuto (1983 listing, out of stock); used OEM boosters are sold by Autopartone, and rx7club owners report local rebuilds (~80 USD) and Cardone remans. The booster-to-firewall gasket H001-43-443 is 1.88 USD at Atkins. Inside: front and rear shells, diaphragm, power piston, valve rod and plunger (serviced only as an assembly), reaction disc, air silencer and filter, push rod, front and rear seals (S-002 11-21..22)."
+  },
+  {
+   "id": "PT560",
+   "link": "https://www.atkinsrotary.com/79-92-Rx7-Brake-Master-to-Reservoir-Seal-0305-49-686B.html",
+   "support": "",
+   "cad": "",
+   "note_add": "The two rubber seals between the reservoir and the master cylinder (0305-49-686B) are 4.50 USD each at Atkins Rotary, in stock. Keep the reservoir at least 3/4 full while bleeding (S-002 11-24). No listing for the reservoir FA07-49-680 itself was found."
+  },
+  {
+   "id": "PT561",
+   "link": "https://www.atkinsrotary.com/Brake-System/Brake-Master-Cylinders/79-85-Rx7-Brake-Master-Cylinders/",
+   "support": "",
+   "cad": "",
+   "note_add": "Atkins Rotary sells B093-49-580 as the 72-91 master cylinder cap (15.25 USD, in stock); Mazdatrix lists the 79-85 brake fluid cap under GA02-49-580B, discontinued by Mazda. Check which number the cap on the car carries."
+  },
+  {
+   "id": "PT563",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT564",
+   "link": "https://spareto.com/oe/g00149610",
+   "support": "",
+   "cad": "",
+   "note_add": "Not stocked by Atkins Rotary (they list only the 84-88 kit HA18-49-610A); an rx7club thread names G001-49-610 as the 81-83 S/GS kit and FA18-49-610 as the GSL kit. Spareto cross-references G001-49-610 to Frenkit 120058, Autofren Seinsa D1485 and ERT 200334 (about 5 EUR each, 28-day dispatch)."
+  },
+  {
+   "id": "PT565",
+   "link": "https://spareto.com/products/frenkit-repair-kit-brake-master-cylinder/120058",
+   "support": "",
+   "cad": "",
+   "note_add": "Frenkit 120058 lists G001-49-640 among its OE numbers; its piston diameter of 20.6 mm matches the 20.64 mm bore."
+  },
+  {
+   "id": "PT566",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "No listing found for F001-49-720. The factory kit furnishes the silicone grease that goes on the valve rod and plunger, the whole reaction disc, the diaphragm's outer bead and both seal lips (S-002 11-22..23); the valve rod and plunger are serviced only as an assembly (S-002 11-21)."
+  },
+  {
+   "id": "PT567",
+   "link": "https://www.autopartone.com/products/81-83-mazda-rx7-oem-brake-booster-vacuum-hose",
+   "support": "",
+   "cad": "",
+   "note_add": "The factory hose carried a press-fit one-way check valve marked with a flow arrow; air must pass from the booster end to the engine end only, and a bad valve is replaced with the hose (S-002 11-20). Check whether the new line fitted since the Weber conversion carries a check valve. Used OEM two-piece hose sets with clamps sell at Autopartone (30 USD)."
+  },
+  {
+   "id": "PT046",
+   "link": "https://mazdatrix.com/product/brake-shoes-rx7-81-85/",
+   "support": "",
+   "cad": "",
+   "note_add": "Mazdatrix sells the set of four FA01-26-38Z shoes for 81-85 drum cars (36.38 USD). Leading/trailing shoes; grease the shoe-to-backing-plate, shoe-to-piston and shoe-to-anchor contacts on assembly (S-002 11-10). Figure: S-005 Engine-Chassis PDF p.87 (2610A-1)."
+  },
+  {
+   "id": "PT047",
+   "link": "https://www.atkinsrotary.com/81-85-12A-Rx7-Rear-Brake-Drum-FA01-26-251.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Atkins Rotary sells FA01-26-251 (OEM-quality, 59.50 USD each, in stock, 'hard to get'). rx7club owners report cheap Centric drums with an oversized centre bore that would not seat on the axle flange, and that 81-85 drums do not fit 79-80 cars. Held by attaching screws; release the parking brake fully before pulling it (S-002 11-8)."
+  },
+  {
+   "id": "PT048",
+   "link": "https://www.atkinsrotary.com/71-83-12A-Rx7-Rear-Wheel-Bearing-8871-26-151A.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Atkins Rotary stocks the bearing 8871-26-151A (27.25 USD) with its retaining collar 8531-26-152 (27.50 USD), seal 0187-26-154 (7.50 USD) and spacer 0259-26-155 (8.75 USD). The collar is destroyed on removal: grind one side to 0.5 mm and break it with a chisel, then press a new collar on dry (S-002 9-8..9). No maker bearing number was found."
+  },
+  {
+   "id": "PT049",
+   "link": "https://www.atkinsrotary.com/Brake-System/Wheel-Cylinder/",
+   "support": "",
+   "cad": "",
+   "note_add": "Atkins Rotary stocks FA01-26-610A (right) and FA01-26-710A (left) at 25.75 USD each; Nisshinbo makes a reproduction pair, NSB-105, 169 USD via JDM Car Parts. Dorman W37549 (right) and W37548 (left) are listed as replacements, 3/4 in bore (check). Inside: two pistons, two piston cups, filling blocks, spring, dust boots, bleeder screw and cap, steel ball (S-002 11-10)."
+  },
+  {
+   "id": "PT445",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Carries the two shoe-adjusting hole plugs and the arrow that marks the star-wheel direction (S-002 11-10..11). Figure: S-005 Engine-Chassis PDF p.87 (2610A-1)."
+  },
+  {
+   "id": "PT446",
+   "link": "https://www.vividracing.com/-p-153924953.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Raybestos H17275 and Centric 118.45003 appear in search-result titles as rear drum hardware kits for the 81-85 RX-7; neither listing could be opened (Vivid Racing 403, RockAuto does not render), so fitment and contents are unverified: check that a kit includes this part before buying."
+  },
+  {
+   "id": "PT447",
+   "link": "https://www.vividracing.com/-p-153924953.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Raybestos H17275 and Centric 118.45003 appear in search-result titles as rear drum hardware kits for the 81-85 RX-7; neither listing could be opened (Vivid Racing 403, RockAuto does not render), so fitment and contents are unverified: check that a kit includes this part before buying."
+  },
+  {
+   "id": "PT448",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT449",
+   "link": "https://www.amazon.com/Mazda-FA01-26-345-Drum-Brake-Spring/dp/B00KWENV1O",
+   "support": "",
+   "cad": "",
+   "note_add": "Genuine FA01-26-345 is listed on Amazon (page did not load; price unknown); the 1985 manual calls it the shoe retaining spring, removed with its guide pin (S-002 11-9)."
+  },
+  {
+   "id": "PT450",
+   "link": "https://www.ebay.com/itm/145956343438",
+   "support": "",
+   "cad": "",
+   "note_add": "Genuine FA01-26-391 hold-down pins are listed on eBay (page did not load; price unknown)."
+  },
+  {
+   "id": "PT451",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Item 13 'Cup & Boot set' in the 1985 rear drum structural view (S-002 11-8); no listing found."
+  },
+  {
+   "id": "PT452",
+   "link": "https://mazdatrix.com/product-category/brakes/brake-hardware/",
+   "support": "",
+   "cad": "",
+   "note_add": "Mazdatrix stocks the 79-85 rear drum bleeder 0259-33-691 at 6.58 USD."
+  },
+  {
+   "id": "PT453",
+   "link": "https://www.atkinsrotary.com/81-85-Rx7-Right-Brake-Shoe-Adjuster-FA01-26-630.html",
+   "support": "",
+   "cad": "",
+   "note_add": "FA01-26-630 (R) and FA01-26-640 (L) are discontinued by Mazda: NLA at Atkins Rotary (75 USD when stocked) and at Mazdatrix. Adjust through hole A in the backing plate: turn the star wheel in the arrow direction until the wheel locks, then back off 3-4 notches (S-002 11-10..11)."
+  },
+  {
+   "id": "PT454",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Pushed clear through hole B in the backing plate while the star wheel is backed off (S-002 11-11)."
+  },
+  {
+   "id": "PT455",
+   "link": "https://www.atkinsrotary.com/81-85-rx7-rear-right-drum-parking-brake-shoe-lever-fa01-26-810-.html",
+   "support": "",
+   "cad": "",
+   "note_add": "The parking brake cable hooks straight onto this lever (S-002 11-9). Atkins Rotary has the right-hand lever FA01-26-810 at 25 USD, 'no longer available but quite a few left'."
+  }
+ ],
+ "specs": [
+  {
+   "part": "PT051",
+   "category": "Brakes",
+   "item": "Piston to bore clearance, standard",
+   "value": "0.040-0.125",
+   "unit": "mm",
+   "source": "S-038",
+   "page": "T:6 (PDF p.8)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "0.0016-0.0049 in."
+  },
+  {
+   "part": "PT051",
+   "category": "Brakes",
+   "item": "Piston to bore clearance, wear limit",
+   "value": "0.15",
+   "unit": "mm",
+   "source": "S-038",
+   "page": "T:6 (PDF p.8)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "0.006 in; the 1985 manual gives the same limit (S-002 11-18)."
+  },
+  {
+   "part": "PT051",
+   "category": "Brakes",
+   "item": "Master cylinder union bolt, tightening torque",
+   "value": "10-16",
+   "unit": "N-m",
+   "source": "S-038",
+   "page": "T:8 (PDF p.10)",
+   "confidence": "primary",
+   "applies": "",
+   "note": ""
+  },
+  {
+   "part": "PT051",
+   "category": "Brakes",
+   "item": "Master cylinder outlet plug, tightening torque",
+   "value": "60-70",
+   "unit": "N-m",
+   "source": "S-038",
+   "page": "T:8 (PDF p.10)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "The 1985 manual gives the check-valve joint bolt 6.0-7.0 m-kg (43-51 ft-lb) (S-002 11-18)."
+  },
+  {
+   "part": "PT051",
+   "category": "Brakes",
+   "item": "Brake tube union nut, tightening torque",
+   "value": "13-22",
+   "unit": "N-m",
+   "source": "S-038",
+   "page": "T:8 (PDF p.10)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "The pipe unions at the master cylinder outlets and at the wheel cylinders."
+  },
+  {
+   "part": "PT051",
+   "category": "Brakes",
+   "item": "Replacement Nisshinbo NSB-102: outlet port thread",
+   "value": "M10 x 1.25",
+   "unit": "",
+   "source": "src-jdm-nisshinbo-mc",
+   "page": "",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Limited reproduction for the RX-7 SA/FB 1978-85, 398 USD, special order."
+  },
+  {
+   "part": "PT052",
+   "category": "Brakes",
+   "item": "Clearance between booster piston and push rod",
+   "value": "0.1-0.5",
+   "unit": "mm",
+   "source": "S-038",
+   "page": "T:6 (PDF p.8)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "0.004-0.020 in. The 1985 manual sets 0.1-0.3 mm using gauge 49 B002 765 (S-002 11-23..24)."
+  },
+  {
+   "part": "PT052",
+   "category": "Brakes",
+   "item": "Vacuum loss test, no load and with 20 kg pedal: drop in 15 s from 500 mmHg",
+   "value": "25",
+   "unit": "mmHg max",
+   "source": "S-002",
+   "page": "11-19, 11-20",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual; engine stopped at 500 mmHg (19.7 inHg), good if the drop is 25 mmHg (1.0 inHg) or less."
+  },
+  {
+   "part": "PT052",
+   "category": "Brakes",
+   "item": "Non-boosted function: fluid pressure at 20 kg pedal force, engine stopped",
+   "value": "1800",
+   "unit": "kPa min",
+   "source": "S-002",
+   "page": "11-20",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "256 psi or more, 1985 manual."
+  },
+  {
+   "part": "PT052",
+   "category": "Brakes",
+   "item": "Boosted function: fluid pressure at 20 kg pedal force with 500 mmHg vacuum",
+   "value": "7100",
+   "unit": "kPa min",
+   "source": "S-002",
+   "page": "11-20",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1010 psi or more, 1985 manual."
+  },
+  {
+   "part": "PT565",
+   "category": "Brakes",
+   "item": "Replacement Frenkit 120058: piston diameter",
+   "value": "20.6",
+   "unit": "mm",
+   "source": "src-spareto-frenkit-120058",
+   "page": "",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Frenkit lists G001-49-610 and G001-49-640 among its OE numbers; matches the 20.64 mm bore."
+  },
+  {
+   "part": "PT046",
+   "category": "Brakes",
+   "item": "Lining thickness, standard",
+   "value": "4.0",
+   "unit": "mm",
+   "source": "S-038",
+   "page": "T:6 (PDF p.8)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "0.1575 in; limit 1.0 mm is already recorded. Same in the 1985 manual (S-002 11-9)."
+  },
+  {
+   "part": "PT046",
+   "category": "Brakes",
+   "item": "Clearance between drum and lining",
+   "value": "0.1-0.15",
+   "unit": "mm",
+   "source": "S-038",
+   "page": "T:6 (PDF p.8)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "0.004-0.006 in."
+  },
+  {
+   "part": "PT046",
+   "category": "Brakes",
+   "item": "Adjustment: star wheel turned until the wheel locks, then backed off",
+   "value": "3-4",
+   "unit": "notches",
+   "source": "S-002",
+   "page": "11-10, 11-11",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual, through hole A of the backing plate with the adjuster lever pushed clear through hole B."
+  },
+  {
+   "part": "PT047",
+   "category": "Brakes",
+   "item": "Drum roughness limit",
+   "value": "0.15",
+   "unit": "mm",
+   "source": "S-002",
+   "page": "11-9",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "0.006 in, 1985 manual."
+  },
+  {
+   "part": "PT048",
+   "category": "Brakes",
+   "item": "Rear wheel bearing end play",
+   "value": "0-0.1",
+   "unit": "mm",
+   "source": "S-038",
+   "page": "T:5 (PDF p.7)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "0-0.004 in; measured with a dial gauge pushing and pulling the axle shaft, drum off (S-002 9-4)."
+  },
+  {
+   "part": "PT048",
+   "category": "Brakes",
+   "item": "Bearing collar press-fit force, minimum",
+   "value": "2.7",
+   "unit": "t",
+   "source": "S-002",
+   "page": "9-9",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "5,952 lb; replace the collar or the shaft if it presses on with less. Collar and shaft seat must be dry and clean."
+  },
+  {
+   "part": "PT049",
+   "category": "Brakes",
+   "item": "Piston to bore clearance, standard",
+   "value": "0.040-0.125",
+   "unit": "mm",
+   "source": "S-038",
+   "page": "T:6 (PDF p.8)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "0.0016-0.0049 in."
+  },
+  {
+   "part": "PT049",
+   "category": "Brakes",
+   "item": "Piston to bore clearance, limit",
+   "value": "0.15",
+   "unit": "mm",
+   "source": "S-038",
+   "page": "T:6 (PDF p.8)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "0.006 in; same in the 1985 manual (S-002 11-10)."
+  },
+  {
+   "part": "PT049",
+   "category": "Brakes",
+   "item": "Remaining (residual) pressure in the rear drum circuit",
+   "value": "50-100",
+   "unit": "kPa",
+   "source": "S-038",
+   "page": "T:6 (PDF p.8)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "7.1-14.2 lb/in2; held by the master cylinder check valve."
+  },
+  {
+   "part": "PT049",
+   "category": "Brakes",
+   "item": "Wheel cylinder union bolt, tightening torque",
+   "value": "7-10",
+   "unit": "N-m",
+   "source": "S-038",
+   "page": "T:8 (PDF p.10)",
+   "confidence": "primary",
+   "applies": "",
+   "note": ""
+  },
+  {
+   "part": "PT049",
+   "category": "Brakes",
+   "item": "Replacement Nisshinbo NSB-105: outlet port thread",
+   "value": "M10 x 1.25",
+   "unit": "",
+   "source": "src-jdm-nisshinbo-wc",
+   "page": "",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "JASO thread; reproduction RH+LH set, 169 USD, special order."
+  }
+ ],
+ "terminals": [],
+ "sources": [
+  {
+   "key": "src-atkins-fa07-43-400",
+   "title": "Atkins Rotary - 81-85 12A Rx7 Brake Master Cylinder (FA07-43-400)",
+   "kind": "web",
+   "covers": "PT051: OEM-quality master cylinder, 134 USD, in stock, fits 12A with drum brakes; OEM Mazda still available on request",
+   "url": "https://www.atkinsrotary.com/81-85-12A-Rx7-Brake-Master-Cylinder-FA07-43-400.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Read 2026-09-27."
+  },
+  {
+   "key": "src-atkins-79-85-mc-category",
+   "title": "Atkins Rotary - 79-85 Rx7 Brake Master Cylinders category",
+   "kind": "web",
+   "covers": "PT051 FA07-43-400 134 USD, FA18-43-400 102.75 USD; PT561 cap B093-49-580 15.25 USD; PT560 reservoir seal 0305-49-686B 4.50 USD; all in stock",
+   "url": "https://www.atkinsrotary.com/Brake-System/Brake-Master-Cylinders/79-85-Rx7-Brake-Master-Cylinders/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Read 2026-09-27."
+  },
+  {
+   "key": "src-atkins-0305-49-686b",
+   "title": "Atkins Rotary - 79-91 Rx7 Brake Master to Reservoir Seal (0305-49-686B)",
+   "kind": "web",
+   "covers": "PT560: the rubber seal between master cylinder and reservoir, 4.50 USD, in stock, fits all 79-91 RX-7",
+   "url": "https://www.atkinsrotary.com/79-92-Rx7-Brake-Master-to-Reservoir-Seal-0305-49-686B.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-atkins-fa16-43-800",
+   "title": "Atkins Rotary - 81-83 Rx7 Brake Booster (FA16-43-800) - NLA",
+   "kind": "web",
+   "covers": "PT052: 145 USD, out of stock, no longer available, 'getting very hard to obtain'",
+   "url": "https://www.atkinsrotary.com/81-83-rx7-brake-booster-fa16-43-800-.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-atkins-booster-parts",
+   "title": "Atkins Rotary - Mazda Brake Boosters & Parts category",
+   "kind": "web",
+   "covers": "PT052: booster-to-firewall gasket H001-43-443 1.88 USD in stock; FA16-43-800 out of stock",
+   "url": "https://www.atkinsrotary.com/Brake-System/Mazda-Brake-Booster-Parts/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-atkins-fa01-26-251",
+   "title": "Atkins Rotary - 81-85 12A Rx7 Rear Brake Drum (FA01-26-251)",
+   "kind": "web",
+   "covers": "PT047: one drum, OEM-quality, 59.50 USD, in stock, 'hard to get', 8 lb",
+   "url": "https://www.atkinsrotary.com/81-85-12A-Rx7-Rear-Brake-Drum-FA01-26-251.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-atkins-8871-26-151a",
+   "title": "Atkins Rotary - 71-83 12A Rx7 Rear Wheel Bearing (8871-26-151A)",
+   "kind": "web",
+   "covers": "PT048: 27.25 USD, in stock, fits all 71-83 12A rotary cars; bought with collar 8531-26-152, seal 0187-26-154, spacer 0259-26-155",
+   "url": "https://www.atkinsrotary.com/71-83-12A-Rx7-Rear-Wheel-Bearing-8871-26-151A.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-atkins-79-85-bearings",
+   "title": "Atkins Rotary - 79-85 Mazda Rx7 Wheel Bearings & Seals category",
+   "kind": "web",
+   "covers": "PT048: bearing 8871-26-151A 27.25, collar 8531-26-152 27.50, 79-83 seal 0187-26-154 7.50, spacer 0259-26-155 8.75 USD, all in stock",
+   "url": "https://www.atkinsrotary.com/Suspension-and-Steering/Wheels-and-Parts/Wheel-Bearings-and-Seals/79-85-Mazda-Rx7-Wheel-Bearings-and-Seals/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-atkins-wheel-cylinders",
+   "title": "Atkins Rotary - Mazda Drum Brake Wheel Cylinders category",
+   "kind": "web",
+   "covers": "PT049: 81-85 12A rear right FA01-26-610A and rear left FA01-26-710A, 25.75 USD each, in stock",
+   "url": "https://www.atkinsrotary.com/Brake-System/Wheel-Cylinder/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-atkins-fa01-26-810",
+   "title": "Atkins Rotary - 81-85 Rx7 Rear Right Drum Parking Brake Shoe Lever (FA01-26-810)",
+   "kind": "web",
+   "covers": "PT455: right lever, 25 USD, NLA from Mazda but Atkins has stock; parking brake cable attaches directly to it",
+   "url": "https://www.atkinsrotary.com/81-85-rx7-rear-right-drum-parking-brake-shoe-lever-fa01-26-810-.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-atkins-fa01-26-630",
+   "title": "Atkins Rotary - 81-85 Rx7 Right Brake Shoe Adjuster (FA01-26-630) - NLA",
+   "kind": "web",
+   "covers": "PT453: right adjuster 75 USD, no longer available; left FA01-26-640 likewise",
+   "url": "https://www.atkinsrotary.com/81-85-Rx7-Right-Brake-Shoe-Adjuster-FA01-26-630.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-mazdatrix-shoes-81-85",
+   "title": "Mazdatrix - BRAKE SHOES, RX7 81-85 (FA01-26-38Z)",
+   "kind": "web",
+   "covers": "PT046: set of four shoes for 81-85 rear drum cars, 36.38 USD",
+   "url": "https://mazdatrix.com/product/brake-shoes-rx7-81-85/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-mazdatrix-brake-hardware",
+   "title": "Mazdatrix - Brake Hardware category",
+   "kind": "web",
+   "covers": "PT452: 79-85 rear drum bleeder 0259-33-691 6.58 USD in stock; PT453: adjusters FA01-26-630/640 discontinued by Mazda",
+   "url": "https://mazdatrix.com/product-category/brakes/brake-hardware/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-mazdatrix-brake-fluid-cap",
+   "title": "Mazdatrix - Brake fluid cap, 79-85 (GA02-49-580B) NLA",
+   "kind": "web",
+   "covers": "PT561: Mazdatrix lists the 79-85 cap as GA02-49-580B, discontinued by Mazda",
+   "url": "https://mazdatrix.com/product/brake-fluid-cap-79-85/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-jdm-nisshinbo-mc",
+   "title": "JDM Car Parts - Brake master cylinder assembly for Mazda RX7 FB3S by Nisshinbo (NSB-102)",
+   "kind": "web",
+   "covers": "PT051: Nisshinbo limited reproduction, 398 USD, outlet port thread M10 x 1.25, fits RX-7 SA/FB 1978-85, special order 3-4 weeks",
+   "url": "https://jdm-car-parts.com/products/brake-master-cylinder-assembly-for-mazda-rx7-fb3s-by-nisshinbo",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Seller states Nisshinbo is Mazda's OEM brake supplier; not confirmed from a factory source."
+  },
+  {
+   "key": "src-jdm-nisshinbo-wc",
+   "title": "JDM Car Parts - Rear brake cylinder assembly set for Mazda RX7 SA22C with drum brake by Nisshinbo (NSB-105)",
+   "kind": "web",
+   "covers": "PT049: RH+LH reproduction set, 169 USD, outlet thread M10 x 1.25 JASO, special order",
+   "url": "https://jdm-car-parts.com/products/rear-brake-cylinder-assembly-set-for-mazda-rx7-sa22c-with-drum-brake-by-nisshinbo",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-rx7club-mc-rebuild-kit",
+   "title": "RX7Club 1st-gen forum - Brake master cylinder rebuild kit thread",
+   "kind": "forum",
+   "covers": "PT051/PT564: 81-83 numbers FA01-43-400 (S, GS) and FA18-43-400 (GSL); kits G001-49-610 (S, GS) and FA18-49-610 (GSL); aftermarket cross-refs Cardone 111962, AC-Delco 18M266, Beck/Arnley 072-8108",
+   "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/brake-master-cylinder-rebuild-kit-848110/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-rx7club-booster-rebuild",
+   "title": "RX7Club 1st-gen forum - Brake booster replacement / rebuild thread",
+   "kind": "forum",
+   "covers": "PT052: local shop rebuild about 80 USD, Cardone reman used for 10 years, NA Miata booster suggested as a swap; failure signs hiss on shutdown and rust from leaking master cylinder",
+   "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/brake-booster-replacement-rebuild-1165897/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-rx7club-replacement-drums",
+   "title": "RX7Club 1st-gen forum - Replacement brake drums thread",
+   "kind": "forum",
+   "covers": "PT047: Atkins about 60 USD, Duralast 103.99 USD; Centric drums reported with oversized centre bore and bolt holes; 81-85 drums do not fit 79-80",
+   "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/replacement-brake-drums-1124290/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-rx7club-rear-axle-bearing-howto",
+   "title": "RX7Club 1st-gen archive - How To: rear axle bearing / seal replacement",
+   "kind": "forum",
+   "covers": "PT048: procedure write-up; collar cut off with grinder and chisel, machine shop 60 USD; seal driven with a hardwood block; no part numbers or torques",
+   "url": "https://www.rx7club.com/1st-gen-archive-71/how-rear-axle-bearing-seal-replacement-966704/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-spareto-g00149610",
+   "title": "Spareto - Mazda OE G00149610 repair kit cross-reference",
+   "kind": "web",
+   "covers": "PT564: Autofren Seinsa D1485 4.52 EUR, ERT 200334 5.46 EUR, Frenkit 120058 4.86 EUR",
+   "url": "https://spareto.com/oe/g00149610",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-spareto-frenkit-120058",
+   "title": "Spareto - Frenkit 120058 brake master cylinder repair kit",
+   "kind": "web",
+   "covers": "PT564/PT565: piston diameter 20.6 mm; OE numbers include G001-49-610, G001-49-640, FA18-49-610, FA18-49-640, B001-49-610",
+   "url": "https://spareto.com/products/frenkit-repair-kit-brake-master-cylinder/120058",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-rockauto-1983-booster",
+   "title": "RockAuto - 1983 Mazda RX-7 1.1L R2 power brake booster listing",
+   "kind": "web",
+   "covers": "PT052: PRIOR 9700158 remanufactured, without master cylinder, 8 lb, out of stock",
+   "url": "https://www.rockauto.com/en/catalog/mazda,1983,rx-7,1.1l+r2,1192261,brake+&+wheel+hub,power+brake+booster,1884",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-autopartone-booster-hose",
+   "title": "Autopartone - 81-83 Mazda RX7 OEM brake booster vacuum hose (used)",
+   "kind": "web",
+   "covers": "PT567: two-piece used OEM hose with clamps, 30 USD, fits 81-83 12A; check valve not stated",
+   "url": "https://www.autopartone.com/products/81-83-mazda-rx7-oem-brake-booster-vacuum-hose",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-vividracing-h17275",
+   "title": "Vivid Racing - Raybestos R-Line drum brake hardware kit, Mazda RX-7 rear 1981-1985 (H17275)",
+   "kind": "web",
+   "covers": "PT446/PT447/PT448/PT449/PT450: rear drum hardware kit listed for 81-85; contents not readable (page refused)",
+   "url": "https://www.vividracing.com/-p-153924953.html",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Seen in search results and title only. Checked 2026-09-27: the page returns HTTP 403 (Cloudflare), so neither fitment nor contents could be read; Centric 118.45003 as the RockAuto equivalent is likewise unverified (RockAuto listing does not render)."
+  }
+ ],
+ "cad": []
+}

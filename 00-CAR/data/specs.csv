@@ -1305,3 +1305,105 @@ SP-1318,Electrical,Seat belt warning light time after start,6,s,S-002,15-25,prim
 SP-1319,Body,Trim fasteners per car,22,,S-005,Body-Index 72,primary,body,PT910,,"fastener 0208-58-921 x22 with cap 0187-58-922 x22, figure 5840A-1, both doors"
 SP-1320,Body,Quantity per car,2,,S-005,Body-Index 72,primary,body,PT914,,figure 5840A-1 item 58 811A
 SP-1321,Body,Quantity per car,2,,S-005,Body-Index 72,primary,body,PT915,,figure 5840A-1 item 58 821A
+SP-1322,Body,Headliner fitting temperature (warm the top ceiling before installing),30-50,degC,S-002,14-13,primary,body,PT916,other-car,"1985 manual, full-roof top ceiling; 86-122 F; same procedure page for the sunroof type (14-14)"
+SP-1323,Body,Headliner attachment (1985 manual),listing wires into the roof from the centre outwards; rear end onto the body flange; front end into the body inserting point; sides glued to the body flange over double-sided tape; edges trimmed,,S-002,"14-13, 14-14",primary,body,PT916,other-car,"1985 manual, full roof; removal order and steps 1-3 on 14-13, steps 4-7 (front end, tape, sides, trimming) on 14-14"
+SP-1324,Body,Headliner board material (owner report),"vacuum-formed semi-fibreboard, recovered with foam-backed headliner cloth and spray adhesive",,S-352,,unverified,body,PT916,,"forum, first-gen thread; no factory statement of the material found"
+SP-1325,Body,Floor silencer size,300 x 300,mm,S-005,Body-Index 126,primary,body,PT943,,"catalogue fig 6860A-2 row 76 071: '(30CM X 30CM)', qty 1"
+SP-1326,Body,Replacement Stock Interiors 8162 complete carpet kit: padding,"mildew-resistant jute heat-bonded to the carpet, passenger area only; cargo area unpadded; mass backing optional",,S-358,,secondary,body,PT941,,heat-and-pressure molded to the 1979-85 floor pan; USD 278.95 on 2026-09-27
+SP-1327,Body,Replacement LRB Speed FB quarter trim and upper B-pillar trim: material,"aluminium 1.5 mm (0.063 in), laser cut, brushed",,S-355,,secondary,body,PT932,,"1979-85, factory mounting points, from USD 179; not a reproduction of the moulded panel"
+SP-1328,Body,Replacement LRB Speed FB front kick panels: material,"aluminium 1.5 mm (0.063 in), laser cut, '81-85 variant with OEM speaker opening",,S-356,,secondary,body,PT930,,"factory mounting points, from USD 55"
+SP-1329,Body,Replacement LRB Speed FB rear quarter (cargo side) trim and hatch bulkhead panels: material,"aluminium 1.5 mm (0.063 in), laser cut; bulkhead panel '81-85 only, with stock hatch light cut-out or blank",,S-357,,secondary,body,PT938,,"factory mounting points, from USD 104; spare tyre cover not included"
+SP-1330,Lighting,"Interior lamp bulb (figure callout 69170J, Mazda 0000-11-3175): rating",10,W,S-005,"BI p129, fig 6900A-2",primary,body,PT957,,Marked A12V 10W; fitted to both the with- and without-map-lamp mirrors. S-001 draws the interior lamp as 5 W - check the bulb fitted.
+SP-1331,Lighting,"Map (spot) lamp bulb (figure callout 69170K, Mazda 0000-11-0194): rating",5,W,S-005,"BI p129, fig 6900A-2",primary,body,PT957,,Marked A12V 5W; GS and GSL only. The same Mazda number is marked A12V 3.4W in fig 5540A-1 (BI p49) and is the trade 194 wedge. S-001 draws the spot lamp as 6 W - check the bulb fitted.
+SP-1332,Lighting,Interior lamp as drawn in the wiring diagram,5,W,S-001,26,primary,body,PT957,,"Sec H, H-06 'interior and spot light': the 5 W lamp is on the three-way switch (on / door / off). Catalogue bulb is 10 W."
+SP-1333,Lighting,Spot (map) lamp as drawn in the wiring diagram,6,W,S-001,26,primary,body,PT957,,"Sec H, H-06: the 6 W spot lamp has its own on/off switch to ground. Catalogue bulb is 5 W."
+SP-1334,Lighting,"Supply fuse (LY, constant from the battery through the fusible link)",15,A,S-001,26,primary,body,PT957,,"Fuse block X-04 15 A, shared with the cigarette lighter, clock, luggage compartment light and ignition switch light. Works with the key out."
+SP-1335,Lighting,Interior lamp switch positions (from the wiring diagram),on / door / off,,S-001,26,primary,body,PT957,,"On: lamp to ground in the mirror; door: lamp to RY, grounded by the door switches H-07/H-08; off: open. Confirm on the car."
+SP-1336,Lighting,Replacement DE-3175 festoon (for Mazda 0000-11-3175): rating,13 V (rated for 12 V use) 10 W,,S-151,1,secondary,body,PT957,,The page lists it as 13 V for 12 V applications; owners on rx7club fit the Sylvania DE3175 as the dome bulb.
+SP-1337,Lighting,Replacement DE-3175 festoon: base and size,"SV8.5-8 festoon, 10.5 x 32 mm, C-8 filament",,S-151,1,secondary,body,PT957,,"400 h average life, 120 lm."
+SP-1338,Body,Chassis number plate location (1985 manual drawing),top of the firewall in the engine bay,,S-002,sec G p9,primary,body,PT968,other-car,Drawing 47U0GX-027 only; no 1982 source shows it. Check where this car's plate is.
+SP-1339,Brakes,"Piston to bore clearance, standard",0.040-0.125,mm,S-038,T:6 (PDF p.8),primary,brakes,PT051,,0.0016-0.0049 in.
+SP-1340,Brakes,"Piston to bore clearance, wear limit",0.15,mm,S-038,T:6 (PDF p.8),primary,brakes,PT051,,0.006 in; the 1985 manual gives the same limit (S-002 11-18).
+SP-1341,Brakes,"Master cylinder union bolt, tightening torque",10-16,N-m,S-038,T:8 (PDF p.10),primary,brakes,PT051,,
+SP-1342,Brakes,"Master cylinder outlet plug, tightening torque",60-70,N-m,S-038,T:8 (PDF p.10),primary,brakes,PT051,,The 1985 manual gives the check-valve joint bolt 6.0-7.0 m-kg (43-51 ft-lb) (S-002 11-18).
+SP-1343,Brakes,"Brake tube union nut, tightening torque",13-22,N-m,S-038,T:8 (PDF p.10),primary,brakes,PT051,,The pipe unions at the master cylinder outlets and at the wheel cylinders.
+SP-1344,Brakes,Replacement Nisshinbo NSB-102: outlet port thread,M10 x 1.25,,S-382,,secondary,brakes,PT051,,"Limited reproduction for the RX-7 SA/FB 1978-85, 398 USD, special order."
+SP-1345,Brakes,Clearance between booster piston and push rod,0.1-0.5,mm,S-038,T:6 (PDF p.8),primary,brakes,PT052,,0.004-0.020 in. The 1985 manual sets 0.1-0.3 mm using gauge 49 B002 765 (S-002 11-23..24).
+SP-1346,Brakes,"Vacuum loss test, no load and with 20 kg pedal: drop in 15 s from 500 mmHg",25,mmHg max,S-002,"11-19, 11-20",primary,brakes,PT052,other-car,"1985 manual; engine stopped at 500 mmHg (19.7 inHg), good if the drop is 25 mmHg (1.0 inHg) or less."
+SP-1347,Brakes,"Non-boosted function: fluid pressure at 20 kg pedal force, engine stopped",1800,kPa min,S-002,11-20,primary,brakes,PT052,other-car,"256 psi or more, 1985 manual."
+SP-1348,Brakes,Boosted function: fluid pressure at 20 kg pedal force with 500 mmHg vacuum,7100,kPa min,S-002,11-20,primary,brakes,PT052,other-car,"1010 psi or more, 1985 manual."
+SP-1349,Brakes,Replacement Frenkit 120058: piston diameter,20.6,mm,S-389,,secondary,brakes,PT565,,Frenkit lists G001-49-610 and G001-49-640 among its OE numbers; matches the 20.64 mm bore.
+SP-1350,Brakes,"Lining thickness, standard",4.0,mm,S-038,T:6 (PDF p.8),primary,brakes,PT046,,0.1575 in; limit 1.0 mm is already recorded. Same in the 1985 manual (S-002 11-9).
+SP-1351,Brakes,Clearance between drum and lining,0.1-0.15,mm,S-038,T:6 (PDF p.8),primary,brakes,PT046,,0.004-0.006 in.
+SP-1352,Brakes,"Adjustment: star wheel turned until the wheel locks, then backed off",3-4,notches,S-002,"11-10, 11-11",primary,brakes,PT046,other-car,"1985 manual, through hole A of the backing plate with the adjuster lever pushed clear through hole B."
+SP-1353,Brakes,Drum roughness limit,0.15,mm,S-002,11-9,primary,brakes,PT047,other-car,"0.006 in, 1985 manual."
+SP-1354,Brakes,Rear wheel bearing end play,0-0.1,mm,S-038,T:5 (PDF p.7),primary,brakes,PT048,,"0-0.004 in; measured with a dial gauge pushing and pulling the axle shaft, drum off (S-002 9-4)."
+SP-1355,Brakes,"Bearing collar press-fit force, minimum",2.7,t,S-002,9-9,primary,brakes,PT048,other-car,"5,952 lb; replace the collar or the shaft if it presses on with less. Collar and shaft seat must be dry and clean."
+SP-1356,Brakes,"Piston to bore clearance, standard",0.040-0.125,mm,S-038,T:6 (PDF p.8),primary,brakes,PT049,,0.0016-0.0049 in.
+SP-1357,Brakes,"Piston to bore clearance, limit",0.15,mm,S-038,T:6 (PDF p.8),primary,brakes,PT049,,0.006 in; same in the 1985 manual (S-002 11-10).
+SP-1358,Brakes,Remaining (residual) pressure in the rear drum circuit,50-100,kPa,S-038,T:6 (PDF p.8),primary,brakes,PT049,,7.1-14.2 lb/in2; held by the master cylinder check valve.
+SP-1359,Brakes,"Wheel cylinder union bolt, tightening torque",7-10,N-m,S-038,T:8 (PDF p.10),primary,brakes,PT049,,
+SP-1360,Brakes,Replacement Nisshinbo NSB-105: outlet port thread,M10 x 1.25,,S-383,,secondary,brakes,PT049,,"JASO thread; reproduction RH+LH set, 169 USD, special order."
+SP-1361,Brakes,Brake pedal height from floor,190 (+5/-0),mm,S-038,8,primary,brakes,PT553,,OCR reads 190 +5/-0 mm (7.48 +0.20/-0 in); S-039 p.8 reads the same and S-040 gives 190-195 mm; set by the stop light switch position (S-002 p.11-25)
+SP-1362,Brakes,"Brake pedal free travel, before the power brake piston operates",7-9,mm,S-038,8,primary,brakes,PT553,,set at the push rod lock nut (S-002 p.11-25)
+SP-1363,Brakes,Pedal type,suspended,,S-002,11-2,primary,brakes,PT553,other-car,1985 specification table; the 1981-83 catalogue figure 4300A-1 shows the same hanging pedal on the master cylinder bracket
+SP-1364,Brakes,"Brake pedal height (Mitchell 1983 table, RX7)",190-195,mm,S-393,2,secondary,brakes,PT553,other-car,7.5-7.7 in; agrees with S-038's 190 +5/-0
+SP-1365,Brakes,"Lining thickness, new / limit",9 / 1,mm,S-038,8,primary,brakes,PT045,,replace all four pads together and never mix types (S-002 p.11-5)
+SP-1366,Brakes,"Front wheel bearing preload, measured at a wheel bolt",4.5-6.5,N,S-038,8,primary,brakes,PT043,,"0.99-1.43 lb pull on a spring scale hooked to a hub bolt, over the seal drag (procedure S-002 p.9-6)"
+SP-1367,Brakes,Preload setting: adjusting nut first tightened to,25-30,N·m,S-002,9-6,primary,brakes,PT043,other-car,"18-22 ft-lb, hub turned to seat the bearings, nut backed off until finger-loose, then tightened until the spring-scale pull equals seal drag plus 0.45-0.65 kg; S-038 gives 4.5-6.5 N for 1982"
+SP-1368,Brakes,Bearing and hub grease,lithium base NLGI No. 2,,S-002,9-6,primary,brakes,PT043,other-car,"bearings repacked, not overpacked, hub cavity filled; never spin a bearing with compressed air"
+SP-1369,Brakes,Bearing type,"tapered roller, inner and outer, with pressed outer races",,S-002,9-6,primary,brakes,PT043,other-car,races driven out through the slots in the hub only when they need replacing
+SP-1370,Brakes,Caliper type,"floating single-piston, lower attaching bolt removed and body pivoted up for pad change",,S-002,11-4,primary,brakes,PT050,other-car,structural view items 1-22; catalogue 3300A-1 shows the same caliper for 81-83
+SP-1371,Brakes,"Replacement Cardone 19-644: remanufactured caliper, 1981-85 RX-7",19-644,,S-404,,secondary,brakes,PT050,,"side not stated on the page; new bleeder, stainless hardware clips and mounting pins, bracket where applicable; price behind a login"
+SP-1372,Brakes,Piston removal,compressed air into the fluid hole against a hardwood block in the caliper,,S-002,11-6,primary,brakes,PT497,other-car,"scoring, scratches or rust on piston or bore means a new piston or caliper; minor marks polished with crocus cloth"
+SP-1373,Brakes,Seal kit greases,"two kinds, orange and red, applied as the 1985 figure shows",,S-002,11-7,primary,brakes,PT500,other-car,piston seal and dust boot always renewed; piston and bore wetted with brake fluid on assembly
+SP-1374,Brakes,Bleeding,"tube from the bleeder into a jar of fluid, pedal pumped full stroke until no bubbles",,S-002,11-24,primary,brakes,PT498,other-car,front and rear circuits bled separately; reservoir kept at least 3/4 full; drained fluid never reused
+SP-1375,Brakes,Caliper guide pin torque (Mitchell 1983 table),45-55,N·m,S-393,11,secondary,brakes,PT499,other-car,"33-40 ft-lb; the table row names no model, RX7 is one of the three models in the article - check"
+SP-1376,Brakes,Flexible hose union torque,25-35,N·m,S-038,10,primary,brakes,PT569,,"1982 tightening torque table, brake"
+SP-1377,Brakes,Flexible hose union torque,25-35,N·m,S-038,10,primary,brakes,PT570,,"1982 tightening torque table, brake"
+SP-1378,Brakes,Valve type,"differential proportioning valve on the master cylinder outlet, one inlet, front and rear outlets",,S-002,11-2,primary,brakes,PT568,other-car,1985 structural view; connect the pipes to the identification mark on the valve body (S-002 p.11-26)
+SP-1379,Brakes,Brake tube union nut torque,13-22,N·m,S-038,10,primary,brakes,PT571,,"1982 tightening torque table, brake"
+SP-1380,Brakes,Brake tube union nut torque,13-22,N·m,S-038,10,primary,brakes,PT572,,"1982 tightening torque table, brake"
+SP-1381,Brakes,Brake tube union nut torque,13-22,N·m,S-038,10,primary,brakes,PT573,,"1982 tightening torque table, brake"
+SP-1382,Brakes,Brake tube union nut torque,13-22,N·m,S-038,10,primary,brakes,PT574,,"1982 tightening torque table, brake"
+SP-1383,Brakes,Brake tube union nut torque,13-22,N·m,S-038,10,primary,brakes,PT575,,"1982 tightening torque table, brake"
+SP-1384,Brakes,Brake tube union nut torque,13-22,N·m,S-038,10,primary,brakes,PT576,,"1982 tightening torque table, brake"
+SP-1385,Brakes,Brake tube union nut torque,13-22,N·m,S-038,10,primary,brakes,PT577,,"1982 tightening torque table, brake"
+SP-1386,Brakes,"Parking brake lever travel, rear brakes locked",6-8,notches,S-038,8,primary,brakes,PT578,,at 100 N (22 lb) pull on the lever; 1985 workshop manual (S-002 Section 11 p25) gives the same 6-8 notches at approx. 10 kg (22 lb)
+SP-1387,Brakes,Parking brake lever pull force for the travel check,100,N,S-038,8,primary,brakes,PT578,,22 lb; S-002 Section 11 p25 states it as approx. 10 kg
+SP-1388,Brakes,Parking brake type,"mechanical, applied on rear brakes, floor-mounted lever",,S-002,Section 11 p2 (11-2),primary,brakes,PT578,other-car,"1985 specification table; S-038 gives no type line, only the travel figure"
+SP-1389,Brakes,Parking brake adjustment point,adjusting screw on the lever,,S-002,Section 11 p25 (11-25),primary,brakes,PT578,other-car,"adjust with the rear raised and the lever fully released; after adjusting, apply several times and confirm the rear wheels turn without drag"
+SP-1390,Brakes,Warning lamp switch setting at the lever,1,notch,S-002,Section 11 p25 (11-25),primary,brakes,PT578,other-car,"lamp on with the lever pulled 1 notch, off when fully released; the switch itself is a separate part"
+SP-1391,Brakes,Rear cable attachment at the brake,operating lever on the rear brake shoe,,S-002,Section 11 p9 (11-9),primary,brakes,PT585,other-car,1985 rear drum brake removal step 8; the 1982 GS also has rear drums
+SP-1392,Brakes,Rear cable attachment at the brake,operating lever on the rear brake shoe,,S-002,Section 11 p9 (11-9),primary,brakes,PT586,other-car,1985 rear drum brake removal step 8; the 1982 GS also has rear drums
+SP-1393,Driveline,Propeller shaft max permissible run-out,0.4,mm,S-038,p.7 (T:5),primary,driveline,PT422,,same figure in S-002 Section 8 p.3 (8-3)
+SP-1394,Driveline,"Propeller shaft max permissible unbalance at 4,000 rpm, front",15,cm-g,S-038,p.7 (T:5),primary,driveline,PT422,,0.21 in-oz
+SP-1395,Driveline,"Propeller shaft max permissible unbalance at 4,000 rpm, rear",15,cm-g,S-038,p.7 (T:5),primary,driveline,PT422,,0.21 in-oz
+SP-1396,Driveline,"Propeller shaft length x outer diameter, 12A vehicle",968 x 65,mm,S-002,Section 8 p.2 (8-2),primary,driveline,PT422,other-car,1985 manual figure for the 12A car (13B car 909 x 65); no 1982 source gives the length; measure to check
+SP-1397,Driveline,Universal joint spider diameter,25 +0.021/+0.008,mm,S-038,p.7 (T:5),primary,driveline,PT423,,0.9843 +0.0008/+0.0003 in
+SP-1398,Driveline,Universal joint spider diameter wear limit,24.908,mm,S-038,p.7 (T:5),primary,driveline,PT423,,0.9806 in
+SP-1399,Driveline,Universal joint journal swinging torque,0.3-0.8,N-m,S-038,p.7 (T:5),primary,driveline,PT423,,2.6-6.9 in-lb
+SP-1400,Driveline,Differential oil level,near the filler port,,S-002,Section 9 p.4 (9-4),primary,driveline,PT427,other-car,checked with the level plug removed; same axle design in 1982
+SP-1401,Driveline,Rear axle shaft deflection limit at centre,1.5,mm,S-002,Section 9 p.10 (9-10),primary,driveline,PT430,other-car,0.0591 in; not in the 1982 technical data
+SP-1402,Driveline,Bearing collar minimum press-fit force,2.7,t,S-002,Section 9 p.9 (9-9),primary,driveline,PT431,other-car,"5,952 lb; if the collar goes on with less, replace the collar or the shaft"
+SP-1403,Driveline,Bearing collar removal: grind to remaining wall then chisel,0.5,mm,S-002,Section 9 p.8 (9-8),primary,driveline,PT431,other-car,0.020 in
+SP-1404,Driveline,Side bearing cap bolt torque,38-53,N-m,S-002,"Section 9 p.12 and p.24 (9-12, 9-24)",primary,driveline,PT434,other-car,27-38 ft-lb
+SP-1405,Driveline,Carrier-to-casing joint sealant,8527 77 739,,S-002,Section 9 p.11 (9-11),primary,driveline,PT434,other-car,Mazda sealant number
+SP-1406,Driveline,"Pinion nut tightening torque, initial, then check preload",130,N-m,S-002,Section 9 p.19 (9-19),primary,driveline,PT435,other-car,94 ft-lb; tighten a little at a time checking preload after each step
+SP-1407,Driveline,Pinion nut maximum tightening torque,180,N-m,S-002,Section 9 p.19 (9-19),primary,driveline,PT435,other-car,"130 ft-lb; if preload is not reached by then, fit a new collapsible spacer"
+SP-1408,Driveline,Pinion preload measured with spring scale at flange bolt hole,25-40,N,S-002,Section 9 p.20 (9-20),primary,driveline,PT435,other-car,5.5-8.8 lb; equivalent of the 0.9-1.4 N-m torque figure
+SP-1409,Driveline,Backlash of ring gear and drive pinion,0.09-0.11,mm,S-038,p.7 (T:5),primary,driveline,PT437,,0.0035-0.0043 in; measured at four points 90 degrees apart with a dial gauge on a tooth
+SP-1410,Driveline,Ring gear backlash minimum at any point,0.05,mm,S-002,Section 9 p.24 (9-24),primary,driveline,PT437,other-car,0.002 in
+SP-1411,Driveline,Ring gear backlash max variation around the gear,0.07,mm,S-002,Section 9 p.24 (9-24),primary,driveline,PT437,other-car,"0.0028 in, max minus min"
+SP-1412,Driveline,Ring gear bolt torque,75-85,N-m,S-002,"Section 9 p.12 and p.21 (9-12, 9-21)",primary,driveline,PT437,other-car,"text says 51-61 ft-lb, diagram 54-62 ft-lb; locking agent on the ring gear face and bolt holes; bolts are new parts each time"
+SP-1413,Driveline,"Number of teeth, ring gear / drive pinion",43 / 11,,S-002,Section 9 p.2 (9-2),primary,driveline,PT437,other-car,12A 3.909 axle; 13B 4.076 is 53/13
+SP-1414,Driveline,Collapsible spacer (pinion bearing distance piece) standard length,56.85-57.15,mm,S-002,Section 9 p.16 (9-16),primary,driveline,PT437,other-car,"2.238-2.250 in; the 0305-27-171 sleeve, never reused once crushed"
+SP-1415,Driveline,Pinion height spacer step,0.03,mm,S-002,Section 9 p.19 (9-19),primary,driveline,PT437,other-car,"table on 9-19 runs 3.08 to 3.47 mm (marks 08 to 47); set with pinion model 49 8531 565, gauge body 49 0727 570, gauge block 49 0305 555, collars 49 8531 567 and 49 8531 568"
+SP-1416,Driveline,Pinion bearing preload (without pinion oil seal),0.9-1.4,N-m,S-038,p.7 (T:5),primary,driveline,PT438,,"7.8-12.2 in-lb, turning torque at the pinion nut; same in S-002 9-20"
+SP-1417,Driveline,"Side bearing press pipe, bore minimum / outside maximum",41 / 47,mm,S-002,Section 9 p.21 (9-21),primary,driveline,PT440,other-car,1.614 / 1.850 in
+SP-1418,Driveline,Backlash of side gear and pinion gear,0-0.1,mm,S-038,p.7 (T:5),primary,driveline,PT441,,0-0.004 in; adjusted by the side gear thrust washer thickness
+SP-1419,Driveline,"Side gear thrust washer thicknesses (marks 0, 05, 1, 15, 2)",2.00 / 2.05 / 2.10 / 2.15 / 2.20,mm,S-002,Section 9 p.20 (9-20),primary,driveline,PT441,other-car,matches the catalogue's 2.00-2.20 selective range
+SP-1420,Driveline,"Number of teeth, side gear",14,,S-002,Section 9 p.2 (9-2),primary,driveline,PT441,other-car,12A axle; 13B 16
+SP-1421,Driveline,"Number of teeth, pinion gear",10,,S-002,Section 9 p.2 (9-2),primary,driveline,PT442,other-car,12A and 13B
+SP-1422,Driveline,Differential side bearing preload (without pinion),0.6-2.1,N-m,S-038,p.7 (T:5),primary,driveline,PT444,,5.2-18.2 in-lb
+SP-1423,Driveline,"Case spread L, distance between bearing cap pilot sections",185.428-185.500,mm,S-038,p.7 (T:5),primary,driveline,PT444,,7.3004-7.3033 in; adjusters tightened equally to this after backlash is set (S-002 9-24)

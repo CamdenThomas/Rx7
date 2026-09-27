@@ -1,0 +1,766 @@
+{
+  "parts": [
+    {
+      "id": "PT055",
+      "link": "https://www.atkinsrotary.com/Rear-Differential/Rear-Differential-Hardware/79-85-Mazda-Rx7-Rear-Differential-Hardware/",
+      "support": "",
+      "cad": "",
+      "note_add": "1979-83 12A axle is the small-bearing type; 1984-85 housings, shafts and bearings are larger and the differentials do not interchange across that split (rx7club interchange thread). 1979-82 pinion flange is the small one with threaded holes; 1983-85 is the larger through-hole flange. Factory tools: rear axle shaft puller 49 0223 630B with attachment 49 8501 631; carrier-to-casing joint takes sealant 8527 77 739 (1985 FSM 9-11)."
+    },
+    {
+      "id": "PT422",
+      "link": "https://mazdatrix.com/product-category/differential/driveshafts/",
+      "support": "",
+      "cad": "",
+      "note_add": "Factory shaft 8871-25-100 discontinued (Mazdatrix 25-1000-8871 NLA); Mazdatrix sells an aftermarket 79-82 shaft 2691-700 (manual and automatic) with a factory-size rear joint and a Dodge 7260 front joint. Mark the shaft and the axle companion flange before removal to keep the balance; fit main shaft turning holder 49 0259 440 in the extension housing after removal (1985 FSM 8-3)."
+    },
+    {
+      "id": "PT423",
+      "link": "https://www.rockauto.com/en/catalog/mazda,1982,rx-7,1.1l+r2,1192250,drivetrain,universal+joint,2392",
+      "support": "",
+      "cad": "",
+      "note_add": "1979-82 shafts carry snap-ring joints, so the joints are serviceable; 1983-85 shafts are staked (rx7club). Aftermarket joints listed for this car: Moog 397, SKF UJ397, GMB / FVP 220-0007 (greasable), Dana Spicer 5-3229X; check the cap size against the 25 mm spider before buying."
+    },
+    {
+      "id": "PT424",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT425",
+      "link": "https://mazdatrix.com/product-category/differential/driveshafts/",
+      "support": "",
+      "cad": "",
+      "note_add": "Mazdatrix lists a 79-82 rear driveshaft flange 1502-29 (manual or automatic, joint not included); check it is this yoke."
+    },
+    {
+      "id": "PT426",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Casing is the 1979-83 small-bearing type; the 1984-85 casing is bored for the larger bearing and does not swap (rx7club interchange thread)."
+    },
+    {
+      "id": "PT427",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT428",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": ""
+    },
+    {
+      "id": "PT429",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "A clogged breather shows as oil leakage at the axle (1985 FSM 9-3)."
+    },
+    {
+      "id": "PT430",
+      "link": "https://www.atkinsrotary.com/Suspension-and-Steering/Wheels-and-Parts/Wheel-Bearings-and-Seals/79-85-Mazda-Rx7-Wheel-Bearings-and-Seals/",
+      "support": "",
+      "cad": "",
+      "note_add": "Pulled with rear axle shaft puller 49 0223 630B and attachment 49 8501 631 after the drum, shoes, backing plate nuts and brake pipe are off (1985 FSM 9-7). The wheel bearing that rides on it is sold by Atkins as 8871-26-151A (71-83 12A); Timken/National RW102R is the cross-reference given on rx7club for 1979-83."
+    },
+    {
+      "id": "PT431",
+      "link": "https://www.atkinsrotary.com/Suspension-and-Steering/Wheels-and-Parts/Wheel-Bearings-and-Seals/79-85-Mazda-Rx7-Wheel-Bearings-and-Seals/",
+      "support": "",
+      "cad": "",
+      "note_add": "Removed by grinding one side down to 0.5 mm and breaking it with a chisel; pressed on dry (no oil or grease) with bearing separator attachment 49 1011 748 (1985 FSM 9-8, 9-9). Atkins sells it as 8531-26-152, 71-83 12A."
+    },
+    {
+      "id": "PT432",
+      "link": "https://www.atkinsrotary.com/Suspension-and-Steering/Wheels-and-Parts/Wheel-Bearings-and-Seals/79-85-Mazda-Rx7-Wheel-Bearings-and-Seals/",
+      "support": "",
+      "cad": "",
+      "note_add": "Fitted with main drive gear installer 49 0180 321A, lip greased (1985 FSM 9-10); leave it in place unless it is being renewed. Atkins 0187-26-154, 79-83; National/Timken 1214N is the rx7club cross-reference for 1979-83."
+    },
+    {
+      "id": "PT433",
+      "link": "https://www.atkinsrotary.com/Suspension-and-Steering/Wheels-and-Parts/Wheel-Bearings-and-Seals/79-85-Mazda-Rx7-Wheel-Bearings-and-Seals/",
+      "support": "",
+      "cad": "",
+      "note_add": "Atkins 0259-26-155, 79-83 (84-85 uses FA66-26-155)."
+    },
+    {
+      "id": "PT434",
+      "link": "https://www.atkinsrotary.com/Rear-Differential/Rear-Differential-Hardware/79-85-Mazda-Rx7-Rear-Differential-Hardware/",
+      "support": "",
+      "cad": "",
+      "note_add": "To drop the carrier, leave two nuts on loosely and tap the carrier with a wooden hammer; refit with sealant 8527 77 739 on the joint, then bleed the brakes and refill (1985 FSM 9-11, 9-12). Mounts on engine stand 49 0107 680A with attachments 49 0419 561 and 49 0223 561A, or carrier hanger 49 M005 667."
+    },
+    {
+      "id": "PT435",
+      "link": "https://www.atkinsrotary.com/Rear-Differential/Rear-Differential-Hardware/79-85-Mazda-Rx7-Rear-Differential-Hardware/",
+      "support": "",
+      "cad": "",
+      "note_add": "Held with coupling flange holder 49 0259 710A to undo the nut, pulled with bearing puller set 49 0839 425C (1985 FSM 9-13, 9-14). Atkins stocks the lock nut 0223-27-030 and washer 0223-27-012; it lists the driveline bolt as 1456-25-123 with nut 1456-25-125 for 81-85 where the catalogue gives 1393-25-123 - check which the car has."
+    },
+    {
+      "id": "PT436",
+      "link": "https://www.atkinsrotary.com/79-82-Rx7-Rear-Differential-Pinion-Seal-0223-27-018.html",
+      "support": "",
+      "cad": "",
+      "note_add": "No longer available from Mazda; Atkins sells an aftermarket seal under 0223-27-018 (79-82; 83-85 changed to M005-27-165 with the big flange). National/Timken 710326 is the rx7club cross-reference for 1979-86. Measure the seal drag with a torque wrench before the pinion nut is tightened, and subtract it from the preload reading (1985 FSM 9-19)."
+    },
+    {
+      "id": "PT437",
+      "link": "https://mazdatrix.com/product/ring-pinion-3-909-short-nose/",
+      "support": "",
+      "cad": "",
+      "note_add": "Ring gear and pinion are replaced only as a set (1985 FSM 9-16); Mazdatrix sells a new Mazda 3.909 short-nose set M037-27-110B for 74-85 non-turbo axles. Pinion height is set by the selective spacer: average the two side-bearing bore readings from the pinion model gauge and subtract the number electric-pencilled on the pinion end divided by 100; spacers step 0.03 mm (1985 FSM 9-17 to 9-19). Contact pattern is read with red lead: toe/flank contact means a thinner spacer, heel/face a thicker one (9-25)."
+    },
+    {
+      "id": "PT438",
+      "link": "https://www.atkinsrotary.com/86-92-N-A-Rx7-Rear-Differential-Middle-Pinion-Bearing-0755-27-210.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Atkins sells the front pinion bearing 0755-27-210 (79-85 front; 86-91 middle), replacing 0755-27-141 and 8051-27-142."
+    },
+    {
+      "id": "PT439",
+      "link": "https://www.atkinsrotary.com/72-85-Rx7-Rear-Differential-Rear-Pinion-Bearing-0221-27-210.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Atkins sells the rear pinion bearing 0221-27-210 with race (72-85 rotary cars), replacing 0221-27-141. Pressed onto the pinion over the selected height spacer (1985 FSM 9-19)."
+    },
+    {
+      "id": "PT440",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Open case, 12A S and GS; the LSD case is the two-piece clutch type and its parts are different. Side bearings are pressed on with a pipe of 41 mm bore or more and 47 mm outside or less, until the press force rises sharply (1985 FSM 9-21)."
+    },
+    {
+      "id": "PT441",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Backlash to the pinion gears is set by the selective thrust washer behind each side gear; washer marks 0, 05, 1, 15, 2 are 2.00 to 2.20 mm in 0.05 steps (1985 FSM 9-20)."
+    },
+    {
+      "id": "PT442",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Inserted through the case windows 180 degrees apart and rotated 90 degrees to line up with the pinion shaft holes (1985 FSM 9-20)."
+    },
+    {
+      "id": "PT443",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Lock (knock) pin is driven out with a drift and staked with a punch after refitting (1985 FSM 9-14, 9-21)."
+    },
+    {
+      "id": "PT444",
+      "link": "https://www.atkinsrotary.com/79-92-N-A-Rx7-Rear-Differential-Side-Carrier-Bearing-0221-27-350.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Atkins sells the side carrier bearing 0221-27-350 (79-91 non-turbo), replacing 0221-27-305, 0221-27-305A and G0A0-27-350; two per car. Pulled with bearing puller set 49 0839 425C; keep each outer race with its own bearing; adjusters turn with differential wrench 49 0259 720 (1985 FSM 9-13, 9-14, 9-24)."
+    }
+  ],
+  "specs": [
+    {
+      "part": "PT422",
+      "category": "Driveline",
+      "item": "Propeller shaft max permissible run-out",
+      "value": "0.4",
+      "unit": "mm",
+      "source": "S-038",
+      "page": "p.7 (T:5)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "same figure in S-002 Section 8 p.3 (8-3)"
+    },
+    {
+      "part": "PT422",
+      "category": "Driveline",
+      "item": "Propeller shaft max permissible unbalance at 4,000 rpm, front",
+      "value": "15",
+      "unit": "cm-g",
+      "source": "S-038",
+      "page": "p.7 (T:5)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "0.21 in-oz"
+    },
+    {
+      "part": "PT422",
+      "category": "Driveline",
+      "item": "Propeller shaft max permissible unbalance at 4,000 rpm, rear",
+      "value": "15",
+      "unit": "cm-g",
+      "source": "S-038",
+      "page": "p.7 (T:5)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "0.21 in-oz"
+    },
+    {
+      "part": "PT422",
+      "category": "Driveline",
+      "item": "Propeller shaft length x outer diameter, 12A vehicle",
+      "value": "968 x 65",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "Section 8 p.2 (8-2)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1985 manual figure for the 12A car (13B car 909 x 65); no 1982 source gives the length; measure to check"
+    },
+    {
+      "part": "PT423",
+      "category": "Driveline",
+      "item": "Universal joint spider diameter",
+      "value": "25 +0.021/+0.008",
+      "unit": "mm",
+      "source": "S-038",
+      "page": "p.7 (T:5)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "0.9843 +0.0008/+0.0003 in"
+    },
+    {
+      "part": "PT423",
+      "category": "Driveline",
+      "item": "Universal joint spider diameter wear limit",
+      "value": "24.908",
+      "unit": "mm",
+      "source": "S-038",
+      "page": "p.7 (T:5)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "0.9806 in"
+    },
+    {
+      "part": "PT423",
+      "category": "Driveline",
+      "item": "Universal joint journal swinging torque",
+      "value": "0.3-0.8",
+      "unit": "N-m",
+      "source": "S-038",
+      "page": "p.7 (T:5)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "2.6-6.9 in-lb"
+    },
+    {
+      "part": "PT423",
+      "category": "Driveline",
+      "item": "Replacement Moog 397 / SKF UJ397 / GMB 220-0007 / Dana Spicer 5-3229X: universal joint, rear driveshaft at transmission or axle",
+      "value": "",
+      "unit": "",
+      "source": "src-rockauto-ujoint-1982",
+      "page": "",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "RockAuto listing for the 1982 RX-7; GMB and FVP 220-0007 greasable with the fitting in the cross; no cap dimensions given, check against the 25 mm spider"
+    },
+    {
+      "part": "PT427",
+      "category": "Driveline",
+      "item": "Differential oil level",
+      "value": "near the filler port",
+      "unit": "",
+      "source": "S-002",
+      "page": "Section 9 p.4 (9-4)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "checked with the level plug removed; same axle design in 1982"
+    },
+    {
+      "part": "PT430",
+      "category": "Driveline",
+      "item": "Rear axle shaft deflection limit at centre",
+      "value": "1.5",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "Section 9 p.10 (9-10)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "0.0591 in; not in the 1982 technical data"
+    },
+    {
+      "part": "PT430",
+      "category": "Driveline",
+      "item": "Replacement Timken/National RW102R: rear wheel bearing 1979-83",
+      "value": "",
+      "unit": "",
+      "source": "src-rx7club-timken-xref",
+      "page": "",
+      "confidence": "unverified",
+      "applies": "",
+      "note": "forum copy of the Timken catalogue; Atkins sells the bearing as 8871-26-151A (71-83 12A); check on the car"
+    },
+    {
+      "part": "PT431",
+      "category": "Driveline",
+      "item": "Bearing collar minimum press-fit force",
+      "value": "2.7",
+      "unit": "t",
+      "source": "S-002",
+      "page": "Section 9 p.9 (9-9)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "5,952 lb; if the collar goes on with less, replace the collar or the shaft"
+    },
+    {
+      "part": "PT431",
+      "category": "Driveline",
+      "item": "Bearing collar removal: grind to remaining wall then chisel",
+      "value": "0.5",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "Section 9 p.8 (9-8)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "0.020 in"
+    },
+    {
+      "part": "PT432",
+      "category": "Driveline",
+      "item": "Replacement National/Timken 1214N: rear axle shaft seal 1979-83",
+      "value": "",
+      "unit": "",
+      "source": "src-rx7club-timken-xref",
+      "page": "",
+      "confidence": "unverified",
+      "applies": "",
+      "note": "forum copy of the Timken catalogue; check on the car"
+    },
+    {
+      "part": "PT434",
+      "category": "Driveline",
+      "item": "Side bearing cap bolt torque",
+      "value": "38-53",
+      "unit": "N-m",
+      "source": "S-002",
+      "page": "Section 9 p.12 and p.24 (9-12, 9-24)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "27-38 ft-lb"
+    },
+    {
+      "part": "PT434",
+      "category": "Driveline",
+      "item": "Carrier-to-casing joint sealant",
+      "value": "8527 77 739",
+      "unit": "",
+      "source": "S-002",
+      "page": "Section 9 p.11 (9-11)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "Mazda sealant number"
+    },
+    {
+      "part": "PT435",
+      "category": "Driveline",
+      "item": "Pinion nut tightening torque, initial, then check preload",
+      "value": "130",
+      "unit": "N-m",
+      "source": "S-002",
+      "page": "Section 9 p.19 (9-19)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "94 ft-lb; tighten a little at a time checking preload after each step"
+    },
+    {
+      "part": "PT435",
+      "category": "Driveline",
+      "item": "Pinion nut maximum tightening torque",
+      "value": "180",
+      "unit": "N-m",
+      "source": "S-002",
+      "page": "Section 9 p.19 (9-19)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "130 ft-lb; if preload is not reached by then, fit a new collapsible spacer"
+    },
+    {
+      "part": "PT435",
+      "category": "Driveline",
+      "item": "Pinion preload measured with spring scale at flange bolt hole",
+      "value": "25-40",
+      "unit": "N",
+      "source": "S-002",
+      "page": "Section 9 p.20 (9-20)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "5.5-8.8 lb; equivalent of the 0.9-1.4 N-m torque figure"
+    },
+    {
+      "part": "PT436",
+      "category": "Driveline",
+      "item": "Replacement National/Timken 710326: differential pinion seal 1979-86",
+      "value": "",
+      "unit": "",
+      "source": "src-rx7club-timken-xref",
+      "page": "",
+      "confidence": "unverified",
+      "applies": "",
+      "note": "forum copy of the Timken catalogue; Atkins aftermarket seal sold under 0223-27-018 (79-82), $19.75 in stock 2026-09"
+    },
+    {
+      "part": "PT437",
+      "category": "Driveline",
+      "item": "Backlash of ring gear and drive pinion",
+      "value": "0.09-0.11",
+      "unit": "mm",
+      "source": "S-038",
+      "page": "p.7 (T:5)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "0.0035-0.0043 in; measured at four points 90 degrees apart with a dial gauge on a tooth"
+    },
+    {
+      "part": "PT437",
+      "category": "Driveline",
+      "item": "Ring gear backlash minimum at any point",
+      "value": "0.05",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "Section 9 p.24 (9-24)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "0.002 in"
+    },
+    {
+      "part": "PT437",
+      "category": "Driveline",
+      "item": "Ring gear backlash max variation around the gear",
+      "value": "0.07",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "Section 9 p.24 (9-24)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "0.0028 in, max minus min"
+    },
+    {
+      "part": "PT437",
+      "category": "Driveline",
+      "item": "Ring gear bolt torque",
+      "value": "75-85",
+      "unit": "N-m",
+      "source": "S-002",
+      "page": "Section 9 p.12 and p.21 (9-12, 9-21)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "text says 51-61 ft-lb, diagram 54-62 ft-lb; locking agent on the ring gear face and bolt holes; bolts are new parts each time"
+    },
+    {
+      "part": "PT437",
+      "category": "Driveline",
+      "item": "Number of teeth, ring gear / drive pinion",
+      "value": "43 / 11",
+      "unit": "",
+      "source": "S-002",
+      "page": "Section 9 p.2 (9-2)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "12A 3.909 axle; 13B 4.076 is 53/13"
+    },
+    {
+      "part": "PT437",
+      "category": "Driveline",
+      "item": "Collapsible spacer (pinion bearing distance piece) standard length",
+      "value": "56.85-57.15",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "Section 9 p.16 (9-16)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "2.238-2.250 in; the 0305-27-171 sleeve, never reused once crushed"
+    },
+    {
+      "part": "PT437",
+      "category": "Driveline",
+      "item": "Pinion height spacer step",
+      "value": "0.03",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "Section 9 p.19 (9-19)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "table on 9-19 runs 3.08 to 3.47 mm (marks 08 to 47); set with pinion model 49 8531 565, gauge body 49 0727 570, gauge block 49 0305 555, collars 49 8531 567 and 49 8531 568"
+    },
+    {
+      "part": "PT437",
+      "category": "Driveline",
+      "item": "Replacement Mazda M037-27-110B: 3.909 short-nose ring and pinion set, 74-85 non-turbo",
+      "value": "",
+      "unit": "",
+      "source": "src-mazdatrix-ring-pinion-3909",
+      "page": "",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "Mazdatrix SKU 27-110B-M037, $823.44 listed 2026-09, stock not stated on the page; the catalogue's 8051-27-110D is superseded"
+    },
+    {
+      "part": "PT438",
+      "category": "Driveline",
+      "item": "Pinion bearing preload (without pinion oil seal)",
+      "value": "0.9-1.4",
+      "unit": "N-m",
+      "source": "S-038",
+      "page": "p.7 (T:5)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "7.8-12.2 in-lb, turning torque at the pinion nut; same in S-002 9-20"
+    },
+    {
+      "part": "PT439",
+      "category": "Driveline",
+      "item": "Replacement Timken 32207M (inner) / 32206M (outer): pinion bearings 1979-86",
+      "value": "",
+      "unit": "",
+      "source": "src-rx7club-timken-xref",
+      "page": "",
+      "confidence": "unverified",
+      "applies": "",
+      "note": "forum copy of the Timken catalogue; which of the two is the rear (ring-gear side) bearing is not stated, check against the Mazda numbers before buying"
+    },
+    {
+      "part": "PT440",
+      "category": "Driveline",
+      "item": "Side bearing press pipe, bore minimum / outside maximum",
+      "value": "41 / 47",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "Section 9 p.21 (9-21)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1.614 / 1.850 in"
+    },
+    {
+      "part": "PT441",
+      "category": "Driveline",
+      "item": "Backlash of side gear and pinion gear",
+      "value": "0-0.1",
+      "unit": "mm",
+      "source": "S-038",
+      "page": "p.7 (T:5)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "0-0.004 in; adjusted by the side gear thrust washer thickness"
+    },
+    {
+      "part": "PT441",
+      "category": "Driveline",
+      "item": "Side gear thrust washer thicknesses (marks 0, 05, 1, 15, 2)",
+      "value": "2.00 / 2.05 / 2.10 / 2.15 / 2.20",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "Section 9 p.20 (9-20)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "matches the catalogue's 2.00-2.20 selective range"
+    },
+    {
+      "part": "PT441",
+      "category": "Driveline",
+      "item": "Number of teeth, side gear",
+      "value": "14",
+      "unit": "",
+      "source": "S-002",
+      "page": "Section 9 p.2 (9-2)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "12A axle; 13B 16"
+    },
+    {
+      "part": "PT442",
+      "category": "Driveline",
+      "item": "Number of teeth, pinion gear",
+      "value": "10",
+      "unit": "",
+      "source": "S-002",
+      "page": "Section 9 p.2 (9-2)",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "12A and 13B"
+    },
+    {
+      "part": "PT444",
+      "category": "Driveline",
+      "item": "Differential side bearing preload (without pinion)",
+      "value": "0.6-2.1",
+      "unit": "N-m",
+      "source": "S-038",
+      "page": "p.7 (T:5)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "5.2-18.2 in-lb"
+    },
+    {
+      "part": "PT444",
+      "category": "Driveline",
+      "item": "Case spread L, distance between bearing cap pilot sections",
+      "value": "185.428-185.500",
+      "unit": "mm",
+      "source": "S-038",
+      "page": "p.7 (T:5)",
+      "confidence": "primary",
+      "applies": "",
+      "note": "7.3004-7.3033 in; adjusters tightened equally to this after backlash is set (S-002 9-24)"
+    }
+  ],
+  "terminals": [],
+  "sources": [
+    {
+      "key": "src-atkins-pinion-seal-0223-27-018",
+      "title": "Atkins Rotary - 79-82 Rx7 Rear Differential Pinion Seal (0223-27-018)",
+      "kind": "web",
+      "covers": "PT436",
+      "url": "https://www.atkinsrotary.com/79-82-Rx7-Rear-Differential-Pinion-Seal-0223-27-018.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$19.75, in stock 2026-09; NLA from Mazda, aftermarket; 83-85 is M005-27-165"
+    },
+    {
+      "key": "src-atkins-pinion-bearing-rear-0221-27-210",
+      "title": "Atkins Rotary - 72-85 Rx7 Rear Differential Rear Pinion Bearing (0221-27-210)",
+      "kind": "web",
+      "covers": "PT439",
+      "url": "https://www.atkinsrotary.com/72-85-Rx7-Rear-Differential-Rear-Pinion-Bearing-0221-27-210.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$50.25 with race, replaces 0221-27-141"
+    },
+    {
+      "key": "src-atkins-pinion-bearing-front-0755-27-210",
+      "title": "Atkins Rotary - 79-91 N/A Rx7 Rear Differential Pinion Bearing (0755-27-210)",
+      "kind": "web",
+      "covers": "PT438",
+      "url": "https://www.atkinsrotary.com/86-92-N-A-Rx7-Rear-Differential-Middle-Pinion-Bearing-0755-27-210.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$56.50; front bearing on 79-85, replaces 0755-27-141 and 8051-27-142"
+    },
+    {
+      "key": "src-atkins-side-bearing-0221-27-350",
+      "title": "Atkins Rotary - 79-91 N/A Rx7 Rear Differential Side Carrier Bearing (0221-27-350)",
+      "kind": "web",
+      "covers": "PT444",
+      "url": "https://www.atkinsrotary.com/79-92-N-A-Rx7-Rear-Differential-Side-Carrier-Bearing-0221-27-350.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$76.40 each; replaces 0221-27-305, 0221-27-305A, G0A0-27-350"
+    },
+    {
+      "key": "src-atkins-wheel-bearings-79-85",
+      "title": "Atkins Rotary - 79-85 Mazda Rx7 Wheel Bearings & Seals (category)",
+      "kind": "web",
+      "covers": "PT430 PT431 PT432 PT433",
+      "url": "https://www.atkinsrotary.com/Suspension-and-Steering/Wheels-and-Parts/Wheel-Bearings-and-Seals/79-85-Mazda-Rx7-Wheel-Bearings-and-Seals/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "rear bearing 8871-26-151A $27.25, collar 8531-26-152 $27.50, seal 0187-26-154 $7.50, spacer 0259-26-155 $8.75, all 79-83 in stock 2026-09"
+    },
+    {
+      "key": "src-atkins-diff-hardware-79-85",
+      "title": "Atkins Rotary - 79-85 Mazda Rx7 Rear Differential Hardware (category)",
+      "kind": "web",
+      "covers": "PT055 PT434 PT435 PT437",
+      "url": "https://www.atkinsrotary.com/Rear-Differential/Rear-Differential-Hardware/79-85-Mazda-Rx7-Rear-Differential-Hardware/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "pinion lock nut 0223-27-030 $11.00, washer 0223-27-012 $9.25, driveline bolt 1456-25-123 $5.00 and nut 1456-25-125 $3.99 (81-85), ring gear bolt 8051-27-235/236 $6.25"
+    },
+    {
+      "key": "src-mazdatrix-ring-pinion-3909",
+      "title": "Mazdatrix - RING & PINION, 3.909 SHORT NOSE 74-85 RX7 (M037-27-110B)",
+      "kind": "web",
+      "covers": "PT437",
+      "url": "https://mazdatrix.com/product/ring-pinion-3-909-short-nose/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "new Mazda OEM set, $823.44 listed 2026-09 (stock not stated); not for RX3 SP, RX4, Cosmo"
+    },
+    {
+      "key": "src-mazdatrix-driveshafts",
+      "title": "Mazdatrix - Driveshafts category (79-82 RX7 aftermarket 2691-700, flange 1502-29, OEM 8871-25-100 NLA)",
+      "kind": "web",
+      "covers": "PT422 PT425",
+      "url": "https://mazdatrix.com/product-category/differential/driveshafts/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "aftermarket shaft $432.06 for manual and automatic, factory-size rear joint and Dodge 7260 front joint; rear flange $68.70"
+    },
+    {
+      "key": "src-rockauto-ujoint-1982",
+      "title": "RockAuto - 1982 Mazda RX-7 1.1L R2 universal joint listings",
+      "kind": "web",
+      "covers": "PT423",
+      "url": "https://www.rockauto.com/en/catalog/mazda,1982,rx-7,1.1l+r2,1192250,drivetrain,universal+joint,2392",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "FVP/GMB 220-0007 greasable, SKF UJ397, Moog 397, Dana Spicer 5-3229X; 2026-09 prices $6.58-$40.79"
+    },
+    {
+      "key": "src-rx7club-timken-xref",
+      "title": "RX7Club 1st-gen archive - Timken seal and bearing cross-reference (from Timken catalogue pp.379-382)",
+      "kind": "forum",
+      "covers": "PT430 PT432 PT436 PT439",
+      "url": "https://rx7club.com/1st-gen-archive-71/[mechanical]-timken-seal-cross-refence-lots-good-data-984425",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "1979-83 axle seal 1214N, wheel bearing RW102R; 1979-86 pinion seal 710326, pinion bearings 32207M inner and 32206M outer"
+    },
+    {
+      "key": "src-rx7club-ujoint-1984",
+      "title": "RX7Club 1st-gen - U-joint 1984 rx7 (snap-ring 79-82 vs staked 83-85 shafts)",
+      "kind": "forum",
+      "covers": "PT422 PT423",
+      "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/u-joint-1984-rx7-896012/",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "also names Rockford Driveline 430-10A as a joint used on 79-85 shafts"
+    },
+    {
+      "key": "src-rx7club-diff-interchange",
+      "title": "RX7Club 1st-gen archive - (REFERENCE) Differential interchange, drive shaft and ring & pinion info",
+      "kind": "forum",
+      "covers": "PT055 PT426 PT430 PT435",
+      "url": "https://www.rx7club.com/1st-gen-archive-71/reference-differential-interchange-information-drive-shaft-ring-pinion-info-871075/",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "79-82 small threaded-hole pinion flange, 83-85 large through-hole flange; 84-85 big-bearing axle with different housing, shafts and diff; GSL-SE 4.076 to Nov 1984 then 3.909"
+    }
+  ],
+  "cad": []
+}
