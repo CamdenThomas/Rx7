@@ -1,0 +1,482 @@
+{
+ "parts": [
+  {
+   "id": "PT738",
+   "link": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/mazda-emblems-990189/",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.39 (fig 5170A-1). Held by speed nuts 0187-69-049A (catalogue lists 8 per car, shared with the front ornament F001-51-771). rx7club owners report F001-51-781 no longer available from Mazda (2026-09-27); the 81-83 rear badge mounts with metal clips where the 84-85 F023-51-780 uses plastic, and a chrome 626 badge is the same shape."
+  },
+  {
+   "id": "PT739",
+   "link": "https://parts.patrickmazda.com/a/Mazda__RX-7/105411650__9376905/COWL--EXTRACTOR-GRILLES/AUFA04-5180.html",
+   "support": "",
+   "cad": "fb-rx7-cowl-grill-protector-printables-jtso",
+   "note_add": "Diagram: S-005 Body-Index p.40 (fig 5180A-1). The printable 'cowl grill protector' (CAD row fb-rx7-cowl-grill-protector-printables-jtso) is the protector clip 8531-50-792 that holds this grille, not the grille itself. No new grille found online (two searches, 2026-09-27); a Mazda dealer diagram page (Patrick Mazda, fig 5180) exists but refused to load."
+  },
+  {
+   "id": "PT740",
+   "link": "https://www.atkinsrotary.com/81-85-Rx7-Tail-Light-Finisher-FA07-50-840C.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.40 (fig 5180A-1). Plastic finisher between the tail lamps, all 81-85. Atkins Rotary lists the genuine FA07-50-840C at US$283.50, out of stock; Mazdatrix lists it at US$286.47 as discontinued by Mazda (2026-09-27). Used examples appear on eBay."
+  },
+  {
+   "id": "PT741",
+   "link": "https://parts.patrickmazda.com/a/Mazda__RX-7/105411650__9376905/COWL--EXTRACTOR-GRILLES/AUFA04-5180.html",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.40 (fig 5180A-1). Cabin flow-through air outlets behind the rear quarter windows, sealed by packing 0305-68-951. Nothing beyond the catalogue found online (two searches, 2026-09-27)."
+  },
+  {
+   "id": "PT742",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.40 (fig 5180A-1). Nothing beyond the catalogue found online (two searches, 2026-09-27); used only."
+  },
+  {
+   "id": "PT744",
+   "link": "https://advancarbon.com/1979-1985-mazda-rx-7-carbon-fiber-hood/",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.41 (fig 5230A-1). Steel panel (rx7club, all first-gen hoods are steel). Removal, installation and adjustment: S-002 Section 14 p.5 (14-5): mark the hinge positions, remove the stay, two people lift it off; fore-aft, side and height adjust at the hinge bolts. Both hood bump stops are NLA at Atkins (front 8545-56-801B, rear 8871-56-785). Aftermarket: Advan Carbon AC769HC carbon-fibre hood, US$1,299, about 15 lb, bolt-on to the factory hinges."
+  },
+  {
+   "id": "PT745",
+   "link": "https://www.autopartone.com/products/81-83-mazda-rx7-oem-hood-hinges",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.41 (fig 5230A-1). Used only: Autopartone sells a used 81-83 pair with bolts at US$45; Known Motors a used 1979-91 pair at US$15 (2026-09-27). Hood alignment is made at these hinge bolts (S-002 Section 14 p.5)."
+  },
+  {
+   "id": "PT746",
+   "link": "",
+   "support": "",
+   "cad": "fb-hood-prop-bushing-printables-themagicd",
+   "note_add": "Diagram: S-005 Body-Index p.41 (fig 5230A-1). The pivot bushing of the stay is a free print (CAD row fb-hood-prop-bushing-printables-themagicd); a Miata NA rod clip is reported to fit the later FB holder (CAD row miata-na-hood-rod-clip-thingiverse-jigsawnz). Remove the stay before lifting the hood off (S-002 Section 14 p.5)."
+  },
+  {
+   "id": "PT747",
+   "link": "https://www.ebay.com/itm/126881236175",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.41 (fig 5230A-1). Adjust by loosening the lock attaching bolts and moving the lock to meet the striker (S-002 Section 14 p.5). New latches are not listed by the rotary specialists; used 79-85 latches appear on eBay (2026-09-27)."
+  },
+  {
+   "id": "PT748",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.41 (fig 5230A-1). No listing for 8871-56-710A found (two searches, 2026-09-27); Atkins and Mazdatrix carry only the 86-91 (FB01-56-710C) and 93-95 cables."
+  },
+  {
+   "id": "PT749",
+   "link": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/hood-weatherstripping-832058/",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.41 (fig 5230A-1). rx7club owners report 8871-56-787A NLA from Mazda; no reproduction found, generic universal strip or cleaning the original is what owners do (2026-09-27)."
+  },
+  {
+   "id": "PT750",
+   "link": "https://kaminari.com/products/k070520-mazda-rx7-sereis-2-3-sa-fb-1981-1985-air-dam-spoiler-frp",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.42 (fig 5310A-1). Held by four clip nuts 8871-50-825. No genuine or exact reproduction found; Kaminari K070520 is an FRP air dam for the 81-85 SA/FB at US$384; its page does not say whether it copies the factory shape (2026-09-27)."
+  },
+  {
+   "id": "PT751",
+   "link": "https://www.realmazdaparts.com/oem-parts/mazda-fender-fa0152111d",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.42 (fig 5310A-1). Mazda dealer sites still list FA01-52-111D (R) and FA01-52-211D (L) as 1981-85 fenders, superseding FA01-52-111/-111B/-111C; availability not verified (2026-09-27). The 1985 body checking drawing shows the front fender fixing nut and cross-section G-G (S-002 Section 14 p.24)."
+  },
+  {
+   "id": "PT752",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.42 (fig 5310A-1). AutoFit lists an aftermarket 'header panel 79-85 (RX7)' but its page did not load (2026-09-27); nothing else beyond the catalogue found."
+  },
+  {
+   "id": "PT753",
+   "link": "https://www.kustomcuts.com.au/product-category/mazda-rx7-generation-1-parts/radiator-shroud-panels/",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.42 (fig 5310A-1). Steel core support. Kustom Cuts (AU) sells aluminium and stainless radiator cooling panels (AU$225-299) for the SA/FB; the listings do not say how they mount or whether this panel stays (2026-09-27)."
+  },
+  {
+   "id": "PT754",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.42 (fig 5310A-1). Nothing beyond the catalogue found online (2026-09-27)."
+  },
+  {
+   "id": "PT755",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.42 (fig 5310A-1). The 1985 body checking dimensions (S-002 Section 14 p.24) take the front frame basic hole A on these frames as the datum for the underbody check; no reproduction rails found online (2026-09-27)."
+  },
+  {
+   "id": "PT756",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.42 (fig 5310A-1). Nothing beyond the catalogue found online (2026-09-27)."
+  },
+  {
+   "id": "PT757",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.42 (fig 5310A-1). Nothing beyond the catalogue found online (2026-09-27)."
+  },
+  {
+   "id": "PT758",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.42 (fig 5310A-1). No new or reproduction 81-85 front splash shield found online (two searches, 2026-09-27); the FD numbers FD01-56-130H/140H are a different car."
+  },
+  {
+   "id": "PT759",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.42 (fig 5310A-1). Nothing beyond the catalogue found online (2026-09-27)."
+  },
+  {
+   "id": "PT760",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.42 (fig 5310A-1). Nothing beyond the catalogue found online (2026-09-27)."
+  },
+  {
+   "id": "PT761",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.42 (fig 5310A-1). Nothing beyond the catalogue found online (2026-09-27)."
+  },
+  {
+   "id": "PT762",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.42 (fig 5310A-1). Nothing beyond the catalogue found online (2026-09-27)."
+  },
+  {
+   "id": "PT763",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.42 (fig 5310A-1) and p.43 (fig 5310A-2). Nothing beyond the catalogue found online (2026-09-27)."
+  },
+  {
+   "id": "PT764",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.43 (fig 5310A-2). Nothing beyond the catalogue found online (2026-09-27)."
+  },
+  {
+   "id": "PT765",
+   "link": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/where-does-hatch-drain-799723/",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.44 (fig 5340A-1). The two hoses run from the hatch drain holes and exit under the rear bumper, one each side; a blocked or displaced hose fills the rear inner fender wells and is the number one rust point (rx7club). Clear by pulling the drain plugs inside each rear inner fender and in the spare-tyre well and drying the wells."
+  },
+  {
+   "id": "PT766",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Diagram: S-005 Body-Index p.44 (fig 5340A-1). Nothing beyond the catalogue found online (2026-09-27)."
+  }
+ ],
+ "specs": [
+  {
+   "part": "PT751",
+   "category": "Body",
+   "item": "Distance between wheel centre and fender line, front",
+   "value": "364",
+   "unit": "mm",
+   "source": "S-038",
+   "page": "T:7 (PDF p.9)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "tolerance +/-20 mm (14.3 +/-0.8 in); rear is 358 +/-20 mm"
+  },
+  {
+   "part": "PT751",
+   "category": "Body",
+   "item": "Body checking dimension: cross section G-G at the front fender fixing nut, height",
+   "value": "435",
+   "unit": "mm",
+   "source": "S-002",
+   "page": "Section 14 p.24 (14-24)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 body checking drawing (17.13 in); the section is drawn at 11 deg 19 min"
+  },
+  {
+   "part": "PT744",
+   "category": "Body",
+   "item": "Replacement Advan Carbon AC769HC carbon-fibre hood: price",
+   "value": "1299",
+   "unit": "USD",
+   "source": "src-advan-carbon-fb-hood",
+   "page": "",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "1979-85 FB, OEM design, 2x2 twill, bolt-on (2026-09-27)"
+  },
+  {
+   "part": "PT744",
+   "category": "Body",
+   "item": "Replacement Advan Carbon AC769HC carbon-fibre hood: approximate weight",
+   "value": "15",
+   "unit": "lb",
+   "source": "src-advan-carbon-fb-hood",
+   "page": "",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "as listed, approximate (6.8 kg); the factory steel hood's weight was not found"
+  },
+  {
+   "part": "PT750",
+   "category": "Body",
+   "item": "Replacement Kaminari K070520 FRP air dam spoiler: price",
+   "value": "384",
+   "unit": "USD",
+   "source": "src-kaminari-k070520-air-dam",
+   "page": "",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "1981-85 SA/FB, fibreglass; the page does not say whether it copies the factory shape (2026-09-27)"
+  },
+  {
+   "part": "PT740",
+   "category": "Body",
+   "item": "Genuine FA07-50-840C tail light finisher: Atkins Rotary list price",
+   "value": "283.50",
+   "unit": "USD",
+   "source": "src-atkins-tail-light-finisher",
+   "page": "",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "out of stock 2026-09-27; Mazdatrix US$286.47, discontinued by Mazda"
+  },
+  {
+   "part": "PT745",
+   "category": "Body",
+   "item": "Used 81-83 hood hinge pair with bolts: Autopartone price",
+   "value": "45",
+   "unit": "USD",
+   "source": "src-autopartone-81-83-hood-hinges",
+   "page": "",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "used OEM, 2026-09-27"
+  }
+ ],
+ "terminals": [],
+ "sources": [
+  {
+   "key": "src-advan-carbon-fb-hood",
+   "title": "Advan Carbon - AC769HC OEM Design 1979-1985 Mazda RX-7 FB Carbon Fiber Hood",
+   "kind": "web",
+   "covers": "aftermarket carbon-fibre hood: price, weight, construction",
+   "url": "https://advancarbon.com/1979-1985-mazda-rx-7-carbon-fiber-hood/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "US$1,299, approx 15 lb, made in USA"
+  },
+  {
+   "key": "src-kaminari-k070520-air-dam",
+   "title": "Kaminari Aerodynamics - K070520 Mazda RX7 Series 2&3 SA/FB 1981-1985 Air Dam Spoiler FRP",
+   "kind": "web",
+   "covers": "aftermarket FRP front air dam for the 81-85 FB: price, material",
+   "url": "https://kaminari.com/products/k070520-mazda-rx7-sereis-2-3-sa-fb-1981-1985-air-dam-spoiler-frp",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "US$384; the page does not say whether it copies the factory air dam"
+  },
+  {
+   "key": "src-rx7club-hood-weatherstripping",
+   "title": "RX7Club 1st-gen forum - Hood Weatherstripping",
+   "kind": "forum",
+   "covers": "hood weatherstrip 8871-56-787A availability (NLA), owner alternatives",
+   "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/hood-weatherstripping-832058/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-rx7club-mazda-emblems",
+   "title": "RX7Club 1st-gen forum - Mazda Emblems",
+   "kind": "forum",
+   "covers": "81-83 vs 84-85 front and rear MAZDA ornament part numbers, mounting, availability",
+   "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/mazda-emblems-990189/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "F001-51-781 reported NLA; 81-83 rear uses metal clips"
+  },
+  {
+   "key": "src-rx7club-hatch-drain",
+   "title": "RX7Club 1st-gen forum - Where does the hatch drain?",
+   "kind": "forum",
+   "covers": "rear drain hose routing and exits, rust consequences, clearing",
+   "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/where-does-hatch-drain-799723/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-rx7club-1983-hood-material",
+   "title": "RX7Club 1st-gen forum - 1983 Hood Material?",
+   "kind": "forum",
+   "covers": "first-gen hood is steel, not aluminium",
+   "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/1983-hood-material-1044798/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "no weight given"
+  },
+  {
+   "key": "src-atkins-tail-light-finisher",
+   "title": "Atkins Rotary - 81-85 Rx7 Tail Light Finisher (FA07-50-840C)",
+   "kind": "web",
+   "covers": "genuine rear finisher price and stock",
+   "url": "https://www.atkinsrotary.com/81-85-Rx7-Tail-Light-Finisher-FA07-50-840C.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "US$283.50, out of stock 2026-09-27; shipping box 21x4x8 in, 2 lb"
+  },
+  {
+   "key": "src-mazdatrix-rear-finisher-81-85",
+   "title": "Mazdatrix - Rear lens finisher 81-85 between lights (FA07-50-840C) NLA",
+   "kind": "web",
+   "covers": "genuine rear finisher, discontinued by Mazda",
+   "url": "https://mazdatrix.com/product/lens-rear-finisher-81-85-between-lites/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "US$286.47 listed, discontinued"
+  },
+  {
+   "key": "src-autopartone-81-83-hood-hinges",
+   "title": "Autopartone - 81-83 Mazda RX7 OEM Hood Hinges (used pair)",
+   "kind": "web",
+   "covers": "used hood hinge pair with bolts",
+   "url": "https://www.autopartone.com/products/81-83-mazda-rx7-oem-hood-hinges",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "US$45, used"
+  },
+  {
+   "key": "src-knownmotors-79-85-rx7-parts",
+   "title": "Known Motors - 1981-1985 Mazda RX7 FB parts collection",
+   "kind": "web",
+   "covers": "used FB parts; 1979-1991 hood hinges US$15",
+   "url": "https://knownmotors.com/collections/1979-1985-rx7-parts",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "the FB hood latch page linked from search is gone (404)"
+  },
+  {
+   "key": "src-atkins-hood-bump-stop-8545-56-801b",
+   "title": "Atkins Rotary - 79-85 Rx7 Front Hood Bump Stop (8545-56-801B) NLA",
+   "kind": "web",
+   "covers": "hood cushion rubbers front 8545-56-801B and rear 8871-56-785, both NLA",
+   "url": "https://atkinsrotary.com/store/79-85-Rx7-Front-Hood-Bump-Stop-8545-56-801B.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "US$10, no longer available"
+  },
+  {
+   "key": "src-realmazdaparts-fender-fa0152111d",
+   "title": "RealMazdaParts - 1985 Mazda RX-7 Fender FA01-52-111D",
+   "kind": "web",
+   "covers": "genuine RH front fender listing, supersession from FA01-52-111/-111B/-111C",
+   "url": "https://www.realmazdaparts.com/oem-parts/mazda-fender-fa0152111d",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "page refused fetch (403); details from the search snippet only, price and stock unverified"
+  },
+  {
+   "key": "src-kustomcuts-gen1-radiator-panels",
+   "title": "Kustom Cuts (AU) - Mazda RX7 Generation 1 radiator shroud panels",
+   "kind": "web",
+   "covers": "aftermarket aluminium/stainless radiator cooling panels for the SA/FB, AU$225-299",
+   "url": "https://www.kustomcuts.com.au/product-category/mazda-rx7-generation-1-parts/radiator-shroud-panels/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": "the listings do not say how the panels mount or whether the factory panel stays"
+  },
+  {
+   "key": "src-patrick-mazda-cowl-extractor-grilles",
+   "title": "Patrick Mazda parts - RX-7 Cowl & Extractor Grilles diagram (fig 5180)",
+   "kind": "web",
+   "covers": "dealer parts diagram for cowl grille, rear finisher, extractors and extractor grilles",
+   "url": "https://parts.patrickmazda.com/a/Mazda__RX-7/105411650__9376905/COWL--EXTRACTOR-GRILLES/AUFA04-5180.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "page refused fetch (403); availability not read"
+  },
+  {
+   "key": "src-ebay-fb-hood-latch-126881236175",
+   "title": "eBay 126881236175 - 79-85 Mazda RX7 Front Hood Latch Catch FB (used)",
+   "kind": "web",
+   "covers": "used first-gen hood latch listing",
+   "url": "https://www.ebay.com/itm/126881236175",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "listing seen in search results only; page refused fetch"
+  },
+  {
+   "key": "src-rx7-org-1st-gen-differences",
+   "title": "rx7.org - 1st gen RX-7 Model Specifications: yearly model differences",
+   "kind": "web",
+   "covers": "body changes by year: 81-85 side moulding and tail lights, bumper and air dam, 84-85 slotted panel",
+   "url": "https://www.rx7.org/public/1st-gen.html",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "yes",
+   "local_path": "",
+   "note": ""
+  }
+ ],
+ "cad": []
+}

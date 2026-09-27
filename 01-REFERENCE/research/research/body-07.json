@@ -159,14 +159,14 @@
   {
    "part": "PT864",
    "category": "Electrical",
-   "item": "Supply fuse (X-04, constant battery, shared with the hazard flasher)",
+   "item": "Supply fuse (10 A WG fuse in fuse block X-04, constant battery, shared with the turn/hazard flasher lights and the heater/air conditioner)",
    "value": "10",
    "unit": "A",
    "source": "S-001",
-   "page": "28",
+   "page": "28, 30, 9",
    "confidence": "primary",
    "applies": "",
-   "note": "WR from the battery through the 1.25 sq fusible link to fuse X-04, out as WG to the switch; ground B to X-13"
+   "note": "WR from the battery through the 1.25 sq fusible link to the 10 A fuse in fuse block X-04 (p.30: WR(B) -> 10A -> WG), out as WG to the switch; ground B to X-13 (p.28). X-04 is the fuse block, not one fuse position. The schematic (p.9) shows the same WG 10 A feed also serving the turn & hazard flasher lights (section F) and the heater & air conditioner (section G)"
   },
   {
    "part": "PT864",
@@ -284,9 +284,9 @@
    "function": "Supply (+12 V constant)",
    "inside": "common feed contact: closes to d and f (UP), b/e and f (DOWN), d (LEFT), b or e (RIGHT)",
    "wire": "WG",
-   "to": "fuse X-04 10 A, fed WR from the battery through the 1.25 sq fusible link",
+   "to": "the 10 A WG fuse in fuse block X-04 (p.30), fed WR from the battery through the 1.25 sq fusible link",
    "source": "S-001",
-   "page": "28",
+   "page": "28, 30",
    "note": "the 1985 manual's terminal letters (S-002 p.15-42) matched to the 1982 connector I-01 (S-001 p.28) by wire position; confirm on the car"
   },
   {

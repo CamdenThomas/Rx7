@@ -1225,3 +1225,83 @@ SP-1238,Body,"Replacement genuine Mazda door weatherstrip price, each (Atkins Ro
 SP-1239,Body,"Replacement Atkins Rotary reproduction channel seal 8871-58-605C price, each",84,USD,S-267,product page,secondary,body,PT797,,one per side; Mazda discontinued the original
 SP-1240,Body,"Replacement manual regulator price, each (Atkins Rotary)",210,USD,S-265,product page,secondary,body,PT807,,"driver or passenger side; listed weight 6 lb; manufacturer field reads Mazda, the page does not say genuine or reproduction"
 SP-1241,Body,"Replacement genuine outer handle price, each (Atkins Rotary)",97,USD,S-264,product page,secondary,body,PT805,,listed under 8871-59-410C
+SP-1242,Electrical,"Feed fuse (X-04, constant, shared with fuel-door release)",20,A,S-001,26,primary,body,PT030,,"WR constant through X-04 20 A to LR, then the H-13 switch, then GR to the solenoid"
+SP-1243,Electrical,Bench test,operates from a 12 V battery across its two terminals; replace if it does not move,,S-002,15-41,secondary,body,PT030,other-car,"1985 manual, remote glass-hatch release solenoid check; S-001 p.26 shows the same two-wire solenoid"
+SP-1244,Electrical,"Feed fuse (X-04, constant, shared with hatch release)",20,A,S-001,26,primary,body,PT031,,"WR constant through X-04 20 A to LR, then the H-15 switch, then GB to the solenoid"
+SP-1245,Electrical,Bench test,operates from a 12 V battery across its two terminals; replace if it does not move,,S-002,15-39,secondary,body,PT031,other-car,"1985 manual, remote fuel-door release solenoid check"
+SP-1246,Electrical,"Feed fuse (X-04, constant)",10,A,S-001,28,primary,body,PT032,,WR constant through X-04 10 A to WG at the I-01 mirror switch; the 1985 car feeds the mirrors from the ACC CIGAR fuse instead (S-002 p.15-41)
+SP-1247,Electrical,Internal layout (per head),one reversible motor across Lg and LgB; one axis-select solenoid across LgY and B,,S-001,28,primary,body,PT032,,the switch reverses the motor's polarity for direction and energises the solenoid to change axis; confirm on the car
+SP-1248,Electrical,Head connector continuity (1985 test),"a-b yes, c-d yes, a-c no, b-d no",,S-002,15-41,secondary,body,PT032,other-car,ohmmeter across the four cavities of the mirror connector; the 1985 letters a-d are not printed on the 1982 diagram
+SP-1249,Body,Mounting screws per head,4,,S-005,Body-Index p.128,primary,body,PT032,,"screw, mirror 8341-69-178 for the remote-control mirror from chassis FB331-503736; 8218-69-118 on the '83 model"
+SP-1250,Body,Quantity per car,1,,S-005,Body-Index p.93,primary,body,PT817,,"fig 6300A-1 item 63-932, weatherstrip, rear window 8871-62-761D"
+SP-1251,Body,Quantity per car,1,,S-005,Body-Index p.93,primary,body,PT818,,"fig 6300A-1 item 63-935, moulding, rear window 8871-63-935A"
+SP-1252,Body,Lid stoppers per car,2,,S-005,Engine-Chassis p.107,primary,body,PT173,,"stopper, filler lid 0187-70-491 from chassis FB331-500063 (UA64-42-459 before it)"
+SP-1253,Body,Overall width without side protector,1650,mm,S-038,p.9,primary,body,PT704,,"1982 Technical Data, Dimension table"
+SP-1254,Body,Overall width with side protector,1675,mm,S-038,p.9,primary,body,PT704,,"1982 Technical Data, Dimension table"
+SP-1255,Body,Bumper face material,urethane,,S-002,Section 14 p.6,primary,body,PT714,other-car,1985 manual caution; catalogue gives no material for 1982
+SP-1256,Body,"Installed height, centre of protector rubber to ground",450-514,mm,S-002,Section 14 p.6,primary,body,PT714,other-car,"no load, recommended tyre pressure, full fuel tank; 1985 manual"
+SP-1257,Body,Urethane bumper repairable limit: hole diameter,50,mm,S-047,p.11,secondary,body,PT714,other-car,generic Mazda urethane-bumper guidance; larger damage is replaced
+SP-1258,Body,Urethane bumper repairable limit: crack length,200,mm,S-047,p.11,secondary,body,PT714,other-car,generic Mazda urethane-bumper guidance; longer cracks or a sheared bumper are replaced
+SP-1259,Body,Shipping weight of the genuine skin FA01-50-030A (Atkins listing),11.99,lb,S-288,,secondary,body,PT714,,boxed 15 x 15 x 60 in
+SP-1260,Body,"Length A (piston rod end to bracket), replace if outside",275.5 +/-2,mm,S-002,Section 14 p.6,primary,body,PT717,other-car,1985 figure 47U14X-014; 10.847 +/-0.0787 in
+SP-1261,Body,"Length B (bracket position), adjustable",132.5 +/-1,mm,S-002,Section 14 p.6,primary,body,PT717,other-car,1985 figure 47U14X-014; 5.217 +/-0.0394 in; set by moving the bracket on the absorber
+SP-1262,Body,Bumper face material,urethane,,S-002,Section 14 p.7,primary,body,PT722,other-car,1985 manual caution
+SP-1263,Body,"Installed height, centre of protector rubber to ground",474-534,mm,S-002,Section 14 p.7,primary,body,PT722,other-car,"no load, recommended tyre pressure, full fuel tank; 1985 manual"
+SP-1264,Body,Reconditioned genuine cover FA01-50-220 price (Bumper Megastore),473.92,USD,S-290,,secondary,body,PT722,,list 523.92; 2026-09-27
+SP-1265,Body,"Length A (piston rod end to bracket), replace if outside",269 +/-2,mm,S-002,Section 14 p.7,primary,body,PT725,other-car,1985 figure 47U14X-018; 10.591 +/-0.0787 in
+SP-1266,Body,"Length B (bracket position), adjustable",113 +/-1,mm,S-002,Section 14 p.7,primary,body,PT725,other-car,1985 figure 47U14X-018; 4.449 +/-0.0394 in
+SP-1267,Body,Old sealant left on the frame when replacing,1-2,mm,S-002,Section 14 p.20,primary,body,PT729,other-car,"cut back with a sharp knife; if none remains, prime and build a 2 mm layer"
+SP-1268,Body,Primer drying time before sealant,30,min,S-002,Section 14 p.20-21,primary,body,PT729,other-car,
+SP-1269,Body,Dam outer edge set back from the glass edge,7,mm,S-002,Section 14 p.21,primary,body,PT729,other-car,lip outermost; bonded to the glass
+SP-1270,Body,Sealant ridge height,8,mm,S-002,Section 14 p.21,primary,body,PT729,other-car,applied round the whole circumference between dam and glass edge
+SP-1271,Body,"Sealant cure before disturbing the glass, at 20 C",5,h,S-002,Section 14 p.22,primary,body,PT729,other-car,24 h at 5 C
+SP-1272,Body,Window service tool set,49 0305 870A,,S-002,Section 14 p.20,primary,body,PT729,other-car,Mazda SST number
+SP-1273,Body,Replacement FYG FW 462 GGN: tint,green with green shade band,,S-295,,secondary,body,PT729,,NAGS FW00462; $279 at Kool Katz 2026-09-27
+SP-1274,Body,Top/bottom moulding clips 1243-50-609 per car,14,,S-005,Body-Index p.29,primary,body,PT730,,"catalogue qty 14; Atkins says 7 top + 7 bottom, Mazdatrix says 16: check"
+SP-1275,Body,Side moulding clips 8871-50-608 per car,6,,S-005,Body-Index p.29,primary,body,PT731,,3 each side on the A pillar (Atkins)
+SP-1276,Body,"Key blank, '81-'82 models (Mazda)",8208-75-901,,S-005,Body-Index p.25,primary,body,PT710,,item 75158; the '83 model uses HA40-76-201
+SP-1277,Body,"Key blank cross-reference, 1981-82 RX-7 all locks",Ilco X26 / MZ9,,S-310,p.11,secondary,body,PT710,,code series 2500-2999; code series 3000-3499 use Ilco X27 / MZ10 (same page); no substitutes listed
+SP-1278,Body,Fixing,2 pins with speed nuts 0187-69-049A,,S-304,,secondary,body,PT736,,catalogue lists 8 speed nuts shared with the front and rear ornaments (S-005 p.39)
+SP-1279,Body,Fixing (81-83 F001-51-771),2 pins,,S-305,,secondary,body,PT737,,"84-85 F023-51-770A has 3 pins instead (rx7club: ""the early fronts have 2 pins vs 3 for the later ones"")"
+SP-1280,Body,"Distance between wheel centre and fender line, front",364,mm,S-038,T:7 (PDF p.9),primary,body,PT751,,tolerance +/-20 mm (14.3 +/-0.8 in); rear is 358 +/-20 mm
+SP-1281,Body,"Body checking dimension: cross section G-G at the front fender fixing nut, height",435,mm,S-002,Section 14 p.24 (14-24),primary,body,PT751,other-car,1985 body checking drawing (17.13 in); the section is drawn at 11 deg 19 min
+SP-1282,Body,Replacement Advan Carbon AC769HC carbon-fibre hood: price,1299,USD,S-313,,secondary,body,PT744,,"1979-85 FB, OEM design, 2x2 twill, bolt-on (2026-09-27)"
+SP-1283,Body,Replacement Advan Carbon AC769HC carbon-fibre hood: approximate weight,15,lb,S-313,,secondary,body,PT744,,"as listed, approximate (6.8 kg); the factory steel hood's weight was not found"
+SP-1284,Body,Replacement Kaminari K070520 FRP air dam spoiler: price,384,USD,S-314,,secondary,body,PT750,,"1981-85 SA/FB, fibreglass; the page does not say whether it copies the factory shape (2026-09-27)"
+SP-1285,Body,Genuine FA07-50-840C tail light finisher: Atkins Rotary list price,283.50,USD,S-318,,secondary,body,PT740,,"out of stock 2026-09-27; Mazdatrix US$286.47, discontinued by Mazda"
+SP-1286,Body,Used 81-83 hood hinge pair with bolts: Autopartone price,45,USD,S-320,,secondary,body,PT745,,"used OEM, 2026-09-27"
+SP-1287,Body,Replacement Ilco X26 / MZ9 (plastic head -P): key blank for 1981-82 RX-7 locks in key code series,2500-2999,code,S-310,p.11 (Mazda table),secondary,body,PT706,,"Ilco/EZ blank X26 = MZ9, listed for all locks of the 1981-82 RX-7 in that code series; which series this car's locks are, check the code on the key or lock"
+SP-1288,Body,Replacement Ilco X27 / MZ10: key blank for 1981-82 RX-7 locks in key code series,3000-3499,code,S-310,p.11 (Mazda table),secondary,body,PT706,,"Ilco/EZ blank X27 = MZ10, listed for all locks of the 1981-82 RX-7 in that code series"
+SP-1289,Body,"Replacement Mazdatrix KB-70-82-TYPEA / KB-70-82-TYPEB rotor-head key blank, 1970-82 Mazda: price each",21,USD,S-327,product page,secondary,body,PT706,,Two profiles; type B has the relief groove on the bottom of the blade. Match to the original key before ordering. Price read 2026-09-27
+SP-1290,Body,"Steering lock set bolts (shear-head), quantity",2,,S-005,"Body-Index p.25 (fig. 0900A-1, item 60436 BOLT, SET)",primary,body,PT707,,8218-66-143 for '81-'82 (FB331 500001-700000); H043-66-154 for '83
+SP-1291,Body,Steering lock set bolts: installation,tighten until the bolt heads snap off,,S-002,Section 10A Manual Steering p.10A-15 (PDF p.15),primary,body,PT707,other-car,"1985 manual; the old bolts are loosened with a chisel, a protector placed under the lock body to shield the shaft from hammer blows. Same shear-head bolt design as the '81-'83 catalogue lists"
+SP-1292,Body,"Replacement Mazda H043-66-154 steering lock bolt (Atkins Rotary, fits 81-95 RX-7): price each",9,USD,S-329,product page,secondary,body,PT707,,Two per vehicle; in stock 2026-09-27. The catalogue's '81-'82 number is 8218-66-143
+SP-1293,Body,Replacement Mazda FA01-09-010B complete lock set (Atkins Rotary): price,600,USD,S-307,product page,secondary,body,PT705,,No longer available; listed weight about 3 lb. Read 2026-09-27
+SP-1294,Body,Mounting: threaded studs moulded into the rubber,7,,S-331,page 3,secondary,body,PT743,,"Owner description (Stu Aull), taking 10 mm nuts; plus 5 metal slots for body plugs and self-tapping screws at the leading tips. Check on the car"
+SP-1295,Body,Mounting: metal slots in the rubber taking plugs into the body,5,,S-331,page 3,secondary,body,PT743,,Owner description; check on the car
+SP-1296,Body,Material and finish,"unpainted natural rubber, one piece",,S-331,page 3,secondary,body,PT743,,Owner description citing the 81-83 parts catalogue: only the one-piece rubber spoiler is factory; the three-piece urethane spoiler is not
+SP-1297,Body,"Replacement Accuform ACCU-400 dash cap, 1978-83 RX-7: material",high-temperature ABS,,S-335,product page,secondary,body,PT823,,"Glued over the original pad with the supplied silicone adhesive, about 30 min to fit and 2 h to cure; US$183.59, ships as a 60 x 16 x 10 in carton. Read 2026-09-27"
+SP-1298,Body,"Replacement Mazdatrix MZTX-24-707B dash cover, 79-83 black: price",157.30,USD,S-334,product page,secondary,body,PT823,,"Glued-on cap with glue and instructions, about 1 h to fit; burgundy MZTX-24-707BURG US$236.25. Read 2026-09-27"
+SP-1299,Body,Instrument panel fixing bolts,4,,S-002,"Section 14 Body p.14-2 structural view, item 31 (PDF p.2)",primary,body,PT822,other-car,1985 manual; also 3 bolts at the brake cover (item 8) and 2 at the garnish (item 27). The 1985 dash differs from the '82; check
+SP-1300,Electrical,"Supply fuse (10 A WG fuse in fuse block X-04, constant battery, shared with the turn/hazard flasher lights and the heater/air conditioner)",10,A,S-001,"28, 30, 9",primary,body,PT864,,"WR from the battery through the 1.25 sq fusible link to the 10 A fuse in fuse block X-04 (p.30: WR(B) -> 10A -> WG), out as WG to the switch; ground B to X-13 (p.28). X-04 is the fuse block, not one fuse position. The schematic (p.9) shows the same WG 10 A feed also serving the turn & hazard flasher lights (section F) and the heater & air conditioner (section G)"
+SP-1301,Electrical,"Switch continuity, Left side UP: terminals joined",c-d-f and a-b,,S-002,15-42,primary,body,PT864,other-car,1985 manual remote control mirror switch inspection table; the 1982 diagram (S-001 p.28) shows the same six-wire switch and circuit but gives no letters
+SP-1302,Electrical,"Switch continuity, Left side DOWN: terminals joined",c-b-f and a-d,,S-002,15-42,primary,body,PT864,other-car,1985 manual remote control mirror switch inspection table; the 1982 diagram (S-001 p.28) shows the same six-wire switch and circuit but gives no letters
+SP-1303,Electrical,"Switch continuity, Left side LEFT: terminals joined",c-d and a-b,,S-002,15-42,primary,body,PT864,other-car,1985 manual remote control mirror switch inspection table; the 1982 diagram (S-001 p.28) shows the same six-wire switch and circuit but gives no letters
+SP-1304,Electrical,"Switch continuity, Left side RIGHT: terminals joined",c-b and a-d,,S-002,15-42,primary,body,PT864,other-car,1985 manual remote control mirror switch inspection table; the 1982 diagram (S-001 p.28) shows the same six-wire switch and circuit but gives no letters
+SP-1305,Electrical,"Switch continuity, Right side UP: terminals joined",c-d-f and a-e,,S-002,15-42,primary,body,PT864,other-car,1985 manual remote control mirror switch inspection table; the 1982 diagram (S-001 p.28) shows the same six-wire switch and circuit but gives no letters
+SP-1306,Electrical,"Switch continuity, Right side DOWN: terminals joined",c-e-f and a-d,,S-002,15-42,primary,body,PT864,other-car,1985 manual remote control mirror switch inspection table; the 1982 diagram (S-001 p.28) shows the same six-wire switch and circuit but gives no letters
+SP-1307,Electrical,"Switch continuity, Right side LEFT: terminals joined",c-d and a-e,,S-002,15-42,primary,body,PT864,other-car,1985 manual remote control mirror switch inspection table; the 1982 diagram (S-001 p.28) shows the same six-wire switch and circuit but gives no letters
+SP-1308,Electrical,"Switch continuity, Right side RIGHT: terminals joined",c-e and a-d,,S-002,15-42,primary,body,PT864,other-car,1985 manual remote control mirror switch inspection table; the 1982 diagram (S-001 p.28) shows the same six-wire switch and circuit but gives no letters
+SP-1309,Electrical,Connector terminals,6,,S-001,28,primary,body,PT864,,"I-01: B, WG, LgR in one row, Lg, LgB, LgY in the other; 1985 letters e c a / f d b read mirrored (S-002 p.15-42)"
+SP-1310,Body,"Upholstery, S and GS (brochure)",all vinyl or vinyl-and-velour,,S-004,15,primary,body,PT891,,1982 brochure standard-equipment list; GSL had tweed fabric with adjustable headrests
+SP-1311,Body,Legroom,41.5,in,S-004,15,primary,body,PT891,,interior dimensions panel
+SP-1312,Body,Headroom,37.2,in,S-004,15,primary,body,PT891,,36.8 in with sunroof
+SP-1313,Body,Shoulder room,51.4,in,S-004,15,primary,body,PT891,,
+SP-1314,Body,Seat belt anchor bolt torque,39-55,N-m,S-002,14-4,primary,body,PT904,other-car,1985 manual structural view (28.2-39.8 ft-lb); no 1982 figure found
+SP-1315,Body,Seat belt anchor bolt torque,39-55,N-m,S-002,14-4,primary,body,PT907,other-car,1985 manual structural view (28.2-39.8 ft-lb); no 1982 figure found
+SP-1316,Electrical,"Buckle switch, belt inserted",no continuity,,S-002,15-25,primary,body,PT908,other-car,"1985 manual, driver's belt buckle switch, ohmmeter across the connector"
+SP-1317,Electrical,"Buckle switch, belt not inserted",continuity,,S-002,15-25,primary,body,PT908,other-car,1985 manual; grounding the Br terminal with the engine running lights BELT for about 6 s
+SP-1318,Electrical,Seat belt warning light time after start,6,s,S-002,15-25,primary,body,PT908,other-car,"timer in the control processing unit, not in the belt; 1985 manual"
+SP-1319,Body,Trim fasteners per car,22,,S-005,Body-Index 72,primary,body,PT910,,"fastener 0208-58-921 x22 with cap 0187-58-922 x22, figure 5840A-1, both doors"
+SP-1320,Body,Quantity per car,2,,S-005,Body-Index 72,primary,body,PT914,,figure 5840A-1 item 58 811A
+SP-1321,Body,Quantity per car,2,,S-005,Body-Index 72,primary,body,PT915,,figure 5840A-1 item 58 821A

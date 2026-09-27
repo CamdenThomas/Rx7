@@ -1,0 +1,830 @@
+{
+  "parts": [
+    {
+      "id": "PT704",
+      "link": "",
+      "support": "",
+      "cad": "fb-rx7-1985-fsm-body-checking-dimensions",
+      "note_add": "Diagrams: S-005 Body-Index p.42-45 (figs 5310A-1, 5310A-2, 5340A-1, 5360A-1); underbody datum holes and point-to-point dimensions S-002 Section 14 p.24 (14-24). 1982 overall dimensions from S-038 p.9: length 4,285, width 1,650 (1,675 over the side protectors), height 1,260 mm. S-047 (printed p.24, PDF p.32) lists high-strength-steel panels for the 323 and 626 only; the RX-7 is not in that table."
+    },
+    {
+      "id": "PT710",
+      "link": "https://www.atkinsrotary.com/Chassis-and-Body/Keys-and-Lock-Sets/Door-Locks/",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.25 (fig 0900A-1): key sub sets FA01-76-210 R / FA01-76-220 L are the '81-'82 numbers ('83 uses FA43-); key blank 8208-75-901 ('81-'82, item 75158), primary key 8208-75-901 x2. Ilco cross-reference (PDF p.11): 1981-82 RX-7 all locks = Ilco X26 / MZ9, code series 2500-2999. The complete 81-83 lock set FA01-09-010B is NLA (Atkins, was $600); the key-cylinder gasket 0223-58-962 is in stock at Atkins ($2.40); Mazdatrix sells a 70-82 key blank ($21, type A or B by groove). Removal: S-002 Section 14 p.10 (cylinder held by a clip, rod end to the lock). No new door cylinder found for sale (2026-09-27); used only."
+    },
+    {
+      "id": "PT712",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.25 (fig 0900A-1, item 75960): FA01-76-260 is the '81-'82 number, '83 uses FA43-76-230. Same key blank as the doors (8208-75-901; Ilco X26 / MZ9). Hatch lock adjustment: S-002 Section 14 p.12 (loosen the lock bolts, align to the striker). No new or used cylinder found for sale (2026-09-27)."
+    },
+    {
+      "id": "PT713",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.25 (fig 0900A-1, item 42440). Nothing found for sale new or used (two searches, 2026-09-27)."
+    },
+    {
+      "id": "PT714",
+      "link": "https://www.atkinsrotary.com/81-85-Rx7-Front-Bumper-Skin-FA01-50-030A.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.26 (fig 5000A-1). Genuine skin FA01-50-030A is discontinued by Mazda (Mazdatrix, was $814.77) but Atkins Rotary still stocks it at $875 (primed, with hardware, no headlamp-washer holes; 11.99 lb). Face is urethane; removal and the installed height 450-514 mm at the protector rubber: S-002 Section 14 p.5-6. Urethane repair limits: S-047 p.11-13 (hole under 50 mm, crack under 200 mm)."
+    },
+    {
+      "id": "PT715",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.26 (fig 5000A-1, item 50040). S-047 (printed p.24) lists 'bumper beam' as 50-100 kg/mm2 high-strength steel for the 323 and 626 only; the RX-7 is not in that table. Nothing for sale found (2026-09-27)."
+    },
+    {
+      "id": "PT716",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.26 (fig 5000A-1): FA01-50-014 x2 and FA01-50-016 x2 are for FB331 chassis 500763 onward; early '81 cars (500001-500762) used FA01-50-012 x5 instead. The bumper height spec is measured at the centre of this protector rubber (S-002 Section 14 p.6). Nothing for sale found (2026-09-27)."
+    },
+    {
+      "id": "PT717",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.26 (fig 5000A-1). Inspection: measure length A (275.5 +/-2 mm) and replace if out of spec; length B (132.5 +/-1 mm) is set by moving the bracket (S-002 Section 14 p.6, 1985 figures). Atkins' rear shock 8871-50-290 is listed for 79-80 only (a year split, Atkins); no 81-85 front bumper shock found for sale (2026-09-27)."
+    },
+    {
+      "id": "PT718",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.26 (fig 5000A-1, items 50042D/50043D/50052D/50053D). Nothing for sale found (2026-09-27)."
+    },
+    {
+      "id": "PT719",
+      "link": "https://mazdatrix.com/product/license-plate-holder-81-85-front/",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.26 (fig 5000A-1, item 50030). FA01-50-180 is discontinued by Mazda (Mazdatrix); used ones appear at Autopartone ($25, sold out 2026-09-27)."
+    },
+    {
+      "id": "PT720",
+      "link": "https://mazdatrix.com/product/grille-front-81-85/",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.27 (fig 5005A-1). FA01-50-711A is discontinued by Mazda (Mazdatrix, was $94.50); used 81-83 grilles with screws sell at Autopartone ($75, sold out 2026-09-27). The grille comes off to remove the front bumper (S-002 Section 14 p.6)."
+    },
+    {
+      "id": "PT721",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.27 (fig 5005A-1, items 50740/50760). Nothing for sale found (two searches, 2026-09-27)."
+    },
+    {
+      "id": "PT722",
+      "link": "http://www.bumpermegastore.com/1981-1985-mazda-rx7-rear-bumper-cover-fa0150220",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.28 (fig 5010A-1). Bumper Megastore sells a reconditioned genuine FA01-50-220 cover ($473.92, 2026-09-27). Face is urethane; removal (service hole cover off from inside the hatch) and the installed height 474-534 mm at the protector rubber: S-002 Section 14 p.6-7. Urethane repair limits: S-047 p.11-13."
+    },
+    {
+      "id": "PT723",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.28 (fig 5010A-1, item 50230). S-047 (printed p.24) marks 'bumper beam' as high-strength steel for the 323 and 626 only; the RX-7 is not in that table. Nothing for sale found (2026-09-27)."
+    },
+    {
+      "id": "PT724",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.28 (fig 5010A-1): FA01-50-013 x3, FA01-50-014 x2. The rear bumper height spec is measured at the centre of this protector rubber (S-002 Section 14 p.7). Nothing for sale found (2026-09-27)."
+    },
+    {
+      "id": "PT725",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.28 (fig 5010A-1, item 50200A). Inspection: measure length A (269 +/-2 mm) and replace if out of spec; length B (113 +/-1 mm) is set by moving the bracket (S-002 Section 14 p.7, 1985 figures). Atkins' 8871-50-290 rear shock is listed for 79-80 only (a year split, Atkins); no 81-85 rear bumper shock found for sale (2026-09-27)."
+    },
+    {
+      "id": "PT726",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.28 (fig 5010A-1, items 50042E/50052E/50233B/50243B). Nothing for sale found (2026-09-27)."
+    },
+    {
+      "id": "PT727",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.28 (fig 5010A-1, item 50311A). Nothing for sale found (2026-09-27)."
+    },
+    {
+      "id": "PT728",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.28 (fig 5010A-1, item 50340). Nothing for sale found under FA01-50-380 (2026-09-27); Autopartone's used rear holder is listed for 84-85 only."
+    },
+    {
+      "id": "PT729",
+      "link": "https://koolkatzautoglass.com/products/1979-1985-mazda-rx-7-windshield-oem-brand-new",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.93 (fig 6300A-1, item 63901; GS/GSL glass FA01-63-901B, S model FA02-63-901F). Aftermarket glass is NAGS FW00462 (FW 462 GGN): FYG at Kool Katz ($279, green tint with green shade band, 2026-09-27); rx7club reports XYG/PPG/Pilkington mid-grade at about $136 wholesale and one number for all 79-85. Replacement procedure with the piano-wire cut, dam, primer, sealant and cure times: S-002 Section 14 p.20-22 (tool set 49 0305 870A)."
+    },
+    {
+      "id": "PT730",
+      "link": "https://www.atkinsrotary.com/79-85-rx7-top-center-windshield-trim-8871-50-950c-.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.29 (fig 5030A-1). The upper joint is sold as 8871-50-950C (Atkins, $35, NLA with a few left, out of stock 2026-09-27). Clips are still available: 1243-50-609 top/bottom (Atkins $4.75 each, 14 per car - 7 top, 7 bottom; Mazdatrix $5.50 and says 16) and 8871-50-608 side (Atkins $5.12, 6 per car). The upper moulding sets themselves were not found new."
+    },
+    {
+      "id": "PT731",
+      "link": "https://mazdatrix.com/product/clip-windshield-trim-79-85-side-use-6/",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.29 (fig 5030A-1). Mazdatrix lists the right side windshield trim under 8871-50-680F, discontinued by Mazda (differs from the catalogue set number 8871-99-743B: check which supersedes). Side clip 8871-50-608 (6 per car) is in stock at Mazdatrix ($6.10) and Atkins ($5.12)."
+    },
+    {
+      "id": "PT732",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.29 (fig 5030A-1, item 50505T). Nothing found new for 8871-99-745A (2026-09-27); it shares the 1243-50-609 clips with the upper mouldings."
+    },
+    {
+      "id": "PT733",
+      "link": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/drip-rail-trim-removal-720542/",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.30 (fig 5040A-1). Owners remove it by hand (thumbs at the bottom, pull the top) and refit it starting at the bottom with a mallet; the clips break easily and are the usual casualty (rx7club). Nothing for sale found for 8871-50-510C/520C (2026-09-27)."
+    },
+    {
+      "id": "PT734",
+      "link": "https://mazdatrix.com/product-category/exterior/side-rubber-protector-strips/",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.31 (fig 5060A-1). Mazdatrix (2026-09-27) still stocks the door pieces C (R FA02-50-683 $259.88, L FA02-50-693 $256.35) and the front fender front piece A (R FA01-50-681 $89.64); the other seven are discontinued by Mazda. The protectors add 25 mm to the overall width (1,675 vs 1,650 mm, S-038 p.9)."
+    },
+    {
+      "id": "PT735",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.39 (fig 5170A-1, item 51545). Nothing found for sale or described online (two searches, 2026-09-27)."
+    },
+    {
+      "id": "PT736",
+      "link": "https://www.atkinsrotary.com/79-82-Rx7-Two-Pin-Rx7-Badge-8871-51-721.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.39 (fig 5170A-1, item 51721). Genuine 8871-51-721 is in stock at Atkins ($35.95): two-pin chrome fender badge, fixed with speed nuts 0187-69-049A; Atkins lists it for 79-82 while the catalogue carries it through 83: check."
+    },
+    {
+      "id": "PT737",
+      "link": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/mazda-emblems-990189/",
+      "support": "",
+      "cad": "rx7-emblem-printables-lovc",
+      "note_add": "Diagram: S-005 Body-Index p.39 (fig 5170A-1, item 51771). rx7club: the 81-83 front ornament F001-51-771 (rear F001-51-781) is a two-pin part, 84-85 changed to F023-51-770A with three pins (rears differ only by metal vs plastic clips); the thread found most numbers still in Mazda inventory with only F001-51-781 unavailable, Mazdatrix lists none of them, and a chrome 626 badge of the same shape is the usual substitute. Free printable front/rear plates: cad rx7-emblem-printables-lovc."
+    }
+  ],
+  "specs": [
+    {
+      "part": "PT704",
+      "category": "Body",
+      "item": "Overall width without side protector",
+      "value": "1650",
+      "unit": "mm",
+      "source": "S-038",
+      "page": "p.9",
+      "confidence": "primary",
+      "applies": "",
+      "note": "1982 Technical Data, Dimension table"
+    },
+    {
+      "part": "PT704",
+      "category": "Body",
+      "item": "Overall width with side protector",
+      "value": "1675",
+      "unit": "mm",
+      "source": "S-038",
+      "page": "p.9",
+      "confidence": "primary",
+      "applies": "",
+      "note": "1982 Technical Data, Dimension table"
+    },
+    {
+      "part": "PT714",
+      "category": "Body",
+      "item": "Bumper face material",
+      "value": "urethane",
+      "unit": "",
+      "source": "S-002",
+      "page": "Section 14 p.6",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1985 manual caution; catalogue gives no material for 1982"
+    },
+    {
+      "part": "PT714",
+      "category": "Body",
+      "item": "Installed height, centre of protector rubber to ground",
+      "value": "450-514",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "Section 14 p.6",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "no load, recommended tyre pressure, full fuel tank; 1985 manual"
+    },
+    {
+      "part": "PT714",
+      "category": "Body",
+      "item": "Urethane bumper repairable limit: hole diameter",
+      "value": "50",
+      "unit": "mm",
+      "source": "S-047",
+      "page": "p.11",
+      "confidence": "secondary",
+      "applies": "other-car",
+      "note": "generic Mazda urethane-bumper guidance; larger damage is replaced"
+    },
+    {
+      "part": "PT714",
+      "category": "Body",
+      "item": "Urethane bumper repairable limit: crack length",
+      "value": "200",
+      "unit": "mm",
+      "source": "S-047",
+      "page": "p.11",
+      "confidence": "secondary",
+      "applies": "other-car",
+      "note": "generic Mazda urethane-bumper guidance; longer cracks or a sheared bumper are replaced"
+    },
+    {
+      "part": "PT714",
+      "category": "Body",
+      "item": "Shipping weight of the genuine skin FA01-50-030A (Atkins listing)",
+      "value": "11.99",
+      "unit": "lb",
+      "source": "src-atkins-front-bumper-skin",
+      "page": "",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "boxed 15 x 15 x 60 in"
+    },
+    {
+      "part": "PT717",
+      "category": "Body",
+      "item": "Length A (piston rod end to bracket), replace if outside",
+      "value": "275.5 +/-2",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "Section 14 p.6",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1985 figure 47U14X-014; 10.847 +/-0.0787 in"
+    },
+    {
+      "part": "PT717",
+      "category": "Body",
+      "item": "Length B (bracket position), adjustable",
+      "value": "132.5 +/-1",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "Section 14 p.6",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1985 figure 47U14X-014; 5.217 +/-0.0394 in; set by moving the bracket on the absorber"
+    },
+    {
+      "part": "PT722",
+      "category": "Body",
+      "item": "Bumper face material",
+      "value": "urethane",
+      "unit": "",
+      "source": "S-002",
+      "page": "Section 14 p.7",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1985 manual caution"
+    },
+    {
+      "part": "PT722",
+      "category": "Body",
+      "item": "Installed height, centre of protector rubber to ground",
+      "value": "474-534",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "Section 14 p.7",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "no load, recommended tyre pressure, full fuel tank; 1985 manual"
+    },
+    {
+      "part": "PT722",
+      "category": "Body",
+      "item": "Reconditioned genuine cover FA01-50-220 price (Bumper Megastore)",
+      "value": "473.92",
+      "unit": "USD",
+      "source": "src-bumpermegastore-rear-bumper",
+      "page": "",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "list 523.92; 2026-09-27"
+    },
+    {
+      "part": "PT725",
+      "category": "Body",
+      "item": "Length A (piston rod end to bracket), replace if outside",
+      "value": "269 +/-2",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "Section 14 p.7",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1985 figure 47U14X-018; 10.591 +/-0.0787 in"
+    },
+    {
+      "part": "PT725",
+      "category": "Body",
+      "item": "Length B (bracket position), adjustable",
+      "value": "113 +/-1",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "Section 14 p.7",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "1985 figure 47U14X-018; 4.449 +/-0.0394 in"
+    },
+    {
+      "part": "PT729",
+      "category": "Body",
+      "item": "Old sealant left on the frame when replacing",
+      "value": "1-2",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "Section 14 p.20",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "cut back with a sharp knife; if none remains, prime and build a 2 mm layer"
+    },
+    {
+      "part": "PT729",
+      "category": "Body",
+      "item": "Primer drying time before sealant",
+      "value": "30",
+      "unit": "min",
+      "source": "S-002",
+      "page": "Section 14 p.20-21",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": ""
+    },
+    {
+      "part": "PT729",
+      "category": "Body",
+      "item": "Dam outer edge set back from the glass edge",
+      "value": "7",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "Section 14 p.21",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "lip outermost; bonded to the glass"
+    },
+    {
+      "part": "PT729",
+      "category": "Body",
+      "item": "Sealant ridge height",
+      "value": "8",
+      "unit": "mm",
+      "source": "S-002",
+      "page": "Section 14 p.21",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "applied round the whole circumference between dam and glass edge"
+    },
+    {
+      "part": "PT729",
+      "category": "Body",
+      "item": "Sealant cure before disturbing the glass, at 20 C",
+      "value": "5",
+      "unit": "h",
+      "source": "S-002",
+      "page": "Section 14 p.22",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "24 h at 5 C"
+    },
+    {
+      "part": "PT729",
+      "category": "Body",
+      "item": "Window service tool set",
+      "value": "49 0305 870A",
+      "unit": "",
+      "source": "S-002",
+      "page": "Section 14 p.20",
+      "confidence": "primary",
+      "applies": "other-car",
+      "note": "Mazda SST number"
+    },
+    {
+      "part": "PT729",
+      "category": "Body",
+      "item": "Replacement FYG FW 462 GGN: tint",
+      "value": "green with green shade band",
+      "unit": "",
+      "source": "src-koolkatz-windshield",
+      "page": "",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "NAGS FW00462; $279 at Kool Katz 2026-09-27"
+    },
+    {
+      "part": "PT730",
+      "category": "Body",
+      "item": "Top/bottom moulding clips 1243-50-609 per car",
+      "value": "14",
+      "unit": "",
+      "source": "S-005",
+      "page": "Body-Index p.29",
+      "confidence": "primary",
+      "applies": "",
+      "note": "catalogue qty 14; Atkins says 7 top + 7 bottom, Mazdatrix says 16: check"
+    },
+    {
+      "part": "PT731",
+      "category": "Body",
+      "item": "Side moulding clips 8871-50-608 per car",
+      "value": "6",
+      "unit": "",
+      "source": "S-005",
+      "page": "Body-Index p.29",
+      "confidence": "primary",
+      "applies": "",
+      "note": "3 each side on the A pillar (Atkins)"
+    },
+    {
+      "part": "PT710",
+      "category": "Body",
+      "item": "Key blank, '81-'82 models (Mazda)",
+      "value": "8208-75-901",
+      "unit": "",
+      "source": "S-005",
+      "page": "Body-Index p.25",
+      "confidence": "primary",
+      "applies": "",
+      "note": "item 75158; the '83 model uses HA40-76-201"
+    },
+    {
+      "part": "PT710",
+      "category": "Body",
+      "item": "Key blank cross-reference, 1981-82 RX-7 all locks",
+      "value": "Ilco X26 / MZ9",
+      "unit": "",
+      "source": "src-ilco-classic-cross-ref",
+      "page": "p.11",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "code series 2500-2999; code series 3000-3499 use Ilco X27 / MZ10 (same page); no substitutes listed"
+    },
+    {
+      "part": "PT736",
+      "category": "Body",
+      "item": "Fixing",
+      "value": "2 pins with speed nuts 0187-69-049A",
+      "unit": "",
+      "source": "src-atkins-emblem-8871-51-721",
+      "page": "",
+      "confidence": "secondary",
+      "applies": "",
+      "note": "catalogue lists 8 speed nuts shared with the front and rear ornaments (S-005 p.39)"
+    },
+    {
+      "part": "PT737",
+      "category": "Body",
+      "item": "Fixing (81-83 F001-51-771)",
+      "value": "2 pins",
+      "unit": "",
+      "source": "src-rx7club-emblems",
+      "page": "",
+      "confidence": "tertiary",
+      "applies": "",
+      "note": "84-85 F023-51-770A has 3 pins instead (rx7club: \"the early fronts have 2 pins vs 3 for the later ones\")"
+    }
+  ],
+  "terminals": [],
+  "sources": [
+    {
+      "key": "src-atkins-front-bumper-skin",
+      "title": "Atkins Rotary - 81-85 Rx7 Front Bumper Skin (FA01-50-030A)",
+      "kind": "web",
+      "covers": "PT714",
+      "url": "https://www.atkinsrotary.com/81-85-Rx7-Front-Bumper-Skin-FA01-50-030A.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$875, in stock 2026-09-27; primed, with hardware; 11.99 lb, 15x15x60 in box"
+    },
+    {
+      "key": "src-mazdatrix-bumper-skin-front",
+      "title": "Mazdatrix - BUMPER SKIN FRONT, 81-85 NLA (FA01-50-030A)",
+      "kind": "web",
+      "covers": "PT714",
+      "url": "https://mazdatrix.com/product/bumper-skin-front-81-85/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$814.77, discontinued by Mazda"
+    },
+    {
+      "key": "src-bumpermegastore-rear-bumper",
+      "title": "Bumper Megastore - 1981-1985 Mazda RX7 Rear Bumper Cover FA0150220 (reconditioned genuine)",
+      "kind": "web",
+      "covers": "PT722",
+      "url": "http://www.bumpermegastore.com/1981-1985-mazda-rx7-rear-bumper-cover-fa0150220",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$473.92 (list $523.92), 2026-09-27"
+    },
+    {
+      "key": "src-mazdatrix-grille-front",
+      "title": "Mazdatrix - GRILLE FRONT, 81-85 NLA (FA01-50-711A)",
+      "kind": "web",
+      "covers": "PT720",
+      "url": "https://mazdatrix.com/product/grille-front-81-85/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$94.50, discontinued by Mazda"
+    },
+    {
+      "key": "src-autopartone-grille",
+      "title": "Autopartone - 81-83 Mazda RX7 OEM Front Bumper Grille (used)",
+      "kind": "web",
+      "covers": "PT720",
+      "url": "https://www.autopartone.com/products/81-85-mazda-rx7-oem-front-bumper-grille",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$75 used with screws, sold out 2026-09-27"
+    },
+    {
+      "key": "src-mazdatrix-license-front",
+      "title": "Mazdatrix - LICENSE PLATE HOLDER, 81-85 FRONT NLA (FA01-50-180)",
+      "kind": "web",
+      "covers": "PT719",
+      "url": "https://mazdatrix.com/product/license-plate-holder-81-85-front/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "discontinued by Mazda"
+    },
+    {
+      "key": "src-autopartone-license-front",
+      "title": "Autopartone - 79-85 Mazda RX7 Front License Plate Holder (used)",
+      "kind": "web",
+      "covers": "PT719",
+      "url": "https://www.autopartone.com/products/79-80-81-82-83-84-85-mazda-rx7-front-license-plate-holder",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$25 used, sold out 2026-09-27"
+    },
+    {
+      "key": "src-koolkatz-windshield",
+      "title": "Kool Katz Auto Glass - 1979-1985 Mazda RX-7 Windshield (FYG FW 462 GGN)",
+      "kind": "web",
+      "covers": "PT729",
+      "url": "https://koolkatzautoglass.com/products/1979-1985-mazda-rx-7-windshield-oem-brand-new",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$279; green tint, green shade band; ships to commercial address"
+    },
+    {
+      "key": "src-rx7club-glass-nla",
+      "title": "RX7Club 1st-gen - Have you heard the rumor that 1st gen glass is NLA? (page 2)",
+      "kind": "forum",
+      "covers": "PT729",
+      "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/have-you-heard-rumor-1st-gen-glass-nla-1114742/page2/",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "FW00462 GGN XYG; wholesale tiers economy $85.62 / mid XYG-PPG-Pilkington $136 / OE $206.55; one number for 79-85"
+    },
+    {
+      "key": "src-atkins-windshield-top-center",
+      "title": "Atkins Rotary - 79-85 Rx7 Top Center Windshield Trim (8871-50-950C)",
+      "kind": "web",
+      "covers": "PT730",
+      "url": "https://www.atkinsrotary.com/79-85-rx7-top-center-windshield-trim-8871-50-950c-.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$35, NLA with some left, out of stock 2026-09-27; joins the L and R upper trims"
+    },
+    {
+      "key": "src-atkins-clip-1243-50-609",
+      "title": "Atkins Rotary - 79-85 Rx7 Front Windshield Trim Clip (1243-50-609)",
+      "kind": "web",
+      "covers": "PT730 PT732",
+      "url": "https://www.atkinsrotary.com/79-85-Rx7-Front-Windshield-Trim-Clip-1243-50-609.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$4.75 each, in stock; 14 per car (7 top, 7 bottom)"
+    },
+    {
+      "key": "src-atkins-clip-8871-50-608",
+      "title": "Atkins Rotary - 79-85 Rx7 Front Windshield Trim Clip (8871-50-608)",
+      "kind": "web",
+      "covers": "PT731",
+      "url": "https://www.atkinsrotary.com/79-85-Rx7-Front-Windshield-Trim-Clip-8871-50-608.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$5.12 each, in stock; 6 per car, on the A pillar"
+    },
+    {
+      "key": "src-mazdatrix-clip-top-bottom",
+      "title": "Mazdatrix - CLIP WINDSHIELD TRIM, 79-85 RX7 TOP & BOTTOM (USES 16) 1243-50-609",
+      "kind": "web",
+      "covers": "PT730 PT732",
+      "url": "https://mazdatrix.com/product/clip-windshield-trim-79-85-topbotuse16/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$5.50, in stock; says 16 per car (catalogue and Atkins: 14)"
+    },
+    {
+      "key": "src-mazdatrix-clip-side",
+      "title": "Mazdatrix - CLIP WINDSHIELD TRIM, 79-85 RX7 SIDE (USE 6) 8871-50-608",
+      "kind": "web",
+      "covers": "PT731",
+      "url": "https://mazdatrix.com/product/clip-windshield-trim-79-85-side-use-6/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$6.10, in stock"
+    },
+    {
+      "key": "src-mazdatrix-windshield-trim-right",
+      "title": "Mazdatrix - WINDSHIELD TRIM, 79-85 RIGHT NLA (8871-50-680F)",
+      "kind": "web",
+      "covers": "PT731",
+      "url": "https://mazdatrix.com/product/windshield-trim-nla-79-85-rght/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "discontinued by Mazda; number differs from catalogue 8871-99-743B"
+    },
+    {
+      "key": "src-mazdatrix-side-protector-strips",
+      "title": "Mazdatrix - Side Rubber Protector Strips (81-85 RX7 side mouldings)",
+      "kind": "web",
+      "covers": "PT734",
+      "url": "https://mazdatrix.com/product-category/exterior/side-rubber-protector-strips/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "in stock 2026-09-27: door R FA02-50-683 $259.88, door L FA02-50-693 $256.35, front fender front R FA01-50-681 $89.64; seven others discontinued (ten 81-85 pieces listed)"
+    },
+    {
+      "key": "src-atkins-emblem-8871-51-721",
+      "title": "Atkins Rotary - 79-82 Rx7 Two Pin Rx7 Emblem (8871-51-721)",
+      "kind": "web",
+      "covers": "PT736",
+      "url": "https://www.atkinsrotary.com/79-82-Rx7-Two-Pin-Rx7-Badge-8871-51-721.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$35.95, in stock; chrome; uses emblem nuts 0187-69-049A"
+    },
+    {
+      "key": "src-rx7club-emblems",
+      "title": "RX7Club 1st-gen - Mazda Emblems thread (81-83 vs 84-85 ornament numbers)",
+      "kind": "forum",
+      "covers": "PT737 PT736",
+      "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/mazda-emblems-990189/",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "81-83 front F001-51-771 / rear F001-51-781 (fronts 2 pins, rears metal clips); 84-85 F023-51-770A / F023-51-780 (fronts 3 pins, rears plastic clips); a chrome 626 badge fits; thread found most still in Mazda inventory, only F001-51-781 unavailable"
+    },
+    {
+      "key": "src-mazdatrix-badges",
+      "title": "Mazdatrix - Badges & Emblems category",
+      "kind": "web",
+      "covers": "PT737 PT736",
+      "url": "https://mazdatrix.com/product-category/exterior/badges-emblems/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "no 79-85 MAZDA ornament or RX-7 side badge listed; 'Mazda has discontinued many of the badges and emblems'"
+    },
+    {
+      "key": "src-atkins-lock-set",
+      "title": "Atkins Rotary - 81-83 Rx7 Complete Lock Set (FA01-09-010B) - NLA",
+      "kind": "web",
+      "covers": "PT710 PT712 PT713",
+      "url": "https://www.atkinsrotary.com/81-83-rx7-complete-lock-set-fa01-09-010b-.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "was $600; out of stock, no longer available"
+    },
+    {
+      "key": "src-atkins-door-locks",
+      "title": "Atkins Rotary - Mazda Door Lock Sets category (79-85 Rx7 Door & Rear Hatch Lock Grommet 0223-58-962)",
+      "kind": "web",
+      "covers": "PT710 PT712",
+      "url": "https://www.atkinsrotary.com/Chassis-and-Body/Keys-and-Lock-Sets/Door-Locks/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "grommet (catalogue: gasket, key cylinder) $2.40, in stock; no 79-85 cylinders listed"
+    },
+    {
+      "key": "src-mazdatrix-key-blank-70-82",
+      "title": "Mazdatrix - KEY BLANK 70-82, ROTOR TYPE A",
+      "kind": "web",
+      "covers": "PT710 PT712",
+      "url": "https://mazdatrix.com/product/key-blank-70-82-rotor-type-a/",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$21, in stock; two blank types for 70-82, match the groove of the original key"
+    },
+    {
+      "key": "src-ilco-classic-cross-ref",
+      "title": "Ilco - Classic Auto & Truck Key Blank Reference, model years 1940-1985 (Key Craze copy)",
+      "kind": "datasheet",
+      "covers": "PT710 PT712 PT713",
+      "url": "https://www.keycraze.com/ilco/classic-auto-truck-cross-reference.pdf",
+      "format": "pdf",
+      "credibility": "secondary",
+      "obtained": "yes",
+      "local_path": "01-REFERENCE/model/library/datasheets/PT710/ilco-classic-auto-truck-key-blank-cross-reference.pdf",
+      "note": "p.11: Mazda RX7 1981-82, all applications, code series 2500-2999, Ilco X26 / MZ9 (-P plastic head)"
+    },
+    {
+      "key": "src-atkins-bumper-shock-79-80",
+      "title": "Atkins Rotary - 79-80 Rx7 Rear Bumper Shock Absorber (8871-50-290)",
+      "kind": "web",
+      "covers": "PT725 PT717",
+      "url": "https://www.atkinsrotary.com/79-80-rx7-rear-bumper-shock-absorber-8871-50-290-.html",
+      "format": "html",
+      "credibility": "secondary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "$270; fits L or R, two per car; listed for 79-80 only, page says \"there was a year split with this part\", check the picture"
+    },
+    {
+      "key": "src-rx7club-drip-rail",
+      "title": "RX7Club 1st-gen - Drip Rail Trim Removal",
+      "kind": "forum",
+      "covers": "PT733",
+      "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/drip-rail-trim-removal-720542/",
+      "format": "html",
+      "credibility": "tertiary",
+      "obtained": "no",
+      "local_path": "",
+      "note": "hand removal and mallet refit; clips break; replacement clips via Black Dragon Auto"
+    }
+  ],
+  "cad": []
+}
