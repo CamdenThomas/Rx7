@@ -72,3 +72,17 @@ Work row 00-verify K11 (plan P29) asked for a second source for the catalogue en
 - PT907 front seat belt L: colour variant 00 (index lists FA30-57-670 00, 12, 24, 29).
 
 **Still `confirm`:** PT493 steering linkage ball joint set - the index reads B021-99-324, and B and 8 are not told apart in the scan (8021-99-324 is as likely); PT768 quarter panels - both the list and the index print a trailing character after FA01-70-100 / FA01-71-100 that OCR reads as `1`, which is no Mazda suffix. Both are checked with a dealer lookup before anything is ordered, per CLAUDE.md §3 (a part number that cannot be verified keeps `confirm`; no money is spent on it now)."
+D-439,,"Specs held as another year are cleared for 1982 by source, by agreement across years, or kept with the reason",2026-09-27,standing,,,,,"**How a spec held as another year's figure is cleared for 1982 (00-verify stage L).**
+
+Stage-L rows ask for the 1982 figure of every `00-CAR specs` row marked `other-car` or `unverified`. The rule used, in order:
+
+1. **A 1982 source gives it** - S-038 (1982 Technical Data, read from its OCR text), S-001 (1982 wiring diagram) or S-004 (1982 brochure): the value, source and page become the 1982 ones, the old year's figure moves into `note`, and `applies` is cleared. Where the part is not on this car (the removed metering pump, the 5-speed) `applies=not-fitted`.
+2. **The years on both sides agree** - a 1980/1981 source and a 1983/1985 source give the same procedure, or a 1980/1985 test uses the wire colours the 1982 diagram (S-001) draws for the same circuit: `applies` is cleared, the row is taken as 1982.
+3. **A procedure that belongs to no year** - inspecting a cap or rotor, handling HT leads, a generic remedy: `applies` is cleared.
+4. **Otherwise it stays held**, with the reason in `note`: no 1982 source gives it, the years disagree (measure it, R11), the 1982 figure is for another trim, or the OCR loses the column and the page image must be read.
+
+All of this is small (CLAUDE.md §3): rows only, no money, reversible by editing rows. Nothing held here stops work (D-433); a held figure is checked when a project's row uses it.
+
+**Done this run:** L1, L2, L9, L10, L11, L12, L13, L14, L15. Cleared from S-038: SP-019, SP-021, SP-026, SP-043, SP-045, SP-046, SP-047, SP-054, SP-095, SP-111, SP-121, SP-144, SP-174, SP-184; not-fitted: SP-024, SP-096; cleared by rule 1 (1982 brochure, configuration in note): SP-139; by rule 2: SP-564, SP-581, SP-583, SP-586, SP-587, SP-588, SP-589, SP-590, SP-591, SP-599, SP-678, SP-679; by rule 3: SP-567, SP-570, SP-572, SP-574. Still held, reason in note: SP-042, SP-123, SP-127, SP-142, SP-181, SP-188, SP-563, SP-565, SP-566, SP-568, SP-575, SP-602, SP-637, SP-651.
+
+Two readings of the S-038 OCR are noted on their rows: the steering gear oil reads 190 cc but its own conversions (0.31 US qt, 0.26 Imp qt) are 290 cc (SP-111); the stabilizer-bar torque 12-18 has lost its unit column (SP-181, held)."
