@@ -56,3 +56,19 @@ Camden's call, 2026-09-26, from the desktop app, answering `VER.06`: **""a""**, 
 **Reading.** The factory halogen sealed-beam buckets (PT589) are unchanged; the LED units a previous owner fitted (PT035) sit inside them rather than replacing the buckets themselves.
 
 **In the data.** 00-CAR parts PT589: `note` rewritten to confirm LED units sit in the factory buckets, `checked=2026-09-26`. 00-CAR parts PT035: `note` rewritten to confirm the LED housings sit in the factory buckets (its own open question, settled by the same answer), `checked=2026-09-26`. 00-verify work C4: `state=done`. Closes `VER.06`."
+D-438,,"The unreadable catalogue numbers, read against the catalogue index",2026-09-27,standing,,,,,"**The doubtful catalogue numbers are read against the catalogue's own numeric index, a second printing of every number; nine of eleven are settled, two stay `confirm`.**
+
+Work row 00-verify K11 (plan P29) asked for a second source for the catalogue entries whose scan left a digit or suffix blank. The web was not reachable from this run; the second source used is the numeric part-number index at the back of S-005 (Body-Index PDF), which prints each number again with its group and page, read from the OCR text (01-REFERENCE/model/library/docs/ocr/). Where the illustration list and the index agree, the number is settled.
+
+**Settled (00-CAR parts `oem_no` and `note`):**
+- PT121 fuel return hose: 9935-80-6999 (index: both 1320A hose entries 9935-80-6999; group 4500A return hose the same).
+- PT295 thermo switch: 8182-18-970A (index, group 6600A).
+- PT298 inhibitor switch: 8872-19-444B (index, group 6600A).
+- PT448 rear brake back springs: GA02-26-315 (index 2610A, and the D-code 26 315).
+- PT483 steering gear fixing bracket: FA24-32-420 (index 3210A; FA01-32-420 to serial 525551, FA24- after).
+- PT494 steering ball joint dust seal: 8531-32-279 (index 3230A).
+- PT811 hatch hinge L: 8871-63-210B (index 6230A).
+- PT835 lower dash switch panel: FA01-55-320A (index 5500A, colour variants 00 10 29 70 81, the 81 on 5500A-2 as BI-048-01; FA01-55-340A is a 5560A garnish).
+- PT907 front seat belt L: colour variant 00 (index lists FA30-57-670 00, 12, 24, 29).
+
+**Still `confirm`:** PT493 steering linkage ball joint set - the index reads B021-99-324, and B and 8 are not told apart in the scan (8021-99-324 is as likely); PT768 quarter panels - both the list and the index print a trailing character after FA01-70-100 / FA01-71-100 that OCR reads as `1`, which is no Mazda suffix. Both are checked with a dealer lookup before anything is ordered, per CLAUDE.md §3 (a part number that cannot be verified keeps `confirm`; no money is spent on it now)."
