@@ -1,0 +1,411 @@
+{
+ "parts": [
+  {
+   "id": "PT853",
+   "link": "https://www.ebay.com/b/Interior-Consoles-Parts-for-Mazda-RX-7/262189/bn_1435866",
+   "support": "",
+   "cad": "",
+   "note_add": "No new 79-85 front console found: Atkins Rotary's console categories start at 1986. Used only (eBay consoles category, PartRequest). The 1985 manual's instrument panel structural view (S-002 sec.14 p.14-2) numbers the brake cover, coin box, rear console and two switch panels as separate pieces around it."
+  },
+  {
+   "id": "PT857",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT858",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT859",
+   "link": "https://octoclassic.com/es/producto/mazda-rx7-s2-center-console-switch-panel-ashtray-black-fa01-64-451",
+   "support": "",
+   "cad": "",
+   "note_add": "Octoclassic (Spain) lists FA01-64-451 new in black at EUR 75.60 (2026-09-27), described as the series-2 (81-83) console switch panel."
+  },
+  {
+   "id": "PT860",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "The 1985 manual's instrument panel view (S-002 sec.14 p.14-2, item 10) shows the coin box in the same console position as the switch panels."
+  },
+  {
+   "id": "PT864",
+   "link": "https://knownmotors.com/products/1981-1983-mazda-rx7-fb-power-mirror-switch",
+   "support": "",
+   "cad": "",
+   "note_add": "Six-terminal rocker: one feed (WG, 10 A fuse shared with the hazard flasher), one ground, LH and RH select leads and two leads common to both mirrors; test it with an ohmmeter against the 1985 manual's continuity table (S-002 p.15-42). Used only: Known Motors USD 30, sold out 2026-09-27; no new FA02-66-600A found (Atkins lists only the 86-91 FB02-66-600B)."
+  },
+  {
+   "id": "PT861",
+   "link": "https://www.ebay.com/b/Interior-Consoles-Parts-for-Mazda-RX-7/262189/bn_1435866",
+   "support": "",
+   "cad": "",
+   "note_add": "No new rear console found; used only. A printable cup-holder tray for its compartment is already in the CAD table (sa-fb-cup-holders-thingiverse-logicallucario)."
+  },
+  {
+   "id": "PT862",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT863",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT878",
+   "link": "https://www.partrequest.com/catalog/seats/mazda/mazda-rx-7",
+   "support": "",
+   "cad": "",
+   "note_add": "The 1985 manual's seat structural view (S-002 sec.14 p.14-3) shows both the high-back and the head-rest type: two adjusters, reclining knuckle and knuckle cover, cushion, back, hinge cover, washer, bush and bolt. Inspection: adjuster lever and knuckle move smoothly (grease the moving parts), adjustment lever not worn, mounting bolts tight. No torque given there."
+  },
+  {
+   "id": "PT879",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT880",
+   "link": "https://www.racingbeateurope.com/rx7-81-83-lo-back-seat-covers-4461-p.asp",
+   "support": "",
+   "cad": "",
+   "note_add": "Reproduction covers: Racing Beat kit 4461 for 81-83 lo-back seats with non-leather trim, fabric-backed vinyl in black, burgundy or briar brown, covers for a pair with hog rings and pliers, made to order (GBP 431.52 ex VAT at Racing Beat Europe, 8-10 weeks, 2026-09-27; racingbeat.com Upholstery Kits 1975-85 in the US). Original cloth-velour not reproduced."
+  },
+  {
+   "id": "PT881",
+   "link": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/seats-good-shape-check-foam-1143144/",
+   "support": "",
+   "cad": "",
+   "note_add": "No new foam found. Owners report the denser foam blocks in the bolster sides crumble away; the cover is held by hog rings (about half must come off to peel the cover back)."
+  },
+  {
+   "id": "PT882",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT883",
+   "link": "https://www.racingbeateurope.com/rx7-81-83-lo-back-seat-covers-4461-p.asp",
+   "support": "",
+   "cad": "",
+   "note_add": "Covered by the same Racing Beat kit 4461 as the cushion cover (pair, vinyl, made to order)."
+  },
+  {
+   "id": "PT884",
+   "link": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/seats-good-shape-check-foam-1143144/",
+   "support": "",
+   "cad": "",
+   "note_add": "No new foam found; see the cushion frame and pad for the bolster-foam failure owners report."
+  },
+  {
+   "id": "PT885",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Service per the 1985 manual (S-002 sec.14 p.14-3): must move smoothly, grease the moving parts. Not found for sale new; used recline lever assemblies from 1983 GS donors appear on PartRequest."
+  },
+  {
+   "id": "PT886",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT887",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT888",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT889",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "Service per the 1985 manual (S-002 sec.14 p.14-3): adjuster lever must move smoothly, grease the moving parts, check the lever for wear and the mounting bolts for looseness."
+  },
+  {
+   "id": "PT890",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  }
+ ],
+ "specs": [
+  {
+   "part": "PT864",
+   "category": "Electrical",
+   "item": "Supply fuse (X-04, constant battery, shared with the hazard flasher)",
+   "value": "10",
+   "unit": "A",
+   "source": "S-001",
+   "page": "28",
+   "confidence": "primary",
+   "applies": "",
+   "note": "WR from the battery through the 1.25 sq fusible link to fuse X-04, out as WG to the switch; ground B to X-13"
+  },
+  {
+   "part": "PT864",
+   "category": "Electrical",
+   "item": "Switch continuity, Left side UP: terminals joined",
+   "value": "c-d-f and a-b",
+   "unit": "",
+   "source": "S-002",
+   "page": "15-42",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual remote control mirror switch inspection table; the 1982 diagram (S-001 p.28) shows the same six-wire switch and circuit but gives no letters"
+  },
+  {
+   "part": "PT864",
+   "category": "Electrical",
+   "item": "Switch continuity, Left side DOWN: terminals joined",
+   "value": "c-b-f and a-d",
+   "unit": "",
+   "source": "S-002",
+   "page": "15-42",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual remote control mirror switch inspection table; the 1982 diagram (S-001 p.28) shows the same six-wire switch and circuit but gives no letters"
+  },
+  {
+   "part": "PT864",
+   "category": "Electrical",
+   "item": "Switch continuity, Left side LEFT: terminals joined",
+   "value": "c-d and a-b",
+   "unit": "",
+   "source": "S-002",
+   "page": "15-42",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual remote control mirror switch inspection table; the 1982 diagram (S-001 p.28) shows the same six-wire switch and circuit but gives no letters"
+  },
+  {
+   "part": "PT864",
+   "category": "Electrical",
+   "item": "Switch continuity, Left side RIGHT: terminals joined",
+   "value": "c-b and a-d",
+   "unit": "",
+   "source": "S-002",
+   "page": "15-42",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual remote control mirror switch inspection table; the 1982 diagram (S-001 p.28) shows the same six-wire switch and circuit but gives no letters"
+  },
+  {
+   "part": "PT864",
+   "category": "Electrical",
+   "item": "Switch continuity, Right side UP: terminals joined",
+   "value": "c-d-f and a-e",
+   "unit": "",
+   "source": "S-002",
+   "page": "15-42",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual remote control mirror switch inspection table; the 1982 diagram (S-001 p.28) shows the same six-wire switch and circuit but gives no letters"
+  },
+  {
+   "part": "PT864",
+   "category": "Electrical",
+   "item": "Switch continuity, Right side DOWN: terminals joined",
+   "value": "c-e-f and a-d",
+   "unit": "",
+   "source": "S-002",
+   "page": "15-42",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual remote control mirror switch inspection table; the 1982 diagram (S-001 p.28) shows the same six-wire switch and circuit but gives no letters"
+  },
+  {
+   "part": "PT864",
+   "category": "Electrical",
+   "item": "Switch continuity, Right side LEFT: terminals joined",
+   "value": "c-d and a-e",
+   "unit": "",
+   "source": "S-002",
+   "page": "15-42",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual remote control mirror switch inspection table; the 1982 diagram (S-001 p.28) shows the same six-wire switch and circuit but gives no letters"
+  },
+  {
+   "part": "PT864",
+   "category": "Electrical",
+   "item": "Switch continuity, Right side RIGHT: terminals joined",
+   "value": "c-e and a-d",
+   "unit": "",
+   "source": "S-002",
+   "page": "15-42",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual remote control mirror switch inspection table; the 1982 diagram (S-001 p.28) shows the same six-wire switch and circuit but gives no letters"
+  },
+  {
+   "part": "PT864",
+   "category": "Electrical",
+   "item": "Connector terminals",
+   "value": "6",
+   "unit": "",
+   "source": "S-001",
+   "page": "28",
+   "confidence": "primary",
+   "applies": "",
+   "note": "I-01: B, WG, LgR in one row, Lg, LgB, LgY in the other; 1985 letters e c a / f d b read mirrored (S-002 p.15-42)"
+  }
+ ],
+ "terminals": [
+  {
+   "part": "PT864",
+   "terminal": "c",
+   "function": "Supply (+12 V constant)",
+   "inside": "common feed contact: closes to d and f (UP), b/e and f (DOWN), d (LEFT), b or e (RIGHT)",
+   "wire": "WG",
+   "to": "fuse X-04 10 A, fed WR from the battery through the 1.25 sq fusible link",
+   "source": "S-001",
+   "page": "28",
+   "note": "the 1985 manual's terminal letters (S-002 p.15-42) matched to the 1982 connector I-01 (S-001 p.28) by wire position; confirm on the car"
+  },
+  {
+   "part": "PT864",
+   "terminal": "a",
+   "function": "Ground return",
+   "inside": "common return contact: closes to b or e (UP, LEFT), d (DOWN, RIGHT)",
+   "wire": "B",
+   "to": "ground X-13",
+   "source": "S-001",
+   "page": "28",
+   "note": "the 1985 manual's terminal letters (S-002 p.15-42) matched to the 1982 connector I-01 (S-001 p.28) by wire position; confirm on the car"
+  },
+  {
+   "part": "PT864",
+   "terminal": "b",
+   "function": "Left mirror motor lead (side select)",
+   "inside": "joined to a in left-side UP and LEFT, to c in left-side DOWN and RIGHT; open in right-side positions",
+   "wire": "Lg",
+   "to": "X-02 then door connector I-02 to the LH mirror I-03 (Lg)",
+   "source": "S-001",
+   "page": "28",
+   "note": "the 1985 manual's terminal letters (S-002 p.15-42) matched to the 1982 connector I-01 (S-001 p.28) by wire position; confirm on the car"
+  },
+  {
+   "part": "PT864",
+   "terminal": "e",
+   "function": "Right mirror motor lead (side select)",
+   "inside": "joined to a in right-side UP and LEFT, to c in right-side DOWN and RIGHT; open in left-side positions",
+   "wire": "LgR",
+   "to": "inpane-to-door connector I-04, continues as Lg to the RH mirror I-05",
+   "source": "S-001",
+   "page": "28",
+   "note": "the 1985 manual's terminal letters (S-002 p.15-42) matched to the 1982 connector I-01 (S-001 p.28) by wire position; confirm on the car"
+  },
+  {
+   "part": "PT864",
+   "terminal": "d",
+   "function": "Motor lead common to both mirrors",
+   "inside": "joined to c in UP and LEFT, to a in DOWN and RIGHT",
+   "wire": "LgB",
+   "to": "both mirrors through I-02 (LH) and I-04 (RH)",
+   "source": "S-001",
+   "page": "28",
+   "note": "the 1985 manual's terminal letters (S-002 p.15-42) matched to the 1982 connector I-01 (S-001 p.28) by wire position; confirm on the car"
+  },
+  {
+   "part": "PT864",
+   "terminal": "f",
+   "function": "Axis-select clutch lead common to both mirrors",
+   "inside": "joined to c in UP and DOWN only; open in LEFT and RIGHT",
+   "wire": "LgY",
+   "to": "both mirrors through I-02 (LH) and I-04 (RH)",
+   "source": "S-001",
+   "page": "28",
+   "note": "the 1985 manual's terminal letters (S-002 p.15-42) matched to the 1982 connector I-01 (S-001 p.28) by wire position; confirm on the car"
+  }
+ ],
+ "sources": [
+  {
+   "key": "src-knownmotors-fb-mirror-switch",
+   "title": "Known Motors - 1981-1983 Mazda RX7 FB Power Mirror Switch (used)",
+   "kind": "web",
+   "covers": "PT864 used listing, USD 30, sold out 2026-09-27",
+   "url": "https://knownmotors.com/products/1981-1983-mazda-rx7-fb-power-mirror-switch",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "visually inspected, switch clicks, sold as is"
+  },
+  {
+   "key": "src-octoclassic-fa0164451",
+   "title": "Octoclassic - Mazda RX7 S2 center console switch panel, black FA01-64-451 (new)",
+   "kind": "web",
+   "covers": "PT859 new listing EUR 75.60, 2026-09-27",
+   "url": "https://octoclassic.com/es/producto/mazda-rx7-s2-center-console-switch-panel-ashtray-black-fa01-64-451",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Spanish reseller; title says 'ashtray' but the part number is the console switch panel"
+  },
+  {
+   "key": "src-rbe-4461-seat-covers",
+   "title": "Racing Beat Europe - RX7 81-83 Lo-Back Seat Covers (kit 4461)",
+   "kind": "web",
+   "covers": "PT880, PT883 reproduction vinyl covers, pair, black/burgundy/briar brown, GBP 431.52 ex VAT, 8-10 weeks",
+   "url": "https://www.racingbeateurope.com/rx7-81-83-lo-back-seat-covers-4461-p.asp",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "US page https://www.racingbeat.com/RX7-1975-1985/Upholstery-Kits.html refused the fetch (403)"
+  },
+  {
+   "key": "src-rx7club-seat-foam",
+   "title": "RX7Club 1st-gen forum - Seats on Good Shape? Check the Foam!",
+   "kind": "forum",
+   "covers": "PT881, PT884 bolster foam failure, hog-ring cover attachment, DIY foam repair",
+   "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/seats-good-shape-check-foam-1143144/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": ""
+  },
+  {
+   "key": "src-rx7club-remote-mirrors",
+   "title": "RX7Club 1st-gen forum - Remote mirrors stopped working",
+   "kind": "forum",
+   "covers": "PT864 fault finding: both mirrors dead at once was the shared fuse; check the switch plug and mirror plugs",
+   "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/remote-mirrors-stopped-working-1066180/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "1980 SA car"
+  }
+ ],
+ "cad": []
+}

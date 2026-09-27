@@ -9,10 +9,10 @@
   },
   {
    "id": "PT796",
-   "link": "https://www.partrequest.com/catalog/glass/mazda/mazda-rx-7",
+   "link": "",
    "support": "",
    "cad": "",
-   "note_add": "Removal per the 1985 manual (S-002 sec.14 p.14-9): regulator handle, inner handle cover, arm rest, trim, inner handle, watershield, then the glass-to-regulator screws and grommets. New glass not found; used glass through salvage listings only."
+   "note_add": "Removal per the 1985 manual (S-002 sec.14 p.14-9): regulator handle, inner handle cover, arm rest, trim, inner handle, watershield, then the glass-to-regulator screws and grommets. New glass not found."
   },
   {
    "id": "PT797",
@@ -44,10 +44,10 @@
   },
   {
    "id": "PT801",
-   "link": "https://www.ebay.com/itm/186723600335",
+   "link": "",
    "support": "",
    "cad": "fb-door-lock-guide-printables-lovc",
-   "note_add": "Catalogue (S-005 p.69) gives 8871-58-310E / -59-310E for '81 and '82 models, FQ23-58-310 / -59-310 for '83. The 1985 manual (S-002 sec.14 p.14-11) says to fit a new outer-handle nylon bush (1243-58-411) whenever the lock is reinstalled and to adjust the inner handle for play. No new latch found; used only."
+   "note_add": "Catalogue (S-005 p.69) gives 8871-58-310E / -59-310E for '81 and '82 models, FQ23-58-310 / -59-310 for '83. The 1985 manual (S-002 sec.14 p.14-11) says to fit a new outer-handle nylon bush whenever the lock is reinstalled (the catalogue lists the bushing as 1243-58-411, S-005 p.69 item 58411) and to adjust the inner handle for play. No new latch found; used only."
   },
   {
    "id": "PT802",
@@ -75,7 +75,7 @@
    "link": "https://www.atkinsrotary.com/79-85-Rx7-Black-Door-Handle-8871-59-410C.html",
    "support": "",
    "cad": "",
-   "note_add": "Genuine handles still sold: Atkins Rotary USD 97 (listed under 8871-59-410C, says it fits either side: check against the R/L catalogue numbers); Amazon and eBay sellers offer the 8871-58-410C / -59-410C pair, which is shared with the 1981-84 B2000/B2200 pickup. Fit a new nylon bushing 1243-58-411 when the lock is reinstalled (S-002 sec.14 p.14-11)."
+   "note_add": "Genuine handles still sold: Atkins Rotary USD 97 (listed under 8871-59-410C, says it fits either side: check against the R/L catalogue numbers). Fit a new outer-handle nylon bush when the lock is reinstalled (S-002 sec.14 p.14-11; the catalogue lists it as 1243-58-411, S-005 p.69 item 58411)."
   },
   {
    "id": "PT806",
@@ -89,7 +89,7 @@
    "link": "https://www.atkinsrotary.com/79-85-Rx7-Window-Regulator.html",
    "support": "",
    "cad": "",
-   "note_add": "Genuine manual regulators still sold by Atkins Rotary (USD 210, driver or passenger side, 2026-09-26). Catalogue (S-005 p.69): 8871-58-560A / -59-560A are the S and GS manual units, FA02-58-560 / -59-560 the GSL power units. Adjustment (S-002 sec.14 p.14-10): glass raised fully, horizontal by moving the regulator guide, fore-and-aft by the glass-guide adjusting bolt."
+   "note_add": "Manual regulators still sold by Atkins Rotary (USD 210, driver or passenger side, manufacturer field reads Mazda, the page does not say genuine or reproduction, 2026-09-26). Catalogue (S-005 p.69): 8871-58-560A / -59-560A are the S and GS manual units, FA02-58-560 / -59-560 the GSL power units. Adjustment (S-002 sec.14 p.14-10): glass raised fully, horizontal by moving the regulator guide, fore-and-aft by the glass-guide adjusting bolt."
   },
   {
    "id": "PT808",
@@ -124,7 +124,7 @@
    "link": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/hatch-latch-differences-1093370/",
    "support": "",
    "cad": "",
-   "note_add": "The 1985 manual's figure of this lock (S-002 sec.14 p.14-12, fig 47U14X-034) shows a switch built into the lock body with contact points A and B beside the key cylinder; the lock is adjusted to the striker by loosening its attaching bolts. rx7club: 1981-85 GS/GSL use the power latch FA01-62-310, S models the manual FA02-62-310; 1979-80 latches have a different bolt spacing and do not swap. No new latch found."
+   "note_add": "The 1985 manual's figure of this lock (S-002 sec.14 p.14-12, fig 47U14X-034) shows a switch built into the lock body with contact points A and B beside the key cylinder; the lock is adjusted to the striker by loosening its attaching bolts. rx7club: 1981-85 GS/GSL use the power latch FA01-62-310, S models the manual FA02-62-310; the 1979 latch (8871-62-310B) has a different bolt spacing from the 1980 one (3.990 vs 4.320 in between the diagonal holes, measured by a member) and the thread says little interchanges between 1979-80 and 1981-85. No new latch found."
   },
   {
    "id": "PT813",
@@ -166,7 +166,7 @@
    "link": "https://www.atkinsrotary.com/79-85-Rx7-Right-Rear-Quarter-Window-Trim-FA01-51-881A.html",
    "support": "",
    "cad": "",
-   "note_add": "Atkins Rotary lists FA01-51-881A (R) and FA01-51-891A (L) as no longer available (2026-09-26)."
+   "note_add": "Atkins Rotary lists the right (FA01-51-881A) and left (FA01-51-891A) garnishes as no longer available at USD 50 (2026-09-26); its SKU field prints them as 8871-51-881A and 8871-51-891. The catalogue (S-005 p.93, fig 6300A-1 items 51881A / 51891A) prints FA01-51-881A and FA01-51-891A."
   }
  ],
  "specs": [
@@ -341,14 +341,14 @@
   {
    "part": "PT807",
    "category": "Body",
-   "item": "Replacement genuine manual regulator price, each (Atkins Rotary)",
+   "item": "Replacement manual regulator price, each (Atkins Rotary)",
    "value": "210",
    "unit": "USD",
    "source": "src-atkins-window-regulator-560",
    "page": "product page",
    "confidence": "secondary",
    "applies": "",
-   "note": "driver or passenger side; listed weight 6 lb"
+   "note": "driver or passenger side; listed weight 6 lb; manufacturer field reads Mazda, the page does not say genuine or reproduction"
   },
   {
    "part": "PT805",
@@ -399,7 +399,7 @@
    "credibility": "secondary",
    "obtained": "no",
    "local_path": "",
-   "note": "USD 210 each, OEM"
+   "note": "USD 210 each; manufacturer field reads Mazda, page does not say genuine or reproduction"
   },
   {
    "key": "src-atkins-crank-handles",
@@ -471,7 +471,7 @@
    "credibility": "tertiary",
    "obtained": "no",
    "local_path": "",
-   "note": "latch numbers by year, striker 8871-62-361 same 79-85, bolt spacing differs 79 vs 80+"
+   "note": "latch numbers by year, striker 8871-62-361 same 79-85, bolt spacing measured different 79 vs 80"
   },
   {
    "key": "src-rx7club-hatch-struts",
@@ -522,18 +522,6 @@
    "note": "USD 95"
   },
   {
-   "key": "src-amazon-door-handle-410c",
-   "title": "Amazon - Mazda RX-7 1979-85 and B2000/B2200 1981-84 OEM exterior door handle 8871-59-410C",
-   "kind": "web",
-   "covers": "PT805",
-   "url": "https://www.amazon.com/Mazda-1979-1985-1981-1984-exterior-8871-59-410C/dp/B00MJCKVH4",
-   "format": "html",
-   "credibility": "tertiary",
-   "obtained": "no",
-   "local_path": "",
-   "note": "handle shared with the B-series pickup"
-  },
-  {
    "key": "src-p4p-lexan-quarter",
    "title": "Plastics4Performance - Mazda RX7 FB Lexan polycarbonate right rear quarter window",
    "kind": "web",
@@ -579,7 +567,7 @@
    "credibility": "secondary",
    "obtained": "no",
    "local_path": "",
-   "note": "left FA01-51-891A also NLA"
+   "note": "left FA01-51-891A also NLA (own page, USD 50); Atkins SKU field prints 8871-51-881A / 8871-51-891"
   }
  ],
  "cad": []

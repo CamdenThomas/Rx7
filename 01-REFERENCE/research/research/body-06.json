@@ -1,0 +1,519 @@
+{
+ "parts": [
+  {
+   "id": "PT705",
+   "link": "https://www.atkinsrotary.com/81-83-rx7-complete-lock-set-fa01-09-010b-.html",
+   "support": "",
+   "cad": "",
+   "note_add": "The undescribed row after the set bolts on 0900A-1 (S-005 Body-Index p.25) reads RETAINER, LOCK CYLINDER, B001-62-495 (the OCR reads the prefix as B001, not 8001), fitted from FB331 501578-; the same figure lists the buzzer (key reminder) switch BA14-66-156 and the ignition switch BA24-66-155A (from FB331 642150-) as separate parts. Atkins Rotary lists the complete lock set at US$600, no longer available; used ignition lock cylinder and switch sets with key sell for about US$140 (Autopartone, sold out 2026-09-27)."
+  },
+  {
+   "id": "PT706",
+   "link": "https://mazdatrix.com/product/key-blank-70-82-rotor-type-b/",
+   "support": "",
+   "cad": "",
+   "note_add": "Ilco's classic cross-reference gives two blanks for the 1981-82 RX-7 by key code series: X26 / MZ9 for codes 2500-2999 and X27 / MZ10 for codes 3000-3499 (the code is stamped on the lock or the original key; which series this car is, check). Mazdatrix sells a rotor-head blank for 1970-82 Mazdas in two profiles, type A and type B (relief groove on the bottom for type B), US$21 each, matched to the original key."
+  },
+  {
+   "id": "PT707",
+   "link": "https://www.autopartone.com/products/81-83-mazda-rx7-oem-ignition-lock-cylinder-switch",
+   "support": "",
+   "cad": "",
+   "note_add": "Held to the column jacket by two shear-head set bolts; the 1985 manual's procedure (S-002 sec.10A p.10A-14/15) removes the wheel, column covers and combination switch, splits the old bolts with a chisel and tightens the new ones until the heads snap off. The '83 bolt H043-66-154 is sold by Atkins Rotary for 81-95 RX-7s (US$9 each, two per car); the catalogue lists 8218-66-143 for '81-'82 (S-005 Body-Index p.25). No new lock listed; used sets only."
+  },
+  {
+   "id": "PT711",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT743",
+   "link": "https://www.atkinsrotary.com/Chassis-and-Body/Mazda-Rear-Spoilers-and-Parts/",
+   "support": "",
+   "cad": "",
+   "note_add": "Described by owners as an unpainted one-piece natural-rubber spoiler held by seven threaded studs moulded into the rubber (10 mm nuts), five metal slots taking plugs into the body, and self-tapping screws at the leading tips (rx7club thread, S-005 cited there; check on the car). No new or reproduction one-piece spoiler found; Atkins Rotary's 79-85 rear wing (US$350) is no longer available, used only."
+  },
+  {
+   "id": "PT822",
+   "link": "",
+   "support": "",
+   "cad": "rx7-dash-scan-thingiverse-cabentley22",
+   "note_add": "The 1985 manual's instrument-panel structural view (S-002 sec.14 p.14-2) numbers 32 pieces from the horn cap to the panel itself: column covers, combination switch, switch panels, glove pocket lid and compartment, ash tray, centre panel, radio, clock, garnishes, meter hood and cluster come off before the panel bolts (4); the 1985 dash differs in detail from the '82. The only CAD is a partial dash scan whose generation is not stated."
+  },
+  {
+   "id": "PT823",
+   "link": "https://mazdatrix.com/product/dash-cover-rx7-79-83-black/",
+   "support": "https://www.justdashes.com/mazda/rx7/1980-82-mazda-rx-7-dash-pad-restoration/",
+   "cad": "",
+   "note_add": "New pads are not sold; the options are a glued-on cap (Mazdatrix MZTX-24-707B black US$157.30 or burgundy US$236.25; Accuform ACCU-400 high-temperature ABS dash cap for 1978-83, US$183.59) or restoration of the original pad by Just Dashes, Van Nuys CA (818-780-9005)."
+  },
+  {
+   "id": "PT824",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT826",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT827",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT828",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT829",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT830",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": "A printable glove box catch scanned from a 1985 FB exists (cad row fb-glove-box-catch-printables-themagicd); whether the '82 striker 8871-64-101 matches it, check."
+  },
+  {
+   "id": "PT831",
+   "link": "https://www.partrequest.com/catalog/glove-boxes/mazda/mazda-rx-7",
+   "support": "",
+   "cad": "",
+   "note_add": "No new or reproduction lid found; Atkins Rotary and Mazdatrix list no glove box parts for 79-85, used only (salvage listings)."
+  },
+  {
+   "id": "PT834",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT835",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT837",
+   "link": "https://www.autopart3.com/products/81-82-83-mazda-rx7-oem-dash-radio-climate-control-bezel-trim-cover-panel",
+   "support": "",
+   "cad": "",
+   "note_add": "Used only: Autopart3 lists a grey 81-83 radio and climate-control bezel at US$287 (sold out 2026-09-27). An rx7club member has had the FB radio surround, column bezels and switch surrounds 3D-scanned for reprinting but has not released the files."
+  },
+  {
+   "id": "PT838",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT839",
+   "link": "",
+   "support": "",
+   "cad": "",
+   "note_add": ""
+  },
+  {
+   "id": "PT846",
+   "link": "https://www.autopart3.com/search?q=81-83+mazda+rx7+dash",
+   "support": "",
+   "cad": "",
+   "note_add": "Discontinued by Mazda (Mazdatrix); used 81-83 dash ash trays sell for US$75-125 and the holder bracket US$58 (Autopart3, 2026-09-27)."
+  },
+  {
+   "id": "PT847",
+   "link": "https://mazdatrix.com/product-category/interior/dash-parts/",
+   "support": "",
+   "cad": "",
+   "note_add": "Mazdatrix lists the 81-83 ash tray inner as 64-6300-FA01-00 (FA01-64-630-00), discontinued."
+  },
+  {
+   "id": "PT850",
+   "link": "https://mazdatrix.com/product-category/interior/column-covers/",
+   "support": "",
+   "cad": "",
+   "note_add": "Mazdatrix lists FA01-60-220A as the 81-83 UPPER column cover and FA01-60-230 as the LOWER, both discontinued by Mazda, and the 1985 manual calls the pair upper and lower (S-002 sec.14 p.14-2): whether these halves split upper/lower rather than right/left, check on the car."
+  },
+  {
+   "id": "PT851",
+   "link": "https://mazdatrix.com/product-category/interior/column-covers/",
+   "support": "",
+   "cad": "",
+   "note_add": "Mazdatrix lists FA01-60-230 as the 81-83 LOWER column cover (FA01-60-220A the upper), discontinued by Mazda; the right/left naming here, check on the car."
+  }
+ ],
+ "specs": [
+  {
+   "part": "PT706",
+   "category": "Body",
+   "item": "Replacement Ilco X26 / MZ9 (plastic head -P): key blank for 1981-82 RX-7 locks in key code series",
+   "value": "2500-2999",
+   "unit": "code",
+   "source": "src-ilco-classic-keyblank-xref",
+   "page": "p.11 (Mazda table)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Ilco/EZ blank X26 = MZ9, listed for all locks of the 1981-82 RX-7 in that code series; which series this car's locks are, check the code on the key or lock"
+  },
+  {
+   "part": "PT706",
+   "category": "Body",
+   "item": "Replacement Ilco X27 / MZ10: key blank for 1981-82 RX-7 locks in key code series",
+   "value": "3000-3499",
+   "unit": "code",
+   "source": "src-ilco-classic-keyblank-xref",
+   "page": "p.11 (Mazda table)",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Ilco/EZ blank X27 = MZ10, listed for all locks of the 1981-82 RX-7 in that code series"
+  },
+  {
+   "part": "PT706",
+   "category": "Body",
+   "item": "Replacement Mazdatrix KB-70-82-TYPEA / KB-70-82-TYPEB rotor-head key blank, 1970-82 Mazda: price each",
+   "value": "21",
+   "unit": "USD",
+   "source": "src-mazdatrix-keyblank-70-82",
+   "page": "product page",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Two profiles; type B has the relief groove on the bottom of the blade. Match to the original key before ordering. Price read 2026-09-27"
+  },
+  {
+   "part": "PT707",
+   "category": "Body",
+   "item": "Steering lock set bolts (shear-head), quantity",
+   "value": "2",
+   "unit": "",
+   "source": "S-005",
+   "page": "Body-Index p.25 (fig. 0900A-1, item 66154)",
+   "confidence": "primary",
+   "applies": "",
+   "note": "8218-66-143 for '81-'82 (FB331 500001-700000); H043-66-154 for '83"
+  },
+  {
+   "part": "PT707",
+   "category": "Body",
+   "item": "Steering lock set bolts: installation",
+   "value": "tighten until the bolt heads snap off",
+   "unit": "",
+   "source": "S-002",
+   "page": "Section 10A Manual Steering p.10A-15 (PDF p.15)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual; the old bolts are loosened with a chisel, a protector placed under the lock body to shield the shaft from hammer blows. Same shear-head bolt design as the '81-'83 catalogue lists"
+  },
+  {
+   "part": "PT707",
+   "category": "Body",
+   "item": "Replacement Mazda H043-66-154 steering lock bolt (Atkins Rotary, fits 81-95 RX-7): price each",
+   "value": "9",
+   "unit": "USD",
+   "source": "src-atkins-steering-lock-bolt",
+   "page": "product page",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Two per vehicle; in stock 2026-09-27. The catalogue's '81-'82 number is 8218-66-143"
+  },
+  {
+   "part": "PT705",
+   "category": "Body",
+   "item": "Replacement Mazda FA01-09-010B complete lock set (Atkins Rotary): price",
+   "value": "600",
+   "unit": "USD",
+   "source": "src-atkins-lock-set-fa01-09-010b",
+   "page": "product page",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "No longer available; listed weight about 3 lb. Read 2026-09-27"
+  },
+  {
+   "part": "PT743",
+   "category": "Body",
+   "item": "Mounting: threaded studs moulded into the rubber",
+   "value": "7",
+   "unit": "",
+   "source": "src-rx7club-fb-factory-spoilers",
+   "page": "page 3",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Owner description (Stu Aull), taking 10 mm nuts; plus 5 metal slots for body plugs and self-tapping screws at the leading tips. Check on the car"
+  },
+  {
+   "part": "PT743",
+   "category": "Body",
+   "item": "Mounting: metal slots in the rubber taking plugs into the body",
+   "value": "5",
+   "unit": "",
+   "source": "src-rx7club-fb-factory-spoilers",
+   "page": "page 3",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Owner description; check on the car"
+  },
+  {
+   "part": "PT743",
+   "category": "Body",
+   "item": "Material and finish",
+   "value": "unpainted natural rubber, one piece",
+   "unit": "",
+   "source": "src-rx7club-fb-factory-spoilers",
+   "page": "page 3",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Owner description citing the 81-83 parts catalogue: only the one-piece rubber spoiler is factory; the three-piece urethane spoiler is not"
+  },
+  {
+   "part": "PT823",
+   "category": "Body",
+   "item": "Replacement Accuform ACCU-400 dash cap, 1978-83 RX-7: material",
+   "value": "high-temperature ABS",
+   "unit": "",
+   "source": "src-autoobsession-accuform-dash-cap",
+   "page": "product page",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Glued over the original pad with the supplied silicone adhesive, about 30 min to fit and 2 h to cure; US$183.59, ships as a 60 x 16 x 10 in carton. Read 2026-09-27"
+  },
+  {
+   "part": "PT823",
+   "category": "Body",
+   "item": "Replacement Mazdatrix MZTX-24-707B dash cover, 79-83 black: price",
+   "value": "157.30",
+   "unit": "USD",
+   "source": "src-mazdatrix-dash-cover-79-83",
+   "page": "product page",
+   "confidence": "secondary",
+   "applies": "",
+   "note": "Glued-on cap with glue and instructions, about 1 h to fit; burgundy MZTX-24-707BURG US$236.25. Read 2026-09-27"
+  },
+  {
+   "part": "PT822",
+   "category": "Body",
+   "item": "Instrument panel fixing bolts",
+   "value": "4",
+   "unit": "",
+   "source": "S-002",
+   "page": "Section 14 Body p.14-2 structural view, item 31 (PDF p.2)",
+   "confidence": "primary",
+   "applies": "other-car",
+   "note": "1985 manual; also 3 bolts at the brake cover (item 8) and 2 at the garnish (item 27). The 1985 dash differs from the '82; check"
+  }
+ ],
+ "terminals": [],
+ "sources": [
+  {
+   "key": "src-ilco-classic-keyblank-xref",
+   "title": "Ilco - Classic Auto Truck Key Blank Reference, Model Years 1940-1985 (Kaba Ilco)",
+   "kind": "datasheet",
+   "covers": "PT706 PT705",
+   "url": "https://www.keycraze.com/ilco/classic-auto-truck-cross-reference.pdf",
+   "format": "pdf",
+   "credibility": "secondary",
+   "obtained": "yes",
+   "local_path": "01-REFERENCE/model/library/datasheets/PT706/ilco-classic-auto-truck-key-blank-cross-reference.pdf",
+   "note": "16 pages; Mazda table on p.11: RX7 1981-82 all locks, code series 2500-2999 X26/MZ9 [-P], 3000-3499 X27/MZ10"
+  },
+  {
+   "key": "src-mazdatrix-keyblank-70-82",
+   "title": "Mazdatrix - Key blank 70-82, rotor type A (KB-70-82-TYPEA) and type B (KB-70-82-TYPEB)",
+   "kind": "web",
+   "covers": "PT706",
+   "url": "https://mazdatrix.com/product/key-blank-70-82-rotor-type-b/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "US$21 each, in stock 2026-09-27; type B relief groove on the bottom"
+  },
+  {
+   "key": "src-rx7club-1982-key-blanks-diy",
+   "title": "RX7Club 1st-gen forum - RX-7 1982 key blanks, my DIY",
+   "kind": "forum",
+   "covers": "PT706",
+   "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/rx-7-1982-key-blanks-my-diy-1148343/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Owner found rotor-head blanks online only for 83-85; pointed to Mazdatrix 70-82 type B and Rotary13B1; scanned and 3D-printed his own"
+  },
+  {
+   "key": "src-atkins-lock-set-fa01-09-010b",
+   "title": "Atkins Rotary - 81-83 Rx7 Complete Lock Set (FA01-09-010B) - NLA",
+   "kind": "web",
+   "covers": "PT705",
+   "url": "https://www.atkinsrotary.com/81-83-rx7-complete-lock-set-fa01-09-010b-.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "US$600, no longer available, 2026-09-27"
+  },
+  {
+   "key": "src-atkins-steering-lock-bolt",
+   "title": "Atkins Rotary - 81-11 Rx7 & Rx8 Steering Lock Bolt (H043-66-154)",
+   "kind": "web",
+   "covers": "PT707",
+   "url": "https://www.atkinsrotary.com/81-11-Rx7-and-Rx8-Steering-Lock-Bolt-H043-66-154.html",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "US$9, two per vehicle, in stock 2026-09-27; fits RX-7 1981-95"
+  },
+  {
+   "key": "src-autopartone-81-83-ignition-lock",
+   "title": "Autopartone - 81-83 Mazda RX7 OEM Ignition Lock Cylinder & Switch (used)",
+   "kind": "web",
+   "covers": "PT707 PT705",
+   "url": "https://www.autopartone.com/products/81-83-mazda-rx7-oem-ignition-lock-cylinder-switch",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Used, key included, US$140, sold out 2026-09-27"
+  },
+  {
+   "key": "src-rx7club-fb-factory-spoilers",
+   "title": "RX7Club 1st-gen forum - Question re: FB factory original spoilers (page 3)",
+   "kind": "forum",
+   "covers": "PT743",
+   "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/question-re-fb-factory-original-spoilers-477790/page3/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "FA16-51-960B one-piece unpainted rubber; 7 studs with 10 mm nuts, 5 slots, self-tapping screws at the tips"
+  },
+  {
+   "key": "src-atkins-rear-spoilers",
+   "title": "Atkins Rotary - Mazda Rear Spoilers & Parts (79-85 Rx7 rear wing, NLA)",
+   "kind": "web",
+   "covers": "PT743",
+   "url": "https://www.atkinsrotary.com/Chassis-and-Body/Mazda-Rear-Spoilers-and-Parts/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "79-85 rear wing US$350 out of stock, NLA, 2026-09-27"
+  },
+  {
+   "key": "src-justdashes-rx7-80-82-dash-pad",
+   "title": "Just Dashes - 1980-82 Mazda RX-7 dash pad restoration",
+   "kind": "web",
+   "covers": "PT823",
+   "url": "https://www.justdashes.com/mazda/rx7/1980-82-mazda-rx-7-dash-pad-restoration/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Restoration service, quote on request; 5941 Lemona Ave, Van Nuys CA 91411, 818-780-9005"
+  },
+  {
+   "key": "src-mazdatrix-dash-cover-79-83",
+   "title": "Mazdatrix - Dash cover, RX7 79-83 black (MZTX-24-707B) and burgundy (MZTX-24-707BURG)",
+   "kind": "web",
+   "covers": "PT823",
+   "url": "https://mazdatrix.com/product/dash-cover-rx7-79-83-black/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "US$157.30 black, US$236.25 burgundy, in stock 2026-09-27; glued-on cap"
+  },
+  {
+   "key": "src-autoobsession-accuform-dash-cap",
+   "title": "Auto Obsession - Accuform Dash-Cap, 1978-83 Mazda RX7 (ACCU-400)",
+   "kind": "web",
+   "covers": "PT823",
+   "url": "https://autoobsession.com/dash-cap-1978-83-mazda-rx7",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "High-temperature ABS overlay, US$183.59, silicone adhesive, lifetime warranty against cracking; 2026-09-27"
+  },
+  {
+   "key": "src-mazdatrix-dash-parts",
+   "title": "Mazdatrix - Dash Parts category (ash tray 81-83 64-6300-FA01-00 discontinued, dash covers 79-83)",
+   "kind": "web",
+   "covers": "PT846 PT847 PT823",
+   "url": "https://mazdatrix.com/product-category/interior/dash-parts/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Read 2026-09-27; most 79-85 interior parts discontinued"
+  },
+  {
+   "key": "src-mazdatrix-column-covers",
+   "title": "Mazdatrix - Column Covers category (81-83 upper FA01-60-220A and lower FA01-60-230, NLA)",
+   "kind": "web",
+   "covers": "PT850 PT851",
+   "url": "https://mazdatrix.com/product-category/interior/column-covers/",
+   "format": "html",
+   "credibility": "secondary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Both discontinued by Mazda, 2026-09-27"
+  },
+  {
+   "key": "src-autopart3-81-83-dash-bezel",
+   "title": "Autopart3 - 81 82 83 Mazda RX7 OEM dash radio climate control bezel trim cover panel (used, grey)",
+   "kind": "web",
+   "covers": "PT837",
+   "url": "https://www.autopart3.com/products/81-82-83-mazda-rx7-oem-dash-radio-climate-control-bezel-trim-cover-panel",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "US$287, sold out 2026-09-27"
+  },
+  {
+   "key": "src-autopart3-search-81-83-dash",
+   "title": "Autopart3 - search results, 81-83 Mazda RX7 dash (used ash trays, holder bracket, clocks, bezels)",
+   "kind": "web",
+   "covers": "PT846 PT847",
+   "url": "https://www.autopart3.com/search?q=81-83+mazda+rx7+dash",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Ash tray US$75 and US$125, ash tray holder bracket US$58, 2026-09-27"
+  },
+  {
+   "key": "src-rx7club-3d-printed-parts-update",
+   "title": "RX7Club 1st-gen forum - 3D printed parts update (UnregisteredSA22C: scanned FB column bezels, radio surround, switch surrounds, defroster vents)",
+   "kind": "forum",
+   "covers": "PT837 PT850 PT851 PT838",
+   "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/3d-printed-parts-update-1160054/",
+   "format": "html",
+   "credibility": "tertiary",
+   "obtained": "no",
+   "local_path": "",
+   "note": "Professional scans of FB dash trim; files not shared, possible future sale (last post March 2023)"
+  }
+ ],
+ "cad": []
+}

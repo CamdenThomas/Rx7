@@ -1,0 +1,116 @@
+{
+  "parts": [
+    {
+      "id": "PT030",
+      "link": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/hatch-release-solenoid-1084551/",
+      "support": "",
+      "cad": "",
+      "note_add": "Catalogue name is 'opener, remote control' 8341-62-315, GS and GSL only, one per car, figure 6230A-1 (S-005 Body-Index p.92, row BI-092-10 by list order). S-001 p.26: two wires, GR from the H-13 dash switch and B to ground X-15, on the 20 A constant fuse shared with the fuel-door release. Owners report the internal rubber bumpers crumble and jam the pinion; the unit unbolts (rod off the latch, two screws in its rubber boot), bends open at its tabs and cleans up; 1981-85 units interchange (rx7club thread). No new or used listing found (two searches, 2026-09-27)."
+    },
+    {
+      "id": "PT031",
+      "link": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/manually-opening-gas-lid-625353/",
+      "support": "",
+      "cad": "",
+      "note_add": "Catalogue name is 'opener, filler lid' FA01-42-480 with its bracket 8871-42-490 (S-005 numeric index, group 4200A-1). S-001 p.26: two wires, GB from the H-15 dash switch and B to ground X-15, 20 A constant fuse shared with the hatch release. Manual release: behind the left rear speaker cover or under the cargo carpet, a slide at the top of the mechanism pushed rearward (or the metal tab on the solenoid) drops the lid; never pry the lid from outside (rx7club thread). No listing found (two searches, 2026-09-27)."
+    },
+    {
+      "id": "PT032",
+      "link": "https://www.hollanderparts.com/used-auto-parts/1983/mazda/rx7/glass-and-mirrors/128-side-view-mirror/128-56249r-right-power,-r",
+      "support": "",
+      "cad": "",
+      "note_add": "S-001 p.28 drawing: each head is one reversible motor across Lg and LgB and one axis-select solenoid across LgY and B; the LH head's LgY runs straight from the switch through I-02, the RH head's solenoid wire is LgR in the dash harness and becomes LgY at I-04 in the door. Feed WG on the 10 A constant fuse at X-04, ground B via X-02 to X-13. Catalogue: remote-control type 8341-69-110A (R) and 8341-69-170A (L) for GS and GSL, held by four screws 8341-69-178 (S-005 Body-Index p.128). Atkins Rotary stocks no 79-85 side mirrors; used power heads are on Hollander (about 45-50 USD, 2026-09-27)."
+    },
+    {
+      "id": "PT963",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Catalogue: base (R), mirror 8341-69-131 'use with remote control mirror', GS and GSL, from chassis FB331-503736; the manual-mirror base is a different part, 8871-69-117A (S-005 Body-Index p.128). Sold only with a used mirror; no separate listing found (two searches, 2026-09-27)."
+    },
+    {
+      "id": "PT964",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Catalogue: base (L), mirror 8341-69-191 'use with remote control mirror', from chassis FB331-503736; the manual-mirror bases are 8871-69-177 (to FB331-507335) and 8871-69-177A (S-005 Body-Index p.129). Sold only with a used mirror; no separate listing found (two searches, 2026-09-27)."
+    },
+    {
+      "id": "PT817",
+      "link": "https://www.atkinsrotary.com/79-85-Rx7-Rear-Hatch-Seal-8871-62-761D.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.93 (fig 6300A-1, item 63-932, qty 1). Seals the glass hatch to the body. New OEM 8871-62-761D at Atkins Rotary (142.78 USD, supersedes 8871-62-761, -761B, -761C) and a Mazdatrix reproduction 8871-62-761D-MZ (53.75 USD), both in stock 2026-09-27."
+    },
+    {
+      "id": "PT818",
+      "link": "https://www.partrequest.com/catalog/mouldings-and-trim/mazda/mazda-rx-7",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Body-Index p.93 (fig 6300A-1, item 63-935, qty 1); the moulding around the rear (hatch) window glass. No new or reproduction moulding found online (two searches, 2026-09-27); used only."
+    },
+    {
+      "id": "PT173",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Catalogue row 42-410 'lid, fuel filler' 8871-42-410A is for the '81 and '82 models; the '83 lid is a different number, FA54-42-410 (S-005 Engine-Chassis p.107). Lift spring FA01-42-431B and two stoppers 0187-70-491 (from FB331-500063) sit with it. No new or used FB lid found online (two searches, 2026-09-27)."
+    },
+    {
+      "id": "PT552",
+      "link": "https://parts.gcmazda.com/p/Mazda__626/PLUG--SERVICE-COVER/105320985/0559-58-868.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Engine-Chassis p.104 (fig 4000A-2 exhaust system, item 58-868C 'plug, service cover'), the plug in the floor over the exhaust tunnel. The same number is still in the Mazda dealer catalogue as a 626 part, so it can be ordered through any Mazda dealer."
+    },
+    {
+      "id": "PT558",
+      "link": "",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Engine-Chassis p.108 (fig 4300A-1, item 43-041 'rest, foot'). The bare rest is not listed by Atkins Rotary or Mazdatrix; only its pad FA01-43-042 is sold new (two searches, 2026-09-27)."
+    },
+    {
+      "id": "PT559",
+      "link": "https://www.atkinsrotary.com/81-85-Rx7-Dead-Pedal-Pad-FA01-43-042.html",
+      "support": "",
+      "cad": "",
+      "note_add": "Diagram: S-005 Engine-Chassis p.108 (fig 4300A-1, item 43-042 'pad, foot rest', GS and GSL). New Mazda FA01-43-042 at Atkins Rotary, 6.75 USD, in stock 2026-09-27, fits 1981-85."
+    }
+  ],
+  "specs": [
+    {"part": "PT030", "category": "Electrical", "item": "Feed fuse (X-04, constant, shared with fuel-door release)", "value": "20", "unit": "A", "source": "S-001", "page": "26", "confidence": "primary", "applies": "", "note": "WR constant through X-04 20 A to LR, then the H-13 switch, then GR to the solenoid"},
+    {"part": "PT030", "category": "Electrical", "item": "Bench test", "value": "operates from a 12 V battery across its two terminals; replace if it does not move", "unit": "", "source": "S-002", "page": "15-41", "confidence": "secondary", "applies": "other-car", "note": "1985 manual, remote glass-hatch release solenoid check; S-001 p.26 shows the same two-wire solenoid"},
+    {"part": "PT031", "category": "Electrical", "item": "Feed fuse (X-04, constant, shared with hatch release)", "value": "20", "unit": "A", "source": "S-001", "page": "26", "confidence": "primary", "applies": "", "note": "WR constant through X-04 20 A to LR, then the H-15 switch, then GB to the solenoid"},
+    {"part": "PT031", "category": "Electrical", "item": "Feed wire size (LR, fuse to switch)", "value": "1.25", "unit": "mm2", "source": "S-002", "page": "15-38", "confidence": "secondary", "applies": "other-car", "note": "1985 circuit diagram, OPENER fuse 20 A; the 1982 diagram prints no wire size"},
+    {"part": "PT031", "category": "Electrical", "item": "Bench test", "value": "operates from a 12 V battery across its two terminals; replace if it does not move", "unit": "", "source": "S-002", "page": "15-39", "confidence": "secondary", "applies": "other-car", "note": "1985 manual, remote fuel-door release solenoid check"},
+    {"part": "PT032", "category": "Electrical", "item": "Feed fuse (X-04, constant)", "value": "10", "unit": "A", "source": "S-001", "page": "28", "confidence": "primary", "applies": "", "note": "WR constant through X-04 10 A to WG at the I-01 mirror switch; the 1985 car feeds the mirrors from the ACC CIGAR fuse instead (S-002 p.15-41)"},
+    {"part": "PT032", "category": "Electrical", "item": "Internal layout (per head)", "value": "one reversible motor across Lg and LgB; one axis-select solenoid across LgY and B", "unit": "", "source": "S-001", "page": "28", "confidence": "primary", "applies": "", "note": "the switch reverses the motor's polarity for direction and energises the solenoid to change axis; confirm on the car"},
+    {"part": "PT032", "category": "Electrical", "item": "Head connector continuity (1985 test)", "value": "a-b yes, c-d yes, a-c no, b-d no", "unit": "", "source": "S-002", "page": "15-41", "confidence": "secondary", "applies": "other-car", "note": "ohmmeter across the four cavities of the mirror connector; the 1985 letters a-d are not printed on the 1982 diagram"},
+    {"part": "PT032", "category": "Body", "item": "Mounting screws per head", "value": "4", "unit": "", "source": "S-005", "page": "Body-Index p.128", "confidence": "primary", "applies": "", "note": "screw, mirror 8341-69-178 for the remote-control mirror from chassis FB331-503736; 8218-69-118 on the '83 model"},
+    {"part": "PT817", "category": "Body", "item": "Quantity per car", "value": "1", "unit": "", "source": "S-005", "page": "Body-Index p.93", "confidence": "primary", "applies": "", "note": "fig 6300A-1 item 63-932, weatherstrip, rear window 8871-62-761D"},
+    {"part": "PT818", "category": "Body", "item": "Quantity per car", "value": "1", "unit": "", "source": "S-005", "page": "Body-Index p.93", "confidence": "primary", "applies": "", "note": "fig 6300A-1 item 63-935, moulding, rear window 8871-63-935A"},
+    {"part": "PT173", "category": "Body", "item": "Lid stoppers per car", "value": "2", "unit": "", "source": "S-005", "page": "Engine-Chassis p.107", "confidence": "primary", "applies": "", "note": "stopper, filler lid 0187-70-491 from chassis FB331-500063 (UA64-42-459 before it)"}
+  ],
+  "terminals": [
+    {"part": "PT030", "terminal": "GR", "function": "solenoid feed, live only while the H-13 dash switch is pressed", "inside": "solenoid coil, to the B terminal", "wire": "GR", "to": "H-13 glass hatch release switch (fed LR from X-04 20 A constant)", "source": "S-001", "page": "26", "note": "from S-001 p.26; cavity letters are not printed on the 1982 diagram; confirm on the car"},
+    {"part": "PT030", "terminal": "B", "function": "ground", "inside": "solenoid coil, to the GR terminal", "wire": "B", "to": "ground point X-15 (rear)", "source": "S-001", "page": "26", "note": "from S-001 p.26; confirm on the car"},
+    {"part": "PT031", "terminal": "GB", "function": "solenoid feed, live only while the H-15 dash switch is pressed", "inside": "solenoid coil, to the B terminal", "wire": "GB", "to": "H-15 fuel-door release switch (fed LR from X-04 20 A constant)", "source": "S-001", "page": "26", "note": "from S-001 p.26; cavity letters are not printed on the 1982 diagram; confirm on the car"},
+    {"part": "PT031", "terminal": "B", "function": "ground", "inside": "solenoid coil, to the GB terminal", "wire": "B", "to": "ground point X-15 (rear)", "source": "S-001", "page": "26", "note": "from S-001 p.26; confirm on the car"},
+    {"part": "PT032", "terminal": "LgY", "function": "axis-select solenoid feed (switch pressed up or down)", "inside": "solenoid coil, to the B terminal", "wire": "LgY", "to": "I-01 remote control mirror switch; LH through I-02 as LgY, RH through I-04 where it is LgR on the dash side", "source": "S-001", "page": "28", "note": "from S-001 p.28, connectors I-03 (LH) and I-05 (RH); cavity letters not printed; confirm on the car"},
+    {"part": "PT032", "terminal": "Lg", "function": "motor, one polarity", "inside": "motor winding, to the LgB terminal", "wire": "Lg", "to": "I-01 remote control mirror switch (fed WG from X-04 10 A constant)", "source": "S-001", "page": "28", "note": "from S-001 p.28; the switch swaps Lg and LgB between WG and B to reverse the motor; confirm on the car"},
+    {"part": "PT032", "terminal": "LgB", "function": "motor, other polarity", "inside": "motor winding, to the Lg terminal", "wire": "LgB", "to": "I-01 remote control mirror switch", "source": "S-001", "page": "28", "note": "from S-001 p.28; confirm on the car"},
+    {"part": "PT032", "terminal": "B", "function": "ground for the solenoid", "inside": "solenoid coil, to the LgY terminal", "wire": "B", "to": "X-02 then ground point X-13 (front)", "source": "S-001", "page": "28", "note": "from S-001 p.28; confirm on the car"}
+  ],
+  "sources": [
+    {"key": "src-atkins-hatch-seal-8871-62-761d", "title": "Atkins Rotary - 79-85 Rx7 Rear Hatch Seal (8871-62-761D)", "kind": "web", "covers": "PT817 new OEM rear hatch weatherstrip, price, superseded numbers", "url": "https://www.atkinsrotary.com/79-85-Rx7-Rear-Hatch-Seal-8871-62-761D.html", "format": "html", "credibility": "secondary", "obtained": "no", "local_path": "", "note": "142.78 USD in stock 2026-09-27; supersedes 8871-62-761, -761B, -761C"},
+    {"key": "src-mazdatrix-hatch-seal-rear", "title": "Mazdatrix - Hatch seal rear, 79-85 RX7 (reproduction 8871-62-761D-MZ)", "kind": "web", "covers": "PT817 reproduction rear hatch seal", "url": "https://mazdatrix.com/product/hatch-seal-rear-79-85-mazdatrix/", "format": "html", "credibility": "secondary", "obtained": "no", "local_path": "", "note": "53.75 USD in stock 2026-09-27; made for Mazdatrix, not OEM"},
+    {"key": "src-atkins-dead-pedal-pad-fa01-43-042", "title": "Atkins Rotary - 81-85 Rx7 Dead Pedal Pad (FA01-43-042)", "kind": "web", "covers": "PT559 foot rest pad, new OEM", "url": "https://www.atkinsrotary.com/81-85-Rx7-Dead-Pedal-Pad-FA01-43-042.html", "format": "html", "credibility": "secondary", "obtained": "no", "local_path": "", "note": "6.75 USD in stock 2026-09-27"},
+    {"key": "src-rx7club-hatch-release-solenoid", "title": "RX7Club 1st-gen forum - Hatch release solenoid", "kind": "forum", "covers": "PT030 failure mode (crumbled rubber bumpers jam the pinion), removal, cleaning, 1981-85 interchange", "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/hatch-release-solenoid-1084551/", "format": "html", "credibility": "tertiary", "obtained": "no", "local_path": "", "note": ""},
+    {"key": "src-rx7club-manually-opening-gas-lid", "title": "RX7Club 1st-gen forum - manually opening gas lid?", "kind": "forum", "covers": "PT031 location behind the left rear speaker cover, manual release slide/tab, dirty switch contacts", "url": "https://www.rx7club.com/1st-generation-specific-1979-1985-18/manually-opening-gas-lid-625353/", "format": "html", "credibility": "tertiary", "obtained": "no", "local_path": "", "note": ""},
+    {"key": "src-hollander-rx7-power-mirror-right", "title": "Hollander Parts - used 1983 Mazda RX7 side view mirror, right, power", "kind": "web", "covers": "PT032 used power mirror heads, recyclers' listings and price", "url": "https://www.hollanderparts.com/used-auto-parts/1983/mazda/rx7/glass-and-mirrors/128-side-view-mirror/128-56249r-right-power,-r", "format": "html", "credibility": "tertiary", "obtained": "no", "local_path": "", "note": "about 45-50 USD, several listings 2026-09-27"},
+    {"key": "src-gcmazda-plug-service-cover-0559-58-868", "title": "Garden City Mazda parts - Plug, service cover 0559-58-868", "kind": "web", "covers": "PT552 dealer availability (listed as a 626 part, same number)", "url": "https://parts.gcmazda.com/p/Mazda__626/PLUG--SERVICE-COVER/105320985/0559-58-868.html", "format": "html", "credibility": "secondary", "obtained": "no", "local_path": "", "note": "page refuses automated fetch; seen only in search results"},
+    {"key": "src-partrequest-rx7-mouldings", "title": "PartRequest - used Mazda RX-7 mouldings and trim", "kind": "web", "covers": "PT818 used rear hatch trim lookups", "url": "https://www.partrequest.com/catalog/mouldings-and-trim/mazda/mazda-rx-7", "format": "html", "credibility": "tertiary", "obtained": "no", "local_path": "", "note": "recycler request page, no fixed listing"}
+  ],
+  "cad": []
+}
