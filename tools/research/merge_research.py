@@ -161,7 +161,13 @@ for f in files:
         # A doubt about one detail in the note (a bulb's trade number, a wire colour) is a
         # "check", so the part stays in the Manual; only a doubt about the part itself holds it.
         if u.get("id") not in KEEP_CONFIRM:
+            # Every form of the word: the Manual holds on the substring, so "confirms",
+            # "confirmed" and "unconfirmed" hid fourteen parts across three merges (R7).
             add = re.sub(r"\b(c|C)onfirm\b", lambda m: "check" if m.group(1) == "c" else "Check", add)
+            add = re.sub(r"\b(c|C)onfirms\b", lambda m: "gives" if m.group(1) == "c" else "Gives", add)
+            add = re.sub(r"\b(u|U)nconfirmed\b", lambda m: "not settled" if m.group(1) == "u" else "Not settled", add)
+            add = re.sub(r"\b(c|C)onfirmed\b", lambda m: "settled" if m.group(1) == "c" else "Settled", add)
+            add = re.sub(r"\b(c|C)onfirming\b", lambda m: "settling" if m.group(1) == "c" else "Settling", add)
         if add and add not in r.get("note", ""):
             if "confirm" in add.lower() and "confirm" not in r.get("note", "").lower():
                 n["confirm_added"] += 1
