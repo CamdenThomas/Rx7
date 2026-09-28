@@ -153,3 +153,15 @@ Camden's call, 2026-09-23, correcting the reading D-395 took of ""add one to eac
 **His words.** ""0-8 please""
 
 **In the data.** `work.stage` and `stage_title` are renumbered on all 73 staged rows. The row ids are unchanged: DS, BR, BD, PO, PA, RB, CP, IN, TU, and the carried J, K and H rows."
+D-443,,"The swap's engine leg stays DT at the dash post: L1-P as today, the signal side grows to six DT06-12S (72 cavities)",2026-09-27,standing,,,02.12,,"**The swap's engine leg stays on Deutsch DT at the dash post: L1-P (DTP 4-way) is unchanged, and the signal side grows from two DT06-12S plugs (L1-S1, L1-S2) to six (72 cavities, room for every option in `ls_wires`). Same contacts, same crimper (P038) and removal tools as every other leg. The dash-node carrier panels are laid out now with room for the four extra DT04-12P receptacles beside L1-S1 and L1-S2.**
+
+**His answer (block 02.12, desktop, 2026-09-27):** option (a) — ""**More of the same connector.** L1-P stays as it is, and the signal side grows from two 12-way DT plugs to five (60 cavities) or six (72, room for every option). Same contacts, same crimper (P038) and removal tools already on the cart, same method as every other leg. Costs a few more DT housing pairs (confirm price), room on the dash post for 3–4 more receptacles (measured at M-1), and a bigger firewall grommet."" He typed no words.
+
+**Reading.** Option (a) left five or six plugs open; the recommendation was ""(a) with six signal plugs"". Six is the reading that keeps the most open (every optional conductor — MAF, narrowband O2s, VVT, purge, oil temperature, neutral switch — keeps a cavity) and the difference is one DT housing pair, so it is taken. If K3's cavity plan fills fewer than 60 cavities, the sixth pair is simply not bought; that is a parts-round detail, not a new ruling.
+
+**Why.** 54 signal conductors are required and 68 with every option (D-394, `ls_wires`) against 24 cavities in L1-S1 and L1-S2. No ECU choice changes this. DT needs no new tooling and matches every other leg.
+
+**What changes.**
+- Handover HO14 no longer says ""nothing at the dash node changes"": the 39-way PMU pins and the dash-node conductors stay the fixed interface, but four more DT04-12P receptacles join L1-S1 and L1-S2 at the post at the swap. Today's 12A leg is still built alone and cut at the grommet (D-211(d)); nothing is bought now.
+- Electrical E13 (dash node layout) leaves panel room for four more DT04-12P receptacles next to L1-S1 / L1-S2, so the swap does not re-cut a panel. Whether that room exists is still measured at M-1 (C1); if it does not, that is a new block, and (b) (one high-density plug) is the fallback the block named.
+- Engine K3 (cavity plan and grommet size) is released: its gate was this block. It assigns `ls_wires` crossing conductors to L1-P and six 12-way signal plugs, and sizes the bigger firewall grommet."
