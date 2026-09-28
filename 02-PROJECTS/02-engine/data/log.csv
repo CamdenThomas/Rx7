@@ -12,3 +12,4 @@ L-0010,2026-09-27,session,D-444 D-445 K3 K5 H-001,"D-444: swap leg cavity plan (
 L-0011,2026-09-27,plan,K1 K5 DS05 DS12 02.13 02.14 OP60 OP61 OP62 OP63,"K1: ECU candidates OP60-OP63 (options.system gains ecu), block 02.13 raised, K1 and K5 gated on it; DS05: fuel settled to LS returnless 58 psi, pump raised as block 02.14, DS12 (tank measurement) added for Camden; web search and fetch refused this run, so DS01 DS02 DS04 DS06 DS08 DS09 J3 K2 J5 not started"
 L-0012,2026-09-27,apply,D-446 D-447 02.13 02.14,"Applied 02.13 (a) and 02.14 (a): ECU EMU PRO, Phantom 340 pump"
 L-0013,2026-09-27,plan,K1 DS05 D-448 APP.05 DS13,"K1 closed on D-446; DS05 fuel system designed (D-448, parts table, FP01-FP06); web refused again, so J3 J5 K2 K5 DS01 DS02 DS04 DS06 DS08 DS09 gated on block APP.05; DS13 (front-axle weight) added for Camden"
+L-0014,2026-09-28,session,02.15 K6,Wiring review: the swap cavity plan lands on live dash conductors (K6); A/C at the swap raised as 02.15
