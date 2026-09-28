@@ -352,3 +352,27 @@ D-449,,"Audio joins this project as a 5.1 system: a flat head unit, an upmix, a 
 **Schema.** `parts.stage` gains `S9` and `stages` gains the row **S9 Audio** (a small decision: the design grows by declaring what exists).
 
 **Consequences.** Parts LP55–LP64 are added. Work rows X-011 (the head unit and speaker round) and X-012 (the amp and upmix round, after block 03.13) are added for the agent. His measurement rows V-103 to V-110 are added: the speaker openings, the bin and the space for the centre. Every speaker and enclosure pick is `confirm` until they are in (R11). 00-CAR `P-007` now names this project. Feature FT29 now covers the whole system."
+D-450,,"The line: electrical does every wire, luxury none; luxury starts when electrical finishes; hatch and fuel-door releases move to electrical",2026-09-28,standing,,,,D-451,"**The line between the projects: electrical does every wire, luxury does none. Luxury starts when electrical is finished, and it is putting parts in where the wiring is already done.** Camden's call, 2026-09-28, in chat. The hatch release and the fuel-door release move to electrical entirely.
+
+**His words.** ""Also not fuel door and hatch pops should be electrical. Those are features I have that should be fixed with one rewire. Those are electrical. Ensure the line between electrical and luxury is clear and well layed out. Luxury unlocks as soon as electrical finishes and is not a new wire job. It's a put the parts in where the wiring is done""
+
+**The line, stated once.**
+- **Electrical owns:** every conductor, connector, terminal, splice, fuse, fuse block, relay and relay socket, and every harness, including the ones that end at a luxury device (door harnesses, seat feeds, servo leads, the radar run into the hatch, amplifier power, pre-amp and speaker cable). It also owns every feature the car already has that the rewire fixes: the **hatch release** and **fuel-door release**, end to end (the triggers, K3 / K4, the latch switch K-016).
+- **Luxury owns:** the parts and modules that plug into what electrical left, the fabrication around them (bezel, faceplate, sub box, tail-light housings and their driver boards, brackets), the choice of every product, and commissioning (turning on a configured output, setting a limit from a part's datasheet, tuning).
+- **The hand-off** is the `provisions` table: every row is a capped conductor, an empty socket or a receptacle electrical delivers. A luxury part that needs a wire with no provision is a change to electrical, never wiring done in luxury.
+- **When:** every luxury install row waits on electrical's shakedown (`01-electrical:E34`). Before then, luxury only chooses parts, fabricates on the bench and designs.
+
+**Readings taken (§3).**
+1. Some luxury parts are not chosen yet: the seats (LP52), the radar (block 03.12), the amplifier and upmix (block 03.13). Electrical does not wait for them. It builds each provision to the worst case of the choices still open (seat feeds sized for heat + ventilation + power motors; amplifier power sized for the largest amplifier class being considered; a capped run into the hatch for the radar). A luxury pick must then fit the provision it was given. This keeps the car's first drive from waiting on a luxury decision.
+2. ""Fixed with one rewire"": the hatch and fuel-door releases are working features of the car to restore, not upgrades. Electrical treats them like the horn or the wipers.
+3. Relays and fuses that plug into electrical's empty sockets (K5-K8, F8 / F9, F14) are wiring parts, so electrical fits them as well. Luxury's windows stage is then regulators and motors only.
+
+**What moves (luxury → electrical).**
+- Features FT17 (hatch), FT18 (fuel door) and FT31 (the O15 comfort fuse block): `moved (electrical, D-450)`.
+- Parts LP21 comfort fuse block, LP23 / LP24 / LP25 hatch and fuel-door solenoids and the latch switch, LP37 window relays and fuses, LP48 door harnesses, LP49 comfort-return harness, LP51 release relays, LP63 amplifier power, LP64 signal and speaker cable: `moved (electrical, D-450)`.
+- Work T-032 (the release triggers and latch switch), I2 (build the comfort block), I4 (plug the comfort harness and servo leads) and I5 (fit K3 / K4): dropped here and carried in electrical.
+- The provisions that said ""the door harness is this project's"" now say it is electrical's.
+
+**What luxury's installs become.** I6 enables the configured outputs after electrical is done. I11 fits seats and pads to their feeds. I12 bonds the heat pads and plugs the mirrors into electrical's door harness. I13 fits the window regulators and motors to it. I16 mounts the radar on its run. Every I row now gates on `01-electrical:E34`, directly or through I1.
+
+The electrical side of this ruling is its decision D-451. It adds design rows A11-A17 and a camden row for the release triggers, and puts them in front of the design freeze."

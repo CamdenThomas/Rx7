@@ -4,22 +4,22 @@ PV38,cavity,L3-BLW 1,FT12,blower motor + (O16 via L3-P 1),CAPPED,
 PV39,cavity,L3-BLW 2,FT12,blower return — the final stage inserts here,CAPPED,
 PV40,housing,L3-BLW,FT12,DTP-2 at the HVAC case,,
 PV41,pin,O16,FT12,"blower feed — configured, DISABLED until the motor exists",LIVE,
-PV42,cavity,L3-P 2,FT31,"O15 comfort bus, 12 AWG — this project's fuse block plugs into the L3-CMF receptacle behind the centre stack (electrical D-274)",CAPPED,
+PV42,cavity,L3-P 2,FT31,"O15 comfort bus, 12 AWG — electrical's comfort fuse block plugs into the L3-CMF receptacle behind the centre stack (electrical D-274)",CAPPED,
 PV43,pin,O15,FT31,"comfort bus, 25 A, ON in RUN",LIVE,
 PV44,cavity,L4-P 4,FT23,"DCU → sill feed for mirror heat: the DCU's high-side switch via DP-DCU-B 9, linked at the post onto L4-P 4, landed in F14's holder (electrical D-369)",CAPPED,electrical D-254 → D-369
-PV45,fuse,F14,FT23,"mirror-heat fuse at the sill - a sealed inline holder fitted empty by the electrical build (D-283); this stage supplies the fuse, rating confirm - sized after V-101",,electrical D-283
+PV45,fuse,F14,FT23,"mirror-heat fuse at the sill - a sealed inline holder; electrical fits the fuse too (D-450, 01-electrical D-451), rating confirm - sized after V-101",,electrical D-283
 PV46,pin,O4,FT16,"defog output — wired to the grid, configured, DISABLED",LIVE,
 PV47,cavity,L4-P 1,FT16,the grid feed,LIVE,
-PV48,cavity,L4-M 3,FT17,"hatch solenoid — the conductor reaches the existing factory solenoid; the post end waits for this project's trigger (D-180, electrical D-274)",CAPPED,
-PV49,cavity,L4-M 4,FT18,"fuel-door solenoid — the conductor reaches the existing factory solenoid; the post end waits for this project's trigger (D-180, electrical D-274)",CAPPED,
-PV51,cavity,D1 4,FT23,"mirror motor common, shared by both mirrors (spliced at the sill to L4-S2 1) - RESERVED at the sill: pinned on the node side, the door harness is this project's (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
-PV52,cavity,D1 5,FT23,"LEFT mirror motor (L4-S2 2) - RESERVED at the sill: pinned on the node side, the door harness is this project's (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
-PV53,cavity,D1 6,FT23,"LEFT mirror clutch coil (L4-S2 3) - RESERVED at the sill: pinned on the node side, the door harness is this project's (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
-PV54,cavity,D2 4,FT23,"mirror motor common, shared by both mirrors (spliced at the sill to L4-S2 1) - RESERVED at the sill: pinned on the node side, the door harness is this project's (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
-PV55,cavity,D2 5,FT23,"RIGHT mirror motor (L4-S2 4) - RESERVED at the sill: pinned on the node side, the door harness is this project's (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
-PV56,cavity,D2 6,FT23,"RIGHT mirror clutch coil (L4-S2 5) - RESERVED at the sill: pinned on the node side, the door harness is this project's (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
-PV57,cavity,D1 7,FT23,"mirror heat — RESERVED at the sill: pinned on the node side, the door harness is this project's (electrical D-274)",RESERVED,
-PV58,cavity,D2 7,FT23,"mirror heat — RESERVED at the sill: pinned on the node side, the door harness is this project's (electrical D-274)",RESERVED,
+PV48,cavity,L4-M 3,FT17,"hatch solenoid — the conductor reaches the existing factory solenoid; the post end is electrical's trigger now (01-electrical A11, D-450) (D-180, electrical D-274)",CAPPED,
+PV49,cavity,L4-M 4,FT18,"fuel-door solenoid — the conductor reaches the existing factory solenoid; the post end is electrical's trigger now (01-electrical A11, D-450) (D-180, electrical D-274)",CAPPED,
+PV51,cavity,D1 4,FT23,"mirror motor common, shared by both mirrors (spliced at the sill to L4-S2 1) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
+PV52,cavity,D1 5,FT23,"LEFT mirror motor (L4-S2 2) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
+PV53,cavity,D1 6,FT23,"LEFT mirror clutch coil (L4-S2 3) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
+PV54,cavity,D2 4,FT23,"mirror motor common, shared by both mirrors (spliced at the sill to L4-S2 1) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
+PV55,cavity,D2 5,FT23,"RIGHT mirror motor (L4-S2 4) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
+PV56,cavity,D2 6,FT23,"RIGHT mirror clutch coil (L4-S2 5) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
+PV57,cavity,D1 7,FT23,"mirror heat — RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274)",RESERVED,
+PV58,cavity,D2 7,FT23,"mirror heat — RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274)",RESERVED,
 PV59,cavity,L4-S2 1,FT23,"DCU mirror line - motor common, both mirrors: from DP-DCU-B 5 / L3-S3 5, linked at the post, capped there; spliced at the sill to D1 4 and D2 4",CAPPED,electrical D-255 / D-360
 PV60,cavity,L4-S2 2,FT23,"DCU mirror line - LEFT motor: from DP-DCU-B 6 / L3-S3 6, linked at the post, capped there; sill → D1 5",CAPPED,electrical D-255 / D-360
 PV61,cavity,L4-S2 3,FT23,"DCU mirror line - LEFT clutch coil: from DP-DCU-B 8 / L3-S3 8, spliced at the post, capped there; sill → D1 6",CAPPED,electrical D-255 / D-360
@@ -35,10 +35,10 @@ PV70,cavity,L4-M 10,FT24,"window command → K5–K8 coil sockets at the sill, l
 PV71,cavity,L4-M 11,FT24,"window command → K5–K8 coil sockets at the sill, landed in the empty socket (electrical D-274)",CAPPED,
 PV72,cavity,L4-M 12,FT24,"window command → K5–K8 coil sockets at the sill, landed in the empty socket (electrical D-274)",CAPPED,
 PV73,cavity,L4-P 3,FT24,window motor bus feed (O1) → K5–K8 commons,CAPPED,
-PV74,cavity,D1 1,FT24,"window motor leg — RESERVED at the sill: pinned on the node side, the door harness is this project's (electrical D-274)",RESERVED,
-PV75,cavity,D1 2,FT24,"window motor leg — RESERVED at the sill: pinned on the node side, the door harness is this project's (electrical D-274)",RESERVED,
-PV76,cavity,D2 1,FT24,"window motor leg — RESERVED at the sill: pinned on the node side, the door harness is this project's (electrical D-274)",RESERVED,
-PV77,cavity,D2 2,FT24,"window motor leg — RESERVED at the sill: pinned on the node side, the door harness is this project's (electrical D-274)",RESERVED,
+PV74,cavity,D1 1,FT24,"window motor leg — RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274)",RESERVED,
+PV75,cavity,D1 2,FT24,"window motor leg — RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274)",RESERVED,
+PV76,cavity,D2 1,FT24,"window motor leg — RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274)",RESERVED,
+PV77,cavity,D2 2,FT24,"window motor leg — RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274)",RESERVED,
 PV78,relay,K5,FT24,"window relay socket at the sill, fitted empty",,
 PV79,relay,K6,FT24,"window relay socket at the sill, fitted empty",,
 PV80,relay,K7,FT24,"window relay socket at the sill, fitted empty",,
@@ -60,7 +60,7 @@ PV95,cavity,L3-S2 11,FT30,parking-brake switch → the brake-warning node,LIVE,
 PV96,pin,CAN2H,FT31,"the vehicle bus, 500 kbps — software termination at the PMU, 120 Ω at the engine-bay drop; the DCU and the panel are its next nodes",LIVE,
 PV97,pin,CAN2L,FT31,the vehicle bus,LIVE,
 PV99,cavity,L2-OAT 1,FT15,Outside-air thermistor — signal — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
-PV100,cavity,L3-CMF 1,FT31,O15 comfort bus — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
+PV100,cavity,L3-CMF 1,FT31,"O15 comfort bus — electrical's comfort fuse block plugs in here (01-electrical A13, D-450) (electrical D-274)",CAPPED,
 PV106,cavity,L3-MOD 1,FT32,Future module +12 V switched — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
 PV107,cavity,L3-MOD 2,FT32,Future module ground — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
 PV108,cavity,L3-RDR 1,FT28,Radar pass-through A — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,

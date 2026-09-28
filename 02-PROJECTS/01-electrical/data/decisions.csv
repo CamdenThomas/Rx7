@@ -1136,3 +1136,17 @@ D-442,,"DCU firmware behaviour (F-017): mirror heat follows the defogger, releas
 **Not verified in this run.** The run that wrote this was not allowed to run the compiler. `tests/run.sh` must pass before F-017 closes, and `dcu.ino` has never been built for the Teensy.
 
 **In the data.** `work` F-017 (note), H-002 (note). Firmware: `dcu/panel.h` (new), `dcu/dcu.ino` 0.3.0-dev, `dcu/climate.h` comments, `tests/test_dcu.cpp`, `tests/run.sh`, `firmware/README.md`."
+D-451,,"Electrical takes every wire the luxury package needs, and the hatch and fuel-door releases end to end, before the freeze",2026-09-28,standing,,,,03-luxury:D-450,"**Electrical takes every wire the luxury package needs, plus the hatch and fuel-door releases end to end, and designs them before the freeze.** The electrical side of luxury **D-450**, Camden's call, 2026-09-28: ""Also not fuel door and hatch pops should be electrical. Those are features I have that should be fixed with one rewire. Those are electrical. Ensure the line between electrical and luxury is clear and well layed out. Luxury unlocks as soon as electrical finishes and is not a new wire job. It's a put the parts in where the wiring is done""
+
+**New design rows, all ahead of the design freeze (Z1):**
+- **A11 Hatch and fuel-door releases, end to end.** The triggers (D-180's), K3 / K4 in the dash node's sockets, the conductors L4-M 3 / 4 to the factory solenoids that already exist, and the broken hatch latch switch (K-016). Camden's check of the triggers and the latch switch is V-112 (it was luxury's T-032).
+- **A12 Door harnesses, both doors.** From D1 / D2 at the sill to each door device: window motor legs (1-2), mirror motor, clutch and heat (4-7). Pin functions inside the door wait on luxury W-332 (confirm).
+- **A13 The O15 comfort fuse block,** built and plugged into L3-CMF, with a branch per load: seats, mirror heat, the servo rail.
+- **A14 Seat feeds and the comfort-return harness.** Under-seat connectors per seat, sized for the worst case luxury may pick (heat + ventilation + power-seat motors, LP52 unchosen), returns to the DCU's comfort receptacle.
+- **A15 HVAC servo leads,** from the DCU's servo headers to each door servo position.
+- **A16 The radar run into the hatch.** From L4-RDR through the hatch hinge to a capped receptacle in the hatch; sensor positions from luxury Z-002 when known, otherwise a generous capped run.
+- **A17 Audio wiring.** The amplifier's fused feed and return at the posts in the passenger-side bin (D-236), sized for the largest amplifier class luxury is considering (block 03.13 open). Shielded pre-amp cable from the head unit to the bin. Speaker cable to the two front, two rear and centre positions and the driver-side sub bin, each ending in a plug.
+
+**Parts and relays.** K5-K8 with F8 / F9 at the sill, the K3 / K4 release relays and the F14 mirror-heat fuse are fitted by this project, not left empty for luxury. Their rows join the parts list as each A row is designed.
+
+**Why worst-case sizing.** This project's goal is that the car drives on the new system before anything else joins. Waiting for luxury's seat, radar or amplifier choices would stall the freeze; a wire one size up costs cents now, while re-running it later costs a weekend."
