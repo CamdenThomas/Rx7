@@ -16929,7 +16929,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "601f6d13-724f-43bd-beb3-ddfc1f5dcf21")
 		(property "Reference" "L1"
 			(at 505.46 72.26 0)
@@ -16942,7 +16942,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "common-mode choke - DNP"
+		(property "Value" "common-mode choke - DNP; fit only with R44 / R45 removed"
 			(at 505.46 75.06 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -30040,6 +30040,253 @@
 	)
 	(junction (at 119.3800 111.7600) (diameter 0) (color 0 0 0 0)
 		(uuid "a6ee67f7-8f70-4e62-bb7f-cc24351c01d3")
+	)
+	(symbol
+		(lib_id "icu-carrier:R")
+		(at 530.86 40.64 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "532b8c0c-26bd-4995-95b2-60974984d186")
+		(property "Reference" "R44"
+			(at 533.4 39.24 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.1 1.1)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0R"
+			(at 533.4 42.04 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.1 1.1)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 530.86 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 530.86 40.64 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 530.86 40.64 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "1b239da7-44bb-483c-9dc2-e6eb208f5490")
+		)
+		(pin "2"
+			(uuid "930dd19b-cf40-4498-89e2-f655799ed47f")
+		)
+		(instances
+			(project "icu-carrier"
+				(path "/c75d3432-4fb5-46c2-a0c1-15c6416c4dd0"
+					(reference "R44")
+					(unit 1)
+				)
+			)
+		)
+	)
+
+	(wire (pts (xy 530.86 36.83) (xy 530.86 34.29))
+		(stroke (width 0) (type default))
+		(uuid "cd4a764f-724e-477a-bce8-104464d8e1a0")
+	)
+	(label "CANH_U"
+		(at 530.86 34.29 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f5d8b00d-ef1c-40ce-ae03-c92ceef8ce5a")
+	)
+	(wire (pts (xy 530.86 44.45) (xy 530.86 46.99))
+		(stroke (width 0) (type default))
+		(uuid "45ebf785-60ee-4e90-94f9-5f48c1c0ae75")
+	)
+	(label "CAN2H_J"
+		(at 530.86 46.99 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "f2bc20ea-4239-4858-981d-7bff6cda0e2f")
+	)
+	(symbol
+		(lib_id "icu-carrier:R")
+		(at 541.02 40.64 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "768024be-4a79-4fcd-b16a-b0057becc35e")
+		(property "Reference" "R45"
+			(at 543.56 39.24 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.1 1.1)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0R"
+			(at 543.56 42.04 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.1 1.1)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
+			(at 541.02 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 541.02 40.64 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 541.02 40.64 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e66e5f0e-7220-418a-9d2e-2158b89b0cac")
+		)
+		(pin "2"
+			(uuid "878a93c3-06ac-4e86-aba2-4526888d38aa")
+		)
+		(instances
+			(project "icu-carrier"
+				(path "/c75d3432-4fb5-46c2-a0c1-15c6416c4dd0"
+					(reference "R45")
+					(unit 1)
+				)
+			)
+		)
+	)
+
+	(wire (pts (xy 541.02 36.83) (xy 541.02 34.29))
+		(stroke (width 0) (type default))
+		(uuid "472bf3a6-234f-4c5c-93a0-3996fbbb2d0b")
+	)
+	(label "CANL_U"
+		(at 541.02 34.29 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "eb9ed269-90da-47ed-85a2-530d3cfb07fc")
+	)
+	(wire (pts (xy 541.02 44.45) (xy 541.02 46.99))
+		(stroke (width 0) (type default))
+		(uuid "b402cbff-eec8-472c-96bc-2647e36951a1")
+	)
+	(label "CAN2L_J"
+		(at 541.02 46.99 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "4a2679ec-7bda-46e2-b327-5506b9448283")
+	)
+	(label "CANH_U"
+		(at 508 60.96 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e4c6cc09-0fd8-4a46-9c8b-9a5a33403274")
+	)
+	(label "CANL_U"
+		(at 508 66.04 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "62aa5837-b4c1-4b53-b77c-7990be047bed")
+	)
+	(text "R44 / R45: 0 Ω links in place of L1 - with L1 unfitted, CAN was open between U3 and J1 (D-452)"
+		(exclude_from_sim no)
+		(at 525.78 27.94 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "94b6303b-2da5-48b6-a1d3-d5458df8960e")
 	)
 	(sheet_instances
 		(path "/"

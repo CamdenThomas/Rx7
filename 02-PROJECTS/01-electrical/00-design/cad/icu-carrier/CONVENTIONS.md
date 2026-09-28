@@ -10,7 +10,7 @@ One root sheet, **A0**, with five blocked-out areas drawn as dashed boxes and ti
 | Block | Contains |
 |---|---|
 | **Power** | `DP-ICU-A 1` logic 12 V and `DP-ICU-A 6` backlight 12 V — **two inputs, never joined on the board** — each with its SS34 and SMBJ33A; the LMR36015-Q1-class 5 V buck; the backlight's 4 A fuse and high-side switch |
-| **Bus** | `DP-ICU-A 4/5`, the TCAN1042HVDRQ1, its 3V3 IO, the DNP common-mode choke footprint. **No termination** (D-079 → D-346) |
+| **Bus** | `DP-ICU-A 4/5`, the TCAN1042HVDRQ1, its 3V3 IO, the DNP common-mode choke footprint with two 0 Ω links (R44 / R45) in its place (D-452). **No termination** (D-079 → D-346) |
 | **Analog in** | IC01–IC03, IC05–IC07, IC09–IC11 and IC14 — the repeated divider / 100 nF / BAT54S stage, and the J1 / J3 / J7 pull-up jumpers |
 | **Pulse in** | IC04 tach (2 × 100 kΩ ½ W, 5.1 V zener, BAT54S, LM393 **on the 5 V rail**) and IC08 road speed (jumper-selected pull-up or divider, Schmitt) |
 | **Display and local** | IC21 QSPI header to the BT817 board, IC22 page button, the IMU and the ESP32-C3 |
