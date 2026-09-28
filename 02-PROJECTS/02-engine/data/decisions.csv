@@ -197,3 +197,17 @@ Everything at once is about 160 A. A cold wet night (no fan, brakes off) is abou
 **The regulator.** An LS alternator's set-point is commanded (Gen III: the L / field lines; Gen IV trucks: a PWM command). The ECU chosen at K1 must drive LW29 so the set-point holds at or under 14.6 V; an uncommanded unit's default voltage is confirmed on the bench before it is fitted.
 
 **In the data.** DS01's note carries the 160 A floor; K1's note adds alternator control to what each ECU must offer."
+D-446,,Engine computer: ECUMaster EMU PRO,2026-09-27,standing,,,02.13,,"**The LS swap is designed around the ECUMaster EMU PRO (option OP60).**
+
+His answer to block 02.13: option (a), no words added. Option (a) in full: ""ECUMaster EMU PRO, about $1,800-2,400 (confirm): the same maker and the same laptop software family as the power unit (PMU), sends any CAN message we define, reads either crank signal so any engine on the list works, built to take our own harness through the dash post. Forecloses nothing; the dearest option but one.""
+
+Reasoning: it matches the recommendation; it keeps the engine hunt open to both crank generations in D-393's list, gives our own CAN frames at 0x500+ without a translator, and keeps one software family with the PMU.
+
+Consequences: K1 (ECU research) and K5 (pinning the leg at the dash) are no longer waiting on 02.13 and go to the plan playbook. The price, output count, built-in wideband and the alternator set-point output for LW29 (D-445) stay `confirm` until checked, before anything is bought (BR06). DS10 carries the ECU line at OP60's range; DS11 no longer waits on this."
+D-447,,Fuel pump: Aeromotive Phantom 340 in-tank,2026-09-27,standing,,,02.14,,"**The LS swap's fuel pump is the Aeromotive Phantom 340, in the tank.**
+
+His answer to block 02.14: option (a), no words added. Option (a) in full: ""Aeromotive Phantom 340, the candidate already named in HO12: a universal in-tank pump with its own baffle, fitted through a hole cut in the top of the existing tank. About 12.2 A, leaving O5 about half its 25 A spare. Carries a stock 5.3 easily and leaves room for a lot more power later. The tank is cut, and that cannot be undone.""
+
+Reasoning: it matches the recommendation; the margin for later power outweighs the 3 A over option (b). The tank cut is irreversible, so DS12 (measuring the tank top first) must be done before any cutting; the choice authorises the design, not the cut.
+
+Consequences: DS05's parts list is built on the Phantom 340; the fuel pump's soft fuse on O5 is sized to about 12.2 A (D-173) at 58 psi (V-040); DS10 carries the pump line; CP06 (fuel work) is designed for a cut tank. Prices stay `confirm` until checked (BR06). DS05 and DS12 no longer wait on 02.14."
