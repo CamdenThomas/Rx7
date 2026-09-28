@@ -1102,3 +1102,17 @@ D-430,process,Housekeeping: six decisions superseded by the later rulings that a
 **Why.** The audit of 2026-09-26 (02-APP plan row P28) found each pair standing side by side; an agent applying the standing set could defend either side, and a gate on the older one would have opened. Nobody was asked: each later decision is Camden's own ruling or an agent decision he has already seen applied, so marking the earlier one superseded records a fact, it does not make a new call. D-222 (the four carts of 2026-09-02) was looked at and left standing: it cites a retired page but nothing later contradicts its figures; the carts table is where they live now.
 
 **In the data.** The six rows: status=superseded, superseded_by=this decision. The ten superseded decisions whose bodies were blanked at the v3 conversion (D-005, D-016, D-022, D-206, D-207, D-208, D-221, D-227, D-231, D-247) get a one-line body naming where their text still lives: `99-ARCHIVE/2026-09-11_v2-view-and-tools/02-PROJECTS/electrical-build/DECISIONS.md`."
+D-440,,S1 keeps D-387's gate: the strip waits on every design row that can be done with the car whole,2026-09-27,standing,,,01.12,,"**S1 (strip the interior) keeps D-387's gate: it waits on every design row that can be done with the car whole — the bench, desk, firmware, KiCad and review rows included. D-387 stands unchanged.**
+
+**His answer (block 01.12, desktop 2026-09-27):** (a) — ""Keep D-387 as it is: S1 waits on every design row that can be done with the car whole. Costs nothing now; the strip, the measurement day, the review and the freeze all wait until the bench and desk work is finished, and the interior is out only from the strip to the refit."" No words added.
+
+**Reasoning.** This is the recommended option. The measurement day (C1) and the design review (Z1) stay behind S1, so the car is taken apart only once the work that does not need it apart is finished, and the interior-out time is only strip to refit (E35).
+
+**Consequences in the data.** None: S1's gate (B2 F2 V-002 V-052 W-330b B7 B8 F-007 F-009 F-010 F-014 X-007 T-048 T-049 F8 F9 F10 F14 R1-R7) is already D-387's. Agent design rows reach READY as his bench and desk rows are done, not through S1. Supersedes nothing."
+D-441,,"The interior comes out once, at S1, and stays out through freeze, purchase and build until E35; nothing is bought before the freeze",2026-09-27,standing,,,01.13,,"**The build sequence stays as D-387 and D-323 lay it out: strip once, measure, review, freeze, buy, build, refit. The interior is out from S1 to E35 and the car is not driven meanwhile; nothing is ordered before the freeze.**
+
+**His answer (block 01.13, desktop 2026-09-27):** (a) — ""Keep it as it is: strip once, measure, freeze, buy, build, refit. The simplest sequence and the fewest times anything comes apart; the car is off the road for the whole procurement and build, likely months."" No words added.
+
+**Reasoning.** He chose one teardown over keeping the car on the road (the recommendation was (b), flipping to (a) if he can live without the car between the strip and the harness going in — his answer says he can). D-323 is not amended: no long-lead part is bought before the freeze.
+
+**Consequences in the data.** None: the work graph already runs S1 → C1 → Z1 → Z2 → phase SOURCING → A1/A2 → D1, F11/F12/F5, F3/F6 → build → E35. S1's note (the car stays apart through the freeze and the whole build, until E35) is now his ruling as well as D-387's. Supersedes nothing."
