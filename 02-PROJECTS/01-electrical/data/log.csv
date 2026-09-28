@@ -58,3 +58,4 @@ L-0046,2026-09-26,session,V-002 C4 V-102 Q-014 V-055 Q-110 Q-028 E19 E12 R6 E2 B
 L-0047,2026-09-27,answers,D-440 D-441 01.12 01.13 S1,"Blocks 01.12 and 01.13 answered (a): S1 keeps D-387's gate; one teardown, nothing bought before the freeze"
 L-0048,2026-09-27,session,D-442 F-017 H-002,"F-017 DCU firmware written (panel.h, dcu.ino 0.3.0-dev, test_dcu 6-13); left open - the headless run could not compile or run the suites; H-002 I/O budget noted"
 L-0049,2026-09-28,session,D-451,"Took the luxury package's wiring and the hatch / fuel-door releases: design rows A11-A17 and V-112, all ahead of the freeze Z1"
+L-0050,2026-09-28,session,D-452 H-002 H-008 V-113 F-017 F9 01.14 01.15 03.14,"DCU carrier and control panel schematics drawn in KiCad, ERC clean; every Teensy pin assigned (TCA9539-Q1 for the slow lines); ICU CAN choke open-bus found (F9); panel questions raised as 01.14, 01.15, 03.14, measurement V-113, layout H-008"
