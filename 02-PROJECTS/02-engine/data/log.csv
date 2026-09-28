@@ -8,3 +8,4 @@ L-0006,2026-09-23,session,D-394 02.02 LD01 LD26 LW01 LW39 K1 K2 K3 K4,"D-394: th
 L-0007,2026-09-23,session,D-395 DS01 TU07,D-395: nine stages (-01 design .. 07 fine-tune); 63 plan rows DS01-DS11 BR01-BR06 BD01-BD08 PO01-PO04 PA01-PA03 RB01-RB08 CP01-CP10 IN01-IN06 TU01-TU07; existing rows re-staged
 L-0008,2026-09-23,answers,D-396 D-395,D-396: stages renumbered 00-08 on his word (supersedes D-395's numbering)
 L-0009,2026-09-27,answers,D-443 02.12 HO14 K3,"D-443: block 02.12 answered (a) - the swap leg stays DT, six DT06-12S signal plugs; HO14 and electrical E13 updated; K3 released"
+L-0010,2026-09-27,session,D-444 D-445 K3 K5 H-001,"D-444: swap leg cavity plan (ls_cavities, 72 rows) and grommet for a 25 mm bundle, K3 done, K5 added; D-445: alternator 160 A or more, set-point at or under 14.6 V, H-001 done; web research refused this run, DS01-DS09 J3 J5 K1 K2 not started"

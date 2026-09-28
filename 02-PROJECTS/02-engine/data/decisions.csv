@@ -165,3 +165,35 @@ D-443,,"The swap's engine leg stays DT at the dash post: L1-P as today, the sign
 - Handover HO14 no longer says ""nothing at the dash node changes"": the 39-way PMU pins and the dash-node conductors stay the fixed interface, but four more DT04-12P receptacles join L1-S1 and L1-S2 at the post at the swap. Today's 12A leg is still built alone and cut at the grommet (D-211(d)); nothing is bought now.
 - Electrical E13 (dash node layout) leaves panel room for four more DT04-12P receptacles next to L1-S1 / L1-S2, so the swap does not re-cut a panel. Whether that room exists is still measured at M-1 (C1); if it does not, that is a new block, and (b) (one high-density plug) is the fallback the block named.
 - Engine K3 (cavity plan and grommet size) is released: its gate was this block. It assigns `ls_wires` crossing conductors to L1-P and six 12-way signal plugs, and sizes the bigger firewall grommet."
+D-444,,The swap leg's cavity plan: every crossing conductor to a cavity in L1-P and L1-S1 to L1-S6 by noise class; the grommet is chosen for a 25 mm bundle,2026-09-27,standing,,,,,"**The swap leg's cavity plan is table `ls_cavities`: every crossing conductor in `ls_wires` has one cavity in L1-P or the six DT06-12S signal plugs L1-S1 to L1-S6 (D-443), grouped by noise class; the firewall grommet must pass a bundle of about 17 mm of conductors, so it is chosen for a 25 mm bundle (confirm at CP09).**
+
+Work K3, released by D-443 (block 02.12). Small under §3: paper, rows only, nothing bought or cut; arithmetic and the standing rules settle it.
+
+**The groups** (one noise class per housing, drivers never sharing a plug with a sensor signal):
+- **L1-P** (power, unchanged): 1 coil feed O12, 2 injector feed O13, 3 fan O14, 4 A/C clutch from the O15 block — as D-394 and today's leg.
+- **L1-S1 drivers**: injector drivers 1-8, the throttle motor pair, the start relay K9 coil, purge.
+- **L1-S2 drivers**: coil triggers 1-8, the two ignition reference grounds with them, the VVT pair.
+- **L1-S3 shielded timing**: crank (signal, supply, ground, drain), cam (the same), road speed; 11-12 spare.
+- **L1-S4 low-level analog**: the four knock conductors and their drain, the two throttle positions with the throttle's own 5 V and ground, the neutral switch pair; 12 spare.
+- **L1-S5 analog sensors**: MAP, IAT, coolant, oil pressure, the shared 5 V and two sensor grounds, MAF, the O2 signals and lows.
+- **L1-S6 body and slow lines**: alternator excitation and lamp sense, A/C pressure (3), reverse pair, oil temperature pair, the O2 heater drivers (slow PWM, kept off the sensor plugs); 12 spare.
+
+Every shield drain is grounded at the ECU end only (K3's rule, electrical `emc-routing`). 72 cavities, 68 used with every option kept, 54 required; the 14 optional conductors keep their cavities, so dropping an option later (K2 decides O2 and purge) leaves a sealing plug and moves nothing. A cross-check: `select wire, count(*) from ls_cavities group by wire` equals each row's `crosses`.
+
+**Grommet.** Crossing conductors by gauge (a query over `ls_wires`): 3 × 12 AWG, 1 × 14, 1 × 16, 27 × 18, 40 × 20. With TXL outside diameters (12: 2.46, 14: 2.08, 16: 1.73, 18: 1.52, 20: 1.37 mm — catalogue class figures, confirm against the wire bought) the sum of squared diameters is about 163 mm², a round bundle at 60 % fill of about 16.5 mm. The wideband gauge's own sensor lead passes the same grommet (LD12, D-244) and the shielded groups add jackets, so the grommet is chosen for a 25 mm bundle; the firewall hole follows that grommet's datasheet at CP09. The dash-end housings are pinned after the bundle has passed the grommet, so no plug has to fit through the hole.
+
+**Not done here.** The dash side (ECU pins to these receptacles) waits on the ECU choice (K1); new work row K5 carries it."
+D-445,,"The swap's alternator is rated 160 A or more for about 160 A of running load, its set-point held at or under 14.6 V by the ECU",2026-09-27,standing,,,,,"**The swap's alternator is sized for about 160 A of running load with every load on: it must be rated 160 A or more (a GM truck-case unit, not the F-body 105 A class), and its regulator set-point must stay at or under the Ionic's 14.6 V ceiling (00-CAR SP-231), commanded by the ECU through the alternator control line (LW29).**
+
+Work H-001, from Camden's note on luxury D-391: ""worth noting in enine swap that alternator needs to be beefy"". Small under §3: arithmetic over rows already in the record; which alternator and bracket are bought stays with DS01's accessory-drive choice, which now has this floor.
+
+**The sum** (design currents at 13.5 V; measured where the record has it):
+- Car, from electrical `loads`: headlights high 8.9 (halogen today; LED at luxury S7 lowers it), tail and park 5.4 measured, brake lamps 7.0 measured, interior 2.5, wiper high 5.5, blower on high 18, rear defog 13, accessory bus 10 — 70.3 A.
+- Comfort, from electrical D-382 and V-101: seat heat 5 A × 2 (heat and cool interlocked per seat, so heat is the larger), mirror heat 5 (its fuse, a bound, confirm), DCU and PMU about 1 — 16 A.
+- Engine, from `ls_wires.amps`: injectors 9, coils 12, fan 25 (O14's limit), A/C clutch 4, throttle motor 5, O2 heaters 3, VVT 1.5, purge 0.5; plus the in-tank pump about 12.2 A at 58 psi (the Phantom 340 candidate, electrical V-040, confirm) and the ECU about 1 (confirm) — 73.2 A.
+
+Everything at once is about 160 A. A cold wet night (no fan, brakes off) is about 128 A; a hot night in traffic with the fan, A/C and seat cooling instead of heat and defog is about 140 A. An alternator gives roughly half to two-thirds of its rating at hot idle (class figure, confirm on the unit's curve), so a 160 A unit covers the realistic cases at speed and the LiFePO4 battery carries the idle shortfall; the 12A's 55 A class alternator (electrical V-002) and a 105 A F-body unit do not.
+
+**The regulator.** An LS alternator's set-point is commanded (Gen III: the L / field lines; Gen IV trucks: a PWM command). The ECU chosen at K1 must drive LW29 so the set-point holds at or under 14.6 V; an uncommanded unit's default voltage is confirmed on the bench before it is fitted.
+
+**In the data.** DS01's note carries the 160 A floor; K1's note adds alternator control to what each ECU must offer."
