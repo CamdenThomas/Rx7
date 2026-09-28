@@ -1,6 +1,11 @@
 # What has to be on the sheet
 
-*Rev 2026-09-22 (b, after the parts check D-379) · owns: the drawing checklist for the DCU carrier.*
+*Rev 2026-09-28 (c, drawn - D-452) · owns: the drawing checklist for the DCU carrier.*
+
+> **Drawn 2026-09-28.** Every item below is on `dcu-carrier.kicad_sch`, ERC clean. Where D-452 went
+> further than this list: a TCA9539-Q1 expander for the slow lines (§4 SN17, SN22 DEN/DSEL, CAN STB),
+> the windows and mirrors fed from logic 12 V, a B560C + SMBJ33A on the comfort input, and two 0 Ω
+> links in place of the DNP choke (§2).
 
 > **This is a snapshot taken 2026-09-22, not a link.** The live record is
 > `../../../data/dcu_channels.csv` —

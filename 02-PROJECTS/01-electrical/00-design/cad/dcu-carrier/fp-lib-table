@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "dcu-carrier")(type "KiCad")(uri "${KIPRJMOD}/dcu-carrier.pretty")(options "")(descr "Footprints drawn or checked for this board - the Teensy socket is the ICU one, copied, kept with the project (guide 0.3)"))
+)
