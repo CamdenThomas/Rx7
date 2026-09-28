@@ -21,7 +21,7 @@ merge is idempotent and refuses to write while it reports a problem (`--force` o
 | Wave | Systems | Batches | State |
 | --- | --- | --- | --- |
 | 1 | electrical, lighting, ignition | 22 | merged 2026-09-25 |
-| 2 | engine, fuel, cooling, climate, transmission | 18 | see 00-verify R1 |
+| 2 | engine, fuel, cooling, climate, transmission | 18 | merged (00-verify R1) |
 | 3 | brakes, driveline, steering, suspension, wheels, body | 18 | merged 2026-09-27 |
 
 ## The OCR text (00-verify R3, 2026-09-26)
