@@ -2,10 +2,10 @@
 # Build and run ALL firmware test suites:
 #   test_suite.cpp  - ICU renderer regression (421 assertions)
 #   test_bt817.cpp  - BT817 display driver, mocked SPI (35)
-#   test_dcu.cpp    - DCU climate/comfort logic (38)
+#   test_dcu.cpp    - DCU climate, comfort, panel, windows, mirrors (F-017)
 #   test_radio.cpp  - battery path: BMS decoder, C3 line protocol, 0x220/0x221 (F-015)
 # Run after ANY change to cluster_core.h, stats.h, can_map.h,
-# bt817.h, climate.h, vehicle_model.h or channels.h.
+# bt817.h, climate.h, panel.h, vehicle_model.h or channels.h.
 #
 # Needs g++, once:  sudo dnf install gcc-c++
 # Exit 0 = every suite passed. The binaries are not versioned (.gitignore).

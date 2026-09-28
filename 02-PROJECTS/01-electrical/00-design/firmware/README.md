@@ -29,6 +29,12 @@ firmware/
 │   ├── can_map.h            shared CAN structs — THE MASTER COPY; both nodes include it
 │   └── icu.ino              Teensy host. ICU_FW_VERSION lives here
 │
+├── dcu/                     THE DCU (D-374)
+│   ├── climate.h            HVAC servos, comfort channels, seat interlock, climate memory
+│   ├── panel.h              key matrix, 0x400, wake, release select, knobs, windows, mirrors (F-017)
+│   ├── can_map.h            a copy of icu/can_map.h - never edited here
+│   └── dcu.ino              Teensy host, provisional pins until H-002. DCU_FW_VERSION lives here
+│
 ├── icu_sim/                 DESKTOP PREVIEW — runs the real firmware, not a mock
 │   ├── sim_sdl.cpp          SDL2 host (Linux)
 │   └── build.sh             builds ./sim (the binary itself is not versioned)
@@ -38,7 +44,7 @@ firmware/
 │   ├── vehicle_model.h      a 1982 RX-7 that behaves like one
 │   └── channels.h           hand-synced to 02-PROJECTS/01-electrical/data/pins.csv — the v2 generator (D-311) is archived; see work F-013
 │
-├── tests/                   REGRESSION SUITES — test_suite 415 · test_bt817 35 · test_dcu 33 assertions (483, 2026-08-31)
+├── tests/                   REGRESSION SUITES — test_suite · test_bt817 · test_dcu · test_radio (run.sh prints the counts)
 │   ├── test_suite.cpp       runs on the PC: packing, counter wrap, rendering, overlap, dirty tiles, stats
 │   └── run.sh               build + run every suite. Do this after any change to the headers above
 │

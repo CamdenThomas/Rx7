@@ -56,3 +56,4 @@ L-0044,2026-09-25,repair,D-419 P029,P029 sealing plug corrected to 114017 (size 
 L-0045,2026-09-26,session,Q-028 Q-110 S1 Z1,"P04: Q-028 and Q-110 regated onto E25 on the build track (reply=value ms), out of S1 and Z1; block raised on what S1 waits on"
 L-0046,2026-09-26,session,V-002 C4 V-102 Q-014 V-055 Q-110 Q-028 E19 E12 R6 E2 B2,P05: reply=value with a unit on the twelve rows of his that read a number; the two blanks-to-fill removed
 L-0047,2026-09-27,answers,D-440 D-441 01.12 01.13 S1,"Blocks 01.12 and 01.13 answered (a): S1 keeps D-387's gate; one teardown, nothing bought before the freeze"
+L-0048,2026-09-27,session,D-442 F-017 H-002,"F-017 DCU firmware written (panel.h, dcu.ino 0.3.0-dev, test_dcu 6-13); left open - the headless run could not compile or run the suites; H-002 I/O budget noted"

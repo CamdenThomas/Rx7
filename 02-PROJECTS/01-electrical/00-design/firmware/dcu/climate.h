@@ -41,8 +41,8 @@ enum comfort_ch {
 };
 
 /* Blower level -> the duty % the final stage is commanded to, and what 0x300
- * byte 1 reports (D-308). Evenly spaced until the panel's encoder defines the
- * detents (H-007, F-017). 0 is off, always. */
+ * byte 1 reports (D-308). The fan knob moves one level per detent, 0-3
+ * (panel.h, F-017). 0 is off, always. */
 static inline uint8_t blower_duty_pct(uint8_t level)
 {
     if (level > 3) level = 3;
@@ -113,10 +113,10 @@ static inline void mode_to_servos(dcu_state_t *s)
     v[SRV_RECIRC].us_now = m->recirc ? v[SRV_RECIRC].us_max : v[SRV_RECIRC].us_min;
 }
 
-/* Local panel edges. NOT the 0x400 bit map (that is PK_* in can_map.h,
- * F-016); F-017 maps the panel scan onto these. Was: 0x400 buttons per D-031. Bit map provisional until the
- * keypad doc is final. Hatch / fuel-door / defog are PMU-owned (D-180)
- * and ignored here.                                                    */
+/* Local climate edges. NOT the 0x400 bit map (that is PK_* in can_map.h,
+ * F-016): panel_apply() in panel.h maps the mode and recirc keys and the
+ * temperature knob's detents onto these (F-017). Hatch / fuel-door / defog
+ * are the PMU's (D-180) and never reach here.                          */
 #define KP_MODE     (1u << 0)
 #define KP_TEMP_UP  (1u << 1)
 #define KP_TEMP_DN  (1u << 2)
