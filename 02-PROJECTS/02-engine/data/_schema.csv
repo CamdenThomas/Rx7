@@ -119,3 +119,13 @@ ls_cavities,cavity,int,yes,,
 ls_cavities,wire,str,yes,ls_wires.id,
 ls_cavities,conductor,str,yes,,which of the wire row's crossing conductors
 ls_cavities,noise,str,no,,the housing's noise class
+parts,id,key,yes,,
+parts,system,str,yes,,"what it belongs to: fuel, cooling, clutch, ..."
+parts,item,str,yes,,
+parts,spec,text,no,,the part number and the figure it is bought to - confirm until checked on the seller's page
+parts,qty,num,no,,
+parts,unit,enum(ea|m|set),no,,
+parts,usd_low,int,no,,
+parts,usd_high,int,no,,
+parts,work,str,no,,the design row that chose it and the build row that fits it
+parts,note,text,no,,

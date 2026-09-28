@@ -1,6 +1,7 @@
 table,purpose
 decisions,"every ruling, permanent, newest last; its full text is in body (D-405)"
 handover,"what the electrical build leaves for the swap engine, interface by interface"
+parts,"the swap's parts to buy beyond the options, one row per part, priced low and high - DS10's budget is a query over options and parts, never a typed total (DS05)"
 log,"what happened, one row per action"
 retired,terms that must no longer appear anywhere
 work,the work list; owner says who does it

@@ -211,3 +211,16 @@ His answer to block 02.14: option (a), no words added. Option (a) in full: ""Aer
 Reasoning: it matches the recommendation; the margin for later power outweighs the 3 A over option (b). The tank cut is irreversible, so DS12 (measuring the tank top first) must be done before any cutting; the choice authorises the design, not the cut.
 
 Consequences: DS05's parts list is built on the Phantom 340; the fuel pump's soft fuse on O5 is sized to about 12.2 A (D-173) at 58 psi (V-040); DS10 carries the pump line; CP06 (fuel work) is designed for a cut tank. Prices stay `confirm` until checked (BR06). DS05 and DS12 no longer wait on 02.14."
+D-448,fuel,"The swap's fuel system: Phantom 340 in the tank, a 58 psi filter-regulator by the tank, one 3/8 in feed to the rail; its parts are the new parts table",2026-09-27,standing,,,,D-447,"**The swap's fuel system is the Phantom 340 in the tank feeding a 58 psi filter-regulator mounted by the tank, one 3/8 in (-6) feed forward to the rail and a short return back into the tank; its parts are rows FP01-FP06 in the new table `parts`, every part number, price and length `confirm`.**
+
+Work DS05, released by D-447 (block 02.14). Small under §3: paper and rows only. The layout (LS returnless at 58 psi, a Corvette-style filter-regulator, one feed line) was already settled in DS05's note; the pump is his ruling; nothing is bought until the freeze (DS11) and BR06.
+
+**The layout.** Pump in the tank (FP01) → filter-regulator by the tank (FP02), its return short into the pump's top plate or the tank's existing return, whichever the tank measurement (DS12) finds → one feed forward along the floor pan (FP03, clamped by FP06) → the rail's 3/8 in quick-connect (FP05). The Weber's Carter P4070, the Holley regulator and the second line forward go out at CP01; the old return line forward is capped or kept as a spare.
+
+**Why a table.** The swap had no home for a part that is not an option; DS10 is the budget ""over options, parts and this plan"", so `parts` is declared here (system, item, spec, qty, unit, usd_low, usd_high, work, note) and DS10's total is a sum over it, never typed.
+
+**Lengths.** The feed is bought at 1.5 × the route; the route is unmeasured, about 4.5 m tank to rail on the FB's 2420 mm wheelbase (confirm), so 7 m is listed and re-set from the tape at CP06.
+
+**The soft fuse.** O5's soft fuse is set at about 140 % of the pump's measured draw (D-173, V-040): on the 12.2 A estimate that is about 17 A, well inside O5's 25 A; the number is set from the installed pump's measurement at CP06/TU02, not from this estimate.
+
+**Not done here.** The tank cut waits on DS12. The EVAP vent and purge follow K2."
