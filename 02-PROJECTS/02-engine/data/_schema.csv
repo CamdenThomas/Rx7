@@ -31,7 +31,7 @@ work,state,enum(blocked|done|dropped|open),no,,vocabulary owned by tools/rx7.py 
 work,gate,str,no,,"references only - D-###, a block id like 00.18, a work id in this area, <area>:<work id>, or phase:<PHASE>; all must be met before the row can start, an empty cell is met, and prose belongs in note (2026-09-12)"
 work,note,str,no,,
 options,id,key,yes,,
-options,system,enum(engine|transmission|adapter|shifter|axle|mounts),yes,,
+options,system,enum(engine|transmission|adapter|shifter|axle|mounts|ecu),yes,,ecu added 2026-09-27 for K1's engine-computer candidates
 options,item,str,yes,,
 options,donors,text,no,,which vehicles and years carry it
 options,block,enum(aluminum|iron|n/a),no,,
