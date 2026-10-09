@@ -178,6 +178,7 @@ reason a second copy of any fact is: one picture in the repo, not two.
 | `report.txt` | a stale log of the first Update-PCB run on the placeholder footprints (2026-09); nothing reads it |
 | `CONVENTIONS.md` | how to draw it so it stays reviewable |
 | `TARGET.md` | what has to be on the sheet, from `icu_channels.csv` — a snapshot, not a link |
+| `enclosure/` | the enclosure (P111, Y7): `make_enclosure.py` (parameters at the top, C4 the envelope; `freecadcmd make_enclosure.py`) builds base, DT13 plate and lid as STEP / STL from `board.json` (`../enclosure_extract.py icu-carrier`, KiCad's Python) and the board STEP, and fit-checks them; provisional, every dimension `confirm` until C4 / F11 |
 
 `.kicad_prl`, `*-backups/`, `*.kicad_sch-bak`, autosaves, the ERC and DRC reports, the netlist,
 the PDF, the renders, the STEP and the router's DSN / SES files are gitignored (the root

@@ -1,0 +1,845 @@
+{
+ "board": "panel",
+ "source": "panel.kicad_pcb",
+ "frame": "STEP export frame: x = KiCad x, y = -KiCad y, z up, board bottom face z = 0",
+ "outline": {
+  "xmin": 49.95,
+  "xmax": 250.05,
+  "ymin": -120.05,
+  "ymax": -49.95,
+  "corner_r": 3.0
+ },
+ "thickness": 1.6,
+ "holes": [
+  {
+   "ref": "H3",
+   "x": 54.0,
+   "y": -116.0,
+   "d": 3.2,
+   "plated": false
+  },
+  {
+   "ref": "H1",
+   "x": 54.0,
+   "y": -54.0,
+   "d": 3.2,
+   "plated": false
+  },
+  {
+   "ref": "H4",
+   "x": 246.0,
+   "y": -116.0,
+   "d": 3.2,
+   "plated": false
+  },
+  {
+   "ref": "H2",
+   "x": 246.0,
+   "y": -54.0,
+   "d": 3.2,
+   "plated": false
+  }
+ ],
+ "footprints": [
+  {
+   "ref": "D1",
+   "value": "1N4148W",
+   "footprint": "D_SOD-123",
+   "x": 121.5,
+   "y": -66.0,
+   "rot": 90.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    120.305,
+    122.695,
+    -68.395,
+    -63.605
+   ]
+  },
+  {
+   "ref": "D2",
+   "value": "1N4148W",
+   "footprint": "D_SOD-123",
+   "x": 139.5,
+   "y": -66.0,
+   "rot": 90.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    138.305,
+    140.695,
+    -68.395,
+    -63.605
+   ]
+  },
+  {
+   "ref": "D3",
+   "value": "1N4148W",
+   "footprint": "D_SOD-123",
+   "x": 157.5,
+   "y": -66.0,
+   "rot": 90.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    156.305,
+    158.695,
+    -68.395,
+    -63.605
+   ]
+  },
+  {
+   "ref": "D4",
+   "value": "1N4148W",
+   "footprint": "D_SOD-123",
+   "x": 175.5,
+   "y": -66.0,
+   "rot": 90.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    174.305,
+    176.695,
+    -68.395,
+    -63.605
+   ]
+  },
+  {
+   "ref": "D5",
+   "value": "1N4148W",
+   "footprint": "D_SOD-123",
+   "x": 193.5,
+   "y": -66.0,
+   "rot": 90.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    192.305,
+    194.695,
+    -68.395,
+    -63.605
+   ]
+  },
+  {
+   "ref": "D6",
+   "value": "1N4148W",
+   "footprint": "D_SOD-123",
+   "x": 99.5,
+   "y": -84.0,
+   "rot": 90.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    98.305,
+    100.695,
+    -86.395,
+    -81.605
+   ]
+  },
+  {
+   "ref": "D7",
+   "value": "1N4148W",
+   "footprint": "D_SOD-123",
+   "x": 99.5,
+   "y": -102.0,
+   "rot": 90.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    98.305,
+    100.695,
+    -104.395,
+    -99.605
+   ]
+  },
+  {
+   "ref": "D8",
+   "value": "1N4148W",
+   "footprint": "D_SOD-123",
+   "x": 215.5,
+   "y": -84.0,
+   "rot": 90.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    214.305,
+    216.695,
+    -86.395,
+    -81.605
+   ]
+  },
+  {
+   "ref": "D9",
+   "value": "1N4148W",
+   "footprint": "D_SOD-123",
+   "x": 215.5,
+   "y": -102.0,
+   "rot": 90.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    214.305,
+    216.695,
+    -104.395,
+    -99.605
+   ]
+  },
+  {
+   "ref": "H1",
+   "value": "M3 - confirm against V-113 / LP20",
+   "footprint": "MountingHole_3.2mm_M3",
+   "x": 54.0,
+   "y": -54.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    50.5075,
+    57.495,
+    -57.4975,
+    -50.5025
+   ]
+  },
+  {
+   "ref": "H2",
+   "value": "M3 - confirm against V-113 / LP20",
+   "footprint": "MountingHole_3.2mm_M3",
+   "x": 246.0,
+   "y": -54.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    242.5075,
+    249.495,
+    -57.4975,
+    -50.5025
+   ]
+  },
+  {
+   "ref": "H3",
+   "value": "M3 - confirm against V-113 / LP20",
+   "footprint": "MountingHole_3.2mm_M3",
+   "x": 54.0,
+   "y": -116.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    50.5075,
+    57.495,
+    -119.4975,
+    -112.5025
+   ]
+  },
+  {
+   "ref": "H4",
+   "value": "M3 - confirm against V-113 / LP20",
+   "footprint": "MountingHole_3.2mm_M3",
+   "x": 246.0,
+   "y": -116.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    242.5075,
+    249.495,
+    -119.4975,
+    -112.5025
+   ]
+  },
+  {
+   "ref": "J1",
+   "value": "panel ribbon 2x10 IDC",
+   "footprint": "IDC-Header_2x10_P2.54mm_Vertical",
+   "x": 161.43,
+   "y": -113.77,
+   "rot": 90.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    132.925,
+    167.075,
+    -117.495,
+    -107.505
+   ]
+  },
+  {
+   "ref": "J2",
+   "value": "illumination in",
+   "footprint": "JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",
+   "x": 232.75,
+   "y": -63.0,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    229.755,
+    238.245,
+    -65.895,
+    -59.055
+   ]
+  },
+  {
+   "ref": "LED1",
+   "value": "backlight defog - confirm",
+   "footprint": "LED_1206_3216Metric",
+   "x": 114.0,
+   "y": -59.8,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    111.675,
+    116.325,
+    -60.975,
+    -58.625
+   ]
+  },
+  {
+   "ref": "LED2",
+   "value": "backlight hatch release - confirm",
+   "footprint": "LED_1206_3216Metric",
+   "x": 132.0,
+   "y": -59.8,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    129.675,
+    134.325,
+    -60.975,
+    -58.625
+   ]
+  },
+  {
+   "ref": "LED3",
+   "value": "backlight fuel-door release - confirm",
+   "footprint": "LED_1206_3216Metric",
+   "x": 150.0,
+   "y": -59.8,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    147.675,
+    152.325,
+    -60.975,
+    -58.625
+   ]
+  },
+  {
+   "ref": "LED4",
+   "value": "backlight HVAC mode - confirm",
+   "footprint": "LED_1206_3216Metric",
+   "x": 168.0,
+   "y": -59.8,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    165.675,
+    170.325,
+    -60.975,
+    -58.625
+   ]
+  },
+  {
+   "ref": "LED5",
+   "value": "backlight recirculate - confirm",
+   "footprint": "LED_1206_3216Metric",
+   "x": 186.0,
+   "y": -59.8,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    183.675,
+    188.325,
+    -60.975,
+    -58.625
+   ]
+  },
+  {
+   "ref": "LED6",
+   "value": "backlight window DRV up - confirm",
+   "footprint": "LED_1206_3216Metric",
+   "x": 92.0,
+   "y": -77.8,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    89.675,
+    94.325,
+    -78.975,
+    -76.625
+   ]
+  },
+  {
+   "ref": "LED7",
+   "value": "backlight window DRV down - confirm",
+   "footprint": "LED_1206_3216Metric",
+   "x": 92.0,
+   "y": -95.8,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    89.675,
+    94.325,
+    -96.975,
+    -94.625
+   ]
+  },
+  {
+   "ref": "LED8",
+   "value": "backlight window PASS up - confirm",
+   "footprint": "LED_1206_3216Metric",
+   "x": 208.0,
+   "y": -77.8,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    205.675,
+    210.325,
+    -78.975,
+    -76.625
+   ]
+  },
+  {
+   "ref": "LED9",
+   "value": "backlight window PASS down - confirm",
+   "footprint": "LED_1206_3216Metric",
+   "x": 208.0,
+   "y": -95.8,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    205.675,
+    210.325,
+    -96.975,
+    -94.625
+   ]
+  },
+  {
+   "ref": "R1",
+   "value": "1k - confirm",
+   "footprint": "R_0805_2012Metric",
+   "x": 222.0,
+   "y": -74.0,
+   "rot": 90.0,
+   "side": "bottom",
+   "dnp": true,
+   "courtyard": [
+    221.005,
+    222.995,
+    -75.725,
+    -72.275
+   ]
+  },
+  {
+   "ref": "R2",
+   "value": "1k - confirm",
+   "footprint": "R_0805_2012Metric",
+   "x": 227.0,
+   "y": -74.0,
+   "rot": 90.0,
+   "side": "bottom",
+   "dnp": true,
+   "courtyard": [
+    226.005,
+    227.995,
+    -75.725,
+    -72.275
+   ]
+  },
+  {
+   "ref": "R3",
+   "value": "1k - confirm",
+   "footprint": "R_0805_2012Metric",
+   "x": 232.0,
+   "y": -74.0,
+   "rot": 90.0,
+   "side": "bottom",
+   "dnp": true,
+   "courtyard": [
+    231.005,
+    232.995,
+    -75.725,
+    -72.275
+   ]
+  },
+  {
+   "ref": "SW1",
+   "value": "key - defog",
+   "footprint": "SW_PUSH_6mm_H13mm",
+   "x": 110.75,
+   "y": -63.75,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    109.205,
+    118.795,
+    -69.795,
+    -62.205
+   ]
+  },
+  {
+   "ref": "SW10",
+   "value": "encoder - fan",
+   "footprint": "RotaryEncoder_Bourns_Vertical_PEC11R-4xxxF-Sxxxx",
+   "x": 126.0,
+   "y": -98.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    118.255,
+    133.745,
+    -106.645,
+    -89.355
+   ]
+  },
+  {
+   "ref": "SW11",
+   "value": "encoder - temperature",
+   "footprint": "RotaryEncoder_Bourns_Vertical_PEC11R-4xxxF-Sxxxx",
+   "x": 174.0,
+   "y": -98.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    166.255,
+    181.745,
+    -106.645,
+    -89.355
+   ]
+  },
+  {
+   "ref": "SW12",
+   "value": "encoder - driver seat",
+   "footprint": "RotaryEncoder_Bourns_Vertical_PEC11R-4xxxF-Sxxxx",
+   "x": 68.0,
+   "y": -100.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    60.255,
+    75.745,
+    -108.645,
+    -91.355
+   ]
+  },
+  {
+   "ref": "SW13",
+   "value": "encoder - passenger seat",
+   "footprint": "RotaryEncoder_Bourns_Vertical_PEC11R-4xxxF-Sxxxx",
+   "x": 232.0,
+   "y": -100.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    224.255,
+    239.745,
+    -108.645,
+    -91.355
+   ]
+  },
+  {
+   "ref": "SW2",
+   "value": "key - hatch release",
+   "footprint": "SW_PUSH_6mm_H13mm",
+   "x": 128.75,
+   "y": -63.75,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    127.205,
+    136.795,
+    -69.795,
+    -62.205
+   ]
+  },
+  {
+   "ref": "SW3",
+   "value": "key - fuel-door release",
+   "footprint": "SW_PUSH_6mm_H13mm",
+   "x": 146.75,
+   "y": -63.75,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    145.205,
+    154.795,
+    -69.795,
+    -62.205
+   ]
+  },
+  {
+   "ref": "SW4",
+   "value": "key - HVAC mode",
+   "footprint": "SW_PUSH_6mm_H13mm",
+   "x": 164.75,
+   "y": -63.75,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    163.205,
+    172.795,
+    -69.795,
+    -62.205
+   ]
+  },
+  {
+   "ref": "SW5",
+   "value": "key - recirculate",
+   "footprint": "SW_PUSH_6mm_H13mm",
+   "x": 182.75,
+   "y": -63.75,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    181.205,
+    190.795,
+    -69.795,
+    -62.205
+   ]
+  },
+  {
+   "ref": "SW6",
+   "value": "key - window DRV up",
+   "footprint": "SW_PUSH_6mm_H13mm",
+   "x": 88.75,
+   "y": -81.75,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    87.205,
+    96.795,
+    -87.795,
+    -80.205
+   ]
+  },
+  {
+   "ref": "SW7",
+   "value": "key - window DRV down",
+   "footprint": "SW_PUSH_6mm_H13mm",
+   "x": 88.75,
+   "y": -99.75,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    87.205,
+    96.795,
+    -105.795,
+    -98.205
+   ]
+  },
+  {
+   "ref": "SW8",
+   "value": "key - window PASS up",
+   "footprint": "SW_PUSH_6mm_H13mm",
+   "x": 204.75,
+   "y": -81.75,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    203.205,
+    212.795,
+    -87.795,
+    -80.205
+   ]
+  },
+  {
+   "ref": "SW9",
+   "value": "key - window PASS down",
+   "footprint": "SW_PUSH_6mm_H13mm",
+   "x": 204.75,
+   "y": -99.75,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    203.205,
+    212.795,
+    -105.795,
+    -98.205
+   ]
+  },
+  {
+   "ref": "SWB1",
+   "value": "key (b) - defog",
+   "footprint": "JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical",
+   "x": 110.25,
+   "y": -75.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": true,
+   "courtyard": [
+    107.255,
+    120.745,
+    -78.095,
+    -71.255
+   ]
+  },
+  {
+   "ref": "SWB2",
+   "value": "key (b) - hatch release",
+   "footprint": "JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical",
+   "x": 128.25,
+   "y": -75.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": true,
+   "courtyard": [
+    125.255,
+    138.745,
+    -78.095,
+    -71.255
+   ]
+  },
+  {
+   "ref": "SWB3",
+   "value": "key (b) - fuel-door release",
+   "footprint": "JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical",
+   "x": 146.25,
+   "y": -75.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": true,
+   "courtyard": [
+    143.255,
+    156.745,
+    -78.095,
+    -71.255
+   ]
+  },
+  {
+   "ref": "SWB4",
+   "value": "key (b) - HVAC mode",
+   "footprint": "JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical",
+   "x": 164.25,
+   "y": -75.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": true,
+   "courtyard": [
+    161.255,
+    174.745,
+    -78.095,
+    -71.255
+   ]
+  },
+  {
+   "ref": "SWB5",
+   "value": "key (b) - recirculate",
+   "footprint": "JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical",
+   "x": 182.25,
+   "y": -75.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": true,
+   "courtyard": [
+    179.255,
+    192.745,
+    -78.095,
+    -71.255
+   ]
+  },
+  {
+   "ref": "SWB6",
+   "value": "key (b) - window DRV up",
+   "footprint": "JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical",
+   "x": 88.25,
+   "y": -93.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": true,
+   "courtyard": [
+    85.255,
+    98.745,
+    -96.095,
+    -89.255
+   ]
+  },
+  {
+   "ref": "SWB7",
+   "value": "key (b) - window DRV down",
+   "footprint": "JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical",
+   "x": 88.25,
+   "y": -111.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": true,
+   "courtyard": [
+    85.255,
+    98.745,
+    -114.095,
+    -107.255
+   ]
+  },
+  {
+   "ref": "SWB8",
+   "value": "key (b) - window PASS up",
+   "footprint": "JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical",
+   "x": 204.25,
+   "y": -93.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": true,
+   "courtyard": [
+    201.255,
+    214.745,
+    -96.095,
+    -89.255
+   ]
+  },
+  {
+   "ref": "SWB9",
+   "value": "key (b) - window PASS down",
+   "footprint": "JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical",
+   "x": 204.25,
+   "y": -111.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": true,
+   "courtyard": [
+    201.255,
+    214.745,
+    -114.095,
+    -107.255
+   ]
+  },
+  {
+   "ref": "U1",
+   "value": "thumbstick - not chosen (P156)",
+   "footprint": "Thumbstick_P156_Placeholder_2x04_P2.54mm",
+   "x": 70.0,
+   "y": -71.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    56.705,
+    83.295,
+    -84.295,
+    -57.705
+   ]
+  }
+ ]
+}

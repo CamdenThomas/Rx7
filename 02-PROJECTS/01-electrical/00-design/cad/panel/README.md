@@ -124,3 +124,4 @@ are rebuilt from the board and are not committed (`.gitignore`).
 | `panel.kicad_sym` · `sym-lib-table` | every symbol used, kept with the project |
 | `panel.pretty` · `fp-lib-table` | the PEC11R encoder and the thumbstick placeholder, drawn here |
 | `panel.svg` · `panel-bom.csv` | the committed picture and the parts list, DNP and `confirm` included |
+| `enclosure/` | the mount behind the faceplate (Y7): `make_enclosure.py` (parameters at the top, `V-113` the envelope; `freecadcmd make_enclosure.py`) builds the rear tray and the front frame as STEP / STL from `board.json` (`../enclosure_extract.py panel`) and `panel.step`, and fit-checks them; `confirm` until `V-113` and LP20 |

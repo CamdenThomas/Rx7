@@ -83,3 +83,4 @@ L-0071,2026-10-09,session,R17,R17 checked and closed: D-264 already rules the le
 L-0072,2026-10-09,session,F9 F10 P169 P109 P176 CK25,"F9 and F10 done: the ICU carrier's provisional board - placed, routed, poured, DRC clean, 3D complete, STEP built; P176 and CK25 added"
 L-0073,2026-10-09,session,Y5 Y11 P177 P178 CK26,"Y5 done: the DCU carrier's provisional board - real packages, placed, routed, poured, DRC clean, STEP; P177 / P178 / CK26 added; Y11 opened for the open blocks' worst case"
 L-0074,2026-10-09,session,Y8,"Y8 done: the firmware proof - every target compile, CAN and logic vectors generated from the record, three simulator bugs fixed, COMFORT's inrush settled in pins"
+L-0075,2026-10-09,session,Y7 P179 P180 P181 P182 P183 P184 CK27 F11,"Y7 done: parametric FreeCAD enclosures for the three boards, fit check clean; P179-P184, CK27, F11's findings"

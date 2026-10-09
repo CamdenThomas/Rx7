@@ -186,3 +186,4 @@ python3 ../check.py --board dcu
 | `dcu-carrier.svg` · `dcu-carrier-bom.csv` | the committed picture and the BOM export: the reviewable forms of a change |
 | `CONVENTIONS.md` | how to draw it, and what differs from the ICU |
 | `TARGET.md` | the drawing checklist from `dcu_channels`, a snapshot and not a link |
+| `enclosure/` | the enclosure (`P152`, Y7): `make_enclosure.py` (parameters at the top, `V-102` the envelope; `freecadcmd make_enclosure.py`) builds base, DT13 plate and lid as STEP / STL from `board.json` (`../enclosure_extract.py dcu-carrier`) and the board STEP, and fit-checks them; provisional, `confirm` until `V-102` / F11 |

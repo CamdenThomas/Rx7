@@ -7,3 +7,7 @@
 *.ses
 *.rules
 *-drc.json
+# The enclosure (Y7): make_enclosure.py rebuilds its STEP and STL from board.json and the board
+# STEP in one command, so the outputs are generated files and stay out of git (CLAUDE.md §1).
+enclosure/*.step
+enclosure/*.stl

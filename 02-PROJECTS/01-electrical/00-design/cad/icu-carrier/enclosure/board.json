@@ -1,0 +1,1975 @@
+{
+ "board": "icu-carrier",
+ "source": "icu-carrier.kicad_pcb",
+ "frame": "STEP export frame: x = KiCad x, y = -KiCad y, z up, board bottom face z = 0",
+ "outline": {
+  "xmin": 99.95,
+  "xmax": 210.05,
+  "ymin": -130.05,
+  "ymax": -49.95,
+  "corner_r": 0.0
+ },
+ "thickness": 1.6,
+ "holes": [
+  {
+   "ref": "H3",
+   "x": 104.0,
+   "y": -126.0,
+   "d": 3.2,
+   "plated": false
+  },
+  {
+   "ref": "H1",
+   "x": 104.0,
+   "y": -79.8,
+   "d": 3.2,
+   "plated": false
+  },
+  {
+   "ref": "J3",
+   "x": 113.96,
+   "y": -70.83,
+   "d": 3.5,
+   "plated": false
+  },
+  {
+   "ref": "J3",
+   "x": 131.5,
+   "y": -59.4,
+   "d": 3.5,
+   "plated": false
+  },
+  {
+   "ref": "J3",
+   "x": 149.04,
+   "y": -70.83,
+   "d": 3.5,
+   "plated": false
+  },
+  {
+   "ref": "J1",
+   "x": 173.13,
+   "y": -70.83,
+   "d": 3.5,
+   "plated": false
+  },
+  {
+   "ref": "J1",
+   "x": 184.0,
+   "y": -59.4,
+   "d": 3.5,
+   "plated": false
+  },
+  {
+   "ref": "J1",
+   "x": 194.87,
+   "y": -70.83,
+   "d": 3.5,
+   "plated": false
+  },
+  {
+   "ref": "H4",
+   "x": 206.0,
+   "y": -126.0,
+   "d": 3.2,
+   "plated": false
+  },
+  {
+   "ref": "H2",
+   "x": 206.0,
+   "y": -79.8,
+   "d": 3.2,
+   "plated": false
+  }
+ ],
+ "footprints": [
+  {
+   "ref": "C1",
+   "value": "100u 63V",
+   "footprint": "CP_Elec_8x10",
+   "x": 204.5,
+   "y": -95.5,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    199.205,
+    209.795,
+    -99.945,
+    -91.055
+   ]
+  },
+  {
+   "ref": "C10",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 139.0,
+   "y": -81.4,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    137.255,
+    140.745,
+    -82.425,
+    -80.375
+   ]
+  },
+  {
+   "ref": "C11",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 143.2,
+   "y": -81.4,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    141.455,
+    144.945,
+    -82.425,
+    -80.375
+   ]
+  },
+  {
+   "ref": "C12",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 147.4,
+   "y": -81.4,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    145.655,
+    149.145,
+    -82.425,
+    -80.375
+   ]
+  },
+  {
+   "ref": "C13",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 151.6,
+   "y": -81.4,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    149.855,
+    153.345,
+    -82.425,
+    -80.375
+   ]
+  },
+  {
+   "ref": "C14",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 184.0,
+   "y": -81.4,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    182.255,
+    185.745,
+    -82.425,
+    -80.375
+   ]
+  },
+  {
+   "ref": "C15",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 133.0,
+   "y": -89.3,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    131.255,
+    134.745,
+    -90.325,
+    -88.275
+   ]
+  },
+  {
+   "ref": "C16",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 144.8,
+   "y": -89.3,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    143.055,
+    146.545,
+    -90.325,
+    -88.275
+   ]
+  },
+  {
+   "ref": "C17",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 149.6,
+   "y": -118.5,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    147.855,
+    151.345,
+    -119.525,
+    -117.475
+   ]
+  },
+  {
+   "ref": "C18",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 138.0,
+   "y": -119.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    136.255,
+    139.745,
+    -120.025,
+    -117.975
+   ]
+  },
+  {
+   "ref": "C19",
+   "value": "10u",
+   "footprint": "C_0805_2012Metric",
+   "x": 123.5,
+   "y": -97.4,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    122.475,
+    124.525,
+    -99.145,
+    -95.655
+   ]
+  },
+  {
+   "ref": "C2",
+   "value": "22u 16V",
+   "footprint": "C_1206_3216Metric",
+   "x": 206.3,
+   "y": -105.1,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    203.955,
+    208.645,
+    -106.295,
+    -103.905
+   ]
+  },
+  {
+   "ref": "C20",
+   "value": "4.7u 100V X7R",
+   "footprint": "C_1210_3225Metric",
+   "x": 196.0,
+   "y": -108.2,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    194.355,
+    197.645,
+    -110.545,
+    -105.855
+   ]
+  },
+  {
+   "ref": "C21",
+   "value": "220n 100V",
+   "footprint": "C_0805_2012Metric",
+   "x": 198.9,
+   "y": -108.2,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    197.875,
+    199.925,
+    -109.945,
+    -106.455
+   ]
+  },
+  {
+   "ref": "C22",
+   "value": "220n 100V",
+   "footprint": "C_0805_2012Metric",
+   "x": 204.1,
+   "y": -109.7,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    203.075,
+    205.125,
+    -111.445,
+    -107.955
+   ]
+  },
+  {
+   "ref": "C23",
+   "value": "22u 10V X7R",
+   "footprint": "C_1206_3216Metric",
+   "x": 206.3,
+   "y": -102.7,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    203.955,
+    208.645,
+    -103.895,
+    -101.505
+   ]
+  },
+  {
+   "ref": "C24",
+   "value": "100n 16V",
+   "footprint": "C_0805_2012Metric",
+   "x": 198.7,
+   "y": -111.7,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    197.675,
+    199.725,
+    -113.445,
+    -109.955
+   ]
+  },
+  {
+   "ref": "C25",
+   "value": "1u 16V",
+   "footprint": "C_0805_2012Metric",
+   "x": 200.7,
+   "y": -115.2,
+   "rot": -90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    199.675,
+    201.725,
+    -116.945,
+    -113.455
+   ]
+  },
+  {
+   "ref": "C26",
+   "value": "20p C0G",
+   "footprint": "C_0805_2012Metric",
+   "x": 207.45,
+   "y": -114.5,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    206.425,
+    208.475,
+    -116.245,
+    -112.755
+   ]
+  },
+  {
+   "ref": "C3",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 197.3,
+   "y": -90.5,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    195.555,
+    199.045,
+    -91.525,
+    -89.475
+   ]
+  },
+  {
+   "ref": "C4",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 201.0,
+   "y": -89.5,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    199.255,
+    202.745,
+    -90.525,
+    -88.475
+   ]
+  },
+  {
+   "ref": "C5",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 118.0,
+   "y": -81.4,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    116.255,
+    119.745,
+    -82.425,
+    -80.375
+   ]
+  },
+  {
+   "ref": "C6",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 122.2,
+   "y": -81.4,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    120.455,
+    123.945,
+    -82.425,
+    -80.375
+   ]
+  },
+  {
+   "ref": "C7",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 126.4,
+   "y": -81.4,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    124.655,
+    128.145,
+    -82.425,
+    -80.375
+   ]
+  },
+  {
+   "ref": "C8",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 130.6,
+   "y": -81.4,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    128.855,
+    132.345,
+    -82.425,
+    -80.375
+   ]
+  },
+  {
+   "ref": "C9",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 134.8,
+   "y": -81.4,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    133.055,
+    136.545,
+    -82.425,
+    -80.375
+   ]
+  },
+  {
+   "ref": "D1",
+   "value": "BAT54S",
+   "footprint": "SOT-23",
+   "x": 118.0,
+   "y": -84.5,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    116.025,
+    119.975,
+    -86.245,
+    -82.755
+   ]
+  },
+  {
+   "ref": "D10",
+   "value": "BAT54S",
+   "footprint": "SOT-23",
+   "x": 184.0,
+   "y": -84.5,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    182.025,
+    185.975,
+    -86.245,
+    -82.755
+   ]
+  },
+  {
+   "ref": "D2",
+   "value": "BAT54S",
+   "footprint": "SOT-23",
+   "x": 122.2,
+   "y": -84.5,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    120.225,
+    124.175,
+    -86.245,
+    -82.755
+   ]
+  },
+  {
+   "ref": "D20",
+   "value": "BZX84C5V1",
+   "footprint": "SOT-23",
+   "x": 140.8,
+   "y": -78.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    138.825,
+    142.775,
+    -79.745,
+    -76.255
+   ]
+  },
+  {
+   "ref": "D21",
+   "value": "BAT54S",
+   "footprint": "SOT-23",
+   "x": 140.8,
+   "y": -81.6,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    138.825,
+    142.775,
+    -83.345,
+    -79.855
+   ]
+  },
+  {
+   "ref": "D22",
+   "value": "BAT54S",
+   "footprint": "SOT-23",
+   "x": 149.1,
+   "y": -85.5,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    147.125,
+    151.075,
+    -87.245,
+    -83.755
+   ]
+  },
+  {
+   "ref": "D23",
+   "value": "SS34",
+   "footprint": "D_SMA",
+   "x": 191.0,
+   "y": -79.6,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    189.205,
+    192.795,
+    -83.145,
+    -76.055
+   ]
+  },
+  {
+   "ref": "D24",
+   "value": "SMBJ33A",
+   "footprint": "D_SMB",
+   "x": 191.0,
+   "y": -87.2,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    188.705,
+    193.295,
+    -90.895,
+    -83.505
+   ]
+  },
+  {
+   "ref": "D25",
+   "value": "SS34",
+   "footprint": "D_SMA",
+   "x": 166.5,
+   "y": -79.6,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    164.705,
+    168.295,
+    -83.145,
+    -76.055
+   ]
+  },
+  {
+   "ref": "D26",
+   "value": "SMBJ33A",
+   "footprint": "D_SMB",
+   "x": 166.5,
+   "y": -87.3,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    164.205,
+    168.795,
+    -90.995,
+    -83.605
+   ]
+  },
+  {
+   "ref": "D3",
+   "value": "BAT54S",
+   "footprint": "SOT-23",
+   "x": 126.4,
+   "y": -84.5,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    124.425,
+    128.375,
+    -86.245,
+    -82.755
+   ]
+  },
+  {
+   "ref": "D4",
+   "value": "BAT54S",
+   "footprint": "SOT-23",
+   "x": 130.6,
+   "y": -84.5,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    128.625,
+    132.575,
+    -86.245,
+    -82.755
+   ]
+  },
+  {
+   "ref": "D5",
+   "value": "BAT54S",
+   "footprint": "SOT-23",
+   "x": 134.8,
+   "y": -84.5,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    132.825,
+    136.775,
+    -86.245,
+    -82.755
+   ]
+  },
+  {
+   "ref": "D6",
+   "value": "BAT54S",
+   "footprint": "SOT-23",
+   "x": 139.0,
+   "y": -84.5,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    137.025,
+    140.975,
+    -86.245,
+    -82.755
+   ]
+  },
+  {
+   "ref": "D7",
+   "value": "BAT54S",
+   "footprint": "SOT-23",
+   "x": 143.2,
+   "y": -84.5,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    141.225,
+    145.175,
+    -86.245,
+    -82.755
+   ]
+  },
+  {
+   "ref": "D8",
+   "value": "BAT54S",
+   "footprint": "SOT-23",
+   "x": 147.4,
+   "y": -84.5,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    145.425,
+    149.375,
+    -86.245,
+    -82.755
+   ]
+  },
+  {
+   "ref": "D9",
+   "value": "BAT54S",
+   "footprint": "SOT-23",
+   "x": 151.6,
+   "y": -84.5,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    149.625,
+    153.575,
+    -86.245,
+    -82.755
+   ]
+  },
+  {
+   "ref": "F1",
+   "value": "4 A",
+   "footprint": "Fuse_1206_3216Metric",
+   "x": 170.6,
+   "y": -78.4,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    169.425,
+    171.775,
+    -80.725,
+    -76.075
+   ]
+  },
+  {
+   "ref": "H1",
+   "value": "M3 - confirm at C4/F11",
+   "footprint": "MountingHole_3.2mm_M3",
+   "x": 104.0,
+   "y": -79.8,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    100.5075,
+    107.495,
+    -83.2975,
+    -76.3025
+   ]
+  },
+  {
+   "ref": "H2",
+   "value": "M3 - confirm at C4/F11",
+   "footprint": "MountingHole_3.2mm_M3",
+   "x": 206.0,
+   "y": -79.8,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    202.5075,
+    209.495,
+    -83.2975,
+    -76.3025
+   ]
+  },
+  {
+   "ref": "H3",
+   "value": "M3 - confirm at C4/F11",
+   "footprint": "MountingHole_3.2mm_M3",
+   "x": 104.0,
+   "y": -126.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    100.5075,
+    107.495,
+    -129.4975,
+    -122.5025
+   ]
+  },
+  {
+   "ref": "H4",
+   "value": "M3 - confirm at C4/F11",
+   "footprint": "MountingHole_3.2mm_M3",
+   "x": 206.0,
+   "y": -126.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    202.5075,
+    209.495,
+    -129.4975,
+    -122.5025
+   ]
+  },
+  {
+   "ref": "J1",
+   "value": "DT13-06PA",
+   "footprint": "DT13-06PA",
+   "x": 184.0,
+   "y": -68.675,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    162.855,
+    208.245,
+    -75.92,
+    -49.955
+   ]
+  },
+  {
+   "ref": "J2",
+   "value": "backlight out",
+   "footprint": "PinHeader_1x02_P2.54mm_Vertical",
+   "x": 187.5,
+   "y": -127.5,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    185.685,
+    191.865,
+    -129.315,
+    -125.685
+   ]
+  },
+  {
+   "ref": "J3",
+   "value": "DT13-12PA",
+   "footprint": "DT13-12PA",
+   "x": 131.5,
+   "y": -68.675,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    100.655,
+    162.345,
+    -75.77,
+    -49.955
+   ]
+  },
+  {
+   "ref": "J4",
+   "value": "ME817EV CN8 - 2x8 host header, JP1 2-3 (5 V from this board)",
+   "footprint": "PinSocket_2x08_P2.54mm_Vertical",
+   "x": 175.0,
+   "y": -127.5,
+   "rot": -90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    155.405,
+    176.815,
+    -129.315,
+    -123.145
+   ]
+  },
+  {
+   "ref": "J5",
+   "value": "Teensy 4.1 socket - 2 x 24 female headers (D-259)",
+   "footprint": "Teensy41_Socket",
+   "x": 185.7,
+   "y": -93.3,
+   "rot": -90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    125.715,
+    188.345,
+    -110.105,
+    -91.735
+   ]
+  },
+  {
+   "ref": "JP1",
+   "value": "J1  FITTED",
+   "footprint": "PinHeader_1x02_P2.54mm_Vertical",
+   "x": 102.6,
+   "y": -87.1,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    100.785,
+    104.415,
+    -91.465,
+    -85.285
+   ]
+  },
+  {
+   "ref": "JP2",
+   "value": "J3  FITTED",
+   "footprint": "PinHeader_1x02_P2.54mm_Vertical",
+   "x": 106.5,
+   "y": -87.1,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    104.685,
+    108.315,
+    -91.465,
+    -85.285
+   ]
+  },
+  {
+   "ref": "JP3",
+   "value": "J7  NOT FITTED",
+   "footprint": "PinHeader_1x02_P2.54mm_Vertical",
+   "x": 110.4,
+   "y": -87.1,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    108.585,
+    112.215,
+    -91.465,
+    -85.285
+   ]
+  },
+  {
+   "ref": "JP8A1",
+   "value": "J8A  open collector",
+   "footprint": "PinHeader_1x02_P2.54mm_Vertical",
+   "x": 151.0,
+   "y": -89.4,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    149.185,
+    155.365,
+    -91.215,
+    -87.585
+   ]
+  },
+  {
+   "ref": "JP8B1",
+   "value": "J8B  push-pull",
+   "footprint": "PinHeader_1x02_P2.54mm_Vertical",
+   "x": 157.4,
+   "y": -89.4,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    155.585,
+    161.765,
+    -91.215,
+    -87.585
+   ]
+  },
+  {
+   "ref": "L1",
+   "value": "common-mode choke - DNP; fit only with R44 / R45 removed",
+   "footprint": "L_CommonModeChoke_Coilank_ACM2012",
+   "x": 196.5,
+   "y": -78.3,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    194.905,
+    198.095,
+    -79.195,
+    -77.405
+   ]
+  },
+  {
+   "ref": "L2",
+   "value": "2.2u XAL4020-222",
+   "footprint": "L_Coilcraft_XAL4020-XXX",
+   "x": 201.5,
+   "y": -103.9,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    199.055,
+    203.945,
+    -106.345,
+    -101.455
+   ]
+  },
+  {
+   "ref": "Q1",
+   "value": "SQD50P06 class, >= 60 V",
+   "footprint": "TO-252-2",
+   "x": 178.4,
+   "y": -86.5,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    171.965,
+    183.155,
+    -90.045,
+    -82.955
+   ]
+  },
+  {
+   "ref": "Q2",
+   "value": "MMBT3904",
+   "footprint": "SOT-23",
+   "x": 175.0,
+   "y": -79.3,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    173.025,
+    176.975,
+    -81.045,
+    -77.555
+   ]
+  },
+  {
+   "ref": "Q3",
+   "value": "DMG3415U class P-FET, SOT-23 - confirm",
+   "footprint": "SOT-23",
+   "x": 123.5,
+   "y": -101.4,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    121.755,
+    125.245,
+    -103.375,
+    -99.425
+   ]
+  },
+  {
+   "ref": "Q4",
+   "value": "MMBT3904",
+   "footprint": "SOT-23",
+   "x": 123.5,
+   "y": -105.6,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    121.755,
+    125.245,
+    -107.575,
+    -103.625
+   ]
+  },
+  {
+   "ref": "R1",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 179.0,
+   "y": -79.3,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    177.275,
+    180.725,
+    -80.295,
+    -78.305
+   ]
+  },
+  {
+   "ref": "R10",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 122.2,
+   "y": -79.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    120.475,
+    123.925,
+    -80.195,
+    -78.205
+   ]
+  },
+  {
+   "ref": "R11",
+   "value": "100R 1W",
+   "footprint": "R_2512_6332Metric",
+   "x": 119.3,
+   "y": -83.2,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    115.425,
+    123.175,
+    -85.175,
+    -81.225
+   ]
+  },
+  {
+   "ref": "R12",
+   "value": "15k",
+   "footprint": "R_0805_2012Metric",
+   "x": 126.4,
+   "y": -77.0,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    124.675,
+    128.125,
+    -77.995,
+    -76.005
+   ]
+  },
+  {
+   "ref": "R13",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 126.4,
+   "y": -79.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    124.675,
+    128.125,
+    -80.195,
+    -78.205
+   ]
+  },
+  {
+   "ref": "R14",
+   "value": "47k",
+   "footprint": "R_0805_2012Metric",
+   "x": 130.6,
+   "y": -77.0,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    128.875,
+    132.325,
+    -77.995,
+    -76.005
+   ]
+  },
+  {
+   "ref": "R15",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 130.6,
+   "y": -79.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    128.875,
+    132.325,
+    -80.195,
+    -78.205
+   ]
+  },
+  {
+   "ref": "R16",
+   "value": "47k",
+   "footprint": "R_0805_2012Metric",
+   "x": 134.8,
+   "y": -77.0,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    133.075,
+    136.525,
+    -77.995,
+    -76.005
+   ]
+  },
+  {
+   "ref": "R17",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 134.8,
+   "y": -79.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    133.075,
+    136.525,
+    -80.195,
+    -78.205
+   ]
+  },
+  {
+   "ref": "R18",
+   "value": "1k - 2.2k 1%  ?",
+   "footprint": "R_0805_2012Metric",
+   "x": 127.2,
+   "y": -83.2,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    125.475,
+    128.925,
+    -84.195,
+    -82.205
+   ]
+  },
+  {
+   "ref": "R19",
+   "value": "15k",
+   "footprint": "R_0805_2012Metric",
+   "x": 139.0,
+   "y": -77.0,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    137.275,
+    140.725,
+    -77.995,
+    -76.005
+   ]
+  },
+  {
+   "ref": "R2",
+   "value": "1k",
+   "footprint": "R_0805_2012Metric",
+   "x": 182.8,
+   "y": -79.3,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    181.075,
+    184.525,
+    -80.295,
+    -78.305
+   ]
+  },
+  {
+   "ref": "R20",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 139.0,
+   "y": -79.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    137.275,
+    140.725,
+    -80.195,
+    -78.205
+   ]
+  },
+  {
+   "ref": "R21",
+   "value": "47k",
+   "footprint": "R_0805_2012Metric",
+   "x": 143.2,
+   "y": -77.0,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    141.475,
+    144.925,
+    -77.995,
+    -76.005
+   ]
+  },
+  {
+   "ref": "R22",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 143.2,
+   "y": -79.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    141.475,
+    144.925,
+    -80.195,
+    -78.205
+   ]
+  },
+  {
+   "ref": "R23",
+   "value": "47k",
+   "footprint": "R_0805_2012Metric",
+   "x": 147.4,
+   "y": -77.0,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    145.675,
+    149.125,
+    -77.995,
+    -76.005
+   ]
+  },
+  {
+   "ref": "R24",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 147.4,
+   "y": -79.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    145.675,
+    149.125,
+    -80.195,
+    -78.205
+   ]
+  },
+  {
+   "ref": "R25",
+   "value": "47k",
+   "footprint": "R_0805_2012Metric",
+   "x": 151.6,
+   "y": -77.0,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    149.875,
+    153.325,
+    -77.995,
+    -76.005
+   ]
+  },
+  {
+   "ref": "R26",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 151.6,
+   "y": -79.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    149.875,
+    153.325,
+    -80.195,
+    -78.205
+   ]
+  },
+  {
+   "ref": "R27",
+   "value": "47k",
+   "footprint": "R_0805_2012Metric",
+   "x": 184.0,
+   "y": -77.0,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    182.275,
+    185.725,
+    -77.995,
+    -76.005
+   ]
+  },
+  {
+   "ref": "R28",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 184.0,
+   "y": -79.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    182.275,
+    185.725,
+    -80.195,
+    -78.205
+   ]
+  },
+  {
+   "ref": "R29",
+   "value": "100k 0.5W",
+   "footprint": "R_1210_3225Metric",
+   "x": 133.72,
+   "y": -79.5,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    132.095,
+    135.345,
+    -81.825,
+    -77.175
+   ]
+  },
+  {
+   "ref": "R3",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 186.6,
+   "y": -79.3,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    184.875,
+    188.325,
+    -80.295,
+    -78.305
+   ]
+  },
+  {
+   "ref": "R30",
+   "value": "100k 0.5W",
+   "footprint": "R_1210_3225Metric",
+   "x": 133.72,
+   "y": -84.4,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    132.095,
+    135.345,
+    -86.725,
+    -82.075
+   ]
+  },
+  {
+   "ref": "R31",
+   "value": "39k",
+   "footprint": "R_0805_2012Metric",
+   "x": 122.5,
+   "y": -89.3,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    120.775,
+    124.225,
+    -90.295,
+    -88.305
+   ]
+  },
+  {
+   "ref": "R32",
+   "value": "12k",
+   "footprint": "R_0805_2012Metric",
+   "x": 126.0,
+   "y": -89.3,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    124.275,
+    127.725,
+    -90.295,
+    -88.305
+   ]
+  },
+  {
+   "ref": "R33",
+   "value": "1.2M",
+   "footprint": "R_0805_2012Metric",
+   "x": 140.8,
+   "y": -84.5,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    139.075,
+    142.525,
+    -85.495,
+    -83.505
+   ]
+  },
+  {
+   "ref": "R34",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 129.5,
+   "y": -89.3,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    127.775,
+    131.225,
+    -90.295,
+    -88.305
+   ]
+  },
+  {
+   "ref": "R35",
+   "value": "4.7k",
+   "footprint": "R_0805_2012Metric",
+   "x": 153.1,
+   "y": -85.5,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    151.375,
+    154.825,
+    -86.495,
+    -84.505
+   ]
+  },
+  {
+   "ref": "R36",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 156.8,
+   "y": -85.5,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    155.075,
+    158.525,
+    -86.495,
+    -84.505
+   ]
+  },
+  {
+   "ref": "R37",
+   "value": "4.7k",
+   "footprint": "R_0805_2012Metric",
+   "x": 160.5,
+   "y": -85.5,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    158.775,
+    162.225,
+    -86.495,
+    -84.505
+   ]
+  },
+  {
+   "ref": "R38",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 146.0,
+   "y": -118.5,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    144.275,
+    147.725,
+    -119.495,
+    -117.505
+   ]
+  },
+  {
+   "ref": "R39",
+   "value": "4.7k",
+   "footprint": "R_0805_2012Metric",
+   "x": 138.0,
+   "y": -114.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    136.275,
+    139.725,
+    -114.995,
+    -113.005
+   ]
+  },
+  {
+   "ref": "R4",
+   "value": "100k",
+   "footprint": "R_0805_2012Metric",
+   "x": 186.6,
+   "y": -81.8,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    184.875,
+    188.325,
+    -82.795,
+    -80.805
+   ]
+  },
+  {
+   "ref": "R40",
+   "value": "4.7k",
+   "footprint": "R_0805_2012Metric",
+   "x": 138.0,
+   "y": -116.5,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    136.275,
+    139.725,
+    -117.495,
+    -115.505
+   ]
+  },
+  {
+   "ref": "R41",
+   "value": "100k 1%",
+   "footprint": "R_0805_2012Metric",
+   "x": 205.35,
+   "y": -114.5,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    204.355,
+    206.345,
+    -116.225,
+    -112.775
+   ]
+  },
+  {
+   "ref": "R42",
+   "value": "24.9k 1%",
+   "footprint": "R_0805_2012Metric",
+   "x": 203.3,
+   "y": -114.5,
+   "rot": -90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    202.305,
+    204.295,
+    -116.225,
+    -112.775
+   ]
+  },
+  {
+   "ref": "R43",
+   "value": "100k",
+   "footprint": "R_0805_2012Metric",
+   "x": 206.5,
+   "y": -110.7,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    205.505,
+    207.495,
+    -112.425,
+    -108.975
+   ]
+  },
+  {
+   "ref": "R44",
+   "value": "0R",
+   "footprint": "R_0805_2012Metric",
+   "x": 200.0,
+   "y": -78.3,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    198.275,
+    201.725,
+    -79.295,
+    -77.305
+   ]
+  },
+  {
+   "ref": "R45",
+   "value": "0R",
+   "footprint": "R_0805_2012Metric",
+   "x": 196.5,
+   "y": -80.9,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    194.775,
+    198.225,
+    -81.895,
+    -79.905
+   ]
+  },
+  {
+   "ref": "R46",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 123.5,
+   "y": -109.5,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    122.505,
+    124.495,
+    -111.225,
+    -107.775
+   ]
+  },
+  {
+   "ref": "R47",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 123.5,
+   "y": -93.5,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    122.505,
+    124.495,
+    -95.225,
+    -91.775
+   ]
+  },
+  {
+   "ref": "R5",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 204.8,
+   "y": -89.5,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    203.075,
+    206.525,
+    -90.495,
+    -88.505
+   ]
+  },
+  {
+   "ref": "R6",
+   "value": "100R 1W",
+   "footprint": "R_2512_6332Metric",
+   "x": 111.4,
+   "y": -83.2,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    107.525,
+    115.275,
+    -85.175,
+    -81.225
+   ]
+  },
+  {
+   "ref": "R7",
+   "value": "15k",
+   "footprint": "R_0805_2012Metric",
+   "x": 118.0,
+   "y": -77.0,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    116.275,
+    119.725,
+    -77.995,
+    -76.005
+   ]
+  },
+  {
+   "ref": "R8",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 118.0,
+   "y": -79.2,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    116.275,
+    119.725,
+    -80.195,
+    -78.205
+   ]
+  },
+  {
+   "ref": "R9",
+   "value": "15k",
+   "footprint": "R_0805_2012Metric",
+   "x": 122.2,
+   "y": -77.0,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    120.475,
+    123.925,
+    -77.995,
+    -76.005
+   ]
+  },
+  {
+   "ref": "SW1",
+   "value": "IC22",
+   "footprint": "JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",
+   "x": 146.0,
+   "y": -126.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    143.005,
+    151.495,
+    -129.945,
+    -123.105
+   ]
+  },
+  {
+   "ref": "U1",
+   "value": "LMR36015FSCQ-Q1",
+   "footprint": "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm",
+   "x": 201.5,
+   "y": -110.5,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    200.005,
+    202.995,
+    -112.495,
+    -108.505
+   ]
+  },
+  {
+   "ref": "U3",
+   "value": "TCAN1042HVDRQ1",
+   "footprint": "SOIC-8_3.9x4.9mm_P1.27mm",
+   "x": 198.0,
+   "y": -85.5,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    194.255,
+    201.745,
+    -88.245,
+    -82.755
+   ]
+  },
+  {
+   "ref": "U4",
+   "value": "LM393",
+   "footprint": "SOIC-8_3.9x4.9mm_P1.27mm",
+   "x": 147.0,
+   "y": -79.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    143.255,
+    150.745,
+    -81.745,
+    -76.255
+   ]
+  },
+  {
+   "ref": "U5",
+   "value": "74LVC1G17",
+   "footprint": "SOT-23-5",
+   "x": 144.8,
+   "y": -85.5,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    142.705,
+    146.895,
+    -87.245,
+    -83.755
+   ]
+  },
+  {
+   "ref": "U7",
+   "value": "Adafruit 4517 LSM6DSOX+LIS3MDL (LSM6DSO class, P109 - confirm the board bought)",
+   "footprint": "IMU_Adafruit_4517_Socket",
+   "x": 121.5,
+   "y": -120.5,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    108.505,
+    134.495,
+    -129.695,
+    -111.305
+   ]
+  },
+  {
+   "ref": "U8",
+   "value": "XIAO ESP32C3 2x7 socket (Seeed, S-490)",
+   "footprint": "XIAO_ESP32C3_Socket_2x07",
+   "x": 109.0,
+   "y": -101.5,
+   "rot": -90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    98.205,
+    121.295,
+    -110.695,
+    -92.305
+   ]
+  }
+ ]
+}
