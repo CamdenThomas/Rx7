@@ -79,3 +79,4 @@ L-0067,2026-10-09,session,F-017,"F-017 done: the DCU firmware on the D-452 pin m
 L-0068,2026-10-09,session,Y6 P155 P173 P174 P175,"Y6 done: the control panel's provisional board - both key styles, DRC clean, STEP; P155 corrected, P173-P175 added"
 L-0069,2026-10-09,session,W-330b E13,"Engine K6's reach into electrical: W-330b's fourth ask, N40 / N48 / N50 and LD19 at the swap, E13's room for a fifth receptacle (engine 02.16)"
 L-0070,2026-10-09,session,R17,R17 raised: the 12A's coolant-level warning is carried by nothing in today's harness (found by engine K6)
+L-0071,2026-10-09,session,R17,R17 checked and closed: D-264 already rules the level senders out; no finding
