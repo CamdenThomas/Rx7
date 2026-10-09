@@ -1407,6 +1407,48 @@ def check_electrical(area: Path, rows=None):
     return problems, waits
 
 
+def distance_to_done(area: Path):
+    """Y9: how far an electrical area is from done, as numbers - the electrical checks' problems
+    and held findings, the sim decks' last result (00-design/sim/.results, written by run.sh:
+    'passed total date'), the rows still marked confirm among what is bought (parts: need_rule,
+    spec, used_for, basis) and what is cut (live or capped cavities' lands_on and src_note, node
+    conductors' notes, routes without a measured ft), the open blocks, and the review rows still
+    open (work stage R). None for an area without the electrical tables."""
+    tables, _ = schema(area)
+    if not all(t in tables for t in ELECTRICAL_TABLES):
+        return None
+    problems, waits = check_electrical(area)
+    d = {"problems": len(problems), "held": len(waits)}
+    res = area / "00-design" / "sim" / ".results"
+    d["sims"] = None
+    if res.exists():
+        parts = res.read_text().split()
+        if len(parts) >= 2 and parts[0].isdigit() and parts[1].isdigit():
+            d["sims"] = (int(parts[0]), int(parts[1]), parts[2] if len(parts) > 2 else "")
+    _, prows = read_table(area, "parts")
+    d["confirm_parts"] = sum(1 for r in prows if (r.get("need_rule") or "") == "confirm" or any(
+        "confirm" in (r.get(c) or "").lower() for c in ("spec", "used_for", "basis")))
+    _, cavs = read_table(area, "cavities")
+    _, conds = read_table(area, "node_conductors")
+    d["confirm_cut"] = sum(1 for r in cavs if (r.get("state") or "") in ("LIVE", "CAPPED") and any(
+        "confirm" in (r.get(c) or "").lower() for c in ("lands_on", "src_note"))) + sum(
+        1 for r in conds if "confirm" in (r.get("note") or "").lower())
+    _, routes = read_table(area, "routes")
+    d["routes_unmeasured"] = sum(1 for r in routes if not (r.get("ft") or "").strip())
+    d["routes"] = len(routes)
+    d["blocks"] = len(read_table(area, "blocks")[1]) if "blocks" in tables else 0
+    _, work = read_table(area, "work")
+    d["review_open"] = sum(1 for r in work if (r.get("stage") or "") == "R" and (r.get("state") or "") == "open")
+    return d
+
+
+def done_line(d) -> str:
+    sims = f"{d['sims'][0]}/{d['sims'][1]}" + (f" ({d['sims'][2]})" if d["sims"][2] else "") if d["sims"] else "not run"
+    return (f"   DONE   checks {d['problems']} · held {d['held']} · sims {sims} · confirm: {d['confirm_parts']} parts, "
+            f"{d['confirm_cut']} cut rows, {d['routes_unmeasured']}/{d['routes']} routes unmeasured · blocks {d['blocks']} · "
+            f"review rows open {d['review_open']}")
+
+
 def check_folder(area: Path, t: str, declared, kc) -> list[str]:
     """Each file of a folder table is one row, under the declared header, named by its key."""
     p = []
@@ -2197,6 +2239,9 @@ def cmd_status(args):
         if standing:
             line += f"   decisions {len(standing)} ({len(alone)} nobody was asked)"
         print(line)
+        dist = distance_to_done(a)
+        if dist:
+            print(done_line(dist))
         if full:
             print_queue(a.name, idx)
         else:

@@ -23,12 +23,17 @@ VENDOR=../../../../01-REFERENCE/model/library/spice
 } > models/active.lib
 
 rc=0
+passed=0
+total=0
 for deck in *.cir; do
   [ -f "$deck" ] || continue
   echo "== $deck"
   if ngspice -b "$deck" 2>&1 | grep -E "^(PASS|FAIL|INFO)"; then :; fi
   ngspice -b "$deck" >/dev/null 2>&1
   r=$?
-  if [ "$r" -eq 0 ]; then echo "   passed"; else echo "   FAILED (ngspice rc $r)"; rc=1; fi
+  total=$((total + 1))
+  if [ "$r" -eq 0 ]; then echo "   passed"; passed=$((passed + 1)); else echo "   FAILED (ngspice rc $r)"; rc=1; fi
 done
+# the last result, for `rx7.py status` (Y9): passed total date - not in git
+echo "$passed $total $(date +%Y-%m-%d)" > .results
 exit $rc

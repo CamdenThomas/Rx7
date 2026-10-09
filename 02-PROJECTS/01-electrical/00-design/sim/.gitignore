@@ -1,3 +1,4 @@
 models/active.lib
 *.log
 *.raw
+.results
