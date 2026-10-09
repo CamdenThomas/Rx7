@@ -3,58 +3,45 @@
  * mirrors, release select)
  *
  * Mirroring icu.ino: this file is ONLY the host — CAN plumbing, pins, SD
- * persistence, timing. All logic lives in climate.h and panel.h and is
- * testable off-target (tests/test_dcu.cpp).
+ * persistence, timing. All logic lives in climate.h, panel.h and tca9539.h
+ * (the expander and the DRV8962 guard) and is testable off-target
+ * (tests/test_dcu.cpp).
  *
  * Library: ACAN_T4 (NOT FlexCAN_T4 — same rule as the ICU).
- * Pins are provisional until the H-002 carrier freezes them. The map below
- * needs 44 I/O besides CAN2: the mirror bridge sits on the bottom pads
- * 48-54, which are free only with no PSRAM fitted - H-002 settles it.
+ * Pins: pins.h, which is dcu_channels.teensy_pin (D-452). All 42 edge pins
+ * are used; the slow lines - the DRV8962 mirror driver, the PROFETs' DEN /
+ * DSEL, CAN STB and the buck's power-good - are on the TCA9539-Q1 expander
+ * on Wire (18 / 19, INT 12, RESET 13), driven through tca9539.h.
  */
 
-#define DCU_FW_VERSION "0.3.1-dev"   /* can_map.h to the record (Y8); F-017: panel, 0x400 sent, windows, mirrors, release, wake */
+#define DCU_FW_VERSION "0.4.0-dev"   /* D-452 pin map: expander on Wire, fan encoder 40 / 41, CAN STB held low, DRV8962 fault clear (F-017) */
 
 #include <ACAN_T4.h>
 #include <Servo.h>
 #include <SD.h>
+#include <Wire.h>
 #include "climate.h"
 #include "panel.h"
+#include "pins.h"
+#include "tca9539.h"
 
 extern "C" uint32_t set_arm_clock(uint32_t frequency);   /* Teensy 4 core */
 
-/* ---- provisional pin map (H-002 owns the final one) ---- */
-static const int PIN_SERVO[SRV_COUNT]   = { 2, 3, 4 };              /* SN15 mode · blend · recirc */
-static const int PIN_COMFORT[CMF_COUNT] = { 5, 6, 7, 8, 9 };        /* SN16, climate.h order      */
-static const int PIN_BLOWER      = 10;                              /* SN14, PWM >= 20 kHz        */
-static const int PIN_WAKE        = 11;                              /* SN21 -> DP-DCU 6           */
-static const int PIN_CABIN_NTC   = A0;                              /* SN11 */
-static const int PIN_OAT_NTC     = A1;                              /* SN12 */
-static const int PIN_CURRENT     = A2;                              /* SN13 */
-static const int PIN_JOY_PRESS   = 17;                              /* ribbon 19 */
-static const int PIN_JOY_X       = A6;                              /* ribbon 17 */
-static const int PIN_JOY_Y       = A7;                              /* ribbon 18 */
-static const int PIN_WIN[4]      = { 22, 23, 24, 25 };              /* SN22: DRV up, DRV dn, PASS up, PASS dn -> DP-DCU-B 1-4 */
-static const int PIN_REL_HATCH   = 26;                              /* SN23: K3 85, DP-DCU-B 10 */
-static const int PIN_REL_FUEL    = 27;                              /* SN23: K4 85, DP-DCU-B 11 */
-static const int PIN_ROW[PANEL_ROWS] = { 28, 29, 30 };              /* ribbon 3-5 */
-static const int PIN_COL[PANEL_COLS] = { 31, 32, 33 };              /* ribbon 6-8 */
-enum { ENC_FAN = 0, ENC_TEMP, ENC_SEAT_DRV, ENC_SEAT_PASS, ENC_COUNT };
-static const int PIN_ENC_A[ENC_COUNT] = { 18, 34, 36, 38 };         /* ribbon 9, 11, 13, 15 */
-static const int PIN_ENC_B[ENC_COUNT] = { 19, 35, 37, 39 };         /* ribbon 10, 12, 14, 16 */
-/* SN17, DRV8962-Q1 in independent half-bridge mode: IN sets high/low, EN
- * off = open. Channel 4's IN is tied low on the carrier: its EN is the
- * clutch sink (D-360, D-379). */
-static const int PIN_MIR_COM_IN = 48, PIN_MIR_COM_EN = 49;
-static const int PIN_MIR_L_IN   = 50, PIN_MIR_L_EN   = 51;
-static const int PIN_MIR_R_IN   = 52, PIN_MIR_R_EN   = 53;
-static const int PIN_MIR_CLUTCH = 54;
-#define WAKE_ACTIVE HIGH            /* confirm against the wake strip's input (SN21) */
+/* ---- pins: pins.h (dcu_channels.teensy_pin) ---- */
+static_assert(sizeof PIN_SERVO / sizeof PIN_SERVO[0] == SRV_COUNT, "one pin per servo");
+static_assert(sizeof PIN_COMFORT / sizeof PIN_COMFORT[0] == CMF_COUNT, "one pin per comfort channel");
+static_assert(sizeof PIN_ROW / sizeof PIN_ROW[0] == PANEL_ROWS && sizeof PIN_COL / sizeof PIN_COL[0] == PANEL_COLS,
+              "the matrix is 3 x 3");
+#define WAKE_ACTIVE HIGH            /* HIGH turns the NPN on, which turns the 12 V PMOS on (SN21);
+                                     * confirm against the wake strip's input */
 
 /* ---- commissioning values (F6) ---- */
 static stick_cal_t stick;           /* stick_defaults() until commissioned */
 static const uint16_t CURRENT_ZERO = 0;   /* SN13 no-load reading */
 
 Servo         servo[SRV_COUNT];
+tca9539_t     exp_io;               /* U12 */
+drv_guard_t   drv;                  /* the DRV8962 behind it */
 dcu_state_t   dcu;
 panel_t       panel;
 keys_tx_t     keys_tx;
@@ -166,24 +153,52 @@ static void mem_save() {
     if (f) { f.write((const uint8_t *)&dcu.mem, sizeof dcu.mem); f.close(); }
 }
 
-/* ---- outputs ---- */
-static uint8_t hb_state[64];                            /* by EN pin; 0 = HB_OFF */
-static void half_bridge(int in, int en, uint8_t hb) {
-    if (hb_state[en] == hb) return;                     /* touch it only on a change */
-    hb_state[en] = hb;
-    digitalWrite(en, LOW);                               /* open before changing side */
-    if (hb == HB_OFF) return;
-    digitalWrite(in, hb == HB_HIGH ? HIGH : LOW);
-    digitalWrite(en, HIGH);
+/* ---- the expander's bus (tca9539.h's four calls) ---- */
+uint8_t exp_hal_write(uint8_t addr, const uint8_t *buf, uint8_t n) {
+    Wire.beginTransmission(addr);
+    Wire.write(buf, n);
+    return Wire.endTransmission() == 0;
+}
+uint8_t exp_hal_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint8_t n) {
+    Wire.beginTransmission(addr);
+    Wire.write(reg);
+    if (Wire.endTransmission(false) != 0) return 0;          /* repeated start */
+    if (Wire.requestFrom(addr, n) != n) return 0;
+    for (uint8_t i = 0; i < n; i++) buf[i] = (uint8_t)Wire.read();
+    return 1;
+}
+void exp_hal_reset(uint8_t asserted) { digitalWrite(PIN_EXP_RESET, asserted ? LOW : HIGH); }
+void exp_hal_delay_us(uint32_t us)   { delayMicroseconds(us); }
+
+static volatile uint8_t exp_int = 0;                     /* INT: an input changed */
+static void exp_isr() { exp_int = 1; }
+static uint32_t exp_last_read = 0, exp_last_init = 0;
+
+/* Inputs on INT or every EXP_POLL_MS; a silent expander is reset and re-tried
+ * every EXP_RETRY_MS (the DRV8962 sleeps on its pull-down meanwhile). */
+static void exp_service(uint32_t now) {
+    if (!exp_io.ok) {
+        if (now - exp_last_init >= EXP_RETRY_MS) {
+            exp_last_init = now;
+            if (!exp_reset_init(&exp_io)) Serial.println("TCA9539 silent - mirrors off");
+        }
+        return;
+    }
+    if (exp_int || now - exp_last_read >= EXP_POLL_MS) {
+        exp_int = 0; exp_last_read = now;
+        uint16_t was = exp_io.in;
+        if (tca_read_inputs(&exp_io) && ((was ^ exp_io.in) & EXP_PG_5V) && !(exp_io.in & EXP_PG_5V))
+            Serial.println("logic buck power-good low");
+    }
 }
 
+/* ---- outputs ---- */
 static void all_outputs_off() {
     for (int i = 0; i < CMF_COUNT; i++) digitalWrite(PIN_COMFORT[i], LOW);
     for (int i = 0; i < 4; i++) digitalWrite(PIN_WIN[i], LOW);
     digitalWrite(PIN_REL_HATCH, LOW); digitalWrite(PIN_REL_FUEL, LOW);
-    digitalWrite(PIN_MIR_COM_EN, LOW); digitalWrite(PIN_MIR_L_EN, LOW);
-    digitalWrite(PIN_MIR_R_EN, LOW); digitalWrite(PIN_MIR_CLUTCH, LOW);
-    memset(hb_state, 0, sizeof hb_state);
+    exp_write_outputs(&exp_io, 0);      /* DRV8962 asleep, every EN off, STB low */
+    drv.awake = 0;
     analogWrite(PIN_BLOWER, 0);
 }
 
@@ -211,6 +226,7 @@ static void dcu_sleep() {
     for (int i = 0; i < SRV_COUNT; i++) if (servo[i].attached()) servo[i].detach();
     memset(servo_seq.applied, 0, sizeof servo_seq.applied);   /* re-attach one at a time */
     enc_timer.end();
+    detachInterrupt(digitalPinToInterrupt(PIN_EXP_INT));
     for (int r = 0; r < PANEL_ROWS; r++) { pinMode(PIN_ROW[r], OUTPUT); digitalWrite(PIN_ROW[r], LOW); }
     key_woke = 0;
     for (int c = 0; c < PANEL_COLS; c++) attachInterrupt(digitalPinToInterrupt(PIN_COL[c]), col_isr, FALLING);
@@ -220,6 +236,8 @@ static void dcu_sleep() {
     for (int c = 0; c < PANEL_COLS; c++) detachInterrupt(digitalPinToInterrupt(PIN_COL[c]));
     for (int r = 0; r < PANEL_ROWS; r++) pinMode(PIN_ROW[r], INPUT);
     enc_timer.begin(enc_isr, 1000);
+    attachInterrupt(digitalPinToInterrupt(PIN_EXP_INT), exp_isr, FALLING);
+    exp_int = 1;                        /* read the inputs at once */
     last_activity = millis();
 }
 
@@ -228,11 +246,13 @@ void setup() {
     while (!Serial && millis() < 3000) {}
     Serial.print("DCU — Teensy host, firmware "); Serial.println(DCU_FW_VERSION);
 
-    /* every output off before anything else runs */
+    /* every output off before anything else runs; the expander held in
+     * reset, so its ports are inputs: nSLEEP and STB sit on their pull-downs
+     * (DRV8962 asleep, CAN transceiver in normal mode) */
+    pinMode(PIN_EXP_RESET, OUTPUT); exp_hal_reset(1);
     const int outs[] = { PIN_COMFORT[0], PIN_COMFORT[1], PIN_COMFORT[2], PIN_COMFORT[3], PIN_COMFORT[4],
                          PIN_WIN[0], PIN_WIN[1], PIN_WIN[2], PIN_WIN[3], PIN_REL_HATCH, PIN_REL_FUEL,
-                         PIN_MIR_COM_IN, PIN_MIR_COM_EN, PIN_MIR_L_IN, PIN_MIR_L_EN,
-                         PIN_MIR_R_IN, PIN_MIR_R_EN, PIN_MIR_CLUTCH, PIN_BLOWER };
+                         PIN_BLOWER };
     for (int p : outs) { pinMode(p, OUTPUT); digitalWrite(p, LOW); }
     pinMode(PIN_WAKE, OUTPUT); digitalWrite(PIN_WAKE, !WAKE_ACTIVE);
     analogWriteFrequency(PIN_BLOWER, 25000);
@@ -251,6 +271,14 @@ void setup() {
     dcu.cabin_c = TEMP_INVALID;
     mode_to_servos(&dcu);
     enforce_seat_interlock(&dcu);
+
+    /* the expander: STB written low and held - before CAN2 starts (D-452) */
+    Wire.begin();                       /* SDA 18 / SCL 19 */
+    Wire.setClock(400000);
+    pinMode(PIN_EXP_INT, INPUT_PULLUP); /* open drain, pulled up on the carrier as well */
+    exp_last_init = millis();
+    if (!exp_reset_init(&exp_io)) Serial.println("TCA9539 silent - mirrors off, retrying");
+    attachInterrupt(digitalPinToInterrupt(PIN_EXP_INT), exp_isr, FALLING);
 
     ACAN_T4_Settings settings(CAN_BITRATE);
     const uint32_t err = ACAN_T4::can2.begin(settings);
@@ -291,14 +319,19 @@ void loop() {
     window_step(&win[1], (down & PK_WIN_PASS_UP) != 0, (down & PK_WIN_PASS_DN) != 0, body, now, &up, &dn);
     digitalWrite(PIN_WIN[2], up); digitalWrite(PIN_WIN[3], dn);
 
-    /* mirrors (D-359, D-360) */
+    /* mirrors (D-359, D-360): the DRV8962 on the expander, one head at a time */
     uint8_t axis; int8_t dir; mirror_out_t mo;
     stick_read(&stick, (uint16_t)analogRead(PIN_JOY_X), (uint16_t)analogRead(PIN_JOY_Y), &axis, &dir);
-    mirror_step(&mirror, pressed, axis, dir, body, now, &mo);
-    half_bridge(PIN_MIR_COM_IN, PIN_MIR_COM_EN, mo.common);
-    half_bridge(PIN_MIR_L_IN,   PIN_MIR_L_EN,   mo.left);
-    half_bridge(PIN_MIR_R_IN,   PIN_MIR_R_EN,   mo.right);
-    digitalWrite(PIN_MIR_CLUTCH, mo.clutch ? HIGH : LOW);
+    exp_service(now);
+    uint8_t nfault = exp_io.ok && !(exp_io.in & EXP_MIR_NFAULT);
+    if (drv_guard_step(&drv, nfault, body, axis == AXIS_NONE, now) == DRV_CLEAR) {
+        Serial.println("DRV8962 fault - cleared through the expander reset");
+        exp_last_init = now;
+        exp_reset_init(&exp_io);
+    }
+    uint8_t live = (uint8_t)(exp_io.ok && drv_live(&drv, now));
+    mirror_step(&mirror, pressed, axis, dir, (uint8_t)(body && live), now, &mo);
+    if (exp_io.ok) exp_write_outputs(&exp_io, exp_word(&mo, drv.awake, live));
 
     if (dcu.pmu_alive) {                 /* nothing on a sleeping bus */
         if (now - last_tx_300 >= 200) { last_tx_300 = now; send_climate(); }   /* 5 Hz */

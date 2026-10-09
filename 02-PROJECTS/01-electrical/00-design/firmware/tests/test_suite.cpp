@@ -147,11 +147,15 @@ static void testStructs() {
 
     /* bitfields must not collide */
     pmu_state_t s = {};
-    s.wake_source = WAKE_ACC | WAKE_RUN | WAKE_HAZARD | WAKE_DOOR
-                  | WAKE_HORN | WAKE_LATCH;
+    /* the seven wake-strip inputs (can_map.h, D-350); HAZARD / HORN / LATCH
+     * are older names for A8 and SELF, so they are not separate bits */
+    s.wake_source = WAKE_ACC | WAKE_RUN | WAKE_DOOR | WAKE_A8
+                  | WAKE_SELF | WAKE_BRAKE | WAKE_DCU;
     check((s.wake_source & WAKE_ACC)   != 0, "WAKE_ACC set");
-    check((s.wake_source & WAKE_LATCH) != 0, "WAKE_LATCH set");
-    check(s.wake_source == 0x3F,             "all six wake bits distinct");
+    check((s.wake_source & WAKE_DCU)   != 0, "WAKE_DCU set");
+    check(s.wake_source == 0x7F,             "all seven wake bits distinct");
+    check(WAKE_HAZARD == WAKE_A8 && WAKE_HORN == WAKE_A8 && WAKE_LATCH == WAKE_SELF,
+          "the old names alias their strip inputs");
 }
 
 /* ================= 2. counter wrap ================= */

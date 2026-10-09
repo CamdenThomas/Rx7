@@ -1,6 +1,6 @@
 # FIRMWARE
 
-*Rev 2026-09-22 · lives in `01-electrical` with both modules since D-374 (it was `02-luxury/firmware/`) · owns: cluster layout, palette, rendering, CAN structs and the automated trip figures — in code. This README is the folder map and the build instructions.*
+*Rev 2026-10-09 · lives in `01-electrical` with both modules since D-374 (it was `02-luxury/firmware/`) · owns: cluster layout, palette, rendering, CAN structs and the automated trip figures — in code. This README is the folder map and the build instructions.*
 
 **This folder is a source of truth** (R6). `icu/cluster_core.h` defines the
 palette, every layout constant, the icon set, unit conversions and
@@ -37,8 +37,10 @@ firmware/
 ├── dcu/                     THE DCU (D-374)
 │   ├── climate.h            HVAC servos, comfort channels, seat interlock, climate memory
 │   ├── panel.h              key matrix, 0x400, wake, release select, knobs, windows, mirrors (F-017)
+│   ├── pins.h               the pin map - dcu_channels.teensy_pin, every edge pin and expander port (D-452)
+│   ├── tca9539.h            the TCA9539-Q1 on Wire: the DRV8962, DEN / DSEL, CAN STB held low, the fault clear
 │   ├── can_map.h            a copy of icu/can_map.h - never edited here
-│   └── dcu.ino              Teensy host, provisional pins until H-002. DCU_FW_VERSION lives here
+│   └── dcu.ino              Teensy host on the H-002 pin map. DCU_FW_VERSION lives here
 │
 ├── icu_sim/                 DESKTOP PREVIEW — runs the real firmware, not a mock
 │   ├── sim_sdl.cpp          SDL2 host (Linux, Mac)
@@ -68,6 +70,16 @@ firmware/
 **`can_map.h` has two copies** (`icu/`, `dcu/`) because the Arduino IDE needs the header
 beside each sketch. **`icu/can_map.h` is the master.** When it changes, copy it over `dcu/`.
 `tests/run.sh` refuses to run the suites while the two differ (plan P49, 2026-09-26).
+
+**The DCU's pins are `pins.h`, and `pins.h` is `dcu_channels.teensy_pin`** (D-452). All 42 edge
+pins are used, none of the bottom pads. The slow lines go through a TCA9539-Q1 at 0x74 on Wire
+(SDA 18, SCL 19, INT 12, RESET 13): the DRV8962's IN1–3, EN1–4 and nSLEEP, its nFAULT, the
+PROFETs' DEN / DSEL, the transceiver's STB and the buck's power-good. STB is written low at boot,
+before CAN2 starts, and no output word can raise it. The expander's RESET is the boot path and
+also the DRV8962's latched over-current clear: every port turns input, nSLEEP falls on its
+pull-down, and the driver wakes clean. A clear needs the stick let go and a 1 s rest, three per key
+cycle. `test_dcu` sections 14–17 hold the map, the ports, the reset and STB. A pin moved in the
+record is moved in `pins.h` and in the test, and `cad/check.py` holds the sheet to the same row.
 
 **`sim_sdl.cpp` includes `../icu/cluster_core.h` directly** — one source of
 truth, no second copy to drift. **`channels.h` is not generated any more:** the v2 build that rendered it from the electrical pin table (D-311) is archived, so a pin row changed in `02-PROJECTS/01-electrical/data/pins.csv` is copied into `channels.h` by hand (work F-013).

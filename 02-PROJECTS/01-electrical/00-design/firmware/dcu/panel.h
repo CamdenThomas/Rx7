@@ -188,7 +188,7 @@ static inline uint8_t panel_frame_due(keys_tx_t *t, uint16_t down, uint16_t held
 typedef struct { uint8_t ab; int8_t sub; } enc_t;
 
 /* ab: bit1 = A, bit0 = B. Clockwise is 00 -> 01 -> 11 -> 10 -> 00; if a knob
- * reads backwards, swap its A and B in dcu.ino's pin map. Returns -1, 0 or
+ * reads backwards, swap its A and B in pins.h. Returns -1, 0 or
  * +1 detent. A bounce reverses its own count, so it never adds a detent. */
 static inline int8_t enc_step(enc_t *e, uint8_t ab)
 {

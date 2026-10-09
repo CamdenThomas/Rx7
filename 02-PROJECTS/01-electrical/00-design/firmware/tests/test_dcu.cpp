@@ -5,15 +5,70 @@
  * seat interlock (D-073), comfort gating, keypad edges, servo mapping, the
  * SD climate-memory CRC, and F-017: the key matrix, 0x400, wake and replay,
  * the release select (D-370), knobs, windows (D-363), mirrors (D-359,
- * D-360), one servo at a time (D-379), the NTCs, current and mirror heat.
+ * D-360), one servo at a time (D-379), the NTCs, current and mirror heat;
+ * and D-452: the pin map (pins.h), the TCA9539-Q1 expander's ports, its
+ * reset as the DRV8962's fault clear, and CAN STB held low (tca9539.h).
  *
  * Build (g++ on PATH):
  *   g++ test_dcu.cpp -o test_dcu -std=c++17 -O2 -I../dcu && ./test_dcu
  */
 #include <cstdio>
 #include <cstring>
+#include <vector>
 #include "climate.h"
 #include "panel.h"
+#include "pins.h"
+#include "tca9539.h"
+
+/* ---------- a TCA9539 on a mocked bus (tca9539.h's four calls) ----------
+ * The model keeps the registers as the datasheet does - reset makes every
+ * port an input and the output registers 0xFF; a write's data bytes
+ * alternate within the register pair - and after every transaction it
+ * records what each PIN is: an output port drives its register bit, an
+ * input port floats to what is on it - nSLEEP (R35) and STB (R8) pulled
+ * down, the DRV8962's IN / EN and the PROFETs' DEN / DSEL on their internal
+ * pull-downs; nFAULT (R36), power-good (R3) and P17 (R58) pulled up. */
+struct ExpModel {
+    uint16_t out = 0xFFFF, pol = 0, cfg = 0xFFFF, in = 0xFFFF;
+    bool nack = false, in_reset = false;
+    int resets = 0, reads = 0;
+    std::vector<uint8_t> regs_written;           /* the register byte of each write */
+    std::vector<uint16_t> pins;                  /* pin levels after each transaction */
+};
+static ExpModel g_exp;
+static uint16_t exp_pin_levels() {
+    const uint16_t pulled_down = EXP_OUTPUTS;
+    uint16_t floating = (uint16_t)(g_exp.in_reset ? 0xFFFF : g_exp.cfg);
+    uint16_t driven = (uint16_t)(g_exp.out & ~floating);
+    return (uint16_t)(driven | (floating & ~pulled_down));
+}
+uint8_t exp_hal_write(uint8_t addr, const uint8_t *buf, uint8_t n) {
+    if (g_exp.nack || g_exp.in_reset || addr != TCA9539_ADDR || n < 1) return 0;
+    uint8_t reg = buf[0];
+    g_exp.regs_written.push_back(reg);
+    for (uint8_t i = 1; i < n; i++) {
+        uint8_t r = (uint8_t)((reg & 0xFE) | ((reg + i - 1) & 1));
+        uint16_t *pair = r >= 6 ? &g_exp.cfg : r >= 4 ? &g_exp.pol : r >= 2 ? &g_exp.out : nullptr;
+        if (!pair) continue;                     /* the input registers ignore writes */
+        if (r & 1) *pair = (uint16_t)((*pair & 0x00FF) | (buf[i] << 8));
+        else       *pair = (uint16_t)((*pair & 0xFF00) | buf[i]);
+    }
+    g_exp.pins.push_back(exp_pin_levels());
+    return 1;
+}
+uint8_t exp_hal_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint8_t n) {
+    if (g_exp.nack || g_exp.in_reset || addr != TCA9539_ADDR || reg != TCA_REG_INPUT0 || n != 2) return 0;
+    g_exp.reads++;
+    buf[0] = (uint8_t)(g_exp.in & 0xFF); buf[1] = (uint8_t)(g_exp.in >> 8);
+    return 1;
+}
+void exp_hal_reset(uint8_t asserted) {
+    g_exp.in_reset = asserted != 0;
+    if (asserted) { g_exp.resets++; g_exp.out = 0xFFFF; g_exp.pol = 0; g_exp.cfg = 0xFFFF; }
+    g_exp.pins.push_back(exp_pin_levels());
+}
+void exp_hal_delay_us(uint32_t) {}
+static void exp_model_fresh() { g_exp = ExpModel(); }
 
 static int g_pass = 0, g_fail = 0;
 #define CHECK(cond, msg) do { \
@@ -428,6 +483,193 @@ int main() {
         CHECK(pmu_out_on(&m, PMU_OUT_DEFOG) == 1 && pmu_out_on(&m, 0) == 0, "O4 is 0x120 byte 2 bit 3");
         m.out_state[2] = 0x80;
         CHECK(pmu_out_on(&m, 23) == 1, "O24 is byte 4 bit 7");
+    }
+
+    /* ================= 14. pin map (pins.h = dcu_channels.teensy_pin, D-452) ================= */
+    {
+        int uses[64] = { 0 };
+        auto use = [&](int p) { if (p >= 0 && p < 64) uses[p]++; };
+        use(PIN_CAN_RX); use(PIN_CAN_TX);
+        for (int p : PIN_SERVO) use(p);
+        for (int p : PIN_COMFORT) use(p);
+        use(PIN_BLOWER); use(PIN_WAKE); use(PIN_EXP_INT); use(PIN_EXP_RESET);
+        use(PIN_CABIN_NTC); use(PIN_OAT_NTC); use(PIN_CURRENT); use(PIN_JOY_PRESS);
+        use(PIN_I2C_SDA); use(PIN_I2C_SCL); use(PIN_JOY_X); use(PIN_JOY_Y);
+        for (int p : PIN_WIN) use(p);
+        use(PIN_REL_HATCH); use(PIN_REL_FUEL);
+        for (int p : PIN_ROW) use(p);
+        for (int p : PIN_COL) use(p);
+        for (int i = 0; i < ENC_COUNT; i++) { use(PIN_ENC_A[i]); use(PIN_ENC_B[i]); }
+        bool once = true, pads = true;
+        for (int p = 0; p <= 41; p++) if (uses[p] != 1) once = false;
+        for (int p = 42; p < 64; p++) if (uses[p] != 0) pads = false;
+        CHECK(once, "every edge pin 0-41 used exactly once (D-452: all 42)");
+        CHECK(pads, "nothing on the bottom pads 48-54 (or any pad past 41)");
+
+        CHECK(PIN_ENC_A[ENC_FAN] == 40 && PIN_ENC_B[ENC_FAN] == 41, "fan encoder on 40 / 41 (SN20, D-452)");
+        CHECK(PIN_ENC_A[ENC_TEMP] == 34 && PIN_ENC_B[ENC_TEMP] == 35 && PIN_ENC_A[ENC_SEAT_DRV] == 36
+              && PIN_ENC_B[ENC_SEAT_DRV] == 37 && PIN_ENC_A[ENC_SEAT_PASS] == 38 && PIN_ENC_B[ENC_SEAT_PASS] == 39,
+              "temperature 34 / 35, driver seat 36 / 37, passenger seat 38 / 39");
+        CHECK(PIN_I2C_SDA == 18 && PIN_I2C_SCL == 19 && PIN_EXP_INT == 12 && PIN_EXP_RESET == 13,
+              "the expander on Wire 18 / 19, INT 12, RESET 13 (SN17)");
+        bool no_enc_on_i2c = true;
+        for (int i = 0; i < ENC_COUNT; i++)
+            if (PIN_ENC_A[i] == 18 || PIN_ENC_A[i] == 19 || PIN_ENC_B[i] == 18 || PIN_ENC_B[i] == 19) no_enc_on_i2c = false;
+        CHECK(no_enc_on_i2c, "no encoder left on the I2C pins");
+        CHECK(PIN_ROW[0] == 28 && PIN_ROW[2] == 30 && PIN_COL[0] == 31 && PIN_COL[2] == 33, "matrix rows 28-30, columns 31-33 (SN19)");
+        CHECK(PIN_JOY_X == 20 && PIN_JOY_Y == 21 && PIN_JOY_PRESS == 17, "thumbstick A6 / A7, press 17 (SN18)");
+        CHECK(PIN_WIN[0] == 22 && PIN_WIN[1] == 23 && PIN_WIN[2] == 24 && PIN_WIN[3] == 25, "windows 22-25 (SN22)");
+        CHECK(PIN_REL_HATCH == 26 && PIN_REL_FUEL == 27 && PIN_WAKE == 11 && PIN_BLOWER == 10,
+              "release 26 / 27 (SN23), wake 11 (SN21), blower 10 (SN14)");
+        CHECK(PIN_COMFORT[CMF_SEAT_HEAT_DRV] == 5 && PIN_COMFORT[CMF_SEAT_HEAT_PASS] == 6
+              && PIN_COMFORT[CMF_SEAT_COOL_DRV] == 7 && PIN_COMFORT[CMF_SEAT_COOL_PASS] == 8
+              && PIN_COMFORT[CMF_MIRROR_HEAT] == 9, "comfort 5-9 in climate.h's order (SN16)");
+        CHECK(PIN_CABIN_NTC == 14 && PIN_OAT_NTC == 15 && PIN_CURRENT == 16 && PIN_SERVO[0] == 2 && PIN_SERVO[2] == 4,
+              "NTCs A0 / A1, current A2, servos 2-4");
+        CHECK(sizeof PIN_SERVO / sizeof PIN_SERVO[0] == SRV_COUNT && sizeof PIN_COMFORT / sizeof PIN_COMFORT[0] == CMF_COUNT,
+              "one pin per servo and per comfort channel");
+    }
+
+    /* ================= 15. the expander's ports (TCA9539-Q1, SN17 / SN22 / SN16 / SN26 / SN24) ================= */
+    {
+        CHECK(TCA_REG_INPUT0 == 0x00 && TCA_REG_OUTPUT0 == 0x02 && TCA_REG_POLARITY0 == 0x04 && TCA_REG_CONFIG0 == 0x06,
+              "register map: input 0/1, output 2/3, polarity 4/5, config 6/7");
+        CHECK(TCA9539_ADDR == 0x74, "address 0x74: A0 = A1 = GND on the sheet (confirm)");
+        CHECK(EXP_MIR_IN1 == 0x0001 && EXP_MIR_EN1 == 0x0002 && EXP_MIR_IN2 == 0x0004 && EXP_MIR_EN2 == 0x0008
+              && EXP_MIR_IN3 == 0x0010 && EXP_MIR_EN3 == 0x0020, "P00-P05: IN1 / EN1 - IN3 / EN3");
+        CHECK(EXP_MIR_EN4 == 0x0040 && EXP_MIR_NSLEEP == 0x0080 && EXP_MIR_NFAULT == 0x0100,
+              "P06 EN4 (clutch), P07 nSLEEP, P10 nFAULT");
+        CHECK(EXP_WIN_DEN == 0x0200 && EXP_WIN_DSEL0 == 0x0400 && EXP_WIN_DSEL1 == 0x0800 && EXP_MH_DEN == 0x1000,
+              "P11-P13 window DEN / DSEL0 / DSEL1, P14 mirror-heat DEN");
+        CHECK(EXP_CAN_STB == 0x2000 && EXP_PG_5V == 0x4000 && EXP_P17 == 0x8000, "P15 CAN STB, P16 power-good, P17");
+        CHECK(EXP_INPUTS == 0xC100, "inputs: nFAULT, power-good, P17 - every other port drives");
+
+        mirror_out_t mo; memset(&mo, 0, sizeof mo);
+        CHECK(exp_word(&mo, 0, 0) == 0, "asleep: nothing but low");
+        CHECK(exp_word(&mo, 1, 1) == EXP_MIR_NSLEEP, "awake, at rest: nSLEEP only, every bridge open");
+        mo.common = HB_LOW; mo.left = HB_HIGH; mo.clutch = 1;
+        CHECK(exp_word(&mo, 1, 1) == (EXP_MIR_NSLEEP | EXP_MIR_EN1 | EXP_MIR_IN2 | EXP_MIR_EN2 | EXP_MIR_EN4),
+              "left up: common low, left high, clutch sinking");
+        CHECK(exp_word(&mo, 1, 0) == EXP_MIR_NSLEEP, "not live (waking or faulted): every EN off");
+        CHECK(exp_word(&mo, 0, 1) == 0, "asleep: no EN either");
+        mo.common = HB_HIGH; mo.left = HB_OFF; mo.right = HB_LOW; mo.clutch = 0;
+        CHECK(exp_word(&mo, 1, 1) == (EXP_MIR_NSLEEP | EXP_MIR_IN1 | EXP_MIR_EN1 | EXP_MIR_EN3),
+              "right the other way: common high, right low, clutch open");
+
+        CHECK(exp_open_first(EXP_MIR_EN1, EXP_MIR_EN1 | EXP_MIR_IN1) == 0, "a live bridge changing rail opens first");
+        CHECK(exp_open_first(EXP_MIR_EN1, EXP_MIR_EN1 | EXP_MIR_EN2) == EXP_MIR_EN1, "a new channel needs no gap");
+
+        /* the mirror step through the word: one head, against the common, STB never */
+        bool ok = true; uint32_t seed = 9090, t = 90000;
+        mirror_t m; memset(&m, 0, sizeof m);
+        for (int i = 0; i < 100000 && ok; i++) {
+            seed = seed * 1103515245u + 12345u;
+            uint8_t ax = (uint8_t)((seed >> 16) % 3);
+            int8_t  dr = ax ? (((seed >> 18) & 1) ? 1 : -1) : 0;
+            mirror_step(&m, ((seed >> 19) & 15) == 0 ? PK_MIRROR_PRESS : 0, ax, dr,
+                        ((seed >> 23) & 7) != 0, t += (seed >> 24) & 31, &mo);
+            uint16_t w = exp_word(&mo, 1, 1);
+            if ((w & EXP_MIR_EN2) && (w & EXP_MIR_EN3)) ok = false;                 /* one head */
+            if (((w & (EXP_MIR_EN2 | EXP_MIR_EN3)) != 0) != ((w & EXP_MIR_EN1) != 0)) ok = false;
+            if ((w & EXP_MIR_EN1) && (w & EXP_MIR_EN2) && !((w ^ (w >> 2)) & EXP_MIR_IN1)) ok = false;
+            if ((w & EXP_MIR_EN1) && (w & EXP_MIR_EN3) && !((w ^ (w >> 4)) & EXP_MIR_IN1)) ok = false;
+            if (w & (EXP_CAN_STB | EXP_INPUTS | EXP_WIN_DEN | EXP_WIN_DSEL0 | EXP_WIN_DSEL1 | EXP_MH_DEN)) ok = false;
+        }
+        CHECK(ok, "100k mirror steps: one head, always against the common, STB / DEN / inputs never driven");
+    }
+
+    /* ================= 16. reset: boot and the DRV8962's fault clear ================= */
+    {
+        exp_model_fresh();
+        tca9539_t x; memset(&x, 0, sizeof x);
+        CHECK(exp_reset_init(&x) == 1 && x.ok == 1 && g_exp.resets == 1, "boot: one reset pulse, acknowledged");
+        CHECK(g_exp.regs_written.size() == 3 && g_exp.regs_written[0] == TCA_REG_OUTPUT0
+              && g_exp.regs_written[1] == TCA_REG_POLARITY0 && g_exp.regs_written[2] == TCA_REG_CONFIG0,
+              "outputs written low BEFORE the directions (they reset to 0xFF)");
+        CHECK(g_exp.out == 0 && g_exp.cfg == EXP_INPUTS && g_exp.pol == 0 && g_exp.reads == 1,
+              "after init: outputs low, three inputs, plain polarity, INT cleared by a read");
+        bool quiet = true;
+        for (uint16_t p : g_exp.pins)
+            if (p & (EXP_MIR_NSLEEP | EXP_MIR_EN1 | EXP_MIR_EN2 | EXP_MIR_EN3 | EXP_MIR_EN4 | EXP_CAN_STB)) quiet = false;
+        CHECK(quiet, "no EN, nSLEEP or STB pin goes high at any point of the reset or the init");
+
+        /* writes: only on a change, a live rail change in two */
+        g_exp.regs_written.clear();
+        CHECK(exp_write_outputs(&x, EXP_MIR_NSLEEP | EXP_MIR_EN1) && g_exp.regs_written.size() == 1, "one write for a change");
+        CHECK(exp_write_outputs(&x, EXP_MIR_NSLEEP | EXP_MIR_EN1) && g_exp.regs_written.size() == 1, "none for no change");
+        g_exp.pins.clear();
+        exp_write_outputs(&x, EXP_MIR_NSLEEP | EXP_MIR_EN1 | EXP_MIR_IN1);
+        CHECK(g_exp.pins.size() == 2 && !(g_exp.pins[0] & EXP_MIR_EN1) && (g_exp.pins[1] & EXP_MIR_IN1),
+              "a live bridge changing rail is opened in a write of its own");
+
+        /* INT: the inputs are read back; nFAULT low is seen */
+        g_exp.in = (uint16_t)(0xFFFF & ~EXP_MIR_NFAULT);
+        CHECK(tca_read_inputs(&x) && !(x.in & EXP_MIR_NFAULT) && (x.in & EXP_PG_5V), "INT read: nFAULT low, power good");
+
+        /* a silent expander: not ok, and its writes fail */
+        g_exp.nack = true;
+        CHECK(exp_write_outputs(&x, 0) == 0 && x.ok == 0, "no acknowledge: the driver knows");
+        CHECK(exp_reset_init(&x) == 0, "and a re-init fails until it answers");
+        g_exp.nack = false;
+        CHECK(exp_reset_init(&x) == 1 && g_exp.out == 0, "answers again: re-initialised, all low");
+
+        /* the guard: wake, fault, rest, clear through the reset */
+        drv_guard_t g; memset(&g, 0, sizeof g); uint32_t t = 100000;
+        drv_guard_step(&g, 0, 1, 1, t);
+        CHECK(g.awake == 1 && drv_live(&g, t) == 0, "permitted: nSLEEP high, not live until it has woken");
+        CHECK(drv_live(&g, t + DRV_WAKE_MS) == 1, "live after the wake time");
+        drv_guard_step(&g, 1, 1, 0, t + 1);
+        CHECK(g.fault == 0, "nFAULT while waking is not believed");
+        t += 100;
+        drv_guard_step(&g, 1, 1, 0, t);
+        CHECK(g.fault == 1 && drv_live(&g, t) == 0, "nFAULT awake: latched, every bridge open");
+        CHECK(drv_guard_step(&g, 1, 1, 0, t + DRV_FAULT_REST_MS) == DRV_NONE, "stick still held: no clear");
+        CHECK(drv_guard_step(&g, 1, 1, 1, t + DRV_FAULT_REST_MS - 1) == DRV_NONE, "let go, but inside the rest: no clear");
+        CHECK(drv_guard_step(&g, 1, 1, 1, t + DRV_FAULT_REST_MS) == DRV_CLEAR && g.clears == 1 && g.awake == 0,
+              "rested and let go: cleared, asleep through the reset");
+
+        /* the host's clear is the boot path: one more reset pulse, nSLEEP low through it */
+        int r0 = g_exp.resets; g_exp.pins.clear();
+        exp_reset_init(&x);
+        bool slept = !g_exp.pins.empty();
+        for (uint16_t p : g_exp.pins) if (p & EXP_MIR_NSLEEP) slept = false;
+        CHECK(g_exp.resets == r0 + 1 && slept, "the clear pulses RESET and holds nSLEEP low (R35)");
+
+        t += DRV_FAULT_REST_MS + 10;
+        drv_guard_step(&g, 0, 1, 1, t);
+        CHECK(g.awake == 1 && drv_live(&g, t + DRV_WAKE_MS) == 1, "woken again, live");
+        for (int k = 0; k < DRV_FAULT_MAX_CLEARS + 2; k++) {        /* a hard short: it comes back */
+            t += 100; drv_guard_step(&g, 1, 1, 1, t);
+            t += DRV_FAULT_REST_MS; drv_guard_step(&g, 1, 1, 1, t);
+            t += 10; drv_guard_step(&g, 0, 1, 1, t);
+        }
+        CHECK(g.clears == DRV_FAULT_MAX_CLEARS && g.fault == 1 && g.awake == 0 && drv_live(&g, t) == 0,
+              "after three clears it gives up: asleep, mirrors off");
+        drv_guard_step(&g, 1, 0, 1, t + 5);
+        CHECK(g.clears == 0 && g.fault == 0 && g.awake == 0, "key cycled: tries refilled, asleep");
+        drv_guard_step(&g, 0, 1, 1, t + 10);
+        CHECK(g.awake == 1, "and wakes on the next permit");
+    }
+
+    /* ================= 17. CAN STB held low (SN26, D-452) ================= */
+    {
+        exp_model_fresh();
+        tca9539_t x; memset(&x, 0, sizeof x);
+        exp_hal_reset(1);
+        CHECK(!(exp_pin_levels() & EXP_CAN_STB), "in reset STB sits on its pull-down: normal mode");
+        exp_reset_init(&x);
+        CHECK(!(g_exp.cfg & EXP_CAN_STB) && !(g_exp.out & EXP_CAN_STB), "after init STB is an output, driven low");
+        bool low = true; uint32_t seed = 31337;
+        for (int i = 0; i < 20000 && low; i++) {
+            seed = seed * 1103515245u + 12345u;
+            exp_write_outputs(&x, (uint16_t)(seed >> 8));           /* any word at all, STB bit included */
+            if (exp_pin_levels() & EXP_CAN_STB) low = false;
+            if (g_exp.cfg != EXP_INPUTS) low = false;
+        }
+        CHECK(low, "20k arbitrary output words: STB never leaves low, no port changes direction");
+        mirror_out_t mo; memset(&mo, 0, sizeof mo);
+        CHECK(!(exp_word(&mo, 0, 0) & EXP_CAN_STB) && !(exp_word(&mo, 1, 1) & EXP_CAN_STB),
+              "asleep or awake, the DCU's word keeps STB low");
     }
 
     printf("\n passed %d   failed %d\n", g_pass, g_fail);
