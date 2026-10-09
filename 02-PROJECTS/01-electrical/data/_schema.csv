@@ -120,7 +120,7 @@ node_conductors,colour,str,no,,
 node_conductors,note,text,no,,
 params,key,key,yes,,
 params,value,str,no,,
-params,unit,enum(A|KB|bits|kbps|ms|px),no,,from the luxury package's params (D-374); empty on the rows that carry their unit in the key
+params,unit,enum(A|KB|bits|kbps|ms|px|V),no,,from the luxury package's params (D-374); empty on the rows that carry their unit in the key; V added 2026-10-09 for vdrop_max_v (Y1)
 params,source,str,no,,
 params,note,text,no,,
 parts,id,key,yes,,
@@ -277,3 +277,18 @@ work,choices,str,no,,"for reply=choice: the choices, separated by |"
 work,unit,str,no,,for reply=value: the unit the value is in
 work,result,str,no,,"his answer as rx7.py apply set it: done, the value (in unit), or the choice (2026-09-26, plan P07)"
 work,settles,str,no,,"rows his answer flips, as <area>:<table>:<key> separated by spaces; blank means the PT ids named in item (2026-09-26, plan P07)"
+awg,awg,key,yes,,"gauge as written in the wire columns: 1/0, 2, 4 ... 20"
+awg,ohm_per_kft,num,no,,"copper at 20 C, ohms per 1000 ft (01-REFERENCE S-478)"
+awg,amp_air,num,no,,"maximum amps for chassis wiring, one wire in air (S-478's conservative column)"
+awg,amp_bundle,num,no,,"amp_air x 0.6 for a conductor inside a leg's bundle - the usual harness derating for 7+ conductors; a hand figure, confirm against SAE J1128 / the insulation's rating when the spools are chosen (A6)"
+awg,source,str,no,,the sources row the figures come from
+pins,hw_max_a,num,no,,"the pin's hardware maximum continuous current per the PMU manual's pinout (S-028 p.11-12): 25, 15 or 7"
+pins,peak_a,num,no,,"the pin's hardware peak current per the PMU manual (S-028 p.8): 120 A for the 25 A and 15 A outputs, 70 A for the 7 A outputs"
+pins,hold,str,no,blocks.id,an open block that already holds this row's electrical finding: the check reports it as waiting (rc 2) instead of refusing; cleared when the block closes
+cavities,hold,str,no,blocks.id,as pins.hold
+node_conductors,hold,str,no,blocks.id,as pins.hold
+grounds,kind,enum(stud|return),no,,"stud: the one conductor from a star stud to the chassis, sized for the leg's whole return; return: a device's own return to the star"
+grounds,hold,str,no,blocks.id,as pins.hold
+fuses,hold,str,no,blocks.id,as pins.hold
+relays,hold,str,no,blocks.id,as pins.hold
+loads,hold,str,no,blocks.id,as pins.hold

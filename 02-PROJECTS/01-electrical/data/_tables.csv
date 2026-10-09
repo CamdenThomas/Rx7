@@ -37,3 +37,4 @@ wake_stages,"the two asleep-wake circuits on the dash node, part by part (D-375,
 work,the work list; owner says who does it
 blocks,"open questions only Camden can answer, one row each; deleted once a decision closes it (§4, D-405)"
 inbox,"his answers waiting to be applied, one file per answer per device (D-405)"
+awg,"copper wire by gauge: ohms per kft, amps in air and in a bundle - the figures the electrical checks size wires with (Y1, 2026-10-09)"

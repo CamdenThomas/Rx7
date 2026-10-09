@@ -61,7 +61,8 @@ _This is the rule v2 broke in four places and it is why a clean build could stop
 
 ```
 rx7.py status [-p AREA] [--all]          where everything stands (brief by default)
-rx7.py check [-p AREA]                   validate (rc 1 if the record contradicts itself)
+rx7.py check [-p AREA]                   validate (rc 1 if the record contradicts itself; rc 2 if a
+                                         finding waits on a block - the electrical checks, Y1)
 rx7.py tables AREA                       every declared table, row counts, purpose
 rx7.py get AREA TABLE KEY [COL ...]      one row; AREA may be - for a D- or block id
 rx7.py set AREA TABLE KEY col=val ...    change an existing row   (col=@file, col=- stdin)

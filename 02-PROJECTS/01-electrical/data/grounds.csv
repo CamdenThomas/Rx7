@@ -1,33 +1,33 @@
-id,zone,return,awg,qty,ft,note
-G02,L1,K9 85 → block,16,1,3,"confirm — hand estimate, not measured"
-G03,L1,Inhibitor BW and RW → block,16,2,3,"confirm — hand estimate, not measured"
-G04,L1,Brake fluid switch B → block,16,1,3,"confirm — hand estimate, not measured"
-G05,L2,Front star stud → chassis,10,1,2,"confirm — hand estimate, not measured"
-G06,L2,"Headlight B → front star, each",14,2,4,"confirm — hand estimate, not measured"
-G07,L2,"Pop-up bucket strap → front star, each",14,2,4,"confirm — hand estimate, not measured"
-G08,L2,"Front combo lamp B → front star, each",16,2,4,"confirm — hand estimate, not measured"
-G09,L2,"Side marker B → front star, each",16,2,4,"confirm — hand estimate, not measured"
-G10,L2,"Horn case → front star, each",14,2,3,"confirm — hand estimate, not measured"
-G11,L2,Wiper motor B → front star,14,1,3,"confirm — hand estimate, not measured"
-G12,L2,Washer pump LY → front star,16,1,3,"confirm — hand estimate, not measured"
-G13,L2,Pop-up 47 kΩ baselines → front star,16,2,1,"confirm — hand estimate, not measured"
-G14,L3,GND bus → dash chassis star,10,1,2,"confirm — hand estimate, not measured"
-G15,L3,Blower motor return — L3-BLW 2 → dash ground (through the final stage · D-257),12,1,4,"confirm — hand estimate, not measured"
-G16,L3,Head unit black → dash ground,14,1,3,"confirm — hand estimate, not measured"
-G17,L3,USB-C module − → dash ground,16,1,3,"confirm — hand estimate, not measured"
-G18,L3,Dash illumination lamps B → dash ground,16,3,3,"confirm — hand estimate, not measured"
-G19,L3,Glove box lamp switch → dash ground,16,1,3,"confirm — hand estimate, not measured"
-G20,L3,Wink switch commons → dash ground,16,2,3,"confirm — hand estimate, not measured"
-G21,L3,Brake pedal switch → dash ground,16,1,3,"confirm — hand estimate, not measured"
-G22,L3,Turn / hazard / wiper stalk returns → column ground,16,3,2,"confirm — hand estimate, not measured"
-G23,L4,Rear star stud → chassis,10,1,2,"confirm — hand estimate, not measured"
-G25,L4,Defog grid B → rear star,12,1,6,"confirm — hand estimate, not measured"
-G26,L4,Fuel pump − → rear star (dedicated),12,1,4,"confirm — hand estimate, not measured"
-G28,L4,Fuel sender B → rear star,16,1,5,"confirm — hand estimate, not measured"
-G29,L4,"Rear combo lamp B → rear star, each",16,2,5,"confirm — hand estimate, not measured"
-G30,L4,Licence + rear marker B → rear star,16,4,4,"confirm — hand estimate, not measured"
-G31,L4,Interior lamp switch → roof-rail ground,16,1,4,"confirm — hand estimate, not measured"
-G32,L4,Luggage lamp switch → rear star,16,1,3,"confirm — hand estimate, not measured"
-G33,Sill,Sill stud → chassis,10,1,2,"confirm — hand estimate, not measured"
-G35,L4,Road-speed pulse generator → rear star,16,1,8,"confirm — hand estimate, not measured"
-G36,L3,DCU comfort returns - DP-DCU-C 6 / 7 → dash ground bus,14,2,3,"D-382: the seat return current never shares the logic ground (DP-DCU 3). Part of the luxury comfort-return harness (LP49); lands on the dash ground bus. confirm - hand estimate, not measured"
+id,zone,return,awg,qty,ft,note,kind,hold
+G02,L1,K9 85 → block,16,1,3,"confirm — hand estimate, not measured",return,
+G03,L1,Inhibitor BW and RW → block,16,2,3,"confirm — hand estimate, not measured",return,
+G04,L1,Brake fluid switch B → block,16,1,3,"confirm — hand estimate, not measured",return,
+G05,L2,Front star stud → chassis,10,1,2,"confirm — hand estimate, not measured",stud,
+G06,L2,"Headlight B → front star, each",14,2,4,"confirm — hand estimate, not measured",return,
+G07,L2,"Pop-up bucket strap → front star, each",14,2,4,"confirm — hand estimate, not measured",return,
+G08,L2,"Front combo lamp B → front star, each",16,2,4,"confirm — hand estimate, not measured",return,
+G09,L2,"Side marker B → front star, each",16,2,4,"confirm — hand estimate, not measured",return,
+G10,L2,"Horn case → front star, each",14,2,3,"confirm — hand estimate, not measured",return,
+G11,L2,Wiper motor B → front star,14,1,3,"confirm — hand estimate, not measured",return,
+G12,L2,Washer pump LY → front star,16,1,3,"confirm — hand estimate, not measured",return,
+G13,L2,Pop-up 47 kΩ baselines → front star,16,2,1,"confirm — hand estimate, not measured",return,
+G14,L3,GND bus → dash chassis star,10,1,2,"confirm — hand estimate, not measured",stud,
+G15,L3,Blower motor return — L3-BLW 2 → dash ground (through the final stage · D-257),12,1,4,"confirm — hand estimate, not measured",return,
+G16,L3,Head unit black → dash ground,14,1,3,"confirm — hand estimate, not measured",return,
+G17,L3,USB-C module − → dash ground,16,1,3,"confirm — hand estimate, not measured",return,
+G18,L3,Dash illumination lamps B → dash ground,16,3,3,"confirm — hand estimate, not measured",return,
+G19,L3,Glove box lamp switch → dash ground,16,1,3,"confirm — hand estimate, not measured",return,
+G20,L3,Wink switch commons → dash ground,16,2,3,"confirm — hand estimate, not measured",return,
+G21,L3,Brake pedal switch → dash ground,16,1,3,"confirm — hand estimate, not measured",return,
+G22,L3,Turn / hazard / wiper stalk returns → column ground,16,3,2,"confirm — hand estimate, not measured",return,
+G23,L4,Rear star stud → chassis,10,1,2,"confirm — hand estimate, not measured",stud,
+G25,L4,Defog grid B → rear star,12,1,6,"confirm — hand estimate, not measured",return,
+G26,L4,Fuel pump − → rear star (dedicated),12,1,4,"confirm — hand estimate, not measured",return,
+G28,L4,Fuel sender B → rear star,16,1,5,"confirm — hand estimate, not measured",return,
+G29,L4,"Rear combo lamp B → rear star, each",16,2,5,"confirm — hand estimate, not measured",return,
+G30,L4,Licence + rear marker B → rear star,16,4,4,"confirm — hand estimate, not measured",return,
+G31,L4,Interior lamp switch → roof-rail ground,16,1,4,"confirm — hand estimate, not measured",return,
+G32,L4,Luggage lamp switch → rear star,16,1,3,"confirm — hand estimate, not measured",return,
+G33,Sill,Sill stud → chassis,10,1,2,"confirm — hand estimate, not measured",stud,
+G35,L4,Road-speed pulse generator → rear star,16,1,8,"confirm — hand estimate, not measured",return,
+G36,L3,DCU comfort returns - DP-DCU-C 6 / 7 → dash ground bus,14,2,3,"D-382: the seat return current never shares the logic ground (DP-DCU 3). Part of the luxury comfort-return harness (LP49); lands on the dash ground bus. confirm - hand estimate, not measured",return,

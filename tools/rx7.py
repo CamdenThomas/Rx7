@@ -1043,7 +1043,368 @@ def check_area(area: Path, keyidx) -> list[str]:
     p += check_decisions(area)
     p += check_phase(area)
     p += check_gates(area)
+    p += check_electrical(area)[0]
     return p
+
+
+# ------------------------------------------------------------- electrical (Y1, R7)
+#
+# The structural checks above ask whether the record describes itself consistently. These ask
+# whether it describes a harness that can carry its own currents: a wire behind a fuse that
+# would melt before the fuse opened, a PMU output set above what its pin can do, a lamp's inrush
+# past the hardware peak, a star-stud return too thin for its leg, a Deutsch pin carrying more
+# than its series rating, a load with no fuse, a fuse with no wire, a relay contact that nothing
+# feeds. Each was found by hand once (the 2026-09-28 review, R8-R16); twice is a pattern.
+#
+# Tables read (R6): awg (ampacity in air and in a bundle, ohms per kft, by gauge); params
+# (bundle_derate is applied by the awg table itself; vdrop_max_v, pmu_total_a); pins (the PMU's
+# outputs: ch, awg, est_a, enable_a, hw_max_a, peak_a, inrush_x, state, hold); fuses (rating,
+# state); relays (c30, c85, c86, c87, state); cavities (housing, src, awg, state, route, hold);
+# node_conductors (src, dst, awg, hold); housings (code, leg); series (rated, by DT / DTP);
+# routes (ft, model_ft); devices (terminals, route); grounds (kind, zone, awg); loads (ch).
+#
+# A finding on a row whose `hold` names an open block is not a refusal: the question is already
+# his, and a record that waits on a person is exit code 2 (CLAUDE.md §1). Once the block is gone
+# the hold is a reference to nothing, the structural check refuses it, and the finding returns.
+
+ELECTRICAL_TABLES = ("awg", "params", "pins", "fuses", "relays", "cavities", "node_conductors",
+                     "housings", "series", "routes", "devices", "grounds", "loads", "backbone",
+                     "cables", "colours")
+
+
+def _first_num(v):
+    """The first number in a cell: '7.5 A' -> 7.5, '12.8 / 13.1 stall' -> 12.8, '' -> None."""
+    m = re.search(r"\d+(?:\.\d+)?", v or "")
+    return float(m.group(0)) if m else None
+
+
+def _gauge(v):
+    """The first gauge in a cell: '16 sh' -> '16', '12 / 16' -> '12', '1/0' -> '1/0', '—' -> None."""
+    m = re.search(r"(?<![\d/])(1/0|2/0|\d{1,2})(?![\d/])", v or "")
+    return m.group(1) if m else None
+
+
+class _Electrical:
+    """Everything the electrical checks look up, indexed once per area."""
+
+    def __init__(self, rows):
+        self.rows = rows
+        self.awg = {r["awg"].strip(): r for r in rows["awg"] if (r.get("awg") or "").strip()}
+        self.params = {(r.get("key") or "").strip(): (r.get("value") or "").strip() for r in rows["params"]}
+        self.pins = {(r.get("ch") or "").strip(): r for r in rows["pins"] if (r.get("ch") or "").strip()}
+        self.fuses = {(r.get("id") or "").strip(): r for r in rows["fuses"]}
+        self.relays = {(r.get("id") or "").strip(): r for r in rows["relays"]}
+        self.cavs = {(r.get("id") or "").strip(): r for r in rows["cavities"]}
+        self.conds = {(r.get("id") or "").strip(): r for r in rows["node_conductors"]}
+        self.housings = {(r.get("code") or "").strip(): r for r in rows["housings"]}
+        self.routes = {(r.get("id") or "").strip(): r for r in rows["routes"]}
+        self.series = {(r.get("id") or "").strip(): _first_num(r.get("rated")) for r in rows["series"]}
+        self.series_rows = {(r.get("id") or "").strip(): r for r in rows["series"]}
+        self.colours = {(r.get("id") or "").strip(): r for r in rows["colours"]}
+        codes = sorted(self.housings, key=len, reverse=True)
+        self.cav_re = re.compile(r"\b(" + "|".join(re.escape(c) for c in codes) + r")\s+(\d{1,2})\b") if codes else None
+        # devices.terminals ties '<terminal> → <housing> <cav>' to the device (as rx7.py diagrams reads it)
+        self.device_of = {}
+        for d in rows["devices"]:
+            if not self.cav_re:
+                break
+            for h, c in self.cav_re.findall(d.get("terminals") or ""):
+                self.device_of.setdefault(f"{h} {int(c)}", d)
+
+    def amps(self, gauge, bundled):
+        r = self.awg.get(gauge or "")
+        if not r:
+            return None
+        return _first_num(r.get("amp_bundle" if bundled else "amp_air"))
+
+    def ohm_kft(self, gauge):
+        r = self.awg.get(gauge or "")
+        return _first_num(r.get("ohm_per_kft")) if r else None
+
+    def leg_of(self, housing):
+        return (self.housings.get(housing, {}).get("leg") or "").split(" (")[0].strip()
+
+    def series_of(self, housing):
+        """DTP where the housing's leg_side or box_side names a DTP part, else DT."""
+        h = self.housings.get(housing, {})
+        return "DTP" if "DTP" in ((h.get("leg_side") or "") + " " + (h.get("box_side") or "")) else "DT"
+
+    def seal_range(self, series):
+        """(low, high) AWG the series' contact seals - from series.wire, '14–20 AWG seal'."""
+        r = self.series_rows.get(series, {})
+        nums = [int(x) for x in re.findall(r"\d{1,2}", r.get("wire") or "")]
+        return (min(nums), max(nums)) if len(nums) >= 2 else None
+
+    def at_post(self, housing):
+        return (self.housings.get(housing, {}).get("where") or "").strip() == "Dash post"
+
+    def protection(self, text, depth=0):
+        """(amps, basis) that the device upstream of a conductor lets through: a PMU channel's
+        soft fuse (enable_a), a fuse's rating, the Class-T behind the busbar, a relay contact's
+        own feed, another cavity's or node conductor's protection. (None, '') for ground,
+        signal, module-switched and anything the record does not size."""
+        s = text or ""
+        if depth > 6 or not s.strip():
+            return None, ""
+        m = re.search(r"\bO(\d{1,2})\b", s)
+        if m:
+            pin = self.pins.get("O" + m.group(1))
+            if pin:
+                a = _first_num(pin.get("enable_a"))
+                return (a, f"O{m.group(1)} soft fuse {a:g} A") if a is not None else (None, "")
+        m = re.search(r"\bF(\d{1,2})\b", s)
+        if m and ("F" + m.group(1)) in self.fuses:
+            f = self.fuses["F" + m.group(1)]
+            a = _first_num(f.get("rating"))
+            return (a, f"F{m.group(1)} {a:g} A") if a is not None else (None, "")
+        if re.search(r"Class-T|busbar|DP-BAT", s, re.I):
+            a = _first_num((self.fuses.get("Class-T") or {}).get("rating"))
+            return (a, f"Class-T {a:g} A") if a is not None else (None, "")
+        m = re.search(r"\bK(\d{1,2})\b(?:\s+terminal)?\s+87a?\b", s)
+        if m and ("K" + m.group(1)) in self.relays:
+            return self.protection(self.relays["K" + m.group(1)].get("c30"), depth + 1)
+        m = re.search(r"\bN(\d{2})\b", s)
+        if m and ("N" + m.group(1)) in self.conds:
+            return self.protection(self.conds["N" + m.group(1)].get("src"), depth + 1)
+        if self.cav_re:
+            m = self.cav_re.search(s)
+            if m:
+                cid = f"{m.group(1)} {int(m.group(2))}"
+                if cid in self.cavs:
+                    return self.protection(self.cavs[cid].get("src"), depth + 1)
+        return None, ""
+
+    def route_ft(self, cav):
+        """(feet, 'measured'|'estimate') for a cavity's run: its own route, else its device's."""
+        rid = (cav.get("route") or "").strip()
+        if not rid:
+            d = self.device_of.get((cav.get("id") or "").strip())
+            rid = (d.get("route") or "").strip() if d else ""
+        r = self.routes.get(rid)
+        if not r:
+            return None, ""
+        ft = _first_num(r.get("ft"))
+        if ft is not None:
+            return ft, "measured"
+        ft = _first_num(r.get("model_ft"))
+        return (ft, "estimate") if ft is not None else (None, "")
+
+
+def check_electrical(area: Path, rows=None):
+    """Y1. Returns (problems, waits). `rows` lets the selftest hand in tables without files."""
+    if rows is None:
+        tables, _ = schema(area)
+        if not all(t in tables for t in ELECTRICAL_TABLES):
+            return [], []
+        rows = {t: read_table(area, t)[1] for t in ELECTRICAL_TABLES}
+    e = _Electrical(rows)
+    problems, waits = [], []
+    where = rel(area)
+
+    def report(table, key, hold, msg):
+        (waits if (hold or "").strip() else problems).append(
+            f"{where}:{table}:{key}: {msg}" + (f" (held by block {hold.strip()})" if (hold or "").strip() else ""))
+
+    # E1 - the wire behind a protection device must carry what that device lets through.
+    for c in rows["cavities"]:
+        cid = (c.get("id") or "").strip()
+        if (c.get("state") or "") not in ("LIVE", "CAPPED"):
+            continue
+        g = _gauge(c.get("awg"))
+        amps, basis = e.protection(c.get("src"))
+        if g is None or amps is None:
+            continue
+        bundled = e.leg_of(c.get("housing") or "") != "Drop"
+        cap = e.amps(g, bundled)
+        if cap is None:
+            report("cavities", cid, c.get("hold"), f"awg={g!r} is not in the awg table")
+        elif amps > cap:
+            report("cavities", cid, c.get("hold"),
+                   f"{g} AWG carries {cap:g} A {'in a bundle' if bundled else 'in air'} but sits behind {basis}")
+    for n in rows["node_conductors"]:
+        nid = (n.get("id") or "").strip()
+        g = _gauge(n.get("awg"))
+        amps, basis = e.protection(n.get("src"))
+        if g is None or amps is None:
+            continue
+        cap = e.amps(g, False)
+        if cap is None:
+            report("node_conductors", nid, n.get("hold"), f"awg={g!r} is not in the awg table")
+        elif amps > cap:
+            report("node_conductors", nid, n.get("hold"),
+                   f"{g} AWG carries {cap:g} A in air but sits behind {basis}")
+
+    # E2 - a PMU output is set within its pin, its wire and the unit; E3 - its inrush within the peak.
+    total = 0.0
+    for p in rows["pins"]:
+        ch = (p.get("ch") or "").strip()
+        if (p.get("type") or "") != "output" or (p.get("state") or "") != "LIVE":
+            continue
+        en, hw, peak = _first_num(p.get("enable_a")), _first_num(p.get("hw_max_a")), _first_num(p.get("peak_a"))
+        est, ix = _first_num(p.get("est_a")), _first_num(p.get("inrush_x"))
+        if en is not None and hw is not None and en > hw:
+            report("pins", ch, p.get("hold"), f"enable_a {en:g} A is above the pin's hardware maximum {hw:g} A")
+        g = _gauge(p.get("awg"))
+        cap = e.amps(g, False) if g else None
+        if en is not None and cap is not None and en > cap:
+            report("pins", ch, p.get("hold"), f"{g} AWG carries {cap:g} A in air but the soft fuse is {en:g} A")
+        if est is not None and ix is not None and peak is not None and est * ix > peak:
+            report("pins", ch, p.get("hold"),
+                   f"inrush {ix:g} x {est:g} A = {est * ix:g} A is above the pin's peak {peak:g} A")
+        total += est or 0.0
+    cap_total = _first_num(e.params.get("pmu_total_a"))
+    if cap_total is not None and total > cap_total:
+        problems.append(f"{where}:pins: the outputs' est_a sum to {total:g} A, above the unit's {cap_total:g} A")
+
+    # E4 - voltage drop along a measured or estimated route, out and back.
+    vmax = _first_num(e.params.get("vdrop_max_v"))
+    for c in rows["cavities"]:
+        cid = (c.get("id") or "").strip()
+        if vmax is None or (c.get("state") or "") not in ("LIVE", "CAPPED"):
+            continue
+        m = re.match(r"\s*O(\d{1,2})\s*$", c.get("src") or "")
+        if not m:
+            continue
+        est = _first_num((e.pins.get("O" + m.group(1)) or {}).get("est_a"))
+        g = _gauge(c.get("awg"))
+        ohm = e.ohm_kft(g)
+        ft, how = e.route_ft(c)
+        if est is None or ohm is None or ft is None:
+            continue
+        drop = 2 * ft / 1000.0 * ohm * est
+        if drop > vmax:
+            report("cavities", cid, c.get("hold"),
+                   f"{drop:.2f} V drop over {ft:g} ft ({how}) of {g} AWG at {est:g} A, above {vmax:g} V")
+
+    # E5 - each leg's star stud carries the leg's outputs.
+    by_leg = {}
+    for c in rows["cavities"]:
+        if (c.get("state") or "") != "LIVE":
+            continue
+        m = re.match(r"\s*O(\d{1,2})\s*$", c.get("src") or "")
+        if not m:
+            continue
+        leg = e.leg_of(c.get("housing") or "")
+        if leg and leg != "Drop":
+            by_leg.setdefault(leg, {})["O" + m.group(1)] = _first_num((e.pins.get("O" + m.group(1)) or {}).get("est_a")) or 0.0
+    for gnd in rows["grounds"]:
+        if (gnd.get("kind") or "") != "stud":
+            continue
+        zone = (gnd.get("zone") or "").strip()
+        leg = next((l for l in by_leg if l.startswith(zone)), None)
+        if not leg:
+            continue
+        need = sum(by_leg[leg].values())
+        cap = e.amps(_gauge(gnd.get("awg")), False)
+        if cap is not None and need > cap:
+            report("grounds", (gnd.get("id") or "").strip(), gnd.get("hold"),
+                   f"{gnd.get('awg')} AWG stud carries {cap:g} A but {leg} returns {need:g} A of outputs through it")
+
+    # E6 - a Deutsch pin never carries more than its series rating.
+    for c in rows["cavities"]:
+        cid = (c.get("id") or "").strip()
+        if (c.get("state") or "") not in ("LIVE", "CAPPED"):
+            continue
+        amps, basis = e.protection(c.get("src"))
+        if amps is None:
+            continue
+        series = e.series_of(c.get("housing") or "")
+        rated = e.series.get(series)
+        if rated is not None and amps > rated:
+            report("cavities", cid, c.get("hold"), f"a {series} size-{'12' if series == 'DTP' else '16'} contact is rated {rated:g} A but sits behind {basis}")
+
+    # E7 - nothing is left out: every live output, fuse and relay contact lands somewhere; every
+    # load names a real channel; every live leg conductor has a run to follow.
+    text = " ".join((c.get("src") or "") for c in rows["cavities"]) + " " + " ".join(
+        (n.get("src") or "") + " " + (n.get("dst") or "") for n in rows["node_conductors"]) + " " + " ".join(
+        (r.get("c30") or "") + " " + (r.get("c86") or "") for r in rows["relays"]) + " " + " ".join(
+        (b.get("protection") or "") + " " + (b.get("run") or "") for b in rows["backbone"]) + " " + " ".join(
+        (cb.get("run") or "") + " " + (cb.get("note") or "") for cb in rows["cables"]) + " " + " ".join(
+        (d.get("terminals") or "") for d in rows["devices"])
+    for p in rows["pins"]:
+        ch = (p.get("ch") or "").strip()
+        if (p.get("type") or "") == "output" and (p.get("state") or "") == "LIVE" and not re.search(rf"\b{ch}\b", text):
+            report("pins", ch, p.get("hold"), "a LIVE output that no cavity, node conductor or relay names")
+    for f in rows["fuses"]:
+        fid = (f.get("id") or "").strip()
+        if (f.get("state") or "") == "LIVE" and re.match(r"F\d+$", fid) and not re.search(rf"\b{fid}\b", text):
+            report("fuses", fid, f.get("hold"), "a LIVE fuse that no cavity or node conductor names - the wire it protects is missing")
+    for r in rows["relays"]:
+        rid = (r.get("id") or "").strip()
+        if (r.get("state") or "") not in ("LIVE", "SPARE"):
+            continue
+        for col in ("c86", "c85", "c30", "c87"):
+            if not (r.get(col) or "").strip():
+                report("relays", rid, r.get("hold"), f"{col} is empty - the coil or the contact has nowhere to go")
+        if (r.get("state") or "") == "LIVE" and not re.search(rf"\b{rid}\s+(?:terminal\s+)?87a?\b", text) \
+                and not re.search(r"starter|block", r.get("c87") or "", re.I):
+            report("relays", rid, r.get("hold"), "a LIVE relay whose 87 contact no cavity or node conductor names")
+    for ld in rows["loads"]:
+        for ch in re.findall(r"\bO\d{1,2}\b", ld.get("ch") or ""):
+            if ch not in e.pins:
+                report("loads", (ld.get("id") or "").strip(), ld.get("hold"), f"ch names {ch}, which is not a pin")
+    for c in rows["cavities"]:
+        cid = (c.get("id") or "").strip()
+        leg = e.leg_of(c.get("housing") or "")
+        if (c.get("state") or "") in ("LIVE", "CAPPED") and leg and leg != "Drop" and e.at_post(c.get("housing") or ""):
+            if (c.get("route") or "").strip() == "" and cid not in e.device_of:
+                report("cavities", cid, c.get("hold"), "no run to follow: neither cavities.route nor a device's terminals names it")
+    # E8 - a cavity fed by a node conductor names the same source the conductor does.
+    feeds = {}
+    for n in rows["node_conductors"]:
+        if e.cav_re:
+            for h, cv in e.cav_re.findall(n.get("dst") or ""):
+                feeds.setdefault(f"{h} {int(cv)}", []).append(n)
+    for c in rows["cavities"]:
+        cid = (c.get("id") or "").strip()
+        m = re.match(r"\s*(O\d{1,2}|F\d{1,2})\s*$", c.get("src") or "")
+        if not m or cid not in feeds:
+            continue
+        srcs = feeds[cid]
+        if not any(re.search(rf"\b{m.group(1)}\b", n.get("src") or "") or re.search(rf"\b{m.group(1)}\b", n.get("dst") or "") for n in srcs):
+            names = ", ".join((n.get("id") or "") + " from " + (n.get("src") or "") for n in srcs)
+            report("cavities", cid, c.get("hold"), f"src is {m.group(1)} but the node feeds it by {names}")
+
+    # E9 - a wire fits the contact it is crimped in: the series' seal range, both sides.
+    for c in rows["cavities"]:
+        cid = (c.get("id") or "").strip()
+        g = _gauge(c.get("awg"))
+        rng = e.seal_range(e.series_of(c.get("housing") or ""))
+        if g and g.isdigit() and rng and (c.get("state") or "") in ("LIVE", "CAPPED") and not rng[0] <= int(g) <= rng[1]:
+            report("cavities", cid, c.get("hold"), f"{g} AWG is outside the {e.series_of(c.get('housing') or '')} contact's {rng[0]}-{rng[1]} AWG seal range")
+    for n in rows["node_conductors"]:
+        nid = (n.get("id") or "").strip()
+        gs = [int(x) for x in re.findall(r"(?<![\d/])\d{1,2}(?![\d/])", n.get("awg") or "")]
+        if not gs or not e.cav_re:
+            continue
+        for h, cv in e.cav_re.findall(n.get("dst") or ""):
+            rng = e.seal_range(e.series_of(h))
+            if rng and not any(rng[0] <= g <= rng[1] for g in gs):
+                report("node_conductors", nid, n.get("hold"), f"{n.get('awg')} AWG lands in {h} {int(cv)}, a {e.series_of(h)} contact sealing {rng[0]}-{rng[1]} AWG")
+                break
+
+    # E10 - the colour family allows the gauge (colours.gauges).
+    def colour_ok(colour, gauge):
+        toks = re.findall(r"[A-Za-z]+", colour or "")
+        if not toks or not gauge:
+            return True
+        for cid_, row in e.colours.items():
+            if any(re.search(rf"\b{t}\b", cid_) for t in toks):
+                allowed = re.findall(r"(?<![\d/])(1/0|\d{1,2})(?![\d/])", row.get("gauges") or "")
+                return gauge in allowed
+        return True
+    def _last_gauge(v):
+        gs = re.findall(r"(?<![\d/])(1/0|2/0|\d{1,2})(?![\d/])", v or "")
+        return gs[-1] if gs else None
+    for c in rows["cavities"]:
+        g = _last_gauge(c.get("awg"))
+        if (c.get("state") or "") in ("LIVE", "CAPPED") and not colour_ok(c.get("colour"), g):
+            report("cavities", (c.get("id") or "").strip(), c.get("hold"), f"{c.get('colour')} is not a {g} AWG colour (colours)")
+    for n in rows["node_conductors"]:
+        g = _last_gauge(n.get("awg"))
+        if not colour_ok(n.get("colour"), g):
+            report("node_conductors", (n.get("id") or "").strip(), n.get("hold"), f"{n.get('colour')} is not a {g} AWG colour (colours)")
+    return problems, waits
 
 
 def check_folder(area: Path, t: str, declared, kc) -> list[str]:
@@ -1790,6 +2151,16 @@ def cmd_check(args):
             print(x)
         print(f"\n{len(problems)} problem(s) - the record contradicts itself. Fix the rows named above.")
         return RC_INVALID
+    # An electrical finding on a row that an open block holds is his question, not a
+    # contradiction: printed, and exit code 2 (CLAUDE.md §1), which refuses nothing.
+    waits = []
+    for a in sel or areas():
+        waits += check_electrical(a)[1]
+    if waits:
+        for x in waits:
+            print(x)
+        print(f"\nrecord valid - {len(waits)} finding(s) wait on a block")
+        return RC_WAITING
     print("record valid")
     return RC_OK
 
@@ -2917,6 +3288,89 @@ def cmd_selftest(args):
             expect("a 1,500-row gate chain does not overflow the cycle walk", gate_cycles(tree_index(fresh=True)) == [])
         finally:
             _use_tree(old)
+
+    # --- the electrical checks (Y1, R7): a tiny harness in memory, one planted fault per check ---
+    def harness(**over):
+        rows = {
+            "awg": [{"awg": "16", "ohm_per_kft": "4.016", "amp_air": "22", "amp_bundle": "13"},
+                    {"awg": "14", "ohm_per_kft": "2.525", "amp_air": "32", "amp_bundle": "19"},
+                    {"awg": "12", "ohm_per_kft": "1.588", "amp_air": "41", "amp_bundle": "25"},
+                    {"awg": "10", "ohm_per_kft": "0.9989", "amp_air": "55", "amp_bundle": "33"}],
+            "params": [{"key": "vdrop_max_v", "value": "0.5"}, {"key": "pmu_total_a", "value": "170"}],
+            "pins": [{"ch": "O1", "type": "output", "state": "LIVE", "awg": "12", "est_a": "9", "enable_a": "25",
+                      "hw_max_a": "25", "peak_a": "120", "inrush_x": "7"},
+                     {"ch": "O6", "type": "output", "state": "LIVE", "awg": "14", "est_a": "4", "enable_a": "7.5",
+                      "hw_max_a": "15", "peak_a": "120", "inrush_x": "10"}],
+            "fuses": [{"id": "Class-T", "rating": "150 A", "state": "LIVE"}, {"id": "F12", "rating": "5 A", "state": "LIVE"}],
+            "relays": [{"id": "K1", "state": "LIVE", "c86": "O1", "c85": "L3-S1 10", "c30": "O1 splice (12 AWG)", "c87": "L2-P 3"}],
+            "housings": [{"code": "L2-P", "leg": "L2 Front", "leg_side": "DTP06-4S", "box_side": "DTP04-4P", "where": "Dash post"},
+                         {"code": "L2-M", "leg": "L2 Front", "leg_side": "DT06-8S", "box_side": "DT04-8P", "where": "Dash post"},
+                         {"code": "DP-ICU-A", "leg": "Drop", "leg_side": "DT06-6S", "box_side": "DT13-06PA", "where": "ICU wall"}],
+            "series": [{"id": "DTP", "wire": "10–14 AWG seal", "rated": "25 A"}, {"id": "DT", "wire": "14–20 AWG seal", "rated": "13 A"}],
+            "routes": [{"id": "RT07", "ft": "", "model_ft": "15"}],
+            "devices": [{"id": "DV10", "terminals": "RL → L2-P 1 splice", "route": "RT07"},
+                        {"id": "DV11", "terminals": "WR → L2-P 3", "route": "RT07"},
+                        {"id": "DV19", "terminals": "common → F12 → L2-M 7", "route": ""}],
+            "grounds": [{"id": "G05", "zone": "L2", "kind": "stud", "awg": "10"}],
+            "loads": [{"id": "LD01", "ch": "O1"}],
+            "backbone": [], "cables": [],
+            "colours": [{"id": "RED", "gauges": "12 · 14 · 16"}, {"id": "ORN", "gauges": "14"}],
+            "cavities": [{"id": "L2-P 1", "housing": "L2-P", "src": "O1", "awg": "12", "colour": "RED", "state": "LIVE", "route": ""},
+                         {"id": "L2-P 3", "housing": "L2-P", "src": "K1 87", "awg": "12", "colour": "RED", "state": "LIVE", "route": ""},
+                         {"id": "L2-M 7", "housing": "L2-M", "src": "O6", "awg": "16", "colour": "RED", "state": "LIVE", "route": "RT07"},
+                         {"id": "DP-ICU-A 1", "housing": "DP-ICU-A", "src": "O6", "awg": "16", "colour": "RED", "state": "LIVE", "route": ""}],
+            "node_conductors": [{"id": "N08", "src": "PMU pin 38 (O1)", "dst": "Receptacle L2-P 1", "awg": "12", "colour": "RED"},
+                                {"id": "N54", "src": "PMU pin 11 (O6)", "dst": "Receptacle L2-M 7", "awg": "14", "colour": "ORN"}],
+        }
+        for t, extra in over.items():
+            rows[t] = extra(rows[t]) if callable(extra) else extra
+        return rows
+
+    def cav(rows_fn):
+        return lambda c: [rows_fn(x) for x in c]
+
+    earea = ROOT / "02-PROJECTS" / "01-electrical"
+
+    def efind(rows, needle):
+        probs, waits = check_electrical(earea, rows=rows)
+        return [x for x in probs if needle in x], [x for x in waits if needle in x]
+
+    expect("a sound harness raises nothing", check_electrical(earea, rows=harness()) == ([], []))
+    expect("a wire thinner than its protection is refused",
+           efind(harness(cavities=cav(lambda x: dict(x, awg="16") if x["id"] == "L2-P 1" else x)), "L2-P 1")[0])
+    expect("a relay contact's feed is followed back to the soft fuse",
+           efind(harness(cavities=cav(lambda x: dict(x, awg="16") if x["id"] == "L2-P 3" else x)), "L2-P 3")[0])
+    pr, wt = efind(harness(cavities=cav(lambda x: dict(x, awg="16", hold="01.23") if x["id"] == "L2-P 1" else x)), "L2-P 1")
+    expect("a held finding waits instead of refusing", not pr and wt)
+    expect("a soft fuse above the pin's hardware maximum is refused",
+           efind(harness(pins=lambda p: [dict(x, enable_a="30") if x["ch"] == "O1" else x for x in p]), "pins:O1")[0])
+    expect("inrush past the pin's peak is refused",
+           efind(harness(pins=lambda p: [dict(x, inrush_x="20") if x["ch"] == "O1" else x for x in p]), "inrush")[0])
+    expect("a voltage drop past the ceiling is refused",
+           efind(harness(routes=[{"id": "RT07", "ft": "60", "model_ft": ""}]), "V drop")[0])
+    expect("a star stud too thin for its leg is refused",
+           efind(harness(grounds=[{"id": "G05", "zone": "L2", "kind": "stud", "awg": "16"}],
+                         pins=lambda p: [dict(x, est_a="20", inrush_x="1") if x["ch"] == "O1" else x for x in p]), "grounds:G05")[0])
+    expect("a contact behind more than its series rating is refused",
+           efind(harness(cavities=cav(lambda x: dict(x, src="O1", awg="14") if x["id"] == "L2-M 7" else x), node_conductors=[]), "DT size-16")[0])
+    expect("a live output nothing names is refused",
+           efind(harness(pins=lambda p: p + [{"ch": "O9", "type": "output", "state": "LIVE", "awg": "14", "est_a": "1",
+                                              "enable_a": "7", "hw_max_a": "15", "peak_a": "120", "inrush_x": "1"}]), "pins:O9")[0])
+    expect("a live fuse nothing names is refused",
+           efind(harness(devices=lambda d: [x for x in d if x["id"] != "DV19"]), "fuses:F12")[0])
+    expect("a fuse named in a device's terminals is found", efind(harness(), "fuses:F12")[0] == [])
+    expect("a relay with an empty contact is refused",
+           efind(harness(relays=[{"id": "K1", "state": "LIVE", "c86": "O1", "c85": "", "c30": "O1 splice", "c87": "L2-P 3"}]), "relays:K1")[0])
+    expect("a load on a channel that is not a pin is refused", efind(harness(loads=[{"id": "LD01", "ch": "O99"}]), "loads:LD01")[0])
+    expect("a post cavity with no run is refused",
+           efind(harness(cavities=cav(lambda x: dict(x, route="") if x["id"] == "L2-M 7" else x),
+                         devices=lambda d: [x for x in d if x["id"] != "DV19"]), "no run")[0])
+    expect("a cavity whose src disagrees with its node conductor is refused",
+           efind(harness(cavities=cav(lambda x: dict(x, src="O6") if x["id"] == "L2-P 1" else x)), "node feeds it")[0])
+    expect("a wire outside the contact's seal range is refused",
+           efind(harness(node_conductors=lambda n: [dict(x, awg="16") if x["id"] == "N08" else x for x in n]), "seal")[0])
+    expect("a colour the gauge is not allowed is refused",
+           efind(harness(node_conductors=lambda n: [dict(x, colour="ORN") if x["id"] == "N08" else x for x in n]), "colour")[0])
 
     n = len(passes) + len(fails)
     print(f"\n{len(fails)} failure(s) of {n}" if fails else f"\nselftest: all {n} pass")

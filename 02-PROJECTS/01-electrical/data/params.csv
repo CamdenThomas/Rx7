@@ -14,3 +14,5 @@ display_draw,1.5–3,A,D-313,a 900–1000-nit panel and its backlight — measur
 o10_headroom,~3,A,"D-313, electrical LD15 / D-223","for DP-ICU-A, the only module drop left on O10 (DP-DCU 1 is on F22, D-355)"
 servo_stall,1–2.5 each,A,DCU-CARRIER (archived),why the servo rail is its own buck
 thresholds,redline 7000 rpm · hot water 105 °C · low oil 1.0 bar · tank 16.6 gal,,D-328,"tank 16.6 gal from the 1982 brochure S-004, primary (D-328 supersedes D-300); a measured fill would supersede it again"
+vdrop_max_v,0.5,V,"usual automotive limit for a lamp or motor feed, out and back","the voltage-drop check's ceiling; a hand figure, confirm"
+pmu_total_a,170,A,S-028 p.8: 170 A continuous for the PMU 24,the unit's total output ceiling the est_a sum is checked against
