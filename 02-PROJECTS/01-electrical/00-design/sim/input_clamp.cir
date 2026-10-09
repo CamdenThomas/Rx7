@@ -1,0 +1,86 @@
+* input_clamp.cir - the carriers' 12 V input stage (icu_channels IC12 / IC13, dcu_channels SN24 /
+* SN27): SS34 reverse diode, SMBJ33A to ground, 4.7 uF + 2 x 220 nF at the buck, the buck as a
+* constant-power load (LMR36015-Q1: 5 V x 0.8 A at the ICU, D-273). What reaches the carrier
+* in a load dump is set by the PMU main feed's own TVS, P136: its clamp must sit below the
+* SMBJ33A's 36.7 V minimum breakdown, or the carriers' little 600 W parts carry the whole
+* 400 ms dump - an 18-20 V standoff, >= 5 kW part clamps near 32 V, the figure the deck takes
+* (confirm when P136 is chosen); behind it the carrier sees ~32 V through the harness.
+*
+* Pass: with P136's 32 V for 400 ms behind 0.3 ohm the buck's input never exceeds 60 V (the
+* LMR36015's recommended maximum, S-479) and the SMBJ33A's peak current stays under 11.3 A
+* (its 600 W rating point); with a cranking dip (ISO 16750-2: 4.5 V for 15 ms, then 6.5 V)
+* the buck's input stays above 3.5 V (its falling UVLO, S-479 p.7: the rail sags toward the
+* input for those 15 ms but the regulator does not shut down; the Teensy's own 3.3 V rides
+* it out). The deck refuses itself if the dump pulse did not reach the input (a quiet run
+* once passed this deck). Printed, not judged: the unsuppressed ISO 16750-2 dump (87 V,
+* 0.5 ohm, 400 ms) and a 24 V-standoff P136's 39 V - the numbers behind P136's spec.
+.include models/active.lib
+
+* the source: the dash node's 12 V with the pulse on top, through the harness
+VSRC src 0 PWL(0 13.8 1 13.8)
+VP p src PULSE(0 0 10m 1m 1m 400m 1)
+RH p in 0.3
+* the carrier input stage
+DSS34 in vd DSS34
+DTVS 0 vd DSMBJ33A
+CIN vd 0 4.7u
+CIN2 vd 0 440n
+* the buck as a constant-power load (5 V x 0.8 A = 4 W), floored to keep SPICE happy
+BLOAD vd 0 I = 4 / max(v(vd), 1)
+
+.options savecurrents
+.tran 0.1m 0.6
+
+.control
+set fail = 0
+set deck = input_clamp
+* --- the suppressed load dump: P136's clamp level, 32 V for 400 ms ---
+alter @vp[pulse] = [ 0 18.2 10m 1m 1m 400m 1 ]
+run
+meas tran vmax MAX v(vd) FROM=0 TO=0.6
+meas tran imax MAX @dtvs[id] FROM=0 TO=0.6
+echo INFO $deck suppressed-32V vd_max=$&vmax tvs_peak_a=$&imax
+if vmax < 25
+  echo FAIL $deck suppressed-32V pulse_not_applied vd_max=$&vmax
+  set fail = 1
+end
+if vmax > 60
+  echo FAIL $deck suppressed-32V buck_input=$&vmax
+  set fail = 1
+end
+if imax > 11.3
+  echo FAIL $deck suppressed-32V tvs_current=$&imax
+  set fail = 1
+end
+* --- cranking: 4.5 V for 15 ms then 6.5 V, 13.8 V before and after ---
+alter @vp[pulse] = [ 0 0 10m 1m 1m 400m 1 ]
+alter @vsrc[pwl] = [ 0 13.8 10m 13.8 11m 4.5 26m 4.5 27m 6.5 500m 6.5 501m 13.8 600m 13.8 ]
+run
+meas tran vmin MIN v(vd) FROM=0 TO=0.6
+echo INFO $deck cranking buck_input_min=$&vmin
+if vmin < 3.5
+  echo FAIL $deck cranking buck_input_min=$&vmin
+  set fail = 1
+end
+* --- the unsuppressed dump, printed: 87 V behind 0.5 ohm for 400 ms ---
+alter @vsrc[pwl] = [ 0 13.8 1 13.8 ]
+alter rh 0.5
+alter @vp[pulse] = [ 0 73.2 10m 5m 1m 400m 1 ]
+run
+meas tran vmax MAX v(vd) FROM=0 TO=0.6
+meas tran imax MAX @dtvs[id] FROM=0 TO=0.6
+echo INFO $deck unsuppressed-87V vd_max=$&vmax tvs_peak_a=$&imax - what P136 exists to prevent
+* --- a 24 V-standoff P136 (39 V clamp), printed: the reason P136 is an 18-20 V part ---
+alter rh 0.3
+alter @vp[pulse] = [ 0 25.2 10m 1m 1m 400m 1 ]
+run
+meas tran vmax MAX v(vd) FROM=0 TO=0.6
+meas tran imax MAX @dtvs[id] FROM=0 TO=0.6
+echo INFO $deck 24V-standoff-P136-39V vd_max=$&vmax tvs_amps_for_400ms=$&imax - the SMBJ33A would conduct for the whole dump
+if $fail = 1
+  quit 1
+end
+echo PASS $deck
+quit 0
+.endc
+.end

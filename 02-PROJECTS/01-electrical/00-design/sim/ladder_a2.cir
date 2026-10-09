@@ -14,113 +14,108 @@
 * the PMU input: 10 k to 5 V, read as counts = v / 5 x 1023
 V5 ref 0 dc 5
 RPU ref line 10k
-* the ladder at the column: every state is one resistor from the line to the column ground;
-* SW picks the state (0 = none closed = OFF's 47 k baseline alone)
+* the ladder at the column: the 47 k baseline, and one resistor per state that `alter` makes
+* present (its value) or absent (1e12)
 R47 line 0 47k
-SINT line n_int c_int 0 SWST
-RINT n_int 0 18k
-SLOW line n_low c_low 0 SWST
-RLOW n_low 0 10k
-SHIGH line n_high c_high 0 SWST
-RHIGH n_high 0 4.7k
-* WASH: 1.0 k and a 1N4148 (R12) to the contact node; K12's coil (160 ohm, P003 class) holds
-* that node at battery voltage while the contact is open
-RW line n_w 1.0k
+RINT line 0 1e12
+RLOW line 0 1e12
+RHIGH line 0 1e12
+* WASH: 470 ohm and a 1N4148 (R12; 1.0 k left WASH 90 counts from HIGH at -30 C) to the contact node; K12's coil (160 ohm, P003 class) holds
+* that node at battery voltage while the contact is open; RWASH is the contact
+RW line n_w 470
 DW n_w wash D1N4148
 RCOIL vbat wash 160
 VBAT vbat 0 dc 16
-SWASH wash 0 c_wash 0 SWST
-.model SWST SW(Ron=0.1 Roff=1e12 Vt=0.5 Vh=0.1)
-VCINT c_int 0 dc 0
-VCLOW c_low 0 dc 0
-VCHIGH c_high 0 dc 0
-VCWASH c_wash 0 dc 0
+RWASH wash 0 1e12
 .op
 
 .control
 set fail = 0
 set deck = ladder_a2
-let win = 45
+set win = 45
+set need = 100
 foreach t -30 25 85
   set temp = $t
-  * OFF
-  alter vcint dc = 0
-  alter vclow dc = 0
-  alter vchigh dc = 0
-  alter vcwash dc = 0
+  alter rint 1e12
+  alter rlow 1e12
+  alter rhigh 1e12
+  alter rwash 1e12
   op
-  let c_off = v(line) / 5 * 1023
-  * INT
-  alter vcint dc = 1
+  let c = v(line) / 5 * 1023
+  set c_off = $&c
+  alter rint 18k
   op
-  let c_int = v(line) / 5 * 1023
-  alter vcint dc = 0
-  * LOW
-  alter vclow dc = 1
+  let c = v(line) / 5 * 1023
+  set c_int = $&c
+  alter rint 1e12
+  alter rlow 10k
   op
-  let c_low = v(line) / 5 * 1023
-  alter vclow dc = 0
-  * HIGH
-  alter vchigh dc = 1
+  let c = v(line) / 5 * 1023
+  set c_low = $&c
+  alter rlow 1e12
+  alter rhigh 4.7k
   op
-  let c_high = v(line) / 5 * 1023
-  alter vchigh dc = 0
-  * WASH
-  alter vcwash dc = 1
+  let c = v(line) / 5 * 1023
+  set c_high = $&c
+  alter rhigh 1e12
+  alter rwash 0.1
   op
-  let c_wash = v(line) / 5 * 1023
-  alter vcwash dc = 0
-  let g1 = c_off - c_int
-  let g2 = c_int - c_low
-  let g3 = c_low - c_high
-  let g4 = c_high - c_wash
-  let need = 2 * win + 10
-  if g1 < need
+  let c = v(line) / 5 * 1023
+  set c_wash = $&c
+  alter rwash 1e12
+  let g1 = $c_off - $c_int
+  let g2 = $c_int - $c_low
+  let g3 = $c_low - $c_high
+  let g4 = $c_high - $c_wash
+  if g1 < $need
     echo FAIL $deck t=$t OFF-INT gap=$&g1
     set fail = 1
   end
-  if g2 < need
+  if g2 < $need
     echo FAIL $deck t=$t INT-LOW gap=$&g2
     set fail = 1
   end
-  if g3 < need
+  if g3 < $need
     echo FAIL $deck t=$t LOW-HIGH gap=$&g3
     set fail = 1
   end
-  if g4 < need
+  if g4 < $need
     echo FAIL $deck t=$t HIGH-WASH gap=$&g4
     set fail = 1
   end
-  if c_wash < 70
-    echo FAIL $deck t=$t WASH near the short line counts=$&c_wash
+  if $c_wash < 70
+    echo FAIL $deck t=$t WASH near the short line counts=$c_wash
     set fail = 1
   end
-  if c_off > 970
-    echo FAIL $deck t=$t OFF near the open line counts=$&c_off
+  if $c_off > 970
+    echo FAIL $deck t=$t OFF near the open line counts=$c_off
     set fail = 1
   end
   if $t = -30
-    let c_off_cold = c_off
+    set c_off_cold = $c_off
   end
-  let drift = c_off - c_off_cold
-  if drift > win
+  let drift = $c_off - $c_off_cold
+  if drift > $win
     echo FAIL $deck t=$t OFF drifted by $&drift counts with the diode hot
     set fail = 1
   end
-  echo INFO $deck t=$t OFF=$&c_off INT=$&c_int LOW=$&c_low HIGH=$&c_high WASH=$&c_wash
+  echo INFO $deck t=$t OFF=$c_off INT=$c_int LOW=$c_low HIGH=$c_high WASH=$c_wash
 end
 * --- the old leg, 1.8 k + 1N5819 (D-381), printed for the record ---
 alter rw 1.8k
 alter @dw[model] = D1N5819
 foreach t -30 25 85
   set temp = $t
-  alter vcwash dc = 0
+  alter rwash 1e12
   op
-  let c_off = v(line) / 5 * 1023
-  alter vcwash dc = 1
+  let c = v(line) / 5 * 1023
+  set c_off = $&c
+  alter rwash 0.1
   op
-  let c_wash = v(line) / 5 * 1023
-  echo INFO $deck old-1N5819 t=$t OFF=$&c_off WASH=$&c_wash
+  let c = v(line) / 5 * 1023
+  set c_wash = $&c
+  alter rwash 1e12
+  echo INFO $deck old-1N5819 t=$t OFF=$c_off WASH=$c_wash
 end
 if $fail = 1
   quit 1

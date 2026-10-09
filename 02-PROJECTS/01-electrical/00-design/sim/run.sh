@@ -5,20 +5,21 @@
 # nothing else (CLAUDE.md R9). Exit 0 = every deck passed; 1 = a deck failed; 3 = ngspice
 # missing. Needs ngspice (Fedora: sudo dnf install ngspice; Mac: brew install ngspice).
 #
-# Models: 01-REFERENCE/model/library/spice/<part>/*.lib are the vendors' own files and
-# stay out of git; models/generic.lib is the stand-in. The decks include models/active.lib,
-# which this script writes: the vendor files where they exist, generic.lib otherwise.
+# Models: models/generic.lib holds the stand-in models every deck uses (each confirm
+# against the vendor's file); the vendors' own files live under 01-REFERENCE/model/library/
+# spice (not in git) and are listed, not included, in models/active.lib, which this writes.
 cd "$(dirname "$0")" || exit 3
 command -v ngspice >/dev/null 2>&1 || { echo "ngspice not found - Fedora: sudo dnf install ngspice · Mac: brew install ngspice"; exit 3; }
 
 VENDOR=../../../../01-REFERENCE/model/library/spice
 {
   echo "* active.lib - written by run.sh; do not edit"
-  if [ -d "$VENDOR" ] && ls "$VENDOR"/*/*.lib >/dev/null 2>&1; then
-    echo "* vendor models from $VENDOR"
-    for f in "$VENDOR"/*/*.lib; do echo ".include $f"; done
-  fi
   echo ".include generic.lib"
+  if [ -d "$VENDOR" ]; then
+    echo "* vendor models on this machine (01-REFERENCE sources S-491.., not included: their"
+    echo "* subcircuit names and PSpice syntax differ; a deck that wants one includes it by name):"
+    for f in "$VENDOR"/*/*; do case "$f" in *SOURCE.txt) ;; *) echo "*   $f";; esac; done
+  fi
 } > models/active.lib
 
 rc=0
