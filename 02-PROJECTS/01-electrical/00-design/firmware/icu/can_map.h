@@ -59,20 +59,36 @@
 
 /* ---------------- enums ---------------- */
 
-typedef enum { KEY_OFF = 0, KEY_ACC, KEY_RUN, KEY_START } key_pos_t;
+typedef enum { KEY_OFF = 0, KEY_ACC, KEY_RUN, KEY_START, KEY_FAULT } key_pos_t;   /* FAULT: the key ladder reads open, short or dead (R11) */
 typedef enum { HL_OFF = 0, HL_PARK, HL_HEAD } headlight_pos_t;
 typedef enum { TURN_OFF = 0, TURN_LEFT, TURN_RIGHT, TURN_HAZARD } turn_state_t;
 typedef enum { POP_DOWN = 0, POP_RAISING, POP_UP, POP_LOWERING, POP_FAULT } popup_state_t;
 typedef enum { CH_OFF = 0, CH_ON, CH_TRIPPED, CH_RETRYING } ch_status_t;
 typedef enum { CLIM_OFF = 0, CLIM_VENT, CLIM_HEAT, CLIM_DEFROST, CLIM_AC } climate_mode_t;
 
-/* wake source bits, 0x100 byte 1 */
-#define WAKE_ACC           (1u << 0)
-#define WAKE_RUN           (1u << 1)
-#define WAKE_HAZARD        (1u << 2)
-#define WAKE_DOOR          (1u << 3)
-#define WAKE_HORN          (1u << 4)
-#define WAKE_LATCH         (1u << 5)
+/* wake source bits, 0x100 byte 1 - one bit per wake-strip input (can_fields 0x100/1, R11):
+ * the strip cannot tell horn from hazard from a wink, they share input 4 */
+#define WAKE_ACC           (1u << 0)   /* strip input 1 */
+#define WAKE_RUN           (1u << 1)   /* strip input 2 */
+#define WAKE_DOOR          (1u << 2)   /* strip input 3 */
+#define WAKE_A8            (1u << 3)   /* strip input 4: horn / hazard / wink */
+#define WAKE_SELF          (1u << 4)   /* strip input 5: the PMU's own O22 hold */
+#define WAKE_BRAKE         (1u << 5)   /* strip input 6: the brake plunger (D-278) */
+#define WAKE_DCU           (1u << 6)   /* strip input 7: the DCU's request (D-350) */
+#define WAKE_HAZARD        WAKE_A8     /* older names for the same input */
+#define WAKE_HORN          WAKE_A8
+#define WAKE_LATCH         WAKE_SELF
+
+/* input faults, 0x100 byte 6 (can_fields 0x100/6, R11): a ladder reading open, short or a
+ * dead supply; A16's own fault is key_pos == KEY_FAULT */
+#define INFAULT_A1         (1u << 0)
+#define INFAULT_A2         (1u << 1)
+#define INFAULT_A3         (1u << 2)
+#define INFAULT_A4         (1u << 3)
+#define INFAULT_A5         (1u << 4)
+#define INFAULT_A6         (1u << 5)
+#define INFAULT_A8         (1u << 6)
+#define INFAULT_A15        (1u << 7)
 
 /* global fault bits, 0x100 byte 2 */
 #define FAULT_SOFTFUSE     (1u << 0)
@@ -92,6 +108,20 @@ typedef enum { CLIM_OFF = 0, CLIM_VENT, CLIM_HEAT, CLIM_DEFROST, CLIM_AC } clima
 #define CANH_PMU           (1u << 0)
 #define CANH_DCU           (1u << 1)
 #define CANH_AFR           (1u << 3)
+
+/* tell-tales and warnings, 0x210 byte 3 (can_fields 0x210/3, Y10): what the ICU reads off
+ * the wires - the charge lamp (IC05), the brake warning (IC06), the lamp tell-tales */
+#define TT_CHARGE          (1u << 0)
+#define TT_BRAKE           (1u << 1)
+#define TT_TURN_L          (1u << 2)
+#define TT_TURN_R          (1u << 3)
+#define TT_HIGH_BEAM       (1u << 4)
+
+/* radar band, 0x320 byte 1 (can_fields 0x320/1) */
+#define BAND_X             (1u << 0)
+#define BAND_K             (1u << 1)
+#define BAND_KA            (1u << 2)
+#define BAND_LASER         (1u << 3)
 
 /* panel keys, 0x400 - bit n of `down` / `held` (F-016). The order is the
  * panel's key matrix (H-007). Held = down for >= 1 s. */
@@ -129,7 +159,7 @@ typedef struct __attribute__((packed)) {
     uint8_t headlight;      /* headlight_pos_t               */
     uint8_t turn;           /* turn_state_t                  */
     uint8_t popup;          /* popup_state_t                 */
-    uint8_t _rsv;
+    uint8_t input_fault;    /* INFAULT_* bitfield (R11)      */
     uint8_t counter;
 } pmu_state_t;
 
@@ -174,7 +204,8 @@ typedef struct __attribute__((packed)) {
     uint8_t sensor_valid;   /* SENS_* bitfield               */
     uint8_t sensor_fault;   /* SFAULT_* bitfield             */
     uint8_t can_health;     /* CANH_* bitfield               */
-    uint8_t _rsv[4];
+    uint8_t telltales;      /* TT_* bitfield (Y10)           */
+    uint8_t _rsv[3];
     uint8_t counter;
 } icu_health_t;
 

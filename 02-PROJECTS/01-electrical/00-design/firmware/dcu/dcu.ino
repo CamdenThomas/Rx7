@@ -12,7 +12,7 @@
  * 48-54, which are free only with no PSRAM fitted - H-002 settles it.
  */
 
-#define DCU_FW_VERSION "0.3.0-dev"   /* F-017: panel, 0x400 sent, windows, mirrors, release, wake */
+#define DCU_FW_VERSION "0.3.1-dev"   /* can_map.h to the record (Y8); F-017: panel, 0x400 sent, windows, mirrors, release, wake */
 
 #include <ACAN_T4.h>
 #include <Servo.h>

@@ -26,8 +26,13 @@ firmware/
 ├── icu/                     THE REAL FIRMWARE
 │   ├── cluster_core.h       renderer — portable C++, no Arduino headers. OWNS the cluster layout
 │   ├── stats.h              trip and lifetime accumulators. Volatile-only until Stage 6 (D-162)
-│   ├── can_map.h            shared CAN structs — THE MASTER COPY; both nodes include it
+│   ├── can_map.h            shared CAN structs — THE MASTER COPY; every node's copy is checked against it
+│   ├── bt817.h              the BT817 display driver (the only display-dependent code)
+│   ├── radio_link.h         the line protocol from the radio co-processor, 0x220 / 0x221 (F-015)
 │   └── icu.ino              Teensy host. ICU_FW_VERSION lives here
+│
+├── icu_radio/               THE RADIO CO-PROCESSOR (XIAO ESP32C3, P116): the Ionic BMS over BLE → one line per
+│   └── icu_radio.ino        second to the Teensy (F-015). Compiled for its target by tests/run.sh since Y8
 │
 ├── dcu/                     THE DCU (D-374)
 │   ├── climate.h            HVAC servos, comfort channels, seat interlock, climate memory
@@ -36,17 +41,22 @@ firmware/
 │   └── dcu.ino              Teensy host, provisional pins until H-002. DCU_FW_VERSION lives here
 │
 ├── icu_sim/                 DESKTOP PREVIEW — runs the real firmware, not a mock
-│   ├── sim_sdl.cpp          SDL2 host (Linux)
+│   ├── sim_sdl.cpp          SDL2 host (Linux, Mac)
+│   ├── render_pages.cpp     every cluster page to PNG, headless (render.sh, X-007)
 │   └── build.sh             builds ./sim (the binary itself is not versioned)
 │
 ├── pmu_sim/                 PMU SIMULATOR — the spare Teensy
 │   ├── pmu_sim.ino          CAN TX + serial console + scripted drive cycle
+│   ├── can_map.h            a copy of icu/can_map.h - never edited here (run.sh refuses drift)
 │   ├── vehicle_model.h      a 1982 RX-7 that behaves like one
 │   └── channels.h           hand-synced to 02-PROJECTS/01-electrical/data/pins.csv — the v2 generator (D-311) is archived; see work F-013
 │
-├── tests/                   REGRESSION SUITES — test_suite · test_bt817 · test_dcu · test_radio (run.sh prints the counts)
+├── tests/                   REGRESSION SUITES — test_suite · test_bt817 · test_dcu · test_radio · test_vectors
 │   ├── test_suite.cpp       runs on the PC: packing, counter wrap, rendering, overlap, dirty tiles, stats
-│   └── run.sh               build + run every suite. Do this after any change to the headers above
+│   ├── gen_vectors.py       can_vectors.h from the record's can_messages / can_fields (Y8; not versioned)
+│   ├── test_vectors.cpp     static_asserts can_map.h against those vectors - compiling is the test
+│   └── run.sh               every suite, the sheets against the record (../cad/check.py), every sketch
+│                            compiled for its target. Do this after any change to the headers above
 │
 └── bench rigs kept here (both passed)
     ├── ladder_decode_test/  Stage 4 — ladder windows and fault bands
@@ -111,7 +121,8 @@ The console prints dirty-pixel cost and trip statistics once a second.
 
 ```
 cd tests
-./run.sh             # builds and runs all three suites; exit code 0 = all passed
+./run.sh             # the five suites, the sheets against the record, every sketch for its
+                     # target (Teensy 4.1, ESP32-C3); exit code 0 = all passed
 ```
 
 Run it after **any** change to `cluster_core.h`, `stats.h`, `can_map.h`,
@@ -140,7 +151,7 @@ compiles every `.cpp` it finds there and will try to build the SDL host for
 ARM.
 
 `pushDirtyTiles()` in `icu.ino` is **the only display-dependent function in
-the project.** Its three `TODO` calls are finished against the BT817 eval board on the bench (work F3 and F-008; D-314 → D-374).
+the project.** It calls `display.pushDirty` (bt817.h), finished against the BT817 eval board on the bench (work F3 and F-008; D-314 → D-374).
 
 ## 5 · What the renderer guarantees
 

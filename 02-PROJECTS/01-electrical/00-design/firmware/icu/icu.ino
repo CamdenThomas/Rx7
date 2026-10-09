@@ -18,7 +18,7 @@
 
 /* Bump on every change that alters behaviour; log it in 05-BUILD/LOGS.md
  * and tag the commit. Printed over serial at boot. */
-#define ICU_FW_VERSION "0.5.1-dev"   /* can_map.h: 0x218 (F-012), 0x400 panel keys (F-016) */
+#define ICU_FW_VERSION "0.5.2-dev"   /* can_map.h to the record: wake bits per strip input, input faults, tell-tales on 0x210, KEY_FAULT (Y8) */
 
 #include "cluster_core.h"
 #include "bt817.h"
