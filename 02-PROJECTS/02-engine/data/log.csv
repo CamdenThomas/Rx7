@@ -13,3 +13,4 @@ L-0011,2026-09-27,plan,K1 K5 DS05 DS12 02.13 02.14 OP60 OP61 OP62 OP63,"K1: ECU 
 L-0012,2026-09-27,apply,D-446 D-447 02.13 02.14,"Applied 02.13 (a) and 02.14 (a): ECU EMU PRO, Phantom 340 pump"
 L-0013,2026-09-27,plan,K1 DS05 D-448 APP.05 DS13,"K1 closed on D-446; DS05 fuel system designed (D-448, parts table, FP01-FP06); web refused again, so J3 J5 K2 K5 DS01 DS02 DS04 DS06 DS08 DS09 gated on block APP.05; DS13 (front-axle weight) added for Camden"
 L-0014,2026-09-28,session,02.15 K6,Wiring review: the swap cavity plan lands on live dash conductors (K6); A/C at the swap raised as 02.15
+L-0015,2026-10-09,plan,K6 K7 D-456 D-457,"K6: the swap's cavity plan corrected onto today's receptacles (D-456), the alternator and pump loads restated (D-457), K7 added; the seventh plug and the coolant level raised as blocks 02.16 and 02.17"

@@ -26,15 +26,24 @@ LW24,LD07,MAF signal,signal,1,1,16,Its 12 V and ground from the injector feed an
 LW25,LD11,O2 signals,signal,2,2,16,none,ECU O2 inputs,20,0,,yes,
 LW26,LD11,O2 signal lows,sensor_gnd,2,2,16,none,ECU O2 low references,20,0,,yes,
 LW27,LD11,O2 heater feed,power,2,0,-,Spliced from the injector feed in the bay,—,16,3,,yes,
-LW28,LD11,O2 heater control,driver,2,2,16,none,ECU heater drivers,18,1.5,,yes,
-LW29,LD14,Alternator control and lamp / field,signal,2,2,16,none,"Excitation and lamp sense, as the 12A has today (HO11) - or the ECU's regulator control on a Gen IV",18,0.5,,no,
-LW30,LD15,Start relay K9 coil,driver,1,1,16,K9 stays on the inner fender,PMU O21,16,0.2,,no,The same conductor as today's L1-S1 1
+LW28,LD11,O2 heater control,driver,2,2,16,none,ECU heater drivers,18,1.5,,yes,"Slow PWM drivers: in the ignition drivers plug L1-S4, off every sensor plug (K6)"
+LW29,LD14,Alternator excitation and lamp sense,signal,2,2,16,none,Excitation from F15 on L1-S1 2 and the lamp line to ICU IC05 on L1-S2 8 - today's two cavities (HO11),18,0.5,,no,The ECU's set-point command is LW40; a commanded unit takes LW40 in place of the excitation (K6)
+LW30,LD15,Start relay K9 coil,driver,1,1,16,K9 stays on the inner fender,PMU O21,16,0.2,,no,"Today's L1-S1 1, kept: PMU O21 to K9 terminal 86 (electrical relays K9). The coil draws 0.13 A (electrical loads LD16, 90 Ohm); 0.2 here is a bound (K6)"
 LW31,LD16,Fan feed,power,1,1,12,none,PMU O14 via L1-P 3,12,25,,no,Return grounded at the front
 LW32,LD17,A/C clutch feed,power,1,1,12,none,O15 comfort block through the DCU-switched relay (D-324),14,4,,no,Uses the spare fourth cavity of L1-P
-LW33,LD18,"A/C pressure signal, 5 V, ground",signal,3,3,16,none,DCU input and its own supply,20,0.02,,no,Kept apart from the ECU's sensor grounds
+LW33,LD18,"A/C pressure signal, 5 V, ground",signal,3,3,16,none,DCU input and its own supply,20,0.02,,no,"Kept apart from the ECU's sensor grounds while it goes to the DCU (D-324); if block 02.15 gives the A/C to the ECU, its 5 V and ground can splice into LW20 / LW21 in the bay and free two cavities"
 LW34,LD19,VVT solenoid,driver,2,2,16,none,ECU phaser output,18,1.5,,yes,2010+ LC9 only
 LW35,LD20,EVAP purge,driver,2,1,16,Feed from the injector feed in the bay,ECU purge driver,18,0.5,,yes,
 LW36,LD21,Oil temperature signal and return,signal,2,2,16,none,ICU DP-ICU-B 7 (HO07),20,0,,yes,"Its return goes to the ICU, not the block - the fuel-level lesson on ground offset"
 LW37,LD22,Reverse switch and its return,ladder,2,2,16,Its ladder resistor sits at the switch,PMU A5 ladder (REVERSE),20,0,,no,The return comes back to the dash so the block's ground offset during cranking stays out of the ladder (risk review R3)
 LW38,LD23,Neutral switch,signal,2,2,16,none,ECU input,20,0,,yes,
-LW39,LD24,Vehicle speed signal and return,signal,2,2,16,none,ECU speed input,20,0,vss,no,Shielded if a variable-reluctance type
+LW39,LD24,Vehicle speed signal and return,signal,2,2,16,none,ECU speed input,20,0,vss,no,"One route: through L1 with the CD009's reverse and neutral switches, shielded whatever the sensor type, its drain LW48 at the ECU end; the L4 tunnel pair (HO15) is spare at the swap (K6)"
+LW40,LD14,Alternator set-point command,signal,1,1,16,none,ECU alternator control output (D-457),20,0.05,,yes,"Pinned only if the alternator bought is commanded (a Gen IV style L-terminal PWM); then L1-S1 2's excitation is a sealing plug in the leg - one or the other, never both, read off the unit at DS01 (confirm)"
+LW41,LD27,Brake fluid level switch,signal,2,1,16,"Terminal B grounded in the bay, as today (the point confirm at the swap)","ICU brake warning DP-ICU-B 6 via L1-S2 1 and node N50, with the parking-brake switch",20,0.01,,no,"Today's L1-S2 1, kept (K6)"
+LW42,LD25,Clutch pedal switch - crank interlock,ladder,2,0,,"none - cabin; its 8.2 kOhm sits at the switch, as the inhibitor's does today","PMU A4 (node N40), the P/N ladder state - closed with the pedal down; the other side to the dash ground",20,0.01,,no,"Joins N40 by a cabin conductor at the dash node; L1-S1 11 carries a sealing plug in the swap leg and its receptacle stays spliced to A4 (HO10, K6)"
+LW43,LD28,Pedal position signals 1 and 2,signal,2,0,,none,ECU pedal position inputs,20,0.01,pedal,no,Cabin only (K6)
+LW44,LD28,"Pedal 5 V and ground, one pair per track",ref5v,4,0,,none,"The ECU's two pedal supplies and grounds - kept apart from the throttle body's (confirm against the EMU PRO pinout, K5)",20,0.02,pedal,no,Cabin only (K6)
+LW45,LD29,ECU +12 V supply,power,1,0,,none,"PMU O13 tapped at the dash node through its own inline fuse, the holder lead sized to O13 as N19 is for O12 (count and fuse from the EMU PRO manual, K5)",16,1,,no,"O13 is the ECU and injector channel (D-007, HO01); the ECU's own draw is confirm"
+LW46,LD29,ECU power grounds,power_gnd,2,0,,none,The dash node's ground bus - the injectors' and throttle motor's return current flows through them,16,15,,no,"Count and gauge from the EMU PRO manual (K5, confirm); 15 A is injectors 9 + throttle motor 5 + O2 heaters and purge, a bound"
+LW47,LD29,ECU ignition sense,signal,1,0,,none,"A branch off L3-S2 1, the ignition switch's IG (RUN) output, as K13's coil is fed (confirm the EMU PRO input, K5)",20,0.01,,no,Cabin and dash only (K6)
+LW48,LD24,Vehicle speed shield drain,shield,1,1,16,none,ECU shield ground,20,0,vss,no,"Drain at the ECU end only, as crank, cam and knock (K6)"

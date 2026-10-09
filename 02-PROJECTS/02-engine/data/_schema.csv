@@ -86,7 +86,7 @@ ls_wires,crosses,int,no,,conductors of this function that cross into the leg aft
 ls_wires,size,enum(12|16|-),no,,"Deutsch contact size of the leg cavity it needs: 12 = the DTP power housing, 16 = a DT signal housing"
 ls_wires,bay_join,text,no,,what is spliced or grounded in the bay before the leg
 ls_wires,dash_end,text,no,,where it lands at the dash
-ls_wires,awg,str,no,,
+ls_wires,awg,str,no,,"GXL (SAE J1128) for every conductor of the swap leg, as the electrical build buys (D-212): 20 AWG GXL, about 1.7 mm over the insulation, sits inside the DT size-16 seal's range where TXL sits at its floor (K6 - confirm both figures against the Deutsch and wire datasheets)"
 ls_wires,amps,num,no,,
 ls_wires,group,str,no,,twisted pair or shield group - a shield's drain goes to the ECU end only
 ls_wires,optional,enum(yes|no),no,,yes = only if that feature is kept
@@ -114,11 +114,13 @@ work,unit,str,no,,for reply=value: the unit the value is in
 work,result,str,no,,"his answer as rx7.py apply set it: done, the value (in unit), or the choice (2026-09-26, plan P07)"
 work,settles,str,no,,"rows his answer flips, as <area>:<table>:<key> separated by spaces; blank means the PT ids named in item (2026-09-26, plan P07)"
 ls_cavities,id,key,yes,,"housing and cavity, e.g. L1-S3 4"
-ls_cavities,housing,str,yes,,"L1-P or L1-S1 to L1-S6 of the swap leg (D-443), not today's 12A leg"
+ls_cavities,housing,str,yes,,"L1-P or L1-S1 to L1-S6 of the swap leg (D-443), not today's 12A leg; L1-S1 and L1-S2 are today's receptacles at the post, so their cavities keep today's functions (K6)"
 ls_cavities,cavity,int,yes,,
-ls_cavities,wire,str,yes,ls_wires.id,
-ls_cavities,conductor,str,yes,,which of the wire row's crossing conductors
+ls_cavities,wire,str,no,ls_wires.id,the ls_wires row it carries - empty only on a reserved row (K6)
+ls_cavities,conductor,str,yes,,"which of the wire row's crossing conductors; on a reserved row, the dash-node conductor its receptacle already carries"
 ls_cavities,noise,str,no,,the housing's noise class
+ls_cavities,state,enum(pinned|reserved),no,,pinned = the swap leg carries this conductor; reserved = a sealing plug in the swap leg on a cavity whose receptacle already carries a dash-node conductor today - never given a swap conductor (K6)
+ls_cavities,note,text,no,,
 parts,id,key,yes,,
 parts,system,str,yes,,"what it belongs to: fuel, cooling, clutch, ..."
 parts,item,str,yes,,

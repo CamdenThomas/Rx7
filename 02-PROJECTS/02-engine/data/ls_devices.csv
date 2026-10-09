@@ -11,7 +11,7 @@ LD09,Oil pressure sensor,1,"Block, rear top",both,3-pin 5 V transducer (confirm 
 LD10,Knock sensors,2,Valley under the intake (Gen III) / both block sides (Gen IV),both,Gen III 1-pin each / Gen IV 2-pin each,ECU,
 LD11,Upstream oxygen sensors,2,Each header collector,option,4-pin narrowband,ECU,Only if the ECU runs narrowbands; the existing AEM wideband (LD12) may do the job
 LD12,Wideband oxygen sensor (the existing AEM),1,"Exhaust, after the collectors",both,AEM sensor on its own fixed lead to its controller at the dash,bay,Not through the DT housings: its lead passes the grommet as its own cable (D-244 asks whether it reaches). The AFR goes to the ICU over AEMnet
-LD13,Electronic throttle body,1,Intake,both,6-pin,ECU,"The accelerator pedal is in the cabin and wires straight to the ECU, not through the leg"
+LD13,Electronic throttle body,1,Intake,both,6-pin,ECU,"The accelerator pedal is in the cabin and wires straight to the ECU, not through the leg (LD28)"
 LD14,Alternator,1,Front of the engine,both,2-pin control plug plus the B+ stud,PMU,"Gen IV trucks regulate by ECU signal (confirm per unit). B+ is the existing 6 AWG via F18 at the starter stud, bay only"
 LD15,Starter,1,Block,both,B+ stud and S terminal,bay,B+ is the 1/0 backbone and S comes from K9 on the inner fender - both stay in the bay; only K9's coil crosses
 LD16,Electric cooling fan,1,Radiator,both,"2-pin, or a fan controller",PMU,O14 via L1-P 3 (HO02); its return is grounded at the front
@@ -22,6 +22,9 @@ LD20,EVAP purge solenoid,1,Intake,option,2-pin,ECU,Only if the emissions rules f
 LD21,Oil temperature sender,1,Oil pan or filter adapter,option,2-pin NTC,ICU,"For the ICU's oil-temperature gauge (HO07), unless the ECU reads one and sends it over CAN"
 LD22,CD009 reverse lamp switch,1,Transmission,both,2-pin (confirm),PMU,"Into the A5 ladder state REVERSE (HO10, D-187)"
 LD23,CD009 neutral switch,1,Transmission,option,2-pin (confirm it exists on the unit bought),ECU,"For idle control, if the ECU uses it"
-LD24,CD009 vehicle speed sensor,1,Transmission,both,2- or 3-pin (confirm),ECU,Road speed to the ICU through the ECU's frames (HO15)
-LD25,Clutch pedal switch,1,"Pedal box, cabin",both,2-pin,PMU,Replaces the automatic's P/N crank interlock on A4 (HO10). Cabin - not through the leg
+LD24,CD009 vehicle speed sensor,1,Transmission,both,2- or 3-pin (confirm),ECU,"Road speed to the ICU through the ECU's frames (HO15); its run is L1, shielded, with a drain (LW39, LW48)"
+LD25,Clutch pedal switch,1,"Pedal box, cabin",both,2-pin,PMU,"Replaces the automatic's P/N crank interlock on A4 (HO10): cabin, into node N40 at the dash, never through the leg (LW42)"
 LD26,Engine grounds,1,Heads and block,both,Ring terminals,bay,The block-to-chassis strap (B6) and the cranking return (B7) stay; each head gets a ground for the coils' power returns
+LD27,"Brake fluid level switch (the reservoir's own, C-05)",1,"Brake master cylinder reservoir, on the firewall",both,"2 spades: BR signal, B ground (as today, electrical L1-S2 1)",ICU,"Not an LS part, but the master cylinder stays at the swap and the rebuilt leg must still carry its switch: on today's cavity L1-S2 1, into the ICU's brake warning node N50 (K6)"
+LD28,Accelerator pedal (drive-by-wire),1,"Pedal box, cabin",both,GM 6-pin pedal (confirm against the pedal bought),ECU,"Cabin: wires to the ECU at the dash, never through the leg. Two tracks, each with its own 5 V and ground, as every factory DBW pedal (K6)"
+LD29,"Engine computer (ECUMaster EMU PRO, D-446)",1,Dash node (D-325),both,"EMU PRO headers - pin count and letters confirm from its manual (K5, block APP.05)",ECU,"Its own supply, grounds and ignition sense are dash wiring and never cross the leg (LW45-LW47, K6)"

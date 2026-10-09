@@ -1,73 +1,76 @@
-id,housing,cavity,wire,conductor,noise
-L1-P 1,L1-P,1,LW03,"coil feed, +12 V",power
-L1-P 2,L1-P,2,LW01,"injector feed, +12 V",power
-L1-P 3,L1-P,3,LW31,fan feed,power
-L1-P 4,L1-P,4,LW32,A/C clutch feed,power
-L1-S1 1,L1-S1,1,LW02,injector 1 driver,drivers
-L1-S1 2,L1-S1,2,LW02,injector 2 driver,drivers
-L1-S1 3,L1-S1,3,LW02,injector 3 driver,drivers
-L1-S1 4,L1-S1,4,LW02,injector 4 driver,drivers
-L1-S1 5,L1-S1,5,LW02,injector 5 driver,drivers
-L1-S1 6,L1-S1,6,LW02,injector 6 driver,drivers
-L1-S1 7,L1-S1,7,LW02,injector 7 driver,drivers
-L1-S1 8,L1-S1,8,LW02,injector 8 driver,drivers
-L1-S1 9,L1-S1,9,LW19,throttle motor +,drivers
-L1-S1 10,L1-S1,10,LW19,throttle motor -,drivers
-L1-S1 11,L1-S1,11,LW30,start relay K9 coil,drivers
-L1-S1 12,L1-S1,12,LW35,purge driver,drivers
-L1-S2 1,L1-S2,1,LW04,coil 1 trigger (IGT),drivers
-L1-S2 2,L1-S2,2,LW04,coil 2 trigger (IGT),drivers
-L1-S2 3,L1-S2,3,LW04,coil 3 trigger (IGT),drivers
-L1-S2 4,L1-S2,4,LW04,coil 4 trigger (IGT),drivers
-L1-S2 5,L1-S2,5,LW04,coil 5 trigger (IGT),drivers
-L1-S2 6,L1-S2,6,LW04,coil 6 trigger (IGT),drivers
-L1-S2 7,L1-S2,7,LW04,coil 7 trigger (IGT),drivers
-L1-S2 8,L1-S2,8,LW04,coil 8 trigger (IGT),drivers
-L1-S2 9,L1-S2,9,LW06,ignition reference ground a,drivers
-L1-S2 10,L1-S2,10,LW06,ignition reference ground b,drivers
-L1-S2 11,L1-S2,11,LW34,VVT phaser a,drivers
-L1-S2 12,L1-S2,12,LW34,VVT phaser b,drivers
-L1-S3 1,L1-S3,1,LW07,crank signal,shielded timing
-L1-S3 2,L1-S3,2,LW08,crank supply,shielded timing
-L1-S3 3,L1-S3,3,LW08,crank ground,shielded timing
-L1-S3 4,L1-S3,4,LW09,crank shield drain,shielded timing
-L1-S3 5,L1-S3,5,LW10,cam signal,shielded timing
-L1-S3 6,L1-S3,6,LW11,cam supply,shielded timing
-L1-S3 7,L1-S3,7,LW11,cam ground,shielded timing
-L1-S3 8,L1-S3,8,LW12,cam shield drain,shielded timing
-L1-S3 9,L1-S3,9,LW39,road speed signal,shielded timing
-L1-S3 10,L1-S3,10,LW39,road speed return,shielded timing
-L1-S4 1,L1-S4,1,LW22,knock conductor 1,low-level analog
-L1-S4 2,L1-S4,2,LW22,knock conductor 2,low-level analog
-L1-S4 3,L1-S4,3,LW22,knock conductor 3,low-level analog
-L1-S4 4,L1-S4,4,LW22,knock conductor 4,low-level analog
-L1-S4 5,L1-S4,5,LW23,knock shield drain,low-level analog
-L1-S4 6,L1-S4,6,LW17,throttle position 1,low-level analog
-L1-S4 7,L1-S4,7,LW17,throttle position 2,low-level analog
-L1-S4 8,L1-S4,8,LW18,throttle 5 V,low-level analog
-L1-S4 9,L1-S4,9,LW18,throttle ground,low-level analog
-L1-S4 10,L1-S4,10,LW38,neutral switch,low-level analog
-L1-S4 11,L1-S4,11,LW38,neutral switch return,low-level analog
-L1-S5 1,L1-S5,1,LW13,MAP signal,analog sensors
-L1-S5 2,L1-S5,2,LW14,IAT signal,analog sensors
-L1-S5 3,L1-S5,3,LW15,coolant temperature signal,analog sensors
-L1-S5 4,L1-S5,4,LW16,oil pressure signal,analog sensors
-L1-S5 5,L1-S5,5,LW20,sensor 5 V reference,analog sensors
-L1-S5 6,L1-S5,6,LW21,sensor ground a,analog sensors
-L1-S5 7,L1-S5,7,LW21,sensor ground b,analog sensors
-L1-S5 8,L1-S5,8,LW24,MAF signal,analog sensors
-L1-S5 9,L1-S5,9,LW25,O2 signal 1,analog sensors
-L1-S5 10,L1-S5,10,LW25,O2 signal 2,analog sensors
-L1-S5 11,L1-S5,11,LW26,O2 low 1,analog sensors
-L1-S5 12,L1-S5,12,LW26,O2 low 2,analog sensors
-L1-S6 1,L1-S6,1,LW29,alternator excitation,body and slow lines
-L1-S6 2,L1-S6,2,LW29,alternator lamp sense,body and slow lines
-L1-S6 3,L1-S6,3,LW33,A/C pressure signal,body and slow lines
-L1-S6 4,L1-S6,4,LW33,A/C pressure 5 V,body and slow lines
-L1-S6 5,L1-S6,5,LW33,A/C pressure ground,body and slow lines
-L1-S6 6,L1-S6,6,LW37,reverse switch,body and slow lines
-L1-S6 7,L1-S6,7,LW37,reverse switch return,body and slow lines
-L1-S6 8,L1-S6,8,LW36,oil temperature signal,body and slow lines
-L1-S6 9,L1-S6,9,LW36,oil temperature return,body and slow lines
-L1-S6 10,L1-S6,10,LW28,O2 heater driver 1,body and slow lines
-L1-S6 11,L1-S6,11,LW28,O2 heater driver 2,body and slow lines
+id,housing,cavity,wire,conductor,noise,state,note
+L1-P 1,L1-P,1,LW03,"coil feed, +12 V",power,pinned,Today's L1-P 1 (O12)
+L1-P 2,L1-P,2,LW01,"injector feed, +12 V",power,pinned,"Today's reserve L1-P 2 (O13, HO01)"
+L1-P 3,L1-P,3,LW31,fan feed,power,pinned,"Today's reserve L1-P 3 (O14, HO02); how the fan is fed at the swap is electrical block 01.24"
+L1-P 4,L1-P,4,LW32,A/C clutch feed,power,pinned,Today's sealing plug; who switches it is block 02.15
+L1-S1 1,L1-S1,1,LW30,start relay K9 coil,"body and slow lines - today's receptacle, today's functions kept",pinned,Today's L1-S1 1 (O21)
+L1-S1 2,L1-S1,2,LW29,alternator excitation,"body and slow lines - today's receptacle, today's functions kept",pinned,"Today's L1-S1 2 (F15, N19); a sealing plug instead if the unit is commanded on LW40 (HO11)"
+L1-S1 3,L1-S1,3,,water temperature gauge - ICU IC01 (N46),"body and slow lines - today's receptacle, today's functions kept",reserved,"Sealing plug while the ICU reads the ECU's coolant temperature on CAN; a gauge sender on the block is pinned here with J1 in, nothing else ever (HO06)"
+L1-S1 4,L1-S1,4,LW16,oil pressure signal,"body and slow lines - today's receptacle, today's functions kept",pinned,"Today's L1-S1 4: the PMU's A7 gate and the ICU read it at the node (N45, N47, HO04)"
+L1-S1 5,L1-S1,5,LW15,coolant temperature signal (ECU),"body and slow lines - today's receptacle, today's functions kept",pinned,A slow thermistor line in a today's-sensor plug; free today
+L1-S1 6,L1-S1,6,,"tachometer - ICU IC04 (N48, shielded)","body and slow lines - today's receptacle, today's functions kept",reserved,No engine-bay tach source at the swap: the ECU at the dash gives rpm (HO05). Never given a swap conductor
+L1-S1 7,L1-S1,7,LW17,throttle position 1,"body and slow lines - today's receptacle, today's functions kept",pinned,"Free today; the throttle's own group, 7-10"
+L1-S1 8,L1-S1,8,LW17,throttle position 2,"body and slow lines - today's receptacle, today's functions kept",pinned,Free today
+L1-S1 9,L1-S1,9,LW18,throttle 5 V,"body and slow lines - today's receptacle, today's functions kept",pinned,Free today
+L1-S1 10,L1-S1,10,LW18,throttle ground,"body and slow lines - today's receptacle, today's functions kept",pinned,Free today
+L1-S1 11,L1-S1,11,,inhibitor P/N - PMU A4 (N40),"body and slow lines - today's receptacle, today's functions kept",reserved,"The receptacle stays spliced to A4: anything pinned here reads as a ladder state. The clutch switch reaches N40 in the cabin (LW42, HO10)"
+L1-S1 12,L1-S1,12,LW14,IAT signal,"body and slow lines - today's receptacle, today's functions kept",pinned,Free today
+L1-S2 1,L1-S2,1,LW41,brake fluid level switch,"body and slow lines - today's receptacle, today's functions kept",pinned,"Today's L1-S2 1 (N50, with the parking-brake switch)"
+L1-S2 2,L1-S2,2,LW37,reverse switch return,"body and slow lines - today's receptacle, today's functions kept",pinned,Free today; the dash side lands it on the PMU's signal ground at the swap (risk review R3)
+L1-S2 3,L1-S2,3,LW33,A/C pressure signal,"body and slow lines - today's receptacle, today's functions kept",pinned,Free today (block 02.15 decides its reader)
+L1-S2 4,L1-S2,4,LW33,A/C pressure 5 V,"body and slow lines - today's receptacle, today's functions kept",pinned,Today's phase-2 sealing plug (D-271)
+L1-S2 5,L1-S2,5,LW33,A/C pressure ground,"body and slow lines - today's receptacle, today's functions kept",pinned,Today's phase-2 sealing plug (D-271)
+L1-S2 6,L1-S2,6,LW40,alternator set-point command,"body and slow lines - today's receptacle, today's functions kept",pinned,Today's phase-2 sealing plug (D-271); pinned only for a commanded unit (HO11)
+L1-S2 7,L1-S2,7,LW37,reverse switch,"body and slow lines - today's receptacle, today's functions kept",pinned,"Today's L1-S2 7: the A5 ladder (N41, HO10)"
+L1-S2 8,L1-S2,8,LW29,alternator lamp sense,"body and slow lines - today's receptacle, today's functions kept",pinned,"Today's L1-S2 8: ICU IC05 (N49, HO11)"
+L1-S2 9,L1-S2,9,,"phase-2 sensor supply, +12 V switched (N68)","body and slow lines - today's receptacle, today's functions kept",reserved,"Switched 12 V once its fuse is fitted: only a 12 V-supplied sensor is ever pinned here, never a ground or an ECU line (HO08)"
+L1-S2 10,L1-S2,10,LW36,oil temperature signal,"body and slow lines - today's receptacle, today's functions kept",pinned,The cavity D-264 kept for it: dash side to DP-ICU-B 7 at the swap (HO07)
+L1-S2 11,L1-S2,11,,phase-2 sensor signal - ICU spare input IC17 (N67),"body and slow lines - today's receptacle, today's functions kept",reserved,Kept for the ICU; the coolant level switch if the drafted block rules it in (HO09)
+L1-S2 12,L1-S2,12,LW36,oil temperature return,"body and slow lines - today's receptacle, today's functions kept",pinned,"Free today; dash side to the ICU's sensor ground, not the block (HO07)"
+L1-S3 1,L1-S3,1,LW02,injector 1 driver,drivers - injectors and throttle motor,pinned,
+L1-S3 2,L1-S3,2,LW02,injector 2 driver,drivers - injectors and throttle motor,pinned,
+L1-S3 3,L1-S3,3,LW02,injector 3 driver,drivers - injectors and throttle motor,pinned,
+L1-S3 4,L1-S3,4,LW02,injector 4 driver,drivers - injectors and throttle motor,pinned,
+L1-S3 5,L1-S3,5,LW02,injector 5 driver,drivers - injectors and throttle motor,pinned,
+L1-S3 6,L1-S3,6,LW02,injector 6 driver,drivers - injectors and throttle motor,pinned,
+L1-S3 7,L1-S3,7,LW02,injector 7 driver,drivers - injectors and throttle motor,pinned,
+L1-S3 8,L1-S3,8,LW02,injector 8 driver,drivers - injectors and throttle motor,pinned,
+L1-S3 9,L1-S3,9,LW19,throttle motor +,drivers - injectors and throttle motor,pinned,Twisted pair
+L1-S3 10,L1-S3,10,LW19,throttle motor -,drivers - injectors and throttle motor,pinned,Twisted pair
+L1-S3 11,L1-S3,11,LW35,purge driver,drivers - injectors and throttle motor,pinned,
+L1-S4 1,L1-S4,1,LW04,coil 1 trigger (IGT),drivers - ignition and slow PWM,pinned,
+L1-S4 2,L1-S4,2,LW04,coil 2 trigger (IGT),drivers - ignition and slow PWM,pinned,
+L1-S4 3,L1-S4,3,LW04,coil 3 trigger (IGT),drivers - ignition and slow PWM,pinned,
+L1-S4 4,L1-S4,4,LW04,coil 4 trigger (IGT),drivers - ignition and slow PWM,pinned,
+L1-S4 5,L1-S4,5,LW04,coil 5 trigger (IGT),drivers - ignition and slow PWM,pinned,
+L1-S4 6,L1-S4,6,LW04,coil 6 trigger (IGT),drivers - ignition and slow PWM,pinned,
+L1-S4 7,L1-S4,7,LW04,coil 7 trigger (IGT),drivers - ignition and slow PWM,pinned,
+L1-S4 8,L1-S4,8,LW04,coil 8 trigger (IGT),drivers - ignition and slow PWM,pinned,
+L1-S4 9,L1-S4,9,LW06,ignition reference ground a,drivers - ignition and slow PWM,pinned,
+L1-S4 10,L1-S4,10,LW06,ignition reference ground b,drivers - ignition and slow PWM,pinned,
+L1-S4 11,L1-S4,11,LW28,O2 heater driver 1,drivers - ignition and slow PWM,pinned,Off the sensor plugs (K6)
+L1-S4 12,L1-S4,12,LW28,O2 heater driver 2,drivers - ignition and slow PWM,pinned,Off the sensor plugs (K6)
+L1-S5 1,L1-S5,1,LW07,crank signal,shielded timing,pinned,
+L1-S5 2,L1-S5,2,LW08,crank supply,shielded timing,pinned,
+L1-S5 3,L1-S5,3,LW08,crank ground,shielded timing,pinned,
+L1-S5 4,L1-S5,4,LW09,crank shield drain,shielded timing,pinned,
+L1-S5 5,L1-S5,5,LW10,cam signal,shielded timing,pinned,
+L1-S5 6,L1-S5,6,LW11,cam supply,shielded timing,pinned,
+L1-S5 7,L1-S5,7,LW11,cam ground,shielded timing,pinned,
+L1-S5 8,L1-S5,8,LW12,cam shield drain,shielded timing,pinned,
+L1-S5 9,L1-S5,9,LW39,road speed signal,shielded timing,pinned,
+L1-S5 10,L1-S5,10,LW39,road speed return,shielded timing,pinned,
+L1-S5 11,L1-S5,11,LW48,road speed shield drain,shielded timing,pinned,"One VSS route, with its drain (K6)"
+L1-S5 12,L1-S5,12,LW21,sensor ground b,shielded timing,pinned,A quiet return; harmless beside the shields
+L1-S6 1,L1-S6,1,LW22,knock conductor 1,low-level analog,pinned,
+L1-S6 2,L1-S6,2,LW22,knock conductor 2,low-level analog,pinned,
+L1-S6 3,L1-S6,3,LW22,knock conductor 3,low-level analog,pinned,
+L1-S6 4,L1-S6,4,LW22,knock conductor 4,low-level analog,pinned,
+L1-S6 5,L1-S6,5,LW23,knock shield drain,low-level analog,pinned,
+L1-S6 6,L1-S6,6,LW25,O2 signal 1,low-level analog,pinned,
+L1-S6 7,L1-S6,7,LW25,O2 signal 2,low-level analog,pinned,
+L1-S6 8,L1-S6,8,LW26,O2 low 1,low-level analog,pinned,
+L1-S6 9,L1-S6,9,LW26,O2 low 2,low-level analog,pinned,
+L1-S6 10,L1-S6,10,LW13,MAP signal,low-level analog,pinned,
+L1-S6 11,L1-S6,11,LW20,sensor 5 V reference,low-level analog,pinned,
+L1-S6 12,L1-S6,12,LW21,sensor ground a,low-level analog,pinned,
