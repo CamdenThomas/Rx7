@@ -146,10 +146,10 @@ pins,awg,str,no,,
 pins,colour,enum(BLK|BLU|GRN|GRY|ORN|PNK|RED|YEL),no,,
 pins,circuit,text,no,,
 pins,goes_to_fixed,str,no,,
-pins,est_a,num,no,,
+pins,est_a,num,no,,the running current the design expects; CK01's baseline_a replaces it in the health band
 pins,enable_a,num,no,,
 pins,enable_basis,str,no,,
-pins,inrush_x,num,no,,
+pins,inrush_x,num,no,,"the load's start-up current as a multiple of est_a, for inrush_ms; the PMU soft fuse's Inrush Current / Inrush Time are set from it (S-028 p.134), and Y1 holds inrush_x x est_a under the pin's peak_a (R11)"
 pins,inrush_ms,int,no,,
 pins,state,enum(CAPPED|LIVE),no,,
 pins,note,str,no,,

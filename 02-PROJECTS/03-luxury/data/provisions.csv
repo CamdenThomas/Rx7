@@ -7,7 +7,7 @@ PV41,pin,O16,FT12,"blower feed — configured, DISABLED until the motor exists",
 PV42,cavity,L3-P 2,FT31,"O15 comfort bus, 12 AWG — electrical's comfort fuse block plugs into the L3-CMF receptacle behind the centre stack (electrical D-274)",CAPPED,
 PV43,pin,O15,FT31,"comfort bus, 25 A, ON in RUN",LIVE,
 PV44,cavity,L4-P 4,FT23,"DCU → sill feed for mirror heat: the DCU's high-side switch via DP-DCU-B 9, linked at the post onto L4-P 4, landed in F14's holder (electrical D-369)",CAPPED,electrical D-254 → D-369
-PV45,fuse,F14,FT23,"mirror-heat fuse at the sill - a sealed inline holder; electrical fits the fuse too (D-450, 01-electrical D-451), rating confirm - sized after V-101",,electrical D-283
+PV45,fuse,F14,FT23,"mirror-heat fuse at the sill - a sealed inline holder; electrical fits the fuse too (D-450, 01-electrical D-451), rating confirm - sized after V-101",,"electrical D-283; rated 5 A by electrical D-382 (fuses F14), R11"
 PV46,pin,O4,FT16,"defog output — wired to the grid, configured, DISABLED",LIVE,
 PV47,cavity,L4-P 1,FT16,the grid feed,LIVE,
 PV48,cavity,L4-M 3,FT17,"hatch solenoid — the conductor reaches the existing factory solenoid; the post end is electrical's trigger now (01-electrical A11, D-450) (D-180, electrical D-274)",CAPPED,

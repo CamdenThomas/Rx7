@@ -1,5 +1,5 @@
 pin,cav_size,ch,name,type,awg,colour,circuit,goes_to_fixed,est_a,enable_a,enable_basis,baseline_a,inrush_x,inrush_ms,state,note,hw_max_a,peak_a,hold
-STUD,stud,,+12V BATT,MAIN,2,RED,"Main supply from the Class-T, 150 A max",Busbar → PMU stud,,,,,,,LIVE,,,,
+STUD,stud,,+12V BATT,MAIN,2,RED,"Main supply from the Class-T, 150 A max",Busbar → PMU stud,,,,,,,LIVE,"S-028 p.8: 170 A continuous for the PMU 24 - the outputs' est_a sum is checked against it (params pmu_total_a, Y1)",,,
 25,L,,GND,GND,10,BLK,Device ground and flyback return for every inductive load,"GND bus, ≤ 6 in",,,,,,,LIVE,,,,
 7,S,,+12V SW,WAKE,16,BLU,Wake input - diode-OR strip: ACC · RUN · door stage (A6) · horn/hazard/wink stage (A8) · brake (D-278) · O22 latch · DCU wake request (D-350),Wake strip common rail,,,,,,,LIVE,,,,
 15,M,,+5V OUT,REF,16,PNK,+5 V reference — dash node only: the two 100 kΩ bias resistors for A15 / A16 and the 100 Ω oil-node pull-up (D-260),"Bias resistors + the 100 Ω oil-node pull-up, all on the dash node",,,,,,,LIVE,,,,
@@ -18,7 +18,7 @@ STUD,stud,,+12V BATT,MAIN,2,RED,"Main supply from the Class-T, 150 A max",Busbar
 27,L,O15,COMFORT,output,12,RED,"Comfort bus — two feeds with no load this build: the dash (L3-P 2 → the L3-CMF receptacle behind the centre stack, D-274) and the sill (L4-P 4 → F14's holder, fitted empty, D-283 / D-254). No fuse block this build; the luxury package adds its own on this output",,,,,,,,LIVE,Feeds only the comfort block through L3-P 2 (N17). The sill mirror-heat feed (L4-P 4) left this output for the DCU's high-side switch (D-369); nothing else hangs here (R8).,25,120,
 28,L,O16,BLOWER,output,12,RED,Blower motor — steady feed; speed is the ≥ 20 kHz final stage at L3-BLW on the DCU's PWM (D-257); no motor this build: channel configured and DISABLED (K-023 · D-253),,15.0,25.0,cap,,8,600,LIVE,,25,120,
 11,S,O6,TAIL_PARK,output,14,ORN,Tail · park · side markers · licence,,4.4,7.5,meas,,10,100,LIVE,,15,120,
-10,S,O7,BRAKE,output,14,ORN,Brake lamps,,3.9,9.5,meas,,10,100,LIVE,,15,120,
+10,S,O7,BRAKE,output,14,ORN,Brake lamps,,3.9,11,"meas 7.0 A x 1.5 (R11; four 27 W stop filaments, SP-201)",,10,100,LIVE,,15,120,
 9,S,O8,WIPE_LOW,output,14,ORN,Wiper LOW brush — braking channel; also feeds K12 (washer) contact 30,,4.0,13.0,cap,,7,300,LIVE,,15,120,
 5,S,O9,WIPE_HIGH,output,14,ORN,Wiper HIGH brush,,5.5,13.0,cap,,7,300,LIVE,,15,120,
 4,S,O10,ACCESSORY,output,14,ORN,"Accessory bus - head unit (ACC), USB-C, K12 coil, the ICU's logic rail (DP-ICU-A 1), the road-speed sensor supply (L4-S 4, D-272), and the hatch and fuel-door release branches, which is why ACCESSORY carries a release term (D-354). One capped module drop remains, DP-DCU 1, and it is no longer on this output - it went constant on F22 (D-350)",,10.0,13.0,cap,,2,100,LIVE,"est_a 10 = loads LD15, the ~10 A worst case steady (both USB-C ports loaded); the release pulse is excluded (D-354)",15,120,

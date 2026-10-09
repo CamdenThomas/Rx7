@@ -25,6 +25,19 @@ if ! cmp -s ../icu/can_map.h ../dcu/can_map.h; then
   exit 1
 fi
 
+# The three KiCad sheets against the record and the datasheets (cad/check.py, Y3): a Teensy pad,
+# expander port, drop cavity or ribbon conductor that disagrees with icu_channels, dcu_channels
+# or panel_ribbon fails the suite, as does a symbol pin that disagrees with its datasheet. It
+# exits 3 when kicad-cli is absent (or a sheet is unreadable); the suite then goes on without it.
+if python3 ../../cad/check.py; then
+  :
+elif [ "$?" -eq 3 ]; then
+  echo "cad/check.py skipped - kicad-cli not found, so the schematics were not checked against the record"
+else
+  echo "*** cad/check.py FAILED - a schematic disagrees with the record or a datasheet (the record is right) ***"
+  exit 1
+fi
+
 suite() {  # name, source, extra flags
   echo "Building $1 ..."
   g++ "$2" -o "$1" -std=c++17 -O2 $3 || { echo "BUILD FAILED: $2"; exit 1; }

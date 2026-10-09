@@ -14,7 +14,7 @@ MG12,12,Reverse,O19
 MG13,13,Headlight LOW,O2
 MG14,14,Headlight HIGH,O3
 MG15,15,Pop-up LEFT,O1 / K1
-MG16,16,Pop-up RIGHT,O1 / K2
+MG16,15,"Pop-up RIGHT — the same session as MG15, both sides at once (R11)",O1 / K2
 MG17,17,"Blower — receptacle L3-BLW only, no motor (K-023 · D-253)",O16
 MG18,18,Courtesy lamps,F19
 MG20,19,Fuel pump + fuel sender (the ICU's node from D-258),O5 / L4-S 1

@@ -321,7 +321,10 @@ _VIN = re.compile(r"\b(?:\d+\s+VIN|VIN\s+\d+|VIN)\b")
 def record_pins(text):
     """The Teensy pins a `teensy_pin` cell names, in order: standalone numbers 0-54 after
     dropping decision cites, parentheses that negate ("(not ...)"), and numbers with a unit.
-    'VIN' (the record writes the socket's pad, "48 VIN") comes through as the label VIN."""
+    'VIN' (the record writes the socket's pad, "48 VIN") comes through as the label VIN.
+    A cell that opens with "none" names no pin, whatever candidates it goes on to list."""
+    if re.match(r"\s*(none|nothing|—|-|GND)\b", text or ""):
+        return []
     t = _UNIT.sub(" ", _DECISION.sub(" ", _COMMENT.sub(" ", text or "")))
     t = _VIN.sub(" <VIN> ", t)
     out = []
@@ -534,8 +537,12 @@ def check_drops(rep, nl, cfg, rows, cavities, processor_nets):
                 else:
                     rep.ok("%s %s unconnected, a plug" % (conn, pin))
             elif net is None:
-                if claimants:
-                    rep.bad(conn, pin, "wired (%s names it)" % ",".join(r["id"] for r in claimants), "unconnected")
+                live = [r for r in claimants if record_pins(r.get("teensy_pin", ""))]
+                if live:
+                    rep.bad(conn, pin, "wired (%s names it)" % ",".join(r["id"] for r in live), "unconnected")
+                elif claimants:
+                    rep.note("%s pin %s is unconnected; %s names the cavity (%s) but has no processor pin" % (
+                        conn, pin, ",".join(r["id"] for r in claimants), state))
                 else:
                     rep.note("%s pin %s is unconnected; the record has the cavity %s (%s)" % (conn, pin, state, states and "no channel names it"))
             else:
@@ -729,21 +736,30 @@ def check_pin_tables(rep, nl, tables):
         rows = tables[hit]
         package = rows[0]["package"]
         ds = {r["pin"]: r["name"] for r in rows}
+        # PAD / TAB rows are unnumbered in the datasheet: matched by name, not by number
+        unnumbered = {num: name for num, name in ds.items() if not num.isdigit()}
         sym = nl.pins.get(ref, {})
         bad = 0
         for num in sorted(sym, key=lambda n: (len(n), n)):
             sname = sym[num][0]
-            if num not in ds:
+            if num in ds:
+                if sname and not same_name(sname, ds[num]):
+                    rep.bad(ref, num, "%s (%s %s)" % (ds[num], hit, package), sname)
+                    bad += 1
+            elif sname and any(same_name(sname, n) for n in unnumbered.values()) and not num.isdigit():
+                pass
+            elif sname and any(same_name(sname, n) and same_name(n, "PAD") for n in unnumbered.values()):
+                pass                                    # the symbol's thermal pad, numbered by KiCad
+            else:
                 rep.bad(ref, num, "no pin %s on the %s (%s)" % (num, hit, package), sname or "(unnamed)")
                 bad += 1
-            elif sname and not same_name(sname, ds[num]):
-                rep.bad(ref, num, "%s (%s %s)" % (ds[num], hit, package), sname)
-                bad += 1
         for num, name in ds.items():
-            if num not in sym and not same_name("NC", name):
-                missing = [r for r in rows if r["pin"] == num]
-                rep.bad(ref, num, "%s (%s %s)" % (name, hit, package), "no such pin on the symbol")
-                bad += 1
+            if num.isdigit():
+                if num not in sym and not same_name("NC", name):
+                    rep.bad(ref, num, "%s (%s %s)" % (name, hit, package), "no such pin on the symbol")
+                    bad += 1
+            elif not any(same_name(sname, name) for sname, _t in sym.values()):
+                rep.note("%s has no %s pin for the %s's %s" % (ref, name, hit, num))
         if not bad:
             rep.ok("%s pins match the %s %s table" % (ref, hit, package))
 
