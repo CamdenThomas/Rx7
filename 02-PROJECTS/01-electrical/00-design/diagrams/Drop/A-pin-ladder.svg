@@ -176,8 +176,8 @@
 <text x="50.0" y="868.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
 <text x="70.0" y="868.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
 <text x="406.0" y="868.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="730.0" y="860.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 — the ICU's oil-temperature channel IC07 lands here when the swap's rebuilt leg</text>
-<text x="730.0" y="876.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">brings a sender (D-264)</text>
+<text x="730.0" y="860.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 — the ICU's oil-temperature channel IC07 lands here when the swap's rebuilt</text>
+<text x="730.0" y="876.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">leg brings a sender (D-264)</text>
 <line x1="30" y1="886.0" x2="390" y2="886.0" stroke="#d0d7de"/>
 <circle cx="50" cy="903.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="907.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
@@ -241,8 +241,8 @@
 <text x="406.0" y="1156.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-1  ·  16 AWG RED</text>
 <rect x="720.0" y="1139.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="730.0" y="1154.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DT06-6S plug at the end of the tail to the centre stack, plugged into the DCU at E26, live from</text>
-<text x="730.0" y="1170.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">install (luxury D-362, D-374). CONSTANT, not switched: the DCU has to be alive with the key out to see</text>
-<text x="730.0" y="1186.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">a panel press and pull the wake line (D-350). It was an O10 tap until then</text>
+<text x="730.0" y="1170.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">install (luxury D-362, D-374). CONSTANT, not switched: the DCU has to be alive with the key out to</text>
+<text x="730.0" y="1186.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">see a panel press and pull the wake line (D-350). It was an O10 tap until then</text>
 <line x1="30" y1="1196.0" x2="390" y2="1196.0" stroke="#d0d7de"/>
 <circle cx="50" cy="1218.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="1222.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
@@ -515,15 +515,15 @@
 <path d="M217.3,2418.0 L253.3,2418.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
 <path d="M217.3,2418.0 L253.3,2418.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
 <text x="263.3" y="2422.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLU</text>
-<path d="M310.8,2418.0 L346.8,2418.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M310.8,2418.0 L346.8,2418.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
-<text x="356.8" y="2422.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLK</text>
-<path d="M403.1,2418.0 L439.1,2418.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M403.1,2418.0 L439.1,2418.0" fill="none" stroke="#2e8b3e" stroke-width="5" stroke-linejoin="round"/>
-<text x="449.1" y="2422.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRN</text>
-<path d="M499.1,2418.0 L535.1,2418.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M499.1,2418.0 L535.1,2418.0" fill="none" stroke="#f2c318" stroke-width="5" stroke-linejoin="round"/>
-<text x="545.1" y="2422.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">YEL</text>
+<path d="M310.9,2418.0 L346.9,2418.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M310.9,2418.0 L346.9,2418.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="356.9" y="2422.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLK</text>
+<path d="M403.5,2418.0 L439.5,2418.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M403.5,2418.0 L439.5,2418.0" fill="none" stroke="#2e8b3e" stroke-width="5" stroke-linejoin="round"/>
+<text x="449.5" y="2422.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRN</text>
+<path d="M499.2,2418.0 L535.2,2418.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M499.2,2418.0 L535.2,2418.0" fill="none" stroke="#f2c318" stroke-width="5" stroke-linejoin="round"/>
+<text x="545.2" y="2422.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">YEL</text>
 <path d="M589.7,2418.0 L625.7,2418.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
 <path d="M589.7,2418.0 L625.7,2418.0" fill="none" stroke="#6b7280" stroke-width="5" stroke-linejoin="round"/>
 <path d="M589.7,2418.0 L625.7,2418.0" fill="none" stroke="#e5e7eb" stroke-width="2" stroke-dasharray="3 3"/>

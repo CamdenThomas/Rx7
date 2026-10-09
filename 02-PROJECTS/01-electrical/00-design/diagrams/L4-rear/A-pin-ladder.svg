@@ -34,8 +34,8 @@
 <path d="M390.0,234.0 L720.0,234.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <text x="406.0" y="224.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-P-3  ·  12 AWG RED  ·  RT19  ·  capped at the far end</text>
 <rect x="720.0" y="215.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="230.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Lands at the sill node — the K5–K8 contact feed through the F8 / F9 holders, fitted empty (D-283); the</text>
-<text x="730.0" y="246.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">node is this branch's end (D-274)</text>
+<text x="730.0" y="230.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Lands at the sill node — the K5–K8 contact feed through the F8 / F9 holders, fitted empty (D-283);</text>
+<text x="730.0" y="246.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the node is this branch's end (D-274)</text>
 <line x1="30" y1="256.0" x2="390" y2="256.0" stroke="#d0d7de"/>
 <circle cx="50" cy="286.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="290.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
@@ -209,8 +209,8 @@
 <path d="M390.0,1056.0 L720.0,1056.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
 <text x="406.0" y="1046.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S-3  ·  16 AWG GRY  ·  RT21</text>
 <rect x="720.0" y="1037.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="1052.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Pulse generator on the transmission's speedo-drive boss (DV47, P113), fitted at the meters cutover —</text>
-<text x="730.0" y="1068.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">signal; 18 in service loop in the tunnel (D-272)</text>
+<text x="730.0" y="1052.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Pulse generator on the transmission's speedo-drive boss (DV47, P113), fitted at the meters cutover</text>
+<text x="730.0" y="1068.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">— signal; 18 in service loop in the tunnel (D-272)</text>
 <line x1="30" y1="1078.0" x2="390" y2="1078.0" stroke="#d0d7de"/>
 <circle cx="50" cy="1100.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="1104.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
@@ -220,8 +220,8 @@
 <path d="M390.0,1100.0 L720.0,1100.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
 <text x="406.0" y="1090.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S-4  ·  16 AWG RED  ·  RT21</text>
 <rect x="720.0" y="1081.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="1096.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Pulse generator supply — an O10 tap (N73), so the sensor lives and dies with the ICU; sensor ground</text>
-<text x="730.0" y="1112.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">→ rear star, G35 (D-272)</text>
+<text x="730.0" y="1096.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Pulse generator supply — an O10 tap (N73), so the sensor lives and dies with the ICU; sensor</text>
+<text x="730.0" y="1112.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ground → rear star, G35 (D-272)</text>
 <line x1="30" y1="1122.0" x2="390" y2="1122.0" stroke="#d0d7de"/>
 <circle cx="50" cy="1144.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="1148.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
@@ -328,8 +328,8 @@
 <text x="70.0" y="1612.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
 <text x="406.0" y="1612.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
 <text x="730.0" y="1596.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 - the master-switch position sense is dropped and its conductor is not run</text>
-<text x="730.0" y="1612.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">(D-351, supersedes D-331). Camden: he is the only future owner, he will not open the master with the</text>
-<text x="730.0" y="1628.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">engine running, and he will not dig the tunnel up to add a wire he declined</text>
+<text x="730.0" y="1612.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">(D-351, supersedes D-331). Camden: he is the only future owner, he will not open the master with</text>
+<text x="730.0" y="1628.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">the engine running, and he will not dig the tunnel up to add a wire he declined</text>
 <line x1="30" y1="1638.0" x2="390" y2="1638.0" stroke="#d0d7de"/>
 <circle cx="50" cy="1660.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="1664.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
@@ -522,8 +522,8 @@
 <path d="M217.3,2792.0 L253.3,2792.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
 <path d="M217.3,2792.0 L253.3,2792.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
 <text x="263.3" y="2796.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLU</text>
-<path d="M310.8,2792.0 L346.8,2792.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M310.8,2792.0 L346.8,2792.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
-<text x="356.8" y="2796.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ORN</text>
+<path d="M310.9,2792.0 L346.9,2792.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M310.9,2792.0 L346.9,2792.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<text x="356.9" y="2796.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ORN</text>
 <text x="30.0" y="2822.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">Solid wire: live. Dashed: run and capped at the far end. A box on a wire is an inline resistor. Generated by rx7.py diagrams - do not edit.</text>
 </svg>

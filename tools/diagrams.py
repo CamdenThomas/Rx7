@@ -25,7 +25,7 @@ label touching another label, or sitting on a wire, refuses the sheet: it is not
 reason is printed, and the exit code is 2. Nothing is ever drawn that has not passed.
 
 Exit codes as rx7.py: 0 written, 2 a sheet was refused (the others are still written), 3 a crash.
-Needs Pillow (python3-pillow) for font metrics.
+Needs Pillow for font metrics (Fedora: python3-pillow; Mac: python3 -m pip install --user pillow).
 """
 from __future__ import annotations
 
@@ -37,7 +37,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 AREA = ROOT / "02-PROJECTS" / "01-electrical"
 OUT = AREA / "00-design" / "diagrams"
-FONT = Path("/usr/share/fonts/google-noto-vf/NotoSans[wght].ttf")
+# One font, kept in the tree (tools/fonts, SIL OFL), so every clone measures a label the same
+# way: a system font differs by machine and version, and a label that wraps one word later on
+# one machine rewrites every sheet on the next. Subset of Noto Sans [wdth,wght] (Latin, Greek,
+# punctuation, arrows, symbols); only weight 400 is ever measured.
+FONT = ROOT / "tools" / "fonts" / "NotoSans[wdth,wght].ttf"
 
 def legs():
     """(leg, folder) for every leg the housings table names (plan P49): 'L1 Engine' -> L1-engine,
@@ -64,7 +68,7 @@ TEXT, MUTED, FAINT, RULE, PANEL = "#1f2328", "#57606a", "#8c959f", "#d0d7de", "#
 try:
     from PIL import ImageFont
 except ImportError:  # pragma: no cover
-    print("diagrams: needs Pillow (sudo dnf install python3-pillow) - nothing written (rc 3)")
+    print("diagrams: needs Pillow (Fedora: sudo dnf install python3-pillow; Mac: python3 -m pip install --user pillow) - nothing written (rc 3)")
     sys.exit(3)
 
 _fonts = {}
@@ -75,8 +79,9 @@ def tw(s: str, size: float, weight: int = 400) -> float:
     k = (size, weight)
     if k not in _fonts:
         f = ImageFont.truetype(str(FONT), size)
-        try:
-            f.set_variation_by_axes([weight])
+        try:  # set wght by name; the other axes keep their defaults
+            axes = f.get_variation_axes()
+            f.set_variation_by_axes([weight if a["name"] in (b"Weight", b"wght") else a["default"] for a in axes])
         except Exception:
             pass
         _fonts[k] = f
