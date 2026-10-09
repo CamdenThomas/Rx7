@@ -19,3 +19,4 @@ F21,5 A,"Dash node, sealed inline",,,Kick-down switch supply - L3-S2 12,O12,LIVE
 F22,3 A,"Dash node, sealed inline",,,"DCU logic, constant - DP-DCU 1",Busbar,LIVE,DCU-CONST,
 F23,3 A,"Dash node, sealed inline",,,Wake stages' excitation rail (the door and A8 stages) — split off F3 by D-410,Busbar,LIVE,WAKE,
 F24,3 A,"Behind the lower dash panel, sealed inline in the L3 leg where the light-switch and brake-wake branch leaves L3-S2 2",,,Light switch E-01 common and the brake-wake plunger (L3-S1 7) — the branch off the key supply (D-412),F3 via L3-S2 2,LIVE,LIGHT-SW,
+F5,,"Dash node, block B (K11)",B,2,"L1-S2 9 (N68), the phase-2 sensor supply (D-271) - no fuse this build, fitted with the sensor",K11 87 (block B input),EMPTY,SENSOR-2,

@@ -9,15 +9,15 @@ id,msg,bytes,field,encoding,note
 0x100/7,0x100,7,counter,rolling 0–255,
 0x110/0–1,0x110,0–1,Battery voltage,"uint16, mV",
 0x110/2–3,0x110,2–3,Total current,"uint16, 0.1 A",
-0x110/4,0x110,4,Alternator charging,0 no · 1 yes,
+0x110/4,0x110,4,Alternator charging,0 no · 1 yes - derived by the PMU from its own battery-voltage reading (above 13.2 V); it has no charge-lamp input (Y10),
 0x110/5–6,0x110,5–6,reserved,,
 0x110/7,0x110,7,counter,,
 0x120/0–1,0x120,0–1,reserved,,"fuel level moved to the ICU's 0x218 (electrical D-249, D-306)"
-0x120/2–4,0x120,2–4,Output on/off,"24 bits, one per O1–O24",
+0x120/2–4,0x120,2–4,Output on/off,"24 bits, one per O1–O24 (the 24DL has 22 outputs: O23 / O24 bits reserved, Y10)",
 0x120/5,0x120,5,Trip state — channel index,"0–23, cycling",
 0x120/6,0x120,6,Trip state — status,0 ok · 1 tripped · 2 retrying,
 0x120/7,0x120,7,counter,,
-0x130/0,0x130,0,Channel index,0–23 = O1–O24,
+0x130/0,0x130,0,Channel index,"0–23 = O1–O24 (22 real on the 24DL; 22 and 23 never sent, Y10)",
 0x130/1–2,0x130,1–2,Measured current,"uint16, 0.01 A",
 0x130/3–4,0x130,3–4,Soft-fuse setpoint,"uint16, 0.01 A",
 0x130/5,0x130,5,Channel status,0 off · 1 on · 2 tripped · 3 retrying,
@@ -32,7 +32,6 @@ id,msg,bytes,field,encoding,note
 0x210/0,0x210,0,Sensor valid,bitfield: b0 RPM · b1 water · b2 oil temp · b3 oil press · b4 VSS · b5 fuel,in can_map.h as SENS_FUEL since F-012
 0x210/1,0x210,1,Sensor fault type,bitfield: b0 open · b1 short · b2 out of range · b3 implausible,
 0x210/2,0x210,2,CAN health,"b0 PMU seen · b1 DCU seen · b2 reserved (was panel seen - the panel has no CAN node, D-355) · b3 AFR seen",CANH_* in can_map.h since F-012; b2 reserved
-0x210/3–6,0x210,3–6,reserved,,
 0x210/7,0x210,7,counter,,
 0x218/0–1,0x218,0–1,Fuel level,"uint16, 0.1 % — three-point lookup calibrated in the car",the measured curve is in electrical D-249
 0x218/2,0x218,2,Fuel sensor valid,0 fault · 1 valid,
@@ -84,3 +83,5 @@ id,msg,bytes,field,encoding,note
 0x180 ext/4,0x180 ext,4,System voltage,"uint8, 0.1 V per bit — 0 to 25.5 V",the gauge's own supply reading; confirmed D-266
 0x180 ext/5,0x180 ext,5,reserved (AEM),,
 0x180 ext/6–7,0x180 ext,6–7,Flags (AEM),byte 6: bit 1 LSU4.9 detected · bit 5 free-air cal in use · bit 7 lambda data valid; byte 7: bit 6 sensor fault; other bits reserved,"no rolling counter — AEM's frame, not ours; render dashes unless valid = 1 and fault = 0 (D-153); confirmed D-266"
+0x210/3,0x210,3,Tell-tales and warnings,bitfield: b0 charge lamp (IC05) · b1 brake warning (IC06) · b2 turn L (IC09) · b3 turn R (IC10) · b4 high beam (IC11) · b5-7 reserved,Y10 2026-10-09: IC05 / IC06 claimed a 0x210 flag that had no field; can_map.h follows (Y8)
+0x210/4–6,0x210,4–6,reserved,,

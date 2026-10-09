@@ -70,3 +70,4 @@ L-0058,2026-10-09,session,Y2 R12 P136 P003 P004,"Y2 done: four ngspice decks pas
 L-0059,2026-10-09,session,R16 E36 E37 E38 E39 E40 E41 DV55 FT35,"R16 done: D-451's hand-over real on the build list (E36-E41), relays and fuses fitted this build, the blower stage a device, A16 / A17 complete, TPMS at L3-MOD"
 L-0060,2026-10-09,session,R10 E42 E43 E44 E45 E46 E47 MG24 MG25 MG26 MG27,"R10 done: the build list followable - cut list as a query, readings with homes, limp-home for an automatic and the sealed 39-way, four migration rows, defog live"
 L-0061,2026-10-09,session,Y9,Y9 done: status prints the distance to done
+L-0062,2026-10-09,session,Y10 F5 N102 G40 LD16 LD18 LD19 PT975 S-500,"Y10 done: the read's remaining gaps fixed where small - F5, N102, G40, the tell-tale CAN field, 22-output frames, 00-CAR variants by VIN, the fixed antenna, DS_ME817EV registered"

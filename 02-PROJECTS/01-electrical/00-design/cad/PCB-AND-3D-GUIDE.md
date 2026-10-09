@@ -311,8 +311,9 @@ Renders, STEP files, DRC reports and backups stay out of git (`.gitignore`).
 
 ## Part B · The DCU carrier (H-002): later, the same way
 
-The DCU is this build's board too (D-374), but it has no schematic yet, and it waits on the
-agent's rows, not on a measurement: `V-083` (its parts), `V-101` (the comfort currents),
-`H-007` (the panel). Its drawing checklist is `dcu-carrier/TARGET.md`, and its spec is
-`../../data/dcu_channels.csv`. Once those rows land, the schematic is drawn, and then this same
-guide applies to it: footprints, rules, layout, 3D, measure, fit, order (F5).
+The DCU is this build's board too (D-374). Its schematic is drawn and ERC-clean (D-452) -
+every Teensy pin in `../../data/dcu_channels.csv`, the slow lines on a TCA9539 expander - and
+the sheet check (`check.py`) holds it to the record. Its drawing checklist is
+`dcu-carrier/TARGET.md`. The provisional layout (Y5) follows this same guide on a provisional
+outline, with `V-102` (the centre-stack space) and luxury `W-332` (the mirror stage) placing it
+rather than deciding it (D-455): footprints, rules, layout, 3D, measure, fit, order (F5).

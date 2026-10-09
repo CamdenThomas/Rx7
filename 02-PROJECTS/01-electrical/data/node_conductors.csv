@@ -95,3 +95,4 @@ N96,PMU pin 29 (A1),Receptacle L3-S1 3,16,GRY,"Turn stalk ladder (R8, 2026-10-09
 N97,PMU pin 16 (A2),Receptacle L3-S1 4,16,GRY,Wiper stalk ladder (R8).,
 N98,PMU pin 35 (A15),Receptacle L3-S1 2,16,GRY,"Headlight switch ladder, 12 V type with the 100 kΩ bias from pin 15 (N39) (R8).",
 N99,PMU pin 22 (A16),Receptacle L3-S1 1,16,GRY,"Key ladder, 12 V type with the 100 kΩ bias from pin 15 (N39) (R8).",
+N102,Receptacles DP-DCU-C 6 · 7,GND bus - the dash ground bus (G36),14,BLK,"The DCU's comfort returns: the seat currents through the shunt, never the logic ground (D-382). Y10 2026-10-09: G36 had no conductor row. A third return is block 01.26",
