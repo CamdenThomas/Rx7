@@ -28,3 +28,6 @@ RT26,L1 Engine,Engine-bay junction,"Master cylinder, brake-fluid switch",along t
 RT27,L3 Dash,Centre stack,Under the driver's seat,down the tunnel side and under the carpet,,,"The comfort-return harness, driver side: L3-SD and L3-SDM (A14). Measured at M-2"
 RT28,L3 Dash,Centre stack,Under the passenger seat,down the tunnel side and under the carpet,,,"The comfort-return harness, passenger side: L3-SP and L3-SPM (A14). Measured at M-2"
 RT29,L2 Front,Nose splice,"Front bumper, radar sensor",along the bumper beam,,,The front radar sensor's receptacle L2-RDR (A16); beauty 04.13 decides the bumper. Measured at M-2
+RT30,Audio,Centre stack,"Passenger-side cargo bin, the amplifier",along the passenger sill under the carpet,,,"The remote turn-on, the pre-amp multicore and the microphone lead (A17, P168); apart from the L4 leg's bundle (rules emc-routing). Measured at M-2"
+RT31,Audio,Passenger-side cargo bin,"Driver-side cargo bin, the sub",across the cargo floor behind the seats,,,The two sub pairs (A17). Measured at M-2
+RT32,Audio,Passenger-side cargo bin,"Front kick panels, A-pillar bases, the console and the rear quarters","forward along both sills under the carpet, the centre run up the tunnel side",,,The speaker cables from the amplifier (A17). Measured at M-2

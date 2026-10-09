@@ -6,7 +6,7 @@ backbone,protection,str,no,,
 backbone,why,text,no,,
 cables,id,key,yes,,
 cables,run,str,no,,
-cables,awg,enum(1/0|10|2|6),no,,
+cables,awg,enum(1/0|10|2|4|6),no,,4 added 2026-10-09 (A17): the amplifier's feed and return
 cables,ft,num,no,,
 cables,colour,enum(BLK|RED),no,,
 cables,note,text,no,,R11 - a length nobody has measured carries confirm (2026-09-21)
@@ -57,7 +57,7 @@ fuses,label,str,no,,
 grounds,id,key,yes,,
 grounds,zone,enum(L1|L2|L3|L4|Sill),no,,
 grounds,return,str,no,,
-grounds,awg,enum(1/0|10|12|14|16|2),no,,
+grounds,awg,enum(1/0|10|12|14|16|2|4|6),no,,4 and 6 added 2026-10-09 (A17): the amplifier's return
 grounds,qty,int,no,,
 grounds,ft,int,no,,
 grounds,note,text,no,,R11 - a length nobody has measured carries confirm (2026-09-21)

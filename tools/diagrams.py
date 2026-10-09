@@ -300,7 +300,9 @@ def pin_ladder(leg, folder):
                     bits.append("/".join(rts))
                 if c["state"] == "CAPPED":
                     bits.append("capped at the far end")
-                s.text(HX + HW + 16, cy - 10, "  ·  ".join(bits), 10, fill=MUTED)
+                # the label sits between the housing block and the landing column: shortened to that
+                # width (a cavity on two routes with a long colour name overran it, A17)
+                s.text(HX + HW + 16, cy - 10, shorten("  ·  ".join(bits), MID - 36, 10), 10, fill=MUTED)
                 inline = sorted({p for _, _, parts in devs for p in parts})
                 if len(inline) == 1:
                     bx = DX - 70

@@ -35,3 +35,4 @@ G37,Sill,A6 door-jamb 47 kΩ baseline → sill ground splice,16,1,1,"D-368: all-
 G38,L2,Outside-air thermistor return → front star,16,1,3,"The OAT sensor's other lead (L2-OAT, D-329, D-274). confirm — hand estimate, not measured (R8, 2026-10-09)",return,
 G39,L1,"Swap cooling fan (O14) return → its own 12 AWG to the front star, never the block",12,1,4,"At the swap only (D-409, R11): a 20 A fan sharing the engine ground would offset the A4 / A5 ladders (CK14). Not this build. confirm — hand estimate",return,
 G40,Sill,Door grounds D1 8 / D2 8 → the sill splice (N94) → sill stud,16,2,1,"D-274; the splice is N94's. confirm — hand estimate (Y10, 2026-10-09)",return,
+G41,L4,Amplifier return → rear star stud (C14),4,1,3,A17; confirm — hand estimate,return,
