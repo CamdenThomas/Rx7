@@ -2,7 +2,7 @@ id,circuit,ch,rated,design_a,measured_a,basis,hold
 LD01,Headlight LOW / HIGH,O2 / O3,25 A,7.4 / 8.9,,"factory wattage from the section E scan: HALOGEN 60/50 W per lamp, both lamps - LOW 100 W and HIGH 120 W at 13.5 V. The previous figures (3.0 / 3.5) contradicted this row's own stated basis of two 55 W lamps and were about one filament's worth; found by T-017, 2026-09-12. Whatever bulbs are in the car today is not known, so CK01 is the number that counts; luxury D-358 makes them 4x6 LED units at stage S7, and this row is re-set then",
 LD02,Tail · park · markers · licence,O6,15 A,5.4,5.4,SP-201 tail 8 W ×4 + SP-204 front park 8 W ×2 + markers 3.8 W ×4 + licence 6 W ×2 = 75 W at 13.8 V (R11); matches the 5.4 A measured,
 LD03,Brake lamps,O7,15 A,7.8,7.0,"SP-201: 27/8 W ×2 per side, four 27 W stop filaments = 108 W at 13.8 V (R11); the 7.0 A measured was no mystery, the estimate had counted two bulbs",
-LD04,"Turn, per side",O17 / O18,7 A,4.2,3.4,27 W ×2 + indicator,
+LD04,"Turn, per side",O17 / O18,7 A,4.2,3.4,"27 W ×2 + indicator (factory). After the LED change (luxury LP53, D-397): one 1157-class LED front and rear per side, 0.23-0.63 A each - a failed one may sit inside the PMU's 100 mA current step (S-028, FT27); CK01's baseline per channel decides whether lamp-out by current is possible for the turns (R16)",
 LD05,Reverse,O19,7 A,3.9,,27 W ×2,
 LD06,Interior + illumination,O20,7 A,2.5,,"dome 5 W + spot lamp 5 W (DV39) + 3.4 W ×5 illumination + 1.4 W ×2 = 29.8 W at 13.8 V, 2.2 A; 2.5 A keeps the margin (R11)",
 LD07,Wiper LOW / HIGH,O8 / O9,15 A,4 / 5.5 running · 12–20 stall,,factory 10 A fuse; aged motor,
