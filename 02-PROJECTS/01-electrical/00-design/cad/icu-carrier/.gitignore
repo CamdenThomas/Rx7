@@ -1,0 +1,9 @@
+# Built from the board, never committed (cad/PCB-AND-3D-GUIDE.md step 8): renders, the STEP, DRC/ERC
+# reports, router round-trip files. The schematic SVG and the BOM CSV are the reviewable forms and stay.
+*.step
+*-top.png
+*-bottom.png
+*.dsn
+*.ses
+*.rules
+*-drc.json

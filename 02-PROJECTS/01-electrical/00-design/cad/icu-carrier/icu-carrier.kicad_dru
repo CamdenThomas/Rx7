@@ -1,0 +1,27 @@
+(version 1)
+
+# TACH_HV (icu_channels IC04: the trailing coil's inductive kick) keeps 2.5 mm from everything
+# on the board (PCB-AND-3D-GUIDE step 3). The one place that cannot hold is inside the DT13
+# itself: TE puts its pins 4.45 mm apart (114-151046), so J3 pin 4's pad sits 1.65 mm from pins
+# 3 and 5. That spacing is the connector's, rated by TE, not the board's: this rule lets the
+# connector's own through-hole pads keep their pitch and nothing else - vias and tracks on the
+# tach net still keep 2.5 mm (J3 is the only through-hole part on a TACH_HV net).
+(rule "DT13 pin pitch on the tach net"
+  (condition "A.Pad_Type == 'Through-hole' && B.Pad_Type == 'Through-hole' && (A.NetClass == 'TACH_HV' || B.NetClass == 'TACH_HV')")
+  (constraint clearance (min 1.0mm)))
+
+# R29 and R30 are the tach's two series resistors (IC04, 2 x 100 k 1/2 W 1210): the high voltage
+# is dropped across them, so each one's own two pads necessarily sit closer than 2.5 mm (a 1210's
+# pads are 1.8 mm apart). That gap is the part's rating, not the board's: this rule relaxes only
+# pad-to-pad inside each of those two footprints; their copper keeps 2.5 mm from everything else.
+(rule "tach resistors' own pads"
+  (condition "A.Type == 'Pad' && B.Type == 'Pad' && ((A.memberOfFootprint('R29') && B.memberOfFootprint('R29')) || (A.memberOfFootprint('R30') && B.memberOfFootprint('R30')))")
+  (constraint clearance (min 1.5mm)))
+
+
+# J5's GND pins (Teensy pins 1, 34, 47) sit in narrow strips of the front pour between the socket
+# rows and the tracks that run along them, so pin 34 gets one thermal spoke on F.Cu. They are
+# through-hole pads that land in the bottom pour with all four spokes; one spoke on top is enough.
+(rule "J5 GND pins top spoke"
+  (condition "A.memberOfFootprint('J5') && A.NetName == 'GND'")
+  (constraint min_resolved_spokes 1))

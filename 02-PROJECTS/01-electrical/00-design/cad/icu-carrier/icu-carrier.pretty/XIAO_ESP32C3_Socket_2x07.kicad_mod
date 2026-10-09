@@ -1,0 +1,310 @@
+(footprint "XIAO_ESP32C3_Socket_2x07"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Seeed XIAO ESP32C3 in two 1x7 0.1 in female headers, rows 15.24 mm apart (Seeed XIAO footprint, KiCad MCU_Seeed_ESP32C3). Pad n = castellation n: 1 (D0) top-left with the USB at the top, 8 (D7) bottom-right, 14 (VBUS) top-right. The u.FL / antenna end is +y; keep copper 5 mm from it.")
+	(tags "XIAO ESP32C3 socket Seeed")
+	(property "Reference" "REF**"
+		(at 0 -2 0)
+		(layer "F.SilkS")
+		(uuid "5a731c90-dc42-4b9f-ac32-a78dcebccd77")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "XIAO_ESP32C3_Socket_2x07"
+		(at 0 2 0)
+		(layer "F.Fab")
+		(uuid "79935f87-36fa-4efa-a554-48b0ff372492")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3da34eea-5f30-4591-8a02-e182d9a6ef44")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d2a5cb13-46ef-4f52-8e29-29339010d76f")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(pad "1" thru_hole rect
+		(at -7.62 -7.62)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "2864bc00-74a4-4550-893c-02d755458f08")
+	)
+	(pad "2" thru_hole circle
+		(at -7.62 -5.08)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "2ff5185c-e71d-435f-9030-91ae3c231ded")
+	)
+	(pad "3" thru_hole circle
+		(at -7.62 -2.54)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "7c66b6da-ee87-4ddd-bacc-38dee988d05d")
+	)
+	(pad "4" thru_hole circle
+		(at -7.62 0)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "9e357812-52d6-43ce-9315-e8fd7fb077fe")
+	)
+	(pad "5" thru_hole circle
+		(at -7.62 2.54)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "cd6ba4f0-001d-4ced-9030-32d0bbc8f37d")
+	)
+	(pad "6" thru_hole circle
+		(at -7.62 5.08)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "292da6a7-e580-43da-bfe0-f1f2602da52e")
+	)
+	(pad "7" thru_hole circle
+		(at -7.62 7.62)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "46fa56df-758a-40ca-b80a-b8a3655c1174")
+	)
+	(pad "8" thru_hole circle
+		(at 7.62 7.62)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "f7582ae4-1a00-451c-9e23-3044fbf67e10")
+	)
+	(pad "9" thru_hole circle
+		(at 7.62 5.08)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "656c325d-3073-4750-8de3-2d420bb214e7")
+	)
+	(pad "10" thru_hole circle
+		(at 7.62 2.54)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "a18e403b-1721-4997-a5d7-b4274190d089")
+	)
+	(pad "11" thru_hole circle
+		(at 7.62 0)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "027aae90-c01b-47a2-b6a0-23289bf08c7d")
+	)
+	(pad "12" thru_hole circle
+		(at 7.62 -2.54)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "2a452c77-c708-4682-bf7b-0da0a1237bef")
+	)
+	(pad "13" thru_hole circle
+		(at 7.62 -5.08)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "f0736e22-eee4-467f-9e28-29a7b7f8fa58")
+	)
+	(pad "14" thru_hole circle
+		(at 7.62 -7.62)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "597705d6-5a42-4fd7-87e1-7dcd68b0a9d9")
+	)
+	(fp_rect
+		(start -8.89 -8.89)
+		(end -6.35 8.89)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "49957380-3684-4bc9-8d2f-146fcb2e6d2a")
+	)
+	(fp_rect
+		(start -8.89 -8.89)
+		(end -6.35 8.89)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "02bc57cb-1efc-41d7-abee-3231007ae152")
+	)
+	(fp_rect
+		(start 6.35 -8.89)
+		(end 8.89 8.89)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "1bae2a08-fe66-44ed-b454-9127737f4dfd")
+	)
+	(fp_rect
+		(start 6.35 -8.89)
+		(end 8.89 8.89)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "4bc0b933-ed6f-4c72-a9a9-4fa0d5318be1")
+	)
+	(fp_rect
+		(start -8.9 -10.5)
+		(end 8.9 10.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "85fd7bbd-d70f-48c3-ab09-93d874ac8a77")
+	)
+	(fp_rect
+		(start -4.5 -12)
+		(end 4.5 -10.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "5dc9c640-5397-4894-ba34-22235cc86bcf")
+	)
+	(fp_text user "USB"
+		(at 0 -9.3 0)
+		(layer "F.Fab")
+		(uuid "85876441-dfbf-4c7e-b3a1-0cfef7fe8c26")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.087)
+			)
+		)
+	)
+	(fp_text user "u.FL / antenna"
+		(at 0 9.3 0)
+		(layer "F.Fab")
+		(uuid "9c980c0f-4967-48f3-8613-4ac874100991")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.087)
+			)
+		)
+	)
+	(fp_line
+		(start -8.9 10.5)
+		(end 8.9 10.5)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "4289de95-4549-4549-8409-ebd9db162197")
+	)
+	(fp_rect
+		(start -9.15 -12.25)
+		(end 9.15 10.75)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "ea8317df-3677-448c-a656-fbe269c9e490")
+	)
+	(model "${KICAD10_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x07_P2.54mm_Vertical.step"
+		(offset
+			(xyz -7.62 7.62 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+	(model "${KICAD10_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x07_P2.54mm_Vertical.step"
+		(offset
+			(xyz 7.62 7.62 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+	(model "${RX7_MODELS}/seeeduino-xiao-step-github-frogpad/Seeeduino_Xiao.step"
+		(offset
+			(xyz -3 37.95 18.44)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 180)
+		)
+	)
+	(embedded_fonts no)
+)

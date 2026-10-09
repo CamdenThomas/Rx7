@@ -1,0 +1,215 @@
+(footprint "DT13-06PA"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Deutsch DT13-06PA flanged right-angle PCB receptacle, 6 way: TE 114-151046 Rev A p.5-6 and DT13-12PX-B016 (confirm on the part, F11). Flange rear face at y=-18.675: put it on the board edge. Pin 1 = cavity 1.")
+	(tags "Deutsch DT13 TE receptacle header")
+	(property "Reference" "REF**"
+		(at 0 -2 0)
+		(layer "F.SilkS")
+		(uuid "c3e4b32b-e591-4b76-b67f-4baafc872378")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "DT13-06PA"
+		(at 0 2 0)
+		(layer "F.Fab")
+		(uuid "f77039ad-0fb5-4ecb-82d6-aae13d8f8f15")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3f4af206-e5ea-4f06-8aac-25032398d871")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "28e7f0b6-1c5c-4613-94cf-635b02896e07")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(pad "1" thru_hole rect
+		(at -4.445 3.175)
+		(size 2.8 2.8)
+		(drill 1.9)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "2249891e-5a33-400f-a2ad-246b6a10edef")
+	)
+	(pad "2" thru_hole circle
+		(at 0 3.175)
+		(size 2.8 2.8)
+		(drill 1.9)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "e3e67c7f-e54e-43df-909c-d06b6eb69627")
+	)
+	(pad "3" thru_hole circle
+		(at 4.445 3.175)
+		(size 2.8 2.8)
+		(drill 1.9)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "e7a812f8-63f2-42e6-a8d7-90780d0cbeb1")
+	)
+	(pad "4" thru_hole circle
+		(at 4.445 -3.175)
+		(size 2.8 2.8)
+		(drill 1.9)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "574a7d08-b5d7-414a-8a98-27845efd5589")
+	)
+	(pad "5" thru_hole circle
+		(at 0 -3.175)
+		(size 2.8 2.8)
+		(drill 1.9)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "92138fe7-b5e2-42bd-bca8-8664791e6061")
+	)
+	(pad "6" thru_hole circle
+		(at -4.445 -3.175)
+		(size 2.8 2.8)
+		(drill 1.9)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "4e9b1141-635b-4ffd-8d56-50d37e860371")
+	)
+	(pad "" np_thru_hole circle
+		(at 0 -9.275)
+		(size 3.5 3.5)
+		(drill 3.5)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "20975945-c021-496c-b50c-5ed249684630")
+	)
+	(pad "" np_thru_hole circle
+		(at -10.87 2.155)
+		(size 3.5 3.5)
+		(drill 3.5)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "0172aee0-cf59-4300-81f6-04823293daa7")
+	)
+	(pad "" np_thru_hole circle
+		(at 10.87 2.155)
+		(size 3.5 3.5)
+		(drill 3.5)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "44e44784-3080-4fbd-a456-5c2d0f84e419")
+	)
+	(fp_rect
+		(start -20.6 -18.675)
+		(end 23.7 6.7)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "220aa65d-4ba8-4ab2-8b8f-b229170e2418")
+	)
+	(fp_line
+		(start -21.1 -18.675)
+		(end 24.2 -18.675)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.Fab")
+		(uuid "af2000a1-1b35-44a8-bb0b-4b96f2c5675e")
+	)
+	(fp_text user "flange / board edge"
+		(at 0 -17.475 0)
+		(layer "F.Fab")
+		(uuid "6f2f6a8b-78e2-4814-9f3c-0adf2997c5f3")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.087)
+			)
+		)
+	)
+	(fp_text user "DT13-06PA pin 1 = cavity 1 (confirm F11)"
+		(at 0 5.2 0)
+		(layer "F.Fab")
+		(uuid "2d1c5995-bd2b-46d2-a0fd-20100ca47fdf")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.087)
+			)
+		)
+	)
+	(fp_rect
+		(start -20.72 -18.375)
+		(end 23.82 6.82)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "d2afa907-9bc0-4e4f-bfab-38db531d323b")
+	)
+	(fp_circle
+		(center -6.445 5.175)
+		(end -6.145 5.175)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "29bbc976-bd8e-4f24-bcb5-92b1d22d9113")
+	)
+	(fp_rect
+		(start -21.1 -18.675)
+		(end 24.2 7.2)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "6e839dfc-efc8-4f4c-b9d9-7eaf0a2b06ce")
+	)
+	(model "${RX7_MODELS}/deutsch-dt13-6p-te/c-dt13-6p-99-3d.stp"
+		(offset
+			(xyz 2.045 33.275 17.86)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz -90 0 180)
+		)
+	)
+	(embedded_fonts no)
+)

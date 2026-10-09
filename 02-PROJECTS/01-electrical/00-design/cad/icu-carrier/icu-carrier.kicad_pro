@@ -148,7 +148,7 @@
         "max_error": 0.005,
         "min_clearance": 0.2,
         "min_connection": 0.0,
-        "min_copper_edge_clearance": 0.5,
+        "min_copper_edge_clearance": 0.3,
         "min_groove_width": 0.0,
         "min_hole_clearance": 0.25,
         "min_hole_to_hole": 0.25,
@@ -531,7 +531,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 1,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.22,
+        "track_width": 2.2,
         "tuning_profile": ""
       },
       {
@@ -558,7 +558,64 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "PWR_LOGIC",
+        "pattern": "+12V_LOGIC"
+      },
+      {
+        "netclass": "PWR_LOGIC",
+        "pattern": "+5V"
+      },
+      {
+        "netclass": "PWR_LOGIC",
+        "pattern": "+3V3"
+      },
+      {
+        "netclass": "PWR_LOGIC",
+        "pattern": "/BUCK_SW"
+      },
+      {
+        "netclass": "PWR_LOGIC",
+        "pattern": "/BUCK_BOOT"
+      },
+      {
+        "netclass": "PWR_LOGIC",
+        "pattern": "/BUCK_VCC"
+      },
+      {
+        "netclass": "PWR_LOGIC",
+        "pattern": "/RADIO_5V"
+      },
+      {
+        "netclass": "PWR_LOGIC",
+        "pattern": "Net-(D23-A)"
+      },
+      {
+        "netclass": "PWR_BL",
+        "pattern": "+12V_BL"
+      },
+      {
+        "netclass": "PWR_BL",
+        "pattern": "+12V_BL_SW"
+      },
+      {
+        "netclass": "PWR_BL",
+        "pattern": "Net-(D25-A)"
+      },
+      {
+        "netclass": "PWR_BL",
+        "pattern": "Net-(Q1-S)"
+      },
+      {
+        "netclass": "TACH_HV",
+        "pattern": "/ICU_B4"
+      },
+      {
+        "netclass": "TACH_HV",
+        "pattern": "Net-(R29-Pad1)"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {

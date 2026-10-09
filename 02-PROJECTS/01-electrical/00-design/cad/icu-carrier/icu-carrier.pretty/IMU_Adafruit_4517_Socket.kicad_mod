@@ -1,0 +1,232 @@
+(footprint "IMU_Adafruit_4517_Socket"
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "10.0")
+	(layer "F.Cu")
+	(descr "Adafruit 4517 (LSM6DSOX + LIS3MDL, 25.4 x 17.78 mm) on a 1x6 and a 1x5 0.1 in female header, from its Eagle board file: JP4 VIN 3Vo GND SCL SDA INT2 = pads 1-6, JP1 ADAG ADM DRDY INTM INT1 = pads 7-11. P109 names no board: confirm against the one bought (F11).")
+	(tags "Adafruit 4517 LSM6DSOX LIS3MDL IMU socket")
+	(property "Reference" "REF**"
+		(at 0 -2 0)
+		(layer "F.SilkS")
+		(uuid "7de61d0b-3603-4769-b214-aa159853f09d")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "IMU_Adafruit_4517_Socket"
+		(at 0 2 0)
+		(layer "F.Fab")
+		(uuid "8ec031d9-7d6d-4536-9a6f-41667983af59")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "98281690-2295-4e30-9b8c-3f65eda35c0f")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "a5974afb-9cc9-470a-8227-03f6ea9dd9a5")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(pad "1" thru_hole rect
+		(at -6.35 6.35)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "02f4d6b6-1574-4693-b8fc-c82861b5d64b")
+	)
+	(pad "2" thru_hole circle
+		(at -3.81 6.35)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "0a1a75a7-7812-46c1-ac3f-dfbaa4e7cb4b")
+	)
+	(pad "3" thru_hole circle
+		(at -1.27 6.35)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "d15f4300-0dbe-45e3-ada5-0d6254c71872")
+	)
+	(pad "4" thru_hole circle
+		(at 1.27 6.35)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "5a849ff6-5a94-4420-897c-1cddeb0ca943")
+	)
+	(pad "5" thru_hole circle
+		(at 3.81 6.35)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "c9ef35a0-a3b3-4027-8123-ecd7e1d9d615")
+	)
+	(pad "6" thru_hole circle
+		(at 6.35 6.35)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "a98a939d-79b0-46d3-a0c9-34892724479e")
+	)
+	(pad "7" thru_hole circle
+		(at -6.35 -6.35)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "8f85f5e2-7145-4fa0-ac4d-5324ff6d8a3e")
+	)
+	(pad "8" thru_hole circle
+		(at -3.81 -6.35)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "857524d9-89f3-4eb8-a8c6-f50515fa383f")
+	)
+	(pad "9" thru_hole circle
+		(at -1.27 -6.35)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "b13573e4-6375-44f4-946b-465859d8fa75")
+	)
+	(pad "10" thru_hole circle
+		(at 1.27 -6.35)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "fea98f72-9db8-4713-97bb-d6aef97d9f72")
+	)
+	(pad "11" thru_hole circle
+		(at 3.81 -6.35)
+		(size 1.7 1.7)
+		(drill 1)
+		(layers "*.Cu" "*.Mask")
+		(remove_unused_layers no)
+		(uuid "38c498b5-b07c-48c6-b271-48e8416c2369")
+	)
+	(fp_rect
+		(start -7.62 5.08)
+		(end 7.62 7.62)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "2bc2b2fb-3331-4081-9115-cfbe01c1d375")
+	)
+	(fp_rect
+		(start -7.62 -7.62)
+		(end 5.08 -5.08)
+		(stroke
+			(width 0.12)
+			(type default)
+		)
+		(fill no)
+		(layer "F.SilkS")
+		(uuid "e0622d0c-3f9c-4f63-bd1b-c519ea27647b")
+	)
+	(fp_rect
+		(start -12.7 -8.89)
+		(end 12.7 8.89)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill no)
+		(layer "F.Fab")
+		(uuid "3b084f15-1a32-4c25-bb75-c1672267603e")
+	)
+	(fp_text user "4517 - VIN at pad 1"
+		(at 0 0 0)
+		(layer "F.Fab")
+		(uuid "c5394de1-59a8-424a-9fdf-cae7f97f0f2e")
+		(effects
+			(font
+				(size 0.7 0.7)
+				(thickness 0.087)
+			)
+		)
+	)
+	(fp_rect
+		(start -12.95 -9.15)
+		(end 12.95 9.15)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill no)
+		(layer "F.CrtYd")
+		(uuid "0f6d79f0-65fd-470e-944a-9b5d5af57c2b")
+	)
+	(model "${KICAD10_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x06_P2.54mm_Vertical.step"
+		(offset
+			(xyz -6.35 -6.35 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 -90)
+		)
+	)
+	(model "${KICAD10_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_1x05_P2.54mm_Vertical.step"
+		(offset
+			(xyz -6.35 6.35 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 -90)
+		)
+	)
+	(model "${RX7_MODELS}/imu-breakout-lsm6dsox-adafruit-4517-github/4517 LSM6DSOX-LIS3MDL.step"
+		(offset
+			(xyz -12.7 -8.89 11)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+	(embedded_fonts no)
+)
