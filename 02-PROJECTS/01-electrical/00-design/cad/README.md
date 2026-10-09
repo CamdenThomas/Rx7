@@ -19,9 +19,9 @@ The fence, in full:
   drawing is stale. Nothing in `../../data/` cites a file in here as evidence.
 - **A fact worth keeping is promoted, not linked** — it becomes a row, and the drawing
   becomes an illustration of the row.
-- **Camden ruled this in conversation on 2026-09-12**, as a way to learn KiCad on something
-  real before a future project needs it. If it starts to look like the beginning of a view
-  layer, it should be deleted, not grown.
+- **Who draws (D-453).** Camden ruled on 2026-09-12 that he would draw these himself to learn
+  KiCad; D-453 lifts that, and the agent draws, lays out and checks the boards too. They are
+  still not a view layer: if one starts to look like it, delete it, don't grow it.
 
 | Project | What | Status |
 |---|---|---|
