@@ -1,0 +1,131 @@
+* ladder_a2.cir - the wiper stalk ladder (ladders A2 *, inputs A2) read by the PMU's ground-type
+* input: its 10 k pull-up to 5 V, 10-bit (S-028; D-381). The WASH leg is the odd one: its
+* contact also grounds K12's coil, so a diode keeps the coil's 12 V off the ladder line. While
+* WASH is not pressed that diode sits reverse-biased by the whole battery voltage, and its
+* leakage lands on the line - R12 found a hot 1N5819 lifts the OFF reading past the fault line.
+*
+* Pass, at -30 / 25 / 85 C with the coil at 16 V: the five states read in order OFF > INT >
+* LOW > HIGH > WASH with at least 2 x inputs.window (45 counts) + 10 between neighbours; every
+* state sits inside the fault lines (50 short, 990 open) by >= 20 counts; and the OFF reading
+* with the diode hot stays within the window of the OFF reading cold. The old leg (1.8 k +
+* 1N5819) is run the same way and printed, not judged, so the record shows what it did.
+.include models/active.lib
+
+* the PMU input: 10 k to 5 V, read as counts = v / 5 x 1023
+V5 ref 0 dc 5
+RPU ref line 10k
+* the ladder at the column: every state is one resistor from the line to the column ground;
+* SW picks the state (0 = none closed = OFF's 47 k baseline alone)
+R47 line 0 47k
+SINT line n_int c_int 0 SWST
+RINT n_int 0 18k
+SLOW line n_low c_low 0 SWST
+RLOW n_low 0 10k
+SHIGH line n_high c_high 0 SWST
+RHIGH n_high 0 4.7k
+* WASH: 1.0 k and a 1N4148 (R12) to the contact node; K12's coil (160 ohm, P003 class) holds
+* that node at battery voltage while the contact is open
+RW line n_w 1.0k
+DW n_w wash D1N4148
+RCOIL vbat wash 160
+VBAT vbat 0 dc 16
+SWASH wash 0 c_wash 0 SWST
+.model SWST SW(Ron=0.1 Roff=1e12 Vt=0.5 Vh=0.1)
+VCINT c_int 0 dc 0
+VCLOW c_low 0 dc 0
+VCHIGH c_high 0 dc 0
+VCWASH c_wash 0 dc 0
+.op
+
+.control
+set fail = 0
+set deck = ladder_a2
+let win = 45
+foreach t -30 25 85
+  set temp = $t
+  * OFF
+  alter vcint dc = 0
+  alter vclow dc = 0
+  alter vchigh dc = 0
+  alter vcwash dc = 0
+  op
+  let c_off = v(line) / 5 * 1023
+  * INT
+  alter vcint dc = 1
+  op
+  let c_int = v(line) / 5 * 1023
+  alter vcint dc = 0
+  * LOW
+  alter vclow dc = 1
+  op
+  let c_low = v(line) / 5 * 1023
+  alter vclow dc = 0
+  * HIGH
+  alter vchigh dc = 1
+  op
+  let c_high = v(line) / 5 * 1023
+  alter vchigh dc = 0
+  * WASH
+  alter vcwash dc = 1
+  op
+  let c_wash = v(line) / 5 * 1023
+  alter vcwash dc = 0
+  let g1 = c_off - c_int
+  let g2 = c_int - c_low
+  let g3 = c_low - c_high
+  let g4 = c_high - c_wash
+  let need = 2 * win + 10
+  if g1 < need
+    echo FAIL $deck t=$t OFF-INT gap=$&g1
+    set fail = 1
+  end
+  if g2 < need
+    echo FAIL $deck t=$t INT-LOW gap=$&g2
+    set fail = 1
+  end
+  if g3 < need
+    echo FAIL $deck t=$t LOW-HIGH gap=$&g3
+    set fail = 1
+  end
+  if g4 < need
+    echo FAIL $deck t=$t HIGH-WASH gap=$&g4
+    set fail = 1
+  end
+  if c_wash < 70
+    echo FAIL $deck t=$t WASH near the short line counts=$&c_wash
+    set fail = 1
+  end
+  if c_off > 970
+    echo FAIL $deck t=$t OFF near the open line counts=$&c_off
+    set fail = 1
+  end
+  if $t = -30
+    let c_off_cold = c_off
+  end
+  let drift = c_off - c_off_cold
+  if drift > win
+    echo FAIL $deck t=$t OFF drifted by $&drift counts with the diode hot
+    set fail = 1
+  end
+  echo INFO $deck t=$t OFF=$&c_off INT=$&c_int LOW=$&c_low HIGH=$&c_high WASH=$&c_wash
+end
+* --- the old leg, 1.8 k + 1N5819 (D-381), printed for the record ---
+alter rw 1.8k
+alter @dw[model] = D1N5819
+foreach t -30 25 85
+  set temp = $t
+  alter vcwash dc = 0
+  op
+  let c_off = v(line) / 5 * 1023
+  alter vcwash dc = 1
+  op
+  let c_wash = v(line) / 5 * 1023
+  echo INFO $deck old-1N5819 t=$t OFF=$&c_off WASH=$&c_wash
+end
+if $fail = 1
+  quit 1
+end
+echo PASS $deck
+quit 0
+.endc
+.end

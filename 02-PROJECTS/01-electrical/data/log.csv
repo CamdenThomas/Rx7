@@ -65,3 +65,4 @@ L-0053,2026-10-09,session,R8 N88 N89 N90 N91 N92 N93 N94 N95 N96 N97 N98 N99 RT2
 L-0054,2026-10-09,session,Y4,"Y4 done: the free 3D models and drawings re-fetched on the Mac; five cad rows added, seven updated in 01-REFERENCE"
 L-0055,2026-10-09,session,R11,"R11 done: logic, CAN fields, inputs, loads and pins corrected to what the record settles"
 L-0056,2026-10-09,session,Y2 R12 WS16 WS17 WS18 WS19 P158 P161,"Y2 begun: sim/ with run.sh, generic models, wake_door.cir and wake_a8.cir passing at every corner; the pulse stage re-valued (2.2 µF, 1 M, 47 k, 1N4148 clamps) and the parts rows with it"
+L-0057,2026-10-09,session,Y3 IC24 SN16 SN17 SN24,"Y3 done: the schematic-against-record check script; every record pin matches on every sheet; the DCU's power ICs and the ICU's XIAO need real package pins (Y5, F9); twelve datasheets registered"
