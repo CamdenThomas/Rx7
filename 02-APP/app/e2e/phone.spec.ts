@@ -3,7 +3,7 @@
 // phone, and it is committed — his words byte for byte — once the connection is back.
 
 import { expect, test } from '@playwright/test';
-import { execFileSync } from 'node:child_process';
+import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { makeRepo, startFakeGitHub } from './fake-github.mjs';
@@ -58,9 +58,9 @@ test.describe('the phone', () => {
     await page.getByRole('radio').first().click();
     await page.getByPlaceholder(/Anything to add/).fill(WORDS);
     await page.getByRole('button', { name: 'Save answer' }).click();
-    await expect(page.getByText(/Saved on this phone|Not saved/)).toBeVisible();
-    await expect(page.getByText(/Saved on this phone/)).toBeVisible();
-    await expect(page.getByText(/on this phone, sent at the next connection/)).toBeVisible();
+    await expect(page.getByText(/Saved \S+.*on this phone|Not saved/)).toBeVisible();
+    await expect(page.getByText(/Saved \S+.*on this phone; sent at the next connection/)).toBeVisible();
+    await expect(page.getByText(/on this phone, sent at the next connection/).first()).toBeVisible();
     expect(gh.exists(INBOX)).toBe(false);
 
     // It survives the app being closed and opened again while still offline.
@@ -77,7 +77,9 @@ test.describe('the phone', () => {
     expect(repo.git('log', '-1', '--format=%s')).toBe(`Camden answered ${block.id} (phone)`);
 
     // The record is still valid with his answer in it.
-    execFileSync('python3', [join(repo.dir, 'tools', 'rx7.py'), 'check'], { cwd: repo.dir });
+    // (exit 0 valid; 2 is valid with something waiting on a block or an answer; 1 and 3 are not)
+    const rc = spawnSync('python3', [join(repo.dir, 'tools', 'rx7.py'), 'check'], { cwd: repo.dir }).status;
+    expect([0, 2]).toContain(rc);
 
     // And the phone now shows it as sent.
     await expect(page.getByText(/saved .* from the phone/)).toBeVisible({ timeout: 30_000 });

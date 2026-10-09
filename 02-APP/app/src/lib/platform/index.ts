@@ -30,8 +30,10 @@ export async function choosePlatform(): Promise<Platform> {
   }
   if (q.get('platform') === 'phone') {
     const [{ phonePlatform }, { browserKV }] = await Promise.all([import('./phone'), import('./storage')]);
+    const { idbKV } = await import('./storage');
     return phonePlatform({
       kv: browserKV('rx7-phone:'),
+      cache: idbKV('rx7-phone-cache'),
       fetch: window.fetch.bind(window),
       api: q.get('api') ?? undefined,
       raw: q.get('raw') ?? undefined,

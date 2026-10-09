@@ -35,3 +35,4 @@ L-0033,2026-09-26,session,F2 P42,Desktop RPM rebuilt and reinstalled three times
 L-0034,2026-10-08,session,D-454 F3 P55,"Two machines, the Mac first (D-454): doc machine rewritten, CLAUDE.md §0 line, the font vendored for the drawings, scripts and READMEs path-neutral, the Mac set up (KiCad lib tables, ngspice, SDL2, Pillow)"
 L-0035,2026-10-09,session,MF1,MF1 done: the retired-term check catches a term that ends a sentence; three selftests
 L-0036,2026-10-09,session,F3 MF2,"F3 done: the desktop app built and installed on the Mac, browser tests run; MF2 raised for two stale e2e assertions"
+L-0037,2026-10-09,session,MF2,MF2 done: the two stale e2e assertions fixed; the browser phone build's record copy moved to IndexedDB (localStorage over quota)

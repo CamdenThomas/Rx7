@@ -15,6 +15,13 @@ const pair = (() => {
   }
   throw new Error('the fixture needs an area with two open blocks, one of them with a recommendation');
 })();
+// His work row that is a plain check, from the fixture: whichever is first, so the test stays true as the record moves.
+const checkRow: { area: string; id: string } = (() => {
+  const r = fixture.work.find((w: { owner: string; state: string; status: string; reply: string }) =>
+    w.owner === 'camden' && w.state === 'open' && w.status === 'ready' && w.reply === 'check');
+  if (!r) throw new Error('the fixture needs an open, ready work row of his with reply=check');
+  return r;
+})();
 const blockUrl = (id: string) => `#/p/${pair.area}/blocks/${id}`;
 
 const open = async (page: Page, hash: string) => {
@@ -162,8 +169,8 @@ test('a pick needs a reason for no', async ({ page }) => {
 });
 
 test('his work rows are answered in the list: a check', async ({ page }) => {
-  await open(page, '#/p/01-electrical/todo');
-  const row = page.locator('.wrow').filter({ hasText: 'B2' }).first();
+  await open(page, `#/p/${checkRow.area}/todo`);
+  const row = page.locator('.wrow').filter({ has: page.locator('.id', { hasText: new RegExp(`^${checkRow.id}$`) }) });
   await row.getByRole('button', { name: 'Done' }).click();
   await expect(row.getByText('Done', { exact: false })).toBeVisible();
   await expect(page.getByText('1 answer saved, waiting to be applied.')).toBeVisible();
