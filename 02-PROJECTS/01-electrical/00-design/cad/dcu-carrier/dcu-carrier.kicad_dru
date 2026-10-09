@@ -1,0 +1,11 @@
+(version 1)
+
+# COMFORT and PGND keep 0.5 mm from everything (the seat returns, the shunt path, up to 18 A).
+# Three packages cannot hold that between their own pins: the BTS3011TE's TO-252-5 legs sit
+# 1.14 mm apart (0.34 mm gap) and the INA180's SOT-23-5 pins 0.95 mm apart (0.35 mm gap), and on
+# each of them a comfort net (OUT, GND/source, IN+/IN-) neighbours a logic pin. That spacing is
+# the package's, rated by its maker, not the board's: this rule relaxes only pad-to-pad inside
+# U4-U8. Their tracks, vias and the pours still keep 0.5 mm.
+(rule "comfort packages' own pins"
+  (condition "A.Type == 'Pad' && B.Type == 'Pad' && ((A.memberOfFootprint('U4') && B.memberOfFootprint('U4')) || (A.memberOfFootprint('U5') && B.memberOfFootprint('U5')) || (A.memberOfFootprint('U6') && B.memberOfFootprint('U6')) || (A.memberOfFootprint('U7') && B.memberOfFootprint('U7')) || (A.memberOfFootprint('U8') && B.memberOfFootprint('U8')))")
+  (constraint clearance (min 0.2mm)))

@@ -65,8 +65,8 @@ Draw in this order. Each block is finished when it passes ERC on its own.
 
 - `DP-DCU`: DT13-06PA and `DP-DCU-B`: DT13-12PA (`P150`), flanged through one enclosure wall
   (luxury D-362). `DP-DCU-B 12` is a sealing plug.
-- The comfort receptacle (`P153`): a DT13 if every circuit fits a size-16 contact, a DTP-class part
-  if not. Waits on `V-101`.
+- The comfort receptacle (`P153`): **DT13-08PA** (D-382): every circuit fits a size-16 contact, its own two ground pins on 6 / 7
+  and pin 8 a sealing plug; the current figures stay `confirm` (V-101).
 - Grommets, not connectors: the panel ribbon, the cabin sensor, the blower final stage's lead,
   the three servo leads.
 - Teensy 4.1 socketed on standard female headers (`P148`), never machined-pin.

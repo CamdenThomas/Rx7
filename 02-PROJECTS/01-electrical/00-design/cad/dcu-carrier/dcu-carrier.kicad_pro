@@ -526,13 +526,26 @@
         "wire_width": 6
       },
       {
-        "clearance": 0.2,
-        "name": "PWR_BL",
+        "clearance": 0.5,
+        "name": "COMFORT",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 4.0,
+        "tuning_profile": "",
+        "via_diameter": 1.6,
+        "via_drill": 0.8
+      },
+      {
+        "clearance": 0.5,
+        "name": "PGND",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 1,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.22,
-        "tuning_profile": ""
+        "track_width": 4.0,
+        "tuning_profile": "",
+        "via_diameter": 1.6,
+        "via_drill": 0.8
       },
       {
         "clearance": 0.2,
@@ -541,16 +554,42 @@
         "priority": 2,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
         "track_width": 0.6,
-        "tuning_profile": ""
+        "tuning_profile": "",
+        "via_diameter": 0.8,
+        "via_drill": 0.4
       },
       {
-        "clearance": 2.5,
-        "name": "TACH_HV",
+        "clearance": 0.2,
+        "name": "SERVO",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
+        "priority": 3,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.25,
-        "tuning_profile": ""
+        "track_width": 1.0,
+        "tuning_profile": "",
+        "via_diameter": 0.8,
+        "via_drill": 0.4
+      },
+      {
+        "clearance": 0.2,
+        "name": "DRIVE",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 4,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.8,
+        "tuning_profile": "",
+        "via_diameter": 0.8,
+        "via_drill": 0.4
+      },
+      {
+        "clearance": 0.2,
+        "name": "WIN",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 5,
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.5,
+        "tuning_profile": "",
+        "via_diameter": 0.8,
+        "via_drill": 0.4
       }
     ],
     "meta": {
@@ -558,7 +597,112 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "COMFORT",
+        "pattern": "/V12C_RAW"
+      },
+      {
+        "netclass": "COMFORT",
+        "pattern": "/SH_DRV_RTN"
+      },
+      {
+        "netclass": "COMFORT",
+        "pattern": "/SH_PASS_RTN"
+      },
+      {
+        "netclass": "COMFORT",
+        "pattern": "/SC_DRV_RTN"
+      },
+      {
+        "netclass": "COMFORT",
+        "pattern": "/SC_PASS_RTN"
+      },
+      {
+        "netclass": "COMFORT",
+        "pattern": "/CMF_RTN"
+      },
+      {
+        "netclass": "PGND",
+        "pattern": "PGND"
+      },
+      {
+        "netclass": "PWR_LOGIC",
+        "pattern": "+12V_LOGIC"
+      },
+      {
+        "netclass": "PWR_LOGIC",
+        "pattern": "/V12L_RAW"
+      },
+      {
+        "netclass": "PWR_LOGIC",
+        "pattern": "+5V"
+      },
+      {
+        "netclass": "PWR_LOGIC",
+        "pattern": "/BUCK_SW"
+      },
+      {
+        "netclass": "SERVO",
+        "pattern": "+5V_SERVO"
+      },
+      {
+        "netclass": "SERVO",
+        "pattern": "/SRV_SW"
+      },
+      {
+        "netclass": "SERVO",
+        "pattern": "+12V_CMF"
+      },
+      {
+        "netclass": "DRIVE",
+        "pattern": "/MIR_COM"
+      },
+      {
+        "netclass": "DRIVE",
+        "pattern": "/MIR_L"
+      },
+      {
+        "netclass": "DRIVE",
+        "pattern": "/MIR_R"
+      },
+      {
+        "netclass": "DRIVE",
+        "pattern": "/MIR_CLUTCH"
+      },
+      {
+        "netclass": "DRIVE",
+        "pattern": "/MIRROR_HEAT"
+      },
+      {
+        "netclass": "WIN",
+        "pattern": "/WIN_DRV_UP"
+      },
+      {
+        "netclass": "WIN",
+        "pattern": "/WIN_DRV_DN"
+      },
+      {
+        "netclass": "WIN",
+        "pattern": "/WIN_PASS_UP"
+      },
+      {
+        "netclass": "WIN",
+        "pattern": "/WIN_PASS_DN"
+      },
+      {
+        "netclass": "WIN",
+        "pattern": "/REL_HATCH"
+      },
+      {
+        "netclass": "WIN",
+        "pattern": "/REL_FUEL"
+      },
+      {
+        "netclass": "WIN",
+        "pattern": "/WAKE_OUT"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {

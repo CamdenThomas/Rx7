@@ -26,7 +26,7 @@ The fence, in full:
 | Project | What | Status |
 |---|---|---|
 | `icu-carrier/` | The ICU carrier board as a KiCad 10 schematic, plus its Teensy socket footprint | **provisional board placed, routed, poured and 3D-modelled, DRC clean (F9 / F10, 2026-10-09)** — 110 × 80 mm is `confirm` until `C4` / `F11`; guide step 8 reached, the fit test is `F11` |
-| `dcu-carrier/` | The DCU carrier (`H-002`) | **drawn, ERC clean, real Teensy pads (D-452)** — every pin in `dcu_channels.teensy_pin`, the slow lines on a TCA9539-Q1; next is the layout, after `V-102` and luxury `W-332` for the outline and the mirror stage |
+| `dcu-carrier/` | The DCU carrier (`H-002`) | **provisional board placed, routed, poured and 3D-modelled, DRC clean (Y5, 2026-10-09)** — every pin in `dcu_channels.teensy_pin`, the slow lines on a TCA9539-Q1; 180 × 80 mm is `confirm` until `V-102` and luxury `W-332`; `Y11` adds the open blocks' worst case (a second expander, the clutch and radar provisions) |
 | `panel/` | The control panel's electronics (`H-008`): the 3 × 3 matrix, four encoders, the thumbstick, the ribbon header | **provisional board drawn, DRC clean (Y6, 2026-10-09)** — no processor (D-355); both key styles as alternates, the backlight DNP; the outline is `confirm` until `V-113`, and blocks 01.14, 01.15 and 03.14 pick what is fitted |
 | `PCB-AND-3D-GUIDE.md` | A first-timer's step-by-step guide: schematic → footprints → layout → 3D → measure → fit, ICU first | rewritten for a first-time KiCad user 2026-09-22 (D-361) |
 

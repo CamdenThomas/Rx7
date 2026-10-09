@@ -81,3 +81,4 @@ L-0069,2026-10-09,session,W-330b E13,"Engine K6's reach into electrical: W-330b'
 L-0070,2026-10-09,session,R17,R17 raised: the 12A's coolant-level warning is carried by nothing in today's harness (found by engine K6)
 L-0071,2026-10-09,session,R17,R17 checked and closed: D-264 already rules the level senders out; no finding
 L-0072,2026-10-09,session,F9 F10 P169 P109 P176 CK25,"F9 and F10 done: the ICU carrier's provisional board - placed, routed, poured, DRC clean, 3D complete, STEP built; P176 and CK25 added"
+L-0073,2026-10-09,session,Y5 Y11 P177 P178 CK26,"Y5 done: the DCU carrier's provisional board - real packages, placed, routed, poured, DRC clean, STEP; P177 / P178 / CK26 added; Y11 opened for the open blocks' worst case"

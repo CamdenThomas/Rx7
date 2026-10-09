@@ -1,6 +1,6 @@
 # Schematic conventions — DCU carrier
 
-*Rev 2026-09-28 · owns: how this schematic is drawn. Copied from `../dcu-carrier/CONVENTIONS.md`
+*Rev 2026-09-28 · owns: how this schematic is drawn. Copied from `../icu-carrier/CONVENTIONS.md`
 (D-452), and §0 says what differs. Where the two disagree for the DCU, §0 wins.*
 
 ## 0 · What differs from the ICU
