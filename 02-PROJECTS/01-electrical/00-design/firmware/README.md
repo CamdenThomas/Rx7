@@ -67,19 +67,20 @@ truth, no second copy to drift. **`channels.h` is not generated any more:** the 
 You need `g++` and the SDL2 headers, installed once:
 
 ```
-sudo dnf install gcc-c++ SDL2-devel
+sudo dnf install gcc-c++ SDL2-devel          # Fedora
+xcode-select --install && brew install sdl2  # Mac
 ```
 
-Then:
+Then, from the tree:
 
 ```
-cd ~/docs/storage/Rx7/02-PROJECTS/01-electrical/00-design/firmware/icu_sim
+cd 02-PROJECTS/01-electrical/00-design/firmware/icu_sim
 ./build.sh           # or: g++ sim_sdl.cpp -o sim -std=c++17 -O2 $(sdl2-config --cflags --libs)
 ./sim
 ```
 
 `sim_sdl.cpp` replaced the Win32 host (`sim_win32.cpp`) on 2026-09-22, when the project
-moved to one Fedora machine. It is the same program key for key, and the Win32 original
+moved to Fedora (it builds on the Mac too, D-454). It is the same program key for key, and the Win32 original
 is in git history.
 
 ### Simulator controls
@@ -126,7 +127,8 @@ Open `icu/icu.ino` in the Arduino IDE. Board: Teensy 4.1, CPU 600 MHz.
 Library: **ACAN_T4**, not FlexCAN_T4 — only ACAN_T4 exposes loopback cleanly.
 
 On Linux the upload needs PJRC's udev rule once, or the Teensy loader cannot see the
-board (see pjrc.com/teensy/td_download.html for the current file):
+board (see pjrc.com/teensy/td_download.html for the current file); on the Mac nothing is
+needed beyond Teensyduino or the `arduino-cli` Teensy core:
 
 ```
 sudo curl -o /etc/udev/rules.d/00-teensy.rules https://www.pjrc.com/teensy/00-teensy.rules

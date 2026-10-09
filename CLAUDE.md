@@ -7,9 +7,11 @@ instructs you: no skills, no slash commands, no account document. If a rule is n
 the playbook you were named, it is not a rule; if you need one that is missing, that is a
 block._
 
-**One tree: `~/docs/storage/Rx7`, on one Fedora machine**, a clone of
-`github.com/CamdenThomas/Rx7` (public). Any instruction naming `Rx7-v3`, Windows paths,
-`ANSWERS.md`, `/rx7-*` skills or the Claude Project is stale (`rx7.py doc machine`).
+**One tree, any clone, synced only through GitHub** (D-454): a clone of
+`github.com/CamdenThomas/Rx7` (public) on the Mac (`~/dev/Rx7`, most work) and on the Fedora
+PC (`~/docs/storage/Rx7`), plus the phone. Any instruction naming `Rx7-v3`, Windows paths,
+`ANSWERS.md`, `/rx7-*` skills, the Claude Project or "the one Fedora machine" is stale
+(`rx7.py doc machine` says what each machine has).
 
 ---
 

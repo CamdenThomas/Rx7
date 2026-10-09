@@ -10,13 +10,16 @@ use std::env;
 use std::path::PathBuf;
 use std::sync::Mutex;
 
-/// The tree the app works on — `~/docs/storage/Rx7` unless the app is pointed elsewhere.
+/// The tree the app works on — `~/docs/storage/Rx7` (the Fedora PC) or `~/dev/Rx7` (the Mac),
+/// whichever exists (D-454), unless the app is pointed elsewhere.
 pub struct Tree(pub Mutex<PathBuf>);
 
 impl Default for Tree {
     fn default() -> Self {
         let home = env::var_os("HOME").map(PathBuf::from).unwrap_or_default();
-        Tree(Mutex::new(home.join("docs/storage/Rx7")))
+        let candidates = [home.join("docs/storage/Rx7"), home.join("dev/Rx7")];
+        let tree = candidates.iter().find(|p| p.is_dir()).cloned().unwrap_or_else(|| candidates[0].clone());
+        Tree(Mutex::new(tree))
     }
 }
 

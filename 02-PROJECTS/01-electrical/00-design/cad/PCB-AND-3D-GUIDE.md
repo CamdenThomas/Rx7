@@ -1,6 +1,6 @@
 # Your first board: the ICU carrier in KiCad, step by step
 
-_Rev 2026-09-22 · written for a first-time KiCad user · KiCad 10.0.6 on the Fedora machine ·
+_Rev 2026-09-22, path-neutral 2026-10-08 · written for a first-time KiCad user (since D-453 the agent draws too, by the same steps) · KiCad 10.0.6 on each machine (D-454) ·
 owns: the method for taking the ICU carrier from schematic to a laid-out, 3D-checked board.
 Every menu name below was checked against the KiCad installed here; hotkeys are KiCad's
 defaults. It sits inside the `cad/` fence (`README.md`): a how-to for a drawing, never a view
@@ -54,7 +54,7 @@ real pins are assigned (D-377), and the Teensy socket footprint is already made 
 
 ## Step 1 · Open the project (F8)
 
-1. `cd ~/docs/storage/Rx7 && python tools/rx7.py status`, so you know the record is valid.
+1. From the tree, `python3 tools/rx7.py status`, so you know the record is valid.
 2. Start **KiCad** (from the app menu, or type `kicad` in a terminal).
 3. **The very first time only**, KiCad asks about the global symbol and footprint library
    tables: choose **Copy default global … table (recommended)** both times. That's what makes the
@@ -286,7 +286,6 @@ as you settle it.
 After each step: **File → Save**, then:
 
 ```
-cd ~/docs/storage/Rx7
 git add 02-PROJECTS/01-electrical/00-design/cad/icu-carrier
 git commit -m "ICU carrier: step N"
 ```

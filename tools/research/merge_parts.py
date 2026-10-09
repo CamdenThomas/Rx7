@@ -7,7 +7,7 @@ from pathlib import Path
 
 S = Path(sys.argv[1])
 WRITE = "--write" in sys.argv
-ROOT = Path("/home/crash/docs/storage/Rx7")
+ROOT = Path(__file__).resolve().parents[2]  # tools/research/ -> the tree
 P = ROOT / "00-CAR/data/parts.csv"
 rows = list(csv.DictReader(open(P, newline="", encoding="utf-8")))
 hdr = list(rows[0].keys())
