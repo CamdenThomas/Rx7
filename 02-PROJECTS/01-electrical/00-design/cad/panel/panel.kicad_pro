@@ -527,30 +527,14 @@
       },
       {
         "clearance": 0.2,
-        "name": "PWR_BL",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 1,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.22,
-        "tuning_profile": ""
-      },
-      {
-        "clearance": 0.2,
-        "name": "PWR_LOGIC",
-        "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 2,
-        "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.6,
-        "tuning_profile": ""
-      },
-      {
-        "clearance": 2.5,
-        "name": "TACH_HV",
+        "name": "ILLUM",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 0,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.25,
-        "tuning_profile": ""
+        "track_width": 0.5,
+        "tuning_profile": "",
+        "via_diameter": 0.8,
+        "via_drill": 0.4
       }
     ],
     "meta": {
@@ -558,7 +542,16 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "ILLUM",
+        "pattern": "/ILLUM_*"
+      },
+      {
+        "netclass": "ILLUM",
+        "pattern": "/BL*"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {
