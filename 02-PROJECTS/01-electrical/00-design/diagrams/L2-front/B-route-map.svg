@@ -1,63 +1,72 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1506" height="936" viewBox="0 0 1506 936" font-family="Noto Sans, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1506" height="1110" viewBox="0 0 1506 1110" font-family="Noto Sans, sans-serif">
 <title>L2 Front - route map</title>
 <rect width="100%" height="100%" fill="#fff"/>
 <text x="30.0" y="40.0" font-size="20" text-anchor="start" font-weight="700" fill="#1f2328">L2 FRONT · B · ROUTE MAP</text>
 <text x="30.0" y="64.0" font-size="12" text-anchor="start" font-weight="400" fill="#57606a">Where every wire physically runs. Bundle order is branch order, so each wire peels off the outside of the bundle and nothing crosses. Lengths come from routes.ft once measured (M-2).</text>
-<path d="M200.0,225.0 L240.0,225.0 L295.0,280.0 L490.0,280.0 L590.0,180.0 L760.0,180.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M200.0,225.0 L240.0,225.0 L295.0,280.0 L490.0,280.0 L590.0,180.0 L760.0,180.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
-<path d="M200.0,243.0 L240.0,243.0 L295.0,298.0 L490.0,298.0 L590.0,198.0 L760.0,198.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M200.0,243.0 L240.0,243.0 L295.0,298.0 L490.0,298.0 L590.0,198.0 L760.0,198.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
-<path d="M200.0,261.0 L240.0,261.0 L295.0,316.0 L490.0,316.0 L590.0,216.0 L760.0,216.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M200.0,261.0 L240.0,261.0 L295.0,316.0 L490.0,316.0 L590.0,216.0 L760.0,216.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
-<path d="M200.0,279.0 L240.0,279.0 L295.0,334.0 L490.0,334.0 L590.0,234.0 L760.0,234.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M200.0,279.0 L240.0,279.0 L295.0,334.0 L490.0,334.0 L590.0,234.0 L760.0,234.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
-<path d="M200.0,297.0 L240.0,297.0 L295.0,352.0 L490.0,352.0 L590.0,252.0 L760.0,252.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M200.0,297.0 L240.0,297.0 L295.0,352.0 L490.0,352.0 L590.0,252.0 L760.0,252.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<path d="M200.0,315.0 L240.0,315.0 L295.0,370.0 L490.0,370.0 L590.0,270.0 L760.0,270.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M200.0,315.0 L240.0,315.0 L295.0,370.0 L490.0,370.0 L590.0,270.0 L760.0,270.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<path d="M200.0,333.0 L240.0,333.0 L295.0,388.0 L490.0,388.0 L490.0,388.0 L760.0,388.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M200.0,333.0 L240.0,333.0 L295.0,388.0 L490.0,388.0 L490.0,388.0 L760.0,388.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
-<path d="M200.0,351.0 L240.0,351.0 L295.0,406.0 L490.0,406.0 L490.0,406.0 L760.0,406.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M200.0,351.0 L240.0,351.0 L295.0,406.0 L490.0,406.0 L490.0,406.0 L760.0,406.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
-<path d="M200.0,369.0 L240.0,369.0 L295.0,424.0 L490.0,424.0 L490.0,424.0 L760.0,424.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M200.0,369.0 L240.0,369.0 L295.0,424.0 L490.0,424.0 L490.0,424.0 L760.0,424.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
-<path d="M200.0,387.0 L240.0,387.0 L295.0,442.0 L490.0,442.0 L490.0,442.0 L760.0,442.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M200.0,387.0 L240.0,387.0 L295.0,442.0 L490.0,442.0 L490.0,442.0 L760.0,442.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
-<path d="M200.0,405.0 L240.0,405.0 L295.0,460.0 L490.0,460.0 L490.0,460.0 L760.0,460.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M200.0,405.0 L240.0,405.0 L295.0,460.0 L490.0,460.0 L490.0,460.0 L760.0,460.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M200.0,423.0 L240.0,423.0 L295.0,478.0 L490.0,478.0 L590.0,578.0 L760.0,578.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M200.0,423.0 L240.0,423.0 L295.0,478.0 L490.0,478.0 L590.0,578.0 L760.0,578.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
-<path d="M200.0,441.0 L240.0,441.0 L295.0,496.0 L490.0,496.0 L590.0,596.0 L760.0,596.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M200.0,441.0 L240.0,441.0 L295.0,496.0 L490.0,496.0 L590.0,596.0 L760.0,596.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
-<path d="M200.0,459.0 L240.0,459.0 L295.0,514.0 L490.0,514.0 L590.0,614.0 L760.0,614.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M200.0,459.0 L240.0,459.0 L295.0,514.0 L490.0,514.0 L590.0,614.0 L760.0,614.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
-<path d="M200.0,477.0 L240.0,477.0 L295.0,532.0 L490.0,532.0 L590.0,632.0 L760.0,632.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M200.0,477.0 L240.0,477.0 L295.0,532.0 L490.0,532.0 L590.0,632.0 L760.0,632.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M200.0,495.0 L240.0,495.0 L295.0,550.0 L490.0,550.0 L590.0,650.0 L760.0,650.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M200.0,495.0 L240.0,495.0 L295.0,550.0 L490.0,550.0 L590.0,650.0 L760.0,650.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<path d="M200.0,513.0 L240.0,513.0 L295.0,568.0 L490.0,568.0 L590.0,668.0 L760.0,668.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M200.0,513.0 L240.0,513.0 L295.0,568.0 L490.0,568.0 L590.0,668.0 L760.0,668.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<rect x="50.0" y="191.0" width="150.0" height="356.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-<text x="125.0" y="211.0" font-size="13" text-anchor="middle" font-weight="700" fill="#1f2328">Dash post</text>
-<text x="190.0" y="229.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-P 1</text>
-<text x="190.0" y="247.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-P 2</text>
-<text x="190.0" y="265.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-P 3</text>
-<text x="190.0" y="283.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-P 4</text>
-<text x="190.0" y="301.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-S 1</text>
-<text x="190.0" y="319.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-S 2</text>
-<text x="190.0" y="337.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-M 3</text>
-<text x="190.0" y="355.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-M 5</text>
-<text x="190.0" y="373.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-M 6</text>
-<text x="190.0" y="391.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-M 7</text>
-<text x="190.0" y="409.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-S 5</text>
-<text x="190.0" y="427.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-M 1</text>
-<text x="190.0" y="445.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-M 2</text>
-<text x="190.0" y="463.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-M 4</text>
-<text x="190.0" y="481.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-M 8</text>
-<text x="190.0" y="499.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-S 3</text>
-<text x="190.0" y="517.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-S 4</text>
-<rect x="464.0" y="271.0" width="12.0" height="306.0" rx="6" fill="none" stroke="#1f2328" stroke-width="2.5"/>
-<text x="456.0" y="264.0" font-size="11" text-anchor="end" font-weight="600" fill="#1f2328">RT06 → Nose splice</text>
+<path d="M200.0,275.0 L240.0,275.0 L295.0,330.0 L490.0,330.0 L640.0,180.0 L760.0,180.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,275.0 L240.0,275.0 L295.0,330.0 L490.0,330.0 L640.0,180.0 L760.0,180.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,293.0 L240.0,293.0 L295.0,348.0 L490.0,348.0 L640.0,198.0 L760.0,198.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,293.0 L240.0,293.0 L295.0,348.0 L490.0,348.0 L640.0,198.0 L760.0,198.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,311.0 L240.0,311.0 L295.0,366.0 L490.0,366.0 L640.0,216.0 L760.0,216.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,311.0 L240.0,311.0 L295.0,366.0 L490.0,366.0 L640.0,216.0 L760.0,216.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,329.0 L240.0,329.0 L295.0,384.0 L490.0,384.0 L640.0,234.0 L760.0,234.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,329.0 L240.0,329.0 L295.0,384.0 L490.0,384.0 L640.0,234.0 L760.0,234.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,347.0 L240.0,347.0 L295.0,402.0 L490.0,402.0 L640.0,252.0 L760.0,252.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,347.0 L240.0,347.0 L295.0,402.0 L490.0,402.0 L640.0,252.0 L760.0,252.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,365.0 L240.0,365.0 L295.0,420.0 L490.0,420.0 L640.0,270.0 L760.0,270.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,365.0 L240.0,365.0 L295.0,420.0 L490.0,420.0 L640.0,270.0 L760.0,270.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,383.0 L240.0,383.0 L295.0,438.0 L490.0,438.0 L540.0,388.0 L760.0,388.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,383.0 L240.0,383.0 L295.0,438.0 L490.0,438.0 L540.0,388.0 L760.0,388.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,401.0 L240.0,401.0 L295.0,456.0 L490.0,456.0 L540.0,406.0 L760.0,406.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,401.0 L240.0,401.0 L295.0,456.0 L490.0,456.0 L540.0,406.0 L760.0,406.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,419.0 L240.0,419.0 L295.0,474.0 L490.0,474.0 L540.0,424.0 L760.0,424.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,419.0 L240.0,419.0 L295.0,474.0 L490.0,474.0 L540.0,424.0 L760.0,424.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,437.0 L240.0,437.0 L295.0,492.0 L490.0,492.0 L540.0,442.0 L760.0,442.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,437.0 L240.0,437.0 L295.0,492.0 L490.0,492.0 L540.0,442.0 L760.0,442.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,455.0 L240.0,455.0 L295.0,510.0 L490.0,510.0 L540.0,460.0 L760.0,460.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,455.0 L240.0,455.0 L295.0,510.0 L490.0,510.0 L540.0,460.0 L760.0,460.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,473.0 L240.0,473.0 L295.0,528.0 L490.0,528.0 L540.0,578.0 L760.0,578.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,473.0 L240.0,473.0 L295.0,528.0 L490.0,528.0 L540.0,578.0 L760.0,578.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,491.0 L240.0,491.0 L295.0,546.0 L490.0,546.0 L540.0,596.0 L760.0,596.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,491.0 L240.0,491.0 L295.0,546.0 L490.0,546.0 L540.0,596.0 L760.0,596.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,509.0 L240.0,509.0 L295.0,564.0 L490.0,564.0 L540.0,614.0 L760.0,614.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,509.0 L240.0,509.0 L295.0,564.0 L490.0,564.0 L540.0,614.0 L760.0,614.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,527.0 L240.0,527.0 L295.0,582.0 L490.0,582.0 L540.0,632.0 L760.0,632.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,527.0 L240.0,527.0 L295.0,582.0 L490.0,582.0 L540.0,632.0 L760.0,632.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,545.0 L240.0,545.0 L295.0,600.0 L490.0,600.0 L540.0,650.0 L760.0,650.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M200.0,545.0 L240.0,545.0 L295.0,600.0 L490.0,600.0 L540.0,650.0 L760.0,650.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<path d="M200.0,563.0 L240.0,563.0 L295.0,618.0 L490.0,618.0 L540.0,668.0 L760.0,668.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,563.0 L240.0,563.0 L295.0,618.0 L490.0,618.0 L540.0,668.0 L760.0,668.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,581.0 L240.0,581.0 L295.0,636.0 L490.0,636.0 L640.0,786.0 L760.0,786.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,581.0 L240.0,581.0 L295.0,636.0 L490.0,636.0 L640.0,786.0 L760.0,786.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,599.0 L240.0,599.0 L295.0,654.0 L490.0,654.0 L640.0,804.0 L760.0,804.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,599.0 L240.0,599.0 L295.0,654.0 L490.0,654.0 L640.0,804.0 L760.0,804.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,617.0 L240.0,617.0 L295.0,672.0 L490.0,672.0 L640.0,822.0 L760.0,822.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M200.0,617.0 L240.0,617.0 L295.0,672.0 L490.0,672.0 L640.0,822.0 L760.0,822.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<rect x="50.0" y="241.0" width="150.0" height="410.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="125.0" y="261.0" font-size="13" text-anchor="middle" font-weight="700" fill="#1f2328">Dash post</text>
+<text x="190.0" y="279.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-P 1</text>
+<text x="190.0" y="297.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-P 2</text>
+<text x="190.0" y="315.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-P 3</text>
+<text x="190.0" y="333.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-P 4</text>
+<text x="190.0" y="351.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-S 1</text>
+<text x="190.0" y="369.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-S 2</text>
+<text x="190.0" y="387.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-M 3</text>
+<text x="190.0" y="405.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-M 5</text>
+<text x="190.0" y="423.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-M 6</text>
+<text x="190.0" y="441.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-M 7</text>
+<text x="190.0" y="459.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-S 5</text>
+<text x="190.0" y="477.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-M 1</text>
+<text x="190.0" y="495.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-M 2</text>
+<text x="190.0" y="513.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-M 4</text>
+<text x="190.0" y="531.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-M 8</text>
+<text x="190.0" y="549.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-S 3</text>
+<text x="190.0" y="567.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-S 4</text>
+<text x="190.0" y="585.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-R 1</text>
+<text x="190.0" y="603.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-R 2</text>
+<text x="190.0" y="621.0" font-size="10" text-anchor="end" font-weight="700" fill="#1f2328">L2-R 3</text>
+<rect x="464.0" y="321.0" width="12.0" height="360.0" rx="6" fill="none" stroke="#1f2328" stroke-width="2.5"/>
+<text x="456.0" y="314.0" font-size="11" text-anchor="end" font-weight="600" fill="#1f2328">RT06 → Nose splice</text>
 <rect x="760.0" y="168.0" width="8.0" height="114.0" rx="1" fill="#1f2328" stroke="#1f2328" stroke-width="1.5"/>
 <text x="780.0" y="162.0" font-size="12" text-anchor="start" font-weight="700" fill="#0b5cad">RT07 · Each headlight bucket and pop-up motor</text>
 <text x="780.0" y="184.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Headlights · RY (low)</text>
@@ -101,23 +110,34 @@
 <text x="780.0" y="672.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Run to the wiper branch and left unpinned there: a DIN 72552 …</text>
 <text x="1151.5" y="672.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L2-S 4 · Wiper park return — future motor family · capped</text>
 <text x="780.0" y="692.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">back along the cowl · length at M-2</text>
-<text x="30.0" y="766.0" font-size="11" text-anchor="start" font-weight="700" fill="#57606a">ROUTES</text>
-<text x="30.0" y="786.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">RT06</text>
-<text x="80.0" y="786.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Dash post → Nose splice  ·  via Cowl grommet, then along the inner wing  ·  length: measure at M-2</text>
-<text x="30.0" y="806.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">RT07</text>
-<text x="80.0" y="806.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Nose splice → Each headlight bucket and pop-up motor  ·  via across the radiator support  ·  length: measure at M-2</text>
-<text x="30.0" y="826.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">RT08</text>
-<text x="80.0" y="826.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Nose splice → Front combo lamps, side markers, horns  ·  via radiator support and both inner wings  ·  length: measure at M-2</text>
-<text x="30.0" y="846.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">RT09</text>
-<text x="80.0" y="846.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Nose splice → Wiper motor D-02 and washer pump D-01  ·  via back along the cowl  ·  length: measure at M-2</text>
-<path d="M30.0,886.0 L66.0,886.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M30.0,886.0 L66.0,886.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
-<text x="76.0" y="890.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">RED</text>
-<path d="M123.6,886.0 L159.6,886.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M123.6,886.0 L159.6,886.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="169.6" y="890.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRY</text>
-<path d="M217.3,886.0 L253.3,886.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M217.3,886.0 L253.3,886.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
-<text x="263.3" y="890.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ORN</text>
-<text x="30.0" y="916.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">Solid: live. Dashed: run and capped. Only wires that leave the post are drawn; sealing plugs and reserved cavities are on sheet A. Generated by rx7.py diagrams - do not edit.</text>
+<rect x="760.0" y="774.0" width="8.0" height="60.0" rx="1" fill="#1f2328" stroke="#1f2328" stroke-width="1.5"/>
+<text x="780.0" y="768.0" font-size="12" text-anchor="start" font-weight="700" fill="#0b5cad">RT29 · Front bumper, radar sensor</text>
+<text x="780.0" y="790.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">L2-RDR 1 at the nose, dust-capped (A16)</text>
+<text x="1017.6" y="790.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L2-R 1 · Radar front sensor A · capped</text>
+<text x="780.0" y="808.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">L2-RDR 2 at the nose, dust-capped (A16)</text>
+<text x="1017.6" y="808.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L2-R 2 · Radar front sensor B · capped</text>
+<text x="780.0" y="826.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">L2-RDR 3 at the nose, dust-capped (A16)</text>
+<text x="1017.6" y="826.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L2-R 3 · Radar front sensor C · capped</text>
+<text x="780.0" y="846.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">along the bumper beam · length at M-2</text>
+<text x="30.0" y="920.0" font-size="11" text-anchor="start" font-weight="700" fill="#57606a">ROUTES</text>
+<text x="30.0" y="940.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">RT06</text>
+<text x="80.0" y="940.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Dash post → Nose splice  ·  via Cowl grommet, then along the inner wing  ·  length: measure at M-2</text>
+<text x="30.0" y="960.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">RT07</text>
+<text x="80.0" y="960.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Nose splice → Each headlight bucket and pop-up motor  ·  via across the radiator support  ·  length: measure at M-2</text>
+<text x="30.0" y="980.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">RT08</text>
+<text x="80.0" y="980.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Nose splice → Front combo lamps, side markers, horns  ·  via radiator support and both inner wings  ·  length: measure at M-2</text>
+<text x="30.0" y="1000.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">RT09</text>
+<text x="80.0" y="1000.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Nose splice → Wiper motor D-02 and washer pump D-01  ·  via back along the cowl  ·  length: measure at M-2</text>
+<text x="30.0" y="1020.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">RT29</text>
+<text x="80.0" y="1020.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Nose splice → Front bumper, radar sensor  ·  via along the bumper beam  ·  length: measure at M-2</text>
+<path d="M30.0,1060.0 L66.0,1060.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M30.0,1060.0 L66.0,1060.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="76.0" y="1064.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">RED</text>
+<path d="M123.6,1060.0 L159.6,1060.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M123.6,1060.0 L159.6,1060.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="169.6" y="1064.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRY</text>
+<path d="M217.3,1060.0 L253.3,1060.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M217.3,1060.0 L253.3,1060.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<text x="263.3" y="1064.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ORN</text>
+<text x="30.0" y="1090.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">Solid: live. Dashed: run and capped. Only wires that leave the post are drawn; sealing plugs and reserved cavities are on sheet A. Generated by rx7.py diagrams - do not edit.</text>
 </svg>

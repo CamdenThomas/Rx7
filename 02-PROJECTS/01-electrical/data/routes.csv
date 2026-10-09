@@ -27,3 +27,4 @@ RT25,L4 Rear,Rear node,"Fuel-door solenoid, quarter trim",behind the driver-side
 RT26,L1 Engine,Engine-bay junction,"Master cylinder, brake-fluid switch",along the firewall to the reservoir,,,The brake-fluid level switch (DV08). Measured at M-2 (R8).
 RT27,L3 Dash,Centre stack,Under the driver's seat,down the tunnel side and under the carpet,,,"The comfort-return harness, driver side: L3-SD and L3-SDM (A14). Measured at M-2"
 RT28,L3 Dash,Centre stack,Under the passenger seat,down the tunnel side and under the carpet,,,"The comfort-return harness, passenger side: L3-SP and L3-SPM (A14). Measured at M-2"
+RT29,L2 Front,Nose splice,"Front bumper, radar sensor",along the bumper beam,,,The front radar sensor's receptacle L2-RDR (A16); beauty 04.13 decides the bumper. Measured at M-2
