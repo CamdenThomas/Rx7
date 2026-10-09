@@ -1,0 +1,29 @@
+* generic.lib - stand-in SPICE models for the sim decks, used when the vendor models are
+* not on this machine (run.sh prefers 01-REFERENCE/model/library/spice, which is not in git).
+* These are the textbook parameter sets that ship with most SPICE libraries; every one is
+* `confirm` against the vendor's own file (Y2). Temperature behaviour matters here: the
+* Schottky's leakage (Eg 0.69) is what the WASH deck is about.
+
+.model Q2N3904 NPN(Is=6.734f Xti=3 Eg=1.11 Vaf=74.03 Bf=416.4 Ne=1.259 Ise=6.734f
++ Ikf=66.78m Xtb=1.5 Br=.7371 Nc=2 Isc=0 Ikr=0 Rc=1 Cjc=3.638p Mjc=.3085 Vjc=.75 Fc=.5
++ Cje=4.493p Mje=.2593 Vje=.75 Tr=239.5n Tf=301.2p Itf=.4 Vtf=4 Xtf=2 Rb=10)
+
+.model D1N4148 D(Is=4.352n Rs=.6458 N=1.906 Cjo=.7p M=.33 Vj=.5 Bv=100 Ibv=100u Tt=11.54n)
+
+.model D1N5819 D(Is=3.17u Rs=.052 N=1.2 Cjo=150p M=.4 Vj=.5 Bv=40 Ibv=1m Tt=1n Eg=0.69 Xti=2)
+
+* SS34: 3 A 40 V Schottky (SMA) - the carriers' reverse-input diode
+.model DSS34 D(Is=20u Rs=.03 N=1.1 Cjo=250p M=.4 Vj=.5 Bv=40 Ibv=1m Tt=2n Eg=0.69 Xti=2)
+
+* B560C: 5 A 60 V Schottky (SMC) - the DCU's comfort-input diode
+.model DB560C D(Is=30u Rs=.02 N=1.1 Cjo=400p M=.4 Vj=.5 Bv=60 Ibv=1m Tt=2n Eg=0.69 Xti=2)
+
+* SMBJ33A: unidirectional TVS, 33 V standoff, 36.7 V min breakdown, 53.3 V clamp at 11.3 A
+* (600 W). Modelled as a diode with a sharp breakdown and a dynamic resistance that lands
+* the datasheet clamp point: (53.3 - 36.7) / 11.3 = 1.5 ohm.
+.model DSMBJ33A D(Is=1n Rs=.01 N=1 Cjo=300p M=.4 Vj=.7 Bv=36.7 Ibv=1m Rs=1.5 Tt=1n)
+
+* LM2903 / LM393 comparator half as an ideal open-collector switch with 3 mV hysteresis:
+* the real part's offset (<= 7 mV) and 25 nA bias are below every margin the decks test.
+* Used as:  Sx out 0 IN- IN+ SWCMP   (on, output low, while IN- > IN+)
+.model SWCMP SW(Ron=50 Roff=1e9 Vt=0 Vh=0.003)

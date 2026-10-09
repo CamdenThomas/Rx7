@@ -161,3 +161,25 @@ BTT6200-4ESA,PG-TSDSO-24,22,NC,https://www.infineon.com/assets/row/public/docume
 BTT6200-4ESA,PG-TSDSO-24,23,NC,https://www.infineon.com/assets/row/public/documents/10/49/infineon-btt6200-4esa-datasheet-en.pdf#page=7
 BTT6200-4ESA,PG-TSDSO-24,24,OUT0,https://www.infineon.com/assets/row/public/documents/10/49/infineon-btt6200-4esa-datasheet-en.pdf#page=8
 BTT6200-4ESA,PG-TSDSO-24,TAB,VS,https://www.infineon.com/assets/row/public/documents/10/49/infineon-btt6200-4esa-datasheet-en.pdf#page=8
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),1,D0/A0,https://files.seeedstudio.com/wiki/XIAO-KiCad-Library/XIAO_Series_SCH_Symbols.zip
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),2,D1/A1,https://files.seeedstudio.com/wiki/XIAO-KiCad-Library/XIAO_Series_SCH_Symbols.zip
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),3,D2/A2,https://files.seeedstudio.com/wiki/XIAO-KiCad-Library/XIAO_Series_SCH_Symbols.zip
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),4,D3/A3,https://files.seeedstudio.com/wiki/XIAO-KiCad-Library/XIAO_Series_SCH_Symbols.zip
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),5,D4/SDA,https://files.seeedstudio.com/wiki/XIAO-KiCad-Library/XIAO_Series_SCH_Symbols.zip
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),6,D5/SCL,https://files.seeedstudio.com/wiki/XIAO-KiCad-Library/XIAO_Series_SCH_Symbols.zip
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),7,D6/TX,https://files.seeedstudio.com/wiki/XIAO-KiCad-Library/XIAO_Series_SCH_Symbols.zip
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),8,D7/RX,https://files.seeedstudio.com/wiki/XIAO-KiCad-Library/XIAO_Series_SCH_Symbols.zip
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),9,D8/SCK,https://files.seeedstudio.com/wiki/XIAO-KiCad-Library/XIAO_Series_SCH_Symbols.zip
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),10,D9/MISO/BOOT,https://files.seeedstudio.com/wiki/XIAO-KiCad-Library/XIAO_Series_SCH_Symbols.zip
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),11,D10/MOSI,https://files.seeedstudio.com/wiki/XIAO-KiCad-Library/XIAO_Series_SCH_Symbols.zip
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),12,3V3_OUT/3V3,https://files.seeedstudio.com/wiki/XIAO-KiCad-Library/XIAO_Series_SCH_Symbols.zip
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),13,GND,https://files.seeedstudio.com/wiki/XIAO-KiCad-Library/XIAO_Series_SCH_Symbols.zip
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),14,VBUS/5V,https://files.seeedstudio.com/wiki/XIAO-KiCad-Library/XIAO_Series_SCH_Symbols.zip
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),15,D3/MTDI,https://files.seeedstudio.com/wiki/XIAO_WiFi/Resources/XIAO_ESP32C3_v1.3_SCH_260116.pdf#page=1
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),16,D5/MTDO,https://files.seeedstudio.com/wiki/XIAO_WiFi/Resources/XIAO_ESP32C3_v1.3_SCH_260116.pdf#page=1
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),17,EN,https://files.seeedstudio.com/wiki/XIAO_WiFi/Resources/XIAO_ESP32C3_v1.3_SCH_260116.pdf#page=1
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),18,GND,https://files.seeedstudio.com/wiki/XIAO_WiFi/Resources/XIAO_ESP32C3_v1.3_SCH_260116.pdf#page=1
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),19,D2/MTMS,https://files.seeedstudio.com/wiki/XIAO_WiFi/Resources/XIAO_ESP32C3_v1.3_SCH_260116.pdf#page=1
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),20,D4/MTCK,https://files.seeedstudio.com/wiki/XIAO_WiFi/Resources/XIAO_ESP32C3_v1.3_SCH_260116.pdf#page=1
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),21,VBAT,https://files.seeedstudio.com/wiki/XIAO_WiFi/Resources/XIAO_ESP32C3_v1.3_SCH_260116.pdf#page=1
+XIAO ESP32C3,XIAO (Seeed XIAO-ESP32-C3-SMD: castellations 1-14 + back pads 15-22),22,GND,https://files.seeedstudio.com/wiki/XIAO_WiFi/Resources/XIAO_ESP32C3_v1.3_SCH_260116.pdf#page=1

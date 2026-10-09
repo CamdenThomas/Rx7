@@ -1,0 +1,141 @@
+* wake_door.cir - the door wake stage (wake_stages WS00-WS1A, as R12 redrew it) proved over
+* the F23 rail 9-16 V, -30 to 85 C, and the one thing no document gives: the PMU pin's
+* resistance to ground while unpowered (CK12 i). The A8 stage is the same circuit on a
+* different ladder; wake_a8.cir runs its ladder values.
+*
+* Pass: at every corner the comparator sees the shut doors above its threshold and one open
+* door below it by >= 0.1 V; a door opening makes one pulse of >= 0.6 x the rail at the strip's common
+* rail into the 10 k bleed plus a 10 k pin (CK12 ii), lasting >= 0.3 s above 4 V (the PMU's
+* boot time is CK12 iii; D-375); releasing the door makes no second pulse and the clamp keeps
+* Q3's base above -2 V (its E-B rating is 6 V); with the PMU awake (O22 on, its 10 k pull-up to 5 V on the line) a
+* door makes no pulse at all (D-381). The unpowered-pin sweep states the bound the design
+* holds for (>= 200 k); 100 k and 10 k are printed for CK12's reading, not judged.
+.include models/active.lib
+
+* the F23 wake rail, constant, 3 A sealed inline (D-410)
+VF23 f23 0 dc 12
+* O22 KEEP_ALIVE: 0 V asleep, 12 V awake
+VO22 o22 0 dc 0
+* WS00-WS02: Q0 holds both excitation followers off while awake
+RWS01 o22 q0b 10k
+RWS02 q0b 0 100k
+Q0 q1b q0b 0 Q2N3904
+* WS10-WS12: the excitation follower and its 220 k into the A6 line
+RWS10 f23 q1b 100k
+Q1 f23 q1b q1e Q2N3904
+RWS12 q1e line 220k
+* the A6 ladder at the sill: the 47 k baseline (D-368); the driver door adds 33 k when open
+R47 line 0 47k
+SDOOR line sw1 ctl 0 SWDOOR
+R33 sw1 0 33k
+VCTL ctl 0 PULSE(0 1 1 1u 1u 2 100)
+.model SWDOOR SW(Ron=1 Roff=1e12 Vt=0.5 Vh=0.1)
+* the PMU input: unpowered, RPIN to ground (CK12 i); awake, its 10 k pull-up to 5 V
+RPIN line 0 1e12
+SPU line pmu5 awk 0 SWDOOR
+VPMU5 pmu5 0 dc 5
+VAWK awk 0 dc 0
+* WS13-WS16: U1A's ratiometric threshold (0.115 x F23) and the open-collector pull-up
+RWS13 f23 thr 1Meg
+RWS14 thr 0 130k
+SU1 out 0 line thr SWCMP
+RWS16 f23 out 47k
+* WS17-WS1A: the pulse - 2.2 u film into Q3's base, 1 M down, a 1N4148 clamp (a Schottky here
+* leaks the capacitor away hot: the first run of this deck lost the whole pulse at 85 C), Q3 follower
+CWS17 out q3b 2.2u
+RWS18 q3b 0 1Meg
+DWS19 0 q3b D1N4148
+Q3 f23 q3b q3e Q2N3904
+* the wake strip: input 3's 1N5819 into the common rail, the 10 k bleed (N38), pin 7 as 10 k
+DSTRIP q3e rail D1N5819
+RBLEED rail 0 10k
+RPIN7 rail 0 10k
+
+.tran 2m 4.5
+
+.control
+set fail = 0
+set deck = wake_door
+* --- asleep: the judged corners ---
+foreach rp 200k 1Meg 1e12
+  foreach v 9 12 16
+    foreach t -30 25 85
+      alter rpin $rp
+      alter vf23 dc = $v
+      set temp = $t
+      run
+      meas tran vrest FIND v(line) AT=0.9
+      meas tran vthr FIND v(thr) AT=0.9
+      meas tran vpress FIND v(line) AT=2.9
+      meas tran vpk MAX v(rail) FROM=1 TO=3
+      meas tran tup WHEN v(rail)=4 RISE=1
+      meas tran tdn WHEN v(rail)=4 FALL=1
+      meas tran vrel MAX v(rail) FROM=3.3 TO=4.5
+      meas tran vbmin MIN v(q3b) FROM=1 TO=4.5
+      let tw = tdn - tup
+      let m1 = vrest - vthr
+      let m2 = vthr - vpress
+      if m1 < 0.1
+        echo FAIL $deck rp=$rp v=$v t=$t rest_margin=$&m1
+        set fail = 1
+      end
+      if m2 < 0.1
+        echo FAIL $deck rp=$rp v=$v t=$t press_margin=$&m2
+        set fail = 1
+      end
+      let vmin = 0.6 * $v
+      if vpk < vmin
+        echo FAIL $deck rp=$rp v=$v t=$t pulse_peak=$&vpk
+        set fail = 1
+      end
+      if tw < 0.3
+        echo FAIL $deck rp=$rp v=$v t=$t pulse_width=$&tw
+        set fail = 1
+      end
+      if vrel > 1
+        echo FAIL $deck rp=$rp v=$v t=$t release_pulse=$&vrel
+        set fail = 1
+      end
+      if vbmin < -2
+        echo FAIL $deck rp=$rp v=$v t=$t clamp=$&vbmin
+        set fail = 1
+      end
+      echo INFO $deck rp=$rp v=$v t=$t rest=$&vrest thr=$&vthr press=$&vpress peak=$&vpk width=$&tw
+    end
+  end
+end
+* --- asleep: below the bound, printed for CK12 (i), not judged ---
+foreach rp 100k 10k
+  alter rpin $rp
+  alter vf23 dc = 12
+  set temp = 25
+  run
+  meas tran vrest FIND v(line) AT=0.9
+  meas tran vthr FIND v(thr) AT=0.9
+  meas tran vpress FIND v(line) AT=2.9
+  meas tran vpk MAX v(rail) FROM=1 TO=3
+  echo INFO $deck below-bound rp=$rp rest=$&vrest thr=$&vthr press=$&vpress peak=$&vpk
+end
+* --- awake: O22 on, the PMU's pull-up on the line - a door must make no pulse ---
+alter rpin 1e12
+alter vo22 dc = 12
+alter vawk dc = 1
+foreach v 9 12 16
+  alter vf23 dc = $v
+  set temp = 25
+  run
+  meas tran vline FIND v(line) AT=0.9
+  meas tran vpk MAX v(rail) FROM=0.5 TO=4.5
+  if vpk > 1
+    echo FAIL $deck awake v=$v pulse_while_awake=$&vpk
+    set fail = 1
+  end
+  echo INFO $deck awake v=$v line=$&vline peak=$&vpk
+end
+if $fail = 1
+  quit 1
+end
+echo PASS $deck
+quit 0
+.endc
+.end

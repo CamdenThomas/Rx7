@@ -29,14 +29,13 @@ fi
 # expander port, drop cavity or ribbon conductor that disagrees with icu_channels, dcu_channels
 # or panel_ribbon fails the suite, as does a symbol pin that disagrees with its datasheet. It
 # exits 3 when kicad-cli is absent (or a sheet is unreadable); the suite then goes on without it.
-if python3 ../../cad/check.py; then
-  :
-elif [ "$?" -eq 3 ]; then
-  echo "cad/check.py skipped - kicad-cli not found, so the schematics were not checked against the record"
-else
-  echo "*** cad/check.py FAILED - a schematic disagrees with the record or a datasheet (the record is right) ***"
-  exit 1
-fi
+python3 ../../cad/check.py
+cad_rc=$?
+case $cad_rc in
+  0) ;;
+  3) echo "cad/check.py skipped - kicad-cli not found, so the schematics were not checked against the record" ;;
+  *) echo "*** cad/check.py FAILED - a schematic disagrees with the record or a datasheet (the record is right) ***"; exit 1 ;;
+esac
 
 suite() {  # name, source, extra flags
   echo "Building $1 ..."

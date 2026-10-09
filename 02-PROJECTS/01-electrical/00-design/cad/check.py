@@ -263,37 +263,49 @@ def prefix(ref):
 PASSIVE = {"R", "C", "L", "F", "FB", "D", "JP", "SW", "RV"}
 
 
+def channel_digit(name):
+    """IN0 / OUT0 / EN1 / IPROPI3 -> the channel digit a multi-channel part's pin carries."""
+    m = re.match(r"^[A-Za-z]+(\d)$", name or "")
+    return m.group(1) if m else None
+
+
 def reach(nl, start, stop_refs, through_actives):
-    """Nets reachable from `start` without crossing a power net. Two-pin passives always pass;
-    U and Q parts pass when through_actives, except the refs in stop_refs (the processor side)."""
-    seen = {start: None}
+    """Nets reachable from `start` without crossing a power net, as {net: (prev_net, ref, depth)}.
+    Two-pin passives always pass; U and Q parts pass when through_actives, except the refs in
+    stop_refs (the processor side), and inside a multi-channel part a pin stays in its channel:
+    OUT0 reaches IN0 and DEN, never IN1."""
+    seen = {start: (None, None, 0)}
     q = deque([start])
     while q:
         net = q.popleft()
-        for ref, num, _name in nl.nets.get(net, []):
+        depth = seen[net][2]
+        for ref, num, name in nl.nets.get(net, []):
             pfx = prefix(ref)
             if ref in stop_refs or pfx == "J":
                 continue
             passes = (pfx in PASSIVE and len(nl.pins.get(ref, {})) <= 2) or \
-                     (pfx in PASSIVE and pfx == "D" and len(nl.pins.get(ref, {})) == 2) or \
                      (through_actives and pfx in ("U", "Q", "D", "JP", "SW"))
             if not passes:
                 continue
-            for other in nl.pins.get(ref, {}):
+            chan = channel_digit(name)
+            for other, (oname, _t) in nl.pins.get(ref, {}).items():
                 if other == num:
+                    continue
+                ochan = channel_digit(oname)
+                if chan and ochan and chan != ochan:
                     continue
                 nxt = nl.net_of.get((ref, other))
                 if nxt is None or nxt in seen or is_power_net(nxt):
                     continue
-                seen[nxt] = (net, ref)
+                seen[nxt] = (net, ref, depth + 1)
                 q.append(nxt)
     return seen
 
 
 def path(seen, net):
     out = []
-    while net is not None and seen.get(net) is not None:
-        prev, ref = seen[net]
+    while net is not None and seen.get(net) is not None and seen[net][0] is not None:
+        prev, ref, _d = seen[net]
         out.append("%s -%s-> %s" % (bare(prev), ref, bare(net)))
         net = prev
     return " ; ".join(reversed(out))
@@ -333,6 +345,37 @@ def record_pins(text):
             out.append("VIN")
         elif int(m.group(1)) <= 54:
             out.append(m.group(1))
+    return out
+
+
+_STOP = set("a an and the to on in of at its own from into through out digital input output pwm adc "
+            "command select return coil feed line signal node sense high side dcu timer apart servos "
+            "expander with for by is as k".split())
+_ALIAS = {"driver": "drv", "passenger": "pass", "fuel-door": "fuel", "left": "l", "right": "r"}
+
+
+def words(text):
+    """The words of a record cell that tell one pin or cavity from another."""
+    out = set()
+    for w in re.findall(r"[A-Za-z][A-Za-z0-9-]*", (text or "").lower()):
+        w = _ALIAS.get(w, w)
+        if w not in _STOP and len(w) > 1:
+            out.add(w)
+    return out
+
+
+def record_pin_words(text):
+    """{pin: words} - the fragment of a `teensy_pin` cell that names each pin ("22 DRV up")."""
+    if re.match(r"\s*(none|nothing|—|-|GND)\b", text or ""):
+        return {}
+    t = _UNIT.sub(" ", _DECISION.sub(" ", _COMMENT.sub(" ", text or "")))
+    t = _VIN.sub(" ", t)
+    out = {}
+    for frag in re.split(r"[·;,/]", t):
+        frag = frag.split(" - ")[0]
+        pins = [n for n in _PIN.findall(frag) if int(n) <= 54]
+        if len(pins) == 1:
+            out[pins[0]] = words(_PIN.sub(" ", frag))
     return out
 
 
@@ -423,7 +466,8 @@ def check_pin_on_net(rep, nl, ref, num, label, expected, far_end):
         if tnet not in seen:
             rep.bad(ref, where, "%s reaching %s" % (expected, far_end), "%s does not reach it" % bare(got))
             return False
-        rep.ok("%s %s = %s -> %s%s" % (ref, where, expected, far_end, (" via " + path(seen, tnet)) if seen[tnet] else ""))
+        via = path(seen, tnet)
+        rep.ok("%s %s = %s -> %s%s" % (ref, where, expected, far_end, (" via " + via) if via else ""))
         return True
     rep.ok("%s %s = %s" % (ref, where, expected))
     return True
@@ -434,13 +478,14 @@ def check_processor(rep, nl, cfg, rows):
     sock, exp = cfg["teensy"], cfg.get("expander")
     expect, expect_x = EXPECT.get(rep.board, {}), EXPECT_EXPANDER.get(rep.board, {})
     claimed_pads, claimed_ports = {}, {}
-    processor_nets = {}                      # channel -> set of nets on its processor pins
+    processor_nets = {}                      # channel -> {net: (pin label, record words)}
     for row in rows:
         cid = row["id"]
         pins = record_pins(row.get("teensy_pin", ""))
         ports = record_ports(row.get("teensy_pin", "")) if exp else []
+        pin_words = record_pin_words(row.get("teensy_pin", ""))
         want, want_x = expect.get(cid), expect_x.get(cid, [])
-        nets = set()
+        nets = {}
         if want is None:
             if pins:
                 rep.bad(cid, "teensy_pin", "an EXPECT entry in check.py for pins %s" % ",".join(pins), "none")
@@ -459,7 +504,7 @@ def check_processor(rep, nl, cfg, rows):
                 rep.bad(sock, "%s(pin %s)" % (pad, pin), "one channel", "%s and %s" % (claimed_pads[pad], cid))
             claimed_pads[pad] = cid
             if check_pin_on_net(rep, nl, sock, pad, pin, net, far):
-                nets.add(nl.net(sock, pad))
+                nets[nl.net(sock, pad)] = ("pin " + pin, pin_words.get(pin, set()))
         if exp:
             if len(ports) != len(want_x):
                 rep.bad(cid, "teensy_pin", "%d expander ports in check.py's EXPECT_EXPANDER" % len(want_x),
@@ -477,7 +522,7 @@ def check_processor(rep, nl, cfg, rows):
                         rep.bad(exp, port, "one channel", "%s and %s" % (claimed_ports[port], cid))
                     claimed_ports[port] = cid
                     if check_pin_on_net(rep, nl, exp, pnum, port, net, far):
-                        nets.add(nl.net(exp, pnum))
+                        nets[nl.net(exp, pnum)] = (exp + " " + port, set())
         processor_nets[cid] = nets
     # Pads the sheet wires that no channel claims, and the DCU's self-naming pads (24_WIN_IN2).
     for pad, label in TEENSY_PADS.items():
@@ -553,13 +598,25 @@ def check_drops(rep, nl, cfg, rows, cavities, processor_nets):
                 if row.get("kind") == "power" or not processor_nets.get(row["id"]):
                     rep.ok("%s %s wired for %s (%s, no front end to walk)" % (conn, pin, row["id"], row.get("kind")))
                     continue
+                targets = processor_nets[row["id"]]
                 seen = reach(nl, net, stop, True)
-                hit = [n for n in processor_nets[row["id"]] if n in seen]
-                if hit:
-                    rep.ok("%s %s reaches %s at %s via %s" % (conn, pin, row["id"], bare(hit[0]), path(seen, hit[0]) or "direct"))
-                else:
-                    rep.bad(conn, pin, "a path to %s's processor pins (%s)" % (row["id"], ",".join(bare(n) for n in sorted(processor_nets[row["id"]]))),
+                # where the record's words tell the channel's pins apart, the cavity must land
+                # on the pin whose words match its circuit best (DRV up on "DRV up", not "DRV down")
+                cav_words = words(next((c["circuit"] for c in cavities if c["housing"] == housing and c["cav"] == num), ""))
+                score = {n: len(cav_words & w) for n, (_l, w) in targets.items()}
+                hits = sorted(((-score[n], seen[n][2], n) for n in targets if n in seen))
+                if not hits:
+                    rep.bad(conn, pin, "a path to %s's processor pins (%s)" % (row["id"], ",".join(bare(n) for n in sorted(targets))),
                             "%s reaches none of them" % bare(net))
+                    continue
+                hit = hits[0][2]
+                label = targets[hit][0]
+                best = max(score.values())
+                if best and score[hit] < best:
+                    want = ", ".join("%s (%s)" % (targets[n][0], bare(n)) for n, s in sorted(score.items()) if s == best)
+                    rep.bad(conn, pin, "%s - the record's words for the cavity" % want, "%s (%s)" % (label, bare(hit)))
+                else:
+                    rep.ok("%s %s reaches %s %s at %s via %s" % (conn, pin, row["id"], label, bare(hit), path(seen, hit) or "direct"))
 
 
 def check_ribbon(rep, nl, cfg, ribbon):
@@ -767,8 +824,6 @@ def check_pin_tables(rep, nl, tables):
 # --------------------------------------------------------------------------------------------
 def export_netlist(cli, sch, out):
     cmd = [cli, "sch", "export", "netlist", "--format", "kicadsexpr", "-o", out, sch]
-    env = dict(os.environ)
-    env.setdefault("FONTCONFIG_FILE", "/dev/null") if False else None
     try:
         r = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=300)
     except (OSError, subprocess.TimeoutExpired) as e:
