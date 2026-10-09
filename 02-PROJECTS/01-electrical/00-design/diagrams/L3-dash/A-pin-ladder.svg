@@ -136,7 +136,7 @@
 <text x="380.0" y="814.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A8</text>
 <path d="M390.0,810.0 L720.0,810.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
 <path d="M390.0,810.0 L720.0,810.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="800.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S1-6  ·  16 AWG GRY</text>
+<text x="406.0" y="800.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S1-6  ·  16 AWG GRY  ·  RT10</text>
 <rect x="650.0" y="803.0" width="44.0" height="14.0" rx="3" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="672.0" y="828.0" font-size="10" text-anchor="middle" font-weight="700" fill="#1f2328">4.7 kΩ</text>
 <rect x="720.0" y="791.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
@@ -170,7 +170,7 @@
 <text x="380.0" y="931.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K2 85</text>
 <path d="M390.0,927.0 L720.0,927.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
 <path d="M390.0,927.0 L720.0,927.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="917.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S1-9  ·  16 AWG BLU</text>
+<text x="406.0" y="917.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S1-9  ·  16 AWG BLU  ·  RT10</text>
 <rect x="720.0" y="913.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="730.0" y="931.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Wink L switch NC terminal; switch common → dash ground</text>
 <line x1="30" y1="944.0" x2="390" y2="944.0" stroke="#d0d7de"/>
@@ -180,7 +180,7 @@
 <text x="380.0" y="965.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K1 85</text>
 <path d="M390.0,961.0 L720.0,961.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
 <path d="M390.0,961.0 L720.0,961.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="951.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S1-10  ·  16 AWG BLU</text>
+<text x="406.0" y="951.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S1-10  ·  16 AWG BLU  ·  RT10</text>
 <rect x="720.0" y="947.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="730.0" y="965.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Wink R switch NC terminal; switch common → dash ground</text>
 <line x1="30" y1="978.0" x2="390" y2="978.0" stroke="#d0d7de"/>
@@ -283,7 +283,7 @@
 <text x="380.0" y="1472.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F13</text>
 <path d="M390.0,1468.0 L720.0,1468.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <path d="M390.0,1468.0 L720.0,1468.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="1458.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S2-7  ·  16 AWG RED  ·  capped at the far end</text>
+<text x="406.0" y="1458.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S2-7  ·  16 AWG RED  ·  RT22  ·  capped at the far end</text>
 <rect x="720.0" y="1447.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="730.0" y="1472.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-MOD 1 — the future-module receptacle behind the dash, dust-capped (D-274)</text>
 <line x1="30" y1="1492.0" x2="390" y2="1492.0" stroke="#d0d7de"/>
@@ -293,7 +293,7 @@
 <text x="380.0" y="1513.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">GND</text>
 <path d="M390.0,1509.0 L720.0,1509.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <path d="M390.0,1509.0 L720.0,1509.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="1499.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S2-8  ·  16 AWG BLK  ·  capped at the far end</text>
+<text x="406.0" y="1499.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S2-8  ·  16 AWG BLK  ·  RT22  ·  capped at the far end</text>
 <rect x="720.0" y="1495.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="730.0" y="1513.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-MOD 2 — with cavity 7 (D-274)</text>
 <line x1="30" y1="1526.0" x2="390" y2="1526.0" stroke="#d0d7de"/>
@@ -325,7 +325,7 @@
 <text x="70.0" y="1625.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Parking brake switch → brake warning lamp</text>
 <path d="M390.0,1621.0 L720.0,1621.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
 <path d="M390.0,1621.0 L720.0,1621.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="1611.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S2-11  ·  16 AWG GRY</text>
+<text x="406.0" y="1611.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S2-11  ·  16 AWG GRY  ·  RT11</text>
 <rect x="720.0" y="1607.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="730.0" y="1625.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Parking brake switch C-04 terminal BR (switch body grounds through the lever bracket)</text>
 <line x1="30" y1="1638.0" x2="390" y2="1638.0" stroke="#d0d7de"/>
@@ -348,7 +348,7 @@
 <text x="70.0" y="1794.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Future pass-through A</text>
 <path d="M390.0,1790.0 L720.0,1790.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <path d="M390.0,1790.0 L720.0,1790.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="1780.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S3-1  ·  16 AWG GRY  ·  capped at the far end</text>
+<text x="406.0" y="1780.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S3-1  ·  16 AWG GRY  ·  RT22  ·  capped at the far end</text>
 <rect x="720.0" y="1771.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="730.0" y="1786.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-RDR 1 — the radar pass-through's dash-end receptacle, dust-capped; linked at the post to L4-S 5</text>
 <text x="730.0" y="1802.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">(D-274)</text>
@@ -358,7 +358,7 @@
 <text x="70.0" y="1838.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Future pass-through B</text>
 <path d="M390.0,1834.0 L720.0,1834.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <path d="M390.0,1834.0 L720.0,1834.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="1824.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S3-2  ·  16 AWG GRY  ·  capped at the far end</text>
+<text x="406.0" y="1824.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S3-2  ·  16 AWG GRY  ·  RT22  ·  capped at the far end</text>
 <rect x="720.0" y="1815.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="730.0" y="1830.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-RDR 2 — the radar pass-through's dash-end receptacle, dust-capped; linked at the post to L4-S 6</text>
 <text x="730.0" y="1846.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">(D-274)</text>
@@ -368,7 +368,7 @@
 <text x="70.0" y="1882.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Future pass-through C</text>
 <path d="M390.0,1878.0 L720.0,1878.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <path d="M390.0,1878.0 L720.0,1878.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="1868.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S3-3  ·  16 AWG GRY  ·  capped at the far end</text>
+<text x="406.0" y="1868.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S3-3  ·  16 AWG GRY  ·  RT22  ·  capped at the far end</text>
 <rect x="720.0" y="1859.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="730.0" y="1874.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-RDR 3 — the radar pass-through's dash-end receptacle, dust-capped; linked at the post to L4-S 7</text>
 <text x="730.0" y="1890.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">(D-274)</text>

@@ -11,7 +11,7 @@ L3-BLW,L3 Dash,Blower,DTP06-2S,DTP04-2P,2,WP-2S + WP-2P,HVAC case,Blower motor r
 L3-S1,L3 Dash,Signal,DT06-12S,DT04-12P,12,W12S + W12P,Dash post,Every ladder and switch input
 L3-S2,L3 Dash,Signal,DT06-12S,DT04-12P,12,W12S + W12P,Dash post,"Wake sources, switch supply, courtesy, the window commands (→ DP-DCU-B at the centre stack, luxury D-362; D-350)"
 L3-S3,L3 Dash,Signal,DT06-8S,DT04-8P,8,W8S + W8P,Dash post,"Radar pass-through (→ L3-RDR, D-274), the kick-down command, and the four DCU mirror lines to L4-S2 (D-360) - all eight cavities used"
-L4-P,L4 Rear,Power,DTP06-4S,DTP04-4P,4,WP-4S + WP-4P,Dash post,"Defog, fuel pump, the window bus and comfort feed to the sill node"
+L4-P,L4 Rear,Power,DTP06-4S,DTP04-4P,4,WP-4S + WP-4P,Dash post,"Defog, fuel pump, the window bus and the mirror-heat feed from the DCU's high-side switch (L4-P 4, D-369) to the sill node"
 L4-M,L4 Rear,Medium,DT06-12S,DT04-12P,12,W12S + W12P,Dash post,"Rear lamps, interior lamp, the release solenoids (wired, awaiting their trigger — D-274), window commands to the sill sockets"
 L4-S,L4 Rear,Signal,DT06-8S,DT04-8P,8,W8S + W8P,Dash post,"Fuel sender, door ladder, road speed (D-272), courtesy, radar pass-through (→ L4-RDR, D-274)"
 L4-S2,L4 Rear,Signal,DT06-8S,DT04-8P,8,W8S + W8P,Dash post,"Mirror lines dash → sill - motor common, left motor, left clutch, right motor, right clutch; driven by the DCU (D-255, luxury D-359)"

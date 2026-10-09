@@ -8,5 +8,5 @@ C06,Engine block → chassis strap,2,2,BLK,"confirm — hand estimate, not measu
 C07,Alternator B+ → F18 → starter B+ stud,6,4,RED,"confirm — hand estimate, not measured"
 C08,Starter B+ stud → F17 → K9 30,10,4,RED,"confirm — hand estimate, not measured"
 C09,K9 87 → starter S terminal,10,3,RED,"confirm — hand estimate, not measured"
-C10,Busbar → PMU stud,2,0.7,RED,"confirm — hand estimate, not measured"
+C10,Busbar → PMU stud,2,0.7,RED,"confirm — hand estimate, not measured. At the dash node, lugs both ends, ≤ 8 in (D-241); the row once duplicated as N02 (R8)"
 C11,Rear ground stud → engine block — dedicated cranking return,1/0,18,BLK,"confirm — hand estimate, not measured. The only home for this conductor: the heavy battery and bond cables live here and are bought from here (P062 / P097); grounds holds the zone returns (A9, 2026-09-21)"

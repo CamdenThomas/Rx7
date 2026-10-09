@@ -386,10 +386,9 @@ def route_map(leg, folder):
         return len(wires.get(rid, [])) + sum(count(k) for k in kids.get(rid, []))
 
     order = [x for k in kids.get("ROOT", []) if count(k) for x in leaves(k)]
-    SP, GAP, COL = 18, 70, 250
+    SP, GAP = 18, 70
     maxd = max((depth[l] for l in order), default=1)
     X0 = 200
-    XE = X0 + COL * maxd + 60
 
     # leaf bands top to bottom; a leaf's wires sit at SP spacing inside its band
     y, band = 150, {}
@@ -428,6 +427,16 @@ def route_map(leg, folder):
 
     used = set()
     route_y = {rid: ys_on(rid) for rid in depth if count(rid)}
+    # a column is as wide as its tallest 45° bend needs, never less than 250: with many leaves
+    # under one node a bend can be taller than a fixed column, and would run on into the labels
+    COL = 250
+    for l in order:
+        for i in range(len(wires.get(l, []))):
+            k, py = (l, i), start_y[(l, i)]
+            for rid in path(l):
+                COL = max(COL, abs(route_y[rid][k] - py) + 60)
+                py = route_y[rid][k]
+    XE = X0 + COL * maxd + 60
     for l in order:
         for i, (c, end, also) in enumerate(wires.get(l, [])):
             k = (l, i)

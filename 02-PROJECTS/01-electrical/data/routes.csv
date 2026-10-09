@@ -21,3 +21,7 @@ RT19,L4 Rear,Dash post,"Sill node, driver kick panel",along the sill,,3.8,"windo
 RT20,Sill,Sill node,Each door,through the jamb boot,,7.5,the door plugs are RESERVED this build (D-274) but the leg is cut now
 RT21,L4 Rear,Dash post,Transmission speedo boss and kick-down solenoid,"Tunnel, with RT15",,,road speed L4-S 3 / 4 and the kick-down L4-S2 7 share this run
 RT22,L3 Dash,Dash post,Behind the dash,along the dash rail beside the post,,,"The two held receptacles that sit behind the dash and nowhere else: L3-MOD (L3-S2 7/8) and L3-RDR (L3-S3 1-3). Short; measured at M-2 like the rest (Y1, 2026-10-09)."
+RT23,L4 Rear,Rear node,"Roof rail, interior lamp",up the C-pillar trim,,,"The interior / spot lamp (DV39) and its roof-rail ground (G31). Measured at M-2 (R8, 2026-10-09)."
+RT24,L4 Rear,Rear node,"Hatch glass, defog grid",through the hatch hinge loop with the tail-lamp conductors,,,"The defog grid's feed and its rear-star return (DV33, G25). Measured at M-2 (R8)."
+RT25,L4 Rear,Rear node,"Fuel-door solenoid, quarter trim",behind the driver-side quarter trim,,,The fuel-door release solenoid (DV49). Measured at M-2 (R8).
+RT26,L1 Engine,Engine-bay junction,"Master cylinder, brake-fluid switch",along the firewall to the reservoir,,,The brake-fluid level switch (DV08). Measured at M-2 (R8).
