@@ -48,7 +48,7 @@ devices,route,str,no,routes.id,the run this device's conductors follow from the 
 fuses,id,key,yes,,
 fuses,rating,str,no,,
 fuses,location,str,no,,
-fuses,block,enum(A|B),no,,
+fuses,block,enum(A|B|C),no,,C added 2026-10-09 (A13): the O15 comfort block P164 behind the centre stack
 fuses,pos,int,no,,
 fuses,feeds,str,no,,
 fuses,fed_from,str,no,,
@@ -63,7 +63,7 @@ grounds,ft,int,no,,
 grounds,note,text,no,,R11 - a length nobody has measured carries confirm (2026-09-21)
 housings,code,key,yes,,
 housings,leg,str,no,,
-housings,class,enum(Blower|Door|Medium|Module|Port|Power|Signal),no,,
+housings,class,enum(Blower|Door|Medium|Module|Port|Power|Seat|Signal),no,,Seat added 2026-10-09 (A14): the under-seat receptacles
 housings,leg_side,enum(DT06-12S|DT06-2S|DT06-4S|DT06-6S|DT06-8S|DTP06-2S|DTP06-4S),no,,
 housings,box_side,str,no,,
 housings,cavs,int,no,,

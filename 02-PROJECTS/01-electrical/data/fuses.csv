@@ -20,3 +20,8 @@ F22,3 A,"Dash node, sealed inline",,,"DCU logic, constant - DP-DCU 1",Busbar,LIV
 F23,3 A,"Dash node, sealed inline",,,Wake stages' excitation rail (the door and A8 stages) — split off F3 by D-410,Busbar,LIVE,WAKE,
 F24,3 A,"Behind the lower dash panel, sealed inline in the L3 leg where the light-switch and brake-wake branch leaves L3-S2 2",,,Light switch E-01 common and the brake-wake plunger (L3-S1 7) — the branch off the key supply (D-412),F3 via L3-S2 2,LIVE,LIGHT-SW,
 F5,,"Dash node, block B (K11)",B,2,"L1-S2 9 (N68), the phase-2 sensor supply (D-271) - no fuse this build, fitted with the sensor",K11 87 (block B input),EMPTY,SENSOR-2,
+F25,7.5 A,Comfort block C (P164) behind the centre stack,C,1,Driver seat heater + → L3-SD 1 (D-382: 5 A load),Comfort block input stud ← L3-CMF 1 (O15),LIVE,SEAT-D-HEAT,
+F26,7.5 A,Comfort block C (P164) behind the centre stack,C,2,Passenger seat heater + → L3-SP 1 (D-382),Comfort block input stud ← L3-CMF 1 (O15),LIVE,SEAT-P-HEAT,
+F27,5 A,Comfort block C (P164) behind the centre stack,C,3,Driver seat cooling fan + → L3-SD 2 (D-382: 2.5 A load),Comfort block input stud ← L3-CMF 1 (O15),LIVE,SEAT-D-COOL,
+F28,5 A,Comfort block C (P164) behind the centre stack,C,4,Passenger seat cooling fan + → L3-SP 2 (D-382),Comfort block input stud ← L3-CMF 1 (O15),LIVE,SEAT-P-COOL,
+F29,7.5 A,Comfort block C (P164) behind the centre stack,C,5,"The DCU's comfort input DP-DCU-C 5 (SN27): the servo rail, 1-2.5 A, and the mirror-heat high side, 3 A (D-382, D-379). Position 6 is spare",Comfort block input stud ← L3-CMF 1 (O15),LIVE,DCU-CMF,
