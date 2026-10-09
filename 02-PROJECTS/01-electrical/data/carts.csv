@@ -1,5 +1,5 @@
 store,total_usd,lines_txt,url,note
 Waytek,455.04,11 lines,https://www.waytekwire.com/,
 WireBarn,382.68,8 lines,https://www.wirebarn.com/GXL-Wire-By-The-Foot_c_4.html,"the site showed ""Hello, Guest"" at review — sign in before checkout or the cart is lost"
-DeutschConnector.com,944.08,"26 lines, 188 pieces",https://www.deutschconnector.com/,
-Amazon,1096.22,49 lines / 55 items,https://www.amazon.com/,
+DeutschConnector.com,944.08,"26 lines, 188 pieces",https://www.deutschconnector.com/,"26 lines at the review; R9 moves P101 to 7, P099 to 3, P128 to 1, P028 to 67, P024 to 20, P030 to 18 and adds the six 8-way clips (P162) — re-read the total when the cart is edited"
+Amazon,1096.22,49 lines / 55 items,https://www.amazon.com/,"total_usd is the store's figure at the 2026-09-28 review (49 lines). unit_usd on the Amazon rows is per unit since R9 (it was the line price where qty > 1): the lines' estimate is sum(qty*unit_usd) and will not equal this figure until the cart is re-read after R9's changes (heavy cable at 1.5×, MIDI 5250 / 5256 / 7720, C12, P171)"

@@ -1,8 +1,8 @@
 id,run,awg,ft,colour,note
-C01,Battery + → master disconnect → Class-T block,2,1.0,RED,"confirm — hand estimate, not measured"
-C02,Battery + → master disconnect → MRBF,1/0,1.0,RED,"confirm — hand estimate, not measured"
+C01,Master disconnect output stud → Class-T block input,2,1.0,RED,"confirm — hand estimate, not measured. The disconnect's output stud carries this lug under the MRBF holder (D-319); post → switch is C12 (R9)"
+C02,"Master disconnect output stud → MRBF holder (P051) — the holder bolts straight on the stud, no cable",1/0,0,RED,"0 ft by design (D-319, R9): the 5191 holder is stacked on the switch's output stud with C01's lug; the row stays so B2 reads end to end and the 1/0 count hides nothing. Post → switch is C12"
 C03,Class-T → DP-BAT (through the tunnel to the dash post),2,16,RED,"confirm — hand estimate, not measured"
-C04,Battery + → MRBF → starter B+ stud (forward under the car / through the tunnel),1/0,18,RED,"confirm — hand estimate, not measured"
+C04,MRBF (on the disconnect's output stud) → starter B+ stud (forward under the car / through the tunnel),1/0,18,RED,"confirm — hand estimate, not measured"
 C05,Battery − → rear ground stud,1/0,3,BLK,"confirm — hand estimate, not measured. The only home for this conductor: the heavy battery and bond cables live here and are bought from here (P062 / P097); grounds holds the zone returns (A9, 2026-09-21)"
 C06,Engine block → chassis strap,2,2,BLK,"confirm — hand estimate, not measured. The only home for this conductor: the heavy battery and bond cables live here and are bought from here (P062 / P097); grounds holds the zone returns (A9, 2026-09-21)"
 C07,Alternator B+ → F18 → starter B+ stud,6,4,RED,"confirm — hand estimate, not measured"
@@ -10,3 +10,4 @@ C08,Starter B+ stud → F17 → K9 30,10,4,RED,"confirm — hand estimate, not m
 C09,K9 87 → starter S terminal,10,3,RED,"confirm — hand estimate, not measured"
 C10,Busbar → PMU stud,2,0.7,RED,"confirm — hand estimate, not measured. At the dash node, lugs both ends, ≤ 8 in (D-241); the row once duplicated as N02 (R8)"
 C11,Rear ground stud → engine block — dedicated cranking return,1/0,18,BLK,"confirm — hand estimate, not measured. The only home for this conductor: the heavy battery and bond cables live here and are bought from here (P062 / P097); grounds holds the zone returns (A9, 2026-09-21)"
+C12,Battery + clamp stud → master disconnect input stud,1/0,1.0,RED,"confirm — hand estimate, not measured. The one unprotected length (D-062, D-319): the positive clamp's 3/8 stud take-off (P095) to the switch's input stud, kept to inches. Bought from P096 (R9, review 2026-09-28)"
