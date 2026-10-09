@@ -1658,6 +1658,14 @@ def archived_decision_ids():
     return ids
 
 
+def retired_pattern(term):
+    """Whole-term matcher for the retired-term scan. Not inside a longer word or dotted
+    number (before: no word char or full stop; after: no word char, and no full stop that
+    continues into more text, so 01.11.3 and 01.110 stay silent), but a full stop that ends
+    a sentence - followed by whitespace, a closing bracket or quote, or the end - is caught (MF1)."""
+    return re.compile(r"(?<![\w.])" + re.escape(term) + r"(?!\w|\.[^\s)\]}\"'\u201d\u2019])", re.I)
+
+
 def unresolved_cites():
     """ADVISORY ONLY. Ids written inside prose cells are documentation, not structure:
     a cite that no longer resolves is worth knowing about and must never refuse a commit.
@@ -1682,7 +1690,7 @@ def unresolved_cites():
                 continue
             _, body = read_csv_rows(f)
             # Whole terms only: the retired block id 03.05 must not match 203.058 in a note.
-            pats = [(t, re.compile(r"(?<![\w.])" + re.escape(t) + r"(?![\w.])", re.I)) for t in terms]
+            pats = [(t, retired_pattern(t)) for t in terms]
             for i, row in enumerate(body, start=2):
                 for cell in row:
                     for t, pat in pats:
@@ -3308,6 +3316,11 @@ def cmd_selftest(args):
             (root / "99-ARCHIVE" / "old" / "DECISIONS.md").write_text("# Decisions\n\n**D-120 — old ruling**\n", encoding="utf-8")
             _use_tree(root)
             expect("the next block id is one past every closes and retired id", next_block_id("01") == "01.06")
+            rp = retired_pattern("01.11")
+            expect("a retired term that ends a sentence is caught", bool(rp.search("see block 01.11.")) and bool(rp.search("(see 01.11.) x")) and bool(rp.search("closed by 01.11. Next")))
+            expect("a retired term inside a longer dotted number or word stays silent",
+                   not any(rp.search(x) for x in ("01.11.3", "01.110", "201.11", "x.01.11", "01.11x")))
+            expect("a retired term in plain prose is still caught", all(rp.search(x) for x in ("block 01.11", "block 01.11, ok", "(01.11)", "01.11")))
             expect("the next decision id is one past the tree and the archive's pages", next_decision_id() == "D-121")
             expect("a v2 DECISIONS.md page resolves a cite", "D-120" in archived_decision_ids())
             (root / one / "work.csv").write_text(csvtext(["id", "item", "owner", "state", "gate", "note", "reply", "choices", "unit", "due", "part"],
