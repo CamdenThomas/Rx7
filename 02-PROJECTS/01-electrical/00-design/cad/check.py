@@ -98,7 +98,9 @@ EXPECT = {
         "IC23": [("I2C_SDA", "U7.SDA"), ("I2C_SCL", "U7.SCL"), ("IMU_INT", "U7.INT1")],
         # The record's "RX 7" is the Teensy's receive pin, fed by the radio's TX: the sheet
         # names a UART net by its driver, so pin 7 is RADIO_TX and must land on the XIAO's TX.
-        "IC24": [("RADIO_TX", "U8.TX"), ("RADIO_RX", "U8.RX"), ("RADIO_EN", "U8.EN"), ("RADIO_BOOT", "U8.BOOT")],
+        # U8 carries Seeed's castellation names (F9); EN is a power-cycle through the NPN Q4 and
+        # the P-FET on VBUS, so RADIO_EN ends at Q4's base; BOOT lands on D9 / GPIO9 (IC24).
+        "IC24": [("RADIO_TX", "U8.D6/TX"), ("RADIO_RX", "U8.D7/RX"), ("RADIO_EN", "Q4.B"), ("RADIO_BOOT", "U8.D9/MISO")],
     },
     "dcu": {
         "SN24": ["+5V"],
