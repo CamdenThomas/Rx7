@@ -21,3 +21,7 @@ MG20,19,Fuel pump + fuel sender (the ICU's node from D-258),O5 / L4-S 1
 MG21,20,Ignition coils + alternator excitation,O12 / F15
 MG22,21,"Charge line, brake warning, the three senders, the tach and the road-speed pulse generator (D-272) → DP-ICU-B; the ICU and the display go live and the factory cluster goes dark — GATED on the display proven on the bench (F3, D-268)",DP-ICU-B
 MG23,22,Start,O21 / K9
+MG24,20,"Kick-down solenoid (F21 → L3-S2 12 → L4-S2 7) - with MG20, the rear leg's transmission circuits (R10)",F21
+MG25,21,"Wideband gauge - F20 feed and its AEMnet pair onto CAN2 at the node; with MG21, ignition on (R10)",F20 / CAN2
+MG26,2,K11 head-unit constant bus (O22 → K11 → block B → F1); with MG02 - the head unit's memory feed (R10),O22 / K11 / F1
+MG27,18,"Rear defog grid, as it is (K-026, CK21) - the panel's defog key drives it (D-374, D-442); with MG18 (R10)",O4
