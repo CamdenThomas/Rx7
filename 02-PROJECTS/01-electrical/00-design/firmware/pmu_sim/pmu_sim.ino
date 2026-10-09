@@ -53,13 +53,14 @@ static void txState() {
     m.wake_source = (car.key >= K_ACC ? WAKE_ACC : 0)
                   | (car.key >= K_RUN ? WAKE_RUN : 0)
                   | (car.turn == T_HAZARD ? WAKE_HAZARD : 0)
+                  | (car.door ? WAKE_DOOR : 0)
                   | (car.horn ? WAKE_HORN : 0);
     uint8_t fault = 0;
     for (int i = 0; i < 24; i++) if (car.chState[i] >= 2) fault |= FAULT_SOFTFUSE;
     if (car.voltsX10 < 115) fault |= FAULT_UNDERVOLT;
     if (car.voltsX10 > 150) fault |= FAULT_OVERVOLT;
     m.fault     = fault;
-    m.headlight = (uint8_t)car.head;
+    m.headlight = car.head >= H_HEAD ? (uint8_t)HL_HEAD : (uint8_t)car.head;   /* HIGH and PASS read HEAD */
     m.turn      = (uint8_t)car.turn;
     m.popup     = (uint8_t)car.popup;
     m.counter   = counter100++;
@@ -104,11 +105,12 @@ static void help() {
       "\n--- PMU SIMULATOR ---------------------------------------\n"
       " k0 k1 k2 k3   key OFF / ACC / RUN / START\n"
       " g <0-100>     throttle\n"
-      " h0 h1 h2      headlights OFF / PARK / HEAD  (pop-ups follow)\n"
+      " h0 .. h4      headlights OFF / PARK / HEAD / HIGH / PASS  (pop-ups follow)\n"
       " tl tr th to   turn LEFT / RIGHT / HAZARD / off\n"
       " w0 w1 w2 w3   wiper OFF / INT / LOW / HIGH\n"
       " b             brake toggle        n  horn toggle\n"
       " r             reverse toggle      d  defog toggle\n"
+      " o             door toggle\n"
       " f <0-100>     fuel level %\n"
       " x <1-24>      trip that channel   c  clear all trips\n"
       " a             auto drive cycle on/off\n"
@@ -154,7 +156,7 @@ static void command(char *line) {
     switch (line[0]) {
         case 'k': car.key = (KeyPos)(line[1] - '0'); break;
         case 'g': { int v = readInt(line + 1); if (v >= 0) car.throttle = v > 100 ? 100 : v; } break;
-        case 'h': car.head = (HeadPos)(line[1] - '0'); break;
+        case 'h': if (line[1] >= '0' && line[1] <= '4') car.head = (HeadPos)(line[1] - '0'); break;
         case 't':
             if (line[1] == 'l') car.turn = T_LEFT;
             else if (line[1] == 'r') car.turn = T_RIGHT;
@@ -166,6 +168,7 @@ static void command(char *line) {
         case 'n': car.horn = !car.horn; break;
         case 'r': car.reverse = !car.reverse; break;
         case 'd': car.defog = !car.defog; break;
+        case 'o': car.door = !car.door; break;
         case 'f': { int v = readInt(line + 1); if (v >= 0) car.fuelPctX10 = v * 10; } break;
         case 'x': { int v = readInt(line + 1); if (v >= 1 && v <= 24) {
                         car.tripChannel(v - 1);

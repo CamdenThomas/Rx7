@@ -22,7 +22,9 @@
 #include "channels.h"
 
 enum KeyPos : uint8_t { K_OFF = 0, K_ACC, K_RUN, K_START };
-enum HeadPos: uint8_t { H_OFF = 0, H_PARK, H_HEAD };
+/* The A15 ladder's five states (ladders A15): HEAD is HEAD_LO. 0x100 byte 3 carries only
+ * OFF / PARK / HEAD, so pmu_sim sends HIGH and PASS as HEAD (can_fields 0x100/3). */
+enum HeadPos: uint8_t { H_OFF = 0, H_PARK, H_HEAD, H_HIGH, H_PASS };
 enum TurnPos: uint8_t { T_OFF = 0, T_LEFT, T_RIGHT, T_HAZARD };
 enum WipePos: uint8_t { W_OFF = 0, W_INT, W_LOW, W_HIGH };
 enum PopPos : uint8_t { P_DOWN = 0, P_RAISING, P_UP, P_LOWERING };
@@ -37,7 +39,8 @@ public:
     bool    brake = false;
     bool    horn  = false;
     bool    reverse = false;
-    bool    defog = false;
+    bool    defog = false;         /* the panel key over CAN (logic DEFOG: panel_defog) */
+    bool    door  = false;         /* A6 != CLOSED - any door open */
     int     throttle = 0;          /* 0..100, drives target rpm */
 
     /* ---- engine and drivetrain ---- */
@@ -230,10 +233,16 @@ private:
 
     /* ---------------- pop-ups ---------------- */
     void popups(uint32_t dt) {
-        bool want = (head == H_HEAD);
+        /* HEAD is HEAD_LO or HEAD_HI; a PASS flash moves nothing - the pop-ups stay where
+         * they are (rules pop-up-cycle names HEAD only) */
+        if (head == H_PASS) { popupTravel(dt); return; }
+        bool want = (head == H_HEAD || head == H_HIGH);
         if (want && popup == P_DOWN)   { popup = P_RAISING;  popupTravelMs = 0; }
         if (!want && popup == P_UP)    { popup = P_LOWERING; popupTravelMs = 0; }
+        popupTravel(dt);
+    }
 
+    void popupTravel(uint32_t dt) {
         if (popup == P_RAISING || popup == P_LOWERING) {
             popupTravelMs += (int)dt;
             if (popupTravelMs >= POPUP_TRAVEL)
@@ -241,7 +250,9 @@ private:
         }
     }
 
-    /* ---------------- which channels are commanded ---------------- */
+    /* ---------------- which channels are commanded ----------------
+     * Held to the record's logic rows by tests/test_suite.cpp section 14 (logic_vectors.h,
+     * generated from logic.csv): what this model has an input for must agree. */
     void setChannels() {
         bool acc = (key >= K_ACC);
         bool run = (key >= K_RUN);
@@ -249,8 +260,8 @@ private:
         bool want[24] = {false};
         want[O1_MOTOR]     = (popup == P_RAISING || popup == P_LOWERING);
         want[O2_HEAD_LO]   = (head == H_HEAD);
-        want[O3_HEAD_HI]   = false;
-        want[O4_DEFOG]     = defog && run;
+        want[O3_HEAD_HI]   = (head == H_HIGH || head == H_PASS);   /* logic HEAD_HIGH */
+        want[O4_DEFOG]     = defog && acc;                         /* logic DEFOG: the A16 floor is ACC (D-350) */
         want[O5_FUEL]      = running || (key == K_START);
         want[O6_TAIL]      = (head >= H_PARK);
         want[O7_BRAKE]     = brake;
@@ -264,7 +275,7 @@ private:
         want[O17_TURN_L]   = turnPhase && (turn == T_LEFT  || turn == T_HAZARD);
         want[O18_TURN_R]   = turnPhase && (turn == T_RIGHT || turn == T_HAZARD);
         want[O19_REVERSE]  = reverse && run;
-        want[O20_INTERIOR] = acc;
+        want[O20_INTERIOR] = door;                   /* logic INTERIOR: A6 != CLOSED; no fade, no 10 min drop */
         want[O21_START]    = (key == K_START);
         want[O22_KEEPALIVE]= acc;
 

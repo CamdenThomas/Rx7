@@ -50,7 +50,7 @@ static const ChannelSpec CH[24] = {
   { "IGNITION",            500,   2500,   20,  100, EST      }, /* O12  enable-at 25.0 A */
   { "LS ECU",                0,   1800,   10,    0, RESERVED }, /* O13  CAPPED in pins - the engine swap (D-007) */
   { "LS FAN",                0,   2500,   10,    0, RESERVED }, /* O14  CAPPED in pins - the engine swap (D-007) */
-  { "COMFORT",               0,   2500,   10,    0, EST      }, /* O15  the comfort bus: 25 A (D-011); no est / enable-at in pins yet */
+  { "COMFORT",               0,   2500,   20,  200, EST      }, /* O15  the comfort bus: 25 A (D-011); inrush 2x for 200 ms (pins O15, Y8); no est / enable-at in pins yet */
   { "BLOWER",             1500,   2500,   80,  600, EST      }, /* O16  enable-at 25.0 A - the motor arrives with the luxury package (LP17) */
   { "TURN L",              420,    450,  100,  100, MEASURED }, /* O17  measured */
   { "TURN R",              420,    450,  100,  100, MEASURED }, /* O18  measured */

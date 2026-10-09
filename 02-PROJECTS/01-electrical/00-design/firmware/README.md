@@ -57,6 +57,8 @@ firmware/
 │   ├── test_suite.cpp       runs on the PC: packing, counter wrap, rendering, overlap, dirty tiles, stats
 │   ├── gen_vectors.py       can_vectors.h from the record's can_messages / can_fields (Y8; not versioned)
 │   ├── test_vectors.cpp     static_asserts can_map.h against those vectors - compiling is the test
+│   ├── gen_logic_vectors.py logic_vectors.h from the record's logic / ladders / rules / pins (Y8; not versioned):
+│   │                        test_suite §14 holds pmu_sim's vehicle_model.h to every row, test_dcu §18 the 0x400 terms
 │   └── run.sh               every suite, the sheets against the record (../cad/check.py), every sketch
 │                            compiled for its target. Do this after any change to the headers above
 │

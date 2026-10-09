@@ -1,8 +1,10 @@
 #!/bin/sh
 # Build and run ALL firmware test suites:
-#   test_suite.cpp   - ICU renderer regression (426 assertions)
+#   test_suite.cpp   - ICU renderer regression, and section 14: the PMU simulator held to the
+#                      record's logic rows (logic_vectors.h, Y8)
 #   test_bt817.cpp   - BT817 display driver, mocked SPI (35)
-#   test_dcu.cpp     - DCU climate, comfort, panel, windows, mirrors, pin map, expander (F-017, D-452)
+#   test_dcu.cpp     - DCU climate, comfort, panel, windows, mirrors, pin map, expander (F-017, D-452),
+#                      and section 18: the logic rows' terms the DCU raises over 0x400 (Y8)
 #   test_radio.cpp   - battery path: BMS decoder, C3 line protocol, 0x220/0x221 (F-015)
 #   test_vectors.cpp - can_map.h against the record's CAN tables (Y8; compiling is the test)
 # then the sheets against the record (cad/check.py) and every sketch against its target.
@@ -33,6 +35,13 @@ done
 # can_fields.csv, and test_vectors.cpp static_asserts every id, timeout and bit against
 # can_map.h - a field the record moved fails the build until the firmware follows.
 python3 gen_vectors.py || { echo "*** gen_vectors.py FAILED - the record names a CAN field the firmware does not know ***"; exit 1; }
+
+# The logic rows held to the record (Y8): logic_vectors.h is generated from logic.csv (with the
+# ladders, rules and pins it reads) - every input-state combination and the output the record
+# expects, inrush and retry as numbers, the prose it cannot read listed for hand-testing. It
+# fails when a row names a state its ladder does not have; test_suite (the PMU simulator) and
+# test_dcu (the 0x400 terms) then fail on any state or term the firmware does not know.
+python3 gen_logic_vectors.py || { echo "*** gen_logic_vectors.py FAILED - a logic row names a state or a cell the record cannot back ***"; exit 1; }
 
 # The three KiCad sheets against the record and the datasheets (cad/check.py, Y3): a Teensy pad,
 # expander port, drop cavity or ribbon conductor that disagrees with icu_channels, dcu_channels
