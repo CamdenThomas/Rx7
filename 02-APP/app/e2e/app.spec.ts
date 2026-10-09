@@ -6,7 +6,7 @@ import { expect, test, type Page } from '@playwright/test';
 
 // The open blocks come from the fixture, a copy of the live record: a block he answers is
 // deleted, so a test that names one by id breaks on the next run.
-const fixture = JSON.parse(readFileSync(new URL('../public/fixture/export.json', import.meta.url), 'utf8'));
+const fixture = JSON.parse(readFileSync(new URL('../fixture/export.json', import.meta.url), 'utf8'));
 const openBlocks: { area: string; id: string; recommended: string }[] = fixture.blocks;
 const pair = (() => {
   for (const b of openBlocks) {

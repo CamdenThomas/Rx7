@@ -12,7 +12,7 @@ const TREE = join(import.meta.dirname, '..', '..', '..');
 const PORT = 5199;
 // The block comes from the fixture, a copy of the live record: a block he answers is deleted,
 // so one named by id breaks on the next run. A project's block, so the URL is #/p/<name>/…
-const fixture = JSON.parse(readFileSync(join(import.meta.dirname, '..', 'public', 'fixture', 'export.json'), 'utf8'));
+const fixture = JSON.parse(readFileSync(join(import.meta.dirname, '..', 'fixture', 'export.json'), 'utf8'));
 const areas: { path: string; name: string }[] = fixture.areas;
 const block: { area: string; id: string; title: string } = fixture.blocks.find((b: { area: string }) =>
   areas.find((a) => a.name === b.area)?.path.startsWith('02-PROJECTS/'),

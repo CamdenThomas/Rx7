@@ -18,7 +18,7 @@ w64devkit) is stale; so is "the one Fedora machine" — that was true from 2026-
 | Firmware tests, `icu_sim` | Xcode CLT `g++`, `brew install sdl2`; the build scripts pin `SDKROOT` while CLT 26.6 sits beside a 27.0 SDK it cannot link against | `sudo dnf install gcc-c++ SDL2-devel` |
 | Teensy upload | Teensyduino or `arduino-cli` with the Teensy core; no udev | the same, plus PJRC's udev rule (firmware README §4) |
 | Diagrams | Pillow (`python3 -m pip install --user pillow`); the font is in the tree, `tools/fonts/` | Pillow (`python3-pillow`); same font |
-| The Rx7 app | **not built yet** (work `F3`): needs `brew install rustup` + `rustup-init`, `npm install`; Node 24 via fnm is there. `tauri-driver` (the desktop e2e) is Linux/Windows only — the browser tests run | installed (RPM); Node 22, Rust in `~/.cargo`, the Tauri libraries, JDK 21 in `~/.local/jdk`, the Android SDK/NDK in `~/Android/Sdk` (app README) |
+| The Rx7 app | **built and installed 2026-10-09 (`F3`)**: Rust 1.99 through rustup in `~/.cargo` (its env line in `~/.zshenv`), Node 24 via fnm, `npm install`, `npx tauri build --bundles app` with `SDKROOT` pinned to the 26.5 SDK (the pin applies to cargo too); ad hoc signed, not notarized, at `/Applications/Rx7.app`. `tauri-driver` (the desktop e2e) is Linux/Windows only — the browser tests run | installed (RPM); Node 22, Rust in `~/.cargo`, the Tauri libraries, JDK 21 in `~/.local/jdk`, the Android SDK/NDK in `~/Android/Sdk` (app README) |
 | Only here | — | the 3.4 GB model library (`01-REFERENCE/model`), the research downloads, the Android signing key — `P55` names their second home |
 | Claude Code | `~/.local/bin/claude` | `~/.local/bin/claude` |
 

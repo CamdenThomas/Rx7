@@ -7,13 +7,16 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
  *  it is never part of public/ and never bundled into an installed app (plan P42). */
 function fixture(): Plugin {
   const dir = join(__dirname, 'fixture');
-  const serve = (server: { middlewares: { use: (p: string, h: (req: any, res: any, next: () => void) => void) => void } }) =>
+  // A block body, not an arrow's value: Vite runs whatever configureServer returns as a
+  // post-hook, and connect's use() returns the app itself, which then crashes the server.
+  const serve = (server: { middlewares: { use: (p: string, h: (req: any, res: any, next: () => void) => void) => void } }) => {
     server.middlewares.use('/fixture/', (req, res, next) => {
       const file = join(dir, (req.url ?? '').split('?')[0].replace(/^\/+/, ''));
       if (!file.startsWith(dir) || !existsSync(file)) return next();
       res.setHeader('Content-Type', 'application/json');
       res.end(readFileSync(file));
     });
+  };
   return { name: 'rx7-fixture', configureServer: serve, configurePreviewServer: serve };
 }
 

@@ -34,3 +34,4 @@ L-0032,2026-09-26,session,P44 P45 P46 P47 P48 P49 P50 P51 P52 P53 P54,"P44-P54: 
 L-0033,2026-09-26,session,F2 P42,Desktop RPM rebuilt and reinstalled three times while the e2e found and fixed three regressions (untracked files stopped the sync; Withdraw refused by the new del guard; the sandbox lacked the archive pages); signed release APK built and installed on the Galaxy
 L-0034,2026-10-08,session,D-454 F3 P55,"Two machines, the Mac first (D-454): doc machine rewritten, CLAUDE.md §0 line, the font vendored for the drawings, scripts and READMEs path-neutral, the Mac set up (KiCad lib tables, ngspice, SDL2, Pillow)"
 L-0035,2026-10-09,session,MF1,MF1 done: the retired-term check catches a term that ends a sentence; three selftests
+L-0036,2026-10-09,session,F3 MF2,"F3 done: the desktop app built and installed on the Mac, browser tests run; MF2 raised for two stale e2e assertions"

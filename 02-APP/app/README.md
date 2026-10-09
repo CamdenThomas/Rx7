@@ -47,6 +47,21 @@ Installed once on the Fedora PC (`rx7.py doc machine`):
   `webkitgtk6.0`.
 - `npm install` in this folder.
 
+Installed once on the Mac (arm64, macOS 26; D-454), for the desktop app only — no Android
+targets here:
+
+- Rust through the official rustup installer, stable toolchain, default profile, into
+  `~/.cargo` (Rust 1.99.0 on 2026-10-09):
+  `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y`.
+  It wrote one line, `. "$HOME/.cargo/env"`, into `~/.zshenv` and a new `~/.profile`.
+- Node 24 (fnm) and the Xcode Command Line Tools were already there; Homebrew's `node` does
+  the same job if fnm is not.
+- `npm install` in this folder, and `npx playwright install chromium` for the browser tests.
+- **Pin `SDKROOT` for every cargo build.** The Command Line Tools 26.6 linker cannot read the
+  27.0 SDK that sits beside it (`tapi error: malformed file … unknown architecture`), and
+  `xcrun` picks 27.0 by default; the firmware scripts pin the same SDK:
+  `export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk`.
+
 The Android build wants these set in the shell:
 
 ```sh
@@ -74,6 +89,9 @@ npx tauri build --no-bundle && node e2e/desktop.mjs    # the desktop binary itse
                      # WebDriver: export, answer, commit, push, sync, withdraw — on a sandbox
 ```
 
+On the Mac, `check`, `npm test` and `npm run e2e` run; the WebDriver test does not, because
+`tauri-driver` exists only for Linux and Windows, so it stays on the Fedora PC (D-454).
+
 **The phone app on an emulator.** Build a test APK that talks to the stand-in GitHub, then
 drive its WebView with Playwright's Android API:
 
@@ -98,6 +116,21 @@ Two things learned the hard way on this PC:
 **On the desktop.** `npx tauri build` makes an RPM in
 `src-tauri/target/release/bundle/rpm/`; `sudo dnf install ./Rx7-*.rpm` puts Rx7 in the
 application menu. It opens on `~/docs/storage/Rx7`; Settings can point it elsewhere.
+
+**On the Mac.** The `rpm` target means nothing here, so name the bundle:
+
+```sh
+export PATH=$HOME/.cargo/bin:$PATH SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk
+npx tauri build --bundles app
+rm -rf /Applications/Rx7.app && ditto src-tauri/target/release/bundle/macos/Rx7.app /Applications/Rx7.app
+```
+
+That makes `src-tauri/target/release/bundle/macos/Rx7.app` (about 12 MB, arm64) and puts
+it in `/Applications/Rx7.app`, where Launchpad and Spotlight find it. It is signed ad hoc
+(`bundle.macOS.signingIdentity: "-"`) and not notarized: a copy built on this Mac opens with
+no warning, but `spctl` rejects it and a copy downloaded onto another Mac would be blocked.
+It opens on `~/dev/Rx7` (whichever of the two paths exists); Settings can point it
+elsewhere.
 
 **On the phone.** With the Galaxy plugged in and USB debugging on (Settings → About phone →
 Software information → tap Build number seven times, then Developer options → USB debugging):
