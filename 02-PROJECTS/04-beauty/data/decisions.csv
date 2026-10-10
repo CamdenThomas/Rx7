@@ -32,3 +32,15 @@ Reading, per item:
 - 03-beauty: work C06-C10 added; blocks `03.06`-`03.11` raised; `03.01` loses its wrap option; `03.03`, `03.04` and `03.05` carry the seamless bar and the new cutting and welding in their why.
 - 01-luxury: X-009 (raise the tail-light choice) now also waits on 03-beauty C08. Block `01.11` (the hidden detector) gains the finding that metallic paint on a body-colour bumper blocks 24 GHz radar (V-061's note) - the bumpers it would hide behind are now being replaced and painted.
 - 02-engine: a functional scoop would depend on the swap's hood clearance (DS01); C09 waits on it only if block `03.10` asks for one."
+D-475,,"The car is repainted Dark Metallic Emerald Green (custom colour, option c)",2026-10-09,standing,,,04.01,,"**The finished car is repainted a custom colour: Dark Metallic Emerald Green. Sunbeam Silver (K3) is retired as the target colour.**
+
+His answer to block 04.01, ""What colour should the car be when it is done?"": option (c), ""A modern or custom colour, your pick. Same extra work as (b), and the paint price ranges widely by colour."" His words: ""Dark Metallic Emerald Green"".
+
+Reasoning: a colour change from the factory silver means the old colour shows in the door jambs, under the hood and in the hatch opening unless those are painted too (the block's why). It is real paint, not a wrap (D-425). It is a metallic finish, so the 24 GHz radar note in 03-luxury (V-061, block 04.13) applies to every painted bumper.
+
+Consequences in the data:
+- Block 04.04 (how deep the paint goes): option (a) outside-only is no longer enough; the answer is (b) or (c). Its recommendation reads (b) for a colour change.
+- Work C03 (cost estimate): its 04.01 gate is met. The paint price is for a custom dark metallic emerald, and a candy or pearl-type mix is a multi-stage paint that costs more (confirm with quotes).
+- Work C02 (what comes off) and C03 now include the jambs, hood underside and hatch opening, pending 04.04.
+- B01 (read the paint code off the plate) stays open: it records the original colour for 00-CAR, not the target.
+- The exact paint (maker, code or mix, how many coats) is not chosen; the colour name is his, the product is for C03's parts list."
