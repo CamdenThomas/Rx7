@@ -255,3 +255,5 @@ python3 ../check.py --board dcu
 
 `enclosure/board.json` was extracted from the Y5 board: rerun `../enclosure_extract.py dcu-carrier` for Y11's
 parts (J11 on the right edge and J12 on the top edge need grommets; U14 and R59-R63 sit on the underside).
+
+**Hand-off for `Y12` (2026-10-10):** the board re-lay for the 2 × 13 header is open; the work row's note carries the steps and `relay-attempt/README.md` the scripts and the one attempt so far.
