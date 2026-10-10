@@ -12,9 +12,9 @@ LD10,Knock sensors,2,Valley under the intake (Gen III) / both block sides (Gen I
 LD11,Upstream oxygen sensors,2,Each header collector,option,4-pin narrowband,ECU,Only if the ECU runs narrowbands; the existing AEM wideband (LD12) may do the job
 LD12,Wideband oxygen sensor (the existing AEM),1,"Exhaust, after the collectors",both,AEM sensor on its own fixed lead to its controller at the dash,bay,Not through the DT housings: its lead passes the grommet as its own cable (D-244 asks whether it reaches). The AFR goes to the ICU over AEMnet
 LD13,Electronic throttle body,1,Intake,both,6-pin,ECU,"The accelerator pedal is in the cabin and wires straight to the ECU, not through the leg (LD28)"
-LD14,Alternator,1,Front of the engine,both,2-pin control plug plus the B+ stud,PMU,"Gen IV trucks regulate by ECU signal (confirm per unit). B+ is the existing 6 AWG via F18 at the starter stud, bay only"
+LD14,Alternator,1,Front of the engine,both,2-pin control plug plus the B+ stud,PMU,"Gen IV trucks regulate by ECU signal (confirm per unit). B+ is today's 6 AWG via F18 (100 A) at the starter stud only until the swap: then a new 2 AWG-or-larger cable and a 200-250 A fuse (electrical D-468), bay only"
 LD15,Starter,1,Block,both,B+ stud and S terminal,bay,B+ is the 1/0 backbone and S comes from K9 on the inner fender - both stay in the bay; only K9's coil crosses
-LD16,Electric cooling fan,1,Radiator,both,"2-pin, or a fan controller",PMU,O14 via L1-P 3 (HO02); its return is grounded at the front
+LD16,Electric cooling fan,1,Radiator,both,"2-pin, or a fan controller",PMU,"Fed from the battery side (the starter B+ stud) through its own relay and fuse in the bay, sized from the fan bought; O14 via L1-P 3 drives only the relay coil (electrical D-468, HO02); its return is grounded at the front"
 LD17,A/C compressor clutch,1,Front of the engine,both,"1-pin, case grounded",DCU,"Fed from the O15 comfort block through a DCU-switched relay (D-324, HO13)"
 LD18,A/C pressure transducer,1,High-side line,both,3-pin,DCU,To a DCU input (HO13)
 LD19,Cam phaser (VVT) solenoid,1,Front cover,option,2-pin,ECU,2010+ LC9 only - or lock the phaser out and leave it unwired

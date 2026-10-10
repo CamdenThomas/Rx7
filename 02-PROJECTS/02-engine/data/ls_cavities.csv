@@ -1,7 +1,7 @@
 id,housing,cavity,wire,conductor,noise,state,note
 L1-P 1,L1-P,1,LW03,"coil feed, +12 V",power,pinned,Today's L1-P 1 (O12)
 L1-P 2,L1-P,2,LW01,"injector feed, +12 V",power,pinned,"Today's reserve L1-P 2 (O13, HO01)"
-L1-P 3,L1-P,3,LW31,fan feed,power,pinned,"Today's reserve L1-P 3 (O14, HO02); how the fan is fed at the swap is electrical block 01.24"
+L1-P 3,L1-P,3,LW31,fan feed,power,pinned,"Today's reserve L1-P 3 (O14, HO02); at the swap it carries the fan relay's coil only, the fan being fed off the battery side through its own relay and fuse (electrical D-468)"
 L1-P 4,L1-P,4,LW32,A/C clutch feed,power,pinned,Today's sealing plug; who switches it is block 02.15
 L1-S1 1,L1-S1,1,LW30,start relay K9 coil,"body and slow lines - today's receptacle, today's functions kept",pinned,Today's L1-S1 1 (O21)
 L1-S1 2,L1-S1,2,LW29,alternator excitation,"body and slow lines - today's receptacle, today's functions kept",pinned,"Today's L1-S1 2 (F15, N19); a sealing plug instead if the unit is commanded on LW40 (HO11)"

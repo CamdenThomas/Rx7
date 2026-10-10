@@ -7,8 +7,8 @@ LA06,Licence plate lights,SP-203,6 W,2,"89 (BA15s) per charts - UNCERTAIN, an 89
 LA07,Rear turn signals,SP-199,27 W,2,1156,per the tail-light design,custom-lamp,LP38,O17 / O18,Inside the custom tail lights (D-384: the path waits on V-063)
 LA08,Stop / tail,SP-201,27/8 W,4,1157,red,custom-lamp,LP38,O7 / O6,As LA07
 LA09,Back-up (reverse) lights,SP-202,27 W,2,1156,white,custom-lamp,LP38,O19,As LA07
-LA10,Interior dome light,SP-207,5 W,1,31 mm class festoon - measure the length,warm white,led-bulb,LP43,O20,
-LA11,Spot (map) light,SP-208,6 W,1,confirm,warm white,led-bulb,LP43,O20,In the dome unit H-06 on cars with the sunroof
+LA10,Interior dome light,SP-207,5 W,1,31 mm class festoon - measure the length,warm white,led-bulb,LP43,F12 always-hot (electrical D-462),"Off the PMU since electrical D-462: the factory circuit on its own door switch, no fade"
+LA11,Spot (map) light,SP-208,6 W,1,confirm,warm white,led-bulb,LP43,F12 always-hot (electrical D-462),In the dome unit H-06 on cars with the sunroof; off the PMU since electrical D-462
 LA12,Luggage (cargo) light,SP-209,5 W,1,festoon (DE3022 per an FB thread) - measure the length,warm white,led-bulb,LP43,F19,
 LA13,Glove box light,SP-210,3.4 W,1,confirm,warm white,led-bulb,LP43,F19,
 LA14,Ignition key-cylinder ring,SP-212,3.4 W,1,confirm,warm white,led-bulb,LP43,O20 illumination,The new ignition switch (electrical P086) may not carry it - confirm

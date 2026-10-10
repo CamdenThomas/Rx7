@@ -73,14 +73,14 @@
 <text x="906.4" y="184.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L2-P 1 · Headlight LOW, both</text>
 <text x="780.0" y="202.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Headlights · RL (high)</text>
 <text x="910.5" y="202.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L2-P 2 · Headlight HIGH, both</text>
-<text x="780.0" y="220.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Pop-up motors · Run terminal(s) R / RY</text>
-<text x="1009.4" y="220.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L2-P 3 · Pop-up LH run feed</text>
-<text x="780.0" y="238.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Pop-up motors · Run terminal(s) R / RY</text>
-<text x="1009.4" y="238.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L2-P 4 · Pop-up RH run feed</text>
-<text x="780.0" y="256.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Pop-up motors · YG (transit contact)</text>
-<text x="998.1" y="256.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L2-S 1 · Pop-up LH transit contact</text>
-<text x="780.0" y="274.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Pop-up motors · YG (transit contact)</text>
-<text x="998.1" y="274.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L2-S 2 · Pop-up RH transit contact</text>
+<text x="780.0" y="220.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Pop-up motors · WR</text>
+<text x="903.3" y="220.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L2-P 3 · Pop-up LH motor feed (WR)</text>
+<text x="780.0" y="238.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Pop-up motors · WR</text>
+<text x="903.3" y="238.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L2-P 4 · Pop-up RH motor feed (WR)</text>
+<text x="780.0" y="256.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Pop-up motors · YG</text>
+<text x="900.2" y="256.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L2-S 1 · Pop-up LH transit contact</text>
+<text x="780.0" y="274.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Pop-up motors · YG</text>
+<text x="900.2" y="274.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">L2-S 2 · Pop-up RH transit contact</text>
 <text x="780.0" y="294.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">across the radiator support · length at M-2</text>
 <rect x="760.0" y="376.0" width="8.0" height="96.0" rx="1" fill="#1f2328" stroke="#1f2328" stroke-width="1.5"/>
 <text x="780.0" y="370.0" font-size="12" text-anchor="start" font-weight="700" fill="#0b5cad">RT08 · Front combo lamps, side markers, horns</text>

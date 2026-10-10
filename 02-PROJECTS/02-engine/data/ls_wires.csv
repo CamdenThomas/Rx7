@@ -29,7 +29,7 @@ LW27,LD11,O2 heater feed,power,2,0,-,Spliced from the injector feed in the bay,â
 LW28,LD11,O2 heater control,driver,2,2,16,none,ECU heater drivers,18,1.5,,yes,"Slow PWM drivers: in the ignition drivers plug L1-S4, off every sensor plug (K6)"
 LW29,LD14,Alternator excitation and lamp sense,signal,2,2,16,none,Excitation from F15 on L1-S1 2 and the lamp line to ICU IC05 on L1-S2 8 - today's two cavities (HO11),18,0.5,,no,The ECU's set-point command is LW40; a commanded unit takes LW40 in place of the excitation (K6)
 LW30,LD15,Start relay K9 coil,driver,1,1,16,K9 stays on the inner fender,PMU O21,16,0.2,,no,"Today's L1-S1 1, kept: PMU O21 to K9 terminal 86 (electrical relays K9). The coil draws 0.13 A (electrical loads LD16, 90 Ohm); 0.2 here is a bound (K6)"
-LW31,LD16,Fan feed,power,1,1,12,none,PMU O14 via L1-P 3,12,25,,no,Return grounded at the front
+LW31,LD16,Fan relay coil,power,1,1,12,none,PMU O14 via L1-P 3 - the fan relay's coil only (electrical D-468),12,0.5,,no,"Return grounded at the front. The fan current runs on its own fused feed from the starter B+ stud through the relay, in the bay (D-468) - not through the PMU"
 LW32,LD17,A/C clutch feed,power,1,1,12,none,O15 comfort block through the DCU-switched relay (D-324),14,4,,no,Uses the spare fourth cavity of L1-P
 LW33,LD18,"A/C pressure signal, 5 V, ground",signal,3,3,16,none,DCU input and its own supply,20,0.02,,no,"Kept apart from the ECU's sensor grounds while it goes to the DCU (D-324); if block 02.15 gives the A/C to the ECU, its 5 V and ground can splice into LW20 / LW21 in the bay and free two cavities"
 LW34,LD19,VVT solenoid,driver,2,2,16,none,ECU phaser output,18,1.5,,yes,2010+ LC9 only

@@ -8,7 +8,7 @@ A6,Door jamb switches,ground,20,< 50 = short · > 990 = open,window
 A8,Hazard · horn · wink,ground,35,< 50 = short · > 990 = open,window
 A15,Headlight switch,12v,75,0 = disconnected,conductance
 A16,Key position,12v,200,0 = disconnected,conductance
-A7,Oil-pressure node,ground,,"< 20 = short · > 1000 = open; a FAULT reading counts as oil_ok and the pump runs (fail open, D-249)",
+A7,Oil-pressure node,ground,,"< 20 = short - still counts as oil_ok (D-249) · > 1000 = open = ZERO oil pressure, not a fault: oil_ok is false and the pump stops after the 3 s prime (D-461)",
 A9,Configured as output O17 TURN_L,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)",
 A10,Configured as output O18 TURN_R,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)",
 A11,Configured as output O19 REVERSE,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)",

@@ -20,16 +20,16 @@ PV55,cavity,D2 5,FT23,"RIGHT mirror motor (L4-S2 4) - RESERVED at the sill: pinn
 PV56,cavity,D2 6,FT23,"RIGHT mirror clutch coil (L4-S2 5) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
 PV57,cavity,D1 7,FT23,"mirror heat — RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274)",RESERVED,
 PV58,cavity,D2 7,FT23,"mirror heat — RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274)",RESERVED,
-PV59,cavity,L4-S2 1,FT23,"DCU mirror line - motor common, both mirrors: from DP-DCU-B 5 / L3-S3 5, linked at the post, capped there; spliced at the sill to D1 4 and D2 4",CAPPED,electrical D-255 / D-360
-PV60,cavity,L4-S2 2,FT23,"DCU mirror line - LEFT motor: from DP-DCU-B 6 / L3-S3 6, linked at the post, capped there; sill → D1 5",CAPPED,electrical D-255 / D-360
-PV61,cavity,L4-S2 3,FT23,"DCU mirror line - LEFT clutch coil: from DP-DCU-B 8 / L3-S3 8, spliced at the post, capped there; sill → D1 6",CAPPED,electrical D-255 / D-360
-PV62,cavity,L4-S2 4,FT23,"DCU mirror line - RIGHT motor: from DP-DCU-B 7 / L3-S3 7, linked at the post, capped there; sill → D2 5",CAPPED,electrical D-255 / D-360
-PV63,cavity,L4-S2 5,FT23,"DCU mirror line - RIGHT clutch coil: from DP-DCU-B 8 / L3-S3 8, spliced at the post, capped there; sill → D2 6",CAPPED,electrical D-255 / D-360
+PV59,cavity,L4-S2 1,FT23,"DCU mirror line - motor common, both mirrors: from DP-DCU-B 5 by the DCU tail, linked at the dash node (electrical D-472), capped there; spliced at the sill to D1 4 and D2 4",CAPPED,electrical D-255 / D-360 / D-472
+PV60,cavity,L4-S2 2,FT23,"DCU mirror line - LEFT motor: from DP-DCU-B 6 by the DCU tail (electrical D-472), capped there; sill → D1 5",CAPPED,electrical D-255 / D-360 / D-472
+PV61,cavity,L4-S2 3,FT23,"DCU mirror line - LEFT clutch coil: from DP-DCU-B 8 by the DCU tail, spliced at the dash node (electrical D-472), capped there; sill → D1 6",CAPPED,electrical D-255 / D-360 / D-472
+PV62,cavity,L4-S2 4,FT23,"DCU mirror line - RIGHT motor: from DP-DCU-B 7 by the DCU tail (electrical D-472), capped there; sill → D2 5",CAPPED,electrical D-255 / D-360 / D-472
+PV63,cavity,L4-S2 5,FT23,"DCU mirror line - RIGHT clutch coil: from DP-DCU-B 8 by the DCU tail, spliced at the dash node (electrical D-472), capped there; sill → D2 6",CAPPED,electrical D-255 / D-360 / D-472
 PV64,housing,L4-S2,FT23,DT-8 - the DCU's mirror lines at the post (D-360),,
-PV65,cavity,L3-S2 3,FT24,"Window DRV up command - terminates in DP-DCU-B 1, the DCU's DT06-12S plug at the centre stack (D-362); the DCU drives it from the panel key (D-355). The L3-WIN console receptacle is deleted",CAPPED,electrical D-350 / D-362
-PV66,cavity,L3-S2 4,FT24,"Window DRV down command - terminates in DP-DCU-B 2, the DCU's DT06-12S plug at the centre stack (D-362); the DCU drives it from the panel key (D-355). The L3-WIN console receptacle is deleted",CAPPED,electrical D-350 / D-362
-PV67,cavity,L3-S2 5,FT24,"Window PASS up command - terminates in DP-DCU-B 3, the DCU's DT06-12S plug at the centre stack (D-362); the DCU drives it from the panel key (D-355). The L3-WIN console receptacle is deleted",CAPPED,electrical D-350 / D-362
-PV68,cavity,L3-S2 6,FT24,"Window PASS down command - terminates in DP-DCU-B 4, the DCU's DT06-12S plug at the centre stack (D-362); the DCU drives it from the panel key (D-355). The L3-WIN console receptacle is deleted",CAPPED,electrical D-350 / D-362
+PV65,cavity,DP-DCU-B 1,FT24,"Window DRV up command - DP-DCU-B 1, the DCU tail from the dash node to L4-M 9 (electrical D-472; it no longer passes L3-S2); the DCU drives it from the panel key (D-355). The L3-WIN console receptacle is deleted",LIVE,electrical D-350 / D-362 / D-472
+PV66,cavity,DP-DCU-B 2,FT24,"Window DRV down command - DP-DCU-B 2, the DCU tail to L4-M 10 (electrical D-472); the DCU drives it from the panel key (D-355)",LIVE,electrical D-350 / D-362 / D-472
+PV67,cavity,DP-DCU-B 3,FT24,"Window PASS up command - DP-DCU-B 3, the DCU tail to L4-M 11 (electrical D-472); the DCU drives it from the panel key (D-355)",LIVE,electrical D-350 / D-362 / D-472
+PV68,cavity,DP-DCU-B 4,FT24,"Window PASS down command - DP-DCU-B 4, the DCU tail to L4-M 12 (electrical D-472); the DCU drives it from the panel key (D-355)",LIVE,electrical D-350 / D-362 / D-472
 PV69,cavity,L4-M 9,FT24,"window command → K5–K8 coil sockets at the sill, landed in the empty socket (electrical D-274)",CAPPED,
 PV70,cavity,L4-M 10,FT24,"window command → K5–K8 coil sockets at the sill, landed in the empty socket (electrical D-274)",CAPPED,
 PV71,cavity,L4-M 11,FT24,"window command → K5–K8 coil sockets at the sill, landed in the empty socket (electrical D-274)",CAPPED,
@@ -69,7 +69,7 @@ PV110,cavity,L3-RDR 3,FT28,Radar pass-through C — the branch-end receptacle th
 PV111,cavity,L4-RDR 1,FT28,Radar pass-through A — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
 PV112,cavity,L4-RDR 2,FT28,Radar pass-through B — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
 PV113,cavity,L4-RDR 3,FT28,Radar pass-through C — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
-PV123,cavity,L3-S3 5,FT23,"Mirror motor common, both mirrors - linked at the post to L4-S2 1; the dash leg ends in DP-DCU-B 5 at the DCU",CAPPED,"D-359, electrical D-360"
-PV124,cavity,L3-S3 6,FT23,Mirror LEFT motor - linked at the post to L4-S2 2; the dash leg ends in DP-DCU-B 6 at the DCU,CAPPED,"D-359, electrical D-360"
-PV125,cavity,L3-S3 7,FT23,Mirror RIGHT motor - linked at the post to L4-S2 4; the dash leg ends in DP-DCU-B 7 at the DCU,CAPPED,"D-359, electrical D-360"
-PV126,cavity,L3-S3 8,FT23,"Mirror clutch coils, both mirrors - spliced at the post to L4-S2 3 and L4-S2 5; the dash leg ends in DP-DCU-B 8 at the DCU",CAPPED,"D-359, electrical D-360"
+PV123,cavity,DP-DCU-B 5,FT23,"Mirror motor common, both mirrors - the DCU tail from the dash node to L4-S2 1 (electrical D-472; it no longer passes L3-S3)",LIVE,"D-359, electrical D-360 / D-472"
+PV124,cavity,DP-DCU-B 6,FT23,Mirror LEFT motor - the DCU tail to L4-S2 2 (electrical D-472),LIVE,"D-359, electrical D-360 / D-472"
+PV125,cavity,DP-DCU-B 7,FT23,Mirror RIGHT motor - the DCU tail to L4-S2 4 (electrical D-472),LIVE,"D-359, electrical D-360 / D-472"
+PV126,cavity,DP-DCU-B 8,FT23,"Mirror clutch coils, both mirrors - the DCU tail, spliced at the dash node to L4-S2 3 and L4-S2 5 (electrical D-472)",LIVE,"D-359, electrical D-360 / D-472"

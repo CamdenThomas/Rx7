@@ -1,7 +1,7 @@
 id,seq,circuit,ch
-MG01,1,Interior lamp,O20
+MG01,1,"Interior lamp - always-hot on F12 from the busbar, its own door switch (D-462)",F12
 MG02,2,USB-C + head unit,O10
-MG03,3,ICU aux feed + illumination (the display's backlight and dimming reference),F16 / O20
+MG03,3,"ICU aux feed + illumination (the display's backlight, and O20 - the dash lamps and the dimming reference, on with PARK / HEAD, D-462)",F16 / O20
 MG04,4,Horn,O11
 MG05,5,Wipers LOW + park,O8
 MG06,6,Wipers HIGH,O9

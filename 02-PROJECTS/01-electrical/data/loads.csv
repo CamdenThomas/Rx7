@@ -4,7 +4,7 @@ LD02,Tail · park · markers · licence,O6,15 A,5.4,5.4,SP-201 tail 8 W ×4 + SP
 LD03,Brake lamps,O7,15 A,7.8,7.0,"SP-201: 27/8 W ×2 per side, four 27 W stop filaments = 108 W at 13.8 V (R11); the 7.0 A measured was no mystery, the estimate had counted two bulbs",
 LD04,"Turn, per side",O17 / O18,7 A,4.2,3.4,"27 W ×2 + indicator (factory). After the LED change (luxury LP53, D-397): one 1157-class LED front and rear per side, 0.23-0.63 A each - a failed one may sit inside the PMU's 100 mA current step (S-028, FT27); CK01's baseline per channel decides whether lamp-out by current is possible for the turns (R16)",
 LD05,Reverse,O19,7 A,3.9,,27 W ×2,
-LD06,Interior + illumination,O20,7 A,2.5,,"dome 5 W + spot lamp 5 W (DV39) + 3.4 W ×5 illumination + 1.4 W ×2 = 29.8 W at 13.8 V, 2.2 A; 2.5 A keeps the margin (R11)",
+LD06,Illumination (D-462),O20,7 A,1.5,,"3.4 W ×5 dash lamps + 1.4 W ×2 = 19.8 W at 13.8 V, 1.43 A; the head unit's illumination wire and the ICU's reference are milliamps. The dome and spot lamps left for F12 (D-462); confirm the lamp count at CK01 (R11)",
 LD07,Wiper LOW / HIGH,O8 / O9,15 A,4 / 5.5 running · 12–20 stall,,factory 10 A fuse; aged motor,
 LD08,"Pop-up motors, both",O1,25 A,8–12 running · 26 stall,12.8 / 13.1 stall,measured stall per side,
 LD09,Blower (new motor),O16,25 A,12–18 on HI,,factory 20 A fuse,
