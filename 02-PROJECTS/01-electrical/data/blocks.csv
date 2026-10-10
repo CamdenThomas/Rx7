@@ -1,3 +1,1 @@
 id,title,opened,ask,why,options,recommend,stops
-01.30,Recovering the A/C refrigerant,2026-09-28,"Should the A/C refrigerant be recovered by a shop before the interior strip, while the car can still be driven there?","B1 (strip the A/C) needs a shop to recover the refrigerant first. It is gated after the design freeze, which comes after the interior strip (S1), and by then the car can't be driven. That means a mobile service or a tow.","(a) Drive it to a shop for recovery before S1: about $50-100 and an afternoon.
-(b) Leave B1 where it is and use a mobile A/C service later: about $100-200.","(a), unless the system is already empty (worth a gauge check first)",B1 and S1
