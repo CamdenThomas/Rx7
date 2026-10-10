@@ -1188,3 +1188,115 @@ D-455,Architecture and scope,"Fit is assumed: boards, enclosures and panel desig
 **Read on 2026-10-08 before this ruling.** 00-CAR and 01-REFERENCE (every table), the four other projects (decisions, blocks, work, hand-overs, provisions), the electrical design (every table, the 17 blocks, the decisions from D-440), the three KiCad projects (ERC 0/0 on all three; every Teensy, expander and ribbon pin matches the record; the ICU board has no outline, no copper and a PWR_BL class of 0.22 mm where the guide says 2.2 mm; the DCU and panel have no board; 29 symbols lack footprints) and the firmware (icu and dcu compile for the Teensy 4.1 with the toolchain installed today; icu_radio has never compiled; pmu_sim lacks its can_map.h copy; the DCU sketch still has the fan encoder on 18/19 and the mirror bridge on the bottom pads, not the D-452 map). The fifty gaps the read found beyond R8-R16 are Y10's list.
 
 **In the data.** `_schema` work.stage gains Y; work Y1-Y10 added; F9, F10 owner agent; F1 note; H-002, H-008, Z1, S1, R8-R12 gates; 02-APP P55 already names the Mac (D-454)."
+D-458,,Control panel gets its own lights,2026-10-09,standing,,,01.14,,"**The control panel gets its own lights: an LED by each key and a short row of LEDs per knob level, run by a small LED chip on the panel over the DCU's I2C bus; the ribbon goes from 20-way to 26-way.**
+
+Camden answered block 01.14 with (a): ""Lights on the panel: an LED by each key and a short row of LEDs for each knob's level, run by a small LED chip on the panel over the DCU's existing I2C bus. The ribbon goes from 20-way to 26-way (+2 data wires, +5 V and spares). About $5-10 more in parts. The faceplate has to leave room for the lights."" No words added.
+
+Reasoning: the seat knobs have no end stops, so only a light can show the level. Cost is about $5-10 and a faceplate that leaves windows.
+
+Consequences in the data: ribbon P157 becomes 26-way, the panel board (H-008) gains the LED driver and LEDs, the faceplate drawing leaves windows. Carried as work row R-APPLY-01.14. Interacts with D-4xx panel-board ruling of block 01.15."
+D-459,,Control panel built on a small circuit board,2026-10-09,standing,,,01.15,,"**The control panel is built on a small circuit board, ordered with the DCU board.**
+
+Camden answered block 01.15 with (a): ""A small circuit board, ordered in the same order as the DCU board: about $10-20 more. The knobs and switches line up exactly with the faceplate, and it holds the lights if the panel gets its own lights. The faceplate has to be drawn first so that the board's holes match it."" No words added.
+
+Reasoning: about 40 hand-wired points behind the dash is worse for alignment and service, and the board carries the LEDs of block 01.14's ruling. Diodes stay surface-mount.
+
+Consequences in the data: H-008 (panel layout) and P155 (panel parts) become a board; order joins the DCU board order. Carried as work row R-APPLY-01.15."
+D-460,,"Pop-ups driven the Mazda way (WR feed, K1/K2 changeover)",2026-10-09,standing,,,01.16,,"**The pop-ups are driven the Mazda way: WR is the constant motor feed on the O1 bus, and K1/K2 are changeovers switching 12 V to R (up) or RY (down); the motors keep their own relays and cam-switch end stops.**
+
+Camden answered block 01.16 with (a): ""Mazda's way: WR on the O1 bus, and K1/K2 used as changeovers (one per side) switching 12 V to R or RY. The windows can share O1 without moving the lamps, and the wink switches still work. One more conductor per side in the L2 leg; no new parts (K1/K2 are already changeover relays)."" No words added.
+
+Reasoning: the 1982 factory diagram (00-CAR SP-584) shows the motor stopping itself at each end; the old scheme would not move the lamps or would run to the 4 s trip, and every window press would run both pop-ups. CK08 still proves the motors match the diagram before anything is crimped; if it does not, this ruling is reopened.
+
+Consequences in the data: L2 leg pin plan (L2-P 3/4, L2-S 1/2) gains one conductor per side, K1/K2 wiring and the A4/A5 transit sense are redrawn, V-081 and the window bus (D-357) re-checked. Carried as work row R-APPLY-01.16."
+D-461,,Open oil sender reads as zero pressure; pump stops after prime,2026-10-09,standing,,,01.17,,"**An open-circuit oil sender reads as zero oil pressure: the fuel pump stops after the 3-second prime.**
+
+Camden answered block 01.17 with (a): ""Open = no pressure: the pump stops after the prime. A broken sender wire then stops the engine, and the cluster shows zero oil pressure, so you know why. Safest in a crash or a stall."" No words added.
+
+Reasoning: the factory sender is open at 0 psi (00-CAR SP-787), so treating open as a fault meant the gate never worked and the pump kept running after a stall or crash. This reverses the intent of D-249 for the oil gate.
+
+Consequences in the data: logic FUEL_PUMP input A7 and the ""above OIL_MIN"" test are corrected; recovery RC07 and the swap's pump gate updated. CK19 still ohms the sender. Carried as work row R-APPLY-01.17."
+D-462,,Dome lamp back to factory circuit; O20 is illumination only,2026-10-09,standing,,,01.18,,"**The dome lamp goes back to the factory circuit (always-hot fuse, its own door switch); O20 becomes illumination only, on with PARK/HEAD and dimmed by the dimmer.**
+
+Camden answered block 01.18 with (a): ""The dome lamp goes back to the factory circuit (always-hot fuse, its own door switch), and O20 becomes illumination only: on with PARK/HEAD and dimmed by the dimmer. You lose the dome lamp's fade, and a door left open drains the battery, as it did from the factory."" No words added.
+
+Reasoning: O20 cannot serve both the dome lamp and the dash bus; no PMU output is free.
+
+Consequences in the data: pins O20/O6, node conductors N21/N22, logic INTERIOR, the ICU's dimming (DP-ICU-A 2) and the panel lighting (D-ruling of block 01.14) change; the dome lamp's fade is dropped. Carried as work row R-APPLY-01.18."
+D-463,,"Load shed delayed 10 s, never in START, ICU stays up",2026-10-09,standing,,,01.19,,"**Load shed happens only after about 10 s below 11.5 V, never during START, with about 0.5 V hysteresis; O10 stays on while the engine runs so the ICU stays up. Comfort loads still shed.**
+
+Camden answered block 01.19 with (a): ""Shed only after about 10 s below 11.5 V, never during START, with about 0.5 V hysteresis, and keep O10 on while the engine runs. The ICU stays up; the comfort loads still shed."" No words added.
+
+Reasoning: cranking sags to about 10.5 V, which would reboot the cluster on every start; a dying alternator should not blank the speedo and warnings. This amends D-248's undelayed shed.
+
+Consequences in the data: rules voltage (delay, hysteresis, START exclusion), logic ACCESSORY, ICU power (DP-ICU-A 1) note. Carried as work row R-APPLY-01.19."
+D-464,,Hazards keep the car awake without limit,2026-10-09,standing,,,01.20,,"**The hazard switch keeps the car awake for as long as the hazards are on, with no limit, past the 30-minute forced sleep.**
+
+Camden answered block 01.20 with (a): ""The hazards keep the car awake with no limit. They flash until the pack's protection cuts in, many hours on the 40 Ah pack."" No words added.
+
+Reasoning: a stranded-car warning matters more than pack protection; the pack's own protection is the backstop. Amends D-248's 30-minute forced sleep.
+
+Consequences in the data: logic KEEP_ALIVE gains the hazard switch on both the 30 s rule and the 30-minute forced sleep; rules sleep note. Carried as work row R-APPLY-01.20."
+D-465,,"Release solenoids: own 10 A fuse, pull-downs, firmware interlock",2026-10-09,standing,,,01.21,,"**Hatch and fuel-door releases keep the O10 feed but get protection: a 10 A fuse of their own on the release branch, pull-downs on the DCU's select transistors, and firmware that refuses a release unless the car is stopped and drops the select after 1.5 s.**
+
+Camden answered block 01.21 with (b): ""Keep the O10 feed and add protection: a 10 A fuse of its own on the release branch (so a solenoid can't trip the cluster), pull-downs on the DCU's select transistors, and firmware that refuses a release unless the car is stopped and drops the select after 1.5 s."" No words added. (The pulse-only series relay, option (a), was not chosen.)
+
+Reasoning: the recommendation was (b); no extra relay, socket or O14 dependency before the swap. CK20 still measures the solenoids and may revise the fuse rating.
+
+Consequences in the data: new fuse on the release branch (K3/K4, N85), DCU select pull-downs, firmware refusal rule and 1.5 s timeout, logic ACCESSORY, SN23 and A11 corrected. This corrects the claim in D-370 that the relays have no power outside the pulse. Carried as work row R-APPLY-01.21."
+D-466,,Amplifier fed from the disconnect output,2026-10-09,standing,,,01.22,,"**The amplifier is fed from the master disconnect's output stud through its own MRBF fuse, so the disconnect kills the amplifier too.**
+
+Camden answered block 01.22 with (a): ""Off the disconnect's output stud, through its own MRBF fuse, sized once the amplifier class is chosen (block 03.13). The disconnect kills the amplifier too. About $30 for the fuse and holder."" No words added.
+
+Reasoning: D-319 puts the disconnect on the positive side so it genuinely kills the car; an amplifier on the post stays live with it open. Supersedes D-236 in that respect.
+
+Consequences in the data: A17 and the backbone feed the amplifier from the disconnect output through an MRBF fuse (rating after block 03.13); parts list gains fuse and holder. Carried as work row R-APPLY-01.22."
+D-467,,Three 10 AWG busbar feeds each fused at about 40 A,2026-10-09,standing,,,01.23,,"**Each of the three 10 AWG busbar feeds (to fuse block A, to keep-alive relay K11, and from K11 to block B) gets its own fuse of about 40 A at the busbar.**
+
+Camden answered block 01.23 with (a): ""A fuse at the busbar on each, about 40 A: three holders, about $25."" No words added.
+
+Reasoning: a chafed 10 AWG under the dash with 150 A behind it burns before the main fuse opens; no row recorded a short-run exemption.
+
+Consequences in the data: node conductors N03-N05 gain a fuse each, E14 and the parts list gain three holders and fuses. Carried as work row R-APPLY-01.23."
+D-468,,Backbone stays as is; swap loads fed separately,2026-10-09,standing,,,01.24,,"**Today's backbone stays (2 AWG main feed, 150 A Class-T, the PMU); the swap's big loads are fed separately when the engine goes in.**
+
+Camden answered block 01.24 with (a): ""Keep today's backbone. At the swap, the radiator fan gets its own relay and fuse off the battery side, and the alternator gets a new 2 AWG-or-larger cable and a 200-250 A fuse. That work is in the engine bay, which is rebuilt anyway, so nothing bought now is wasted."" No words added.
+
+Reasoning: nothing bought now is wasted; the swap work is in the bay that is rebuilt anyway. Engine D-445 supplies the 160 A alternator.
+
+Consequences in the data: the engine's fan plan (LS_FAN, O14), F18/C07 at the swap and the alternator cable are noted as swap-time work. Carried as work row R-APPLY-01.24."
+D-469,,Seats get their own fused busbar feeds,2026-10-09,standing,,,01.25,,"**The seats get their own fused feed from the busbar, about 30 A each on 12 AWG, switched by a relay, plus the DCU's heat/cool returns as today.**
+
+Camden answered block 01.25 with (a): ""A separate fused feed to each seat from the busbar (about 30 A each, 12 AWG), switched by a relay, plus the DCU's heat/cool returns as today. It fits any seat; unused wire costs little. About $40."" No words added.
+
+Reasoning: power-seat motors draw 10-20 A per seat, more than the shared 25 A O15 can carry, and the seat pick (X-010) is not made; D-451 says the build does not wait for it. Amends D-382's use of O15 for seat power.
+
+Consequences in the data: A13/A14 redefined as busbar-fed seat feeds with relays and fuses; parts list gains about $40. Carried as work row R-APPLY-01.25."
+D-470,,DCU comfort connector cavity 8 becomes third ground,2026-10-09,standing,,,01.26,,"**DP-DCU-C cavity 8 becomes a third ground: one more contact and a 14 AWG wire to the dash ground bus, about 10 A per pin.**
+
+Camden answered block 01.26 with (a): ""A third ground on DP-DCU-C 8: one more contact and a 14 AWG wire to the dash ground bus, about 10 A per pin."" No words added.
+
+Reasoning: D-382 sends about 15 A through each of two size-16 pins rated 13 A; a third pin brings each under its rating.
+
+Consequences in the data: cavity DP-DCU-C 8 changes from spare to ground, G36 and the DCU carrier schematic updated. Carried as work row R-APPLY-01.26."
+D-471,,Window fuses F8 and F9 are 20 A,2026-10-09,standing,,,01.27,,"**Window fuses F8 (driver side) and F9 (passenger side) are 20 A each.**
+
+Camden answered block 01.27 with (a): ""20 A each: covers a stalled factory-type window motor, and the 14 AWG leads are fine."" No words added.
+
+Reasoning: 14 AWG leads are good to about 20 A; the factory used one 30 A for both doors (00-CAR SP-227). Revisit if the chosen motor's stall current (LP36) says otherwise.
+
+Consequences in the data: F8 and F9 rated 20 A; A12 note. Carried as work row R-APPLY-01.27."
+D-472,,DP-DCU-B is one tail from the dash node,2026-10-09,standing,,,01.28,,"**All eleven DP-DCU-B conductors come from the dash node as one tail; the L3 leg no longer feeds that plug.**
+
+Camden answered block 01.28 with (a): ""One tail from the dash node: the eight conductors run from the node to the DCU directly, which frees eight cavities in L3-S2/L3-S3 at the post."" No words added.
+
+Reasoning: a plug fed by both the L3 leg and the node means L3 cannot be unplugged at the post on its own, breaking D-003. The node must sit close enough to the centre stack for a short tail; the measurement day (R11) checks it.
+
+Consequences in the data: DP-DCU-B cavities 1-8 move to the node tail (N84, N86 area); L3-S2/L3-S3 cavities freed. Carried as work row R-APPLY-01.28."
+D-473,,"Unpicked luxury parts end in Deutsch plugs, adapters after pick",2026-10-09,standing,,,01.29,,"**For luxury parts not yet picked (window motors, seats, radar, speakers, amplifier), every electrical run ends in a standard Deutsch plug; the adapter lead for each part is an electrical work row gated on that part's pick, done after the freeze.**
+
+Camden answered block 01.29 with (a): ""Every run ends in a Deutsch plug. The adapter lead for each part is an electrical row gated on that part's pick: small work after the freeze, and the harness is never cut."" No words added.
+
+Reasoning: the freeze does not wait on luxury's picks, and D-450 says luxury never crimps adapters; this keeps the harness uncut.
+
+Consequences in the data: A12, A14, A16, A17 runs terminate in Deutsch plugs; adapter-lead work rows are added per part when picked. Clarifies D-450. Carried as work row R-APPLY-01.29."

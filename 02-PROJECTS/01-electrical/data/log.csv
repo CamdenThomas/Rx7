@@ -85,3 +85,4 @@ L-0073,2026-10-09,session,Y5 Y11 P177 P178 CK26,"Y5 done: the DCU carrier's prov
 L-0074,2026-10-09,session,Y8,"Y8 done: the firmware proof - every target compile, CAN and logic vectors generated from the record, three simulator bugs fixed, COMFORT's inrush settled in pins"
 L-0075,2026-10-09,session,Y7 P179 P180 P181 P182 P183 P184 CK27 F11,"Y7 done: parametric FreeCAD enclosures for the three boards, fit check clean; P179-P184, CK27, F11's findings"
 L-0076,2026-10-09,session,Y11 SN28 SN29 SN30 P185 P186 P187,"Y11 done: the DCU carrier's provisions for the open blocks' worst case - a second expander, the A/C clutch stage and pressure ADC, the radar alert input, the third comfort ground, all DNP; SN28-SN30, P185-P187; the DCU enclosure rebuilt"
+L-0077,2026-10-09,answers,D-458 D-473,Applied blocks 01.14-01.29 as D-458..D-473; R-APPLY rows carry the data consequences
