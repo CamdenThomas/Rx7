@@ -19,3 +19,9 @@ pin,signal,dcu_side,panel_side,note
 18,JOY_Y,ADC,thumbstick Y wiper,
 19,JOY_PRESS,"GPIO in, pull-up",thumbstick push switch to GND,toggles LEFT / RIGHT mirror (D-359); also 0x400 bit PK_MIRROR_PRESS
 20,AGND,"analog ground, joined to GND at the carrier",thumbstick pot ground,its own return so the axes don't read the matrix's switching
+21,GND,logic ground,"the lights' return (U2 GND, C1-C3) and the guard between AGND (20) and PNL_SDA (22)","D-458: a second ground, so the LEDs' PWM current does not share pin 2 with the matrix and the knob commons"
+22,PNL_SDA,"I2C SDA (Teensy 18, SN17) through 100 Ω R71; pulled up on the carrier (R51, 4.7 k to +3V3)","LED driver U2 SDA (IS31FL3236A, I2C 0x3C)","D-458. The I2C pair sits at 22 / 24 with a ground on each side of SDA (21, 23), six or more conductors from the knob lines (9-16) and the matrix (3-8): their bouncing contacts and scan edges must not clock the bus, nor the bus's edges count a knob step. 100 kHz on this bus (about 1 m of ribbon on 4.7 k) - confirm on the bench"
+23,GND,logic ground,guard between PNL_SDA and PNL_SCL,D-458
+24,PNL_SCL,"I2C SCL (Teensy 19, SN17) through 100 Ω R72; pulled up on the carrier (R52, 4.7 k)",LED driver U2 SCL,D-458
+25,SPARE,"test pad TP1, nothing else","test pad TP1, nothing else","D-458: wired end to end and unused, so a later line needs no new cable"
+26,+5V_PNL,"the carrier's +5V through the PTC F1 (0.5 A hold, confirm)","LED driver U2 VCC and the 35 LED anodes; C1 10 µF at the header, C2 1 µF and C3 100 nF at U2","D-458. At most about 0.28 A with every LED at full current (35 × 7.6 mA + 9 mA); a short on the panel or the ribbon trips F1, not the Teensy's 5 V. On the cable's edge conductor"

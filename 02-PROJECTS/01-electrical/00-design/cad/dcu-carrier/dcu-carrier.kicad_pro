@@ -651,6 +651,10 @@
       },
       {
         "netclass": "PWR_LOGIC",
+        "pattern": "/+5V_PNL"
+      },
+      {
+        "netclass": "PWR_LOGIC",
         "pattern": "/BUCK_SW"
       },
       {

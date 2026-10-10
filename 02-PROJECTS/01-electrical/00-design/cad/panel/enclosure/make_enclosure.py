@@ -52,7 +52,7 @@ P = {
     "LIP_TABS": [("left", 0.5), ("right", 0.5), ("top", 0.5), ("bottom", 0.25)],
     "LIP_TAB_L": 10.0, "LIP_TAB_W": 12.0, "LIP_TAB_T": 2.5, "LIP_SLOT": 8.0,
     "RIBBON_REF": "J1",
-    "RIBBON_SLOT_MARGIN": 1.5,   # the 2 x 10 IDC plug passes the floor around J1's courtyard
+    "RIBBON_SLOT_MARGIN": 1.5,   # the 2 x 13 IDC plug (D-458) passes the floor around J1's courtyard
     "GROMMETS": ["J2"],
     "GROMMET_HOLE": 8.0,          # a grommet for an 8 mm hole, 5 mm bore - confirm
 }

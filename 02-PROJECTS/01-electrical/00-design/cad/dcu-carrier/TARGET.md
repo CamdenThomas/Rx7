@@ -1,6 +1,6 @@
 # What has to be on the sheet
 
-*Rev 2026-10-09 (d, Y11 provisions - D-455) · owns: the drawing checklist for the DCU carrier.*
+*Rev 2026-10-09 (e, the panel's lights D-458 and the release pull-downs D-465) · owns: the drawing checklist for the DCU carrier.*
 
 > **Drawn 2026-09-28.** Every item below is on `dcu-carrier.kicad_sch`, ERC clean. Where D-452 went
 > further than this list: a TCA9539-Q1 expander for the slow lines (§4 SN17, SN22 DEN/DSEL, CAN STB),
@@ -45,7 +45,9 @@ Draw in this order. Each block is finished when it passes ERC on its own.
   ground — the ICU sheet's first pass had these backwards).
 - **SN13** comfort-bus current: **INA180A1** (gain 20) across two 10 mΩ 2512 ≥ 2 W in parallel → ADC.
 - **Panel ribbon** (count at `H-007`): **SN19** key-matrix rows and columns on GPIO · **SN20**
-  encoder A / B on GPIO · **SN18** thumbstick, two ADC axes and one digital press.
+  encoder A / B on GPIO · **SN18** thumbstick, two ADC axes and one digital press · since D-458 the
+  panel's lights: the I²C pair out through 100 Ω with a BAT54S clamp on the ribbon side, +5 V through
+  a PTC, two more grounds and a spare - 26-way, 2 × 13 IDC (`panel_ribbon` 21-26).
 
 ## 4 · Outputs
 
@@ -61,7 +63,8 @@ Draw in this order. Each block is finished when it passes ERC on its own.
 - **SN22** window commands: one **BTT6200-4ESA** quad high-side sourcing 12 V into K5–K8's coils, on
   `DP-DCU-B 1–4` (D-363). Up and down on one side are interlocked in firmware.
 - **SN23** release selects: two **PMV37ENEA** sinking K3 / K4's coils, on `DP-DCU-B 10 / 11`
-  (D-370).
+  (D-370), each gate held off by a 10 kΩ pull-down behind its 100 Ω series resistor (D-465), so a
+  floating Teensy pin can never fire a release.
 - **SN21** wake request on `DP-DCU 6` into the PMU's wake strip. The drive level is `confirm`
   against the strip's input.
 

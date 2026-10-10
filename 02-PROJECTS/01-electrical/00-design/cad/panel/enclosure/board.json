@@ -42,6 +42,54 @@
  ],
  "footprints": [
   {
+   "ref": "C1",
+   "value": "10u 16V X7R - confirm",
+   "footprint": "C_0805_2012Metric",
+   "x": 173.6,
+   "y": -108.4,
+   "rot": 90.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    172.575,
+    174.625,
+    -110.145,
+    -106.655
+   ]
+  },
+  {
+   "ref": "C2",
+   "value": "1u",
+   "footprint": "C_0603_1608Metric",
+   "x": 150.0,
+   "y": -83.6,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    148.475,
+    151.525,
+    -84.375,
+    -82.825
+   ]
+  },
+  {
+   "ref": "C3",
+   "value": "100n",
+   "footprint": "C_0603_1608Metric",
+   "x": 153.2,
+   "y": -83.6,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    151.675,
+    154.725,
+    -84.375,
+    -82.825
+   ]
+  },
+  {
    "ref": "D1",
    "value": "1N4148W",
    "footprint": "D_SOD-123",
@@ -251,16 +299,16 @@
   },
   {
    "ref": "J1",
-   "value": "panel ribbon 2x10 IDC",
-   "footprint": "IDC-Header_2x10_P2.54mm_Vertical",
-   "x": 161.43,
+   "value": "panel ribbon 2x13 IDC, keyed",
+   "footprint": "IDC-Header_2x13_P2.54mm_Vertical",
+   "x": 165.24,
    "y": -113.77,
    "rot": 90.0,
    "side": "bottom",
    "dnp": false,
    "courtyard": [
-    132.925,
-    167.075,
+    129.115,
+    170.885,
     -117.495,
     -107.505
    ]
@@ -273,7 +321,7 @@
    "y": -63.0,
    "rot": 0.0,
    "side": "bottom",
-   "dnp": false,
+   "dnp": true,
    "courtyard": [
     229.755,
     238.245,
@@ -283,13 +331,13 @@
   },
   {
    "ref": "LED1",
-   "value": "backlight defog - confirm",
+   "value": "key light defog - confirm",
    "footprint": "LED_1206_3216Metric",
    "x": 114.0,
    "y": -59.8,
    "rot": 0.0,
    "side": "top",
-   "dnp": true,
+   "dnp": false,
    "courtyard": [
     111.675,
     116.325,
@@ -298,14 +346,174 @@
    ]
   },
   {
+   "ref": "LED10",
+   "value": "fan level 1 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 113.01,
+   "y": -90.5,
+   "rot": 60.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    111.5946,
+    114.4254,
+    -92.1899,
+    -88.8101
+   ]
+  },
+  {
+   "ref": "LED11",
+   "value": "fan level 2 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 116.36,
+   "y": -86.51,
+   "rot": 40.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    114.7141,
+    118.0059,
+    -88.0635,
+    -84.9565
+   ]
+  },
+  {
+   "ref": "LED12",
+   "value": "fan level 3 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 120.87,
+   "y": -83.9,
+   "rot": 20.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    119.186,
+    122.554,
+    -85.1358,
+    -82.6642
+   ]
+  },
+  {
+   "ref": "LED13",
+   "value": "fan level 4 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 126.0,
+   "y": -83.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    124.475,
+    127.525,
+    -83.775,
+    -82.225
+   ]
+  },
+  {
+   "ref": "LED14",
+   "value": "fan level 5 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 131.13,
+   "y": -83.9,
+   "rot": -20.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    129.446,
+    132.814,
+    -85.1358,
+    -82.6642
+   ]
+  },
+  {
+   "ref": "LED15",
+   "value": "fan level 6 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 135.64,
+   "y": -86.51,
+   "rot": -40.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    133.9941,
+    137.2859,
+    -88.0635,
+    -84.9565
+   ]
+  },
+  {
+   "ref": "LED16",
+   "value": "fan level 7 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 138.99,
+   "y": -90.5,
+   "rot": -60.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    137.5746,
+    140.4054,
+    -92.1899,
+    -88.8101
+   ]
+  },
+  {
+   "ref": "LED17",
+   "value": "temperature level 1 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 161.01,
+   "y": -90.5,
+   "rot": 60.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    159.5946,
+    162.4254,
+    -92.1899,
+    -88.8101
+   ]
+  },
+  {
+   "ref": "LED18",
+   "value": "temperature level 2 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 164.36,
+   "y": -86.51,
+   "rot": 40.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    162.7141,
+    166.0059,
+    -88.0635,
+    -84.9565
+   ]
+  },
+  {
+   "ref": "LED19",
+   "value": "temperature level 3 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 168.87,
+   "y": -83.9,
+   "rot": 20.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    167.186,
+    170.554,
+    -85.1358,
+    -82.6642
+   ]
+  },
+  {
    "ref": "LED2",
-   "value": "backlight hatch release - confirm",
+   "value": "key light hatch release - confirm",
    "footprint": "LED_1206_3216Metric",
    "x": 132.0,
    "y": -59.8,
    "rot": 0.0,
    "side": "top",
-   "dnp": true,
+   "dnp": false,
    "courtyard": [
     129.675,
     134.325,
@@ -314,14 +522,174 @@
    ]
   },
   {
+   "ref": "LED20",
+   "value": "temperature level 4 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 174.0,
+   "y": -83.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    172.475,
+    175.525,
+    -83.775,
+    -82.225
+   ]
+  },
+  {
+   "ref": "LED21",
+   "value": "temperature level 5 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 179.13,
+   "y": -83.9,
+   "rot": -20.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    177.446,
+    180.814,
+    -85.1358,
+    -82.6642
+   ]
+  },
+  {
+   "ref": "LED22",
+   "value": "temperature level 6 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 183.64,
+   "y": -86.51,
+   "rot": -40.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    181.9941,
+    185.2859,
+    -88.0635,
+    -84.9565
+   ]
+  },
+  {
+   "ref": "LED23",
+   "value": "temperature level 7 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 186.99,
+   "y": -90.5,
+   "rot": -60.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    185.5746,
+    188.4054,
+    -92.1899,
+    -88.8101
+   ]
+  },
+  {
+   "ref": "LED24",
+   "value": "driver seat cool 3 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 53.51,
+   "y": -96.12,
+   "rot": 75.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    52.3779,
+    54.6421,
+    -97.7824,
+    -94.4576
+   ]
+  },
+  {
+   "ref": "LED25",
+   "value": "driver seat cool 2 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 55.71,
+   "y": -91.4,
+   "rot": 55.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    54.2201,
+    57.1999,
+    -93.0741,
+    -89.7259
+   ]
+  },
+  {
+   "ref": "LED26",
+   "value": "driver seat cool 1 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 59.4,
+   "y": -87.71,
+   "rot": 35.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    57.7259,
+    61.0741,
+    -89.1999,
+    -86.2201
+   ]
+  },
+  {
+   "ref": "LED27",
+   "value": "driver seat heat 1 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 76.6,
+   "y": -87.71,
+   "rot": -35.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    74.9259,
+    78.2741,
+    -89.1999,
+    -86.2201
+   ]
+  },
+  {
+   "ref": "LED28",
+   "value": "driver seat heat 2 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 80.29,
+   "y": -91.4,
+   "rot": -55.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    78.8001,
+    81.7799,
+    -93.0741,
+    -89.7259
+   ]
+  },
+  {
+   "ref": "LED29",
+   "value": "driver seat heat 3 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 82.49,
+   "y": -96.12,
+   "rot": -75.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    81.3579,
+    83.6221,
+    -97.7824,
+    -94.4576
+   ]
+  },
+  {
    "ref": "LED3",
-   "value": "backlight fuel-door release - confirm",
+   "value": "key light fuel-door release - confirm",
    "footprint": "LED_1206_3216Metric",
    "x": 150.0,
    "y": -59.8,
    "rot": 0.0,
    "side": "top",
-   "dnp": true,
+   "dnp": false,
    "courtyard": [
     147.675,
     152.325,
@@ -330,14 +698,110 @@
    ]
   },
   {
+   "ref": "LED30",
+   "value": "passenger seat cool 3 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 217.51,
+   "y": -96.12,
+   "rot": 75.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    216.3779,
+    218.6421,
+    -97.7824,
+    -94.4576
+   ]
+  },
+  {
+   "ref": "LED31",
+   "value": "passenger seat cool 2 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 219.71,
+   "y": -91.4,
+   "rot": 55.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    218.2201,
+    221.1999,
+    -93.0741,
+    -89.7259
+   ]
+  },
+  {
+   "ref": "LED32",
+   "value": "passenger seat cool 1 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 223.4,
+   "y": -87.71,
+   "rot": 35.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    221.7259,
+    225.0741,
+    -89.1999,
+    -86.2201
+   ]
+  },
+  {
+   "ref": "LED33",
+   "value": "passenger seat heat 1 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 240.6,
+   "y": -87.71,
+   "rot": -35.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    238.9259,
+    242.2741,
+    -89.1999,
+    -86.2201
+   ]
+  },
+  {
+   "ref": "LED34",
+   "value": "passenger seat heat 2 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 244.29,
+   "y": -91.4,
+   "rot": -55.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    242.8001,
+    245.7799,
+    -93.0741,
+    -89.7259
+   ]
+  },
+  {
+   "ref": "LED35",
+   "value": "passenger seat heat 3 - confirm",
+   "footprint": "LED_0603_1608Metric",
+   "x": 246.49,
+   "y": -96.12,
+   "rot": -75.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    245.3579,
+    247.6221,
+    -97.7824,
+    -94.4576
+   ]
+  },
+  {
    "ref": "LED4",
-   "value": "backlight HVAC mode - confirm",
+   "value": "key light HVAC mode - confirm",
    "footprint": "LED_1206_3216Metric",
    "x": 168.0,
    "y": -59.8,
    "rot": 0.0,
    "side": "top",
-   "dnp": true,
+   "dnp": false,
    "courtyard": [
     165.675,
     170.325,
@@ -347,13 +811,13 @@
   },
   {
    "ref": "LED5",
-   "value": "backlight recirculate - confirm",
+   "value": "key light recirculate - confirm",
    "footprint": "LED_1206_3216Metric",
    "x": 186.0,
    "y": -59.8,
    "rot": 0.0,
    "side": "top",
-   "dnp": true,
+   "dnp": false,
    "courtyard": [
     183.675,
     188.325,
@@ -363,13 +827,13 @@
   },
   {
    "ref": "LED6",
-   "value": "backlight window DRV up - confirm",
+   "value": "key light window DRV up - confirm",
    "footprint": "LED_1206_3216Metric",
    "x": 92.0,
    "y": -77.8,
    "rot": 0.0,
    "side": "top",
-   "dnp": true,
+   "dnp": false,
    "courtyard": [
     89.675,
     94.325,
@@ -379,13 +843,13 @@
   },
   {
    "ref": "LED7",
-   "value": "backlight window DRV down - confirm",
+   "value": "key light window DRV down - confirm",
    "footprint": "LED_1206_3216Metric",
    "x": 92.0,
    "y": -95.8,
    "rot": 0.0,
    "side": "top",
-   "dnp": true,
+   "dnp": false,
    "courtyard": [
     89.675,
     94.325,
@@ -395,13 +859,13 @@
   },
   {
    "ref": "LED8",
-   "value": "backlight window PASS up - confirm",
+   "value": "key light window PASS up - confirm",
    "footprint": "LED_1206_3216Metric",
    "x": 208.0,
    "y": -77.8,
    "rot": 0.0,
    "side": "top",
-   "dnp": true,
+   "dnp": false,
    "courtyard": [
     205.675,
     210.325,
@@ -411,13 +875,13 @@
   },
   {
    "ref": "LED9",
-   "value": "backlight window PASS down - confirm",
+   "value": "key light window PASS down - confirm",
    "footprint": "LED_1206_3216Metric",
    "x": 208.0,
    "y": -95.8,
    "rot": 0.0,
    "side": "top",
-   "dnp": true,
+   "dnp": false,
    "courtyard": [
     205.675,
     210.325,
@@ -427,50 +891,34 @@
   },
   {
    "ref": "R1",
-   "value": "1k - confirm",
-   "footprint": "R_0805_2012Metric",
-   "x": 222.0,
-   "y": -74.0,
+   "value": "10k",
+   "footprint": "R_0603_1608Metric",
+   "x": 144.4,
+   "y": -86.0,
    "rot": 90.0,
    "side": "bottom",
-   "dnp": true,
+   "dnp": false,
    "courtyard": [
-    221.005,
-    222.995,
-    -75.725,
-    -72.275
+    143.625,
+    145.175,
+    -87.525,
+    -84.475
    ]
   },
   {
    "ref": "R2",
-   "value": "1k - confirm",
-   "footprint": "R_0805_2012Metric",
-   "x": 227.0,
-   "y": -74.0,
+   "value": "100k",
+   "footprint": "R_0603_1608Metric",
+   "x": 155.6,
+   "y": -86.0,
    "rot": 90.0,
    "side": "bottom",
-   "dnp": true,
+   "dnp": false,
    "courtyard": [
-    226.005,
-    227.995,
-    -75.725,
-    -72.275
-   ]
-  },
-  {
-   "ref": "R3",
-   "value": "1k - confirm",
-   "footprint": "R_0805_2012Metric",
-   "x": 232.0,
-   "y": -74.0,
-   "rot": 90.0,
-   "side": "bottom",
-   "dnp": true,
-   "courtyard": [
-    231.005,
-    232.995,
-    -75.725,
-    -72.275
+    154.825,
+    156.375,
+    -87.525,
+    -84.475
    ]
   },
   {
@@ -826,6 +1274,22 @@
    ]
   },
   {
+   "ref": "TP1",
+   "value": "ribbon spare",
+   "footprint": "TestPoint_Pad_D1.5mm",
+   "x": 178.0,
+   "y": -114.0,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    176.7025,
+    179.295,
+    -115.2962,
+    -112.7037
+   ]
+  },
+  {
    "ref": "U1",
    "value": "thumbstick - not chosen (P156)",
    "footprint": "Thumbstick_P156_Placeholder_2x04_P2.54mm",
@@ -839,6 +1303,22 @@
     83.295,
     -84.295,
     -57.705
+   ]
+  },
+  {
+   "ref": "U2",
+   "value": "IS31FL3236A-TQLS4",
+   "footprint": "TQFP-48-1EP_7x7mm_P0.5mm_EP4.11x4.11mm",
+   "x": 150.0,
+   "y": -91.0,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    144.805,
+    155.195,
+    -96.195,
+    -85.805
    ]
   }
  ]

@@ -626,7 +626,7 @@ def check_drops(rep, nl, cfg, rows, cavities, processor_nets):
 
 
 def check_ribbon(rep, nl, cfg, ribbon):
-    """The 20-way header against panel_ribbon: pin n is on the conductor's signal net."""
+    """The ribbon header (26-way since D-458) against panel_ribbon: pin n is on the conductor's signal net."""
     hdr = cfg["ribbon"]
     on_dcu = rep.board == "dcu"
     for row in ribbon:

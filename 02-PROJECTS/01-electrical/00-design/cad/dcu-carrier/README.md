@@ -1,10 +1,35 @@
 # DCU carrier — the KiCad project
 
-*Rev 2026-10-09 (sheet rev 0.03, board rev 0.03 provisional - Y11) · owns: what this KiCad project
+*Rev 2026-10-10 (sheet rev 0.04 - D-458, D-465; board rev 0.03 provisional - Y11, not yet re-laid for
+rev 0.04) · owns: what this KiCad project
 is for, what it may claim, and how to start. The board's design is `../../../data/dcu_channels.csv`.
 That is the record, and this is a drawing of it. Read `../README.md` first: it is the fence.*
 
 ## Where it stands
+
+**Sheet rev 0.04 (2026-10-10) is ahead of the board.** It carries D-458 and D-465; ERC is 0 / 0 and
+`../check.py --board dcu` reads 0 mismatches once `panel_ribbon` carries pins 21-26:
+
+- **J4 is a 2 x 13 keyed IDC header** (26-way, D-458). Pins 1-20 keep their nets. 21 and 23 are
+  `GND`. 22 `PNL_SDA` and 24 `PNL_SCL` are the I²C bus (Teensy 18 / 19, the bus of U12, U13 and U15)
+  through **R71 / R72, 100 Ω** series resistors. 25 `SPARE` ends on the test pad **TP1**. 26
+  `+5V_PNL` is the logic `+5V` through **F1, a 0.5 A-hold PTC** (1206L050 class, `confirm`), so a
+  short on the panel trips F1 and never browns out the Teensy. No BAT54S clamp: there is no room for
+  one by J4. The panel's driver has 8 kV HBM on its pins, the Teensy has its own clamps, and the
+  100 Ω limits the current into both (`confirm`). The panel bus runs at 100 kHz (`confirm`).
+- **R39 / R41, the K3 / K4 select gate pull-downs, are 10 kΩ** (were 100 kΩ, D-465). Each sits gate
+  to source behind its 100 Ω series resistor, so a floating Teensy pin cannot fire a release: an empty
+  socket, reset, boot or an unprogrammed part. The 10 kΩ also holds the gate against drain-gate
+  coupling when the relay coil switches. A driven pin pays 0.33 mA for it.
+
+**The board below is still rev 0.03 (the 2 x 10 J4); it has not been re-laid for the sheet.** DRC
+`--schematic-parity` therefore reports the J4 footprint, R71 / R72 / F1 / TP1 and the R39 / R41 values
+as parity issues until it is. A 2 x 13 header does not fit where the 2 x 10 sat: its courtyard (41.8
+mm) is 1.9 mm longer than the gap between H1's screw head and the Teensy's USB end. The attempt (scratch,
+Y-apply-boards) moved H1 to (4, 15), put J4's pin 1 3.0 mm left and F1 / R71 / R72 in the old H1 corner.
+It closed every net but four (COL1, two encoder lines, one of JOY / +5V) and a few GND pour fragments
+around the header, and was not committed. Re-laying the board is H-002's next step, `confirm`.
+
 
 **The board is laid out, routed and 3D-modelled on a PROVISIONAL outline (Y5), with the open blocks'
 worst case drawn in (Y11, D-455).** `kicad-cli pcb drc --severity-all --exit-code-violations
@@ -74,7 +99,7 @@ from each corner. 2 layers, 1.6 mm, 1 oz.
   `DP-DCU-C` DT13-08PA (centre, x 97.2), J1 `DP-DCU` DT13-06PA (right, x 148.2). The board edge sits on
   each flange's rear face (4 mm behind its front face), flush for panel mounting through one enclosure
   wall (D-362).
-- **The opposite edge** (grommets, D-362): J4 the panel ribbon (2 x 10 IDC, top left), the Teensy
+- **The opposite edge** (grommets, D-362): J4 the panel ribbon (2 x 10 IDC on the rev 0.03 board; 2 x 13 on the sheet, D-458; top left), the Teensy
   (J10, socketed, along the top), the three servo headers J6-J8 each with its 470 µF beside it, J3 the
   cabin NTC lead and J5 the blower pigtail (top right).
 - **Blocks**: the window quad U10 and the mirror bridge U11 over J9 (their outputs face the pins), the
@@ -130,7 +155,7 @@ inside U15 only (Y11), whose 0.5 mm-pitch VSSOP-10 lands leave 0.15 mm between i
 |---|---|---|
 | J1 / J2 / J9 | `dcu-carrier:DT13-06PA` / `DT13-08PA` / `DT13-12PA` | TE application spec 114-151046 Rev A p.5-6: pins Ø1.88 on 4.45 mm in two rows 6.35 apart (pads 2.9), three Ø3.43 flange posts (two at the sides, level with the far row, at ±10.87 / ±13.59 / ±17.55 for 6 / 8 / 12 ways, one on the centre line 11.43 toward the flange); the same pattern as the ICU's two, turned 180°. The 3D models sit as on the ICU's (TE's model frame turned onto the footprint, not checked against a part) |
 | J3, J5 | `Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical` | KiCad |
-| J4 | `Connector_IDC:IDC-Header_2x10_P2.54mm_Vertical` | KiCad |
+| J4 | `Connector_IDC:IDC-Header_2x13_P2.54mm_Vertical` on the sheet (the rev 0.03 board still has the 2x10) | KiCad |
 | J6-J8 | `PinHeader_1x03_P2.54mm_Vertical`, pin 1 signal, 2 V+, 3 GND | KiCad; the FS5115M lead order `confirm` |
 | J10 | `dcu-carrier:Teensy41_Socket` | the ICU's, its outline now the ICU's corrected one (body -1.27 to 59.69 mm along the rows) |
 | L2 | `Inductor_SMD:L_Coilcraft_XAL7030-682` | KiCad; 6.8 µH, Isat ≥ 7 A `confirm` |
@@ -192,7 +217,7 @@ The renders and the STEP (about 25 MB) are built, never committed (`.gitignore`)
 
 **Every other `confirm` on the board**: the XAL7030's saturation current; STATUS's wired-OR and its
 clearing; OCPM latch-off and its reset by nSLEEP; the comfort currents (`V-101`) the 0.5 mm / pour
-sizing assumes (18 A through the shunt on 1 oz F.Cu); the I²C addresses 0x74 / 0x75 (U12 / U13) and
+sizing assumes (18 A through the shunt on 1 oz F.Cu); the I²C addresses 0x74 / 0x75 (U12 / U13), 0x3C (the panel's IS31FL3236A, D-458) and
 0x48 (U15); the PLACEHOLDER leads J11 / J12 and how their wires reach the DCU; the bottom-side parts
 (U14, R59-R63) against the enclosure; the sheet's own "what this sheet does not know" box.
 
