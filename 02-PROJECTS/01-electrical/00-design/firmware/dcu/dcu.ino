@@ -14,7 +14,8 @@
  * on Wire (18 / 19, INT 12, RESET 13), driven through tca9539.h.
  */
 
-#define DCU_FW_VERSION "0.4.0-dev"   /* D-452 pin map: expander on Wire, fan encoder 40 / 41, CAN STB held low, DRV8962 fault clear (F-017) */
+#define DCU_FW_VERSION "0.5.0-dev"   /* D-465: a release only with the car stopped (0x200 road speed 0, fresh), the select dropped 1.5 s after it is raised */
+/* 0.4.0-dev: D-452 pin map: expander on Wire, fan encoder 40 / 41, CAN STB held low, DRV8962 fault clear (F-017) */
 
 #include <ACAN_T4.h>
 #include <Servo.h>
@@ -84,6 +85,8 @@ static uint16_t scan_matrix() {
 static uint8_t  tx_counter_300 = 0, tx_counter_310 = 0;
 static uint8_t  rx_counter_100 = 0;
 static uint32_t last_rx_100 = 0, last_rx_120 = 0, last_tx_300 = 0, last_tx_310 = 0;
+static uint32_t last_rx_200 = 0;     /* the ICU's 0x200: road speed, for the release interlock (D-465) */
+static uint8_t  seen_200 = 0, speed_kph = 0xFF;
 static uint32_t last_activity = 0;
 static uint8_t  defog_on = 0;
 
@@ -124,6 +127,11 @@ static void dispatch(const CANMessage &f) {
         rx_counter_100 = m.counter;
         dcu.key_pos = m.key_pos;
         last_rx_100 = millis();
+        break; }
+    case ID_ICU_SENSORS: {               /* road speed: a release only with the car stopped (D-465) */
+        icu_sensors_t m; memcpy(&m, f.data, sizeof m);
+        speed_kph = m.speed_kph;
+        last_rx_200 = millis(); seen_200 = 1;
         break; }
     case ID_PMU_OUTPUTS: {               /* mirror heat follows O4 (D-442) */
         pmu_outputs_t m; memcpy(&m, f.data, sizeof m);
@@ -295,7 +303,9 @@ void loop() {
     if (now - last_rx_120 > TMO_PMU_OUTPUTS) defog_on = 0;
 
     /* panel: keys, then the release select, THEN 0x400 - K3/K4 are grounded
-     * before the PMU can see the edge (D-370) */
+     * before the PMU can see the edge (D-370); only with the car stopped, and
+     * never longer than RELEASE_HOLD_MS (D-465). A stale 0x200 is not stopped. */
+    panel.stopped = car_stopped(seen_200, now - last_rx_200, speed_kph);
     uint16_t down, held;
     uint16_t pressed = panel_keys_step(&panel, scan_matrix(), dcu.pmu_alive, now, &down, &held);
     if (pressed) last_activity = now;

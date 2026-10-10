@@ -9,9 +9,11 @@
  *   dcu_channels     SN17 mirrors · SN18 thumbstick · SN19 keys · SN20 encoders ·
  *                    SN21 wake · SN22 windows · SN23 release select ·
  *                    SN11 / SN12 NTCs · SN13 comfort current · SN15 servo sequencing
- *   can_fields       0x400 (sent here); 0x120 bit O4 read for mirror heat
- * Rulings: D-355 D-359 (luxury), D-360 D-363 D-369 D-370 D-379 D-380, and the
- * behaviour choices of D-442.
+ *   can_fields       0x400 (sent here); 0x120 bit O4 read for mirror heat; 0x200
+ *                    byte 6 (road speed) read for the release interlock (D-465)
+ * Rulings: D-355 D-359 (luxury), D-360 D-363 D-369 D-370 D-379 D-380, the
+ * behaviour choices of D-442, and D-465 (a release only with the car stopped,
+ * the select dropped after 1.5 s).
  *
  * Every number marked `confirm` is a bench or car figure nobody has measured
  * (R11); F6 commissions it.
@@ -32,9 +34,13 @@
 #define PANEL_TX_HEARTBEAT_MS   500      /* 0x400: on change + 2 Hz              */
 #define WAKE_REQ_MAX_MS        3000      /* wake line held at most this long     */
 #define REPLAY_MS               300      /* a press made asleep, replayed awake  */
-#define RELEASE_HOLD_MS        1500      /* > the PMU release pulse (hundreds of
-                                          * ms, logic ACCESSORY) + 0x400 latency;
-                                          * confirm against the PMU config       */
+#define RELEASE_HOLD_MS        1500      /* the select is held this long from the
+                                          * press and then dropped, whatever the key
+                                          * does (D-465): with the key on it alone
+                                          * fires the solenoid. > the PMU release
+                                          * pulse (hundreds of ms, logic ACCESSORY)
+                                          * + 0x400 latency; confirm against the
+                                          * PMU config                            */
 #define WINDOW_DEAD_MS          100      /* both relays at rest before reversing */
 #define WINDOW_MAX_RUN_MS     10000      /* confirm: longer than a full glass travel */
 #define MIRROR_DEAD_MS           50      /* bridges off while the clutch settles */
@@ -71,7 +77,17 @@ typedef struct {
     uint16_t rel_sel;             /* PK_HATCH, PK_FUEL_DOOR or 0 (SN23) */
     uint32_t rel_t0;
     uint16_t rel_blocked;         /* release keys refused until let go  */
+    uint8_t  stopped;             /* car_stopped(), set by the host every scan;
+                                   * 0 - the reset value - refuses every release */
 } panel_t;
+
+/* The car is stopped (D-465): the ICU's road speed, 0x200 byte 6, reads 0 km/h in a
+ * frame no older than TMO_ICU_SENSORS. No frame yet, or a stale one, is NOT stopped:
+ * a release is refused when the DCU cannot see the speed. */
+static inline uint8_t car_stopped(uint8_t seen_200, uint32_t age_ms, uint8_t speed_kph)
+{
+    return (uint8_t)(seen_200 && age_ms <= TMO_ICU_SENSORS && speed_kph == 0);
+}
 
 /* Debounce one scan. raw: PK_* bits read this scan (matrix + thumbstick
  * press). Returns the keys newly down. */
@@ -128,25 +144,35 @@ static inline uint16_t held_step(panel_t *p, uint16_t eff, uint32_t now)
     return p->held;
 }
 
-/* Release select (D-370, SN23). The DCU grounds K3 (hatch) or K4 (fuel door)
- * BEFORE the PMU sees the key's edge, and holds it through the pulse. Never
- * both: a second release key while one is selected, or both at once, is
- * refused and kept out of 0x400 until it is let go, so the PMU never fires a
- * pulse the DCU has not steered. Call after the edge on eff; returns the
- * release bits to clear from 0x400. */
+/* Release select (D-370, D-465, SN23). The DCU grounds K3 (hatch) or K4 (fuel
+ * door) BEFORE the PMU sees the key's edge, and holds it through the pulse -
+ * and since K3 / K4 are live whenever O10 is, with the key on the select alone
+ * fires the solenoid (D-465 corrects D-370). So:
+ *   - only with the car stopped (p->stopped, car_stopped()): a press while it is
+ *     not is refused and kept out of 0x400 until it is let go, and a select
+ *     already raised is dropped the moment the car is not stopped;
+ *   - dropped RELEASE_HOLD_MS after it was raised, whatever the key does - held,
+ *     let go or pressed again; a second press of the same key inside the window
+ *     is refused like any other, it never extends it;
+ *   - never both: a second release key while one is selected, or both at once,
+ *     is refused and kept out of 0x400 until it is let go.
+ * So the PMU never fires a pulse the DCU has not steered. Call after the edge on
+ * eff; returns the release bits to clear from 0x400. */
 static inline uint16_t release_step(panel_t *p, uint16_t eff, uint16_t eff_pressed, uint32_t now)
 {
     p->rel_blocked &= eff;                                  /* let go: unblocked */
-    if (p->rel_sel && (uint32_t)(now - p->rel_t0) >= RELEASE_HOLD_MS && !(eff & p->rel_sel))
+    if (p->rel_sel && !p->stopped) {                        /* moving, or the speed unseen */
+        p->rel_blocked |= (uint16_t)(eff & p->rel_sel);
         p->rel_sel = 0;
+    }
+    if (p->rel_sel && (uint32_t)(now - p->rel_t0) >= RELEASE_HOLD_MS)
+        p->rel_sel = 0;                                     /* 1.5 s, key held or not */
     uint16_t np = (uint16_t)(eff_pressed & PK_RELEASE & ~p->rel_blocked);
     if (np) {
-        if (p->rel_sel == 0 && np != PK_RELEASE && !(eff & PK_RELEASE & ~np)) {
+        if (p->stopped && p->rel_sel == 0 && np != PK_RELEASE && !(eff & PK_RELEASE & ~np)) {
             p->rel_sel = np; p->rel_t0 = now;
-        } else if (p->rel_sel == np) {
-            p->rel_t0 = now;                                /* the same key again */
         } else {
-            p->rel_blocked |= np;
+            p->rel_blocked |= np;                           /* not stopped, the other key, both, or again */
         }
     }
     return (uint16_t)(p->rel_blocked & eff);

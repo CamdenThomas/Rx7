@@ -42,7 +42,13 @@ static const int PIN_JOY_Y       = 21;               /* SN18, A7, ribbon 18 */
 static const int PIN_WIN[4]      = { 22, 23, 24, 25 }; /* SN22 BTT6200 IN0-3: DRV up, DRV down, PASS up,
                                                         * PASS down -> DP-DCU-B 1-4 */
 static const int PIN_REL_HATCH   = 26;               /* SN23, K3 85 via DP-DCU-B 10 */
-static const int PIN_REL_FUEL    = 27;               /* SN23, K4 85 via DP-DCU-B 11 */
+static const int PIN_REL_FUEL    = 27;               /* SN23, K4 85 via DP-DCU-B 11. Each drives a
+                                                      * PMV37ENEA gate with a pull-down on the board
+                                                      * (D-465): a reset or a floating pin cannot
+                                                      * select. K3 / K4's 86 is live whenever O10
+                                                      * is, so HIGH alone fires the solenoid with
+                                                      * the key on - panel.h's release_step refuses
+                                                      * unless stopped and drops it after 1.5 s */
 static const int PIN_ROW[3]      = { 28, 29, 30 };   /* SN19, ribbon 3-5 */
 static const int PIN_COL[3]      = { 31, 32, 33 };   /* SN19, ribbon 6-8 */
 enum { ENC_FAN = 0, ENC_TEMP, ENC_SEAT_DRV, ENC_SEAT_PASS, ENC_COUNT };

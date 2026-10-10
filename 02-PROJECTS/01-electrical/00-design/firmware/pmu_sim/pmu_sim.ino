@@ -21,7 +21,15 @@
  *
  * Works with NO transceiver too - it will report the TX failure and keep
  * running the model, so the console output is still useful.
+ *
+ * The outputs follow the PMU's rules as the record has them (vehicle_model.h):
+ * the oil-gated fuel pump, the 10 s voltage shed, KEEP_ALIVE and the hazards,
+ * the dash illumination on O20. `p`, `v` and `i` put a count on A7, a voltage
+ * on the supply and a duty on the dimmer, as the ladder rig would.
  */
+
+#define PMU_SIM_VERSION "0.2.0-dev"   /* D-461 oil gate (open sender = zero pressure), D-462 O20 = illumination, D-463 / D-476 shed after 10 s with hysteresis, D-464 hazards past the 30 min, IGNITION's 200 ms off-delay */
+/* 0.1.0: the drive model, CAN 0x100-0x130, the console */
 
 #include <ACAN_T4.h>
 #include "can_map.h"
@@ -54,7 +62,8 @@ static void txState() {
                   | (car.key >= K_RUN ? WAKE_RUN : 0)
                   | (car.turn == T_HAZARD ? WAKE_HAZARD : 0)
                   | (car.door ? WAKE_DOOR : 0)
-                  | (car.horn ? WAKE_HORN : 0);
+                  | (car.horn ? WAKE_HORN : 0)
+                  | (car.awake ? WAKE_SELF : 0);      /* the O22 hold (rules sleep) */
     uint8_t fault = 0;
     for (int i = 0; i < 24; i++) if (car.chState[i] >= 2) fault |= FAULT_SOFTFUSE;
     if (car.voltsX10 < 115) fault |= FAULT_UNDERVOLT;
@@ -110,7 +119,10 @@ static void help() {
       " w0 w1 w2 w3   wiper OFF / INT / LOW / HIGH\n"
       " b             brake toggle        n  horn toggle\n"
       " r             reverse toggle      d  defog toggle\n"
-      " o             door toggle\n"
+      " o             door toggle (a wake input - no lamp, D-462)\n"
+      " i <0-100>     dimmer duty on O20 %\n"
+      " p <count>     put a raw count on A7 (1023 = open sender)   p  the model's sender\n"
+      " v <volts x10> hold the supply (114 = 11.4 V)               v  the model's supply\n"
       " f <0-100>     fuel level %\n"
       " x <1-24>      trip that channel   c  clear all trips\n"
       " a             auto drive cycle on/off\n"
@@ -130,6 +142,13 @@ static void dump() {
     Serial.print(F("  fuel ")); Serial.print(car.fuelPctX10 / 10.0, 1);
     Serial.print(F("%  total ")); Serial.print(car.totalCurrent() / 100.0, 2);
     Serial.println(F("A"));
+    Serial.print(F("A7 "));        Serial.print(car.a7Count());
+    Serial.print(F("  oil_ok "));  Serial.print(car.oilOk);
+    Serial.print(F("  ign "));     Serial.print(car.ignitionOn);
+    Serial.print(F("  shed "));    Serial.print(car.shed);
+    Serial.print(F("  awake "));   Serial.print(car.awake);
+    Serial.print(F("  dim "));     Serial.print(car.dimPct);
+    Serial.println(F("%"));
 
     for (int i = 0; i < 24; i++) {
         if (!car.chState[i]) continue;
@@ -169,6 +188,9 @@ static void command(char *line) {
         case 'r': car.reverse = !car.reverse; break;
         case 'd': car.defog = !car.defog; break;
         case 'o': car.door = !car.door; break;
+        case 'i': { int v = readInt(line + 1); if (v >= 0) car.dimPct = v > 100 ? 100 : v; } break;
+        case 'p': { int v = readInt(line + 1); car.a7Inject = (v > 1023) ? 1023 : v; } break;   /* -1 = the model */
+        case 'v': { int v = readInt(line + 1); car.voltsInjectX10 = (v > 0) ? v : 0; } break;
         case 'f': { int v = readInt(line + 1); if (v >= 0) car.fuelPctX10 = v * 10; } break;
         case 'x': { int v = readInt(line + 1); if (v >= 1 && v <= 24) {
                         car.tripChannel(v - 1);
@@ -222,7 +244,7 @@ void setup() {
     Serial.begin(115200);
     while (!Serial && millis() < 3000) {}
 
-    Serial.println(F("PMU-24 DL SIMULATOR"));
+    Serial.print(F("PMU-24 DL SIMULATOR ")); Serial.println(F(PMU_SIM_VERSION));
     Serial.print(F("channel currents still estimated: "));
     Serial.print(estimatedChannelCount());
     Serial.println(F(" of 24   <- fix in channels.h after T-014"));

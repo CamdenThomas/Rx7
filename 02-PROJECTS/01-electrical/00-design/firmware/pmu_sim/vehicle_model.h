@@ -9,6 +9,22 @@
  *   - turn signal current pulses with the flash
  *   - pop-ups take real time to travel
  *
+ * And it switches its outputs by the PMU's rules, held to the record (logic, rules, inputs):
+ *   - FUEL_PUMP: START, the 3 s prime from ignition_on rising, then the oil gate - oil_ok
+ *     latches on an A7 count BELOW OIL_MIN (the sender is open at 0 psi and falls with
+ *     pressure, SP-787) and clears after 5 s continuously at or above it, or with ignition;
+ *     an open sender is zero pressure, so the pump stops after the prime (D-461)
+ *   - IGNITION: off only after 200 ms of a clean OFF / ACC (D-410)
+ *   - ACCESSORY: A16 >= ACC, or the engine running - ignition_on && oil_ok (D-463)
+ *   - INTERIOR: the dash illumination, A15 >= PARK at the dimmer's duty, never a door (D-462)
+ *   - the voltage shed: COMFORT, INTERIOR, ACCESSORY, DEFOG off after 10 s continuously
+ *     below 11.5 V, never counted during START, back above 12.0 V; ACCESSORY and INTERIOR
+ *     never shed while the engine runs (rules voltage, D-463, D-476)
+ *   - KEEP_ALIVE: awake on any wake; off 30 s after the last change with the key OFF, the
+ *     doors closed and A8 idle; forced off 30 min after the key went OFF - except while the
+ *     hazards are on, with no limit (rules sleep, D-248, D-464)
+ * tests/test_suite.cpp sections 14 (the generated vectors) and 15 (the timers) hold it there.
+ *
  * That matters because the ICU is meant to display a car, and a display
  * fed by noise proves nothing about whether it reads well.
  *
@@ -40,8 +56,14 @@ public:
     bool    horn  = false;
     bool    reverse = false;
     bool    defog = false;         /* the panel key over CAN (logic DEFOG: panel_defog) */
-    bool    door  = false;         /* A6 != CLOSED - any door open */
+    bool    door  = false;         /* A6 != CLOSED - any door open: a wake input, no lamp (D-462) */
     int     throttle = 0;          /* 0..100, drives target rpm */
+    int     dimPct = 100;          /* the dimmer's duty on O20, % (logic INTERIOR) */
+
+    /* ---- bench injection, as the ladder rig would put it on the pin ---- */
+    int     a7Inject = -1;         /* a raw A7 count on the oil-pressure node; -1 = the model's own
+                                    * sender. 1023 = an open sender or a broken wire (D-461) */
+    int     voltsInjectX10 = 0;    /* hold the supply here (x10 V); 0 = the model's own */
 
     /* ---- engine and drivetrain ---- */
     int  rpm = 0;
@@ -74,6 +96,43 @@ public:
     uint8_t  chState[24]   = {0};      /* 0 off 1 on 2 tripped 3 retry */
     uint32_t chTripAtMs[24]= {0};
 
+    /* ---- the PMU's rules (logic FUEL_PUMP / IGNITION, rules voltage / sleep) ---- */
+    static const int A7_OPEN  = 1000;          /* above: open = ZERO oil pressure, not a fault (inputs A7, D-461) */
+    static const int A7_SHORT = 20;            /* below: short - still counts as oil_ok (D-249) */
+    static const int OIL_MIN_COUNT = 700;      /* SIMULATOR PLACEHOLDER, ~217 ohm under the 100 ohm pull-up -
+                                                * above SP-787's first mark (196.7 ohm, other-car). The real
+                                                * OIL_MIN is read in the car at commissioning, never entered on
+                                                * the bench (D-249) */
+    static const uint32_t PRIME_MS      = 3000;    /* logic FUEL_PUMP: prime_timer < 3 s */
+    static const uint32_t OIL_CLEAR_MS  = 5000;    /* oil_ok clears after 5 s continuously >= OIL_MIN */
+    static const uint32_t IGN_OFF_MS    = 200;     /* logic IGNITION: a clean OFF / ACC for 200 ms */
+    static const uint32_t SHED_DELAY_MS = 10000;   /* rules voltage: about 10 s below 11.5 V (D-463) */
+    static const int SHED_BELOW_X10   = 115;       /* below 11.5 V */
+    static const int SHED_RESTORE_X10 = 120;       /* back above 12.0 V - 0.5 V of hysteresis */
+    static const uint32_t SLEEP_QUIET_MS  = 30000;            /* rules sleep: 30 s after the last change */
+    static const uint32_t SLEEP_FORCED_MS = 30UL * 60 * 1000; /* 30 min with A16 == OFF (D-248) */
+    static const uint32_t STARVE_MS = 1500;    /* MODEL FIGURE, not a record fact: the engine dies this
+                                                * long after the pump stops */
+
+    bool     ignitionOn = false;   /* the IGNITION channel's own state - logic's ignition_on */
+    bool     oilOk      = false;   /* logic's oil_ok */
+    bool     engineRuns = false;   /* ignition_on && oil_ok - what ACCESSORY and the shed read */
+    bool     shed       = false;   /* the low-voltage shed is in force */
+    bool     awake      = false;   /* KEEP_ALIVE (O22) */
+    uint32_t primeMs = 0, oilHighMs = 0, ignOffMs = 0, lowVoltMs = 0;
+    uint32_t quietMs = 0, keyOffMs = 0, starveMs = 0;
+
+    /* the A7 count the PMU reads: the injected one, or the model's sender - open below
+     * 5 psi, then SP-787's 60 / 110 psi marks on a straight line (other-car, a model only) */
+    int a7Count() const {
+        if (a7Inject >= 0) return a7Inject;
+        int psi = oilPressCbar * 145 / 1000;               /* 1 bar = 14.5 psi */
+        if (psi < 5) return 1023;
+        int ohm = 188 - (psi * 772) / 1000;
+        if (ohm < 60) ohm = 60;
+        return 1023 * ohm / (ohm + 100);
+    }
+
     /* ---- flags ---- */
     bool wOil=false, wTemp=false, wBatt=false, wBrake=false, wFuel=false;
     uint32_t nowMs = 0;
@@ -89,12 +148,15 @@ public:
         motion(dtMs);
         flasher();
         popups(dtMs);
-        setChannels();
+        setChannels(dtMs);
         currents();
         warnings();
     }
 
 private:
+    bool     ignWant = false, ignPrev = false;
+    uint8_t  wakePrev = 0;
+
     /* ---------------- engine ---------------- */
     void engine(uint32_t dt) {
         if (key == K_START) {
@@ -102,7 +164,16 @@ private:
             rpm = 250;                                  /* cranking */
             if (crankMs > 900) running = true;          /* catches */
         } else if (key < K_RUN) {
-            running = false; crankMs = 0;
+            crankMs = 0;
+        }
+        /* it runs on the IGNITION channel (the key, its 200 ms off-delay, a trip) and on fuel:
+         * the pump stopped by the oil gate starves it (D-461) */
+        if (running && key != K_START && chState[O12_IGN] != 1) running = false;
+        if (running && chState[O5_FUEL] != 1) {
+            starveMs += dt;
+            if (starveMs >= STARVE_MS) running = false;
+        } else {
+            starveMs = 0;
         }
 
         if (!running) {
@@ -184,6 +255,7 @@ private:
         accVolts %= 250;
         if (voltsX10 < 80)  voltsX10 = 80;
         if (voltsX10 > 160) voltsX10 = 160;
+        if (voltsInjectX10 > 0) { voltsX10 = voltsInjectX10; accVolts = 0; }
 
         if (running) {
             uint32_t burn = 2 + (uint32_t)(rpm / 900) + (uint32_t)(throttle / 25);
@@ -252,32 +324,92 @@ private:
 
     /* ---------------- which channels are commanded ----------------
      * Held to the record's logic rows by tests/test_suite.cpp section 14 (logic_vectors.h,
-     * generated from logic.csv): what this model has an input for must agree. */
-    void setChannels() {
-        bool acc = (key >= K_ACC);
-        bool run = (key >= K_RUN);
+     * generated from logic.csv): what this model has an input for must agree. The clauses
+     * the generator leaves to hand-testing - the prime, the oil latch, the off-delay, the
+     * shed, the sleep - are section 15. */
+    static uint32_t upTo(uint32_t t, uint32_t dt, uint32_t cap) { return (t + dt > cap) ? cap : t + dt; }
+
+    void setChannels(uint32_t dt) {
+        bool acc   = (key >= K_ACC);
+        bool run   = (key >= K_RUN);
+        bool start = (key == K_START);
+        bool hazard = (turn == T_HAZARD);
+
+        /* IGNITION: on at A16 >= RUN, off only after a clean OFF / ACC for 200 ms (D-410).
+         * ignition_on is the channel's own state, so a tripped O12 reads false. */
+        if (run) { ignWant = true; ignOffMs = 0; }
+        else     { ignOffMs = upTo(ignOffMs, dt, IGN_OFF_MS); if (ignOffMs >= IGN_OFF_MS) ignWant = false; }
+        ignitionOn = ignWant && chState[O12_IGN] != 2;
+
+        /* the prime: 3 s from ignition_on rising */
+        if (ignitionOn && !ignPrev) primeMs = 0;
+        else if (ignitionOn)        primeMs = upTo(primeMs, dt, PRIME_MS);
+        ignPrev = ignitionOn;
+        bool prime = ignitionOn && primeMs < PRIME_MS;
+
+        /* the oil gate (D-461): oil pressure above OIL_MIN is a count BELOW OIL_MIN. It latches
+         * there, and clears after 5 s continuously at or above it (an open sender among them),
+         * or at once with ignition. A short (< 20) is below OIL_MIN, so it counts as oil_ok. */
+        int a7 = a7Count();
+        if (!ignitionOn)            { oilOk = false; oilHighMs = 0; }
+        else if (a7 < OIL_MIN_COUNT) { oilOk = true;  oilHighMs = 0; }
+        else {
+            oilHighMs = upTo(oilHighMs, dt, OIL_CLEAR_MS);
+            if (oilHighMs >= OIL_CLEAR_MS) oilOk = false;
+        }
+        engineRuns = ignitionOn && oilOk;
+
+        /* the voltage shed (rules voltage, D-463): 10 s continuously below 11.5 V, never
+         * counted during START; restored only above 12.0 V */
+        if (start || voltsX10 >= SHED_BELOW_X10) lowVoltMs = 0;
+        else lowVoltMs = upTo(lowVoltMs, dt, SHED_DELAY_MS);
+        if (!shed && lowVoltMs >= SHED_DELAY_MS) shed = true;
+        if (shed && voltsX10 > SHED_RESTORE_X10)  shed = false;
+
+        /* KEEP_ALIVE (rules sleep, D-248, D-464). A wake is a wake-strip input going high;
+         * the 30 s runs from the last change with the key OFF, the doors shut and A8 idle;
+         * the 30 min runs while the key is OFF and is held at zero while the hazards are on,
+         * so it restarts when they go off; a new wake restarts it too. After a forced sleep a
+         * door still open does not wake it again - only an input going high does. */
+        uint8_t wake = (uint8_t)((acc ? 1 : 0) | (run ? 2 : 0) | (door ? 4 : 0) | ((hazard || horn) ? 8 : 0));
+        uint8_t rose = (uint8_t)(wake & ~wakePrev);
+        quietMs  = (wake != wakePrev) ? 0 : upTo(quietMs, dt, SLEEP_QUIET_MS);
+        keyOffMs = (key != K_OFF || hazard || rose) ? 0 : upTo(keyOffMs, dt, SLEEP_FORCED_MS);
+        wakePrev = wake;
+        if (rose) awake = true;
+        else if (awake) {
+            bool still = (key == K_OFF) && !door && !hazard && !horn;
+            if (still && quietMs >= SLEEP_QUIET_MS)    awake = false;
+            if (keyOffMs >= SLEEP_FORCED_MS)           awake = false;   /* never while hazard: held at zero */
+        }
 
         bool want[24] = {false};
         want[O1_MOTOR]     = (popup == P_RAISING || popup == P_LOWERING);
         want[O2_HEAD_LO]   = (head == H_HEAD);
         want[O3_HEAD_HI]   = (head == H_HIGH || head == H_PASS);   /* logic HEAD_HIGH */
         want[O4_DEFOG]     = defog && acc;                         /* logic DEFOG: the A16 floor is ACC (D-350) */
-        want[O5_FUEL]      = running || (key == K_START);
-        want[O6_TAIL]      = (head >= H_PARK);
+        want[O5_FUEL]      = start || prime || engineRuns;         /* logic FUEL_PUMP (D-461) */
+        want[O6_TAIL]      = (head == H_PASS) ? chOn[O6_TAIL] : (head >= H_PARK);   /* PASS holds */
         want[O7_BRAKE]     = brake;
         want[O8_WIPE_LO]   = (wipe == W_LOW || wipe == W_INT);
         want[O9_WIPE_HI]   = (wipe == W_HIGH);
-        want[O10_ACC]      = acc;
+        want[O10_ACC]      = acc || engineRuns;                    /* logic ACCESSORY (D-463); no release pulse here */
         want[O11_HORN]     = horn;
-        want[O12_IGN]      = run;
+        want[O12_IGN]      = ignWant;
         want[O15_COMFORT]  = run;
         want[O16_BLOWER]   = false;                    /* motor is dead */
         want[O17_TURN_L]   = turnPhase && (turn == T_LEFT  || turn == T_HAZARD);
         want[O18_TURN_R]   = turnPhase && (turn == T_RIGHT || turn == T_HAZARD);
         want[O19_REVERSE]  = reverse && run;
-        want[O20_INTERIOR] = door;                   /* logic INTERIOR: A6 != CLOSED; no fade, no 10 min drop */
-        want[O21_START]    = (key == K_START);
-        want[O22_KEEPALIVE]= acc;
+        want[O20_INTERIOR] = (head == H_PASS) ? chOn[O20_INTERIOR] : (head >= H_PARK);  /* logic INTERIOR (D-462) */
+        want[O21_START]    = start;
+        want[O22_KEEPALIVE]= awake;
+
+        if (shed) {                                    /* rules voltage (D-463, D-476) */
+            want[O15_COMFORT] = false;
+            want[O4_DEFOG]    = false;
+            if (!engineRuns) { want[O10_ACC] = false; want[O20_INTERIOR] = false; }
+        }
 
         for (int i = 0; i < 24; i++) {
             if (chState[i] == 2) {                     /* tripped, latched */
@@ -314,7 +446,7 @@ private:
                 uint32_t on = nowMs - chOnAtMs[i];
                 base = (on < 120000) ? 1150 - (on / 900) : 1020;
             }
-            if (i == O20_INTERIOR) base = 250;
+            if (i == O20_INTERIOR) base = 250u * (uint32_t)(dimPct < 0 ? 0 : dimPct > 100 ? 100 : dimPct) / 100u;
 
             /* inrush window */
             uint32_t since = nowMs - chOnAtMs[i];

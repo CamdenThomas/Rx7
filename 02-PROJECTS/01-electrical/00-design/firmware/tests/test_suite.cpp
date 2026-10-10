@@ -31,6 +31,10 @@
  *  12  diagnostics page bounds and channel table integrity
  *  13  frame cost stays inside the 30 fps budget
  *  14  the PMU simulator against the record's logic rows (logic_vectors.h, Y8)
+ *  15  the clauses section 14 lists as hand-tested, by their timers: the 3 s prime and
+ *      the oil gate (D-461), IGNITION's 200 ms off-delay, the 10 s voltage shed with its
+ *      hysteresis and START exclusion (D-463, D-476), the dash illumination (D-462) and
+ *      KEEP_ALIVE's 30 s / 30 min with the hazards past it (D-248, D-464)
  */
 
 #include <cstdio>
@@ -690,6 +694,7 @@ struct LvPending {
     bool hazard = false, brake = false, horn = false, reverse = false, door = false, defog = false;
     bool headSet = false;
     int wantPhase = -1, wantPopup = -1;            /* read back from the model */
+    int wantIgn = -1, wantOil = -1;                /* ignition_on / oil_ok, reached by driving the model */
 };
 static const char *const LV_UNKNOWN = "?";
 
@@ -737,6 +742,8 @@ static const char *lvTerm(const char *t, int val, LvPending &p) {
     if (!strcmp(t, "wiper_latch"))   return val ? "no wiper park latch in the model" : nullptr;
     if (!strcmp(t, "window_req"))    return val ? "no windows in the model (the DCU's)" : nullptr;
     if (!strcmp(t, "release_pulse")) return val ? "no release pulse in the model" : nullptr;
+    if (!strcmp(t, "ignition_on"))   { p.wantIgn = val; return nullptr; }
+    if (!strcmp(t, "oil_ok"))        { p.wantOil = val; return nullptr; }
     return LV_UNKNOWN;
 }
 
@@ -749,14 +756,24 @@ static int lvChannel(const char *name) {
     return -1;
 }
 
-/* Drive one vector; returns nullptr and sets *on, or a reason it could not be reached. */
+/* Drive one vector; returns nullptr and sets *on, or a reason it could not be reached.
+ * ignition_on and oil_ok are the model's own states, reached as the car reaches them: oil_ok
+ * by a count put on A7 (600 = a live sender at pressure, 1023 = open); ignition_on with the
+ * key below RUN inside IGNITION's 200 ms off-delay after RUN; ignition_on false with the key
+ * in RUN by a tripped O12. oil_ok with ignition_on false cannot be: it clears with ignition. */
 static const char *lvRun(const LvPending &p, int ch, bool *on) {
+    if (p.wantOil == 1 && p.wantIgn == 0) return "oil_ok clears with ignition_on (logic FUEL_PUMP) - never both";
     Vehicle v;
     v.key = (KeyPos)p.key; v.head = (HeadPos)p.head; v.wipe = (WipePos)p.wipe;
     v.turn = p.hazard ? T_HAZARD : (TurnPos)p.a1;      /* hazard overrides the stalk (rules flasher) */
     v.brake = p.brake; v.horn = p.horn; v.reverse = p.reverse; v.door = p.door; v.defog = p.defog;
+    if (p.wantOil >= 0) v.a7Inject = p.wantOil ? 600 : 1023;
+    bool offDelay = p.wantIgn == 1 && p.key < K_RUN;
+    if (offDelay) v.key = K_RUN;
     uint32_t t = 0;
     for (int i = 0; i < 100; i++) { t += 10; v.update(t, 10); }        /* settle 1 s */
+    if (offDelay) v.key = (KeyPos)p.key;                                /* inside the 200 ms */
+    if (p.wantIgn == 0 && p.key >= K_RUN) v.tripChannel(O12_IGN);
     if (p.wantPopup == 1) {
         if (p.headSet) return "a pop-up cycle with A15 held";
         v.head = H_HEAD;                                                /* start a cycle */
@@ -765,7 +782,9 @@ static const char *lvRun(const LvPending &p, int ch, bool *on) {
         t += 10; v.update(t, 10);
         bool transit = v.popup == P_RAISING || v.popup == P_LOWERING;
         if ((p.wantPhase < 0 || (int)v.turnPhase == p.wantPhase) &&
-            (p.wantPopup < 0 || (int)transit == p.wantPopup)) {
+            (p.wantPopup < 0 || (int)transit == p.wantPopup) &&
+            (p.wantIgn < 0 || (int)v.ignitionOn == p.wantIgn) &&
+            (p.wantOil < 0 || (int)v.oilOk == p.wantOil)) {
             *on = v.chOn[ch];
             return nullptr;
         }
@@ -853,6 +872,177 @@ static void testLogicVectors() {
            checked, unimpl, rowsReq, LV_ROWS);
 }
 
+/* ================= 15. the PMU's timed rules on the simulator =================
+ * What section 14 prints as `hand`: the clauses of logic FUEL_PUMP, IGNITION, INTERIOR and
+ * KEEP_ALIVE and of rules voltage / sleep that the generator cannot turn into vectors,
+ * because they are timers or holds. Each is driven through vehicle_model.h at 10 ms ticks,
+ * as pmu_sim runs it, and checked just inside and just past its edge. OIL_MIN is the
+ * model's placeholder (the real one is read in the car, D-249); the counts below are
+ * relative to it. */
+static Vehicle g_v;
+static uint32_t g_t;
+static void pmuFresh() { g_v = Vehicle(); g_t = 0; }
+static void pmuRun(uint32_t ms) { for (uint32_t i = 0; i < ms / 10; i++) { g_t += 10; g_v.update(g_t, 10); } }
+static bool pmuOn(int ch) { return g_v.chState[ch] == 1; }     /* what 0x120 carries */
+
+static void testPmuTimers() {
+    group("15  the PMU's timed rules on the simulator (FUEL_PUMP, IGNITION, voltage, sleep)");
+    const int kLive = 600, kLowP = Vehicle::OIL_MIN_COUNT + 100, kOpen = 1023, kShort = 10;
+
+    /* ---- FUEL_PUMP: the prime and the oil gate (D-461) ---- */
+    pmuFresh(); g_v.a7Inject = kOpen; g_v.key = K_RUN;
+    pmuRun(10);
+    check(pmuOn(O5_FUEL), "key to RUN, sender open: the pump primes at once");
+    pmuRun(2980);
+    check(pmuOn(O5_FUEL) && !g_v.oilOk, "open sender: still priming at 2.99 s, oil_ok false");
+    pmuRun(30);
+    check(!pmuOn(O5_FUEL), "open sender = zero pressure: the pump stops after the 3 s prime (D-461)");
+    pmuRun(10000);
+    check(!pmuOn(O5_FUEL) && pmuOn(O12_IGN), "and stays stopped with the key in RUN");
+
+    pmuFresh(); g_v.a7Inject = kLowP; g_v.key = K_RUN;
+    pmuRun(5000);
+    check(!pmuOn(O5_FUEL) && !g_v.oilOk, "a count above OIL_MIN is pressure below it: off after the prime");
+    pmuFresh(); g_v.a7Inject = kLive; g_v.key = K_RUN;
+    pmuRun(10000);
+    check(pmuOn(O5_FUEL) && g_v.oilOk, "a count below OIL_MIN is pressure above it: the pump holds past the prime");
+    pmuFresh(); g_v.a7Inject = kShort; g_v.key = K_RUN;
+    pmuRun(10000);
+    check(pmuOn(O5_FUEL) && g_v.oilOk, "a shorted sender (< 20) still counts as oil_ok (D-249, not touched by D-461)");
+
+    pmuFresh(); g_v.a7Inject = kOpen; g_v.key = K_START;
+    pmuRun(5000);
+    check(pmuOn(O5_FUEL), "A16 == START runs the pump whatever A7 reads, past 3 s");
+
+    /* a real start, then the sender wire breaks */
+    pmuFresh(); g_v.key = K_ACC; pmuRun(500);
+    g_v.key = K_START; pmuRun(1500);
+    g_v.key = K_RUN;   pmuRun(20000);
+    check(g_v.running && pmuOn(O5_FUEL) && g_v.oilOk, "started on the model's sender: the pump holds on oil pressure");
+    g_v.a7Inject = kOpen; pmuRun(4900);
+    check(pmuOn(O5_FUEL) && g_v.oilOk, "wire broken: oil_ok holds through 4.9 s of continuous open");
+    pmuRun(200);
+    check(!pmuOn(O5_FUEL) && !g_v.oilOk, "and clears at 5 s: the pump stops");
+    pmuRun(Vehicle::STARVE_MS + 100);
+    check(!g_v.running, "and the engine stops for want of fuel - a broken sender wire stops the engine");
+
+    /* oil_ok clears only on 5 s continuous: a flicker does not stop the pump */
+    pmuFresh(); g_v.a7Inject = kLive; g_v.key = K_RUN; pmuRun(4000);
+    bool held = true;
+    for (int k = 0; k < 5; k++) {
+        g_v.a7Inject = kOpen; pmuRun(4000); held = held && pmuOn(O5_FUEL);
+        g_v.a7Inject = kLive; pmuRun(100);  held = held && pmuOn(O5_FUEL);
+    }
+    check(held, "4 s open, 0.1 s pressure, five times: oil_ok never clears");
+
+    /* ignition off clears oil_ok; the prime restarts with ignition_on rising */
+    pmuFresh(); g_v.a7Inject = kLive; g_v.key = K_RUN; pmuRun(5000);
+    g_v.key = K_ACC; pmuRun(300);
+    check(!pmuOn(O12_IGN) && !g_v.oilOk && !pmuOn(O5_FUEL), "key to ACC: ignition off, oil_ok cleared, the pump stops");
+    g_v.a7Inject = kOpen; pmuRun(1000);
+    g_v.key = K_RUN; pmuRun(2900);
+    check(pmuOn(O5_FUEL), "back to RUN: a new 3 s prime");
+    pmuRun(200);
+    check(!pmuOn(O5_FUEL), "which ends at 3 s with the sender open");
+
+    /* ---- IGNITION: off only after a clean OFF / ACC for 200 ms (D-410) ---- */
+    pmuFresh(); g_v.key = K_RUN; pmuRun(1000);
+    g_v.key = K_ACC; pmuRun(190);
+    check(pmuOn(O12_IGN) && g_v.ignitionOn, "RUN to ACC: ignition still on at 190 ms");
+    pmuRun(20);
+    check(!pmuOn(O12_IGN) && !g_v.ignitionOn, "and off at 210 ms");
+    pmuFresh(); g_v.key = K_RUN; pmuRun(1000);
+    bool never = true;
+    for (int k = 0; k < 20; k++) { g_v.key = K_ACC; pmuRun(100); never = never && pmuOn(O12_IGN); g_v.key = K_RUN; pmuRun(50); }
+    check(never, "a key bouncing RUN / ACC in 100 ms spells never drops ignition");
+
+    /* ---- the voltage shed (rules voltage, D-463, D-476) ---- */
+    const int shedCh[4] = { O15_COMFORT, O20_INTERIOR, O10_ACC, O4_DEFOG };
+    auto allOn  = [&]() { bool r = true;  for (int c : shedCh) r = r && pmuOn(c);  return r; };
+    auto allOff = [&]() { bool r = true;  for (int c : shedCh) r = r && !pmuOn(c); return r; };
+
+    pmuFresh(); g_v.a7Inject = kOpen; g_v.key = K_RUN; g_v.head = H_PARK; g_v.defog = true;
+    pmuRun(4000);                                              /* past the prime: engine not running */
+    g_v.voltsInjectX10 = 114; pmuRun(9900);
+    check(allOn(), "11.4 V, engine off: nothing shed at 9.9 s");
+    pmuRun(200);
+    check(allOff() && pmuOn(O6_TAIL) && pmuOn(O12_IGN), "shed at 10 s: COMFORT, INTERIOR, ACCESSORY, DEFOG - and nothing else");
+    g_v.voltsInjectX10 = 118; pmuRun(20000);
+    check(allOff(), "11.8 V: still shed - restore needs above 12.0 V (0.5 V hysteresis)");
+    g_v.voltsInjectX10 = 121; pmuRun(20);
+    check(allOn(), "12.1 V: restored");
+
+    pmuFresh(); g_v.a7Inject = kOpen; g_v.key = K_RUN; g_v.head = H_PARK; g_v.defog = true; pmuRun(4000);
+    g_v.voltsInjectX10 = 114; pmuRun(9000);
+    g_v.voltsInjectX10 = 116; pmuRun(10);
+    g_v.voltsInjectX10 = 114; pmuRun(9000);
+    check(allOn() && !g_v.shed, "below 11.5 V for 9 s twice, broken by 10 ms above it: not continuous, not shed");
+
+    pmuFresh(); g_v.key = K_START; g_v.head = H_PARK; g_v.defog = true; g_v.voltsInjectX10 = 105;
+    pmuRun(12000);
+    check(!g_v.shed && pmuOn(O10_ACC) && pmuOn(O15_COMFORT), "cranking at 10.5 V for 12 s: never shed in START");
+    g_v.key = K_RUN; g_v.a7Inject = kOpen; pmuRun(9900);
+    check(!g_v.shed, "the 10 s starts when START ends: not shed at 9.9 s");
+    pmuRun(200);
+    check(g_v.shed && !pmuOn(O15_COMFORT), "shed at 10 s after START");
+
+    pmuFresh(); g_v.a7Inject = kLive; g_v.key = K_RUN; g_v.head = H_PARK; g_v.defog = true; pmuRun(4000);
+    g_v.voltsInjectX10 = 114; pmuRun(10100);
+    check(g_v.shed && g_v.engineRuns && !pmuOn(O15_COMFORT) && !pmuOn(O4_DEFOG),
+          "engine running, 11.4 V for 10 s: COMFORT and DEFOG still shed");
+    check(pmuOn(O10_ACC) && pmuOn(O20_INTERIOR),
+          "but ACCESSORY (the ICU) and INTERIOR (the dash lamps) stay up while the engine runs (D-463, D-476)");
+    g_v.a7Inject = kOpen; pmuRun(5100);
+    check(!g_v.engineRuns && !pmuOn(O10_ACC) && !pmuOn(O20_INTERIOR), "the engine stops: they shed as before");
+
+    /* ---- INTERIOR is the dash illumination (D-462) ---- */
+    pmuFresh(); g_v.door = true; pmuRun(1000);
+    check(!pmuOn(O20_INTERIOR), "a door open lights nothing on O20 - the dome lamp is the factory's again");
+    g_v.head = H_PARK; pmuRun(200);
+    check(pmuOn(O20_INTERIOR), "A15 at PARK: the illumination is on");
+    g_v.dimPct = 100; pmuRun(500); uint16_t full = g_v.chCurrent[O20_INTERIOR];
+    g_v.dimPct = 50;  pmuRun(500); uint16_t half = g_v.chCurrent[O20_INTERIOR];
+    checkf(half * 2 >= full - 2 && half * 2 <= full + 2, "PWM at the dimmer's duty: 50 %% draws half (%u of %u)", half, full);
+    g_v.head = H_HIGH; pmuRun(200); g_v.head = H_PASS; pmuRun(200);
+    check(pmuOn(O20_INTERIOR) && pmuOn(O6_TAIL), "PASS from HEAD_HI holds INTERIOR and TAIL_PARK on");
+    pmuFresh(); g_v.head = H_PASS; pmuRun(500);
+    check(!pmuOn(O20_INTERIOR) && !pmuOn(O6_TAIL), "PASS from OFF holds them off");
+
+    /* ---- KEEP_ALIVE (rules sleep, D-248, D-464) ---- */
+    pmuFresh(); g_v.key = K_ACC; pmuRun(1000);
+    check(pmuOn(O22_KEEPALIVE), "a wake holds KEEP_ALIVE");
+    g_v.key = K_OFF; pmuRun(29900);
+    check(pmuOn(O22_KEEPALIVE), "key OFF, doors shut, A8 idle: awake at 29.9 s");
+    pmuRun(200);
+    check(!pmuOn(O22_KEEPALIVE), "asleep 30 s after the last change");
+
+    pmuFresh(); g_v.key = K_ACC; pmuRun(1000); g_v.key = K_OFF; g_v.door = true;
+    pmuRun(29UL * 60 * 1000 + 59000);
+    check(pmuOn(O22_KEEPALIVE), "a door left open holds it awake at 29 min 59 s");
+    pmuRun(2000);
+    check(!pmuOn(O22_KEEPALIVE), "forced off at 30 min whatever A6 reads (D-248)");
+    pmuRun(60000);
+    check(!pmuOn(O22_KEEPALIVE), "and the door still open does not wake it again");
+    g_v.door = false; pmuRun(100); g_v.door = true; pmuRun(100);
+    check(pmuOn(O22_KEEPALIVE), "a door opened afresh does");
+
+    pmuFresh(); g_v.key = K_ACC; pmuRun(1000); g_v.key = K_OFF; g_v.turn = T_HAZARD;
+    pmuRun(2UL * 60 * 60 * 1000);
+    check(pmuOn(O22_KEEPALIVE), "hazards on with the key out: still awake at 2 h, past the 30 min (D-464)");
+    g_v.turn = T_OFF; pmuRun(29900);
+    check(pmuOn(O22_KEEPALIVE), "hazards off: the 30 s starts then");
+    pmuRun(200);
+    check(!pmuOn(O22_KEEPALIVE), "and it sleeps");
+
+    pmuFresh(); g_v.key = K_ACC; pmuRun(1000); g_v.key = K_OFF; g_v.door = true; g_v.turn = T_HAZARD;
+    pmuRun(60UL * 60 * 1000);
+    g_v.turn = T_OFF; pmuRun(29UL * 60 * 1000);
+    check(pmuOn(O22_KEEPALIVE), "door open, hazards off after an hour: the 30 min restarts - awake 29 min later");
+    pmuRun(61000);
+    check(!pmuOn(O22_KEEPALIVE), "forced off 30 min after the hazards went off");
+}
+
+
 /* ================= main ================= */
 int main() {
     printf("\n========================================\n");
@@ -872,6 +1062,7 @@ int main() {
     testDiagPage();
     testFrameCost();
     testLogicVectors();
+    testPmuTimers();
 
     printf("\n========================================\n");
     printf(" passed %d   failed %d\n", g_pass, g_fail);

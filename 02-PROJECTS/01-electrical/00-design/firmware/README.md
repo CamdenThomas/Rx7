@@ -8,8 +8,8 @@ sensor-fault rendering (D-151…D-158). `icu/stats.h` owns the automated trip
 and lifetime figures (D-163). `icu/can_map.h` is the machine-readable CAN
 map. The prose documents describe *why*; this code defines *what*.
 
-**Version:** `ICU_FW_VERSION` in `icu/icu.ino`, printed at boot. Bump it on
-any behaviour change, log it in `../../data/bringup_log.csv` (`rx7.py add 02-PROJECTS/01-electrical bringup_log …`), tag the commit.
+**Version:** `ICU_FW_VERSION` in `icu/icu.ino`, `DCU_FW_VERSION` in `dcu/dcu.ino` and
+`PMU_SIM_VERSION` in `pmu_sim/pmu_sim.ino`, printed at boot. Bump it on any behaviour change, log it in `../../data/bringup_log.csv` (`rx7.py add 02-PROJECTS/01-electrical bringup_log …`), tag the commit.
 
 ## Contents
 
@@ -36,7 +36,10 @@ firmware/
 │
 ├── dcu/                     THE DCU (D-374)
 │   ├── climate.h            HVAC servos, comfort channels, seat interlock, climate memory
-│   ├── panel.h              key matrix, 0x400, wake, release select, knobs, windows, mirrors (F-017)
+│   ├── panel.h              key matrix, 0x400, wake, release select, knobs, windows, mirrors (F-017).
+│   │                        A release only with the car stopped - 0x200's road speed 0 in a frame
+│   │                        no older than TMO_ICU_SENSORS, stale is moving - and the select dropped
+│   │                        1.5 s after it is raised, key held or not (D-465)
 │   ├── pins.h               the pin map - dcu_channels.teensy_pin, every edge pin and expander port (D-452)
 │   ├── tca9539.h            the TCA9539-Q1 on Wire: the DRV8962, DEN / DSEL, CAN STB held low, the fault clear
 │   ├── can_map.h            a copy of icu/can_map.h - never edited here
@@ -50,7 +53,10 @@ firmware/
 ├── pmu_sim/                 PMU SIMULATOR — the spare Teensy
 │   ├── pmu_sim.ino          CAN TX + serial console + scripted drive cycle
 │   ├── can_map.h            a copy of icu/can_map.h - never edited here (run.sh refuses drift)
-│   ├── vehicle_model.h      a 1982 RX-7 that behaves like one
+│   ├── vehicle_model.h      a 1982 RX-7 that behaves like one, its outputs on the PMU's rules: the 3 s
+│   │                        prime and the oil gate (open sender = zero pressure, D-461), the 10 s shed
+│   │                        with 0.5 V hysteresis and the ICU / dash lamps kept while running (D-463,
+│   │                        D-476), O20 the dimmed illumination (D-462), the hazards past the 30 min (D-464)
 │   └── channels.h           hand-synced to 02-PROJECTS/01-electrical/data/pins.csv — the v2 generator (D-311) is archived; see work F-013
 │
 ├── tests/                   REGRESSION SUITES — test_suite · test_bt817 · test_dcu · test_radio · test_vectors
@@ -58,7 +64,8 @@ firmware/
 │   ├── gen_vectors.py       can_vectors.h from the record's can_messages / can_fields (Y8; not versioned)
 │   ├── test_vectors.cpp     static_asserts can_map.h against those vectors - compiling is the test
 │   ├── gen_logic_vectors.py logic_vectors.h from the record's logic / ladders / rules / pins (Y8; not versioned):
-│   │                        test_suite §14 holds pmu_sim's vehicle_model.h to every row, test_dcu §18 the 0x400 terms
+│   │                        test_suite §14 holds pmu_sim's vehicle_model.h to every row, §15 the timers the
+│   │                        generator lists as hand-tested; test_dcu §18 the 0x400 terms
 │   └── run.sh               every suite, the sheets against the record (../cad/check.py), every sketch
 │                            compiled for its target. Do this after any change to the headers above
 │
@@ -144,7 +151,10 @@ Run it after **any** change to `cluster_core.h`, `stats.h`, `can_map.h`,
 checks struct packing and CAN round-trip, counter wrap, unit conversions,
 every digit glyph, centring, exhaustive widget overlap, off-screen drawing,
 dirty-rectangle correctness, sensor-fault rendering, vehicle-model
-invariants over a long drive, and stats accumulation.
+invariants over a long drive, stats accumulation, the PMU simulator against
+every logic row the record can turn into vectors (§14), and the timed clauses
+it cannot - the fuel-pump prime and oil gate, ignition's 200 ms off-delay, the
+voltage shed, the illumination and the sleep timers (§15).
 
 ## 4 · Building for the Teensy
 
@@ -211,6 +221,9 @@ With the PMU simulator, the ICU can be developed and demonstrated
         +--- analog in ---------->  potentiometer
                                     stands in for a sender
 ```
+
+**The DCU on this bench refuses every hatch and fuel-door release** (D-465): it needs a fresh
+0x200 reading 0 km/h, and nothing sends 0x200 yet - not `icu.ino`, not `pmu_sim`.
 
 **What that covers:** the CAN receive path, message dispatch, timeout and
 blanking, the diagnostics page, `stats.h` accumulation, the RPM capture path,

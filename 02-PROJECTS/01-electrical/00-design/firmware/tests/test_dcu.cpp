@@ -4,7 +4,8 @@
  * Compiles the REAL climate.h + panel.h + can_map.h from ../dcu. Covers the
  * seat interlock (D-073), comfort gating, keypad edges, servo mapping, the
  * SD climate-memory CRC, and F-017: the key matrix, 0x400, wake and replay,
- * the release select (D-370), knobs, windows (D-363), mirrors (D-359,
+ * the release select (D-370) and its interlock - stopped only, 1.5 s at most
+ * (D-465) - knobs, windows (D-363), mirrors (D-359,
  * D-360), one servo at a time (D-379), the NTCs, current and mirror heat;
  * and D-452: the pin map (pins.h), the TCA9539-Q1 expander's ports, its
  * reset as the DRV8962's fault clear, and CAN STB held low (tca9539.h); and Y8:
@@ -300,9 +301,9 @@ int main() {
               && sleep_due(&q, 0, DCU_SLEEP_AFTER_MS - 1) == 0, "sleep: PMU gone, idle 30 s");
     }
 
-    /* ================= 8. release select (D-370) ================= */
+    /* ================= 8. release select (D-370, D-465) ================= */
     {
-        panel_t p; memset(&p, 0, sizeof p);
+        panel_t p; memset(&p, 0, sizeof p); p.stopped = 1;
         uint16_t down = 0, held = 0; uint32_t t = 50000;
         for (int i = 0; i < 4; i++, t += 5) panel_keys_step(&p, PK_HATCH, 1, t, &down, &held);
         CHECK(p.rel_sel == PK_HATCH && down == PK_HATCH, "hatch: K3 selected in the same scan the edge goes");
@@ -315,12 +316,69 @@ int main() {
         panel_keys_step(&p, 0, 1, t, &down, &held);
         CHECK(p.rel_sel == 0, "released after the hold");
 
-        memset(&p, 0, sizeof p);
+        memset(&p, 0, sizeof p); p.stopped = 1;
         for (int i = 0; i < 4; i++, t += 5) panel_keys_step(&p, PK_HATCH | PK_FUEL_DOOR, 1, t, &down, &held);
         CHECK(p.rel_sel == 0 && !(down & PK_RELEASE), "both at once: neither, and the PMU sees neither");
 
-        /* exhaustive: over random key sequences the select is never both, and
-         * a release edge reaches 0x400 only with its own relay selected */
+        /* D-465: the select is dropped 1.5 s after it was raised, whatever the key does */
+        memset(&p, 0, sizeof p); p.stopped = 1; t = 60000;
+        for (int i = 0; i < 4; i++, t += 5) panel_keys_step(&p, PK_FUEL_DOOR, 1, t, &down, &held);
+        uint32_t t0 = p.rel_t0;
+        CHECK(p.rel_sel == PK_FUEL_DOOR && (down & PK_FUEL_DOOR), "fuel door: K4 selected, the edge goes");
+        while ((uint32_t)(t + 5 - t0) < RELEASE_HOLD_MS) { t += 5; panel_keys_step(&p, PK_FUEL_DOOR, 1, t, &down, &held); }
+        CHECK(p.rel_sel == PK_FUEL_DOOR, "key held: still selected 5 ms before 1.5 s");
+        t += 5; panel_keys_step(&p, PK_FUEL_DOOR, 1, t, &down, &held);
+        CHECK(p.rel_sel == 0, "key still held: the select drops at 1.5 s (D-465)");
+        for (int i = 0; i < 2000; i++) { t += 5; panel_keys_step(&p, PK_FUEL_DOOR, 1, t, &down, &held); }
+        CHECK(p.rel_sel == 0 && (down & PK_FUEL_DOOR), "held 10 s more: never re-selected; 0x400 shows the key, no new edge");
+        for (int i = 0; i < 6; i++) { t += 5; panel_keys_step(&p, 0, 1, t, &down, &held); }
+        for (int i = 0; i < 4; i++) { t += 5; panel_keys_step(&p, PK_FUEL_DOOR, 1, t, &down, &held); }
+        CHECK(p.rel_sel == PK_FUEL_DOOR, "let go and pressed again: a new select");
+
+        /* a second press of the same key inside the window never extends it */
+        memset(&p, 0, sizeof p); p.stopped = 1; t = 70000;
+        for (int i = 0; i < 4; i++, t += 5) panel_keys_step(&p, PK_HATCH, 1, t, &down, &held);
+        t0 = p.rel_t0;
+        for (int i = 0; i < 6; i++, t += 5) panel_keys_step(&p, 0, 1, t, &down, &held);
+        for (int i = 0; i < 6; i++, t += 5) panel_keys_step(&p, PK_HATCH, 1, t, &down, &held);
+        CHECK(p.rel_t0 == t0 && !(down & PK_HATCH), "hatch pressed again inside 1.5 s: refused, kept off 0x400, window unchanged");
+        while ((uint32_t)(t - t0) < RELEASE_HOLD_MS) { panel_keys_step(&p, PK_HATCH, 1, t, &down, &held); t += 5; }
+        panel_keys_step(&p, PK_HATCH, 1, t, &down, &held);
+        CHECK(p.rel_sel == 0, "and the select still drops 1.5 s after the first press");
+
+        /* D-465: refused unless the car is stopped - 0x200's road speed at 0, fresh */
+        CHECK(car_stopped(1, 0, 0) == 1 && car_stopped(1, TMO_ICU_SENSORS, 0) == 1, "0x200 fresh, 0 km/h: stopped");
+        CHECK(car_stopped(1, 0, 1) == 0 && car_stopped(1, 0, 120) == 0, "1 km/h or more: moving");
+        CHECK(car_stopped(1, TMO_ICU_SENSORS + 1, 0) == 0, "0x200 stale (older than TMO_ICU_SENSORS): NOT stopped");
+        CHECK(car_stopped(0, 0, 0) == 0, "no 0x200 since boot: NOT stopped");
+
+        memset(&p, 0, sizeof p); t = 80000;
+        CHECK(p.stopped == 0, "a fresh panel_t refuses: stopped resets to 0");
+        p.stopped = car_stopped(1, 0, 30);                                  /* moving */
+        for (int i = 0; i < 6; i++, t += 5) panel_keys_step(&p, PK_HATCH, 1, t, &down, &held);
+        CHECK(p.rel_sel == 0 && !(down & PK_HATCH), "moving: hatch refused - no select, nothing on 0x400");
+        p.stopped = car_stopped(1, 0, 0);
+        for (int i = 0; i < 6; i++, t += 5) panel_keys_step(&p, PK_HATCH, 1, t, &down, &held);
+        CHECK(p.rel_sel == 0 && !(down & PK_HATCH), "stopped while the refused key is held: still refused until let go");
+        for (int i = 0; i < 6; i++, t += 5) panel_keys_step(&p, 0, 1, t, &down, &held);
+        for (int i = 0; i < 4; i++, t += 5) panel_keys_step(&p, PK_HATCH, 1, t, &down, &held);
+        CHECK(p.rel_sel == PK_HATCH && (down & PK_HATCH), "let go, pressed stopped: K3 selected, the edge goes");
+
+        memset(&p, 0, sizeof p); t = 90000;
+        p.stopped = car_stopped(1, TMO_ICU_SENSORS + 50, 0);                /* stale */
+        for (int i = 0; i < 6; i++, t += 5) panel_keys_step(&p, PK_FUEL_DOOR, 1, t, &down, &held);
+        CHECK(p.rel_sel == 0 && !(down & PK_FUEL_DOOR), "0x200 stale: fuel door refused");
+
+        memset(&p, 0, sizeof p); p.stopped = 1; t = 95000;
+        for (int i = 0; i < 4; i++, t += 5) panel_keys_step(&p, PK_HATCH, 1, t, &down, &held);
+        CHECK(p.rel_sel == PK_HATCH, "stopped: K3 selected");
+        p.stopped = 0;                                                      /* the car moves off, or 0x200 goes stale */
+        t += 5; panel_keys_step(&p, PK_HATCH, 1, t, &down, &held);
+        CHECK(p.rel_sel == 0 && !(down & PK_HATCH), "not stopped mid-select: dropped at once, the key kept off 0x400");
+
+        /* exhaustive: over random key, PMU and speed sequences the select is never both,
+         * never raised or kept while not stopped, never older than 1.5 s, and a release
+         * edge reaches 0x400 only with its own relay selected */
         bool ok = true; uint32_t seed = 12345;
         memset(&p, 0, sizeof p);
         uint16_t prev_down = 0;
@@ -328,13 +386,15 @@ int main() {
             seed = seed * 1103515245u + 12345u;
             uint16_t raw = (uint16_t)((seed >> 16) & PK_RELEASE);
             uint8_t alive = ((seed >> 8) & 31) != 0;
+            p.stopped = ((seed >> 3) & 15) != 0;
             panel_keys_step(&p, raw, alive, t, &down, &held);
             if (p.rel_sel != 0 && p.rel_sel != PK_HATCH && p.rel_sel != PK_FUEL_DOOR) ok = false;
+            if (p.rel_sel && (!p.stopped || (uint32_t)(t - p.rel_t0) >= RELEASE_HOLD_MS)) ok = false;
             uint16_t edge = (uint16_t)(down & ~prev_down & PK_RELEASE);
             if (edge && edge != p.rel_sel) ok = false;
             prev_down = down;
         }
-        CHECK(ok, "200k random scans: one relay at most, every release edge steered");
+        CHECK(ok, "200k random scans: one relay at most, only stopped, never past 1.5 s, every release edge steered");
     }
 
     /* ================= 9. encoders and knobs (SN20, D-073) ================= */
@@ -691,6 +751,7 @@ int main() {
         const int NT = (int)(sizeof dcuTerm / sizeof dcuTerm[0]);
         auto frame_down = [](uint16_t raw) -> uint16_t {
             panel_t p; memset(&p, 0, sizeof p);
+            p.stopped = 1;                 /* a release only with the car stopped (D-465, section 8) */
             keys_tx_t tx; memset(&tx, 0, sizeof tx);
             panel_keys_t f; memset(&f, 0, sizeof f);
             uint16_t down = 0, held = 0; uint32_t t = 1000;
