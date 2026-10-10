@@ -208,3 +208,18 @@ XIAO ESP32C3 2x7 socket,two 1x7 0.1 in sockets on castellations 1-14 (the back p
 XIAO ESP32C3 2x7 socket,two 1x7 0.1 in sockets on castellations 1-14 (the back pads 15-22 cannot be reached from a header),12,3V3_OUT/3V3,https://files.seeedstudio.com/wiki/XIAO-KiCad-Library/XIAO_Series_SCH_Symbols.zip
 XIAO ESP32C3 2x7 socket,two 1x7 0.1 in sockets on castellations 1-14 (the back pads 15-22 cannot be reached from a header),13,GND,https://files.seeedstudio.com/wiki/XIAO-KiCad-Library/XIAO_Series_SCH_Symbols.zip
 XIAO ESP32C3 2x7 socket,two 1x7 0.1 in sockets on castellations 1-14 (the back pads 15-22 cannot be reached from a header),14,VBUS/5V,https://files.seeedstudio.com/wiki/XIAO-KiCad-Library/XIAO_Series_SCH_Symbols.zip
+ADS1115-Q1,VSSOP-10 (DGS),1,ADDR,https://www.ti.com/lit/ds/symlink/ads1115-q1.pdf#page=4
+ADS1115-Q1,VSSOP-10 (DGS),2,ALERT/RDY,https://www.ti.com/lit/ds/symlink/ads1115-q1.pdf#page=4
+ADS1115-Q1,VSSOP-10 (DGS),3,GND,https://www.ti.com/lit/ds/symlink/ads1115-q1.pdf#page=4
+ADS1115-Q1,VSSOP-10 (DGS),4,AIN0,https://www.ti.com/lit/ds/symlink/ads1115-q1.pdf#page=4
+ADS1115-Q1,VSSOP-10 (DGS),5,AIN1,https://www.ti.com/lit/ds/symlink/ads1115-q1.pdf#page=4
+ADS1115-Q1,VSSOP-10 (DGS),6,AIN2,https://www.ti.com/lit/ds/symlink/ads1115-q1.pdf#page=4
+ADS1115-Q1,VSSOP-10 (DGS),7,AIN3,https://www.ti.com/lit/ds/symlink/ads1115-q1.pdf#page=4
+ADS1115-Q1,VSSOP-10 (DGS),8,VDD,https://www.ti.com/lit/ds/symlink/ads1115-q1.pdf#page=4
+ADS1115-Q1,VSSOP-10 (DGS),9,SDA,https://www.ti.com/lit/ds/symlink/ads1115-q1.pdf#page=4
+ADS1115-Q1,VSSOP-10 (DGS),10,SCL,https://www.ti.com/lit/ds/symlink/ads1115-q1.pdf#page=4
+TPS7B4250-Q1,SOT-23-5 (DBV),1,ADJ/EN,https://www.ti.com/lit/ds/symlink/tps7b4250-q1.pdf#page=4
+TPS7B4250-Q1,SOT-23-5 (DBV),2,GND,https://www.ti.com/lit/ds/symlink/tps7b4250-q1.pdf#page=4
+TPS7B4250-Q1,SOT-23-5 (DBV),3,VIN,https://www.ti.com/lit/ds/symlink/tps7b4250-q1.pdf#page=4
+TPS7B4250-Q1,SOT-23-5 (DBV),4,VOUT,https://www.ti.com/lit/ds/symlink/tps7b4250-q1.pdf#page=4
+TPS7B4250-Q1,SOT-23-5 (DBV),5,GND,https://www.ti.com/lit/ds/symlink/tps7b4250-q1.pdf#page=4

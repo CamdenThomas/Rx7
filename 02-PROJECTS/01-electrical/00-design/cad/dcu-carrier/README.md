@@ -1,24 +1,26 @@
 # DCU carrier — the KiCad project
 
-*Rev 2026-10-09 (sheet rev 0.02, board rev 0.02 provisional - Y5) · owns: what this KiCad project
+*Rev 2026-10-09 (sheet rev 0.03, board rev 0.03 provisional - Y11) · owns: what this KiCad project
 is for, what it may claim, and how to start. The board's design is `../../../data/dcu_channels.csv`.
 That is the record, and this is a drawing of it. Read `../README.md` first: it is the fence.*
 
 ## Where it stands
 
-**The board is laid out, routed and 3D-modelled on a PROVISIONAL outline (Y5).** `kicad-cli pcb drc
---severity-all --exit-code-violations --schematic-parity` reads 0 violations (errors and warnings),
-0 unconnected, 0 parity issues; ERC is 0 / 0. `../check.py --board dcu` holds every record pin; its
-one remaining line is the check's own pin parser against the record's wording (SN17 / SN24), not the
-sheet. `H-002` stays the final board: it gates on `V-102`, luxury `W-332` and this row. Nothing here is
-ordered (F5).
+**The board is laid out, routed and 3D-modelled on a PROVISIONAL outline (Y5), with the open blocks'
+worst case drawn in (Y11, D-455).** `kicad-cli pcb drc --severity-all --exit-code-violations
+--schematic-parity` reads 0 violations (errors and warnings), 0 unconnected, 0 parity issues; ERC is
+0 / 0. `../check.py --board dcu` holds every record pin; its two remaining lines are DP-DCU-B 12 and
+DP-DCU-C 8, wired here for blocks 02.15 / 01.26 while the record still names no channel for them (they
+turn into notes when the Y11 rows land). `H-002` stays the final board: it gates on `V-102`, luxury
+`W-332` and this row. Nothing here is ordered (F5).
 
-- **The sheet** (rev 0.02): every functional block is on its real package, its pin numbers held to
+- **The sheet** (rev 0.03): every functional block is on its real package, its pin numbers held to
   `../pin_tables.csv` by `check.py` (S-480 to S-489):
   - U5-U8 **BTS3011TE**, TO-252-5: 1 IN, 2 VDD, 3 OUT, 4 STATUS, 5 GND (the source - the seat
     current leaves here), tab 6 = OUT. **STATUS** is open-drain and latching on an over-temperature
     shutdown (datasheet section 7.1, p.20): the four are wired-OR on `SEAT_STATUS`, pulled up by R58
-    10 k to `+3V3` (the R_STATUS of the application table, p.40) and read on expander **P17**. The
+    10 k to `+3V3` (the R_STATUS of the application table, p.40) and read on the second expander
+    **U13 P00** (Y11; U12 P17 went back to the A/C clutch). The
     latch clears with IN low and STATUS high, so firmware drops all four inputs to clear it; which
     switch tripped is not told apart. `confirm`.
   - U9 **BTT6050-1ERA**, PG-TSDSO-14: 3 GND (47 Ω PROFET ground), 4 IN, 5 DEN, 6 IS, 10-12 OUT, tab VS
@@ -35,6 +37,25 @@ ordered (F5).
     **OCPM to GND = latch-off** (section 6.10.4, p.19): a stalled mirror motor latches the driver off
     until an nSLEEP reset pulse, which the firmware gives through the expander (P07). `confirm`.
   - U2 TPS54560B-Q1 (DDA), U4 INA180A1 and U12 TCA9539-Q1 were already on their real pins.
+- **The provisions** (Y11, the `PROVISIONS` box; D-455: the worst case of each open block, so an answer
+  is a fitting change, not a redesign). Every part is **DNP** with its block and reason in its `Note`
+  field, except U13 and C38:
+  - **U13** TCA9539-Q1 at **0x75** (A0 high, A1 low), fitted: P00 `SEAT_STATUS`, P01 the radar alert,
+    P02-P17 spare. Same I²C bus as U12 (R51 / R52), INT wired-OR on `EXP_INT` (R53, Teensy 12), RESET
+    shared on `EXP_RESET` (R54): a reset holds both expanders' ports as inputs.
+  - **A/C clutch** (engine 02.15 (b)): U12 **P17** `AC_CLUTCH_CMD` → R59 4.7 k (R60 10 k off at reset) →
+    **U14 BTT6050-1ERA** high side, VS on `V12C_RAW` (the comfort input ahead of D3, so a ~4 A coil never
+    passes the B560C), OUT `AC_CLUTCH` on **DP-DCU-B 12** (the one free cavity of the three receptacles).
+    DEN low (R61), IS on R62 1.2 k unread, 47 Ω ground (R63) - as U9. The coil returns at the compressor
+    and must carry its own diode (EAS 60 mJ); F29 (7.5 A) needs 10 A with it - `confirm` (V-101).
+  - **A/C pressure** (02.15 (b)): **J11** a 3-way PLACEHOLDER lead (no drop cavity is free for its three
+    wires), 0.5-4.5 V ratiometric `confirm`, 10 k / 20 k + 100 nF + BAT54S → **U15 ADS1115-Q1** (0x48,
+    VSSOP-10) AIN0; the sensor supply the same way on AIN2; AIN1 / AIN3 grounded, spare. **U16
+    TPS7B4250-Q1** makes `SENS_5V` from logic 12 V, tracking `+5V` and proof against a short to battery.
+  - **Radar alert** (luxury 03.12 / Z-002): **J12** a 2-way PLACEHOLDER lead → 47 k / 22 k + 100 nF +
+    BAT54S → U13 P01; R68 10 k to logic 12 V only for an open-collector output (`confirm`).
+  - **DP-DCU-C 8** (J2 pin 8) on `PGND`: 01.26 (a)'s third comfort ground. The record keeps the cavity a
+    sealing plug until 01.26 answers; the copper is there either way.
 - **CONVENTIONS §5 holds**: `+12V_LOGIC` and `+12V_CMF` share no part, and only U4 touches both `GND`
   and `PGND`. On the board the two grounds share no copper either.
 
@@ -61,6 +82,12 @@ from each corner. 2 layers, 1.6 mm, 1 oz.
   J2, tabs down onto their pins; the shunt R15 / R16 and U4 to their right; the logic buck U1 and the
   servo buck U2 top right, under the servo headers they feed; CAN U3, the wake stage and the
   outside-air input over J1; the expander U12 top left beside the ribbon.
+- **The provisions (Y11)**: the clutch stage U14 with R61-R63 on the **bottom side**, under DP-DCU-B's
+  body right of its pins: OUT runs a 1.5 mm B.Cu track straight to pin 12, the tab is fed from the
+  `V12C_RAW` pour by four vias and a 2 mm track; R59 / R60 also on the bottom, under the end of U12 P17's
+  route. U13 with C38 at the right over J1, U16 and C40-C42 beside it, J11 on the right edge; U15 and the
+  two analog front ends along the top right under J3 / J5; J12 and the radar front end top right
+  beside J5. `confirm` the bottom-side parts against the enclosure's underside clearance (Y7).
 
 **Copper.** The comfort paths are pours on F.Cu, `COMFORT` and `PGND`, 0.5 mm from everything else,
 connected solid:
@@ -68,7 +95,8 @@ connected solid:
 - each seat return from its switch's tab (drain) down to its `DP-DCU-C` pin 1-4;
 - `CMF_RTN`, the four sources (pin 5) along one bus to R15 / R16;
 - `PGND`, from the shunt down the right of J2 and under its body to pins 6 / 7, with D4's anode;
-- `V12C_RAW`, pin 5 under the body and up the left of J2 to D3.
+- `V12C_RAW`, pin 5 under the body and up the left of J2 to D3, and through four vias to the clutch
+  stage's tab on the bottom (Y11).
 
 The INA180's two inputs are Kelvin lines from R15's own pads. `GND` is poured on both layers, stitched
 top to bottom (about 100 vias), and the DRV8962's exposed pad carries 27 vias into it. The fine-pitch
@@ -76,6 +104,9 @@ power pins (DRV8962, BTT6050, BTT6200, LMR36015) are necked out at their pad wid
 class past the toes; both buck switch nodes are short drawn tracks. The rest was routed with
 freerouting 2.5.0 (Specctra DSN / SES, the project's clearances + 0.05 mm) and finished with a small
 grid router; necks the router narrowed below 0.2 mm were widened to 0.2. No isolated copper is left.
+Y11 kept that routing and added to it: what the new parts displaced or crossed was taken up and routed
+again net by net with a raster A* router on both layers (0.2-0.25 mm tracks at the fine-pitch pins of
+U13 and U15), the clutch stage's power paths and fan-outs drawn by hand and locked.
 
 | Net class | Track | Clearance | Nets |
 |---|---|---|---|
@@ -86,10 +117,12 @@ grid router; necks the router narrowed below 0.2 mm were widened to 0.2. No isol
 | `SERVO` | 1.0 | 0.2 | `+5V_SERVO`, `SRV_SW`, `+12V_CMF` |
 | `DRIVE` | 0.8 | 0.2 | `MIR_COM`, `MIR_L`, `MIR_R`, `MIR_CLUTCH`, `MIRROR_HEAT` |
 | `WIN` | 0.5 | 0.2 | `WIN_DRV_UP/DN`, `WIN_PASS_UP/DN`, `REL_HATCH`, `REL_FUEL`, `WAKE_OUT` |
+| `CLUTCH` | 1.5 | 0.2 | `AC_CLUTCH` (Y11, ~4 A `confirm`) |
 
-One rule relaxes a clearance, with its reason in `dcu-carrier.kicad_dru`: pad-to-pad inside U4-U8
+Two rules relax a clearance, with their reasons in `dcu-carrier.kicad_dru`: pad-to-pad inside U4-U8
 only, because the TO-252-5 legs (1.14 mm pitch) and the SOT-23-5 pins (0.95 mm) cannot hold 0.5 mm
-between their own comfort and logic pins. Their tracks and pours still keep 0.5 mm.
+between their own comfort and logic pins (their tracks and pours still keep 0.5 mm); and pad-to-pad
+inside U15 only (Y11), whose 0.5 mm-pitch VSSOP-10 lands leave 0.15 mm between its own pins.
 
 ## The footprints
 
@@ -106,6 +139,11 @@ between their own comfort and logic pins. Their tracks and pours still keep 0.5 
 | U9 | `dcu-carrier:Infineon_PG-TSDSO-14-22` | KiCad's geometry, exposed pad numbered TAB and drawn 6.4 x 2.65 (BTT6050-1ERA Fig. 53; KiCad's is 4.0) `confirm` |
 | U10 | `dcu-carrier:Infineon_PG-TSDSO-24-21` | drawn from BTT6200-4ESA Fig. 30: 24 leads at 0.65, pads 1.31 x 0.40 at ±2.85, body 8.65 x 3.9, exposed pad 6.4 x 2.77 = TAB `confirm` |
 | U11 | `Package_SO:HTSSOP-44-1EP_6.1x14mm_P0.635mm_EP5.2x14mm_Mask4.31x8.26mm` | KiCad; the 27 thermal vias are placed on the board rather than taken from the `_ThermalVias` variant |
+| U13 | `Package_SO:TSSOP-24_4.4x7.8mm_P0.65mm` | KiCad, as U12 (Y11) |
+| U14 | `dcu-carrier:Infineon_PG-TSDSO-14-22` | U9's, on the bottom side (Y11) |
+| U15 | `Package_SO:MSOP-10_3x3mm_P0.5mm` | KiCad; TI's DGS (VSSOP-10, SBAS563E) is the same 3 x 3 mm 0.5 mm-pitch body - `confirm` (Y11) |
+| U16 | `Package_TO_SOT_SMD:SOT-23-5` | KiCad; TI's DBV (SLVSCA0C) (Y11) |
+| J11 / J12 | `Connector_JST:JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical` / `..._B2B-XH-A_1x02_...` | KiCad; PLACEHOLDER leads (Y11) |
 
 ## 3D models: `RX7_MODELS`
 
@@ -130,7 +168,7 @@ kicad-cli pcb export step --subst-models -o dcu-carrier.step dcu-carrier.kicad_p
 kicad-cli pcb drc --severity-all --exit-code-violations --schematic-parity -o dcu-carrier-drc.rpt dcu-carrier.kicad_pcb
 ```
 
-The renders and the STEP (about 23 MB) are built, never committed (`.gitignore`).
+The renders and the STEP (about 25 MB) are built, never committed (`.gitignore`).
 
 ## What V-102 and W-332 change
 
@@ -149,12 +187,14 @@ The renders and the STEP (about 23 MB) are built, never committed (`.gitignore`)
 | Row spacing, socket height, underside clearance | a Teensy 4.1 on its headers | `Teensy41_Socket` |
 | Exposed pad size, lead span | a BTT6050-1ERA and a BTT6200-4ESA | `Infineon_PG-TSDSO-14-22` / `-24-21` |
 | Lead order of the FS5115M servo plug | a servo | J6-J8 |
+| A/C clutch coil current and its diode; the transducer's range and output; the radar receiver's alert output | engine 02.15 (b), luxury 03.12 / Z-002 | U14 (or a lower-RON PROFET), F29; R64-R67; R68 fitted or not |
 | Stall current of a mirror motor | luxury `W-332` | R37 / R55-R57, `DRIVE` |
 
 **Every other `confirm` on the board**: the XAL7030's saturation current; STATUS's wired-OR and its
 clearing; OCPM latch-off and its reset by nSLEEP; the comfort currents (`V-101`) the 0.5 mm / pour
-sizing assumes (18 A through the shunt on 1 oz F.Cu); the I²C address 0x74; the sheet's own "what this
-sheet does not know" box.
+sizing assumes (18 A through the shunt on 1 oz F.Cu); the I²C addresses 0x74 / 0x75 (U12 / U13) and
+0x48 (U15); the PLACEHOLDER leads J11 / J12 and how their wires reach the DCU; the bottom-side parts
+(U14, R59-R63) against the enclosure; the sheet's own "what this sheet does not know" box.
 
 ## What it may and may not claim
 
@@ -171,7 +211,7 @@ and the record disagree, the record is right.**
 ```
 kicad-cli sch erc dcu-carrier.kicad_sch --severity-all -o dcu-carrier-erc.rpt
 kicad-cli sch export svg --no-background-color -o . dcu-carrier.kicad_sch
-kicad-cli sch export bom --fields 'Reference,Value,Footprint,${QUANTITY},${DNP}' --labels 'Ref,Value,Footprint,Qty,DNP' --group-by 'Value,Footprint' -o dcu-carrier-bom.csv dcu-carrier.kicad_sch
+kicad-cli sch export bom --fields 'Reference,Value,Footprint,${QUANTITY},${DNP}' --labels 'Ref,Value,Footprint,Qty,DNP' --group-by 'Value,Footprint,${DNP}' -o dcu-carrier-bom.csv dcu-carrier.kicad_sch
 python3 ../check.py --board dcu
 ```
 
@@ -180,10 +220,13 @@ python3 ../check.py --board dcu
 | File | What |
 |---|---|
 | `dcu-carrier.kicad_pro` · `.kicad_sch` | the project (net classes included) and the schematic |
-| `dcu-carrier.kicad_pcb` · `.kicad_dru` | the provisional board and its one relaxed rule |
+| `dcu-carrier.kicad_pcb` · `.kicad_dru` | the provisional board and its two relaxed rules |
 | `dcu-carrier.kicad_sym` · `sym-lib-table` | every symbol used, kept with the project |
 | `dcu-carrier.pretty` · `fp-lib-table` | the footprints drawn here: the three DT13s, the two PG-TSDSO packages, the Teensy socket |
-| `dcu-carrier.svg` · `dcu-carrier-bom.csv` | the committed picture and the BOM export: the reviewable forms of a change |
+| `dcu-carrier.svg` · `dcu-carrier-bom.csv` | the committed picture and the BOM export (grouped by DNP too, so a fitted and a DNP part never share a line): the reviewable forms of a change |
 | `CONVENTIONS.md` | how to draw it, and what differs from the ICU |
 | `TARGET.md` | the drawing checklist from `dcu_channels`, a snapshot and not a link |
 | `enclosure/` | the enclosure (`P152`, Y7): `make_enclosure.py` (parameters at the top, `V-102` the envelope; `freecadcmd make_enclosure.py`) builds base, DT13 plate and lid as STEP / STL from `board.json` (`../enclosure_extract.py dcu-carrier`) and the board STEP, and fit-checks them; provisional, `confirm` until `V-102` / F11 |
+
+`enclosure/board.json` was extracted from the Y5 board: rerun `../enclosure_extract.py dcu-carrier` for Y11's
+parts (J11 on the right edge and J12 on the top edge need grommets; U14 and R59-R63 sit on the underside).

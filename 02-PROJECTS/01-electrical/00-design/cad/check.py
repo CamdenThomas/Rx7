@@ -120,6 +120,9 @@ EXPECT = {
         "SN21": [("WAKE_T", "Q4.B")],
         "SN22": [("WIN_IN0", "U10.IN0"), ("WIN_IN1", "U10.IN1"), ("WIN_IN2", "U10.IN2"), ("WIN_IN3", "U10.IN3")],
         "SN23": [("REL_HATCH_T", "Q1.G"), ("REL_FUEL_T", "Q2.G")],
+        # Y11 provisions: the A/C clutch stage is driven from expander U12 P17 only; the pressure
+        # transducer (U15, over I2C) and the radar alert (U13 P01) have no Teensy pin of their own.
+        "SN28": [], "SN29": [], "SN30": [],
     },
 }
 # Expander ports the record names, in the order it names them (SN17 "P00-P05 IN1/EN1-IN3/EN3" ...).
@@ -132,6 +135,7 @@ EXPECT_EXPANDER = {
                  ("MIR_IN3", "U11.IN3"), ("MIR_EN3", "U11.EN3"), ("MIR_EN4", "U11.EN4"),
                  ("MIR_nSLEEP", "U11.nSLEEP"), ("MIR_nFAULT", "U11.nFAULT")],
         "SN22": [("WIN_DEN", "U10.DEN"), ("WIN_DSEL0", "U10.DSEL0"), ("WIN_DSEL1", "U10.DSEL1")],
+        "SN28": [("AC_CLUTCH_CMD", "U14.IN")],
     },
 }
 

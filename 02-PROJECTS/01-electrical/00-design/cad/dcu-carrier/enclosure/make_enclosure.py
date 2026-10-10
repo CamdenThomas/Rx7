@@ -55,7 +55,7 @@ P = {
     # The grommet face (opposite the DT13s, D-362): the three servo leads (J6-J8), the cabin NTC (J3)
     # and the blower pigtail (J5) through rubber grommets, staggered in height because the headers
     # are 10-11 mm apart; the panel ribbon (J4) through the notch the lid's tongue closes.
-    "GROMMETS": [("J6", 12.0), ("J7", 23.0), ("J8", 12.0), ("J3", 23.0), ("J5", 12.0)],
+    "GROMMETS": [("J6", 12.0), ("J7", 23.0), ("J8", 12.0), ("J3", 23.0), ("J5", 12.0), ("J12", 23.0)],  # J12: the radar alert lead (Y11, PLACEHOLDER); J11 (the A/C transducer, right edge) gets its side-wall hole when its route is known - confirm
     "GROMMET_HOLE": 8.0,          # a grommet for an 8 mm hole, 5 mm bore, 3 mm panel - confirm
     "GROMMET_Z": 12.0,
     "RIBBON_REF": "J4",

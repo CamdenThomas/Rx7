@@ -1,22 +1,33 @@
 # Schematic conventions — DCU carrier
 
-*Rev 2026-09-28 · owns: how this schematic is drawn. Copied from `../icu-carrier/CONVENTIONS.md`
+*Rev 2026-10-09 (Y11) · owns: how this schematic is drawn. Copied from `../icu-carrier/CONVENTIONS.md`
 (D-452), and §0 says what differs. Where the two disagree for the DCU, §0 wins.*
 
 ## 0 · What differs from the ICU
 
 - **Blocks:** power (logic 5 V buck, comfort input, servo-rail buck), bus, inputs (SN11-SN13 and the
-  panel ribbon), outputs (SN14-SN17, SN21-SN23) and processor (the Teensy and the TCA9539-Q1).
+  panel ribbon), outputs (SN14-SN17, SN21-SN23), processor (the Teensy and the TCA9539-Q1 U12) and
+  **provisions** (Y11): the second expander U13 and the DNP stages for the open blocks - the A/C clutch
+  (U14) and pressure transducer (U15 ADC, U16 sensor supply, J11) of engine 02.15 (b), the radar alert
+  input (J12) of luxury 03.12, and DP-DCU-C 8 on PGND for 01.26 (a).
 - **Power nets:** `+12V_LOGIC`, `+12V_CMF`, `+5V`, `+5V_SERVO`, `+3V3`, and **two grounds, `GND` and
-  `PGND`**. The §2.3 rule applies to `+12V_LOGIC` / `+12V_CMF`, and to `GND` / `PGND` as well. The only
+  `PGND`**. Two local supply nets ride on them: `V12C_RAW`, the comfort input ahead of D3, which feeds
+  only the clutch stage U14 besides D3 itself (a ~4 A coil must not pass the B560C), and `SENS_5V`, the
+  transducer's 5 V from the tracker U16 (it follows `+5V`, and a short on the lead cannot reach `+5V`). The §2.3 rule applies to `+12V_LOGIC` / `+12V_CMF`, and to `GND` / `PGND` as well. The only
   part allowed on both grounds is the INA180, which measures across the shunt (D-382).
-- **Every Teensy pad is real** (`dcu_channels.teensy_pin`); all 42 edge pins are used. A new I/O goes on
-  the expander's spare P17 or displaces something - a decision, never a quiet edit.
+- **Every Teensy pad is real** (`dcu_channels.teensy_pin`); all 42 edge pins are used. U12 is full (P17
+  drives the clutch stage since Y11). A new slow I/O goes on **U13** (0x75: P00 `SEAT_STATUS`, P01
+  `RADAR_ALERT`; P02-P17 spare), a new analog input on one of **U15**'s spare channels (AIN1, AIN3,
+  grounded today) - a decision, never a quiet edit. The two expanders share INT (wired-OR, R53) and RESET
+  (R54): a reset holds both expanders' ports as inputs, so every output stage on them is off.
 - **The sheet is labels, not wires**: each pin ends in a 2.54 mm stub and a net label. Power pins pointing
   the natural way get a power symbol; sideways ones get a global label of the same name, which KiCad
   joins to the power net.
 - **Off at reset**: every output that can move or heat something has a pull-down on its input or is on
-  the expander, whose ports are inputs while RESET (pad 13, pulled down) is low.
+  an expander, whose ports are inputs while RESET (pad 13, pulled down) is low. The clutch stage has both:
+  U12 P17 and R60 10 k on its command.
+- **DNP is a provision, not a removal** (Y11): a part drawn for an open block is `dnp` with the block and
+  the reason in its `Note` field; the copper is laid and routed, so the answer is a fitting change.
 
 ## 1 · Sheet structure
 
@@ -92,7 +103,8 @@ kicad-cli sch export netlist --format kicadsexpr -o net.txt dcu-carrier.kicad_sc
 ```
 
 - **`+12V_LOGIC` and `+12V_CMF` share no component pin, and no part but the INA180 touches both `GND`
-  and `PGND`.** That is §2.3, and it is the one error on this
+  and `PGND`.** (Y11 keeps it: the clutch stage U14 sits on `V12C_RAW` and logic `GND` through its 47 Ω,
+  the tracker U16 on `+12V_LOGIC`; DP-DCU-C 8 joins `PGND` only.) That is §2.3, and it is the one error on this
   board that starts a fire rather than kills a chip.
 - **Every BAT54S has pin 1 (A) on GND and pin 2 (K) on +3V3.** That is §2.10, and it is the error that
   was actually made.

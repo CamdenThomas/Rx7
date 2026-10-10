@@ -9,3 +9,9 @@
 (rule "comfort packages' own pins"
   (condition "A.Type == 'Pad' && B.Type == 'Pad' && ((A.memberOfFootprint('U4') && B.memberOfFootprint('U4')) || (A.memberOfFootprint('U5') && B.memberOfFootprint('U5')) || (A.memberOfFootprint('U6') && B.memberOfFootprint('U6')) || (A.memberOfFootprint('U7') && B.memberOfFootprint('U7')) || (A.memberOfFootprint('U8') && B.memberOfFootprint('U8')))")
   (constraint clearance (min 0.2mm)))
+
+# U15 (ADS1115-Q1, Y11) is a 0.5 mm pitch VSSOP-10: KiCad's MSOP-10 lands leave 0.15 mm between its
+# own pins, the package's spacing as TI draws it. Pad-to-pad inside U15 only; its tracks keep 0.2.
+(rule "fine-pitch ADC's own pins"
+  (condition "A.Type == 'Pad' && B.Type == 'Pad' && A.memberOfFootprint('U15') && B.memberOfFootprint('U15')")
+  (constraint clearance (min 0.15mm)))

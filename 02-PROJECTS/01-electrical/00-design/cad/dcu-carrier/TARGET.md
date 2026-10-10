@@ -1,11 +1,15 @@
 # What has to be on the sheet
 
-*Rev 2026-09-28 (c, drawn - D-452) · owns: the drawing checklist for the DCU carrier.*
+*Rev 2026-10-09 (d, Y11 provisions - D-455) · owns: the drawing checklist for the DCU carrier.*
 
 > **Drawn 2026-09-28.** Every item below is on `dcu-carrier.kicad_sch`, ERC clean. Where D-452 went
 > further than this list: a TCA9539-Q1 expander for the slow lines (§4 SN17, SN22 DEN/DSEL, CAN STB),
 > the windows and mirrors fed from logic 12 V, a B560C + SMBJ33A on the comfort input, and two 0 Ω
 > links in place of the DNP choke (§2).
+
+> **Y11, 2026-10-09: the open blocks' worst case is drawn in (§7).** A second expander U13, the A/C
+> clutch stage and pressure input of engine 02.15 (b), the radar alert input of luxury 03.12, and
+> DP-DCU-C 8 on PGND for 01.26 (a) - all DNP but U13, on the sheet and the board.
 
 > **This is a snapshot taken 2026-09-22, not a link.** The live record is
 > `../../../data/dcu_channels.csv` —
@@ -76,3 +80,21 @@ Draw in this order. Each block is finished when it passes ERC on its own.
 Every load current (`V-101`, luxury `W-332`), the panel's ribbon (`H-007`), every part number
 (`V-083`), the Teensy pinout (layout), and the space it fits in (`V-102`). None of these is a
 drawing problem: each is a row that lands first.
+
+## 7 · Provisions for the open blocks (Y11, D-455: assume the worst case, fit on the answer)
+
+- **U13**, a second **TCA9539-Q1** at **0x75** (A0 high, A1 low), fitted, on U12's I²C bus, INT wired-OR
+  on EXP_INT (R53) and RESET shared (R54): P00 the four BTS3011TE STATUS lines (`SEAT_STATUS`, R58,
+  moved from U12 P17), P01 the radar alert; P02-P17 spare.
+- **A/C clutch** (02.15 (b), DNP): U12 **P17** → R59 4.7 k (R60 10 k off at reset) → **U14 BTT6050-1ERA**
+  high side, VS on `V12C_RAW` (the comfort input ahead of D3), out on **DP-DCU-B 12** (`AC_CLUTCH`, the
+  one cavity free on the three DCU receptacles). The coil returns at the compressor and carries its own
+  diode. DEN held low (R61) and IS on R62 1.2 k, unread - as U9 / U10. F29 (7.5 A) is too small with the
+  clutch added - confirm, V-101.
+- **A/C pressure** (02.15 (b), DNP): **J11** a 3-way PLACEHOLDER lead (no drop cavity is free), 0.5-4.5 V
+  ratiometric `confirm`, 10 k / 20 k + 100 nF + BAT54S → **U15 ADS1115-Q1** (0x48, VSSOP-10) AIN0; the
+  supply the same way on AIN2 (AIN1 / AIN3 grounded, spare); **U16 TPS7B4250-Q1** makes `SENS_5V` from
+  logic 12 V, tracking `+5V`.
+- **Radar alert** (03.12 / Z-002, DNP): **J12** a 2-way PLACEHOLDER lead, 47 k / 22 k + 100 nF + BAT54S →
+  U13 P01; R68 10 k to logic 12 V only for an open-collector output (`confirm`).
+- **DP-DCU-C 8** on `PGND`: 01.26 (a)'s third comfort ground; the record keeps it a plug until it answers.

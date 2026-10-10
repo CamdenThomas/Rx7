@@ -601,6 +601,38 @@
    ]
   },
   {
+   "ref": "C38",
+   "value": "100n  U13 VCC",
+   "footprint": "C_0805_2012Metric",
+   "x": 154.9,
+   "y": -41.0,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    153.875,
+    155.925,
+    -42.745,
+    -39.255
+   ]
+  },
+  {
+   "ref": "C39",
+   "value": "100n  U15 VDD",
+   "footprint": "C_0805_2012Metric",
+   "x": 154.475,
+   "y": -13.945,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    153.45,
+    155.5,
+    -15.69,
+    -12.2
+   ]
+  },
+  {
    "ref": "C4",
    "value": "100n 16V",
    "footprint": "C_0805_2012Metric",
@@ -614,6 +646,102 @@
     135.425,
     -29.945,
     -26.455
+   ]
+  },
+  {
+   "ref": "C40",
+   "value": "1u 50V",
+   "footprint": "C_0805_2012Metric",
+   "x": 169.725,
+   "y": -37.595,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    168.7,
+    170.75,
+    -39.34,
+    -35.85
+   ]
+  },
+  {
+   "ref": "C41",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 165.225,
+   "y": -41.345,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    164.2,
+    166.25,
+    -43.09,
+    -39.6
+   ]
+  },
+  {
+   "ref": "C42",
+   "value": "2.2u",
+   "footprint": "C_0805_2012Metric",
+   "x": 167.725,
+   "y": -41.345,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    166.7,
+    168.75,
+    -43.09,
+    -39.6
+   ]
+  },
+  {
+   "ref": "C43",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 158.2,
+   "y": -17.3,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    156.455,
+    159.945,
+    -18.325,
+    -16.275
+   ]
+  },
+  {
+   "ref": "C44",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 175.775,
+   "y": -13.945,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    174.75,
+    176.8,
+    -15.69,
+    -12.2
+   ]
+  },
+  {
+   "ref": "C45",
+   "value": "100n",
+   "footprint": "C_0805_2012Metric",
+   "x": 176.025,
+   "y": -10.045,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    175.0,
+    177.05,
+    -11.79,
+    -8.3
    ]
   },
   {
@@ -710,6 +838,38 @@
     158.795,
     -54.545,
     -47.455
+   ]
+  },
+  {
+   "ref": "D10",
+   "value": "BAT54S",
+   "footprint": "SOT-23",
+   "x": 167.975,
+   "y": -13.945,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    166.0,
+    169.95,
+    -15.69,
+    -12.2
+   ]
+  },
+  {
+   "ref": "D11",
+   "value": "BAT54S",
+   "footprint": "SOT-23",
+   "x": 165.975,
+   "y": -10.045,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    164.0,
+    167.95,
+    -11.79,
+    -8.3
    ]
   },
   {
@@ -825,6 +985,22 @@
    ]
   },
   {
+   "ref": "D9",
+   "value": "BAT54S",
+   "footprint": "SOT-23",
+   "x": 158.175,
+   "y": -13.945,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    156.2,
+    160.15,
+    -15.69,
+    -12.2
+   ]
+  },
+  {
    "ref": "H1",
    "value": "M3",
    "footprint": "MountingHole_3.2mm_M3",
@@ -918,6 +1094,38 @@
     109.985,
     -19.565,
     -1.195
+   ]
+  },
+  {
+   "ref": "J11",
+   "value": "A/C pressure transducer lead - PLACEHOLDER",
+   "footprint": "JST_XH_B3B-XH-A_1x03_P2.50mm_Vertical",
+   "x": 173.895,
+   "y": -37.995,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    171.0,
+    177.84,
+    -40.99,
+    -30.0
+   ]
+  },
+  {
+   "ref": "J12",
+   "value": "radar alert lead - PLACEHOLDER",
+   "footprint": "JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical",
+   "x": 166.5,
+   "y": -3.4,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    163.505,
+    171.995,
+    -7.345,
+    -0.505
    ]
   },
   {
@@ -2025,6 +2233,22 @@
    ]
   },
   {
+   "ref": "R59",
+   "value": "4.7k",
+   "footprint": "R_0805_2012Metric",
+   "x": 67.4,
+   "y": -30.7,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": true,
+   "courtyard": [
+    65.675,
+    69.125,
+    -31.695,
+    -29.705
+   ]
+  },
+  {
    "ref": "R6",
    "value": "10k 1%",
    "footprint": "R_0805_2012Metric",
@@ -2041,6 +2265,166 @@
    ]
   },
   {
+   "ref": "R60",
+   "value": "10k  off at reset",
+   "footprint": "R_0805_2012Metric",
+   "x": 67.4,
+   "y": -33.0,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": true,
+   "courtyard": [
+    65.675,
+    69.125,
+    -33.995,
+    -32.005
+   ]
+  },
+  {
+   "ref": "R61",
+   "value": "4.7k  DEN low",
+   "footprint": "R_0805_2012Metric",
+   "x": 69.6,
+   "y": -77.9,
+   "rot": -90.0,
+   "side": "bottom",
+   "dnp": true,
+   "courtyard": [
+    68.605,
+    70.595,
+    -79.625,
+    -76.175
+   ]
+  },
+  {
+   "ref": "R62",
+   "value": "1.2k  IS unread",
+   "footprint": "R_0805_2012Metric",
+   "x": 67.4,
+   "y": -77.9,
+   "rot": -90.0,
+   "side": "bottom",
+   "dnp": true,
+   "courtyard": [
+    66.405,
+    68.395,
+    -79.625,
+    -76.175
+   ]
+  },
+  {
+   "ref": "R63",
+   "value": "47R  PROFET ground",
+   "footprint": "R_0805_2012Metric",
+   "x": 71.8,
+   "y": -77.9,
+   "rot": -90.0,
+   "side": "bottom",
+   "dnp": true,
+   "courtyard": [
+    70.805,
+    72.795,
+    -79.625,
+    -76.175
+   ]
+  },
+  {
+   "ref": "R64",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 161.445,
+   "y": -13.925,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    160.45,
+    162.44,
+    -15.65,
+    -12.2
+   ]
+  },
+  {
+   "ref": "R65",
+   "value": "20k",
+   "footprint": "R_0805_2012Metric",
+   "x": 163.695,
+   "y": -13.925,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    162.7,
+    164.69,
+    -15.65,
+    -12.2
+   ]
+  },
+  {
+   "ref": "R66",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 171.245,
+   "y": -13.925,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    170.25,
+    172.24,
+    -15.65,
+    -12.2
+   ]
+  },
+  {
+   "ref": "R67",
+   "value": "20k",
+   "footprint": "R_0805_2012Metric",
+   "x": 173.495,
+   "y": -13.925,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    172.5,
+    174.49,
+    -15.65,
+    -12.2
+   ]
+  },
+  {
+   "ref": "R68",
+   "value": "10k",
+   "footprint": "R_0805_2012Metric",
+   "x": 169.245,
+   "y": -10.025,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    168.25,
+    170.24,
+    -11.75,
+    -8.3
+   ]
+  },
+  {
+   "ref": "R69",
+   "value": "47k",
+   "footprint": "R_0805_2012Metric",
+   "x": 171.495,
+   "y": -10.025,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    170.5,
+    172.49,
+    -11.75,
+    -8.3
+   ]
+  },
+  {
    "ref": "R7",
    "value": "16.9k  confirm",
    "footprint": "R_0805_2012Metric",
@@ -2054,6 +2438,22 @@
     156.45,
     -32.24,
     -30.25
+   ]
+  },
+  {
+   "ref": "R70",
+   "value": "22k",
+   "footprint": "R_0805_2012Metric",
+   "x": 173.745,
+   "y": -10.025,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    172.75,
+    174.74,
+    -11.75,
+    -8.3
    ]
   },
   {
@@ -2150,6 +2550,70 @@
     17.895,
     -24.195,
     -15.805
+   ]
+  },
+  {
+   "ref": "U13",
+   "value": "TCA9539-Q1",
+   "footprint": "TSSOP-24_4.4x7.8mm_P0.65mm",
+   "x": 160.0,
+   "y": -41.0,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    156.105,
+    163.895,
+    -45.195,
+    -36.805
+   ]
+  },
+  {
+   "ref": "U14",
+   "value": "BTT6050-1ERA",
+   "footprint": "Infineon_PG-TSDSO-14-22",
+   "x": 62.5,
+   "y": -74.6,
+   "rot": 180.0,
+   "side": "bottom",
+   "dnp": true,
+   "courtyard": [
+    58.695,
+    66.305,
+    -78.445,
+    -70.755
+   ]
+  },
+  {
+   "ref": "U15",
+   "value": "ADS1115-Q1",
+   "footprint": "MSOP-10_3x3mm_P0.5mm",
+   "x": 150.0,
+   "y": -15.5,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    146.855,
+    153.145,
+    -17.295,
+    -13.705
+   ]
+  },
+  {
+   "ref": "U16",
+   "value": "TPS7B4250-Q1",
+   "footprint": "SOT-23-5",
+   "x": 166.295,
+   "y": -37.595,
+   "rot": 0.0,
+   "side": "top",
+   "dnp": true,
+   "courtyard": [
+    164.2,
+    168.39,
+    -39.34,
+    -35.85
    ]
   },
   {
