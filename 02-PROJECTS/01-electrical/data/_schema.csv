@@ -292,3 +292,10 @@ grounds,hold,str,no,blocks.id,as pins.hold
 fuses,hold,str,no,blocks.id,as pins.hold
 relays,hold,str,no,blocks.id,as pins.hold
 loads,hold,str,no,blocks.id,as pins.hold
+ideas,id,key,yes,,
+ideas,date,date,no,,
+ideas,by,enum(camden|agent),no,,who raised it; an agent's idea is a suggestion until Camden keeps it
+ideas,about,str,no,,"what it concerns: a module, table or work id of this area - prose belongs in note"
+ideas,idea,text,no,,"Camden's words verbatim when by=camden, whole; never edited - a later version is a new row"
+ideas,status,enum(raw|kept|merged|dropped),no,,"raw until he rules; it leaves raw only by a decision that carries his words"
+ideas,note,text,no,,"the agent's reading: what stands meanwhile and what the idea would touch if he ruled it"

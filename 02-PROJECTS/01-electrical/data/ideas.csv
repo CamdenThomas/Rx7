@@ -1,0 +1,25 @@
+id,date,by,about,idea,status,note
+I-001,2026-10-10,camden,PANEL,"for the design of the control panel (DCU),
+i want one centered pair one above the other, 
+a little green led display screen that at rest displays all knob information in a small condensed format, 
+and a rotation knob that controls: AC temp, fan speed, fan mode, 
+when being controlled adjusts the screen to display only the current adjustment area.
+by default it will adjust temp, if you press the knob in once it will then adjust fan speed until you don't adjust for a moment
+bellow the screen there will be 2 small buttons on either side of the control knob:
+the top driver side will be fan modes, which will tell the center knob to now adjust the fan mode not temp also only until you stop adjusting
+the top passenger side will simply toggle reeducate air or not.
+bottom driver side will enable the read glass defog,
+bottom passenger side will enable the side mirror defog
+the knob should be cycled with green led light at the base that is just bright enough to illuminate the 4 buttons in the dark
+the screen above will the the only indicator of the knobs left to right orientation (it should rotate freely forever both directions)
+these 4 buttons will be back lit when they are enabled, dark (only illuminated from the center) when off. 
+recirculate should default to off while dark pulling fresh air, and only recirculate when enabled and lit green
+the AC condenser should automatically turn on if chosen temp is bellow outside temp, no special toggle needed
+on either side of that center section should be each window control switch
+small and simple for these is perfect again backlight with green led
+then on either edge, one nob for the seat heat/cooling pushing the nob in toggle on or off
+turning left makes it cooler (past half switches from heating to cooling)
+cooling is default so in nob is pressed on but not turned left or right then it should turn on lowest fan speed cooling seats.
+these dials must have some small light way of indicating they are on, and wether they are cooling or heating, and the effort spent on the heating cooling
+i want to play around with all of this nothing is set in stone, can you save all this information, ask me about anything i missed,
+then make a rudimentary visual depiction of what this would look like so we can perfect it",raw,"A concept, not a ruling. Camden typed it on the Mac on 2026-10-10 (00-design/message.txt) and gave it in chat; his own last lines say it: ""i want to play around with all of this nothing is set in stone"". It supersedes nothing. D-380 (nine keys, four encoders, the thumbstick), D-458 (the lights and the 26-way ribbon), D-459 (a board), D-442 (the firmware's behaviour) and luxury D-355 / D-359 stand, and panel_ribbon, dcu_channels SN18-SN20, parts P155-P157, the panel board (H-008) and the DCU carrier (Y12) stay as they are until he rules. What it would touch if he ruled it: the control set (one centre encoder with a push in place of the fan and temperature encoders; a display; four keys - fan mode, recirculate, rear-glass defog, mirror defog; one switch per window; seat encoders with a push), the key matrix (11 switches against today's 9), the lights (D-458's arcs), the firmware (knob modes that time out; a mirror-defog key of its own, where D-442 has mirror heat follow the defogger; a seat switched on and off by its push with cooling first, where D-380 has an OFF gap between heat and cool; the A/C switched by temperature, where D-211 leaves no compressor until the swap and engine block 02.15 is open) and the faceplate (luxury LP20, luxury block 03.14). On today's panel and not in his words: the hatch release, the fuel-door release and the mirror thumbstick - asked in chat, not taken as dropped. Read as: ""reeducate air"" is recirculate; ""read glass defog"" is the rear-glass defogger; ""AC condenser"" is the A/C compressor clutch; ""driver side"" is the left (00-CAR PT891). Asked and sketched in chat the same day; the answers are his to give and are not recorded here."
