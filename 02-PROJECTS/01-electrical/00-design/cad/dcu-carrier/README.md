@@ -1,14 +1,13 @@
 # DCU carrier — the KiCad project
 
-*Rev 2026-10-10 (sheet rev 0.04 - D-458, D-465; board rev 0.03 provisional - Y11, not yet re-laid for
-rev 0.04) · owns: what this KiCad project
+*Rev 2026-10-11 (sheet rev 0.04 - D-458, D-465; board rev 0.04 provisional - Y12) · owns: what this KiCad project
 is for, what it may claim, and how to start. The board's design is `../../../data/dcu_channels.csv`.
 That is the record, and this is a drawing of it. Read `../README.md` first: it is the fence.*
 
 ## Where it stands
 
-**Sheet rev 0.04 (2026-10-10) is ahead of the board.** It carries D-458 and D-465; ERC is 0 / 0 and
-`../check.py --board dcu` reads 0 mismatches once `panel_ribbon` carries pins 21-26:
+**Sheet and board are both rev 0.04 (Y12, 2026-10-11).** The sheet carries D-458 and D-465; ERC is 0 / 0 and
+`../check.py --board dcu` reads 0 mismatches:
 
 - **J4 is a 2 x 13 keyed IDC header** (26-way, D-458). Pins 1-20 keep their nets. 21 and 23 are
   `GND`. 22 `PNL_SDA` and 24 `PNL_SCL` are the I²C bus (Teensy 18 / 19, the bus of U12, U13 and U15)
@@ -22,24 +21,31 @@ That is the record, and this is a drawing of it. Read `../README.md` first: it i
   socket, reset, boot or an unprogrammed part. The 10 kΩ also holds the gate against drain-gate
   coupling when the relay coil switches. A driven pin pays 0.33 mA for it.
 
-**The board below is still rev 0.03 (the 2 x 10 J4); it has not been re-laid for the sheet.** DRC
-`--schematic-parity` therefore reports the J4 footprint, R71 / R72 / F1 / TP1 and the R39 / R41 values
-as parity issues until it is. A 2 x 13 header does not fit where the 2 x 10 sat: its courtyard (41.8
-mm) is 1.9 mm longer than the gap between H1's screw head and the Teensy's USB end. The attempt (scratch,
-Y-apply-boards) moved H1 to (4, 15), put J4's pin 1 3.0 mm left and F1 / R71 / R72 in the old H1 corner.
-It closed every net but four (COL1, two encoder lines, one of JOY / +5V) and a few GND pour fragments
-around the header, and was not committed. Re-laying the board is H-002's next step, `confirm`.
+**The top-left block was re-laid for the 2 x 13 header (Y12).** Its courtyard (41.8 mm) is 1.9 mm longer
+than the gap the 2 x 10 had between H1's screw head and the Teensy's USB end, so:
 
+- **J4 sits three pitches (7.62 mm) further left**, pin 1 at (6.38, 7.6): pins 7-26 stand on the 2 x 10's
+  pads 1-20, and the header's right end, with the 13 mm the bus needs to reach the Teensy, is where it
+  was. The Teensy socket J10 did not move.
+- **H1 moved to (4, 15)**, under the header's left end (the other three holes stay 4 mm from their
+  corners). `confirm` with `V-102` / `CK26`.
+- **F1, R72, R71 stand in the gap between the header and the Teensy**, by pins 21-26: F1 with pad 1 on the
+  +5V track and pad 2 straight to pin 26; R72 beside the I²C clock's via; R71 astride the +3V3 trunk with
+  pad 1 on the SDA trunk. **TP1** is on the bottom side beside pin 25.
+- The six 0805s H1 landed on moved: R52 / R54 between H1 and U12, R53 / R3 / C24 below H1, R51 onto
+  the SDA trunk above U12.
+
+An earlier placement (pin 1 3.0 mm left, the new parts in the old H1 corner) left four nets open: its
+three extra columns stood in the bus's way to the Teensy, and +5V lost its way round the header.
 
 **The board is laid out, routed and 3D-modelled on a PROVISIONAL outline (Y5), with the open blocks'
-worst case drawn in (Y11, D-455).** `kicad-cli pcb drc --severity-all --exit-code-violations
---schematic-parity` reads 0 violations (errors and warnings), 0 unconnected, 0 parity issues; ERC is
-0 / 0. `../check.py --board dcu` holds every record pin; its two remaining lines are DP-DCU-B 12 and
-DP-DCU-C 8, wired here for blocks 02.15 / 01.26 while the record still names no channel for them (they
-turn into notes when the Y11 rows land). `H-002` stays the final board: it gates on `V-102`, luxury
-`W-332` and this row. Nothing here is ordered (F5).
+worst case drawn in (Y11, D-455) and the 26-way header (Y12).** `kicad-cli pcb drc --severity-all
+--exit-code-violations --schematic-parity` reads 0 violations (errors and warnings), 0 unconnected,
+0 parity issues; ERC is 0 / 0. `../check.py --board dcu` holds every record pin; its one remaining line
+is a note on DP-DCU-B 12, wired here to the clutch stage for block 02.15 behind a sealing plug. `H-002`
+stays the final board: it gates on `V-102`, luxury `W-332` and this row. Nothing here is ordered (F5).
 
-- **The sheet** (rev 0.03): every functional block is on its real package, its pin numbers held to
+- **The sheet** (since rev 0.03): every functional block is on its real package, its pin numbers held to
   `../pin_tables.csv` by `check.py` (S-480 to S-489):
   - U5-U8 **BTS3011TE**, TO-252-5: 1 IN, 2 VDD, 3 OUT, 4 STATUS, 5 GND (the source - the seat
     current leaves here), tab 6 = OUT. **STATUS** is open-drain and latching on an over-temperature
@@ -92,21 +98,23 @@ luxury `W-332`.
 
 **Outline: 180 x 80 mm, PROVISIONAL - `confirm` until `V-102` (D-455).** The brief's 120 x 80 does
 not hold the three flanged DT13s side by side on one edge: their courtyards (flange ears included) are
-60.3 + 56.1 + 44.1 mm, so the connector edge needs about 165 mm. Four M3 holes (3.2 mm, NPTH) 4 mm in
-from each corner. 2 layers, 1.6 mm, 1 oz.
+60.3 + 56.1 + 44.1 mm, so the connector edge needs about 165 mm. Four M3 holes (3.2 mm, NPTH): H2-H4
+4 mm in from their corners, H1 at (4, 15) below the ribbon header (Y12). 2 layers, 1.6 mm, 1 oz.
 
 - **The connector edge** is the bottom long edge: J9 `DP-DCU-B` DT13-12PA (left, x 38.1), J2
   `DP-DCU-C` DT13-08PA (centre, x 97.2), J1 `DP-DCU` DT13-06PA (right, x 148.2). The board edge sits on
   each flange's rear face (4 mm behind its front face), flush for panel mounting through one enclosure
   wall (D-362).
-- **The opposite edge** (grommets, D-362): J4 the panel ribbon (2 x 10 IDC on the rev 0.03 board; 2 x 13 on the sheet, D-458; top left), the Teensy
-  (J10, socketed, along the top), the three servo headers J6-J8 each with its 470 µF beside it, J3 the
-  cabin NTC lead and J5 the blower pigtail (top right).
+- **The opposite edge** (grommets, D-362): J4 the panel ribbon (2 x 13 IDC, D-458; in the top left
+  corner, pin 1 at (6.38, 7.6), its courtyard from 0.7 to 42.5 mm along the edge), the Teensy (J10,
+  socketed, along the top, pad 1 at (50, 18), its courtyard from 47.4 mm), the three servo headers J6-J8
+  each with its 470 µF beside it, J3 the cabin NTC lead and J5 the blower pigtail (top right).
 - **Blocks**: the window quad U10 and the mirror bridge U11 over J9 (their outputs face the pins), the
   releases Q1 / Q2 beside them, the mirror heat U9 between J9 and J2; the four seat switches U5-U8 over
   J2, tabs down onto their pins; the shunt R15 / R16 and U4 to their right; the logic buck U1 and the
   servo buck U2 top right, under the servo headers they feed; CAN U3, the wake stage and the
-  outside-air input over J1; the expander U12 top left beside the ribbon.
+  outside-air input over J1; the expander U12 top left below the ribbon, with the panel lines' F1 / R72 /
+  R71 at the header's right end and TP1 under it (Y12).
 - **The provisions (Y11)**: the clutch stage U14 with R61-R63 on the **bottom side**, under DP-DCU-B's
   body right of its pins: OUT runs a 1.5 mm B.Cu track straight to pin 12, the tab is fed from the
   `V12C_RAW` pour by four vias and a 2 mm track; R59 / R60 also on the bottom, under the end of U12 P17's
@@ -133,6 +141,20 @@ Y11 kept that routing and added to it: what the new parts displaced or crossed w
 again net by net with a raster A* router on both layers (0.2-0.25 mm tracks at the fine-pitch pins of
 U13 and U15), the clutch stage's power paths and fan-outs drawn by hand and locked.
 
+Y12 took up the header's seventeen signals between J4 and the Teensy's USB end (x < 48.2, y < 13), the
++5V and +3V3 runs to the header and the links to the six 0805s that moved, and laid them again; the rest
+of Y5 / Y11's copper is as it was. Drawn by hand and locked: the four lines whose old runs leave south-west of the header (ENC_FAN_B,
+ENC_TEMP_A, ENC_SEAT_PASS_A, I2C_SCL) go back along the top of the header on B.Cu, nested, round pins
+2 / 1 and under the bottom row, so no column gap is spent on them; **+5V** drops between columns 1 and 2
+(0.4 mm between the pads, 0.22 mm clear; it carries the Teensy and the panel's 0.5 A, `confirm`) instead
+of wrapping the header; ROW1-3 / COL1-3 leave on F.Cu (COL2 / COL3 on B.Cu) and step down to their B.Cu
+lanes through a staircase of vias beside the +5V diagonal; the header's own ground pins (2, 20, 21, 23),
+ringed in by the fan-out on both layers, get a **GND rail** along the top edge between +5V and the signal
+lanes, under the +5V neck on B.Cu. The eight lines east of column 4 were routed with freerouting 2.5.0
+on a DSN in which every other net's copper is a keepout (it does not follow KiCad's T-junctions or
+pours); its 0.15 mm necks were widened to 0.25. The GND pours were restitched (two vias) and refilled:
+one fragment group, no isolated copper.
+
 | Net class | Track | Clearance | Nets |
 |---|---|---|---|
 | `Default` | 0.25 | 0.2 | signals, `+3V3` (the Teensy's own output, light loads), `GND` (poured) |
@@ -155,7 +177,9 @@ inside U15 only (Y11), whose 0.5 mm-pitch VSSOP-10 lands leave 0.15 mm between i
 |---|---|---|
 | J1 / J2 / J9 | `dcu-carrier:DT13-06PA` / `DT13-08PA` / `DT13-12PA` | TE application spec 114-151046 Rev A p.5-6: pins Ø1.88 on 4.45 mm in two rows 6.35 apart (pads 2.9), three Ø3.43 flange posts (two at the sides, level with the far row, at ±10.87 / ±13.59 / ±17.55 for 6 / 8 / 12 ways, one on the centre line 11.43 toward the flange); the same pattern as the ICU's two, turned 180°. The 3D models sit as on the ICU's (TE's model frame turned onto the footprint, not checked against a part) |
 | J3, J5 | `Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical` | KiCad |
-| J4 | `Connector_IDC:IDC-Header_2x13_P2.54mm_Vertical` on the sheet (the rev 0.03 board still has the 2x10) | KiCad |
+| J4 | `Connector_IDC:IDC-Header_2x13_P2.54mm_Vertical` | KiCad; keyed, shrouded - the part bought `confirm` (Y12) |
+| F1 | `Fuse:Fuse_1206_3216Metric` | KiCad; 1206L050-class PTC `confirm` (Y12) |
+| TP1 | `TestPoint:TestPoint_Pad_D1.0mm` | KiCad; a bare 1.0 mm pad on the bottom side (Y12) |
 | J6-J8 | `PinHeader_1x03_P2.54mm_Vertical`, pin 1 signal, 2 V+, 3 GND | KiCad; the FS5115M lead order `confirm` |
 | J10 | `dcu-carrier:Teensy41_Socket` | the ICU's, its outline now the ICU's corrected one (body -1.27 to 59.69 mm along the rows) |
 | L2 | `Inductor_SMD:L_Coilcraft_XAL7030-682` | KiCad; 6.8 µH, Isat ≥ 7 A `confirm` |
@@ -219,7 +243,10 @@ The renders and the STEP (about 25 MB) are built, never committed (`.gitignore`)
 clearing; OCPM latch-off and its reset by nSLEEP; the comfort currents (`V-101`) the 0.5 mm / pour
 sizing assumes (18 A through the shunt on 1 oz F.Cu); the I²C addresses 0x74 / 0x75 (U12 / U13), 0x3C (the panel's IS31FL3236A, D-458) and
 0x48 (U15); the PLACEHOLDER leads J11 / J12 and how their wires reach the DCU; the bottom-side parts
-(U14, R59-R63) against the enclosure; the sheet's own "what this sheet does not know" box.
+(U14, R59-R63, TP1) against the enclosure; H1 at (4, 15) and the one +3V3 via 3.4 mm from its centre
+(inside the 7 mm courtyard, outside a 6 mm screw head); whether a USB plug reaches the Teensy with the
+ribbon plugged in (the header's shroud ends 6.7 mm from the Teensy's edge, as on rev 0.03); the sheet's own
+"what this sheet does not know" box.
 
 ## What it may and may not claim
 
@@ -253,7 +280,7 @@ python3 ../check.py --board dcu
 | `TARGET.md` | the drawing checklist from `dcu_channels`, a snapshot and not a link |
 | `enclosure/` | the enclosure (`P152`, Y7): `make_enclosure.py` (parameters at the top, `V-102` the envelope; `freecadcmd make_enclosure.py`) builds base, DT13 plate and lid as STEP / STL from `board.json` (`../enclosure_extract.py dcu-carrier`) and the board STEP, and fit-checks them; provisional, `confirm` until `V-102` / F11 |
 
-`enclosure/board.json` was extracted from the Y5 board: rerun `../enclosure_extract.py dcu-carrier` for Y11's
-parts (J11 on the right edge and J12 on the top edge need grommets; U14 and R59-R63 sit on the underside).
-
-**Hand-off for `Y12` (2026-10-10):** the board re-lay for the 2 × 13 header is open; the work row's note carries the steps and `relay-attempt/README.md` the scripts and the one attempt so far.
+`enclosure/board.json` is extracted from the rev 0.04 board (Y12; rerun `../enclosure_extract.py dcu-carrier`
+whenever the board moves): `RIBBON_WAYS` is 26, the ribbon notch runs from x 4.1 to 39.1 mm, the H1 boss
+stands at (4, 15), and base, plate and lid fit with 0 interferences. J11 on the right edge still needs its
+side-wall hole; U14, R59-R63 and TP1 sit on the underside.

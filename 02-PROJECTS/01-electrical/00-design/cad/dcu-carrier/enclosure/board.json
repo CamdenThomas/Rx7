@@ -21,7 +21,7 @@
   {
    "ref": "H1",
    "x": 4.0,
-   "y": -4.0,
+   "y": -15.0,
    "d": 3.2,
    "plated": false
   },
@@ -365,15 +365,15 @@
    "value": "100n",
    "footprint": "C_0805_2012Metric",
    "x": 2.525,
-   "y": -14.245,
-   "rot": 90.0,
+   "y": -24.5,
+   "rot": -90.0,
    "side": "top",
    "dnp": false,
    "courtyard": [
     1.5,
     3.55,
-    -15.99,
-    -12.5
+    -26.245,
+    -22.755
    ]
   },
   {
@@ -1001,19 +1001,35 @@
    ]
   },
   {
+   "ref": "F1",
+   "value": "PTC 0.5A hold 1206 - confirm",
+   "footprint": "Fuse_1206_3216Metric",
+   "x": 43.75,
+   "y": -3.6,
+   "rot": -90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    42.575,
+    44.925,
+    -5.925,
+    -1.275
+   ]
+  },
+  {
    "ref": "H1",
    "value": "M3",
    "footprint": "MountingHole_3.2mm_M3",
    "x": 4.0,
-   "y": -4.0,
+   "y": -15.0,
    "rot": 0.0,
    "side": "top",
    "dnp": false,
    "courtyard": [
     0.5075,
     7.495,
-    -7.4975,
-    -0.5025
+    -18.4975,
+    -11.5025
    ]
   },
   {
@@ -1162,15 +1178,15 @@
   },
   {
    "ref": "J4",
-   "value": "panel ribbon 2x10 IDC",
-   "footprint": "IDC-Header_2x10_P2.54mm_Vertical",
-   "x": 14.0,
+   "value": "panel ribbon 2x13 IDC, keyed",
+   "footprint": "IDC-Header_2x13_P2.54mm_Vertical",
+   "x": 6.38,
    "y": -7.6,
    "rot": 90.0,
    "side": "top",
    "dnp": false,
    "courtyard": [
-    8.355,
+    0.735,
     42.505,
     -11.325,
     -1.335
@@ -1724,16 +1740,16 @@
    "ref": "R3",
    "value": "100k",
    "footprint": "R_0805_2012Metric",
-   "x": 7.995,
-   "y": -18.475,
+   "x": 5.245,
+   "y": -20.45,
    "rot": 90.0,
    "side": "top",
    "dnp": false,
    "courtyard": [
-    7.0,
-    8.99,
-    -20.2,
-    -16.75
+    4.25,
+    6.24,
+    -22.175,
+    -18.725
    ]
   },
   {
@@ -1882,7 +1898,7 @@
   },
   {
    "ref": "R39",
-   "value": "100k",
+   "value": "10k",
    "footprint": "R_0805_2012Metric",
    "x": 54.975,
    "y": -53.195,
@@ -1930,7 +1946,7 @@
   },
   {
    "ref": "R41",
-   "value": "100k",
+   "value": "10k",
    "footprint": "R_0805_2012Metric",
    "x": 63.475,
    "y": -53.195,
@@ -2108,30 +2124,30 @@
    "ref": "R51",
    "value": "4.7k",
    "footprint": "R_0805_2012Metric",
-   "x": 5.245,
-   "y": -14.225,
+   "x": 19.4,
+   "y": -13.65,
    "rot": 90.0,
    "side": "top",
    "dnp": false,
    "courtyard": [
-    4.25,
-    6.24,
-    -15.95,
-    -12.5
+    18.405,
+    20.395,
+    -15.375,
+    -11.925
    ]
   },
   {
    "ref": "R52",
    "value": "4.7k",
    "footprint": "R_0805_2012Metric",
-   "x": 7.995,
+   "x": 8.55,
    "y": -14.225,
    "rot": 90.0,
    "side": "top",
    "dnp": false,
    "courtyard": [
-    7.0,
-    8.99,
+    7.555,
+    9.545,
     -15.95,
     -12.5
    ]
@@ -2141,31 +2157,31 @@
    "value": "10k",
    "footprint": "R_0805_2012Metric",
    "x": 2.495,
-   "y": -18.475,
+   "y": -20.45,
    "rot": 90.0,
    "side": "top",
    "dnp": false,
    "courtyard": [
     1.5,
     3.49,
-    -20.2,
-    -16.75
+    -22.175,
+    -18.725
    ]
   },
   {
    "ref": "R54",
    "value": "10k  held in reset until the firmware lets go",
    "footprint": "R_0805_2012Metric",
-   "x": 5.245,
-   "y": -18.475,
+   "x": 8.55,
+   "y": -18.7,
    "rot": 90.0,
    "side": "top",
    "dnp": false,
    "courtyard": [
-    4.25,
-    6.24,
-    -20.2,
-    -16.75
+    7.555,
+    9.545,
+    -20.425,
+    -16.975
    ]
   },
   {
@@ -2457,6 +2473,38 @@
    ]
   },
   {
+   "ref": "R71",
+   "value": "100R",
+   "footprint": "R_0805_2012Metric",
+   "x": 44.9,
+   "y": -11.76,
+   "rot": 90.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    43.905,
+    45.895,
+    -13.485,
+    -10.035
+   ]
+  },
+  {
+   "ref": "R72",
+   "value": "100R",
+   "footprint": "R_0805_2012Metric",
+   "x": 44.9,
+   "y": -7.3,
+   "rot": 180.0,
+   "side": "top",
+   "dnp": false,
+   "courtyard": [
+    43.175,
+    46.625,
+    -8.295,
+    -6.305
+   ]
+  },
+  {
    "ref": "R8",
    "value": "10k",
    "footprint": "R_0805_2012Metric",
@@ -2486,6 +2534,22 @@
     142.95,
     -42.49,
     -40.5
+   ]
+  },
+  {
+   "ref": "TP1",
+   "value": "ribbon spare",
+   "footprint": "TestPoint_Pad_D1.0mm",
+   "x": 39.0,
+   "y": -7.6,
+   "rot": 0.0,
+   "side": "bottom",
+   "dnp": false,
+   "courtyard": [
+    37.9524,
+    40.045,
+    -8.6463,
+    -6.5537
    ]
   },
   {

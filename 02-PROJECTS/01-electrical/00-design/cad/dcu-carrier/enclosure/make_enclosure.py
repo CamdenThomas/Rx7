@@ -59,7 +59,7 @@ P = {
     "GROMMET_HOLE": 8.0,          # a grommet for an 8 mm hole, 5 mm bore, 3 mm panel - confirm
     "GROMMET_Z": 12.0,
     "RIBBON_REF": "J4",
-    "RIBBON_WAYS": 20,            # panel_ribbon, 2 x 10 IDC on a 1.27 mm ribbon
+    "RIBBON_WAYS": 26,            # panel_ribbon, 2 x 13 IDC on a 1.27 mm ribbon (D-458)
     "RIBBON_SIDE_CLEAR": 1.0, "NOTCH_DEPTH": 3.0, "RIBBON_GAP": 1.5, "TONGUE_CLEAR": 0.25,
     "RF_REF": None,
     "GASKET_GROOVE_W": 1.6, "GASKET_GROOVE_D": 1.2, "GASKET_R": 3.0,
