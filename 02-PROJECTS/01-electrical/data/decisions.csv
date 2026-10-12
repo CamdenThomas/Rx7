@@ -1370,3 +1370,18 @@ Option (a) as he was asked it: ""A second row. The new plug goes above the other
 **The order of work, as he asked.** The design first, which is this decision and its rows. Then a mock-up before any detailed model: a parametric FreeCAD model of the unit's insides and its case, built from one table of numbers so a change rebuilds the whole unit and reports what no longer fits (Y14). The detailed model and the print stay F1, after the measurements.
 
 **In the data.** blocks 01.37 deleted. housings DP-DCU-D and cavities DP-DCU-D 1-12 (new); dcu_channels SN11, SN14, SN15; devices DV54, DV55, DV59; modules DCU; parts P194 (the DT13-12PA), P195 (the upper connector board), P196 (the inside leads), with P115, P028, P140, P152 and P172 following; work Y13 done, Y14 now the mock-up, Y15 the upper board's drawing."
+D-481,Architecture and scope,"The climate unit is one height front to back, about 93 mm, and its face grows to cover it, so it installs from the front like a head unit",2026-10-11,standing,,,,D-480 · D-479,"**The climate unit is one height from its face to its back, about 93 mm, and its face grows to cover it, so it goes in from the front like a head unit. The box that steps up behind a 60 mm face is not the design.**
+
+Nobody was asked: this is a reading of D-480's own words against what the mock-up (Y14) found, and it is his to overturn.
+
+**What the mock-up found.** Two rows of DT13 receptacles need a body 92.76 mm tall: floor 3 + bosses 5 + 42 between the two boards + the upper DT13's 37.76 + 2 + lid 3. TE's model of the DT13 stands 37.76 mm above its board, so the upper board cannot sit lower than 40.26 mm above the carrier. Block 01.37's option (a) told him ""about 75 mm""; that estimate was wrong by 18 mm. And a body that tall does not pass through an opening a 60 mm face only just covers: the stepped box of option (a)'s wording goes in from behind the dash or not at all.
+
+**The reading.** D-480 carries his words: ""hight is the dimentin with the most wiggle room, so all connectors are on the back so you would intall this exactly like a headunit."" Installing exactly like a head unit means sliding in from the front, and he names height as the dimension to spend. So the unit is one height and the face covers it. The stepped box would keep the sketch's face and lose the front install, which is the thing he asked for.
+
+**What it comes to, on today's provisional boards** (the mock-up's report, `00-design/cad/climate-unit`; nothing measured, R11): body 188 x 92.76 mm, face 192 x 96.76 mm, 124.55 mm deep, 202.56 mm with the mated plugs and the bend of their cables. That is about a double-DIN stereo. His 180 x 60 control layout sits on the face whole, with 18.38 mm of bare face above and below when centred.
+
+**What it leaves to him.** The face is 37 mm taller than his sketch; the layout on it is still his concept (ideas I-001 to I-006). The width follows the carrier: a 180 mm face needs the DCU board about 12 mm narrower, which is H-002's final layout to try (its connector row alone is 162.3 mm).
+
+**What would flip it.** V-113 or V-102 showing the opening cannot be about 188 x 93 mm, or that there is not about 203 mm behind it: then it comes back as a block (D-362's flip condition, D-479). Or his word that the face stays low: the mock-up builds the stepped unit from one number (`FACE_H`), with the report saying `front install: no`.
+
+**In the data.** work Y14 done, V-102 and V-113 (what to measure for), and the `climate-unit` row of the CAD folder's README."
