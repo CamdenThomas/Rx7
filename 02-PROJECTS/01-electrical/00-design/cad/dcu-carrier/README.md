@@ -41,10 +41,12 @@ three extra columns stood in the bus's way to the Teensy, and +5V lost its way r
 **D-479 (2026-10-11): this board now lives inside the climate control unit**, one enclosure with the
 control panel's board on its face, like a stereo head unit, with only sealed connector halves outside.
 The panel ribbon (J4) stays inside the box, and nothing leaves through a grommet: the servo leads
-(J6-J8), the blower duty and the cabin sensor go out on a sealed half of their own. The connector edge
-is full (160.5 of 165 mm), so where that half goes is block 01.37; `Y13` changes this board for the
-answer and `Y14` redraws the enclosure for both boards. Until then everything below describes rev 0.04
-and its Y7 box as they are.
+(J6-J8), the blower duty (J5) and the cabin sensor (J3) go out on a sealed half of their own. The
+connector edge is full (160.5 of 165 mm), so that half, `DP-DCU-D`, is a fourth DT13-12PA in a second
+row above J9, on a small upper connector board joined to J6-J8, J5 and J3 by short plug-in leads
+(D-480, parts P194-P196). **This board does not change for it.** The unit's mock-up is `../climate-unit/`
+(`Y14`), the upper board's drawing is `Y15`. The Y7 box in `enclosure/` is the old DCU-only box, kept
+until the unit's enclosure replaces it.
 
 **The board is laid out, routed and 3D-modelled on a PROVISIONAL outline (Y5), with the open blocks'
 worst case drawn in (Y11, D-455) and the 26-way header (Y12).** `kicad-cli pcb drc --severity-all
