@@ -1312,3 +1312,21 @@ D-476,Logic and rules,Dash illumination is not shed while the engine runs,2026-1
 Decided by the agent under CLAUDE.md §3 (small: no money, rows only, settled by a standing decision). D-462 made O20 the illumination bus - the dash lamps, the radio's light and the reference the ICU display dims against - where it had been the dome lamp's output that D-248 sheds. D-463 keeps the cluster up on a dying alternator because a sag must not blank the speedo and warnings; the dash lights are the same case: after 10 s below 11.5 V at night the dash would go dark and the display jump to full daytime brightness to save about 1.5 A. D-463's reasoning settles it: the illumination joins ACCESSORY on the engine-running exemption, the comfort loads and DEFOG still shed.
 
 In the data: rules voltage names INTERIOR beside ACCESSORY in the engine-running exemption; logic INTERIOR is unchanged. Found by R-APPLY-01.19 (D-463)."
+D-478,Architecture and scope,"The app pulls the ICU's logs over Bluetooth and works out the drive, the trends and the wear itself",2026-10-11,standing,,,,,"**After a drive, one ""Connect and log"" press in the Rx7 app pulls the ICU's data logs over Bluetooth, and the app then works on them with no further input: it adds the drive, and it keeps every sensor's trend and the signs of wear, so the car's present state is read from its own data.**
+
+His words (chat, 2026-10-11): ""also for the elecrical project, the app should read bluetooth from the car icu to pull the data logs then the app should prosses it all automatically and update the drives and full detail of potential wear and sensor trends etc all possible information about the cars current state. Then i just have to open the app after a drive and click the conenct and log button and it will pull all the information needed""
+
+Readings taken:
+- ""bluetooth from the car icu"": the ICU already carries the radio - the ESP32-C3 of D-267, which today only listens to the battery's BMS (D-330, IC24). It gains a second job, offering the logs to the app. This ruling adds no part; whether one module does both jobs at once is proven on the bench (BT4).
+- ""the data logs"": what the ICU writes to its microSD card (B7, F-007): the CAN traffic it sees - its own frames, the PMU's and the DCU's - so one pull carries the whole car. The PMU-24 DL's internal log stays the PMU's, read by its own Windows client (D-376), and is not part of this.
+- ""update the drives"": a pulled log becomes a 00-CAR `drives` row with nothing typed - the date, the odometer at the end, the distance. It reaches the record the way everything of his does, through the app's inbox as a `kind=drive` row (R3).
+- ""potential wear and sensor trends ... all possible information"": for each drive the app keeps a summary of every logged channel, compares it with the drives before, flags drift and out-of-range readings, and holds wear against 00-CAR `intervals` by the miles and hours actually run. A trend is derived from the logs, never typed (R2).
+- ""open the app after a drive"": taken as the phone, in the car. The desktop app gets the same button where its Bluetooth allows.
+- He asks for data out of the car; nothing in his words sends anything in. So the link is read-only by construction: nothing arriving over Bluetooth can switch an output, change a setting or load firmware, and the app is paired with the ICU once, with the car in hand, before it is offered anything.
+
+What is not known yet:
+- How much a drive's log weighs and how long the pull takes: BT1 sets the budget (the UART between the Teensy and the radio and Bluetooth LE itself are the limits, both `confirm` until BT4 measures them).
+- The ICU is on the accessory circuit (IC12, O10) and is awake only with the key in ACC or ON. What he wants at key-off is block 01.36.
+- Where the raw logs live: too large for git and the repository is public, so they stay on the device that pulled them until BL3 names their home (with 02-APP P55's second home).
+
+Scope (R10): the ICU's side - the log format, the link, the firmware, the bench proof - is this project's, rows BT1-BT5. The app's side is 02-APP's (D-428), rows BL1-BL4, gated on these across areas."
