@@ -347,17 +347,27 @@ int main() {
         CHECK(p.rel_sel == 0, "and the select still drops 1.5 s after the first press");
 
         /* D-465: refused unless the car is stopped - 0x200's road speed at 0, fresh */
-        CHECK(car_stopped(1, 0, 0) == 1 && car_stopped(1, TMO_ICU_SENSORS, 0) == 1, "0x200 fresh, 0 km/h: stopped");
-        CHECK(car_stopped(1, 0, 1) == 0 && car_stopped(1, 0, 120) == 0, "1 km/h or more: moving");
-        CHECK(car_stopped(1, TMO_ICU_SENSORS + 1, 0) == 0, "0x200 stale (older than TMO_ICU_SENSORS): NOT stopped");
-        CHECK(car_stopped(0, 0, 0) == 0, "no 0x200 since boot: NOT stopped");
+        CHECK(car_stopped(1, 0, 0, 1, KEY_RUN) == 1 && car_stopped(1, TMO_ICU_SENSORS, 0, 1, KEY_RUN) == 1, "0x200 fresh, 0 km/h: stopped");
+        CHECK(car_stopped(1, 0, 1, 1, KEY_RUN) == 0 && car_stopped(1, 0, 120, 1, KEY_RUN) == 0, "1 km/h or more: moving");
+        CHECK(car_stopped(1, TMO_ICU_SENSORS + 1, 0, 1, KEY_RUN) == 0, "0x200 stale (older than TMO_ICU_SENSORS): NOT stopped");
+        CHECK(car_stopped(0, 0, 0, 1, KEY_RUN) == 0, "no 0x200 since boot: NOT stopped");
+
+        /* D-484 (block 01.35 (b)): with no speed to see, the key OFF on a live PMU counts as standing */
+        CHECK(car_stopped(0, 0, 0, 1, KEY_OFF) == 1, "no 0x200 (the ICU dark), PMU alive, key OFF: stopped - a key-off release");
+        CHECK(car_stopped(1, TMO_ICU_SENSORS + 1, 0, 1, KEY_OFF) == 1, "0x200 stale, PMU alive, key OFF: stopped");
+        CHECK(car_stopped(0, 0, 0, 0, KEY_OFF) == 0, "key OFF but the PMU not alive (0x100 stale or unseen): NOT stopped");
+        CHECK(car_stopped(0, 0, 0, 1, KEY_ACC) == 0 && car_stopped(0, 0, 0, 1, KEY_RUN) == 0 && car_stopped(0, 0, 0, 1, KEY_START) == 0,
+              "key ACC / RUN / START with no speed to see: NOT stopped");
+        CHECK(car_stopped(0, 0, 0, 1, KEY_FAULT) == 0, "a key-ladder fault is not OFF: NOT stopped");
+        CHECK(car_stopped(1, 0, 30, 1, KEY_OFF) == 0, "a visible speed over 0 rules even with the key reading OFF: moving");
+        CHECK(car_stopped(1, 0, 0, 0, KEY_FAULT) == 1, "a visible 0 km/h rules whatever the PMU says: stopped");
 
         memset(&p, 0, sizeof p); t = 80000;
         CHECK(p.stopped == 0, "a fresh panel_t refuses: stopped resets to 0");
-        p.stopped = car_stopped(1, 0, 30);                                  /* moving */
+        p.stopped = car_stopped(1, 0, 30, 1, KEY_RUN);                                  /* moving */
         for (int i = 0; i < 6; i++, t += 5) panel_keys_step(&p, PK_HATCH, 1, t, &down, &held);
         CHECK(p.rel_sel == 0 && !(down & PK_HATCH), "moving: hatch refused - no select, nothing on 0x400");
-        p.stopped = car_stopped(1, 0, 0);
+        p.stopped = car_stopped(1, 0, 0, 1, KEY_RUN);
         for (int i = 0; i < 6; i++, t += 5) panel_keys_step(&p, PK_HATCH, 1, t, &down, &held);
         CHECK(p.rel_sel == 0 && !(down & PK_HATCH), "stopped while the refused key is held: still refused until let go");
         for (int i = 0; i < 6; i++, t += 5) panel_keys_step(&p, 0, 1, t, &down, &held);
@@ -365,7 +375,7 @@ int main() {
         CHECK(p.rel_sel == PK_HATCH && (down & PK_HATCH), "let go, pressed stopped: K3 selected, the edge goes");
 
         memset(&p, 0, sizeof p); t = 90000;
-        p.stopped = car_stopped(1, TMO_ICU_SENSORS + 50, 0);                /* stale */
+        p.stopped = car_stopped(1, TMO_ICU_SENSORS + 50, 0, 1, KEY_RUN);                /* stale */
         for (int i = 0; i < 6; i++, t += 5) panel_keys_step(&p, PK_FUEL_DOOR, 1, t, &down, &held);
         CHECK(p.rel_sel == 0 && !(down & PK_FUEL_DOOR), "0x200 stale: fuel door refused");
 

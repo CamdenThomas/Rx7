@@ -38,8 +38,9 @@ firmware/
 │   ├── climate.h            HVAC servos, comfort channels, seat interlock, climate memory
 │   ├── panel.h              key matrix, 0x400, wake, release select, knobs, windows, mirrors (F-017).
 │   │                        A release only with the car stopped - 0x200's road speed 0 in a frame
-│   │                        no older than TMO_ICU_SENSORS, stale is moving - and the select dropped
-│   │                        1.5 s after it is raised, key held or not (D-465)
+│   │                        no older than TMO_ICU_SENSORS, or, with no speed to see, the key OFF
+│   │                        on a live PMU (D-484) - and the select dropped 1.5 s after it is
+│   │                        raised, key held or not (D-465)
 │   ├── pins.h               the pin map - dcu_channels.teensy_pin, every edge pin and expander port (D-452)
 │   ├── tca9539.h            the TCA9539-Q1 on Wire: the DRV8962, DEN / DSEL, CAN STB held low, the fault clear
 │   ├── can_map.h            a copy of icu/can_map.h - never edited here
@@ -222,8 +223,10 @@ With the PMU simulator, the ICU can be developed and demonstrated
                                     stands in for a sender
 ```
 
-**The DCU on this bench refuses every hatch and fuel-door release** (D-465): it needs a fresh
-0x200 reading 0 km/h, and nothing sends 0x200 yet - not `icu.ino`, not `pmu_sim`.
+**The DCU on this bench refuses every hatch and fuel-door release with the key on** (D-465): it
+needs a fresh 0x200 reading 0 km/h, and nothing sends 0x200 yet - not `icu.ino`, not `pmu_sim`.
+With `pmu_sim` reporting the key OFF it allows them (D-484), which is the key-off case, not a
+stand-in for the speed.
 
 **What that covers:** the CAN receive path, message dispatch, timeout and
 blanking, the diagnostics page, `stats.h` accumulation, the RPM capture path,

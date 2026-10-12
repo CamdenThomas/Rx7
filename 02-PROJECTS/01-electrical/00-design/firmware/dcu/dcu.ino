@@ -304,8 +304,9 @@ void loop() {
 
     /* panel: keys, then the release select, THEN 0x400 - K3/K4 are grounded
      * before the PMU can see the edge (D-370); only with the car stopped, and
-     * never longer than RELEASE_HOLD_MS (D-465). A stale 0x200 is not stopped. */
-    panel.stopped = car_stopped(seen_200, now - last_rx_200, speed_kph);
+     * never longer than RELEASE_HOLD_MS (D-465). A stale 0x200 is not stopped,
+     * unless the PMU is up and says the key is OFF (D-484: a key-off release). */
+    panel.stopped = car_stopped(seen_200, now - last_rx_200, speed_kph, dcu.pmu_alive, dcu.key_pos);
     uint16_t down, held;
     uint16_t pressed = panel_keys_step(&panel, scan_matrix(), dcu.pmu_alive, now, &down, &held);
     if (pressed) last_activity = now;

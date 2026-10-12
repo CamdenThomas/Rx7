@@ -81,12 +81,20 @@ typedef struct {
                                    * 0 - the reset value - refuses every release */
 } panel_t;
 
-/* The car is stopped (D-465): the ICU's road speed, 0x200 byte 6, reads 0 km/h in a
- * frame no older than TMO_ICU_SENSORS. No frame yet, or a stale one, is NOT stopped:
- * a release is refused when the DCU cannot see the speed. */
-static inline uint8_t car_stopped(uint8_t seen_200, uint32_t age_ms, uint8_t speed_kph)
+/* The car is stopped (D-465, D-484). The speed rules when it can be seen: the ICU's
+ * road speed, 0x200 byte 6, in a frame no older than TMO_ICU_SENSORS, reads 0 km/h.
+ * When it cannot - no 0x200 yet, or a stale one - the key being OFF counts as
+ * standing (block 01.35 (b)): the PMU's state, 0x100 byte 0, reads KEY_OFF and the
+ * PMU is alive (pmu_alive: its counter advancing, zeroed by the host after
+ * TMO_PMU_STATE). The ICU is on the accessory feed and dark with the key off, so
+ * this is the only way a key-off release (D-354) can happen. Neither frame fresh
+ * is NOT stopped; a key fault (KEY_FAULT) is not OFF; a visible speed over 0 is
+ * moving whatever the key reads (coasting with the key turned off). */
+static inline uint8_t car_stopped(uint8_t seen_200, uint32_t age_200_ms, uint8_t speed_kph,
+                                  uint8_t pmu_alive, uint8_t key_pos)
 {
-    return (uint8_t)(seen_200 && age_ms <= TMO_ICU_SENSORS && speed_kph == 0);
+    if (seen_200 && age_200_ms <= TMO_ICU_SENSORS) return (uint8_t)(speed_kph == 0);
+    return (uint8_t)(pmu_alive && key_pos == KEY_OFF);
 }
 
 /* Debounce one scan. raw: PK_* bits read this scan (matrix + thumbstick
