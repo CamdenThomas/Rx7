@@ -1,0 +1,22 @@
+id,system,title,date,status,supersedes,superseded_by,closes,also,body
+D-477,scope,"Open the CAD project: a complete part-by-part model of the car, shown in the app's Manual",2026-10-11,standing,,,,,"**A new project, `02-PROJECTS/05-cad`, owns building one complete model of the car that can be assembled part by part, with every dimension's origin stated, and handing it to the app's Manual for service visuals and interactive views of the car and its systems.** Phase PROPOSED.
+
+His words (chat, 2026-10-11): ""will you add a new porject named 05-CAD, with the end goal of haveing a full complete part by part assemblable model of the rx7. this perfect mathmatically dialed realistic model should then be facored into the app manual for real visuals of service or just interactive views of the car and its systems.""
+
+Readings taken:
+- ""05-CAD"": the directory is `05-cad`, lower case like its four siblings; the title in the app is CAD.
+- ""perfect mathmatically dialed realistic"": every governing dimension of every part carries where it came from - measured on this car, a factory figure, or a found model - and one that has not been measured carries `confirm` (R11). The model is as true as its measurements and never becomes a source of facts about the car: where a measured number and the model disagree, the model is wrong.
+- ""part by part assemblable"": one modelled part per 00-CAR `parts` row, each its own solid, put together by its mates and fasteners, so any part can be shown alone, in place, or coming off.
+- ""facored into the app manual"": the model and its export are this project's; showing it is the app's own work and stays in 02-APP (D-428), as row MG1 gated on this project's hand-over row C01.
+
+Boundary, read from the record before opening:
+- 01-REFERENCE keeps what was found, not made: table `cad` (900 free models, scans and drawings, the files out of git) and the one combined model of D-418 (`blend`, seven pieces: an FB shell scaled from a 3D Warehouse model to the factory length, a 12A assembled from a 13B-REW working model, wheels from the specs, the scanned tail lamps, and the SA and LS3 overlays). This project uses those as starting shapes and as checks, and does not catalogue them again. What it models itself is its own, in its own tables (work row A03).
+- 00-CAR `parts` (975 rows), `systems` (14) and `zones` (9) are the list the model follows. `parts.model_at_mm` and `zones.model_box_mm` (D-421) stay 00-CAR's and are filled from this model once it exists.
+- 02-APP already shows renders and a turnable view of the combined model (D-415, D-420, D-421). Those stand until MG1 replaces them.
+- The frame is D-418's: millimetres, x to the car's right, y forward, z up, ground z = 0, front axle y = 0.
+- Files: the scripts that build the model go in git; the model files and anything made from a found model stay out of git as D-418's do, while 01-REFERENCE block REF.01 (what the public repository may carry) and 02-APP row P55 (a second home for the model library) are open. Neither is asked again here.
+- Machines: the Mac holds FreeCAD and 45 MB of the model library; Blender and the other 3.4 GB are on the Fedora PC (`rx7.py doc machine`).
+
+Not done: no 00-CAR `planned` row, because the model changes nothing on the car.
+
+Consequences in the data: the area with the standard tables; opening blocks 05.01 (does he work in the model himself), 05.02 (how far inside a part the model goes), 05.03 (how real measurements get in); work A01-A05, B01-B02, C01; 02-APP work MG1."
