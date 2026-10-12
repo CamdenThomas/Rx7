@@ -6,6 +6,11 @@ project is for and what it may claim. The panel's design is `../../../data/panel
 
 ## Where it stands
 
+**D-479 (2026-10-11): this board is the face of the climate control unit**, in one enclosure with the
+DCU carrier behind it; the ribbon between them is a few centimetres, inside the box. `Y14` replaces the
+tray in `enclosure/` with the unit's enclosure. Camden's panel concept (ideas I-001 to I-006) is not
+ruled yet, so the control set below still stands.
+
 **The schematic is drawn and ERC is clean** (rev 0.03, 2026-10-09). It has nine keys on a 3 × 3
 matrix, with one 1N4148W per key, anode toward the column. A row driven low pulls its column low
 through the diode, so any combination reads true and a press with every row held low wakes the

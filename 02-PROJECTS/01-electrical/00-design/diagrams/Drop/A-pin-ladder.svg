@@ -231,7 +231,7 @@
 <rect x="720.0" y="1045.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="730.0" y="1063.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ICU tail B (D-270) — the display draws it</text>
 <rect x="30.0" y="1112.0" width="360.0" height="346.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-<text x="42.0" y="1134.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">DP-DCU  ·  DT06-6S  ·  DCU enclosure wall, centre stack</text>
+<text x="42.0" y="1134.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">DP-DCU  ·  DT06-6S  ·  Climate unit rear wall, centre stack</text>
 <line x1="30" y1="1146.0" x2="390" y2="1146.0" stroke="#d0d7de"/>
 <circle cx="50" cy="1176.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="1180.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
@@ -302,7 +302,7 @@
 <text x="730.0" y="1432.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the car asleep; the seventh diode-OR input on the wake strip (D-350). This was the housing's last</text>
 <text x="730.0" y="1448.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">spare cavity</text>
 <rect x="30.0" y="1494.0" width="360.0" height="532.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-<text x="42.0" y="1516.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">DP-DCU-B  ·  DT06-12S  ·  DCU enclosure wall, centre stack</text>
+<text x="42.0" y="1516.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">DP-DCU-B  ·  DT06-12S  ·  Climate unit rear wall, centre stack</text>
 <line x1="30" y1="1528.0" x2="390" y2="1528.0" stroke="#d0d7de"/>
 <circle cx="50" cy="1550.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="1554.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
@@ -429,7 +429,7 @@
 <text x="406.0" y="2013.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
 <text x="730.0" y="2013.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 - spare</text>
 <rect x="30.0" y="2062.0" width="360.0" height="356.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-<text x="42.0" y="2084.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">DP-DCU-C  ·  DT06-8S  ·  DCU enclosure wall, centre stack</text>
+<text x="42.0" y="2084.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">DP-DCU-C  ·  DT06-8S  ·  Climate unit rear wall, centre stack</text>
 <line x1="30" y1="2096.0" x2="390" y2="2096.0" stroke="#d0d7de"/>
 <circle cx="50" cy="2118.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="2122.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>

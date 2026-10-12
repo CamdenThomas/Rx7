@@ -1330,3 +1330,24 @@ What is not known yet:
 - Where the raw logs live: too large for git and the repository is public, so they stay on the device that pulled them until BL3 names their home (with 02-APP P55's second home).
 
 Scope (R10): the ICU's side - the log format, the link, the firmware, the bench proof - is this project's, rows BT1-BT5. The app's side is 02-APP's (D-428), rows BL1-BL4, gated on these across areas."
+D-479,Architecture and scope,"The climate control is one sealed unit like a stereo head unit: the dials on its face, the DCU inside, only sealed connector halves outside",2026-10-11,standing,,,,03-luxury:D-362 · 03-luxury:D-355 · D-380 · D-458 · D-459,"**The climate control is one self-contained unit, built like a stereo head unit: the faceplate with its dials on the front, the DCU inside the same box, and nothing on the outside but sealed connector halves.**
+
+His words (chat, 2026-10-11, after the fifth pass of the panel sketch): ""this looks really good, we will keeo playing with it but for now we need to factor that into the dcu blackbox. i want the ac contol (dcu) to be like a stearo headunit part that is a contained dialed unit that just has sealed connectors halves. the dcu should be inside this box""
+
+**What it rules.**
+
+- **One box.** The control panel's board (D-459) and the DCU carrier (H-002) share one enclosure, with the faceplate as its front. Until now the DCU sat in a box of its own behind the centre stack, with the panel a separate board in front of it on a ribbon (luxury D-355 and D-362, D-380).
+- **The ribbon is inside.** The 26 ways of panel_ribbon (D-380, D-458) no longer leave an enclosure: no notch, no foam seal, a few centimetres of cable.
+- **No grommets.** Luxury D-362 let the servo leads, the blower final stage's lead, the cabin sensor and the panel ribbon leave through grommets. That one line is taken back: every conductor that leaves the unit does so on a sealed connector half in its wall. The rest of D-362 stands - the DT13 flanged receptacles, the harness on DT06 plug tails, and DP-DCU, DP-DCU-B and DP-DCU-C exactly as they are.
+- **Where it sits.** In the centre-stack opening where the factory climate controls are (V-113), as one part that comes out in one pull - not behind the stack at the HVAC case.
+
+**What stands.** The control set, its electronics and its lights (D-380, D-458, D-459), the firmware's behaviour (D-442, D-465), every cavity of DP-DCU, DP-DCU-B and DP-DCU-C, and the carrier's circuits (dcu_channels). His panel sketch (ideas I-001 to I-006) is still a concept - ""we will keep playing with it"" - and the unit is the same whichever control set its face carries.
+
+**What follows, done with this decision.** modules DCU and PANEL, devices DV53, DV54, DV55 and DV59, housings DP-DCU / -B / -C (where), dcu_channels SN11 / SN14 / SN15, parts P152 (one enclosure for both boards), P157 (a short ribbon inside), P172 and P183, and the rows V-102, V-113, E26, H-002 and H-008 say so. Nothing is bought differently yet.
+
+**What it opens.**
+
+- **A sealed half for the leads that used grommets.** Nine conductors: three servo signals with their 5 V and ground, the blower duty and its ground, the cabin sensor's pair. The carrier's connector edge is full: the three DT13 courtyards are 60.3 + 56.1 + 44.1 = 160.5 mm of a 165 mm edge (the carrier's README), and a fourth 12-way is another 60.3 mm. Where it goes changes the unit's size or what the existing plugs carry, so it is his: block 01.37. Y13 (the connector and its rows) and Y14 (the unit's enclosure) wait on it.
+- **The left-of-wheel plate.** If I-002's plate is built, its two releases and the mirror stick reach the unit the same way, about eleven conductors: one more sealed half, placed the way 01.37 is answered, and not provided for yet.
+- **The DNP provisions.** J11 (A/C pressure, engine block 02.15) and J12 (radar alert, luxury 03.12) are leads too; whichever is fitted takes cavities on the same half.
+- **Fit.** Nothing behind the centre stack is measured (R11, D-455). Summed by hand from Y7's provisional envelopes, the unit is about 206 x 76 x 120 mm with today's two boards (the panel board is drawn 200 x 70) and about 190 x 60 x 120 mm on the sketch's 180 x 60 face, before the mated plugs - confirm. D-362's flip condition stands and now covers the whole unit: if V-102 and V-113 show it cannot go in, it comes back as a block."
