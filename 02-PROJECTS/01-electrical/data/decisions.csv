@@ -1385,3 +1385,12 @@ Nobody was asked: this is a reading of D-480's own words against what the mock-u
 **What would flip it.** V-113 or V-102 showing the opening cannot be about 188 x 93 mm, or that there is not about 203 mm behind it: then it comes back as a block (D-362's flip condition, D-479). Or his word that the face stays low: the mock-up builds the stepped unit from one number (`FACE_H`), with the report saying `front install: no`.
 
 **In the data.** work Y14 done, V-102 and V-113 (what to measure for), and the `climate-unit` row of the CAD folder's README."
+D-482,,Pop-up relays K1 / K2 are commanded up by the headlamp outputs O2 and O3 through diodes,2026-10-12,standing,,,01.31,,"**The pop-up relays K1 / K2 are told ""up"" by the two headlamp outputs, O2 (low) and O3 (high), each through a diode into both coil feeds at the dash node (1N5819, about $1). The lamps are up whenever a beam is lit and down when both are off.**
+
+His answer to block 01.31 (""Which signal should switch the pop-up relays K1 / K2 to 'up', now that their coils must come off O1?""): option (a), unqualified, no words added:
+
+> (a) The two headlamp outputs O2 (low) and O3 (high) through a pair of diodes into both coils, at the dash node: about $1. The lamps are up whenever a beam is lit and down when both are off. A wink with the lights off lights the low beam for the moment the lamp is up (the PMU raises O2 with O1); the lamp that stays down is lit inside its bucket, which is harmless. Forecloses nothing.
+
+Reasoning: D-460 drives the pop-ups the Mazda way (O1 on WR, K1 / K2 steering 12 V to R or RY); that only works if the coils follow ""lamps should be up"", not O1. No PMU output is free, so the signal is one that already exists; the diodes stop O2 and O3 back-feeding each other. A held wink still opens the other side's coil return (N10 / N11), so only the winked lamp rises. Relays, leg and O1 are unchanged.
+
+Consequences in the data: N09 is re-sourced (O2 and O3 taps through the diodes, not the O1 splice; coil return and wink switches unchanged); K1 / K2 c86 say so; pins O2 / O3 carry the tap; rule pop-up-cycle names the coil signal; P071 gains two diodes. R-APPLY-01.16 stays open: block 01.32 (room in the L2 leg) still gates the N12-N15 cavities, the ladders and the transit terms. Supersedes nothing; answers D-460's open question."
