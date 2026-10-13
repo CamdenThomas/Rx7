@@ -459,3 +459,20 @@ His answer, verbatim: PK035 ""yes"". The pick asked: ""Yes only if about USD 8,0
 - Still to confirm before money (R11): Recaro installation sheet (voltage, constant vs switched feed, heater/fan/motor currents), climate package standard on this trim, switch-pack enable by ground; on the car, floor width and four seat-bolt positions, width over bolsters vs tunnel-to-sill, headroom with base lowest, US price and lead time. The rail-to-FB adapter is fabricated.
 
 Consequences: LP52 spec names the product, status chosen. PK036 (Lexus IS pair) stays reserve. LP30 / LP31 are replaced by LP52 once the seat fits, per the LP52 note."
+D-531,,"Rear side-marker and dome/luggage LED bulbs: Diode Dynamics 194 HP5 red, 31 mm HP6 warm white (PK025, PK029)",2026-10-13,standing,,,,,"**Two LED bulbs chosen from Diode Dynamics: 194 HP5 red for the rear side markers (PK025, LP54, lamp LA05) and 31 mm HP6 warm white festoon for the dome and luggage lights (PK029, LP43, LA10 and LA12).**
+
+His answers, verbatim: PK025 ""yes""; PK029 ""yes"". The picks asked: PK025 ""The same bulb as the front markers in red"" (DD0030P pair, USD 25); PK029 ""Yes, once the lengths are read"" (DD0351S single, qty 2, USD 13).
+
+- PK025: 194 (T10 wedge) confirmed, nonpolar; red lumens not published.
+- PK029: 31 mm festoon, 130 lm, 0.095 A, nonpolar. Still to confirm (R11): each festoon length (V-067), flicker on the interior fade; 36 and 41 mm exist if the measured length differs.
+- LP54 and LP43 each still have another proposed pick open (PK027 licence plate; PK031 glove box and key ring), so the parts rows stay est until those are answered; their spec names the chosen products.
+
+Consequences: PK025 and PK029 accepted; reserves PK026 and PK030 stay reserve."
+D-532,,Glove box and key-ring LED bulbs: Diode Dynamics 194 HP3 warm white (PK031),2026-10-13,standing,,,,,"**Glove box and key-cylinder ring bulbs chosen: Diode Dynamics 194 HP3 warm white, one pair (PK031, LP43, lamps LA13 and LA14).**
+
+His answer, verbatim: PK031 ""yes"". The pick asked: ""Yes, conditional on both reading as 194 wedges"" (DD0020P pair, USD 15, 56 lm, 0.035 A, nonpolar).
+
+- Still to confirm (R11): both bases are uncertain, 3.4 W is usually a 194/158 wedge but may be BA9s (V-067); the new ignition switch may not have the key ring at all. If a base reads otherwise the pick is re-opened, not bought.
+- With PK025 and PK029 (D-531) the interior row LP43 has all its picks answered.
+
+Consequences: PK031 accepted; reserve PK032 stays reserve; LP43 spec names it."
