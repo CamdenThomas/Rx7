@@ -1523,3 +1523,17 @@ His words (chat, 2026-10-13): ""i made two new directories to improve naming and
 **Names and identifiers.** In prose the modules are the Control Unit (CU) and the Display Unit (DU) from now on; the `modules` rows say so. Their identifiers - the module ids DCU and ICU, the tables dcu_channels and icu_channels, the housings DP-DCU-* and DP-ICU-*, the sketch and project names - are kept, as a part number outlives a part's name: they are printed in decisions that are never edited, on labels the harness will carry, and in the firmware's macros, and renaming them is a separate job with its own risks. If he wants the identifiers renamed too, that is one ruling away and a day's careful work; nothing here closes it off.
 
 **In the data.** modules DCU and ICU (names); the work and log cells that cited the old paths; the folders, their READMEs, the scripts' paths, .gitignore and the check script (one run end to end proves the move)."
+D-497,Architecture and scope,"The design folder is three parts and two shared folders: control-unit, display-unit and pmu, with tools and tests beside them; no top-level cad or firmware",2026-10-13,standing,,,,D-496,"**The design folder is three parts and two shared folders: `control-unit/`, `display-unit/` and `pmu/`, each with its own `cad/` and `firmware/` as it has them; `tools/` for what every board uses (the schematic check, the enclosure library and extractor, the pin tables, the PCB guide); `tests/` for the host suites and `run.sh`, which test every unit together. No `cad/` and no `firmware/` at the top any more; one fence, `00-design/README.md`.**
+
+His words (chat, 2026-10-13): ""what are the remaining things in cad and firmware in the 00-design. i made a pmu folder as the last missing part to pick up firmwhere but what are the py files in cad and where can they live that makes more sense?"" - and D-496 the day before, which split the files by unit.
+
+**What goes where, and why.**
+- `tools/`: check.py holds every schematic against the record; enclosure_lib.py and enclosure_extract.py serve every board's enclosure script and both unit mock-ups; pin_tables.csv is the datasheet pin tables the check reads; the PCB-and-3D guide is how any board is drawn. None of them is a drawing of one unit.
+- `tests/`: run.sh and the six suites test the control unit, the display unit, the PMU simulator and the CAN map in one run; they are nobody's alone.
+- `pmu/firmware/`: pmu_sim, the Teensy that stands in for the PMU on the bench, and ladder_decode_test, which proves the PMU's ladder windows; the PMU itself runs ECUMaster's firmware, so what will join them is its client project - the channels and logic the record derives - once F-009 proves the export.
+- `display-unit/firmware/`: gains tach_simulator, the pulse source that tests the display unit's RPM input.
+- The two READMEs that fenced `cad/` and `firmware/` become one at `00-design/README.md`; what was only about the tests goes to `tests/README.md`.
+
+**Supersedes nothing in substance:** D-496's split by unit stands; its two shared folders are renamed and tidied by this. Identifiers, project names and sketch names are unchanged, as D-496 left them.
+
+**In the data.** work X-007 (its render script's path); the folders and every path the move touches, proved by run.sh end to end."
