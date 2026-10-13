@@ -1552,3 +1552,14 @@ Consequences in the data:
 - The Amazon cart loses the P083 line (12 USD estimate) - re-read the total when the cart is edited.
 
 Supersedes nothing: it settles which part DV24 is, left open by D-492."
+D-504,Architecture and scope,"The wink lead ends on its own 4-way header J2 on the plate board, pins 1-4 = L3-S1 9, 10, 11 and the commons; J1 stays DP-DCU-E's twelve (Y22)",2026-10-13,standing,,,,D-499 · D-492 · D-189 · D-482,"**The three wink lines and the commons leave the plate board on their own 4-way header, J2, on the lead to the dash post - not on J1. J1 stays the cable to DP-DCU-E, twelve ways, pin for pin, as D-492 drew it.**
+
+D-499's consequence in DV24 read ""the three wink wires end on its 12-way header (J1)"". That cannot be: DP-DCU-E's twelve cavities are all taken (ROW1, COL2, COL3, the stick's five, the I2C pair, GND, +5V_PNL), and J1's cable runs to the climate unit, where the wink lines have no path - they are the PMU's, hardwired through the plate to the dash post (modules PANEL, DV62, L3-S1 9 / 10 / 11, D-189, D-482). His words in 01.38 (b) say only ""end on a header on the plate board"", which a second header satisfies. Small by §3: it moves no money and no wire's destination; it says which header.
+
+The header, as the plate's generator draws it (Y22):
+- J2 pin 1 = wink L NC → L3-S1 9; pin 2 = wink R NC → L3-S1 10; pin 3 = the request node, wink L NO through 18 kΩ and wink R NO through 33 kΩ joined on the board → L3-S1 11; pin 4 = both commons → dash ground (G20). Four conductors on the lead, the lead's run unmeasured (R11, confirm).
+- The commons are their own net, never the plate's GND: the winks return to the dash post as today and the plate's electronics on DP-DCU-E 8 and 11 (DV62, D-458's rule of separate returns).
+- The 18 k and 33 k sit on the plate board (D-499), 0603 1 %, beside their switches. P204's footprint is a placeholder until the part is chosen (symbol pins 1 NC, 2 common, 3 NO - confirm against the part).
+- JST XH 4-way, locking, as the header - housing and crimps confirm; the harness end of the lead is unchanged.
+
+In the data: DV24 ident (J1 → J2), DV62 terminals, cavities L3-S1 9 / 10 / 11 lands_on name J2's pin. Supersedes nothing: D-499 stands; this names the header its consequence left unnamed."
