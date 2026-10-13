@@ -166,7 +166,7 @@ relays,c87a,str,no,,
 relays,state,enum(LIVE|SPARE),no,,
 relays,label,str,no,,
 retired,term,key,yes,,
-retired,retired_by,id,no,,
+retired,retired_by,str,no,,"a decision id or the block that replaced it (CLAUDE.md §4, del --replaced-by); was `id` and refused block ids - widened 2026-10-13 to match every other area"
 retired,note,str,no,,
 rules,id,key,yes,,
 rules,rule,str,no,,

@@ -132,3 +132,5 @@ L-0120,2026-10-13,clean,D-505 Y23,Y23 added for 02-APP D-505: the design exporte
 L-0121,2026-10-13,session,D-505 D-499 D-504 Y22 Y23,Y23 done - the design exported as glTF with scene.json for the app (D-505); Y22 done - the left plate regenerated for D-499 / D-504 with the wink check; the plate re-exported
 L-0122,2026-10-13,clean,D-514 Y24 Y25 Y26 Y27,"D-514: the harness in CAD - Y24 connectors, Y25 the CUR, Y26 scene v2, Y27 his TE downloads; 02-APP M3D2; blocks 01.39 (moving parts in the app) and 01.40 (the CUR's rear connection) raised"
 L-0123,2026-10-13,clean,D-515 Y28 Y24,D-515: models searched online before drawing; Y28 added for the devices and common parts; Y24 notes to search first
+L-0124,2026-10-13,clean,D-514,"Block 01.40 replaced by 01.41: the CUR's two leads are sixteen lines, more than one DT13-12PA carries (the mock-up's check found it)"
+L-0125,2026-10-13,clean,D-514,"Block 01.40 replaced by 01.41: the CUR's two leads are sixteen lines, more than one DT13-12PA carries (the mock-up's check found it); retired.retired_by widened to str so a replacing block's id is accepted, as every other area declares it"
