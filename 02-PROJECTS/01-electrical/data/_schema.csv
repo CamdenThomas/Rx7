@@ -307,7 +307,7 @@ log_channels,encoding,str,no,,
 log_channels,note,text,no,,
 log_link,id,key,yes,,
 log_link,item,str,no,,"a characteristic, an opcode on the control characteristic, or a UART frame type"
-log_link,side,enum(ble|uart),no,,ble = between the phone and the C3; uart = between the C3 and the Teensy
+log_link,side,enum(ble|uart|both),no,,"ble = between the phone and the C3; uart = between the C3 and the Teensy; both = a rule that spans the link (widened 2026-10-12 for the timing row)"
 log_link,direction,str,no,,
 log_link,payload,text,no,,"every byte, little-endian; strings are UTF-8 with a length byte"
 log_link,note,text,no,,
