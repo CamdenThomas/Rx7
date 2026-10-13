@@ -46,3 +46,12 @@ work,choices,str,no,,"for reply=choice: the choices, separated by |"
 work,unit,str,no,,for reply=value: the unit the value is in
 work,result,str,no,,"his answer as rx7.py apply set it: done, the value (in unit), or the choice (2026-09-26, plan P07)"
 work,settles,str,no,,"rows his answer flips, as <area>:<table>:<key> separated by spaces; blank means the PT ids named in item (2026-09-26, plan P07)"
+datums,id,key,yes,,
+datums,datum,str,yes,,what point or distance
+datums,x_mm,str,no,,in the frame: x to the right of the centreline; ± for a left-right pair; blank when the record cannot fix it
+datums,y_mm,str,no,,y forward of the front axle (negative is rearward)
+datums,z_mm,str,no,,z above the ground
+datums,value,str,no,,the figure as the source gives it
+datums,source,str,no,,"the specs row and page, or the decision"
+datums,confidence,enum(primary|secondary|unverified|derived),no,,as specs.confidence; derived = arithmetic on primary figures
+datums,note,text,no,,

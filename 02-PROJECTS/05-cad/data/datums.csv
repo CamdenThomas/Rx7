@@ -1,0 +1,16 @@
+id,datum,x_mm,y_mm,z_mm,value,source,confidence,note
+DT01,Frame origin and axes,0,0,0,"mm; x right, y forward, z up; ground z 0; front axle y 0","D-418, D-477",primary,The one frame every part is placed in. The car's centreline is x 0
+DT02,Front wheel centres,±710,0,294.5 (confirm),track 55.9 in = 1419.9 mm; tyre 185/70R13 on 5J x 13,"SP-132 (S-004 p.14); SP-128, SP-126; blend wheels",derived,z is the unloaded tyre radius the combined model used (589 mm diameter derived from the tyre size); loaded it is less - confirm with the ride height
+DT03,Rear wheel centres,±699.8,-2420,294.5 (confirm),wheelbase 95.3 in (2420 mm); track 55.1 in = 1399.5 mm,"SP-131 (S-004 p.14, S-003 T:7); SP-132",derived,
+DT04,Overall length,,front overhang to rear overhang: 4320.5 in all,,170.1 in = 4320.5 mm,SP-133 (S-004 p.15),primary,The split of 4320.5 - 2420 = 1900.5 mm of overhang between front and rear is not in the record: confirm from the body checking pages (S-002 p.14-24) or the car
+DT05,Overall width,±834.4,confirm,,65.7 in = 1668.8 mm,SP-134 (S-004 p.15),primary,Where along the car the widest point is (the door skins or the arches) is not in the record
+DT06,Overall height,,,1259.8,"49.6 in = 1259.8 mm, unladen",SP-135 (S-004 p.15),primary,The roof's highest point at the design ride height; confirm where along y
+DT07,Ground clearance,,,144.8 (the lowest point),5.7 in = 144.8 mm,SP-136 (S-004 p.15),primary,Which point is lowest is not in the record
+DT08,"Ride height reference, 1980 spec",,,"front 364 ± 20, rear 358 ± 20 above the ground",ground to the wheel-arch reference,SP-106 (S-003 T:7),primary,Where on the arch the reference point is (S-003's figure) - confirm; this is the datum that loads DT02 / DT03's z
+DT09,Underbody datum line,,,confirm,the horizontal reference of the body checking dimensions,S-002 p.14-24 (SP-239),primary,Its height above the ground is not in the record; every underbody hole below is given relative to it
+DT10,Front frame basic holes A,±400,confirm,datum + 220,800 (31.50 in) apart left to right; 220 (8.66 in) above the datum line,"SP-234, SP-239 (S-002 p.14-24)",primary,The lengthwise position relative to the front axle is not in the record: confirm
+DT11,Rear frame basic holes B,±397.5,y of A minus 2250,confirm,795 (31.30 in) apart; 2250 (88.58 in) behind A,"SP-235, SP-236",primary,
+DT12,Rear frame holes C,±445,confirm,confirm,890 (35.04 in) apart,SP-237,primary,
+DT13,Rear upper arm fixing holes F,±524,confirm,confirm,1048 (41.26 in) apart,SP-238,primary,The rear suspension's upper arm pivots - a hard point for the whole rear axle
+DT14,Front fender fixing nuts,±662,confirm,confirm,1324 (52.13 in) apart,SP-239,primary,
+DT15,"Engine side reference l1, automatic",,"from the front frame basic hole: right 897, left 910",,"897 (35.32 in) right, 910 (35.83 in) left; lR 26.85 (1.06), lL 32.5 (1.28)",SP-240 (S-002 p.14-24),primary,"What l1 measures to (the engine mount holes, most likely) is confirm against the page; the left-right difference is the factory's"
