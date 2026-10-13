@@ -53,7 +53,7 @@ def placement():
         ("R3", k1, wy - 7.0, 0, "B"),                    # 18k, behind the wink left body
         ("R4", k2, wy - 7.0, 0, "B"),                    # 33k, behind the wink right body
         ("J1", G.J1_X, jy, 0, "B"),
-        ("J2", G.J2_X, 39.0, 90, "B"),                   # the wink lead's header, below J1 on the same edge
+        ("J2", G.J2_X, G.J2_Y, 0, "B"),                  # the wink lead's header, below J1 on the same edge
         ("U1", ux, uy, 90, "B"),
         ("C2", ux + 0.25, uy + 5.0, 0, "B"),            # 100 nF at VCC (pin 3, below)
         ("C1", ux + 0.25, uy + 7.0, 0, "B"),            # 1 uF
@@ -254,6 +254,10 @@ def pad_shape(pad, li):
         w, h = h, w
     if pad.GetShape(layer) == pcbnew.PAD_SHAPE_CIRCLE:
         return ("circ", cx, cy, w / 2)
+    if pad.GetShape(layer) == pcbnew.PAD_SHAPE_OVAL:    # a stadium: a rect's corners are not copper
+        if w >= h:                                      # (J2's JST pads, 1.7 x 2.0)
+            return ("seg", cx - (w - h) / 2, cy, cx + (w - h) / 2, cy, h / 2)
+        return ("seg", cx, cy - (h - w) / 2, cx, cy + (h - w) / 2, w / 2)
     return ("rect", cx, cy, w / 2, h / 2)
 
 

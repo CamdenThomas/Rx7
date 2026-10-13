@@ -5,7 +5,8 @@ Reads (never writes) the record's tables - these are the facts it holds the draw
   ../../data/icu_channels.csv   id, kind, at_the_drop, teensy_pin  (the ICU carrier, J5)
   ../../data/dcu_channels.csv   the same for the DCU carrier (J10, expander U12)
   ../../data/panel_ribbon.csv   pin, signal, panel_side             (DCU J4, the panel's J1, the upper board's J8)
-  ../../data/cavities.csv       housing, cav, state, src_note       (which board-edge pins must be wired, and where to)
+  ../../data/cavities.csv       housing, cav, state, src_note,      (which board-edge pins must be wired, and where to)
+                                circuit, lands_on                   (the left plate's wink lead, L3-S1 9-11)
 and this folder's pin_tables.csv (part, package, pin, name, source_url), the vendor pin tables
 of every IC whose symbol was drawn as a functional block.
 
@@ -35,7 +36,9 @@ s-expression itself (no packages beyond the standard library, Python 3.9) and ch
     carrier header's lead (J6-J8, J5, J3) pin for pin, or the panel_ribbon line, named as that line;
   * on the left plate (Y21, D-492), its cable header J1 against DP-DCU-E cavity by cavity, the keys
     the cavities name on their row and column through their diodes, the stick on panel_ribbon 1 and
-    17-20 (the push to GND), and the bus reaching the plate's LED driver.
+    17-20 (the push to GND), and the bus reaching the plate's LED driver; its wink lead J2 against the
+    L3-S1 cavities whose lands_on name it (D-499, D-504) - each NC pole and common on its pin, the
+    commons apart from the plate's GND, and the wink resistors at the values cavity 11 names.
 
 Exit codes: 0 everything matches; 1 any mismatch (each printed as
 `board:ref:pin expected X got Y`); 3 kicad-cli missing or a file unreadable. Notes (things
@@ -171,7 +174,9 @@ BOARDS = {
                          "DP-DCU-E": ("J2", "J8")}),
     # The left plate (Y21, D-492): J1 its cable header, DP-DCU-E pin for pin; the keys a DP-DCU-E
     # cavity names, on their rows and columns through their diodes; the stick on panel_ribbon 1, 17-20.
-    "left-plate": dict(sch="control-unit/cad/left-plate/left-plate.kicad_sch", plate_board=("DP-DCU-E", "J1")),
+    # Its winks (Y22, D-499, D-504): J2 the wink lead, held to the L3-S1 cavities whose lands_on name it.
+    "left-plate": dict(sch="control-unit/cad/left-plate/left-plate.kicad_sch", plate_board=("DP-DCU-E", "J1"),
+                       winks=("L3-S1", "J2")),
 }
 
 # Symbol pin names and datasheet pin names that mean the same pin.
@@ -976,7 +981,7 @@ def check_plate_board(rep, nl, cfg, cavities, ribbon):
     'keys:' line puts it and the column its cavity carries, both on the header, and no other key on the
     board. Its stick: the pins panel_ribbon gives the thumbstick on the plate (X / Y wiper, the push to
     GND, the pot supply, the pot ground) on those lines. Its lights: the bus lines reach a driver's SDA /
-    SCL. The wink switches have no lines here (DV24, hardwired to the PMU)."""
+    SCL. The wink switches are check_winks' (J2, D-504)."""
     housing, conn = cfg["plate_board"]
     signal = {r["pin"]: r["signal"] for r in ribbon}
     rows = sorted((c for c in cavities if c["housing"] == housing), key=lambda c: int(c["cav"]))
@@ -1088,6 +1093,118 @@ def check_plate_board(rep, nl, cfg, cavities, ribbon):
             rep.ok("%s reaches %s.%s" % (sig, hits[0], pname))
         else:
             rep.bad("-", sig, "the plate's LED driver %s" % pname, "nothing")
+
+
+# The wink switches' contacts, as KiCad's SW_Push_SPDT draws them: the pole B rests on A (NC), C is NO.
+SPDT_ROLE = {"NC": "A", "common": "B", "NO": "C"}
+_HDR_PIN = re.compile(r"\b(J\d+) pin (\d+)\b")
+_WINK_SIDE = re.compile(r"\bwink\s+(left|right|l|r)\b", re.I)
+_WINK_RES = re.compile(r"\bwink\s+(left|right|l|r)\s+NO\s+through\s+(\d+(?:\.\d+)?)\s*([kM]?)\s*(?:Ω|ohm)", re.I)
+
+
+def ohms(text):
+    """'18k', '18 kΩ', '4.7k', '100' -> ohms as a float, or None."""
+    m = re.match(r"\s*(\d+(?:\.\d+)?)\s*([kKmM]?)", text or "")
+    if not m:
+        return None
+    return float(m.group(1)) * {"": 1, "k": 1e3, "K": 1e3, "m": 1e6, "M": 1e6}[m.group(2)]
+
+
+def _wside(text):
+    m = _WINK_SIDE.search(text or "")
+    return m.group(1)[0].upper() if m else None
+
+
+def check_winks(rep, nl, cfg, cavities):
+    """The left plate's wink switches and their lead (D-499, D-504). Every cavity of the wink lead's
+    housing whose lands_on names a pin of the plate's wink header ('J2 pin 1') is held to it, fragment
+    by fragment (split on ';'): an NC terminal is that side's SPDT A pin on that header pin, a common is
+    its B pin there - a net of its own, never the plate's GND or a J1 line (the winks return to the dash
+    post) - and 'the wink resistors ... on J2 pin n' means each 'wink L NO through 18 kΩ' the row names
+    is one resistor of that value from that side's C pin (nothing else on it) to that header pin. No
+    other pin of the header is wired, and no wink switch the record does not name is on the board."""
+    housing, hdr = cfg["winks"]
+    if hdr not in nl.pins:
+        rep.bad(hdr, "-", "the wink lead's header for %s" % housing, "no such part on the sheet")
+        return
+    sw = {}
+    for ref in nl.comps:
+        names = {pn for pn, _t in nl.pins.get(ref, {}).values()}
+        if prefix(ref) == "SW" and names == set(SPDT_ROLE.values()) and "wink" in nl.comps[ref]["value"].lower():
+            m = re.search(r"\b(left|right)\b", nl.comps[ref]["value"], re.I)      # 'wink - left (P204)'
+            side = m.group(1)[0].upper() if m else None
+            if side in sw:
+                rep.bad(ref, "-", "one wink switch a side", "%s and %s both on %s" % (sw[side], ref, side))
+            sw[side] = ref
+
+    def pin_net(ref, role):
+        num = [n for n, (pn, _t) in nl.pins[ref].items() if pn == SPDT_ROLE[role]]
+        return nl.net(ref, num[0]) if num else None
+
+    plate_hdr = cfg.get("plate_board", (None, None))[1]
+    plate_nets = {nl.net(plate_hdr, n) for n in nl.pins.get(plate_hdr, {})} - {None}
+    named, sides = set(), set()
+    rows = [c for c in cavities if c["housing"] == housing and any(
+        h == hdr for h, _p in _HDR_PIN.findall(c.get("lands_on", "")))]
+    if not rows:
+        rep.bad(hdr, "-", "%s cavities whose lands_on names %s" % (housing, hdr), "none in the record")
+        return
+    for c in sorted(rows, key=lambda c: int(c["cav"])):
+        for frag in c["lands_on"].split(";"):
+            hits = [p for h, p in _HDR_PIN.findall(frag) if h == hdr]
+            if len(hits) != 1:
+                continue
+            pin = hits[0]
+            where = "%s(%s %s)" % (pin, housing, c["cav"])
+            named.add(pin)
+            hnet = nl.net(hdr, pin)
+            if hnet is None:
+                rep.bad(hdr, where, "wired (%s)" % frag.strip(), "unconnected")
+                continue
+            side = _wside(frag) or _wside(c["circuit"])
+            if re.search(r"\bresistors?\b", frag):
+                want = [(m[0][0].upper(), ohms(m[1] + m[2])) for m in _WINK_RES.findall(c["circuit"] + " " + c["lands_on"])]
+                if not want:
+                    rep.bad(hdr, where, "'wink L NO through <value>' in %s %s" % (housing, c["cav"]), "none")
+                for s, r_ohms in want:
+                    sides.add(s)
+                    if s not in sw:
+                        rep.bad(hdr, where, "a wink %s switch for its %g Ω" % (s, r_ohms), "none on the board")
+                        continue
+                    no = pin_net(sw[s], "NO")
+                    rs = [ref for ref, _n, _pn in parts_on(nl, hnet, "R") if no and
+                          no in {nl.net(ref, k) for k in nl.pins[ref]} and len(nl.pins[ref]) == 2]
+                    vals = [ohms(nl.comps[r]["value"]) for r in rs]
+                    if len(rs) != 1:
+                        rep.bad(hdr, where, "one resistor from %s NO to it" % sw[s], ", ".join(rs) or "none")
+                    elif vals[0] != r_ohms:
+                        rep.bad(rs[0], "-", "%g Ω (%s %s: wink %s NO through it)" % (r_ohms, housing, c["cav"], s), nl.comps[rs[0]]["value"])
+                    elif len(nl.nets.get(no, [])) != 2:
+                        rep.bad(sw[s], SPDT_ROLE["NO"], "only %s on its NO" % rs[0], ", ".join("%s.%s" % (r, n) for r, n, _p in nl.nets[no]))
+                    else:
+                        rep.ok("%s %s: wink %s NO (%s.C) through %s %s" % (hdr, where, s, sw[s], rs[0], nl.comps[rs[0]]["value"]))
+                continue
+            role = "NC" if re.search(r"\bNC\b", frag) else "common" if re.search(r"\bcommons?\b", frag) else None
+            if role is None or side is None:
+                rep.bad(hdr, where, "a wink side and contact (NC, common) or the resistors", repr(frag.strip()))
+                continue
+            sides.add(side)
+            if side not in sw:
+                rep.bad(hdr, where, "a wink %s switch (SPDT, A / B / C)" % side, "none on the board")
+                continue
+            got = pin_net(sw[side], role)
+            if got != hnet:
+                rep.bad(sw[side], SPDT_ROLE[role], "%s on %s %s (%s %s)" % (role, hdr, pin, housing, c["cav"]), bare(got) or "unconnected")
+            elif role == "common" and (bare(hnet) == "GND" or hnet in plate_nets):
+                rep.bad(hdr, where, "the winks' own return to the dash post", "%s, the plate's own" % bare(hnet))
+            else:
+                rep.ok("%s %s: wink %s %s (%s.%s) on %s" % (hdr, where, side, role, sw[side], SPDT_ROLE[role], bare(hnet)))
+    for num in nl.pins[hdr]:
+        if num not in named and nl.net(hdr, num) is not None:
+            rep.bad(hdr, num, "a pin some %s cavity's lands_on names" % housing, bare(nl.net(hdr, num)))
+    for s, ref in sorted(sw.items()):
+        if s not in sides:
+            rep.bad(ref, "-", "only the winks %s names" % housing, "also a wink %s" % s)
 
 
 def check_conventions(rep, nl, cfg):
@@ -1261,6 +1378,8 @@ def main(argv=None):
                 check_relay(rep, nl, cfg, cavities, ribbon)
             if cfg.get("plate_board"):
                 check_plate_board(rep, nl, cfg, cavities, ribbon)
+            if cfg.get("winks"):
+                check_winks(rep, nl, cfg, cavities)
             check_conventions(rep, nl, cfg)
             check_pin_tables(rep, nl, tables)
             n = len(rep.mismatches)

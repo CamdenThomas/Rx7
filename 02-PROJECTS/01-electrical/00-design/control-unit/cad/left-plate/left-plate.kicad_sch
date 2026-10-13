@@ -5,14 +5,14 @@
 	(uuid "6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21")
 	(paper "A3")
 	(title_block
-		(title "Left plate - the panel's second face, left of the steering wheel (D-492)")
+		(title "Left plate - the panel's second face, left of the steering wheel (D-492, D-499)")
 		(date "2026-10-13")
-		(rev "0.01")
+		(rev "0.02")
 		(company "RX-7 FB electrical build")
-		(comment 1 "From the record: DP-DCU-E 1-12, panel_ribbon, DV24 / DV62, P083 P156 P198-P200. The row wins.")
+		(comment 1 "From the record: DP-DCU-E 1-12, L3-S1 9-11, panel_ribbon, DV24 / DV62, P156 P198-P200 P204. The row wins.")
 		(comment 2 "J1 pin n = DP-DCU-E n; keys on ROW1 via 1N4148W; stick on 17-20; IS31FL3218 at 0x54.")
-		(comment 3 "The winks (P083) are not on this sheet: hardwired to the PMU (DV24); holes H5 / H6 only.")
-		(comment 4 "R11: nothing here has been measured or bought. Rev 0.01 (Y21).")
+		(comment 3 "The winks (P204, D-499): SPDT under lit caps, 18k / 33k on the board, the lead on J2 to the dash post (L3-S1 9 / 10 / 11).")
+		(comment 4 "R11: nothing here has been measured or bought. Rev 0.02 (Y22).")
 	)
 	(lib_symbols
 		(symbol "left-plate:GND"
@@ -194,6 +194,24 @@
 			(pin passive line (at 7.62 -2.54 180) (length 2.54) (name "10" (effects (font (size 1.27 1.27)))) (number "10" (effects (font (size 1.27 1.27)))))
 			(pin passive line (at -7.62 -5.08 0) (length 2.54) (name "11" (effects (font (size 1.27 1.27)))) (number "11" (effects (font (size 1.27 1.27)))))
 			(pin passive line (at 7.62 -5.08 180) (length 2.54) (name "12" (effects (font (size 1.27 1.27)))) (number "12" (effects (font (size 1.27 1.27)))))
+		)
+	)
+		(symbol "left-plate:Conn_01x04"
+		(pin_names (offset 1.016))
+		(exclude_from_sim no) (in_bom yes) (on_board yes)
+		(property "Reference" "J" (at 0 6.35 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "Conn_01x04" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "Generic 1 x 4 connector" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(symbol "Conn_01x04_0_1"
+			(rectangle (start -2.54 3.81) (end 2.54 -6.35) (stroke (width 0.254) (type default)) (fill (type background)))
+		)
+		(symbol "Conn_01x04_1_1"
+			(pin passive line (at -5.08 2.54 0) (length 2.54) (name "Pin_1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -5.08 0 0) (length 2.54) (name "Pin_2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -5.08 -2.54 0) (length 2.54) (name "Pin_3" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -5.08 -5.08 0) (length 2.54) (name "Pin_4" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
 		)
 	)
 		(symbol "left-plate:SW_Push"
@@ -836,6 +854,210 @@
 		)
 		(embedded_fonts no)
 	)
+		(symbol "left-plate:SW_Push_SPDT"
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "SW"
+			(at 0 5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_Push_SPDT"
+			(at 0 -5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Momentary Switch, single pole double throw"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "switch single-pole double-throw spdt ON-ON"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "SW_Push_SPDT_0_0"
+			(circle
+				(center -2.032 0)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 1.016) (xy 0 3.048)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 2.032 -2.54)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "SW_Push_SPDT_0_1"
+			(polyline
+				(pts
+					(xy -1.524 0.2032) (xy 2.3368 1.9812)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 2.032 2.54)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "SW_Push_SPDT_1_1"
+			(rectangle
+				(start -3.175 3.81)
+				(end 3.175 -3.81)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin passive line
+				(at 5.08 2.54 180)
+				(length 2.54)
+				(name "A"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 2.54)
+				(name "B"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 -2.54 180)
+				(length 2.54)
+				(name "C"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 		(symbol "left-plate:THUMBSTICK_2AXIS_SW"
 		(pin_names (offset 1.016))
 		(exclude_from_sim no) (in_bom yes) (on_board yes)
@@ -1298,6 +1520,98 @@
 	(label "+5V_PNL" (at 335.28 109.22 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "22e84eba-9674-5e02-8c51-c920a1b9cb8c"))
 	(wire (pts (xy 347.98 109.22) (xy 350.52 109.22)) (stroke (width 0) (type default)) (uuid "b4a035dd-1803-542d-b34c-26343454fbbf"))
 	(label "LED_MIRROR" (at 350.52 109.22 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "3d530fa6-58a3-5d24-a140-602e80aed399"))
+	(symbol (lib_id "left-plate:SW_Push_SPDT") (at 60.96 177.8 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "1d5e5646-d5e8-55e8-ad4b-0f34519aaf19")
+		(property "Reference" "SW3" (at 60.96 171.45 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "wink - left (P204)" (at 60.96 184.15 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "left-plate:WinkSwitch_P204_SPDT_Placeholder" (at 60.96 177.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 60.96 177.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "P204: board-mount SPDT momentary under a lit 17 x 15 cap, C&K 8125 class - no part chosen; the placeholder footprint's pins (1 NC, 2 COM, 3 NO) and body from the part's drawing - confirm" (at 60.96 177.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "9062c99c-4941-55a3-9278-39336f8bb9e7"))
+		(pin "2" (uuid "019f86f8-45a3-57fd-99b9-2dad506133b7"))
+		(pin "3" (uuid "6ab2b1c5-d0d2-54a5-974c-f1850448c789"))
+		(instances (project "left-plate" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "SW3") (unit 1))))
+	)
+	(wire (pts (xy 66.04 175.26) (xy 68.58 175.26)) (stroke (width 0) (type default)) (uuid "8ad00836-dbe4-5d29-8d78-4bd6c380d364"))
+	(label "WINK_L_NC" (at 68.58 175.26 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "f3d0379c-bc21-5c46-b0dc-97eb1ae3faf9"))
+	(wire (pts (xy 55.88 177.8) (xy 53.34 177.8)) (stroke (width 0) (type default)) (uuid "c640b371-0bd1-5526-8a77-60dc565bbcb2"))
+	(label "WINK_COM" (at 53.34 177.8 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "65a6644b-5103-5ea4-8eed-abcff3b3c31a"))
+	(wire (pts (xy 66.04 180.34) (xy 68.58 180.34)) (stroke (width 0) (type default)) (uuid "a5176a50-0a15-5f91-9a65-c265943dc257"))
+	(label "WINK_L_NO" (at 68.58 180.34 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "4a9d6bb0-def9-54a9-a102-18d546b83d4d"))
+	(symbol (lib_id "left-plate:R") (at 111.76 177.8 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "aa2b138e-20fa-5327-8707-2b14f46f04e2")
+		(property "Reference" "R3" (at 111.76 173.99 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "18k" (at 111.76 181.61 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 111.76 177.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 111.76 177.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "the wink left ladder resistor (DV24, L3-S1 11), on the plate since D-499 - 1 %" (at 111.76 177.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "384cd774-9430-5758-9254-49c9af3d65fa"))
+		(pin "2" (uuid "7f26ca45-1c6e-5320-a0c8-7174f08801ec"))
+		(instances (project "left-plate" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "R3") (unit 1))))
+	)
+	(wire (pts (xy 106.68 177.8) (xy 104.14 177.8)) (stroke (width 0) (type default)) (uuid "c382b7f1-6470-56a2-96ae-435ef5391640"))
+	(label "WINK_L_NO" (at 104.14 177.8 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "37eb9090-c7c8-5cba-978b-0fca94ee4391"))
+	(wire (pts (xy 116.84 177.8) (xy 119.38 177.8)) (stroke (width 0) (type default)) (uuid "116004b0-ba4b-50ba-a6a5-ade9d57ec227"))
+	(label "WINK_REQ" (at 119.38 177.8 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "fb55b6d7-48d1-52b2-b80f-96e8d6057257"))
+	(symbol (lib_id "left-plate:SW_Push_SPDT") (at 60.96 203.2 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "28d7c340-0838-5500-9ab9-aa59900048b6")
+		(property "Reference" "SW4" (at 60.96 196.85 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "wink - right (P204)" (at 60.96 209.55 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "left-plate:WinkSwitch_P204_SPDT_Placeholder" (at 60.96 203.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 60.96 203.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "P204: board-mount SPDT momentary under a lit 17 x 15 cap, C&K 8125 class - no part chosen; the placeholder footprint's pins (1 NC, 2 COM, 3 NO) and body from the part's drawing - confirm" (at 60.96 203.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "05c9d105-c84f-5c90-9583-8f4762760c6c"))
+		(pin "2" (uuid "ae3914e3-9a02-591f-8143-b839d8549441"))
+		(pin "3" (uuid "cd43d944-1a42-5335-8acd-82c503b182c7"))
+		(instances (project "left-plate" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "SW4") (unit 1))))
+	)
+	(wire (pts (xy 66.04 200.66) (xy 68.58 200.66)) (stroke (width 0) (type default)) (uuid "48248a57-d7fe-53f5-b278-611417c2954f"))
+	(label "WINK_R_NC" (at 68.58 200.66 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "7ab7a76a-f480-5f54-9e11-b815cadc992d"))
+	(wire (pts (xy 55.88 203.2) (xy 53.34 203.2)) (stroke (width 0) (type default)) (uuid "979a5658-ad38-574a-97f0-3879fd3968a9"))
+	(label "WINK_COM" (at 53.34 203.2 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "b71bc52a-3c37-54cd-830d-6310a05b4f2a"))
+	(wire (pts (xy 66.04 205.74) (xy 68.58 205.74)) (stroke (width 0) (type default)) (uuid "b7365193-f283-574f-b735-76411f68437a"))
+	(label "WINK_R_NO" (at 68.58 205.74 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "0f2584bf-a9ab-5ff7-9849-1511e7b0a926"))
+	(symbol (lib_id "left-plate:R") (at 111.76 203.2 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "c67244fb-0d9c-51a5-83b1-d276dc23e96b")
+		(property "Reference" "R4" (at 111.76 199.39 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "33k" (at 111.76 207.01 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 111.76 203.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 111.76 203.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "the wink right ladder resistor (DV24, L3-S1 11), on the plate since D-499 - 1 %" (at 111.76 203.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "8a3b9bb8-fc3a-52f4-b92e-87ecadd76ee8"))
+		(pin "2" (uuid "3c511ff8-1fb3-56e4-807b-c54958038e4d"))
+		(instances (project "left-plate" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "R4") (unit 1))))
+	)
+	(wire (pts (xy 106.68 203.2) (xy 104.14 203.2)) (stroke (width 0) (type default)) (uuid "9ce30105-08f1-5fe1-a393-da0923459c3d"))
+	(label "WINK_R_NO" (at 104.14 203.2 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "fb9189b8-67b7-5c1c-98ee-7be9adae0644"))
+	(wire (pts (xy 116.84 203.2) (xy 119.38 203.2)) (stroke (width 0) (type default)) (uuid "ee4e55b1-194f-56dd-8a6f-2c9bac724f81"))
+	(label "WINK_REQ" (at 119.38 203.2 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "f23dfa84-dc80-5002-96af-df8884837352"))
+	(symbol (lib_id "left-plate:Conn_01x04") (at 165.1 190.5 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "a1a5cb50-e301-5c6f-94ae-efee92970e2e")
+		(property "Reference" "J2" (at 165.1 184.15 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "wink lead header 1x4 (L3-S1 9 / 10 / 11, commons)" (at 165.1 199.39 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical" (at 165.1 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 165.1 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "the wink lead's plate end (DV24, D-499): pin 1 = L3-S1 9, 2 = L3-S1 10, 3 = L3-S1 11, 4 = the commons to dash ground (G20); JST XH 4-way, locking - housing and crimps confirm, the lead's run to the dash post not measured" (at 165.1 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "f4a809dc-f94e-522e-9a2a-782bf45dac3d"))
+		(pin "2" (uuid "ddf5f546-da82-5c46-b275-3e1f8ae889d6"))
+		(pin "3" (uuid "a0f4dbc1-abf4-5b8a-b911-d7dce59a5dfc"))
+		(pin "4" (uuid "247ab705-e94e-5bfe-b6b9-9e3437fd07c9"))
+		(instances (project "left-plate" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "J2") (unit 1))))
+	)
+	(wire (pts (xy 160.02 187.96) (xy 157.48 187.96)) (stroke (width 0) (type default)) (uuid "432b3512-d304-554e-af78-61fb0a5ed5a3"))
+	(label "WINK_L_NC" (at 157.48 187.96 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "4b5dcc12-e3b2-54da-ae2a-9ea9160d5612"))
+	(wire (pts (xy 160.02 190.5) (xy 157.48 190.5)) (stroke (width 0) (type default)) (uuid "dd2728b7-5095-5207-b3f7-d6349ace8df1"))
+	(label "WINK_R_NC" (at 157.48 190.5 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "a93f48ca-ba64-5e99-8bd2-5a2e038a8d73"))
+	(wire (pts (xy 160.02 193.04) (xy 157.48 193.04)) (stroke (width 0) (type default)) (uuid "a0521cfc-1966-525c-a49b-c532b465d64a"))
+	(label "WINK_REQ" (at 157.48 193.04 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "3fad254a-874e-543e-be51-291fd96b3d6b"))
+	(wire (pts (xy 160.02 195.58) (xy 157.48 195.58)) (stroke (width 0) (type default)) (uuid "c8496a73-6167-544a-83c6-1f28f4744e0e"))
+	(label "WINK_COM" (at 157.48 195.58 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "716ff7ef-910d-52f2-85f3-beab2d2e0c44"))
 	(wire (pts (xy 60.96 121.92) (xy 60.96 127)) (stroke (width 0) (type default)) (uuid "991a50da-5642-5989-bad9-0b942e5e1f97"))
 	(symbol (lib_id "left-plate:PWR_FLAG") (at 60.96 121.92 0) (unit 1) (body_style 1)
 		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
@@ -1362,10 +1676,10 @@
 	(text "THE LIGHTS: IS31FL3218 at 0x54, five symbols at 7.6 mA" (exclude_from_sim no) (at 228.6 25.4 0) (effects (font (size 2.0 2.0) (bold yes)) (justify left top)) (uuid "0aa17e29-c8f8-5286-86ae-f9ab1e9f22af"))
 	(text "OUT1 wink L face, OUT2 wink R face, OUT3 hatch, OUT4 fuel door, OUT5 mirror stick - the DCU firmware's map (lights.h, F-018)" (exclude_from_sim no) (at 228.6 30.48 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "159446d0-e205-52b1-9fb9-1bf8226bc9bd"))
 	(text "OUT6-OUT18 open. The bus pull-ups are on the carrier (R51 / R52, 4.7k to +3V3); none here." (exclude_from_sim no) (at 228.6 34.29 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "67121726-0b06-52a2-92a2-2fd77a4bc399"))
-	(text "THE WINK SWITCHES ARE NOT ON THIS SHEET" (exclude_from_sim no) (at 25.4 152.4 0) (effects (font (size 2.0 2.0) (bold yes)) (justify left top)) (uuid "cc7ffce3-2314-57fb-91a6-8e22cfc66236"))
-	(text "P083, two DMWD 1NO+1NC panel-mount pushbuttons, mounted in the plate's faceplate. Their lines are the harness's (DV24, D-189, D-482):" (exclude_from_sim no) (at 25.4 157.48 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "6f0bf947-ab65-52d3-94d3-f100d04768fd"))
-	(text "NC poles to L3-S1 9 / 10, NO poles through 18k / 33k to L3-S1 11, commons to dash ground - on their own lead to the dash post." (exclude_from_sim no) (at 25.4 161.29 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "d9eecf45-edad-52a9-b203-0b6bcbfdbe1b"))
-	(text "The board carries only clearance holes for their bodies (H5, H6, board-only footprints, no nets) at the sketch's key positions." (exclude_from_sim no) (at 25.4 165.1 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "ce03f0cd-bfea-5c8b-bf0a-594461fc0c59"))
+	(text "THE WINK SWITCHES (P204, D-499) AND THEIR LEAD J2 TO THE DASH POST" (exclude_from_sim no) (at 25.4 152.4 0) (effects (font (size 2.0 2.0) (bold yes)) (justify left top)) (uuid "c1a79686-e528-5ce2-9fd3-85e116a5c862"))
+	(text "Two SPDT momentary pushbuttons under lit caps (the faces are LED1 / LED2 on the driver). Their lines are the harness's (DV24, D-189, D-482), unchanged:" (exclude_from_sim no) (at 25.4 157.48 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "f5dc3d3a-d075-531b-bfa2-20496019aae1"))
+	(text "NC poles to L3-S1 9 / 10 (J2 pins 1 / 2), NO poles through 18k / 33k joined as WINK_REQ to L3-S1 11 (J2 pin 3), the commons to dash ground (J2 pin 4, G20)." (exclude_from_sim no) (at 25.4 161.29 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "ad0a4384-4634-519a-93dd-c9f55280140a"))
+	(text "WINK_COM is NOT this board's GND: the winks return to the dash post as today, the plate's electronics on DP-DCU-E 8 and 11 (DV62). Symbol pins: 1 A = NC, 2 B = common, 3 C = NO." (exclude_from_sim no) (at 25.4 165.1 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "af8d551b-6d33-5f70-842a-85dd37fe17ba"))
 	(sheet_instances
 		(path "/"
 			(page "1")

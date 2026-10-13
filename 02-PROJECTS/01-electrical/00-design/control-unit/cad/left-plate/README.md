@@ -1,9 +1,9 @@
 # Left plate — the KiCad project
 
-*Rev 2026-10-13 (sheet and board rev 0.01, provisional - Y21, D-492) · owns: what this KiCad project is
-for and what it may claim. The plate's design is the record: the cavities of `DP-DCU-E`
-(`../../../../data/cavities.csv`), the `panel_ribbon` lines they name, devices `DV24` and `DV62`, parts
-P083, P156, P198, P199 and P200. Read `../../../README.md` first: it is the fence.*
+*Rev 2026-10-13 (sheet and board rev 0.02, provisional - Y21, Y22, D-492, D-499, D-504) · owns: what this
+KiCad project is for and what it may claim. The plate's design is the record: the cavities of `DP-DCU-E`
+and `L3-S1` 9-11 (`../../../../data/cavities.csv`), the `panel_ribbon` lines they name, devices `DV24` and
+`DV62`, parts P156, P198, P199, P200 and P204. Read `../../../README.md` first: it is the fence.*
 
 ## What it is
 
@@ -19,13 +19,17 @@ connector board runs straight through to the panel board's plate header `J3`.
   return), wipers on `JOY_X` / `JOY_Y`, the push from `JOY_PRESS` to `GND` (panel_ribbon 19 "push switch
   to GND", cavity 6). `AGND` is kept apart from `GND` here; they meet on the carrier.
 - **The lights** are the plate's own I²C driver on the panel's bus (P199).
-- **The winks are not on the sheet** (below): the board only has holes for them.
+- **The winks** (D-499) are two SPDT momentary pushbuttons under lit caps (P204), `SW3` / `SW4`, with their
+  18 k / 33 k ladder resistors `R3` / `R4` beside them; their lines leave on their own 4-way header `J2`
+  to the dash post (D-504), never on `J1`.
 
 ## What it may claim
 
 ERC-clean, DRC-clean with schematic parity, and `check.py --board left-plate` holding `J1` against
 `DP-DCU-E` pin for pin, the two keys against the cavities that name them, the stick against
-panel_ribbon 1 and 17-20. That makes it **internally consistent and consistent with the record, not
+panel_ribbon 1 and 17-20, and `J2` against the `L3-S1` cavities whose `lands_on` names it (each wink's NC
+and common on its pin, the commons apart from the plate's `GND`, and the wink resistors at the values
+cavity 11 gives - read from the row, not typed in the check). That makes it **internally consistent and consistent with the record, not
 correct** (R11): no part, cable or dimension here has been in anyone's hand, and nothing left of the
 steering wheel has been measured. The record wins; a fact found here is promoted to a row, never cited
 from this folder.
@@ -63,25 +67,30 @@ as written:
 
 | OUT | LED | What it lights | Board (x, y), front |
 |---|---|---|---|
-| 1 | `LED1` | wink left face | (20, 8) |
-| 2 | `LED2` | wink right face | (39, 8) |
+| 1 | `LED1` | wink left face | (27, 19) |
+| 2 | `LED2` | wink right face | (46, 19) |
 | 3 | `LED3` | hatch release symbol | (44.75, 37) |
 | 4 | `LED4` | fuel-door release symbol | (25.75, 37) |
 | 5 | `LED5` | mirror stick symbol | (74.5, 12.5) |
 
 OUT6-OUT18 are open (no-connect on the sheet). Anodes on `+5V_PNL`, cathodes to the channel, 0603.
 
-## The wink switches: mechanical only
+## The winks: SW3 / SW4 and J2, the wink lead (D-499, D-504)
 
-P083 (two DMWD 1NO+1NC metal panel-mount pushbuttons) mount in the plate's faceplate; their bodies and
-lugs pass through the board in two **16.5 mm clearance holes**, `H5` and `H6`, board-only footprints
-with no pads and no nets (`left-plate:WinkSwitch_P083_Clearance_D16.5`). Their lines are the
-harness's and stay exactly as `DV24` has them (D-189, D-482, D-492): NC poles to L3-S1 9 / 10, NO poles
-through 18 kΩ / 33 kΩ to the L3-S1 11 node, commons to dash ground, on their own lead to the dash post.
+`SW3` (left) and `SW4` (right) are KiCad's `SW_Push_SPDT`: pin 1 A is the contact the pole rests on (NC),
+2 B the common, 3 C the NO. Their lines are the harness's, unchanged (DV24, D-189, D-482); only the two
+resistors moved onto the board, and the lead ends on `J2`, a JST XH 4-way
+(`Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical`) on the back:
 
-The 18 k / 33 k ladder resistors could sensibly live on this board (a 5-way header for the wink lead,
-the switches' lugs wired to pads, the resistors beside them), which would take them out of the
-harness; that moves a fact in `DV24` and adds a header, so it is not drawn - a question for the record.
+| `J2` pin | Net | Cavity at the dash post | On this board |
+|---|---|---|---|
+| 1 | `WINK_L_NC` | L3-S1 9 | `SW3` A |
+| 2 | `WINK_R_NC` | L3-S1 10 | `SW4` A |
+| 3 | `WINK_REQ` | L3-S1 11 | `R3` 18 k from `SW3` C, `R4` 33 k from `SW4` C, joined here |
+| 4 | `WINK_COM` | dash ground (G20) | `SW3` B, `SW4` B |
+
+`WINK_COM` is its own net, not this board's `GND`: the winks return to the dash post as today, the plate's
+electronics on DP-DCU-E 8 and 11 (DV62). `R3` / `R4` are 0603, 1 %.
 
 ## The board
 
@@ -93,12 +102,14 @@ is drawn: the stick on the steering-wheel side. `gen_left_plate.py` carries the 
 
 | What | Part | Board (x, y) | Side |
 |---|---|---|---|
-| wink left | `H5` Ø16.5 hole | (20, 19) | through |
-| wink right | `H6` Ø16.5 hole | (39, 19) | through |
+| wink left (cap centre) | `SW3` P204 placeholder, pins 1-3 at x 17.46 / 20 / 22.54 | (20, 19) | front |
+| wink right (cap centre) | `SW4`, 19 mm on - the sketch's pitch | (39, 19) | front |
+| wink resistors | `R3` 18 k / `R4` 33 k, behind their switches | (20, 12) / (39, 12) | back |
 | fuel-door key (cap centre) | `SW2` 6 × 6 tactile, pad 1 at (16.75, 34.75) | (20, 37) | front |
 | hatch key (cap centre) | `SW1`, pad 1 at (35.75, 34.75) | (39, 37) | front |
 | mirror stick (axis) | `JS1` placeholder | (74.5, 28), well radius 14 | front |
 | cable header | `J1`, pin 1 at (94.5, 21.65); odd pins x 94.5, even x 91.96, down to y 34.35 | centre (93.2, 28) | back, at the right (wheel-side) edge |
+| wink lead header | `J2`, pin 1 at (95, 44), pins 2-4 at x 92.5 / 90 / 87.5 | below `J1`, clear of its shroud and `H4` | back |
 | LED driver | `U1`, turned so OUT1-5 face the keys and pins 1-6 face down | (58, 36) | back |
 | `C2` 100 nF / `C1` 1 µF | under `U1`'s VCC | (58.25, 41) / (58.25, 43) | back |
 | `R1` R_EXT / `R2` SDB | right of `U1` | (62.5, 39.5) / (62.5, 35.5) | back |
@@ -107,14 +118,15 @@ is drawn: the stick on the steering-wheel side. `gen_left_plate.py` carries the 
 
 The key LEDs sit inside their 17 × 15 caps, 5.75 mm toward the wheel from the switch's centre (the
 switch fills the middle; the panel does the same at 5.6), lit through the cap (D-488). The wink LEDs
-sit 8 mm from the top edge, above their buttons' holes: a metal pushbutton cannot be lit through, so
-the faceplate needs a window above each, or the wink part changes (I-006's note: a lit-symbol switch
-is money, a block when he rules). The mirror LED sits just outside the top of the stick's 14 mm well.
+sit the same way inside the wink caps, 7 mm toward the wheel from the cap's centre, beside the
+placeholder's 12 mm body, lit through the cap (D-499: no window). The mirror LED sits just outside the
+top of the stick's 14 mm well.
 
 **Routing**, by a grid router in `board_left_plate.py` (0.25 mm grid, Manhattan, no freerouting on this
-machine): 0.25 mm tracks throughout (0.2 mm clearance, 0.6 / 0.3 mm vias), 118 segments and 19 signal
+machine): 0.25 mm tracks throughout (0.2 mm clearance, 0.6 / 0.3 mm vias), 147 segments and 16 signal
 vias, every net routed including `GND`; a solid GND pour on both layers stitched on a 6 mm lattice
-(about 100 vias, any left dangling after the fill are dropped). Correct, not pretty: the final board is
+(109 vias, any left dangling after the fill are dropped). The router takes an oval pad (`J2`'s) as the
+stadium it is, not its bounding rectangle. Correct, not pretty: the final board is
 laid out when the parts are in hand.
 
 ## Confirm
@@ -131,11 +143,16 @@ laid out when the parts are in hand.
   (that file is outside this folder's fence): `check.py` prints a note for `U1`, not a mismatch. The
   table is on Lumissil Rev G p.2: 1 OUT18, 2 R_EXT, 3 VCC, 4 GND, 5 SDA, 6 SCL, 7-23 OUT1-OUT17, 24 SDB,
   thermal pad GND - the KiCad symbol carries it unchanged.
-- **The wink switch holes** - 16.5 mm for a 16 mm-thread metal button (the reference model is Adafruit
-  916, 22 × 19 × 37; the record's own note says confirm size). At the sketch's 19 mm pitch two 19 mm
-  bezels touch and the board keeps a 2.5 mm web between the holes: **the sketch's key spacing does not
-  leave room for a 16 mm button's bezel** - if P083 is 16 mm, the keys move apart or a 12 mm button is
-  bought (money, his). The nut sits between faceplate and board, so the standoff must clear it.
+- **The wink switches** - `left-plate:WinkSwitch_P204_SPDT_Placeholder`, drawn here and **not a part's
+  footprint: no P204 part is chosen** (C&K 8125 class, part number and cap confirm). Three 1.0 mm holes
+  (1.7 mm pads) on a 2.54 mm row for pins 1 NC / 2 common / 3 NO, a 12 × 12 mm body square (silk at
+  12.22, courtyard 12.5), the sketch's 17 × 15 cap dashed on F.Fab, origin the cap's centre. Every one of
+  those numbers is a placeholder; the pins, body, actuator height and whether the part carries its own
+  LED (then the face LED moves onto its pins) come from the chosen part's drawing. The 19 mm pitch
+  leaves 2 mm between the two 17 mm caps and 6.5 mm between the 12.5 mm courtyards.
+- **The wink lead** - `J2` JST XH 4-way, locking: housing and crimps confirm; where it sits (below `J1`
+  on the wheel-side edge) and the lead's run to the dash post are not measured.
+- **The wink resistors** - 18 k / 33 k 0603 1 %, the values `L3-S1 11` names; part numbers confirm.
 - **The cable side** - `J1` at the right edge, the wheel side, toward the climate unit; its shroud's key
   faces that edge. Where the cable actually runs behind the dash is not measured (P200, about 1 m).
 - **The keys** - the 13 mm actuator against the cap and faceplate (LP20); `SW_PUSH_6mm`.
@@ -162,10 +179,15 @@ kicad-cli pcb export step --subst-models -f -o left-plate.step left-plate.kicad_
 on the Mac): the board half needs `pcbnew`. The project file is written by the generator from the
 panel's rules (one net class), so a KiCad save that resets it is undone by the next run.
 
-Rev 0.01, 2026-10-13: ERC 0 / 0; `check.py --board left-plate` 23 checks, 0 mismatches, one note (U1's
-pin table); DRC 0 violations, 0 unconnected, 0 parity issues. The SVG and the BOM are committed; the
-renders, the STEP and the reports are rebuilt and not (`.gitignore`). The stick and the wink holes have
-no 3D model.
+Rev 0.02, 2026-10-13 (Y22, D-499, D-504): the P083 clearance holes `H5` / `H6` and their footprint are
+gone; `SW3` / `SW4` on the P204 placeholder at (20, 19) and (39, 19), `R3` / `R4` behind them, `J2` below
+`J1`, `LED1` / `LED2` inside the wink caps. ERC 0 / 0; `check.py --board left-plate` 29 checks, 0
+mismatches, one note (U1's pin table); DRC 0 violations, 0 unconnected, 0 parity issues. The SVG and the
+BOM are committed; the renders, the STEP and the reports are rebuilt and not (`.gitignore`). The STEP
+carries the board, `J1`, `J2`, the two 6 mm keys, `U1` and the 0603 / SOD-123 parts; the stick and the
+two winks are placeholders with no 3D model, so they are absent from it.
+
+Rev 0.01, 2026-10-13 (Y21): the winks were P083 metal buttons in two 16.5 mm holes, off the sheet.
 
 ## Files
 
@@ -173,6 +195,6 @@ no 3D model.
 |---|---|
 | `left-plate.kicad_pro` · `.kicad_sch` · `.kicad_pcb` | the project, the schematic and the provisional board |
 | `left-plate.kicad_sym` · `sym-lib-table` | every symbol used, kept with the project (the panel's, KiCad's IS31FL3218-QF, the stick's functional block) |
-| `left-plate.pretty` · `fp-lib-table` | the stick placeholder and the wink switches' clearance hole, drawn here |
+| `left-plate.pretty` · `fp-lib-table` | the stick and the wink switch (P204) placeholders, drawn here by the generator |
 | `gen_left_plate.py` · `board_left_plate.py` | the generator: the sheet from the record's nets, the board from the sketch's positions, the router |
 | `left-plate.svg` · `left-plate-bom.csv` | the committed picture and the parts list, `confirm` included |

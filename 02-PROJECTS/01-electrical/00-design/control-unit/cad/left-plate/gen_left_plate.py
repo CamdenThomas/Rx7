@@ -62,8 +62,9 @@ KEY_LED_DX = 5.75                # a key's symbol LED inside its 17 x 15 cap, be
 WINK_LED_DX = 7.0                # a wink's LED inside its cap, beside the 12 mm placeholder body (confirm)
 WINK_BODY = 12.0                 # the P204 placeholder's body square (confirm: no part chosen)
 J1_X = 6.5 if FLIP else 94.5     # J1's odd-pin column, on the back, at the edge nearest the climate unit
-J2_X = 8.5 if FLIP else 91.5     # J2, the wink lead's header, below J1 on the same edge (confirm: the
-                                 # lead's run to the dash post is not measured)
+J2_X, J2_Y = (5.0 if FLIP else 95.0), 44.0   # J2, the wink lead's header: pin 1, on the back, its row
+                                 # along the bottom of J1's shroud on the same edge, clear of it and of H4
+                                 # (confirm: the lead's run to the dash post is not measured)
 
 
 # ============================================================================================
