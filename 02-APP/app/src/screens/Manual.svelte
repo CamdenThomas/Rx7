@@ -12,6 +12,7 @@
   import Systems from './manual/Systems.svelte';
   import Part from './manual/Part.svelte';
   import CarView from './manual/CarView.svelte';
+  import Model from './manual/Model.svelte';
   import Diagrams from './manual/Diagrams.svelte';
   import Notes from './manual/Notes.svelte';
   import Specs from './manual/Specs.svelte';
@@ -39,9 +40,9 @@
   let dialog = $state<'drive' | 'odo' | null>(null);
   let body = $state<HTMLElement>();
 
-  const TABS: ManualPage[] = ['state', 'trends', 'systems', 'car', 'specs', 'service', 'diagrams', 'notes'];
+  const TABS: ManualPage[] = ['state', 'trends', 'systems', 'car', 'model', 'specs', 'service', 'diagrams', 'notes'];
   const noteCount = $derived((app.snapshot?.inbox ?? []).filter((a) => a.area === '00-CAR' && a.kind === 'note').length);
-  const on = (t: ManualPage) => (page === 'part' ? t === 'systems' : page === t);
+  const on = (t: ManualPage) => (page === 'part' ? t === 'systems' : page === 'model-part' ? t === 'model' : page === t);
 
   $effect(() => {
     ui.context = `the Manual, ${MANUAL_TITLE[page]}${id ? ` ${id}` : ''}`;
@@ -102,6 +103,8 @@
         <Part {m} id={id ?? ''} />
       {:else if page === 'car'}
         <CarView {m} {id} />
+      {:else if page === 'model' || page === 'model-part'}
+        <Model {id} alone={page === 'model-part'} />
       {:else if page === 'specs'}
         <Specs {m} />
       {:else if page === 'service'}

@@ -15,6 +15,7 @@ import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment
 import { CSS2DObject, CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 import { CAR_TO_THREE, corners, fitView, glbMatrix, linkEnds, matrixUnder, placeMatrix, worldMatrix } from './designMath';
 import {
+  apartOffset,
   childrenOf,
   connectorShown,
   declutter,
@@ -70,6 +71,7 @@ const LABEL_NEAR = 0.85;
 
 interface Loaded {
   group: THREE.Group; // the part's frame
+  base: THREE.Matrix4; // its place, before the car is taken apart
   model?: THREE.Object3D; // the model (or its stand-in) inside it; a node has none
 }
 
@@ -101,6 +103,7 @@ export class DesignView {
   private sel: Selection = null;
   private focus: Focus | null = null;
   private focusEnds = new Set<string>(); // the drawn parts at the ends of the isolated links
+  private dimmed = new Set<string>(); // faded by the Systems and Zone filters
   private nearDist = Infinity;
   private toggles: Toggles;
   private frame = 0;
@@ -186,7 +189,7 @@ export class DesignView {
     group.matrixAutoUpdate = false;
     group.matrix.copy(matrix);
     parent.add(group);
-    const entry: Loaded = { group };
+    const entry: Loaded = { group, base: matrix.clone() };
     this.parts.set(p.id, entry);
     if (p.kind === 'node') {
       // A far end: a dot (tap it to isolate it) and its name, which the declutter rations.
@@ -453,7 +456,26 @@ export class DesignView {
   }
 
   private faded(id: string): boolean {
-    return !!this.focus && this.mode.kind === 'assembly' && !this.focus.parts.has(id);
+    if (this.mode.kind !== 'assembly') return false;
+    return (!!this.focus && !this.focus.parts.has(id)) || this.dimmed.has(id);
+  }
+
+  /** The Systems and Zone filters: these parts fade (05-cad D-518, MG1). */
+  setDimmed(ids: Set<string>) {
+    this.dimmed = new Set(ids);
+    this.applyFocus();
+  }
+
+  /** Taken apart (0 assembled, 1 every part moved by its `apart`, riding on what carries it;
+   *  design.ts apartOffset). A view only: no place is changed, and the camera stays put. */
+  setApart(t: number) {
+    if (this.mode.kind !== 'assembly') return;
+    for (const [id, e] of this.parts) {
+      const o = apartOffset(this.s, id, t);
+      e.group.matrix.copy(e.base).premultiply(new THREE.Matrix4().makeTranslation(o.x, o.y, o.z));
+      e.group.matrixWorldNeedsUpdate = true;
+    }
+    this.request();
   }
 
   private fade(o: THREE.Object3D, faded: boolean) {

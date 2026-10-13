@@ -1,5 +1,6 @@
 <!--
-  One three.js view of a project's design (D-505): the assembly, a part, or a board. The
+  One three.js view of a project's design (D-505), or of the car itself (05-cad D-518, the
+  Manual's model page): the assembly, a part, or a board. The
   drawing is lib/designView.ts, loaded on demand like CarModel's three.js; this holds its
   canvas, passes it what the page selects, and says plainly when the device cannot draw.
   Built for one mode: the page keys it on the mode, so a new view is a new canvas and the
@@ -18,6 +19,8 @@
     hidden = new Set<string>(),
     side = 'top',
     toggles,
+    apart = 0,
+    dimmed,
     onpick,
     onstatus,
     onnodes,
@@ -29,6 +32,10 @@
     hidden?: Set<string>;
     side?: 'top' | 'bottom';
     toggles?: Toggles;
+    /** the car taken apart, 0 to 1 (the Manual's model page) */
+    apart?: number;
+    /** parts faded by a filter (the model page's Systems and Zone) */
+    dimmed?: Set<string>;
     onpick?: (sel: Selection) => void;
     onstatus?: (id: string, s: LoadState) => void;
     onnodes?: (found: { case: boolean; inside: boolean }) => void;
@@ -77,6 +84,14 @@
   $effect(() => {
     const t = toggles;
     if (t) view?.setToggles(t);
+  });
+  $effect(() => {
+    const a = apart;
+    view?.setApart(a);
+  });
+  $effect(() => {
+    const d = dimmed;
+    if (d) view?.setDimmed(d);
   });
 
   /** Frame the view again; `all` takes in every far end of the harness too. */

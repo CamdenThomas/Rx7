@@ -1,11 +1,20 @@
 // The Design page's pure half (D-505, M3D1) on a stub scene: two units, a board inside one,
-// a node, two links and a missing entry; and the version-2 stub (v2/: the CUR, two legs, two
+// a node, two links and a missing entry; the car stub (car/: a floor pan, what is bolted to
+// it, a nested bracket, a node); and the version-2 stub (v2/: the CUR, two legs, two
 // mated pairs of connectors sharing one model, cavities). three.js appears only as its math.
 import { Box3, Vector3 } from 'three';
 import { describe, expect, it } from 'vitest';
 import raw from './fixtures/design/scene.json';
 import rawV2 from './fixtures/design/v2/scene.json';
+import rawCar from './fixtures/design/car/scene.json';
 import {
+  apartOffset,
+  bySystemZone,
+  carrierOf,
+  filteredOut,
+  inModel,
+  mergeScenes,
+  systemOf,
   byLeg,
   connectorShown,
   defaultToggles,
@@ -475,5 +484,81 @@ describe('the layers', () => {
     expect(connectorShown(off, f, 'L3-S1:plug')).toBe(true);
     expect(connectorShown(off, f, 'L1-S1:plug')).toBe(false);
     expect(connectorShown({ ...off, connectors: true }, null, 'L1-S1:plug')).toBe(true);
+  });
+});
+
+// ------------------------------------------------------------------ the car (05-cad D-518, MG1)
+
+const pc = parseScene(rawCar);
+if (!pc.ok) throw new Error(pc.reason);
+const sc: Scene = pc.scene;
+
+describe('the car: a scene of separate solids', () => {
+  it('reads the stub whole: systems, zones, how each part is held', () => {
+    expect(pc.problems).toEqual([]);
+    expect(sc.car).toBe(true);
+    expect(sc.systems.map((x) => x.id)).toEqual(['body', 'suspension']);
+    const cm = sc.parts.find((p) => p.id === 'PT-STUB')!;
+    expect(cm).toMatchObject({ kind: 'part', system: 'suspension', zone: 'Rear', made_from: 'found', state: 'dimensioned', mate: null });
+    expect(cm.joint).toEqual({ to: 'floor-pan', kind: 'bolted', fasteners: ['M10 x 4'], apart: { x: 0, y: 0, z: -300 } });
+    expect(sc.parts.find((p) => p.id === 'floor-pan')!.kind).toBe('body');
+  });
+
+  it('every part is drawn on its own, a nested one too', () => {
+    expect(drawnIds(sc)).toContain('bracket');
+    expect(drawnId(sc, 'bracket')).toBe('bracket');
+    expect([...fitSet(sc, null).parts].sort()).toEqual(['PT-STUB', 'bracket', 'floor-pan', 'front-crossmember']);
+    expect([...focusOf(sc, { kind: 'part', id: 'PT-STUB' })!.parts]).toEqual(['PT-STUB']);
+  });
+
+  it('taken apart: a part moves by its own apart plus what carries it, along the chain', () => {
+    expect(carrierOf(sc, 'bracket')).toBe('PT-STUB'); // its parent
+    expect(carrierOf(sc, 'PT-STUB')).toBe('floor-pan'); // what it is bolted to
+    expect(carrierOf(sc, 'floor-pan')).toBeNull();
+    expect(apartOffset(sc, 'floor-pan', 1)).toEqual({ x: 0, y: 0, z: 0 });
+    expect(apartOffset(sc, 'PT-STUB', 1)).toEqual({ x: 0, y: 0, z: -300 });
+    expect(apartOffset(sc, 'bracket', 1)).toEqual({ x: 200, y: 0, z: -300 });
+    expect(apartOffset(sc, 'bracket', 0.5)).toEqual({ x: 100, y: 0, z: -150 });
+    expect(apartOffset(sc, 'bracket', 0)).toEqual({ x: 0, y: 0, z: 0 });
+    // a ring of carriers stops where it closes
+    const ring = parseScene({ parts: [{ id: 'a', mate: { to: 'b', apart: { x: 1, y: 0, z: 0 } } }, { id: 'b', mate: { to: 'a', apart: { x: 10, y: 0, z: 0 } } }] });
+    expect(ring.ok && apartOffset(ring.scene, 'a', 1)).toEqual({ x: 11, y: 0, z: 0 });
+  });
+
+  it('the systems and zone filters fade the rest; a nested part takes its parent system', () => {
+    expect(systemOf(sc, 'bracket')).toBe('suspension');
+    expect(filteredOut(sc, new Set()).size).toBe(0);
+    expect([...filteredOut(sc, new Set(['body']))].sort()).toEqual(['PT-STUB', 'bracket', 'front-crossmember']);
+    expect([...filteredOut(sc, new Set(['body', 'suspension']))]).toEqual([]);
+    expect([...filteredOut(sc, new Set(), 'Rear')].sort()).toEqual(['floor-pan', 'front-crossmember']);
+  });
+
+  it('the list: by system in the scene order, then by zone, parts by name; no nodes', () => {
+    expect(bySystemZone(sc).map((g) => [g.name, g.zones.map((z) => [z.zone, z.parts.map((p) => p.id)])])).toEqual([
+      ['Body', [['Floor', ['floor-pan']]]],
+      ['Suspension', [['Front', ['front-crossmember']], ['Rear', ['PT-STUB', 'bracket']]]],
+    ]);
+  });
+
+  it('the part page links to the model only when the car scene has that part', () => {
+    expect(inModel(sc, 'PT-STUB')).toBe(true);
+    expect(inModel(sc, 'PT-NOPE')).toBe(false);
+    expect(inModel(null, 'PT-STUB')).toBe(false);
+    expect(inModel(s, 'pmu')).toBe(false); // a project scene is not the car
+  });
+
+  it('the harness merges in as a layer: ids prefixed, models from its own folder, drawn by its rules', () => {
+    const m = mergeScenes(sc, s2, 'h:', '/design/01-electrical/', { id: 'harness', name: 'Harness' });
+    expect(m.parts).toHaveLength(sc.parts.length + s2.parts.length);
+    const plate = m.parts.find((p) => p.id === 'h:left-plate')!;
+    expect(plate).toMatchObject({ parent: 'h:cur', glb: '/design/01-electrical/left-plate.glb', system: 'harness', layer: 'h:' });
+    expect(m.parts.find((p) => p.id === 'h:L1-S1:plug')!.mate).toBe('h:L1-S1:receptacle');
+    expect(m.links[0].from.part).toBe('h:pmu');
+    expect(m.legs[1].branches[0].to).toBe('h:rear-end');
+    expect(m.systems.map((x) => x.id)).toEqual(['body', 'suspension', 'harness']);
+    // the car's parts are each drawn; the harness's board stays inside its unit
+    expect(drawnIds(m)).toContain('bracket');
+    expect(drawnIds(m)).not.toContain('h:left-plate');
+    expect(drawnId(m, 'h:left-plate')).toBe('h:cur');
   });
 });

@@ -168,13 +168,13 @@
     <dt>Place from</dt>
     <dd>
       {p.place_from || 'not said'}
-      {#if p.confirm}<span class="warn"> - not confirmed; the dash is not measured yet</span>{/if}
+      {#if p.confirm}<span class="warn">{' - '}not confirmed; the dash is not measured yet</span>{/if}
     </dd>
     {#if size(p)}<dt>Size</dt><dd>{size(p)}</dd>{/if}
     <dt>Model</dt>
     <dd>
       {#if p.glb}<span class="mono">{p.glb}</span> {bytesLabel(p.bytes)}{:else}none{p.kind === 'node' ? ' (a place, not a part)' : ''}{/if}
-      {#if status[p.id]?.state === 'failed'}<span class="warn"> - did not load: {(status[p.id] as { why: string }).why}</span>{/if}
+      {#if status[p.id]?.state === 'failed'}<span class="warn">{' - '}did not load: {(status[p.id] as { why: string }).why}</span>{/if}
     </dd>
     {#if p.source}<dt>Design file</dt><dd class="mono small">{p.source}</dd>{/if}
   </dl>
@@ -454,7 +454,7 @@
               <dd>{selLeg.housings.length ? selLeg.housings.join(', ') : 'none named'}</dd>
               {#if selLeg.routes.length}<dt>Routes</dt><dd class="mono">{selLeg.routes.join(', ')}</dd>{/if}
               <dt>Path from</dt>
-              <dd>{selLeg.place_from || 'not said'}{#if selLeg.confirm}<span class="warn"> - provisional; nothing here is measured</span>{/if}</dd>
+              <dd>{selLeg.place_from || 'not said'}{#if selLeg.confirm}<span class="warn">{' - '}provisional; nothing here is measured</span>{/if}</dd>
             </dl>
           </section>
         {/if}

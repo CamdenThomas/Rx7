@@ -10,7 +10,7 @@
  * the design, never a source of facts (R11): a measurement beats it.
  */
 
-export const KINDS = ['unit', 'pcb', 'module', 'node', 'connector'] as const;
+export const KINDS = ['unit', 'pcb', 'module', 'node', 'connector', 'body', 'part'] as const;
 export type Kind = (typeof KINDS)[number];
 
 export interface Xyz {
@@ -52,6 +52,23 @@ export interface Part {
   leg: string;
   mate: string | null;
   cavities: Cavity[];
+  // the car's scene (05-cad D-518, 02-APP MG1); empty elsewhere
+  system: string;
+  zone: string;
+  made_from: string;
+  state: string;
+  joint: Joint | null;
+  /** set on the parts of a scene merged in as a layer (mergeScenes): drawn by that scene's
+   *  own rules, not the car's */
+  layer?: string;
+}
+/** How a car part is held to another (the car scene's `mate` object): what to, how, with
+ *  what, and which way and how far it moves when the car is taken apart (mm, car frame). */
+export interface Joint {
+  to: string;
+  kind: string;
+  fasteners: string[];
+  apart: Xyz | null;
 }
 /** One cavity of a housing (version 2): what crosses it and in what state. */
 export interface Cavity {
@@ -104,6 +121,9 @@ export interface Scene {
   missing: Missing[];
   notes: string[];
   legs: Leg[];
+  /** the car itself (05-cad D-518): every part a separate solid, drawn on its own */
+  car: boolean;
+  systems: { id: string; name: string }[];
 }
 export type Parsed = { ok: true; scene: Scene; problems: string[] } | { ok: false; reason: string };
 
@@ -171,10 +191,18 @@ export function parseScene(raw: unknown): Parsed {
       half: p.half === 'plug' || p.half === 'receptacle' ? p.half : '',
       housing: str(p.housing),
       leg: str(p.leg),
-      mate: str(p.mate) || null,
+      // a connector names its other half; a car part's mate is how it is held (Joint)
+      mate: typeof p.mate === 'string' ? p.mate || null : null,
       cavities: arr(p.cavities)
         .filter(isObj)
         .map((c) => ({ cav: str(c.cav), circuit: str(c.circuit), awg: str(c.awg), colour: str(c.colour), state: str(c.state) })),
+      system: str(p.system),
+      zone: str(p.zone),
+      made_from: str(p.made_from),
+      state: str(p.state),
+      joint: isObj(p.mate)
+        ? { to: str(p.mate.to), kind: str(p.mate.kind), fasteners: strs(p.mate.fasteners), apart: xyz(p.mate.apart) }
+        : null,
     });
   });
 
@@ -268,6 +296,14 @@ export function parseScene(raw: unknown): Parsed {
     legs.push(leg);
   });
 
+  for (const p of parts) {
+    if (p.joint?.to && !byId.has(p.joint.to)) problems.push(`part ${p.id}: it is held to '${p.joint.to}', which is not in the scene`);
+  }
+  const systems = arr(raw.systems)
+    .filter(isObj)
+    .map((x) => ({ id: str(x.id), name: str(x.name) || str(x.id) }))
+    .filter((x) => x.id);
+
   const missing: Missing[] = arr(raw.missing)
     .map((m) => (typeof m === 'string' ? { part: '', what: m, why: '' } : isObj(m) ? { part: str(m.part), what: str(m.what), why: str(m.why) } : null))
     .filter((m): m is Missing => !!m && !!(m.part || m.what || m.why));
@@ -277,7 +313,7 @@ export function parseScene(raw: unknown): Parsed {
 
   return {
     ok: true,
-    scene: { version, built: str(raw.built), project: str(raw.project), frame, parts, links, missing, notes: strs(raw.notes), legs },
+    scene: { version, built: str(raw.built), project: str(raw.project), frame, parts, links, missing, notes: strs(raw.notes), legs, car: raw.car === true, systems },
     problems,
   };
 }
@@ -320,10 +356,14 @@ export const listedChildren = (s: Scene, id: string) => childrenOf(s, id).filter
 /** What the assembly draws as its own object: every top-level part, and every connector
  *  wherever it sits (a unit's receptacle is drawn at its place, not hidden in the unit). */
 export function drawnIds(s: Scene): string[] {
-  return s.parts.filter((p) => !p.parent || isConnector(p)).map((p) => p.id);
+  return s.parts.filter((p) => (s.car && !p.layer) || !p.parent || isConnector(p)).map((p) => p.id);
 }
-/** The drawn object a part shows up as: a connector itself, anything else its top-level part. */
-export const drawnId = (s: Scene, id: string) => (isConnector(partById(s, id)) ? id : rootOf(s, id));
+/** The drawn object a part shows up as: a connector itself, anything else its top-level part;
+ *  in the car, where every part is its own solid, always itself. */
+export const drawnId = (s: Scene, id: string) => {
+  const p = partById(s, id);
+  return (s.car && !p?.layer) || isConnector(p) ? id : rootOf(s, id);
+};
 
 /** The top-level part a part sits in (itself when it is one). */
 export function rootOf(s: Scene, id: string): string {
@@ -383,7 +423,7 @@ export function focusOf(s: Scene, sel: Selection): Focus | null {
     if (isConnector(p) && p.housing) return focusOf(s, { kind: 'housing', id: p.housing });
     const inside = family(s, sel.id);
     const links = s.links.filter((l) => inside.has(l.from.part) || inside.has(l.to.part)).map((l) => l.id);
-    const own = [...family(s, rootOf(s, sel.id))].filter((id) => isConnector(partById(s, id)));
+    const own = s.car ? [] : [...family(s, rootOf(s, sel.id))].filter((id) => isConnector(partById(s, id)));
     return { parts: new Set([drawnId(s, sel.id), ...own]), links: new Set(links), legs: new Set() };
   }
   if (sel.kind === 'link') {
@@ -529,6 +569,149 @@ export const LEG_COLOURS = [0x98c1d9, 0xee6c4d, 0xe9c46a, 0x8fd694, 0xb39ddb] as
 export const legColour = (s: Scene, id: string) => LEG_COLOURS[Math.max(0, s.legs.findIndex((l) => l.id === id)) % LEG_COLOURS.length];
 export const legColourCss = (s: Scene, id: string) => `#${legColour(s, id).toString(16).padStart(6, '0')}`;
 
+// ------------------------------------------------------------------ the car (05-cad D-518, MG1)
+
+/** What a part rides on when the car is taken apart: its parent, else what it is held to. */
+export function carrierOf(s: Scene, id: string): string | null {
+  const p = partById(s, id);
+  if (!p) return null;
+  if (p.parent) return p.parent;
+  return p.joint?.to && partById(s, p.joint.to) ? p.joint.to : null;
+}
+
+/** How far a part has moved (mm, car frame) at taken-apart `t` (0 assembled, 1 apart): its
+ *  own `apart`, plus everything it rides on - a bolt on a bracket on a panel moves with the
+ *  panel, then the bracket, then by itself. A ring of carriers stops where it closes. */
+export function apartOffset(s: Scene, id: string, t: number): Xyz {
+  const out = { x: 0, y: 0, z: 0 };
+  const seen = new Set<string>();
+  for (let cur: string | null = id; cur && !seen.has(cur); cur = carrierOf(s, cur)) {
+    seen.add(cur);
+    const a = partById(s, cur)?.joint?.apart;
+    if (a) {
+      out.x += a.x * t;
+      out.y += a.y * t;
+      out.z += a.z * t;
+    }
+  }
+  return out;
+}
+
+/** A part's system: its own, else the one it sits in. */
+export function systemOf(s: Scene, id: string): string {
+  const seen = new Set<string>();
+  for (let p = partById(s, id); p && !seen.has(p.id); p = p.parent ? partById(s, p.parent) : undefined) {
+    seen.add(p.id);
+    if (p.system) return p.system;
+  }
+  return '';
+}
+export function zoneOf(s: Scene, id: string): string {
+  const seen = new Set<string>();
+  for (let p = partById(s, id); p && !seen.has(p.id); p = p.parent ? partById(s, p.parent) : undefined) {
+    seen.add(p.id);
+    if (p.zone) return p.zone;
+  }
+  return '';
+}
+
+/** The parts the Systems and Zone filters fade: none when nothing is chosen, else every part
+ *  outside the chosen systems (any of them) or the chosen zone. */
+export function filteredOut(s: Scene, systems: Set<string>, zone = ''): Set<string> {
+  const out = new Set<string>();
+  if (!systems.size && !zone) return out;
+  for (const p of s.parts) {
+    if ((systems.size && !systems.has(systemOf(s, p.id))) || (zone && zoneOf(s, p.id) !== zone)) out.add(p.id);
+  }
+  return out;
+}
+
+/** The car's parts list: by system in the scene's order (then any other, then none), each by
+ *  zone, each part by name. Places (nodes) and connectors are not parts here. */
+export function bySystemZone(s: Scene): { system: string; name: string; zones: { zone: string; parts: Part[] }[] }[] {
+  const named = new Map(s.systems.map((x, i) => [x.id, { name: x.name, i }]));
+  const groups = new Map<string, Map<string, Part[]>>();
+  for (const p of s.parts) {
+    if (p.kind === 'node' || isConnector(p)) continue;
+    const sys = systemOf(s, p.id);
+    const zones = groups.get(sys) ?? new Map<string, Part[]>();
+    const z = zoneOf(s, p.id);
+    zones.set(z, [...(zones.get(z) ?? []), p]);
+    groups.set(sys, zones);
+  }
+  const rank = (id: string) => named.get(id)?.i ?? (id ? 1e6 : 1e9);
+  return [...groups]
+    .sort(([a], [b]) => rank(a) - rank(b) || a.localeCompare(b))
+    .map(([system, zones]) => ({
+      system,
+      name: named.get(system)?.name ?? (system || 'No system'),
+      zones: [...zones]
+        .sort(([a], [b]) => (a ? (b ? a.localeCompare(b) : -1) : 1))
+        .map(([zone, parts]) => ({ zone, parts: parts.sort((x, y) => x.name.localeCompare(y.name)) })),
+    }));
+}
+
+/** The Manual part page's "Show in the model": only when the car's scene is there and has
+ *  that part (by its 00-CAR id). */
+export const inModel = (s: Scene | null, id: string) => !!s?.car && !!partById(s, id);
+
+/** Another scene drawn in the same frame as a layer (the harness inside the car): its parts,
+ *  links and legs with ids prefixed so none clash, its models fetched from its own folder,
+ *  and every part not already in a system put in `system`. */
+export function mergeScenes(base: Scene, extra: Scene, prefix: string, extraBase: string, system: { id: string; name: string }): Scene {
+  const id = (x: string) => (x ? `${prefix}${x}` : x);
+  const parts = extra.parts.map((p) => ({
+    ...p,
+    id: id(p.id),
+    parent: p.parent ? id(p.parent) : null,
+    children: p.children.map(id),
+    mate: p.mate ? id(p.mate) : null,
+    joint: p.joint ? { ...p.joint, to: id(p.joint.to) } : null,
+    glb: p.glb ? new URL(p.glb, new URL(extraBase, 'http://x/')).pathname : null,
+    system: p.system || system.id,
+    layer: prefix,
+  }));
+  const links = extra.links.map((l) => ({ ...l, id: id(l.id), from: { ...l.from, part: id(l.from.part) }, to: { ...l.to, part: id(l.to.part) } }));
+  const legs = extra.legs.map((l) => ({ ...l, id: id(l.id), branches: l.branches.map((b) => ({ ...b, to: id(b.to) })) }));
+  return {
+    ...base,
+    parts: [...base.parts, ...parts],
+    links: [...base.links, ...links],
+    legs: [...base.legs, ...legs],
+    systems: base.systems.some((x) => x.id === system.id) ? base.systems : [...base.systems, system],
+  };
+}
+
+export type Load = { state: 'loading' } | { state: 'none' } | { state: 'error'; reason: string } | { state: 'ok'; scene: Scene; problems: string[] };
+
+/** A scene file from the app's design folder, its absence said plainly (a 404, or the app
+ *  shell answering for a missing file), never thrown. */
+export async function fetchScene(base: string): Promise<Load> {
+  try {
+    const res = await fetch(`${base}scene.json`, { cache: 'no-cache' });
+    const body = await res.text();
+    if (!res.ok || looksAbsent(res.status, body)) return { state: 'none' };
+    let raw: unknown;
+    try {
+      raw = JSON.parse(body);
+    } catch (e) {
+      return { state: 'error', reason: `it is not JSON (${e instanceof Error ? e.message : e})` };
+    }
+    const p = parseScene(raw);
+    return p.ok ? { state: 'ok', scene: p.scene, problems: p.problems } : { state: 'error', reason: p.reason };
+  } catch {
+    return { state: 'none' };
+  }
+}
+
+/** The car's scene, fetched once per run of the app (the part pages ask on every visit). */
+let car: Promise<Load> | null = null;
+export const CAR_BASE = '/design/00-CAR/';
+export function carScene(): Promise<Load> {
+  car ??= fetchScene(CAR_BASE);
+  return car;
+}
+
 // ------------------------------------------------------------------ toggles
 
 export interface Toggles {
@@ -615,7 +798,7 @@ export function frameGlb(text: string | undefined): { scale: number; yUp: boolea
 // ------------------------------------------------------------------ framing and labels
 
 /** A part with a model of its own (a node is only a place, a far end of the harness). */
-export const modelled = (p: Part | undefined) => !!p && (p.kind === 'unit' || p.kind === 'pcb' || p.kind === 'module');
+export const modelled = (p: Part | undefined) => !!p && (p.kind === 'unit' || p.kind === 'pcb' || p.kind === 'module' || p.kind === 'body' || p.kind === 'part');
 
 /** What the assembly's camera frames. By default, and on "Show everything", the units,
  *  boards and modules only - the far-end nodes and the legs' connectors are spread over the
@@ -685,7 +868,7 @@ export function declutter(items: LabelBox[], width: number, height: number, pad 
 
 // ------------------------------------------------------------------ words
 
-export const KIND_LABEL: Record<Kind, string> = { unit: 'Unit', pcb: 'Board', module: 'Module', node: 'Point', connector: 'Connector' };
+export const KIND_LABEL: Record<Kind, string> = { unit: 'Unit', pcb: 'Board', module: 'Module', node: 'Point', connector: 'Connector', body: 'Panel', part: 'Part' };
 
 export function bytesLabel(n: number | null): string {
   if (n == null) return '';

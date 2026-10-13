@@ -10,8 +10,19 @@
   import { app } from '../../lib/app.svelte';
   import Linked from '../../components/Linked.svelte';
   import PartLink from '../../components/PartLink.svelte';
+  import { carScene, inModel } from '../../lib/design';
 
   let { m, id }: { m: Manual; id: string } = $props();
+
+  // "Show in the model" (MG1) only when the car's model has this part (its 00-CAR id).
+  let modelHas = $state(false);
+  $effect(() => {
+    const pid = id;
+    modelHas = false;
+    void carScene().then((l) => {
+      if (pid === id) modelHas = l.state === 'ok' && inModel(l.scene, pid);
+    });
+  });
 
   const p = $derived(m.parts.find((x) => x.id === id));
   const sys = $derived(p ? system(p.system) : undefined);
@@ -85,6 +96,7 @@
         {#if sys}<a href={href({ name: 'manual', page: 'systems', id: sys.id })}>{sys.name}</a>{/if}
         {#if zone}<span>{zone.name}</span>{/if}
         <span class="id">{p.id}</span>
+        {#if modelHas}<a class="model-link" href={href({ name: 'manual', page: 'model', id: p.id })}>Show in the model</a>{/if}
       </p>
       {#if chain.length}
         <p class="chain">Part of {#each chain as c, i (c.id)}{i ? ' › ' : ''}<PartLink id={c.id} />{/each}</p>

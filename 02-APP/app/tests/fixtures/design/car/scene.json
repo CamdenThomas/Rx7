@@ -1,0 +1,41 @@
+{
+  "version": 2,
+  "car": true,
+  "built": "2026-10-13T15:00:00Z",
+  "project": "00-CAR",
+  "frame": {
+    "units": "mm", "x": "right", "y": "forward", "z": "up", "ruling": "D-418",
+    "glb": "mm, z up, the part's own frame", "rotation": "degrees, three.js Euler order XYZ"
+  },
+  "systems": [{ "id": "body", "name": "Body" }, { "id": "suspension", "name": "Suspension" }],
+  "parts": [
+    {
+      "id": "floor-pan", "name": "Floor pan", "kind": "body", "glb": "floor-pan.glb", "parent": null,
+      "place": { "x": 0, "y": -1200, "z": 250 }, "place_from": "factory datums DT09-DT15", "confirm": true,
+      "size_mm": { "x": 1400, "y": 2000, "z": 40 }, "system": "body", "zone": "Floor", "made_from": "factory", "state": "rough"
+    },
+    {
+      "id": "PT-STUB", "name": "Rear crossmember", "kind": "part", "glb": "crossmember.glb", "parent": null,
+      "place": { "x": 0, "y": -2000, "z": 180 }, "place_from": "FSM body section", "confirm": true,
+      "size_mm": { "x": 1100, "y": 120, "z": 90 }, "system": "suspension", "zone": "Rear", "made_from": "found", "state": "dimensioned",
+      "mate": { "to": "floor-pan", "kind": "bolted", "fasteners": ["M10 x 4"], "apart": { "x": 0, "y": 0, "z": -300 } },
+      "children": ["bracket"]
+    },
+    {
+      "id": "bracket", "name": "Trailing arm bracket", "kind": "part", "glb": "bracket.glb", "parent": "PT-STUB",
+      "place": { "x": 300, "y": 0, "z": -20 }, "place_from": "guess", "confirm": true,
+      "size_mm": { "x": 80, "y": 60, "z": 50 }, "made_from": "guess", "state": "rough",
+      "mate": { "to": "PT-STUB", "kind": "bolted", "fasteners": ["M8 x 2"], "apart": { "x": 200, "y": 0, "z": 0 } }
+    },
+    {
+      "id": "front-crossmember", "name": "Front crossmember", "kind": "part", "glb": null, "parent": null,
+      "place": { "x": 0, "y": 600, "z": 220 }, "place_from": "catalogue", "confirm": true,
+      "size_mm": { "x": 1000, "y": 150, "z": 100 }, "system": "suspension", "zone": "Front", "made_from": "catalogue", "state": "confirmed",
+      "mate": { "to": "floor-pan", "kind": "bolted", "fasteners": ["M12 x 4"], "apart": { "x": 0, "y": 0, "z": -250 } }
+    },
+    { "id": "jack-point", "name": "Rear jack point", "kind": "node", "glb": null, "place": { "x": 0, "y": -2100, "z": 150 }, "system": "body", "zone": "Rear" }
+  ],
+  "links": [],
+  "missing": [],
+  "notes": ["The unibody's first pass: rough, from the factory figures (D-518)."]
+}
