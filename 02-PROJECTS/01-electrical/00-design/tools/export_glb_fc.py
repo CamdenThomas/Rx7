@@ -143,7 +143,8 @@ def run_unit():
     for c in D.conns:
         if not c.get("fitted", True):
             continue
-        conns.append({"code": c.name, "at": [c.X, D.y_plate1, c.Z],
+        conns.append({"code": c.name, "at": [c.X, D.y_plate1, c.Z], "part": c.get("part"),
+                      "tip_y": D.get("y_tip"),
                       "note": "%s, the rear plate's outer face at the cut-out's centre (%s row)"
                               % (c.part, c.get("row", "lower"))})
     boards = {}

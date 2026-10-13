@@ -13,8 +13,16 @@ It writes, into DIR (default 02-APP/app/public/design/01-electrical):
   display-unit.glb  FreeCAD mock-ups (export_glb_fc.py imports their own unit_lib, so nothing
                     is drawn twice), one named node per solid: case:<name>, inside:<name>
   pmu.glb           ECUMaster's PMU-24 STEP from 01-REFERENCE, with its own face colours
-  scene.json        every part, its place, its connectors, and one labelled link per housing
-                    (contract version 1, described in 00-design/README.md)
+  connectors/       one glb per Deutsch variant and manifest.json, by harness/cad/connectors/
+                    build_connectors.py (Y24), run here as a step
+  devices/          the far ends' devices and common parts and manifest.json, by harness/cad/
+                    devices/build_devices.py (Y28), run here as a step
+  scene.json        every part, its place, its connectors, one labelled link per housing; at
+                    version 2 (D-514, Y26) both halves of every housing, the devices at their
+                    nodes and the legs as paths (the contract is in 00-design/README.md §13)
+
+--only takes an asset, `connectors`, `devices`, or `legs` / `scene` (the scene alone, from the
+record and what is built).
 
 Every glb is in the part's own frame, in millimetres, z up - NOT glTF's metres and y up - so a
 viewer working in the car's frame (D-418) puts the file under a node at `place` and nothing else.
@@ -153,6 +161,98 @@ FAR_END = {
     "DP-DCU-D": ("hvac-case", "D-480: the door servos and the blower stage at the HVAC case"),
     "DP-DCU-E": ("left-plate", "D-492: the left plate's link"),
 }
+
+
+# ------------------------------------------------------------- version 2: the harness (D-514) --
+# The two builders whose glb files and manifests the scene places (Y24, Y28). The export runs them
+# as steps; their own READMEs say how each model is made.
+CONNECTORS_BUILDER = os.path.join(DESIGN, "harness", "cad", "connectors", "build_connectors.py")
+DEVICES_BUILDER = os.path.join(DESIGN, "harness", "cad", "devices", "build_devices.py")
+STEPS = ["connectors", "devices"]
+UNIT_OF = {"ICU unit": "display-unit", "Climate unit": "control-unit"}   # housings.where -> unit
+
+# Nodes no housings.where names, judgement: (zone, box, fx fy fz, name, why).
+NODES_EXTRA = {
+    "cargo-bin-passenger": ("cargo", 0, (0.85, 0.5, 0.15), "Passenger-side cargo bin",
+                            "D-449: the battery, disconnect, Class-T, MRBF and amplifier"),
+    "door-driver": ("doors", 0, (0.5, 0.7, 0.4), "Driver door",
+                    "RT20: the door's drop through the jamb boot (D1)"),
+    "door-passenger": ("doors", 1, (0.5, 0.7, 0.4), "Passenger door",
+                       "RT20: the door's drop through the jamb boot (D2)"),
+}
+# Devices the devices builder sits at leg-l4 because the passenger cargo bin had no node (D-449).
+MOVE_DEVICES = {k: "cargo-bin-passenger" for k in ("P049", "P047", "P051", "00-CAR:P-002", "DV60")}
+
+# The legs' via points: (zone, box, fx fy fz across that box, what it stands for). Judgement, every
+# one provisional and confirm: nothing places a grommet or a sill run yet (D-416).
+WAYPOINTS = {
+    "firewall grommet": ("engine_bay", 0, (0.75, 0.0, 0.6),
+                         "RT01: passenger side, on the firewall's plane (the engine bay's rear face)"),
+    "cowl grommet": ("engine_bay", 0, (0.85, 0.0, 0.95), "RT06: the cowl, passenger end"),
+    "inner wing": ("engine_bay", 0, (0.95, 0.65, 0.75), "RT06: along the passenger inner wing"),
+    "dash rail": ("dash", 0, (0.5, 0.55, 0.65), "RT11 / RT12 / RT14: the dash rail, centre"),
+    "dash rail, driver": ("dash", 0, (0.3, 0.55, 0.65), "RT10 / RT13: the dash rail, driver side"),
+    "dash rail, passenger": ("dash", 0, (0.7, 0.55, 0.65), "RT12: the dash rail, passenger side"),
+    "lower dash, driver": ("dash", 0, (0.08, 0.5, 0.05), "RT19: behind the lower dash to the sill"),
+    "tunnel, front": ("cabin", 0, (0.5, 0.97, 0.12), "RT15 / RT21: the tunnel's front"),
+    "tunnel, rear": ("cabin", 0, (0.5, 0.03, 0.12), "RT15: the tunnel's rear"),
+    "tunnel side, driver": ("cabin", 0, (0.44, 0.8, 0.04), "RT27: down the tunnel side"),
+    "tunnel side, passenger": ("cabin", 0, (0.56, 0.8, 0.04), "RT28 / RT30: down the tunnel side"),
+    "floor, front": ("cabin", 0, (0.5, 0.97, 0.03), "RT20: across the front floor to the far door"),
+    "jamb boot, driver": ("doors", 0, (0.5, 0.97, 0.3), "RT20: the driver jamb boot"),
+    "jamb boot, passenger": ("doors", 1, (0.5, 0.97, 0.3), "RT20: the passenger jamb boot"),
+    "sill, passenger, front": ("cabin", 0, (0.95, 0.9, 0.04), "RT30 / RT32: the passenger sill"),
+    "sill, passenger, rear": ("cabin", 0, (0.95, 0.05, 0.04), "RT30 / RT32: the passenger sill"),
+    "sill, driver, front": ("cabin", 0, (0.05, 0.9, 0.04), "RT32: the driver sill"),
+    "sill, driver, rear": ("cabin", 0, (0.05, 0.05, 0.04), "RT32: the driver sill"),
+    "hinge loop": ("cargo", 0, (0.5, 0.97, 0.97), "RT18 / RT24: the hatch hinge loop"),
+}
+# Each leg: its record name(s) in routes.leg, its main path (after its start) and its branches as
+# (the main-path point it leaves from, the points after it). A name is a WAYPOINTS key or a part
+# id; "@start" is the path's first point. Judgement, from the routes' from / to / via.
+LEGS = [
+    {"id": "L1", "name": "L1 Engine", "routes": ["L1 Engine"],
+     "main": ["firewall grommet", "leg-l1"], "branches": []},
+    {"id": "L2", "name": "L2 Front", "routes": ["L2 Front"],
+     "main": ["cowl grommet", "inner wing", "leg-l2"],
+     "branches": [("leg-l2", ["nose"]), ("leg-l2", ["nose-bumper"])]},
+    {"id": "L3", "name": "L3 Dash", "routes": ["L3 Dash"],
+     "main": ["dash rail", "dash rail, driver", "leg-l3"],
+     "branches": [("dash rail", ["control-unit"]), ("dash rail, driver", ["display-unit"]),
+                  ("dash rail", ["dash rail, passenger", "glovebox"]),
+                  ("dash rail", ["hvac-case"]), ("dash rail", ["behind-dash"]),
+                  ("dash rail", ["centre-stack"]),
+                  ("dash rail", ["centre-stack", "tunnel side, driver", "seat-driver"]),
+                  ("dash rail", ["centre-stack", "tunnel side, passenger", "seat-passenger"])]},
+    {"id": "L4", "name": "L4 Rear", "routes": ["L4 Rear", "Sill"],
+     "main": ["tunnel, front", "tunnel, rear", "rear-node", "leg-l4"],
+     "branches": [("@start", ["lower dash, driver", "sill-node"]),
+                  ("@start", ["lower dash, driver", "sill-node", "jamb boot, driver",
+                              "door-driver"]),
+                  ("@start", ["lower dash, driver", "sill-node", "floor, front",
+                              "jamb boot, passenger", "door-passenger"]),
+                  ("rear-node", ["hinge loop", "hatch"]), ("rear-node", ["quarter-driver"])]},
+    {"id": "Audio", "name": "Audio", "routes": ["Audio"], "start": "centre-stack",
+     "main": ["tunnel side, passenger", "sill, passenger, front", "sill, passenger, rear",
+              "cargo-bin-passenger"],
+     "branches": [("cargo-bin-passenger", ["cargo-bin"]),
+                  ("cargo-bin-passenger", ["quarter-passenger"]),
+                  ("cargo-bin-passenger", ["sill, driver, rear", "quarter-driver"]),
+                  ("sill, passenger, front", ["kick-passenger"]),
+                  ("sill, passenger, front", ["kick-passenger", "pillar-passenger"]),
+                  ("cargo-bin-passenger", ["sill, driver, rear", "sill, driver, front",
+                                           "kick-driver"]),
+                  ("cargo-bin-passenger", ["sill, driver, rear", "sill, driver, front",
+                                           "kick-driver", "pillar-driver"]),
+                  ("cargo-bin-passenger", ["tunnel, rear", "console"])]},
+]
+# Wire outer diameters by gauge, mm: TXL-class thin wall, a catalogue figure (confirm against the
+# wire bought). A bundle is about 1.2 x the root of the sum of its conductors' squared diameters
+# (1.2 x sqrt(n) x OD for one gauge); a blank or unknown gauge counts as 16.
+AWG_OD = {"10": 3.5, "12": 2.9, "14": 2.4, "16": 2.0, "18": 1.7, "20": 1.5, "22": 1.3}
+BUNDLE_K, BUNDLE_MIN_R = 1.2, 3.0
+WIRED = ("LIVE", "CAPPED")      # a conductor in the leg; RESERVED is pinned at the post only
+CLUSTER_GAP, NODE_GAP, DEVICE_GAP, ROW_WRAP = 20.0, 5.0, 10.0, 600.0
 
 
 def rel(p):
@@ -713,6 +813,7 @@ def read_record():
             raise Crash("rx7.py export failed (rc %s): %s" % (r.returncode, r.stderr[-300:]))
         data = json.load(open(path))
     want = {("00-CAR", "zones"), ("00-CAR", "parts"), ("01-electrical", "housings"),
+            ("01-electrical", "routes"),
             ("01-electrical", "cavities"), ("01-electrical", "modules"),
             ("01-electrical", "parts")}
     out = {}
@@ -736,16 +837,18 @@ def _short(text):
     return text.strip()
 
 
-def _zone_box(rec, zid):
+def _zone_box(rec, zid, box=0):
     for z in rec[("00-CAR", "zones")]:
         if z["id"] == zid and z.get("model_box_mm"):
-            first = z["model_box_mm"].split(";")[0].split()
-            return [float(v) for v in first]
+            boxes = z["model_box_mm"].split(";")
+            if box >= len(boxes):
+                raise Fail("00-CAR zones %s has no box %d" % (zid, box + 1))
+            return [float(v) for v in boxes[box].split()]
     raise Fail("00-CAR zones has no model_box_mm for %r" % zid)
 
 
-def _in_zone(rec, zid, f):
-    b = _zone_box(rec, zid)
+def _in_zone(rec, zid, f, box=0):
+    b = _zone_box(rec, zid, box)
     return [round(b[0] + f[0] * (b[1] - b[0]), 1), round(b[2] + f[1] * (b[3] - b[2]), 1),
             round(b[4] + f[2] * (b[5] - b[4]), 1)]
 
@@ -791,7 +894,7 @@ def _name(rec, table, key):
     return _short(r.get("module") or r.get("item") or key)
 
 
-def assemble(rec, metas, built):
+def assemble(rec, metas, built, out=None):
     """scene.json from the record and the assets' metas. Raises Fail on an inconsistency."""
     notes, missing, parts = [], [], {}
     for aid in ASSETS:
@@ -837,8 +940,9 @@ def assemble(rec, metas, built):
         parts["left-plate"] = board_part(rec, "left-plate", lm, None, lp, "provisional", True)
         parts["left-plate"]["place_note"] = ("inside 00-CAR zones dash: %s, the board facing "
                                              "the driver" % TOP["left-plate"][1])
-    missing.append({"part": "left-plate", "what": "housing model",
-                    "why": "no plate housing is drawn yet; the board stands for the plate"})
+    if parts["left-plate"]["parent"] is None:     # the CUR is its housing now (D-514)
+        missing.append({"part": "left-plate", "what": "housing model",
+                        "why": "no plate housing is drawn yet; the board stands for the plate"})
     if lm.get("j1"):
         parts["left-plate"]["connectors"] = [{"code": "DP-DCU-E", "at": {
             "x": lm["j1"][0], "y": lm["j1"][1], "z": 0.0}, "face": "rear",
@@ -967,7 +1071,7 @@ def assemble(rec, metas, built):
     order = list(dict.fromkeys(list(UNITS) + [k for u in UNITS.values() for k in u["children"]] +
                                ["left-plate", "pmu"]))
     out_parts = [parts[k] for k in order] + [nodes[k] for k in sorted(nodes)]
-    return {
+    scene = {
         "version": 1,
         "built": built,
         "project": "01-electrical",
@@ -980,6 +1084,391 @@ def assemble(rec, metas, built):
         "notes": notes,
         "assets": {k: metas[k] for k in ASSETS},
     }
+    if out is not None:
+        harness_v2(rec, scene, metas, out)
+    return scene
+
+
+# ======================================================================= version 2: the harness ==
+def _slug(text):
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+
+
+def _box_rot(box, place):
+    """A part's own-frame box [lo, hi] turned by `place`'s rotation (not moved)."""
+    lo, hi = box
+    pts = [_rot([x, y, z], place) for x in (lo[0], hi[0]) for y in (lo[1], hi[1])
+           for z in (lo[2], hi[2])]
+    return [[min(p[k] for p in pts) for k in range(3)], [max(p[k] for p in pts) for k in range(3)]]
+
+
+def _box_union(a, b):
+    return [[min(a[0][k], b[0][k]) for k in range(3)], [max(a[1][k], b[1][k]) for k in range(3)]]
+
+
+def _xyz(p):
+    return {"x": round(p[0], 2), "y": round(p[1], 2), "z": round(p[2], 2)}
+
+
+def _manifest(out, sub):
+    path = os.path.join(out, sub, "manifest.json")
+    if not os.path.exists(path):
+        raise Fail("%s is not built: run export_glb.py --only %s" % (rel(path), sub))
+    return json.load(open(path))
+
+
+def _cavity_rows(cavs):
+    return [{"cav": int(c.get("cav") or 0), "circuit": (c.get("circuit") or "").strip(),
+             "awg": (c.get("awg") or "").strip(), "colour": (c.get("colour") or "").strip(),
+             "state": (c.get("state") or "").strip()} for c in cavs]
+
+
+def _plug_of(variant):
+    """The plug that mates a DT13 PCB receptacle: a DT06 of the same ways (DT13-12PA -> DT06-12S)."""
+    m = re.fullmatch(r"DT13-0?(\d+)PA", variant or "")
+    return "DT06-%sS" % m.group(1) if m else None
+
+
+def _pack(items, anchor, align="centre", within=None):
+    """Lay boxes on a shelf: rows along +x wrapping at ROW_WRAP, rows stepping along +y, every
+    box's underside on the anchor's z. items: [(key, [lo, hi] in the car's orientation, gap)].
+    Returns {key: [tx, ty, tz]}, the translation for each item's origin; the block is centred on
+    the anchor (align centre) or starts at its x (align left), centred on its y either way."""
+    rows, row, w = [], [], 0.0
+    for it in items:
+        iw = it[1][1][0] - it[1][0][0]
+        if row and w + iw > ROW_WRAP:
+            rows.append(row)
+            row, w = [], 0.0
+        row.append(it)
+        w += iw + it[2]
+    if row:
+        rows.append(row)
+    rel_, y, width = {}, 0.0, 0.0
+    for row in rows:
+        x, depth = 0.0, 0.0
+        for key, (lo, hi), gap in row:
+            rel_[key] = [x - lo[0], y - lo[1], -lo[2]]
+            x += hi[0] - lo[0] + gap
+            depth = max(depth, hi[1] - lo[1])
+        width = max(width, x - row[-1][2])
+        y += depth + max(it[2] for it in row)
+    depth_all = y - (max(it[2] for it in rows[-1]) if rows else 0.0)
+    dx = anchor[0] - (width / 2.0 if align == "centre" else 0.0)
+    if within:                                    # keep the shelf inside the car's width
+        dx = max(within[0], min(dx, within[1] - width))
+    dy = anchor[1] - depth_all / 2.0
+    return {k: [v[0] + dx, v[1] + dy, v[2] + anchor[2]] for k, v in rel_.items()}
+
+
+def _conn_part(code, half, variant, man, place, parent, place_from, leg, cavs, note):
+    e = man.get(variant)
+    if e is None:
+        raise Fail("housing %s: no connector model for %s in connectors/manifest.json" % (code,
+                                                                                     variant))
+    other = "receptacle" if half == "plug" else "plug"
+    return {"id": "%s:%s" % (code, half), "kind": "connector",
+            "name": "%s %s · %s" % (code, half, variant), "family": variant, "half": half,
+            "housing": code, "leg": leg, "glb": e["glb"], "bytes": e["bytes"], "parent": parent,
+            "place": place, "place_from": place_from, "confirm": True,
+            "place_note": note, "size_mm": e["size_mm"],
+            "origin": "mating face centre; mate along +Y; wires along -Y",
+            "mate": "%s:%s" % (code, other), "cavities": cavs, "connectors": [], "children": [],
+            "source": "01-electrical housings %s; connectors/manifest.json %s (%s)"
+                      % (code, variant, "stand-in" if e.get("standin") else "vendor model")}
+
+
+def _mated(place):
+    """The plug's place for a receptacle at `place`: the same, turned half a turn about its z."""
+    p = dict(place)
+    p["rz"] = ((p["rz"] + 180.0 + 180.0) % 360.0) - 180.0
+    return p
+
+
+def harness_v2(rec, scene, metas, out):
+    """Grow a version-1 scene to version 2 (D-514, Y26): every housing's two halves, the devices
+    at their nodes, the legs as paths. Adds parts and fields; changes none it finds."""
+    cman = _manifest(out, "connectors")
+    dman = _manifest(out, "devices")
+    parts = {p["id"]: p for p in scene["parts"]}
+    notes, new = scene["notes"], []
+    cav_by = {}
+    for cv in rec[("01-electrical", "cavities")]:
+        cav_by.setdefault(cv["housing"], []).append(cv)
+    for k in cav_by:
+        cav_by[k].sort(key=lambda r: int(r.get("cav") or 0))
+    housings = rec[("01-electrical", "housings")]
+
+    # ---- the extra nodes
+    for nid, (zone, box, f, name, why) in NODES_EXTRA.items():
+        if nid in parts:
+            continue
+        at = _in_zone(rec, zone, f, box)
+        n = {"id": nid, "name": name, "kind": "node", "glb": None, "bytes": 0, "parent": None,
+             "place": _place(*at), "place_from": "provisional", "confirm": True,
+             "place_note": "inside 00-CAR zones %s (box %d): %s" % (zone, box + 1, why),
+             "size_mm": {"x": 0, "y": 0, "z": 0}, "origin": "the place itself",
+             "connectors": [], "children": [], "source": "export_glb.py NODES_EXTRA"}
+        parts[nid] = n
+        new.append(n)
+
+    # ---- a unit's receptacles at its rear face, each plug mated
+    by_code = {h["code"]: h for h in housings}
+    for uid in UNITS:
+        for c in metas[uid].get("connectors", []):
+            code = c["code"]
+            h = by_code.get(code)
+            rv = (h or {}).get("box_side") or c.get("part") or \
+                (re.match(r"(DT13-\d+PA)", c.get("note", "")) or [None, None])[1]
+            pv = (h or {}).get("leg_side") or _plug_of(rv)
+            y = c.get("tip_y") if c.get("tip_y") is not None else c["at"][1]
+            pl = _place(c["at"][0], y, c["at"][2])
+            cavs = _cavity_rows(cav_by.get(code, []))
+            note = ("the mock-up's cut-out at the receptacle's tip (%s's rear face)" % uid +
+                    ("" if h else "; no housings row yet - no cavities (block 01.41)"))
+            leg = (h or {}).get("leg", "")
+            new.append(_conn_part(code, "receptacle", rv, cman, pl, uid, "mock-up report", leg,
+                                  cavs, note))
+            new.append(_conn_part(code, "plug", pv, cman, _mated(pl), uid, "mock-up report", leg,
+                                  cavs, note))
+
+    # ---- the dash post: a cluster of receptacles beside the PMU, a row per leg
+    pmu = parts["pmu"]
+    pb = metas["pmu"]["bbox"]
+    pp = pmu["place"]
+    plo = [pp["x"] + pb[0][0], pp["y"] + pb[0][1], pp["z"] + pb[0][2]]
+    phi = [pp["x"] + pb[1][0], pp["y"] + pb[1][1], pp["z"] + pb[1][2]]
+    pc = [(plo[k] + phi[k]) / 2.0 for k in range(3)]
+    rec_rot, plug_rot = _place(rz=180), _place()
+    rows = []
+    for lg in LEGS:
+        row = [h for h in housings if (h.get("where") or "").strip() == "Dash post" and
+               (h.get("leg") or "").startswith(lg["name"])]
+        if row:
+            rows.append((lg["id"], row))
+    post_codes = {h["code"] for _, r in rows for h in r}
+    stray = [h["code"] for h in housings if (h.get("where") or "").strip() == "Dash post" and
+             h["code"] not in post_codes]
+    if stray:
+        raise Fail("dash-post housings on no leg row: %s" % ", ".join(stray))
+
+    def pair_box(h, rrot, prot):
+        rb = _box_rot(cman[h["box_side"]]["bbox_mm"], rrot)
+        qb = _box_rot(cman[h["leg_side"]]["bbox_mm"], prot)
+        return _box_union(rb, qb)
+
+    for h in housings:
+        for v in (h.get("box_side"), h.get("leg_side")):
+            if v not in cman:
+                raise Fail("housing %s: no connector model for %s in connectors/manifest.json"
+                           % (h["code"], v))
+    heights = [max(pair_box(h, rec_rot, plug_rot)[1][2] - pair_box(h, rec_rot, plug_rot)[0][2]
+                   for h in r) for _, r in rows]
+    total_h = sum(heights) + CLUSTER_GAP * (len(rows) - 1)
+    z_top = pc[2] + total_h / 2.0
+    right = plo[0] - 40.0
+    starts = {}
+    for (lid, row), rh in zip(rows, heights):
+        boxes = [pair_box(h, rec_rot, plug_rot) for h in row]
+        width = sum(b[1][0] - b[0][0] for b in boxes) + CLUSTER_GAP * (len(row) - 1)
+        x = right - width
+        zc = z_top - rh / 2.0
+        for h, b in zip(row, boxes):
+            tx = x - b[0][0]
+            pl = _place(tx, pc[1], zc - (b[0][2] + b[1][2]) / 2.0, rz=180)
+            cavs = _cavity_rows(cav_by.get(h["code"], []))
+            note = "the dash post's cluster beside the PMU, row %s (provisional)" % lid
+            new.append(_conn_part(h["code"], "receptacle", h["box_side"], cman, pl, None,
+                                  "provisional", h.get("leg", ""), cavs, note))
+            new.append(_conn_part(h["code"], "plug", h["leg_side"], cman, _mated(pl), None,
+                                  "provisional", h.get("leg", ""), cavs, note))
+            x += b[1][0] - b[0][0] + CLUSTER_GAP
+        y_out = pc[1] + min(pair_box(h, rec_rot, plug_rot)[0][1] for h in row)
+        starts[lid] = [right - width / 2.0, y_out, zc]
+        z_top -= rh + CLUSTER_GAP
+    notes.append("The dash post is a cluster of receptacles beside the PMU, a row per leg "
+                 "(L1 at the top), %d mm apart, each plug mated, facing the cabin - a judgement "
+                 "until the post is designed and measured." % CLUSTER_GAP)
+
+    # ---- far ends: each other housing at its node, and the devices at theirs
+    node_items, where_node = {}, {}
+    for key, v in WHERE.items():
+        where_node[key] = v[0]
+    far = []
+    for h in housings:
+        where = (h.get("where") or "").strip()
+        if where == "Dash post" or any(where.startswith(k) for k in UNIT_OF):
+            continue
+        nid = where_node.get(where)
+        if nid is None or nid not in parts:
+            raise Fail("housing %s: where %r has no node in the scene" % (h["code"], where))
+        box = _box_union(_box_rot(cman[h["box_side"]]["bbox_mm"], _place()),
+                         _box_rot(cman[h["leg_side"]]["bbox_mm"], _place(rz=180)))
+        node_items.setdefault(nid, []).append(("conn:" + h["code"], box, NODE_GAP))
+        far.append((h, nid))
+
+    models = dman.get("_meta", {}).get("models", {})
+    unplaced, dev_at = [], []
+    for key in sorted(k for k in dman if not k.startswith("_")):
+        e = dman[key]
+        spots = [(MOVE_DEVICES.get(key, e.get("node")), e.get("count", 1))]
+        spots += [(a.get("node"), a.get("count", 1)) for a in e.get("also", [])]
+        total = sum(c for _, c in spots if c)
+        if not total:
+            unplaced.append({"device": key, "why": "count 0: %s" % (e.get("node_note") or
+                                                                     "drawn by another entry")})
+            continue
+        box = (models.get(e.get("model"), {}) or {}).get("bbox")
+        if box is None:
+            unplaced.append({"device": key, "why": "its model has no box in the manifest"})
+            continue
+        i = 0
+        for nid, count in spots:
+            for _ in range(count or 0):
+                i += 1
+                pid = "dev-%s%s" % (_slug(key), "-%d" % i if total > 1 else "")
+                if nid not in parts:
+                    unplaced.append({"device": key, "why": "its node %r is not in the scene"
+                                     % nid})
+                    continue
+                kind = parts[nid]["kind"]
+                if kind in ("pcb", "unit"):
+                    unplaced.append({"device": key, "why": "inside %s: that part's glb draws it"
+                                     % nid})
+                    continue
+                dev_at.append((pid, key, e, nid, i, total))
+                node_items.setdefault(nid, []).append(("dev:" + pid, box, DEVICE_GAP))
+    if any(k in dman and MOVE_DEVICES[k] != dman[k].get("node") for k in MOVE_DEVICES):
+        notes.append("The battery, disconnect, Class-T, MRBF holders and amplifier are moved to "
+                     "the passenger-side cargo bin (D-449); the devices builder had no node for it.")
+
+    cb = _zone_box(rec, "cabin")
+    cabin_x = (cb[0], cb[1])
+    spots = {}
+    for nid, items in node_items.items():
+        if nid == "pmu":                            # the dash node's parts: a shelf right of the PMU
+            spots.update(_pack(items, [phi[0] + 40.0, pc[1], plo[2]], align="left"))
+        else:
+            n = parts[nid]["place"]
+            spots.update(_pack(items, [n["x"], n["y"], n["z"]], within=cabin_x))
+    for h, nid in far:
+        t = spots["conn:" + h["code"]]
+        pl = _place(*t)
+        cavs = _cavity_rows(cav_by.get(h["code"], []))
+        note = "at its far end, node %s, beside the others there (provisional)" % nid
+        new.append(_conn_part(h["code"], "receptacle", h["box_side"], cman, pl, None,
+                              "provisional", h.get("leg", ""), cavs, note))
+        new.append(_conn_part(h["code"], "plug", h["leg_side"], cman, _mated(pl), None,
+                              "provisional", h.get("leg", ""), cavs, note))
+    for pid, key, e, nid, i, total in dev_at:
+        t = spots["dev:" + pid]
+        new.append({
+            "id": pid, "name": e["name"] + ("" if total == 1 else " (%d of %d)" % (i, total)),
+            "kind": "module", "device": key, "node": nid, "glb": e["glb"], "bytes": e["bytes"],
+            "parent": None, "place": _place(*t), "place_from": "provisional", "confirm": True,
+            "place_note": "at node %s, on a shelf with the others there (provisional)" % nid,
+            "size_mm": e["size_mm"], "origin": e.get("origin", ""), "connectors": [],
+            "children": [], "standin": e.get("standin"), "cad": e.get("cad"),
+            "source": "devices/manifest.json %s (%s)" % (key, e.get("source", ""))})
+    notes.append("Every far end's connectors and devices stand on a shelf centred on their node, "
+                 "%d mm apart (the devices %d), rows wrapping at %d mm - a judgement, so nothing "
+                 "overlaps; nodes close together (the sill node and the driver kick panel) can "
+                 "still share space." % (NODE_GAP, DEVICE_GAP, ROW_WRAP))
+    for p in new:
+        parts[p["id"]] = p
+
+    # ---- the legs
+    def unit_end(uid):
+        cs = [p for p in new if p.get("parent") == uid and p.get("half") == "receptacle"]
+        u = parts[uid]["place"]
+        if not cs:
+            return [u["x"], u["y"], u["z"]]
+        m = [sum(c["place"][k] for c in cs) / len(cs) for k in "xyz"]
+        return [u["x"] + m[0], u["y"] + m[1] + 70.0, u["z"] + m[2]]
+
+    def point(name, start):
+        if name == "@start":
+            return list(start)
+        if name in WAYPOINTS:
+            zone, box, f, _ = WAYPOINTS[name]
+            return _in_zone(rec, zone, f, box)
+        p = parts.get(name)
+        if p is None:
+            raise Fail("leg point %r is neither a WAYPOINTS name nor a part" % name)
+        if p["kind"] == "unit":
+            return unit_end(name)
+        if p["kind"] == "module":
+            return pc if name == "pmu" else [p["place"][k] for k in "xyz"]
+        return [p["place"][k] for k in "xyz"]
+
+    def ok_awg(a):
+        a = (a or "").split()[0] if (a or "").split() else "16"
+        return AWG_OD.get(a, AWG_OD["16"])
+
+    legs, taken = [], set()
+    routes = rec[("01-electrical", "routes")]
+    for lg in LEGS:
+        start = point(lg["start"], None) if "start" in lg else starts.get(lg["id"])
+        if start is None:
+            raise Fail("leg %s has no row at the dash post" % lg["id"])
+        path = [start] + [point(n, start) for n in lg["main"]]
+        names = ["@start"] + lg["main"]
+        branches, reach = [], set(n for n in lg["main"] if n in parts)
+        for frm, pts in lg["branches"]:
+            if frm not in names:
+                raise Fail("leg %s: a branch leaves from %r, not on its main path" % (lg["id"],
+                                                                                    frm))
+            bp = [path[names.index(frm)]] + [point(n, start) for n in pts]
+            branches.append({"to": pts[-1], "path": [_xyz(q) for q in bp]})
+            reach.update(n for n in pts if n in parts)
+        if "start" in lg:
+            reach.add(lg["start"])
+        hs = [h for h in housings if (h.get("where") or "").strip() == "Dash post" and
+              (h.get("leg") or "").startswith(lg["name"])]
+        carried = list(hs)
+        for h in housings:
+            if h["code"] in taken or h in hs:
+                continue
+            where = (h.get("where") or "").strip()
+            unit = next((u for k, u in UNIT_OF.items() if where.startswith(k)), None)
+            nid = unit or where_node.get(where)
+            if nid in reach:
+                carried.append(h)
+        for h in carried:
+            taken.add(h["code"])
+        bundle = hs + [h for h in carried if (h.get("leg") or "") == "Drop"] or carried
+        live = [c for h in bundle for c in cav_by.get(h["code"], [])
+                if (c.get("state") or "") in WIRED and (c.get("circuit") or "").strip()]
+        dia = BUNDLE_K * math.sqrt(sum(ok_awg(c.get("awg")) ** 2 for c in live)) if live else 0
+        legs.append({
+            "id": lg["id"], "name": lg["name"], "path": [_xyz(q) for q in path],
+            "branches": branches, "radius_mm": round(max(BUNDLE_MIN_R, dia / 2.0), 1),
+            "conductors": len(live), "housings": [h["code"] for h in carried],
+            "routes": [r["id"] for r in routes if (r.get("leg") or "") in lg["routes"]],
+            "place_from": "provisional", "confirm": True,
+            "note": "the path is a judgement through WAYPOINTS; the radius from %d wired "
+                    "conductors leaving %s (AWG_OD, confirm)" % (
+                        len(live), "the dash post" if hs else lg.get("start", ""))})
+    left = [h["code"] for h in housings if h["code"] not in taken]
+    if left:
+        notes.append("Housings no leg reaches (drawn at their node, on no leg's list): %s."
+                     % ", ".join(left))
+    notes.append("Each leg is a path from the dash post through judged via points inside the "
+                 "00-CAR zone boxes (WAYPOINTS in export_glb.py), its radius from its conductors: "
+                 "1.2 x the root of the sum of their squared diameters (TXL-class, confirm). The "
+                 "door drops are L4's branches through the sill node; the Audio runs (RT30-RT32) "
+                 "are a leg of their own from the centre stack.")
+    if any(p["housing"].startswith("DP-CUR") for p in new if p["kind"] == "connector"):
+        notes.append("The CUR's two receptacles (DP-CUR, DP-CUR-B) have no housings row yet "
+                     "(block 01.41): drawn from its mock-up with their plugs, no cavities.")
+
+    order = [p["id"] for p in scene["parts"]]
+    scene["parts"] = [parts[k] for k in order] + new
+    scene["version"] = 2
+    scene["legs"] = legs
+    scene["unplaced"] = unplaced
+    scene["manifests"] = {"connectors": "connectors/manifest.json",
+                          "devices": "devices/manifest.json"}
 
 
 def board_part(rec, bid, m, parent, place, place_from, confirm):
@@ -1020,7 +1509,7 @@ def child_place(kid, um, km, notes):
 
 # ============================================================================== the selftest ==
 def validate_scene(path):
-    """The contract, version 1. Returns a list of problems (empty when it holds)."""
+    """The contract, version 1 and 2. Returns a list of problems (empty when it holds)."""
     bad = []
     try:
         s = json.load(open(path))
@@ -1032,8 +1521,8 @@ def validate_scene(path):
             bad.append("no %r" % k)
     if bad:
         return bad
-    if s["version"] != 1:
-        bad.append("version is %r, not 1" % s["version"])
+    if s["version"] not in (1, 2):
+        bad.append("version is %r, not 1 or 2" % s["version"])
     try:
         datetime.datetime.fromisoformat(s["built"])
     except Exception:
@@ -1044,13 +1533,15 @@ def validate_scene(path):
     ids, conns = {}, {}
     for p in s["parts"]:
         pid = p.get("id")
-        if not pid or not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", pid):
-            bad.append("part id %r is not kebab-case" % pid)
+        if not pid or not (re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", pid) or (
+                p.get("kind") == "connector" and
+                re.fullmatch(r"[A-Za-z0-9]+(-[A-Za-z0-9]+)*:(plug|receptacle)", pid))):
+            bad.append("part id %r is not kebab-case (or <housing>:<half>)" % pid)
         if pid in ids:
             bad.append("part id %s twice" % pid)
         ids[pid] = p
         conns[pid] = {c.get("code") for c in p.get("connectors", [])}
-        if p.get("kind") not in ("unit", "pcb", "module", "node"):
+        if p.get("kind") not in ("unit", "pcb", "module", "node", "connector"):
             bad.append("%s: kind %r" % (pid, p.get("kind")))
         pl = p.get("place", {})
         if sorted(pl) != sorted("x y z rx ry rz".split()) or not all(
@@ -1107,6 +1598,71 @@ def validate_scene(path):
     for m in s["missing"]:
         if m.get("part") not in ids:
             bad.append("missing names %s, no part" % m.get("part"))
+    if s["version"] == 2:
+        bad += _validate_v2(s, base, ids)
+    return bad
+
+
+def _validate_v2(s, base, ids):
+    """Version 2 on top of version 1: connectors, mates, places, legs, the devices placed."""
+    bad = []
+    for k in ("legs", "unplaced", "manifests"):
+        if k not in s:
+            bad.append("version 2 without %r" % k)
+    if bad:
+        return bad
+    try:
+        cman = json.load(open(os.path.join(base, s["manifests"]["connectors"])))
+        dman = json.load(open(os.path.join(base, s["manifests"]["devices"])))
+    except Exception as e:
+        return ["a manifest does not read: %s" % e]
+    for p in s["parts"]:
+        if p.get("kind") != "connector":
+            continue
+        e = cman.get(p.get("family"))
+        if e is None or e.get("glb") != p.get("glb"):
+            bad.append("%s: %s is not its family's glb in connectors/manifest.json"
+                       % (p["id"], p.get("glb")))
+        if p.get("half") not in ("plug", "receptacle"):
+            bad.append("%s: half %r" % (p["id"], p.get("half")))
+        m = ids.get(p.get("mate"))
+        if m is None or m.get("mate") != p["id"] or m.get("half") == p.get("half"):
+            bad.append("%s: its mate %s does not name it back" % (p["id"], p.get("mate")))
+        if not isinstance(p.get("cavities"), list):
+            bad.append("%s: cavities is not a list" % p["id"])
+    seen = {}
+    for p in s["parts"]:
+        if p.get("kind") == "node":
+            continue
+        pl = p.get("place", {})
+        key = (p.get("parent"), round(pl.get("x", 0)), round(pl.get("y", 0)),
+               round(pl.get("z", 0)))
+        other = seen.get(key)
+        if other is not None and other.get("mate") != p["id"]:
+            bad.append("%s and %s share a place" % (other["id"], p["id"]))
+        seen.setdefault(key, p)
+    for lg in s["legs"]:
+        path = lg.get("path", [])
+        if len(path) < 2:
+            bad.append("leg %s: fewer than two points" % lg.get("id"))
+        pts = [(q["x"], q["y"], q["z"]) for q in path]
+        for b in lg.get("branches", []):
+            bp = b.get("path", [])
+            if len(bp) < 2:
+                bad.append("leg %s: a branch to %s has fewer than two points" % (lg.get("id"),
+                                                                              b.get("to")))
+            elif (bp[0]["x"], bp[0]["y"], bp[0]["z"]) not in pts:
+                bad.append("leg %s: the branch to %s does not start on the path"
+                           % (lg.get("id"), b.get("to")))
+            if b.get("to") not in ids:
+                bad.append("leg %s: a branch to %s, no part" % (lg.get("id"), b.get("to")))
+        if not (isinstance(lg.get("radius_mm"), (int, float)) and lg["radius_mm"] > 0):
+            bad.append("leg %s: no radius" % lg.get("id"))
+    placed = {p.get("device") for p in s["parts"] if p.get("device")}
+    reasons = {u.get("device") for u in s["unplaced"]}
+    for k in dman:
+        if not k.startswith("_") and k not in placed and k not in reasons:
+            bad.append("device %s is neither placed nor given a reason" % k)
     return bad
 
 
@@ -1141,6 +1697,31 @@ def selftest(path):
     t = json.loads(json.dumps(s))
     del t["parts"][0]["place"]["rz"]
     cases.append(("a place of five numbers", t))
+    if s.get("version") == 2:
+        conn = [i for i, p in enumerate(s["parts"]) if p.get("kind") == "connector"]
+        dev = [i for i, p in enumerate(s["parts"]) if p.get("device")]
+        t = json.loads(json.dumps(s))
+        t["parts"][conn[0]]["mate"] = t["parts"][conn[2]]["id"]
+        cases.append(("a mate that does not name it back", t))
+        t = json.loads(json.dumps(s))
+        t["parts"][conn[0]]["glb"] = "connectors/NO-SUCH.glb"
+        cases.append(("a connector glb not in the manifest", t))
+        t = json.loads(json.dumps(s))
+        a, b = t["parts"][dev[0]], t["parts"][dev[1]]
+        b["parent"], b["place"] = a["parent"], dict(a["place"])
+        cases.append(("two parts at one place", t))
+        t = json.loads(json.dumps(s))
+        t["legs"][0]["path"] = t["legs"][0]["path"][:1]
+        cases.append(("a leg of one point", t))
+        t = json.loads(json.dumps(s))
+        lg = next(x for x in t["legs"] if x["branches"])
+        lg["branches"][0]["path"][0]["x"] += 50
+        cases.append(("a branch that starts off the path", t))
+        t = json.loads(json.dumps(s))
+        key = t["parts"][dev[0]]["device"]
+        t["parts"] = [p for p in t["parts"] if p.get("device") != key]
+        t["unplaced"] = [u for u in t["unplaced"] if u.get("device") != key]
+        cases.append(("a device neither placed nor excused", t))
     rc = 0
     base = os.path.dirname(os.path.abspath(path))
     for what, t in cases:
@@ -1171,7 +1752,7 @@ def main(argv):
     ap = _Args(description=__doc__.split("\n\n")[0],
                formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--out", default=OUT_DEFAULT)
-    ap.add_argument("--only", choices=ASSETS + ["scene"])
+    ap.add_argument("--only", choices=ASSETS + STEPS + ["legs", "scene"])
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--selftest", nargs="?", const="", metavar="SCENE")
     a = ap.parse_args(argv)
@@ -1205,6 +1786,16 @@ def main(argv):
         if old.get("record_stamp") != rec_stamp:
             print("scene.json     stale: the record's housings, cavities or places changed")
             rc = 1
+        for step in STEPS:
+            r = run_step(step, out, check=True)
+            print("%-14s %s" % (step, {0: "current", 1: "stale", 2: "not built here"}.get(
+                r, "rc %d" % r)))
+            if r == 1:
+                rc = 1
+            elif r == 2:
+                absent = True
+            elif r != 0:
+                raise Crash("the %s builder's check crashed (rc %d)" % (step, r))
         probs = validate_scene(scene_path) if not absent else []
         for p in probs:
             print("scene: " + p)
@@ -1214,8 +1805,17 @@ def main(argv):
 
     os.makedirs(out, exist_ok=True)
     metas = dict(old.get("assets", {})) if old else {}
-    todo = ASSETS if a.only is None else ([] if a.only == "scene" else [a.only])
+    todo = ASSETS + STEPS if a.only is None else (
+        [] if a.only in ("scene", "legs") else [a.only])
     for aid in todo:
+        if aid in STEPS:
+            print("%-14s building ..." % aid, flush=True)
+            r = run_step(aid, out)
+            if r == 1:
+                raise Fail("the %s builder found its sources inconsistent" % aid)
+            if r != 0:
+                raise Crash("the %s builder failed (rc %d)" % (aid, r))
+            continue
         print("%-14s building ..." % aid, flush=True)
         if aid in BOARDS:
             m = build_board(aid, out)
@@ -1229,7 +1829,7 @@ def main(argv):
             round(m["bbox"][1][k] - m["bbox"][0][k], 1) for k in range(3)]), flush=True)
     rec = read_record()
     built = datetime.datetime.now().astimezone().replace(microsecond=0).isoformat()
-    scene = assemble(rec, metas, built)
+    scene = assemble(rec, metas, built, out)
     scene["record_stamp"] = _record_stamp(rec)
     with open(scene_path + ".part", "w") as fh:
         json.dump(scene, fh, indent=1, ensure_ascii=False)
@@ -1239,10 +1839,32 @@ def main(argv):
     for p in probs:
         print("scene: " + p)
     total = sum(m["bytes"] for m in metas.values()) + os.path.getsize(scene_path)
-    print("%-14s %8.2f MB  %d parts, %d links" % ("scene.json", os.path.getsize(scene_path) / 1e6,
-                                                   len(scene["parts"]), len(scene["links"])))
+    for step in STEPS:
+        d = os.path.join(out, step)
+        b = sum(os.path.getsize(os.path.join(d, f)) for f in os.listdir(d)) if \
+            os.path.isdir(d) else 0
+        total += b
+        print("%-14s %8.2f MB  %d files" % (step, b / 1e6, len(os.listdir(d)) if b else 0))
+    kinds = {}
+    for p in scene["parts"]:
+        kinds[p["kind"]] = kinds.get(p["kind"], 0) + 1
+    print("%-14s %8.2f MB  %d parts (%s), %d links, %d legs, %d branches" % (
+        "scene.json", os.path.getsize(scene_path) / 1e6, len(scene["parts"]),
+        ", ".join("%d %s" % (v, k) for k, v in sorted(kinds.items())), len(scene["links"]),
+        len(scene.get("legs", [])), sum(len(l["branches"]) for l in scene.get("legs", []))))
     print("%-14s %8.2f MB" % ("total", total / 1e6))
     return 1 if probs else 0
+
+
+def run_step(step, out, check=False):
+    """One harness builder (connectors, devices) as its own command; returns its exit code."""
+    script = CONNECTORS_BUILDER if step == "connectors" else DEVICES_BUILDER
+    if not os.path.exists(script):
+        raise Fail("the %s builder is not at %s" % (step, rel(script)))
+    dest = os.path.join(out, "connectors") if step == "connectors" else out
+    args = [sys.executable, script, "--out", dest] + (["--check"] if check else [])
+    r = subprocess.run(args, cwd=ROOT, capture_output=check, text=True)
+    return r.returncode
 
 
 def _record_stamp(rec):

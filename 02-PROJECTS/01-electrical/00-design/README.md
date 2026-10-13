@@ -395,9 +395,10 @@ positions, 8-bit normals (`KHR_mesh_quantization`, which three.js reads without 
 three.js strips `:` and spaces from node names (`case:lid` becomes `caselid`); the name as
 written is in `object.userData.name`.
 
-**The sizes and git.** 35.4 MB the set (2026-10-13): dcu-carrier 13.46 MB, icu-carrier 9.21,
-panel 3.95, pmu 3.55, upper-board 2.44, left-plate 1.98, control-unit 0.41, display-unit 0.38,
-scene.json 0.07. Over the 20 MB D-505 allowed in git, so the `.glb` files are ignored and rebuilt
+**The sizes and git.** 47.6 MB the set (2026-10-13, scene version 2): dcu-carrier 13.46 MB,
+icu-carrier 9.21, devices 8.30 (48 files), panel 3.95, pmu 3.55, connectors 3.33 (18 files),
+upper-board 2.44, left-plate 1.98, control-unit 0.41, display-unit 0.38, cur 0.26, scene.json
+0.34. Over the 20 MB D-505 allowed in git, so the `.glb` files are ignored and rebuilt
 with the first command above on each machine before the app is built; `scene.json` is committed.
 A board's 3D model that this machine's KiCad library lacks is listed in `missing`, not a failure
 (on the Mac: U1 and U11 on the DCU carrier, U2 on the panel, U1 on the ICU carrier).
@@ -433,6 +434,49 @@ a unit's rear wall runs to the PMU, which stands for the dash node (modules PMU)
 housing at the dash post runs from the PMU to its leg's far end; any other receptacle runs from
 the PMU to its `where`. The post's receptacles are not modelled; their links start spread along
 the PMU's socket face.
+
+**scene.json, version 2** (D-514, Y26; the contract M3D2 is built against). Version 1 stands
+whole - every field above, the links unchanged - and version 2 only adds:
+
+- `parts[]` of `kind: "connector"`, two per housings row: `id` `<housing>:plug` or
+  `<housing>:receptacle`, `name` (`L3-S1 plug · DT06-12S`), `family` (the variant:
+  `housings.leg_side` for the plug, `box_side` for the receptacle), `half`, `housing`, `leg` (the
+  housings.leg text), `glb` (`connectors/<variant>.glb`, from connectors/manifest.json), `bytes`,
+  `parent` (the unit for a unit's receptacles, else null), `place`, `place_from`, `confirm`
+  (always true), `place_note`, `size_mm` (the manifest's), `origin` (`mating face centre; mate
+  along +Y; wires along -Y`), `mate` (the other half's id), `cavities[]` (`cav`, `circuit`, `awg`,
+  `colour`, `state`, from the cavities table in cavity order, on both halves), `source`. A plug
+  shares its receptacle's place turned half a turn about z, so the two faces meet.
+- `parts[]` of `kind: "module"` for every device and common part in devices/manifest.json, one
+  per piece (`count`, and each place in `also`): `id` `dev-<key>[-n]`, `device` (the manifest's
+  key, DVxx or Pxxx), `node` (the node it sits at), `glb`, `standin`, `cad`, the rest as any part.
+- three more nodes: `cargo-bin-passenger` (D-449: the battery, disconnect, Class-T, MRBF holders
+  and amplifier, moved there from leg-l4 by `MOVE_DEVICES`), `door-driver`, `door-passenger`.
+- `legs[]`: `id` (`L1`-`L4`, `Audio`), `name`, `path[]` (x y z, car frame, from the dash post
+  outward), `branches[]` (`to`: a part id, `path[]` starting on a point of the main path),
+  `radius_mm`, `conductors`, `housings[]`, `routes[]` (the routes rows whose `leg` is the leg's;
+  `Sill` is L4's), `place_from: "provisional"`, `confirm: true`, `note`.
+- `unplaced[]` (`device`, `why`): a manifest entry not placed, and why (count 0, or drawn inside
+  a board's or a unit's glb). `manifests` (the two manifests' paths).
+
+Where version 2 puts things, all judgement and all `confirm`: a unit's receptacles at its
+mock-up's cut-outs, at the receptacle's tip, `+Y` out of the rear face; the dash post's
+receptacles (every housing whose `where` is Dash post) as a cluster left of the PMU, a row per
+leg, L1 at the top, `CLUSTER_GAP` 20 mm apart, facing the cabin; every other housing's pair, and
+every device, on a shelf centred on its node (`NODE_GAP` 5 mm, devices `DEVICE_GAP` 10 mm, rows
+wrapping at `ROW_WRAP` 600 mm, kept inside the cabin's width); the dash node's parts on a shelf
+right of the PMU. The legs run through `WAYPOINTS` (the firewall grommet on the passenger side at
+the firewall's plane, the cowl, the dash rail, the tunnel, the sills, the jamb boots, the hinge
+loop), each a fraction across a 00-CAR zone box; `LEGS` says which points each leg and branch
+takes, after its routes' from / to / via. A leg carries the housings at the dash post on its row
+and every housing at a node it reaches; its radius is from the wired conductors (LIVE or CAPPED)
+leaving the post (the Audio leg's, at its far ends): 1.2 x the root of the sum of their squared
+diameters, `AWG_OD` a TXL-class catalogue figure (confirm), never under 3 mm. The connectors and
+devices come from their builders, run as steps of this command (`--only connectors`, `--only
+devices`); `--selftest` also holds version 2: every connector's glb is its family's in the
+manifest, mates name each other, no two parts share a place except a mated pair, every leg and
+branch has two points or more and every branch starts on its leg's path, every manifest entry is
+placed or in `unplaced`.
 
 It reads the record only through `rx7.py export` and writes nothing to it. It is a view of the
 design, never a source of facts: a measurement beats the model (R11).

@@ -2680,7 +2680,7 @@
  },
  "_meta": {
   "version": 1,
-  "built": "2026-10-13T12:36:06-06:00",
+  "built": "2026-10-13T13:05:29-06:00",
   "work": "Y28",
   "ruling": "D-515",
   "frame": "every glb in mm, z up, in the part's own frame (00-design README §13); each entry's origin says where its zero is",

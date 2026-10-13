@@ -90,7 +90,7 @@ fp-info-cache
 02-APP/app/public/pyodide/
 02-APP/app/public/core/
 # The design in 3D (D-505, Y23): the glb files are rebuilt from the boards, the mock-ups and the
-# PMU's STEP by 02-PROJECTS/01-electrical/00-design/tools/export_glb.py - 35 MB the set, over the
+# PMU's STEP by 02-PROJECTS/01-electrical/00-design/tools/export_glb.py - 48 MB the set, over the
 # 20 MB the row allows in git. scene.json beside them is committed.
 02-APP/app/public/design/**/*.glb
 *.keystore
