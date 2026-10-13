@@ -510,6 +510,17 @@ static void testVehicleModel() {
     check(v.oilPressCbar > 100,      "oil pressure came up");
     check(sawTripLatched,            "tripped channel latched before retrying");
     check(v.voltsX10 > 135,          "alternator charging");
+
+    /* D-485 (block 01.33 (a)): a sender wire shorted to the body is a fault, not oil pressure.
+     * It cannot latch oil_ok and clears it after the 5 s, as an open one does (D-461), so the
+     * pump stops and the engine starves. */
+    check(v.engineRuns, "running before the sender short");
+    v.a7Inject = 10;                                    /* below A7_SHORT: a dead short */
+    for (int i = 0; i < 400; i++) { t += 10; v.update(t, 10); }
+    check(v.engineRuns, "a short under 5 s does not stop the engine (the 5 s clear)");
+    for (int i = 0; i < 200; i++) { t += 10; v.update(t, 10); }
+    check(!v.oilOk && !v.engineRuns, "a sender short for 5 s clears oil_ok: the pump stops (D-485)");
+    check(v.chState[O5_FUEL] == 0,   "O5 fuel pump off after the short");
 }
 
 /* ================= 11. stats accumulation ================= */
@@ -907,8 +918,17 @@ static void testPmuTimers() {
     pmuRun(10000);
     check(pmuOn(O5_FUEL) && g_v.oilOk, "a count below OIL_MIN is pressure above it: the pump holds past the prime");
     pmuFresh(); g_v.a7Inject = kShort; g_v.key = K_RUN;
+    pmuRun(2990);
+    check(pmuOn(O5_FUEL) && !g_v.oilOk, "shorted sender: still priming at 2.99 s, oil_ok never latched");
     pmuRun(10000);
-    check(pmuOn(O5_FUEL) && g_v.oilOk, "a shorted sender (< 20) still counts as oil_ok (D-249, not touched by D-461)");
+    check(!pmuOn(O5_FUEL) && !g_v.oilOk, "a shorted sender (< 20) is a fault, not pressure: the pump stops after the prime (D-485)");
+    pmuFresh(); g_v.a7Inject = kLive; g_v.key = K_RUN;
+    pmuRun(10000);
+    g_v.a7Inject = kShort;
+    pmuRun(4000);
+    check(pmuOn(O5_FUEL) && g_v.oilOk, "a short while running: oil_ok holds through the 5 s clear");
+    pmuRun(1500);
+    check(!pmuOn(O5_FUEL) && !g_v.oilOk, "and clears at 5 s: a running engine stops on a shorted sender (D-485)");
 
     pmuFresh(); g_v.a7Inject = kOpen; g_v.key = K_START;
     pmuRun(5000);

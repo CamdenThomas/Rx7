@@ -1412,3 +1412,14 @@ Camden answered block 01.35 in chat on 2026-10-12: ""b"". Option (b) as he was a
 **In the data and the code.** dcu_channels SN23, logic ACCESSORY, node_conductors N85, work A11; firmware dcu/panel.h and dcu.ino, tests/test_dcu.cpp (eight new assertions, suite green), firmware README. No part, cavity or fuse changes.
 
 **What would flip it.** His word that a tow or a push with the key off worries him: then (c), one conductor from the handbrake switch to the DCU, which the DCU reads before it counts a key-off car as standing."
+D-485,Architecture and scope,"A shorted oil sender wire is a sender fault, never oil pressure: the fuel pump stops after the prime, as for an open wire",2026-10-12,standing,,,01.33,D-461 · D-249 · D-260,"**An oil sender wire shorted to the body is a sender fault, never oil pressure: the fuel pump stops after the 3-second prime, as it does for an open wire, and the cluster shows the fault.**
+
+Camden answered block 01.33 in chat on 2026-10-12: ""a"". Option (a) as he was asked it: ""A short also stops the pump after the prime: the cluster shows a sender fault, and the engine stops. Safest in a crash; a chafed sender wire then strands you just as a broken one does. No parts."" Not taken: (b) a short keeps the pump running, as D-249 had it.
+
+**The rule.** The sender's resistance falls as pressure rises (00-CAR SP-787), so under the 100 Ω pull-up (D-260) a real reading never reaches a dead short: an A7 count under 20 is a wire to ground, not pressure. oil_ok latches only on a count below OIL_MIN and at or above 20; a count outside that - open above 1000 (D-461) or shorted below 20 - clears oil_ok after 5 s continuous, so the pump stops and the engine starves. With the engine stopped the sender reads open, so a repaired wire does not restart the pump by itself: the next key cycle primes again. The ICU reads the same node (IC02) and shows a count pinned at zero as SENSOR_SHORT, red, on the cluster; the PMU itself has no A7 bit in 0x100's fault byte, and needs none - its act is stopping the pump.
+
+**What it closes.** D-249's fail-open for the oil node is now gone on both sides: open (D-461) and short (this). The pump runs only on START, during the prime, or on a reading that is oil pressure.
+
+**In the data and the code.** logic FUEL_PUMP, inputs A7, icu_channels IC02; pmu_sim vehicle_model.h and its version line, tests/test_suite.cpp (the D-249 short assertion reversed, seven new ones, suite green). No part, cavity or fuse changes.
+
+**What would flip it.** His word that a chafed sender wire stranding him matters more than a crash with the key left on; then (b), one comparison back."

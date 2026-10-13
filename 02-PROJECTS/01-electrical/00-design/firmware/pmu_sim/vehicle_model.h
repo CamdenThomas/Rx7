@@ -98,7 +98,7 @@ public:
 
     /* ---- the PMU's rules (logic FUEL_PUMP / IGNITION, rules voltage / sleep) ---- */
     static const int A7_OPEN  = 1000;          /* above: open = ZERO oil pressure, not a fault (inputs A7, D-461) */
-    static const int A7_SHORT = 20;            /* below: short - still counts as oil_ok (D-249) */
+    static const int A7_SHORT = 20;            /* below: short = a sender fault, never oil pressure (inputs A7, D-485) */
     static const int OIL_MIN_COUNT = 700;      /* SIMULATOR PLACEHOLDER, ~217 ohm under the 100 ohm pull-up -
                                                 * above SP-787's first mark (196.7 ohm, other-car). The real
                                                 * OIL_MIN is read in the car at commissioning, never entered on
@@ -347,12 +347,13 @@ private:
         ignPrev = ignitionOn;
         bool prime = ignitionOn && primeMs < PRIME_MS;
 
-        /* the oil gate (D-461): oil pressure above OIL_MIN is a count BELOW OIL_MIN. It latches
-         * there, and clears after 5 s continuously at or above it (an open sender among them),
-         * or at once with ignition. A short (< 20) is below OIL_MIN, so it counts as oil_ok. */
+        /* the oil gate (D-461, D-485): oil pressure above OIL_MIN is a count BELOW OIL_MIN and
+         * above A7_SHORT - a real sender never reads a dead short. It latches there, and clears
+         * after 5 s continuously outside it - an open sender (above A7_OPEN) or a shorted one
+         * (below A7_SHORT) among them - or at once with ignition. Both faults stop the pump. */
         int a7 = a7Count();
         if (!ignitionOn)            { oilOk = false; oilHighMs = 0; }
-        else if (a7 < OIL_MIN_COUNT) { oilOk = true;  oilHighMs = 0; }
+        else if (a7 < OIL_MIN_COUNT && a7 >= A7_SHORT) { oilOk = true;  oilHighMs = 0; }
         else {
             oilHighMs = upTo(oilHighMs, dt, OIL_CLEAR_MS);
             if (oilHighMs >= OIL_CLEAR_MS) oilOk = false;

@@ -28,7 +28,7 @@
  * on the supply and a duty on the dimmer, as the ladder rig would.
  */
 
-#define PMU_SIM_VERSION "0.2.0-dev"   /* D-461 oil gate (open sender = zero pressure), D-462 O20 = illumination, D-463 / D-476 shed after 10 s with hysteresis, D-464 hazards past the 30 min, IGNITION's 200 ms off-delay */
+#define PMU_SIM_VERSION "0.2.0-dev"   /* D-461 oil gate (open sender = zero pressure), D-485 (a shorted sender is a fault, the pump stops), D-462 O20 = illumination, D-463 / D-476 shed after 10 s with hysteresis, D-464 hazards past the 30 min, IGNITION's 200 ms off-delay */
 /* 0.1.0: the drive model, CAN 0x100-0x130, the console */
 
 #include <ACAN_T4.h>
