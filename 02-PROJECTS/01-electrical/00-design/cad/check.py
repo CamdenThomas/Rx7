@@ -22,7 +22,7 @@ s-expression itself (no packages beyond the standard library, Python 3.9) and ch
     channel's processor pin; a cavity the record has LIVE or CAPPED is wired, a PLUG is not;
   * the ribbon header, pin by pin, against `panel_ribbon` - net names on both boards, and on
     the panel which keys, encoders and thumbstick pins hang off each conductor;
-  * the panel matrix diodes: cathode to the row, anode toward the column (panel/README.md); a
+  * the panel matrix diodes: cathode to the row, anode toward the column (control-unit/cad/panel/README.md); a
     window switch's poles as two keys (COM_n to its diode, UP_n / DN_n to the column, D-492);
   * the panel's plate header J3, DP-DCU-E cavity n on pin n, as its src_note's panel_ribbon line,
     and the keys the record puts on the left plate held to the cavities that name them (D-492);
@@ -59,6 +59,7 @@ from collections import deque
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 AREA = os.path.normpath(os.path.join(HERE, "..", ".."))
+DESIGN = os.path.dirname(HERE)          # 00-design: each board's sheet is under its unit (D-496)
 DATA = os.path.join(AREA, "data")
 PIN_TABLES = os.path.join(HERE, "pin_tables.csv")
 
@@ -152,25 +153,25 @@ EXPECT_EXPANDER = {
 }
 
 BOARDS = {
-    "icu": dict(sch="icu-carrier/icu-carrier.kicad_sch", channels="icu_channels.csv", teensy="J5",
+    "icu": dict(sch="display-unit/cad/icu-carrier/icu-carrier.kicad_sch", channels="icu_channels.csv", teensy="J5",
                 drops={"DP-ICU-A": "J1", "DP-ICU-B": "J3"}, rails=("+12V_LOGIC", "+12V_BL"),
                 grounds=(), ground_bridge=()),
-    "dcu": dict(sch="dcu-carrier/dcu-carrier.kicad_sch", channels="dcu_channels.csv", teensy="J10",
+    "dcu": dict(sch="control-unit/cad/dcu-carrier/dcu-carrier.kicad_sch", channels="dcu_channels.csv", teensy="J10",
                 expander="U12", ribbon="J4",
                 drops={"DP-DCU": "J1", "DP-DCU-B": "J9", "DP-DCU-C": "J2"}, rails=("+12V_LOGIC", "+12V_CMF"),
                 grounds=("GND", "PGND"), ground_bridge=("U4",)),
     # The panel board (Y20, D-492): J1 the ribbon; J3 the left plate's header, DP-DCU-E pin for pin
     # (the plate's keys and the stick are reached through it, not drawn here).
-    "panel": dict(sch="panel/panel.kicad_sch", ribbon="J1", matrix=True, plate=("DP-DCU-E", "J3")),
+    "panel": dict(sch="control-unit/cad/panel/panel.kicad_sch", ribbon="J1", matrix=True, plate=("DP-DCU-E", "J3")),
     # The climate unit's upper connector board (Y15, D-480, D-492): no processor, so each housing
     # is held against its cavities' src_note - the carrier header a lead goes to (carrier ref ->
     # this board's header for it), or the panel_ribbon line a conductor is, carried pin for pin.
-    "upper": dict(sch="upper-board/upper-board.kicad_sch",
+    "upper": dict(sch="control-unit/cad/upper-board/upper-board.kicad_sch",
                   relay={"DP-DCU-D": ("J1", {"J6": "J3", "J7": "J4", "J8": "J5", "J5": "J6", "J3": "J7"}),
                          "DP-DCU-E": ("J2", "J8")}),
     # The left plate (Y21, D-492): J1 its cable header, DP-DCU-E pin for pin; the keys a DP-DCU-E
     # cavity names, on their rows and columns through their diodes; the stick on panel_ribbon 1, 17-20.
-    "left-plate": dict(sch="left-plate/left-plate.kicad_sch", plate_board=("DP-DCU-E", "J1")),
+    "left-plate": dict(sch="control-unit/cad/left-plate/left-plate.kicad_sch", plate_board=("DP-DCU-E", "J1")),
 }
 
 # Symbol pin names and datasheet pin names that mean the same pin.
@@ -1227,7 +1228,7 @@ def main(argv=None):
     try:
         for board in boards:
             cfg = BOARDS[board]
-            sch = os.path.join(HERE, cfg["sch"])
+            sch = os.path.join(DESIGN, cfg["sch"])
             if args.netlists:
                 netfile = os.path.join(args.netlists, board + ".net")
             else:

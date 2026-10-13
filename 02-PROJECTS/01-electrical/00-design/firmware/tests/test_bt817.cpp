@@ -7,7 +7,7 @@
  * byte, and the dirty-run merge over the REAL cluster Framebuffer.
  *
  * Build (g++ on PATH):
- *   g++ test_bt817.cpp -o test_bt817 -std=c++17 -O2 -I../icu && ./test_bt817
+ *   g++ test_bt817.cpp -o test_bt817 -std=c++17 -O2 -I../../display-unit/firmware/icu && ./test_bt817
  */
 #include <cstdio>
 #include <cstdint>

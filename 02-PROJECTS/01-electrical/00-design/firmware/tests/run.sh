@@ -16,6 +16,10 @@
 # Needs g++, once - Fedora: sudo dnf install gcc-c++ · Mac: xcode-select --install
 # Exit 0 = every suite passed. The binaries are not versioned (.gitignore).
 cd "$(dirname "$0")" || exit 3
+# Each unit's sketches live in its own folder (D-496); the bench simulators stay beside tests/.
+ICU=../../display-unit/firmware/icu
+RADIO=../../display-unit/firmware/icu_radio
+DCU=../../control-unit/firmware/dcu
 # Mac (D-454): a CLT 26.6 toolchain beside a MacOSX27.0 SDK cannot link - pin the SDK that
 # matches, until the Command Line Tools are updated and the old SDK is gone. No-op elsewhere.
 [ "$(uname)" = Darwin ] && [ -z "$SDKROOT" ] && [ -d /Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk ] && export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk
@@ -26,9 +30,9 @@ fi
 
 # The master CAN map and the DCU's copy must be one file (plan P49): a drift here is a node
 # that mis-reads every frame, and nothing else checks it.
-for copy in ../dcu/can_map.h ../pmu_sim/can_map.h; do
-  if ! cmp -s ../icu/can_map.h "$copy"; then
-    echo "can_map.h drift: $copy differs from icu/can_map.h (the master) - copy the master over it first"
+for copy in "$DCU/can_map.h" ../pmu_sim/can_map.h; do
+  if ! cmp -s "$ICU/can_map.h" "$copy"; then
+    echo "can_map.h drift: $copy differs from $ICU/can_map.h (the master) - copy the master over it first"
     exit 1
   fi
 done
@@ -69,8 +73,8 @@ suite() {  # name, source, extra flags
 }
 
 suite test       test_suite.cpp
-suite test_bt817 test_bt817.cpp -I../icu
-suite test_dcu   test_dcu.cpp   -I../dcu
+suite test_bt817 test_bt817.cpp "-I$ICU"
+suite test_dcu   test_dcu.cpp   "-I$DCU"
 suite test_radio test_radio.cpp
 suite test_loglink test_loglink.cpp
 suite test_vectors test_vectors.cpp
@@ -81,9 +85,10 @@ suite test_vectors test_vectors.cpp
 # `arduino-cli core install teensy:avr esp32:esp32` with the PJRC and Espressif index URLs).
 if command -v arduino-cli >/dev/null 2>&1; then
   if arduino-cli core list 2>/dev/null | grep -q '^teensy:avr'; then
-    for sk in icu dcu pmu_sim tach_simulator ladder_decode_test; do
+    for dir in "$ICU" "$DCU" ../pmu_sim ../tach_simulator ../ladder_decode_test; do
+      sk=$(basename "$dir")
       echo "Compiling $sk for Teensy 4.1 ..."
-      arduino-cli compile --fqbn teensy:avr:teensy41:speed=600 --build-path "/tmp/rx7-build-$sk" "../$sk" >/dev/null 2>"/tmp/rx7-build-$sk.log" \
+      arduino-cli compile --fqbn teensy:avr:teensy41:speed=600 --build-path "/tmp/rx7-build-$sk" "$dir" >/dev/null 2>"/tmp/rx7-build-$sk.log" \
         || { echo "*** $sk does not compile for the Teensy 4.1 - see /tmp/rx7-build-$sk.log ***"; exit 1; }
     done
   else
@@ -91,7 +96,7 @@ if command -v arduino-cli >/dev/null 2>&1; then
   fi
   if arduino-cli core list 2>/dev/null | grep -q '^esp32:esp32'; then
     echo "Compiling icu_radio for the XIAO ESP32C3 ..."
-    arduino-cli compile --fqbn esp32:esp32:XIAO_ESP32C3 --build-path /tmp/rx7-build-icu_radio ../icu_radio >/dev/null 2>/tmp/rx7-build-icu_radio.log \
+    arduino-cli compile --fqbn esp32:esp32:XIAO_ESP32C3 --build-path /tmp/rx7-build-icu_radio "$RADIO" >/dev/null 2>/tmp/rx7-build-icu_radio.log \
       || { echo "*** icu_radio does not compile for the ESP32-C3 - see /tmp/rx7-build-icu_radio.log ***"; exit 1; }
   else
     echo "ESP32 core not installed - icu_radio was not compiled"

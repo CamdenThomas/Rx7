@@ -4,7 +4,7 @@
 Reads 02-PROJECTS/01-electrical/data/can_messages.csv and can_fields.csv (the one bus map,
 D-374) and writes can_vectors.h beside this script: one V_ID_* / V_TMO_* / V_RATE_* per
 message and one V_<MACRO> bit number per named bit of every bitfield. test_vectors.cpp
-includes it next to ../icu/can_map.h and static_asserts that every macro in the firmware
+includes it next to ../../display-unit/firmware/icu/can_map.h and static_asserts that every macro in the firmware
 agrees - so a frame id, a timeout or a bit position that moves in the record fails the
 suite until can_map.h follows it. The record is the master; this file is build output.
 

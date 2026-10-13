@@ -9,8 +9,8 @@
 #include <cstdio>
 #include <cstring>
 #include <cstddef>
-#include "../icu_radio/ionic_decode.h"
-#include "../icu/radio_link.h"
+#include "../../display-unit/firmware/icu_radio/ionic_decode.h"
+#include "../../display-unit/firmware/icu/radio_link.h"
 
 static int passed = 0, failed = 0;
 #define CHECK(c, msg) do { if (c) passed++; else { failed++; printf("  FAIL  %s\n", msg); } } while (0)

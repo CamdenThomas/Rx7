@@ -26,7 +26,7 @@ const here = dirname(fileURLToPath(import.meta.url));
 const app = join(here, '..');
 const tree = join(app, '..', '..');
 const OUT = join(app, 'src', 'lib', 'logs', 'layout.generated.ts');
-const STORE_H = join(tree, '02-PROJECTS', '01-electrical', '00-design', 'firmware', 'icu', 'log_store.h');
+const STORE_H = join(tree, '02-PROJECTS', '01-electrical', '00-design', 'display-unit', 'firmware', 'icu', 'log_store.h');
 
 const args = process.argv.slice(2);
 const check = args.includes('--check');

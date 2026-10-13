@@ -38,13 +38,14 @@ that once lost a whole answering session are why R3 and R9 read the way they do.
 **The visual layer is the Rx7 app, `02-APP`** (D-399 → D-405; not a project since D-428). It is
 a view and an input over the record that keeps no fact of its own. Nothing else grows a view.
 The generated files are only the harness-leg drawings in
-`02-PROJECTS/01-electrical/00-design/diagrams/` (D-385). The one hand-drawn exception is
-`02-PROJECTS/01-electrical/00-design/cad/`: the KiCad projects for the ICU and DCU carriers and
-the control panel — schematic, board layout and 3D model, with `PCB-AND-3D-GUIDE.md` as the
-method — ruled in by Camden on 2026-09-12, widened on 2026-09-21 (layout, both boards, D-361),
-and since D-453 drawn by the agent as well. It is not an area — no `data/`, so `rx7.py` cannot
-see it — nothing in the record cites it, and if the record and a drawing ever disagree the
-record is right. Its own README is the fence.
+`02-PROJECTS/01-electrical/00-design/diagrams/` (D-385). The one hand-drawn exception is the
+CAD under `02-PROJECTS/01-electrical/00-design/`: the KiCad projects for the ICU and DCU carriers
+and the control panel, in their units' `control-unit/cad/` and `display-unit/cad/` (D-496), with
+the shared `cad/` holding the check and the library — schematic, board layout and 3D model, with
+`cad/PCB-AND-3D-GUIDE.md` as the method — ruled in by Camden on 2026-09-12, widened on 2026-09-21
+(layout, both boards, D-361), and since D-453 drawn by the agent as well. It is not an area — no
+`data/`, so `rx7.py` cannot see it — nothing in the record cites it, and if the record and a
+drawing ever disagree the record is right. `cad/README.md` is the fence.
 
 The Claude Project holds one pointer document and nothing else; nothing is ever queued
 there. The account skill `rx7-system-v2` is stale and Camden deletes it (02-APP work P27).

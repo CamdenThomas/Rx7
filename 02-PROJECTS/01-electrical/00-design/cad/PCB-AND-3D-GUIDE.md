@@ -59,7 +59,7 @@ real pins are assigned (D-377), and the Teensy socket footprint is already made 
 3. **The very first time only**, KiCad asks about the global symbol and footprint library
    tables: choose **Copy default global … table (recommended)** both times. That's what makes the
    stock footprints in step 2 findable.
-4. **File → Open Project…** → `02-PROJECTS/01-electrical/00-design/cad/icu-carrier/icu-carrier.kicad_pro`.
+4. **File → Open Project…** → `02-PROJECTS/01-electrical/00-design/display-unit/cad/icu-carrier/icu-carrier.kicad_pro`.
 5. The project window lists the files. Double-click **icu-carrier.kicad_sch** to open the
    **Schematic Editor**.
 
@@ -286,7 +286,7 @@ as you settle it.
 After each step: **File → Save**, then:
 
 ```
-git add 02-PROJECTS/01-electrical/00-design/cad/icu-carrier
+git add 02-PROJECTS/01-electrical/00-design/display-unit/cad/icu-carrier
 git commit -m "ICU carrier: step N"
 ```
 
@@ -314,6 +314,6 @@ Renders, STEP files, DRC reports and backups stay out of git (`.gitignore`).
 The DCU is this build's board too (D-374). Its schematic is drawn and ERC-clean (D-452) -
 every Teensy pin in `../../data/dcu_channels.csv`, the slow lines on a TCA9539 expander - and
 the sheet check (`check.py`) holds it to the record. Its drawing checklist is
-`dcu-carrier/TARGET.md`. The provisional layout (Y5) follows this same guide on a provisional
+`../control-unit/cad/dcu-carrier/TARGET.md`. The provisional layout (Y5) follows this same guide on a provisional
 outline, with `V-102` (the centre-stack space) and luxury `W-332` (the mirror stage) placing it
 rather than deciding it (D-455): footprints, rules, layout, 3D, measure, fit, order (F5).

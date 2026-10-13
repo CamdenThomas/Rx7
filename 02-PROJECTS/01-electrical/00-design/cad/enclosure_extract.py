@@ -1,4 +1,4 @@
-"""Read a board's geometry from its .kicad_pcb into <board>/enclosure/board.json (Y7).
+"""Read a board's geometry from its .kicad_pcb into <unit>/cad/<board>/enclosure/board.json (Y7).
 
 Run with KiCad's own Python (it needs `pcbnew`), from anywhere:
 
@@ -15,6 +15,17 @@ import json, os, sys
 import pcbnew
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+DESIGN = os.path.dirname(HERE)
+UNITS = ("control-unit", "display-unit")    # each board lives in its unit's cad/ (D-496)
+
+
+def board_dir(board_name):
+    for unit in UNITS:
+        d = os.path.join(DESIGN, unit, "cad", board_name)
+        if os.path.isdir(d):
+            return d
+    print("no board %s under %s/cad" % (board_name, " or ".join(UNITS)))
+    sys.exit(3)
 
 
 def mm(v):
@@ -22,7 +33,8 @@ def mm(v):
 
 
 def main(board_name):
-    path = os.path.join(HERE, board_name, board_name + ".kicad_pcb")
+    bdir = board_dir(board_name)
+    path = os.path.join(bdir, board_name + ".kicad_pcb")
     b = pcbnew.LoadBoard(path)
     xs, ys, radii = [], [], []
     for d in b.GetDrawings():
@@ -66,7 +78,7 @@ def main(board_name):
                                      "plated": p.GetAttribute() == pcbnew.PAD_ATTRIB_PTH})
     out["footprints"].sort(key=lambda f: f["ref"])
     out["holes"].sort(key=lambda h: (h["x"], h["y"]))
-    dst = os.path.join(HERE, board_name, "enclosure", "board.json")
+    dst = os.path.join(bdir, "enclosure", "board.json")
     with open(dst, "w") as f:
         json.dump(out, f, indent=1)
         f.write("\n")

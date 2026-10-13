@@ -2,13 +2,18 @@
 
 *Rev 2026-10-09 · lives in `01-electrical` with both modules since D-374 (it was `02-luxury/firmware/`) · owns: cluster layout, palette, rendering, CAN structs and the automated trip figures — in code. This README is the folder map and the build instructions.*
 
-**This folder is a source of truth** (R6). `icu/cluster_core.h` defines the
+**Where the code lives (D-496).** Each unit's sketches are in its own folder: the Display Unit's
+(the ICU, its radio and the desktop simulator) in `../display-unit/firmware/`, the Control Unit's
+(the DCU) in `../control-unit/firmware/`. This folder keeps what both use: the test suites, the
+PMU simulator and the bench rigs. Paths in this README are from this folder.
+
+**This folder and the units' are a source of truth** (R6). `../display-unit/firmware/icu/cluster_core.h` defines the
 palette, every layout constant, the icon set, unit conversions and
-sensor-fault rendering (D-151…D-158). `icu/stats.h` owns the automated trip
-and lifetime figures (D-163). `icu/can_map.h` is the machine-readable CAN
+sensor-fault rendering (D-151…D-158). `../display-unit/firmware/icu/stats.h` owns the automated trip
+and lifetime figures (D-163). `../display-unit/firmware/icu/can_map.h` is the machine-readable CAN
 map. The prose documents describe *why*; this code defines *what*.
 
-**Version:** `ICU_FW_VERSION` in `icu/icu.ino`, `DCU_FW_VERSION` in `dcu/dcu.ino` and
+**Version:** `ICU_FW_VERSION` in `../display-unit/firmware/icu/icu.ino`, `DCU_FW_VERSION` in `../control-unit/firmware/dcu/dcu.ino` and
 `PMU_SIM_VERSION` in `pmu_sim/pmu_sim.ino`, printed at boot. Bump it on any behaviour change, log it in `../../data/bringup_log.csv` (`rx7.py add 02-PROJECTS/01-electrical bringup_log …`), tag the commit.
 
 ## Contents
@@ -22,75 +27,78 @@ for the Teensy · 5. What the renderer guarantees · 6. Superseded sketches ·
 ## 1 · Layout
 
 ```
-firmware/
-├── icu/                     THE REAL FIRMWARE
-│   ├── cluster_core.h       renderer — portable C++, no Arduino headers. OWNS the cluster layout
-│   ├── stats.h              trip and lifetime accumulators. Volatile-only until Stage 6 (D-162)
-│   ├── can_map.h            shared CAN structs — THE MASTER COPY; every node's copy is checked against it
-│   ├── bt817.h              the BT817 display driver (the only display-dependent code)
-│   ├── radio_link.h         the line protocol from the radio co-processor, 0x220 / 0x221 (F-015)
-│   ├── log_link.h           the log link's UART frames (log_link LL03-LL14): AA 55 · len · type · payload ·
-│   │                        CRC-16, beside the $ lines; CRC-32; the phone's six opcodes (D-494, BT3)
-│   ├── log_store.h          the card (D-493): /RX7/<seq>/ summary · thin · full · pulled.flg, the 1 Hz
-│   │                        record of log_channels (137 bytes), and the Teensy's side of a pull - list,
-│   │                        stream under CREDIT, END with the CRC, pulled only on a matching ACK
-│   └── icu.ino              Teensy host. ICU_FW_VERSION lives here. Serial2 at 921600, the SD card
+00-design/
+├── display-unit/firmware/       THE DISPLAY UNIT (DU, the ICU - D-496)
+│   ├── icu/                     THE REAL FIRMWARE
+│   │   ├── cluster_core.h       renderer — portable C++, no Arduino headers. OWNS the cluster layout
+│   │   ├── stats.h              trip and lifetime accumulators. Volatile-only until Stage 6 (D-162)
+│   │   ├── can_map.h            shared CAN structs — THE MASTER COPY; every node's copy is checked against it
+│   │   ├── bt817.h              the BT817 display driver (the only display-dependent code)
+│   │   ├── radio_link.h         the line protocol from the radio co-processor, 0x220 / 0x221 (F-015)
+│   │   ├── log_link.h           the log link's UART frames (log_link LL03-LL14): AA 55 · len · type · payload ·
+│   │   │                        CRC-16, beside the $ lines; CRC-32; the phone's six opcodes (D-494, BT3)
+│   │   ├── log_store.h          the card (D-493): /RX7/<seq>/ summary · thin · full · pulled.flg, the 1 Hz
+│   │   │                        record of log_channels (137 bytes), and the Teensy's side of a pull - list,
+│   │   │                        stream under CREDIT, END with the CRC, pulled only on a matching ACK
+│   │   └── icu.ino              Teensy host. ICU_FW_VERSION lives here. Serial2 at 921600, the SD card
+│   │
+│   ├── icu_radio/               THE RADIO CO-PROCESSOR (XIAO ESP32C3, P116): the Ionic BMS over BLE → one line per
+│   │   └── icu_radio.ino        second to the Teensy (F-015), and the log link's BLE peripheral "RX7-ICU" - bonded
+│   │                            phones only, passkey on the cluster, requests forwarded as frames (BT3).
+│   │                            Compiled for its target by firmware/tests/run.sh since Y8
+│   │
+│   └── icu_sim/                 DESKTOP PREVIEW — runs the real firmware, not a mock
+│       ├── sim_sdl.cpp          SDL2 host (Linux, Mac)
+│       ├── render_pages.cpp     every cluster page to PNG, headless (render.sh, X-007)
+│       └── build.sh             builds ./sim (the binary itself is not versioned)
 │
-├── icu_radio/               THE RADIO CO-PROCESSOR (XIAO ESP32C3, P116): the Ionic BMS over BLE → one line per
-│   └── icu_radio.ino        second to the Teensy (F-015), and the log link's BLE peripheral "RX7-ICU" - bonded
-│                            phones only, passkey on the cluster, requests forwarded as frames (BT3).
-│                            Compiled for its target by tests/run.sh since Y8
+├── control-unit/firmware/       THE CONTROL UNIT (CU, the DCU - D-496)
+│   └── dcu/                     THE DCU (D-374)
+│       ├── climate.h            HVAC servos, comfort channels, seat interlock, climate memory
+│       ├── panel.h              key matrix, 0x400, wake, release select, knobs, windows, mirrors (F-017).
+│       │                        A release only with the car stopped - 0x200's road speed 0 in a frame
+│       │                        no older than TMO_ICU_SENSORS, or, with no speed to see, the key OFF
+│       │                        on a live PMU (D-484) - and the select dropped 1.5 s after it is
+│       │                        raised, key held or not (D-465). F-018 (D-492): the 4 x 3 matrix, the
+│       │                        centre knob's modes, the mirror-defog key, the mirror select, the seat knobs
+│       ├── lights.h             the panel's (0x3C) and the left plate's (0x54) LED drivers: rules, channel map
+│       ├── screen.h             the screen's four pages as content - no display driver yet (P201)
+│       ├── pins.h               the pin map - dcu_channels.teensy_pin, every edge pin and expander port (D-452)
+│       ├── tca9539.h            the TCA9539-Q1 on Wire: the DRV8962, DEN / DSEL, CAN STB held low, the fault clear
+│       ├── can_map.h            a copy of icu/can_map.h - never edited here
+│       └── dcu.ino              Teensy host on the H-002 pin map. DCU_FW_VERSION lives here
 │
-├── dcu/                     THE DCU (D-374)
-│   ├── climate.h            HVAC servos, comfort channels, seat interlock, climate memory
-│   ├── panel.h              key matrix, 0x400, wake, release select, knobs, windows, mirrors (F-017).
-│   │                        A release only with the car stopped - 0x200's road speed 0 in a frame
-│   │                        no older than TMO_ICU_SENSORS, or, with no speed to see, the key OFF
-│   │                        on a live PMU (D-484) - and the select dropped 1.5 s after it is
-│   │                        raised, key held or not (D-465). F-018 (D-492): the 4 x 3 matrix, the
-│   │                        centre knob's modes, the mirror-defog key, the mirror select, the seat knobs
-│   ├── lights.h             the panel's (0x3C) and the left plate's (0x54) LED drivers: rules, channel map
-│   ├── screen.h             the screen's four pages as content - no display driver yet (P201)
-│   ├── pins.h               the pin map - dcu_channels.teensy_pin, every edge pin and expander port (D-452)
-│   ├── tca9539.h            the TCA9539-Q1 on Wire: the DRV8962, DEN / DSEL, CAN STB held low, the fault clear
-│   ├── can_map.h            a copy of icu/can_map.h - never edited here
-│   └── dcu.ino              Teensy host on the H-002 pin map. DCU_FW_VERSION lives here
-│
-├── icu_sim/                 DESKTOP PREVIEW — runs the real firmware, not a mock
-│   ├── sim_sdl.cpp          SDL2 host (Linux, Mac)
-│   ├── render_pages.cpp     every cluster page to PNG, headless (render.sh, X-007)
-│   └── build.sh             builds ./sim (the binary itself is not versioned)
-│
-├── pmu_sim/                 PMU SIMULATOR — the spare Teensy
-│   ├── pmu_sim.ino          CAN TX + serial console + scripted drive cycle
-│   ├── can_map.h            a copy of icu/can_map.h - never edited here (run.sh refuses drift)
-│   ├── vehicle_model.h      a 1982 RX-7 that behaves like one, its outputs on the PMU's rules: the 3 s
-│   │                        prime and the oil gate (open sender = zero pressure, D-461), the 10 s shed
-│   │                        with 0.5 V hysteresis and the ICU / dash lamps kept while running (D-463,
-│   │                        D-476), O20 the dimmed illumination (D-462), the hazards past the 30 min (D-464)
-│   └── channels.h           hand-synced to 02-PROJECTS/01-electrical/data/pins.csv — the v2 generator (D-311) is archived; see work F-013
-│
-├── tests/                   REGRESSION SUITES — test_suite · test_bt817 · test_dcu · test_radio · test_loglink · test_vectors
-│   ├── test_suite.cpp       runs on the PC: packing, counter wrap, rendering, overlap, dirty tiles, stats
-│   ├── gen_vectors.py       can_vectors.h from the record's can_messages / can_fields (Y8; not versioned)
-│   ├── test_vectors.cpp     static_asserts can_map.h against those vectors - compiling is the test
-│   ├── gen_logic_vectors.py logic_vectors.h from the record's logic / ladders / rules / pins (Y8; not versioned):
-│   │                        test_suite §14 holds pmu_sim's vehicle_model.h to every row, §15 the timers the
-│   │                        generator lists as hand-tested; test_dcu §18 the 0x400 terms
-│   ├── gen_log_vectors.py   log_vectors.h from log_channels / log_link / params (BT3; not versioned):
-│   │                        test_loglink holds the record's widths, UUIDs, opcodes and codes to the headers
-│   ├── test_loglink.cpp     the framing, the CRCs, the thinned record, a pull through an in-memory card
-│   └── run.sh               every suite, the sheets against the record (../cad/check.py), every sketch
-│                            compiled for its target. Do this after any change to the headers above
-│
-└── bench rigs kept here (both passed)
-    ├── ladder_decode_test/  Stage 4 — ladder windows and fault bands
-    └── tach_simulator/      Stage 5 — RPM capture, one jumper. Still the fastest RPM source
-    (can_map_test, can_loopback_test and cluster_render_test moved to
-     99-ARCHIVE/2026-09-26_firmware-superseded-sketches/ on 2026-09-26)
+└── firmware/                    THIS FOLDER — what both units use
+    ├── pmu_sim/                 PMU SIMULATOR — the spare Teensy
+    │   ├── pmu_sim.ino          CAN TX + serial console + scripted drive cycle
+    │   ├── can_map.h            a copy of icu/can_map.h - never edited here (run.sh refuses drift)
+    │   ├── vehicle_model.h      a 1982 RX-7 that behaves like one, its outputs on the PMU's rules: the 3 s
+    │   │                        prime and the oil gate (open sender = zero pressure, D-461), the 10 s shed
+    │   │                        with 0.5 V hysteresis and the ICU / dash lamps kept while running (D-463,
+    │   │                        D-476), O20 the dimmed illumination (D-462), the hazards past the 30 min (D-464)
+    │   └── channels.h           hand-synced to 02-PROJECTS/01-electrical/data/pins.csv — the v2 generator (D-311) is archived; see work F-013
+    │
+    ├── tests/                   REGRESSION SUITES — test_suite · test_bt817 · test_dcu · test_radio · test_loglink · test_vectors
+    │   ├── test_suite.cpp       runs on the PC: packing, counter wrap, rendering, overlap, dirty tiles, stats
+    │   ├── gen_vectors.py       can_vectors.h from the record's can_messages / can_fields (Y8; not versioned)
+    │   ├── test_vectors.cpp     static_asserts can_map.h against those vectors - compiling is the test
+    │   ├── gen_logic_vectors.py logic_vectors.h from the record's logic / ladders / rules / pins (Y8; not versioned):
+    │   │                        test_suite §14 holds pmu_sim's vehicle_model.h to every row, §15 the timers the
+    │   │                        generator lists as hand-tested; test_dcu §18 the 0x400 terms
+    │   ├── gen_log_vectors.py   log_vectors.h from log_channels / log_link / params (BT3; not versioned):
+    │   │                        test_loglink holds the record's widths, UUIDs, opcodes and codes to the headers
+    │   ├── test_loglink.cpp     the framing, the CRCs, the thinned record, a pull through an in-memory card
+    │   └── run.sh               every suite, the sheets against the record (cad/check.py), every sketch
+    │                            compiled for its target. Do this after any change to the headers above
+    │
+    └── bench rigs kept here (both passed)
+        ├── ladder_decode_test/  Stage 4 — ladder windows and fault bands
+        └── tach_simulator/      Stage 5 — RPM capture, one jumper. Still the fastest RPM source
+        (can_map_test, can_loopback_test and cluster_render_test moved to
+         99-ARCHIVE/2026-09-26_firmware-superseded-sketches/ on 2026-09-26)
 ```
 
-**`can_map.h` has two copies** (`icu/`, `dcu/`) because the Arduino IDE needs the header
+**`can_map.h` has two copies** (`../display-unit/firmware/icu/`, `../control-unit/firmware/dcu/`) because the Arduino IDE needs the header
 beside each sketch. **`icu/can_map.h` is the master.** When it changes, copy it over `dcu/`.
 `tests/run.sh` refuses to run the suites while the two differ (plan P49, 2026-09-26).
 
@@ -131,7 +139,7 @@ xcode-select --install && brew install sdl2  # Mac
 Then, from the tree:
 
 ```
-cd 02-PROJECTS/01-electrical/00-design/firmware/icu_sim
+cd 02-PROJECTS/01-electrical/00-design/display-unit/firmware/icu_sim
 ./build.sh           # or: g++ sim_sdl.cpp -o sim -std=c++17 -O2 $(sdl2-config --cflags --libs)
 ./sim
 ```
@@ -184,7 +192,7 @@ voltage shed, the illumination and the sleep timers (§15).
 
 ## 4 · Building for the Teensy
 
-Open `icu/icu.ino` in the Arduino IDE. Board: Teensy 4.1, CPU 600 MHz.
+Open `../display-unit/firmware/icu/icu.ino` in the Arduino IDE. Board: Teensy 4.1, CPU 600 MHz.
 Library: **ACAN_T4**, not FlexCAN_T4 — only ACAN_T4 exposes loopback cleanly.
 
 On Linux the upload needs PJRC's udev rule once, or the Teensy loader cannot see the
