@@ -15,3 +15,4 @@ L-0013,2026-09-27,plan,K1 DS05 D-448 APP.05 DS13,"K1 closed on D-446; DS05 fuel 
 L-0014,2026-09-28,session,02.15 K6,Wiring review: the swap cavity plan lands on live dash conductors (K6); A/C at the swap raised as 02.15
 L-0015,2026-10-09,plan,K6 K7 D-456 D-457,"K6: the swap's cavity plan corrected onto today's receptacles (D-456), the alternator and pump loads restated (D-457), K7 added; the seventh plug and the coolant level raised as blocks 02.16 and 02.17"
 L-0016,2026-10-12,answers,D-489 HO13 LW33,"Block 02.15 answered (a) in chat: the ECU owns the A/C clutch and the pressure sensor at the swap, the DCU only asks on CAN 0x300 byte 4 (D-489); HO13, LD17 / LD18, LW32 / LW33, L1-P 4 / L1-S2 3 follow"
+L-0017,2026-10-13,apply,D-500 D-501,"Applied 02.16 (a) D-500, 02.17 (a) D-501"

@@ -271,3 +271,17 @@ Camden answered block 02.15 in chat on 2026-10-12: ""a"". Option (a) as he was a
 **What stays on the DCU.** The clutch stage and the pressure input stay on the carrier as unpopulated footprints (electrical D-455's provision) and nothing is bought for them (P185, P186); the comfort fuse F29 stays 7.5 A. D-324's principle - the compressor is a comfort load that never gates the car starting or running - holds with the ECU owning it: the ECU cuts it at full throttle and the request is advisory.
 
 **In the data.** Engine: handover HO13, ls_devices LD17 / LD18, ls_wires LW32 / LW33, ls_cavities L1-P 4 / L1-S2 3. Electrical: dcu_channels SN28 / SN29, fuses F29, parts P185 / P186, cavities DP-DCU-D 10, can_fields 0x300/4, the DCU firmware's comment on that byte. Block 02.16's wording (""two A/C sensor wires if the ECU runs the A/C"") is now the case."
+D-500,,A seventh 6-way plug at the dash post for the optional engine wires,2026-10-13,standing,,,02.16,,"**Add a seventh plug at the dash post: a 6-way DT pair, and leave room for a fifth extra receptacle on the dash post panel now.**
+
+His answer (block 02.16, desktop, 2026-10-13): option (a), ""Add a seventh plug, a 6-way DT pair (about $10-20, confirm), and leave room for a fifth receptacle on the dash post panel now. Every option keeps a place, with one spare. Forecloses nothing; costs a little panel room."" No words typed.
+
+Reasoning: with every option the leg needs 71 places and six 12-way plugs have 67 usable (D-443's count assumed the two plugs at the post were empty; five cavities are not). A seventh plug gives the airflow meter (LW24), the cam phaser pair (LW34) and the neutral switch pair (LW38) a place, with one spare. The recommendation's flip condition (no panel room for a fifth receptacle when measured) is a measurement for electrical E13, not a reason to hold the ruling.
+
+Consequences: D-443's plug count becomes seven (six 12-way plus one 6-way DT pair); K6's last five conductors can be assigned; electrical E13 leaves room for five extra receptacles at the post (its note already carries this). Price and part number carry `confirm` until sourced."
+D-501,,A coolant level switch in the swap's expansion tank with a cluster warning,2026-10-13,standing,,,02.17,,"**Fit a coolant level switch in the swap's expansion tank, wired through L1-S2 11 to the cluster's spare input (IC17), with a low-coolant warning on the cluster screen.**
+
+His answer (block 02.17, desktop, 2026-10-13): option (a), ""Fit a coolant level switch in the swap's expansion tank (about $20-40, confirm), wired through L1-S2 11 to the cluster's spare input, with a warning on the screen. Uses the spare input; if the wideband gauge later needs that input as its fallback (electrical B2), the switch moves to an engine-computer input and the warning comes over CAN."" No words typed. A discussion rode along in context: his earlier answer in the same session (2026-10-13T09:59:15-06:00) was (b); the final answer, a minute later, is (a), and (a) is the ruling.
+
+Reasoning: the 12A's radiator level sensor (PT292) leaves with the radiator; without a replacement the engine computer's temperature is the only guard, and a leak shows only once hot, on aluminum heads. The cavity already exists, so no new one is needed.
+
+Consequences: the swap uses L1-S2 11 (HO09); coolant level rows are added to ls_devices / ls_wires and a switch to the swap's parts list (DS10) in the plan run; if the wideband gauge takes IC17 (electrical B2) the switch moves to an engine-computer input. Price carries `confirm`."
