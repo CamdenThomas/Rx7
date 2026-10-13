@@ -1,0 +1,611 @@
+{
+ "DT04-12P": {
+  "glb": "connectors/DT04-12P.glb",
+  "family": "DT",
+  "half": "receptacle",
+  "ways": 12,
+  "size_mm": {
+   "x": 41.0,
+   "y": 46.0,
+   "z": 23.0
+  },
+  "bbox_mm": [
+   [
+    -20.5,
+    -31.8,
+    -10.5
+   ],
+   [
+    20.5,
+    14.2,
+    12.5
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "cad deutsch-dt04-12pa-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w12p-te",
+  "standin": true,
+  "cad": "deutsch-dt04-12pa-te",
+  "bytes": 89088,
+  "nodes": [
+   "body",
+   "shroud",
+   "cavities",
+   "wedgelock"
+  ],
+  "stamp": "6c33ea9c9dd42ea6"
+ },
+ "DT04-2P": {
+  "glb": "connectors/DT04-2P.glb",
+  "family": "DT",
+  "half": "receptacle",
+  "ways": 2,
+  "size_mm": {
+   "x": 18.0,
+   "y": 43.0,
+   "z": 17.0
+  },
+  "bbox_mm": [
+   [
+    -9.0,
+    -28.8,
+    -7.65
+   ],
+   [
+    9.0,
+    14.2,
+    9.35
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "cad deutsch-dt04-2p-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w2p-te",
+  "standin": true,
+  "cad": "deutsch-dt04-2p-te",
+  "bytes": 32804,
+  "nodes": [
+   "body",
+   "shroud",
+   "cavities",
+   "wedgelock"
+  ],
+  "stamp": "c1e88bdb3d6432b8"
+ },
+ "DT04-4P": {
+  "glb": "connectors/DT04-4P.glb",
+  "family": "DT",
+  "half": "receptacle",
+  "ways": 4,
+  "size_mm": {
+   "x": 20.0,
+   "y": 46.0,
+   "z": 21.0
+  },
+  "bbox_mm": [
+   [
+    -10.0,
+    -31.9,
+    -9.5
+   ],
+   [
+    10.0,
+    14.1,
+    11.5
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "cad deutsch-dt04-4p-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w4p-te",
+  "standin": true,
+  "cad": "deutsch-dt04-4p-te",
+  "bytes": 44016,
+  "nodes": [
+   "body",
+   "shroud",
+   "cavities",
+   "wedgelock"
+  ],
+  "stamp": "7ee4d99dd4021b76"
+ },
+ "DT04-6P": {
+  "glb": "connectors/DT04-6P.glb",
+  "family": "DT",
+  "half": "receptacle",
+  "ways": 6,
+  "size_mm": {
+   "x": 25.0,
+   "y": 46.0,
+   "z": 21.0
+  },
+  "bbox_mm": [
+   [
+    -12.5,
+    -31.7,
+    -9.5
+   ],
+   [
+    12.5,
+    14.3,
+    11.5
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "cad deutsch-dt04-6p-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w6p-te",
+  "standin": true,
+  "cad": "deutsch-dt04-6p-te",
+  "bytes": 55256,
+  "nodes": [
+   "body",
+   "shroud",
+   "cavities",
+   "wedgelock"
+  ],
+  "stamp": "0923d6b39226af7a"
+ },
+ "DT04-8P": {
+  "glb": "connectors/DT04-8P.glb",
+  "family": "DT",
+  "half": "receptacle",
+  "ways": 8,
+  "size_mm": {
+   "x": 36.0,
+   "y": 46.0,
+   "z": 26.0
+  },
+  "bbox_mm": [
+   [
+    -18.0,
+    -31.6,
+    -12.0
+   ],
+   [
+    18.0,
+    14.4,
+    14.0
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "cad deutsch-dt04-08pa-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w8p-te",
+  "standin": true,
+  "cad": "deutsch-dt04-08pa-te",
+  "bytes": 66552,
+  "nodes": [
+   "body",
+   "shroud",
+   "cavities",
+   "wedgelock"
+  ],
+  "stamp": "1af95aae5e4232ea"
+ },
+ "DT06-12S": {
+  "glb": "connectors/DT06-12S.glb",
+  "family": "DT",
+  "half": "plug",
+  "ways": 12,
+  "size_mm": {
+   "x": 41.0,
+   "y": 31.0,
+   "z": 19.0
+  },
+  "bbox_mm": [
+   [
+    -20.5,
+    -31.0,
+    -8.0
+   ],
+   [
+    20.5,
+    0.0,
+    11.0
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "cad deutsch-dt06-12sa-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w12s-te",
+  "standin": true,
+  "cad": "deutsch-dt06-12sa-te",
+  "bytes": 119400,
+  "nodes": [
+   "body",
+   "latch",
+   "cavities",
+   "wedgelock"
+  ],
+  "stamp": "cbe918064e0559f7"
+ },
+ "DT06-2S": {
+  "glb": "connectors/DT06-2S.glb",
+  "family": "DT",
+  "half": "plug",
+  "ways": 2,
+  "size_mm": {
+   "x": 17.0,
+   "y": 28.0,
+   "z": 17.0
+  },
+  "bbox_mm": [
+   [
+    -8.5,
+    -28.0,
+    -7.0
+   ],
+   [
+    8.5,
+    0.0,
+    10.0
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "cad deutsch-dt06-2s-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w2s-te",
+  "standin": true,
+  "cad": "deutsch-dt06-2s-te",
+  "bytes": 34928,
+  "nodes": [
+   "body",
+   "latch",
+   "cavities",
+   "wedgelock"
+  ],
+  "stamp": "6e99ace4e8ac325b"
+ },
+ "DT06-4S": {
+  "glb": "connectors/DT06-4S.glb",
+  "family": "DT",
+  "half": "plug",
+  "ways": 4,
+  "size_mm": {
+   "x": 19.0,
+   "y": 31.0,
+   "z": 20.0
+  },
+  "bbox_mm": [
+   [
+    -9.5,
+    -31.0,
+    -8.5
+   ],
+   [
+    9.5,
+    0.0,
+    11.5
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "cad deutsch-dt06-4s-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w4s-p012-te (the W4S model would not download; the P012 variant is the same wedge)",
+  "standin": true,
+  "cad": "deutsch-dt06-4s-te",
+  "bytes": 51824,
+  "nodes": [
+   "body",
+   "latch",
+   "cavities",
+   "wedgelock"
+  ],
+  "stamp": "f50c9c2d6d02e725"
+ },
+ "DT06-6S": {
+  "glb": "connectors/DT06-6S.glb",
+  "family": "DT",
+  "half": "plug",
+  "ways": 6,
+  "size_mm": {
+   "x": 24.0,
+   "y": 31.0,
+   "z": 20.0
+  },
+  "bbox_mm": [
+   [
+    -12.0,
+    -31.0,
+    -8.5
+   ],
+   [
+    12.0,
+    0.0,
+    11.5
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "cad deutsch-dt06-6s-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w6s-te",
+  "standin": true,
+  "cad": "deutsch-dt06-6s-te",
+  "bytes": 68696,
+  "nodes": [
+   "body",
+   "latch",
+   "cavities",
+   "wedgelock"
+  ],
+  "stamp": "ed093b4e9650eea7"
+ },
+ "DT06-8S": {
+  "glb": "connectors/DT06-8S.glb",
+  "family": "DT",
+  "half": "plug",
+  "ways": 8,
+  "size_mm": {
+   "x": 37.0,
+   "y": 31.0,
+   "z": 21.0
+  },
+  "bbox_mm": [
+   [
+    -18.5,
+    -31.0,
+    -9.0
+   ],
+   [
+    18.5,
+    0.0,
+    12.0
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "cad deutsch-dt06-08sa-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w8s-te",
+  "standin": true,
+  "cad": "deutsch-dt06-08sa-te",
+  "bytes": 85600,
+  "nodes": [
+   "body",
+   "latch",
+   "cavities",
+   "wedgelock"
+  ],
+  "stamp": "9b1a817a8d65de44"
+ },
+ "DT13-06PA": {
+  "glb": "connectors/DT13-06PA.glb",
+  "family": "DT13",
+  "half": "receptacle",
+  "ways": 6,
+  "size_mm": {
+   "x": 42.8,
+   "y": 39.5,
+   "z": 38.58
+  },
+  "bbox_mm": [
+   [
+    -21.399,
+    -25.197,
+    -20.955
+   ],
+   [
+    21.399,
+    14.3,
+    17.628
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "deutsch-dt13-6p-te",
+  "standin": false,
+  "cad": "deutsch-dt13-6p-te",
+  "bytes": 662704,
+  "nodes": [
+   "body",
+   "shroud",
+   "flange"
+  ],
+  "stamp": "616ee295bae98d10"
+ },
+ "DT13-08PA": {
+  "glb": "connectors/DT13-08PA.glb",
+  "family": "DT13",
+  "half": "receptacle",
+  "ways": 8,
+  "size_mm": {
+   "x": 55.12,
+   "y": 39.24,
+   "z": 38.58
+  },
+  "bbox_mm": [
+   [
+    -27.559,
+    -24.843,
+    -20.955
+   ],
+   [
+    27.559,
+    14.4,
+    17.628
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "deutsch-dt13-08pa-te",
+  "standin": false,
+  "cad": "deutsch-dt13-08pa-te",
+  "bytes": 683908,
+  "nodes": [
+   "body",
+   "shroud",
+   "flange"
+  ],
+  "stamp": "7605a2b149a08aee"
+ },
+ "DT13-12PA": {
+  "glb": "connectors/DT13-12PA.glb",
+  "family": "DT13",
+  "half": "receptacle",
+  "ways": 12,
+  "size_mm": {
+   "x": 59.18,
+   "y": 39.62,
+   "z": 38.63
+  },
+  "bbox_mm": [
+   [
+    -29.591,
+    -25.424,
+    -20.98
+   ],
+   [
+    29.591,
+    14.2,
+    17.653
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "deutsch-dt13-12pa-te",
+  "standin": false,
+  "cad": "deutsch-dt13-12pa-te",
+  "bytes": 1161976,
+  "nodes": [
+   "body",
+   "shroud",
+   "flange"
+  ],
+  "stamp": "b25fbdbc128edaeb"
+ },
+ "DTP04-2P": {
+  "glb": "connectors/DTP04-2P.glb",
+  "family": "DTP",
+  "half": "receptacle",
+  "ways": 2,
+  "size_mm": {
+   "x": 22.0,
+   "y": 47.0,
+   "z": 22.0
+  },
+  "bbox_mm": [
+   [
+    -11.0,
+    -31.0,
+    -10.0
+   ],
+   [
+    11.0,
+    16.0,
+    12.0
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "cad deutsch-dtp04-2p-te (TE customer-view model, bounding box); no TE layout read for the contact pattern; wedgelock: cad deutsch-wp-2p-te",
+  "standin": true,
+  "cad": "deutsch-dtp04-2p-te",
+  "bytes": 32728,
+  "nodes": [
+   "body",
+   "shroud",
+   "cavities",
+   "wedgelock"
+  ],
+  "stamp": "d595a31fd4e6a043"
+ },
+ "DTP04-4P": {
+  "glb": "connectors/DTP04-4P.glb",
+  "family": "DTP",
+  "half": "receptacle",
+  "ways": 4,
+  "size_mm": {
+   "x": 27.0,
+   "y": 47.0,
+   "z": 27.0
+  },
+  "bbox_mm": [
+   [
+    -13.5,
+    -31.0,
+    -12.5
+   ],
+   [
+    13.5,
+    16.0,
+    14.5
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "cad deutsch-dtp04-4p-te (TE customer-view model, bounding box); no TE layout read for the contact pattern; wedgelock: cad deutsch-wp-4p-te",
+  "standin": true,
+  "cad": "deutsch-dtp04-4p-te",
+  "bytes": 43996,
+  "nodes": [
+   "body",
+   "shroud",
+   "cavities",
+   "wedgelock"
+  ],
+  "stamp": "ccf601d59a846144"
+ },
+ "DTP06-2S": {
+  "glb": "connectors/DTP06-2S.glb",
+  "family": "DTP",
+  "half": "plug",
+  "ways": 2,
+  "size_mm": {
+   "x": 18.0,
+   "y": 35.0,
+   "z": 19.0
+  },
+  "bbox_mm": [
+   [
+    -9.0,
+    -35.0,
+    -8.0
+   ],
+   [
+    9.0,
+    0.0,
+    11.0
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "cad deutsch-dtp06-2s-te (TE customer-view model, bounding box); no TE layout read for the contact pattern; wedgelock: cad deutsch-wp-2s-te",
+  "standin": true,
+  "cad": "deutsch-dtp06-2s-te",
+  "bytes": 34916,
+  "nodes": [
+   "body",
+   "latch",
+   "cavities",
+   "wedgelock"
+  ],
+  "stamp": "1531393f841a67bb"
+ },
+ "DTP06-4S": {
+  "glb": "connectors/DTP06-4S.glb",
+  "family": "DTP",
+  "half": "plug",
+  "ways": 4,
+  "size_mm": {
+   "x": 24.0,
+   "y": 35.0,
+   "z": 22.0
+  },
+  "bbox_mm": [
+   [
+    -12.0,
+    -35.0,
+    -9.5
+   ],
+   [
+    12.0,
+    0.0,
+    12.5
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "cad deutsch-dtp06-4s-te (TE customer-view model, bounding box); no TE layout read for the contact pattern; wedgelock: cad deutsch-wp-4s-te",
+  "standin": true,
+  "cad": "deutsch-dtp06-4s-te",
+  "bytes": 51788,
+  "nodes": [
+   "body",
+   "latch",
+   "cavities",
+   "wedgelock"
+  ],
+  "stamp": "315c895d90a13c58"
+ }
+}

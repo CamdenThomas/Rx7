@@ -134,3 +134,4 @@ L-0122,2026-10-13,clean,D-514 Y24 Y25 Y26 Y27,"D-514: the harness in CAD - Y24 c
 L-0123,2026-10-13,clean,D-515 Y28 Y24,D-515: models searched online before drawing; Y28 added for the devices and common parts; Y24 notes to search first
 L-0124,2026-10-13,clean,D-514,"Block 01.40 replaced by 01.41: the CUR's two leads are sixteen lines, more than one DT13-12PA carries (the mock-up's check found it)"
 L-0125,2026-10-13,clean,D-514,"Block 01.40 replaced by 01.41: the CUR's two leads are sixteen lines, more than one DT13-12PA carries (the mock-up's check found it); retired.retired_by widened to str so a replacing block's id is accepted, as every other area declares it"
+L-0126,2026-10-13,clean,D-514 D-515 Y24 Y27,"Y24 done: connector_dims (17 rows) and the connectors builder; TE's DT models were fetched without a login on the Fedora PC, so Y27 is a copy to this Mac, not a login - D-514's wording stands corrected here"

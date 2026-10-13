@@ -75,3 +75,26 @@ suppliers,phone,str,no,,
 suppliers,url,str,no,,
 suppliers,hours,str,no,,
 suppliers,note,text,no,,no personal addresses: a public repository
+connector_dims,id,key,yes,,"the variant as housings.leg_side / housings.box_side name it, e.g. DT06-12S"
+connector_dims,family,enum(DT|DTP|DT13),yes,,DT: size 16 contacts; DTP: size 12; DT13: the flanged PCB header receptacle
+connector_dims,half,enum(plug|receptacle),yes,,"plug: socket contacts, the latch (DT06, DTP06); receptacle: pin contacts, the shroud (DT04, DTP04, DT13)"
+connector_dims,ways,int,yes,,
+connector_dims,rows,int,yes,,rows of cavities on the mating face
+connector_dims,length_mm,num,yes,,"along the mating axis, the housing alone (no contacts, wires or boot); a DT13 includes its PCB tails"
+connector_dims,width_mm,num,yes,,"across the face, along the cavity rows"
+connector_dims,height_mm,num,yes,,"across the face, across the rows (the latch side up)"
+connector_dims,flange_w_mm,num,no,,the DT13 flange's width; blank for an in-line housing
+connector_dims,flange_h_mm,num,no,,the DT13 flange's height; blank for an in-line housing
+connector_dims,hole_pitch_mm,num,no,,"the DT13 flange's two mounting holes, centre to centre"
+connector_dims,hole_mm,num,no,,the DT13 mounting hole's diameter
+connector_dims,shroud_mm,num,no,,receptacles: the shroud's depth from its rim to the face the plug meets (the stand-in's origin)
+connector_dims,shroud_w_mm,num,no,,receptacles: the shroud's outer width where it is narrower than the housing (a DT13's nose); blank: the housing's width
+connector_dims,shroud_h_mm,num,no,,"the same, its height"
+connector_dims,pitch_mm,num,no,,contact centres along a row
+connector_dims,row_mm,num,no,,contact centres between rows; blank for one row
+connector_dims,gap_mm,num,no,,the middle gap of a row where it is wider than the pitch (TE's 8-way: 5.46)
+connector_dims,cavity_mm,num,no,,the diameter a cavity is drawn at on the face
+connector_dims,wedgelock,str,no,,the wedgelock's TE part number; blank for a DT13 (its pins are moulded in)
+connector_dims,cad,str,no,cad,"the vendor model's cad row, when one is recorded"
+connector_dims,source,text,yes,,where the figures were read: the cad row or the TE document and page
+connector_dims,note,text,yes,,which figures are estimated and how; always ends confirm (R11)
