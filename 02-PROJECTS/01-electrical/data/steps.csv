@@ -1,1 +1,1169 @@
 id,work,n,do,how,expect,caution
+E13.01,E13,1,Gather the real parts and the M-1 numbers,"On the bench: the PMU with its 39-way connector, the busbars (P007), fuse blocks A and B (P001), the five MAXI holders (P189), the ten inline holders for the node (P002), nine relay sockets (P006), the 8-position barrier strip (P068), the perfboard on its M3 standoffs (P134), the wideband gauge controller, and one of each receptacle shell with its clip.
+Write the M-1 space from C1 on a card: width, height, depth, and where the lowest 50 mm line is.",Every part in the list is on the bench; nothing is laid out from a catalogue size.,
+E13.02,E13,2,Draw the M-1 space on cardboard,"Cut a cardboard outline the size of the space C1 measured behind the lower dash. Mark the floor side, the firewall side and a line 50 mm up from the lowest edge: nothing mounts below that line.",A full-size outline you can lay parts on.,
+E13.03,E13,3,Place the PMU first,"Low and close to the floor, but above the 50 mm line.
+Connector facing down or sideways, never up.
+Swing the 39-way lever through its whole arc with the connector on: nothing may sit in the arc.
+Leave air under it: it stands on three M6 stand-offs (P060). Mark the three holes from the PMU itself.",The lever opens and closes fully on the cardboard with the connector fitted.,"Do not mark the holes from a drawing: the mounting pattern is not in the record, take it off the part."
+E13.04,E13,4,"Place the busbars, the fuse blocks and the fuse holders","Always-hot busbar beside the PMU +12 V stud, with its cover on: check the cover still fits with lugs on the studs.
+Ground bus beside PMU pin 25: its 10 AWG wire to the bus must be 6 in or shorter.
+Fuse blocks A and B where your hand reaches them with the dash in.
+Five MAXI holders at the busbar: F30 (block A), F31 (K11 terminal 30), F32 (K11 terminal 87 to block B), F35 and F36 (the seat feeds).
+Three inline holders right at the bar with their leads cut to about 50 mm: F12, F22, F23.
+Seven more inline holders near what they feed: F15, F16, F20, F21 (off O12), F33 (off O10), F37 (off the O1 splice).",Every holder can be opened and its fuse pulled without moving another part.,The always-hot busbar is live whenever the master disconnect is closed: it must be covered and nothing metal may be able to fall across it.
+E13.05,E13,5,"Place the nine relay sockets, the wake strip, the perfboard and the gauge","Relay sockets (P006) in a row, in this order so the labels read left to right: K1 K2 K3 K4 K11 K12 K13 K14 K15.
+The 8-position barrier strip (P068) and the perfboard (P134) side by side: the wake parts on the board wire straight to the strip.
+The wideband gauge controller where C1 found it hides, with its fixed sensor lead reaching the firewall grommet: that lead is never cut or extended.",Each relay can be pulled straight out; each strip screw can be reached with a screwdriver.,
+E13.06,E13,6,"Place the receptacles along the panel edge, grouped by leg","One clip per receptacle, 60 mm of clear space behind every one for the wires.
+Groups: L1 (L1-P, L1-S1, L1-S2), L2 (L2-P, L2-M, L2-S, L2-R), L3 (L3-P, L3-M, L3-S1, L3-S2, L3-S3), L4 (L4-P, L4-M, L4-S, L4-S2).
+Beside L1-S1 / L1-S2 leave room for four more 12-way receptacles (five if engine block 02.16 was answered (a)).
+Keep L2-S apart from L2-P, and the signal receptacles away from the pop-up motor bus and blower wires by 50 mm where you can.","Sixteen clip positions marked, plus the spare room for the swap.",A plug must be able to be pushed on and pulled off by hand with the dash in: try it with a mated pair on the cardboard.
+E13.07,E13,7,Check the layout against the rules,"Low and close to the floor · the PMU lever arc clear · 60 mm behind every receptacle · both fuse blocks reachable · the always-hot busbar covered · the PMU stood off for airflow · no bare aluminium against a live stud.
+Every wire can enter from below or with a drip loop.
+Hold what CK04 found against the layout: nothing under a water path.",Every line is true on the cardboard.,
+E13.08,E13,8,Mock it up in the car,"Tape the parts or their outlines to the cardboard and offer it up in the footwell where C1 measured.
+Fit the 39-way and swing the lever. Push a plug onto a receptacle at each end of the row. Reach each fuse block.
+Lay a tape from the node along the dash rail to the centre stack: that is the DCU tail, note the length.
+Photograph it from the driver seat side and from below.","It goes in and comes out by hand, and everything on it can be reached.",The master disconnect is open while your arms are near the temporary distribution post.
+E13.09,E13,9,Transfer the layout to the panel stock and cut,"Lay the cardboard on the panel stock (P090), centre-punch every hole through it, and mark the panel edges.
+Cut the panels. Drill the PMU stand-off holes, the clip holes (11 mm - confirm on the clip in hand), the relay socket, block and strip holes to the parts themselves.",The parts drop onto their holes without forcing.,Eye protection for cutting and drilling.
+E13.10,E13,10,Deburr and paint,File every edge and hole until a rag does not catch. Paint or coat the panels (P093) and let them cure before anything is mounted.,"Smooth edges, an even coat, no bare aluminium where a live stud will sit.",
+E14.01,E14,1,Mount the PMU,"Three M6 x 12 mm stand-offs (P060) to the panel, the PMU on them, connector facing down or sideways.
+Fit the 39-way once and swing the lever through its arc.",The PMU is rigid on its stand-offs with air behind it; the lever arc is clear.,"Tightening torque for the PMU mounting is not in the record: snug, and note what the PMU manual gives."
+E14.02,E14,2,Mount the two busbars,"Always-hot bar beside the PMU +12 V stud. Ground bus beside pin 25, within 6 in of it.
+Fit both covers to prove they close.","Both bars fixed, both covers on.",No bare aluminium panel may touch a live stud: check the gap under the always-hot bar.
+E14.03,E14,3,Mount fuse blocks A and B,"Block A nearest the always-hot bar, block B nearest the K11 socket. Mark A and B on the panel with the paint pen.","Both blocks fixed, lids open freely.",
+E14.04,E14,4,Mount the five MAXI holders at the busbar,"F30 - busbar to block A input. F31 - busbar to K11 terminal 30. F32 - K11 terminal 87 to block B input. F35 - busbar to K14 terminal 30. F36 - busbar to K15 terminal 30.
+Fix each holder body to the panel so its lead to the bar is as short as it will go. Do not fit the fuses.","Five holders fixed and labelled BLOCK-A-FEED, K11-FEED, BLOCK-B-FEED, SEAT-D, SEAT-P.",
+E14.05,E14,5,Mount the ten sealed inline holders,"At the bar, each with its busbar-side 14 AWG lead cut to about 50 mm: F12 INTERIOR, F22 DCU-CONST, F23 WAKE.
+Near the O12 splice position: F15 ALT-EXCITE, F16 DISPLAY, F20 WIDEBAND, F21 KICK-DOWN.
+On the O10 release branch ahead of K3 / K4: F33 RELEASE. On the pop-up command branch ahead of K1 / K2: F37 POPUP-CMD.
+Tie each holder down so its cap opens upward or sideways. No fuses yet.","Ten holders fixed, each with its label.",A busbar-fed lead longer than 180 mm is unprotected wire behind a 150 A fuse: cut it short.
+E14.06,E14,6,Mount the nine relay sockets,In order K1 K2 K3 K4 K11 K12 K13 K14 K15. Do not plug the relays in.,Nine sockets fixed in a row.,
+E14.07,E14,7,Mount the wake strip and the perfboard,"The 8-position barrier strip (P068) with position 1 at the end nearest the L3 receptacles; write 1 to 8 beside it with the paint pen: 1-7 are the wake inputs, 8 is the common rail. The perfboard (P134) beside it on its M3 standoffs.",Strip and board fixed; positions numbered.,
+E14.08,E14,8,Fit the receptacle clips,"One clip per receptacle along the panel edge, grouped L1, L2, L3, L4: the 12, 6, 4, 2-way and DTP clips (P030), the 8-way clips (P162) for L2-M, L3-S3, L4-S and L4-S2.",Sixteen clips; an empty receptacle shell snaps into each.,
+E14.09,E14,9,Mount the wideband gauge controller,"Where E13 placed it, its sensor lead routed toward the firewall grommet uncut.","Controller fixed, lead not strained.",
+E14.10,E14,10,Stick every label,"Beside each relay socket: K1 POPUP-L · K2 POPUP-R · K3 HATCH-REL · K4 FUEL-REL · K11 HEAD-UNIT · K12 WASHER · K13 FUEL-PUMP · K14 SEAT-D · K15 SEAT-P.
+Beside each fuse position, the empty ones included:
+F1 · 10 A · Dash node, block B (K11) · LIVE · label HEAD-UNIT
+F2 · 2 A · Dash node, block A (busbar) · LIVE · label DIAG
+F3 · 5 A · Dash node, block A (busbar) · LIVE · label SWITCH
+F12 · 5 A · Dash node, sealed inline, on the busbar - always-hot (D-462) · LIVE · label INTERIOR
+F13 · no fuse · Dash node, block A (busbar) · EMPTY · label —
+F15 · 7.5 A · Dash node, sealed inline · LIVE · label ALT-EXCITE
+F16 · 5 A · Dash node, sealed inline · LIVE · label DISPLAY
+F19 · 3 A · Dash node, block A (busbar) · LIVE · label COURTESY
+F20 · 7.5 A · Dash node, sealed inline · LIVE · label WIDEBAND
+F21 · 5 A · Dash node, sealed inline · LIVE · label KICK-DOWN
+F22 · 3 A · Dash node, sealed inline · LIVE · label DCU-CONST
+F23 · 3 A · Dash node, sealed inline · LIVE · label WAKE
+F5 · no fuse · Dash node, block B (K11) · EMPTY · label SENSOR-2
+F30 · 40 A · Dash node, a weatherproof MAXI holder (P189) at the busbar stud, feeding fuse … · LIVE · label BLOCK-A-FEED
+F31 · 40 A · Dash node, a weatherproof MAXI holder (P189) at the busbar stud, feeding K11 … · LIVE · label K11-FEED
+F32 · 40 A · Dash node, a weatherproof MAXI holder (P189) at K11 terminal 87, feeding fuse … · LIVE · label BLOCK-B-FEED
+F33 · 10 A · Dash node, sealed inline on the O10 release branch (N85), ahead of K3 / K4 … · LIVE · label RELEASE
+F35 · 25 A · Dash node, a weatherproof MAXI holder (P189) at the busbar stud (D-469) · LIVE · label SEAT-D
+F36 · 25 A · Dash node, a weatherproof MAXI holder (P189) at the busbar stud (D-469) · LIVE · label SEAT-P
+F37 · 5 A · Dash node, sealed inline on the pop-up command branch, between the motor-bus … · LIVE · label POPUP-CMD",Every socket and every fuse position reads its id and name from where you will stand to service it.,
+E15.01,E15,1,Measure and bag every part first,"From the resistor kit (P069): 10 k x2 (WS01, the rail bleed), 100 k x5 (WS02, WS10, WS20 and the two bias), 220 k x2, 1 M x4, 130 k 1 % x2, 47 k x2.
+Measure each with the meter and lay them on a labelled card. 2N3904 x5 (P072), LM2903 x1 (P160), 2.2 µF film x2 (P158), 1N4148 x2 (P161), 100 nF x1, 1N5819 x7 (P071).",Every resistor reads within its tolerance of the marked value.,The 100 nF capacitor has no parts row: take it from stock and note it.
+E15.02,E15,2,Fit the seven diodes to the strip,"One 1N5819 per input position 1 to 7: the plain end under the input screw, the banded end (cathode) to the common rail at position 8.
+Join the seven banded ends to position 8 with a bare bus wire or a jumper comb; sleeve any lead that could touch its neighbour.",Diode test from each input screw to position 8: it conducts one way with a low forward reading (a Schottky) and is open the other way.,"A diode fitted backwards holds the car asleep on that input, or back-feeds a source: test all seven."
+E15.03,E15,3,Fit the rail bleed,"10 kΩ from position 8 (the rail) to a ring on the GND bus, 16 AWG BLK.",10 kΩ from position 8 to the GND bus.,
+E15.04,E15,4,Build the shared part of the stages on the perfboard,"WS00 · Q0 2N3904 · base via WS01 from O22 → collector to both Q1 bases
+WS01 · R 10k · O22 → Q0 base
+WS02 · R 100k · Q0 base → ground
+WS03 · C 100 nF · U1 V+ (F23) → ground",With O22 off (asleep) Q0 is off; the 100 nF sits right at the LM2903 supply pin.,
+E15.05,E15,5,"Build stage 1 - the door line, A6","WS10 · R 100k · F23 wake supply (+12 V, constant) → Q11 base
+WS11 · Q11 2N3904 · collector F23 +12 V → emitter to WS12
+WS12 · R 220k · Q11 emitter → A6 line (pin 18, N44)
+WS13 · R 1M · F23 wake supply (+12 V, constant) → U1A IN+ (threshold divider, top)
+WS14 · R 130k · U1A IN+ → ground
+WS15 · U1A LM2903 (P160), one half · IN- = A6 line (pin 18, N44); IN+ = WS13 / WS14 node; V+ = F23 → OUT (open collector) → WS16 pull-up and WS17
+WS16 · R 47k · F23 +12 V → Q21 collector
+WS17 · C 2.2 µF film (P158) · Q21 collector → Q31 base
+WS18 · R 1M · Q31 base → ground
+WS19 · D 1N4148 · anode ground → Base clamp: when the switch is released the edge swings the base about 12 V negative - over the 6 V VEBO without it
+WS1A · Q31 2N3904 · collector F23 +12 V → emitter to wake strip input 3 (N35)
+WS19, the base clamp: anode to ground, cathode to the Q31 base (the table's to-cell holds the reason instead of the node).
+The table still calls the comparator output node the Q21 collector: it is U1A OUT, the open-collector pin, with WS16 as its pull-up.",Every joint shiny; no bridge between rows (check with the meter on ohms between neighbours).,
+E15.06,E15,6,"Build stage 2 - the horn / hazard / wink line, A8","WS20 · R 100k · F23 wake supply (+12 V, constant) → Q12 base
+WS21 · Q12 2N3904 · collector F23 +12 V → emitter to WS22
+WS22 · R 220k · Q12 emitter → A8 line (pin 19, N43)
+WS23 · R 1M · F23 wake supply (+12 V, constant) → U1B IN+ (threshold divider, top)
+WS24 · R 130k · U1B IN+ → ground
+WS25 · U1B LM2903 (P160), the other half · IN- = A8 line (pin 19, N43); IN+ = WS23 / WS24 node; V+ = F23 → OUT (open collector) → WS26 pull-up and WS27
+WS26 · R 47k · F23 +12 V → Q22 collector
+WS27 · C 2.2 µF film (P158) · Q22 collector → Q32 base
+WS28 · R 1M · Q32 base → ground
+WS29 · D 1N4148 · anode ground → Base clamp: when the switch is released the edge swings the base about 12 V negative - over the 6 V VEBO without it
+WS2A · Q32 2N3904 · collector F23 +12 V → emitter to wake strip input 4 (N36)
+WS29, the base clamp: anode to ground, cathode to the Q32 base.
+As stage 1: the Q22 collector node is U1B OUT with WS26 as its pull-up.",As stage 1.,
+E15.07,E15,7,Bring the stage wires out to labelled flying leads,"F23 supply in: 16 AWG PNK (N87). Ground: 16 AWG BLK to the GND bus.
+A6 line (to PMU pin 18, N44) and A8 line (to PMU pin 19, N43): 16 AWG GRY.
+O22 in (from pin 8, to WS01): 16 AWG RED. Stage 1 out to strip input 3 (N35) and stage 2 out to strip input 4 (N36): 16 AWG BLU - land these two on the strip now.
+Label every lead at both ends as it is cut.",Seven labelled leads; outputs landed on strip inputs 3 and 4.,
+E15.08,E15,8,Fit the two 100 kΩ bias resistors,"On the perfboard: one end of both to a common pad for the pin 15 wire (16 AWG PNK, N39); the other ends to two pads for the pin 35 (A15) and pin 22 (A16) wires. The wires themselves land at E17.",100 kΩ from the pin 15 pad to each of the two input pads.,
+E15.09,E15,9,"Bench check CK12, part 1: the three unknowns","CK12 needs the PMU connected on pins 7, 8, 18, 19, 25 and its supply. The record does not say how the PMU is wired for this before E16 terminates the 39-way: if you have no bench lead, take CK12 as soon as E17 has landed those pins - before E19 and before the node goes in the car.
+(i) PMU unpowered: ohms from pin 18 to ground and from pin 19 to ground.
+(ii) Raise the voltage on pin 7 slowly: the lowest voltage that switches the PMU on; then the current pin 7 draws at 12 V.
+(iii) The time from pin 7 going high to O22 coming on.",(i) 200 kΩ or more keeps the designed margin; (ii) and (iii) are simply recorded - no document gives them.,The 39-way is terminated once and never reopened: do not push trial wires into it.
+E15.10,E15,10,"Bench check CK12, part 2: the stages","With the 47 kΩ baselines standing in for the car (47 kΩ from each line to ground): read the A6 and A8 line voltage at rest.
+Close a stand-in for each door switch (24 kΩ + 1N4148 driver, 8.2 kΩ + 1N4148 passenger, from the line to ground) and each A8 switch (4.7 k hazard, 8.2 k horn, 18 k wink L, 33 k wink R) and watch strip inputs 3 and 4.
+Do it asleep and awake.","At rest about 0.166 x the supply on each line (1.99 V at 12.0 V), no wake, and the PMU goes to sleep. Any door or A8 switch: a pulse of about 10 V on the strip input and the PMU wakes. Awake, the lines read about 4.1 V and the excitation is off.",Bench the door stage with the interior lamp wire (RY at battery voltage through its 1N4007) on the switch stand-ins if you can: that is the case the diodes exist for.
+E16.01,E16,1,Mark cavity 1 and lay out the wire,"Find the moulded number 1 on the connector and mark it with the paint pen on the outside of the shell.
+Lay out the spools: 12 AWG RED (P015), 14 AWG ORN (P012), 16 AWG RED (P009), GRY (P010), BLU (P011), PNK (P019), YEL (P020), GRN (P021), 10 AWG BLK (P017).",Cavity 1 is marked where you will see it with wires in.,
+E16.02,E16,2,Learn the loop on one wire,"Cut 18 in. Print both labels and wrap them before the next wire is cut (PMU end reads from / to, e.g. O8 / L2-M-1).
+Strip, crimp the terminal in the right die, tug it. Insert from the wire side until it clicks. Tug again.
+One wire at a time, in cavity order, the list on the screen ticked as you go.","A click you can feel, and the wire does not come back out.",An open-barrel crimp that folds the wings into the insulation instead of the strands will pass a tug and fail in a year: look at every one under the magnifier.
+E16.03,E16,3,Terminate the eleven large cavities (2.8 mm die),"1 · O13 LS_ECU · RED 12 AWG · CAPPED → receptacle L1-P 2 - the swap reserve, pinned at the post and nothing in the L1 plug (D-271)
+2 · O12 IGNITION · RED 12 AWG → the O12 splice: receptacle L1-P 1 (N18) and the four fused taps F15, F16, F20, F21 (N19, N20, N61, N78)
+12 · O5 FUEL_PUMP · RED 12 AWG → K13 terminal 30 (N69); K13 87 goes on to receptacle L4-P 2 (N70)
+13 · O4 DEFOG · RED 12 AWG → receptacle L4-P 1 - rear defog
+14 · O14 LS_FAN · RED 12 AWG · CAPPED → receptacle L1-P 3 - the swap reserve, pinned at the post (D-271)
+25 · GND · BLK 10 AWG → the GND bus, 6 in or less (N57)
+26 · O3 HEAD_HIGH · RED 12 AWG → receptacle L2-P 2, a 16 AWG tap to DP-ICU-B 12 (N53) and one diode of the pop-up coil feed (N09)
+27 · O15 COMFORT · RED 12 AWG → receptacle L3-P 2 (N17) and the tap to K14 / K15 terminal 86 (N110)
+28 · O16 BLOWER · RED 12 AWG → receptacle L3-P 1 - blower, capped at L3-BLW
+38 · O1 MOTOR_BUS · RED 12 AWG → the O1 splice (N08): F37 to K1 / K2 terminal 30, receptacle L2-P 3 (N105), receptacle L4-P 3 (N16)
+39 · O2 HEAD_LOW · RED 12 AWG → receptacle L2-P 1 and one diode of the pop-up coil feed (N09)",Eleven large terminals seated: ten 12 AWG RED and pin 25 in 10 AWG BLK.,"Pins 1 and 14 are the swap reserves: they are wired like the rest, labelled CAPPED."
+E16.04,E16,4,"Terminate the six 15 A output cavities (small, 14 AWG ORN)","3 · O11 HORN · ORN 14 AWG → receptacle L2-M 3 - horns
+4 · O10 ACCESSORY · ORN 14 AWG → receptacle L3-M 1 (N23) and the O10 taps: K12 86, DP-ICU-A 1 (N24), L4-S 4 (N73), F33 to K3 / K4 (N85), the capped radar tail (N103)
+5 · O9 WIPE_HIGH · ORN 14 AWG → receptacle L2-M 2 - wiper HIGH
+9 · O8 WIPE_LOW · ORN 14 AWG → receptacle L2-M 1 and K12 terminal 30 (N26)
+10 · O7 BRAKE · ORN 14 AWG → receptacle L4-M 2 - brake lamps
+11 · O6 TAIL_PARK · ORN 14 AWG → receptacles L2-M 7 and L4-M 1 (N54)",Six ORN wires seated.,"14 AWG is the largest wire in a small cavity: check the insulation wings close around it, not through it."
+E16.05,E16,5,"Terminate the six 7 A output cavities (small, 16 AWG RED)","6 · O17 TURN_L · RED 16 AWG → receptacles L2-M 5 and L4-M 5, with the tap to DP-ICU-B 10 (N51)
+8 · O22 KEEP_ALIVE · RED 16 AWG → wake strip input 5 (N37), K11 terminal 86 (N06) and the 10 kΩ to Q0 base (WS01)
+20 · O19 REVERSE · RED 16 AWG → receptacle L4-M 7 - reverse lamps
+21 · O21 START_RLY · RED 16 AWG → receptacle L1-S1 1 - the K9 coil
+33 · O18 TURN_R · RED 16 AWG → receptacles L2-M 6 and L4-M 6, with the tap to DP-ICU-B 11 (N52)
+34 · O20 INTERIOR · RED 16 AWG → receptacle L3-S1 8 and DP-ICU-A 2 (N22)",Six RED wires seated.,
+E16.06,E16,6,"Terminate the ten input cavities (small, 16 AWG GRY)","16 · A2 WIPER_STALK · GRY 16 AWG → receptacle L3-S1 4 (N97)
+17 · A4 POPUP_L · GRY 16 AWG → receptacle L1-S1 11 - the inhibitor P/N contact
+18 · A6 DOOR_PINS · GRY 16 AWG → receptacle L4-S 2 and the door wake stage (N44)
+19 · A8 HAZ_HORN_WINK · GRY 16 AWG → receptacles L3-S1 6 and L3-S1 11, one splice, and the A8 wake stage (N43)
+22 · A16 KEY_POS · GRY 16 AWG → receptacle L3-S1 1 (N99), with the 100 kΩ bias from pin 15
+29 · A1 TURN_STALK · GRY 16 AWG → receptacle L3-S1 3 (N96)
+30 · A3 BRAKE_PARK · GRY 16 AWG → receptacles L3-S1 5, L2-S 3 and L2-S 4, one splice (N42)
+31 · A5 POPUP_R · GRY 16 AWG → receptacle L1-S2 7 - the inhibitor R contact
+32 · A7 OIL_PRESS · GRY 16 AWG → a tap on the L1-S1 4 to DP-ICU-B 2 conductor (N45)
+35 · A15 HEADLIGHT_SW · GRY 16 AWG → receptacle L3-S1 2 (N98), with the 100 kΩ bias from pin 15",Ten GRY wires seated.,
+E16.07,E16,7,Terminate the wake pin and the +5 V pin,"7 · +12V SW · BLU 16 AWG → the wake strip common rail (N38)
+15 · +5V OUT · PNK 16 AWG → the two 100 kΩ bias resistors (to pins 35 and 22) and the 100 Ω 1 W oil-node pull-up (N39)
+Pin 15 is the one MEDIUM cavity: use the terminal CK24 identified for it. If CK24 did not settle it, stop here and raise a note.",Pin 7 BLU and pin 15 PNK seated.,
+E16.08,E16,8,Terminate the two CAN pairs,"23 · CAN1H · YEL 16 tw AWG → DP-DIAG 1, twisted with pin 36 (N56); 120 Ω across 23 / 36 at this connector
+24 · CAN2H · YEL 16 tw AWG → the CAN2 splice at the node, twisted with pin 37 (N55)
+36 · CAN1L · GRN 16 tw AWG → DP-DIAG 2, twisted with pin 23 (N56)
+37 · CAN2L · GRN 16 tw AWG → the CAN2 splice at the node, twisted with pin 24 (N55)
+Twist each pair by hand along its whole 18 in: 23 YEL with 36 GRN, 24 YEL with 37 GRN.
+CAN1 needs 120 Ω across pins 23 / 36 at this connector (N56): the record does not say how it is fitted here - solder a 120 Ω (P070) across the pair a short way back from the connector under heat-shrink, and note it.",Two twisted pairs; 120 Ω between the pin 23 and pin 36 wires.,Keep the pairs twisted right up to the connector.
+E16.09,E16,9,Fit the secondary lock,Count the wires: 39. Press the secondary lock home.,The lock seats flush; it will not seat over a terminal that is not fully in.,"A lock that will not close means a terminal is not seated: find it, do not force the lock."
+E16.10,E16,10,Pull every wire,"One at a time, a firm straight pull on each of the 39.",None moves.,
+E16.11,E16,11,Latch it on the PMU once,"Offer the connector to the PMU on its panel and close the lever fully, then open it and take the connector off again.",The lever closes without force and its arc is clear of every part on the panel.,
+E16.12,E16,12,Bundle the tails loosely,"Group the wires by where they go (L1, L2, L3, L4, relays, strip) with loose ties. Do not tape.","A connector with 39 labelled 18 in tails, ready for E17.",
+E17.01,E17,1,Main power and ground at the node,"N57 · PMU pin 25 (GND) → GND bus · 10 AWG BLK
+N58 · GND bus → Chassis, dash star point · 10 AWG BLK
+N03 · Always-hot busbar → F30 (40 A) → Fuse block A input · 10 AWG RED
+N04 · Always-hot busbar → F31 (40 A) → K11 terminal 30 · 10 AWG RED
+N05 · K11 terminal 87 → F32 (40 A) → Fuse block B input · 10 AWG RED
+N106 · Always-hot busbar → F35 (25 A), the holder's own lead → K14 terminal 30 · 10 / 12 AWG RED
+N107 · Always-hot busbar → F36 (25 A), the holder's own lead → K15 terminal 30 · 10 / 12 AWG RED
+N01, the 2 AWG main feed onto the busbar stud, is landed in the car at E24: leave its stud free.
+N58, the GND bus to the dash star point, is also made in the car (bare metal, star washer, torque, cavity wax): make the 10 AWG lead with its ring now.
+Ring terminals with heat-shrink (P079); 10 AWG RED (P018) and BLK (P017).",Pin 25 beeps to the GND bus and its wire is 6 in or shorter.,Stud torques are not in the record yet (rules torque): tighten to the maker's figure written at D1 and mark each nut with the paint pen.
+E17.02,E17,2,The three busbar-fed inline fuses,"N21 · Always-hot busbar → F12 inline (5 A), the holder's own lead → F12 inline (5 A) → receptacle L4-M 8 · 14 / 16 AWG RED
+N75 · Always-hot busbar → F22 inline (3 A), the holder's own lead → F22 inline (3 A) → receptacle DP-DCU 1 · 14 / 16 AWG RED
+N87 · Always-hot busbar → F23 inline (3 A) → Wake-stage pull-ups (emitter rail) · 14 / 16 AWG PNK",Each holder's busbar-side lead is about 50 mm; each load-side wire is 16 AWG and labelled.,
+E17.03,E17,3,Fuse blocks A and B,"N28 · Fuse block A, F2 out → Receptacle DP-DIAG 3 · 16 AWG RED
+N29 · Fuse block A, F3 out → Receptacle L3-S2 2 · 16 AWG PNK
+N30 · Fuse block A, F19 out → Receptacles L3-S2 10 and L4-S 8 · 16 AWG RED
+N31 · Fuse block B, F1 out → Receptacle L3-M 2 · 14 AWG RED
+N68 · Fuse block B, spare position (fitted when a phase-2 sensor arrives) → Receptacle L1-S2 9 · 16 AWG RED
+N79 · Fuse block A, F13 out (no fuse this build) → Receptacles L3-S2 7 (→ L3-MOD 1) and L2-M 8 (both capped) · 16 AWG RED","Block A outputs: F2 to DP-DIAG 3, F3 to L3-S2 2, F19 to L3-S2 10 and L4-S 8, F13 position to L3-S2 7 and L2-M 8. Block B: F1 to L3-M 2, F5 position to L1-S2 9.",
+E17.04,E17,4,K11 and the keep-alive,"N06 · K11 terminal 86 → PMU pin 8 (O22) — tapped at the wake-strip input 5 · 16 AWG RED
+N07 · K11 terminal 85 → GND bus · 16 AWG BLK
+N37 · PMU pin 8 (O22) → Wake strip input 5 · 16 AWG RED",Pin 8 reaches strip input 5 and K11 86; K11 85 reaches the GND bus.,
+E17.05,E17,5,The O1 pop-up group,"N08 · PMU pin 38 (O1) → Splice → K1 terminal 30 · K2 terminal 30 · the one WR feed N105 to L2-P 3 (D-487, D-460) · 12 AWG RED
+N09 · PMU pin 39 (O2) tap and PMU pin 26 (O3) tap, each through a 1N5819 (anode to the output) joined at the dash node → K1 terminal 86 and K2 terminal 86 · 14 AWG RED
+N10 · K1 terminal 85 → Receptacle L3-S1 10 · 16 AWG BLU
+N11 · K2 terminal 85 → Receptacle L3-S1 9 · 16 AWG BLU
+N12 · K1 terminal 87 → L2-S 1 → the LH motor E-03 terminal R (up) (D-487) · 14 AWG RED
+N13 · K2 terminal 87 → L2-S 2 → the RH motor E-04 terminal R (up) (D-487) · 14 AWG RED
+N14 · K1 terminal 87a → L2-P 4 → the LH motor E-03 terminal RY (down) (D-487) · 14 AWG RED
+N15 · K2 terminal 87a → L2-S 6 → the RH motor E-04 terminal RY (down) (D-487) · 14 AWG RED
+N16 · O1 splice → Receptacle L4-P 3 · 12 AWG RED
+N105 · O1 splice (N08) → Receptacle L2-P 3 → the splice at the nose → both motors' WR, E-03 and E-04 (D-487) · 12 AWG RED
+F37 (5 A inline) sits between the O1 splice and K1 / K2 terminal 30.
+N09: one 1N5819 from the pin 39 (O2) wire and one from the pin 26 (O3) wire, anode to the output, the two banded ends joined to the 14 AWG RED that feeds K1 86 and K2 86.",Diode test: each output wire to K1 86 conducts one way only. Pin 38 reaches K1 30 and K2 30 only through F37's holder.,"Do not land these until CK08 has proved the motor matches the factory diagram: if it does not, the whole group is redrawn."
+E17.06,E17,6,The O12 ignition group,"N18 · PMU pin 2 (O12) → Receptacle L1-P 1 · 12 AWG RED
+N19 · PMU pin 2 (O12) tap → F15 inline (7.5 A) → receptacle L1-S1 2 · 14 / 16 AWG RED
+N20 · PMU pin 2 (O12) tap → F16 inline (5 A) → receptacle DP-ICU-A 6 · 14 / 16 AWG RED
+N61 · PMU pin 2 (O12) tap → F20 inline (7.5 A) → wideband gauge +12 V · 14 / 16 AWG RED
+N62 · GND bus → Wideband gauge ground · 16 AWG BLK
+N78 · PMU pin 2 (O12) tap → F21 inline (5 A) → receptacle L3-S2 12 · 14 / 16 AWG RED","Pin 2 reaches L1-P 1 direct, and L1-S1 2, DP-ICU-A 6, the gauge +12 V and L3-S2 12 each through its own holder.",
+E17.07,E17,7,The O10 accessory group and the washer relay,"N23 · PMU pin 4 (O10) → Receptacle L3-M 1 · 14 AWG ORN
+N24 · PMU pin 4 (O10) tap → K12 terminal 86; receptacle DP-ICU-A 1 (live); the hatch and fuel-door release branches to L4-M 3 / 4 (capped; through K3 / K4 on N85, the DCU picks which - D-370). The road-speed sensor supply to L4-S 4 is its own row, N73. · 16 AWG RED
+N73 · PMU pin 4 (O10) tap → Receptacle L4-S 4 · 16 AWG RED
+N85 · PMU pin 4 (O10) tap → F33 inline (10 A), the holder's own lead → F33 inline (10 A) → K3 and K4 terminals 30 and 86 · 14 / 16 AWG RED
+N86 · K3 terminal 85 · K4 terminal 85 → Receptacles DP-DCU-B 10 · DP-DCU-B 11 · 16 AWG BLU
+N88 · K3 terminal 87 → Receptacle L4-M 3 · 14 AWG ORN
+N89 · K4 terminal 87 → Receptacle L4-M 4 · 14 AWG ORN
+N103 · PMU pin 4 (O10) tap → A capped 16 AWG tail at the dash node for the radar receiver's switched feed (Z-002); its ground is a ring on the GND bus · 16 AWG RED
+N25 · K12 terminal 85 → Receptacle L3-S2 9 · 16 AWG BLU
+N26 · PMU pin 9 (O8) → Receptacle L2-M 1 and K12 terminal 30 · 14 AWG ORN
+N27 · K12 terminal 87 → Receptacle L2-M 4 · 14 AWG ORN","Pin 4 reaches L3-M 1, K12 86, DP-ICU-A 1, L4-S 4 and, through F33, K3 and K4 terminals 30 and 86. The radar tail is capped and labelled.",
+E17.08,E17,8,The fuel pump back-stop relay K13,"N69 · PMU pin 12 (O5) → K13 terminal 30 · 12 AWG RED · The O5 conductor is cut at the node and both ends land on K13 (D-352)
+N70 · K13 terminal 87 → Receptacle L4-P 2 · 12 AWG RED · Onward to the fuel pump
+N71 · Branch off L3-S2 1 (ignition switch IG) → K13 terminal 86 · 16 AWG BLU · Coil feed. Deliberately NOT from the PMU: a back-stop that depends on the module it is backing up is not a back-stop (D-352)
+N72 · K13 terminal 85 → GND bus · 16 AWG BLK",Pin 12 reaches K13 30 and nothing else; K13 87 reaches L4-P 2.,"K13's coil is fed from the ignition switch wire, never from the PMU: that is what makes it a back-stop."
+E17.09,E17,9,The O15 comfort group and the seat relays,"N17 · PMU pin 27 (O15) → Receptacle L3-P 2 (L4-P 4 left this splice - D-369) · 12 AWG RED
+N110 · PMU pin 27 (O15) tap → K14 terminal 86 · K15 terminal 86 · 14 AWG RED
+N111 · K14 terminal 85 · K15 terminal 85 → GND bus · 16 AWG BLK
+K14 87 and K15 87 get their 12 AWG RED tails (N108, N109) at E38; label the two socket terminals now.",Pin 27 reaches L3-P 2 and both seat relay coils.,
+E17.10,E17,10,The lamp outputs and every remaining single output,"N22 · PMU pin 34 (O20) → Receptacles L3-S1 8, DP-ICU-A 2 · 16 AWG RED
+N51 · PMU pin 6 (O17) → Receptacles L2-M 5, L4-M 5, DP-ICU-B 10 (tap) · 16 AWG RED
+N52 · PMU pin 33 (O18) → Receptacles L2-M 6, L4-M 6, DP-ICU-B 11 (tap) · 16 AWG RED
+N53 · PMU pin 26 (O3) → Receptacle L2-P 2 (12 AWG) + 16 AWG tap → DP-ICU-B 12 · 12 / 16 AWG RED
+N54 · PMU pin 11 (O6) → Receptacles L2-M 7 and L4-M 1 · 14 AWG ORN
+Single conductors, no splice (N60): pin 39 O2 → L2-P 1 · pin 13 O4 → L4-P 1 · pin 10 O7 → L4-M 2 · pin 5 O9 → L2-M 2 · pin 3 O11 → L2-M 3 · pin 1 O13 → L1-P 2 · pin 14 O14 → L1-P 3 · pin 28 O16 → L3-P 1 · pin 20 O19 → L4-M 7 · pin 21 O21 → L1-S1 1.",Each output pin reaches the receptacle cavities listed and no other.,
+E17.11,E17,11,The ladder inputs and the +5 V bias,"N96 · PMU pin 29 (A1) → Receptacle L3-S1 3 · 16 AWG GRY
+N97 · PMU pin 16 (A2) → Receptacle L3-S1 4 · 16 AWG GRY
+N98 · PMU pin 35 (A15) → Receptacle L3-S1 2 · 16 AWG GRY
+N99 · PMU pin 22 (A16) → Receptacle L3-S1 1 · 16 AWG GRY
+N42 · PMU pin 30 (A3) → Receptacles L3-S1 5, L2-S 3 and L2-S 4 (splice; L2-S 4 is capped at the branch for a future motor's park return, D-317) · 16 AWG GRY
+N43 · PMU pin 19 (A8) → Receptacles L3-S1 6 and L3-S1 11 (splice); wake stage 2 base network · 16 AWG GRY
+N44 · PMU pin 18 (A6) → Receptacle L4-S 2; wake stage 1 base network · 16 AWG GRY
+N45 · PMU pin 32 (A7) → Tap on the L1-S1 4 → DP-ICU-B 2 conductor, at the node · 16 AWG GRY
+N39 · PMU pin 15 (+5 V) → 100 kΩ → PMU pin 35 (A15) · 100 kΩ → PMU pin 22 (A16) · 100 Ω 1 W → the oil-pressure node (D-260) · 16 AWG PNK
+Pin 17 (A4) → receptacle L1-S1 11 · pin 31 (A5) → receptacle L1-S2 7, single conductors (see the note in What to know).
+The 100 Ω 1 W pull-up (P114) goes from the pin 15 wire to the oil-pressure node, the L1-S1 4 to DP-ICU-B 2 conductor.",Pin 15 to pin 35: 100 kΩ. Pin 15 to pin 22: 100 kΩ. Pin 15 to receptacle L1-S1 4: 100 Ω.,
+E17.12,E17,12,The wake strip,"N33 · Receptacle L3-S1 12 → Wake strip input 1 (ACC) · 16 AWG BLU
+N34 · Receptacle L3-S2 1 → Wake strip input 2 (RUN) · 16 AWG BLU
+N35 · Wake stage 1 collector (A6 door) → Wake strip input 3 · 16 AWG BLU
+N36 · Wake stage 2 collector (A8 horn/hazard/wink) → Wake strip input 4 · 16 AWG BLU
+N63 · Receptacle L3-S1 7 → Wake strip input 6 (brake) · 16 AWG BLU
+N76 · Receptacle DP-DCU 6 → Wake strip input 7 (DCU wake request) · 16 AWG BLU
+N38 · Wake strip common rail (after the seven 1N5819) → PMU pin 7 (+12V SW) · 16 AWG BLU",Strip inputs 1-7 each carry their wire; position 8 goes to pin 7.,
+E17.13,E17,13,The sender and lamp lines across the node to the ICU,"N46 · Receptacle L1-S1 3 → Receptacle DP-ICU-B 1 · 16 AWG GRY
+N47 · Receptacle L1-S1 4 → Receptacle DP-ICU-B 2 — with the 100 Ω 1 W pull-up to pin 15 and the A7 tap N45 at the node · 16 AWG GRY
+N48 · Receptacle L1-S1 6 → Receptacle DP-ICU-B 4 · 16 sh AWG shielded
+N49 · Receptacle L1-S2 8 → Receptacle DP-ICU-B 5 · 16 AWG GRY
+N50 · Receptacles L1-S2 1 and L3-S2 11 → Receptacle DP-ICU-B 6 · 16 AWG GRY
+N64 · Receptacle L4-S 1 → Receptacle DP-ICU-B 3 · 16 AWG GRY
+N66 · Receptacle L4-S 3 → Receptacle DP-ICU-B 8 · 16 AWG GRY
+N67 · Receptacle L1-S2 11 → Receptacle DP-ICU-B 9 · 16 AWG GRY
+N104 · Receptacle L3-S2 11 (the parking-brake switch, the line IC06 observes) → A tap at the node for the head unit's parking-brake input (DV28) · 16 AWG GRY",Each receptacle cavity reaches its DP-ICU-B cavity. The tach shield reaches the GND bus and is insulated at the DP-ICU-B end.,The tach is shielded cable (P074): ground the drain at the GND bus at this end only.
+E17.14,E17,14,"CAN1, CAN2 and the terminator","N55 · PMU pins 24 / 37 (CAN2) → One twisted pair from pins 24 / 37 to the CAN2 splice at the node; from the splice, pairs to DP-ICU-A 4/5, DP-DCU 4/5, the wideband gauge's AEMnet pair, and the 120 Ω terminator at the end of the run (N74) — all inside the dash node · 16 tw AWG YEL · GRN
+N56 · PMU pins 23 / 36 (CAN1) → Receptacle DP-DIAG 1/2 — twisted pair · 16 tw AWG YEL · GRN
+N74 · CAN2 pair, end of the run at the dash node → 120 Ω 1 % 1/4 W resistor (P070) across CAN2H / CAN2L · — AWG —
+The wideband gauge: cut its AEMnet pigtail (it ends in a DTM 2-way) and butt-splice it onto the CAN2 pair; its 0-5 V output is not used; its sensor lead is never cut (devices DV44).",120 Ω across the CAN2 pair with nothing plugged in; the pairs stay twisted to each plug.,"Keep CAN2 50 mm from the blower, wiper and O1 pop-up wires."
+E17.15,E17,15,The permitted ground crossings,"N59 · GND bus → Receptacles DP-DIAG 4, DP-ICU-A 3, DP-DCU 3, L3-S2 8 · 16 AWG BLK","DP-DIAG 4, DP-ICU-A 3, DP-DCU 3 and L3-S2 8 each beep to the GND bus.",
+E17.16,E17,16,The post links and the DCU tail conductors,"N81 · Receptacles L3-S3 1 / 2 / 3 → Receptacles L4-S 5 / 6 / 7 — one link each, in order · 16 AWG GRY
+N82 · Receptacle L3-S3 4 → Receptacle L4-S2 7 · 16 AWG RED
+N77 · Receptacle L2-S 5 (the outside-air sensor, from L2-OAT 1) → Receptacle DP-DCU 2 · 16 AWG GRY
+N80 · Receptacles DP-DCU-B 1 / 2 / 3 / 4 - the DCU tail, node to the centre stack along RT11 (D-472) → Receptacles L4-M 9 / 10 / 11 / 12 — one each, in order · 16 AWG BLU
+N83 · Receptacles DP-DCU-B 5 / 6 / 7 / 8 - the DCU tail, node to the centre stack along RT11 (D-472) → Receptacles L4-S2 1 / 2 / 4 in order; L3-S3 8 spliced onto both L4-S2 3 and L4-S2 5 · 16 AWG GRY
+N84 · Receptacle DP-DCU-B 9 → Receptacle L4-P 4 · 14 AWG RED","L3-S3 1 / 2 / 3 reach L4-S 5 / 6 / 7; L3-S3 4 reaches L4-S2 7; the DCU tail conductors reach L4-M 9-12, L4-S2 1-5 and L4-P 4.",
+E17.17,E17,17,Pin the L1 receptacles,"Receptacle contacts are PINS: size 16 for 16-18 AWG (P023), size 16 for 14 AWG (P025), size 12 for the DTP power receptacles (P027). Crimp in the Deutsch 4-indent crimper (P038), push in from the wire side until it clicks, tug.
+L1-P (DTP04-4P, wedge WP-4P):
+1 · Ignition feed — coils and igniters · RED 12 AWG ← PMU pin 2, O12
+2 · LS swap reserve — ECU + injectors · RED 12 AWG · RESERVED ← PMU pin 1, O13
+3 · LS swap reserve — cooling fan · RED 12 AWG · RESERVED ← PMU pin 14, O14
+4 · sealing plug, size 12
+L1-S1 (DT04-12P, wedge W12P):
+1 · Start relay K9 coil · RED 16 AWG ← PMU pin 21, O21
+2 · Alternator excitation (field feed) · RED 16 AWG ← F15 inline (7.5 A) off the O12 splice (N19)
+3 · Water temperature sender · GRY 16 AWG ← across the node to DP-ICU-B 1 (N46)
+4 · Oil pressure sender · GRY 16 AWG ← across the node to DP-ICU-B 2, with the 100 Ω 1 W pull-up to pin 15 and the tap to pin 32, A7 (N47, N39, N45)
+5 · sealing plug, size 16
+6 · Tachometer pulse — SHIELDED · shielded cable, 16 AWG core (P074) ← shielded, across the node to DP-ICU-B 4; the shield to the GND bus at this end only (N48)
+7 · sealing plug, size 16
+8 · sealing plug, size 16
+9 · sealing plug, size 16
+10 · sealing plug, size 16
+11 · Inhibitor switch — P/N contact (crank interlock) · GRY 16 AWG ← PMU pin 17, A4
+12 · sealing plug, size 16
+L1-S2 (DT04-12P, wedge W12P):
+1 · Brake fluid level switch · GRY 16 AWG ← across the node to DP-ICU-B 6, joined there with L3-S2 11 (N50)
+2 · sealing plug, size 16
+3 · sealing plug, size 16
+4 · sealing plug, size 16
+5 · sealing plug, size 16
+6 · sealing plug, size 16
+7 · Inhibitor switch — R contact (reverse lamps) · GRY 16 AWG ← PMU pin 31, A5
+8 · Alternator charge-lamp sense · GRY 16 AWG ← across the node to DP-ICU-B 5 (N49)
+9 · Phase-2 sensor supply — +12 V switched · RED 16 AWG · RESERVED ← fuse block B, the spare position F5, no fuse fitted (N68)
+10 · sealing plug, size 16
+11 · Phase-2 sensor signal spare · GRY 16 AWG · RESERVED ← across the node to DP-ICU-B 9 (N67)
+12 · sealing plug, size 16",Every cavity holds a pin or a sealing plug; the wedgelock snaps in.,L1-P 2 and 3 and L1-S2 9 and 11 are pinned here even though the L1 plug carries sealing plugs: they are the swap reserves.
+E17.18,E17,18,Pin the L2 receptacles,"L2-P (DTP04-4P, wedge WP-4P):
+1 · Headlight LOW, both · RED 12 AWG ← PMU pin 39, O2
+2 · Headlight HIGH, both · RED 12 AWG ← PMU pin 26, O3
+3 · Pop-up motor feed (WR), both motors · RED 12 AWG ← the O1 splice, 12 AWG (N105)
+4 · Pop-up LH down command (RY) · RED 14 AWG ← K1 terminal 87a (N14)
+L2-M (DT04-8P, wedge W8P):
+1 · Wiper LOW brush · ORN 14 AWG ← PMU pin 9, O8
+2 · Wiper HIGH brush · ORN 14 AWG ← PMU pin 5, O9
+3 · Horns, both · ORN 14 AWG ← PMU pin 3, O11
+4 · Washer pump feed · ORN 14 AWG ← K12 terminal 87 (N27)
+5 · Turn LEFT front · RED 16 AWG ← PMU pin 6, O17
+6 · Turn RIGHT front · RED 16 AWG ← PMU pin 33, O18
+7 · Park + side markers, front · ORN 14 AWG ← PMU pin 11, O6
+8 · Wiper park feed — future motor family · RED 16 AWG · CAPPED ← fuse block A, position F13, no fuse (N79)
+L2-S (DT04-6P, wedge W6P):
+1 · Pop-up LH up command (R) · RED 14 AWG ← K1 terminal 87 (N12)
+2 · Pop-up RH up command (R) · RED 14 AWG ← K2 terminal 87 (N13)
+3 · Wiper park sense · GRY 16 AWG ← PMU pin 30, A3 - one splice with L3-S1 5 and L2-S 4 (N42)
+4 · Wiper park return — future motor family · GRY 16 AWG · CAPPED ← PMU pin 30, A3 - the same splice as L2-S 3 (N42)
+5 · Outside-air temperature sensor · GRY 16 AWG · CAPPED ← across the node to DP-DCU 2 (N77)
+6 · Pop-up RH down command (RY) · RED 14 AWG ← K2 terminal 87a (N15)
+L2-R (DT04-4P, wedge W4P):
+1 · Radar front sensor A · GRY 16 AWG · CAPPED ← a capped, labelled tail at the node for the radar receiver (housings L2-R)
+2 · Radar front sensor B · GRY 16 AWG · CAPPED ← a capped, labelled tail at the node, as cavity 1
+3 · Radar front sensor C · GRY 16 AWG · CAPPED ← a capped, labelled tail at the node, as cavity 1
+4 · sealing plug, size 16",Every cavity holds a pin or a sealing plug; wedgelocks in.,"L2-S 1, 2 and 6 take 14 AWG pins (P025)."
+E17.19,E17,19,Pin the L3 receptacles,"L3-P (DTP04-2P, wedge WP-2P):
+1 · Blower motor + · RED 12 AWG · CAPPED ← PMU pin 28, O16
+2 · Comfort bus · RED 12 AWG · CAPPED ← PMU pin 27, O15
+L3-M (DT04-2P, wedge W2P):
+1 · Accessory — head unit ACC + USB-C · ORN 14 AWG ← PMU pin 4, O10
+2 · Head unit memory / constant · RED 14 AWG ← fuse block B, F1 (N31)
+L3-S1 (DT04-12P, wedge W12P):
+1 · Key ladder · GRY 16 AWG ← PMU pin 22, A16
+2 · Headlight ladder · GRY 16 AWG ← PMU pin 35, A15
+3 · Turn stalk ladder · GRY 16 AWG ← PMU pin 29, A1
+4 · Wiper stalk ladder · GRY 16 AWG ← PMU pin 16, A2
+5 · Brake pedal switch · GRY 16 AWG ← PMU pin 30, A3 - one splice with L2-S 3 and L2-S 4 (N42)
+6 · Hazard switch · GRY 16 AWG ← PMU pin 19, A8 - one splice with L3-S1 11, and the A8 wake stage (N43)
+7 · Brake — wake source · BLU 16 AWG ← wake strip input 6 (N63)
+8 · Illumination bus · RED 16 AWG ← PMU pin 34, O20 - one splice with DP-ICU-A 2 (N22)
+9 · Wink LEFT — NC pole · BLU 16 AWG ← K2 terminal 85 (N11)
+10 · Wink RIGHT — NC pole · BLU 16 AWG ← K1 terminal 85 (N10)
+11 · Horn + wink request · GRY 16 AWG ← PMU pin 19, A8 - the same splice as L3-S1 6 (N43)
+12 · ACC — wake source · BLU 16 AWG ← wake strip input 1, ACC (N33)
+L3-S2 (DT04-12P, wedge W12P):
+1 · RUN — wake source · BLU 16 AWG ← wake strip input 2, RUN (N34), with the branch to K13 terminal 86 (N71)
+2 · Switch supply +12 V · PNK 16 AWG ← fuse block A, F3 (N29)
+3 · sealing plug, size 16
+4 · sealing plug, size 16
+5 · sealing plug, size 16
+6 · sealing plug, size 16
+7 · Future module +12 V constant (F13, block A, always-hot) · RED 16 AWG · CAPPED ← fuse block A, position F13, no fuse (N79)
+8 · Future module ground · BLK 16 AWG · CAPPED ← GND bus (N59)
+9 · Washer relay K12 coil return · BLU 16 AWG ← K12 terminal 85 (N25)
+10 · Courtesy — glove box lamp · RED 16 AWG ← fuse block A, F19 (N30)
+11 · Parking brake switch → brake warning lamp · GRY 16 AWG ← across the node to DP-ICU-B 6 (N50), with the capped tap for the head unit (N104)
+12 · Kick-down switch supply +12 V · RED 16 AWG ← F21 inline (5 A) off the O12 splice (N78)
+L3-S3 (DT04-8P, wedge W8P):
+1 · Future pass-through A · GRY 16 AWG · CAPPED ← linked at the post to L4-S 5 (N81)
+2 · Future pass-through B · GRY 16 AWG · CAPPED ← linked at the post to L4-S 6 (N81)
+3 · Future pass-through C · GRY 16 AWG · CAPPED ← linked at the post to L4-S 7 (N81)
+4 · Kick-down solenoid command · RED 16 AWG ← linked at the post to L4-S2 7 (N82)
+5 · sealing plug, size 16
+6 · sealing plug, size 16
+7 · sealing plug, size 16
+8 · sealing plug, size 16",Every cavity holds a pin or a sealing plug; wedgelocks in.,
+E17.20,E17,20,Pin the L4 receptacles,"L4-P (DTP04-4P, wedge WP-4P):
+1 · Rear defog grid · RED 12 AWG ← PMU pin 13, O4
+2 · Fuel pump + · RED 12 AWG ← K13 terminal 87 (N70)
+3 · Window motor bus feed · RED 12 AWG · CAPPED ← the O1 splice (N16)
+4 · Mirror heat feed → sill (F14), switched by the DCU · RED 12 AWG · CAPPED ← DP-DCU-B 9 on the DCU tail, 14 AWG RED into this size-12 pin (N84)
+L4-M (DT04-12P, wedge W12P):
+1 · Tail · licence · rear markers · ORN 14 AWG ← PMU pin 11, O6
+2 · Brake lamps · ORN 14 AWG ← PMU pin 10, O7
+3 · Hatch release solenoid · ORN 14 AWG · CAPPED ← K3 terminal 87 (N88)
+4 · Fuel-door release solenoid · ORN 14 AWG · CAPPED ← K4 terminal 87 (N89)
+5 · Turn LEFT rear · RED 16 AWG ← PMU pin 6, O17
+6 · Turn RIGHT rear · RED 16 AWG ← PMU pin 33, O18
+7 · Reverse lamps · RED 16 AWG ← PMU pin 20, O19
+8 · Interior / spot lamp - always-hot (D-462) · RED 16 AWG ← F12 inline (5 A) from the busbar (N21)
+9 · Window DRV up command → K5 coil · BLU 16 AWG · CAPPED ← DP-DCU-B 1 on the DCU tail (N80)
+10 · Window DRV down command → K6 coil · BLU 16 AWG · CAPPED ← DP-DCU-B 2 on the DCU tail (N80)
+11 · Window PASS up command → K7 coil · BLU 16 AWG · CAPPED ← DP-DCU-B 3 on the DCU tail (N80)
+12 · Window PASS down command → K8 coil · BLU 16 AWG · CAPPED ← DP-DCU-B 4 on the DCU tail (N80)
+L4-S (DT04-8P, wedge W8P):
+1 · Fuel level sender · GRY 16 AWG ← across the node to DP-ICU-B 3 (N64)
+2 · Door jamb switches — ladder · GRY 16 AWG ← PMU pin 18, A6, and the door wake stage (N44)
+3 · Road speed — pulse generator signal · GRY 16 AWG ← across the node to DP-ICU-B 8 (N66)
+4 · Road speed — pulse generator supply +12 V · RED 16 AWG ← the O10 tap, PMU pin 4 (N73)
+5 · Future pass-through A · GRY 16 AWG · CAPPED ← linked at the post to L3-S3 1 (N81)
+6 · Future pass-through B · GRY 16 AWG · CAPPED ← linked at the post to L3-S3 2 (N81)
+7 · Future pass-through C · GRY 16 AWG · CAPPED ← linked at the post to L3-S3 3 (N81)
+8 · Courtesy — luggage lamp · RED 16 AWG ← fuse block A, F19 (N30)
+L4-S2 (DT04-8P, wedge W8P):
+1 · Mirror motor common (both mirrors) · GRY 16 AWG · CAPPED ← DP-DCU-B 5 on the DCU tail (N83)
+2 · Mirror LEFT motor · GRY 16 AWG · CAPPED ← DP-DCU-B 6 on the DCU tail (N83)
+3 · Mirror LEFT clutch coil · GRY 16 AWG · CAPPED ← DP-DCU-B 8 on the DCU tail, spliced to L4-S2 3 and 5 both (N83)
+4 · Mirror RIGHT motor · GRY 16 AWG · CAPPED ← DP-DCU-B 7 on the DCU tail (N83)
+5 · Mirror RIGHT clutch coil · GRY 16 AWG · CAPPED ← DP-DCU-B 8, the same splice as L4-S2 3 (N83)
+6 · sealing plug, size 16
+7 · Kick-down solenoid command (tunnel) · RED 16 AWG ← linked at the post to L3-S3 4 (N82)
+8 · sealing plug, size 16",Every cavity holds a pin or a sealing plug; wedgelocks in.,L4-P 4 is a size-12 pin on 14 AWG: 16 AWG does not crimp in it.
+E17.21,E17,21,Make the two ICU tails,"150 mm from the post, each ending in a DT06 PLUG with socket contacts (P022): these mate the ICU's own DT13 receptacles.
+DP-ICU-A (DT06-6S, wedge W6S):
+1 · +12 V switched — ICU logic · RED 16 AWG → ICU tail A — the DT06-6S plug from the post into the ICU's DT13-06PA (D-270)
+2 · Illumination — the ICU's dimming reference · RED 16 AWG → ICU tail A (D-270) - the display dims against the O20 bus, which is on with PARK / HEAD and PWM-dimmed (D-462)
+3 · Ground · BLK 16 AWG → ICU tail A (D-270)
+4 · CAN2 H · YEL 16 tw AWG → ICU tail A (D-270)
+5 · CAN2 L · GRN 16 tw AWG → ICU tail A (D-270)
+6 · +12 V ignition — the display's backlight (F16) · RED 16 AWG → ICU tail A (D-270) — the display's backlight feed through the carrier (D-268)
+DP-ICU-B (DT06-12S, wedge W12S):
+1 · Water temp sender · GRY 16 AWG → ICU tail B (D-270) — the ICU excites and reads the sender; the display draws it
+2 · Oil-pressure node · GRY 16 AWG → ICU tail B (D-270) — a PMU-excited node the ICU reads (D-260); the display draws it
+3 · Fuel level sender · GRY 16 AWG → ICU tail B (D-270) — the ICU excites and reads the sender; the display draws it
+4 · Tachometer pulse · shielded cable, 16 AWG core (P074) → ICU tail B (D-270) — read by the ICU
+5 · Charge-lamp line (alternator L) · GRY 16 AWG → ICU tail B (D-270) — read by the ICU; the display draws the CHARGE tell-tale
+6 · Brake warning — fluid level + parking brake · GRY 16 AWG → ICU tail B (D-270) — read by the ICU; the display draws one BRAKE tell-tale for both switches
+7 · sealing plug, size 16
+8 · Road speed — pulse generator signal · GRY 16 AWG → ICU tail B (D-270) — channel IC08; pulses per mile is a config value (D-272)
+9 · Phase-2 sensor signal spare · GRY 16 AWG · CAPPED → The ICU's spare input (DT13 pin 9) — nothing reads it until the swap brings a sensor; wired to L1-S2 11 at the post (D-271)
+10 · Turn LEFT tell-tale sense · RED 16 AWG → ICU tail B (D-270) — the tell-tale follows the real lamps (D-258); the display draws it
+11 · Turn RIGHT tell-tale sense · RED 16 AWG → ICU tail B (D-270) — the display draws it
+12 · High-beam tell-tale sense · RED 16 AWG → ICU tail B (D-270) — the display draws it",Two plugs on 150 mm tails; DP-ICU-B 7 holds a sealing plug.,
+E17.22,E17,22,Make the two DCU tails,"From the node toward the centre stack along RT11 - length not measured, confirm: cut them only once RT11 is measured (1.5 x the route). Each ends in a DT06 PLUG with socket contacts and gets a dust cap (P140) until E26.
+DP-DCU (DT06-6S, wedge W6S):
+1 · +12 V constant - DCU logic · RED 16 AWG → In the DT06-6S plug at the end of the tail to the centre stack, plugged into the DCU at E26, live from install (luxury D-362, D-374). CONSTANT, not switched: the DCU has …
+2 · Outside-air temperature (from L2-S 5) · GRY 16 AWG → In the DT06-6S plug at the end of the tail to the centre stack, plugged into the DCU at E26, live from install (luxury D-362, D-374) (D-256 → D-329)
+3 · Ground · BLK 16 AWG → In the DT06-6S plug at the end of the tail to the centre stack, plugged into the DCU at E26, live from install (luxury D-362, D-374)
+4 · CAN2 H · YEL 16 tw AWG → In the DT06-6S plug at the end of the tail to the centre stack, plugged into the DCU at E26, live from install (luxury D-362, D-374)
+5 · CAN2 L · GRN 16 tw AWG → In the DT06-6S plug at the end of the tail to the centre stack, plugged into the DCU at E26, live from install (luxury D-362, D-374)
+6 · DCU wake request · BLU 16 AWG → In the DT06-6S plug at the end of the tail to the centre stack, plugged into the DCU at E26, live from install (luxury D-362, D-374). The DCU pulls this to wake the PMU …
+DP-DCU-B (DT06-12S, wedge W12S):
+1 · Window DRV up command · BLU 16 AWG → The DCU's DT13-12PA, plugged in at E26 (luxury D-362, D-374); the far end stays capped until the luxury package fits the load
+2 · Window DRV down command · BLU 16 AWG → The DCU's DT13-12PA, plugged in at E26 (luxury D-362, D-374); the far end stays capped until the luxury package fits the load
+3 · Window PASS up command · BLU 16 AWG → The DCU's DT13-12PA, plugged in at E26 (luxury D-362, D-374); the far end stays capped until the luxury package fits the load
+4 · Window PASS down command · BLU 16 AWG → The DCU's DT13-12PA, plugged in at E26 (luxury D-362, D-374); the far end stays capped until the luxury package fits the load
+5 · Mirror motor common (both mirrors) · GRY 16 AWG → The DCU's DT13-12PA, plugged in at E26 (luxury D-362, D-374); the far end stays capped until the luxury package fits the load
+6 · Mirror LEFT motor · GRY 16 AWG → The DCU's DT13-12PA, plugged in at E26 (luxury D-362, D-374); the far end stays capped until the luxury package fits the load
+7 · Mirror RIGHT motor · GRY 16 AWG → The DCU's DT13-12PA, plugged in at E26 (luxury D-362, D-374); the far end stays capped until the luxury package fits the load
+8 · Mirror clutch coils (both mirrors) · GRY 16 AWG → The DCU's DT13-12PA, plugged in at E26 (luxury D-362, D-374); the far end stays capped until the luxury package fits the load
+9 · Mirror heat feed (DCU high-side) · RED 16 AWG → The DCU's DT13-12PA, plugged in at E26 (D-374); far end capped until the luxury package fits the load; linked at the post onto L4-P 4 → F14 at the sill (D-369)
+10 · Hatch release select - K3 coil return · BLU 16 AWG → The DCU's DT13-12PA; the DCU sinks it during the release pulse to pick the hatch (D-370)
+11 · Fuel-door release select - K4 coil return · BLU 16 AWG → The DCU's DT13-12PA; the DCU sinks it during the release pulse to pick the fuel door (D-370)
+12 · sealing plug, size 16",Two capped plugs; DP-DCU-B 12 holds a sealing plug.,DP-DCU 1 is constant 12 V through F22 once the node is powered: keep the cap on.
+E17.23,E17,23,Make the DP-DIAG laptop port tail,"A DT04-4P receptacle for the glovebox on a tail along RT12 - length not measured, confirm.
+1 · CAN1 H · YEL 16 tw AWG ← PMU pin 23, CAN1H
+2 · CAN1 L · GRN 16 tw AWG ← PMU pin 36, CAN1L
+3 · +12 V constant · RED 16 AWG ← F2
+4 · Ground · BLK 16 AWG ← GND
+120 Ω (P070) across cavities 1 / 2 inside the port (cavities DP-DIAG 1).",About 60 Ω between cavities 1 and 2: the 120 Ω here and the 120 Ω at the PMU connector in parallel on the one pair.,
+E17.24,E17,24,Fit the load-dump TVS,"P136 across the PMU main feed at the module: between the +12 V side (the busbar / PMU stud) and the GND bus, on short leads with ring terminals. Its polarity is on its datasheet, not in the record.",The TVS is fixed and its leads are short.,Fitted backwards it is a dead short across the main feed: check the datasheet marking twice.
+E17.25,E17,25,"Count the plugs and wedgelocks, label, tidy","Walk every receptacle: a pin or a sealing plug in every cavity (size 16 P028, size 12 P029), wedgelock seated, the housing code on the shell. Every wire labelled at both ends. Bundle loosely with ties; no tape yet.",No empty cavity anywhere; every label reads.,
+E18.01,E18,1,Set up,"The 39-way off the PMU and face-up on the bench, nothing plugged into any receptacle, no relay, no fuse. Meter on the beeper. Short the probes: it beeps.","A beep with the probes together, silence apart.",
+E18.02,E18,2,Continuity: the large cavities,"Touch the cavity at the 39-way, then each place it must reach:
+1 · O13 LS_ECU · RED 12 AWG · CAPPED → receptacle L1-P 2 - the swap reserve, pinned at the post and nothing in the L1 plug (D-271)
+2 · O12 IGNITION · RED 12 AWG → the O12 splice: receptacle L1-P 1 (N18) and the four fused taps F15, F16, F20, F21 (N19, N20, N61, N78)
+12 · O5 FUEL_PUMP · RED 12 AWG → K13 terminal 30 (N69); K13 87 goes on to receptacle L4-P 2 (N70)
+13 · O4 DEFOG · RED 12 AWG → receptacle L4-P 1 - rear defog
+14 · O14 LS_FAN · RED 12 AWG · CAPPED → receptacle L1-P 3 - the swap reserve, pinned at the post (D-271)
+25 · GND · BLK 10 AWG → the GND bus, 6 in or less (N57)
+26 · O3 HEAD_HIGH · RED 12 AWG → receptacle L2-P 2, a 16 AWG tap to DP-ICU-B 12 (N53) and one diode of the pop-up coil feed (N09)
+27 · O15 COMFORT · RED 12 AWG → receptacle L3-P 2 (N17) and the tap to K14 / K15 terminal 86 (N110)
+28 · O16 BLOWER · RED 12 AWG → receptacle L3-P 1 - blower, capped at L3-BLW
+38 · O1 MOTOR_BUS · RED 12 AWG → the O1 splice (N08): F37 to K1 / K2 terminal 30, receptacle L2-P 3 (N105), receptacle L4-P 3 (N16)
+39 · O2 HEAD_LOW · RED 12 AWG → receptacle L2-P 1 and one diode of the pop-up coil feed (N09)","A beep at every place listed. Through an inline holder with no fuse there is no beep: bridge the holder with a fuse for the test, then take it out.",
+E18.03,E18,3,Continuity: the small output cavities,"3 · O11 HORN · ORN 14 AWG → receptacle L2-M 3 - horns
+4 · O10 ACCESSORY · ORN 14 AWG → receptacle L3-M 1 (N23) and the O10 taps: K12 86, DP-ICU-A 1 (N24), L4-S 4 (N73), F33 to K3 / K4 (N85), the capped radar tail (N103)
+5 · O9 WIPE_HIGH · ORN 14 AWG → receptacle L2-M 2 - wiper HIGH
+6 · O17 TURN_L · RED 16 AWG → receptacles L2-M 5 and L4-M 5, with the tap to DP-ICU-B 10 (N51)
+8 · O22 KEEP_ALIVE · RED 16 AWG → wake strip input 5 (N37), K11 terminal 86 (N06) and the 10 kΩ to Q0 base (WS01)
+9 · O8 WIPE_LOW · ORN 14 AWG → receptacle L2-M 1 and K12 terminal 30 (N26)
+10 · O7 BRAKE · ORN 14 AWG → receptacle L4-M 2 - brake lamps
+11 · O6 TAIL_PARK · ORN 14 AWG → receptacles L2-M 7 and L4-M 1 (N54)
+20 · O19 REVERSE · RED 16 AWG → receptacle L4-M 7 - reverse lamps
+21 · O21 START_RLY · RED 16 AWG → receptacle L1-S1 1 - the K9 coil
+33 · O18 TURN_R · RED 16 AWG → receptacles L2-M 6 and L4-M 6, with the tap to DP-ICU-B 11 (N52)
+34 · O20 INTERIOR · RED 16 AWG → receptacle L3-S1 8 and DP-ICU-A 2 (N22)",A beep at every place listed.,
+E18.04,E18,4,Continuity: the input cavities,"16 · A2 WIPER_STALK · GRY 16 AWG → receptacle L3-S1 4 (N97)
+17 · A4 POPUP_L · GRY 16 AWG → receptacle L1-S1 11 - the inhibitor P/N contact
+18 · A6 DOOR_PINS · GRY 16 AWG → receptacle L4-S 2 and the door wake stage (N44)
+19 · A8 HAZ_HORN_WINK · GRY 16 AWG → receptacles L3-S1 6 and L3-S1 11, one splice, and the A8 wake stage (N43)
+22 · A16 KEY_POS · GRY 16 AWG → receptacle L3-S1 1 (N99), with the 100 kΩ bias from pin 15
+29 · A1 TURN_STALK · GRY 16 AWG → receptacle L3-S1 3 (N96)
+30 · A3 BRAKE_PARK · GRY 16 AWG → receptacles L3-S1 5, L2-S 3 and L2-S 4, one splice (N42)
+31 · A5 POPUP_R · GRY 16 AWG → receptacle L1-S2 7 - the inhibitor R contact
+32 · A7 OIL_PRESS · GRY 16 AWG → a tap on the L1-S1 4 to DP-ICU-B 2 conductor (N45)
+35 · A15 HEADLIGHT_SW · GRY 16 AWG → receptacle L3-S1 2 (N98), with the 100 kΩ bias from pin 15",A beep at every place listed; pins 35 and 22 also read 100 kΩ to pin 15.,
+E18.05,E18,5,"Continuity: wake, +5 V and CAN","7 · +12V SW · BLU 16 AWG → the wake strip common rail (N38)
+15 · +5V OUT · PNK 16 AWG → the two 100 kΩ bias resistors (to pins 35 and 22) and the 100 Ω 1 W oil-node pull-up (N39)
+23 · CAN1H · YEL 16 tw AWG → DP-DIAG 1, twisted with pin 36 (N56); 120 Ω across 23 / 36 at this connector
+24 · CAN2H · YEL 16 tw AWG → the CAN2 splice at the node, twisted with pin 37 (N55)
+36 · CAN1L · GRN 16 tw AWG → DP-DIAG 2, twisted with pin 23 (N56)
+37 · CAN2L · GRN 16 tw AWG → the CAN2 splice at the node, twisted with pin 24 (N55)",Pin 7 beeps to strip position 8. Diode test from each strip input 1-7 to position 8 conducts one way. CAN2 pair about 120 Ω.,
+E18.06,E18,6,"For each cavity, touch three places it must NOT reach","After each continuity pass: the neighbouring cavity either side at the 39-way, the ground bus, and one cavity of a different receptacle.",Silence every time.,A beep where there should be none is a crossed pair of wires: fix it before anything else.
+E18.07,E18,7,Isolation,"Meter on its highest ohms range.
+Each power cavity (1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 20, 21, 26, 27, 28, 33, 34, 38, 39) to its neighbours at the 39-way and to the ground bus.
+The always-hot busbar to the ground bus.","Open, more than 1 MΩ, everywhere. Bar to ground bus: the TVS (P136) sits across this pair, so red probe on the bar reads open; with the probes reversed a diode-like reading is the TVS itself, not a strand.",Any reading at all is a stray strand: find it now.
+E18.08,E18,8,Check every relay socket before a relay goes in,"With the meter, each socket terminal against its list:
+K1 POPUP-L · 86 ← the two-diode lamps-up feed off O2 / O3 (N09) · 85 → receptacle L3-S1 10 (N10) · 30 ← F37, 5 A, from the O1 splice (N08) · 87 → receptacle L2-S 1 (N12) · 87a → receptacle L2-P 4 (N14)
+K2 POPUP-R · 86 ← the same two-diode feed (N09) · 85 → receptacle L3-S1 9 (N11) · 30 ← F37 (N08) · 87 → receptacle L2-S 2 (N13) · 87a → receptacle L2-S 6 (N15)
+K3 HATCH-REL · 86 and 30 ← F33, 10 A, off the O10 tap (N85) · 85 → DP-DCU-B 10 (N86) · 87 → receptacle L4-M 3 (N88) · 87a nothing
+K4 FUEL-REL · 86 and 30 ← F33 (N85) · 85 → DP-DCU-B 11 (N86) · 87 → receptacle L4-M 4 (N89) · 87a nothing
+K11 HEAD-UNIT · 86 ← PMU pin 8, O22, tapped at wake strip input 5 (N06) · 85 → GND bus (N07) · 30 ← busbar through F31, 40 A, 10 AWG (N04) · 87 → F32, 40 A, → fuse block B input, 10 AWG (N05)
+K12 WASHER · 86 ← the O10 tap (N24) · 85 → receptacle L3-S2 9 (N25) · 30 ← PMU pin 9, O8 (N26) · 87 → receptacle L2-M 4 (N27)
+K13 FUEL-PUMP · 86 ← the branch off receptacle L3-S2 1 (N71) · 85 → GND bus (N72) · 30 ← PMU pin 12, O5 (N69) · 87 → receptacle L4-P 2 (N70)
+K14 SEAT-D · 86 ← the O15 tap (N110) · 85 → GND bus (N111) · 30 ← busbar through F35, 25 A (N106) · 87 → the L3-SDM 1 tail (N108)
+K15 SEAT-P · 86 ← the O15 tap (N110) · 85 → GND bus (N111) · 30 ← busbar through F36, 25 A (N107) · 87 → the L3-SPM 1 tail (N109)",Each terminal reaches what its line says.,
+E18.09,E18,9,Fit the nine relays,One P003 in each socket: K1 K2 K3 K4 K11 K12 K13 K14 K15. Press until seated.,"Nine relays in, each under its label.",
+E18.10,E18,10,Fit the fuses,"By the fuses table:
+F1 · 10 A · Dash node, block B (K11) · LIVE · label HEAD-UNIT
+F2 · 2 A · Dash node, block A (busbar) · LIVE · label DIAG
+F3 · 5 A · Dash node, block A (busbar) · LIVE · label SWITCH
+F12 · 5 A · Dash node, sealed inline, on the busbar - always-hot (D-462) · LIVE · label INTERIOR
+F13 · no fuse · Dash node, block A (busbar) · EMPTY · label —
+F15 · 7.5 A · Dash node, sealed inline · LIVE · label ALT-EXCITE
+F16 · 5 A · Dash node, sealed inline · LIVE · label DISPLAY
+F19 · 3 A · Dash node, block A (busbar) · LIVE · label COURTESY
+F20 · 7.5 A · Dash node, sealed inline · LIVE · label WIDEBAND
+F21 · 5 A · Dash node, sealed inline · LIVE · label KICK-DOWN
+F22 · 3 A · Dash node, sealed inline · LIVE · label DCU-CONST
+F23 · 3 A · Dash node, sealed inline · LIVE · label WAKE
+F5 · no fuse · Dash node, block B (K11) · EMPTY · label SENSOR-2
+F30 · 40 A · Dash node, a weatherproof MAXI holder (P189) at the busbar stud, feeding fuse … · LIVE · label BLOCK-A-FEED
+F31 · 40 A · Dash node, a weatherproof MAXI holder (P189) at the busbar stud, feeding K11 … · LIVE · label K11-FEED
+F32 · 40 A · Dash node, a weatherproof MAXI holder (P189) at K11 terminal 87, feeding fuse … · LIVE · label BLOCK-B-FEED
+F33 · 10 A · Dash node, sealed inline on the O10 release branch (N85), ahead of K3 / K4 … · LIVE · label RELEASE
+F35 · 25 A · Dash node, a weatherproof MAXI holder (P189) at the busbar stud (D-469) · LIVE · label SEAT-D
+F36 · 25 A · Dash node, a weatherproof MAXI holder (P189) at the busbar stud (D-469) · LIVE · label SEAT-P
+F37 · 5 A · Dash node, sealed inline on the pop-up command branch, between the motor-bus … · LIVE · label POPUP-CMD
+MAXI 40 A (P190) in F30, F31, F32; MAXI 25 A (P191) in F35, F36. F13 and F5 stay empty.",Every LIVE position holds its rating; the two EMPTY positions are empty and still carry their labels.,Read the rating on each fuse as it goes in: a 30 in a 3 A position protects nothing.
+E18.11,E18,11,Check every label and photograph,"Every node wire labelled at both ends. Photograph the finished panels from every angle, close enough to read the labels.",A set of photos that would let you find any wire without opening the dash.,
+E19.01,E19,1,Connect the supply through the meter,"Meter on its 10 A range first, in series in the main feed to the always-hot busbar; supply negative to the ground bus.
+The record does not name the supply: a 12 V battery through a 5 A inline fuse is the pattern E24 uses for first power.",The PMU powers; the reading is small.,Never start on the mA range: the wake-up current can blow the meter's fuse.
+E19.02,E19,2,Let it go to sleep,"Nothing on strip inputs 1 to 7. Wait at least 30 s after the last change, then a minute more.",The reading falls and holds steady.,
+E19.03,E19,3,Read it,Drop the meter to the mA range once the reading is under its limit. Read for a full minute.,30 mA or less is the target; 50 mA or less is accepted.,
+E19.04,E19,4,"If it is high, find the branch","Lift one wake-strip input at a time, then pull F23, F22 and F12 one at a time, watching the meter. Put each back before the next.",The reading drops when the offending branch is lifted.,
+E19.05,E19,5,Record and disconnect,"Enter the mA figure in the app. Meter back to volts, leads out of the current sockets. Disconnect the supply.",The value is in the app.,
+E20.01,E20,1,Lay the leg out full-scale,"On the board or floor, mark the dash post at one end and each node and device along the measured runs:
+RT10 Dash post → Steering column, behind the lower dash: NOT measured - confirm
+RT11 Dash post → Centre stack, across the dash rail: NOT measured - confirm
+RT12 Dash post → Glovebox, across the dash rail, passenger side: NOT measured - confirm
+RT14 Dash post → HVAC case and pedal box, down the centre: NOT measured - confirm
+RT22 Dash post → Behind the dash, along the dash rail beside the post: NOT measured - confirm
+A run marked NOT measured has no cut length yet: that wire waits until C1's M-2 has measured it and G13 has derived the length. Do not cut from the 3D-model guess.
+The leg's pin ladder and route map are in the app's Diagrams.","Every run has a measured length written beside it on the board, or is marked WAIT.","A wire cut short cannot be stretched: no measured route, no cut."
+E20.02,E20,2,Cut and label every wire,"Cut each wire to 1.5 x its run (add the runs joined by +). Print and wrap both labels before the next wire is cut.
+RUN RT10:
+  L3-S1 1 Key ladder · GRY 16 AWG
+  L3-S1 2 Headlight ladder · GRY 16 AWG
+  L3-S1 3 Turn stalk ladder · GRY 16 AWG
+  L3-S1 4 Wiper stalk ladder · GRY 16 AWG
+  L3-S1 6 Hazard switch · GRY 16 AWG
+  L3-S1 9 Wink LEFT — NC pole · BLU 16 AWG
+  L3-S1 10 Wink RIGHT — NC pole · BLU 16 AWG
+  L3-S1 11 Horn + wink request · GRY 16 AWG
+  L3-S1 12 ACC — wake source · BLU 16 AWG
+  L3-S2 1 RUN — wake source · BLU 16 AWG
+  L3-S2 2 Switch supply +12 V · PNK 16 AWG
+  L3-S2 9 Washer relay K12 coil return · BLU 16 AWG
+RUN RT11:
+  L3-P 2 Comfort bus · RED 12 AWG
+  L3-M 1 Accessory — head unit ACC + USB-C · ORN 14 AWG
+  L3-M 2 Head unit memory / constant · RED 14 AWG
+  L3-S1 8 Illumination bus · RED 16 AWG
+  L3-S2 11 Parking brake switch → brake warning lamp · GRY 16 AWG
+RUN RT12:
+  L3-S2 10 Courtesy — glove box lamp · RED 16 AWG
+RUN RT14:
+  L3-P 1 Blower motor + · RED 12 AWG
+  L3-S1 5 Brake pedal switch · GRY 16 AWG
+  L3-S1 7 Brake — wake source · BLU 16 AWG
+  L3-S2 12 Kick-down switch supply +12 V · RED 16 AWG
+  L3-S3 4 Kick-down solenoid command · RED 16 AWG
+RUN RT22:
+  L3-S2 7 Future module +12 V constant (F13, block A, always-hot) · RED 16 AWG
+  L3-S2 8 Future module ground · BLK 16 AWG
+  L3-S3 1 Future pass-through A · GRY 16 AWG
+  L3-S3 2 Future pass-through B · GRY 16 AWG
+  L3-S3 3 Future pass-through C · GRY 16 AWG
+Also cut, to the same runs: the 12 AWG BLK blower return for L3-BLW 2 (RT14, G15), the F24 branch (16 AWG PNK, about the column, RT10), and the dash ground returns listed in the grounds step.","One labelled wire per line of the list, laid along its run on the board.",
+E20.03,E20,3,Pin the L3-P plug,"L3-P is a DTP06-2S, the 2-way plug (kit P100): size-12 socket contacts (P026); wedgelock WP-2S.
+1 · Blower motor + · RED 12 AWG · CAPPED → L3-BLW 1 — the blower receptacle at the HVAC case (DTP-2), dust-capped; no motor this build (K-023 · D-253)
+2 · Comfort bus · RED 12 AWG · CAPPED → L3-CMF 1 — the comfort-bus receptacle behind the centre stack, dust-capped; the O15 comfort block (A13) plugs in (D-274, D-451)
+Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; no cavity left empty; the wedgelock snaps in flush; the code L3-P is on the shell.,
+E20.04,E20,4,Pin the L3-M plug,"L3-M is a DT06-2S, the 2-way plug (kit P123): size-16 socket contacts: P022 for 16-18 AWG, P024 for 14 AWG; wedgelock W2S.
+1 · Accessory — head unit ACC + USB-C · ORN 14 AWG → Head unit red (ACC) wire; USB-C module +
+2 · Head unit memory / constant · RED 14 AWG → Head unit yellow (BATT) wire
+Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; no cavity left empty; the wedgelock snaps in flush; the code L3-M is on the shell.,
+E20.05,E20,5,Pin the L3-S1 plug,"L3-S1 is a DT06-12S, the 12-way plug (kit P115): size-16 socket contacts: P022 for 16-18 AWG, P024 for 14 AWG; wedgelock W12S.
+1 · Key ladder · GRY 16 AWG → Ignition switch: ACC → 33 kΩ · IG → 15 kΩ · ST → 6.8 kΩ, all summed onto this wire
+2 · Headlight ladder · GRY 16 AWG → Light switch E-01: PARK → 33 kΩ · HEAD → 15 kΩ · DIMMER-HI → 8.2 kΩ (fed from the HEAD side) · PASS → 3.3 kΩ
+3 · Turn stalk ladder · GRY 16 AWG → Stalk F-02: LEFT 1.8 kΩ · RIGHT 10 kΩ · OFF 47 kΩ, contacts to column ground
+4 · Wiper stalk ladder · GRY 16 AWG → Stalk D-03: HIGH 4.7 kΩ · LOW 10 kΩ · INT 18 kΩ · OFF 47 kΩ · WASH 1.8 kΩ + 1N5819 (band toward the contact)
+5 · Brake pedal switch · GRY 16 AWG → Pedal switch F-11 through 4.7 kΩ; other terminal → dash ground
+6 · Hazard switch · GRY 16 AWG → Hazard contact through 4.7 kΩ; 47 kΩ baseline to column ground at the switch (D-368) - a break in the horn/wink branch reads as those never pressed; other terminal → …
+7 · Brake — wake source · BLU 16 AWG → Spare P084 adjustable plunger switch on the brake pedal, fed from the F3 switch supply branched off L3-S2 2 in the leg through F24 (D-278, D-412)
+8 · Illumination bus · RED 16 AWG → Dash illumination lamps E-06, E-07, E-10 (RL) + head unit illumination wire - O20 is the illumination bus only, on with PARK / HEAD and dimmed (D-462)
+9 · Wink LEFT — NC pole · BLU 16 AWG → Wink L switch NC terminal, from the plate board's J2 pin 1 (D-504); switch common → dash ground on J2 pin 4
+10 · Wink RIGHT — NC pole · BLU 16 AWG → Wink R switch NC terminal, from the plate board's J2 pin 2 (D-504); switch common → dash ground on J2 pin 4
+11 · Horn + wink request · GRY 16 AWG → Horn pad through 8.2 kΩ · wink L NO through 18 kΩ · wink R NO through 33 kΩ — three resistors joined onto this wire; the two wink resistors sit on the plate board and …
+12 · ACC — wake source · BLU 16 AWG → Ignition switch ACC terminal (raw 12 V)
+Cavity 4: the WASH value printed above is the cavity row's; the ladders table differs - see What to know.
+Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; no cavity left empty; the wedgelock snaps in flush; the code L3-S1 is on the shell.,"Twelve wires, three colours: read the cavity number on the plug for every one."
+E20.06,E20,6,Pin the L3-S2 plug,"L3-S2 is a DT06-12S, the 12-way plug (kit P115): size-16 socket contacts: P022 for 16-18 AWG, P024 for 14 AWG; wedgelock W12S.
+1 · RUN — wake source · BLU 16 AWG → Ignition switch IG terminal (raw 12 V)
+2 · Switch supply +12 V · PNK 16 AWG → Ignition switch B terminal · light switch E-01 common through F24, the inline fuse on the branch behind the column (D-412)
+3 · sealing plug, size 16
+4 · sealing plug, size 16
+5 · sealing plug, size 16
+6 · sealing plug, size 16
+7 · Future module +12 V constant (F13, block A, always-hot) · RED 16 AWG · CAPPED → L3-MOD 1 — the future-module receptacle behind the dash, dust-capped (D-274)
+8 · Future module ground · BLK 16 AWG · CAPPED → L3-MOD 2 — with cavity 7 (D-274)
+9 · Washer relay K12 coil return · BLU 16 AWG → Wiper stalk D-03 WASH contact (same terminal as the WASH ladder leg); contact's other side → column ground
+10 · Courtesy — glove box lamp · RED 16 AWG → Glove box lamp H-01 +; lamp − → lid switch H-02 → dash ground
+11 · Parking brake switch → brake warning lamp · GRY 16 AWG → Parking brake switch C-04 terminal BR (switch body grounds through the lever bracket)
+12 · Kick-down switch supply +12 V · RED 16 AWG → Kick-down switch B-32 at the throttle pedal, one terminal. Ignition-fed off O12 through its own inline fuse - never off F3, whose 5 A also carries the ignition switch, …
+Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; 4 sealing plugs fitted; the wedgelock snaps in flush; the code L3-S2 is on the shell.,
+E20.07,E20,7,Pin the L3-S3 plug,"L3-S3 is a DT06-8S, the 8-way plug (kit P101): size-16 socket contacts: P022 for 16-18 AWG, P024 for 14 AWG; wedgelock W8S.
+1 · Future pass-through A · GRY 16 AWG · CAPPED → L3-RDR 1 — the radar pass-through's dash-end receptacle, dust-capped; linked at the post to L4-S 5 (D-274)
+2 · Future pass-through B · GRY 16 AWG · CAPPED → L3-RDR 2 — the radar pass-through's dash-end receptacle, dust-capped; linked at the post to L4-S 6 (D-274)
+3 · Future pass-through C · GRY 16 AWG · CAPPED → L3-RDR 3 — the radar pass-through's dash-end receptacle, dust-capped; linked at the post to L4-S 7 (D-274)
+4 · Kick-down solenoid command · RED 16 AWG → Kick-down switch B-32, other terminal → back to the post, linked there to L4-S2 7. L3-S2 had one free cavity and this is the second conductor, so it takes the first free …
+5 · sealing plug, size 16
+6 · sealing plug, size 16
+7 · sealing plug, size 16
+8 · sealing plug, size 16
+Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; 4 sealing plugs fitted; the wedgelock snaps in flush; the code L3-S3 is on the shell.,
+E20.08,E20,8,Fit the branch-end receptacles L3-BLW and L3-CMF,"L3-BLW is a DTP04-2P, the 2-way receptacle (kit P133), placed: HVAC case. Size-12 pin contacts (p027); wedgelock WP-2P.
+1 · Blower motor + · RED 12 AWG · CAPPED ← L3-P 1
+2 · Blower motor − (return) · BLK 12 AWG · CAPPED ← GND
+L3-CMF is a DTP04-2P, the 2-way receptacle (kit P133), placed: Centre stack. Size-12 pin contacts (p027); wedgelock WP-2P.
+1 · O15 comfort bus · RED 12 AWG · CAPPED ← L3-P 2
+2 · sealing plug, size 12
+L3-BLW 2 is the 12 AWG BLK return to the dash ground (G15).
+Push the dust cap on (P102).","Each receptacle pinned, plugged, wedge-locked, dust-capped and carrying its code.",
+E20.09,E20,9,Fit the branch-end receptacles L3-MOD and L3-RDR,"L3-MOD is a DT04-2P, the 2-way receptacle (kit P130), placed: Behind the dash. Size-16 pin contacts: p023 for 16-18 awg, p025 for 14 awg; wedgelock W2P.
+1 · Future module +12 V constant (F13, block A, always-hot) · RED 16 AWG · CAPPED ← L3-S2 7
+2 · Future module ground · BLK 16 AWG · CAPPED ← L3-S2 8
+L3-RDR is a DT04-4P, the 4-way receptacle (kit P129), placed: Behind the dash. Size-16 pin contacts: p023 for 16-18 awg, p025 for 14 awg; wedgelock W4P.
+1 · Radar pass-through A · GRY 16 AWG · CAPPED ← L3-S3 1
+2 · Radar pass-through B · GRY 16 AWG · CAPPED ← L3-S3 2
+3 · Radar pass-through C · GRY 16 AWG · CAPPED ← L3-S3 3
+4 · sealing plug, size 16
+Push the dust cap on (P125 on L3-MOD, P036 on L3-RDR).","Each receptacle pinned, plugged, wedge-locked, dust-capped and carrying its code.",
+E20.10,E20,10,Build the switch-supply branch and F24,"The L3-S2 2 wire (16 AWG PNK, from F3) runs to the ignition switch B terminal.
+Behind the lower dash, butt-splice a branch off it into a sealed inline holder (P002) with a 3 A fuse: F24, label LIGHT-SW.
+After F24 the branch feeds two things: the light switch E-01 common, and the brake-wake plunger switch (whose other side is the L3-S1 7 wire).",L3-S2 2 beeps to the switch B end; through F24 (fuse in) it beeps to the light-switch common end and the plunger feed end.,"The key supply stays live with the key out: this branch must be fused where it leaves, not further along."
+E20.11,E20,11,End the leg at the ignition switch,"New switch (P086), four terminals by function:
+B ← L3-S2 2 (PNK)
+ACC → 33 kΩ → the L3-S1 1 wire (GRY); and ACC direct → L3-S1 12 (BLU)
+IG → 15 kΩ → the same L3-S1 1 wire; and IG direct → L3-S2 1 (BLU)
+ST → 6.8 kΩ → the same L3-S1 1 wire
+The three resistors are the E7 sub-assemblies: solder, adhesive heat-shrink, all three summed onto the one GRY wire.
+Which blade of the new switch is B, ACC, IG and ST is not in the record: prove it with the meter and the key before joining.",Between the L3-S2 2 and L3-S1 1 cavities: OFF open · ACC 33 kΩ · RUN about 10.3 kΩ · START about 4.1 kΩ (about 4.7 kΩ if ACC drops out in START).,"If CK10 found that IG drops at START, a diode from ST into the K13 coil is needed (one 1N5819): stop and raise a note before finishing this end."
+E20.12,E20,12,End the leg at the light switch,"Switch E-01 on the column, kept. common ← the F24 branch
+PARK contact → 33 kΩ → the L3-S1 2 wire (GRY)
+HEAD contact → 15 kΩ → L3-S1 2
+DIMMER HI contact, fed from the HEAD contact side → 8.2 kΩ → L3-S1 2
+PASS contact → 3.3 kΩ → L3-S1 2
+This switch keeps its factory plug: the joins are butt splices onto 150 mm of factory lead (see What to know for when).",From the F24 branch end to the L3-S1 2 cavity: OFF open · PARK 33 kΩ · HEAD low about 10.3 kΩ · HEAD high about 4.6 kΩ · PASS about 1.9 kΩ.,"CK17: the 1980 manual shows PASS closing the HIGH contact, not one of its own. Build to what CK17 measured on this car."
+E20.13,E20,13,End the leg at the turn stalk and the hazard switch,"Turn stalk F-02: LEFT → 1.8 kΩ → the L3-S1 3 wire · RIGHT → 10 kΩ → L3-S1 3 · OFF → 47 kΩ → L3-S1 3 · common → column ground, 16 AWG BLK.
+Hazard switch: contact → 4.7 kΩ → the L3-S1 6 wire; a 47 kΩ baseline from that wire to column ground at the switch; other side → column ground.",L3-S1 3 to column ground: LEFT 1.8 kΩ · RIGHT 10 kΩ · OFF 47 kΩ. L3-S1 6 to column ground: off 47 kΩ · hazard on about 4.27 kΩ.,"CK18: the 1980 tables show no OFF contact to ground on the stalks. If CK18 found none, the 47 kΩ is a fixed baseline and the ladders table is what you build to."
+E20.14,E20,14,End the leg at the wiper stalk,"Stalk D-03: HIGH → 4.7 kΩ → the L3-S1 4 wire · LOW → 10 kΩ → L3-S1 4 · INT → 18 kΩ → L3-S1 4 · OFF → 47 kΩ → L3-S1 4.
+WASH contact → the WASH sub-assembly from E7 (resistor + diode, band toward the contact) → L3-S1 4; and the same WASH terminal direct → the L3-S2 9 wire (BLU).
+Common / contact returns → column ground.",L3-S1 4 to column ground: HIGH 4.7 kΩ · LOW 10 kΩ · INT 18 kΩ · OFF 47 kΩ. WASH pressed: L3-S2 9 beeps to column ground.,"The WASH leg has a diode: an ohmmeter will not read it true. Check the resistor alone, and the diode on diode test."
+E20.15,E20,15,End the leg at the horn pad and the wink plate,"Horn pad (steering wheel, returns to column ground through the slip ring): contact → 8.2 kΩ → the L3-S1 11 wire.
+Wink plate lead, 4 wires to the plate board's header J2: pin 1 ← L3-S1 9 (BLU, wink L NC) · pin 2 ← L3-S1 10 (BLU, wink R NC) · pin 3 ← L3-S1 11 (GRY) · pin 4 → dash ground, 16 AWG BLK.
+J2's housing and the plate's position are still confirm: leave this lead long, labelled, and unterminated at the plate end if the plate is not in hand.","L3-S1 11 to ground: horn pressed 8.2 kΩ; with the plate fitted, wink L 18 kΩ, wink R 33 kΩ. L3-S1 9 and 10 beep to dash ground at rest and open when their wink is held.",
+E20.16,E20,16,End the leg at the pedal box,"Brake pedal switch F-11 (new, P085): contact → 4.7 kΩ → the L3-S1 5 wire; other side → dash ground.
+Brake-wake plunger (P084) on the pedal: one side ← the F24 branch, other side → the L3-S1 7 wire (BLU).
+Kick-down switch B-32 at the throttle pedal (kept): one terminal ← L3-S2 12 (RED); the other → L3-S3 4 (RED).","L3-S1 5 to dash ground: pedal pressed 4.7 kΩ, released open. L3-S1 7 beeps to the F24 branch with the pedal pressed.",
+E20.17,E20,17,End the leg at the centre stack and glovebox,"Head unit: red (ACC) ← L3-M 1 · yellow (BATT) ← L3-M 2 · orange (ILLUM) ← L3-S1 8 · black → dash ground, 14 AWG BLK. USB-C module: + ← a branch off L3-M 1 · − → dash ground, 16 AWG BLK.
+Dash illumination lamps E-06 heater panel, E-07 select lever, E-10 switch panel: RL ← the L3-S1 8 wire · B → dash ground.
+Glove box lamp H-01 + ← L3-S2 10; lamp − through the lid switch H-02 → dash ground.
+Parking brake switch C-04: BR ← L3-S2 11; the switch grounds through the lever bracket.
+The head unit and USB-C module are fitted later: end those wires labelled and insulated.",Each wire reaches the end named and is labelled there.,
+E20.18,E20,18,Make the ground returns,"To the dash ground star or the column ground, ring terminals (P079):
+G15 · Blower motor return — L3-BLW 2 → dash ground (through the final stage · D-257) · 12 AWG BLK · x1 · 4 ft hand estimate - confirm
+G16 · Head unit black → dash ground · 14 AWG BLK · x1 · 3 ft hand estimate - confirm
+G17 · USB-C module − → dash ground · 16 AWG BLK · x1 · 3 ft hand estimate - confirm
+G18 · Dash illumination lamps B → dash ground · 16 AWG BLK · x3 · 3 ft hand estimate - confirm
+G19 · Glove box lamp switch → dash ground · 16 AWG BLK · x1 · 3 ft hand estimate - confirm
+G20 · Wink switch commons → dash ground · 16 AWG BLK · x2 · 3 ft hand estimate - confirm
+G21 · Brake pedal switch → dash ground · 16 AWG BLK · x1 · 3 ft hand estimate - confirm
+G22 · Turn / hazard / wiper stalk returns → column ground · 16 AWG BLK · x3 · 2 ft hand estimate - confirm
+G14, the bus-to-chassis lead, is the node's (E17 / E24); G36 and G42 are E38's.",Every return listed has a labelled BLK wire with a ring on it.,"The lengths in the grounds table are hand estimates: cut each to the measured run, not to the table."
+E20.19,E20,19,"Test: continuity end to end, every cavity","Meter on the beeper. One probe on the socket in the plug cavity (use a spare pin contact as a probe tip, never a meter probe pushed into a socket), the other on the far end of that wire. Tick each cavity on the housing lists above. Through a resistor the beeper stays silent: read ohms instead.","A beep for every LIVE and CAPPED cavity to its own far end, and to no other.",A meter probe forced into a socket contact spreads it and the pin goes loose: probe with a mating pin.
+E20.20,E20,20,Test: isolation,"Nothing plugged in at either end. Meter on its highest ohms range: each power cavity to its neighbours in the same plug, and every cavity to the ground wires of the leg.",Open everywhere - the node test's mark is more than 1 MΩ (E18) - except where a resistor is fitted on purpose (the ladder and baseline resistors read their own value).,Any other reading is a stray strand or a nicked wire: find it before the leg is bundled.
+E20.21,E20,21,Test: the ladder check,"With each switch that is already on the leg, work it through every position and read ohms at the leg-side cavity against the ladders table:
+A16 key (L3-S2 2 to L3-S1 1): OFF bias only · ACC 33k · RUN 33k + 15k · START 33k + 15k + 6.8k
+A15 lights (F24 branch to L3-S1 2): OFF bias only · PARK 33k · HEAD_LO 33k + 15k · HEAD_HI 33k + 15k + 8.2k · PASS 33k + 15k + 8.2k + 3.3k
+A1 turn (L3-S1 3 to ground): LEFT 1.8k · RIGHT 10k · OFF 47k
+A2 wiper (L3-S1 4 to ground): WASH 470 + 1N4148 · HIGH 4.7k · LOW 10k · INT 18k · OFF 47k
+A8 (L3-S1 6 and 11 to ground): HAZ+HORN 4.7k ∥ 8.2k ∥ 47k · HAZARD 4.7k ∥ 47k · HORN 8.2k ∥ 47k · WINK_L 18k ∥ 47k · WINK_R 33k ∥ 47k · IDLE 47k
+A3 brake only on this leg (L3-S1 5 to ground): 4.7k pressed
+In the table a + on A15 / A16 means both contacts closed at once, so the resistors are in parallel.
+On the leg the two A8 wires are still separate (the node splices them): L3-S1 6 alone reads 47k idle and 4.7k ∥ 47k with the hazard on; L3-S1 11 alone reads open idle, 8.2k horn, 18k wink L, 33k wink R.
+A kept switch that is not on the leg yet: check its resistor sub-assembly alone here, and repeat the switch-through check at E26.",Each state within 2 % of its value: 33 kΩ · 10.3 kΩ · 4.1 kΩ on the key; 33 kΩ · 10.3 kΩ · 4.6 kΩ · 1.9 kΩ on the lights; 1.8 k · 10 k · 47 k turn; 4.7 k · 10 k · 18 k · 47 k wiper; 4.27 kΩ hazard on its 47 k baseline.,
+E20.22,E20,22,"Tug, bundle, cap",Tug every crimp once more. Tie the bundle every 150 mm with loose ties. Do NOT final-wrap: the cabin looms are wrapped at E35 and the engine-bay looms at E33. Dust caps on every branch-end receptacle; bag the plugs so no dirt gets in the sockets.,"A leg that lies flat on its layout, every end labelled, nothing taped.",
+E21.01,E21,1,Lay the leg out full-scale,"On the board or floor, mark the dash post at one end and each node and device along the measured runs:
+RT06 Dash post → Nose splice, Cowl grommet, then along the inner wing: NOT measured - confirm (the 3D model guesses 11.4 ft: planning only, never a cut length)
+RT07 Nose splice → Each headlight bucket and pop-up motor, across the radiator support: NOT measured - confirm (the 3D model guesses 3.4 ft: planning only, never a cut length)
+RT08 Nose splice → Front combo lamps, side markers, horns, radiator support and both inner wings: NOT measured - confirm (the 3D model guesses 6.1 ft: planning only, never a cut length)
+RT09 Nose splice → Wiper motor D-02 and washer pump D-01, back along the cowl: NOT measured - confirm
+RT29 Nose splice → Front bumper, radar sensor, along the bumper beam: NOT measured - confirm
+A run marked NOT measured has no cut length yet: that wire waits until C1's M-2 has measured it and G13 has derived the length. Do not cut from the 3D-model guess.
+The leg's pin ladder and route map are in the app's Diagrams.","Every run has a measured length written beside it on the board, or is marked WAIT.","A wire cut short cannot be stretched: no measured route, no cut."
+E21.02,E21,2,Cut and label every wire,"Cut each wire to 1.5 x its run (add the runs joined by +). Print and wrap both labels before the next wire is cut.
+RUN RT06 + RT07:
+  L2-P 1 Headlight LOW, both · RED 12 AWG
+  L2-P 2 Headlight HIGH, both · RED 12 AWG
+  L2-P 3 Pop-up motor feed (WR), both motors · RED 12 AWG
+  L2-P 4 Pop-up LH down command (RY) · RED 14 AWG
+  L2-S 1 Pop-up LH up command (R) · RED 14 AWG
+  L2-S 2 Pop-up RH up command (R) · RED 14 AWG
+  L2-S 6 Pop-up RH down command (RY) · RED 14 AWG
+RUN RT06 + RT08:
+  L2-M 3 Horns, both · ORN 14 AWG
+  L2-M 5 Turn LEFT front · RED 16 AWG
+  L2-M 6 Turn RIGHT front · RED 16 AWG
+  L2-M 7 Park + side markers, front · ORN 14 AWG
+  L2-S 5 Outside-air temperature sensor · GRY 16 AWG
+RUN RT06 + RT09:
+  L2-M 1 Wiper LOW brush · ORN 14 AWG
+  L2-M 2 Wiper HIGH brush · ORN 14 AWG
+  L2-M 4 Washer pump feed · ORN 14 AWG
+  L2-M 8 Wiper park feed — future motor family · RED 16 AWG
+  L2-S 3 Wiper park sense · GRY 16 AWG
+  L2-S 4 Wiper park return — future motor family · GRY 16 AWG
+RUN RT06 + RT29:
+  L2-R 1 Radar front sensor A · GRY 16 AWG
+  L2-R 2 Radar front sensor B · GRY 16 AWG
+  L2-R 3 Radar front sensor C · GRY 16 AWG
+The nose splices fan out: the trunk wire is cut to RT06, each branch to its own run from the nose splice.
+L2-OAT 1 is the far end of the L2-S 5 wire; L2-RDR 1-3 are the far ends of L2-R 1-3.","One labelled wire per line of the list, laid along its run on the board.",
+E21.03,E21,3,Pin the L2-P plug,"L2-P is a DTP06-4S, the 4-way plug (kit P131): size-12 socket contacts (P026); wedgelock WP-4S.
+1 · Headlight LOW, both · RED 12 AWG → Splice at the nose → 14 AWG branch to each lamp plug, terminal RY
+2 · Headlight HIGH, both · RED 12 AWG → Splice at the nose → 14 AWG branch to each lamp plug, terminal RL
+3 · Pop-up motor feed (WR), both motors · RED 12 AWG → Splice at the nose → 12 AWG branch to motor E-03 terminal WR and motor E-04 terminal WR, as the headlights on L2-P 1 / 2 (D-487; one feed per motor until then) - each …
+4 · Pop-up LH down command (RY) · RED 14 AWG → Motor E-03 terminal RY - the down command into the motor's own relay (SP-584, D-460); N14 at the node. A command, not the motor current, but behind O1's 25 A soft fuse, …
+Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; no cavity left empty; the wedgelock snaps in flush; the code L2-P is on the shell.,Do not pin cavities 3 and 4 until CK08 is read.
+E21.04,E21,4,Pin the L2-M plug,"L2-M is a DT06-8S, the 8-way plug (kit P101): size-16 socket contacts: P022 for 16-18 AWG, P024 for 14 AWG; wedgelock W8S.
+1 · Wiper LOW brush · ORN 14 AWG → Wiper motor D-02, terminal LW
+2 · Wiper HIGH brush · ORN 14 AWG → Wiper motor D-02, terminal LR
+3 · Horns, both · ORN 14 AWG → Splice at the nose → each horn's terminal GY
+4 · Washer pump feed · ORN 14 AWG → Washer motor D-01, terminal LB
+5 · Turn LEFT front · RED 16 AWG → Front combo lamp F-05, terminal GR
+6 · Turn RIGHT front · RED 16 AWG → Front combo lamp F-06, terminal GO
+7 · Park + side markers, front · ORN 14 AWG → Splice at the nose → F-05 RG, F-06 RG, F-12 RG, F-13 RG
+8 · Wiper park feed — future motor family · RED 16 AWG · CAPPED → Held as the fused park feed a self-parking motor needs; block A position F13 is its protection when it is taken up (D-317)
+Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; no cavity left empty; the wedgelock snaps in flush; the code L2-M is on the shell.,
+E21.05,E21,5,Pin the L2-S plug,"L2-S is a DT06-6S, the 6-way plug (kit P099): size-16 socket contacts: P022 for 16-18 AWG, P024 for 14 AWG; wedgelock W6S.
+1 · Pop-up LH up command (R) · RED 14 AWG → Motor E-03 terminal R - the up command into the motor's own relay (SP-584, D-460); N12 at the node; 14 AWG behind O1's 25 A soft fuse (D-487). Was A4's transit contact …
+2 · Pop-up RH up command (R) · RED 14 AWG → Motor E-04 terminal R - the up command (SP-584, D-460); N13 at the node; 14 AWG (D-487). Was A5's transit contact: YG is capped at the motor
+3 · Wiper park sense · GRY 16 AWG → 47 kΩ baseline to the front star ground at the L2-S plug, as A4/A5 (D-368) - covers the run to the park contact; a break in the brake branch reads as brake never …
+4 · Wiper park return — future motor family · GRY 16 AWG · CAPPED → Run to the wiper branch and left unpinned there: a DIN 72552 motor's park return is pinned into this cavity at the branch, no leg re-run (D-317)
+5 · Outside-air temperature sensor · GRY 16 AWG · CAPPED → L2-OAT 1 — the outside-air sensor receptacle ahead of the radiator, dust-capped; the thermistor's other lead grounds at the front star (D-256 → D-329, D-274)
+6 · Pop-up RH down command (RY) · RED 14 AWG → Motor E-04 terminal RY - the down command (SP-584, D-460); N15 at the node; 14 AWG (D-487). Was a sealing plug since D-329
+Cavity 3: before the contact goes in, join a 47 kΩ (E7 sub-assembly) onto the GRY wire right behind the plug; its other lead goes on 16 AWG BLK to a ring for the front star.
+Cavity 4: the wire is pinned here at the plug, run to the wiper branch, and left cut, labelled and capped there.
+Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; no cavity left empty; the wedgelock snaps in flush; the code L2-S is on the shell.,"Do not pin cavities 1, 2 and 6 until CK08 is read."
+E21.06,E21,6,Pin the L2-R plug,"L2-R is a DT06-4S, the 4-way plug (kit P124): size-16 socket contacts: P022 for 16-18 AWG, P024 for 14 AWG; wedgelock W4S.
+1 · Radar front sensor A · GRY 16 AWG · CAPPED → L2-RDR 1 at the nose, dust-capped (A16)
+2 · Radar front sensor B · GRY 16 AWG · CAPPED → L2-RDR 2 at the nose, dust-capped (A16)
+3 · Radar front sensor C · GRY 16 AWG · CAPPED → L2-RDR 3 at the nose, dust-capped (A16)
+4 · sealing plug, size 16
+Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; 1 sealing plug fitted; the wedgelock snaps in flush; the code L2-R is on the shell.,
+E21.07,E21,7,Make the nose splices,"Sealed crimp butt splices with adhesive heat-shrink (P078), staggered so the bundle does not swell in one place:
+L2-P 1 (12 AWG) → a 14 AWG branch to each headlamp plug, terminal RY
+L2-P 2 (12 AWG) → a 14 AWG branch to each headlamp plug, terminal RL
+L2-P 3 (12 AWG) → a 12 AWG branch to motor E-03 terminal WR and to motor E-04 terminal WR
+L2-M 3 (14 AWG) → each horn's terminal GY
+L2-M 7 (14 AWG) → F-05 RG, F-06 RG, F-12 RG, F-13 RG",Each splice survives a firm tug; glue shows at both ends of the shrink.,"The splice kit has three sizes (22-18, 16-14, 12-10); the record does not say which takes a trunk and two branches: make one on scrap and tug it first."
+E21.08,E21,8,End the leg at the pop-up motors,"Motor E-03 (left): WR ← the L2-P 3 branch · R (up) ← L2-S 1 · RY (down) ← L2-P 4 · YG capped at the motor.
+Motor E-04 (right): WR ← the L2-P 3 branch · R (up) ← L2-S 2 · RY (down) ← L2-S 6 · YG capped.
+Each bucket: a 14 AWG BLK strap to the front star (G07).
+The motors keep their factory plugs (E-03 / E-04 connectors).",Each wire labelled with its motor terminal letter.,"YG is +12 V while the motor runs: cap it sealed, never ground it."
+E21.09,E21,9,End the leg at the headlamps,"Each lamp E-08 (left), E-09 (right): RY ← its L2-P 1 branch · RL ← its L2-P 2 branch · B → front star, 14 AWG BLK (G06).","Two lamps, three wires each.",
+E21.10,E21,10,End the leg at the wiper motor and washer pump,"Wiper motor D-02: LW ← L2-M 1 · LR ← L2-M 2 · L → 12 kΩ → L2-S 3 · LB capped, unconnected · B → front star, 14 AWG BLK (G11).
+The L2-S 4 and L2-M 8 wires end here, cut, labelled CAPPED and sealed.
+Washer pump D-01: LB (+) ← L2-M 4 · LY (−) → front star, 16 AWG BLK (G12).",L2-S 3 reads 12 kΩ to the motor L end.,CK09 may have changed which terminal is the park output: build to the cavity rows as they stand after CK09.
+E21.11,E21,11,End the leg at the front lamps and horns,"Front combo F-05 (left): GR ← L2-M 5 · RG ← the L2-M 7 splice · B → front star, 16 AWG BLK (G08). F-06 (right): GO ← L2-M 6 · RG · B.
+Side markers F-12 (left), F-13 (right): RG ← the L2-M 7 splice · B → front star (G09).
+Horns F-09, F-10: GY ← the L2-M 3 splice; a 14 AWG BLK ring under each horn's mounting bolt → front star (G10).",Each lamp and horn has its feed and its own ground wire.,
+E21.12,E21,12,Fit the branch-end receptacles L2-OAT and L2-RDR,"L2-OAT is a DT04-2P, the 2-way receptacle (kit P130), placed: Nose. Size-16 pin contacts: p023 for 16-18 awg, p025 for 14 awg; wedgelock W2P.
+1 · Outside-air thermistor — signal · GRY 16 AWG · CAPPED ← L2-S 5
+2 · sealing plug, size 16
+L2-RDR is a DT04-4P, the 4-way receptacle (kit P129), placed: Nose, behind the front bumper. Size-16 pin contacts: p023 for 16-18 awg, p025 for 14 awg; wedgelock W4P.
+1 · Radar front sensor A, nose end · GRY 16 AWG · CAPPED ← L2-R 1
+2 · Radar front sensor B, nose end · GRY 16 AWG · CAPPED ← L2-R 2
+3 · Radar front sensor C, nose end · GRY 16 AWG · CAPPED ← L2-R 3
+4 · sealing plug, size 16
+The outside-air thermistor's other lead returns to the front star (G38) when it is fitted.
+Push the dust cap on (P125 on L2-OAT, P036 on L2-RDR).","Each receptacle pinned, plugged, wedge-locked, dust-capped and carrying its code.",
+E21.13,E21,13,Make the ground returns to the front star,"Ring terminals (P079), each return its own wire to the star stud on the radiator support:
+G05 · Front star stud → chassis · 10 AWG BLK · x1 · 2 ft hand estimate - confirm
+G06 · Headlight B → front star, each · 14 AWG BLK · x2 · 4 ft hand estimate - confirm
+G07 · Pop-up bucket strap → front star, each · 14 AWG BLK · x2 · 4 ft hand estimate - confirm
+G08 · Front combo lamp B → front star, each · 16 AWG BLK · x2 · 4 ft hand estimate - confirm
+G09 · Side marker B → front star, each · 16 AWG BLK · x2 · 4 ft hand estimate - confirm
+G10 · Horn case → front star, each · 14 AWG BLK · x2 · 3 ft hand estimate - confirm
+G11 · Wiper motor B → front star · 14 AWG BLK · x1 · 3 ft hand estimate - confirm
+G12 · Washer pump LY → front star · 16 AWG BLK · x1 · 3 ft hand estimate - confirm
+G38 · Outside-air thermistor return → front star · 16 AWG BLK · x1 · 3 ft hand estimate - confirm
+G13 in the table still counts two pop-up baselines: since D-487 there is one baseline, the L2-S 3 one.",Every return has a labelled BLK wire with a ring.,Lengths in the table are hand estimates: cut to the measured run.
+E21.14,E21,14,"Test: continuity end to end, every cavity","Meter on the beeper. One probe on the socket in the plug cavity (use a spare pin contact as a probe tip, never a meter probe pushed into a socket), the other on the far end of that wire. Tick each cavity on the housing lists above. Through a resistor the beeper stays silent: read ohms instead.","A beep for every LIVE and CAPPED cavity to its own far end, and to no other.",A meter probe forced into a socket contact spreads it and the pin goes loose: probe with a mating pin.
+E21.15,E21,15,Test: isolation,"Nothing plugged in at either end. Meter on its highest ohms range: each power cavity to its neighbours in the same plug, and every cavity to the ground wires of the leg.",Open everywhere - the node test's mark is more than 1 MΩ (E18) - except where a resistor is fitted on purpose (the ladder and baseline resistors read their own value).,Any other reading is a stray strand or a nicked wire: find it before the leg is bundled.
+E21.16,E21,16,Test: the ladder check,"L2-S 3 to its front-star ring: BRAKE+PARKED 4.7k ∥ 12k ∥ 47k · BRAKE 4.7k ∥ 47k · PARKED 12k ∥ 47k · IDLE 47k.
+On this leg alone, with the wiper parked or not connected, cavity 3 shows the 47 kΩ baseline; through the park contact it shows 12 kΩ in parallel with it.",47 kΩ at rest; about 9.6 kΩ with the park contact closed to ground.,
+E21.17,E21,17,"Tug, bundle, cap",Tug every crimp once more. Tie the bundle every 150 mm with loose ties. Do NOT final-wrap: the cabin looms are wrapped at E35 and the engine-bay looms at E33. Dust caps on every branch-end receptacle; bag the plugs so no dirt gets in the sockets.,"A leg that lies flat on its layout, every end labelled, nothing taped.",
+E22.01,E22,1,Lay the leg out full-scale,"On the board or floor, mark the dash post at one end and each node and device along the measured runs:
+RT15 Dash post → Rear node, cargo bin, Tunnel: NOT measured - confirm (the 3D model guesses 7.7 ft: planning only, never a cut length)
+RT16 Rear node → Tail lamps, licence lamps, rear markers, along the quarter, both sides: NOT measured - confirm (the 3D model guesses 9.1 ft: planning only, never a cut length)
+RT17 Rear node → Fuel pump and tank sender, under the floor to the tank: NOT measured - confirm
+RT18 Rear node → Hatch release, luggage lamp, the radar pass-through, through the hinge loop: NOT measured - confirm (the 3D model guesses 7.8 ft: planning only, never a cut length)
+RT23 Rear node → Roof rail, interior lamp, up the C-pillar trim: NOT measured - confirm
+RT24 Rear node → Hatch glass, defog grid, through the hatch hinge loop with the tail-lamp conductors: NOT measured - confirm
+RT25 Rear node → Fuel-door solenoid, quarter trim, behind the driver-side quarter trim: NOT measured - confirm
+RT19 Dash post → Sill node, driver kick panel, along the sill: NOT measured - confirm (the 3D model guesses 3.8 ft: planning only, never a cut length)
+RT21 Dash post → Transmission speedo boss and kick-down solenoid, Tunnel, with RT15: NOT measured - confirm
+A run marked NOT measured has no cut length yet: that wire waits until C1's M-2 has measured it and G13 has derived the length. Do not cut from the 3D-model guess.
+The leg's pin ladder and route map are in the app's Diagrams.","Every run has a measured length written beside it on the board, or is marked WAIT.","A wire cut short cannot be stretched: no measured route, no cut."
+E22.02,E22,2,Cut and label every wire,"Cut each wire to 1.5 x its run (add the runs joined by +). Print and wrap both labels before the next wire is cut.
+RUN RT15:
+  L4-S 5 Future pass-through A · GRY 16 AWG
+  L4-S 6 Future pass-through B · GRY 16 AWG
+  L4-S 7 Future pass-through C · GRY 16 AWG
+RUN RT15 + RT16:
+  L4-M 1 Tail · licence · rear markers · ORN 14 AWG
+  L4-M 2 Brake lamps · ORN 14 AWG
+  L4-M 5 Turn LEFT rear · RED 16 AWG
+  L4-M 6 Turn RIGHT rear · RED 16 AWG
+  L4-M 7 Reverse lamps · RED 16 AWG
+RUN RT15 + RT17:
+  L4-P 2 Fuel pump + · RED 12 AWG
+  L4-S 1 Fuel level sender · GRY 16 AWG
+RUN RT15 + RT18:
+  L4-M 3 Hatch release solenoid · ORN 14 AWG
+  L4-S 8 Courtesy — luggage lamp · RED 16 AWG
+RUN RT15 + RT23:
+  L4-M 8 Interior / spot lamp - always-hot (D-462) · RED 16 AWG
+RUN RT15 + RT24:
+  L4-P 1 Rear defog grid · RED 12 AWG
+RUN RT15 + RT25:
+  L4-M 4 Fuel-door release solenoid · ORN 14 AWG
+RUN RT19:
+  L4-P 3 Window motor bus feed · RED 12 AWG
+  L4-P 4 Mirror heat feed → sill (F14), switched by the DCU · RED 12 AWG
+  L4-M 9 Window DRV up command → K5 coil · BLU 16 AWG
+  L4-M 10 Window DRV down command → K6 coil · BLU 16 AWG
+  L4-M 11 Window PASS up command → K7 coil · BLU 16 AWG
+  L4-M 12 Window PASS down command → K8 coil · BLU 16 AWG
+  L4-S 2 Door jamb switches — ladder · GRY 16 AWG
+  L4-S2 1 Mirror motor common (both mirrors) · GRY 16 AWG
+  L4-S2 2 Mirror LEFT motor · GRY 16 AWG
+  L4-S2 3 Mirror LEFT clutch coil · GRY 16 AWG
+  L4-S2 4 Mirror RIGHT motor · GRY 16 AWG
+  L4-S2 5 Mirror RIGHT clutch coil · GRY 16 AWG
+RUN RT21:
+  L4-S 3 Road speed — pulse generator signal · GRY 16 AWG
+  L4-S 4 Road speed — pulse generator supply +12 V · RED 16 AWG
+  L4-S2 7 Kick-down solenoid command (tunnel) · RED 16 AWG
+Sill panel wires are short and cut on the panel: see the sill steps.
+The hatch-end run L4-RDR → L4-HRD is three 16 AWG GRY along RT18.","One labelled wire per line of the list, laid along its run on the board.",
+E22.03,E22,3,Pin the L4-P plug,"L4-P is a DTP06-4S, the 4-way plug (kit P131): size-12 socket contacts (P026); wedgelock WP-4S.
+1 · Rear defog grid · RED 12 AWG → Grid G-25 terminal LG; grid terminal B → rear star ground (12 AWG)
+2 · Fuel pump + · RED 12 AWG → Carter P4070 + ; pump − → its OWN 12 AWG to the rear star ground
+3 · Window motor bus feed · RED 12 AWG · CAPPED → Lands at the sill node — the K5–K8 contact feed through the F8 / F9 holders, fitted empty (D-283); the node is this branch's end (D-274)
+4 · Mirror heat feed → sill (F14), switched by the DCU · RED 12 AWG · CAPPED → Lands at the sill node in F14's holder, fitted empty (D-283) — this branch's end (D-274). Fed from the DCU's high-side mirror-heat switch through DP-DCU-B 9 (D-369, as …
+Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; no cavity left empty; the wedgelock snaps in flush; the code L4-P is on the shell.,"Cavity 2 is the fuel pump: its wire and its return are 12 AWG, nothing thinner."
+E22.04,E22,4,Pin the L4-M plug,"L4-M is a DT06-12S, the 12-way plug (kit P115): size-16 socket contacts: P022 for 16-18 AWG, P024 for 14 AWG; wedgelock W12S.
+1 · Tail · licence · rear markers · ORN 14 AWG → Splice at the hatch → F-07 RG, F-08 RG, F-04 RG (×2), F-14 RG, F-15 RG
+2 · Brake lamps · ORN 14 AWG → Splice → F-07 G, F-08 G
+3 · Hatch release solenoid · ORN 14 AWG · CAPPED → The hatch-release solenoid's + terminal, through the hinge loop with the tail-lamp conductors — it exists and is believed to work (Camden 2026-09-08, DV48); fed through …
+4 · Fuel-door release solenoid · ORN 14 AWG · CAPPED → The fuel-door solenoid's + terminal behind the quarter trim — it exists (Camden 2026-09-08, DV49; K-017 corrected); fed through K4 at the dash node, fitted this build …
+5 · Turn LEFT rear · RED 16 AWG → Rear combo F-07, terminal GR
+6 · Turn RIGHT rear · RED 16 AWG → Rear combo F-08, terminal GO
+7 · Reverse lamps · RED 16 AWG → Splice → F-07 RW, F-08 RW
+8 · Interior / spot lamp - always-hot (D-462) · RED 16 AWG → Interior/spot lamp H-06 LY (00-CAR PT957); the lamp's − through its own DOOR / OFF / ON switch: ON → roof-rail ground, DOOR → RY to both jamb switches through a 1N4007 …
+9 · Window DRV up command → K5 coil · BLU 16 AWG · CAPPED → K5 socket, terminal 86 at the sill node — landed in the empty socket, which is this branch's end; the relay comes with the power windows (D-274)
+10 · Window DRV down command → K6 coil · BLU 16 AWG · CAPPED → K6 socket, terminal 86 at the sill node — landed in the empty socket, which is this branch's end; the relay comes with the power windows (D-274)
+11 · Window PASS up command → K7 coil · BLU 16 AWG · CAPPED → K7 socket, terminal 86 at the sill node — landed in the empty socket, which is this branch's end; the relay comes with the power windows (D-274)
+12 · Window PASS down command → K8 coil · BLU 16 AWG · CAPPED → K8 socket, terminal 86 at the sill node — landed in the empty socket, which is this branch's end; the relay comes with the power windows (D-274)
+Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; no cavity left empty; the wedgelock snaps in flush; the code L4-M is on the shell.,
+E22.05,E22,5,Pin the L4-S plug,"L4-S is a DT06-8S, the 8-way plug (kit P101): size-16 socket contacts: P022 for 16-18 AWG, P024 for 14 AWG; wedgelock W8S.
+1 · Fuel level sender · GRY 16 AWG → Tank sender C-01 terminal Y; sender terminal B → rear star ground (16 AWG). Route apart from L4-P
+2 · Door jamb switches — ladder · GRY 16 AWG → 47 kΩ baseline from the sill splice to the sill ground, so all-doors-shut reads 47k and open means a break (D-368). Splice at the sill → driver jamb switch through 24 kΩ …
+3 · Road speed — pulse generator signal · GRY 16 AWG → Pulse generator on the transmission's speedo-drive boss (DV47, P113), fitted at the meters cutover — signal; 18 in service loop in the tunnel (D-272)
+4 · Road speed — pulse generator supply +12 V · RED 16 AWG → Pulse generator supply — an O10 tap (N73), so the sensor lives and dies with the ICU; sensor ground → rear star, G35 (D-272)
+5 · Future pass-through A · GRY 16 AWG · CAPPED → L4-RDR 1 — the pass-through's rear-end receptacle at the rear node, dust-capped; the run up the hatch goes in with the sensor (D-274)
+6 · Future pass-through B · GRY 16 AWG · CAPPED → L4-RDR 2 — the pass-through's rear-end receptacle at the rear node, dust-capped; the run up the hatch goes in with the sensor (D-274)
+7 · Future pass-through C · GRY 16 AWG · CAPPED → L4-RDR 3 — the pass-through's rear-end receptacle at the rear node, dust-capped; the run up the hatch goes in with the sensor (D-274)
+8 · Courtesy — luggage lamp · RED 16 AWG → Luggage lamp H-11 +; lamp − → lid switch H-12 → rear star ground
+Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; no cavity left empty; the wedgelock snaps in flush; the code L4-S is on the shell.,
+E22.06,E22,6,Pin the L4-S2 plug,"L4-S2 is a DT06-8S, the 8-way plug (kit P101): size-16 socket contacts: P022 for 16-18 AWG, P024 for 14 AWG; wedgelock W8S.
+1 · Mirror motor common (both mirrors) · GRY 16 AWG · CAPPED → Capped at the post, on the DCU's line from L3-S3 (D-360); at the sill node spliced to D1 4 and D2 4 (D-255). Pin function inside the door is confirm - W-332
+2 · Mirror LEFT motor · GRY 16 AWG · CAPPED → Capped at the post, on the DCU's line from L3-S3 (D-360); sill node → D1 5 (D-255). Pin function inside the door is confirm - W-332
+3 · Mirror LEFT clutch coil · GRY 16 AWG · CAPPED → Capped at the post, on the DCU's line from L3-S3 (D-360); sill node → D1 6 (D-255). Pin function inside the door is confirm - W-332
+4 · Mirror RIGHT motor · GRY 16 AWG · CAPPED → Capped at the post, on the DCU's line from L3-S3 (D-360); sill node → D2 5 (D-255). Pin function inside the door is confirm - W-332
+5 · Mirror RIGHT clutch coil · GRY 16 AWG · CAPPED → Capped at the post, on the DCU's line from L3-S3 (D-360); sill node → D2 6 (D-255). Pin function inside the door is confirm - W-332
+6 · sealing plug, size 16
+7 · Kick-down solenoid command (tunnel) · RED 16 AWG → Kick-down solenoid B-33 on the transmission. Shares the RT21 tunnel run with the road-speed pair; the solenoid's other side is its factory ground on the case
+8 · sealing plug, size 16
+Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; 2 sealing plugs fitted; the wedgelock snaps in flush; the code L4-S2 is on the shell.,
+E22.07,E22,7,Build the sill panel,"On the cut panel (P091): four relay sockets (P006) labelled WIN-D-UP, WIN-D-DN, WIN-P-UP, WIN-P-DN; three sealed inline holders (P002) labelled WIN-DRV (F8), WIN-PASS (F9), MIRROR-HEAT (F14); a 3/8 in ground stud (P058) with a star washer (P059); two 8-way receptacle clips (P162) for D1 and D2.
+Keep everything above the lowest 50 mm and let every wire enter from below or with a drip loop.",A panel that fits the measured sill space with every part reachable.,The sill is where water collects: nothing in the lowest 50 mm.
+E22.08,E22,8,Wire the sill panel,"N90 · Receptacle L4-P 3 (O1 motor bus, 12 AWG) → Splice at the sill node → F8 holder in · F9 holder in · 12 AWG RED
+N91 · F8 out → K5 terminal 87 · K6 terminal 87 (splice) · 14 AWG RED
+N92 · F9 out → K7 terminal 87 · K8 terminal 87 (splice) · 14 AWG RED
+N93 · K5 terminal 30 · K6 terminal 30 · K7 terminal 30 · K8 terminal 30 → Receptacles D1 1 · D1 2 · D2 1 · D2 2, one each in order · 14 AWG RED
+N94 · K5-K8 terminals 87a (one each) and 85 (one each) → SILL-GND splice → sill stud (G33) · 14 / 16 AWG BLK
+N95 · Receptacle L4-P 4 (mirror heat, 12 AWG) → F14 holder in; F14 out → receptacles D1 7 · D2 7 (splice) · 12 / 16 AWG RED
+Relay sockets:
+K5 WIN-D-UP · 86 ← L4-M 9 · 85 → sill ground · 30 → D1 1 · 87 ← F8 · 87a → sill ground
+K6 WIN-D-DN · 86 ← L4-M 10 · 85 → sill ground · 30 → D1 2 · 87 ← F8 · 87a → sill ground
+K7 WIN-P-UP · 86 ← L4-M 11 · 85 → sill ground · 30 → D2 1 · 87 ← F9 · 87a → sill ground
+K8 WIN-P-DN · 86 ← L4-M 12 · 85 → sill ground · 30 → D2 2 · 87 ← F9 · 87a → sill ground",Each socket terminal beeps to what its line says; the four 87a and four 85 terminals all beep to the sill stud.,"An idle window relay grounds its motor leg through 87a: 87 is the feed, 30 the motor. Swapping 87 and 87a puts the fuse straight to ground."
+E22.09,E22,9,Pin the D1 and D2 receptacles on the node side and plug the door plugs,"D1 (driver), DT04-8P, size-16 pins (P025 for the 14 AWG, P023 for the 16 AWG), wedgelock W8P:
+1 · Window motor leg A · RED 14 AWG ← K5 30
+2 · Window motor leg B · RED 14 AWG ← K6 30
+3 · sealing plug, size 16
+4 · Mirror motor common · GRY 16 AWG ← L4-S2 1
+5 · Mirror motor · GRY 16 AWG ← L4-S2 2
+6 · Mirror clutch coil · GRY 16 AWG ← L4-S2 3
+7 · Mirror heat · RED 16 AWG ← F14
+8 · Door ground · BLK 16 AWG ← SILL-GND
+D2 (passenger), the same:
+1 · Window motor leg A · RED 14 AWG ← K7 30
+2 · Window motor leg B · RED 14 AWG ← K8 30
+3 · sealing plug, size 16
+4 · Mirror motor common · GRY 16 AWG ← L4-S2 1
+5 · Mirror motor · GRY 16 AWG ← L4-S2 4
+6 · Mirror clutch coil · GRY 16 AWG ← L4-S2 5
+7 · Mirror heat · RED 16 AWG ← F14
+8 · Door ground · BLK 16 AWG ← SILL-GND
+Mirror lines from the L4-S2 wires: cavity 1 is spliced to D1 4 and D2 4 both.
+Then fill a DT06-8S door plug for each with eight sealing plugs (P028) and its wedgelock, and mate it as the cover. The two door plug kits are counted in the door-harness row P166, which is bought later: if they are not in hand, cover each receptacle and raise a note.","Two receptacles pinned 1, 2, 4, 5, 6, 7, 8 with a sealing plug in 3; two all-plug door plugs mated.",
+E22.10,E22,10,Fit the sill relays and fuse,"Four relays (P003) in K5-K8. A 5 A fuse in F14. F8 and F9 holders stay empty, capped.",K5-K8 in; F14 holds 5 A; F8 / F9 empty.,
+E22.11,E22,11,Make the door-jamb switch ends,"New plunger switches (two from the 6-pack P084), one at each B-pillar; the switch body grounds in the jamb.
+Driver: switch terminal ← 1N4148 ← 24 kΩ ← the sill splice (the diode's anode toward the splice). Passenger: switch terminal ← 1N4148 ← 8.2 kΩ ← the sill splice.
+The sill splice is the end of the L4-S 2 wire (GRY). A 47 kΩ from the splice to the sill ground (G37).
+The interior lamp's RY wire: a 1N4007 at each switch, anode on RY, cathode on the same switch terminal.
+Resistor and both diodes sit inline at each switch, soldered and heat-shrunk.",L4-S 2 to sill ground: 47 kΩ with both switches open.,"A diode the wrong way round makes that door invisible to the car, or puts battery voltage on the A6 line: check each on diode test before shrinking."
+E22.12,E22,12,End the leg at the tank,"Fuel pump (Carter P4070): + ← L4-P 2, 12 AWG RED · − → its OWN 12 AWG BLK to the rear star stud (G26).
+Tank sender C-01: Y ← L4-S 1 (GRY) · B → rear star, 16 AWG BLK (G28). Route the sender wire apart from the pump feed.",Pump + and − are both 12 AWG and the − wire goes to the stud alone.,Fuel: the master disconnect is open and there is no spark or heat gun near the tank when this end is connected in the car.
+E22.13,E22,13,End the leg at the rear lamps,"Splices behind the rear trim (sealed butt splices):
+L4-M 1 (14 AWG) → F-07 RG, F-08 RG, F-04 RG (x2), F-14 RG, F-15 RG
+L4-M 2 (14 AWG) → F-07 G, F-08 G
+L4-M 5 → rear combo F-07 terminal GR · L4-M 6 → rear combo F-08 terminal GO
+L4-M 7 → F-07 RW, F-08 RW
+Grounds: each combo lamp B, each licence lamp and rear marker B → rear star, 16 AWG BLK (G29, G30).",Each lamp terminal has its feed; each lamp has its own ground wire to the star.,
+E22.14,E22,14,"End the leg at the hatch, the roof and the quarter","Defog grid G-25: LG ← L4-P 1, 12 AWG · B → rear star, 12 AWG BLK (G25).
+Interior / spot lamp H-06: LY (+) ← L4-M 8; the lamp's own switch: ON → roof-rail ground, 16 AWG BLK (G31); DOOR → RY down the C-pillar and along the sill to both jamb switches.
+Luggage lamp H-11: + ← L4-S 8; − through the lid switch H-12 → rear star (G32).
+Hatch-release solenoid: + ← L4-M 3, ring or spade, through the hinge loop with the tail-lamp wires. Fuel-door solenoid: + ← L4-M 4, behind the driver-side quarter trim.",With the meter: each solenoid's case or − terminal beeps to the body.,Leave slack across the hinge loop with the hatch fully open.
+E22.15,E22,15,End the tunnel run,"Road-speed sensor wires: signal L4-S 3 (GRY) with an 18 in service loop in the tunnel; supply L4-S 4 (RED); the sensor ground → rear star (G35). The sensor is fitted later: cap and label the three ends.
+Kick-down solenoid B-33 on the transmission: + ← L4-S2 7 (RED); it grounds through the case.","Three capped, labelled sensor wires and one solenoid feed.",
+E22.16,E22,16,Fit the branch-end receptacles L4-RDR and L4-HRD,"L4-RDR is a DT04-4P, the 4-way receptacle (kit P129), placed: Rear node. Size-16 pin contacts: p023 for 16-18 awg, p025 for 14 awg; wedgelock W4P.
+1 · Radar pass-through A · GRY 16 AWG · CAPPED ← L4-S 5
+2 · Radar pass-through B · GRY 16 AWG · CAPPED ← L4-S 6
+3 · Radar pass-through C · GRY 16 AWG · CAPPED ← L4-S 7
+4 · sealing plug, size 16
+L4-HRD is a DT04-4P, the 4-way receptacle (kit P129), placed: Hatch, behind the trim. Size-16 pin contacts: p023 for 16-18 awg, p025 for 14 awg; wedgelock W4P.
+1 · Radar pass-through A, hatch end · GRY 16 AWG · CAPPED ← L4-RDR 1
+2 · Radar pass-through B, hatch end · GRY 16 AWG · CAPPED ← L4-RDR 2
+3 · Radar pass-through C, hatch end · GRY 16 AWG · CAPPED ← L4-RDR 3
+4 · sealing plug, size 16
+L4-RDR sits at the rear node; the three-wire hatch run plugs into it and ends at L4-HRD in the hatch, up the hinge loop.
+The hatch run's plug for L4-RDR is a DT06-4S (kit P124) with sockets on the same three wires.
+Push the dust cap on (P036).","Each receptacle pinned, plugged, wedge-locked, dust-capped and carrying its code.",
+E22.17,E22,17,Make the ground returns,"Rear star stud (cargo bin) and sill stud, ring terminals (P079):
+G23 · Rear star stud → chassis · 10 AWG BLK · x1 · 2 ft hand estimate - confirm
+G25 · Defog grid B → rear star · 12 AWG BLK · x1 · 6 ft hand estimate - confirm
+G26 · Fuel pump − → rear star (dedicated) · 12 AWG BLK · x1 · 4 ft hand estimate - confirm
+G28 · Fuel sender B → rear star · 16 AWG BLK · x1 · 5 ft hand estimate - confirm
+G29 · Rear combo lamp B → rear star, each · 16 AWG BLK · x2 · 5 ft hand estimate - confirm
+G30 · Licence + rear marker B → rear star · 16 AWG BLK · x4 · 4 ft hand estimate - confirm
+G31 · Interior lamp switch → roof-rail ground · 16 AWG BLK · x1 · 4 ft hand estimate - confirm
+G32 · Luggage lamp switch → rear star · 16 AWG BLK · x1 · 3 ft hand estimate - confirm
+G33 · Sill stud → chassis · 10 AWG BLK · x1 · 2 ft hand estimate - confirm
+G35 · Road-speed pulse generator → rear star · 16 AWG BLK · x1 · 8 ft hand estimate - confirm
+G37 · A6 door-jamb 47 kΩ baseline → sill ground splice · 16 AWG BLK · x1 · 1 ft hand estimate - confirm
+G40 · Door grounds D1 8 / D2 8 → the sill splice (N94) → sill stud · 16 AWG BLK · x2 · 1 ft hand estimate - confirm
+G41 is the amplifier's, E41.",Every return has a labelled BLK wire with a ring.,Lengths in the table are hand estimates: cut to the measured run.
+E22.18,E22,18,"Test: continuity end to end, every cavity","Meter on the beeper. One probe on the socket in the plug cavity (use a spare pin contact as a probe tip, never a meter probe pushed into a socket), the other on the far end of that wire. Tick each cavity on the housing lists above. Through a resistor the beeper stays silent: read ohms instead.","A beep for every LIVE and CAPPED cavity to its own far end, and to no other.",A meter probe forced into a socket contact spreads it and the pin goes loose: probe with a mating pin.
+E22.19,E22,19,Test: isolation,"Nothing plugged in at either end. Meter on its highest ohms range: each power cavity to its neighbours in the same plug, and every cavity to the ground wires of the leg.",Open everywhere - the node test's mark is more than 1 MΩ (E18) - except where a resistor is fitted on purpose (the ladder and baseline resistors read their own value).,Any other reading is a stray strand or a nicked wire: find it before the leg is bundled.
+E22.20,E22,20,Test: the ladder check,"L4-S 2 to sill ground: BOTH 24k + 1N4148 ∥ 8.2k + 1N4148 ∥ 47k · PASS 8.2k + 1N4148 ∥ 47k · DRV 24k + 1N4148 ∥ 47k · CLOSED 47k.
+The branches carry diodes, so an ohmmeter reads only the 47 kΩ baseline true; check each resistor alone and each diode on diode test, then press each plunger and see the reading fall.",47 kΩ with both doors' switches open; lower with either pressed.,
+E22.21,E22,21,"Tug, bundle, cap",Tug every crimp once more. Tie the bundle every 150 mm with loose ties. Do NOT final-wrap: the cabin looms are wrapped at E35 and the engine-bay looms at E33. Dust caps on every branch-end receptacle; bag the plugs so no dirt gets in the sockets.,"A leg that lies flat on its layout, every end labelled, nothing taped.",
+E23.01,E23,1,Lay the leg out full-scale,"On the board or floor, mark the dash post at one end and each node and device along the measured runs:
+RT01 Dash post → Engine-bay junction, Firewall grommet, passenger side: NOT measured - confirm
+RT02 Engine-bay junction → Coils and igniters B-18 to B-21, along the upper rear housing: NOT measured - confirm
+RT03 Engine-bay junction → Alternator A-08, down the front of the block: NOT measured - confirm
+RT04 Engine-bay junction → Water temp C-02 and oil pressure C-09, rear housing, gauge ports: NOT measured - confirm
+RT05 Engine-bay junction → Starter, K9 and the inhibitor A-06, under the intake: NOT measured - confirm
+RT26 Engine-bay junction → Master cylinder, brake-fluid switch, along the firewall to the reservoir: NOT measured - confirm
+A run marked NOT measured has no cut length yet: that wire waits until C1's M-2 has measured it and G13 has derived the length. Do not cut from the 3D-model guess.
+The leg's pin ladder and route map are in the app's Diagrams.","Every run has a measured length written beside it on the board, or is marked WAIT.","A wire cut short cannot be stretched: no measured route, no cut."
+E23.02,E23,2,Cut and label every wire,"Cut each wire to 1.5 x its run (add the runs joined by +). Print and wrap both labels before the next wire is cut.
+RUN RT01 + RT02:
+  L1-P 1 Ignition feed — coils and igniters · RED 12 AWG
+  L1-S1 6 Tachometer pulse — SHIELDED · shielded cable, 16 AWG core (P074)
+RUN RT01 + RT03:
+  L1-S1 2 Alternator excitation (field feed) · RED 16 AWG
+  L1-S2 8 Alternator charge-lamp sense · GRY 16 AWG
+RUN RT01 + RT04:
+  L1-S1 3 Water temperature sender · GRY 16 AWG
+  L1-S1 4 Oil pressure sender · GRY 16 AWG
+RUN RT01 + RT05:
+  L1-S1 1 Start relay K9 coil · RED 16 AWG
+  L1-S1 11 Inhibitor switch — P/N contact (crank interlock) · GRY 16 AWG
+  L1-S2 7 Inhibitor switch — R contact (reverse lamps) · GRY 16 AWG
+RUN RT01 + RT26:
+  L1-S2 1 Brake fluid level switch · GRY 16 AWG
+K9's two 10 AWG RED contact wires (F17 → K9 30, K9 87 → starter S) are cables C08 / C09: their lengths are hand estimates - cut to the measured run along RT05.","One labelled wire per line of the list, laid along its run on the board.",
+E23.03,E23,3,Pin the L1-P plug,"L1-P is a DTP06-4S, the 4-way plug (kit P131): size-12 socket contacts (P026); wedgelock WP-4S.
+1 · Ignition feed — coils and igniters · RED 12 AWG → Splice at the coil bracket → BW of coil T, coil L, igniter T, igniter L
+2 · sealing plug, size 12, in this plug - RESERVED: LS swap reserve — ECU + injectors is pinned on the receptacle only
+3 · sealing plug, size 12, in this plug - RESERVED: LS swap reserve — cooling fan is pinned on the receptacle only
+4 · sealing plug, size 12
+Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; 3 sealing plugs fitted; the wedgelock snaps in flush; the code L1-P is on the shell.,"Cavities 2, 3 and 4 take size-12 sealing plugs (P029), not the size-16 ones."
+E23.04,E23,4,Pin the L1-S1 plug,"L1-S1 is a DT06-12S, the 12-way plug (kit P115): size-16 socket contacts: P022 for 16-18 AWG, P024 for 14 AWG; wedgelock W12S.
+1 · Start relay K9 coil · RED 16 AWG → K9 terminal 86 (inner fender)
+2 · Alternator excitation (field feed) · RED 16 AWG → Alternator plug A-08, terminal BW
+3 · Water temperature sender · GRY 16 AWG → Sender C-02, spade — factory wire YW
+4 · Oil pressure sender · GRY 16 AWG → Sender C-09, spade — factory wire BrY
+5 · sealing plug, size 16
+6 · Tachometer pulse — SHIELDED · shielded cable, 16 AWG core (P074) → Coil T (B-18) negative terminal — factory wire YG. Shield grounded at the dash node end only (N48, colours): the engine end of the shield is cut back and insulated, so …
+7 · sealing plug, size 16
+8 · sealing plug, size 16
+9 · sealing plug, size 16
+10 · sealing plug, size 16
+11 · Inhibitor switch — P/N contact (crank interlock) · GRY 16 AWG → Inhibitor A-06: 8.2 kΩ in the lead to terminal BY; terminal BW → block ground. The 47 kΩ baseline from this lead to the block ground at the switch (D-487: it sat at the …
+12 · sealing plug, size 16
+Cavity 6 is the shielded cable's core: strip the jacket back, fold the drain and shield back out of the way, crimp the core only.
+How the drain is bonded at this plug is not in the record: leave 150 mm of drain here, insulated, and raise a note before trimming it.
+Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; 6 sealing plugs fitted; the wedgelock snaps in flush; the code L1-S1 is on the shell.,A shield strand in the crimp shorts the tach to ground.
+E23.05,E23,5,Pin the L1-S2 plug,"L1-S2 is a DT06-12S, the 12-way plug (kit P115): size-16 socket contacts: P022 for 16-18 AWG, P024 for 14 AWG; wedgelock W12S.
+1 · Brake fluid level switch · GRY 16 AWG → Reservoir switch C-05: terminal BR; terminal B → block ground
+2 · sealing plug, size 16
+3 · sealing plug, size 16
+4 · sealing plug, size 16
+5 · sealing plug, size 16
+6 · sealing plug, size 16
+7 · Inhibitor switch — R contact (reverse lamps) · GRY 16 AWG → Inhibitor A-06: 8.2 kΩ in the lead to terminal GY; terminal RW → block ground. The 47 kΩ baseline from this lead to the block ground at the switch (D-487)
+8 · Alternator charge-lamp sense · GRY 16 AWG → Alternator plug A-08, terminal WB
+9 · sealing plug, size 16, in this plug - RESERVED: Phase-2 sensor supply — +12 V switched is pinned on the receptacle only
+10 · sealing plug, size 16
+11 · sealing plug, size 16, in this plug - RESERVED: Phase-2 sensor signal spare is pinned on the receptacle only
+12 · sealing plug, size 16
+Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; 9 sealing plugs fitted; the wedgelock snaps in flush; the code L1-S2 is on the shell.,
+E23.06,E23,6,Make the coil branch,"L1-P 1 (12 AWG RED trunk) → a sealed splice at the coil bracket → 14 AWG branches to terminal BW of coil T (B-18), coil L (B-19), igniter T (B-20) and igniter L (B-21).
+The suppression capacitor (P135): its lead on the same splice, its ring-lug case under a bracket bolt.
+The YL (leading pulse) wire is not used.",L1-P 1 beeps to all four BW ends and to the capacitor lead.,"This is the ignition feed: every joint here is a sealed crimp, tugged."
+E23.07,E23,7,End the tach cable at the coil,"Core → coil T (B-18) negative terminal, factory wire YG.
+At this end cut the shield and drain back and seal the end with adhesive heat-shrink so no strand shows.
+Lay the cable so it crosses the coil and igniter leads at 90 degrees and is never within 50 mm parallel to one.",Core to shield reads open; the core beeps end to end.,
+E23.08,E23,8,Wire the K9 socket,"Weatherproof 5-pin socket (P005):
+86 ← L1-S1 1 (16 AWG RED)
+85 → block ground, 16 AWG BLK (G02)
+30 ← F17, 10 AWG RED (from the MIDI holder at the starter B+ stud)
+87 → the starter S terminal (factory wire BW), 10 AWG RED
+Confirm the socket's terminals accept 10 AWG before crimping.","Four wires in the socket, each tugged; the relay (P004) clicks into it.",The 30 wire is live from the battery whenever the master disconnect is closed: its far end stays insulated until E27.
+E23.09,E23,9,End the leg at the alternator and the senders,"Alternator plug A-08: BW ← L1-S1 2 (RED) · WB ← L1-S2 8 (GRY).
+Water-temp sender C-02: spade ← L1-S1 3 (GRY). Oil-pressure sender C-09: spade ← L1-S1 4 (GRY). Both ground through their threads.
+Brake-fluid switch C-05: BR ← L1-S2 1 (GRY) · B → block ground, 16 AWG BLK (G04).",Each wire labelled with its device and terminal.,
+E23.10,E23,10,End the leg at the inhibitor switch,"Switch A-06, 4-pin, on the transmission:
+BY ← 8.2 kΩ ← L1-S1 11 (GRY) · BW → block ground, 16 AWG BLK
+GY ← 8.2 kΩ ← L1-S2 7 (GRY) · RW → block ground, 16 AWG BLK
+A 47 kΩ baseline from each GRY lead to the block ground wire, at the switch.
+Resistors are the E7 sub-assemblies, soldered and heat-shrunk.",Each GRY lead reads 47 kΩ to its ground wire with the contact open.,
+E23.11,E23,11,Make the ground returns,"To the engine block, ring terminals (P079):
+G02 · K9 85 → block · 16 AWG BLK · x1 · 3 ft hand estimate - confirm
+G03 · Inhibitor BW and RW → block · 16 AWG BLK · x2 · 3 ft hand estimate - confirm
+G04 · Brake fluid switch B → block · 16 AWG BLK · x1 · 3 ft hand estimate - confirm
+G39 is the swap's fan return: not this build.",Every return has a labelled BLK wire with a ring.,Lengths in the table are hand estimates: cut to the measured run.
+E23.12,E23,12,"Test: continuity end to end, every cavity","Meter on the beeper. One probe on the socket in the plug cavity (use a spare pin contact as a probe tip, never a meter probe pushed into a socket), the other on the far end of that wire. Tick each cavity on the housing lists above. Through a resistor the beeper stays silent: read ohms instead.","A beep for every LIVE and CAPPED cavity to its own far end, and to no other. Tach core: open to its shield.",A meter probe forced into a socket contact spreads it and the pin goes loose: probe with a mating pin.
+E23.13,E23,13,Test: isolation,"Nothing plugged in at either end. Meter on its highest ohms range: each power cavity to its neighbours in the same plug, and every cavity to the ground wires of the leg.",Open everywhere - the node test's mark is more than 1 MΩ (E18) - except where a resistor is fitted on purpose (the ladder and baseline resistors read their own value).,Any other reading is a stray strand or a nicked wire: find it before the leg is bundled.
+E23.14,E23,14,Test: the ladder check,"L1-S1 11 to its block-ground wire: CRANK_OK 8.2k ∥ 47k · IDLE 47k.
+L1-S2 7 to its block-ground wire: REVERSE 8.2k ∥ 47k · IDLE 47k.
+With the switch on the leg, move the lever through P, R, N.",47 kΩ idle; about 6.98 kΩ with the contact closed (8.2 kΩ in parallel with 47 kΩ).,
+E23.15,E23,15,"Tug, bundle, cap",Tug every crimp once more. Tie the bundle every 150 mm with loose ties. Do NOT final-wrap: the cabin looms are wrapped at E35 and the engine-bay looms at E33. Dust caps on every branch-end receptacle; bag the plugs so no dirt gets in the sockets.,"A leg that lies flat on its layout, every end labelled, nothing taped.",
+F3.01,F3,1,Check what arrived against the BOM,"The ICU carrier BOM csv, line by line, against the bags. Boards: look at both sides for scratches and check the outline against the DT13 receptacles.",Every line present.,
+F3.02,F3,2,Run the host suites first,"In a terminal on the Mac: go to the tests folder inside the electrical design folder (02-PROJECTS/01-electrical/00-design/tests) and run ./run.sh. It runs every host suite, checks the board sheets against the record and compiles every sketch for its target.","Exit code 0, every suite green.",Never flash a Teensy on a red suite.
+F3.03,F3,3,"Solder the board, power parts first","Input protection and the 5 V buck first (the SS34 diodes, the SMBJ33A, the buck and its inductor and capacitors), then stop and test (next step).
+Then the small parts by height: resistors, capacitors, the BAT54S clamps, the CAN transceiver, the FETs.
+Then the sockets and headers: the Teensy socket, the XIAO and IMU sockets, the display header, the two DT13 receptacles last.
+R18 has no value yet: leave it out until a bench result picks one of the three bought.",Every joint wetted; no bridges under the magnifier.,"The buck is a 2 x 3 mm leadless package: it needs hot air or a hot plate, and its orientation mark matched to the board."
+F3.04,F3,4,"Power the bare board, no Teensy","Bench supply at 12 V with its current limit set low (a few hundred mA - a bench setting, not a record figure). + to DP-ICU-A 1, − to DP-ICU-A 3.
+Measure at the Teensy socket's VIN pad.","5 V on VIN; the supply shows a few mA, not the limit.","If the supply hits its limit, switch off at once: something is bridged or reversed."
+F3.05,F3,5,Fit the PSRAM and socket the Teensy,"Solder the two 8 MB PSRAM chips (P108) to the pads under the Teensy 4.1, then press the Teensy into its socket with the USB end where the board marks pad 1.","Teensy seated square, USB end at the marked end.",A Teensy in backwards puts 5 V on a ground pin.
+F3.06,F3,6,Flash the ICU firmware,"Arduino IDE (Teensyduino) on the Mac: Board Teensy 4.1, CPU 600 MHz, library ACAN_T4 (not FlexCAN_T4). Open the sketch, plug the Teensy in by USB, Upload.
+The sketch is icu.ino in the display unit's firmware folder. Do not put the simulator sources in the sketch folder.",The serial monitor prints the firmware version at boot.,
+F3.07,F3,7,Flash the radio,"The icu_radio sketch for the XIAO ESP32C3, over its own USB. Then seat the XIAO in its socket.",It uploads; the ICU later reports battery data from it.,Never write to the BMS and never touch its FFE7 or DFU service.
+F3.08,F3,8,Build the bench bus,"A second Teensy running pmu_sim and a third running tach_simulator (P142).
+pmu_sim needs an SN65HVD230 module (P143) with its headers soldered; the carrier has its own transceiver.
+One twisted pair between them: CAN H to DP-ICU-A 4, CAN L to DP-ICU-A 5, with a 120 Ω resistor (P070) across the pair at each end.",The ICU's diagnostics page shows frames arriving.,
+F3.09,F3,9,Connect the BT817 eval board,"Six signal wires from the carrier's display header to the eval board: CS 10, MOSI 11, MISO 12, SCK 13, PD 9, INT 24, plus power and ground as the eval board's sheet shows.",The eval board's screen lights and draws the DRIVE page.,"The eval board's own supply pins are on its datasheet, not in the record: read it before applying power."
+F3.10,F3,10,Feed it signals,"A potentiometer from DP-ICU-B 1, then 2, then 3 to ground stands in for the water-temp, oil-pressure and fuel senders.
+tach_simulator's pulse output into DP-ICU-B 4.
+12 V onto DP-ICU-B 10, 11 and 12 in turn for the left turn, right turn and high-beam tell-tales.
+DP-ICU-B 6 to ground for the brake warning.
+12 V on DP-ICU-A 2 for the illumination reference.","Each gauge follows its input; each tell-tale lights with its line; BRAKE shows with cavity 6 low; the brightness of the display follows the voltage on cavity 2, its dimming reference.",
+F3.11,F3,11,Prove the failure isolation,Unplug the PMU simulator's power.,"Volts blanks; rpm, temperature, pressure and fuel carry on.","If everything blanks, stop and raise a note: the gauges must not depend on the bus."
+F3.12,F3,12,Prove the backlight switch,12 V through a 5 A fuse onto DP-ICU-A 6. Watch the backlight output switch with the firmware.,"Backlight on with the unit awake, off when it is told off.",
+F3.13,F3,13,Bring up the real bar panel,"Only after M-1 has sized the aperture and the panel (P118) and its bridge (P119) are in hand.
+Connect chain (ii) and run the timing check V-084: pixel clock and sync polarity against the panel.","A stable full-width picture, no tearing or rolling.",Until then the eval board is the display: do not buy the glass early.
+F3.14,F3,14,Prove the odometer persists,"Run tach_simulator's speed channel into DP-ICU-B 8 until the odometer moves. Note the figure. Power off, wait, power on. Then check the card (P151) holds it too.","The same odometer figure after the power cycle, and on the card.",
+F3.15,F3,15,Zero the IMU and check the battery path,Board flat and still: zero the IMU. With the battery in range: the four cell counts summed agree with the advertised pack millivolts.,IMU reads zero at rest; cells sum to the pack figure.,
+F3.16,F3,16,Record it,Note the version and what was proved in the app.,A note the agent can turn into a bring-up log row.,
+F5.01,F5,1,Confirm the layout is final,H-002 is done in the app and the agent reports the board redrawn to V-102's measurement with its design-rule check at zero (CK26).,"A final board, not the provisional outline.",
+F5.02,F5,2,Get the final fab packages,"Ask the agent for the final packages: the DCU carrier, the panel board and the upper connector board - each a gerbers zip and a BOM csv.",Three zips and three BOMs.,
+F5.03,F5,3,Order the boards,"Upload each zip: 2 layers, 1.6 mm, 1 oz copper, the smallest batch. Check each reported outline against the board's size.","Three boards in one order, previews matching the board pictures.",
+F5.04,F5,4,Order the parts,"From each BOM csv, only what the bench order did not leave in hand.
+The lines: transceivers (P145), the two bucks (P146), protection (P147), Teensy socket headers (P148), the comfort stage (P149), the DT13 receptacles (P150, P153, P194), the ribbon and its headers (P157), the inductor (P177), the small headers (P178), the ribbon-line parts (P193), the panel's keys, encoders, lights and driver (P155, P173, P192), the inside leads (P196).
+Check every line the BOM marks confirm on the distributor's page; check Q3's voltage rating.",An order whose lines tick off against the BOMs.,
+F5.05,F5,5,"Solder the carrier, power parts first","Input protection and the logic buck first, then stop and test (next step).
+Then the small parts by height, the power switches and the bridge driver, then sockets, headers and the DT13 receptacles last.
+Leave out every part the BOM marks not fitted.",Every joint wetted; no bridges under the magnifier.,The power switches have exposed pads underneath: they need hot air or a hot plate.
+F5.06,F5,6,"Power the bare board, no Teensy","Bench supply 12 V with its current limit set low (a few hundred mA - a bench setting): + to DP-DCU 1, − to DP-DCU 3.
+Measure the Teensy socket's VIN pad.",5 V on VIN; a few mA from the supply.,Switch off at once if the supply hits its limit.
+F5.07,F5,7,Check the servo rail,"12 V, the same low limit, + to DP-DCU-C 5 and − to DP-DCU-C 6. Measure the +5 V pin of a servo header.",5 V on the servo rail.,
+F5.08,F5,8,Socket the Teensy and note it,"Press a Teensy 4.1 (P142) into its socket, USB end at the marked end. Note in the app that the board is built.",Ready for F6.,
+F6.01,F6,1,Run the host suites,"In a terminal on the Mac: go to the tests folder inside the electrical design folder (02-PROJECTS/01-electrical/00-design/tests) and run ./run.sh. It runs every host suite, checks the board sheets against the record and compiles every sketch for its target.",Exit code 0.,Never flash on a red suite.
+F6.02,F6,2,Flash the DCU firmware,"Arduino IDE (Teensyduino) on the Mac: Board Teensy 4.1, CPU 600 MHz, library ACAN_T4 (not FlexCAN_T4). Open the sketch, plug the Teensy in by USB, Upload.
+The sketch is dcu.ino in the control unit's firmware folder.",The serial monitor prints the DCU firmware version at boot.,
+F6.03,F6,3,Connect power and the bench bus,"Bench supply 12 V: + through a 3 A fuse (F22's rating) to DP-DCU 1, − to DP-DCU 3.
+The PMU simulator Teensy with its transceiver: CAN H to DP-DCU 4, CAN L to DP-DCU 5, 120 Ω (P070) across the pair at each end.
+The panel board on its 26-way ribbon; the upper connector board on its inside leads.",The DCU boots; frames show on the simulator.,
+F6.04,F6,4,Prove every output is off at reset,"A lamp from each of DP-DCU-B 1, 2, 3, 4, 9 and DP-DCU 6 to ground; a lamp from +12 V to each of DP-DCU-C 1, 2, 3, 4 and DP-DCU-B 10, 11.
+12 V to DP-DCU-C 5, ground to DP-DCU-C 6, 7, 8.
+Power up; power-cycle three times; then upload the firmware once more with the lamps connected, which restarts the Teensy.",No lamp lights or flickers at any moment.,Any flicker is a fault to fix before this unit goes near the car.
+F6.05,F6,5,Read every key,"Press each panel key in turn: fan mode, recirculate, rear defog, mirror defog, the two window switches up and down, and the left plate's hatch and fuel-door keys if the plate is connected (DP-DCU-E).","Each press and release registers once, on its own key.",
+F6.06,F6,6,Read the encoders and the thumbstick,Turn the centre knob and press it; turn each seat knob. Move the mirror stick in both axes and press it. Set the stick's centre and dead-band.,Each click counts once in the right direction; the stick rests at centre and reads both ways on both axes.,
+F6.07,F6,7,Drive the window commands,"Hold each window switch: watch the lamp on DP-DCU-B 1, 2, 3, 4 in turn. Try up and down of one side together.",One lamp per command; never both lamps of one side at once.,
+F6.08,F6,8,Drive the release selects,"A relay coil from +12 V to DP-DCU-B 10, then 11. Set the PMU simulator's key to OFF. Press the hatch key, then the fuel-door key.
+Then set the key to ON and press again.","Key OFF: the relay clicks and drops out again after about 1.5 s, key held or not. Key ON: nothing - the release is refused.",Never both selects at once.
+F6.09,F6,9,Drive the mirror outputs,"Lamps between DP-DCU-B 5 and 6 (left motor) and 5 and 7 (right motor), and from +12 V to 8 (clutch). Move the stick each way, then press to change sides.",A lamp follows the stick on the selected side only.,
+F6.10,F6,10,Drive the comfort outputs,"Turn each seat knob to heat, then to cool: lamps on DP-DCU-C 1-4.
+Press the rear defog key, then the mirror-defog key: note which lights the mirror-heat lamp on DP-DCU-B 9 (the channel row says mirror heat follows the defogger, D-442; the panel has had its own mirror-defog key since D-492).
+Zero the comfort current reading with everything off, then check it with one known load.",Heat and cool of one seat never light together; the mirror-heat lamp lights from a defog key; the current reading is zero at no load.,
+F6.11,F6,11,Check the wake request,"Let the unit go to sleep, then press a panel key. Lamp or meter on DP-DCU 6.",DP-DCU 6 goes to about 12 V on the press.,
+F6.12,F6,12,"Check blower duty, servos and temperatures","Meter or scope on DP-DCU-D 6 against 7: duty follows the fan setting and is zero through a reset.
+With a servo in hand on DP-DCU-D 1, 4, 5: it moves to each end; set the endpoints. One servo at a time.
+A 10 kΩ NTC (P154) on DP-DCU-D 8 / 9 and one on DP-DCU 2 to ground: compare with the thermometer.",Duty 0-100 %; the servo holds each end without buzzing; both temperatures within a degree or two of the thermometer - confirm.,
+F6.13,F6,13,Measure the sleeping current,"Meter in series in the DP-DCU 1 feed, 10 A range first then mA, unit asleep.",About 10 mA - confirm; write down what it is.,
+F6.14,F6,14,Record it,"Note the version, the sleeping current and any fault in the app.",A note the agent can turn into a bring-up log row. E26 plugs the unit into the car.,
+F11.01,F11,1,Lay out the parts and zero the calipers,"Close the jaws, zero, and check on something known (a drill shank). One part at a time on a white sheet; photograph each reading with the calipers in shot.",Calipers read 0.00 closed.,
+F11.02,F11,2,Measure the DT13-06PA and DT13-12PA (P122),"Pin pitch along the row and between rows (expect 4.445 and 6.35 mm).
+Pin diameter (for the hole size).
+Flange face to the centre of the pin field (expect 18.675 mm).
+The three flange holes: positions and diameter. On the 12-way, confirm the centre hole exists.
+How far the housing stands off the board, and which corner cavity 1 is (read the moulded number).
+On the 6-way: the housing's offset from its pin field (TE's model shows 1.54 mm).","Each within 0.2 mm of the figure, or written down as found.",
+F11.03,F11,3,"Measure the Teensy 4.1 on its headers (P142, P110)","Row-to-row spacing (expect 15.24 mm).
+Height of the Teensy's underside above the carrier when seated in the female headers - the PSRAM chips go under there.
+Which pads the socket reaches: is VBAT one of them?",Row spacing within 0.2 mm; a clearance figure in mm; VBAT yes or no.,
+F11.04,F11,4,Measure the XIAO ESP32C3 (P116) and the IMU breakout (P109),"XIAO: castellation row spacing (expect 15.24 mm), board outline, and how far the u.FL antenna connector overhangs.
+IMU breakout: the two header rows (one of 6, one of 5 holes), their spacing and the outline.",Readings written down.,
+F11.05,F11,5,Measure the BT817 eval board's header (P117),"The header the carrier's display header J4 mates (CN8 on the ME817EV): pitch, pin count, keying, and its position on the eval board.",Readings written down.,
+F11.06,F11,6,Hold the outline against the binnacle space,"From C4's numbers: the 110 x 80 mm outline, plus the enclosure wall and the mated plugs, inside the measured length, width and depth.","It fits with room for the wall and the plugs, or the note says by how much it does not.",
+F11.07,F11,7,Enter the readings and hand over,"Every reading as a note in the app. The agent then corrects the footprints and models, re-runs the design-rule check to zero, re-exports the 3D model of each board and re-runs the enclosure fit check.","The agent's report: design-rule check zero, enclosure fit check clear.",
+F12.01,F12,1,Confirm the two gates,F11 ticked with the agent's clean report; F1's printed enclosure closed around a bare board (CK27).,Both done.,Ordering before the fit test risks a second re-spin.
+F12.02,F12,2,Get the final fab package,"Ask the agent (a plan run) for the final ICU carrier fab package: the gerbers zip and the BOM csv, exported after F11's changes.",A zip and a BOM whose revision is later than rev A.,
+F12.03,F12,3,Upload and set the options,"At the board house: upload the zip. 2 layers, 1.6 mm, 1 oz copper, quantity the smallest batch (five). Check the outline size it reports against the board's size after F11.",The preview shows the board's shape with the two DT13 footprints on one edge.,
+F12.04,F12,4,Check the BOM for parts not already in hand,Against what Y18 bought for the bench revision: order only what the final board changed or used up. Every line marked confirm in the BOM is checked on the distributor's page before buying.,"A short list, or nothing.",
+F12.05,F12,5,Order and record,"Pay. Note the order number, count and price in the app.",Order confirmed.,

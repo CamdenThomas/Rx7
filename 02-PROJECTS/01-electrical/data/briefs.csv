@@ -1,1 +1,348 @@
 id,goal,where,time,tools,parts,before,know,done_when,if_not,record
+E13,"The dash node is laid out with the real parts, proved in cardboard in the car, and its carrier panels are cut, deburred and painted.","bench, then the driver footwell and under the dash for the mock-up",a day - confirm,"Cardboard, marker, craft knife, tape
+Steel rule and square
+Drill and bits, step bit
+Jigsaw or hacksaw, files, deburring tool
+Centre punch
+Phone camera",P090 P093 P060 P007 P001 P189 P002 P006 P068 P134 P030 P162 P126 P127 P128 P129 P130 P132 P133,"E12 - the car starts and charges on the new backbone
+C2 - the panel stock (P090) and paint (P093) are bought
+C1's measurements in hand: the M-1 dash envelope and the wideband gauge's hiding place
+The interior is still out (S1), so the footwell and dash rail are open
+Master disconnect open while you reach around the temporary distribution post: the 2 AWG feed is live there (E10, E4)","The dash node is everything that hangs off the PMU in one place: the PMU-24, the always-hot busbar, the ground bus, fuse blocks A and B, the inline fuse holders, nine relay sockets, the wake strip, a perfboard and the wideband gauge [work E13]
+Nine relay sockets at the node, not seven: K1 K2 K3 K4 K11 K12 K13 and the two seat relays K14 K15 added by D-469 [relays K14, K15]
+Sixteen receptacles sit at the dash post: L1-P DTP04-4P, L1-S1 DT04-12P, L1-S2 DT04-12P, L2-P DTP04-4P, L2-M DT04-8P, L2-S DT04-6P, L3-P DTP04-2P, L3-M DT04-2P, L3-S1 DT04-12P, L3-S2 DT04-12P, L3-S3 DT04-8P, L4-P DTP04-4P, L4-M DT04-12P, L4-S DT04-8P, L4-S2 DT04-8P, L2-R DT04-4P [housings]
+Leave panel room beside L1-S1 / L1-S2 for four more DT04-12P receptacles for the engine swap - five if engine block 02.16 was answered (a) [work E13, engine D-443]
+Water runs down from the cowl seam and the windscreen corners: every wire enters the PMU and the node from below or with a drip loop, nothing mounts in the lowest 50 mm of the footwell, and the PMU 39-way faces down or sideways, never up [rules water-ingress]
+What CK04 found (where the water goes with the dash out) moves a bracket now for free [checks CK04]
+The PMU stands on three M6 x 12 mm stand-offs for airflow [parts P060]
+The busbar is the Blue Sea 2300, 10-gang 150 A with cover: one always-hot bar and one ground bus, both covered [parts P007]
+The DCU tail must reach the centre stack: the node has to sit close enough along RT11, which is measured at M-2 [routes RT11, housings DP-DCU-B]
+Receptacle clips: 1027-003-1200 fits the 2, 4, 6 and 12-way and every DTP; the 8-way receptacles take the 8-way clip - four of them are at the post (L2-M, L3-S3, L4-S, L4-S2), D1 and D2 are at the sill; both use an 11 mm hole - confirm on the clip in hand [parts P030, P162]
+Nothing here is measured by anyone but you: the cardboard in the car is the proof, not the drawing [R11]","Every part has a place on painted panels that passed the cardboard mock-up in the car: the PMU lever swings its full arc, there is 60 mm clear behind every receptacle, both fuse blocks can be reached, and nothing sits in the lowest 50 mm.","If it does not all fit inside the M-1 space, do not thin the clearances: split it across more panels or move a panel, mock it again, and raise a note in the app with a photo. If RT11 is long for the DCU tail, raise a note before cutting metal.",Tick the row. Add a note with the photos of the cardboard mock-up in the car and the finished panels.
+E14,Every part of the dash node is mounted on its panel and every relay socket and fuse position carries its label.,bench,half a day - confirm,"Screwdrivers and small sockets
+Torque wrench 1/4 in drive, 2-20 N·m (P046)
+Wire strippers and flush cutters (P043)
+Label printer with the node labels from E6 (P041)
+Paint pen (P082)",P060 P007 P001 P189 P190 P191 P002 P006 P068 P134 P030 P162 P075,"E13 - the panels are cut and painted
+E6 - the node labels are printed
+Nothing is connected to the car: this is bench work","The PMU stands on three M6 stand-offs [work E14, parts P060]
+Five 40 A-class MAXI holders (P189): F30 feeds block A, F31 feeds K11 terminal 30, F32 sits at K11 terminal 87 and feeds block B - 40 A fuses (P190); F35 and F36 feed the seat relays K14 / K15 - 25 A fuses (P191) [fuses F30, F31, F32, F35, F36, D-467, D-469]
+The fuse sits at the bar so the only wire protected by the Class-T alone is a short stub: each busbar-fed inline holder (F12, F22, F23) has its 14 AWG lead cut to about 50 mm, never more than 180 mm [node_conductors N75, N87]
+Block A is on the busbar: position 1 F2, 2 F3, 3 F19, 4 F13 (no fuse). Block B is behind K11: position 1 F1, 2 F5 (no fuse) [fuses]
+The 8-position strip is full: seven wake inputs and the common rail [parts P068]
+Labels come from the label columns: K1 POPUP-L · K2 POPUP-R · K3 HATCH-REL · K4 FUEL-REL · K11 HEAD-UNIT · K12 WASHER · K13 FUEL-PUMP · K14 SEAT-D · K15 SEAT-P [relays]
+Fuse labels at the node: F1 HEAD-UNIT · F2 DIAG · F3 SWITCH · F12 INTERIOR · F13 — · F15 ALT-EXCITE · F16 DISPLAY · F19 COURTESY · F20 WIDEBAND · F21 KICK-DOWN · F22 DCU-CONST · F23 WAKE · F5 SENSOR-2 · F30 BLOCK-A-FEED · F31 K11-FEED · F32 BLOCK-B-FEED · F33 RELEASE · F35 SEAT-D · F36 SEAT-P · F37 POPUP-CMD [fuses]
+Torque figures for the busbar studs, the PMU stud and the relay socket screws are read off the makers' sheets at D1 - none is in the record yet - confirm [rules torque]","Every part is fixed and does not move when pushed, every relay socket and every fuse position has its printed label beside it (the empty ones too), and no fuse or relay is fitted yet.","A part that fouls another: stop, go back to the cardboard (E13) rather than bending a bracket. A missing label: print it from the relays / fuses label column, never hand-write it.",Tick the row.
+E15,"The wake strip carries its seven diodes and bleed resistor, the two wake sense stages are built on the perfboard to the wake_stages table, the two bias resistors are fitted, and the bench check CK12 is read.",bench,half a day - confirm,"Soldering iron and solder (P044)
+Flush cutters, needle-nose pliers (P043)
+Multimeter: ohms, diode test, DC volts (P045)
+Heat gun (P042)
+A 12 V bench supply or the battery through a fused lead for CK12",P071 P072 P069 P158 P160 P161 P134 P068 P011 P019 P008,"E14 - the strip and perfboard are mounted
+A10 - the stage values are in the record (they are: the wake_stages table)
+Eye protection while soldering and clipping leads","The PMU wakes when pin 7 (+12V SW) goes high. Seven sources are OR-ed onto it through one diode each, so no source can feed another [pins 7]
+Strip inputs: 1 ACC (L3-S1 12) · 2 RUN (L3-S2 1) · 3 door stage · 4 horn / hazard / wink stage · 5 O22 keep-alive (pin 8) · 6 brake plunger (L3-S1 7) · 7 DCU wake request (DP-DCU 6) [node_conductors N33-N37, N63, N76]
+Seven 1N5819, band (cathode) toward the common rail; the rail goes to pin 7; 10 kΩ from the rail to the GND bus [node_conductors N38, work E15]
+The two sense stages are a comparator design now: one LM2903 DIP-8 serves both, U1A the door line (A6, pin 18), U1B the horn / hazard / wink line (A8, pin 19). The work row still says NPN sense stages: the table is newer and wins [wake_stages WS15, WS25]
+Both stages are fed from F23, 3 A, constant from the busbar [fuses F23, node_conductors N87]
+The base clamps are 1N4148, never a Schottky: a 1N5819 leaks hot and loses the pulse at 85 °C [wake_stages WS19]
+The edge capacitors are 2.2 µF film (P158); the value is still to be confirmed against the PMU boot time CK12 reads [wake_stages WS17]
+The threshold divider resistors WS14 / WS24 are 1 % parts [wake_stages WS14]
+Bias: 100 kΩ from pin 15 (+5 V) to pin 35 (A15) and 100 kΩ from pin 15 to pin 22 (A16), so a broken wire reads 0, not OFF [node_conductors N39]
+At rest the door and A8 lines sit at 0.166 x the F23 voltage (about 1.99 V at 12.0 V); the comparator threshold is 0.115 x [wake_stages WS12, WS13]
+The pin-out of the LM2903 and the 2N3904 is not in the record: read each off its datasheet before soldering [gap]","Seven diodes read forward toward the rail and blocked the other way; every resistor measured before fitting; CK12 read on the bench: at rest no wake, any door or A8 switch wakes, the three unknowns (i)-(iii) written down.","A stage that does not wake: check the comparator supply (F23) and the divider node (0.115 x F23), then the 2.2 µF and the follower. If the unpowered PMU pin reads under 200 kΩ to ground at CK12 (i), stop: WS12 may have to drop - raise a note with the reading. Do not put the node in the car on a failing CK12.","Tick the row. Enter the CK12 readings as a note: (i) ohms pin 18 and pin 19 to ground with the PMU unpowered, (ii) the lowest pin 7 voltage that switches the PMU on and its current at 12 V, (iii) seconds from pin 7 high to O22 on."
+E16,"All 39 cavities of the PMU connector are terminated, locked and pull-tested, each on 18 in of labelled wire.",bench,half a day - confirm,"Open-barrel ratchet crimper, 1.5 mm and 2.8 mm dies (P039)
+Wire strippers and flush cutters (P043)
+Paint pen (P082)
+Label printer (P041)
+Heat gun for the label shrink (P042)
+Good light and a magnifier",P015 P012 P009 P010 P011 P019 P020 P021 P017 P070 P075 P076,"E15 - the wake parts are built
+CK24 read at M-1: the terminal part numbers on the spare PMU housings (1.5 mm and 2.8 mm) and which terminal pin 15 takes
+Practice crimps pulled on scrap with this crimper and these terminals
+The connector is off the PMU and nothing is powered
+Eye protection","The PMU-24 has one 39-way connector plus the +12 V stud. Every one of the 39 positions is used [rules spare-capacity]
+Three cavity sizes: 11 large (pins 1, 2, 12, 13, 14, 25, 26, 27, 28, 38, 39 - the 2.8 mm die), 27 small (the 1.5 mm die) and one medium, pin 15, whose terminal and die the record does not name - confirm from CK24 [parts P039, checks CK24]
+Cavity numbers are the numbers moulded into the connector itself: read them off the part, never mirror a drawing [rules cavity-numbers]
+Colours by family: RED power outputs, ORN the 15 A outputs on 14 AWG, GRY analog inputs, BLU wake, PNK the +5 V reference, YEL / GRN CAN high / low, BLK ground [colours]
+Large pins carry up to 25 A, the 14 AWG ORN pins 15 A, the 16 AWG RED output pins 7 A [pins hw_max_a]
+The +12 V stud is not in this connector: it takes the 2 AWG from the busbar at E17 / E24 [pins STUD]
+Pin 25, the ground, lands on the GND bus within 6 in: it is the one wire that will be cut shorter than 18 in when it lands [pins 25]
+The two CAN pairs are hand-twisted: 23 with 36 (CAN1), 24 with 37 (CAN2) [colours, pins 23, 24]
+It is terminated once and never reopened [work E16]
+The SICMA terminals have no parts row and no strip length in the record: use the terminals that came with the PMU connector and the strip length your practice crimps proved [gap]","39 wires, each labelled, each clicked in and pulled; the secondary lock is on; no wire moves under a firm pull; the lever latched once fully on the PMU with a clear arc.","A terminal that does not click or pulls out: do not force it and do not re-use it - cut it off, crimp a new one. A wire in the wrong cavity: stop, do not pick at it with a pin - raise a note; the record names no removal tool for this connector.",Tick the row.
+E17,"Every node conductor is run, spliced and landed, every receptacle at the post is pinned, plugged and wedge-locked, and the ICU and DCU tails are made.",bench,two days - confirm,"Deutsch solid-contact 4-indent crimper, sizes 12 / 16 (P038)
+Ratchet crimper for heat-shrink terminals and butt splices (P171)
+Open-barrel crimper for the relay socket terminals (P039)
+Wire strippers, flush cutters (P043)
+Heat gun (P042)
+Soldering iron (P044)
+Contact removal tools, size 16 (P031, P032)
+Label printer (P041)
+Multimeter on continuity (P045)
+Torque wrench (P046)",P023 P025 P027 P028 P029 P126 P127 P128 P129 P130 P132 P133 P115 P099 P124 P078 P079 P071 P070 P114 P136 P140 P015 P013 P012 P009 P010 P011 P008 P019 P020 P021 P018 P017 P074 P075 P076 P077,"E16 - the 39-way is terminated
+E15 - the wake strip and stages are built
+CK08 (M-3, the pop-up motors) is read before the pop-up conductors N08-N15 and N105 are landed
+Nothing is powered; the 39-way is off the PMU
+Eye protection for crimping","A receptacle is the box-side half (DT04 / DTP04, pin contacts); the leg plugs (DT06, socket contacts) are made at E20-E23 [housings]
+Every splice at the node is a sealed crimp butt splice with adhesive heat-shrink [work E17, parts P078]
+An unfused tap off an output is 14 AWG up to its fuse (the holder's own lead), 16 AWG after it [node_conductors N19, N85]
+CAN2 never leaves the dash: one twisted pair from pins 24 / 37 to a splice, pairs on to DP-ICU-A 4 / 5, DP-DCU 4 / 5 and the wideband gauge, and a 120 Ω resistor at the end of the run [node_conductors N55, N74, D-346]
+The A4 and A5 inputs carry the inhibitor switch alone since D-487: pin 17 goes to L1-S1 11 only and pin 31 to L1-S2 7 only. Rows N40 / N41 still name L2-S 1 / 2, which are the pop-up up commands now [cavities L2-S 1, L2-S 2, pins 17, 31]
+The DCU plugs in later (E26): its two tails end in DT06 plugs at the centre stack and are dust-capped until then [housings DP-DCU, DP-DCU-B, D-472]
+The ICU tails are 150 mm from the post [housings DP-ICU-A, D-270]
+The DCU tail length is the post to centre-stack run RT11 and the DP-DIAG tail is the run to the glovebox RT12: neither is measured - confirm [routes RT11, RT12]
+DT size-16 contacts seal on 14-20 AWG and carry 13 A; DTP size-12 contacts seal on 10-14 AWG and carry 25 A [series DT, DTP]
+The seat-feed tails (N108, N109, N112) and the comfort grounds (N102) are routed at E38: at this row their relays are wired and the tails left labelled [work E38]
+The load-dump TVS (P136) goes across the PMU main feed at the module; no row says which way round or on which studs - read its datasheet [parts P136, gap]","Every row of node_conductors is in place and labelled at both ends, every receptacle cavity holds a pin or a sealing plug, every wedgelock is in, the two ICU tails and the two DCU tails end in plugs.","A contact in the wrong cavity: release it with the removal tool (P031 / P032), never pull the wire. A conductor with no home in the lists: stop and raise a note - do not improvise a splice.",Tick the row.
+E18,"The finished node is proved: every PMU cavity reaches what the tables say and nothing else, nothing leaks to ground, the relays and fuses are fitted, every wire is labelled and the panels are photographed.",bench,half a day - confirm,"Multimeter with a continuity beeper and a megohm range (P045)
+Two sharp probe leads and a back-probe pin that fits a DT pin without spreading a socket
+The pin list on the laptop or phone
+Phone camera",P003 P190 P191,"E17 - every conductor is landed
+The 39-way is off the PMU; no leg, relay or fuse is fitted; the node is not powered","Continuity is taken with the meter on its beeper [work E18]
+Isolation means open: more than 1 MΩ. Any lower reading is a stray strand [work E18]
+Nine relays at the node, all the same part (P003): K1 K2 K3 K4 K11 K12 K13 K14 K15. The work row lists five and calls K3 / K4 the luxury package's; the relays table has all nine fitted this build [relays, parts P003, D-451, D-469]
+Blade fuses come from the drawer, one of every rating in the fuses table [parts P141]
+Two blade positions stay empty and keep their labels: F13 (block A position 4) and F5 (block B position 2) [fuses F13, F5]
+Through a diode the beeper is one-way: the wake strip inputs and the O2 / O3 pop-up coil taps read as a diode, not as a short [node_conductors N09, N38]
+Pin 15 reaches pins 35 and 22 through 100 kΩ each and the oil node through 100 Ω: that is correct, not a fault [node_conductors N39]
+The CAN2 pair should read about 120 Ω with nothing plugged in: the one resistor at the node [node_conductors N74]",All 39 cavities pass continuity and the three must-not-reach touches each; every power cavity reads open to its neighbours and to the ground bus; nine relays and every LIVE fuse are in; photos taken.,A missing continuity: find it now - a contact not seated or a splice not crimped. Any isolation reading under 1 MΩ: stop and find the strand before any power is applied. Do not go on to E19 with an open item.,Tick the row. Add the photos as a note.
+E19,The sleeping current of the finished dash node is measured and is 50 mA or less.,bench,30 min - confirm,"Multimeter with a fused 10 A range and a mA range (P045)
+A 12 V supply for the node through a fused lead",,"E18 - the node passed continuity and isolation, relays and fuses fitted
+CK12 read (E15)
+No leg plugged in; the DCU tails capped","Target 30 mA or less; accept 50 mA or less [work E19, loads LD17, D-280]
+What should be drawing: the PMU asleep (no manual figure; a bench report says under 20 mA) and the wake stages (under 0.2 mA). K11 is open when asleep. The DCU is not plugged in yet [loads LD17]
+The PMU sleeps when nothing on the wake strip is high; with no key, door or A8 input the keep-alive drops 30 s after the last change [rules sleep]
+On a 40 Ah pack 150 mA is about 11 days and 20 mA about 80 days [checks CK02]
+This is the PMU's share; the whole-car figure is read later at E29 [checks CK02]
+It cannot be re-taken once the dash is closed without undoing the install [work E19]
+The record does not name the bench supply for this test, nor what configuration the PMU carries before E25: with pin 7 low it should be asleep - confirm [gap]","A steady reading of 50 mA or less with the PMU asleep, entered in the app.","Above 50 mA: lift the wake-strip branches one at a time (inputs 1 to 7, then F23, F22, F12) and watch the reading to find the branch. Do not close the dash on a failing number: raise a note with the readings.",Enter the reading in mA (this row takes a value).
+E20,"Harness leg L3, the dash leg, is cut, labelled, pinned into its five plugs, ended at its switches and branch receptacles, and tested end to end.",bench - a board or floor long enough for the full-scale layout,a weekend - confirm,"Deutsch solid-contact 4-indent crimper, sizes 12 / 16 (P038)
+Wire strippers 10-22 AWG, flush cutters (P043)
+Ratchet crimper for heat-shrink butt splices, rings and spades (P171)
+Heat gun (P042)
+Soldering iron and solder (P044)
+Multimeter: continuity beeper, ohms (P045)
+Label printer with flexible-ID tape (P041)
+Contact removal tools, size 16 (P031, P032) and size 12 (P033)
+Tape measure, and a board or floor long enough to lay the leg full-scale
+Paint pen (P082)",P115 P101 P123 P100 P133 P130 P129 P022 P024 P026 P023 P027 P028 P029 P102 P125 P036 P002 P078 P079 P069 P071 P084 P085 P086 P015 P016 P012 P013 P009 P010 P011 P008 P019 P075 P076 P077,"E19 - the dash node passed its sleeping-current test
+G13 - the cut lengths are derived from the measured routes (C1, M-2)
+E7 - the ladder resistor sub-assemblies are built and bagged
+CK10 read: the ignition switch IG contact holds through START - take it before this leg is crimped
+CK17 and CK18 read: the light switch and stalk contact tables - the ladders are built to what they found
+E5 - Deutsch practice done
+Eye protection for crimping and clipping","Cut length is 1.5 x the measured route; the margin is that factor, no extra loop is added [rules cut-list, D-202]
+Every wire is labelled at both ends the moment it is cut, printed tape, the same pair read in opposite order: O8 / L2-M-1 at one end, L2-M-1 / O8 at the other; a capped far end reads <cavity> / CAPPED [rules label-format]
+The leg side is the PLUG (DT06 / DTP06) and takes SOCKET contacts; a branch-end receptacle (DT04 / DTP04) takes PIN contacts [housings, work E20]
+A CAPPED wire is cut, labelled and terminated exactly like a LIVE one [work E20]
+Cavity numbers are the ones moulded into the housing: read them off the part [rules cavity-numbers]
+DT size-16 contacts take 14-20 AWG and carry 13 A; DTP size-12 contacts take 10-14 AWG and carry 25 A [series DT, DTP]
+Where a device keeps its factory plug, the plug is cut from the old harness with 150 mm of factory lead and each lead is joined to its new wire with a sealed butt splice; a stud or blade gets a heat-shrink ring or spade [rules device-end]
+The factory plugs stay on the old harness until their circuit migrates (E27 / E28): the record does not say at which row each factory-lead splice is made, so at the bench those ends are left cut to length, labelled and insulated [work E27, E28, gap]
+L3 has five plugs at the post - L3-P, L3-M, L3-S1, L3-S2, L3-S3 - and four branch-end receptacles: L3-BLW at the HVAC case, L3-CMF behind the centre stack, L3-MOD and L3-RDR behind the dash [housings]
+L3-S2 3-6 and L3-S3 5-8 are sealing plugs: the window commands and mirror lines run in the DCU tail from the node, not in this leg [cavities L3-S2 3, L3-S3 5, D-472]
+The seat receptacles and comfort-return harness (L3-SD, L3-SP, L3-SDM, L3-SPM) are E38 and the speaker runs are E41: not this row [work E38, E41]
+F24, 3 A sealed inline, sits in the leg behind the lower dash where the light-switch and brake-wake branch leaves the L3-S2 2 wire [fuses F24, D-412]
+The ignition switch is a new electrical portion (1981-83 type, P086); the light switch, both stalks and the horn pad are the car's own, kept [devices DV18, DV19, DV20, DV22, DV23]
+The wiper stalk WASH contact carries two wires: the ladder leg to L3-S1 4 and a plain wire to L3-S2 9, the washer relay coil return [devices DV22, work E20]
+WASH leg value: the ladders table says 470 Ω + 1N4148; the cavity and device rows still say 1.8 kΩ + 1N5819. Build to the E7 sub-assembly made from the ladders table - confirm before soldering [ladders A2 WASH, cavities L3-S1 4]
+Horn 8.2 kΩ and the two wink resistors (18 kΩ left, 33 kΩ right) all join onto the L3-S1 11 wire; the wink resistors are on the plate board, and the plate's 4-way header J2 gives pin 1 → L3-S1 9, pin 2 → L3-S1 10, pin 3 → L3-S1 11, pin 4 → dash ground [devices DV24, D-504]
+The hazard switch gets a 47 kΩ baseline to column ground at the switch, beside its 4.7 kΩ [cavities L3-S1 6, D-368]
+The brake wake is a spare adjustable plunger switch (P084) on the pedal, fed through F24, not the brake lamp switch [cavities L3-S1 7, D-278]
+Ladder check: each state within 2 % of its table value at the leg-side cavity [work E20]
+Column and pedal fasteners, clip counts and the factory wire colours at the kept switches are not in this row's tables: the device rows give the terminal by function only [gap]","Every L3 cavity is continuous to its own far end and to nothing else, isolation is open, each ladder state fitted so far reads within 2 % of its value, every end is labelled, branch receptacles are dust-capped, and the leg is bundled every 150 mm but not wrapped.","A contact in the wrong cavity: release it with the removal tool, never pull the wire. A ladder state off by more than 2 %: measure the resistor alone, then the joint. A length that comes up short on the layout: stop, re-measure the route, raise a note.",Tick the row.
+E21,"Harness leg L2, the front leg, is cut, labelled, pinned into its four plugs, spliced at the nose and ended at every front device, and tested.",bench - a board or floor long enough for the full-scale layout,a weekend - confirm,"Deutsch solid-contact 4-indent crimper, sizes 12 / 16 (P038)
+Wire strippers 10-22 AWG, flush cutters (P043)
+Ratchet crimper for heat-shrink butt splices, rings and spades (P171)
+Heat gun (P042)
+Soldering iron and solder (P044)
+Multimeter: continuity beeper, ohms (P045)
+Label printer with flexible-ID tape (P041)
+Contact removal tools, size 16 (P031, P032) and size 12 (P033)
+Tape measure, and a board or floor long enough to lay the leg full-scale
+Paint pen (P082)",P131 P101 P099 P124 P129 P130 P022 P024 P026 P023 P028 P125 P036 P078 P079 P069 P015 P013 P012 P014 P009 P010 P008 P075 P076 P077,"E20 - leg L3 is built
+CK08 read (C1, M-3): the pop-up motor matches the 1982 diagram - do NOT pin L2-P or the pop-up cavities of L2-S before that reading
+CK09 read: which wiper motor terminal is the park contact - before the wiper branch is crimped
+CK23 read: which headlamp wire is low beam
+CK22: the washer pump runs on 12 V
+G13 - the cut lengths are derived from the measured routes
+Eye protection","Cut length is 1.5 x the measured route; the margin is that factor, no extra loop is added [rules cut-list, D-202]
+Every wire is labelled at both ends the moment it is cut, printed tape, the same pair read in opposite order: O8 / L2-M-1 at one end, L2-M-1 / O8 at the other; a capped far end reads <cavity> / CAPPED [rules label-format]
+The leg side is the PLUG (DT06 / DTP06) and takes SOCKET contacts; a branch-end receptacle (DT04 / DTP04) takes PIN contacts [housings, work E20]
+A CAPPED wire is cut, labelled and terminated exactly like a LIVE one [work E20]
+Cavity numbers are the ones moulded into the housing: read them off the part [rules cavity-numbers]
+DT size-16 contacts take 14-20 AWG and carry 13 A; DTP size-12 contacts take 10-14 AWG and carry 25 A [series DT, DTP]
+Where a device keeps its factory plug, the plug is cut from the old harness with 150 mm of factory lead and each lead is joined to its new wire with a sealed butt splice; a stud or blade gets a heat-shrink ring or spade [rules device-end]
+The factory plugs stay on the old harness until their circuit migrates (E27 / E28): the record does not say at which row each factory-lead splice is made, so at the bench those ends are left cut to length, labelled and insulated [work E27, E28, gap]
+L2 has four plugs at the post - L2-P, L2-M, L2-S, L2-R - and two branch-end receptacles at the nose: L2-OAT ahead of the radiator and L2-RDR behind the bumper [housings]
+The work row predates the radar front run: housings puts L2-R and L2-RDR on this leg, so they are built here, capped [housings L2-R, L2-RDR]
+Pop-ups, the factory way: one 12 AWG feed (WR) on L2-P 3 split at the nose to both motors; four command wires - up (R) on L2-S 1 left and L2-S 2 right, down (RY) on L2-P 4 left and L2-S 6 right; YG is capped at each motor [devices DV11, D-487, D-460]
+The motor terminals are R, RY, WR, YG by the 1982 diagram, and nobody has measured this car's motors until CK08 [checks CK08, 00-CAR SP-584]
+Headlamps: RY is low beam (L2-P 1), RL is high beam (L2-P 2), B to the front star - confirm at CK23 [cavities L2-P 1, 00-CAR PT035]
+One 47 kΩ baseline only, in the back of the L2-S plug on cavity 3, to a ground ring on the front star; the A4 / A5 baselines left this leg [work E21, cavities L2-S 3, D-487]
+Wiper motor D-02: LW low brush, LR high brush, L the park contact through 12 kΩ, LB left unconnected and capped, B to the front star [devices DV15]
+L2-S 4 is run to the wiper branch and left unpinned there for a future motor; L2-M 8 is its held park feed, capped [cavities L2-S 4, L2-M 8, D-317]
+Each horn gets a 14 AWG ground ring under a mounting bolt [devices DV14]
+Route L2-S apart from L2-P [housings L2-S]
+The front star is a new stud on the radiator support, 10 AWG to a bare-metal bolt [devices DV17, grounds G05]
+How the nose trim, lamps and buckets come apart is not in this row's tables [gap]","Every L2 cavity is continuous to its own far end and nothing else, isolation is open, L2-S 3 reads 47 kΩ to its ground ring, the nose splices are sealed, branch receptacles are dust-capped, and the leg is bundled but not wrapped.","If CK08 did not match the diagram, stop: the pop-up cavities are redrawn first (raise a note). A splice that fails a tug: cut it out and redo it. A short length: stop and re-measure the route.",Tick the row.
+E22,"Harness leg L4, the rear leg, and the sill node are built: cut, labelled, pinned, the sill panel wired, every rear device end made, and tested.",bench for the leg and the sill panel,a weekend - confirm,"Deutsch solid-contact 4-indent crimper, sizes 12 / 16 (P038)
+Wire strippers 10-22 AWG, flush cutters (P043)
+Ratchet crimper for heat-shrink butt splices, rings and spades (P171)
+Heat gun (P042)
+Soldering iron and solder (P044)
+Multimeter: continuity beeper, ohms (P045)
+Label printer with flexible-ID tape (P041)
+Contact removal tools, size 16 (P031, P032) and size 12 (P033)
+Tape measure, and a board or floor long enough to lay the leg full-scale
+Paint pen (P082)
+Open-barrel crimper for the relay socket terminals (P039)",P132 P131 P115 P101 P127 P129 P022 P024 P026 P023 P025 P028 P036 P162 P002 P003 P006 P058 P059 P091 P078 P079 P069 P161 P197 P084 P015 P016 P012 P013 P014 P009 P010 P011 P008 P075 P076 P077,"E21 - leg L2 is built
+G13 - the cut lengths are derived from the measured routes
+The sill space is measured (C1, M-5) and the sill panel stock (P091) is cut to it
+CK20 read: the hatch and fuel-door solenoid currents
+E9 - the rear ground stud is in the cargo bin
+Eye protection","Cut length is 1.5 x the measured route; the margin is that factor, no extra loop is added [rules cut-list, D-202]
+Every wire is labelled at both ends the moment it is cut, printed tape, the same pair read in opposite order: O8 / L2-M-1 at one end, L2-M-1 / O8 at the other; a capped far end reads <cavity> / CAPPED [rules label-format]
+The leg side is the PLUG (DT06 / DTP06) and takes SOCKET contacts; a branch-end receptacle (DT04 / DTP04) takes PIN contacts [housings, work E20]
+A CAPPED wire is cut, labelled and terminated exactly like a LIVE one [work E20]
+Cavity numbers are the ones moulded into the housing: read them off the part [rules cavity-numbers]
+DT size-16 contacts take 14-20 AWG and carry 13 A; DTP size-12 contacts take 10-14 AWG and carry 25 A [series DT, DTP]
+Where a device keeps its factory plug, the plug is cut from the old harness with 150 mm of factory lead and each lead is joined to its new wire with a sealed butt splice; a stud or blade gets a heat-shrink ring or spade [rules device-end]
+The factory plugs stay on the old harness until their circuit migrates (E27 / E28): the record does not say at which row each factory-lead splice is made, so at the bench those ends are left cut to length, labelled and insulated [work E27, E28, gap]
+L4 has four plugs at the post - L4-P, L4-M, L4-S, L4-S2 - the sill node behind the driver kick panel, and the branch-end receptacles L4-RDR at the rear node and L4-HRD in the hatch [housings, devices DV43]
+The fuel pump's return is its own 12 AWG to the rear star stud, never shared [devices DV34, grounds G26]
+Sill node: a small panel with relay sockets K5-K8, three sealed inline holders F8, F9, F14, a ground stud, and the door receptacles D1 (driver) and D2 (passenger) [devices DV43]
+K5-K8: the work row says the sockets stay empty; the relays table, which is newer, has the four window relays fitted and wired this build - follow the table [relays K5, D-451]
+F14 is 5 A and LIVE; F8 and F9 are rated 20 A and marked EMPTY: holders fitted, fuses out until the windows arrive [fuses F8, F9, F14]
+D1 / D2 are RESERVED: pinned on the node side of the receptacle, the door plug filled with sealing plugs. Nothing runs through the door boots this build [cavities D1 1, work E22]
+Door jamb ladder on L4-S 2: driver switch through 24 kΩ + 1N4148, passenger through 8.2 kΩ + 1N4148, anodes toward the splice, and a 47 kΩ baseline from the sill splice to sill ground. The work row still says 33 kΩ for the driver: the cavity row is newer [cavities L4-S 2, devices DV41, D-486]
+The interior lamp's RY wire lands on the same jamb switch terminals through a 1N4007 each, anode on RY [devices DV39, DV41]
+The hatch and fuel-door solenoids are factory parts believed to work; each grounds through the body - prove it with the meter [devices DV48, DV49]
+The road-speed signal wire gets an 18 in service loop in the tunnel; the sensor is fitted later at the meters cutover [cavities L4-S 3, D-272]
+The tunnel also carries three heavy cables beside this bundle [routes RT15]
+The hinge loop is a flex point: its length is measured with the hatch open [routes RT18]
+The speaker receptacles on this leg (L4-SPR, L4-SUB) are E41: not this row [work E41]
+How the quarter trim, hatch trim and tank cover come off is not in this row's tables [gap]","Every L4 cavity is continuous to its own far end and nothing else, isolation is open, the sill panel is wired and its relays and F14 are in, L4-S 2 reads 47 kΩ with both jamb switches open, each solenoid's ground is proved, and the leg is bundled but not wrapped.",A solenoid with no continuity to the body: do not add a ground wire on your own - raise a note with the reading. A jamb reading that is not 47 kΩ: check the baseline and the diode directions.,Tick the row.
+E23,"Harness leg L1, the engine leg, is cut, labelled, pinned into its three plugs, ended at every engine-bay device, and tested.",bench - a board or floor long enough for the full-scale layout,a day - confirm,"Deutsch solid-contact 4-indent crimper, sizes 12 / 16 (P038)
+Wire strippers 10-22 AWG, flush cutters (P043)
+Ratchet crimper for heat-shrink butt splices, rings and spades (P171)
+Heat gun (P042)
+Soldering iron and solder (P044)
+Multimeter: continuity beeper, ohms (P045)
+Label printer with flexible-ID tape (P041)
+Contact removal tools, size 16 (P031, P032) and size 12 (P033)
+Tape measure, and a board or floor long enough to lay the leg full-scale
+Paint pen (P082)",P131 P115 P022 P026 P028 P029 P074 P135 P004 P005 P078 P079 P069 P015 P018 P009 P010 P008 P075 P076 P077 P081,"E22 - leg L4 and the sill node are built
+G13 - the cut lengths are derived from the measured routes
+CK19 read: the oil-pressure sender's ohms
+Eye protection","Cut length is 1.5 x the measured route; the margin is that factor, no extra loop is added [rules cut-list, D-202]
+Every wire is labelled at both ends the moment it is cut, printed tape, the same pair read in opposite order: O8 / L2-M-1 at one end, L2-M-1 / O8 at the other; a capped far end reads <cavity> / CAPPED [rules label-format]
+The leg side is the PLUG (DT06 / DTP06) and takes SOCKET contacts; a branch-end receptacle (DT04 / DTP04) takes PIN contacts [housings, work E20]
+A CAPPED wire is cut, labelled and terminated exactly like a LIVE one [work E20]
+Cavity numbers are the ones moulded into the housing: read them off the part [rules cavity-numbers]
+DT size-16 contacts take 14-20 AWG and carry 13 A; DTP size-12 contacts take 10-14 AWG and carry 25 A [series DT, DTP]
+Where a device keeps its factory plug, the plug is cut from the old harness with 150 mm of factory lead and each lead is joined to its new wire with a sealed butt splice; a stud or blade gets a heat-shrink ring or spade [rules device-end]
+The factory plugs stay on the old harness until their circuit migrates (E27 / E28): the record does not say at which row each factory-lead splice is made, so at the bench those ends are left cut to length, labelled and insulated [work E27, E28, gap]
+L1 has three plugs at the post: L1-P (power), L1-S1 and L1-S2 (signal). They leave the post together through the firewall grommet, passenger side [housings, routes RT01]
+Only ten wires run in this leg; every other cavity is a sealing plug [cavities L1-S1 5, L1-S2 2]
+The swap reserves are pinned at the post only: L1-P 2 and 3, L1-S2 9 and 11 carry sealing plugs in these plugs [cavities L1-P 2, D-271]
+L1-S1 9 / 10 are sealing plugs: CAN2 never enters the engine bay [cavities L1-S1 9, D-318]
+Tach: shielded cable (P074) from L1-S1 6 to coil T negative (factory wire YG). The shield is cut back and insulated at the coil end; it is grounded at the dash node only [cavities L1-S1 6, node_conductors N48]
+The tach cable crosses ignition leads at 90 degrees and never runs parallel to one within 50 mm [rules emc-routing]
+K9, the start relay, is a sealed relay (P004) in a weatherproof socket (P005) on the inner fender; its contact wires are 10 AWG from F17 (30 A, at the starter B+ stud) to the starter S terminal [relays K9, fuses F17]
+Alternator plug A-08: BW is excitation → L1-S1 2; WB is the charge-lamp sense → L1-S2 8 [devices DV04]
+The ignition suppression capacitor (P135) goes on the coil branch at the coil bracket [parts P135, D-281]
+Inhibitor switch A-06: 8.2 kΩ in each signal lead and a 47 kΩ baseline from each lead to block ground at the switch [cavities L1-S1 11, L1-S2 7, D-487]
+Water-temp sender C-02 (factory wire YW) is in the rear housing directly below the oil-pressure sender C-09 (BrY) [devices DV06, DV07]
+How the leg-side tach shield is carried across the L1-S1 connector is not in the record: cavity 5 stays a sealing plug [gap]
+K9 and F17 are fitted in the car at E27; here the K9 socket is wired onto the leg [work E27]","Every L1 cavity is continuous to its own far end and nothing else, isolation is open, each inhibitor lead reads 47 kΩ to its ground end with the contact open, the tach shield is open to the core, and the leg is bundled but not wrapped.",Tach core shorted to its shield: the strip nicked the insulation - cut back and redo. An inhibitor reading off by more than 2 %: measure the resistor alone.,Tick the row.
+F3,"The ICU carrier is built, flashed and proved on the bench with its display chain: the screen draws the DRIVE page from live bus and sensor inputs, and the odometer survives a power cycle.",bench,two weekends - confirm,"Soldering iron with a fine tip, solder, flux, tweezers (P044)
+Hot-air or a hot-plate for the small packages if you have one
+Magnifier
+Multimeter (P045)
+A 12 V bench supply with a current limit
+The Mac with the Arduino IDE (Teensyduino) and the tree
+USB cables for the Teensy and the XIAO
+A potentiometer and jumper wires",P103 P169 P104 P105 P106 P107 P109 P110 P159 P176 P203 P122 P116 P108 P142 P143 P117 P118 P119 P120 P151 P202 P070,"F2 - the BT817 eval board is in hand
+F12 - the ICU carrier boards and their parts have arrived
+The host suites pass on the Mac (run.sh, exit code 0)
+An anti-static mat or at least a grounded bench
+Eye protection while soldering","The ICU is the instrument cluster unit: a Teensy 4.1 socketed on carrier H-001, a BT817 display bridge, a 12.3-inch bar display and an ESP32-C3 radio, all in one housing behind the binnacle [modules ICU, D-491]
+It has two plugs: DP-ICU-A (6-way: 1 logic +12 V, 2 illumination, 3 ground, 4 CAN2 H, 5 CAN2 L, 6 backlight +12 V) and DP-ICU-B (12-way: senders, tach, lamp lines) [cavities DP-ICU-A 1, DP-ICU-B 1]
+Logic power: 12 V in → 5 V buck → the Teensy's VIN; about 0.8 A peak [icu_channels IC12]
+The backlight has its own 12 V input on DP-ICU-A 6, never joined to the logic rail on the board; about 2.5 A at 12 V for the bar and its scaler [icu_channels IC13]
+Display wiring to the BT817 board, single-lane SPI: CS 10, MOSI 11, MISO 12, SCK 13, PD 9, INT 24 [icu_channels IC21]
+Every BAT54S clamp has one right way round: signal on COM, A to ground, K to +3V3. The first schematic had all twelve backwards [rules clamp-direction]
+Tach input: 2 pulses per revolution; tach_simulator on a spare Teensy is the bench source [icu_channels IC04]
+Brake warning: low means warn [icu_channels IC06]
+Bench order: the eval board and the DRIVE page first; the real bar panel (chain ii) only after M-1 sizes the aperture; then the timing check V-084 - pixel clock and sync polarity against the panel [work F3, icu_channels IC21]
+The radio only ever reads the battery's BMS: scan always, connect to FFE1 for cell detail, never write, and never touch FFE7 or anything labelled DFU - that is the firmware-update path of the battery that runs the car [icu_channels IC24]
+The odometer must persist in EEPROM and on the card [work F3, D-269]
+The firmware version prints at boot; the bench is at ICU 0.6.0-dev [bringup_log 2026-10-12]
+MG22, the meters cutover, waits for this box; nothing else does [work F3]
+No assembly order, reflow profile or per-part test point list is in the record: the BOM csv and the board picture are the guide [gap]","On the bench: 5 V on the logic rail, the Teensy boots and prints its version, the DRIVE page draws on the display, rpm / temperature / fuel follow the simulator and the potentiometer, pulling the PMU simulator blanks only the volts, the backlight switches, and the odometer reads the same after power is cycled.","No 5 V: power off, check the input diode and the buck for a bridge before trying again. A blank screen with a booted Teensy: check the six display wires against the list. If the WHOLE cluster blanks when the PMU simulator is unplugged, the failure isolation is not there: raise a note. Anything else unexpected: raise it in the app as a note with the serial output.","Tick the row. Add a note with the firmware version printed at boot and what was proved, so the agent can add the bring-up log row."
+F5,"The final DCU carrier, the panel board and the upper connector board are ordered with their parts, and the DCU carrier is built and powers up with a correct 5 V rail.","desk to order, bench to build","1 h to order, two weekends to build - confirm","The laptop and a payment card
+Soldering iron with a fine tip, solder, flux, tweezers (P044)
+Hot-air or a hot-plate for the power packages
+Magnifier
+Multimeter (P045)
+A 12 V bench supply with a current limit",P144 P170 P145 P146 P147 P148 P149 P150 P153 P157 P177 P178 P193 P175 P195 P194 P196 P155 P173 P192 P142,"H-002 - the DCU carrier layout is finished by the agent, which waits on the space behind the centre stack (V-102) and the mirror motor current (luxury W-332)
+The design is frozen (the build track is open)
+Eye protection while soldering","The DCU is the dash / climate control unit: a Teensy 4.1 socketed on carrier H-002, inside the climate control unit in the centre-stack opening with the control panel on its face [modules DCU, D-479]
+This is the FINAL board. A bench revision (board rev 0.04) was ordered at Y18 on the provisional 180 x 80 mm outline [work F5, D-490]
+Board spec: 2 layers, 1.6 mm, 1 oz; two needed, a fab sells five [work Y18, parts P144]
+The panel board (P175) and the upper connector board (P195) are ordered with the DCU board [parts P175, P195, D-459]
+The DCU's parts were about $88 and the receptacles about $68 on the bench order; check Q3's 40 V rating before buying [work Y18]
+Some parts on the sheet are deliberately not fitted (28 on the bench revision): the BOM marks them [work Y17]
+It has five harness connectors: DP-DCU (6-way), DP-DCU-B (12-way), DP-DCU-C (8-way comfort), and DP-DCU-D / DP-DCU-E on the upper board [housings DP-DCU, DP-DCU-C, DP-DCU-D]
+Logic power is constant 12 V on DP-DCU 1 (through F22, 3 A, in the car), ground on DP-DCU 3 [dcu_channels SN24, SN25]
+The servo rail has its own 5 V buck fed from DP-DCU-C 5 [dcu_channels SN15, SN27]
+The enclosure (P152) is drawn around the laid-out board and V-102's measurement [work F5]
+No assembly order or reflow profile is in the record [gap]",Order confirmations for the boards and parts are noted; the DCU carrier is soldered; with 12 V on DP-DCU 1 the Teensy socket's VIN pad reads 5 V and the supply current is a few mA.,"The fab rejects the files: do not approve, raise a note. No 5 V or the supply hits its limit: power off and look for a bridge or a reversed part before trying again.",Tick the row when the board is built and its 5 V rail is right. Add the order numbers and prices as a note.
+F6,"The DCU is flashed and proved on the bench: every output is off at reset, every panel key, encoder and the thumbstick is read, and every output drives a lamp or a relay as commanded.",bench,a weekend - confirm,"The Mac with the Arduino IDE (Teensyduino) and the tree
+A 12 V bench supply with a current limit
+Multimeter (P045)
+Four or five 12 V test lamps (a few watts each) with clip leads
+One spare relay (P003) for the release select test
+A second Teensy with a transceiver module as the PMU simulator (P142, P143)
+A thermometer",P144 P175 P195 P157 P156 P154 P142 P143 P070 P003,"F5 - the DCU carrier is built and its 5 V rails are right
+F-017 - the DCU firmware is written (it is: DCU 0.6.0-dev)
+The host suites pass on the Mac (run.sh, exit code 0)
+Nothing from the car is connected: lamps and a relay stand in for every load","The loads the DCU drives belong to the luxury package and arrive later: windows, mirrors, seats, servos. On the bench each is a lamp or a relay [work F6, modules DCU]
+Off at reset is the first thing proved on every output: a floating pin at boot must never move a window or fire a release [dcu_channels SN16, SN23]
+Window commands: DP-DCU-B 1 driver up, 2 driver down, 3 passenger up, 4 passenger down. Each sources 12 V, 1 A per channel, into a relay coil; up and down of one side are never driven together [dcu_channels SN22]
+Release selects: DP-DCU-B 10 (hatch, K3) and 11 (fuel door, K4) pull a relay coil to ground. The firmware refuses a release unless the car is stopped, and drops the select after 1.5 s [dcu_channels SN23]
+On this bench the DCU refuses every release with the key on, because nothing sends the road-speed frame; with the PMU simulator reporting the key OFF it allows them [design README, D-465, D-484]
+Mirror drive: DP-DCU-B 5 motor common, 6 left motor, 7 right motor, 8 the clutch sink. The thumbstick picks direction; a press switches left / right [dcu_channels SN17, cavities DP-DCU-B 5]
+Comfort: DP-DCU-C 1-4 are low-side returns (seat heat driver, seat heat passenger, seat cool driver, seat cool passenger); DP-DCU-B 9 is the mirror-heat high side; DP-DCU-C 5 is the 12 V supply in, 6-8 power ground. Heat and cool of one seat are interlocked [dcu_channels SN16, cavities DP-DCU-C 1]
+Wake request: DP-DCU 6 goes to 12 V when a panel key is pressed with the car asleep [dcu_channels SN21]
+Blower duty: DP-DCU-D 6 / 7, 25 kHz, held off through a reset by a pull-down. Servos: DP-DCU-D 1-3 signals, 4 +5 V, 5 ground, one servo moved at a time [dcu_channels SN14, SN15]
+Temperatures: 10 kΩ NTC sensors on DP-DCU-D 8 / 9 (cabin) and DP-DCU 2 (outside air); one-point check against a thermometer [dcu_channels SN11, SN12]
+The comfort current shunt is zeroed at no load and checked with one known load [dcu_channels SN13]
+Asleep on its constant feed the DCU should draw about 10 mA - to be confirmed here [loads LD17]
+How the bench shows each key and encoder reading (serial print or bus frame 0x400) is not written down as a procedure [gap]","With power applied and through a reset no lamp lights; every key, both seat knobs, the centre knob and the stick register; each output lights its lamp or clicks its relay when commanded and only then; the sleeping current on DP-DCU 1 is noted.",A lamp that lights at power-up or during reset: stop - that output would move something in the car; raise a note naming the cavity. A key that does not read: check the ribbon seating first. Anything else: note it in the app with the serial output.,"Tick the row. Add a note with the firmware version, the sleeping current in mA and anything that did not behave, so the agent can add the bring-up log row."
+F11,"Every MEASURE part of the ICU carrier has been put under the calipers, the binnacle space is known, the footprints and models are corrected to the readings, and the board passes its design-rule check again.","desk, with the parts in hand",half a day of measuring - confirm; the redraw is the agent's,"Digital calipers, 0.01 mm
+Steel rule
+Good light, a magnifier
+Phone camera for each reading
+The laptop with the app",P122 P142 P116 P109 P117 P110 P176 P202,"F10 - the provisional board is laid out with its 3D model
+C4 - the space behind the binnacle is measured with the car apart
+The parts have arrived with the cart: the DT13 receptacles, a Teensy 4.1 on its headers, the XIAO radio, the IMU breakout, the BT817 eval board","The ICU carrier is the board the Teensy 4.1 plugs into behind the display. Its outline is 110 x 80 mm, provisional until this row [work F9, checks CK25]
+Every footprint for the DT13 receptacles was drawn from TE's drawings, never from a part in hand [checks CK25]
+Expected figures to hold the parts against: DT13 pin pitch 4.445 and 6.35 mm; flange face to pin field 18.675 mm; three flange holes, the 12-way's centre hole above all; Teensy header rows 15.24 mm apart; XIAO castellation rows 15.24 mm apart [checks CK25]
+Pass mark: each reading within 0.2 mm of the footprint; otherwise the footprint is redrawn and the design-rule check re-run to zero [checks CK25]
+Three things the first fit check found: the 6-way receptacle's model sits 1.54 mm off its pin field; the ICU and DCU boards place the DT13 flange differently (on the board edge against 3.955 mm beyond it) and one is wrong; the ICU board edge touches its connector plate and wants 0.3 mm of margin [checks CK27, work F11]
+The Teensy carries two PSRAM chips soldered under it: the socket must leave room under the board [work F11, parts P108]
+The board gains a CR2032 holder on the Teensy's VBAT pin for the clock: check the socket footprint brings VBAT out [parts P202, D-493]
+The mock-up wants about 331 mm wide x 133 mm tall and 204 mm deep behind the binnacle face with the plugs on - an estimate until C4 [work C4]
+The agent redraws the footprints, re-exports the board's 3D model and re-runs the enclosure fit check from your numbers; then F1 prints the enclosure and F12 orders the board [work F1, F12, D-453]
+No table holds these caliper readings: they go in as a note [gap]","Every reading in the steps is in the app as a note with a photo, the agent has redrawn what was out by more than 0.2 mm, and the board's design-rule check reports zero.","A part that is nothing like its footprint (wrong pitch, a missing flange hole): photograph it beside the calipers and raise a note - do not file the board or bend pins to suit.","Tick the row once the agent reports the board redrawn and clean. Enter every reading as a note in the app, one line per measurement, in mm."
+F12,"The final ICU carrier boards are ordered, after a printed enclosure has been test-fitted around the final board model.",desk,1 h - confirm,"The laptop
+A payment card",P103 P169,"F11 - the measurement pass is done and the board is redrawn
+F1 - the enclosure is printed and test-fitted around a bare board (CK27 passed)
+The design is frozen (the build track is open)","This is the FINAL board. A bench revision (rev A) of the same board was already ordered at Y18 on the provisional outline, at risk of a re-spin [work F12, D-490]
+Two boards are needed, one fitted and one spare; a JLCPCB-class fab sells five [parts P103, work Y17]
+Board spec: 2 layers, 1.6 mm, 1 oz copper; the outline was 110 x 80 mm before F11 [work Y18, work F9]
+The fab package is the ICU carrier project's fab folder: the gerbers zip, the drill files and the BOM csv. The bench revision's were icu-carrier-revA-gerbers.zip and icu-carrier-revA-bom.csv; the final revision's are exported by the agent after F11 [work Y17]
+The BOM csv names each maker's part number and marks the unsure ones confirm; R18 has no value yet - three values are bought (P203) [work Y17, Y18]
+The cheapest true fit test is a printed enclosure and a bare board: every DT13 through its cut-out with 0.5 mm a side, the board on all four bosses unstressed, the lid closing at all four screws [checks CK27]
+It is money, so it is yours [work F12]",The order for the final ICU carrier boards is placed and its confirmation is noted in the app.,"If the fab's checker rejects the files or its preview does not look like the board picture, do not approve: raise a note with a screenshot.","Tick the row when ordered. Add the order number, the board count and the price as a note."
