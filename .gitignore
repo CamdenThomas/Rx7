@@ -116,3 +116,6 @@ keystore.properties
 # old tracked copy here left git once it was confirmed identical there (06-intake T2).
 01-INTAKE/research/
 fixture/
+
+# A raw copy of the Fedora PC model folder (2026-10-13, 5 GB, holds the bought SA model): merged into 01-INTAKE/model, never in git
+01-INTAKE/old_model/
