@@ -450,3 +450,12 @@ His answers, verbatim: PK023 ""yes""; PK043 ""yes"".
 - PK043, LP60: Audison Prima APX 4 100 mm coaxial, pair, USD 249.99 (abt.com; safeandsoundhq.com 237.99). 4 ohm, 40 W / 120 W peak, 91 dB, flange 102 mm, cut-out 93 mm, depth 41 mm. One fitted as the up-firing centre at L3-CTR, one spare. Confirm V-109, V-110, clearance to handbrake and console, DT06-2S plug (electrical D-473); the pod is fabrication with no volume yet.
 
 Consequences: LP53 spec names the side-marker product; its front turn and park bulbs (V-067) stay unchosen, so its status stays est. LP60 is chosen at USD 249.99."
+D-530,,"Front seats: RECARO Ergomed ES with Climate Package, no side airbag (PK035)",2026-10-13,standing,,,,,"**Front seats chosen: RECARO Ergomed ES with the Climate Package (heated and ventilated, power-adjusted), no side airbag, a left and a right (PK035, LP52).**
+
+His answer, verbatim: PK035 ""yes"". The pick asked: ""Yes only if about USD 8,000-10,000 for the pair is acceptable"", so the yes accepts that spend.
+
+- Product: RECARO Ergomed ES reclining seat, Climate Package, ordered WITHOUT the side airbag, Tegiwa (UK) / Evasive Motorsports (US); USD 4,095 each seen in a US snippet, GBP 3,835 each at Tegiwa (about USD 5,100); pair about USD 8,000-10,000 (qty 2).
+- Stand-alone: own switch pack and electronics, needs power and ground only; no CAN, no donor module. Heat+ may take L3-SD / L3-SP pin 1 with the DCU low-side returns as master enable; motors want the reserved motor feed (L3-SDM / L3-SPM) and block 01.25 (a).
+- Still to confirm before money (R11): Recaro installation sheet (voltage, constant vs switched feed, heater/fan/motor currents), climate package standard on this trim, switch-pack enable by ground; on the car, floor width and four seat-bolt positions, width over bolsters vs tunnel-to-sill, headroom with base lowest, US price and lead time. The rail-to-FB adapter is fabricated.
+
+Consequences: LP52 spec names the product, status chosen. PK036 (Lexus IS pair) stays reserve. LP30 / LP31 are replaced by LP52 once the seat fits, per the LP52 note."
