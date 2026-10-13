@@ -20,5 +20,5 @@ Regenerate the table with:
 node -e "const p=require('./package.json');for(const d of Object.keys(p.dependencies)){const j=require(d+'/package.json');console.log(d,j.version,j.license)}"
 ```
 
-The three renders in `public/car/` are pictures made from a bought model (01-REFERENCE S-037) and
+The three renders in `public/car/` are pictures made from a bought model (S-037) and
 a free CAD library (D-418); the model files themselves are never in the repository.

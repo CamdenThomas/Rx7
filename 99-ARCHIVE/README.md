@@ -16,6 +16,8 @@ out twice._
 | `Luxury/` | The luxury package's prose designs before data, and the ICU-carrier template before the ICU moved to the electrical build | `02-PROJECTS/03-luxury/data/`; the ICU is `01-electrical`'s (D-374) |
 | `2026-09-26_firmware-superseded-sketches/` | `can_map_test`, `can_loopback_test`, `cluster_render_test` - Arduino test rigs the firmware README called superseded, each with its own `can_map.h` copy | `firmware/icu/can_map.h` (master) + `dcu/`, checked equal by `tests/run.sh` |
 | `2026-09-26_diagram-options/` | The four drawing approaches sampled before D-385 (A ladder, B route map, C ELK, D D2) and the code that drew them | `tools/diagrams.py` (A and B) |
+| `2026-10-13_00-verify/` | The verify project's record, complete: every held-back Manual fact checked or marked not this car | its trim-code row carried to `04-beauty` (D-498) |
+| `2026-10-13_01-REFERENCE/` | The reference's record once its tables had moved: the shell, an empty `blocks`, the `REF` retired row | `00-CAR` and `05-cad` hold its tables; the folder is `01-INTAKE` (D-519) |
 
 Never load anything here into a Claude Project or a prompt as current knowledge. If the record
 and an archived page disagree, the record is right; the page says how it used to read.

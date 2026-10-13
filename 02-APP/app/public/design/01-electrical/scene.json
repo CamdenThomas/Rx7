@@ -1,6 +1,6 @@
 {
  "version": 2,
- "built": "2026-10-13T14:26:40-06:00",
+ "built": "2026-10-13T14:42:44-06:00",
  "project": "01-electrical",
  "frame": {
   "units": "mm",
@@ -13947,7 +13947,7 @@
     "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "02f97308fd7bd76a"
+   "stamp": "533454113458eb2b"
   },
   "panel": {
    "id": "panel",
@@ -13990,7 +13990,7 @@
     "TQFP-48-1EP_7x7mm_P0.5mm_EP4.11x4.11mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "913edfcfa24611ab"
+   "stamp": "4b59b17d54f11049"
   },
   "upper-board": {
    "id": "upper-board",
@@ -14039,7 +14039,7 @@
      -19.17
     ]
    },
-   "stamp": "e34258c01e81dd30"
+   "stamp": "5f518eb8e66eb206"
   },
   "left-plate": {
    "id": "left-plate",
@@ -14082,7 +14082,7 @@
     94.5,
     -21.65
    ],
-   "stamp": "f9d513e3856c9126"
+   "stamp": "f0cee74838449847"
   },
   "icu-carrier": {
    "id": "icu-carrier",
@@ -14125,7 +14125,7 @@
     "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "a2b48fad3363e381"
+   "stamp": "e58d89c6f6f71f3b"
   },
   "control-unit": {
    "problems": [],
@@ -14276,7 +14276,7 @@
    "kind": "unit",
    "glb": "control-unit.glb",
    "source": "control-unit/cad/climate-unit (unit_params.py, unit_lib.py)",
-   "stamp": "154f0f200027b196"
+   "stamp": "1f989417df4dbb26"
   },
   "display-unit": {
    "problems": [],
@@ -14364,7 +14364,7 @@
    "kind": "unit",
    "glb": "display-unit.glb",
    "source": "display-unit/cad/icu-unit (unit_params.py, unit_lib.py)",
-   "stamp": "92b01412bdb9f560"
+   "stamp": "39ea645e156871d5"
   },
   "cur": {
    "problems": [],
@@ -14456,7 +14456,7 @@
    "kind": "unit",
    "glb": "cur.glb",
    "source": "control-unit/cad/cur-unit (unit_params.py, unit_lib.py)",
-   "stamp": "ae78f354e3fd0aa1"
+   "stamp": "35d665ffee4d7abe"
   },
   "pmu": {
    "problems": [],
@@ -14510,7 +14510,7 @@
    "kind": "module",
    "glb": "pmu.glb",
    "source": "02-PROJECTS/01-electrical/00-design/pmu/vendor/PMU CAD info/PMU-24.STEP",
-   "stamp": "f5f8411afc161468"
+   "stamp": "3eb2fb511cc4e70a"
   }
  },
  "legs": [
@@ -15275,5 +15275,5 @@
   "connectors": "connectors/manifest.json",
   "devices": "devices/manifest.json"
  },
- "record_stamp": "80a27352fc70308f"
+ "record_stamp": "69c55288e6be9019"
 }

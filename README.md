@@ -21,9 +21,9 @@ python tools/rx7.py status
 - **`.github/workflows/rx7.yml`** — CI backstop, `selftest` + `check`, for the clone
   where the hook was never installed.
 
-Areas: `00-CAR` (the car as it stands), `01-REFERENCE` (manuals, factory circuits,
-photos), `02-PROJECTS/*` (work in flight), `99-ARCHIVE` (finished process, and the v2
-view layer this version replaced).
+Areas: `00-CAR` (the car as it stands, and every truth about it), `02-APP` (the app),
+`02-PROJECTS/*` (work in flight), `99-ARCHIVE` (finished process, and the v2 view layer this
+version replaced). `01-INTAKE` is not an area: bulk waiting to be parsed into the car (D-519).
 
 There are no Markdown pages to read or to write in (D-405): blocks, answers, picks, the
 TODO lists and every decision's text live in the record, and the app shows them. The only

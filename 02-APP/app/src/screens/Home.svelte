@@ -31,7 +31,7 @@
   const hero = $derived(photos.length ? app.platform?.photo(photos[0]) : '');
 
   // The 3D view (D-415, D-420) exists only where the model was built — the desktop, from its tree.
-  const MODEL = '01-REFERENCE/model/rx7-fb.glb';
+  const MODEL = '01-INTAKE/model/rx7-fb.glb';
   let modelSrc = $state('');
   let turning = $state(false);
   $effect(() => {

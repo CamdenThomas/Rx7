@@ -6,17 +6,17 @@
 # missing. Needs ngspice (Fedora: sudo dnf install ngspice; Mac: brew install ngspice).
 #
 # Models: models/generic.lib holds the stand-in models every deck uses (each confirm
-# against the vendor's file); the vendors' own files live under 01-REFERENCE/model/library/
+# against the vendor's file); the vendors' own files live under 01-INTAKE/model/library/
 # spice (not in git) and are listed, not included, in models/active.lib, which this writes.
 cd "$(dirname "$0")" || exit 3
 command -v ngspice >/dev/null 2>&1 || { echo "ngspice not found - Fedora: sudo dnf install ngspice · Mac: brew install ngspice"; exit 3; }
 
-VENDOR=../../../../01-REFERENCE/model/library/spice
+VENDOR=../../../../01-INTAKE/model/library/spice
 {
   echo "* active.lib - written by run.sh; do not edit"
   echo ".include generic.lib"
   if [ -d "$VENDOR" ]; then
-    echo "* vendor models on this machine (01-REFERENCE sources S-491.., not included: their"
+    echo "* vendor models on this machine (00-CAR sources S-491.., not included: their"
     echo "* subcircuit names and PSpice syntax differ; a deck that wants one includes it by name):"
     for f in "$VENDOR"/*/*; do case "$f" in *SOURCE.txt) ;; *) echo "*   $f";; esac; done
   fi

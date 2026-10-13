@@ -22,14 +22,16 @@ reading. Neither is ever typed.
 
 **Files that stay files.** `CLAUDE.md`. `02-APP/README.md`, where the app's design is
 pitched, at his request. Code and drawings with the READMEs that belong to them: the
-firmware, the KiCad boards, the tools, the app. The reference write-ups in `01-REFERENCE`
-and `00-CAR/data/procedures/` wait for the Manual's plan (D-407). And `99-ARCHIVE`.
-`01-REFERENCE` is an intake, not a home (D-519): its tables - sources, catalogue, cad,
-suppliers, connector_dims, circuits - are `00-CAR`'s, and `blend` is `05-cad`'s. His photos
+firmware, the KiCad boards, the tools, the app. The factory-circuit write-ups in
+`01-INTAKE/factory-circuits` (until block 06.01 rules their form) and `00-CAR/data/procedures/`
+wait for the Manual's plan (D-407). And `99-ARCHIVE`.
+`01-INTAKE` is not an area and no row names it as a home (D-519): it was `01-REFERENCE`, whose
+tables - sources, catalogue, cad, suppliers, connector_dims, circuits - are `00-CAR`'s, and
+`blend` `05-cad`'s; its record's shell is `99-ARCHIVE/2026-10-13_01-REFERENCE`. His photos
 are `00-CAR/photos`; the PMU's and the EVE board's vendor files are under
 `01-electrical/00-design` (`pmu/vendor`, `display-unit/vendor`); the found-model scripts are
-`05-cad/model/found`, whose `paths.py` names the library's folder (06-intake T2). The files it
-still holds are parsed or moved by `06-intake`.
+`05-cad/model/found`, whose `paths.py` names the library's folder (06-intake T2). What the
+intake still holds is parsed into the car's tables and taken out of the tree by `06-intake`.
 
 **The one generated file type left is the harness-leg drawings** (D-385): for each leg,
 `A-pin-ladder.svg` and `B-route-map.svg` in `02-PROJECTS/01-electrical/00-design/diagrams/`,

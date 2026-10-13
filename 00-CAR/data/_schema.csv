@@ -92,7 +92,7 @@ zones,id,key,yes,,lowercase slug
 zones,name,str,yes,,
 zones,order,int,no,,
 zones,note,text,no,,
-zones,model_box_mm,text,no,,"where the combined 3D model puts it: x0 x1 y0 y1 z0 z1 in mm, several boxes split by ';' (frame: 01-REFERENCE/model/README.md). A model estimate, never a measurement; written by 01-REFERENCE/model/locate.py"
+zones,model_box_mm,text,no,,"where the combined 3D model puts it: x0 x1 y0 y1 z0 z1 in mm, several boxes split by ';' (frame: 02-PROJECTS/05-cad/model/found/README.md). A model estimate, never a measurement; written by 02-PROJECTS/05-cad/model/found/locate.py"
 zones,model_from,text,no,,what the box comes from
 parts,id,key,yes,,"PT### - never a factory component code, which this car's diagrams use (B-12, G-14)"
 parts,name,str,yes,,
@@ -108,7 +108,7 @@ parts,support,text,no,,the maker's customer service: a phone number or a page
 parts,cad,str,no,,"its 3D model, a path in the tree"
 parts,photo,str,no,,a photo under 00-CAR/photos
 parts,note,text,no,,what is true of it now; a value nobody has checked carries confirm and holds the row out of the Manual (R11)
-parts,model_at_mm,text,no,,"where the combined 3D model puts it: x y z in mm, one point per unit split by ';' (left before right). A model estimate, never a measurement; written by 01-REFERENCE/model/locate.py"
+parts,model_at_mm,text,no,,"where the combined 3D model puts it: x y z in mm, one point per unit split by ';' (left before right). A model estimate, never a measurement; written by 02-PROJECTS/05-cad/model/found/locate.py"
 parts,model_from,text,no,,what the point comes from
 parts,oem_no,str,no,,"the factory part's Mazda number from the 1981-83 parts catalogue (S-005) for a 1982 US automatic; R/L or inner/outer named in brackets. The catalogue's, not necessarily what is fitted now (part_no)"
 parts,catalogue,str,no,,"where S-005 shows it: file, PDF page and figure"
@@ -210,7 +210,7 @@ connector_dims,wedgelock,str,no,,the wedgelock's TE part number; blank for a DT1
 connector_dims,cad,str,no,cad,"the vendor model's cad row, when one is recorded"
 connector_dims,source,text,yes,,where the figures were read: the cad row or the TE document and page
 connector_dims,note,text,yes,,which figures are estimated and how; always ends confirm (R11)
-circuits,file,key,yes,,the file name in 01-REFERENCE/factory-circuits
+circuits,file,key,yes,,the file name in 01-INTAKE/factory-circuits
 circuits,title,text,yes,,
 circuits,systems,list,yes,systems,"systems ids, space-separated; the first is where the Manual files it"
 circuits,source,text,no,,the source it was decoded from (S- ids)

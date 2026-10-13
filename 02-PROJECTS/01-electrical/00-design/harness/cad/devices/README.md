@@ -36,7 +36,7 @@ usage error or a crash (FreeCAD missing, a found model's file not on this machin
 
 A model is looked for before one is drawn: the vendor's CAD, then a community model whose
 licence allows the use. What was kept, each a cad row with its licence, its file under
-`01-REFERENCE/model/library/electrical/<cad id>/` (git-ignored: the licences vary and the
+`01-INTAKE/model/library/electrical/<cad id>/` (git-ignored: the licences vary and the
 repository is public):
 
 | Model | Stands for | From |

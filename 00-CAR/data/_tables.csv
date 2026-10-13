@@ -18,7 +18,7 @@ drives,"the odometer log: each drive he logs, and each Set odo with only the rea
 terminals,"each terminal of an electrical part as the car has it: its label, what it does, what is connected to it inside the part, the factory wire on it and where that goes (D-429)"
 sources,"every manual, diagram, datasheet and web source the record draws on"
 catalogue,"every row of the factory parts catalogue (S-005, 1981-83 US RX-7 microfiche), transcribed as printed, with whether it fits this car; the source of 00-CAR's parts list"
-cad,"every free 3D model, scan and dimensioned drawing found for the car and the projects' parts, one row each; the files are in 01-REFERENCE/model/library and stay out of git"
+cad,"every free 3D model, scan and dimensioned drawing found for the car and the projects' parts, one row each; the files are in 01-INTAKE/model/library and stay out of git"
 suppliers,"who sells or supports parts for this car: one row per company, named by parts.supplier"
 connector_dims,"the outer dimensions of each DEUTSCH DT, DTP and DT13 housing the harness uses, one row per variant, with where each figure was read (a vendor model, a TE document) or that it was estimated; every figure confirm until a part in hand is measured. Drawn by 01-electrical/00-design/harness/cad/connectors"
 circuits,"each factory circuit write-up in factory-circuits/ and the wiring diagram itself, with the 00-CAR systems it belongs to, so the Manual's Diagrams page can group them"

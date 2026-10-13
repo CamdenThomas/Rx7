@@ -12,7 +12,7 @@ Sources, by the short names used below:
              between the two dimensioned points either side of it, and says so.
   blueprint  the-blueprints.com 83684 "Mazda RX-7 FB" (00-CAR cad
              fb-rx7-blueprint-the-blueprints-83684), 2483 x 2546 px: the library's copy,
-             01-REFERENCE/model/library/body/fb-rx7-blueprint-the-blueprints-83684/mazda-rx-7fb.png
+             01-INTAKE/model/library/body/fb-rx7-blueprint-the-blueprints-83684/mazda-rx-7fb.png
              (sha1 94410117..., byte-identical to the copy re-fetched from the site 2026-10-13). A JDM
              Savanna drawing (fender mirrors), the same shell. Its views are not drawn at one
              scale, so each axis is scaled to a factory figure:
@@ -24,7 +24,7 @@ Sources, by the short names used below:
                width (plan view)             1668.8 / 947 px  = 1.762 mm/px (DT05; centre row 1266)
              so y = -(px - 592) x 1.816 between the axles, z = (737 - row) x 1.750.
   found      00-CAR cad fb-rx7-gsl-se-85-3dwarehouse-blastronaut (quality 3): the 1985 GSL-SE
-             shell, 01-REFERENCE/model/library/body/fb-rx7-gsl-se-85-3dwarehouse-blastronaut/
+             shell, 01-INTAKE/model/library/body/fb-rx7-gsl-se-85-3dwarehouse-blastronaut/
              "Mazda RX-7 fb Tuner (Copper).glb" (sha1 504ebf62..., byte-identical to 3D Warehouse's
              public glb, no login; 3D Warehouse General Model License). Scaled to the factory
              length (4320.5 / 4467.8 = 0.9670) it puts its axles 2430.4 apart, 10.4 over DT03; so

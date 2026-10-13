@@ -10,7 +10,8 @@ block._
 **One tree, any clone, synced only through GitHub** (D-454): a clone of
 `github.com/CamdenThomas/Rx7` (public) on the Mac (`~/dev/Rx7`, most work) and on the Fedora
 PC (`~/docs/storage/Rx7`), plus the phone. Any instruction naming `Rx7-v3`, Windows paths,
-`ANSWERS.md`, `/rx7-*` skills, the Claude Project or "the one Fedora machine" is stale
+`ANSWERS.md`, `/rx7-*` skills, the Claude Project, "the one Fedora machine" or `01-REFERENCE` as a home
+for anything is stale
 (`rx7.py doc machine` says what each machine has).
 
 ---
@@ -62,7 +63,8 @@ specs, sources, the catalogue, the found models, the circuits - PERMANENT), `02-
 and its own work, D-428), and each project under `02-PROJECTS` (`01-electrical`, `02-engine`,
 `03-luxury`, `04-beauty`, `05-cad`, `06-intake`). **Three homes** (D-519): CAR holds state and
 truth, APP the app and the view of everything, PROJECTS the work in progress until it merges into
-the car. `01-REFERENCE` is none of them: it is the **intake** - bulk to be processed (a manual, a
+the car. `01-INTAKE` (the old `01-REFERENCE`, renamed 2026-10-13) is none of them: it is the
+**intake** - bulk to be processed (a manual, a
 catalogue, a datasheet, a found model) into the car's tables and then taken out of the tree,
 kept only as ignored files there; nothing permanent lives in it and no row names it as a home
 (`06-intake` is folding what it still holds). A car-level ruling that belongs to no project is a decision in `00-CAR`;

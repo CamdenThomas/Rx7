@@ -3,8 +3,8 @@
 """rx7.py - the only tool in this tree. Standard library only.
 
 THE RECORD IS CSV, AND IT DESCRIBES ITSELF.
-Every area (00-CAR, 02-APP, each project under 02-PROJECTS; 01-REFERENCE until the
-intake empties it, D-519) keeps its facts in <area>/data/*.csv. Two of those tables declare all the others:
+Every area (00-CAR, 02-APP, each project under 02-PROJECTS; 01-INTAKE is bulk, not an
+area, D-519) keeps its facts in <area>/data/*.csv. Two of those tables declare all the others:
 
     data/_tables.csv   table,purpose
     data/_schema.csv   table,column,type,required,ref,note
@@ -108,8 +108,8 @@ DATETIME_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-
 ID_RE = re.compile(r"^[A-Z]{1,4}-\d{1,4}$")
 # Blocks are numbered per project, <prefix>.<n>: `01.12` is the twelfth block raised for
 # 02-PROJECTS/01-electrical, `03.07` the seventh for 03-luxury (D-356). The prefix is
-# the project directory's two-digit number; 00-CAR and 01-REFERENCE would collide with
-# 00 and 01, so theirs are CAR and REF. The number has at least two digits, so no id is
+# the project directory's two-digit number; 00-CAR and 01-REFERENCE (an area until
+# 2026-10-13, D-519) would collide with 00 and 01, so theirs are CAR and REF. The number has at least two digits, so no id is
 # shorter than `00.01` — but a bare `13.80` in prose is a voltage, so a block id is only
 # recognised where it is structure: a `blocks` key, `closes`, a gate. Never in prose.
 # Blocks were BLK-### until 2026-09-21; each old id is a `retired` row in its project.
@@ -117,16 +117,19 @@ ID_RE = re.compile(r"^[A-Z]{1,4}-\d{1,4}$")
 # before then keeps its old project, and next_block_id never repeats it. Engine and luxury
 # then swapped to 02 and 03, and the app left the projects for 02-APP, prefix APP (D-428).
 BLOCK_ID_RE = re.compile(r"^(\d{2}|CAR|REF|APP|VER)\.(\d{2,3})$")
-# 00-verify is a record-kind area like 00-CAR (D-427): it takes a word, not the `00` that
-# electrical's history uses (plan P21).
+# 00-verify was a record-kind area like 00-CAR (D-427): it took a word, not the `00` that
+# electrical's history uses (plan P21). It and 01-REFERENCE are archived now
+# (99-ARCHIVE/2026-10-13_*, D-498, D-519) and no live area owns VER or REF: their ids stay
+# known through BLOCK_ID_RE and the archive's `retired` and `decisions`, which next_block_id
+# reads, so no number of theirs is handed out again. The names stay mapped so a directory
+# revived under either name takes its old prefix back, not 00 or 01.
 BLOCK_PREFIX_FIXED = {"00-CAR": "CAR", "01-REFERENCE": "REF", "02-APP": "APP", "00-verify": "VER"}
-# The reference is an intake, not a home (D-519): its tables (sources, catalogue, cad, suppliers,
-# connector_dims, circuits) are 00-CAR's, and so are his photos (06-intake T2). The
-# factory-circuit files `circuits` names stay in the reference until block 06.01 rules them -
-# these two paths, from the tree root, and nowhere else. REF stays mapped above while the
-# directory is an area (it holds blocks and retired terms until T3).
+# The reference is the intake now, not a home (D-519): its tables (sources, catalogue, cad,
+# suppliers, connector_dims, circuits) are 00-CAR's, and so are his photos (06-intake T2). The
+# factory-circuit files `circuits` names ride in 01-INTAKE until block 06.01 rules them -
+# these two paths, from the tree root, and nowhere else.
 PHOTOS_DIR = "00-CAR/photos"
-CIRCUITS_DIR = "01-REFERENCE/factory-circuits"
+CIRCUITS_DIR = "01-INTAKE/factory-circuits"
 # Block ids were renumbered on 2026-09-25 (D-427, D-428). A decision dated before that closes
 # whatever id it names; one dated from then on closes only its own area's ids.
 RENUMBER_DATE = "2026-09-25"
@@ -1870,7 +1873,7 @@ def export_data() -> dict:
     for a in areas():
         tables, cols = schema(a)
         kv = project_kv(a)
-        kind = {"00-CAR": "car", "01-REFERENCE": "reference", "02-APP": "app"}.get(a.name, "project")
+        kind = {"00-CAR": "car", "02-APP": "app"}.get(a.name, "project")
         meta = []
         for t in sorted(tables):
             spec = cols.get(t) or []
@@ -2994,7 +2997,8 @@ def cmd_block(args):
     area = resolve_area(args.area)
     prefix = block_prefix(area)
     if not prefix:
-        die(f"{rel(area)} owns no block prefix - only " + ", ".join(BLOCK_PREFIX_FIXED)
+        live = [n for n in BLOCK_PREFIX_FIXED if any(a.name == n for a in areas())]
+        die(f"{rel(area)} owns no block prefix - only " + ", ".join(live)
             + " and 02-PROJECTS/NN-* do")
     vals = _pairs(args.pairs)
     need = [c for c in ("ask", "why", "options", "recommend", "stops") if not (vals.get(c) or "").strip()]

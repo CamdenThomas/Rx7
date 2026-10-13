@@ -29,7 +29,7 @@ if [ -z "$PY" ]; then
 fi
 
 T=$(mktemp -d 2>/dev/null) || T=""
-if [ -n "$T" ] && git ls-files -z -- tools '00-CAR/data' '01-REFERENCE/data' '02-APP/data' '02-PROJECTS' '99-ARCHIVE' | git checkout-index -z --prefix="$T/" --stdin 2>/dev/null; then
+if [ -n "$T" ] && git ls-files -z -- tools '00-CAR/data' '02-APP/data' '02-PROJECTS' '99-ARCHIVE' | git checkout-index -z --prefix="$T/" --stdin 2>/dev/null; then
   "$PY" "$T/tools/rx7.py" check
   rc=$?
   rm -rf "$T"

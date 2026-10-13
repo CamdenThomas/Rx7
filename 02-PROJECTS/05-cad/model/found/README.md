@@ -1,8 +1,8 @@
 # The found models: the bought SA body (S-037) and the free CAD library (D-418)
 
 The scripts are here, in 05-cad (06-intake T2); the files they read and build stay on this PC,
-out of git, in the two folders `paths.py` names: `SA` (today `01-REFERENCE/model/`, the bought
-model and what is built from it) and `LIBRARY` (today `01-REFERENCE/model/library/`). Every
+out of git, in the two folders `paths.py` names: `SA` (today `01-INTAKE/model/`, the bought
+model and what is built from it) and `LIBRARY` (today `01-INTAKE/model/library/`). Every
 "this folder" below is `SA`.
 
 A bought artist's model of a **1978 RX-7 (SA)**, not the FB. The body shell, glass, lamps

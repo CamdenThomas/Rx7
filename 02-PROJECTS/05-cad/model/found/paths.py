@@ -11,8 +11,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[4]  # the tree: found, model, 05-cad, 02-PROJECTS
 
-LIBRARY = ROOT / "01-REFERENCE/model/library"  # the free CAD library, one folder per cad row (D-418)
-SA = ROOT / "01-REFERENCE/model"  # the bought SA model (S-037) and what is built from it: out/, rx7-fb.glb
+LIBRARY = ROOT / "01-INTAKE/model/library"  # the free CAD library, one folder per cad row (D-418)
+SA = ROOT / "01-INTAKE/model"  # the bought SA model (S-037) and what is built from it: out/, rx7-fb.glb
 
 
 def rel(p) -> str:

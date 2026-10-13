@@ -1,5 +1,5 @@
 * generic.lib - stand-in SPICE models for the sim decks, used when the vendor models are
-* not on this machine (run.sh prefers 01-REFERENCE/model/library/spice, which is not in git).
+* not on this machine (run.sh prefers 01-INTAKE/model/library/spice, which is not in git).
 * These are the textbook parameter sets that ship with most SPICE libraries; every one is
 * `confirm` against the vendor's own file (Y2). Temperature behaviour matters here: the
 * Schottky's leakage (Eg 0.69) is what the WASH deck is about.

@@ -162,7 +162,7 @@ and the found shell both speak to an outline dimension, the note says which won 
   Readings that are judgement: A 580 forward of the front axle (the strut-tower circle over the
   axle); 345 is C's height, 110 E's, 339.4 F's (it may be E to F); b = 107 is the front rail's depth.
 - **The blueprint**, 00-CAR cad `fb-rx7-blueprint-the-blueprints-83684`
-  (`01-REFERENCE/model/library/body/…/mazda-rx-7fb.png`, 2483 x 2546; free to view and download for
+  (`01-INTAKE/model/library/body/…/mazda-rx-7fb.png`, 2483 x 2546; free to view and download for
   modelling, the site's terms). Its views are not at one scale, so each axis is scaled to a factory
   figure: 1.816 mm/px lengthwise between the axles (DT03), 1.737 over the overhangs (DT04 less
   DT03), 1.750 in height (DT06), 1.762 across (DT05).

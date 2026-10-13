@@ -11,7 +11,7 @@ say what is next live in `02-PROJECTS/00-verify` (stage R); this file is only th
 | `merge_research.py` | Stage 2: merges `research/<batch>.json` into 00-CAR specs, terminals, sources, cad and parts |
 | `batches.json` | The 58 research batches (about 947 parts), grouped by system and by the unit each part sits in |
 
-The agents' raw output is kept in the tree's library, `01-REFERENCE/model/library/research/`
+The agents' raw output is kept in the tree's library, `01-INTAKE/model/library/research/`
 (`catalogue/`, `parts1b/`, `research/`, one JSON per batch, about 1.7 MB), out of git with the rest
 of the library since 06-intake T2 (its tracked copy was byte-identical); `RESEARCH` in
 `merge_research.py` and `research-workflow.js` names it. Five wave-2 batches were lost while it
@@ -31,7 +31,7 @@ merge is idempotent and refuses to write while it reports a problem (`--force` o
 Every scanned manual is image-only (pdffonts lists none), so each research agent used to view
 the pages. `ocrmypdf --force-ocr --sidecar` was run once over the 1982 wiring diagram, both parts
 catalogue files, every 1985 workshop section, the three technical-data sections and the body shop
-manual, into `01-REFERENCE/model/library/docs/ocr/<pdf name>.txt` (out of git with the rest of
+manual, into `01-INTAKE/model/library/docs/ocr/<pdf name>.txt` (out of git with the rest of
 the library; 1.3 MB, one form feed per page). The research prompt greps there first and only
 views a page the OCR could not answer. Re-run for a new PDF:
 `ocrmypdf -q -j 8 --force-ocr --sidecar docs/ocr/NAME.txt NAME.pdf - > /dev/null`.

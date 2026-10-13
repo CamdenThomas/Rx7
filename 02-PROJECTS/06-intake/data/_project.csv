@@ -1,7 +1,7 @@
 key,value
 name,06-intake
 kind,record
-goal,"The reference folded into the car: every table it holds moved into 00-CAR, every manual, catalogue and datasheet parsed into the car's tables and taken out of the tree (kept only as ignored bulk in the intake folder it came from), the projects' vendor files moved to their projects, until 01-REFERENCE is an intake of unprocessed files and nothing more - CAR holds state and truth, APP the app and the view, PROJECTS the work in progress"
+goal,"The reference folded into the car: every table it holds moved into 00-CAR, every manual, catalogue and datasheet parsed into the car's tables and taken out of the tree (kept only as ignored bulk in the intake folder it came from), the projects' vendor files moved to their projects, until 01-INTAKE is an intake of unprocessed files and nothing more - CAR holds state and truth, APP the app and the view, PROJECTS the work in progress"
 phase,PROPOSED
 opened,2026-10-13
 icon,folder

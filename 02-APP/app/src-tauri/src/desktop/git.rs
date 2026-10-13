@@ -171,7 +171,7 @@ pub fn dirty(root: &Path) -> u32 {
 /// nothing of anyone else's can ride along.
 pub fn commit_data(root: &Path, message: &str) -> Result<(), String> {
     let _g = hold();
-    git(root, &["add", "-A", "--", "00-CAR/data", "01-REFERENCE/data", "02-APP/data", "02-PROJECTS"])?;
+    git(root, &["add", "-A", "--", "00-CAR/data", "02-APP/data", "02-PROJECTS"])?;
     git(root, &["commit", "--quiet", "-m", message]).map(|_| ())
 }
 

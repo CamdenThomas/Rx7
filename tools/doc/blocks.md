@@ -23,12 +23,12 @@ that asks him to weigh a list the agent has not produced yet: do the research ro
 
 **Block ids are `<project>.<number>`** (D-356): `01.12` is the twelfth block raised for
 `02-PROJECTS/01-electrical`, `03.07` the seventh for `03-luxury`. The prefix is the project
-directory's two-digit number; `00-CAR`, `01-REFERENCE`, `02-APP` and `00-verify` use `CAR`,
-`REF`, `APP` and `VER`, because they are not numbered projects. Never `BLK-`: this car's
-factory diagrams already use `B-12` and `D-01` as component codes, and an id family must never
-share a namespace with the subject matter. And because a bare `13.80` in prose is a voltage, a
-block id is only recognised as structure — a `blocks` key, `closes`, a gate. In prose write it
-as `block 01.07` or in backticks. The renumberings are `rx7.py doc ids`.
+directory's two-digit number; `00-CAR` and `02-APP` use `CAR` and `APP`, because they are not
+numbered projects (the archived `01-REFERENCE` and `00-verify` used `REF` and `VER`). Never
+`BLK-`: this car's factory diagrams already use `B-12` and `D-01` as component codes, and an id
+family must never share a namespace with the subject matter. And because a bare `13.80` in
+prose is a voltage, a block id is only recognised as structure — a `blocks` key, `closes`, a
+gate. In prose write it as `block 01.07` or in backticks. The renumberings are `rx7.py doc ids`.
 
 **The clarity bar.** A block must be answerable from its screen alone, with no design in
 front of him — the same three-isolated-workers standard as everything else. If he answers

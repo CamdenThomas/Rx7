@@ -1,5 +1,5 @@
 //! `photo://localhost/<path>` — his photos of the car, read from the tree's
-//! 00-CAR/photos folder, and the 3D model built in 01-REFERENCE/model (D-415) — nowhere else.
+//! 00-CAR/photos folder, and the 3D model built in 01-INTAKE/model (D-415) — nowhere else.
 
 use super::Tree;
 use std::borrow::Cow;
@@ -12,7 +12,7 @@ pub fn serve(ctx: UriSchemeContext<'_, Wry>, req: Request<Vec<u8>>) -> Response<
     let file = root.join(&wanted);
     // His photos, the 3D model, and the generated harness drawings (D-385) - nowhere else.
     let inside = file.canonicalize().is_ok_and(|f| {
-        ["00-CAR/photos", "01-REFERENCE/model", "02-PROJECTS/01-electrical/00-design/diagrams"]
+        ["00-CAR/photos", "01-INTAKE/model", "02-PROJECTS/01-electrical/00-design/diagrams"]
             .iter()
             .filter_map(|b| root.join(b).canonicalize().ok())
             .any(|b| f.starts_with(b))

@@ -38,7 +38,7 @@ threshold only holds while the PMU's unpowered input reads ≥ 200 kΩ to ground
 
 `models/generic.lib` holds the textbook parameter sets (every one `confirm` against the
 vendor's file). `run.sh` writes `models/active.lib`, which the decks include: the vendor models
-under `01-REFERENCE/model/library/spice/<part>/*.lib` when that folder exists on the machine
+under `01-INTAKE/model/library/spice/<part>/*.lib` when that folder exists on the machine
 (it is gitignored — vendor licences), then `generic.lib` for whatever is left. The LM2903
 comparator is an ideal open-collector switch with 3 mV of hysteresis; its real offset (≤ 7 mV)
 and bias (25 nA) sit far below every margin a deck tests.

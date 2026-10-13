@@ -36,7 +36,6 @@ jobs:
           sparse-checkout: |
             tools
             00-CAR/data
-            01-REFERENCE/data
             02-APP/data
             02-PROJECTS
             99-ARCHIVE
@@ -89,8 +88,7 @@ jobs:
           sparse-checkout: |
             tools
             00-CAR/data
-            01-REFERENCE/data
-            01-REFERENCE/factory-circuits
+            01-INTAKE/factory-circuits
             00-CAR/photos
             02-APP/data
             02-PROJECTS

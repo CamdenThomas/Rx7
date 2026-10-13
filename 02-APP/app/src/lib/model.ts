@@ -24,7 +24,7 @@ export interface Area {
   path: string;
   name: string;
   prefix: string;
-  kind: 'car' | 'reference' | 'project' | 'app';
+  kind: 'car' | 'project' | 'app';
   project: Record<string, string>;
   tables: TableMeta[];
 }

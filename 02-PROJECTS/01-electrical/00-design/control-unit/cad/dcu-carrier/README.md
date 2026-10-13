@@ -215,9 +215,9 @@ inside U15 only (Y11), whose 0.5 mm-pitch VSSOP-10 lands leave 0.15 mm between i
 
 The vendor models (the TE DT13s, the XenGi Teensy 4.1, Infineon's PG-TSDSO packages) are not ours to
 publish, so they are not in this folder: the footprints point at `${RX7_MODELS}/<cad row>/<file>`,
-and `RX7_MODELS` is the local CAD library `01-REFERENCE/model/library/electrical` (gitignored,
-catalogued in the `01-REFERENCE` `cad` table). Set it once — KiCad: **Preferences → Configure Paths →
-+**, name `RX7_MODELS`; terminal: `export RX7_MODELS=$HOME/dev/Rx7/01-REFERENCE/model/library/electrical`
+and `RX7_MODELS` is the local CAD library `01-INTAKE/model/library/electrical` (gitignored,
+catalogued in the `00-CAR` `cad` table). Set it once — KiCad: **Preferences → Configure Paths →
++**, name `RX7_MODELS`; terminal: `export RX7_MODELS=$HOME/dev/Rx7/01-INTAKE/model/library/electrical`
 (Mac) or the Fedora path. Without it those parts show bare pads. Three still do:
 
 - **J2**: TE's DT13-08PA model is still zipped in its library folder
