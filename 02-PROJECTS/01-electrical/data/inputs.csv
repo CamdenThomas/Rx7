@@ -2,8 +2,8 @@ id,title,kind,window,fault_rule,decode
 A1,Turn stalk,ground,55,< 50 = short · > 990 = open,window
 A2,Wiper stalk,ground,45,< 50 = short · > 990 = open,window
 A3,Brake pedal + wiper park,ground,30,< 50 = short · > 990 = open,upward
-A4,Pop-up L transit + inhibitor P/N,ground,20,< 50 = short · > 990 = open,upward
-A5,Pop-up R transit + inhibitor R,ground,20,< 50 = short · > 990 = open,upward
+A4,Inhibitor P/N (crank interlock),ground,20,< 50 = short · > 990 = open,upward
+A5,Inhibitor R (reverse),ground,20,< 50 = short · > 990 = open,upward
 A6,Door jamb switches,ground,20,< 50 = short · > 990 = open,window
 A8,Hazard · horn · wink,ground,35,< 50 = short · > 990 = open,window
 A15,Headlight switch,12v,75,0 = disconnected,conductance
