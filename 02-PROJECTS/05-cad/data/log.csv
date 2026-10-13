@@ -2,3 +2,4 @@ id,date,workflow,ids,summary
 L-0001,2026-10-11,session,D-477 A01 A02 A03 A04 A05 B01 B02 C01,"Project opened (D-477): area, opening blocks 05.01-05.03, work A01-A05 B01-B02 C01; 02-APP MG1 gated on C01"
 L-0002,2026-10-12,clean,A01 A02,"A01 and A02 done: model/coverage.py derives what exists for every part (975: 39 files, 18 placed, 152 dimensions, 200 found-model hints, 962 figures, 11 nothing); the datums table holds the frame and the factory hard points, 15 rows, the unfixed coordinates confirm"
 L-0003,2026-10-12,clean,A03,"A03 done: the model's three tables declared - model_parts, model_dims, model_mates - so accuracy is a column; empty until B01"
+L-0004,2026-10-13,answers,D-516 D-517 D-518 B03,"His words on the body applied: D-516 closes 05.01 (through the app), D-517 closes 05.02 (every part as it comes off, insides when opened), D-518 the unibody first pass in the Manual's model page; B03 his copy of the body models; 05.03 stays open"
