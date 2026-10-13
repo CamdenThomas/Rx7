@@ -13,7 +13,7 @@ icu_logic_draw,~0.8 peak,A,icu_channels IC12,"Teensy, transceiver, IMU, the thre
 display_draw,1.5–3,A,D-313,a 900–1000-nit panel and its backlight — measure at bring-up
 o10_headroom,~3,A,"D-313, electrical LD15 / D-223","for DP-ICU-A, the only module drop left on O10 (DP-DCU 1 is on F22, D-355)"
 servo_stall,1–2.5 each,A,DCU-CARRIER (archived),why the servo rail is its own buck
-thresholds,redline 7000 rpm · hot water 105 °C · low oil 1.0 bar · tank 16.6 gal,,D-328,"tank 16.6 gal from the 1982 brochure S-004, primary (D-328 supersedes D-300); a measured fill would supersede it again"
+thresholds,split into redline_rpm · hot_water_c · low_oil_bar · tank_gal (2026-10-13),,D-328,The four were one prose cell; code and the app need them one by one (R2: these keys are the home). D-328 is the ruling.
 vdrop_max_v,0.5,V,"usual automotive limit for a lamp or motor feed, out and back","the voltage-drop check's ceiling; a hand figure, confirm"
 pmu_total_a,170,A,S-028 p.8: 170 A continuous for the PMU 24,the unit's total output ceiling the est_a sum is checked against
 log_thin_bytes_per_s,137,,sum of log_channels.bytes (sql),"the thinned record, one per second - 0.49 MB per hour of driving (D-493)"
@@ -21,3 +21,7 @@ log_full_bytes_per_s,3155,,arithmetic: can_messages rates x 15-byte frame record
 log_pull_s_per_hour,60,,D-478 (his words: under a minute),"the thinned log of an hour's drive must cross the link in this; 25 s at 20 kB/s, 49 s at 10 kB/s (D-493)"
 radio_uart_baud,921600,,D-493; was 115200 (F-015),"the Teensy-to-C3 UART: 115200 is 11.5 kB/s, under the BLE rate, so it rises to 921600 (BT3); confirm at BT4"
 ble_kbps,20,kbps,"hand figure for an ESP32-C3 notifying an Android phone, 2M PHY, MTU 247+","the pull's rate budget; confirm at BT4 - 30-60 kB/s is common, 10 the floor the budget still meets"
+redline_rpm,7000,,D-328,the cluster's redline and stats.h REDLINE_RPM; the app's drive flags read it here (02-APP BL4)
+hot_water_c,105,,D-328,stats.h HOT_WATER_C; the app's drive flags read it here (BL4)
+low_oil_bar,1.0,,D-328,stats.h LOW_OIL_CBAR is this in 0.01 bar (100); the app's drive flags read it here (BL4)
+tank_gal,16.6,,"D-328; S-004 (the 1982 brochure, primary)",a measured fill would supersede it (D-328 supersedes D-300); the app's fuel figures read it here
