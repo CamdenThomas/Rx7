@@ -1098,3 +1098,361 @@ Cranking drops under 0.5 V on both sides, first and after the heat cycles [work 
 The boxed factory harness was kept as the fallback until shakedown was passed. What happens to it afterwards is not in the record - confirm [D-411]
 Still capped and waiting for other projects, and not part of this ruling: the window fuses, the seats, the heater servos and blower, the radar, the amplifier and speakers, the swap's reserved outputs [fuses F8, F34; pins 1, 14; housings L3-SD]
 Open questions only you can answer live in the app's blocks. None may be open in electrical when you tick [D-533]","Every item in the steps is true, and E48 is ticked in the app.","Any item is not true: do not tick. Fix it, or raise it in the app as a note so it becomes a row - the fold copies whatever the record says into the car's baseline, wrong or right. A difference between the car and the record that you know about but never wrote down: write it now.",Tick E48 in the app. That is the ruling. Nothing else is entered; the fold (E49) is then started from the app.
+A5,"Every factory wire the new harness lands on has been seen on the car, and its colour either matches the 1982 diagram or the difference is written down.","engine bay, under the car at the transmission, the tank sender at the rear, the handbrake lever",2 h - confirm,"multimeter on ohms / continuity
+torch and a small mirror
+phone camera
+masking tape and a marker
+jack, jack stands and wheel chocks (for the inhibitor switch and the tank sender)",,"S1 (the strip) is done and C1 (the measurement day) is under way: the handbrake lever and the rear floor are bare
+V-114 is answered: CK08 (pop-up motors) and CK09 (wiper motor) are the other half of this row
+Battery negative disconnected: the alternator's B stud beside the A-08 plug is always live
+Engine cold: the two senders are on the engine's rear housing
+Car on jack stands with the wheels chocked before you go under it","The desk half is done: every wire colour the design names was read off the 1982 diagram scans, and all were right. Nobody has compared the diagram with this car yet. [D-348]
+Factory colour codes: the first letter is the base colour, the second the tracer stripe. B black, W white, R red, G green, Y yellow, L blue, Br brown, O orange, Lg light green. GY is green with a yellow tracer, not grey. [01-INTAKE factory-circuits README, wire colour codes]
+Alternator plug A-08 has two wires: BW is the regulator's ignition feed (the new wire is L1-S1 2), WB is the charge-lamp line (the new wire is L1-S2 8). [00-CAR PT025-R, PT025-L; cavities L1-S1 2, L1-S2 8]
+Inhibitor switch A-06 (the park / neutral and reverse switch on the automatic) has four wires: BY in and BW out are the starter interlock, GY in and RW out feed the reverse lamps. [00-CAR PT298-BY, PT298-BW, PT298-GY, PT298-RW; devices DV05]
+Water temperature sender C-02: one spade, wire YW, in the rear housing directly below the oil pressure sender. [devices DV06; 00-CAR PT023-YW]
+Oil pressure sender C-09: one spade, wire BrY, in the rear-housing gauge port, above the water temperature sender. [devices DV07; 00-CAR PT004-signal]
+Brake fluid level switch C-05 on the reservoir: two wires, BR and B. [00-CAR PT562-BR, PT562-B; cavities L1-S2 1]
+Parking brake switch C-04: one wire, BR; the switch body grounds through the lever bracket. [cavities L3-S2 11]
+Fuel tank sender C-01: Y is the signal, B the ground. [00-CAR PT169-Y, PT169-B; cavities L4-S 1]
+A 44-year-old harness has been repaired. Where the car and the diagram disagree, the car is right and the row is changed. [D-348; CLAUDE.md R11]","Each of the seven connectors (A-08, A-06, C-02, C-09, C-05, C-04, C-01) has a photo and one line: the colours seen, and 'matches' or what differs.","A colour that differs, a missing wire or a previous owner's splice: do not trace it and do not cut it. Photograph it, write what you see in the app and carry on. The agent changes the row before any leg is crimped.",Tick A5. In the answer's words give one line per connector with the colours you saw. The CK08 and CK09 readings belong to V-114.
+V-002,"The alternator's rated output, read off its own case, is in the record.","engine bay, at the alternator",15 min,"torch
+rag and a soft brush
+small mirror or the phone camera",,"Engine off and cold, key out
+Battery negative disconnected before a hand or a tool goes near the back of the alternator: its B stud is always live","The case has been looked at once and read only 'B' and Mitsubishi. The rating was not found. [work V-002]
+The 1982 factory data gives 12 V 50 A for this car. [00-CAR SP-079, S-038 T:3]
+The 1985 manual gives 55 A, Mitsubishi A5T30574 - a later car's unit. [00-CAR SP-078, S-002 p.5-3]
+The 1981-83 parts catalogue number is N221-18-300R; the catalogue prints no amp rating. [00-CAR SP-006]
+Replacement units carry Mitsubishi A2T, A3T or A5T numbers; that number identifies the unit even where no rating is stamped. [00-CAR PT025]
+At the back: B is the output stud (wire WR, always live), a two-pin coupler holds R (BW) and L (WB), and a test hole about 20 mm deep sits near B. [00-CAR PT025-B, PT025-R, PT025-L, PT025-F]
+Nothing in the new harness depends on the figure: the alternator fuse F18 is 100 A on a 6 AWG cable. [fuses F18; cables C07]
+It is the yardstick for the charging reading after the first start on the new backbone, and for the no-charge fault seen earlier (11.4 V at idle). [checks CK03; D-198]","A rating in amps read off the case is entered, or the Mitsubishi number on the case with a photo.","No rating anywhere: enter the Mitsubishi number (A2T, A3T or A5T and its digits) in words with a photo, and the agent finds the rating from it. No number either: say so. The record then keeps 50 A (SP-079) as the book figure, not a reading.","V-002 takes a value in A. A part number, if that is all there is, goes in the answer's words."
+W-330b,"One email to Ionic has asked the four open questions about the battery, and their reply is in the app.",desk,20 min to write; the reply is theirs,email,,Nothing. This can be sent today,"The pack is an Ionic IC-12V40-S9H: 12 V, 40 Ah, heated LiFePO4, four cells in series. [D-330]
+What already works: the BMS answers on Bluetooth service FFE0, characteristic FFE1. A read returns a frame - 7E start, 01 type, 08 length, four little-endian 16-bit cell counts, a checksum, 0D - which decodes at about 1.43 mV per count. [D-330]
+Current and state of charge are not in that frame. Until Ionic answers, the car logs voltage only; no shunt was bought. [D-330]
+Published figures: charge to 14.6 V +/- 0.1, float 13.9 V, discharge cut-off 8.0 V, operating -20 to 60 C. [00-CAR SP-231, SP-232, SP-233]
+The heater's own figures are not published. Packs of this class heat only from an active charger, but that is unverified for the S9H. [00-CAR SP-233; work V-052]
+If the BMS disconnects the pack while the engine runs, the alternator loses its load in an instant; a surge clamp (P136) is in the design for that case. [work W-330b; parts P136]
+The engine project plans a 160 A alternator, which can push well over 100 A into the pack after a long crank. [work W-330b]
+Ionic's support address is not in the record. [00-CAR suppliers - no Ionic row]","The email is sent and Ionic's reply, word for word, is pasted into the app.","No reply: note the date you sent it and send once more. If Ionic will not answer, say so in the app as a note. The row stays open and the agent decides what the design assumes; the figures stay unverified.","Tick W-330b when the reply is in, with the reply pasted whole into the answer's words. The agent's row V-052 reads it."
+R6,"The PMU's own current draw when it is switched off, measured on the bench, is in the record in mA.",bench,45 min - confirm,"12 V bench supply (any steady 12 V source; not a parts row)
+multimeter with a mA range, wired in series (P045 is the cart's meter; any meter in hand will do)
+a fused lead with a small fuse (the record gives no size for this test)
+two short leads fitted with the PMU's own terminals, for pins 25 and 7
+a ring lug or a clamp for the PMU's M6 stud",,"The PMU-24 DL is on the bench with nothing wired to its outputs
+Do this in the same sitting as F-009: the set-up is the same
+Rings and watch off; the supply off while you connect","The design budget assumes the sleeping PMU draws 150 mA. One bench report of an ECUMaster PMU says under 20 mA, and ECUMaster publishes no figure. [loads LD17; D-280]
+On the 40 Ah pack that is about 11 days of parking at 150 mA against about 80 days at 20 mA, before the battery's own protection cuts off at 8.0 V with no slow-crank warning first. [D-280; 00-CAR SP-232]
+The whole car asleep must be 30 mA or under, 50 mA at most; that is measured later in the car. This reading is the PMU's share of it. [checks CK02; D-280]
+Power goes in on the M6 stud in the middle of the unit. Ground is pin 25. Pin 7 (+12 V SW) switches the PMU on and off. [pins STUD, 25, 7; S-027; S-028 p.8]
+By default the PMU switches off at once when pin 7 loses its 12 V. [S-028 p.131]
+Status LED: steady green means active with no PC, steady orange means active and connected to the PC. [S-028 p.14]
+The plug is a Sicma / FCI 39-way. Pin 25 is a large 2.8 mm cavity (terminal 211CC3S3120 for 10-12 AWG, 211CC3S2120 for 14-16 AWG); pin 7 is a small 1.5 mm cavity (terminal 211CC2S2160P). [pins 25, 7; S-027]
+The PMU works from 6 to 22 V and is protected against reverse polarity up to 16 V. [S-028 p.8]
+How the bench leads reach pins 25 and 7 before the 39-way plug is terminated for good (E16) is not in the record. [work E16]","A steady reading in mA, taken with pin 7 off and after the reading has stopped falling, is entered.","Over 50 mA and steady: unplug everything except the stud and pin 25, wait five minutes and read again. Then enter what it is - a high figure is a finding, not a mistake. If the PMU will not switch on, or the reading jumps about: supply off, check polarity and the fuse. Never raise the voltage to make it work.","R6 takes a value in mA. In words add the supply voltage, how long after switch-off you read it, and whether the CAN lead was plugged in."
+T-048,"Bench Teensys 2 and 3 are flashed and labelled with what they run, and the CAN transceiver modules have their header pins soldered on.",desk,1.5 h - confirm,"soldering iron and solder (P044 is the cart's; any iron in hand)
+the Mac with the Arduino IDE and Teensyduino (or arduino-cli with the Teensy core)
+the Teensy's USB cable
+one jumper wire
+masking tape and a marker for the labels
+safety glasses for soldering",P142 P143 P070,"Run the test suites first; never flash from a red suite
+A clear, lit desk; the iron on a stand","Three Teensy 4.1 boards are in hand with headers. Board 1 passed the bench stages in 2026-08; boards 2 and 3 have never been flashed. [bringup_log 2026-08, 2026-09-03; parts P142]
+The agent's row B8 (two boards talking on a real CAN bus, the PMU simulator live) waits on this row: it needs the transceivers' header pins soldered. [work B8]
+The bench set is drawn as: Teensy 1 the ICU, Teensy 2 the PMU simulator (pmu_sim), Teensy 3 the tach simulator. [00-design README section 12]
+The parts row calls the three boards ICU, DCU and spare. The record does not say which sketch board 3 keeps; either is re-flashed in a minute. [parts P142]
+Arduino IDE settings: board Teensy 4.1, CPU speed 600 MHz. Library ACAN_T4, not FlexCAN_T4. On the Mac nothing more is needed than Teensyduino. [00-design README section 9]
+pmu_sim sends the PMU's frames 0x100-0x130 from a model of the car. It runs with no transceiver too: it reports the send failure and carries on. Serial Monitor at 115200, press ? for its commands. [pmu_sim.ino header]
+tach_simulator needs one jumper, pin 3 to pin 4. It sweeps 500 to 8000 rpm and back and checks what it measures against what it makes. Serial Monitor at 115200. [tach_simulator.ino header]
+Five SN65HVD230 transceiver modules are in hand (the small boards that put a Teensy on a CAN bus); their header pins are not soldered. [parts P143]
+Two 120 ohm resistors for the bench bus come from P070's spares. [parts P070]","Board 2 answers on the Serial Monitor as the PMU simulator, board 3 runs its sketch, both carry a label, and at least two transceiver modules have straight, shiny header joints.","Upload fails: check the board is set to Teensy 4.1, try another USB cable, press the small button on the Teensy when the loader window waits. A suite fails in run.sh: stop, do not flash, and paste the failing line into the app for the agent.",Tick T-048. In words say what each board runs and the version it printed.
+T-049,"A microSD card sits in a bench Teensy's own card slot, so the logging and odometer rows can be proven on a real card.",desk,10 min,"the Teensy's USB cable
+the Mac with the Arduino IDE's Serial Monitor",P151 P142,"The microSD cards have arrived (Y16's bench kit), or a spare card is to hand
+The Teensy unplugged from USB while the card goes in","The row's part LP04 was the luxury package's number; the same cards are electrical P151 now, two of them. [parts P151]
+The ICU firmware uses the card slot on the Teensy 4.1 itself. [icu.ino]
+Three agent rows wait on this card: the odometer that survives a power cycle (F-007), the settings file with a safe mode (F-010) and the logging power-loss test (B7). [work F-007, F-010, B7]
+The ICU writes one folder per drive on the card, /RX7/<number>/, holding a summary, a thinned log and a full log. [log_files; D-493]
+At boot the ICU sketch prints 'card: drive N, X% free' when it finds a card and 'card: none - nothing is logged, the link answers err 3' when it does not. [icu.ino]
+The ICU sketch stops at boot with 'FATAL: no PSRAM detected' on a Teensy that does not have the two memory chips (P108) soldered underneath; P108 is not bought yet. [icu.ino; parts P108]
+How the card must be formatted is not in the record. Use it as it comes out of the packet. [parts P151 - no format given]",The card is seated in the Teensy and the board is labelled as the one with the card.,"'card: none' with the card in: reseat it, then try the second card. 'FATAL: no PSRAM': the card step is still done; say in the app that the board has no PSRAM, because the agent's card rows need a board that boots.","Tick T-049. In words: which board (1, 2 or 3) holds the card, and the boot line it printed."
+X-007,"You have looked at the three rendered cluster pages and said the cluster is agreed, or said what must change, so the agent can archive the renders.","desk, on the Mac",20 min,"the Mac's terminal
+g++ (once: xcode-select --install)
+Python with Pillow, which the render script uses to write the PNGs
+SDL2 for the live simulator only (once: brew install sdl2)",,Nothing. This can be done today,"render.sh draws every cluster page to a picture with the real renderer and the simulator's demo values: page0_drive.png, page1_diag.png and page2_trip.png, each 1280 x 480, in a renders folder beside the script. [render.sh; render_pages.cpp]
+The screen is drawn at 1280 x 480 and scaled up to the 12.3-inch panel's 1920 x 720. [params canvas]
+The first renders (2026-09-22) found and fixed three defects: the trip page showed -198 F, 0 psi and 0.0 V for figures not yet recorded (now dashes); the diagnostics page ran 'O10' into its channel name; its column header sat on the title. [work X-007]
+A missing sensor never shows as a real zero: open, short, stale and out-of-range each have their own look. [00-design README section 10]
+The limits the cluster draws: redline 7000 rpm, hot water 105 C, low oil 1.0 bar, tank 16.6 gal. [params redline_rpm, hot_water_c, low_oil_bar, tank_gal]
+The live simulator runs the same code. Keys: Q A rpm, W S speed, E D water, R F oil pressure, T G oil temperature, Y H fuel, U J volts, 1-5 warning lamps, Z X C V sensor faults, SPACE sweeps the tach, P next page, + - window size, ESC quit. [00-design README section 8]
+This is the screen's content only. The bezel around it is the luxury package's. [modules ICU]","You have answered X-007 with 'agreed', or with a list of what to change on which page.","render.sh stops: read its last line. 'g++ not found' means run xcode-select --install; a Python error naming PIL means Pillow is missing. Anything else: paste the output into the app. If a page looks wrong, that is the answer - describe it, do not tick 'agreed'.",Tick X-007 and write 'cluster agreed' in words; or leave it unticked and send what to change as a note. The agent archives the three PNGs once it is agreed.
+F-009,"With the real PMU on the bench and its Windows client, you have found out which parts of the frames 0x100-0x130 the client can build, and told the agent; the three bench checks CK06, CK13 and CK15 are read in the same sitting.","bench, with the Windows laptop",3 h - confirm,"the Windows laptop with ECUMaster's PMU client installed
+USB-to-CAN interface the client supports: Ecumaster USBtoCAN, Peak PCAN-USB or Kvaser (P138)
+12 V bench supply, fused lead and the PMU bench leads from R6
+one 120 ohm resistor (P070)
+a notepad: you are recording what the client accepts and refuses",P138 P070,"R6's bench set-up: supply to the PMU's stud through a fuse, pin 25 to ground, pin 7 to 12 V to switch it on
+The PMU client installed on the Windows laptop
+Nothing wired to the PMU's outputs","The PMU sends CAN frames two ways. Its Standard CAN Stream is fixed by ECUMaster. Its CANbus Export is ours to define, and 0x100-0x130 are Exports. [D-378; S-028 p.90, p.95]
+An Export field can be 8-bit unsigned, 8-bit signed, 16-bit big endian or 16-bit little endian, times a whole multiplier from 1 to 1000, or the raw value. A frame is 0 to 8 bytes, sent 1 to 100 times a second or on an edge. [S-028 p.90-92]
+The manual shows no bit-packing, no multiplexing and no rolling counter on an Export. Those three are what this row proves or rules out. [D-378]
+Our four frames go out on CAN2 at 500 kbps, little-endian: 0x100 vehicle state at 20 Hz, 0x110 power at 10 Hz, 0x120 outputs at 5 Hz, 0x130 per-channel current at 5 Hz. [can_messages 0x100, 0x110, 0x120, 0x130; params can_bitrate; can_map.h]
+The laptop talks to the PMU on CAN1: PMU pin 23 is CAN1 high, pin 36 CAN1 low; on the interface's DB9 plug pin 7 is CAN high and pin 2 CAN low. CAN1 has no terminator inside the PMU, so a 120 ohm resistor goes across the pair. [pins 23, 36; S-028 p.36-38]
+Never connect the interface's +5 V to the PMU's +5 V pin. [S-028 p.37]
+Status LED: steady orange means the PMU is active and connected to the PC. [S-028 p.14]
+Whatever cannot be built becomes a simpler layout - one byte per field, fixed frames in place of 0x130's index. The agent changes the record first and the firmware second. [work F-009]
+Two extras the control panel wants if the client can export them: input A8's decoded state (idle, horn, hazard, wink L, wink R) and output O20's dimmer duty. Bytes 5-6 of 0x110 are kept for them. [work F-009; D-492]
+The client is only on the Windows laptop; files it saves come back to the project by hand. [D-376]
+Seeing the bytes on the wire needs a listener on CAN2. The record does not name one for this session. [work B8 - the bench bus is not built yet]","For each of these you can say yes or no, with what the client showed: a packed bitfield byte, a rolling 0-255 counter in byte 7, a multiplexed 0x130, the two panel extras; and CK06, CK13 and CK15 each have an answer.","The client cannot do something: that is a result, not a failure. Write exactly what it offered instead. The client will not connect: check the 120 ohm resistor is across pins 23 and 36, the two CAN wires are not swapped, and the PMU's LED is lit. Do not change any other setting in the PMU to make an Export work.","Tick F-009. In words, one line each: bitfields yes/no and how; counter yes/no; 0x130 multiplex yes/no; A8 state and O20 duty exportable yes/no; then CK06, CK13, CK15. Bring the saved project file to the Mac and say where it is."
+BT4,"On the bench, the radio module on a bench Teensy has handed a recorded log to the app over Bluetooth while still reading the battery, and you have noted the pull time and whether the battery readings kept coming.","bench, within Bluetooth reach of the Ionic battery",half a day - confirm,"the Mac with the Arduino IDE (Teensy 4.1 support, the ESP32 core 3.x and the NimBLE-Arduino 2.x library)
+two USB cables, one for the Teensy and one for the radio module
+three jumper wires
+the phone (or the Mac) with the Rx7 app's Connect and log page
+a stopwatch (the phone's)
+a Bluetooth scanner app on the phone, to read the battery's advertised name",P116 P142 P151,"BT3 (the log link firmware) is done and the app's side, 02-APP BL2, is done
+T-049: the card is in the bench Teensy
+Y16's bench kit has arrived: the two XIAO ESP32-C3 modules (P116)
+The bench Teensy boots the ICU sketch: it needs its two PSRAM chips, or the sketch halts
+The Ionic battery is close enough for Bluetooth and nothing is connected to its firmware-update service","The radio module is a Seeed XIAO ESP32-C3 (P116). It has two jobs: read the battery's BMS over Bluetooth, and serve the ICU's logs to the phone as a device named RX7-ICU. Whether one module does both at once has never been run: this row is that proof. [D-478; icu_radio.ino header; log_link LL01]
+Wiring: the radio's TX to Teensy pin 7 (Serial2 receive), the radio's RX to Teensy pin 8 (Serial2 transmit), grounds joined, 921600 baud. [icu_channels IC24; params radio_uart_baud]
+The budget: an hour's thinned log is 0.49 MB (137 bytes a second) and must cross in under a minute; 25 s at 20 kB/s, 49 s at 10 kB/s. Both rates are unmeasured. [params log_thin_bytes_per_s, ble_kbps, log_pull_s_per_hour; D-493]
+A drive is power-on to power-off: every boot of the Teensy starts a new folder on the card. Until the CAN side is written the log is filled with demo values. [icu.ino header]
+Pairing is by a six-digit key. On the bench, type p in the Teensy's Serial Monitor to open pairing for 60 s; it prints 'PAIRING: key NNNNNN'. Type u to forget every phone. [log_link LL02, LL16, LL17; icu.ino]
+Once a second the Teensy prints 'link: N frames in, N out, N bad crc   card: ..., drive N'. 'frames in' rising means the radio's battery lines are arriving. [icu.ino]
+The radio reads the battery two ways: it always listens for the pack's advertisement (pack millivolts), and connects for cell detail only when asked. During a log transfer the cell connection is dropped; the listening goes on. [icu_radio.ino header; log_link LL14]
+The sketch looks for a battery named IONIC. That name is a guess: read the real one off the pack with a scanner app first. [icu_radio.ino]
+The radio never writes to the battery. Service FEE7 and anything labelled DFU is the pack's firmware-update door and is never touched. [D-330; icu_channels IC24]
+A log is marked pulled only when the app confirms the whole file with a matching checksum; nothing is ever deleted on the app's word. [log_link LL08; D-478]
+The app's Connect and log page was built against a fake ICU and has never met a real one, a real phone or the Mac's Bluetooth. [02-APP work BL2]
+The coin cell for the clock (P202) is not bought yet. [parts P202]","A recorded drive has been pulled to the app with the checksum accepted, you have its time in seconds, and you can say whether 'frames in' kept rising during the pull.","The phone cannot see RX7-ICU: check the radio is powered and the Teensy prints 'link:' lines. Pairing fails: type u, then p, and try again. The pull stalls: note the error number the app shows (3 no card, 4 busy, 5 aborted, 6 Teensy silent, 7 checksum mismatch) and carry on down the list. Every 'no' on this list is a finding to write down, not something to fix on the bench.","Tick BT4. In words: the log's size and the seconds it took, whether the battery readings kept coming, and a yes / no for each of the eleven items in the steps."
+Y16,"The bench kit is ordered: the 12.3-inch display, its HDMI bridge, two ESP32-C3 radio modules, two microSD cards and the page button.",desk,45 min,a browser and a card,P118 P119 P116 P151 P120,"Nothing. You ruled on 2026-10-12 that this kit is bought before the freeze
+Everything else stays unbought until the freeze","Your ruling: 'Both now. About $625' - this kit is about $195 of it, and nothing in it depends on a measurement. [D-490]
+P118, the display: a 12.3-inch bar screen, 1920 x 720, 900 to 1000 nit, bonded or anti-reflective glass, with its own scaler board that takes HDMI. Estimate $150. [parts P118]
+P119, the bridge: a TFP410-class HDMI encoder board. It turns the BT817 board's RGB output into HDMI for the display's scaler. Estimate $20. [parts P119]
+P116, the radio: two Seeed XIAO ESP32C3 class modules, castellated so they fit a header. One for the bench, one for the carrier. Estimate $6 each. [parts P116]
+P151, two microSD cards, about $5 each; P120, a panel-mount momentary push button for changing pages, about $3. [parts P151, P120]
+The ICU unit's mock-up is drawn round a display of 305 x 122 mm behind a 3 mm bezel. The display's real outline and thickness are unknown until one is in hand. [work Y19]
+The BT817 evaluation board the display chain starts from is already ordered. [parts P117; work F2]
+The record names no seller or exact model for the display, the bridge or the button, and no size for the cards. [parts P118, P119, P120, P151 - no sku]
+Nothing else is bought before the design is frozen. [D-323; D-490]",All five lines are ordered and the row is ticked.,"No display matches 1920 x 720 at 900 nit or more with an HDMI board: do not substitute. Order the other four lines, leave Y16 unticked and say in the app what you found; the agent re-specifies the display.","Tick Y16 when ordered. In words: what you paid if it differs from about $195, and the display's exact model with its outline and thickness in mm from the listing."
+Y18,"The bench-revision circuit boards and the parts that go on them are ordered: the ICU and DCU carriers, the panel board, the upper connector board, their components, the DT13 receptacles and the enclosure hardware.",desk,2 h - confirm,"a browser and a card
+a spreadsheet program to open the four BOM files",P103 P144 P175 P195 P122 P150 P153 P194 P196 P145 P146 P147 P148 P149 P157 P170 P177 P178 P193 P104 P105 P106 P107 P109 P110 P159 P169 P176 P203 P155 P173 P192 P179 P180 P181 P182 P183 P184,"Y17 (the fab package) is done: the files are in the tree
+Pull the tree first so the zips and BOMs are the latest","Your ruling: about $430 of boards and parts bought now, accepting that a measurement may later force a second board. The panel board and its parts joined the order after that figure was set. [D-490; work Y18]
+Each board's project folder under 00-design holds a fab folder with one zip of gerbers and one BOM: icu-carrier-revA-gerbers.zip, dcu-carrier-revA-gerbers.zip, panel-revA-gerbers.zip, upper-board-revA-gerbers.zip, and a -revA-bom.csv beside each. [work Y17; the fab folders]
+Fab order: a JLCPCB-class fab, five of each board (the fab sells five, not two), 2 layers, 1.6 mm, 1 oz copper. About $45-65 with courier for the two carriers, about $10-20 more for the other two. [work Y18]
+Board sizes: ICU carrier 110 x 80 mm, DCU carrier 180 x 80 mm, panel 180 x 84.76 mm, upper connector board 130 x 36 mm. [work Y18; parts P175, P195]
+Each BOM line has refs, qty, value, footprint, mpn, supplier, record_part and status. Every line's status is 'confirm': the part number has not been checked against a datasheet by anyone holding the part. [the BOM csv files; work Y17]
+Digi-Key or Mouser: the DCU's parts are about $88 (P145-P149, P157, P170, P177, P178, P193), the ICU's about $35 (P104-P107, P109, P110, P159, P169, P176, P203). [work Y18]
+Two known loose ends: ICU resistor R18 has no value yet, so buy it as three values (P203); and check DCU transistor Q3 is rated 40 V before buying it. [work Y18, Y17]
+Deutsch DT13 receptacles (the sealed connector halves soldered to the boards): P122 a 6-way and a 12-way for the ICU, P150 the same pair for the DCU, P153 an 8-way, P194 a second 12-way. The flange-gasket suffix of each part number is settled at the order. [parts P122, P150, P153, P194]
+Panel parts: P155 keys, window switches, encoders and diodes (about $150), P173 key lights, P192 the LED driver and LEDs, P196 the short leads inside the unit. [work Y18; parts P155, P173, P192, P196]
+Enclosure hardware, about $73: M3 heat-set inserts, M3 screws, #6-19 thread-forming screws for the DT13 flanges, 1.5 mm silicone cord, foam tape, 1 kg of ASA filament. [parts P179-P184; work Y18]
+Not in this order: the panel's small screen (P201), the left plate (P198-P200, P204), the clock's coin cell (P202) and the PSRAM chips (P108). [work Y18; parts P201, P108, P202]
+The radio modules (P116) are in Y16's kit, not here. [work Y18]",The fab order and the parts orders are placed and the row is ticked.,"A BOM part number does not exist or is out of stock: buy the same value, package and rating from the line's 'mpn' description, and write the substitution in the app. The fab's preview shows a wrong outline or missing layers: do not pay; tell the agent which zip.","Tick Y18 when ordered. In words: what you paid, any part you substituted, and the DT13 part numbers with the suffix you ordered."
+Y27,"TE's Deutsch connector model files are in the model library on this Mac, so the Design page's stand-in connectors are replaced by the real shapes at the next export.",desk,15 min if they are already there; 1 h to copy or re-save,"the Mac's terminal
+a USB stick or the home network, if copying from the Fedora PC
+a browser",,Nothing. This can be done today,"The model library is the folder 01-INTAKE/model/library in the tree. It is kept out of git because the models' licences vary and the repository is public, so GitHub does not carry it from one machine to the other. [work Y27]
+Each model has its own folder named after its row, for example 01-INTAKE/model/library/electrical/deutsch-dt04-2p-te, holding TE's STEP file and zip. [00-CAR cad deutsch-dt04-2p-te]
+An earlier ruling said TE's download needs a login. The model rows say it did not: obtained yes, login no. The files were simply on the other machine. [work Y27; D-514]
+TE's site refuses a scripted download but serves the same link to a normal browser. [00-CAR cad deutsch-dt04-2p-te]
+The Fedora PC's clone is ~/docs/storage/Rx7; the Mac's is ~/dev/Rx7. [CLAUDE.md]
+Three more models need a login only you have: Omron's G8HL micro-ISO relay, Seeed's own XIAO ESP32-C3 STEP on GrabCAD, and Blue Sea's 5028 fuse block and 2300 busbar, whose pages refused the tool. They are optional for this row. [work Y27; 00-CAR cad omron-g8hl-micro-iso-omron, xiao-esp32c3-grabcad-seeed, bluesea-5028-st-blade-6-bluesea]
+Until a connector's file is found the Design page draws a stand-in from the dimension table; every connector stays marked unconfirmed either way. [00-design README section 13]","The command in step 1 lists the DT04, DT06, DTP04 and DTP06 folders on the Mac and none is empty.","A folder is missing and the Fedora PC is not to hand: open that model row's link in a browser, save the STEP into a folder of the row's name under library/electrical, and carry on. A model you cannot get: say which in the app; its stand-in stays.","Tick Y27 when the connector files are on the Mac. In words, name any optional model you also saved."
+V-113,"The opening in the centre stack where the factory climate controls sit is measured - width, height and depth in mm - with what the new unit could fasten to.","centre stack, from the driver's seat",30 min,"calipers
+steel rule or tape, in mm
+torch
+phone camera
+a screwdriver, only if the control head comes out easily",,"The car is whole: nothing needs to come out for this
+Key out","The new climate control is one box, like a stereo head unit: dials on its face, the DCU (the dash and climate control module) inside, and it slides into this opening from the front. [D-479; D-481]
+The mock-up needs an opening about 188 mm wide and 93 mm tall, under a face of about 192 x 97 mm. [D-481; work V-113]
+It is about 125 mm deep, 203 mm with its plugs and the bend of their cables. That depth is measured properly with the stack out (V-102). [D-481; work V-102]
+The panel board inside it is drawn 180 x 84.76 mm and is rebuilt to your numbers, not redrawn. [parts P175; work V-113]
+The factory heater control panel has a mode lever, a temperature lever and a rotary fan knob with the A/C push switch - as shown for the 1980 panel; check it against this car. [00-CAR PT215]
+Its control cables run back to the heater unit, and it has one small lamp. [00-CAR PT220, PT217]
+It sits in the dash centre panel, the surround it shares with the radio. [00-CAR PT837]
+Nothing behind the centre stack has been measured by anyone. If the opening cannot be about 188 x 93 mm, the design comes back to you as a question. [D-481; D-455]
+The fasteners that hold the control head are not in the record. [00-CAR PT215 - no fasteners listed]","Three numbers in mm - width, height, depth to the first thing behind - plus a yes or no on 'can the opening be about 93 mm tall', and where the factory control head fastens.","The control head will not come out without force: leave it, measure the opening in the surround instead and say so. A number that is smaller than 188 x 93: write it as measured - it is a finding, do not round it up.","Tick V-113 and type the three numbers in the answer as width x height x depth in mm, then the mounting points and whether 93 mm of height is possible."
+V-114,"The review's measurements are taken at the car and written down: CK19, CK20, CK21, CK22, CK23, CK24, CK08, CK09, CK10, then CK17 and CK18 with the column covers off.","engine bay, the nose, the hatch, and the steering column",a day - confirm,"multimeter: ohms, continuity, DC volts
+an ammeter good for 20 A, or the clamp meter
+a fused 12 V test lead and two jumper leads with clips
+calipers, and a thread gauge or a few known nuts
+screwdrivers for the column covers
+notepad, phone camera, masking tape and a marker
+wheel chocks",,"The car is whole and runs: these are taken before the interior comes out
+Lever in P, handbrake on, wheels chocked
+Battery negative off for every ohm reading and before touching a stud; back on for the powered tests
+Garage door open whenever the engine runs","Each check has its own row saying what to measure and why; nothing here needs the interior out. Three design rows wait on these numbers. [work V-114, R13, R14, R15]
+Pop-up motors (plugs E-03 left, E-04 right), four wires: WR motor feed, R the up command, RY the down command, YG the 'running' lamp line. The plug is cross-shaped: YG top, WR left, RY right, R bottom. [00-CAR PT033-WR, PT033-R, PT033-RY, PT033-YG]
+The diagram says each motor has its own relay and cam switch inside: 12 V on R drives it up and it stops itself, 12 V on RY drives it down, and YG is at 12 V while it runs. The new design follows that. If the motor does not behave so, the design is reopened. [00-CAR SP-584; D-460; checks CK08]
+Both manual raise knobs on the pop-up motors work. [00-CAR PT033]
+Wiper motor (plug D-02): L, LB, LW, LR on a four-way and B on a single plug. LW is the low brush, LR the high brush, B the ground; the diagram reads L as the fed common brush and LB as the park switch's output. The design had L and LB the other way round. [00-CAR PT678-L, PT678-LB, PT678-LW, PT678-LR, PT678-B; checks CK09]
+Headlamps (plugs E-08 left, E-09 right): RY low beam, RL high beam, B ground. LED units fitted by a previous owner sit in the factory buckets. [00-CAR PT035, PT035-RY, PT035-RL]
+Oil pressure sender C-09: the 1985 book gives open circuit at 0 psi, about 197 ohm at the gauge's first mark and 141 ohm at 60 psi. The 1982 gauge's scale is not recorded. [00-CAR SP-787; checks CK19]
+Release solenoids: hatch on wire GR, fuel door on wire GB, each fed from LR (20 A constant) through its dash switch and grounded at the rear. Nobody knows their current; the new branch fuse is 10 A. [00-CAR PT030-GR, PT031-GB, PT635-LR, SP-218; fuses F33; checks CK20]
+Rear defogger grid G-25: wire LG in, B to ground. Its dash switch is broken and the grid is peeling in places. The design assumes 10 to 13 A. [00-CAR K-020, K-026; loads LD10; checks CK21]
+Washer pump D-01: LB is its 12 V feed, LY its switched ground. It does not work today and nobody knows why. [00-CAR PT038-LB, PT038-LY, K-022]
+Ignition switch: WR battery in, L is ACC, BY is IG, and a second BY is START. [00-CAR PT708-C, PT708-E, PT708-D, PT708-A]
+Column switch plugs: lights E-01 (a 2-pin R, WG and a 6-pin RG, RW, R, RL, RY, GL), turn and hazard F-02 (WG, GY, GW, GB, GR, GO), wiper D-03 (B, LO, LY, LR, LG, LW). The contact tables in the record are the 1980 car's. [00-CAR PT639, PT640, SP-473, SP-474, SP-475]",Every one of the eleven checks has its readings written in the app.,"A reading that contradicts the 'expect' is the point of the day: write it exactly, with the position the part was in, and go on. A motor that does not stop by itself, anything that smokes or a fuse that blows: take the 12 V off and write what happened. Do not repeat a powered test more than twice.","Tick V-114. Type the readings in the answer, one block per check, each starting with its number (CK08: ...). Photos go in 00-CAR/photos."
+S1,"The interior is out - seats, console, centre stack, dash, cluster, glovebox, carpet, kick and sill panels, cargo-bin trim - with every factory wire still in place, every plug you parted labelled, every fastener bagged and every connector and loom photographed where it lay.",the cabin and the cargo area,a weekend - confirm,"metric socket set, spanners, cross-head and flat screwdrivers (sizes are not in the record: note each as you find it)
+plastic trim tools
+zip bags and a marker: one bag per panel
+masking tape and a marker for plug labels (the label printer P041 is on the cart and is not bought yet)
+phone camera and a ruler
+torch or head lamp
+blankets and boxes to store the panels
+a helper for lifting the seats and the dash",,"The app shows S1 as ready: every design row that can be done with the car whole is done, so the car is off the road as short a time as possible
+V-113 (the centre-stack opening) and V-114 (the review's checks) are taken first: they are the day's first two parts and want the car whole and running
+The car is parked where it can stay until the interior goes back (E35): it cannot be driven in between
+Write down the odometer reading before the cluster is unplugged
+Battery negative disconnected before any plug is parted","Nothing electrical is cut, unpinned or moved. The cluster and the dash switches are unplugged; every factory wire stays where it is. [work S1; D-387]
+The car stays like this through the freeze and the whole build. E35 puts it back, as the reverse of this row, from these bags and labels. [D-387; work E35]
+The factory cluster is plugged back in for the first start on the new backbone, so its two plugs must be easy to find again. [work E12]
+The only factory drawing of the dash coming apart is the 1985 manual's, and the 1985 dash is not the 1982 one: confirm every step on the car. It lists the pieces in this order: horn cap, nut, steering wheel, column covers, combination switch, grilles, brake cover, coin box, rear console, switch panels, ventilator louver, shift lever knob, glove box lid and compartment, ash tray, knobs, centre panel, radio, clock, heater wire, garnishes, meter hood, cluster switch, meter, then bolts and the instrument panel. [S-002 p.14-2]
+The cluster is held by spring nuts and joins the car through two round 13-cavity connectors (X-05 and X-06) and the speedometer cable. [00-CAR PT614, PT621, PT622]
+Each seat sits on two slide adjusters bolted to the floor. The seat bolts' torque is not in the record. [S-002 p.14-3]
+The driver's seat-belt buckle carries the belt-warning switch, wires Br and BrW. [00-CAR PT908]
+Steering wheel nut 40-50 N-m; mark the wheel and the shaft before it comes off. Seat-belt anchor bolts 39-55 N-m (1985 figure). [00-CAR SP-174, PT469, SP-187]
+The shift knob screws onto the lever against a lock nut. The shift indicator panel is lit by a bulb on plug E-07. [00-CAR PT412, PT854]
+The factory amplifier is expected behind the head unit - check; it and the factory speaker wire leave with the old harness later, not now. [00-CAR PT660; D-236]
+The wideband gauge taps the factory harness at a point nobody has found. A previous owner spliced the dash badly. Photograph the tap and every splice; leave them wired. [00-CAR PT028; D-236]
+Dash plug codes from the 1982 diagram, for the labels: cluster X-05 and X-06; headlamp retractor switch E-02; rear defrost switch G-24; hatch release switch H-13; fuel-door switch H-15; clock H-10; lighter H-09; radio G-04; amplifier G-08; glove box lamp H-01 and its switch H-02; blower switch G-15. [01-INTAKE factory-circuits OEM-RECORD; 00-CAR PT034, PT036, PT635, PT849, PT631, PT655, PT660, PT832, PT218]
+The air conditioning is not opened: a shop recovers the refrigerant before any A/C line or the compressor is disturbed. [00-CAR PR-001]
+Photos go in 00-CAR/photos, one folder per zone (engine, front, dash, rear, doors, grounds, hacks), named date_zone_subject.jpg. They are the only record of the factory harness once it is out. [00-CAR photos README]
+The fuel door's manual release is behind the left rear speaker cover or under the cargo carpet: a slide at the top of the mechanism pushed rearward. [00-CAR PT031]","The cabin is bare to the floor and the firewall, the cargo bins are open, no wire has been cut, every parted plug carries a matching label on both halves, every fastener is in a labelled bag, and the photos are in 00-CAR/photos.","A panel will not come: stop pulling and look for one more fastener - the count for each panel is not in the record. A plug that will not part: leave it joined and photograph it. A wire in the way: move the panel, never the wire. Anything you break or find already broken: photograph it and write it in the app as a note.","Tick S1. In words: the odometer reading, anything broken or surprising, and how many previous-owner splices you found."
+C1,"The measurement day is done: every harness run is measured for its bundle, the water paths are looked at, the pins are counted on the used-only parts, the speedo boss thread is read, and the rows that own the other measurements are answered.","the whole car, interior out",a day - confirm,"tape measure
+a ball of string and masking tape
+calipers, and a thread gauge or known nuts
+torch, phone camera and a ruler
+cardboard, a knife and a marker
+multimeter
+jack, jack stands and wheel chocks for the under-car part
+notepad with the 32 runs listed",,"S1 is done: the interior is out
+Battery negative disconnected
+Nothing is cut and no panel is made until every number is in
+Car on jack stands with the wheels chocked before you go under it","This is the one day the car is apart for measuring. Each measurement with a number of its own has its own row in the app: the dash spaces Q-014, the binnacle C4, behind the centre stack V-102, the sill V-055, the cargo bins V-088, the wire colours A5, the speed signal Q-115, the pop-ups V-081, the releases V-112, the tail and headlamp looks C3. [work C1, S1]
+This row holds what has no row of its own: the routes (M-2), the water look, the pin counts, the speedo boss, and the rest of the photographs. [work C1]
+There are 32 runs, RT01 to RT32, each with its measured length still blank. Lengths are in feet. Wire is cut at 1.5 times the measured run, and the whole wire order is worked out from these numbers. [routes; work G13]
+The 3D model's guesses, as a sanity check only: dash post to nose 11.4 ft, across to a headlamp 3.4, front lamps 6.1, tunnel to the rear 7.7, tail lamps 9.1, hatch 7.8, sill 3.8, sill to a door 7.5. A tape always beats them. [routes RT06, RT07, RT08, RT15, RT16, RT18, RT19, RT20 model_ft]
+The dash post is where all four legs plug in at the dash node, beside the PMU. Its place comes from the dash spaces: low, close to the centre stack, clear of water. [work E13; routes RT11]
+The tunnel carries three heavy cables beside the rear leg's bundle: the 2 AWG PMU feed and two 1/0 cables (starter feed and cranking return). Measure it for all of them together. [routes RT15; cables C03, C04, C11]
+The heavy cables' lengths in the record are hand guesses: C03 16 ft, C04 18 ft, C11 18 ft, C07 4 ft. [cables C03, C04, C11, C07]
+Water: the car leaks at the cowl seam and the windscreen, right above the dash node. Nothing mounts in the lowest 50 mm of the footwell; every wire enters a box from below or with a drip loop. Where the water really goes is looked at today. [rules water-ingress; checks CK04]
+The wiper motor, both pop-up motors and the fuel sender can only be bought used: count their pins while you can see them - the removed part is the buying spec. [work C1]
+The road-speed sensor is bought only after the thread on the transmission's speedometer drive is measured. [parts P113]
+The hatch hinge loop flexes: measure that run with the hatch open. Measure one headlamp side; the other is that plus the crossing. [routes RT18, RT07]","All 32 runs have a length in feet, the tunnel's tightest gap is noted, CK04 has a sentence and a photo per side, the pins are counted, the boss thread is read, and each of the day's other rows is answered in the app.","A run cannot be laid because its end point is not decided (a node's place): mark where you would put it, measure to there and say so. A space too small for the bundle, a grommet that is full, water marks where the node should go: write it as found - it is a finding, never softened.","Tick C1. In the answer type one line per run (RT01 4.5 ft), then the tunnel gap in mm, the pin counts, the boss thread, and the CK04 sentences. The other measurements go in their own rows."
+C3,The luxury package's two looks are taken and answered in its own rows: the tail-light opening (luxury V-063) and the headlamps fitted today (luxury V-066).,"the tail lamps at the rear, the headlamp buckets at the nose",45 min - confirm,"calipers
+tape measure in mm
+screwdrivers
+phone camera and a ruler",,"S1 is done (the row's gate), though neither look needs the interior out
+Battery negative disconnected, so the pop-ups cannot move while a hand is in a bucket","Luxury V-063 wants the tail-light opening: width, height, depth and how the lamp mounts. [03-luxury work V-063]
+The planned tail lights are a thin LED strip per side in the stock opening. A 2.2 cm strip gives 55 cm2 of red against the 50 cm2 the US lighting rule asks for stop and rear turn lamps: there is no margin for a wrong assumption. [03-luxury D-107]
+Each rear lamp joins the car on one six-cavity plug: F-07 on the left, F-08 on the right. [00-CAR PT601]
+Luxury V-066 no longer picks the headlamp: you ruled 4x6 rectangular LED units on adapter plates in the kept pop-up buckets. It sizes the plate: the bucket's inner diameter and its mounting-hole pattern, in mm. [03-luxury D-358; work V-066]
+Already confirmed on 2026-09-26: LED housings fitted by a previous owner sit in the factory halogen buckets. The factory unit was a 7-inch round sealed beam on a three-lug base. [00-CAR PT035]
+Both manual raise knobs on the pop-up motors work. [00-CAR PT033]
+How the tail lamp unit and the headlamp unit are fastened is not in the record. [00-CAR PT601, PT035 - no fasteners listed]","Luxury V-063 has the opening's width, height, depth and mounting points; luxury V-066 has the bucket's inner diameter and hole pattern; C3 is ticked.","A lamp unit will not come out without force: measure what you can reach from outside and inside, and say which numbers are missing. Left and right differ: give both.","Answer the two luxury rows V-063 and V-066 in the app with the numbers in mm, then tick C3 here."
+C4,The space behind the cluster's opening (the binnacle) is measured in mm - the opening's width and height and the clear depth straight back - for the ICU unit.,"driver's side of the dash, at the cluster opening",30 min,"tape measure or steel rule in mm
+calipers
+a straight stick or rod for the depth
+torch
+phone camera and a ruler",,"The cluster is out (S1)
+The instrument panel is still bolted in the car: the opening leaves the car with the panel, so this is taken during S1, before the panel is lifted
+Battery negative disconnected","The ICU (the new instrument cluster unit) is one assembly behind its own display: the 12.3-inch screen on its face, the carrier board, the display board and the radio behind it, and two sealed plugs in its rear wall. It goes in and out of the binnacle as one part. [D-491; modules ICU]
+What the mock-up wants: an opening about 331 mm wide and 133 mm tall, and 204 mm of depth behind the face with the plugs on. If the carrier sits below the display board instead of behind it, 183 mm of depth. [work C4, Y19]
+The mock-up's own sizes: face 335 x 136.5 mm, body 331 x 132.5 mm, 128.6 mm deep, 206.6 mm with the plugs. Nothing in it is measured. [work Y19]
+The display is taken as 305 x 122 mm behind a 3 mm bezel until the real one is in hand. [work Y19]
+The carrier board is drawn 110 x 80 mm and waits on this measurement. [00-design README section 4; checks CK25]
+The radio's antenna needs a wall it can see through; the mock-up puts that window in the unit's left wall. Metal close beside the unit matters. [D-267; work Y19]
+The unit's two harness tails come 150 mm from the dash post. [routes RT13]
+If the binnacle turns out shallow, the fallback is a separate box behind it. [D-491]","Three numbers in mm - the opening's width, its height and the smallest clear depth straight back - and what the depth stops against.","Less than 204 mm deep, or an opening smaller than 331 x 133: write the numbers as measured. It is a finding and the agent re-plans the unit; do not round up. If the panel is already out of the car, bolt it back on two bolts to measure.","C4 takes a value: type side-to-side x top-to-bottom x depth in mm (the row calls them length x width x depth). In words: what the depth stops against, and any metal beside the space."
+Q-014,"Every space the dash node could use is measured in mm, the PMU has been tried in them, and you know where the wideband gauge hides and that its sensor lead reaches.","behind and under the dash, both footwells",1.5 h - confirm,"tape measure and steel rule in mm
+the PMU itself, to hold in each space
+cardboard, a knife and a marker
+torch
+phone camera and a ruler",,"S1 is done: the dash, the console and the carpet are out
+Battery negative disconnected
+This is the first measurement of the day: the dash post's place comes from it","The dash node is the heart of the new harness. On carrier panels cut to these spaces go: the PMU, two busbars, fuse blocks A and B, the inline fuse holders, seven relay sockets (K1, K2, K3, K4, K11, K12, K13), the wake strip, a small perfboard and the hidden wideband gauge. [work E13]
+The PMU is 131 x 112 x 32.5 mm. Its 39-way plug locks with a lever that must be free to swing. [S-028 p.8; work E13, E16]
+The node's rules: low and close to the floor; the PMU's lever arc clear; 60 mm clear behind every receptacle; the fuse blocks reachable; the PMU stood off for air. [work E13]
+Water: nothing mounts in the lowest 50 mm of the footwell, and the PMU's plug faces down or sideways, never up. [rules water-ingress]
+Leave panel room for four more 12-way receptacles beside the engine leg's two, for the future engine swap. [work E13]
+The wideband gauge (AEM 30-0300) is kept, out of sight, as the sensor's controller. Its sensor lead is a fixed length and is never cut or extended, so where the gauge hides is settled by whether the lead reaches the exhaust bung. [D-244; modules WBO]
+The spaces to measure: the centre-stack cavity, the glovebox region, and the floor under the dash on both sides. [work Q-014]
+The panel stock is bought after today, cut to cardboard patterns made in the car. [parts P090; work E13]
+Nothing here has been measured; fit is assumed and these numbers place the parts. [D-455]","Width x height x depth in mm for the centre-stack cavity and the glovebox region, the flat floor area each side, a yes or no on the PMU's lever and on 60 mm behind the receptacles, a cardboard pattern of each usable space, and the wideband's hiding place with 'lead reaches' or not.","No space takes the PMU low with its lever clear: say so and give the best place with what is in the way. The sensor lead does not reach: the gauge's place moves, never the lead - find the nearest place it does reach. Water marks in a space: write it; the node goes elsewhere.","Q-014 takes a value: the centre-stack cavity as width x height x depth in mm. In words: the glovebox region's three numbers, the two floor areas, the lever and the 60 mm answers, and where the wideband gauge hides."
+Q-115,You know whether the factory speedometer head has a working speed switch - a wire that pulses to ground as the cable turns - and how many pulses it gives per turn.,"the bench, with the cluster out, and behind the dash",30 min,"multimeter with a continuity beeper
+a small screwdriver to turn the speedometer's input
+masking tape and a marker
+phone camera",,"The cluster is out and its speedometer cable released (S1)
+Battery negative disconnected","The design's road speed today is a bought Hall sensor on the transmission's speedometer drive, the cable deleted, wired through the tunnel on L4-S 3 and L4-S 4. [D-272; parts P113; cavities L4-S 3, L4-S 4]
+The 1982 component list carries a vehicle speed switch, B-29: a reed switch inside the speedometer head that pulses to ground on a single BR wire. It fed cruise control. [work Q-115; 00-CAR PT652-B-25_BR]
+This GS left the factory without cruise control, so the switch may not be in this speedometer at all. [00-CAR PT649]
+If it is there and works, road speed needs one wire from behind the dash to the ICU's speed input, and the tunnel run and the bought sensor are not needed. [work Q-115; D-409; cavities DP-ICU-B 8]
+The row names L3-S2 12 as a free cavity for it; that cavity now carries the kick-down switch's supply. The spare ones are L3-S3 5 to 8. [cavities L3-S2 12, L3-S3 5]
+The speedometer is driven by a cable from the transmission. [00-CAR PT621, PT622]
+Pulses per mile is a setting, trued once against a measured mile; today's count only has to show a clean, repeatable pulse. [D-272]","One of three answers: no switch fitted; a switch that does not pulse; or a switch that pulses N times per turn of the speedometer's input, every turn the same.",No BR wire and no extra terminal on the speedometer: answer 'not fitted' - the design keeps the transmission sensor. Pulses that come and go: say so; an unreliable switch is the same as none.,"Tick Q-115. In words: fitted or not, pulses per turn, and where the BR wire ends behind the dash."
+V-081,"The pop-up motors are confirmed against the pin plan: CK08's readings agree with the factory diagram, or the difference is stated, before the front leg is pinned.","the nose, at the two pop-up motors",20 min once CK08 is done,"the CK08 readings from V-114
+torch
+phone camera",,"V-114's CK08 is taken: the ohm readings and the powered test on both motors
+Battery negative disconnected","Each motor's plug is a four-way, not two wires: WR, YG, R, RY. Cross-shaped, YG at the top, WR left, RY right, R bottom. [00-CAR PT033-WR; D-348]
+The diagram: R (up) and RY (down) each go through a diode to a cam switch that drives a relay inside the motor; the relay connects WR to the motor; YG is at 12 V while it runs. [00-CAR SP-584]
+The design follows it. One WR feed from output O1 on L2-P 3, split at the nose to both motors, 12 AWG. Up commands on R: L2-S 1 left, L2-S 2 right. Down commands on RY: L2-P 4 left, L2-S 6 right. All four commands 14 AWG. YG capped at each motor. [cavities L2-P 3, L2-P 4, L2-S 1, L2-S 2, L2-S 6; D-487; D-460]
+Relays K1 and K2 at the dash node steer 12 V to R or RY, behind a 5 A fuse, F37. [relays K1, K2; fuses F37]
+The PMU tells a moving lamp from O1's current: above idle only while a motor turns. CK08's two currents set that threshold. [rules pop-up-cycle; checks CK08]
+If the motor is not what the diagram shows - no relay inside, or YG a contact to ground - the leg is re-pinned from the measurement. Do not pin the front leg before this row. [D-487; work V-081]","You have said 'matches the diagram' or listed what differs, for each motor.",Any of the four behaviours differs on either motor: do not adjust anything. Write the reading and the lamp position; the agent redraws the drive (R14).,"Tick V-081. In words, per motor: R raises and stops itself yes/no; RY lowers and stops itself yes/no; YG at 12 V only while moving yes/no; the idle and travelling currents."
+V-055,"The space behind the driver's kick panel is measured in mm, and you know whether a 150 x 100 mm panel fits there.","driver's footwell, where the kick panel was",30 min,"tape measure and steel rule in mm
+a 150 x 100 mm piece of cardboard
+torch
+phone camera and a ruler",,"S1 is done: the kick panel and the sill plate are out
+Battery negative disconnected","The sill node is a small panel behind the driver's kick panel. It carries the two door receptacles D1 and D2 (8-way Deutsch DT04-8P), a ground stud, four relay sockets for the window relays K5 to K8, and two sealed inline fuse holders, F8 and F9. [work V-055; housings D1, D2; relays K5, K6, K7, K8; fuses F8, F9]
+The panel is planned at about 150 x 100 mm; its stock is bought after today. [work V-055; parts P091]
+The run to it from the dash post is along the sill; from it a branch goes through each door's jamb boot. [routes RT19, RT20]
+Water: nothing mounts in the lowest 50 mm of the footwell. [rules water-ingress]
+The dash node allows 60 mm clear behind every receptacle for the wires to leave; the same room is wanted here. [work E13]
+While you are here the luxury project wants the diameter of the speaker hole in the kick panel - the cut-out, not the old speaker (luxury V-103). [03-luxury work V-103]","The flat space's width and height in mm, its depth to the trim, and a yes or no on the 150 x 100 mm card sitting flat there.",The card does not fit: give the largest rectangle that does and what is in the way. That is the answer; the agent re-plans the sill node.,"V-055 takes a value: width x height in mm of the usable space. In words: the depth, fits yes / no, and what is in the way. The speaker hole's diameter goes in the luxury row V-103."
+V-088,"A cardboard mock-up shows whether the battery, the amplifier, the Class-T fuse block and the master disconnect fit the cargo bin, and that a hand can reach a battery post to jump-start the car with the boots on.",the cargo area: the storage bins behind the seats,1.5 h - confirm,"cardboard, a knife, tape and a marker
+tape measure in mm
+the Ionic battery, terminals taped over
+phone camera and a ruler
+torch",,"S1 is done: the bins' trim and lids are out
+Rings and watch off around the battery; its posts taped or booted","The battery's case is 170 wide x 230 long x 190 high, in mm, measured 2026-09-04. Its terminals and their boots stand above the 190. [params battery_case_mm; D-239]
+It moves to the passenger-side bin; the driver-side bin is kept for the subwoofer. [03-luxury D-449]
+In the same bin, on the positive: the master disconnect switch (Blue Sea 9003e), with the Class-T fuse block (Blue Sea 5007100, a 150 A fuse) and two small fuse holders (Blue Sea 5191) fed from its output stud; and the new amplifier. [parts P049, P047, P051; backbone B1, B2, B8]
+Battery post to switch to fuses stays within inches: the record guesses 1 ft each for those two cables. [cables C12, C01]
+The battery has tapered posts: brass clamps with a 3/8 in stud go on them, covered by pull-off boots and nothing else. There is no cover panel, on purpose, so a jump start only needs a boot pulled off. [D-235; parts P094, P095]
+It is held by a hold-down clamp with J-hooks and M8 hardware on a backing plate; the plate's stock is sized from this mock-up. [parts P057, P092]
+The negative goes straight to a ground stud on bare metal near the battery, on a 1/0 cable guessed at 3 ft. [backbone B5; cables C05]
+The amplifier is not chosen yet, so its size is unknown; its cable is sized for the largest class considered. [cables C13; 03-luxury D-449]
+The sizes of the switch and the fuse block are not in the record. [parts P049, P047 - no dimensions]
+Whether the amplifier's fuse holder stacks on the switch's output stud or sits on a short lead is settled here. [parts P051]","A photo of the mock-up in the bin, the bin's inside size in mm, and a yes or no to: everything fits; a hand reaches each post with the boots on; the lid closes.",It does not all fit in one bin: say what is left over and how much room the other bin has. A post cannot be reached: move the mock battery until it can and note the position. Do not decide for a tighter fit - give the numbers.,"Tick V-088. In words: the bin's length x width x depth in mm, fits yes / no, reach yes / no, lid yes / no, and where the ground stud and the cable exit would go."
+V-102,"The space behind the centre-stack opening is measured in mm - clear depth, width and height - for the climate control unit.","the centre stack, with the radio, the heater controls and the centre panel out",30 min,"tape measure or steel rule in mm
+a straight rod for the depth
+torch
+phone camera and a ruler",,"The centre stack is stripped (S1): radio, heater control panel and centre panel out
+The instrument panel is still bolted in: the opening leaves the car with it, so this is taken during S1, before the panel is lifted
+Battery negative disconnected","The climate control is one sealed box like a stereo head unit: its faceplate and dials on the front, the DCU (the dash and climate control module) inside, four sealed connector halves in two rows on its back. It slides into the centre-stack opening from the front. [D-479; D-481]
+What the mock-up wants: a body 188 x 93 mm, 125 mm deep, and 203 mm of depth counting the plugs and the bend of their cables. [D-481; work V-102]
+The DCU's board inside it is drawn 180 x 80 mm, provisional until this measurement. [00-design README section 4; checks CK26]
+Behind the unit its own short leads go on to the heater case: three door servos, the blower's speed stage and the cabin sensor. [devices DV55, DV59; D-479]
+V-113 measured the opening itself from the front with the car whole; this row measures what is behind it. [work V-113]
+If there is not about 203 mm behind the opening, the design comes back to you as a question. [D-481]
+Nothing behind the centre stack has been measured. [D-455]","Three numbers in mm - clear depth straight back from the opening, and the width and height a box can have behind the face - and what the depth stops against.","Less than 203 mm deep or less than 188 x 93: write the numbers as measured and what is in the way. It is a finding; do not round up, and do not move the heater unit to gain room.",V-102 takes a value: depth x width x height in mm. In words: what the depth stops against and what narrows the space.
+V-112,You know what works in the two releases - each dash switch and each solenoid - and exactly what is broken in the hatch latch switch.,"the removed dash switches on the bench, the hatch lock, and the fuel-door solenoid behind the left rear trim",45 min - confirm,"multimeter on ohms / continuity
+torch
+screwdrivers
+phone camera",,"S1 is done: the dash switches are unplugged and the cargo trim is out
+V-114's CK20 is taken: each solenoid's current, with the car whole
+Battery negative disconnected: this row is all ohm readings","The factory circuit: a 20 A always-live fuse feeds wire LR to both dash switches. The hatch switch (H-13) sends GR to the hatch solenoid; the fuel-door switch (H-15) sends GB to its solenoid. Both solenoids ground on a B wire at the rear ground point X-15. [00-CAR PT030-GR, PT030-B, PT031-GB, PT031-B, PT635-LR, PT635-GB, SP-218]
+The new design keeps both solenoids and feeds them on new wires: L4-M 3 to the hatch and L4-M 4 to the fuel door, 14 AWG, through relays K3 and K4 at the dash node behind a 10 A fuse, F33. [cavities L4-M 3, L4-M 4; relays K3, K4; fuses F33; D-451]
+Each solenoid keeps its own factory ground; its continuity to the body is to be confirmed. [devices DV48, DV49]
+The hatch latch switch is broken; the solenoid itself is fitted and believed to work. [00-CAR K-016; devices DV48]
+The 1985 manual's figure of the hatch lock shows a switch built into the lock body, with contact points A and B beside the key cylinder. Whether the 1982 lock is the same is not confirmed. [00-CAR PT812; S-002 p.14-12]
+A replacement latch switch (P165) is bought only once this row confirms the switch is what is broken. [parts P165]
+Hatch solenoid: owners report its inner rubber bumpers crumble and jam it. It unbolts with its rod off the latch and two screws in its rubber boot. [00-CAR PT030]
+Fuel door: its manual release is a slide at the top of the mechanism, pushed rearward, behind the left rear speaker cover or under the cargo carpet. Never pry the lid from outside. [00-CAR PT031]
+The wire colours at the latch switch are not in the record. [00-CAR PT812 - no terminals listed]",Six answers: hatch switch works yes / no; fuel-door switch works yes / no; hatch solenoid fires yes / no; fuel-door solenoid fires yes / no; each solenoid's ground under 1 ohm to the body; and what exactly is broken in the latch switch.,A solenoid that did not fire at CK20: say so here and do not open it up today. The latch switch cannot be found on the lock: photograph the lock from every side and say so.,"Tick V-112. In words: the six answers, the latch switch's wire colours, and any number printed on it."
+Z2,You have ruled the design verified - the freeze. The project moves to SOURCING and the build list opens.,"desk, in the app",an evening to read; a minute to answer,the Rx7 app,,"Z1, the design review, is done with no Blocker or Major finding left open
+The agent has raised the design-freeze block and it shows in the app","The freeze is the one gate between the design list and the build list: every build row waits on it, and only your answer moves it. [D-386; rx7.py doc work]
+Your own rule: nothing is bought until the plan is 'detail for detail flawless' and you understand it as if it were already in the car and working. [D-323]
+The review is four separate readers - a designer, a buyer who never sees the design, a builder who only follows instructions, and an auditor. Every finding became a work row or a block. [work Z1; rx7.py playbook review]
+A Blocker or Major finding reopens the design list; the freeze is not asked for while one is open. [work Z1]
+The freeze does not close design. A design row opened afterwards holds only the build rows it changes. [rx7.py doc work]
+What it unlocks first is money: the four carts stood at $455.04, $382.68, $944.08 and $1,096.22 at their last review, about $2,878 together, to be re-read before paying. [carts]
+The car is already apart and stays so through the sourcing and the whole build, until the interior goes back. [D-387; work E35]","The freeze block is answered, the agent has applied it, and the app shows the electrical project at SOURCING with build rows ready.","Something in the design is still unclear to you: do not freeze. Ask in the app's Discuss chat, or answer the block with what is unclear; the agent opens a design row for it. A freeze given in doubt costs parts bought twice.","Answer the design-freeze block in the app: its letter, or 'follow the recommendation', with any words you want kept. That answer is this row; then press Apply."
