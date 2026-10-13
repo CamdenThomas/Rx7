@@ -1,0 +1,4 @@
+# the builders write their drafts here; load.py puts them in the record
+*/briefs.csv
+*/steps.csv
+__pycache__/

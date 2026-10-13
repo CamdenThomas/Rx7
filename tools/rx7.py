@@ -1052,6 +1052,7 @@ def check_area(area: Path, keyidx) -> list[str]:
     p += check_meta(area)
     p += check_decisions(area)
     p += check_phase(area)
+    p += check_briefs(area)
     p += check_gates(area)
     p += check_electrical(area)[0]
     return p
@@ -1579,6 +1580,33 @@ def check_phase(area: Path) -> list[str]:
     if ph and ph not in PHASES:
         return [f"{rel(area)}:_project: phase {ph!r} is not one of " + "/".join(PHASES)]
     return []
+
+
+def briefs_missing(work, briefs, steps):
+    """The open rows of his that have no brief or no step (D-533): the TODO page is the
+    step-by-step manual, so a row of his without them is a hole in it. Pure, for the
+    selftest. Reads work, briefs, steps."""
+    have = {(b.get("id") or "").strip() for b in briefs}
+    stepped = {(x.get("work") or "").strip() for x in steps}
+    out = []
+    for w in work:
+        if (w.get("owner") or "") != "camden" or (w.get("state") or "") not in ("open", "blocked"):
+            continue
+        wid = (w.get("id") or "").strip()
+        lack = [n for n, ok in (("a brief", wid in have), ("steps", wid in stepped)) if not ok]
+        if lack:
+            out.append((wid, " and ".join(lack)))
+    return out
+
+
+def check_briefs(area: Path) -> list[str]:
+    """In an area that declares `briefs` and `steps`, every open row of his has both (D-533)."""
+    d = area / "data"
+    if not ((d / "briefs.csv").exists() and (d / "steps.csv").exists() and (d / "work.csv").exists()):
+        return []
+    miss = briefs_missing(read_table(area, "work")[1], read_table(area, "briefs")[1], read_table(area, "steps")[1])
+    return [f"{rel(area)}:work:{wid}: his open row has no {lack} - write its briefs row and its steps rows "
+            "in the same pass (the TODO page is the step-by-step manual, D-533)" for wid, lack in miss]
 
 
 def run_check(sel=None):
@@ -3176,6 +3204,12 @@ def cmd_selftest(args):
                [f.name for f in folder_files(area, "inbox")] == ["00.30~desktop.csv"])
 
     # --- the Manual (D-417): what is held back, what is due, where the odometer stands ---
+    # --- his rows carry a brief and steps (D-533) ---
+    _w = [{"id": "E1", "owner": "camden", "state": "open"}, {"id": "E2", "owner": "camden", "state": "open"},
+          {"id": "E3", "owner": "camden", "state": "done"}, {"id": "Y1", "owner": "agent", "state": "open"},
+          {"id": "E4", "owner": "camden", "state": "open"}]
+    expect("an open row of his without a brief or steps is named; done rows and the agent's are not",
+           briefs_missing(_w, [{"id": "E1"}, {"id": "E4"}], [{"work": "E1"}]) == [("E2", "a brief and steps"), ("E4", "steps")])
     expect("a spec for this car is shown", manual_hold("specs", {"item": "Gap", "confidence": "primary"}) == "shown")
     expect("a value marked confirm is held", manual_hold("parts", {"name": "Pump", "note": "draw 5 A - confirm"}) == "confirm")
     expect("'confirmed' is not the confirm marker", manual_hold("issues", {"issue": "Blower", "status": "Confirmed dead"}) == "shown")

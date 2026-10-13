@@ -20,3 +20,23 @@ rows: design Part 1 is everything with the car whole, and S1 waits on all of it;
 the measurements that need the car apart, the review and the freeze. Build Part 3 is the car
 apart, and Part 4 starts at E35. A row's part is derived from its gate, never typed: a row
 that needs the car apart gates on S1. What S1 itself waits on is block `01.12` (2026-09-26).
+
+**His rows are a manual, not a list** (D-533). A project that declares `briefs` and `steps`
+(today `01-electrical`) holds, for every open row of his:
+
+- one `briefs` row keyed by the work id: `goal` (what is true when it is done), `where`,
+  `time`, `tools` (one per line), `parts` (ids of the project's `parts`), `before` (one per
+  line, safety included), `know` (one fact per line, each ending with its source in square
+  brackets - `[cavities L3-S1 9]`, `[00-CAR PT025]`, `[S-002 p.15-12]`, `[D-280]` - and an
+  unmeasured one says confirm), `done_when`, `if_not`, `record`;
+- its `steps` rows, `<work id>.<nn>`: `do` (one imperative line), `how` (the actual housing,
+  cavity, colour, gauge, torque, order - never "see the table"; a compact list uses ` · `
+  between items or one numbered item per line), `expect`, `caution`.
+
+`check` refuses an open row of his without both. The app's TODO page shows the brief and the
+steps, ticks each step on the device only, and takes his answer as before. The writers that
+produced the first set are in the project's `tools/steps/` (one folder per phase, each with a
+`build.py` that regenerates its drafts from the tables, and `load.py` that replaces the rows
+for those work ids and runs `check`): rerun the phase's builder when `cavities`, `pins`,
+`fuses`, `relays`, `migration`, `checks` or `parts` change under a step that quotes them.
+

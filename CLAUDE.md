@@ -100,7 +100,12 @@ numbers — the odometer, a part's fitted date — are never typed.
 **The work list is the `work` table.** `work.reply` says how he answers his row in the app:
 `check` (done), `value` (a number in `work.unit`) or `choice` (one of `work.choices`, split on
 `|`). His answer arrives in `inbox`; the ones with one right answer are set by `rx7.py apply`,
-the rest by the apply playbook. `01-electrical` has two tracks, design and build, split at the
+the rest by the apply playbook. **The TODO page is the step-by-step manual (D-533):** in a project that
+declares `briefs` and `steps`, every open row of his has a `briefs` row (goal, where, time, tools,
+parts, before, know, done_when, if_not, record) and numbered `steps` rows (do, how, expect,
+caution) - `check` refuses one without. Add a row for him and you write both in the same pass;
+change a table a step quotes and you rewrite that step. A step is where a fact is used, never
+its home: every figure comes from a row and says which (`rx7.py doc work`). `01-electrical` has two tracks, design and build, split at the
 strip (`S1`) and the refit (`E35`); every build row gates on `phase:SOURCING`, which only the
 freeze moves, and the freeze does not close design (`rx7.py doc work`).
 
