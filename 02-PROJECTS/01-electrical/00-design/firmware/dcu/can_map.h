@@ -242,7 +242,7 @@ typedef struct __attribute__((packed)) {
     uint8_t blower;         /* duty %, 0..100 (D-308)        */
     uint8_t target_c;
     int8_t  cabin_c;        /* degC, plain signed, no offset */
-    uint8_t ac_request;     /* reserved, always 0 (D-211)    */
+    uint8_t ac_request;     /* the A/C request to the ECU, which owns the clutch (engine D-489); 0 until the swap (D-211) */
     int8_t  outside_c;      /* degC; TEMP_INVALID until read */
     uint8_t _rsv;
     uint8_t counter;
