@@ -17,9 +17,9 @@ L1-S1 11,L1-S1,11,,inhibitor P/N - PMU A4 (N40),"body and slow lines - today's r
 L1-S1 12,L1-S1,12,LW14,IAT signal,"body and slow lines - today's receptacle, today's functions kept",pinned,Free today
 L1-S2 1,L1-S2,1,LW41,brake fluid level switch,"body and slow lines - today's receptacle, today's functions kept",pinned,"Today's L1-S2 1 (N50, with the parking-brake switch)"
 L1-S2 2,L1-S2,2,LW37,reverse switch return,"body and slow lines - today's receptacle, today's functions kept",pinned,Free today; the dash side lands it on the PMU's signal ground at the swap (risk review R3)
-L1-S2 3,L1-S2,3,,free,"body and slow lines - today's receptacle, today's functions kept",free,Free since D-489: LW33 (the A/C pressure sensor) reads at the ECU and no longer crosses; the next function to need a cavity takes it - block 02.16's optional wires first
-L1-S2 4,L1-S2,4,,free,"body and slow lines - today's receptacle, today's functions kept",free,Free since D-489: LW33 (the A/C pressure sensor) reads at the ECU and no longer crosses; the next function to need a cavity takes it - block 02.16's optional wires first
-L1-S2 5,L1-S2,5,,free,"body and slow lines - today's receptacle, today's functions kept",free,Free since D-489: LW33 (the A/C pressure sensor) reads at the ECU and no longer crosses; the next function to need a cavity takes it - block 02.16's optional wires first
+L1-S2 3,L1-S2,3,,free,"body and slow lines - today's receptacle, today's functions kept",free,"Free since D-489 (LW33 reads at the ECU and no longer crosses) and stays free: D-500 / D-506 put the optional wires on L1-S7, so this is a slow-lines spare with a sealing plug - the next slow function to need a cavity takes it"
+L1-S2 4,L1-S2,4,,free,"body and slow lines - today's receptacle, today's functions kept",free,"Free since D-489 (LW33 reads at the ECU and no longer crosses) and stays free: D-500 / D-506 put the optional wires on L1-S7, so this is a slow-lines spare with a sealing plug - the next slow function to need a cavity takes it"
+L1-S2 5,L1-S2,5,,free,"body and slow lines - today's receptacle, today's functions kept",free,"Free since D-489 (LW33 reads at the ECU and no longer crosses) and stays free: D-500 / D-506 put the optional wires on L1-S7, so this is a slow-lines spare with a sealing plug - the next slow function to need a cavity takes it"
 L1-S2 6,L1-S2,6,LW40,alternator set-point command,"body and slow lines - today's receptacle, today's functions kept",pinned,Today's phase-2 sealing plug (D-271); pinned only for a commanded unit (HO11)
 L1-S2 7,L1-S2,7,LW37,reverse switch,"body and slow lines - today's receptacle, today's functions kept",pinned,"Today's L1-S2 7: the A5 ladder (N41, HO10)"
 L1-S2 8,L1-S2,8,LW29,alternator lamp sense,"body and slow lines - today's receptacle, today's functions kept",pinned,"Today's L1-S2 8: ICU IC05 (N49, HO11)"
@@ -74,3 +74,9 @@ L1-S6 9,L1-S6,9,LW26,O2 low 2,low-level analog,pinned,
 L1-S6 10,L1-S6,10,LW13,MAP signal,low-level analog,pinned,
 L1-S6 11,L1-S6,11,LW20,sensor 5 V reference,low-level analog,pinned,
 L1-S6 12,L1-S6,12,LW21,sensor ground a,low-level analog,pinned,
+L1-S7 1,L1-S7,1,LW24,MAF signal,"optional engine wires - signal lines at 1-3, the phaser's slow PWM pair at 5-6 (D-500, D-506)",pinned,A frequency signal; unpinned on a speed-density tune
+L1-S7 2,L1-S7,2,LW38,neutral switch,"optional engine wires - signal lines at 1-3, the phaser's slow PWM pair at 5-6 (D-500, D-506)",pinned,Pinned only if the unit bought has the switch and the ECU uses it (LD23)
+L1-S7 3,L1-S7,3,LW38,neutral switch return,"optional engine wires - signal lines at 1-3, the phaser's slow PWM pair at 5-6 (D-500, D-506)",pinned,"Its return comes back to the ECU's input ground at the dash, never the block (as the reverse return, risk review R3)"
+L1-S7 4,L1-S7,4,,free,"optional engine wires - signal lines at 1-3, the phaser's slow PWM pair at 5-6 (D-500, D-506)",free,"D-500's one spare, a sealing plug; sits between the signal lines and the phaser pair"
+L1-S7 5,L1-S7,5,LW34,cam phaser solenoid a,"optional engine wires - signal lines at 1-3, the phaser's slow PWM pair at 5-6 (D-500, D-506)",pinned,"2010+ LC9 only (LD19); which of a / b is the ECU's driver and which the feed is read off the EMU PRO's output type (K5, confirm)"
+L1-S7 6,L1-S7,6,LW34,cam phaser solenoid b,"optional engine wires - signal lines at 1-3, the phaser's slow PWM pair at 5-6 (D-500, D-506)",pinned,"2010+ LC9 only (LD19); the pair's other conductor (K5, confirm)"
