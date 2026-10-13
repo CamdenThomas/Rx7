@@ -315,3 +315,21 @@ log_files,id,key,yes,,
 log_files,file,str,yes,,
 log_files,layout,text,yes,,"every byte, little-endian, offsets from the start of the file or record"
 log_files,note,text,no,,
+briefs,id,key,yes,work,the work row's id
+briefs,goal,text,yes,,"what is true when the row is done, one sentence"
+briefs,where,str,no,,"desk, bench, or the place on the car"
+briefs,time,str,no,,"an honest estimate: 20 min, 2 h, a weekend"
+briefs,tools,text,no,,one per line; a tool that is a parts row names its id
+briefs,parts,list,no,parts,"the parts rows used, by id; the app shows their names and quantities"
+briefs,before,text,no,,"what must be true before starting, safety included; one per line"
+briefs,know,text,no,,"what to know about the car and the situation, one fact per line, each ending with where it comes from in square brackets (a row id, a source and page); an unmeasured one says confirm"
+briefs,done_when,text,yes,,the acceptance: what he sees or measures that says it is finished
+briefs,if_not,text,no,,what to do when a result is not what the steps expect
+briefs,record,text,no,,what to enter in the app when it is done
+steps,id,key,yes,,"<work id>.<two digits>, in order"
+steps,work,str,yes,work,the work row it belongs to
+steps,n,int,yes,,"its place in the row, 1 first"
+steps,do,str,yes,,"the action, one short imperative line"
+steps,how,text,no,,"exactly how: the place, the housing and cavity, the colour and gauge, the torque, the order"
+steps,expect,text,no,,what he should see or measure when the step went right
+steps,caution,text,no,,"the one thing that hurts him or the car at this step, if any"
