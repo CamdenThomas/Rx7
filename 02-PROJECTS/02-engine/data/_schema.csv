@@ -119,7 +119,7 @@ ls_cavities,cavity,int,yes,,
 ls_cavities,wire,str,no,ls_wires.id,the ls_wires row it carries - empty only on a reserved row (K6)
 ls_cavities,conductor,str,yes,,"which of the wire row's crossing conductors; on a reserved row, the dash-node conductor its receptacle already carries"
 ls_cavities,noise,str,no,,the housing's noise class
-ls_cavities,state,enum(pinned|reserved),no,,pinned = the swap leg carries this conductor; reserved = a sealing plug in the swap leg on a cavity whose receptacle already carries a dash-node conductor today - never given a swap conductor (K6)
+ls_cavities,state,enum(free|pinned|reserved),no,,"pinned = the swap leg carries this conductor; reserved = a sealing plug in the swap leg on a cavity whose receptacle already carries a dash-node conductor today - never given a swap conductor (K6); free = a swap-leg cavity with no conductor since D-489 freed it - the next function to need one takes it (2026-10-12)"
 ls_cavities,note,text,no,,
 parts,id,key,yes,,
 parts,system,str,yes,,"what it belongs to: fuel, cooling, clutch, ..."

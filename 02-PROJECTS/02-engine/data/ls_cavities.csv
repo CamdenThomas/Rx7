@@ -17,9 +17,9 @@ L1-S1 11,L1-S1,11,,inhibitor P/N - PMU A4 (N40),"body and slow lines - today's r
 L1-S1 12,L1-S1,12,LW14,IAT signal,"body and slow lines - today's receptacle, today's functions kept",pinned,Free today
 L1-S2 1,L1-S2,1,LW41,brake fluid level switch,"body and slow lines - today's receptacle, today's functions kept",pinned,"Today's L1-S2 1 (N50, with the parking-brake switch)"
 L1-S2 2,L1-S2,2,LW37,reverse switch return,"body and slow lines - today's receptacle, today's functions kept",pinned,Free today; the dash side lands it on the PMU's signal ground at the swap (risk review R3)
-L1-S2 3,L1-S2,3,LW33,A/C pressure signal,"body and slow lines - today's receptacle, today's functions kept",pinned,"Free: the A/C pressure sensor reads at the ECU (D-489), so LW33 no longer crosses - a spare cavity for the swap"
-L1-S2 4,L1-S2,4,LW33,A/C pressure 5 V,"body and slow lines - today's receptacle, today's functions kept",pinned,Today's phase-2 sealing plug (D-271)
-L1-S2 5,L1-S2,5,LW33,A/C pressure ground,"body and slow lines - today's receptacle, today's functions kept",pinned,Today's phase-2 sealing plug (D-271)
+L1-S2 3,L1-S2,3,,free,"body and slow lines - today's receptacle, today's functions kept",free,Free since D-489: LW33 (the A/C pressure sensor) reads at the ECU and no longer crosses; the next function to need a cavity takes it - block 02.16's optional wires first
+L1-S2 4,L1-S2,4,,free,"body and slow lines - today's receptacle, today's functions kept",free,Free since D-489: LW33 (the A/C pressure sensor) reads at the ECU and no longer crosses; the next function to need a cavity takes it - block 02.16's optional wires first
+L1-S2 5,L1-S2,5,,free,"body and slow lines - today's receptacle, today's functions kept",free,Free since D-489: LW33 (the A/C pressure sensor) reads at the ECU and no longer crosses; the next function to need a cavity takes it - block 02.16's optional wires first
 L1-S2 6,L1-S2,6,LW40,alternator set-point command,"body and slow lines - today's receptacle, today's functions kept",pinned,Today's phase-2 sealing plug (D-271); pinned only for a commanded unit (HO11)
 L1-S2 7,L1-S2,7,LW37,reverse switch,"body and slow lines - today's receptacle, today's functions kept",pinned,"Today's L1-S2 7: the A5 ladder (N41, HO10)"
 L1-S2 8,L1-S2,8,LW29,alternator lamp sense,"body and slow lines - today's receptacle, today's functions kept",pinned,"Today's L1-S2 8: ICU IC05 (N49, HO11)"
