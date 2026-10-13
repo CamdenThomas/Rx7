@@ -62,7 +62,7 @@ id,msg,bytes,field,encoding,note
 0x300/7,0x300,7,counter,,
 0x310/0,0x310,0,Seat heat,b0–1 driver level · b2–3 passenger level,
 0x310/1,0x310,1,Seat cool,b0–1 driver · b2–3 passenger,
-0x310/2,0x310,2,Mirror heat,b0 on,
+0x310/2,0x310,2,Mirror heat,b0 on,"D-492 / F-018: b0 is the mirror-defog key's own state (it followed the rear defogger, O4, under D-442)"
 0x310/3,0x310,3,"reserved (was nozzle heat / de-icer, D-329)",,reserved in can_map.h (_rsv3) since F-012
 0x310/4–5,0x310,4–5,Comfort bus current,"uint16, 0.01 A",
 0x310/6,0x310,6,reserved,,
@@ -72,8 +72,8 @@ id,msg,bytes,field,encoding,note
 0x320/2,0x320,2,Direction,0 unknown · 1 front · 2 rear,
 0x320/3–6,0x320,3–6,reserved,,
 0x320/7,0x320,7,counter,,
-0x400/0,0x400,0,"Keys down, first eight",bitfield: b0 defog · b1 hatch release · b2 fuel-door release · b3 HVAC mode · b4 recirculate · b5 window DRV up · b6 window DRV down · b7 window PASS up,"1 while the key is held (F-016); the order is the panel's key matrix, H-007"
-0x400/1,0x400,1,"Keys down, the rest",bitfield: b0 window PASS down · b1 mirror thumbstick press · b2-7 reserved,the thumbstick press is also read locally - it toggles LEFT / RIGHT (D-359); it is here for logging
+0x400/0,0x400,0,"Keys down, first eight","bitfield: b0 rear defog · b1 hatch release · b2 fuel-door release · b3 fan mode (was HVAC mode, D-492) · b4 recirculate · b5 window DRV up · b6 window DRV down · b7 window PASS up - the window bits are the two contacts of one sprung switch (D-492); both closed reports neither","1 while the key is held (F-016); the order is the panel's key matrix, H-007"
+0x400/1,0x400,1,"Keys down, the rest","bitfield: b0 window PASS down · b1 mirror stick press · b2 mirror defog · b3 spare (ROW4 C2) · b4 spare (ROW4 C3) · b5 centre knob push · b6-7 reserved (D-492, F-018; F-016 assigned b0-b1)",the thumbstick press is also read locally - it toggles LEFT / RIGHT (D-359); it is here for logging
 0x400/2,0x400,2,"Held ≥ 1 s, first eight","bitfield, same bits as byte 0",
 0x400/3,0x400,3,"Held ≥ 1 s, the rest","bitfield, same bits as byte 1",
 0x400/4–6,0x400,4–6,reserved,,

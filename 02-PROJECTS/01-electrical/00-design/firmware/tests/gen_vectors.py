@@ -52,10 +52,13 @@ BITS = {
                      "radio link lost": "BATT_RADIO_LOST"},
     ("0x320", "1"): {"x": "BAND_X", "k": "BAND_K", "ka": "BAND_KA", "laser": "BAND_LASER"},
     ("0x400", "0"): {"defog": "PK_DEFOG", "hatch release": "PK_HATCH", "fuel-door release": "PK_FUEL_DOOR",
-                     "hvac mode": "PK_HVAC_MODE", "recirculate": "PK_RECIRC", "window drv up": "PK_WIN_DRV_UP",
+                     "hvac mode": "PK_HVAC_MODE", "fan mode": "PK_HVAC_MODE", "rear defog": "PK_DEFOG",
+                     "recirculate": "PK_RECIRC", "window drv up": "PK_WIN_DRV_UP",
                      "window drv down": "PK_WIN_DRV_DN", "window pass up": "PK_WIN_PASS_UP"},
     ("0x400", "1"): {"window pass down": "PK_WIN_PASS_DN", "mirror thumbstick press": "PK_MIRROR_PRESS",
-                     "reserved": None},
+                     "mirror stick press": "PK_MIRROR_PRESS", "mirror defog": "PK_MIRROR_DEFOG",
+                     "spare": None, "centre knob push": "PK_CENTRE_PUSH",
+                     "reserved": None},   # F-018 (D-492): b2 mirror defog, b3-4 spare, b5 centre knob push
 }
 BYTE_OFFSET = {("0x400", "1"): 8}   # byte 1 of the keys continues byte 0's 16-bit field
 

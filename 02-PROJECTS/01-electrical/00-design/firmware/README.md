@@ -40,7 +40,10 @@ firmware/
 │   │                        A release only with the car stopped - 0x200's road speed 0 in a frame
 │   │                        no older than TMO_ICU_SENSORS, or, with no speed to see, the key OFF
 │   │                        on a live PMU (D-484) - and the select dropped 1.5 s after it is
-│   │                        raised, key held or not (D-465)
+│   │                        raised, key held or not (D-465). F-018 (D-492): the 4 x 3 matrix, the
+│   │                        centre knob's modes, the mirror-defog key, the mirror select, the seat knobs
+│   ├── lights.h             the panel's (0x3C) and the left plate's (0x54) LED drivers: rules, channel map
+│   ├── screen.h             the screen's four pages as content - no display driver yet (P201)
 │   ├── pins.h               the pin map - dcu_channels.teensy_pin, every edge pin and expander port (D-452)
 │   ├── tca9539.h            the TCA9539-Q1 on Wire: the DRV8962, DEN / DSEL, CAN STB held low, the fault clear
 │   ├── can_map.h            a copy of icu/can_map.h - never edited here

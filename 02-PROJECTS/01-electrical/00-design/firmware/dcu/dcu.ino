@@ -3,8 +3,9 @@
  * mirrors, release select)
  *
  * Mirroring icu.ino: this file is ONLY the host — CAN plumbing, pins, SD
- * persistence, timing. All logic lives in climate.h, panel.h and tca9539.h
- * (the expander and the DRV8962 guard) and is testable off-target
+ * persistence, timing. All logic lives in climate.h, panel.h, tca9539.h
+ * (the expander and the DRV8962 guard), lights.h (the panel's and the left
+ * plate's LED drivers) and screen.h (the screen's content) and is testable off-target
  * (tests/test_dcu.cpp).
  *
  * Library: ACAN_T4 (NOT FlexCAN_T4 — same rule as the ICU).
@@ -14,7 +15,8 @@
  * on Wire (18 / 19, INT 12, RESET 13), driven through tca9539.h.
  */
 
-#define DCU_FW_VERSION "0.5.0-dev"   /* D-465: a release only with the car stopped (0x200 road speed 0, fresh), the select dropped 1.5 s after it is raised */
+#define DCU_FW_VERSION "0.6.0-dev"   /* D-492 (F-018): the 4 x 3 matrix, the centre knob's modes, the mirror-defog key, the mirror select, the lights, the screen's content */
+/* 0.5.0-dev: D-465: a release only with the car stopped (0x200 road speed 0, fresh), the select dropped 1.5 s after it is raised */
 /* 0.4.0-dev: D-452 pin map: expander on Wire, fan encoder 40 / 41, CAN STB held low, DRV8962 fault clear (F-017) */
 
 #include <ACAN_T4.h>
@@ -25,6 +27,8 @@
 #include "panel.h"
 #include "pins.h"
 #include "tca9539.h"
+#include "lights.h"
+#include "screen.h"
 
 extern "C" uint32_t set_arm_clock(uint32_t frequency);   /* Teensy 4 core */
 
@@ -32,7 +36,7 @@ extern "C" uint32_t set_arm_clock(uint32_t frequency);   /* Teensy 4 core */
 static_assert(sizeof PIN_SERVO / sizeof PIN_SERVO[0] == SRV_COUNT, "one pin per servo");
 static_assert(sizeof PIN_COMFORT / sizeof PIN_COMFORT[0] == CMF_COUNT, "one pin per comfort channel");
 static_assert(sizeof PIN_ROW / sizeof PIN_ROW[0] == PANEL_ROWS && sizeof PIN_COL / sizeof PIN_COL[0] == PANEL_COLS,
-              "the matrix is 3 x 3");
+              "the matrix is 4 x 3 (D-492)");
 #define WAKE_ACTIVE HIGH            /* HIGH turns the NPN on, which turns the 12 V PMOS on (SN21);
                                      * confirm against the wake strip's input */
 
@@ -49,6 +53,12 @@ keys_tx_t     keys_tx;
 window_t      win[2];
 mirror_t      mirror;
 servo_seq_t   servo_seq;
+knob_t        knob;                 /* the centre knob's mode (D-492) */
+mirror_defog_t mdefog;              /* the mirror-defog key (D-492) */
+lights_t      lights;               /* the panel's and the plate's LED drivers */
+lights_in_t   light_in;
+lights_out_t  light_out;
+screen_t      scr;                  /* the screen's content - no driver yet (P201) */
 
 /* ---- encoders: sampled at 1 kHz, detents collected for the loop ---- */
 static enc_t        enc[ENC_COUNT];
@@ -77,7 +87,8 @@ static uint16_t scan_matrix() {
             if (digitalRead(PIN_COL[c]) == LOW) raw |= matrix_bit((uint8_t)r, (uint8_t)c);
     }
     for (int k = 0; k < PANEL_ROWS; k++) pinMode(PIN_ROW[k], INPUT);
-    if (digitalRead(PIN_JOY_PRESS) == LOW) raw |= PK_MIRROR_PRESS;
+    if (digitalRead(PIN_JOY_PRESS) == LOW)   raw |= PK_MIRROR_PRESS;
+    if (digitalRead(PIN_CENTRE_PUSH) == LOW) raw |= PK_CENTRE_PUSH;
     return raw;
 }
 
@@ -88,7 +99,9 @@ static uint32_t last_rx_100 = 0, last_rx_120 = 0, last_tx_300 = 0, last_tx_310 =
 static uint32_t last_rx_200 = 0;     /* the ICU's 0x200: road speed, for the release interlock (D-465) */
 static uint8_t  seen_200 = 0, speed_kph = 0xFF;
 static uint32_t last_activity = 0;
-static uint8_t  defog_on = 0;
+static uint8_t  defog_on = 0;        /* O4 in 0x120: lights the rear-defog key (D-492) */
+static uint8_t  headlight = HL_OFF;  /* 0x100 byte 3: the backlights follow it (D-458, D-492) */
+static int8_t   outside_c = TEMP_INVALID;   /* SN12, read once a loop: 0x300 and the screen */
 
 static void send_frame(uint32_t id, const void *payload) {
     CANMessage f; f.id = id; f.len = CAN_MSG_LEN;
@@ -103,7 +116,7 @@ static void send_climate() {
     m.target_c   = dcu.mem.target_c;
     m.cabin_c    = dcu.cabin_c;
     m.ac_request = 0;                    /* compressor is factory (D-012) */
-    m.outside_c  = ntc_to_c((uint16_t)analogRead(PIN_OAT_NTC));   /* SN12, blank when implausible */
+    m.outside_c  = outside_c;            /* SN12, blank when implausible */
     m.counter    = tx_counter_300++;
     send_frame(ID_DCU_CLIMATE, &m);
 }
@@ -112,7 +125,7 @@ static void send_comfort() {
     dcu_comfort_t m = {};
     m.seat_heat      = dcu.mem.seat_heat;
     m.seat_cool      = dcu.mem.seat_cool;
-    m.mirror_heat    = dcu.comfort_on[CMF_MIRROR_HEAT];
+    m.mirror_heat    = dcu.comfort_on[CMF_MIRROR_HEAT];   /* the mirror-defog key's state (D-492) */
     m.bus_current_ca = dcu.bus_current_ca;
     m.counter        = tx_counter_310++;
     send_frame(ID_DCU_COMFORT, &m);
@@ -126,6 +139,7 @@ static void dispatch(const CANMessage &f) {
         dcu.pmu_alive = can_counter_advanced(rx_counter_100, m.counter);
         rx_counter_100 = m.counter;
         dcu.key_pos = m.key_pos;
+        headlight = m.headlight;
         last_rx_100 = millis();
         break; }
     case ID_ICU_SENSORS: {               /* road speed: a release only with the car stopped (D-465) */
@@ -133,7 +147,7 @@ static void dispatch(const CANMessage &f) {
         speed_kph = m.speed_kph;
         last_rx_200 = millis(); seen_200 = 1;
         break; }
-    case ID_PMU_OUTPUTS: {               /* mirror heat follows O4 (D-442) */
+    case ID_PMU_OUTPUTS: {               /* O4: the rear-defog key's light (D-492; D-442 had mirror heat follow it) */
         pmu_outputs_t m; memcpy(&m, f.data, sizeof m);
         defog_on = pmu_out_on(&m, PMU_OUT_DEFOG);
         last_rx_120 = millis();
@@ -177,6 +191,13 @@ uint8_t exp_hal_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint8_t n) {
 }
 void exp_hal_reset(uint8_t asserted) { digitalWrite(PIN_EXP_RESET, asserted ? LOW : HIGH); }
 void exp_hal_delay_us(uint32_t us)   { delayMicroseconds(us); }
+
+/* ---- the LED drivers' bus (lights.h's one call): the same Wire, out on the ribbon ---- */
+uint8_t lights_hal_write(uint8_t addr, const uint8_t *buf, uint8_t n) {
+    Wire.beginTransmission(addr);
+    Wire.write(buf, n);
+    return Wire.endTransmission() == 0;
+}
 
 static volatile uint8_t exp_int = 0;                     /* INT: an input changed */
 static void exp_isr() { exp_int = 1; }
@@ -231,6 +252,10 @@ static void col_isr() { key_woke = 1; }
 static void dcu_sleep() {
     all_outputs_off();
     digitalWrite(PIN_WAKE, !WAKE_ACTIVE);
+    is31_reg(LED_PANEL_ADDR, IS3236_SHUTDOWN, 0x00);   /* both LED drivers into shutdown;
+                                                         * re-initialised on the way back */
+    is31_reg(LED_PLATE_ADDR, IS3218_SHUTDOWN, 0x00);
+    lights.ok_panel = lights.ok_plate = 0;
     for (int i = 0; i < SRV_COUNT; i++) if (servo[i].attached()) servo[i].detach();
     memset(servo_seq.applied, 0, sizeof servo_seq.applied);   /* re-attach one at a time */
     enc_timer.end();
@@ -238,10 +263,13 @@ static void dcu_sleep() {
     for (int r = 0; r < PANEL_ROWS; r++) { pinMode(PIN_ROW[r], OUTPUT); digitalWrite(PIN_ROW[r], LOW); }
     key_woke = 0;
     for (int c = 0; c < PANEL_COLS; c++) attachInterrupt(digitalPinToInterrupt(PIN_COL[c]), col_isr, FALLING);
+    attachInterrupt(digitalPinToInterrupt(PIN_CENTRE_PUSH), col_isr, FALLING);   /* the knob's push wakes too */
     set_arm_clock(24000000);
     while (!key_woke && !ACAN_T4::can2.available()) asm volatile("wfi");
     set_arm_clock(600000000);
     for (int c = 0; c < PANEL_COLS; c++) detachInterrupt(digitalPinToInterrupt(PIN_COL[c]));
+    detachInterrupt(digitalPinToInterrupt(PIN_CENTRE_PUSH));
+    lights.t_init = millis() - LIGHTS_RETRY_MS;   /* the LED drivers re-initialised on the next loop */
     for (int r = 0; r < PANEL_ROWS; r++) pinMode(PIN_ROW[r], INPUT);
     enc_timer.begin(enc_isr, 1000);
     attachInterrupt(digitalPinToInterrupt(PIN_EXP_INT), exp_isr, FALLING);
@@ -267,6 +295,7 @@ void setup() {
     for (int k = 0; k < PANEL_ROWS; k++) pinMode(PIN_ROW[k], INPUT);
     for (int c = 0; c < PANEL_COLS; c++) pinMode(PIN_COL[c], INPUT_PULLUP);
     pinMode(PIN_JOY_PRESS, INPUT_PULLUP);
+    pinMode(PIN_CENTRE_PUSH, INPUT_PULLUP);
     for (int i = 0; i < ENC_COUNT; i++) {
         pinMode(PIN_ENC_A[i], INPUT_PULLUP); pinMode(PIN_ENC_B[i], INPUT_PULLUP);
         enc[i].ab = (uint8_t)((digitalRead(PIN_ENC_A[i]) << 1) | digitalRead(PIN_ENC_B[i]));
@@ -282,11 +311,16 @@ void setup() {
 
     /* the expander: STB written low and held - before CAN2 starts (D-452) */
     Wire.begin();                       /* SDA 18 / SCL 19 */
-    Wire.setClock(400000);
+    Wire.setClock(100000);              /* panel_ribbon 22: the bus runs out on about 1 m of
+                                         * ribbon to the LED drivers and the screen - 100 kHz
+                                         * (confirm on the bench); was 400 kHz, expander only */
     pinMode(PIN_EXP_INT, INPUT_PULLUP); /* open drain, pulled up on the carrier as well */
     exp_last_init = millis();
     if (!exp_reset_init(&exp_io)) Serial.println("TCA9539 silent - mirrors off, retrying");
     attachInterrupt(digitalPinToInterrupt(PIN_EXP_INT), exp_isr, FALLING);
+    lights.t_init = millis();
+    if (!lights_init_panel(&lights)) Serial.println("panel LED driver (0x3C) silent - retrying");
+    if (!lights_init_plate(&lights)) Serial.println("plate LED driver (0x54) silent - retrying");
 
     ACAN_T4_Settings settings(CAN_BITRATE);
     const uint32_t err = ACAN_T4::can2.begin(settings);
@@ -316,11 +350,27 @@ void loop() {
     panel_keys_t pk;
     if (dcu.pmu_alive && panel_frame_due(&keys_tx, down, held, now, &pk)) send_frame(ID_PANEL_KEYS, &pk);
 
-    /* knobs and climate keys */
-    panel_apply(&dcu, pressed, enc_take(ENC_FAN), enc_take(ENC_TEMP),
-                enc_take(ENC_SEAT_DRV), enc_take(ENC_SEAT_PASS));
-    dcu.comfort_on[CMF_MIRROR_HEAT] = defog_on;
+    /* knobs and climate keys: the centre knob's modes, the seat knobs (D-492) */
+    panel_apply(&dcu, &knob, pressed, enc_take(ENC_CENTRE),
+                enc_take(ENC_SEAT_DRV), enc_take(ENC_SEAT_PASS), now);
+    mirror_defog_step(&mdefog, &dcu, pressed, now);         /* its own key (D-492) */
     dcu.cabin_c = ntc_to_c((uint16_t)analogRead(PIN_CABIN_NTC));
+    outside_c   = ntc_to_c((uint16_t)analogRead(PIN_OAT_NTC));
+
+    /* the screen's content (no driver yet, P201) and the lights (D-458, D-492) */
+    screen_build(&scr, &knob, &dcu.mem, outside_c);
+    light_in.pmu_alive       = dcu.pmu_alive;
+    light_in.key_pos         = dcu.key_pos;
+    light_in.headlight       = headlight;
+    light_in.rear_defog      = defog_on;
+    light_in.mirror_defog    = mdefog.on;
+    light_in.recirc          = dcu.mem.recirc;
+    light_in.fan_mode_active = (uint8_t)(knob.mode == KNOB_MODE);
+    light_in.seat_drv        = seat_pos(&dcu.mem, 0);
+    light_in.seat_pass       = seat_pos(&dcu.mem, 2);
+    light_in.wink_l = light_in.wink_r = 0;                  /* the PMU's A8 export, F-009 */
+    lights_step(&light_in, &light_out);
+    lights_write(&lights, &light_out, now);
     dcu.bus_current_ca = comfort_current_ca((uint16_t)analogRead(PIN_CURRENT), CURRENT_ZERO);
 
     /* windows (D-363) */

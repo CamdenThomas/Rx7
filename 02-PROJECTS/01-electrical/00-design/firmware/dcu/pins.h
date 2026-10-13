@@ -10,7 +10,8 @@
  *
  * No Arduino headers: tests/test_dcu.cpp includes this file and checks the
  * map (every edge pin 0-41 used once, nothing on the bottom pads 48-54, the
- * fan encoder on 40 / 41, I2C on 18 / 19). Analog inputs are given by pin
+ * centre encoder on 40 / 41 with its push on 34, ROW4 on 35, I2C on 18 / 19;
+ * D-492 re-reads the same pins, the carrier does not change). Analog inputs are given by pin
  * number (14 = A0), which Teensy's analogRead() takes as it is.
  */
 
@@ -49,12 +50,16 @@ static const int PIN_REL_FUEL    = 27;               /* SN23, K4 85 via DP-DCU-B
                                                       * is, so HIGH alone fires the solenoid with
                                                       * the key on - panel.h's release_step refuses
                                                       * unless stopped and drops it after 1.5 s */
-static const int PIN_ROW[3]      = { 28, 29, 30 };   /* SN19, ribbon 3-5 */
+static const int PIN_ROW[4]      = { 28, 29, 30, 35 }; /* SN19, ribbon 3-5 and 12: ROW4 on 35 (D-492,
+                                                        * was the temperature encoder's B) */
 static const int PIN_COL[3]      = { 31, 32, 33 };   /* SN19, ribbon 6-8 */
-enum { ENC_FAN = 0, ENC_TEMP, ENC_SEAT_DRV, ENC_SEAT_PASS, ENC_COUNT };
-static const int PIN_ENC_A[ENC_COUNT] = { 40, 34, 36, 38 };   /* SN20, ribbon 9, 11, 13, 15 */
-static const int PIN_ENC_B[ENC_COUNT] = { 41, 35, 37, 39 };   /* SN20, ribbon 10, 12, 14, 16 -
-                                                               * the fan moved off 18 / 19 (D-452) */
+enum { ENC_CENTRE = 0, ENC_SEAT_DRV, ENC_SEAT_PASS, ENC_COUNT };
+static const int PIN_ENC_A[ENC_COUNT] = { 40, 36, 38 };   /* SN20, ribbon 9, 13, 15 */
+static const int PIN_ENC_B[ENC_COUNT] = { 41, 37, 39 };   /* SN20, ribbon 10, 14, 16 - the centre
+                                                           * knob is the old fan encoder's pins,
+                                                           * moved off 18 / 19 by D-452 */
+static const int PIN_CENTRE_PUSH = 34;               /* SN20, ribbon 11: the centre knob's push to GND
+                                                      * (D-492, was the temperature encoder's A) */
 
 /* ------------------------- TCA9539-Q1 ports (U12) -------------------------
  * Bit n of the 16-bit word is port P0n for n < 8 and P1(n-8) above. The

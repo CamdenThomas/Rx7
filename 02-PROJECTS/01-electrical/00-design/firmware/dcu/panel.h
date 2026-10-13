@@ -1,19 +1,27 @@
 /*
- * panel.h — the DCU's panel, windows, mirrors, release select and wake (F-017)
+ * panel.h — the DCU's panel, windows, mirrors, release select and wake (F-017),
+ * brought to the control set of D-492 (F-018)
  *
  * Same pattern as climate.h: all logic here, testable off-target
  * (tests/test_dcu.cpp); dcu.ino only reads pins, writes pins and moves frames.
+ * The panel's lights are lights.h, the screen's content screen.h (F-018).
  *
  * Owns (R6), from 02-PROJECTS/01-electrical/data:
- *   panel_ribbon     the 3 x 3 key matrix, four encoders, the thumbstick (D-380)
- *   dcu_channels     SN17 mirrors · SN18 thumbstick · SN19 keys · SN20 encoders ·
- *                    SN21 wake · SN22 windows · SN23 release select ·
- *                    SN11 / SN12 NTCs · SN13 comfort current · SN15 servo sequencing
- *   can_fields       0x400 (sent here); 0x120 bit O4 read for mirror heat; 0x200
- *                    byte 6 (road speed) read for the release interlock (D-465)
- * Rulings: D-355 D-359 (luxury), D-360 D-363 D-369 D-370 D-379 D-380, the
- * behaviour choices of D-442, and D-465 (a release only with the car stopped,
- * the select dropped after 1.5 s).
+ *   panel_ribbon     the 4 x 3 key matrix, the centre encoder and its push, the
+ *                    two seat encoders, the stick (D-492, was D-380's 3 x 3 and
+ *                    four encoders)
+ *   dcu_channels     SN17 mirrors · SN18 stick · SN19 keys · SN20 encoders ·
+ *                    SN21 wake · SN22 windows · SN23 release select · SN16 mirror
+ *                    heat (its own key, D-492) · SN11 / SN12 NTCs · SN13 comfort
+ *                    current · SN15 servo sequencing
+ *   can_fields       0x400 (sent here); 0x120 bit O4 read for the rear-defog key's
+ *                    light; 0x200 byte 6 (road speed) read for the release
+ *                    interlock (D-465)
+ *   ideas            I-001 (the centre knob's modes), I-002 (the window switch, the
+ *                    mirror select), I-003 (the seat knob), kept by D-492
+ * Rulings: D-355 D-359 (luxury), D-360 D-363 D-369 D-370 D-379, the behaviour
+ * choices of D-442 as D-492 amends them, D-465 / D-484 (a release only with the
+ * car stopped, the select dropped after 1.5 s), D-492 (the control set).
  *
  * Every number marked `confirm` is a bench or car figure nobody has measured
  * (R11); F6 commissions it.
@@ -53,14 +61,37 @@
 #define PK_RELEASE     (PK_HATCH | PK_FUEL_DOOR)
 
 /* ------------------------- key matrix (SN19) -------------------------
- * ROW1 defog · hatch · fuel door / ROW2 mode · recirc · DRV up /
- * ROW3 DRV down · PASS up · PASS down. The PK_* order is the matrix
- * row-major, so the bit is row * 3 + column (F-016, D-380).            */
-#define PANEL_ROWS 3
+ * ROW1 rear defog · hatch · fuel door / ROW2 fan mode · recirc · DRV up /
+ * ROW3 DRV down · PASS up · PASS down / ROW4 mirror defog · spare · spare
+ * (D-492, panel_ribbon 3-5 and 12). The hatch and fuel-door keys are on the
+ * left plate, through DP-DCU-E. ROWs 1-3 are the 0x400 bits b0-b8 row-major
+ * as F-016 had them; ROW4 is b10-b12, after the stick press (can_map.h). */
+#define PANEL_ROWS 4
 #define PANEL_COLS 3
+static const uint16_t PANEL_KEY[PANEL_ROWS][PANEL_COLS] = {
+    { PK_DEFOG,        PK_HATCH,       PK_FUEL_DOOR   },
+    { PK_FAN_MODE,     PK_RECIRC,      PK_WIN_DRV_UP  },
+    { PK_WIN_DRV_DN,   PK_WIN_PASS_UP, PK_WIN_PASS_DN },
+    { PK_MIRROR_DEFOG, PK_SPARE_R4C2,  PK_SPARE_R4C3  },
+};
 static inline uint16_t matrix_bit(uint8_t row, uint8_t col)
 {
-    return (uint16_t)(1u << (row * PANEL_COLS + col));
+    return (row < PANEL_ROWS && col < PANEL_COLS) ? PANEL_KEY[row][col] : 0;
+}
+
+/* The window switches (I-002, D-492): one centre-sprung up / down switch a side,
+ * its two contacts two matrix keys. Both contacts of one switch cannot close
+ * together on a sound switch, so both down is a fault - a broken switch, a
+ * shorted diode, a ghost - and reads as neither, before anything sees it:
+ * 0x400, the held bits and the window outputs (whose own interlock, D-363,
+ * stays behind this one). */
+#define PK_WIN_DRV   (PK_WIN_DRV_UP | PK_WIN_DRV_DN)
+#define PK_WIN_PASS  (PK_WIN_PASS_UP | PK_WIN_PASS_DN)
+static inline uint16_t window_pairs(uint16_t k)
+{
+    if ((k & PK_WIN_DRV) == PK_WIN_DRV)   k &= (uint16_t)~PK_WIN_DRV;
+    if ((k & PK_WIN_PASS) == PK_WIN_PASS) k &= (uint16_t)~PK_WIN_PASS;
+    return k;
 }
 
 typedef struct {
@@ -191,7 +222,7 @@ static inline uint16_t panel_keys_step(panel_t *p, uint16_t raw, uint8_t pmu_ali
                                        uint16_t *down_out, uint16_t *held_out)
 {
     uint16_t pressed = keys_debounce(p, raw);
-    uint16_t eff     = wake_step(p, pressed, pmu_alive, now);
+    uint16_t eff     = window_pairs(wake_step(p, pressed, pmu_alive, now));
     uint16_t eff_pr  = (uint16_t)(eff & ~p->eff_prev);
     uint16_t held    = held_step(p, eff, now);
     uint16_t refuse  = release_step(p, eff, eff_pr, now);
@@ -235,9 +266,13 @@ static inline int8_t enc_step(enc_t *e, uint8_t ab)
     return 0;
 }
 
-/* A seat knob is one position, -3..+3: clockwise from OFF is heat 1-3,
- * anticlockwise cool 1-3, so heat and cool are never both on (D-073,
- * D-380). shift 0 = driver, 2 = passenger in the seat_heat / seat_cool bytes. */
+/* A seat knob (I-003, D-492): a detented encoder with no push and no end stops;
+ * its position is a count, -3..+3, clamped at both ends, 0 = OFF in the middle.
+ * Clockwise from OFF is heat 1-3, anticlockwise cool 1-3, so heat and cool are
+ * never both on (D-073). The position is the climate memory's, so it stays where
+ * it was left when the knob rests (and across a sleep). shift 0 = driver,
+ * 2 = passenger in the seat_heat / seat_cool bytes. */
+#define SEAT_STEPS  3
 static inline int8_t seat_pos(const climate_mem_t *m, uint8_t shift)
 {
     uint8_t h = (uint8_t)((m->seat_heat >> shift) & 3u), c = (uint8_t)((m->seat_cool >> shift) & 3u);
@@ -245,29 +280,122 @@ static inline int8_t seat_pos(const climate_mem_t *m, uint8_t shift)
 }
 static inline void seat_set(climate_mem_t *m, uint8_t shift, int pos)
 {
-    if (pos > 3) pos = 3;
-    if (pos < -3) pos = -3;
+    if (pos > SEAT_STEPS) pos = SEAT_STEPS;
+    if (pos < -SEAT_STEPS) pos = -SEAT_STEPS;
     uint8_t mask = (uint8_t)(3u << shift);
     m->seat_heat = (uint8_t)((m->seat_heat & ~mask) | ((pos > 0 ? pos : 0) << shift));
     m->seat_cool = (uint8_t)((m->seat_cool & ~mask) | ((pos < 0 ? -pos : 0) << shift));
 }
 
-/* The panel's knobs and climate keys onto the climate memory. Detents are
- * signed counts since the last call. */
-static inline void panel_apply(dcu_state_t *s, uint16_t pressed,
-                               int fan, int temp, int seat_drv, int seat_pass)
+/* ------------------------- the centre knob (SN20, I-001, D-492) -------------------------
+ * One encoder with a push, turning freely both ways with no end stops; the
+ * screen is its only indicator. What it sets:
+ *   TEMP  by default - the set temperature, 16-30 °C, one degree a detent;
+ *   FAN   after a push - the blower, 0-3, one level a detent;
+ *   MODE  after the fan-mode key - VENT -> HEAT -> DEFROST, one a detent,
+ *         wrapping both ways (the knob has no ends, nor does the cycle);
+ * and back to TEMP once it has rested KNOB_REST_MS (no detent, no push, no
+ * fan-mode press), or at once on a second push in FAN or a second fan-mode
+ * press in MODE. A push in MODE goes to FAN and the fan-mode key in FAN goes to
+ * MODE: the push always means fan, the key always means mode, a second of the
+ * same goes home. Each press restarts the rest, so a push not followed by a
+ * turn returns to TEMP after the same KNOB_REST_MS.
+ * The screen reads knob_t: mode is what the knob sets now, temp_active that
+ * the temperature was turned within SCREEN_REST_MS (screen.h).              */
+#define KNOB_REST_MS     3000     /* confirm: I-001 "until you don't adjust for a moment";
+                                   * the panel sketch's 3 s */
+#define SCREEN_REST_MS   3000     /* confirm: the screen's return to rest after the knob
+                                   * rests (screen.h) - the same moment by default */
+#define TEMP_MIN_C         16     /* D-442's range, mode_to_servos()'s blend span */
+#define TEMP_MAX_C         30
+#define FAN_LEVELS          3     /* blower 0 (off) .. 3, D-442 */
+
+enum { KNOB_TEMP = 0, KNOB_FAN, KNOB_MODE };
+
+typedef struct {
+    uint8_t  mode;                /* KNOB_* : what a detent sets now              */
+    uint8_t  temp_active;         /* the temperature turned, not yet rested       */
+    uint32_t t_last;              /* the last detent or press                     */
+} knob_t;
+
+/* The knob's mode for this scan. pressed: the debounced key edges (PK_CENTRE_PUSH,
+ * PK_FAN_MODE); detents: signed, since the last call. */
+static inline uint8_t knob_step(knob_t *k, uint16_t pressed, int detents, uint32_t now)
 {
-    uint8_t kp = 0;
-    if (pressed & PK_HVAC_MODE) kp |= KP_MODE;
-    if (pressed & PK_RECIRC)    kp |= KP_RECIRC;
-    apply_keypad(s, kp);
-    for (; temp > 0; temp--) apply_keypad(s, KP_TEMP_UP);
-    for (; temp < 0; temp++) apply_keypad(s, KP_TEMP_DN);
-    int b = (int)s->mem.blower + fan;
-    s->mem.blower = (uint8_t)(b < 0 ? 0 : (b > 3 ? 3 : b));
+    uint32_t idle = (uint32_t)(now - k->t_last);
+    if (k->mode != KNOB_TEMP && idle >= KNOB_REST_MS) k->mode = KNOB_TEMP;
+    if (idle >= SCREEN_REST_MS) k->temp_active = 0;
+    if (pressed & PK_CENTRE_PUSH) {
+        k->mode = (uint8_t)(k->mode == KNOB_FAN ? KNOB_TEMP : KNOB_FAN);
+        k->temp_active = 0; k->t_last = now;
+    }
+    if (pressed & PK_FAN_MODE) {
+        k->mode = (uint8_t)(k->mode == KNOB_MODE ? KNOB_TEMP : KNOB_MODE);
+        k->temp_active = 0; k->t_last = now;
+    }
+    if (detents) {
+        k->t_last = now;
+        if (k->mode == KNOB_TEMP) k->temp_active = 1;
+    }
+    return k->mode;
+}
+
+/* VENT -> HEAT -> DEFROST one step either way; OFF, A/C or a corrupt value lands
+ * on VENT first (as apply_keypad's KP_MODE does). */
+static inline uint8_t mode_turn(uint8_t mode, int dir)
+{
+    if (mode < CLIM_VENT || mode > CLIM_DEFROST) return CLIM_VENT;
+    int i = (int)mode - CLIM_VENT + (dir > 0 ? 1 : -1);
+    return (uint8_t)(CLIM_VENT + (i + 3) % 3);
+}
+
+/* The panel's knobs and climate keys onto the climate memory. Detents are
+ * signed counts since the last call; pressed the debounced key edges. The
+ * fan-mode key only selects what the knob sets (D-492) - it no longer steps
+ * the mode itself, as D-442's HVAC-mode key did. */
+static inline void panel_apply(dcu_state_t *s, knob_t *k, uint16_t pressed,
+                               int centre, int seat_drv, int seat_pass, uint32_t now)
+{
+    if (pressed & PK_RECIRC) s->mem.recirc ^= 1u;           /* I-001: off (fresh) by default */
+    switch (knob_step(k, pressed, centre, now)) {
+    case KNOB_TEMP: {
+        int t = (int)s->mem.target_c + centre;
+        s->mem.target_c = (uint8_t)(t < TEMP_MIN_C ? TEMP_MIN_C : (t > TEMP_MAX_C ? TEMP_MAX_C : t));
+        break; }
+    case KNOB_FAN: {
+        int b = (int)s->mem.blower + centre;
+        s->mem.blower = (uint8_t)(b < 0 ? 0 : (b > FAN_LEVELS ? FAN_LEVELS : b));
+        break; }
+    case KNOB_MODE:
+        for (; centre > 0; centre--) s->mem.mode = mode_turn(s->mem.mode, +1);
+        for (; centre < 0; centre++) s->mem.mode = mode_turn(s->mem.mode, -1);
+        break;
+    }
+    mode_to_servos(s);
     if (seat_drv)  seat_set(&s->mem, 0, seat_pos(&s->mem, 0) + seat_drv);
     if (seat_pass) seat_set(&s->mem, 2, seat_pos(&s->mem, 2) + seat_pass);
     enforce_seat_interlock(s);
+}
+
+/* ------------------------- mirror defog (SN16, D-369, D-492) -------------------------
+ * Its own key now (D-492; D-442 had mirror heat follow the rear defogger). A
+ * press toggles it - only while comfort is permitted (RUN, the PMU alive), so a
+ * press that cannot heat leaves the key dark rather than lit and cold. It goes
+ * off when comfort stops being permitted, and after MIRROR_DEFOG_MAX_MS, as a
+ * rear-window defogger times out. The high side (BTT6050, SN16) is unchanged;
+ * this decides what commands it. 0x310 byte 2 b0 reports this state.        */
+#define MIRROR_DEFOG_MAX_MS  (15UL * 60UL * 1000UL)   /* confirm: 15 min, the usual
+                                                       * defogger timer; not ruled */
+typedef struct { uint8_t on; uint32_t t_on; } mirror_defog_t;
+
+static inline uint8_t mirror_defog_step(mirror_defog_t *d, dcu_state_t *s, uint16_t pressed, uint32_t now)
+{
+    uint8_t ok = comfort_permitted(s);
+    if (!ok) d->on = 0;
+    else if (pressed & PK_MIRROR_DEFOG) { d->on ^= 1u; d->t_on = now; }
+    if (d->on && (uint32_t)(now - d->t_on) >= MIRROR_DEFOG_MAX_MS) d->on = 0;
+    s->comfort_on[CMF_MIRROR_HEAT] = d->on;
+    return d->on;
 }
 
 /* Windows and mirrors move only in ACC or RUN with the PMU alive: the PMU
@@ -302,7 +430,7 @@ static inline void window_step(window_t *w, uint8_t up, uint8_t dn, uint8_t perm
     *out_dn = (uint8_t)(w->dir < 0);
 }
 
-/* ------------------------- mirrors (SN17, SN18, D-359, D-360) -------------
+/* ------------------------- mirrors (SN17, SN18, D-359, D-360, D-492) ------
  * Both heads share a motor common and a clutch line; each has its own motor
  * line. The clutch picks the axis, the polarity the direction; only the
  * selected side's line is driven, the other stays open, so only that
@@ -319,11 +447,18 @@ enum { AXIS_NONE = 0, AXIS_X, AXIS_Y };
 typedef struct { uint16_t cx, cy, dead; } stick_cal_t;   /* commissioning, 12-bit ADC */
 typedef struct { uint8_t common, left, right, clutch; } mirror_out_t;
 typedef struct {
-    uint8_t  side;                            /* toggled by the stick press */
+    uint8_t  side;                            /* MIRROR_LEFT unless a push chose the right */
     uint8_t  axis; int8_t dir;                /* what is running now */
     uint8_t  timed_out;
     uint32_t t_off, t_start;
+    uint32_t t_side;                          /* the right chosen, or last moved while right */
 } mirror_t;
+
+/* The select (I-002, D-492, replacing luxury D-359's toggle): the stick moves the
+ * LEFT mirror; a push makes it move the RIGHT until MIRROR_RIGHT_REST_MS pass
+ * with the stick at rest, or a second push; then the left again. Nothing on the
+ * plate shows which (I-006), so it always falls back to the left by itself. */
+#define MIRROR_RIGHT_REST_MS  3000           /* D-492: "three seconds" */
 
 static inline void stick_defaults(stick_cal_t *c) { c->cx = 2048; c->cy = 2048; c->dead = 400; }
 
@@ -337,15 +472,31 @@ static inline void stick_read(const stick_cal_t *c, uint16_t x, uint16_t y, uint
     else          { *axis = AXIS_Y; *dir = (int8_t)(dy > 0 ? MIRROR_SIGN_Y : -MIRROR_SIGN_Y); }
 }
 
+/* The side for this scan. "Movement" is the stick out of its dead band, whether
+ * or not the mirror may move (a held stick is someone adjusting). Returns 1 when
+ * the side changed. */
+static inline uint8_t mirror_select_step(mirror_t *m, uint16_t pressed, uint8_t axis, uint32_t now)
+{
+    uint8_t was = m->side;
+    if (pressed & PK_MIRROR_PRESS) {
+        m->side = (uint8_t)(m->side == MIRROR_LEFT ? MIRROR_RIGHT : MIRROR_LEFT);
+        m->t_side = now;
+    } else if (m->side == MIRROR_RIGHT) {
+        if (axis != AXIS_NONE) m->t_side = now;
+        else if ((uint32_t)(now - m->t_side) >= MIRROR_RIGHT_REST_MS) m->side = MIRROR_LEFT;
+    }
+    return (uint8_t)(m->side != was);
+}
+
 static inline void mirror_step(mirror_t *m, uint16_t pressed, uint8_t axis, int8_t dir,
                                uint8_t permitted, uint32_t now, mirror_out_t *o)
 {
-    if (pressed & PK_MIRROR_PRESS) m->side ^= 1u;
+    uint8_t side_changed = mirror_select_step(m, pressed, axis, now);
     if (!permitted) { axis = AXIS_NONE; dir = 0; }
     if (axis == AXIS_NONE) m->timed_out = 0;
     if (m->timed_out) { axis = AXIS_NONE; dir = 0; }
     uint8_t running = (uint8_t)(m->axis != AXIS_NONE);
-    if (axis != m->axis || dir != m->dir || (pressed & PK_MIRROR_PRESS)) {
+    if (axis != m->axis || dir != m->dir || side_changed) {
         if (running) { m->axis = AXIS_NONE; m->dir = 0; m->t_off = now; }
         else if (axis != AXIS_NONE && (uint32_t)(now - m->t_off) >= MIRROR_DEAD_MS) {
             m->axis = axis; m->dir = dir; m->t_start = now;
@@ -413,9 +564,11 @@ static inline uint16_t comfort_current_ca(uint16_t adc, uint16_t zero)
     return (uint16_t)(((uint32_t)(adc - zero) * 3300u) / ADC_FULL);
 }
 
-/* ------------------------- mirror heat (SN16, D-369) -------------------------
- * Mirror heat follows the rear defogger, as Mazda wires it (luxury D-332,
- * D-442): on while the PMU reports O4 on in 0x120, off when 0x120 is stale. */
+/* ------------------------- the rear defogger's state (0x120) -------------------------
+ * The rear-glass defog key is the PMU's (an edge on 0x400, D-350); the PMU
+ * reports O4 in 0x120. D-442 had mirror heat follow it; since D-492 the mirror
+ * has its own key (mirror_defog_step) and O4 only lights the rear-defog key's
+ * symbol (lights.h) - off when 0x120 is stale. */
 #define PMU_OUT_DEFOG  3                 /* O4 = index 3 (0x120 bytes 2-4, LSB first) */
 
 static inline uint8_t pmu_out_on(const pmu_outputs_t *m, uint8_t index)

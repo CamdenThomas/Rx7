@@ -41,8 +41,8 @@ enum comfort_ch {
 };
 
 /* Blower level -> the duty % the final stage is commanded to, and what 0x300
- * byte 1 reports (D-308). The fan knob moves one level per detent, 0-3
- * (panel.h, F-017). 0 is off, always. */
+ * byte 1 reports (D-308). The centre knob, after a push, moves one level per
+ * detent, 0-3 (panel.h, D-492). 0 is off, always. */
 static inline uint8_t blower_duty_pct(uint8_t level)
 {
     if (level > 3) level = 3;
@@ -114,9 +114,10 @@ static inline void mode_to_servos(dcu_state_t *s)
 }
 
 /* Local climate edges. NOT the 0x400 bit map (that is PK_* in can_map.h,
- * F-016): panel_apply() in panel.h maps the mode and recirc keys and the
- * temperature knob's detents onto these (F-017). Hatch / fuel-door / defog
- * are the PMU's (D-180) and never reach here.                          */
+ * F-016). Since D-492 panel.h's panel_apply() sets the climate memory from
+ * the centre knob's modes itself and no longer comes through here; these
+ * stay for any other caller and are held by test_dcu section 3. Hatch /
+ * fuel-door / defog are the PMU's (D-180) and never reach here.        */
 #define KP_MODE     (1u << 0)
 #define KP_TEMP_UP  (1u << 1)
 #define KP_TEMP_DN  (1u << 2)
