@@ -1,11 +1,12 @@
 {
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
-  "description": "What the Rx7 window may use: its own events, its settings store, opening a web link, and GitHub (the phone's way to the record).",
+  "description": "What the Rx7 window may use: its own events, its settings store, opening a web link, GitHub (the phone's way to the record), and Bluetooth LE for Connect and log and the Scan page (D-495).",
   "windows": ["main"],
   "permissions": [
     "core:default",
     "store:default",
+    "blec:default",
     "opener:default",
     {
       "identifier": "opener:allow-open-url",

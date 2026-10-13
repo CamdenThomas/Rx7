@@ -177,6 +177,7 @@ enum { M_IDLE, M_LIST, M_SEND, M_ACK };
 static uint8_t     g_mode = M_IDLE;
 static bool        g_await_start = false;           /* after OPEN: drop DATA until START */
 static ll_status_t g_st = {}, g_st_sent = {};
+static bool        g_st_force = false;   /* notify status once even if unchanged: a taken ACK (LL18) */
 static uint32_t    g_st_ms = 0;
 static ll_info_t   g_info = {};
 static uint32_t    g_teensy_ms = 0;                 /* the last frame from the Teensy */
@@ -349,6 +350,7 @@ static void on_frame(uint8_t type, const uint8_t *p, uint16_t n, uint32_t now) {
         if (!g_await_start) q_push(type, p, n);    /* DATA of an aborted transfer is dropped */
         break;
     case LL_ERR:
+        if (g_mode == M_ACK) g_st_force = true;   /* ERR 0 after an ACK leaves status DONE / 0 unchanged - the phone must still hear it (LL18) */
         q_push(type, p, n);
         break;
     case LL_PAIR:
@@ -524,9 +526,9 @@ static void link_loop(uint32_t now) {
 
     /* status: on every change, and once a second during a transfer (LL10) */
     bool changed = memcmp(&g_st, &g_st_sent, sizeof g_st) != 0;
-    if (g_secure && (changed || (g_st.state == LL_S_SENDING && now - g_st_ms >= LL_STATUS_MS))) {
+    if (g_secure && (changed || g_st_force || (g_st.state == LL_S_SENDING && now - g_st_ms >= LL_STATUS_MS))) {
         c_status->setValue((const uint8_t *)&g_st, sizeof g_st);
-        if (c_status->notify((const uint8_t *)&g_st, sizeof g_st, g_conn)) { g_st_sent = g_st; g_st_ms = now; }
+        if (c_status->notify((const uint8_t *)&g_st, sizeof g_st, g_conn)) { g_st_sent = g_st; g_st_ms = now; g_st_force = false; }
     }
 }
 

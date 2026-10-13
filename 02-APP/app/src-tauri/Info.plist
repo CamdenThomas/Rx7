@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Merged by Tauri into the macOS bundle's Info.plist (D-495): the first scan raises the
+     system's Bluetooth prompt with this sentence. -->
+<plist version="1.0">
+<dict>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Rx7 uses Bluetooth to pull the drive logs from the car's instrument cluster and to read the battery's broadcast.</string>
+</dict>
+</plist>

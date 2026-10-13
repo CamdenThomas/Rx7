@@ -179,7 +179,7 @@ class App {
   async save(d: Draft): Promise<SaveOutcome | null> {
     if (!this.platform) return null;
     try {
-      const at = localIso();
+      const at = d.at ?? localIso();
       const out = await this.platform.save(d, at);
       if (this.snapshot) {
         const device = this.platform.kind === 'phone' ? 'phone' : 'desktop';

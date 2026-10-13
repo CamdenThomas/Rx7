@@ -9,6 +9,9 @@ export interface Draft {
   choice: string;
   text: string;
   context: string;
+  /** When it happened, if not now: a drive pulled from the ICU is dated at its end (BL3),
+   *  because rx7.py apply takes the drives row's date from the answer's time. */
+  at?: string;
 }
 
 /**

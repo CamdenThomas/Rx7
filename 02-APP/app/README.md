@@ -15,16 +15,25 @@ src/                    the interface (Svelte 5 + TypeScript), shared by both ap
     desktop.ts            the Tauri commands below
     phone.ts              GitHub + rx7.py in Pyodide + answers kept on the phone until sent
     web.ts                the browser build the tests and screenshots run on
+  lib/logs/             Connect and log (BL2) and the log pipeline (BL3), pure TypeScript:
+    layout.generated.ts   the log link's bytes, generated from the record - never edited by hand
+    format.ts · protocol.ts   the card's files and the link's messages, decoded
+    transport.ts          the only file that imports the Bluetooth plugin; its one write is guarded
+    pull.ts · pipeline.ts the pull's state machine; drives -> kind=drive answers and digests
+    fake.ts · synth.ts    a stand-in ICU and a synthetic drive (tests; the browser build's ?ble=fake)
   app.css               the design system: his five colours as tokens, type, spacing, pieces
 src-tauri/              the native shell (Rust, Tauri 2)
+  src/logs.rs           both apps: the folder the pulled logs are written to (fixed file names)
   src/desktop/          the desktop's hands: record.rs runs rx7.py, git.rs commits and syncs,
                         claude.rs runs headless Claude Code, photos.rs serves the tree's photos
   tauri.conf.json       release config — only the `default` capability
   tauri.test.conf.json  merged into test builds only: lets a test APK reach the stand-in GitHub
   gen/android/          the generated Android project (Gradle)
 scripts/                stage-core.mjs copies Pyodide into public/; fixture.mjs writes a test
-                        copy of the record for the browser build
-tests/                  unit tests (Vitest)
+                        copy of the record for the browser build; gen-log-tables.mjs writes
+                        lib/logs/layout.generated.ts; icu-drive.cpp writes a drive with the
+                        ICU firmware's own LogStore, for the decoder's tests
+tests/                  unit tests (Vitest); fixtures/icu-drive/ is that firmware-written drive
 e2e/                    end-to-end tests (Playwright) and fake-github.mjs, a stand-in GitHub
 ```
 
@@ -81,7 +90,8 @@ npx tauri dev        # the real desktop window, on the real tree
 
 ```sh
 npm run check        # types: svelte-check
-npm test             # unit tests (Vitest)
+npm test             # unit tests (Vitest), tests/logs.test.ts among them
+npm run gen:logs -- --check   # rc 1 when the log link's generated tables are behind the record
 npm run e2e          # every screen at desktop and phone size, and the phone's whole path
                      # (sync, answer offline, send) against the stand-in GitHub
 
@@ -110,6 +120,62 @@ Two things learned the hard way on this PC:
 - **Mind the memory.** A Gradle build plus the emulator plus VS Code ran this 15 GB machine
   out of memory once and took VS Code down. Stop the Gradle and Kotlin daemons after a build
   (`(cd src-tauri/gen/android && ./gradlew --stop)`) before booting the emulator.
+
+## Connect and log (Bluetooth)
+
+Work rows BL2 and BL3 (02-APP), built from electrical D-478, D-483, D-493, D-494 and D-495.
+
+**The screens.** The Manual's header has **Connect and log**: one press finds `RX7-ICU`,
+connects, reads `info` (and stops on a log protocol it does not know), sets the ICU's clock
+when it is unset or off by more than 2 s, lists the drives not yet pulled, and pulls each one's
+summary and then its once-a-second log from the last byte this device holds; every tier is
+CRC-32-checked before it is acknowledged. Its page (`#/manual/connect`) shows the progress
+(drives, bytes, rate), what was saved, and the drives this device holds, each with **Pull full
+log** - the only way the full log is ever fetched. The first connection makes the phone pair:
+a long press of the cluster's page button shows a six-digit key to type. **Bluetooth scan**
+(`#/manual/scan`) lists every advertisement - name, address, RSSI, manufacturer data - and the
+Ionic battery's pack millivolts when it is heard (D-330): work row BL5's proof page.
+
+**What reaches the record.** One `kind=drive` answer per drive in 00-CAR's inbox, through the
+same `app.save` path as Log drive (target `drive-<end time>`, choice the end odometer in whole
+miles, `at` the drive's end, his note the distance, duration, flags and - when the ICU's clock
+was unset - that the date is approximate). A drive that did not move, or whose odometer the ICU
+does not know yet (F-007), is not filed. The per-drive digest (every channel's min, max, mean,
+blanks and fault bits) is kept beside the files for BL4.
+
+**The plugin**, pinned exactly (confirm at each bump - its API has moved between minor versions):
+`tauri-plugin-blec = "=0.17.0"` (crates.io) and `@mnlphlp/plugin-blec` `0.17.0` (npm), the
+newest on both registries on 2026-10-12. It is registered with `try_init`, so a machine with no
+adapter still opens; `blec:default` is in `capabilities/default.json`.
+
+**Permissions** (D-495):
+
+- Android - `gen/android/app/src/main/AndroidManifest.xml`: `BLUETOOTH_SCAN` with
+  `neverForLocation` and `BLUETOOTH_CONNECT` (API 31 up); `ACCESS_FINE_LOCATION` and
+  `ACCESS_COARSE_LOCATION` only to API 30 (`maxSdkVersion="30"`, `tools:node="replace"` over
+  the plugin's own lines, which ask for location on every API). The plugin also merges
+  `BLUETOOTH` (to API 30), `BLUETOOTH_ADMIN` and `uses-feature bluetooth_le`. The Scan and
+  Connect pages ask at run time.
+- macOS - `src-tauri/Info.plist` (merged into the bundle): `NSBluetoothAlwaysUsageDescription`.
+  The first scan raises the system prompt.
+- Fedora - BlueZ over D-Bus; the user may need the `bluetooth` group (confirm on the PC).
+
+**Where the logs live.** `app_data_dir()/logs/<seq>/` - `summary.bin`, `thin.bin`, `full.bin`
+and `digest.json`, the sequence as eight digits as on the card: on the Mac
+`~/Library/Application Support/com.camdenthomas.rx7/logs/`, on Fedora
+`~/.local/share/com.camdenthomas.rx7/logs/`, on the phone the app's private data folder. The
+Connect page prints the exact path. Out of git and out of the tree; a second home is P55's,
+still open. What each drive's pull has reached (the resume offsets) is in the app's own store.
+
+**When the record's log tables change** (log_channels, log_link, log_files, or
+`icu/log_store.h`'s layout strings): `npm run gen:logs` (it runs `rx7.py export`; on this Mac
+with `DEVELOPER_DIR=/Library/Developer/CommandLineTools`), then `npm test`. A header whose
+layout CRC is not the generated one is refused. To rewrite the firmware-made fixture:
+`c++ -std=c++17 -O2 scripts/icu-drive.cpp -o /tmp/icu-drive && /tmp/icu-drive tests/fixtures/icu-drive`.
+
+**Try it without a car:** `npm run dev`, then open
+`http://localhost:5173/?ble=fake#/manual/connect`: a stand-in ICU with two drives and a
+battery advertisement.
 
 ## Install it
 

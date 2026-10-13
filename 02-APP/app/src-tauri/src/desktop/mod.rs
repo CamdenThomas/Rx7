@@ -62,5 +62,11 @@ pub fn install(builder: tauri::Builder<tauri::Wry>) -> tauri::Builder<tauri::Wry
             git::git_log,
             claude::claude_start,
             claude::claude_stop,
+            // the pulled logs' folder (BL2/BL3); the phone registers the same five in lib.rs
+            crate::logs::logs_root,
+            crate::logs::logs_write,
+            crate::logs::logs_read,
+            crate::logs::logs_size,
+            crate::logs::logs_list,
         ])
 }

@@ -5,7 +5,7 @@
   is `manual` in rx7.py's export - nothing on these pages is worked out here.
 -->
 <script lang="ts">
-  import { Gauge, Route as RouteIcon } from '@lucide/svelte';
+  import { BluetoothSearching, Gauge, Route as RouteIcon } from '@lucide/svelte';
   import AskSelection from '../components/AskSelection.svelte';
   import DriveDialog from '../components/DriveDialog.svelte';
   import State from './manual/State.svelte';
@@ -16,9 +16,12 @@
   import Notes from './manual/Notes.svelte';
   import Specs from './manual/Specs.svelte';
   import Service from './manual/Service.svelte';
+  import Connect from './manual/Connect.svelte';
+  import Scan from './manual/Scan.svelte';
   import { app } from '../lib/app.svelte';
+  import { logLink } from '../lib/logs/link.svelte';
   import { day, miles } from '../lib/manual';
-  import { href, type ManualPage } from '../lib/router.svelte';
+  import { href, router, type ManualPage } from '../lib/router.svelte';
   import { MANUAL_TITLE, ui } from '../lib/ui.svelte';
 
   let { page = 'state', id }: { page?: ManualPage; id?: string } = $props();
@@ -71,6 +74,10 @@
           <strong class="faint">No reading yet</strong>
         {/if}
         <div class="acts">
+          <!-- one press after a drive, key still on (D-478, D-483): the pull starts and its page shows it -->
+          <button class="btn small primary" disabled={logLink.running} onclick={() => (router.go({ name: 'manual', page: 'connect' }), void logLink.pull())}>
+            <BluetoothSearching size={14} /> {logLink.running ? 'Pulling…' : 'Connect and log'}
+          </button>
           <button class="btn small" onclick={() => (dialog = 'drive')}><RouteIcon size={14} /> Log drive</button>
           <button class="btn small ghost" onclick={() => (dialog = 'odo')}><Gauge size={14} /> Set odo</button>
         </div>
@@ -100,6 +107,10 @@
         <Diagrams {m} {id} />
       {:else if page === 'notes'}
         <Notes />
+      {:else if page === 'connect'}
+        <Connect />
+      {:else if page === 'scan'}
+        <Scan />
       {/if}
     </div>
     <AskSelection within={body} />
@@ -155,6 +166,7 @@
   }
   .acts {
     display: flex;
+    flex-wrap: wrap;
     gap: 6px;
     margin-top: 8px;
   }

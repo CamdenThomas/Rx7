@@ -1,8 +1,9 @@
 // Every screen has an address, kept in the URL's #fragment so it survives a reload and the
 // back button works on both apps: #/p/01-electrical/blocks/01.29.
 
-/** The Manual's pages (D-417): Car state is the Manual's own address, #/manual. */
-export const MANUAL_PAGES = ['state', 'systems', 'car', 'specs', 'service', 'diagrams', 'notes', 'part'] as const;
+/** The Manual's pages (D-417): Car state is the Manual's own address, #/manual. Connect and
+ *  log and Scan (BL2, BL5) are reached from its header, not its tabs. */
+export const MANUAL_PAGES = ['state', 'systems', 'car', 'specs', 'service', 'diagrams', 'notes', 'part', 'connect', 'scan'] as const;
 export type ManualPage = (typeof MANUAL_PAGES)[number];
 
 export type Route =
