@@ -39,3 +39,4 @@ L-0037,2026-10-09,session,MF2,MF2 done: the two stale e2e assertions fixed; the 
 L-0038,2026-10-12,clean,D-495 BL1 BL5,"BL1 done: Bluetooth LE in the app is tauri-plugin-blec (D-495), permissions per platform; BL5 added for his proof on the phone and the Mac"
 L-0039,2026-10-12,clean,BL2 BL3 BL5,"BL2 and BL3 done: Connect and log and the Scan page on tauri-plugin-blec, the pull state machine with resume and CRC, the decoder generated from the record's tables, one kind=drive inbox row per drive, digests for BL4; 68 unit tests green; BL5 is his"
 L-0040,2026-10-13,clean,BL4,"BL4 done: the Trends page - every channel's trend across drives with a drift rule, out-of-range flags from the record's limits, wear by miles and engine hours since each service; 85 unit tests green"
+L-0041,2026-10-13,closed,D-498,"The verify project closed and archived (D-498): 82 rows done, 230 dropped, its last open row carried to 04-beauty B03; electrical is the first project"

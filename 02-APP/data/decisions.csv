@@ -428,3 +428,12 @@ Nobody was asked: BL1's choice, the app's own code (D-428), reversible by changi
 **Read-only by shape.** The app writes exactly one characteristic (log_link LL05), and only the opcodes LL06-LL08; the plugin's write function is wrapped so no other UUID can be written from the app's code. The BMS (D-330) is only ever scanned and read; FEE7 and anything named DFU are never addressed.
 
 **In the data.** work BL1 done; BL5 (his proof on the phone and the Mac: the Ionic's advertisement) added, gated on BL2 which wires the plugin and the Scan page."
+D-498,Tree,"The verify project is complete and archived; its last detail, the trim code, moves to beauty; electrical is first on the agenda",2026-10-13,standing,,,,D-427 · D-428,"**The verify project is complete and goes to the archive: its one open row, the trim code off the colour plate, moves to the beauty project beside the paint code (04-beauty B03), where it is read; it gated nothing. Electrical is first on the agenda.**
+
+His words (chat, 2026-10-13): ""keep note that we want the last detail from verify but please remove it from that project it gates nothing we can close that project and electical is the first on the ajenda"".
+
+**What the project did.** Opened by D-427 (2026-09-25) to check every fact the Manual held back - 82 rows done, 230 dropped as settled by a source or by his answers, their results already written into 00-CAR as backed facts or as not-this-car. Nothing in it is cited as a gate by any other area; the remaining doubts about colour variants are one plate reading away, which 04-beauty now owns with the paint code.
+
+**Where it goes.** As the complete playbook says: the as-built facts are already in 00-CAR; the process - its work list, decisions, logs - moves whole to `99-ARCHIVE/2026-10-13_00-verify/`, and `02-PROJECTS/00-verify` is removed. Its decision ids and block prefix (VER) are never reused. The projects now run 01-electrical, 02-engine, 03-luxury, 04-beauty, 05-cad: electrical first, as he says.
+
+**In the data.** 04-beauty B03 (new); 00-verify K10 dropped with the pointer, then the area archived; this decision in 02-APP, which holds the tree's organisation rulings (D-427, D-428, D-454)."

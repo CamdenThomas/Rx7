@@ -128,7 +128,7 @@ not close them. The sheet carries its own "what this sheet does not know" panel,
 ## Scope: schematic yes, PCB not yet — superseded 2026-09-21
 
 > **Layout is now in scope** (D-361): Camden asked for the full layout and 3D guide, and ICU
-> layout was already his step `F2`. Follow `../../../tools/PCB-AND-3D-GUIDE.md` Part A. The paragraph below
+> layout was already his step `F2`. The step-by-step guide that walked it is gone (Camden deleted it on 2026-10-13 once the boards were drawn). The paragraph below
 > is kept for why it used to say no. Its last point still stands: **fabricating** (ordering
 > boards) is money with a lead time, and it stays Camden's.
 

@@ -42,7 +42,7 @@ The generated files are only the harness-leg drawings in
 CAD under `02-PROJECTS/01-electrical/00-design/`: the KiCad projects for the ICU and DCU carriers
 and the control panel, in their units' `control-unit/cad/` and `display-unit/cad/` (D-496), with
 the shared `tools/` holding the check and the library (D-497) — schematic, board layout and 3D model, with
-`tools/PCB-AND-3D-GUIDE.md` as the method — ruled in by Camden on 2026-09-12, widened on 2026-09-21
+the method once written as a PCB guide (deleted by Camden on 2026-10-13, the boards drawn) — ruled in by Camden on 2026-09-12, widened on 2026-09-21
 (layout, both boards, D-361), and since D-453 drawn by the agent as well. It is not an area — no
 `data/`, so `rx7.py` cannot see it — nothing in the record cites it, and if the record and a
 drawing ever disagree the record is right. `00-design/README.md` is the fence.
