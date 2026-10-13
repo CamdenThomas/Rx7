@@ -688,3 +688,413 @@ E47,The pack temperature the Ionic app shows after reconnection is entered.,"car
 The pack's published operating range is -20 to 60 C [00-CAR SP-233]
 The pack is self-heating; packs of this class heat only from a charging source, in the cold - not published for this pack, confirm [00-CAR SP-233]
 The record gives no pass band beyond the operating range [work E47]","One figure in degrees C entered, inside -20 to 60.","Outside -20 to 60 C: do not start or charge; note it in the app. If the app shows Fahrenheit, convert: C = (F - 32) x 5 / 9.",Enter the value in C.
+E24,"The dash node is fixed in the car and powered from the Class-T through the 2 AWG feed, the PMU shows in the laptop client with every output disabled, and the factory harness's main feed sits on the busbar.",under the dash where E13's panels fit; the cargo bin for the Class-T block; the glovebox for the laptop port,half a day - confirm,"Camden's Windows laptop with ECUMaster's PMU client (D-376)
+USB-to-CAN interface cable (P138)
+inline ATC fuse holder with a 5 A blade fuse, on two short 16 AWG leads with ring terminals (P073)
+multimeter: DC volts, ohms, continuity beeper (P045)
+torque wrench 1/4 in drive, 2-20 N-m (P046)
+ratchet crimper for heat-shrink ring terminals (P171)
+paint pen to mark each torqued stud (P082)
+sockets and spanners for the node's fixings and the studs - sizes are not in the record",P073 P136 P048 P079 P059 P082 P066 P124 P070,"E23 done: all four legs built and tested on the bench
+E18 and E19 passed on the node: continuity, isolation, and the sleeping current under 50 mA
+The interior is out (S1) and the node's mounting places are bare
+Master disconnect OPEN before any lug is touched. It is the switch on the battery positive in the cargo bin
+Rings and watch off; boots on the battery terminals. The battery is lithium: a dropped tool across a live stud welds
+No harness leg plugged into the node. Relays and fuses exactly as E18 left them","The dash node is the set of panels that carries the PMU-24, the covered always-hot busbar, the ground bus, fuse blocks A and B, the relay sockets and the wake strip. Its place and shape were fixed at E13 from the M-1 spaces [work E13]
+Water: nothing mounts in the lowest 50 mm of the footwell; every conductor enters from below or with a drip loop; the PMU's 39-way connector faces down or sideways, never up [rules water-ingress]
+Reach: 60 mm clear behind every receptacle, the PMU's lever arc clear, both fuse blocks reachable [work E13]
+The main feed is C03: 2 AWG red from the Class-T through the tunnel, about 16 ft - confirm. Its lug lands on the always-hot busbar stud. Busbar to the PMU stud is C10, 2 AWG, about 0.7 ft - confirm [cables C03, C10; node_conductors N01]
+Ground: PMU pin 25 to the ground bus on 10 AWG black, 6 in or less; the ground bus to the dash chassis star on 10 AWG black, about 2 ft - confirm; bare metal, star washer, cavity wax [node_conductors N57, N58; grounds G14]
+The Class-T fuse is 150 A, in its block in the cargo bin beside the master disconnect [fuses Class-T]
+First power goes through a 5 A fuse bridged across the Class-T block's two terminals, so a short at the node melts a 5 A fuse and not 2 AWG cable [work E24]
+DP-DIAG is the laptop port, a 4-way Deutsch DT in the glovebox: 1 CAN1 high (yellow), 2 CAN1 low (green), 3 +12 V constant through F2 (2 A), 4 ground. 120 ohm sits across 1 and 2 inside the plug and 120 ohm across PMU pins 23 and 36 [cavities DP-DIAG 1-4; fuses F2; node_conductors N56]
+CAN1 is the laptop bus, fixed at 1 Mbps [recovery RC03]
+The PMU switches on when pin 7 (+12V SW, the wake strip's common rail) is high. With no leg plugged in the record names nothing that lifts pin 7 - confirm what wakes it [pins 7]
+P136 is the load-dump TVS, a surge clamp from the busbar to the dash star. The part is not chosen yet: 18-20 V standoff, 5 kW or more, bolt-down - confirm [parts P136]
+DP-DCU cavity 1 is live as soon as the busbar is (F22, 3 A, constant). Its plug stays dust-capped until E26 [housings DP-DCU; fuses F22]
+Torque for every heavy stud is the maker's figure read at D1. No figure is in the record yet - confirm [rules torque]
+The factory harness's main feed keeps its factory fusible links in series: the 1.25 sq main link and the brown 0.3 sq links [work E11; 00-CAR PT316, PT317]","The node does not move when pushed; with the 150 A Class-T fuse back in and the disconnect closed, the client shows the PMU-24 over DP-DIAG with every output disabled; nothing is warm, nothing smells; the factory circuits work from the busbar as they did at E12.",The 5 A fuse blows: open the disconnect and find the short at the node with E18's isolation test before another fuse goes in. Never fit the Class-T fuse to find out. The client does not see the PMU: measure 12 V at the PMU stud and at pin 7 (recovery RC06); check 120 ohm at both ends of CAN1 and F2. Anything else: raise it in the app as a note.,Tick E24 in the app. No value. Add a note saying what lifted pin 7 for the first power-up and which TVS part was fitted.
+E25,"The whole PMU configuration from the record is entered in the client and saved as RevA-01, with every output still disabled and no current limit set.","in the car: laptop on the passenger side, plugged into DP-DIAG in the glovebox",3 to 4 h - confirm,"Camden's Windows laptop with ECUMaster's PMU client (D-376)
+USB-to-CAN interface cable (P138)
+a charger on the battery or an eye on its voltage: the node is live for hours with the engine off",,"E24 done: the PMU answers over DP-DIAG
+No harness leg plugged in
+Every output disabled, and it stays that way through this whole row
+The bench session's three answers in hand: CK06 (the Delayed turn off range), CK13 (timeouts in fractions of a second) and CK15 (whether a function can divide)","The configuration is the record itself: names and channels from pins, states from inputs and ladders, expressions from logic, retry behaviour from rules, the bus from can_messages [work E25]
+22 outputs. O1-O5 and O12-O16 are the 25 A pins. O6-O11 are the 15 A pins. O17-O22 are the 7 A pins: they are the analog pins A9-A14 set up as outputs [pins; inputs A9-A14]
+Ten inputs. A1-A8 are the 0-5 V ladder inputs, read as 0-1023 counts. A15 and A16 are the two ladders fed from battery voltage, each with a 100 kOhm bias from pin 15 (+5 V) [rules ladder-decode; node_conductors N39]
+No decode window is typed today. Windows are read live in the car at E26 and E27 and entered then [D-142]
+No current limit today. The enable-at limits go in at E26 [work E25]
+CAN1 is the laptop bus at 1 Mbps. CAN2 is the car's bus at 500 kbps, 11-bit ids, with the PMU's software termination ON [pins 23, 24; params can_bitrate]
+The PMU's four frames 0x100, 0x110, 0x120 and 0x130 are a CANbus Export we define, byte by byte [D-378; can_fields]
+Wire is control and CAN is telemetry: the only bus values the PMU acts on are the panel keys in frame 0x400 - rear defog, hatch, fuel door and the window keys [D-251; can_messages 0x400]
+OIL_MIN, the oil-pressure count the fuel-pump gate compares against, is not entered today. It is read in the car at the first idle [logic FUEL_PUMP]
+The pop-up cycle's idle-current threshold is not typed today either. It comes from CK08's powered readings and is entered when the pop-ups move, MG15 [rules pop-up-cycle]
+The PMU has a built-in inertia switch that drops every output above a set acceleration, 6 G by default [work G3]
+Saved files come back to the project by hand if they are to be kept [D-376]","RevA-01 is saved in the PMU and on the laptop; every output is named, has its expression and retry setting, and is disabled; no Max Current limit is entered; the client reports no error on any function.","The client refuses a function as written: use the fallback its check names - CK15 for the division, CK13 for timeouts, CK06 for the keep-alive timer - and say which in a note. An expression the record does not settle: do not improvise it; leave that output without logic, disabled, and raise it in the app as a note.",Tick E25 in the app. No value. A note for every place the client forced a different form than the record's expression.
+E26,"The dash leg L3, the instrument unit (ICU) and the climate unit (DCU) are plugged in, every column-switch position lands in its own decode window, the enable-at limits are entered, and still no output is enabled.","dash post, steering column, binnacle (the instrument opening) and the centre-stack opening",half a day - confirm,"Camden's Windows laptop with ECUMaster's PMU client (D-376)
+USB-to-CAN interface cable (P138)
+multimeter: DC volts, ohms, continuity beeper (P045)
+fuse puller, for F3 and F24
+a helper is useful: one works the switches, one reads the screen",,"E25 done: RevA-01 saved
+F6 done: the climate unit commissioned on the bench
+F3 done: the display chain proven on the bench
+Master disconnect OPEN while the plugs go in
+Every output disabled, and it stays so through this row
+From this row the key and the column switches feed the PMU. The car does not start again until the last circuit has moved at the end of E28, and it is not driven until E35","L3 has five plugs at the dash post: L3-P (DTP 2-way), L3-M (DT 2-way), L3-S1 (DT 12-way), L3-S2 (DT 12-way) and L3-S3 (DT 8-way). Every housing carries its code on both halves [housings L3-P, L3-M, L3-S1, L3-S2, L3-S3; rules label-format]
+The instrument unit sits in the binnacle with the display on its face. Two tails from the dash post plug into its rear wall: DP-ICU-A, a 6-way, and DP-ICU-B, a 12-way [housings DP-ICU-A, DP-ICU-B; D-491]
+The climate unit is one box in the centre-stack opening with the control panel on its face and the DCU inside. Two tails plug into its rear wall now: DP-DCU, a 6-way, and DP-DCU-B, a 12-way [housings DP-DCU, DP-DCU-B; D-479]
+DP-DCU cavity 1 is constant 12 V through F22 (3 A): the climate unit is alive the moment it is plugged in. The instrument unit's logic is on O10 and stays dark until that output is enabled [cavities DP-DCU 1, DP-ICU-A 1]
+The climate unit's loads are not in the car yet, so its outputs drive capped lines [work E26]
+Window half-widths, in counts: A1 55 - A2 45 - A3 30 - A4 20 - A5 20 - A6 20 - A8 35 - A15 75 - A16 200 [inputs]
+A state's window is its live reading plus and minus the half-width. A reading that falls between windows is a wiring fault to fix now [work E26; rules ladder-decode]
+A15 and A16 decode on conductance: read OFF first and refit k2 = k1 x the OFF reading, so OFF gives g = 0 [rules ladder-decode]
+A dead switch feed must read as a FAULT, not as OFF: proven by pulling F3 at ACC and F24 at PARK [rules ladder-decode; D-412]
+F3 is 5 A in block A position 2 at the dash node. F24 is 3 A, a sealed inline holder behind the lower dash panel where the light-switch branch leaves the leg [fuses F3, F24]
+The wiper stalk's WASH leg: the ladders table has 470 ohm plus a 1N4148 diode; the cavity row still says 1.8 kOhm plus a 1N5819. What E20 built is what is there: read it, do not assume [ladders A2 WASH; cavities L3-S1 4]
+A3 to A7 (brake and park, the gear lever, the doors, oil pressure) are not read today: they need L2, L4 and L1, at E27 [work E26]","Every position of the key, light switch, dimmer, pass, turn stalk, hazard, wiper stalk, wash, horn pad and both wink buttons shows its own named state in the client with no overlap and no FAULT; pulling F3 and F24 each gives a FAULT; the enable-at limits are entered; a new revision is saved; no output is enabled.","A reading between two windows, or two positions reading the same: it is a wiring fault at that switch - a resistor on the wrong contact or a missing ground. Unplug L3-S1, measure ohms from the leg-side cavity to ground in each position and compare with the ladder's resistor. A reading of 0 or over 990: an open or short on that wire. The climate unit silent on the bus: check F22 and the two CAN2 cavities. Do not widen a window to make a bad reading fit.",Tick E26 in the app. No value. The readings live in the configuration; save it as a new revision and note the revision name.
+E27,"The front leg L2, the rear leg L4 with the sill node, and the engine leg L1 are routed, clipped, grommeted and plugged into the dash post, F17 is fitted and the start relay K9 wired, and the brake, gear-lever and door inputs are read into their windows - with every load still on the factory harness.","engine bay, nose, cowl, tunnel, driver sill, cargo area, and the dash post",a weekend - confirm,"P-clips, grommets, split loom and pull string (P081)
+cloth harness tape (P080) - a turn every 150 mm, no final wrap
+drill and bits for P-clip fixings - sizes are not in the record
+ratchet crimper for heat-shrink ring terminals (P171), for K9's 10 AWG rings
+heat gun (P042)
+torque wrench 1/4 in drive, 2-20 N-m (P046)
+multimeter: DC volts, ohms, continuity beeper (P045)
+Camden's Windows laptop with ECUMaster's PMU client (D-376)
+USB-to-CAN interface cable (P138)
+jack and jack stands, wheel chocks - for the run under the floor to the tank",P081 P080 P053 P054 P004 P005 P079 P059 P082,"E26 done: L3, the instrument unit and the climate unit are in and their inputs read
+Master disconnect OPEN for all routing and for anything at the starter stud
+Jack stands under the car and wheels chocked before going underneath. Park is not a parking brake
+No sparks near the tank; extinguisher within reach
+The car does not start during this row (D-414)","L2 leaves the dash post through the cowl grommet and runs along the inner wing to a splice point at the nose. The 3D model estimates 11.4 ft; the leg was cut from the length measured at M-2 [routes RT06]
+From the nose: across the radiator support to each headlight bucket and pop-up motor; to the front combo lamps, side markers and horns; and back along the cowl to the wiper motor and washer pump, which sit at the cowl [routes RT07, RT08, RT09]
+L4 runs through the tunnel to the rear node in the cargo bin, beside the three heavy cables. A branch in the tunnel goes to the transmission for the road-speed sensor and the kick-down solenoid [routes RT15, RT21]
+From the rear node: along both quarters to the tail, licence and marker lamps; under the floor to the fuel pump and tank sender; through the hatch hinge loop to the hatch release, luggage lamp and defog grid; up the C-pillar to the interior lamp; behind the driver-side quarter trim to the fuel-door solenoid [routes RT16, RT17, RT18, RT23, RT24, RT25]
+The sill run goes from the dash post along the driver sill to the sill node, a small panel behind the driver kick panel [routes RT19; devices DV43]
+L1 leaves through the firewall grommet on the passenger side to a junction in the engine bay, then branches: coils and igniters along the upper rear housing, alternator down the front of the block, the two senders at the rear housing, starter and inhibitor switch under the intake, brake-fluid switch along the firewall [routes RT01, RT02, RT03, RT04, RT05, RT26]
+The shielded tach wire crosses ignition leads at 90 degrees and never runs beside one within 50 mm. Signal bundles L2-S and L4-S run apart from the power bundles L2-P and L4-P [rules emc-routing; housings L2-S; cavities L4-S 1]
+Every bundle enters a node from below or with a drip loop [rules water-ingress]
+The fuel pump's ground is its own 12 AWG wire to the rear star stud, never shared [grounds G26]
+K9, the start relay, is a sealed relay in a weatherproof socket on the inner fender. 86 from L1-S1 1; 85 to block ground, 16 AWG black; 30 from F17 on 10 AWG red, about 4 ft - confirm; 87 to the starter's small S terminal on 10 AWG red, about 3 ft - confirm [relays K9; cables C08, C09; grounds G02]
+F17 is a 30 A MIDI fuse in a bolt-down holder beside the starter's main stud. The holder went in at E10 and was left unwired [fuses F17; work E10]
+A3 decodes upward, half-width 30: IDLE 47 kOhm, PARKED 12 kOhm beside it, BRAKE 4.7 kOhm beside it, BRAKE+PARKED both [ladders A3; inputs A3]
+A4 and A5 decode upward, half-width 20: IDLE 47 kOhm; CRANK_OK and REVERSE add 8.2 kOhm beside it. A6, half-width 20: CLOSED 47 kOhm, DRV adds 24 kOhm and a diode, PASS adds 8.2 kOhm and a diode, BOTH adds both [ladders A4, A5, A6; inputs A4, A5, A6]
+Looms are not final-wrapped today: the cabin's at E35, the engine bay's at E33 after the first heat cycles [work E35, E33]","All ten leg plugs are latched at the dash post; every run is clipped, grommeted at each pass-through and clear of heat and moving parts; F17 is in and K9 is wired; A3, A4, A5 and A6 each show the right named state for every position that is connected; a new revision is saved; nothing is enabled.","A leg that will not reach: do not stretch or re-splice it - note the shortfall in the app; the cut length was 1.5 times the measured route. A reading between windows: a wiring fault at that switch; unplug the leg plug and measure ohms to ground in each position. A state that cannot be read because its device is still on the factory harness (the wiper's park contact, the gear lever's contacts): read it at its migration row in E28 and say so in a note.",Tick E27 in the app. No value. Note any state left to be read in E28.
+E28,"Every circuit in the migration table has been moved from the factory harness to the new one, one at a time and each proven alone, ending with the start circuit, and the engine has started on the new harness.","the whole car, one device at a time; the laptop stays on DP-DIAG in the glovebox",two to three full days in one stretch - confirm,"Camden's Windows laptop with ECUMaster's PMU client (D-376)
+USB-to-CAN interface cable (P138)
+multimeter: DC volts, ohms, continuity beeper (P045)
+one long meter lead, the length of the car, so one probe stays at the dash node
+label printer (P041) for the MIGRATED labels
+ratchet crimper for heat-shrink butt splices and rings (P171)
+heat gun (P042)
+contact removal tool, size 16 (P031)
+insulating tape to fold back each factory end
+a helper for the lamps behind you and for the first crank",P078 P079 P141 P113 P076 P075,"E27 done: all four legs plugged in, every device end waiting beside its device
+E2 done: the factory odometer read and entered - it gates this row
+F3 done before MG22: the display proven on the bench
+Enable-at limits and inrush settings entered (E26)
+Master disconnect OPEN each time a splice or terminal is made; closed to test
+Wheels chocked, car on its wheels or on stands. Hands clear of the pop-ups and the wiper arms when their outputs are enabled
+Fuel pump and tank work (MG20): no sparks, extinguisher within reach
+First start (MG23): garage door open, belt and fan clear","The order is the migration table's, by its sequence number. It is the test order: each circuit is proven alone before the next moves, so a fault shows on the circuit that caused it [work E28; D-414]
+The loop for every circuit: (1) unplug the load at its factory connector, label the factory end MIGRATED and the date, tape it back; (2) connect the load to the new harness; (3) enable that one output at its enable-at value; (4) operate it and read the live current in the client; (5) measure voltage at the device under load; (6) record it [work E28]
+Voltage test: load running, busbar to the device's + terminal under 0.5 V; the device's - terminal to the ground bus under 0.3 V [work E28]
+Device ends: where a device has a stud or blade the new wire ends in a ring or spade; where it keeps a factory plug, the new wire joins that plug's leads with sealed heat-shrink butt splices. The two-letter factory colour says which lead takes which wire [rules device-end]
+The factory harness meets itself at a few big connectors: engine harness at X-01, dash harness at X-02 and X-12, rear harness at X-03 on the left side behind the door, transmission harness at X-10. Its fuse block X-04 is under the dash. These stay together until E30 [00-CAR PT027, PT318, PT321, PT323, PT325]
+Output status numbers in the client: 0 OFF, 1 ACTIVE, 2 UNDERCURRENT (a dead bulb), 3 OVERCURRENT (a tripped soft fuse), 7 THERMAL SHUTDOWN [recovery RC04]
+Factory wire colours are base then tracer: GY is green with a yellow stripe; Lg is light green [00-CAR PT027]
+The headlamp units in the car are LED housings fitted by a previous owner, so their current will be well under the halogen figures [00-CAR PT035]
+A stalled pop-up motor pulls 15 to 25 A and the lamps move fast [work E4]
+The car does not start until the last row, MG23, and is not driven until E35 [D-414; D-387]
+Soft-fuse limits are set from current measured live, never from a typed guess. The measured baselines are taken at shakedown [D-025; checks CK01]
+CK16 is taken after the pop-ups move and CK14 at the first crank [checks CK16, CK14]","Every migration row from MG01 to MG27 is done and each works on its own; every factory end is labelled MIGRATED with its date; the engine cranks only in P and N, starts and idles on the new harness; OIL_MIN is entered from the first idle; CK14 and CK16 are logged; a new revision is saved.","A circuit does not come up: stop there - the fault is in what you just moved. Read that output's status in the client: 3 means a shorted wire - find it, do not raise the limit; 2 means an open load or a dead bulb; no current and status 0 means the input state is wrong - watch the ladder while you work the switch. Low voltage at the device: the feed's crimp or splice. Voltage on the ground side: the ring or the star stud. The factory end is only taped back, so the circuit can go back on the factory harness while you look. If a device has no plug, stud or blade of its own to connect to without cutting the factory harness: the device-end rule says cut the plug off with 150 mm of lead, and E30 says the old harness leaves uncut - the record does not say which wins, so raise it in the app as a note before the first cut. For a PMU soft fault use recovery RC02 to RC05.","Tick E28 in the app when MG23 has moved and the engine has run. E2 takes the odometer reading before MG22. The per-circuit current and voltage readings, CK14's lowest cranking voltage and block offset, and CK16's readings have no row of their own: put them in a note in the app."
+E29,"Every circuit has been worked in one pass - key out, ACC, RUN and engine running - on the new harness alone, the limp-home procedure has been proven once, the configuration is saved as a new revision, and the whole car draws 50 mA or less asleep.","the whole car, in the garage with the door open; the dash node for the limp-home test; the cargo bin for the sleep reading","half a day, plus an hour's wait for the sleep reading - confirm","Camden's Windows laptop with ECUMaster's PMU client (D-376)
+USB-to-CAN interface cable (P138)
+multimeter: DC volts, ohms, continuity beeper (P045)
+clamp meter that reads DC milliamps, or the multimeter in series at the disconnect
+the limp-home kit: three fused jumpers 10 A, 20 A and a 5 A one with a pushbutton, a work light, the printed recovery table (P139)
+a stopwatch, to time the limp-home procedure
+a helper to watch the lamps at the rear",P139 P138,"E28 done: every migration row moved, the engine has started and idled
+Wheels chocked; the car is not driven (the interior is out until E35)
+Garage door open whenever the engine runs; belt and fan clear
+For the limp-home test: engine stopped first, then master disconnect OPEN before the PMU's connector is touched","The check is one pass through four key states: key out, ACC, RUN, engine running [work E29]
+With the key out these still work, each by waking the PMU first: hazards, horn, each wink, brake lamps, and the interior and courtesy lamps on their own fuses [rules flasher; pins 7; fuses F12, F19]
+The car goes back to sleep 30 s after the last change with the key out, both doors shut and nothing pressed. Hazards hold it awake with no limit [logic KEEP_ALIVE]
+Wipers: when switched off they run on to the park position; INT is one sweep and a 3 s pause; a flick of LOW under 400 ms is one sweep; the washer pump runs only while WASH is held, then two more sweeps [rules wiper-park, washer]
+Flasher rate 1.5 Hz. The hazard switch overrides the stalk [rules flasher]
+Dash illumination is on with PARK and HEAD and dims; the interior lamp is on its own door switch with the key out [D-462]
+The starter runs only with the lever in P or N [rules crank]
+Limp-home, dead module: the PMU's 39-way is unplugged and three fused jumpers run from the busbar - 10 A onto relay K13 terminal 30 for the fuel pump, 20 A onto the O12 splice for ignition, and a 5 A pushbutton jumper onto K9's terminal 86 lead to crank, lever in P [recovery RC07]
+On the jumpers the key still stops the engine by dropping K13, but there is no oil gate and no inhibitor: ignition is live whenever the disconnect is closed [recovery RC08]
+If the limp-home takes more than about twenty minutes in a warm garage it will not happen at the roadside in the rain [checks CK11]
+Sleeping current: 50 mA or under is accepted, 30 mA is the target. On the 40 Ah pack 150 mA is about 11 days of parking and 20 mA about 80 [checks CK02; loads LD17; D-280]
+The pack gives no slow-crank warning: it is fine, then it is dead at 8.0 V [checks CK02]","Every function in the steps works first time in its key state and nothing works in a state where it should not; the engine starts and runs on the limp-home jumpers and everything is restored after; the new revision is saved in the PMU, on the laptop and on the copy for the car; one hour after key-off the car draws 50 mA or less.","A function fails: it is that circuit's migration row again - status in the client, then the ladder state, then the voltage at the device. Limp-home does not start the engine: the procedure is wrong, and now is when to find out - note exactly which jumper and which terminal failed. Sleep reading over 50 mA: with the meter still in place pull, one at a time, F1 (head unit memory), F19 (courtesy lamps), F22 (climate unit), F23 (wake stages), F12 (interior lamp), and watch for the drop; the pack's own BMS is the remainder. Do not go on to E30 on a failing sleep number.",Tick E29 in the app. No value on this row. The sleep reading in mA and the limp-home time in minutes have no row of their own: put both in a note.
+E30,"The whole factory harness is out of the car in one piece - with its fuse box, relays, control unit and the factory cluster - boxed and kept as the fallback, and the car still works on the new harness alone.","the whole car: under the dash, the engine bay, the left sill and the rear",one day - confirm,"sockets, spanners and screwdrivers for the harness clips and the fuse box - sizes are not in the record
+trim clip tool
+label printer (P041) or tags, for each connector as it comes out
+camera
+a box big enough to coil the harness without kinking it
+multimeter: DC volts, ohms, continuity beeper (P045)",,"E29 passed: the full function check, the limp-home test and the sleep reading
+Every migration row done and every factory end labelled MIGRATED with its date
+The interior is still out (D-387, D-411)
+Master disconnect OPEN before the factory main feed is taken off the busbar","The harness comes out INTACT. It is not cut anywhere. It is the fallback if something fails in shakedown, and refitting it is a big job [work E30; D-411]
+It leaves with the factory fuse box, the relays, the control unit and the factory cluster [work E30; D-268]
+The factory harness is several harnesses joined by big connectors: the front harness with the fuse block; the engine harness at X-01, a 22-cavity plug; the dash harness at X-02 and X-12; the rear harness at X-03, on the left side behind the door - check; the transmission harness at X-10, a 6-pin, and X-17, two 1-pins; the parking-brake harness at X-11 [00-CAR PT309, PT321, PT325, PT318, PT323]
+The factory cluster is on two 13-cavity round connectors [00-CAR PT614]
+The control unit is the box that did the flasher, the intermittent wipers and the warning chimes. The PMU does all of that now [00-CAR PT301]
+The factory body grounds are X-13, at the left suspension tower and under the dash on the left, and X-14 and X-15, whose places are not in the record: follow the black wires [00-CAR PT027]
+The factory main feed, with its black 1.25 sq and brown 0.3 sq fusible links, has sat on the dash-node busbar since E24, and the factory main ground on the front star since E11 [work E24, E11; 00-CAR PT316, PT317]
+What stays: every device and switch the new harness uses - lamps, motors, senders, the column switches, the horn pad, the parking-brake switch, the kick-down switch and solenoid, the two release solenoids - and the wideband gauge at the node [devices; D-244]
+The A/C stays as it is: compressor on the car, clutch unplugged, belt off, the rest untouched [D-474]
+There is no week of driving on the old harness: the car is not driven until the interior is back [work E30]","No factory wire, fuse box, relay or control unit is left in the car; the harness is in its box in one piece with every connector labelled; nothing the new harness uses was disturbed; the car starts and every function still works.","Something is still plugged into the factory harness that no migration row moved: stop. Label it, photograph it, and raise it in the app as a note before unplugging it - it is a circuit the design does not know about. A connector that will not part: do not cut the wire; note it. A function that stopped working after the harness came out was sharing a factory ground or feed: find it now, while the harness is still in the garage.","Tick E30 in the app. No value. A note listing anything found still connected, and where the box is kept."
+E2,"The factory odometer's reading is entered in the app, in miles, before the factory cluster goes dark.","at the factory cluster - loose in the car with the dash out, still plugged in since E12",5 min,"phone camera
+a torch",,"F3 done: the new display proven on the bench - this row's gate
+Take it before E28 starts: E28 is gated on this row","The factory cluster stays alive on the factory harness until the meters cutover, MG22, then goes dark and leaves the car with that harness [D-268]
+The new instrument unit keeps its own odometer and starts it from this figure [work E2; D-269]
+The new odometer is stored in the unit's own memory every 0.1 mile, with the memory card as a second copy, so a missing card cannot lose the mileage [D-269]
+The speedometer is cable-driven, with a trip reset knob [00-CAR PT621]
+The car is not driven between the strip and E35, so the figure does not change before the cutover [work E12]
+The reply is a value in miles [work E2]",The reading is saved on this row in the app and a photo of the odometer exists.,"A digit sits between two numbers or cannot be read: photograph it and enter the lower figure, with a note. The cluster has already been unplugged: the odometer is part of the cable-driven speedometer head, so it should still read with no power - confirm, and take it off the cluster wherever it is.","Enter the odometer reading on this row, in miles. Nothing else."
+Q-110,The time from pressing the horn pad on a sleeping car to the horn sounding is measured and entered in milliseconds.,driver's seat and the nose of the car,20 min,"a stopwatch and a helper
+a phone filming in slow motion, if you want a figure finer than a thumb can give",,"E25 done: the PMU configured - this row's gate
+The horn has moved to the new harness (MG04 in E28)
+Key out, both doors shut, nothing pressed for at least 30 s, so the PMU is asleep","The horn, hazards, winks and the brake lamps all work with the key out, and all of them work by waking the PMU first: a wake stage lifts pin 7, the PMU boots, reads the switch and drives the output [work Q-110; pins 7]
+Nothing in the design says how long that takes, and the horn's whole value is in its first 200 ms [work Q-110]
+Under about 200 ms: nothing more to do. Over about 500 ms: the question becomes whether the horn should hang off the always-hot busbar through its own relay - a change this build can still absorb [work Q-110]
+The brake lamps are the same measurement and matter more [work Q-110; D-278]
+The bench check CK12 measured the time from pin 7 going high to O22 coming on: compare [checks CK12]
+The PMU sleeps 30 s after the last input change with the key out and the doors shut [logic KEEP_ALIVE]","A figure in ms is entered for the horn, taken from a car that was truly asleep, and the brake-lamp delay is noted beside it.","It sounds instant and cannot be timed by hand: film the press and the horn in slow motion and count frames; if it still cannot be resolved enter your best estimate and say in a note that it is a ceiling, not a measurement. Over 500 ms: enter the figure and stop - the fix is a design change, not an adjustment.",Enter the horn delay on this row in ms. Add the brake-lamp delay in a note. Q-028 takes the same measurement cold.
+Q-028,"The wake-to-horn delay with the car cold is on record, in milliseconds, so it never has to be found again.","driver's seat and the nose of the car, on a cold morning",15 min,"a stopwatch and a helper, or a phone filming in slow motion
+an outdoor thermometer",,"E25 done: the PMU configured - this row's gate
+The horn on the new harness (MG04 in E28)
+The car left asleep overnight in the cold","Nothing depends on this number today. It is recorded in case the horn or the winks ever move to a wake sent over the CAN bus [work Q-028]
+The question it answers: what wake-to-horn delay is acceptable cold [work Q-028]
+It is the same measurement as Q-110, taken cold [work Q-028, Q-110]
+The wake stages must hold their rest state cold as well as warm - the bench check read them cold too [checks CK12]","A figure in ms is entered, with the air temperature in a note.","The horn does not sound at all from a cold sleep: that is a fault in the wake stage, not a slow reading - note it at once and check 12 V on pin 7 while the pad is held.",Enter the cold wake-to-horn delay on this row in ms. Air temperature in a note.
+E36,"The hatch and the fuel door each open from their key on the left plate: relays K3 and K4 are in their sockets, fuse F33 is in, both solenoids are on the new harness with a proven ground, and each solenoid's current has been read.","dash node (K3, K4, F33); the hatch latch; behind the driver-side rear quarter trim (the fuel-door solenoid)",2 to 3 h - confirm,"multimeter: DC volts, ohms, continuity beeper (P045)
+an ammeter or clamp meter that reads 20 A DC
+a fused 12 V test lead
+ratchet crimper for heat-shrink butt splices and rings (P171)
+heat gun (P042)
+label printer (P041)
+Camden's Windows laptop with ECUMaster's PMU client (D-376)
+USB-to-CAN interface cable (P138)",P003 P141 P078 P079 P165,"E22 done: the rear leg built, with L4-M 3 and L4-M 4 run to the two solenoids
+A11 done: the release design, including the hatch latch switch. If A11 is still open, this row's gate is not met
+The climate unit and the left plate plugged in (E26), O10 migrated (MG02 in E28)
+Master disconnect OPEN while relays, the fuse and the solenoid ends are fitted","Both solenoids are the car's own. They exist and are believed to work; nobody has tested them on the new harness [devices DV48, DV49]
+Factory wires: the hatch solenoid has GR (+) and B; the fuel-door solenoid has GB (+) and B. Each B went to the rear body ground [00-CAR PT030, PT031]
+New feed, hatch: L4-M 3, 14 AWG orange, from relay K3 terminal 87, through the hatch hinge loop with the tail-lamp wires, to the solenoid's + [cavities L4-M 3; relays K3]
+New feed, fuel door: L4-M 4, 14 AWG orange, from relay K4 terminal 87, behind the quarter trim, to the solenoid's + [cavities L4-M 4; relays K4]
+Each solenoid's - stays on its factory ground at the body. Prove it with the meter [devices DV48, DV49]
+K3 and K4 are ordinary micro relays in sockets at the dash node, labelled HATCH-REL and FUEL-REL. Terminals 30 and 86 of both are fed from O10 through F33, a 10 A sealed inline fuse. Terminal 85 of K3 goes to the climate unit on DP-DCU-B 10, and K4's to DP-DCU-B 11: the climate unit grounds one to pick which opens [relays K3, K4; fuses F33]
+The relays have power whenever O10 is on, not only during a release. What stops a stray release is F33, pull-downs in the climate unit, and its firmware: it refuses unless the car is stopped and lets go after 1.5 s at most [D-465]
+With the key off a release is allowed when the PMU reports the key OFF and no road speed is seen [work A11]
+The two keys are on the left plate, left of the steering wheel. The climate unit sends them in frame 0x400: byte 0 bit 1 hatch, bit 2 fuel door [cavities DP-DCU-E 2, DP-DCU-E 3; can_fields 0x400/0]
+Nobody knows what the solenoids draw. The factory fuse for them was 20 A; F33 is 10 A; O10 trips at 13 A and already carries up to 10 A [checks CK20; 00-CAR SP-218]
+The hatch latch switch is broken. Its replacement is P165, bought once the car confirmed the switch is what failed. Where its wires land is A11's and is not in the tables yet - confirm [parts P165; work A11]","Pressing the hatch key opens the hatch and pressing the fuel-door key opens the fuel door, key at ACC and with the key out; neither opens by itself when the key is turned on; each solenoid's current is known; F33 is still intact after ten releases of each.","A solenoid does not pull: 12 V at its + during the press? If yes, its ground or the solenoid itself; if no, listen for the relay - a click with no voltage is F33 or the 87 wire, no click is the select line from the climate unit (DP-DCU-B 10 or 11) or the key not reaching the bus. F33 blows: the current reading says why; do not fit a bigger fuse - note the reading, the rating is revised from it. A solenoid that fires when the key is turned on: stop, pull F33, and note it.",Tick E36 in the app. No value on this row. The two solenoid currents in amps go in a note: they are CK20's reading and may change F33.
+E37,"Both doors carry their harness - from the 8-way plug at the sill through the jamb boot to the window-motor position and the mirror - with every end either on its device or capped and labelled, ready for the regulators and mirrors.","driver sill node behind the kick panel, both door jambs, inside both doors",one day for both doors - confirm,"Deutsch solid-contact crimper, sizes 12 and 16 (P038)
+contact removal tool, size 16 (P031)
+ratchet crimper for heat-shrink butt splices and rings (P171)
+heat gun (P042)
+label printer (P041)
+multimeter: DC volts, ohms, continuity beeper (P045)
+trim clip tool and screwdrivers for the door trim
+a stiff pull wire for the jamb boot",P166 P028 P078 P076 P075,"E22 done: the sill node built, D1 and D2 pinned on the node side
+A12 done: the door harness drawn, which needs the mirror measured at its plug (luxury W-332). If either is still open, this row's gate is not met
+Master disconnect OPEN
+Window glass fully up and taped before the trim comes off","D1 is the driver door's 8-way Deutsch plug and D2 the passenger's; both mate receptacles at the sill node. The run from the sill node into each door goes through the jamb boot; the 3D model estimates 7.5 ft, measured at M-2 [housings D1, D2; routes RT20]
+Cavities, the same in both: 1 window motor leg A, 14 AWG red - 2 window motor leg B, 14 AWG red - 3 a sealing plug, stays - 4 mirror motor common, 16 AWG grey - 5 mirror motor, 16 AWG grey - 6 mirror clutch coil, 16 AWG grey - 7 mirror heat, 16 AWG red - 8 door ground, 16 AWG black [cavities D1 1-8, D2 1-8]
+Until today the door plugs hold sealing plugs in every cavity. They come out here, except cavity 3 [work E37; cavities D1 3]
+Each mirror is one reversing motor plus a clutch coil that picks the axis; both mirrors share the common. Which mirror lead takes which cavity is confirm until the mirror is measured [dcu_channels SN17; cavities L4-S2 1]
+The mirror heads are the car's own and keep their factory plugs. Factory mirror leads are Lg, LgB, LgY (LgR on the right) and B [work A12; 00-CAR PT032]
+The window-motor legs end in a Deutsch plug at the motor's place, sized to 14 AWG. The motor's own adapter lead is a later row [work A12; D-473]
+Window relays K5 to K8 sit at the sill node. At rest both motor legs are grounded; one relay pulling in puts its leg on the fused feed [node_conductors N93, N94; D-363]
+Fuses F8 and F9 (the window feeds) are holders at the sill, empty this build; 20 A goes in when the windows arrive. F14, mirror heat, is 5 A [fuses F8, F9, F14]
+Door ground: cavity 8 goes to the sill ground splice and the sill stud, never to the door shell [grounds G40]
+Door trim comes off in this order: window winder handle, inner handle cover, arm rest, trim panel, then the plastic water shield [S-002 p.14-9]
+That page is the 1985 manual - confirm on the car [S-002 p.14-9]
+The regulators and mirrors themselves are fitted later by the luxury package [work E37]",In each door: seven contacts are in the door plug and cavity 3 is still sealed; every wire reads continuity from the sill receptacle to its far end and to nothing else; cavity 8 reads to the sill stud; every far end is on its device or capped and labelled; the boot is seated; the water shield and trim are back; D1 and D2 are latched.,"A contact will not click in: the sealing plug's remains or a bent contact - use the removal tool, never force it. A wire reads to its neighbour: a stray strand at a crimp; cut it back and re-crimp. The harness will not pass the boot: do not slit the boot - pull one wire at a time on the pull wire with a little soapy water. Anything about the mirror's leads that the record does not settle: cap the four mirror wires, label them by cavity, and note it.",Tick E37 in the app. No value. A note saying which ends were joined and which were left capped.
+E38,"The comfort fuse block is mounted behind the centre stack and plugged into L3-CMF, the four under-seat receptacles are in place and capped, and the comfort-return plug is in the climate unit - every seat wire tested and waiting for the seats.","behind the centre stack, down the tunnel sides, under both seat positions, and the dash node (K14, K15, F35, F36)",half a day - confirm,"Deutsch solid-contact crimper, sizes 12 and 16 (P038)
+contact removal tool, size 16 (P031)
+ratchet crimper for heat-shrink butt splices and rings (P171)
+heat gun (P042)
+label printer (P041)
+multimeter: DC volts, ohms, continuity beeper (P045)
+a 12 V test lamp
+Camden's Windows laptop with ECUMaster's PMU client (D-376)
+USB-to-CAN interface cable (P138)
+torque wrench 1/4 in drive, 2-20 N-m (P046)",P164 P141 P189 P191 P003 P101 P036 P102 P079 P075,"E20 done: the dash leg L3 built, with the L3-CMF receptacle behind the centre stack
+A13 and A14 done (they are): the comfort block and the seat harness designed
+The climate unit in its opening (E26)
+Carpet still out: these runs go under it
+Master disconnect OPEN while anything is mounted, pinned or fused","The comfort block is a six-way blade fuse block with a cover and one input stud. It takes its power from output O15 through L3-CMF, a DTP 2-way receptacle behind the centre stack: cavity 1 is the feed on 12 AWG red, cavity 2 a sealing plug [parts P164; cavities L3-CMF 1, L3-CMF 2]
+Its fuses: position 1 F25 7.5 A driver seat heater - 2 F26 7.5 A passenger seat heater - 3 F27 5 A driver seat cooling fan - 4 F28 5 A passenger seat cooling fan - 5 F29 7.5 A the climate unit's comfort supply - 6 spare [fuses F25, F26, F27, F28, F29]
+Under each seat sit two capped receptacles. The 4-way (L3-SD driver, L3-SP passenger): 1 heater +, 2 cooling fan +, 3 heater -, 4 cooling fan -. The DTP 2-way (L3-SDM driver, L3-SPM passenger): 1 seat motor feed, 2 seat motor return, both 12 AWG [cavities L3-SD 1-4, L3-SP 1-4, L3-SDM 1-2, L3-SPM 1-2]
+The seat motors are not on the comfort block. Each has its own 25 A feed from the busbar: F35 through relay K14 for the driver, F36 through K15 for the passenger. The two relays' coils are on O15 [fuses F35, F36; relays K14, K15]
+The heater and fan are switched on their - side inside the climate unit. Those four returns, the O15 supply and three grounds make the 8-way plug DP-DCU-C: 1 driver heat return - 2 passenger heat return - 3 driver cool return - 4 passenger cool return - 5 supply in from F29, 16 AWG red - 6, 7, 8 power ground, 14 AWG black each, to the dash ground bus [cavities DP-DCU-C 1-8; grounds G36]
+Three ground pins because each size-16 pin is rated 13 A and the returns can total about 30 A [D-470; series DT]
+The seat motor returns go back to the dash ground bus on 12 AWG, never to the seat frame [grounds G42]
+The record gives the four seat return wires two colours: blue at the seat receptacle, black at the climate unit's plug. Go by continuity and the labels, not colour [cavities L3-SD 3; cavities DP-DCU-C 1]
+Routes: from the centre stack down the tunnel side and under the carpet to each seat. Place the receptacles so the carpet comes up once [routes RT27, RT28; housings L3-SDM]
+O15 COMFORT is on with the key at RUN and is shed with the other comfort loads on low voltage. It has no enable-at figure in the record - confirm [logic COMFORT; pins 27]
+Everything here is built for the worst case of seats not yet chosen: heat 5 A, cooling 2.5 A, motors 10 to 20 A [devices DV57; fuses F35]","Key at RUN: 12 V on the block's stud, on cavities 1 and 2 of both seat 4-ways and on cavity 1 of both seat motor 2-ways; a test lamp from a heater + to its - lights only when that seat's heat is switched on at the panel; all four receptacles are dust-capped and labelled; DP-DCU-C is latched in the climate unit.",No 12 V at the block: O15 not enabled or the L3-CMF plug not seated. 12 V at the block but not at a seat cavity: that branch's fuse or contact. A test lamp that lights with the seat heat off: that return is shorted to ground between the seat and the climate unit - unplug DP-DCU-C and find it. K14 or K15 silent at RUN: the O15 coil tap or the relay. A fuse that blows with nothing plugged in is a pinched wire under the tunnel side: find it before the carpet goes down.,"Tick E38 in the app. No value. Note the limit you gave O15, since the record has none."
+E39,"The climate unit's lead set runs to the heater case: three servo signal wires with their shared 5 V and ground, the blower-speed pair to where the final stage will sit, and the cabin temperature sensor - each end joined, capped or fitted, and tested.","back of the climate unit in the centre stack, and the heater case under the dash",2 to 3 h - confirm,"Deutsch solid-contact crimper, sizes 12 and 16 (P038)
+contact removal tool, size 16 (P031)
+ratchet crimper for heat-shrink butt splices and rings (P171)
+heat gun (P042)
+label printer (P041)
+multimeter: DC volts, ohms, continuity beeper (P045)",P172 P154 P078 P028 P075,"E26 done: the climate unit in its opening
+A15 done (it is): the servo leads designed
+Dash still out: the heater case is reachable
+Master disconnect OPEN while pinning and splicing","The lead set leaves the climate unit on DP-DCU-D, a 12-way Deutsch plug in the upper row of the unit's rear wall [housings DP-DCU-D]
+Its cavities: 1 mode door servo signal - 2 blend door servo signal - 3 recirculate door servo signal (all 16 AWG blue) - 4 servo +5 V (pink) - 5 servo ground (black) - 6 blower speed signal (blue) - 7 blower speed ground (black) - 8 cabin temperature sensor (grey) - 9 sensor return (black) - 10, 11, 12 sealing plugs [cavities DP-DCU-D 1-12]
+The three servos are hobby-type, one on each heater door cable. They are the luxury package's and are not fitted yet [devices DV59]
+One +5 V wire and one ground wire run to the heater case and split there to the three servos. The climate unit moves one servo at a time, so that wire carries one servo's stall current, 1 to 2.5 A [cavities DP-DCU-D 4; params servo_stall]
+Each servo's end is a 3-pin servo extension lead, about 1 m of 22 AWG: signal, +5 V, ground [parts P172]
+The blower's speed is set by a final stage that will sit in the old resistor pack's hole in the heater case, for the airflow. It takes a logic-level signal at 25 kHz on the pair from cavities 6 and 7. The stage and the motor are the luxury package's [devices DV55; D-308]
+The blower's power is separate: receptacle L3-BLW at the heater case, cavity 1 feed from O16 and cavity 2 return to dash ground, both 12 AWG. It stays dust-capped and O16 stays disabled [cavities L3-BLW 1, L3-BLW 2]
+The cabin sensor is a 10 kOhm thermistor, on its own return wire so servo current never shares it. It goes at a shaded place on the dash; where exactly is confirm [cavities DP-DCU-D 8, DP-DCU-D 9; parts P154]
+Route: from the centre stack across the dash rail, then down the centre to the heater case. Lengths are confirm until measured [routes RT11, RT14; housings DP-DCU-D]","DP-DCU-D is latched in the climate unit; at the heater case three servo leads hang ready, each labelled with its door; the blower-speed pair ends capped beside the resistor pack's hole; the cabin sensor is fitted and the climate unit reports a believable cabin temperature; every wire tests through and to nothing else.","A servo lead's colours do not match signal, +5 V, ground in that order: go by the lead's own printing, not this text - the lead is a bought part. The cabin temperature reads far off or missing: the thermistor's pair is open or crossed with the servo ground. 5 V missing at the case: the splice, or the unit's servo rail has no supply yet - it comes from the comfort block's F29 through DP-DCU-C, which is E38.",Tick E39 in the app. No value. Note where the cabin sensor went.
+E40,"Both radar runs are in and capped: three wires from the rear node up the hatch hinge to a receptacle behind the hatch trim, and three from the dash post to a receptacle behind the front bumper, with the receiver's feed waiting at the dash node.",cargo area and hatch; the nose behind the front bumper; the dash post,2 to 3 h - confirm,"Deutsch solid-contact crimper, sizes 12 and 16 (P038)
+contact removal tool, size 16 (P031)
+heat gun (P042)
+label printer (P041)
+multimeter: DC volts, ohms, continuity beeper (P045)
+P-clips and cloth tape",P124 P129 P036 P028 P080 P081 P075,"E22 done: the rear leg built, with the L4-RDR receptacle at the rear node
+A16 done (it is): both runs designed
+The front leg in the car (E27)
+Hatch trim and the cargo trim still off
+Master disconnect OPEN","Nothing is chosen yet: which radar system is a luxury-package question. Both of its options want a sensor at the rear and one at the front, so both runs are built now and left capped [work E40; housings L4-HRD]
+Rear run: three 16 AWG grey wires already go from L3-RDR behind the dash, through the dash post, down the tunnel to L4-RDR, a 4-way receptacle at the rear node. Today's piece plugs into L4-RDR and goes up the hinge loop to L4-HRD, a 4-way receptacle in the hatch behind its trim [cavities L4-RDR 1-3, L4-HRD 1-3; node_conductors N81]
+The hinge loop is a flex point. It already carries the tail-lamp wires; set the slack with the hatch fully open [routes RT18]
+Front run: L2-R, a 4-way at the dash post, cavities 1 to 3, along the front leg's route to the nose and then along the bumper beam to L2-RDR, a 4-way receptacle behind the front bumper [cavities L2-R 1-3, L2-RDR 1-3; routes RT29]
+In every one of these 4-ways cavity 4 is a sealing plug [cavities L4-HRD 4, L2-RDR 4, L2-R 4, L4-RDR 4]
+At the node side of L2-R the three wires are short capped tails, waiting for the receiver. The receiver's switched 12 V is another capped 16 AWG red tail off O10, with its ground a ring on the ground bus [cavities L2-R 1; node_conductors N103]
+Where the bumper sits, and so where the front sensor goes, is a body-work question still open. The receptacle goes behind the bumper beam with spare length [housings L2-RDR]
+Dust caps for 4-way receptacles are a parts row [parts P036]",L4-HRD sits capped behind the hatch trim and L2-RDR capped behind the front bumper; each of the six wires beeps end to end and to nothing else; the hatch opens and shuts without tugging the loop; the receiver's tails at the node are capped and labelled.,"A wire does not beep through: the link at the dash post between L3-S3 and L4-S (rear), or a contact not fully home. The hatch pulls the loop tight: re-set the slack now - a wire that works in a flex loop breaks later. The front receptacle has nowhere to mount until the bumper is decided: tie it back with a full coil of slack and note it.",Tick E40 in the app. No value.
+E41,"All the audio wiring is in the car and capped: the amplifier's 4 AWG feed and return in the passenger-side bin, the signal cables from the head unit to the bin, and a speaker cable to each of eight positions ending in a capped Deutsch receptacle.","passenger-side cargo bin, both sills and the tunnel side under the carpet line, both kick panels, both A-pillar bases, the console, both rear quarters, the driver-side cargo bin, and behind the head unit",one day - confirm,"hydraulic lug crimper with dies (P037), for the 4 AWG lugs
+Deutsch solid-contact crimper, sizes 12 and 16 (P038)
+contact removal tool, size 16 (P031)
+heat gun (P042)
+label printer (P041)
+multimeter: DC volts, ohms, continuity beeper (P045)
+torque wrench 1/4 in drive, 2-20 N-m (P046)
+cloth tape (P080) and P-clips (P081)",P167 P168 P123 P130 P124 P129 P125 P036 P051 P066 P080 P081 P075,"E22 done: the rear leg and the rear star stud in
+A17 done (it is): the audio wiring designed
+Carpet, sill trim, kick panels, console and cargo trim still out
+Master disconnect OPEN for the whole row: the amplifier feed starts at the disconnect's output stud","The amplifier is not chosen. It will sit in the passenger-side cargo bin beside the battery, and the wiring is built for the largest class: 4 AWG feed and return, eight speaker pairs, a remote wire and six signal channels [devices DV60]
+Feed: 4 AWG red, about 3 ft - confirm, from its own fuse F34 at the master disconnect's output stud to the amplifier's place. Fed from the disconnect's output, so opening the one switch kills the amplifier too [cables C13; backbone B8; D-466]
+F34 is a terminal-mount fuse holder on that stud. It stays EMPTY: its rating waits on the amplifier chosen, up to about 100 A on 4 AWG. How it stacks beside the starter's holder is confirm [fuses F34]
+Return: 4 AWG black, about 3 ft - confirm, from the amplifier's place to the rear star stud, where the battery negative lands. Never to a body panel [cables C14; grounds G41]
+From the head unit to the bin, along the passenger sill under the carpet: the remote turn-on wire (the head unit's blue/white, 18 AWG blue), the six-channel shielded signal cable, and the microphone lead from the A-pillar. Keep them apart from the rear leg's bundle [routes RT30; devices DV28; rules emc-routing]
+Speaker cable is 16 AWG twisted pair. Each run ends in a capped Deutsch receptacle: cavity 1 is +, cavity 2 is - [parts P168; cavities L3-SPF-L 1, L3-SPF-L 2]
+The eight ends: L3-SPF-L driver kick panel - L3-SPF-R passenger kick panel - L3-TW-L and L3-TW-R at the A-pillar bases (tweeters) - L3-CTR on the console between the seats - L4-SPR-L and L4-SPR-R in the rear quarter trim - L4-SUB, a 4-way, in the driver-side cargo bin: 1 and 2 one pair, 3 and 4 the second [housings L3-SPF-L, L3-SPF-R, L3-TW-L, L3-TW-R, L3-CTR, L4-SPR-L, L4-SPR-R, L4-SUB]
+Speaker routes: from the bin forward along both sills under the carpet, the centre run up the tunnel side, and across the cargo floor behind the seats to the sub's bin [routes RT31, RT32]
+No speaker wire ever shares a chassis ground: the amplifier's outputs are bridged [cavities L3-SPF-L 1]
+At the amplifier end the cables have no plug yet: that adapter is a later row, drawn when the amplifier is picked [work A17]
+The head unit's parking-brake input is a tap at the dash node on the parking-brake switch line [node_conductors N104]","In the passenger bin: a 4 AWG red and a 4 AWG black, lugged, booted and labelled, with the F34 holder empty; the signal cable, remote and microphone leads coiled and labelled; eight labelled speaker pairs. At the far ends: eight capped receptacles, each pair reading through on its own two cavities and to nothing else.",A speaker pair reads to the body or to another pair: a pinched cable under a sill edge - find it before the carpet covers it. The 4 AWG return will not reach the rear star: do not land it on a body bolt - note the shortfall. The signal cable hums later: it was run beside the power bundle; that is why it goes down the other sill.,Tick E41 in the app. No value.
+E35,"The interior is back in the car over a finished, wrapped and photographed cabin harness, every plug that trim now covers was checked first, and every function still works with the car whole.",the whole cabin and cargo area,a weekend - confirm,"cloth harness tape (P080) and P-clips or ties (P081) for the final wrap
+camera
+the bagged and labelled fasteners from the strip (S1)
+torque wrench that reaches 55 N-m, for seat-belt anchors and the steering wheel nut if they came off
+sockets, screwdrivers and a trim clip tool - sizes are not in the record
+multimeter: DC volts, ohms, continuity beeper (P045)
+Camden's Windows laptop with ECUMaster's PMU client (D-376)
+USB-to-CAN interface cable (P138)",P080 P081 P076 P121,"E30 done: the factory harness is out and boxed
+E36 to E41 done: releases, door harnesses, comfort block and seat feeds, heater-case leads, radar runs and audio wiring are all in
+E29's sleeping current was 50 mA or less. Do not close the dash on a failing number: it cannot be taken again without undoing this row
+Master disconnect OPEN while looms are wrapped and panels go over live studs; closed for the function checks","The car came apart once, at the strip, and goes back together once, here. The first drive comes after this row [D-387; work E35]
+Out at the strip: seats, console, centre stack, dash and cluster, glovebox, carpet, kick and sill panels, cargo-bin trim. Back in, by this row: carpet, sill and kick panels, centre stack, dash, cluster, seats, cargo trim [work S1; work E35]
+Cabin looms are final-wrapped now, before the dash closes. The engine bay's wait for E33, after the first heat cycles [work E35, E33]
+The factory cluster left with the old harness. What goes in the instrument opening is the new instrument unit, on its plate, with two plugs in its rear wall [D-268; housings DP-ICU-A, DP-ICU-B]
+The climate unit sits in the centre-stack opening with up to five plugs in its rear wall: DP-DCU, DP-DCU-B and DP-DCU-C, and in the upper row DP-DCU-D and DP-DCU-E [housings DP-DCU, DP-DCU-B, DP-DCU-C, DP-DCU-D, DP-DCU-E]
+Behind the dash, capped and waiting: the future-module receptacle L3-MOD and the radar receptacle L3-RDR. In the glovebox: the laptop port DP-DIAG [housings L3-MOD, L3-RDR, DP-DIAG]
+Behind the driver kick panel: the sill node, with D1 and D2, relays K5 to K8 and the fuse holders F8, F9 (empty) and F14. Behind both kick panels: a capped speaker receptacle [devices DV43; housings L3-SPF-L, L3-SPF-R]
+Under the carpet: the seat harnesses to four capped receptacles under the seats, the audio cables along both sills, the sill run, and in the tunnel the 2 AWG feed, two 1/0 cables, the rear leg and a pull string [routes RT27, RT28, RT30, RT32, RT19, RT15]
+Water: every conductor enters a node from below or with a drip loop; nothing in the lowest 50 mm of the footwell. Whatever the look at the cowl drains found at the measurement day applies now [rules water-ingress; checks CK04]
+The factory dash parts, from the manual's exploded view: steering wheel and nut, upper and lower column covers, grilles, switch panels, ventilator louvers, glove compartment and lid, centre panel, radio cover, meter hood, the instrument panel itself on 4 bolts with sets of 2 and 3 bolts beside it, coin box, rear console, shift lever knob [S-002 p.14-2]
+That view is the 1985 car - confirm on the car; the strip's own photos and bags are the better guide [S-002 p.14-2]
+Seat-belt anchor bolts: 39 to 55 N-m. Steering wheel nut: 40 to 50 N-m. Seat mounting bolts: the manual says check them for looseness and gives no figure [S-002 p.14-4; 00-CAR SP-174; S-002 p.14-3]","Every panel, the seats and the cargo trim are back with no fastener left in a bag; the finished harness runs are photographed; with the car whole every function of E29 works; the laptop port, the fuse blocks, the PMU's lever and the master disconnect can still be reached.","A function that worked at E29 fails now: a wire was pinched or a plug knocked by the last panel fitted - take that panel back off. A panel will not seat over a loom: move the loom, never force the panel. A plug or fuse that can no longer be reached with the trim on: stop and re-route now, it only gets harder. A leftover fastener: find its hole; the strip's bags are labelled by panel.",Tick E35 in the app. No value. The car may now be driven: the first drive is E31.
+E31,"The car has been driven cold, at night, in the wet and on one long run with the log recording, and the log shows no fault, no tripped output and no channel near its limit.",on the road; the garage before and after each drive,four drives over a week or more - they wait on the weather,"phone with the Rx7 app, to pull each drive's log from the instrument unit
+phone with the battery's own app, to watch the pack
+Camden's Windows laptop with ECUMaster's PMU client (D-376)
+USB-to-CAN interface cable (P138)
+multimeter: DC volts, ohms, continuity beeper (P045)
+the limp-home kit and the printed recovery table in the car from the first drive (P139)
+warning beacons",P139 P138,"E35 done: the interior is back
+E30 done: the factory harness is out. It stays boxed until this shakedown is passed
+The laptop, cable and limp-home kit ride in the car on every one of these drives
+Know recovery RC01 by heart before the first drive: the master disconnect is the only certain off","Four conditions: a cold start on a cold morning; a night drive; a wet drive; a long drive. Logging on for all of them [work E31]
+The instrument unit writes every drive to its card: a thinned record once a second of every channel, and the full bus log. The app pulls the thinned log over Bluetooth, an hour's drive in under a minute [log_channels; params log_pull_s_per_hour; D-493]
+Battery voltage: charging should sit between 13.8 and 14.6 V. The pack's ceiling is 14.6 V; the factory regulator's own band reaches 15.2 V, so watch the top. The PMU warns below 12.0 V and above 15.0 V [work E42; checks CK03; 00-CAR SP-081; rules voltage]
+Cranking sags to about 10.5 V. Loads are shed only after about 10 s under 11.5 V and never during START, so the display must not reboot on a crank [rules voltage; D-463]
+The pack heats itself in the cold only from a charging source; how much it draws is not published. That is what to watch in the battery app on the cold morning [00-CAR SP-233]
+Per-channel current is logged for all 22 outputs. Each channel's peak is compared with its limit [log_channels LC15; work E31]
+Limits in the record's own figures: water temperature 105 C, oil pressure 1.0 bar low mark, redline 7000 rpm [params hot_water_c, low_oil_bar, redline_rpm]
+Fault channels that must stay zero: global fault, trip state, input faults; and CAN health must stay good [log_channels LC05, LC14, LC09, LC26]
+Stuck-on check: commanded off, each of O2, O3, O5, O7 and O12 must read zero volts. Battery volts on an output that is off is a shorted switch, and only the master disconnect kills it [checks CK07]
+Ground offset between the engine block and the dash ground bus should be under 50 mV, idling and at full electrical load [checks CK05]
+An engine that starts and dies about 3 s later with zero oil pressure shown is the oil gate doing its job, not a PMU fault [recovery RC02]
+With a dead module the car has no lights, wipers or horn: a limp home is daylight, dry and short. If stopped and dark, beacons out first [recovery RC09]","All four drives are done; each one's log is in the app; no drive shows a fault flag, a tripped or retrying output, an input fault or a lost bus; charging stayed at or under 14.6 V; every channel's peak is under its limit; the stuck-on and ground-offset checks pass.","A fault on the road: recovery RC01 first - stop, engine off, disconnect open - then RC02 to tell a soft fault from a dead module. A tripped channel: do not raise its limit on the roadside beyond what gets you home, and write down what you changed (RC05). Charging above 14.6 V: stop the shakedown - the fix is the alternator's regulator, never the battery. Ground offset over 50 mV: note it; it decides a sensor return wire at the engine swap. Anything that fails in a way the new harness cannot be made to cure: the boxed factory harness is the fallback, and that is a decision to raise in the app, not to take alone.",Tick E31 in the app when all four drives are logged. No value. The drives themselves are logged from the app; the stuck-on and ground-offset readings go in a note.
+E32,"Every output's steady current has been measured live and written down, every limit that was still at its channel cap is set from a measurement, and the configuration is saved as a new revision.","in the garage: laptop on DP-DIAG, engine running for the lamp and charging readings",half a day - confirm,"Camden's Windows laptop with ECUMaster's PMU client (D-376)
+USB-to-CAN interface cable (P138)
+multimeter: DC volts, ohms, continuity beeper (P045)
+pen and paper or the phone, for one figure per output
+a helper to work switches",P138,"E31 done: the four shakedown drives logged
+Garage door open; wheels chocked; belt and fan clear
+Stand clear of the pop-ups and the wiper arms while they are cycled","Limits are set from current measured live in the client, never from a typed guess [D-025]
+The class factors: motors, stall current x 1.1; lamps, running current x 1.35; resistive loads, cold current x 1.2; electronics, running current x 1.5 [work E32]
+How to take each baseline: lamps warm, after two seconds, not the switch-on surge; motors mid-travel, not stalled [checks CK01]
+A reading more than about 20 percent under the expected figure is a tired part, not a bad reading: that gap is the replacement list. A reading over the expected figure is a fault to find before the limit is set [checks CK01]
+Expected running amps: O1 9.5 - O2 7.4 - O3 8.9 - O4 11.5 - O5 2.0 - O6 4.4 - O7 3.9 - O8 4.0 - O9 5.5 - O10 10.0 - O11 6.0 - O12 10 - O17 4.2 - O18 4.2 - O19 3.9 - O20 1.5 - O21 0.2 - O22 0.2 [pins est_a]
+The headlamps are LED units a previous owner fitted, so O2 and O3 will read far under the halogen figures. That is the lamp, not a fault [00-CAR PT035]
+Limits still at the channel's cap: O1 25.0, O4 25.0, O8 13.0, O9 13.0, O10 13.0, O11 13.0, O12 25.0, O19 7.0, O20 7.0, O21 7.0, O22 7.0. O2 and O3 sit at 13.0, the 14 AWG branch's ceiling. Already set from a measurement: O5 4.0, O6 7.5, O7 11, O17 4.5, O18 4.5 [pins enable_a, enable_basis]
+No limit may go above what the pin and wire carry: 25 A pins, 15 A pins, 7 A pins; 13 A on the headlamp branches [pins hw_max_a; D-243]
+Pop-up stall was measured at 12.8 and 13.1 A per side. Both on O1 is 25.9 A, and x 1.1 is 28.5 A - above the pin - so O1 stays at 25.0 [loads LD08; pins 38]
+Wiper stall is a design range, 12 to 20 A, never measured [loads LD07]
+O21 and O22 sit under the PMU's own measuring floor: expect zero, record zero, give them no band [checks CK01]
+Health band: a lamp channel warns below half its baseline, a motor channel above one and a half times it. The low half is the PMU's Min Current setting, which only warns and never switches off. A channel whose baseline is under four times the pin's measuring floor gets no band [rules health-band]","One steady figure is written down for every live output; every limit that can be set from a measurement has been; each output has been worked again from cold and none trips; the new revision is saved in the PMU, on the laptop and on the car's copy.","A baseline over the expected figure: find the fault before setting any limit from it. A channel trips after its limit is tightened: the factor was applied to a warm reading or the inrush window is too short - go back to the previous limit, read again, and note it. A channel whose class is not obvious (the horn, ignition, the relay coils, the comfort bus): the record does not say - leave it at its cap and note it rather than guess.","Tick E32 in the app. No value on this row. Send the measured current for each output in a note, one line per output: it becomes the baseline and the measured figure in the record."
+E33,"After the first heat cycles every heavy lug and stud has been re-torqued and paint-marked, the cranking voltage drops are still under 0.5 V, the engine-bay looms are final-wrapped and tied down, and every grommet is sealed.","cargo bin, dash node, engine bay, front star on the radiator support, driver sill",half a day - confirm,"torque wrench 1/4 in drive, 2-20 N-m (P046), and a larger one for the battery posts and the starter stud
+the torque figures written at D1 from each maker's sheet
+paint pen and cavity wax (P082)
+multimeter: DC volts, ohms, continuity beeper (P045)
+cloth harness tape (P080), loom and P-clips (P081), clear heat-shrink (P076)
+heat gun (P042)
+a helper on the key for the cranking readings",P080 P081 P082 P076 P066,"E32 done; the car has been through several full warm-ups and cool-downs
+Engine cold
+Master disconnect OPEN for every stud. Close it only for the cranking readings
+Rings and watch off; boots back on every lug before the disconnect is closed","Every heavy connection is torqued to its maker's figure, read off the maker's sheet. The record holds no figure yet - confirm each from the sheet [rules torque]
+Cargo bin: both battery post clamps; the master disconnect's input stud (the 1/0 from the battery) and output stud (the 2 AWG lug, the starter's fuse holder, and the amplifier's holder if fitted); both studs of the Class-T block; the rear ground stud, where the battery negative, the cranking return and the rear returns land [backbone B1, B2, B5, B7, B8; cables C01, C05, C11, C12]
+Dash node: the busbar stud with the main feed and the link to the PMU; the PMU's +12 V stud and its 39-way connector's screws; the ground bus to the dash star; the fuse holders at the bar [cables C03, C10; grounds G14; rules torque]
+Engine bay: the starter's main stud with the 1/0 cable and the two bolt-down fuse holders F17 and F18; the starter's small S terminal; the alternator's output stud; on the block, the 1/0 cranking return and the 2 AWG strap, both ends; relay K9's socket [backbone B2, B3, B4, B6, B7; cables C04, C06, C07, C08, C09]
+Star studs: front on the radiator support, dash, rear in the cargo bin, and the sill [grounds G05, G14, G23, G33]
+Voltage drop while cranking: battery + post to the starter's main stud, and battery - post to the engine block, each under 0.5 V. Near 0.5 V means a bad crimp. The first readings are on rows E43 and E44 [work E12, E43, E44]
+The cabin looms were final-wrapped at E35. Only the engine bay's are wrapped now [work E33]
+The shielded tach wire crosses ignition leads at 90 degrees and never runs beside one within 50 mm: hold that when wrapping [rules emc-routing]
+Engine-bay labels get clear heat-shrink over them before the wrap [rules label-format]
+The legs pass the firewall on the passenger side (engine leg) and the cowl (front leg); the heavy cables and the rear leg run in the tunnel [routes RT01, RT06, RT15]
+A ground stud is bare metal, star washer, torque, then cavity wax over the joint [backbone B5]","Every stud on the list is at its maker's torque with a fresh paint mark; both cranking drops are under 0.5 V and no worse than at E12; the engine-bay looms are wrapped, clipped and clear of heat and moving parts; every grommet is seated and sealed; the car starts and charges as before.","A nut that turns a long way before it reaches torque was loose: look at the lug and the stud for heat marks, and note which one. A drop near or over 0.5 V: find it by measuring across each joint in that path while cranking - the joint with the voltage across it is the bad one. A lug that has gone blue or a boot that has melted: stop, do not drive, note it. A torque figure you cannot find on any maker's sheet: note it - do not guess.","Tick E33 in the app. No value on this row. The two new cranking drops, in volts, go in a note beside E43 and E44's first readings."
+E34,"The final configuration is backed up, and the car carries everything needed to fix it at the roadside: the limp-home kit, the printed tables, spare contacts, the removal tools and spare fuses.",desk for the backup and the printing; the glovebox for the kit,2 h,"Camden's Windows laptop with ECUMaster's PMU client (D-376)
+USB-to-CAN interface cable (P138)
+a printer, and a laminator or plastic sleeves
+a bag or box that fits the glovebox",P139 P138 P032 P033 P022 P023 P024 P025 P026 P027 P028 P141,"E33 done
+The configuration in the PMU is the one saved at E32","The limp-home kit: three fused jumpers with the node's own terminals on their ends - 10 A for the pump, 20 A for ignition, 5 A with a pushbutton for cranking - the USB-to-CAN cable with the current configuration file, a work light and the printed recovery table. It lives in the glovebox beside the laptop port [parts P139]
+None of the kit is ever fitted to the car. A limp-home wire left in place is the next fault [recovery RC10]
+The bag also holds the beacons: with a dead module the car has no lights, and being stopped and dark is the real hazard [recovery RC09, RC10]
+The recovery procedure is ten rows, RC01 to RC10. Printed from the record, the copy in the glovebox cannot drift from the design [recovery; D-344]
+The pin table and the cavity table go in the car as printouts, with the fuse and output map: one copy at the dash node and one in the glovebox, laminated [work E34; rules fuse-lid-card]
+A plastic size-16 contact removal tool lives in the car. The DTP power plugs need the size-12 tool [parts P032, P033]
+Spare contacts: size-16 sockets and pins, the 14 AWG versions, and size-12 sockets and pins [parts P022, P023, P024, P025, P026, P027]
+Five blade fuses of each value in the car. The values fitted are 2, 3, 5, 7.5 and 10 A, with 20 A for the window feeds when they are fused [work E34; fuses F2, F3, F15, F1, F8]
+The bigger fuses have one spare each on their parts rows: 25 A and 40 A MAXI, 30 A and 100 A MIDI, the 150 A Class-T [parts P191, P190, P054, P055, P048]
+Saved configuration files come back to the project by hand [D-376]
+After this row the project is ready for your ruling that electrical is done (E48), and then for the fold into the car's own record (E49) [work E34, E48]","The final configuration file exists in the PMU, on the laptop, in the glovebox kit and in the project; the kit bag is in the glovebox with every item on the list; the printed tables are in the car; the spare contacts, tools and fuses are in the car.","The kit does not fit the glovebox with the laptop port usable: the port wins - move the spares and printouts elsewhere in the car and note where. A printout that does not match what is in the car: the car is right and the record is wrong - raise it in the app as a note, it must be fixed before E48.",Tick E34 in the app. No value. A note if anything in the kit is missing or kept somewhere other than the glovebox.
+E48,"You have ruled the electrical project done: the new harness is in, the shakedown is passed, nothing is open, and the car as it now stands is the baseline.","desk, with the app open; one last look at the car",1 h,"the Rx7 app
+the notes you wrote at E28, E29, E31, E32 and E33",,"E34 done - this row's gate, and through it every row before it
+Every reading you put in a note has been applied to the record by a run","This is your ruling, like the design freeze. Nobody else ticks it [work E48; D-533]
+After it a run folds the project into the car: the as-built harness, fuses, channels, connectors and service instructions become the car's own record, and the project is archived [work E49]
+The list cannot have gone vague on the way here: every row before this one had to be done for this one to open [D-533]
+What 'passed' means for each check: sleeping current 50 mA or under; charging 14.6 V or under; block-to-dash ground offset under 50 mV; stuck-on outputs read zero; the limp-home procedure proven once; the crank log clean with block offset under 0.74 V; the pop-up cycle clean; a measured baseline for every output [checks CK02, CK03, CK05, CK07, CK11, CK14, CK16, CK01]
+Cranking drops under 0.5 V on both sides, first and after the heat cycles [work E43, E44, E33]
+The boxed factory harness was kept as the fallback until shakedown was passed. What happens to it afterwards is not in the record - confirm [D-411]
+Still capped and waiting for other projects, and not part of this ruling: the window fuses, the seats, the heater servos and blower, the radar, the amplifier and speakers, the swap's reserved outputs [fuses F8, F34; pins 1, 14; housings L3-SD]
+Open questions only you can answer live in the app's blocks. None may be open in electrical when you tick [D-533]","Every item in the steps is true, and E48 is ticked in the app.","Any item is not true: do not tick. Fix it, or raise it in the app as a note so it becomes a row - the fold copies whatever the record says into the car's baseline, wrong or right. A difference between the car and the record that you know about but never wrote down: write it now.",Tick E48 in the app. That is the ruling. Nothing else is entered; the fold (E49) is then started from the app.
