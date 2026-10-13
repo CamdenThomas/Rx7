@@ -82,6 +82,20 @@ export JAVA_HOME=$HOME/.local/jdk/jdk-21.0.12.1+1
 export ANDROID_HOME=$HOME/Android/Sdk NDK_HOME=$HOME/Android/Sdk/ndk/27.2.12479018
 ```
 
+## Install it on the Mac
+
+The desktop app bundles its pages at build time, so a change to the app is not in the window
+until it is rebuilt and the bundle in `/Applications` replaced (the first install was 2026-10-09):
+
+```sh
+SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk npx tauri build --bundles app
+ditto src-tauri/target/release/bundle/macos/Rx7.app /Applications/Rx7.app   # quit Rx7 first, or relaunch after
+```
+
+The glb files the Design page shows (`public/design/<project>/`, git-ignored, D-505) go into the
+bundle from this machine's copy: run the design's `export_glb.py` before building if a board or a
+mock-up changed.
+
 ## Run it while working on it
 
 ```sh
