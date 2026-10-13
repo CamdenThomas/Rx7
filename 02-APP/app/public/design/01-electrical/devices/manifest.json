@@ -1,0 +1,3552 @@
+{
+ "P003": {
+  "glb": "devices/relay-micro-iso.glb",
+  "name": "ISO micro relay, Song Chuan 871-1C-C-D1 (P003)",
+  "kind": "module",
+  "node": "pmu",
+  "count": 9,
+  "size_mm": {
+   "x": 15.5,
+   "y": 23.0,
+   "z": 36.6
+  },
+  "bytes": 9416,
+  "origin": "z=0 the tab face (the socket's face), body +z, tabs -z; x across the 86-85 row",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "relay-micro-iso",
+  "source": "drawn here (build_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003)",
+  "node_note": "the dash node (the PMU stands for it in the scene)",
+  "also": [
+   {
+    "node": "sill-node",
+    "count": 4,
+    "what": "K5-K8"
+   }
+  ],
+  "params": {
+   "w": {
+    "mm": 15.5,
+    "source": "Song Chuan 871 datasheet p.238 outline (relay-datasheets-picker-songchuan)"
+   },
+   "d": {
+    "mm": 23.0,
+    "source": "Song Chuan 871 datasheet p.238 outline (relay-datasheets-picker-songchuan)"
+   },
+   "h": {
+    "mm": 25.4,
+    "source": "Song Chuan 871 datasheet p.238 outline (relay-datasheets-picker-songchuan)"
+   },
+   "tab_len": {
+    "mm": 11.2,
+    "source": "Song Chuan 871 datasheet p.238 outline (relay-datasheets-picker-songchuan)"
+   },
+   "tab_t": {
+    "mm": 0.8,
+    "source": "Song Chuan 871 datasheet p.238 outline (relay-datasheets-picker-songchuan)"
+   },
+   "power_tab_w": {
+    "mm": 6.3,
+    "source": "Song Chuan 871 datasheet p.238 outline (relay-datasheets-picker-songchuan)"
+   },
+   "coil_tab_w": {
+    "mm": 4.8,
+    "source": "Song Chuan 871 datasheet p.238 outline (relay-datasheets-picker-songchuan)"
+   },
+   "coil_pitch": {
+    "mm": 4.5,
+    "source": "Song Chuan 871 datasheet p.238 outline (relay-datasheets-picker-songchuan) (9 between 86 and 85)"
+   },
+   "row1": {
+    "mm": 7.0,
+    "source": "Song Chuan 871 datasheet p.238 outline (relay-datasheets-picker-songchuan) (the upper row; its offset from centre read off the view)"
+   },
+   "row2": {
+    "mm": 1.0,
+    "source": "Song Chuan 871 datasheet p.238 outline (relay-datasheets-picker-songchuan) (6 below the upper row)"
+   },
+   "row3": {
+    "mm": -7.0,
+    "source": "Song Chuan 871 datasheet p.238 outline (relay-datasheets-picker-songchuan) (8 below 87)"
+   }
+  }
+ },
+ "P006": {
+  "glb": "devices/socket-micro-iso-panel.glb",
+  "name": "Panel-mount micro relay socket (P006, Waytek 75290)",
+  "kind": "module",
+  "node": "pmu",
+  "count": 9,
+  "size_mm": {
+   "x": 27.0,
+   "y": 34.5,
+   "z": 24.6
+  },
+  "bytes": 6956,
+  "origin": "z=0 the wire end, the relay seat at the top (+z)",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "socket-micro-iso-panel",
+  "source": "drawn here (build_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290)",
+  "node_note": "the dash node",
+  "also": [
+   {
+    "node": "sill-node",
+    "count": 4,
+    "what": "under K5-K8"
+   }
+  ],
+  "params": {
+   "w": {
+    "mm": 21.0,
+    "source": "estimate: the 871's 15.5 plus 2.75 mm walls - no drawing found"
+   },
+   "d": {
+    "mm": 28.5,
+    "source": "estimate: the 871's 23 plus 2.75 mm walls"
+   },
+   "h": {
+    "mm": 24.0,
+    "source": "estimate: a socket deep enough for 11.2 mm tabs and the crimps"
+   },
+   "wall": {
+    "mm": 2.75,
+    "source": "estimate"
+   },
+   "flange": {
+    "mm": 3.0,
+    "source": "estimate"
+   },
+   "flange_below_top": {
+    "mm": 6.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "P004": {
+  "glb": "devices/relay-mini-iso-sealed.glb",
+  "name": "Sealed mini ISO relay, Picker PC792E (P004, K9)",
+  "kind": "module",
+  "node": "leg-l1",
+  "count": 1,
+  "size_mm": {
+   "x": 28.0,
+   "y": 28.0,
+   "z": 40.5
+  },
+  "bytes": 9260,
+  "origin": "z=0 the tab face, body +z, tabs -z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "relay-mini-iso-sealed",
+  "source": "drawn here (build_devices.py STANDINS['relay-mini-iso-sealed']): Sealed mini ISO relay, Picker PC792E (P004, K9)",
+  "node_note": "K9, on the inner fender (L1)",
+  "params": {
+   "w": {
+    "mm": 28.0,
+    "source": "estimate: the mini ISO (ISO 7588-1) body, 28 x 28; the Picker PC792E drawing not read"
+   },
+   "d": {
+    "mm": 28.0,
+    "source": "estimate: as w"
+   },
+   "h": {
+    "mm": 31.0,
+    "source": "estimate: a sealed mini relay with its tab skirt"
+   },
+   "tab_len": {
+    "mm": 9.5,
+    "source": "estimate: ISO 7588 mini tab length"
+   },
+   "tab_t": {
+    "mm": 0.8,
+    "source": "estimate"
+   },
+   "power_tab_w": {
+    "mm": 9.5,
+    "source": "estimate: ISO 7588 mini power tab"
+   },
+   "coil_tab_w": {
+    "mm": 6.3,
+    "source": "estimate"
+   },
+   "coil_pitch": {
+    "mm": 8.0,
+    "source": "estimate"
+   },
+   "row1": {
+    "mm": 8.0,
+    "source": "estimate"
+   },
+   "row2": {
+    "mm": 0.0,
+    "source": "estimate"
+   },
+   "row3": {
+    "mm": -8.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "P005": {
+  "glb": "devices/socket-mini-weatherproof.glb",
+  "name": "Chief weatherproof 5-pin mini relay connector (P005, K9's socket)",
+  "kind": "module",
+  "node": "leg-l1",
+  "count": 1,
+  "size_mm": {
+   "x": 44.0,
+   "y": 44.0,
+   "z": 40.6
+  },
+  "bytes": 6952,
+  "origin": "z=0 the wire end, the relay seat at the top",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "socket-mini-weatherproof",
+  "source": "drawn here (build_devices.py STANDINS['socket-mini-weatherproof']): Chief weatherproof 5-pin mini relay connector (P005, K9's socket)",
+  "node_note": "K9's socket",
+  "params": {
+   "w": {
+    "mm": 36.0,
+    "source": "estimate: round the 28 mm mini body with 4 mm walls"
+   },
+   "d": {
+    "mm": 36.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 40.0,
+    "source": "estimate: with its seal skirt"
+   },
+   "wall": {
+    "mm": 4.0,
+    "source": "estimate"
+   },
+   "flange": {
+    "mm": 4.0,
+    "source": "estimate: the mounting ear"
+   },
+   "flange_below_top": {
+    "mm": 12.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "P001": {
+  "glb": "devices/atc-block-4.glb",
+  "name": "OptiFuse BLR-504 ATC fuse block, 4-position, bussed input (P001, blocks A and B at the dash node)",
+  "kind": "module",
+  "node": "pmu",
+  "count": 2,
+  "size_mm": {
+   "x": 100.08,
+   "y": 49.53,
+   "z": 25.96
+  },
+  "bytes": 1107512,
+  "origin": "base centre: z=0 the mounting face, the fuses and the input stud up",
+  "standin": false,
+  "cad": "optifuse-blr-504-datasheet-optifuse",
+  "confirm": true,
+  "model": "atc-block-4",
+  "source": "OptiFuse BLR-504 ATC fuse block, 4-position, bussed input (P001, blocks A and B at the dash node), optifuse-blr-504-datasheet-optifuse (OptiFuse free manufacturer download (no licence stated)), converted by FreeCAD",
+  "node_note": "blocks A and B at the dash node"
+ },
+ "P002": {
+  "glb": "devices/inline-atc-sealed.glb",
+  "name": "Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047)",
+  "kind": "module",
+  "node": "pmu",
+  "count": 9,
+  "size_mm": {
+   "x": 168.0,
+   "y": 22.0,
+   "z": 26.0
+  },
+  "bytes": 17224,
+  "origin": "base centre of the body; the leads run along x",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "inline-atc-sealed",
+  "source": "drawn here (build_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047)",
+  "node_note": "the dash node's sealed inline holders",
+  "also": [
+   {
+    "node": "sill-node",
+    "count": 3,
+    "what": "the sill's inline holders"
+   },
+   {
+    "node": "leg-l3",
+    "count": 1,
+    "what": "F24 in the L3 leg"
+   }
+  ],
+  "params": {
+   "w": {
+    "mm": 48.0,
+    "source": "estimate: body length - the Waytek drawing not read"
+   },
+   "d": {
+    "mm": 22.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 14.0,
+    "source": "estimate"
+   },
+   "cap_h": {
+    "mm": 12.0,
+    "source": "estimate: the snap cap"
+   },
+   "lead_d": {
+    "mm": 3.4,
+    "source": "14 AWG insulated, about 3.4 mm"
+   },
+   "lead_len": {
+    "mm": 60.0,
+    "source": "estimate: a stub of each lead, not its length"
+   }
+  }
+ },
+ "P189": {
+  "glb": "devices/inline-maxi-sealed.glb",
+  "name": "Sealed inline MAXI fuse holder, 10 AWG leads (P189)",
+  "kind": "module",
+  "node": "pmu",
+  "count": 5,
+  "size_mm": {
+   "x": 190.0,
+   "y": 36.0,
+   "z": 40.0
+  },
+  "bytes": 17168,
+  "origin": "base centre of the body; the leads run along x",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "inline-maxi-sealed",
+  "source": "drawn here (build_devices.py STANDINS['inline-maxi-sealed']): Sealed inline MAXI fuse holder, 10 AWG leads (P189)",
+  "node_note": "at the busbar stud and K11",
+  "params": {
+   "w": {
+    "mm": 70.0,
+    "source": "estimate: a weatherproof MAXI holder body"
+   },
+   "d": {
+    "mm": 36.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 24.0,
+    "source": "estimate"
+   },
+   "cap_h": {
+    "mm": 16.0,
+    "source": "estimate"
+   },
+   "lead_d": {
+    "mm": 5.0,
+    "source": "10 AWG insulated, about 5 mm"
+   },
+   "lead_len": {
+    "mm": 60.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "P053": {
+  "glb": "devices/midi-block.glb",
+  "name": "MIDI / AMI fuse block, sealed cover, bolt-down (P053; F17, F18 at the starter)",
+  "kind": "module",
+  "node": "leg-l1",
+  "count": 2,
+  "size_mm": {
+   "x": 60.0,
+   "y": 28.0,
+   "z": 34.0
+  },
+  "bytes": 17184,
+  "origin": "z=0 the mounting face, centred",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "midi-block",
+  "source": "drawn here (build_devices.py STANDINS['midi-block']): MIDI / AMI fuse block, sealed cover, bolt-down (P053; F17, F18 at the starter)",
+  "node_note": "beside the starter B+ stud",
+  "params": {
+   "w": {
+    "mm": 60.0,
+    "source": "estimate: a single MIDI holder"
+   },
+   "d": {
+    "mm": 28.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 18.0,
+    "source": "estimate"
+   },
+   "cover_h": {
+    "mm": 14.0,
+    "source": "estimate"
+   },
+   "studs": {
+    "mm": 2,
+    "source": "a MIDI fuse's two bolts"
+   },
+   "stud_pitch": {
+    "mm": 36.0,
+    "source": "estimate"
+   },
+   "stud_r": {
+    "mm": 3.0,
+    "source": "M6"
+   },
+   "stud_h": {
+    "mm": 16.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "P051": {
+  "glb": "devices/mrbf-holder.glb",
+  "name": "MRBF terminal fuse holder (P051; Blue Sea 5191 class, on the disconnect's stud)",
+  "kind": "module",
+  "node": "leg-l4",
+  "count": 2,
+  "size_mm": {
+   "x": 52.0,
+   "y": 38.0,
+   "z": 32.0
+  },
+  "bytes": 17192,
+  "origin": "z=0 the face that sits on the stud, centred",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "mrbf-holder",
+  "source": "drawn here (build_devices.py STANDINS['mrbf-holder']): MRBF terminal fuse holder (P051; Blue Sea 5191 class, on the disconnect's stud)",
+  "node_note": "the passenger-side cargo bin, on the disconnect's output stud (the scene has no node there yet; leg-l4 stands for it)",
+  "params": {
+   "w": {
+    "mm": 52.0,
+    "source": "estimate: a 5191 class terminal fuse block - no drawing read"
+   },
+   "d": {
+    "mm": 38.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 12.0,
+    "source": "estimate"
+   },
+   "cover_h": {
+    "mm": 16.0,
+    "source": "estimate"
+   },
+   "studs": {
+    "mm": 2,
+    "source": "the terminal stud and the output stud"
+   },
+   "stud_pitch": {
+    "mm": 30.0,
+    "source": "estimate"
+   },
+   "stud_r": {
+    "mm": 4.0,
+    "source": "3/8 in class"
+   },
+   "stud_h": {
+    "mm": 20.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "P047": {
+  "glb": "devices/class-t-block.glb",
+  "name": "Class-T fuse block with cover, 110-200 A (P047)",
+  "kind": "module",
+  "node": "leg-l4",
+  "count": 1,
+  "size_mm": {
+   "x": 125.0,
+   "y": 42.0,
+   "z": 46.0
+  },
+  "bytes": 17192,
+  "origin": "z=0 the mounting face, centred",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "class-t-block",
+  "source": "drawn here (build_devices.py STANDINS['class-t-block']): Class-T fuse block with cover, 110-200 A (P047)",
+  "node_note": "the cargo bin, beside the master disconnect",
+  "params": {
+   "w": {
+    "mm": 125.0,
+    "source": "estimate: a Class-T 110-200 A holder with cover"
+   },
+   "d": {
+    "mm": 42.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 16.0,
+    "source": "estimate"
+   },
+   "cover_h": {
+    "mm": 30.0,
+    "source": "estimate"
+   },
+   "studs": {
+    "mm": 2,
+    "source": "line and load studs"
+   },
+   "stud_pitch": {
+    "mm": 95.0,
+    "source": "estimate"
+   },
+   "stud_r": {
+    "mm": 4.8,
+    "source": "3/8 in"
+   },
+   "stud_h": {
+    "mm": 22.0,
+    "source": "estimate"
+   },
+   "cover_mat": {
+    "mm": "red",
+    "source": "the usual red cover"
+   }
+  }
+ },
+ "P049": {
+  "glb": "devices/disconnect.glb",
+  "name": "Master battery disconnect switch (P049, not chosen)",
+  "kind": "module",
+  "node": "leg-l4",
+  "count": 1,
+  "size_mm": {
+   "x": 90.0,
+   "y": 90.0,
+   "z": 70.0
+  },
+  "bytes": 10832,
+  "origin": "z=0 the mounting face, centred, the knob +z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "disconnect",
+  "source": "drawn here (build_devices.py STANDINS['disconnect']): Master battery disconnect switch (P049, not chosen)",
+  "node_note": "the cargo bin, on the battery +",
+  "params": {
+   "w": {
+    "mm": 90.0,
+    "source": "estimate: a rotary 300 A class switch"
+   },
+   "d": {
+    "mm": 90.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 45.0,
+    "source": "estimate"
+   },
+   "knob_d": {
+    "mm": 55.0,
+    "source": "estimate"
+   },
+   "knob_h": {
+    "mm": 25.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "P007": {
+  "glb": "devices/busbar-10.glb",
+  "name": "Blue Sea 2300 busbar, 10-gang 150 A, with cover (P007)",
+  "kind": "module",
+  "node": "pmu",
+  "count": 1,
+  "size_mm": {
+   "x": 190.0,
+   "y": 44.0,
+   "z": 38.0
+  },
+  "bytes": 79228,
+  "origin": "z=0 the mounting face, centred",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "busbar-10",
+  "source": "drawn here (build_devices.py STANDINS['busbar-10']): Blue Sea 2300 busbar, 10-gang 150 A, with cover (P007)",
+  "node_note": "the dash node's always-hot bar",
+  "params": {
+   "w": {
+    "mm": 190.0,
+    "source": "estimate: 10 screws and two studs; Blue Sea's drawing not read (its page refused the fetch)"
+   },
+   "d": {
+    "mm": 44.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 14.0,
+    "source": "estimate"
+   },
+   "cover_h": {
+    "mm": 24.0,
+    "source": "estimate"
+   },
+   "gangs": {
+    "mm": 10,
+    "source": "P007: 10-gang"
+   }
+  }
+ },
+ "00-CAR:P-002": {
+  "glb": "devices/battery-ionic-s9.glb",
+  "name": "Ionic IC-12V40-S9H heated LiFePO4 battery, rear mount (00-CAR planned P-002)",
+  "kind": "module",
+  "node": "leg-l4",
+  "count": 1,
+  "size_mm": {
+   "x": 230.0,
+   "y": 170.0,
+   "z": 206.0
+  },
+  "bytes": 25048,
+  "origin": "z=0 the base, centred, the posts +z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "battery-ionic-s9",
+  "source": "drawn here (build_devices.py STANDINS['battery-ionic-s9']): Ionic IC-12V40-S9H heated LiFePO4 battery, rear mount (00-CAR planned P-002)",
+  "node_note": "the passenger-side cargo bin (D-002, D-449)",
+  "params": {
+   "w": {
+    "mm": 230.0,
+    "source": "D-239: 230 L"
+   },
+   "d": {
+    "mm": 170.0,
+    "source": "D-239: 170 W"
+   },
+   "h": {
+    "mm": 190.0,
+    "source": "D-239: 190 H"
+   },
+   "post_x": {
+    "mm": 80.0,
+    "source": "estimate: the posts' spacing from centre"
+   },
+   "post_y": {
+    "mm": -55.0,
+    "source": "estimate"
+   },
+   "post_d_base": {
+    "mm": 17.5,
+    "source": "SAE tapered post (D-234), positive, base"
+   },
+   "post_d_top": {
+    "mm": 15.9,
+    "source": "SAE tapered post, top"
+   },
+   "post_h": {
+    "mm": 16.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "P142": {
+  "glb": "devices/teensy41.glb",
+  "name": "PJRC Teensy 4.1 (the ICU and DCU carriers' socketed board, P142)",
+  "kind": "module",
+  "node": "icu-carrier",
+  "count": 1,
+  "size_mm": {
+   "x": 66.56,
+   "y": 17.78,
+   "z": 5.27
+  },
+  "bytes": 2223804,
+  "origin": "base centre: x along the board (USB end at +x), y across, z=0 the lowest point under the board, parts side up",
+  "standin": false,
+  "cad": "teensy41-step-github-xengi",
+  "confirm": true,
+  "model": "teensy41",
+  "source": "PJRC Teensy 4.1 (the ICU and DCU carriers' socketed board, P142), teensy41-step-github-xengi (MIT), converted by FreeCAD",
+  "node_note": "one on each carrier, socketed: icu-carrier and dcu-carrier (D-259)",
+  "also": [
+   {
+    "node": "dcu-carrier",
+    "count": 1,
+    "what": "the DCU's"
+   }
+  ]
+ },
+ "P116": {
+  "glb": "devices/xiao-esp32c3.glb",
+  "name": "Seeed XIAO-format module (the ICU's radio co-processor, P116 - XIAO ESP32C3 class); the generic XIAO outline, the C3's antenna socket not drawn",
+  "kind": "module",
+  "node": "icu-carrier",
+  "count": 1,
+  "size_mm": {
+   "x": 17.8,
+   "y": 22.5,
+   "z": 4.27
+  },
+  "bytes": 162420,
+  "origin": "base centre: z=0 the board's underside, the shield can and USB-C up",
+  "standin": false,
+  "cad": "seeeduino-xiao-step-github-frogpad",
+  "confirm": true,
+  "model": "xiao-esp32c3",
+  "source": "Seeed XIAO-format module (the ICU's radio co-processor, P116 - XIAO ESP32C3 class); the generic XIAO outline, the C3's antenna socket not drawn, seeeduino-xiao-step-github-frogpad (MIT), converted by FreeCAD",
+  "node_note": "the ICU's radio co-processor on its header (D-267)"
+ },
+ "P117": {
+  "glb": "devices/bt817-me817ev.glb",
+  "name": "Bridgetek ME817EV BT817 EVE evaluation board (P117)",
+  "kind": "module",
+  "node": "display-unit",
+  "count": 1,
+  "size_mm": {
+   "x": 165.0,
+   "y": 100.0,
+   "z": 10.1
+  },
+  "bytes": 10372,
+  "origin": "z=0 the board's underside, centred, parts up",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "bt817-me817ev",
+  "source": "drawn here (build_devices.py STANDINS['bt817-me817ev']): Bridgetek ME817EV BT817 EVE evaluation board (P117)",
+  "node_note": "inside the display unit, where its placeholder block is",
+  "params": {
+   "w": {
+    "mm": 165.0,
+    "source": "DS_ME817EV v1.1 Fig 6-1 (bt817-me817ev-datasheet-bridgetek)"
+   },
+   "d": {
+    "mm": 100.0,
+    "source": "DS_ME817EV Fig 6-1"
+   },
+   "t": {
+    "mm": 1.6,
+    "source": "estimate: board thickness"
+   },
+   "features": {
+    "mm": [
+     [
+      "FFC LCD_LVDS_40P",
+      -50.0,
+      44.0,
+      32.0,
+      6.0,
+      2.5
+     ],
+     [
+      "FFC LCD_RGB_50P",
+      0.0,
+      4.0,
+      40.0,
+      6.0,
+      2.5
+     ],
+     [
+      "CN8 2x8 header",
+      21.0,
+      -4.0,
+      6.0,
+      21.0,
+      8.5
+     ],
+     [
+      "USB-C USBC1",
+      0.0,
+      -46.0,
+      9.0,
+      8.0,
+      3.2
+     ],
+     [
+      "USB-C USBC2",
+      41.0,
+      -46.0,
+      9.0,
+      8.0,
+      3.2
+     ],
+     [
+      "BT817",
+      -10.0,
+      26.0,
+      9.0,
+      9.0,
+      1.0
+     ]
+    ],
+    "source": "Fig 6-1, the features' places read off the figure, rounded"
+   }
+  }
+ },
+ "03-luxury:LP58": {
+  "glb": "devices/speaker-165.glb",
+  "name": "Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen)",
+  "kind": "device",
+  "node": "kick-driver",
+  "count": 1,
+  "size_mm": {
+   "x": 165.0,
+   "y": 165.0,
+   "z": 64.0
+  },
+  "bytes": 45340,
+  "origin": "z=0 the flange's back (the baffle), the cone +z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "speaker-165",
+  "source": "drawn here (build_devices.py STANDINS['speaker-165']): Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen)",
+  "node_note": "the fronts (L3-SPF-L / -R)",
+  "also": [
+   {
+    "node": "kick-passenger",
+    "count": 1,
+    "what": "the right front"
+   }
+  ],
+  "params": {
+   "d": {
+    "mm": 165.0,
+    "source": "6.5 in"
+   },
+   "depth": {
+    "mm": 60.0,
+    "source": "estimate: V-103 to V-106 will say"
+   },
+   "magnet_d": {
+    "mm": 100.0,
+    "source": "estimate"
+   },
+   "cone_depth": {
+    "mm": 45.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "03-luxury:LP59": {
+  "glb": "devices/speaker-165.glb",
+  "name": "Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen)",
+  "kind": "device",
+  "node": "quarter-driver",
+  "count": 1,
+  "size_mm": {
+   "x": 165.0,
+   "y": 165.0,
+   "z": 64.0
+  },
+  "bytes": 45340,
+  "origin": "z=0 the flange's back (the baffle), the cone +z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "speaker-165",
+  "source": "drawn here (build_devices.py STANDINS['speaker-165']): Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen)",
+  "node_note": "the surrounds (L4-SPR-L / -R)",
+  "also": [
+   {
+    "node": "quarter-passenger",
+    "count": 1,
+    "what": "the right surround"
+   }
+  ],
+  "params": {
+   "d": {
+    "mm": 165.0,
+    "source": "6.5 in"
+   },
+   "depth": {
+    "mm": 60.0,
+    "source": "estimate: V-103 to V-106 will say"
+   },
+   "magnet_d": {
+    "mm": 100.0,
+    "source": "estimate"
+   },
+   "cone_depth": {
+    "mm": 45.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "03-luxury:LP60": {
+  "glb": "devices/speaker-100.glb",
+  "name": "Speaker, 4 in class (luxury LP60 centre - not chosen)",
+  "kind": "device",
+  "node": "console",
+  "count": 1,
+  "size_mm": {
+   "x": 100.0,
+   "y": 100.0,
+   "z": 49.0
+  },
+  "bytes": 36340,
+  "origin": "z=0 the baffle, the cone +z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "speaker-100",
+  "source": "drawn here (build_devices.py STANDINS['speaker-100']): Speaker, 4 in class (luxury LP60 centre - not chosen)",
+  "node_note": "the centre, between the seats (L3-CTR)",
+  "params": {
+   "d": {
+    "mm": 100.0,
+    "source": "4 in"
+   },
+   "depth": {
+    "mm": 45.0,
+    "source": "estimate: V-109 / V-110 will say"
+   },
+   "magnet_d": {
+    "mm": 65.0,
+    "source": "estimate"
+   },
+   "cone_depth": {
+    "mm": 30.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "03-luxury:LP44": {
+  "glb": "devices/radar-receiver.glb",
+  "name": "Radar receiver, concealed (luxury LP44, Escort MAX Ci 360c class, D-502)",
+  "kind": "device",
+  "node": "nose-bumper",
+  "count": 1,
+  "size_mm": {
+   "x": 110.0,
+   "y": 80.0,
+   "z": 40.0
+  },
+  "bytes": 3708,
+  "origin": "z=0 the base, centred; the horn faces +y",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "radar-receiver",
+  "source": "drawn here (build_devices.py STANDINS['radar-receiver']): Radar receiver, concealed (luxury LP44, Escort MAX Ci 360c class, D-502)",
+  "node_note": "front on L2-RDR",
+  "also": [
+   {
+    "node": "rear-node",
+    "count": 1,
+    "what": "rear on L4-RDR"
+   }
+  ],
+  "params": {
+   "w": {
+    "mm": 110.0,
+    "source": "estimate: a concealed radar receiver"
+   },
+   "d": {
+    "mm": 80.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 40.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV01": {
+  "glb": "devices/coil-igniter-set.glb",
+  "name": "Coils + igniters - Ignition coil T (B-18), coil L (B-19), igniter T (B-20), igniter L (B-21)",
+  "kind": "device",
+  "node": "leg-l1",
+  "count": 1,
+  "size_mm": {
+   "x": 160.0,
+   "y": 90.0,
+   "z": 80.0
+  },
+  "bytes": 3712,
+  "origin": "z=0 the bracket's base, centred",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "coil-igniter-set",
+  "source": "drawn here (build_devices.py STANDINS['coil-igniter-set']): Ignition coils and igniters (DV01: B-18 to B-21, factory, on their bracket)",
+  "params": {
+   "w": {
+    "mm": 160.0,
+    "source": "estimate: two coils and two igniters on the factory bracket"
+   },
+   "d": {
+    "mm": 90.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 80.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV02": {
+  "glb": "devices/starter.glb",
+  "name": "Starter - Starting motor A-01",
+  "kind": "device",
+  "node": "leg-l1",
+  "count": 1,
+  "size_mm": {
+   "x": 127.47,
+   "y": 79.99,
+   "z": 240.0
+  },
+  "bytes": 12168,
+  "origin": "z=0 the mounting flange, the motor +z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "starter",
+  "source": "drawn here (build_devices.py STANDINS['starter']): Starting motor A-01 (DV02, factory)",
+  "params": {
+   "d": {
+    "mm": 80.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 150.0,
+    "source": "estimate"
+   },
+   "box_w": {
+    "mm": 45.0,
+    "source": "estimate: the solenoid"
+   },
+   "box_d": {
+    "mm": 45.0,
+    "source": "estimate"
+   },
+   "box_h": {
+    "mm": 90.0,
+    "source": "estimate"
+   },
+   "box_x": {
+    "mm": 65.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV03": {
+  "glb": "devices/relay-mini-iso-sealed.glb",
+  "name": "Start relay K9 - New, on the inner fender",
+  "kind": "device",
+  "node": "leg-l1",
+  "count": 1,
+  "size_mm": {
+   "x": 28.0,
+   "y": 28.0,
+   "z": 40.5
+  },
+  "bytes": 9260,
+  "origin": "z=0 the tab face, body +z, tabs -z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "relay-mini-iso-sealed",
+  "source": "drawn here (build_devices.py STANDINS['relay-mini-iso-sealed']): Sealed mini ISO relay, Picker PC792E (P004, K9)",
+  "node_note": "K9 in P005's socket",
+  "params": {
+   "w": {
+    "mm": 28.0,
+    "source": "estimate: the mini ISO (ISO 7588-1) body, 28 x 28; the Picker PC792E drawing not read"
+   },
+   "d": {
+    "mm": 28.0,
+    "source": "estimate: as w"
+   },
+   "h": {
+    "mm": 31.0,
+    "source": "estimate: a sealed mini relay with its tab skirt"
+   },
+   "tab_len": {
+    "mm": 9.5,
+    "source": "estimate: ISO 7588 mini tab length"
+   },
+   "tab_t": {
+    "mm": 0.8,
+    "source": "estimate"
+   },
+   "power_tab_w": {
+    "mm": 9.5,
+    "source": "estimate: ISO 7588 mini power tab"
+   },
+   "coil_tab_w": {
+    "mm": 6.3,
+    "source": "estimate"
+   },
+   "coil_pitch": {
+    "mm": 8.0,
+    "source": "estimate"
+   },
+   "row1": {
+    "mm": 8.0,
+    "source": "estimate"
+   },
+   "row2": {
+    "mm": 0.0,
+    "source": "estimate"
+   },
+   "row3": {
+    "mm": -8.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV04": {
+  "glb": "devices/alternator.glb",
+  "name": "Alternator - A-08 plug + A-09 B+ ring",
+  "kind": "device",
+  "node": "leg-l1",
+  "count": 1,
+  "size_mm": {
+   "x": 125.0,
+   "y": 125.0,
+   "z": 130.0
+  },
+  "bytes": 26680,
+  "origin": "z=0 the pulley face, the body +z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "alternator",
+  "source": "drawn here (build_devices.py STANDINS['alternator']): Alternator (DV04, factory)",
+  "params": {
+   "d": {
+    "mm": 125.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 110.0,
+    "source": "estimate"
+   },
+   "shaft_d": {
+    "mm": 17.0,
+    "source": "estimate"
+   },
+   "shaft_len": {
+    "mm": 20.0,
+    "source": "estimate"
+   },
+   "flange_d": {
+    "mm": 60.0,
+    "source": "estimate: the pulley"
+   },
+   "flange_t": {
+    "mm": 20.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV05": {
+  "glb": "devices/switch-small.glb",
+  "name": "Inhibitor switch - A-06, 4-pin",
+  "kind": "device",
+  "node": "leg-l1",
+  "count": 1,
+  "size_mm": {
+   "x": 40.0,
+   "y": 25.0,
+   "z": 20.0
+  },
+  "bytes": 3704,
+  "origin": "z=0 the mounting face, centred",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "switch-small",
+  "source": "drawn here (build_devices.py STANDINS['switch-small']): A small switch or sender body (the inhibitor, park-brake, kick-down, glove-box and luggage switches; factory)",
+  "params": {
+   "w": {
+    "mm": 40.0,
+    "source": "estimate"
+   },
+   "d": {
+    "mm": 25.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 20.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV06": {
+  "glb": "devices/sender-threaded.glb",
+  "name": "Water temp sender - C-02",
+  "kind": "device",
+  "node": "leg-l1",
+  "count": 1,
+  "size_mm": {
+   "x": 21.99,
+   "y": 21.99,
+   "z": 38.0
+  },
+  "bytes": 10152,
+  "origin": "z=0 the hex's top (the seat), the body +z, the thread -z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "sender-threaded",
+  "source": "drawn here (build_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new)",
+  "params": {
+   "d": {
+    "mm": 22.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 30.0,
+    "source": "estimate"
+   },
+   "hex": {
+    "mm": 19.0,
+    "source": "estimate"
+   },
+   "hex_h": {
+    "mm": 8.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV07": {
+  "glb": "devices/sender-threaded.glb",
+  "name": "Oil pressure sender - C-09",
+  "kind": "device",
+  "node": "leg-l1",
+  "count": 1,
+  "size_mm": {
+   "x": 21.99,
+   "y": 21.99,
+   "z": 38.0
+  },
+  "bytes": 10152,
+  "origin": "z=0 the hex's top (the seat), the body +z, the thread -z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "sender-threaded",
+  "source": "drawn here (build_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new)",
+  "params": {
+   "d": {
+    "mm": 22.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 30.0,
+    "source": "estimate"
+   },
+   "hex": {
+    "mm": 19.0,
+    "source": "estimate"
+   },
+   "hex_h": {
+    "mm": 8.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV08": {
+  "glb": "devices/sender-threaded.glb",
+  "name": "Brake fluid level switch - C-05",
+  "kind": "device",
+  "node": "leg-l1",
+  "count": 1,
+  "size_mm": {
+   "x": 21.99,
+   "y": 21.99,
+   "z": 38.0
+  },
+  "bytes": 10152,
+  "origin": "z=0 the hex's top (the seat), the body +z, the thread -z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "sender-threaded",
+  "source": "drawn here (build_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new)",
+  "params": {
+   "d": {
+    "mm": 22.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 30.0,
+    "source": "estimate"
+   },
+   "hex": {
+    "mm": 19.0,
+    "source": "estimate"
+   },
+   "hex_h": {
+    "mm": 8.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV10": {
+  "glb": "devices/headlight-7in.glb",
+  "name": "Headlights - E-08 LH, E-09 RH",
+  "kind": "device",
+  "node": "leg-l2",
+  "count": 2,
+  "size_mm": {
+   "x": 177.97,
+   "y": 177.99,
+   "z": 106.0
+  },
+  "bytes": 27052,
+  "origin": "z=0 the bucket's back, the lens +z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "headlight-7in",
+  "source": "drawn here (build_devices.py STANDINS['headlight-7in']): Headlight, 7 in round sealed beam class (DV10, E-08 / E-09)",
+  "params": {
+   "d": {
+    "mm": 178.0,
+    "source": "7 in round"
+   },
+   "depth": {
+    "mm": 100.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV11": {
+  "glb": "devices/motor-gear.glb",
+  "name": "Pop-up motors - E-03 LH, E-04 RH",
+  "kind": "device",
+  "node": "leg-l2",
+  "count": 2,
+  "size_mm": {
+   "x": 100.0,
+   "y": 75.0,
+   "z": 140.0
+  },
+  "bytes": 11116,
+  "origin": "z=0 the gearbox's face, the motor +z, the gearbox -z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "motor-gear",
+  "source": "drawn here (build_devices.py STANDINS['motor-gear']): A geared motor (the pop-up motors E-03 / E-04, the wiper motor D-02; factory)",
+  "params": {
+   "d": {
+    "mm": 60.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 100.0,
+    "source": "estimate"
+   },
+   "box_w": {
+    "mm": 100.0,
+    "source": "estimate: the gearbox"
+   },
+   "box_d": {
+    "mm": 75.0,
+    "source": "estimate"
+   },
+   "box_h": {
+    "mm": 40.0,
+    "source": "estimate"
+   },
+   "box_x": {
+    "mm": 15.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV12": {
+  "glb": "devices/lamp-front-combo.glb",
+  "name": "Front combo lamps - F-05 LH, F-06 RH",
+  "kind": "device",
+  "node": "leg-l2",
+  "count": 2,
+  "size_mm": {
+   "x": 200.0,
+   "y": 63.0,
+   "z": 70.0
+  },
+  "bytes": 4780,
+  "origin": "z=0 the housing's base, centred, the lens at +y",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "lamp-front-combo",
+  "source": "drawn here (build_devices.py STANDINS['lamp-front-combo']): Front combination lamp (DV12, F-05 / F-06, factory)",
+  "params": {
+   "w": {
+    "mm": 200.0,
+    "source": "estimate"
+   },
+   "d": {
+    "mm": 60.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 70.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV13": {
+  "glb": "devices/lamp-small.glb",
+  "name": "Front side markers - F-12 LH, F-13 RH",
+  "kind": "device",
+  "node": "leg-l2",
+  "count": 2,
+  "size_mm": {
+   "x": 100.0,
+   "y": 38.0,
+   "z": 30.0
+  },
+  "bytes": 4764,
+  "origin": "z=0 the housing's base, centred, the lens at +y",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "lamp-small",
+  "source": "drawn here (build_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory)",
+  "params": {
+   "w": {
+    "mm": 100.0,
+    "source": "estimate"
+   },
+   "d": {
+    "mm": 35.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 30.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV14": {
+  "glb": "devices/horn.glb",
+  "name": "Horns - F-09 LH, F-10 RH",
+  "kind": "device",
+  "node": "leg-l2",
+  "count": 2,
+  "size_mm": {
+   "x": 89.97,
+   "y": 89.99,
+   "z": 65.0
+  },
+  "bytes": 12684,
+  "origin": "z=0 the bracket's foot, the horn +z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "horn",
+  "source": "drawn here (build_devices.py STANDINS['horn']): Horn (DV14, F-09 / F-10, factory)",
+  "params": {
+   "d": {
+    "mm": 90.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 35.0,
+    "source": "estimate"
+   },
+   "box_w": {
+    "mm": 20.0,
+    "source": "estimate: the bracket"
+   },
+   "box_d": {
+    "mm": 8.0,
+    "source": "estimate"
+   },
+   "box_h": {
+    "mm": 30.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV15": {
+  "glb": "devices/motor-gear.glb",
+  "name": "Wiper motor - D-02",
+  "kind": "device",
+  "node": "leg-l2",
+  "count": 1,
+  "size_mm": {
+   "x": 100.0,
+   "y": 75.0,
+   "z": 140.0
+  },
+  "bytes": 11116,
+  "origin": "z=0 the gearbox's face, the motor +z, the gearbox -z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "motor-gear",
+  "source": "drawn here (build_devices.py STANDINS['motor-gear']): A geared motor (the pop-up motors E-03 / E-04, the wiper motor D-02; factory)",
+  "params": {
+   "d": {
+    "mm": 60.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 100.0,
+    "source": "estimate"
+   },
+   "box_w": {
+    "mm": 100.0,
+    "source": "estimate: the gearbox"
+   },
+   "box_d": {
+    "mm": 75.0,
+    "source": "estimate"
+   },
+   "box_h": {
+    "mm": 40.0,
+    "source": "estimate"
+   },
+   "box_x": {
+    "mm": 15.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV16": {
+  "glb": "devices/washer-pump.glb",
+  "name": "Washer pump - D-01",
+  "kind": "device",
+  "node": "leg-l2",
+  "count": 1,
+  "size_mm": {
+   "x": 34.98,
+   "y": 34.99,
+   "z": 70.0
+  },
+  "bytes": 8816,
+  "origin": "z=0 the pump's base, the motor +z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "washer-pump",
+  "source": "drawn here (build_devices.py STANDINS['washer-pump']): Washer pump D-01 (DV16, factory)",
+  "params": {
+   "d": {
+    "mm": 35.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 70.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV18": {
+  "glb": "devices/ignition-switch.glb",
+  "name": "Ignition switch - New — electrical portion, 1981–83 FB",
+  "kind": "device",
+  "node": "leg-l3",
+  "count": 1,
+  "size_mm": {
+   "x": 31.98,
+   "y": 31.99,
+   "z": 40.0
+  },
+  "bytes": 8824,
+  "origin": "z=0 the face on the lock, the body +z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "ignition-switch",
+  "source": "drawn here (build_devices.py STANDINS['ignition-switch']): Ignition switch, electrical portion (DV18, new, 1981-83 FB)",
+  "params": {
+   "d": {
+    "mm": 32.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 40.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV19": {
+  "glb": "devices/combination-switch.glb",
+  "name": "Light switch - E-01 LIGHT + DIMMER (column, kept)",
+  "kind": "device",
+  "node": "leg-l3",
+  "count": 1,
+  "size_mm": {
+   "x": 160.0,
+   "y": 90.0,
+   "z": 60.0
+  },
+  "bytes": 3716,
+  "origin": "z=0 the base, centred on the column",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "combination-switch",
+  "source": "drawn here (build_devices.py STANDINS['combination-switch']): Column combination switch (DV19-DV22: light, turn, hazard, wiper; factory)",
+  "node_note": "DV19-DV22 are one column assembly; one model stands for all four",
+  "params": {
+   "w": {
+    "mm": 160.0,
+    "source": "estimate: both stalks' housing round the column"
+   },
+   "d": {
+    "mm": 90.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 60.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV20": {
+  "glb": "devices/combination-switch.glb",
+  "name": "Turn stalk - F-02 TURN (column, kept)",
+  "kind": "device",
+  "node": "leg-l3",
+  "count": 0,
+  "size_mm": {
+   "x": 160.0,
+   "y": 90.0,
+   "z": 60.0
+  },
+  "bytes": 3716,
+  "origin": "z=0 the base, centred on the column",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "combination-switch",
+  "source": "drawn here (build_devices.py STANDINS['combination-switch']): Column combination switch (DV19-DV22: light, turn, hazard, wiper; factory)",
+  "node_note": "drawn by DV19's",
+  "params": {
+   "w": {
+    "mm": 160.0,
+    "source": "estimate: both stalks' housing round the column"
+   },
+   "d": {
+    "mm": 90.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 60.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV21": {
+  "glb": "devices/combination-switch.glb",
+  "name": "Hazard switch - F-02 HAZARD (column, kept)",
+  "kind": "device",
+  "node": "leg-l3",
+  "count": 0,
+  "size_mm": {
+   "x": 160.0,
+   "y": 90.0,
+   "z": 60.0
+  },
+  "bytes": 3716,
+  "origin": "z=0 the base, centred on the column",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "combination-switch",
+  "source": "drawn here (build_devices.py STANDINS['combination-switch']): Column combination switch (DV19-DV22: light, turn, hazard, wiper; factory)",
+  "node_note": "drawn by DV19's",
+  "params": {
+   "w": {
+    "mm": 160.0,
+    "source": "estimate: both stalks' housing round the column"
+   },
+   "d": {
+    "mm": 90.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 60.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV22": {
+  "glb": "devices/combination-switch.glb",
+  "name": "Wiper stalk - D-03 (column, kept)",
+  "kind": "device",
+  "node": "leg-l3",
+  "count": 0,
+  "size_mm": {
+   "x": 160.0,
+   "y": 90.0,
+   "z": 60.0
+  },
+  "bytes": 3716,
+  "origin": "z=0 the base, centred on the column",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "combination-switch",
+  "source": "drawn here (build_devices.py STANDINS['combination-switch']): Column combination switch (DV19-DV22: light, turn, hazard, wiper; factory)",
+  "node_note": "drawn by DV19's",
+  "params": {
+   "w": {
+    "mm": 160.0,
+    "source": "estimate: both stalks' housing round the column"
+   },
+   "d": {
+    "mm": 90.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 60.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV25": {
+  "glb": "devices/sender-threaded.glb",
+  "name": "Brake pedal switch - F-11 (new)",
+  "kind": "device",
+  "node": "leg-l3",
+  "count": 1,
+  "size_mm": {
+   "x": 21.99,
+   "y": 21.99,
+   "z": 38.0
+  },
+  "bytes": 10152,
+  "origin": "z=0 the hex's top (the seat), the body +z, the thread -z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "sender-threaded",
+  "source": "drawn here (build_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new)",
+  "params": {
+   "d": {
+    "mm": 22.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 30.0,
+    "source": "estimate"
+   },
+   "hex": {
+    "mm": 19.0,
+    "source": "estimate"
+   },
+   "hex_h": {
+    "mm": 8.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV26": {
+  "glb": "devices/switch-small.glb",
+  "name": "Parking brake switch - C-04 (kept)",
+  "kind": "device",
+  "node": "leg-l3",
+  "count": 1,
+  "size_mm": {
+   "x": 40.0,
+   "y": 25.0,
+   "z": 20.0
+  },
+  "bytes": 3704,
+  "origin": "z=0 the mounting face, centred",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "switch-small",
+  "source": "drawn here (build_devices.py STANDINS['switch-small']): A small switch or sender body (the inhibitor, park-brake, kick-down, glove-box and luggage switches; factory)",
+  "params": {
+   "w": {
+    "mm": 40.0,
+    "source": "estimate"
+   },
+   "d": {
+    "mm": 25.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 20.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV27": {
+  "glb": "devices/blower-motor.glb",
+  "name": "Blower motor (luxury package) - Four Seasons 35483 class, 2-wire — no resistor pack, no speed switch (D-253)",
+  "kind": "device",
+  "node": "hvac-case",
+  "count": 1,
+  "size_mm": {
+   "x": 140.0,
+   "y": 139.95,
+   "z": 185.0
+  },
+  "bytes": 40048,
+  "origin": "z=0 the flange face; the motor +z, the shaft and wheel -z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "blower-motor",
+  "source": "drawn here (build_devices.py STANDINS['blower-motor']): Blower motor, Four Seasons 35483 class, 2-wire (DV27, luxury LP17)",
+  "params": {
+   "d": {
+    "mm": 100.0,
+    "source": "estimate: the motor can"
+   },
+   "h": {
+    "mm": 85.0,
+    "source": "estimate"
+   },
+   "flange_d": {
+    "mm": 135.0,
+    "source": "estimate: the mounting flange on the HVAC case"
+   },
+   "flange_t": {
+    "mm": 4.0,
+    "source": "estimate"
+   },
+   "shaft_d": {
+    "mm": 8.0,
+    "source": "estimate"
+   },
+   "shaft_len": {
+    "mm": 30.0,
+    "source": "estimate"
+   },
+   "wheel_d": {
+    "mm": 140.0,
+    "source": "estimate: the factory blower wheel, in the case's scroll"
+   },
+   "wheel_h": {
+    "mm": 70.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV28": {
+  "glb": "devices/head-unit-1din.glb",
+  "name": "Head unit - Aftermarket",
+  "kind": "device",
+  "node": "leg-l3",
+  "count": 1,
+  "size_mm": {
+   "x": 178.0,
+   "y": 155.0,
+   "z": 50.0
+  },
+  "bytes": 3708,
+  "origin": "z=0 the chassis bottom, centred; the face at -y",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "head-unit-1din",
+  "source": "drawn here (build_devices.py STANDINS['head-unit-1din']): Head unit, aftermarket single DIN (DV28)",
+  "params": {
+   "w": {
+    "mm": 178.0,
+    "source": "ISO 7736 single DIN, 180 x 50 aperture"
+   },
+   "d": {
+    "mm": 155.0,
+    "source": "estimate: the chassis depth"
+   },
+   "h": {
+    "mm": 50.0,
+    "source": "ISO 7736"
+   }
+  }
+ },
+ "DV29": {
+  "glb": "devices/usb-c-module.glb",
+  "name": "USB-C module - Aftermarket",
+  "kind": "device",
+  "node": "leg-l3",
+  "count": 1,
+  "size_mm": {
+   "x": 28.98,
+   "y": 28.99,
+   "z": 40.0
+  },
+  "bytes": 8820,
+  "origin": "z=0 the panel face, the body +z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "usb-c-module",
+  "source": "drawn here (build_devices.py STANDINS['usb-c-module']): USB-C charging module, aftermarket (DV29)",
+  "params": {
+   "d": {
+    "mm": 29.0,
+    "source": "estimate: the common 1 1/8 in round socket"
+   },
+   "h": {
+    "mm": 40.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV31": {
+  "glb": "devices/lamp-small.glb",
+  "name": "Glove box lamp - H-01 + switch H-02",
+  "kind": "device",
+  "node": "glovebox",
+  "count": 1,
+  "size_mm": {
+   "x": 100.0,
+   "y": 38.0,
+   "z": 30.0
+  },
+  "bytes": 4764,
+  "origin": "z=0 the housing's base, centred, the lens at +y",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "lamp-small",
+  "source": "drawn here (build_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory)",
+  "params": {
+   "w": {
+    "mm": 100.0,
+    "source": "estimate"
+   },
+   "d": {
+    "mm": 35.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 30.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV34": {
+  "glb": "devices/fuel-pump.glb",
+  "name": "Fuel pump - Carter P4070 (B-24 position)",
+  "kind": "device",
+  "node": "leg-l4",
+  "count": 1,
+  "size_mm": {
+   "x": 70.0,
+   "y": 70.0,
+   "z": 150.0
+  },
+  "bytes": 16800,
+  "origin": "z=0 the inlet end, the pump along +z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "fuel-pump",
+  "source": "drawn here (build_devices.py STANDINS['fuel-pump']): Fuel pump, Carter P4070 (DV34)",
+  "params": {
+   "d": {
+    "mm": 70.0,
+    "source": "estimate: the Carter drawing not read"
+   },
+   "h": {
+    "mm": 130.0,
+    "source": "estimate"
+   },
+   "shaft_d": {
+    "mm": 10.0,
+    "source": "estimate: the outlet"
+   },
+   "shaft_len": {
+    "mm": 20.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV36": {
+  "glb": "devices/fuel-sender.glb",
+  "name": "Fuel level sender - C-01",
+  "kind": "device",
+  "node": "leg-l4",
+  "count": 1,
+  "size_mm": {
+   "x": 74.98,
+   "y": 74.99,
+   "z": 192.0
+  },
+  "bytes": 12000,
+  "origin": "z=0 the flange face, the arm -z into the tank",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "fuel-sender",
+  "source": "drawn here (build_devices.py STANDINS['fuel-sender']): Fuel level sender C-01 (DV36, factory)",
+  "params": {
+   "d": {
+    "mm": 75.0,
+    "source": "estimate: the sender's flange"
+   },
+   "h": {
+    "mm": 12.0,
+    "source": "estimate"
+   },
+   "box_w": {
+    "mm": 20.0,
+    "source": "estimate: the float arm's housing"
+   },
+   "box_d": {
+    "mm": 20.0,
+    "source": "estimate"
+   },
+   "box_h": {
+    "mm": 180.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV37": {
+  "glb": "devices/lamp-rear-combo.glb",
+  "name": "Rear combo lamps - F-07 LH, F-08 RH",
+  "kind": "device",
+  "node": "leg-l4",
+  "count": 2,
+  "size_mm": {
+   "x": 470.0,
+   "y": 103.0,
+   "z": 150.0
+  },
+  "bytes": 4780,
+  "origin": "z=0 the housing's base, centred, the lens at +y",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "lamp-rear-combo",
+  "source": "drawn here (build_devices.py STANDINS['lamp-rear-combo']): Rear combination lamp (DV37, F-07 / F-08, factory)",
+  "params": {
+   "w": {
+    "mm": 470.0,
+    "source": "estimate: from the FB tail-light scan's 479 x 217 box (cad fb-rx7-taillight-housing-scan-printables-giooig13)"
+   },
+   "d": {
+    "mm": 100.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 150.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV38": {
+  "glb": "devices/lamp-small.glb",
+  "name": "Licence lamps + rear markers - F-04 ×2, F-14, F-15",
+  "kind": "device",
+  "node": "leg-l4",
+  "count": 4,
+  "size_mm": {
+   "x": 100.0,
+   "y": 38.0,
+   "z": 30.0
+  },
+  "bytes": 4764,
+  "origin": "z=0 the housing's base, centred, the lens at +y",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "lamp-small",
+  "source": "drawn here (build_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory)",
+  "params": {
+   "w": {
+    "mm": 100.0,
+    "source": "estimate"
+   },
+   "d": {
+    "mm": 35.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 30.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV39": {
+  "glb": "devices/lamp-small.glb",
+  "name": "Interior / spot lamp - H-06",
+  "kind": "device",
+  "node": "leg-l4",
+  "count": 1,
+  "size_mm": {
+   "x": 100.0,
+   "y": 38.0,
+   "z": 30.0
+  },
+  "bytes": 4764,
+  "origin": "z=0 the housing's base, centred, the lens at +y",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "lamp-small",
+  "source": "drawn here (build_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory)",
+  "params": {
+   "w": {
+    "mm": 100.0,
+    "source": "estimate"
+   },
+   "d": {
+    "mm": 35.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 30.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV40": {
+  "glb": "devices/lamp-small.glb",
+  "name": "Luggage lamp - H-11 + switch H-12",
+  "kind": "device",
+  "node": "leg-l4",
+  "count": 1,
+  "size_mm": {
+   "x": 100.0,
+   "y": 38.0,
+   "z": 30.0
+  },
+  "bytes": 4764,
+  "origin": "z=0 the housing's base, centred, the lens at +y",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "lamp-small",
+  "source": "drawn here (build_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory)",
+  "params": {
+   "w": {
+    "mm": 100.0,
+    "source": "estimate"
+   },
+   "d": {
+    "mm": 35.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 30.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV41": {
+  "glb": "devices/sender-threaded.glb",
+  "name": "Door jamb switches - New plunger switches ×2 (B-pillar)",
+  "kind": "device",
+  "node": "leg-l4",
+  "count": 2,
+  "size_mm": {
+   "x": 21.99,
+   "y": 21.99,
+   "z": 38.0
+  },
+  "bytes": 10152,
+  "origin": "z=0 the hex's top (the seat), the body +z, the thread -z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "sender-threaded",
+  "source": "drawn here (build_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new)",
+  "params": {
+   "d": {
+    "mm": 22.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 30.0,
+    "source": "estimate"
+   },
+   "hex": {
+    "mm": 19.0,
+    "source": "estimate"
+   },
+   "hex_h": {
+    "mm": 8.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV44": {
+  "glb": "devices/aem-gauge-52.glb",
+  "name": "Wideband AFR gauge (controller) - AEM 30-0300 X-Series (part number read by Camden, B2, 2026-10-09), relocated out of sight",
+  "kind": "device",
+  "node": "leg-l3",
+  "count": 1,
+  "size_mm": {
+   "x": 59.98,
+   "y": 59.99,
+   "z": 46.5
+  },
+  "bytes": 23672,
+  "origin": "z=0 the bezel's back (the panel face), the face +z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "aem-gauge-52",
+  "source": "drawn here (build_devices.py STANDINS['aem-gauge-52']): AEM 30-0300 X-Series wideband gauge, 52 mm (DV44)",
+  "node_note": "hidden behind the dash (modules WBO)",
+  "params": {
+   "d": {
+    "mm": 52.4,
+    "source": "52 mm gauge class (AEM 30-0300)"
+   },
+   "depth": {
+    "mm": 40.0,
+    "source": "estimate: the install drawing not on this machine"
+   },
+   "bezel_d": {
+    "mm": 60.0,
+    "source": "estimate"
+   },
+   "bezel_t": {
+    "mm": 6.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV46": {
+  "glb": "devices/display-12p3.glb",
+  "name": "Digital display — 12.3-inch bar - On a plate in the binnacle aperture until the luxury bezel (D-268; luxury FT34)",
+  "kind": "device",
+  "node": "display-unit",
+  "count": 1,
+  "size_mm": {
+   "x": 322.63,
+   "y": 142.11,
+   "z": 21.5
+  },
+  "bytes": 3607700,
+  "origin": "base centre: z=0 the rearmost point (the driver board behind the panel), the glass facing +z, x along the bar",
+  "standin": false,
+  "cad": "display-12p3in-hdmi-lcd-waveshare",
+  "confirm": true,
+  "model": "display-12p3",
+  "source": "Waveshare 12.3inch HDMI LCD (1920 x 720) - the candidate bar display (P118), display-12p3in-hdmi-lcd-waveshare (Waveshare free download (no licence stated)), converted by FreeCAD",
+  "node_note": "in the display unit, where its placeholder block is (D-268)"
+ },
+ "DV47": {
+  "glb": "devices/sender-threaded.glb",
+  "name": "Road-speed pulse generator - Hall pulse generator on the transmission's speedo-drive boss in place of the cable — Dakota Digital SEN-01-4160 / AutoMeter 5291 class, thread adapter per M-2 (P113); fitted at the meters cutover (D-272)",
+  "kind": "device",
+  "node": "leg-l4",
+  "count": 1,
+  "size_mm": {
+   "x": 21.99,
+   "y": 21.99,
+   "z": 38.0
+  },
+  "bytes": 10152,
+  "origin": "z=0 the hex's top (the seat), the body +z, the thread -z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "sender-threaded",
+  "source": "drawn here (build_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new)",
+  "params": {
+   "d": {
+    "mm": 22.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 30.0,
+    "source": "estimate"
+   },
+   "hex": {
+    "mm": 19.0,
+    "source": "estimate"
+   },
+   "hex_h": {
+    "mm": 8.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV48": {
+  "glb": "devices/solenoid.glb",
+  "name": "Hatch-release solenoid (factory) - Exists and is believed to work — Camden 2026-09-08; the latch switch is broken (K-016)",
+  "kind": "device",
+  "node": "hatch",
+  "count": 1,
+  "size_mm": {
+   "x": 27.98,
+   "y": 27.99,
+   "z": 70.0
+  },
+  "bytes": 14988,
+  "origin": "z=0 the mounting face, the body +z, the plunger -z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "solenoid",
+  "source": "drawn here (build_devices.py STANDINS['solenoid']): A solenoid (hatch and fuel-door releases, the kick-down solenoid; factory)",
+  "params": {
+   "d": {
+    "mm": 28.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 55.0,
+    "source": "estimate"
+   },
+   "shaft_d": {
+    "mm": 6.0,
+    "source": "estimate"
+   },
+   "shaft_len": {
+    "mm": 15.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV49": {
+  "glb": "devices/solenoid.glb",
+  "name": "Fuel-door release solenoid (factory) - Exists — Camden 2026-09-08 (K-017 corrected)",
+  "kind": "device",
+  "node": "leg-l4",
+  "count": 1,
+  "size_mm": {
+   "x": 27.98,
+   "y": 27.99,
+   "z": 70.0
+  },
+  "bytes": 14988,
+  "origin": "z=0 the mounting face, the body +z, the plunger -z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "solenoid",
+  "source": "drawn here (build_devices.py STANDINS['solenoid']): A solenoid (hatch and fuel-door releases, the kick-down solenoid; factory)",
+  "params": {
+   "d": {
+    "mm": 28.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 55.0,
+    "source": "estimate"
+   },
+   "shaft_d": {
+    "mm": 6.0,
+    "source": "estimate"
+   },
+   "shaft_len": {
+    "mm": 15.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV50": {
+  "glb": "devices/switch-small.glb",
+  "name": "Kick-down switch - B-32, throttle pedal (kept - believed working, D-320)",
+  "kind": "device",
+  "node": "leg-l3",
+  "count": 1,
+  "size_mm": {
+   "x": 40.0,
+   "y": 25.0,
+   "z": 20.0
+  },
+  "bytes": 3704,
+  "origin": "z=0 the mounting face, centred",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "switch-small",
+  "source": "drawn here (build_devices.py STANDINS['switch-small']): A small switch or sender body (the inhibitor, park-brake, kick-down, glove-box and luggage switches; factory)",
+  "params": {
+   "w": {
+    "mm": 40.0,
+    "source": "estimate"
+   },
+   "d": {
+    "mm": 25.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 20.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV51": {
+  "glb": "devices/solenoid.glb",
+  "name": "Kick-down solenoid - B-33, on the transmission (kept - believed working, D-320)",
+  "kind": "device",
+  "node": "leg-l4",
+  "count": 1,
+  "size_mm": {
+   "x": 27.98,
+   "y": 27.99,
+   "z": 70.0
+  },
+  "bytes": 14988,
+  "origin": "z=0 the mounting face, the body +z, the plunger -z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "solenoid",
+  "source": "drawn here (build_devices.py STANDINS['solenoid']): A solenoid (hatch and fuel-door releases, the kick-down solenoid; factory)",
+  "node_note": "on the transmission; its lead is in L4",
+  "params": {
+   "d": {
+    "mm": 28.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 55.0,
+    "source": "estimate"
+   },
+   "shaft_d": {
+    "mm": 6.0,
+    "source": "estimate"
+   },
+   "shaft_len": {
+    "mm": 15.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV55": {
+  "glb": "devices/pololu-g2-24v21.glb",
+  "name": "Blower final stage (luxury LP18, Pololu G2 class) at the HVAC case - Mounts in the old resistor pack's hole for airflow (D-308); the motor's return passes through it (D-257, D-307)",
+  "kind": "device",
+  "node": "hvac-case",
+  "count": 1,
+  "size_mm": {
+   "x": 33.02,
+   "y": 20.32,
+   "z": 10.57
+  },
+  "bytes": 434052,
+  "origin": "base centre: z=0 the lowest point (the through-hole pins under the board), parts side up",
+  "standin": false,
+  "cad": "pololu-g2-md31b-step-pololu",
+  "confirm": true,
+  "model": "pololu-g2-24v21",
+  "source": "Pololu G2 High-Power Motor Driver 24v21 (#2995) - the blower final stage (luxury LP18, DV55); the md31b board the 18v25 and 24v21 share, pololu-g2-md31b-step-pololu (Pololu free download (no licence stated)), converted by FreeCAD",
+  "node_note": "in the old resistor pack's hole (D-308)"
+ },
+ "DV56": {
+  "glb": "devices/comfort-block-st6.glb",
+  "name": "O15 comfort block C (P164, Blue Sea 5028) behind the centre stack - Six bussed ST blade circuits, 30 A each, #10-32 input stud; five used, one spare (A13, D-382)",
+  "kind": "device",
+  "node": "centre-stack",
+  "count": 1,
+  "size_mm": {
+   "x": 123.8,
+   "y": 84.1,
+   "z": 38.1
+  },
+  "bytes": 17556,
+  "origin": "z=0 the mounting face, centred, the cover +z",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "comfort-block-st6",
+  "source": "drawn here (build_devices.py STANDINS['comfort-block-st6']): Blue Sea 5028 ST blade fuse block, 6 circuits with cover (P164, O15 comfort block C)",
+  "params": {
+   "w": {
+    "mm": 123.8,
+    "source": "retailer listing: 4 7/8 in long (Blue Sea's page refused the fetch)"
+   },
+   "d": {
+    "mm": 84.1,
+    "source": "retailer listing: 3 5/16 in wide"
+   },
+   "h": {
+    "mm": 18.0,
+    "source": "estimate: the base; 38.1 overall with the cover (1 1/2 in, retailer listing)"
+   },
+   "cover_h": {
+    "mm": 20.1,
+    "source": "38.1 overall less the base"
+   }
+  }
+ },
+ "DV57": {
+  "glb": "devices/seat-module.glb",
+  "name": "Driver seat (luxury LP52) - heater, cooling fan, power adjust - Unchosen; built to the worst case (D-450): heat 5 A, cool 2.5 A, a 25 A motor feed of its own from the busbar (D-469)",
+  "kind": "device",
+  "node": "seat-driver",
+  "count": 1,
+  "size_mm": {
+   "x": 120.0,
+   "y": 80.0,
+   "z": 30.0
+  },
+  "bytes": 3700,
+  "origin": "z=0 the base, centred",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "seat-module",
+  "source": "drawn here (build_devices.py STANDINS['seat-module']): Seat heat / cool / power module (DV57, DV58; luxury LP52, not chosen)",
+  "params": {
+   "w": {
+    "mm": 120.0,
+    "source": "estimate: a seat heater and fan controller, worst case"
+   },
+   "d": {
+    "mm": 80.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 30.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV58": {
+  "glb": "devices/seat-module.glb",
+  "name": "Passenger seat (luxury LP52) - heater, cooling fan, power adjust - As DV57",
+  "kind": "device",
+  "node": "seat-passenger",
+  "count": 1,
+  "size_mm": {
+   "x": 120.0,
+   "y": 80.0,
+   "z": 30.0
+  },
+  "bytes": 3700,
+  "origin": "z=0 the base, centred",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "seat-module",
+  "source": "drawn here (build_devices.py STANDINS['seat-module']): Seat heat / cool / power module (DV57, DV58; luxury LP52, not chosen)",
+  "params": {
+   "w": {
+    "mm": 120.0,
+    "source": "estimate: a seat heater and fan controller, worst case"
+   },
+   "d": {
+    "mm": 80.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 30.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV59": {
+  "glb": "devices/servo-fs5115m.glb",
+  "name": "HVAC door servos x3 (luxury LP19, FEETECH FS5115M): mode, blend, recirculate, on the HVAC case - Each on its door cable (D-073); the DCU moves one at a time (D-379, F-017). Each lead: signal, +5 V servo rail, GND - 3 x 22 AWG, the servo's own JR plug at the far end",
+  "kind": "device",
+  "node": "hvac-case",
+  "count": 3,
+  "size_mm": {
+   "x": 54.0,
+   "y": 20.1,
+   "z": 44.9
+  },
+  "bytes": 17328,
+  "origin": "z=0 the case bottom, centred, the output spline +z at +x",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "servo-fs5115m",
+  "source": "drawn here (build_devices.py STANDINS['servo-fs5115m']): FEETECH FS5115M servo (luxury LP19; the three HVAC door servos, DV59)",
+  "node_note": "mode, blend, recirculate, each on its door cable (D-073)",
+  "params": {
+   "w": {
+    "mm": 40.1,
+    "source": "FS5115M spec sheet 6-1 (feetech-fs5115m-datasheet-pololu)"
+   },
+   "d": {
+    "mm": 20.1,
+    "source": "FS5115M spec sheet 6-1"
+   },
+   "h": {
+    "mm": 38.9,
+    "source": "FS5115M spec sheet 6-1"
+   },
+   "ears_w": {
+    "mm": 54.0,
+    "source": "estimate: a standard servo's mounting ears"
+   },
+   "ears_t": {
+    "mm": 2.5,
+    "source": "estimate"
+   },
+   "ears_z": {
+    "mm": 27.0,
+    "source": "estimate"
+   },
+   "spline_off": {
+    "mm": 10.0,
+    "source": "estimate: the output's distance from the case end"
+   },
+   "spline_d": {
+    "mm": 5.9,
+    "source": "FS5115M spec sheet 6-9: 25T / 5.9 mm"
+   }
+  }
+ },
+ "DV60": {
+  "glb": "devices/amplifier.glb",
+  "name": "Amplifier / DSP (luxury LP57) in the passenger-side cargo bin, beside the battery (D-449) - Unchosen (luxury X-012 after 03.13); the wiring is built for the largest class: 4 AWG feed and return, eight speaker pairs, a remote, six pre-amp channels",
+  "kind": "device",
+  "node": "leg-l4",
+  "count": 1,
+  "size_mm": {
+   "x": 300.0,
+   "y": 200.0,
+   "z": 63.0
+  },
+  "bytes": 12268,
+  "origin": "z=0 the base, centred",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "amplifier",
+  "source": "drawn here (build_devices.py STANDINS['amplifier']): Amplifier / DSP (DV60, luxury LP57, not chosen - the largest class)",
+  "node_note": "the passenger-side cargo bin beside the battery (D-449); leg-l4 stands for it",
+  "params": {
+   "w": {
+    "mm": 300.0,
+    "source": "estimate: a 6-8 channel DSP amplifier"
+   },
+   "d": {
+    "mm": 200.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 55.0,
+    "source": "estimate"
+   },
+   "heatsink": {
+    "mm": 8,
+    "source": "estimate: fins for the look"
+   }
+  }
+ },
+ "DV61": {
+  "glb": "devices/subwoofer-box.glb",
+  "name": "Subwoofer enclosure (luxury LP62) in the driver-side cargo bin - Made, not bought, unless a product fits (D-449); the driver from V-107 / V-108",
+  "kind": "device",
+  "node": "cargo-bin",
+  "count": 1,
+  "size_mm": {
+   "x": 400.0,
+   "y": 330.0,
+   "z": 303.0
+  },
+  "bytes": 47656,
+  "origin": "z=0 the base, centred, the driver on top (+z)",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "subwoofer-box",
+  "source": "drawn here (build_devices.py STANDINS['subwoofer-box']): Subwoofer enclosure in the driver-side cargo bin (DV61, luxury LP62, made)",
+  "params": {
+   "w": {
+    "mm": 400.0,
+    "source": "estimate: volume from V-107 / V-108, not measured"
+   },
+   "d": {
+    "mm": 330.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 300.0,
+    "source": "estimate"
+   },
+   "cone_d": {
+    "mm": 254.0,
+    "source": "estimate: a 10 in driver"
+   }
+  }
+ },
+ "_meta": {
+  "version": 1,
+  "built": "2026-10-13T12:36:06-06:00",
+  "work": "Y28",
+  "ruling": "D-515",
+  "frame": "every glb in mm, z up, in the part's own frame (00-design README §13); each entry's origin says where its zero is",
+  "keys": "an entry per device (01-electrical devices DVxx) or part (01-electrical parts Pxxx; another area's qualified, 03-luxury:LP58); keys starting _ are not entries",
+  "node": "the scene.json part the entry sits at; `also` lists further places",
+  "none": {
+   "DV09": "a ground strap: a cable, the harness's (routes), not a device",
+   "DV17": "the front star node: a stud on the radiator support - the scene's node",
+   "DV23": "the horn pad is the steering wheel's (factory, kept)",
+   "DV24": "on the left plate's own board (left-plate.glb, the CUR, D-514)",
+   "DV30": "bulbs inside the factory heater, select-lever and switch panels",
+   "DV33": "the defog grid is printed on the hatch glass",
+   "DV42": "the rear star node: a stud in the cargo bin - the scene's rear-node",
+   "DV43": "the sill node: the scene's sill-node; its panel is the harness's, drawn with the connectors (Y24)",
+   "DV45": "the ICU is the display unit and its carrier (display-unit.glb, icu-carrier.glb); its Teensy is P142's entry",
+   "DV53": "the control panel is panel.glb, inside the control unit",
+   "DV54": "the DCU is the control unit and its carrier (control-unit.glb, dcu-carrier.glb); its Teensy is P142's entry",
+   "DV62": "the left plate is left-plate.glb, being made the CUR (D-514)"
+  },
+  "models": {
+   "aem-gauge-52": {
+    "bytes": 23672,
+    "bbox": [
+     [
+      -29.975,
+      -29.994,
+      -40.0
+     ],
+     [
+      30.0,
+      29.994,
+      6.5
+     ]
+    ],
+    "triangles": 856,
+    "standin": true,
+    "stamp": "8115b8cd8d936216"
+   },
+   "alternator": {
+    "bytes": 26680,
+    "bbox": [
+     [
+      -62.5,
+      -62.5,
+      -20.0
+     ],
+     [
+      62.5,
+      62.5,
+      110.0
+     ]
+    ],
+    "triangles": 996,
+    "standin": true,
+    "stamp": "ea4e36a754969cb7"
+   },
+   "amplifier": {
+    "bytes": 12268,
+    "bbox": [
+     [
+      -150.0,
+      -100.0,
+      0.0
+     ],
+     [
+      150.0,
+      100.0,
+      63.0
+     ]
+    ],
+    "triangles": 108,
+    "standin": true,
+    "stamp": "40f17ea628d5feed"
+   },
+   "atc-block-4": {
+    "bytes": 1107512,
+    "bbox": [
+     [
+      -50.038,
+      -24.765,
+      0.0
+     ],
+     [
+      50.038,
+      24.765,
+      25.959
+     ]
+    ],
+    "triangles": 53342,
+    "standin": false,
+    "stamp": "0e9e9d7bb8c37a99"
+   },
+   "battery-ionic-s9": {
+    "bytes": 25048,
+    "bbox": [
+     [
+      -115.0,
+      -85.0,
+      0.0
+     ],
+     [
+      115.0,
+      85.0,
+      206.0
+     ]
+    ],
+    "triangles": 1148,
+    "standin": true,
+    "stamp": "578d9c1bd631b378"
+   },
+   "blower-motor": {
+    "bytes": 40048,
+    "bbox": [
+     [
+      -70.0,
+      -69.975,
+      -100.0
+     ],
+     [
+      70.0,
+      69.975,
+      85.0
+     ]
+    ],
+    "triangles": 1572,
+    "standin": true,
+    "stamp": "fba4ebd77f45b09c"
+   },
+   "bt817-me817ev": {
+    "bytes": 10372,
+    "bbox": [
+     [
+      -82.5,
+      -50.0,
+      0.0
+     ],
+     [
+      82.5,
+      50.0,
+      10.1
+     ]
+    ],
+    "triangles": 84,
+    "standin": true,
+    "stamp": "e0a990e6cf9ee4bc"
+   },
+   "busbar-10": {
+    "bytes": 79228,
+    "bbox": [
+     [
+      -95.0,
+      -22.0,
+      0.0
+     ],
+     [
+      95.0,
+      22.0,
+      38.0
+     ]
+    ],
+    "triangles": 3000,
+    "standin": true,
+    "stamp": "3ec9b462c3a77b35"
+   },
+   "class-t-block": {
+    "bytes": 17192,
+    "bbox": [
+     [
+      -62.5,
+      -21.0,
+      0.0
+     ],
+     [
+      62.5,
+      21.0,
+      46.0
+     ]
+    ],
+    "triangles": 520,
+    "standin": true,
+    "stamp": "1ff075f477c6594d"
+   },
+   "coil-igniter-set": {
+    "bytes": 3712,
+    "bbox": [
+     [
+      -80.0,
+      -45.0,
+      0.0
+     ],
+     [
+      80.0,
+      45.0,
+      80.0
+     ]
+    ],
+    "triangles": 12,
+    "standin": true,
+    "stamp": "2ac0b07d6d259c16"
+   },
+   "combination-switch": {
+    "bytes": 3716,
+    "bbox": [
+     [
+      -80.0,
+      -45.0,
+      0.0
+     ],
+     [
+      80.0,
+      45.0,
+      60.0
+     ]
+    ],
+    "triangles": 12,
+    "standin": true,
+    "stamp": "bd04de1f1060d364"
+   },
+   "comfort-block-st6": {
+    "bytes": 17556,
+    "bbox": [
+     [
+      -61.9,
+      -42.05,
+      0.0
+     ],
+     [
+      61.9,
+      42.05,
+      38.1
+     ]
+    ],
+    "triangles": 344,
+    "standin": true,
+    "stamp": "42ca796e2bda4589"
+   },
+   "disconnect": {
+    "bytes": 10832,
+    "bbox": [
+     [
+      -45.0,
+      -45.0,
+      0.0
+     ],
+     [
+      45.0,
+      45.0,
+      70.0
+     ]
+    ],
+    "triangles": 304,
+    "standin": true,
+    "stamp": "c104c56465838f22"
+   },
+   "display-12p3": {
+    "bytes": 3607700,
+    "bbox": [
+     [
+      -161.315,
+      -71.055,
+      0.0
+     ],
+     [
+      161.315,
+      71.055,
+      21.5
+     ]
+    ],
+    "triangles": 148547,
+    "standin": false,
+    "stamp": "67a2f024221010c8"
+   },
+   "fuel-pump": {
+    "bytes": 16800,
+    "bbox": [
+     [
+      -35.0,
+      -35.0,
+      -20.0
+     ],
+     [
+      35.0,
+      35.0,
+      130.0
+     ]
+    ],
+    "triangles": 580,
+    "standin": true,
+    "stamp": "ad7ee6a26e52e4df"
+   },
+   "fuel-sender": {
+    "bytes": 12000,
+    "bbox": [
+     [
+      -37.476,
+      -37.494,
+      -180.0
+     ],
+     [
+      37.5,
+      37.494,
+      12.0
+     ]
+    ],
+    "triangles": 356,
+    "standin": true,
+    "stamp": "20e4476606599034"
+   },
+   "head-unit-1din": {
+    "bytes": 3708,
+    "bbox": [
+     [
+      -89.0,
+      -77.5,
+      0.0
+     ],
+     [
+      89.0,
+      77.5,
+      50.0
+     ]
+    ],
+    "triangles": 12,
+    "standin": true,
+    "stamp": "3c9fe8abbec87f32"
+   },
+   "headlight-7in": {
+    "bytes": 27052,
+    "bbox": [
+     [
+      -88.975,
+      -88.994,
+      0.0
+     ],
+     [
+      89.0,
+      88.994,
+      106.0
+     ]
+    ],
+    "triangles": 1044,
+    "standin": true,
+    "stamp": "b43616398cb6e697"
+   },
+   "horn": {
+    "bytes": 12684,
+    "bbox": [
+     [
+      -44.975,
+      -44.994,
+      -30.0
+     ],
+     [
+      45.0,
+      44.994,
+      35.0
+     ]
+    ],
+    "triangles": 388,
+    "standin": true,
+    "stamp": "78412c1ef1ba9efb"
+   },
+   "ignition-switch": {
+    "bytes": 8824,
+    "bbox": [
+     [
+      -15.98,
+      -15.995,
+      0.0
+     ],
+     [
+      16.0,
+      15.995,
+      40.0
+     ]
+    ],
+    "triangles": 248,
+    "standin": true,
+    "stamp": "58ebad1ea4415491"
+   },
+   "inline-atc-sealed": {
+    "bytes": 17224,
+    "bbox": [
+     [
+      -84.0,
+      -11.0,
+      0.0
+     ],
+     [
+      84.0,
+      11.0,
+      26.0
+     ]
+    ],
+    "triangles": 520,
+    "standin": true,
+    "stamp": "346a4c6d183fcad5"
+   },
+   "inline-maxi-sealed": {
+    "bytes": 17168,
+    "bbox": [
+     [
+      -95.0,
+      -18.0,
+      0.0
+     ],
+     [
+      95.0,
+      18.0,
+      40.0
+     ]
+    ],
+    "triangles": 520,
+    "standin": true,
+    "stamp": "8adb9c7086bce472"
+   },
+   "lamp-front-combo": {
+    "bytes": 4780,
+    "bbox": [
+     [
+      -100.0,
+      -30.0,
+      0.0
+     ],
+     [
+      100.0,
+      33.0,
+      70.0
+     ]
+    ],
+    "triangles": 24,
+    "standin": true,
+    "stamp": "5933658b56e0a647"
+   },
+   "lamp-rear-combo": {
+    "bytes": 4780,
+    "bbox": [
+     [
+      -235.0,
+      -50.0,
+      0.0
+     ],
+     [
+      235.0,
+      53.0,
+      150.0
+     ]
+    ],
+    "triangles": 24,
+    "standin": true,
+    "stamp": "e152c47b62ef31b0"
+   },
+   "lamp-small": {
+    "bytes": 4764,
+    "bbox": [
+     [
+      -50.0,
+      -17.5,
+      0.0
+     ],
+     [
+      50.0,
+      20.5,
+      30.0
+     ]
+    ],
+    "triangles": 24,
+    "standin": true,
+    "stamp": "ddb73987dfee41c9"
+   },
+   "midi-block": {
+    "bytes": 17184,
+    "bbox": [
+     [
+      -30.0,
+      -14.0,
+      0.0
+     ],
+     [
+      30.0,
+      14.0,
+      34.0
+     ]
+    ],
+    "triangles": 520,
+    "standin": true,
+    "stamp": "f1ba2cf86dd160c6"
+   },
+   "motor-gear": {
+    "bytes": 11116,
+    "bbox": [
+     [
+      -35.0,
+      -37.5,
+      -40.0
+     ],
+     [
+      65.0,
+      37.5,
+      100.0
+     ]
+    ],
+    "triangles": 316,
+    "standin": true,
+    "stamp": "bf5c7bd66d88a912"
+   },
+   "mrbf-holder": {
+    "bytes": 17192,
+    "bbox": [
+     [
+      -26.0,
+      -19.0,
+      0.0
+     ],
+     [
+      26.0,
+      19.0,
+      32.0
+     ]
+    ],
+    "triangles": 520,
+    "standin": true,
+    "stamp": "e703726351a193de"
+   },
+   "pololu-g2-24v21": {
+    "bytes": 434052,
+    "bbox": [
+     [
+      -16.51,
+      -10.16,
+      0.0
+     ],
+     [
+      16.51,
+      10.16,
+      10.575
+     ]
+    ],
+    "triangles": 18764,
+    "standin": false,
+    "stamp": "9d9806806e010401"
+   },
+   "radar-receiver": {
+    "bytes": 3708,
+    "bbox": [
+     [
+      -55.0,
+      -40.0,
+      0.0
+     ],
+     [
+      55.0,
+      40.0,
+      40.0
+     ]
+    ],
+    "triangles": 12,
+    "standin": true,
+    "stamp": "8e3cc9310e98ca17"
+   },
+   "relay-micro-iso": {
+    "bytes": 9416,
+    "bbox": [
+     [
+      -7.75,
+      -11.5,
+      -11.2
+     ],
+     [
+      7.75,
+      11.5,
+      25.4
+     ]
+    ],
+    "triangles": 72,
+    "standin": true,
+    "stamp": "736ff98784701249"
+   },
+   "relay-mini-iso-sealed": {
+    "bytes": 9260,
+    "bbox": [
+     [
+      -14.0,
+      -14.0,
+      -9.5
+     ],
+     [
+      14.0,
+      14.0,
+      31.0
+     ]
+    ],
+    "triangles": 72,
+    "standin": true,
+    "stamp": "77ec57f23f62e6bd"
+   },
+   "seat-module": {
+    "bytes": 3700,
+    "bbox": [
+     [
+      -60.0,
+      -40.0,
+      0.0
+     ],
+     [
+      60.0,
+      40.0,
+      30.0
+     ]
+    ],
+    "triangles": 12,
+    "standin": true,
+    "stamp": "a9b42b5a6ff82d46"
+   },
+   "sender-threaded": {
+    "bytes": 10152,
+    "bbox": [
+     [
+      -10.986,
+      -10.997,
+      -8.0
+     ],
+     [
+      11.0,
+      10.997,
+      30.0
+     ]
+    ],
+    "triangles": 268,
+    "standin": true,
+    "stamp": "49a521bad93e650d"
+   },
+   "servo-fs5115m": {
+    "bytes": 17328,
+    "bbox": [
+     [
+      -27.0,
+      -10.05,
+      0.0
+     ],
+     [
+      27.0,
+      10.05,
+      44.9
+     ]
+    ],
+    "triangles": 520,
+    "standin": true,
+    "stamp": "7e631b57ad55f8d3"
+   },
+   "socket-micro-iso-panel": {
+    "bytes": 6956,
+    "bbox": [
+     [
+      -13.5,
+      -17.25,
+      0.0
+     ],
+     [
+      13.5,
+      17.25,
+      24.6
+     ]
+    ],
+    "triangles": 48,
+    "standin": true,
+    "stamp": "3f6e263b060b20a3"
+   },
+   "socket-mini-weatherproof": {
+    "bytes": 6952,
+    "bbox": [
+     [
+      -22.0,
+      -22.0,
+      0.0
+     ],
+     [
+      22.0,
+      22.0,
+      40.6
+     ]
+    ],
+    "triangles": 48,
+    "standin": true,
+    "stamp": "9d1defbea7001b23"
+   },
+   "solenoid": {
+    "bytes": 14988,
+    "bbox": [
+     [
+      -13.983,
+      -13.996,
+      -15.0
+     ],
+     [
+      14.0,
+      13.996,
+      55.0
+     ]
+    ],
+    "triangles": 496,
+    "standin": true,
+    "stamp": "6c11681630927b70"
+   },
+   "speaker-100": {
+    "bytes": 36340,
+    "bbox": [
+     [
+      -50.0,
+      -50.0,
+      -45.0
+     ],
+     [
+      50.0,
+      50.0,
+      4.0
+     ]
+    ],
+    "triangles": 1672,
+    "standin": true,
+    "stamp": "4a7af814379c0a34"
+   },
+   "speaker-165": {
+    "bytes": 45340,
+    "bbox": [
+     [
+      -82.5,
+      -82.5,
+      -60.0
+     ],
+     [
+      82.5,
+      82.5,
+      4.0
+     ]
+    ],
+    "triangles": 2158,
+    "standin": true,
+    "stamp": "5ab85b1fa88656ef"
+   },
+   "starter": {
+    "bytes": 12168,
+    "bbox": [
+     [
+      -39.975,
+      -39.994,
+      -90.0
+     ],
+     [
+      87.5,
+      39.994,
+      150.0
+     ]
+    ],
+    "triangles": 364,
+    "standin": true,
+    "stamp": "7078ba0a58fe44ef"
+   },
+   "subwoofer-box": {
+    "bytes": 47656,
+    "bbox": [
+     [
+      -200.0,
+      -165.0,
+      0.0
+     ],
+     [
+      200.0,
+      165.0,
+      303.0
+     ]
+    ],
+    "triangles": 2414,
+    "standin": true,
+    "stamp": "7e304bb3ea64d738"
+   },
+   "switch-small": {
+    "bytes": 3704,
+    "bbox": [
+     [
+      -20.0,
+      -12.5,
+      0.0
+     ],
+     [
+      20.0,
+      12.5,
+      20.0
+     ]
+    ],
+    "triangles": 12,
+    "standin": true,
+    "stamp": "5490a7783fe99742"
+   },
+   "teensy41": {
+    "bytes": 2223804,
+    "bbox": [
+     [
+      -33.28,
+      -8.89,
+      0.0
+     ],
+     [
+      33.28,
+      8.89,
+      5.268
+     ]
+    ],
+    "triangles": 96614,
+    "standin": false,
+    "stamp": "37e38eb447993c81"
+   },
+   "usb-c-module": {
+    "bytes": 8820,
+    "bbox": [
+     [
+      -14.482,
+      -14.495,
+      0.0
+     ],
+     [
+      14.5,
+      14.495,
+      40.0
+     ]
+    ],
+    "triangles": 248,
+    "standin": true,
+    "stamp": "795c9b3255a16970"
+   },
+   "washer-pump": {
+    "bytes": 8816,
+    "bbox": [
+     [
+      -17.478,
+      -17.495,
+      0.0
+     ],
+     [
+      17.5,
+      17.495,
+      70.0
+     ]
+    ],
+    "triangles": 248,
+    "standin": true,
+    "stamp": "dc25967a81f60a26"
+   },
+   "xiao-esp32c3": {
+    "bytes": 162420,
+    "bbox": [
+     [
+      -8.9,
+      -11.25,
+      0.0
+     ],
+     [
+      8.9,
+      11.25,
+      4.27
+     ]
+    ],
+    "triangles": 6940,
+    "standin": false,
+    "stamp": "0ee11877e1df7ea9"
+   }
+  }
+ }
+}
