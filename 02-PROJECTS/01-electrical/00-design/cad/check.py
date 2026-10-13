@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""check.py - the four KiCad sheets against the record and the datasheets (work row Y3).
+"""check.py - the five KiCad sheets against the record and the datasheets (work row Y3).
 
 Reads (never writes) the record's tables - these are the facts it holds the drawings to:
   ../../data/icu_channels.csv   id, kind, at_the_drop, teensy_pin  (the ICU carrier, J5)
@@ -32,13 +32,16 @@ s-expression itself (no packages beyond the standard library, Python 3.9) and ch
   * each functional-block symbol's pin number -> name against pin_tables.csv;
   * on the upper connector board (Y15, no processor), DP-DCU-D and DP-DCU-E cavity by cavity: wired
     or a plug as `state` says, no two cavities joined, and on the header `src_note` names - the
-    carrier header's lead (J6-J8, J5, J3) pin for pin, or the panel_ribbon line, named as that line.
+    carrier header's lead (J6-J8, J5, J3) pin for pin, or the panel_ribbon line, named as that line;
+  * on the left plate (Y21, D-492), its cable header J1 against DP-DCU-E cavity by cavity, the keys
+    the cavities name on their row and column through their diodes, the stick on panel_ribbon 1 and
+    17-20 (the push to GND), and the bus reaching the plate's LED driver.
 
 Exit codes: 0 everything matches; 1 any mismatch (each printed as
 `board:ref:pin expected X got Y`); 3 kicad-cli missing or a file unreadable. Notes (things
 worth a look that are not contradictions) print with a `note` prefix and never fail.
 
-    python3 check.py [-v] [--board icu|dcu|panel|upper] [--netlists DIR]
+    python3 check.py [-v] [--board icu|dcu|panel|upper|left-plate] [--netlists DIR]
 
 `--netlists DIR` reads DIR/<board>.net instead of exporting (kicad-cli still runs one sheet
 at a time otherwise). The expected net names below are the sheets' own vocabulary; the
@@ -165,6 +168,9 @@ BOARDS = {
     "upper": dict(sch="upper-board/upper-board.kicad_sch",
                   relay={"DP-DCU-D": ("J1", {"J6": "J3", "J7": "J4", "J8": "J5", "J5": "J6", "J3": "J7"}),
                          "DP-DCU-E": ("J2", "J8")}),
+    # The left plate (Y21, D-492): J1 its cable header, DP-DCU-E pin for pin; the keys a DP-DCU-E
+    # cavity names, on their rows and columns through their diodes; the stick on panel_ribbon 1, 17-20.
+    "left-plate": dict(sch="left-plate/left-plate.kicad_sch", plate_board=("DP-DCU-E", "J1")),
 }
 
 # Symbol pin names and datasheet pin names that mean the same pin.
@@ -962,6 +968,127 @@ def check_panel(rep, nl, cfg, ribbon, cavities=()):
             rep.ok("%s K on %s, A to %s.%s -> %s" % (ref, knet, sws[0][0], sws[0][2], cols[0]))
 
 
+def check_plate_board(rep, nl, cfg, cavities, ribbon):
+    """The left plate itself (Y21, D-492). Its cable header: DP-DCU-E cavity n on pin n, on the net the
+    cavity's src_note panel_ribbon line names, each on a net of its own. Its keys: every key a DP-DCU-E
+    cavity names ('the hatch key') reached row -> 1N4148W K..A -> key -> column, on the row panel_ribbon's
+    'keys:' line puts it and the column its cavity carries, both on the header, and no other key on the
+    board. Its stick: the pins panel_ribbon gives the thumbstick on the plate (X / Y wiper, the push to
+    GND, the pot supply, the pot ground) on those lines. Its lights: the bus lines reach a driver's SDA /
+    SCL. The wink switches have no lines here (DV24, hardwired to the PMU)."""
+    housing, conn = cfg["plate_board"]
+    signal = {r["pin"]: r["signal"] for r in ribbon}
+    rows = sorted((c for c in cavities if c["housing"] == housing), key=lambda c: int(c["cav"]))
+    if conn not in nl.pins:
+        rep.bad(conn, "-", "the plate's cable header for %s" % housing, "no such part on the sheet")
+        return
+    if not rows:
+        rep.bad(conn, "-", "cavity rows for %s in the record" % housing, "none")
+        return
+    owner = {}
+    for c in rows:
+        cav = c["cav"]
+        pin = "%s(%s %s)" % (cav, housing, cav)
+        got = nl.net(conn, cav)
+        if c["state"] == "PLUG":
+            if got is None:
+                rep.ok("%s %s unconnected, a plug" % (conn, pin))
+            else:
+                rep.bad(conn, pin, "unconnected (the cavity is a sealing plug)", bare(got))
+            continue
+        lines = _RIBBON_LINE.findall(c.get("src_note", ""))
+        if len(lines) != 1 or lines[0] not in signal:
+            rep.bad(conn, pin, "one panel_ribbon line in src_note", repr(c.get("src_note", "")))
+            continue
+        want = signal[lines[0]]
+        if got is None or bare(got) != want:
+            rep.bad(conn, pin, "%s (panel_ribbon %s)" % (want, lines[0]), bare(got) or "unconnected")
+        elif got in owner:
+            rep.bad(conn, pin, "a net of its own", "%s, joined to cavity %s" % (bare(got), owner[got]))
+        else:
+            rep.ok("%s %s = %s (panel_ribbon %s)" % (conn, pin, want, lines[0]))
+        owner[got] = cav
+    for num in nl.pins[conn]:
+        if num not in {c["cav"] for c in rows} and nl.net(conn, num) is not None:
+            rep.bad(conn, num, "no cavity row %s %s in the record" % (housing, num), bare(nl.net(conn, num)))
+    on_hdr = {bare(nl.net(conn, n)) for n in nl.pins[conn] if nl.net(conn, n)}
+    # the keys
+    pkeys = plate_keys(cavities, housing, signal)
+    found = board_keys(nl)
+    key_row = {}
+    for r in ribbon:
+        m = re.match(r"keys:\s*(.*)", r["panel_side"])
+        if m:
+            for k in _side(m.group(1)).split("·"):
+                key_row[_key(k)] = r["signal"]
+    if not pkeys:
+        rep.bad(conn, "-", "the keys %s's cavities name ('the ... key')" % housing, "none in the record")
+    for k, (cav, col) in sorted(pkeys.items()):
+        row = key_row.get(k)
+        if k not in found:
+            rep.bad(conn, cav, "key '%s' on the board: %s -> diode -> key -> %s" % (k, row, col),
+                    "not found (keys found: %s)" % (", ".join(sorted(found)) or "none"))
+            continue
+        r, c, ref = found[k]
+        if r != row or c != col:
+            rep.bad(ref, "-", "key '%s' at %s / %s" % (k, row, col), "%s / %s" % (r, c))
+        elif row not in on_hdr or col not in on_hdr:
+            rep.bad(conn, "-", "%s and %s on %s for the key '%s'" % (row, col, conn, k), "not both")
+        else:
+            rep.ok("key '%s' (%s) on %s / %s, %s %s" % (k, ref, row, col, housing, cav))
+    for k, (r, c, ref) in sorted(found.items()):
+        if k not in pkeys:
+            rep.bad(ref, "-", "only the keys %s names" % housing, "also '%s' at %s / %s" % (k, r, c))
+    for ref in nl.comps:
+        if prefix(ref) != "D" or len(nl.pins.get(ref, {})) != 2:
+            continue
+        knum = [n for n, (pn, _t) in nl.pins[ref].items() if pn == "K"]
+        anum = [n for n, (pn, _t) in nl.pins[ref].items() if pn == "A"]
+        if not knum or not anum:
+            continue
+        knet = bare(nl.net(ref, knum[0]) or "")
+        sws = parts_on(nl, nl.net(ref, anum[0]), "SW") if nl.net(ref, anum[0]) else []
+        if not re.match(r"ROW\d$", knet) or len(sws) != 1:
+            rep.bad(ref, knum[0], "K on a ROW net, A to one key", "%s / %d keys" % (knet or "unconnected", len(sws)))
+        else:
+            rep.ok("%s K on %s, A to %s" % (ref, knet, sws[0][0]))
+    # the stick
+    sticks = [r for r in nl.comps if {"X_WIPER", "Y_WIPER"} <= {pn for pn, _t in nl.pins[r].values()}]
+    if len(sticks) != 1:
+        rep.bad("-", "-", "one thumbstick (X_WIPER / Y_WIPER pins)", "%d" % len(sticks))
+    else:
+        st = sticks[0]
+        net_of = {pn: bare(nl.net(st, num) or "") for num, (pn, _t) in nl.pins[st].items()}
+        want = {"X wiper": ["X_WIPER"], "Y wiper": ["Y_WIPER"], "pot supply": ["X_VCC", "Y_VCC"],
+                "pot ground": ["X_GND", "Y_GND"]}
+        for r in ribbon:
+            side, sig = r["panel_side"], r["signal"]
+            if "thumbstick" not in side or "left plate" not in side:
+                continue
+            for phrase, pins in want.items():
+                if phrase in side:
+                    if all(net_of.get(p) == sig for p in pins):
+                        rep.ok("%s %s on %s (panel_ribbon %s)" % (st, "/".join(pins), sig, r["pin"]))
+                    else:
+                        rep.bad(st, "/".join(pins), "%s (panel_ribbon %s, %s)" % (sig, r["pin"], phrase),
+                                "/".join(net_of.get(p) or "unconnected" for p in pins))
+            if "push switch" in side:
+                ends = sorted([net_of.get("SW_A") or "", net_of.get("SW_B") or ""])
+                other = "GND" if "to GND" in side else None
+                if sig in ends and (other is None or other in ends) and ends[0] != ends[1]:
+                    rep.ok("%s push between %s and %s" % (st, sig, other or "its other side"))
+                else:
+                    rep.bad(st, "SW_A/SW_B", "%s and %s (panel_ribbon %s)" % (sig, other, r["pin"]), "/".join(e or "unconnected" for e in ends))
+    # the lights' bus
+    for sig, pname in (("PNL_SDA", "SDA"), ("PNL_SCL", "SCL")):
+        net = next((n for n in nl.nets if bare(n) == sig), None)
+        hits = [ref for ref, _n, pn in (parts_on(nl, net, "U") if net else []) if pn == pname]
+        if hits:
+            rep.ok("%s reaches %s.%s" % (sig, hits[0], pname))
+        else:
+            rep.bad("-", sig, "the plate's LED driver %s" % pname, "nothing")
+
+
 def check_conventions(rep, nl, cfg):
     """CONVENTIONS.md §5: the rails never meet; every BAT54S A on GND, K on +3V3."""
     rails = cfg.get("rails", ())
@@ -1131,6 +1258,8 @@ def main(argv=None):
                 check_plate(rep, nl, cfg, cavities, ribbon)
             if cfg.get("relay"):
                 check_relay(rep, nl, cfg, cavities, ribbon)
+            if cfg.get("plate_board"):
+                check_plate_board(rep, nl, cfg, cavities, ribbon)
             check_conventions(rep, nl, cfg)
             check_pin_tables(rep, nl, tables)
             n = len(rep.mismatches)
