@@ -1,1 +1,22 @@
 id,system,title,date,status,supersedes,superseded_by,closes,also,body
+D-522,,Factory-circuit write-ups parsed into circuit_paths rows,2026-10-13,standing,,,06.01,,"**The thirteen factory-circuit write-ups are parsed into rows (a circuit_paths table) and the Markdown files leave the tree; the wiring-diagram PDF stays in the ignored library as the source.**
+
+Camden's answer to block 06.01 (2026-10-13, desktop): option (a), no words added. Option (a) in full: ""Parse them into rows: a circuit_paths table (circuit, step order, part, terminal, wire colour, fuse, ground, note) that the Diagrams page renders as the write-up read today; the Markdown files leave the tree; the wiring-diagram PDF stays in the ignored library as the source. A day of agent work; nothing lost that a row cannot say.""
+
+Reasoning: D-519 says the car's truth is tables, not documents; the recommendation was (a).
+
+Consequences: a circuit_paths table is declared in 00-CAR and filled from the write-ups (rows P17 and P66, gated on 06.01, are now met); the Diagrams page renders from it; the write-up files are removed once their rows are checked."
+D-523,,Manuals parsed to what the Manual shows,2026-10-13,standing,,,06.02,,"**Every manual is parsed to what the Manual shows: every spec, interval, torque, capacity, procedure step and terminal the car's tables have columns for, from every section; the rest of a page is not transcribed. Each file leaves the tree as its section is done.**
+
+Camden's answer to block 06.02 (2026-10-13, desktop): option (a), no words added. Option (a) in full: ""What the Manual shows: every spec, interval, torque, capacity, procedure step and terminal the car's tables have columns for, from every section; the rest of a page is not transcribed. Weeks of runs; the files leave the tree as each section is done.""
+
+Reasoning: the recommendation was (a); a full-text page table (b) was not wanted, and (c) would leave the manuals in the tree.
+
+Consequences: the parse rows gated on 06.02 (P01-P38 where gated, P62, P64, P67, P68) are now met and go to the plan playbook; no page table is created."
+D-524,,"Repository private, all rights reserved",2026-10-13,standing,,,06.03,,"**The repository goes private and carries a LICENSE stating all rights reserved; the manuals stay where they are.**
+
+Camden's answer to block 06.03 (2026-10-13, desktop): option (a), no words added. Option (a) in full: ""Make the repository private, and state 'all rights reserved' in a LICENSE file. The manuals stay where they are, the phone keeps working through its token (the token becomes required for reading too), CI keeps running, nothing is rewritten. Nobody outside sees the record; a sponsor showcase would need a separate public face later.""
+
+Reasoning: the recommendation was (a); it stops the redistribution of copyrighted manuals without rewriting history (no force-push).
+
+Consequences: a LICENSE file (all rights reserved) is added at the repository root in this pass; switching the repository to private is a GitHub setting only Camden can change (the tool cannot), and the phone's token must have read access to it. No manuals are moved or history rewritten; the intake's bulk still leaves git by parse row (T2)."
