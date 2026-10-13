@@ -299,3 +299,9 @@ ideas,about,str,no,,"what it concerns: a module, table or work id of this area -
 ideas,idea,text,no,,"Camden's words verbatim when by=camden, whole; never edited - a later version is a new row"
 ideas,status,enum(raw|kept|merged|dropped),no,,"raw until he rules; it leaves raw only by a decision that carries his words"
 ideas,note,text,no,,"the agent's reading: what stands meanwhile and what the idea would touch if he ruled it"
+log_channels,id,key,yes,,
+log_channels,channel,str,no,,
+log_channels,source,str,no,,the can_fields id(s) or icu_channels id the value comes from; a local value names the firmware that makes it
+log_channels,bytes,int,no,,width in the 1 Hz record
+log_channels,encoding,str,no,,
+log_channels,note,text,no,,

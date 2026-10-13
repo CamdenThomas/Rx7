@@ -1,0 +1,54 @@
+id,channel,source,bytes,encoding,note
+LC01,Record time,ICU uptime (millis),4,"uint32, ms since the ICU booted","the drive's own clock; the file header carries the unix time at start when the RTC was set, 0 when it was not"
+LC02,Odometer,F-007 (the persisted odometer),4,"uint32, 0.1 mile",every record self-locating on the odometer; the drive's distance is last minus first
+LC03,Key position,0x100/0,1,as the frame,
+LC04,Wake source,0x100/1,1,bitfield as the frame,
+LC05,Global fault,0x100/2,1,bitfield as the frame,
+LC06,Headlight state,0x100/3,1,as the frame,
+LC07,Turn state,0x100/4,1,as the frame,
+LC08,Pop-up state,0x100/5,1,as the frame,
+LC09,Input faults,0x100/6,1,bitfield as the frame,
+LC10,Battery voltage,0x110/0–1,2,"uint16, mV, 1 s mean",
+LC11,Total current,0x110/2–3,2,"uint16, 0.1 A, 1 s mean",
+LC12,Alternator charging,0x110/4,1,as the frame,
+LC13,Outputs on / off,0x120/2–4,3,24 bits as the frame,
+LC14,Trip state,0x120/5 · 0x120/6,2,"channel index, status","the last non-ok trip seen in the second, else the last frame's"
+LC15,Per-channel current O1-O22,0x130/1–2 by 0x130/0,44,"uint16 × 22, 0.01 A","the last value seen for each channel; the frame cycles the 22 channels at 5 Hz, so each is at most 4.4 s old. The soft-fuse setpoints are not logged - they are configuration"
+LC16,Lambda,0x180 ext/0–1,2,"uint16, 0.0001 λ, 1 s mean of the 100 Hz frames",the full log keeps every frame
+LC17,Wideband flags,0x180 ext/6–7,1,byte 6 as the frame,
+LC18,RPM,0x200/0–1,2,"uint16, 1 s mean",
+LC19,RPM peak,0x200/0–1,2,"uint16, the highest 20 Hz sample in the second",so a touch of the redline is never averaged away
+LC20,Water temp,0x200/2,1,"int8, °C",
+LC21,Oil temp,0x200/3,1,"int8, °C",
+LC22,Oil pressure,0x200/4–5,2,"uint16, 0.01 bar, 1 s mean",
+LC23,Road speed,0x200/6,1,"uint8, km/h, 1 s mean",
+LC24,Sensor valid,0x210/0,1,bitfield as the frame,
+LC25,Sensor fault type,0x210/1,1,bitfield as the frame,
+LC26,CAN health,0x210/2,1,bitfield as the frame,
+LC27,Tell-tales and warnings,0x210/3,1,bitfield as the frame,
+LC28,Fuel level,0x218/0–1,2,"uint16, 0.1 %, 1 s mean",
+LC29,Fuel sensor valid,0x218/2,1,as the frame,
+LC30,Pack voltage,0x220/0–1,2,"uint16, mV",
+LC31,Cell voltages 1-4,0x220/2–5 · 0x221/0–3,8,"uint16 × 4, mV",
+LC32,Cell spread,0x221/4–5,2,"uint16, mV",
+LC33,Battery freshness,0x220/6,1,bitfield as the frame,
+LC34,Battery current,0x222/0–1,2,"int16, 0.1 A",0 until the BMS protocol gives it (D-330)
+LC35,State of charge,0x222/2,1,"uint8, %",as LC34
+LC36,Battery temperature,0x222/3,1,"int8, °C",as LC34
+LC37,Climate mode,0x300/0,1,as the frame,
+LC38,Blower duty,0x300/1,1,"uint8, %",
+LC39,Target temp,0x300/2,1,"uint8, °C",
+LC40,Cabin temp,0x300/3,1,"int8, °C",
+LC41,A/C request,0x300/4,1,as the frame,
+LC42,Outside-air temp,0x300/5,1,"int8, °C",
+LC43,Seat heat,0x310/0,1,as the frame,
+LC44,Seat cool,0x310/1,1,as the frame,
+LC45,Mirror heat,0x310/2,1,as the frame,
+LC46,Comfort bus current,0x310/4–5,2,"uint16, 0.01 A, 1 s mean",
+LC47,"Radar alert, band, direction",0x320/0 · 0x320/1 · 0x320/2,3,as the frame; the highest alert in the second,luxury 03.12 decides whether a radar exists
+LC48,Panel keys down,0x400/0–1,2,"bitfield, OR of the second",
+LC49,Panel keys held,0x400/2–3,2,"bitfield, OR of the second",
+LC50,"IMU acceleration, mean",IC23,6,"int16 × 3, 0.01 g (lateral, longitudinal, vertical), 1 s mean",
+LC51,IMU peaks,IC23,6,"int16 × 3, 0.01 g: the second's peak lateral, acceleration and braking","what stats.h already tracks (maxLatG, maxAccelG, maxBrakeG)"
+LC52,Illumination,IC14,1,"uint8, % of the dimmer reference",
+LC53,Cluster page,IC22,1,"uint8, the page shown",
