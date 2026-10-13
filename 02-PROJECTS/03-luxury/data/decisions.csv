@@ -397,3 +397,27 @@ His answer (block 03.13, desktop, 2026-10-13): option (a), ""Home-built upmix fe
 Reasoning: no current car amplifier has Pro Logic II; the last units are discontinued. Building the upmix keeps the choice of algorithm and adds no conversion. It stays upstream of the amplifier, so a DSP-amp with RealCenter can still be fitted behind it.
 
 Consequences: LP56 becomes the home-built upmix box (board or small computer, about $60-200, confirm); LP57 must be a multichannel DSP-amp with a digital input; electrical A17 powers and grounds the upmix box (power, remote, ground) and its digital link goes to the amplifier; X-012 (the amplifier round) is no longer waiting on this block. The firmware is ours to maintain."
+D-508,radar,"Radar: the concealed detector subsystem as designed - sensors on electrical's capped runs at the nose and in the hatch, the module behind the dash on N103, its alert line into the DCU, the cluster the only display",2026-10-13,standing,,,,D-096 D-383 D-502,"**The concealed detector subsystem (FT28, stage S8) is a custom-install detector of the Escort MAX Ci 360c class (D-502): a front radar receiver and laser sensor behind a non-metallic window in the nose, a rear radar receiver and laser sensor behind one at the tail, an interface module behind the dash on electrical's switched feed N103, and one line the car reads: the alert output, into the DCU on SN30 (J12), which sends 0x320 to the cluster. Nothing of the system is visible (D-383); its own display and speaker are not fitted anywhere they can be seen.** Z-002, 2026-10-13, designed on D-502's basis. A small decision (§3): every element here is already ruled (D-096, D-383, D-502) or is electrical's as-built (A16, A20, D-473, Y11); what is not yet known is listed as a confirm for the parts round.
+
+**The parts of it and where each plugs in.**
+
+| Part | Where | Electrical's end |
+|---|---|---|
+| Front radar receiver + laser sensor | The nose, behind a window the new bumper design gives it (04-beauty 04.13) | `L2-RDR` at the nose, DT04-4P, capped (A16, RT29) |
+| Rear radar receiver + laser sensor | The tail, behind a window (04.13) | `L4-HRD` in the hatch, DT04-4P, capped (A16, RT18), fed from `L4-RDR`, which is the three-conductor pass-through `L3-S3 1-3` <-> `L4-S 5-7` (PV108-PV113, D-274) |
+| Interface / control module | Behind the dash, a dash node (D-318) | The switched 12 V tail `N103` off O10 (about 0.5 A, LD15) and the capped tails of `L2-R`; the adapter lead, pin for pin, is electrical A20 (D-473) |
+| Alert output | Module -> DCU | `SN30` on J12: 12 V active-high or open-collector, the divider accepts both (Y11; R68 fitted only for open-collector) |
+| Display | None visible | The cluster shows 0x320: alert level, band, direction |
+
+**What the DCU does with it.** 0x320/0 is the alert level from the alert line (0 none, 1 alert; graded levels only if the output grades them); 0x320/1 band and 0x320/2 direction are set only where the system's output tells them apart, else 0 (unknown). D-502: ""cluster detail is limited to what its outputs give"". The DCU is the reader, not the ICU (D-383, D-502); N103's open question is answered.
+
+**What the parts round must confirm before money (R11), work X-014.**
+1. That the picked system has an alert output a third party can read, and its form (voltage, polarity, open-collector or driven) - this sets R68 and SN30's note. If a system only drives its own display, the pick says so and what line could be read instead.
+2. The conductor count and kind of the cable between the rear sensors and the module. The pass-through to the rear is three conductors; a system needing more either puts its module at the rear node, with power and the alert line coming forward on the three, or needs electrical to add conductors, which is a block.
+3. The front sensors' cable against `L2-RDR`'s four cavities, the same way.
+4. The window each sensor needs - size, and what it sees through: radar (K / Ka band) and laser (about 904 nm) both need a non-metallic window, the laser sensor an optically clear one - for 04-beauty 04.13.
+5. The module's current against N103 (about 0.5 A assumed).
+6. That the system's display can be hidden or left off without disabling it.
+7. Where it is sold: an installer-only system may mean buying the install too; the pick states the price both ways.
+
+**Consequences.** LP44 gets this spec and D-502's estimate (USD 2,000-4,000, confirm), status `search`. Work X-014 (agent, parts round 5: the detector, primary and runner-up as picks) is added, gated on nothing: the sensor positions wait for 04.13, the choice of system does not. I16 keeps its gate (Z-002, 01-electrical E34) and its note names X-014. Stage S8 and FT28 are brought up to date. Electrical's A20, SN30 and P187 wait on X-014's pick, as their notes already say. Z-002 is done."
