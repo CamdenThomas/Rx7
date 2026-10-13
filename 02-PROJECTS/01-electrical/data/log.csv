@@ -128,3 +128,4 @@ L-0116,2026-10-13,clean,D-496 X-007,"Camden's two unit folders ruled (D-496): th
 L-0117,2026-10-13,clean,D-497,Camden's pmu folder and his question on the shared py files: the design folder becomes three parts plus tools and tests (D-497); the move follows
 L-0118,2026-10-13,answers,D-499 01.38 Y22,"Applied 01.38 (b): winks are lit-cap SPDT board buttons P204, P083 dropped, DV24 and P198/P199 updated, Y22 redraw opened (D-499)"
 L-0119,2026-10-13,session,Y22 D-504 D-499,"Y22 started: the plate's generator redrawn for D-499 (P204 SPDT winks, 18k / 33k on the board, wink lead header J2 - D-504 names it; P083 holes gone); KiCad outputs not rebuilt, the harness refused KiCad in the headless run - Y22 stays open"
+L-0120,2026-10-13,clean,D-505 Y23,Y23 added for 02-APP D-505: the design exported as glTF with a scene file for the app (Y22 was taken by the app run that applied D-499)

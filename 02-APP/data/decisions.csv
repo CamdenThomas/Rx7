@@ -450,4 +450,4 @@ His words (chat, 2026-10-13): ""now the app should show the cad of the relevant 
 
 **What it does not do.** It is a view of the design, never a source of facts: a measurement beats the model (R11), and nothing in the scene is typed back into the record. The panel sketch (00-design/panel-concept.html) stays the look's playground until the faceplates are drawn in CAD; the harness drawings stay the wire's truth.
 
-**In the data.** 01-electrical Y22 (the export script and the scene); 02-APP M3D1 (the Design page), gated on it; 05-cad C01's hand-over to the Manual (D-477) uses the same viewer later."
+**In the data.** 01-electrical Y23 (the export script and the scene); 02-APP M3D1 (the Design page), gated on it; 05-cad C01's hand-over to the Manual (D-477) uses the same viewer later."
