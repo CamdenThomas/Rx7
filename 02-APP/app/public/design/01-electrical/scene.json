@@ -1,0 +1,3480 @@
+{
+ "version": 1,
+ "built": "2026-10-13T11:34:53-06:00",
+ "project": "01-electrical",
+ "frame": {
+  "units": "mm",
+  "x": "right",
+  "y": "forward",
+  "z": "up",
+  "ruling": "D-418",
+  "glb": "mm, z up, the part's own frame (not glTF's metres, y up)",
+  "rotation": "degrees, three.js Euler order XYZ"
+ },
+ "parts": [
+  {
+   "id": "control-unit",
+   "name": "Control Unit (CU)",
+   "kind": "unit",
+   "glb": "control-unit.glb",
+   "bytes": 406692,
+   "parent": null,
+   "place": {
+    "x": -96.0,
+    "y": -1038.0,
+    "z": 553.422,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones dash: the centre stack's opening (modules DCU), the face's centre there",
+   "size_mm": {
+    "x": 192.0,
+    "y": 139.56,
+    "z": 96.76
+   },
+   "origin": "the mock-up's frame: the face's front, bottom-left corner seen from the cabin; x across the face, y back into the dash (= the car's forward), z up",
+   "connectors": [
+    {
+     "code": "DP-DCU-B",
+     "at": {
+      "x": 147.9,
+      "y": 122.55,
+      "z": 29.48
+     },
+     "face": "rear",
+     "note": "DT13-12PA, the rear plate's outer face at the cut-out's centre (lower row)"
+    },
+    {
+     "code": "DP-DCU-C",
+     "at": {
+      "x": 88.8,
+      "y": 122.55,
+      "z": 29.48
+     },
+     "face": "rear",
+     "note": "DT13-08PA, the rear plate's outer face at the cut-out's centre (lower row)"
+    },
+    {
+     "code": "DP-DCU",
+     "at": {
+      "x": 39.34,
+      "y": 122.55,
+      "z": 29.45
+     },
+     "face": "rear",
+     "note": "DT13-06PA, the rear plate's outer face at the cut-out's centre (lower row)"
+    },
+    {
+     "code": "DP-DCU-D",
+     "at": {
+      "x": 147.9,
+      "y": 122.55,
+      "z": 71.47
+     },
+     "face": "rear",
+     "note": "DT13-12PA, the rear plate's outer face at the cut-out's centre (upper row)"
+    },
+    {
+     "code": "DP-DCU-E",
+     "at": {
+      "x": 85.61,
+      "y": 122.55,
+      "z": 71.47
+     },
+     "face": "rear",
+     "note": "DT13-12PA, the rear plate's outer face at the cut-out's centre (upper row)"
+    }
+   ],
+   "children": [
+    "dcu-carrier",
+    "panel",
+    "upper-board"
+   ],
+   "source": "control-unit/cad/climate-unit (unit_params.py, unit_lib.py)",
+   "nodes": {
+    "case": [
+     "case:body",
+     "case:front_frame",
+     "case:lid",
+     "case:rear_plate"
+    ],
+    "inside": [
+     "inside:faceplate",
+     "inside:control screen",
+     "inside:control centre knob",
+     "inside:control key upper left",
+     "inside:control key upper right",
+     "inside:control key lower left",
+     "inside:control key lower right",
+     "inside:control seat knob left",
+     "inside:control seat knob right",
+     "inside:control window switch left",
+     "inside:control window switch right",
+     "inside:upper board standoff 1",
+     "inside:upper board standoff 2"
+    ]
+   }
+  },
+  {
+   "id": "display-unit",
+   "name": "Display Unit (DU)",
+   "kind": "unit",
+   "glb": "display-unit.glb",
+   "bytes": 376400,
+   "parent": null,
+   "place": {
+    "x": -532.3,
+    "y": -1047.0,
+    "z": 712.95,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones dash: the binnacle aperture ahead of the driver (modules ICU), the face's centre there",
+   "size_mm": {
+    "x": 335.0,
+    "y": 131.09,
+    "z": 136.5
+   },
+   "origin": "the mock-up's frame: the face's front, bottom-left corner seen from the cabin; x across the face, y back into the dash (= the car's forward), z up",
+   "connectors": [
+    {
+     "code": "DP-ICU-B",
+     "at": {
+      "x": 39.75,
+      "y": 126.59,
+      "z": 29.48
+     },
+     "face": "rear",
+     "note": "DT13-12PA, the rear plate's outer face at the cut-out's centre (lower row)"
+    },
+    {
+     "code": "DP-ICU-A",
+     "at": {
+      "x": 93.79,
+      "y": 126.59,
+      "z": 29.45
+     },
+     "face": "rear",
+     "note": "DT13-06PA, the rear plate's outer face at the cut-out's centre (lower row)"
+    }
+   ],
+   "children": [
+    "icu-carrier"
+   ],
+   "source": "display-unit/cad/icu-unit (unit_params.py, unit_lib.py)",
+   "nodes": {
+    "case": [
+     "case:body",
+     "case:front_frame",
+     "case:lid",
+     "case:rear_plate"
+    ],
+    "inside": [
+     "inside:bezel plate (P121)",
+     "inside:display module (P118, placeholder)",
+     "inside:page button (P120, placeholder)",
+     "inside:BT817 board (P117, placeholder)",
+     "inside:BT817 parts and CN8 (placeholder)",
+     "inside:HDMI bridge (P119, placeholder)",
+     "inside:scaler (P118, placeholder)"
+    ]
+   }
+  },
+  {
+   "id": "dcu-carrier",
+   "name": "DCU carrier PCB H-002",
+   "kind": "pcb",
+   "glb": "dcu-carrier.glb",
+   "bytes": 13461948,
+   "parent": "control-unit",
+   "place": {
+    "x": 186.0,
+    "y": 35.6,
+    "z": 10.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 180
+   },
+   "place_from": "mock-up report",
+   "confirm": false,
+   "size_mm": {
+    "x": 180.0,
+    "y": 98.61,
+    "z": 38.93
+   },
+   "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
+   "connectors": [],
+   "children": [],
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/dcu-carrier/dcu-carrier.kicad_pcb",
+   "nodes": {
+    "board": [
+     "pcb:board"
+    ],
+    "parts": [
+     "pcb:parts"
+    ]
+   }
+  },
+  {
+   "id": "panel",
+   "name": "Control panel",
+   "kind": "pcb",
+   "glb": "panel.glb",
+   "bytes": 3946172,
+   "parent": "control-unit",
+   "place": {
+    "x": 6.0,
+    "y": 12.6,
+    "z": 90.758,
+    "rx": 90,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "mock-up report",
+   "confirm": false,
+   "size_mm": {
+    "x": 180.0,
+    "y": 84.76,
+    "z": 47.28
+   },
+   "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
+   "connectors": [],
+   "children": [],
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/panel/panel.kicad_pcb",
+   "nodes": {
+    "board": [
+     "pcb:board"
+    ],
+    "parts": [
+     "pcb:parts"
+    ]
+   }
+  },
+  {
+   "id": "upper-board",
+   "name": "Upper connector board",
+   "kind": "pcb",
+   "glb": "upper-board.glb",
+   "bytes": 2436220,
+   "parent": "control-unit",
+   "place": {
+    "x": 181.755,
+    "y": 79.6,
+    "z": 52.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 180
+   },
+   "place_from": "mock-up report",
+   "confirm": false,
+   "size_mm": {
+    "x": 130.0,
+    "y": 54.61,
+    "z": 38.93
+   },
+   "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
+   "connectors": [],
+   "children": [],
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/upper-board/upper-board.kicad_pcb",
+   "nodes": {
+    "board": [
+     "pcb:board"
+    ],
+    "parts": [
+     "pcb:parts"
+    ]
+   }
+  },
+  {
+   "id": "icu-carrier",
+   "name": "ICU carrier PCB H-001",
+   "kind": "pcb",
+   "glb": "icu-carrier.glb",
+   "bytes": 9209972,
+   "parent": "display-unit",
+   "place": {
+    "x": -91.75,
+    "y": 173.6,
+    "z": 10.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0
+   },
+   "place_from": "mock-up report",
+   "confirm": false,
+   "size_mm": {
+    "x": 112.25,
+    "y": 94.6,
+    "z": 38.93
+   },
+   "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
+   "connectors": [],
+   "children": [],
+   "source": "02-PROJECTS/01-electrical/00-design/display-unit/cad/icu-carrier/icu-carrier.kicad_pcb",
+   "nodes": {
+    "board": [
+     "pcb:board"
+    ],
+    "parts": [
+     "pcb:parts"
+    ]
+   }
+  },
+  {
+   "id": "left-plate",
+   "name": "Left plate circuit board",
+   "kind": "pcb",
+   "glb": "left-plate.glb",
+   "bytes": 1979936,
+   "parent": null,
+   "place": {
+    "x": -680.0,
+    "y": -1074.0,
+    "z": 731.0,
+    "rx": 90,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "size_mm": {
+    "x": 100.0,
+    "y": 56.0,
+    "z": 15.08
+   },
+   "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
+   "connectors": [
+    {
+     "code": "DP-DCU-E",
+     "at": {
+      "x": 62.5,
+      "y": -39.5,
+      "z": 0.0
+     },
+     "face": "rear",
+     "note": "J1, the cable to DP-DCU-E (D-492), at its footprint's origin"
+    }
+   ],
+   "children": [],
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/left-plate/left-plate.kicad_pcb",
+   "nodes": {
+    "board": [
+     "pcb:board"
+    ],
+    "parts": [
+     "pcb:parts"
+    ]
+   },
+   "place_note": "inside 00-CAR zones dash: the dash face left of the wheel (P198), the board facing the driver"
+  },
+  {
+   "id": "pmu",
+   "name": "ECUMaster PMU-24 DL",
+   "kind": "module",
+   "glb": "pmu.glb",
+   "bytes": 3552056,
+   "parent": null,
+   "place": {
+    "x": -34.125,
+    "y": -732.0,
+    "z": 582.8,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones dash: the dash node, behind the stack at the firewall (modules PMU), the box's centre there, as the vendor model lies",
+   "size_mm": {
+    "x": 111.75,
+    "y": 131.0,
+    "z": 39.6
+   },
+   "origin": "the vendor STEP's own origin (ECUMaster's frame)",
+   "connectors": [
+    {
+     "code": "L1-P",
+     "at": {
+      "x": -21.75,
+      "y": -32.6,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L1-S1",
+     "at": {
+      "x": -21.75,
+      "y": -31.09,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L1-S2",
+     "at": {
+      "x": -21.75,
+      "y": -29.58,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L2-P",
+     "at": {
+      "x": -21.75,
+      "y": -28.07,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L2-M",
+     "at": {
+      "x": -21.75,
+      "y": -26.56,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L2-S",
+     "at": {
+      "x": -21.75,
+      "y": -25.05,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L3-P",
+     "at": {
+      "x": -21.75,
+      "y": -23.54,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L3-M",
+     "at": {
+      "x": -21.75,
+      "y": -22.03,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L3-BLW",
+     "at": {
+      "x": -21.75,
+      "y": -20.52,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L3-S1",
+     "at": {
+      "x": -21.75,
+      "y": -19.01,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L3-S2",
+     "at": {
+      "x": -21.75,
+      "y": -17.5,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L3-S3",
+     "at": {
+      "x": -21.75,
+      "y": -16.0,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L4-P",
+     "at": {
+      "x": -21.75,
+      "y": -14.49,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L4-M",
+     "at": {
+      "x": -21.75,
+      "y": -12.98,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L4-S",
+     "at": {
+      "x": -21.75,
+      "y": -11.47,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L4-S2",
+     "at": {
+      "x": -21.75,
+      "y": -9.96,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "D1",
+     "at": {
+      "x": -21.75,
+      "y": -8.45,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "D2",
+     "at": {
+      "x": -21.75,
+      "y": -6.94,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "DP-DIAG",
+     "at": {
+      "x": -21.75,
+      "y": -5.43,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "DP-ICU-A",
+     "at": {
+      "x": -21.75,
+      "y": -3.92,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "DP-ICU-B",
+     "at": {
+      "x": -21.75,
+      "y": -2.41,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "DP-DCU",
+     "at": {
+      "x": -21.75,
+      "y": -0.9,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L2-OAT",
+     "at": {
+      "x": -21.75,
+      "y": 0.6,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L3-CMF",
+     "at": {
+      "x": -21.75,
+      "y": 2.11,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L3-MOD",
+     "at": {
+      "x": -21.75,
+      "y": 3.62,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L3-RDR",
+     "at": {
+      "x": -21.75,
+      "y": 5.13,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L4-RDR",
+     "at": {
+      "x": -21.75,
+      "y": 6.64,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "DP-DCU-B",
+     "at": {
+      "x": -21.75,
+      "y": 8.15,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "DP-DCU-C",
+     "at": {
+      "x": -21.75,
+      "y": 9.66,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L3-SD",
+     "at": {
+      "x": -21.75,
+      "y": 11.17,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L3-SP",
+     "at": {
+      "x": -21.75,
+      "y": 12.68,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L3-SDM",
+     "at": {
+      "x": -21.75,
+      "y": 14.19,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L3-SPM",
+     "at": {
+      "x": -21.75,
+      "y": 15.7,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L4-HRD",
+     "at": {
+      "x": -21.75,
+      "y": 17.2,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L2-R",
+     "at": {
+      "x": -21.75,
+      "y": 18.71,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L2-RDR",
+     "at": {
+      "x": -21.75,
+      "y": 20.22,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L3-SPF-L",
+     "at": {
+      "x": -21.75,
+      "y": 21.73,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L3-SPF-R",
+     "at": {
+      "x": -21.75,
+      "y": 23.24,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L3-TW-L",
+     "at": {
+      "x": -21.75,
+      "y": 24.75,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L3-TW-R",
+     "at": {
+      "x": -21.75,
+      "y": 26.26,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L3-CTR",
+     "at": {
+      "x": -21.75,
+      "y": 27.77,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L4-SPR-L",
+     "at": {
+      "x": -21.75,
+      "y": 29.28,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L4-SPR-R",
+     "at": {
+      "x": -21.75,
+      "y": 30.79,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "L4-SUB",
+     "at": {
+      "x": -21.75,
+      "y": 32.3,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    }
+   ],
+   "children": [],
+   "source": "01-REFERENCE/PMU_info/PMU CAD info/PMU-24.STEP",
+   "nodes": {
+    "parts": [
+     "part:PDM24_shank_isolator_revB",
+     "part:PDM24_shank_revB",
+     "part:PDM24_case_lower_revA",
+     "part:PDM24_case_upper_revA",
+     "part:TR Fastenings Ltd-M3X8mm_M3X8mm",
+     "part:gniazdo-czarne-39pin",
+     "part:logo sticker",
+     "part:PMU24_sticker"
+    ]
+   }
+  },
+  {
+   "id": "behind-dash",
+   "name": "Behind the dash",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": -82.9,
+    "y": -822.0,
+    "z": 703.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones dash",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L3-MOD",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    },
+    {
+     "code": "L3-RDR",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "cargo-bin",
+   "name": "Driver-side cargo bin",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": -580.3,
+    "y": -2630.0,
+    "z": 504.2,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones cargo",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L4-SUB",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "centre-stack",
+   "name": "Centre stack, behind it",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": 0.0,
+    "y": -957.0,
+    "z": 542.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones dash",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L3-CMF",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "console",
+   "name": "Console, between the seats",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": 0.0,
+    "y": -1368.2,
+    "z": 483.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones cabin",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L3-CTR",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "glovebox",
+   "name": "Glovebox",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": 414.5,
+    "y": -1002.0,
+    "z": 611.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones dash",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "DP-DIAG",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "hatch",
+   "name": "Hatch, behind the trim",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": 0.0,
+    "y": -2933.1,
+    "z": 1025.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones cargo",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L4-HRD",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "hvac-case",
+   "name": "HVAC case",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": 199.0,
+    "y": -754.5,
+    "z": 634.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones dash",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L3-BLW",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    },
+    {
+     "code": "DP-DCU-D",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "kick-driver",
+   "name": "Driver kick panel",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": -746.1,
+    "y": -1125.2,
+    "z": 283.2,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones cabin",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L3-SPF-L",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "kick-passenger",
+   "name": "Passenger kick panel",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": 746.1,
+    "y": -1125.2,
+    "z": 283.2,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones cabin",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L3-SPF-R",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "leg-l1",
+   "name": "L1 Engine - the leg's far end",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": 0.0,
+    "y": -47.0,
+    "z": 506.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones engine_bay",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L1-P",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    },
+    {
+     "code": "L1-S1",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    },
+    {
+     "code": "L1-S2",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "leg-l2",
+   "name": "L2 Front - the leg's far end",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": 0.0,
+    "y": 738.0,
+    "z": 431.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones front",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L2-P",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    },
+    {
+     "code": "L2-M",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    },
+    {
+     "code": "L2-S",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    },
+    {
+     "code": "L2-R",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "leg-l3",
+   "name": "L3 Dash - the leg's devices",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": -248.7,
+    "y": -889.5,
+    "z": 657.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones dash",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L3-P",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    },
+    {
+     "code": "L3-M",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    },
+    {
+     "code": "L3-S1",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    },
+    {
+     "code": "L3-S2",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    },
+    {
+     "code": "L3-S3",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "leg-l4",
+   "name": "L4 Rear - the leg's far end",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": 0.0,
+    "y": -2630.0,
+    "z": 608.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones cargo",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L4-P",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    },
+    {
+     "code": "L4-M",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    },
+    {
+     "code": "L4-S",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    },
+    {
+     "code": "L4-S2",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "nose",
+   "name": "Nose",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": 0.0,
+    "y": 852.0,
+    "z": 387.9,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones front",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L2-OAT",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "nose-bumper",
+   "name": "Nose, behind the front bumper",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": 0.0,
+    "y": 909.0,
+    "z": 301.7,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones front",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L2-RDR",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "pillar-driver",
+   "name": "Driver A-pillar base",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": -779.3,
+    "y": -1024.5,
+    "z": 887.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones dash",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L3-TW-L",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "pillar-passenger",
+   "name": "Passenger A-pillar base",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": 779.3,
+    "y": -1024.5,
+    "z": 887.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones dash",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L3-TW-R",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "quarter-driver",
+   "name": "Driver rear quarter trim",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": -762.7,
+    "y": -2370.2,
+    "z": 678.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones cargo",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L4-SPR-L",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "quarter-passenger",
+   "name": "Passenger rear quarter trim",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": 762.7,
+    "y": -2370.2,
+    "z": 678.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones cargo",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L4-SPR-R",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "rear-node",
+   "name": "Rear node",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": 0.0,
+    "y": -2543.4,
+    "z": 539.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones cargo",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L4-RDR",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "seat-driver",
+   "name": "Under the driver's seat",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": -331.6,
+    "y": -1644.5,
+    "z": 238.8,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones cabin",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L3-SD",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    },
+    {
+     "code": "L3-SDM",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "seat-passenger",
+   "name": "Under the passenger seat",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": 331.6,
+    "y": -1644.5,
+    "z": 238.8,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones cabin",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "L3-SP",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    },
+    {
+     "code": "L3-SPM",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  },
+  {
+   "id": "sill-node",
+   "name": "Sill node (driver kick panel)",
+   "kind": "node",
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": -746.1,
+    "y": -1147.2,
+    "z": 316.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones cabin",
+   "size_mm": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "origin": "the place itself",
+   "connectors": [
+    {
+     "code": "D1",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    },
+    {
+     "code": "D2",
+     "at": {
+      "x": 0,
+      "y": 0,
+      "z": 0
+     },
+     "face": "",
+     "note": ""
+    }
+   ],
+   "children": [],
+   "source": "01-electrical housings.where / leg"
+  }
+ ],
+ "links": [
+  {
+   "id": "L1-P",
+   "code": "L1-P",
+   "from": {
+    "part": "pmu",
+    "connector": "L1-P"
+   },
+   "to": {
+    "part": "leg-l1",
+    "connector": "L1-P"
+   },
+   "label": "L1-P · DTP04 4-way",
+   "ways": 4,
+   "carries": [
+    "Ignition feed — coils and igniters",
+    "LS swap reserve — ECU + injectors",
+    "LS swap reserve — cooling fan"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L1-S1",
+   "code": "L1-S1",
+   "from": {
+    "part": "pmu",
+    "connector": "L1-S1"
+   },
+   "to": {
+    "part": "leg-l1",
+    "connector": "L1-S1"
+   },
+   "label": "L1-S1 · DT04 12-way",
+   "ways": 12,
+   "carries": [
+    "Start relay K9 coil",
+    "Alternator excitation",
+    "Water temperature sender",
+    "Oil pressure sender",
+    "Tachometer pulse — SHIELDED",
+    "Inhibitor switch — P/N contact"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L1-S2",
+   "code": "L1-S2",
+   "from": {
+    "part": "pmu",
+    "connector": "L1-S2"
+   },
+   "to": {
+    "part": "leg-l1",
+    "connector": "L1-S2"
+   },
+   "label": "L1-S2 · DT04 12-way",
+   "ways": 12,
+   "carries": [
+    "Brake fluid level switch",
+    "Inhibitor switch — R contact",
+    "Alternator charge-lamp sense",
+    "Phase-2 sensor supply — +12 V switched",
+    "Phase-2 sensor signal spare"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L2-P",
+   "code": "L2-P",
+   "from": {
+    "part": "pmu",
+    "connector": "L2-P"
+   },
+   "to": {
+    "part": "leg-l2",
+    "connector": "L2-P"
+   },
+   "label": "L2-P · DTP04 4-way",
+   "ways": 4,
+   "carries": [
+    "Headlight LOW, both",
+    "Headlight HIGH, both",
+    "Pop-up motor feed, both motors",
+    "Pop-up LH down command"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L2-M",
+   "code": "L2-M",
+   "from": {
+    "part": "pmu",
+    "connector": "L2-M"
+   },
+   "to": {
+    "part": "leg-l2",
+    "connector": "L2-M"
+   },
+   "label": "L2-M · DT04 8-way",
+   "ways": 8,
+   "carries": [
+    "Wiper LOW brush",
+    "Wiper HIGH brush",
+    "Horns, both",
+    "Washer pump feed",
+    "Turn LEFT front",
+    "Turn RIGHT front",
+    "Park + side markers, front",
+    "Wiper park feed — future motor family"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L2-S",
+   "code": "L2-S",
+   "from": {
+    "part": "pmu",
+    "connector": "L2-S"
+   },
+   "to": {
+    "part": "leg-l2",
+    "connector": "L2-S"
+   },
+   "label": "L2-S · DT04 6-way",
+   "ways": 6,
+   "carries": [
+    "Pop-up LH up command",
+    "Pop-up RH up command",
+    "Wiper park sense",
+    "Wiper park return — future motor family",
+    "Outside-air temperature sensor",
+    "Pop-up RH down command"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L3-P",
+   "code": "L3-P",
+   "from": {
+    "part": "pmu",
+    "connector": "L3-P"
+   },
+   "to": {
+    "part": "leg-l3",
+    "connector": "L3-P"
+   },
+   "label": "L3-P · DTP04 2-way",
+   "ways": 2,
+   "carries": [
+    "Blower motor +",
+    "Comfort bus"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L3-M",
+   "code": "L3-M",
+   "from": {
+    "part": "pmu",
+    "connector": "L3-M"
+   },
+   "to": {
+    "part": "leg-l3",
+    "connector": "L3-M"
+   },
+   "label": "L3-M · DT04 2-way",
+   "ways": 2,
+   "carries": [
+    "Accessory — head unit ACC + USB-C",
+    "Head unit memory / constant"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L3-BLW",
+   "code": "L3-BLW",
+   "from": {
+    "part": "pmu",
+    "connector": "L3-BLW"
+   },
+   "to": {
+    "part": "hvac-case",
+    "connector": "L3-BLW"
+   },
+   "label": "L3-BLW · DTP04 2-way",
+   "ways": 2,
+   "carries": [
+    "Blower motor +",
+    "Blower motor −"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L3-S1",
+   "code": "L3-S1",
+   "from": {
+    "part": "pmu",
+    "connector": "L3-S1"
+   },
+   "to": {
+    "part": "leg-l3",
+    "connector": "L3-S1"
+   },
+   "label": "L3-S1 · DT04 12-way",
+   "ways": 12,
+   "carries": [
+    "Key ladder",
+    "Headlight ladder",
+    "Turn stalk ladder",
+    "Wiper stalk ladder",
+    "Brake pedal switch",
+    "Hazard switch",
+    "Brake — wake source",
+    "Illumination bus",
+    "Wink LEFT — NC pole",
+    "Wink RIGHT — NC pole",
+    "Horn + wink request",
+    "ACC — wake source"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L3-S2",
+   "code": "L3-S2",
+   "from": {
+    "part": "pmu",
+    "connector": "L3-S2"
+   },
+   "to": {
+    "part": "leg-l3",
+    "connector": "L3-S2"
+   },
+   "label": "L3-S2 · DT04 12-way",
+   "ways": 12,
+   "carries": [
+    "RUN — wake source",
+    "Switch supply +12 V",
+    "Future module +12 V constant",
+    "Future module ground",
+    "Washer relay K12 coil return",
+    "Courtesy — glove box lamp",
+    "Parking brake switch → brake warning lamp",
+    "Kick-down switch supply +12 V"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L3-S3",
+   "code": "L3-S3",
+   "from": {
+    "part": "pmu",
+    "connector": "L3-S3"
+   },
+   "to": {
+    "part": "leg-l3",
+    "connector": "L3-S3"
+   },
+   "label": "L3-S3 · DT04 8-way",
+   "ways": 8,
+   "carries": [
+    "Future pass-through A",
+    "Future pass-through B",
+    "Future pass-through C",
+    "Kick-down solenoid command"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L4-P",
+   "code": "L4-P",
+   "from": {
+    "part": "pmu",
+    "connector": "L4-P"
+   },
+   "to": {
+    "part": "leg-l4",
+    "connector": "L4-P"
+   },
+   "label": "L4-P · DTP04 4-way",
+   "ways": 4,
+   "carries": [
+    "Rear defog grid",
+    "Fuel pump +",
+    "Window motor bus feed",
+    "Mirror heat feed → sill, switched by the DCU"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L4-M",
+   "code": "L4-M",
+   "from": {
+    "part": "pmu",
+    "connector": "L4-M"
+   },
+   "to": {
+    "part": "leg-l4",
+    "connector": "L4-M"
+   },
+   "label": "L4-M · DT04 12-way",
+   "ways": 12,
+   "carries": [
+    "Tail · licence · rear markers",
+    "Brake lamps",
+    "Hatch release solenoid",
+    "Fuel-door release solenoid",
+    "Turn LEFT rear",
+    "Turn RIGHT rear",
+    "Reverse lamps",
+    "Interior / spot lamp - always-hot",
+    "Window DRV up command → K5 coil",
+    "Window DRV down command → K6 coil",
+    "Window PASS up command → K7 coil",
+    "Window PASS down command → K8 coil"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L4-S",
+   "code": "L4-S",
+   "from": {
+    "part": "pmu",
+    "connector": "L4-S"
+   },
+   "to": {
+    "part": "leg-l4",
+    "connector": "L4-S"
+   },
+   "label": "L4-S · DT04 8-way",
+   "ways": 8,
+   "carries": [
+    "Fuel level sender",
+    "Door jamb switches — ladder",
+    "Road speed — pulse generator signal",
+    "Road speed — pulse generator supply +12 V",
+    "Future pass-through A",
+    "Future pass-through B",
+    "Future pass-through C",
+    "Courtesy — luggage lamp"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L4-S2",
+   "code": "L4-S2",
+   "from": {
+    "part": "pmu",
+    "connector": "L4-S2"
+   },
+   "to": {
+    "part": "leg-l4",
+    "connector": "L4-S2"
+   },
+   "label": "L4-S2 · DT04 8-way",
+   "ways": 8,
+   "carries": [
+    "Mirror motor common",
+    "Mirror LEFT motor",
+    "Mirror LEFT clutch coil",
+    "Mirror RIGHT motor",
+    "Mirror RIGHT clutch coil",
+    "Kick-down solenoid command"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "D1",
+   "code": "D1",
+   "from": {
+    "part": "pmu",
+    "connector": "D1"
+   },
+   "to": {
+    "part": "sill-node",
+    "connector": "D1"
+   },
+   "label": "D1 · DT04 8-way",
+   "ways": 8,
+   "carries": [
+    "Window motor leg A",
+    "Window motor leg B",
+    "Mirror motor common",
+    "Mirror motor",
+    "Mirror clutch coil",
+    "Mirror heat",
+    "Door ground"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "D2",
+   "code": "D2",
+   "from": {
+    "part": "pmu",
+    "connector": "D2"
+   },
+   "to": {
+    "part": "sill-node",
+    "connector": "D2"
+   },
+   "label": "D2 · DT04 8-way",
+   "ways": 8,
+   "carries": [
+    "Window motor leg A",
+    "Window motor leg B",
+    "Mirror motor common",
+    "Mirror motor",
+    "Mirror clutch coil",
+    "Mirror heat",
+    "Door ground"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "DP-DIAG",
+   "code": "DP-DIAG",
+   "from": {
+    "part": "pmu",
+    "connector": "DP-DIAG"
+   },
+   "to": {
+    "part": "glovebox",
+    "connector": "DP-DIAG"
+   },
+   "label": "DP-DIAG · DT04 4-way",
+   "ways": 4,
+   "carries": [
+    "CAN1 H",
+    "CAN1 L",
+    "+12 V constant",
+    "Ground"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "DP-ICU-A",
+   "code": "DP-ICU-A",
+   "from": {
+    "part": "display-unit",
+    "connector": "DP-ICU-A"
+   },
+   "to": {
+    "part": "pmu",
+    "connector": "DP-ICU-A"
+   },
+   "label": "DP-ICU-A · DT13 6-way",
+   "ways": 6,
+   "carries": [
+    "+12 V switched — ICU logic",
+    "Illumination — the ICU's dimming reference",
+    "Ground",
+    "CAN2 H",
+    "CAN2 L",
+    "+12 V ignition — the display's backlight"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "DP-ICU-B",
+   "code": "DP-ICU-B",
+   "from": {
+    "part": "display-unit",
+    "connector": "DP-ICU-B"
+   },
+   "to": {
+    "part": "pmu",
+    "connector": "DP-ICU-B"
+   },
+   "label": "DP-ICU-B · DT13 12-way",
+   "ways": 12,
+   "carries": [
+    "Water temp sender",
+    "Oil-pressure node",
+    "Fuel level sender",
+    "Tachometer pulse",
+    "Charge-lamp line",
+    "Brake warning — fluid level + parking brake",
+    "Road speed — pulse generator signal",
+    "Phase-2 sensor signal spare",
+    "Turn LEFT tell-tale sense",
+    "Turn RIGHT tell-tale sense",
+    "High-beam tell-tale sense"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "DP-DCU",
+   "code": "DP-DCU",
+   "from": {
+    "part": "control-unit",
+    "connector": "DP-DCU"
+   },
+   "to": {
+    "part": "pmu",
+    "connector": "DP-DCU"
+   },
+   "label": "DP-DCU · DT13 6-way",
+   "ways": 6,
+   "carries": [
+    "+12 V constant - DCU logic",
+    "Outside-air temperature",
+    "Ground",
+    "CAN2 H",
+    "CAN2 L",
+    "DCU wake request"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L2-OAT",
+   "code": "L2-OAT",
+   "from": {
+    "part": "pmu",
+    "connector": "L2-OAT"
+   },
+   "to": {
+    "part": "nose",
+    "connector": "L2-OAT"
+   },
+   "label": "L2-OAT · DT04 2-way",
+   "ways": 2,
+   "carries": [
+    "Outside-air thermistor — signal"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L3-CMF",
+   "code": "L3-CMF",
+   "from": {
+    "part": "pmu",
+    "connector": "L3-CMF"
+   },
+   "to": {
+    "part": "centre-stack",
+    "connector": "L3-CMF"
+   },
+   "label": "L3-CMF · DTP04 2-way",
+   "ways": 2,
+   "carries": [
+    "O15 comfort bus"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L3-MOD",
+   "code": "L3-MOD",
+   "from": {
+    "part": "pmu",
+    "connector": "L3-MOD"
+   },
+   "to": {
+    "part": "behind-dash",
+    "connector": "L3-MOD"
+   },
+   "label": "L3-MOD · DT04 2-way",
+   "ways": 2,
+   "carries": [
+    "Future module +12 V constant",
+    "Future module ground"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L3-RDR",
+   "code": "L3-RDR",
+   "from": {
+    "part": "pmu",
+    "connector": "L3-RDR"
+   },
+   "to": {
+    "part": "behind-dash",
+    "connector": "L3-RDR"
+   },
+   "label": "L3-RDR · DT04 4-way",
+   "ways": 4,
+   "carries": [
+    "Radar pass-through A",
+    "Radar pass-through B",
+    "Radar pass-through C"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L4-RDR",
+   "code": "L4-RDR",
+   "from": {
+    "part": "pmu",
+    "connector": "L4-RDR"
+   },
+   "to": {
+    "part": "rear-node",
+    "connector": "L4-RDR"
+   },
+   "label": "L4-RDR · DT04 4-way",
+   "ways": 4,
+   "carries": [
+    "Radar pass-through A",
+    "Radar pass-through B",
+    "Radar pass-through C"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "DP-DCU-B",
+   "code": "DP-DCU-B",
+   "from": {
+    "part": "control-unit",
+    "connector": "DP-DCU-B"
+   },
+   "to": {
+    "part": "pmu",
+    "connector": "DP-DCU-B"
+   },
+   "label": "DP-DCU-B · DT13 12-way",
+   "ways": 12,
+   "carries": [
+    "Window DRV up command",
+    "Window DRV down command",
+    "Window PASS up command",
+    "Window PASS down command",
+    "Mirror motor common",
+    "Mirror LEFT motor",
+    "Mirror RIGHT motor",
+    "Mirror clutch coils",
+    "Mirror heat feed",
+    "Hatch release select - K3 coil return",
+    "Fuel-door release select - K4 coil return"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "DP-DCU-C",
+   "code": "DP-DCU-C",
+   "from": {
+    "part": "control-unit",
+    "connector": "DP-DCU-C"
+   },
+   "to": {
+    "part": "pmu",
+    "connector": "DP-DCU-C"
+   },
+   "label": "DP-DCU-C · DT13 8-way",
+   "ways": 8,
+   "carries": [
+    "Seat heat, driver - return",
+    "Seat heat, passenger - return",
+    "Seat cool, driver - return",
+    "Seat cool, passenger - return",
+    "O15 supply in - servo rail and mirror heat",
+    "Power ground",
+    "Power ground",
+    "Power ground"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L3-SD",
+   "code": "L3-SD",
+   "from": {
+    "part": "pmu",
+    "connector": "L3-SD"
+   },
+   "to": {
+    "part": "seat-driver",
+    "connector": "L3-SD"
+   },
+   "label": "L3-SD · DT04 4-way",
+   "ways": 4,
+   "carries": [
+    "Driver seat heater +",
+    "Driver seat cooling fan +",
+    "Driver seat heater −, switched by the DCU",
+    "Driver seat cooling −, switched by the DCU"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L3-SP",
+   "code": "L3-SP",
+   "from": {
+    "part": "pmu",
+    "connector": "L3-SP"
+   },
+   "to": {
+    "part": "seat-passenger",
+    "connector": "L3-SP"
+   },
+   "label": "L3-SP · DT04 4-way",
+   "ways": 4,
+   "carries": [
+    "Passenger seat heater +",
+    "Passenger seat cooling fan +",
+    "Passenger seat heater −, switched by the DCU",
+    "Passenger seat cooling −, switched by the DCU"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L3-SDM",
+   "code": "L3-SDM",
+   "from": {
+    "part": "pmu",
+    "connector": "L3-SDM"
+   },
+   "to": {
+    "part": "seat-driver",
+    "connector": "L3-SDM"
+   },
+   "label": "L3-SDM · DTP04 2-way",
+   "ways": 2,
+   "carries": [
+    "Driver seat motor feed +",
+    "Driver seat motor return"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L3-SPM",
+   "code": "L3-SPM",
+   "from": {
+    "part": "pmu",
+    "connector": "L3-SPM"
+   },
+   "to": {
+    "part": "seat-passenger",
+    "connector": "L3-SPM"
+   },
+   "label": "L3-SPM · DTP04 2-way",
+   "ways": 2,
+   "carries": [
+    "Passenger seat motor feed +",
+    "Passenger seat motor return"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L4-HRD",
+   "code": "L4-HRD",
+   "from": {
+    "part": "pmu",
+    "connector": "L4-HRD"
+   },
+   "to": {
+    "part": "hatch",
+    "connector": "L4-HRD"
+   },
+   "label": "L4-HRD · DT04 4-way",
+   "ways": 4,
+   "carries": [
+    "Radar pass-through A, hatch end",
+    "Radar pass-through B, hatch end",
+    "Radar pass-through C, hatch end"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L2-R",
+   "code": "L2-R",
+   "from": {
+    "part": "pmu",
+    "connector": "L2-R"
+   },
+   "to": {
+    "part": "leg-l2",
+    "connector": "L2-R"
+   },
+   "label": "L2-R · DT04 4-way",
+   "ways": 4,
+   "carries": [
+    "Radar front sensor A",
+    "Radar front sensor B",
+    "Radar front sensor C"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L2-RDR",
+   "code": "L2-RDR",
+   "from": {
+    "part": "pmu",
+    "connector": "L2-RDR"
+   },
+   "to": {
+    "part": "nose-bumper",
+    "connector": "L2-RDR"
+   },
+   "label": "L2-RDR · DT04 4-way",
+   "ways": 4,
+   "carries": [
+    "Radar front sensor A, nose end",
+    "Radar front sensor B, nose end",
+    "Radar front sensor C, nose end"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L3-SPF-L",
+   "code": "L3-SPF-L",
+   "from": {
+    "part": "pmu",
+    "connector": "L3-SPF-L"
+   },
+   "to": {
+    "part": "kick-driver",
+    "connector": "L3-SPF-L"
+   },
+   "label": "L3-SPF-L · DT04 2-way",
+   "ways": 2,
+   "carries": [
+    "Speaker front L +",
+    "Speaker front L −"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L3-SPF-R",
+   "code": "L3-SPF-R",
+   "from": {
+    "part": "pmu",
+    "connector": "L3-SPF-R"
+   },
+   "to": {
+    "part": "kick-passenger",
+    "connector": "L3-SPF-R"
+   },
+   "label": "L3-SPF-R · DT04 2-way",
+   "ways": 2,
+   "carries": [
+    "Speaker front R +",
+    "Speaker front R −"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L3-TW-L",
+   "code": "L3-TW-L",
+   "from": {
+    "part": "pmu",
+    "connector": "L3-TW-L"
+   },
+   "to": {
+    "part": "pillar-driver",
+    "connector": "L3-TW-L"
+   },
+   "label": "L3-TW-L · DT04 2-way",
+   "ways": 2,
+   "carries": [
+    "Speaker tweeter L +",
+    "Speaker tweeter L −"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L3-TW-R",
+   "code": "L3-TW-R",
+   "from": {
+    "part": "pmu",
+    "connector": "L3-TW-R"
+   },
+   "to": {
+    "part": "pillar-passenger",
+    "connector": "L3-TW-R"
+   },
+   "label": "L3-TW-R · DT04 2-way",
+   "ways": 2,
+   "carries": [
+    "Speaker tweeter R +",
+    "Speaker tweeter R −"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L3-CTR",
+   "code": "L3-CTR",
+   "from": {
+    "part": "pmu",
+    "connector": "L3-CTR"
+   },
+   "to": {
+    "part": "console",
+    "connector": "L3-CTR"
+   },
+   "label": "L3-CTR · DT04 2-way",
+   "ways": 2,
+   "carries": [
+    "Speaker centre +",
+    "Speaker centre −"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L4-SPR-L",
+   "code": "L4-SPR-L",
+   "from": {
+    "part": "pmu",
+    "connector": "L4-SPR-L"
+   },
+   "to": {
+    "part": "quarter-driver",
+    "connector": "L4-SPR-L"
+   },
+   "label": "L4-SPR-L · DT04 2-way",
+   "ways": 2,
+   "carries": [
+    "Speaker surround L +",
+    "Speaker surround L −"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L4-SPR-R",
+   "code": "L4-SPR-R",
+   "from": {
+    "part": "pmu",
+    "connector": "L4-SPR-R"
+   },
+   "to": {
+    "part": "quarter-passenger",
+    "connector": "L4-SPR-R"
+   },
+   "label": "L4-SPR-R · DT04 2-way",
+   "ways": 2,
+   "carries": [
+    "Speaker surround R +",
+    "Speaker surround R −"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "L4-SUB",
+   "code": "L4-SUB",
+   "from": {
+    "part": "pmu",
+    "connector": "L4-SUB"
+   },
+   "to": {
+    "part": "cargo-bin",
+    "connector": "L4-SUB"
+   },
+   "label": "L4-SUB · DT04 4-way",
+   "ways": 4,
+   "carries": [
+    "Speaker sub A +",
+    "Speaker sub A −",
+    "Speaker sub B +",
+    "Speaker sub B −"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "DP-DCU-D",
+   "code": "DP-DCU-D",
+   "from": {
+    "part": "control-unit",
+    "connector": "DP-DCU-D"
+   },
+   "to": {
+    "part": "hvac-case",
+    "connector": "DP-DCU-D"
+   },
+   "label": "DP-DCU-D · DT13 12-way",
+   "ways": 12,
+   "carries": [
+    "Servo signal - mode door",
+    "Servo signal - blend door",
+    "Servo signal - recirculate door",
+    "Servo +5 V rail - the three door servos",
+    "Servo ground - the three door servos",
+    "Blower duty",
+    "Blower duty ground",
+    "Cabin temperature sensor",
+    "Cabin temperature sensor - return"
+   ],
+   "confirm": false
+  },
+  {
+   "id": "DP-DCU-E",
+   "code": "DP-DCU-E",
+   "from": {
+    "part": "control-unit",
+    "connector": "DP-DCU-E"
+   },
+   "to": {
+    "part": "left-plate",
+    "connector": "DP-DCU-E"
+   },
+   "label": "DP-DCU-E · DT13 12-way",
+   "ways": 12,
+   "carries": [
+    "Key matrix ROW1",
+    "Key matrix COL2 - the hatch key",
+    "Key matrix COL3 - the fuel-door key",
+    "Mirror stick X wiper",
+    "Mirror stick Y wiper",
+    "Mirror stick push",
+    "+3V3 - the stick's pot supply",
+    "AGND - the stick's pot ground",
+    "PNL_SDA - I2C to the plate's LED driver",
+    "PNL_SCL",
+    "GND - the plate's lights and logic return",
+    "+5V_PNL - the plate's LED supply"
+   ],
+   "confirm": false
+  }
+ ],
+ "missing": [
+  {
+   "part": "control-unit",
+   "what": "control screen, control centre knob, control key upper left, control key upper right, control key lower left, control key lower right, control seat knob left, control seat knob right, control window switch left, control window switch right",
+   "why": "placeholder blocks in the mock-up: no model of these parts is in the tree"
+  },
+  {
+   "part": "display-unit",
+   "what": "display module (P118, placeholder), page button (P120, placeholder), BT817 board (P117, placeholder), BT817 parts and CN8 (placeholder), HDMI bridge (P119, placeholder), scaler (P118, placeholder)",
+   "why": "placeholder blocks in the mock-up: no model of these parts is in the tree"
+  },
+  {
+   "part": "left-plate",
+   "what": "housing model",
+   "why": "no plate housing is drawn yet; the board stands for the plate"
+  },
+  {
+   "part": "pmu",
+   "what": "the dash post's receptacles",
+   "why": "no model of the post; its links start on the PMU's connector face"
+  },
+  {
+   "part": "dcu-carrier",
+   "what": "3D models of U1, U11",
+   "why": "kicad-cli found no file for them on this machine (HTSSOP-44-1EP_6.1x14mm_P0.635mm_EP5.2x14mm_Mask4.31x8.26mm.step, Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step); the boards show their pads"
+  },
+  {
+   "part": "panel",
+   "what": "3D models of U2",
+   "why": "kicad-cli found no file for them on this machine (TQFP-48-1EP_7x7mm_P0.5mm_EP4.11x4.11mm.step); the boards show their pads"
+  },
+  {
+   "part": "icu-carrier",
+   "what": "3D models of U1",
+   "why": "kicad-cli found no file for them on this machine (Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step); the boards show their pads"
+  }
+ ],
+ "notes": [
+  "Every glb is in mm with z up, in the part's own frame; place it at `place` (three.js Euler XYZ, degrees) under its parent, the car's frame for a top-level part (D-418).",
+  "No place here is measured: every unit, the PMU, the left plate and every far end is a judgement inside its 00-CAR zone box, confirm until the dash is measured (C4, V-102, V-113).",
+  "The PMU stands for the dash node: every leg and drop meets it at the dash post (modules PMU: Dash node).",
+  "A link is a straight line from connector to connector, not the wire's run: the harness drawings (D-385) stay the wire's truth.",
+  "The boards show every part they draw, DNP ones too - the worst case the mock-ups' fit checks use."
+ ],
+ "assets": {
+  "dcu-carrier": {
+   "id": "dcu-carrier",
+   "kind": "pcb",
+   "glb": "dcu-carrier.glb",
+   "bytes": 13461948,
+   "bbox": [
+    [
+     0.0,
+     -98.61,
+     -1.805
+    ],
+    [
+     180.0,
+     0.0,
+     37.128
+    ]
+   ],
+   "vertices": 613732,
+   "triangles": 603567,
+   "nodes": {
+    "board": [
+     "pcb:board"
+    ],
+    "parts": [
+     "pcb:parts"
+    ]
+   },
+   "outline": [
+    0.0,
+    180.0,
+    -80.0,
+    -0.0
+   ],
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/dcu-carrier/dcu-carrier.kicad_pcb",
+   "missing_models": [
+    "U1",
+    "U11"
+   ],
+   "missing_files": [
+    "HTSSOP-44-1EP_6.1x14mm_P0.635mm_EP5.2x14mm_Mask4.31x8.26mm.step",
+    "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step"
+   ],
+   "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
+   "stamp": "f522b56d75310501"
+  },
+  "panel": {
+   "id": "panel",
+   "kind": "pcb",
+   "glb": "panel.glb",
+   "bytes": 3946172,
+   "bbox": [
+    [
+     0.0,
+     -84.76,
+     -9.185
+    ],
+    [
+     180.0,
+     0.0,
+     38.095
+    ]
+   ],
+   "vertices": 180149,
+   "triangles": 174747,
+   "nodes": {
+    "board": [
+     "pcb:board"
+    ],
+    "parts": [
+     "pcb:parts"
+    ]
+   },
+   "outline": [
+    0.0,
+    180.0,
+    -84.76,
+    -0.0
+   ],
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/panel/panel.kicad_pcb",
+   "missing_models": [
+    "U2"
+   ],
+   "missing_files": [
+    "TQFP-48-1EP_7x7mm_P0.5mm_EP4.11x4.11mm.step"
+   ],
+   "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
+   "stamp": "739c926867a021fd"
+  },
+  "upper-board": {
+   "id": "upper-board",
+   "kind": "pcb",
+   "glb": "upper-board.glb",
+   "bytes": 2436220,
+   "bbox": [
+    [
+     0.0,
+     -54.61,
+     -1.805
+    ],
+    [
+     130.0,
+     0.0,
+     37.128
+    ]
+   ],
+   "vertices": 107519,
+   "triangles": 117791,
+   "nodes": {
+    "board": [
+     "pcb:board"
+    ],
+    "parts": [
+     "pcb:parts"
+    ]
+   },
+   "outline": [
+    0.0,
+    130.0,
+    -36.0,
+    -0.0
+   ],
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/upper-board/upper-board.kicad_pcb",
+   "missing_models": [],
+   "missing_files": [],
+   "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
+   "dt13": {
+    "J1": [
+     33.855,
+     -19.17
+    ],
+    "J2": [
+     96.145,
+     -19.17
+    ]
+   },
+   "stamp": "31411ff428b8a6d3"
+  },
+  "left-plate": {
+   "id": "left-plate",
+   "kind": "pcb",
+   "glb": "left-plate.glb",
+   "bytes": 1979936,
+   "bbox": [
+    [
+     0.0,
+     -56.0,
+     -9.185
+    ],
+    [
+     100.0,
+     0.0,
+     5.895
+    ]
+   ],
+   "vertices": 89932,
+   "triangles": 87864,
+   "nodes": {
+    "board": [
+     "pcb:board"
+    ],
+    "parts": [
+     "pcb:parts"
+    ]
+   },
+   "outline": [
+    0.0,
+    100.0,
+    -56.0,
+    -0.0
+   ],
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/left-plate/left-plate.kicad_pcb",
+   "missing_models": [],
+   "missing_files": [],
+   "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
+   "j1": [
+    62.5,
+    -39.5
+   ],
+   "stamp": "fed5619f31c62adf"
+  },
+  "icu-carrier": {
+   "id": "icu-carrier",
+   "kind": "pcb",
+   "glb": "icu-carrier.glb",
+   "bytes": 9209972,
+   "bbox": [
+    [
+     97.75,
+     -130.0,
+     -1.805
+    ],
+    [
+     210.0,
+     -35.4,
+     37.128
+    ]
+   ],
+   "vertices": 420440,
+   "triangles": 409355,
+   "nodes": {
+    "board": [
+     "pcb:board"
+    ],
+    "parts": [
+     "pcb:parts"
+    ]
+   },
+   "outline": [
+    100.0,
+    210.0,
+    -130.0,
+    -50.0
+   ],
+   "source": "02-PROJECTS/01-electrical/00-design/display-unit/cad/icu-carrier/icu-carrier.kicad_pcb",
+   "missing_models": [
+    "U1"
+   ],
+   "missing_files": [
+    "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step"
+   ],
+   "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
+   "stamp": "ed871f268bfec64f"
+  },
+  "control-unit": {
+   "problems": [],
+   "notes": [],
+   "bytes": 406692,
+   "bbox": [
+    [
+     0.0,
+     -15.0,
+     0.0
+    ],
+    [
+     192.0,
+     124.555,
+     96.756
+    ]
+   ],
+   "vertices": 17952,
+   "triangles": 17672,
+   "face": [
+    192.0,
+    96.756
+   ],
+   "nodes": {
+    "case": [
+     "case:body",
+     "case:front_frame",
+     "case:lid",
+     "case:rear_plate"
+    ],
+    "inside": [
+     "inside:faceplate",
+     "inside:control screen",
+     "inside:control centre knob",
+     "inside:control key upper left",
+     "inside:control key upper right",
+     "inside:control key lower left",
+     "inside:control key lower right",
+     "inside:control seat knob left",
+     "inside:control seat knob right",
+     "inside:control window switch left",
+     "inside:control window switch right",
+     "inside:upper board standoff 1",
+     "inside:upper board standoff 2"
+    ]
+   },
+   "left_to_children": 295,
+   "connectors": [
+    {
+     "code": "DP-DCU-B",
+     "at": [
+      147.9,
+      122.55499999999999,
+      29.475
+     ],
+     "note": "DT13-12PA, the rear plate's outer face at the cut-out's centre (lower row)"
+    },
+    {
+     "code": "DP-DCU-C",
+     "at": [
+      88.80000000000001,
+      122.55499999999999,
+      29.475
+     ],
+     "note": "DT13-08PA, the rear plate's outer face at the cut-out's centre (lower row)"
+    },
+    {
+     "code": "DP-DCU",
+     "at": [
+      39.33699999999999,
+      122.55499999999999,
+      29.455
+     ],
+     "note": "DT13-06PA, the rear plate's outer face at the cut-out's centre (lower row)"
+    },
+    {
+     "code": "DP-DCU-D",
+     "at": [
+      147.9,
+      122.55499999999999,
+      71.475
+     ],
+     "note": "DT13-12PA, the rear plate's outer face at the cut-out's centre (upper row)"
+    },
+    {
+     "code": "DP-DCU-E",
+     "at": [
+      85.60999999999999,
+      122.55499999999999,
+      71.475
+     ],
+     "note": "DT13-12PA, the rear plate's outer face at the cut-out's centre (upper row)"
+    }
+   ],
+   "boards": {
+    "carrier": {
+     "move": [
+      186.0,
+      35.6,
+      10.0
+     ],
+     "turn": 180
+    },
+    "panel": [
+     6.0,
+     186.0,
+     11.0,
+     12.6,
+     6.0,
+     90.756
+    ],
+    "upper": [
+     51.754999999999995,
+     181.755,
+     79.6,
+     115.6,
+     52.0,
+     53.6
+    ],
+    "upper_x": {
+     "DP-DCU-D": 147.9,
+     "DP-DCU-E": 85.60999999999999
+    }
+   },
+   "placeholders": [
+    "control screen",
+    "control centre knob",
+    "control key upper left",
+    "control key upper right",
+    "control key lower left",
+    "control key lower right",
+    "control seat knob left",
+    "control seat knob right",
+    "control window switch left",
+    "control window switch right"
+   ],
+   "id": "control-unit",
+   "kind": "unit",
+   "glb": "control-unit.glb",
+   "source": "control-unit/cad/climate-unit (unit_params.py, unit_lib.py)",
+   "stamp": "09eff870406cf325"
+  },
+  "display-unit": {
+   "problems": [],
+   "notes": [],
+   "bytes": 376400,
+   "bbox": [
+    [
+     0.0,
+     -2.5,
+     0.0
+    ],
+    [
+     335.0,
+     128.595,
+     136.5
+    ]
+   ],
+   "vertices": 16741,
+   "triangles": 16580,
+   "face": [
+    335.0,
+    136.5
+   ],
+   "nodes": {
+    "case": [
+     "case:body",
+     "case:front_frame",
+     "case:lid",
+     "case:rear_plate"
+    ],
+    "inside": [
+     "inside:bezel plate (P121)",
+     "inside:display module (P118, placeholder)",
+     "inside:page button (P120, placeholder)",
+     "inside:BT817 board (P117, placeholder)",
+     "inside:BT817 parts and CN8 (placeholder)",
+     "inside:HDMI bridge (P119, placeholder)",
+     "inside:scaler (P118, placeholder)"
+    ]
+   },
+   "left_to_children": 169,
+   "connectors": [
+    {
+     "code": "DP-ICU-B",
+     "at": [
+      39.75,
+      126.595,
+      29.475
+     ],
+     "note": "DT13-12PA, the rear plate's outer face at the cut-out's centre (lower row)"
+    },
+    {
+     "code": "DP-ICU-A",
+     "at": [
+      93.787,
+      126.595,
+      29.455
+     ],
+     "note": "DT13-06PA, the rear plate's outer face at the cut-out's centre (lower row)"
+    }
+   ],
+   "boards": {
+    "carrier": {
+     "move": [
+      -91.75,
+      173.6,
+      10.0
+     ],
+     "turn": 0
+    }
+   },
+   "placeholders": [
+    "display module (P118, placeholder)",
+    "page button (P120, placeholder)",
+    "BT817 board (P117, placeholder)",
+    "BT817 parts and CN8 (placeholder)",
+    "HDMI bridge (P119, placeholder)",
+    "scaler (P118, placeholder)"
+   ],
+   "id": "display-unit",
+   "kind": "unit",
+   "glb": "display-unit.glb",
+   "source": "display-unit/cad/icu-unit (unit_params.py, unit_lib.py)",
+   "stamp": "d5e1194381a94f6d"
+  },
+  "pmu": {
+   "problems": [],
+   "bytes": 3552056,
+   "bbox": [
+    [
+     -21.75,
+     -65.5,
+     -14.6
+    ],
+    [
+     90.0,
+     65.5,
+     25.0
+    ]
+   ],
+   "vertices": 149899,
+   "triangles": 190651,
+   "nodes": {
+    "parts": [
+     "part:PDM24_shank_isolator_revB",
+     "part:PDM24_shank_revB",
+     "part:PDM24_case_lower_revA",
+     "part:PDM24_case_upper_revA",
+     "part:TR Fastenings Ltd-M3X8mm_M3X8mm",
+     "part:gniazdo-czarne-39pin",
+     "part:logo sticker",
+     "part:PMU24_sticker"
+    ]
+   },
+   "connector_box": [
+    [
+     -21.750000000000007,
+     -33.35,
+     -14.6
+    ],
+    [
+     18.500000000000007,
+     33.050000000000004,
+     13.85
+    ]
+   ],
+   "notes": [
+    "colours matched to 66 shells from the STEP, 0 left grey"
+   ],
+   "tessellation": {
+    "linear_mm": 0.03,
+    "angular_rad": 0.15
+   },
+   "id": "pmu",
+   "kind": "module",
+   "glb": "pmu.glb",
+   "source": "01-REFERENCE/PMU_info/PMU CAD info/PMU-24.STEP",
+   "stamp": "9cb5a2280fd3e11b"
+  }
+ },
+ "record_stamp": "b208942c696a09fc"
+}
