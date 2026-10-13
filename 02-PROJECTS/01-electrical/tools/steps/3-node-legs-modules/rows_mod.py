@@ -20,7 +20,7 @@ brief('F11',
             'The board gains a CR2032 holder on the Teensy\'s VBAT pin for the clock: check the socket footprint brings VBAT out [parts P202, D-493]',
             'The mock-up wants about 331 mm wide x 133 mm tall and 204 mm deep behind the binnacle face with the plugs on - an estimate until C4 [work C4]',
             'The agent redraws the footprints, re-exports the board\'s 3D model and re-runs the enclosure fit check from your numbers; then F1 prints the enclosure and F12 orders the board [work F1, F12, D-453]',
-            'No table holds these caliper readings: they go in as a note [gap]'],
+            'Type the caliper readings as the words of this row; the agent files them in the value of check CK25 [checks CK25]'],
       done_when='Every reading in the steps is in the app as a note with a photo, the agent has redrawn what was out by more than 0.2 mm, and the board\'s design-rule check reports zero.',
       if_not='A part that is nothing like its footprint (wrong pitch, a missing flange hole): photograph it beside the calipers and raise a note - do not file the board or bend pins to suit.',
       record='Tick the row once the agent reports the board redrawn and clean. Enter every reading as a note in the app, one line per measurement, in mm.')

@@ -1,27 +1,27 @@
-id,seq,circuit,ch
-MG01,1,"Interior lamp - always-hot on F12 from the busbar, its own door switch (D-462)",F12
-MG02,2,USB-C + head unit,O10
-MG03,3,"ICU aux feed + illumination (the display's backlight, and O20 - the dash lamps and the dimming reference, on with PARK / HEAD, D-462)",F16 / O20
-MG04,4,Horn,O11
-MG05,5,Wipers LOW + park,O8
-MG06,6,Wipers HIGH,O9
-MG07,7,Washer,K12
-MG08,8,Tail · park · markers,O6
-MG09,9,Brake lamps,O7
-MG10,10,Turn LEFT,O17
-MG11,11,Turn RIGHT,O18
-MG12,12,Reverse,O19
-MG13,13,Headlight LOW,O2
-MG14,14,Headlight HIGH,O3
-MG15,15,Pop-up LEFT,O1 / K1
-MG16,15,"Pop-up RIGHT — the same session as MG15, both sides at once (R11)",O1 / K2
-MG17,17,"Blower — receptacle L3-BLW only, no motor (K-023 · D-253)",O16
-MG18,18,Courtesy lamps,F19
-MG20,19,Fuel pump + fuel sender (the ICU's node from D-258),O5 / L4-S 1
-MG21,20,Ignition coils + alternator excitation,O12 / F15
-MG22,21,"Charge line, brake warning, the three senders, the tach and the road-speed pulse generator (D-272) → DP-ICU-B; the ICU and the display go live and the factory cluster goes dark — GATED on the display proven on the bench (F3, D-268)",DP-ICU-B
-MG23,22,Start,O21 / K9
-MG24,20,"Kick-down solenoid (F21 → L3-S2 12 → L4-S2 7) - with MG20, the rear leg's transmission circuits (R10)",F21
-MG25,21,"Wideband gauge - F20 feed and its AEMnet pair onto CAN2 at the node; with MG21, ignition on (R10)",F20 / CAN2
-MG26,2,K11 head-unit constant bus (O22 → K11 → block B → F1); with MG02 - the head unit's memory feed (R10),O22 / K11 / F1
-MG27,18,"Rear defog grid, as it is (K-026, CK21) - the panel's defog key drives it (D-374, D-442); with MG18 (R10)",O4
+id,seq,circuit,ch,measured_a,drop_v,return_v
+MG01,1,"Interior lamp - always-hot on F12 from the busbar, its own door switch (D-462)",F12,,,
+MG02,2,USB-C + head unit,O10,,,
+MG03,3,"Dash illumination: O20 - the dash lamps and the dimming reference, on with PARK / HEAD (D-462). The display's backlight feed F16 is connected here but hangs off O12, so it comes alive and is proven at MG21",F16 / O20,,,
+MG04,4,Horn,O11,,,
+MG05,5,Wipers LOW + park,O8,,,
+MG06,6,Wipers HIGH,O9,,,
+MG07,7,Washer,K12,,,
+MG08,8,Tail · park · markers,O6,,,
+MG09,9,Brake lamps,O7,,,
+MG10,10,Turn LEFT,O17,,,
+MG11,11,Turn RIGHT,O18,,,
+MG12,12,Reverse,O19,,,
+MG13,13,Headlight LOW,O2,,,
+MG14,14,Headlight HIGH,O3,,,
+MG15,15,Pop-up LEFT,O1 / K1,,,
+MG16,15,"Pop-up RIGHT — the same session as MG15, both sides at once (R11)",O1 / K2,,,
+MG17,17,"Blower — receptacle L3-BLW only, no motor (K-023 · D-253)",O16,,,
+MG18,18,Courtesy lamps,F19,,,
+MG20,19,Fuel pump + fuel sender (the ICU's node from D-258),O5 / L4-S 1,,,
+MG21,20,"Ignition coils + alternator excitation; F16, the display's backlight feed connected at MG03, comes alive with O12 here",O12 / F15 / F16,,,
+MG22,21,"Charge line, brake warning, the three senders, the tach and the road-speed pulse generator (D-272) → DP-ICU-B; the ICU and the display go live and the factory cluster goes dark — GATED on the display proven on the bench (F3, D-268)",DP-ICU-B,,,
+MG23,22,Start,O21 / K9,,,
+MG24,20,"Kick-down solenoid (F21 → L3-S2 12 → L4-S2 7) - the rear leg's transmission circuit, connected with MG20's work but proven with MG21: F21 hangs off O12, which is not enabled before then (R10)",F21,,,
+MG25,20,"Wideband gauge - F20 feed and its AEMnet pair onto CAN2 at the node; with MG21, ignition on (R10)",F20 / CAN2,,,
+MG26,2,K11 head-unit constant bus (O22 → K11 → block B → F1); with MG02 - the head unit's memory feed (R10),O22 / K11 / F1,,,
+MG27,18,"Rear defog grid, as it is (K-026, CK21) - the panel's defog key drives it (D-374, D-442); with MG18 (R10)",O4,,,

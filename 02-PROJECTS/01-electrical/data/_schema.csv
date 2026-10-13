@@ -333,3 +333,10 @@ steps,do,str,yes,,"the action, one short imperative line"
 steps,how,text,no,,"exactly how: the place, the housing and cavity, the colour and gauge, the torque, the order"
 steps,expect,text,no,,what he should see or measure when the step went right
 steps,caution,text,no,,"the one thing that hurts him or the car at this step, if any"
+inputs,pull,enum(up|down|off),no,,"the PMU's software-selectable 10 kΩ on this input, as E25 enters it: up = to +5 V, down = to ground, off = neither (00-CAR S-028 section 2.8); blank on a pin configured as an output (Y32, 2026-10-13)"
+parts,torque_nm,num,no,,"the maker's tightening figure for this part's stud or screw, N·m - from the maker's page, or read off the sheet in the box at D1; blank = not known yet, and rules torque says what to do (Y32, 2026-10-13)"
+checks,value,text,no,,"the reading as taken, with its unit - the home of every check's result that is not a work row's own (R10: a home for every reading; Y32, 2026-10-13)"
+checks,taken,date,no,,the day the reading in value was taken
+migration,measured_a,num,no,,"the circuit's live current read in the client when it moved (E28 loop step 4), amps; it seeds loads.measured_a and CK01's baseline (Y32, 2026-10-13)"
+migration,drop_v,num,no,,"busbar voltage minus the voltage at the device under load (E28 loop step 5), volts - 0.5 or under"
+migration,return_v,num,no,,"the device's ground terminal against the star it returns to, under load (E28 loop step 5), volts - 0.3 or under"

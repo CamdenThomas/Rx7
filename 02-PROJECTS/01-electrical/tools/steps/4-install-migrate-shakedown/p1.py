@@ -227,7 +227,7 @@ brief(
         "A15 and A16 decode on conductance: read OFF first and refit k2 = k1 x the OFF reading, so OFF gives g = 0 [rules ladder-decode]",
         "A dead switch feed must read as a FAULT, not as OFF: proven by pulling F3 at ACC and F24 at PARK [rules ladder-decode; D-412]",
         "F3 is 5 A in block A position 2 at the dash node. F24 is 3 A, a sealed inline holder behind the lower dash panel where the light-switch branch leaves the leg [fuses F3, F24]",
-        "The wiper stalk's WASH leg: the ladders table has 470 ohm plus a 1N4148 diode; the cavity row still says 1.8 kOhm plus a 1N5819. What E20 built is what is there: read it, do not assume [ladders A2 WASH; cavities L3-S1 4]",
+        "The wiper stalk's WASH leg is 470 ohm plus a 1N4148 diode, band toward the contact [ladders A2 WASH; cavities L3-S1 4]",
         "A3 to A7 (brake and park, the gear lever, the doors, oil pressure) are not read today: they need L2, L4 and L1, at E27 [work E26]",
     ],
     "Every position of the key, light switch, dimmer, pass, turn stalk, hazard, wiper stalk, wash, horn pad and both wink buttons shows its own named state in the client with no overlap and no FAULT; pulling F3 and F24 each gives a FAULT; the enable-at limits are entered; a new revision is saved; no output is enabled.",

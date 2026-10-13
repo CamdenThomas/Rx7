@@ -286,7 +286,7 @@ brief(
     ],
     "Every stud on the list is at its maker's torque with a fresh paint mark; both cranking drops are under 0.5 V and no worse than at E12; the engine-bay looms are wrapped, clipped and clear of heat and moving parts; every grommet is seated and sealed; the car starts and charges as before.",
     "A nut that turns a long way before it reaches torque was loose: look at the lug and the stud for heat marks, and note which one. A drop near or over 0.5 V: find it by measuring across each joint in that path while cranking - the joint with the voltage across it is the bad one. A lug that has gone blue or a boot that has melted: stop, do not drive, note it. A torque figure you cannot find on any maker's sheet: note it - do not guess.",
-    "Tick E33 in the app. No value on this row. The two new cranking drops, in volts, go in a note beside E43 and E44's first readings.",
+    "E33 asks for a value: type the two new cranking drops in volts, the + side then the - side. What counts as a pass is block 01.44's answer.",
 )
 steps("E33", [
     ("Engine cold; open the disconnect",

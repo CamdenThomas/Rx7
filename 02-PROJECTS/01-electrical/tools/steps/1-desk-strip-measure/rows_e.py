@@ -101,7 +101,7 @@ ROWS.append(dict(
          "One shot across the width, one across the height, one looking in with the rod at full depth.",
          "Three scaled photos.", ""),
         ("Enter it",
-         "Write the numbers in the notepad now. When C4 opens in the app after S1, type them.",
+         "C4 is open in the app during the strip (it is not gated on S1): type the numbers in now, or write them in the notepad and enter them tonight.",
          "C4 shows width x height x depth.", ""),
     ],
 ))
@@ -190,7 +190,7 @@ ROWS.append(dict(
         "The 1982 component list carries a vehicle speed switch, B-29: a reed switch inside the speedometer head that pulses to ground on a single BR wire. It fed cruise control. [work Q-115; 00-CAR PT652-B-25_BR]",
         "This GS left the factory without cruise control, so the switch may not be in this speedometer at all. [00-CAR PT649]",
         "If it is there and works, road speed needs one wire from behind the dash to the ICU's speed input, and the tunnel run and the bought sensor are not needed. [work Q-115; D-409; cavities DP-ICU-B 8]",
-        "The row names L3-S2 12 as a free cavity for it; that cavity now carries the kick-down switch's supply. The spare ones are L3-S3 5 to 8. [cavities L3-S2 12, L3-S3 5]",
+        "A spare cavity for it would be one of L3-S3 5 to 8; L3-S2 12 carries the kick-down switch's supply. [cavities L3-S2 12, L3-S3 5]",
         "The speedometer is driven by a cable from the transmission. [00-CAR PT621, PT622]",
         "Pulses per mile is a setting, trued once against a measured mile; today's count only has to show a clean, repeatable pulse. [D-272]",
     ],
@@ -413,7 +413,7 @@ ROWS.append(dict(
          "Name what the unit's back would face: the heater unit, a duct, a brace, a loom. Note where the unit's leads could run down to the heater case.",
          "A line on what is behind and beside the space.", ""),
         ("Photograph with the ruler and enter it",
-         "A photo looking in with the rod at full depth and the ruler across the opening. Write the numbers down; type them when V-102 opens after S1.",
+         "A photo looking in with the rod at full depth and the ruler across the opening. V-102 is open in the app during the strip: type the numbers in now, or write them down and enter them tonight.",
          "V-102 shows depth x width x height.", ""),
     ],
 ))

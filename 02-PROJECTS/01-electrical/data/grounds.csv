@@ -10,7 +10,7 @@ G09,L2,"Side marker B → front star, each",16,2,4,"confirm — hand estimate, n
 G10,L2,"Horn case → front star, each",14,2,3,"confirm — hand estimate, not measured",return,
 G11,L2,Wiper motor B → front star,14,1,3,"confirm — hand estimate, not measured",return,
 G12,L2,Washer pump LY → front star,16,1,3,"confirm — hand estimate, not measured",return,
-G13,L2,Pop-up 47 kΩ baselines → front star,16,2,1,"confirm — hand estimate, not measured",return,
+G13,L2,Wiper-park (A3) 47 kΩ baseline at the L2-S plug → front star,16,1,1,"confirm — hand estimate, not measured. One conductor since D-487: the two pop-up baselines left the leg with the transit contacts, and A4 / A5's baselines sit at the inhibitor switch on the block ground (G03)",return,
 G14,L3,GND bus → dash chassis star,10,1,2,"confirm — hand estimate, not measured",stud,
 G15,L3,Blower motor return — L3-BLW 2 → dash ground (through the final stage · D-257),12,1,4,"confirm — hand estimate, not measured",return,
 G16,L3,Head unit black → dash ground,14,1,3,"confirm — hand estimate, not measured",return,

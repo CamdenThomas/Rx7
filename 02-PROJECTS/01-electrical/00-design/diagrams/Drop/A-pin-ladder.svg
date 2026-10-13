@@ -436,8 +436,8 @@
 <text x="70.0" y="2122.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Seat heat, driver - return</text>
 <text x="380.0" y="2122.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN16</text>
 <path d="M390.0,2118.0 L720.0,2118.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,2118.0 L720.0,2118.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="2108.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-C-1  ·  16 AWG BLK</text>
+<path d="M390.0,2118.0 L720.0,2118.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2108.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-C-1  ·  16 AWG BLU</text>
 <rect x="720.0" y="2099.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="730.0" y="2114.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's low-side switch (SN16) for this return; the seat end is L3-SD 3 - the driver seat heater's −</text>
 <text x="730.0" y="2130.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">(A14). In the comfort-return harness (A14, D-451)</text>
@@ -447,8 +447,8 @@
 <text x="70.0" y="2166.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Seat heat, passenger - return</text>
 <text x="380.0" y="2166.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN16</text>
 <path d="M390.0,2162.0 L720.0,2162.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,2162.0 L720.0,2162.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="2152.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-C-2  ·  16 AWG BLK</text>
+<path d="M390.0,2162.0 L720.0,2162.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2152.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-C-2  ·  16 AWG BLU</text>
 <rect x="720.0" y="2143.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="730.0" y="2158.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's low-side switch (SN16) for this return; the seat end is L3-SP 3 - the passenger seat heater's</text>
 <text x="730.0" y="2174.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">−. In the comfort-return harness (A14, D-451)</text>
@@ -458,8 +458,8 @@
 <text x="70.0" y="2210.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Seat cool, driver - return</text>
 <text x="380.0" y="2210.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN16</text>
 <path d="M390.0,2206.0 L720.0,2206.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,2206.0 L720.0,2206.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="2196.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-C-3  ·  16 AWG BLK</text>
+<path d="M390.0,2206.0 L720.0,2206.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2196.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-C-3  ·  16 AWG BLU</text>
 <rect x="720.0" y="2187.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="730.0" y="2202.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's low-side switch (SN16) for this return; the seat end is L3-SD 4 - the driver seat cooling</text>
 <text x="730.0" y="2218.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">fan's −. In the comfort-return harness (A14, D-451)</text>
@@ -469,8 +469,8 @@
 <text x="70.0" y="2254.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Seat cool, passenger - return</text>
 <text x="380.0" y="2254.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN16</text>
 <path d="M390.0,2250.0 L720.0,2250.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,2250.0 L720.0,2250.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="2240.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-C-4  ·  16 AWG BLK</text>
+<path d="M390.0,2250.0 L720.0,2250.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2240.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-C-4  ·  16 AWG BLU</text>
 <rect x="720.0" y="2231.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="730.0" y="2246.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The DCU's low-side switch (SN16) for this return; the seat end is L3-SP 4 - the passenger seat cooling</text>
 <text x="730.0" y="2262.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">fan's −. In the comfort-return harness (A14, D-451)</text>

@@ -1,5 +1,5 @@
 id,channel,expression,inrush,retry_class,retry
-HEAD_LOW,HEAD_LOW,A15 == HEAD_LO; while A15 reads FAULT hold the last state and annunciate LIGHT SWITCH FAULT (D-410),3× for 200 ms,lamp,"3 at 5 s, then latch and annunciate"
+HEAD_LOW,HEAD_LOW,"A15 == HEAD_LO  ||  (popup_cycle && (A8 == WINK_L || A8 == WINK_R)); while A15 reads FAULT hold the last state and annunciate LIGHT SWITCH FAULT (D-410). The wink term is D-482's: the K1 / K2 coils follow O2 / O3 through the N09 diodes, so a wink with the lights off raises O2 with O1 for the moment the lamp moves (rules pop-up-cycle); with a beam already lit it changes nothing",3× for 200 ms,lamp,"3 at 5 s, then latch and annunciate"
 HEAD_HIGH,HEAD_HIGH,A15 == HEAD_HI  \|\|  A15 == PASS; while A15 reads FAULT hold the last state and annunciate LIGHT SWITCH FAULT (D-410),3× for 200 ms,lamp,"3 at 5 s, then latch and annunciate"
 TAIL_PARK,TAIL_PARK,"A15 >= PARK  (hold the previous state while PASS is active, and while A15 reads FAULT - D-410)",10× for 100 ms,lamp,"3 at 5 s, then latch and annunciate"
 BRAKE,BRAKE,"A3 == BRAKE  \|\|  A3 == BRAKE+PARKED; while A3 reads FAULT hold the last state and annunciate (D-410's hold-on-fault, R11)",10× for 100 ms,lamp,"3 at 5 s, then latch and annunciate"

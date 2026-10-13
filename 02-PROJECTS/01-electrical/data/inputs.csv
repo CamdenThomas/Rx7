@@ -1,17 +1,17 @@
-id,title,kind,window,fault_rule,decode
-A1,Turn stalk,ground,55,< 50 = short · > 990 = open,window
-A2,Wiper stalk,ground,45,< 50 = short · > 990 = open,window
-A3,Brake pedal + wiper park,ground,30,< 50 = short · > 990 = open,upward
-A4,Inhibitor P/N (crank interlock),ground,20,< 50 = short · > 990 = open,upward
-A5,Inhibitor R (reverse),ground,20,< 50 = short · > 990 = open,upward
-A6,Door jamb switches,ground,20,< 50 = short · > 990 = open,window
-A8,Hazard · horn · wink,ground,35,< 50 = short · > 990 = open,window
-A15,Headlight switch,12v,75,0 = disconnected,conductance
-A16,Key position,12v,200,0 = disconnected,conductance
-A7,Oil-pressure node,ground,,"< 20 = short = a sender fault, never oil pressure: oil_ok cannot latch and clears after 5 s, the pump stops after the 3 s prime; the cluster shows SENSOR_SHORT (D-485) · > 1000 = open = ZERO oil pressure, not a fault: oil_ok is false and the pump stops after the 3 s prime (D-461)",
-A9,Configured as output O17 TURN_L,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)",
-A10,Configured as output O18 TURN_R,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)",
-A11,Configured as output O19 REVERSE,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)",
-A12,Configured as output O20 INTERIOR,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)",
-A13,Configured as output O21 START_RLY,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)",
-A14,Configured as output O22 KEEP_ALIVE,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)",
+id,title,kind,window,fault_rule,decode,pull
+A1,Turn stalk,ground,55,< 50 = short · > 990 = open,window,up
+A2,Wiper stalk,ground,45,< 50 = short · > 990 = open,window,up
+A3,Brake pedal + wiper park,ground,30,< 50 = short · > 990 = open,upward,up
+A4,Inhibitor P/N (crank interlock),ground,20,< 50 = short · > 990 = open,upward,up
+A5,Inhibitor R (reverse),ground,20,< 50 = short · > 990 = open,upward,up
+A6,Door jamb switches,ground,20,< 50 = short · > 990 = open,window,up
+A8,Hazard · horn · wink,ground,35,< 50 = short · > 990 = open,window,up
+A15,Headlight switch,12v,75,0 = disconnected,conductance,up
+A16,Key position,12v,200,0 = disconnected,conductance,up
+A7,Oil-pressure node,ground,,"< 20 = short = a sender fault, never oil pressure: oil_ok cannot latch and clears after 5 s, the pump stops after the 3 s prime; the cluster shows SENSOR_SHORT (D-485) · > 1000 = open = ZERO oil pressure, not a fault: oil_ok is false and the pump stops after the 3 s prime (D-461)",,off
+A9,Configured as output O17 TURN_L,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)",,
+A10,Configured as output O18 TURN_R,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)",,
+A11,Configured as output O19 REVERSE,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)",,
+A12,Configured as output O20 INTERIOR,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)",,
+A13,Configured as output O21 START_RLY,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)",,
+A14,Configured as output O22 KEEP_ALIVE,output,,"— not an input; the pin's status and current are the output's (12 bit, 0-20 V measurement is still available as oN.voltage)",,

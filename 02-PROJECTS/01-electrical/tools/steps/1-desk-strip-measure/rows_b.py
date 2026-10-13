@@ -26,7 +26,7 @@ ROWS.append(dict(
         "Three Teensy 4.1 boards are in hand with headers. Board 1 passed the bench stages in 2026-08; boards 2 and 3 have never been flashed. [bringup_log 2026-08, 2026-09-03; parts P142]",
         "The agent's row B8 (two boards talking on a real CAN bus, the PMU simulator live) waits on this row: it needs the transceivers' header pins soldered. [work B8]",
         "The bench set is drawn as: Teensy 1 the ICU, Teensy 2 the PMU simulator (pmu_sim), Teensy 3 the tach simulator. [00-design README section 12]",
-        "The parts row calls the three boards ICU, DCU and spare. The record does not say which sketch board 3 keeps; either is re-flashed in a minute. [parts P142]",
+        "Board 3 keeps the tach simulator on the bench; ICU, DCU and spare is where the three boards end up in the car. Either is re-flashed in a minute. [work T-048; parts P142]",
         "Arduino IDE settings: board Teensy 4.1, CPU speed 600 MHz. Library ACAN_T4, not FlexCAN_T4. On the Mac nothing more is needed than Teensyduino. [00-design README section 9]",
         "pmu_sim sends the PMU's frames 0x100-0x130 from a model of the car. It runs with no transceiver too: it reports the send failure and carries on. Serial Monitor at 115200, press ? for its commands. [pmu_sim.ino header]",
         "tach_simulator needs one jumper, pin 3 to pin 4. It sweeps 500 to 8000 rpm and back and checks what it measures against what it makes. Serial Monitor at 115200. [tach_simulator.ino header]",
@@ -87,7 +87,7 @@ ROWS.append(dict(
         "The Teensy unplugged from USB while the card goes in",
     ],
     know=[
-        "The row's part LP04 was the luxury package's number; the same cards are electrical P151 now, two of them. [parts P151]",
+        "The part is P151, two cards; it was the luxury package's LP04. [parts P151; work T-049]",
         "The ICU firmware uses the card slot on the Teensy 4.1 itself. [icu.ino]",
         "Three agent rows wait on this card: the odometer that survives a power cycle (F-007), the settings file with a safe mode (F-010) and the logging power-loss test (B7). [work F-007, F-010, B7]",
         "The ICU writes one folder per drive on the card, /RX7/<number>/, holding a summary, a thinned log and a full log. [log_files; D-493]",
