@@ -432,3 +432,13 @@ Reasoning: the maker documents a key colour settable by RGB and every filter swi
 Still open as confirm on the parts row (R11, nothing measured): chassis depth against the depth behind the FB dash, that [Illumination] lights the face keys, the L3-M receptacle's four feeds against this unit's harness. The runner-up PK038 stays in reserve.
 
 Consequences in the data: PK037 accepted; LP55 status chosen with spec naming the product."
+D-528,,"Front and surround speakers: Audison Prima AP 4/AP 1 and APX 5 (PK039, PK041)",2026-10-13,standing,,,,,"**The front speakers (LP58) are the Audison Prima AP 4 100 mm midbass pair + AP 1 26 mm tweeter pair with crossovers, and the surround speakers (LP59) are the Audison Prima APX 5 130 mm coaxial pair (APX 6.5 if V-105 finds the 6.5 in opening).**
+
+His answers (parts round, picks PK039 and PK041, app, 2026-10-13): PK039 ""yes""; PK041 ""yes"".
+
+- PK039: Audison Prima front set, AP 4 100 mm midbass pair + AP 1 26 mm tweeter pair, about 399.98 USD, Abt / OnlineCarStereo.
+- PK041: Audison Prima APX 5 130 mm coaxial pair (APX 6.5 if V-105 finds the 6.5 in opening), about 212.49 USD, OnlineCarStereo.
+
+Runners-up PK040 (Hertz DCX 100.3) and PK042 (Hertz DCX 130.3) are unused.
+
+Consequences: LP58 and LP59 become `chosen`; the fit still carries confirm for the opening sizes and depth (V-103 to V-106, R11), and the APX 6.5 variant if the rear opening is 6.5 in."
