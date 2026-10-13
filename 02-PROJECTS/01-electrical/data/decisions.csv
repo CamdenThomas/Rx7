@@ -1537,3 +1537,18 @@ His words (chat, 2026-10-13): ""what are the remaining things in cad and firmwar
 **Supersedes nothing in substance:** D-496's split by unit stands; its two shared folders are renamed and tidied by this. Identifiers, project names and sketch names are unchanged, as D-496 left them.
 
 **In the data.** work X-007 (its render script's path); the folders and every path the move touches, proved by run.sh end to end."
+D-499,,The two winks are board-mount changeover pushbuttons under lit caps on the plate board; P083 dropped (block 01.38),2026-10-13,standing,,,01.38,,"**The two winks on the left plate are board-mount SPDT momentary pushbuttons under lit key caps (C&K 8125 class), on the plate board, lit from the plate's own LED driver, exactly as the sketch draws them. P083's metal buttons are dropped.**
+
+Block 01.38 asked which switch the two winks should be on the plate left of the wheel. His answer, option (b), picked with no further words: ""(b) A changeover pushbutton under a lit key cap, like the plate's other keys. A board-mount SPDT momentary pushbutton (C&K 8125 class, about $4 each, two) on the plate board, the wink face lit through its cap from the plate's own light driver, exactly as the sketch draws it. The three wink wires then end on a header on the plate board and their two resistors move onto it. P083 ($12, in the cart, unpaid) is dropped; the plate board is redrawn for it (my time, not yours).""
+
+Reasoning: the 16 mm metal buttons touch at the sketch's 19 mm pitch and cannot be lit through; (b) keeps the sketch's spacing and lit wink faces and needs no window. The changeover contact is kept (D-189, D-482: a held wink opens the other lamp's relay return), so an ordinary one-contact key was never an option.
+
+Consequences in the data:
+- P083 goes to 0 and is not bought; the row stays so Y21's and DV24's cites resolve.
+- New part P204: two C&K 8125 class SPDT momentary pushbuttons with lit caps, about $4 each, part number and cap confirm (R11: nothing measured).
+- DV24 now reads: SPDT momentary x2 (P204) on the plate board; the 18 kOhm and 33 kOhm wink resistors sit on the plate board, and the three wink wires end on its 12-way header (J1).
+- P198 / P199 notes carry the wink switches as P204.
+- Y21's board is redrawn for the new switch footprint and the resistors: new work row Y22.
+- The Amazon cart loses the P083 line (12 USD estimate) - re-read the total when the cart is edited.
+
+Supersedes nothing: it settles which part DV24 is, left open by D-492."
