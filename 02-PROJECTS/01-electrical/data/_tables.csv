@@ -40,3 +40,4 @@ inbox,"his answers waiting to be applied, one file per answer per device (D-405)
 awg,"copper wire by gauge: ohms per kft, amps in air and in a bundle - the figures the electrical checks size wires with (Y1, 2026-10-09)"
 ideas,"concepts Camden raises that rule nothing yet: his words verbatim, raw until he rules - a row here supersedes no decision and changes no table (the form of 02-APP's ideas table; 2026-10-10)"
 log_channels,"the thinned log the ICU writes once a second and the app pulls first: one row per channel in the record, its source frame or input and its width - the record length and the pull time derive from this table (D-493, BT1)"
+log_link,"the log link between the ICU and the app, end to end: the Bluetooth LE service the app sees (one row per characteristic and opcode) and the framed UART channel between the C3 radio and the Teensy that carries a file - the one description both the app (02-APP BL2) and the firmware (BT3) are built from (D-494, BT2)"
