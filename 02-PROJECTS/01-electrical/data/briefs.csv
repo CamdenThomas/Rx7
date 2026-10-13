@@ -346,3 +346,345 @@ The fab package is the ICU carrier project's fab folder: the gerbers zip, the dr
 The BOM csv names each maker's part number and marks the unsure ones confirm; R18 has no value yet - three values are bought (P203) [work Y17, Y18]
 The cheapest true fit test is a printed enclosure and a bare board: every DT13 through its cut-out with 0.5 mm a side, the board on all four bosses unstressed, the lid closing at all four screws [checks CK27]
 It is money, so it is yours [work F12]",The order for the final ICU carrier boards is placed and its confirmation is noted in the app.,"If the fab's checker rejects the files or its preview does not look like the board picture, do not approve: raise a note with a screenshot.","Tick the row when ordered. Add the order number, the board count and the price as a note."
+A0,"The four carts - Waytek, WireBarn, DeutschConnector.com and Amazon - are paid, each matching the parts table line for line.",desk,1 h - confirm,"Laptop with the four carts open
+Payment card",P001 P002 P003 P004 P005 P006 P007 P008 P009 P010 P011 P012 P013 P014 P015 P016 P017 P018 P019 P020 P021 P163 P022 P023 P024 P025 P026 P027 P028 P029 P030 P031 P032 P033 P034 P035 P036 P099 P100 P101 P102 P115 P123 P124 P125 P126 P127 P128 P129 P130 P131 P132 P133 P140 P162 P205 P037 P038 P039 P040 P041 P042 P043 P044 P045 P046 P047 P048 P049 P050 P051 P052 P053 P054 P055 P057 P058 P059 P060 P061 P062 P063 P064 P065 P066 P067 P068 P069 P070 P071 P072 P073 P074 P075 P076 P077 P078 P079 P080 P081 P082 P084 P094 P095 P096 P097 P098 P114 P116 P134 P135 P136 P138 P139 P158 P164 P171 P172 P189 P197,"A1 is ticked: every cart line is at its target
+A6 is ticked: the four heavy-cable listings state 90 °C or higher and 100 % copper
+No block is open that changes a line","This is the single largest money step of the project [work A0]
+No store is paid while any block that changes a line is open [D-323]
+Store figures in the carts table on 2026-10-13, taken before A1's changes: Waytek 455.04 USD (11 lines) · WireBarn 382.68 USD (8 lines) · DeutschConnector.com 944.08 USD (26 lines, 188 pieces) · Amazon 1096.22 USD (49 lines / 55 items) [carts]
+Those four figures add up to 2878.02 USD as of today's rows; A1 adds lines, so the paid total is higher - the old gap estimate of about 332 USD predates many added rows, so read each cart's own total before paying [carts, summed by sql; params gaps_est_usd]
+Amazon's lines, priced from the parts rows as quantity x unit price on 2026-10-13, come to 2481.67 USD with P138, P139, P158 unpriced and the amplifier fuse P188 left out; that is an estimate at today's quantities and will not equal the store's figure until the cart is re-read [parts unit_usd, summed by sql; carts Amazon]
+The Waytek, WireBarn and DeutschConnector.com rows carry no unit price, so only the store's own total exists for those three [parts unit_usd]
+WireBarn: sign in before checkout or the cart is lost [carts WireBarn]
+P049 (disconnect, Blue Sea 9003e) and P052 (MRBF 250 A) must have had their part numbers confirmed before the cart is paid [parts P049, P052]
+The vehicle parts (A2) and the hardware-store stock (C2) are separate rows, not in these carts [work A2, C2]
+D1 counts every box against the parts table when it arrives, before anything is opened [work D1]","Four order confirmations in hand, one per store, each listing the same lines and quantities as the parts table.",A line out of stock or changed in price at checkout: do not substitute a different part. Pay the rest of that cart only if the missing line is not a long-lead Deutsch kit; note the missing line in the app so it is re-sourced. A total far from the noted one: stop and re-read the cart against the parts list before paying.,Tick the row. Put the four paid totals and order numbers in a note in the app.
+A1,"Every line in the four carts matches its parts row: each ""raise"" line at its target, each ""to add"" line in its cart, each ""confirm"" part number read on the seller's page - and nothing is paid yet.",desk,2 to 3 h - confirm,"Laptop with the four store carts open
+The app's parts list beside it",P002 P007 P009 P014 P015 P019 P020 P021 P163 P024 P025 P028 P029 P030 P033 P034 P035 P036 P099 P100 P101 P102 P115 P123 P124 P125 P126 P127 P128 P129 P130 P133 P140 P162 P205 P049 P052 P061 P062 P063 P065 P066 P075 P094 P095 P096 P097 P098 P114 P116 P134 P135 P136 P138 P139 P158 P164 P171 P172 P188 P189 P197 P190 P191,"The freeze (Z2) is answered: the project is at SOURCING
+No block is open that changes a line in a cart
+The stud threads are measured (CK24, taken on the strip day) so the lug hole sizes are known","Nothing is bought until the design is complete and you understand it; no store is paid while any block that changes a line is open [D-323]
+This row only edits the carts. Paying is A0, after A6 has checked the heavy cable [work A0]
+A row's status says what to do: cart = in the cart at the right quantity; raise = change the line to the row's target; to add = not in the cart yet; hold = read the part number on the seller's page first [parts status, target]
+Lines to change, counted from the rows on 2026-10-13: Waytek 3 raise; WireBarn 2 raise and 4 to add; DeutschConnector.com 19 raise and 7 to add; Amazon 6 raise, 18 to add and 3 on hold [parts, counted by sql]
+The gaps were once estimated at about 332 USD on top of the carts; rows added since make it larger - an estimate, confirm at the carts [params gaps_est_usd]
+WireBarn showed ""Hello, Guest"" at the review: sign in before checkout or the cart is lost [carts WireBarn]
+The DeutschConnector.com total must be re-read once the cart is edited [carts DeutschConnector.com]
+Lug hole sizes (P064, P065, P098) and the ring-terminal mix (P079) are confirm until CK24 has measured the studs [parts P064, P098, P079; checks CK24]
+Wire footage is a hand estimate until the routes are measured (M-2): the targets are 1.5 x the estimated runs [parts P009, P015; work G13]
+P188, the amplifier's MRBF fuse, stays on hold: it is bought with the amplifier pick, not now [parts P188]
+P034 and P035 (two dust caps) drop to 0; P083 is not bought; P137 is folded into P002 [parts P034, P035, P083, P137]
+The MAXI fuses (P190, P191) are a local purchase, not a cart line; the blade fuses are in your drawer [parts P190, P191, P141]","Each of the four carts shows every row of that store at its target quantity, every ""confirm"" part number has been read on the seller's page, the four new totals are written down, and nothing is paid.","A part number that cannot be found, or a listing that does not match its row's spec: do not substitute. Leave the line out, raise it in the app as a note, and do not tick - that line holds A0.",Tick the row. Put the four new cart totals in a note in the app: the carts table is re-read from them.
+A2,"The three vehicle parts - the brake pedal switch, the ignition switch's electrical portion and the road-speed sensor - are ordered.",desk,45 min - confirm,"Laptop: RockAuto, PartsGeek or a Mazda specialist",P085 P086 P113,"The project is at SOURCING
+The measurement day's M-2 has read the transmission's speedometer-drive boss thread (needed for P113's adapter)","Brake pedal switch (P085): any 2-terminal type without cruise, Standard SLS-52 class - confirm fit; about 20 USD [parts P085]
+It serves the brake ladder input A3 only; the brake wake contact is a spare P084 plunger switch on the pedal, not a second pole [D-278; parts P085]
+Ignition switch, electrical portion, 1981-83 RX-7 (P086): terminals B, ACC, IG, ST; search ""81-83 RX-7 ignition switch electrical""; new old stock or a quality reproduction; about 45 USD [parts P086]
+The factory number for this car's serial is BA24-66-155A; it is no longer available at Atkins, and BA14-66-151A is suggested as a substitute - confirm before buying [00-CAR PT708]
+Road-speed sensor (P113): a sealed Hall pulse generator on the transmission's speedometer-drive boss, Dakota Digital SEN-01-4160 or AutoMeter 5291 class, 8 000 or 16 000 pulses per mile; about 105 USD [parts P113]
+P113's thread adapter comes from the boss measured at M-2, and the part is bought after that measurement [parts P113; work C1]
+The senders are not on this list: the ones that work stay [D-261; work A2]
+The three rows add to 170 USD by their estimates on 2026-10-13 [parts unit_usd, summed by sql]","Three orders placed: a 2-terminal brake switch, the 1981-83 ignition switch electrical portion, and a pulse generator with the adapter for the boss thread you measured.",No ignition switch listed new: do not buy a used one unseen - note it in the app (the row asks for new old stock or a quality reproduction). No adapter for the boss thread: buy the sensor only once the adapter is found.,Tick the row. Note what was ordered and from whom in the app.
+A6,"Every heavy-cable line in the Amazon cart, 2 AWG and 1/0 alike, states insulation rated 90 °C or higher and 100 % copper, or has been swapped for one that does.",desk,20 min,Laptop with the Amazon cart open,P061 P062 P096 P097,"A1 is done: the cable lines are at their target lengths
+Nothing is paid yet","The cable is accepted at the cart on two criteria: the listing must state 90 °C or higher insulation and 100 % copper [D-238]
+CCA - copper-clad aluminium - is refused at any price [D-238]
+If a listing does not state both, the line is swapped before payment, not after [D-238; work A6]
+The four lines: P061 2 AWG red, P062 2 AWG black, P096 1/0 red, P097 1/0 black - fine-strand welding cable, TEMCo class [parts P061, P062, P096, P097]
+What each carries: 2 AWG red is the PMU feed C03, the Class-T link C01 and the busbar link C10; 2 AWG black is the engine-to-chassis strap C06; 1/0 red is the starter feed C04 and the post-to-disconnect link C12; 1/0 black is the battery negative C05 and the cranking return C11 [parts P061, P062, P096, P097]
+The row names 2 AWG and 1/0 only; the 6 AWG alternator cable P063 is ""any SGX / welding"" and is outside its wording [work A6; parts P063]
+The wire table's bundle figures are a hand derating, to be checked against the insulation rating when the cable is chosen here [awg amp_bundle note]","All four listings state both 90 °C or higher and 100 % copper in their own text, at the lengths A1 set.","A listing that is silent on either, or says CCA: remove it and add a listing that states both, same gauge, colour and length. If none can be found, raise it in the app as a note and do not tick.","Tick the row. If a line was swapped, note the new listing in the app."
+B1,"The A/C compressor's clutch is unplugged with its lead taped back, and the compressor's own belt is off and boxed; nothing else of the A/C is touched.",engine bay,1 h - confirm,"Spanners or sockets for the compressor's pivot and adjusting bolts - sizes not in the record for this car: note what you use
+Insulating tape and a cable tie
+A label and a bag or box for the belt
+Camera",,"Engine off and cold, key out
+The project is at SOURCING (the row's gate)","The refrigerant stays in the sealed system: no hose or fitting is opened, no shop is needed [D-474]
+The compressor stays bolted to the engine; only its clutch plug comes apart and its belt comes off [D-474]
+The compressor runs on its own belt: nothing else is driven by it, so no other belt is disturbed [D-228]
+The clutch (the factory diagram's magnet clutch, G-19) has one lead, coloured BW - black with a white tracer - confirm on the car [S-001 p.24]
+The clutch lead loops through an open hole in the compressor body so it cannot touch the pulley - from the dealer A/C instruction, year not stated: confirm on the car [00-CAR PT235]
+The compressor hangs on a pivot bolt at the bottom of its mount and two bolts in the adjusting slots at the top; the belt runs round the crankshaft pulley and the compressor clutch - dealer instruction, confirm on the car [00-CAR SP-731, SP-732]
+That instruction says the water-pump pulley must be turned to the right position to fit the belt; the same may apply taking it off - confirm [00-CAR SP-732]
+The belt may be Mazda 0000-47-5409-03 (Dayco 17385): which belt is on the car is not recorded [00-CAR PT041, SP-998]
+Left alone: the bracket, condenser, receiver/drier, lines, evaporator, the factory interlock parts (G-18, G-19, G-21, G-22, G-23, the dash A/C switch) and the blower, heater core, HVAC case, ducts and doors [work B1; D-474]
+The full strip comes back with the engine swap; the new harness carries no A/C circuit [D-474]","The clutch connector is apart with the harness side taped and tied clear of every belt; the compressor belt is off, labelled and in its box; the compressor is tight on its mount; the alternator and air-pump belts are as they were.","If the belt will not come off without taking another belt or a hose off: stop. Never loosen a refrigerant fitting. Photograph it and raise it in the app as a note. If you moved the alternator belt, re-set it: 13 to 17 mm deflection at a 10 kg push midway [00-CAR SP-025].",Tick the row. Note the number printed on the belt in the app - the car record asks which belt is fitted.
+C2,"The hardware-store stock is bought: the dash-node carrier panel, the sill-node panel, the battery backing plate, paint for any aluminium, and the binnacle plate.",hardware store,1 h plus the trip - confirm,"The measurement day's numbers (M-1, M-4, M-5) and the cardboard mock-ups
+Tape measure",P090 P091 P092 P093 P121,"The measurement day (C1) is done: the dash spaces (M-1), the cargo bin mock-up (M-4) and the sill space (M-5) are measured
+The project is at SOURCING","Carrier-panel stock for the dash node (P090): 3 mm aluminium or ABS sheet, one or several small pieces; sizes from M-1 and the bench layout (E13) [parts P090]
+Sill-node panel stock (P091): about 150 x 100 mm, from M-5 [parts P091]
+Battery backing plate stock (P092): 3 to 4 mm aluminium or steel, sized from the M-4 mock-up; it goes under the floor beneath the battery [parts P092]
+Paint or powder-coat (P093): never bare aluminium against a live stud [parts P093]
+Binnacle plate stock (P121): 3 mm black ABS or aluminium, one piece sized from M-1; the unit's face was mocked up at 335 x 136.5 mm - confirm against your measurement; about 15 USD [parts P121]
+No battery-cover stock: the terminals are covered by boots and nothing else [D-235; work C2]
+The trip was estimated at about 40 USD [params hardware_est_usd]
+P090 to P093 carry no quantity in the record: the sizes are your measurements [parts P090, P091, P092, P093]","Five items in hand: sheet for the dash-node panels, a piece at least 150 x 100 mm for the sill, plate 3 to 4 mm thick at least the size of the M-4 mock-up, paint, and the binnacle piece.",A size you do not have yet (a measurement not taken): buy the rest and note the missing one in the app; do not guess a plate size.,Tick the row. Note what each piece measures and cost in the app.
+D1,"Every box that arrived is counted against the parts table, row by row, before anything is opened, and every heavy part's torque figure is read off its maker's sheet.",bench,2 h - confirm,"The app's parts list (01-electrical, by store)
+The four order confirmations
+Tape measure for the cable and wire lengths
+Marker and bags",P001 P002 P003 P004 P005 P006 P007 P008 P009 P010 P011 P012 P013 P014 P015 P016 P017 P018 P019 P020 P021 P163 P022 P023 P024 P025 P026 P027 P028 P029 P030 P031 P032 P033 P034 P035 P036 P099 P100 P101 P102 P115 P123 P124 P125 P126 P127 P128 P129 P130 P131 P132 P133 P140 P162 P205 P037 P038 P039 P040 P041 P042 P043 P044 P045 P046 P047 P048 P049 P050 P051 P052 P053 P054 P055 P057 P058 P059 P060 P061 P062 P063 P064 P065 P066 P067 P068 P069 P070 P071 P072 P073 P074 P075 P076 P077 P078 P079 P080 P081 P082 P084 P094 P095 P096 P097 P098 P114 P116 P134 P135 P136 P138 P139 P158 P164 P171 P172 P189 P197 P085 P086 P113,"A0, A1 and A2 are done: the four carts and the vehicle parts are ordered
+Every shipment has arrived
+Sealed bags stay sealed until their row is counted","Count quantity per row, before anything is opened [work D1]
+The quantity to count against is the one the app shows on each row; where a list below shows a target, A1 moved the order to that target [parts qty, target]
+The Deutsch crimper P038 is accepted only after its test crimps pass at D4: keep its box and receipt [parts P038]
+Wire by the foot (WireBarn) and the heavy cable are counted by length: read the label or measure [parts unit]
+P048 Class-T fuse is two: one fitted, one spare. P054 and P055 MIDI fuses are sold as pairs: one fitted, one spare each [parts P048, P054, P055]
+Every heavy connection is torqued to its maker's figure, read off the maker's sheet today and written into the record before E8; none is recorded yet [rules torque]
+The parts whose sheets carry those figures: Class-T block P047, MRBF holder P051, battery post clamps P095, busbar P007, PowerPost P050, MIDI holders P053, and the relay sockets [rules torque]
+The two spare 39-way PMU housings and their terminals are counted in their own row, D3 [work D3]
+Blade fuses are in your drawer and MAXI fuses are a local purchase: neither arrives in a box [parts P141, P190, P191]
+The amplifier's fuse P188 was not ordered [parts P188]","Every row of the four stores and the three vehicle parts has its quantity counted and matching, or its shortfall written down; the torque figures are noted; nothing is opened that was short or wrong.","Short, wrong or damaged: do not open it. Photograph the label and the packing slip, note the row id and the count in the app, and contact the seller. A wrong Deutsch kit or fuse holder is cheaper to return sealed.","Tick the row. Note any shortfall by row id, and enter each torque figure you read (part id, stud, figure, unit) as a note in the app."
+D2,"The battery hold-down, the two post terminals and the boots are proven to fit the Ionic on the bench, and each boot lifts off by hand with its terminal loaded.",bench,45 min - confirm,"Spanners for the post-clamp bolts and the stud nuts - sizes not in the record: note them
+Tape measure or calipers",P057 P094 P095 P098 P066,"A1 is done and the parts have arrived (D1 counted them)
+Rings and watch off; the battery on a clear, non-metal bench
+One terminal covered whenever a tool is near the other","The battery is the Ionic IC-12V40-S9H, a 12 V 40 Ah heated lithium (LiFePO4) pack [D-330; 00-CAR S-036]
+Its case measures 170 W x 230 L x 190 H mm; the terminals and boots stand above the 190 mm [params battery_case_mm; D-239]
+It has SAE tapered posts, so each connection is a brass post clamp with a 3/8 in stud take-off (P095), never a ring lug on the post [D-234; parts P095]
+The positive clamp's stud carries one lug only: the 1/0 cable C12 to the master disconnect. The fuse holder and the PMU feed sit on the disconnect, not here [parts P095; D-319]
+The negative clamp's stud carries the 1/0 cable C05 to the rear ground stud [cables C05]
+The clamp stud's thread is confirm until measured (CK24) [parts P095; checks CK24]
+The boots (P094) are the only cover over a live post: no box and no cover panel, so a boot must clear the loaded terminal and pull off by hand for a jump start [D-235; D-229; parts P094]
+The hold-down is a clamp with J-hooks on M8 grade-8 hardware, nyloc nuts and fender washers; in the car it bolts through the floor onto a backing plate, never sheet metal alone [parts P057; D-063]
+A dropped tool across a lithium battery's terminals welds [work E4]",Both clamps seat and tighten on their posts; each stud takes a 1/0 lug with its nut fully on; each boot covers its loaded terminal completely and lifts off with one hand; the hold-down grips the 170 x 230 mm footprint; the height over the boots is written down.,"A boot that will not cover the stack or will not lift by hand, a clamp that will not tighten, a hold-down that does not fit the case: change nothing on the battery. Photograph it and raise it in the app as a note - the part is exchanged before E8.","Tick the row. Note the height from the bench to the top of the fitted boots, in mm (the cargo-bin mock-up is cut to the case plus the boot height)."
+D3,Both spare 39-way PMU housings are confirmed to carry a full terminal set - 16 large and 27 small each - and the terminals' part numbers are read.,bench,20 min,"A tray
+Two labelled bags",,"A1 is done (the row's gate)
+Clean bench: the terminals are small and there are no others","The two spare housings in hand hold 54 small and 32 large terminals between them: 27 small and 16 large each [D-135; work D3]
+They are the only spare terminals: none were ordered, and the car's own set has no spares [D-135]
+That is why the practice crimps at D4 use the spare sets first [D-135]
+The PMU's 39-way connector has 11 large cavities (pins 1, 2, 12, 13, 14, 25, 26, 27, 28, 38, 39), 27 small ones and one medium (pin 15, the +5 V output) [parts P039; pins cav_size]
+The medium terminal for pin 15 and its crimp die are not named anywhere in the record [parts P039]
+The large terminals crimp in the 2.8 mm die and the small in the 1.5 mm die of the open-barrel crimper P039 [parts P039]
+The three terminal part numbers are to be read off the spare housings and checked against the PMU pinout sheet [checks CK24; 00-CAR S-027]
+The counts are verified on arrival [D-127]","Two bags, each counted at 16 large and 27 small, labelled; the part numbers on the housings or bags written down; whether any medium terminal is present is noted.",A short count: write the shortfall in the app before D4 uses a single terminal - these are the only replacements. No medium terminal found: note it; pin 15's terminal has to be identified before the connector is terminated (E16).,"Tick the row. Note the counts (large, small, medium) per set and the part numbers you read."
+D4,"Each crimper has made three passing test crimps in a row on every terminal and wire size it will be used for, and the setting that passed is written down.",bench,3 h - confirm,"Deutsch solid-contact 4-indent crimper, sizes 12 / 16 (P038)
+Open-barrel ratchet crimper, 1.5 mm and 2.8 mm dies (P039)
+Hydraulic lug crimper, 8 AWG to 1/0, with dies (P037)
+Digital hanging scale 0-50 kg (P040)
+Wire strippers 10-22 AWG and flush cutters (P043)
+A vice or locking pliers to hold the contact
+Eye protection",P037 P038 P039 P040 P022 P023 P024 P025 P026 P027 P064 P098 P065 P010 P012 P015 P017 P061 P096 P063,"A1 is done and D1 has counted the parts in
+D3 has counted the two spare PMU terminal sets
+Eye protection on: a contact can let go under the pull","A crimper is accepted only after three practice crimps pass the pull test: 16 AWG 20 lbf, 14 AWG 34 lbf, 12 AWG 45 lbf [D-203]
+On the kg scale those are 9.1 kg, 15.4 kg and 20.4 kg [arithmetic from D-203: 1 lbf = 0.4536 kg]
+The Deutsch crimper P038 is kept only if its test crimps pass [parts P038]
+A Deutsch size-16 contact carries 13 A and seals on 14-20 AWG wire; a size-12 carries 25 A and seals on 10-14 AWG [series DT, DTP]
+Spare size-16 contacts for 16-18 AWG: socket P022 (0462-201-16141), pin P023 (0460-202-16141) [parts P022, P023]
+Size-16 contacts for 14 AWG are a different part: socket P024 (0462-209-16141), pin P025 (0460-215-16141); the kit contacts do not take 14 AWG [parts P024, P025]
+Spare size-12 contacts: socket P026 (0462-203-12141), pin P027 (0460-204-12141), five of each [parts P026, P027]
+PMU terminals: the 2.8 mm die for the 11 large (12 AWG, and 10 AWG on pin 25), the 1.5 mm die for the 27 small (16 AWG, and 14 AWG on pins 3, 4, 5, 9, 10, 11); try the die on one spare terminal first [parts P039; pins cav_size, awg]
+PMU practice terminals come from the spare sets: the car's own set has none to spare [D-135]
+The hydraulic crimper does every 2 AWG, 1/0 and 6 AWG lug; the 1/0 dies are tested too, since two 1/0 runs were added [parts P037; work D4; D-246]
+Lugs bought beyond the cable ends are the practice stock: 2 AWG P064 is 18 for 8 ends, 1/0 P098 is 12 for 8 ends [parts P064, P098]
+The 6 AWG lug row's target is 4 and the alternator cable uses all four: test one only if more than four arrived [parts P065]
+Not in the record: the strip length for any terminal, the Deutsch crimper's selector and depth setting, which die fits which lug, and a pull figure for a lug or for 10 AWG - confirm","Three passes in a row, written down with the setting used, for: size 16 on 16 AWG, size 16 on 14 AWG, size 12 on 12 AWG, PMU small on 16 AWG and on 14 AWG, PMU large on 12 AWG, a 2 AWG lug and a 1/0 lug.","A crimp that pulls out below its figure: change the setting (selector, depth, die) and start that set of three again. A crimper that cannot make three in a row pass is returned and replaced before any real crimp - do not use it on the car. A PMU die that does not fit the spare terminal: stop and note it in the app.","Tick the row. Note for each combination the setting that passed and the load each held (kg), and the strip length you used."
+E4,"You have read every safety rule of the build once, properly, and can say each one back before the first tool touches the car.",desk,30 min,,,"D1 (parts counted), D4 (crimpers proven), C1 (the measurement day) and B1 (A/C clutch and belt) are done","The battery is lithium: a dropped tool across its terminals welds [work E4]
+The master disconnect is a Blue Sea 9003e on the battery POSITIVE in the cargo bin; opening it removes supply from everything, the starter cable included [D-319; recovery RC01]
+The cable between the positive post and the disconnect (C12) is the one length no fuse protects: it is kept to inches [D-062; cables C12]
+The Class-T fuse is 150 A and feeds the whole PMU system; the MRBF fuse is 250 A and protects the starter cable [fuses Class-T, MRBF]
+A PMU output can fail live: its switch fails short, not open, so an output can be on with the key out. Only the master disconnect is certainly off [recovery RC01; checks CK07]
+The disconnect has no extra pole: shut the engine down before opening it [recovery RC01]
+The factory manual: the negative battery cable comes off first and goes on last [S-002 p.5-5]
+The fuel pump and tank sender wiring run under the rear floor to the tank [routes RT17]
+The dash node sits under the cowl seam and windscreen, where this car leaks [rules water-ingress]
+Every heavy connection is torqued to its maker's figure and paint-marked [rules torque]
+From E26 until E28 finishes the car does not start, and it is not driven until the interior is back at E35 [D-414; D-387]
+A fire extinguisher is not a parts row: have your own within reach [work E4]","You can say each of the rules in the steps without looking, and the extinguisher, jack stands, chocks and terminal boots are where you will work.","A rule you do not understand, or one that seems to disagree with a step later in the list: ask in the app (Explain on the row) before touching the car.",Tick the row.
+E5,"You can crimp, insert, lock, tug-test and remove a Deutsch contact, shrink an adhesive joint until the glue weeps at both ends, and finish one lug with heavy-wall shrink and a boot - all on scrap.",bench,1.5 h - confirm,"Deutsch solid-contact 4-indent crimper, sizes 12 / 16 (P038), at the setting that passed at D4
+Contact removal tool, size 16 (P031 metal, P032 plastic)
+Heat gun, 1500 W, two temperatures (P042)
+Wire strippers and needle-nose pliers (P043)
+Hydraulic lug crimper, 8 AWG to 1/0 (P037)
+Eye protection",P022 P023 P124 P077 P078 P064 P066 P061 P010,"E4 is done: the safety rules read
+D4 is done: the crimper settings that passed are written down
+Eye protection for crimping and the heat gun","A Deutsch DT housing has two halves: the plug (DT06, socket contacts, the leg side) and the receptacle (DT04, pin contacts, the panel side) [housings leg_side, box_side]
+Each half has a wedgelock, the coloured piece that locks the contacts in: W4S in a 4-way plug, W4P in its receptacle [housings wedgelocks]
+The cavity number is the one moulded into the housing: read it off the part, never mirror it [rules cavity-numbers]
+A contact must click in and not back out under a firm tug [work E5]
+Insert and remove a contact ten times with the removal tool [work E5]
+The metal removal tool P031 stays in the toolbox; the plastic one P032 lives in the car [parts P031, P032]
+No spare housing is bought: every kit is counted to a housing in the car. The DT06-4S plugs for L3-RDR and L4-RDR wait on the shelf for parts not fitted this build [parts P124]
+Adhesive heat-shrink is done when the glue weeps evenly at both ends [work E5]
+Every lug gets heavy-wall adhesive shrink and a boot [work E9]
+How the removal tool releases a contact is not described in the record: follow the tool's own instructions [parts P031, P032]","One contact inserted and removed ten times without damage, clicking and holding a firm tug each time; one adhesive joint with glue showing evenly at both ends; one lug finished with heavy-wall shrink and a boot.",A contact that will not click: it is not fully home or the wedgelock is in the way - take the wedgelock out and try again. A contact that backs out under a tug: do not use that housing in the car; note it in the app. Scorched shrink or wire: lower the heat and keep the gun moving.,Tick the row.
+E6,"The label printer is set up, one test label has survived wrap, shrink and tug, and the node labels for every relay and fuse position are printed.",bench,1.5 h - confirm,"Label printer, Brother PT-D220 (P041)
+Heat gun (P042)
+Scissors",P041 P075 P076 P008,E5 is done,"Every wire is labelled at both ends with printed laminated tape - Brother PT-D220, TZe-FX231 flexible-ID tape, 12 mm black on white - never tape and marker, the moment it is cut [rules label-format]
+Both ends carry the same pair read in opposite order, from / to: O8 / L2-M-1 at the PMU end and L2-M-1 / O8 at the other [rules label-format]
+Wrap about 45 mm with the text outside and rub it down; where a wrap would not read, fold it into a flag [rules label-format]
+Under loom, in the engine bay or through a grommet, clear heat-shrink goes over the label [rules label-format]
+Node labels go on the panel beside each relay socket and fuse position, empty ones included, from the label columns [rules label-format; work E14]
+There are 14 relays and 34 fuse positions in the tables today [relays; fuses]
+The build has about 582 wire ends to label, about 26 m of tape at 45 mm; a cartridge is 8 m, so four [params label_ends; parts P075]
+F13 has no label text (a dash) in the table: it is an empty position [fuses F13]","A TEST / L0-X0 label wrapped on a 16 AWG offcut, under clear shrink, that stays put when tugged; and one printed label for each relay and each fuse position, kept in order on a card.",A label that slides or unwraps after shrinking: wrap it tighter with more overlap and rub it down before the shrink. Tape that is not TZe-FX231 (the flexible one) lifts off round wire: do not use it.,Tick the row.
+E7,"Every resistor and diode the switch ladders use is soldered to 4 in leads, heat-shrunk, measured, labelled with its switch and position, and bagged with its measured value written on the bag.",bench,"an evening, about 3 h - confirm","Soldering iron and solder (P044)
+Multimeter on ohms (P045)
+Heat gun (P042)
+Wire strippers and flush cutters (P043)
+Label printer (P041)
+Small bags and a marker",P069 P161 P071 P197 P077 P010 P075,"E6 is done: the label printer works
+The wake stages are designed (A10, done)
+Eye protection when cutting leads","A ladder is a set of resistors on a switch so one PMU input wire can tell every switch position apart by its resistance [ladders]
+Resistors come from the 1 % metal-film kit P069 [parts P069]
+Each sub-assembly is checked again in the car: ohms at the plug against the table, within 2 % [work E20]
+Key switch, input A16 (wire L3-S1 1): ACC 33 kΩ · IG 15 kΩ · ST 6.8 kΩ, all onto one wire [cavities L3-S1 1; ladders A16]
+Light switch E-01, input A15 (L3-S1 2): PARK 33 kΩ · HEAD 15 kΩ · DIMMER-HI 8.2 kΩ · PASS 3.3 kΩ [cavities L3-S1 2; ladders A15]
+Turn stalk F-02, input A1 (L3-S1 3): LEFT 1.8 kΩ · RIGHT 10 kΩ · OFF 47 kΩ [cavities L3-S1 3; ladders A1]
+Wiper stalk D-03, input A2 (L3-S1 4): HIGH 4.7 kΩ · LOW 10 kΩ · INT 18 kΩ · OFF 47 kΩ [cavities L3-S1 4; ladders A2]
+Wiper WASH leg: the ladders table says 470 Ω + 1N4148; the cavity row still says 1.8 kΩ + 1N5819. The parts rows say the WASH leg moved to the 1N4148 - confirm before soldering this one [ladders A2 WASH; cavities L3-S1 4; parts P071, P161]
+Brake pedal switch, input A3 (L3-S1 5): 4.7 kΩ. Wiper park, also A3 (L2-S 3): 12 kΩ at the motor's terminal L, and a 47 kΩ baseline to the front ground at the L2-S plug [cavities L3-S1 5, L2-S 3; ladders A3]
+Hazard switch, input A8 (L3-S1 6): 4.7 kΩ, and a 47 kΩ baseline to column ground at the switch. Horn pad (L3-S1 11): 8.2 kΩ [cavities L3-S1 6, L3-S1 11; ladders A8]
+The two wink resistors (18 kΩ, 33 kΩ) are on the wink plate's circuit board, not made here [cavities L3-S1 11; D-504]
+Gear selector (inhibitor) switch A-06: 8.2 kΩ in the lead to terminal BY (input A4, L1-S1 11) and 8.2 kΩ in the lead to GY (input A5, L1-S2 7), each with a 47 kΩ baseline to the block ground at the switch [cavities L1-S1 11, L1-S2 7; D-487]
+Door jamb switches, input A6 (L4-S 2): driver 24 kΩ + 1N4148, passenger 8.2 kΩ + 1N4148, diode anodes toward the splice; a 47 kΩ baseline from the sill splice to the sill ground [cavities L4-S 2; D-486]
+Two 1N4007 diodes (P197) go on the interior lamp's RY wire, one at each jamb switch, anode on RY [parts P197; D-486]
+The 47 kΩ baselines on A3, A6 and A8 are not fitted in the car until the wake stages have passed their bench test CK12 [work E7; checks CK12]
+The light switch's PASS contact is unproven: a 1980 table shows no separate contact. Make the 3.3 kΩ part, but its use waits on the switch measurement CK17 [checks CK17]","One labelled bag per switch position in the lists above, each with a resistor (and its diode where named) on two 4 in leads under heat-shrink, each measured within 1 % of its value and the reading written on the bag.","A part that reads outside 1 % of its marked value: bin it and make another - the in-car check allows 2 % in all. A diode that reads open both ways or short both ways: bin it. The WASH leg: if the tables still disagree when you reach it, leave it unmade and raise it in the app as a note.",Tick the row. Note any value you could not make (the WASH leg) in the app.
+E8,"The factory battery and its two cables are out, and the Ionic battery sits in the cargo bin on its backing plate, held down so it cannot move, with both terminals booted and nothing connected.","engine bay, then the passenger-side cargo bin and under the rear floor",a weekend,"Spanners and sockets for the factory battery clamps, hold-down and the starter stud nut - sizes not in the record: note them
+Drill and bits for the M8 hold-down hardware
+File or deburring tool, saw for the plate stock
+Jack stands and wheel chocks
+Camera
+Tape and labels
+Eye protection",P057 P092 P093 P094,"E7 is done
+The interior is stripped, the cargo-bin trim out (S1), and the M-4 cargo-bin mock-up exists (C1)
+D2 has fit-checked the hold-down, the post clamps and the boots
+Key out. Rings and watch off. Wheels chocked; jack stands if you go under the car
+Eye protection for drilling and cutting","The factory battery is a lead-acid in the engine bay, in the factory location [00-CAR PT024]
+The negative cable comes off first and goes on last [S-002 p.5-5]
+The factory positive cable feeds the starting motor directly and, through the black 1.25 sq main fusible link at X-07, the car's constant supply [00-CAR PT289]
+The factory negative cable goes from the post to ground; whether that is the body or the engine is not drawn - look on the car [00-CAR PT290]
+Both factory battery cables come off with the battery and are not reused [work E8]
+The fusible links - one black main, two brown - stay on the car: E11 puts them on the new backbone. The 1985 manual places them at the front left suspension tower - confirm on the car [00-CAR SP-063, PT316, PT317]
+The Ionic goes in the passenger-side cargo bin, with the amplifier beside it later [devices DV60; cables C13]
+Its case is 170 W x 230 L x 190 H mm; terminals and boots stand above that [params battery_case_mm; D-239]
+The battery mounts on a backing plate under the floor, never through sheet metal alone: the plate turns a tearing load into a shear load in a crash [D-063]
+Hold-down: clamp and J-hooks, M8 grade-8 bolts, nyloc nuts, fender washers (P057); plate stock 3 to 4 mm aluminium or steel (P092) cut from the M-4 mock-up [parts P057, P092]
+Terminals are covered by boots and nothing else, and a hand must reach a post for a jump start with the boots on [D-235; work V-088]
+The fuel pump and tank sender wiring run under the rear floor to the tank [routes RT17]
+Not in the record: the hold-down's torque, the drill size, and what lies directly under the bin floor - look before drilling [work E8; parts P057]",The factory battery and both its cables are out and bagged; the fusible-link block is still on the car with its battery-side lead taped and labelled; the Ionic is clamped on its backing plate and does not move when pushed hard in every direction; both terminals are booted; nothing is connected to it.,"The battery moves under a hard push: do not go on - re-make the hold-down or the plate. Something is in the way under the floor (a line, the tank, a brace): do not drill; move the mock-up and note it in the app. The factory positive cable has branches you cannot identify: leave them connected at their far ends, tape and label the battery end, photograph, and note it for E11.","Tick the row. Note in the app: where the factory negative cable was bolted, how the fusible-link block was joined to the positive cable, and the spanner sizes used."
+E9,"The master disconnect and the Class-T fuse block are mounted beside the battery, the rear ground stud is made on bare metal, and the three short battery cables are cut, crimped, booted and bolted on - with the fuse out, the switch off and the negative lug still off the battery.",passenger-side cargo bin,a weekend,"Hydraulic lug crimper, 8 AWG to 1/0, with dies (P037), at the dies that passed at D4
+Heat gun (P042)
+Torque wrench 1/4 in drive, 2-20 N·m (P046) - and a larger one if a maker's figure is above 20 N·m (none is in the parts table)
+Cable cutter or fine hacksaw for 1/0
+Knife for stripping heavy cable
+Grinder or abrasive for bare metal
+Drill
+Multimeter on ohms (P045)
+Label printer (P041)
+Paint pen (from P082)
+Eye protection",P049 P047 P048 P058 P059 P082 P095 P096 P097 P061 P098 P064 P066 P077 P075,"E8 is done: the Ionic is held down, booted, unconnected
+The torque figures read at D1 are in front of you
+Rings and watch off; both battery terminals booted whenever you are not on them
+Eye protection for grinding and crimping
+The Class-T fuse stays OUT all weekend","The master disconnect is a Blue Sea 9003e (350 A continuous, 1500 A cranking), on the battery POSITIVE, within reach from the hatch. It carries both the PMU leg and the starter leg, so opening it kills the whole car [parts P049; D-319; work E9]
+The Class-T block is a Blue Sea 5007100 with a 150 A fuse (Blue Sea 5114): the only common fuse that can break a lithium short. It mounts as close to the positive post as physically possible - inches [parts P047, P048; D-062]
+C12: battery + clamp stud to the disconnect's INPUT stud, 1/0 red, 1.0 ft - a hand estimate, confirm. It is the one cable no fuse protects: keep it to inches [cables C12; D-062]
+C01: the disconnect's OUTPUT stud to the Class-T block's input, 2 AWG red, 1.0 ft - a hand estimate, confirm. Its lug sits on the output stud UNDER the MRBF fuse holder that goes on at E10 [cables C01]
+C05: battery - clamp stud straight to the rear ground stud, 1/0 black, 3 ft - a hand estimate, confirm. The negative is never switched [cables C05; backbone B5]
+Lugs: 1/0 are P098 (3/8 in hole for the disconnect, the ground studs and the clamp studs; 5/16 for the MRBF holder), 2 AWG are P064 (5/16 and 3/8 holes) - the hole at each stud is confirm until the studs are measured [parts P098, P064, P095; checks CK24]
+Rear ground stud: bare metal, a 3/8 in stainless stud (P058), a star washer (P059), torqued, cavity wax (P082) over the joint [work E9; backbone B5]
+The same stud is the rear star: the table also holds a 10 AWG conductor from it to the chassis (G23, 2 ft, confirm), which the row's note does not mention [grounds G23; cables C14]
+Every lug gets heavy-wall adhesive shrink and a boot [work E9; parts P066, P077]
+Every heavy connection is torqued to its maker's figure and paint-marked; none of the figures is in the record yet - use the ones you read at D1 [rules torque]
+The positions of the switch, the block and the stud come from the M-4 mock-up; none is in the record [work V-088]","Disconnect and Class-T block mounted; rear ground stud on bare metal, waxed; C12, C01 and C05 made with a lug, heavy-wall shrink and a boot at each end, labelled; C12 and C01 bolted and torqued; C05 bolted at the stud with its battery end off and insulated; switch OFF, Class-T fuse out; meter shows continuity through the switch ON and open with it OFF.","A lug that turns on its cable or shows strands: cut it off and crimp a new one (the spares are for this). A hole that does not match its stud: stop, note the sizes, and do not drill a lug out. No continuity through the switch when ON: check each nut and the switch itself before going on.","Tick the row. Note the three cables' real cut lengths (C12, C01, C05) and the torque you used at each stud in the app."
+E10,"The starter feed, the cranking return and the PMU feed run from the cargo bin through the tunnel to the engine bay and the dash; the front ground stud, the engine-to-chassis strap and the two MIDI fuse holders are fitted; everything is still dead, fuses out.","cargo bin, the tunnel, under the car, engine bay and the dash-node position",a weekend,"Hydraulic lug crimper, 8 AWG to 1/0, with dies (P037)
+Ratchet crimper for insulated and heat-shrink terminals, 22-10 AWG (P171)
+Heat gun (P042)
+Torque wrench 1/4 in drive, 2-20 N·m (P046) and a larger one where a figure needs it
+Cable cutter, knife, string for laying routes
+Grinder or abrasive for bare metal
+Drill
+Jack stands and wheel chocks
+Multimeter on ohms (P045)
+Label printer (P041)
+Paint pen (from P082)
+Eye protection",P051 P052 P050 P053 P054 P055 P058 P059 P082 P081 P096 P097 P061 P062 P063 P098 P064 P065 P066 P077 P017 P079 P075,"E9 is done: disconnect OFF, Class-T fuse out, the negative lug off the battery
+The console and tunnel trim are out (S1) and the tunnel was measured for three heavy cables (C1, M-2)
+Car on jack stands, wheels chocked, for the starter and the block
+Engine cold
+Eye protection for grinding and crimping","The MRBF fuse holder is a Blue Sea 5191 (P051); it bolts on the master disconnect's OUTPUT stud, not on the battery post, with C01's lug under it. Its 250 A fuse (P052) is NOT fitted yet [fuses MRBF; cables C02; parts P051]
+C04, the starter feed: 1/0 red from the MRBF holder to the starter's main B+ stud, 18 ft - a hand estimate, confirm [cables C04; devices DV02]
+C11, the cranking return: 1/0 black from the rear ground stud to the engine block, 18 ft - a hand estimate, confirm; pulled beside the starter feed. Without it 400 A would cross the whole body shell [cables C11; backbone B7]
+C03, the PMU feed: 2 AWG red from the Class-T block to the dash post, 16 ft - a hand estimate, confirm [cables C03]
+All three go through the tunnel, loomed, P-clipped every 12 in, with a grommet at every pass-through [routes RT15; work E10]
+C03 ends for now on a temporary insulated post, a Blue Sea 2003 PowerPost with a 3/8 in stud (P050), mounted where the dash node will go [parts P050; work E10]
+A pull string goes in beside C03 before the console goes back [work E10; parts P081]
+Front star stud (G05): on the radiator support, bare metal, 3/8 stud, star washer, torque, wax; plus a 10 AWG black wire, 2 ft estimated, from the stud to a second body bolt [grounds G05; work E10]
+C06, the engine block to chassis strap: 2 AWG black, 2 ft estimated, 24 in or less. It is the bond, not the cranking return [cables C06; backbone B6]
+F17 (30 A) and F18 (100 A) are MIDI fuses in Blue Sea 7720 holders (P053, M6 mounting) beside the starter B+ stud [fuses F17, F18; parts P053, P054, P055]
+C07: alternator B+ to F18 to the starter B+ stud, 6 AWG red, 4 ft estimated, lugs P065 (5/16 hole, confirm) [cables C07; parts P065]
+F17 feeds the start relay K9 and stays unwired until K9 is wired at E27 (the row's note says E38, an old row number) [fuses F17; work E27]
+Lugs: P098 for 1/0 (5/16 hole at the MRBF holder, 3/8 at the ground studs and the block), P064 for 2 AWG - holes confirm against the studs measured at CK24 [parts P098, P064; checks CK24]
+Not in the record: which bolt on the block and on the chassis each ground cable lands on, where exactly the MIDI holders mount, and whether the factory wire already on the alternator's B stud stays - note what you do [work E10; devices DV04]","C04, C11 and C03 lie loomed and clipped through the tunnel with every end lugged, shrunk, booted and labelled; C04 is on the starter stud and the MRBF holder; C11 and C05 share the rear ground stud, torqued and waxed; C03 is on the Class-T output and the temporary post; the front star stud and its 10 AWG wire, the block strap and both MIDI holders are fitted; the pull string is in; the meter shows the continuities in the steps; both big fuses are still out.",A cable that comes up short: do not join heavy cable - re-run it from the reel (the order holds 1.5 x the estimates) and note the real length. A cable that cannot be clipped clear of the exhaust or a moving part: stop and re-route. No continuity where a step expects it: re-check that end's lug and nut before anything else.,"Tick the row. Note the real lengths of C03, C04, C11, C06 and C07, the bolts used for the block and chassis ends, and the torques, in the app."
+E11,"The factory harness takes its supply from the temporary post through its own fusible links and its ground from the front star; the Class-T and MRBF fuses are in; the battery is connected; and the Ionic app shows the pack's voltage, charge and temperature.","engine bay, the dash-node position and the cargo bin",a weekend,"Spanners for the post, the stud nuts and the battery clamps
+Torque wrench (P046)
+Multimeter on DC volts (P045)
+Ratchet crimper for insulated terminals (P171) and heat gun (P042) if a ring is needed
+Phone with the Ionic app
+Paint pen (from P082)",P048 P052 P050 P079 P094 P066,"E10 is done and its meter checks passed
+Disconnect OFF, both big fuses out, the negative lug still off the battery, until the steps say otherwise
+Your E8 notes on the factory cables are in front of you
+Rings and watch off; extinguisher within reach","The factory harness's main feed is the black 1.25 sq main fusible link (PT317) in block X-07, with a brown 0.3 sq link either side of it (PT316) for the headlight retractors and the headlights [00-CAR PT317, PT316]
+The 1985 manual places the fusible links at the front left suspension tower - 1985 manual, confirm on the car [00-CAR SP-063]
+The factory feed keeps its fusible links in series on the post: nothing of the factory protection is bypassed [work E11]
+The post is the Blue Sea 2003 PowerPost fitted at E10, fed by C03 from the 150 A Class-T [parts P050; cables C03]
+The factory harness's body grounds X-13 (left suspension tower and under the dash on the left), X-14 and X-15 stay bolted where they are [00-CAR PT027]
+The factory harness's main ground moves onto the front star stud made at E10 [work E11; grounds G05]
+Class-T fuse: 150 A, Blue Sea 5114, two bought - one fitted, one spare. MRBF fuse: 250 A in the 5191 holder [parts P048, P052; fuses Class-T, MRBF]
+The negative cable goes on last [S-002 p.5-5]
+The Ionic's output range is 8.0 to 14.6 V; it read 13.0 V, 3.25 V a cell, on 2026-09-08 [00-CAR SP-232; D-330]
+The pack's published operating range is -20 to 60 C [00-CAR SP-233]
+Never start a firmware update on the pack: that path can brick the battery that runs the car [D-330]
+The cluster is unplugged and the interior is out, so the car is not started today: that is E12 [work E12; D-387]
+Not in the record: what conductor joins the fusible-link block (in the bay) to the post (at the dash), and which factory wire is the ""main ground"" - use your E8 notes [work E11; 00-CAR PT290]","The fusible-link block's supply lead is on the temporary post with all three links in circuit; the factory ground lead is on the front star; both fuses are in with covers on; the battery is connected, negative last, boots on; with the disconnect ON the post reads the pack's voltage and the factory circuits wake as before; the app's three readings are entered in E45, E46 and E47.","A spark or a blown fuse when the disconnect goes ON: switch OFF at once, pull the negative lug, and find the short before trying again - do not fit the spare fuse to see. The link block's lead does not reach the post: stop; do not extend it with whatever is to hand; note the distance and the lead's size and raise it in the app. The app does not find the pack: check the phone's Bluetooth, and enter nothing until it reads.","Tick the row. Then enter the three readings in their own rows: E45 (V), E46 (%), E47 (C)."
+E12,"The engine starts and runs on the new backbone, the alternator charges the Ionic at or under 14.6 V, both cranking voltage drops are under 0.5 V, and every factory circuit works exactly as before.","cargo bin and engine bay, the car stationary",a weekend,"Multimeter on DC volts (P045), with min/max hold if it has it
+A long jumper lead to extend one meter probe from the cargo bin to the engine bay - not in the parts table: any light wire will do
+An assistant on the key
+Wheel chocks
+Extinguisher within reach",,"E11 is done: fuses in, battery connected, the app reading
+Garage door open; belt and fan clear of leads, sleeves and tools
+Car in P, wheels chocked: the seats are out and it is not driven
+Extinguisher within reach","The factory cluster was unplugged at the strip (S1): re-plug it so the meters read; the tachometer gives you 2,000 rpm [work E12]
+Charging voltage at the battery at 2,000 rpm: expect 13.8 to 14.6 V [work E12]
+The Ionic's maximum charge voltage is 14.6 +/- 0.1 V. Above about 14.7 V the fix is the alternator's regulator, never the battery [checks CK03; 00-CAR SP-231]
+The factory regulated band is 14.2 to 15.2 V, so a healthy factory alternator can be too high for this battery [00-CAR SP-081]
+The check asks for the reading with headlights off, then with headlights and blower on, engine warm [checks CK03]
+This car has shown no charge before: 11.4 V at idle. The new excitation circuit that should cure it comes at E28 (F15, migration step MG21) [D-198; work E12]
+Voltage drop while cranking, battery + post to starter stud, and battery - post to engine block: each under 0.5 V; near 0.5 V means a bad crimp [work E12]
+Cranking pulls 300 to 500 A briefly [backbone B2]
+By the wire table 18 ft of 1/0 is about 0.0018 ohm, which by itself drops 0.5 V at about 280 A: a hard crank can read a little over 0.5 V on the cable alone - record the figure either way [awg 1/0; cables C04, C11; arithmetic]
+Shut the engine down before opening the master disconnect [recovery RC01]
+No driving: the interior is out until E35 [D-387]","The engine starts and idles; the battery reads between 13.8 and 14.6 V at 2,000 rpm; each cranking drop is under 0.5 V; lamps, wipers, horn, blower and the other factory circuits work as they did; the three readings are entered in E42, E43 and E44.","It does not crank: disconnect ON? MRBF in? C04 tight at both ends? It cranks but does not charge (battery voltage does not rise above the resting figure): stop running it - the alternator or its excitation is the cause, and E28 rebuilds the excitation; do not run long on the battery alone. Above 14.6 V: stop, note the figure, raise it in the app (the regulator). A drop of 0.5 V or more: find the warm or loose lug on that side and re-make it, then repeat.","Tick the row; it asks for a value in V - enter the charging voltage, the same figure as E42. Then enter E42 (V), E43 (V) and E44 (V) in their own rows."
+E42,"The charging voltage at the battery at 2,000 rpm is measured and entered, and it is at or under 14.6 V.","cargo bin, at the battery posts","5 min, during E12",Multimeter on DC volts (P045),,"Taken at E12 step 6: engine warm, 2,000 rpm on the factory tachometer
+Garage door open; assistant at the pedal","Probes go on the battery posts themselves, engine warm, 2,000 rpm: headlights off, then headlights and blower on [checks CK03]
+Expect 13.8 to 14.6 V [work E42]
+The Ionic's maximum charge voltage is 14.6 +/- 0.1 V; its float is 13.9 +/- 0.1 V [checks CK03; 00-CAR SP-231]
+The factory regulated band is 14.2 to 15.2 V: its top is above the pack's ceiling [00-CAR SP-081]
+Above about 14.7 V the fix is the alternator's regulator, never the battery [checks CK03]
+The row takes one figure and the check takes two: enter the higher, put both in a note [work E42; checks CK03]","One figure in volts entered, between 13.8 and 14.6.","Under 13.8 V or not rising above the resting pack voltage: it is not charging - stop the engine, enter the figure, and see E12's ""does not charge"" step. Over 14.6 V: stop the engine, enter the figure, raise it in the app.",Enter the value in V (the higher of the two readings). Note both readings.
+E43,"The voltage drop from the battery + post to the starter stud while cranking is measured and entered, and it is under 0.5 V.",cargo bin and engine bay,"5 min, during E12","Multimeter on DC volts (P045), min/max hold if it has it
+The long jumper lead from E12
+An assistant on the key",,"Taken at E12 step 9: engine stopped after the charging reading, disconnect ON
+Car in P, wheels chocked; clear of belt and fan","Probes: battery + post to the starter's main B+ stud, read while the starter cranks [work E43]
+Pass: under 0.5 V. Near 0.5 V means a bad crimp [work E12]
+This reading covers C12, the disconnect, the MRBF fuse and C04 - every joint on the positive side [backbone B2]
+The starter feed C04 is 18 ft of 1/0, estimated [cables C04]
+By the wire table that cable alone drops 0.5 V at about 280 A, and cranking is put at 300 to 500 A: a figure a little over 0.5 V on a hard crank may be the cable - record it either way [awg 1/0; backbone B2; arithmetic]","One figure in volts entered, under 0.5.","0.5 V or more: feel each positive-side lug and stud for warmth straight after a crank, re-make any that is warm or loose, and repeat. Still over: enter the figure and raise it in the app.",Enter the value in V.
+E44,"The voltage drop from the battery - post to the engine block while cranking is measured and entered, and it is under 0.5 V.",cargo bin and engine bay,"5 min, during E12","Multimeter on DC volts (P045), min/max hold if it has it
+The long jumper lead from E12
+An assistant on the key",,"Taken at E12 step 10, straight after E43
+Car in P, wheels chocked; clear of belt and fan","Probes: battery - post to the engine block, read while the starter cranks [work E44]
+Pass: under 0.5 V. Near 0.5 V means a bad crimp [work E12]
+This reading covers C05, the rear ground stud and the cranking return C11 to the block [backbone B5, B7]
+C11 is 18 ft of 1/0, estimated; the block-to-chassis strap C06 is only the bond [cables C11, C06]
+By the wire table that cable alone drops 0.5 V at about 280 A: record the figure either way [awg 1/0; arithmetic]","One figure in volts entered, under 0.5.","0.5 V or more: check the rear ground stud's nut, C11's bolt on the block and both crimps for warmth or looseness; re-make and repeat. Still over: enter the figure and raise it in the app.",Enter the value in V.
+E45,The pack voltage the Ionic app shows after reconnection is entered.,"cargo bin, on the phone","5 min, during E11","Phone with the Ionic app
+Multimeter on DC volts (P045) to cross-check",,"Taken at E11 step 13: fuses in, battery connected, disconnect ON, key off, app paired","The reading is the app's pack voltage, not a meter reading [work E45]
+The pack's output range is 8.0 to 14.6 V; at 8.0 V its protection opens [00-CAR SP-232]
+It read 13.0 V, 3.25 V per cell, on 2026-09-08 [D-330]
+The record gives no pass band for the resting voltage: the figure is recorded, not judged [work E45]
+The meter at the temporary post (E11 step 10) should agree with the app [work E11]","One figure in volts entered, inside 8.0 to 14.6 and agreeing with the meter.","App and meter disagree by more than a few tenths of a volt: enter the app's figure, note the meter's, and raise it in the app. No reading: re-pair; enter nothing until it reads.",Enter the value in V.
+E46,The state of charge the Ionic app shows after reconnection is entered.,"cargo bin, on the phone","5 min, during E11",Phone with the Ionic app,,"Taken at E11 step 13, with E45","The reading is the app's state of charge in per cent [work E46]
+The car's own electronics cannot read state of charge from the pack yet: the app is the only source [D-330]
+The record gives no pass band: the figure is recorded so the first start and charge (E12) have a starting point [work E46]
+A lithium pack gives no slow-crank warning: it is fine, then its protection opens [00-CAR SP-232]",One figure in per cent entered.,A low figure before the first start: charge the pack with a lithium-profile charger first (a lead-acid charger can ruin it [parts P067]) and note it.,Enter the value in %.
+E47,The pack temperature the Ionic app shows after reconnection is entered.,"cargo bin, on the phone","5 min, during E11",Phone with the Ionic app,,"Taken at E11 step 13, with E45 and E46","The reading is the app's pack temperature in degrees C [work E47]
+The pack's published operating range is -20 to 60 C [00-CAR SP-233]
+The pack is self-heating; packs of this class heat only from a charging source, in the cold - not published for this pack, confirm [00-CAR SP-233]
+The record gives no pass band beyond the operating range [work E47]","One figure in degrees C entered, inside -20 to 60.","Outside -20 to 60 C: do not start or charge; note it in the app. If the app shows Fahrenheit, convert: C = (F - 32) x 5 / 9.",Enter the value in C.
