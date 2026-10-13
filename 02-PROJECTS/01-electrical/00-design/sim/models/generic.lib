@@ -27,3 +27,6 @@
 * the real part's offset (<= 7 mV) and 25 nA bias are below every margin the decks test.
 * Used as:  Sx out 0 IN- IN+ SWCMP   (on, output low, while IN- > IN+)
 .model SWCMP SW(Ron=50 Roff=1e9 Vt=0 Vh=0.003)
+* 1N4007 - the general-purpose 1 A rectifier (the interior lamp's RY legs at the jamb switches, D-486):
+* the textbook stand-in; confirm against the vendor's file
+.model D1N4007 D(Is=7.02767n Rs=0.0341512 N=1.80803 Cjo=1e-11 M=0.3 Vj=0.75 Bv=1000 Ibv=5e-6 Tt=5e-6)

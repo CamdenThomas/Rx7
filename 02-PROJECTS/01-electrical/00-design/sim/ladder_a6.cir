@@ -1,0 +1,108 @@
+* ladder_a6.cir - the door-jamb ladder (ladders A6 *, inputs A6) read by the PMU's ground-type
+* input: its 10 k pull-up to 5 V, 10-bit (S-028; D-368). D-486 (block 01.34 (b)) puts a 1N4148
+* in series with each door's resistor, anode toward the sill splice, so the same jamb plunger can
+* also ground the interior lamp's DOOR wire (RY) through a 1N4007 of its own: with the door shut
+* RY sits at battery voltage through the lamp, and the 1N4148 keeps that off the ladder line. The
+* 1N4148 costs each pressed state its forward drop (~0.5 V at tens of microamps). The driver door's
+* resistor is 24 k, not D-368's 33 k: with 33 k the PASS-BOTH gap was 42-46 counts, under this
+* deck's 50 (it had never been run before D-486), and the asleep press margin at 9 V / -30 C fell
+* under wake_door.cir's 0.1 V; 24 k clears both with the same 130 k threshold (WS14).
+*
+* Pass, at -30 / 25 / 85 C with the lamp wire at 16 V: the four states read in order CLOSED >
+* DRV > PASS > BOTH with at least 2 x inputs.window (20) + 10 = 50 counts between neighbours;
+* every state sits inside the fault lines (50 short, 990 open) by >= 20 counts; and the CLOSED
+* reading with both diodes hot and reverse-biased stays within the window of the CLOSED reading
+* cold (the leakage test the A2 deck taught, R12).
+.include models/active.lib
+
+* the PMU input: 10 k to 5 V, read as counts = v / 5 x 1023
+V5 ref 0 dc 5
+RPU ref line 10k
+* the 47 k baseline at the sill splice (D-368)
+R47 line 0 47k
+* driver door: 24 k, the 1N4148 toward the switch, the switch to the body; the lamp's RY through
+* a 1N4007 onto the same switch terminal. RDRV is the plunger contact (1e12 = door shut).
+RD line d_a 24k
+DD1 d_a d_sw D1N4148
+RDRV d_sw 0 1e12
+DD2 ry d_sw D1N4007
+* passenger door: 8.2 k, the same way
+RP line p_a 8.2k
+DP1 p_a p_sw D1N4148
+RPASS p_sw 0 1e12
+DP2 ry p_sw D1N4007
+* the lamp: an LED unit modelled as 50 ohm from battery to RY (a 10 W bulb is 14 ohm; either
+* holds RY near the rail with the switches open, which is the case that matters here)
+VBAT vbat 0 dc 16
+RLAMP vbat ry 50
+.op
+
+.control
+set fail = 0
+set deck = ladder_a6
+set win = 20
+set need = 50
+foreach t -30 25 85
+  set temp = $t
+  alter rdrv 1e12
+  alter rpass 1e12
+  op
+  let c = v(line) / 5 * 1023
+  set c_closed = $&c
+  let i_ry = i(vbat)
+  set iry = $&i_ry
+  alter rdrv 0.1
+  op
+  let c = v(line) / 5 * 1023
+  set c_drv = $&c
+  alter rdrv 1e12
+  alter rpass 0.1
+  op
+  let c = v(line) / 5 * 1023
+  set c_pass = $&c
+  alter rdrv 0.1
+  op
+  let c = v(line) / 5 * 1023
+  set c_both = $&c
+  alter rdrv 1e12
+  alter rpass 1e12
+  let g1 = $c_closed - $c_drv
+  let g2 = $c_drv - $c_pass
+  let g3 = $c_pass - $c_both
+  if g1 < $need
+    echo FAIL $deck t=$t CLOSED-DRV gap=$&g1
+    set fail = 1
+  end
+  if g2 < $need
+    echo FAIL $deck t=$t DRV-PASS gap=$&g2
+    set fail = 1
+  end
+  if g3 < $need
+    echo FAIL $deck t=$t PASS-BOTH gap=$&g3
+    set fail = 1
+  end
+  if $c_both < 70
+    echo FAIL $deck t=$t BOTH near the short line counts=$c_both
+    set fail = 1
+  end
+  if $c_closed > 970
+    echo FAIL $deck t=$t CLOSED near the open line counts=$c_closed
+    set fail = 1
+  end
+  if $t = -30
+    set c_closed_cold = $c_closed
+  end
+  let drift = $c_closed - $c_closed_cold
+  if drift > $win
+    echo FAIL $deck t=$t CLOSED drifted by $&drift counts with the diodes hot
+    set fail = 1
+  end
+  echo INFO $deck t=$t CLOSED=$c_closed DRV=$c_drv PASS=$c_pass BOTH=$c_both lamp_leak_A=$iry
+end
+if $fail = 1
+  quit 1
+end
+echo PASS $deck
+quit 0
+.endc
+.end

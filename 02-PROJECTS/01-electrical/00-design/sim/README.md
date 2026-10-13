@@ -25,6 +25,7 @@ corner, `FAIL deck corner measure=value` for each limit it breaks, and `PASS dec
 | Deck | Proves | Sweeps | Record rows |
 | --- | --- | --- | --- |
 | `wake_door.cir` | The door wake stage: the comparator keeps ≥ 0.1 V of margin both ways, one door opening makes one pulse of ≥ 0.6 × the rail into the strip for ≥ 0.3 s above 4 V, releasing makes nothing, the clamp holds Q3's base above −2 V, and a door does nothing while the PMU is awake | F23 9 / 12 / 16 V · −30 / 25 / 85 °C · the unpowered PMU pin 200 k / 1 M / open to ground (100 k and 10 k printed, not judged) | `wake_stages` WS00–WS1A, `ladders` A6 |
+| `ladder_a6.cir` | The door-jamb ladder with D-486's diodes: CLOSED > DRV > PASS > BOTH in order with ≥ 50 counts between neighbours, every state ≥ 20 counts inside the fault lines, and CLOSED drifting ≤ 20 counts with both diodes hot and the lamp wire at 16 V | −30 / 25 / 85 °C · the lamp wire at 16 V | `ladders` A6, `inputs` A6, `devices` DV41 |
 | `wake_a8.cir` | The same stage on the A8 ladder, for its smallest press (WINK_R, 33 k) and its largest (HAZARD, 4.7 k) | as above | `wake_stages` WS20–WS2A, `ladders` A8 |
 
 What the first runs found, and changed in the record: the 1N5819 base clamp leaked the pulse

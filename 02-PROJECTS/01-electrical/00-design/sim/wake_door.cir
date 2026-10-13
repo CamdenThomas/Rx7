@@ -24,10 +24,13 @@ Q0 q1b q0b 0 Q2N3904
 RWS10 f23 q1b 100k
 Q1 f23 q1b q1e Q2N3904
 RWS12 q1e line 220k
-* the A6 ladder at the sill: the 47 k baseline (D-368); the driver door adds 33 k when open
+* the A6 ladder at the sill: the 47 k baseline (D-368); the driver door adds 24 k when open
+* (33 k until D-486), through the 1N4148 that keeps the interior lamp's RY wire off the line -
+* the diode's drop lifts the pressed state, and 24 k is what holds the 0.1 V margin at 9 V / -30 C
 R47 line 0 47k
 SDOOR line sw1 ctl 0 SWDOOR
-R33 sw1 0 33k
+R33 sw1 d1a 24k
+DD1 d1a 0 D1N4148
 VCTL ctl 0 PULSE(0 1 1 1u 1u 2 100)
 .model SWDOOR SW(Ron=1 Roff=1e12 Vt=0.5 Vh=0.1)
 * the PMU input: unpowered, RPIN to ground (CK12 i); awake, its 10 k pull-up to 5 V
