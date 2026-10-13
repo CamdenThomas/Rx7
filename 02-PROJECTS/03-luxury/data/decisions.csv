@@ -476,3 +476,10 @@ His answer, verbatim: PK031 ""yes"". The pick asked: ""Yes, conditional on both 
 - With PK025 and PK029 (D-531) the interior row LP43 has all its picks answered.
 
 Consequences: PK031 accepted; reserve PK032 stays reserve; LP43 spec names it."
+D-534,,"Front turn/park and licence-plate LED bulbs: Diode Dynamics 1157 XP80 amber, SuperBrightLEDs 67-W15 (PK021, PK027)",2026-10-13,standing,,,,,"**Accepted: Diode Dynamics 1157 XP80 amber DD0015P (pair, USD 100) for the front turn and park bulbs (PK021, LP53), and SuperBrightLEDs 67-W15 natural white (2, USD 8 each) for the licence plate lamps (PK027, LP54).**
+
+His words: PK021 ""yes""; PK027 ""yes"". Picks as proposed:
+- PK021: ""Yes if it fits the housing; if you would rather not risk the fit, say no and the smaller HP48 goes up"" - he said yes, so the XP80 stands; the fit is still `confirm`.
+- PK027: ""Yes, conditional on the bulb reading 89 / BA15s"" - he said yes; the condition stays: if V-067 reads a wedge, the pick is withdrawn and a Diode Dynamics 194 HP3 cool white goes up.
+
+Consequences: LP53 spec names the turn/park product (side markers already D-529); LP54 spec names the plate bulb (side markers D-531). Both rows stay `confirm` for the fit (front combo lamp housing) and the base (V-067) per R11."
