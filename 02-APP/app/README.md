@@ -21,6 +21,11 @@ src/                    the interface (Svelte 5 + TypeScript), shared by both ap
     transport.ts          the only file that imports the Bluetooth plugin; its one write is guarded
     pull.ts · pipeline.ts the pull's state machine; drives -> kind=drive answers and digests
     fake.ts · synth.ts    a stand-in ICU and a synthetic drive (tests; the browser build's ?ble=fake)
+  lib/briefs.ts         the TODO page as a step-by-step manual (01-electrical D-533), pure
+                        TypeScript: a project's briefs and steps tables read into each row's
+                        brief, steps in order, parts by name and sources as links
+  lib/steps.svelte.ts   that index, rebuilt once per snapshot, and the step ticks - kept on the
+                        device (the store the drafts use), never in the record, never his answer
   lib/design.ts         the Design page (D-505, M3D1): public/design/<project>/scene.json read
                         defensively; designMath.ts its frames (car frame D-418 -> three.js y up),
                         designView.ts the three.js view, both loaded only with the 3D
@@ -38,6 +43,8 @@ scripts/                stage-core.mjs copies Pyodide into public/; fixture.mjs 
                         ICU firmware's own LogStore, for the decoder's tests
 tests/                  unit tests (Vitest); fixtures/icu-drive/ is that firmware-written drive
 e2e/                    end-to-end tests (Playwright) and fake-github.mjs, a stand-in GitHub
+                        todo-fixture.ts lays a test project with briefs and steps over the
+                        fixture for todo.spec.ts (served with page.route, never written)
 ```
 
 Every fact comes from the record through `tools/rx7.py`: the desktop runs `rx7.py export`

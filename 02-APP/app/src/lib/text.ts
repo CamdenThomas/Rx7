@@ -4,6 +4,19 @@
 
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+/** Where an id the record uses leads in the app - a decision to its page, a 00-CAR part and a
+ *  source to their rows, a block to a search for it - or '' when it is not one of those. The
+ *  one table of addresses: inlineMd() and the TODO's source chips (briefs.ts) both read it. */
+export function citeHref(id: string): string {
+  if (/^D-\d{3}$/.test(id)) return `#/d/${id}`;
+  if (/^PT\d{3,4}$/.test(id)) return `#/row/00-CAR/parts/${id}`;
+  if (/^S-\d{3}$/.test(id)) return `#/row/00-CAR/sources/${id}`;
+  if (/^(?:\d{2}|CAR|REF|APP|VER)\.\d{2,3}$/.test(id)) return `#/search?q=${id}`;
+  return '';
+}
+
+const cite = (id: string) => `<a href="${citeHref(id)}" class="cite">${id}</a>`;
+
 /** One line of the record's prose as safe HTML: every id the record uses becomes a link
  *  (D-### to its decision, PT### to the part's row, S-### to the source, `block X.NN` to a
  *  search for it), so a row never has to be typed to be followed (plan P30). */
@@ -16,10 +29,10 @@ export function inlineMd(s: string): string {
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
     .replace(/(^|[^*\w])\*([^*\s][^*]*?)\*(?!\w)/g, '$1<em>$2</em>')
     .replace(/(^|[\s(])_([^_\s][^_]*?)_(?=[\s).,;:]|$)/g, '$1<em>$2</em>')
-    .replace(/\b(D-\d{3})\b/g, '<a href="#/d/$1" class="cite">$1</a>')
-    .replace(/\b(PT\d{3,4})\b/g, '<a href="#/row/00-CAR/parts/$1" class="cite">$1</a>')
-    .replace(/\b(S-\d{3})\b/g, '<a href="#/row/00-CAR/sources/$1" class="cite">$1</a>')
-    .replace(/\bblock ((?:\d{2}|CAR|REF|APP|VER)\.\d{2,3})\b/g, 'block <a href="#/search?q=$1" class="cite">$1</a>');
+    .replace(/\b(D-\d{3})\b/g, cite)
+    .replace(/\b(PT\d{3,4})\b/g, cite)
+    .replace(/\b(S-\d{3})\b/g, cite)
+    .replace(/\bblock ((?:\d{2}|CAR|REF|APP|VER)\.\d{2,3})\b/g, (_, id: string) => `block ${cite(id)}`);
   return out.replace(/\u0000(\d+)\u0000/g, (_, i: string) => codes[Number(i)]);
 }
 

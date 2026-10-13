@@ -2,17 +2,24 @@
   The project's work, in working order (D-406 8.2): what can start today, then every row
   after what it waits on. Tracks and parts follow the record (D-386, D-387 → D-405). His
   rows are answered right here, each the way its kind needs.
+
+  A project whose rows carry briefs (01-electrical D-533) reads as the manual's contents: his
+  rows numbered as one sequence from the first to the last, each with its goal, where, how
+  long and how many of its steps are ticked on this device, and Start here on the first row
+  he can do now. A project without briefs reads as it always has.
 -->
 <script lang="ts">
-  import { CircleCheck, CirclePlay, CircleX, Hourglass } from '@lucide/svelte';
+  import { CircleCheck, CirclePlay, CircleX, Clock, Hourglass, MapPin, Play } from '@lucide/svelte';
   import ApplyBar from '../../components/ApplyBar.svelte';
   import WorkAnswer from '../../components/WorkAnswer.svelte';
   import TodoFocus from './TodoFocus.svelte';
   import { app } from '../../lib/app.svelte';
+  import { progress, startHere } from '../../lib/briefs';
   import type { Blocker, WorkRow } from '../../lib/model';
   import { href, router } from '../../lib/router.svelte';
-  import { inlineMd, plural } from '../../lib/text';
-  import { todoView, visible, type Who } from './todoView.svelte';
+  import { manuals, ticks } from '../../lib/steps.svelte';
+  import { inlineMd, plain, plural } from '../../lib/text';
+  import { mine as myRows, todoView, visible, type Who } from './todoView.svelte';
 
   let { area, id }: { area: string; id?: string } = $props();
 
@@ -22,6 +29,21 @@
   const rows = $derived(visible(area, f));
   const current = $derived(id ? all.find((w) => w.id === id) : undefined);
   const project = $derived(app.area(area)?.project ?? {});
+
+  // The manual (D-533): indexed once per snapshot, looked up per row.
+  const manual = $derived(manuals.of(area));
+  const guided = $derived(manuals.has(area));
+  const his = $derived(guided ? myRows(area) : []);
+  /** Each of his open rows' place in the one sequence, whatever the filter shows. */
+  const numbers = $derived(new Map(his.map((w, i) => [w.id, i + 1])));
+  const first = $derived(guided ? startHere(his, (id) => !!app.answer(area, id)) : undefined);
+
+  function start() {
+    if (!first) return;
+    // The one-at-a-time view steps through the list he is looking at: make sure the row is in it.
+    if (!rows.some((r) => r.id === first.id)) todoView.set(area, { track: '', who: 'camden', readyOnly: false });
+    router.go({ name: 'todo', area, id: first.id });
+  }
 
   const PART: Record<number, string> = {
     1: 'Part 1 · The car whole — desk, bench and the car as it stands',
@@ -47,20 +69,21 @@
   const groups = $derived.by(() => {
     const out: Group[] = [];
     const closedAll = all.filter((w) => (!f.track || w.track === f.track) && (f.who === 'all' || w.owner === f.who) && (w.status === 'done' || w.status === 'dropped'));
-    const byStage = f.track !== 'design';
+    // The design track reads as one checklist per part; everything else stage by stage.
+    const byStage = (w: WorkRow) => w.track !== 'design';
+    const keyOf = (w: WorkRow) => `${w.part}/${byStage(w) ? w.stage : ''}`;
+    const at = new Map<string, Group>();
     for (const w of rows) {
-      const key = `${w.part}/${byStage ? w.stage : ''}`;
-      let g = out.find((x) => x.key === key);
+      const key = keyOf(w);
+      let g = at.get(key);
       if (!g) {
-        g = { key, part: w.part, stage: byStage ? w.stage : '', title: byStage ? w.stage_title : '', rows: [], closed: [] };
+        g = { key, part: w.part, stage: byStage(w) ? w.stage : '', title: byStage(w) ? w.stage_title : '', rows: [], closed: [] };
+        at.set(key, g);
         out.push(g);
       }
       g.rows.push(w);
     }
-    for (const w of closedAll) {
-      const g = out.find((x) => x.key === `${w.part}/${byStage ? w.stage : ''}`);
-      g?.closed.push(w);
-    }
+    for (const w of closedAll) at.get(keyOf(w))?.closed.push(w);
     return out;
   });
 
@@ -107,19 +130,35 @@
 {:else}
   <ApplyBar {area} kinds={['work']} noun="TODO" />
 
+  {#if guided}
+    <div class="start">
+      {#if first}
+        <button class="btn primary big" onclick={start}><Play size={16} /> Start here</button>
+        <p class="startrow"><span class="no num">{numbers.get(first.id)}</span><span class="id">{first.id}</span><span class="what">{plain(first.item)}</span></p>
+      {:else}
+        <p class="faint">Nothing of yours can start right now: every open row of yours is answered or waits on something.</p>
+      {/if}
+    </div>
+  {/if}
+
   <div class="controls">
     {#if tracks.length > 1}
       <div class="seg" role="tablist" aria-label="Track">
+        {#if guided}<button role="tab" aria-selected={f.track === ''} class:on={f.track === ''} onclick={() => todoView.set(area, { track: '' })}>Whole list</button>{/if}
         {#each tracks as t (t)}
           <button role="tab" aria-selected={f.track === t} class:on={f.track === t} onclick={() => todoView.set(area, { track: t })}>{t === 'design' ? 'Design' : t === 'build' ? 'Build' : t}</button>
         {/each}
       </div>
     {/if}
-    <div class="seg" role="tablist" aria-label="Whose">
-      {#each WHO as w (w.id)}
-        <button role="tab" aria-selected={f.who === w.id} class:on={f.who === w.id} onclick={() => todoView.set(area, { who: w.id })}>{w.label}</button>
-      {/each}
-    </div>
+    {#if guided}
+      <label class="toggle"><input type="checkbox" checked={f.who === 'camden'} onchange={(e) => todoView.set(area, { who: (e.target as HTMLInputElement).checked ? 'camden' : 'all' })} /> Mine only</label>
+    {:else}
+      <div class="seg" role="tablist" aria-label="Whose">
+        {#each WHO as w (w.id)}
+          <button role="tab" aria-selected={f.who === w.id} class:on={f.who === w.id} onclick={() => todoView.set(area, { who: w.id })}>{w.label}</button>
+        {/each}
+      </div>
+    {/if}
     <label class="toggle"><input type="checkbox" checked={f.readyOnly} onchange={(e) => todoView.set(area, { readyOnly: (e.target as HTMLInputElement).checked })} /> Only what can start now</label>
     <span class="count faint">{plural(rows.length, 'row')} open{readyMine ? ` · ${readyMine} yours to start` : ''}</span>
   </div>
@@ -142,15 +181,26 @@
     {/if}
     <ul class="rows">
       {#each g.rows as w (w.id)}
-        <li class="wrow {w.status}" class:mine={w.owner === 'camden'}>
+        {@const m = manual?.rows.get(w.id)}
+        {@const pr = m?.steps.length ? progress(m.steps, ticks.of(area, w.id)) : null}
+        <li class="wrow {w.status}" class:mine={w.owner === 'camden'} class:numbered={guided}>
           <button class="hit" onclick={() => router.go({ name: 'todo', area, id: w.id })} aria-label="Open {w.id}"></button>
           <span class="st" title={w.status === 'ready' ? 'Can start now' : 'Waiting'}>
             {#if w.status === 'ready'}<CirclePlay size={17} />{:else}<Hourglass size={16} />{/if}
           </span>
+          {#if guided}<span class="no num">{numbers.get(w.id) ?? ''}</span>{/if}
           <span class="id">{w.id}</span>
           <div class="body">
             <!-- eslint-disable-next-line svelte/no-at-html-tags — inlineMd() escapes every character first -->
             <p class="item">{@html inlineMd(w.item)}</p>
+            {#if m?.brief?.goal}<p class="goal">{plain(m.brief.goal)}</p>{/if}
+            {#if m?.brief?.where || m?.brief?.time || pr}
+              <p class="meta">
+                {#if m?.brief?.where}<span class="chip quiet where"><MapPin size={11} /><span>{m.brief.where}</span></span>{/if}
+                {#if m?.brief?.time}<span class="chip quiet"><Clock size={11} />{m.brief.time}</span>{/if}
+                {#if pr}<span class="chip num {pr.done === pr.total ? 'cool' : 'quiet'}">{pr.done} / {pr.total} steps</span>{/if}
+              </p>
+            {/if}
             {#if w.blockers.length}
               <p class="waits">
                 waits on
@@ -297,6 +347,70 @@
   .wrow .id {
     padding-top: 1px;
   }
+  /* ------------------------------------------------ the list as the manual's contents */
+  .start {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    margin-bottom: 18px;
+  }
+  .startrow {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    min-width: 0;
+    flex: 1 1 240px;
+    font-size: 14px;
+    color: var(--text-2);
+  }
+  .startrow .what {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .no {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text-3);
+    text-align: right;
+  }
+  .wrow.numbered {
+    grid-template-columns: 22px 26px 64px 1fr auto auto;
+  }
+  .wrow .no {
+    padding-top: 1px;
+  }
+  .wrow.mine.ready .no {
+    color: var(--text);
+  }
+  .body {
+    min-width: 0;
+  }
+  .goal {
+    margin-top: 2px;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text-2);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px 6px;
+    margin-top: 6px;
+  }
+  .meta .chip {
+    max-width: 100%;
+  }
+  .meta .where span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .item {
     color: var(--text);
     line-height: 1.45;
@@ -348,6 +462,28 @@
       grid-template-areas: 'st id who' 'st body body' 'st ans ans';
       gap: 4px 10px;
       padding: 12px 12px;
+    }
+    .wrow.numbered {
+      grid-template-columns: 20px auto 1fr auto;
+      grid-template-areas: 'st no id who' 'st body body body' 'st ans ans ans';
+    }
+    .wrow .no {
+      grid-area: no;
+      min-width: 1.4em;
+    }
+    /* a line is not enough on a phone: the goal takes two */
+    .goal {
+      white-space: normal;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+    }
+    .toggle {
+      min-height: var(--tap);
+    }
+    .start .btn {
+      flex: 1 1 100%;
     }
     .st {
       grid-area: st;
