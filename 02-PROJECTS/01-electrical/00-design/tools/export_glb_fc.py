@@ -147,7 +147,9 @@ def run_unit():
                       "note": "%s, the rear plate's outer face at the cut-out's centre (%s row)"
                               % (c.part, c.get("row", "lower"))})
     boards = {}
-    if "dcu-carrier" in ch:
+    if hasattr(K, "export_boards"):               # a mock-up that says where its boards go (the CUR)
+        boards = K.export_boards(D)
+    elif "dcu-carrier" in ch:
         boards["carrier"] = {"move": list(D.step_move), "turn": 180}
         boards["panel"] = [D.px0, D.px1, D.y_panel0, D.y_panel1, D.pz0, D.pz1]
         if D.get("ups"):

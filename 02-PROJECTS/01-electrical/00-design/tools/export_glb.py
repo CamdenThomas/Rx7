@@ -85,6 +85,15 @@ UNITS = {
     "display-unit": {"dir": "display-unit/cad/icu-unit", "row": ("modules", "ICU"),
                      "housing": "P111",
                      "children": {"icu-carrier": {"kinds": ["carrier"]}}},
+    # the left plate made a unit (D-514, Y25): the plate board is its child, placed from the
+    # mock-up's export_boards(); no record row names the CUR yet, so its name is given here
+    "cur": {"dir": "control-unit/cad/cur-unit", "row": ("parts", "P198"),
+            "name": "Control Unit Remote (CUR)",
+            "children": {"left-plate": {"kinds": ["plate"]}},
+            "sources": ["control-unit/cad/climate-unit/unit_lib.py",
+                        "control-unit/cad/left-plate/left-plate.kicad_pcb",
+                        "control-unit/cad/dcu-carrier/enclosure/board.json",
+                        "control-unit/cad/dcu-carrier/enclosure/probe.json"]},
 }
 PMU = {"id": "pmu", "row": ("modules", "PMU")}
 ASSETS = list(BOARDS) + list(UNITS) + ["pmu"]
@@ -137,6 +146,7 @@ TOP = {
     "display-unit": ((0.28, 0.1, 0.72), "the binnacle aperture ahead of the driver (modules ICU)"),
     "pmu": ((0.5, 0.8, 0.3), "the dash node, behind the stack at the firewall (modules PMU)"),
     "left-plate": ((0.12, 0.04, 0.55), "the dash face left of the wheel (P198)"),
+    "cur": ((0.12, 0.04, 0.55), "the dash face left of the wheel (D-514: the left plate as the CUR)"),
 }
 # Drops whose far end is not the dash post: the record's rulings, one line each.
 FAR_END = {
@@ -524,16 +534,62 @@ def pcb_outline(pcb):
     return [min(xs), max(xs), min(ys), max(ys)]
 
 
+def _sexp_end(txt, k):
+    """The index just past the s-expression that opens at txt[k] == "(" (quoted strings skipped)."""
+    depth, quoted = 0, False
+    while k < len(txt):
+        ch = txt[k]
+        if quoted:
+            if ch == "\\":
+                k += 1
+            elif ch == '"':
+                quoted = False
+        elif ch == '"':
+            quoted = True
+        elif ch == "(":
+            depth += 1
+        elif ch == ")":
+            depth -= 1
+            if depth == 0:
+                return k + 1
+        k += 1
+    return len(txt)
+
+
 def pcb_footprint_at(pcb, ref):
-    """A footprint's origin in the board frame, or None."""
+    """A footprint's origin in the board frame, or None. Each footprint is read only within its
+    own s-expression (a fixed window once ran into the next footprint and gave R1's place for J1)."""
     txt = open(pcb, encoding="utf-8").read()
     for m in re.finditer(r"\(footprint\s+\"[^\"]*\"", txt):
-        head = txt[m.start():m.start() + 4000]
-        if re.search(r'\(property\s+"Reference"\s+"%s"' % re.escape(ref), head):
-            at = re.search(r"\(at\s+([-\d.]+)\s+([-\d.]+)", head)
+        block = txt[m.start():_sexp_end(txt, m.start())]
+        if re.search(r'\(property\s+"Reference"\s+"%s"' % re.escape(ref), block):
+            at = re.search(r"\(at\s+([-\d.]+)\s+([-\d.]+)", block)
             if at:
                 return [float(at.group(1)), -float(at.group(2))]
     return None
+
+
+def _selftest_footprint_at():
+    """pcb_footprint_at on a two-footprint board: each ref gets its own place, a missing one None.
+    Returns the list of what came out wrong."""
+    snippet = ('(kicad_pcb\n'
+               ' (footprint "Resistor_SMD:R_0603" (layer "B.Cu") (at 62.5 39.5 90)\n'
+               '  (property "Reference" "R1" (at 0 -1 0))\n'
+               '  (property "Value" "10k (a quoted paren: ) here")\n'
+               '  (pad "1" smd rect (at -0.8 0 90)))\n'
+               ' (footprint "Connector_IDC:IDC-Header_2x06" (layer "B.Cu") (at 94.5 21.65 180)\n'
+               '  (property "Reference" "J1" (at 0 -2 0))\n'
+               '  (pad "1" thru_hole rect (at 0 0 180))))\n')
+    bad = []
+    with tempfile.TemporaryDirectory() as tmp:
+        path = os.path.join(tmp, "two.kicad_pcb")
+        with open(path, "w") as fh:
+            fh.write(snippet)
+        for ref, want in (("J1", [94.5, -21.65]), ("R1", [62.5, -39.5]), ("J9", None)):
+            got = pcb_footprint_at(path, ref)
+            if got != want:
+                bad.append("pcb_footprint_at(%s) gave %s, not %s" % (ref, got, want))
+    return bad
 
 
 def build_board(bid, out):
@@ -632,10 +688,13 @@ def source_files(aid):
         return mine + files
     if aid in UNITS:
         d = os.path.join(DESIGN, UNITS[aid]["dir"])
-        car = os.path.join(os.path.dirname(d), [c for c in UNITS[aid]["children"]
-                                                if "carrier" in c][0])
         files = [os.path.join(d, f) for f in ("unit_params.py", "unit_lib.py")]
-        files += [os.path.join(car, "enclosure", f) for f in ("board.json", "probe.json")]
+        if "sources" in UNITS[aid]:
+            files += [os.path.join(DESIGN, f) for f in UNITS[aid]["sources"]]
+        else:
+            car = os.path.join(os.path.dirname(d), [c for c in UNITS[aid]["children"]
+                                                    if "carrier" in c][0])
+            files += [os.path.join(car, "enclosure", f) for f in ("board.json", "probe.json")]
         files.append(os.path.join(HERE, "enclosure_lib.py"))
         return mine + [f for f in files if os.path.exists(f)]
     if aid == "pmu":
@@ -742,7 +801,7 @@ def assemble(rec, metas, built):
     # ---- the units, with their boards inside
     for uid, u in UNITS.items():
         m = metas[uid]
-        name = _name(rec, *u["row"])
+        name = u.get("name") or _name(rec, *u["row"])
         anchor = _in_zone(rec, "dash", TOP[uid][0])
         fw, fh = m["face"]
         pl = _place(anchor[0] - fw / 2.0, anchor[1], anchor[2] - fh / 2.0)
@@ -770,13 +829,14 @@ def assemble(rec, metas, built):
 
     # ---- the left plate: a board with no housing yet, standing for the plate
     lm = metas["left-plate"]
-    anchor = _in_zone(rec, "dash", TOP["left-plate"][0])
-    o = lm["outline"]
-    c = _rot([(o[0] + o[1]) / 2.0, (o[2] + o[3]) / 2.0, 0.0], _place(rx=90))
-    lp = _place(anchor[0] - c[0], anchor[1] - c[1], anchor[2] - c[2], rx=90)
-    parts["left-plate"] = board_part(rec, "left-plate", lm, None, lp, "provisional", True)
-    parts["left-plate"]["place_note"] = ("inside 00-CAR zones dash: %s, the board facing the "
-                                         "driver" % TOP["left-plate"][1])
+    if "left-plate" not in parts:                 # not a unit's child (the CUR's, D-514)
+        anchor = _in_zone(rec, "dash", TOP["left-plate"][0])
+        o = lm["outline"]
+        c = _rot([(o[0] + o[1]) / 2.0, (o[2] + o[3]) / 2.0, 0.0], _place(rx=90))
+        lp = _place(anchor[0] - c[0], anchor[1] - c[1], anchor[2] - c[2], rx=90)
+        parts["left-plate"] = board_part(rec, "left-plate", lm, None, lp, "provisional", True)
+        parts["left-plate"]["place_note"] = ("inside 00-CAR zones dash: %s, the board facing "
+                                             "the driver" % TOP["left-plate"][1])
     missing.append({"part": "left-plate", "what": "housing model",
                     "why": "no plate housing is drawn yet; the board stands for the plate"})
     if lm.get("j1"):
@@ -904,8 +964,8 @@ def assemble(rec, metas, built):
         if l["id"] in seen:
             raise Fail("two links share the id %s" % l["id"])
         seen.add(l["id"])
-    order = list(UNITS) + [k for u in UNITS.values() for k in u["children"]] + \
-        ["left-plate", "pmu"]
+    order = list(dict.fromkeys(list(UNITS) + [k for u in UNITS.values() for k in u["children"]] +
+                               ["left-plate", "pmu"]))
     out_parts = [parts[k] for k in order] + [nodes[k] for k in sorted(nodes)]
     return {
         "version": 1,
@@ -939,8 +999,8 @@ def child_place(kid, um, km, notes):
     if kid in ("dcu-carrier", "icu-carrier"):
         mv, turn = b["carrier"]["move"], b["carrier"]["turn"]
         return _place(mv[0], mv[1], mv[2], rz=turn)
-    if kid == "panel":
-        x0, x1, y0, y1, z0, z1 = b["panel"]
+    if kid in ("panel", "left-plate"):            # a board standing behind its unit's face
+        x0, x1, y0, y1, z0, z1 = b["panel" if kid == "panel" else "plate"]
         return _place((x0 + x1) / 2.0 - bc[0], y1, (z0 + z1) / 2.0 - bc[1], rx=90)
     if kid == "upper-board":
         x0, x1, y0, y1, z0, z1 = b["upper"]
@@ -1051,7 +1111,14 @@ def validate_scene(path):
 
 
 def selftest(path):
-    """The contract check, run on the output and on broken copies of it (each must refuse)."""
+    """The contract check, run on the output and on broken copies of it (each must refuse); and
+    the board reader's footprint lookup on a two-footprint snippet."""
+    fp_bad = _selftest_footprint_at()
+    for b in fp_bad:
+        print("  footprint: " + b)
+    print("  %-34s %s" % ("footprint places, two footprints", "FAIL" if fp_bad else "ok"))
+    if fp_bad:
+        return 1
     probs = validate_scene(path)
     if probs:
         for p in probs:

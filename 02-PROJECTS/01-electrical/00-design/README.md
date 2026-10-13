@@ -22,13 +22,15 @@ Paths in this README are from this folder.
 ```
 00-design/
 ├── control-unit/            THE CONTROL UNIT (CU, the DCU - D-496)
-│   ├── cad/                 dcu-carrier, panel, upper-board, left-plate, and the climate-unit mock-up
+│   ├── cad/                 dcu-carrier, panel, upper-board, left-plate, and the climate-unit and cur-unit (the CUR, D-514) mock-ups
 │   └── firmware/            dcu
 ├── display-unit/            THE DISPLAY UNIT (DU, the ICU - D-496)
 │   ├── cad/                 icu-carrier, and the icu-unit mock-up
 │   └── firmware/            icu, icu_radio, icu_sim, tach_simulator
 ├── pmu/                     THE PMU - it runs ECUMaster's firmware; its client project joins here once F-009 proves the export
 │   └── firmware/            pmu_sim (the bench stand-in), ladder_decode_test
+├── harness/cad/devices/     the devices at the legs' far ends and the common parts in 3D: found models and stand-ins (§13, D-515)
+├── harness/cad/connectors/  THE HARNESS's DT, DTP and DT13 housings in 3D, one glb per variant, from 01-REFERENCE connector_dims (§13, D-514, Y24)
 ├── tools/                   what every board uses: check.py and pin_tables.csv, enclosure_lib.py and
 │                            enclosure_extract.py (the PCB guide that walked the first boards is gone: Camden deleted it on 2026-10-13, the boards drawn)
 │                            export_glb.py and export_glb_fc.py: the design in 3D for the app (§13, D-505)
@@ -87,6 +89,7 @@ printed at boot. Bump it on any behaviour change, log it in `../data/bringup_log
 | Project | What | Status |
 |---|---|---|
 | `control-unit/cad/climate-unit/` | The climate control unit (D-479, D-480): a parametric FreeCAD mock-up of its insides and its case - face, panel board, DCU carrier, upper connector board, four DT13s in two rows | **mock-up built, fit check clear, self-test 31 of 31 (Y14, 2026-10-11)** - one table of numbers (`unit_params.py`), nothing measured (R11); not the print-ready model (F1) |
+| `control-unit/cad/cur-unit/` | The Control Unit Remote (D-514): the left plate made a mini sealed unit like the climate unit - a parametric FreeCAD mock-up holding the plate's board on standoffs behind a face whose cap, well and window openings are read from the board's footprints, the leads leaving by two DT13 receptacles (DP-CUR / DP-CUR-B, provisional), one and a grommet, or a grommet (`RECEPTACLES` / `REAR`, block 01.41), two mounting ears | **mock-up built, fit check clear, self-test 24 of 24 (Y25, 2026-10-13)** - one table of numbers (`unit_params.py`), the climate unit's `unit_lib` imported where generic; 112.5 x 67 face, 86.7 deep (164.7 with the plugs); the default is 01.41's recommendation, two receptacles; nothing measured (R11) |
 | `display-unit/cad/icu-unit/` | The ICU as one unit (D-491): a parametric FreeCAD mock-up - the 12.3-inch display behind its bezel, the display plate with the BT817 board and the chain-ii driver boards, the ICU carrier behind (or under) them with the radio's RF window, the page button, DP-ICU-A / -B in the rear plate | **mock-up built, fit check clear, self-test 28 of 28 (Y19, 2026-10-12)** - one table of numbers (`unit_params.py`); 335 x 136.5 face, 206.6 deep with plugs (182.5 carrier below); nothing measured (R11), `C4` / `M-1` the envelope; not the print-ready model (F1) |
 | `display-unit/cad/icu-carrier/` | The ICU carrier board as a KiCad 10 schematic, plus its Teensy socket footprint | **provisional board placed, routed, poured and 3D-modelled, DRC clean (F9 / F10, 2026-10-09)** — 110 × 80 mm is `confirm` until `C4` / `F11`; guide step 8 reached, the fit test is `F11` |
 | `control-unit/cad/dcu-carrier/` | The DCU carrier (`H-002`) | **provisional board placed, routed, poured and 3D-modelled, DRC clean (Y5, 2026-10-09)** — every pin in `dcu_channels.teensy_pin`, the slow lines on a TCA9539-Q1; 180 × 80 mm is `confirm` until `V-102` and luxury `W-332`; `Y11` (2026-10-09) drew the open blocks' worst case DNP: a second expander, the A/C clutch stage and pressure ADC, the radar alert input, the third comfort ground; sheet and board rev 0.04 carry the 26-way ribbon header (D-458): `Y12` (2026-10-11) re-laid the top-left block for it, H1 now at (4, 15) |
@@ -433,3 +436,25 @@ the PMU's socket face.
 
 It reads the record only through `rx7.py export` and writes nothing to it. It is a view of the
 design, never a source of facts: a measurement beats the model (R11).
+
+**The devices and the common parts** (`harness/cad/devices/build_devices.py`, D-515, Y28) are
+built beside it, into `devices/` under the same folder: one glb per model - the five found online
+(the Teensy 4.1, the XIAO, the Waveshare 12.3 in display, Pololu's G2 driver and OptiFuse's
+BLR-504 block, each a cad row in 01-REFERENCE) and the stand-ins drawn from the parameters in
+its STANDINS, every number with its source - and `devices/manifest.json`, which puts each
+device (DVxx) and common part (Pxxx, or another area's qualified) at a node of this scene with
+its count, size, origin and cad row. Same frame (mm, z up, the part's own), same writer, same
+tessellation; every entry `confirm`. The export (Y26) reads the manifest to place them;
+`harness/cad/devices/README.md` has the rest.
+
+**The connectors** (`harness/cad/connectors/build_connectors.py`, D-514, D-515, Y24) are built
+the same way into `connectors/`: one glb per DEUTSCH variant the housings name (17), and
+`connectors/manifest.json` (committed; the glb files are not). The dimensions are 01-REFERENCE
+`connector_dims`, read through `rx7.py sql`; a variant with TE's model on this machine (the three
+DT13 headers, on the Mac) is converted from it, the rest are stand-ins drawn from their row
+(`standin` in the manifest). Each file's origin is the **mating face's centre** - a plug's front
+face, a receptacle's shroud floor - the mate along **+Y**, the wires along **-Y**, z up as the
+housing is read, x along the cavity rows; so a mated pair is the receptacle and the plug turned
+half a turn about Z, and a housing is placed by putting its origin where it mates. Nodes `body`,
+`latch` or `shroud`, `flange`, `cavities`, `wedgelock`. `build_all(out_dir)` returns the manifest
+for the export (Y26); `--only`, `--check` and `--selftest` as above.

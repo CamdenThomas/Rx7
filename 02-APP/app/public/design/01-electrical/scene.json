@@ -1,6 +1,6 @@
 {
  "version": 1,
- "built": "2026-10-13T11:34:53-06:00",
+ "built": "2026-10-13T12:47:04-06:00",
  "project": "01-electrical",
  "frame": {
   "units": "mm",
@@ -187,6 +187,77 @@
    }
   },
   {
+   "id": "cur",
+   "name": "Control Unit Remote (CUR)",
+   "kind": "unit",
+   "glb": "cur.glb",
+   "bytes": 258612,
+   "parent": null,
+   "place": {
+    "x": -686.229,
+    "y": -1074.0,
+    "z": 669.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "provisional",
+   "confirm": true,
+   "place_note": "inside 00-CAR zones dash: the dash face left of the wheel (D-514: the left plate as the CUR), the face's centre there",
+   "size_mm": {
+    "x": 128.46,
+    "y": 108.44,
+    "z": 67.0
+   },
+   "origin": "the mock-up's frame: the face's front, bottom-left corner seen from the cabin; x across the face, y back into the dash (= the car's forward), z up",
+   "connectors": [
+    {
+     "code": "DP-CUR",
+     "at": {
+      "x": 34.34,
+      "y": 84.66,
+      "z": 33.5
+     },
+     "face": "rear",
+     "note": "DT13-12PA, the rear plate's outer face at the cut-out's centre (rear row)"
+    },
+    {
+     "code": "DP-CUR-B",
+     "at": {
+      "x": 86.07,
+      "y": 84.66,
+      "z": 33.5
+     },
+     "face": "rear",
+     "note": "DT13-06PA, the rear plate's outer face at the cut-out's centre (rear row)"
+    }
+   ],
+   "children": [
+    "left-plate"
+   ],
+   "source": "control-unit/cad/cur-unit (unit_params.py, unit_lib.py)",
+   "nodes": {
+    "case": [
+     "case:body",
+     "case:front_frame",
+     "case:lid",
+     "case:rear_plate"
+    ],
+    "inside": [
+     "inside:faceplate",
+     "inside:control SW1 key cap",
+     "inside:control SW2 key cap",
+     "inside:control SW3 wink cap",
+     "inside:control SW3 wink switch (P204 placeholder)",
+     "inside:control SW4 wink cap",
+     "inside:control SW4 wink switch (P204 placeholder)",
+     "inside:control JS1 mirror stick (P156 placeholder)",
+     "inside:DP-CUR (DT13-12PA, stand-in)",
+     "inside:DP-CUR-B (DT13-06PA, stand-in)"
+    ]
+   }
+  },
+  {
    "id": "dcu-carrier",
    "name": "DCU carrier PCB H-002",
    "kind": "pcb",
@@ -332,17 +403,17 @@
    "kind": "pcb",
    "glb": "left-plate.glb",
    "bytes": 1979936,
-   "parent": null,
+   "parent": "cur",
    "place": {
-    "x": -680.0,
-    "y": -1074.0,
-    "z": 731.0,
+    "x": 6.229,
+    "y": 20.6,
+    "z": 61.5,
     "rx": 90,
     "ry": 0.0,
     "rz": 0.0
    },
-   "place_from": "provisional",
-   "confirm": true,
+   "place_from": "mock-up report",
+   "confirm": false,
    "size_mm": {
     "x": 100.0,
     "y": 56.0,
@@ -353,8 +424,8 @@
     {
      "code": "DP-DCU-E",
      "at": {
-      "x": 62.5,
-      "y": -39.5,
+      "x": 94.5,
+      "y": -21.65,
       "z": 0.0
      },
      "face": "rear",
@@ -370,8 +441,7 @@
     "parts": [
      "pcb:parts"
     ]
-   },
-   "place_note": "inside 00-CAR zones dash: the dash face left of the wheel (P198), the board facing the driver"
+   }
   },
   {
    "id": "pmu",
@@ -2940,6 +3010,11 @@
    "why": "placeholder blocks in the mock-up: no model of these parts is in the tree"
   },
   {
+   "part": "cur",
+   "what": "control SW1 key cap, control SW2 key cap, control SW3 wink cap, control SW3 wink switch (P204 placeholder), control SW4 wink cap, control SW4 wink switch (P204 placeholder), control JS1 mirror stick (P156 placeholder)",
+   "why": "placeholder blocks in the mock-up: no model of these parts is in the tree"
+  },
+  {
    "part": "left-plate",
    "what": "housing model",
    "why": "no plate housing is drawn yet; the board stands for the plate"
@@ -3016,7 +3091,7 @@
     "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "f522b56d75310501"
+   "stamp": "ade864638c3edc74"
   },
   "panel": {
    "id": "panel",
@@ -3059,7 +3134,7 @@
     "TQFP-48-1EP_7x7mm_P0.5mm_EP4.11x4.11mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "739c926867a021fd"
+   "stamp": "ca7978150b3a3902"
   },
   "upper-board": {
    "id": "upper-board",
@@ -3108,7 +3183,7 @@
      -19.17
     ]
    },
-   "stamp": "31411ff428b8a6d3"
+   "stamp": "a9c247ebab59836b"
   },
   "left-plate": {
    "id": "left-plate",
@@ -3148,10 +3223,10 @@
    "missing_files": [],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
    "j1": [
-    62.5,
-    -39.5
+    94.5,
+    -21.65
    ],
-   "stamp": "fed5619f31c62adf"
+   "stamp": "9f2372351761c9a7"
   },
   "icu-carrier": {
    "id": "icu-carrier",
@@ -3194,7 +3269,7 @@
     "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "ed871f268bfec64f"
+   "stamp": "53a3313fdd8e7b43"
   },
   "control-unit": {
    "problems": [],
@@ -3335,7 +3410,7 @@
    "kind": "unit",
    "glb": "control-unit.glb",
    "source": "control-unit/cad/climate-unit (unit_params.py, unit_lib.py)",
-   "stamp": "09eff870406cf325"
+   "stamp": "212261cf2f08a915"
   },
   "display-unit": {
    "problems": [],
@@ -3419,7 +3494,95 @@
    "kind": "unit",
    "glb": "display-unit.glb",
    "source": "display-unit/cad/icu-unit (unit_params.py, unit_lib.py)",
-   "stamp": "d5e1194381a94f6d"
+   "stamp": "9f327acfb0fe690f"
+  },
+  "cur": {
+   "problems": [],
+   "notes": [],
+   "bytes": 258612,
+   "bbox": [
+    [
+     -8.0,
+     -12.0,
+     0.0
+    ],
+    [
+     120.458,
+     96.441,
+     67.0
+    ]
+   ],
+   "vertices": 11344,
+   "triangles": 10972,
+   "face": [
+    112.458,
+    67.0
+   ],
+   "nodes": {
+    "case": [
+     "case:body",
+     "case:front_frame",
+     "case:lid",
+     "case:rear_plate"
+    ],
+    "inside": [
+     "inside:faceplate",
+     "inside:control SW1 key cap",
+     "inside:control SW2 key cap",
+     "inside:control SW3 wink cap",
+     "inside:control SW3 wink switch (P204 placeholder)",
+     "inside:control SW4 wink cap",
+     "inside:control SW4 wink switch (P204 placeholder)",
+     "inside:control JS1 mirror stick (P156 placeholder)",
+     "inside:DP-CUR (DT13-12PA, stand-in)",
+     "inside:DP-CUR-B (DT13-06PA, stand-in)"
+    ]
+   },
+   "left_to_children": 5,
+   "connectors": [
+    {
+     "code": "DP-CUR",
+     "at": [
+      34.338,
+      84.655,
+      33.5
+     ],
+     "note": "DT13-12PA, the rear plate's outer face at the cut-out's centre (rear row)"
+    },
+    {
+     "code": "DP-CUR-B",
+     "at": [
+      86.06700000000001,
+      84.655,
+      33.5
+     ],
+     "note": "DT13-06PA, the rear plate's outer face at the cut-out's centre (rear row)"
+    }
+   ],
+   "boards": {
+    "plate": [
+     6.228999999999999,
+     106.229,
+     19.0,
+     20.6,
+     5.5,
+     61.5
+    ]
+   },
+   "placeholders": [
+    "control SW1 key cap",
+    "control SW2 key cap",
+    "control SW3 wink cap",
+    "control SW3 wink switch (P204 placeholder)",
+    "control SW4 wink cap",
+    "control SW4 wink switch (P204 placeholder)",
+    "control JS1 mirror stick (P156 placeholder)"
+   ],
+   "id": "cur",
+   "kind": "unit",
+   "glb": "cur.glb",
+   "source": "control-unit/cad/cur-unit (unit_params.py, unit_lib.py)",
+   "stamp": "066bb7b42a9707e2"
   },
   "pmu": {
    "problems": [],
@@ -3473,7 +3636,7 @@
    "kind": "module",
    "glb": "pmu.glb",
    "source": "01-REFERENCE/PMU_info/PMU CAD info/PMU-24.STEP",
-   "stamp": "9cb5a2280fd3e11b"
+   "stamp": "3777d8242e199f59"
   }
  },
  "record_stamp": "b208942c696a09fc"
