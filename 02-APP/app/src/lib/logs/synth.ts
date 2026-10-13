@@ -50,8 +50,8 @@ export function thin(d: SynthDrive): Uint8Array {
       LC03: 2,
       LC10: 13_900 + (s % 7),
       LC11: 180 + (s % 5),
-      LC18: 900 + 20 * s,
-      LC19: 950 + 20 * s,
+      LC18: Math.min(4500, 900 + 20 * s), // pulling away, then cruising: under the redline
+      LC19: Math.min(5200, 950 + 20 * s),
       LC20: Math.min(88, 40 + s),
       LC21: Math.min(95, 35 + s),
       LC22: 300 + (s % 11),
@@ -76,8 +76,10 @@ export function summary(d: SynthDrive): Uint8Array {
   const s: Record<string, number> = Object.fromEntries(SUMMARY_FIELDS.map(([k]) => [k, 0]));
   Object.assign(s, {
     seq: d.seq, start_odo: d.startOdoX10, end_odo: d.startOdoX10 + Math.floor(per * d.seconds), duration_s: d.seconds,
-    unix_start: d.unixStart, uptime_start: d.uptimeStart, max_rpm: 900 + 20 * d.seconds, runtime_s: d.seconds,
-    distance_x10: Math.floor(per * d.seconds), ...(d.summary ?? {}),
+    unix_start: d.unixStart, uptime_start: d.uptimeStart, max_rpm: Math.min(5200, 950 + 20 * d.seconds), runtime_s: d.seconds,
+    distance_x10: Math.floor(per * d.seconds),
+    // stats.h samples oil pressure only while running; the thinned record's LC22 is 300-310 cbar
+    min_oil_cbar: 300, max_oil_cbar: 310, ...(d.summary ?? {}),
   });
   return concat([header(0, d), writeStruct(SUMMARY_FIELDS, s)]);
 }

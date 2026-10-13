@@ -18,6 +18,7 @@
   import Service from './manual/Service.svelte';
   import Connect from './manual/Connect.svelte';
   import Scan from './manual/Scan.svelte';
+  import Trends from './manual/Trends.svelte';
   import { app } from '../lib/app.svelte';
   import { logLink } from '../lib/logs/link.svelte';
   import { day, miles } from '../lib/manual';
@@ -38,7 +39,7 @@
   let dialog = $state<'drive' | 'odo' | null>(null);
   let body = $state<HTMLElement>();
 
-  const TABS: ManualPage[] = ['state', 'systems', 'car', 'specs', 'service', 'diagrams', 'notes'];
+  const TABS: ManualPage[] = ['state', 'trends', 'systems', 'car', 'specs', 'service', 'diagrams', 'notes'];
   const noteCount = $derived((app.snapshot?.inbox ?? []).filter((a) => a.area === '00-CAR' && a.kind === 'note').length);
   const on = (t: ManualPage) => (page === 'part' ? t === 'systems' : page === t);
 
@@ -93,6 +94,8 @@
     <div class="content" bind:this={body}>
       {#if page === 'state'}
         <State {m} />
+      {:else if page === 'trends'}
+        <Trends {m} />
       {:else if page === 'systems'}
         <Systems {m} {id} />
       {:else if page === 'part'}

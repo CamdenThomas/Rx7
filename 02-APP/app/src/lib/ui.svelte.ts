@@ -32,7 +32,7 @@ export function projectLabel(area: string): string {
 }
 
 export const MANUAL_TITLE = {
-  state: 'Car state', systems: 'Systems', car: 'The car', specs: 'Specs', service: 'Service', diagrams: 'Diagrams', notes: 'Notes', part: 'Part',
+  state: 'Car state', trends: 'Trends', systems: 'Systems', car: 'The car', specs: 'Specs', service: 'Service', diagrams: 'Diagrams', notes: 'Notes', part: 'Part',
   connect: 'Connect and log', scan: 'Bluetooth scan',
 } as const;
 

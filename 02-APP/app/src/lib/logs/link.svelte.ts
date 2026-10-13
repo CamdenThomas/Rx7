@@ -8,7 +8,8 @@ import { app } from '../app.svelte';
 import { toast } from '../toast.svelte';
 import { tauriFiles, memoryFiles, type LogFiles } from './files';
 import { FakeIcu } from './fake';
-import { fileDrives, type Filed } from './pipeline';
+import { fileDrives, type Digest, type Filed } from './pipeline';
+import { loadDigests } from './trends';
 import { connectAndLog, PullError, type Progress } from './pull';
 import { kvState, memoryState, type DriveState, type StateStore } from './state';
 import * as synth from './synth';
@@ -50,6 +51,9 @@ class LogLink {
   available = $state<boolean | null>(null);
   scanning = $state(false);
   adverts = $state<Advert[]>([]);
+  /** null until loaded */
+  digests = $state<Digest[] | null>(null);
+  digestProblems = $state<string[]>([]);
 
   #t: LinkTransport | null = null;
   #files: LogFiles | null = null;
@@ -111,11 +115,21 @@ class LogLink {
       this.running = false;
       this.#abort = null;
       await this.load().catch(() => undefined);
+      if (this.digests) await this.loadDigests().catch(() => undefined);
     }
   }
 
   stop() {
     this.#abort?.abort();
+  }
+
+  /** Every pulled drive's digest, oldest first, for the Trends page (BL4); a missing
+   *  digest.json is rebuilt from the drive's files (trends.ts loadDigests). */
+  async loadDigests() {
+    await this.#ready();
+    const r = await loadDigests(this.#files!, this.#state!);
+    this.digests = r.digests;
+    this.digestProblems = r.problems;
   }
 
   /** The Scan page (BL5): every advertisement for `ms`, the list replaced as it grows. */

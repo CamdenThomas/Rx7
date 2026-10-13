@@ -177,6 +177,36 @@ layout CRC is not the generated one is refused. To rewrite the firmware-made fix
 `http://localhost:5173/?ble=fake#/manual/connect`: a stand-in ICU with two drives and a
 battery advertisement.
 
+## Trends and wear (BL4)
+
+Work row BL4 (02-APP), from electrical D-478: the car's state read from its own logs.
+**Trends** (`#/manual/trends`, a Manual tab) shows, for the drives this device has pulled:
+
+- **What to look at** - the newest drive's out-of-range flags, the same kind of flag in
+  earlier drives (one line, with how many drives), drift marks, and wear overdue or due soon.
+- **Each channel** (water, oil temperature and pressure, lambda, RPM peak, fuel, volts, total
+  and comfort-bus current, pack, cells and spread, the IMU peaks) as a chart, one bar per drive
+  from its min to its max with a line through its mean or peak, and the last drive's value.
+  Names and units are log_channels' (through `layout.generated.ts`).
+- **Drift** - the last 3 drives each beyond a margin, on the same side, of the mean of up to 10
+  drives before them (at least 3). The margins are per channel in `lib/logs/trends.ts`
+  (`TRENDS`), all `confirm`; RPM, fuel and the IMU peaks have no drift rule.
+- **Flags** per drive (`driveFlags`): the redline, hot water and low oil against electrical
+  params `redline_rpm`, `hot_water_c`, `low_oil_bar` (read from the export, never typed) and the
+  ICU's own seconds over them; LC25 sensor-fault bits, LC05 / LC09 PMU faults, soft-fuse trips
+  and CAN timeouts from the summary; a cell spread over 50 mV (`CELL_SPREAD_MV`, `confirm`).
+- **Wear** (`lib/logs/wear.ts`) - for each interval with one, rx7.py's due status (the same as
+  the Service page: last done is the newest `service` visit whose `items` names it), plus the
+  miles since (from the visit's mileage; else at most, from the newest reading on or before it;
+  else at least, the pulled drives' distance) and the engine hours since (the summaries'
+  `runtime_s`). Miles left count a pulled drive that ran past the record's odometer. An
+  `every_hours` column on `intervals` would be read too; there is none today.
+
+**Nothing is stored.** It is worked out each time the page opens, from the record and each
+drive's `digest.json`. That file is a cache of the drive's `thin.bin` and `summary.bin`:
+delete it and the page rebuilds it (`loadDigests`). Tests: `tests/trends.test.ts`; the e2e is
+in `e2e/logs.spec.ts`.
+
 ## Install it
 
 **On the desktop.** `npx tauri build` makes an RPM in

@@ -23,3 +23,26 @@ test('the Bluetooth scan shows the battery pack voltage from its advertisement',
   await expect(page.getByText("the car's ICU", { exact: true })).toBeVisible();
   await expect(page.getByText('d4 32 01 00 64')).toBeVisible();
 });
+
+test('Trends: the pulled drives as channels, flags and wear; without logs, wear alone', async ({ page }) => {
+  await page.goto('/?ble=fake#/manual');
+  await page.evaluate(() => localStorage.clear());
+  await page.goto('/?ble=fake#/manual');
+  await page.getByRole('button', { name: 'Connect and log' }).first().click();
+  await expect(page.getByText('2 drives saved to the inbox')).toBeVisible({ timeout: 20_000 });
+  // the tab, not a reload: the browser build keeps the pulled files in memory
+  await page.getByRole('navigation', { name: 'Manual pages' }).getByRole('link', { name: 'Trends' }).click();
+  await expect(page).toHaveURL(/#\/manual\/trends$/);
+  await expect(page.getByRole('heading', { name: 'What to look at' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Engine' })).toBeVisible();
+  await expect(page.locator('.card').filter({ hasText: 'Water temp' })).toContainText('88');
+  await expect(page.locator('.card svg.spark').first()).toBeVisible();
+  await expect(page.getByText('Drive 12', { exact: false }).first()).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Wear' })).toBeVisible();
+  await expect(page.getByText('Engine oil and filter').first()).toBeVisible();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+
+  await page.goto('/#/manual/trends');
+  await expect(page.getByText("The trends come from the drives the car's ICU logs", { exact: false })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Wear' })).toBeVisible();
+});
