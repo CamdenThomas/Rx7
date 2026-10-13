@@ -120,7 +120,7 @@ drives,odometer,int,yes,,"the reading at the end of the drive, miles"
 drives,kind,enum(drive|set),yes,,set: only the reading is known (Set odo) - the miles since the last row are a drive nobody logged
 drives,from,str,no,,
 drives,to,str,no,,
-drives,note,text,no,,his words
+drives,note,text,no,,"his words; a drive the app files from the ICU's log (02-APP BL3) carries its digest line here - distance, duration, flags, and whether the date is approximate"
 specs,system,str,no,systems,
 specs,part,str,no,parts,"the part it describes, when it describes one"
 specs,applies,enum(not-fitted|other-car|replaced),no,,"as intervals.applies: blank is this car now; other-car rows are another year's figure kept as the verify backlog (00-verify stage L), not moved out (P50, 2026-09-26)"
