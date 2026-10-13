@@ -21,6 +21,9 @@ src/                    the interface (Svelte 5 + TypeScript), shared by both ap
     transport.ts          the only file that imports the Bluetooth plugin; its one write is guarded
     pull.ts · pipeline.ts the pull's state machine; drives -> kind=drive answers and digests
     fake.ts · synth.ts    a stand-in ICU and a synthetic drive (tests; the browser build's ?ble=fake)
+  lib/design.ts         the Design page (D-505, M3D1): public/design/<project>/scene.json read
+                        defensively; designMath.ts its frames (car frame D-418 -> three.js y up),
+                        designView.ts the three.js view, both loaded only with the 3D
   app.css               the design system: his five colours as tokens, type, spacing, pieces
 src-tauri/              the native shell (Rust, Tauri 2)
   src/logs.rs           both apps: the folder the pulled logs are written to (fixed file names)

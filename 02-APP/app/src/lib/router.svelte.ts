@@ -18,13 +18,14 @@ export type Route =
   | { name: 'decisions'; area: string; id?: string }
   | { name: 'parts'; area: string }
   | { name: 'run'; area: string }
+  | { name: 'design'; area: string; id?: string }
   | { name: 'decision'; id: string }
   | { name: 'row'; area: string; table: string; key: string }
   | { name: 'search'; q: string }
   | { name: 'waiting' }
   | { name: 'settings' };
 
-const PAGES = ['blocks', 'picks', 'todo', 'decisions', 'parts', 'run'] as const;
+const PAGES = ['blocks', 'picks', 'todo', 'decisions', 'parts', 'run', 'design'] as const;
 
 export function parse(hash: string): Route {
   const [path, query = ''] = hash.replace(/^#/, '').split('?');
@@ -83,6 +84,7 @@ export function href(r: Route): string {
     case 'picks':
     case 'todo':
     case 'decisions':
+    case 'design':
       return `#/p/${e(r.area)}/${r.name}${r.id ? `/${e(r.id)}` : ''}`;
     case 'decision':
       return `#/d/${e(r.id)}`;

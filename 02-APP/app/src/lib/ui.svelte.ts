@@ -36,7 +36,7 @@ export const MANUAL_TITLE = {
   connect: 'Connect and log', scan: 'Bluetooth scan',
 } as const;
 
-const PAGE_TITLE = { blocks: 'Blocks', picks: 'Picks', todo: 'TODO', decisions: 'Decisions', parts: 'Parts', run: 'Run' } as const;
+const PAGE_TITLE = { blocks: 'Blocks', picks: 'Picks', todo: 'TODO', decisions: 'Decisions', parts: 'Parts', run: 'Run', design: 'Design' } as const;
 
 export function crumbs(r: Route): Crumb[] {
   const home: Crumb = { label: 'Home', route: { name: 'home' } };
@@ -78,7 +78,8 @@ export function crumbs(r: Route): Crumb[] {
     case 'blocks':
     case 'picks':
     case 'todo':
-    case 'decisions': {
+    case 'decisions':
+    case 'design': {
       const list: Crumb = { label: PAGE_TITLE[r.name], route: r.id ? { name: r.name, area: r.area } : undefined };
       return [home, projects, project(r.area), list, ...(r.id ? [{ label: r.id }] : [])];
     }

@@ -50,7 +50,7 @@
   </div>
 {:else}
   <Shell>
-    {#key r.name === 'blocks' || r.name === 'picks' || r.name === 'todo' || r.name === 'decisions' || r.name === 'parts' || r.name === 'run' || r.name === 'project' ? `p:${r.area}` : r.name}
+    {#key r.name === 'blocks' || r.name === 'picks' || r.name === 'todo' || r.name === 'decisions' || r.name === 'parts' || r.name === 'run' || r.name === 'design' || r.name === 'project' ? `p:${r.area}` : r.name}
       {#if r.name === 'home'}
         <Home />
       {:else if r.name === 'manual'}

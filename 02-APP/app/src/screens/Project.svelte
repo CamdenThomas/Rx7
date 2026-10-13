@@ -1,6 +1,6 @@
 <!--
   One project (D-406 6.3): where it stands, then its pages — Blocks, Picks, TODO, Decisions,
-  Parts and Run. Each count on a tab is what waits for him there.
+  Parts, Design (D-505) and Run. Each count on a tab is what waits for him there.
 -->
 <script lang="ts">
   import ProjectIcon from '../components/ProjectIcon.svelte';
@@ -12,6 +12,7 @@
   import Decisions from './project/Decisions.svelte';
   import Parts from './project/Parts.svelte';
   import Run from './project/Run.svelte';
+  import Design from './project/Design.svelte';
   import { app } from '../lib/app.svelte';
   import { href, type Route } from '../lib/router.svelte';
 
@@ -50,6 +51,7 @@
       { name: 'todo', label: 'TODO', count: s?.waiting.work ?? 0 },
       { name: 'decisions', label: 'Decisions', count: 0, total: app.decisions(area).filter((d) => d.status === 'standing').length },
       ...(has('parts') ? [{ name: 'parts', label: 'Parts', count: 0 }] : []),
+      { name: 'design', label: 'Design', count: 0 },
       { name: 'run', label: 'Run', count: 0 },
     ] as { name: Route['name']; label: string; count: number; total?: number }[];
   });
@@ -109,6 +111,8 @@
         <Parts {area} />
       {:else if route.name === 'run'}
         <Run {area} />
+      {:else if route.name === 'design'}
+        <Design {area} id={route.id} />
       {/if}
     </div>
   </div>

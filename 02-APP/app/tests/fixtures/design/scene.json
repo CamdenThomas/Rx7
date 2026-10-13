@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "built": "2026-10-13T09:30:00Z",
+  "project": "stub",
+  "frame": { "units": "mm", "x": "right", "y": "forward", "z": "up", "ruling": "D-418" },
+  "parts": [
+    {
+      "id": "control-unit", "name": "Control unit (DCU)", "kind": "unit",
+      "glb": "control-unit.glb", "bytes": 2900, "parent": null,
+      "place": { "x": -200, "y": 400, "z": 600, "rx": 0, "ry": 0, "rz": 0 },
+      "place_from": "00-CAR zones dash", "confirm": true,
+      "size_mm": { "x": 160, "y": 120, "z": 50 },
+      "origin": "A stub: the housing and its carrier as two boxes",
+      "connectors": [{ "code": "DP-DCU", "at": { "x": 0, "y": -60, "z": 25 }, "face": "rear", "note": "" }],
+      "children": ["dcu-carrier"],
+      "source": "stub/control-unit.FCStd",
+      "nodes": { "case": ["case:body"], "inside": ["inside:carrier"] }
+    },
+    {
+      "id": "dcu-carrier", "name": "DCU carrier board", "kind": "pcb",
+      "glb": "dcu-carrier.glb", "bytes": 1600, "parent": "control-unit",
+      "place": { "x": 0, "y": 0, "z": 10, "rx": 0, "ry": 0, "rz": 90 },
+      "place_from": "mock-up report", "confirm": false,
+      "size_mm": { "x": 140, "y": 100, "z": 1.6 },
+      "origin": "A stub board",
+      "connectors": [{ "code": "J1", "at": { "x": 60, "y": 0, "z": 2 }, "face": "top", "note": "header" }],
+      "children": [],
+      "source": "stub/carrier.kicad_pcb"
+    },
+    {
+      "id": "pmu", "name": "PMU", "kind": "unit",
+      "glb": "pmu.glb", "bytes": 5000000, "parent": null,
+      "place": { "x": 300, "y": 200, "z": 400, "rx": 0, "ry": 0, "rz": 180 },
+      "place_from": "provisional", "confirm": true,
+      "size_mm": { "x": 120, "y": 90, "z": 40 },
+      "origin": "The vendor's model - absent here on purpose",
+      "connectors": [
+        { "code": "C1", "at": { "x": 10, "y": 0, "z": 0 }, "face": "front", "note": "" },
+        { "code": "C2", "face": "front", "note": "where it sits is not known" }
+      ],
+      "children": []
+    },
+    {
+      "id": "ground-point", "name": "Ground point", "kind": "node",
+      "glb": null, "parent": null,
+      "place": { "x": 0, "y": 0, "z": 300 },
+      "place_from": "provisional", "confirm": true
+    }
+  ],
+  "links": [
+    {
+      "id": "DP-DCU", "code": "DP-DCU",
+      "from": { "part": "control-unit", "connector": "DP-DCU" }, "to": { "part": "pmu", "connector": "C1" },
+      "label": "DP-DCU · DT13 13-way", "ways": 13, "carries": ["+12 V batt", "CAN H"], "confirm": false
+    },
+    {
+      "id": "GND-1", "code": "GND-1",
+      "from": { "part": "pmu", "connector": "C2" }, "to": { "part": "ground-point", "connector": "" },
+      "label": "GND-1 · ring", "ways": 1, "carries": ["ground"], "confirm": true
+    }
+  ],
+  "missing": [{ "part": "left-plate", "what": "housing model", "why": "the plate is not drawn yet" }],
+  "notes": ["Places are provisional until the dash is measured (C4)."]
+}

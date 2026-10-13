@@ -1,0 +1,172 @@
+<!--
+  One three.js view of a project's design (D-505): the assembly, a part, or a board. The
+  drawing is lib/designView.ts, loaded on demand like CarModel's three.js; this holds its
+  canvas, passes it what the page selects, and says plainly when the device cannot draw.
+  Built for one mode: the page keys it on the mode, so a new view is a new canvas and the
+  old one's GPU memory is let go.
+-->
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import type { Scene, Selection } from '../lib/design';
+  import type { DesignView, LoadState, Mode } from '../lib/designView';
+
+  let {
+    scene,
+    base,
+    mode,
+    selection = null,
+    hidden = new Set<string>(),
+    side = 'top',
+    labels = true,
+    onpick,
+    onstatus,
+    onnodes,
+  }: {
+    scene: Scene;
+    base: string;
+    mode: Mode;
+    selection?: Selection;
+    hidden?: Set<string>;
+    side?: 'top' | 'bottom';
+    labels?: boolean;
+    onpick?: (sel: Selection) => void;
+    onstatus?: (id: string, s: LoadState) => void;
+    onnodes?: (found: { case: boolean; inside: boolean }) => void;
+  } = $props();
+
+  let host: HTMLDivElement;
+  let view = $state<DesignView | null>(null);
+  let failed = $state('');
+
+  onMount(() => {
+    let v: DesignView | null = null;
+    let gone = false;
+    void (async () => {
+      try {
+        const { DesignView } = await import('../lib/designView');
+        if (gone) return;
+        v = new DesignView(host, scene, base, mode, {
+          pick: (s) => onpick?.(s),
+          status: (id, s) => onstatus?.(id, s),
+          nodes: (f) => onnodes?.(f),
+        });
+        view = v;
+      } catch (e) {
+        failed = e instanceof Error ? e.message : String(e);
+      }
+    })();
+    return () => {
+      gone = true;
+      v?.dispose();
+      view = null;
+    };
+  });
+
+  $effect(() => {
+    const sel = selection;
+    view?.setSelection(sel);
+  });
+  $effect(() => {
+    const h = hidden;
+    view?.setHidden(h);
+  });
+  $effect(() => {
+    const s = side;
+    if (mode.kind === 'board') view?.setSide(s);
+  });
+  $effect(() => {
+    const l = labels;
+    view?.setLabels(l);
+  });
+
+  export function fit() {
+    view?.fit();
+  }
+</script>
+
+<div class="stage" data-testid="design-stage">
+  <div class="canvas" bind:this={host}></div>
+  {#if failed}
+    <p class="note muted">This device cannot draw 3D here ({failed}). The lists below still hold everything in the design.</p>
+  {:else if !view}
+    <p class="note faint">Starting the 3D view…</p>
+  {/if}
+</div>
+
+<style>
+  .stage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    border-radius: var(--r-3);
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 60%, color-mix(in oklab, var(--steel) 40%, transparent), transparent 72%), var(--bg-raise);
+    border: 1px solid var(--line-soft);
+  }
+  .canvas,
+  .canvas :global(canvas) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+  }
+  .note {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    text-align: center;
+    font-size: 13.5px;
+  }
+  /* The labels are DOM elements three.js places (CSS2DRenderer), so they are styled here. */
+  .canvas :global(.d3-labels) {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .canvas :global(.d3-label) {
+    font: 600 11.5px/1.2 var(--mono);
+    color: var(--foam);
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .canvas :global(.d3-link) {
+    pointer-events: auto;
+    min-height: 28px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab, var(--sky) 45%, var(--ink));
+    background: color-mix(in oklab, var(--ink) 82%, transparent);
+    color: var(--sky);
+    cursor: pointer;
+  }
+  .canvas :global(.d3-link.on) {
+    background: var(--ember);
+    border-color: var(--ember);
+    color: #1f1714;
+  }
+  .canvas :global(.d3-conn),
+  .canvas :global(.d3-node) {
+    padding: 2px 6px;
+    border-radius: var(--r-1);
+    background: color-mix(in oklab, var(--ink) 80%, transparent);
+  }
+  .canvas :global(.d3-conn) {
+    color: var(--ember);
+  }
+  .canvas :global(.d3-dot) {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--ember);
+    box-shadow: 0 0 0 2px var(--ink);
+  }
+  .canvas :global(.d3-dot.approx) {
+    background: transparent;
+    border: 2px dashed var(--ember);
+  }
+</style>
