@@ -311,3 +311,7 @@ log_link,side,enum(ble|uart|both),no,,"ble = between the phone and the C3; uart 
 log_link,direction,str,no,,
 log_link,payload,text,no,,"every byte, little-endian; strings are UTF-8 with a length byte"
 log_link,note,text,no,,
+log_files,id,key,yes,,
+log_files,file,str,yes,,
+log_files,layout,text,yes,,"every byte, little-endian, offsets from the start of the file or record"
+log_files,note,text,no,,

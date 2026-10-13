@@ -126,7 +126,7 @@ static void testStructs() {
     check(sizeof(dcu_comfort_t) == 8, "dcu_comfort_t is 8 bytes");
     check(sizeof(dcu_radar_t)   == 8, "dcu_radar_t is 8 bytes");
     check(sizeof(panel_keys_t)  == 8, "panel_keys_t is 8 bytes");
-    check(offsetof(panel_keys_t, held) == 2 && PK_WIN_PASS_DN == 0x100 && PK_COUNT == 10, "0x400: ten keys in bytes 0-1, held in 2-3");
+    check(offsetof(panel_keys_t, held) == 2 && PK_WIN_PASS_DN == 0x100 && PK_COUNT == 14, "0x400: fourteen key bits in bytes 0-1 (F-018, D-492), held in 2-3");
 
     /* every field, at its extremes, through the wire and back */
     for (int trial = 0; trial < 3; trial++) {

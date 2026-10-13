@@ -5,7 +5,10 @@
  * Portable C++, no Arduino headers: icu.ino, the C3 sketch and the desk tests
  * (tests/test_radio.cpp) include the same file.
  *
- * THE PROTOCOL (F-015). Serial2 on the Teensy (RX 7, TX 8, D-377), 115200 8N1.
+ * THE PROTOCOL (F-015). Serial2 on the Teensy (RX 7, TX 8, D-377), 921600 8N1
+ * (D-493; it was 115200). The same wire carries the log link's binary frames
+ * between these lines - log_link.h implements log_link LL11-LL13 (R6): a frame
+ * starts 0xAA 0x55, a line '$', and ll_rx_feed hands back either.
  * One line from the C3 every 500 ms (2 Hz), NMEA-style so it can be read by eye
  * on a terminal during bring-up:
  *

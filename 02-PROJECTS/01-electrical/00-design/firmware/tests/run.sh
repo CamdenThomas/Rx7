@@ -6,6 +6,8 @@
 #   test_dcu.cpp     - DCU climate, comfort, panel, windows, mirrors, pin map, expander (F-017, D-452),
 #                      and section 18: the logic rows' terms the DCU raises over 0x400 (Y8)
 #   test_radio.cpp   - battery path: BMS decoder, C3 line protocol, 0x220/0x221 (F-015)
+#   test_loglink.cpp - the log link: UART framing, CRCs, the card's three logs, list / transfer /
+#                      resume / ACK / SET_TIME, against log_channels and log_link (BT3)
 #   test_vectors.cpp - can_map.h against the record's CAN tables (Y8; compiling is the test)
 # then the sheets against the record (cad/check.py) and every sketch against its target.
 # Run after ANY change to cluster_core.h, stats.h, can_map.h,
@@ -43,6 +45,11 @@ python3 gen_vectors.py || { echo "*** gen_vectors.py FAILED - the record names a
 # test_dcu (the 0x400 terms) then fail on any state or term the firmware does not know.
 python3 gen_logic_vectors.py || { echo "*** gen_logic_vectors.py FAILED - a logic row names a state or a cell the record cannot back ***"; exit 1; }
 
+# The log link held to the record (BT3): log_vectors.h is generated from log_channels.csv,
+# log_link.csv and params.csv - every channel's width, the UUIDs, the opcodes and codes, the
+# timings - and test_loglink fails on any the firmware does not match.
+python3 gen_log_vectors.py || { echo "*** gen_log_vectors.py FAILED - a log_link or log_channels row the firmware cannot read ***"; exit 1; }
+
 # The three KiCad sheets against the record and the datasheets (cad/check.py, Y3): a Teensy pad,
 # expander port, drop cavity or ribbon conductor that disagrees with icu_channels, dcu_channels
 # or panel_ribbon fails the suite, as does a symbol pin that disagrees with its datasheet. It
@@ -65,6 +72,7 @@ suite test       test_suite.cpp
 suite test_bt817 test_bt817.cpp -I../icu
 suite test_dcu   test_dcu.cpp   -I../dcu
 suite test_radio test_radio.cpp
+suite test_loglink test_loglink.cpp
 suite test_vectors test_vectors.cpp
 
 # Every sketch compiles for its real target (Y8): the Teensy 4.1 sketches with the Teensy

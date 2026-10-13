@@ -123,19 +123,45 @@ typedef enum { CLIM_OFF = 0, CLIM_VENT, CLIM_HEAT, CLIM_DEFROST, CLIM_AC } clima
 #define BAND_KA            (1u << 2)
 #define BAND_LASER         (1u << 3)
 
-/* panel keys, 0x400 - bit n of `down` / `held` (F-016). The order is the
- * panel's key matrix (H-007). Held = down for >= 1 s. */
+/* panel keys, 0x400 - bit n of `down` / `held` (F-016, F-018). Held = down
+ * for >= 1 s. Bytes 0-1 down, 2-3 held (same bits), 4-6 reserved, 7 counter.
+ *
+ * F-016 (D-380, the 3 x 3 matrix):   F-018 (D-492, the 4 x 3 matrix):
+ *   b0  defog                          b0  rear-glass defog       ROW1 C1
+ *   b1  hatch release                  b1  hatch release          ROW1 C2 (left plate)
+ *   b2  fuel-door release              b2  fuel-door release      ROW1 C3 (left plate)
+ *   b3  HVAC mode                      b3  fan mode (= HVAC mode) ROW2 C1
+ *   b4  recirculate                    b4  recirculate            ROW2 C2
+ *   b5  window DRV up                  b5  window DRV up contact  ROW2 C3
+ *   b6  window DRV down                b6  window DRV down contact ROW3 C1
+ *   b7  window PASS up                 b7  window PASS up contact ROW3 C2
+ *   b8  window PASS down               b8  window PASS down contact ROW3 C3
+ *   b9  mirror thumbstick press        b9  mirror stick press     (not matrix, ribbon 19)
+ *   b10-15 reserved                    b10 mirror defog           ROW4 C1 (its own key, D-492)
+ *                                      b11 spare                  ROW4 C2 (no key fitted)
+ *                                      b12 spare                  ROW4 C3 (no key fitted)
+ *                                      b13 centre knob push       (not matrix, ribbon 11)
+ *                                      b14-15 reserved
+ * Append-only: every F-016 bit keeps its place, so a PMU rule or a log
+ * decoder built on the old map reads the old keys unchanged. b0-b8 are
+ * still the matrix row-major; ROW4 follows the stick press. The two
+ * window contacts of one switch both down reads as neither (panel.h). */
 #define PK_DEFOG           (1u << 0)
 #define PK_HATCH           (1u << 1)
 #define PK_FUEL_DOOR       (1u << 2)
 #define PK_HVAC_MODE       (1u << 3)
+#define PK_FAN_MODE        PK_HVAC_MODE   /* D-492's name for the same key */
 #define PK_RECIRC          (1u << 4)
 #define PK_WIN_DRV_UP      (1u << 5)
 #define PK_WIN_DRV_DN      (1u << 6)
 #define PK_WIN_PASS_UP     (1u << 7)
 #define PK_WIN_PASS_DN     (1u << 8)
 #define PK_MIRROR_PRESS    (1u << 9)
-#define PK_COUNT           10
+#define PK_MIRROR_DEFOG    (1u << 10)
+#define PK_SPARE_R4C2      (1u << 11)
+#define PK_SPARE_R4C3      (1u << 12)
+#define PK_CENTRE_PUSH     (1u << 13)
+#define PK_COUNT           14
 
 /* battery freshness flags, 0x220 / 0x221 byte 6 - freshness, not health (D-345) */
 #define BATT_ADV_FRESH     (1u << 0)   /* advertisement < 10 s old   */
@@ -242,7 +268,7 @@ typedef struct __attribute__((packed)) {
     uint8_t blower;         /* duty %, 0..100 (D-308)        */
     uint8_t target_c;
     int8_t  cabin_c;        /* degC, plain signed, no offset */
-    uint8_t ac_request;     /* reserved, always 0 (D-211)    */
+    uint8_t ac_request;     /* the A/C request to the ECU, which owns the clutch (engine D-489); 0 until the swap (D-211) */
     int8_t  outside_c;      /* degC; TEMP_INVALID until read */
     uint8_t _rsv;
     uint8_t counter;

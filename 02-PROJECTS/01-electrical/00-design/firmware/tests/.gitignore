@@ -1,3 +1,5 @@
 can_vectors.h
 test_vectors
 logic_vectors.h
+log_vectors.h
+test_loglink
