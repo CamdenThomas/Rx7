@@ -7,7 +7,7 @@
 -->
 <script lang="ts">
   import { onMount } from 'svelte';
-  import type { Scene, Selection } from '../lib/design';
+  import type { Scene, Selection, Toggles } from '../lib/design';
   import type { DesignView, LoadState, Mode } from '../lib/designView';
 
   let {
@@ -17,7 +17,7 @@
     selection = null,
     hidden = new Set<string>(),
     side = 'top',
-    labels = true,
+    toggles,
     onpick,
     onstatus,
     onnodes,
@@ -28,7 +28,7 @@
     selection?: Selection;
     hidden?: Set<string>;
     side?: 'top' | 'bottom';
-    labels?: boolean;
+    toggles?: Toggles;
     onpick?: (sel: Selection) => void;
     onstatus?: (id: string, s: LoadState) => void;
     onnodes?: (found: { case: boolean; inside: boolean }) => void;
@@ -75,8 +75,8 @@
     if (mode.kind === 'board') view?.setSide(s);
   });
   $effect(() => {
-    const l = labels;
-    view?.setLabels(l);
+    const t = toggles;
+    if (t) view?.setToggles(t);
   });
 
   /** Frame the view again; `all` takes in every far end of the harness too. */
@@ -188,8 +188,31 @@
   }
   /* names and the isolated links' labels above the dots (CSS2DRenderer sets z-index inline) */
   .canvas :global(.d3-part),
+  .canvas :global(.d3-leg),
   .canvas :global(.d3-link) {
     z-index: 2000000 !important;
+  }
+  /* a leg's name at its root, in the leg's colour */
+  .canvas :global(.d3-leg) {
+    pointer-events: auto;
+    min-height: 28px;
+    padding: 4px 9px;
+    border-radius: 999px;
+    border: 2px solid var(--leg, var(--sky));
+    background: color-mix(in oklab, var(--ink) 80%, transparent);
+    font-family: var(--font);
+    font-size: 12.5px;
+    cursor: pointer;
+  }
+  /* a housing's code on its connector */
+  .canvas :global(.d3-housing) {
+    pointer-events: auto;
+    padding: 2px 6px;
+    border-radius: var(--r-1);
+    border: 1px solid color-mix(in oklab, var(--foam) 25%, var(--ink));
+    background: color-mix(in oklab, var(--ink) 82%, transparent);
+    color: var(--foam);
+    cursor: pointer;
   }
   .canvas :global(.d3-part) {
     padding: 3px 8px;

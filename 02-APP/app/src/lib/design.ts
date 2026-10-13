@@ -10,7 +10,7 @@
  * the design, never a source of facts (R11): a measurement beats it.
  */
 
-export const KINDS = ['unit', 'pcb', 'module', 'node'] as const;
+export const KINDS = ['unit', 'pcb', 'module', 'node', 'connector'] as const;
 export type Kind = (typeof KINDS)[number];
 
 export interface Xyz {
@@ -45,6 +45,35 @@ export interface Part {
   children: string[];
   source: string;
   nodes: { case: string[]; inside: string[] };
+  // version 2, a connector (one half of a housing); empty for every other kind
+  family: string;
+  half: 'plug' | 'receptacle' | '';
+  housing: string;
+  leg: string;
+  mate: string | null;
+  cavities: Cavity[];
+}
+/** One cavity of a housing (version 2): what crosses it and in what state. */
+export interface Cavity {
+  cav: string;
+  circuit: string;
+  awg: string;
+  colour: string;
+  state: string;
+}
+/** One harness leg's run (version 2): its main path from the dash post outward and its
+ *  branches, each starting on the main path and ending at a far-end node, in the car frame. */
+export interface Leg {
+  id: string;
+  name: string;
+  path: Xyz[];
+  branches: { to: string; path: Xyz[] }[];
+  radius_mm: number | null;
+  conductors: number | null;
+  housings: string[];
+  routes: string[];
+  place_from: string;
+  confirm: boolean;
 }
 export interface End {
   part: string;
@@ -74,6 +103,7 @@ export interface Scene {
   links: Link[];
   missing: Missing[];
   notes: string[];
+  legs: Leg[];
 }
 export type Parsed = { ok: true; scene: Scene; problems: string[] } | { ok: false; reason: string };
 
@@ -96,7 +126,7 @@ export function parseScene(raw: unknown): Parsed {
   if (!Array.isArray(raw.parts)) return { ok: false, reason: 'the file has no parts list' };
   const problems: string[] = [];
   const version = num(raw.version, 0);
-  if (version !== 1) problems.push(`the scene says version ${raw.version ?? '(none)'}; this page reads version 1`);
+  if (version !== 1 && version !== 2) problems.push(`the scene says version ${raw.version ?? '(none)'}; this page reads versions 1 and 2`);
 
   const parts: Part[] = [];
   const seen = new Set<string>();
@@ -137,6 +167,14 @@ export function parseScene(raw: unknown): Parsed {
       children: strs(p.children),
       source: str(p.source),
       nodes: { case: strs(nodes.case), inside: strs(nodes.inside) },
+      family: str(p.family),
+      half: p.half === 'plug' || p.half === 'receptacle' ? p.half : '',
+      housing: str(p.housing),
+      leg: str(p.leg),
+      mate: str(p.mate) || null,
+      cavities: arr(p.cavities)
+        .filter(isObj)
+        .map((c) => ({ cav: str(c.cav), circuit: str(c.circuit), awg: str(c.awg), colour: str(c.colour), state: str(c.state) })),
     });
   });
 
@@ -194,6 +232,42 @@ export function parseScene(raw: unknown): Parsed {
     links.push(link);
   });
 
+  for (const p of parts) {
+    if (p.kind !== 'connector') continue;
+    if (!p.housing) problems.push(`connector ${p.id} names no housing`);
+    if (p.mate && !byId.has(p.mate)) {
+      problems.push(`connector ${p.id}: its mate '${p.mate}' is not in the scene`);
+      p.mate = null;
+    }
+  }
+
+  const pts = (v: unknown): Xyz[] => arr(v).map(xyz).filter((q): q is Xyz => !!q);
+  const legs: Leg[] = [];
+  arr(raw.legs).forEach((l, i) => {
+    if (!isObj(l)) return;
+    const id = str(l.id) || `leg ${i + 1}`;
+    const leg: Leg = {
+      id,
+      name: str(l.name) || id,
+      path: pts(l.path),
+      branches: arr(l.branches)
+        .filter(isObj)
+        .map((b) => ({ to: str(b.to), path: pts(b.path) })),
+      radius_mm: typeof l.radius_mm === 'number' && l.radius_mm > 0 ? l.radius_mm : null,
+      conductors: typeof l.conductors === 'number' && Number.isFinite(l.conductors) ? l.conductors : null,
+      housings: strs(l.housings),
+      routes: strs(l.routes),
+      place_from: str(l.place_from),
+      confirm: l.confirm === true,
+    };
+    if (leg.path.length < 2) problems.push(`leg ${id}: its path has fewer than two points; not drawn`);
+    for (const b of leg.branches) {
+      if (b.path.length < 2) problems.push(`leg ${id}: a branch to '${b.to}' has fewer than two points; not drawn`);
+      if (b.to && !byId.has(b.to)) problems.push(`leg ${id}: its branch end '${b.to}' is not in the scene`);
+    }
+    legs.push(leg);
+  });
+
   const missing: Missing[] = arr(raw.missing)
     .map((m) => (typeof m === 'string' ? { part: '', what: m, why: '' } : isObj(m) ? { part: str(m.part), what: str(m.what), why: str(m.why) } : null))
     .filter((m): m is Missing => !!m && !!(m.part || m.what || m.why));
@@ -203,7 +277,7 @@ export function parseScene(raw: unknown): Parsed {
 
   return {
     ok: true,
-    scene: { version, built: str(raw.built), project: str(raw.project), frame, parts, links, missing, notes: strs(raw.notes) },
+    scene: { version, built: str(raw.built), project: str(raw.project), frame, parts, links, missing, notes: strs(raw.notes), legs },
     problems,
   };
 }
@@ -236,6 +310,21 @@ export function family(s: Scene, id: string): Set<string> {
   return out;
 }
 
+export const isConnector = (p: Part | undefined) => p?.kind === 'connector';
+
+/** The parts the Parts list shows: every top-level part but the connectors, which have
+ *  their own list by housing (version 2). */
+export const listedTop = (s: Scene) => topLevel(s).filter((p) => !isConnector(p));
+export const listedChildren = (s: Scene, id: string) => childrenOf(s, id).filter((p) => !isConnector(p));
+
+/** What the assembly draws as its own object: every top-level part, and every connector
+ *  wherever it sits (a unit's receptacle is drawn at its place, not hidden in the unit). */
+export function drawnIds(s: Scene): string[] {
+  return s.parts.filter((p) => !p.parent || isConnector(p)).map((p) => p.id);
+}
+/** The drawn object a part shows up as: a connector itself, anything else its top-level part. */
+export const drawnId = (s: Scene, id: string) => (isConnector(partById(s, id)) ? id : rootOf(s, id));
+
 /** The top-level part a part sits in (itself when it is one). */
 export function rootOf(s: Scene, id: string): string {
   let p = partById(s, id);
@@ -261,7 +350,12 @@ export function findConnector(s: Scene, partId: string, code: string): { part: P
 
 // ------------------------------------------------------------------ isolating
 
-export type Selection = { kind: 'part'; id: string } | { kind: 'link'; id: string } | null;
+export type Selection =
+  | { kind: 'part'; id: string }
+  | { kind: 'link'; id: string }
+  | { kind: 'housing'; id: string }
+  | { kind: 'leg'; id: string }
+  | null;
 
 /** Tapping what is already isolated restores the whole assembly; tapping anything else
  *  isolates it. */
@@ -270,22 +364,190 @@ export function tap(sel: Selection, next: Selection): Selection {
   return sel && sel.kind === next.kind && sel.id === next.id ? null : next;
 }
 
-/** What an isolated part or link leaves at full strength (everything else fades): a part
- *  brings everything inside it and the links that touch it; a link brings the two parts it
- *  joins. `null` is the whole assembly. Parts are top-level ids, the ones the assembly draws. */
-export function focusOf(s: Scene, sel: Selection): { parts: Set<string>; links: Set<string> } | null {
+export interface Focus {
+  /** drawn ids (design.ts drawnIds) left at full strength */
+  parts: Set<string>;
+  links: Set<string>;
+  legs: Set<string>;
+}
+
+/** What an isolated thing leaves at full strength (everything else fades). A part brings
+ *  its connectors and the links that touch it; a link its two ends; a housing its two
+ *  halves (and its link, when one has its code); a leg its housings, its far ends and its
+ *  links. `null` is the whole assembly. */
+export function focusOf(s: Scene, sel: Selection): Focus | null {
   if (!sel) return null;
   if (sel.kind === 'part') {
-    if (!partById(s, sel.id)) return null;
+    const p = partById(s, sel.id);
+    if (!p) return null;
+    if (isConnector(p) && p.housing) return focusOf(s, { kind: 'housing', id: p.housing });
     const inside = family(s, sel.id);
     const links = s.links.filter((l) => inside.has(l.from.part) || inside.has(l.to.part)).map((l) => l.id);
-    return { parts: new Set([rootOf(s, sel.id)]), links: new Set(links) };
+    const own = [...family(s, rootOf(s, sel.id))].filter((id) => isConnector(partById(s, id)));
+    return { parts: new Set([drawnId(s, sel.id), ...own]), links: new Set(links), legs: new Set() };
   }
-  const l = s.links.find((x) => x.id === sel.id);
-  if (!l) return null;
-  const parts = [l.from.part, l.to.part].filter((p) => partById(s, p)).map((p) => rootOf(s, p));
-  return { parts: new Set(parts), links: new Set([l.id]) };
+  if (sel.kind === 'link') {
+    const l = s.links.find((x) => x.id === sel.id);
+    if (!l) return null;
+    const parts = [l.from.part, l.to.part].filter((p) => partById(s, p)).map((p) => drawnId(s, p));
+    return { parts: new Set(parts), links: new Set([l.id]), legs: new Set() };
+  }
+  if (sel.kind === 'housing') {
+    const h = housingsOf(s).find((x) => x.code === sel.id);
+    if (!h) return null;
+    const parts = [h.plug, h.receptacle].filter((p): p is Part => !!p).map((p) => p.id);
+    return { parts: new Set(parts), links: new Set(s.links.filter((l) => l.code === h.code).map((l) => l.id)), legs: new Set() };
+  }
+  const leg = s.legs.find((x) => x.id === sel.id);
+  if (!leg) return null;
+  const codes = new Set(leg.housings);
+  const parts = s.parts.filter((p) => isConnector(p) && (codes.has(p.housing) || legKey(p.leg) === legKey(leg.name))).map((p) => p.id);
+  for (const b of leg.branches) if (partById(s, b.to)) parts.push(b.to);
+  return { parts: new Set(parts), links: new Set(s.links.filter((l) => codes.has(l.code)).map((l) => l.id)), legs: new Set([leg.id]) };
 }
+
+// ------------------------------------------------------------------ housings and legs
+
+export interface Housing {
+  code: string;
+  leg: string;
+  family: string;
+  ways: number | null;
+  plug?: Part;
+  receptacle?: Part;
+  cavities: Cavity[];
+  where: string;
+  confirm: boolean;
+}
+
+const legKey = (name: string) => name.trim().toLowerCase();
+
+/** A family's ways from its name (DT06-12S is twelve, DTP04-4P four), else none. */
+export function waysOf(family: string): number | null {
+  const m = /-(\d+)/.exec(family);
+  return m ? Number(m[1]) : null;
+}
+
+/** The connectors paired into housings: each housing's plug and receptacle (found by the
+ *  housing code, or failing that by `mate`), both halves' families, its cavities (whichever
+ *  half carries them), its ways and where it sits - the unit a half is mounted on, else the nearest far end. */
+export function housingsOf(s: Scene): Housing[] {
+  const out = new Map<string, Housing>();
+  for (const p of s.parts) {
+    if (!isConnector(p)) continue;
+    let code = p.housing;
+    if (!code && p.mate) code = partById(s, p.mate)?.housing ?? '';
+    if (!code) code = p.id;
+    let h = out.get(code);
+    if (!h) {
+      h = { code, leg: '', family: '', ways: null, cavities: [], where: '', confirm: false };
+      out.set(code, h);
+    }
+    if (p.half === 'receptacle' && !h.receptacle) h.receptacle = p;
+    else if (!h.plug) h.plug = p;
+    else if (!h.receptacle) h.receptacle = p;
+    h.leg ||= p.leg;
+    h.confirm ||= p.confirm;
+    if (p.cavities.length > h.cavities.length) h.cavities = p.cavities;
+  }
+  for (const h of out.values()) {
+    // both halves' families, the plug's first (DT06-12S + DT04-12P)
+    const families = [...new Set([h.plug?.family, h.receptacle?.family].filter((f): f is string => !!f))];
+    h.family = families.join(' + ');
+    h.ways = waysOf(families[0] ?? '') ?? (h.cavities.length || null);
+    const mounted = [h.receptacle, h.plug].find((p) => p?.parent);
+    h.where = mounted?.parent ? (partById(s, mounted.parent)?.name ?? mounted.parent) : nearestNode(s, (h.plug ?? h.receptacle)!.id) ?? (h.plug ?? h.receptacle)!.place_from;
+  }
+  return [...out.values()].sort((a, b) => a.code.localeCompare(b.code, undefined, { numeric: true }));
+}
+
+/** The name of the far-end node nearest a top-level part's place (within half a metre). */
+export function nearestNode(s: Scene, id: string): string | null {
+  const p = partById(s, id);
+  if (!p || p.parent) return null;
+  let best: { name: string; d: number } | null = null;
+  for (const n of s.parts) {
+    if (n.kind !== 'node' || n.parent) continue;
+    const d = Math.hypot(n.place.x - p.place.x, n.place.y - p.place.y, n.place.z - p.place.z);
+    if (d <= 500 && (!best || d < best.d)) best = { name: n.name, d };
+  }
+  return best?.name ?? null;
+}
+
+/** The housings grouped by leg, in the scene's own leg order, then any other leg by name,
+ *  then those with none. `legId` is the scene leg the group is, when there is one. */
+export function byLeg(s: Scene, hs: Housing[] = housingsOf(s)): { leg: string; legId: string | null; housings: Housing[] }[] {
+  const groups = new Map<string, { leg: string; legId: string | null; housings: Housing[] }>();
+  const legOf = (h: Housing) => s.legs.find((l) => l.housings.includes(h.code)) ?? s.legs.find((l) => legKey(l.name) === legKey(h.leg) || legKey(l.id) === legKey(h.leg));
+  for (const h of hs) {
+    const leg = legOf(h);
+    const name = leg?.name ?? (h.leg || 'No leg');
+    const g = groups.get(name) ?? { leg: name, legId: leg?.id ?? null, housings: [] };
+    g.housings.push(h);
+    groups.set(name, g);
+  }
+  const order = (g: { leg: string; legId: string | null }) => {
+    const i = s.legs.findIndex((l) => l.id === g.legId);
+    return i >= 0 ? i : g.leg === 'No leg' ? 1e9 : 1e6;
+  };
+  return [...groups.values()].sort((a, b) => order(a) - order(b) || a.leg.localeCompare(b.leg, undefined, { numeric: true }));
+}
+
+/** Where a leg's name sits: a little way out along its main run (at most `reach` mm, at
+ *  most 40% of it), so legs that leave the same dash post do not stack their names. */
+export function legLabelAt(leg: Leg, reach = 260): Xyz | null {
+  const path = leg.path;
+  if (path.length < 2) return path[0] ?? null;
+  const seg = path.slice(1).map((q, i) => Math.hypot(q.x - path[i].x, q.y - path[i].y, q.z - path[i].z));
+  let want = Math.min(reach, 0.4 * seg.reduce((a, b) => a + b, 0));
+  for (let i = 0; i < seg.length; i++) {
+    if (want <= seg[i] || i === seg.length - 1) {
+      const t = seg[i] ? Math.min(1, want / seg[i]) : 0;
+      const a = path[i];
+      const b = path[i + 1];
+      return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, z: a.z + (b.z - a.z) * t };
+    }
+    want -= seg[i];
+  }
+  return path[0];
+}
+
+/** A leg's runs that can be drawn: the main path, then each branch, two points or more. */
+export function legPaths(leg: Leg): Xyz[][] {
+  return [leg.path, ...leg.branches.map((b) => b.path)].filter((p) => p.length >= 2);
+}
+
+/** A tube's radius: the scene's, else one that grows with the conductors in it (a bundle of
+ *  n wires about 1.2 mm across each), never under 3 mm. */
+export function legRadius(leg: Leg): number {
+  if (leg.radius_mm) return leg.radius_mm;
+  return Math.max(3, Math.round(0.6 * Math.sqrt(leg.conductors ?? 10) * 1.15 * 10) / 10);
+}
+
+/** One colour per leg, by its place in the scene's list (sky, ember, gold, green, violet). */
+export const LEG_COLOURS = [0x98c1d9, 0xee6c4d, 0xe9c46a, 0x8fd694, 0xb39ddb] as const;
+export const legColour = (s: Scene, id: string) => LEG_COLOURS[Math.max(0, s.legs.findIndex((l) => l.id === id)) % LEG_COLOURS.length];
+export const legColourCss = (s: Scene, id: string) => `#${legColour(s, id).toString(16).padStart(6, '0')}`;
+
+// ------------------------------------------------------------------ toggles
+
+export interface Toggles {
+  legs: boolean;
+  links: boolean;
+  connectors: boolean;
+  labels: boolean;
+}
+
+/** The assembly's starting toggles: the legs on when the scene has them, and then the
+ *  straight links off (the legs carry the harness); connectors and labels on. */
+export function defaultToggles(s: Scene): Toggles {
+  return { legs: s.legs.length > 0, links: s.legs.length === 0, connectors: true, labels: true };
+}
+
+/** What is drawn under the toggles: a layer turned off still shows what is isolated. */
+export const linkShown = (t: Toggles, f: Focus | null, id: string) => (f ? f.links.has(id) : t.links);
+export const legShown = (t: Toggles, f: Focus | null, id: string) => (f?.legs.has(id) ? true : t.legs);
+export const connectorShown = (t: Toggles, f: Focus | null, id: string) => (f?.parts.has(id) ? true : t.connectors);
 
 // ------------------------------------------------------------------ the camera
 
@@ -353,20 +615,24 @@ export function frameGlb(text: string | undefined): { scale: number; yUp: boolea
 // ------------------------------------------------------------------ framing and labels
 
 /** A part with a model of its own (a node is only a place, a far end of the harness). */
-export const modelled = (p: Part | undefined) => !!p && p.kind !== 'node';
+export const modelled = (p: Part | undefined) => !!p && (p.kind === 'unit' || p.kind === 'pcb' || p.kind === 'module');
 
-/** What the assembly's camera frames. By default, and on "Show everything", the modelled
- *  parts only - the far-end nodes are spread over the whole car and would shrink the units to
- *  dots. An isolated part: its own box. An isolated link: its two ends. `all`: every part and
- *  every link's ends. Parts are top-level ids; links' end points count by link id. */
-export function fitSet(s: Scene, sel: Selection, all = false): { parts: Set<string>; links: Set<string> } {
-  const tops = topLevel(s);
-  if (all) return { parts: new Set(tops.map((p) => p.id)), links: new Set(s.links.map((l) => l.id)) };
+/** What the assembly's camera frames. By default, and on "Show everything", the units,
+ *  boards and modules only - the far-end nodes and the legs' connectors are spread over the
+ *  whole car and would shrink the units to dots. An isolated part: its own box. A link: its
+ *  two ends. A housing: its two halves. A leg: its runs. `all`: everything, every far end
+ *  and every leg. Parts are drawn ids; links count by their end points, legs by their paths. */
+export function fitSet(s: Scene, sel: Selection, all = false): { parts: Set<string>; links: Set<string>; legs: Set<string> } {
+  const drawn = drawnIds(s);
+  const none = new Set<string>();
+  if (all) return { parts: new Set(drawn), links: new Set(s.links.map((l) => l.id)), legs: new Set(s.legs.map((l) => l.id)) };
   const f = focusOf(s, sel);
-  if (f && sel?.kind === 'part') return { parts: f.parts, links: new Set() };
-  if (f) return { parts: new Set([...f.parts].filter((id) => modelled(partById(s, id)))), links: f.links };
-  const models = tops.filter(modelled);
-  return { parts: new Set((models.length ? models : tops).map((p) => p.id)), links: new Set() };
+  if (f && sel?.kind === 'part' && !isConnector(partById(s, sel.id))) return { parts: new Set([drawnId(s, sel.id)]), links: none, legs: none };
+  if (f && sel?.kind === 'link') return { parts: new Set([...f.parts].filter((id) => modelled(partById(s, id)))), links: f.links, legs: none };
+  if (f && sel?.kind === 'leg') return { parts: none, links: none, legs: f.legs };
+  if (f) return { parts: f.parts, links: none, legs: none };
+  const models = drawn.filter((id) => modelled(partById(s, id)));
+  return { parts: new Set(models.length ? models : drawn), links: none, legs: none };
 }
 
 /** Where along a link (0 at `from`, 1 at `to`) its label sits: the middle between two
@@ -385,13 +651,16 @@ export interface LabelBox {
   h: number;
   /** other places to try, as downward shifts in pixels, when the first is taken */
   alts?: number[];
+  /** may slide sideways to stay wholly on screen (a part's name near the edge) */
+  slide?: boolean;
 }
 
 /** Never more labels than can be read: given label boxes (centre x, y in screen pixels) in
  *  order of importance, keep each one wholly on screen and clear of every one kept before
  *  it, with `pad` pixels between - where it is, else at the first of its `alts` that is
- *  clear. Each answer is the shift used (0 where it is), or null when it is not shown. */
-export function declutter(items: LabelBox[], width: number, height: number, pad = 4): (number | null)[] {
+ *  clear, slid in from the edge when it may slide. Each answer is the shift used ({dx, dy},
+ *  zero where it is), or null when it is not shown. */
+export function declutter(items: LabelBox[], width: number, height: number, pad = 4): ({ dx: number; dy: number } | null)[] {
   const kept: LabelBox[] = [];
   const fits = (b: LabelBox) =>
     b.x - b.w / 2 >= 0 &&
@@ -400,11 +669,14 @@ export function declutter(items: LabelBox[], width: number, height: number, pad 
     b.y + b.h / 2 <= height &&
     kept.every((k) => Math.abs(k.x - b.x) * 2 >= k.w + b.w + pad * 2 || Math.abs(k.y - b.y) * 2 >= k.h + b.h + pad * 2);
   return items.map((b) => {
+    // slide in from the edge only for an anchor that is itself on screen
+    const onScreen = b.x >= 0 && b.x <= width;
+    const dx = b.slide && onScreen && b.w <= width ? Math.min(Math.max(b.x, b.w / 2), width - b.w / 2) - b.x : 0;
     for (const dy of [0, ...(b.alts ?? [])]) {
-      const at = { ...b, y: b.y + dy };
+      const at = { ...b, x: b.x + dx, y: b.y + dy };
       if (fits(at)) {
         kept.push(at);
-        return dy;
+        return { dx, dy };
       }
     }
     return null;
@@ -413,7 +685,7 @@ export function declutter(items: LabelBox[], width: number, height: number, pad 
 
 // ------------------------------------------------------------------ words
 
-export const KIND_LABEL: Record<Kind, string> = { unit: 'Unit', pcb: 'Board', module: 'Module', node: 'Point' };
+export const KIND_LABEL: Record<Kind, string> = { unit: 'Unit', pcb: 'Board', module: 'Module', node: 'Point', connector: 'Connector' };
 
 export function bytesLabel(n: number | null): string {
   if (n == null) return '';

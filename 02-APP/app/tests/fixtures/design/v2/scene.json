@@ -1,0 +1,92 @@
+{
+  "version": 2,
+  "built": "2026-10-13T12:00:00Z",
+  "project": "stub-v2",
+  "frame": {
+    "units": "mm", "x": "right", "y": "forward", "z": "up", "ruling": "D-418",
+    "glb": "mm, z up, the part's own frame (not glTF's metres, y up)",
+    "rotation": "degrees, three.js Euler order XYZ"
+  },
+  "parts": [
+    {
+      "id": "cur", "name": "Control Unit Remote (CUR)", "kind": "unit", "glb": "cur.glb", "parent": null,
+      "place": { "x": -600, "y": -1050, "z": 700, "rx": 0, "ry": 0, "rz": 0 },
+      "place_from": "provisional", "confirm": true, "size_mm": { "x": 120, "y": 60, "z": 40 },
+      "origin": "base centre", "connectors": [], "children": ["left-plate"],
+      "nodes": { "case": ["case:shell"], "inside": ["inside:plate"] }
+    },
+    {
+      "id": "left-plate", "name": "Left plate circuit board", "kind": "pcb", "glb": "left-plate.glb", "parent": "cur",
+      "place": { "x": 0, "y": 0, "z": 8, "rx": 0, "ry": 0, "rz": 0 }, "place_from": "mock-up report", "confirm": false,
+      "size_mm": { "x": 100, "y": 50, "z": 1.6 }
+    },
+    {
+      "id": "pmu", "name": "PMU-24", "kind": "module", "glb": "pmu.glb", "parent": null,
+      "place": { "x": 0, "y": -800, "z": 580, "rx": 0, "ry": 0, "rz": 0 }, "place_from": "provisional", "confirm": true,
+      "size_mm": { "x": 110, "y": 130, "z": 40 }
+    },
+    { "id": "dash-post", "name": "Dash post", "kind": "node", "glb": null, "place": { "x": 0, "y": -900, "z": 600 } },
+    { "id": "engine-end", "name": "Engine end", "kind": "node", "glb": null, "place": { "x": 0, "y": 700, "z": 450 } },
+    { "id": "rear-end", "name": "Rear end", "kind": "node", "glb": null, "place": { "x": 0, "y": -2500, "z": 550 } },
+    {
+      "id": "L1-S1:plug", "kind": "connector", "name": "L1-S1 plug · DT06-12S", "family": "DT06-12S", "half": "plug",
+      "housing": "L1-S1", "leg": "L1 Engine", "glb": "connectors/DT06-12S.glb", "parent": null,
+      "place": { "x": 0, "y": 680, "z": 450, "rx": 0, "ry": 0, "rz": 0 }, "place_from": "provisional", "confirm": true,
+      "size_mm": { "x": 30, "y": 24, "z": 20 }, "origin": "mating face centre; mate along +Y; wires along -Y",
+      "mate": "L1-S1:receptacle",
+      "cavities": [
+        { "cav": 1, "circuit": "Ignition feed", "awg": "16", "colour": "red/white", "state": "LIVE" },
+        { "cav": 2, "circuit": "Coil 1 trigger", "awg": "18", "colour": "green", "state": "LIVE" },
+        { "cav": 3, "circuit": "", "awg": "", "colour": "", "state": "PLUG" }
+      ],
+      "source": "harness/connectors.py"
+    },
+    {
+      "id": "L1-S1:receptacle", "kind": "connector", "name": "L1-S1 receptacle · DT04-12P", "family": "DT04-12P", "half": "receptacle",
+      "housing": "L1-S1", "leg": "L1 Engine", "glb": "connectors/DT06-12S.glb", "parent": null,
+      "place": { "x": 0, "y": 680, "z": 450, "rx": 0, "ry": 0, "rz": 180 }, "place_from": "provisional", "confirm": true,
+      "size_mm": { "x": 30, "y": 24, "z": 20 }, "mate": "L1-S1:plug", "cavities": []
+    },
+    {
+      "id": "L3-S1:receptacle", "kind": "connector", "name": "L3-S1 receptacle · DT04-12P", "family": "DT04-12P", "half": "receptacle",
+      "housing": "L3-S1", "leg": "L3 Dash", "glb": "connectors/DT06-12S.glb", "parent": "cur",
+      "place": { "x": 0, "y": -30, "z": 20, "rx": 0, "ry": 0, "rz": 180 }, "place_from": "mock-up report", "confirm": true,
+      "size_mm": { "x": 30, "y": 24, "z": 20 }, "mate": "L3-S1:plug",
+      "cavities": [
+        { "cav": 1, "circuit": "Wink left", "awg": "20", "colour": "blue", "state": "LIVE" },
+        { "cav": 2, "circuit": "Spare", "awg": "20", "colour": "", "state": "RESERVED" }
+      ]
+    },
+    {
+      "id": "L3-S1:plug", "kind": "connector", "name": "L3-S1 plug · DT06-12S", "family": "DT06-12S", "half": "plug",
+      "housing": "L3-S1", "leg": "L3 Dash", "glb": "connectors/DT06-12S.glb", "parent": null,
+      "place": { "x": -600, "y": -1080, "z": 720, "rx": 0, "ry": 0, "rz": 0 }, "place_from": "provisional", "confirm": true,
+      "size_mm": { "x": 30, "y": 24, "z": 20 }, "mate": "L3-S1:receptacle", "cavities": []
+    }
+  ],
+  "links": [
+    {
+      "id": "L1-S1", "code": "L1-S1", "from": { "part": "pmu", "connector": "" }, "to": { "part": "engine-end", "connector": "" },
+      "label": "L1-S1 · DT06-12S", "ways": 12, "carries": ["Ignition feed"], "confirm": true
+    },
+    {
+      "id": "L3-S1", "code": "L3-S1", "from": { "part": "pmu", "connector": "" }, "to": { "part": "cur", "connector": "" },
+      "label": "L3-S1 · DT06-12S", "ways": 12, "carries": ["Wink left"], "confirm": true
+    }
+  ],
+  "legs": [
+    {
+      "id": "L1", "name": "L1 Engine",
+      "path": [{ "x": 0, "y": -900, "z": 600 }, { "x": 0, "y": -600, "z": 560 }, { "x": 0, "y": 200, "z": 480 }, { "x": 0, "y": 680, "z": 450 }],
+      "branches": [], "conductors": 24, "housings": ["L1-S1"], "routes": ["RT01"], "place_from": "provisional", "confirm": true
+    },
+    {
+      "id": "L3", "name": "L3 Dash",
+      "path": [{ "x": 0, "y": -900, "z": 600 }, { "x": -300, "y": -1000, "z": 650 }, { "x": -600, "y": -1100, "z": 720 }],
+      "branches": [{ "to": "rear-end", "path": [{ "x": -300, "y": -1000, "z": 650 }, { "x": -300, "y": -1800, "z": 500 }, { "x": 0, "y": -2500, "z": 550 }] }],
+      "radius_mm": 5, "conductors": 40, "housings": ["L3-S1"], "routes": ["RT12"], "place_from": "provisional", "confirm": true
+    }
+  ],
+  "missing": [{ "part": "L1-S1:plug", "what": "vendor model", "why": "TE's STEP needs his login (Y27)" }],
+  "notes": ["Every place, path and connector dimension is provisional (R11)."]
+}

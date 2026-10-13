@@ -1,8 +1,26 @@
 // The Design page's pure half (D-505, M3D1) on a stub scene: two units, a board inside one,
-// a node, two links and a missing entry. three.js appears only as its math.
+// a node, two links and a missing entry; and the version-2 stub (v2/: the CUR, two legs, two
+// mated pairs of connectors sharing one model, cavities). three.js appears only as its math.
 import { Box3, Vector3 } from 'three';
 import { describe, expect, it } from 'vitest';
 import raw from './fixtures/design/scene.json';
+import rawV2 from './fixtures/design/v2/scene.json';
+import {
+  byLeg,
+  connectorShown,
+  defaultToggles,
+  drawnId,
+  drawnIds,
+  housingsOf,
+  legLabelAt,
+  legPaths,
+  legRadius,
+  legShown,
+  linkShown,
+  listedChildren,
+  listedTop,
+  waysOf,
+} from '../src/lib/design';
 import {
   childrenOf,
   declutter,
@@ -62,7 +80,7 @@ describe('the scene file is read defensively', () => {
 
   it('forgives and lists: unknown kind, duplicate, lost parent, ring, bad link, old version', () => {
     const r = parseScene({
-      version: 2,
+      version: 3,
       parts: [
         { id: 'a', kind: 'gizmo' },
         { id: 'a' },
@@ -86,7 +104,7 @@ describe('the scene file is read defensively', () => {
     expect(r.scene.missing).toEqual([{ part: '', what: 'a plain string', why: '' }]);
     expect(r.scene.notes).toEqual(['n']);
     const text = r.problems.join('\n');
-    for (const w of ['version 2', "kind 'gizmo'", 'listed twice', "'nowhere'", 'ring', "'ghost'", 'part 6 has no id']) expect(text).toContain(w);
+    for (const w of ['version 3', "kind 'gizmo'", 'listed twice', "'nowhere'", 'ring', "'ghost'", 'part 6 has no id']) expect(text).toContain(w);
   });
 });
 
@@ -290,7 +308,7 @@ describe('labels', () => {
       400,
       300,
     );
-    expect(keep).toEqual([0, null, 0, null]);
+    expect(keep).toEqual([{ dx: 0, dy: 0 }, null, { dx: 0, dy: 0 }, null]);
   });
   it('a label with somewhere else to go goes there', () => {
     const keep = declutter(
@@ -302,11 +320,160 @@ describe('labels', () => {
       400,
       300,
     );
-    expect(keep).toEqual([0, -40, null]);
+    expect(keep).toEqual([{ dx: 0, dy: 0 }, { dx: 0, dy: -40 }, null]);
+  });
+  it('a name near the edge slides in rather than vanish; one whose point is off screen does not', () => {
+    const keep = declutter(
+      [
+        { x: 30, y: 100, w: 120, h: 20, slide: true },
+        { x: 30, y: 200, w: 120, h: 20 },
+        { x: -10, y: 250, w: 60, h: 20, slide: true },
+      ],
+      400,
+      300,
+    );
+    expect(keep).toEqual([{ dx: 30, dy: 0 }, null, null]);
   });
   it('a node is not modelled; a unit, board or module is', () => {
     expect(modelled(s.parts.find((p) => p.id === 'ground-point'))).toBe(false);
     expect(modelled(s.parts.find((p) => p.id === 'pmu'))).toBe(true);
     expect(modelled(undefined)).toBe(false);
+  });
+});
+
+// ------------------------------------------------------------------ version 2 (D-514, M3D2)
+
+
+const p2 = parseScene(rawV2);
+if (!p2.ok) throw new Error(p2.reason);
+const s2: Scene = p2.scene;
+
+describe('version 2: connectors, legs, the CUR', () => {
+  it('reads the stub whole, with nothing to forgive', () => {
+    expect(p2.problems).toEqual([]);
+    expect(s2.version).toBe(2);
+    expect(s2.legs.map((l) => l.id)).toEqual(['L1', 'L3']);
+    const plug = s2.parts.find((p) => p.id === 'L1-S1:plug')!;
+    expect(plug).toMatchObject({ kind: 'connector', family: 'DT06-12S', half: 'plug', housing: 'L1-S1', leg: 'L1 Engine', mate: 'L1-S1:receptacle' });
+    expect(plug.cavities[0]).toEqual({ cav: '1', circuit: 'Ignition feed', awg: '16', colour: 'red/white', state: 'LIVE' });
+  });
+
+  it('a mate that is not in the scene, a short path and a lost branch end are listed', () => {
+    const r = parseScene({
+      version: 2,
+      parts: [{ id: 'x:plug', kind: 'connector', housing: 'X', mate: 'x:gone' }],
+      legs: [{ id: 'L9', path: [{ x: 0, y: 0, z: 0 }], branches: [{ to: 'nowhere', path: [{ x: 0, y: 0, z: 0 }, { x: 1, y: 0, z: 0 }] }] }],
+    });
+    if (!r.ok) throw new Error(r.reason);
+    const text = r.problems.join('\n');
+    for (const w of ["mate 'x:gone'", 'fewer than two points', "'nowhere'"]) expect(text).toContain(w);
+    expect(r.scene.parts[0].mate).toBeNull();
+    expect(legPaths(r.scene.legs[0])).toHaveLength(1); // the branch alone is drawable
+  });
+
+  it('pairs the halves into housings, with cavities, ways and where', () => {
+    const hs = housingsOf(s2);
+    expect(hs.map((h) => [h.code, h.plug?.id, h.receptacle?.id, h.ways, h.cavities.length])).toEqual([
+      ['L1-S1', 'L1-S1:plug', 'L1-S1:receptacle', 12, 3],
+      ['L3-S1', 'L3-S1:plug', 'L3-S1:receptacle', 12, 2],
+    ]);
+    expect(hs[0].where).toBe('Engine end');
+    expect(hs[1].family).toBe('DT06-12S + DT04-12P'); // the plug's first, though the receptacle is listed first
+    expect(hs[1].where).toBe('Control Unit Remote (CUR)');
+    expect(waysOf('DTP04-4P')).toBe(4);
+    expect(waysOf('mystery')).toBeNull();
+  });
+
+  it('groups housings by leg, in the scene leg order', () => {
+    const r = parseScene({
+      version: 2,
+      parts: [
+        { id: 'a:plug', kind: 'connector', housing: 'D-1', leg: 'Drop' },
+        { id: 'b:plug', kind: 'connector', housing: 'L3-S2', leg: 'L3 Dash' },
+        { id: 'c:plug', kind: 'connector', housing: 'L1-S9', leg: 'L1 Engine' },
+        { id: 'd:plug', kind: 'connector', housing: 'Q-1' },
+      ],
+      legs: [
+        { id: 'L1', name: 'L1 Engine', path: [] },
+        { id: 'L3', name: 'L3 Dash', path: [] },
+      ],
+    });
+    if (!r.ok) throw new Error(r.reason);
+    expect(byLeg(r.scene).map((g) => [g.leg, g.legId, g.housings.map((h) => h.code)])).toEqual([
+      ['L1 Engine', 'L1', ['L1-S9']],
+      ['L3 Dash', 'L3', ['L3-S2']],
+      ['Drop', null, ['D-1']],
+      ['No leg', null, ['Q-1']],
+    ]);
+  });
+
+  it('connectors are drawn on their own but not listed as parts', () => {
+    expect(listedTop(s2).map((p) => p.id)).toEqual(['cur', 'pmu', 'dash-post', 'engine-end', 'rear-end']);
+    expect(listedChildren(s2, 'cur').map((p) => p.id)).toEqual(['left-plate']);
+    expect(drawnIds(s2)).toContain('L3-S1:receptacle');
+    expect(drawnIds(s2)).not.toContain('left-plate');
+    expect(drawnId(s2, 'L3-S1:receptacle')).toBe('L3-S1:receptacle');
+    expect(drawnId(s2, 'left-plate')).toBe('cur');
+  });
+
+  it('a receptacle on a unit sits in the unit frame', () => {
+    near(new Vector3().applyMatrix4(worldMatrix(s2, 'L3-S1:receptacle')), -600, -1080, 720);
+  });
+
+  it('isolating: a housing its two halves, a leg its housings and far ends, a unit its receptacles', () => {
+    const h = focusOf(s2, { kind: 'housing', id: 'L1-S1' })!;
+    expect([...h.parts].sort()).toEqual(['L1-S1:plug', 'L1-S1:receptacle']);
+    expect([...h.links]).toEqual(['L1-S1']);
+    expect(focusOf(s2, { kind: 'part', id: 'L1-S1:receptacle' })).toEqual(h); // a tapped half is its housing
+    const leg = focusOf(s2, { kind: 'leg', id: 'L3' })!;
+    expect([...leg.parts].sort()).toEqual(['L3-S1:plug', 'L3-S1:receptacle', 'rear-end']);
+    expect([...leg.links]).toEqual(['L3-S1']);
+    expect([...leg.legs]).toEqual(['L3']);
+    expect([...focusOf(s2, { kind: 'part', id: 'cur' })!.parts].sort()).toEqual(['L3-S1:receptacle', 'cur']);
+    expect(focusOf(s2, { kind: 'housing', id: 'nope' })).toBeNull();
+  });
+
+  it('framing: models by default, a housing its halves, a leg its runs', () => {
+    expect([...fitSet(s2, null).parts]).toEqual(['cur', 'pmu']);
+    expect([...fitSet(s2, { kind: 'housing', id: 'L3-S1' }).parts].sort()).toEqual(['L3-S1:plug', 'L3-S1:receptacle']);
+    const leg = fitSet(s2, { kind: 'leg', id: 'L1' });
+    expect([...leg.legs]).toEqual(['L1']);
+    expect(leg.parts.size).toBe(0);
+    expect(fitSet(s2, null, true).legs.size).toBe(2);
+  });
+
+  it('leg geometry: the main run and each branch; a radius given or grown from its conductors', () => {
+    const l3 = s2.legs[1];
+    const paths = legPaths(l3);
+    expect(paths).toHaveLength(2);
+    expect(paths[1][0]).toEqual(l3.path[1]); // the branch leaves from a point on the main run
+    expect(legRadius(l3)).toBe(5);
+    // the name sits out along the main run, off the shared dash post: 260 mm, or 40% of a short run
+    const at = legLabelAt(l3)!;
+    const run = Math.hypot(300, 100, 50) + Math.hypot(300, 100, 70);
+    expect(Math.hypot(at.x - l3.path[0].x, at.y - l3.path[0].y, at.z - l3.path[0].z)).toBeCloseTo(Math.min(260, 0.4 * run), 6);
+    expect(legLabelAt({ ...l3, path: [{ x: 0, y: 0, z: 0 }, { x: 1000, y: 0, z: 0 }] })).toEqual({ x: 260, y: 0, z: 0 });
+    expect(legLabelAt({ ...l3, path: [{ x: 0, y: 0, z: 0 }, { x: 100, y: 0, z: 0 }] })).toEqual({ x: 40, y: 0, z: 0 });
+    expect(legRadius(s2.legs[0])).toBeGreaterThanOrEqual(3);
+    expect(legRadius({ ...s2.legs[0], conductors: 200 })).toBeGreaterThan(legRadius(s2.legs[0]));
+  });
+});
+
+describe('the layers', () => {
+  it('start with the legs on and the straight links off when there are legs; v1 as it was', () => {
+    expect(defaultToggles(s2)).toEqual({ legs: true, links: false, connectors: true, labels: true });
+    expect(defaultToggles(s)).toEqual({ legs: false, links: true, connectors: true, labels: true });
+  });
+  it('a layer turned off still shows what is isolated', () => {
+    const off = { legs: false, links: false, connectors: false, labels: true };
+    const f = focusOf(s2, { kind: 'leg', id: 'L3' });
+    expect(linkShown(off, null, 'L3-S1')).toBe(false);
+    expect(linkShown(off, f, 'L3-S1')).toBe(true);
+    expect(linkShown(off, f, 'L1-S1')).toBe(false);
+    expect(legShown(off, f, 'L3')).toBe(true);
+    expect(legShown(off, f, 'L1')).toBe(false);
+    expect(connectorShown(off, f, 'L3-S1:plug')).toBe(true);
+    expect(connectorShown(off, f, 'L1-S1:plug')).toBe(false);
+    expect(connectorShown({ ...off, connectors: true }, null, 'L1-S1:plug')).toBe(true);
   });
 });

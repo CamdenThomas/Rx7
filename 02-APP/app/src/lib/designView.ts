@@ -1,42 +1,56 @@
 /**
- * The Design page's drawing (D-505, M3D1): one three.js view of a scene - the assembly, one
- * part with its children, or one board - over a canvas, with the labels as DOM elements
- * (CSS2DRenderer: plain HTML, so they read the same in Android's WebView as on the desktop).
- * Everything placed is built in the car frame under one root (designMath.ts's CAR_TO_THREE).
- * Imported only on demand, like CarModel's three.js, so the page's lists never wait on it.
- * It reads public/design/<project>/scene.json's models and no table.
+ * The Design page's drawing (D-505, M3D1; version 2 for 01-electrical D-514, M3D2): one
+ * three.js view of a scene - the assembly, one part with its children, or one board - over a
+ * canvas, with the labels as DOM elements (CSS2DRenderer: plain HTML, so they read the same
+ * in Android's WebView as on the desktop). Everything placed is built in the car frame under
+ * one root (designMath.ts's CAR_TO_THREE): the parts and every connector at its place, the
+ * legs as tubes along their paths, the D-505 links as straight lines. Imported only on
+ * demand, like CarModel's three.js, so the page's lists never wait on it. It reads
+ * public/design/<project>/scene.json's models and no table. No part is ever moved here.
  */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { CSS2DObject, CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
-import { CAR_TO_THREE, corners, fitView, glbMatrix, linkEnds, matrixUnder, placeMatrix } from './designMath';
+import { CAR_TO_THREE, corners, fitView, glbMatrix, linkEnds, matrixUnder, placeMatrix, worldMatrix } from './designMath';
 import {
   childrenOf,
+  connectorShown,
   declutter,
+  defaultToggles,
+  drawnId,
+  drawnIds,
   family,
   findConnector,
   fitSet,
   focusOf,
   frameGlb,
   glbReading,
+  isConnector,
   labelT,
+  legColour,
+  legLabelAt,
+  legPaths,
+  legRadius,
+  legShown,
+  linkShown,
   modelled,
   nodeMatches,
   partById,
-  rootOf,
-  topLevel,
+  type Focus,
   type Part,
   type Scene,
   type Selection,
+  type Toggles,
 } from './design';
 
 export type Mode = { kind: 'assembly' } | { kind: 'part'; id: string } | { kind: 'board'; id: string };
 export type LoadState = { state: 'loading' | 'ready' | 'none' } | { state: 'failed'; why: string };
 
 export interface ViewerHooks {
-  /** a part tapped in the 3D (its top-level id in the assembly), or a link label tapped */
+  /** a part tapped in the 3D (its drawn id in the assembly; a connector answers for its
+   *  housing), a leg's tube or label, or a link label */
   pick(sel: Selection): void;
   status(id: string, s: LoadState): void;
   /** the part view's named node groups, as found in its model */
@@ -50,8 +64,8 @@ const VIEW_FROM_CAR = new THREE.Vector3(-0.45, -1, 0.65);
 const FADE = 0.1;
 // A link's label sits this far out from the modelled part it leaves (mm).
 const LABEL_REACH = 160;
-// With nothing isolated, link and node labels show only nearer the camera than this share
-// of the distance the modelled parts were framed from - zoom in and they appear.
+// With nothing isolated, link, node and housing labels show only nearer the camera than
+// this share of the distance the modelled parts were framed from - zoom in and they appear.
 const LABEL_NEAR = 0.85;
 
 interface Loaded {
@@ -62,7 +76,7 @@ interface Loaded {
 /** A label the declutter decides on: its kind sets when it may show and how much it matters. */
 interface Tag {
   obj: CSS2DObject;
-  kind: 'part' | 'node' | 'link' | 'conn';
+  kind: 'part' | 'node' | 'link' | 'conn' | 'housing' | 'leg';
   id: string;
   w: number;
   h: number;
@@ -75,17 +89,20 @@ export class DesignView {
   private scene = new THREE.Scene();
   private root = new THREE.Group();
   private linkLayer = new THREE.Group();
+  private legLayer = new THREE.Group();
   private camera = new THREE.PerspectiveCamera(FOV, 1, 1, 100000);
   private controls: OrbitControls;
   private observer: ResizeObserver;
   private parts = new Map<string, Loaded>();
   private linkObjs = new Map<string, { line: THREE.Line; label: CSS2DObject; dots: CSS2DObject[] }>();
+  private legObjs = new Map<string, THREE.Mesh[]>();
   private tags: Tag[] = [];
+  private glbs = new Map<string, Promise<THREE.Object3D>>(); // one load per file, cloned per part
   private sel: Selection = null;
-  private focus: ReturnType<typeof focusOf> = null;
-  private focusEnds = new Set<string>(); // the parts at the ends of the isolated links
+  private focus: Focus | null = null;
+  private focusEnds = new Set<string>(); // the drawn parts at the ends of the isolated links
   private nearDist = Infinity;
-  private showLabels = true;
+  private toggles: Toggles;
   private frame = 0;
   private dead = false;
   private moved = false;
@@ -100,6 +117,7 @@ export class DesignView {
     private mode: Mode,
     private hooks: ViewerHooks,
   ) {
+    this.toggles = defaultToggles(s);
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     this.renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
     this.renderer.toneMapping = THREE.AgXToneMapping;
@@ -113,7 +131,7 @@ export class DesignView {
     this.scene.add(new THREE.HemisphereLight(0xe0fbfc, 0x293241, 0.6));
     this.root.matrixAutoUpdate = false;
     this.root.matrix.copy(CAR_TO_THREE);
-    this.root.add(this.linkLayer);
+    this.root.add(this.linkLayer, this.legLayer);
     this.scene.add(this.root);
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
@@ -136,7 +154,13 @@ export class DesignView {
   private build() {
     const m = this.mode;
     if (m.kind === 'assembly') {
-      for (const p of topLevel(this.s)) this.addPart(p, this.root, placeMatrix(p.place));
+      // the top-level parts at their places, and every connector at its own, a unit's
+      // receptacles included (drawn beside it, not inside it, so they fade and pick alone)
+      for (const id of drawnIds(this.s)) {
+        const p = partById(this.s, id)!;
+        this.addPart(p, this.root, p.parent ? worldMatrix(this.s, id) : placeMatrix(p.place));
+      }
+      this.drawLegs();
       this.drawLinks();
     } else {
       const p = partById(this.s, m.id);
@@ -175,10 +199,13 @@ export class DesignView {
       return;
     }
     if (this.mode.kind === 'assembly') {
-      const label = this.label(p.name, 'd3-part');
-      label.center.set(0.5, 1.2);
+      const conn = isConnector(p);
+      const label = conn
+        ? this.label(p.housing || p.id, 'd3-housing', () => this.hooks.pick(p.housing ? { kind: 'housing', id: p.housing } : { kind: 'part', id: p.id }))
+        : this.label(p.name, 'd3-part');
+      label.center.set(0.5, conn ? 1.5 : 1.2);
       group.add(label);
-      this.tag(label, 'part', p.id);
+      this.tag(label, conn ? 'housing' : 'part', p.id);
     }
     if (!p.glb) {
       this.setModel(p, entry, this.standIn(p));
@@ -186,12 +213,9 @@ export class DesignView {
       return;
     }
     this.hooks.status(p.id, { state: 'loading' });
-    const url = new URL(p.glb, new URL(this.base, location.href)).href;
-    new GLTFLoader()
-      .loadAsync(url)
-      .then((gltf) => {
-        if (this.dead) return dispose(gltf.scene);
-        const model = gltf.scene;
+    this.model(p.glb)
+      .then((model) => {
+        if (this.dead) return dispose(model);
         const holder = new THREE.Group();
         holder.matrixAutoUpdate = false;
         // The scene says how its models are written (frame.glb); a guess from the size only
@@ -219,13 +243,30 @@ export class DesignView {
       });
   }
 
+  /** A model file, loaded once however many parts use it (every DT06-12S half is one file),
+   *  and handed out as a copy with its own materials, so one can fade without the others. */
+  private async model(glb: string): Promise<THREE.Object3D> {
+    const url = new URL(glb, new URL(this.base, location.href)).href;
+    let first = this.glbs.get(url);
+    if (!first) {
+      first = new GLTFLoader().loadAsync(url).then((g) => g.scene);
+      this.glbs.set(url, first);
+    }
+    const copy = (await first).clone(true);
+    copy.traverse((o) => {
+      const mesh = o as THREE.Mesh;
+      if (mesh.isMesh) mesh.material = Array.isArray(mesh.material) ? mesh.material.map((m) => m.clone()) : mesh.material.clone();
+    });
+    return copy;
+  }
+
   /** Put a model in its part's frame, and its name label on top of it. */
   private setModel(p: Part, entry: Loaded, model: THREE.Object3D) {
     entry.model = model;
     entry.group.add(model);
     this.root.updateMatrixWorld(true);
     const box = new THREE.Box3().setFromObject(model);
-    const label = this.tags.find((t) => t.kind === 'part' && t.id === p.id)?.obj;
+    const label = this.tags.find((t) => (t.kind === 'part' || t.kind === 'housing') && t.id === p.id)?.obj;
     if (label && !box.isEmpty()) {
       const top = box.getCenter(new THREE.Vector3());
       top.y = box.max.y; // three.js y is the car's up
@@ -278,7 +319,7 @@ export class DesignView {
     obj.userData.tag = true;
     const text = obj.element.textContent ?? '';
     // a label's size, estimated (measuring every frame would cost a layout each time)
-    this.tags.push({ obj, kind, id, w: text.length * 7.4 + 18, h: kind === 'link' ? 28 : 22, cy: obj.center.y });
+    this.tags.push({ obj, kind, id, w: text.length * 7.4 + 18, h: kind === 'link' || kind === 'leg' ? 28 : 22, cy: obj.center.y });
   }
 
   /** The car-frame centres of the models loaded so far, for links whose connector is not in
@@ -293,6 +334,33 @@ export class DesignView {
       if (!box.isEmpty()) out.set(id, box.getCenter(new THREE.Vector3()).applyMatrix4(toCar));
     }
     return out;
+  }
+
+  /** The legs (version 2): each run a tube along its path in the leg's colour, and the leg's
+   *  name near its root. Its route, not a measurement (R11): every point is provisional. */
+  private drawLegs() {
+    for (const leg of this.s.legs) {
+      const paths = legPaths(leg);
+      if (!paths.length) continue;
+      const colour = legColour(this.s, leg.id);
+      const meshes = paths.map((path) => {
+        const pts = path.map((q) => new THREE.Vector3(q.x, q.y, q.z));
+        const curve = new THREE.CatmullRomCurve3(pts, false, 'centripetal');
+        const geo = new THREE.TubeGeometry(curve, Math.max(8, pts.length * 12), legRadius(leg), 8, false);
+        const mesh = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color: colour, roughness: 0.55, metalness: 0.05 }));
+        mesh.userData.legId = leg.id;
+        this.legLayer.add(mesh);
+        return mesh;
+      });
+      this.legObjs.set(leg.id, meshes);
+      const label = this.label(leg.name, 'd3-leg', () => this.hooks.pick({ kind: 'leg', id: leg.id }));
+      label.element.style.setProperty('--leg', `#${colour.toString(16).padStart(6, '0')}`);
+      label.center.set(0.5, 1.3);
+      const at = legLabelAt(leg) ?? paths[0][0];
+      label.position.set(at.x, at.y, at.z);
+      this.legLayer.add(label);
+      this.tag(label, 'leg', leg.id);
+    }
   }
 
   /** The harness as straight labelled lines, connector to connector (no route, no length). */
@@ -318,8 +386,8 @@ export class DesignView {
       }
       o.line.geometry.setFromPoints([ends.from.at, ends.to.at]);
       o.line.geometry.computeBoundingSphere();
-      const fromM = modelled(partById(this.s, rootOf(this.s, l.from.part)));
-      const toM = modelled(partById(this.s, rootOf(this.s, l.to.part)));
+      const fromM = modelled(partById(this.s, drawnId(this.s, l.from.part)));
+      const toM = modelled(partById(this.s, drawnId(this.s, l.to.part)));
       o.label.position.copy(ends.from.at).lerp(ends.to.at, labelT(ends.from.at.distanceTo(ends.to.at), fromM, toM, LABEL_REACH));
       o.dots[0].position.copy(ends.from.at);
       o.dots[1].position.copy(ends.to.at);
@@ -362,54 +430,76 @@ export class DesignView {
 
   // ---------------------------------------------------------------- what is shown
 
-  /** The assembly: fade everything outside the isolated part or link, and frame it. */
+  /** The assembly: fade everything outside the isolated part, link, housing or leg, and
+   *  frame it. */
   setSelection(sel: Selection) {
     this.sel = sel;
     this.focus = focusOf(this.s, sel);
     this.focusEnds = new Set();
     for (const l of this.s.links) {
       if (!this.focus?.links.has(l.id)) continue;
-      this.focusEnds.add(rootOf(this.s, l.from.part));
-      this.focusEnds.add(rootOf(this.s, l.to.part));
+      this.focusEnds.add(drawnId(this.s, l.from.part));
+      this.focusEnds.add(drawnId(this.s, l.to.part));
     }
     this.applyFocus();
     this.moved = false;
     this.fit();
   }
 
+  /** The assembly's layers: legs, links, connectors, labels. */
+  setToggles(t: Toggles) {
+    this.toggles = { ...t };
+    this.applyFocus();
+  }
+
   private faded(id: string): boolean {
     return !!this.focus && this.mode.kind === 'assembly' && !this.focus.parts.has(id);
   }
 
-  /** Materials, lines and dots; the labels are the declutter's, on every frame. */
+  private fade(o: THREE.Object3D, faded: boolean) {
+    o.traverse((x) => {
+      const mesh = x as THREE.Mesh;
+      if (!mesh.isMesh && !(x as THREE.LineSegments).isLineSegments) return;
+      for (const m of ([] as THREE.Material[]).concat((mesh.material as THREE.Material | THREE.Material[]) ?? [])) {
+        if (m.userData.base === undefined) m.userData.base = { opacity: m.opacity, transparent: m.transparent, depthWrite: m.depthWrite };
+        const b = m.userData.base as { opacity: number; transparent: boolean; depthWrite: boolean };
+        m.opacity = faded ? Math.min(b.opacity, FADE) : b.opacity;
+        m.transparent = faded || b.transparent;
+        m.depthWrite = faded ? false : b.depthWrite;
+        m.needsUpdate = true;
+      }
+    });
+  }
+
+  /** Materials, lines, dots and what each toggle hides; the labels are the declutter's, on
+   *  every frame. */
   private applyFocus() {
     const f = this.focus;
+    const t = this.toggles;
+    const asm = this.mode.kind === 'assembly';
     for (const [id, e] of this.parts) {
       const faded = this.faded(id);
+      if (asm && isConnector(partById(this.s, id))) e.group.visible = connectorShown(t, f, id);
       e.group.traverse((o) => {
-        if (o instanceof CSS2DObject) {
-          if (!o.userData.tag) o.visible = !faded;
-          return;
-        }
-        const mesh = o as THREE.Mesh;
-        if (!mesh.isMesh && !(o as THREE.LineSegments).isLineSegments) return;
-        for (const m of ([] as THREE.Material[]).concat((mesh.material as THREE.Material | THREE.Material[]) ?? [])) {
-          if (m.userData.base === undefined) m.userData.base = { opacity: m.opacity, transparent: m.transparent, depthWrite: m.depthWrite };
-          const b = m.userData.base as { opacity: number; transparent: boolean; depthWrite: boolean };
-          m.opacity = faded ? Math.min(b.opacity, FADE) : b.opacity;
-          m.transparent = faded || b.transparent;
-          m.depthWrite = faded ? false : b.depthWrite;
-          m.needsUpdate = true;
-        }
+        if (o instanceof CSS2DObject && !o.userData.tag) o.visible = !faded;
       });
+      if (e.model) this.fade(e.model, faded);
+    }
+    for (const [id, meshes] of this.legObjs) {
+      const on = legShown(t, f, id);
+      const faded = !!f && !f.legs.has(id);
+      for (const m of meshes) {
+        m.visible = on;
+        this.fade(m, faded);
+      }
     }
     for (const [id, o] of this.linkObjs) {
-      const on = !f || f.links.has(id);
+      const on = linkShown(t, f, id);
       o.line.visible = on;
       o.dots.forEach((d) => (d.visible = on));
       o.label.element.classList.toggle('on', !!f && f.links.has(id));
     }
-    if (this.mode.kind !== 'assembly') {
+    if (!asm) {
       this.linkLayer.traverse((o) => {
         if (!(o instanceof CSS2DObject) || o.userData.tag) return;
         const owner = o.userData.ownerId as string | undefined;
@@ -419,61 +509,80 @@ export class DesignView {
     this.request();
   }
 
-  /** Which labels show this frame. A part's name always (unless faded); with something
-   *  isolated, only its links' labels and their far ends' names; with nothing isolated, the
-   *  link and node labels near the camera. Then the most important first, nearest first,
-   *  each only where it overlaps none already shown. */
+  /** Which labels show this frame. A part's name and a leg's always (unless faded or
+   *  hidden); with something isolated, only its links', housings' and far ends'; with
+   *  nothing isolated, the link, housing and node labels near the camera. Then the most
+   *  important first, nearest first, each only where it overlaps none already shown. */
   private declutterLabels() {
     const f = this.focus;
+    const t = this.toggles;
     const { clientWidth: w, clientHeight: h } = this.host;
     const camPos = this.camera.position;
     const cands: { t: Tag; rank: number; d: number; x: number; y: number }[] = [];
     const v = new THREE.Vector3();
-    for (const t of this.tags) {
+    for (const tg of this.tags) {
       let want = false;
       let rank = 2;
-      if (this.showLabels) {
-        if (t.kind === 'part') {
-          want = !this.faded(t.id);
-          rank = 0;
-        } else if (t.kind === 'conn') {
-          want = !!this.parts.get(t.id)?.group.visible;
-        } else if (f) {
-          want = t.kind === 'link' ? f.links.has(t.id) : this.focusEnds.has(t.id);
-          rank = 1;
-        } else {
-          want = true; // near enough, checked below
+      let nearOnly = false;
+      if (t.labels) {
+        switch (tg.kind) {
+          case 'part':
+            want = !this.faded(tg.id);
+            rank = 0;
+            break;
+          case 'leg':
+            want = legShown(t, f, tg.id) && (!f || f.legs.has(tg.id));
+            rank = 0;
+            break;
+          case 'conn':
+            want = !!this.parts.get(tg.id)?.group.visible;
+            break;
+          case 'link':
+            want = f ? f.links.has(tg.id) : t.links;
+            nearOnly = !f;
+            rank = 1;
+            break;
+          case 'housing':
+            want = !!this.parts.get(tg.id)?.group.visible && (!f || f.parts.has(tg.id));
+            nearOnly = !f;
+            rank = 1;
+            break;
+          case 'node':
+            want = f ? this.focusEnds.has(tg.id) || f.parts.has(tg.id) : true;
+            nearOnly = !f;
+            rank = 1;
+            break;
         }
       }
       if (want) {
-        t.obj.getWorldPosition(v);
+        tg.obj.getWorldPosition(v);
         const d = v.distanceTo(camPos);
-        if (!f && (t.kind === 'link' || t.kind === 'node') && d > this.nearDist) want = false;
+        if (nearOnly && d > this.nearDist) want = false;
         else {
           const p = v.clone().project(this.camera);
           if (p.z > 1 || p.z < -1) want = false;
-          else cands.push({ t, rank, d, x: ((p.x + 1) / 2) * w, y: ((1 - p.y) / 2) * h - t.h * (t.cy - 0.5) });
+          else cands.push({ t: tg, rank, d, x: ((p.x + 1) / 2) * w, y: ((1 - p.y) / 2) * h - tg.h * (tg.cy - 0.5) });
         }
       }
-      if (!want) t.obj.visible = false;
+      if (!want) tg.obj.visible = false;
     }
     cands.sort((a, b) => a.rank - b.rank || a.d - b.d);
-    // a part's name may drop below its anchor, onto the model, when above it is taken
-    const keep = declutter(cands.map((c) => ({ x: c.x, y: c.y, w: c.t.w, h: c.t.h, alts: c.t.kind === 'part' ? [c.t.h * 1.6, -c.t.h * 1.2] : [] })), w, h);
+    // a part's name may drop below its anchor, onto the model, when above it is taken, and
+    // a part's or leg's name slides in from the edge rather than vanish
+    const keep = declutter(
+      cands.map((c) => ({ x: c.x, y: c.y, w: c.t.w, h: c.t.h, alts: c.t.kind === 'part' ? [c.t.h * 1.6, -c.t.h * 1.2] : [], slide: c.t.kind === 'part' || c.t.kind === 'leg' })),
+      w,
+      h,
+    );
     cands.forEach((c, i) => {
-      const dy = keep[i];
-      c.t.obj.visible = dy !== null;
-      c.t.obj.center.y = c.t.cy - (dy ?? 0) / c.t.h;
+      const k = keep[i];
+      c.t.obj.visible = k !== null;
+      c.t.obj.center.set(0.5 - (k?.dx ?? 0) / c.t.w, c.t.cy - (k?.dy ?? 0) / c.t.h);
     });
   }
 
-  setLabels(on: boolean) {
-    this.showLabels = on;
-    this.request();
-  }
-
-  /** The part view's toggles: 'case' and 'inside' are the model's named node groups, any
-   *  other key a child part. */
+  /** The part view's toggles: 'case' and 'inside' are the model's named node groups,
+   *  'connectors' every connector inside the part, any other key a child part. */
   setHidden(hidden: Set<string>) {
     if (this.mode.kind === 'assembly') return;
     const p = partById(this.s, this.mode.id);
@@ -482,7 +591,11 @@ export class DesignView {
       for (const o of this.named(own, p.nodes.case)) o.visible = !hidden.has('case');
       for (const o of this.named(own, p.nodes.inside)) o.visible = !hidden.has('inside');
     }
-    for (const [id, e] of this.parts) if (id !== p?.id) e.group.visible = !hidden.has(id) && !this.hiddenAbove(id, hidden);
+    for (const [id, e] of this.parts) {
+      if (id === p?.id) continue;
+      const conn = isConnector(partById(this.s, id));
+      e.group.visible = !hidden.has(id) && !this.hiddenAbove(id, hidden) && !(conn && hidden.has('connectors'));
+    }
     this.applyFocus();
   }
 
@@ -499,8 +612,8 @@ export class DesignView {
   }
 
   /** Frame, from the current direction: in the assembly what design.ts's fitSet says (the
-   *  modelled parts, or the isolated part's own box, or a link's two ends; `all` adds every
-   *  far end); in a part or board view, what is shown. */
+   *  modelled parts, or the isolated part's own box, a link's two ends, a housing's halves, a
+   *  leg's runs; `all` adds every far end and leg); in a part or board view, what is shown. */
   fit(all = false) {
     this.root.updateMatrixWorld(true);
     const pts: THREE.Vector3[] = [];
@@ -512,6 +625,10 @@ export class DesignView {
     }
     for (const id of set?.links ?? []) {
       this.linkObjs.get(id)?.dots.forEach((d) => pts.push(d.getWorldPosition(new THREE.Vector3())));
+    }
+    for (const id of set?.legs ?? []) {
+      const leg = this.s.legs.find((l) => l.id === id);
+      for (const path of leg ? legPaths(leg) : []) for (const q of path) pts.push(new THREE.Vector3(q.x, q.y, q.z).applyMatrix4(this.root.matrixWorld));
     }
     const v = fitView(pts, this.fitDir, FOV, this.camera.aspect, 120);
     this.controls.target.copy(v.target);
@@ -534,8 +651,9 @@ export class DesignView {
     this.down = { x: e.clientX, y: e.clientY };
   };
 
-  /** A tap (not a drag) picks the part under it. Empty space does nothing, so a slip while
-   *  turning the view never loses what is isolated. */
+  /** A tap (not a drag) picks what is under it: a part, a connector (its housing) or a leg's
+   *  tube. Empty space does nothing, so a slip while turning the view never loses what is
+   *  isolated. Nothing is ever dragged or moved. */
   private onUp = (e: PointerEvent) => {
     const d = this.down;
     this.down = null;
@@ -549,13 +667,18 @@ export class DesignView {
     const ndc = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
     const ray = new THREE.Raycaster();
     ray.setFromCamera(ndc, this.camera);
-    const targets = [...this.parts.values()].map((p) => p.group);
+    const targets = [...[...this.parts.values()].map((p) => p.group), this.legLayer];
     for (const hit of ray.intersectObjects(targets, true)) {
-      if (!(hit.object as THREE.Mesh).isMesh || !hit.object.visible) continue;
+      if (!(hit.object as THREE.Mesh).isMesh || !visibleUp(hit.object)) continue;
+      if (hit.object.userData.legId) {
+        this.hooks.pick({ kind: 'leg', id: hit.object.userData.legId as string });
+        return;
+      }
       let o: THREE.Object3D | null = hit.object;
       while (o && !o.userData.partId) o = o.parent;
       if (o) {
-        this.hooks.pick({ kind: 'part', id: o.userData.partId as string });
+        const p = partById(this.s, o.userData.partId as string);
+        this.hooks.pick(p && isConnector(p) && p.housing ? { kind: 'housing', id: p.housing } : { kind: 'part', id: o.userData.partId as string });
         return;
       }
     }
@@ -595,12 +718,19 @@ export class DesignView {
     el.removeEventListener('pointerdown', this.onDown);
     el.removeEventListener('pointerup', this.onUp);
     dispose(this.scene);
+    for (const first of this.glbs.values()) void first.then(dispose, () => undefined);
     this.scene.environment?.dispose();
     this.renderer.dispose();
     this.renderer.forceContextLoss();
     el.remove();
     this.labels.domElement.remove();
   }
+}
+
+/** Visible, and every parent visible (a hidden connector's meshes are not pickable). */
+function visibleUp(o: THREE.Object3D | null): boolean {
+  for (; o; o = o.parent) if (!o.visible) return false;
+  return true;
 }
 
 function dispose(root: THREE.Object3D) {

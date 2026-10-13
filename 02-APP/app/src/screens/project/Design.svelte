@@ -1,7 +1,9 @@
 <!--
   The project's design in 3D (D-505, work row M3D1): the assembly with its labelled
   connector-to-connector links, any part isolated by a tap; each part's own view with its
-  insides toggled; each board top and bottom. Everything comes from
+  insides toggled; each board top and bottom. At scene version 2 (01-electrical D-514, M3D2)
+  the harness too: the legs as tubes, every connector at its place, a Connectors list by leg
+  that opens a housing's cavities, and toggles for each layer. Everything comes from
   public/design/<project>/scene.json and its models, exported from the design by
   01-electrical Y23 - a view of the design, never a source of facts (R11), and nothing on it
   is typed back into the record.
@@ -12,18 +14,28 @@
   import DesignCanvas from '../../components/DesignCanvas.svelte';
   import {
     builtLabel,
+    byLeg,
     bytesLabel,
     childrenOf,
+    defaultToggles,
+    drawnIds,
     family,
+    housingsOf,
+    isConnector,
     KIND_LABEL,
+    legColourCss,
+    legRadius,
+    listedChildren,
+    listedTop,
     looksAbsent,
     parseScene,
     partById,
     tap,
-    topLevel,
+    type Housing,
     type Part,
     type Scene,
     type Selection,
+    type Toggles,
   } from '../../lib/design';
   import type { LoadState, Mode } from '../../lib/designView';
   import { href } from '../../lib/router.svelte';
@@ -65,7 +77,16 @@
   let selection = $state<Selection>(null);
   let hidden = $state(new Set<string>());
   let side = $state<'top' | 'bottom'>('top');
-  let labels = $state(true);
+  // the assembly's layers; a new scene starts from its own defaults (legs on, links off)
+  let toggles = $state<Toggles>({ legs: false, links: true, connectors: true, labels: true });
+  let toggledFor: Scene | null = null;
+  $effect(() => {
+    if (scene && scene !== toggledFor) {
+      toggledFor = scene;
+      toggles = defaultToggles(scene);
+    }
+  });
+  const flip = (k: keyof Toggles) => (toggles = { ...toggles, [k]: !toggles[k] });
   let found = $state<{ case: boolean; inside: boolean } | null>(null);
   let status = $state<Record<string, LoadState>>({});
   let canvas = $state<ReturnType<typeof DesignCanvas>>();
@@ -79,11 +100,25 @@
   });
 
   const name = (pid: string) => (scene && partById(scene, pid)?.name) || pid || '(none)';
-  // The models this view draws: the assembly's top-level parts, or one part and what is inside it.
-  const shown = $derived(new Set(scene ? (id ? [...family(scene, id)] : topLevel(scene).map((p) => p.id)) : []));
-  const failed = $derived(
-    scene ? scene.parts.filter((p) => shown.has(p.id) && status[p.id]?.state === 'failed').map((p) => ({ p, why: (status[p.id] as { why: string }).why })) : [],
-  );
+  // The models this view draws: the assembly's parts and connectors, or one part and what is inside it.
+  const shown = $derived(new Set(scene ? (id ? [...family(scene, id)] : drawnIds(scene)) : []));
+  // A model that does not load, once per file however many parts share it (a connector family).
+  const failed = $derived.by(() => {
+    const out = new Map<string, { names: string[]; why: string }>();
+    for (const p of scene?.parts ?? []) {
+      const st = status[p.id];
+      if (!shown.has(p.id) || st?.state !== 'failed') continue;
+      const f = out.get(p.glb ?? p.id) ?? { names: [], why: st.why };
+      f.names.push(p.name);
+      out.set(p.glb ?? p.id, f);
+    }
+    return [...out].map(([glb, f]) => ({ glb, ...f }));
+  });
+  const housings = $derived(scene ? housingsOf(scene) : []);
+  const groups = $derived(scene ? byLeg(scene, housings) : []);
+  const partCount = $derived(scene ? scene.parts.filter((p) => !isConnector(p)).length : 0);
+  const selHousing = $derived(selection?.kind === 'housing' ? housings.find((h) => h.code === selection!.id) : undefined);
+  const selLeg = $derived(scene && selection?.kind === 'leg' ? scene.legs.find((l) => l.id === selection!.id) : undefined);
   const selPart = $derived(scene && selection?.kind === 'part' ? partById(scene, selection.id) : undefined);
   const selLink = $derived(scene && selection?.kind === 'link' ? scene.links.find((l) => l.id === selection!.id) : undefined);
 
@@ -115,6 +150,10 @@
   };
   const linksOf = (pid: string) => scene?.links.filter((l) => l.from.part === pid || l.to.part === pid) ?? [];
   const missingOf = (pid: string) => scene?.missing.filter((m) => m.part === pid) ?? [];
+  const ownHousings = (pid: string) => {
+    const codes = new Set(scene ? [...family(scene, pid)].map((x) => partById(scene, x)).filter(isConnector).map((c) => c!.housing) : []);
+    return housings.filter((h) => codes.has(h.code));
+  };
 </script>
 
 {#snippet confirmChip(on: boolean)}
@@ -138,6 +177,42 @@
       {#if status[p.id]?.state === 'failed'}<span class="warn"> - did not load: {(status[p.id] as { why: string }).why}</span>{/if}
     </dd>
     {#if p.source}<dt>Design file</dt><dd class="mono small">{p.source}</dd>{/if}
+  </dl>
+{/snippet}
+
+{#snippet cavityTable(h: Housing)}
+  {#if h.cavities.length}
+    <div class="cav-wrap">
+      <table class="cav">
+        <thead><tr><th>Cav</th><th>Circuit</th><th>AWG</th><th>Colour</th><th>State</th></tr></thead>
+        <tbody>
+          {#each h.cavities as c, i (i)}
+            <tr class:idle={!!c.state && c.state !== 'LIVE'}>
+              <td class="mono">{c.cav}</td>
+              <td>{c.circuit || '-'}</td>
+              <td class="num">{c.awg}</td>
+              <td>{c.colour}</td>
+              <td>{c.state.toLowerCase()}</td>
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    </div>
+  {:else}
+    <p class="faint small">No cavities in the scene for this housing.</p>
+  {/if}
+{/snippet}
+
+{#snippet housingFacts(h: Housing)}
+  <dl class="facts">
+    <dt>Family</dt>
+    <dd class="mono">{h.family || 'not said'}{h.ways != null ? ` · ${h.ways} ways` : ''}</dd>
+    <dt>Where</dt>
+    <dd>{h.where || 'not said'}</dd>
+    {#if h.leg}<dt>Leg</dt><dd>{h.leg}</dd>{/if}
+    <dt>Halves</dt>
+    <dd>{h.plug ? 'plug' : 'no plug'} · {h.receptacle ? 'receptacle' : 'no receptacle'}{h.receptacle?.parent ? ` on ${name(h.receptacle.parent)}` : ''}</dd>
+    {#if h.confirm}<dt>Place</dt><dd class="warn">provisional - not confirmed until the car is measured</dd>{/if}
   </dl>
 {/snippet}
 
@@ -166,14 +241,19 @@
   </div>
 {:else if scene}
   <p class="meta faint small">
-    Exported {builtLabel(scene.built)} · {scene.parts.length} parts · {scene.links.length} links
+    Exported {builtLabel(scene.built)} · {partCount} parts · {scene.links.length} links
+    {#if housings.length}· {housings.length} housings{/if}
+    {#if scene.legs.length}· {scene.legs.length} legs{/if}
     {#if scene.frame.ruling}· car frame {scene.frame.ruling}{/if}
   </p>
 
   {#if failed.length}
     <div class="alert" role="status">
-      {#each failed as f (f.p.id)}
-        <p>Could not load <strong>{f.p.name}</strong> (<span class="mono">{f.p.glb}</span>): {f.why}. A box of its size stands in; the rest is shown.</p>
+      {#each failed as f (f.glb)}
+        <p>
+          Could not load <strong>{f.names[0]}</strong>{f.names.length > 1 ? ` and ${f.names.length - 1} more using it` : ''}
+          (<span class="mono">{f.glb}</span>): {f.why}. A box of its size stands in; the rest is shown.
+        </p>
       {/each}
     </div>
   {/if}
@@ -201,7 +281,7 @@
             {mode}
             {hidden}
             {side}
-            {labels}
+            {toggles}
             onstatus={(pid, s) => (status = { ...status, [pid]: s })}
             onnodes={(f) => (found = f)}
           />
@@ -221,10 +301,13 @@
               Insides{found?.inside === false ? ' (not in the model)' : ''}
             </button>
           {/if}
-          {#each childrenOf(scene, part.id) as c (c.id)}
+          {#each listedChildren(scene, part.id) as c (c.id)}
             <button class="btn" aria-pressed={!hidden.has(c.id)} class:cool={!hidden.has(c.id)} onclick={() => toggle(c.id)}>{c.name}</button>
           {/each}
-          <button class="btn icon" aria-pressed={labels} class:cool={labels} aria-label="Labels" title="Labels" onclick={() => (labels = !labels)}><Tags size={17} /></button>
+          {#if ownHousings(part.id).length && !isConnector(part)}
+            <button class="btn" aria-pressed={!hidden.has('connectors')} class:cool={!hidden.has('connectors')} onclick={() => toggle('connectors')}>Connectors</button>
+          {/if}
+          <button class="btn icon" aria-pressed={toggles.labels} class:cool={toggles.labels} aria-label="Labels" title="Labels" onclick={() => flip('labels')}><Tags size={17} /></button>
           <button class="btn icon" aria-label="Fit to view" title="Fit to view" onclick={() => canvas?.fit()}><Maximize size={17} /></button>
         </div>
         <p class="faint small hint">Drag to turn it, pinch or scroll to zoom, two fingers to move it.</p>
@@ -251,11 +334,26 @@
             <p class="faint small pad">None in the scene.</p>
           {/if}
         </details>
-        {#if childrenOf(scene, part.id).length}
+        {#if ownHousings(part.id).length}
           <details open>
-            <summary>Inside it <span class="n">{childrenOf(scene, part.id).length}</span></summary>
+            <summary>Housings <span class="n">{ownHousings(part.id).length}</span></summary>
             <ul class="list">
-              {#each childrenOf(scene, part.id) as c (c.id)}
+              {#each ownHousings(part.id) as h (h.code)}
+                <li>
+                  <details class="housing">
+                    <summary class="item"><span class="row-main"><span class="mono code">{h.code}</span><span class="faint small">{h.family}{h.ways != null ? ` · ${h.ways} ways` : ''}</span></span></summary>
+                    <div class="pad">{@render cavityTable(h)}</div>
+                  </details>
+                </li>
+              {/each}
+            </ul>
+          </details>
+        {/if}
+        {#if listedChildren(scene, part.id).length}
+          <details open>
+            <summary>Inside it <span class="n">{listedChildren(scene, part.id).length}</span></summary>
+            <ul class="list">
+              {#each listedChildren(scene, part.id) as c (c.id)}
                 <li>
                   <a class="item" href={href({ name: 'design', area, id: c.id })}>
                     <span class="row-main">{c.name}<span class="chip">{KIND_LABEL[c.kind]}</span>{@render confirmChip(c.confirm)}<ChevronRight size={16} class="go" /></span>
@@ -296,7 +394,7 @@
             {base}
             {mode}
             {selection}
-            {labels}
+            {toggles}
             onpick={choose}
             onstatus={(pid, s) => (status = { ...status, [pid]: s })}
           />
@@ -304,14 +402,27 @@
         <div class="controls" role="group" aria-label="View controls">
           {#if selection}
             <button class="btn primary" onclick={() => (selection = null)}><ArrowLeft size={16} /> Show everything</button>
-            <span class="muted small sel">{selPart ? selPart.name : selLink ? selLink.code : ''}</span>
+            <span class="muted small sel">{selPart?.name ?? selLink?.code ?? selHousing?.code ?? selLeg?.name ?? ''}</span>
           {:else}
-            <span class="faint small sel">Tap a part or a link to isolate it.</span>
+            <span class="faint small sel">Tap a part, a link{scene.legs.length ? ', a leg' : ''}{housings.length ? ' or a connector' : ''} to isolate it.</span>
           {/if}
-          <button class="btn icon" aria-pressed={labels} class:cool={labels} aria-label="Labels" title="Labels" onclick={() => (labels = !labels)}><Tags size={17} /></button>
+          <button class="btn icon" aria-pressed={toggles.labels} class:cool={toggles.labels} aria-label="Labels" title="Labels" onclick={() => flip('labels')}><Tags size={17} /></button>
           <button class="btn icon" aria-label="Fit to view" title="Fit to view" onclick={() => canvas?.fit()}><Maximize size={17} /></button>
           <button class="btn icon" aria-label="Fit everything, far ends included" title="Fit everything, far ends included" onclick={() => canvas?.fit(true)}><Expand size={17} /></button>
         </div>
+        {#if scene.legs.length || housings.length}
+          <div class="controls layers" role="group" aria-label="Layers">
+            {#if scene.legs.length}
+              <button class="btn" aria-pressed={toggles.legs} class:cool={toggles.legs} onclick={() => flip('legs')}>Legs</button>
+            {/if}
+            {#if scene.links.length}
+              <button class="btn" aria-pressed={toggles.links} class:cool={toggles.links} onclick={() => flip('links')}>Links</button>
+            {/if}
+            {#if housings.length}
+              <button class="btn" aria-pressed={toggles.connectors} class:cool={toggles.connectors} onclick={() => flip('connectors')}>Connectors</button>
+            {/if}
+          </div>
+        {/if}
       </div>
 
       <aside class="side">
@@ -326,12 +437,32 @@
             {@render linkRow(selLink)}
             <p class="faint small">A straight line from plug to plug - not the wire's run or length (the harness drawings are).</p>
           </section>
+        {:else if selHousing}
+          <section class="panel picked" aria-label="Isolated housing">
+            <div class="row-main"><strong class="mono">{selHousing.code}</strong>{@render confirmChip(selHousing.confirm)}</div>
+            {@render housingFacts(selHousing)}
+            {@render cavityTable(selHousing)}
+          </section>
+        {:else if selLeg}
+          <section class="panel picked" aria-label="Isolated leg">
+            <div class="row-main"><span class="swatch" style="--leg: {legColourCss(scene, selLeg.id)}"></span><strong>{selLeg.name}</strong>{@render confirmChip(selLeg.confirm)}</div>
+            <dl class="facts">
+              {#if selLeg.conductors != null}<dt>Conductors</dt><dd>{selLeg.conductors}</dd>{/if}
+              <dt>Drawn as</dt>
+              <dd>a tube {legRadius(selLeg)} mm in radius{selLeg.radius_mm ? '' : ' (from its conductors)'}</dd>
+              <dt>Housings</dt>
+              <dd>{selLeg.housings.length ? selLeg.housings.join(', ') : 'none named'}</dd>
+              {#if selLeg.routes.length}<dt>Routes</dt><dd class="mono">{selLeg.routes.join(', ')}</dd>{/if}
+              <dt>Path from</dt>
+              <dd>{selLeg.place_from || 'not said'}{#if selLeg.confirm}<span class="warn"> - provisional; nothing here is measured</span>{/if}</dd>
+            </dl>
+          </section>
         {/if}
 
         <details open>
-          <summary>Parts <span class="n">{scene.parts.length}</span></summary>
+          <summary>Parts <span class="n">{partCount}</span></summary>
           <ul class="list">
-            {#each topLevel(scene) as p (p.id)}
+            {#each listedTop(scene) as p (p.id)}
               <li>
                 <div class="pair">
                   <button class="item" class:on={selection?.kind === 'part' && selection.id === p.id} aria-pressed={selection?.kind === 'part' && selection.id === p.id} onclick={() => chooseFromList({ kind: 'part', id: p.id })}>
@@ -342,9 +473,9 @@
                   </button>
                   <a class="btn ghost icon open" href={href({ name: 'design', area, id: p.id })} aria-label="{p.name} alone"><ChevronRight size={18} /></a>
                 </div>
-                {#if childrenOf(scene, p.id).length}
+                {#if listedChildren(scene, p.id).length}
                   <ul class="list sub">
-                    {#each childrenOf(scene, p.id) as c (c.id)}
+                    {#each listedChildren(scene, p.id) as c (c.id)}
                       <li>
                         <a class="item" href={href({ name: 'design', area, id: c.id })}>
                           <span class="row-main">{c.name}<span class="chip">{KIND_LABEL[c.kind]}</span>{@render confirmChip(c.confirm)}<ChevronRight size={16} class="go" /></span>
@@ -374,6 +505,33 @@
             <p class="faint small pad">No links in the scene.</p>
           {/if}
         </details>
+
+        {#if housings.length}
+          <details open>
+            <summary>Connectors <span class="n">{housings.length}</span></summary>
+            {#each groups as g (g.leg)}
+              <div class="leg-group">
+                {#if g.legId}
+                  <button class="item leg-head" class:on={selection?.kind === 'leg' && selection.id === g.legId} aria-pressed={selection?.kind === 'leg' && selection.id === g.legId} onclick={() => chooseFromList({ kind: 'leg', id: g.legId! })}>
+                    <span class="row-main"><span class="swatch" style="--leg: {legColourCss(scene, g.legId)}"></span>{g.leg}<span class="faint small">{g.housings.length}</span></span>
+                  </button>
+                {:else}
+                  <p class="leg-head static label">{g.leg} <span class="faint">{g.housings.length}</span></p>
+                {/if}
+                <ul class="list sub">
+                  {#each g.housings as h (h.code)}
+                    <li>
+                      <button class="item" class:on={selection?.kind === 'housing' && selection.id === h.code} aria-pressed={selection?.kind === 'housing' && selection.id === h.code} onclick={() => chooseFromList({ kind: 'housing', id: h.code })}>
+                        <span class="row-main"><span class="mono code">{h.code}</span>{@render confirmChip(h.confirm)}</span>
+                        <span class="row-sub faint">{h.family}{h.ways != null ? ` · ${h.ways} ways` : ''}{h.where ? ` · ${h.where}` : ''}</span>
+                      </button>
+                    </li>
+                  {/each}
+                </ul>
+              </div>
+            {/each}
+          </details>
+        {/if}
 
         {#if scene.missing.length}
           <details open>
@@ -614,6 +772,59 @@
   }
   .picked .facts {
     padding: 0;
+  }
+  .layers {
+    margin-top: -2px;
+  }
+  .swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--leg);
+    flex: none;
+  }
+  .leg-group + .leg-group {
+    margin-top: 4px;
+  }
+  .leg-head {
+    padding-left: 12px;
+  }
+  p.leg-head {
+    margin: 6px 14px 2px;
+  }
+  .cav-wrap {
+    width: 100%;
+    overflow-x: auto;
+  }
+  .cav {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .cav th {
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-3);
+    padding: 4px 8px 6px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .cav td {
+    padding: 5px 8px 5px 0;
+    border-bottom: 1px solid var(--line-soft);
+    vertical-align: top;
+  }
+  .cav tr.idle td {
+    color: var(--text-3);
+  }
+  details.housing {
+    border: none;
+    background: none;
+  }
+  details.housing > summary {
+    padding: 8px 10px;
+  }
+  details.housing > summary::after {
+    display: none;
   }
   .facts dt {
     color: var(--text-3);

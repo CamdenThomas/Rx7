@@ -70,3 +70,17 @@ glb('control-unit.glb', [
 ]);
 // Its carrier board: 140 x 100 x 1.6 mm.
 glb('dcu-carrier.glb', [{ name: 'board', at: [0, 0.0008, 0], size: [0.14, 0.0016, 0.1], color: [0.1, 0.45, 0.2, 1] }]);
+
+// Version 2 (01-electrical D-514): the scene's own word is frame.glb "mm, z up, the part's
+// own frame", so these are written that way - millimetres, z up - unlike the glTF-convention
+// files above. One connector model is shared by all four halves.
+import { mkdirSync } from 'node:fs';
+mkdirSync(new URL('v2/connectors/', import.meta.url), { recursive: true });
+glb('v2/cur.glb', [
+  { name: 'case:shell', at: [0, 0, 20], size: [120, 60, 40], color: [0.24, 0.35, 0.5, 1] },
+  { name: 'inside:plate', at: [0, 0, 9], size: [100, 50, 1.6], color: [0.1, 0.45, 0.2, 1] },
+]);
+glb('v2/left-plate.glb', [{ name: 'board', at: [0, 0, 0.8], size: [100, 50, 1.6], color: [0.1, 0.45, 0.2, 1] }]);
+glb('v2/pmu.glb', [{ name: 'body', at: [0, 0, 20], size: [110, 130, 40], color: [0.5, 0.5, 0.52, 1] }]);
+// a DT06-12S stand-in: mating face on the origin, mate along +Y, wires along -Y
+glb('v2/connectors/DT06-12S.glb', [{ name: 'body', at: [0, -12, 0], size: [30, 24, 20], color: [0.15, 0.15, 0.16, 1] }]);
