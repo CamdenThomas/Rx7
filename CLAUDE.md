@@ -1,6 +1,6 @@
 # CLAUDE.md — the Rx7 tree
 
-_Rev 2026-09-26 (v4, core + playbooks — plan P24). This file is every rule that binds every
+_Rev 2026-10-13 (v4, core + playbooks — plan P24; D-519: the reference is the intake). This file is every rule that binds every
 run. How each kind of run is done is a playbook, printed by `python3 tools/rx7.py playbook
 <name>`; the longer descriptions of the record are `rx7.py doc <topic>`. Nothing else
 instructs you: no skills, no slash commands, no account document. If a rule is not here or in
@@ -57,10 +57,15 @@ The record is CSV, and it describes itself (`rx7.py doc record` has the long for
 ```
 
 An **area** is any directory holding `data/_tables.csv`, at `ROOT/<area>` or
-`ROOT/02-PROJECTS/<project>`: `00-CAR` (the car itself, PERMANENT), `01-REFERENCE` (manuals,
-factory circuits, sources, PERMANENT), `02-APP` (the Rx7 app and its own work, D-428), and each
-project under `02-PROJECTS` (`00-verify`, `01-electrical`, `02-engine`, `03-luxury`,
-`04-beauty`). A car-level ruling that belongs to no project is a decision in `00-CAR`;
+`ROOT/02-PROJECTS/<project>`: `00-CAR` (the car: its state and every truth about it - parts,
+specs, sources, the catalogue, the found models, the circuits - PERMANENT), `02-APP` (the Rx7 app
+and its own work, D-428), and each project under `02-PROJECTS` (`01-electrical`, `02-engine`,
+`03-luxury`, `04-beauty`, `05-cad`, `06-intake`). **Three homes** (D-519): CAR holds state and
+truth, APP the app and the view of everything, PROJECTS the work in progress until it merges into
+the car. `01-REFERENCE` is none of them: it is the **intake** - bulk to be processed (a manual, a
+catalogue, a datasheet, a found model) into the car's tables and then taken out of the tree,
+kept only as ignored files there; nothing permanent lives in it and no row names it as a home
+(`06-intake` is folding what it still holds). A car-level ruling that belongs to no project is a decision in `00-CAR`;
 `00-CAR`'s other tables state what **is** and never cite a `D-` or a block id.
 
 **There is one data format.** Everything is a CSV table, including the schema, so the
@@ -80,7 +85,8 @@ decision live in the record, and **the Rx7 app** (`02-APP/app`, desktop and Andr
 reads and answers them. Do not write a Markdown page for him to read or type in: not a TODO,
 not an index, not a summary. Files that stay files: this one, the READMEs beside code and
 drawings (the tool, the firmware, the KiCad boards, the app, `02-APP/README.md`),
-`01-REFERENCE`'s write-ups and `00-CAR/data/procedures/`, and `99-ARCHIVE`. The one generated
+`00-CAR/data/procedures/` and the factory-circuit write-ups (their form is `06-intake`'s open
+question), and `99-ARCHIVE`. The one generated
 file type is the harness-leg drawings, rebuilt whole by `rx7.py diagrams` (D-385): run it before
 you report whenever you changed `housings`, `cavities`, `devices` or `routes`.
 
@@ -235,7 +241,9 @@ check in `rx7.py`, with a selftest.
 **R8** `check` is clean before the session closes. If it is not, that is the report.
 **R9** Never branch on the words of any output — only its exit code.
 **R10** Scope belongs to the project that owns the work; car-level facts belong to `00-CAR`;
-anything that is a manual, a diagram or a datasheet belongs to `01-REFERENCE`.
+what a manual, a diagram or a datasheet says belongs to `00-CAR` once parsed (sources, specs,
+catalogue, circuits, terminals); the file itself is intake until then and leaves the tree when
+it has been read (D-519). A vendor file a project uses lives in that project's design folder.
 **R11 You cannot see the car.** Every wire table, cavity map, clearance and pin letter here
 was written by something that has never looked at the vehicle. A measured number always beats
 your reasoning: where they disagree the row is wrong. Never conclude anything about a physical

@@ -5,10 +5,10 @@ say what is next live in `02-PROJECTS/00-verify` (stage R); this file is only th
 
 | File | What it does |
 | --- | --- |
-| `merge_catalogue.py` | Stage 1: merges the catalogue readers' CSV chunks into `01-REFERENCE/data/catalogue.csv` |
+| `merge_catalogue.py` | Stage 1: merges the catalogue readers' CSV chunks into `00-CAR/data/catalogue.csv` |
 | `merge_parts.py` | Stage 1b: merges the section agents' JSON into `00-CAR/data/parts.csv` (PT ids, parents) |
 | `research-workflow.js` | Stage 2: the Workflow script. One research agent per batch writes `research/<batch>.json`, then a source checker re-opens a sample of the cited sources and drops anything unsupported |
-| `merge_research.py` | Stage 2: merges `research/<batch>.json` into specs, terminals, sources, cad and parts |
+| `merge_research.py` | Stage 2: merges `research/<batch>.json` into 00-CAR specs, terminals, sources, cad and parts |
 | `batches.json` | The 58 research batches (about 947 parts), grouped by system and by the unit each part sits in |
 
 The agents' raw output is kept IN the tree, in `01-REFERENCE/research/` (`catalogue/`, `parts1b/`,

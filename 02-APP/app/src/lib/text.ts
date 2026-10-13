@@ -18,7 +18,7 @@ export function inlineMd(s: string): string {
     .replace(/(^|[\s(])_([^_\s][^_]*?)_(?=[\s).,;:]|$)/g, '$1<em>$2</em>')
     .replace(/\b(D-\d{3})\b/g, '<a href="#/d/$1" class="cite">$1</a>')
     .replace(/\b(PT\d{3,4})\b/g, '<a href="#/row/00-CAR/parts/$1" class="cite">$1</a>')
-    .replace(/\b(S-\d{3})\b/g, '<a href="#/row/01-REFERENCE/sources/$1" class="cite">$1</a>')
+    .replace(/\b(S-\d{3})\b/g, '<a href="#/row/00-CAR/sources/$1" class="cite">$1</a>')
     .replace(/\bblock ((?:\d{2}|CAR|REF|APP|VER)\.\d{2,3})\b/g, 'block <a href="#/search?q=$1" class="cite">$1</a>');
   return out.replace(/\u0000(\d+)\u0000/g, (_, i: string) => codes[Number(i)]);
 }

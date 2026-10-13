@@ -10,7 +10,7 @@ Sources, by the short names used below:
              views of the underbody. The drawing is not to scale (2250 spans 755 px of the 300 dpi
              scan, 580 spans 145 px), so a point it does not dimension is read by interpolating
              between the two dimensioned points either side of it, and says so.
-  blueprint  the-blueprints.com 83684 "Mazda RX-7 FB" (01-REFERENCE cad
+  blueprint  the-blueprints.com 83684 "Mazda RX-7 FB" (00-CAR cad
              fb-rx7-blueprint-the-blueprints-83684), 2483 x 2546 px: the library's copy,
              01-REFERENCE/model/library/body/fb-rx7-blueprint-the-blueprints-83684/mazda-rx-7fb.png
              (sha1 94410117..., byte-identical to the copy re-fetched from the site 2026-10-13). A JDM
@@ -23,7 +23,7 @@ Sources, by the short names used below:
                                              roof row 17)
                width (plan view)             1668.8 / 947 px  = 1.762 mm/px (DT05; centre row 1266)
              so y = -(px - 592) x 1.816 between the axles, z = (737 - row) x 1.750.
-  found      01-REFERENCE cad fb-rx7-gsl-se-85-3dwarehouse-blastronaut (quality 3): the 1985 GSL-SE
+  found      00-CAR cad fb-rx7-gsl-se-85-3dwarehouse-blastronaut (quality 3): the 1985 GSL-SE
              shell, 01-REFERENCE/model/library/body/fb-rx7-gsl-se-85-3dwarehouse-blastronaut/
              "Mazda RX-7 fb Tuner (Copper).glb" (sha1 504ebf62..., byte-identical to 3D Warehouse's
              public glb, no login; 3D Warehouse General Model License). Scaled to the factory

@@ -319,7 +319,7 @@ export interface ManualProcedure {
   body: string;
 }
 
-/** A factory circuit write-up (01-REFERENCE circuits), its text carried when it is Markdown. */
+/** A factory circuit write-up (00-CAR circuits), its text carried when it is Markdown. */
 export interface Circuit {
   file: string;
   path: string;

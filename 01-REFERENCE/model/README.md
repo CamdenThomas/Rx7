@@ -33,7 +33,7 @@ and a node is placed, correct its line and run the estimate again.
 ## The free CAD library and the combined FB model (D-418)
 
 Every free model, scan and drawing found for the car and the projects' parts is a row in
-`01-REFERENCE` table `cad` (what it is, where from, its licence, its size, whether it is here).
+`00-CAR` table `cad` (what it is, where from, its licence, its size, whether it is here).
 The files are in `library/<category>/` and, like the SA model, never go in git: the
 licences vary and the repository is public. A row with `login=yes` needs an account to
 download; its `url` is kept so it can be fetched by hand into `library/<category>/<id>/`.

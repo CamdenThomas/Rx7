@@ -3,8 +3,8 @@
 """rx7.py - the only tool in this tree. Standard library only.
 
 THE RECORD IS CSV, AND IT DESCRIBES ITSELF.
-Every area (00-CAR, 01-REFERENCE, each project under 02-PROJECTS) keeps its
-facts in <area>/data/*.csv. Two of those tables declare all the others:
+Every area (00-CAR, 02-APP, each project under 02-PROJECTS; 01-REFERENCE until the
+intake empties it, D-519) keeps its facts in <area>/data/*.csv. Two of those tables declare all the others:
 
     data/_tables.csv   table,purpose
     data/_schema.csv   table,column,type,required,ref,note
@@ -120,6 +120,13 @@ BLOCK_ID_RE = re.compile(r"^(\d{2}|CAR|REF|APP|VER)\.(\d{2,3})$")
 # 00-verify is a record-kind area like 00-CAR (D-427): it takes a word, not the `00` that
 # electrical's history uses (plan P21).
 BLOCK_PREFIX_FIXED = {"00-CAR": "CAR", "01-REFERENCE": "REF", "02-APP": "APP", "00-verify": "VER"}
+# The reference is an intake, not a home (D-519): its tables (sources, catalogue, cad, suppliers,
+# connector_dims, circuits) are 00-CAR's. Until the intake moves its files (06-intake T2), the
+# photos the Manual lists and the factory-circuit files `circuits` names are still read from
+# there - these two paths, from the tree root, and nowhere else. REF stays mapped above while
+# the directory is an area (it holds blocks and retired terms until T3).
+PHOTOS_DIR = "01-REFERENCE/photos"
+CIRCUITS_DIR = "01-REFERENCE/factory-circuits"
 # Block ids were renumbered on 2026-09-25 (D-427, D-428). A decision dated before that closes
 # whatever id it names; one dated from then on closes only its own area's ids.
 RENUMBER_DATE = "2026-09-25"
@@ -1850,7 +1857,7 @@ def work_view(a: Path, idx) -> list[dict]:
 
 def export_data() -> dict:
     """Everything the Rx7 app shows, as one JSON-ready dict (R9: the app never reads words).
-    Reads every table of every area, the archive's decision ids and 01-REFERENCE/photos;
+    Reads every table of every area, the archive's decision ids and the photos (PHOTOS_DIR);
     `manual` is manual_view() (D-417)."""
     problems = run_check()
     idx = tree_index()
@@ -1943,7 +1950,7 @@ def export_data() -> dict:
             for sheet, fname in (("pin ladder", "A-pin-ladder.svg"), ("route map", "B-route-map.svg")):
                 if (leg / fname).is_file():
                     out["diagrams"].append({"leg": leg.name, "sheet": sheet, "path": rel(leg / fname)})
-    photos = ROOT / "01-REFERENCE" / "photos"
+    photos = ROOT / PHOTOS_DIR
     if photos.is_dir():
         out["photos"] = sorted(rel(p) for p in photos.rglob("*")
                                if p.suffix.lower() in (".jpg", ".jpeg", ".png", ".webp"))
@@ -2084,8 +2091,8 @@ def manual_terminals(terms, pid):
 
 def manual_view(today_iso: str = "") -> dict:
     """The Manual, computed. Reads 00-CAR vehicle, systems, zones, parts, specs, service, terminals,
-    intervals, issues, drives, procedures (and data/procedures/<id>.md), parts_history, and
-    01-REFERENCE sources, circuits (and the factory-circuits files they name) and photos.
+    intervals, issues, drives, procedures (and data/procedures/<id>.md), parts_history, catalogue
+    (a part's Mazda number), sources and circuits (and the files they name, under CIRCUITS_DIR).
     Writes nothing (D-417)."""
     car = ROOT / "00-CAR"
     if not (car / "data" / "parts.csv").exists():
@@ -2139,9 +2146,9 @@ def manual_view(today_iso: str = "") -> dict:
         elif by_part[s["part"]].get("system"):
             s["system"] = by_part[s["part"]]["system"]
     cat_no = {}
-    if (ROOT / "01-REFERENCE" / "data" / "catalogue.csv").exists():
+    if (car / "data" / "catalogue.csv").exists():
         cat_no = {(r.get("id") or "").strip(): (r.get("part_no") or "").strip()
-                  for r in read_table(ROOT / "01-REFERENCE", "catalogue")[1]}
+                  for r in read_table(car, "catalogue")[1]}
     for p in shown["parts"]:
         if not p.get("oem_no"):
             for tok in (p.get("catalogue") or "").split():
@@ -2177,16 +2184,15 @@ def manual_view(today_iso: str = "") -> dict:
         f = car / "data" / "procedures" / f"{pr['id']}.md"
         pr["body"] = f.read_text(encoding="utf-8") if f.exists() else ""
 
-    ref = ROOT / "01-REFERENCE"
     sources = {r["id"]: {"title": (r.get("title") or "").strip(), "url": (r.get("url") or "").strip(),
                          "local_path": (r.get("local_path") or "").strip()}
-               for r in read_table(ref, "sources")[1]} if (ref / "data" / "sources.csv").exists() else {}
-    # each circuit write-up with the systems 01-REFERENCE files it under; a Markdown one
-    # carries its text, since the app reads the tree only through this export
+               for r in read_table(car, "sources")[1]} if (car / "data" / "sources.csv").exists() else {}
+    # each circuit write-up with the systems it is filed under; a Markdown one carries its
+    # text, since the app reads the tree only through this export
     circuits = []
-    if (ref / "data" / "circuits.csv").exists():
-        for r in map(clean, read_table(ref, "circuits")[1]):
-            f = ref / "factory-circuits" / r["file"]
+    if (car / "data" / "circuits.csv").exists():
+        for r in map(clean, read_table(car, "circuits")[1]):
+            f = ROOT / CIRCUITS_DIR / r["file"]
             if not f.exists():
                 continue
             circuits.append({"file": r["file"], "path": rel(f), "title": r["title"], "systems": r["systems"].split(),
@@ -2988,7 +2994,8 @@ def cmd_block(args):
     area = resolve_area(args.area)
     prefix = block_prefix(area)
     if not prefix:
-        die(f"{rel(area)} owns no block prefix - only 00-CAR, 01-REFERENCE and 02-PROJECTS/NN-* do")
+        die(f"{rel(area)} owns no block prefix - only " + ", ".join(BLOCK_PREFIX_FIXED)
+            + " and 02-PROJECTS/NN-* do")
     vals = _pairs(args.pairs)
     need = [c for c in ("ask", "why", "options", "recommend", "stops") if not (vals.get(c) or "").strip()]
     if need:
@@ -3443,6 +3450,33 @@ def cmd_selftest(args):
            efind(harness(node_conductors=lambda n: [dict(x, awg="16") if x["id"] == "N08" else x for x in n]), "seal")[0])
     expect("a colour the gauge is not allowed is refused",
            efind(harness(node_conductors=lambda n: [dict(x, colour="ORN") if x["id"] == "N08" else x for x in n]), "colour")[0])
+
+    # The reference's tables are 00-CAR's (D-519): the Manual reads a part's Mazda number from
+    # 00-CAR catalogue, and the sources and circuits from 00-CAR; a circuit's file is read from
+    # CIRCUITS_DIR, and one whose file is missing is left out.
+    with tempfile.TemporaryDirectory() as td:
+        root = fixture(td)
+        d = root / "00-CAR" / "data"
+        (d / "parts.csv").write_text(csvtext(["id", "name", "catalogue", "oem_no"],
+                                             [["PT001", "Pump", "EC-1-1 EC-1-2", ""], ["PT002", "Valve", "EC-1-1", "N3A1-99"]]), encoding="utf-8")
+        (d / "catalogue.csv").write_text(csvtext(["id", "part_no"], [["EC-1-1", ""], ["EC-1-2", "8851-13-350"]]), encoding="utf-8")
+        (d / "sources.csv").write_text(csvtext(["id", "title", "url", "local_path"], [["S-001", "Wiring", "", ""]]), encoding="utf-8")
+        (d / "circuits.csv").write_text(csvtext(["file", "title", "systems", "source", "note"],
+                                                [["a.md", "Lamps", "SY-LAMP", "S-001", ""], ["gone.md", "Gone", "SY-LAMP", "", ""]]), encoding="utf-8")
+        (root / CIRCUITS_DIR).mkdir(parents=True)
+        (root / CIRCUITS_DIR / "a.md").write_text("# Lamps\n", encoding="utf-8")
+        old = _use_tree(root)
+        try:
+            mv = manual_view("2026-10-13")
+        finally:
+            _use_tree(old)
+        oem = {x["id"]: x.get("oem_no") for x in mv.get("parts", [])}
+        expect("a part's Mazda number is read from 00-CAR catalogue, skipping a blank row",
+               oem.get("PT001") == "8851-13-350")
+        expect("a typed Mazda number is kept over the catalogue's", oem.get("PT002") == "N3A1-99")
+        expect("the Manual's sources are 00-CAR's", list(mv.get("sources", {})) == ["S-001"])
+        expect("a circuit is read from 00-CAR with its file's text, a missing file left out",
+               [(c["file"], c["body"]) for c in mv.get("circuits", [])] == [("a.md", "# Lamps\n")])
 
     n = len(passes) + len(fails)
     print(f"\n{len(fails)} failure(s) of {n}" if fails else f"\nselftest: all {n} pass")

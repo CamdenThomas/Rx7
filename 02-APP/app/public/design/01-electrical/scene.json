@@ -1,6 +1,6 @@
 {
  "version": 2,
- "built": "2026-10-13T13:05:30-06:00",
+ "built": "2026-10-13T14:17:36-06:00",
  "project": "01-electrical",
  "frame": {
   "units": "mm",
@@ -2084,7 +2084,7 @@
    "housing": "DP-DCU-B",
    "leg": "Drop",
    "glb": "connectors/DT13-12PA.glb",
-   "bytes": 1161976,
+   "bytes": 1161972,
    "parent": "control-unit",
    "place": {
     "x": 147.9,
@@ -2203,7 +2203,7 @@
    "housing": "DP-DCU-B",
    "leg": "Drop",
    "glb": "connectors/DT06-12S.glb",
-   "bytes": 119400,
+   "bytes": 119392,
    "parent": "control-unit",
    "place": {
     "x": 147.9,
@@ -2322,7 +2322,7 @@
    "housing": "DP-DCU-C",
    "leg": "Drop",
    "glb": "connectors/DT13-08PA.glb",
-   "bytes": 683908,
+   "bytes": 683900,
    "parent": "control-unit",
    "place": {
     "x": 88.8,
@@ -2413,7 +2413,7 @@
    "housing": "DP-DCU-C",
    "leg": "Drop",
    "glb": "connectors/DT06-8S.glb",
-   "bytes": 85600,
+   "bytes": 85592,
    "parent": "control-unit",
    "place": {
     "x": 88.8,
@@ -2504,7 +2504,7 @@
    "housing": "DP-DCU",
    "leg": "Drop",
    "glb": "connectors/DT13-06PA.glb",
-   "bytes": 662704,
+   "bytes": 662696,
    "parent": "control-unit",
    "place": {
     "x": 39.337,
@@ -2581,7 +2581,7 @@
    "housing": "DP-DCU",
    "leg": "Drop",
    "glb": "connectors/DT06-6S.glb",
-   "bytes": 68696,
+   "bytes": 68692,
    "parent": "control-unit",
    "place": {
     "x": 39.337,
@@ -2658,7 +2658,7 @@
    "housing": "DP-DCU-D",
    "leg": "Drop",
    "glb": "connectors/DT13-12PA.glb",
-   "bytes": 1161976,
+   "bytes": 1161972,
    "parent": "control-unit",
    "place": {
     "x": 147.9,
@@ -2777,7 +2777,7 @@
    "housing": "DP-DCU-D",
    "leg": "Drop",
    "glb": "connectors/DT06-12S.glb",
-   "bytes": 119400,
+   "bytes": 119392,
    "parent": "control-unit",
    "place": {
     "x": 147.9,
@@ -2896,7 +2896,7 @@
    "housing": "DP-DCU-E",
    "leg": "Drop",
    "glb": "connectors/DT13-12PA.glb",
-   "bytes": 1161976,
+   "bytes": 1161972,
    "parent": "control-unit",
    "place": {
     "x": 85.61,
@@ -3015,7 +3015,7 @@
    "housing": "DP-DCU-E",
    "leg": "Drop",
    "glb": "connectors/DT06-12S.glb",
-   "bytes": 119400,
+   "bytes": 119392,
    "parent": "control-unit",
    "place": {
     "x": 85.61,
@@ -3134,7 +3134,7 @@
    "housing": "DP-ICU-B",
    "leg": "Drop",
    "glb": "connectors/DT13-12PA.glb",
-   "bytes": 1161976,
+   "bytes": 1161972,
    "parent": "display-unit",
    "place": {
     "x": 39.75,
@@ -3253,7 +3253,7 @@
    "housing": "DP-ICU-B",
    "leg": "Drop",
    "glb": "connectors/DT06-12S.glb",
-   "bytes": 119400,
+   "bytes": 119392,
    "parent": "display-unit",
    "place": {
     "x": 39.75,
@@ -3372,7 +3372,7 @@
    "housing": "DP-ICU-A",
    "leg": "Drop",
    "glb": "connectors/DT13-06PA.glb",
-   "bytes": 662704,
+   "bytes": 662696,
    "parent": "display-unit",
    "place": {
     "x": 93.787,
@@ -3449,7 +3449,7 @@
    "housing": "DP-ICU-A",
    "leg": "Drop",
    "glb": "connectors/DT06-6S.glb",
-   "bytes": 68696,
+   "bytes": 68692,
    "parent": "display-unit",
    "place": {
     "x": 93.787,
@@ -3526,7 +3526,7 @@
    "housing": "DP-CUR",
    "leg": "",
    "glb": "connectors/DT13-12PA.glb",
-   "bytes": 1161976,
+   "bytes": 1161972,
    "parent": "cur",
    "place": {
     "x": 34.338,
@@ -3560,7 +3560,7 @@
    "housing": "DP-CUR",
    "leg": "",
    "glb": "connectors/DT06-12S.glb",
-   "bytes": 119400,
+   "bytes": 119392,
    "parent": "cur",
    "place": {
     "x": 34.338,
@@ -3594,7 +3594,7 @@
    "housing": "DP-CUR-B",
    "leg": "",
    "glb": "connectors/DT13-06PA.glb",
-   "bytes": 662704,
+   "bytes": 662696,
    "parent": "cur",
    "place": {
     "x": 86.067,
@@ -3628,7 +3628,7 @@
    "housing": "DP-CUR-B",
    "leg": "",
    "glb": "connectors/DT06-6S.glb",
-   "bytes": 68696,
+   "bytes": 68692,
    "parent": "cur",
    "place": {
     "x": 86.067,
@@ -3662,7 +3662,7 @@
    "housing": "L1-P",
    "leg": "L1 Engine",
    "glb": "connectors/DTP04-4P.glb",
-   "bytes": 43996,
+   "bytes": 43992,
    "parent": null,
    "place": {
     "x": -231.375,
@@ -3725,7 +3725,7 @@
    "housing": "L1-P",
    "leg": "L1 Engine",
    "glb": "connectors/DTP06-4S.glb",
-   "bytes": 51788,
+   "bytes": 51780,
    "parent": null,
    "place": {
     "x": -231.375,
@@ -3788,7 +3788,7 @@
    "housing": "L1-S1",
    "leg": "L1 Engine",
    "glb": "connectors/DT04-12P.glb",
-   "bytes": 89088,
+   "bytes": 89080,
    "parent": null,
    "place": {
     "x": -177.375,
@@ -3907,7 +3907,7 @@
    "housing": "L1-S1",
    "leg": "L1 Engine",
    "glb": "connectors/DT06-12S.glb",
-   "bytes": 119400,
+   "bytes": 119392,
    "parent": null,
    "place": {
     "x": -177.375,
@@ -4026,7 +4026,7 @@
    "housing": "L1-S2",
    "leg": "L1 Engine",
    "glb": "connectors/DT04-12P.glb",
-   "bytes": 89088,
+   "bytes": 89080,
    "parent": null,
    "place": {
     "x": -116.375,
@@ -4145,7 +4145,7 @@
    "housing": "L1-S2",
    "leg": "L1 Engine",
    "glb": "connectors/DT06-12S.glb",
-   "bytes": 119400,
+   "bytes": 119392,
    "parent": null,
    "place": {
     "x": -116.375,
@@ -4264,7 +4264,7 @@
    "housing": "L2-P",
    "leg": "L2 Front",
    "glb": "connectors/DTP04-4P.glb",
-   "bytes": 43996,
+   "bytes": 43992,
    "parent": null,
    "place": {
     "x": -251.375,
@@ -4327,7 +4327,7 @@
    "housing": "L2-P",
    "leg": "L2 Front",
    "glb": "connectors/DTP06-4S.glb",
-   "bytes": 51788,
+   "bytes": 51780,
    "parent": null,
    "place": {
     "x": -251.375,
@@ -4390,7 +4390,7 @@
    "housing": "L2-M",
    "leg": "L2 Front",
    "glb": "connectors/DT04-8P.glb",
-   "bytes": 66552,
+   "bytes": 66548,
    "parent": null,
    "place": {
     "x": -199.375,
@@ -4481,7 +4481,7 @@
    "housing": "L2-M",
    "leg": "L2 Front",
    "glb": "connectors/DT06-8S.glb",
-   "bytes": 85600,
+   "bytes": 85592,
    "parent": null,
    "place": {
     "x": -199.375,
@@ -4572,7 +4572,7 @@
    "housing": "L2-S",
    "leg": "L2 Front",
    "glb": "connectors/DT04-6P.glb",
-   "bytes": 55256,
+   "bytes": 55248,
    "parent": null,
    "place": {
     "x": -148.375,
@@ -4649,7 +4649,7 @@
    "housing": "L2-S",
    "leg": "L2 Front",
    "glb": "connectors/DT06-6S.glb",
-   "bytes": 68696,
+   "bytes": 68692,
    "parent": null,
    "place": {
     "x": -148.375,
@@ -4726,7 +4726,7 @@
    "housing": "L2-R",
    "leg": "L2 Front",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44016,
+   "bytes": 44008,
    "parent": null,
    "place": {
     "x": -105.875,
@@ -4789,7 +4789,7 @@
    "housing": "L2-R",
    "leg": "L2 Front",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51824,
+   "bytes": 51816,
    "parent": null,
    "place": {
     "x": -105.875,
@@ -4852,7 +4852,7 @@
    "housing": "L3-P",
    "leg": "L3 Dash",
    "glb": "connectors/DTP04-2P.glb",
-   "bytes": 32728,
+   "bytes": 32720,
    "parent": null,
    "place": {
     "x": -323.875,
@@ -4901,7 +4901,7 @@
    "housing": "L3-P",
    "leg": "L3 Dash",
    "glb": "connectors/DTP06-2S.glb",
-   "bytes": 34916,
+   "bytes": 34908,
    "parent": null,
    "place": {
     "x": -323.875,
@@ -4950,7 +4950,7 @@
    "housing": "L3-M",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32804,
+   "bytes": 32796,
    "parent": null,
    "place": {
     "x": -283.875,
@@ -4999,7 +4999,7 @@
    "housing": "L3-M",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 34928,
+   "bytes": 34920,
    "parent": null,
    "place": {
     "x": -283.875,
@@ -5048,7 +5048,7 @@
    "housing": "L3-S1",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-12P.glb",
-   "bytes": 89088,
+   "bytes": 89080,
    "parent": null,
    "place": {
     "x": -234.375,
@@ -5167,7 +5167,7 @@
    "housing": "L3-S1",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-12S.glb",
-   "bytes": 119400,
+   "bytes": 119392,
    "parent": null,
    "place": {
     "x": -234.375,
@@ -5286,7 +5286,7 @@
    "housing": "L3-S2",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-12P.glb",
-   "bytes": 89088,
+   "bytes": 89080,
    "parent": null,
    "place": {
     "x": -173.375,
@@ -5405,7 +5405,7 @@
    "housing": "L3-S2",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-12S.glb",
-   "bytes": 119400,
+   "bytes": 119392,
    "parent": null,
    "place": {
     "x": -173.375,
@@ -5524,7 +5524,7 @@
    "housing": "L3-S3",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-8P.glb",
-   "bytes": 66552,
+   "bytes": 66548,
    "parent": null,
    "place": {
     "x": -114.375,
@@ -5615,7 +5615,7 @@
    "housing": "L3-S3",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-8S.glb",
-   "bytes": 85600,
+   "bytes": 85592,
    "parent": null,
    "place": {
     "x": -114.375,
@@ -5706,7 +5706,7 @@
    "housing": "L4-P",
    "leg": "L4 Rear",
    "glb": "connectors/DTP04-4P.glb",
-   "bytes": 43996,
+   "bytes": 43992,
    "parent": null,
    "place": {
     "x": -284.375,
@@ -5769,7 +5769,7 @@
    "housing": "L4-P",
    "leg": "L4 Rear",
    "glb": "connectors/DTP06-4S.glb",
-   "bytes": 51788,
+   "bytes": 51780,
    "parent": null,
    "place": {
     "x": -284.375,
@@ -5832,7 +5832,7 @@
    "housing": "L4-M",
    "leg": "L4 Rear",
    "glb": "connectors/DT04-12P.glb",
-   "bytes": 89088,
+   "bytes": 89080,
    "parent": null,
    "place": {
     "x": -230.375,
@@ -5951,7 +5951,7 @@
    "housing": "L4-M",
    "leg": "L4 Rear",
    "glb": "connectors/DT06-12S.glb",
-   "bytes": 119400,
+   "bytes": 119392,
    "parent": null,
    "place": {
     "x": -230.375,
@@ -6070,7 +6070,7 @@
    "housing": "L4-S",
    "leg": "L4 Rear",
    "glb": "connectors/DT04-8P.glb",
-   "bytes": 66552,
+   "bytes": 66548,
    "parent": null,
    "place": {
     "x": -171.375,
@@ -6161,7 +6161,7 @@
    "housing": "L4-S",
    "leg": "L4 Rear",
    "glb": "connectors/DT06-8S.glb",
-   "bytes": 85600,
+   "bytes": 85592,
    "parent": null,
    "place": {
     "x": -171.375,
@@ -6252,7 +6252,7 @@
    "housing": "L4-S2",
    "leg": "L4 Rear",
    "glb": "connectors/DT04-8P.glb",
-   "bytes": 66552,
+   "bytes": 66548,
    "parent": null,
    "place": {
     "x": -114.375,
@@ -6343,7 +6343,7 @@
    "housing": "L4-S2",
    "leg": "L4 Rear",
    "glb": "connectors/DT06-8S.glb",
-   "bytes": 85600,
+   "bytes": 85592,
    "parent": null,
    "place": {
     "x": -114.375,
@@ -6434,7 +6434,7 @@
    "housing": "L3-BLW",
    "leg": "L3 Dash",
    "glb": "connectors/DTP04-2P.glb",
-   "bytes": 32728,
+   "bytes": 32720,
    "parent": null,
    "place": {
     "x": 8.99,
@@ -6483,7 +6483,7 @@
    "housing": "L3-BLW",
    "leg": "L3 Dash",
    "glb": "connectors/DTP06-2S.glb",
-   "bytes": 34916,
+   "bytes": 34908,
    "parent": null,
    "place": {
     "x": 8.99,
@@ -6532,7 +6532,7 @@
    "housing": "D1",
    "leg": "L4 Rear (sill)",
    "glb": "connectors/DT04-8P.glb",
-   "bytes": 66552,
+   "bytes": 66548,
    "parent": null,
    "place": {
     "x": -810.5,
@@ -6623,7 +6623,7 @@
    "housing": "D1",
    "leg": "L4 Rear (sill)",
    "glb": "connectors/DT06-8S.glb",
-   "bytes": 85600,
+   "bytes": 85592,
    "parent": null,
    "place": {
     "x": -810.5,
@@ -6714,7 +6714,7 @@
    "housing": "D2",
    "leg": "L4 Rear (sill)",
    "glb": "connectors/DT04-8P.glb",
-   "bytes": 66552,
+   "bytes": 66548,
    "parent": null,
    "place": {
     "x": -768.5,
@@ -6805,7 +6805,7 @@
    "housing": "D2",
    "leg": "L4 Rear (sill)",
    "glb": "connectors/DT06-8S.glb",
-   "bytes": 85600,
+   "bytes": 85592,
    "parent": null,
    "place": {
     "x": -768.5,
@@ -6896,7 +6896,7 @@
    "housing": "DP-DIAG",
    "leg": "Drop",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44016,
+   "bytes": 44008,
    "parent": null,
    "place": {
     "x": 362.0,
@@ -6959,7 +6959,7 @@
    "housing": "DP-DIAG",
    "leg": "Drop",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51824,
+   "bytes": 51816,
    "parent": null,
    "place": {
     "x": 362.0,
@@ -7022,7 +7022,7 @@
    "housing": "L2-OAT",
    "leg": "L2 Front",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32804,
+   "bytes": 32796,
    "parent": null,
    "place": {
     "x": 0.0,
@@ -7071,7 +7071,7 @@
    "housing": "L2-OAT",
    "leg": "L2 Front",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 34928,
+   "bytes": 34920,
    "parent": null,
    "place": {
     "x": 0.0,
@@ -7120,7 +7120,7 @@
    "housing": "L3-CMF",
    "leg": "L3 Dash",
    "glb": "connectors/DTP04-2P.glb",
-   "bytes": 32728,
+   "bytes": 32720,
    "parent": null,
    "place": {
     "x": -64.4,
@@ -7169,7 +7169,7 @@
    "housing": "L3-CMF",
    "leg": "L3 Dash",
    "glb": "connectors/DTP06-2S.glb",
-   "bytes": 34916,
+   "bytes": 34908,
    "parent": null,
    "place": {
     "x": -64.4,
@@ -7218,7 +7218,7 @@
    "housing": "L3-MOD",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32804,
+   "bytes": 32796,
    "parent": null,
    "place": {
     "x": -95.4,
@@ -7267,7 +7267,7 @@
    "housing": "L3-MOD",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 34928,
+   "bytes": 34920,
    "parent": null,
    "place": {
     "x": -95.4,
@@ -7316,7 +7316,7 @@
    "housing": "L3-RDR",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44016,
+   "bytes": 44008,
    "parent": null,
    "place": {
     "x": -71.4,
@@ -7379,7 +7379,7 @@
    "housing": "L3-RDR",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51824,
+   "bytes": 51816,
    "parent": null,
    "place": {
     "x": -71.4,
@@ -7442,7 +7442,7 @@
    "housing": "L4-RDR",
    "leg": "L4 Rear",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44016,
+   "bytes": 44008,
    "parent": null,
    "place": {
     "x": -57.5,
@@ -7505,7 +7505,7 @@
    "housing": "L4-RDR",
    "leg": "L4 Rear",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51824,
+   "bytes": 51816,
    "parent": null,
    "place": {
     "x": -57.5,
@@ -7568,7 +7568,7 @@
    "housing": "L3-SD",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44016,
+   "bytes": 44008,
    "parent": null,
    "place": {
     "x": -407.6,
@@ -7631,7 +7631,7 @@
    "housing": "L3-SD",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51824,
+   "bytes": 51816,
    "parent": null,
    "place": {
     "x": -407.6,
@@ -7694,7 +7694,7 @@
    "housing": "L3-SP",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44016,
+   "bytes": 44008,
    "parent": null,
    "place": {
     "x": 255.6,
@@ -7757,7 +7757,7 @@
    "housing": "L3-SP",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51824,
+   "bytes": 51816,
    "parent": null,
    "place": {
     "x": 255.6,
@@ -7820,7 +7820,7 @@
    "housing": "L3-SDM",
    "leg": "L3 Dash",
    "glb": "connectors/DTP04-2P.glb",
-   "bytes": 32728,
+   "bytes": 32720,
    "parent": null,
    "place": {
     "x": -381.6,
@@ -7869,7 +7869,7 @@
    "housing": "L3-SDM",
    "leg": "L3 Dash",
    "glb": "connectors/DTP06-2S.glb",
-   "bytes": 34916,
+   "bytes": 34908,
    "parent": null,
    "place": {
     "x": -381.6,
@@ -7918,7 +7918,7 @@
    "housing": "L3-SPM",
    "leg": "L3 Dash",
    "glb": "connectors/DTP04-2P.glb",
-   "bytes": 32728,
+   "bytes": 32720,
    "parent": null,
    "place": {
     "x": 281.6,
@@ -7967,7 +7967,7 @@
    "housing": "L3-SPM",
    "leg": "L3 Dash",
    "glb": "connectors/DTP06-2S.glb",
-   "bytes": 34916,
+   "bytes": 34908,
    "parent": null,
    "place": {
     "x": 281.6,
@@ -8016,7 +8016,7 @@
    "housing": "L4-HRD",
    "leg": "L4 Rear",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44016,
+   "bytes": 44008,
    "parent": null,
    "place": {
     "x": -16.492,
@@ -8079,7 +8079,7 @@
    "housing": "L4-HRD",
    "leg": "L4 Rear",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51824,
+   "bytes": 51816,
    "parent": null,
    "place": {
     "x": -16.492,
@@ -8142,7 +8142,7 @@
    "housing": "L2-RDR",
    "leg": "L2 Front",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44016,
+   "bytes": 44008,
    "parent": null,
    "place": {
     "x": -57.5,
@@ -8205,7 +8205,7 @@
    "housing": "L2-RDR",
    "leg": "L2 Front",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51824,
+   "bytes": 51816,
    "parent": null,
    "place": {
     "x": -57.5,
@@ -8268,7 +8268,7 @@
    "housing": "L3-SPF-L",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32804,
+   "bytes": 32796,
    "parent": null,
    "place": {
     "x": -820.0,
@@ -8317,7 +8317,7 @@
    "housing": "L3-SPF-L",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 34928,
+   "bytes": 34920,
    "parent": null,
    "place": {
     "x": -820.0,
@@ -8366,7 +8366,7 @@
    "housing": "L3-SPF-R",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32804,
+   "bytes": 32796,
    "parent": null,
    "place": {
     "x": 650.0,
@@ -8415,7 +8415,7 @@
    "housing": "L3-SPF-R",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 34928,
+   "bytes": 34920,
    "parent": null,
    "place": {
     "x": 650.0,
@@ -8464,7 +8464,7 @@
    "housing": "L3-TW-L",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32804,
+   "bytes": 32796,
    "parent": null,
    "place": {
     "x": -779.3,
@@ -8513,7 +8513,7 @@
    "housing": "L3-TW-L",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 34928,
+   "bytes": 34920,
    "parent": null,
    "place": {
     "x": -779.3,
@@ -8562,7 +8562,7 @@
    "housing": "L3-TW-R",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32804,
+   "bytes": 32796,
    "parent": null,
    "place": {
     "x": 779.3,
@@ -8611,7 +8611,7 @@
    "housing": "L3-TW-R",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 34928,
+   "bytes": 34920,
    "parent": null,
    "place": {
     "x": 779.3,
@@ -8660,7 +8660,7 @@
    "housing": "L3-CTR",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32804,
+   "bytes": 32796,
    "parent": null,
    "place": {
     "x": -52.5,
@@ -8709,7 +8709,7 @@
    "housing": "L3-CTR",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 34928,
+   "bytes": 34920,
    "parent": null,
    "place": {
     "x": -52.5,
@@ -8758,7 +8758,7 @@
    "housing": "L4-SPR-L",
    "leg": "L4 Rear",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32804,
+   "bytes": 32796,
    "parent": null,
    "place": {
     "x": -820.0,
@@ -8807,7 +8807,7 @@
    "housing": "L4-SPR-L",
    "leg": "L4 Rear",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 34928,
+   "bytes": 34920,
    "parent": null,
    "place": {
     "x": -820.0,
@@ -8856,7 +8856,7 @@
    "housing": "L4-SPR-R",
    "leg": "L4 Rear",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32804,
+   "bytes": 32796,
    "parent": null,
    "place": {
     "x": 650.0,
@@ -8905,7 +8905,7 @@
    "housing": "L4-SPR-R",
    "leg": "L4 Rear",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 34928,
+   "bytes": 34920,
    "parent": null,
    "place": {
     "x": 650.0,
@@ -8954,7 +8954,7 @@
    "housing": "L4-SUB",
    "leg": "L4 Rear",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44016,
+   "bytes": 44008,
    "parent": null,
    "place": {
     "x": -782.8,
@@ -9017,7 +9017,7 @@
    "housing": "L4-SUB",
    "leg": "L4 Rear",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51824,
+   "bytes": 51816,
    "parent": null,
    "place": {
     "x": -782.8,
@@ -15275,5 +15275,5 @@
   "connectors": "connectors/manifest.json",
   "devices": "devices/manifest.json"
  },
- "record_stamp": "ae888d9a6f98fcfc"
+ "record_stamp": "80a27352fc70308f"
 }

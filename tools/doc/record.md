@@ -24,6 +24,9 @@ reading. Neither is ever typed.
 pitched, at his request. Code and drawings with the READMEs that belong to them: the
 firmware, the KiCad boards, the tools, the app. The reference write-ups in `01-REFERENCE`
 and `00-CAR/data/procedures/` wait for the Manual's plan (D-407). And `99-ARCHIVE`.
+`01-REFERENCE` is an intake, not a home (D-519): its tables - sources, catalogue, cad,
+suppliers, connector_dims, circuits - are `00-CAR`'s, and `blend` is `05-cad`'s; the files
+it still holds are parsed or moved by `06-intake`.
 
 **The one generated file type left is the harness-leg drawings** (D-385): for each leg,
 `A-pin-ladder.svg` and `B-route-map.svg` in `02-PROJECTS/01-electrical/00-design/diagrams/`,

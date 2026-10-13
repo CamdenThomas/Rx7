@@ -1,4 +1,4 @@
-"""Import the CAD finders' manifests into the record (01-REFERENCE `cad` table, D-418).
+"""Import the CAD finders' manifests into the record (00-CAR `cad` table, D-418, D-519).
 
 Run from the tree root:
 
@@ -6,7 +6,7 @@ Run from the tree root:
     python3 01-REFERENCE/model/catalog.py --write    # add the new rows
 
 Reads   01-REFERENCE/model/library/<category>/manifest.jsonl   one JSON line per find (out of git)
-Writes  01-REFERENCE/data/cad.csv                          through rx7.py's own table writer
+Writes  00-CAR/data/cad.csv                                through rx7.py's own table writer
 
 Owns the `cad` table's rows it adds, and nothing else. A row already in `cad` is never
 overwritten: once imported, the record is the fact's home (R2) and the manifest is scratch.
@@ -22,8 +22,8 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools"))
 import rx7  # noqa: E402
 
-AREA = ROOT / "01-REFERENCE"
-FILES = AREA / "model" / "library"
+AREA = ROOT / "00-CAR"  # the cad table (D-519); the files stay in the intake until 06-intake T2
+FILES = ROOT / "01-REFERENCE" / "model" / "library"
 UNIT = [("mm", 1.0), ("cm", 10.0), ("inch", 25.4), ("m", 1000.0)]  # order matters: mm before m
 MATCH = {"exact": "exact", "close": "close", "different": "different"}
 

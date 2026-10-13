@@ -59,7 +59,7 @@ model_parts,id,key,yes,,"the solid's key: the 00-CAR parts id, or <id>-L / -R fo
 model_parts,part,str,yes,00-CAR:parts,the 00-CAR parts row this solid stands for
 model_parts,side,enum(L|R|FL|FR|RL|RR|front|rear),no,,"which half or corner, blank for one solid"
 model_parts,file,str,no,,"the part's file under model/ (out of git, D-477); blank until it exists"
-model_parts,made_from,enum(measured|factory|found|catalogue|guess),yes,,the main source of its shape: measured on this car; a factory dimension page; a found model (01-REFERENCE cad); a catalogue figure scaled by known dimensions; a guess
+model_parts,made_from,enum(measured|factory|found|catalogue|guess),yes,,the main source of its shape: measured on this car; a factory dimension page; a found model (00-CAR cad); a catalogue figure scaled by known dimensions; a guess
 model_parts,source,str,no,,"the cad row, blend piece, specs row or catalogue figure it was built from"
 model_parts,state,enum(planned|rough|dimensioned|confirmed),yes,,planned: no solid yet; rough: a shape with unmeasured sizes; dimensioned: every governing dimension in model_dims; confirmed: every governing dimension measured on this car
 model_parts,parent,str,no,model_parts,the part it is mated onto; blank for the body shell
@@ -82,3 +82,10 @@ model_mates,kind,enum(bolted|clipped|welded|pressed|pivot|sits-on|fits-in|slides
 model_mates,fasteners,list,no,00-CAR:parts,"the bolts, nuts and clips that hold it, as 00-CAR parts ids"
 model_mates,offset_mm,str,no,,"x y z of the part's origin in the mated part's frame, and a rotation if any; confirm when guessed"
 model_mates,note,text,no,,
+blend,id,key,yes,,the piece's object name in the combined model
+blend,piece,str,yes,,what it is
+blend,source,str,no,00-CAR:cad,the 00-CAR cad row the geometry comes from; empty for a shape built from record figures alone (then fit names them)
+blend,shown,bool,yes,,yes: visible in the combined model; no: kept as a hidden overlay
+blend,fit,text,yes,,"how it is scaled and placed, from which figures"
+blend,check,text,no,,the figure it is checked against and the error found
+blend,note,text,no,,

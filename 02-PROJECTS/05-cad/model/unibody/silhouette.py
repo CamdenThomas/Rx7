@@ -3,7 +3,7 @@
 
     python3 02-PROJECTS/05-cad/model/unibody/silhouette.py [--length]
 
-Reads 01-REFERENCE cad fb-rx7-gsl-se-85-3dwarehouse-blastronaut's glb from the model library
+Reads 00-CAR cad fb-rx7-gsl-se-85-3dwarehouse-blastronaut's glb from the model library
 (read only), finds its four wheel centres, scales it to the factory wheelbase (DT03; --length: to
 DT04 instead), puts its front axle at y 0 and lifts its body to put the roof on DT06, then prints
 per 100 mm station: the body's half-width, its top near the centreline, its lowest point and the

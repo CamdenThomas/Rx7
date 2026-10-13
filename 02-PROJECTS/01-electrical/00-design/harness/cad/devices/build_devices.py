@@ -21,7 +21,7 @@ entry is `confirm: true`, and a stand-in's numbers are a drawing's or an estimat
 PARAMS.
 
 Owns no fact. Reads, through `rx7.py export`: 01-electrical devices (which rows exist), relays
-and fuses (how many relays and holders sit at each node), parts (quantities); 01-REFERENCE cad
+and fuses (how many relays and holders sit at each node), parts (quantities); 00-CAR cad
 (that a found model's row exists). Reads scene.json (export_glb.py's) for the node names. Writes
 nothing to the record. The found models' files are under 01-REFERENCE/model/library/electrical/
 <cad id>/ (git-ignored: their licences vary and the repository is public).
@@ -743,7 +743,7 @@ NO_MODEL = {
 
 # ============================================================================== the record ==
 def read_record():
-    """devices, relays, fuses, parts (01-electrical) and cad (01-REFERENCE), via rx7.py
+    """devices, relays, fuses, parts (01-electrical) and cad (00-CAR), via rx7.py
     export."""
     with tempfile.TemporaryDirectory() as tmp:
         path = os.path.join(tmp, "record.json")
@@ -754,7 +754,7 @@ def read_record():
         data = json.load(open(path))
     want = {("01-electrical", "devices"): "devices", ("01-electrical", "relays"): "relays",
             ("01-electrical", "fuses"): "fuses", ("01-electrical", "parts"): "parts",
-            ("01-REFERENCE", "cad"): "cad"}
+            ("00-CAR", "cad"): "cad"}
     out = {}
     for t in data["tables"]:
         k = want.get((t["area"], t["table"]))
@@ -960,7 +960,7 @@ def validate(man, out_dir, rec, scene_nodes):
             if scene_nodes is not None and n not in scene_nodes:
                 probs.append("%s: node %r is not a part in scene.json" % (key, n))
         if e.get("standin") is False and e.get("cad") not in cads:
-            probs.append("%s: cad row %r is not in 01-REFERENCE cad" % (key, e.get("cad")))
+            probs.append("%s: cad row %r is not in 00-CAR cad" % (key, e.get("cad")))
         if e.get("standin") is True and e.get("cad") is not None:
             probs.append("%s: a stand-in names a cad row" % key)
     for d in sorted(devs):

@@ -11,7 +11,7 @@ Writes  01-REFERENCE/model/out/rx7-fb.blend  the combined scene, one collection 
         01-REFERENCE/model/out/checks.json   every figure the pieces were checked against
         01-REFERENCE/model/out/*.png         side, top, front, rear and three-quarter renders
 
-Owns no table. The pieces and their fits are the `blend` table in 01-REFERENCE; the
+Owns no table. The pieces and their fits are the `blend` table in 05-cad; the
 factory figures used here are 00-CAR `specs` rows, named beside each constant. Every
 number below that is not from those rows is an assumption and says so (CLAUDE.md R11):
 nothing about the real car is measured from any of these models.

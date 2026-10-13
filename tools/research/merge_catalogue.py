@@ -1,4 +1,4 @@
-"""Merge the catalogue chunk CSVs into 01-REFERENCE/data/catalogue.csv, one row per printed
+"""Merge the catalogue chunk CSVs into 00-CAR/data/catalogue.csv, one row per printed
 table row, keyed <book>-<page>-<row on page>. Prints counts and every doubtful cell."""
 import csv, glob, re, sys, collections
 from pathlib import Path

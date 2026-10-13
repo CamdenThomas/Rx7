@@ -6,7 +6,7 @@ app's Manual model page is built against (C01's hand-over to 02-APP MG1). The pr
 (the unibody first) rule how it is built.*
 
 Scripts only. The model files - the glb files, the STEP files, anything made from a found model -
-stay out of git (D-477, D-418; 01-REFERENCE block REF.01 and 02-APP P55 are open on where they
+stay out of git (D-477, D-418; 06-intake block 06.03 and 02-APP P55 are open on where they
 live): `out/` here is ignored, and so is every `.glb` under `02-APP/app/public/design/`. `scene.json`
 is committed. The frame is D-418's: millimetres, x to the car's right, y forward, z up, ground z = 0,
 front axle y = 0. **Nothing here is a source of facts about the car**: a measured number beats the
@@ -25,7 +25,7 @@ model, and every dimension nobody measured carries `confirm` (R11). Today that i
 
 | File | What | Record rows |
 |---|---|---|
-| `coverage.py` | A01: what exists for every 00-CAR part - a model file, a placement in the combined model, a factory dimension, a found model by name (a hint), a catalogue figure, or nothing - derived from the tables each time, never typed back | 00-CAR `parts`, `specs`; 01-REFERENCE `cad`, `blend` |
+| `coverage.py` | A01: what exists for every 00-CAR part - a model file, a placement in the combined model, a factory dimension, a found model by name (a hint), a catalogue figure, or nothing - derived from the tables each time, never typed back | 00-CAR `parts`, `specs`; 00-CAR `cad`, `blend` |
 | `frame.py` | The frame and hard points: 05-cad `datums` read through `rx7.py sql` every build, numbers parsed, raw text kept | 05-cad `datums` |
 | `partlib.py` | The shared half: `Dim` / `part` declarations (pure python); the solids (plate, sheet strips, loft, box sections, revolve, mirror), the tessellation and the glb and STEP writers (FreeCAD). The glb writer is 01-electrical's `export_glb.write_glb`, imported, not copied | - |
 | `placing.py` | Places composed through parents into the car's frame (three.js Euler XYZ), the file names | - |
@@ -34,7 +34,7 @@ model, and every dimension nobody measured carries `confirm` (R11). Today that i
 | `corner/params.py`, `corner/geometry.py` | A04, the tool-chain proof: the front-left corner - road wheel, tyre, hub with its disc, four wheel nuts | 00-CAR `specs` SP-113, SP-124, SP-126, SP-128, SP-1513, SP-1519, SP-1520; `datums` DT02 |
 | `unibody/params.py` | B01's core: **the one table** of the unibody's governing dimensions, each with how it is known and its source; the panels, their places, mates and take-apart moves; the checks against the datums | `datums` DT02-DT14; `specs` SP-1280, SP-1281 |
 | `unibody/geometry.py` | The panels as rough sheet solids, from `params.py` alone | - |
-| `unibody/silhouette.py` | Re-derives the found shell's stations that `params.py` cites (read only) | 01-REFERENCE `cad` |
+| `unibody/silhouette.py` | Re-derives the found shell's stations that `params.py` cites (read only) | 00-CAR `cad` |
 | `export_scene.py` | `scene.json` for the app; the selftest; the record drafts (`--drafts`) | 00-CAR `parts`, `systems` |
 | `render_check.mjs` | Loads the scene and every glb with the app's three.js and rasterises five views (one exploded) to PNG - no WebGL | - |
 
@@ -154,18 +154,18 @@ and the found shell both speak to an outline dimension, the note says which won 
 
 - **05-cad `datums`** DT02-DT14 (the factory hard points, read each build) and 00-CAR `specs`
   SP-1280 (wheel centre to fender line, front 364), SP-1281 (section G-G 435).
-- **The FSM body checking dimensions**, S-002 1985 FSM section 14 p.14-24 (also 01-REFERENCE cad
+- **The FSM body checking dimensions**, S-002 1985 FSM section 14 p.14-24 (also 00-CAR cad
   `fb-rx7-1985-fsm-body-checking-dimensions`). Hole A's place lengthwise, C, E and F lengthwise, and
   the heights 345 / 110 / 339.4 are read off its plan and side views - the drawing is not to scale,
   so an undimensioned point is interpolated between its dimensioned neighbours, and each says so.
   Readings that are judgement: A 580 forward of the front axle (the strut-tower circle over the
   axle); 345 is C's height, 110 E's, 339.4 F's (it may be E to F); b = 107 is the front rail's depth.
-- **The blueprint**, 01-REFERENCE cad `fb-rx7-blueprint-the-blueprints-83684`
+- **The blueprint**, 00-CAR cad `fb-rx7-blueprint-the-blueprints-83684`
   (`01-REFERENCE/model/library/body/…/mazda-rx-7fb.png`, 2483 x 2546; free to view and download for
   modelling, the site's terms). Its views are not at one scale, so each axis is scaled to a factory
   figure: 1.816 mm/px lengthwise between the axles (DT03), 1.737 over the overhangs (DT04 less
   DT03), 1.750 in height (DT06), 1.762 across (DT05).
-- **The found shell**, 01-REFERENCE cad `fb-rx7-gsl-se-85-3dwarehouse-blastronaut` (quality 3; 3D
+- **The found shell**, 00-CAR cad `fb-rx7-gsl-se-85-3dwarehouse-blastronaut` (quality 3; 3D
   Warehouse General Model License), from the model library. Scaled to the factory length it puts its
   axles 2430.6 apart, so it is scaled to DT03's wheelbase (0.9628) - at most 17 mm different at the
   ends - and lifted 59.5 mm (it is a lowered tuner) to put its roof on DT06. It checks the

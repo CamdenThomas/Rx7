@@ -110,7 +110,7 @@
           <div class="fact"><span class="label">{k}</span><span>{v}</span></div>
         {/each}
         {#if catalogueRows.length}
-          <div class="fact"><span class="label">Catalogue</span><span>{#each catalogueRows as c, i (c)}{i ? ' ' : ''}<a class="id" href={href({ name: 'row', area: '01-REFERENCE', table: 'catalogue', key: c })}>{c}</a>{/each}</span></div>
+          <div class="fact"><span class="label">Catalogue</span><span>{#each catalogueRows as c, i (c)}{i ? ' ' : ''}<a class="id" href={href({ name: 'row', area: '00-CAR', table: 'catalogue', key: c })}>{c}</a>{/each}</span></div>
         {/if}
         {#if p.photo}
           <div class="fact photo"><img src={app.platform?.photo(p.photo)} alt={p.name} /></div>

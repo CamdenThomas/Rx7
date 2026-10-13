@@ -2680,7 +2680,7 @@
  },
  "_meta": {
   "version": 1,
-  "built": "2026-10-13T13:05:29-06:00",
+  "built": "2026-10-13T14:17:19-06:00",
   "work": "Y28",
   "ruling": "D-515",
   "frame": "every glb in mm, z up, in the part's own frame (00-design README §13); each entry's origin says where its zero is",
@@ -2717,7 +2717,7 @@
     ],
     "triangles": 856,
     "standin": true,
-    "stamp": "8115b8cd8d936216"
+    "stamp": "234700c72514e992"
    },
    "alternator": {
     "bytes": 26680,
@@ -2735,7 +2735,7 @@
     ],
     "triangles": 996,
     "standin": true,
-    "stamp": "ea4e36a754969cb7"
+    "stamp": "ad7e0bf6e8bc88c5"
    },
    "amplifier": {
     "bytes": 12268,
@@ -2753,7 +2753,7 @@
     ],
     "triangles": 108,
     "standin": true,
-    "stamp": "40f17ea628d5feed"
+    "stamp": "609233858f54c74d"
    },
    "atc-block-4": {
     "bytes": 1107512,
@@ -2771,7 +2771,7 @@
     ],
     "triangles": 53342,
     "standin": false,
-    "stamp": "0e9e9d7bb8c37a99"
+    "stamp": "6d59d49d7d915c03"
    },
    "battery-ionic-s9": {
     "bytes": 25048,
@@ -2789,7 +2789,7 @@
     ],
     "triangles": 1148,
     "standin": true,
-    "stamp": "578d9c1bd631b378"
+    "stamp": "57af97c69d006d43"
    },
    "blower-motor": {
     "bytes": 40048,
@@ -2807,7 +2807,7 @@
     ],
     "triangles": 1572,
     "standin": true,
-    "stamp": "fba4ebd77f45b09c"
+    "stamp": "f70297c147b86613"
    },
    "bt817-me817ev": {
     "bytes": 10372,
@@ -2825,7 +2825,7 @@
     ],
     "triangles": 84,
     "standin": true,
-    "stamp": "e0a990e6cf9ee4bc"
+    "stamp": "3b461efd2917f1b4"
    },
    "busbar-10": {
     "bytes": 79228,
@@ -2843,7 +2843,7 @@
     ],
     "triangles": 3000,
     "standin": true,
-    "stamp": "3ec9b462c3a77b35"
+    "stamp": "ce4bcfe563775f98"
    },
    "class-t-block": {
     "bytes": 17192,
@@ -2861,7 +2861,7 @@
     ],
     "triangles": 520,
     "standin": true,
-    "stamp": "1ff075f477c6594d"
+    "stamp": "60cda14ff7bbe921"
    },
    "coil-igniter-set": {
     "bytes": 3712,
@@ -2879,7 +2879,7 @@
     ],
     "triangles": 12,
     "standin": true,
-    "stamp": "2ac0b07d6d259c16"
+    "stamp": "f7073fdcb42eabc4"
    },
    "combination-switch": {
     "bytes": 3716,
@@ -2897,7 +2897,7 @@
     ],
     "triangles": 12,
     "standin": true,
-    "stamp": "bd04de1f1060d364"
+    "stamp": "c08bd436fdfb5cc7"
    },
    "comfort-block-st6": {
     "bytes": 17556,
@@ -2915,7 +2915,7 @@
     ],
     "triangles": 344,
     "standin": true,
-    "stamp": "42ca796e2bda4589"
+    "stamp": "49a0fd3703a64c59"
    },
    "disconnect": {
     "bytes": 10832,
@@ -2933,7 +2933,7 @@
     ],
     "triangles": 304,
     "standin": true,
-    "stamp": "c104c56465838f22"
+    "stamp": "53f33466ed7abc3c"
    },
    "display-12p3": {
     "bytes": 3607700,
@@ -2951,7 +2951,7 @@
     ],
     "triangles": 148547,
     "standin": false,
-    "stamp": "67a2f024221010c8"
+    "stamp": "2e03f6dfc97d9c17"
    },
    "fuel-pump": {
     "bytes": 16800,
@@ -2969,7 +2969,7 @@
     ],
     "triangles": 580,
     "standin": true,
-    "stamp": "ad7ee6a26e52e4df"
+    "stamp": "572d0f671b6aa911"
    },
    "fuel-sender": {
     "bytes": 12000,
@@ -2987,7 +2987,7 @@
     ],
     "triangles": 356,
     "standin": true,
-    "stamp": "20e4476606599034"
+    "stamp": "e491819f2a88e8ca"
    },
    "head-unit-1din": {
     "bytes": 3708,
@@ -3005,7 +3005,7 @@
     ],
     "triangles": 12,
     "standin": true,
-    "stamp": "3c9fe8abbec87f32"
+    "stamp": "ba82776d7c0a164f"
    },
    "headlight-7in": {
     "bytes": 27052,
@@ -3023,7 +3023,7 @@
     ],
     "triangles": 1044,
     "standin": true,
-    "stamp": "b43616398cb6e697"
+    "stamp": "69c435a4b0bc822e"
    },
    "horn": {
     "bytes": 12684,
@@ -3041,7 +3041,7 @@
     ],
     "triangles": 388,
     "standin": true,
-    "stamp": "78412c1ef1ba9efb"
+    "stamp": "b07a3ffd5794427e"
    },
    "ignition-switch": {
     "bytes": 8824,
@@ -3059,7 +3059,7 @@
     ],
     "triangles": 248,
     "standin": true,
-    "stamp": "58ebad1ea4415491"
+    "stamp": "d2f75aae913650b8"
    },
    "inline-atc-sealed": {
     "bytes": 17224,
@@ -3077,7 +3077,7 @@
     ],
     "triangles": 520,
     "standin": true,
-    "stamp": "346a4c6d183fcad5"
+    "stamp": "54c495be423b7817"
    },
    "inline-maxi-sealed": {
     "bytes": 17168,
@@ -3095,7 +3095,7 @@
     ],
     "triangles": 520,
     "standin": true,
-    "stamp": "8adb9c7086bce472"
+    "stamp": "7213b6326237e9d8"
    },
    "lamp-front-combo": {
     "bytes": 4780,
@@ -3113,7 +3113,7 @@
     ],
     "triangles": 24,
     "standin": true,
-    "stamp": "5933658b56e0a647"
+    "stamp": "7bcc42d62557e88a"
    },
    "lamp-rear-combo": {
     "bytes": 4780,
@@ -3131,7 +3131,7 @@
     ],
     "triangles": 24,
     "standin": true,
-    "stamp": "e152c47b62ef31b0"
+    "stamp": "c0f41a6bd46ab2d5"
    },
    "lamp-small": {
     "bytes": 4764,
@@ -3149,7 +3149,7 @@
     ],
     "triangles": 24,
     "standin": true,
-    "stamp": "ddb73987dfee41c9"
+    "stamp": "6479f15905930353"
    },
    "midi-block": {
     "bytes": 17184,
@@ -3167,7 +3167,7 @@
     ],
     "triangles": 520,
     "standin": true,
-    "stamp": "f1ba2cf86dd160c6"
+    "stamp": "a9f9628a1af7b23b"
    },
    "motor-gear": {
     "bytes": 11116,
@@ -3185,7 +3185,7 @@
     ],
     "triangles": 316,
     "standin": true,
-    "stamp": "bf5c7bd66d88a912"
+    "stamp": "5136a9475af3d405"
    },
    "mrbf-holder": {
     "bytes": 17192,
@@ -3203,7 +3203,7 @@
     ],
     "triangles": 520,
     "standin": true,
-    "stamp": "e703726351a193de"
+    "stamp": "9d74311f79e19387"
    },
    "pololu-g2-24v21": {
     "bytes": 434052,
@@ -3221,7 +3221,7 @@
     ],
     "triangles": 18764,
     "standin": false,
-    "stamp": "9d9806806e010401"
+    "stamp": "a7e32ef5e4e984b6"
    },
    "radar-receiver": {
     "bytes": 3708,
@@ -3239,7 +3239,7 @@
     ],
     "triangles": 12,
     "standin": true,
-    "stamp": "8e3cc9310e98ca17"
+    "stamp": "70e06184c2c18d18"
    },
    "relay-micro-iso": {
     "bytes": 9416,
@@ -3257,7 +3257,7 @@
     ],
     "triangles": 72,
     "standin": true,
-    "stamp": "736ff98784701249"
+    "stamp": "f5346e7652019387"
    },
    "relay-mini-iso-sealed": {
     "bytes": 9260,
@@ -3275,7 +3275,7 @@
     ],
     "triangles": 72,
     "standin": true,
-    "stamp": "77ec57f23f62e6bd"
+    "stamp": "762521cf16495c25"
    },
    "seat-module": {
     "bytes": 3700,
@@ -3293,7 +3293,7 @@
     ],
     "triangles": 12,
     "standin": true,
-    "stamp": "a9b42b5a6ff82d46"
+    "stamp": "466b327338829209"
    },
    "sender-threaded": {
     "bytes": 10152,
@@ -3311,7 +3311,7 @@
     ],
     "triangles": 268,
     "standin": true,
-    "stamp": "49a521bad93e650d"
+    "stamp": "d974a41bc421a6ba"
    },
    "servo-fs5115m": {
     "bytes": 17328,
@@ -3329,7 +3329,7 @@
     ],
     "triangles": 520,
     "standin": true,
-    "stamp": "7e631b57ad55f8d3"
+    "stamp": "2ecadabc38a8908c"
    },
    "socket-micro-iso-panel": {
     "bytes": 6956,
@@ -3347,7 +3347,7 @@
     ],
     "triangles": 48,
     "standin": true,
-    "stamp": "3f6e263b060b20a3"
+    "stamp": "82ad055a478c6fc0"
    },
    "socket-mini-weatherproof": {
     "bytes": 6952,
@@ -3365,7 +3365,7 @@
     ],
     "triangles": 48,
     "standin": true,
-    "stamp": "9d1defbea7001b23"
+    "stamp": "48cb2a0c4186cce5"
    },
    "solenoid": {
     "bytes": 14988,
@@ -3383,7 +3383,7 @@
     ],
     "triangles": 496,
     "standin": true,
-    "stamp": "6c11681630927b70"
+    "stamp": "1f3939ddea22cf6e"
    },
    "speaker-100": {
     "bytes": 36340,
@@ -3401,7 +3401,7 @@
     ],
     "triangles": 1672,
     "standin": true,
-    "stamp": "4a7af814379c0a34"
+    "stamp": "4c71b0a117843906"
    },
    "speaker-165": {
     "bytes": 45340,
@@ -3419,7 +3419,7 @@
     ],
     "triangles": 2158,
     "standin": true,
-    "stamp": "5ab85b1fa88656ef"
+    "stamp": "271d9446066ea8d6"
    },
    "starter": {
     "bytes": 12168,
@@ -3437,7 +3437,7 @@
     ],
     "triangles": 364,
     "standin": true,
-    "stamp": "7078ba0a58fe44ef"
+    "stamp": "4c5833586504bca4"
    },
    "subwoofer-box": {
     "bytes": 47656,
@@ -3455,7 +3455,7 @@
     ],
     "triangles": 2414,
     "standin": true,
-    "stamp": "7e304bb3ea64d738"
+    "stamp": "f4931a160338fcde"
    },
    "switch-small": {
     "bytes": 3704,
@@ -3473,7 +3473,7 @@
     ],
     "triangles": 12,
     "standin": true,
-    "stamp": "5490a7783fe99742"
+    "stamp": "7262b772df7eba69"
    },
    "teensy41": {
     "bytes": 2223804,
@@ -3491,7 +3491,7 @@
     ],
     "triangles": 96614,
     "standin": false,
-    "stamp": "37e38eb447993c81"
+    "stamp": "b4faaa134f8344bb"
    },
    "usb-c-module": {
     "bytes": 8820,
@@ -3509,7 +3509,7 @@
     ],
     "triangles": 248,
     "standin": true,
-    "stamp": "795c9b3255a16970"
+    "stamp": "88a3ea23a83cf90f"
    },
    "washer-pump": {
     "bytes": 8816,
@@ -3527,7 +3527,7 @@
     ],
     "triangles": 248,
     "standin": true,
-    "stamp": "dc25967a81f60a26"
+    "stamp": "a426919d1f687e33"
    },
    "xiao-esp32c3": {
     "bytes": 162420,
@@ -3545,7 +3545,7 @@
     ],
     "triangles": 6940,
     "standin": false,
-    "stamp": "0ee11877e1df7ea9"
+    "stamp": "7ed54f3470c802e0"
    }
   }
  }

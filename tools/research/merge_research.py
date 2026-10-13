@@ -1,4 +1,4 @@
-"""Merge research/<batch>.json files (Stage 2) into the record: 01-REFERENCE sources and cad,
+"""Merge research/<batch>.json files (Stage 2) into the record: 00-CAR sources and cad,
 00-CAR specs, terminals and parts. Source keys become new S- ids (a URL already in sources
 reuses its id); specs get the next SP- ids; terminals are <part>-<terminal>. Dry run unless
 --write. Usage: merge_research.py [SCRATCH] BATCH_ID_PREFIX... [--write] [--force]
@@ -34,7 +34,7 @@ def save(p, hdr, rows):
 
 
 P = {n: T / f"00-CAR/data/{n}.csv" for n in ("parts", "specs", "terminals")}
-R = {n: T / f"01-REFERENCE/data/{n}.csv" for n in ("sources", "cad")}
+R = {n: T / f"00-CAR/data/{n}.csv" for n in ("sources", "cad")}
 ph, parts = load(P["parts"]); sh, specs = load(P["specs"]); th, terms = load(P["terminals"])
 oh, srcs = load(R["sources"]); ch, cads = load(R["cad"])
 part_by = {r["id"]: r for r in parts}

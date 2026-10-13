@@ -1,5 +1,5 @@
 <!--
-  Diagrams (D-417): the factory circuits, filed under the system 01-REFERENCE's `circuits`
+  Diagrams (D-417): the factory circuits, filed under the system 00-CAR's `circuits`
   table names first, and the wiring diagram they were decoded from. With an id, that circuit's
   write-up in full.
 -->

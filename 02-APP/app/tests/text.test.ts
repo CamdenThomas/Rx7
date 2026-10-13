@@ -10,6 +10,11 @@ describe('md — the record prose, rendered safely', () => {
     expect(h).toContain('<a href="#/d/D-405" class="cite">D-405</a>');
     expect(h).not.toContain('#/d/D-01');
   });
+  it('links a part and a source to their 00-CAR rows (D-519)', () => {
+    const h = md('PT014 per S-002 p.14');
+    expect(h).toContain('<a href="#/row/00-CAR/parts/PT014" class="cite">PT014</a>');
+    expect(h).toContain('<a href="#/row/00-CAR/sources/S-002" class="cite">S-002</a>');
+  });
   it('leaves code spans alone', () => {
     expect(md('`D-405 **x**`')).toBe('<p><code>D-405 **x**</code></p>');
   });

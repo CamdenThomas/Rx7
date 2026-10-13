@@ -11,8 +11,8 @@ It writes, into DIR (default 02-APP/app/public/design/01-electrical/connectors):
   manifest.json   {variant: {glb, family, half, ways, size_mm, origin, confirm, source, standin,
                   cad, bytes, nodes, stamp}}
 
-Owns no fact. The dimensions are 01-REFERENCE `connector_dims` (read through `rx7.py sql`, never
-copied here); the vendor models are 01-REFERENCE `cad` rows (their `local_path`, out of git). A
+Owns no fact. The dimensions are 00-CAR `connector_dims` (read through `rx7.py sql`, never
+copied here); the vendor models are 00-CAR `cad` rows (their `local_path`, out of git). A
 variant whose `cad` row points at a model on this machine, in a frame this file knows (FRAMES:
 TE's DT13 headers, measured on the Mac 2026-10-13), is converted from that model ("standin":
 false); every other variant is drawn as a stand-in from its row ("standin": true): the body with
@@ -134,7 +134,7 @@ def rx7_sql(area, query):
 
 
 def read_rows(only=None):
-    rows = rx7_sql("01-REFERENCE", "select %s from connector_dims order by id" % ", ".join(COLUMNS))
+    rows = rx7_sql("00-CAR", "select %s from connector_dims order by id" % ", ".join(COLUMNS))
     for r in rows:
         for k in NUMS:
             r[k] = float(r[k]) if r[k] != "" else None
@@ -142,7 +142,7 @@ def read_rows(only=None):
     if only:
         rows = [r for r in rows if r["id"] == only]
         if not rows:
-            raise Fail("%s has no connector_dims row (01-REFERENCE)" % only)
+            raise Fail("%s has no connector_dims row (00-CAR)" % only)
     return rows
 
 
@@ -162,7 +162,7 @@ def model_paths(rows, tmp):
     if not ids:
         return {}, {}
     cad = {c["id"]: c for c in rx7_sql(
-        "01-REFERENCE", "select id, local_path from cad where id in (%s)"
+        "00-CAR", "select id, local_path from cad where id in (%s)"
         % ", ".join("'%s'" % i for i in ids))}
     use, unused = {}, {}
     for r in rows:
@@ -299,7 +299,7 @@ def selftest(out_dir=OUT_DEFAULT):
     G = _glb_tools()
     for v in housing_variants():
         if v not in rows:
-            probs.append("housings name %s, which has no connector_dims row (01-REFERENCE)" % v)
+            probs.append("housings name %s, which has no connector_dims row (00-CAR)" % v)
         if v not in man:
             probs.append("housings name %s, which the manifest does not list" % v)
     for v, e in man.items():
@@ -572,7 +572,7 @@ def _fc_main(job):
         nodes = [{"name": n, "prims": groups[n]} for n in order if groups.get(n)]
         dst = os.path.join(job["out"], "%s.glb" % r["id"])
         info = G.write_glb(dst, nodes, mats, r["id"], extras={
-            "source": "01-REFERENCE connector_dims %s" % r["id"] + (
+            "source": "00-CAR connector_dims %s" % r["id"] + (
                 "; model %s" % os.path.basename(path) if path else "; stand-in"),
             "origin": ORIGIN, "confirm": True})
         meta[r["id"]] = {"bytes": info["bytes"], "bbox": info["bbox"],

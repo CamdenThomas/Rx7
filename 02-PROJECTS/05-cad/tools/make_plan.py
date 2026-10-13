@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Draft of 05-cad A05: the parts plan. Reads 00-CAR parts and specs, 01-REFERENCE cad (read only);
+"""Draft of 05-cad A05: the parts plan. Reads 00-CAR parts, specs and cad (read only);
 writes model_parts_planned.csv and plan_summary.csv beside this script. Run from anywhere."""
 import collections
 import csv
@@ -19,7 +19,7 @@ def rows(rel):
 parts = rows("00-CAR/data/parts.csv")
 P = {p["id"]: p for p in parts}
 specs = rows("00-CAR/data/specs.csv")
-cad = {c["id"]: c for c in rows("01-REFERENCE/data/cad.csv")}
+cad = {c["id"]: c for c in rows("00-CAR/data/cad.csv")}
 DIM_UNITS = {"mm", "in", "inch", "cm", "m", "mm (in)", "in (mm)", "deg", "°"}
 dims = collections.defaultdict(list)
 for s in specs:

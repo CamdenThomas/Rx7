@@ -1,7 +1,7 @@
 # harness/cad/connectors — the DEUTSCH housings in 3D for the app
 
 *Rev 2026-10-13 (D-514, D-515, Y24) · owns: how each connector variant the harness uses becomes
-one glb for the Design page. Owns no dimension: they are 01-REFERENCE `connector_dims`, one row
+one glb for the Design page. Owns no dimension: they are 00-CAR `connector_dims`, one row
 per variant, each figure with where it was read or that it was estimated, every one confirm (R11).*
 
 ## What it is

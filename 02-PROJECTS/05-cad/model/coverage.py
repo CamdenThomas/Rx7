@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """coverage.py - what exists for every part of the car, derived (05-cad A01, R2 of CLAUDE.md).
 
-Reads 00-CAR parts and specs, 01-REFERENCE cad and blend, and sorts the 975 parts into tiers:
+Reads 00-CAR parts and specs, 00-CAR cad and 05-cad blend, and sorts the 975 parts into tiers:
   file     parts.cad names a model file in the tree
-  placed   parts.model_at_mm puts it in the combined model (01-REFERENCE blend, D-418 / D-421)
+  placed   parts.model_at_mm puts it in the combined model (05-cad blend, D-418 / D-421)
   dim      a specs row for the part in mm or in - a factory dimension to build or check it from
-  found    a 01-REFERENCE cad row (fits exact or close) whose subject or title carries the part's
+  found    a 00-CAR cad row (fits exact or close) whose subject or title carries the part's
            name words - a HINT only: the match is by words, nobody has opened the file against the part
   figure   parts.catalogue names a figure in the 1981-83 parts catalogue (S-005): shape, not size
   nothing  none of file, placed, dim or figure
@@ -35,7 +35,7 @@ def rows(rel):
 def coverage():
     parts = rows("00-CAR/data/parts.csv")
     specs = rows("00-CAR/data/specs.csv")
-    cad = rows("01-REFERENCE/data/cad.csv")
+    cad = rows("00-CAR/data/cad.csv")
     dim_parts = {s["part"] for s in specs if s.get("part") and (s.get("unit") or "").strip().lower() in DIM_UNITS}
     subjects = [((c.get("subject") or "") + " " + (c.get("title") or "")).lower()
                 for c in cad if c.get("fits") in ("exact", "close")]

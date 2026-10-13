@@ -23,7 +23,7 @@ before each). It needs `freecadcmd` (FreeCAD 1.1; `FREECADCMD` overrides). It wr
   area's qualified like a gate, `03-luxury:LP58`, `00-CAR:P-002`): `glb`, `name` (the record's
   words), `kind` (`device` or `module`), `node` (the scene.json part it sits at), `count` there
   and `also` (other nodes and counts), `size_mm` (the glb's box, measured), `origin`, `standin`,
-  `cad` (the 01-REFERENCE cad row of a found model, else null), `confirm` (always true), `source`,
+  `cad` (the 00-CAR cad row of a found model, else null), `confirm` (always true), `source`,
   and for a stand-in its `params`, each number with its source. `_meta` holds the version, the
   devices with no model and why (`none`), and each model's bytes, box and staleness stamp.
 
@@ -74,5 +74,5 @@ plate's board.
 Nothing here is measured (R11): every entry is `confirm`, every place a node's provisional spot,
 every stand-in number a drawing's or a guess. A measured number beats every one of them, and
 the row it belongs in is the record's, not this file's. The builder reads the record only
-through `rx7.py export` (01-electrical devices, relays, fuses, parts; 01-REFERENCE cad) and
+through `rx7.py export` (01-electrical devices, relays, fuses, parts; 00-CAR cad) and
 scene.json, and writes nothing to the record.
