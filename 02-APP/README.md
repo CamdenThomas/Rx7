@@ -98,11 +98,18 @@ Three layers, and the rule that keeps them honest:
 - **Logic, on the desktop: a small Rust shell** that runs `rx7.py`, commits and pushes each
   answer (*Camden answered 00.29 (desktop)*), syncs with GitHub, and runs Claude Code headless
   for Explain, Discuss, Apply and the Run page.
-- **Logic, on the phone: the same `rx7.py`, compiled to WebAssembly.** The phone downloads
-  the record's CSVs from GitHub and runs the *real* `rx7.py` on them inside the app (Python
-  in the browser engine, via Pyodide). The phone and the desktop can't drift apart, because
-  there is one tool, not two copies of the rules. Your answers go to GitHub as commits through
-  its API.
+- **Logic, on the phone: the same `rx7.py`, run on GitHub and in the app (D-511).** After every
+  push to master that passes `check`, the rx7 workflow runs `rx7.py export` and puts the result
+  on a rolling release (tag `export`: `export.json.gz`, about 1.3 MB, and `export.meta.json`,
+  the commit it was made from). The phone fetches that one file on each sync and shows it at
+  once. If the export is behind the branch it says so (*export from <date>, 3 hours old; the
+  Action has not caught up*); if it can't be fetched it shows the last one it kept and says
+  that too. Behind it, the phone keeps the record's CSVs in step, and when you save an answer
+  it runs the *real* `rx7.py` on them inside the app (Python compiled to WebAssembly, via
+  Pyodide) to write the answer file, offline too. That is the only time the 13 MB engine loads.
+  The phone and the desktop can't drift apart, because there is one tool, not two copies of the
+  rules. Your answers go to GitHub as commits through its API, and show as sent until the next
+  export holds them.
 - **Interface: Svelte, one codebase for both.** Only one small module per device differs
   (`app/src/lib/platform/`).
 

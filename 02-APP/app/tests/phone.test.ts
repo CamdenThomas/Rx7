@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { base64, wanted } from '../src/lib/platform/github';
-import { overlay, type Outgoing } from '../src/lib/platform/phone';
+import { overlay, settled, type Outgoing, type Sent } from '../src/lib/platform/phone';
 import type { Answer, Snapshot } from '../src/lib/model';
 
 const answer = (target: string, extra: Partial<Answer> = {}): Answer => ({
@@ -28,6 +28,28 @@ describe('the phone lays its unsent answers over the record', () => {
   it('a newer answer from this phone replaces the one on GitHub', () => {
     const s = overlay(snap([answer('01.29', { choice: 'b' })]), [{ op: 'put', path: 'x', answer: answer('01.29', { choice: 'a' }) }]);
     expect(s.inbox.map((a) => a.choice)).toEqual(['a']);
+  });
+});
+
+describe('a sent answer stays in view until the published export holds it (D-511)', () => {
+  const sent = (target: string, extra: Partial<Sent> = {}): Sent => ({
+    op: 'put', answer: answer(target, { pending: false }), commit: 'c1', date: '2026-10-13T12:00:00Z', ...extra,
+  });
+  it('is shown, as sent, while the export does not hold it yet', () => {
+    const s = overlay(snap([]), [], [sent('01.29')]);
+    expect(s.inbox.map((a) => [a.target, a.pending])).toEqual([['01.29', false]]);
+    expect(s.blocks.find((b) => b.id === '01.29')?.answered).toBe(true);
+  });
+  it('a sent withdrawal hides the answer the export still holds', () => {
+    expect(overlay(snap([answer('01.30')]), [], [sent('01.30', { op: 'delete' })]).inbox).toHaveLength(0);
+  });
+  it('is let go once the export is of its commit or a later one', () => {
+    const now = Date.parse('2026-10-13T12:30:00Z');
+    expect(settled(sent('01.29'), undefined, now)).toBe(false);
+    expect(settled(sent('01.29'), { sha: 'c0', date: '2026-10-13T11:59:00Z', built: '' }, now)).toBe(false);
+    expect(settled(sent('01.29'), { sha: 'c1', date: '2026-10-13T12:00:00Z', built: '' }, now)).toBe(true);
+    expect(settled(sent('01.29'), { sha: 'c2', date: '2026-10-13T12:05:00Z', built: '' }, now)).toBe(true);
+    expect(settled(sent('01.29'), undefined, Date.parse('2026-10-16T00:00:00Z'))).toBe(true);
   });
 });
 

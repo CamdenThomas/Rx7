@@ -60,7 +60,14 @@ function reset(py: PyodideAPI, files: Map<string, string>) {
   py.runPython(HELPERS);
 }
 
-/** The record as rx7.py exports it, from the given files (paths relative to the tree). */
+/** Hand rx7.py the record's files (paths relative to the tree), ready for inboxFile(). The
+ *  phone's only use of the engine since D-511: it writes his answer, it no longer exports. */
+export async function loadRecord(files: Map<string, string>, indexURL?: string): Promise<void> {
+  reset(await loadEngine(indexURL), files);
+}
+
+/** The record as rx7.py exports it, from the given files (paths relative to the tree). The
+ *  phone reads the export the Action publishes instead (D-511); kept for tests and tools. */
 export async function exportRecord(files: Map<string, string>, indexURL?: string): Promise<Snapshot> {
   const py = await loadEngine(indexURL);
   reset(py, files);

@@ -1,7 +1,7 @@
 {
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "default",
-  "description": "What the Rx7 window may use: its own events, its settings store, opening a web link, GitHub (the phone's way to the record), and Bluetooth LE for Connect and log and the Scan page (D-495).",
+  "description": "What the Rx7 window may use: its own events, its settings store, opening a web link, GitHub (the phone's way to the record, and the export the Action publishes, D-511), and Bluetooth LE for Connect and log and the Scan page (D-495).",
   "windows": ["main"],
   "permissions": [
     "core:default",
@@ -16,7 +16,8 @@
       "identifier": "http:default",
       "allow": [
         { "url": "https://api.github.com/*" },
-        { "url": "https://raw.githubusercontent.com/*" }
+        { "url": "https://raw.githubusercontent.com/*" },
+        { "url": "https://github.com/CamdenThomas/Rx7/releases/download/*" }
       ]
     }
   ]

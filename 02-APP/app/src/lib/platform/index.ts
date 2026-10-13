@@ -13,7 +13,8 @@ export async function choosePlatform(): Promise<Platform> {
       const [{ phonePlatform }, { tauriKV }, http, { openUrl }] = await Promise.all([
         import('./phone'), import('./storage'), import('@tauri-apps/plugin-http'), import('@tauri-apps/plugin-opener'),
       ]);
-      // A test build can point the phone at a stand-in GitHub (e2e/fake-github.mjs).
+      // A test build can point the phone at a stand-in GitHub (e2e/fake-github.mjs), its
+      // published export included.
       // Two stores (plan P37): his answers, key and drafts in a small file written often; the
       // record's 6 MB cache in its own file, so no write of the cache can tear the other.
       const phone = await phonePlatform({
@@ -22,6 +23,7 @@ export async function choosePlatform(): Promise<Platform> {
         fetch: http.fetch as typeof fetch,
         api: import.meta.env.VITE_RX7_API || undefined,
         raw: import.meta.env.VITE_RX7_RAW || undefined,
+        releases: import.meta.env.VITE_RX7_RELEASES || undefined,
       });
       return { ...phone, open: (url) => void openUrl(url) };
     }
@@ -37,6 +39,7 @@ export async function choosePlatform(): Promise<Platform> {
       fetch: window.fetch.bind(window),
       api: q.get('api') ?? undefined,
       raw: q.get('raw') ?? undefined,
+      releases: q.get('releases') ?? undefined,
     });
   }
   const { webPlatform } = await import('./web');

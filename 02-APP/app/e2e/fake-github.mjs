@@ -1,12 +1,14 @@
 // A stand-in for GitHub, for testing the phone app end to end: the few API calls the phone
 // makes (branch, tree, raw file, contents put/get/delete, commits), served from a throwaway
-// git repository holding a copy of the record. Nothing here touches the real tree.
+// git repository holding a copy of the record, and the export the Action publishes (D-511),
+// made here by the copy's own rx7.py for the commit at the head. Nothing here touches the real tree.
 
 import { execFileSync } from 'node:child_process';
-import { cpSync, existsSync, mkdirSync, mkdtempSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { tmpdir } from 'node:os';
 import { dirname, join, relative } from 'node:path';
+import { gzipSync } from 'node:zlib';
 
 /** A git repo with the record's data and rx7.py copied from `tree`. */
 export function makeRepo(tree) {
@@ -50,6 +52,19 @@ export function startFakeGitHub(repo, port = 5199) {
     });
     res.end(typeof body === 'string' ? body : JSON.stringify(body));
   };
+  // The release: rebuilt when the head moved, as the Action would after a push.
+  let made = null;
+  const published = () => {
+    const sha = git('rev-parse', 'HEAD');
+    if (made?.sha !== sha) {
+      const out = join(mkdtempSync(join(tmpdir(), 'rx7-fake-export-')), 'export.json');
+      execFileSync('python3', [join(dir, 'tools', 'rx7.py'), 'export', '--out', out], { cwd: dir, stdio: 'ignore' });
+      const meta = { sha, date: git('log', '-1', '--format=%cI'), built: new Date().toISOString() };
+      made = { sha, gz: gzipSync(readFileSync(out)), meta };
+      rmSync(dirname(out), { recursive: true, force: true });
+    }
+    return made;
+  };
   const blob = (path) => {
     try {
       return git('rev-parse', `HEAD:${path}`);
@@ -65,6 +80,12 @@ export function startFakeGitHub(repo, port = 5199) {
     for await (const c of req) body += c;
     log.push(`${req.method} ${p}`);
     let m;
+    if ((m = p.match(/^\/releases\/(export\.meta\.json|export\.json\.gz)$/))) {
+      const r = published();
+      if (m[1] === 'export.meta.json') return send(res, 200, r.meta);
+      res.writeHead(200, { 'Content-Type': 'application/gzip', 'Access-Control-Allow-Origin': '*' });
+      return res.end(r.gz);
+    }
     if ((m = p.match(/^\/api\/repos\/[^/]+\/[^/]+\/branches\/(.+)$/))) {
       const sha = git('rev-parse', 'HEAD');
       return send(res, 200, { commit: { sha, commit: { tree: { sha: git('rev-parse', 'HEAD^{tree}') }, committer: { date: git('log', '-1', '--format=%cI') } } } });

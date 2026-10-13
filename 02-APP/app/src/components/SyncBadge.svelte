@@ -8,12 +8,13 @@
 
   const s = $derived(app.sync);
   const phone = $derived(app.platform?.kind === 'phone');
-  const tone = $derived(s.busy ? 'busy' : !s.online ? 'off' : s.error ? 'warn' : s.waiting ? 'wait' : 'ok');
+  const tone = $derived(s.busy ? 'busy' : !s.online ? 'off' : s.error ? 'warn' : s.waiting ? 'wait' : s.note ? 'warn' : 'ok');
   const text = $derived.by(() => {
     if (s.busy) return phone ? 'Syncing…' : 'Syncing with GitHub…';
-    if (!s.online) return s.waiting ? `Offline · ${plural(s.waiting, 'answer')} to send` : 'Offline · reading your copy';
+    if (!s.online) return s.waiting ? `Offline · ${plural(s.waiting, 'answer')} to send` : (s.note ?? 'Offline · reading your copy');
     if (s.error) return s.error;
     if (s.waiting) return phone ? `${plural(s.waiting, 'answer')} to send` : `${plural(s.waiting, 'commit')} to push`;
+    if (s.note) return s.note;
     return s.asOf ? `Up to date · ${ago(s.asOf)}` : 'Up to date';
   });
   let tick = $state(0);

@@ -31,6 +31,9 @@ export interface SyncInfo {
   waiting: number;
   /** The newest the record shown is: a commit time on the phone, the export time on the desktop. */
   asOf?: string;
+  /** Phone: what to know about the export shown — behind the branch, or the last one kept
+   *  because a fresh one could not be fetched (D-511). Not an error: the record is readable. */
+  note?: string;
   error?: string;
   /** Desktop: files changed in the tree and not committed (someone is working in it). */
   dirty?: number;

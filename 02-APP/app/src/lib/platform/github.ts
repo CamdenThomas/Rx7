@@ -17,6 +17,12 @@ export interface TreeEntry {
   type: 'blob' | 'tree' | 'commit';
 }
 
+/** What the contents API answers to a write: the commit it made, with GitHub's own time. */
+export interface Written {
+  content?: { sha: string } | null;
+  commit: { sha: string; committer?: { date?: string } };
+}
+
 export class GitHubError extends Error {
   constructor(public status: number, message: string) {
     super(message);
@@ -69,13 +75,13 @@ export function github(repo: Repo, fetch: Fetch, api = API, raw = 'https://raw.g
     },
     /** Create or replace one file with one commit. `sha` is the file's current blob, if it has one. */
     put(path: string, text: string, message: string, sha?: string) {
-      return call<{ content: { sha: string }; commit: { sha: string } }>(`/contents/${encodePath(path)}`, {
+      return call<Written>(`/contents/${encodePath(path)}`, {
         method: 'PUT',
         body: JSON.stringify({ message, content: base64(text), branch: repo.branch, ...(sha ? { sha } : {}) }),
       });
     },
     remove(path: string, message: string, sha: string) {
-      return call<unknown>(`/contents/${encodePath(path)}`, {
+      return call<Written>(`/contents/${encodePath(path)}`, {
         method: 'DELETE',
         body: JSON.stringify({ message, sha, branch: repo.branch }),
       });

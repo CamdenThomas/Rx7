@@ -51,3 +51,77 @@ jobs:
 
       - name: the record is valid
         run: python tools/rx7.py check
+
+  # The phone's copy of the record (D-511). The phone used to compute the export itself, in
+  # 13 MB of WebAssembly, before it could show anything; now this job runs the same rx7.py once
+  # per push and the phone fetches the one file. It is a job of its own so that the check above
+  # keeps read-only rights: only this job may write, and only to the release.
+  #
+  # It runs after `record` passed and only on master (the branch the phone reads). Its failure
+  # is its own: the check's verdict is already in, nothing here gates a push, and the phone
+  # shows the last export it fetched and says how old it is. A newer push cancels it along
+  # with the rest of the run - the newest export is the only one worth publishing.
+  #
+  # The export lands on a rolling release, tag `export`, outside the tree (D-405: no generated
+  # page in the record). Two assets: export.json.gz, and export.meta.json - the commit it was
+  # made from, that commit's time, and when it was built - small, so the phone can tell an
+  # export that is behind the branch from one that is current. The gzip goes up first and the
+  # meta last, so a run cut off between the two leaves a meta that is older than its export,
+  # never one that claims a commit the export does not hold.
+  #
+  # Besides what `check` reads, `export` reads the factory-circuit write-ups (and the wiring
+  # diagram PDF, which must exist to be listed: 29 MB) and the photo names. Stdlib and the
+  # runner's own `gh`; the token is the run's own, with contents: write on this job only.
+  publish:
+    needs: record
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TAG: export
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            tools
+            00-CAR/data
+            01-REFERENCE/data
+            01-REFERENCE/factory-circuits
+            01-REFERENCE/photos
+            02-APP/data
+            02-PROJECTS
+            99-ARCHIVE
+          sparse-checkout-cone-mode: true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+
+      - name: the export
+        run: python tools/rx7.py export --out export.json
+
+      - name: what it was made from, and when
+        run: |
+          COMMIT_DATE="$(git log -1 --format=%cI)" BUILT="$(date -u +%Y-%m-%dT%H:%M:%SZ)" python -c '
+          import json, os
+          meta = {"sha": os.environ["GITHUB_SHA"], "date": os.environ["COMMIT_DATE"],
+                  "built": os.environ["BUILT"], "bytes": os.path.getsize("export.json")}
+          open("export.meta.json", "w").write(json.dumps(meta) + "\n")'
+          gzip -9 -n -k -f export.json
+          ls -l export.json export.json.gz export.meta.json
+
+      - name: the release, once
+        run: |
+          gh release view "$TAG" > /dev/null 2>&1 || gh release create "$TAG" --target "$GITHUB_SHA" \
+            --title "The record's export" --notes "Made by the rx7 workflow on every push to master."
+
+      - name: published
+        run: |
+          gh release upload "$TAG" export.json.gz --clobber
+          gh release upload "$TAG" export.meta.json --clobber
+          gh release edit "$TAG" --notes "$(printf 'The record exported by rx7.py at %s (%s), built %s. The phone reads export.json.gz; export.meta.json says which commit it holds. Replaced on every push to master (D-511).' \
+            "$GITHUB_SHA" "$(git log -1 --format=%cI)" "$(date -u +%Y-%m-%dT%H:%M:%SZ)")"

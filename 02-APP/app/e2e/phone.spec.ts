@@ -1,6 +1,7 @@
 // The phone's whole path, against a stand-in GitHub holding a copy of the record: the record
-// is fetched and read by rx7.py running as WebAssembly, an answer typed offline waits on the
-// phone, and it is committed — his words byte for byte — once the connection is back.
+// is the export the Action publishes (D-511), an answer typed offline is written by rx7.py
+// running as WebAssembly and waits on the phone, and it is committed — his words byte for
+// byte — once the connection is back.
 
 import { expect, test } from '@playwright/test';
 import { spawnSync } from 'node:child_process';
@@ -36,7 +37,7 @@ test.describe('the phone', () => {
   });
 
   test('reads the record through rx7.py, answers offline, sends on reconnect', async ({ page, context }) => {
-    const url = `/?platform=phone&api=http://localhost:${PORT}/api&raw=http://localhost:${PORT}/raw`;
+    const url = `/?platform=phone&api=http://localhost:${PORT}/api&raw=http://localhost:${PORT}/raw&releases=http://localhost:${PORT}/releases`;
     await page.goto(url);
     await page.evaluate(() => {
       localStorage.clear();
@@ -44,8 +45,16 @@ test.describe('the phone', () => {
     });
     await page.goto(url + `#/p/${block.area}/blocks/${block.id}`);
 
-    // The record arrived and was read by the real rx7.py inside the page.
+    // The record arrived: the published export, shown at once.
     await expect(page.getByText(block.title, { exact: false }).first()).toBeVisible({ timeout: 60_000 });
+    // Behind it the phone keeps the record's files, which an answer is written against offline;
+    // wait until that has finished before the connection is cut.
+    await expect.poll(async () => {
+      const n = gh.log.length;
+      await new Promise((r) => setTimeout(r, 1500));
+      return gh.log.length === n && gh.log.some((l) => l.startsWith('GET /raw/'));
+    }, { timeout: 60_000 }).toBe(true);
+    expect(gh.log).toContain('GET /releases/export.json.gz');
 
     // Offline — GitHub cannot be reached: the answer is kept on the phone. (The app's own files
     // are on the phone, so only the network to GitHub is cut.)
