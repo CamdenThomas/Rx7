@@ -63,6 +63,8 @@ model_parts,state,enum(planned|rough|dimensioned|confirmed),yes,,planned: no sol
 model_parts,parent,str,no,model_parts,the part it is mated onto; blank for the body shell
 model_parts,confirm,text,no,,"which dimensions are not measured yet, in words; blank only when state is confirmed"
 model_parts,note,text,no,,
+model_parts,order,int,no,,"the build order (A05, D-518): 1 first; the unibody, then what the strip takes off first, then what is measured in place, then a unit's insides when it is opened"
+model_parts,needs,text,no,,"what the part needs from Camden before it can be dimensioned: measure when off, photo against a ruler, nothing (a factory page), a found model, the catalogue drawing, bench: open the unit"
 model_dims,id,key,yes,,
 model_dims,part,str,yes,model_parts,
 model_dims,dim,str,yes,,"what is measured, in words (overall length; bolt pattern; bore)"
