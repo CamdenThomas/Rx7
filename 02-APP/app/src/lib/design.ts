@@ -339,6 +339,78 @@ export function nodeMatches(name: string, original: string | undefined, wanted: 
   return original === wanted || name === wanted || name === wanted.replace(/\s/g, '_').replace(/[[\].:/]/g, '');
 }
 
+/** The scene's own word on its models (`frame.glb`, e.g. "mm, z up, the part's own frame"),
+ *  read before any guess: the units and the up axis, from the text before any bracket (which
+ *  may name what it is not). `null` when it does not say both - then glbReading guesses. */
+export function frameGlb(text: string | undefined): { scale: number; yUp: boolean } | null {
+  if (!text) return null;
+  const t = text.split('(')[0].toLowerCase();
+  const scale = /\bmm\b|millimet/.test(t) ? 1 : /\bm\b|\bmetres?\b|\bmeters?\b/.test(t) ? 1000 : null;
+  const yUp = /\bz[ -]?up\b/.test(t) ? false : /\by[ -]?up\b/.test(t) ? true : null;
+  return scale == null || yUp == null ? null : { scale, yUp };
+}
+
+// ------------------------------------------------------------------ framing and labels
+
+/** A part with a model of its own (a node is only a place, a far end of the harness). */
+export const modelled = (p: Part | undefined) => !!p && p.kind !== 'node';
+
+/** What the assembly's camera frames. By default, and on "Show everything", the modelled
+ *  parts only - the far-end nodes are spread over the whole car and would shrink the units to
+ *  dots. An isolated part: its own box. An isolated link: its two ends. `all`: every part and
+ *  every link's ends. Parts are top-level ids; links' end points count by link id. */
+export function fitSet(s: Scene, sel: Selection, all = false): { parts: Set<string>; links: Set<string> } {
+  const tops = topLevel(s);
+  if (all) return { parts: new Set(tops.map((p) => p.id)), links: new Set(s.links.map((l) => l.id)) };
+  const f = focusOf(s, sel);
+  if (f && sel?.kind === 'part') return { parts: f.parts, links: new Set() };
+  if (f) return { parts: new Set([...f.parts].filter((id) => modelled(partById(s, id)))), links: f.links };
+  const models = tops.filter(modelled);
+  return { parts: new Set((models.length ? models : tops).map((p) => p.id)), links: new Set() };
+}
+
+/** Where along a link (0 at `from`, 1 at `to`) its label sits: the middle between two
+ *  modelled parts (or two nodes), else `reach` mm out from the modelled end, so a unit's
+ *  labels gather round it rather than out in the car where its far ends are. */
+export function labelT(length: number, fromModelled: boolean, toModelled: boolean, reach: number): number {
+  if (fromModelled === toModelled || !(length > 0)) return 0.5;
+  const t = Math.min(0.5, reach / length);
+  return fromModelled ? t : 1 - t;
+}
+
+export interface LabelBox {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  /** other places to try, as downward shifts in pixels, when the first is taken */
+  alts?: number[];
+}
+
+/** Never more labels than can be read: given label boxes (centre x, y in screen pixels) in
+ *  order of importance, keep each one wholly on screen and clear of every one kept before
+ *  it, with `pad` pixels between - where it is, else at the first of its `alts` that is
+ *  clear. Each answer is the shift used (0 where it is), or null when it is not shown. */
+export function declutter(items: LabelBox[], width: number, height: number, pad = 4): (number | null)[] {
+  const kept: LabelBox[] = [];
+  const fits = (b: LabelBox) =>
+    b.x - b.w / 2 >= 0 &&
+    b.y - b.h / 2 >= 0 &&
+    b.x + b.w / 2 <= width &&
+    b.y + b.h / 2 <= height &&
+    kept.every((k) => Math.abs(k.x - b.x) * 2 >= k.w + b.w + pad * 2 || Math.abs(k.y - b.y) * 2 >= k.h + b.h + pad * 2);
+  return items.map((b) => {
+    for (const dy of [0, ...(b.alts ?? [])]) {
+      const at = { ...b, y: b.y + dy };
+      if (fits(at)) {
+        kept.push(at);
+        return dy;
+      }
+    }
+    return null;
+  });
+}
+
 // ------------------------------------------------------------------ words
 
 export const KIND_LABEL: Record<Kind, string> = { unit: 'Unit', pcb: 'Board', module: 'Module', node: 'Point' };

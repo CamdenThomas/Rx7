@@ -2,7 +2,7 @@
  * The Design page's drawing (D-505, M3D1): one three.js view of a scene - the assembly, one
  * part with its children, or one board - over a canvas, with the labels as DOM elements
  * (CSS2DRenderer: plain HTML, so they read the same in Android's WebView as on the desktop).
- * Everything placed is built in the car frame under one root (design.ts's CAR_TO_THREE).
+ * Everything placed is built in the car frame under one root (designMath.ts's CAR_TO_THREE).
  * Imported only on demand, like CarModel's three.js, so the page's lists never wait on it.
  * It reads public/design/<project>/scene.json's models and no table.
  */
@@ -11,15 +11,21 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { CSS2DObject, CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
-import { CAR_TO_THREE, fitView, glbMatrix, linkEnds, matrixUnder, placeMatrix } from './designMath';
+import { CAR_TO_THREE, corners, fitView, glbMatrix, linkEnds, matrixUnder, placeMatrix } from './designMath';
 import {
   childrenOf,
+  declutter,
   family,
   findConnector,
+  fitSet,
   focusOf,
+  frameGlb,
   glbReading,
+  labelT,
+  modelled,
   nodeMatches,
   partById,
+  rootOf,
   topLevel,
   type Part,
   type Scene,
@@ -42,10 +48,25 @@ const FOV = 35;
 // (left) side and above - the way he looks at the dash.
 const VIEW_FROM_CAR = new THREE.Vector3(-0.45, -1, 0.65);
 const FADE = 0.1;
+// A link's label sits this far out from the modelled part it leaves (mm).
+const LABEL_REACH = 160;
+// With nothing isolated, link and node labels show only nearer the camera than this share
+// of the distance the modelled parts were framed from - zoom in and they appear.
+const LABEL_NEAR = 0.85;
 
 interface Loaded {
   group: THREE.Group; // the part's frame
-  model?: THREE.Object3D; // the model (or its stand-in) inside it
+  model?: THREE.Object3D; // the model (or its stand-in) inside it; a node has none
+}
+
+/** A label the declutter decides on: its kind sets when it may show and how much it matters. */
+interface Tag {
+  obj: CSS2DObject;
+  kind: 'part' | 'node' | 'link' | 'conn';
+  id: string;
+  w: number;
+  h: number;
+  cy: number; // where it hangs from its point (CSS2DObject.center.y) before any shift
 }
 
 export class DesignView {
@@ -59,10 +80,15 @@ export class DesignView {
   private observer: ResizeObserver;
   private parts = new Map<string, Loaded>();
   private linkObjs = new Map<string, { line: THREE.Line; label: CSS2DObject; dots: CSS2DObject[] }>();
+  private tags: Tag[] = [];
+  private sel: Selection = null;
   private focus: ReturnType<typeof focusOf> = null;
+  private focusEnds = new Set<string>(); // the parts at the ends of the isolated links
+  private nearDist = Infinity;
   private showLabels = true;
   private frame = 0;
   private dead = false;
+  private moved = false;
   private down: { x: number; y: number } | null = null;
   private fitDir = VIEW_FROM_CAR.clone().applyMatrix4(CAR_TO_THREE);
 
@@ -138,9 +164,24 @@ export class DesignView {
     parent.add(group);
     const entry: Loaded = { group };
     this.parts.set(p.id, entry);
-    if (p.kind === 'node' || !p.glb) {
-      entry.model = this.marker(p);
-      group.add(entry.model);
+    if (p.kind === 'node') {
+      // A far end: a dot (tap it to isolate it) and its name, which the declutter rations.
+      group.add(this.dot('d3-nodedot', () => this.hooks.pick({ kind: 'part', id: p.id })));
+      const label = this.label(p.name, 'd3-node');
+      label.center.set(0.5, 1.4);
+      group.add(label);
+      this.tag(label, 'node', p.id);
+      this.hooks.status(p.id, { state: 'none' });
+      return;
+    }
+    if (this.mode.kind === 'assembly') {
+      const label = this.label(p.name, 'd3-part');
+      label.center.set(0.5, 1.2);
+      group.add(label);
+      this.tag(label, 'part', p.id);
+    }
+    if (!p.glb) {
+      this.setModel(p, entry, this.standIn(p));
       this.hooks.status(p.id, { state: 'none' });
       return;
     }
@@ -151,18 +192,17 @@ export class DesignView {
       .then((gltf) => {
         if (this.dead) return dispose(gltf.scene);
         const model = gltf.scene;
-        const ext = new THREE.Box3().setFromObject(model).getSize(new THREE.Vector3());
         const holder = new THREE.Group();
         holder.matrixAutoUpdate = false;
-        holder.matrix.copy(glbMatrix(glbReading(ext, p.size_mm)));
+        // The scene says how its models are written (frame.glb); a guess from the size only
+        // when it does not.
+        const reading = frameGlb(this.s.frame.glb) ?? glbReading(new THREE.Box3().setFromObject(model).getSize(new THREE.Vector3()), p.size_mm);
+        holder.matrix.copy(glbMatrix(reading));
         holder.add(model);
         model.traverse((o) => {
-          const mesh = o as THREE.Mesh;
-          if (mesh.isMesh) mesh.userData.partId = p.id;
+          if ((o as THREE.Mesh).isMesh) o.userData.partId = p.id;
         });
-        entry.model = holder;
-        group.add(holder);
-        this.applyFocus();
+        this.setModel(p, entry, holder);
         if (this.mode.kind !== 'assembly' && this.mode.id === p.id) {
           this.hooks.nodes({ case: this.named(holder, p.nodes.case).length > 0, inside: this.named(holder, p.nodes.inside).length > 0 });
         }
@@ -173,12 +213,25 @@ export class DesignView {
         if (this.dead) return;
         // Name it and keep the rest: a wire box of the part's size stands in, so its links
         // still land somewhere.
-        entry.model = this.standIn(p);
-        group.add(entry.model);
-        this.applyFocus();
+        this.setModel(p, entry, this.standIn(p));
         this.hooks.status(p.id, { state: 'failed', why: reason(e) });
         this.afterLoad();
       });
+  }
+
+  /** Put a model in its part's frame, and its name label on top of it. */
+  private setModel(p: Part, entry: Loaded, model: THREE.Object3D) {
+    entry.model = model;
+    entry.group.add(model);
+    this.root.updateMatrixWorld(true);
+    const box = new THREE.Box3().setFromObject(model);
+    const label = this.tags.find((t) => t.kind === 'part' && t.id === p.id)?.obj;
+    if (label && !box.isEmpty()) {
+      const top = box.getCenter(new THREE.Vector3());
+      top.y = box.max.y; // three.js y is the car's up
+      label.position.copy(entry.group.worldToLocal(top));
+    }
+    this.applyFocus();
   }
 
   private afterLoad() {
@@ -187,25 +240,9 @@ export class DesignView {
     if (!this.moved) this.fit();
     this.request();
   }
-  private moved = false;
-
-  /** A place without a model (a node), or a part with none exported. */
-  private marker(p: Part): THREE.Object3D {
-    const size = p.size_mm ? Math.max(p.size_mm.x, p.size_mm.y, p.size_mm.z) : 0;
-    if (size > 0) return this.standIn(p);
-    const g = new THREE.Mesh(
-      new THREE.OctahedronGeometry(12),
-      new THREE.MeshStandardMaterial({ color: 0x98c1d9, roughness: 0.5, metalness: 0.1 }),
-    );
-    g.userData.partId = p.id;
-    const label = this.label(p.name, 'd3-node');
-    label.center.set(0.5, 1.6);
-    g.add(label);
-    return g;
-  }
 
   private standIn(p: Part): THREE.Object3D {
-    const s = p.size_mm ?? { x: 40, y: 40, z: 40 };
+    const s = p.size_mm && Math.max(p.size_mm.x, p.size_mm.y, p.size_mm.z) > 0 ? p.size_mm : { x: 40, y: 40, z: 40 };
     const geo = new THREE.BoxGeometry(Math.max(s.x, 1), Math.max(s.y, 1), Math.max(s.z, 1));
     const box = new THREE.Mesh(
       geo,
@@ -229,6 +266,19 @@ export class DesignView {
       });
     }
     return new CSS2DObject(el);
+  }
+
+  private dot(cls = '', onTap?: () => void): CSS2DObject {
+    const d = this.label('', `d3-dot ${cls}`, onTap);
+    if (onTap) d.element.setAttribute('aria-hidden', 'true');
+    return d;
+  }
+
+  private tag(obj: CSS2DObject, kind: Tag['kind'], id: string) {
+    obj.userData.tag = true;
+    const text = obj.element.textContent ?? '';
+    // a label's size, estimated (measuring every frame would cost a layout each time)
+    this.tags.push({ obj, kind, id, w: text.length * 7.4 + 18, h: kind === 'link' ? 28 : 22, cy: obj.center.y });
   }
 
   /** The car-frame centres of the models loaded so far, for links whose connector is not in
@@ -256,18 +306,21 @@ export class DesignView {
       if (!o) {
         const line = new THREE.Line(
           new THREE.BufferGeometry(),
-          new THREE.LineBasicMaterial({ color: l.confirm ? 0xee6c4d : 0x98c1d9, depthTest: false, transparent: true }),
+          new THREE.LineBasicMaterial({ color: l.confirm ? 0xee6c4d : 0x98c1d9, depthTest: false, transparent: true, opacity: 0.75 }),
         );
         line.renderOrder = 10;
         const label = this.label(l.code, 'd3-link', () => this.hooks.pick({ kind: 'link', id: l.id }));
-        const dots = [this.label('', 'd3-dot'), this.label('', 'd3-dot')];
+        this.tag(label, 'link', l.id);
+        const dots = [this.dot(), this.dot()];
         this.linkLayer.add(line, label, ...dots);
         o = { line, label, dots };
         this.linkObjs.set(l.id, o);
       }
       o.line.geometry.setFromPoints([ends.from.at, ends.to.at]);
       o.line.geometry.computeBoundingSphere();
-      o.label.position.copy(ends.from.at).lerp(ends.to.at, 0.5);
+      const fromM = modelled(partById(this.s, rootOf(this.s, l.from.part)));
+      const toM = modelled(partById(this.s, rootOf(this.s, l.to.part)));
+      o.label.position.copy(ends.from.at).lerp(ends.to.at, labelT(ends.from.at.distanceTo(ends.to.at), fromM, toM, LABEL_REACH));
       o.dots[0].position.copy(ends.from.at);
       o.dots[1].position.copy(ends.to.at);
       o.dots[0].element.classList.toggle('approx', !ends.from.exact);
@@ -286,12 +339,13 @@ export class DesignView {
         if (!hit) continue;
         codes.add(c.code);
         const at = new THREE.Vector3(hit.c.at!.x, hit.c.at!.y, hit.c.at!.z).applyMatrix4(matrixUnder(this.s, hit.part.id, p.id));
-        const dot = this.label('', 'd3-dot');
+        const dot = this.dot();
         const label = this.label(c.code, 'd3-conn');
         label.center.set(0.5, 1.5);
         dot.position.copy(at);
         label.position.copy(at);
-        dot.userData.ownerId = label.userData.ownerId = hit.part.id;
+        dot.userData.ownerId = hit.part.id;
+        this.tag(label, 'conn', hit.part.id);
         this.linkLayer.add(dot, label);
       }
     }
@@ -310,17 +364,33 @@ export class DesignView {
 
   /** The assembly: fade everything outside the isolated part or link, and frame it. */
   setSelection(sel: Selection) {
+    this.sel = sel;
     this.focus = focusOf(this.s, sel);
+    this.focusEnds = new Set();
+    for (const l of this.s.links) {
+      if (!this.focus?.links.has(l.id)) continue;
+      this.focusEnds.add(rootOf(this.s, l.from.part));
+      this.focusEnds.add(rootOf(this.s, l.to.part));
+    }
     this.applyFocus();
     this.moved = false;
     this.fit();
   }
 
+  private faded(id: string): boolean {
+    return !!this.focus && this.mode.kind === 'assembly' && !this.focus.parts.has(id);
+  }
+
+  /** Materials, lines and dots; the labels are the declutter's, on every frame. */
   private applyFocus() {
     const f = this.focus;
     for (const [id, e] of this.parts) {
-      const faded = !!f && this.mode.kind === 'assembly' && !f.parts.has(id);
+      const faded = this.faded(id);
       e.group.traverse((o) => {
+        if (o instanceof CSS2DObject) {
+          if (!o.userData.tag) o.visible = !faded;
+          return;
+        }
         const mesh = o as THREE.Mesh;
         if (!mesh.isMesh && !(o as THREE.LineSegments).isLineSegments) return;
         for (const m of ([] as THREE.Material[]).concat((mesh.material as THREE.Material | THREE.Material[]) ?? [])) {
@@ -332,31 +402,74 @@ export class DesignView {
           m.needsUpdate = true;
         }
       });
-      e.group.traverse((o) => {
-        if (o instanceof CSS2DObject) o.visible = !faded && this.showLabels;
-      });
     }
     for (const [id, o] of this.linkObjs) {
       const on = !f || f.links.has(id);
       o.line.visible = on;
-      o.label.visible = on && this.showLabels;
       o.dots.forEach((d) => (d.visible = on));
       o.label.element.classList.toggle('on', !!f && f.links.has(id));
     }
     if (this.mode.kind !== 'assembly') {
       this.linkLayer.traverse((o) => {
-        if (!(o instanceof CSS2DObject)) return;
+        if (!(o instanceof CSS2DObject) || o.userData.tag) return;
         const owner = o.userData.ownerId as string | undefined;
-        const hidden = owner ? !this.parts.get(owner)?.group.visible : false;
-        o.visible = !hidden && (this.showLabels || (o as CSS2DObject).element.classList.contains('d3-dot'));
+        o.visible = owner ? !!this.parts.get(owner)?.group.visible : true;
       });
     }
     this.request();
   }
 
+  /** Which labels show this frame. A part's name always (unless faded); with something
+   *  isolated, only its links' labels and their far ends' names; with nothing isolated, the
+   *  link and node labels near the camera. Then the most important first, nearest first,
+   *  each only where it overlaps none already shown. */
+  private declutterLabels() {
+    const f = this.focus;
+    const { clientWidth: w, clientHeight: h } = this.host;
+    const camPos = this.camera.position;
+    const cands: { t: Tag; rank: number; d: number; x: number; y: number }[] = [];
+    const v = new THREE.Vector3();
+    for (const t of this.tags) {
+      let want = false;
+      let rank = 2;
+      if (this.showLabels) {
+        if (t.kind === 'part') {
+          want = !this.faded(t.id);
+          rank = 0;
+        } else if (t.kind === 'conn') {
+          want = !!this.parts.get(t.id)?.group.visible;
+        } else if (f) {
+          want = t.kind === 'link' ? f.links.has(t.id) : this.focusEnds.has(t.id);
+          rank = 1;
+        } else {
+          want = true; // near enough, checked below
+        }
+      }
+      if (want) {
+        t.obj.getWorldPosition(v);
+        const d = v.distanceTo(camPos);
+        if (!f && (t.kind === 'link' || t.kind === 'node') && d > this.nearDist) want = false;
+        else {
+          const p = v.clone().project(this.camera);
+          if (p.z > 1 || p.z < -1) want = false;
+          else cands.push({ t, rank, d, x: ((p.x + 1) / 2) * w, y: ((1 - p.y) / 2) * h - t.h * (t.cy - 0.5) });
+        }
+      }
+      if (!want) t.obj.visible = false;
+    }
+    cands.sort((a, b) => a.rank - b.rank || a.d - b.d);
+    // a part's name may drop below its anchor, onto the model, when above it is taken
+    const keep = declutter(cands.map((c) => ({ x: c.x, y: c.y, w: c.t.w, h: c.t.h, alts: c.t.kind === 'part' ? [c.t.h * 1.6, -c.t.h * 1.2] : [] })), w, h);
+    cands.forEach((c, i) => {
+      const dy = keep[i];
+      c.t.obj.visible = dy !== null;
+      c.t.obj.center.y = c.t.cy - (dy ?? 0) / c.t.h;
+    });
+  }
+
   setLabels(on: boolean) {
     this.showLabels = on;
-    this.applyFocus();
+    this.request();
   }
 
   /** The part view's toggles: 'case' and 'inside' are the model's named node groups, any
@@ -385,28 +498,32 @@ export class DesignView {
     this.fit();
   }
 
-  /** Frame what is in focus (or everything) from the current direction. */
-  fit() {
+  /** Frame, from the current direction: in the assembly what design.ts's fitSet says (the
+   *  modelled parts, or the isolated part's own box, or a link's two ends; `all` adds every
+   *  far end); in a part or board view, what is shown. */
+  fit(all = false) {
     this.root.updateMatrixWorld(true);
-    const box = new THREE.Box3();
+    const pts: THREE.Vector3[] = [];
+    const set = this.mode.kind === 'assembly' ? fitSet(this.s, this.sel, all) : null;
     for (const [id, e] of this.parts) {
-      if (this.focus && this.mode.kind === 'assembly' && !this.focus.parts.has(id)) continue;
-      if (e.model && e.group.visible) box.expandByObject(e.model);
+      if ((set && !set.parts.has(id)) || !e.group.visible) continue;
+      if (e.model) pts.push(...corners(new THREE.Box3().setFromObject(e.model)));
+      else pts.push(e.group.getWorldPosition(new THREE.Vector3()));
     }
-    if (this.mode.kind === 'assembly') {
-      for (const [id, o] of this.linkObjs) {
-        if (this.focus && !this.focus.links.has(id)) continue;
-        o.dots.forEach((d) => box.expandByPoint(d.getWorldPosition(new THREE.Vector3())));
-      }
+    for (const id of set?.links ?? []) {
+      this.linkObjs.get(id)?.dots.forEach((d) => pts.push(d.getWorldPosition(new THREE.Vector3())));
     }
-    const v = fitView(box, this.fitDir, FOV, this.camera.aspect);
+    const v = fitView(pts, this.fitDir, FOV, this.camera.aspect, 120);
     this.controls.target.copy(v.target);
     this.camera.position.copy(v.position);
-    this.camera.near = v.near;
-    this.camera.far = v.far;
+    // near enough to label: a share of the distance the modelled parts are framed from
+    if (set && !this.sel && !all) this.nearDist = v.position.distanceTo(v.target) * LABEL_NEAR;
+    // the far ends stay in the clip range from any fit
+    this.camera.near = Math.max(v.near / 4, 0.5);
+    this.camera.far = v.far + 20000;
     this.camera.updateProjectionMatrix();
-    this.controls.minDistance = v.near * 2;
-    this.controls.maxDistance = v.far / 2;
+    this.controls.minDistance = 20;
+    this.controls.maxDistance = Math.max(v.far / 2, 12000);
     this.controls.update();
     this.request();
   }
@@ -461,6 +578,7 @@ export class DesignView {
       if (this.dead) return;
       const moving = this.controls.update();
       this.renderer.render(this.scene, this.camera);
+      this.declutterLabels();
       this.labels.render(this.scene, this.camera);
       if (moving) this.request();
     });
@@ -493,7 +611,7 @@ function dispose(root: THREE.Object3D) {
       for (const v of Object.values(m)) if ((v as THREE.Texture)?.isTexture) (v as THREE.Texture).dispose();
       m.dispose();
     }
-    if (o instanceof CSS2DObject) (o as CSS2DObject).element.remove();
+    if (o instanceof CSS2DObject) o.element.remove();
   });
 }
 

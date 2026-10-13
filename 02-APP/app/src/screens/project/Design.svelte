@@ -8,7 +8,7 @@
 -->
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { ArrowLeft, ChevronRight, Maximize, Tags } from '@lucide/svelte';
+  import { ArrowLeft, ChevronRight, Expand, Maximize, Tags } from '@lucide/svelte';
   import DesignCanvas from '../../components/DesignCanvas.svelte';
   import {
     builtLabel,
@@ -310,6 +310,7 @@
           {/if}
           <button class="btn icon" aria-pressed={labels} class:cool={labels} aria-label="Labels" title="Labels" onclick={() => (labels = !labels)}><Tags size={17} /></button>
           <button class="btn icon" aria-label="Fit to view" title="Fit to view" onclick={() => canvas?.fit()}><Maximize size={17} /></button>
+          <button class="btn icon" aria-label="Fit everything, far ends included" title="Fit everything, far ends included" onclick={() => canvas?.fit(true)}><Expand size={17} /></button>
         </div>
       </div>
 
@@ -452,6 +453,7 @@
   }
   .view {
     position: sticky;
+    scroll-margin-top: calc(var(--topbar) + 12px);
     top: calc(var(--topbar) + 12px);
     display: grid;
     gap: 10px;

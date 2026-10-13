@@ -3,8 +3,26 @@
 import { Box3, Vector3 } from 'three';
 import { describe, expect, it } from 'vitest';
 import raw from './fixtures/design/scene.json';
-import { childrenOf, family, fitDistance, focusOf, glbReading, looksAbsent, nodeMatches, parseScene, rootOf, tap, topLevel, type Scene } from '../src/lib/design';
-import { CAR_TO_THREE, endPoint, fitView, glbMatrix, linkEnds, matrixUnder, placeMatrix, worldMatrix } from '../src/lib/designMath';
+import {
+  childrenOf,
+  declutter,
+  family,
+  fitDistance,
+  fitSet,
+  focusOf,
+  frameGlb,
+  glbReading,
+  labelT,
+  looksAbsent,
+  modelled,
+  nodeMatches,
+  parseScene,
+  rootOf,
+  tap,
+  topLevel,
+  type Scene,
+} from '../src/lib/design';
+import { CAR_TO_THREE, corners, endPoint, fitView, glbMatrix, linkEnds, matrixUnder, placeMatrix, worldMatrix } from '../src/lib/designMath';
 
 const parsed = parseScene(raw);
 if (!parsed.ok) throw new Error(parsed.reason);
@@ -156,14 +174,31 @@ describe('the camera fit', () => {
     expect(fitDistance(100, 90, 0.5)).toBeGreaterThan(fitDistance(100, 90, 2));
   });
 
-  it('frames a box from the direction asked', () => {
-    const v = fitView(new Box3(new Vector3(-100, -100, -100), new Vector3(100, 300, 100)), new Vector3(0, 0, 2), 30, 1.5);
+  it('frames every corner of a box from the direction asked, tighter than its sphere', () => {
+    const box = new Box3(new Vector3(-100, -100, -100), new Vector3(100, 300, 100));
+    const v = fitView(corners(box), new Vector3(0, 0, 2), 30, 1.5);
     near(v.target, 0, 100, 0);
-    const r = new Vector3(200, 400, 200).length() / 2;
-    near(v.position, 0, 100, fitDistance(r, 30, 1.5));
-    expect(v.near).toBeLessThan(v.position.z - r);
-    expect(v.far).toBeGreaterThan(v.position.z + r);
-    expect(fitView(new Box3(), new Vector3(1, 0, 0), 30, 1).target.length()).toBe(0);
+    // the tallest corner decides: 100 deep, 200 up, a 15 degree half-field
+    near(v.position, 0, 100, 100 + (1.15 * 200) / Math.tan((15 * Math.PI) / 180));
+    expect(v.position.z).toBeLessThan(fitDistance(new Vector3(200, 400, 200).length() / 2, 30, 1.5));
+    expect(v.near).toBeLessThan(v.position.z - 100);
+    expect(v.far).toBeGreaterThan(v.position.z + 100);
+    expect(fitView([], new Vector3(1, 0, 0), 30, 1).target.length()).toBe(0);
+    // one point is framed as if it were minRadius across
+    expect(fitView([new Vector3(5, 5, 5)], new Vector3(0, 0, 1), 30, 1, 120).position.z).toBeCloseTo(5 + fitDistance(120, 30, 1), 6);
+  });
+  it('centres what the camera sees, not the box: the near side looks bigger', () => {
+    const pts = [new Vector3(-200, 0, 600), new Vector3(400, 0, -600), new Vector3(0, 100, 0), new Vector3(0, -100, 0)];
+    const v = fitView(pts, new Vector3(0, 0, 1), 30, 1);
+    const tan = Math.tan((15 * Math.PI) / 180);
+    const xs = pts.map((p) => (p.x - v.target.x) / ((v.position.z - p.z) * tan));
+    expect(Math.min(...xs) + Math.max(...xs)).toBeCloseTo(0, 2);
+    expect(Math.max(...xs.map(Math.abs))).toBeLessThanOrEqual(1 / 1.15 + 1e-6);
+  });
+  it('looks straight down at a board without losing its bearings', () => {
+    const v = fitView(corners(new Box3(new Vector3(-70, -1, -50), new Vector3(70, 1, 50))), new Vector3(0, 1, 0.0001), 35, 1);
+    expect(Number.isFinite(v.position.y)).toBe(true);
+    expect(v.position.y).toBeGreaterThan(100);
   });
 });
 
@@ -196,5 +231,82 @@ describe('an absent scene', () => {
     expect(looksAbsent(404, '')).toBe(true);
     expect(looksAbsent(200, '<!doctype html><html>')).toBe(true);
     expect(looksAbsent(200, '{"version":1}')).toBe(false);
+  });
+});
+
+describe('the scene says how its models are written', () => {
+  it('reads frame.glb before guessing, ignoring what a bracket says it is not', () => {
+    expect(frameGlb("mm, z up, the part's own frame (not glTF's metres, y up)")).toEqual({ scale: 1, yUp: false });
+    expect(frameGlb('metres, y up')).toEqual({ scale: 1000, yUp: true });
+    expect(frameGlb('mm')).toBeNull();
+    expect(frameGlb(undefined)).toBeNull();
+  });
+});
+
+describe('what the camera frames', () => {
+  it('by default the modelled parts only, never the far-end nodes', () => {
+    const f = fitSet(s, null);
+    expect([...f.parts]).toEqual(['control-unit', 'pmu']);
+    expect(f.links.size).toBe(0);
+  });
+  it('an isolated part: its own box, not its links far ends', () => {
+    const f = fitSet(s, { kind: 'part', id: 'pmu' });
+    expect([...f.parts]).toEqual(['pmu']);
+    expect(f.links.size).toBe(0);
+    expect([...fitSet(s, { kind: 'part', id: 'dcu-carrier' }).parts]).toEqual(['control-unit']);
+  });
+  it('an isolated link: its modelled ends and both end points', () => {
+    const f = fitSet(s, { kind: 'link', id: 'GND-1' });
+    expect([...f.parts]).toEqual(['pmu']);
+    expect([...f.links]).toEqual(['GND-1']);
+  });
+  it('everything: every part and every far end', () => {
+    const f = fitSet(s, { kind: 'part', id: 'pmu' }, true);
+    expect(f.parts.size).toBe(3);
+    expect(f.links.size).toBe(2);
+  });
+  it('a scene of nodes alone still frames something', () => {
+    const r = parseScene({ parts: [{ id: 'n', kind: 'node' }] });
+    expect(r.ok && [...fitSet(r.scene, null).parts]).toEqual(['n']);
+  });
+});
+
+describe('labels', () => {
+  it('sit mid-way between two models, near the model when the other end is far', () => {
+    expect(labelT(1000, true, true, 160)).toBe(0.5);
+    expect(labelT(1000, false, false, 160)).toBe(0.5);
+    expect(labelT(2000, true, false, 160)).toBeCloseTo(0.08, 9);
+    expect(labelT(2000, false, true, 160)).toBeCloseTo(0.92, 9);
+    expect(labelT(200, true, false, 160)).toBe(0.5);
+  });
+  it('never overlap: the first kept, a clash dropped, off screen dropped', () => {
+    const keep = declutter(
+      [
+        { x: 100, y: 100, w: 60, h: 20 },
+        { x: 120, y: 105, w: 60, h: 20 }, // overlaps the first
+        { x: 100, y: 130, w: 60, h: 20 }, // clear below it
+        { x: 500, y: 100, w: 60, h: 20 }, // off a 400-wide screen
+      ],
+      400,
+      300,
+    );
+    expect(keep).toEqual([0, null, 0, null]);
+  });
+  it('a label with somewhere else to go goes there', () => {
+    const keep = declutter(
+      [
+        { x: 100, y: 100, w: 60, h: 20 },
+        { x: 110, y: 100, w: 60, h: 20, alts: [-40, 40] },
+        { x: 105, y: 62, w: 60, h: 20, alts: [-60] }, // on the second; its only other place is off the top
+      ],
+      400,
+      300,
+    );
+    expect(keep).toEqual([0, -40, null]);
+  });
+  it('a node is not modelled; a unit, board or module is', () => {
+    expect(modelled(s.parts.find((p) => p.id === 'ground-point'))).toBe(false);
+    expect(modelled(s.parts.find((p) => p.id === 'pmu'))).toBe(true);
+    expect(modelled(undefined)).toBe(false);
   });
 });

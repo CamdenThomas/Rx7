@@ -79,8 +79,9 @@
     view?.setLabels(l);
   });
 
-  export function fit() {
-    view?.fit();
+  /** Frame the view again; `all` takes in every far end of the harness too. */
+  export function fit(all = false) {
+    view?.fit(all);
   }
 </script>
 
@@ -168,5 +169,34 @@
   .canvas :global(.d3-dot.approx) {
     background: transparent;
     border: 2px dashed var(--ember);
+  }
+  /* a far end (a node): smaller, sky, and a tap target larger than it looks */
+  .canvas :global(.d3-nodedot) {
+    pointer-events: auto;
+    width: 7px;
+    height: 7px;
+    padding: 0;
+    border: 10px solid transparent;
+    box-sizing: content-box;
+    background: var(--sky) content-box;
+    box-shadow: none;
+    cursor: pointer;
+  }
+  .canvas :global(.d3-node) {
+    color: var(--sky);
+    font-weight: 560;
+  }
+  /* names and the isolated links' labels above the dots (CSS2DRenderer sets z-index inline) */
+  .canvas :global(.d3-part),
+  .canvas :global(.d3-link) {
+    z-index: 2000000 !important;
+  }
+  .canvas :global(.d3-part) {
+    padding: 3px 8px;
+    border-radius: var(--r-1);
+    background: color-mix(in oklab, var(--ink) 78%, transparent);
+    font-family: var(--font);
+    font-size: 12.5px;
+    color: var(--foam);
   }
 </style>
