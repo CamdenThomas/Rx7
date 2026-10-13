@@ -43,3 +43,16 @@ Readings taken (CLAUDE.md §3): ""how much can you find about the car body"" is 
 How it is built: the model's own scripts under 02-PROJECTS/05-cad/model (A04's tool chain: FreeCAD headless, one script per assembly, parts by their 00-CAR id, mates from model_mates, STEP and glb out), the car's scene under the app's public design folder keyed 00-CAR, the same contract as electrical's with kind body for the unibody's parts, system and zone on every part, and the mate carried so the viewer can take it apart. The found shell models live on the Fedora PC's model library (D-477; the Mac holds 45 MB of it, the body folder not among them): B03 is his copy, and until it lands the unibody comes from the factory figures and the blueprints, re-fetched where they are free. Nothing in it is a measurement (R11).
 
 In the data: A04 and A05 READY (D-516, D-517 closed their blocks); B01's note names the unibody as the first pass's core; B03 (his: copy the body models from the Fedora PC); 02-APP MG1 starts beside C01 on a stub. Block 05.03 stays open."
+D-525,,"Parts are measured by hand as they come off the car; no scanner, no purchase",2026-10-13,standing,,,05.03,,"**The car's parts are measured by hand, as each comes off during the strip and the builds: calipers, a tape, and photos against a ruler. Nothing is bought; a 3D scanner and photo-to-3D software are not part of the method.**
+
+Block 05.03 asked: ""How do you want to capture the shapes and sizes of the car's parts so the model is true: by hand as parts come off, with a 3D scanner, or with phone photos?""
+
+His answer (desktop, 2026-10-13), the option in full:
+""(a) By hand: calipers, a tape and photos against a ruler, as each part comes off during the strip and the builds. Nothing to buy. True to about a millimetre on simple parts, weak on curved ones (body panels, the dash, trim). The most of your time.""
+
+He typed no words with the letter. The recommendation was (a) with (c) for the curved parts; he picked (a) alone, so (c) is not ruled in. Photo-to-3D stays open as a later, small addition if a curved part cannot be got by hand.
+
+Consequences in the data:
+- B02 (his measuring row) is gated on this block and A05, both now met: it is READY for the plan playbook to split into one row per system from the A05 parts plan.
+- Every size not measured stays `confirm` until it is (R11); nothing is bought, so no sourcing row.
+- B01 is unaffected: it goes ahead from factory figures and found models."

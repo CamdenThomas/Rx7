@@ -6,3 +6,4 @@ L-0004,2026-10-13,answers,D-516 D-517 D-518 B03,"His words on the body applied: 
 L-0005,2026-10-13,clean,D-518 A05,A05 done: 835 planned model_parts rows in build order with what each needs; order and needs columns declared
 L-0006,2026-10-13,clean,D-518 B03,"The Fedora PC's model library merged into 01-REFERENCE/model/library on the Mac (2796 files, 22 identical duplicates dropped, none differing); only the bought SA model is still Fedora-only - B03 narrowed to it"
 L-0007,2026-10-13,clean,D-518 A04 B01 C01,"A04 and C01 done, B01's unibody core built: 46 panel solids and 18 hard points in the car's scene; model_parts widened with part and side so a pair is two solids; 50 solids, 213 dims, 48 mates loaded; PT976 added to 00-CAR"
+L-0008,2026-10-13,apply,D-525,Block 05.03 answered (a): parts measured by hand; B02 ready
