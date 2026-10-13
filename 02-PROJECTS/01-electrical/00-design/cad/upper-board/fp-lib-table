@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "dcu-carrier")(type "KiCad")(uri "${KIPRJMOD}/../dcu-carrier/dcu-carrier.pretty")(options "")(descr "The carrier's footprints - this board uses its DT13-12PA, the part DP-DCU-B is (D-480); the rest are KiCad's own libraries"))
+)

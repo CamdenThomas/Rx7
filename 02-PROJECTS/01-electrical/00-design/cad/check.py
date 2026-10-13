@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""check.py - the three KiCad sheets against the record and the datasheets (work row Y3).
+"""check.py - the four KiCad sheets against the record and the datasheets (work row Y3).
 
 Reads (never writes) the record's tables - these are the facts it holds the drawings to:
   ../../data/icu_channels.csv   id, kind, at_the_drop, teensy_pin  (the ICU carrier, J5)
   ../../data/dcu_channels.csv   the same for the DCU carrier (J10, expander U12)
-  ../../data/panel_ribbon.csv   pin, signal, panel_side             (DCU J4 and the panel's J1)
-  ../../data/cavities.csv       housing, cav, state                 (which board-edge pins must be wired)
+  ../../data/panel_ribbon.csv   pin, signal, panel_side             (DCU J4, the panel's J1, the upper board's J8)
+  ../../data/cavities.csv       housing, cav, state, src_note       (which board-edge pins must be wired, and where to)
 and this folder's pin_tables.csv (part, package, pin, name, source_url), the vendor pin tables
 of every IC whose symbol was drawn as a functional block.
 
@@ -26,13 +26,16 @@ s-expression itself (no packages beyond the standard library, Python 3.9) and ch
   * the two rules CONVENTIONS.md §5 asks for: the two 12 V inputs share no part (and on the
     DCU no part but the INA180 touches both GND and PGND), and every BAT54S has A on GND and
     K on +3V3;
-  * each functional-block symbol's pin number -> name against pin_tables.csv.
+  * each functional-block symbol's pin number -> name against pin_tables.csv;
+  * on the upper connector board (Y15, no processor), DP-DCU-D and DP-DCU-E cavity by cavity: wired
+    or a plug as `state` says, no two cavities joined, and on the header `src_note` names - the
+    carrier header's lead (J6-J8, J5, J3) pin for pin, or the panel_ribbon line, named as that line.
 
 Exit codes: 0 everything matches; 1 any mismatch (each printed as
 `board:ref:pin expected X got Y`); 3 kicad-cli missing or a file unreadable. Notes (things
 worth a look that are not contradictions) print with a `note` prefix and never fail.
 
-    python3 check.py [-v] [--board icu|dcu|panel] [--netlists DIR]
+    python3 check.py [-v] [--board icu|dcu|panel|upper] [--netlists DIR]
 
 `--netlists DIR` reads DIR/<board>.net instead of exporting (kicad-cli still runs one sheet
 at a time otherwise). The expected net names below are the sheets' own vocabulary; the
@@ -148,6 +151,12 @@ BOARDS = {
                 drops={"DP-DCU": "J1", "DP-DCU-B": "J9", "DP-DCU-C": "J2"}, rails=("+12V_LOGIC", "+12V_CMF"),
                 grounds=("GND", "PGND"), ground_bridge=("U4",)),
     "panel": dict(sch="panel/panel.kicad_sch", ribbon="J1", matrix=True),
+    # The climate unit's upper connector board (Y15, D-480, D-492): no processor, so each housing
+    # is held against its cavities' src_note - the carrier header a lead goes to (carrier ref ->
+    # this board's header for it), or the panel_ribbon line a conductor is, carried pin for pin.
+    "upper": dict(sch="upper-board/upper-board.kicad_sch",
+                  relay={"DP-DCU-D": ("J1", {"J6": "J3", "J7": "J4", "J8": "J5", "J5": "J6", "J3": "J7"}),
+                         "DP-DCU-E": ("J2", "J8")}),
 }
 
 # Symbol pin names and datasheet pin names that mean the same pin.
@@ -646,6 +655,85 @@ def check_ribbon(rep, nl, cfg, ribbon):
             rep.bad(hdr, num, "no conductor (panel_ribbon has no pin %s)" % num, bare(nl.net(hdr, num)))
 
 
+_CARRIER_PIN = re.compile(r"\bJ(\d+)(?:\s*-\s*J(\d+))?\s+pin\s+(\d+)")
+_RIBBON_LINE = re.compile(r"\bpanel_ribbon\s+(\d+)")
+
+
+def check_relay(rep, nl, cfg, cavities, ribbon):
+    """A board with no processor (the upper connector board): every cavity of each housing on its
+    receptacle pin - wired when the record has it LIVE or CAPPED, bare when a PLUG - on a net of
+    its own (no two cavities joined, so a return never shares another's conductor), and reaching
+    what its src_note names: 'the carrier's J6 pin 1' / 'J6-J8 pin 2' on this board's header for
+    that carrier header, pin for pin; 'panel_ribbon 3' on the straight-through header's same pin,
+    the net named as panel_ribbon names the line."""
+    signal = {r["pin"]: r["signal"] for r in ribbon}
+    for housing, (conn, far) in cfg["relay"].items():
+        rows = sorted((c for c in cavities if c["housing"] == housing), key=lambda c: int(c["cav"]))
+        if conn not in nl.pins:
+            rep.bad(conn, "-", "connector %s for %s" % (conn, housing), "no such part on the sheet")
+            continue
+        if not rows:
+            rep.bad(conn, "-", "cavity rows for %s in the record" % housing, "none")
+            continue
+        owner = {}
+        carried = set()
+        for c in rows:
+            cav, state = c["cav"], c["state"]
+            pin = "%s(%s %s)" % (cav, housing, cav)
+            net = nl.net(conn, cav)
+            if state == "PLUG":
+                if net is None:
+                    rep.ok("%s %s unconnected, a plug" % (conn, pin))
+                else:
+                    rep.bad(conn, pin, "unconnected (the cavity is a sealing plug)", bare(net))
+                continue
+            if net is None:
+                rep.bad(conn, pin, "wired (the cavity is %s)" % state, "unconnected")
+                continue
+            if net in owner:
+                rep.bad(conn, pin, "a net of its own", "%s, joined to cavity %s" % (bare(net), owner[net]))
+            owner[net] = cav
+            carried.add(net)
+            note = c.get("src_note", "")
+            if isinstance(far, dict):
+                hits = []
+                for a, b, p in _CARRIER_PIN.findall(note):
+                    for n in range(int(a), int(b or a) + 1):
+                        hits.append(("J%d" % n, p))
+                if not hits:
+                    rep.bad(conn, pin, "a carrier header pin in src_note", repr(note))
+                for carrier_ref, p in hits:
+                    hdr = far.get(carrier_ref)
+                    if hdr is None:
+                        rep.bad(conn, pin, "a header on this board for the carrier's %s" % carrier_ref, "none in check.py")
+                    elif nl.net(hdr, p) != net:
+                        rep.bad(hdr, p, "%s (%s %s, to the carrier's %s pin %s)" % (bare(net), housing, cav, carrier_ref, p),
+                                bare(nl.net(hdr, p) or "") or "unconnected")
+                    else:
+                        rep.ok("%s %s = %s -> %s.%s (the carrier's %s pin %s)" % (conn, pin, bare(net), hdr, p, carrier_ref, p))
+            else:
+                lines = _RIBBON_LINE.findall(note)
+                if len(lines) != 1 or lines[0] not in signal:
+                    rep.bad(conn, pin, "one panel_ribbon line in src_note", repr(note))
+                    continue
+                want = signal[lines[0]]
+                if bare(net) != want:
+                    rep.bad(conn, pin, "%s (panel_ribbon %s)" % (want, lines[0]), bare(net))
+                elif nl.net(far, cav) != net:
+                    rep.bad(far, cav, "%s, straight through from %s %s" % (want, conn, cav),
+                            bare(nl.net(far, cav) or "") or "unconnected")
+                else:
+                    rep.ok("%s %s = %s (panel_ribbon %s) -> %s.%s" % (conn, pin, want, lines[0], far, cav))
+        for num in nl.pins[conn]:
+            if num not in {c["cav"] for c in rows} and nl.net(conn, num) is not None:
+                rep.bad(conn, num, "no cavity row %s %s in the record" % (housing, num), bare(nl.net(conn, num)))
+        for hdr in (far.values() if isinstance(far, dict) else [far]):
+            for num in nl.pins.get(hdr, {}):
+                n = nl.net(hdr, num)
+                if n is not None and n not in carried:
+                    rep.bad(hdr, num, "a net one of %s's cavities carries" % housing, bare(n))
+
+
 def parts_on(nl, net, pfx=None):
     return [(ref, num, name) for ref, num, name in nl.nets.get(net, []) if pfx is None or prefix(ref) == pfx]
 
@@ -908,6 +996,8 @@ def main(argv=None):
                 check_ribbon(rep, nl, cfg, ribbon)
             if cfg.get("matrix"):
                 check_panel(rep, nl, cfg, ribbon)
+            if cfg.get("relay"):
+                check_relay(rep, nl, cfg, cavities, ribbon)
             check_conventions(rep, nl, cfg)
             check_pin_tables(rep, nl, tables)
             n = len(rep.mismatches)

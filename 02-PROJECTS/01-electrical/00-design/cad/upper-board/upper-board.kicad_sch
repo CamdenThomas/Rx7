@@ -1,0 +1,773 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "87089939-4f5a-5039-9555-39ad69102755")
+	(paper "A3")
+	(title_block
+		(title "Upper connector board - P195 (Y15)")
+		(date "2026-10-12")
+		(rev "0.01")
+		(company "RX-7 FB electrical build")
+		(comment 1 "From the record: cavities DP-DCU-D and DP-DCU-E, panel_ribbon. The row is right.")
+		(comment 2 "D-480 the upper row, D-492 the left plate (Y15). No active parts.")
+		(comment 3 "R11: nothing here is measured. ERC-clean is not the same as correct.")
+		(comment 4 "The returns of DP-DCU-D stay apart here and join on the carrier.")
+	)
+	(lib_symbols
+		(symbol "upper-board:Conn_01x02"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no) (in_bom yes) (on_board yes)
+			(property "Reference" "J" (at 0 6.35 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "Conn_01x02" (at 0 -3.81 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "Description" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(symbol "Conn_01x02_0_1"
+				(rectangle (start -5.08 5.08) (end 5.08 -2.54) (stroke (width 0.254) (type default)) (fill (type background)))
+			)
+			(symbol "Conn_01x02_1_1"
+				(pin passive line (at -7.62 2.54 0) (length 2.54) (name "Pin_1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -7.62 0.0 0) (length 2.54) (name "Pin_2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			)
+		)
+		(symbol "upper-board:Conn_01x03"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no) (in_bom yes) (on_board yes)
+			(property "Reference" "J" (at 0 6.35 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "Conn_01x03" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "Description" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(symbol "Conn_01x03_0_1"
+				(rectangle (start -5.08 5.08) (end 5.08 -5.08) (stroke (width 0.254) (type default)) (fill (type background)))
+			)
+			(symbol "Conn_01x03_1_1"
+				(pin passive line (at -7.62 2.54 0) (length 2.54) (name "Pin_1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -7.62 0.0 0) (length 2.54) (name "Pin_2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -7.62 -2.54 0) (length 2.54) (name "Pin_3" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+			)
+		)
+		(symbol "upper-board:Conn_01x12"
+			(pin_names (offset 1.016))
+			(exclude_from_sim no) (in_bom yes) (on_board yes)
+			(property "Reference" "J" (at 0 19.05 0) (effects (font (size 1.27 1.27))))
+			(property "Value" "Conn_01x12" (at 0 -16.51 0) (effects (font (size 1.27 1.27))))
+			(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(property "Description" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+			(symbol "Conn_01x12_0_1"
+				(rectangle (start -5.08 17.78) (end 5.08 -15.24) (stroke (width 0.254) (type default)) (fill (type background)))
+			)
+			(symbol "Conn_01x12_1_1"
+				(pin passive line (at -7.62 15.24 0) (length 2.54) (name "Pin_1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -7.62 12.7 0) (length 2.54) (name "Pin_2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -7.62 10.16 0) (length 2.54) (name "Pin_3" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -7.62 7.62 0) (length 2.54) (name "Pin_4" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -7.62 5.08 0) (length 2.54) (name "Pin_5" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -7.62 2.54 0) (length 2.54) (name "Pin_6" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -7.62 0.0 0) (length 2.54) (name "Pin_7" (effects (font (size 1.27 1.27)))) (number "7" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -7.62 -2.54 0) (length 2.54) (name "Pin_8" (effects (font (size 1.27 1.27)))) (number "8" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -7.62 -5.08 0) (length 2.54) (name "Pin_9" (effects (font (size 1.27 1.27)))) (number "9" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -7.62 -7.62 0) (length 2.54) (name "Pin_10" (effects (font (size 1.27 1.27)))) (number "10" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -7.62 -10.16 0) (length 2.54) (name "Pin_11" (effects (font (size 1.27 1.27)))) (number "11" (effects (font (size 1.27 1.27)))))
+				(pin passive line (at -7.62 -12.7 0) (length 2.54) (name "Pin_12" (effects (font (size 1.27 1.27)))) (number "12" (effects (font (size 1.27 1.27)))))
+			)
+		)
+		(symbol "upper-board:Conn_02x06_Odd_Even"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 1.27 7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_02x06_Odd_Even"
+				(at 1.27 -10.16 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Generic connector, double row, 02x06, odd/even pin numbering scheme (row 1 odd numbers, row 2 even numbers), script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_2x??_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Conn_02x06_Odd_Even_1_1"
+				(rectangle
+					(start -1.27 6.35)
+					(end 3.81 -8.89)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -1.27 5.207)
+					(end 0 4.953)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 2.667)
+					(end 0 2.413)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -2.413)
+					(end 0 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -4.953)
+					(end 0 -5.207)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -1.27 -7.493)
+					(end 0 -7.747)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 3.81 5.207)
+					(end 2.54 4.953)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 3.81 2.667)
+					(end 2.54 2.413)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 3.81 0.127)
+					(end 2.54 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 3.81 -2.413)
+					(end 2.54 -2.667)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 3.81 -4.953)
+					(end 2.54 -5.207)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 3.81 -7.493)
+					(end 2.54 -7.747)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 5.08 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 5.08 180)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 2.54 180)
+					(length 3.81)
+					(name "Pin_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 0 180)
+					(length 3.81)
+					(name "Pin_6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 -2.54 180)
+					(length 3.81)
+					(name "Pin_8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -5.08 0)
+					(length 3.81)
+					(name "Pin_9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 -5.08 180)
+					(length 3.81)
+					(name "Pin_10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -7.62 0)
+					(length 3.81)
+					(name "Pin_11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 -7.62 180)
+					(length 3.81)
+					(name "Pin_12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(rectangle (start 16 16) (end 270 118) (stroke (width 0.2032) (type dash)) (fill (type none)) (uuid "bffd3b97-0f57-504d-b57a-c82d9988b37e"))
+	(text "DP-DCU-D  -  the climate unit's local leads, upper row above DP-DCU-B (D-480, P194)" (exclude_from_sim no) (at 20 19 0) (effects (font (size 2.2 2.2) (bold yes)) (justify left top)) (uuid "97645164-d197-5c26-b419-ed9373e88666"))
+	(text "SN15 servos mode / blend / recirculate (cavities 1-5)  -  SN14 blower duty (6-7)  -  SN11 cabin sensor (8-9)" (exclude_from_sim no) (at 20 24 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "7e47e376-3921-552d-95ac-c7a1c18557d9"))
+	(symbol (lib_id "upper-board:Conn_01x12") (at 60.96 68.58 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "05ec39cf-fcf1-5368-9fa5-2d3021e70001")
+		(property "Reference" "J1" (at 60.96 49.53 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "DP-DCU-D  DT13-12PA" (at 60.96 85.09 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "dcu-carrier:DT13-12PA" (at 60.96 68.58 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 60.96 68.58 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Confirm" "pin numbering and the board edge 4 mm behind the flange are the carrier footprint's, confirm against the part (R11); X position from the climate-unit mock-up (Y14)" (at 60.96 68.58 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Note" "10-12 sealing plugs (cavities PLUG): spares the radar alert J12 takes if it is ever fitted (luxury 03.12)" (at 60.96 68.58 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "7029baba-52a1-5fd9-8fb7-5022e22c15ba"))
+		(pin "2" (uuid "445d54de-0bf7-5d28-bd13-2e0e114a357e"))
+		(pin "3" (uuid "355792a9-9977-5b70-bbc3-30e98949e851"))
+		(pin "4" (uuid "d5a26748-6639-5654-a87c-014d742db78a"))
+		(pin "5" (uuid "cc6ba575-1ff5-5618-8b4d-3b07ee18147c"))
+		(pin "6" (uuid "9b9b4dae-7423-5346-a2d2-10170e0b4d1d"))
+		(pin "7" (uuid "41e2c4d5-9140-5c44-a59e-2f62726823e2"))
+		(pin "8" (uuid "e2723757-8e04-59a1-942b-ca525984beb7"))
+		(pin "9" (uuid "43529e2c-2267-56f0-89b6-29b45eeab66d"))
+		(pin "10" (uuid "93eacd5d-acc1-507a-81fb-b66c436003f9"))
+		(pin "11" (uuid "357ffe90-ce7f-556b-a02b-e1b4994069d9"))
+		(pin "12" (uuid "250c4f45-cadd-5935-88e5-3d85116ea233"))
+		(instances (project "upper-board" (path "/87089939-4f5a-5039-9555-39ad69102755" (reference "J1") (unit 1))))
+	)
+	(wire (pts (xy 53.34 53.34) (xy 50.8 53.34)) (stroke (width 0) (type default)) (uuid "c8966a4d-bc27-5464-bc0b-a60a71ad997d"))
+	(label "SRV_MODE" (at 50.8 53.34 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "1567292e-507b-5557-a6aa-cffc9f043422"))
+	(wire (pts (xy 53.34 55.88) (xy 50.8 55.88)) (stroke (width 0) (type default)) (uuid "ab16bb21-c974-587c-85f4-089bfac5dd9a"))
+	(label "SRV_BLEND" (at 50.8 55.88 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "ad0bdc8d-11d9-5a6e-ad1e-8ddc848fe6ff"))
+	(wire (pts (xy 53.34 58.42) (xy 50.8 58.42)) (stroke (width 0) (type default)) (uuid "7fdbc78f-73c7-5eab-9158-801c95c33f09"))
+	(label "SRV_RECIRC" (at 50.8 58.42 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "f3a2edf0-5dcb-56c6-aa09-0a453c29b651"))
+	(wire (pts (xy 53.34 60.96) (xy 50.8 60.96)) (stroke (width 0) (type default)) (uuid "36d7e78e-00a9-50ea-bfec-f2146c2c4f40"))
+	(label "+5V_SERVO" (at 50.8 60.96 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "74c1e535-f9cc-5140-9c17-c59ecb3d1e76"))
+	(wire (pts (xy 53.34 63.5) (xy 50.8 63.5)) (stroke (width 0) (type default)) (uuid "ee2d92dd-f242-5a7b-bf7a-c7ba9c9369f3"))
+	(label "SERVO_GND" (at 50.8 63.5 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "040249f4-e9aa-59e3-9a0f-54cf1c1d44f0"))
+	(wire (pts (xy 53.34 66.04) (xy 50.8 66.04)) (stroke (width 0) (type default)) (uuid "ab46ebcf-c7cf-5130-aa93-562be61871e3"))
+	(label "BLOWER_PWM" (at 50.8 66.04 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "6f889f79-9061-5145-b5c3-f0fe99e37fa9"))
+	(wire (pts (xy 53.34 68.58) (xy 50.8 68.58)) (stroke (width 0) (type default)) (uuid "06b29ac0-a47c-55df-8626-e8c6c471640c"))
+	(label "BLOWER_GND" (at 50.8 68.58 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "bae45a9d-1698-59af-8b1f-bad74d0a806d"))
+	(wire (pts (xy 53.34 71.12) (xy 50.8 71.12)) (stroke (width 0) (type default)) (uuid "48aff0c6-524c-5d77-8cc3-dd10d5dcfd60"))
+	(label "NTC_CABIN" (at 50.8 71.12 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "0e43f138-e57a-58aa-89df-db8615492846"))
+	(wire (pts (xy 53.34 73.66) (xy 50.8 73.66)) (stroke (width 0) (type default)) (uuid "2c24fb82-fac9-57fc-b60c-f71f65ca8196"))
+	(label "NTC_RET" (at 50.8 73.66 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "386a4d6d-70e2-501f-9b14-84d3d23007de"))
+	(no_connect (at 53.34 76.2) (uuid "d1ef98fb-3c71-5fae-a91d-9e7a876520ec"))
+	(no_connect (at 53.34 78.74) (uuid "efd25e99-c49b-5821-b3f8-73bb29489fa0"))
+	(no_connect (at 53.34 81.28) (uuid "464e65c8-1754-5ec1-b4ea-703f085fa43a"))
+	(text "10-12: sealing plugs in the record (PLUG) - no copper.\nThe radar alert (J12, luxury 03.12) takes them if fitted." (exclude_from_sim no) (at 30 100 0) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "49c79e4e-7a62-5283-a625-0a1c6ea9d8fa"))
+	(text "SN15  servo leads to the carrier's J6 / J7 / J8 (pin 1 signal, 2 +5 V, 3 GND - the carrier's order)" (exclude_from_sim no) (at 120 30 0) (effects (font (size 1.5 1.5) (bold yes)) (justify left top)) (uuid "c479e63a-e28c-522c-9296-0b916d4062af"))
+	(symbol (lib_id "upper-board:Conn_01x03") (at 144.78 48.26 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "b22968b0-3405-5bf8-a532-ba9536b6f27f")
+		(property "Reference" "J3" (at 144.78 41.91 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "to carrier J6 (mode servo)" (at 144.78 54.61 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" (at 144.78 48.26 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 144.78 48.26 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Confirm" "lead P196, length from the mock-up - confirm" (at 144.78 48.26 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "a3e70aa7-466f-550d-afa0-45163936c2fa"))
+		(pin "2" (uuid "13d89c22-b0ad-593c-b2c6-441ed0f06c92"))
+		(pin "3" (uuid "716b42a7-8f41-5bc4-8844-392c95f001fa"))
+		(instances (project "upper-board" (path "/87089939-4f5a-5039-9555-39ad69102755" (reference "J3") (unit 1))))
+	)
+	(wire (pts (xy 137.16 45.72) (xy 134.62 45.72)) (stroke (width 0) (type default)) (uuid "49fc068f-0522-52ad-8967-d6a1107ebd8b"))
+	(label "SRV_MODE" (at 134.62 45.72 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "60e137d1-46a2-57f4-9b09-5cc349192ef2"))
+	(wire (pts (xy 137.16 48.26) (xy 134.62 48.26)) (stroke (width 0) (type default)) (uuid "8a097501-39a7-5306-892d-c97af3a92c2b"))
+	(label "+5V_SERVO" (at 134.62 48.26 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "3cfeb70e-19b6-5910-9e7d-e2e4873871b6"))
+	(wire (pts (xy 137.16 50.8) (xy 134.62 50.8)) (stroke (width 0) (type default)) (uuid "8f1fece9-08d9-5077-a01f-4e3531838b0c"))
+	(label "SERVO_GND" (at 134.62 50.8 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "05d6b485-0e0a-5f78-9325-c549545b1cd2"))
+	(symbol (lib_id "upper-board:Conn_01x03") (at 190.5 48.26 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "e1c82e95-dd8b-56b2-8bc0-015a360e5cf9")
+		(property "Reference" "J4" (at 190.5 41.91 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "to carrier J7 (blend servo)" (at 190.5 54.61 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" (at 190.5 48.26 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 190.5 48.26 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Confirm" "lead P196, length from the mock-up - confirm" (at 190.5 48.26 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "5273fabe-e126-5668-b977-b8af01ae56d9"))
+		(pin "2" (uuid "4366ce05-1f97-58af-a9af-034e27fe6fec"))
+		(pin "3" (uuid "3a26b96d-26a4-5536-9656-d3a49a58fcbf"))
+		(instances (project "upper-board" (path "/87089939-4f5a-5039-9555-39ad69102755" (reference "J4") (unit 1))))
+	)
+	(wire (pts (xy 182.88 45.72) (xy 180.34 45.72)) (stroke (width 0) (type default)) (uuid "f46ac7fb-3023-53af-b360-4609d200bc11"))
+	(label "SRV_BLEND" (at 180.34 45.72 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "bdb7aaeb-870c-5676-88c3-06589b500413"))
+	(wire (pts (xy 182.88 48.26) (xy 180.34 48.26)) (stroke (width 0) (type default)) (uuid "98eca598-4e90-5940-940b-5f6b757d700c"))
+	(label "+5V_SERVO" (at 180.34 48.26 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "9fefaf4a-e7e9-5a2e-b151-a68427688b4e"))
+	(wire (pts (xy 182.88 50.8) (xy 180.34 50.8)) (stroke (width 0) (type default)) (uuid "d6003618-152d-52c5-b7a0-daa104a302d1"))
+	(label "SERVO_GND" (at 180.34 50.8 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "212e4400-74f7-599a-a677-f0c57f5dfd7a"))
+	(symbol (lib_id "upper-board:Conn_01x03") (at 236.22 48.26 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "e943af7f-bf54-5c2e-832b-a2c999d70250")
+		(property "Reference" "J5" (at 236.22 41.91 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "to carrier J8 (recirculate servo)" (at 236.22 54.61 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" (at 236.22 48.26 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 236.22 48.26 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Confirm" "lead P196, length from the mock-up - confirm" (at 236.22 48.26 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "f5c1ea14-2451-52df-9052-6871db6ee972"))
+		(pin "2" (uuid "cd24335c-e39f-5c29-8e37-bad2b37d67f7"))
+		(pin "3" (uuid "7fd50972-e0f8-5d57-9243-aeee7f8ebf90"))
+		(instances (project "upper-board" (path "/87089939-4f5a-5039-9555-39ad69102755" (reference "J5") (unit 1))))
+	)
+	(wire (pts (xy 228.6 45.72) (xy 226.06 45.72)) (stroke (width 0) (type default)) (uuid "f9d4e0ad-fa33-5534-bd4c-694bcf0da396"))
+	(label "SRV_RECIRC" (at 226.06 45.72 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "07924149-74df-5bbd-ad39-94eb3a2fecc2"))
+	(wire (pts (xy 228.6 48.26) (xy 226.06 48.26)) (stroke (width 0) (type default)) (uuid "e1832e36-1f06-5fe4-a7c8-0e10f516d1e3"))
+	(label "+5V_SERVO" (at 226.06 48.26 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "2b654d5e-ff38-516c-8477-6082c489950f"))
+	(wire (pts (xy 228.6 50.8) (xy 226.06 50.8)) (stroke (width 0) (type default)) (uuid "f84fd478-a5b2-5301-acea-97ae90cf1117"))
+	(label "SERVO_GND" (at 226.06 50.8 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "d57d595c-31f8-5711-a2d2-267f78cda56a"))
+	(text "+5V_SERVO and SERVO_GND join the three headers here and leave on DP-DCU-D 4 and 5,\nsplit again at the HVAC case (D-480). One servo moves at a time (F-017): 1-2.5 A." (exclude_from_sim no) (at 120 60 0) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "1714a6d6-42c4-5fa1-b062-9be061cc0a9a"))
+	(text "SN14  blower duty to the carrier's J5" (exclude_from_sim no) (at 120 76 0) (effects (font (size 1.5 1.5) (bold yes)) (justify left top)) (uuid "6f39330f-9afe-57a1-9dbf-9845faff44dd"))
+	(symbol (lib_id "upper-board:Conn_01x02") (at 144.78 91.44 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "67eab49f-de9a-5bf0-993e-baef7cfe4cea")
+		(property "Reference" "J6" (at 144.78 85.09 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "to carrier J5 (blower duty)" (at 144.78 95.25 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" (at 144.78 91.44 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 144.78 91.44 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Confirm" "lead P196, length from the mock-up - confirm" (at 144.78 91.44 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "c6881c4d-d4f0-54db-91eb-e2e35c3909a1"))
+		(pin "2" (uuid "afb6dd61-221d-58cd-891c-8127bdf46c85"))
+		(instances (project "upper-board" (path "/87089939-4f5a-5039-9555-39ad69102755" (reference "J6") (unit 1))))
+	)
+	(wire (pts (xy 137.16 88.9) (xy 134.62 88.9)) (stroke (width 0) (type default)) (uuid "065fb573-f100-568b-82d4-68e9d2414135"))
+	(label "BLOWER_PWM" (at 134.62 88.9 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "3fe541e7-4050-5ddc-a770-02ea8a2f0e4c"))
+	(wire (pts (xy 137.16 91.44) (xy 134.62 91.44)) (stroke (width 0) (type default)) (uuid "fed1c85c-0fd6-5609-b6cb-2d4af224f848"))
+	(label "BLOWER_GND" (at 134.62 91.44 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "d5e7cbb3-9b0a-5a75-84c4-d0c562d946cc"))
+	(text "SN11  cabin sensor to the carrier's J3" (exclude_from_sim no) (at 190 76 0) (effects (font (size 1.5 1.5) (bold yes)) (justify left top)) (uuid "1bf0fd90-e8a6-5317-ba37-d624d8b8dea7"))
+	(symbol (lib_id "upper-board:Conn_01x02") (at 218.44 91.44 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "9781d0ef-ef31-5899-93bd-cfdc99a4299c")
+		(property "Reference" "J7" (at 218.44 85.09 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "to carrier J3 (cabin NTC)" (at 218.44 95.25 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" (at 218.44 91.44 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 218.44 91.44 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Confirm" "lead P196, length from the mock-up - confirm" (at 218.44 91.44 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "77c18fa4-b22b-50e7-aaae-10abd4d576cc"))
+		(pin "2" (uuid "6e5b2578-ad1a-5b6a-9a25-c8ace0a31da6"))
+		(instances (project "upper-board" (path "/87089939-4f5a-5039-9555-39ad69102755" (reference "J7") (unit 1))))
+	)
+	(wire (pts (xy 210.82 88.9) (xy 208.28 88.9)) (stroke (width 0) (type default)) (uuid "13098165-c01c-51ba-b958-f85af22777b5"))
+	(label "NTC_CABIN" (at 208.28 88.9 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "63101b31-4847-5e69-b67c-84490761e566"))
+	(wire (pts (xy 210.82 91.44) (xy 208.28 91.44)) (stroke (width 0) (type default)) (uuid "89d206ed-4fe0-53b2-bbab-4c176b067a4f"))
+	(label "NTC_RET" (at 208.28 91.44 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "91d7c896-e704-5f07-a26f-8569e3c0727d"))
+	(text "Each return has its own conductor to the carrier, where all are GND:\nthe servo current never shares the sensor's return (cavity 9)." (exclude_from_sim no) (at 120 104 0) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "113d4af8-7452-5c77-afba-38c450a83977"))
+	(rectangle (start 16 126) (end 270 230) (stroke (width 0.2032) (type dash)) (fill (type none)) (uuid "e3c7abd1-8f5f-58e9-b27e-b23a55874e3f"))
+	(text "DP-DCU-E  -  the left plate's link, beside DP-DCU-D (D-492)" (exclude_from_sim no) (at 20 129 0) (effects (font (size 2.2 2.2) (bold yes)) (justify left top)) (uuid "679aaead-6b5a-5142-9ded-e1b5c10ffbd8"))
+	(text "SN19 matrix ROW1 / COL2 / COL3 (1-3)  -  SN18 mirror stick (4-8)  -  SN17 the panel I2C bus, its ground and +5V_PNL (9-12)" (exclude_from_sim no) (at 20 134 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "901a5a2e-feb2-58be-b85a-c0c433aba156"))
+	(symbol (lib_id "upper-board:Conn_01x12") (at 60.96 175.26 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "bdc6011d-51a2-51f7-8364-99e37cf9b0e6")
+		(property "Reference" "J2" (at 60.96 156.21 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "DP-DCU-E  DT13-12PA" (at 60.96 191.77 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "dcu-carrier:DT13-12PA" (at 60.96 175.26 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 60.96 175.26 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Confirm" "pin numbering and the board edge 4 mm behind the flange are the carrier footprint's, confirm against the part (R11); X position from the climate-unit mock-up (Y14)" (at 60.96 175.26 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "d5df8630-1f12-5d07-aebb-fc37c68afcc2"))
+		(pin "2" (uuid "c61adcd8-0525-5d5a-8943-9a18ca8424df"))
+		(pin "3" (uuid "60cfdc33-aa1f-5bbc-84e1-ea9837f6bda5"))
+		(pin "4" (uuid "1e2e024c-c997-5d3a-85c7-4bc2189c7ad0"))
+		(pin "5" (uuid "cc2f35f9-d255-5021-821a-0a17395c3971"))
+		(pin "6" (uuid "4e33165d-34d3-5b61-aeba-e0bcce5c8873"))
+		(pin "7" (uuid "2fc27b9f-75f0-5031-82ec-1e64ac5b3dc6"))
+		(pin "8" (uuid "b0e05426-76e6-518c-923c-5f5ecd924a30"))
+		(pin "9" (uuid "4d26dbc5-fcbf-5584-8f9f-7f26e1c2bb0d"))
+		(pin "10" (uuid "1ecafb7d-a587-5bd6-bd84-87b80ffdbaa5"))
+		(pin "11" (uuid "82ffdd2e-e406-5850-8a51-80a6e955c068"))
+		(pin "12" (uuid "3223a8bc-e0d6-54de-952b-6474fa2285bd"))
+		(instances (project "upper-board" (path "/87089939-4f5a-5039-9555-39ad69102755" (reference "J2") (unit 1))))
+	)
+	(wire (pts (xy 53.34 160.02) (xy 50.8 160.02)) (stroke (width 0) (type default)) (uuid "7e493156-bf6a-5339-afa5-193de384ee3e"))
+	(label "ROW1" (at 50.8 160.02 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "e6bb153e-e573-50c9-858a-644c450ede10"))
+	(wire (pts (xy 53.34 162.56) (xy 50.8 162.56)) (stroke (width 0) (type default)) (uuid "cbf9892e-1540-5d33-87c0-cf0eaf67f98e"))
+	(label "COL2" (at 50.8 162.56 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "321a01eb-f718-59be-ade7-2b366e79d566"))
+	(wire (pts (xy 53.34 165.1) (xy 50.8 165.1)) (stroke (width 0) (type default)) (uuid "fe4bc311-95e6-5965-b9e3-acd78174d882"))
+	(label "COL3" (at 50.8 165.1 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "5bc7ac98-113f-5d9a-9320-a2564fe6ad97"))
+	(wire (pts (xy 53.34 167.64) (xy 50.8 167.64)) (stroke (width 0) (type default)) (uuid "dc1ba6b5-8173-560d-a043-6810f2b99375"))
+	(label "JOY_X" (at 50.8 167.64 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "7aa1f2ac-2ff7-5868-b4b4-a87fa211bb84"))
+	(wire (pts (xy 53.34 170.18) (xy 50.8 170.18)) (stroke (width 0) (type default)) (uuid "0fa659f2-4a60-532c-99c7-edab24b8ef8c"))
+	(label "JOY_Y" (at 50.8 170.18 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "25c76688-2cfb-5330-b15a-3e998c43623c"))
+	(wire (pts (xy 53.34 172.72) (xy 50.8 172.72)) (stroke (width 0) (type default)) (uuid "b44001dc-88d1-570a-a56e-1a5bbc09b9c6"))
+	(label "JOY_PRESS" (at 50.8 172.72 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "76ee4f82-0595-586e-9c67-19041327d40d"))
+	(wire (pts (xy 53.34 175.26) (xy 50.8 175.26)) (stroke (width 0) (type default)) (uuid "fd1ae6a3-c8ab-544b-882f-28198c7bdcb1"))
+	(label "+3V3" (at 50.8 175.26 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "df109350-0c73-5ab3-ab72-939764e65aad"))
+	(wire (pts (xy 53.34 177.8) (xy 50.8 177.8)) (stroke (width 0) (type default)) (uuid "cb2abaca-15fe-56c4-97c2-7ec08b652d87"))
+	(label "AGND" (at 50.8 177.8 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "0a0c4c5e-a9f2-57b0-b5ca-b6ebcb399100"))
+	(wire (pts (xy 53.34 180.34) (xy 50.8 180.34)) (stroke (width 0) (type default)) (uuid "a923ba64-041a-52c6-87e3-44f2b285dcf1"))
+	(label "PNL_SDA" (at 50.8 180.34 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "33402d3f-7e61-5407-8fac-c70833ffbb91"))
+	(wire (pts (xy 53.34 182.88) (xy 50.8 182.88)) (stroke (width 0) (type default)) (uuid "512e4611-dd8a-510f-99f6-024ecdc571c3"))
+	(label "PNL_SCL" (at 50.8 182.88 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "fff5f76c-915a-54e0-a8be-3918a435edbc"))
+	(wire (pts (xy 53.34 185.42) (xy 50.8 185.42)) (stroke (width 0) (type default)) (uuid "3febd859-a299-5a6e-bd68-97b1a61a823a"))
+	(label "GND" (at 50.8 185.42 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "a6997b1d-994c-5b3f-9b88-4ccfe66534aa"))
+	(wire (pts (xy 53.34 187.96) (xy 50.8 187.96)) (stroke (width 0) (type default)) (uuid "eba224b9-3b72-5285-a9fc-41501434de2d"))
+	(label "+5V_PNL" (at 50.8 187.96 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "ba6949cf-aa32-5732-a43d-bce268cba001"))
+	(text "Twelve conductors straight through, pin n to pin n.\nNet names are panel_ribbon's signals: GND and AGND stay apart here\n(the panel joins them as its own sheet says), nothing is powered." (exclude_from_sim no) (at 110 140 0) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "bbeaa6c4-d475-58ae-a3af-b6b4ae62571b"))
+	(symbol (lib_id "upper-board:Conn_02x06_Odd_Even") (at 182.88 182.88 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "ca535fab-b333-5b1e-8ee0-586c69f54b17")
+		(property "Reference" "J8" (at 182.88 173.99 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "to panel board plate header" (at 182.88 194.31 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "Connector_IDC:IDC-Header_2x06_P2.54mm_Vertical" (at 182.88 182.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 182.88 182.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Confirm" "the panel board's plate header and its lead are Y20's - pin n is DP-DCU-E n" (at 182.88 182.88 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(pin "1" (uuid "6e39c524-42a1-5b60-9901-94df944d9ce6"))
+		(pin "2" (uuid "ef23103a-64f9-5471-9801-7c22d97366af"))
+		(pin "3" (uuid "1fbb82b7-bec4-5dbf-8dde-4c3dc0739c13"))
+		(pin "4" (uuid "3ae20178-7ea9-5599-8b64-3874d3f5f64d"))
+		(pin "5" (uuid "6005ec5b-68c1-50dd-9e55-70438caf8ef6"))
+		(pin "6" (uuid "cb678504-e2a6-57b6-b354-947f4eac92fb"))
+		(pin "7" (uuid "03771a02-2d89-5712-86eb-cdf2879bd147"))
+		(pin "8" (uuid "ef060068-4bf9-51d3-b66c-5fe16875fc2f"))
+		(pin "9" (uuid "4a52abc7-2d8c-5414-abba-5a5f5eb6b8ca"))
+		(pin "10" (uuid "a9db58cf-0e36-57db-a8e8-661cf28c23ad"))
+		(pin "11" (uuid "ffb74b1a-81cb-5cff-8002-7ee8c997229a"))
+		(pin "12" (uuid "556efde1-bd87-5f5a-abf6-7001695ea085"))
+		(instances (project "upper-board" (path "/87089939-4f5a-5039-9555-39ad69102755" (reference "J8") (unit 1))))
+	)
+	(wire (pts (xy 177.8 177.8) (xy 175.26 177.8)) (stroke (width 0) (type default)) (uuid "0b8b95eb-0a4d-504a-9be1-20d4d79882ca"))
+	(label "ROW1" (at 175.26 177.8 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "bf6b2880-344f-5c12-9161-3e0e6291adfc"))
+	(wire (pts (xy 190.5 177.8) (xy 193.04 177.8)) (stroke (width 0) (type default)) (uuid "9bf0024a-c18b-54fb-ad5a-d6776f730fca"))
+	(label "COL2" (at 193.04 177.8 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "6ac3e9e4-cc34-5906-b356-0ef955c37ee3"))
+	(wire (pts (xy 177.8 180.34) (xy 175.26 180.34)) (stroke (width 0) (type default)) (uuid "8ed1cb87-4628-5f75-8254-0479cf39d18f"))
+	(label "COL3" (at 175.26 180.34 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "b5013d53-8d82-55cc-a8cb-801843b15881"))
+	(wire (pts (xy 190.5 180.34) (xy 193.04 180.34)) (stroke (width 0) (type default)) (uuid "dc04b1dd-80bc-5984-bbb7-7976959af1eb"))
+	(label "JOY_X" (at 193.04 180.34 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "985d6c97-cdc9-5121-89ad-ea85f7a7025e"))
+	(wire (pts (xy 177.8 182.88) (xy 175.26 182.88)) (stroke (width 0) (type default)) (uuid "abf6064e-12f2-557c-b26a-72eb3a99a3ef"))
+	(label "JOY_Y" (at 175.26 182.88 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "d3d32492-0bed-5790-8c80-0679f21709d0"))
+	(wire (pts (xy 190.5 182.88) (xy 193.04 182.88)) (stroke (width 0) (type default)) (uuid "80cdef8a-4db0-58b6-a0bd-4b9e2b20329f"))
+	(label "JOY_PRESS" (at 193.04 182.88 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "1bf35450-ff68-5918-9b7a-0ac7483b4329"))
+	(wire (pts (xy 177.8 185.42) (xy 175.26 185.42)) (stroke (width 0) (type default)) (uuid "125ea333-7c13-520e-91a4-7c2dfe62345e"))
+	(label "+3V3" (at 175.26 185.42 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "1eb03c6a-62e1-50c6-86a1-9e1ad16b4276"))
+	(wire (pts (xy 190.5 185.42) (xy 193.04 185.42)) (stroke (width 0) (type default)) (uuid "46a2fda3-96c1-5ab5-b2da-2ec785c2fd17"))
+	(label "AGND" (at 193.04 185.42 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "3700ff16-3195-53c6-ad31-514780a100fe"))
+	(wire (pts (xy 177.8 187.96) (xy 175.26 187.96)) (stroke (width 0) (type default)) (uuid "e5640030-94d0-5cb3-9dfb-225f86887a97"))
+	(label "PNL_SDA" (at 175.26 187.96 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "74371fdb-19b4-5a4c-9eaa-a5d4ddc08008"))
+	(wire (pts (xy 190.5 187.96) (xy 193.04 187.96)) (stroke (width 0) (type default)) (uuid "e6313d35-f501-59ac-bb13-5624368593a3"))
+	(label "PNL_SCL" (at 193.04 187.96 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "39f34385-4278-54c0-8064-50f31caf863e"))
+	(wire (pts (xy 177.8 190.5) (xy 175.26 190.5)) (stroke (width 0) (type default)) (uuid "703bb1f5-8ab0-5afd-a5dd-fa1fc8c609c1"))
+	(label "GND" (at 175.26 190.5 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "dfee5951-cb29-584d-961c-bceec10595ff"))
+	(wire (pts (xy 190.5 190.5) (xy 193.04 190.5)) (stroke (width 0) (type default)) (uuid "6120b0e6-4ca2-5cd8-b309-1f3a9491fa11"))
+	(label "+5V_PNL" (at 193.04 190.5 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "16dfdf21-f61a-5f3b-8b9d-d623bf9e91ea"))
+	(rectangle (start 16 236) (end 270 270) (stroke (width 0.2032) (type dash)) (fill (type none)) (uuid "3292e953-c9a1-5580-96e7-e8a382847dbc"))
+	(text "What this sheet does not know" (exclude_from_sim no) (at 20 239 0) (effects (font (size 1.8 1.8) (bold yes)) (justify left top)) (uuid "90dfed96-149f-52de-9bf9-1b45ef7896ad"))
+	(text "- The board's size and hole positions: from the climate-unit mock-up (Y14), provisional until V-102 / V-113 and F11 (R11).\n- The DT13-12PA footprint is the carrier's (pin numbering and the flange-to-edge 4 mm are confirm there).\n- The inside leads (P196) and their lengths; the plate cable (P200) and its length.\n- No capacitor at DP-DCU-E: the panel board's C1 (10 uF) sits at its own +5V_PNL entry and the plate carries its driver's." (exclude_from_sim no) (at 20 245 0) (effects (font (size 1.27 1.27)) (justify left top)) (uuid "363cc663-5d43-58f9-9cb1-95cca29ba759"))
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

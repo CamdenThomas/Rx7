@@ -54,7 +54,7 @@ CONTROLS = [
 # fitted gets no cut-out - only a kept-clear zone inside and a scribed outline on the rear plate.
 UPPER_CONNECTORS = [
     ("DP-DCU-D", 12, True),                    # the leads that used grommets (D-480, P194)
-    ("left plate, idea I-002", 12, False),     # reserved: built only if he rules the plate
+    ("DP-DCU-E", 12, True),                    # the left plate's link (D-492, P200) - fitted since he ruled the plate
 ]
 
 TABLE = [
@@ -141,9 +141,9 @@ TABLE = [
     ("UPPER_CONNECTORS", UPPER_CONNECTORS, "", "the upper row's positions (table above)", ""),
     ("UPPER_ABOVE", "J9", "", "the lower connector the first upper position stands above", ""),
     ("UPPER_T", 1.6, "mm", "upper connector board thickness", ""),
-    ("UPPER_W", 130.0, "mm", "upper connector board width", "not drawn yet (Y15)"),
-    ("UPPER_D", 30.0, "mm", "upper connector board depth; its connector edge is flush with the "
-     "carrier's", "not drawn yet (Y15)"),
+    ("UPPER_W", 130.0, "mm", "upper connector board width", "Y15's board: 130 x 36, upper-board/"),
+    ("UPPER_D", 36.0, "mm", "upper connector board depth; its connector edge is flush with the "
+     "carrier's", "Y15: 36, not the 30 first guessed - the headers need the room in front of the DT13 keep-out"),
     ("ROW_PITCH", 42.0, "mm", "upper board above the carrier, face to like face = connector row "
      "to connector row. The brief's 32 does not build: a DT13 stands 37.8 mm above its board's "
      "underside, so the upper board must be at least that plus UPPER_BOT_H up",
@@ -151,10 +151,9 @@ TABLE = [
     ("UPPER_BOT_H", 2.5, "mm", "kept clear under the upper board (its DT13's pin tails stand "
      "1.5 mm through)", "from TE's model, not a part"),
     ("UPPER_CONN_GAP", 2.0, "mm", "between two upper connectors' footprints, side by side", ""),
-    ("UPPER_STANDOFFS", [(4.3, 3.3), (115.8, 3.3)], "mm", "the two standoffs that carry the "
+    ("UPPER_STANDOFFS", [(4.3, 8.5), (115.8, 8.5)], "mm", "the two standoffs that carry the "
      "upper board from the carrier: (along the upper board from its DP-DCU-D end, back from its "
-     "front edge)", "the carrier rev 0.04 has no holes for them; these spots are clear of its "
-     "parts but not of its tracks (Y15)"),
+     "front edge)", "Y15's H1 / H2; the carrier rev 0.04 has no holes for them - F11 adds them, the bench revision uses standoffs on its own holes"),
     ("UPPER_STANDOFF_D", 6.0, "mm", "standoff diameter", ""),
 
     # ------------------------------------------------------------------------ the mated plugs --
@@ -246,7 +245,8 @@ CONFIRM["ENVELOPE"] = "not measured (V-113, V-102)"
 # "refused" (a fit rule says no, in words). The self-test fails when an outcome differs, so an
 # edit that changes what the model does is caught: if the change is meant, change the word here.
 # Overrides replace whole values of P.
-_BOTH = [("DP-DCU-D", 12, True), ("left plate, idea I-002", 12, True)]
+_BOTH = [("DP-DCU-D", 12, True), ("DP-DCU-E", 12, True)]
+_ONE = [("DP-DCU-D", 12, True), ("DP-DCU-E", 12, False)]
 SELFTEST = [
     ("the defaults: FACE_H None, one height, front install", {}, "clear"),
     ("FACE_W 180, the sketch's width", {"FACE_W": 180.0}, "refused"),
@@ -266,7 +266,8 @@ SELFTEST = [
     ("ROW_PITCH 32, the brief's", {"ROW_PITCH": 32.0}, "refused"),
     ("ROW_PITCH 40", {"ROW_PITCH": 40.0}, "refused"),
     ("ROW_PITCH 50", {"ROW_PITCH": 50.0}, "clear"),
-    ("the reserved upper connector fitted", {"UPPER_CONNECTORS": _BOTH}, "clear"),
+    ("both upper connectors fitted (the default since D-492)", {"UPPER_CONNECTORS": _BOTH}, "clear"),
+    ("DP-DCU-E not fitted (the default before D-492)", {"UPPER_CONNECTORS": _ONE}, "clear"),
     ("no upper row at all: the control block sets the face", {"UPPER_CONNECTORS": []}, "clear"),
     ("the drawn carrier without its STEP (stand-in blocks)", {"CARRIER_STEP": False}, "clear"),
     ("carrier 170 wide", {"CARRIER_W": 170.0}, "fails"),
