@@ -243,7 +243,6 @@ export interface ManualPart {
   /** The part it sits inside or on (D-429); blank at the top of its system. */
   parent: string;
   children: string[];
-  /** How many of its terminals are recorded from the factory diagram, held until checked. */
   /** the 1982 diagram's terminals, each with the day it was checked on the car or '' (D-512) */
   terminals: ManualTerminal[];
   /** Where the part sits on the 3D model: "x y z" in mm, ';' between places (D-421). */

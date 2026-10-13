@@ -28,6 +28,9 @@
     return out;
   });
   const visits = $derived(m.service.filter((s) => p?.service.includes(s.id)).sort((a, b) => b.date.localeCompare(a.date)));
+  // Its terminals (D-512): the 1982 diagram's claim until `checked` carries the day it was metered.
+  const unchecked = $derived(p?.terminals.filter((t) => !t.checked) ?? []);
+  const checked = $derived(p?.terminals.filter((t) => t.checked) ?? []);
 
   const facts = $derived(
     p
@@ -154,8 +157,34 @@
           </section>
         {/if}
 
-        {#if p.terminals_held}
-          <p class="faint small held">Factory wiring: {p.terminals_held} terminal{p.terminals_held === 1 ? '' : 's'} recorded from the 1982 diagram, held back until checked on the car.</p>
+        {#if p.terminals.length}
+          <section>
+            <h3>Terminals</h3>
+            {#if unchecked.length}
+              <p class="faint small">From the 1982 wiring diagram - not checked on this car</p>
+              <div class="panel list">
+                {#each unchecked as t (t.terminal)}
+                  <div class="terminal">
+                    <strong>{t.terminal}</strong>
+                    <span>{t.function}{t.wire ? ` · ${t.wire}` : ''}{t.to ? ` → ${t.to}` : ''}</span>
+                    {#if t.inside}<span class="faint small">{t.inside}</span>{/if}
+                  </div>
+                {/each}
+              </div>
+            {/if}
+            {#if checked.length}
+              <p class="faint small">Checked on this car</p>
+              <div class="panel list">
+                {#each checked as t (t.terminal)}
+                  <div class="terminal">
+                    <strong>{t.terminal}</strong>
+                    <span>{t.function}{t.wire ? ` · ${t.wire}` : ''}{t.to ? ` → ${t.to}` : ''}</span>
+                    <span class="faint small">{t.inside ? `${t.inside} · ` : ''}checked {day(t.checked)}</span>
+                  </div>
+                {/each}
+              </div>
+            {/if}
+          </section>
         {/if}
 
         {#if p.bought.length}
@@ -172,6 +201,14 @@
 {/if}
 
 <style>
+  .terminal {
+    display: grid;
+    gap: 2px;
+    padding: 6px 0;
+  }
+  .terminal strong {
+    font-variant-numeric: tabular-nums;
+  }
   header {
     display: flex;
     flex-direction: column;
