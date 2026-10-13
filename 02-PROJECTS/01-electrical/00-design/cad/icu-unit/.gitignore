@@ -1,0 +1,9 @@
+# Rebuilt whole by `freecadcmd make_unit.py` from unit_params.py and the carrier's files, so the
+# model and the report are generated and stay out of git. The scripts, the README and the four
+# line drawings (view-*.svg, the reviewable form) stay in.
+*.step
+*.stl
+*.FCStd
+*.FCBak
+report.json
+__pycache__/
