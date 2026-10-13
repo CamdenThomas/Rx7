@@ -1,0 +1,3 @@
+# the model files: STEP and build metas, rebuilt by build.py (D-477: model files stay out of git)
+out/
+__pycache__/

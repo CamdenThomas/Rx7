@@ -55,7 +55,9 @@ datums,value,str,no,,the figure as the source gives it
 datums,source,str,no,,"the specs row and page, or the decision"
 datums,confidence,enum(primary|secondary|unverified|derived),no,,as specs.confidence; derived = arithmetic on primary figures
 datums,note,text,no,,
-model_parts,id,key,yes,00-CAR:parts,the 00-CAR parts id the solid stands for; one solid per row
+model_parts,id,key,yes,,"the solid's key: the 00-CAR parts id, or <id>-L / -R for a left-right pair, <id>-front / -rear for a split panel, <id>-FL for one corner (widened 2026-10-13, D-518: the id was the 00-CAR key itself and could not hold a pair); `part` carries the 00-CAR id"
+model_parts,part,str,yes,00-CAR:parts,the 00-CAR parts row this solid stands for
+model_parts,side,enum(L|R|FL|FR|RL|RR|front|rear),no,,"which half or corner, blank for one solid"
 model_parts,file,str,no,,"the part's file under model/ (out of git, D-477); blank until it exists"
 model_parts,made_from,enum(measured|factory|found|catalogue|guess),yes,,the main source of its shape: measured on this car; a factory dimension page; a found model (01-REFERENCE cad); a catalogue figure scaled by known dimensions; a guess
 model_parts,source,str,no,,"the cad row, blend piece, specs row or catalogue figure it was built from"

@@ -1,0 +1,5497 @@
+{
+ "version": 2,
+ "built": "2026-10-13T13:52:33",
+ "project": "00-CAR",
+ "car": true,
+ "frame": {
+  "units": "mm",
+  "x": "right",
+  "y": "forward",
+  "z": "up",
+  "ruling": "D-418",
+  "glb": "mm, z up, the part's own frame",
+  "rotation": "degrees, three.js Euler order XYZ"
+ },
+ "systems": [
+  {
+   "id": "engine",
+   "name": "Engine"
+  },
+  {
+   "id": "fuel",
+   "name": "Fuel"
+  },
+  {
+   "id": "ignition",
+   "name": "Ignition"
+  },
+  {
+   "id": "cooling",
+   "name": "Cooling"
+  },
+  {
+   "id": "electrical",
+   "name": "Electrical"
+  },
+  {
+   "id": "lighting",
+   "name": "Lighting"
+  },
+  {
+   "id": "transmission",
+   "name": "Transmission"
+  },
+  {
+   "id": "driveline",
+   "name": "Rear axle and driveline"
+  },
+  {
+   "id": "brakes",
+   "name": "Brakes"
+  },
+  {
+   "id": "suspension",
+   "name": "Suspension"
+  },
+  {
+   "id": "steering",
+   "name": "Steering"
+  },
+  {
+   "id": "wheels",
+   "name": "Wheels and tyres"
+  },
+  {
+   "id": "climate",
+   "name": "Climate"
+  },
+  {
+   "id": "body",
+   "name": "Body and interior"
+  }
+ ],
+ "parts": [
+  {
+   "id": "PT042-FL",
+   "name": "Front rotor hub, front left",
+   "kind": "part",
+   "system": "brakes",
+   "zone": "corners",
+   "glb": "corner/PT042-FL.glb",
+   "bytes": 137748,
+   "parent": null,
+   "place": {
+    "x": -730.0,
+    "y": 0.0,
+    "z": 294.5,
+    "rx": 0,
+    "ry": 0,
+    "rz": 180
+   },
+   "world": {
+    "x": -730.0,
+    "y": 0.0,
+    "z": 294.5,
+    "rx": 0,
+    "ry": 0,
+    "rz": 180
+   },
+   "place_from": "datum DT02",
+   "confirm": true,
+   "size_mm": {
+    "x": 137.0,
+    "y": 227.9,
+    "z": 228.0
+   },
+   "origin": "the hub's wheel-mounting face on the axis; +x outboard",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/corner (SP-113, SP-1519; corner/params.py)",
+   "record": "PT042",
+   "record_name": "Front rotor hubs",
+   "side": "FL",
+   "nodes": [
+    "part:PT042-FL"
+   ],
+   "assembly": "corner",
+   "dims": [
+    {
+     "dim": "brake disc effective diameter",
+     "value_mm": 202.0,
+     "how": "factory",
+     "source": "SP-113 (S-002 p.11-2)"
+    },
+    {
+     "dim": "brake disc outside diameter",
+     "value_mm": 228.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "brake disc thickness",
+     "value_mm": 18.0,
+     "how": "factory",
+     "source": "SP-113"
+    },
+    {
+     "dim": "hub flange diameter",
+     "value_mm": 140.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "hub barrel diameter",
+     "value_mm": 76.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "hub length",
+     "value_mm": 95.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "bolt circle (PCD)",
+     "value_mm": 110.0,
+     "how": "catalogue",
+     "source": "SP-1519 (S-021, secondary)"
+    },
+    {
+     "dim": "wheel offset ET",
+     "value_mm": 20.0,
+     "how": "catalogue",
+     "source": "SP-1520 (S-020, secondary)"
+    }
+   ],
+   "note": "hub and disc as one unit (S-002 p.9-5); the knuckle it turns on is not modelled yet"
+  },
+  {
+   "id": "PT525-FL",
+   "name": "Road wheel, front left",
+   "kind": "part",
+   "system": "wheels",
+   "zone": "corners",
+   "glb": "corner/PT525-FL.glb",
+   "bytes": 215092,
+   "parent": null,
+   "place": {
+    "x": -710.0,
+    "y": 0.0,
+    "z": 294.5,
+    "rx": 0,
+    "ry": 0,
+    "rz": 180
+   },
+   "world": {
+    "x": -710.0,
+    "y": 0.0,
+    "z": 294.5,
+    "rx": 0,
+    "ry": 0,
+    "rz": 180
+   },
+   "place_from": "datum DT02",
+   "confirm": true,
+   "size_mm": {
+    "x": 146.2,
+    "y": 365.1,
+    "z": 365.2
+   },
+   "origin": "the rim's centre plane on the axis (DT02); +x outboard",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": {
+    "to": "PT042-FL",
+    "kind": "bolted",
+    "fasteners": [
+     "PT526"
+    ],
+    "apart": {
+     "x": -160.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   "children": [
+    "PT530-FL",
+    "PT526-FL"
+   ],
+   "source": "02-PROJECTS/05-cad/model/corner (SP-1513, SP-1520, SP-1519; corner/params.py)",
+   "record": "PT525",
+   "record_name": "Road wheels",
+   "side": "FL",
+   "nodes": [
+    "part:PT525-FL"
+   ],
+   "assembly": "corner",
+   "dims": [
+    {
+     "dim": "wheel centre, across",
+     "value_mm": 710.0,
+     "how": "factory",
+     "source": "05-cad DT02 (SP-132, S-004 p.14)"
+    },
+    {
+     "dim": "wheel centre height",
+     "value_mm": 294.5,
+     "how": "derived",
+     "source": "05-cad DT02 (tyre size, unloaded)"
+    },
+    {
+     "dim": "rim bead seat diameter",
+     "value_mm": 330.2,
+     "how": "factory",
+     "source": "SP-1513 (S-038 T:6), SP-126"
+    },
+    {
+     "dim": "rim width between flanges",
+     "value_mm": 127.0,
+     "how": "factory",
+     "source": "SP-1513 (5-J x 13)"
+    },
+    {
+     "dim": "rim flange height",
+     "value_mm": 17.5,
+     "how": "catalogue",
+     "source": "ETRTO J flange (catalogue figure)"
+    },
+    {
+     "dim": "wheel offset ET",
+     "value_mm": 20.0,
+     "how": "catalogue",
+     "source": "SP-1520 (S-020, secondary)"
+    },
+    {
+     "dim": "bolt circle (PCD)",
+     "value_mm": 110.0,
+     "how": "catalogue",
+     "source": "SP-1519 (S-021, secondary)"
+    },
+    {
+     "dim": "centre bore",
+     "value_mm": 60.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "disc thickness",
+     "value_mm": 4.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "rim thickness",
+     "value_mm": 3.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "drop centre depth",
+     "value_mm": 24.0,
+     "how": "guess",
+     "source": ""
+    }
+   ],
+   "note": "5-J x 13 steel (GS) assumed; the GSL alloy is 5.5-JJ - which is on the car is a check (PT525 note)"
+  },
+  {
+   "id": "PT530-FL",
+   "name": "Tyre, front left",
+   "kind": "part",
+   "system": "wheels",
+   "zone": "corners",
+   "glb": "corner/PT530-FL.glb",
+   "bytes": 67288,
+   "parent": "PT525-FL",
+   "place": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -710.0,
+    "y": 0.0,
+    "z": 294.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 180
+   },
+   "place_from": "datum DT02",
+   "confirm": true,
+   "size_mm": {
+    "x": 185.0,
+    "y": 589.0,
+    "z": 589.2
+   },
+   "origin": "the tyre's centre plane on the axis",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": {
+    "to": "PT525-FL",
+    "kind": "fits-in",
+    "fasteners": [],
+    "apart": {
+     "x": -140.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/corner (SP-128; corner/params.py)",
+   "record": "PT530",
+   "record_name": "Tyres",
+   "side": "FL",
+   "nodes": [
+    "part:PT530-FL"
+   ],
+   "assembly": "corner",
+   "dims": [
+    {
+     "dim": "tyre section width",
+     "value_mm": 185.0,
+     "how": "factory",
+     "source": "SP-128 (S-004 p.14-15)"
+    },
+    {
+     "dim": "tyre aspect ratio",
+     "value_mm": 70.0,
+     "how": "factory",
+     "source": "SP-128"
+    },
+    {
+     "dim": "tyre outside diameter",
+     "value_mm": 589.2,
+     "how": "derived",
+     "source": "SP-128, SP-1513"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT526-FL",
+   "name": "Wheel nuts, front left (4)",
+   "kind": "part",
+   "system": "wheels",
+   "zone": "corners",
+   "glb": "corner/PT526-FL.glb",
+   "bytes": 50532,
+   "parent": "PT525-FL",
+   "place": {
+    "x": 24.0,
+    "y": 0.0,
+    "z": 0.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -734.0,
+    "y": 0.0,
+    "z": 294.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 180
+   },
+   "place_from": "datum DT02",
+   "confirm": true,
+   "size_mm": {
+    "x": 22.0,
+    "y": 96.8,
+    "z": 99.7
+   },
+   "origin": "the nuts' seat plane on the axis; the four on the bolt circle",
+   "made_from": "catalogue",
+   "state": "rough",
+   "mate": {
+    "to": "PT525-FL",
+    "kind": "bolted",
+    "fasteners": [],
+    "apart": {
+     "x": -70.0,
+     "y": 0.0,
+     "z": 0.0
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/corner (SP-124, SP-1519, PT526 note; corner/params.py)",
+   "record": "PT526",
+   "record_name": "Wheel nuts",
+   "side": "FL",
+   "nodes": [
+    "part:PT526-FL#1",
+    "part:PT526-FL#2",
+    "part:PT526-FL#3",
+    "part:PT526-FL#4"
+   ],
+   "assembly": "corner",
+   "dims": [
+    {
+     "dim": "nut across flats",
+     "value_mm": 19.0,
+     "how": "catalogue",
+     "source": "00-CAR PT526 note (Mazdatrix M12x1.5 19 mm)"
+    },
+    {
+     "dim": "nut height",
+     "value_mm": 22.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "stud thread",
+     "value_mm": 12.0,
+     "how": "factory",
+     "source": "SP-124 (M12 x 1.5)"
+    },
+    {
+     "dim": "bolt circle (PCD)",
+     "value_mm": 110.0,
+     "how": "catalogue",
+     "source": "SP-1519 (S-021, secondary)"
+    },
+    {
+     "dim": "stud count",
+     "value_mm": 4,
+     "how": "catalogue",
+     "source": "SP-1519 (4 x 110)"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT704",
+   "name": "Body shell (welded unit body)",
+   "kind": "node",
+   "system": "body",
+   "zone": null,
+   "glb": null,
+   "bytes": 0,
+   "parent": null,
+   "place": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 0,
+    "y": 0,
+    "z": 0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT01",
+   "confirm": true,
+   "size_mm": null,
+   "origin": "the car's origin (DT01): front axle, centreline, ground",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [
+    "PT778",
+    "PT779",
+    "PT781",
+    "PT755-R",
+    "PT780-R",
+    "PT782-R",
+    "PT771-R",
+    "PT783-R",
+    "PT769-R",
+    "PT770-R",
+    "PT976-R",
+    "PT767-R",
+    "PT768-R",
+    "PT777-R",
+    "PT784-R",
+    "PT754-R",
+    "PT766-R",
+    "PT761-R",
+    "PT772-R",
+    "PT755-L",
+    "PT780-L",
+    "PT782-L",
+    "PT771-L",
+    "PT783-L",
+    "PT769-L",
+    "PT770-L",
+    "PT976-L",
+    "PT767-L",
+    "PT768-L",
+    "PT777-L",
+    "PT784-L",
+    "PT754-L",
+    "PT766-L",
+    "PT761-L",
+    "PT772-L",
+    "PT756",
+    "PT757",
+    "PT762",
+    "PT764",
+    "PT773-front",
+    "PT773-rear",
+    "PT774",
+    "PT753",
+    "PT752",
+    "PT775",
+    "PT776",
+    "hp-A-R",
+    "hp-B-R",
+    "hp-C-R",
+    "hp-E-R",
+    "hp-F-R",
+    "hp-DT14-R",
+    "hp-DT03-R",
+    "hp-A-L",
+    "hp-B-L",
+    "hp-C-L",
+    "hp-E-L",
+    "hp-F-L",
+    "hp-DT14-L",
+    "hp-DT03-L",
+    "hp-DT02-R",
+    "hp-front-end",
+    "hp-rear-end"
+   ],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT704",
+   "record_name": "Body shell (welded unit body)",
+   "side": null,
+   "nodes": [],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "overall length",
+     "value_mm": 4320.5,
+     "how": "factory",
+     "source": "DT04 (SP-133, S-004 p.15)"
+    },
+    {
+     "dim": "ground clearance",
+     "value_mm": 144.8,
+     "how": "factory",
+     "source": "DT07 (SP-136, S-004 p.15)"
+    }
+   ],
+   "note": "the welded shell: every panel below is its child"
+  },
+  {
+   "id": "PT778",
+   "name": "Front floor pan, with the transmission tunnel",
+   "kind": "body",
+   "system": "body",
+   "zone": "underbody",
+   "glb": "unibody/PT778.glb",
+   "bytes": 2604,
+   "parent": "PT704",
+   "place": {
+    "x": 0,
+    "y": -1400.0,
+    "z": 210.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 0.0,
+    "y": -1400.0,
+    "z": 210.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 1380.0,
+    "y": 1100.0,
+    "z": 251.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT778",
+   "record_name": "Front floor pan",
+   "side": null,
+   "nodes": [
+    "body:PT778"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "front floor above the datum",
+     "value_mm": 150.0,
+     "how": "guess",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) side view (the floor runs 120-150 above the datum)"
+    },
+    {
+     "dim": "underbody datum line above the ground",
+     "value_mm": 60.0,
+     "how": "guess",
+     "source": "S-002 p.14-24 (FSM body checking dimensions); DT09"
+    },
+    {
+     "dim": "sill inner face, across",
+     "value_mm": 690.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "tunnel width at the floor",
+     "value_mm": 380.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "tunnel width at the top",
+     "value_mm": 240.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "tunnel height",
+     "value_mm": 250.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "toe board foot, lengthwise",
+     "value_mm": -850.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "floor kick-up, lengthwise",
+     "value_mm": -1950.0,
+     "how": "guess",
+     "source": ""
+    }
+   ],
+   "note": "the shell's root: everything welds to it, directly or through a neighbour"
+  },
+  {
+   "id": "PT779",
+   "name": "Rear floor pan",
+   "kind": "body",
+   "system": "body",
+   "zone": "underbody",
+   "glb": "unibody/PT779.glb",
+   "bytes": 1896,
+   "parent": "PT704",
+   "place": {
+    "x": 0,
+    "y": -2605.0,
+    "z": 520.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 0.0,
+    "y": -2605.0,
+    "z": 520.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 1120.0,
+    "y": 1310.0,
+    "z": 310.2
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT778",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 0,
+     "y": -180,
+     "z": 60
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT779",
+   "record_name": "Rear floor pan",
+   "side": null,
+   "nodes": [
+    "body:PT779"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "rear (cargo) floor height",
+     "value_mm": 520.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "floor kick-up, lengthwise",
+     "value_mm": -1950.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "rear end panel, lengthwise",
+     "value_mm": -3260.0,
+     "how": "guess",
+     "source": "DT04 rear end (-3339) less the bumper"
+    },
+    {
+     "dim": "rear wheelhouse inner face, across",
+     "value_mm": 560.0,
+     "how": "guess",
+     "source": ""
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT781",
+   "name": "Floor cross members (three)",
+   "kind": "body",
+   "system": "body",
+   "zone": "underbody",
+   "glb": "unibody/PT781.glb",
+   "bytes": 2560,
+   "parent": "PT704",
+   "place": {
+    "x": 0,
+    "y": -1300.0,
+    "z": 190.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 0.0,
+    "y": -1300.0,
+    "z": 190.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 1380.0,
+    "y": 1960.0,
+    "z": 345.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT778",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 0,
+     "y": 0,
+     "z": -120
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT781",
+   "record_name": "Floor cross members",
+   "side": null,
+   "nodes": [
+    "body:PT781"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "floor kick-up, lengthwise",
+     "value_mm": -1950.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "sill inner face, across",
+     "value_mm": 690.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "hole C, across",
+     "value_mm": 445.0,
+     "how": "factory",
+     "source": "DT12 (SP-237, FSM)"
+    }
+   ],
+   "note": "three of the catalogue's four: under the seats, at the kick-up, at the rear panel"
+  },
+  {
+   "id": "PT755-R",
+   "name": "Front side frame (rail), right",
+   "kind": "body",
+   "system": "body",
+   "zone": "engine_bay",
+   "glb": "unibody/PT755-R.glb",
+   "bytes": 6388,
+   "parent": "PT704",
+   "place": {
+    "x": 400.0,
+    "y": 580.0,
+    "z": 280.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 400.0,
+    "y": 580.0,
+    "z": 280.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT10",
+   "confirm": true,
+   "size_mm": {
+    "x": 77.5,
+    "y": 2330.1,
+    "z": 227.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": {
+    "to": "PT778",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 40.0,
+     "y": 220,
+     "z": -90
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT755",
+   "record_name": "Front side frames, R and L",
+   "side": "R",
+   "nodes": [
+    "body:PT755-R"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "hole A, across",
+     "value_mm": 400.0,
+     "how": "factory",
+     "source": "DT10 (SP-234, FSM)"
+    },
+    {
+     "dim": "hole A above the datum",
+     "value_mm": 220.0,
+     "how": "factory",
+     "source": "DT10 (SP-239, FSM)"
+    },
+    {
+     "dim": "hole A forward of the front axle",
+     "value_mm": 580.0,
+     "how": "guess",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) plan view"
+    },
+    {
+     "dim": "hole A to hole B, lengthwise",
+     "value_mm": 2250.0,
+     "how": "factory",
+     "source": "DT11 (SP-236, FSM)"
+    },
+    {
+     "dim": "front rail width",
+     "value_mm": 75.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "front rail depth",
+     "value_mm": 107.0,
+     "how": "factory",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) detail K, b = 107"
+    },
+    {
+     "dim": "front rail tip ahead of hole A",
+     "value_mm": 150.0,
+     "how": "derived",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) plan view (50 px x 2.98 mm/px)"
+    },
+    {
+     "dim": "rail depth under the floor",
+     "value_mm": 50.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "rail sheet thickness",
+     "value_mm": 1.6,
+     "how": "guess",
+     "source": ""
+    }
+   ],
+   "note": "origin at hole A (DT10)"
+  },
+  {
+   "id": "PT780-R",
+   "name": "Rear side frame (rail), with the upper link bracket, right",
+   "kind": "body",
+   "system": "body",
+   "zone": "underbody",
+   "glb": "unibody/PT780-R.glb",
+   "bytes": 32220,
+   "parent": "PT704",
+   "place": {
+    "x": 397.5,
+    "y": -1670.0,
+    "z": 160.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 397.5,
+    "y": -1670.0,
+    "z": 160.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT11",
+   "confirm": true,
+   "size_mm": {
+    "x": 186.5,
+    "y": 1640.9,
+    "z": 370.4
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": {
+    "to": "PT779",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 40.0,
+     "y": -220,
+     "z": -90
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT780",
+   "record_name": "Rear side frames, R and L",
+   "side": "R",
+   "nodes": [
+    "body:PT780-R"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "hole B, across",
+     "value_mm": 397.5,
+     "how": "factory",
+     "source": "DT11 (SP-235, FSM)"
+    },
+    {
+     "dim": "hole A to hole B, lengthwise",
+     "value_mm": 2250.0,
+     "how": "factory",
+     "source": "DT11 (SP-236, FSM)"
+    },
+    {
+     "dim": "hole C, across",
+     "value_mm": 445.0,
+     "how": "factory",
+     "source": "DT12 (SP-237, FSM)"
+    },
+    {
+     "dim": "hole A to hole C, lengthwise",
+     "value_mm": 3445.0,
+     "how": "derived",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) diagonals 2990.4, 3095.6, 1466.2, 1190.9 (plan, A+460 hole to C; B to C)"
+    },
+    {
+     "dim": "hole C above the datum",
+     "value_mm": 345.0,
+     "how": "factory",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) side view"
+    },
+    {
+     "dim": "hole F, across",
+     "value_mm": 524.0,
+     "how": "factory",
+     "source": "DT13 (SP-238, FSM)"
+    },
+    {
+     "dim": "hole A to hole F, lengthwise",
+     "value_mm": 2784.0,
+     "how": "derived",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) plan view, F's line interpolated between B (2250) and C (3445) at 2.543 mm/px"
+    },
+    {
+     "dim": "hole F above the datum",
+     "value_mm": 339.4,
+     "how": "factory",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) side view"
+    },
+    {
+     "dim": "rear rail width",
+     "value_mm": 70.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "rear rail depth",
+     "value_mm": 100.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "rail depth under the floor",
+     "value_mm": 50.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "rail sheet thickness",
+     "value_mm": 1.6,
+     "how": "guess",
+     "source": ""
+    }
+   ],
+   "note": "origin at hole B (DT11). The rear upper link bracket (holes F, DT13) is drawn with it: the record has no row of its own for the bracket"
+  },
+  {
+   "id": "PT782-R",
+   "name": "Torque box, right",
+   "kind": "body",
+   "system": "body",
+   "zone": "underbody",
+   "glb": "unibody/PT782-R.glb",
+   "bytes": 1700,
+   "parent": "PT704",
+   "place": {
+    "x": 560.0,
+    "y": -910.0,
+    "z": 200.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 560.0,
+    "y": -910.0,
+    "z": 200.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 279.5,
+    "y": 90.0,
+    "z": 135.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT778",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 60.0,
+     "y": 60,
+     "z": -100
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT782",
+   "record_name": "Torque boxes, R and L",
+   "side": "R",
+   "nodes": [
+    "body:PT782-R"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "toe board foot, lengthwise",
+     "value_mm": -850.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "sill inner face, across",
+     "value_mm": 690.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "hole A, across",
+     "value_mm": 400.0,
+     "how": "factory",
+     "source": "DT10 (SP-234, FSM)"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT771-R",
+   "name": "Side sill panel (outer), right",
+   "kind": "body",
+   "system": "body",
+   "zone": "doors",
+   "glb": "unibody/PT771-R.glb",
+   "bytes": 2128,
+   "parent": "PT704",
+   "place": {
+    "x": 800.0,
+    "y": -1200.0,
+    "z": 205.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 800.0,
+    "y": -1200.0,
+    "z": 205.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "blueprint",
+   "confirm": true,
+   "size_mm": {
+    "x": 95.0,
+    "y": 1670.0,
+    "z": 125.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "found",
+   "state": "rough",
+   "mate": {
+    "to": "PT778",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 200.0,
+     "y": 0,
+     "z": 0
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (blueprint the-blueprints 83684)",
+   "record": "PT771",
+   "record_name": "Side sill panels, R and L",
+   "side": "R",
+   "nodes": [
+    "body:PT771-R"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "sill inner face, across",
+     "value_mm": 690.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "sill outer face, across",
+     "value_mm": 800.0,
+     "how": "guess",
+     "source": "blueprint the-blueprints 83684 plan (the rocker sits inside the door skin)"
+    },
+    {
+     "dim": "sill top height",
+     "value_mm": 330.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "sill bottom height",
+     "value_mm": 205.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 617 -> 210; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 205"
+    },
+    {
+     "dim": "rail sheet thickness",
+     "value_mm": 1.6,
+     "how": "guess",
+     "source": ""
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT783-R",
+   "name": "Inner side sill panel, right",
+   "kind": "body",
+   "system": "body",
+   "zone": "underbody",
+   "glb": "unibody/PT783-R.glb",
+   "bytes": 2128,
+   "parent": "PT704",
+   "place": {
+    "x": 690.0,
+    "y": -1200.0,
+    "z": 205.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 690.0,
+    "y": -1200.0,
+    "z": 205.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 25.0,
+    "y": 1310.0,
+    "z": 127.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT778",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 120.0,
+     "y": 0,
+     "z": 0
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT783",
+   "record_name": "Inner side sill panels, R and L",
+   "side": "R",
+   "nodes": [
+    "body:PT783-R"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "sill inner face, across",
+     "value_mm": 690.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "sill top height",
+     "value_mm": 330.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "sill bottom height",
+     "value_mm": 205.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 617 -> 210; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 205"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT769-R",
+   "name": "Hinge pillar (A-pillar, lower), right",
+   "kind": "body",
+   "system": "body",
+   "zone": "doors",
+   "glb": "unibody/PT769-R.glb",
+   "bytes": 2152,
+   "parent": "PT704",
+   "place": {
+    "x": 770.0,
+    "y": -765.0,
+    "z": 330.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 770.0,
+    "y": -765.0,
+    "z": 330.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "blueprint",
+   "confirm": true,
+   "size_mm": {
+    "x": 70.0,
+    "y": 60.0,
+    "z": 560.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "found",
+   "state": "rough",
+   "mate": {
+    "to": "PT771-R",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 120.0,
+     "y": 80,
+     "z": 0
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (blueprint the-blueprints 83684)",
+   "record": "PT769",
+   "record_name": "Hinge pillars, inner and outer, R and L",
+   "side": "R",
+   "nodes": [
+    "body:PT769-R"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "door opening front, lengthwise",
+     "value_mm": -728.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 993"
+    },
+    {
+     "dim": "sill top height",
+     "value_mm": 330.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "belt line height",
+     "value_mm": 870.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 240"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT770-R",
+   "name": "Front pillar (A-pillar, windshield), right",
+   "kind": "body",
+   "system": "body",
+   "zone": "cabin",
+   "glb": "unibody/PT770-R.glb",
+   "bytes": 4544,
+   "parent": "PT704",
+   "place": {
+    "x": 750.0,
+    "y": -765.0,
+    "z": 870.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 750.0,
+    "y": -765.0,
+    "z": 870.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "blueprint",
+   "confirm": true,
+   "size_mm": {
+    "x": 145.1,
+    "y": 447.4,
+    "z": 381.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "found",
+   "state": "rough",
+   "mate": {
+    "to": "PT769-R",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 100.0,
+     "y": 0,
+     "z": 120
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (blueprint the-blueprints 83684)",
+   "record": "PT770",
+   "record_name": "Front pillars, inner, R and L",
+   "side": "R",
+   "nodes": [
+    "body:PT770-R"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "A-pillar top, lengthwise",
+     "value_mm": -980.0,
+     "how": "guess",
+     "source": "blueprint the-blueprints 83684 plan view px 1093 -> -910; side view puts the pillar's top further back"
+    },
+    {
+     "dim": "A-pillar top height",
+     "value_mm": 1150.0,
+     "how": "guess",
+     "source": "blueprint the-blueprints 83684 side view"
+    },
+    {
+     "dim": "roof front edge, lengthwise",
+     "value_mm": -1150.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 windshield top px 1253 -> -1200 (centre); found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -1200"
+    },
+    {
+     "dim": "roof half-width",
+     "value_mm": 690.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 plan 693; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut glass 699"
+    },
+    {
+     "dim": "belt line height",
+     "value_mm": 870.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 240"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT976-R",
+   "name": "Centre pillar (B-pillar and sail), right",
+   "kind": "body",
+   "system": "body",
+   "zone": "doors",
+   "glb": "unibody/PT976-R.glb",
+   "bytes": 1648,
+   "parent": "PT704",
+   "place": {
+    "x": 780.0,
+    "y": -1960.0,
+    "z": 330.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 780.0,
+    "y": -1960.0,
+    "z": 330.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "blueprint",
+   "confirm": true,
+   "size_mm": {
+    "x": 160.0,
+    "y": 339.0,
+    "z": 840.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "found",
+   "state": "rough",
+   "mate": {
+    "to": "PT771-R",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 140.0,
+     "y": 0,
+     "z": 60
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (blueprint the-blueprints 83684)",
+   "record": "PT976",
+   "record_name": "Centre pillars (B-pillar and sail), R and L",
+   "side": "R",
+   "nodes": [
+    "body:PT976-R"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "door opening rear, lengthwise",
+     "value_mm": -1927.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 1653"
+    },
+    {
+     "dim": "centre pillar top, lengthwise",
+     "value_mm": -2010.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 1700"
+    },
+    {
+     "dim": "sail rear edge, lengthwise",
+     "value_mm": -2266.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 1840"
+    },
+    {
+     "dim": "sill top height",
+     "value_mm": 330.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "roof half-width",
+     "value_mm": 690.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 plan 693; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut glass 699"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT767-R",
+   "name": "Roof rail, right",
+   "kind": "body",
+   "system": "body",
+   "zone": "cabin",
+   "glb": "unibody/PT767-R.glb",
+   "bytes": 4424,
+   "parent": "PT704",
+   "place": {
+    "x": 680.0,
+    "y": -1150.0,
+    "z": 1190.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 680.0,
+    "y": -1150.0,
+    "z": 1190.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "blueprint",
+   "confirm": true,
+   "size_mm": {
+    "x": 50.0,
+    "y": 1062.8,
+    "z": 79.9
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "found",
+   "state": "rough",
+   "mate": {
+    "to": "PT770-R",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 120.0,
+     "y": 0,
+     "z": 140
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (blueprint the-blueprints 83684)",
+   "record": "PT767",
+   "record_name": "Roof rails, inner and outer, R and L",
+   "side": "R",
+   "nodes": [
+    "body:PT767-R"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "roof half-width",
+     "value_mm": 690.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 plan 693; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut glass 699"
+    },
+    {
+     "dim": "roof front edge, lengthwise",
+     "value_mm": -1150.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 windshield top px 1253 -> -1200 (centre); found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -1200"
+    },
+    {
+     "dim": "roof rear edge (hatch hinge line), lengthwise",
+     "value_mm": -2220.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 1813 -> -2217; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -2200"
+    },
+    {
+     "dim": "roof's highest point, lengthwise",
+     "value_mm": -1540.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 roof top px 1440"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT768-R",
+   "name": "Quarter panel, with the rear arch, right",
+   "kind": "body",
+   "system": "body",
+   "zone": "rear",
+   "glb": "unibody/PT768-R.glb",
+   "bytes": 6700,
+   "parent": "PT704",
+   "place": {
+    "x": 834.4,
+    "y": -2420.0,
+    "z": 294.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 834.4,
+    "y": -2420.0,
+    "z": 294.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT03",
+   "confirm": true,
+   "size_mm": {
+    "x": 74.4,
+    "y": 1303.2,
+    "z": 665.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "found",
+   "state": "rough",
+   "mate": {
+    "to": "PT771-R",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 260.0,
+     "y": -60,
+     "z": 0
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (blueprint the-blueprints 83684; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut)",
+   "record": "PT768",
+   "record_name": "Quarter panels, R and L",
+   "side": "R",
+   "nodes": [
+    "body:PT768-R"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "overall half-width",
+     "value_mm": 834.4,
+     "how": "factory",
+     "source": "DT05 (SP-134, S-004 p.15)"
+    },
+    {
+     "dim": "wheel arch radius",
+     "value_mm": 351.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 front arch 193 px"
+    },
+    {
+     "dim": "rear wheel centre to fender line",
+     "value_mm": 358.0,
+     "how": "factory",
+     "source": "DT08 (SP-106, S-003 T:7)"
+    },
+    {
+     "dim": "wheelbase",
+     "value_mm": 2420.0,
+     "how": "factory",
+     "source": "DT03 (SP-131, S-004 p.14)"
+    },
+    {
+     "dim": "belt line height",
+     "value_mm": 870.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 240"
+    },
+    {
+     "dim": "hatch aperture bottom, lengthwise",
+     "value_mm": -2990.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 2253 -> -2991; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -3000"
+    },
+    {
+     "dim": "hatch aperture bottom height",
+     "value_mm": 850.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 247 -> 857; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 846"
+    },
+    {
+     "dim": "door opening rear, lengthwise",
+     "value_mm": -1927.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 1653"
+    },
+    {
+     "dim": "rear end panel, lengthwise",
+     "value_mm": -3260.0,
+     "how": "guess",
+     "source": "DT04 rear end (-3339) less the bumper"
+    },
+    {
+     "dim": "sill bottom height",
+     "value_mm": 205.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 617 -> 210; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 205"
+    }
+   ],
+   "note": "origin at the rear wheel centre's line on the panel's outer face"
+  },
+  {
+   "id": "PT777-R",
+   "name": "Rear fender panel (inner wheelhouse), right",
+   "kind": "body",
+   "system": "body",
+   "zone": "rear",
+   "glb": "unibody/PT777-R.glb",
+   "bytes": 13916,
+   "parent": "PT704",
+   "place": {
+    "x": 560.0,
+    "y": -2420.0,
+    "z": 294.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 560.0,
+    "y": -2420.0,
+    "z": 294.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT03",
+   "confirm": true,
+   "size_mm": {
+    "x": 269.4,
+    "y": 675.2,
+    "z": 210.5
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT779",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 140.0,
+     "y": 0,
+     "z": 80
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT777",
+   "record_name": "Rear fender panels, R and L",
+   "side": "R",
+   "nodes": [
+    "body:PT777-R"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "rear wheelhouse inner face, across",
+     "value_mm": 560.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "rear wheelhouse radius",
+     "value_mm": 375.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "wheelbase",
+     "value_mm": 2420.0,
+     "how": "factory",
+     "source": "DT03 (SP-131, S-004 p.14)"
+    },
+    {
+     "dim": "wheel centre height",
+     "value_mm": 294.5,
+     "how": "derived",
+     "source": "DT02 (tyre size, unloaded)"
+    }
+   ],
+   "note": "reading: FA01-70-400 'rear fender panel' is the inner wheelhouse - confirm against the catalogue figure"
+  },
+  {
+   "id": "PT784-R",
+   "name": "Floor deck (cargo side), right",
+   "kind": "body",
+   "system": "body",
+   "zone": "cargo",
+   "glb": "unibody/PT784-R.glb",
+   "bytes": 1648,
+   "parent": "PT704",
+   "place": {
+    "x": 670.0,
+    "y": -2975.0,
+    "z": 670.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 670.0,
+    "y": -2975.0,
+    "z": 670.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 230.0,
+    "y": 350.0,
+    "z": 1.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT779",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 60.0,
+     "y": 0,
+     "z": 120
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT784",
+   "record_name": "Floor decks, R and L",
+   "side": "R",
+   "nodes": [
+    "body:PT784-R"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "rear wheelhouse inner face, across",
+     "value_mm": 560.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "rear wheelhouse radius",
+     "value_mm": 375.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "rear end panel, lengthwise",
+     "value_mm": -3260.0,
+     "how": "guess",
+     "source": "DT04 rear end (-3339) less the bumper"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT754-R",
+   "name": "Front wheel apron and strut tower, right",
+   "kind": "body",
+   "system": "body",
+   "zone": "engine_bay",
+   "glb": "unibody/PT754-R.glb",
+   "bytes": 53048,
+   "parent": "PT704",
+   "place": {
+    "x": 510.0,
+    "y": 0.0,
+    "z": 785.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 510.0,
+    "y": 0.0,
+    "z": 785.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 278.0,
+    "y": 1320.0,
+    "z": 398.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": {
+    "to": "PT755-R",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 200.0,
+     "y": 60,
+     "z": 90
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT754",
+   "record_name": "Front wheel aprons, R and L",
+   "side": "R",
+   "nodes": [
+    "body:PT754-R"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "strut tower centre, across",
+     "value_mm": 510.0,
+     "how": "derived",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) plan view (the tower circle, 40 px outboard of the rail at 2.7 mm/px)"
+    },
+    {
+     "dim": "strut tower radius",
+     "value_mm": 90.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "strut tower top height",
+     "value_mm": 785.0,
+     "how": "guess",
+     "source": "blueprint the-blueprints 83684 hood line less 62"
+    },
+    {
+     "dim": "fender fixing nuts, across",
+     "value_mm": 662.0,
+     "how": "factory",
+     "source": "DT14 (SP-239, FSM)"
+    },
+    {
+     "dim": "fender fixing nut above hole A",
+     "value_mm": 435.0,
+     "how": "factory",
+     "source": "SP-1281 (FSM section G-G)"
+    },
+    {
+     "dim": "hole A, across",
+     "value_mm": 400.0,
+     "how": "factory",
+     "source": "DT10 (SP-234, FSM)"
+    },
+    {
+     "dim": "front rail depth",
+     "value_mm": 107.0,
+     "how": "factory",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) detail K, b = 107"
+    },
+    {
+     "dim": "radiator support, lengthwise",
+     "value_mm": 720.0,
+     "how": "guess",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) (rail tip at A + 150) and blueprint the-blueprints 83684 nose"
+    },
+    {
+     "dim": "firewall, lengthwise",
+     "value_mm": -640.0,
+     "how": "found",
+     "source": "00-CAR zones engine_bay / dash boundary -642 (the combined model, D-421)"
+    },
+    {
+     "dim": "wheel arch radius",
+     "value_mm": 351.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 front arch 193 px"
+    },
+    {
+     "dim": "front wheel centre to fender line",
+     "value_mm": 364.0,
+     "how": "factory",
+     "source": "SP-1280 (S-038 T:7)"
+    }
+   ],
+   "note": "origin at the strut tower's top centre"
+  },
+  {
+   "id": "PT766-R",
+   "name": "Cowl side panel, right",
+   "kind": "body",
+   "system": "body",
+   "zone": "cabin",
+   "glb": "unibody/PT766-R.glb",
+   "bytes": 1644,
+   "parent": "PT704",
+   "place": {
+    "x": 690.0,
+    "y": -640.0,
+    "z": 210.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 690.0,
+    "y": -640.0,
+    "z": 210.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 1.0,
+    "y": 118.0,
+    "z": 660.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT756",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 120.0,
+     "y": 0,
+     "z": 0
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT766",
+   "record_name": "Cowl side panels, R and L",
+   "side": "R",
+   "nodes": [
+    "body:PT766-R"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "firewall, lengthwise",
+     "value_mm": -640.0,
+     "how": "found",
+     "source": "00-CAR zones engine_bay / dash boundary -642 (the combined model, D-421)"
+    },
+    {
+     "dim": "sill inner face, across",
+     "value_mm": 690.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "belt line height",
+     "value_mm": 870.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 240"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT761-R",
+   "name": "Engine bay side panel, right",
+   "kind": "body",
+   "system": "body",
+   "zone": "engine_bay",
+   "glb": "unibody/PT761-R.glb",
+   "bytes": 1648,
+   "parent": "PT704",
+   "place": {
+    "x": 640.0,
+    "y": 400.0,
+    "z": 450.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 640.0,
+    "y": 400.0,
+    "z": 450.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 1.0,
+    "y": 510.0,
+    "z": 230.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT754-R",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 100.0,
+     "y": 80,
+     "z": 0
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT761",
+   "record_name": "Engine bay side panels, R and L",
+   "side": "R",
+   "nodes": [
+    "body:PT761-R"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "radiator support, lengthwise",
+     "value_mm": 720.0,
+     "how": "guess",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) (rail tip at A + 150) and blueprint the-blueprints 83684 nose"
+    }
+   ],
+   "note": "8871-56-370: read as the panel between the apron and the core support - confirm what it is"
+  },
+  {
+   "id": "PT772-R",
+   "name": "Rain rail (hatch opening side gutter), right",
+   "kind": "body",
+   "system": "body",
+   "zone": "cargo",
+   "glb": "unibody/PT772-R.glb",
+   "bytes": 1732,
+   "parent": "PT704",
+   "place": {
+    "x": 660.0,
+    "y": -2220.0,
+    "z": 1170.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 660.0,
+    "y": -2220.0,
+    "z": 1170.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "blueprint",
+   "confirm": true,
+   "size_mm": {
+    "x": 50.1,
+    "y": 740.8,
+    "z": 352.8
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "found",
+   "state": "rough",
+   "mate": {
+    "to": "PT768-R",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 80.0,
+     "y": -40,
+     "z": 100
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (blueprint the-blueprints 83684)",
+   "record": "PT772",
+   "record_name": "Rain rails, R and L",
+   "side": "R",
+   "nodes": [
+    "body:PT772-R"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "roof half-width",
+     "value_mm": 690.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 plan 693; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut glass 699"
+    },
+    {
+     "dim": "roof rear edge (hatch hinge line), lengthwise",
+     "value_mm": -2220.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 1813 -> -2217; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -2200"
+    },
+    {
+     "dim": "roof rear edge height",
+     "value_mm": 1200.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 47 -> 1207; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 1194"
+    },
+    {
+     "dim": "hatch aperture bottom, lengthwise",
+     "value_mm": -2990.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 2253 -> -2991; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -3000"
+    },
+    {
+     "dim": "hatch aperture bottom height",
+     "value_mm": 850.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 247 -> 857; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 846"
+    }
+   ],
+   "note": "reading: the rain rails are the hatch opening's side gutters; with the rear roof header and the rear end panel's top they make the hatch aperture"
+  },
+  {
+   "id": "PT755-L",
+   "name": "Front side frame (rail), left",
+   "kind": "body",
+   "system": "body",
+   "zone": "engine_bay",
+   "glb": "unibody/PT755-L.glb",
+   "bytes": 6388,
+   "parent": "PT704",
+   "place": {
+    "x": -400.0,
+    "y": 580.0,
+    "z": 280.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -400.0,
+    "y": 580.0,
+    "z": 280.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT10",
+   "confirm": true,
+   "size_mm": {
+    "x": 77.5,
+    "y": 2330.1,
+    "z": 227.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": {
+    "to": "PT778",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": -40.0,
+     "y": 220,
+     "z": -90
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT755",
+   "record_name": "Front side frames, R and L",
+   "side": "L",
+   "nodes": [
+    "body:PT755-L"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "hole A, across",
+     "value_mm": 400.0,
+     "how": "factory",
+     "source": "DT10 (SP-234, FSM)"
+    },
+    {
+     "dim": "hole A above the datum",
+     "value_mm": 220.0,
+     "how": "factory",
+     "source": "DT10 (SP-239, FSM)"
+    },
+    {
+     "dim": "hole A forward of the front axle",
+     "value_mm": 580.0,
+     "how": "guess",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) plan view"
+    },
+    {
+     "dim": "hole A to hole B, lengthwise",
+     "value_mm": 2250.0,
+     "how": "factory",
+     "source": "DT11 (SP-236, FSM)"
+    },
+    {
+     "dim": "front rail width",
+     "value_mm": 75.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "front rail depth",
+     "value_mm": 107.0,
+     "how": "factory",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) detail K, b = 107"
+    },
+    {
+     "dim": "front rail tip ahead of hole A",
+     "value_mm": 150.0,
+     "how": "derived",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) plan view (50 px x 2.98 mm/px)"
+    },
+    {
+     "dim": "rail depth under the floor",
+     "value_mm": 50.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "rail sheet thickness",
+     "value_mm": 1.6,
+     "how": "guess",
+     "source": ""
+    }
+   ],
+   "note": "origin at hole A (DT10)"
+  },
+  {
+   "id": "PT780-L",
+   "name": "Rear side frame (rail), with the upper link bracket, left",
+   "kind": "body",
+   "system": "body",
+   "zone": "underbody",
+   "glb": "unibody/PT780-L.glb",
+   "bytes": 32220,
+   "parent": "PT704",
+   "place": {
+    "x": -397.5,
+    "y": -1670.0,
+    "z": 160.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -397.5,
+    "y": -1670.0,
+    "z": 160.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT11",
+   "confirm": true,
+   "size_mm": {
+    "x": 186.5,
+    "y": 1640.9,
+    "z": 370.4
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": {
+    "to": "PT779",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": -40.0,
+     "y": -220,
+     "z": -90
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT780",
+   "record_name": "Rear side frames, R and L",
+   "side": "L",
+   "nodes": [
+    "body:PT780-L"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "hole B, across",
+     "value_mm": 397.5,
+     "how": "factory",
+     "source": "DT11 (SP-235, FSM)"
+    },
+    {
+     "dim": "hole A to hole B, lengthwise",
+     "value_mm": 2250.0,
+     "how": "factory",
+     "source": "DT11 (SP-236, FSM)"
+    },
+    {
+     "dim": "hole C, across",
+     "value_mm": 445.0,
+     "how": "factory",
+     "source": "DT12 (SP-237, FSM)"
+    },
+    {
+     "dim": "hole A to hole C, lengthwise",
+     "value_mm": 3445.0,
+     "how": "derived",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) diagonals 2990.4, 3095.6, 1466.2, 1190.9 (plan, A+460 hole to C; B to C)"
+    },
+    {
+     "dim": "hole C above the datum",
+     "value_mm": 345.0,
+     "how": "factory",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) side view"
+    },
+    {
+     "dim": "hole F, across",
+     "value_mm": 524.0,
+     "how": "factory",
+     "source": "DT13 (SP-238, FSM)"
+    },
+    {
+     "dim": "hole A to hole F, lengthwise",
+     "value_mm": 2784.0,
+     "how": "derived",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) plan view, F's line interpolated between B (2250) and C (3445) at 2.543 mm/px"
+    },
+    {
+     "dim": "hole F above the datum",
+     "value_mm": 339.4,
+     "how": "factory",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) side view"
+    },
+    {
+     "dim": "rear rail width",
+     "value_mm": 70.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "rear rail depth",
+     "value_mm": 100.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "rail depth under the floor",
+     "value_mm": 50.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "rail sheet thickness",
+     "value_mm": 1.6,
+     "how": "guess",
+     "source": ""
+    }
+   ],
+   "note": "origin at hole B (DT11). The rear upper link bracket (holes F, DT13) is drawn with it: the record has no row of its own for the bracket"
+  },
+  {
+   "id": "PT782-L",
+   "name": "Torque box, left",
+   "kind": "body",
+   "system": "body",
+   "zone": "underbody",
+   "glb": "unibody/PT782-L.glb",
+   "bytes": 1700,
+   "parent": "PT704",
+   "place": {
+    "x": -560.0,
+    "y": -910.0,
+    "z": 200.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -560.0,
+    "y": -910.0,
+    "z": 200.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 279.5,
+    "y": 90.0,
+    "z": 135.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT778",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": -60.0,
+     "y": 60,
+     "z": -100
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT782",
+   "record_name": "Torque boxes, R and L",
+   "side": "L",
+   "nodes": [
+    "body:PT782-L"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "toe board foot, lengthwise",
+     "value_mm": -850.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "sill inner face, across",
+     "value_mm": 690.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "hole A, across",
+     "value_mm": 400.0,
+     "how": "factory",
+     "source": "DT10 (SP-234, FSM)"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT771-L",
+   "name": "Side sill panel (outer), left",
+   "kind": "body",
+   "system": "body",
+   "zone": "doors",
+   "glb": "unibody/PT771-L.glb",
+   "bytes": 2128,
+   "parent": "PT704",
+   "place": {
+    "x": -800.0,
+    "y": -1200.0,
+    "z": 205.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -800.0,
+    "y": -1200.0,
+    "z": 205.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "blueprint",
+   "confirm": true,
+   "size_mm": {
+    "x": 95.0,
+    "y": 1670.0,
+    "z": 125.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "found",
+   "state": "rough",
+   "mate": {
+    "to": "PT778",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": -200.0,
+     "y": 0,
+     "z": 0
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (blueprint the-blueprints 83684)",
+   "record": "PT771",
+   "record_name": "Side sill panels, R and L",
+   "side": "L",
+   "nodes": [
+    "body:PT771-L"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "sill inner face, across",
+     "value_mm": 690.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "sill outer face, across",
+     "value_mm": 800.0,
+     "how": "guess",
+     "source": "blueprint the-blueprints 83684 plan (the rocker sits inside the door skin)"
+    },
+    {
+     "dim": "sill top height",
+     "value_mm": 330.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "sill bottom height",
+     "value_mm": 205.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 617 -> 210; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 205"
+    },
+    {
+     "dim": "rail sheet thickness",
+     "value_mm": 1.6,
+     "how": "guess",
+     "source": ""
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT783-L",
+   "name": "Inner side sill panel, left",
+   "kind": "body",
+   "system": "body",
+   "zone": "underbody",
+   "glb": "unibody/PT783-L.glb",
+   "bytes": 2128,
+   "parent": "PT704",
+   "place": {
+    "x": -690.0,
+    "y": -1200.0,
+    "z": 205.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -690.0,
+    "y": -1200.0,
+    "z": 205.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 25.0,
+    "y": 1310.0,
+    "z": 127.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT778",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": -120.0,
+     "y": 0,
+     "z": 0
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT783",
+   "record_name": "Inner side sill panels, R and L",
+   "side": "L",
+   "nodes": [
+    "body:PT783-L"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "sill inner face, across",
+     "value_mm": 690.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "sill top height",
+     "value_mm": 330.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "sill bottom height",
+     "value_mm": 205.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 617 -> 210; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 205"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT769-L",
+   "name": "Hinge pillar (A-pillar, lower), left",
+   "kind": "body",
+   "system": "body",
+   "zone": "doors",
+   "glb": "unibody/PT769-L.glb",
+   "bytes": 2152,
+   "parent": "PT704",
+   "place": {
+    "x": -770.0,
+    "y": -765.0,
+    "z": 330.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -770.0,
+    "y": -765.0,
+    "z": 330.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "blueprint",
+   "confirm": true,
+   "size_mm": {
+    "x": 70.0,
+    "y": 60.0,
+    "z": 560.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "found",
+   "state": "rough",
+   "mate": {
+    "to": "PT771-L",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": -120.0,
+     "y": 80,
+     "z": 0
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (blueprint the-blueprints 83684)",
+   "record": "PT769",
+   "record_name": "Hinge pillars, inner and outer, R and L",
+   "side": "L",
+   "nodes": [
+    "body:PT769-L"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "door opening front, lengthwise",
+     "value_mm": -728.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 993"
+    },
+    {
+     "dim": "sill top height",
+     "value_mm": 330.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "belt line height",
+     "value_mm": 870.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 240"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT770-L",
+   "name": "Front pillar (A-pillar, windshield), left",
+   "kind": "body",
+   "system": "body",
+   "zone": "cabin",
+   "glb": "unibody/PT770-L.glb",
+   "bytes": 4544,
+   "parent": "PT704",
+   "place": {
+    "x": -750.0,
+    "y": -765.0,
+    "z": 870.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -750.0,
+    "y": -765.0,
+    "z": 870.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "blueprint",
+   "confirm": true,
+   "size_mm": {
+    "x": 145.1,
+    "y": 447.4,
+    "z": 381.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "found",
+   "state": "rough",
+   "mate": {
+    "to": "PT769-L",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": -100.0,
+     "y": 0,
+     "z": 120
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (blueprint the-blueprints 83684)",
+   "record": "PT770",
+   "record_name": "Front pillars, inner, R and L",
+   "side": "L",
+   "nodes": [
+    "body:PT770-L"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "A-pillar top, lengthwise",
+     "value_mm": -980.0,
+     "how": "guess",
+     "source": "blueprint the-blueprints 83684 plan view px 1093 -> -910; side view puts the pillar's top further back"
+    },
+    {
+     "dim": "A-pillar top height",
+     "value_mm": 1150.0,
+     "how": "guess",
+     "source": "blueprint the-blueprints 83684 side view"
+    },
+    {
+     "dim": "roof front edge, lengthwise",
+     "value_mm": -1150.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 windshield top px 1253 -> -1200 (centre); found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -1200"
+    },
+    {
+     "dim": "roof half-width",
+     "value_mm": 690.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 plan 693; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut glass 699"
+    },
+    {
+     "dim": "belt line height",
+     "value_mm": 870.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 240"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT976-L",
+   "name": "Centre pillar (B-pillar and sail), left",
+   "kind": "body",
+   "system": "body",
+   "zone": "doors",
+   "glb": "unibody/PT976-L.glb",
+   "bytes": 1648,
+   "parent": "PT704",
+   "place": {
+    "x": -780.0,
+    "y": -1960.0,
+    "z": 330.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -780.0,
+    "y": -1960.0,
+    "z": 330.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "blueprint",
+   "confirm": true,
+   "size_mm": {
+    "x": 160.0,
+    "y": 339.0,
+    "z": 840.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "found",
+   "state": "rough",
+   "mate": {
+    "to": "PT771-L",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": -140.0,
+     "y": 0,
+     "z": 60
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (blueprint the-blueprints 83684)",
+   "record": "PT976",
+   "record_name": "Centre pillars (B-pillar and sail), R and L",
+   "side": "L",
+   "nodes": [
+    "body:PT976-L"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "door opening rear, lengthwise",
+     "value_mm": -1927.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 1653"
+    },
+    {
+     "dim": "centre pillar top, lengthwise",
+     "value_mm": -2010.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 1700"
+    },
+    {
+     "dim": "sail rear edge, lengthwise",
+     "value_mm": -2266.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 1840"
+    },
+    {
+     "dim": "sill top height",
+     "value_mm": 330.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "roof half-width",
+     "value_mm": 690.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 plan 693; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut glass 699"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT767-L",
+   "name": "Roof rail, left",
+   "kind": "body",
+   "system": "body",
+   "zone": "cabin",
+   "glb": "unibody/PT767-L.glb",
+   "bytes": 4424,
+   "parent": "PT704",
+   "place": {
+    "x": -680.0,
+    "y": -1150.0,
+    "z": 1190.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -680.0,
+    "y": -1150.0,
+    "z": 1190.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "blueprint",
+   "confirm": true,
+   "size_mm": {
+    "x": 50.0,
+    "y": 1062.8,
+    "z": 79.9
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "found",
+   "state": "rough",
+   "mate": {
+    "to": "PT770-L",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": -120.0,
+     "y": 0,
+     "z": 140
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (blueprint the-blueprints 83684)",
+   "record": "PT767",
+   "record_name": "Roof rails, inner and outer, R and L",
+   "side": "L",
+   "nodes": [
+    "body:PT767-L"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "roof half-width",
+     "value_mm": 690.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 plan 693; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut glass 699"
+    },
+    {
+     "dim": "roof front edge, lengthwise",
+     "value_mm": -1150.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 windshield top px 1253 -> -1200 (centre); found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -1200"
+    },
+    {
+     "dim": "roof rear edge (hatch hinge line), lengthwise",
+     "value_mm": -2220.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 1813 -> -2217; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -2200"
+    },
+    {
+     "dim": "roof's highest point, lengthwise",
+     "value_mm": -1540.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 roof top px 1440"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT768-L",
+   "name": "Quarter panel, with the rear arch, left",
+   "kind": "body",
+   "system": "body",
+   "zone": "rear",
+   "glb": "unibody/PT768-L.glb",
+   "bytes": 6700,
+   "parent": "PT704",
+   "place": {
+    "x": -834.4,
+    "y": -2420.0,
+    "z": 294.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -834.4,
+    "y": -2420.0,
+    "z": 294.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT03",
+   "confirm": true,
+   "size_mm": {
+    "x": 74.4,
+    "y": 1303.2,
+    "z": 665.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "found",
+   "state": "rough",
+   "mate": {
+    "to": "PT771-L",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": -260.0,
+     "y": -60,
+     "z": 0
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (blueprint the-blueprints 83684; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut)",
+   "record": "PT768",
+   "record_name": "Quarter panels, R and L",
+   "side": "L",
+   "nodes": [
+    "body:PT768-L"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "overall half-width",
+     "value_mm": 834.4,
+     "how": "factory",
+     "source": "DT05 (SP-134, S-004 p.15)"
+    },
+    {
+     "dim": "wheel arch radius",
+     "value_mm": 351.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 front arch 193 px"
+    },
+    {
+     "dim": "rear wheel centre to fender line",
+     "value_mm": 358.0,
+     "how": "factory",
+     "source": "DT08 (SP-106, S-003 T:7)"
+    },
+    {
+     "dim": "wheelbase",
+     "value_mm": 2420.0,
+     "how": "factory",
+     "source": "DT03 (SP-131, S-004 p.14)"
+    },
+    {
+     "dim": "belt line height",
+     "value_mm": 870.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 240"
+    },
+    {
+     "dim": "hatch aperture bottom, lengthwise",
+     "value_mm": -2990.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 2253 -> -2991; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -3000"
+    },
+    {
+     "dim": "hatch aperture bottom height",
+     "value_mm": 850.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 247 -> 857; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 846"
+    },
+    {
+     "dim": "door opening rear, lengthwise",
+     "value_mm": -1927.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 1653"
+    },
+    {
+     "dim": "rear end panel, lengthwise",
+     "value_mm": -3260.0,
+     "how": "guess",
+     "source": "DT04 rear end (-3339) less the bumper"
+    },
+    {
+     "dim": "sill bottom height",
+     "value_mm": 205.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 617 -> 210; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 205"
+    }
+   ],
+   "note": "origin at the rear wheel centre's line on the panel's outer face"
+  },
+  {
+   "id": "PT777-L",
+   "name": "Rear fender panel (inner wheelhouse), left",
+   "kind": "body",
+   "system": "body",
+   "zone": "rear",
+   "glb": "unibody/PT777-L.glb",
+   "bytes": 13916,
+   "parent": "PT704",
+   "place": {
+    "x": -560.0,
+    "y": -2420.0,
+    "z": 294.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -560.0,
+    "y": -2420.0,
+    "z": 294.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT03",
+   "confirm": true,
+   "size_mm": {
+    "x": 269.4,
+    "y": 675.2,
+    "z": 210.5
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT779",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": -140.0,
+     "y": 0,
+     "z": 80
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT777",
+   "record_name": "Rear fender panels, R and L",
+   "side": "L",
+   "nodes": [
+    "body:PT777-L"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "rear wheelhouse inner face, across",
+     "value_mm": 560.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "rear wheelhouse radius",
+     "value_mm": 375.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "wheelbase",
+     "value_mm": 2420.0,
+     "how": "factory",
+     "source": "DT03 (SP-131, S-004 p.14)"
+    },
+    {
+     "dim": "wheel centre height",
+     "value_mm": 294.5,
+     "how": "derived",
+     "source": "DT02 (tyre size, unloaded)"
+    }
+   ],
+   "note": "reading: FA01-70-400 'rear fender panel' is the inner wheelhouse - confirm against the catalogue figure"
+  },
+  {
+   "id": "PT784-L",
+   "name": "Floor deck (cargo side), left",
+   "kind": "body",
+   "system": "body",
+   "zone": "cargo",
+   "glb": "unibody/PT784-L.glb",
+   "bytes": 1648,
+   "parent": "PT704",
+   "place": {
+    "x": -670.0,
+    "y": -2975.0,
+    "z": 670.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -670.0,
+    "y": -2975.0,
+    "z": 670.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 230.0,
+    "y": 350.0,
+    "z": 1.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT779",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": -60.0,
+     "y": 0,
+     "z": 120
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT784",
+   "record_name": "Floor decks, R and L",
+   "side": "L",
+   "nodes": [
+    "body:PT784-L"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "rear wheelhouse inner face, across",
+     "value_mm": 560.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "rear wheelhouse radius",
+     "value_mm": 375.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "rear end panel, lengthwise",
+     "value_mm": -3260.0,
+     "how": "guess",
+     "source": "DT04 rear end (-3339) less the bumper"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT754-L",
+   "name": "Front wheel apron and strut tower, left",
+   "kind": "body",
+   "system": "body",
+   "zone": "engine_bay",
+   "glb": "unibody/PT754-L.glb",
+   "bytes": 53048,
+   "parent": "PT704",
+   "place": {
+    "x": -510.0,
+    "y": 0.0,
+    "z": 785.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -510.0,
+    "y": 0.0,
+    "z": 785.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 278.0,
+    "y": 1320.0,
+    "z": 398.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": {
+    "to": "PT755-L",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": -200.0,
+     "y": 60,
+     "z": 90
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT754",
+   "record_name": "Front wheel aprons, R and L",
+   "side": "L",
+   "nodes": [
+    "body:PT754-L"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "strut tower centre, across",
+     "value_mm": 510.0,
+     "how": "derived",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) plan view (the tower circle, 40 px outboard of the rail at 2.7 mm/px)"
+    },
+    {
+     "dim": "strut tower radius",
+     "value_mm": 90.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "strut tower top height",
+     "value_mm": 785.0,
+     "how": "guess",
+     "source": "blueprint the-blueprints 83684 hood line less 62"
+    },
+    {
+     "dim": "fender fixing nuts, across",
+     "value_mm": 662.0,
+     "how": "factory",
+     "source": "DT14 (SP-239, FSM)"
+    },
+    {
+     "dim": "fender fixing nut above hole A",
+     "value_mm": 435.0,
+     "how": "factory",
+     "source": "SP-1281 (FSM section G-G)"
+    },
+    {
+     "dim": "hole A, across",
+     "value_mm": 400.0,
+     "how": "factory",
+     "source": "DT10 (SP-234, FSM)"
+    },
+    {
+     "dim": "front rail depth",
+     "value_mm": 107.0,
+     "how": "factory",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) detail K, b = 107"
+    },
+    {
+     "dim": "radiator support, lengthwise",
+     "value_mm": 720.0,
+     "how": "guess",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) (rail tip at A + 150) and blueprint the-blueprints 83684 nose"
+    },
+    {
+     "dim": "firewall, lengthwise",
+     "value_mm": -640.0,
+     "how": "found",
+     "source": "00-CAR zones engine_bay / dash boundary -642 (the combined model, D-421)"
+    },
+    {
+     "dim": "wheel arch radius",
+     "value_mm": 351.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 front arch 193 px"
+    },
+    {
+     "dim": "front wheel centre to fender line",
+     "value_mm": 364.0,
+     "how": "factory",
+     "source": "SP-1280 (S-038 T:7)"
+    }
+   ],
+   "note": "origin at the strut tower's top centre"
+  },
+  {
+   "id": "PT766-L",
+   "name": "Cowl side panel, left",
+   "kind": "body",
+   "system": "body",
+   "zone": "cabin",
+   "glb": "unibody/PT766-L.glb",
+   "bytes": 1644,
+   "parent": "PT704",
+   "place": {
+    "x": -690.0,
+    "y": -640.0,
+    "z": 210.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -690.0,
+    "y": -640.0,
+    "z": 210.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 1.0,
+    "y": 118.0,
+    "z": 660.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT756",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": -120.0,
+     "y": 0,
+     "z": 0
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT766",
+   "record_name": "Cowl side panels, R and L",
+   "side": "L",
+   "nodes": [
+    "body:PT766-L"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "firewall, lengthwise",
+     "value_mm": -640.0,
+     "how": "found",
+     "source": "00-CAR zones engine_bay / dash boundary -642 (the combined model, D-421)"
+    },
+    {
+     "dim": "sill inner face, across",
+     "value_mm": 690.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "belt line height",
+     "value_mm": 870.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 240"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT761-L",
+   "name": "Engine bay side panel, left",
+   "kind": "body",
+   "system": "body",
+   "zone": "engine_bay",
+   "glb": "unibody/PT761-L.glb",
+   "bytes": 1648,
+   "parent": "PT704",
+   "place": {
+    "x": -640.0,
+    "y": 400.0,
+    "z": 450.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -640.0,
+    "y": 400.0,
+    "z": 450.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 1.0,
+    "y": 510.0,
+    "z": 230.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT754-L",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": -100.0,
+     "y": 80,
+     "z": 0
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT761",
+   "record_name": "Engine bay side panels, R and L",
+   "side": "L",
+   "nodes": [
+    "body:PT761-L"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "radiator support, lengthwise",
+     "value_mm": 720.0,
+     "how": "guess",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) (rail tip at A + 150) and blueprint the-blueprints 83684 nose"
+    }
+   ],
+   "note": "8871-56-370: read as the panel between the apron and the core support - confirm what it is"
+  },
+  {
+   "id": "PT772-L",
+   "name": "Rain rail (hatch opening side gutter), left",
+   "kind": "body",
+   "system": "body",
+   "zone": "cargo",
+   "glb": "unibody/PT772-L.glb",
+   "bytes": 1732,
+   "parent": "PT704",
+   "place": {
+    "x": -660.0,
+    "y": -2220.0,
+    "z": 1170.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -660.0,
+    "y": -2220.0,
+    "z": 1170.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "blueprint",
+   "confirm": true,
+   "size_mm": {
+    "x": 50.1,
+    "y": 740.8,
+    "z": 352.8
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "found",
+   "state": "rough",
+   "mate": {
+    "to": "PT768-L",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": -80.0,
+     "y": -40,
+     "z": 100
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (blueprint the-blueprints 83684)",
+   "record": "PT772",
+   "record_name": "Rain rails, R and L",
+   "side": "L",
+   "nodes": [
+    "body:PT772-L"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "roof half-width",
+     "value_mm": 690.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 plan 693; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut glass 699"
+    },
+    {
+     "dim": "roof rear edge (hatch hinge line), lengthwise",
+     "value_mm": -2220.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 1813 -> -2217; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -2200"
+    },
+    {
+     "dim": "roof rear edge height",
+     "value_mm": 1200.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 47 -> 1207; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 1194"
+    },
+    {
+     "dim": "hatch aperture bottom, lengthwise",
+     "value_mm": -2990.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 2253 -> -2991; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -3000"
+    },
+    {
+     "dim": "hatch aperture bottom height",
+     "value_mm": 850.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 247 -> 857; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 846"
+    }
+   ],
+   "note": "reading: the rain rails are the hatch opening's side gutters; with the rear roof header and the rear end panel's top they make the hatch aperture"
+  },
+  {
+   "id": "PT756",
+   "name": "Dash panel, lower (firewall and toe board)",
+   "kind": "body",
+   "system": "body",
+   "zone": "engine_bay",
+   "glb": "unibody/PT756.glb",
+   "bytes": 2136,
+   "parent": "PT704",
+   "place": {
+    "x": 0,
+    "y": -640.0,
+    "z": 520.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 0.0,
+    "y": -640.0,
+    "z": 520.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "00-CAR zones (D-421)",
+   "confirm": true,
+   "size_mm": {
+    "x": 1380.0,
+    "y": 250.7,
+    "z": 410.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT778",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 0,
+     "y": 200,
+     "z": 0
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT756",
+   "record_name": "Dash panel, lower (firewall)",
+   "side": null,
+   "nodes": [
+    "body:PT756"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "firewall, lengthwise",
+     "value_mm": -640.0,
+     "how": "found",
+     "source": "00-CAR zones engine_bay / dash boundary -642 (the combined model, D-421)"
+    },
+    {
+     "dim": "toe board foot, lengthwise",
+     "value_mm": -850.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "sill inner face, across",
+     "value_mm": 690.0,
+     "how": "guess",
+     "source": ""
+    },
+    {
+     "dim": "front floor above the datum",
+     "value_mm": 150.0,
+     "how": "guess",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) side view (the floor runs 120-150 above the datum)"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT757",
+   "name": "Dash panel, upper",
+   "kind": "body",
+   "system": "body",
+   "zone": "engine_bay",
+   "glb": "unibody/PT757.glb",
+   "bytes": 1896,
+   "parent": "PT704",
+   "place": {
+    "x": 0,
+    "y": -640.0,
+    "z": 700.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 0.0,
+    "y": -640.0,
+    "z": 700.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "00-CAR zones (D-421)",
+   "confirm": true,
+   "size_mm": {
+    "x": 1380.0,
+    "y": 20.6,
+    "z": 175.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT756",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 0,
+     "y": 120,
+     "z": 80
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT757",
+   "record_name": "Dash panel, upper",
+   "side": null,
+   "nodes": [
+    "body:PT757"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "firewall, lengthwise",
+     "value_mm": -640.0,
+     "how": "found",
+     "source": "00-CAR zones engine_bay / dash boundary -642 (the combined model, D-421)"
+    },
+    {
+     "dim": "windshield base height",
+     "value_mm": 880.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 207 -> 927; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 871"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT762",
+   "name": "Upper cowling panel (plenum front)",
+   "kind": "body",
+   "system": "body",
+   "zone": "engine_bay",
+   "glb": "unibody/PT762.glb",
+   "bytes": 1912,
+   "parent": "PT704",
+   "place": {
+    "x": 0,
+    "y": -560.0,
+    "z": 770.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 0.0,
+    "y": -560.0,
+    "z": 770.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 1380.0,
+    "y": 95.9,
+    "z": 69.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT757",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 0,
+     "y": 120,
+     "z": 100
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT762",
+   "record_name": "Upper cowling panel",
+   "side": null,
+   "nodes": [
+    "body:PT762"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "firewall, lengthwise",
+     "value_mm": -640.0,
+     "how": "found",
+     "source": "00-CAR zones engine_bay / dash boundary -642 (the combined model, D-421)"
+    },
+    {
+     "dim": "hood line at the front axle",
+     "value_mm": 847.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 253 at the front axle"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT764",
+   "name": "Cowl panel (under the windshield)",
+   "kind": "body",
+   "system": "body",
+   "zone": "engine_bay",
+   "glb": "unibody/PT764.glb",
+   "bytes": 1668,
+   "parent": "PT704",
+   "place": {
+    "x": 0,
+    "y": -720.0,
+    "z": 880.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 0.0,
+    "y": -720.0,
+    "z": 880.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "blueprint",
+   "confirm": true,
+   "size_mm": {
+    "x": 1380.0,
+    "y": 60.8,
+    "z": 85.6
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "found",
+   "state": "rough",
+   "mate": {
+    "to": "PT757",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 0,
+     "y": 40,
+     "z": 200
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (blueprint the-blueprints 83684; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut)",
+   "record": "PT764",
+   "record_name": "Cowl panel",
+   "side": null,
+   "nodes": [
+    "body:PT764"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "windshield base, lengthwise",
+     "value_mm": -720.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 1000 -> -741; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> -700"
+    },
+    {
+     "dim": "windshield base height",
+     "value_mm": 880.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 207 -> 927; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 871"
+    },
+    {
+     "dim": "firewall, lengthwise",
+     "value_mm": -640.0,
+     "how": "found",
+     "source": "00-CAR zones engine_bay / dash boundary -642 (the combined model, D-421)"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT773-front",
+   "name": "Roof header, front",
+   "kind": "body",
+   "system": "body",
+   "zone": "cabin",
+   "glb": "unibody/PT773-front.glb",
+   "bytes": 2172,
+   "parent": "PT704",
+   "place": {
+    "x": 0,
+    "y": -1150.0,
+    "z": 1190.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 0.0,
+    "y": -1150.0,
+    "z": 1190.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "blueprint",
+   "confirm": true,
+   "size_mm": {
+    "x": 1350.0,
+    "y": 60.0,
+    "z": 35.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "found",
+   "state": "rough",
+   "mate": {
+    "to": "PT767-L",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 0,
+     "y": 100,
+     "z": 160
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (blueprint the-blueprints 83684)",
+   "record": "PT773",
+   "record_name": "Roof headers, front and rear",
+   "side": null,
+   "nodes": [
+    "body:PT773-front"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "roof front edge, lengthwise",
+     "value_mm": -1150.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 windshield top px 1253 -> -1200 (centre); found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -1200"
+    },
+    {
+     "dim": "roof half-width",
+     "value_mm": 690.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 plan 693; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut glass 699"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT773-rear",
+   "name": "Roof header, rear (hatch hinge line)",
+   "kind": "body",
+   "system": "body",
+   "zone": "cabin",
+   "glb": "unibody/PT773-rear.glb",
+   "bytes": 2168,
+   "parent": "PT704",
+   "place": {
+    "x": 0,
+    "y": -2220.0,
+    "z": 1170.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 0.0,
+    "y": -2220.0,
+    "z": 1170.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "blueprint",
+   "confirm": true,
+   "size_mm": {
+    "x": 1350.0,
+    "y": 60.0,
+    "z": 35.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "found",
+   "state": "rough",
+   "mate": {
+    "to": "PT767-L",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 0,
+     "y": -100,
+     "z": 160
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (blueprint the-blueprints 83684)",
+   "record": "PT773",
+   "record_name": "Roof headers, front and rear",
+   "side": null,
+   "nodes": [
+    "body:PT773-rear"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "roof rear edge (hatch hinge line), lengthwise",
+     "value_mm": -2220.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 1813 -> -2217; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -2200"
+    },
+    {
+     "dim": "roof rear edge height",
+     "value_mm": 1200.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 47 -> 1207; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 1194"
+    },
+    {
+     "dim": "roof half-width",
+     "value_mm": 690.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 plan 693; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut glass 699"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT774",
+   "name": "Roof panel",
+   "kind": "body",
+   "system": "body",
+   "zone": "cabin",
+   "glb": "unibody/PT774.glb",
+   "bytes": 22904,
+   "parent": "PT704",
+   "place": {
+    "x": 0,
+    "y": -1540.0,
+    "z": 1259.8,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 0.0,
+    "y": -1540.0,
+    "z": 1259.8,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT06",
+   "confirm": true,
+   "size_mm": {
+    "x": 1380.2,
+    "y": 1070.0,
+    "z": 106.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "found",
+   "state": "rough",
+   "mate": {
+    "to": "PT773-front",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 0,
+     "y": 0,
+     "z": 300
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (blueprint the-blueprints 83684; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut)",
+   "record": "PT774",
+   "record_name": "Roof panel",
+   "side": null,
+   "nodes": [
+    "body:PT774"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "overall height",
+     "value_mm": 1259.8,
+     "how": "factory",
+     "source": "DT06 (SP-135, S-004 p.15)"
+    },
+    {
+     "dim": "roof's highest point, lengthwise",
+     "value_mm": -1540.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 roof top px 1440"
+    },
+    {
+     "dim": "roof front edge, lengthwise",
+     "value_mm": -1150.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 windshield top px 1253 -> -1200 (centre); found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -1200"
+    },
+    {
+     "dim": "roof rear edge (hatch hinge line), lengthwise",
+     "value_mm": -2220.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 px 1813 -> -2217; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -2200"
+    },
+    {
+     "dim": "roof rear edge height",
+     "value_mm": 1200.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 47 -> 1207; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 1194"
+    },
+    {
+     "dim": "roof half-width",
+     "value_mm": 690.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 plan 693; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut glass 699"
+    },
+    {
+     "dim": "roof camber",
+     "value_mm": 45.0,
+     "how": "guess",
+     "source": "blueprint the-blueprints 83684 front view"
+    }
+   ],
+   "note": "origin at the roof's highest point, on DT06"
+  },
+  {
+   "id": "PT753",
+   "name": "Radiator support (core support)",
+   "kind": "body",
+   "system": "body",
+   "zone": "front",
+   "glb": "unibody/PT753.glb",
+   "bytes": 3116,
+   "parent": "PT704",
+   "place": {
+    "x": 0,
+    "y": 720.0,
+    "z": 480.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 0.0,
+    "y": 720.0,
+    "z": 480.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 1370.0,
+    "y": 50.0,
+    "z": 400.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT755-L",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 0,
+     "y": 260,
+     "z": 0
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT753",
+   "record_name": "Radiator shroud panel (core support)",
+   "side": null,
+   "nodes": [
+    "body:PT753"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "radiator support, lengthwise",
+     "value_mm": 720.0,
+     "how": "guess",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) (rail tip at A + 150) and blueprint the-blueprints 83684 nose"
+    },
+    {
+     "dim": "front rail tip ahead of hole A",
+     "value_mm": 150.0,
+     "how": "derived",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) plan view (50 px x 2.98 mm/px)"
+    },
+    {
+     "dim": "hole A, across",
+     "value_mm": 400.0,
+     "how": "factory",
+     "source": "DT10 (SP-234, FSM)"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT752",
+   "name": "Nose panel",
+   "kind": "body",
+   "system": "body",
+   "zone": "front",
+   "glb": "unibody/PT752.glb",
+   "bytes": 1640,
+   "parent": "PT704",
+   "place": {
+    "x": 0,
+    "y": 810.0,
+    "z": 410.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 0.0,
+    "y": 810.0,
+    "z": 410.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 1400.0,
+    "y": 1.0,
+    "z": 220.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT753",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 0,
+     "y": 160,
+     "z": 0
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT752",
+   "record_name": "Nose panel",
+   "side": null,
+   "nodes": [
+    "body:PT752"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "radiator support, lengthwise",
+     "value_mm": 720.0,
+     "how": "guess",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) (rail tip at A + 150) and blueprint the-blueprints 83684 nose"
+    },
+    {
+     "dim": "front overhang",
+     "value_mm": 981.5,
+     "how": "derived",
+     "source": "blueprint the-blueprints 83684 (front tip px 27 of overhang px 565 + 529)"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT775",
+   "name": "Rear end panel",
+   "kind": "body",
+   "system": "body",
+   "zone": "rear",
+   "glb": "unibody/PT775.glb",
+   "bytes": 1640,
+   "parent": "PT704",
+   "place": {
+    "x": 0,
+    "y": -3260.0,
+    "z": 590.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 0.0,
+    "y": -3260.0,
+    "z": 590.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 1520.0,
+    "y": 1.0,
+    "z": 420.0
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT779",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 0,
+     "y": -260,
+     "z": 0
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT775",
+   "record_name": "Rear end panel",
+   "side": null,
+   "nodes": [
+    "body:PT775"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "rear end panel, lengthwise",
+     "value_mm": -3260.0,
+     "how": "guess",
+     "source": "DT04 rear end (-3339) less the bumper"
+    },
+    {
+     "dim": "rear overhang",
+     "value_mm": 919.0,
+     "how": "derived",
+     "source": "blueprint the-blueprints 83684 (rear tip px 2453)"
+    },
+    {
+     "dim": "hatch aperture bottom height",
+     "value_mm": 850.0,
+     "how": "found",
+     "source": "blueprint the-blueprints 83684 row 247 -> 857; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 846"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "PT776",
+   "name": "Rear skirt panel",
+   "kind": "body",
+   "system": "body",
+   "zone": "rear",
+   "glb": "unibody/PT776.glb",
+   "bytes": 1668,
+   "parent": "PT704",
+   "place": {
+    "x": 0,
+    "y": -3270.0,
+    "z": 315.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 0.0,
+    "y": -3270.0,
+    "z": 315.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": {
+    "x": 1480.0,
+    "y": 21.0,
+    "z": 130.2
+   },
+   "origin": "a point on the panel; the glb is drawn about it",
+   "made_from": "guess",
+   "state": "rough",
+   "mate": {
+    "to": "PT775",
+    "kind": "welded",
+    "fasteners": [],
+    "apart": {
+     "x": 0,
+     "y": -120,
+     "z": -60
+    }
+   },
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (unibody/params.py)",
+   "record": "PT776",
+   "record_name": "Rear skirt panel",
+   "side": null,
+   "nodes": [
+    "body:PT776"
+   ],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "rear end panel, lengthwise",
+     "value_mm": -3260.0,
+     "how": "guess",
+     "source": "DT04 rear end (-3339) less the bumper"
+    }
+   ],
+   "note": ""
+  },
+  {
+   "id": "hp-A-R",
+   "name": "Front frame basic hole A, R",
+   "kind": "node",
+   "system": "body",
+   "zone": "underbody",
+   "glb": null,
+   "bytes": 0,
+   "parent": "PT704",
+   "place": {
+    "x": 400.0,
+    "y": 580.0,
+    "z": 280.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 400.0,
+    "y": 580.0,
+    "z": 280.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT10",
+   "confirm": true,
+   "size_mm": null,
+   "origin": "",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (datum DT10)",
+   "record": null,
+   "record_name": null,
+   "side": null,
+   "nodes": [],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "hole A, across",
+     "value_mm": 400.0,
+     "how": "factory",
+     "source": "DT10 (SP-234, FSM)"
+    },
+    {
+     "dim": "hole A forward of the front axle",
+     "value_mm": 580.0,
+     "how": "guess",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) plan view"
+    }
+   ],
+   "note": "on PT755-R"
+  },
+  {
+   "id": "hp-B-R",
+   "name": "Rear frame basic hole B, R",
+   "kind": "node",
+   "system": "body",
+   "zone": "underbody",
+   "glb": null,
+   "bytes": 0,
+   "parent": "PT704",
+   "place": {
+    "x": 397.5,
+    "y": -1670.0,
+    "z": 160.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 397.5,
+    "y": -1670.0,
+    "z": 160.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT11",
+   "confirm": true,
+   "size_mm": null,
+   "origin": "",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (datum DT11)",
+   "record": null,
+   "record_name": null,
+   "side": null,
+   "nodes": [],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "hole B, across",
+     "value_mm": 397.5,
+     "how": "factory",
+     "source": "DT11 (SP-235, FSM)"
+    },
+    {
+     "dim": "hole A to hole B, lengthwise",
+     "value_mm": 2250.0,
+     "how": "factory",
+     "source": "DT11 (SP-236, FSM)"
+    }
+   ],
+   "note": "on PT780-R"
+  },
+  {
+   "id": "hp-C-R",
+   "name": "Rear frame hole C, R",
+   "kind": "node",
+   "system": "body",
+   "zone": "underbody",
+   "glb": null,
+   "bytes": 0,
+   "parent": "PT704",
+   "place": {
+    "x": 445.0,
+    "y": -2865.0,
+    "z": 405.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 445.0,
+    "y": -2865.0,
+    "z": 405.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT12",
+   "confirm": true,
+   "size_mm": null,
+   "origin": "",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (datum DT12)",
+   "record": null,
+   "record_name": null,
+   "side": null,
+   "nodes": [],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "hole C, across",
+     "value_mm": 445.0,
+     "how": "factory",
+     "source": "DT12 (SP-237, FSM)"
+    },
+    {
+     "dim": "hole A to hole C, lengthwise",
+     "value_mm": 3445.0,
+     "how": "derived",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) diagonals 2990.4, 3095.6, 1466.2, 1190.9 (plan, A+460 hole to C; B to C)"
+    }
+   ],
+   "note": "on PT780-R"
+  },
+  {
+   "id": "hp-E-R",
+   "name": "Lower arm fixing hole E, R",
+   "kind": "node",
+   "system": "body",
+   "zone": "underbody",
+   "glb": null,
+   "bytes": 0,
+   "parent": "PT704",
+   "place": {
+    "x": 530.0,
+    "y": -1939.0,
+    "z": 170.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 530.0,
+    "y": -1939.0,
+    "z": 170.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": null,
+   "origin": "",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (FSM S-002 p.14-24)",
+   "record": null,
+   "record_name": null,
+   "side": null,
+   "nodes": [],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "hole E, across",
+     "value_mm": 530.0,
+     "how": "guess",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) plan view"
+    },
+    {
+     "dim": "hole A to hole E, lengthwise",
+     "value_mm": 2519.0,
+     "how": "derived",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) diagonal E to the opposite C 1343.6, with e_half and a_to_c"
+    }
+   ],
+   "note": "on PT780-R"
+  },
+  {
+   "id": "hp-F-R",
+   "name": "Upper arm fixing hole F, R",
+   "kind": "node",
+   "system": "body",
+   "zone": "underbody",
+   "glb": null,
+   "bytes": 0,
+   "parent": "PT704",
+   "place": {
+    "x": 524.0,
+    "y": -2204.0,
+    "z": 399.4,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 524.0,
+    "y": -2204.0,
+    "z": 399.4,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT13",
+   "confirm": true,
+   "size_mm": null,
+   "origin": "",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (datum DT13)",
+   "record": null,
+   "record_name": null,
+   "side": null,
+   "nodes": [],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "hole F, across",
+     "value_mm": 524.0,
+     "how": "factory",
+     "source": "DT13 (SP-238, FSM)"
+    },
+    {
+     "dim": "hole A to hole F, lengthwise",
+     "value_mm": 2784.0,
+     "how": "derived",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) plan view, F's line interpolated between B (2250) and C (3445) at 2.543 mm/px"
+    }
+   ],
+   "note": "on PT780-R"
+  },
+  {
+   "id": "hp-DT14-R",
+   "name": "Front fender fixing nut, R",
+   "kind": "node",
+   "system": "body",
+   "zone": "underbody",
+   "glb": null,
+   "bytes": 0,
+   "parent": "PT704",
+   "place": {
+    "x": 662.0,
+    "y": 0.0,
+    "z": 715.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 662.0,
+    "y": 0.0,
+    "z": 715.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT14",
+   "confirm": true,
+   "size_mm": null,
+   "origin": "",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (datum DT14)",
+   "record": null,
+   "record_name": null,
+   "side": null,
+   "nodes": [],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "fender fixing nuts, across",
+     "value_mm": 662.0,
+     "how": "factory",
+     "source": "DT14 (SP-239, FSM)"
+    },
+    {
+     "dim": "fender fixing nut above hole A",
+     "value_mm": 435.0,
+     "how": "factory",
+     "source": "SP-1281 (FSM section G-G)"
+    }
+   ],
+   "note": "on PT754-R"
+  },
+  {
+   "id": "hp-DT03-R",
+   "name": "Rear wheel centre, R",
+   "kind": "node",
+   "system": "body",
+   "zone": "underbody",
+   "glb": null,
+   "bytes": 0,
+   "parent": "PT704",
+   "place": {
+    "x": 699.75,
+    "y": -2420.0,
+    "z": 294.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 699.75,
+    "y": -2420.0,
+    "z": 294.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT03",
+   "confirm": true,
+   "size_mm": null,
+   "origin": "",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (datum DT03)",
+   "record": null,
+   "record_name": null,
+   "side": null,
+   "nodes": [],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "wheelbase",
+     "value_mm": 2420.0,
+     "how": "factory",
+     "source": "DT03 (SP-131, S-004 p.14)"
+    }
+   ],
+   "note": "on PT704"
+  },
+  {
+   "id": "hp-A-L",
+   "name": "Front frame basic hole A, L",
+   "kind": "node",
+   "system": "body",
+   "zone": "underbody",
+   "glb": null,
+   "bytes": 0,
+   "parent": "PT704",
+   "place": {
+    "x": -400.0,
+    "y": 580.0,
+    "z": 280.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -400.0,
+    "y": 580.0,
+    "z": 280.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT10",
+   "confirm": true,
+   "size_mm": null,
+   "origin": "",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (datum DT10)",
+   "record": null,
+   "record_name": null,
+   "side": null,
+   "nodes": [],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "hole A, across",
+     "value_mm": 400.0,
+     "how": "factory",
+     "source": "DT10 (SP-234, FSM)"
+    },
+    {
+     "dim": "hole A forward of the front axle",
+     "value_mm": 580.0,
+     "how": "guess",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) plan view"
+    }
+   ],
+   "note": "on PT755-L"
+  },
+  {
+   "id": "hp-B-L",
+   "name": "Rear frame basic hole B, L",
+   "kind": "node",
+   "system": "body",
+   "zone": "underbody",
+   "glb": null,
+   "bytes": 0,
+   "parent": "PT704",
+   "place": {
+    "x": -397.5,
+    "y": -1670.0,
+    "z": 160.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -397.5,
+    "y": -1670.0,
+    "z": 160.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT11",
+   "confirm": true,
+   "size_mm": null,
+   "origin": "",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (datum DT11)",
+   "record": null,
+   "record_name": null,
+   "side": null,
+   "nodes": [],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "hole B, across",
+     "value_mm": 397.5,
+     "how": "factory",
+     "source": "DT11 (SP-235, FSM)"
+    },
+    {
+     "dim": "hole A to hole B, lengthwise",
+     "value_mm": 2250.0,
+     "how": "factory",
+     "source": "DT11 (SP-236, FSM)"
+    }
+   ],
+   "note": "on PT780-L"
+  },
+  {
+   "id": "hp-C-L",
+   "name": "Rear frame hole C, L",
+   "kind": "node",
+   "system": "body",
+   "zone": "underbody",
+   "glb": null,
+   "bytes": 0,
+   "parent": "PT704",
+   "place": {
+    "x": -445.0,
+    "y": -2865.0,
+    "z": 405.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -445.0,
+    "y": -2865.0,
+    "z": 405.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT12",
+   "confirm": true,
+   "size_mm": null,
+   "origin": "",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (datum DT12)",
+   "record": null,
+   "record_name": null,
+   "side": null,
+   "nodes": [],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "hole C, across",
+     "value_mm": 445.0,
+     "how": "factory",
+     "source": "DT12 (SP-237, FSM)"
+    },
+    {
+     "dim": "hole A to hole C, lengthwise",
+     "value_mm": 3445.0,
+     "how": "derived",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) diagonals 2990.4, 3095.6, 1466.2, 1190.9 (plan, A+460 hole to C; B to C)"
+    }
+   ],
+   "note": "on PT780-L"
+  },
+  {
+   "id": "hp-E-L",
+   "name": "Lower arm fixing hole E, L",
+   "kind": "node",
+   "system": "body",
+   "zone": "underbody",
+   "glb": null,
+   "bytes": 0,
+   "parent": "PT704",
+   "place": {
+    "x": -530.0,
+    "y": -1939.0,
+    "z": 170.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -530.0,
+    "y": -1939.0,
+    "z": 170.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "FSM S-002 p.14-24",
+   "confirm": true,
+   "size_mm": null,
+   "origin": "",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (FSM S-002 p.14-24)",
+   "record": null,
+   "record_name": null,
+   "side": null,
+   "nodes": [],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "hole E, across",
+     "value_mm": 530.0,
+     "how": "guess",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) plan view"
+    },
+    {
+     "dim": "hole A to hole E, lengthwise",
+     "value_mm": 2519.0,
+     "how": "derived",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) diagonal E to the opposite C 1343.6, with e_half and a_to_c"
+    }
+   ],
+   "note": "on PT780-L"
+  },
+  {
+   "id": "hp-F-L",
+   "name": "Upper arm fixing hole F, L",
+   "kind": "node",
+   "system": "body",
+   "zone": "underbody",
+   "glb": null,
+   "bytes": 0,
+   "parent": "PT704",
+   "place": {
+    "x": -524.0,
+    "y": -2204.0,
+    "z": 399.4,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -524.0,
+    "y": -2204.0,
+    "z": 399.4,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT13",
+   "confirm": true,
+   "size_mm": null,
+   "origin": "",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (datum DT13)",
+   "record": null,
+   "record_name": null,
+   "side": null,
+   "nodes": [],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "hole F, across",
+     "value_mm": 524.0,
+     "how": "factory",
+     "source": "DT13 (SP-238, FSM)"
+    },
+    {
+     "dim": "hole A to hole F, lengthwise",
+     "value_mm": 2784.0,
+     "how": "derived",
+     "source": "S-002 p.14-24 (FSM body checking dimensions) plan view, F's line interpolated between B (2250) and C (3445) at 2.543 mm/px"
+    }
+   ],
+   "note": "on PT780-L"
+  },
+  {
+   "id": "hp-DT14-L",
+   "name": "Front fender fixing nut, L",
+   "kind": "node",
+   "system": "body",
+   "zone": "underbody",
+   "glb": null,
+   "bytes": 0,
+   "parent": "PT704",
+   "place": {
+    "x": -662.0,
+    "y": 0.0,
+    "z": 715.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -662.0,
+    "y": 0.0,
+    "z": 715.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT14",
+   "confirm": true,
+   "size_mm": null,
+   "origin": "",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (datum DT14)",
+   "record": null,
+   "record_name": null,
+   "side": null,
+   "nodes": [],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "fender fixing nuts, across",
+     "value_mm": 662.0,
+     "how": "factory",
+     "source": "DT14 (SP-239, FSM)"
+    },
+    {
+     "dim": "fender fixing nut above hole A",
+     "value_mm": 435.0,
+     "how": "factory",
+     "source": "SP-1281 (FSM section G-G)"
+    }
+   ],
+   "note": "on PT754-L"
+  },
+  {
+   "id": "hp-DT03-L",
+   "name": "Rear wheel centre, L",
+   "kind": "node",
+   "system": "body",
+   "zone": "underbody",
+   "glb": null,
+   "bytes": 0,
+   "parent": "PT704",
+   "place": {
+    "x": -699.75,
+    "y": -2420.0,
+    "z": 294.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": -699.75,
+    "y": -2420.0,
+    "z": 294.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT03",
+   "confirm": true,
+   "size_mm": null,
+   "origin": "",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (datum DT03)",
+   "record": null,
+   "record_name": null,
+   "side": null,
+   "nodes": [],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "wheelbase",
+     "value_mm": 2420.0,
+     "how": "factory",
+     "source": "DT03 (SP-131, S-004 p.14)"
+    }
+   ],
+   "note": "on PT704"
+  },
+  {
+   "id": "hp-DT02-R",
+   "name": "Front wheel centre, R",
+   "kind": "node",
+   "system": "body",
+   "zone": "underbody",
+   "glb": null,
+   "bytes": 0,
+   "parent": "PT704",
+   "place": {
+    "x": 710.0,
+    "y": 0.0,
+    "z": 294.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 710.0,
+    "y": 0.0,
+    "z": 294.5,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT02",
+   "confirm": true,
+   "size_mm": null,
+   "origin": "",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (datum DT02)",
+   "record": null,
+   "record_name": null,
+   "side": null,
+   "nodes": [],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "wheel centre height",
+     "value_mm": 294.5,
+     "how": "derived",
+     "source": "DT02 (tyre size, unloaded)"
+    }
+   ],
+   "note": "on PT704"
+  },
+  {
+   "id": "hp-front-end",
+   "name": "Overall length, front end (bumper)",
+   "kind": "node",
+   "system": "body",
+   "zone": "underbody",
+   "glb": null,
+   "bytes": 0,
+   "parent": "PT704",
+   "place": {
+    "x": 0.0,
+    "y": 981.5,
+    "z": 420.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 0.0,
+    "y": 981.5,
+    "z": 420.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT04",
+   "confirm": true,
+   "size_mm": null,
+   "origin": "",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (datum DT04)",
+   "record": null,
+   "record_name": null,
+   "side": null,
+   "nodes": [],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "front overhang",
+     "value_mm": 981.5,
+     "how": "derived",
+     "source": "blueprint the-blueprints 83684 (front tip px 27 of overhang px 565 + 529)"
+    }
+   ],
+   "note": "on PT704"
+  },
+  {
+   "id": "hp-rear-end",
+   "name": "Overall length, rear end (bumper)",
+   "kind": "node",
+   "system": "body",
+   "zone": "underbody",
+   "glb": null,
+   "bytes": 0,
+   "parent": "PT704",
+   "place": {
+    "x": 0.0,
+    "y": -3339.0,
+    "z": 420.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "world": {
+    "x": 0.0,
+    "y": -3339.0,
+    "z": 420.0,
+    "rx": 0.0,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "datum DT04",
+   "confirm": true,
+   "size_mm": null,
+   "origin": "",
+   "made_from": "factory",
+   "state": "rough",
+   "mate": null,
+   "children": [],
+   "source": "02-PROJECTS/05-cad/model/unibody (datum DT04)",
+   "record": null,
+   "record_name": null,
+   "side": null,
+   "nodes": [],
+   "assembly": "unibody",
+   "dims": [
+    {
+     "dim": "rear overhang",
+     "value_mm": 919.0,
+     "how": "derived",
+     "source": "blueprint the-blueprints 83684 (rear tip px 2453)"
+    }
+   ],
+   "note": "on PT704"
+  }
+ ],
+ "links": [],
+ "legs": [],
+ "missing": [
+  {
+   "what": "the other three corners (FR, RL, RR)",
+   "why": "A04 builds one corner as the tool-chain proof; B01 copies it to DT02 / DT03"
+  },
+  {
+   "what": "the skin and closures: hood, front fenders, doors, the hatch (back door) panel and glass, bumpers, glass",
+   "why": "B01's second pass, from the found models once B03 lands; the hatch panel and glass have no 00-CAR row yet"
+  },
+  {
+   "what": "the knuckle, strut and suspension the hub turns on",
+   "why": "not modelled yet: the hub is placed on DT02 directly"
+  },
+  {
+   "what": "the hatch aperture as one ring",
+   "why": "drawn as its pieces: PT773-rear (header), PT772-L/-R (gutters), PT775 (the rear end panel's top)"
+  },
+  {
+   "what": "the rear upper link brackets as their own part",
+   "why": "no 00-CAR row: drawn with PT780-L/-R, the rear side frames"
+  }
+ ],
+ "notes": [
+  "Nothing in this model is measured on the car (R11): every part is confirm, every number in model_dims says how it is known.",
+  "place is in the parent's frame (the electrical contract); world is the same place in the car's frame. PT704, the shell, sits at the car's origin unturned, so a panel's place is its world.",
+  "mate.apart is the move, in the car's frame (mm), of a part away from its mate.to when the car is taken apart; a chain adds them (a nut moves with its wheel, then off it).",
+  "A 00-CAR row that covers a left-right pair is drawn as two parts, its id with -L / -R; record names the row.",
+  "The overall length (DT04) and width (DT05) include bumpers and mouldings that are not in this pass: the nodes hp-front-end and hp-rear-end mark the length's ends.",
+  "glb files are mm, z up, in the part's own frame; three.js strips ':' from node names - the written name is in userData.name."
+ ]
+}
