@@ -421,3 +421,14 @@ D-508,radar,"Radar: the concealed detector subsystem as designed - sensors on el
 7. Where it is sold: an installer-only system may mean buying the install too; the pick states the price both ways.
 
 **Consequences.** LP44 gets this spec and D-502's estimate (USD 2,000-4,000, confirm), status `search`. Work X-014 (agent, parts round 5: the detector, primary and runner-up as picks) is added, gated on nothing: the sensor positions wait for 04.13, the choice of system does not. I16 keeps its gate (Z-002, 01-electrical E34) and its note names X-014. Stage S8 and FT28 are brought up to date. Electrical's A20, SN30 and P187 wait on X-014's pick, as their notes already say. Z-002 is done."
+D-526,,LP55 head unit: Pioneer DMH-W4660NEX (PK037),2026-10-13,standing,,,,,"**LP55, the head unit, is the Pioneer DMH-W4660NEX, USD 600 at usa.pioneer (pick PK037).**
+
+His answer on pick PK037 (desktop, 2026-10-13T15:16:31-06:00): ""yes"".
+
+The pick he accepted: Pioneer DMH-W4660NEX 6.8 in double-DIN receiver, wired and wireless CarPlay and Android Auto, USD 600. The recommendation he accepted read: ""Yes, if touch keys on the face are acceptable in exchange for an exact green and every filter off."" His yes therefore accepts touch keys on the face as meeting D-128's ""physical buttons"" for this part; it narrows no option.
+
+Reasoning: the maker documents a key colour settable by RGB and every filter switchable OFF; six pre-outs at 4 V; one rear USB-C at 3 A. Drawbacks accepted with it: touch keys, one USB-C not two, 4 V pre-out at the floor.
+
+Still open as confirm on the parts row (R11, nothing measured): chassis depth against the depth behind the FB dash, that [Illumination] lights the face keys, the L3-M receptacle's four feeds against this unit's harness. The runner-up PK038 stays in reserve.
+
+Consequences in the data: PK037 accepted; LP55 status chosen with spec naming the product."
