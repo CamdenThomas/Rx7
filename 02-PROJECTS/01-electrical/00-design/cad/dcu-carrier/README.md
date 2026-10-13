@@ -6,6 +6,11 @@ That is the record, and this is a drawing of it. Read `../README.md` first: it i
 
 ## Where it stands
 
+**2026-10-12 (Y17): bench revision A (board rev 0.04) is packaged under `fab/`** - gerbers, Excellon drill
+(PTH / NPTH, maps), `dcu-carrier-revA-gerbers.zip` and `dcu-carrier-revA-bom.csv` (MPNs `confirm` where the sheet
+does not name them; the D-489 / D-455 parts listed as not fitted), from this board on its provisional outline, for
+the bench order of D-490; the final board follows F11.
+
 **Sheet and board are both rev 0.04 (Y12, 2026-10-11).** The sheet carries D-458 and D-465; ERC is 0 / 0 and
 `../check.py --board dcu` reads 0 mismatches:
 

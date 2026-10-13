@@ -6,6 +6,10 @@ record; this is a drawing of it. Read `../README.md` first: it is the fence.*
 
 ## Where it stands
 
+**2026-10-12 (Y17): bench revision A is packaged under `fab/`** - gerbers, Excellon drill (PTH / NPTH, maps),
+`icu-carrier-revA-gerbers.zip` and `icu-carrier-revA-bom.csv` (MPNs `confirm` where the sheet does not name them),
+from this board on its provisional outline, for the bench order of D-490; the final board follows F11.
+
 **The board is laid out, routed and 3D-modelled on a PROVISIONAL outline: guide step 8 is done
 (F9, F10); step 9, the measurement pass, is F11.** `kicad-cli pcb drc --severity-all
 --exit-code-violations --schematic-parity` reads 0 violations, 0 unconnected, 0 parity issues;
