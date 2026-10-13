@@ -98,3 +98,6 @@ connector_dims,wedgelock,str,no,,the wedgelock's TE part number; blank for a DT1
 connector_dims,cad,str,no,cad,"the vendor model's cad row, when one is recorded"
 connector_dims,source,text,yes,,where the figures were read: the cad row or the TE document and page
 connector_dims,note,text,yes,,which figures are estimated and how; always ends confirm (R11)
+retired,term,key,yes,,
+retired,retired_by,str,no,,
+retired,note,str,no,,

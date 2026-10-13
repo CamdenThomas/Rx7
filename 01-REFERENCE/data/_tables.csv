@@ -8,3 +8,4 @@ circuits,"each factory circuit write-up in factory-circuits/ and the wiring diag
 catalogue,"every row of the factory parts catalogue (S-005, 1981-83 US RX-7 microfiche), transcribed as printed, with whether it fits this car; the source of 00-CAR's parts list"
 suppliers,"who sells or supports parts for this car: one row per company, named by parts.supplier (P44, 2026-09-26)"
 connector_dims,"the outer dimensions of each DEUTSCH DT, DTP and DT13 housing the harness uses, one row per variant, with where each figure was read (a vendor model, a TE document) or that it was estimated; every figure confirm until a part in hand is measured. Drawn by 01-electrical/00-design/harness/cad/connectors (D-514, D-515, Y24)"
+retired,terms that must no longer appear anywhere
