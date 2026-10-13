@@ -44,3 +44,20 @@ Consequences in the data:
 - Work C02 (what comes off) and C03 now include the jambs, hood underside and hatch opening, pending 04.04.
 - B01 (read the paint code off the plate) stays open: it records the original colour for 00-CAR, not the target.
 - The exact paint (maker, code or mix, how many coats) is not chosen; the colour name is his, the product is for C03's parts list."
+D-527,,Beauty's ten routes ruled; paint code K3,2026-10-13,standing,,,"04.03,04.04,04.05,04.08,04.09,04.10,04.11,04.12,04.13,04.14",,"**Beauty's ten open routes are ruled as his answers below; the paint code is K3.**
+
+His answers, desktop, 2026-10-13, each the option he picked, quoted from its block:
+
+- **04.03 Who does the work - (b):** ""You do the rust repair, dents and sanding at home; a shop does only the spraying."" The recommendation's flip stands: if survey B02 finds rust in the sills, floors or rear arches, structural repair goes to a shop and this is reopened by a new block.
+- **04.04 How deep the paint goes - (c):** ""Everything in (b) plus the engine bay, done while the engine is out for the LS swap (02-engine). The only time the bay is bare; it waits for the swap, and the car cannot move without an engine meanwhile."" That includes (b), the outside plus door jambs, hood underside and hatch opening.
+- **04.05 When the paint happens - (b):** ""Rust and body repair now, paint last. Rust stops getting worse now, the car stays drivable in primer, and the finish still goes on after everything else.""
+- **04.08 Spoiler style - (a):** ""A ducktail moulded into the rear panel below the hatch glass: body metal or fibreglass blended in, fixed, the most 'factory' look.""
+- **04.09 New tail-light shape - (a):** ""Slimmer lamps: the same width, a shorter opening, the rear panel filled and reshaped around them. Each side keeps at least 50 cm2 of red for stop and turn (FMVSS 108)."" He had answered (b) at 15:11:45 and then (a) at 15:12:00; the later answer rules.
+- **04.10 Front scoop - (d):** ""A front-bumper intake instead of the hood: larger openings in the new front end, feeding the radiator and brakes."" No hood scoop or vent.
+- **04.11 Where wheels and suspension are chosen - (b):** ""A new chassis project for wheels, tyres, suspension and the steering box (P-003, P-004); the wide body waits on its wheel choice.""
+- **04.12 Tint - (a):** ""Film on the side windows and the hatch glass so the finished glass passes 27% light - the installer meters it - plus a non-reflective strip on the top 4 in of the windshield."" Ceramic film per the recommendation.
+- **04.13 Bumpers - (a):** ""Slim body-colour bumper covers moulded to the body front and rear ... with a hidden steel or aluminium bar behind each for the lamps, the plate and a minor knock.""
+- **04.14 Black parts - (b):** ""Body colour except the glass trim: the rubber and black trim around the windows and windshield and the drip mouldings stay black; everything else goes body colour.""
+- **B01 paint code - K3** (work row, choice K3).
+
+Consequences in the data: the ten blocks are closed; B01 is done and 00-CAR vehicle.colour carries K3 in its note; C02, C03, C04, C08, C09 and C10 lose their block gates (C03 still waits on 04.01, B02; C08 on 03-luxury:V-063; C09 on 02-engine:DS01). C09 is now the front-bumper intake rather than a hood scoop, to be reworded by the plan run. 04.11 (b) is a scope move to a new chassis project, which the `new` playbook creates; until then C10 waits on it by note, not gate."

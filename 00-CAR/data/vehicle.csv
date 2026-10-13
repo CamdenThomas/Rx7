@@ -2,7 +2,7 @@ key,section,field,value,note
 year_model,Identity,Year / model,1982 Mazda RX-7,
 generation,Identity,Generation,FB,"SP-001: FB chassis code from 1981 (17-digit VIN, prefix JM1FB33); SA22C was the 1979-80 code"
 trim,Identity,Trim,GS,
-colour,Identity,Colour,Sunbeam Silver,
+colour,Identity,Colour,Sunbeam Silver,Colour plate code K3 read off the car.
 vin,Identity,VIN,JM1FB3319C0652095,"Read off the plate and door-jamb label, 2026-09-26."
 mileage,Identity,Mileage,153000,as of: unknown - re-read at the meters cutover. The service log carries the reading at each visit
 engine,Drivetrain,Engine,12A rotary,SP-003
