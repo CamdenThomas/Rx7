@@ -113,6 +113,3 @@ keystore.properties
 01-REFERENCE/model/library/
 01-REFERENCE/model/out/
 fixture/
-
-# The Fedora PC's model library as copied over on 2026-10-13, merged into model/library and then removed; never in git (3 GB, mixed licences)
-01-REFERENCE/model/old-library/

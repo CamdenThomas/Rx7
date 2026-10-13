@@ -4,3 +4,4 @@ L-0002,2026-10-12,clean,A01 A02,"A01 and A02 done: model/coverage.py derives wha
 L-0003,2026-10-12,clean,A03,"A03 done: the model's three tables declared - model_parts, model_dims, model_mates - so accuracy is a column; empty until B01"
 L-0004,2026-10-13,answers,D-516 D-517 D-518 B03,"His words on the body applied: D-516 closes 05.01 (through the app), D-517 closes 05.02 (every part as it comes off, insides when opened), D-518 the unibody first pass in the Manual's model page; B03 his copy of the body models; 05.03 stays open"
 L-0005,2026-10-13,clean,D-518 A05,A05 done: 835 planned model_parts rows in build order with what each needs; order and needs columns declared
+L-0006,2026-10-13,clean,D-518 B03,"The Fedora PC's model library merged into 01-REFERENCE/model/library on the Mac (2796 files, 22 identical duplicates dropped, none differing); only the bought SA model is still Fedora-only - B03 narrowed to it"

@@ -20,7 +20,7 @@ w64devkit) is stale; so is "the one Fedora machine" — that was true from 2026-
 | Teensy upload | Teensyduino or `arduino-cli` with the Teensy core; no udev | the same, plus PJRC's udev rule (`00-design/README.md`, building for the Teensy) |
 | Diagrams | Pillow (`python3 -m pip install --user pillow`); the font is in the tree, `tools/fonts/` | Pillow (`python3-pillow`); same font |
 | The Rx7 app | **built and installed 2026-10-09 (`F3`)**: Rust 1.99 through rustup in `~/.cargo` (its env line in `~/.zshenv`), Node 24 via fnm, `npm install`, `npx tauri build --bundles app` with `SDKROOT` pinned to the 26.5 SDK (the pin applies to cargo too); ad hoc signed, not notarized, at `/Applications/Rx7.app`. `tauri-driver` (the desktop e2e) is Linux/Windows only — the browser tests run | installed (RPM); Node 22, Rust in `~/.cargo`, the Tauri libraries, JDK 21 in `~/.local/jdk`, the Android SDK/NDK in `~/Android/Sdk` (app README) |
-| Only here | — | the 3.4 GB model library (`01-REFERENCE/model`), the research downloads, the Android signing key — `P55` names their second home |
+| Only here | — | the bought SA model (`01-REFERENCE/model/1978-mazda-rx-7-mk1-sa.zip`, its `rx7.glb` and `landmarks.json`), the research downloads, the Android signing key — `P55` names their second home. The 3 GB free model library (`01-REFERENCE/model/library`) is on both machines since 2026-10-13 (Camden copied it to the Mac; merged by hand, 2796 files, 22 duplicates identical) |
 | Claude Code | `~/.local/bin/claude` | `~/.local/bin/claude` |
 
 The car's diagnostic port `DP-DIAG` takes Camden's Windows laptop, which runs ECUMaster's PMU
