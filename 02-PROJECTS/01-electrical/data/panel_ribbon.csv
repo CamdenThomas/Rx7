@@ -1,27 +1,27 @@
 pin,signal,dcu_side,panel_side,note
-1,+3V3,the Teensy's 3.3 V,thumbstick pot supply,nothing else on the panel is powered from it
+1,+3V3,the Teensy's 3.3 V,"thumbstick pot supply, on the left plate through DP-DCU-E 7 (D-492)",nothing else on the panel is powered from it
 2,GND,logic ground,"encoder commons, key-matrix return path",
-3,ROW1,"GPIO, driven low one row at a time",keys: defog · hatch release · fuel-door release,each key through its own 1N4148W to its column (no ghosting with any combination)
-4,ROW2,"GPIO, driven low one row at a time",keys: HVAC mode · recirculate · window DRV up,
-5,ROW3,"GPIO, driven low one row at a time",keys: window DRV down · window PASS up · window PASS down,
+3,ROW1,"GPIO, driven low one row at a time",keys: rear defog · hatch · fuel door - the hatch and fuel-door keys sit on the left plate and reach this row through DP-DCU-E 1 (D-492),each key through its own 1N4148W to its column (no ghosting with any combination)
+4,ROW2,"GPIO, driven low one row at a time","keys: HVAC mode · recirculate · window DRV up (the window switch's up contact, D-492)",
+5,ROW3,"GPIO, driven low one row at a time","keys: window DRV down · window PASS up · window PASS down (the switches' contacts, D-492)",
 6,COL1,"GPIO in, pull-up, pin-change interrupt",column 1 of the matrix,"asleep: all rows held low, so any key press interrupts and wakes the DCU, which then pulls DP-DCU 6 (SN21)"
 7,COL2,"GPIO in, pull-up, pin-change interrupt",column 2,
 8,COL3,"GPIO in, pull-up, pin-change interrupt",column 3,
-9,ENC_FAN_A,"GPIO in, pull-up (quadrature)",fan encoder A,detents and range in firmware (D-355)
-10,ENC_FAN_B,"GPIO in, pull-up",fan encoder B,
-11,ENC_TEMP_A,"GPIO in, pull-up",temperature encoder A,
-12,ENC_TEMP_B,"GPIO in, pull-up",temperature encoder B,
+9,ENC_CENTRE_A,"GPIO in, pull-up (quadrature)","centre encoder A - temperature, fan speed after a push, mode after the fan-mode key (D-492; was the fan encoder)","detents and range in firmware (D-355); one knob for the three settings (I-001, D-492)"
+10,ENC_CENTRE_B,"GPIO in, pull-up",centre encoder B,
+11,ENC_CENTRE_PUSH,"GPIO in, pull-up",centre encoder push switch to GND (D-492; was the temperature encoder A),a push makes the knob set fan speed until it rests (I-001)
+12,ROW4,"GPIO, driven low one row at a time",keys: mirror defog · spare · spare - the fourth matrix row (D-492; was the temperature encoder B),"ten keys need four rows: the mirror-defog key is its own (D-492), where D-442 had mirror heat follow the defogger"
 13,ENC_SEAT_DRV_A,"GPIO in, pull-up",driver seat encoder A,"one knob per seat: clockwise from OFF = heat 1-3, anticlockwise = cool 1-3 - heat and cool can never both be on (D-073), in the knob as well as the firmware"
 14,ENC_SEAT_DRV_B,"GPIO in, pull-up",driver seat encoder B,
 15,ENC_SEAT_PASS_A,"GPIO in, pull-up",passenger seat encoder A,
 16,ENC_SEAT_PASS_B,"GPIO in, pull-up",passenger seat encoder B,
-17,JOY_X,ADC,thumbstick X wiper,centre and dead band set at commissioning (SN18)
-18,JOY_Y,ADC,thumbstick Y wiper,
-19,JOY_PRESS,"GPIO in, pull-up",thumbstick push switch to GND,toggles LEFT / RIGHT mirror (D-359); also 0x400 bit PK_MIRROR_PRESS
-20,AGND,"analog ground, joined to GND at the carrier",thumbstick pot ground,its own return so the axes don't read the matrix's switching
+17,JOY_X,ADC,"thumbstick X wiper, on the left plate through DP-DCU-E 4 (D-492)",centre and dead band set at commissioning (SN18)
+18,JOY_Y,ADC,"thumbstick Y wiper, on the left plate through DP-DCU-E 5 (D-492)",
+19,JOY_PRESS,"GPIO in, pull-up","thumbstick push switch to GND, on the left plate through DP-DCU-E 6 (D-492)","the select is the sketch's: left mirror; the right after a push until three seconds of rest or a second push (D-492, replacing luxury D-359's toggle); also 0x400 bit PK_MIRROR_PRESS"
+20,AGND,"analog ground, joined to GND at the carrier","thumbstick pot ground, on the left plate through DP-DCU-E 8 (D-492)",its own return so the axes don't read the matrix's switching
 21,GND,logic ground,"the lights' return (U2 GND, C1-C3) and the guard between AGND (20) and PNL_SDA (22)","D-458: a second ground, so the LEDs' PWM current does not share pin 2 with the matrix and the knob commons"
-22,PNL_SDA,"I2C SDA (Teensy 18, SN17) through 100 Ω R71; pulled up on the carrier (R51, 4.7 k to +3V3)","LED driver U2 SDA (IS31FL3236A, I2C 0x3C)","D-458. The I2C pair sits at 22 / 24 with a ground on each side of SDA (21, 23), six or more conductors from the knob lines (9-16) and the matrix (3-8): their bouncing contacts and scan edges must not clock the bus, nor the bus's edges count a knob step. 100 kHz on this bus (about 1 m of ribbon on 4.7 k) - confirm on the bench"
+22,PNL_SDA,"I2C SDA (Teensy 18, SN17) through 100 Ω R71; pulled up on the carrier (R51, 4.7 k to +3V3)","LED driver U2 SDA (IS31FL3236A, I2C 0x3C), the screen module and, through DP-DCU-E 9, the left plate's LED driver (D-492)","D-458. The I2C pair sits at 22 / 24 with a ground on each side of SDA (21, 23), six or more conductors from the knob lines (9-16) and the matrix (3-8): their bouncing contacts and scan edges must not clock the bus, nor the bus's edges count a knob step. 100 kHz on this bus (about 1 m of ribbon on 4.7 k) - confirm on the bench"
 23,GND,logic ground,guard between PNL_SDA and PNL_SCL,D-458
-24,PNL_SCL,"I2C SCL (Teensy 19, SN17) through 100 Ω R72; pulled up on the carrier (R52, 4.7 k)",LED driver U2 SCL,D-458
+24,PNL_SCL,"I2C SCL (Teensy 19, SN17) through 100 Ω R72; pulled up on the carrier (R52, 4.7 k)","LED driver U2 SCL, the screen and the plate's driver (D-492)",D-458
 25,SPARE,"test pad TP1, nothing else","test pad TP1, nothing else","D-458: wired end to end and unused, so a later line needs no new cable"
 26,+5V_PNL,"the carrier's +5V through the PTC F1 (0.5 A hold, confirm)","LED driver U2 VCC and the 35 LED anodes; C1 10 µF at the header, C2 1 µF and C3 100 nF at U2","D-458. At most about 0.28 A with every LED at full current (35 × 7.6 mA + 9 mA); a short on the panel or the ribbon trips F1, not the Teensy's 5 V. On the cable's edge conductor"
