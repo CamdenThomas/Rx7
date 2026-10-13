@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""gen_left_plate.py - draws the left plate's KiCad project (work row Y21, D-492).
+"""gen_left_plate.py - draws the left plate's KiCad project (work rows Y21 and Y22, D-492, D-499).
 
 Owns (R6) nothing in the record; it is drawn FROM these rows of ../../../../data/ and must follow them:
   cavities   DP-DCU-E 1-12   - J1 pin n is cavity n, net named as the panel_ribbon line its src_note names
+             L3-S1 9, 10, 11 - the wink lead: J2 pins 1-3, the commons on pin 4 to dash ground (DV24, G20)
   panel_ribbon 1, 3, 7, 8, 17-22, 24, 26 - the net names
-  parts      P083 (the winks: mechanical holes only), P156 (the stick, placeholder), P198, P199, P200
-  devices    DV24, DV62
+  parts      P204 (the winks, SPDT under lit caps - placeholder footprint), P156 (the stick, placeholder),
+             P198, P199, P200
+  devices    DV24 (the winks' lines and their 18 k / 33 k ladder resistors, on this board since D-499), DV62
 and the DCU firmware's plate channel map (../../firmware/dcu/lights.h): OUT1 wink L, OUT2 wink R,
 OUT3 hatch, OUT4 fuel door, OUT5 mirror. Positions are the sketch's plate (../../../panel-concept.html,
 plate(): 100 x 56, keys 17 x 15 at (20,19) (39,19) (20,37) (39,37), the stick at (74.5, 28) in a
@@ -36,6 +38,8 @@ KICAD_SYMS = "/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols/"
 KICAD_FPS = "/Applications/KiCad/KiCad.app/Contents/SharedSupport/footprints/"
 PANEL_SYM = os.path.join(CAD, "panel", "panel.kicad_sym")
 ROOT_UUID = "6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21"     # fixed so re-runs keep the footprint links
+REV = "0.02"
+DATE = "2026-10-13"
 
 
 def uid(seed):
@@ -51,12 +55,15 @@ CORNER_R = 3.0
 HOLES = [(4, 4), (96, 4), (4, 52), (96, 52)]
 K1 = 59.0 if FLIP else 20.0      # first key column (the sketch: k1 = flip ? 610 : 200, /10)
 K2 = K1 + 19.0
+WINK_Y, KEY_Y = 19.0, 37.0       # the sketch's two key rows: the winks above, the releases below
 STICK = (25.5 if FLIP else 74.5, 28.0)
 WELL_R = 14.0
-WINK_HOLE_D = 16.5               # P083 class: a 16 mm metal pushbutton's threaded body (confirm)
 KEY_LED_DX = 5.75                # a key's symbol LED inside its 17 x 15 cap, beside the 6 x 6 switch
-WINK_LED_Y = 8.0                 # above the wink button's hole (the hole's top edge is at 10.75)
+WINK_LED_DX = 7.0                # a wink's LED inside its cap, beside the 12 mm placeholder body (confirm)
+WINK_BODY = 12.0                 # the P204 placeholder's body square (confirm: no part chosen)
 J1_X = 6.5 if FLIP else 94.5     # J1's odd-pin column, on the back, at the edge nearest the climate unit
+J2_X = 8.5 if FLIP else 91.5     # J2, the wink lead's header, below J1 on the same edge (confirm: the
+                                 # lead's run to the dash post is not measured)
 
 
 # ============================================================================================
@@ -120,9 +127,11 @@ THUMBSTICK = '''(symbol "THUMBSTICK_2AXIS_SW"
 def symbols():
     """name -> library text (unprefixed), every symbol the sheet uses."""
     out = {}
-    for n in ("GND", "+3V3", "PWR_FLAG", "Conn_02x06", "SW_Push", "D", "LED", "R", "C"):
+    for n in ("GND", "+3V3", "PWR_FLAG", "Conn_02x06", "Conn_01x04", "SW_Push", "D", "LED", "R", "C"):
         out[n] = lib_symbol(PANEL_SYM, n)
     out["IS31FL3218-QF"] = lib_symbol(KICAD_SYMS + "Driver_LED.kicad_sym", "IS31FL3218-QF")
+    # KiCad's SPDT momentary: pin 1 A = the contact the pole rests on (NC), 2 B = common, 3 C = NO
+    out["SW_Push_SPDT"] = lib_symbol(KICAD_SYMS + "Switch.kicad_sym", "SW_Push_SPDT")
     out["THUMBSTICK_2AXIS_SW"] = THUMBSTICK
     return out
 
@@ -152,11 +161,18 @@ def pins_of(symtext):
 FP_LED = "LED_SMD:LED_0603_1608Metric"
 FP_R = "Resistor_SMD:R_0603_1608Metric"
 FP_C = "Capacitor_SMD:C_0603_1608Metric"
+FP_WINK = "left-plate:WinkSwitch_P204_SPDT_Placeholder"
+FP_J2 = "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
 DS_3218 = "https://www.lumissil.com/assets/pdf/core/IS31FL3218_DS.pdf"
 
 # DP-DCU-E cavity n on J1 pin n (cavities.csv src_note -> panel_ribbon signal)
 J1_NETS = {"1": "ROW1", "2": "COL2", "3": "COL3", "4": "JOY_X", "5": "JOY_Y", "6": "JOY_PRESS",
            "7": "+3V3", "8": "AGND", "9": "PNL_SDA", "10": "PNL_SCL", "11": "GND", "12": "+5V_PNL"}
+
+# the wink lead (DV24, D-499): J2 pin n -> the L3-S1 cavity at the dash post, the commons on pin 4
+J2_NETS = {"1": "WINK_L_NC", "2": "WINK_R_NC", "3": "WINK_REQ", "4": "WINK_COM"}
+J2_CAVS = {"1": "L3-S1 9", "2": "L3-S1 10", "3": "L3-S1 11", "4": "dash ground (G20)"}
+WINK_R_OHMS = {"L": "18k", "R": "33k"}       # L3-S1 11: wink L NO through 18 k, wink R NO through 33 k
 
 # the plate's channel map, the firmware's (lights.h LQ_*): OUTn -> (LED ref, what it lights)
 CHANNELS = [(1, "LED1", "wink left face", "LED_WINK_L"),
@@ -205,6 +221,17 @@ def parts():
         P.append((ref, "LED", "LED 0603 - %s (OUT%d)" % (what, out_n), FP_LED, (342.9, 58.42 + i * 12.7),
                   {"2": "+5V_PNL", "1": net},
                   "colour, brightness and part number - confirm (I-006: the wink faces green; the rest LP20's)"))
+    # the winks (D-499): SPDT momentary under lit caps, the ladder resistors beside them, the lead on J2
+    for side, ref, rref, y in (("L", "SW3", "R3", 177.8), ("R", "SW4", "R4", 203.2)):
+        name = "left" if side == "L" else "right"
+        P.append((ref, "SW_Push_SPDT", "wink - %s (P204)" % name, FP_WINK, (60.96, y),
+                  {"1": "WINK_%s_NC" % side, "2": "WINK_COM", "3": "WINK_%s_NO" % side},
+                  "P204: board-mount SPDT momentary under a lit 17 x 15 cap, C&K 8125 class - no part chosen; the placeholder footprint's pins (1 NC, 2 COM, 3 NO) and body from the part's drawing - confirm"))
+        P.append((rref, "R", WINK_R_OHMS[side], FP_R, (111.76, y), {"1": "WINK_%s_NO" % side, "2": "WINK_REQ"},
+                  "the wink %s ladder resistor (DV24, L3-S1 11), on the plate since D-499 - 1 %%" % name))
+    P.append(("J2", "Conn_01x04", "wink lead header 1x4 (L3-S1 9 / 10 / 11, commons)", FP_J2, (165.1, 190.5),
+              dict(J2_NETS),
+              "the wink lead's plate end (DV24, D-499): pin 1 = L3-S1 9, 2 = L3-S1 10, 3 = L3-S1 11, 4 = the commons to dash ground (G20); JST XH 4-way, locking - housing and crimps confirm, the lead's run to the dash post not measured"))
     return P
 
 
@@ -223,15 +250,15 @@ def sch_text():
     o.append('(kicad_sch\n\t(version 20260306)\n\t(generator "eeschema")\n\t(generator_version "10.0")')
     o.append('\t(uuid "%s")\n\t(paper "A3")' % ROOT_UUID)
     o.append('''	(title_block
-		(title "Left plate - the panel's second face, left of the steering wheel (D-492)")
-		(date "2026-10-13")
-		(rev "0.01")
+		(title "Left plate - the panel's second face, left of the steering wheel (D-492, D-499)")
+		(date "%s")
+		(rev "%s")
 		(company "RX-7 FB electrical build")
-		(comment 1 "From the record: DP-DCU-E 1-12, panel_ribbon, DV24 / DV62, P083 P156 P198-P200. The row wins.")
+		(comment 1 "From the record: DP-DCU-E 1-12, L3-S1 9-11, panel_ribbon, DV24 / DV62, P156 P198-P200 P204. The row wins.")
 		(comment 2 "J1 pin n = DP-DCU-E n; keys on ROW1 via 1N4148W; stick on 17-20; IS31FL3218 at 0x54.")
-		(comment 3 "The winks (P083) are not on this sheet: hardwired to the PMU (DV24); holes H5 / H6 only.")
-		(comment 4 "R11: nothing here has been measured or bought. Rev 0.01 (Y21).")
-	)''')
+		(comment 3 "The winks (P204, D-499): SPDT under lit caps, 18k / 33k on the board, the lead on J2 to the dash post (L3-S1 9 / 10 / 11).")
+		(comment 4 "R11: nothing here has been measured or bought. Rev %s (Y22).")
+	)''' % (DATE, REV, REV))
     o.append("\t(lib_symbols")
     for n, t in syms.items():
         t = t.replace('(symbol "%s"' % n, '(symbol "%s:%s"' % (NAME, n), 1)
@@ -337,10 +364,10 @@ def sch_text():
         (228.6, 25.4, 2.0, True, "THE LIGHTS: IS31FL3218 at 0x54, five symbols at 7.6 mA"),
         (228.6, 30.48, 1.5, False, "OUT1 wink L face, OUT2 wink R face, OUT3 hatch, OUT4 fuel door, OUT5 mirror stick - the DCU firmware's map (lights.h, F-018)"),
         (228.6, 34.29, 1.5, False, "OUT6-OUT18 open. The bus pull-ups are on the carrier (R51 / R52, 4.7k to +3V3); none here."),
-        (25.4, 152.4, 2.0, True, "THE WINK SWITCHES ARE NOT ON THIS SHEET"),
-        (25.4, 157.48, 1.5, False, "P083, two DMWD 1NO+1NC panel-mount pushbuttons, mounted in the plate's faceplate. Their lines are the harness's (DV24, D-189, D-482):"),
-        (25.4, 161.29, 1.5, False, "NC poles to L3-S1 9 / 10, NO poles through 18k / 33k to L3-S1 11, commons to dash ground - on their own lead to the dash post."),
-        (25.4, 165.1, 1.5, False, "The board carries only clearance holes for their bodies (H5, H6, board-only footprints, no nets) at the sketch's key positions."),
+        (25.4, 152.4, 2.0, True, "THE WINK SWITCHES (P204, D-499) AND THEIR LEAD J2 TO THE DASH POST"),
+        (25.4, 157.48, 1.5, False, "Two SPDT momentary pushbuttons under lit caps (the faces are LED1 / LED2 on the driver). Their lines are the harness's (DV24, D-189, D-482), unchanged:"),
+        (25.4, 161.29, 1.5, False, "NC poles to L3-S1 9 / 10 (J2 pins 1 / 2), NO poles through 18k / 33k joined as WINK_REQ to L3-S1 11 (J2 pin 3), the commons to dash ground (J2 pin 4, G20)."),
+        (25.4, 165.1, 1.5, False, "WINK_COM is NOT this board's GND: the winks return to the dash post as today, the plate's electronics on DP-DCU-E 8 and 11 (DV62). Symbol pins: 1 A = NC, 2 B = common, 3 C = NO."),
     ]
     for x, y, sz, bold, t in notes:
         o.append('\t(text "%s" (exclude_from_sim no) (at %s %s 0) (effects (font (size %s %s)%s) (justify left top)) (uuid "%s"))' % (
@@ -390,25 +417,40 @@ def stick_fp():
 
 
 def wink_fp():
-    r = WINK_HOLE_D / 2
-    return '''(footprint "WinkSwitch_P083_Clearance_D%s"
+    """The P204 placeholder: an SPDT momentary pushbutton body under a 17 x 15 lit cap, no part chosen.
+    Three 1.0 mm holes on 2.54 mm carry the symbol's pins (1 NC, 2 COM, 3 NO) so a switch on leads or
+    a small breakout fits now; the 12 mm square is a board-mount button's body (confirm), the dashed
+    17 x 15 on F.Fab is the sketch's cap. Origin = the cap's centre."""
+    hb = WINK_BODY / 2
+    pads = []
+    for n, x in ((1, -2.54), (2, 0.0), (3, 2.54)):
+        shape = "rect" if n == 1 else "circle"
+        pads.append('\t(pad "%d" thru_hole %s (at %s 0) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (remove_unused_layers no) (uuid "%s"))' % (
+            n, shape, fmt(x), uid("winkpad%d" % n)))
+    return '''(footprint "WinkSwitch_P204_SPDT_Placeholder"
 	(version 20260206)
-	(generator "rx7-y21")
+	(generator "rx7-y22")
 	(layer "F.Cu")
-	(descr "Clearance hole for a P083 wink switch (DMWD 1NO+1NC metal panel-mount pushbutton, 16 mm class - confirm): the switch mounts in the plate's faceplate and its body and lugs pass through the board. Mechanical only - no pads, no nets: its lines are the harness's (DV24) and leave on their own lead. The 19 mm circle on F.Fab is a 16 mm button's bezel (Adafruit 916 class, the reference model) on the faceplate in front of the board")
-	(tags "wink pushbutton clearance P083")
-	(property "Reference" "REF**" (at 0 -10.5 0) (layer "F.Fab") (uuid "%s") (effects (font (size 1 1) (thickness 0.15))))
-	(property "Value" "WinkSwitch_P083_Clearance" (at 0 10.5 0) (layer "F.Fab") (uuid "%s") (effects (font (size 1 1) (thickness 0.15))))
+	(descr "PLACEHOLDER - confirm. Wink switch P204 (D-499): a board-mount SPDT momentary pushbutton under a lit 17 x 15 key cap, C&K 8125 class, no part chosen. Three 1.0 mm holes on a 2.54 mm row carry the symbol's pins - 1 NC (the contact the pole rests on), 2 common, 3 NO - so a switch on leads or a small breakout fits now; the %s mm square is the body (confirm), the dashed 17 x 15 on F.Fab is the sketch's cap, lit by the 0603 LED beside the body. Origin = the cap's centre. Replace with the chosen part's drawn footprint; if the part carries its own LED the face LED moves onto its pins. No 3D model")
+	(tags "wink pushbutton SPDT placeholder P204")
+	(property "Reference" "REF**" (at 0 -8.5 0) (layer "F.Fab") (uuid "%s") (effects (font (size 1 1) (thickness 0.15))))
+	(property "Value" "WinkSwitch_P204_SPDT_Placeholder" (at 0 8.5 0) (layer "F.Fab") (uuid "%s") (effects (font (size 1 1) (thickness 0.15))))
 	(property "Datasheet" "" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "%s") (effects (font (size 1 1) (thickness 0.15))))
-	(property "Description" "P083 clearance - confirm the switch's body diameter" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "%s") (effects (font (size 1 1) (thickness 0.15))))
-	(attr board_only exclude_from_pos_files exclude_from_bom)
-	(fp_circle (center 0 0) (end 9.5 0) (stroke (width 0.1) (type dash)) (fill no) (layer "F.Fab") (uuid "%s"))
-	(fp_circle (center 0 0) (end %s 0) (stroke (width 0.05) (type solid)) (fill no) (layer "F.CrtYd") (uuid "%s"))
-	(fp_text user "P083" (at 0 0 0) (layer "F.Fab") (uuid "%s") (effects (font (size 1 1) (thickness 0.15))))
-	(pad "" np_thru_hole circle (at 0 0) (size %s %s) (drill %s) (layers "*.Cu" "*.Mask") (uuid "%s"))
+	(property "Description" "PLACEHOLDER - confirm (P204)" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "%s") (effects (font (size 1 1) (thickness 0.15))))
+	(attr through_hole)
+	(fp_rect (start -%s -%s) (end %s %s) (stroke (width 0.1) (type solid)) (fill no) (layer "F.Fab") (uuid "%s"))
+	(fp_rect (start -8.5 -7.5) (end 8.5 7.5) (stroke (width 0.1) (type dash)) (fill no) (layer "F.Fab") (uuid "%s"))
+	(fp_text user "P204 - confirm" (at 0 -4 0) (layer "F.Fab") (uuid "%s") (effects (font (size 1 1) (thickness 0.12))))
+	(fp_text user "${REFERENCE}" (at 0 4 0) (layer "F.Fab") (uuid "%s") (effects (font (size 1 1) (thickness 0.12))))
+	(fp_rect (start -%s -%s) (end %s %s) (stroke (width 0.12) (type solid)) (fill no) (layer "F.SilkS") (uuid "%s"))
+	(fp_rect (start -%s -%s) (end %s %s) (stroke (width 0.05) (type solid)) (fill no) (layer "F.CrtYd") (uuid "%s"))
+%s
 )
-''' % (fmt(WINK_HOLE_D), uid("w0"), uid("w1"), uid("w2"), uid("w3"), uid("w4"), fmt(r + 0.25), uid("w5"), uid("w6"),
-       fmt(WINK_HOLE_D), fmt(WINK_HOLE_D), fmt(WINK_HOLE_D), uid("w7"))
+''' % (fmt(WINK_BODY), uid("wk0"), uid("wk1"), uid("wk2"), uid("wk3"),
+       fmt(hb), fmt(hb), fmt(hb), fmt(hb), uid("wk4"), uid("wk5"), uid("wk6"), uid("wk7"),
+       fmt(hb + 0.11), fmt(hb + 0.11), fmt(hb + 0.11), fmt(hb + 0.11), uid("wk8"),
+       fmt(hb + 0.25), fmt(hb + 0.25), fmt(hb + 0.25), fmt(hb + 0.25), uid("wk9"),
+       "\n".join(pads))
 
 
 def write(path, text):
@@ -420,9 +462,9 @@ def gen_sch():
     write(NAME + ".kicad_sym", sym_lib_text())
     write(NAME + ".kicad_sch", sch_text())
     write("left-plate.pretty/Thumbstick_P156_Placeholder_2x04_P2.54mm.kicad_mod", stick_fp())
-    write("left-plate.pretty/WinkSwitch_P083_Clearance_D%s.kicad_mod" % fmt(WINK_HOLE_D), wink_fp())
+    write("left-plate.pretty/WinkSwitch_P204_SPDT_Placeholder.kicad_mod", wink_fp())
     write("sym-lib-table", '(sym_lib_table\n\t(version 7)\n\t(lib (name "%s")(type "KiCad")(uri "${KIPRJMOD}/%s.kicad_sym")(options "")(descr "Every symbol this schematic uses, kept with the project"))\n)\n' % (NAME, NAME))
-    write("fp-lib-table", '(fp_lib_table\n\t(version 7)\n\t(lib (name "%s")(type "KiCad")(uri "${KIPRJMOD}/%s.pretty")(options "")(descr "Footprints drawn for the plate - the stick placeholder and the wink switches\' clearance holes"))\n)\n' % (NAME, NAME))
+    write("fp-lib-table", '(fp_lib_table\n\t(version 7)\n\t(lib (name "%s")(type "KiCad")(uri "${KIPRJMOD}/%s.pretty")(options "")(descr "Footprints drawn for the plate - the stick and wink switch placeholders"))\n)\n' % (NAME, NAME))
     gen_pro()
 
 

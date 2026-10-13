@@ -1,4 +1,4 @@
-"""board_left_plate.py - the left plate's board (Y21): placement from the sketch, a small grid
+"""board_left_plate.py - the left plate's board (Y21, Y22): placement from the sketch, a small grid
 router (no freerouting on this machine), the GND pour. Called as `gen_left_plate.py pcb` with
 KiCad's own Python; reads the netlist kicad-cli exports from left-plate.kicad_sch, so the board's
 footprints, values and nets are the sheet's (schematic parity), and writes left-plate.kicad_pcb.
@@ -38,16 +38,22 @@ def placement():
     # pins 1-6 (R_EXT, VCC, GND, SDA, SCL) face down toward the bus from J1
     ux, uy = 58.0, 36.0
     jy = 28.0 - 6.35                           # J1 pin 1, so the header is centred on the plate's height
+    wy, ky = G.WINK_Y, G.KEY_Y
     return [
-        ("SW1", k2 - 3.25, 37 - 2.25, 0, "F"),          # hatch key (the sketch: k2, row 2)
-        ("SW2", k1 - 3.25, 37 - 2.25, 0, "F"),          # fuel-door key (k1, row 2)
+        ("SW3", k1, wy, 0, "F"),                         # wink left (the sketch: k1, row 1) - cap centre
+        ("SW4", k2, wy, 0, "F"),                         # wink right (k2, row 1)
+        ("SW1", k2 - 3.25, ky - 2.25, 0, "F"),          # hatch key (the sketch: k2, row 2)
+        ("SW2", k1 - 3.25, ky - 2.25, 0, "F"),          # fuel-door key (k1, row 2)
         ("JS1", sx, sy, 0, "F"),
-        ("LED1", k1, G.WINK_LED_Y, 0, "F"),              # wink left face, above its button
-        ("LED2", k2, G.WINK_LED_Y, 0, "F"),              # wink right face
-        ("LED3", k2 + G.KEY_LED_DX, 37, 90, "F"),        # hatch symbol, inside the hatch cap
-        ("LED4", k1 + G.KEY_LED_DX, 37, 90, "F"),        # fuel-door symbol, inside its cap
+        ("LED1", k1 + G.WINK_LED_DX, wy, 90, "F"),       # wink left face, inside its cap beside the body
+        ("LED2", k2 + G.WINK_LED_DX, wy, 90, "F"),       # wink right face
+        ("LED3", k2 + G.KEY_LED_DX, ky, 90, "F"),        # hatch symbol, inside the hatch cap
+        ("LED4", k1 + G.KEY_LED_DX, ky, 90, "F"),        # fuel-door symbol, inside its cap
         ("LED5", sx, sy - G.WELL_R - 1.5, 0, "F"),       # mirror symbol, at the top of the stick's well
+        ("R3", k1, wy - 7.0, 0, "B"),                    # 18k, behind the wink left body
+        ("R4", k2, wy - 7.0, 0, "B"),                    # 33k, behind the wink right body
         ("J1", G.J1_X, jy, 0, "B"),
+        ("J2", G.J2_X, 39.0, 90, "B"),                   # the wink lead's header, below J1 on the same edge
         ("U1", ux, uy, 90, "B"),
         ("C2", ux + 0.25, uy + 5.0, 0, "B"),            # 100 nF at VCC (pin 3, below)
         ("C1", ux + 0.25, uy + 7.0, 0, "B"),            # 1 uF
@@ -63,9 +69,7 @@ BOARD_ONLY = [  # (ref, lib, name, x, y, value)
     ("H2", "MountingHole", "MountingHole_3.2mm_M3", 96, 4, "M3"),
     ("H3", "MountingHole", "MountingHole_3.2mm_M3", 4, 52, "M3"),
     ("H4", "MountingHole", "MountingHole_3.2mm_M3", 96, 52, "M3"),
-    ("H5", "left-plate", "WinkSwitch_P083_Clearance_D%s" % G.fmt(G.WINK_HOLE_D), G.K1, 19, "wink L (P083) - clearance, no nets"),
-    ("H6", "left-plate", "WinkSwitch_P083_Clearance_D%s" % G.fmt(G.WINK_HOLE_D), G.K2, 19, "wink R (P083) - clearance, no nets"),
-]
+]   # Y21's H5 / H6, the P083 clearance holes, went with D-499 (Y22): the winks are parts now
 
 
 def lib_path(lib):
@@ -480,9 +484,9 @@ def build(seed=None, do_pour=True):
     board = pcbnew.NewBoard(os.path.join(G.HERE, G.NAME + ".kicad_pcb"))
     board.SetCopperLayerCount(2)
     tb = board.GetTitleBlock()
-    tb.SetTitle("Left plate (D-492, Y21) - provisional")
-    tb.SetRevision("0.01")
-    tb.SetDate("2026-10-13")
+    tb.SetTitle("Left plate (D-492, D-499, Y22) - provisional")
+    tb.SetRevision(G.REV)
+    tb.SetDate(G.DATE)
     tb.SetCompany("RX-7 FB electrical build")
     tb.SetComment(0, "100 x 56 from the sketch's plate - confirm (R11, nothing measured left of the wheel)")
     netobj = {}
@@ -539,8 +543,8 @@ def build(seed=None, do_pour=True):
     nseg, nvia = add_tracks(board, routes)
     if do_pour:
         pour(board, netobj["GND"])
-    silk(board, "LEFT PLATE  Y21  rev 0.01", 50.0, 53.4, pcbnew.B_SilkS, 1.0)
-    silk(board, "D-492 - provisional, confirm", 50.0, 51.6, pcbnew.B_SilkS, 0.8)
+    silk(board, "LEFT PLATE  Y22  rev %s" % G.REV, 50.0, 53.4, pcbnew.B_SilkS, 1.0)
+    silk(board, "D-492 D-499 - provisional, confirm", 50.0, 51.6, pcbnew.B_SilkS, 0.8)
     return board, failed, nseg, nvia
 
 
