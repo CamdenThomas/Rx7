@@ -219,6 +219,10 @@ export interface Fitting {
   miles: number | null;
 }
 
+export interface ManualTerminal {
+  terminal: string; function: string; inside: string; wire: string; to: string; checked: string;
+}
+
 export interface ManualPart {
   id: string;
   name: string;
@@ -240,7 +244,8 @@ export interface ManualPart {
   parent: string;
   children: string[];
   /** How many of its terminals are recorded from the factory diagram, held until checked. */
-  terminals_held: number;
+  /** the 1982 diagram's terminals, each with the day it was checked on the car or '' (D-512) */
+  terminals: ManualTerminal[];
   /** Where the part sits on the 3D model: "x y z" in mm, ';' between places (D-421). */
   model_at_mm: string;
   fitted: Fitting | null;

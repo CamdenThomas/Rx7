@@ -2073,6 +2073,15 @@ def interval_due(iv: dict, service, odo: dict, today_d):
     return out
 
 
+
+def manual_terminals(terms, pid):
+    """A part's terminals for the Manual (D-512): every row 00-CAR terminals gives it, in label
+    order, each with its `checked` day (empty = the 1982 diagram's claim, not checked on the car).
+    The part page lists the unchecked ones under that heading. Reads 00-CAR terminals."""
+    keys = ("terminal", "function", "inside", "wire", "to", "checked")
+    rows = [{k: (x.get(k) or "").strip() for k in keys} for x in terms if (x.get("part") or "").strip() == pid]
+    return sorted(rows, key=lambda r: (len(r["terminal"]), r["terminal"]))
+
 def manual_view(today_iso: str = "") -> dict:
     """The Manual, computed. Reads 00-CAR vehicle, systems, zones, parts, specs, service, terminals,
     intervals, issues, drives, procedures (and data/procedures/<id>.md), parts_history, and
@@ -2116,10 +2125,11 @@ def manual_view(today_iso: str = "") -> dict:
             p["parent"] = ""
     for p in shown["parts"]:
         p["children"] = [c["id"] for c in shown["parts"] if c.get("parent") == p["id"]]
-    # its terminals from the factory diagram wait in 00-verify until checked on the car (R11)
+    # its terminals from the 1982 wiring diagram are shown, labelled as the diagram's claim until
+    # `checked` carries the day each was metered on the car (D-512; R11)
     terms = read_table(car, "terminals")[1] if (car / "data" / "terminals.csv").exists() else []
     for p in shown["parts"]:
-        p["terminals_held"] = sum(1 for x in terms if (x.get("part") or "").strip() == p["id"])
+        p["terminals"] = manual_terminals(terms, p["id"])
     # Derived, never typed (R2, plan P50): a spec's system is its part's; a part's Mazda number
     # is the catalogue row it names when the cell is blank.
     by_part = {p["id"]: p for p in shown["parts"]}
@@ -3163,6 +3173,10 @@ def cmd_selftest(args):
     expect("an unverified spec is held", manual_hold("specs", {"item": "Offset", "confidence": "unverified"}) == "unverified")
     expect("another year's figure is held", manual_hold("specs", {"item": "x", "applies": "other-car"}) == "other-car")
     expect("a replaced part's spec is gone, not held", manual_hold("specs", {"item": "Choke", "applies": "replaced"}) == "gone")
+    expect("a part's terminals are listed in label order with their checked day",
+           [(r["terminal"], r["checked"]) for r in manual_terminals(
+               [{"part": "P1", "terminal": "B", "function": "out", "checked": "2026-10-01"}, {"part": "P2", "terminal": "A"},
+                {"part": "P1", "terminal": "A"}], "P1")] == [("A", ""), ("B", "2026-10-01")])
     svc = [{"id": "SV1", "date": "2026-07", "mileage": "150000", "items": "oil brake_fluid"},
            {"id": "SV0", "date": "2025-09", "mileage": "", "items": "oil"}]
     odo = odometer_now([{"id": "odo-1", "date": "2026-09-20", "odometer": "157200", "kind": "set"}], svc, [])

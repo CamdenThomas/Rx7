@@ -26,6 +26,7 @@ impl Runs {
 /// to prose alone.
 const RUN_TOOLS: &[&str] = &[
     "Read", "Edit", "Write", "Glob", "Grep",
+    "WebSearch", "WebFetch",  // research rows run on the web from the app (D-513)
     "Bash(python3 tools/rx7.py:*)", "Bash(python tools/rx7.py:*)",
     "Bash(git pull:*)", "Bash(git add:*)", "Bash(git commit:*)", "Bash(git push:*)", "Bash(git rm:*)", "Bash(git mv:*)",
     "Bash(git status:*)", "Bash(git log:*)", "Bash(git diff:*)", "Bash(git show:*)", "Bash(git rev-parse:*)",
