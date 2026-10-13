@@ -27,3 +27,4 @@ L-0022,2026-10-12,answers,D-488 LP20 I8,"Block 03.14 answered (a) in chat: facto
 L-0023,2026-10-12,answers,D-492 LP20,"Electrical D-492: the panel sketch's control set is the design; LP20 (the faceplate) is drawn to it, with a second small plate left of the wheel"
 L-0024,2026-10-13,apply,D-502 D-503,"Applied 03.12 (a) D-502, 03.13 (a) D-503"
 L-0025,2026-10-13,plan,Z-002 D-508 LP44 X-014 X-012 FT28 S8 I16,"Z-002 done as D-508: the concealed detector designed on D-502's basis (sensors on L2-RDR / L4-HRD, module on N103, alert into the DCU SN30, cluster the display); LP44 specified; round X-014 added. X-012 (amplifier, upmix, sub round) left open: no web access this run"
+L-0026,2026-10-13,apply,D-526,Applied pick PK037 (D-526)
