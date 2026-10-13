@@ -11,6 +11,8 @@ That is the record, and this is a drawing of it. Read `../README.md` first: it i
 does not name them; the D-489 / D-455 parts listed as not fitted), from this board on its provisional outline, for
 the bench order of D-490; the final board follows F11.
 
+**2026-10-12 (Y20, D-492): J4's pins 9-12 carry the new names** - `ENC_FAN_A` / `ENC_FAN_B` → `ENC_CENTRE_A` / `ENC_CENTRE_B`, `ENC_TEMP_A` → `ENC_CENTRE_PUSH`, `ENC_TEMP_B` → `ROW4` - on the sheet's labels and the Teensy symbol's pin names, and the board's nets renamed to match (no footprint or copper moved; the same Teensy pins 40 / 41 / 34 / 35). ERC 0, DRC 0 / 0 with 0 parity issues, `../check.py --board dcu` 0 mismatches. The `fab/` package still carries the old names in its netlist attributes; the copper is the same.
+
 **Sheet and board are both rev 0.04 (Y12, 2026-10-11).** The sheet carries D-458 and D-465; ERC is 0 / 0 and
 `../check.py --board dcu` reads 0 mismatches:
 

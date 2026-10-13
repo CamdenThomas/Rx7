@@ -113,7 +113,7 @@ TABLE = [
     ("PANEL_HOLE_INSET", 4.0, "mm", "panel board's four M3 holes, in from its corners", ""),
     ("PANEL_RIBBON_X", None, "mm", "ribbon header's centre on the panel board, X in the unit "
      "frame; None = straight in front of the carrier's J4", "no placed board for this face yet"),
-    ("PANEL_RIBBON_Z", 16.0, "mm", "ribbon header's centre above the panel board's bottom edge",
+    ("PANEL_RIBBON_Z", 16.5, "mm", "ribbon header's centre above the panel board's bottom edge",
      "no placed board for this face yet"),
 
     # --------------------------------------------------------------------------- the carrier --

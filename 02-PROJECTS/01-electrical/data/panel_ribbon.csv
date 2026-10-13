@@ -1,5 +1,5 @@
 pin,signal,dcu_side,panel_side,note
-1,+3V3,the Teensy's 3.3 V,"thumbstick pot supply, on the left plate through DP-DCU-E 7 (D-492)",nothing else on the panel is powered from it
+1,+3V3,the Teensy's 3.3 V,"thumbstick pot supply, on the left plate through DP-DCU-E 7 (D-492)",nothing else on the panel is powered from it - unless the screen module (P201) must run at 3.3 V: then JP1 2-3 on the panel board feeds it from here too (Y20)
 2,GND,logic ground,"encoder commons, key-matrix return path",
 3,ROW1,"GPIO, driven low one row at a time",keys: rear defog · hatch · fuel door - the hatch and fuel-door keys sit on the left plate and reach this row through DP-DCU-E 1 (D-492),each key through its own 1N4148W to its column (no ghosting with any combination)
 4,ROW2,"GPIO, driven low one row at a time","keys: HVAC mode · recirculate · window DRV up (the window switch's up contact, D-492)",

@@ -1,188 +1,202 @@
 # Control panel — the KiCad project
 
-*Rev 2026-10-09 (sheet rev 0.03, provisional board - Y6, D-458, D-459) · owns: what this KiCad
-project is for and what it may claim. The panel's design is `../../../data/panel_ribbon.csv` and
-`dcu_channels` SN18–SN20 (D-380), its lights D-458. Read `../README.md` first: it is the fence.*
+*Rev 2026-10-13 (sheet and board rev 0.04, provisional - Y20, D-492) · owns: what this KiCad project
+is for and what it may claim. The panel's design is `../../../data/panel_ribbon.csv`, the cavities of
+`DP-DCU-E`, `dcu_channels` SN17-SN20 and parts P155, P192, P201 (D-492, D-458, D-459). Read
+`../README.md` first: it is the fence.*
 
 ## Where it stands
 
-**D-479 (2026-10-11): this board is the face of the climate control unit**, in one enclosure with the
-DCU carrier behind it; the ribbon between them is a few centimetres, inside the box. `Y14` replaces the
-tray in `enclosure/` with the unit's enclosure. Camden's panel concept (ideas I-001 to I-006) is not
-ruled yet, so the control set below still stands. Luxury D-488 (2026-10-12) rules the key style (a): the final
-board drops the round-button alternates SWB1-9 and keeps the tactile switches under caps.
+**Rev 0.04 is the sketch's control set (D-492)**, drawn in place of Y6's board (D-380's nine keys,
+four encoders and the thumbstick, superseded). It is the face of the climate unit (D-479, D-481):
+the board stands 8 mm behind the faceplate, inside the unit's enclosure, the DCU carrier behind it.
 
-**The schematic is drawn and ERC is clean** (rev 0.03, 2026-10-09). It has nine keys on a 3 × 3
-matrix, with one 1N4148W per key, anode toward the column. A row driven low pulls its column low
-through the diode, so any combination reads true and a press with every row held low wakes the
-DCU. It also has four detented encoders common to GND, the thumbstick (two pots across +3V3 and
-its own AGND, a push to GND), **the lights** (D-458: an IS31FL3236A driver and 35 LEDs, below)
-and the **26-way** IDC header, pinned as `panel_ribbon`. The panel has no processor, no CAN node
-and no 12 V on the ribbon (D-355, D-380); the ribbon's +5 V and I²C serve the lights only.
-`check.py --board panel` holds it to the record: 56 checks, 0 mismatches once `panel_ribbon`
-carries pins 21–26.
+- **Schematic: ERC 0 errors, 0 warnings.** `../check.py --board panel`: 79 checks, 0 mismatches
+  against `panel_ribbon` (every conductor, the keys on each row and column through their diodes,
+  the encoders, the spares), against `DP-DCU-E` (the plate header pin for pin) and against the
+  IS31FL3236A pin table.
+- **Board: DRC 0 violations, 0 unconnected, 0 schematic-parity issues** with `--severity-all`.
+  180 × 84.76 mm, 2 layers, 56 footprints (52 parts and four M3 holes), 0.25 mm tracks throughout
+  (0.2 mm clearance, 0.6 / 0.3 mm vias), about 1660 segments and 110 vias, a GND pour on both layers
+  with solid pad connections. Routed by a script (a grid router written for this board, no
+  freerouting on this machine), so it is correct, not pretty: `H-008` lays out the final board.
+- No processor, no CAN node, no 12 V (D-355): the ribbon's +5 V and I²C feed the lights and the screen.
+- The thumbstick, the hatch and fuel-door keys are not on this board any more: they are on the
+  left plate (Y21) and reach the ribbon through `J3` (below).
 
-**It is a circuit board, ordered with the DCU's** (D-459, `P175`). The provisional board is laid
-out, routed and DRC-clean: `panel.kicad_pcb`, 80 footprints, 2 layers, 0 errors, 0 warnings, 0
-unconnected, 0 parity issues. It is drawn the way D-455 says: on a provisional outline, to the
-recommendation where a block is open, so an answer changes rows and positions, not the design.
+## The board, as seen from the faceplate
 
-- **The outline is a guess, `confirm`.** 200 × 70 mm, R3 corners, four M3 holes 4 mm in from the
-  corners. `V-113` measures the dash opening and sets the real numbers (D-455); the board's back
-  silkscreen and the `Cmts.User` layer say so.
-- **The faceplate side (front) carries what the hand touches and what lights**, left to right as
-  a driver reads it: the mirror thumbstick and the driver-seat knob at the driver's end, the driver
-  window keys (up over down), the five function keys across the top in the `0x400` bit order
-  (defog, hatch, fuel door, HVAC mode, recirculate) with fan and temperature below them, the
-  passenger window keys, and the passenger-seat knob at the far end. An LED sits above each key and
-  an arc of LEDs over each knob. Key labels sit on `Cmts.User`.
-- **The back carries everything else:** the ribbon header `J1` (2 × 13) on the lower edge, the
-  light driver `U2` with `C1`–`C3`, `R1`, `R2` between the fan and temperature knobs, the nine
-  matrix diodes, the illumination input `J2` and the style-(b) leads (both DNP), and the ribbon's
-  spare on the test pad `TP1`.
-- **Routing:** freerouting 2.5.0 through Specctra DSN/SES, 124 vias, then a GND pour on B.Cu.
-  Net classes are in `panel.kicad_pro`: `Default` 0.25 mm, `LED5V` 0.3 mm (0.6 / 0.3 mm vias) for
-  `/+5V_PNL`, `ILLUM` 0.5 mm for `/ILLUM_*`. Tracks the router necked below their class were set back
-  to it, except where that came within 0.2 mm of a neighbour (those stay at 0.2 mm or more), and one
-  via by U2 is 0.55 mm. U2's ground pins and the knobs' commons join the pour solid, not by spokes.
+Millimetres from the board's top-left corner, x to the right, y down. **The outline is the mock-up's,
+`confirm`**: the face is 192 × 96.76 (D-481), the board the face less `PANEL_MARGIN` 6 a side
+(`../climate-unit/unit_params.py`). The sketch's 180 × 60 control block is centred on the face, so
+**board x = sketch x and board y = sketch y + 12.378**. Four M3 holes 4 mm in from the corners:
+(4, 4), (176, 4), (4, 80.76), (176, 80.76).
 
-## The lights (D-458, D-462)
-
-**`U2`, an IS31FL3236A-TQLS4**: 36 constant-current sinks, I²C, 2.7–5.5 V, eTQFP-48, −40 to
-+125 °C (Lumissil, Rev. I: pinout p.2–3, address p.7, current p.11, land pattern p.17; the
-pin table is in `../pin_tables.csv`). One part, chosen over two TLC59116: its logic threshold is
-1.4 V at any supply (p.5), so a 5 V part reads the DCU's 3.3 V bus, and one package holds every
-light.
-
-- **Address 0x3C** (AD to GND). The DCU's bus already has 0x74 and 0x75 (the expanders, SN17) and
-  0x48 (the ADC, SN29): no collision. It is write-only.
-- **Supply:** `+5V_PNL`, ribbon pin 26, through a PTC on the carrier. `C1` 10 µF sits at the
-  header for the LEDs' PWM current, `C2` 1 µF and `C3` 100 nF at VCC. `R2` 100 k holds SDB high, so
-  the chip is on whenever the ribbon is powered and starts blank (every register 0) until the DCU
-  writes it.
-- **Current:** `R1` 10 k sets IMAX = 58.5 × 1.3 V / 10 k = 7.6 mA per channel (p.11). Every LED at
-  full current is about 0.28 A. The brightness that reads well through a window is the bench's,
-  `confirm`.
-- **Dimming (D-462):** the panel follows the dash dimmer. The DCU scales every channel's PWM byte
-  (256 steps) to the dimmer level and writes the update register 25h. It sets 22 kHz PWM (4Bh)
-  so the ceramic capacitors do not sing (p.12). The bus runs at 100 kHz over about 1 m of ribbon
-  (`confirm` on the bench).
-- **Channels:** each LED has its own, anode on `+5V_PNL`, cathode to the channel. OUT1–OUT9 are the
-  keys in the `0x400` bit order. OUT10–OUT16 are the fan arc and OUT17–OUT23 the temperature arc,
-  both anticlockwise to clockwise. OUT24–OUT29 and OUT30–OUT35 are the driver and passenger seats:
-  cool 3, 2, 1, then heat 1, 2, 3. OUT36 is open.
-- **The knob arcs:** 15 mm from the shaft, so a knob up to about 25 mm across leaves them clear.
-  Fan and temperature have seven steps at −60° to +60°. Each seat has three at −75° to −35° (cool)
-  and three at +35° to +75° (heat). The gap at the top is OFF (D-073): the knob has no end stops,
-  so the light is the only thing that shows the level.
-
-**The faceplate's windows** (luxury LP20 draws them from this table). Each is the LED's centre in
-mm from the board's top-left corner, seen from the faceplate side, x to the right and y down. The
-key LEDs are 1206 and the knob LEDs 0603; the window size and any light pipe are LP20's.
-
-| LED | What it lights | x | y |
+| Control | Part | Board (x, y) | On the face (the sketch) |
 |---|---|---|---|
-| `LED1` | key light defog | 64.0 | 9.8 |
-| `LED2` | key light hatch release | 82.0 | 9.8 |
-| `LED3` | key light fuel-door release | 100.0 | 9.8 |
-| `LED4` | key light HVAC mode | 118.0 | 9.8 |
-| `LED5` | key light recirculate | 136.0 | 9.8 |
-| `LED6` | key light window DRV up | 42.0 | 27.8 |
-| `LED7` | key light window DRV down | 42.0 | 45.8 |
-| `LED8` | key light window PASS up | 158.0 | 27.8 |
-| `LED9` | key light window PASS down | 158.0 | 45.8 |
-| `LED10` | fan level 1 | 63.0 | 40.5 |
-| `LED11` | fan level 2 | 66.4 | 36.5 |
-| `LED12` | fan level 3 | 70.9 | 33.9 |
-| `LED13` | fan level 4 | 76.0 | 33.0 |
-| `LED14` | fan level 5 | 81.1 | 33.9 |
-| `LED15` | fan level 6 | 85.6 | 36.5 |
-| `LED16` | fan level 7 | 89.0 | 40.5 |
-| `LED17` | temperature level 1 | 111.0 | 40.5 |
-| `LED18` | temperature level 2 | 114.4 | 36.5 |
-| `LED19` | temperature level 3 | 118.9 | 33.9 |
-| `LED20` | temperature level 4 | 124.0 | 33.0 |
-| `LED21` | temperature level 5 | 129.1 | 33.9 |
-| `LED22` | temperature level 6 | 133.6 | 36.5 |
-| `LED23` | temperature level 7 | 137.0 | 40.5 |
-| `LED24` | driver seat cool 3 | 3.5 | 46.1 |
-| `LED25` | driver seat cool 2 | 5.7 | 41.4 |
-| `LED26` | driver seat cool 1 | 9.4 | 37.7 |
-| `LED27` | driver seat heat 1 | 26.6 | 37.7 |
-| `LED28` | driver seat heat 2 | 30.3 | 41.4 |
-| `LED29` | driver seat heat 3 | 32.5 | 46.1 |
-| `LED30` | passenger seat cool 3 | 167.5 | 46.1 |
-| `LED31` | passenger seat cool 2 | 169.7 | 41.4 |
-| `LED32` | passenger seat cool 1 | 173.4 | 37.7 |
-| `LED33` | passenger seat heat 1 | 190.6 | 37.7 |
-| `LED34` | passenger seat heat 2 | 194.3 | 41.4 |
-| `LED35` | passenger seat heat 3 | 196.5 | 46.1 |
+| screen window | `J2` header for the module, pin 1 at (86.19, 12.0), pins along +x | window centre (90, 27.38) | 44 × 23.6 window |
+| centre knob | `SW7` encoder with push | (90, 54.38) | Ø20 knob |
+| fan-mode key (upper left) | `SW2` | (67.7, 48.88) | 13 × 8 cap |
+| recirculate key (upper right) | `SW3` | (112.3, 48.88) | 13 × 8 cap |
+| rear-defog key (lower left) | `SW1` | (67.7, 59.88) | 13 × 8 cap |
+| mirror-defog key (lower right) | `SW4` | (112.3, 59.88) | 13 × 8 cap |
+| driver seat knob | `SW8` | (40, 42.38) | Ø22 knob |
+| passenger seat knob | `SW9` | (140, 42.38) | Ø22 knob |
+| driver window switch | `SW5` | (12, 42.38) | 12 × 24 slot |
+| passenger window switch | `SW6` | (168, 42.38) | 12 × 24 slot |
 
-These move with the keys and knobs when `V-113` sets the outline.
+Key positions are the cap's centre (the `SW_PUSH_6mm` footprint's origin is pad 1, 3.25 / 2.25 mm
+up-left of it). The faceplate's cut-outs are drawn on `Cmts.User`. "Upper / lower, left / right"
+follow I-001: driver side is the left.
 
-## Both key styles are on the board (luxury 03.14 open)
+**The back** carries the rest: the ribbon header **`J1`** (2 × 13, centre (157, 68.26), pin 1 at
+the right end (172.24, 69.53), toward the carrier's J4 pin 1 - `PANEL_RIBBON_Z` 16.5 above the bottom
+edge, 0.5 more than the mock-up's 16 so `J3` fits under it; the carrier's J4 is straight behind at
+x ≈ 158.4, this one 1.4 mm left of that so its shroud clears the board's edge, `confirm`), the plate header **`J3`** (2 × 6, centre (150, 78.6), pin 1 at the
+right (156.35, 79.87)), the light driver **`U2`** at (90.05, 30.05) behind the screen with **`C2`,
+`C3`, `R1`, `R2`** under it, **`C1`** by `J1` pin 26, the eight matrix diodes beside their switches,
+the screen-supply jumper **`JP1`** at (101, 12) and **`TP1`** (the ribbon's spare) at (128, 80.5).
 
-Each key has two footprints wired in parallel on the same column and diode. Fit one set, never
-both:
+## The ribbon, J1 (`panel_ribbon`, pin for pin)
 
-| Style | Parts | Footprint | Fitted now |
+| Pin | Net | On this board |
+|---|---|---|
+| 1 | `+3V3` | `J3` 7 only (the stick's pots, on the plate); `JP1` 3 if the screen is set to 3.3 V |
+| 2, 21, 23 | `GND` | encoder commons, the centre push, `U2`, `C1`-`C3`, `R1`, the screen; 21 / 23 guard the I²C pair |
+| 3 | `ROW1` | rear defog (`D1`); `J3` 1 for the plate's hatch and fuel-door keys |
+| 4 | `ROW2` | HVAC mode (`D2`), recirculate (`D3`), window DRV up (`D4`) |
+| 5 | `ROW3` | window DRV down (`D5`), PASS up (`D6`), PASS down (`D7`) |
+| 6 | `COL1` | rear defog, HVAC mode, window DRV down, mirror defog |
+| 7 | `COL2` | recirculate, window PASS up; `J3` 2 (hatch) |
+| 8 | `COL3` | window DRV up, window PASS down; `J3` 3 (fuel door) |
+| 9 / 10 | `ENC_CENTRE_A` / `_B` | `SW7` A / B |
+| 11 | `ENC_CENTRE_PUSH` | `SW7` S1 (S2 to GND) |
+| 12 | `ROW4` | mirror defog (`D8`); columns 2 and 3 spare |
+| 13 / 14 | `ENC_SEAT_DRV_A` / `_B` | `SW8` A / B |
+| 15 / 16 | `ENC_SEAT_PASS_A` / `_B` | `SW9` A / B |
+| 17 / 18 / 19 | `JOY_X` / `JOY_Y` / `JOY_PRESS` | `J3` 4 / 5 / 6 only |
+| 20 | `AGND` | `J3` 8 only - kept apart from `GND` on this board; they meet on the carrier |
+| 22 / 24 | `PNL_SDA` / `PNL_SCL` | `U2`, the screen `J2`, `J3` 9 / 10 |
+| 25 | `SPARE` | `TP1` |
+| 26 | `+5V_PNL` | `U2` VCC, the 24 LED anodes, `C1`-`C3`, `R2`, `JP1` 1, `J3` 12 |
+
+**The matrix:** one 1N4148W per key, cathode to the row, anode toward the column (a row driven low
+pulls its column low; with every row held low any press wakes the DCU). Eight diodes on this board,
+the plate's two keys carry their own (D-492).
+
+**The window switches** are drawn as a centre-sprung **DPDT** (ON)-OFF-(ON) toggle, one pole per
+direction. The record puts DRV up at `ROW2` / `COL3` and DRV down at `ROW3` / `COL1`: two different
+rows *and* two different columns, which an SPDT's single common cannot serve without a phantom key
+(its common would join two rows or two columns). With two poles each contact is an ordinary key
+behind its own diode. PASS (both on `ROW3`) could use an SPDT, but both switches are the same part.
+If the record re-pins DRV up / down onto one row or one column, an SPDT fits and P155 can stay as worded.
+
+## The plate header, J3 - what the left plate (Y21) carries
+
+`J3` is `DP-DCU-E` 1-12 pin for pin; a lead joins it to the upper connector board's `J8`, which runs
+straight through to the DT13 `DP-DCU-E` in the unit's back wall and on to the plate's cable (P200).
+
+| Pin | Net | panel_ribbon | On the plate |
 |---|---|---|---|
-| (a) low-travel board switch under a faceplate cap (the recommendation) | `SW1`–`SW9`, lit by `LED1`–`LED9` | `Button_Switch_THT:SW_PUSH_6mm_H13mm`, KiCad's own, with its 3D model | yes |
-| (b) a 12–16 mm round button with a light ring, wired to the board | `SWB1`–`SWB9`, rings on `J2` | `Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical` on the back: 1-2 the switch, 3-4 the ring LED | DNP |
+| 1 | `ROW1` | 3 | the row for its two keys |
+| 2 | `COL2` | 7 | the hatch key, through its own 1N4148W |
+| 3 | `COL3` | 8 | the fuel-door key, through its own 1N4148W |
+| 4 / 5 | `JOY_X` / `JOY_Y` | 17 / 18 | the mirror stick's wipers (P156) |
+| 6 | `JOY_PRESS` | 19 | the stick's push, to GND |
+| 7 | `+3V3` | 1 | the stick's pot supply |
+| 8 | `AGND` | 20 | the stick's pot ground |
+| 9 / 10 | `PNL_SDA` / `PNL_SCL` | 22 / 24 | the plate's own I²C LED driver (its symbols) |
+| 11 | `GND` | 21 | the plate's lights and logic return |
+| 12 | `+5V_PNL` | 26 | the plate's LED supply |
 
-The alternates carry the prefix `SWB` so `check.py`'s matrix walk (one `SW` per diode) still
-reads the record's nine keys. If 03.14 lands on (b), flip the DNP flags: `SWB1`–`SWB9` and `J2` in,
-`SW1`–`SW9` and `LED1`–`LED9` out. The knob arcs stay either way. If it lands on (c), a donor module,
-the (b) leads are where its switches wire in.
+The two wink switches on the plate are not here: they stay hardwired to the PMU (DV24, D-492).
 
-## The illumination input (style (b) only)
+## The lights (D-458, D-492)
 
-`J2` (JST-XH 2-way, back, **DNP**) takes the dash illumination lead from `L3-S1 8` (DV53, PV94):
-pin 1 `ILLUM_12V`, the dimmed +12 V bus, pin 2 `ILLUM_GND`, its own return to the dash ground. It
-never touches the ribbon's `GND`. It now feeds only the style-(b) light rings, pins 3-4 of each
-`SWB` lead, assuming a 12 V ring with its own resistor (`confirm`). Y6's backlight strings (`R1`–`R3`
-off this input) are gone: the key LEDs are the driver's channels. `R1` and `R2` are now the
-driver's parts.
+**`U2`, IS31FL3236A-TQLS4** (eTQFP-48, I²C **0x3C**, AD to GND), as on Y6: `C1` 10 µF at `J1` 26,
+`C2` 1 µF and `C3` 100 nF at VCC, `R1` 10 k on R_EXT (IMAX = 58.5 × 1.3 V / 10 k = 7.6 mA a channel,
+p.11), `R2` 100 k holding SDB high (on and blank until written). 24 LEDs, 0603, anode on `+5V_PNL`,
+cathode to the channel - 24 × 7.6 mA = 0.18 A at full current. The fan and temperature arcs of D-458
+are gone; the screen shows those. Which lights follow the headlights (the ring, the window and seat
+symbols) and which show state (the key symbols, the seat arcs) is firmware's (I-004), not wiring.
 
-## The parts that are not chosen
+The channel map was chosen from the geometry (channels taken round `U2` in the same order as the
+LEDs around it, so the runs do not cross); the record names no order. **F-018 reads it from here.**
 
-- **The encoders** `SW10`–`SW13`: `panel:RotaryEncoder_Bourns_Vertical_PEC11R-4xxxF-Sxxxx`, drawn
-  here because KiCad 10.0.6 has no PEC11R footprint. The origin is the shaft. A-C-B sit on 2.5 mm
-  at +7.5 mm, the push pins S1/S2 on 5.0 mm at −7.0 mm, and the lugs in 1.0 × 3.0 mm slots at
-  ±6.45 mm. The positions are read from the daxxn `PEC11R-4230F-S0024` model (terminals at
-  −2.54/0/+2.54 mm, lugs at −6.6/+6.35 mm) and rounded to Bourns' grid: **`confirm` against the
-  Bourns drawing and on the part (F11)**. A on the left is `confirm` too, though a swap only
-  reverses the count in firmware. S1/S2 are left unconnected: the footprint takes the S (push)
-  and N (no push) parts alike.
-- **The thumbstick** `U1` (P156): `panel:Thumbstick_P156_Placeholder_2x04_P2.54mm` is a
-  **PLACEHOLDER**. Its eight 2.54 mm holes carry U1's functional pins, and the 26 mm courtyard
-  reserves the stick. The real footprint comes from the chosen stick's drawing (`H-008`). It has
-  no 3D model.
-- **The key switch height:** the 13 mm actuator is `confirm` against the faceplate (luxury LP20).
-- **The LEDs:** colour (blue for cool, red for heat, the rest LP20's), brightness and part number
-  are `confirm`; the footprints are KiCad's `LED_1206_3216Metric` and `LED_0603_1608Metric`.
-- **`U2`'s footprint** is KiCad's `TQFP-48-1EP_7x7mm_P0.5mm_EP4.11x4.11mm`, which matches
-  Lumissil's eTQFP-48 land pattern (4.11 mm pad, p.17). KiCad ships no model for it, so it renders
-  as bare pads. `confirm` against the part bought.
+| OUT | LED | What it lights | x | y |
+|---|---|---|---|---|
+| 3 | `LED8` | knob ring, lower left | 80.454 | 63.924 |
+| 5 | `LED1` | rear-defog key symbol | 73.3 | 59.878 |
+| 6 | `LED5` | knob ring, upper left | 80.454 | 44.832 |
+| 7 | `LED2` | fan-mode key symbol | 73.3 | 48.878 |
+| 9 | `LED18` | driver seat heat 3 | 54.943 | 43.685 |
+| 10 | `LED13` | driver seat cool 3 | 25.057 | 43.685 |
+| 11 | `LED17` | driver seat heat 2 | 54.095 | 37.248 |
+| 13 | `LED14` | driver seat cool 2 | 25.905 | 37.248 |
+| 14 | `LED16` | driver seat heat 1 | 50.607 | 31.771 |
+| 15 | `LED9` | driver window symbol | 12.0 | 32.978 |
+| 17 | `LED15` | driver seat cool 1 | 29.393 | 31.771 |
+| 18 | `LED11` | driver seat symbol | 40.0 | 27.978 |
+| 19 | `LED12` | passenger seat symbol | 140.0 | 27.978 |
+| 21 | `LED22` | passenger seat heat 1 | 150.607 | 31.771 |
+| 22 | `LED10` | passenger window symbol | 168.0 | 32.978 |
+| 23 | `LED21` | passenger seat cool 1 | 129.393 | 31.771 |
+| 25 | `LED23` | passenger seat heat 2 | 154.095 | 37.248 |
+| 26 | `LED20` | passenger seat cool 2 | 125.905 | 37.248 |
+| 27 | `LED24` | passenger seat heat 3 | 154.943 | 43.685 |
+| 29 | `LED19` | passenger seat cool 3 | 125.057 | 43.685 |
+| 30 | `LED3` | recirculate key symbol | 106.7 | 48.878 |
+| 31 | `LED6` | knob ring, upper right | 99.546 | 44.832 |
+| 33 | `LED4` | mirror-defog key symbol | 106.7 | 59.878 |
+| 34 | `LED7` | knob ring, lower right | 99.546 | 63.924 |
+
+OUT 1, 2, 4, 8, 12, 16, 20, 24, 28, 32, 35 and 36 are open. The (x, y) are the faceplate's windows
+for LP20, from the board's top-left as seen from the face.
+
+- **Key symbols** sit inside the 13 × 8 cap, beside the tactile switch on the knob's side (5.6 mm from
+  the cap's centre; the switch fills the middle), lit through the cap (D-488).
+- **The knob's ring:** four LEDs on the diagonals, 13.5 mm from the shaft, toward the four keys (I-001).
+- **Seat arcs:** 15 mm from the shaft, OFF at the top (D-073); cool 3-2-1 anticlockwise at −95°, −70°,
+  −45° (blue), heat 1-2-3 clockwise at +45°, +70°, +95° (red), the same on both knobs.
+- **Window symbols** 9.4 mm above the switch, inside its 12 × 24 slot; **seat symbols** 14.4 mm above
+  the knob's shaft. I-005 asks for the window symbol on the switch's cap and the seat symbol in the
+  knob's centre: both are part questions (below), so the LED sits beside the control for now.
+
+## The screen (P201)
+
+`J2` is a placeholder for a 128 × 64-class I²C module's own 4-pin header, in the common order
+**GND, VCC, SCL, SDA**, centred over the window's top edge (a 1.3-inch module's header sits there).
+**`JP1` picks its supply and is left open**: bridge 1-2 for `+5V_PNL` (what the record allows - its
+`+3V3` line says "nothing else on the panel is powered from it"), or 2-3 for `+3V3`. Many modules pull
+SDA / SCL up to their VCC pin: such a module at 5 V would pull the DCU's 3.3 V bus to 5 V, which the
+Teensy's pins do not tolerate. The parts round picks a module whose pull-ups are on its own 3.3 V
+regulator (or removes them), or bridges 2-3 and changes the record's `+3V3` note. The module's
+address must differ from the driver's 0x3C (0x3D on most).
+
+## Confirm
+
+- **The outline and holes** (mock-up, `V-113` / `F11`); `J1`'s X near the carrier's J4 and its height
+  (16.5, not the mock-up's 16) for the ribbon's few centimetres (P157).
+- **The window switch:** `panel:Toggle_DPDT_SubMini_2x3_P2.54mm`, drawn here - a generic 2 × 3 grid
+  (2.54 mm along the lever, poles 5.08 apart), 8 × 12 body - **not from a part's drawing**; which
+  throw closes on "up" is the usual toggle's (the far terminal), confirm on the part. **A DPDT where P155
+  says SPDT** (above). A lit cap or light pipe on the paddle (I-005) is a part question.
+- **The seat symbol:** a fixed lit symbol in the knob's centre needs a hollow-shaft encoder or a
+  ring encoder with a light pipe; none is chosen, so the symbol LED is beside the knob.
+- **The screen:** `J2`'s pin order, the standoff that puts the glass at the window, the module's size,
+  its supply (`JP1`) and pull-ups, its address (P201).
+- **The encoders:** `panel:RotaryEncoder_Bourns_Vertical_PEC11R-4xxxF-Sxxxx` (Y6's, read from a model,
+  not the Bourns drawing); S1 / S2 empty on the two N-type seat knobs.
+- **The keys:** the 13 mm actuator against the faceplate and caps (LP20).
+- **The LEDs:** colours (blue cool, red heat, the rest LP20's), brightness on the bench, part numbers.
+- **`U2`'s footprint** (KiCad's TQFP-48 7 × 7, EP 4.11, as Lumissil p.17) and the passives' part numbers.
 
 ## 3D and `RX7_MODELS`
 
-KiCad's own parts bring their models from `${KICAD10_3DMODEL_DIR}`. The PEC11R model is not
-copied into this project: the footprint points at
-`${RX7_MODELS}/rotary-encoder-bourns-pec11r-github-daxxn/PEC11R-4230F-S0024 v7.step`, where
-`RX7_MODELS` = `<tree>/01-REFERENCE/model/library/electrical`. Set it in the environment (or
-KiCad's Preferences → Configure Paths) before rendering or exporting. That model has a 30 mm
-shaft; P155's 4220F has 20 mm (`confirm`). DNP parts are left out of the renders and the STEP.
-
-## What `V-113` and 03.14 change
-
-- **`V-113`** (the dash opening): the outline, the hole positions and the spacing of the
-  controls, and with them the window table. The layout is moved and re-routed, not redrawn.
-- **03.14** (key style): which set is fitted, the cap or bezel drawing (LP20), and whether
-  `LED1`–`LED9` or the rings light the keys.
-
-01.14 (the lights, D-458) and 01.15 (a board, D-459) are answered and drawn. `H-008` lays out the
-final board once `V-113` and 03.14 are in.
+KiCad's own parts bring their models from `${KICAD10_3DMODEL_DIR}`. The PEC11R model is not copied
+here: the footprint points at `${RX7_MODELS}/rotary-encoder-bourns-pec11r-github-daxxn/PEC11R-4230F-S0024 v7.step`,
+`RX7_MODELS` = `<tree>/01-REFERENCE/model/library/electrical`; set it before rendering or exporting.
+The window switch and the screen module have no model.
 
 ## Checking it
 
@@ -192,13 +206,14 @@ python3 ../check.py --board panel
 kicad-cli pcb drc --severity-all --exit-code-violations --schematic-parity -o panel-drc.rpt panel.kicad_pcb
 kicad-cli sch export svg --no-background-color -o . panel.kicad_sch
 kicad-cli sch export bom --fields 'Reference,${QUANTITY},Value,Footprint,${DNP},Confirm' --labels 'Ref,Qty,Value,Footprint,DNP,Confirm' --group-by 'Value,Footprint,${DNP}' --sort-field Reference -o panel-bom.csv panel.kicad_sch
-kicad-cli pcb render --side top --zoom 2.3 --quality high -w 2000 -h 800 -o panel-top.png panel.kicad_pcb
-kicad-cli pcb render --side bottom --zoom 2.3 --quality high -w 2000 -h 800 -o panel-bottom.png panel.kicad_pcb
+kicad-cli pcb render --side top --zoom 1.6 --quality high -w 2000 -h 1000 -o panel-top.png panel.kicad_pcb
+kicad-cli pcb render --side bottom --zoom 1.6 --quality high -w 2000 -h 1000 -o panel-bottom.png panel.kicad_pcb
 kicad-cli pcb export step --subst-models -f -o panel.step panel.kicad_pcb
 ```
 
-The SVG and the BOM are committed. The renders, the STEP, the reports and the router's DSN/SES
-are rebuilt from the board and are not committed (`.gitignore`).
+Rev 0.04, 2026-10-13: ERC 0 / 0; `check.py --board panel` 79 checks, 0 mismatches; DRC 0 violations,
+0 unconnected, 0 parity issues. The SVG and the BOM are committed (`JP1` and `TP1` are out of the
+BOM); the renders, the STEP and the reports are rebuilt and not committed (`.gitignore`).
 
 ## Files
 
@@ -206,6 +221,6 @@ are rebuilt from the board and are not committed (`.gitignore`).
 |---|---|
 | `panel.kicad_pro` · `.kicad_sch` · `.kicad_pcb` | the project, the schematic and the provisional board |
 | `panel.kicad_sym` · `sym-lib-table` | every symbol used, kept with the project |
-| `panel.pretty` · `fp-lib-table` | the PEC11R encoder and the thumbstick placeholder, drawn here |
-| `panel.svg` · `panel-bom.csv` | the committed picture and the parts list, DNP and `confirm` included |
-| `enclosure/` | the mount behind the faceplate (Y7): `make_enclosure.py` (parameters at the top, `V-113` the envelope; `freecadcmd make_enclosure.py`) builds the rear tray and the front frame as STEP / STL from `board.json` (`../enclosure_extract.py panel`) and `panel.step`, and fit-checks them; `confirm` until `V-113` and LP20 |
+| `panel.pretty` · `fp-lib-table` | the PEC11R encoder and the window switch, drawn here; the Y6 thumbstick placeholder, unused, kept for the plate's board (Y21) |
+| `panel.svg` · `panel-bom.csv` | the committed picture and the parts list, `confirm` included |
+| `enclosure/` | Y7's tray behind the dash, built on Y6's 200 × 70 board - stale since the panel became the climate unit's face (D-479); the unit's enclosure is `../climate-unit/` |

@@ -22,7 +22,10 @@ s-expression itself (no packages beyond the standard library, Python 3.9) and ch
     channel's processor pin; a cavity the record has LIVE or CAPPED is wired, a PLUG is not;
   * the ribbon header, pin by pin, against `panel_ribbon` - net names on both boards, and on
     the panel which keys, encoders and thumbstick pins hang off each conductor;
-  * the panel matrix diodes: cathode to the row, anode toward the column (panel/README.md);
+  * the panel matrix diodes: cathode to the row, anode toward the column (panel/README.md); a
+    window switch's poles as two keys (COM_n to its diode, UP_n / DN_n to the column, D-492);
+  * the panel's plate header J3, DP-DCU-E cavity n on pin n, as its src_note's panel_ribbon line,
+    and the keys the record puts on the left plate held to the cavities that name them (D-492);
   * the two rules CONVENTIONS.md §5 asks for: the two 12 V inputs share no part (and on the
     DCU no part but the INA180 touches both GND and PGND), and every BAT54S has A on GND and
     K on +3V3;
@@ -116,8 +119,11 @@ EXPECT = {
                  ("SC_PASS_IN", "U8.IN"), ("MH_IN_T", "U9.IN")],
         "SN17": [("I2C_SDA", "U12.SDA"), ("I2C_SCL", "U12.SCL"), ("EXP_INT", "U12.INT"), ("EXP_RESET", "U12.RESET")],
         "SN18": [("JOY_X", "J4.17"), ("JOY_Y", "J4.18"), ("JOY_PRESS", "J4.19")],
-        "SN19": [("ROW1", "J4.3"), ("ROW2", "J4.4"), ("ROW3", "J4.5"), ("COL1", "J4.6"), ("COL2", "J4.7"), ("COL3", "J4.8")],
-        "SN20": [("ENC_FAN_A", "J4.9"), ("ENC_FAN_B", "J4.10"), ("ENC_TEMP_A", "J4.11"), ("ENC_TEMP_B", "J4.12"),
+        # D-492: ROW4 on ribbon 12 (Teensy 35, was the temperature encoder B); the centre knob's
+        # A / B on 9 / 10 (Teensy 40 / 41) and its push on 11 (Teensy 34).
+        "SN19": [("ROW1", "J4.3"), ("ROW2", "J4.4"), ("ROW3", "J4.5"), ("ROW4", "J4.12"),
+                 ("COL1", "J4.6"), ("COL2", "J4.7"), ("COL3", "J4.8")],
+        "SN20": [("ENC_CENTRE_A", "J4.9"), ("ENC_CENTRE_B", "J4.10"), ("ENC_CENTRE_PUSH", "J4.11"),
                  ("ENC_SEAT_DRV_A", "J4.13"), ("ENC_SEAT_DRV_B", "J4.14"), ("ENC_SEAT_PASS_A", "J4.15"),
                  ("ENC_SEAT_PASS_B", "J4.16")],
         "SN21": [("WAKE_T", "Q4.B")],
@@ -150,7 +156,9 @@ BOARDS = {
                 expander="U12", ribbon="J4",
                 drops={"DP-DCU": "J1", "DP-DCU-B": "J9", "DP-DCU-C": "J2"}, rails=("+12V_LOGIC", "+12V_CMF"),
                 grounds=("GND", "PGND"), ground_bridge=("U4",)),
-    "panel": dict(sch="panel/panel.kicad_sch", ribbon="J1", matrix=True),
+    # The panel board (Y20, D-492): J1 the ribbon; J3 the left plate's header, DP-DCU-E pin for pin
+    # (the plate's keys and the stick are reached through it, not drawn here).
+    "panel": dict(sch="panel/panel.kicad_sch", ribbon="J1", matrix=True, plate=("DP-DCU-E", "J3")),
     # The climate unit's upper connector board (Y15, D-480, D-492): no processor, so each housing
     # is held against its cavities' src_note - the carrier header a lead goes to (carrier ref ->
     # this board's header for it), or the panel_ribbon line a conductor is, carried pin for pin.
@@ -335,7 +343,8 @@ def read_csv(name):
         return list(csv.DictReader(f))
 
 
-_COMMENT = re.compile(r"\((?:not |D-\d)[^()]*\)")               # a negation or a decision cite
+_COMMENT = re.compile(r"\((?:not |D-\d|ribbon\b|ROW\d)[^()]*\)")  # a negation, a decision cite, a ribbon line
+_MOVED = re.compile(r"\bTeensy\s+\d+\s+went\s+to\b[^·;]*")      # "Teensy 35 went to ROW4 (SN19)": another channel's pin
 _DECISION = re.compile(r"\bD-\d+\b")
 _UNIT = re.compile(r"\b\d+(?:\.\d+)?\s*(?:k?Hz|m?V|m?A|m?Ω|W|%)\b")
 _PIN = re.compile(r"(?<![\w.])(\d{1,2})(?![\w.])")
@@ -352,7 +361,7 @@ def record_pins(text):
     A cell that opens with "none" names no pin, whatever candidates it goes on to list."""
     if re.match(r"\s*(none|nothing|—|-|GND)\b", text or ""):
         return []
-    t = _UNIT.sub(" ", _DECISION.sub(" ", _COMMENT.sub(" ", text or "")))
+    t = _UNIT.sub(" ", _DECISION.sub(" ", _COMMENT.sub(" ", _MOVED.sub(" ", text or ""))))
     t = _VIN.sub(" <VIN> ", t)
     out = []
     for m in re.finditer(r"<VIN>|" + _PIN.pattern, t):
@@ -383,7 +392,7 @@ def record_pin_words(text):
     """{pin: words} - the fragment of a `teensy_pin` cell that names each pin ("22 DRV up")."""
     if re.match(r"\s*(none|nothing|—|-|GND)\b", text or ""):
         return {}
-    t = _UNIT.sub(" ", _DECISION.sub(" ", _COMMENT.sub(" ", text or "")))
+    t = _UNIT.sub(" ", _DECISION.sub(" ", _COMMENT.sub(" ", _MOVED.sub(" ", text or ""))))
     t = _VIN.sub(" ", t)
     out = {}
     for frag in re.split(r"[·;,/]", t):
@@ -743,53 +752,169 @@ def key_name(nl, ref):
     return re.sub(r"^(key|encoder)\s*-\s*", "", v).strip().lower()
 
 
-def check_panel(rep, nl, cfg, ribbon):
-    """What hangs off each conductor on the panel, and the matrix diodes' orientation."""
+def _side(text):
+    """A panel_side cell without its parentheses and its ' - ' commentary."""
+    t = re.sub(r"\([^()]*\)", " ", text or "")
+    return re.sub(r"\s+", " ", t.split(" - ")[0]).strip()
+
+
+def _key(k):
+    return re.sub(r"[\s-]+", " ", k.strip().lower())
+
+
+def key_contacts(nl, ref):
+    """{pin on the diode side: (key name, pin on the column side)} for one matrix switch: a plain
+    key's two pins either way round, or a window switch's poles (D-492) - COM_n to its diode and
+    whichever of UP_n / DN_n is wired to the column, the key named '<value> up' or '<value> down'."""
+    pins = nl.pins.get(ref, {})
+    base = _key(key_name(nl, ref))
+    if len(pins) == 2:
+        a, b = list(pins)
+        return {a: (base, b), b: (base, a)}
+    out = {}
+    for num, (pname, _t) in pins.items():
+        m = re.match(r"COM_(\d+)$", pname)
+        if not m:
+            continue
+        wired = [(n2, pn2) for n2, (pn2, _t2) in pins.items()
+                 if re.match(r"(UP|DN)_%s$" % m.group(1), pn2) and nl.net(ref, n2) is not None]
+        if len(wired) == 1:
+            out[num] = ("%s %s" % (base, "up" if wired[0][1].startswith("UP") else "down"), wired[0][0])
+    return out
+
+
+def board_keys(nl):
+    """{key name: (row net, column net, ref)} for every key reached row -> diode K..A -> switch -> column."""
+    out = {}
+    for ref in nl.comps:
+        if prefix(ref) != "SW" or nl.comps[ref]["value"].lower().startswith("encoder"):
+            continue
+        for snum, (kname, cnum) in key_contacts(nl, ref).items():
+            anet = nl.net(ref, snum)
+            ds = parts_on(nl, anet, "D") if anet else []
+            if len(ds) != 1 or ds[0][2] != "A":
+                continue
+            knum = [n for n, (pn, _t) in nl.pins[ds[0][0]].items() if pn == "K"]
+            out[kname] = (bare(nl.net(ds[0][0], knum[0]) or "") if knum else "", bare(nl.net(ref, cnum) or ""), ref)
+    return out
+
+
+def plate_keys(cavities, housing, signal):
+    """{key name: (cavity, the panel_ribbon signal it carries)} for each '... - the <name> key' cavity."""
+    out = {}
+    for c in cavities:
+        if c["housing"] != housing:
+            continue
+        m = re.search(r"\bthe ([\w -]+?) key\b", c.get("circuit", ""))
+        lines = _RIBBON_LINE.findall(c.get("src_note", ""))
+        if m and len(lines) == 1:
+            out[_key(m.group(1))] = (c["cav"], signal.get(lines[0]))
+    return out
+
+
+def check_plate(rep, nl, cfg, cavities, ribbon):
+    """The plate header (D-492): pin n is DP-DCU-E cavity n, on the net of the panel_ribbon line its
+    src_note names - the same net as that ribbon pin on J1 (AGND stays AGND on the panel)."""
+    housing, conn = cfg["plate"]
     hdr = cfg["ribbon"]
-    rows_keys = {}                                      # ROWn -> [key names in column order]
+    signal = {r["pin"]: r["signal"] for r in ribbon}
+    rows = sorted((c for c in cavities if c["housing"] == housing), key=lambda c: int(c["cav"]))
+    if conn not in nl.pins:
+        rep.bad(conn, "-", "the plate header for %s" % housing, "no such part on the sheet")
+        return
+    if not rows:
+        rep.bad(conn, "-", "cavity rows for %s in the record" % housing, "none")
+        return
+    for c in rows:
+        cav = c["cav"]
+        lines = _RIBBON_LINE.findall(c.get("src_note", ""))
+        if len(lines) != 1 or lines[0] not in signal:
+            rep.bad(conn, cav, "one panel_ribbon line in %s %s's src_note" % (housing, cav), repr(c.get("src_note", "")))
+            continue
+        want = signal[lines[0]]
+        got = nl.net(conn, cav)
+        if got is None or bare(got) != want:
+            rep.bad(conn, "%s(%s %s)" % (cav, housing, cav), "%s (panel_ribbon %s)" % (want, lines[0]), bare(got) or "unconnected")
+        elif nl.net(hdr, lines[0]) != got:
+            rep.bad(conn, "%s(%s %s)" % (cav, housing, cav), "the same net as %s %s" % (hdr, lines[0]), bare(nl.net(hdr, lines[0])) or "unconnected")
+        else:
+            rep.ok("%s %s(%s %s) = %s = %s %s" % (conn, cav, housing, cav, want, hdr, lines[0]))
+    for num in nl.pins[conn]:
+        if num not in {c["cav"] for c in rows} and nl.net(conn, num) is not None:
+            rep.bad(conn, num, "no cavity row %s %s in the record" % (housing, num), bare(nl.net(conn, num)))
+
+
+def check_panel(rep, nl, cfg, ribbon, cavities=()):
+    """What hangs off each conductor on the panel, and the matrix diodes' orientation. A key the
+    record puts on the left plate is held to the plate header instead: a DP-DCU-E cavity names it
+    ('the hatch key') on the column the record gives it, and the header carries the row too."""
+    hdr = cfg["ribbon"]
+    housing, plate = cfg.get("plate", (None, None))
+    signal = {r["pin"]: r["signal"] for r in ribbon}
+    pkeys = plate_keys(cavities, housing, signal) if housing else {}
+    found = board_keys(nl)
+    placed = set()
     for row in ribbon:
         sig, side, pin = row["signal"], row["panel_side"], row["pin"]
         net = nl.net(hdr, pin)
         if net is None:
             continue
-        m = re.match(r"keys:\s*(.*)", side)
-        if m:
-            want = [k.strip().lower() for k in m.group(1).split("·")]
-            rows_keys[sig] = want
-            # row net -> diode cathodes -> anode nets -> one key each, whose other pin is COLi
-            found = {}
-            for dref, dnum, dname in parts_on(nl, net, "D"):
-                if dname != "K":
-                    rep.bad(dref, dnum, "K on %s (cathode to the row)" % sig, "%s on %s" % (dname, sig))
-                    continue
-                anum = [n for n in nl.pins[dref] if n != dnum][0]
-                anet = nl.net(dref, anum)
-                keys = parts_on(nl, anet, "SW") if anet else []
-                if len(keys) != 1:
-                    rep.bad(dref, anum, "one key on the anode net", "%d" % len(keys))
-                    continue
-                sref, snum, _ = keys[0]
-                onum = [n for n in nl.pins[sref] if n != snum][0]
-                col = bare(nl.net(sref, onum) or "")
-                found[key_name(nl, sref)] = col
-            for i, k in enumerate(want, 1):
-                if k not in found:
-                    rep.bad(hdr, pin, "key '%s' on %s" % (k, sig), "not on this row (keys found: %s)" % ", ".join(sorted(found)) or "none")
-                elif found[k] != "COL%d" % i:
-                    rep.bad(hdr, pin, "key '%s' in column COL%d" % (k, i), found[k])
+        if plate:
+            for cav in re.findall(r"\b%s\s+(\d+)" % re.escape(housing), side):
+                if nl.net(plate, cav) == net:
+                    rep.ok("%s %s: on %s %s (%s %s)" % (hdr, sig, plate, cav, housing, cav))
                 else:
-                    rep.ok("%s %s: key '%s' via its diode to COL%d" % (hdr, sig, k, i))
-            for k in found:
-                if k not in want:
-                    rep.bad(hdr, pin, "only the record's keys on %s" % sig, "also '%s'" % k)
-        elif "encoder" in side and not side.startswith("encoder commons"):
-            name = side.split("encoder")[0].strip().lower()
-            phase = side.split()[-1].strip().upper()
-            hits = [(r, n, pn) for r, n, pn in parts_on(nl, net, "SW") if key_name(nl, r) == name and pn == phase]
-            if hits:
-                rep.ok("%s %s: %s encoder %s" % (hdr, sig, name, phase))
+                    rep.bad(plate, cav, "%s (panel_ribbon %s names %s %s)" % (sig, pin, housing, cav), bare(nl.net(plate, cav)) or "unconnected")
+        m = re.match(r"keys:\s*(.*)", side)
+        enc = re.match(r"(.*?)\s*encoder\s+(A|B|push)\b", _side(side), re.I)
+        if m:
+            want = [_key(k) for k in _side(m.group(1)).split("·")]
+            for i, k in enumerate(want, 1):
+                col = "COL%d" % i
+                if k == "spare":
+                    extra = [n for n, (r, c, _ref) in found.items() if r == sig and c == col]
+                    if extra:
+                        rep.bad(hdr, pin, "nothing at %s / %s (a spare)" % (sig, col), ", ".join(extra))
+                    else:
+                        rep.ok("%s %s: %s spare" % (hdr, sig, col))
+                elif k in found:
+                    placed.add(k)
+                    r, c, ref = found[k]
+                    if r != sig or c != col:
+                        rep.bad(ref, "-", "key '%s' at %s / %s" % (k, sig, col), "%s / %s" % (r, c))
+                    else:
+                        rep.ok("%s %s: key '%s' (%s) via its diode to %s" % (hdr, sig, k, ref, col))
+                elif k in pkeys and plate:
+                    cav, csig = pkeys[k]
+                    rnets = {nl.net(plate, n) for n in nl.pins.get(plate, {})}
+                    if csig != col:
+                        rep.bad(plate, cav, "key '%s' on %s (%s %s)" % (k, col, housing, cav), csig)
+                    elif bare(nl.net(plate, cav) or "") != col:
+                        rep.bad(plate, cav, "%s for the plate's key '%s'" % (col, k), bare(nl.net(plate, cav)) or "unconnected")
+                    elif net not in rnets:
+                        rep.bad(plate, "-", "%s on the plate header for its key '%s'" % (sig, k), "not on %s" % plate)
+                    else:
+                        rep.ok("%s %s: key '%s' on the left plate, %s %s = %s" % (hdr, sig, k, plate, cav, col))
+                else:
+                    rep.bad(hdr, pin, "key '%s' at %s / %s" % (k, sig, col),
+                            "not on this board (keys found: %s) nor named by a %s cavity" % (", ".join(sorted(found)) or "none", housing))
+        elif enc and not side.startswith("encoder commons"):
+            name, phase = enc.group(1).strip().lower(), enc.group(2)
+            if phase.lower() == "push":
+                hits = [(r, n, pn) for r, n, pn in parts_on(nl, net, "SW") if key_name(nl, r) == name and pn in ("S1", "S2")]
+                other = [n for r, n0, pn in hits for n, (pn2, _t) in nl.pins[r].items() if pn2 in ("S1", "S2") and n != n0]
+                ok = bool(hits) and all(nl.net(hits[0][0], n) == "GND" for n in other) and other
+                if ok:
+                    rep.ok("%s %s: %s encoder push, the other side on GND" % (hdr, sig, name))
+                else:
+                    rep.bad(hdr, pin, "%s encoder push (S1 / S2) between %s and GND" % (name, sig),
+                            ", ".join("%s.%s" % (r, pn) for r, n, pn in parts_on(nl, net)) or "nothing")
             else:
-                rep.bad(hdr, pin, "%s encoder pin %s on %s" % (name, phase, sig), ", ".join("%s.%s" % (r, pn) for r, n, pn in parts_on(nl, net)) or "nothing")
+                hits = [(r, n, pn) for r, n, pn in parts_on(nl, net, "SW") if key_name(nl, r) == name and pn == phase.upper()]
+                if hits:
+                    rep.ok("%s %s: %s encoder %s" % (hdr, sig, name, phase.upper()))
+                else:
+                    rep.bad(hdr, pin, "%s encoder pin %s on %s" % (name, phase.upper(), sig), ", ".join("%s.%s" % (r, pn) for r, n, pn in parts_on(nl, net)) or "nothing")
         elif side.startswith("encoder commons"):
             encs = [r for r in nl.comps if r.startswith("SW") and nl.comps[r]["value"].lower().startswith("encoder")]
             for r in encs:
@@ -798,7 +923,7 @@ def check_panel(rep, nl, cfg, ribbon):
                     rep.bad(r, "C", "on %s" % sig, bare(nl.net(r, cnum[0]) if cnum else None) or "unconnected")
                 else:
                     rep.ok("%s %s: %s common" % (hdr, sig, key_name(nl, r)))
-        elif "thumbstick" in side:
+        elif "thumbstick" in side and "left plate" not in side:
             want = {"X wiper": ["X_WIPER"], "Y wiper": ["Y_WIPER"], "push switch": ["SW_A", "SW_B"],
                     "pot supply": ["X_VCC", "Y_VCC"], "pot ground": ["X_GND", "Y_GND"]}
             for phrase, pins in want.items():
@@ -809,13 +934,13 @@ def check_panel(rep, nl, cfg, ribbon):
                     else:
                         rep.bad(hdr, pin, "thumbstick %s on %s" % ("/".join(pins), sig), ", ".join(sorted(names)) or "nothing")
         elif "column" in side:
-            m2 = re.search(r"column (\d)", side)
-            col = int(m2.group(1)) if m2 else None
-            keys = sorted(key_name(nl, r) for r, n, pn in parts_on(nl, net, "SW"))
-            rep.ok("%s %s: keys %s" % (hdr, sig, ", ".join(keys)))
-            if col and len(keys) != 3:
-                rep.bad(hdr, pin, "three keys on COL%d" % col, "%d (%s)" % (len(keys), ", ".join(keys)))
-    # every matrix diode, whichever row it is on
+            keys = sorted(k for k, (r, c, _ref) in found.items() if c == sig)
+            rep.ok("%s %s: keys %s" % (hdr, sig, ", ".join(keys) or "none on this board"))
+    for k, (r, c, ref) in sorted(found.items()):
+        if k not in placed:
+            rep.bad(ref, "-", "only the record's keys on the board", "also '%s' at %s / %s" % (k, r, c))
+    # every matrix diode, whichever row it is on: K on a row, A to one switch contact whose
+    # column side is a COL net
     for ref in nl.comps:
         if prefix(ref) != "D" or len(nl.pins.get(ref, {})) != 2:
             continue
@@ -827,8 +952,14 @@ def check_panel(rep, nl, cfg, ribbon):
         if not re.match(r"ROW\d$", knet):
             rep.bad(ref, knum[0], "K on a ROW net", knet or "unconnected")
         sws = parts_on(nl, anet, "SW") if anet else []
-        if len(sws) != 1 or not re.match(r"COL\d$", bare(nl.net(sws[0][0], [n for n in nl.pins[sws[0][0]] if n != sws[0][1]][0]) or "")):
+        cols = []
+        if len(sws) == 1:
+            kc = key_contacts(nl, sws[0][0]).get(sws[0][1])
+            cols = [bare(nl.net(sws[0][0], kc[1]) or "")] if kc else []
+        if len(sws) != 1 or not cols or not re.match(r"COL\d$", cols[0]):
             rep.bad(ref, anum[0], "A to one key whose other pin is a COL net", bare(anet) if anet else "unconnected")
+        else:
+            rep.ok("%s K on %s, A to %s.%s -> %s" % (ref, knet, sws[0][0], sws[0][2], cols[0]))
 
 
 def check_conventions(rep, nl, cfg):
@@ -995,7 +1126,9 @@ def main(argv=None):
             if cfg.get("ribbon"):
                 check_ribbon(rep, nl, cfg, ribbon)
             if cfg.get("matrix"):
-                check_panel(rep, nl, cfg, ribbon)
+                check_panel(rep, nl, cfg, ribbon, cavities)
+            if cfg.get("plate"):
+                check_plate(rep, nl, cfg, cavities, ribbon)
             if cfg.get("relay"):
                 check_relay(rep, nl, cfg, cavities, ribbon)
             check_conventions(rep, nl, cfg)
