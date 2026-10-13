@@ -9,4 +9,4 @@ datums,"the model's frame and hard points (A02): every factory dimension that fi
 model_parts,"one row per modelled part, keyed by its 00-CAR parts id (A03): its file, what it was made from, its state, and what is still confirm - accuracy is a column, not a claim (R11)"
 model_dims,"every governing dimension of a modelled part and how it is known - measured on this car, a factory figure, a found model, a catalogue figure, derived, or a guess (A03); a measured value beats every other and the date says when"
 model_mates,"how each modelled part is located on another: the mate, its kind, its fasteners by 00-CAR parts id, and the offset in the mated part's frame (A03) - what the assembly is built from"
-blend,"each piece of the one combined model (01-REFERENCE/model/blend.py): which cad row it comes from, how it was scaled and placed, and what factory figure checks it (D-418)"
+blend,"each piece of the one combined model (02-PROJECTS/05-cad/model/found/blend.py): which cad row it comes from, how it was scaled and placed, and what factory figure checks it (D-418)"

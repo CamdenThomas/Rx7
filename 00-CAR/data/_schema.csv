@@ -106,7 +106,7 @@ parts,bought,list,no,parts_history,the purchases it was made from
 parts,link,text,no,,the maker's or seller's page for it
 parts,support,text,no,,the maker's customer service: a phone number or a page
 parts,cad,str,no,,"its 3D model, a path in the tree"
-parts,photo,str,no,,a photo under 01-REFERENCE/photos
+parts,photo,str,no,,a photo under 00-CAR/photos
 parts,note,text,no,,what is true of it now; a value nobody has checked carries confirm and holds the row out of the Manual (R11)
 parts,model_at_mm,text,no,,"where the combined 3D model puts it: x y z in mm, one point per unit split by ';' (left before right). A model estimate, never a measurement; written by 01-REFERENCE/model/locate.py"
 parts,model_from,text,no,,what the point comes from

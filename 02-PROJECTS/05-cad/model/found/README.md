@@ -1,4 +1,9 @@
-# The 3D models: the bought SA body (S-037) and the free CAD library (D-418)
+# The found models: the bought SA body (S-037) and the free CAD library (D-418)
+
+The scripts are here, in 05-cad (06-intake T2); the files they read and build stay on this PC,
+out of git, in the two folders `paths.py` names: `SA` (today `01-REFERENCE/model/`, the bought
+model and what is built from it) and `LIBRARY` (today `01-REFERENCE/model/library/`). Every
+"this folder" below is `SA`.
 
 A bought artist's model of a **1978 RX-7 (SA)**, not the FB. The body shell, glass, lamps
 and wheels are right to within about 1 % overall. The bumpers, tail lamps, front lip and
@@ -16,13 +21,13 @@ so the zip and everything built from it are in `.gitignore`. To restore it, put
 | `rx7.glb` | no | a lighter copy (about 280k triangles, 5 MB) for the app's 3D view (D-415) |
 | `landmarks.json` | no | each part's centre and size in mm, for `estimate.py` |
 | `estimate.py` | yes | rough route lengths into `routes.model_ft` (D-416) |
-| `10-gui/app/public/car/*.webp` | yes | the app's renders: pictures, not the model. Written by `blend.py` from the FB since D-420 (`build.py --renders` still makes the SA's) |
+| `02-APP/app/public/car/*.webp` | yes | the app's renders: pictures, not the model. Written by `blend.py` from the FB since D-420 (`build.py --renders` still makes the SA's) |
 
 ## Build
 
 ```
-blender -b --factory-startup -P 01-REFERENCE/model/build.py     # about a minute
-python3 01-REFERENCE/model/estimate.py --write                  # sets routes.model_ft
+blender -b --factory-startup -P 02-PROJECTS/05-cad/model/found/build.py     # about a minute
+python3 02-PROJECTS/05-cad/model/found/estimate.py --write                  # sets routes.model_ft
 ```
 
 Run both from the tree root. Axes in `landmarks.json` and `estimate.py`: millimetres, x to
@@ -34,13 +39,13 @@ and a node is placed, correct its line and run the estimate again.
 
 Every free model, scan and drawing found for the car and the projects' parts is a row in
 `00-CAR` table `cad` (what it is, where from, its licence, its size, whether it is here).
-The files are in `library/<category>/` and, like the SA model, never go in git: the
+The files are in `LIBRARY/<category>/` and, like the SA model, never go in git: the
 licences vary and the repository is public. A row with `login=yes` needs an account to
-download; its `url` is kept so it can be fetched by hand into `library/<category>/<id>/`.
+download; its `url` is kept so it can be fetched by hand into `LIBRARY/<category>/<id>/`.
 
 | File | In git | What it is |
 | --- | --- | --- |
-| `library/` | no | the downloads, one folder per `cad` row, and each search's `manifest.jsonl` |
+| `LIBRARY/` | no | the downloads, one folder per `cad` row, and each search's `manifest.jsonl` |
 | `catalog.py` | yes | imports new manifest lines into `cad` (never overwrites a row) |
 | `blend.py` | yes | Blender script: builds the one combined model |
 | `out/rx7-fb.blend`, `.glb` | no | the combined model: one collection per `blend` row |
@@ -48,12 +53,12 @@ download; its `url` is kept so it can be fetched by hand into `library/<category
 | `out/checks.json`, `*.png` | no | every check against the factory figures, and the renders |
 | `out/locations.json` | no | a box per zone and a point per part the models can place (D-421) |
 | `locate.py` | yes | writes those into 00-CAR `zones.model_box_mm` and `parts.model_at_mm` |
-| `10-gui/app/public/car/views.json` | yes | each app render's camera: frame (mm) to picture (D-421) |
+| `02-APP/app/public/car/views.json` | yes | each app render's camera: frame (mm) to picture (D-421) |
 
 ```
-python3 01-REFERENCE/model/catalog.py --write              # after a new search
-blender -b --factory-startup -P 01-REFERENCE/model/blend.py  # about a minute (the app renders)
-python3 01-REFERENCE/model/locate.py --write                  # zone boxes and part points into 00-CAR
+python3 02-PROJECTS/05-cad/model/found/catalog.py --write              # after a new search
+blender -b --factory-startup -P 02-PROJECTS/05-cad/model/found/blend.py  # about a minute (the app renders)
+python3 02-PROJECTS/05-cad/model/found/locate.py --write                  # zone boxes and part points into 00-CAR
 ```
 
 The combined model's frame: millimetres, x to the car's right, y forward, z up, ground at

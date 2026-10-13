@@ -2,11 +2,11 @@
 
 Run headless, from the tree root:
 
-    blender -b --factory-startup -P 01-REFERENCE/model/build.py
+    blender -b --factory-startup -P 02-PROJECTS/05-cad/model/found/build.py
 
-Reads   01-REFERENCE/model/1978-mazda-rx-7-mk1-sa.zip   (kept out of git - README.md)
-Writes  01-REFERENCE/model/rx7.glb                        the app's 3D view (desktop only, out of git)
-        01-REFERENCE/model/landmarks.json                 part centres, mm, for route estimates (out of git)
+Reads   SA/1978-mazda-rx-7-mk1-sa.zip   (kept out of git - README.md; SA is paths.py's folder)
+Writes  SA/rx7.glb                        the app's 3D view (desktop only, out of git)
+        SA/landmarks.json                 part centres, mm, for route estimates (out of git)
         02-APP/app/public/car/*.webp          only with --renders: the app's renders come from
                                                           blend.py, the FB body, since D-420
 
@@ -23,8 +23,9 @@ import sys
 import tempfile
 import zipfile
 
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-HERE = os.path.join(ROOT, "01-REFERENCE", "model")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))  # blender -P does not add it
+from paths import ROOT, SA  # noqa: E402 - the two folders (paths.py)
+HERE = str(SA)
 ZIP = os.path.join(HERE, "1978-mazda-rx-7-mk1-sa.zip")
 APP_ART = os.path.join(ROOT, "02-APP", "app", "public", "car")
 

@@ -121,11 +121,11 @@ BLOCK_ID_RE = re.compile(r"^(\d{2}|CAR|REF|APP|VER)\.(\d{2,3})$")
 # electrical's history uses (plan P21).
 BLOCK_PREFIX_FIXED = {"00-CAR": "CAR", "01-REFERENCE": "REF", "02-APP": "APP", "00-verify": "VER"}
 # The reference is an intake, not a home (D-519): its tables (sources, catalogue, cad, suppliers,
-# connector_dims, circuits) are 00-CAR's. Until the intake moves its files (06-intake T2), the
-# photos the Manual lists and the factory-circuit files `circuits` names are still read from
-# there - these two paths, from the tree root, and nowhere else. REF stays mapped above while
-# the directory is an area (it holds blocks and retired terms until T3).
-PHOTOS_DIR = "01-REFERENCE/photos"
+# connector_dims, circuits) are 00-CAR's, and so are his photos (06-intake T2). The
+# factory-circuit files `circuits` names stay in the reference until block 06.01 rules them -
+# these two paths, from the tree root, and nowhere else. REF stays mapped above while the
+# directory is an area (it holds blocks and retired terms until T3).
+PHOTOS_DIR = "00-CAR/photos"
 CIRCUITS_DIR = "01-REFERENCE/factory-circuits"
 # Block ids were renumbered on 2026-09-25 (D-427, D-428). A decision dated before that closes
 # whatever id it names; one dated from then on closes only its own area's ids.

@@ -12,7 +12,7 @@ It writes, into DIR (default 02-APP/app/public/design/01-electrical):
   control-unit.glb  the climate unit's case and the insides no board stands for, from the
   display-unit.glb  FreeCAD mock-ups (export_glb_fc.py imports their own unit_lib, so nothing
                     is drawn twice), one named node per solid: case:<name>, inside:<name>
-  pmu.glb           ECUMaster's PMU-24 STEP from 01-REFERENCE, with its own face colours
+  pmu.glb           ECUMaster's PMU-24 STEP from pmu/vendor, with its own face colours
   connectors/       one glb per Deutsch variant and manifest.json, by harness/cad/connectors/
                     build_connectors.py (Y24), run here as a step
   devices/          the far ends' devices and common parts and manifest.json, by harness/cad/
@@ -63,7 +63,7 @@ FREECADCMD = os.environ.get("FREECADCMD",
 KICAD_MODELS = os.environ.get("KICAD10_3DMODEL_DIR",
                               "/Applications/KiCad/KiCad.app/Contents/SharedSupport/3dmodels")
 RX7_MODELS = os.path.join(ROOT, "01-REFERENCE", "model", "library", "electrical")
-PMU_STEP = os.path.join(ROOT, "01-REFERENCE", "PMU_info", "PMU CAD info", "PMU-24.STEP")
+PMU_STEP = os.path.join(DESIGN, "pmu", "vendor", "PMU CAD info", "PMU-24.STEP")
 
 # The PMU sets the standard (D-505): fine enough that every radius reads round.
 PMU_LINEAR, PMU_ANGULAR = 0.03, 0.15          # mm, radians

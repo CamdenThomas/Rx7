@@ -26,11 +26,13 @@ Paths in this README are from this folder.
 │   └── firmware/            dcu
 ├── display-unit/            THE DISPLAY UNIT (DU, the ICU - D-496)
 │   ├── cad/                 icu-carrier, and the icu-unit mock-up
-│   └── firmware/            icu, icu_radio, icu_sim, tach_simulator
+│   ├── firmware/            icu, icu_radio, icu_sim, tach_simulator
+│   └── vendor/              Bridgetek's ME817EV datasheet (S-500)
 ├── pmu/                     THE PMU - it runs ECUMaster's firmware; its client project joins here once F-009 proves the export
-│   └── firmware/            pmu_sim (the bench stand-in), ladder_decode_test
+│   ├── firmware/            pmu_sim (the bench stand-in), ladder_decode_test
+│   └── vendor/              ECUMaster's manual, pinout and CAD package with the STEP (S-027, S-028, S-029)
 ├── harness/cad/devices/     the devices at the legs' far ends and the common parts in 3D: found models and stand-ins (§13, D-515)
-├── harness/cad/connectors/  THE HARNESS's DT, DTP and DT13 housings in 3D, one glb per variant, from 01-REFERENCE connector_dims (§13, D-514, Y24)
+├── harness/cad/connectors/  THE HARNESS's DT, DTP and DT13 housings in 3D, one glb per variant, from 00-CAR connector_dims (§13, D-514, Y24)
 ├── tools/                   what every board uses: check.py and pin_tables.csv, enclosure_lib.py and
 │                            enclosure_extract.py (the PCB guide that walked the first boards is gone: Camden deleted it on 2026-10-13, the boards drawn)
 │                            export_glb.py and export_glb_fc.py: the design in 3D for the app (§13, D-505)
@@ -385,7 +387,7 @@ tool crash. It needs `kicad-cli` (KiCad 10) and `freecadcmd` (FreeCAD 1.1); `KIC
 |---|---|---|
 | `dcu-carrier.glb`, `panel.glb`, `upper-board.glb`, `left-plate.glb`, `icu-carrier.glb` | each board's `.kicad_pcb` | `kicad-cli pcb export glb --subst-models` with tracks, pads, zones, silkscreen and soldermask; two nodes, `pcb:board` and `pcb:parts`. DNP parts are drawn (the worst case the mock-ups check). Copper and mask edges under 0.1 mm tall are dropped: invisible, and half the copper's vertices |
 | `control-unit.glb`, `display-unit.glb` | the mock-ups, `climate-unit` and `icu-unit` | `export_glb_fc.py` calls the mock-up's own `unit_lib` (derive, validate, build_insides, build_case - what `make_unit.py` calls), so the geometry is the mock-up's and no number is typed twice. One node per solid: `case:<part>` and `inside:<name>`. The solids a board's glb stands for (the carrier, the panel board, the upper board and its receptacles) and the keep-outs are left out |
-| `pmu.glb` | `01-REFERENCE/PMU_info/PMU CAD info/PMU-24.STEP` | read by FreeCAD, each face coloured as the STEP colours it, meshed at 0.03 mm and 0.15 rad (`PMU_LINEAR`, `PMU_ANGULAR`); one node per vendor part, `part:<label>` |
+| `pmu.glb` | `pmu/vendor/PMU CAD info/PMU-24.STEP` | read by FreeCAD, each face coloured as the STEP colours it, meshed at 0.03 mm and 0.15 rad (`PMU_LINEAR`, `PMU_ANGULAR`); one node per vendor part, `part:<label>` |
 | `scene.json` | the record and the assets | every part, place, connector and link (below) |
 
 Every glb is in **millimetres, z up, in the part's own frame** - not glTF's metres and y up - so

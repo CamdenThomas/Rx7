@@ -203,7 +203,7 @@ routes,from_node,str,no,,
 routes,to_node,str,no,,
 routes,via,str,no,,the grommet or path the tape follows
 routes,ft,num,no,,"measured route length, feet - blank until M-2; the cut length is 1.5x this (D-202)"
-routes,model_ft,num,no,,"planning estimate from the 3D body (00-CAR S-037, 01-REFERENCE/model/estimate.py) with assumed node positions - never a cut length, never read by the wire schedule; ft is the measured figure (D-416)"
+routes,model_ft,num,no,,"planning estimate from the 3D body (00-CAR S-037, 02-PROJECTS/05-cad/model/found/estimate.py) with assumed node positions - never a cut length, never read by the wire schedule; ft is the measured figure (D-416)"
 routes,note,text,no,,
 dcu_channels,id,key,yes,,
 dcu_channels,kind,enum(bus|input|output|power|sensor),no,,
@@ -297,8 +297,8 @@ ideas,date,date,no,,
 ideas,by,enum(camden|agent),no,,who raised it; an agent's idea is a suggestion until Camden keeps it
 ideas,about,str,no,,"what it concerns: a module, table or work id of this area - prose belongs in note"
 ideas,idea,text,no,,"Camden's words verbatim when by=camden, whole; never edited - a later version is a new row"
-ideas,status,enum(raw|kept|merged|dropped),no,,"raw until he rules; it leaves raw only by a decision that carries his words"
-ideas,note,text,no,,"the agent's reading: what stands meanwhile and what the idea would touch if he ruled it"
+ideas,status,enum(raw|kept|merged|dropped),no,,raw until he rules; it leaves raw only by a decision that carries his words
+ideas,note,text,no,,the agent's reading: what stands meanwhile and what the idea would touch if he ruled it
 log_channels,id,key,yes,,
 log_channels,channel,str,no,,
 log_channels,source,str,no,,the can_fields id(s) or icu_channels id the value comes from; a local value names the firmware that makes it
@@ -307,7 +307,7 @@ log_channels,encoding,str,no,,
 log_channels,note,text,no,,
 log_link,id,key,yes,,
 log_link,item,str,no,,"a characteristic, an opcode on the control characteristic, or a UART frame type"
-log_link,side,enum(ble|uart|both),no,,"ble = between the phone and the C3; uart = between the C3 and the Teensy; both = a rule that spans the link (widened 2026-10-12 for the timing row)"
+log_link,side,enum(ble|uart|both),no,,ble = between the phone and the C3; uart = between the C3 and the Teensy; both = a rule that spans the link (widened 2026-10-12 for the timing row)
 log_link,direction,str,no,,
 log_link,payload,text,no,,"every byte, little-endian; strings are UTF-8 with a length byte"
 log_link,note,text,no,,

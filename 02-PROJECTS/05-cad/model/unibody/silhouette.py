@@ -18,8 +18,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 from partlib import G  # noqa: E402  (01-electrical's export_glb: read_glb, _walk, _accessor)
 
-ROOT = os.path.abspath(os.path.join(HERE, "..", "..", "..", ".."))
-GLB = os.path.join(ROOT, "01-REFERENCE", "model", "library", "body",
+sys.path.insert(0, os.path.join(os.path.dirname(HERE), "found"))
+from paths import LIBRARY  # noqa: E402  (the library's folder, named once: found/paths.py)
+
+GLB = os.path.join(LIBRARY, "body",
                    "fb-rx7-gsl-se-85-3dwarehouse-blastronaut", "Mazda RX-7 fb Tuner (Copper).glb")
 WHEEL = (15, 17, 21)                     # the tuner wheels' materials
 BODY = (0, 1, 2, 3, 4, 5, 7, 11, 13)     # paint, trim, glass

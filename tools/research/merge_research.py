@@ -2,19 +2,20 @@
 00-CAR specs, terminals and parts. Source keys become new S- ids (a URL already in sources
 reuses its id); specs get the next SP- ids; terminals are <part>-<terminal>. Dry run unless
 --write. Usage: merge_research.py [SCRATCH] BATCH_ID_PREFIX... [--write] [--force]
-SCRATCH defaults to 01-REFERENCE/research in the tree, where every wave's raw output is kept
-(plan P48, 2026-09-26). The merge is idempotent: a spec, terminal or source already in the
+SCRATCH defaults to RESEARCH, the library's research folder (out of git, 06-intake T2), where
+every wave's raw output is kept (plan P48, 2026-09-26). The merge is idempotent: a spec, terminal or source already in the
 record is skipped, so a batch can be merged twice without doubling anything. Nothing is written
 while a problem is listed unless --force is passed."""
 import csv, glob, json, re, sys
 from pathlib import Path
 
 T = Path(__file__).resolve().parents[2]
+RESEARCH = T / "01-REFERENCE/model/library/research"  # every wave's raw output; the one place it is named
 _args = [a for a in sys.argv[1:] if not a.startswith("--") and not a.startswith("keep=")]
 if _args and Path(_args[0]).is_dir():
     S = Path(_args[0]); prefixes = _args[1:]
 else:
-    S = T / "01-REFERENCE" / "research"; prefixes = _args
+    S = RESEARCH; prefixes = _args
 KEEP_CONFIRM = {x for a in sys.argv[1:] if a.startswith("keep=") for x in a[5:].split(",") if x}
 WRITE = "--write" in sys.argv
 FORCE = "--force" in sys.argv

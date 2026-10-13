@@ -112,4 +112,7 @@ keystore.properties
 # scripts that read the files are committed. The blended model built from them is not.
 01-REFERENCE/model/library/
 01-REFERENCE/model/out/
+# The research waves' raw output (tools/research) is kept in the library's research/ folder; the
+# old tracked copy here left git once it was confirmed identical there (06-intake T2).
+01-REFERENCE/research/
 fixture/

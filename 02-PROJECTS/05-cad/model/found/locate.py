@@ -2,10 +2,10 @@
 
 Run from the tree root, after blend.py:
 
-    python3 01-REFERENCE/model/locate.py            # show what would change
-    python3 01-REFERENCE/model/locate.py --write    # write it
+    python3 02-PROJECTS/05-cad/model/found/locate.py            # show what would change
+    python3 02-PROJECTS/05-cad/model/found/locate.py --write    # write it
 
-Reads   01-REFERENCE/model/out/locations.json   written by blend.py (out of git)
+Reads   SA/out/locations.json   written by blend.py (out of git; SA is paths.py's folder)
 Writes  00-CAR zones.model_box_mm, zones.model_from, parts.model_at_mm, parts.model_from
 
 Owns those four columns and nothing else. They are model estimates, never measurements
@@ -16,14 +16,14 @@ and is found by its zone.
 
 import json
 import sys
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+from paths import ROOT, SA  # the two folders (paths.py)
+
 sys.path.insert(0, str(ROOT / "tools"))
 import rx7  # noqa: E402
 
 CAR = ROOT / "00-CAR"
-LOC = ROOT / "01-REFERENCE" / "model" / "out" / "locations.json"
+LOC = SA / "out" / "locations.json"
 
 
 def cell(groups):

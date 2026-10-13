@@ -2,14 +2,16 @@
 
 Run headless, from the tree root:
 
-    blender -b --factory-startup -P 01-REFERENCE/model/blend.py
+    blender -b --factory-startup -P 02-PROJECTS/05-cad/model/found/blend.py
 
-Reads   01-REFERENCE/model/library/...        the downloaded models (out of git, see README.md)
-        01-REFERENCE/model/rx7.glb         the bought SA body (S-037), as model/build.py left it
-Writes  01-REFERENCE/model/out/rx7-fb.blend  the combined scene, one collection per piece
-        01-REFERENCE/model/out/rx7-fb.glb    the same, shown pieces only, for any viewer
-        01-REFERENCE/model/out/checks.json   every figure the pieces were checked against
-        01-REFERENCE/model/out/*.png         side, top, front, rear and three-quarter renders
+Reads   LIBRARY/...        the downloaded models (out of git, see README.md; LIBRARY and SA
+                           are the two folders paths.py names)
+        SA/rx7.glb         the bought SA body (S-037), as build.py left it
+Writes  SA/out/rx7-fb.blend  the combined scene, one collection per piece
+        SA/out/rx7-fb.glb    the same, shown pieces only, for any viewer
+        SA/out/checks.json   every figure the pieces were checked against
+        SA/out/*.png         side, top, front, rear and three-quarter renders
+        SA/rx7-fb.glb        the app's 3D view (D-420)
 
 Owns no table. The pieces and their fits are the `blend` table in 05-cad; the
 factory figures used here are 00-CAR `specs` rows, named beside each constant. Every
@@ -28,9 +30,11 @@ import mathutils
 import os
 import sys
 
-ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-FILES = os.path.join(ROOT, "01-REFERENCE", "model", "library")
-OUT = os.path.join(ROOT, "01-REFERENCE", "model", "out")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))  # blender -P does not add it
+from paths import LIBRARY, ROOT, SA  # noqa: E402 - the two folders (paths.py)
+
+FILES = str(LIBRARY)
+OUT = os.path.join(SA, "out")
 
 # ---- factory figures (00-CAR specs) --------------------------------------------------
 WHEELBASE = 2420.0            # SP-131
@@ -54,14 +58,14 @@ ENGINE_SHAFT_Z = 360.0        # eccentric shaft height above the ground
 EXPORT_SCALE_13B = 0.35       # ericthepoolboy's parts are 35 % of full size
 
 CHECKS = {}
-SILVER = (0.46, 0.48, 0.50, 1.0)  # Sunbeam Silver as a linear base colour, as model/build.py has it
+SILVER = (0.46, 0.48, 0.50, 1.0)  # Sunbeam Silver as a linear base colour, as build.py has it
 # the FB shell's painted groups: body, bonnet, doors, roof, bumpers, pop-up covers
 PAINTED = ("CARROCERIA", "CAPOT", "PUERTAS", "TECHO", "PARAG_DEL", "PARAG_TRAS", "TAPAFAROS")
 APP_ART = os.path.join(ROOT, "02-APP", "app", "public", "car")
 GLASS = None  # set by fb_body()
 VIEWS = {}  # each app render's camera, filled by app_art()
 GROUPS = {}  # the FB shell's named groups (Spanish), kept by fb_body() for locations()
-APP_GLB = os.path.join(ROOT, "01-REFERENCE", "model", "rx7-fb.glb")
+APP_GLB = os.path.join(SA, "rx7-fb.glb")
 LAMP_TARGET = []  # the FB body's own tail lamp meshes, filled by fb_body()
 
 
@@ -240,9 +244,9 @@ def fb_body():
 
 # ---- the SA body, hidden, for its detail ----------------------------------------------
 def sa_overlay():
-    src = os.path.join(ROOT, "01-REFERENCE", "model", "rx7.glb")
+    src = os.path.join(SA, "rx7.glb")
     if not os.path.exists(src):
-        CHECKS["sa_overlay"] = "missing - build 01-REFERENCE/model first"
+        CHECKS["sa_overlay"] = "missing - run found/build.py first"
         return []
     objs = imported(lambda: bpy.ops.import_scene.gltf(filepath=src))
     bake(objs)
@@ -621,7 +625,7 @@ def locations(body, engine):
         parts[pid] = (wr, spec + ", rear")
     out_p = {k: {"points": v[0], "from": v[1]} for k, v in parts.items()}
     with open(os.path.join(OUT, "locations.json"), "w") as fh:
-        json.dump({"frame": "mm; x right, y forward, z up; ground z = 0; front axle y = 0 (model/README.md)",
+        json.dump({"frame": "mm; x right, y forward, z up; ground z = 0; front axle y = 0 (found/README.md)",
                    "zones": out_z, "parts": out_p}, fh, indent=1, sort_keys=True)
     CHECKS["locations.firewall_y"] = round(ws_front.y)
 
@@ -633,7 +637,7 @@ def app_frame():
 
 
 def app_art(objs):
-    """The Home and Manual renders, lit and framed as model/build.py lit the SA (D-415)."""
+    """The Home and Manual renders, lit and framed as build.py lit the SA (D-415)."""
     sc = bpy.context.scene
     keep = (sc.render.engine, sc.render.resolution_x, sc.render.resolution_y, sc.camera, sc.world)
     sc.render.engine = "CYCLES"
@@ -789,7 +793,7 @@ def main():
             c.hide_render = True
         in_frame(app, app_frame(), app_art)
         with open(os.path.join(APP_ART, "views.json"), "w") as fh:
-            json.dump({"about": "clip = matrix @ [x, y, z, 1] for a point in mm (01-REFERENCE/model/README.md frame); "
+            json.dump({"about": "clip = matrix @ [x, y, z, 1] for a point in mm (02-PROJECTS/05-cad/model/found/README.md frame); "
                        "pixel x = (clip.x / clip.w + 1) / 2 * width, y = (1 - clip.y / clip.w) / 2 * height (D-421)",
                        "views": VIEWS}, fh, indent=1, sort_keys=True)
         thin = []

@@ -43,7 +43,7 @@ offline, keeps what you type, and sends it the next time it can reach GitHub.
 
 **Home.** The car in line-art, *1982 Mazda RX-7, FB chassis · GS · Sunbeam Silver · 12A
 rotary · 153,000 mi*, then the two tiles. The Projects tile tells you how many things wait
-for you. When you add a photo to `01-REFERENCE/photos/`, it replaces the drawing with no code
+for you. When you add a photo to `00-CAR/photos/`, it replaces the drawing with no code
 change.
 
 **Projects.** One card per project. **New project** asks for a name and a paragraph of what

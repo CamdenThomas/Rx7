@@ -1,10 +1,10 @@
 """Rough harness route lengths from the 3D body (D-416). Owns `routes.model_ft` in
 02-PROJECTS/01-electrical; never touches `routes.ft`, which is measured on the car.
 
-    python3 01-REFERENCE/model/estimate.py            print the estimates
-    python3 01-REFERENCE/model/estimate.py --write    also set routes.model_ft through rx7.py
+    python3 02-PROJECTS/05-cad/model/found/estimate.py            print the estimates
+    python3 02-PROJECTS/05-cad/model/found/estimate.py --write    also set routes.model_ft through rx7.py
 
-Reads 01-REFERENCE/model/landmarks.json (build.py writes it; out of git). Millimetres; x to
+Reads SA/landmarks.json (build.py writes it; out of git; SA is paths.py's folder). Millimetres; x to
 the car's right, y toward the front, z up, ground z = 0. The car's centreline is x = 47.
 
 Every length is taxicab (along x, then y, then z) between points, because a harness follows
@@ -18,13 +18,13 @@ import os
 import subprocess
 import sys
 
-HERE = os.path.dirname(os.path.abspath(__file__))
-ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
+from paths import ROOT, SA  # the two folders (paths.py)
+
 AREA = "02-PROJECTS/01-electrical"
 SLACK = 1.15
 CL = 47.0
 
-L = json.load(open(os.path.join(HERE, "landmarks.json")))
+L = json.load(open(os.path.join(SA, "landmarks.json")))
 
 
 def at(name):

@@ -1,6 +1,6 @@
 {
  "version": 2,
- "built": "2026-10-13T14:17:36-06:00",
+ "built": "2026-10-13T14:26:40-06:00",
  "project": "01-electrical",
  "frame": {
   "units": "mm",
@@ -448,7 +448,7 @@
    "name": "ECUMaster PMU-24 DL",
    "kind": "module",
    "glb": "pmu.glb",
-   "bytes": 3552056,
+   "bytes": 3552084,
    "parent": null,
    "place": {
     "x": -34.125,
@@ -910,7 +910,7 @@
     }
    ],
    "children": [],
-   "source": "01-REFERENCE/PMU_info/PMU CAD info/PMU-24.STEP",
+   "source": "02-PROJECTS/01-electrical/00-design/pmu/vendor/PMU CAD info/PMU-24.STEP",
    "nodes": {
     "parts": [
      "part:PDM24_shank_isolator_revB",
@@ -13947,7 +13947,7 @@
     "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "ffc1d2df9947de2a"
+   "stamp": "02f97308fd7bd76a"
   },
   "panel": {
    "id": "panel",
@@ -13990,7 +13990,7 @@
     "TQFP-48-1EP_7x7mm_P0.5mm_EP4.11x4.11mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "e202f7440a82996f"
+   "stamp": "913edfcfa24611ab"
   },
   "upper-board": {
    "id": "upper-board",
@@ -14039,7 +14039,7 @@
      -19.17
     ]
    },
-   "stamp": "79ddbf499dc54d09"
+   "stamp": "e34258c01e81dd30"
   },
   "left-plate": {
    "id": "left-plate",
@@ -14082,7 +14082,7 @@
     94.5,
     -21.65
    ],
-   "stamp": "7564793599d36575"
+   "stamp": "f9d513e3856c9126"
   },
   "icu-carrier": {
    "id": "icu-carrier",
@@ -14125,7 +14125,7 @@
     "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "b48706d97c1994bd"
+   "stamp": "a2b48fad3363e381"
   },
   "control-unit": {
    "problems": [],
@@ -14276,7 +14276,7 @@
    "kind": "unit",
    "glb": "control-unit.glb",
    "source": "control-unit/cad/climate-unit (unit_params.py, unit_lib.py)",
-   "stamp": "838f5a22473257a6"
+   "stamp": "154f0f200027b196"
   },
   "display-unit": {
    "problems": [],
@@ -14364,7 +14364,7 @@
    "kind": "unit",
    "glb": "display-unit.glb",
    "source": "display-unit/cad/icu-unit (unit_params.py, unit_lib.py)",
-   "stamp": "18d86c232cb82480"
+   "stamp": "92b01412bdb9f560"
   },
   "cur": {
    "problems": [],
@@ -14456,11 +14456,11 @@
    "kind": "unit",
    "glb": "cur.glb",
    "source": "control-unit/cad/cur-unit (unit_params.py, unit_lib.py)",
-   "stamp": "9b55073f3c9418bb"
+   "stamp": "ae78f354e3fd0aa1"
   },
   "pmu": {
    "problems": [],
-   "bytes": 3552056,
+   "bytes": 3552084,
    "bbox": [
     [
      -21.75,
@@ -14509,8 +14509,8 @@
    "id": "pmu",
    "kind": "module",
    "glb": "pmu.glb",
-   "source": "01-REFERENCE/PMU_info/PMU CAD info/PMU-24.STEP",
-   "stamp": "0c92922cc8fad014"
+   "source": "02-PROJECTS/01-electrical/00-design/pmu/vendor/PMU CAD info/PMU-24.STEP",
+   "stamp": "f5f8411afc161468"
   }
  },
  "legs": [

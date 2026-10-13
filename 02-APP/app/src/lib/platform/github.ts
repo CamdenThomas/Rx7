@@ -139,6 +139,6 @@ export function wanted(path: string): 'text' | 'name' | null {
     return null;
   }
   if (/^(00-CAR|01-REFERENCE|02-APP|02-PROJECTS\/[^/]+)\/data\/(inbox\/)?[^/]+\.csv$/.test(path)) return 'text';
-  if (/^01-REFERENCE\/photos\/.+\.(jpe?g|png|webp)$/i.test(path)) return 'name';
+  if (/^00-CAR\/photos\/.+\.(jpe?g|png|webp)$/i.test(path)) return 'name';
   return null;
 }

@@ -2,10 +2,10 @@
 
 Run from the tree root:
 
-    python3 01-REFERENCE/model/catalog.py            # show what would be added
-    python3 01-REFERENCE/model/catalog.py --write    # add the new rows
+    python3 02-PROJECTS/05-cad/model/found/catalog.py            # show what would be added
+    python3 02-PROJECTS/05-cad/model/found/catalog.py --write    # add the new rows
 
-Reads   01-REFERENCE/model/library/<category>/manifest.jsonl   one JSON line per find (out of git)
+Reads   LIBRARY/<category>/manifest.jsonl   one JSON line per find (out of git; paths.py)
 Writes  00-CAR/data/cad.csv                                through rx7.py's own table writer
 
 Owns the `cad` table's rows it adds, and nothing else. A row already in `cad` is never
@@ -16,14 +16,14 @@ is plain; anything else keeps its size empty and its words in `note`.
 
 import json
 import sys
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+from paths import LIBRARY, ROOT, rel  # the two folders (paths.py)
+
 sys.path.insert(0, str(ROOT / "tools"))
 import rx7  # noqa: E402
 
-AREA = ROOT / "00-CAR"  # the cad table (D-519); the files stay in the intake until 06-intake T2
-FILES = ROOT / "01-REFERENCE" / "model" / "library"
+AREA = ROOT / "00-CAR"  # the cad table (D-519)
+FILES = LIBRARY
 UNIT = [("mm", 1.0), ("cm", 10.0), ("inch", 25.4), ("m", 1000.0)]  # order matters: mm before m
 MATCH = {"exact": "exact", "close": "close", "different": "different"}
 
@@ -54,7 +54,7 @@ def flat(v) -> str:
     if isinstance(v, (list, tuple)):
         return "; ".join(flat(x) for x in v)
     # the finders wrote while the library sat in 01-REFERENCE/cad/files (moved, D-418)
-    return " ".join(str(v).split()).replace("01-REFERENCE/cad/files", "01-REFERENCE/model/library")
+    return " ".join(str(v).split()).replace("01-REFERENCE/cad/files", rel(LIBRARY))
 
 
 def row(cat: str, d: dict) -> dict:

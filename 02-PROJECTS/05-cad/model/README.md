@@ -36,6 +36,7 @@ model, and every dimension nobody measured carries `confirm` (R11). Today that i
 | `unibody/geometry.py` | The panels as rough sheet solids, from `params.py` alone | - |
 | `unibody/silhouette.py` | Re-derives the found shell's stations that `params.py` cites (read only) | 00-CAR `cad` |
 | `export_scene.py` | `scene.json` for the app; the selftest; the record drafts (`--drafts`) | 00-CAR `parts`, `systems` |
+| `found/` | The found models' scripts (moved from the reference, 06-intake T2): `build.py` and `blend.py` (Blender), `catalog.py`, `locate.py`, `estimate.py`, and `paths.py`, the one place the library's and the bought SA model's folders are named. Their own README is `found/README.md` | 00-CAR `cad`, `zones`, `parts`; 05-cad `blend`; 01-electrical `routes.model_ft` |
 | `render_check.mjs` | Loads the scene and every glb with the app's three.js and rasterises five views (one exploded) to PNG - no WebGL | - |
 
 ## 2 · Building it

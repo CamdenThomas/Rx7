@@ -91,7 +91,7 @@ jobs:
             00-CAR/data
             01-REFERENCE/data
             01-REFERENCE/factory-circuits
-            01-REFERENCE/photos
+            00-CAR/photos
             02-APP/data
             02-PROJECTS
             99-ARCHIVE
