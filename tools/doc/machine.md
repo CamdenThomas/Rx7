@@ -17,7 +17,7 @@ w64devkit) is stale; so is "the one Fedora machine" — that was true from 2026-
 | ngspice | 47 (`brew install ngspice`) | `sudo dnf install ngspice` (D-453's setup line) |
 | Firmware tests, `icu_sim` | Xcode CLT `g++`, `brew install sdl2`; the build scripts pin `SDKROOT` while CLT 26.6 sits beside a 27.0 SDK it cannot link against | `sudo dnf install gcc-c++ SDL2-devel` |
 | Xcode 27 beside the CLT (since 2026-10-12, for Unreal) | `xcode-select -p` points at Xcode.app; until its licence is accepted (`sudo xcodebuild -license accept`, his to run) `/usr/bin/python3` and `/usr/bin/git` refuse with the licence message. Meanwhile: `env DEVELOPER_DIR=/Library/Developer/CommandLineTools python3 …` for every python3 call (rx7.py included; children inherit it), homebrew `git` (first on PATH) for git, `env SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk g++ …` for the firmware tests | — |
-| Teensy upload | Teensyduino or `arduino-cli` with the Teensy core; no udev | the same, plus PJRC's udev rule (firmware README §4) |
+| Teensy upload | Teensyduino or `arduino-cli` with the Teensy core; no udev | the same, plus PJRC's udev rule (`00-design/README.md`, building for the Teensy) |
 | Diagrams | Pillow (`python3 -m pip install --user pillow`); the font is in the tree, `tools/fonts/` | Pillow (`python3-pillow`); same font |
 | The Rx7 app | **built and installed 2026-10-09 (`F3`)**: Rust 1.99 through rustup in `~/.cargo` (its env line in `~/.zshenv`), Node 24 via fnm, `npm install`, `npx tauri build --bundles app` with `SDKROOT` pinned to the 26.5 SDK (the pin applies to cargo too); ad hoc signed, not notarized, at `/Applications/Rx7.app`. `tauri-driver` (the desktop e2e) is Linux/Windows only — the browser tests run | installed (RPM); Node 22, Rust in `~/.cargo`, the Tauri libraries, JDK 21 in `~/.local/jdk`, the Android SDK/NDK in `~/Android/Sdk` (app README) |
 | Only here | — | the 3.4 GB model library (`01-REFERENCE/model`), the research downloads, the Android signing key — `P55` names their second home |
@@ -41,11 +41,11 @@ The generated files are only the harness-leg drawings in
 `02-PROJECTS/01-electrical/00-design/diagrams/` (D-385). The one hand-drawn exception is the
 CAD under `02-PROJECTS/01-electrical/00-design/`: the KiCad projects for the ICU and DCU carriers
 and the control panel, in their units' `control-unit/cad/` and `display-unit/cad/` (D-496), with
-the shared `cad/` holding the check and the library — schematic, board layout and 3D model, with
-`cad/PCB-AND-3D-GUIDE.md` as the method — ruled in by Camden on 2026-09-12, widened on 2026-09-21
+the shared `tools/` holding the check and the library (D-497) — schematic, board layout and 3D model, with
+`tools/PCB-AND-3D-GUIDE.md` as the method — ruled in by Camden on 2026-09-12, widened on 2026-09-21
 (layout, both boards, D-361), and since D-453 drawn by the agent as well. It is not an area — no
 `data/`, so `rx7.py` cannot see it — nothing in the record cites it, and if the record and a
-drawing ever disagree the record is right. `cad/README.md` is the fence.
+drawing ever disagree the record is right. `00-design/README.md` is the fence.
 
 The Claude Project holds one pointer document and nothing else; nothing is ever queued
 there. The account skill `rx7-system-v2` is stale and Camden deletes it (02-APP work P27).

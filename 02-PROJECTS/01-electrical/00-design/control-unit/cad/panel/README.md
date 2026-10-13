@@ -3,7 +3,7 @@
 *Rev 2026-10-13 (sheet and board rev 0.04, provisional - Y20, D-492) · owns: what this KiCad project
 is for and what it may claim. The panel's design is `../../../../data/panel_ribbon.csv`, the cavities of
 `DP-DCU-E`, `dcu_channels` SN17-SN20 and parts P155, P192, P201 (D-492, D-458, D-459). Read
-`../../../cad/README.md` first: it is the fence.*
+`../../../README.md` first: it is the fence.*
 
 ## Where it stands
 
@@ -11,7 +11,7 @@ is for and what it may claim. The panel's design is `../../../../data/panel_ribb
 four encoders and the thumbstick, superseded). It is the face of the climate unit (D-479, D-481):
 the board stands 8 mm behind the faceplate, inside the unit's enclosure, the DCU carrier behind it.
 
-- **Schematic: ERC 0 errors, 0 warnings.** `../../../cad/check.py --board panel`: 79 checks, 0 mismatches
+- **Schematic: ERC 0 errors, 0 warnings.** `../../../tools/check.py --board panel`: 79 checks, 0 mismatches
   against `panel_ribbon` (every conductor, the keys on each row and column through their diodes,
   the encoders, the spares), against `DP-DCU-E` (the plate header pin for pin) and against the
   IS31FL3236A pin table.
@@ -202,7 +202,7 @@ The window switch and the screen module have no model.
 
 ```
 kicad-cli sch erc panel.kicad_sch --severity-all --exit-code-violations -o panel-erc.rpt
-python3 ../../../cad/check.py --board panel
+python3 ../../../tools/check.py --board panel
 kicad-cli pcb drc --severity-all --exit-code-violations --schematic-parity -o panel-drc.rpt panel.kicad_pcb
 kicad-cli sch export svg --no-background-color -o . panel.kicad_sch
 kicad-cli sch export bom --fields 'Reference,${QUANTITY},Value,Footprint,${DNP},Confirm' --labels 'Ref,Qty,Value,Footprint,DNP,Confirm' --group-by 'Value,Footprint,${DNP}' --sort-field Reference -o panel-bom.csv panel.kicad_sch

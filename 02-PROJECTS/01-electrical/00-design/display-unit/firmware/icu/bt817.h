@@ -10,7 +10,7 @@
  * boot — REG_PCLK starts the panel a few ms after power.
  *
  * PORTABLE: everything except the HAL at the bottom compiles on the
- * desktop. 00-design/firmware/tests/test_bt817.cpp mocks the five bt817_hal_* calls and
+ * desktop. 00-design/tests/test_bt817.cpp mocks the five bt817_hal_* calls and
  * verifies init traffic, display-list encoding, blit addressing and the
  * dirty-run merge against expected byte streams.
  *

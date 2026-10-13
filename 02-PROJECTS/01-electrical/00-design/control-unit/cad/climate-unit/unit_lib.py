@@ -1,7 +1,7 @@
 """The climate control unit's mock-up (D-479, D-480, Y14): layout, fit rules, solids, checks, output.
 
 Run by `make_unit.py` through FreeCAD's headless interpreter, never on its own. Holds NO dimension:
-every number comes from `unit_params.py` (the parameter table), from `../../../cad/enclosure_lib.py` (TE's
+every number comes from `unit_params.py` (the parameter table), from `../../../tools/enclosure_lib.py` (TE's
 DT13 panel cut-outs, the primitives) or from the DCU carrier's own files, which it only reads:
 
 - `../dcu-carrier/enclosure/board.json`  the carrier's outline, holes and footprints;
@@ -74,7 +74,7 @@ def load_source(cad_dir, P):
         if not os.path.exists(path):
             src["problems"].append(
                 "%s is missing from dcu-carrier/enclosure: run that folder's make_enclosure.py "
-                "(and 00-design/cad/enclosure_extract.py dcu-carrier) first - this mock-up reads the carrier "
+                "(and 00-design/tools/enclosure_extract.py dcu-carrier) first - this mock-up reads the carrier "
                 "from it." % name)
             return src
         src[name.split(".")[0]] = L.load(path)

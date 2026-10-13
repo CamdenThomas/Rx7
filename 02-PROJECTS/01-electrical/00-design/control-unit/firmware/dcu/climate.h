@@ -137,7 +137,7 @@ static inline void apply_keypad(dcu_state_t *s, uint8_t pressed_edges)
 }
 
 /* ------------- climate memory integrity (SD file) -------------
- * Pure logic, so it lives here and gets covered by 00-design/firmware/tests/test_dcu.cpp;
+ * Pure logic, so it lives here and gets covered by 00-design/tests/test_dcu.cpp;
  * dcu.ino only does the SD I/O around it.                              */
 static inline uint32_t mem_crc(const climate_mem_t *m)
 {

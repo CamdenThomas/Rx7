@@ -15,7 +15,7 @@
  *
  * SETUP
  *   1. Library Manager -> ACAN_T4
- *   2. Copy can_map.h from ../../display-unit/firmware/icu/ into this folder
+ *   2. Copy can_map.h from ../../../display-unit/firmware/icu/ into this folder
  *   3. Wire CAN1 (pins 22/23) to a SN65HVD230, 120 ohm at each end of the bus
  *   4. Upload, Serial Monitor 115200, press ? for commands
  *

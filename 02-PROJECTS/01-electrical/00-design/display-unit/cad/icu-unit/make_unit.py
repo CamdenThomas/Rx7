@@ -31,7 +31,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CAD = os.path.dirname(HERE)
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(CAD)), "cad"))  # 00-design/cad: enclosure_lib
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(CAD)), "tools"))  # 00-design/tools: enclosure_lib
 sys.path.insert(0, HERE)
 import unit_params as U  # noqa: E402
 import unit_lib as K  # noqa: E402

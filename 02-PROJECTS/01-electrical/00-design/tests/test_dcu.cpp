@@ -1,7 +1,7 @@
 /*
  * test_dcu.cpp — desktop verification of the DCU logic (F-001)
  *
- * Compiles the REAL climate.h + panel.h + can_map.h from ../../control-unit/firmware/dcu. Covers the
+ * Compiles the REAL climate.h + panel.h + can_map.h from ../control-unit/firmware/dcu. Covers the
  * seat interlock (D-073), comfort gating, keypad edges, servo mapping, the
  * SD climate-memory CRC, and F-017: the key matrix, 0x400, wake and replay,
  * the release select (D-370) and its interlock - stopped only, 1.5 s at most
@@ -15,7 +15,7 @@
  * paired contacts, the lights (lights.h) and the screen's pages (screen.h).
  *
  * Build (g++ on PATH):
- *   g++ test_dcu.cpp -o test_dcu -std=c++17 -O2 -I../../control-unit/firmware/dcu && ./test_dcu
+ *   g++ test_dcu.cpp -o test_dcu -std=c++17 -O2 -I../control-unit/firmware/dcu && ./test_dcu
  */
 #include <cstdio>
 #include <cstring>

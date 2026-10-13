@@ -6,10 +6,10 @@
  * (the frame types, payloads, error and state codes, the framing, the time rule);
  * LL01-LL02 (advertising, pairing) live in icu_radio/icu_radio.ino. `log_channels` is
  * log_store.h's. rx7.py sql 01-electrical "select * from log_link order by id".
- * 00-design/firmware/tests/gen_log_vectors.py reads the same rows and 00-design/firmware/tests/test_loglink.cpp holds every
+ * 00-design/tests/gen_log_vectors.py reads the same rows and 00-design/tests/test_loglink.cpp holds every
  * opcode and UUID here to them.
  *
- * Portable C++, no Arduino headers: icu.ino, icu_radio.ino and 00-design/firmware/tests/test_loglink.cpp
+ * Portable C++, no Arduino headers: icu.ino, icu_radio.ino and 00-design/tests/test_loglink.cpp
  * include the same file. Every multi-byte field is little-endian (both CPUs are).
  *
  * FRAMING (LL11). Serial2 on the Teensy (RX 7, TX 8, D-377) to Serial1 on the C3,

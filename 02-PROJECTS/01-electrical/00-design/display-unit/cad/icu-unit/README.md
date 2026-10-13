@@ -1,7 +1,7 @@
 # icu-unit - the ICU as one unit, mocked up
 
 *Rev 2026-10-12 (Y19, first pass) · owns: what this folder is, what it may claim, and how to rebuild
-it. Read `../../../cad/README.md` first: it is the fence. The design is the record's (D-491, D-270, D-268,
+it. Read `../../../README.md` first: it is the fence. The design is the record's (D-491, D-270, D-268,
 `housings` DP-ICU-A / DP-ICU-B, parts P111 and P117 to P122, `icu_channels` IC21 / IC22 / IC24);
 this is a drawing of it.*
 
@@ -23,7 +23,7 @@ binnacle shallow.
 **R11 applies to all of it: nothing here has been measured.** The aperture and the depth behind it
 (C4, M-1 / C1) are unknown, no display is chosen (P118), the eval board is not in hand (P117), the
 page button is not chosen (P120), and the carrier's outline is provisional (D-455). The DT13
-cut-outs are TE's drawing (114-151046, through `../../../cad/enclosure_lib.py`) and the carrier and its
+cut-outs are TE's drawing (114-151046, through `../../../tools/enclosure_lib.py`) and the carrier and its
 DT13s are the board's own files. Everything else is a parameter, most marked `confirm`.
 
 ## Change a number, rebuild

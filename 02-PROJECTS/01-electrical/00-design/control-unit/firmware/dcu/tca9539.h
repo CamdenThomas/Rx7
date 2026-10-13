@@ -4,7 +4,7 @@
  * (F-017, D-452)
  *
  * Same pattern as panel.h: the logic is here and tested off-target
- * (00-design/firmware/tests/test_dcu.cpp); the bus is four calls the host supplies, as bt817.h
+ * (00-design/tests/test_dcu.cpp); the bus is four calls the host supplies, as bt817.h
  * does - dcu.ino implements them on Wire and pins 12 / 13, the tests mock them:
  *
  *   uint8_t exp_hal_write(uint8_t addr, const uint8_t *buf, uint8_t n)   1 = acknowledged

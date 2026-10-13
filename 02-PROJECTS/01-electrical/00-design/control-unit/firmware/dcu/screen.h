@@ -4,7 +4,7 @@
  * The part is not chosen (P201: a 128 x 64-class green I2C module, a parts
  * round picks it). This is only the CONTENT of each page as a small struct a
  * display driver will render later; there is no graphics code and no driver
- * here. Pure, so 00-design/firmware/tests/test_dcu.cpp holds it.
+ * here. Pure, so 00-design/tests/test_dcu.cpp holds it.
  *
  * Owns (R6), from 02-PROJECTS/01-electrical/data:
  *   parts   P201 (the screen)

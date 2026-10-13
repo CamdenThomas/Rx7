@@ -33,7 +33,7 @@
  *   ERR 1. SET_TIME is forwarded; the Teensy alone decides whether to apply it.
  *
  * STATUS: written 2026-09-22 for F-015, the log link added 2026-10-12 for BT3. It
- * compiles for the XIAO ESP32C3 (00-design/firmware/tests/run.sh); it has never run. Bring-up is on the
+ * compiles for the XIAO ESP32C3 (00-design/tests/run.sh); it has never run. Bring-up is on the
  * spare XIAO dev board (P116) on the desk, never first on the car's pack. BT4 proves
  * the scan, the BMS client and the peripheral together, the rate, and the whitelist
  * with a phone's private address. The two battery assumptions to confirm are in

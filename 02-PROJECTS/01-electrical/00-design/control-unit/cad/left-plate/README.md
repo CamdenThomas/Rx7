@@ -3,7 +3,7 @@
 *Rev 2026-10-13 (sheet and board rev 0.01, provisional - Y21, D-492) · owns: what this KiCad project is
 for and what it may claim. The plate's design is the record: the cavities of `DP-DCU-E`
 (`../../../../data/cavities.csv`), the `panel_ribbon` lines they name, devices `DV24` and `DV62`, parts
-P083, P156, P198, P199 and P200. Read `../../../cad/README.md` first: it is the fence.*
+P083, P156, P198, P199 and P200. Read `../../../README.md` first: it is the fence.*
 
 ## What it is
 
@@ -127,7 +127,7 @@ laid out when the parts are in hand.
   the part's drawing. The mirror symbol "in the centre of the joystick" (I-006) is a part question; the
   LED is beside the well for now.
 - **The driver** - IS31FL3218 is P199's own part and fits the rails (above); KiCad's QFN-24 4 × 4
-  footprint (EP 2.7) against Lumissil's package drawing. Its pin table is not in `../../../cad/pin_tables.csv`
+  footprint (EP 2.7) against Lumissil's package drawing. Its pin table is not in `../../../tools/pin_tables.csv`
   (that file is outside this folder's fence): `check.py` prints a note for `U1`, not a mismatch. The
   table is on Lumissil Rev G p.2: 1 OUT18, 2 R_EXT, 3 VCC, 4 GND, 5 SDA, 6 SCL, 7-23 OUT1-OUT17, 24 SDB,
   thermal pad GND - the KiCad symbol carries it unchanged.
@@ -149,7 +149,7 @@ laid out when the parts are in hand.
 <kicad python> gen_left_plate.py sch      # symbols, sheet, footprints, lib tables, project
 <kicad python> gen_left_plate.py pcb      # place, route, pour (reads the sheet's netlist)
 kicad-cli sch erc left-plate.kicad_sch --severity-all --exit-code-violations -o left-plate-erc.rpt
-python3 ../../../cad/check.py --board left-plate
+python3 ../../../tools/check.py --board left-plate
 kicad-cli pcb drc --severity-all --exit-code-violations --schematic-parity -o left-plate-drc.rpt left-plate.kicad_pcb
 kicad-cli sch export svg --no-background-color -o . left-plate.kicad_sch
 kicad-cli sch export bom --fields 'Reference,${QUANTITY},Value,Footprint,${DNP},Confirm' --labels 'Ref,Qty,Value,Footprint,DNP,Confirm' --group-by 'Value,Footprint,${DNP}' --sort-field Reference -o left-plate-bom.csv left-plate.kicad_sch

@@ -27,7 +27,7 @@ import uuid as uuidlib
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CAD = os.path.dirname(HERE)
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(CAD)), "cad"))  # 00-design/cad: check.py
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(CAD)), "tools"))  # 00-design/tools: check.py
 from check import parse_sexpr, kids, kid, val  # noqa: E402
 
 NAME = "left-plate"

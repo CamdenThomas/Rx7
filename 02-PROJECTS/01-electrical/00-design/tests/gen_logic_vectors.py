@@ -38,7 +38,7 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-DATA = HERE.parents[2] / "data"
+DATA = HERE.parents[1] / "data"
 OUT = HERE / "logic_vectors.h"
 MAXV = 4                                  # inputs / terms per vector, per kind
 

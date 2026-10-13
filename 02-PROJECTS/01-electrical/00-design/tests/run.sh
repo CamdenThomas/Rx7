@@ -9,17 +9,20 @@
 #   test_loglink.cpp - the log link: UART framing, CRCs, the card's three logs, list / transfer /
 #                      resume / ACK / SET_TIME, against log_channels and log_link (BT3)
 #   test_vectors.cpp - can_map.h against the record's CAN tables (Y8; compiling is the test)
-# then the sheets against the record (cad/check.py) and every sketch against its target.
+# then the sheets against the record (tools/check.py) and every sketch against its target.
 # Run after ANY change to cluster_core.h, stats.h, can_map.h,
 # bt817.h, climate.h, panel.h, pins.h, tca9539.h, vehicle_model.h or channels.h.
 #
 # Needs g++, once - Fedora: sudo dnf install gcc-c++ · Mac: xcode-select --install
 # Exit 0 = every suite passed. The binaries are not versioned (.gitignore).
 cd "$(dirname "$0")" || exit 3
-# Each unit's sketches live in its own folder (D-496); the bench simulators stay beside tests/.
-ICU=../../display-unit/firmware/icu
-RADIO=../../display-unit/firmware/icu_radio
-DCU=../../control-unit/firmware/dcu
+# Each part's sketches live in its own firmware/ folder (D-496, D-497); this folder sits beside them.
+ICU=../display-unit/firmware/icu
+RADIO=../display-unit/firmware/icu_radio
+TACH=../display-unit/firmware/tach_simulator
+DCU=../control-unit/firmware/dcu
+PMU_SIM=../pmu/firmware/pmu_sim
+LADDER=../pmu/firmware/ladder_decode_test
 # Mac (D-454): a CLT 26.6 toolchain beside a MacOSX27.0 SDK cannot link - pin the SDK that
 # matches, until the Command Line Tools are updated and the old SDK is gone. No-op elsewhere.
 [ "$(uname)" = Darwin ] && [ -z "$SDKROOT" ] && [ -d /Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk ] && export SDKROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk
@@ -30,7 +33,7 @@ fi
 
 # The master CAN map and the DCU's copy must be one file (plan P49): a drift here is a node
 # that mis-reads every frame, and nothing else checks it.
-for copy in "$DCU/can_map.h" ../pmu_sim/can_map.h; do
+for copy in "$DCU/can_map.h" "$PMU_SIM/can_map.h"; do
   if ! cmp -s "$ICU/can_map.h" "$copy"; then
     echo "can_map.h drift: $copy differs from $ICU/can_map.h (the master) - copy the master over it first"
     exit 1
@@ -54,16 +57,16 @@ python3 gen_logic_vectors.py || { echo "*** gen_logic_vectors.py FAILED - a logi
 # timings - and test_loglink fails on any the firmware does not match.
 python3 gen_log_vectors.py || { echo "*** gen_log_vectors.py FAILED - a log_link or log_channels row the firmware cannot read ***"; exit 1; }
 
-# The three KiCad sheets against the record and the datasheets (cad/check.py, Y3): a Teensy pad,
+# The three KiCad sheets against the record and the datasheets (tools/check.py, Y3): a Teensy pad,
 # expander port, drop cavity or ribbon conductor that disagrees with icu_channels, dcu_channels
 # or panel_ribbon fails the suite, as does a symbol pin that disagrees with its datasheet. It
 # exits 3 when kicad-cli is absent (or a sheet is unreadable); the suite then goes on without it.
-python3 ../../cad/check.py
+python3 ../tools/check.py
 cad_rc=$?
 case $cad_rc in
   0) ;;
-  3) echo "cad/check.py skipped - kicad-cli not found, so the schematics were not checked against the record" ;;
-  *) echo "*** cad/check.py FAILED - a schematic disagrees with the record or a datasheet (the record is right) ***"; exit 1 ;;
+  3) echo "tools/check.py skipped - kicad-cli not found, so the schematics were not checked against the record" ;;
+  *) echo "*** tools/check.py FAILED - a schematic disagrees with the record or a datasheet (the record is right) ***"; exit 1 ;;
 esac
 
 suite() {  # name, source, extra flags
@@ -85,7 +88,7 @@ suite test_vectors test_vectors.cpp
 # `arduino-cli core install teensy:avr esp32:esp32` with the PJRC and Espressif index URLs).
 if command -v arduino-cli >/dev/null 2>&1; then
   if arduino-cli core list 2>/dev/null | grep -q '^teensy:avr'; then
-    for dir in "$ICU" "$DCU" ../pmu_sim ../tach_simulator ../ladder_decode_test; do
+    for dir in "$ICU" "$DCU" "$PMU_SIM" "$TACH" "$LADDER"; do
       sk=$(basename "$dir")
       echo "Compiling $sk for Teensy 4.1 ..."
       arduino-cli compile --fqbn teensy:avr:teensy41:speed=600 --build-path "/tmp/rx7-build-$sk" "$dir" >/dev/null 2>"/tmp/rx7-build-$sk.log" \

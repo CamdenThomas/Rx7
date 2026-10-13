@@ -2,7 +2,7 @@
  * ionic_decode.h — decode what the Ionic BMS broadcasts, and nothing more
  *
  * Portable C++, no Arduino headers: the ESP32-C3 sketch (icu_radio.ino) and the
- * desk tests (00-design/firmware/tests/test_radio.cpp) include the same file.
+ * desk tests (00-design/tests/test_radio.cpp) include the same file.
  *
  * Source of truth: 02-PROJECTS/01-electrical data, icu_channels IC24, D-330, D-345.
  *   - The advertisement's manufacturer data BEGINS with pack millivolts. Read here

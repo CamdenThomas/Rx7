@@ -2,7 +2,7 @@
 
     /Applications/FreeCAD.app/Contents/Resources/bin/freecadcmd make_enclosure.py
 
-Reads `board.json` (from `../panel.kicad_pcb`, by `../../../../cad/enclosure_extract.py` with KiCad's Python -
+Reads `board.json` (from `../panel.kicad_pcb`, by `../../../../tools/enclosure_extract.py` with KiCad's Python -
 re-run it whenever the board moves) and `../panel.step` when it is there (cached in `probe.json`
 when it is not); writes the rear tray (`base`) and the front frame (`lid`) as STEP and STL beside
 this file, in the board's own frame, and fit-checks them against the board STEP. Exit 0 built and
@@ -20,7 +20,7 @@ import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.normpath(os.path.join(HERE, "..", "..", "..", "..", "cad")))  # 00-design/cad
+sys.path.insert(0, os.path.normpath(os.path.join(HERE, "..", "..", "..", "..", "tools")))  # 00-design/tools
 import enclosure_lib as L  # noqa: E402
 
 # ---------------------------------------------------------------------------- parameters ----

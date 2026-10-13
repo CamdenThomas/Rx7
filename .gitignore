@@ -47,13 +47,13 @@ Thumbs.db
 *.o
 *.obj
 02-PROJECTS/01-electrical/00-design/display-unit/firmware/icu_sim/sim
-02-PROJECTS/01-electrical/00-design/firmware/tests/test
-02-PROJECTS/01-electrical/00-design/firmware/tests/test_bt817
-02-PROJECTS/01-electrical/00-design/firmware/tests/test_dcu
+02-PROJECTS/01-electrical/00-design/tests/test
+02-PROJECTS/01-electrical/00-design/tests/test_bt817
+02-PROJECTS/01-electrical/00-design/tests/test_dcu
 
-# KiCad, under the cad/ folders of 02-PROJECTS/01-electrical/00-design/ only: the shared cad/
-# and each unit's (control-unit/cad/, display-unit/cad/, D-496). Those folders are not areas and
-# not the view layer (see cad/README): each is a CAD tool drawing one board. The exported
+# KiCad, under the cad/ folders of 02-PROJECTS/01-electrical/00-design/ only: each part's
+# (control-unit/cad/, display-unit/cad/, D-496, D-497). Those folders are not areas and
+# not the view layer (see 00-design/README.md): each is a CAD tool drawing one board. The exported
 # schematic SVG is the exception to the *.svg rule above, because a hardware change is
 # unreviewable without a picture - an S-expression diff of coordinate tuples is not one.
 !02-PROJECTS/01-electrical/00-design/**/cad/**/*.svg
@@ -68,7 +68,7 @@ fp-info-cache
 02-PROJECTS/01-electrical/00-design/**/cad/**/*.pdf
 02-PROJECTS/01-electrical/00-design/**/cad/**/*.net
 02-PROJECTS/01-electrical/00-design/**/cad/**/net.txt
-02-PROJECTS/01-electrical/00-design/firmware/tests/test_radio
+02-PROJECTS/01-electrical/00-design/tests/test_radio
 02-PROJECTS/01-electrical/00-design/display-unit/firmware/icu_sim/renders/
 
 # KiCad 10's local history and lock files (per machine, never versioned)

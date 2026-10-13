@@ -3,7 +3,7 @@
  * the two battery frames the ICU builds from it (0x220, 0x221, D-345)
  *
  * Portable C++, no Arduino headers: icu.ino, the C3 sketch and the desk tests
- * (00-design/firmware/tests/test_radio.cpp) include the same file.
+ * (00-design/tests/test_radio.cpp) include the same file.
  *
  * THE PROTOCOL (F-015). Serial2 on the Teensy (RX 7, TX 8, D-377), 921600 8N1
  * (D-493; it was 115200). The same wire carries the log link's binary frames

@@ -1,8 +1,8 @@
 # sim — the circuits proved by number before anything is soldered
 
 _Rev 2026-10-09 (Y2) · owns: the ngspice decks and their pass/fail limits. It lives beside
-`firmware/` and `cad/` and, like them, is not part of the record: `rx7.py` never reads it, and
-when a deck and a row disagree the row is the design and the deck is stale (`cad/README.md`'s
+the parts' `cad/` and `firmware/` folders and, like them, is not part of the record: `rx7.py` never reads it, and
+when a deck and a row disagree the row is the design and the deck is stale (`../README.md`'s
 fence applies here word for word)._
 
 **Why.** `rx7.py check` reads the harness as electricity (Y1), but it cannot tell whether a

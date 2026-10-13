@@ -3,7 +3,7 @@
 *Rev 2026-10-12 (sheet and board rev 0.01, provisional - Y15, D-480, D-492) · owns: what this KiCad
 project is for and what it may claim. Its design is the record's cavities `DP-DCU-D` and `DP-DCU-E`
 (`../../../../data/cavities.csv`) and what their `src_note` names: the carrier's headers and the
-`panel_ribbon` lines. Read `../../../cad/README.md` first: it is the fence.*
+`panel_ribbon` lines. Read `../../../README.md` first: it is the fence.*
 
 ## What it is
 
@@ -141,7 +141,7 @@ the mock-up should take them so it can carry the real board:
 
 ```
 kicad-cli sch erc upper-board.kicad_sch --severity-all --exit-code-violations -o upper-board-erc.rpt
-python3 ../../../cad/check.py --board upper
+python3 ../../../tools/check.py --board upper
 kicad-cli pcb drc --severity-all --exit-code-violations --schematic-parity -o upper-board-drc.rpt upper-board.kicad_pcb
 kicad-cli sch export svg --no-background-color -o . upper-board.kicad_sch
 kicad-cli sch export bom --fields 'Reference,${QUANTITY},Value,Footprint,${DNP},Confirm' --labels 'Ref,Qty,Value,Footprint,DNP,Confirm' --group-by 'Value,Footprint,${DNP}' --sort-field Reference -o upper-board-bom.csv upper-board.kicad_sch

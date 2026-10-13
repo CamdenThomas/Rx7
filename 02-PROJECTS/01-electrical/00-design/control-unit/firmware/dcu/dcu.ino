@@ -6,7 +6,7 @@
  * persistence, timing. All logic lives in climate.h, panel.h, tca9539.h
  * (the expander and the DRV8962 guard), lights.h (the panel's and the left
  * plate's LED drivers) and screen.h (the screen's content) and is testable off-target
- * (00-design/firmware/tests/test_dcu.cpp).
+ * (00-design/tests/test_dcu.cpp).
  *
  * Library: ACAN_T4 (NOT FlexCAN_T4 — same rule as the ICU).
  * Pins: pins.h, which is dcu_channels.teensy_pin (D-452). All 42 edge pins

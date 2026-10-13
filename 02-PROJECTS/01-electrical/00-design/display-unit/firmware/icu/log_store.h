@@ -6,8 +6,8 @@
  * 137 bytes, in log_thin_t below, field for field and in order) and the Teensy's side
  * of `log_link` (LL03, LL04, LL06-LL08, LL12-LL14: listing, transfers, ACK, SET_TIME,
  * INFO). The framing itself is log_link.h's. params log_thin_bytes_per_s (137) is
- * sizeof(log_thin_t). 00-design/firmware/tests/gen_log_vectors.py reads log_channels.csv and
- * 00-design/firmware/tests/test_loglink.cpp holds this header to it.
+ * sizeof(log_thin_t). 00-design/tests/gen_log_vectors.py reads log_channels.csv and
+ * 00-design/tests/test_loglink.cpp holds this header to it.
  *
  * Portable C++, no Arduino headers. The card is reached only through LogFs, which
  * icu.ino binds to the Teensy SD library (SdFat) and the tests bind to memory.

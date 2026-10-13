@@ -2,7 +2,7 @@
 
 *Rev 2026-10-09 (sheet rev 0.03, board rev 0.03) · owns: what this KiCad project is for, what it
 may claim, and how to start. The board's design is `../../../../data/icu_channels.csv` — that is the
-record; this is a drawing of it. Read `../../../cad/README.md` first: it is the fence.*
+record; this is a drawing of it. Read `../../../README.md` first: it is the fence.*
 
 ## Where it stands
 
@@ -13,7 +13,7 @@ from this board on its provisional outline, for the bench order of D-490; the fi
 **The board is laid out, routed and 3D-modelled on a PROVISIONAL outline: guide step 8 is done
 (F9, F10); step 9, the measurement pass, is F11.** `kicad-cli pcb drc --severity-all
 --exit-code-violations --schematic-parity` reads 0 violations, 0 unconnected, 0 parity issues;
-ERC is 0 / 0; `../../../cad/check.py --board icu` is 0 mismatches. Nothing here is ordered (F12).
+ERC is 0 / 0; `../../../tools/check.py --board icu` is 0 mismatches. Nothing here is ordered (F12).
 
 - **The sheet** (rev 0.03): U8, the XIAO ESP32C3, has Seeed's real castellation pins 1-14 and sits
   in a 2 x 7 socket. EN 34 cannot reach the module's CHIP_EN (a back pad, TP6), so it power-cycles
@@ -22,7 +22,7 @@ ERC is 0 / 0; `../../../cad/check.py --board icu` is 0 mismatches. Nothing here 
   in reset; Q3 switches `+5V` onto the module's VBUS (`RADIO_5V`), with C19 10 µ at the pin. BOOT 35 lands on D9 / GPIO9. J4 is the
   ME817EV's CN8 2 x 8 host header, U7 the Adafruit 4517 on its 1 x 6 + 1 x 5 headers. U2, the VN5E
   alternative, is DNP and off the board (no footprint until it is picked). The back pads 15-22 of
-  the XIAO are not drawn: no socket reaches them (`../../../cad/pin_tables.csv`, "XIAO ESP32C3 2x7 socket").
+  the XIAO are not drawn: no socket reaches them (`../../../tools/pin_tables.csv`, "XIAO ESP32C3 2x7 socket").
 - **The outline is a working guess**, 110 x 80 mm, because the two DT13 housings side by side need
   107 mm of edge: the connector face is the top long edge (J3 DT13-12PA left, J1 DT13-06PA right,
   flange rear faces on the edge, housings overhanging it as TE's panel mount intends); the grommet
@@ -93,7 +93,7 @@ The renders and the STEP (about 23 MB) are built, never committed (`.gitignore`)
    nothing else. This one is already specified down to the resistor values, so the design
    work is done and the only thing left to learn is the tool. Whatever comes next that
    needs a PCB, the practice is already paid for.
-2. **Because the analog front end cannot be reviewed as prose.** See `../../../cad/README.md`.
+2. **Because the analog front end cannot be reviewed as prose.** See `../../../README.md`.
 
 ## What it may and may not claim
 
@@ -116,7 +116,7 @@ right.**
   `SPI_*` now, not `QSPI_*` (D-377).
 - **Module pin numbers — asserted since 2026-10-09 (F9).** The transceiver, the buck, the XIAO
   (castellations 1-14 in its socket), the IMU breakout's headers and the ME817EV's CN8 carry the
-  vendors' numbers, held to `../../../cad/pin_tables.csv` by `../../../cad/check.py`. What is still a guess is the
+  vendors' numbers, held to `../../../tools/pin_tables.csv` by `../../../tools/check.py`. What is still a guess is the
   geometry of the sockets and connectors, not the numbering: that is F11.
 
 **And R11 applies with full force:** none of this has been measured. A schematic that
@@ -128,7 +128,7 @@ not close them. The sheet carries its own "what this sheet does not know" panel,
 ## Scope: schematic yes, PCB not yet — superseded 2026-09-21
 
 > **Layout is now in scope** (D-361): Camden asked for the full layout and 3D guide, and ICU
-> layout was already his step `F2`. Follow `../../../cad/PCB-AND-3D-GUIDE.md` Part A. The paragraph below
+> layout was already his step `F2`. Follow `../../../tools/PCB-AND-3D-GUIDE.md` Part A. The paragraph below
 > is kept for why it used to say no. Its last point still stands: **fabricating** (ordering
 > boards) is money with a lead time, and it stays Camden's.
 
@@ -159,7 +159,7 @@ kicad-cli sch erc icu-carrier.kicad_sch --severity-all -o icu-carrier-erc.rpt
 kicad-cli sch export svg --no-background-color -o . icu-carrier.kicad_sch
 kicad-cli sch export bom --fields 'Reference,Value,Footprint,${QUANTITY},${DNP}' --labels 'Refs,Value,Footprint,Qty,DNP' --group-by 'Value,Footprint,${DNP}' --ref-range-delimiter '' -o icu-carrier-bom.csv icu-carrier.kicad_sch
 kicad-cli pcb drc --severity-all --exit-code-violations --schematic-parity -o icu-carrier-drc.rpt icu-carrier.kicad_pcb
-python3 ../../../cad/check.py --board icu
+python3 ../../../tools/check.py --board icu
 ```
 
 ERC violations are errors, not suggestions — the same standing as a `check` refusal. The
@@ -182,7 +182,7 @@ reason a second copy of any fact is: one picture in the repo, not two.
 | `report.txt` | a stale log of the first Update-PCB run on the placeholder footprints (2026-09); nothing reads it |
 | `CONVENTIONS.md` | how to draw it so it stays reviewable |
 | `TARGET.md` | what has to be on the sheet, from `icu_channels.csv` — a snapshot, not a link |
-| `enclosure/` | the enclosure (P111, Y7): `make_enclosure.py` (parameters at the top, C4 the envelope; `freecadcmd make_enclosure.py`) builds base, DT13 plate and lid as STEP / STL from `board.json` (`../../../cad/enclosure_extract.py icu-carrier`, KiCad's Python) and the board STEP, and fit-checks them; provisional, every dimension `confirm` until C4 / F11 |
+| `enclosure/` | the enclosure (P111, Y7): `make_enclosure.py` (parameters at the top, C4 the envelope; `freecadcmd make_enclosure.py`) builds base, DT13 plate and lid as STEP / STL from `board.json` (`../../../tools/enclosure_extract.py icu-carrier`, KiCad's Python) and the board STEP, and fit-checks them; provisional, every dimension `confirm` until C4 / F11 |
 
 `.kicad_prl`, `*-backups/`, `*.kicad_sch-bak`, autosaves, the ERC and DRC reports, the netlist,
 the PDF, the renders, the STEP and the router's DSN / SES files are gitignored (the root

@@ -3,7 +3,7 @@
  * brought to the control set of D-492 (F-018)
  *
  * Same pattern as climate.h: all logic here, testable off-target
- * (00-design/firmware/tests/test_dcu.cpp); dcu.ino only reads pins, writes pins and moves frames.
+ * (00-design/tests/test_dcu.cpp); dcu.ino only reads pins, writes pins and moves frames.
  * The panel's lights are lights.h, the screen's content screen.h (F-018).
  *
  * Owns (R6), from 02-PROJECTS/01-electrical/data:

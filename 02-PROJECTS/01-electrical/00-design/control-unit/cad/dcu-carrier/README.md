@@ -2,7 +2,7 @@
 
 *Rev 2026-10-11 (sheet rev 0.04 - D-458, D-465; board rev 0.04 provisional - Y12) · owns: what this KiCad project
 is for, what it may claim, and how to start. The board's design is `../../../../data/dcu_channels.csv`.
-That is the record, and this is a drawing of it. Read `../../../cad/README.md` first: it is the fence.*
+That is the record, and this is a drawing of it. Read `../../../README.md` first: it is the fence.*
 
 ## Where it stands
 
@@ -11,10 +11,10 @@ That is the record, and this is a drawing of it. Read `../../../cad/README.md` f
 does not name them; the D-489 / D-455 parts listed as not fitted), from this board on its provisional outline, for
 the bench order of D-490; the final board follows F11.
 
-**2026-10-12 (Y20, D-492): J4's pins 9-12 carry the new names** - `ENC_FAN_A` / `ENC_FAN_B` → `ENC_CENTRE_A` / `ENC_CENTRE_B`, `ENC_TEMP_A` → `ENC_CENTRE_PUSH`, `ENC_TEMP_B` → `ROW4` - on the sheet's labels and the Teensy symbol's pin names, and the board's nets renamed to match (no footprint or copper moved; the same Teensy pins 40 / 41 / 34 / 35). ERC 0, DRC 0 / 0 with 0 parity issues, `../../../cad/check.py --board dcu` 0 mismatches. The `fab/` package still carries the old names in its netlist attributes; the copper is the same.
+**2026-10-12 (Y20, D-492): J4's pins 9-12 carry the new names** - `ENC_FAN_A` / `ENC_FAN_B` → `ENC_CENTRE_A` / `ENC_CENTRE_B`, `ENC_TEMP_A` → `ENC_CENTRE_PUSH`, `ENC_TEMP_B` → `ROW4` - on the sheet's labels and the Teensy symbol's pin names, and the board's nets renamed to match (no footprint or copper moved; the same Teensy pins 40 / 41 / 34 / 35). ERC 0, DRC 0 / 0 with 0 parity issues, `../../../tools/check.py --board dcu` 0 mismatches. The `fab/` package still carries the old names in its netlist attributes; the copper is the same.
 
 **Sheet and board are both rev 0.04 (Y12, 2026-10-11).** The sheet carries D-458 and D-465; ERC is 0 / 0 and
-`../../../cad/check.py --board dcu` reads 0 mismatches:
+`../../../tools/check.py --board dcu` reads 0 mismatches:
 
 - **J4 is a 2 x 13 keyed IDC header** (26-way, D-458). Pins 1-20 keep their nets. 21 and 23 are
   `GND`. 22 `PNL_SDA` and 24 `PNL_SCL` are the I²C bus (Teensy 18 / 19, the bus of U12, U13 and U15)
@@ -58,12 +58,12 @@ until the unit's enclosure replaces it.
 **The board is laid out, routed and 3D-modelled on a PROVISIONAL outline (Y5), with the open blocks'
 worst case drawn in (Y11, D-455) and the 26-way header (Y12).** `kicad-cli pcb drc --severity-all
 --exit-code-violations --schematic-parity` reads 0 violations (errors and warnings), 0 unconnected,
-0 parity issues; ERC is 0 / 0. `../../../cad/check.py --board dcu` holds every record pin; its one remaining line
+0 parity issues; ERC is 0 / 0. `../../../tools/check.py --board dcu` holds every record pin; its one remaining line
 is a note on DP-DCU-B 12, wired here to the clutch stage for block 02.15 behind a sealing plug. `H-002`
 stays the final board: it gates on `V-102`, luxury `W-332` and this row. Nothing here is ordered (F5).
 
 - **The sheet** (since rev 0.03): every functional block is on its real package, its pin numbers held to
-  `../../../cad/pin_tables.csv` by `check.py` (S-480 to S-489):
+  `../../../tools/pin_tables.csv` by `check.py` (S-480 to S-489):
   - U5-U8 **BTS3011TE**, TO-252-5: 1 IN, 2 VDD, 3 OUT, 4 STATUS, 5 GND (the source - the seat
     current leaves here), tab 6 = OUT. **STATUS** is open-drain and latching on an over-temperature
     shutdown (datasheet section 7.1, p.20): the four are wired-OR on `SEAT_STATUS`, pulled up by R58
@@ -281,7 +281,7 @@ and the record disagree, the record is right.**
 kicad-cli sch erc dcu-carrier.kicad_sch --severity-all -o dcu-carrier-erc.rpt
 kicad-cli sch export svg --no-background-color -o . dcu-carrier.kicad_sch
 kicad-cli sch export bom --fields 'Reference,Value,Footprint,${QUANTITY},${DNP}' --labels 'Ref,Value,Footprint,Qty,DNP' --group-by 'Value,Footprint,${DNP}' -o dcu-carrier-bom.csv dcu-carrier.kicad_sch
-python3 ../../../cad/check.py --board dcu
+python3 ../../../tools/check.py --board dcu
 ```
 
 ## Files
@@ -295,9 +295,9 @@ python3 ../../../cad/check.py --board dcu
 | `dcu-carrier.svg` · `dcu-carrier-bom.csv` | the committed picture and the BOM export (grouped by DNP too, so a fitted and a DNP part never share a line): the reviewable forms of a change |
 | `CONVENTIONS.md` | how to draw it, and what differs from the ICU |
 | `TARGET.md` | the drawing checklist from `dcu_channels`, a snapshot and not a link |
-| `enclosure/` | the enclosure (`P152`, Y7): `make_enclosure.py` (parameters at the top, `V-102` the envelope; `freecadcmd make_enclosure.py`) builds base, DT13 plate and lid as STEP / STL from `board.json` (`../../../cad/enclosure_extract.py dcu-carrier`) and the board STEP, and fit-checks them; provisional, `confirm` until `V-102` / F11 |
+| `enclosure/` | the enclosure (`P152`, Y7): `make_enclosure.py` (parameters at the top, `V-102` the envelope; `freecadcmd make_enclosure.py`) builds base, DT13 plate and lid as STEP / STL from `board.json` (`../../../tools/enclosure_extract.py dcu-carrier`) and the board STEP, and fit-checks them; provisional, `confirm` until `V-102` / F11 |
 
-`enclosure/board.json` is extracted from the rev 0.04 board (Y12; rerun `../../../cad/enclosure_extract.py dcu-carrier`
+`enclosure/board.json` is extracted from the rev 0.04 board (Y12; rerun `../../../tools/enclosure_extract.py dcu-carrier`
 whenever the board moves): `RIBBON_WAYS` is 26, the ribbon notch runs from x 4.1 to 39.1 mm, the H1 boss
 stands at (4, 15), and base, plate and lid fit with 0 interferences. J11 on the right edge still needs its
 side-wall hole; U14, R59-R63 and TP1 sit on the underside.

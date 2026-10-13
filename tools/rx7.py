@@ -1038,7 +1038,7 @@ def check_area(area: Path, keyidx) -> list[str]:
                 # The cad/ fence: nothing in the record cites a drawing as evidence.
                 if re.search(r"(?<![\w-])cad/", v):
                     p.append(f"{rel(area)}:{t}:{k}: {col} cites a file in cad/ - the record never "
-                             "cites a drawing (cad/README.md); promote the fact into a row instead")
+                             "cites a drawing (00-design/README.md); promote the fact into a row instead")
     p += check_meta(area)
     p += check_decisions(area)
     p += check_phase(area)

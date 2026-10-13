@@ -14,7 +14,7 @@ Frame: X across the face (0 = the face's left edge seen from the cabin), Y = dep
 the faceplate's front surface (Y = 0), Z up from the faceplate's bottom edge. mm throughout.
 
 What is NOT here, because it is read, never typed: the DT13 panel cut-outs (TE 114-151046, from
-`../../../cad/enclosure_lib.py` TE_CUTOUT), the carrier's outline, holes and connector positions
+`../../../tools/enclosure_lib.py` TE_CUTOUT), the carrier's outline, holes and connector positions
 (`../dcu-carrier/enclosure/board.json`) and the DT13 bodies' sizes (`probe.json` beside it, and the
 carrier's STEP when it is there).
 """

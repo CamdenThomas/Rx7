@@ -15,7 +15,7 @@ Frame: X across the face (0 = the face's left edge seen from the driver's seat),
 from the bezel's front surface (Y = 0), Z up from the bezel's bottom edge. mm throughout.
 
 What is NOT here, because it is read, never typed: the DT13 panel cut-outs (TE 114-151046, from
-`../../../cad/enclosure_lib.py` TE_CUTOUT), the carrier's outline, holes and connector positions
+`../../../tools/enclosure_lib.py` TE_CUTOUT), the carrier's outline, holes and connector positions
 (`../icu-carrier/enclosure/board.json`), the DT13 bodies and every carrier part's 3D extent
 (`probe.json` beside it, and the carrier's STEP when it is there).
 """

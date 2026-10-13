@@ -5,7 +5,7 @@ Reads 02-PROJECTS/01-electrical/data/log_channels.csv, log_link.csv and params.c
 writes log_vectors.h beside this script: every log_channels row's id and byte width, their
 sum, params log_thin_bytes_per_s and radio_uart_baud, and from log_link the UUIDs, the
 device name, every opcode and frame type, the tier / state / error codes, the DATA size and
-the timings. test_loglink.cpp includes it next to ../../display-unit/firmware/icu/log_link.h and ../../display-unit/firmware/icu/log_store.h
+the timings. test_loglink.cpp includes it next to ../display-unit/firmware/icu/log_link.h and ../display-unit/firmware/icu/log_store.h
 and holds every constant there to it - a channel, opcode or UUID that moves in the record
 fails the suite until the firmware follows. The record is the master; this file is build
 output (not versioned).
@@ -19,7 +19,7 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-DATA = HERE.parents[2] / "data"
+DATA = HERE.parents[1] / "data"
 OUT = HERE / "log_vectors.h"
 
 CODES = {   # the words log_link uses -> the firmware's macro suffix

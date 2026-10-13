@@ -1272,7 +1272,7 @@ def main(argv=None):
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
     if total_bad:
-        print("%d mismatch%s - the record is right and the sheet is stale (cad/README.md)" % (total_bad, "" if total_bad == 1 else "es"))
+        print("%d mismatch%s - the record is right and the sheet is stale (00-design/README.md)" % (total_bad, "" if total_bad == 1 else "es"))
         rc = 1
     return rc
 

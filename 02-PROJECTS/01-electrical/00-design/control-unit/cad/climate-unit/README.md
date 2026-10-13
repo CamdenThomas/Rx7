@@ -1,7 +1,7 @@
 # climate-unit - the climate control unit, mocked up
 
 *Rev 2026-10-11 (Y14, second pass: the one-height unit is the default) · owns: what this folder
-is, what it may claim, and how to rebuild it. Read `../../../cad/README.md` first: it is the fence. The
+is, what it may claim, and how to rebuild it. Read `../../../README.md` first: it is the fence. The
 design is the record's (D-479, D-480, `housings` DP-DCU to DP-DCU-D, parts P152 / P194 / P195);
 this is a drawing of it.*
 
@@ -30,7 +30,7 @@ dash - is still one number away (below), and the report always says which one wa
 **R11 applies to all of it: nothing here has been measured.** The dash opening (V-113) and the room
 behind it (V-102) are unknown, the face is a sketch he is still changing (I-001 to I-006), the
 carrier's outline is provisional (D-455), and no knob, key, display, plug or insert is in hand. The
-DT13 cut-outs are TE's drawing (114-151046, through `../../../cad/enclosure_lib.py`) and the DT13 bodies are
+DT13 cut-outs are TE's drawing (114-151046, through `../../../tools/enclosure_lib.py`) and the DT13 bodies are
 TE's models as the DCU enclosure build probed them. Everything else is a parameter, and most are
 marked `confirm`.
 

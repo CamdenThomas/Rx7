@@ -4,7 +4,7 @@ Run through FreeCAD's headless interpreter by each board's `enclosure/make_enclo
 own. Three inputs, nothing typed:
 
 - `board.json`  the board's outline, holes and footprints, written from the `.kicad_pcb` by
-                `00-design/cad/enclosure_extract.py` (KiCad's Python);
+                `00-design/tools/enclosure_extract.py` (KiCad's Python);
 - `probe.json`  what only the 3D model knows - the tallest part top and bottom, the DT13 flange
                 front face, each housing's section where it passes the wall, TE's flange seal and
                 the flange itself - read from the board STEP (`<board>.step`, gitignored) whenever it

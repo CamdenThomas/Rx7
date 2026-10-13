@@ -5,10 +5,10 @@
  * Owns (R6), from 02-PROJECTS/01-electrical/data:
  *   dcu_channels.teensy_pin   every number below, channel by channel
  *   panel_ribbon              which ribbon conductor each panel pin reads
- * The sheet (00-design/control-unit/cad/dcu-carrier, checked against the same rows by 00-design/cad/check.py)
+ * The sheet (00-design/control-unit/cad/dcu-carrier, checked against the same rows by 00-design/tools/check.py)
  * is drawn from the same column, so a pin moved in the record moves here.
  *
- * No Arduino headers: 00-design/firmware/tests/test_dcu.cpp includes this file and checks the
+ * No Arduino headers: 00-design/tests/test_dcu.cpp includes this file and checks the
  * map (every edge pin 0-41 used once, nothing on the bottom pads 48-54, the
  * centre encoder on 40 / 41 with its push on 34, ROW4 on 35, I2C on 18 / 19;
  * D-492 re-reads the same pins, the carrier does not change). Analog inputs are given by pin
