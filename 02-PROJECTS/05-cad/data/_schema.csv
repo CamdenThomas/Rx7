@@ -55,3 +55,26 @@ datums,value,str,no,,the figure as the source gives it
 datums,source,str,no,,"the specs row and page, or the decision"
 datums,confidence,enum(primary|secondary|unverified|derived),no,,as specs.confidence; derived = arithmetic on primary figures
 datums,note,text,no,,
+model_parts,id,key,yes,00-CAR:parts,the 00-CAR parts id the solid stands for; one solid per row
+model_parts,file,str,no,,"the part's file under model/ (out of git, D-477); blank until it exists"
+model_parts,made_from,enum(measured|factory|found|catalogue|guess),yes,,the main source of its shape: measured on this car; a factory dimension page; a found model (01-REFERENCE cad); a catalogue figure scaled by known dimensions; a guess
+model_parts,source,str,no,,"the cad row, blend piece, specs row or catalogue figure it was built from"
+model_parts,state,enum(planned|rough|dimensioned|confirmed),yes,,planned: no solid yet; rough: a shape with unmeasured sizes; dimensioned: every governing dimension in model_dims; confirmed: every governing dimension measured on this car
+model_parts,parent,str,no,model_parts,the part it is mated onto; blank for the body shell
+model_parts,confirm,text,no,,"which dimensions are not measured yet, in words; blank only when state is confirmed"
+model_parts,note,text,no,,
+model_dims,id,key,yes,,
+model_dims,part,str,yes,model_parts,
+model_dims,dim,str,yes,,"what is measured, in words (overall length; bolt pattern; bore)"
+model_dims,value_mm,str,yes,,the figure in mm; a tolerance or a range as the source gives it
+model_dims,how,enum(measured|factory|found|catalogue|derived|guess),yes,,how the figure is known; measured beats the rest
+model_dims,source,str,no,,"the specs row, cad row, catalogue id, or the measurement's work row"
+model_dims,date,date,no,,when it was measured on this car; blank unless how is measured
+model_dims,note,text,no,,
+model_mates,id,key,yes,,
+model_mates,part,str,yes,model_parts,
+model_mates,to,str,yes,model_parts,the part it is located on
+model_mates,kind,enum(bolted|clipped|welded|pressed|pivot|sits-on|fits-in|slides),yes,,
+model_mates,fasteners,list,no,00-CAR:parts,"the bolts, nuts and clips that hold it, as 00-CAR parts ids"
+model_mates,offset_mm,str,no,,"x y z of the part's origin in the mated part's frame, and a rotation if any; confirm when guessed"
+model_mates,note,text,no,,
