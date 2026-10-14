@@ -1264,3 +1264,133 @@ PR-139.03,PR-139,3,Remove the links' bolts and nuts and take the upper and lower
 PR-139.04,PR-139,4,Inspect the links,,"No cracks, deformation or damage.",,p.13-17
 PR-139.05,PR-139,5,Fit the links with their bolts and nuts only nipped,The upper link's rear bolt goes in with its head toward the inside.,,,p.13-17
 PR-139.06,PR-139,6,Lower the car and torque the links' bolts and nuts,SP-1488 to SP-1491.,,,p.13-17
+PR-140.01,PR-140,1,Work each seat's adjuster lever and reclining knuckle,Grease the moving parts.,They move smoothly; the adjustment lever is not worn.,,p.14-3
+PR-140.02,PR-140,2,Check the front seats' mounting bolts,,None loose.,,p.14-3
+PR-140.03,PR-140,3,"To replace a seat belt, remove the rear floor mat and the floor plate",,,,p.14-4
+PR-140.04,PR-140,4,Remove the seat belt's anchor bolt and the bolt holding the retractor,,,,p.14-4
+PR-140.05,PR-140,5,Take out the seat belt and retractor assembly,,,Do not take a retractor apart.,p.14-4
+PR-140.06,PR-140,6,Fit the new assembly in the reverse order,Anchor bolts SP-1314.,The retractor sits vertical when its bolt is tightened.,,p.14-4
+PR-141.01,PR-141,1,Open the hood and mark the hinge positions on it,,,,p.14-5
+PR-141.02,PR-141,2,Remove the hood stay,,,,p.14-5
+PR-141.03,PR-141,3,"With an assistant holding one side, remove the hood's mounting bolts and lift the hood off",,,,p.14-5
+PR-141.04,PR-141,4,Refit in the reverse order,,,,p.14-5
+PR-141.05,PR-141,5,"Loosen the hood's mounting bolts and move it fore and aft, side to side and up and down until it fits",,,,p.14-5
+PR-141.06,PR-141,6,Loosen the hood lock's bolts and move the lock until it lines up with the striker,,,,p.14-5
+PR-142.01,PR-142,1,Remove the battery,,,,p.14-5
+PR-142.02,PR-142,2,Disconnect the connectors of the front turn signal lights,,,,p.14-5
+PR-142.03,PR-142,3,Remove the nuts holding the piston rod end of each bumper shock absorber to the body,,,,p.14-5
+PR-142.04,PR-142,4,Raise the front and support it on stands,,,,p.14-5
+PR-142.05,PR-142,5,Remove the radiator grille,,,,p.14-6
+PR-142.06,PR-142,6,"Remove the bolts holding the shock absorber brackets to the frame and take off brackets, shock absorbers and bumper together",,,,p.14-6
+PR-142.07,PR-142,7,Unbolt the shock absorbers from the bumper,,,,p.14-6
+PR-142.08,PR-142,8,Measure each shock absorber,"Length A SP-1260; length B, set by moving the bracket, SP-1261.",A within its figure; otherwise a new shock absorber.,,p.14-6
+PR-142.09,PR-142,9,Refit in the reverse order,,,The bumper face is urethane: do not damage it.,p.14-6
+PR-142.10,PR-142,10,"Check the bumper's height with no load, the tyres at their pressure and a full fuel tank",,SP-1256.,,p.14-6
+PR-143.01,PR-143,1,Open the rear glass hatch and remove the service hole cover,,,,p.14-6
+PR-143.02,PR-143,2,Remove the nuts holding the piston rod end of each bumper shock absorber to the frame,,,,p.14-6
+PR-143.03,PR-143,3,Raise the rear and support it on stands,,,,p.14-6
+PR-143.04,PR-143,4,"Remove the nuts holding the shock absorber brackets to the frame and take off brackets, shock absorbers and bumper together",,,,p.14-7
+PR-143.05,PR-143,5,Unbolt the shock absorbers from the bumper,,,,p.14-7
+PR-143.06,PR-143,6,Measure each shock absorber,"Length A SP-1265; length B, set by moving the bracket, SP-1266.",A within its figure; otherwise a new shock absorber.,,p.14-7
+PR-143.07,PR-143,7,Refit in the reverse order,,,The bumper face is urethane: do not damage it.,p.14-7
+PR-143.08,PR-143,8,"Check the bumper's height with no load, the tyres at their pressure and a full fuel tank",,SP-1263.,,p.14-7
+PR-144.01,PR-144,1,"Loosen the striker's screws and move the striker in or out, up or down",,,,p.14-9
+PR-144.02,PR-144,2,Tighten the screws and check how the door fits,,,,p.14-9
+PR-144.03,PR-144,3,"For the glass's level, raise the window fully and move the regulator guide up or down",,The glass moves smoothly.,,p.14-10
+PR-144.04,PR-144,4,"For its fore and aft position, loosen the adjusting bolt, move the glass guide and tighten the bolt",,The glass has no play back and forth.,,p.14-10
+PR-145.01,PR-145,1,"Remove the regulator handle, the inner handle cover and the arm rest",,,,p.14-9
+PR-145.02,PR-145,2,Remove the trim panel,,,,p.14-9
+PR-145.03,PR-145,3,Remove the inner handle assembly and the watershield,,,,p.14-9
+PR-145.04,PR-145,4,"Remove the screws holding the glass to the regulator, then the screw grommets",,,,p.14-9
+PR-145.05,PR-145,5,Remove the glass,,,,p.14-9
+PR-145.06,PR-145,6,Remove the regulator's bolts and take the regulator out through the service hole,,,,p.14-9
+PR-145.07,PR-145,7,Power window type only: remove the motor's mounting bolts and take the motor off the regulator,,,The spring is released as the motor comes off and the regulator gear snaps back to the up position.,p.14-9
+PR-145.08,PR-145,8,Refit in the reverse order and adjust the regulator if necessary,"PR-144. Power window type: before the motor goes on, run the regulator down on a battery to the position the page's figure shows; it was not read.",,,p.14-9
+PR-146.01,PR-146,1,"Raise the glass fully and remove the regulator handle, the arm rest and the inner handle cover",,,,p.14-10
+PR-146.02,PR-146,2,Remove the trim panel,,,,p.14-10
+PR-146.03,PR-146,3,"Remove the inner handle's bolts, disconnect the remote control rod at the door lock and take the inner handle out",,,,p.14-10
+PR-146.04,PR-146,4,Pry the watershield away carefully,,,,p.14-10
+PR-146.05,PR-146,5,Disconnect the push rod at the door lock and remove it,,,,p.14-10
+PR-146.06,PR-146,6,"Disconnect the rod at the key cylinder, remove the clip and take the key cylinder out",,,,p.14-10
+PR-146.07,PR-146,7,"Disconnect the rod at the outer handle, remove the handle's nuts and take the outer handle off",,,,p.14-11
+PR-146.08,PR-146,8,Remove the door lock's screws and take the lock out through the service hole,,,,p.14-11
+PR-146.09,PR-146,9,Refit in the reverse order with a new nylon bush on the outer handle,,,,p.14-11
+PR-146.10,PR-146,10,Adjust the inner handle to its proper play,,,,p.14-11
+PR-147.01,PR-147,1,Open the rear glass hatch and disconnect the battery's negative cable,,,,p.14-11
+PR-147.02,PR-147,2,Remove the weatherstrip and the top ceiling at the rear end of the roof,,,,p.14-11
+PR-147.03,PR-147,3,Disconnect the rear defroster's connector at the rear pillar,,,,p.14-11
+PR-147.04,PR-147,4,Remove the rear side pillar trim,,,,p.14-11
+PR-147.05,PR-147,5,Disconnect the damper stays at the body and close the hatch,,,Do not damage the defroster filament on the glass.,p.14-11
+PR-147.06,PR-147,6,Remove the hinges' attaching nuts,,,,p.14-12
+PR-147.07,PR-147,7,Release the hatch lock and lift the hatch off with its hinges,,,,p.14-12
+PR-147.08,PR-147,8,"If necessary, take the damper stays, the hinges and the lock striker off the glass","Before a stay is discarded, drill its cylinder's lower end, SP-1226, to let the gas out.",,Never take a damper stay apart: it holds gas and oil. Cuttings and oil can fly out hard as it is drilled.,p.14-12
+PR-147.09,PR-147,9,Refit in the reverse order,,,,p.14-12
+PR-147.10,PR-147,10,"To adjust the lock, loosen its bolts and move it until it lines up with the hatch's striker",,,,p.14-12
+PR-147.11,PR-147,11,"To adjust the hinges, open the hatch and remove the upper part of the weatherstrip, the rear end of the top ceiling and the rear header pads",,,,p.14-12
+PR-147.12,PR-147,12,"Close the hatch, loosen the hinges' nuts, move the hatch until it lines up with the body and tighten the nuts",,,,p.14-12
+PR-148.01,PR-148,1,Remove the rear view mirror and the sun visors,,,,p.14-13
+PR-148.02,PR-148,2,"Remove the seaming welts, the front pillar trims and the rear centre trims",,,,p.14-13
+PR-148.03,PR-148,3,Remove the seat belt anchor bolts and the rear quarter trim panels,,,,p.14-13
+PR-148.04,PR-148,4,Remove the upper part of the weatherstrip and the rear header pads,,,,p.14-13
+PR-148.05,PR-148,5,Remove the listing wires and the top ceiling,,,,p.14-13
+PR-148.06,PR-148,6,Warm the new top ceiling,SP-1322.,,,p.14-13
+PR-148.07,PR-148,7,"Insert both ends of each listing wire in its place, beginning from the centre",,,,p.14-13
+PR-148.08,PR-148,8,Fit the rear end of the top ceiling to the body flange and its front end into the body's inserting point,As the page's figures show; they were not read.,,,p.14-13
+PR-148.09,PR-148,9,Put double-sided adhesive tape on the outside of the body flange,,,,p.14-14
+PR-148.10,PR-148,10,Pull the top ceiling from both sides to take out the slack and glue both sides to the body flange,,,,p.14-14
+PR-148.11,PR-148,11,Clip off every protruding edge and refit the trims in the reverse order,Seat belt anchor bolts SP-1314.,,,p.14-14
+PR-149.01,PR-149,1,Raise the headlight with the retractor switch,"If it will not rise, disconnect the battery's negative cable, remove the cover and turn the manual control knob on the retractor motor's shaft until the headlight is fully up.",,,p.14-16
+PR-149.02,PR-149,2,Disconnect the battery's negative cable,,,,p.14-16
+PR-149.03,PR-149,3,Remove the headlight bezel,,,,p.14-16
+PR-149.04,PR-149,4,"Loosen the retaining ring's screws, turn the ring counter-clockwise and take it off while holding the headlight",,,,p.14-16
+PR-149.05,PR-149,5,Draw the headlight out and disconnect its connector,,,,p.14-16
+PR-149.06,PR-149,6,Fit the new headlight in the reverse order,,,,p.14-16
+PR-149.07,PR-149,7,Aim the headlights with the two adjusting screws,"The tyres evenly at their pressure, the car on level ground with no load.",Aimed to the regulation in force.,,p.14-16
+PR-150.01,PR-150,1,Remove the headlight,PR-149.,,,p.14-17
+PR-150.02,PR-150,2,Remove the headlight lid,,,,p.14-17
+PR-150.03,PR-150,3,Unhook the spring from the headlight mounting ring and take the ring out,,,,p.14-17
+PR-150.04,PR-150,4,Disconnect the link from the hinge assembly,,,,p.14-17
+PR-150.05,PR-150,5,Remove the hinge's mounting nut and take the hinge assembly out,,,,p.14-17
+PR-150.06,PR-150,6,Fit the new hinge in the reverse order,The link is pinched onto its ball pivot with the fingers until it clicks.,,Not with pliers.,p.14-17
+PR-150.07,PR-150,7,Make the lid's up and down adjustment,PR-151 steps 6 to 10.,,,p.14-17
+PR-151.01,PR-151,1,Open the hood and raise the headlight,,,,p.14-17
+PR-151.02,PR-151,2,Remove the headlight bezel and disconnect the motor's connector,,,,p.14-17
+PR-151.03,PR-151,3,Disconnect the link from the headlight hinge assembly,,,,p.14-17
+PR-151.04,PR-151,4,Remove the retractor motor and linkage assembly; take it apart if necessary,,,,p.14-17
+PR-151.05,PR-151,5,Fit the motor and linkage in the reverse order,,,,p.14-17
+PR-151.06,PR-151,6,"To adjust the lid, with the headlight raised disconnect the link from the hinge assembly",,,,p.14-18
+PR-151.07,PR-151,7,"Loosen the lock nut, turn the adjusting screw in or out until the lid sits properly, and tighten the lock nut",SP-589.,,,p.14-18
+PR-151.08,PR-151,8,"Turn the manual control knob until the motor's link is at its lowest, the automatic stop position",,,,p.14-18
+PR-151.09,PR-151,9,Loosen the motor's mounting bolts and nuts and connect the link to the hinge assembly,Pinched onto the ball pivot with the fingers until it clicks.,,Not with pliers.,p.14-18
+PR-151.10,PR-151,10,"Move the motor forward or back until the lid is right, then tighten its bolts and nuts",SP-588.,The headlight wiring is clipped in place.,,p.14-18
+PR-152.01,PR-152,1,"With the wipers running, disconnect the battery's negative cable so the blades stop in the upper position",,,,p.14-19
+PR-152.02,PR-152,2,Remove the wiper arms,,,,p.14-19
+PR-152.03,PR-152,3,Remove the seal caps and the nuts on the wiper linkage shafts,,,,p.14-19
+PR-152.04,PR-152,4,Remove the cup washers and the outer bushes,,,,p.14-19
+PR-152.05,PR-152,5,"Remove the cowl plate's screws, disconnect the washer hose at the nozzle and take the cowl plate out",,,,p.14-19
+PR-152.06,PR-152,6,Disconnect the wiring connectors at the wiper motor,,,,p.14-19
+PR-152.07,PR-152,7,Remove the wiper motor and link assembly,,,,p.14-19
+PR-152.08,PR-152,8,Refit in the reverse order,,,,p.14-19
+PR-153.01,PR-153,1,"Remove the wiper arms, the interior mirror, the front pillar trims and the garnishes",Tool set SP-1272.,,,p.14-20
+PR-153.02,PR-153,2,"Tape the body, slip a protector in and lift the mould off with the mould remover",,,,p.14-20
+PR-153.03,PR-153,3,Drill a small hole through the sealant and pass a piano wire through it,,,,p.14-20
+PR-153.04,PR-153,4,"Wind each end of the wire round a bar and saw through the sealant all round the glass, then lift the glass out","Long strokes, so the wear is spread along the wire.",,Keep the wire off the paint.,p.14-20
+PR-153.05,PR-153,5,"Cut the old sealant back with a sharp knife, leaving a thin layer all round the frame","SP-1267. Where it has all come off: degrease, prime, let the primer dry (SP-1268) and build the layer up, SP-1712.",,,p.14-20
+PR-153.06,PR-153,6,"Bond the new dam to the glass, straight, with its lip outermost",Set back from the glass edge by SP-1269.,,,p.14-21
+PR-153.07,PR-153,7,Prime the bonding areas of the body and the glass thinly and let the primer dry,SP-1268.,,Keep dust off the primer and do not touch it.,p.14-21
+PR-153.08,PR-153,8,"Bond the spacers to the body and fit the moulding clips, replacing any defective one",The spacers' places are in the page's figure; it was not read.,,,p.14-21
+PR-153.09,PR-153,9,"Cut the sealant gun's nozzle with a flange to run along the glass edge and a V for the sealant, and lay a smooth ridge round the whole glass between the dam and the edge",Ridge height SP-1270. Reshape it with a spatula where needed.,,,p.14-21
+PR-153.10,PR-153,10,"Open a door window, lift the glass into place and press it lightly toward the car",,,A closed car pushes the glass out by air pressure when a door shuts.,p.14-21
+PR-153.11,PR-153,11,Smooth away sealant that oozes out and add sealant where the contact is poor,,,,p.14-22
+PR-153.12,PR-153,12,Leave the glass undisturbed while the sealant hardens,"SP-1232, SP-1233.",,,p.14-22
+PR-153.13,PR-153,13,Check again for any poorly sealed place and put it right,,,,p.14-22
+PR-153.14,PR-153,14,"Clip the mould in and refit the interior mirror, the pillar trims and the garnishes",,,,p.14-22
+PR-154.01,PR-154,1,Remove the garnish and the glass plate's attaching screw,,,,p.14-22
+PR-154.02,PR-154,2,Open the rear glass hatch and disconnect the electrical connector at the rear pillar,,,,p.14-22
+PR-154.03,PR-154,3,Remove the rear pillar trims and the glass's attaching nut,,,,p.14-22
+PR-154.04,PR-154,4,Disconnect the damper stay's end from the rear pillar and hold the hatch up,,,,p.14-22
+PR-154.05,PR-154,5,Cut the glass out with the piano wire,PR-153 steps 3 and 4.,,,p.14-22
+PR-154.06,PR-154,6,"Prepare the frame, bond the new dam to the glass, prime the body and the glass and bond the spacers to the glass","As PR-153 steps 5 to 8; the dam's, the primer's and the spacers' places are in the page's figures, which were not read.",,,p.14-22
+PR-154.07,PR-154,7,"Lay the sealant round the whole glass, fit the glass and let the sealant harden",As PR-153 steps 9 to 13.,,,p.14-23
+PR-154.08,PR-154,8,"Fit the glass's attaching nut, the centre pillar trim and the rear side pillar trim",,,,p.14-23
+PR-154.09,PR-154,9,"Connect the damper stay's end to the body, fit the glass plate's screw and the garnish",,,,p.14-23
