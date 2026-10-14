@@ -29,8 +29,10 @@ tables - sources, catalogue, cad, suppliers, connector_dims, circuits - are `00-
 `blend` `05-cad`'s; its record's shell is `99-ARCHIVE/2026-10-13_01-REFERENCE`. His photos
 are `00-CAR/photos`; the PMU's and the EVE board's vendor files are under
 `01-electrical/00-design` (`pmu/vendor`, `display-unit/vendor`); the found-model scripts are
-`05-cad/model/found`, whose `paths.py` names the library's folder (06-intake T2). What the
-intake still holds is parsed into the car's tables and taken out of the tree by `06-intake`.
+`05-cad/model/found`, whose `paths.py` names the library's folder (06-intake T2). Everything the
+intake held has been parsed into the car's tables and taken out of git; `06-intake`, the project
+that did it, is archived (`99-ARCHIVE/2026-10-14_06-intake`, D-569). A new file landing in the
+intake is parsed by a run in the project that wants it, into `00-CAR`'s tables, and leaves git.
 
 **The one generated file type left is the harness-leg drawings** (D-385): for each leg,
 `A-pin-ladder.svg` and `B-route-map.svg` in `02-PROJECTS/01-electrical/00-design/diagrams/`,

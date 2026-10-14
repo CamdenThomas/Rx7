@@ -6,8 +6,7 @@ app's Manual model page is built against (C01's hand-over to 02-APP MG1). The pr
 (the unibody first) rule how it is built.*
 
 Scripts only. The model files - the glb files, the STEP files, anything made from a found model -
-stay out of git (D-477, D-418; 06-intake block 06.03 and 02-APP P55 are open on where they
-live): `out/` here is ignored, and so is every `.glb` under `02-APP/app/public/design/`. `scene.json`
+stay out of git (D-477, D-418; 02-APP P55 is open on where they live): `out/` here is ignored, and so is every `.glb` under `02-APP/app/public/design/`. `scene.json`
 is committed. The frame is D-418's: millimetres, x to the car's right, y forward, z up, ground z = 0,
 front axle y = 0. **Nothing here is a source of facts about the car**: a measured number beats the
 model, and every dimension nobody measured carries `confirm` (R11). Today that is every dimension.

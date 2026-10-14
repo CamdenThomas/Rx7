@@ -61,13 +61,13 @@ An **area** is any directory holding `data/_tables.csv`, at `ROOT/<area>` or
 `ROOT/02-PROJECTS/<project>`: `00-CAR` (the car: its state and every truth about it - parts,
 specs, sources, the catalogue, the found models, the circuits - PERMANENT), `02-APP` (the Rx7 app
 and its own work, D-428), and each project under `02-PROJECTS` (`01-electrical`, `02-engine`,
-`03-luxury`, `04-beauty`, `05-cad`, `06-intake`). **Three homes** (D-519): CAR holds state and
+`03-luxury`, `04-beauty`, `05-cad`). **Three homes** (D-519): CAR holds state and
 truth, APP the app and the view of everything, PROJECTS the work in progress until it merges into
 the car. `01-INTAKE` (the old `01-REFERENCE`, renamed 2026-10-13) is none of them: it is the
 **intake** - bulk to be processed (a manual, a
 catalogue, a datasheet, a found model) into the car's tables and then taken out of the tree,
 kept only as ignored files there; nothing permanent lives in it and no row names it as a home
-(`06-intake` is folding what it still holds). A car-level ruling that belongs to no project is a decision in `00-CAR`;
+(`06-intake` folded what it held and is archived, D-569). A car-level ruling that belongs to no project is a decision in `00-CAR`;
 `00-CAR`'s other tables state what **is** and never cite a `D-` or a block id.
 
 **There is one data format.** Everything is a CSV table, including the schema, so the
@@ -87,8 +87,8 @@ decision live in the record, and **the Rx7 app** (`02-APP/app`, desktop and Andr
 reads and answers them. Do not write a Markdown page for him to read or type in: not a TODO,
 not an index, not a summary. Files that stay files: this one, the READMEs beside code and
 drawings (the tool, the firmware, the KiCad boards, the app, `02-APP/README.md`),
-`00-CAR/data/procedures/` and the factory-circuit write-ups (their form is `06-intake`'s open
-question), and `99-ARCHIVE`. The one generated
+`00-CAR/data/procedures/`, and `99-ARCHIVE`; the factory-circuit write-ups are `00-CAR`
+`circuit_paths` rows (D-522). The one generated
 file type is the harness-leg drawings, rebuilt whole by `rx7.py diagrams` (D-385): run it before
 you report whenever you changed `housings`, `cavities`, `devices` or `routes`.
 
