@@ -1025,7 +1025,7 @@ PR-115.06,PR-115,6,Raise the front until the wheels clear the ground,,,,p.10A-13
 PR-115.07,PR-115,7,Turn each wheel by hand and scribe a line round the centre of its tread,,,,p.10A-13
 PR-115.08,PR-115,8,Lower the car and set the front wheels straight ahead,,,,p.10A-13
 PR-115.09,PR-115,9,"Measure between the lines at the front and at the rear of the wheels, at the same height from the ground",,The rear measurement is larger than the front by SP-102.,,p.10A-13
-PR-115.10,PR-115,10,"If the toe-in is wrong, turn both tie-rods by equal amounts",Lock nuts SP-1440.,,,p.10A-13
+PR-115.10,PR-115,10,"If the toe-in is wrong, turn both tie-rods by equal amounts","Figure 47U10A-032 (read 2026-10-14): the toe is A (rear of the tyres) less B (front) = 0-6 mm; the two tie-rods turn in mirror directions to lengthen (a curved arrow on each), but the scan does not show which way the top of a rod moves - turn one a quarter turn and measure again. Lock nuts SP-1440.",,,p.10A-13
 PR-115.11,PR-115,11,"Measure camber and caster with a wheel aligning gauge, by its maker's instructions",,SP-103 and SP-104.,,p.10A-13
 PR-115.12,PR-115,12,"If they are wrong, raise the front on stands and open the bonnet",,,,p.10A-13
 PR-115.13,PR-115,13,Remove the four nuts holding the front suspension mounting block to the fender apron,,,,p.10A-13
@@ -1062,7 +1062,7 @@ PR-118.08,PR-118,8,Put a hardwood block in the caliper and blow compressed air g
 PR-118.09,PR-118,9,"Remove the piston seal, then the bleeder cap and screw",,,,p.11-6
 PR-118.10,PR-118,10,Clean the parts in clean brake fluid or alcohol and blow them dry,,,Never gasoline or kerosene.,p.11-6
 PR-118.11,PR-118,11,Inspect the caliper bore and the piston,,"No scoring, scratches or rust. Minor damage is polished out with crocus cloth; otherwise the piston or the caliper is replaced.",,p.11-6
-PR-118.12,PR-118,12,Assemble in the reverse order with a new piston seal and a new dust seal,"The seal kit's two greases, orange and red, go where the page's figure shows; it was not read. Brake fluid on the piston and the bore.","The piston seal sits fully in its groove, not twisted.",,p.11-7
+PR-118.12,PR-118,12,Assemble in the reverse order with a new piston seal and a new dust seal,"Drawing 47U11X-010 (read 2026-10-14): the orange grease goes on the piston seal in its groove in the bore, the red grease on the dust seal at the mouth of the bore. Brake fluid on the piston and the bore.","The piston seal sits fully in its groove, not twisted.",,p.11-7
 PR-118.13,PR-118,13,Refit the caliper in the reverse order and connect the hose,Hose union SP-1376.,,,p.11-7
 PR-118.14,PR-118,14,Bleed the brakes,PR-126.,,,p.11-7
 PR-119.01,PR-119,1,Set the front wheel bearing preload first,PR-096.,,,p.11-7
@@ -1095,7 +1095,7 @@ PR-121.09,PR-121,9,Bleed the brakes and check that they work properly,PR-126.,,,
 PR-122.01,PR-122,1,Raise the rear until the wheels turn freely and support it on stands,,,,p.11-10
 PR-122.02,PR-122,2,Release the parking brake fully,,,,p.11-10
 PR-122.03,PR-122,3,Take the adjusting hole plugs out of the back of the backing plate,,,,p.11-10
-PR-122.04,PR-122,4,"With a screwdriver in hole A, turn the star wheel the way the arrow on the backing plate points until the wheel locks",,,,p.11-11
+PR-122.04,PR-122,4,"With a screwdriver in hole A, turn the star wheel the way the arrow on the backing plate points until the wheel locks","Photo 47U11X-022 (read 2026-10-14): hole A is the upper left hole in the backing plate, between the hub and the wheel cylinder; hole B is at the upper right; the arrow is stamped near the bottom of the plate. Then back the star wheel off 3-4 notches through hole B (step 5).",,,p.11-11
 PR-122.05,PR-122,5,Push the adjuster lever with the screwdriver through hole B and back the star wheel off,SP-1352.,The wheel turns freely without drag.,,p.11-11
 PR-122.06,PR-122,6,Fit the adjusting hole plugs,,,,p.11-11
 PR-122.07,PR-122,7,Do the same on the other rear wheel,,,,p.11-11
@@ -1108,7 +1108,7 @@ PR-123.06,PR-123,6,Wash the parts in clean alcohol or brake fluid and blow them 
 PR-123.07,PR-123,7,Check the piston cups,,"Not damaged, worn, softened or swollen; otherwise new cups.",,p.11-18
 PR-123.08,PR-123,8,"Examine the bore and the pistons for wear, roughness and scoring and measure the clearance between them",,Within SP-1339; beyond SP-1340 the cylinder or the piston is replaced.,,p.11-18
 PR-123.09,PR-123,9,Check the compensating ports of the cylinder are open,,,,p.11-18
-PR-123.10,PR-123,10,Dip the pistons and cups in clean brake fluid and fit the secondary and primary cups to the pistons,The cups' directions are in the page's figure; it was not read.,,,p.11-18
+PR-123.10,PR-123,10,Dip the pistons and cups in clean brake fluid and fit the secondary and primary cups to the pistons,"Drawing 47U11X-045 (read 2026-10-14): on each piston the cup lips face away from the piston's push end, toward the front (closed end) of the bore - the primary cup at the front of the primary piston, the secondary cup at the rear of the secondary piston facing the same way, so pressure ahead of each piston spreads its lips.",,,p.11-18
 PR-123.11,PR-123,11,"Fit the check valve with its face, the side with the six holes, toward the cylinder body, and torque the joint bolt",SP-1342 (the page gives the same as 6.0-7.0 m-kg). The check valve is the rear drum brake car's.,,,p.11-18
 PR-123.12,PR-123,12,"Assemble the rest in the reverse order and, before the reservoir goes on, look into the ports",,The piston cups do not cover the compensating ports.,,p.11-18
 PR-123.13,PR-123,13,Refit the master cylinder in the reverse order of removal,Pipe unions SP-1343.,,,p.11-18
@@ -1116,7 +1116,7 @@ PR-123.14,PR-123,14,Bleed the brakes and check that they work properly,PR-126.,,
 PR-124.01,PR-124,1,"Engine stopped, press the pedal several times; hold it down and start the engine",,The pedal moves down very slightly just after the engine starts.,,p.11-19
 PR-124.02,PR-124,2,"Run the engine for one or two minutes, stop it, then press the pedal several times with normal force",,"The stroke is long the first time and shorter each time after. If not, check the check valve and the vacuum hoses for damage or wrong fitting, repair, and repeat.",,p.11-19
 PR-124.03,PR-124,3,"Start the engine, press the pedal with normal force, stop the engine with the pedal held, and hold it for about 30 seconds",,The pedal's height does not change.,,p.11-19
-PR-124.04,PR-124,4,"If the fault is still not found, connect a pressure gauge, a vacuum gauge and a pedal force gauge and bleed the pressure gauge",As the page's figure shows; it was not read.,,,p.11-19
+PR-124.04,PR-124,4,"If the fault is still not found, connect a pressure gauge, a vacuum gauge and a pedal force gauge and bleed the pressure gauge","Drawing 47U11X-073 (read 2026-10-14): the pressure gauge into a master cylinder outlet (its pipe to the wheels teed in), the vacuum gauge on a tee in the hose from the intake manifold to the power brake unit, and the pedal force gauge on the brake pedal; bleed the pressure gauge before the tests.",,,p.11-19
 PR-124.05,PR-124,5,"Start the engine, stop it when the vacuum reaches the test figure, and time the vacuum's fall with no load on the pedal",,SP-1346.,,p.11-19
 PR-124.06,PR-124,6,Repeat with the pedal held at the test force,,SP-1346.,,p.11-20
 PR-124.07,PR-124,7,"Engine stopped and no vacuum, read the fluid pressure at the test pedal force",,SP-1347.,,p.11-20
@@ -1173,7 +1173,7 @@ PR-130.02,PR-130,2,Remove the wheel hub assembly from the shock absorber,PR-095.
 PR-130.03,PR-130,3,Remove the backing plate,,,,p.13-5
 PR-130.04,PR-130,4,Remove the flexible hose's attaching clip,,,,p.13-5
 PR-130.05,PR-130,5,Remove the bolts holding the knuckle arm to the shock absorber,,,,p.13-5
-PR-130.06,PR-130,6,"Note where the triangle mark on the mounting block sits, then remove the block's nuts and take the shock absorber assembly out",,,The mark's position is needed at refitting: it sets camber and caster.,p.13-5
+PR-130.06,PR-130,6,"Note where the triangle mark on the mounting block sits, then remove the block's nuts and take the shock absorber assembly out","Inset of photo 47U13X-003 (read 2026-10-14): the triangle is stamped on the top face of the mounting block, beside the centre, pointing at one of the four studs; mark that stud on the tower before the nuts come off.",,The mark's position is needed at refitting: it sets camber and caster.,p.13-5
 PR-130.07,PR-130,7,Hold the mounting block in a vice and loosen the lock nut a few turns,,,Do not remove the lock nut yet.,p.13-5
 PR-130.08,PR-130,8,Compress the coil spring,Compressor SP-1709.,,,p.13-5
 PR-130.09,PR-130,9,"Take off in order: lock nut and washer, mounting block and adjusting plate, seat, thrust bearing, spring upper seat, coil spring, dust boot, bound bumper",,,,p.13-6
