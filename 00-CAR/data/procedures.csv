@@ -91,3 +91,4 @@ PR-089,Ignition,"Check the igniters, the ignition coils and the high-tension lea
 PR-090,Transmission,"Check the kick-down solenoid and the vacuum diaphragm on the car (1985 manual, L4N71B)","excessive shift shock, or gears not shifting properly","12 V supply, vacuum pump",S-002,other-car
 PR-091,Transmission,"Find the line pressure cutback point (1985 manual, L4N71B)",shift faults the line pressure test does not explain,"two oil pressure gauges 49 0378 400A, vacuum pump with gauge",S-002,other-car
 PR-092,Transmission,"Check and wash the torque converter (1985 manual, L4N71B)",transmission overhaul,compressed air,S-002,other-car
+PR-093,Driveline,Remove and inspect the propeller shaft (1985 manual),driveline noise or vibration; gearbox or rear axle removal,"stands, dial gauge, main shaft turning holder 49 0259 440",S-002,

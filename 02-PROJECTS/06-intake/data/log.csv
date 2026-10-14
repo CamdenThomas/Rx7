@@ -14,3 +14,4 @@ L-0012,2026-10-13,apply,D-545,"Block 06.04 answered (a): poppler install ruled, 
 L-0013,2026-10-13,plan,P07 D-546 D-523,"P07: 1985 manual Section 4A Fuel and Emissions parsed - 33 specs, 36 procedures (331 steps); PDF out of git; add --rows in the tool"
 L-0014,2026-10-13,plan,P08 D-523 D-544,"P08: 1985 manual Section 5 Engine Electrical parsed - 13 specs, 9 procedures (116 steps); PDF out of git"
 L-0015,2026-10-13,plan,P09 D-523 D-544,"P09: 1985 manual Section 7B Automatic Transmission parsed - 52 specs (other-car, L4N71B), 3 procedures (19 steps); PDF out of git"
+L-0016,2026-10-13,plan,P10 D-523 D-544,"P10: 1985 manual Section 8 Propeller Shaft parsed - no new spec, 1 procedure (8 steps); PDF out of git"

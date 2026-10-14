@@ -809,3 +809,11 @@ PR-092.05,PR-092,5,Pour in white gasoline or kerosene,The amount: SP-1655.,,,p.7
 PR-092.06,PR-092,6,"Shake the converter, then pour the solvent out",,,,p.7B-38
 PR-092.07,PR-092,7,Blow the inside out with compressed air,,The inside is completely empty.,,p.7B-38
 PR-092.08,PR-092,8,"Pour in transmission fluid, shake, and pour it out",Fluid SP-093.,,,p.7B-38
+PR-093.01,PR-093,1,Raise the rear of the car and support it on stands,,,,p.8-3
+PR-093.02,PR-093,2,Mark the propeller shaft's flange and the rear axle's companion flange,"One mark across both, so the shaft goes back in the same position.",,Refitted in another position the shaft loses its balance.,p.8-3
+PR-093.03,PR-093,3,Remove the bolts and nuts at the rear flange,,,,p.8-3
+PR-093.04,PR-093,4,Draw the propeller shaft out of the extension housing,,,,p.8-3
+PR-093.05,PR-093,5,Plug the extension housing,"Main shaft turning holder, SP-1648.",No oil runs out of the housing.,,p.8-3
+PR-093.06,PR-093,6,Inspect the shaft for damage and rust,,,,p.8-3
+PR-093.07,PR-093,7,Check each universal joint for play along its axes and across them,,None. With any play the propeller shaft assembly is replaced.,,p.8-3
+PR-093.08,PR-093,8,Measure the shaft's run-out,Limit SP-1393.,Within the limit; beyond it the shaft is replaced.,,p.8-3
