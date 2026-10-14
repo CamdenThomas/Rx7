@@ -190,3 +190,5 @@ PR-188,Emissions,Check the emission controls in one pass round the engine bay (1
 PR-189,Electrical,Check the oil level warning system (float-type sensor),"the OIL light misbehaves, after an engine is fitted, or at scheduled maintenance","ohmmeter, jumper to ground",S-008,
 PR-190,Body,Fit an outside electric mirror without pinching its harness,a door mirror comes off or is replaced,screwdriver,S-008,
 PR-191,Electrical,Replace the turn signal cancel cam,the turn signal does not cancel,"steering wheel puller, socket, flat screwdriver",S-046,
+PR-192,Climate,Fit the dealer air conditioner (the order also takes it out),the A/C comes out for the engine bay work or goes back in,"metric and SAE sockets, screwdrivers, drill with a 1/4 in bit, refrigeration oil",S-048,
+PR-193,Climate,Adjust the A/C cut-out micro switch on the heater,"the compressor runs in heat or defrost, or after the heater controls were out",screwdriver,S-048,
