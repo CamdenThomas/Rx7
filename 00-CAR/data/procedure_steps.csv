@@ -905,7 +905,7 @@ PR-101.07,PR-101,7,Zero a dial indicator in the gauge body on a surface plate,,,
 PR-101.08,PR-101,8,Put the gauge block on the pinion model and the gauge body on the block,,,,p.9-18
 PR-101.09,PR-101,9,"Read the lowest point of each side bearing seat in the carrier, left and right",,,,p.9-18
 PR-101.10,PR-101,10,Work out the adjustment value and choose the spacer,SP-1682; spacer steps SP-1415.,,,p.9-19
-PR-102.01,PR-102,1,Put the chosen spacer on the drive pinion and press the rear bearing on,,,,p.9-19
+PR-102.01,PR-102,1,Put the chosen spacer on the drive pinion and press the rear bearing on,"Exploded view 47U09X-020 (read 2026-10-14): the spacer sits flat against the back of the pinion head, round the shaft, under the rear bearing's inner race. The lock nut (7) and the oil seal (10) are new parts each time; bearing cap bolts 38-53 N·m (SP-1404), ring gear bolts 75-85 N·m (SP-1412).",,,p.9-19
 PR-102.02,PR-102,2,Fit the collapsible spacer on the pinion and put them in the carrier,,,,p.9-19
 PR-102.03,PR-102,3,Fit the front bearing on the pinion's front end,,,,p.9-19
 PR-102.04,PR-102,4,Oil the pinion oil seal's lip with gear oil and fit the seal in the carrier,,,,p.9-19
@@ -919,7 +919,7 @@ PR-103.03,PR-103,3,Turn the gears 90 degrees until their holes line up with the 
 PR-103.04,PR-103,4,Push the pinion shaft through the case and the pinion gears,,,,p.9-20
 PR-103.05,PR-103,5,Check the backlash of the side gears and pinion gears,"Set by the thrust washers' thickness, SP-1419.",SP-1418.,,p.9-20
 PR-103.06,PR-103,6,Fit the pinion shaft's lock pin and stake it with a punch,,,,p.9-21
-PR-103.07,PR-103,7,Apply locking agent to the back of the ring gear and to its bolts,Where the figure shows; it was not read.,,,p.9-21
+PR-103.07,PR-103,7,Apply locking agent to the back of the ring gear and to its bolts,"Drawing 47U09X-050 (read 2026-10-14): on the ring gear's back face, the ring that seats on the gear case, round the bolt holes, and in the bolt holes themselves. New bolts each time.",,,p.9-21
 PR-103.08,PR-103,8,Fit the ring gear to the case and torque its bolts,SP-1412.,,,p.9-21
 PR-103.09,PR-103,9,Press the side bearings onto the gear case,Pipe SP-1417.,Pressed until the force rises suddenly.,,p.9-21
 PR-104.01,PR-104,1,Put the differential gear assembly in the carrier,,,,p.9-23
@@ -934,7 +934,7 @@ PR-104.09,PR-104,9,Torque the bearing cap bolts,SP-1404.,,,p.9-24
 PR-104.10,PR-104,10,Fit the adjuster lock plates on the bearing caps,,,,p.9-24
 PR-105.01,PR-105,1,Coat both faces of six to eight ring gear teeth thinly and evenly with red lead,,,,p.9-25
 PR-105.02,PR-105,2,Rock the ring gear by hand while turning the drive pinion several times,,,,p.9-25
-PR-105.03,PR-105,3,Read the contact pattern on the teeth,,Good contact as the page's figures show it; they were not read.,,p.9-25
+PR-105.03,PR-105,3,Read the contact pattern on the teeth,Drawings 47U09X-064 to -066 (read 2026-10-14): a good pattern sits in the middle of the tooth; toe contact (at the narrow inner end) or flank contact (low on the tooth) - step 5; heel contact (at the wide outer end) or face contact (high on the tooth) - step 6.,Good contact as the page's figures show it; they were not read.,,p.9-25
 PR-105.04,PR-105,4,Wipe the red lead off if the contact is good,,,,p.9-25
 PR-105.05,PR-105,5,"With toe or flank contact, fit a thinner pinion spacer","The pinion moves outward. Then set the backlash again, PR-104.",,,p.9-25
 PR-105.06,PR-105,6,"With heel or face contact, fit a thicker pinion spacer","The pinion moves inward. Then set the backlash again, PR-104.",,,p.9-25
