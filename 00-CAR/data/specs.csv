@@ -1677,3 +1677,13 @@ SP-1690,Steering,Worm shaft preload as a spring scale pull on the attachment: wi
 SP-1691,Suspension,"Camber / king-pin inclination, 14 inch tyre vehicle (1985)",0 deg 35' +/-30' / 11 deg 20',,S-002,"p.10A-3, p.10A-13",primary,suspension,,other-car,"The 13 inch figures: SP-103, SP-105."
 SP-1692,Suspension,Camber / caster change by the position of the front suspension mounting block (1985),"0 deg (A, original): 0 / 0; 90 deg (B): 0 / +28'; 180 deg (C): +28' / +28'; 270 deg (D): +28' / 0",,S-002,p.10A-14,unverified,suspension,,other-car,Rebuilt from scrambled text; goes to P83. The block's nuts: SP-1471.
 SP-1693,Steering,Service tools: engine stand with the steering gear attachment,49 0107 680A; 49 0221 005A,,S-002,p.10A-6,primary,steering,PT475,other-car,A vice does as well.
+SP-1694,Brakes,"Service tool: expand tool, presses the caliper piston back",49 0221 600C,,S-002,p.11-5,primary,brakes,PT497,other-car,Used with the bleeder screw open and a tube into a container.
+SP-1695,Brakes,Service tool: spanner for the brake pipe unions,49 0259 770A,,S-002,"p.11-10, p.11-17",primary,brakes,PT051,other-car,
+SP-1696,Brakes,"Service tool: push rod adjust gauge, power brake unit",49 B002 765,,S-002,p.11-24,unverified,brakes,PT052,other-car,"The OCR text reads the number three ways (BU02, 8002, BOO2); goes to P83."
+SP-1697,Brakes,Clearance between the power brake unit's push rod and the master cylinder's primary piston (1985),0.1-0.3,mm,S-002,"p.11-23, p.11-24",primary,brakes,PT052,other-car,0.004-0.012 in. Set with the gauge SP-1696. The 1982 data: SP-1345.
+SP-1698,Brakes,Reservoir level kept during bleeding,at least 3/4 full,,S-002,p.11-24,primary,brakes,PT560,other-car,Front and rear systems are bled separately; drained fluid is never used again.
+SP-1699,Brakes,Rear disc brake: caliper cylinder inner diameter,34.93,mm,S-002,p.11-2,primary,brakes,,not-fitted,1.3752 in. This car has rear drums (SP-112).
+SP-1700,Brakes,"Rear disc brake: disc thickness, standard / limit; run-out limit",10 / 9; 0.1,mm,S-002,p.11-16,primary,brakes,,not-fitted,This car has rear drums (SP-112).
+SP-1701,Brakes,Rear disc brake: caliper attaching bolt torque,30-42,N·m,S-002,p.11-13,primary,brakes,,not-fitted,22-30 ft-lb. This car has rear drums (SP-112).
+SP-1702,Brakes,Rear disc brake: play between piston and sleeve nut,0.3-0.5,mm,S-002,p.11-15,primary,brakes,,not-fitted,This car has rear drums (SP-112).
+SP-1703,Brakes,Rear disc brake: service tools - piston wrench; valve spring lifter arm; spring compressor; removing plate,49 FA18 602; 49 0636 100A; 49 FA18 601; 49 E301 144,,S-002,"p.11-12, p.11-14",primary,brakes,,not-fitted,This car has rear drums (SP-112).

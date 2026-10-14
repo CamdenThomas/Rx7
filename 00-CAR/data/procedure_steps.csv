@@ -1043,3 +1043,128 @@ PR-116.07,PR-116,7,Put a protector under the steering lock assembly,It keeps the
 PR-116.08,PR-116,8,Loosen the bolts holding the lock body to the column jacket with a chisel,,,,p.10A-15
 PR-116.09,PR-116,9,Position the new steering lock on the column jacket and tighten its bolts,SP-1291.,The bolt heads snap off.,,p.10A-15
 PR-116.10,PR-116,10,"Refit the combination switch, the column covers and the steering wheel in the reverse order",,,,p.10A-15
+PR-117.01,PR-117,1,"Raise the front, support it on stands and remove the front wheel",,,,p.11-4
+PR-117.02,PR-117,2,Remove the caliper's lower attaching bolt and lift the lower side of the caliper,,,,p.11-4
+PR-117.03,PR-117,3,"Remove the anti-rattle spring, then the pads and their shims",,,,p.11-5
+PR-117.04,PR-117,4,Measure the lining's thickness,,Above the limit of SP-1365; at it the pad is replaced.,Replace all the pads on both wheels together and never mix types of pad.,p.11-5
+PR-117.05,PR-117,5,Fit the pads in the reverse order,Coat the caliper's mounting pin and attaching bolt with the grease from the pad kit.,,,p.11-5
+PR-117.06,PR-117,6,"If the caliper will not go over the new pads, take the cap off the bleeder screw and run a vinyl tube from it into a container",,,,p.11-5
+PR-117.07,PR-117,7,Loosen the bleeder screw and press the piston into the cylinder,Expand tool SP-1694.,,,p.11-5
+PR-117.08,PR-117,8,"Tighten the bleeder screw, remove the tube and the tool, and fit the caliper",,,,p.11-5
+PR-118.01,PR-118,1,"Raise the front, support it on stands and remove the front wheel",,,,p.11-6
+PR-118.02,PR-118,2,Loosen the flexible hose at the caliper without removing it,,,,p.11-6
+PR-118.03,PR-118,3,Remove the caliper's lower attaching bolt and lift the caliper up,,,,p.11-6
+PR-118.04,PR-118,4,Slide the caliper toward the inside of the car and off,,,,p.11-6
+PR-118.05,PR-118,5,Disconnect the flexible hose from the caliper and plug its end,,,,p.11-6
+PR-118.06,PR-118,6,Clean the outside of the caliper,,,,p.11-6
+PR-118.07,PR-118,7,Remove the dust boot's retainer and the dust boot,,,,p.11-6
+PR-118.08,PR-118,8,Put a hardwood block in the caliper and blow compressed air gradually into the fluid hole until the piston comes out,"If it sticks, tap lightly round the piston while the air is on.",,,p.11-6
+PR-118.09,PR-118,9,"Remove the piston seal, then the bleeder cap and screw",,,,p.11-6
+PR-118.10,PR-118,10,Clean the parts in clean brake fluid or alcohol and blow them dry,,,Never gasoline or kerosene.,p.11-6
+PR-118.11,PR-118,11,Inspect the caliper bore and the piston,,"No scoring, scratches or rust. Minor damage is polished out with crocus cloth; otherwise the piston or the caliper is replaced.",,p.11-6
+PR-118.12,PR-118,12,Assemble in the reverse order with a new piston seal and a new dust seal,"The seal kit's two greases, orange and red, go where the page's figure shows; it was not read. Brake fluid on the piston and the bore.","The piston seal sits fully in its groove, not twisted.",,p.11-7
+PR-118.13,PR-118,13,Refit the caliper in the reverse order and connect the hose,Hose union SP-1376.,,,p.11-7
+PR-118.14,PR-118,14,Bleed the brakes,PR-126.,,,p.11-7
+PR-119.01,PR-119,1,Set the front wheel bearing preload first,PR-096.,,,p.11-7
+PR-119.02,PR-119,2,Remove the pads and the caliper,"PR-117, PR-118.",,,p.11-7
+PR-119.03,PR-119,3,Inspect the disc's surfaces and measure its thickness,SP-113.,"No scoring, scratches, rust or excessive wear; reface it as necessary, down to the limit.",,p.11-7
+PR-119.04,PR-119,4,Measure the lateral run-out with a dial indicator,,Within the run-out limit of SP-113.,,p.11-7
+PR-119.05,PR-119,5,"To replace the disc, remove the hub",PR-095.,,,p.11-7
+PR-120.01,PR-120,1,"Raise the rear, support the axle housing on stands and remove the rear wheel",,,,p.11-8
+PR-120.02,PR-120,2,Remove the brake drum's attaching screws,,,,p.11-8
+PR-120.03,PR-120,3,Release the parking brake fully and remove the drum,,,,p.11-8
+PR-120.04,PR-120,4,Remove the return springs,,,,p.11-9
+PR-120.05,PR-120,5,Remove the shoes' retaining springs and guide pins,,,,p.11-9
+PR-120.06,PR-120,6,Remove the brake shoes and the adjuster strut,,,,p.11-9
+PR-120.07,PR-120,7,Unhook the parking brake cable from the operating lever on the shoe,,,,p.11-9
+PR-120.08,PR-120,8,"Inspect the drum for damage, wear and scores and measure its inner diameter",,SP-115; roughness within SP-1353.,,p.11-9
+PR-120.09,PR-120,9,"Inspect the linings for wear, damage and deformation and measure their thickness",,Standard SP-1350; the limit is in SP-115.,,p.11-9
+PR-120.10,PR-120,10,Look at the wheel cylinder's boots,,"Dry. A boot wet with brake fluid means the wheel cylinder is overhauled, PR-121.",,p.11-9
+PR-120.11,PR-120,11,"Inspect the brake lines, pipes, hoses and connections",,"No leaks, chafing, deterioration or damage.",,p.11-9
+PR-120.12,PR-120,12,Refit the shoes in the reverse order,"Multi-purpose grease where a shoe touches the backing plate, the wheel cylinder's piston and the anchor pin.",,,p.11-9
+PR-120.13,PR-120,13,Adjust the rear brakes,PR-122.,,,p.11-9
+PR-121.01,PR-121,1,Remove the rear brake shoes,PR-120.,,,p.11-10
+PR-121.02,PR-121,2,Disconnect the brake pipe at the wheel cylinder and plug the pipe,Spanner SP-1695.,,,p.11-10
+PR-121.03,PR-121,3,Remove the wheel cylinder from the backing plate,,,,p.11-10
+PR-121.04,PR-121,4,"Take the cylinder apart: dust boots, pistons, piston cups, filling blocks, spring, bleeder cap and screw, steel ball",,,,p.11-10
+PR-121.05,PR-121,5,Wash every part in clean alcohol or brake fluid,,,Never gasoline or kerosene.,p.11-10
+PR-121.06,PR-121,6,"Examine the bore and the pistons for wear, roughness and scoring and measure the clearance between them",,Within SP-1356; beyond SP-1357 the cylinder or the piston is replaced.,,p.11-10
+PR-121.07,PR-121,7,Inspect the piston cups,,"No wear, softening, swelling or damage; otherwise new cups.",,p.11-10
+PR-121.08,PR-121,8,Assemble and refit in the reverse order,"Union SP-1359. Multi-purpose grease where a shoe touches the backing plate, the wheel cylinder's piston and the anchor pin.",,,p.11-10
+PR-121.09,PR-121,9,Bleed the brakes and check that they work properly,PR-126.,,,p.11-10
+PR-122.01,PR-122,1,Raise the rear until the wheels turn freely and support it on stands,,,,p.11-10
+PR-122.02,PR-122,2,Release the parking brake fully,,,,p.11-10
+PR-122.03,PR-122,3,Take the adjusting hole plugs out of the back of the backing plate,,,,p.11-10
+PR-122.04,PR-122,4,"With a screwdriver in hole A, turn the star wheel the way the arrow on the backing plate points until the wheel locks",,,,p.11-11
+PR-122.05,PR-122,5,Push the adjuster lever with the screwdriver through hole B and back the star wheel off,SP-1352.,The wheel turns freely without drag.,,p.11-11
+PR-122.06,PR-122,6,Fit the adjusting hole plugs,,,,p.11-11
+PR-122.07,PR-122,7,Do the same on the other rear wheel,,,,p.11-11
+PR-123.01,PR-123,1,Disconnect the fluid level sensor's coupler,,,,p.11-17
+PR-123.02,PR-123,2,Disconnect the fluid pipes at the master cylinder's outlets,Spanner SP-1695.,,Never let brake fluid drop on a painted surface.,p.11-17
+PR-123.03,PR-123,3,Remove the proportioning bypass valve's attaching bolt,,,,p.11-17
+PR-123.04,PR-123,4,Remove the master cylinder assembly,,,,p.11-17
+PR-123.05,PR-123,5,"Drain the fluid and take the cylinder apart in order: reservoir set, bushes, joint bolt with check valve and spring, secondary piston stop bolt and O-ring, stop ring, primary piston assembly, secondary piston assembly and spring",,,,p.11-17
+PR-123.06,PR-123,6,Wash the parts in clean alcohol or brake fluid and blow them dry,,,Never gasoline or kerosene.,p.11-18
+PR-123.07,PR-123,7,Check the piston cups,,"Not damaged, worn, softened or swollen; otherwise new cups.",,p.11-18
+PR-123.08,PR-123,8,"Examine the bore and the pistons for wear, roughness and scoring and measure the clearance between them",,Within SP-1339; beyond SP-1340 the cylinder or the piston is replaced.,,p.11-18
+PR-123.09,PR-123,9,Check the compensating ports of the cylinder are open,,,,p.11-18
+PR-123.10,PR-123,10,Dip the pistons and cups in clean brake fluid and fit the secondary and primary cups to the pistons,The cups' directions are in the page's figure; it was not read.,,,p.11-18
+PR-123.11,PR-123,11,"Fit the check valve with its face, the side with the six holes, toward the cylinder body, and torque the joint bolt",SP-1342 (the page gives the same as 6.0-7.0 m-kg). The check valve is the rear drum brake car's.,,,p.11-18
+PR-123.12,PR-123,12,"Assemble the rest in the reverse order and, before the reservoir goes on, look into the ports",,The piston cups do not cover the compensating ports.,,p.11-18
+PR-123.13,PR-123,13,Refit the master cylinder in the reverse order of removal,Pipe unions SP-1343.,,,p.11-18
+PR-123.14,PR-123,14,Bleed the brakes and check that they work properly,PR-126.,,,p.11-18
+PR-124.01,PR-124,1,"Engine stopped, press the pedal several times; hold it down and start the engine",,The pedal moves down very slightly just after the engine starts.,,p.11-19
+PR-124.02,PR-124,2,"Run the engine for one or two minutes, stop it, then press the pedal several times with normal force",,"The stroke is long the first time and shorter each time after. If not, check the check valve and the vacuum hoses for damage or wrong fitting, repair, and repeat.",,p.11-19
+PR-124.03,PR-124,3,"Start the engine, press the pedal with normal force, stop the engine with the pedal held, and hold it for about 30 seconds",,The pedal's height does not change.,,p.11-19
+PR-124.04,PR-124,4,"If the fault is still not found, connect a pressure gauge, a vacuum gauge and a pedal force gauge and bleed the pressure gauge",As the page's figure shows; it was not read.,,,p.11-19
+PR-124.05,PR-124,5,"Start the engine, stop it when the vacuum reaches the test figure, and time the vacuum's fall with no load on the pedal",,SP-1346.,,p.11-19
+PR-124.06,PR-124,6,Repeat with the pedal held at the test force,,SP-1346.,,p.11-20
+PR-124.07,PR-124,7,"Engine stopped and no vacuum, read the fluid pressure at the test pedal force",,SP-1347.,,p.11-20
+PR-124.08,PR-124,8,"Engine running and the vacuum at the test figure, read the fluid pressure at the same pedal force",,SP-1348.,,p.11-20
+PR-124.09,PR-124,9,Remove the vacuum hose with its check valve and blow through it from each end,,Air passes from the power brake unit's end to the engine's end and not the other way. A faulty valve is replaced with its hose.,The arrow on the hose shows the direction it is fitted.,p.11-20
+PR-125.01,PR-125,1,Remove the brake master cylinder,PR-123.,,,p.11-21
+PR-125.02,PR-125,2,Disconnect the vacuum hose at the power brake unit,,,,p.11-21
+PR-125.03,PR-125,3,Disconnect the push rod's fork from the brake pedal,,,,p.11-21
+PR-125.04,PR-125,4,Remove the power brake unit,,,,p.11-21
+PR-125.05,PR-125,5,Put mating marks on the rear shell and the front shell,,,,p.11-21
+PR-125.06,PR-125,6,"Remove the fork end and its lock nut, then the dust boot",,,,p.11-21
+PR-125.07,PR-125,7,"With a wrench on the rear shell's studs, press the rear shell down and turn it clockwise to the unlocked position, then lift it off",,,The shell is spring-loaded: loosen it carefully.,p.11-21
+PR-125.08,PR-125,8,Remove the spring,,,,p.11-21
+PR-125.09,PR-125,9,"Remove the air silencer's retainer, then the power piston with the valve rod and plunger assembly from the rear shell",,,,p.11-21
+PR-125.10,PR-125,10,Remove the diaphragm,,,,p.11-21
+PR-125.11,PR-125,11,"Press the valve rod in and take out the valve retainer key, then the valve rod and plunger assembly",,,The valve rod and plunger are serviced only as an assembly.,p.11-21
+PR-125.12,PR-125,12,"Remove the air silencer and its filter, then the reaction disc",,,,p.11-21
+PR-125.13,PR-125,13,"Remove the retainer, the bearing and the rear seal from the rear shell",,,Leave the rear seal in the shell unless it is defective and a new one is to hand.,p.11-22
+PR-125.14,PR-125,14,"Remove the push rod, the retainer, then the front seal and the support plate",,,Leave the front seal in the shell unless it is defective and a new one is to hand.,p.11-22
+PR-125.15,PR-125,15,Inspect all the rubber parts and the diaphragm,,"No cuts, nicks or other damage.",,p.11-22
+PR-125.16,PR-125,16,Check the power piston and the reaction disc,,"Piston not cracked, distorted or chipped, its seats sound; disc not deteriorated.",,p.11-22
+PR-125.17,PR-125,17,Check the valve rod and plunger and both shells,,"Seats smooth, no nicks or dents; shells free of scratches, scores, pits and dents.",,p.11-22
+PR-125.18,PR-125,18,Assemble in the reverse order with the repair kit's silicone grease,"On the valve rod and plunger assembly's surfaces, the whole reaction disc, the diaphragm's outer bead and the lips of the front and rear seals.",,,p.11-22
+PR-125.19,PR-125,19,Fit the valve retainer key,Press the valve rod down until its groove lines up with the slot of the power piston.,,,p.11-23
+PR-125.20,PR-125,20,Fit the rear shell assembly on the front shell and turn it counter-clockwise with the wrench until the mating marks line up,,,Keep the shell pressed down firmly until the flanges are fully locked.,p.11-23
+PR-125.21,PR-125,21,Set the adjust gauge on the master cylinder and drive its screw in until it touches the cylinder's piston,Gauge SP-1696.,,,p.11-24
+PR-125.22,PR-125,22,Turn the gauge over onto the power brake unit and turn the push rod until there is no clearance between it and the gauge's screw head,,The push rod to piston clearance is then SP-1697.,,p.11-24
+PR-125.23,PR-125,23,Refit the power brake unit and the master cylinder in the reverse order,,,,p.11-23
+PR-126.01,PR-126,1,Raise the car and support it on stands,,,,p.11-24
+PR-126.02,PR-126,2,"Take the rubber cap off a bleeder screw, fit a vinyl tube to it and put the tube's end under brake fluid in a glass jar",,,,p.11-24
+PR-126.03,PR-126,3,"Loosen the bleeder screw, press the pedal its full stroke and let it return slowly; go on until no bubbles come out",Fluid SP-119.,,"Keep the reservoir filled, SP-1698.",p.11-24
+PR-126.04,PR-126,4,"Tighten the bleeder screw, remove the tube and fit the cap",,,,p.11-24
+PR-126.05,PR-126,5,Bleed the other system the same way,The front and rear hydraulic systems are bled separately.,,,p.11-24
+PR-126.06,PR-126,6,Fill the reservoir and fit its cap,,,Never use again fluid that was drained from the system.,p.11-24
+PR-127.01,PR-127,1,Disconnect the wires from the stop light switch,,,,p.11-25
+PR-127.02,PR-127,2,Loosen the lock nut and turn the stop light switch until the pedal height is right,,SP-596.,,p.11-25
+PR-127.03,PR-127,3,Tighten the lock nut and connect the switch's wires,,,,p.11-25
+PR-127.04,PR-127,4,Loosen the push rod's lock nut and turn the push rod at the pedal until the free travel is right,,SP-1362.,,p.11-25
+PR-127.05,PR-127,5,Tighten the lock nut,,,,p.11-25
+PR-128.01,PR-128,1,Check the parking brake is fully released,,,,p.11-25
+PR-128.02,PR-128,2,Raise the rear until the wheels turn freely and support it on stands,,,,p.11-25
+PR-128.03,PR-128,3,Turn the lever's adjusting screw until the rear brakes lock at the right number of notches,SP-1386 at the pull of SP-1387.,,,p.11-25
+PR-128.04,PR-128,4,"Apply the parking brake several times, release it and turn the rear wheels",,They turn freely without dragging.,,p.11-25
+PR-128.05,PR-128,5,Lower the car,,,,p.11-25
+PR-128.06,PR-128,6,Set the parking brake warning light switch,SP-1390.,The light comes on with the lever pulled one notch and goes out with it fully released.,,p.11-25
+PR-129.01,PR-129,1,Disconnect the fluid pipes at the proportioning bypass valve,Spanner SP-1695.,,Never let brake fluid drop on a painted surface.,p.11-26
+PR-129.02,PR-129,2,Remove the valve and fit the new one,,,,p.11-26
+PR-129.03,PR-129,3,Connect the fluid pipes by the identification marks on the valve body,Unions SP-1343.,,,p.11-26
+PR-129.04,PR-129,4,Bleed the brakes,PR-126.,,,p.11-26
+PR-129.05,PR-129,5,"With the foot brake applied, inspect every brake line for leaks",,None.,,p.11-26
+PR-129.06,PR-129,6,"Check every pipe, hose and connection",,"No chafing, deterioration or other damage.",,p.11-26
