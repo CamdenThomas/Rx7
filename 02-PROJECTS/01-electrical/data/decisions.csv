@@ -1866,3 +1866,13 @@ D-562,,The panel's final re-lay waits for the built panel at its faceplate; the 
 Why: H-008 asked for the final board laid by hand from Y20's grid-routed one. The positions already follow the sketch (D-492), and Y20's board is clean (DRC 0 / 0 / 0, check 79 / 0) and in the fab package Y18 orders. A freerouting re-lay was tried on a copy: 49 vias against 110, every net routed except the LED driver's supply pin 41, which ground had enclosed - not taken. A re-lay now would also be drawn before anything has been held against the real faceplate or the climate unit's case; after F6 it is drawn once, with what the bench showed.
 
 In the data: work H-008 gated on F6 (it stays open, the agent's)."
+D-566,,"Round one is ordered now, before the freeze, and the interior is stripped while it ships",2026-10-14,standing,,,,A0 A1 A6 S1 Y16 Y18 D-323 D-541,"**Round one is ordered now, before the freeze: the bench kit (Y16), the bench boards (Y18), every tool, the consumables, the power backbone hardware, and the harness carts - relays and their sockets, fuse blocks and fuses, the busbar, wire, Deutsch contacts, kits and tools. The interior is stripped while it ships.**
+
+Camden, in chat, 2026-10-14: ""help me be cofident and ready to order things first round today, i should be getting all tools and all part work, maybe even relays/relay housings and busbars and fuses and such. and strip the car bare while things ship. I want this project to be done asap"".
+
+What it changes:
+
+- D-323 (""nothing is bought until the design is complete"") no longer holds for these carts: A1 (close the cart gaps) and A6 (D-238 at the cart review) lose their phase:SOURCING gate and A0 (pay the four carts) waits only on them. The rest of the build track keeps its phase gate.
+- D-541's order (bench kit, build the DU and CU, then strip) changes: S1 (strip the interior, every wire left in place) no longer waits on F3 and F6; it waits only on V-114, the measurements that need the car as it stands.
+
+What he takes on by ordering now (said so the choice is made knowingly): the wire and connector quantities rest on 32 routes nobody has measured, carried at 1.5 times the drawn length, so a spool or a kit may be short or long; block 01.54 (dash-light dimming) may add a few cents of parts to the DCU board in Y18 - answer it before Y18 is paid; four Amazon lines stay on hold where a size is a check on the car (master switch, MRBF holder and fuses), and the rows marked confirm are bought to their spec, not a measured fit. The car is off the road from the strip until the refit."
