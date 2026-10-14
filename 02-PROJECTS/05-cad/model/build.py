@@ -2,7 +2,7 @@
 """build.py - build the car's model headless and hand it to the app (05-cad A04, B01; D-516, D-518).
 
     python3 02-PROJECTS/05-cad/model/build.py                  every assembly, then scene.json
-    python3 02-PROJECTS/05-cad/model/build.py --only corner    one assembly (corner | unibody), then scene.json
+    python3 02-PROJECTS/05-cad/model/build.py --only corner    one assembly (corner | unibody | skin), then scene.json
     python3 02-PROJECTS/05-cad/model/build.py --only scene     scene.json alone, from the last build
     python3 02-PROJECTS/05-cad/model/build.py --selftest       hold scene.json to the contract
     python3 02-PROJECTS/05-cad/model/build.py --drafts DIR     also write the record drafts (model_parts,
@@ -12,7 +12,8 @@ From the tree's root; on the Mac every python3 call is `env DEVELOPER_DIR=/Libra
 Reads 05-cad `datums` and 00-CAR `parts` / `systems` through rx7.py; writes nothing to the record.
 Writes the glb files and scene.json into 02-APP/app/public/design/00-CAR/ (the glb files are
 git-ignored, scene.json is committed) and each assembly's STEP and meta into model/out/ (ignored).
-It needs freecadcmd (FreeCAD 1.1; FREECADCMD overrides where it looks).
+It needs freecadcmd (FreeCAD 1.1; FREECADCMD overrides where it looks) for corner and unibody; skin
+is plain python over the found model (skin/build.py, D-563) and is skipped where that file is absent.
 Exit 0 built; 1 an assembly refuses its parameters or the scene breaks the contract; 3 a usage
 error or a tool crash.
 """
@@ -28,7 +29,7 @@ sys.path.insert(0, HERE)
 import frame  # noqa: E402
 
 ROOT = frame.ROOT
-ASSEMBLIES = ["corner", "unibody"]
+ASSEMBLIES = ["corner", "unibody", "skin"]
 OUT = os.path.join(HERE, "out")
 APP_DIR = os.path.join(ROOT, "02-APP", "app", "public", "design", "00-CAR")
 FREECADCMD = os.environ.get("FREECADCMD",
@@ -37,6 +38,10 @@ LINEAR = {"corner": 0.6, "unibody": 2.0}     # tessellation, mm
 
 
 def build_assembly(asm, rows):
+    if asm == "skin":                             # a mesh cut from the found model: no FreeCAD
+        r = subprocess.run([sys.executable, os.path.join(HERE, "skin", "build.py")], capture_output=True, text=True)
+        print((r.stdout or r.stderr).strip().splitlines()[-1] if (r.stdout or r.stderr).strip() else "skin: rc %d" % r.returncode)
+        return 0 if r.returncode in (0, 2) else r.returncode
     if not os.path.exists(FREECADCMD):
         print("freecadcmd is not at %s (set FREECADCMD)" % FREECADCMD, file=sys.stderr)
         return 3

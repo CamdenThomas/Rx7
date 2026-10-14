@@ -33,15 +33,15 @@ import frame  # noqa: E402
 import placing  # noqa: E402
 
 ROOT = frame.ROOT
-ASSEMBLIES = ["corner", "unibody"]
+ASSEMBLIES = ["corner", "unibody", "skin"]     # skin: built by skin/build.py from the found model, not FreeCAD
 KINDS = ("body", "part", "node")
 MATE_KINDS = ("welded", "bolted", "clipped", "pressed", "pivot", "sits-on", "fits-in", "slides")
 TODAY = "2026-10-13"
 
 MISSING = [
-    {"what": "the other three corners (FR, RL, RR)", "why": "A04 builds one corner as the tool-chain proof; B01 copies it to DT02 / DT03"},
-    {"what": "the skin and closures: hood, front fenders, doors, the hatch (back door) panel and glass, bumpers, glass",
-     "why": "B01's second pass, from the found models once B03 lands; the hatch panel and glass have no 00-CAR row yet"},
+    {"what": "the FR, RL and RR corners from factory figures", "why": "the found model's wheels and tyres stand in (skin assembly); A04's FL corner is the factory-figure one"},
+    {"what": "the closures as parts of their own: hood, front fenders, doors, the hatch panel, bumpers",
+     "why": "the found model's skin stands in as one piece (PT704-skin, skin assembly); cutting it per panel is B01's next pass; the hatch panel and glass have no 00-CAR row yet"},
     {"what": "the knuckle, strut and suspension the hub turns on", "why": "not modelled yet: the hub is placed on DT02 directly"},
     {"what": "the hatch aperture as one ring", "why": "drawn as its pieces: PT773-rear (header), PT772-L/-R (gutters), PT775 (the rear end panel's top)"},
     {"what": "the rear upper link brackets as their own part", "why": "no 00-CAR row: drawn with PT780-L/-R, the rear side frames"},
@@ -179,7 +179,8 @@ def write_drafts(d, got, world):
                        "made_from": p["made_from"], "source": p["source"], "state": "rough",
                        "parent": p["mate"]["to"] if p["mate"] else "",
                        "confirm": p["confirm_text"] or "every dimension",
-                       "note": ("%s; STEP in model/out/%s.step. " % (p["name"], asm)) + (p.get("note") or "")})
+                       "note": ("%s; STEP in model/out/%s.step. " % (p["name"], asm) if (meta or {}).get("step")
+                                else "%s; mesh only, no STEP. " % p["name"]) + (p.get("note") or "")})
             if p["mate"]:
                 a, b = world[p["id"]], world[p["mate"]["to"]]
                 rel = [x - y for x, y in zip(a["origin"], b["origin"])]

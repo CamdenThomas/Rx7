@@ -87,7 +87,9 @@ function render(file, view, offsets = {}) {
   });
   const P = tri.flatMap(([t]) => t.map(view));
   const xs = P.map((p) => p[0]), ys = P.map((p) => p[1]);
-  const x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
+  // a loop, not Math.min(...xs): the found model's parts run to 10^5 points, past the spread limit
+  let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+  for (let i = 0; i < xs.length; i++) { x0 = Math.min(x0, xs[i]); x1 = Math.max(x1, xs[i]); y0 = Math.min(y0, ys[i]); y1 = Math.max(y1, ys[i]); }
   const s = Math.min((W - 40) / (x1 - x0), (H - 40) / (y1 - y0));
   const L = new THREE.Vector3(0.3, 0.5, 0.8).normalize();
   for (const [t, col] of tri) {

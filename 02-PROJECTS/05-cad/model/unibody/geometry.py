@@ -98,24 +98,24 @@ def build(P):
 
         # hinge pillar (lower A) and the windshield pillar
         yd = P.v("door_front_y")
-        hp = L.box_tube([(770, yd - 37, st - 5), (770, yd - 37, P.v("belt_z") + 15)], 70, 60, tr, up=(0, 1, 0))
-        ap = L.box_tube([(760, yd - 37, P.v("belt_z") - 10), (P.v("roof_half") - 5, P.v("ws_corner_y"), P.v("ws_corner_z")),
-                         (P.v("roof_half") - 12, P.v("roof_front_y") - 20, 1185)], 55, 70, tr)
+        hp = L.box_tube([(770, yd - 37, st - 5), (770, yd - 37, P.v("belt_z") - 20)], 70, 60, tr, up=(0, 1, 0))   # B01 2nd pass: top inside the skin
+        ap = L.box_tube([(740, yd - 37, P.v("belt_z") - 20), (P.v("roof_half") + 35, P.v("ws_corner_y"), P.v("ws_corner_z") - 70),
+                         (P.v("roof_half") + 20, P.v("roof_front_y") - 20, 1100)], 55, 70, tr)   # B01 2nd pass: along the glass edge
         put("PT769-" + s, L.mirror_x(hp) if k < 0 else hp)
         put("PT770-" + s, L.mirror_x(ap) if k < 0 else ap)
 
         # centre pillar: B-pillar foot on the sill, widening into the sail at the roof rail
         yr = P.v("door_rear_y")
         bot = [(750, yr - 70, st), (810, yr - 70, st), (810, yr, st), (750, yr, st)]
-        top = [(P.v("roof_half") - 40, P.v("sail_rear_y"), 1150), (P.v("roof_half") + 15, P.v("sail_rear_y"), 1150),
-               (P.v("roof_half") + 15, P.v("bpillar_top_y"), 1170), (P.v("roof_half") - 40, P.v("bpillar_top_y"), 1170)]
+        top = [(P.v("roof_half") - 40, P.v("sail_rear_y"), 1110), (P.v("roof_half") + 15, P.v("sail_rear_y"), 1110),
+               (P.v("roof_half") + 15, P.v("bpillar_top_y"), 1130), (P.v("roof_half") - 40, P.v("bpillar_top_y"), 1130)]   # B01 2nd pass
         bp = L.loft([bot, top], ruled=True)
         put("PT976-" + s, L.mirror_x(bp) if k < 0 else bp)
 
         # roof rail along the drip line
         rh_ = P.v("roof_half")
-        rr2 = L.box_tube([(rh_ - 10, P.v("roof_front_y") - 20, 1180), (rh_ - 5, P.v("roof_peak_y"), 1205),
-                          (rh_ - 10, P.v("roof_rear_y") - 10, P.v("roof_rear_z") - 40)], 45, 35, tr)
+        rr2 = L.box_tube([(rh_ - 25, P.v("roof_front_y") - 20, 1150), (rh_ - 20, P.v("roof_peak_y"), 1175),
+                          (rh_ - 25, P.v("roof_rear_y") - 10, P.v("roof_rear_z") - 65)], 45, 35, tr)   # B01 2nd pass: under the skin
         put("PT767-" + s, L.mirror_x(rr2) if k < 0 else rr2)
 
         # quarter panel: the side plate with the arch cut (centre the wheel, top at the fender
@@ -125,14 +125,14 @@ def build(P):
         dz = wz - sb
         a_lo = math.degrees(math.asin(-dz / ra))
         arch = _arc(yax, wz, ra, a_lo, 180 - a_lo, 36)                         # front foot -> over -> rear foot
-        yb2, ycorner = -2900.0, P.v("rear_panel_y")
-        outline = [(yr - 30, sb)] + arch + [(yb2, sb + 40), (yb2, P.v("tail_z")),
+        yb2, ycorner = -2800.0, P.v("rear_panel_y")   # B01 2nd pass: the tail tapers from -2700
+        outline = [(yr - 30, sb)] + arch + [(yb2, sb + 40), (yb2, 800.0),
                                             (P.v("sail_rear_y"), P.v("belt_z")), (yr - 30, P.v("belt_z"))]
         q = L.plate([(qx - t, y, z) for y, z in outline], t, (1, 0, 0))
         cdx, cdy = 760 - (qx - t), ycorner - yb2
         cn = math.hypot(cdx, cdy)
         corner = L.plate([(qx - t, yb2 - 2, sb + 40), (760, ycorner, 330), (760, ycorner, 800),
-                          (qx - t, yb2 - 2, P.v("tail_z"))], t, (-cdy / cn, cdx / cn, 0))
+                          (qx - t, yb2 - 2, 800.0)], t, (-cdy / cn, cdx / cn, 0))
         q = q.fuse(corner)
         put("PT768-" + s, L.mirror_x(q) if k < 0 else q, "skin")
 
@@ -170,8 +170,8 @@ def build(P):
         put("PT761-" + s, L.mirror_x(es) if k < 0 else es)
 
         # rain rail: the hatch opening's side gutter, header to tail
-        gt = L.beam((rh_ - 30, P.v("roof_rear_y") - 20, P.v("roof_rear_z") - 30),
-                    (650, P.v("tail_y") + 20, P.v("tail_z") - 10), 40, 25)       # SHAPE 40 x 25
+        gt = L.beam((rh_ - 60, P.v("roof_rear_y") - 20, P.v("roof_rear_z") - 70),
+                    (600, P.v("tail_y") + 20, P.v("tail_z") - 40), 40, 25)   # B01 2nd pass: inside the hatch opening       # SHAPE 40 x 25
         put("PT772-" + s, L.mirror_x(gt) if k < 0 else gt)
 
     # ---- across the car ----------------------------------------------------------------------
@@ -182,7 +182,7 @@ def build(P):
     put("PT764", L.strip_yz([(fy - 20, 795), (P.v("ws_base_y"), P.v("ws_base_z"))], -si, si, t))
 
     rhf = P.v("roof_half")
-    put("PT773-front", L.box_tube([(-rhf + 15, P.v("roof_front_y") - 10, 1185), (rhf - 15, P.v("roof_front_y") - 10, 1185)], 60, 35, tr))
+    put("PT773-front", L.box_tube([(-rhf + 15, P.v("roof_front_y") - 10, 1150), (rhf - 15, P.v("roof_front_y") - 10, 1150)], 60, 35, tr))
     put("PT773-rear", L.box_tube([(-rhf + 15, P.v("roof_rear_y") - 10, P.v("roof_rear_z") - 35),
                                   (rhf - 15, P.v("roof_rear_y") - 10, P.v("roof_rear_z") - 35)], 60, 35, tr))
 
@@ -197,10 +197,10 @@ def build(P):
                          roof_sec(-1900, 1240.0), roof_sec(P.v("roof_rear_y"), P.v("roof_rear_z"))]), "skin")
 
     ry, za = P.v("rad_y"), D["z_a"]
-    put("PT753", L.tube([(-660, ry, za + 30), (660, ry, za + 30), (660, ry, 660), (-660, ry, 660), (-660, ry, za + 30)],
+    put("PT753", L.tube([(-660, ry, za + 30), (660, ry, za + 30), (660, ry, 630), (-660, ry, 630), (-660, ry, za + 30)],
                         50, 50, up=(0, 1, 0)))                                  # SHAPE 50 x 50 box frame
     put("PT752", L.plate([(-700, ry + 90, 300), (700, ry + 90, 300), (640, ry + 90, 520), (-640, ry + 90, 520)], t, (0, 1, 0)))
     rpy = P.v("rear_panel_y")
-    put("PT775", L.plate([(-760, rpy, 380), (760, rpy, 380), (760, rpy, 800), (-760, rpy, 800)], t, (0, 1, 0)))
+    put("PT775", L.plate([(-740, rpy, 380), (740, rpy, 380), (740, rpy, 790), (-740, rpy, 790)], t, (0, 1, 0)))
     put("PT776", L.plate([(-740, rpy - 20, 250), (740, rpy - 20, 250), (740, rpy, 380), (-740, rpy, 380)], t, (0, 0.986, -0.164)))
     return out

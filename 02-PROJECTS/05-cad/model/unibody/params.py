@@ -145,7 +145,39 @@ def params(dt):
     d("t_rail", 1.6, "guess", "", "rail and sill steel", ["PT755", "PT780", "PT771"], "rail sheet thickness")
     for k, why in WON.items():
         P[k].note = ("won: %s. " % why) + P[k].note
+    # -------- B01's second pass (2026-10-13): the outline from the home-page FB model -----------
+    # The app's home-page car (01-INTAKE/model/rx7-fb.glb) sits on DT02 / DT03 / DT04 / DT06 with no
+    # scaling (skin/params.py), and the Manual now shows it over these panels as the skin; sliced by
+    # skin/stations.py, it replaces the figures the blueprint and the tuner shell gave, so the panels
+    # sit inside the body they belong to. Each note keeps the value it replaced.
+    for key, value, why in HOME_FIT:
+        old = P[key]
+        P[key] = Dim(value, "found", HOME, "%s (was %s, %s)" % (why, old.value, old.how), old.parts, old.label)
     return P
+
+
+HOME = "the home-page FB model, sliced (05-cad skin/stations.py, 2026-10-13)"
+HOME_FIT = [   # (key, value mm, what the slices show)
+    ("front_oh", 928.4, "its front end with its trim; with rear_oh the overhangs still sum to DT04 less DT03"),
+    ("rear_oh", 972.1, "its rear end with its trim"),
+    ("ws_base_y", -700.0, "the windshield glass starts at -700 on the centreline"),
+    ("ws_base_z", 900.0, "the glass is 902 high at -700"),
+    ("ws_corner_y", -1180.0, "the side glass is full width (696) and the roof begins near -1200; at -980 the body edge is only 963 high"),
+    ("ws_corner_z", 1130.0, "the body edge at |x| 600-700 reaches about 1140 by -1150"),
+    ("roof_front_y", -1200.0, "the windshield top, 1196 at -1200"),
+    ("roof_peak_y", -1600.0, "1260 at -1600 (DT06)"),
+    ("roof_rear_y", -2230.0, "the roof ends between -2200 (1199 high) and the hatch glass at -2300"),
+    ("roof_rear_z", 1190.0, "the roof's rear edge height"),
+    ("roof_half", 560.0, "above 1150 the body is 520-540 each side, 610-630 at 1000-1100: the roof tumbles in; 690 was the side glass lower down"),
+    ("roof_camber", 100.0, "1260 at the centre, about 1160 at the edge"),
+    ("tail_y", -3020.0, "the hatch glass ends near -3020"),
+    ("tail_z", 860.0, "the glass is 845-868 high at -3000"),
+    ("belt_z", 855.0, "the side glass's lowest point, 853-855"),
+    ("hood_z0", 816.0, "the centreline top at the front axle"),
+    ("strut_top", 754.0, "the hood line (816) less 62, as before"),
+    ("rad_y", 600.0, "the nose is 677 high at 600; at 720 it is only 620"),
+    ("rear_panel_y", -3150.0, "the tail is 800 high at -3150 and falls to 550 by -3300"),
+]
 
 
 # which source won, for every outline dimension the blueprint and the found shell both speak to

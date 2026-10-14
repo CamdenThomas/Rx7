@@ -35,6 +35,10 @@ model, and every dimension nobody measured carries `confirm` (R11). Today that i
 | `unibody/params.py` | B01's core: **the one table** of the unibody's governing dimensions, each with how it is known and its source; the panels, their places, mates and take-apart moves; the checks against the datums | `datums` DT02-DT14; `specs` SP-1280, SP-1281 |
 | `unibody/geometry.py` | The panels as rough sheet solids, from `params.py` alone | - |
 | `unibody/silhouette.py` | Re-derives the found shell's stations that `params.py` cites (read only) | 00-CAR `cad` |
+| `skin/params.py`, `skin/build.py` | B01's second pass (D-563): the home page's FB model (`01-INTAKE/model/rx7-fb.glb`, read only) cut by its materials and names into the skin, glass, trim, tail lamps and three wheels, put in the car's frame; pure python | `datums` DT02, DT03 |
+| `skin/stations.py` | The found model sliced every 50 mm: the stations `unibody/params.py`'s `HOME` figures cite (read only) | - |
+| `skin/fit_check.py` | Which unibody panels still stand outside the skin, and by how much (read only) | - |
+| `skin/glbread.py` | A minimal glb reader for the two above | - |
 | `export_scene.py` | `scene.json` for the app; the selftest; the record drafts (`--drafts`) | 00-CAR `parts`, `systems` |
 | `found/` | The found models' scripts (moved from the reference, 06-intake T2): `build.py` and `blend.py` (Blender), `catalog.py`, `locate.py`, `estimate.py`, and `paths.py`, the one place the library's and the bought SA model's folders are named. Their own README is `found/README.md` | 00-CAR `cad`, `zones`, `parts`; 05-cad `blend`; 01-electrical `routes.model_ft` |
 | `render_check.mjs` | Loads the scene and every glb with the app's three.js and rasterises five views (one exploded) to PNG - no WebGL | - |
@@ -45,15 +49,21 @@ From the tree's root; on the Mac every python3 call is
 `env DEVELOPER_DIR=/Library/Developer/CommandLineTools python3 …`.
 
 ```
-python3 02-PROJECTS/05-cad/model/build.py                   both assemblies and scene.json (seconds on the Mac)
-python3 02-PROJECTS/05-cad/model/build.py --only unibody    one assembly (corner | unibody), then scene.json
+python3 02-PROJECTS/05-cad/model/build.py                   every assembly and scene.json (seconds on the Mac)
+python3 02-PROJECTS/05-cad/model/build.py --only unibody    one assembly (corner | unibody | skin), then scene.json
 python3 02-PROJECTS/05-cad/model/build.py --only scene      scene.json alone, from the last build
 python3 02-PROJECTS/05-cad/model/build.py --selftest        hold scene.json to the contract and the datums
 python3 02-PROJECTS/05-cad/model/build.py --drafts DIR      also write model_parts / model_dims / model_mates
                                                             and 00-CAR parts drafts (CSV, exact columns) to DIR
 node 02-PROJECTS/05-cad/model/render_check.mjs [DIR]        does it load in three.js; PNG views into DIR
 python3 02-PROJECTS/05-cad/model/unibody/silhouette.py      the found shell's stations, re-derived
+python3 02-PROJECTS/05-cad/model/skin/stations.py           the home-page model's stations
+python3 02-PROJECTS/05-cad/model/skin/fit_check.py          panels standing outside the skin
 ```
+
+The skin needs no FreeCAD, only the found model at `01-INTAKE/model/rx7-fb.glb` (out of git, on
+each machine as the home page's car); where it is absent the skin is skipped and the scene is the
+other two assemblies.
 
 Exit 0 built / holds; 1 an assembly refuses its parameters (`params.check`) or the scene breaks the
 contract; 3 a usage error or a tool crash. It needs `freecadcmd` (FreeCAD 1.1, `FREECADCMD`
@@ -62,7 +72,8 @@ record only through `rx7.py` and writes nothing to it: the drafts are for a pers
 to load. Each machine rebuilds the glb files before the app is built, as the electrical ones are.
 
 **What it writes**: `02-APP/app/public/design/00-CAR/scene.json` (committed, ~120 KB),
-`…/00-CAR/corner/*.glb` (4 files, 0.47 MB) and `…/00-CAR/unibody/*.glb` (46 files, 0.33 MB) -
+`…/00-CAR/corner/*.glb` (4 files, 0.47 MB), `…/00-CAR/unibody/*.glb` (46 files, 0.33 MB) and
+`…/00-CAR/skin/*.glb` (11 files, 5.1 MB) -
 mm, z up, the part's own frame, the electrical writer's packing (`KHR_mesh_quantization`); and
 `out/corner.step` (0.13 MB), `out/unibody.step` (1.35 MB) - each assembly's solids in the car's
 frame, labelled by part id - with each assembly's `out/<assembly>.meta.json`.
@@ -77,6 +88,8 @@ row in the scene's `record`; the overseer declares the convention in the record)
 - `-FL` - the corner (`PT525-FL`: the front-left road wheel; `PT526-FL`: its four nuts, one glb with
   four nodes `part:PT526-FL#1..4`)
 - `-front` / `-rear` - the two roof headers (`PT773-front`, `PT773-rear`)
+- `PT704-skin` / `PT704-trim` - the found model's painted body and its other surfaces, one solid each
+  under the shell's row until the closures are parts of their own
 - `NEW:<slug>` - a part with no 00-CAR row yet (`PT976-L/-R`, the B-pillar and sail);
   the draft `00-CAR_parts_new.csv` proposes the row, and the overseer replaces the placeholder
 - `hp-…` - hard points as nodes (no solid): holes A, B, C, E, F, the fender nuts (DT14), the rear
@@ -103,6 +116,16 @@ radiator support (PT753), the nose panel (PT752), the rear end panel (PT775) and
 (PT776). The hatch aperture is its pieces: PT773-rear, PT772-L/R and PT775's top. Every panel is
 welded; its `mate` names what it is welded to (the floor pan PT778 is the root) and the move that
 takes it off.
+
+**The skin** (B01's second pass, D-563; 11 meshes): `PT704-skin` the painted body (hood, fenders,
+doors, hatch and bumpers in one piece, clipped to the shell, apart straight up), `PT729` all the
+glass, `PT704-trim` the rubbers, garnishes, mirrors, seals and a rough cabin, `PT601-L/R` the tail
+lamps, and the found model's FR, RL and RR wheels and tyres (`PT525-*`, `PT530-*`, their origins on
+DT02 / DT03). The found model is already at factory size, so it is only turned into the car's frame
+(X = 10x, Y = -10z - 1210, Z = 10y from its own units). The FL corner's meshes are left out: that
+corner is the corner assembly's. The unibody's outline (`unibody/params.py` `HOME`, `HOME_FIT`) was
+re-read off this model's stations so the panels sit inside it; `skin/fit_check.py` lists what still
+stands out (the A-pillars by about 30 mm).
 
 ## 4 · scene.json - the contract (C01)
 
@@ -143,9 +166,10 @@ car's fields. Only add fields; never change one.
   (834.4), its lowest point above DT07 (144.8), `hp-front-end` to `hp-rear-end` on DT04 (4320.5),
   the front-left wheel on DT02 and the rear wheel centres on DT03.
 
-**The numbers it holds today** (2026-10-13): 68 parts - 46 body, 4 part, 18 node. The shell's box
-x -834.4 .. 834.4, y -3280 .. 811, z 149.6 .. 1260.0 (the bumpers and nose skin, not in this pass,
-take y to +981.5 and -3339); wheel centres on DT02 / DT03 (wheelbase 2420).
+**The numbers it holds today** (2026-10-13, D-563): 79 parts - 46 body, 15 part, 18 node; 64
+unibody, 11 skin, 4 corner. The shell's box x -834.4 .. 834.4, y -3170 .. 730, z 149.6 .. 1260.2;
+the skin with its bumpers takes y to about +928 and -3392 (`front_oh`, `rear_oh`); wheel centres on
+DT02 / DT03 (wheelbase 2420).
 
 ## 5 · Where every number comes from
 
@@ -188,8 +212,9 @@ panel (-3260); the windshield pillar's top (the blueprint's two views disagree);
 height (22), the disc's outside diameter (228), the hub's flange, barrel and length - and which
 wheel is on the car (5-J steel or 5.5-JJ alloy, PT525's note).
 
-**Missing** (the scene's `missing`): the other three corners; the skin and closures (hood, fenders,
-doors, the hatch panel and glass - which have no 00-CAR row - bumpers, glass); the knuckle and strut
+**Missing** (the scene's `missing`): the other three corners from factory figures (the found
+model's stand in); the closures as parts of their own (hood, fenders, doors, the hatch panel and
+glass - which have no 00-CAR row - bumpers: one skin today); the knuckle and strut
 the hub turns on; the hatch aperture as one ring (drawn as its pieces); the rear upper link brackets
 as their own part (drawn with PT780). Readings to confirm against the catalogue figures (S-005):
 PT777 "rear fender panel" read as the inner wheelhouse, PT761 "engine bay side panel" read as the
