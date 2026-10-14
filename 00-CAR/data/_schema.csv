@@ -31,6 +31,7 @@ procedures,title,str,no,,
 procedures,when,str,no,,
 procedures,tools,str,no,,
 procedures,source,str,no,,
+procedures,applies,enum(not-fitted|other-car|replaced),no,,"as specs.applies: blank is this car now; a factory procedure for a part the car no longer has (the factory carburettor) is replaced, another year's or gearbox's is other-car, and neither reaches the Manual (D-544)"
 retired,term,key,yes,,
 retired,retired_by,str,no,,
 retired,note,str,no,,

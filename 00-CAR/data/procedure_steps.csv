@@ -9,3 +9,81 @@ PR-004.01,PR-004,1,"Release the parking brake, put the selector in neutral and s
 PR-004.02,PR-004,2,"Tow with the rear wheels off the ground: raised, or on dollies",SP-1542. The rear wheels are the drive wheels.,,Never tow backward with the drive wheels on the ground.,p.G-8
 PR-004.03,PR-004,3,"If all four wheels must stay on the ground, tow forward only, slowly and for a short distance","The 1985 manual's limit is SP-1543 (another gearbox); no figure for this car's 3N71B is in the record, so keep the rear wheels up whenever it can be done.",,,p.G-8
 PR-004.04,PR-004,4,"On a hook, pull straight away from it and take up the slack slowly",SP-1544.,,The rear hook is for emergency recovery only.,p.G-8
+PR-005.01,PR-005,1,Warm the engine if it is cold,,,,p.0-15
+PR-005.02,PR-005,2,Take off the oil filler cap and drain the oil,The cap off lets the oil drain easily.,,,p.0-15
+PR-005.03,PR-005,3,Fit the new filter,"SP-1546: oil the gasket, fully hand tight, then 1/8 turn more with a band-type wrench.",,Never a chain-type filter wrench.,p.0-15
+PR-005.04,PR-005,4,Fill with oil to the F mark on the dipstick,"Grade SP-023, viscosity SP-775, capacity SP-144.",,,p.0-15
+PR-005.05,PR-005,5,"Start the engine, check for leaks, then recheck the level",Look at the filter joint and the drain plug washer; top up if needed.,No leak at either; level at F.,,p.0-15
+PR-006.01,PR-006,1,Check each belt for cracks or other damage,,,,p.0-15
+PR-006.02,PR-006,2,Press each belt with the thumb and measure its deflection; adjust if it is out,About 10 kg (22 lb) of thumb pressure. Alternator belt SP-025; air pump belt SP-761; A/C belt SP-1001 (1985 figure).,,,p.0-15
+PR-007.01,PR-007,1,"Check each plug for burned or eroded electrodes, fouling or cracked porcelain",,,Do not pull on the plug cables to remove them.,p.0-16
+PR-007.02,PR-007,2,Measure the electrode gap; replace the plug if it is out,Gap SP-039; plug types SP-038.,,,p.0-16
+PR-007.03,PR-007,3,Refit with a little anti-seize or molybdenum thread lubricant on the first few threads,Torque SP-040.,,,p.0-16
+PR-008.01,PR-008,1,"Check every cooling hose, heater hoses included, for cracks or wear; replace any that show it",,,,p.0-16
+PR-008.02,PR-008,2,Pressurise the system with a radiator cap tester and look for leaks,SP-1547.,,Never above 1.05 kg/cm2 (SP-1547). Steam and hot water escape when the cap comes off a hot radiator.,p.0-16
+PR-009.01,PR-009,1,Drain the coolant by removing the radiator drain plug,,,A hot engine scalds: let it cool first.,p.0-17
+PR-009.02,PR-009,2,Fill with new coolant mixed for the coldest weather expected,Mixture SP-1548; capacity SP-050; antifreeze type SP-056.,,,p.0-17
+PR-010.01,PR-010,1,Check the brake pedal for smooth operation,,,,p.0-20
+PR-010.02,PR-010,2,"Check the pedal height; adjust by turning the stop switch, then tighten its lock nut",Section 0 gives no height figure.,,,p.0-20
+PR-010.03,PR-010,3,"Check the pedal free play; adjust by turning the push rod, then tighten its lock nut",Section 0 gives no free-play figure.,,,p.0-20
+PR-010.04,PR-010,4,Check the fluid level is near the MAX line of the reservoir; top up to MAX,Fluid SP-119.,,,p.0-21
+PR-010.05,PR-010,5,Pull the parking brake lever with 10 kg (22 lb) and count its stroke; adjust with the adjusting nut,Travel SP-253.,,,p.0-21
+PR-010.06,PR-010,6,"Check the booster vacuum hoses, connectors and check valve for cracks, chafing and deterioration",,,,p.0-21
+PR-010.07,PR-010,7,"Engine off, press the pedal several times; then hold it down and start the engine",SP-1556.,Pedal travel does not change with the engine off; the pedal sinks a little as the engine starts.,,p.0-21
+PR-011.01,PR-011,1,Make a simple dipstick from a wire,,,,p.0-22
+PR-011.02,PR-011,2,Put the dipstick into the oil filler hole of the steering gear,,,,p.0-22
+PR-011.03,PR-011,3,Pull it out and measure dimension L; add gear oil if the level is low,L is SP-1550; oil is SP-252.,,,p.0-22
+PR-012.01,PR-012,1,Remove the hub and the inner and outer bearings,,,,p.0-23
+PR-012.02,PR-012,2,Clean the bearings in solvent and inspect them for damage,,,,p.0-23
+PR-012.03,PR-012,3,Repack with grease and fit a new oil seal,SP-1552 names the grease and the five places it goes.,,,p.0-23
+PR-013.01,PR-013,1,Look over the rear axle for oil leaks; find and repair the cause of any,,,,p.0-24
+PR-013.02,PR-013,2,Remove the filler plug and check the oil reaches the bottom edge of the hole,"Oil SP-087, capacity SP-088.",Oil level at the bottom edge of the filler hole.,,p.0-24
+PR-014.01,PR-014,1,Pull each belt out to be sure it moves smoothly,,,,p.0-25
+PR-014.02,PR-014,2,"Check the webbing for scratches, tears or wear and the metal fittings for bends",,,Do not take the buckle or the retractor apart.,p.0-25
+PR-014.03,PR-014,3,Check the retractors work,,,,p.0-25
+PR-014.04,PR-014,4,Check the anchor bolts are tight,Torque SP-187.,,,p.0-25
+PR-015.01,PR-015,1,"Check the brake lines, hoses and connections","Properly attached and connected; no leaks, cracks, chafing, abrasion or deterioration.",,,p.0-20
+PR-015.02,PR-015,2,"Disc brakes: check caliper operation and leaks, pad wear, and the condition and thickness of the disc",,,,p.0-21
+PR-015.03,PR-015,3,"Drum brakes: check wheel cylinder operation and leaks, lining wear or damage, and the inner surface and inner diameter of the drum",,,,p.0-22
+PR-015.04,PR-015,4,"Check steering wheel free play, steering operation, looseness of the gear housing and any oil leaking from it",,,,p.0-22
+PR-015.05,PR-015,5,"Check the steering linkage, tie rod ends and arms","No excessive play at the tie rod ends, no damaged dust boots, no looseness or grease leaking at the tie rod ends.",,,p.0-23
+PR-015.06,PR-015,6,"Check the front suspension ball joints for damage, looseness and grease leakage",,,,p.0-23
+PR-015.07,PR-015,7,Tighten the seat mounting bolts and retighten any loose front and rear suspension nuts and bolts to their torque,The torques are in the suspension rows of specs. Wheel nuts: interval wheel_nuts.,,,p.0-24
+PR-015.08,PR-015,8,Check the exhaust heat shields and the exhaust itself,"Clearance between insulator and body and between insulator and exhaust; pipes, hangers and connections for severe corrosion, leaks or damage.",,,p.0-24
+PR-016.01,PR-016,1,Set the parking brake and block the wheels,,,,p.0-17
+PR-016.02,PR-016,2,Turn off all accessories and remove the fuel filler cap,,,,p.0-17
+PR-016.03,PR-016,3,Warm the engine to normal operating temperature,,,,p.0-17
+PR-016.04,PR-016,4,Disconnect the tube at the idle compensator in the air cleaner and plug its end,,,,p.0-17
+PR-016.05,PR-016,5,Check the dash pot rod and the A/C throttle opener do not hold the throttle lever off the idle stop,,,,p.0-17
+PR-016.06,PR-016,6,Read the idle speed; set it with the throttle adjust screw if it is out,Speed SP-018; conditions SP-1551.,,,p.0-17
+PR-017.01,PR-017,1,Warm the engine to normal operating temperature,,,,p.0-9
+PR-017.02,PR-017,2,Connect a tachometer,,,,p.0-9
+PR-017.03,PR-017,3,Disconnect the connector with the BY and GB wires,The figure on the page shows which one; the figure was not read.,,,p.0-9
+PR-017.04,PR-017,4,"Put a voltmeter on each terminal, GY and LgY: negative probe on the terminal, positive probe on battery positive",,,,p.0-9
+PR-017.05,PR-017,5,"Start the engine, drop it quickly from 3000 rpm and watch both meters",SP-1549.,"Current flows to both terminals at the same moment, at 1100 +/-50 rpm.",,p.0-9
+PR-017.06,PR-017,6,"If they do not switch together, take the cap off the throttle sensor adjusting screw and turn it","It sets when voltmeter A (LgY) switches: screw in is earlier, screw out is later.",,,p.0-9
+PR-017.07,PR-017,7,Refit the cap on the adjusting screw,,,,p.0-9
+PR-018.01,PR-018,1,Spray cleaner on the choke linkage to remove dirt and grease,,,,p.0-16
+PR-018.02,PR-018,2,Spray cleaner on both ends of the choke shaft while moving the choke valve slowly by hand,,,,p.0-16
+PR-018.03,PR-018,3,Dry the sprayed areas with compressed air,,,,p.0-16
+PR-018.04,PR-018,4,Apply spray lubricant and work the choke lever several times,,The choke mechanism moves freely.,,p.0-16
+PR-019.01,PR-019,1,Turn the ignition on,,The oil level warning light comes on.,,p.0-18
+PR-019.02,PR-019,2,Start the engine,,The warning light goes off.,,p.0-18
+PR-019.03,PR-019,3,"At idle, disconnect the connector from the oil level sensor and ground the terminal",,The warning light comes on and the chime sounds.,,p.0-18
+PR-019.04,PR-019,4,Remove the sensor and check the oil holes of its oil chamber are clear; clean them with solvent if not,,,,p.0-18
+PR-019.05,PR-019,5,Put an ohmmeter on the sensor and move the float up and down; replace the sensor if it reads otherwise,SP-1554.,Float up: no continuity. Float down: continuity.,,p.0-18
+PR-020.01,PR-020,1,Turn the ignition on,,The coolant level warning light comes on.,,p.0-19
+PR-020.02,PR-020,2,Start the engine,,The warning light goes off.,,p.0-19
+PR-020.03,PR-020,3,"At idle, disconnect the connector from the level sensor",,The warning light comes on and the chime sounds.,,p.0-19
+PR-020.04,PR-020,4,"Remove the radiator cap to release the pressure, then take the sensor out of the radiator and plug the hole",,,Steam and hot water escape from a hot radiator.,p.0-19
+PR-020.05,PR-020,5,Check the sensor for cracks or damage,,,,p.0-19
+PR-020.06,PR-020,6,Start the engine and ground the threaded part of the sensor; replace the sensor if the light stays off,SP-1555.,The coolant level warning light comes on.,,p.0-19
+PR-021.01,PR-021,1,Check the starting assist fluid level in the reservoir,,,,p.0-19
+PR-021.02,PR-021,2,Disconnect the connector from the magnet switch on the starter motor,,,,p.0-19
+PR-021.03,PR-021,3,Disconnect the connector from the oil thermo unit on the oil pan and ground the loose connector to the body,,,,p.0-19
+PR-021.04,PR-021,4,Hold the tank's air bleed button in and turn the key to START,,Starting assist fluid spouts from the nozzle.,,p.0-19
+PR-022.01,PR-022,1,Park on level ground and set the parking brake firmly,,,,p.0-24
+PR-022.02,PR-022,2,Idle the engine for about two minutes,,,,p.0-24
+PR-022.03,PR-022,3,Move the selector through every position and leave it in P,,,,p.0-24
+PR-022.04,PR-022,4,Read the dipstick,SP-1553.,Level between L and F.,,p.0-24
+PR-022.05,PR-022,5,Add fluid through the filler tube if it is low,Fluid SP-093.,,Do not overfill.,p.0-24

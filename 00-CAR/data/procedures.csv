@@ -1,5 +1,23 @@
-id,system,title,when,tools,source
-PR-001,Climate,Recover the refrigerant before opening the A/C system,"before the compressor, condenser or lines are disturbed",a shop with recovery equipment,K-015
-PR-002,Electrical,Keep a stored lithium battery above its BMS cutoff,monthly while the Ionic S9 waits unfitted,the Ionic app,Ionic battery care - 02-PROJECTS/01-electrical
-PR-003,Body,Jack the car and set it on safety stands,before any work under the car,"floor jack, safety stands, wheel chocks",S-002
-PR-004,Body,Tow the car,whenever the car is moved by a tow truck or a rope,"tow truck with a wheel lift, or wheel dollies",S-002
+id,system,title,when,tools,source,applies
+PR-001,Climate,Recover the refrigerant before opening the A/C system,"before the compressor, condenser or lines are disturbed",a shop with recovery equipment,K-015,
+PR-002,Electrical,Keep a stored lithium battery above its BMS cutoff,monthly while the Ionic S9 waits unfitted,the Ionic app,Ionic battery care - 02-PROJECTS/01-electrical,
+PR-003,Body,Jack the car and set it on safety stands,before any work under the car,"floor jack, safety stands, wheel chocks",S-002,
+PR-004,Body,Tow the car,whenever the car is moved by a tow truck or a rope,"tow truck with a wheel lift, or wheel dollies",S-002,
+PR-005,Engine,Change the engine oil and filter,"oil every 7,500 mi / 7.5 months, filter every 15,000 mi / 15 months (interval oil)","drain pan, band-type filter wrench",S-002,
+PR-006,Engine,Check the drive belts,"every 30,000 mi / 30 months (interval belts)",,S-002,
+PR-007,Ignition,Check the spark plugs,"every 15,000 mi / 15 months; replace at 30,000 mi / 30 months (interval plugs)","plug socket, gap gauge, anti-seize",S-002,
+PR-008,Cooling,Check the cooling system for leaks,"every 15,000 mi / 15 months (interval coolant)",radiator cap tester,S-002,
+PR-009,Cooling,Replace the engine coolant,"every 30,000 mi / 30 months (interval coolant)",drain pan,S-002,
+PR-010,Brakes,"Check the brake pedal, parking brake and power brake unit",at the scheduled brake inspection,spring scale,S-002,
+PR-011,Steering,Check the steering gear oil level,at the scheduled steering inspection,a length of wire as a dipstick,S-002,
+PR-012,Suspension,Clean and repack the front wheel bearings,interval wheel_bearings,"solvent, lithium grease NLGI No. 2, new oil seals",S-002,
+PR-013,Driveline,Check or replace the rear axle oil,"level at 7,500 mi, replace every 30,000 mi / 30 months (interval diff)",,S-002,
+PR-014,Body,"Check the seat belts, buckles, retractors and anchors",at the scheduled body inspection,,S-002,
+PR-015,Brakes,"Scheduled chassis inspection: brakes, steering, suspension, exhaust shields, fasteners",at the scheduled chassis inspections,,S-002,
+PR-016,Fuel,"Check and set the idle speed (12A, factory carburettor)",at the scheduled idle speed check,tachometer,S-002,replaced
+PR-017,Fuel,"Check and adjust the throttle sensor (12A, factory carburettor)",at pre-delivery and when deceleration control is in doubt,"tachometer, two voltmeters",S-002,replaced
+PR-018,Fuel,Clean the choke system (factory carburettor),at the scheduled choke service,"carburettor spray cleaner, compressed air, spray lubricant",S-002,replaced
+PR-019,Electrical,Check the oil level warning system (1985 manual),at the scheduled electrical check,ohmmeter,S-002,other-car
+PR-020,Electrical,Check the coolant level warning system (1985 manual),at the scheduled electrical check,,S-002,other-car
+PR-021,Engine,"Check the sub-zero starting assist system (12A, factory carburettor)",seasonally,,S-002,replaced
+PR-022,Transmission,"Check the automatic transmission fluid level (1985 manual, L4N71B)","at 7,500 mi, then every 30,000 mi / 30 months (interval atf)",,S-002,other-car
