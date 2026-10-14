@@ -1603,3 +1603,9 @@ PR-190.02,PR-190,2,Fit the gasket and base to the door,The 2 screws provided,,,p
 PR-190.03,PR-190,3,Thread the harness through the stay and fit the stay,"Harness through the stay, stay to the base with its 2 screws",,,p.88
 PR-190.04,PR-190,4,Connect the mirror and tuck the slack,"Connect the harness to the mirror's; put the extra harness in the space the bulletin shows, clear of the mounting",,a pinched wire shorts the mirror motor,p.89
 PR-190.05,PR-190,5,Fit the mirror and test it,Mirror to the stay with 2 screws; work both directions on both mirrors,the mirror moves both ways,,p.89
+PR-191.01,PR-191,1,Mark the steering wheel against the shaft,A mark on the wheel and the shaft so the wheel goes back in the same place,,,"bulletin 010/85 Cat.14, p.50"
+PR-191.02,PR-191,2,Take the steering wheel off,Remove the retaining nut and pull the wheel with a steering wheel puller,,do not strike the steering shaft with a hammer,p.50
+PR-191.03,PR-191,3,Look at the cancel cam,"If its tabs are broken the turn signal will not cancel; the cam is sold alone (BA29-66-126), the combination switch need not come out",,,p.50
+PR-191.04,PR-191,4,Prise the old cam off,Turn signal at OFF; pry the cam carefully off the combination switch with a screwdriver,,,p.50
+PR-191.05,PR-191,5,Fit the new cam,Press it onto the switch; no extra grease is needed,,,p.50
+PR-191.06,PR-191,6,Refit the wheel on its marks,Align the cam's tabs with the holes in the wheel; nut to 40-50 N m (29-36 ft-lb),the signal cancels as the wheel returns,a cam whose tabs miss the holes breaks when the wheel is tightened,p.51
