@@ -73,3 +73,17 @@ PV123,cavity,DP-DCU 19,FT23,"Mirror motor common, both mirrors - the DCU tail fr
 PV124,cavity,DP-DCU 20,FT23,Mirror LEFT motor - the DCU tail to L4-S2 2 (electrical D-472),LIVE,"D-359, electrical D-360 / D-472"
 PV125,cavity,DP-DCU 21,FT23,Mirror RIGHT motor - the DCU tail to L4-S2 4 (electrical D-472),LIVE,"D-359, electrical D-360 / D-472"
 PV126,cavity,DP-DCU 22,FT23,"Mirror clutch coils, both mirrors - the DCU tail, spliced at the dash node to L4-S2 3 and L4-S2 5 (electrical D-472)",LIVE,"D-359, electrical D-360 / D-472"
+PV127,housing,L3-RCV,FT28,"the radar receiver's receptacle behind the dash - power, ground, the alert line and the front sensor's run end at the receiver, not at the node (electrical D-584)",,electrical D-584
+PV128,cavity,L3-RCV 1,FT28,radar receiver +12 V accessory (O10 tap through L3-S2 3),CAPPED,electrical D-584
+PV129,cavity,L3-RCV 2,FT28,radar receiver ground (through L3-S2 4),CAPPED,electrical D-584
+PV130,cavity,L3-RCV 3,FT28,radar alert out to the Control Unit's DP-DCU 48 (SN30),CAPPED,electrical D-582 / D-584
+PV131,cavity,L3-RCV 4,FT28,radar front sensor A - from L2-RDR through L2-R and L3-S3 5,CAPPED,electrical D-584
+PV132,cavity,L3-RCV 5,FT28,radar front sensor B - through L3-S3 6,CAPPED,electrical D-584
+PV133,cavity,L3-RCV 6,FT28,radar front sensor C - through L3-S3 7,CAPPED,electrical D-584
+PV134,cavity,L3-S2 5,FT29,"head unit reverse input (violet / white), an O19 tap",LIVE,electrical D-584
+PV135,cavity,L3-S2 6,FT29,"head unit speed-pulse input (pink), a tap of the road-speed line",LIVE,electrical D-584
+PV136,housing,L4-UPX,FT29,the upmix box's receptacle in the passenger-side bin (D-503),,electrical D-584
+PV137,cavity,L4-UPX 1,FT29,"upmix box +12 V through F38, 3 A, at a tap of the amplifier's feed",CAPPED,electrical D-584
+PV138,cavity,L4-UPX 2,FT29,upmix box ground to the rear star G41,CAPPED,electrical D-584
+PV139,cavity,L4-UPX 3,FT29,"upmix box remote, spliced onto the head unit's remote lead",CAPPED,electrical D-584
+PV140,fuse,F38,FT29,"the upmix box's fuse in the bin, 3 A, confirm once the box is built",,electrical D-584
