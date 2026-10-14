@@ -182,3 +182,7 @@ PR-180,Electrical,"Find why the radio gives no sound, and adjust the AM antenna 
 PR-181,Electrical,"Check, remove and overhaul the power antenna (1985 manual)",the antenna will not raise or lower,"voltmeter, ohmmeter, battery leads, punch",S-002,not-fitted
 PR-182,Climate,"Check the blower switch, its ground and the blower resistor (1985 manual)",blower dead or stuck on one speed,"ohmmeter, voltmeter",S-002,
 PR-183,Climate,Connect the heater control wires and set the fresh-recirculate door (1985 manual),after the heater unit or its controls have been out,screwdriver,S-002,other-car
+PR-184,Climate,"Check the A/C compressor clutch: supply, pulley, air gap and field coil","the compressor does not engage, or engages only when cold","multimeter, feeler gauges",S-203,
+PR-185,Climate,"Remove the A/C compressor clutch (armature, rotor pulley, field coil)","replacing the clutch, its bearing or the field coil, or reaching the shaft seal","armature plate spanner, armature puller, rotor pulley puller set with shaft protector, snap ring pliers, 3/4 in / 19 mm / 14 mm socket, #2 Phillips",S-203,
+PR-186,Climate,Fit the A/C compressor clutch and set its air gap,after PR-185,"rotor installer ring and driver (or arbor press), armature driver, clutch shims, snap ring pliers, feeler gauges, torque wrench",S-203,
+PR-187,Climate,Match the oil in a replacement compressor to the old one,replacing the compressor without flushing the system,"measuring cup, socket for the armature nut, torque wrench",S-203,
