@@ -58,7 +58,7 @@ id,msg,bytes,field,encoding,note
 0x300/3,0x300,3,Cabin temp,"int8, °C",SN11
 0x300/4,0x300,4,A/C request,"0 no · 1 yes — the DCU's A/C request to the ECU, which owns the clutch at the swap (engine D-489); 0 until then, there being no compressor (D-211)","The EMU PRO reads this frame as a CAN input - confirm its setup at the swap. When the DCU asks is the panel sketch's rule (set temperature below outside air with the fan on) once he rules it; the ECU may still refuse (idle-up, full throttle)"
 0x300/5,0x300,5,Outside-air temp,"int8, °C","SN12, electrical D-256"
-0x300/6,0x300,6,reserved,,
+0x300/6,0x300,6,Dash-light duty,"uint8, % 0-100 - what the DCU's dash-light stage (SN31) runs at; 100 is full","D-577: the Display Unit dims to it while its O20 reference (IC14) reads on, and keeps its last level when 0x300 times out; the panel's own lights follow it on the DCU"
 0x300/7,0x300,7,counter,,
 0x310/0,0x310,0,Seat heat,b0–1 driver level · b2–3 passenger level,
 0x310/1,0x310,1,Seat cool,b0–1 driver · b2–3 passenger,

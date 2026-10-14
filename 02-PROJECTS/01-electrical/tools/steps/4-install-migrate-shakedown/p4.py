@@ -232,7 +232,7 @@ steps("E38", [
 # ---------------------------------------------------------------- E39
 brief(
     "E39",
-    "The climate unit's lead set runs to the heater case: three servo signal wires with their shared 5 V and ground, the blower-speed pair to where the final stage will sit, and the cabin temperature sensor - each end joined, capped or fitted, and tested.",
+    "The climate unit's lead set runs to the heater case: three servo signal wires with their shared 5 V and ground, the blower-speed pair to where the final stage will sit, and the cabin temperature sensor - each end joined, capped or fitted, and tested - and the dash-light return to the dash lamps' ground splice, capped there.",
     "back of the climate unit in the centre stack, and the heater case under the dash",
     "2 to 3 h - confirm",
     [DEUTSCH, REMOVE, SPLICE, HEAT, LABEL, METER],
@@ -245,7 +245,8 @@ brief(
     ],
     [
         "The lead set leaves the climate unit on DP-DCU-D, a 12-way Deutsch plug in the upper row of the unit's rear wall [housings DP-DCU-D]",
-        "Its cavities: 1 mode door servo signal - 2 blend door servo signal - 3 recirculate door servo signal (all 16 AWG blue) - 4 servo +5 V (pink) - 5 servo ground (black) - 6 blower speed signal (blue) - 7 blower speed ground (black) - 8 cabin temperature sensor (grey) - 9 sensor return (black) - 10, 11, 12 sealing plugs [cavities DP-DCU-D 1-12]",
+        "Its cavities: 1 mode door servo signal - 2 blend door servo signal - 3 recirculate door servo signal (all 16 AWG blue) - 4 servo +5 V (pink) - 5 servo ground (black) - 6 blower speed signal (blue) - 7 blower speed ground (black) - 8 cabin temperature sensor (grey) - 9 sensor return (black) - 10 dash-light return (blue) - 11, 12 sealing plugs [cavities DP-DCU-D 1-12]",
+        "The dash-light return carries the dash lamps' ground current back to the climate unit, which dims the lamps by switching it; the lamps' feed stays O20's on/off bus. It is joined to the lamps at MG03 in E28 [cavities DP-DCU-D 10; devices DV30; D-577]",
         "The three servos are hobby-type, one on each heater door cable. They are the luxury package's and are not fitted yet [devices DV59]",
         "One +5 V wire and one ground wire run to the heater case and split there to the three servos. The climate unit moves one servo at a time, so that wire carries one servo's stall current, 1 to 2.5 A [cavities DP-DCU-D 4; params servo_stall]",
         "Each servo's end is a 3-pin servo extension lead, about 1 m of 22 AWG: signal, +5 V, ground [parts P172]",
@@ -260,10 +261,10 @@ brief(
 )
 steps("E39", [
     ("Open the disconnect and lay the lead set",
-     "Nine 16 AWG wires from behind the climate unit, across the dash rail and down the centre to the heater case. Keep the bundle away from the blower's 12 AWG feed where you can.",
+     "Nine 16 AWG wires from behind the climate unit, across the dash rail and down the centre to the heater case. Keep the bundle away from the blower's 12 AWG feed where you can. A tenth, blue, from the same plug down behind the centre stack to where the dash lamps' grounds will meet - the select lever's and the switch panel's lamp plugs; its length is confirm until laid.",
      "Nine wires reach the heater case with slack"),
     ("Pin the 12-way plug",
-     "Socket contacts, size 16. By the moulded numbers: 1 mode signal (blue) - 2 blend signal (blue) - 3 recirculate signal (blue) - 4 servo +5 V (pink) - 5 servo ground (black) - 6 blower speed (blue) - 7 blower speed ground (black) - 8 cabin sensor (grey) - 9 sensor return (black). Sealing plugs in 10, 11 and 12. Wedgelock in. Label every wire at both ends as it is cut.",
+     "Socket contacts, size 16. By the moulded numbers: 1 mode signal (blue) - 2 blend signal (blue) - 3 recirculate signal (blue) - 4 servo +5 V (pink) - 5 servo ground (black) - 6 blower speed (blue) - 7 blower speed ground (black) - 8 cabin sensor (grey) - 9 sensor return (black) - 10 dash-light return (blue). Sealing plugs in 11 and 12. Wedgelock in. Label every wire at both ends as it is cut.",
      "Nine clicks, three sealing plugs",
      "Three blue signal wires look alike. Label each before the next is cut."),
     ("Split the 5 V and the ground into three at the heater case",
@@ -282,7 +283,7 @@ steps("E39", [
      "The thermistor on cavities 8 and 9's pair, at a shaded spot on the dash away from the heater outlets and the sun. The record does not say where: choose, and note it.",
      "Sensor fixed, its pair clipped"),
     ("Test every wire dead",
-     "Meter on continuity, plug not yet in the unit. Cavity 1 to the MODE plug's signal pin; 2 to BLEND; 3 to RECIRC. Cavity 4 to the +5 V pin of all three plugs; cavity 5 to the ground pin of all three. 6 and 7 to their capped ends. Across 8 and 9 read ohms: a 10 kOhm thermistor reads about 10 kOhm at room temperature.",
+     "Meter on continuity, plug not yet in the unit. Cavity 1 to the MODE plug's signal pin; 2 to BLEND; 3 to RECIRC. Cavity 4 to the +5 V pin of all three plugs; cavity 5 to the ground pin of all three. 6 and 7 to their capped ends; 10 to its capped end behind the centre stack. Across 8 and 9 read ohms: a 10 kOhm thermistor reads about 10 kOhm at room temperature.",
      "All through; no wire reaches a neighbour; the sensor reads in the thousands of ohms, not open and not zero"),
     ("Plug in and check live",
      "DP-DCU-D into the upper-row receptacle. Disconnect ON. In the client watch frame 0x300, byte 3: the cabin temperature. If the comfort block is in (E38) and the key is at RUN, meter the MODE plug: 5 V between its +5 V and ground pins.",

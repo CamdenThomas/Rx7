@@ -216,7 +216,7 @@ steps("E32", [
      "Client live; supply voltage in the charging range",
      "Garage door open."),
     ("Measure the lamp outputs",
-     "One at a time, on for at least two seconds before reading: O6 tail and park - O7 brake - O17 left turn and O18 right turn (read the top of the flash) - O19 reverse - O20 dash illumination at full brightness - O2 low beam - O3 high beam. Write each figure down.",
+     "One at a time, on for at least two seconds before reading: O6 tail and park - O7 brake - O17 left turn and O18 right turn (read the top of the flash) - O19 reverse - O20 dash illumination with the Control Unit's dash lights at full (100 %) - O2 low beam - O3 high beam. Write each figure down.",
      "Eight figures; bulbs near their expected amps, the LED headlamps far under"),
     ("Measure the motor outputs mid-travel",
      "O8 wipers LOW and O9 wipers HIGH, on wet glass, mid-sweep. O1 while both pop-ups are travelling, and again while one winks. Write each down.",
