@@ -167,3 +167,4 @@ L-0155,2026-10-13,clean,D-561 Y46 Y48,"D-561: Y46 done - the display bridge boar
 L-0156,2026-10-13,clean,D-562 H-008,D-562: H-008 gated on F6 - the bench revision is Y20's panel board as ordered; a freerouting re-lay on a copy was not taken (one supply pin enclosed)
 L-0157,2026-10-14,answers,D-567,Applied 01.54 (a): dash dimming moves to a PWM stage on the DCU board (D-567); R-APPLY-01.54 opened
 L-0158,2026-10-14,session,R-APPLY-01.54 D-577 Y49 F-019 01.55,"R-APPLY-01.54 done: the dash-light stage designed (D-577) - a BTS3011TE on the DCU carrier sinks the dash lamps' return on DP-DCU-D 10, Teensy 11 at 200 Hz, wake request to U13 P02, level in 0x300 byte 6; Y49 (draw it, before Y18) and F-019 (firmware) added; block 01.55 raised for the panel control"
+L-0159,2026-10-14,answers,D-578,R-APPLY-01.55 done: dash-light level set from the centre knob (D-578); F-019 note updated

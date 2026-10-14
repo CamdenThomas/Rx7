@@ -1893,3 +1893,10 @@ Decided by the agent under CLAUDE.md §3, as the design D-567 ordered (R-APPLY-0
 - **E26.19 is unchanged**: O20's 7.0 A limit is the bus's, the lamps chopped downstream draw no more than full brightness, and filaments at 200 Hz stay hot, so there is no inrush per cycle. **E32.02** now reads O20 with the dash lights at full.
 
 Rows: dcu_channels SN31 (new) and SN21; cavities DP-DCU-D 10-12, L3-S1 8, DP-ICU-A 2; can_fields 0x300/6; icu_channels IC14; pins 34; devices DV30; parts P149, P194, P195, P196; steps E17.21, E20.05, E25.10, E28.04, E32.02, E39.01, E39.02, E39.08, F-009.11; briefs E39, F-009; work E28 (gate + E38, E39), E39, F-009, Y18 (gate + Y49), Y49 (new: the sheet, both boards and the cart), F-019 (new: the firmware)."
+D-578,,"Dash-light level is set from the centre knob: hold push, turn",2026-10-14,standing,,,01.55,,"**The dash-light level is set from the climate panel's centre knob: hold its push for one second and turning it sets the level, shown on the panel screen; after three seconds' rest it returns to temperature, as the fan setting does.**
+
+His answer, block 01.55 (desktop, 2026-10-14), option (a): ""The centre knob: hold its push for one second and turning it sets the dash-light level, shown on the panel's screen; after three seconds' rest it goes back to temperature, as the fan setting does. Costs nothing - firmware only; nothing new on the faceplate."" No extra words.
+
+Reasoning: firmware only, no wire, key or faceplate change, and both spare keys on the fourth row stay free. Reversible by editing firmware; (b) can still be added later.
+
+Consequences: F-019 carries the panel control as ruled here (its gate 01.55 is met). No board, harness or faceplate change. Follows D-567 and D-577."
