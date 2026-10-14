@@ -194,6 +194,15 @@ def check_types(P, U):
     if not P["LID_LUGS"] or not all(num(f) and 0 <= f <= 1 for f in P["LID_LUGS"]):
         bad.append("LID_LUGS %r must be one or more fractions from 0 (the step wall) to 1 (the "
                    "rear plate)." % (P["LID_LUGS"],))
+    hdr = P.get("REAR_HEADER")
+    if hdr is not None:
+        keys = ("w", "top", "inward", "past", "tip", "cut_w", "cut_h", "r", "pitch", "hole",
+                "flange_w", "flange_z0", "flange_z1", "nose_z0", "nose_z1")
+        if not (isinstance(hdr, dict) and isinstance(hdr.get("name"), str)
+                and isinstance(hdr.get("part"), str) and all(num(hdr.get(k)) and hdr[k] >= 0
+                                                             for k in keys)):
+            bad.append("REAR_HEADER must be None or {name, part, %s}, numbers in mm."
+                       % ", ".join(keys))
     env = P["ENVELOPE"]
     if env is not None:
         ok = isinstance(env, dict) and all(num(env.get(k)) and env[k] > 0
@@ -219,9 +228,28 @@ def derive(P, src):
     D.drawn = abs(drawn_w - W) <= tol and abs(drawn_d - DP) <= tol
     yb_edge = o["ymin"] + e                       # the connector edge, in the board's own frame
 
-    # ---- the lower row: the carrier's own DT13s, as board.json and probe.json have them
+    # ---- the lower row: the carrier's own DT13s, as board.json and probe.json have them - or,
+    #      with REAR_HEADER, one header in their place on the same edge (D-582), its body a
+    #      stand-in from the numbers in that row
     lows = []
-    for f in board["footprints"]:
+    hdr = P.get("REAR_HEADER")
+    if hdr is not None:
+        xc_b = (o["xmin"] + o["xmax"]) / 2.0 + hdr.get("x_off", 0.0)
+        hw, fw = hdr["w"] / 2.0, hdr["flange_w"] / 2.0
+        nw = hdr["cut_w"] / 2.0 - P["CUTOUT_CLEAR"]
+        te = {"w": hdr["cut_w"], "h": hdr["cut_h"], "r": hdr["r"], "pitch": hdr["pitch"],
+              "hole": hdr["hole"], "page": hdr.get("page", "confirm")}
+        lows.append(NS(ref="J1", name=hdr["name"], part=hdr["part"], te=te, fitted=True,
+                       row="lower", xb=xc_b, zc=(hdr["nose_z0"] + hdr["nose_z1"]) / 2.0,
+                       flange=[xc_b - fw, xc_b + fw, hdr["flange_z0"], hdr["flange_z1"]],
+                       housing=[xc_b - nw, xc_b + nw, hdr["nose_z0"], hdr["nose_z1"]],
+                       past=hdr["past"], tip=hdr["tip"], body=[xc_b - hw, xc_b + hw],
+                       inward=hdr["inward"], top=hdr["top"], court=[xc_b - fw, xc_b + fw],
+                       court_in=hdr["inward"]))
+        D.notes.append("REAR_HEADER: one %s (%s) stands in for the carrier's DT13s on its "
+                       "connector edge - a block from the parameter row, not a model (D-582)"
+                       % (hdr["name"], hdr["part"]))
+    for f in board["footprints"] if hdr is None else []:
         if not L.is_dt13(f) or f["dnp"]:
             continue
         d = pr["dt13"].get(f["ref"]) or {}
@@ -342,7 +370,9 @@ def derive(P, src):
     #      bottom edges (CONTROL_EDGE on the face; the roof, the floor and the panel board behind)
     pm = P["PANEL_MARGIN"]
     D.controls = []
-    need_top, need_bot = [0.0], [0.0]
+    # SKETCH_CROP: the face may lose the sketch's empty bands above and below its controls (D-582)
+    floor0 = -P["SKETCH_H"] if P.get("SKETCH_CROP") else 0.0
+    need_top, need_bot = [floor0], [floor0]
     for (name, kind, x, z, size) in P["CONTROLS"]:
         c = NS(name=name, kind=kind, X=D.xc + x, z=z, size=size)
         if kind == "knob":
@@ -1044,7 +1074,8 @@ def build_insides(P, D, src, standin=False):
                      L.box(D.px0, D.px1, D.y_panel1, D.y_pko, D.pz0, D.pz1), "keepout"))
 
     # ---- the carrier: the board's STEP when it is the drawn board, stand-in blocks otherwise
-    real = bool(src["step"]) and bool(P["CARRIER_STEP"]) and D.drawn and not standin
+    real = bool(src["step"]) and bool(P["CARRIER_STEP"]) and D.drawn and not standin \
+        and P.get("REAR_HEADER") is None             # the drawn board still carries the DT13s
     if not standin:
         D.carrier_real = real
     dt_refs = {c.ref for c in D.lows}
@@ -1480,11 +1511,14 @@ def front_install(P, D):
     behind a face too low to cover it."""
     bzx, bzz = P["BEZEL_OVERLAP_X"], P["BEZEL_OVERLAP_Z"]
     if not D.stepped and (bzx < 0 or bzz < 0):
+        def way(v, where):
+            return ("set in from the body by %s %s" % (n(-v), where) if v < 0 else
+                    "proud of it by %s %s" % (n(v), where) if v > 0 else "flush %s" % where)
         return True, ("front install: yes - one height front to back, %s x %s; it passes an "
-                      "opening that size. The %s x %s face is set in from the body by %s a side "
-                      "and %s top and bottom, as the head unit's nose is from its chassis, so "
-                      "the dash plastic covers the opening's edge round both (D-542)"
-                      % (n(D.body_w), n(D.rear_h), n(D.face_w), n(D.face_h), n(-bzx), n(-bzz)))
+                      "opening that size. The %s x %s face is %s and %s; where it is set in, "
+                      "the dash plastic covers the opening's edge, as round the head unit's nose"
+                      % (n(D.body_w), n(D.rear_h), n(D.face_w), n(D.face_h),
+                         way(bzx, "a side"), way(bzz, "top and bottom")))
     if not D.stepped:
         return True, ("front install: yes - one height front to back, %s x %s; it passes an "
                       "opening that size and the %s x %s face covers it by BEZEL_OVERLAP_X %s a "
@@ -1642,7 +1676,7 @@ def write_views(P, outdir, insides, case, D):
             extra = "; orange = the sketch's %s x %s control block, anchored %s" % (
                 n(P["SKETCH_W"]), n(P["SKETCH_H"]), P["CONTROLS_ANCHOR"])
         for k, line in enumerate((
-                "Climate control unit, mock-up: %s (%s), %.1f x %.1f mm."
+                "Control Unit, mock-up: %s (%s), %.1f x %.1f mm."
                 % (view, said[view], bb.XLength, bb.YLength),
                 "Provisional, nothing measured. Carrier as stand-in blocks%s." % extra)):
             svg.append('<text x="%.2f" y="%.2f" font-family="sans-serif" font-size="%.2f">%s'
@@ -1685,8 +1719,8 @@ def print_report(P, U, res, files, views_note, gone):
     D, N = res["D"], res["numbers"]
     bar = "=" * 96
     print(bar)
-    print("Climate control unit - MOCK-UP (D-479, D-480, Y14; the case toward the head unit, D-542, "
-          "Y40)")
+    print("Control Unit - MOCK-UP (D-479, Y14; single-DIN tall with one rear header, D-582, Y53; "
+          "the case toward the head unit, Y40)")
     print("provisional, nothing measured (R11)")
     print(bar)
     for note in res["notes"]:
@@ -1714,10 +1748,12 @@ def print_report(P, U, res, files, views_note, gone):
     else:
         how = "DERIVED: the least the control block needs; the rows need only a %s body" \
               % n(D.body_h_need)
-    print("HEIGHT RULE: the two rows need a body %s tall (floor %s + bosses %s%s + DT13 %s + "
+    print("HEIGHT RULE: the %s need%s a body %s tall (floor %s + bosses %s%s + %s %s + "
           "TOP_GAP %s + lid %s); the body is %s and the face %s (%s)." % (
+              "two rows" if D.ups else "one row of connectors", "" if D.ups else "s",
               n(D.body_h_need), n(P["FLOOR"]), n(P["BOSS_H"]),
-              (" + ROW_PITCH %s" % n(P["ROW_PITCH"])) if D.ups else "", n(D.dt_top),
+              (" + ROW_PITCH %s" % n(P["ROW_PITCH"])) if D.ups else "",
+              "DT13" if P.get("REAR_HEADER") is None else P["REAR_HEADER"]["name"], n(D.dt_top),
               n(P["TOP_GAP"]), n(P["LID"]),
               ("%s at the rear, %s for the first %s mm" % (n(D.rear_h), n(D.front_h),
                                                            n(P["FRONT_L"])))
@@ -1768,7 +1804,8 @@ def print_report(P, U, res, files, views_note, gone):
         if isinstance(v, list):
             return ", ".join("(%s, %s)" % (n(a), n(b)) for (a, b) in v) or "none"
         return n(v)
-    print("against the head unit (D-542; its figures are published ones, confirm):")
+    print("against the head unit (D-542 → D-582: its width and mounting, no longer its height; "
+          "its figures are published ones, confirm):")
     print("  %-58s %-14s %-22s %s" % ("", "head unit", "this unit", "difference"))
     for what, a, b, d in N["against_head_unit"]:
         print("  %-58s %-14s %-22s %s" % (what, said(a), said(b), "" if d is None else
@@ -1779,8 +1816,9 @@ def print_report(P, U, res, files, views_note, gone):
     for c in sorted(D.conns, key=lambda c: (c.row != "upper", -c.X)):
         print("  %-5s %-24s %-9s X %7s  Z %6s  %s" % (
             c.row, c.name, c.part, n(c.X), n(c.Z),
-            "TE cut-out %s x %s R%s, screws %s apart (114-151046 p.%d)"
-            % (n(c.te["w"]), n(c.te["h"]), n(c.te["r"]), n(c.te["pitch"]), c.te["page"])
+            "cut-out %s x %s R%s, screws %s apart (%s)"
+            % (n(c.te["w"]), n(c.te["h"]), n(c.te["r"]), n(c.te["pitch"]),
+               "114-151046 p.%d" % c.te["page"] if isinstance(c.te["page"], int) else c.te["page"])
             if c.fitted else "RESERVED - no cut-out, flange zone kept flat, outline scribed"))
     print()
     print("checks:")

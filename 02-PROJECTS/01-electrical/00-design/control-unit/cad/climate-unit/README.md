@@ -1,44 +1,44 @@
-# climate-unit - the climate control unit, mocked up
+# climate-unit - the Control Unit, mocked up
 
-*Rev 2026-10-13 (Y40: the case made like the head unit, D-542; before it Y14, the one-height unit)
-· owns: what this folder is, what it may claim, and how to rebuild it. Read `../../../README.md`
-first: it is the fence. The design is the record's (D-479, D-480, D-542, `housings` DP-DCU to
-DP-DCU-E, parts P152 / P194 / P195; the head unit is luxury's LP55); this is a drawing of it.*
+*Rev 2026-10-14 (Y53: single-DIN tall with one rear header, D-582; before it Y40, the case made like
+the head unit, D-542; Y14, the one-height unit) · owns: what this folder is, what it may claim, and
+how to rebuild it. Read `../../../README.md` first: it is the fence. The design is the record's
+(D-479, D-582, `housings` DP-DCU, parts P152 / P220; the head unit is luxury's LP55); this is a
+drawing of it.*
 
 ## What it is
 
 D-479 made the climate control one sealed unit built like a stereo head unit: the faceplate and its
 dials on the front, the control panel's board right behind it, the DCU carrier lying flat behind
-that, and nothing outside but sealed Deutsch connector halves. D-480 put every one of those halves
-in the rear wall, in two rows: the carrier's three DT13s below, DP-DCU-D on a small board of its
-own above, and a second upper position kept for the left plate (idea I-002).
+that, and nothing outside but sealed connector halves in the rear wall. D-582 (Camden, 2026-10-14)
+made it **single-DIN tall with one connector**: every conductor the unit has - 48 of them - leaves
+through one Molex CMC 48-way hybrid header on the carrier's rear edge, so the second row of D-480
+and its upper board are gone, and the empty bands above and below the controls go with them.
 
-This folder is the **mock-up** D-480 asked for before any detailed model: the insides and the case
-as one parametric FreeCAD build, driven by one table of numbers, that rebuilds when a number
-changes and says in words what no longer fits. It is **not the print-ready model** (that is F1,
-after the measurements) and it replaces neither `../dcu-carrier/enclosure` nor `../panel/enclosure`
-yet.
+This folder is the **mock-up**: the insides and the case as one parametric FreeCAD build, driven by
+one table of numbers, that rebuilds when a number changes and says in words what no longer fits.
+It is **not the print-ready model** (that is F1).
 
-**The default is the front-install unit, made like the head unit.** D-480: "height is the
-dimension with the most wiggle room … you would install this exactly like a head unit". D-542: the
-case is made as like the head unit he chose as its boards allow, and the dash plastic is built
-round the two. So the unit is ONE height front to back, and that height is the head unit's:
-a body 100 tall (its chassis) behind a face 97 tall (its nose), the face 3 in front of the body and
-set in from it by 1.5 top and bottom and 3.5 a side, exactly as the nose is from the chassis. Those
-numbers are not typed here: the case rows of `unit_params.py` refer to its `HEAD_UNIT_*` block.
-The sketch's 180 x 60 control layout is kept whole, as a block, centred on that face and on the
-panel board behind it. The other unit - a face lower than the body, with the rear stepping up
-behind the dash - is still two numbers away (below), and the report always says which one was
-built: `front install: yes` or `front install: no - the rear is N mm taller than the face covers`.
+**The default unit (D-582).** One row: the carrier, and on its connector edge `REAR_HEADER`, a
+stand-in block for the CMC 48 header (no model of it is in the tree; every number in that row is
+confirm until Molex's drawing is read at Y54). The row needs a body only 40 tall; the face is as
+tall as the sketch's controls need with `SKETCH_CROP` on - their empty bands cut away, each control
+still `CONTROL_EDGE` from the edge and clear of the frame behind - which is 181 x 59.3, over a body
+188 x 56.3 (it was 192 / 181 x 97 over 100). The face stands 1.5 proud of the body top and bottom,
+as a single-DIN nose does of its chassis, and is set in 3.5 a side as the head unit's is; the width
+and the side mounting are still the head unit's (D-542 → D-582), the height no longer. The panel
+board is cut to the face (`PANEL_H` None, 180 x 47.3): the drawn one (84.76 tall) is redrawn at Y55.
+The report always says which unit was built: `front install: yes` or `no - …`.
+
+The two-row unit of D-480 / D-542 is still a parameter set away (`_TWO_ROWS` in `unit_params.py`:
+`REAR_HEADER` None, `UPPER_CONNECTORS` both, the head unit's height), and the self-test keeps every
+rule written for it.
 
 **R11 applies to all of it: nothing here has been measured.** No opening is measured and none is a
-gate any more (D-542 dropped V-113 and V-102: the dash is rebuilt round the units). The head unit's
-sizes are Pioneer's published ones, not the unit in hand; its side-hole pattern and its nose's
-corner radius are not published at all. The face is a sketch he is still changing (I-001 to
-I-006), and no knob, key, display, plug or insert is in hand. The boards are as drawn and stay so
-(D-542). The DT13 cut-outs are TE's drawing (114-151046, through
-`../../../tools/enclosure_lib.py`) and the DT13 bodies are TE's models as the DCU enclosure build
-probed them. Everything else is a parameter, and most are marked `confirm`.
+gate (D-542). The head unit's sizes are Pioneer's published ones, not the unit in hand. The face is
+a sketch he is still changing (I-001 to I-006), and no knob, key, display, plug or insert is in
+hand. The CMC header is a stand-in from a listing's outline. Everything else is a parameter, and
+most are marked `confirm`.
 
 ## Change a number, rebuild
 
@@ -65,9 +65,11 @@ The numbers most likely to be turned:
 
 | To get | Set |
 |---|---|
-| the front-install unit at the head unit's height (the default) | `FACE_H` = `HEAD_UNIT_NOSE_H`, as it stands |
+| the single-DIN unit with one rear header (the default, D-582) | as it stands: `REAR_HEADER` set, `FACE_H` None, `SKETCH_CROP` True |
+| the two-row unit at the head unit's height (D-480 / D-542) | the `_TWO_ROWS` set in `unit_params.py` |
+| the CMC header's real outline, once Molex's drawing is read | the `REAR_HEADER` row |
 | the head unit measured, once it is bought | the `HEAD_UNIT_*` block: the six sizes, and the two Pioneer does not publish - `HEAD_UNIT_SIDE_HOLES` (then the side bosses stand on its pattern) and `HEAD_UNIT_NOSE_R` (then the face's corners are its) |
-| the body only as tall as the two rows need | `FACE_H = None` (93.36 face, 96.36 body) |
+| the sketch kept whole (no crop) | `SKETCH_CROP` False: a face of 60 |
 | a face that stands proud and covers the opening itself (the case before D-542) | `BEZEL_OVERLAP_X` and `BEZEL_OVERLAP_Z` positive, e.g. `2.0` |
 | the stepped unit: a low face, the rear rising behind the dash | `FACE_H` lower than the body needs AND `PANEL_H` None - the drawn panel board is 84.76 tall and needs a face of 89.76 or more, so a low face is a panel board drawn again, lower; `FRONT_L` is then the length of the low front section |
 | the control block higher or lower on the face | `CONTROLS_ANCHOR` = `"centre"`, `"top"` or `"bottom"` (the drawn panel board has it centred) |

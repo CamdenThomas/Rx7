@@ -1,5 +1,5 @@
-"""Every number of the climate control unit's mock-up (D-479, D-480, work row Y14; the case toward
-the head unit, D-542, work row Y40). The ONE place numbers live: `unit_lib.py` and `make_unit.py`
+"""Every number of the Control Unit's mock-up (D-479; work row Y14; the case toward the head unit,
+Y40; single-DIN tall with one connector, D-582, work row Y53). The ONE place numbers live: `unit_lib.py` and `make_unit.py`
 hold no dimension of their own.
 
 Each row of TABLE is (NAME, value, unit, what it is, confirm). `confirm` is empty for a number that
@@ -95,10 +95,29 @@ CONTROLS = [
 # The upper connector row (D-480): (name, ways, fitted). The first stands directly above the lower
 # connector UPPER_ABOVE; each next one steps toward the middle of the board. A position that is not
 # fitted gets no cut-out - only a kept-clear zone inside and a scribed outline on the rear plate.
-UPPER_CONNECTORS = [
-    ("DP-DCU-D", 12, True),                    # the leads that used grommets (D-480, P194)
-    ("DP-DCU-E", 12, True),                    # the left plate's link (D-492, P200) - fitted since he ruled the plate
-]
+# D-582 retired the row: every conductor is in the one rear header (REAR_HEADER). The table stays
+# so the two-row unit can still be built (the self-test's _TWO_ROWS sets).
+UPPER_CONNECTORS = []
+
+# The one rear header (D-582): a Molex CMC 48-way right-angle PCB header, 500762-0481, on the
+# carrier's connector edge in place of its three DT13s, mated by a CMC 48 wire-side receptacle. No
+# model of it is in the tree: these numbers make a stand-in block. Every one is confirm - the outline
+# is one distributor's listing (about 69.9 long, 27 high, 49 deep) and the rest is a judgement
+# until Molex's drawing (5007620481_sd.pdf) is read at Y54. All in mm; heights up from the carrier's
+# underside, x across it, "past" / "tip" beyond its connector edge, "inward" onto it.
+REAR_HEADER = {
+    "name": "DP-DCU", "part": "CMC48-500762-0481",
+    "w": 70.0,          # the body's width across the board (listing: 69.9 long)
+    "top": 27.0,        # its top above the carrier's underside (listing: 27 high)
+    "inward": 30.0,     # how far the body reaches onto the board from its edge (of 49 deep)
+    "past": 4.0,        # the sealing flange's front face beyond the board edge = the plate's inside
+    "tip": 15.0,        # the mating shroud's tip beyond the board edge (49 - 30 - 4)
+    "cut_w": 62.0, "cut_h": 22.0, "r": 2.0,   # the rear plate's cut-out for the shroud
+    "pitch": 76.0, "hole": 3.4,               # two M3 screws through the flange, either side
+    "flange_w": 84.0, "flange_z0": 0.0, "flange_z1": 27.0,
+    "nose_z0": 3.5, "nose_z1": 24.5,          # the shroud's section, up from the underside
+    "page": "Molex 5007620481_sd.pdf, not read - confirm",
+}
 
 TABLE = HEAD_UNIT + [
     # ------------------------------------------------------------------------------ the face --
@@ -109,8 +128,10 @@ TABLE = HEAD_UNIT + [
      "body is 10 wider than its chassis. The sketch says 180, which the 180 mm carrier and the "
      "180 mm panel board cannot go behind (see the width rule)",
      "follows the head unit's published sizes (D-542)"),
-    ("FACE_H", _HU["HEAD_UNIT_NOSE_H"], "mm", "faceplate height = the head unit's nose "
-     "(HEAD_UNIT_NOSE_H, D-542), so the two faces read as a pair. The body behind it is then "
+    ("FACE_H", None, "mm", "faceplate height. None (D-582) = derived: as tall as the control "
+     "block needs with SKETCH_CROP, or the body if that is more - single-DIN, about 53 over a "
+     "50 body. Before D-582 it was the head unit's nose (HEAD_UNIT_NOSE_H, D-542), so the two "
+     "faces read as a pair. The body behind it is then "
      "FACE_H - 2 x BEZEL_OVERLAP_Z = 100, the head unit's chassis height: 7.24 more than the "
      "two rows need on bosses of 5, which BOSS_H shares out. None = derived, the body's height + 2 x BEZEL_OVERLAP_Z (or what the "
      "control block needs, if that is more). Either way the unit is ONE height front to back "
@@ -118,10 +139,15 @@ TABLE = HEAD_UNIT + [
      "builds the other unit: a front section the face's height and a step up behind it, which "
      "cannot go in from the front. The sketch says 60; under a face standing 2 proud the least "
      "the sketch's layout fits is 64",
-     "follows the head unit's published size (D-542); 60 in the sketch"),
-    ("CONTROLS_ANCHOR", "centre", "", "where the sketch's control block sits on a taller face: "
+     "derived (D-582); 60 in the sketch, 97 the head unit's"),
+    ("SKETCH_CROP", True, "", "True (D-582): the face may lose the sketch's empty bands above "
+     "and below its controls - every control keeps CONTROL_EDGE to the face's edge and the "
+     "frame's land behind it; False: the face is never shorter than the sketch's 60",
+     "his ruling: 'reduce the empty space above and below the switches'"),
+    ("CONTROLS_ANCHOR", "top", "", "where the sketch's control block sits on a taller face: "
      "'centre', 'top' or 'bottom'. Top and bottom put it as near that edge as the box's roof or "
-     "floor behind the face allows", "taste: his to place"),
+     "floor behind the face allows. With SKETCH_CROP, 'top' crops both bands to the least (the "
+     "sketch's block is not centred on its controls)", "taste: his to place"),
     ("FACE_T", _HU["HEAD_UNIT_NOSE_D"], "mm", "faceplate thickness = how far the head unit's "
      "nose stands in front of its chassis (HEAD_UNIT_NOSE_D), so the two faces are in one plane "
      "when the two bodies' fronts are", "follows the head unit's published size (D-542); "
@@ -132,9 +158,10 @@ TABLE = HEAD_UNIT + [
      "HEAD_UNIT_CHASSIS_W) / 2 = -3.5, so the dash plastic covers both units' edges the same "
      "way (D-542). Positive = the face stands proud and covers the opening's edge itself",
      "follows the head unit's published sizes (D-542)"),
-    ("BEZEL_OVERLAP_Z", (_HU["HEAD_UNIT_NOSE_H"] - _HU["HEAD_UNIT_CHASSIS_H"]) / 2.0, "mm",
-     "the same at the top and the bottom: (HEAD_UNIT_NOSE_H - HEAD_UNIT_CHASSIS_H) / 2 = -1.5",
-     "follows the head unit's published sizes (D-542)"),
+    ("BEZEL_OVERLAP_Z", 1.5, "mm",
+     "the same at the top and the bottom. D-582: +1.5, the face standing proud of a single-DIN "
+     "body as a single-DIN nose does of its 50 mm chassis (the head unit's -1.5 was for a "
+     "double-DIN pair)", "a judgement: no single-DIN nose chosen to copy"),
     ("FACE_R", 2.0, "mm", "faceplate's corner radius, used while HEAD_UNIT_NOSE_R is None; when "
      "that is measured it is used instead. 0 = square", "a guess: the head unit's is not "
      "published"),
@@ -172,7 +199,7 @@ TABLE = HEAD_UNIT + [
      "180 x 84.76; D-542: the boards stay as drawn). The board is centred on the face, and the "
      "sketch's control block on the board, so its switches meet their holes. None = a board not "
      "drawn yet: the face less PANEL_MARGIN a side", ""),
-    ("PANEL_H", 84.76, "mm", "panel board height as drawn (the same outline). None = the face "
+    ("PANEL_H", None, "mm", "panel board height as drawn (the same outline). None = the face "
      "less PANEL_MARGIN top and bottom", ""),
     ("PANEL_MARGIN", 6.0, "mm", "ONLY while PANEL_W / PANEL_H are None: panel board outline = "
      "the face less this on every side. It cannot be less than the face's overlap + the wall + "
@@ -208,7 +235,10 @@ TABLE = HEAD_UNIT + [
      "board's own holes are read from board.json)", ""),
 
     # ------------------------------------------------------------------------- the upper row --
-    ("UPPER_CONNECTORS", UPPER_CONNECTORS, "", "the upper row's positions (table above)", ""),
+    ("REAR_HEADER", REAR_HEADER, "", "the one rear header (table above, D-582); None = the "
+     "carrier's own DT13s as board.json draws them", "every number: no part or drawing in hand"),
+    ("UPPER_CONNECTORS", UPPER_CONNECTORS, "", "the upper row's positions (table above); empty "
+     "since D-582", ""),
     ("UPPER_ABOVE", "J9", "", "the lower connector the first upper position stands above", ""),
     ("UPPER_T", 1.6, "mm", "upper connector board thickness", ""),
     ("UPPER_W", 130.0, "mm", "upper connector board width", "Y15's board: 130 x 36, upper-board/"),
@@ -244,10 +274,8 @@ TABLE = HEAD_UNIT + [
     ("LID", 3.0, "mm", "lid, and the front section's roof", ""),
     ("GAP", 1.0, "mm", "a board's edge to the wall beside it", ""),
     ("TOP_GAP", 2.0, "mm", "tallest part to the lid's underside", ""),
-    ("BOSS_H", 8.6, "mm", "carrier bosses, floor to the carrier's underside. 5 is the least "
-     "used before; 8.6 puts half of the 7.24 the head unit's height adds under the carrier and "
-     "half over the upper row, so the carrier, the two rows and the ribbon keep their places "
-     "against the panel board, which is centred on the face", ""),
+    ("BOSS_H", 5.0, "mm", "carrier bosses, floor to the carrier's underside: 5, the least used "
+     "(D-582; it was 8.6 to share out the head unit's height under two rows)", ""),
     ("BOSS_D", 8.0, "mm", "boss diameter", ""),
     ("FRONT_L", 25.0, "mm", "ONLY for the stepped unit (a typed FACE_H lower than the body): "
      "length of the low front section behind the faceplate, the part that sits in the dash "
@@ -282,13 +310,13 @@ TABLE = HEAD_UNIT + [
     ("GASKET_GROOVE_W", 1.6, "mm", "lid's cord-gasket groove, width (as the other lids)", ""),
     ("GASKET_GROOVE_D", 1.2, "mm", "lid's cord-gasket groove, depth", ""),
     ("GASKET_R", 3.0, "mm", "gasket path's corner radius", ""),
-    ("SIDE_SCREWS", [(47.0, 42.0), (97.0, 42.0)], "mm", "head-unit style side fixings, used "
+    ("SIDE_SCREWS", [(47.0, 36.0), (97.0, 36.0)], "mm", "head-unit style side fixings, used "
      "while HEAD_UNIT_SIDE_HOLES is None (when that is measured the bosses stand on the head "
      "unit's own pattern instead, so one pair of brackets or one cage carries both): an insert "
      "boss inside each side wall at each (back from the body's front face, up from its "
      "underside) - the frame the head unit's holes are measured in",
      "placeholders: the head unit's pattern is not published, and what the pair fastens to is "
-     "built with the dash (D-542)"),
+     "built with the dash (D-542); since D-582 above the room kept over the carrier (its Teensy), which spans the body"),
     ("SIDE_SCREW_D", _HU["HEAD_UNIT_SIDE_SCREW_D"], "mm", "side screw thread = the head unit's "
      "(HEAD_UNIT_SIDE_SCREW_D, M5), so the same screw holds both to one bracket",
      "follows the head unit's (D-542)"),
@@ -334,49 +362,73 @@ _ONE = [("DP-DCU-D", 12, True), ("DP-DCU-E", 12, False)]
 # The case as it was before D-542 - a face standing 2 proud of a body only as tall as the rows
 # need, a panel board cut to the face, M3 side screws: the sets written for it keep it, so each
 # still tests the rule it was written for and comes out the size it did (_old merges a set on it).
-_PROUD = {"FACE_H": None, "BEZEL_OVERLAP_X": 2.0, "BEZEL_OVERLAP_Z": 2.0, "FACE_R": 0.0,
-          "PANEL_W": None, "PANEL_H": None, "BOSS_H": 5.0,
-          "SIDE_SCREWS": [(47.0, 38.0), (97.0, 38.0)], "SIDE_SCREW_D": 3.0,
-          "SIDE_INSERT_BORE": 4.0, "SIDE_INSERT_DEPTH": 6.5, "SIDE_BOSS_D": 9.0, "SIDE_BOSS_L": 5.0}
+# The two-row unit of D-480 / D-542 (the carrier's three DT13s, two more on the upper board, the
+# head unit's double-DIN height): the sets written for it keep it, so each still tests its rule.
+_TWO_ROWS = {"REAR_HEADER": None, "UPPER_CONNECTORS": _BOTH, "SKETCH_CROP": False,
+             "CONTROLS_ANCHOR": "centre", "FACE_H": _HU["HEAD_UNIT_NOSE_H"],
+             "BEZEL_OVERLAP_Z": (_HU["HEAD_UNIT_NOSE_H"] - _HU["HEAD_UNIT_CHASSIS_H"]) / 2.0,
+             "PANEL_H": 84.76, "BOSS_H": 8.6, "SIDE_SCREWS": [(47.0, 42.0), (97.0, 42.0)]}
+_PROUD = dict(_TWO_ROWS, **{
+    "FACE_H": None, "BEZEL_OVERLAP_X": 2.0, "BEZEL_OVERLAP_Z": 2.0, "FACE_R": 0.0,
+    "PANEL_W": None, "PANEL_H": None, "BOSS_H": 5.0,
+    "SIDE_SCREWS": [(47.0, 38.0), (97.0, 38.0)], "SIDE_SCREW_D": 3.0,
+    "SIDE_INSERT_BORE": 4.0, "SIDE_INSERT_DEPTH": 6.5, "SIDE_BOSS_D": 9.0, "SIDE_BOSS_L": 5.0})
 
 
 def _old(**over):
     return dict(_PROUD, **over)
 
 
+def _hu(**over):
+    return dict(_TWO_ROWS, **over)
+
+
 _ENV = {"OPENING_W": 190.0, "OPENING_H": 102.0, "DEPTH": 210.0, "BEHIND_H": None}
 SELFTEST = [
-    # ---- the case toward the head unit (D-542): the defaults, and what its new numbers refuse
-    ("the defaults: the head unit's face height and reveal, one height, front install", {},
+    # ---- D-582: single-DIN tall, one rear header - the defaults, and what they refuse
+    ("the defaults: single-DIN tall, one CMC 48 header, the sketch's empty bands cropped", {},
+     "clear"),
+    ("the sketch kept whole (no crop): the face is the sketch's 60", {"SKETCH_CROP": False},
+     "clear"),
+    ("the control block centred: the crop is held to the tighter band", {"CONTROLS_ANCHOR": "centre"},
+     "clear"),
+    ("FACE_H 45: shorter than the controls", {"FACE_H": 45.0}, "refused"),
+    ("the carrier's three DT13s in one row, no header: the one row does not change the height",
+     {"REAR_HEADER": None}, "clear"),
+    ("a side screw boss where the carrier is", {"SIDE_SCREWS": [(47.0, 20.0), (97.0, 36.0)]},
+     "fails"),
+    ("the drawn panel board (84.76 tall) behind a single-DIN face", {"PANEL_H": 84.76}, "refused"),
+    # ---- the case toward the head unit (D-542): the two-row unit, and what its numbers refuse
+    ("the two-row defaults of D-542: the head unit's face height and reveal", _hu(),
      "clear"),
     ("the head unit's side holes measured (an invented pattern): the bosses follow it",
-     {"HEAD_UNIT_SIDE_HOLES": [(40.0, 45.0), (90.0, 45.0)]}, "clear"),
+     _hu(**{"HEAD_UNIT_SIDE_HOLES": [(40.0, 45.0), (90.0, 45.0)]}), "clear"),
     ("the head unit's side holes measured, one where the carrier is",
-     {"HEAD_UNIT_SIDE_HOLES": [(60.0, 16.0), (90.0, 45.0)]}, "fails"),
+     _hu(**{"HEAD_UNIT_SIDE_HOLES": [(60.0, 16.0), (90.0, 45.0)]}), "fails"),
     ("the head unit's side holes measured, one behind the rear plate",
-     {"HEAD_UNIT_SIDE_HOLES": [(40.0, 45.0), (140.0, 45.0)]}, "refused"),
-    ("the head unit's nose radius measured (an invented 4)", {"HEAD_UNIT_NOSE_R": 4.0}, "clear"),
-    ("FACE_R 0: square corners", {"FACE_R": 0.0}, "clear"),
-    ("FACE_R 8: the corner uncovers the frame's opening", {"FACE_R": 8.0}, "refused"),
-    ("FACE_W 180, the sketch's width, under the head unit's reveal", {"FACE_W": 180.0},
+     _hu(**{"HEAD_UNIT_SIDE_HOLES": [(40.0, 45.0), (140.0, 45.0)]}), "refused"),
+    ("the head unit's nose radius measured (an invented 4)", _hu(**{"HEAD_UNIT_NOSE_R": 4.0}), "clear"),
+    ("FACE_R 0: square corners", _hu(**{"FACE_R": 0.0}), "clear"),
+    ("FACE_R 8: the corner uncovers the frame's opening", _hu(**{"FACE_R": 8.0}), "refused"),
+    ("FACE_W 180, the sketch's width, under the head unit's reveal", _hu(**{"FACE_W": 180.0}),
      "refused"),
     ("FACE_H None under the head unit's reveal: the body only as tall as the rows need",
-     {"FACE_H": None}, "clear"),
-    ("FACE_H 80: lower than the drawn panel board", {"FACE_H": 80.0}, "refused"),
-    ("FACE_H 64 with the drawn panel board: no stepped unit without a new one", {"FACE_H": 64.0},
+     _hu(**{"FACE_H": None}), "clear"),
+    ("FACE_H 80: lower than the drawn panel board", _hu(**{"FACE_H": 80.0}), "refused"),
+    ("FACE_H 64 with the drawn panel board: no stepped unit without a new one", _hu(**{"FACE_H": 64.0}),
      "refused"),
     ("FACE_H 64 and a panel board cut to the face's height: the stepped unit under the head "
-     "unit's reveal", {"FACE_H": 64.0, "PANEL_H": None}, "clear"),
+     "unit's reveal", _hu(**{"FACE_H": 64.0, "PANEL_H": None}), "clear"),
     ("the same with its width cut to the face too: the ribbon header is off a 169 board",
-     {"FACE_H": 64.0, "PANEL_W": None, "PANEL_H": None}, "refused"),
-    ("PANEL_W 184: a panel board wider than the body's inside", {"PANEL_W": 184.0}, "refused"),
+     _hu(**{"FACE_H": 64.0, "PANEL_W": None, "PANEL_H": None}), "refused"),
+    ("PANEL_W 184: a panel board wider than the body's inside", _hu(**{"PANEL_W": 184.0}), "refused"),
     ("the face set in 6 a side: the panel board's screws are off it",
-     {"BEZEL_OVERLAP_X": -6.0}, "refused"),
-    ("M3 side screws in the new case", {"SIDE_SCREW_D": 3.0, "SIDE_INSERT_BORE": 4.0,
-                                        "SIDE_INSERT_DEPTH": 6.5}, "clear"),
-    ("SIDE_BOSS_L 4: too short for the M5 insert", {"SIDE_BOSS_L": 4.0}, "refused"),
+     _hu(**{"BEZEL_OVERLAP_X": -6.0}), "refused"),
+    ("M3 side screws in the new case", _hu(**{"SIDE_SCREW_D": 3.0, "SIDE_INSERT_BORE": 4.0,
+                                        "SIDE_INSERT_DEPTH": 6.5}), "clear"),
+    ("SIDE_BOSS_L 4: too short for the M5 insert", _hu(**{"SIDE_BOSS_L": 4.0}), "refused"),
     ("an opening the head-unit-like unit slides into (the face does not cover it: the dash does)",
-     {"ENVELOPE": _ENV}, "clear"),
+     _hu(**{"ENVELOPE": _ENV}), "clear"),
     # ---- the case before D-542: every set below is on _PROUD
     ("the old defaults: FACE_H None, a face 2 proud, one height, front install", _old(), "clear"),
     ("FACE_W 180, the sketch's width", _old(**{"FACE_W": 180.0}), "refused"),

@@ -172,3 +172,4 @@ L-0160,2026-10-14,session,F-019 D-579 Y41 Y49,"plan run: F-019 written (D-579) -
 L-0161,2026-10-14,answers,D-580 01.56 Y50 Y51 F-020,"Chat ruling applied: the page button leaves the Display Unit; a screen knob on the climate unit steps its pages and, after a click, sets its brightness, sent in 0x400 (D-580). Placement on the face is block 01.56; Y50, Y51, F-020 added; Y18 waits on Y50"
 L-0162,2026-10-14,answers,D-581 01.56,Block 01.56 answered: the screen knob goes on the CUR (D-581); Y51 and P219 follow
 L-0163,2026-10-14,session,D-582 Y52,"Y52 done: the Control Unit's five plugs folded into one CMC 48 housing DP-DCU (48 cavities), every live table re-keyed, CMC parts added on hold (D-582)"
+L-0164,2026-10-14,session,D-582 Y53,Y53 done: the Control Unit mock-up single-DIN tall with one rear header - face 181 x 59.3 over a body 188 x 56.3 (D-582)
