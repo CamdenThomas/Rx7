@@ -1719,3 +1719,15 @@ PR-208.02,PR-208,2,Take the reading (PR-024),"Battery fully charged, engine warm
 PR-208.03,PR-208,3,Judge against the criteria,metallic apex seals (1-distributor engines): minimum 6 kg/cm2 (85 psi) and no more than 1.5 kg/cm2 (21 psi) between the three faces at 240-250 rpm; carbon apex seals (2-distributor): 5 and 1.0 at 220-230 rpm; correct for cranking speed by the peak count (SP-014..016),,,p.1-12
 PR-208.04,PR-208,4,Try the recovery run before condemning it,"Run at 5000 rpm with no load 20 times to free sticking side seals, then measure again",in limits after it: return the car,,p.1-13
 PR-208.05,PR-208,5,If it still fails,"Overhaul; on strip measure the gas seal clearances (side and apex seal clearances), which affect compression most",,,p.1-13
+PR-209.01,PR-209,1,Decide repair or replace,"Repairable: a hole under 50 mm across, a crack under 200 mm, or a crack shorter than half the bumper's width; worse is replaced - an adhesive repair of more will not hold its strength or look; scratches in the paint only are touched up",,,p.5-6
+PR-209.02,PR-209,2,Clean up the damage,"Cut the splintered edges of a hole or crack smooth and round with a knife, wide enough to take adhesive; round off each end of a crack",,,p.7
+PR-209.03,PR-209,3,Strip the paint round it,Peel the paint 30-35 mm round the damage with #40-#80 paper,,,p.8
+PR-209.04,PR-209,4,Taper the urethane,"Abrade the urethane round the damage with #36-#50 paper to a taper 10-15 mm wide, about half the thickness deep, so the adhesive has a wide face",,,p.9
+PR-209.05,PR-209,5,Degrease and back it,Degrease front and back with a suitable degreaser; cover the hole or crack from behind with aluminium tape,,no thinners or other chemicals - they damage the urethane,p.9
+PR-209.06,PR-209,6,Fill with the repair agent,"The two-part structural adhesive (main agent and hardener), as flexible as urethane when cured; fill the taper",,,p.10
+PR-209.07,PR-209,7,Cure it,Air: at 18 C it can be abraded after about 120 minutes; forced: at 50 C after about 40 minutes,,the part must not reach 80 C or it deforms,p.10
+PR-209.08,PR-209,8,Shape it,"Abrade the cured repair with #120, #180 then #240 paper; if it is porous, apply agent again as a touch-up",,,p.10
+PR-209.09,PR-209,9,Feather the old paint,Abrade the paint round the repair smooth with #240 paper and degrease,,no thinners,p.11
+PR-209.10,PR-209,10,Prime the repair,"Spot-spray the forced-drying primer or the air-drying primer surfacer on the visible repair; dry the forced type at 80 C (part temperature) for 20 minutes, the air type about 8 hours at 20 C or 1 hour at 60 C",,,p.11-12
+PR-209.11,PR-209,11,Sand and prime the whole face,"Abrade the whole or part of the bumper with #400-#600 paper; where urethane shows, prime again",,,p.12
+PR-209.12,PR-209,12,Top coat with flexible paint,"Degrease and top coat with a soft urethane paint (the forced or air drying type made for urethane, with its softener in the specified proportion)",,a hard body-colour paint cracks and peels on the flexible bumper,p.12

@@ -207,3 +207,4 @@ PR-205,Transmission,Overhaul the automatic transmission on the bench (3N71B),"th
 PR-206,Engine,Judge oil consumption before an overhaul,the owner reports high oil use or white smoke,"measuring jug, dipstick",S-050,
 PR-207,Cooling,"Find the cause of overheating, and test the rotor housings' water seals","the car overheats, loses coolant or blows steam","cooling system pressure tester, cap tester, compressed air with a spark plug hole adapter, tape",S-050,
 PR-208,Engine,Judge low compression before an overhaul,"hard starting, rough idle or low power after ignition, emissions and fuel are cleared",rotary compression tester with recording paper,S-050,
+PR-209,Body,"Repair a hole, crack or gouge in a urethane bumper","a bumper cover is torn, cracked or gouged within the repairable range","knife, sandpaper #36 to #600, aluminium tape, two-part urethane repair adhesive, urethane primer and flexible top coat, heat lamp",S-047,
