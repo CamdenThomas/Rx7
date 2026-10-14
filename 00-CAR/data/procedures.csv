@@ -43,3 +43,39 @@ PR-041,Cooling,Check the radiator and cap and pressure-test the cooling system,c
 PR-042,Cooling,Remove and refit the radiator (1985 manual),radiator leaking or to be cleaned,,S-002,other-car
 PR-043,Cooling,Check the water pump on the engine,"coolant leak at the pump, or bearing noise",dial indicator,S-002,
 PR-044,Cooling,"Remove, overhaul and refit the water pump (1985 manual)","pump shaft play over the limit, leaking seal or rough bearing","press, pulley boss adapter 49 1975 145, pieces of pipe, new gasket",S-002,other-car
+PR-045,Engine,Run the emission checking procedure (1985 manual),when the emission control system is in doubt,"tachometer, two 12 V 3.4 W test lamps, voltmeter, jumper wires",S-002,other-car
+PR-046,Engine,Check the air pump (1985 manual),air injection in doubt,"air pump gauge set 49 2113 0108, tachometer",S-002,other-car
+PR-047,Engine,Replace the air pump (1985 manual),pump noisy or below pressure,,S-002,other-car
+PR-048,Engine,"Check, adjust and replace the air pump drive belt (1985 manual)","belt noisy, loose or worn",,S-002,other-car
+PR-049,Engine,Check and replace the air injection check valves (1985 manual),exhaust gas reaching the air injection hoses,tachometer,S-002,other-car
+PR-050,Engine,Check and replace the catalytic converters (1985 manual),exhaust leak or converter damage,,S-002,other-car
+PR-051,Engine,Check and replace the air control valve (1985 manual),secondary air control in doubt,tachometer,S-002,other-car
+PR-052,Engine,Check the switching solenoid valve and its signal (1985 manual),secondary air control in doubt,"tachometer, jumper wires, battery",S-002,other-car
+PR-053,Engine,Check the relief solenoid valve and its signal (1985 manual),secondary air control in doubt,"tachometer, jumper wires, battery",S-002,other-car
+PR-054,Engine,Check and replace the port air solenoid valve (1985 manual),secondary air control in doubt,"tachometer, voltmeter, jumper wire, rolling road",S-002,other-car
+PR-055,Engine,Check and replace the port air switching valve (1985 manual),secondary air control in doubt,"tachometer, voltmeter, jumper wire, rolling road",S-002,other-car
+PR-056,Engine,Check and replace the catalyst thermo sensor (1985 manual),secondary air control in doubt,ohmmeter,S-002,other-car
+PR-057,Engine,Check the heat hazard warning system and its sensor (1985 manual),heat hazard warning light in doubt,"jumper wire, test lamp, battery, thermometer, oil bath, aluminium foil",S-002,other-car
+PR-058,Engine,Check the No. 1 and No. 2 water temperature switches (1985 manual),"choke, hot start or emission control in doubt","ohmmeter, thermometer, water bath",S-002,other-car
+PR-059,Fuel,"Check the choke switch, choke magnet and choke relay (1985 manual, factory carburettor)",choke not holding or not releasing,"ohmmeter, battery",S-002,replaced
+PR-060,Engine,Check the main air bleed control solenoid signal (1985 manual),mixture control in doubt,"tachometer, voltmeter, jumper wire, rolling road",S-002,other-car
+PR-061,Engine,"Check the shutter solenoid valve and its signal, and replace the coasting valve (1985 manual)",deceleration control in doubt,"tachometer, battery",S-002,other-car
+PR-062,Engine,Check the No. 1 and No. 2 anti-afterburn valves (1985 manual),afterburn on deceleration,,S-002,other-car
+PR-063,Fuel,"Check and adjust the dash pot (1985 manual, factory carburettor)",idle hanging or stalling on deceleration,tachometer,S-002,replaced
+PR-064,Ignition,Check the leading and trailing vacuum control solenoid valves and their signals (1985 manual),vacuum advance in doubt,"tachometer, jumper wire, battery",S-002,other-car
+PR-065,Fuel,Leak-test the evaporative line (1985 manual),fuel smell or a collapsed tank,"U-tube water pressure gauge, low-pressure compressed air",S-002,other-car
+PR-066,Fuel,Check and replace the check and cut valve (1985 manual),a collapsed tank or fuel smell,pressure gauge,S-002,
+PR-067,Fuel,"Check the charcoal canister, purge valve and air vent solenoid valve (1985 manual)",fuel smell or rough idle,,S-002,other-car
+PR-068,Fuel,Test the fuel pump pressure and volume (1985 manual),hard starting or fuel starvation at speed,"pressure gauge, hose restrictor, graduated container, jumper wire",S-002,other-car
+PR-069,Fuel,Replace the fuel pump (1985 manual),pump failed its test,,S-002,other-car
+PR-070,Fuel,Replace the fuel filter (1985 manual),at the scheduled fuel filter change,,S-002,
+PR-071,Fuel,"Remove, check and refit the fuel tank (1985 manual)","tank leaking, corroded or to be cleaned",,S-002,
+PR-072,Fuel,Check the fuel lines and replace the fuel cut valve and the fuel check valve (1985 manual),"fuel leak, or dirt or water in the fuel",,S-002,
+PR-073,Fuel,"Check the intake air control valve, idle compensator and altitude compensator (1985 manual, factory air cleaner and carburettor)",rough or wandering idle,,S-002,replaced
+PR-074,Fuel,"Check the accelerator linkage and adjust the cable (1985 manual, factory carburettor)","pedal low, slack or not reaching full throttle",,S-002,replaced
+PR-075,Fuel,"Remove and refit the carburettor (1985 manual, factory carburettor)",carburettor overhaul,,S-002,replaced
+PR-076,Fuel,"Strip, inspect, assemble and set the carburettor (1985 manual, factory carburettor)",carburettor overhaul,vacuum pump,S-002,replaced
+PR-077,Fuel,"Check the carburettor heater, choke diaphragms and choke delay valve (1985 manual, factory carburettor)",poor cold running,"tachometer, voltmeter, ohmmeter, jumper wire",S-002,replaced
+PR-078,Fuel,"Adjust the idle mixture (1985 manual, factory carburettor)",after a carburettor overhaul only,tachometer,S-002,replaced
+PR-079,Fuel,"Check the automatic choke release and the hot start assist (1985 manual, factory carburettor)","choke not releasing, or hard hot starting","tachometer, ohmmeter, battery",S-002,replaced
+PR-080,Fuel,"Check and adjust the throttle opener and the air conditioning solenoid valve (1985 manual, factory carburettor)",idle drops with the air conditioner on,"tachometer, voltmeter, battery",S-002,replaced

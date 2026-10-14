@@ -11,3 +11,4 @@ L-0009,2026-10-13,plan,P04 P83 D-544 D-523,"P04: 1985 manual Section 1 Engine pa
 L-0010,2026-10-13,plan,P05 D-544 D-523,"P05: 1985 manual Section 2 Lubrication parsed - 5 specs, 6 procedures (37 steps); PDF out of git"
 L-0011,2026-10-13,plan,P06 D-544 D-523,"P06: 1985 manual Section 3 Cooling parsed - 5 specs, 6 procedures (52 steps); PDF out of git"
 L-0012,2026-10-13,apply,D-545,"Block 06.04 answered (a): poppler install ruled, D-545; brew install was refused by the harness, not yet installed"
+L-0013,2026-10-13,plan,P07 D-546 D-523,"P07: 1985 manual Section 4A Fuel and Emissions parsed - 33 specs, 36 procedures (331 steps); PDF out of git; add --rows in the tool"

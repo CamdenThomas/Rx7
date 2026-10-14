@@ -343,3 +343,334 @@ PR-044.15,PR-044,15,"Connect both radiator hoses and refit the pulleys, the fan 
 PR-044.16,PR-044,16,Set the tension of each belt,Alternator SP-025; air pump SP-761; A/C SP-1001.,,,p.3-10
 PR-044.17,PR-044,17,"Reconnect the water temperature switch, refit the air cleaner and fill the cooling system",Mixture SP-1572.,,,p.3-10
 PR-009.03,PR-009,3,"Start the engine, bleed the air from the coolant passages and top up",The engine itself drains at SP-1573; close and tighten that plug before filling. Recommended mixture SP-1572.,,,p.3-3
+PR-045.01,PR-045,1,Warm the engine and let it idle,,,,p.4A-9
+PR-045.02,PR-045,2,Connect a tachometer,,,,p.4A-9
+PR-045.03,PR-045,3,Set the idle speed with the throttle adjust screw,SP-018; 750 rpm in neutral on a manual car.,,,p.4A-9
+PR-045.04,PR-045,4,Disconnect the brown connector and put the two test lamps between the green checking connector (LgY and GY) and the battery,The figure shows the connectors; it was not read.,,,p.4A-9
+PR-045.05,PR-045,5,Drop the engine quickly from 3000 rpm to idle and watch the lamps,SP-1549.,Both lamps light at the same moment.,,p.4A-9
+PR-045.06,PR-045,6,"If they do not, take the cap off the throttle sensor adjusting screw, turn the screw and repeat",,,,p.4A-10
+PR-045.07,PR-045,7,"Refit the cap, remove the test lamps and reconnect the brown connector",,,,p.4A-10
+PR-045.08,PR-045,8,Disconnect the air hose (air pump to air control valve) at the air pump and put a finger over the hose,,,,p.4A-10
+PR-045.09,PR-045,9,Take the engine above 3000 rpm and drop it quickly,,Air is sucked into the hose for a few seconds while decelerating (No.1 anti-afterburn valve).,,p.4A-10
+PR-045.10,PR-045,10,Reconnect the hose to the air pump,,,,p.4A-10
+PR-045.11,PR-045,11,Disconnect the air hose (air cleaner to No.2 anti-afterburn valve) at the air cleaner and put a finger over it,,,,p.4A-10
+PR-045.12,PR-045,12,Take the engine above 3000 rpm and drop it quickly,,Air is sucked into the hose for a few seconds while decelerating.,,p.4A-10
+PR-045.13,PR-045,13,Reconnect the hose to the air cleaner,,,,p.4A-10
+PR-045.14,PR-045,14,Disconnect the vacuum sensing tube (leading vacuum advance diaphragm to pipe) at the pipe and put a finger over the pipe,,No air is sucked in at idle.,,p.4A-11
+PR-045.15,PR-045,15,Raise the engine speed slowly,SP-1584.,Air is sucked into the pipe from 1000 to 1200 rpm up.,,p.4A-11
+PR-045.16,PR-045,16,Drop the engine quickly from 4000 rpm,,No air is sucked in while decelerating.,,p.4A-11
+PR-045.17,PR-045,17,Reconnect the tube,,,,p.4A-11
+PR-045.18,PR-045,18,Disconnect the vacuum sensing tube (trailing vacuum advance diaphragm to pipe) at the pipe and put a finger over the pipe,,No air is sucked in at idle.,,p.4A-11
+PR-045.19,PR-045,19,Raise the engine speed,SP-1585.,Air is sucked into the pipe from 2900 to 3100 rpm up.,,p.4A-11
+PR-045.20,PR-045,20,Drop the engine quickly from 4000 rpm,,No air is sucked in while decelerating.,,p.4A-11
+PR-045.21,PR-045,21,Reconnect the tube,,,,p.4A-11
+PR-045.22,PR-045,22,Disconnect the throttle sensor connector and jumper terminals A and C of the connector,,,,p.4A-11
+PR-045.23,PR-045,23,"Put a voltmeter between the main air bleed control solenoid (Br) terminal and ground, raise the engine speed and read it",SP-1581.,"About 12 V to 3000 rpm, below 2 V from 3000 to 4000, about 12 V above 4000.",,p.4A-11
+PR-045.24,PR-045,24,"Move the voltmeter to the port air solenoid (GB) terminal, raise the engine speed and read it",SP-1582.,"Below 2 V to 3000 rpm, about 12 V from 3000 to 4000, below 2 V above 4000.",,p.4A-12
+PR-045.25,PR-045,25,"Move the voltmeter to the port air switching valve (R) terminal, raise the engine speed and read it, then remove the voltmeter",SP-1583.,"About 12 V to 3000 rpm, below 2 V from 3000 to 4000, about 12 V above 4000.",,p.4A-12
+PR-045.26,PR-045,26,Disconnect the vacuum sensing tube (switching solenoid valve to pipe) at the pipe and put a finger over the tube,,Air is sucked into the tube at idle.,,p.4A-12
+PR-045.27,PR-045,27,Raise the engine speed slowly,SP-1586.,No air is sucked in from 1000 to 1200 rpm up.,,p.4A-12
+PR-045.28,PR-045,28,Reconnect the tube,,,,p.4A-12
+PR-045.29,PR-045,29,Disconnect the vacuum sensing tube (relief solenoid valve to pipe) at the pipe and put a finger over the tube,,Air is sucked into the tube at idle.,,p.4A-12
+PR-045.30,PR-045,30,Raise the engine speed,SP-933.,No air is sucked in from 3600 to 4400 rpm up.,,p.4A-12
+PR-045.31,PR-045,31,Disconnect the catalyst thermo sensor connector and raise the engine speed slowly,SP-1587.,No air is sucked in from 1000 to 1200 rpm up.,,p.4A-13
+PR-045.32,PR-045,32,Reconnect the catalyst thermo sensor,,,,p.4A-13
+PR-045.33,PR-045,33,Remove the jumper from the throttle sensor connector and reconnect the throttle sensor,,,,p.4A-13
+PR-045.34,PR-045,34,Disconnect the heat hazard sensor connector and jumper both its terminals,,No air is sucked into the tube at any engine speed.,,p.4A-13
+PR-045.35,PR-045,35,Remove the jumper and reconnect the heat hazard sensor,,,,p.4A-13
+PR-045.36,PR-045,36,Stop the engine and disconnect the No.2 water temperature switch connector on the radiator,,,,p.4A-13
+PR-045.37,PR-045,37,Disconnect the No.1 water temperature switch connector and jumper both its terminals,,,,p.4A-13
+PR-045.38,PR-045,38,"Pull the choke knob out about 15 mm (0.6 in), start the engine and raise the speed slowly",SP-1587.,No air is sucked in from 1000 to 1200 rpm up.,,p.4A-13
+PR-045.39,PR-045,39,Reconnect the vacuum sensing tube to the pipe,,,,p.4A-13
+PR-045.40,PR-045,40,"Stop the engine, reconnect the No.2 water temperature switch, remove the jumper and reconnect the No.1 switch",,,,p.4A-13
+PR-045.41,PR-045,41,"Start the engine and let it idle; on an automatic, disconnect the brown connector",,,,p.4A-14
+PR-045.42,PR-045,42,Disconnect the air hose (coasting valve to air cleaner) at the air cleaner and put a finger over it,,,,p.4A-14
+PR-045.43,PR-045,43,Take the engine above 3000 rpm and drop it quickly,SP-1588.,Air is sucked into the hose until the speed falls to 1000 to 1200 rpm.,,p.4A-14
+PR-045.44,PR-045,44,"Reconnect the hose; on an automatic, reconnect the brown connector",The richer solenoid check that follows on the page is for manual cars only.,,,p.4A-14
+PR-045.45,PR-045,45,"Disconnect the hose (purge valve to oil filler pipe) at the purge valve, put a finger over the valve's port and raise the engine to 2000 rpm",SP-1073.,Air is sucked into the port.,,p.4A-15
+PR-045.46,PR-045,46,"Reconnect the hose, stop the engine and remove the tachometer",,,,p.4A-15
+PR-046.01,PR-046,1,Warm the engine to normal operating temperature,,,,p.4A-18
+PR-046.02,PR-046,2,Inspect the hoses and connections for leaks,,,,p.4A-18
+PR-046.03,PR-046,3,Listen to the air pump,,No excessive noise; replace the pump if there is.,,p.4A-18
+PR-046.04,PR-046,4,Check the air pump drive belt tension and adjust it if needed,SP-1595.,,,p.4A-18
+PR-046.05,PR-046,5,Disconnect the air hose (air pump to air control valve) at the air control valve,,,,p.4A-18
+PR-046.06,PR-046,6,Connect the air pump gauge set to the hose and clamp the hose to the gauge,,,,p.4A-18
+PR-046.07,PR-046,7,"Connect a tachometer, start the engine and let it idle",,,,p.4A-18
+PR-046.08,PR-046,8,Read the pressure on the gauge,SP-903.,"More than 11.5 kPa at 800 rpm; if not, replace the pump and test again.",,p.4A-18
+PR-047.01,PR-047,1,Remove the air cleaner,,,,p.4A-19
+PR-047.02,PR-047,2,Disconnect the air inlet and outlet hoses,,,,p.4A-19
+PR-047.03,PR-047,3,"Remove the air pump strap bolt, then the mounting bolt",,,,p.4A-19
+PR-047.04,PR-047,4,Slip the drive belt off and lift the pump out,,,,p.4A-19
+PR-047.05,PR-047,5,Fit the pump in the reverse order and set the belt tension,SP-1595.,,,p.4A-19
+PR-048.01,PR-048,1,"Check the belt for cracks, stretch, deterioration and oil or grease; replace it if needed",,,,p.4A-19
+PR-048.02,PR-048,2,"If the belt is noisy, check for looseness and misaligned pulleys",,,,p.4A-19
+PR-048.03,PR-048,3,"To adjust, loosen the air pump strap bolt and mounting bolt",,,,p.4A-19
+PR-048.04,PR-048,4,Move the pump toward or away from the engine until the tension is right,SP-1595.,11 to 13 mm when pressed at 10 kg.,,p.4A-19
+PR-048.05,PR-048,5,Tighten the mounting and strap bolts,,,,p.4A-19
+PR-048.06,PR-048,6,"To replace, loosen the air conditioner and power steering belts (if fitted) until the air pump belt can come off",,,,p.4A-19
+PR-048.07,PR-048,7,Loosen the strap and mounting bolts and move the pump until the belt comes off,,,,p.4A-19
+PR-048.08,PR-048,8,Fit the new belt and set its tension,SP-1595.,,,p.4A-19
+PR-048.09,PR-048,9,Refit the air conditioner and power steering belts and set their tension,SP-1001.,10 to 12 mm when pressed at 10 kg.,,p.4A-19
+PR-049.01,PR-049,1,Intake manifold valve: disconnect the air hose (air pump to air control valve) at the air control valve,,,,p.4A-20
+PR-049.02,PR-049,2,"Connect a tachometer, start the engine and disconnect the switching solenoid valve connector",,,,p.4A-20
+PR-049.03,PR-049,3,Raise the engine to 1500 rpm and watch the air inlet fitting on the air control valve,SP-918.,"No exhaust gas leaks out; if it does, replace the check valve.",,p.4A-20
+PR-049.04,PR-049,4,"To replace it, remove the air control valve, then the gasket and the check valve, and refit in the reverse order",The air control valve comes off as in PR-051.,,,p.4A-20
+PR-049.05,PR-049,5,Converter valve: disconnect the air hose (intake manifold to catalytic converter) at the rear of the intake manifold,,,,p.4A-20
+PR-049.06,PR-049,6,"Connect a tachometer, start the engine, raise it to 1500 rpm on the throttle and hold a finger at the air pipe opening",SP-951.,"No exhaust gas leaks back; if it does, replace the check valve.",,p.4A-20
+PR-049.07,PR-049,7,"To replace it, unclip and disconnect the air hose from the check valve",,,,p.4A-20
+PR-049.08,PR-049,8,Loosen the split air pipe bolts and remove the air pipe assembly,,,,p.4A-20
+PR-049.09,PR-049,9,Fit the new check valve and pipe assembly in the reverse order,,,,p.4A-20
+PR-050.01,PR-050,1,Look over the pre-monolith and main monolith converters for cracks or damage,,,,p.4A-21
+PR-050.02,PR-050,2,Check their connections are tight,,,,p.4A-21
+PR-050.03,PR-050,3,"Start the engine, let it idle and check the converter connections for exhaust leaks",,,,p.4A-21
+PR-050.04,PR-050,4,"To replace, remove the lower covers from the pre-monolith converter, the rear of the exhaust pipe and the main converter",,,,p.4A-21
+PR-050.05,PR-050,5,Remove the catalyst thermo sensor,,,,p.4A-21
+PR-050.06,PR-050,6,Remove the split air pipe from the main converter,,,,p.4A-21
+PR-050.07,PR-050,7,Remove the converter brackets,,,,p.4A-21
+PR-050.08,PR-050,8,Loosen the nuts joining the main converter's front flange to the No.2 pre-monolith converter,,,,p.4A-21
+PR-050.09,PR-050,9,Support the converters,,,"Unsupported, they drop.",p.4A-21
+PR-050.10,PR-050,10,Loosen the nuts joining the rear of the exhaust pipe to the silencer,,,,p.4A-21
+PR-050.11,PR-050,11,Remove the air pipe from the pre-monolith converter,,,,p.4A-21
+PR-050.12,PR-050,12,Lower the exhaust pipe and main converter assembly from the car,,,,p.4A-21
+PR-050.13,PR-050,13,Remove the pre-monolith converters by their nuts,,,,p.4A-21
+PR-050.14,PR-050,14,Fit the converters in the reverse order,,,,p.4A-21
+PR-051.01,PR-051,1,Warm the engine and connect a tachometer,,,,p.4A-23
+PR-051.02,PR-051,2,Disconnect the air hose (air cleaner to air control valve) at the air cleaner and put a finger over it,,,,p.4A-23
+PR-051.03,PR-051,3,Raise the engine speed,SP-1589.,Air flows out from 1500 to 2500 rpm up.,,p.4A-23
+PR-051.04,PR-051,4,Let the engine idle and disconnect the vacuum sensing tube (relief solenoid valve to pipe) at the pipe,,Air flows out of the air hose.,,p.4A-23
+PR-051.05,PR-051,5,Reconnect the tube and the air hose,,,,p.4A-23
+PR-051.06,PR-051,6,Disconnect the split air hose (check valve to intake manifold) at the intake manifold and put a finger over the port,,,,p.4A-23
+PR-051.07,PR-051,7,Disconnect the vacuum sensing tube (switching solenoid valve to pipe) at the pipe,,Air flows out of the port.,,p.4A-23
+PR-051.08,PR-051,8,Reconnect the tube and the split air hose; replace the air control valve if it failed a check,,,,p.4A-23
+PR-051.09,PR-051,9,"To replace, remove the hot air duct and disconnect the air hose",,,,p.4A-24
+PR-051.10,PR-051,10,Disconnect the port air solenoid connector,,,,p.4A-24
+PR-051.11,PR-051,11,Remove the air control valve and fit the new one in the reverse order,,,,p.4A-24
+PR-052.01,PR-052,1,"Warm the engine, let it idle and connect a tachometer",,,,p.4A-24
+PR-052.02,PR-052,2,Disconnect the throttle sensor connector and jumper terminals A and C of the connector,,,,p.4A-24
+PR-052.03,PR-052,3,Disconnect the vacuum sensing tube (switching solenoid valve to pipe) at the pipe and put a finger over the tube,,Air is sucked into the tube at idle.,,p.4A-24
+PR-052.04,PR-052,4,Raise the engine speed slowly,SP-1586.,No air is sucked in from 1000 to 1200 rpm up.,,p.4A-24
+PR-052.05,PR-052,5,Disconnect the No.1 water temperature switch connector and jumper both its terminals,,,,p.4A-24
+PR-052.06,PR-052,6,Pull the choke knob out about 15 mm (0.6 in) and raise the engine speed,SP-1586.,Air is sucked in at any speed.,,p.4A-25
+PR-052.07,PR-052,7,Remove the jumper and reconnect the water temperature switch,,,,p.4A-25
+PR-052.08,PR-052,8,Remove the jumper from the throttle sensor connector and reconnect the throttle sensor,,,,p.4A-25
+PR-052.09,PR-052,9,Raise the engine speed slowly,SP-1586.,Air is sucked in at any speed (not when the engine is accelerated quickly).,,p.4A-25
+PR-052.10,PR-052,10,Reconnect the vacuum sensing tube,,,,p.4A-25
+PR-052.11,PR-052,11,Valve: disconnect the vacuum sensing tubes from the solenoid valve and the vacuum pipe and blow into the valve through tube B,SP-932.,Air comes out of port C.,,p.4A-25
+PR-052.12,PR-052,12,"Disconnect the valve's connector, put battery power on its terminals and blow into tube B again",SP-932.,Air comes out of port A.,,p.4A-25
+PR-053.01,PR-053,1,"Warm the engine, let it idle and connect a tachometer",,,,p.4A-26
+PR-053.02,PR-053,2,Disconnect the throttle sensor connector and jumper terminals A and C of the connector,,,,p.4A-26
+PR-053.03,PR-053,3,Disconnect the vacuum sensing tube (relief solenoid valve to pipe) at the pipe and put a finger over the tube,,Air is sucked into the tube at idle.,,p.4A-26
+PR-053.04,PR-053,4,Raise the engine speed,SP-933.,No air is sucked in from 3600 to 4400 rpm up.,,p.4A-26
+PR-053.05,PR-053,5,Disconnect the catalyst thermo sensor connector and raise the engine speed slowly,SP-1587.,No air is sucked in from 1000 to 1200 rpm up.,,p.4A-26
+PR-053.06,PR-053,6,Reconnect the catalyst thermo sensor,,,,p.4A-26
+PR-053.07,PR-053,7,Remove the jumper from the throttle sensor connector and reconnect the throttle sensor,,,,p.4A-26
+PR-053.08,PR-053,8,Disconnect the heat hazard sensor connector and jumper both its terminals,,No air is sucked in at any engine speed.,,p.4A-26
+PR-053.09,PR-053,9,Remove the jumper and reconnect the heat hazard sensor,,,,p.4A-26
+PR-053.10,PR-053,10,Stop the engine and disconnect the No.2 water temperature switch connector on the radiator,,,,p.4A-27
+PR-053.11,PR-053,11,Disconnect the No.1 water temperature switch connector and jumper both its terminals,,,,p.4A-27
+PR-053.12,PR-053,12,"Pull the choke knob out about 15 mm (0.6 in), start the engine and raise the speed slowly",SP-1587.,No air is sucked in from 1000 to 1200 rpm up.,,p.4A-27
+PR-053.13,PR-053,13,Reconnect the vacuum sensing tube to the pipe,,,,p.4A-27
+PR-053.14,PR-053,14,"Stop the engine, reconnect the No.2 water temperature switch, remove the jumper and reconnect the No.1 switch",,,,p.4A-27
+PR-053.15,PR-053,15,Valve: disconnect the vacuum sensing tubes from the solenoid valve and the vacuum pipe and blow into the valve through tube B,SP-932.,Air comes out of port C.,,p.4A-27
+PR-053.16,PR-053,16,"Disconnect the valve's connector, put battery power on its terminals and blow into tube B again",SP-932.,Air comes out of port A.,,p.4A-27
+PR-054.01,PR-054,1,"Warm the engine, let it idle and connect a tachometer",,,,p.4A-28
+PR-054.02,PR-054,2,Disconnect the throttle sensor connector and jumper terminals A and C of the connector,,,,p.4A-28
+PR-054.03,PR-054,3,"Put a voltmeter between the port air solenoid (GB) terminal and ground, raise the engine speed and read it",SP-1582.,"Below 2 V to 3000 rpm, about 12 V from 3000 to 4000, below 2 V above 4000.",,p.4A-28
+PR-054.04,PR-054,4,Remove the jumper and reconnect the throttle sensor,,,,p.4A-28
+PR-054.05,PR-054,5,Put the car on a rolling road,,,Secure the car with wire rope so it cannot move forward.,p.4A-28
+PR-054.06,PR-054,6,Raise the road speed and read the voltmeter,SP-1582.,"Below 2 V under 50 mph, about 12 V above.",,p.4A-28
+PR-054.07,PR-054,7,"To replace, disconnect the valve's connector, remove the valve and fit the new one in the reverse order",,,,p.4A-28
+PR-055.01,PR-055,1,"Warm the engine, let it idle and connect a tachometer",,,,p.4A-29
+PR-055.02,PR-055,2,Disconnect the throttle sensor connector and jumper terminals A and C of the connector,,,,p.4A-29
+PR-055.03,PR-055,3,"Put a voltmeter between the port air switching valve (R) terminal and ground, raise the engine speed and read it",SP-1583.,"About 12 V to 3000 rpm, below 2 V from 3000 to 4000, about 12 V above 4000.",,p.4A-29
+PR-055.04,PR-055,4,Remove the jumper and reconnect the throttle sensor,,,,p.4A-29
+PR-055.05,PR-055,5,Put the car on a rolling road,,,Secure the car with wire rope so it cannot move forward.,p.4A-29
+PR-055.06,PR-055,6,Raise the road speed and read the voltmeter,SP-1583.,"About 12 V under 50 mph, below 2 V above.",,p.4A-29
+PR-055.07,PR-055,7,"To replace, disconnect the valve's connector, remove the valve and fit the new one in the reverse order",,,,p.4A-29
+PR-056.01,PR-056,1,Disconnect the catalyst thermo sensor connector,,,,p.4A-30
+PR-056.02,PR-056,2,Put an ohmmeter across the sensor's terminals,,"Continuity; if none, replace the sensor.",,p.4A-30
+PR-056.03,PR-056,3,"To replace, loosen the sensor's mounting nuts, remove it and fit the new one in the reverse order",,,,p.4A-30
+PR-057.01,PR-057,1,Turn the ignition on,,The heat hazard warning light comes on.,,p.4A-30
+PR-057.02,PR-057,2,Start the engine,,The warning light goes off.,,p.4A-30
+PR-057.03,PR-057,3,Disconnect the heat hazard sensor connector and jumper both its terminals,,The warning light comes on.,,p.4A-31
+PR-057.04,PR-057,4,"Sensor: remove the floor mat, disconnect the sensor's connector, undo its screws and remove it",,,,p.4A-31
+PR-057.05,PR-057,5,Wrap the sensor and a thermometer in aluminium foil to keep the oil out and put them in oil,,,,p.4A-31
+PR-057.06,PR-057,6,Connect a test lamp and battery across the sensor's terminals,The figure shows the hook-up; it was not read.,,,p.4A-31
+PR-057.07,PR-057,7,Heat the oil slowly,SP-1578.,"The lamp lights when the foil reaches 130 +/- 10 C; if not, replace the sensor.",Never heat the oil above 150 C.,p.4A-31
+PR-057.08,PR-057,8,Refit the sensor in the reverse order,,,,p.4A-31
+PR-058.01,PR-058,1,Remove the No.1 switch from the water pump and the No.2 switch from the radiator lower tank,,,,p.4A-32
+PR-058.02,PR-058,2,Put the switch in water with a thermometer and heat the water slowly,,,,p.4A-32
+PR-058.03,PR-058,3,No.1 switch: note the temperature at which continuity between its terminals stops,SP-908.,No continuity above 70 +/- 6.5 C.,,p.4A-32
+PR-058.04,PR-058,4,No.2 switch: note the temperature at which continuity begins,SP-1592.,Continuity above 15 +/- 3 C.,,p.4A-32
+PR-059.01,PR-059,1,Disconnect the choke switch connector,,,,p.4A-32
+PR-059.02,PR-059,2,Check continuity between the numbered terminals with the knob in and pulled out,SP-1593.,,,p.4A-32
+PR-059.03,PR-059,3,Disconnect the choke relay connector,,,,p.4A-32
+PR-059.04,PR-059,4,"Check continuity between the relay's numbered terminals without power, then with battery power",SP-1594.,,,p.4A-32
+PR-060.01,PR-060,1,"Warm the engine, let it idle and connect a tachometer",,,,p.4A-33
+PR-060.02,PR-060,2,Disconnect the throttle sensor connector and jumper terminals A and C of the connector,,,,p.4A-33
+PR-060.03,PR-060,3,"Put a voltmeter between the main air bleed control solenoid (Br) terminal and ground, raise the engine speed and read it",SP-1581.,"About 12 V to 3000 rpm, below 2 V from 3000 to 4000, about 12 V above 4000.",,p.4A-33
+PR-060.04,PR-060,4,Remove the jumper and reconnect the throttle sensor,,,,p.4A-33
+PR-060.05,PR-060,5,Put the car on a rolling road,,,Secure the car with wire rope so it cannot move forward.,p.4A-34
+PR-060.06,PR-060,6,Raise the road speed and read the voltmeter,SP-1581.,"About 12 V under 50 mph, below 2 V above.",,p.4A-34
+PR-061.01,PR-061,1,"Warm the engine, let it idle and connect a tachometer; on an automatic, disconnect the brown connector",The figure shows which connector; it was not read.,,,p.4A-38
+PR-061.02,PR-061,2,Disconnect the air hose (coasting valve to air cleaner) at the air cleaner and put a finger over it,,No air is sucked in at idle.,,p.4A-38
+PR-061.03,PR-061,3,Take the engine above 3000 rpm and drop it quickly,SP-1588.,Air is sucked into the hose until the speed falls to 1000 to 1200 rpm.,,p.4A-38
+PR-061.04,PR-061,4,Valve: disconnect the vacuum sensing tubes from the solenoid valve and the vacuum pipe and blow into the valve through tube B,SP-1590.,Air comes out of port C.,,p.4A-38
+PR-061.05,PR-061,5,"Disconnect the valve's connector, put battery power on its terminals and blow into tube B again",SP-1590.,Air comes out of the air filter A.,,p.4A-38
+PR-061.06,PR-061,6,Coasting valve: remove the air cleaner and the carburettor,PR-075.,,,p.4A-39
+PR-061.07,PR-061,7,Disconnect the air hose and the vacuum sensing tube from the coasting valve,,,,p.4A-39
+PR-061.08,PR-061,8,"Loosen its mounting bolts, remove it and fit the new one in the reverse order",,,,p.4A-39
+PR-062.01,PR-062,1,Warm the engine and let it idle,,,,p.4A-39
+PR-062.02,PR-062,2,No.1: disconnect the air hose (air control valve to air pump) at the air pump and put a finger over it,,No air is sucked in at idle.,,p.4A-39
+PR-062.03,PR-062,3,Take the engine above 3000 rpm and drop it quickly,,"Air is sucked in for a few seconds while decelerating; if not, replace the air control valve.",,p.4A-39
+PR-062.04,PR-062,4,No.2: disconnect the air hose (air cleaner to No.2 anti-afterburn valve) at the air cleaner and put a finger over it,,No air is sucked in at idle.,,p.4A-39
+PR-062.05,PR-062,5,Take the engine above 3000 rpm and drop it quickly,,"Air is sucked in for a few seconds while decelerating; if not, replace the No.2 anti-afterburn valve.",,p.4A-39
+PR-063.01,PR-063,1,Remove the air cleaner,,,,p.4A-40
+PR-063.02,PR-063,2,Check the dash pot rod does not keep the throttle lever off the idle stop,,,,p.4A-40
+PR-063.03,PR-063,3,Open the throttle lever fully and quickly,,The dash pot rod extends quickly.,,p.4A-40
+PR-063.04,PR-063,4,Release the throttle lever,,It returns slowly to idle after touching the rod.,,p.4A-40
+PR-063.05,PR-063,5,"Connect a tachometer, start and warm the engine and confirm the idle speed",SP-018.,,,p.4A-40
+PR-063.06,PR-063,6,"Move the throttle lever off the dash pot rod, then lower the engine speed slowly and note the speed at which the lever just touches the rod",SP-033.,3800 to 4200 rpm.,,p.4A-40
+PR-063.07,PR-063,7,"If it is out, loosen the lock nut and turn the dash pot diaphragm",,,,p.4A-40
+PR-064.01,PR-064,1,Warm the engine and connect a tachometer,,,,p.4A-41
+PR-064.02,PR-064,2,Disconnect the vacuum sensing tube (leading vacuum advance diaphragm to pipe) at the pipe and put a finger over the pipe,,No air is sucked in at idle.,,p.4A-41
+PR-064.03,PR-064,3,Raise the engine speed slowly,SP-1584.,Air is sucked into the pipe from 1000 to 1200 rpm up.,,p.4A-41
+PR-064.04,PR-064,4,Drop the engine quickly from 4000 rpm,,No air is sucked in while decelerating.,,p.4A-41
+PR-064.05,PR-064,5,Automatic: let the engine idle with a drive range selected,SP-1584. The page names the lever positions; the OCR text lost two of them.,Air is sucked into the pipe.,,p.4A-41
+PR-064.06,PR-064,6,Disconnect the No.1 water temperature switch connector and jumper both its terminals,,,,p.4A-42
+PR-064.07,PR-064,7,Pull the choke knob out about 15 mm (0.6 in),SP-1584.,No air is sucked in at any engine speed.,,p.4A-42
+PR-064.08,PR-064,8,Stop the engine and disconnect the No.2 water temperature switch connector on the radiator,,,,p.4A-42
+PR-064.09,PR-064,9,"Pull the choke knob out about 15 mm (0.6 in), start the engine and raise the speed",SP-1584.,Air is sucked in from 1000 to 1200 rpm up.,,p.4A-42
+PR-064.10,PR-064,10,Trailing: repeat every step on the tube from the trailing vacuum advance diaphragm,SP-1585.,Air is sucked in from 2900 to 3100 rpm up; none at idle or while decelerating from 4000 rpm.,,p.4A-42
+PR-064.11,PR-064,11,Each valve: disconnect the vacuum sensing tubes from the solenoid valve and the vacuum pipe and blow into the valve through tube B,SP-1590.,Air comes out of the air filter C.,,p.4A-43
+PR-064.12,PR-064,12,"Disconnect the valve's connector, put battery power on its terminals and blow into tube B again",SP-1590.,Air comes out of port A.,,p.4A-43
+PR-065.01,PR-065,1,Disconnect the ventilation hose from the canister and connect the U-tube gauge to it,,,,p.4A-45
+PR-065.02,PR-065,2,Feed in low-pressure air slowly until the water levels differ by the test figure,SP-957.,356 +/- 12 mm of water.,,p.4A-45
+PR-065.03,PR-065,3,Blank off the U-tube's inlet and leave it five minutes,SP-958.,The level stays within the band the page's figure shows; the figure was not read.,,p.4A-45
+PR-065.04,PR-065,4,"If it drops further, look for a leaking or loose evaporative line, a leaking fuel tank, a leaking or loose fuel line or a leaking filler cap",,,,p.4A-45
+PR-066.01,PR-066,1,Remove the check and cut valve,,,,p.4A-45
+PR-066.02,PR-066,2,Connect a pressure gauge to the fuel tank passage and blow through the valve,"SP-1085. Hold the valve horizontal: tilted, its own weight closes the passage.",It opens at 5.5 to 7 kPa.,,p.4A-45
+PR-066.03,PR-066,3,Move the gauge to the atmosphere passage and blow through the valve,SP-1086.,It opens at 1 to 5 kPa.,,p.4A-45
+PR-066.04,PR-066,4,"To replace, raise the rear of the car and support it on stands",,,,p.4A-46
+PR-066.05,PR-066,5,"Undo the hose bands, disconnect the evaporative hoses and remove the valve",,,,p.4A-46
+PR-066.06,PR-066,6,Fit the valve in the reverse order,Note which hose goes where and which way the valve's fittings face; push the hoses fully on and band them.,,,p.4A-46
+PR-067.01,PR-067,1,Look the canister over for leaking carbon and tap it with a finger,SP-1069.,No carbon leaks and no abnormal sound.,,p.4A-46
+PR-067.02,PR-067,2,"Disconnect the hose (purge valve to oil filler pipe) at the purge valve, start the engine, let it idle and put a finger on the port",SP-1073.,No air is drawn in at idle.,,p.4A-46
+PR-067.03,PR-067,3,Raise the engine to 2000 rpm,SP-1073.,Air is drawn into the port.,,p.4A-46
+PR-067.04,PR-067,4,Check the air vent hose for cracks or damage and disconnect it from the ventilation pipe,,,,p.4A-46
+PR-067.05,PR-067,5,Blow slowly through the hose with the ignition off,,Air passes through the air vent solenoid valve.,,p.4A-46
+PR-067.06,PR-067,6,Turn the ignition on and blow again,,No air passes.,,p.4A-46
+PR-068.01,PR-068,1,Confirm the fuel filter was changed within its interval,,,,p.4A-47
+PR-068.02,PR-068,2,Remove the air cleaner assembly and disconnect the fuel main hose at the carburettor,,,Spilled fuel can ignite.,p.4A-47
+PR-068.03,PR-068,3,"Connect a pressure gauge, a restrictor and hoses so the fuel discharges into a graduated container",,,,p.4A-47
+PR-068.04,PR-068,4,Disconnect the fuel pump cut relay connector and fit a jumper wire,The figure shows the terminals; it was not read.,,,p.4A-47
+PR-068.05,PR-068,5,Turn the ignition on and open the restrictor for a moment to vent the system into the container,,,,p.4A-47
+PR-068.06,PR-068,6,"Close the restrictor, let the pressure settle and read it",SP-029.,20 to 25 kPa.,,p.4A-47
+PR-068.07,PR-068,7,"With the pressure in range, open the restrictor, time the fuel into the container, then close it",SP-1596.,1400 cc or more within one minute.,,p.4A-47
+PR-069.01,PR-069,1,Remove the storage compartment behind the driver's seat and disconnect the fuel pump connector,,,,p.4A-47
+PR-069.02,PR-069,2,Raise the rear of the car and support it on stands,,,,p.4A-48
+PR-069.03,PR-069,3,Remove the fuel pump protector cover,,,,p.4A-48
+PR-069.04,PR-069,4,Disconnect the inlet and outlet hoses and remove the pump,,,,p.4A-48
+PR-069.05,PR-069,5,Fit the new pump in the reverse order,Push the hoses fully onto the pump's fittings and clip them.,,,p.4A-48
+PR-070.01,PR-070,1,Raise the rear of the car and support it on stands,,,,p.4A-48
+PR-070.02,PR-070,2,Loosen the clips at both ends of the filter and disconnect the fuel hoses,,,,p.4A-48
+PR-070.03,PR-070,3,Remove the filter from its retainer,,,,p.4A-48
+PR-070.04,PR-070,4,Fit the new filter and connect the hoses,Push the hoses fully onto the filter and clip them.,,,p.4A-48
+PR-071.01,PR-071,1,Drain the fuel from the tank,,,"Keep sparks, cigarettes and open flames away from the tank.",p.4A-48
+PR-071.02,PR-071,2,Raise the rear of the car and support it on stands,,,,p.4A-48
+PR-071.03,PR-071,3,Remove the tank protectors,,,,p.4A-48
+PR-071.04,PR-071,4,"Disconnect the fuel main hose, the return hose and the evaporation hoses from the tank",,,,p.4A-48
+PR-071.05,PR-071,5,Remove the fixing band bolts and lower the tank,,,,p.4A-48
+PR-071.06,PR-071,6,Check the tank for cracks and corrosion; repair or replace it,,,"Before any repair, steam-clean the tank until all explosive gas is gone.",p.4A-49
+PR-071.07,PR-071,7,"Refit in the reverse order, pushing the main, return and evaporation hoses onto the tank fittings",SP-1078.,Fittings more than 25 mm into the hoses.,,p.4A-49
+PR-071.08,PR-071,8,Push the filler hose onto the tank pipe and the filler pipe,SP-1084.,More than 40 mm on each.,,p.4A-49
+PR-072.01,PR-072,1,Check the fuel cut valve for cracks or damage,,,,p.4A-49
+PR-072.02,PR-072,2,"To replace it, disconnect its hoses, undo its bolts, remove it and fit the new one in the reverse order",Push the hoses fully on and clip them; follow the arrow marks on the valve body.,,,p.4A-49
+PR-072.03,PR-072,3,"Check the fuel check valve for cracks or damage; to replace it, pull it out of its hoses and fit the new one","SP-1066. Push the valve fully into the hose ends and clip it; the arrow points as the page's figure shows, which was not read.",,,p.4A-50
+PR-072.04,PR-072,4,Inspect the fuel lines for leaks and tighten their connections,,,,p.4A-50
+PR-072.05,PR-072,5,"If much dirt or water is found, drain the tank and blow the lines out with compressed air",,,,p.4A-50
+PR-072.06,PR-072,6,"When replacing a fuel hose, push it onto its pipe",SP-1067.,Pipe 30 to 35 mm into the hose.,,p.4A-50
+PR-073.01,PR-073,1,Move the intake air temperature control valve inside the air cleaner by hand,,It moves freely and its spring pushes back.,,p.4A-50
+PR-073.02,PR-073,2,"Idle compensator, bimetal cold: suck on its tube",SP-1599.,The valve is closed; replace the compensator if it leaks much.,,p.4A-51
+PR-073.03,PR-073,3,"Idle compensator, bimetal above about 69 C: check the valve",SP-1599.,"The valve is open; if not, replace the compensator.",,p.4A-51
+PR-073.04,PR-073,4,Altitude compensator: remove the air cleaner and start the engine,,It runs smoothly.,,p.4A-51
+PR-073.05,PR-073,5,Cover the slow port on the carburettor air horn with a finger,SP-1072.,Above 500 to 1500 m of altitude the idle speed drops.,,p.4A-51
+PR-073.06,PR-073,6,"If it does not, remove the altitude compensator valve and blow through it between ports A and B",SP-1072. The opening point moves with atmospheric pressure.,Air passes above 500 to 1500 m of altitude.,,p.4A-51
+PR-074.01,PR-074,1,Remove the air cleaner and press the accelerator pedal to the floor,SP-1075.,"The carburettor's throttle valves stand vertical, wide open.",,p.4A-52
+PR-074.02,PR-074,2,Check the linkage returns fully without binding and the choke control moves freely,,,,p.4A-52
+PR-074.03,PR-074,3,Check the pedal height against the brake pedal; set it with nut A,SP-1074.,42 +/- 5 mm lower than the brake pedal.,,p.4A-52
+PR-074.04,PR-074,4,Check the cable's free play at the carburettor; set it with nut B,SP-1076.,1 to 3 mm.,,p.4A-52
+PR-074.05,PR-074,5,Press the pedal to the floor and check the throttle valves are wide open; set with stopper bolt C,SP-1075.,,,p.4A-52
+PR-075.01,PR-075,1,"Remove the air cleaner cover, disconnect the idle compensator tube, the air pump inlet hose, the hot air hose and the air hoses, and remove the air cleaner",The page lists items 1 to 24 in removal order against a figure.,,,p.4A-53
+PR-075.02,PR-075,2,Remove the No.2 anti-afterburn valve and bracket assembly,,,,p.4A-53
+PR-075.03,PR-075,3,"Disconnect the choke heater lead connector, the throttle sensor connector and the main air bleed control solenoid valve",,,,p.4A-53
+PR-075.04,PR-075,4,"Disconnect the metering oil pump connecting rod, and on a manual car the richer solenoid valve connector",,,,p.4A-53
+PR-075.05,PR-075,5,"Disconnect the hot start assist cable, the accelerator cable, the throttle opener's vacuum sensing tube, the cruise control cable and the choke cable",,,,p.4A-53
+PR-075.06,PR-075,6,"Disconnect the air vent hose, the sub-zero start assist fluid hose (not California), the fuel return hose and the fuel main hose",,,,p.4A-53
+PR-075.07,PR-075,7,Disconnect the metering oil pump tubes and the air vent solenoid valve connector,,,,p.4A-53
+PR-075.08,PR-075,8,Undo the carburettor attaching nuts and lift the carburettor off,,,,p.4A-53
+PR-075.09,PR-075,9,"Refit in the reverse order, pushing the fuel main and return hoses onto the carburettor's fittings",SP-1067.,Fittings 30 to 35 mm into the hoses.,,p.4A-60
+PR-075.10,PR-075,10,Start the engine and check for fuel leaks and the fuel level,,Fuel at the mark in the sight glass.,,p.4A-60
+PR-075.11,PR-075,11,"Check the accelerator pump: car level, air cleaner cover off, engine run until the fuel is at the mark, then stopped; work the throttle",,Fuel squirts from the pump nozzles.,,p.4A-61
+PR-075.12,PR-075,12,Set the idle speed and the idle mixture,"PR-016 for the speed, PR-078 for the mixture.",,,p.4A-61
+PR-076.01,PR-076,1,"Air horn: disconnect the vacuum sensing tubes for the altitude compensator valve, the choke delay valve and the No.2 choke diaphragm and the choke heater lead; remove the altitude compensator valve",The page lists items 1 to 23 in removal order against a figure.,,,p.4A-54
+PR-076.02,PR-076,2,"Remove the throttle opener and bracket, the No.1 choke diaphragm's tube, the dash pot and bracket, the throttle return spring, the sub-return spring and their bracket",,,,p.4A-54
+PR-076.03,PR-076,3,"Remove the bimetal spring housing and bracket assembly, the fast idle rod, the hot start assist lever spring and the bracket",,,,p.4A-54
+PR-076.04,PR-076,4,"Remove the No.2 choke diaphragm, the air horn attaching screws and the air horn assembly",,,,p.4A-55
+PR-076.05,PR-076,5,"From the air horn, remove the float pin, float, needle valve and hook spring, spring and valve stem",,,,p.4A-55
+PR-076.06,PR-076,6,"Main body: free the accelerator pump rod and the secondary throttle valve rod (split pins), remove the throttle sensor, undo the main body attaching bolts and lift the main body off",,,,p.4A-55
+PR-076.07,PR-076,7,"From the main body, remove the diaphragm cover, return spring, clip, diaphragm, housing and lever and gasket, then the accelerator pump lever, its cover, diaphragm and return spring",Items 1 to 12 are partly lost in the OCR text and the figure was not read.,,,p.4A-56
+PR-076.08,PR-076,8,"Remove the pump nozzle screw, nozzle and gasket, the weights, the outlet and inlet check valves and the check valve seat",,,,p.4A-56
+PR-076.09,PR-076,9,"Remove the retainer, blind plug and washer, then the primary and secondary main jets",,,,p.4A-56
+PR-076.10,PR-076,10,"Remove the secondary No.2 step air bleed, secondary step jet, secondary and primary main air bleeds, primary slow jet, primary No.2 slow air bleed and air bleed, and on a manual car the richer air bleed, jet and blind plug",,,,p.4A-57
+PR-076.11,PR-076,11,Throttle body: saw off the idle limiter cap and remove the mixture adjust screw inside it,The figure shows the cut; it was not read.,,,p.4A-57
+PR-076.12,PR-076,12,Wash every part in clean solvent and blow the fuel passages out with compressed air,,,Never clean a jet with wire.,p.4A-57
+PR-076.13,PR-076,13,"Inspect the air horn, main body and throttle body for cracks, the choke and throttle shafts for wear, the linkage and rods for bends, the return springs, every jet and air bleed for clogging and the diaphragms for damage",,,,p.4A-57
+PR-076.14,PR-076,14,"Inspect the float for damage, the needle valve and seat for wear or rust and the strainer for clogging",,,,p.4A-58
+PR-076.15,PR-076,15,"Put battery power on the air vent solenoid valve, and on a manual car the richer solenoid valve",,The valve stem pulls into the valve body.,,p.4A-58
+PR-076.16,PR-076,16,"Assemble in the reverse order with new gaskets, every part clean and sound",Primary and secondary parts look alike; do not swap them.,,,p.4A-58
+PR-076.17,PR-076,17,Fit the new mixture adjust screw,SP-1601.,"Seated lightly, then three turns out.",,p.4A-58
+PR-076.18,PR-076,18,"Before fitting the air horn, set the float level: air horn inverted and float hanging, measure float to air horn gasket (H); bend the float seat lip to set it",SP-1600.,16 +/- 0.5 mm.,,p.4A-59
+PR-076.19,PR-076,19,"Turn the air horn upright, float hanging, and measure float bottom to gasket (L); bend the float stopper to set it",SP-1600.,51 +/- 0.5 mm.,,p.4A-59
+PR-076.20,PR-076,20,"Fit the bimetal spring housing to the main body with the choke valve closed and the vacuum diaphragm shaft pulled, so the choke shaft lever sits on the bimetal spring",,,,p.4A-59
+PR-076.21,PR-076,21,"Fast idle: with the choke valve fully closed, measure primary throttle valve to bore wall; bend the fast idle rod to set it",SP-1602.,1.0 to 1.2 mm.,,p.4A-59
+PR-076.22,PR-076,22,"Choke valve opening: disconnect the tubes from the No.1 vacuum diaphragm, pull the choke lever link fully out and hold it, apply more than 500 mmHg and measure G1, then G2",SP-1603.,G1 5.5 to 6.2 mm; G2 11.5 to 13 mm.,,p.4A-60
+PR-076.23,PR-076,23,"No.2 choke diaphragm: disconnect its tube, pull the choke lever link fully out with the choke valve fully closed (cool the bimetal if needed), apply more than 500 mmHg and measure R",SP-1604.,1.46 to 1.80 mm.,,p.4A-60
+PR-077.01,PR-077,1,Disconnect the No.1 water temperature switch connector and jumper both its terminals; connect a tachometer,,,,p.4A-61
+PR-077.02,PR-077,2,Disconnect the carburettor heater connector and put a voltmeter on it,,,,p.4A-61
+PR-077.03,PR-077,3,Start the engine and hold 2000 rpm on the choke knob,,Current flows to the heater lead; none once the knob is pushed fully back.,,p.4A-61
+PR-077.04,PR-077,4,Put an ohmmeter between the heater lead and the carburettor body,,"The meter moves; no movement is an open heater, which is replaced.",,p.4A-61
+PR-077.05,PR-077,5,"Choke diaphragms: remove the air cleaner assembly, let the engine idle and disconnect the tubes from the No.1 and No.2 choke diaphragms",,Each diaphragm's shaft comes out.,,p.4A-61
+PR-077.06,PR-077,6,"Delay valve: engine warm and stopped, air cleaner assembly off, disconnect the tube from the No.1 choke diaphragm",,,,p.4A-62
+PR-077.07,PR-077,7,"Let the engine idle (automatic in N), reconnect the tube and time the shaft",SP-1605.,Fully pulled in within 26 to 38 seconds.,,p.4A-62
+PR-078.01,PR-078,1,"Accessories off, fuel filler cap off, tachometer connected, richer solenoid connector off, engine warm",The idle speed alone is PR-016.,,,p.4A-62
+PR-078.02,PR-078,2,"Remove the throttle body, cut off the idle limiter cap and fit a new mixture adjust screw",SP-1601.,,,p.4A-63
+PR-078.03,PR-078,3,Set the speed with the throttle adjust screw,SP-1606.,770 rpm manual in neutral; 870 rpm automatic in N.,,p.4A-63
+PR-078.04,PR-078,4,Turn the mixture adjust screw to the highest speed,,,,p.4A-63
+PR-078.05,PR-078,5,Reset the speed with the throttle adjust screw,SP-1606.,770 or 870 rpm again.,,p.4A-63
+PR-078.06,PR-078,6,Screw the mixture adjust screw in,SP-1606.,750 rpm manual; 840 rpm automatic in N.,,p.4A-63
+PR-078.07,PR-078,7,Automatic: select D and set the idle with the throttle adjust screw,SP-018.,750 rpm in D.,,p.4A-63
+PR-078.08,PR-078,8,"Fit a new idle limiter cap on the mixture adjust screw, then adjust the throttle sensor",PR-017.,,,p.4A-63
+PR-079.01,PR-079,1,Engine cold and ignition off: pull the choke knob fully out,,It returns by itself.,,p.4A-63
+PR-079.02,PR-079,2,"Connect a tachometer, start the engine and hold 2000 rpm on the choke knob",The page's step 3 is lost in the OCR text.,,,p.4A-64
+PR-079.03,PR-079,3,Leave it running and watch the knob,,It returns fully by itself when the temperature gauge reaches the range the page's figure shows; the figure was not read.,,p.4A-64
+PR-079.04,PR-079,4,Disconnect the choke switch connector and check terminals 6 and 8,SP-1593.,Continuity (the choke magnet).,,p.4A-64
+PR-079.05,PR-079,5,"Hot start: check the linkage is fitted right, does not stick or bind and returns fully",,,,p.4A-64
+PR-079.06,PR-079,6,"Warm the engine, stop it and disconnect the leading and trailing primary wires from the ignition coils",,,,p.4A-64
+PR-079.07,PR-079,7,Crank the engine,,The hot start lever works and the throttle valves open.,,p.4A-64
+PR-079.08,PR-079,8,Pull the start assist motor's inner cable until the stopper lever touches the start lever and check the free play; loosen the screw to set it,SP-1607.,1 to 2 mm.,,p.4A-64
+PR-079.09,PR-079,9,"Disconnect the hot start assist relay connector and check terminals 1 to 4 without power, then with battery power",SP-1608.,"Closed without power, open with it.",,p.4A-65
+PR-079.10,PR-079,10,Check the No.1 water temperature switch,SP-908; PR-058.,,,p.4A-65
+PR-080.01,PR-080,1,"Warm the engine, stop it and connect a tachometer",,,,p.4A-65
+PR-080.02,PR-080,2,Put the voltmeter's positive probe on the negative terminal of the white air conditioner solenoid valve connector and its negative probe on the body,,,,p.4A-65
+PR-080.03,PR-080,3,Start the engine and switch the air conditioner compressor on,,,,p.4A-65
+PR-080.04,PR-080,4,Take the engine to 2000 rpm on the throttle and lower it slowly,SP-1598.,Near 0 V at 1100 +/- 100 rpm.,,p.4A-65
+PR-080.05,PR-080,5,Valve: disconnect the vacuum sensing tubes from the solenoid valve and the vacuum pipe and blow into the valve through tube B,SP-1591.,Air comes out of the air filter A.,,p.4A-65
+PR-080.06,PR-080,6,"Disconnect the valve's connector, put battery power on its terminals and blow into tube B again",SP-1591.,Air comes out of port C.,,p.4A-66
+PR-080.07,PR-080,7,Opener: accessories off and fuel filler cap off; disconnect the tube at the idle compensator in the air cleaner and plug it,,,,p.4A-66
+PR-080.08,PR-080,8,Connect a tachometer and warm the engine,,,,p.4A-66
+PR-080.09,PR-080,9,Disconnect the gray switching solenoid valve connector,,,,p.4A-66
+PR-080.10,PR-080,10,Disconnect the vacuum sensing tubes from the leading vacuum control units on the distributor and plug them,,,,p.4A-66
+PR-080.11,PR-080,11,Turn the air conditioner switch off and disconnect the air conditioner solenoid valve connector,,,,p.4A-66
+PR-080.12,PR-080,12,Put battery power on one terminal of the valve and ground the other,SP-1598.,The opener works and the speed rises to 1200 +/- 50 rpm in neutral.,,p.4A-66
+PR-080.13,PR-080,13,"If it is out, turn the opener's adjusting screw",,,,p.4A-66
