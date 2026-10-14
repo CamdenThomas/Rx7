@@ -5,12 +5,13 @@ row Y14). One command, from anywhere:
 
 One sealed unit built like a stereo head unit: the faceplate and its dials, the panel board behind
 it, the DCU carrier lying flat behind that, and every Deutsch DT13 in the rear wall in two rows -
-the carrier's three below, DP-DCU-D on its own small board above, a second position reserved
-beside it. By default it is ONE height front to back and the face grows to cover it (FACE_H None),
-so it goes into its opening from the front; a typed FACE_H lower than the body builds the stepped
-unit instead, and the report says which in its first line (`front install: yes` / `no`). Not the
-print-ready model: nothing in the car is measured (R11), so every size is a parameter and most are
-guesses.
+the carrier's three below, DP-DCU-D and DP-DCU-E on their own small board above. By default it is
+ONE height front to back, and that height and its face are the head unit's (D-542, Y40: the
+HEAD_UNIT_* block of `unit_params.py` - a 97 face set in from a 100 body), so it goes into its
+opening from the front and reads as a pair with it; a FACE_H lower than the body needs builds the
+stepped unit instead, and the report says which in its first line (`front install: yes` / `no`),
+then how the case stands against the head unit, dimension by dimension. Not the print-ready model:
+nothing in the car is measured (R11), so every size is a parameter and most are guesses.
 
 Every number is in `unit_params.py`; this file and `unit_lib.py` hold none. The carrier is read
 from `../dcu-carrier/enclosure/board.json` and `probe.json`, and from `../dcu-carrier.step` when it

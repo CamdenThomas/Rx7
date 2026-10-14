@@ -1,4 +1,5 @@
-"""The climate control unit's mock-up (D-479, D-480, Y14): layout, fit rules, solids, checks, output.
+"""The climate control unit's mock-up (D-479, D-480, Y14; its case made like the head unit, D-542,
+Y40): layout, fit rules, solids, checks, output.
 
 Run by `make_unit.py` through FreeCAD's headless interpreter, never on its own. Holds NO dimension:
 every number comes from `unit_params.py` (the parameter table), from `../../../tools/enclosure_lib.py` (TE's
@@ -11,6 +12,8 @@ DT13 panel cut-outs, the primitives) or from the DCU carrier's own files, which 
                                           it the real board goes in the box; without it, or when
                                           CARRIER_W / CARRIER_D are not the drawn board's, plain
                                           stand-in blocks of the same sizes do.
+- `../panel/panel.kicad_pcb`             the panel board's outline, as text, only to say when
+                                          PANEL_W / PANEL_H are not the drawn board's.
 
 Four steps, in this order, and nothing is drawn until the second has passed:
 
@@ -20,12 +23,18 @@ Four steps, in this order, and nothing is drawn until the second has passed:
     check(...)          interference of every inside solid with every case solid, and the rest
 
 Frame: X across the face (0 = left seen from the cabin), Y back from the faceplate's front, Z up
-from the faceplate's bottom edge. Owns no fact in the record: the sizes that place this unit are
-work rows V-102 and V-113 (`01-electrical/data/work.csv`); the parts are P152, P194, P195.
+from the faceplate's bottom edge. With the face set in from the body (a negative BEZEL_OVERLAP,
+the head unit's way) the body's left side and underside are at negative X and Z. Owns no fact in
+the record: the parts are 01-electrical P152, P194, P195; the head unit the case follows is
+03-luxury parts LP55, and its published sizes are the HEAD_UNIT_* rows of `unit_params.py`.
+
+`build_case` and the helpers are also the CUR mock-up's (`../cur-unit/unit_lib.py` imports this
+file): what they read from P or D beyond what that unit gives has a fallback (`.get`).
 """
 import copy
 import math
 import os
+import re
 
 import FreeCAD
 import Part
@@ -34,13 +43,17 @@ from FreeCAD import Vector as V
 import enclosure_lib as L
 
 KINDS = {"window": ("w", "h"), "knob": ("d",), "key": ("w", "h"), "slot": ("w", "h")}
-NONE_OK = ("FACE_W", "FACE_H", "PANEL_RIBBON_X")
+NONE_OK = ("FACE_W", "FACE_H", "PANEL_RIBBON_X", "PANEL_W", "PANEL_H", "HEAD_UNIT_NOSE_R",
+           "HEAD_UNIT_SIDE_HOLES")
+NEG_OK = ("BEZEL_OVERLAP_X", "BEZEL_OVERLAP_Z")        # negative = the face set in from the body
+TABLE_OR_NONE = ("HEAD_UNIT_SIDE_HOLES",)              # None, or rows checked with SIDE_SCREWS
 ANCHORS = ("centre", "top", "bottom")
 ZERO_OK = ("SCREEN_BORDER", "KNOB_FLOAT", "KEY_CLEAR", "PADDLE_CLEAR", "CUTOUT_CLEAR", "TOP_GAP",
            "CARRIER_FRONT_GAP", "CARRIER_BOT_H", "UPPER_BOT_H", "UPPER_CONN_GAP",
            "PLATE_LIP", "FLOOR_GROOVE", "SLOT_DEPTH", "SLOT_CLEAR", "PLUG_ROW_CLEAR", "CABLE_BEND",
            "PLUG_SIDE_CLEAR", "PLUG_GROW", "CONTROL_EDGE", "CONTROL_GAP", "CONTROL_BEHIND_CLEAR",
-           "BEZEL_OVERLAP", "GAP", "LUG_EMBED", "INSERT_SKIN", "BOSS_H",
+           "BEZEL_OVERLAP_X", "BEZEL_OVERLAP_Z", "FACE_R", "FRAME_LAND", "HEAD_UNIT_NOSE_R",
+           "GAP", "LUG_EMBED", "INSERT_SKIN", "BOSS_H",
            "BOARD_JSON_EDGE", "OUTLINE_TOL", "COURTYARD_MATCH", "SEAL_SQUEEZE_MAX", "VOLUME_EPS",
            "EPS", "GASKET_R", "PANEL_RIBBON_Z", "PANEL_HOLE_INSET", "CARRIER_HOLE_INSET", "RIM_H")
 OUTPUTS = ("climate-unit.FCStd", "climate-unit.step", "climate-unit-body.step",
@@ -68,7 +81,10 @@ def load_source(cad_dir, P):
     """The carrier's files, read once: board.json, probe.json and the STEP if it is there."""
     car = os.path.join(cad_dir, "dcu-carrier")
     enc = os.path.join(car, "enclosure")
-    src = {"problems": [], "notes": [], "step": None}
+    src = {"problems": [], "notes": [], "step": None, "panel_drawn": None}
+    pcb = os.path.join(cad_dir, "panel", "panel.kicad_pcb")
+    if os.path.exists(pcb):
+        src["panel_drawn"] = edge_rect(pcb)
     for name in ("board.json", "probe.json"):
         path = os.path.join(enc, name)
         if not os.path.exists(path):
@@ -107,6 +123,20 @@ def load_source(cad_dir, P):
     return src
 
 
+def edge_rect(path):
+    """[width, height] of a board whose outline is one rectangle on Edge.Cuts, read from its
+    .kicad_pcb as text (no KiCad needed, nothing written); None when it is drawn another way."""
+    with open(path, errors="replace") as fh:
+        txt = fh.read()
+    num_ = r"(-?[0-9.]+)"
+    for m in re.finditer(r"\(gr_rect\s*\(start %s %s\)\s*\(end %s %s\)(.*?)\(uuid"
+                         % (num_, num_, num_, num_), txt, re.S):
+        if '"Edge.Cuts"' in m.group(5):
+            x0, y0, x1, y1 = (float(m.group(k)) for k in (1, 2, 3, 4))
+            return [abs(x1 - x0), abs(y1 - y0)]
+    return None
+
+
 # -------------------------------------------------------------------------------------- types --
 def check_types(P, U):
     """Refuse a parameter set that is not numbers where numbers go, before any arithmetic."""
@@ -119,7 +149,7 @@ def check_types(P, U):
             bad.append("%s is missing from the parameters." % name)
             continue
         v = P[name]
-        if not num(U.P[name]) and U.P[name] is not None:
+        if (not num(U.P[name]) and U.P[name] is not None) or name in TABLE_OR_NONE:
             continue                                   # a table or a word: checked below
         if v is None:
             if name not in NONE_OK:
@@ -128,6 +158,8 @@ def check_types(P, U):
             continue
         if not num(v):
             bad.append("%s is %r: it must be a number in %s." % (name, v, unit))
+        elif v < 0 and name in NEG_OK:
+            continue
         elif v < 0 or (v == 0 and name not in ZERO_OK):
             bad.append("%s is %s: it must be %s. Raise it."
                        % (name, n(v), "0 or more" if name in ZERO_OK else "more than 0"))
@@ -148,7 +180,13 @@ def check_types(P, U):
     if P["CONTROLS_ANCHOR"] not in ANCHORS:
         bad.append("CONTROLS_ANCHOR is %r: it must be one of %s."
                    % (P["CONTROLS_ANCHOR"], ", ".join(repr(a) for a in ANCHORS)))
-    for name in ("UPPER_STANDOFFS", "SIDE_SCREWS"):
+    for name in ("UPPER_STANDOFFS", "SIDE_SCREWS", "HEAD_UNIT_SIDE_HOLES"):
+        if P[name] is None and name in TABLE_OR_NONE:
+            continue
+        if not isinstance(P[name], (tuple, list)):
+            bad.append("%s is %r: it must be a list of pairs of numbers in mm%s."
+                       % (name, P[name], " or None" if name in TABLE_OR_NONE else ""))
+            continue
         for row in P[name]:
             if not (isinstance(row, (tuple, list)) and len(row) == 2 and num(row[0])
                     and num(row[1])):
@@ -217,14 +255,21 @@ def derive(P, src):
                        "slab stands in, its three connectors kept at their drawn spacing and "
                        "centred on it" % (n(W), n(DP), n(drawn_w), n(drawn_d)))
 
-    # ---- across the face (X)
-    G, WL, BZ = P["GAP"], P["WALL"], P["BEZEL_OVERLAP"]
+    # ---- across the face (X). The face reaches BEZEL_OVERLAP_X past the body at each side and
+    #      BEZEL_OVERLAP_Z at the top and bottom; negative = set in from it, the head unit's way.
+    G, WL = P["GAP"], P["WALL"]
+    BZX, BZZ = P["BEZEL_OVERLAP_X"], P["BEZEL_OVERLAP_Z"]
     eps = P["EPS"]
     D.body_w_need = W + 2 * (G + WL)
     D.face_w_typed = P["FACE_W"] is not None
-    D.face_w = P["FACE_W"] if D.face_w_typed else D.body_w_need + 2 * BZ
+    D.face_w = P["FACE_W"] if D.face_w_typed else D.body_w_need + 2 * BZX
     D.xc = D.face_w / 2.0
-    D.bx0, D.bx1 = BZ, D.face_w - BZ
+    D.bx0, D.bx1 = BZX, D.face_w - BZX
+    # how far inside the face's edge the front frame's opening begins: flush with the body's
+    # inside, or FRAME_LAND where the face is set in further than the wall is thick
+    land = P["FRAME_LAND"]
+    D.in_x = max(BZX + WL, land)
+    D.in_top, D.in_bot = max(BZZ + P["LID"], land), max(BZZ + P["FLOOR"], land)
     D.ix0, D.ix1 = D.bx0 + WL, D.bx1 - WL
     D.body_w = D.bx1 - D.bx0
     D.cx0, D.cx1 = D.xc - W / 2.0, D.xc + W / 2.0
@@ -238,7 +283,7 @@ def derive(P, src):
     D.ux, D.uy = ux, uy
 
     # ---- up (Z), as far as the two rows: none of this depends on the face
-    D.zb = BZ
+    D.zb = BZZ
     D.zf = D.zb + P["FLOOR"]
     D.cz0 = D.zf + P["BOSS_H"]
     D.cz1 = D.cz0 + P["CARRIER_T"]
@@ -314,12 +359,14 @@ def derive(P, src):
             c.seen = c.hole = ("rect", size["w"], size["h"])
             c.behind = ("rect", size["w"] + 2 * b, size["h"] + 2 * b)
         hs, hb = _half(c.seen)[1], _half(c.behind)[1]
-        board_ = pm if kind != "window" else 0.0
+        # a board cut to the face (PANEL_H None) must reach under the control; a drawn board's
+        # own height is held to the controls by the rule in validate()
+        board_ = pm if kind != "window" and P["PANEL_H"] is None else 0.0
         clr = P["CONTROL_BEHIND_CLEAR"]
-        need_top += [P["CONTROL_EDGE"] - (z - hs), BZ + P["LID"] + clr - (z - hb),
+        need_top += [P["CONTROL_EDGE"] - (z - hs), D.in_top + clr - (z - hb),
                      board_ - (z - hb)]
         need_bot += [P["CONTROL_EDGE"] - (P["SKETCH_H"] - z - hs),
-                     BZ + P["FLOOR"] + clr - (P["SKETCH_H"] - z - hb),
+                     D.in_bot + clr - (P["SKETCH_H"] - z - hb),
                      board_ - (P["SKETCH_H"] - z - hb)]
         D.controls.append(c)
     d_top, d_bot = max(need_top), max(need_bot)
@@ -333,10 +380,10 @@ def derive(P, src):
     tops = [D.cz1 + P["CARRIER_TOP_H"]] + [c.z_top for c in D.conns]
     D.z_need = max(tops) + P["TOP_GAP"]                # the lid's underside, at the least
     D.body_h_need = D.z_need + P["LID"] - D.zb
-    D.face_h_body = D.z_need + P["LID"] + BZ
+    D.face_h_body = D.z_need + P["LID"] + BZZ
     D.face_h_typed = P["FACE_H"] is not None
     D.face_h = P["FACE_H"] if D.face_h_typed else max(D.face_h_body, D.face_h_controls)
-    D.z_ft = D.face_h - BZ
+    D.z_ft = D.face_h - BZZ
     D.z_ceil = D.z_ft - P["LID"]
     D.front_h = D.z_ft - D.zb
     D.z_rim = max(D.z_need, D.z_ceil)                  # the lid's underside
@@ -346,6 +393,11 @@ def derive(P, src):
     D.z_lid = D.z_rim + P["LID"]
     D.rear_h = D.z_lid - D.zb
     D.rise = D.z_lid - D.z_ft                          # how far the rear stands above the front
+    # the front frame's opening behind the faceplate, and the faceplate's corners
+    D.fx0, D.fx1 = max(D.ix0, land), min(D.ix1, D.face_w - land)
+    D.fz0, D.fz1 = max(D.zf, land), min(D.z_ceil, D.face_h - land)
+    D.face_r_from = "FACE_R" if P["HEAD_UNIT_NOSE_R"] is None else "HEAD_UNIT_NOSE_R"
+    D.face_r = P[D.face_r_from]
 
     spare = D.face_h - P["SKETCH_H"]
     D.ctrl_top = {"centre": spare / 2.0, "top": d_top, "bottom": spare - d_bot}[anchor]
@@ -428,8 +480,17 @@ def derive(P, src):
         z0 = D.uz0 if c.row == "upper" else D.cz0
         c.fl = [ux(c.flange[1]), ux(c.flange[0]), z0 + c.flange[2], z0 + c.flange[3]]
 
-    # ---- the panel board and its ribbon header
-    D.px0, D.px1, D.pz0, D.pz1 = pm, D.face_w - pm, pm, D.face_h - pm
+    # ---- the panel board and its ribbon header. A drawn board (PANEL_W, PANEL_H) is centred on
+    #      the face; one not drawn yet (None) is the face less PANEL_MARGIN on those sides.
+    pw, ph = P["PANEL_W"], P["PANEL_H"]
+    D.px0, D.px1 = (pm, D.face_w - pm) if pw is None else (D.xc - pw / 2.0, D.xc + pw / 2.0)
+    D.pz0, D.pz1 = (pm, D.face_h - pm) if ph is None else (D.face_h / 2.0 - ph / 2.0,
+                                                           D.face_h / 2.0 + ph / 2.0)
+    drawn = src.get("panel_drawn")
+    if drawn and (abs(D.px1 - D.px0 - drawn[0]) > tol or abs(D.pz1 - D.pz0 - drawn[1]) > tol):
+        D.notes.append("the panel board here is %s x %s, the drawn one %s x %s "
+                       "(../panel/panel.kicad_pcb): this build is for a board still to be drawn"
+                       % (n(D.px1 - D.px0), n(D.pz1 - D.pz0), n(drawn[0]), n(drawn[1])))
     i = P["PANEL_HOLE_INSET"]
     D.panel_holes = [(D.px0 + i, D.pz0 + i), (D.px1 - i, D.pz0 + i), (D.px0 + i, D.pz1 - i),
                      (D.px1 - i, D.pz1 - i)]
@@ -450,7 +511,12 @@ def derive(P, src):
     inset = lr - P["LUG_EMBED"]
     D.lugs = [(x, D.lug_run[0] + f * (D.lug_run[1] - D.lug_run[0]))
               for x in (D.ix0 + inset, D.ix1 - inset) for f in P["LID_LUGS"]]
-    D.side_bosses = [(side, y, z) for side in ("left", "right") for (y, z) in P["SIDE_SCREWS"]]
+    # the side screws: the head unit's own pattern once it is measured, SIDE_SCREWS until then;
+    # both as (back from the body's front face, up from its underside)
+    D.side_from = "SIDE_SCREWS" if P["HEAD_UNIT_SIDE_HOLES"] is None else "HEAD_UNIT_SIDE_HOLES"
+    D.side_holes = [tuple(h) for h in P[D.side_from]]
+    D.side_bosses = [(side, D.y_face + back, D.zb + up) for side in ("left", "right")
+                     for (back, up) in D.side_holes]
     return D
 
 
@@ -495,7 +561,8 @@ def validate(P, src, U):
         return problems, D, {}
     M = {}
     eps = P["EPS"]
-    W, G, WL, BZ = P["CARRIER_W"], P["GAP"], P["WALL"], P["BEZEL_OVERLAP"]
+    W, G, WL = P["CARRIER_W"], P["GAP"], P["WALL"]
+    BZX, BZZ = P["BEZEL_OVERLAP_X"], P["BEZEL_OVERLAP_Z"]
 
     def bad(msg):
         problems.append(msg)
@@ -509,7 +576,7 @@ def validate(P, src, U):
             "(or set it to None and it is derived), or narrow the carrier - CARRIER_W can come "
             "down to about %s, the width its three DT13s need side by side."
             % (n(D.face_w), n(D.body_w), n(room), n(W), n(W + 2 * G), n(G),
-               n(D.body_w_need + 2 * BZ), n(math.ceil(D.edge_need))))
+               n(D.body_w_need + 2 * BZX), n(math.ceil(D.edge_need))))
     if W < D.edge_need - eps:
         bad("CARRIER_W %s is narrower than its three DT13 footprints side by side (%s): raise "
             "CARRIER_W to at least %s, or move one of them to the upper row."
@@ -519,13 +586,55 @@ def validate(P, src, U):
 
     # ---- the panel board inside the front section
     pm = P["PANEL_MARGIN"]
-    need_x = BZ + WL + G
-    need_z = BZ + max(P["FLOOR"], P["LID"]) + G
-    if pm < max(need_x, need_z) - eps:
+    need_x = BZX + WL + G
+    need_z = BZZ + max(P["FLOOR"], P["LID"]) + G
+    need = max([need_x] * (P["PANEL_W"] is None) + [need_z] * (P["PANEL_H"] is None) + [0.0])
+    if pm < need - eps:
         bad("PANEL_MARGIN %s puts the panel board through the box: the wall behind the face is "
-            "BEZEL_OVERLAP %s + %s thick and the board needs GAP %s beside it. Raise PANEL_MARGIN "
-            "to at least %s, or thin the wall, floor and roof."
-            % (n(pm), n(BZ), n(max(WL, P["FLOOR"], P["LID"])), n(G), n(max(need_x, need_z))))
+            "the face's overlap %s + %s thick and the board needs GAP %s beside it. Raise "
+            "PANEL_MARGIN to at least %s, or thin the wall, floor and roof."
+            % (n(pm), n(BZX if need == need_x else BZZ), n(max(WL, P["FLOOR"], P["LID"])), n(G),
+               n(need)))
+    if P["PANEL_W"] is not None and (D.px0 < D.ix0 + G - eps or D.px1 > D.ix1 - G + eps):
+        bad("PANEL_W %s does not go between the side walls: the body is %s inside and the board "
+            "needs GAP %s a side. Lower PANEL_W to at most %s (None = a board cut to the face), "
+            "or widen the unit (FACE_W)."
+            % (n(P["PANEL_W"]), n(D.ix1 - D.ix0), n(G), n(D.ix1 - D.ix0 - 2 * G)))
+    if P["PANEL_H"] is not None and (D.pz0 < D.zf + G - eps or D.pz1 > D.z_ceil - G + eps):
+        bad("PANEL_H %s does not go between the floor and the roof behind the face: FACE_H %s "
+            "leaves %s there, and the board, centred on the face, needs GAP %s above and below. "
+            "Raise FACE_H to at least %s, or lower PANEL_H (None = a board cut to the face)."
+            % (n(P["PANEL_H"]), n(D.face_h), n(D.z_ceil - D.zf), n(G),
+               n(P["PANEL_H"] + 2 * (BZZ + max(P["FLOOR"], P["LID"]) + G))))
+    if problems:
+        return problems, D, M                          # the rest would only echo this
+    M["panel board to the walls, floor and roof"] = min(
+        D.px0 - D.ix0, D.ix1 - D.px1, D.pz0 - D.zf, D.z_ceil - D.pz1), G
+    hole = min(min(x, D.face_w - x, z, D.face_h - z) for (x, z) in D.panel_holes) \
+        - P["SCREW_CLEAR"] / 2.0
+    if hole < P["INSERT_SKIN"] - eps:
+        bad("The panel board's screws come %s from the faceplate's edge, less than INSERT_SKIN "
+            "%s: the board (%s x %s) is too large for a %s x %s face. Raise BEZEL_OVERLAP_X / "
+            "BEZEL_OVERLAP_Z (or FACE_W / FACE_H) by %s, or raise PANEL_HOLE_INSET."
+            % (n(hole), n(P["INSERT_SKIN"]), n(D.px1 - D.px0), n(D.pz1 - D.pz0), n(D.face_w),
+               n(D.face_h), n(P["INSERT_SKIN"] - hole)))
+    lands = [D.fx0, D.face_w - D.fx1, D.fz0, D.face_h - D.fz1]
+    M["faceplate's rim on the front frame"] = min(lands), P["FRAME_LAND"]
+    r = D.face_r
+    if r > min(D.face_w, D.face_h) / 2.0 + eps:
+        bad("%s %s is more than half the face (%s x %s): lower it to at most %s."
+            % (D.face_r_from, n(r), n(D.face_w), n(D.face_h),
+               n(min(D.face_w, D.face_h) / 2.0)))
+    else:
+        for lx, lz in ((lands[0], lands[2]), (lands[0], lands[3]), (lands[1], lands[2]),
+                       (lands[1], lands[3])):
+            if r > lx and r > lz and (r - lx) ** 2 + (r - lz) ** 2 > r * r + eps:
+                bad("%s %s rounds the faceplate's corner past the corner of the front frame's "
+                    "opening behind it, which is %s x %s in from the face's corner, so the box "
+                    "would be open there: lower it to at most %s, or raise FRAME_LAND."
+                    % (D.face_r_from, n(r), n(lx), n(lz),
+                       n(math.floor((lx + lz + math.sqrt(2 * lx * lz)) * 100) / 100.0)))
+                break
     least = 4 * P["PANEL_HOLE_INSET"]
     if D.pz1 - D.pz0 < least - eps:
         bad("FACE_H %s leaves a panel board only %s tall after PANEL_MARGIN %s a side - no room "
@@ -550,11 +659,11 @@ def validate(P, src, U):
 
     # ---- the controls: on the face, apart from each other, and over the box's opening
     edge, gap, clr = P["CONTROL_EDGE"], P["CONTROL_GAP"], P["CONTROL_BEHIND_CLEAR"]
-    wall = {"left": BZ + WL, "right": BZ + WL, "bottom": BZ + P["FLOOR"], "top": BZ + P["LID"]}
+    wall = {"left": D.in_x, "right": D.in_x, "bottom": D.in_bot, "top": D.in_top}
     m_edge, m_behind, m_gap = [], [], []
     for c in D.controls:
         on = _sides(c, c.seen, 0.0, D.face_w, 0.0, D.face_h)
-        be = _sides(c, c.behind, D.ix0, D.ix1, D.zf, D.z_ceil)
+        be = _sides(c, c.behind, D.fx0, D.fx1, D.fz0, D.fz1)
         m_edge.append(min(on.values()))
         m_behind.append(min(be.values()))
         for side in ("left", "right", "bottom", "top"):
@@ -575,8 +684,9 @@ def validate(P, src, U):
             elif be[side] < clr - eps:
                 short = clr - be[side]
                 bad("Control '%s': what it needs behind the face comes %s from the face's %s "
-                    "edge, but the box's %s reaches %s in from that edge (BEZEL_OVERLAP + its "
-                    "thickness) and CONTROL_BEHIND_CLEAR is %s, so %s of it would be over "
+                    "edge, but the box's %s reaches %s in from that edge (the face's overlap + "
+                    "its thickness, or FRAME_LAND) and CONTROL_BEHIND_CLEAR is %s, so %s of it "
+                    "would be over "
                     "plastic. Raise %s to at least %s (%s), or move it %s "
                     "by %s in CONTROLS, or thin that wall."
                     % (c.name, n(be[side] + wall[side]), side,
@@ -636,19 +746,29 @@ def validate(P, src, U):
     deep = P["INSERT_DEPTH"] + P["INSERT_SKIN"]
     for label, have, what in (
             ("BOSS_H + FLOOR", P["BOSS_H"] + P["FLOOR"], "raise BOSS_H or FLOOR"),
-            ("LUG_H", P["LUG_H"], "raise LUG_H"),
-            ("WALL + SIDE_BOSS_L", WL + P["SIDE_BOSS_L"], "raise SIDE_BOSS_L")):
+            ("LUG_H", P["LUG_H"], "raise LUG_H")):
         if have < deep - eps:
             bad("%s is %s, less than an insert's bore and the skin beyond it (INSERT_DEPTH %s + "
                 "INSERT_SKIN %s): %s by %s."
                 % (label, n(have), n(P["INSERT_DEPTH"]), n(P["INSERT_SKIN"]), what,
                    n(deep - have)))
-    wide = P["INSERT_BORE"] + 2 * P["INSERT_SKIN"]
-    for name in ("BOSS_D", "LUG_D", "SIDE_BOSS_D"):
+    sdeep = P["SIDE_INSERT_DEPTH"] + P["INSERT_SKIN"]
+    if WL + P["SIDE_BOSS_L"] < sdeep - eps:
+        bad("WALL + SIDE_BOSS_L is %s, less than the side screw's insert bore and the skin "
+            "beyond it (SIDE_INSERT_DEPTH %s + INSERT_SKIN %s): raise SIDE_BOSS_L by %s."
+            % (n(WL + P["SIDE_BOSS_L"]), n(P["SIDE_INSERT_DEPTH"]), n(P["INSERT_SKIN"]),
+               n(sdeep - WL - P["SIDE_BOSS_L"])))
+    for name, bore in (("BOSS_D", "INSERT_BORE"), ("LUG_D", "INSERT_BORE"),
+                       ("SIDE_BOSS_D", "SIDE_INSERT_BORE")):
+        wide = P[bore] + 2 * P["INSERT_SKIN"]
         if P[name] < wide - eps:
-            bad("%s %s leaves less than INSERT_SKIN %s round an INSERT_BORE %s: raise %s to at "
-                "least %s." % (name, n(P[name]), n(P["INSERT_SKIN"]), n(P["INSERT_BORE"]), name,
+            bad("%s %s leaves less than INSERT_SKIN %s round %s %s: raise %s to at "
+                "least %s." % (name, n(P[name]), n(P["INSERT_SKIN"]), bore, n(P[bore]), name,
                                n(wide)))
+    if P["SIDE_SCREW_D"] > P["SIDE_INSERT_BORE"] - eps:
+        bad("SIDE_SCREW_D %s is not less than SIDE_INSERT_BORE %s, the bore of its own insert: "
+            "raise SIDE_INSERT_BORE to the insert maker's figure for that thread."
+            % (n(P["SIDE_SCREW_D"]), n(P["SIDE_INSERT_BORE"])))
     if P["STANDOFF_D"] < P["SCREW_CLEAR"] + 2 * P["INSERT_SKIN"] - eps:
         bad("STANDOFF_D %s leaves too little round a SCREW_CLEAR %s hole: raise STANDOFF_D to at "
             "least %s." % (n(P["STANDOFF_D"]), n(P["SCREW_CLEAR"]),
@@ -782,15 +902,21 @@ def validate(P, src, U):
         bad("There is no room for a lid lug between the step wall and the rear plate (%s): "
             "lower LUG_D or shorten FRONT_L." % n(D.lug_run[1] - D.lug_run[0] + P["LUG_D"]))
     r = P["SIDE_BOSS_D"] / 2.0
-    for k, (y, z) in enumerate(P["SIDE_SCREWS"]):
+    theirs = "" if D.side_from == "SIDE_SCREWS" else \
+        " (the head unit's hole has no wall to land on in this unit: leave it out of the list, " \
+        "and the bracket gets a hole of this unit's own)"
+    for k, (back, up) in enumerate(D.side_holes):
+        y, z = D.y_face + back, D.zb + up
         top = D.z_rim if y - r >= D.y_riser - eps else min(D.z_ceil, D.z_under)
         y_lo, y_hi = D.y_frame + r, D.y_plate0 - P["SLOT_CLEAR"] / 2.0 - r
         if not (y_lo - eps <= y <= y_hi + eps):
-            bad("SIDE_SCREWS %d at Y %s is off the side wall: keep Y between %s and %s."
-                % (k + 1, n(y), n(y_lo), n(y_hi)))
+            bad("%s %d, %s back from the body's front, is off the side wall: keep it between %s "
+                "and %s back%s." % (D.side_from, k + 1, n(back), n(y_lo - D.y_face),
+                                    n(y_hi - D.y_face), theirs))
         elif not (D.zf + r - eps <= z <= top - r + eps):
-            bad("SIDE_SCREWS %d at Z %s is off the side wall there: keep Z between %s and %s."
-                % (k + 1, n(z), n(D.zf + r), n(top - r)))
+            bad("%s %d, %s up from the body's underside, is off the side wall there: keep it "
+                "between %s and %s up%s." % (D.side_from, k + 1, n(up), n(D.zf + r - D.zb),
+                                             n(top - r - D.zb), theirs))
 
     # ---- the envelope, once measured
     env = P["ENVELOPE"]
@@ -810,11 +936,17 @@ def validate(P, src, U):
                 "it goes in" if D.body_w <= ow + eps and D.front_h <= oh + eps else
                 "narrow the unit (FACE_W, CARRIER_W) or lower it (ROW_PITCH; or a typed FACE_H, "
                 "which steps the rear up behind the dash) until it does"))
-        rule(D.face_w >= ow - eps and D.face_h >= oh - eps, "face covers the opening",
-             "The face is %s x %s and the opening is %s x %s: %s."
-             % (n(D.face_w), n(D.face_h), n(ow), n(oh),
-                "it covers it" if D.face_w >= ow - eps and D.face_h >= oh - eps else
-                "raise FACE_W / FACE_H to at least the opening"))
+        if BZX < -eps and BZZ < -eps:
+            rule(True, "face and the opening's edge",
+                 "The face is %s x %s, set in from the body like the head unit's nose: it does "
+                 "not cover the %s x %s opening's edge - the dash plastic does."
+                 % (n(D.face_w), n(D.face_h), n(ow), n(oh)))
+        else:
+            rule(D.face_w >= ow - eps and D.face_h >= oh - eps, "face covers the opening",
+                 "The face is %s x %s and the opening is %s x %s: %s."
+                 % (n(D.face_w), n(D.face_h), n(ow), n(oh),
+                    "it covers it" if D.face_w >= ow - eps and D.face_h >= oh - eps else
+                    "raise FACE_W / FACE_H to at least the opening"))
         deep = D.y_plugs - D.y_face
         rule(deep <= env["DEPTH"] + eps, "depth with plugs",
              "Behind the face the unit needs %s with its plugs and the opening has %s: %s."
@@ -868,7 +1000,10 @@ def build_insides(P, D, src, standin=False):
     out = []
 
     # ---- the faceplate and its controls
-    face = L.box(0.0, D.face_w, 0.0, D.y_face, 0.0, D.face_h)
+    if D.get("face_r", 0.0) > 0:
+        face = L.rrect_xz(D.face_w, D.face_h, D.face_r, D.xc, D.face_h / 2.0, 0.0, D.y_face)
+    else:
+        face = L.box(0.0, D.face_w, 0.0, D.y_face, 0.0, D.face_h)
     holes = []
     for c in D.controls:
         if c.hole[0] == "circ":
@@ -1015,17 +1150,20 @@ def build_case(P, D):
         fb.append(("lid lug %d" % (k + 1), [x - lr, x + lr, y - lr, y + lr, z_rim - P["LUG_H"],
                                             z_rim], "LID_LUGS, LUG_D, LUG_H"))
     sr = P["SIDE_BOSS_D"] / 2.0
+    s_bore = P.get("SIDE_INSERT_BORE", P["INSERT_BORE"]) / 2.0      # the side screw's own insert
+    s_deep = P.get("SIDE_INSERT_DEPTH", P["INSERT_DEPTH"])
     for k, (side, y, z) in enumerate(D.side_bosses):
         if side == "left":
             adds.append(L.cyl_x(sr, y, z, bx0, ix0 + P["SIDE_BOSS_L"]))
-            bores.append(L.cyl_x(P["INSERT_BORE"] / 2.0, y, z, bx0 - oc, bx0 + P["INSERT_DEPTH"]))
+            bores.append(L.cyl_x(s_bore, y, z, bx0 - oc, bx0 + s_deep))
             xr = [ix0, ix0 + P["SIDE_BOSS_L"]]
         else:
             adds.append(L.cyl_x(sr, y, z, ix1 - P["SIDE_BOSS_L"], bx1))
-            bores.append(L.cyl_x(P["INSERT_BORE"] / 2.0, y, z, bx1 - P["INSERT_DEPTH"], bx1 + oc))
+            bores.append(L.cyl_x(s_bore, y, z, bx1 - s_deep, bx1 + oc))
             xr = [ix1 - P["SIDE_BOSS_L"], ix1]
         fb.append(("side screw boss, %s wall, at (Y %s, Z %s)" % (side, n(y), n(z)),
-                   xr + [y - sr, y + sr, z - sr, z + sr], "SIDE_SCREWS, SIDE_BOSS_L, SIDE_BOSS_D"))
+                   xr + [y - sr, y + sr, z - sr, z + sr],
+                   "%s, SIDE_BOSS_L, SIDE_BOSS_D" % D.get("side_from", "SIDE_SCREWS")))
     sd, sc = P["SLOT_DEPTH"], P["SLOT_CLEAR"]
     channel = L.box(ix0 - sd, ix1 + sd, D.y_plate0 - sc / 2.0, D.y_plate1 + sc / 2.0,
                     zf - P["FLOOR_GROOVE"], z_rim + oc)
@@ -1034,7 +1172,7 @@ def build_case(P, D):
             [ix0, ix1, D.y_beam, D.y_riser, D.z_under, z_rim],
             "FRONT_L, RIM_H" if D.stepped else "RIM_H, PANEL_BACK_H"),
            ("front section's roof", [ix0, ix1, D.y_frame, D.y_step, z_ceil, z_ft],
-            "FACE_H, LID, BEZEL_OVERLAP"),
+            "FACE_H, LID, BEZEL_OVERLAP_Z"),
            ("floor", [bx0, bx1, D.y_frame, D.y_end, zb, zf], "BOSS_H, FLOOR"),
            ("left wall", [bx0, ix0, D.y_frame, D.y_end, zb, max(z_rim, z_ft)],
             "FACE_W, WALL, GAP"),
@@ -1080,8 +1218,9 @@ def build_case(P, D):
                          "TOP_GAP, ROW_PITCH"))
 
     # ---- front frame: a ring behind the faceplate, four standoffs to the panel board
-    ring = L.box(bx0, bx1, D.y_face, D.y_frame, zb, z_ft).cut(
-        L.box(ix0, ix1, D.y_face - oc, D.y_frame + oc, zf, z_ceil))
+    ring = L.box(bx0, bx1, D.y_face, D.y_frame, zb, z_ft).cut(      # its opening: the body's
+        L.box(D.get("fx0", ix0), D.get("fx1", ix1), D.y_face - oc,  # inside, or FRAME_LAND in
+              D.y_frame + oc, D.get("fz0", zf), D.get("fz1", z_ceil)))   # from the face's edge
     adds, bores = [ring], []
     r = P["STANDOFF_D"] / 2.0
     zmid = (zf + z_ceil) / 2.0
@@ -1100,7 +1239,8 @@ def build_case(P, D):
               max(z + r, ez)], "PANEL_HOLE_INSET, PANEL_MARGIN, STANDOFF_D, or the control"))
     frame = L.cut(L.fuse(adds), bores)
     feats["front_frame"].append(("frame ring", [bx0, bx1, D.y_face, D.y_frame, zb, z_ft],
-                                 "FACE_H / FACE_W, BEZEL_OVERLAP, WALL, LID, FLOOR"))
+                                 "FACE_H / FACE_W, BEZEL_OVERLAP_X / _Z, FRAME_LAND, WALL, LID, "
+                                 "FLOOR"))
     return {"body": body, "rear_plate": plate, "lid": lid, "front_frame": frame}, feats
 
 
@@ -1218,8 +1358,9 @@ def check(P, D, M, insides, case, feats):
 
     # ---- the envelope
     if D.env is None:
-        add("envelope (V-113 opening, V-102 depth)", None,
-            "not measured - ENVELOPE is None, nothing checked (confirm)")
+        add("envelope (an opening and the depth behind it)", None,
+            "ENVELOPE is None, nothing checked: not measured and not a gate - the dash is "
+            "rebuilt round the units (D-542)")
     else:
         for name, ok, msg in D.env:
             add("envelope: " + name, ok, msg)
@@ -1227,6 +1368,35 @@ def check(P, D, M, insides, case, feats):
 
 
 # ------------------------------------------------------------------------------------ one run --
+def against_head_unit(P, D):
+    """The case beside the head unit it is made like (D-542): one row per dimension -
+    [what, the head unit's, this unit's, the difference] - None where Pioneer publishes nothing
+    or a difference means nothing. Every head-unit figure is a published one (confirm)."""
+    hu = {k[len("HEAD_UNIT_"):]: v for k, v in P.items() if k.startswith("HEAD_UNIT_")}
+    rows = [
+        ("face height (the head unit's nose)", hu["NOSE_H"], D.face_h),
+        ("face width", hu["NOSE_W"], D.face_w),
+        ("face stands in front of the body by", hu["NOSE_D"], D.y_face),
+        ("face set in from the body, each side", (hu["CHASSIS_W"] - hu["NOSE_W"]) / 2.0,
+         -P["BEZEL_OVERLAP_X"]),
+        ("face set in from the body, top and bottom", (hu["CHASSIS_H"] - hu["NOSE_H"]) / 2.0,
+         -P["BEZEL_OVERLAP_Z"]),
+        ("face corner radius", hu["NOSE_R"], D.face_r),
+        ("body height (the head unit's chassis)", hu["CHASSIS_H"], max(D.front_h, D.rear_h)),
+        ("body width, which is also bracket to bracket", hu["CHASSIS_W"], D.body_w),
+        ("body depth, its front to the rear plate's outer face", hu["CHASSIS_D"],
+         D.y_plate1 - D.y_face),
+        ("depth behind the body's front with plugs and cable bend", None, D.y_plugs - D.y_face),
+        ("side screw thread", hu["SIDE_SCREW_D"], P["SIDE_SCREW_D"]),
+    ]
+    out = [[what, a, b, None if a is None or b is None else b - a] for (what, a, b) in rows]
+    out.append(["side screw holes, each side (back, up)",
+                hu["SIDE_HOLES"], [list(h) for h in D.side_holes],
+                None if hu["SIDE_HOLES"] is None else 0.0])
+    out.append(["mounts in a DIN sleeve", hu["SLEEVE"], False, None])
+    return out
+
+
 def numbers(P, D):
     """The derived dimensions the report lists."""
     out = {
@@ -1256,6 +1426,15 @@ def numbers(P, D):
         "upper_board_underside_z": D.uz0 if D.ups else None,
         "lid_underside_z": D.z_rim,
         "panel_board": [D.px1 - D.px0, D.pz1 - D.pz0],
+        "panel_board_is": "typed, as drawn" if P["PANEL_W"] is not None
+                          and P["PANEL_H"] is not None else "cut to the face (PANEL_MARGIN)",
+        "panel_board_bottom_z": D.pz0,
+        "body_x": [D.bx0, D.bx1], "body_bottom_z": D.zb,
+        "frame_opening": [D.fx0, D.fx1, D.fz0, D.fz1],
+        "face_corner_r": D.face_r, "face_corner_r_from": D.face_r_from,
+        "side_screws_from": D.side_from,
+        "side_screws_at_y_z": [[y, z] for (side, y, z) in D.side_bosses if side == "left"],
+        "against_head_unit": against_head_unit(P, D),
         "connector_edge_needs": D.edge_need,
         "smallest_opening_it_slides_through": [D.body_w, max(D.front_h, D.rear_h)],
         "cutouts": [{"name": c.name, "part": c.part, "row": c.row, "fitted": c.fitted,
@@ -1299,11 +1478,18 @@ def front_install(P, D):
     """(yes or no, the one line that says it): can the unit go into its opening from the front,
     like a head unit (D-480)? Yes when it is one height front to back; no when the rear steps up
     behind a face too low to cover it."""
+    bzx, bzz = P["BEZEL_OVERLAP_X"], P["BEZEL_OVERLAP_Z"]
+    if not D.stepped and (bzx < 0 or bzz < 0):
+        return True, ("front install: yes - one height front to back, %s x %s; it passes an "
+                      "opening that size. The %s x %s face is set in from the body by %s a side "
+                      "and %s top and bottom, as the head unit's nose is from its chassis, so "
+                      "the dash plastic covers the opening's edge round both (D-542)"
+                      % (n(D.body_w), n(D.rear_h), n(D.face_w), n(D.face_h), n(-bzx), n(-bzz)))
     if not D.stepped:
         return True, ("front install: yes - one height front to back, %s x %s; it passes an "
-                      "opening that size and the %s x %s face covers it by BEZEL_OVERLAP %s a side"
-                      % (n(D.body_w), n(D.rear_h), n(D.face_w), n(D.face_h),
-                         n(P["BEZEL_OVERLAP"])))
+                      "opening that size and the %s x %s face covers it by BEZEL_OVERLAP_X %s a "
+                      "side and BEZEL_OVERLAP_Z %s top and bottom"
+                      % (n(D.body_w), n(D.rear_h), n(D.face_w), n(D.face_h), n(bzx), n(bzz)))
     return False, ("front install: no - the rear is %s mm taller than the face covers (rear %s, "
                    "front section %s behind a %s face); it goes in from behind or with the dash "
                    "open. Set FACE_H to None, or to at least %s, for a unit that goes in from "
@@ -1478,7 +1664,8 @@ def report_json(path, P, U, res, files, views_note):
             return {k: plain(x) for k, x in v.items()}
         return v
     data = {
-        "what": "Climate control unit mock-up (D-479, D-480, Y14) - provisional, nothing measured",
+        "what": "Climate control unit mock-up (D-479, D-480, Y14; the case toward the head unit, "
+                "D-542, Y40) - provisional, nothing measured",
         "rc": res["rc"],
         "built": res["case"] is not None,
         "problems": res["problems"],
@@ -1498,7 +1685,9 @@ def print_report(P, U, res, files, views_note, gone):
     D, N = res["D"], res["numbers"]
     bar = "=" * 96
     print(bar)
-    print("Climate control unit - MOCK-UP (D-479, D-480, Y14) - provisional, nothing measured (R11)")
+    print("Climate control unit - MOCK-UP (D-479, D-480, Y14; the case toward the head unit, D-542, "
+          "Y40)")
+    print("provisional, nothing measured (R11)")
     print(bar)
     for note in res["notes"]:
         print("note: " + note)
@@ -1515,13 +1704,13 @@ def print_report(P, U, res, files, views_note, gone):
     print("WIDTH RULE: the carrier is %s wide, so the body is %s (carrier + 2 x (GAP %s + WALL "
           "%s)) and the face %s (%s)." % (
               n(P["CARRIER_W"]), n(D.body_w), n(P["GAP"]), n(P["WALL"]), n(D.face_w),
-              "typed" if D.face_w_typed else "DERIVED: body + 2 x BEZEL_OVERLAP %s"
-              % n(P["BEZEL_OVERLAP"])))
+              "typed" if D.face_w_typed else "DERIVED: body + 2 x BEZEL_OVERLAP_X %s"
+              % n(P["BEZEL_OVERLAP_X"])))
     if D.face_h_typed:
-        how = "typed; %s would cover the body, the control block needs %s" % (
+        how = "typed; %s is the least for the body the rows need, the control block needs %s" % (
             n(D.face_h_body), n(D.face_h_controls))
     elif D.face_h_body >= D.face_h_controls:
-        how = "DERIVED: body + 2 x BEZEL_OVERLAP %s" % n(P["BEZEL_OVERLAP"])
+        how = "DERIVED: body + 2 x BEZEL_OVERLAP_Z %s" % n(P["BEZEL_OVERLAP_Z"])
     else:
         how = "DERIVED: the least the control block needs; the rows need only a %s body" \
               % n(D.body_h_need)
@@ -1559,11 +1748,32 @@ def print_report(P, U, res, files, views_note, gone):
          % n(D.ribbon)),
         ("ROW_PITCH (least that builds)", "%s (%s)" % (n(P["ROW_PITCH"]), n(D.pitch_min))
          if D.ups else "no upper row"),
-        ("panel board", "%s x %s" % (n(D.px1 - D.px0), n(D.pz1 - D.pz0))),
+        ("panel board", "%s x %s, %s" % (n(D.px1 - D.px0), n(D.pz1 - D.pz0),
+                                         N["panel_board_is"])),
         ("carrier", N["carrier"]),
+        ("face corner radius", "%s (%s)" % (n(D.face_r), D.face_r_from)),
+        ("side screws, each side", "M%s at %s (back, up) - %s" % (
+            n(P["SIDE_SCREW_D"]), ", ".join("(%s, %s)" % (n(a), n(b)) for (a, b) in D.side_holes),
+            D.side_from)),
     ]
     for k, v in rows:
         print("  %-46s %s" % (k, v))
+    print()
+
+    def said(v):
+        if v is None:
+            return "not published"
+        if isinstance(v, bool):
+            return "yes" if v else "no"
+        if isinstance(v, list):
+            return ", ".join("(%s, %s)" % (n(a), n(b)) for (a, b) in v) or "none"
+        return n(v)
+    print("against the head unit (D-542; its figures are published ones, confirm):")
+    print("  %-58s %-14s %-22s %s" % ("", "head unit", "this unit", "difference"))
+    for what, a, b, d in N["against_head_unit"]:
+        print("  %-58s %-14s %-22s %s" % (what, said(a), said(b), "" if d is None else
+                                          ("same" if abs(d) < 0.005 else "%+.2f" % round(
+                                              d + (1e-9 if d > 0 else -1e-9), 2))))
     print()
     print("rear plate, seen from behind (X is the unit's, 0 = the cabin's left):")
     for c in sorted(D.conns, key=lambda c: (c.row != "upper", -c.X)):
@@ -1581,7 +1791,7 @@ def print_report(P, U, res, files, views_note, gone):
     print("confirm (guesses until measured or bought - %d):" % len(U.CONFIRM))
     for k in sorted(U.CONFIRM):
         v = P[k]
-        print("  %-18s %-10s %s" % (k, "(table)" if isinstance(v, (list, dict)) else
+        print("  %-22s %-10s %s" % (k, "(table)" if isinstance(v, (list, dict)) else
                                     "None" if v is None else v, U.CONFIRM[k]))
     print()
     for f in files:

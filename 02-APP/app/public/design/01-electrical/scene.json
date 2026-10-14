@@ -1,6 +1,6 @@
 {
  "version": 2,
- "built": "2026-10-13T14:42:44-06:00",
+ "built": "2026-10-13T18:24:36-06:00",
  "project": "01-electrical",
  "frame": {
   "units": "mm",
@@ -17,12 +17,12 @@
    "name": "Control Unit (CU)",
    "kind": "unit",
    "glb": "control-unit.glb",
-   "bytes": 406692,
+   "bytes": 411624,
    "parent": null,
    "place": {
-    "x": -96.0,
+    "x": -90.5,
     "y": -1038.0,
-    "z": 553.422,
+    "z": 553.3,
     "rx": 0.0,
     "ry": 0.0,
     "rz": 0.0
@@ -31,18 +31,18 @@
    "confirm": true,
    "place_note": "inside 00-CAR zones dash: the centre stack's opening (modules DCU), the face's centre there",
    "size_mm": {
-    "x": 192.0,
+    "x": 188.0,
     "y": 139.56,
-    "z": 96.76
+    "z": 100.0
    },
    "origin": "the mock-up's frame: the face's front, bottom-left corner seen from the cabin; x across the face, y back into the dash (= the car's forward), z up",
    "connectors": [
     {
      "code": "DP-DCU-B",
      "at": {
-      "x": 147.9,
+      "x": 142.4,
       "y": 122.55,
-      "z": 29.48
+      "z": 29.58
      },
      "face": "rear",
      "note": "DT13-12PA, the rear plate's outer face at the cut-out's centre (lower row)"
@@ -50,9 +50,9 @@
     {
      "code": "DP-DCU-C",
      "at": {
-      "x": 88.8,
+      "x": 83.3,
       "y": 122.55,
-      "z": 29.48
+      "z": 29.58
      },
      "face": "rear",
      "note": "DT13-08PA, the rear plate's outer face at the cut-out's centre (lower row)"
@@ -60,9 +60,9 @@
     {
      "code": "DP-DCU",
      "at": {
-      "x": 39.34,
+      "x": 33.84,
       "y": 122.55,
-      "z": 29.45
+      "z": 29.55
      },
      "face": "rear",
      "note": "DT13-06PA, the rear plate's outer face at the cut-out's centre (lower row)"
@@ -70,9 +70,9 @@
     {
      "code": "DP-DCU-D",
      "at": {
-      "x": 147.9,
+      "x": 142.4,
       "y": 122.55,
-      "z": 71.47
+      "z": 71.58
      },
      "face": "rear",
      "note": "DT13-12PA, the rear plate's outer face at the cut-out's centre (upper row)"
@@ -80,9 +80,9 @@
     {
      "code": "DP-DCU-E",
      "at": {
-      "x": 85.61,
+      "x": 80.11,
       "y": 122.55,
-      "z": 71.47
+      "z": 71.58
      },
      "face": "rear",
      "note": "DT13-12PA, the rear plate's outer face at the cut-out's centre (upper row)"
@@ -265,9 +265,9 @@
    "bytes": 13461948,
    "parent": "control-unit",
    "place": {
-    "x": 186.0,
+    "x": 180.5,
     "y": 35.6,
-    "z": 10.0,
+    "z": 10.1,
     "rx": 0.0,
     "ry": 0.0,
     "rz": 180
@@ -300,9 +300,9 @@
    "bytes": 3946172,
    "parent": "control-unit",
    "place": {
-    "x": 6.0,
+    "x": 0.5,
     "y": 12.6,
-    "z": 90.758,
+    "z": 90.88,
     "rx": 90,
     "ry": 0.0,
     "rz": 0.0
@@ -335,9 +335,9 @@
    "bytes": 2436220,
    "parent": "control-unit",
    "place": {
-    "x": 181.755,
+    "x": 176.255,
     "y": 79.6,
-    "z": 52.0,
+    "z": 52.1,
     "rx": 0.0,
     "ry": 0.0,
     "rz": 180
@@ -2087,9 +2087,9 @@
    "bytes": 1161972,
    "parent": "control-unit",
    "place": {
-    "x": 147.9,
+    "x": 142.4,
     "y": 134.341,
-    "z": 29.475,
+    "z": 29.575,
     "rx": 0.0,
     "ry": 0.0,
     "rz": 0.0
@@ -2206,9 +2206,9 @@
    "bytes": 119392,
    "parent": "control-unit",
    "place": {
-    "x": 147.9,
+    "x": 142.4,
     "y": 134.341,
-    "z": 29.475,
+    "z": 29.575,
     "rx": 0.0,
     "ry": 0.0,
     "rz": -180.0
@@ -2325,9 +2325,9 @@
    "bytes": 683900,
    "parent": "control-unit",
    "place": {
-    "x": 88.8,
+    "x": 83.3,
     "y": 134.341,
-    "z": 29.475,
+    "z": 29.575,
     "rx": 0.0,
     "ry": 0.0,
     "rz": 0.0
@@ -2347,28 +2347,28 @@
      "cav": 1,
      "circuit": "Seat heat, driver - return",
      "awg": "16",
-     "colour": "BLK",
+     "colour": "BLU",
      "state": "LIVE"
     },
     {
      "cav": 2,
      "circuit": "Seat heat, passenger - return",
      "awg": "16",
-     "colour": "BLK",
+     "colour": "BLU",
      "state": "LIVE"
     },
     {
      "cav": 3,
      "circuit": "Seat cool, driver - return",
      "awg": "16",
-     "colour": "BLK",
+     "colour": "BLU",
      "state": "LIVE"
     },
     {
      "cav": 4,
      "circuit": "Seat cool, passenger - return",
      "awg": "16",
-     "colour": "BLK",
+     "colour": "BLU",
      "state": "LIVE"
     },
     {
@@ -2416,9 +2416,9 @@
    "bytes": 85592,
    "parent": "control-unit",
    "place": {
-    "x": 88.8,
+    "x": 83.3,
     "y": 134.341,
-    "z": 29.475,
+    "z": 29.575,
     "rx": 0.0,
     "ry": 0.0,
     "rz": -180.0
@@ -2438,28 +2438,28 @@
      "cav": 1,
      "circuit": "Seat heat, driver - return",
      "awg": "16",
-     "colour": "BLK",
+     "colour": "BLU",
      "state": "LIVE"
     },
     {
      "cav": 2,
      "circuit": "Seat heat, passenger - return",
      "awg": "16",
-     "colour": "BLK",
+     "colour": "BLU",
      "state": "LIVE"
     },
     {
      "cav": 3,
      "circuit": "Seat cool, driver - return",
      "awg": "16",
-     "colour": "BLK",
+     "colour": "BLU",
      "state": "LIVE"
     },
     {
      "cav": 4,
      "circuit": "Seat cool, passenger - return",
      "awg": "16",
-     "colour": "BLK",
+     "colour": "BLU",
      "state": "LIVE"
     },
     {
@@ -2507,9 +2507,9 @@
    "bytes": 662696,
    "parent": "control-unit",
    "place": {
-    "x": 39.337,
+    "x": 33.837,
     "y": 134.341,
-    "z": 29.455,
+    "z": 29.555,
     "rx": 0.0,
     "ry": 0.0,
     "rz": 0.0
@@ -2584,9 +2584,9 @@
    "bytes": 68692,
    "parent": "control-unit",
    "place": {
-    "x": 39.337,
+    "x": 33.837,
     "y": 134.341,
-    "z": 29.455,
+    "z": 29.555,
     "rx": 0.0,
     "ry": 0.0,
     "rz": -180.0
@@ -2661,9 +2661,9 @@
    "bytes": 1161972,
    "parent": "control-unit",
    "place": {
-    "x": 147.9,
+    "x": 142.4,
     "y": 134.341,
-    "z": 71.475,
+    "z": 71.575,
     "rx": 0.0,
     "ry": 0.0,
     "rz": 0.0
@@ -2780,9 +2780,9 @@
    "bytes": 119392,
    "parent": "control-unit",
    "place": {
-    "x": 147.9,
+    "x": 142.4,
     "y": 134.341,
-    "z": 71.475,
+    "z": 71.575,
     "rx": 0.0,
     "ry": 0.0,
     "rz": -180.0
@@ -2899,9 +2899,9 @@
    "bytes": 1161972,
    "parent": "control-unit",
    "place": {
-    "x": 85.61,
+    "x": 80.11,
     "y": 134.341,
-    "z": 71.475,
+    "z": 71.575,
     "rx": 0.0,
     "ry": 0.0,
     "rz": 0.0
@@ -3018,9 +3018,9 @@
    "bytes": 119392,
    "parent": "control-unit",
    "place": {
-    "x": 85.61,
+    "x": 80.11,
     "y": 134.341,
-    "z": 71.475,
+    "z": 71.575,
     "rx": 0.0,
     "ry": 0.0,
     "rz": -180.0
@@ -14130,24 +14130,24 @@
   "control-unit": {
    "problems": [],
    "notes": [],
-   "bytes": 406692,
+   "bytes": 411624,
    "bbox": [
     [
-     0.0,
+     -3.5,
      -15.0,
-     0.0
+     -1.5
     ],
     [
-     192.0,
+     184.5,
      124.555,
-     96.756
+     98.5
     ]
    ],
-   "vertices": 17952,
-   "triangles": 17672,
+   "vertices": 18184,
+   "triangles": 17912,
    "face": [
-    192.0,
-    96.756
+    181.0,
+    97.0
    ],
    "nodes": {
     "case": [
@@ -14177,9 +14177,9 @@
     {
      "code": "DP-DCU-B",
      "at": [
-      147.9,
+      142.4,
       122.55499999999999,
-      29.475
+      29.575000000000003
      ],
      "part": "DT13-12PA",
      "tip_y": 134.341,
@@ -14188,9 +14188,9 @@
     {
      "code": "DP-DCU-C",
      "at": [
-      88.80000000000001,
+      83.30000000000001,
       122.55499999999999,
-      29.475
+      29.575000000000003
      ],
      "part": "DT13-08PA",
      "tip_y": 134.341,
@@ -14199,9 +14199,9 @@
     {
      "code": "DP-DCU",
      "at": [
-      39.33699999999999,
+      33.83699999999999,
       122.55499999999999,
-      29.455
+      29.555
      ],
      "part": "DT13-06PA",
      "tip_y": 134.341,
@@ -14210,9 +14210,9 @@
     {
      "code": "DP-DCU-D",
      "at": [
-      147.9,
+      142.4,
       122.55499999999999,
-      71.475
+      71.575
      ],
      "part": "DT13-12PA",
      "tip_y": 134.341,
@@ -14221,9 +14221,9 @@
     {
      "code": "DP-DCU-E",
      "at": [
-      85.60999999999999,
+      80.10999999999999,
       122.55499999999999,
-      71.475
+      71.575
      ],
      "part": "DT13-12PA",
      "tip_y": 134.341,
@@ -14233,31 +14233,31 @@
    "boards": {
     "carrier": {
      "move": [
-      186.0,
+      180.5,
       35.6,
-      10.0
+      10.1
      ],
      "turn": 180
     },
     "panel": [
-     6.0,
-     186.0,
+     0.5,
+     180.5,
      11.0,
      12.6,
-     6.0,
-     90.756
+     6.119999999999997,
+     90.88
     ],
     "upper": [
-     51.754999999999995,
-     181.755,
+     46.254999999999995,
+     176.255,
      79.6,
      115.6,
-     52.0,
-     53.6
+     52.1,
+     53.7
     ],
     "upper_x": {
-     "DP-DCU-D": 147.9,
-     "DP-DCU-E": 85.60999999999999
+     "DP-DCU-D": 142.4,
+     "DP-DCU-E": 80.10999999999999
     }
    },
    "placeholders": [
@@ -14276,7 +14276,7 @@
    "kind": "unit",
    "glb": "control-unit.glb",
    "source": "control-unit/cad/climate-unit (unit_params.py, unit_lib.py)",
-   "stamp": "1f989417df4dbb26"
+   "stamp": "7b4abff7de2af369"
   },
   "display-unit": {
    "problems": [],
@@ -14456,7 +14456,7 @@
    "kind": "unit",
    "glb": "cur.glb",
    "source": "control-unit/cad/cur-unit (unit_params.py, unit_lib.py)",
-   "stamp": "35d665ffee4d7abe"
+   "stamp": "c190adc69ee7a6bc"
   },
   "pmu": {
    "problems": [],
@@ -14669,7 +14669,7 @@
       {
        "x": 5.91,
        "y": -833.66,
-       "z": 599.69
+       "z": 599.67
       }
      ]
     },
@@ -15275,5 +15275,5 @@
   "connectors": "connectors/manifest.json",
   "devices": "devices/manifest.json"
  },
- "record_stamp": "69c55288e6be9019"
+ "record_stamp": "a45d551b9e4c7bbf"
 }

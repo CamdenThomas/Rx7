@@ -1,5 +1,6 @@
-"""Every number of the climate control unit's mock-up (D-479, D-480, work row Y14). The ONE place
-numbers live: `unit_lib.py` and `make_unit.py` hold no dimension of their own.
+"""Every number of the climate control unit's mock-up (D-479, D-480, work row Y14; the case toward
+the head unit, D-542, work row Y40). The ONE place numbers live: `unit_lib.py` and `make_unit.py`
+hold no dimension of their own.
 
 Each row of TABLE is (NAME, value, unit, what it is, confirm). `confirm` is empty for a number that
 comes from a drawing or a ruling, and says why for a guess - which is most of them: nothing in the
@@ -16,14 +17,56 @@ the faceplate's front surface (Y = 0), Z up from the faceplate's bottom edge. mm
 What is NOT here, because it is read, never typed: the DT13 panel cut-outs (TE 114-151046, from
 `../../../tools/enclosure_lib.py` TE_CUTOUT), the carrier's outline, holes and connector positions
 (`../dcu-carrier/enclosure/board.json`) and the DT13 bodies' sizes (`probe.json` beside it, and the
-carrier's STEP when it is there).
+carrier's STEP when it is there). The panel board's outline IS typed (PANEL_W, PANEL_H) and held to
+`../panel/panel.kicad_pcb`: the report says so when the two differ.
 """
 
-# The placing envelope: the centre-stack opening and the room behind it (work rows V-113 / V-102).
-# None until Camden measures it; then a dict, and the build refuses a unit that does not go in:
+# The placing envelope: an opening and the room behind it. D-542 dropped the measurements that
+# would have filled it (V-113, V-102: the dash plastic is rebuilt round the units, so no opening
+# is a gate). It stays None; a dict still makes the build refuse a unit that does not go in:
 #   {"OPENING_W": mm, "OPENING_H": mm, "DEPTH": mm clear behind the opening's front edge,
 #    "BEHIND_H": mm of height the box may have behind the dash, or None if unknown}
-ENVELOPE = None                      # V-113 / V-102 - confirm
+ENVELOPE = None                      # not a gate (D-542) - confirm
+
+# The head unit this case is made like (D-542, work row Y40): luxury parts LP55, the Pioneer
+# DMH-W4660NEX, double-DIN. Every figure is a PUBLISHED one, never the unit in hand (R11), so
+# every row is confirm; what Pioneer does not publish is None until it is measured on the unit.
+# The case rows below refer to these by name (_HU): a head-unit number is typed once, here.
+_OPM = ("Pioneer's Operation Manual for DMH-WT8600NEX / WT7600NEX / WC6600NEX / W4660NEX / "
+        "W4600NEX (<OPM_DMHWC6600NEXUC_EN_B>), p.137 Specifications, 'Dimensions (W x H x D)', "
+        "the copy at customsounds.com/uploads/docs/6dad08ed81235bfb15502a0ddf10131925fedebb.pdf "
+        "read 2026-10-13")
+_PUBLISHED = "a published sheet, not the unit in hand: measure it when it is bought"
+_UNPUBLISHED = ("not published: Pioneer's Installation Manual for this model was not found "
+                "(2026-10-13) and its Operation Manual does not give it - measure on the unit")
+HEAD_UNIT = [
+    ("HEAD_UNIT_CHASSIS_W", 178.0, "mm", "head unit's chassis width: 'Chassis (D): 178 mm x "
+     "100 mm x 87 mm (7 in. x 3-7/8 in. x 3-3/8 in.)' - " + _OPM, _PUBLISHED),
+    ("HEAD_UNIT_CHASSIS_H", 100.0, "mm", "head unit's chassis height (the same line)", _PUBLISHED),
+    ("HEAD_UNIT_CHASSIS_D", 87.0, "mm", "head unit's chassis depth, behind the nose (the same "
+     "line)", _PUBLISHED),
+    ("HEAD_UNIT_NOSE_W", 171.0, "mm", "head unit's nose (its face) width: 'Nose: 171 mm x 97 mm "
+     "x 3 mm (6-3/4 in. x 3-7/8 in. x 1/8 in.)' - the same page. So the nose is set in from the "
+     "chassis by 3.5 mm a side", _PUBLISHED),
+    ("HEAD_UNIT_NOSE_H", 97.0, "mm", "head unit's nose height (the same line): set in 1.5 mm top "
+     "and bottom", _PUBLISHED),
+    ("HEAD_UNIT_NOSE_D", 3.0, "mm", "how far the nose stands in front of the chassis (the same "
+     "line)", _PUBLISHED),
+    ("HEAD_UNIT_NOSE_R", None, "mm", "corner radius of the nose; None = unknown, and the case "
+     "uses FACE_R until it is given", _UNPUBLISHED),
+    ("HEAD_UNIT_SIDE_SCREW_D", 5.0, "mm", "thread of the screws into the chassis's sides (ISO "
+     "side mount): M5. Source is weak: a retailer's box list, 'Pan-head ISO screws (M5 x 9mm)', "
+     "seen only as a web search's summary on 2026-10-13 (the page would not open), and Pioneer's "
+     "installation manuals for its other receivers, which fasten the sides with 5 mm screws",
+     "not from Pioneer's sheet for this model: try the screw in the unit"),
+    ("HEAD_UNIT_SIDE_HOLES", None, "mm", "the side-mount holes one side of the chassis carries, "
+     "as a list of (back from the chassis's front face, up from its underside); None = unknown, "
+     "and the case uses SIDE_SCREWS until it is given", _UNPUBLISHED),
+    ("HEAD_UNIT_SLEEVE", False, "", "does it mount in a DIN sleeve? False: fastened by its side "
+     "screws. onlinecarstereo.com's box list for it (read 2026-10-13) has installation screws "
+     "and no sleeve or trim ring", "a retailer's list, not Pioneer's Installation Manual"),
+]
+_HU = {row[0]: row[1] for row in HEAD_UNIT}
 
 # The controls on the face, from the owner's sketch (ideas I-001 to I-006, a concept he is still
 # playing with). The sketch is SKETCH_W x SKETCH_H = 180 x 60 with coordinates from its top-left;
@@ -57,28 +100,48 @@ UPPER_CONNECTORS = [
     ("DP-DCU-E", 12, True),                    # the left plate's link (D-492, P200) - fitted since he ruled the plate
 ]
 
-TABLE = [
+TABLE = HEAD_UNIT + [
     # ------------------------------------------------------------------------------ the face --
     ("SKETCH_W", 180.0, "mm", "width of the owner's sketch the control table was read from", ""),
     ("SKETCH_H", 60.0, "mm", "height of that sketch", ""),
-    ("FACE_W", None, "mm", "faceplate width; None = derived, body width + 2 x BEZEL_OVERLAP. The "
-     "sketch says 180, which the 180 mm carrier cannot go behind (see the width rule)",
-     "the opening is unmeasured (V-113)"),
-    ("FACE_H", None, "mm", "faceplate height; None = derived, the body's height + 2 x "
-     "BEZEL_OVERLAP (or what the control block needs, if that is more), so the unit is ONE "
-     "height front to back and goes into its opening from the front like a head unit (D-480: "
-     "height is the dimension with room). A number lower than that builds the other unit: a "
-     "front section the face's height and a step up behind it, which cannot go in from the "
-     "front. The sketch says 60; the least the sketch's layout fits is 64 (at 60 the screen "
-     "window's top 1.8 mm lies behind the box's roof)",
-     "the opening is unmeasured (V-113); 60 in the sketch"),
+    ("FACE_W", None, "mm", "faceplate width; None = derived, body width + 2 x BEZEL_OVERLAP_X: "
+     "181 = the 188 body less the head unit's 3.5 a side, 10 wider than its nose because the "
+     "body is 10 wider than its chassis. The sketch says 180, which the 180 mm carrier and the "
+     "180 mm panel board cannot go behind (see the width rule)",
+     "follows the head unit's published sizes (D-542)"),
+    ("FACE_H", _HU["HEAD_UNIT_NOSE_H"], "mm", "faceplate height = the head unit's nose "
+     "(HEAD_UNIT_NOSE_H, D-542), so the two faces read as a pair. The body behind it is then "
+     "FACE_H - 2 x BEZEL_OVERLAP_Z = 100, the head unit's chassis height: 7.24 more than the "
+     "two rows need on bosses of 5, which BOSS_H shares out. None = derived, the body's height + 2 x BEZEL_OVERLAP_Z (or what the "
+     "control block needs, if that is more). Either way the unit is ONE height front to back "
+     "and goes in from the front like a head unit (D-480). A number lower than the body needs "
+     "builds the other unit: a front section the face's height and a step up behind it, which "
+     "cannot go in from the front. The sketch says 60; under a face standing 2 proud the least "
+     "the sketch's layout fits is 64",
+     "follows the head unit's published size (D-542); 60 in the sketch"),
     ("CONTROLS_ANCHOR", "centre", "", "where the sketch's control block sits on a taller face: "
      "'centre', 'top' or 'bottom'. Top and bottom put it as near that edge as the box's roof or "
      "floor behind the face allows", "taste: his to place"),
-    ("FACE_T", 3.0, "mm", "faceplate thickness", "material and make not chosen (luxury LP20)"),
-    ("BEZEL_OVERLAP", 2.0, "mm", "how far the faceplate stands proud of the body on every side, "
-     "so it covers the edge of the dash opening like a head unit's bezel",
-     "the opening is unmeasured (V-113)"),
+    ("FACE_T", _HU["HEAD_UNIT_NOSE_D"], "mm", "faceplate thickness = how far the head unit's "
+     "nose stands in front of its chassis (HEAD_UNIT_NOSE_D), so the two faces are in one plane "
+     "when the two bodies' fronts are", "follows the head unit's published size (D-542); "
+     "material and make not chosen (luxury LP20)"),
+    ("BEZEL_OVERLAP_X", (_HU["HEAD_UNIT_NOSE_W"] - _HU["HEAD_UNIT_CHASSIS_W"]) / 2.0, "mm",
+     "how far the faceplate reaches past the body at each side. NEGATIVE = the face is set in "
+     "from the body, as the head unit's nose is from its chassis: (HEAD_UNIT_NOSE_W - "
+     "HEAD_UNIT_CHASSIS_W) / 2 = -3.5, so the dash plastic covers both units' edges the same "
+     "way (D-542). Positive = the face stands proud and covers the opening's edge itself",
+     "follows the head unit's published sizes (D-542)"),
+    ("BEZEL_OVERLAP_Z", (_HU["HEAD_UNIT_NOSE_H"] - _HU["HEAD_UNIT_CHASSIS_H"]) / 2.0, "mm",
+     "the same at the top and the bottom: (HEAD_UNIT_NOSE_H - HEAD_UNIT_CHASSIS_H) / 2 = -1.5",
+     "follows the head unit's published sizes (D-542)"),
+    ("FACE_R", 2.0, "mm", "faceplate's corner radius, used while HEAD_UNIT_NOSE_R is None; when "
+     "that is measured it is used instead. 0 = square", "a guess: the head unit's is not "
+     "published"),
+    ("FRAME_LAND", 1.5, "mm", "least width of front frame behind the faceplate's edge, all "
+     "round: what the faceplate's rim rests on. Where the face is set in further than the wall "
+     "is thick (3.5 a side against WALL 3) the frame's opening is this much inside the face's "
+     "edge instead of flush with the body's inside", ""),
     ("CONTROLS", CONTROLS, "mm", "the controls on the face (table above)",
      "a concept he is still changing (I-001 to I-006)"),
     ("KNOB_PROUD", 15.0, "mm", "how far a knob stands in front of the face", "no knob chosen"),
@@ -105,9 +168,16 @@ TABLE = [
     ("PANEL_T", 1.6, "mm", "panel board thickness", ""),
     ("PANEL_GAP", 8.0, "mm", "faceplate's rear face to the panel board's front face",
      "set by the encoders and keys bought (the old tray used 7)"),
-    ("PANEL_MARGIN", 6.0, "mm", "panel board outline = the face less this on every side. It "
-     "cannot be less than BEZEL_OVERLAP + the wall + GAP, or the board is in the wall",
-     "the board is redrawn to the face (panel/ is 200 x 70 today)"),
+    ("PANEL_W", 180.0, "mm", "panel board width AS DRAWN (../panel/panel.kicad_pcb, Edge.Cuts "
+     "180 x 84.76; D-542: the boards stay as drawn). The board is centred on the face, and the "
+     "sketch's control block on the board, so its switches meet their holes. None = a board not "
+     "drawn yet: the face less PANEL_MARGIN a side", ""),
+    ("PANEL_H", 84.76, "mm", "panel board height as drawn (the same outline). None = the face "
+     "less PANEL_MARGIN top and bottom", ""),
+    ("PANEL_MARGIN", 6.0, "mm", "ONLY while PANEL_W / PANEL_H are None: panel board outline = "
+     "the face less this on every side. It cannot be less than the face's overlap + the wall + "
+     "GAP, or the board is in the wall", "the drawn board was sized by this under a 192 x 96.76 "
+     "face"),
     ("PANEL_BACK_H", 16.0, "mm", "kept clear behind the panel board for its parts and the ribbon "
      "plug", "no placed board for this face yet"),
     ("PANEL_HOLE_INSET", 4.0, "mm", "panel board's four M3 holes, in from its corners", ""),
@@ -120,9 +190,9 @@ TABLE = [
     ("CARRIER_W", 180.0, "mm", "DCU carrier width. When this and CARRIER_D are the drawn board's "
      "(board.json) the real board and its STEP are used; any other value builds a plain slab "
      "with the three connectors kept at their spacing and centred on it",
-     "provisional outline until V-102 (D-455)"),
+     "the outline as drawn (D-455), and the board stays as drawn (D-542); no part in hand"),
     ("CARRIER_D", 80.0, "mm", "DCU carrier depth, front edge to connector edge",
-     "provisional outline until V-102 (D-455)"),
+     "the outline as drawn (D-455), and the board stays as drawn (D-542); no part in hand"),
     ("CARRIER_T", 1.6, "mm", "carrier thickness", ""),
     ("CARRIER_STEP", True, "", "use ../dcu-carrier/dcu-carrier.step when it is there and the "
      "carrier is the drawn board; False = always the stand-in blocks (faster, and what a clone "
@@ -174,12 +244,15 @@ TABLE = [
     ("LID", 3.0, "mm", "lid, and the front section's roof", ""),
     ("GAP", 1.0, "mm", "a board's edge to the wall beside it", ""),
     ("TOP_GAP", 2.0, "mm", "tallest part to the lid's underside", ""),
-    ("BOSS_H", 5.0, "mm", "carrier bosses, floor to the carrier's underside", ""),
+    ("BOSS_H", 8.6, "mm", "carrier bosses, floor to the carrier's underside. 5 is the least "
+     "used before; 8.6 puts half of the 7.24 the head unit's height adds under the carrier and "
+     "half over the upper row, so the carrier, the two rows and the ribbon keep their places "
+     "against the panel board, which is centred on the face", ""),
     ("BOSS_D", 8.0, "mm", "boss diameter", ""),
     ("FRONT_L", 25.0, "mm", "ONLY for the stepped unit (a typed FACE_H lower than the body): "
      "length of the low front section behind the faceplate, the part that sits in the dash "
-     "opening. The one-height unit has no step wall and does not use it", "the opening's lip "
-     "depth is unmeasured (V-113)"),
+     "opening. The one-height unit has no step wall and does not use it", "no opening is "
+     "measured: the dash is rebuilt round the units (D-542)"),
     ("FRAME_D", 6.0, "mm", "depth of the front frame's ring behind the faceplate", ""),
     ("RIM_H", 3.0, "mm", "height of the beam the lid's front edge lands on. In the one-height "
      "unit it hangs under the roof, straight behind the room kept for the panel board", ""),
@@ -209,11 +282,22 @@ TABLE = [
     ("GASKET_GROOVE_W", 1.6, "mm", "lid's cord-gasket groove, width (as the other lids)", ""),
     ("GASKET_GROOVE_D", 1.2, "mm", "lid's cord-gasket groove, depth", ""),
     ("GASKET_R", 3.0, "mm", "gasket path's corner radius", ""),
-    ("SIDE_SCREWS", [(50.0, 40.0), (100.0, 40.0)], "mm", "head-unit style side fixings: an "
-     "insert boss inside each side wall at each (Y, Z) of the unit frame",
-     "placeholders: what the unit fastens to is unmeasured (V-113, V-102)"),
-    ("SIDE_BOSS_D", 9.0, "mm", "side screw boss diameter", ""),
-    ("SIDE_BOSS_L", 5.0, "mm", "how far a side screw boss stands in from the wall", ""),
+    ("SIDE_SCREWS", [(47.0, 42.0), (97.0, 42.0)], "mm", "head-unit style side fixings, used "
+     "while HEAD_UNIT_SIDE_HOLES is None (when that is measured the bosses stand on the head "
+     "unit's own pattern instead, so one pair of brackets or one cage carries both): an insert "
+     "boss inside each side wall at each (back from the body's front face, up from its "
+     "underside) - the frame the head unit's holes are measured in",
+     "placeholders: the head unit's pattern is not published, and what the pair fastens to is "
+     "built with the dash (D-542)"),
+    ("SIDE_SCREW_D", _HU["HEAD_UNIT_SIDE_SCREW_D"], "mm", "side screw thread = the head unit's "
+     "(HEAD_UNIT_SIDE_SCREW_D, M5), so the same screw holds both to one bracket",
+     "follows the head unit's (D-542)"),
+    ("SIDE_INSERT_BORE", 6.4, "mm", "bore for the side screw's brass heat-set insert (M5, Ruthex "
+     "RX-M5x5.8 class)", "against the insert bought"),
+    ("SIDE_INSERT_DEPTH", 8.0, "mm", "depth of that bore: the insert, and room for an M5 x 9 "
+     "screw through a bracket 1 mm or more thick", "against the insert and the screw used"),
+    ("SIDE_BOSS_D", 10.0, "mm", "side screw boss diameter", ""),
+    ("SIDE_BOSS_L", 6.0, "mm", "how far a side screw boss stands in from the wall", ""),
 
     # ------------------------------------------------------------------- tolerances and slack --
     ("OUTLINE_TOL", 0.2, "mm", "CARRIER_W / CARRIER_D within this of board.json = the drawn "
@@ -238,7 +322,7 @@ P["ENVELOPE"] = ENVELOPE
 UNIT = {name: unit for (name, value, unit, what, confirm) in TABLE}
 WHAT = {name: what for (name, value, unit, what, confirm) in TABLE}
 CONFIRM = {name: confirm for (name, value, unit, what, confirm) in TABLE if confirm}
-CONFIRM["ENVELOPE"] = "not measured (V-113, V-102)"
+CONFIRM["ENVELOPE"] = "not measured, and not a gate: the dash is rebuilt round the units (D-542)"
 
 # The self-test (`freecadcmd selftest.py`): the default set and perturbed ones, each with the
 # outcome it must have - "clear" (built, every check passes), "fails" (built, a check fails) or
@@ -247,44 +331,90 @@ CONFIRM["ENVELOPE"] = "not measured (V-113, V-102)"
 # Overrides replace whole values of P.
 _BOTH = [("DP-DCU-D", 12, True), ("DP-DCU-E", 12, True)]
 _ONE = [("DP-DCU-D", 12, True), ("DP-DCU-E", 12, False)]
+# The case as it was before D-542 - a face standing 2 proud of a body only as tall as the rows
+# need, a panel board cut to the face, M3 side screws: the sets written for it keep it, so each
+# still tests the rule it was written for and comes out the size it did (_old merges a set on it).
+_PROUD = {"FACE_H": None, "BEZEL_OVERLAP_X": 2.0, "BEZEL_OVERLAP_Z": 2.0, "FACE_R": 0.0,
+          "PANEL_W": None, "PANEL_H": None, "BOSS_H": 5.0,
+          "SIDE_SCREWS": [(47.0, 38.0), (97.0, 38.0)], "SIDE_SCREW_D": 3.0,
+          "SIDE_INSERT_BORE": 4.0, "SIDE_INSERT_DEPTH": 6.5, "SIDE_BOSS_D": 9.0, "SIDE_BOSS_L": 5.0}
+
+
+def _old(**over):
+    return dict(_PROUD, **over)
+
+
+_ENV = {"OPENING_W": 190.0, "OPENING_H": 102.0, "DEPTH": 210.0, "BEHIND_H": None}
 SELFTEST = [
-    ("the defaults: FACE_H None, one height, front install", {}, "clear"),
-    ("FACE_W 180, the sketch's width", {"FACE_W": 180.0}, "refused"),
-    ("FACE_W 200", {"FACE_W": 200.0}, "clear"),
-    ("FACE_H 64: the stepped unit", {"FACE_H": 64.0}, "clear"),
-    ("FACE_H 70: stepped", {"FACE_H": 70.0}, "clear"),
-    ("FACE_H 60, the sketch's height", {"FACE_H": 60.0}, "refused"),
-    ("FACE_H 50", {"FACE_H": 50.0}, "refused"),
-    ("FACE_H 62 with the control block anchored top", {"FACE_H": 62.0, "CONTROLS_ANCHOR": "top"},
+    # ---- the case toward the head unit (D-542): the defaults, and what its new numbers refuse
+    ("the defaults: the head unit's face height and reveal, one height, front install", {},
      "clear"),
-    ("FACE_H 95: a step lower than the lid's beam", {"FACE_H": 95.0}, "refused"),
-    ("FACE_H 100: taller than the body needs, one height", {"FACE_H": 100.0}, "clear"),
-    ("CONTROLS_ANCHOR top", {"CONTROLS_ANCHOR": "top"}, "clear"),
-    ("CONTROLS_ANCHOR bottom", {"CONTROLS_ANCHOR": "bottom"}, "clear"),
-    ("CONTROLS_ANCHOR left (not a choice)", {"CONTROLS_ANCHOR": "left"}, "refused"),
-    ("ROW_PITCH 28", {"ROW_PITCH": 28.0}, "refused"),
-    ("ROW_PITCH 32, the brief's", {"ROW_PITCH": 32.0}, "refused"),
-    ("ROW_PITCH 40", {"ROW_PITCH": 40.0}, "refused"),
-    ("ROW_PITCH 50", {"ROW_PITCH": 50.0}, "clear"),
-    ("both upper connectors fitted (the default since D-492)", {"UPPER_CONNECTORS": _BOTH}, "clear"),
-    ("DP-DCU-E not fitted (the default before D-492)", {"UPPER_CONNECTORS": _ONE}, "clear"),
-    ("no upper row at all: the control block sets the face", {"UPPER_CONNECTORS": []}, "clear"),
-    ("the drawn carrier without its STEP (stand-in blocks)", {"CARRIER_STEP": False}, "clear"),
-    ("carrier 170 wide", {"CARRIER_W": 170.0}, "fails"),
-    ("carrier 160 wide", {"CARRIER_W": 160.0}, "refused"),
-    ("PANEL_GAP 12", {"PANEL_GAP": 12.0}, "clear"),
-    ("PANEL_MARGIN 3, the brief's", {"PANEL_MARGIN": 3.0}, "refused"),
-    ("FRONT_L 40 on the one-height unit (not used there)", {"FRONT_L": 40.0}, "clear"),
-    ("FRONT_L 40 on the stepped unit", {"FACE_H": 64.0, "FRONT_L": 40.0}, "refused"),
-    ("a side screw boss put where the carrier is", {"SIDE_SCREWS": [(50.0, 12.0), (100.0, 40.0)]},
-     "fails"),
-    ("an opening it slides into", {"ENVELOPE": {"OPENING_W": 190.0, "OPENING_H": 95.0,
-                                                "DEPTH": 210.0, "BEHIND_H": None}}, "clear"),
-    ("the stepped unit, height only behind the dash",
-     {"FACE_H": 64.0, "ENVELOPE": {"OPENING_W": 190.0, "OPENING_H": 62.0, "DEPTH": 210.0,
-                                   "BEHIND_H": 100.0}}, "clear"),
-    ("an opening too shallow and too low", {"ENVELOPE": {"OPENING_W": 190.0, "OPENING_H": 62.0,
-                                                         "DEPTH": 150.0, "BEHIND_H": None}},
+    ("the head unit's side holes measured (an invented pattern): the bosses follow it",
+     {"HEAD_UNIT_SIDE_HOLES": [(40.0, 45.0), (90.0, 45.0)]}, "clear"),
+    ("the head unit's side holes measured, one where the carrier is",
+     {"HEAD_UNIT_SIDE_HOLES": [(60.0, 16.0), (90.0, 45.0)]}, "fails"),
+    ("the head unit's side holes measured, one behind the rear plate",
+     {"HEAD_UNIT_SIDE_HOLES": [(40.0, 45.0), (140.0, 45.0)]}, "refused"),
+    ("the head unit's nose radius measured (an invented 4)", {"HEAD_UNIT_NOSE_R": 4.0}, "clear"),
+    ("FACE_R 0: square corners", {"FACE_R": 0.0}, "clear"),
+    ("FACE_R 8: the corner uncovers the frame's opening", {"FACE_R": 8.0}, "refused"),
+    ("FACE_W 180, the sketch's width, under the head unit's reveal", {"FACE_W": 180.0},
      "refused"),
-    ("a nonsense value", {"WALL": -3.0}, "refused"),
+    ("FACE_H None under the head unit's reveal: the body only as tall as the rows need",
+     {"FACE_H": None}, "clear"),
+    ("FACE_H 80: lower than the drawn panel board", {"FACE_H": 80.0}, "refused"),
+    ("FACE_H 64 with the drawn panel board: no stepped unit without a new one", {"FACE_H": 64.0},
+     "refused"),
+    ("FACE_H 64 and a panel board cut to the face's height: the stepped unit under the head "
+     "unit's reveal", {"FACE_H": 64.0, "PANEL_H": None}, "clear"),
+    ("the same with its width cut to the face too: the ribbon header is off a 169 board",
+     {"FACE_H": 64.0, "PANEL_W": None, "PANEL_H": None}, "refused"),
+    ("PANEL_W 184: a panel board wider than the body's inside", {"PANEL_W": 184.0}, "refused"),
+    ("the face set in 6 a side: the panel board's screws are off it",
+     {"BEZEL_OVERLAP_X": -6.0}, "refused"),
+    ("M3 side screws in the new case", {"SIDE_SCREW_D": 3.0, "SIDE_INSERT_BORE": 4.0,
+                                        "SIDE_INSERT_DEPTH": 6.5}, "clear"),
+    ("SIDE_BOSS_L 4: too short for the M5 insert", {"SIDE_BOSS_L": 4.0}, "refused"),
+    ("an opening the head-unit-like unit slides into (the face does not cover it: the dash does)",
+     {"ENVELOPE": _ENV}, "clear"),
+    # ---- the case before D-542: every set below is on _PROUD
+    ("the old defaults: FACE_H None, a face 2 proud, one height, front install", _old(), "clear"),
+    ("FACE_W 180, the sketch's width", _old(**{"FACE_W": 180.0}), "refused"),
+    ("FACE_W 200", _old(**{"FACE_W": 200.0}), "clear"),
+    ("FACE_H 64: the stepped unit", _old(**{"FACE_H": 64.0}), "clear"),
+    ("FACE_H 70: stepped", _old(**{"FACE_H": 70.0}), "clear"),
+    ("FACE_H 60, the sketch's height", _old(**{"FACE_H": 60.0}), "refused"),
+    ("FACE_H 50", _old(**{"FACE_H": 50.0}), "refused"),
+    ("FACE_H 62 with the control block anchored top", _old(**{"FACE_H": 62.0, "CONTROLS_ANCHOR": "top"}),
+     "clear"),
+    ("FACE_H 95: a step lower than the lid's beam", _old(**{"FACE_H": 95.0}), "refused"),
+    ("FACE_H 100: taller than the body needs, one height", _old(**{"FACE_H": 100.0}), "clear"),
+    ("CONTROLS_ANCHOR top", _old(**{"CONTROLS_ANCHOR": "top"}), "clear"),
+    ("CONTROLS_ANCHOR bottom", _old(**{"CONTROLS_ANCHOR": "bottom"}), "clear"),
+    ("CONTROLS_ANCHOR left (not a choice)", _old(**{"CONTROLS_ANCHOR": "left"}), "refused"),
+    ("ROW_PITCH 28", _old(**{"ROW_PITCH": 28.0}), "refused"),
+    ("ROW_PITCH 32, the brief's", _old(**{"ROW_PITCH": 32.0}), "refused"),
+    ("ROW_PITCH 40", _old(**{"ROW_PITCH": 40.0}), "refused"),
+    ("ROW_PITCH 50", _old(**{"ROW_PITCH": 50.0}), "clear"),
+    ("both upper connectors fitted (the default since D-492)", _old(**{"UPPER_CONNECTORS": _BOTH}), "clear"),
+    ("DP-DCU-E not fitted (the default before D-492)", _old(**{"UPPER_CONNECTORS": _ONE}), "clear"),
+    ("no upper row at all: the control block sets the face", _old(**{"UPPER_CONNECTORS": []}), "clear"),
+    ("the drawn carrier without its STEP (stand-in blocks)", _old(**{"CARRIER_STEP": False}), "clear"),
+    ("carrier 170 wide", _old(**{"CARRIER_W": 170.0}), "fails"),
+    ("carrier 160 wide", _old(**{"CARRIER_W": 160.0}), "refused"),
+    ("PANEL_GAP 12", _old(**{"PANEL_GAP": 12.0}), "clear"),
+    ("PANEL_MARGIN 3, the brief's", _old(**{"PANEL_MARGIN": 3.0}), "refused"),
+    ("FRONT_L 40 on the one-height unit (not used there)", _old(**{"FRONT_L": 40.0}), "clear"),
+    ("FRONT_L 40 on the stepped unit", _old(**{"FACE_H": 64.0, "FRONT_L": 40.0}), "refused"),
+    ("a side screw boss put where the carrier is",
+     _old(**{"SIDE_SCREWS": [(47.0, 10.0), (97.0, 38.0)]}), "fails"),
+    ("an opening it slides into", _old(**{"ENVELOPE": {"OPENING_W": 190.0, "OPENING_H": 95.0,
+                                                "DEPTH": 210.0, "BEHIND_H": None}}), "clear"),
+    ("the stepped unit, height only behind the dash",
+     _old(**{"FACE_H": 64.0, "ENVELOPE": {"OPENING_W": 190.0, "OPENING_H": 62.0, "DEPTH": 210.0,
+                                   "BEHIND_H": 100.0}}), "clear"),
+    ("an opening too shallow and too low", _old(**{"ENVELOPE": {"OPENING_W": 190.0, "OPENING_H": 62.0,
+                                                         "DEPTH": 150.0, "BEHIND_H": None}}),
+     "refused"),
+    ("a nonsense value", _old(**{"WALL": -3.0}), "refused"),
 ]
