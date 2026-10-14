@@ -2,7 +2,7 @@
 //! the record and git; a chat (Explain, Discuss, the chat panel) can only read. Every line
 //! Claude Code prints (stream-json) is passed to the window as it comes, untouched.
 
-use super::{tool, Tree};
+use super::{tool, tool_path, Tree};
 use serde::Deserialize;
 use serde_json::json;
 use std::collections::HashMap;
@@ -115,6 +115,7 @@ pub fn claude_start(
     let mut child = Command::new(tool("claude"))
         .args(args(&mode, &prompt, session.as_deref(), &opts))
         .current_dir(tree.root())
+        .env("PATH", tool_path())
         .stdin(Stdio::null())
         .stdout(Stdio::piped())
         .stderr(Stdio::piped())

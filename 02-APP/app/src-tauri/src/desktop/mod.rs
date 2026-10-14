@@ -29,18 +29,31 @@ impl Tree {
     }
 }
 
-/// A program by name, found even when the app was started from a launcher whose PATH
-/// does not include `~/.local/bin` (where Claude Code lives).
-pub fn tool(name: &str) -> PathBuf {
+/// Where programs are looked for: PATH, then what a launcher's PATH leaves out -
+/// `~/.local/bin` (where Claude Code lives) and Homebrew's bin (poppler's pdftoppm, D-545).
+fn tool_dirs() -> Vec<PathBuf> {
     let home = env::var_os("HOME").map(PathBuf::from).unwrap_or_default();
     let mut dirs: Vec<PathBuf> = env::var_os("PATH")
         .map(|p| env::split_paths(&p).collect())
         .unwrap_or_default();
-    dirs.extend([home.join(".local/bin"), "/usr/local/bin".into(), "/usr/bin".into()]);
-    dirs.into_iter()
+    dirs.extend([home.join(".local/bin"), "/opt/homebrew/bin".into(), "/usr/local/bin".into(), "/usr/bin".into()]);
+    dirs
+}
+
+/// A program by name, found even when the app was started from a launcher whose PATH
+/// does not include it.
+pub fn tool(name: &str) -> PathBuf {
+    tool_dirs()
+        .into_iter()
         .map(|d| d.join(name))
         .find(|p| p.is_file())
         .unwrap_or_else(|| PathBuf::from(name))
+}
+
+/// The PATH a child is started with, so the programs it runs itself find what `tool` finds:
+/// Claude Code's Read tool renders a PDF page with pdftoppm (D-545).
+pub fn tool_path() -> std::ffi::OsString {
+    env::join_paths(tool_dirs()).unwrap_or_default()
 }
 
 pub fn install(builder: tauri::Builder<tauri::Wry>) -> tauri::Builder<tauri::Wry> {
