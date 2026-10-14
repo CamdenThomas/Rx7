@@ -52,7 +52,8 @@ BRIEF = {
 
 # ------------------------------------------------------------------ the model and the cost of each item
 #
-# Measured 2026-10-14 (a bare `claude -p --model haiku` started outside the tree): the worker's
+# Measured 2026-10-14 (a bare `claude -p --model haiku` started outside the tree, then one real
+# item end to end - Q-00001, 5 text pages, 70 facts, $0.0108 at --effort low): the worker's
 # fixed context - system prompt and tools - is about 34,000 tokens, 22,000 of them read from the
 # shared cache and 12,000 written on its first turn; it costs $0.0027 before reading anything.
 # Calibrate these after the first session from the queue's tok_in / tok_out / cost_usd columns.
@@ -66,8 +67,8 @@ FIXED_READ, FIXED_WRITE = 22_000, 12_000   # the worker's fixed context, per cal
 INSTR = 1_800          # the worker's instructions and the item's brief
 IMG = 1_600            # one page image at 110 dpi
 TURN_OVERHEAD = 350    # a tool call and its framing
-FACT_TOKENS = 45       # one facts row
-THINK = 0.8            # thinking, as a share of the written output
+FACT_TOKENS = 76       # one facts row (measured 2026-10-14, Q-00001 in a test copy)
+THINK = 1.45           # thinking, as a share of the written output (Haiku at --effort low: 7,676 / 5,353)
 CAP_X = 3.0            # the cap: this many times the prediction ...
 CAP_FLOOR = {"haiku": 0.03, "sonnet": 0.40, "opus": 0.80}   # ... and never under this
 SONNET_KINDS = {"figure", "catalogue", "review", "merge"}
@@ -96,7 +97,7 @@ def predict(model, text_tokens, n_img, n_pages):
     turns = 1 + n_img
     content = INSTR + text_tokens
     tin = turns * (FIXED_READ + FIXED_WRITE) + turns * content + IMG * n_img * (n_img + 1) // 2 + TURN_OVERHEAD * turns
-    facts = text_tokens / 55 + 12 * n_img + 2 * n_pages
+    facts = text_tokens / 40 + 12 * n_img + 2 * n_pages   # Q-00001: about 2,900 text tokens gave 70 facts
     tout = int(facts * FACT_TOKENS * (1 + THINK) + 250 * turns)
     pin, pout = PRICE[model]
     # cached reads at a tenth of the input price, writes at 1.25 times; the fixed context is

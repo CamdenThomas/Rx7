@@ -28,8 +28,8 @@ DOC-048.027|spec|engine|Tension bolt|Tightening torque|31-34|N·m|final pass, in
 DOC-048.027|step|engine|Remove the rear housing|Loosen the tension bolts in two or three passes|||step 4; order on fig. 1-27|other-year||
 ```
 
-One fact per line, 11 fields split by `|` (never a `|` inside a field: write `/`). The header line
-is optional.
+One fact per line, **always exactly 11 fields - 10 `|` per line, empty fields included** (an empty
+unit is `||`). Never a `|` inside a field: write `/`. The header line is optional.
 
 - **page**: the page id the fact is on, exactly as given (`DOC-xxx.nnn`).
 - **kind**: spec, step, procedure (a procedure's title, when to do it, its tools), terminal,

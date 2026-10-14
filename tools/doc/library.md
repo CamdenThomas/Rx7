@@ -1,6 +1,6 @@
 # The library plan - every document read into the record, then no PDFs (D-574)
 
-_Rev 2026-10-14. Project `02-PROJECTS/05-library`. This is the whole plan: what exists, who
+_Rev 2026-10-14. Project `02-PROJECTS/05-library`. **To run an hour: `rx7.py playbook session`.** This is the whole plan: what exists, who
 does what, in what order, how an agent takes its next piece and marks it done, and when a phase
 is finished. Workers read only their playbook (`rx7.py playbook parse` / `merge`); the
 orchestrator reads this._

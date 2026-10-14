@@ -2799,6 +2799,8 @@ def cmd_claim(args):
             return False
         if args.kind and (r.get("kind") or "").strip() != args.kind:
             return False
+        if getattr(args, "model", None) and (r.get("model") or "").strip() != args.model:
+            return False
         return all(x in done for x in (r.get("after") or "").split())
 
     pick = sorted((r for r in rows if ready(r)), key=lambda r: (-(_int(r.get("priority")) or 0), r.get("id") or ""))
@@ -3935,7 +3937,7 @@ def cmd_selftest(args):
                                                   blank(id="Q-003", priority="50", state="open"), blank(id="Q-004", priority="99", state="done", finished="x")]), encoding="utf-8")
         old = _use_tree(root)
         try:
-            ns = lambda **k: argparse.Namespace(area="02-PROJECTS/01-one", agent=k.get("agent"), kind=None, stale=90, key=k.get("key"), pairs=k.get("pairs", []))
+            ns = lambda **k: argparse.Namespace(area="02-PROJECTS/01-one", agent=k.get("agent"), kind=None, model=k.get("model"), stale=90, key=k.get("key"), pairs=k.get("pairs", []))
             with contextlib.redirect_stdout(io.StringIO()):
                 cmd_claim(ns(agent="a1")); cmd_claim(ns(agent="a2"))
             q = {r["id"]: r for r in read_table(root / "02-PROJECTS" / "01-one", "queue")[1]}
@@ -4084,7 +4086,7 @@ def main(argv=None):
     p.add_argument("-p", "--area")
     p.set_defaults(fn=cmd_apply)
 
-    for name, hlp in (("playbook", "print one playbook (plan, apply, source, build, review, complete, service, new, parts, parse, merge)"),
+    for name, hlp in (("playbook", "print one playbook (plan, apply, source, build, review, complete, service, new, parts, session, parse, merge)"),
                       ("doc", "print one description (record, work, blocks, ids, machine, library)")):
         p = sub.add_parser(name, help=hlp)
         p.add_argument("name", nargs="?")
@@ -4114,7 +4116,7 @@ def main(argv=None):
     p.set_defaults(fn=cmd_selftest)
 
     p = sub.add_parser("claim", help="take the next item of an area's queue and mark it claimed (D-574; rc 2 when none is left)")
-    p.add_argument("area"); p.add_argument("--agent"); p.add_argument("--kind")
+    p.add_argument("area"); p.add_argument("--agent"); p.add_argument("--kind"); p.add_argument("--model")
     p.add_argument("--stale", type=int, default=90, help="minutes after which a claim counts as abandoned")
     p.set_defaults(fn=cmd_claim)
     p = sub.add_parser("finish", help="close a claimed queue item: state (default done), finished, result=, rows=")

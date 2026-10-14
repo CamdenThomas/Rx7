@@ -38,6 +38,7 @@ PAGE = [sys.executable, str(LIB / "tools" / "page.py")]
 WORK = Path("/tmp/rx7-work")
 CLAUDE = shutil.which("claude") or str(Path.home() / ".local/bin/claude")
 MODELS = {"haiku": "haiku", "sonnet": "sonnet", "opus": "opus"}
+EFFORT = {"haiku": "low", "sonnet": "medium", "opus": "medium"}   # extraction needs little thinking (D-575)
 FACT_KINDS = {"spec", "step", "procedure", "terminal", "circuit", "diagnosis", "interval", "part",
               "catalogue", "dimension", "figure", "issue", "note"}
 SYSTEMS = {"engine", "fuel", "ignition", "cooling", "electrical", "lighting", "transmission", "driveline",
@@ -72,19 +73,12 @@ def pages_in(spec):
 
 
 def claim(agent, kind=None, model=None):
-    """Claim the next item; with --model, an item for another model is handed straight back."""
-    for _ in range(50):
-        cmd = RX7 + ["claim", "02-PROJECTS/05-library", "--agent", agent] + (["--kind", kind] if kind else [])
-        r = sh(cmd)
-        if r.returncode != 0:
-            return None
-        qid = re.search(r"^id\s+(Q-\d+)", r.stdout, re.M).group(1)
-        q = queue_row(qid)
-        if model and q.get("model") != model:
-            sh(RX7 + ["set", "02-PROJECTS/05-library", "queue", qid, "state=open", "agent=", "claimed="])
-            continue
-        return q
-    return None
+    """Claim the next item, for one model or kind when the session is restricted to it."""
+    cmd = RX7 + ["claim", "02-PROJECTS/05-library", "--agent", agent] + (["--kind", kind] if kind else []) + (["--model", model] if model else [])
+    r = sh(cmd)
+    if r.returncode != 0:
+        return None
+    return queue_row(re.search(r"^id\s+(Q-\d+)", r.stdout, re.M).group(1))
 
 
 def prepare(q):
@@ -117,10 +111,11 @@ def prepare(q):
 
 
 def launch(q, d, prompt):
-    cmd = [CLAUDE, "-p", prompt, "--model", MODELS[q.get("model") or "haiku"], "--max-budget-usd", q.get("cap_usd") or "0.05",
+    m = q.get("model") or "haiku"
+    cmd = [CLAUDE, "-p", prompt, "--model", MODELS[m], "--effort", EFFORT[m], "--max-budget-usd", q.get("cap_usd") or "0.05",
            "--output-format", "json", "--allowedTools", "Read"]
-    out = open(d / "answer.json", "w")
-    return subprocess.Popen(cmd, cwd=d, stdout=out, stderr=subprocess.STDOUT, env=dict(os.environ))
+    out, err = open(d / "answer.json", "w"), open(d / "stderr.txt", "w")
+    return subprocess.Popen(cmd, cwd=d, stdin=subprocess.DEVNULL, stdout=out, stderr=err, env=dict(os.environ))
 
 
 def blocks(text, name):
@@ -130,6 +125,32 @@ def blocks(text, name):
 
 def clean(v):
     return v.replace("\n", " ").strip()
+
+
+def realign(f):
+    """A facts row as its 11 fields, even when the worker miscounted its empty ones: `applies` is
+    the one field with a fixed vocabulary, so it anchors the row - five fields before the value
+    (page kind system subject item), then value, unit, context, then applies, quote, note.
+    A short head drops the unit (a diagnosis row: value = cause, context = remedy); a long one
+    joins its extra into context; a long tail joins into note. None when no applies is found."""
+    if len(f) == 11 and f[8] in APPLIES:
+        return f
+    idx = [i for i, x in enumerate(f) if x in APPLIES and i >= 5]
+    if not idx:
+        return f if len(f) == 11 else None
+    i = idx[-1]
+    head, tail = f[:i], f[i + 1:]
+    if len(head) < 6:
+        return None
+    rest = head[5:]
+    if len(rest) == 1:
+        vuc = [rest[0], "", ""]
+    elif len(rest) == 2:
+        vuc = [rest[0], "", rest[1]]
+    else:
+        vuc = [rest[0], rest[1], " / ".join(x for x in rest[2:] if x)]
+    tail = (tail + ["", ""])[:2] if len(tail) <= 2 else [tail[0], " / ".join(x for x in tail[1:] if x)]
+    return head[:5] + vuc + [f[i]] + tail
 
 
 def ingest(q, answer, usage):
@@ -143,11 +164,9 @@ def ingest(q, answer, usage):
         return "failed", 0
     facts, dropped = [], 0
     for line in blocks(answer, "facts"):
-        f = [clean(x) for x in line.split("|")]
-        if f[0] == "page":
-            continue
-        if len(f) != 11 or f[0] not in allowed or not f[3] or not f[4]:
-            dropped += 1
+        f = realign([clean(x) for x in line.split("|")])
+        if not f or f[0] == "page" or f[0] not in allowed or not f[3] or not f[4]:
+            dropped += 1 if f and f[0] != "page" else 0
             continue
         page, kind, system, subject, item, value, unit, context, applies, quote, note = f
         if kind not in FACT_KINDS:
@@ -190,7 +209,8 @@ def ingest(q, answer, usage):
 def harvest(q, d):
     """Read a finished worker's JSON and ingest it; a capped or crashed worker fails its item."""
     try:
-        j = json.loads((d / "answer.json").read_text(encoding="utf-8"))
+        raw = (d / "answer.json").read_text(encoding="utf-8")
+        j = json.loads(raw[raw.index("{"):])   # anything printed before the JSON is not the answer
     except Exception:
         tail = (d / "answer.json").read_text(errors="replace")[-200:] if (d / "answer.json").exists() else "no output"
         sh(RX7 + ["finish", "02-PROJECTS/05-library", q["id"], "state=failed", f"result=worker crashed: {tail}"])

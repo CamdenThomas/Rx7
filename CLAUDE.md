@@ -267,7 +267,7 @@ If READY is empty, that is the report.
 
 Every run is one playbook: **plan** (§3 small work from READY, blocks for the rest), **apply**
 (his answers), **source**, **build**, **review**, **complete**, **service**, **new** (a project),
-**parts** (a parts round), **parse** and **merge** (the library's queue). `rx7.py playbook <name>` prints it; read it before step 1. Planning is
+**parts** (a parts round), **session** (an hour of the library's parsing), **parse** and **merge** (its workers). `rx7.py playbook <name>` prints it; read it before step 1. Planning is
 open in every project at every phase (D-398). Every run starts with §0 and ends the same way:
 `check` clean, `rx7.py diagrams` if a harness table changed, a `log` row, commits and a push,
 and the §8 report. **Queue workers** (playbooks **parse** and **merge**, 05-library, D-574) are the
