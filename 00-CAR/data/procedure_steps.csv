@@ -1305,7 +1305,7 @@ PR-145.04,PR-145,4,"Remove the screws holding the glass to the regulator, then t
 PR-145.05,PR-145,5,Remove the glass,,,,p.14-9
 PR-145.06,PR-145,6,Remove the regulator's bolts and take the regulator out through the service hole,,,,p.14-9
 PR-145.07,PR-145,7,Power window type only: remove the motor's mounting bolts and take the motor off the regulator,,,The spring is released as the motor comes off and the regulator gear snaps back to the up position.,p.14-9
-PR-145.08,PR-145,8,Refit in the reverse order and adjust the regulator if necessary,"PR-144. Power window type: before the motor goes on, run the regulator down on a battery to the position the page's figure shows; it was not read.",,,p.14-9
+PR-145.08,PR-145,8,Refit in the reverse order and adjust the regulator if necessary,"PR-144. Power window type: before the motor goes on, run the regulator DOWN on a battery to the position of photo 57U14X-024 (read 2026-10-14: the photo shows the regulator in the door with its arms lowered, the four mounting points arrowed; no figure or angle is given, so match the photo). The motor holds a wound spring: take it off with care, it snaps the gear back to UP.",,,p.14-9
 PR-146.01,PR-146,1,"Raise the glass fully and remove the regulator handle, the arm rest and the inner handle cover",,,,p.14-10
 PR-146.02,PR-146,2,Remove the trim panel,,,,p.14-10
 PR-146.03,PR-146,3,"Remove the inner handle's bolts, disconnect the remote control rod at the door lock and take the inner handle out",,,,p.14-10
@@ -1335,7 +1335,7 @@ PR-148.04,PR-148,4,Remove the upper part of the weatherstrip and the rear header
 PR-148.05,PR-148,5,Remove the listing wires and the top ceiling,,,,p.14-13
 PR-148.06,PR-148,6,Warm the new top ceiling,SP-1322.,,,p.14-13
 PR-148.07,PR-148,7,"Insert both ends of each listing wire in its place, beginning from the centre",,,,p.14-13
-PR-148.08,PR-148,8,Fit the rear end of the top ceiling to the body flange and its front end into the body's inserting point,As the page's figures show; they were not read.,,,p.14-13
+PR-148.08,PR-148,8,Fit the rear end of the top ceiling to the body flange and its front end into the body's inserting point,"Drawings 47U14X-039 to -041 (read 2026-10-14): heat the ceiling to 30-50 C first; the listing wires go in from the centre outward, both ends of each into their holders; the rear end wraps over the body flange and is held by the weatherstrip; the front end tucks into the slot between the windshield glass's upper edge and the body (the inserting point), under the moulding.",,,p.14-13
 PR-148.09,PR-148,9,Put double-sided adhesive tape on the outside of the body flange,,,,p.14-14
 PR-148.10,PR-148,10,Pull the top ceiling from both sides to take out the slack and glue both sides to the body flange,,,,p.14-14
 PR-148.11,PR-148,11,Clip off every protruding edge and refit the trims in the reverse order,Seat belt anchor bolts SP-1314.,,,p.14-14
@@ -1378,7 +1378,7 @@ PR-153.04,PR-153,4,"Wind each end of the wire round a bar and saw through the se
 PR-153.05,PR-153,5,"Cut the old sealant back with a sharp knife, leaving a thin layer all round the frame","SP-1267. Where it has all come off: degrease, prime, let the primer dry (SP-1268) and build the layer up, SP-1712.",,,p.14-20
 PR-153.06,PR-153,6,"Bond the new dam to the glass, straight, with its lip outermost",Set back from the glass edge by SP-1269.,,,p.14-21
 PR-153.07,PR-153,7,Prime the bonding areas of the body and the glass thinly and let the primer dry,SP-1268.,,Keep dust off the primer and do not touch it.,p.14-21
-PR-153.08,PR-153,8,"Bond the spacers to the body and fit the moulding clips, replacing any defective one",The spacers' places are in the page's figure; it was not read.,,,p.14-21
+PR-153.08,PR-153,8,"Bond the spacers to the body and fit the moulding clips, replacing any defective one","Drawing 47U14X-064 (read 2026-10-14): spacers at the top and at the bottom of the opening, 400 mm (15.75 in) each side of the centre line - four in all; the upper ones (section A-A) and the lower ones (section B-B) are different shapes, so use the right spacer for each edge. The dam (47U14X-062) is bonded to the glass with its outer edge 7 mm from the glass edge all round, lip outermost; the sealant ridge is 8 mm high (47U14X-065).",,,p.14-21
 PR-153.09,PR-153,9,"Cut the sealant gun's nozzle with a flange to run along the glass edge and a V for the sealant, and lay a smooth ridge round the whole glass between the dam and the edge",Ridge height SP-1270. Reshape it with a spatula where needed.,,,p.14-21
 PR-153.10,PR-153,10,"Open a door window, lift the glass into place and press it lightly toward the car",,,A closed car pushes the glass out by air pressure when a door shuts.,p.14-21
 PR-153.11,PR-153,11,Smooth away sealant that oozes out and add sealant where the contact is poor,,,,p.14-22
@@ -1390,7 +1390,7 @@ PR-154.02,PR-154,2,Open the rear glass hatch and disconnect the electrical conne
 PR-154.03,PR-154,3,Remove the rear pillar trims and the glass's attaching nut,,,,p.14-22
 PR-154.04,PR-154,4,Disconnect the damper stay's end from the rear pillar and hold the hatch up,,,,p.14-22
 PR-154.05,PR-154,5,Cut the glass out with the piano wire,PR-153 steps 3 and 4.,,,p.14-22
-PR-154.06,PR-154,6,"Prepare the frame, bond the new dam to the glass, prime the body and the glass and bond the spacers to the glass","As PR-153 steps 5 to 8; the dam's, the primer's and the spacers' places are in the page's figures, which were not read.",,,p.14-22
+PR-154.06,PR-154,6,"Prepare the frame, bond the new dam to the glass, prime the body and the glass and bond the spacers to the glass","As PR-153 steps 5 to 8. Drawings 47U14X-070 and -071 (read 2026-10-14): primer along the whole bonding edge of the glass and the body; three spacers on the glass at its upper rear corner, 100 mm apart along the top and rear edges; the dam along the glass edge inside the sealant bead, the mould outside it.",,,p.14-22
 PR-154.07,PR-154,7,"Lay the sealant round the whole glass, fit the glass and let the sealant harden",As PR-153 steps 9 to 13.,,,p.14-23
 PR-154.08,PR-154,8,"Fit the glass's attaching nut, the centre pillar trim and the rear side pillar trim",,,,p.14-23
 PR-154.09,PR-154,9,"Connect the damper stay's end to the body, fit the glass plate's screw and the garnish",,,,p.14-23
