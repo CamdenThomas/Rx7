@@ -204,3 +204,6 @@ PR-202,Transmission,Adjust the selector lever knob and its push button,"the leve
 PR-203,Transmission,Adjust the kick-down switch,"kick-down does not engage at full throttle, or engages early",spanner,S-045,
 PR-204,Transmission,Adjust the inhibitor switch,"the starter turns in gear, or not in P or N; the back-up lamps misbehave","stands, a 2.0 mm pin",S-045,
 PR-205,Transmission,Overhaul the automatic transmission on the bench (3N71B),"the gearbox slips, shifts wrongly after adjustment, or is out for a rebuild","transmission stand 49 0378 320A, pump puller 49 0378 390, spring compressor 49 0378 375, snap ring pliers 49 8000 015 and 49 8000 025, hex wrench 49 0378 346, servo socket 49 0378 345, dial indicator, feeler gauges, torque driver",S-045,
+PR-206,Engine,Judge oil consumption before an overhaul,the owner reports high oil use or white smoke,"measuring jug, dipstick",S-050,
+PR-207,Cooling,"Find the cause of overheating, and test the rotor housings' water seals","the car overheats, loses coolant or blows steam","cooling system pressure tester, cap tester, compressed air with a spark plug hole adapter, tape",S-050,
+PR-208,Engine,Judge low compression before an overhaul,"hard starting, rough idle or low power after ignition, emissions and fuel are cleared",rotary compression tester with recording paper,S-050,
