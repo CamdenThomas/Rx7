@@ -681,12 +681,12 @@ PR-081.04,PR-081,4,"Check the terminals are tight, clean them and coat them with
 PR-081.05,PR-081,5,Inspect the cables for corrosion and fraying and the rubber protector on the positive terminal for coverage,,,,p.5-5
 PR-081.06,PR-081,6,"If the indicator is not blue after charging, measure the specific gravity with a hydrometer",SP-327.,Under 1.220: charge again. Normal with no blue sign: the indicator may be faulty.,,p.5-5
 PR-082.01,PR-082,1,"Before any test, read the cautions",Battery voltage is always on the alternator's B terminal.,,"Never reverse the battery connections or use a megger (either destroys the rectifier), never ground the L terminal with the engine running, never start the engine with the L and R coupler off.",p.5-6
-PR-082.02,PR-082,2,"Test 1: measure the B terminal voltage at idle, then at about 2000 rpm",,Higher at 2000 rpm: go to the output test (step 7). No change: go on.,,p.5-7
-PR-082.03,PR-082,3,"Test 2: engine stopped and key ON, measure the L terminal voltage",SP-259.,0 to 1 V: go on. Near battery voltage: step 6. 1 to 3 V: step 7.,,p.5-7
-PR-082.04,PR-082,4,Test 3: join the alternator's B and R terminals with a separate lead and repeat test 2,,"1 to 3 V now: poor contact in the car's wiring, key switch included. Still 0 to 1 V: go on.",,p.5-7
-PR-082.05,PR-082,5,Test 4: disconnect the alternator's connector and check continuity between the L and R terminals,SP-277. The chart's two outcomes both read IC regulator fault in the OCR text; the page was not read.,,,p.5-7
+PR-082.02,PR-082,2,"Test 1: measure the B terminal voltage at idle, then at about 2000 rpm",Chart 57U05X-101 (read 2026-10-14): higher at 2000 rpm - go to test 6; no change - go to test 2.,Higher at 2000 rpm: go to the output test (step 7). No change: go on.,,p.5-7
+PR-082.03,PR-082,3,"Test 2: engine stopped and key ON, measure the L terminal voltage",SP-259. The chart: 0-1 V - go to test 3; near battery voltage - go to test 5; 1-3 V - go to test 6.,0 to 1 V: go on. Near battery voltage: step 6. 1 to 3 V: step 7.,,p.5-7
+PR-082.04,PR-082,4,Test 3: join the alternator's B and R terminals with a separate lead and repeat test 2,"Still 0-1 V - go to test 4; now 1-3 V - a poor contact in the car's wiring, the key switch included.","1 to 3 V now: poor contact in the car's wiring, key switch included. Still 0 to 1 V: go on.",,p.5-7
+PR-082.05,PR-082,5,Test 4: disconnect the alternator's connector and check continuity between the L and R terminals,"SP-277. The chart, read on the page 2026-10-14, does give IC regulator fault under both outcomes - continuity of 35-100 ohms, or none: by this step the regulator is the fault either way.",,,p.5-7
 PR-082.06,PR-082,6,"Test 5: engine stopped and key ON, measure the F terminal voltage",SP-1614. Touch the test lead to the terminal only briefly.,,,p.5-8
-PR-082.07,PR-082,7,"Test 6: put an ammeter of 60 A or more between the B terminal and its wire, start the engine with every electrical load on, raise it suddenly to 2500 to 3000 rpm and read the peak",SP-257.,90% or more of nominal output: the alternator is normal. 70 to 90%: go on. 70% or less: the alternator is faulty.,,p.5-8
+PR-082.07,PR-082,7,"Test 6: put an ammeter of 60 A or more between the B terminal and its wire, start the engine with every electrical load on, raise it suddenly to 2500 to 3000 rpm and read the peak",SP-257. Chart 47U05X-102: 90 % or more of nominal - the alternator is normal; 70-90 % - go to test 7; 70 % or less - the alternator is faulty.,90% or more of nominal output: the alternator is normal. 70 to 90%: go on. 70% or less: the alternator is faulty.,,p.5-8
 PR-082.08,PR-082,8,Test 7: discharge the battery a little and repeat test 6; check the wiring between the B terminal and battery positive for a poor contact,SP-257.,90% or more: normal. Less: remove the alternator and inspect it.,,p.5-9
 PR-082.09,PR-082,9,"Test 8: put an ammeter of 50 A or more between the battery's positive cable and the battery, start the engine and read the charging current at about 2500 rpm",,Under 5 A: go on. 5 A or more: charge longer or fit a charged battery and repeat.,Short the ammeter's terminals before cranking so starter current does not pass through it.,p.5-9
 PR-082.10,PR-082,10,"With the current under 5 A, measure the L terminal voltage",SP-278.,14.7 +/- 0.5 V at 20 C: the IC regulator is normal.,,p.5-9
@@ -694,7 +694,7 @@ PR-083.01,PR-083,1,Measure the B terminal voltage while raising the engine slowl
 PR-083.02,PR-083,2,Compare the F terminal voltage at idle and at about 3000 rpm,It may not rise while the battery is discharging.,Higher at 3000 rpm: go on. No change: the IC regulator is faulty.,,p.5-10
 PR-083.03,PR-083,3,"With the battery fully charged (charging current 5 A or less at 2500 rpm), measure the L terminal voltage at about 2500 rpm",SP-278.,14.7 +/- 0.5 V at 20 C: the alternator is normal.,,p.5-10
 PR-084.01,PR-084,1,Disconnect the battery's negative terminal,,,,p.5-11
-PR-084.02,PR-084,2,Remove the alternator's bolts,The figure marks them; it was not read.,,,p.5-11
+PR-084.02,PR-084,2,Remove the alternator's bolts,Drawing 39G05X-004 (read 2026-10-14): the long through-bolt and nut at the lower pivot lugs and the bolt through the slotted adjusting link at the top.,,,p.5-11
 PR-084.03,PR-084,3,Disconnect the wiring and the connector from the alternator,,,,p.5-11
 PR-084.04,PR-084,4,"Remove the V-belt, then the alternator",,,,p.5-11
 PR-084.05,PR-084,5,Refit in the reverse order and set the V-belt tension,SP-025; this page's own figures are SP-1612.,,,p.5-11
@@ -717,7 +717,7 @@ PR-085.16,PR-085,16,Measure the brush spring force with the brush pushed in unti
 PR-085.17,PR-085,17,"Check the bearings for noise, looseness and lack of oil",,,,p.5-16
 PR-085.18,PR-085,18,"Check the positive diodes, the negative diodes and the diode trio for continuity in each direction",SP-275.,Each conducts one way only.,,p.5-16
 PR-085.19,PR-085,19,"Assemble in the reverse order, nothing lubricated; fit the stopper spring into the eccentric groove round the rear bearing","Its protruding part goes in the deepest part of the groove, whose edge is chamfered.",,,p.5-18
-PR-085.20,PR-085,20,"Push each brush into its holder and pin it with a 2 mm wire, 40 to 50 mm long, through the hole",The figure shows the hole; it was not read.,,Pull the wire out when assembly is finished.,p.5-18
+PR-085.20,PR-085,20,"Push each brush into its holder and pin it with a 2 mm wire, 40 to 50 mm long, through the hole","Drawing 39G05X-027 (read 2026-10-14): the hole is in the rear cover at the lower edge of the round bearing cap in the middle, left of the L-R coupler. Pull the wire out once assembled.",,Pull the wire out when assembly is finished.,p.5-18
 PR-085.21,PR-085,21,Heat the rear bracket before pressing the rear bearing into it,SP-286.,,,p.5-18
 PR-085.22,PR-085,22,Turn the pulley by hand,,The rotor turns lightly.,,p.5-18
 PR-086.01,PR-086,1,Measure the battery's specific gravity,,Full or nearly full charge.,,p.5-20
@@ -752,7 +752,7 @@ PR-087.24,PR-087,24,"Check the armature bearings for noise, play and lubrication
 PR-087.25,PR-087,25,Check the front bracket's bearing,It is replaced only together with the front bracket.,,,p.5-28
 PR-087.26,PR-087,26,"Assemble in the reverse order, greasing the armature shaft gear, the reduction gear, both armature bearings, the pinion shaft's C washer, the lever's sliding part, the front bracket's metal and, very lightly, the plunger","SP-317, SP-318.",,,p.5-29
 PR-087.27,PR-087,27,"Put the spring, pinion and stop ring on the pinion shaft, seat the ring in the shaft's groove and pull the stop ring up over it with a bearing puller",Tap the ring with a flat screwdriver if it will not seat.,,Never re-use a scarred ring.,p.5-29
-PR-087.28,PR-087,28,Fit the lever facing the right way,The figure shows the direction; it was not read.,,,p.5-29
+PR-087.28,PR-087,28,Fit the lever facing the right way,No figure on p.5-29 shows it (checked 2026-10-14); the starting circuit drawing on p.5-19 shows the reduction starter's lever with its upper end on the plunger and its lower fork on the overrunning clutch.,,,p.5-29
 PR-087.29,PR-087,29,"Fit the washer and C washer on the end of the pinion shaft, tighten the centre bracket bolt and measure the shaft's end play; set it with the adjusting washer",SP-315.,,,p.5-30
 PR-087.30,PR-087,30,"Fit the brush holder and the rear bracket, minding where the through-bolts pass",Both are symmetrical and go on either way round.,,,p.5-30
 PR-087.31,PR-087,31,"Connect the starter to a battery so the pinion shifts out, push the pinion shaft back by hand and measure its movement; set it with shims between the switch and the front bracket","SP-314. More shims, less movement.",0.5 to 2.0 mm.,Current for no longer than SP-1618 gives.,p.5-30
@@ -781,7 +781,7 @@ PR-088.21,PR-088,21,Align the tally marks on the distributor housing and the dri
 PR-088.22,PR-088,22,Turn the housing until a signal rotor protrusion faces the pick-up coil core and tighten the lock nut,,,,p.5-35
 PR-088.23,PR-088,23,"Connect the high-tension leads, the igniter couplers, the condenser lead and the vacuum sensing tubes",,,,p.5-35
 PR-088.24,PR-088,24,Set the ignition timing,PR-023.,,,p.5-36
-PR-089.01,PR-089,1,"Remove the igniter and wire it to a battery, a switch and the test lamp",SP-568. The figure shows the circuit; it was not read.,,,p.5-37
+PR-089.01,PR-089,1,"Remove the igniter and wire it to a battery, a switch and the test lamp","SP-568. Circuit 57U05X-004 (read 2026-10-14): battery positive to the igniter's B terminal, and through the switch to its SW terminal; the test lamp between battery positive and the C terminal; the igniter's ground to battery negative. Each switch ON lights the lamp.",,,p.5-37
 PR-089.02,PR-089,2,Flick the switch on and off quickly,,"The lamp flashes; if not, replace the igniter. Test both igniters.",,p.5-37
 PR-089.03,PR-089,3,Warm the coils to normal operating temperature and measure each one's primary resistance,SP-043; the 1985 coil's figure is SP-1619.,,,p.5-37
 PR-089.04,PR-089,4,"To replace the coils, disconnect the battery's negative cable",,,,p.5-37
