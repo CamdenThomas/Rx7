@@ -23,3 +23,4 @@ L-0021,2026-10-13,plan,P15 D-523 D-544,"P15: 1985 manual Section 14 Body parsed 
 L-0022,2026-10-13,plan,P16 D-523 D-544,"P16: 1985 manual Section 15 Body Electrical parsed - 1 spec, 29 procedures (163 steps); PDF out of git"
 L-0023,2026-10-14,plan,D-564 P65,P65: the factory-circuit write-ups into circuit_paths rows; the scan to the ignored library
 L-0024,2026-10-14,plan,P42 P43 P44 P45 P48 P49 P76 P77 P78 P79 P80 P81 P82,"P42-P45, P48, P49, P76-P82: the vendor files settled in 01-electrical; the PMU-24 pinout v1.3 compared - block 01.54"
+L-0025,2026-10-14,plan,P50 P51 P52 P54 P55,"P50-P52, P54, P55: the battery and bulb datasheets' remaining figures"
