@@ -26,7 +26,7 @@ STUD,stud,,+12V BATT,MAIN,2,RED,"Main supply from the Class-T, 150 A max",Busbar
 6,S,O17,TURN_L,output,16,RED,Turn LEFT front + rear + tell-tale sense (DP-ICU-B 10) — flashed in the PMU,,4.2,4.5,meas,,10,100,LIVE,,7,70,
 33,S,O18,TURN_R,output,16,RED,Turn RIGHT front + rear + tell-tale sense (DP-ICU-B 11),,4.2,4.5,meas,,10,100,LIVE,,7,70,
 20,S,O19,REVERSE,output,16,RED,Reverse lamps,,3.9,7.0,cap,,10,100,LIVE,,7,70,
-34,S,O20,INTERIOR,output,16,RED,"Illumination bus only (D-462): dash lamps E-06 / E-07 / E-10, the head unit's illumination wire and the ICU's dimming reference (DP-ICU-A 2) - on with PARK / HEAD, PWM-dimmed. The interior lamp left this output for the busbar through F12. The channel keeps its name INTERIOR in logic and rules",,1.5,7.0,cap,,10,100,LIVE,"est_a 1.5 = LD06, illumination only since D-462 (the dome and spot lamps left)",7,70,
+34,S,O20,INTERIOR,output,16,RED,"Illumination bus only (D-462): dash lamps E-06 / E-07 / E-10, the head unit's illumination wire and the ICU's dimming reference (DP-ICU-A 2) - on with PARK / HEAD, plain on/off; dimmed by the DCU board's PWM stage (D-567). The interior lamp left this output for the busbar through F12.",,1.5,7.0,cap,,10,100,LIVE,"est_a 1.5 = LD06, illumination only since D-462 (the dome and spot lamps left)",7,70,
 21,S,O21,START_RLY,output,16,RED,Start relay K9 coil,,0.2,7.0,cap,,2,50,LIVE,,7,70,
 8,S,O22,KEEP_ALIVE,output,16,RED,Keep-alive — feeds the wake strip through a diode and drives K11 (head-unit constant master),Wake strip input 5 · K11 86,0.2,7.0,cap,,2,0,LIVE,,7,70,
 35,S,A15,HEADLIGHT_SW,input,16,GRY,"Headlight switch ladder — OFF / PARK / HEAD-LO / HEAD-HI / PASS (12 V side, 12-bit)",,,,,,,,LIVE,,,,
