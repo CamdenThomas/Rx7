@@ -64,7 +64,7 @@ FREECADCMD = os.environ.get("FREECADCMD",
                             "/Applications/FreeCAD.app/Contents/Resources/bin/freecadcmd")
 KICAD_MODELS = os.environ.get("KICAD10_3DMODEL_DIR",
                               "/Applications/KiCad/KiCad.app/Contents/SharedSupport/3dmodels")
-RX7_MODELS = os.path.join(ROOT, "01-INTAKE", "model", "library", "electrical")
+RX7_MODELS = os.path.join(ROOT, "02-PROJECTS", "02-cad", "model", "library", "electrical")
 PMU_STEP = os.path.join(DESIGN, "pmu", "vendor", "PMU CAD info", "PMU-24.STEP")
 
 # The PMU sets the standard (D-505): fine enough that every radius reads round.

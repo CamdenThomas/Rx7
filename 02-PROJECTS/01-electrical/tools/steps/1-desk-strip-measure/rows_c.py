@@ -276,8 +276,8 @@ ROWS.append(dict(
     parts="",
     before=["Nothing. This can be done today"],
     know=[
-        "The model library is the folder 01-INTAKE/model/library in the tree. It is kept out of git because the models' licences vary and the repository is public, so GitHub does not carry it from one machine to the other. [work Y27]",
-        "Each model has its own folder named after its row, for example 01-INTAKE/model/library/electrical/deutsch-dt04-2p-te, holding TE's STEP file and zip. [00-CAR cad deutsch-dt04-2p-te]",
+        "The model library is the folder 02-PROJECTS/02-cad/model/library in the tree. It is kept out of git because the models' licences vary and the repository is public, so GitHub does not carry it from one machine to the other. [work Y27]",
+        "Each model has its own folder named after its row, for example 02-PROJECTS/02-cad/model/library/electrical/deutsch-dt04-2p-te, holding TE's STEP file and zip. [00-CAR cad deutsch-dt04-2p-te]",
         "An earlier ruling said TE's download needs a login. The model rows say it did not: obtained yes, login no. The files were simply on the other machine. [work Y27; D-514]",
         "TE's site refuses a scripted download but serves the same link to a normal browser. [00-CAR cad deutsch-dt04-2p-te]",
         "The Fedora PC's clone is ~/docs/storage/Rx7; the Mac's is ~/dev/Rx7. [CLAUDE.md]",
@@ -289,10 +289,10 @@ ROWS.append(dict(
     record="Tick Y27 when the connector files are on the Mac. In words, name any optional model you also saved.",
     steps=[
         ("Look first",
-         "In the terminal: ls ~/dev/Rx7/01-INTAKE/model/library/electrical | grep deutsch . When this step was written (2026-10-13) this Mac already listed 53 such folders, none empty.",
+         "In the terminal: ls ~/dev/Rx7/02-PROJECTS/02-cad/model/library/electrical | grep deutsch . When this step was written (2026-10-13) this Mac already listed 53 such folders, none empty.",
          "A list of folders: deutsch-dt04-..., deutsch-dt06-..., deutsch-dtp04-..., deutsch-dtp06-... If they are all there, go to the last step.", ""),
         ("Copy from the Fedora PC if they are missing",
-         "On the Fedora PC the folder is ~/docs/storage/Rx7/01-INTAKE/model/library/electrical. Copy every folder whose name begins deutsch- to the same path on the Mac, by USB stick or over the network.",
+         "On the Fedora PC the folder is ~/docs/storage/Rx7/02-PROJECTS/02-cad/model/library/electrical. Copy every folder whose name begins deutsch- to the same path on the Mac, by USB stick or over the network.",
          "The same folders on the Mac.", ""),
         ("Or save them again from TE",
          "Each folder's model row holds TE's link (a 'Customer View Model, 3D STEP'). Open it in a browser, save the file, and put it in a folder of the row's name under library/electrical.",

@@ -211,7 +211,7 @@ connector_dims,wedgelock,str,no,,the wedgelock's TE part number; blank for a DT1
 connector_dims,cad,str,no,cad,"the vendor model's cad row, when one is recorded"
 connector_dims,source,text,yes,,where the figures were read: the cad row or the TE document and page
 connector_dims,note,text,yes,,which figures are estimated and how; always ends confirm (R11)
-circuits,file,key,yes,,"the circuit's key: the name its write-up had in 01-INTAKE/factory-circuits, whose text is its circuit_paths rows now (D-522); for the scan, its file name under the source's local_path"
+circuits,file,key,yes,,"the circuit's key: the name its write-up had in the old factory-circuits folder, whose text is its circuit_paths rows now (D-522); for the scan, its file name under the source's local_path"
 circuits,title,text,yes,,
 circuits,systems,list,yes,systems,"systems ids, space-separated; the first is where the Manual files it"
 circuits,source,text,no,,the source it was decoded from (S- ids)

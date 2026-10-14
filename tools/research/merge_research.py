@@ -10,7 +10,7 @@ import csv, glob, json, re, sys
 from pathlib import Path
 
 T = Path(__file__).resolve().parents[2]
-RESEARCH = T / "01-INTAKE/model/library/research"  # every wave's raw output; the one place it is named
+RESEARCH = T / "00-CAR/library/research"  # every wave's raw output; the one place it is named
 _args = [a for a in sys.argv[1:] if not a.startswith("--") and not a.startswith("keep=")]
 if _args and Path(_args[0]).is_dir():
     S = Path(_args[0]); prefixes = _args[1:]

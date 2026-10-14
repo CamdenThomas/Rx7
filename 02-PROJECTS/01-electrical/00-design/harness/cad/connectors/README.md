@@ -19,7 +19,7 @@ every other one is drawn as a stand-in from its row:
 | DT13 header | the shroud (the nose), the flange with its two mounting holes, the body and the PCB tails behind it |
 
 As built on the Mac (2026-10-13): the three DT13s are TE's own models (`cad`
-`deutsch-dt13-6p-te`, `-08pa-te`, `-12pa-te`, in `01-INTAKE/model/library`, out of git) - the
+`deutsch-dt13-6p-te`, `-08pa-te`, `-12pa-te`, in `02-PROJECTS/02-cad/model/library`, out of git) - the
 same files the DCU and ICU carriers' footprints and the unit mock-ups use, so the two agree by
 construction. The DT and DTP models were downloaded on the PC (their `cad` rows) and have never
 been opened here; until their frame is read and added to `FRAMES` (Y27) they are stand-ins.

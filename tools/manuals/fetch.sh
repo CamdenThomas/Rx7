@@ -1,9 +1,11 @@
 #!/bin/sh
 # Fetch the reference manuals indexed in 00-CAR/data/sources.csv straight from their hosts.
 # Idempotent: a file that already exists and is bigger than 100 KB is skipped.
-# Run from anywhere:  01-INTAKE/manuals/fetch.sh
-# Exit 0 when every file is present, 1 when any failed.
-dir=$(cd "$(dirname "$0")" && pwd) || exit 3
+# Run from anywhere:  tools/manuals/fetch.sh
+# The files land in 00-CAR/library/downloads (out of git, D-573); move each to the folder its
+# sources row's local_path names. Exit 0 when every file is present, 1 when any failed.
+dir=$(cd "$(dirname "$0")/../.." && pwd)/00-CAR/library/downloads || exit 3
+mkdir -p "$dir" || exit 3
 command -v curl >/dev/null 2>&1 || { echo "curl not found - sudo dnf install curl"; exit 3; }
 ok=0; bad=0
 min=102400

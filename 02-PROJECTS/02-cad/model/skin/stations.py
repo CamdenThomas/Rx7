@@ -1,4 +1,4 @@
-"""skin/stations.py - the found FB model's stations (the app's home-page car, 01-INTAKE/model/rx7-fb.glb),
+"""skin/stations.py - the found FB model's stations (the app's home-page car, 02-PROJECTS/02-cad/model/sa/rx7-fb.glb),
 in the car's frame, for unibody/params.py's `found` figures (B01, 2026-10-13).
 
     python3 02-PROJECTS/02-cad/model/skin/stations.py
@@ -16,7 +16,7 @@ sys.path.insert(0, HERE)
 import glbread  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(HERE, "..", "..", "..", ".."))
-SRC = os.path.join(ROOT, "01-INTAKE", "model", "rx7-fb.glb")
+SRC = os.path.join(ROOT, "02-PROJECTS", "02-cad", "model", "sa", "rx7-fb.glb")
 
 
 def slice_y(tris, y0):

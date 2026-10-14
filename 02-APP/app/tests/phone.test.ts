@@ -63,7 +63,7 @@ describe('what the phone fetches', () => {
     expect(wanted('00-CAR/data/vehicle.csv')).toBe('text');
     expect(wanted('99-ARCHIVE/Electrical/data/decisions.csv')).toBe('text');
     expect(wanted('99-ARCHIVE/x/D-123.md')).toBe('name');
-    expect(wanted('01-INTAKE/manuals/big.pdf')).toBeNull();
+    expect(wanted('00-CAR/library/docs/big.pdf')).toBeNull();
     expect(wanted('02-PROJECTS/01-electrical/00-design/firmware/main.cpp')).toBeNull();
   });
   it('sends his words as UTF-8, whatever they hold', () => {

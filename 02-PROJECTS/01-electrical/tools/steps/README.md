@@ -94,8 +94,8 @@ number and location comes from a row or a source document, and `know` says which
 the work row itself (`rx7.py get 01-electrical work <id>` - its item, note, gate) and the rows
 it names; follow every id it cites; then the tables. For how the factory car comes apart
 (trim, console, dash, seats, connectors' places) read the factory manual scans in
-01-INTAKE/manuals/ (1985 workshop manual sections; the Read tool shows PDF pages, 20 per call)
-and 01-INTAKE/factory-circuits/*.md (the 1982 circuits written up), cite source id and page
+00-CAR/library/docs/fsm-1985-sections/ (1985 workshop manual sections; the Read tool shows PDF pages, 20 per call)
+and 00-CAR circuit_paths rows (the 1982 circuits written up), cite source id and page
 (00-CAR `sources`: S-002 is the 1985 manual, S-001 the 1982 wiring diagram), and where the
 1985 book may differ from his 1982 car say "1985 manual - confirm on the car". Background
 only, never authority: 99-ARCHIVE/Electrical (the old v2 install text). The record wins.

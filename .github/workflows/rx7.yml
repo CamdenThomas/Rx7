@@ -88,7 +88,6 @@ jobs:
           sparse-checkout: |
             tools
             00-CAR/data
-            01-INTAKE/factory-circuits
             00-CAR/photos
             02-APP/data
             02-PROJECTS

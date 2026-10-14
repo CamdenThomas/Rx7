@@ -10,7 +10,6 @@ view.json
 outputs/
 !99-ARCHIVE/**/*.html
 !99-ARCHIVE/**/*.svg
-!01-INTAKE/**/*.html
 # The harness-leg drawings (D-385) are generated like DECISIONS.md and committed like it:
 # they are the bench copy and the car record. Only this folder is excepted.
 !02-PROJECTS/01-electrical/00-design/diagrams/**/*.svg
@@ -98,26 +97,24 @@ fp-info-cache
 keystore.properties
 02-APP/app/fixture/
 
-# The purchased 3D model (S-037, in the intake's model/) and what is built from it stay on this PC:
-# the repository is public and the model's licence does not allow passing it on. The
-# renders in 02-APP/app/public/car are committed; the model itself never is.
-01-INTAKE/model/*.zip
-01-INTAKE/model/*.obj
-01-INTAKE/model/*.glb
-01-INTAKE/model/landmarks.json
+# The source files (D-573): manuals, catalogues, datasheets and the research waves' raw output, kept
+# on this PC in 00-CAR/library; each sources row's local_path names its file. Mazda's and the
+# vendors' copyrights keep them out of a public repository.
+00-CAR/library/
 
-# The free CAD library (01-INTAKE/model/library): every downloaded model stays on this PC. Their
-# licences vary (CC-BY, CC-BY-NC, 3D Warehouse, manufacturer terms) and the repository is
-# public, so none is passed on. The catalogue is the record (00-CAR's cad table); the
-# scripts that read the files are committed. The blended model built from them is not.
-01-INTAKE/model/library/
-01-INTAKE/model/out/
-# The research waves' raw output (tools/research) is kept in the library's research/ folder; the
-# old tracked copy here left git once it was confirmed identical there (06-intake T2).
-01-INTAKE/research/
-fixture/
+# The purchased 3D model (S-037) and what is built from it stay on this PC, in 02-cad/model/sa:
+# the repository is public and the model's licence does not allow passing it on. The renders in
+# 02-APP/app/public/car are committed; the model itself never is.
+02-PROJECTS/02-cad/model/sa/
 
-# A raw copy of the Fedora PC model folder (2026-10-13, 5 GB, holds the bought SA model): merged into 01-INTAKE/model, never in git
-01-INTAKE/old_model/
+# The free CAD library (02-cad/model/library): every downloaded model stays on this PC. Their
+# licences vary (CC-BY, CC-BY-NC, 3D Warehouse, manufacturer terms) and the repository is public,
+# so none is passed on. The catalogue is the record (00-CAR's cad table); the scripts that read
+# the files are committed.
+02-PROJECTS/02-cad/model/library/
+
+# The raw copy of the Fedora PC model folder (2026-10-13, holds the bought SA model and a 1.6 GB
+# library.zip backup), merged into the folders above: never in git
+02-PROJECTS/02-cad/model/fedora-copy/
 # The simulation vendors' models and datasheets (00-CAR sources S-491..S-499): their licences keep them out of git
 02-PROJECTS/01-electrical/00-design/sim/vendor/

@@ -34,7 +34,7 @@ model, and every dimension nobody measured carries `confirm` (R11). Today that i
 | `unibody/params.py` | B01's core: **the one table** of the unibody's governing dimensions, each with how it is known and its source; the panels, their places, mates and take-apart moves; the checks against the datums | `datums` DT02-DT14; `specs` SP-1280, SP-1281 |
 | `unibody/geometry.py` | The panels as rough sheet solids, from `params.py` alone | - |
 | `unibody/silhouette.py` | Re-derives the found shell's stations that `params.py` cites (read only) | 00-CAR `cad` |
-| `skin/params.py`, `skin/build.py` | B01's second pass (D-563): the home page's FB model (`01-INTAKE/model/rx7-fb.glb`, read only) cut by its materials and names into the skin, glass, trim, tail lamps and three wheels, put in the car's frame; pure python | `datums` DT02, DT03 |
+| `skin/params.py`, `skin/build.py` | B01's second pass (D-563): the home page's FB model (`02-PROJECTS/02-cad/model/sa/rx7-fb.glb`, read only) cut by its materials and names into the skin, glass, trim, tail lamps and three wheels, put in the car's frame; pure python | `datums` DT02, DT03 |
 | `skin/stations.py` | The found model sliced every 50 mm: the stations `unibody/params.py`'s `HOME` figures cite (read only) | - |
 | `skin/fit_check.py` | Which unibody panels still stand outside the skin, and by how much (read only) | - |
 | `skin/glbread.py` | A minimal glb reader for the two above | - |
@@ -60,7 +60,7 @@ python3 02-PROJECTS/02-cad/model/skin/stations.py           the home-page model'
 python3 02-PROJECTS/02-cad/model/skin/fit_check.py          panels standing outside the skin
 ```
 
-The skin needs no FreeCAD, only the found model at `01-INTAKE/model/rx7-fb.glb` (out of git, on
+The skin needs no FreeCAD, only the found model at `02-PROJECTS/02-cad/model/sa/rx7-fb.glb` (out of git, on
 each machine as the home page's car); where it is absent the skin is skipped and the scene is the
 other two assemblies.
 
@@ -185,7 +185,7 @@ and the found shell both speak to an outline dimension, the note says which won 
   Readings that are judgement: A 580 forward of the front axle (the strut-tower circle over the
   axle); 345 is C's height, 110 E's, 339.4 F's (it may be E to F); b = 107 is the front rail's depth.
 - **The blueprint**, 00-CAR cad `fb-rx7-blueprint-the-blueprints-83684`
-  (`01-INTAKE/model/library/body/…/mazda-rx-7fb.png`, 2483 x 2546; free to view and download for
+  (`02-PROJECTS/02-cad/model/library/body/…/mazda-rx-7fb.png`, 2483 x 2546; free to view and download for
   modelling, the site's terms). Its views are not at one scale, so each axis is scaled to a factory
   figure: 1.816 mm/px lengthwise between the axles (DT03), 1.737 over the overhangs (DT04 less
   DT03), 1.750 in height (DT06), 1.762 across (DT05).

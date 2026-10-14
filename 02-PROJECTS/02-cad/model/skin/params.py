@@ -1,5 +1,5 @@
 """skin/params.py - B01's second pass (2026-10-13): the skin, the glass, the trim, the tail lamps and
-three road wheels from the found FB model the app's home page shows (01-INTAKE/model/rx7-fb.glb,
+three road wheels from the found FB model the app's home page shows (02-PROJECTS/02-cad/model/sa/rx7-fb.glb,
 built by found/blend.py from the free library's FB body, the bought SA model's wheels and the
 tail-lamp scans), cut into parts and laid on the hard points.
 
@@ -18,7 +18,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 from partlib import Dim, Params, part  # noqa: E402
 
-FOUND = "found model 01-INTAKE/model/rx7-fb.glb (found/blend.py)"
+FOUND = "found model 02-PROJECTS/02-cad/model/sa/rx7-fb.glb (found/blend.py)"
 FIT = "found model on DT02 / DT03 (wheel centres within 1 mm), DT04, DT06"
 # the found wheels: FL is the corner assembly's (factory figures); these are the other three
 CORNERS = [("FR", 1, 0), ("RL", -1, 1), ("RR", 1, 1)]

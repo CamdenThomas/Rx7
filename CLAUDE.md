@@ -64,11 +64,11 @@ and its own work, D-428), and each project under `02-PROJECTS` (`01-electrical`,
 `03-engine`, `04-luxury` - the fancy parts, the body and paint, the interior; it took in
 `04-beauty` on 2026-10-14, D-570; numbered in this order since D-572). **Three homes** (D-519): CAR holds state and
 truth, APP the app and the view of everything, PROJECTS the work in progress until it merges into
-the car. `01-INTAKE` (the old `01-REFERENCE`, renamed 2026-10-13) is none of them: it is the
-**intake** - bulk to be processed (a manual, a
-catalogue, a datasheet, a found model) into the car's tables and then taken out of the tree,
-kept only as ignored files there; nothing permanent lives in it and no row names it as a home
-(`06-intake` folded what it held and is archived, D-569). A car-level ruling that belongs to no project is a decision in `00-CAR`;
+the car. There is no intake folder any more (D-573): a manual, catalogue or datasheet is kept
+out of git in `00-CAR/library` (`docs/`, `datasheets/`, `research/`), each `sources` row's
+`local_path` naming its file; the found 3D models and the bought SA model are `02-cad`'s, in
+`02-PROJECTS/02-cad/model/library` and `model/sa`. A new file goes straight there and is
+parsed into the car's tables by the project that wants it. A car-level ruling that belongs to no project is a decision in `00-CAR`;
 `00-CAR`'s other tables state what **is** and never cite a `D-` or a block id.
 
 **There is one data format.** Everything is a CSV table, including the schema, so the

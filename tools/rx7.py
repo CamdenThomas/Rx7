@@ -3,7 +3,7 @@
 """rx7.py - the only tool in this tree. Standard library only.
 
 THE RECORD IS CSV, AND IT DESCRIBES ITSELF.
-Every area (00-CAR, 02-APP, each project under 02-PROJECTS; 01-INTAKE is bulk, not an
+Every area (00-CAR, 02-APP, each project under 02-PROJECTS; 00-CAR/library is bulk, not an
 area, D-519) keeps its facts in <area>/data/*.csv. Two of those tables declare all the others:
 
     data/_tables.csv   table,purpose
@@ -134,7 +134,7 @@ BLOCK_PREFIX_FIXED = {"00-CAR": "CAR", "01-REFERENCE": "REF", "02-APP": "APP", "
 # factory-circuit write-ups are circuit_paths rows (D-522); CIRCUITS_DIR is read only for a
 # write-up not yet parsed. These two paths, from the tree root, and nowhere else.
 PHOTOS_DIR = "00-CAR/photos"
-CIRCUITS_DIR = "01-INTAKE/factory-circuits"
+CIRCUITS_DIR = "00-CAR/library/factory-circuits"  # empty since D-522; read only as a fallback
 # Block ids were renumbered on 2026-09-25 (D-427, D-428). A decision dated before that closes
 # whatever id it names; one dated from then on closes only its own area's ids.
 RENUMBER_DATE = "2026-09-25"

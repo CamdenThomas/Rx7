@@ -158,7 +158,7 @@ kicad-cli pcb export step --subst-models -f -o upper-board.step upper-board.kica
 
 Rev 0.01, 2026-10-12: ERC 0 errors 0 warnings; DRC 0 violations, 0 unconnected, 0 parity issues;
 `check.py --board upper` 28 checks, 0 mismatches. The DT13 model comes from `${RX7_MODELS}`
-(`<tree>/01-INTAKE/model/library/electrical`): set it before rendering or exporting, as for the
+(`<tree>/02-PROJECTS/02-cad/model/library/electrical`): set it before rendering or exporting, as for the
 carrier. The SVG and the BOM are committed; the renders, the STEP and the reports are rebuilt from
 the board and are not (`.gitignore`).
 

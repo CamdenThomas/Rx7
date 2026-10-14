@@ -23,7 +23,7 @@ PARAMS.
 Owns no fact. Reads, through `rx7.py export`: 01-electrical devices (which rows exist), relays
 and fuses (how many relays and holders sit at each node), parts (quantities); 00-CAR cad
 (that a found model's row exists). Reads scene.json (export_glb.py's) for the node names. Writes
-nothing to the record. The found models' files are under 01-INTAKE/model/library/electrical/
+nothing to the record. The found models' files are under 02-PROJECTS/02-cad/model/library/electrical/
 <cad id>/ (git-ignored: their licences vary and the repository is public).
 
 Exit 0 built (or current, or the selftest passes) - 1 the manifest breaks its contract or an
@@ -45,7 +45,7 @@ ROOT = os.path.abspath(os.path.join(DESIGN, "..", "..", ".."))            # the 
 TOOLS = os.path.join(DESIGN, "tools")
 OUT_DEFAULT = os.path.join(ROOT, "02-APP", "app", "public", "design", "01-electrical")
 SUB = "devices"                                       # the glb folder under OUT, and the manifest's
-LIB = os.path.join(ROOT, "01-INTAKE", "model", "library", "electrical")
+LIB = os.path.join(ROOT, "02-PROJECTS", "02-cad", "model", "library", "electrical")
 FREECADCMD = os.environ.get("FREECADCMD",
                             "/Applications/FreeCAD.app/Contents/Resources/bin/freecadcmd")
 

@@ -24,7 +24,7 @@ ROWS.append(dict(
     ],
     know=[
         "The desk half is done: every wire colour the design names was read off the 1982 diagram scans, and all were right. Nobody has compared the diagram with this car yet. [D-348]",
-        "Factory colour codes: the first letter is the base colour, the second the tracer stripe. B black, W white, R red, G green, Y yellow, L blue, Br brown, O orange, Lg light green. GY is green with a yellow tracer, not grey. [01-INTAKE factory-circuits README, wire colour codes]",
+        "Factory colour codes: the first letter is the base colour, the second the tracer stripe. B black, W white, R red, G green, Y yellow, L blue, Br brown, O orange, Lg light green. GY is green with a yellow tracer, not grey. [00-CAR circuits README, wire colour codes]",
         "Alternator plug A-08 has two wires: BW is the regulator's ignition feed (the new wire is L1-S1 2), WB is the charge-lamp line (the new wire is L1-S2 8). [00-CAR PT025-R, PT025-L; cavities L1-S1 2, L1-S2 8]",
         "Inhibitor switch A-06 (the park / neutral and reverse switch on the automatic) has four wires: BY in and BW out are the starter interlock, GY in and RW out feed the reverse lamps. [00-CAR PT298-BY, PT298-BW, PT298-GY, PT298-RW; devices DV05]",
         "Water temperature sender C-02: one spade, wire YW, in the rear housing directly below the oil pressure sender. [devices DV06; 00-CAR PT023-YW]",
@@ -190,7 +190,7 @@ ROWS.append(dict(
         "The battery probably takes one Bluetooth connection at a time: nothing else should be connected to it while you record. [D-559; icu_channels IC24]",
         "The recording also holds your phone's other Bluetooth traffic and the bug report holds phone logs: keep the file on your own Mac, and turn the log off afterwards. [D-559]",
     ],
-    done_when="The bug report zip is in the tree's 01-INTAKE/research folder on the Mac and your note of the screens, times and values is in the app.",
+    done_when="The bug report zip is in the tree's 00-CAR/library/research folder on the Mac and your note of the screens, times and values is in the app.",
     if_not="Developer options or the snoop log setting is not where the steps say: phone makers move it - search the phone's settings for 'snoop', or say which phone it is in the app. The app will not connect while recording: close it, turn Bluetooth off and on, try once more, and note what happened.",
     record="Tick W-330c. In words: the phone's make and model, the zip's file name, and for each screen the time and every value it showed (pack voltage, current with its sign, state of charge, temperature, anything else).",
     steps=[
@@ -217,8 +217,8 @@ ROWS.append(dict(
          "Developer options - Enable Bluetooth HCI snoop log: off.",
          "The setting shows off.", ""),
         ("Put the zip in the tree's research folder",
-         "On the Mac, move the zip into ~/dev/Rx7/01-INTAKE/research. That folder is kept out of git, so the file stays on your Mac.",
-         "The zip is in 01-INTAKE/research.", ""),
+         "On the Mac, move the zip into ~/dev/Rx7/00-CAR/library/research. That folder is kept out of git, so the file stays on your Mac.",
+         "The zip is in 00-CAR/library/research.", ""),
         ("Enter it",
          "Tick W-330c. Write the phone's make and model, the zip's name, and your screens with their times and values.",
          "W-330c ticked.", ""),

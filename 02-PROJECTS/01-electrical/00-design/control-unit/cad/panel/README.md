@@ -216,7 +216,7 @@ address must differ from the driver's 0x3C (0x3D on most).
 
 KiCad's own parts bring their models from `${KICAD10_3DMODEL_DIR}`. The PEC11R model is not copied
 here: the footprint points at `${RX7_MODELS}/rotary-encoder-bourns-pec11r-github-daxxn/PEC11R-4230F-S0024 v7.step`,
-`RX7_MODELS` = `<tree>/01-INTAKE/model/library/electrical`; set it before rendering or exporting.
+`RX7_MODELS` = `<tree>/02-PROJECTS/02-cad/model/library/electrical`; set it before rendering or exporting.
 The window switch and the screen module have no model.
 
 ## Checking it

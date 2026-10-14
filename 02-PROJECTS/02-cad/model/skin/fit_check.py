@@ -17,7 +17,7 @@ import params as SP  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(HERE, "..", "..", "..", ".."))
 SCENE = os.path.join(ROOT, "02-APP", "app", "public", "design", "00-CAR", "scene.json")
-SRC = os.path.join(ROOT, "01-INTAKE", "model", "rx7-fb.glb")
+SRC = os.path.join(ROOT, "02-PROJECTS", "02-cad", "model", "sa", "rx7-fb.glb")
 STEP = 25.0
 
 

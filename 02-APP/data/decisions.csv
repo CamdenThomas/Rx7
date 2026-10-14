@@ -519,3 +519,25 @@ How it is done, as D-427 did it on 2026-09-25:
 - **The app** reads areas from the export and hard-codes no project; its tests and screenshot script use the new names. The installed desktop app needs no rebuild for this; the phone app picks the new folders up on its next sync.
 
 Undoing it is the same moves backwards; nothing is bought, cut or wired."
+D-573,,"The intake folder is gone: documents in 00-CAR/library, models in 02-cad",2026-10-14,standing,,,,D-519 D-569,"**The `01-INTAKE` folder is removed. What it held now lives with its owner: the source documents in `00-CAR/library` (out of git), the 3D models in `02-PROJECTS/02-cad/model` (out of git), the download script in `tools/manuals`.**
+
+Camden's words (chat, 2026-10-14): ""also can intake (that project is done) folder be romeved and everything in it in car or projects?""
+
+Where each thing went (on this Mac; every move was a rename, nothing deleted except an exact duplicate):
+
+| Was | Now | Named by |
+| --- | --- | --- |
+| `01-INTAKE/model/library/docs` (manuals, catalogues, diagrams, OCR text) | `00-CAR/library/docs` | `sources.local_path` |
+| `01-INTAKE/model/library/datasheets` | `00-CAR/library/datasheets` | `sources.local_path`, project notes |
+| `01-INTAKE/model/library/research` and `01-INTAKE/research` (a byte-identical subset of it, merged) | `00-CAR/library/research` | `tools/research` |
+| `01-INTAKE/model/library` (body, electrical, parts, rotary, swap - the found models) | `02-PROJECTS/02-cad/model/library` | `cad.local_path`, `found/paths.py` |
+| `01-INTAKE/model` (the bought SA model's zip, rx7.glb, rx7-fb.glb, landmarks.json, out/) | `02-PROJECTS/02-cad/model/sa` | `found/paths.py`, the app's home page |
+| `01-INTAKE/old_model` (the raw Fedora copy, with a 1.6 GB library.zip) | `02-PROJECTS/02-cad/model/fedora-copy` | `tools/doc/machine.md` |
+| `01-INTAKE/manuals/fetch.sh`, `DOWNLOADS.csv` (tracked) | `tools/manuals/` - it now downloads into `00-CAR/library/downloads` | - |
+| `01-INTAKE/README.md` | removed; `CLAUDE.md`, `README.md` and `tools/doc/record.md` say where files go | - |
+
+Why there: R10 already gives a parsed document's facts to `00-CAR` and a project's vendor files to that project; the documents are what `00-CAR`'s sources rows point at, and the found and bought models are what 02-cad builds from. All 322 `cad` paths and every `sources` path resolve after the move. `.gitignore` keeps all four folders out of git (licences and Mazda's copyright; the repository is public).
+
+Every live reference is rewritten: the tables' paths and notes (cad, sources, specs, issues, 01-electrical's briefs, steps, devices and work, 02-cad's rows), the scripts (02-cad's model scripts, electrical's device and glb exporters, tools/research), the app (its home page's model and the desktop's photo server whitelist - the desktop app is rebuilt for it), CI's sparse checkout, `rx7.py`'s fallback folder for circuit write-ups (empty since D-522). Decisions, logs and his ideas' words are not edited (R4).
+
+**The Fedora PC:** git moves the tracked files; its ignored files (the library, the bought model, its out/) are still under its old `01-INTAKE` folder and must be moved by hand to the same places before its scripts find them."

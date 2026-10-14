@@ -1,4 +1,4 @@
-"""skin/build.py - B01's second pass: cut the found FB model (01-INTAKE/model/rx7-fb.glb, the app's
+"""skin/build.py - B01's second pass: cut the found FB model (02-PROJECTS/02-cad/model/sa/rx7-fb.glb, the app's
 home-page car) into the parts skin/params.py declares, move each into the car's frame and write one
 glb per part to 02-APP/app/public/design/00-CAR/skin/ and the assembly's meta to out/skin.meta.json,
 the files export_scene.py reads. Pure python (no FreeCAD, no Blender): the found model is a mesh.
@@ -28,7 +28,7 @@ import params as SP  # noqa: E402
 from partlib import G, COLOURS  # noqa: E402
 
 ROOT = os.path.abspath(os.path.join(MODEL, "..", "..", ".."))
-SRC = os.path.join(ROOT, "01-INTAKE", "model", "rx7-fb.glb")
+SRC = os.path.join(ROOT, "02-PROJECTS", "02-cad", "model", "sa", "rx7-fb.glb")
 APP = os.path.join(ROOT, "02-APP", "app", "public", "design", "00-CAR", "skin")
 OUT = os.path.join(MODEL, "out", "skin.meta.json")
 WHEEL_MATS = {"rim", "chrome", "black", "brakedisk"}

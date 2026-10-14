@@ -127,9 +127,9 @@ socket is PJRC's dimensions, the XIAO and IMU positions are the vendors' files: 
 The vendor models (the TE DT13s, the XenGi Teensy 4.1, the Seeed XIAO, the Adafruit 4517) are not
 ours to publish, so they are not in this folder: the footprints point at
 `${RX7_MODELS}/<cad row>/<file>`, and `RX7_MODELS` is the local CAD library,
-`01-INTAKE/model/library/electrical` (gitignored, catalogued in the `00-CAR` `cad` table).
+`02-PROJECTS/02-cad/model/library/electrical` (gitignored, catalogued in the `00-CAR` `cad` table).
 Set it once — KiCad: **Preferences → Configure Paths → +**, name `RX7_MODELS`; terminal:
-`export RX7_MODELS=$HOME/dev/Rx7/01-INTAKE/model/library/electrical` (Mac) or the Fedora path —
+`export RX7_MODELS=$HOME/dev/Rx7/02-PROJECTS/02-cad/model/library/electrical` (Mac) or the Fedora path —
 and the renders and the STEP pick them up. Without it those parts show bare pads. U1's model
 (`Texas_RNX0012C...step`) does not ship with KiCad 10: it is left named and shows as bare pads.
 
