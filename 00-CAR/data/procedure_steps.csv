@@ -938,3 +938,108 @@ PR-105.03,PR-105,3,Read the contact pattern on the teeth,,Good contact as the pa
 PR-105.04,PR-105,4,Wipe the red lead off if the contact is good,,,,p.9-25
 PR-105.05,PR-105,5,"With toe or flank contact, fit a thinner pinion spacer","The pinion moves outward. Then set the backlash again, PR-104.",,,p.9-25
 PR-105.06,PR-105,6,"With heel or face contact, fit a thicker pinion spacer","The pinion moves inward. Then set the backlash again, PR-104.",,,p.9-25
+PR-106.01,PR-106,1,Set the front wheels straight ahead,,,,p.10A-5
+PR-106.02,PR-106,2,Turn the steering wheel slowly and measure at its rim how far it moves before the front wheels begin to move,,Within SP-109; the limit is SP-1424.,,p.10A-5
+PR-106.03,PR-106,3,"With excessive play, check four places","The centre link's ball joints, the idler arm's bushes (PR-110), the wheel bearings (PR-094), and the backlash between sector shaft and ball nut (PR-107 step 16).",,,p.10A-5
+PR-107.01,PR-107,1,Disconnect the battery's negative cable,,,,p.10A-5
+PR-107.02,PR-107,2,"Mark the steering wheel and the column shaft, then remove the horn cap and pull the steering wheel",A puller.,,Never strike the column shaft's end with a hammer: it damages the bearing or the collapsible shaft.,p.10A-5
+PR-107.03,PR-107,3,Remove the steering column covers,,,,p.10A-5
+PR-107.04,PR-107,4,Remove the air duct and disconnect the combination switch's couplers,,,,p.10A-5
+PR-107.05,PR-107,5,Remove the combination switch assembly,,,,p.10A-5
+PR-107.06,PR-107,6,Remove the steering lock assembly,PR-116.,,,p.10A-5
+PR-107.07,PR-107,7,Remove the column jacket's fixing bracket,,,,p.10A-5
+PR-107.08,PR-107,8,Mark the hinge positions on the bonnet and remove the bonnet,,,,p.10A-6
+PR-107.09,PR-107,9,Raise the front and support it on stands,,,,p.10A-6
+PR-107.10,PR-107,10,Disconnect the centre link from the pitman arm,Puller SP-1449.,,,p.10A-6
+PR-107.11,PR-107,11,Pull the pitman arm off the sector shaft,Puller SP-1448.,,,p.10A-6
+PR-107.12,PR-107,12,Remove the steering gear housing's bolts and lift the assembly out through the engine compartment,,,"After a collision, check the steering wheel for axial play first: with a crushed column shaft or axial play, the gear and column shaft are replaced as an assembly.",p.10A-6
+PR-107.13,PR-107,13,"Refit in the reverse order, with the shim back in its place between the housing and the frame",The shim sets the column shaft's alignment. Housing bolts SP-1432.,,,p.10A-9
+PR-107.14,PR-107,14,Fit the pitman arm on the sector shaft with their matching serrations aligned and torque the nut,SP-1435.,,,p.10A-9
+PR-107.15,PR-107,15,Turn the sector shaft through its travel several times from the pitman arm and stop the arm at the centre,,It turns smoothly.,,p.10A-10
+PR-107.16,PR-107,16,"Set a dial indicator on the pitman arm's end and turn the adjusting screw until the backlash at the centre is right, then tighten its lock nut",,SP-1425.,,p.10A-10
+PR-107.17,PR-107,17,"Measure the worm shaft preload at the centre of its travel, the centre link off the pitman arm",Attachment SP-1446 on the column shaft's end.,"The with-sector-shaft figure of SP-1690 (as a torque, SP-1427).",,p.10A-10
+PR-107.18,PR-107,18,Fit the steering wheel with its marks aligned,,,,p.10A-10
+PR-107.19,PR-107,19,Fill the gear housing with oil,Oil SP-252; the 1985 quantity is SP-1689.,,,p.10A-10
+PR-108.01,PR-108,1,Drain the oil,,,,p.10A-6
+PR-108.02,PR-108,2,Hold the gear housing in a vice or on the engine stand,Stand SP-1693.,,,p.10A-6
+PR-108.03,PR-108,3,Slide the column jacket off the column shaft,,,,p.10A-6
+PR-108.04,PR-108,4,Loosen the adjusting cover's lock nut,,,,p.10A-6
+PR-108.05,PR-108,5,Remove the side cover's bolts,,,,p.10A-6
+PR-108.06,PR-108,6,Tap the sector shaft assembly out of the housing with a plastic hammer,,,Do not damage the shaft.,p.10A-6
+PR-108.07,PR-108,7,Unscrew the end cover's lock nut and loosen the end cover,,,,p.10A-7
+PR-108.08,PR-108,8,Take out the worm shaft and ball nut assembly,,,Do not take the worm shaft and ball nut apart.,p.10A-7
+PR-108.09,PR-108,9,Remove the oil seal only if it must be replaced,,,,p.10A-7
+PR-108.10,PR-108,10,Run the ball nut along the worm shaft,,It travels smoothly and freely; with any roughness the steering gear assembly is replaced.,,p.10A-7
+PR-108.11,PR-108,11,Check the worm bearings and their cups,,No wear or damage; otherwise the steering gear assembly is replaced.,,p.10A-7
+PR-108.12,PR-108,12,Twirl the sector shaft's tapered roller bearing under a thrust load,,No catching and no abnormal sound; otherwise the sector shaft assembly is replaced.,,p.10A-7
+PR-108.13,PR-108,13,Check the oil seal,,"No wear, flaw or damage; replace it if it could leak.",,p.10A-7
+PR-109.01,PR-109,1,Fit the oil seal if it was removed,,,Never tap the oil seal directly with a hammer.,p.10A-8
+PR-109.02,PR-109,2,Fit the worm shaft and ball nut assembly in the housing,,,,p.10A-8
+PR-109.03,PR-109,3,Screw the end cover in until the worm shaft's preload is right,"A spring scale pulled squarely on attachment SP-1446 at the column shaft's end, read as the shaft starts to turn.","The without-sector-shaft figure of SP-1690 (as a torque, SP-1426).",,p.10A-8
+PR-109.04,PR-109,4,Tighten the end cover's lock nut and check the preload again,SP-1433.,,,p.10A-8
+PR-109.05,PR-109,5,Turn the worm shaft until the rack is at the centre of the worm,,,,p.10A-8
+PR-109.06,PR-109,6,Fit the sector shaft assembly with the centre of its gear on the centre of the rack,,,Do not damage the oil seal.,p.10A-8
+PR-109.07,PR-109,7,"Put sealing agent on the side cover, place it on the sector shaft assembly and turn the sector shaft counter-clockwise until the cover is screwed into place",,,,p.10A-8
+PR-109.08,PR-109,8,Torque the side cover's bolts,SP-1447.,,,p.10A-8
+PR-109.09,PR-109,9,Nip the adjusting cover's lock nut,,,,p.10A-8
+PR-109.10,PR-109,10,Turn the adjusting cover clockwise with a punch and hammer until the gear's preload is right,Measured as in step 3.,"The with-sector-shaft figure of SP-1690 (as a torque, SP-1427).",,p.10A-9
+PR-109.11,PR-109,11,Torque the adjusting cover's lock nut,SP-1444.,,,p.10A-9
+PR-109.12,PR-109,12,Fit the column jacket onto the end cover,,,,p.10A-9
+PR-110.01,PR-110,1,Raise the front and support it on stands,,,,p.10A-10
+PR-110.02,PR-110,2,Disconnect the centre link from the idler arm,Puller SP-1449.,,,p.10A-10
+PR-110.03,PR-110,3,Remove the idler arm assembly from the frame,,,,p.10A-10
+PR-110.04,PR-110,4,"Hold the assembly in a vice and remove the split pin, nut and washer",,,,p.10A-10
+PR-110.05,PR-110,5,Take the idler arm and its bushes off the bracket,,,,p.10A-10
+PR-110.06,PR-110,6,Check the bushes,,Not excessively worn; otherwise they are replaced.,,p.10A-10
+PR-110.07,PR-110,7,Put a bush on the idler arm's spindle and grease bush and spindle,Grease SP-1450.,,,p.10A-11
+PR-110.08,PR-110,8,Fit the idler arm to the bracket and pack grease into the bracket,,,,p.10A-11
+PR-110.09,PR-110,9,Fit the other bush and the washer,,,,p.10A-11
+PR-110.10,PR-110,10,Tighten the spindle nut and fit a new split pin,,,,p.10A-11
+PR-110.11,PR-110,11,Check the idler arm's revolving torque with a spring scale,,SP-1443; outside it the bushes are replaced.,,p.10A-11
+PR-110.12,PR-110,12,Fit the assembly to the frame and torque its bolts,SP-1442.,,,p.10A-11
+PR-110.13,PR-110,13,"Connect the centre link to the idler arm, torque the nut and fit a new split pin",SP-1437.,,,p.10A-11
+PR-111.01,PR-111,1,Inspect the ball joint for wear,,A worn joint is replaced whole. The joints are sealed with lithium grease and are not lubricated in service.,,p.10A-11
+PR-111.02,PR-111,2,Check the dust seal,,"No wear, flaw or damage.",,p.10A-11
+PR-111.03,PR-111,3,"To replace the dust seal, remove the ball joint, hold it in a vice and take the seal off",,,,p.10A-11
+PR-111.04,PR-111,4,Pack a little grease into the new dust seal and press it on,Grease SP-1450; installer SP-1451.,,,p.10A-12
+PR-112.01,PR-112,1,Raise the front and support it on stands,,,,p.10A-12
+PR-112.02,PR-112,2,Disconnect the centre link from the pitman arm,Puller SP-1449.,,,p.10A-12
+PR-112.03,PR-112,3,Loosen the nut and pull the pitman arm off the sector shaft,Puller SP-1448.,,,p.10A-12
+PR-112.04,PR-112,4,Fit the pitman arm on the sector shaft with their matching serrations aligned and torque the nut,SP-1435.,,,p.10A-12
+PR-112.05,PR-112,5,"Connect the centre link to the pitman arm, torque the nut and fit a new split pin",SP-1436.,,,p.10A-12
+PR-113.01,PR-113,1,"Raise the front, support it on stands and remove the front wheel",,,,p.10A-12
+PR-113.02,PR-113,2,Disconnect the tie-rod from the centre link and from the knuckle arm,Puller SP-1449.,,,p.10A-12
+PR-113.03,PR-113,3,Fit the tie-rod to the centre link and the knuckle arm,,,,p.10A-12
+PR-113.04,PR-113,4,Torque the nuts and fit new split pins,"SP-1438, SP-1439.",,,p.10A-12
+PR-113.05,PR-113,5,Reset the toe-in,PR-115.,,The toe-in is reset whenever a tie-rod or a ball joint is replaced.,p.10A-12
+PR-114.01,PR-114,1,Raise the front and support it on stands,,,,p.10A-12
+PR-114.02,PR-114,2,"Disconnect the centre link from both tie-rods, the pitman arm and the idler arm",Puller SP-1449.,,,p.10A-12
+PR-114.03,PR-114,3,"Fit the centre link to the pitman arm, the idler arm and the tie-rods",,,,p.10A-12
+PR-114.04,PR-114,4,Torque the nuts and fit new split pins,Idler arm SP-1437; pitman arm SP-1436; tie-rods SP-1438.,,,p.10A-12
+PR-115.01,PR-115,1,Set the tyre pressures,,,,p.10A-13
+PR-115.02,PR-115,2,Check the front wheel bearing play and correct it,"PR-094, PR-096.",,,p.10A-13
+PR-115.03,PR-115,3,Check the wheels and tyres for run-out and balance,,,,p.10A-13
+PR-115.04,PR-115,4,Check the ball joints of the front suspension and the steering linkage for looseness,,,,p.10A-13
+PR-115.05,PR-115,5,Stand the car on level ground with no luggage and nobody in it,,,,p.10A-13
+PR-115.06,PR-115,6,Raise the front until the wheels clear the ground,,,,p.10A-13
+PR-115.07,PR-115,7,Turn each wheel by hand and scribe a line round the centre of its tread,,,,p.10A-13
+PR-115.08,PR-115,8,Lower the car and set the front wheels straight ahead,,,,p.10A-13
+PR-115.09,PR-115,9,"Measure between the lines at the front and at the rear of the wheels, at the same height from the ground",,The rear measurement is larger than the front by SP-102.,,p.10A-13
+PR-115.10,PR-115,10,"If the toe-in is wrong, turn both tie-rods by equal amounts",Lock nuts SP-1440.,,,p.10A-13
+PR-115.11,PR-115,11,"Measure camber and caster with a wheel aligning gauge, by its maker's instructions",,SP-103 and SP-104.,,p.10A-13
+PR-115.12,PR-115,12,"If they are wrong, raise the front on stands and open the bonnet",,,,p.10A-13
+PR-115.13,PR-115,13,Remove the four nuts holding the front suspension mounting block to the fender apron,,,,p.10A-13
+PR-115.14,PR-115,14,Press the suspension down and turn the mounting block to the position that gives the change needed,SP-1692.,,,p.10A-13
+PR-115.15,PR-115,15,Torque the mounting block's nuts,SP-1471.,,,p.10A-14
+PR-115.16,PR-115,16,Lower the car and check camber and caster again,,"If they still cannot be set, the front suspension and the body alignment are checked and repaired.",,p.10A-14
+PR-115.17,PR-115,17,Set the steering angle with the adjusting bolt on each steering knuckle arm,,"SP-1430 inward, SP-1431 outward.",,p.10A-14
+PR-116.01,PR-116,1,Disconnect the battery's negative cable,,,,p.10A-14
+PR-116.02,PR-116,2,Remove the horn cap,,,,p.10A-14
+PR-116.03,PR-116,3,Mark the steering wheel and the column shaft and pull the steering wheel,A puller.,,Never strike the column shaft's end with a hammer: it damages the bearing or the collapsible shaft.,p.10A-14
+PR-116.04,PR-116,4,Remove the steering column covers,,,,p.10A-14
+PR-116.05,PR-116,5,Remove the air duct and disconnect the combination switch's couplers,,,,p.10A-15
+PR-116.06,PR-116,6,Remove the combination switch assembly,,,,p.10A-15
+PR-116.07,PR-116,7,Put a protector under the steering lock assembly,It keeps the hammer blows off the steering shaft.,,,p.10A-15
+PR-116.08,PR-116,8,Loosen the bolts holding the lock body to the column jacket with a chisel,,,,p.10A-15
+PR-116.09,PR-116,9,Position the new steering lock on the column jacket and tighten its bolts,SP-1291.,The bolt heads snap off.,,p.10A-15
+PR-116.10,PR-116,10,"Refit the combination switch, the column covers and the steering wheel in the reverse order",,,,p.10A-15
