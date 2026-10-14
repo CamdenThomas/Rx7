@@ -174,8 +174,8 @@
 <path d="M390.0,958.0 L720.0,958.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
 <text x="406.0" y="948.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S1-9  ·  16 AWG BLU  ·  RT10</text>
 <rect x="720.0" y="939.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="954.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Wink L switch NC terminal, from the plate board's J2 pin 1 (D-504); switch common → dash ground</text>
-<text x="730.0" y="970.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">on J2 pin 4</text>
+<text x="730.0" y="954.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Wink L switch NC terminal, from the plate board's J2 pin 1 through DP-CUR-B 1 on the CUR's back</text>
+<text x="730.0" y="970.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">(D-504, D-521); switch common → dash ground on J2 pin 4</text>
 <line x1="30" y1="980.0" x2="390" y2="980.0" stroke="#d0d7de"/>
 <circle cx="50" cy="1002.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="1006.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">10</text>
@@ -185,8 +185,8 @@
 <path d="M390.0,1002.0 L720.0,1002.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
 <text x="406.0" y="992.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S1-10  ·  16 AWG BLU  ·  RT10</text>
 <rect x="720.0" y="983.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="998.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Wink R switch NC terminal, from the plate board's J2 pin 2 (D-504); switch common → dash ground</text>
-<text x="730.0" y="1014.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">on J2 pin 4</text>
+<text x="730.0" y="998.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Wink R switch NC terminal, from the plate board's J2 pin 2 through DP-CUR-B 2 (D-504, D-521);</text>
+<text x="730.0" y="1014.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">switch common → dash ground on J2 pin 4</text>
 <line x1="30" y1="1024.0" x2="390" y2="1024.0" stroke="#d0d7de"/>
 <circle cx="50" cy="1054.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="1058.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">11</text>
@@ -197,8 +197,8 @@
 <text x="406.0" y="1044.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-S1-11  ·  16 AWG GRY  ·  RT10</text>
 <rect x="720.0" y="1027.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="730.0" y="1042.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Horn pad through 8.2 kΩ · wink L NO through 18 kΩ · wink R NO through 33 kΩ — three resistors</text>
-<text x="730.0" y="1058.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">joined onto this wire; the two wink resistors sit on the plate board and reach it on J2 pin 3 (D-499,</text>
-<text x="730.0" y="1074.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">D-504)</text>
+<text x="730.0" y="1058.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">joined onto this wire; the two wink resistors sit on the plate board and reach it on J2 pin 3 through</text>
+<text x="730.0" y="1074.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">DP-CUR-B 3 (D-499, D-504, D-521)</text>
 <line x1="30" y1="1084.0" x2="390" y2="1084.0" stroke="#d0d7de"/>
 <circle cx="50" cy="1101.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="1105.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">12</text>
