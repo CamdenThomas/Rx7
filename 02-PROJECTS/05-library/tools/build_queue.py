@@ -3,6 +3,7 @@
     python3 02-PROJECTS/05-library/tools/build_queue.py [--dry]           parse items (phase 2)
     python3 02-PROJECTS/05-library/tools/build_queue.py --merge [--dry]   merge items (phase 3)
     python3 02-PROJECTS/05-library/tools/build_queue.py --review [--dry]  a review item per failed one
+    python3 02-PROJECTS/05-library/tools/build_queue.py --reprice [--dry] predictions and caps of every open item
 
 Every page of 00-CAR `pages` that is not finished (open or cited) lands in exactly one queue
 item: a few consecutive pages of one document that share a heading. Each item gets a kind, a
@@ -22,6 +23,7 @@ The priority (higher first), all in one place:
 """
 
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -47,6 +49,135 @@ BRIEF = {
     "index": ("Another model's or a kit's pages: only describe each page (kind, topic, scope=other-model, "
               "status=indexed); take a fact only if it names a part this car or a project uses."),
 }
+
+# ------------------------------------------------------------------ the model and the cost of each item
+#
+# Measured 2026-10-14 (a bare `claude -p --model haiku` started outside the tree): the worker's
+# fixed context - system prompt and tools - is about 34,000 tokens, 22,000 of them read from the
+# shared cache and 12,000 written on its first turn; it costs $0.0027 before reading anything.
+# Calibrate these after the first session from the queue's tok_in / tok_out / cost_usd columns.
+
+PRICE = {  # $ per million tokens: input, output (list prices, 2026-10-06)
+    "haiku": (0.10, 0.50),
+    "sonnet": (2.00, 10.00),
+    "opus": (4.00, 20.00),
+}
+FIXED_READ, FIXED_WRITE = 22_000, 12_000   # the worker's fixed context, per call
+INSTR = 1_800          # the worker's instructions and the item's brief
+IMG = 1_600            # one page image at 110 dpi
+TURN_OVERHEAD = 350    # a tool call and its framing
+FACT_TOKENS = 45       # one facts row
+THINK = 0.8            # thinking, as a share of the written output
+CAP_X = 3.0            # the cap: this many times the prediction ...
+CAP_FLOOR = {"haiku": 0.03, "sonnet": 0.40, "opus": 0.80}   # ... and never under this
+SONNET_KINDS = {"figure", "catalogue", "review", "merge"}
+
+
+def model_for(kind, doc):
+    if kind in SONNET_KINDS or "wiring-" in (doc.get("path") or ""):
+        return "sonnet"
+    return "haiku"
+
+
+def image_pages(pages, doc):
+    """The pages a worker must look at, not just read: every page of a scan with no text, every
+    drawing or unknown page, and the tables of an OCR text (OCR scrambles columns)."""
+    out = []
+    for p in pages:
+        k = p.get("kind") or "unknown"
+        if doc.get("text") == "no" or k in ("figure", "unknown", "photo", "mixed") or (doc.get("text") == "ocr" and k == "table"):
+            out.append(p)
+    return out
+
+
+def predict(model, text_tokens, n_img, n_pages):
+    """(input tokens, output tokens, $) for one worker: turn 1 reads the instructions and every
+    page's text; each image is one more turn and stays in the context after it."""
+    turns = 1 + n_img
+    content = INSTR + text_tokens
+    tin = turns * (FIXED_READ + FIXED_WRITE) + turns * content + IMG * n_img * (n_img + 1) // 2 + TURN_OVERHEAD * turns
+    facts = text_tokens / 55 + 12 * n_img + 2 * n_pages
+    tout = int(facts * FACT_TOKENS * (1 + THINK) + 250 * turns)
+    pin, pout = PRICE[model]
+    # cached reads at a tenth of the input price, writes at 1.25 times; the fixed context is
+    # mostly read, the pages are written once and read on every later turn
+    read = turns * FIXED_READ + (turns - 1) * (FIXED_WRITE + content) + IMG * n_img * (n_img - 1) // 2 if turns > 1 else FIXED_READ
+    write = FIXED_WRITE + content + IMG * n_img + TURN_OVERHEAD * turns
+    usd = (read * pin * 0.1 + write * pin * 1.25 + tout * pout) / 1e6
+    return int(tin), tout, round(usd, 4)
+
+
+_TEXT = {}
+
+
+def text_tokens(doc, page_ns):
+    """The page text a worker is handed, in tokens (characters / 4)."""
+    did = doc["id"]
+    if did not in _TEXT:
+        path = ROOT / (doc.get("path") or "")
+        if doc.get("text") == "ocr" and doc.get("ocr"):
+            pages = (ROOT / doc["ocr"]).read_text(errors="replace").split("\f")
+        elif doc.get("text") == "yes" and path.exists():
+            pages = subprocess.run(["pdftotext", "-layout", str(path), "-"], capture_output=True, text=True,
+                                   errors="replace").stdout.split("\f")
+        else:
+            pages = []
+        _TEXT[did] = [len(re.sub(r"[ \t]{2,}", " ", t)) // 4 for t in pages]
+    lens = _TEXT[did]
+    return sum(lens[n - 1] for n in page_ns if n - 1 < len(lens))
+
+
+def price_item(q, docs, pages_by_id):
+    doc = docs.get(q.get("doc"), {})
+    ns = pages_in(q.get("pages") or "")
+    ps = [pages_by_id[f"{doc['id']}.{n:03d}"] for n in ns if doc and f"{doc['id']}.{n:03d}" in pages_by_id]
+    model = model_for(q.get("kind"), doc)
+    if q.get("kind") == "merge":
+        n = len((q.get("rows") or "").split()) if ".." not in (q.get("rows") or "") else 25
+        tin, tout = (FIXED_READ + FIXED_WRITE) * 12 + n * 400 * 12, n * 250
+        pin, pout = PRICE[model]
+        usd = round(((FIXED_READ + n * 400) * 12 * pin * 0.1 + (FIXED_WRITE + n * 400) * pin * 1.25 + tout * pout) / 1e6, 4)
+    else:
+        tin, tout, usd = predict(model, text_tokens(doc, ns) if doc else 0, len(image_pages(ps, doc)) if doc else 0, len(ns))
+    cap = round(max(CAP_FLOOR[model], usd * CAP_X), 2)
+    q.update({"model": model, "est_in": str(tin), "est_out": str(tout), "est_usd": f"{usd:.4f}", "cap_usd": f"{cap:.2f}"})
+
+
+def reprice():
+    """Predictions and caps for every item not yet claimed, from the cost model above."""
+    rx7.take_write_lock()
+    docs = {d["id"]: d for d in rx7.read_table(CAR, "docs")[1]}
+    pages_by_id = {p["id"]: p for p in rx7.read_table(CAR, "pages")[1]}
+    qh, queue = rx7.read_table(LIB, "queue")
+    n = 0
+    for q in queue:
+        if q.get("state") == "open":
+            price_item(q, docs, pages_by_id)
+            n += 1
+    report(queue)
+    if not DRY:
+        rx7.write_table(LIB, "queue", qh, queue)
+    print(f"{n} open items priced")
+    return 0
+
+
+def report(queue):
+    """The forecast: items, tokens and dollars by model, and by tier of the document."""
+    by = {}
+    for q in queue:
+        if q.get("state") not in ("open", "claimed"):
+            continue
+        k = q.get("model") or "?"
+        b = by.setdefault(k, [0, 0, 0, 0.0, 0.0])
+        b[0] += 1; b[1] += int(q.get("est_in") or 0); b[2] += int(q.get("est_out") or 0)
+        b[3] += float(q.get("est_usd") or 0); b[4] += float(q.get("cap_usd") or 0)
+    tot = [0, 0, 0, 0.0, 0.0]
+    print(f"{'model':7} {'items':>6} {'input tok':>12} {'output tok':>11} {'predicted $':>12} {'sum of caps $':>14}")
+    for k, b in sorted(by.items()):
+        print(f"{k:7} {b[0]:6d} {b[1]:12,d} {b[2]:11,d} {b[3]:12.2f} {b[4]:14.2f}")
+        tot = [t + x for t, x in zip(tot, b)]
+    print(f"{'all':7} {tot[0]:6d} {tot[1]:12,d} {tot[2]:11,d} {tot[3]:12.2f} {tot[4]:14.2f}")
+
 
 
 def head_key(p):
@@ -121,6 +252,8 @@ def merge_items():
     ids = rx7.next_keys({q["id"] for q in queue} | {"Q-00000"}, len(new)) or []
     for r, i in zip(new, ids):
         r["id"] = i
+    for r in new:
+        price_item(r, docs, {})
     print(f"{len(new)} merge items for {sum(len(v) for v in groups.values())} facts")
     if not DRY and new:
         rx7.write_table(LIB, "queue", qh, queue + new)
@@ -142,6 +275,10 @@ def review_items():
     ids = rx7.next_keys({q["id"] for q in queue} | {"Q-00000"}, len(new)) or []
     for r, i in zip(new, ids):
         r["id"] = i
+    docs = {d["id"]: d for d in rx7.read_table(CAR, "docs")[1]}
+    pages_by_id = {p["id"]: p for p in rx7.read_table(CAR, "pages")[1]}
+    for r in new:
+        price_item(r, docs, pages_by_id)
     print(f"{len(new)} review items")
     if not DRY and new:
         rx7.write_table(LIB, "queue", qh, queue + new)
@@ -153,6 +290,8 @@ def main():
         return merge_items()
     if "--review" in sys.argv:
         return review_items()
+    if "--reprice" in sys.argv:
+        return reprice()
     rx7.take_write_lock()
     docs = {d["id"]: d for d in rx7.read_table(CAR, "docs")[1]}
     pages = rx7.read_table(CAR, "pages")[1]
@@ -197,6 +336,9 @@ def main():
             brief += f" Facts go to {d.get('owner') or '00-CAR'} at the merge."
             new.append({"priority": str(pr), "kind": kind, "doc": did, "pages": span([int(p["n"]) for p in run]),
                         "section": (run[0].get("topic") or "")[:70], "brief": brief, "after": "", "state": "open"})
+    pages_by_id = {p["id"]: p for p in pages}
+    for r in new:
+        price_item(r, docs, pages_by_id)
     new.sort(key=lambda r: (-int(r["priority"]), r["doc"], int(r["pages"].split("-")[0].split()[0])))
     ids = rx7.next_keys({q["id"] for q in queue} | {"Q-00000"}, len(new)) or []
     for r, i in zip(new, ids):

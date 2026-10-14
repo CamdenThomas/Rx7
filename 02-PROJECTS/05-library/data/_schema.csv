@@ -75,3 +75,11 @@ facts,state,enum(new|merged|duplicate|conflict|rejected),yes,,"new until the mer
 facts,target,str,no,,"the home row, area:table:key or table:key in 00-CAR"
 facts,queue,str,no,,the queue item that wrote it
 facts,note,text,no,,
+queue,model,enum(haiku|sonnet|opus),no,,"who reads it: haiku for text and scanned prose, sonnet for drawings, the catalogue's figures, wiring, reviews and merges (build_queue.py MODEL rules)"
+queue,est_in,int,no,,"predicted input tokens, the worker's fixed context included (build_queue.py's cost model)"
+queue,est_out,int,no,,"predicted output tokens, thinking included"
+queue,est_usd,num,no,,predicted cost at the model's list price
+queue,cap_usd,num,no,,"the worker's hard limit (claude -p --max-budget-usd): three times the prediction, never under the model's floor - reached only if something goes wrong"
+queue,tok_in,int,no,,"actual input tokens, cache reads and writes included (run_session.py)"
+queue,tok_out,int,no,,actual output tokens
+queue,cost_usd,num,no,,actual cost as claude -p reports it

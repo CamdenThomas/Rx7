@@ -45,9 +45,10 @@ only - `duplicate` - `empty`. Finished = parsed, held, indexed, duplicate or emp
 | Tool | Does |
 |---|---|
 | `inventory.py` | finds every PDF; a `docs` row each (a `sources` row too when none named it - 95 were added); a `pages` row per page with its printed number, kind and topic from the text layer or OCR; marks pages existing rows already cite as `cited`, listing those rows. Never lowers a status. |
-| `build_queue.py` | turns unfinished pages into queue items (default), staged facts into merge items (`--merge`), failed items into review items (`--review`). Never queues a page twice; never edits an item an agent touched. |
+| `build_queue.py` | turns unfinished pages into queue items (default), staged facts into merge items (`--merge`), failed items into review items (`--review`), and prices every item - model, predicted tokens and dollars, cap (`--reprice`). Never queues a page twice; never edits an item an agent touched. |
 | `page.py` | a page or a few as text (`text DOC-062 12-14`) or as a PNG (`image DOC-048 27 [--dpi N] [--crop x,y,w,h]`). |
 | `link.py` | adds home rows to a page's `rows` (merge). |
+| `run_session.py` | the manager: a timed session of workers, each with its item's model and cap; writes their answers, finishes the items with tokens and dollars, commits (`--dry` forecasts). |
 
 **rx7.py** (D-574): every writing command holds one tree-wide lock for its read-change-write,
 so any number of agents can write at once; `add id=next` issues keys (an empty table starts from
@@ -89,50 +90,70 @@ one document after another.
 
 ## Roles
 
-- **Orchestrator** - the main session (Opus). Runs the tools, launches and replaces workers,
-  commits, raises blocks, reports to Camden. The only one that runs git.
-- **Parse worker** - a small, cheap agent (Haiku) with no memory of anything else: one queue item
-  per launch, following `rx7.py playbook parse` (about 2 pages of instructions) and nothing else.
-  Kinds: parse, index, catalogue, diagnosis.
-- **Figure / review worker** - the same playbook on a stronger model (Sonnet): kinds figure and
-  review (a failed item retried).
-- **Merge worker** - Sonnet or Opus, `rx7.py playbook merge`: kind merge. Needs judgement (one fact
-  once, what conflicts).
+- **The manager is a script**, `run_session.py` - it spends no tokens. It claims items, prepares
+  each worker's prompt, launches the worker with the item's model and cap, writes what comes back,
+  finishes the item with what it cost, and at the end checks, commits and pushes.
+- **A worker is one `claude -p` call per item**, started in an empty folder under /tmp/rx7-work (so it
+  loads no CLAUDE.md, no memory, and can touch nothing in the tree). Its prompt is the parse
+  playbook's worker text, the item's brief, every page's text, and the names of the page images in
+  its folder; its only tool is Read, for those images. It answers with two blocks - facts and pages -
+  and nothing else; the manager does every write.
+- **Models** (`build_queue.py`, `model_for`): **Haiku 5.5** for text and scanned prose - 1,093 items;
+  **Sonnet 5.5** for drawings, the parts catalogue's figure pages, wiring diagrams, reviews of failed
+  items and merges - 136 items now. No Opus: nothing in parsing needs it.
+- **The orchestrating session** (Opus, in chat) only starts sessions, reads the ledger, spot-checks,
+  tunes the cost model and raises blocks - it does not run the workers.
 
-## The worker loop (what every agent does - its whole world)
+## Every item is mapped and priced before it runs
 
-1. `python3 tools/rx7.py claim 02-PROJECTS/05-library --agent <name>` -> the item (rc 2: none; stop).
-2. Read the pages: `page.py text`, and `page.py image` + Read for drawings and scrambled tables.
-3. Write a rows file and `rx7.py add 02-PROJECTS/05-library facts --rows FILE state=new queue=Q-…`.
-4. `rx7.py set 00-CAR pages DOC-….nnn kind= topic= scope= status=` for each page.
-5. `rx7.py finish 02-PROJECTS/05-library Q-… result=… rows=…` (or `state=failed result=why`).
-6. One line back, stop.
+`build_queue.py` gives each item `model`, `est_in` / `est_out` (tokens), `est_usd` and `cap_usd`;
+`--reprice` recomputes every open item after the cost model changes. The model, measured
+2026-10-14 with one bare Haiku call:
 
-The item is marked `claimed` by step 1 and `done` / `failed` by step 5; nothing else marks it.
-An agent that dies leaves its item claimed; after 90 minutes `claim` hands it to the next agent.
-Workers never search the record, never commit, never ask Camden anything.
+| Constant | Value | What |
+|---|---|---|
+| fixed context | 22,000 read + 12,000 written per call | the worker's system prompt and tools; $0.0027 on Haiku before any page |
+| instructions + brief | 1,800 tokens | the playbook's worker text |
+| page text | characters / 4 | from the text layer or the OCR text |
+| a page image | 1,600 tokens, one more turn | drawings, unknown pages, scans with no text, OCR tables |
+| output | 45 tokens a fact, +80 % thinking, +250 a turn | facts estimated at text / 55 + 12 an image + 2 a page |
+| prices | Haiku $0.10 / $0.50, Sonnet $2 / $10, Opus $4 / $20 per million in / out | reads 0.1x, writes 1.25x |
+| **cap** | **3 x the prediction, floor $0.03 Haiku, $0.40 Sonnet** | `claude -p --max-budget-usd`: a worker reaches it only by going wrong (a loop) |
 
-## Running it (the orchestrator)
+The forecast today (all 1,229 parse items): Haiku 73.1 M input tokens (nearly all cached reads),
+3.3 M output, **$4.44 predicted**; Sonnet 17.5 M in, 0.7 M out, **$16.16**; together **$20.60**, with
+every cap summing to $91.47 (the worst case if every single worker looped). Merges are priced when
+`--merge` builds them (they depend on how many facts there are): about $0.19 a Sonnet merge of 25 facts.
 
-1. `git pull --rebase`, `rx7.py check`, `python3 …/inventory.py` and `build_queue.py` (both add only
-   what is new - safe to rerun after a pull).
-2. Launch N workers in the background with the Agent tool, each prompt the same few lines:
-   *"You are a parse worker for the Rx7 tree at ~/dev/Rx7. Run `python3 tools/rx7.py playbook
-   parse` and follow it exactly for one queue item, with --agent w<k>. Then stop."* - model haiku
-   for parse / index / catalogue / diagnosis, sonnet for `--kind figure` and `--kind review`.
-   Start with 4, raise to 8-12 once results look right; the lock serialises writes, so more workers
-   only queue at it (each write holds it 1-2 s).
-3. As each worker reports, launch another while `claim` would still hand out work
-   (`rx7.py sql 02-PROJECTS/05-library "select state,count(*) from queue group by state"`).
-4. **Every ~25 finished items**: `rx7.py check`; then
-   `git add 00-CAR/data 02-PROJECTS/05-library/data && git commit -m "Library: Q-a..Q-b parsed (D-574)"`,
-   `git pull --rebase`, `git push`. A refused check is fixed before the commit (usually a worker's
-   bad row - fix the row, note it in the item's result).
-5. **Spot-check** every 50 items: open three random finished items' pages and compare with their
-   facts. A worker that invents or skips gets its items reopened (`set state=open`) and the playbook
-   tightened - the playbook is the only lever on cheap workers.
-6. `build_queue.py --review` turns failed items into review items for the stronger model.
-7. Pause any time: stop launching. Resume: step 1. Nothing is lost - claims time out.
+## A session
+
+```
+python3 02-PROJECTS/05-library/tools/run_session.py --dry                     # the next hour's items, predicted $ and worst case
+python3 02-PROJECTS/05-library/tools/run_session.py --minutes 60 --workers 6  # run it
+```
+
+- For `--minutes` it keeps `--workers` workers running, most valuable item first. After that it starts
+  nothing new; the running workers finish (each bounded by its own cap and a 20-minute timeout);
+  then `check`, a commit, a push, a log row and the ledger (items, facts, dollars).
+- `--max-usd N` also stops new starts once the actual spend plus the running workers' caps would pass N.
+- `--kind K` / `--model haiku|sonnet` restrict a session (e.g. a cheap Haiku-only hour).
+- A worker that hits its cap, crashes, or answers without the two blocks fails its item; `build_queue.py
+  --review` makes a Sonnet review item of each failed one.
+- Stop any time with Ctrl-C: claimed items open again after 90 minutes; nothing is half-written,
+  because the manager writes an item only after its worker answered.
+- Resume: run it again - the queue is the only state.
+
+The dry forecast for 60 minutes with 6 workers: about 258 items, $12.30 predicted, $48.09 if every
+cap were hit. The seconds per item (60 Haiku, 120 Sonnet) are guesses until the first session; its
+ledger replaces them.
+
+## After each session (the orchestrator, a few minutes)
+
+1. Read the ledger and `rx7.py sql 02-PROJECTS/05-library "select model, count(*), sum(est_usd), sum(cost_usd), sum(tok_in), sum(tok_out) from queue where state in ('done','failed') group by model"`.
+2. If actual cost runs above the prediction, raise the constants in `build_queue.py` and `--reprice`.
+3. Spot-check three finished items: their pages against their facts. A pattern of misses or inventions
+   is fixed in the parse playbook's worker text - the only lever on the workers.
+4. `build_queue.py --review` for the failed items.
 
 ## Phases and when each is done
 
@@ -153,11 +174,3 @@ Workers never search the record, never commit, never ask Camden anything.
 - 00-CAR never cites a decision (CLAUDE.md §1); notes say what the car is.
 - A measured or Camden-checked value is never overwritten by a page (R11): that is a conflict.
 - Nothing is deleted from disk before phase 5, and nothing in phase 5 before the offline copy.
-
-## Cost and time (estimate, 2026-10-14)
-
-About 1,230 parse items at 2-5 pages, then roughly one merge item per 25 facts (30-50 thousand
-facts likely: 1,200-2,000 merges). A Haiku worker item: roughly 15-40 thousand tokens (the
-playbook, the page text, one or two images). A Sonnet merge item: 30-60 thousand. Wall clock with
-8 workers: phase 2 in a few long sessions; phase 3 about as long again. Tier by tier: 1 - 482 items, 1,349 pages; 2 - 307, 976; 3 - 325, 877; 4 - 103, 415;
-5 - 12, 106. Run tier 1 first and judge the quality before the rest.
