@@ -1812,3 +1812,16 @@ His answer to block 01.51, option (a): ""Keep it: labelled, bagged and boxed wit
 Reasoning: it forecloses nothing and costs shelf space only. D-411's ""keep it until after shakedown"" becomes ""keep it"".
 
 Consequences in the data: E48.06 (the decision step) and E48's know line are rewritten to a keep step; E30.10's box instruction gains the keep."
+D-558,,O15 enables at 25.0 A; CK08's test lead is fused at 20 A; the cabin sensor hangs below the centre stack; F3 is built before F5,2026-10-13,standing,,,,Y47 · pins 27 · LD08 · SN11 · F3 · F5,"**Y47's remaining harness details, settled from the record: O15 enables at 25.0 A, the 12 AWG bundle limit; CK08's powered test runs on a lead fused at 20 A; the cabin temperature sensor hangs below the centre stack's lower trim edge; the Display Unit (F3) is built before the Control Unit's boards (F5).**
+
+Nobody was asked: each is small under §3. F34's holder is not settled here: it changes what is bought, so it is a block.
+
+1. **O15's enable-at current (pins 27).** O15 feeds the comfort block C (F25-F29) through L3-P 2 on 12 AWG RED, and the coils of K14 / K15 (N110). The block's loads at D-382's figures: seat heat 5 A x 2, seat cooling 2.5 A x 2, the DCU's comfort input (servo rail up to 2.5 A, mirror heat 3 A), coils about 0.4 A: 20.9 A with everything on, under the 12 AWG bundle figure of 25 A (awg 12, S-478) and the pin's 25 A (hw_max_a). So est_a 20.9 and enable_a 25.0, the wire's limit, as D-243 capped O2 and O3 at theirs; each load keeps its own blade fuse in block C. The seat motors are on the busbar through F35 / F36, not on O15 (D-469). E26.19 and E38.11, which said the record gave no figure, now quote it.
+
+2. **CK08's test lead fuse.** One pop-up motor stalls at 12.8-13.1 A (loads LD08, measured) and the test runs one motor at a time, so a 20 A blade fuse passes the stall and the start and still opens on a short; 20 A is a rating already in the fuses table (F8, F9), so its spare is in P141 and nothing new is bought. The lead's holder is the second of P073's two (the first is E24's 5 A guard). V-114.12's caution and V-114's tool line say so.
+
+3. **The cabin temperature sensor (SN11, E39.07).** At the lower edge of the centre stack's trim, its passenger-side corner, the bead hanging 20-30 mm below the trim in free cabin air, the lead along the stack's frame to DP-DCU-D 8 / 9: shaded, out of the sun, the shortest lead from the unit. Keep it at least a hand's width from any heater or floor outlet; if an outlet is nearer, slide it along the trim edge until it is not. It is held by cable ties and no hole is cut, so moving it costs nothing (R11: the spot is chosen without seeing the car).
+
+4. **F3 before F5.** The Display Unit runs on its USB lead on the bench and so proves its soldering by working; the Control Unit's power sections cannot be powered before the car (D-541). Building F3 first means a soldering fault is found on one board before it is repeated on three. An order of his work, not a gate: F5 does not wait for F3.
+
+Left on Y47: F34's holder, block raised this run."

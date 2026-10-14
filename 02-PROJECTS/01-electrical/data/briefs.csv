@@ -173,7 +173,7 @@ Three more models need a login only you have: Omron's G8HL micro-ISO relay, Seee
 Until a connector's file is found the Design page draws a stand-in from the dimension table; every connector stays marked unconfirmed either way. [00-design README section 13]","The command in step 1 lists the DT04, DT06, DTP04 and DTP06 folders on the Mac and none is empty.","A folder is missing and the Fedora PC is not to hand: open that model row's link in a browser, save the STEP into a folder of the row's name under library/electrical, and carry on. A model you cannot get: say which in the app; its stand-in stays.","Tick Y27 when the connector files are on the Mac. In words, name any optional model you also saved."
 V-114,"The review's measurements are taken at the car and written down: CK19, CK20, CK21, CK22, CK23, CK24, CK08, CK09, CK10, then CK17 and CK18 with the column covers off.","engine bay, the nose, the hatch, and the steering column",a day - confirm,"multimeter: ohms, continuity, DC volts
 an ammeter good for 20 A, or the clamp meter
-a fused 12 V test lead and two jumper leads with clips
+a 12 V test lead fused at 20 A (a blade fuse in the spare inline holder of P073's two) and two jumper leads with clips
 calipers, and a thread gauge or a few known nuts
 screwdrivers for the column covers
 notepad, phone camera, masking tape and a marker
@@ -998,6 +998,7 @@ Hot-air or a hot-plate for the power packages
 Magnifier
 Multimeter (P045)
 Digital calipers, 0.01 mm, for holding each part against its footprint",P144 P170 P145 P146 P147 P148 P149 P150 P153 P157 P177 P178 P193 P175 P195 P194 P196 P155 P173 P192 P142,"Y18 - the boards and their parts have arrived. The order was placed there: nothing is ordered in this row
+F3 built first if both are ready: the Display Unit runs on USB on the bench, so it proves your soldering before you repeat it on three boards here. This row does not wait for it [D-558]
 An anti-static mat or at least a grounded bench
 Eye protection while soldering","The Control Unit (DCU in the tables) is the dash and climate unit: a Teensy 4.1 socketed on its carrier, inside one box in the centre-stack opening with the control panel on its face [modules DCU, D-479]
 It is built on the bench before the car is stripped; F6 then runs it on USB power, and the strip (S1) waits on F6 and the Display Unit (F3) only [D-541]
