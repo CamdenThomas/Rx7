@@ -170,3 +170,4 @@ L-0158,2026-10-14,session,R-APPLY-01.54 D-577 Y49 F-019 01.55,"R-APPLY-01.54 don
 L-0159,2026-10-14,answers,D-578,R-APPLY-01.55 done: dash-light level set from the centre knob (D-578); F-019 note updated
 L-0160,2026-10-14,session,F-019 D-579 Y41 Y49,"plan run: F-019 written (D-579) - dash-light firmware on pin 11 at 200 Hz, U13 driver for wake and STATUS, 0x300 byte 6, the held-push level, ICU dimming; stays open, the compiler was refused. Y41 not retried (no browser), Y49 not started (no kicad-cli)"
 L-0161,2026-10-14,answers,D-580 01.56 Y50 Y51 F-020,"Chat ruling applied: the page button leaves the Display Unit; a screen knob on the climate unit steps its pages and, after a click, sets its brightness, sent in 0x400 (D-580). Placement on the face is block 01.56; Y50, Y51, F-020 added; Y18 waits on Y50"
+L-0162,2026-10-14,answers,D-581 01.56,Block 01.56 answered: the screen knob goes on the CUR (D-581); Y51 and P219 follow

@@ -1936,3 +1936,12 @@ Read as: ""CUR"" is the CU, the climate control unit (DCU and its panel); ""anle
 Amends D-494 (its pairing trigger only), D-579 (the display's backlight also scales with this level), luxury D-169 and D-269/D-270/D-491 (the button through the binnacle plate). Supersedes none of them whole.
 
 Rows: icu_channels IC22; dcu_channels SN32 (new); can_fields 0x400/1, 0x400/3, 0x400/4-6 → 0x400/4, 0x400/5, 0x400/6; log_link LL02; devices DV46, DV53; modules PANEL; parts P120 (dropped), P203, P219 (new); work Y16 and its brief and step Y16.05, Y18 (gate + Y50), Y50 (new: the panel header, the cart), Y51 (new: the mock-ups, after the block), F-020 (new: the firmware); 04-luxury features FT34, parts LP29, stages S3, work I9."
+D-581,,"The screen knob sits on the CUR, left of the wheel; the car keeps two custom switch panels",2026-10-14,standing,,,01.56,,"**The screen knob goes on the CUR, the remote plate left of the wheel - option (d). The face of the Control Unit keeps its size, and the car keeps only two custom switch panels: the Control Unit face and the CUR.**
+
+His words (block 01.56, desktop, 2026-10-14): ""Its called the Control Unit (not climate unit) and this control will live on the CUR (control unit remote) that has the wink switches and the side mirror adgustment and the gas trunk pop buttons this means it will be to the left behind the steering wheel still close to the icu but keeping only 2 custom switch panels""
+
+The option he picked, (d): ""On the left plate, by the mirror stick, left of the wheel. It sits with the driver's other controls, off the climate face. The plate's board gets the header instead and the plate grows. Costs nothing now.""
+
+Reading: the CUR is what the tables call the left plate (DP-CUR, P200, DP-DCU-E). The knob is the Adafruit I2C encoder of P219 on its short lead; the plate already carries the panel I2C pair (DP-DCU-E 9), so the lead goes to the plate board and the Control Unit face loses nothing. Naming: the unit the tables call the climate unit / DCU is the Control Unit; new text says Control Unit, and older rows are corrected when they are next touched, not swept now.
+
+Consequences: Y51 draws the knob on the CUR mock-up (Y25), not the face (Y14), and the plate grows for it; P219 lead length is set by the plate, confirm on the mock-up; PANEL owns line moves the screen knob to the CUR. Supersedes nothing: it fills the place D-580 left open."
