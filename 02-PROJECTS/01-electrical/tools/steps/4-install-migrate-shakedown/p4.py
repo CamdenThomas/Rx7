@@ -1,4 +1,10 @@
 from common import brief, steps, CLIENT, CANCABLE, METER
+import os
+import sys
+import common
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+import plugs  # noqa: E402 - the plug of every part, from devices (D-543)
 
 DEUTSCH = "Deutsch solid-contact crimper, sizes 12 and 16 (P038)"
 SPLICE = "ratchet crimper for heat-shrink butt splices and rings (P171)"
@@ -422,3 +428,26 @@ steps("E41", [
      "Disconnect ON. The car powers as before; the capped 4 AWG feed reads 0 V to ground because F34 is empty.",
      "Car normal; amplifier feed dead"),
 ])
+
+
+# ================================================================== the plug each step reaches (D-543)
+def _plug_lines(work, table, lead):
+    for key, ids in table.items():
+        hit = [r for r in common.S if r["work"] == work and r["do"].startswith(key)]
+        assert len(hit) == 1, (work, key, len(hit))
+        hit[0]["how"] += "\n" + lead + "\n" + "\n".join(plugs.ends(ids))
+
+
+def _know(work, line):
+    hit = [r for r in common.B if r["id"] == work]
+    assert len(hit) == 1, work
+    hit[0]["know"] += "\n" + line
+
+
+_L = "The plug this end takes, and how it is made:"
+_plug_lines("E36", {"Join the hatch solenoid": ["DV48"], "Join the fuel-door solenoid and prove its ground": ["DV49"]}, _L)
+_plug_lines("E38", {"Plug the block into L3-CMF": ["DV56"], "Pin the driver's two receptacles": ["DV57"], "Do the passenger side the same": ["DV58"]}, _L)
+_plug_lines("E39", {"Join each signal wire to its servo lead": ["DV59"], "End the blower-speed pair at the resistor pack's hole": ["DV55", "DV27"]}, _L)
+_plug_lines("E41", {"Run the signal cable, remote and microphone leads": ["DV28", "DV60"], "Pin and cap the sub's 4-way": ["DV61"]}, _L)
+_know("E37", "The mirror heads and the window motors are not rows of the devices table, so no plug is written down for either. Look at each mirror's own plug while the trim is off - ways, colour, any mark, a photo against a ruler - and note it in the app; the motor's plug is adapter lead A18's [work A12, A18; D-543]")
+_know("E40", "The radar's sensors and receiver are not rows of the devices table and no system is picked: both runs end capped in our own Deutsch receptacles, L4-HRD and L2-RDR, and the picked system's own plugs are adapter lead A20's [housings L4-HRD, L2-RDR; work A20; D-543]")

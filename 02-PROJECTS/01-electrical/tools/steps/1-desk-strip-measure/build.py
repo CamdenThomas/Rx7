@@ -7,14 +7,14 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-import rows_a, rows_b, rows_c, rows_d, rows_e  # noqa: E402
+import rows_a, rows_b, rows_c, rows_d, rows_e, rows_f  # noqa: E402
 
-WANT = ("A5 V-002 W-330b R6 T-048 T-049 X-007 F-009 BT4 Y16 Y18 Y27 V-113 V-114 S1 C1 C3 C4 "
-        "Q-014 Q-115 V-081 V-055 V-088 V-102 V-112 Z2").split()
+WANT = ("A5 V-002 W-330b R6 T-048 T-049 X-007 F-009 BT4 Y16 Y18 Y27 V-114 V-115 S1 C1 V-116 "
+        "Q-014 Q-115 V-081 V-055 V-088 V-112 Z2").split()
 PARTS_CSV = sys.argv[1] if len(sys.argv) > 1 else None
 
 rows = {}
-for mod in (rows_a, rows_b, rows_c, rows_d, rows_e):
+for mod in (rows_a, rows_b, rows_c, rows_d, rows_e, rows_f):
     for r in mod.ROWS:
         assert r["id"] not in rows, "duplicate " + r["id"]
         rows[r["id"]] = r

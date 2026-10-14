@@ -45,6 +45,12 @@ devices,ident,text,no,,
 devices,terminals,text,no,,
 devices,ground,text,no,,
 devices,route,str,no,routes.id,the run this device's conductors follow from the post - set only where routes.to_node names the device; blank means the record does not say yet (D-385)
+devices,plug,text,no,,"the connector the part takes (D-543): its style or family, its ways and which half sits on the part, and what is not known; it says confirm until plug_seen holds his look at the car (R11)"
+devices,plug_from,enum(catalogue|diagram|look|maker|record|unknown),no,,"how plug is known: diagram - the 1982 wiring diagram S-001 and its write-ups; catalogue - the parts catalogue S-005; maker - the maker's sheet or page; record - our own design (housings, cavities, a decision); look - Camden saw it (plug_seen); unknown - no source says"
+devices,leg_end,enum(factory-plug|new-connector|no-leg|our-deutsch|ring-or-spade),no,,"how the leg end at this part is made (D-543): factory-plug - the factory half cut off the old harness with 150 mm of lead and spliced on at E28 (D-537); new-connector - a mating connector bought; ring-or-spade - the part's own stud, screw or tab; our-deutsch - one of our own Deutsch pairs in housings; no-leg - nothing on the harness reaches it"
+devices,plug_note,text,no,,"where plug was read (source ids and pages, terminals rows, a page address), the part's other terminations, why a new connector, and the mating part number where a source gives one"
+devices,plug_seen,text,no,,"what Camden found when he looked at the plug on the car: ways, colour, any maker's mark, which half is on the part, sound or damaged, the photo's name - his words from the answer to S1, V-115 or V-116, filed by the apply run"
+devices,plug_seen_on,date,no,,"the day of that look; with it set, plug_seen is the plug and plug's confirm no longer holds"
 fuses,id,key,yes,,
 fuses,rating,str,no,,
 fuses,location,str,no,,

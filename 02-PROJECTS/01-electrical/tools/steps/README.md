@@ -8,6 +8,13 @@ phase's row file (or the table it quotes), then from the tree root
     python3 02-PROJECTS/01-electrical/tools/steps/<phase>/build.py      # phase 1 takes the parts table's path
     python3 02-PROJECTS/01-electrical/tools/steps/load.py 02-PROJECTS/01-electrical/tools/steps/<phase>
 
+`plugs.py`, beside the four folders, words the plug of every part from `devices` (`plug`, `plug_from`,
+`leg_end`, `plug_seen`; D-543): the LOOK steps of S1, V-115 and V-116, the End steps of the legs
+(E20-E23), E26's switch move, every migration row of E28 and the ends of E36-E41 quote it, so rebuild
+all four phases after a device row's plug changes. A row a ruling drops comes out of its phase's row
+file and list, and its briefs and steps rows are deleted with `rx7.py del` (the loader only replaces
+the ids a phase still names).
+
 `load.py` replaces the briefs and steps of that phase's work ids and runs `check`. A one-line
 fix to a single step is `rx7.py set 01-electrical steps <id> how=…` - then make the same
 change in the row file, or the next rebuild undoes it. What follows is the brief the writers

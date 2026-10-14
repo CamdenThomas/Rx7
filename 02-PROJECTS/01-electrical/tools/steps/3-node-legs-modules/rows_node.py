@@ -207,10 +207,10 @@ step('E14', 'Stick every label',
 
 # ------------------------------------------------------------------ E15
 brief('E15',
-      goal='The wake strip carries its seven diodes and bleed resistor, the two wake sense stages are built on the perfboard to the wake_stages table, the two bias resistors are fitted, and the bench check CK12 is read.',
+      goal='The wake strip carries its seven diodes and bleed resistor, the two wake sense stages are built on the perfboard to the wake_stages table, the two bias resistors are fitted, and every check that needs no power is read on the bench. The powered checks are taken in the car.',
       where='bench', time='half a day - confirm',
       tools=['Soldering iron and solder (P044)', 'Flush cutters, needle-nose pliers (P043)', 'Multimeter: ohms, diode test, DC volts (P045)',
-             'Heat gun (P042)', 'A 12 V bench supply or the battery through a fused lead for CK12'],
+             'Heat gun (P042)'],
       parts='P071 P072 P069 P158 P160 P161 P134 P068 P011 P019 P008',
       before=['E14 - the strip and perfboard are mounted', 'A10 - the stage values are in the record (they are: the wake_stages table)',
               'Eye protection while soldering and clipping leads'],
@@ -224,11 +224,13 @@ brief('E15',
             'The threshold divider resistors WS14 / WS24 are 1 % parts [wake_stages WS14]',
             'Bias: 100 kΩ from pin 15 (+5 V) to pin 35 (A15) and 100 kΩ from pin 15 to pin 22 (A16), so a broken wire reads 0, not OFF [node_conductors N39]',
             'At rest the door and A8 lines sit at 0.166 x the F23 voltage (about 1.99 V at 12.0 V); the comparator threshold is 0.115 x [wake_stages WS12, WS13]',
+            'The PMU is never powered on the bench, so check CK12 is split. Here, with the meter alone: (i) the PMU\'s own input resistance. In the car: (ii) what pin 7 draws, at first power (E24); the A8 stage on the real horn, hazard and wink switches once L3 is plugged in (E26); the door stage on the real jamb switches once L4 is in (E27); (iii) the time from wake to O22, when O22 is first enabled (MG02 in E28) [checks CK12; D-541]',
+            'The lowest pin 7 voltage that switches the PMU on needs a variable supply, and nothing is bought to measure it: it is not taken. In the car pin 7 sees battery voltage less one strip diode [checks CK12; D-541; node_conductors N38]',
             'LM2903 pin-out, 8 pins, pin 1 at the dot or the notch end: 1 OUT A · 2 IN- A · 3 IN+ A · 4 GND · 5 IN+ B · 6 IN- B · 7 OUT B · 8 V+ [parts P160; 00-CAR S-501]',
             '2N3904, flat face toward you and leads down: emitter · base · collector, left to right - the usual order, not read from the sheet of the parts bought: confirm on one with the diode test before soldering [parts P072]'],
-      done_when='Seven diodes read forward toward the rail and blocked the other way; every resistor measured before fitting; CK12 read on the bench: at rest no wake, any door or A8 switch wakes, the three unknowns (i)-(iii) written down.',
-      if_not='A stage that does not wake: check the comparator supply (F23) and the divider node (0.115 x F23), then the 2.2 µF and the follower. If the unpowered PMU pin reads under 200 kΩ to ground at CK12 (i), stop: WS12 may have to drop - raise a note with the reading. Do not put the node in the car on a failing CK12.',
-      record='Tick the row. Enter the CK12 readings as a note: (i) ohms pin 18 and pin 19 to ground with the PMU unpowered, (ii) the lowest pin 7 voltage that switches the PMU on and its current at 12 V, (iii) seconds from pin 7 high to O22 on.')
+      done_when='Seven diodes read forward toward the rail and blocked the other way; every resistor measured before fitting and again in place; no bridge between perfboard rows; CK12 (i) read on the unpowered PMU and noted.',
+      if_not='A diode that conducts both ways or neither: replace it. A resistor out of tolerance: take another from the kit. If the unpowered PMU pin reads under 200 kΩ to ground at CK12 (i), stop: WS12 may have to drop - raise a note with the reading before the board is closed up. A stage that later does not wake in the car (E26, E27): check the comparator supply (F23) and the divider node (0.115 x F23), then the 2.2 µF and the follower - so mount the perfboard where a probe still reaches it with the node in the car.',
+      record='Tick the row. Enter CK12 (i) as a note: ohms from pin 18 and from pin 19 to pin 25 with the PMU unpowered. The rest of CK12 is entered at E24, E26, E27 and E28.')
 step('E15', 'Measure and bag every part first',
      ['From the resistor kit (P069): 10 k x2 (WS01, the rail bleed), 100 k x5 (WS02, WS10, WS20 and the two bias), 220 k x2, 1 M x4, 130 k 1 % x2, 47 k x2.',
       'Measure each with the meter and lay them on a labelled card. 2N3904 x5 (P072), LM2903 x1 (P160), 2.2 µF film x2 (P158), 1N4148 x2 (P161), 100 nF x1, 1N5819 x7 (P071).'],
@@ -259,19 +261,17 @@ step('E15', 'Bring the stage wires out to labelled flying leads',
 step('E15', 'Fit the two 100 kΩ bias resistors',
      'On the perfboard: one end of both to a common pad for the pin 15 wire (16 AWG PNK, N39); the other ends to two pads for the pin 35 (A15) and pin 22 (A16) wires. The wires themselves land at E17.',
      '100 kΩ from the pin 15 pad to each of the two input pads.')
-step('E15', 'Bench check CK12, part 1: the three unknowns',
-     ['CK12 needs the PMU connected on pins 7, 8, 18, 19, 25 and its supply. The record does not say how the PMU is wired for this before E16 terminates the 39-way: if you have no bench lead, take CK12 as soon as E17 has landed those pins - before E19 and before the node goes in the car.',
-      '(i) PMU unpowered: ohms from pin 18 to ground and from pin 19 to ground.',
-      '(ii) Raise the voltage on pin 7 slowly: the lowest voltage that switches the PMU on; then the current pin 7 draws at 12 V.',
-      '(iii) The time from pin 7 going high to O22 coming on.'],
-     '(i) 200 kΩ or more keeps the designed margin; (ii) and (iii) are simply recorded - no document gives them.',
-     'The 39-way is terminated once and never reopened: do not push trial wires into it.')
-step('E15', 'Bench check CK12, part 2: the stages',
-     ['With the 47 kΩ baselines standing in for the car (47 kΩ from each line to ground): read the A6 and A8 line voltage at rest.',
-      'Close a stand-in for each door switch (24 kΩ + 1N4148 driver, 8.2 kΩ + 1N4148 passenger, from the line to ground) and each A8 switch (4.7 k hazard, 8.2 k horn, 18 k wink L, 33 k wink R) and watch strip inputs 3 and 4.',
-      'Do it asleep and awake.'],
-     'At rest about 0.166 x the supply on each line (1.99 V at 12.0 V), no wake, and the PMU goes to sleep. Any door or A8 switch: a pulse of about 10 V on the strip input and the PMU wakes. Awake, the lines read about 4.1 V and the excitation is off.',
-     'Bench the door stage with the interior lamp wire (RY at battery voltage through its 1N4007) on the switch stand-ins if you can: that is the case the diodes exist for.')
+step('E15', 'CK12 (i): the PMU\'s own input resistance, unpowered',
+     ['The PMU on its panel with its 39-way connector off and nothing powered. Find header pins 18, 19 and 25 by offering the connector up and reading the numbers moulded on it.',
+      'Meter on ohms, probe tips touched lightly on the PMU\'s own header pins: pin 18 (A6) to pin 25 (ground), then pin 19 (A8) to pin 25.'],
+     '200 kΩ or more on each keeps the designed margin; write both figures down.',
+     'Touch, do not push: nothing goes into the header or into the 39-way, which is terminated once and never reopened.')
+step('E15', 'Check both stages with the meter, unpowered',
+     ['Diode test on each 1N4148 clamp in place: it conducts from ground to the base and blocks the other way.',
+      'Ohms across each resistor in place, against the card from the first step: a reading far below its value means a bridge or a part in the wrong holes.',
+      'Ohms between every pair of neighbouring perfboard rows that should not be joined: open.',
+      'Nothing here is powered. At rest about 0.166 x the supply on each line and no wake; a pulse of about 10 V on the strip input when a door or an A8 switch closes; awake, about 4.1 V on the lines - those are read in the car, on the real switches, at E26 (the A8 stage) and E27 (the door stage).'],
+     'Every part reads its value in place; no bridge anywhere.')
 
 # ------------------------------------------------------------------ E16
 brief('E16',
@@ -446,7 +446,7 @@ brief('E18',
             'Pin 15 reaches pins 35 and 22 through 100 kΩ each and the oil node through 100 Ω: that is correct, not a fault [node_conductors N39]',
             'The CAN2 pair should read about 120 Ω with nothing plugged in: the one resistor at the node [node_conductors N74]'],
       done_when='All 39 cavities pass continuity and the three must-not-reach touches each; every power cavity reads open to its neighbours and to the ground bus; nine relays and every LIVE fuse are in; photos taken.',
-      if_not='A missing continuity: find it now - a contact not seated or a splice not crimped. Any isolation reading under 1 MΩ: stop and find the strand before any power is applied. Do not go on to E19 with an open item.',
+      if_not='A missing continuity: find it now - a contact not seated or a splice not crimped. Any isolation reading under 1 MΩ: stop and find the strand. This is the node\'s last check before it is powered, and it is first powered in the car (E24): do not go on to the legs with an open item.',
       record='Tick the row. Add the photos as a note.')
 step('E18', 'Set up', 'The 39-way off the PMU and face-up on the bench, nothing plugged into any receptacle, no relay, no fuse. Meter on the beeper. Short the probes: it beeps.',
      'A beep with the probes together, silence apart.')
@@ -474,27 +474,34 @@ step('E18', 'Check every label and photograph', 'Every node wire labelled at bot
      'A set of photos that would let you find any wire without opening the dash.')
 
 # ------------------------------------------------------------------ E19
+E19_FUSES = 'F23 (WAKE), F22 (DCU-CONST), F12 (INTERIOR) and the MAXI fuse F30 (BLOCK-A-FEED)'
 brief('E19',
-      goal='The sleeping current of the finished dash node is measured and is 50 mA or less.',
-      where='bench', time='30 min - confirm',
-      tools=['Multimeter with a fused 10 A range and a mA range (P045)', 'A 12 V supply for the node through a fused lead'],
-      parts='',
-      before=['E18 - the node passed continuity and isolation, relays and fuses fitted', 'CK12 read (E15)', 'No leg plugged in; the DCU tails capped'],
+      goal='The sleeping current of the whole dash node, in the car on its real feed, is measured and is 50 mA or less.',
+      where='in the car: the master disconnect in the cargo bin, and the dash node', time='20 min, inside E24 and straight after R6 - confirm',
+      tools=['Multimeter with a fused 10 A range and a mA range, with clip leads (P045)', 'Fuse puller', 'Notepad'],
+      parts='P045',
+      before=['R6 has just been read, inside E24: the meter is across the open master disconnect, the PMU is off, the 5 A guard fuse is still in the Class-T block, the factory main feed is parked off the post, no leg is plugged in',
+              'E18 - the node passed continuity and isolation on the bench, relays and fuses fitted', 'The DCU tails are dust-capped',
+              'This row and R6 open in the app when E24 is ticked: write the reading in the notepad now and enter it then'],
       know=['Target 30 mA or less; accept 50 mA or less [work E19, loads LD17, D-280]',
-            'What should be drawing: the PMU asleep (no manual figure; a bench report says under 20 mA) and the wake stages (under 0.2 mA). K11 is open when asleep. The DCU is not plugged in yet [loads LD17]',
-            'The PMU sleeps when nothing on the wake strip is high; with no key, door or A8 input the keep-alive drops 30 s after the last change [rules sleep]',
+            'The acceptance test is taken on the real node in the car at first power, not on a bench rig: where it is taken changed, the figure did not [D-541, D-280]',
+            'What should be drawing: the PMU switched off (R6\'s figure) and the wake stages (under 0.2 mA) on F23. K11, K14 and K15 are open when asleep. The Control Unit is not plugged in yet: its 10 mA is read at E26 [loads LD17; work R6, E26]',
+            'The PMU is off whenever nothing on the wake strip is high. Before E25 no configuration holds it awake; after E25 the keep-alive drops 30 s after the last change [rules sleep; S-028 p.131]',
+            'With the master disconnect OPEN a meter across its two studs carries everything the node draws; the 5 A guard at the Class-T block is in series behind it [checks CK02; work E24]',
             'On a 40 Ah pack 150 mA is about 11 days and 20 mA about 80 days [checks CK02]',
-            'This is the PMU\'s share; the whole-car figure is read later at E29 [checks CK02]',
-            'It cannot be re-taken once the dash is closed without undoing the install [work E19]',
-            'The record does not name the bench supply for this test, nor what configuration the PMU carries before E25: with pin 7 low it should be asleep - confirm [gap]'],
-      done_when='A steady reading of 50 mA or less with the PMU asleep, entered in the app.',
-      if_not='Above 50 mA: lift the wake-strip branches one at a time (inputs 1 to 7, then F23, F22, F12) and watch the reading to find the branch. Do not close the dash on a failing number: raise a note with the readings.',
-      record='Enter the reading in mA (this row takes a value).')
-step('E19', 'Connect the supply through the meter', ['Meter on its 10 A range first, in series in the main feed to the always-hot busbar; supply negative to the ground bus.',
-                                                 'The record does not name the supply: a 12 V battery through a 5 A inline fuse is the pattern E24 uses for first power.'],
-     'The PMU powers; the reading is small.', 'Never start on the mA range: the wake-up current can blow the meter\'s fuse.')
-step('E19', 'Let it go to sleep', 'Nothing on strip inputs 1 to 7. Wait at least 30 s after the last change, then a minute more.', 'The reading falls and holds steady.')
-step('E19', 'Read it', 'Drop the meter to the mA range once the reading is under its limit. Read for a full minute.', '30 mA or less is the target; 50 mA or less is accepted.')
-step('E19', 'If it is high, find the branch', 'Lift one wake-strip input at a time, then pull F23, F22 and F12 one at a time, watching the meter. Put each back before the next.',
+            'This is the node\'s share; the whole-car figure, with the legs, the units and the head unit, is read at E29 [checks CK02]',
+            'Once the legs are plugged in it cannot be re-taken without unplugging them, and once the dash is closed not without undoing the install: this is the moment [work E19]'],
+      done_when='A steady reading of 50 mA or less with the PMU off and every node fuse in, written down at E24 and entered in the app when the row opens.',
+      if_not='Above 50 mA: pull ' + E19_FUSES + ' one at a time, then lift wake-strip inputs 1 to 7 one at a time, watching the reading, to find the branch. Do not plug a leg in and do not close the dash on a failing number: raise a note with the readings.',
+      record='Enter the reading in mA (this row takes a value). In words: the battery voltage and which fuses were in.')
+step('E19', 'Start where R6 left the meter', 'Master disconnect OFF, meter on its 10 A range clipped across the disconnect\'s two studs, the wake jumper\'s fuse out, the four fuses R6 pulled lying on the panel.',
+     'The meter shows the PMU\'s own small draw.', 'Back on the 10 A range before any fuse goes in.')
+step('E19', 'Refit the four fuses one at a time', ['In this order, watching the meter after each: F23 (WAKE, 3 A), F22 (DCU-CONST, 3 A), F12 (INTERIOR, 5 A), then the MAXI F30 (BLOCK-A-FEED, 40 A).',
+                                                'F23 adds the wake stages, a fraction of a milliamp. F22 and F12 feed a capped tail and an empty receptacle: nothing. F30 feeds block A, whose branches end at empty receptacles and the glovebox port: nothing, unless the laptop\'s cable takes power from the port.'],
+     'The reading barely moves as each goes in.', 'A jump as a fuse goes in is that branch: pull it again and find out why before going on.')
+step('E19', 'Let it settle and read it', 'Wait a full minute. If the reading is under the mA range\'s limit, move the red lead to the mA socket and switch to mA. Read for a full minute more.',
+     '30 mA or less is the target; 50 mA or less is accepted.', 'A mA range is fused low: the wake jumper\'s fuse stays out while the meter is on it.')
+step('E19', 'If it is high, find the branch', 'Pull ' + E19_FUSES + ' one at a time, then lift one wake-strip input at a time, watching the meter. Put each back before the next.',
      'The reading drops when the offending branch is lifted.')
-step('E19', 'Record and disconnect', 'Enter the mA figure in the app. Meter back to volts, leads out of the current sockets. Disconnect the supply.', 'The value is in the app.')
+step('E19', 'Take the meter off and go back to E24', 'Write the mA figure down. Unclip the meter from the disconnect, leads out of the current sockets, meter back to volts. The disconnect stays OFF: E24\'s next step swaps the 5 A guard for the Class-T fuse. Enter the figure in the app when E24 is ticked.',
+     'The reading on the pad; the meter put away; the disconnect open.')

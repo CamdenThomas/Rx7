@@ -3,7 +3,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from lib import B, S, OUT, PARTS, T
 import rows_node, rows_legs, rows_mod  # noqa: F401
 
-IDS = ['E13', 'E14', 'E15', 'E16', 'E17', 'E18', 'E19', 'E20', 'E21', 'E22', 'E23', 'F3', 'F5', 'F6', 'F11', 'F12']
+IDS = ['E13', 'E14', 'E15', 'E16', 'E17', 'E18', 'E19', 'E20', 'E21', 'E22', 'E23', 'F3', 'F5', 'F6']
 BH = ['id', 'goal', 'where', 'time', 'tools', 'parts', 'before', 'know', 'done_when', 'if_not', 'record']
 SH = ['id', 'work', 'n', 'do', 'how', 'expect', 'caution']
 

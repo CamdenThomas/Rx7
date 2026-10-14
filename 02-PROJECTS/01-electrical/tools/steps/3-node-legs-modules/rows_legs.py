@@ -1,4 +1,8 @@
 from lib import *
+import os
+import sys
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+import plugs  # noqa: E402 - the plug of every part, from devices (D-543)
 
 KIT = {'DT06-12S': 'P115', 'DT06-8S': 'P101', 'DT06-6S': 'P099', 'DT06-4S': 'P124', 'DT06-2S': 'P123', 'DTP06-4S': 'P131', 'DTP06-2S': 'P100',
        'DT04-12P': 'P126', 'DT04-8P': 'P127', 'DT04-6P': 'P128', 'DT04-4P': 'P129', 'DT04-2P': 'P130', 'DTP04-4P': 'P132', 'DTP04-2P': 'P133'}
@@ -15,8 +19,9 @@ LOOP = ['Cut length is 1.5 x the measured route; the margin is that factor, no e
         'A CAPPED wire is cut, labelled and terminated exactly like a LIVE one [work E20]',
         'Cavity numbers are the ones moulded into the housing: read them off the part [rules cavity-numbers]',
         'DT size-16 contacts take 14-20 AWG and carry 13 A; DTP size-12 contacts take 10-14 AWG and carry 25 A [series DT, DTP]',
-        'Where a device keeps its factory plug, the plug is cut from the old harness with 150 mm of factory lead and each lead is joined to its new wire with a sealed butt splice; a stud or blade gets a heat-shrink ring or spade [rules device-end]',
-        'The factory plugs stay on the old harness until their circuit migrates (E27 / E28): the record does not say at which row each factory-lead splice is made, so at the bench those ends are left cut to length, labelled and insulated [work E27, E28, gap]']
+        'Every run ends in the plug its part needs. The device rows name that plug and how the end is made - the factory plug spliced on at the migration, a new mating connector, a ring or spade, or one of our own Deutsch pairs - and each End step below repeats it [devices plug, leg_end; D-543]',
+        'A device that keeps its factory plug: the plug is cut off the old harness in the car at E28, one circuit at a time, with 150 mm of its lead, and each lead is spliced to its new wire there with a sealed butt splice, staggered and sleeved. At the bench that end is left cut to length, labelled and insulated [D-537; rules device-end]',
+        'No plug named here has been seen yet unless its line says seen: it is the 1982 diagram\'s wire count or a maker\'s sheet. Your looks at the car (S1, V-115, V-116) come first; an end that needs a connector bought is finished only once that connector is in hand [devices plug_seen; R11]']
 
 
 def plug_head(h):
@@ -89,7 +94,7 @@ brief('E20',
       where='bench - a board or floor long enough for the full-scale layout', time='a weekend - confirm',
       tools=LEG_TOOLS,
       parts='P115 P101 P123 P100 P133 P130 P129 P022 P024 P026 P023 P027 P028 P029 P102 P125 P036 P002 P078 P079 P069 P071 P084 P085 P086 P015 P016 P012 P013 P009 P010 P011 P008 P019 P075 P076 P077',
-      before=['E19 - the dash node passed its sleeping-current test', 'G13 - the cut lengths are derived from the measured routes (C1, M-2)',
+      before=['E18 - the dash node passed continuity and isolation on the bench (it is first powered in the car, at E24)', 'G13 - the cut lengths are derived from the measured routes (C1, M-2)',
               'E7 - the ladder resistor sub-assemblies are built and bagged', 'CK10 read: the ignition switch IG contact holds through START - take it before this leg is crimped',
               'CK17 and CK18 read: the light switch and stalk contact tables - the ladders are built to what they found',
               'E5 - Deutsch practice done', 'Eye protection for crimping and clipping'],
@@ -389,3 +394,38 @@ test_steps('E23', ['L1-S1 11 to its block-ground wire: ' + ladder('A4') + '.', '
                    'With the switch on the leg, move the lever through P, R, N.'],
            '47 kΩ idle; about 6.98 kΩ with the contact closed (8.2 kΩ in parallel with 47 kΩ).',
            ' Tach core: open to its shield.')
+
+
+# ================================================================== the plug each run ends in (D-543)
+# The devices each End step reaches; the wording comes from devices.plug / leg_end through plugs.end().
+ENDS = {
+    ('E20', 'Fit the branch-end receptacles L3-BLW and L3-CMF'): ['DV27', 'DV55', 'DV56'],
+    ('E20', 'End the leg at the ignition switch'): ['DV18'],
+    ('E20', 'End the leg at the light switch'): ['DV19'],
+    ('E20', 'End the leg at the turn stalk and the hazard switch'): ['DV20', 'DV21'],
+    ('E20', 'End the leg at the wiper stalk'): ['DV22'],
+    ('E20', 'End the leg at the horn pad and the wink plate'): ['DV23', 'DV24'],
+    ('E20', 'End the leg at the pedal box'): ['DV25', 'DV50'],
+    ('E20', 'End the leg at the centre stack and glovebox'): ['DV28', 'DV29', 'DV30', 'DV31', 'DV26'],
+    ('E21', 'End the leg at the pop-up motors'): ['DV11'],
+    ('E21', 'End the leg at the headlamps'): ['DV10'],
+    ('E21', 'End the leg at the wiper motor and washer pump'): ['DV15', 'DV16'],
+    ('E21', 'End the leg at the front lamps and horns'): ['DV12', 'DV13', 'DV14'],
+    ('E21', 'Make the ground returns to the front star'): ['DV17'],
+    ('E22', 'Build the sill panel'): ['DV43'],
+    ('E22', 'Make the door-jamb switch ends'): ['DV41'],
+    ('E22', 'End the leg at the tank'): ['DV34', 'DV36'],
+    ('E22', 'End the leg at the rear lamps'): ['DV37', 'DV38'],
+    ('E22', 'End the leg at the hatch, the roof and the quarter'): ['DV33', 'DV39', 'DV40', 'DV48', 'DV49'],
+    ('E22', 'End the tunnel run'): ['DV47', 'DV51'],
+    ('E22', 'Make the ground returns'): ['DV42'],
+    ('E23', 'Make the coil branch'): ['DV01'],
+    ('E23', 'Wire the K9 socket'): ['DV03', 'DV02'],
+    ('E23', 'End the leg at the alternator and the senders'): ['DV04', 'DV06', 'DV07', 'DV08'],
+    ('E23', 'End the leg at the inhibitor switch'): ['DV05'],
+}
+for (_w, _do), _ids in ENDS.items():
+    _hit = [k for k, st in enumerate(S[_w]) if st[0] == _do]
+    assert len(_hit) == 1, (_w, _do, len(_hit))
+    _d, _how, _ex, _ca = S[_w][_hit[0]]
+    S[_w][_hit[0]] = (_d, _how + '\n' + '\n'.join(['How each of these ends is made (D-543):'] + plugs.ends(_ids)), _ex, _ca)

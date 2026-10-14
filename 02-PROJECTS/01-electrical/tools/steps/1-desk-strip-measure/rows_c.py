@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Orders and car-whole measurements: Y16, Y18, Y27, V-113, V-114
+# Orders and car-whole measurements: Y16, Y18, Y27, V-114
 # Y16 and Y18 quote two files and four parts rows, read here so a rebuild follows them:
 # the cart files in 00-design (bench-revA-digikey-cart.csv, bench-revA-mouser-cart.csv - one line
 # per part bought: group, qty, mpn, maker, what, refs, rows, est_unit_usd, price_source, substitute)
@@ -278,66 +278,6 @@ ROWS.append(dict(
         ("Enter it",
          "Tick Y27. The agent's next export swaps the stand-ins for the real models.",
          "Y27 ticked.", ""),
-    ],
-))
-
-ROWS.append(dict(
-    id="V-113",
-    goal="The opening in the centre stack where the factory climate controls sit is measured - width, height and depth in mm - with what the new unit could fasten to.",
-    where="centre stack, from the driver's seat",
-    time="30 min",
-    tools=[
-        "calipers",
-        "steel rule or tape, in mm",
-        "torch",
-        "phone camera",
-        "a screwdriver, only if the control head comes out easily",
-    ],
-    parts="",
-    before=[
-        "The car is whole: nothing needs to come out for this",
-        "Key out",
-    ],
-    know=[
-        "The new climate control is one box, like a stereo head unit: dials on its face, the DCU (the dash and climate control module) inside, and it slides into this opening from the front. [D-479; D-481]",
-        "The mock-up needs an opening about 188 mm wide and 93 mm tall, under a face of about 192 x 97 mm. [D-481; work V-113]",
-        "It is about 125 mm deep, 203 mm with its plugs and the bend of their cables. That depth is measured properly with the stack out (V-102). [D-481; work V-102]",
-        "The panel board inside it is drawn 180 x 84.76 mm and is rebuilt to your numbers, not redrawn. [parts P175; work V-113]",
-        "The factory heater control panel has a mode lever, a temperature lever and a rotary fan knob with the A/C push switch - as shown for the 1980 panel; check it against this car. [00-CAR PT215]",
-        "Its control cables run back to the heater unit, and it has one small lamp. [00-CAR PT220, PT217]",
-        "It sits in the dash centre panel, the surround it shares with the radio. [00-CAR PT837]",
-        "Nothing behind the centre stack has been measured by anyone. If the opening cannot be about 188 x 93 mm, the design comes back to you as a question. [D-481; D-455]",
-        "The fasteners that hold the control head are not in the record. [00-CAR PT215 - no fasteners listed]",
-    ],
-    done_when="Three numbers in mm - width, height, depth to the first thing behind - plus a yes or no on 'can the opening be about 93 mm tall', and where the factory control head fastens.",
-    if_not="The control head will not come out without force: leave it, measure the opening in the surround instead and say so. A number that is smaller than 188 x 93: write it as measured - it is a finding, do not round it up.",
-    record="Tick V-113 and type the three numbers in the answer as width x height x depth in mm, then the mounting points and whether 93 mm of height is possible.",
-    steps=[
-        ("Photograph the centre stack",
-         "Hold the rule against the surround so it is in the picture. One shot square on, one from each side.",
-         "A photo with a readable scale.", ""),
-        ("Decide whether the control head comes out",
-         "Look for visible screws on the heater control panel and its surround. If it comes forward without force, ease it out a little with its cables and plug still attached. If not, leave it in and measure the opening in the surround.",
-         "Either the head eased forward, or left in place.",
-         "Do not pull on the control cables or unplug anything."),
-        ("Measure the width",
-         "Calipers or rule, inside edge to inside edge of the opening, left to right. Take it at the top and at the bottom and keep the smaller. In mm.",
-         "A width; the unit wants about 188 mm.", ""),
-        ("Measure the height",
-         "Inside top edge to inside bottom edge. Take it at the left and at the right and keep the smaller. In mm.",
-         "A height; the unit wants about 93 mm.", ""),
-        ("Measure the depth",
-         "From the front face of the surround straight back to the first thing the rule touches. Say what it touched.",
-         "A depth in mm and the name of the obstruction.", ""),
-        ("See what limits the height",
-         "Note what sits directly above and below the opening and how far each is from its edge: that says whether the opening could be made about 93 mm tall.",
-         "A yes or a no, with the mm above and below.", ""),
-        ("Find the mounting points",
-         "Note where the factory control head fastens: each screw or bracket, measured from the opening's left edge and bottom edge in mm, and the screw type if you can see it.",
-         "A small sketch or list of fastening points.", ""),
-        ("Photograph with the rule in place and enter it",
-         "One photo across the width and one across the height with the rule in shot. Then tick V-113 and type the numbers.",
-         "V-113 ticked, with width x height x depth.", ""),
     ],
 ))
 

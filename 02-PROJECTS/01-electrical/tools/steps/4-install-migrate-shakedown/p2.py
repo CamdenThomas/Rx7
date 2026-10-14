@@ -1,4 +1,10 @@
 from common import brief, steps, CLIENT, CANCABLE, METER
+import os
+import sys
+import common
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+import plugs  # noqa: E402 - the plug of every part, from devices (D-543)
 
 # ---------------------------------------------------------------- E27
 brief(
@@ -86,7 +92,7 @@ steps("E27", [
      "Loads stay on the factory harness until their own row in E28. Fold each new device end back beside its device, cover any bare terminal, and leave its label showing.",
      "No new wire touches a device or the body"),
     ("Close the disconnect and reconnect the client",
-     "Disconnect ON, client on DP-DIAG. Confirm every output is still disabled.",
+     "Disconnect ON, key to ACC - the wake jumper went at E26, so the key wakes the PMU now - client on DP-DIAG. Confirm every output is still disabled.",
      "PMU visible; outputs off"),
     ("Read the brake pedal and wiper park input, A3",
      "IDLE with the pedal up; BRAKE with the pedal pressed. PARKED and BRAKE+PARKED need the wiper motor's park contact on the new leg: if the motor is still on the factory harness read these two at MG05. Write each live reading in. Upward decode, half-width 30.",
@@ -98,6 +104,10 @@ steps("E27", [
     ("Read the doors, A6",
      "CLOSED with both doors shut; DRV with the driver door open; PASS with the passenger door open; BOTH with both open. The jamb switches are new and already on the new leg. Window plus and minus 20.",
      "Four separate windows"),
+    ("CK12 in the car: the door wake stage",
+     "Key out: the PMU switches off, its LED dark. Meter on DC volts on the A6 line at the perfboard's lead to PMU pin 18: read it at rest with both doors shut. Then open and shut the driver's door, then the passenger's, watching the PMU's LED. Key back to ACC afterwards. The lamp's RY wire is not on these switches until MG01: the same test is repeated there with the lamp at DOOR.",
+     "At rest about 0.166 x the battery voltage on the line (1.99 V at 12.0 V) and the PMU stays off. Each door opening lights the PMU's LED for about a second, then it goes dark again - the keep-alive that would hold it is not enabled until MG02",
+     "A door that does not wake it: the diode at that switch is the wrong way round or the stage is at fault. Find it now, while the sill and the perfboard are open."),
     ("Enter the tables and save a new revision",
      "Enter each state from its reading. A7, oil pressure, is read at the first idle at the end of E28. Save as the next revision. Nothing enabled.",
      "Revision saved; outputs off"),
@@ -113,7 +123,7 @@ brief(
         CLIENT,
         CANCABLE,
         METER,
-        "one long meter lead, the length of the car, so one probe stays at the dash node",
+        "one long meter lead, the length of the car, made from wire off a spool with a clip at each end, so one probe stays at the dash node (none is bought)",
         "label printer (P041) for the MIGRATED labels",
         "ratchet crimper for heat-shrink butt splices and rings (P171)",
         "heat gun (P042)",
@@ -134,9 +144,10 @@ brief(
     ],
     [
         "The order is the migration table's, by its sequence number. It is the test order: each circuit is proven alone before the next moves, so a fault shows on the circuit that caused it [work E28; D-414]",
-        "The loop for every circuit: (1) unplug the load at its factory connector, label the factory end MIGRATED and the date, tape it back; (2) connect the load to the new harness; (3) enable that one output at its enable-at value; (4) operate it and read the live current in the client; (5) measure voltage at the device under load; (6) record it [work E28]",
+        "The loop for every circuit: (1) unplug the load at its factory connector, cut that harness-side plug off the old harness with 150 mm of its lead, label the stub left behind MIGRATED and the date, tape it back; (2) join the plug's leads to the new wires and plug the load back in - or fit the ring, spade or new connector its row names; (3) enable that one output at its enable-at value; (4) operate it and read the live current in the client; (5) measure voltage at the device under load; (6) record it [work E28]",
         "Voltage test: load running, busbar to the device's + terminal under 0.5 V; the device's - terminal to the ground bus under 0.3 V [work E28]",
-        "Device ends: where a device has a stud or blade the new wire ends in a ring or spade; where it keeps a factory plug, the new wire joins that plug's leads with sealed heat-shrink butt splices. The two-letter factory colour says which lead takes which wire [rules device-end]",
+        "Every leg ends in the plug its part needs, and each row below names it from the device's own row. A factory part keeps its factory plug: the harness half comes off the old harness with 150 mm of lead and each lead is joined to its new wire with a sealed heat-shrink butt splice, the splices staggered and the bundle sleeved; the two-letter factory colour says which lead takes which wire. A stud or tab takes a ring or spade; a new part takes the connector bought for it [D-537; D-543; devices plug, leg_end; rules device-end]",
+        "A plug that several circuits share - a rear lamp's one plug carries tail, stop, turn and reverse - comes off the old harness at the first of those rows. Splice every lead of it then, the later circuits' too, and leave their outputs disabled until their own rows: nothing on that part runs from the factory harness after the cut [D-537; devices DV12, DV37]",
         "The factory harness meets itself at a few big connectors: engine harness at X-01, dash harness at X-02 and X-12, rear harness at X-03 on the left side behind the door, transmission harness at X-10. Its fuse block X-04 is under the dash. These stay together until E30 [00-CAR PT027, PT318, PT321, PT323, PT325]",
         "Output status numbers in the client: 0 OFF, 1 ACTIVE, 2 UNDERCURRENT (a dead bulb), 3 OVERCURRENT (a tripped soft fuse), 7 THERMAL SHUTDOWN [recovery RC04]",
         "Factory wire colours are base then tracer: GY is green with a yellow stripe; Lg is light green [00-CAR PT027]",
@@ -147,18 +158,18 @@ brief(
         "CK16 is taken after the pop-ups move and CK14 at the first crank [checks CK16, CK14]",
     ],
     "Every migration row from MG01 to MG27 is done and each works on its own; every factory end is labelled MIGRATED with its date; the engine cranks only in P and N, starts and idles on the new harness; OIL_MIN is entered from the first idle; CK14 and CK16 are logged; a new revision is saved.",
-    "A circuit does not come up: stop there - the fault is in what you just moved. Read that output's status in the client: 3 means a shorted wire - find it, do not raise the limit; 2 means an open load or a dead bulb; no current and status 0 means the input state is wrong - watch the ladder while you work the switch. Low voltage at the device: the feed's crimp or splice. Voltage on the ground side: the ring or the star stud. The factory end is only taped back, so the circuit can go back on the factory harness while you look. If a device has no plug, stud or blade of its own to connect to without cutting the factory harness: the device-end rule says cut the plug off with 150 mm of lead, and E30 says the old harness leaves uncut - the record does not say which wins, so raise it in the app as a note before the first cut. For a PMU soft fault use recovery RC02 to RC05.",
+    "A circuit does not come up: stop there - the fault is in what you just moved. Read that output's status in the client: 3 means a shorted wire - find it, do not raise the limit; 2 means an open load or a dead bulb; no current and status 0 means the input state is wrong - watch the ladder while you work the switch. Low voltage at the device: the feed's crimp or splice. Voltage on the ground side: the ring or the star stud. Once its plug is cut off the old harness the circuit cannot simply go back: look for the fault on the new side first. A plug found cracked, burnt, or not what its device row says: do not splice it on - raise it in the app as a note; a new connector is bought for that part instead (D-543). For a PMU soft fault use recovery RC02 to RC05.",
     "Tick E28 in the app when MG23 has moved and the engine has run. E2 takes the odometer reading before MG22. The per-circuit current and voltage readings, CK14's lowest cranking voltage and block offset, and CK16's readings have no row of their own: put them in a note in the app.",
 )
 steps("E28", [
     ("Set up, and learn the loop on paper before the first circuit",
-     "Laptop on DP-DIAG, client connected, every output still disabled. Long meter lead clipped at the dash node. Label printer loaded. For every circuit below: (1) disconnect OPEN - unplug the load from the factory harness, label the factory end MIGRATED and today's date, tape it back; (2) join the load to its new wire; (3) disconnect ON - enable that one output; (4) work it and read its current in the client; (5) with it running, busbar to device + under 0.5 V and device - to ground bus under 0.3 V; (6) write the two readings down. Move to the next only when this one works.",
+     "Laptop on DP-DIAG, client connected, every output still disabled. Long meter lead clipped at the dash node. Label printer loaded. For every circuit below: (1) disconnect OPEN - unplug the load, cut its harness-side plug off the old harness with 150 mm of lead, label the stub MIGRATED and today's date, tape it back; (2) splice the plug's leads to the new wires, staggered, sealed and sleeved - or fit the ring, spade or new connector the row names - and plug the load in; (3) disconnect ON - enable that one output; (4) work it and read its current in the client; (5) with it running, busbar to device + under 0.5 V and device - to ground bus under 0.3 V; (6) write the two readings down. Move to the next only when this one works.",
      "Ready; nothing enabled"),
     ("MG01 - interior lamp, on fuse F12",
-     "Factory side: the lamp in the interior mirror housing has two wires, LY (constant feed) and RY (to the door switches). Unplug, label, tape back. New side: L4-M 8, 16 AWG red, up the C-pillar to the lamp's LY terminal; it is always-hot from the busbar through F12, a 5 A sealed inline fuse at the node. The lamp's own switch does the rest: ON goes to the roof-rail ground (16 AWG black); DOOR goes to the new RY wire, which reaches both jamb switches through a 1N4007 each. Fit the 5 A fuse in F12. There is no output to enable and no current in the client: this lamp is on a fuse, not on the PMU.",
+     "Factory side: the lamp in the interior mirror housing has two wires, LY (constant feed) and RY (to the door switches). Unplug, label, tape back. New side: L4-M 8, 16 AWG red, up the C-pillar to the lamp's LY terminal; it is always-hot from the busbar through F12, a 5 A sealed inline fuse at the node. The lamp's own switch does the rest: ON goes to the roof-rail ground (16 AWG black); DOOR goes to the new RY wire, which reaches both jamb switches through a 1N4007 each. Fit the 5 A fuse in F12. There is no output to enable and no current in the client: this lamp is on a fuse, not on the PMU. Then the last part of check CK12: lamp switch at DOOR, key out, the PMU off - a door opening must still light the PMU's LED for a moment, with the lamp's RY wire live on the jamb switches.",
      "Switch ON: lit, key out. Switch DOOR: lit with either door open, dark with both shut. Lamp + within 0.5 V of the busbar"),
     ("MG02 and MG26 - head unit and USB-C on O10, and the head unit's memory feed through K11",
-     "Factory side: the head unit is aftermarket, spliced in behind the dash by a previous owner - how is not in the record: note what you find. Free its red, yellow, orange and black wires and label what they came off. New side: L3-M 1 (14 AWG orange, from O10) to the head unit's red ACC wire and the USB-C module's +; L3-M 2 (14 AWG red, from F1, 10 A, block B) to the head unit's yellow memory wire; head unit black to dash ground on 14 AWG; USB-C - to dash ground on 16 AWG. Enable O22 KEEP_ALIVE first (7.0 A): relay K11 pulls in whenever the car is awake and feeds block B. Then enable O10 ACCESSORY (13.0 A). Key to ACC.",
+     "Factory side: the head unit is aftermarket, spliced in behind the dash by a previous owner - how is not in the record: note what you find. Free its red, yellow, orange and black wires and label what they came off. New side: L3-M 1 (14 AWG orange, from O10) to the head unit's red ACC wire and the USB-C module's +; L3-M 2 (14 AWG red, from F1, 10 A, block B) to the head unit's yellow memory wire; head unit black to dash ground on 14 AWG; USB-C - to dash ground on 16 AWG. Enable O22 KEEP_ALIVE first (7.0 A): relay K11 pulls in whenever the car is awake and feeds block B. Now item (iii) of check CK12: key out, wait until the car is asleep, then turn to ACC and time from the turn to K11's click, in seconds - the wake stages' pulse, about 0.9 s on 2.2 uF, has to outlast it; note the figure. Then enable O10 ACCESSORY (13.0 A). Key to ACC.",
      "K11 clicks; 12 V on L3-M 2; head unit on at ACC and keeps its memory; USB-C charges a phone; the instrument unit boots, its logic is on O10. O10 reads up to about 10 A with everything loaded; O22 reads about zero - it is under the PMU's measuring floor",
      "O10 also feeds the release relays' branch, the road-speed sensor and the washer relay coil. If O10 trips here, pull F33 and try again."),
     ("MG03 - dash illumination on O20, the display's backlight feed F16, and the soft-fuse trip test",
@@ -239,3 +250,25 @@ steps("E28", [
      "Cranks only in P and N; starts and idles; the pump holds on after the prime because oil_ok latches; A16 reads START for the whole crank and A4 holds CRANK_OK; block offset under 0.74 V",
      "Garage door open. Belt and fan clear. An engine that starts and dies about 3 s later with zero oil pressure shown is the oil gate, not the PMU: check the oil, then the sender wire."),
 ])
+
+
+# ================================================================== the plug each step reaches (D-543)
+def _plug_lines(work, table, lead):
+    for key, ids in table.items():
+        hit = [r for r in common.S if r["work"] == work and r["do"].startswith(key)]
+        assert len(hit) == 1, (work, key, len(hit))
+        hit[0]["how"] += "\n" + lead + "\n" + "\n".join(plugs.ends(ids))
+
+
+def _know(work, line):
+    hit = [r for r in common.B if r["id"] == work]
+    assert len(hit) == 1, work
+    hit[0]["know"] += "\n" + line
+
+
+_plug_lines("E28", {
+    "MG01": ["DV39", "DV41"], "MG02": ["DV28", "DV29"], "MG03": ["DV30"], "MG04": ["DV14"], "MG05": ["DV15"], "MG07": ["DV16"],
+    "MG08": ["DV12", "DV13", "DV37", "DV38"], "MG09": ["DV25"], "MG12": ["DV05"], "MG13": ["DV10"], "MG15": ["DV11"],
+    "MG17": ["DV27", "DV55"], "MG18": ["DV31", "DV40"], "MG27": ["DV33"], "MG20": ["DV34", "DV36"], "MG21": ["DV01", "DV04"],
+    "MG24": ["DV50", "DV51"], "MG22": ["DV06", "DV07", "DV08", "DV26", "DV47"], "MG25": ["DV44"], "MG23": ["DV02", "DV03"],
+}, "The plug that moves here, and how its end is made:")

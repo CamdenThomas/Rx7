@@ -1,0 +1,162 @@
+# -*- coding: utf-8 -*-
+# The looks at the car that feed the backbone weekends and the plug list: V-115, V-116
+import os
+import sys
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+import plugs  # noqa: E402 - the plug of every part, from devices (D-543)
+
+ROWS = []
+
+# The parts whose plugs V-115 looks at as they sit, by place, and V-116's two (D-543). The dash and cabin are S1's.
+V115_LOOK = {
+    "engine": ["DV01", "DV02", "DV04", "DV05", "DV06", "DV07", "DV08", "DV51"],
+    "nose": ["DV10", "DV11", "DV12", "DV13", "DV14", "DV15", "DV16"],
+    "rear": ["DV33", "DV34", "DV36", "DV37", "DV38", "DV40", "DV48", "DV49"],
+}
+V116_LOOK = ["DV28", "DV44"]
+AS_IT_SITS = ("Part nothing: the car must still run for V-114. Count the wires going into each housing, note the housing's colour "
+              "and any maker's name or number moulded into it, say whether it is a housing on a pigtail or a terminal pushed "
+              "straight onto the part, and whether it is sound, cracked or cut about. One photo of each with the ruler beside it.")
+
+ROWS.append(dict(
+    id="V-115",
+    goal="The places the new battery cables and ground studs will use are found, photographed and described: the fusible-link block, where the battery's two cables land, what is on the alternator and starter studs, bolts for the engine strap and the star studs, and the three factory ground points; and the plug of every engine-bay, nose and rear part the new harness reaches is counted and photographed as it sits.",
+    where="engine bay with the bonnet up, then the cargo area",
+    time="2 h - confirm",
+    tools=[
+        "torch",
+        "phone camera",
+        "steel rule and tape measure, in mm",
+        "spanners or sockets to try for size on bolt heads (nothing is undone)",
+        "masking tape and a pen for labels",
+    ],
+    parts="",
+    before=[
+        "The car is whole and nothing is disconnected: this is step 1 of the measurement day, with V-114",
+        "Engine cold, key out",
+        "The battery is still connected: keep tools away from its posts and never bridge the positive post to the body",
+    ],
+    know=[
+        "The black 1.25 sq main fusible link carries battery + to the factory's constant bus (white wire with a red stripe, WR), which feeds the ignition switch and the fuse block. [00-CAR PT317]",
+        "Two brown 0.3 sq links sit either side of the black one in the same block near the battery, called X-07 on the diagram: one feeds the headlight retractors, the other the headlights. [00-CAR PT316]",
+        "The diagram shows the battery negative going straight to ground but not where: body or engine is to be read off the car. [00-CAR PT290]",
+        "By the diagram the alternator's B terminal is on the constant bus, on the far side of the main link from the battery; its factory wire is WR on a ring. [00-CAR terminals PT025-B; devices DV04]",
+        "The new alternator cable is 6 AWG from that B stud through a 100 A fuse (F18) to the starter's B+ stud; the start relay's 30 A fuse (F17) sits beside it. Both fuse holders need a flat place near the starter stud. [cables C07, C08; fuses F17, F18]",
+        "The new engine-to-body strap is 2 AWG and 24 in (610 mm) or shorter, from a boss on the engine block to bare body metal; the new 1/0 cranking return from the rear lands on the block too. [backbone B6, B7; cables C06, C11]",
+        "The front star stud goes on the radiator support with a 10 AWG bond to a second body bolt. [work E10; grounds G05]",
+        "The rear ground stud goes on structural metal within about 3 ft of the battery's negative post - an estimate, confirm - with its own 10 AWG bond to a second bolt. [cables C05; grounds G23]",
+        "The factory body grounds are X-13 (left suspension tower and under the dash on the left), X-14 (the right headlamp and right front lamps return to it; its place is not in the record) and X-15 (rear lamps and fuel pump; its place is not in the record). [00-CAR PT027; 00-CAR terminals PT035-B]",
+        "The turn signals disturbing the fuel pump and the tach was traced, on paper, to the shared ground studs X-13 and X-15. [00-CAR issues K-008]",
+        "The stud threads themselves are check CK24, in V-114 on the same visit. [checks CK24]",
+        "Every part the new harness reaches ends in the plug that part needs, and nobody has seen this car's plugs: what the record expects at each is only the 1982 diagram's wire count. Your look decides which mating connectors go on the carts. [D-543; devices plug]",
+        "A factory part keeps its factory plug: its harness half is cut off the old harness with 150 mm of lead at the migration and spliced onto the new leg. A plug found cracked, melted or already cut about means a new connector is bought for that part instead. [D-537; D-543]",
+    ],
+    done_when="Each of the ten looks has a photograph with the ruler in it and a line of words: what is there, its wire colours, the spanner size, and the distance asked for; and each of the %d devices in the three plug steps has its line - or the words that it could not be seen." % sum(len(v) for v in V115_LOOK.values()),
+    if_not="Something cannot be found or seen without taking a part off: leave it on, say which one and what hides it. Something is not as the diagram says (a different colour, an extra wire, a second ground cable): write exactly what is there - it is a finding, not a mistake.",
+    record="Tick V-115 in the app and type the findings in the answer, numbered as the steps are; then the plug list - " + plugs.ANSWER + ". The agent files each plug line in that device's row with the date. The photographs stay on the phone until the agent asks for one.",
+    steps=[
+        ("Set up",
+         "Bonnet up, engine cold, key out. Torch, camera, ruler, tape and pen to hand. Nothing in this row is unbolted or unplugged.",
+         "", "The battery is live. Keep the ruler and spanners away from its posts."),
+        ("Find the fusible-link block",
+         "Follow the battery's positive cable. Near the battery is a small block holding three short lengths of soft wire: one black (the main link, 1.25 sq) with a brown one (0.3 sq) either side. Photograph it with the ruler. Write: where it is fastened, how its battery side is joined (a ring on the battery clamp, a wire into the positive cable, a plug), that wire's colour, and the colours of the wires leaving it.",
+         "One black link between two brown ones; a white wire with a red stripe (WR) leaving the black one - by the diagram, confirm.", ""),
+        ("Measure from the block to the starter and to the bulkhead",
+         "With the tape, along the way a wire would run: from the block's battery side to the starter's large stud, and from the block to the nearest bulkhead grommet. Write both in mm.",
+         "Two lengths. They decide where the block is fed from once the battery has moved to the back.", ""),
+        ("Follow the battery's negative cable",
+         "From the negative post to every place it lands: the body, the engine or gearbox, or both. At each end note what it bolts to and try a spanner on the bolt for size. Look for a second, smaller lead from the same clamp. Photograph each end.",
+         "The diagram shows one cable to ground and does not say where; one or two ends, read off the car.", ""),
+        ("Look at the alternator's output stud",
+         "The large stud on the back of the alternator, usually under a rubber boot. Without undoing it: how many ring terminals are on it, each wire's colour and rough thickness, and the nut's spanner size. Photograph it.",
+         "One ring with a white / red (WR) wire - by the diagram, confirm.", "This stud is live with the battery connected. Do not touch it with a tool."),
+        ("Look at the starter's large stud and the space beside it",
+         "On the starter solenoid: what is on the large stud (the battery cable and anything else), and the small terminal's wire colour. Then find a flat place near it where the two bolt-down fuse holders (F17 and F18) could be fixed side by side: say where it is and how far from the stud in mm. Photograph both.",
+         "The battery cable on the large stud; a black / white (BW) wire on the small terminal - by the record, confirm.", "Live stud, as the alternator's."),
+        ("Find bolts for the engine-to-body strap",
+         "On the engine block or its front cover: a threaded boss with nothing in it, or a bolt that could take a cable lug under its head. On the body or chassis rail within 610 mm of it along the path a cable would take: a bolt or a place for one on solid metal. Try a spanner on each for size, measure the distance between the two, photograph both.",
+         "One pair of points 610 mm apart or less. A second boss on the block for the heavy return cable from the rear, if there is one.", ""),
+        ("Pick the place for the front star stud",
+         "On the radiator support: a flat of solid metal reachable from above, clear of the radiator and the bonnet latch, where a 3/8 in stud can go through and be reached from behind for its nut. Then a second existing body bolt close by for its bond wire. Photograph both with the ruler and note the bolt's spanner size.",
+         "", ""),
+        ("Find the factory ground points",
+         "X-13: on the left suspension tower, a bolt with one or more black wires under it. X-14: its place is not in the record - follow the black wire back from the right headlamp. X-15: its place is not in the record either - follow the black wires from the tail lamps and the fuel pump. For each: where it is, how many wires, and whether the metal under it is clean, painted or rusty. Photograph each.",
+         "Three points. X-13 and X-15 are the two the turn-signal fault was traced to on paper; rust or paint under a terminal is the finding.", ""),
+        ("Pick the place for the rear ground stud",
+         "In the cargo bin where V-088's cardboard battery sits: solid metal - a seam, a rail or a bracket, not a thin floor skin - within reach of the battery's negative post. Check what is on the other side of that metal and whether a nut could be reached there. Then a second bolt nearby for its bond wire. Measure from the spot to where the negative post will be, photograph it with the ruler.",
+         "A spot about 900 mm or less from the negative post - the cable is estimated at 3 ft, confirm.", "Whatever is behind that panel - a tank, a line, wiring - is found before any hole is ever drilled. Today only look."),
+        ("LOOK: the plugs in the engine bay",
+         AS_IT_SITS + " The coils and igniters are on the upper rear housing, the alternator's small plug at its back, the two senders one above the other at the rear housing, the brake-fluid switch in the reservoir cap. The inhibitor switch and the kick-down solenoid are on the transmission: if neither can be seen from above, say so - C1 looks at them from under the car.\n" + "\n".join(plugs.look(V115_LOOK["engine"])),
+         "Eight lines for the plug list, each with a photo or the words 'not seen from above'.",
+         "The alternator's and the starter's large studs are live. Look, do not touch them with the ruler."),
+        ("LOOK: the plugs at the nose and the cowl",
+         AS_IT_SITS + " Raise the headlamps with the switch and look behind each bucket for the lamp's plug and the motor's; the front combination lamps and side markers from behind the bumper and inside the wings; the horns behind the bumper; the wiper motor and the washer pump at the cowl.\n" + "\n".join(plugs.look(V115_LOOK["nose"])),
+         "Seven lines for the plug list.",
+         "Hands out of the headlamp buckets while the switch is worked: the lamps move fast. Switch off and take the key out before reaching in."),
+        ("LOOK: the plugs at the rear",
+         AS_IT_SITS + " From the cargo area and the open hatch: the two tabs of the defogger grid on the hatch glass, the tail lamps' plugs behind the rear trim if they can be reached without taking it off, the licence lamps and rear markers, the luggage lamp and its switch, the hatch-release solenoid at the latch, the fuel-door solenoid behind the driver-side quarter trim. The fuel pump and the tank sender are under the floor: look only if they can be seen without lifting the car, and read the pump's maker and number off its body if you can.\n" + "\n".join(plugs.look(V115_LOOK["rear"])),
+         "Eight lines for the plug list, each with a photo or the words 'behind trim, not seen' - those are looked at when S1 has the trim out.",
+         "Do not scrape the defogger tabs or flex the glass. No test lead or spark near the tank."),
+        ("Enter it",
+         "Tick V-115 in the app. In the answer type one line per step, 2 to 10: what is there, the wire colours, the spanner sizes, the distances in mm. Then the plug list, one line per device id.",
+         "", ""),
+    ],
+))
+
+ROWS.append(dict(
+    id="V-116",
+    goal="How the aftermarket head unit, its amplifier and the wideband gauge are joined to the factory wiring today is traced, labelled and written down, with anything else a previous owner added, and the plugs at the radio opening and on the wideband gauge are counted and photographed.",
+    where="behind the dash and at the radio opening, with the dash out",
+    time="45 min - confirm",
+    tools=[
+        "torch",
+        "phone camera",
+        "masking tape and a pen, or the label printer (P041)",
+        "multimeter on continuity, for a wire that disappears into tape",
+    ],
+    parts="P041",
+    before=[
+        "S1 is done: the dash, the radio and the amplifier are out and every plug is labelled",
+        "Battery negative disconnected, as S1 left it",
+        "Nothing is cut, unplugged or untaped beyond what S1 already parted",
+    ],
+    know=[
+        "The head unit is aftermarket, spliced in behind the dash by a previous owner; how is not in the record. [steps E28.03; devices DV28]",
+        "Its wires by the usual colours: red (ACC), yellow (battery, memory), orange (illumination), black (ground), blue / white (remote, to the amplifier), and the speaker pairs. [devices DV28]",
+        "In the new harness the red goes to L3-M 1, the yellow to L3-M 2 through fuse F1, the orange to L3-S1 8 and the black to dash ground. [devices DV28; fuses F1]",
+        "The wideband is an AEM 30-0300 X-Series gauge: it has a +12 V wire, a ground, an AEMnet lead ending in a small 2-way plug, and a fixed sensor lead that runs to the exhaust. [devices DV44]",
+        "In the new harness the gauge is fed from fuse F20 and its AEMnet pair joins CAN2 at the dash node. [fuses F20; migration MG25]",
+        "The migration moves the head unit at MG02 and the wideband at MG25; both steps wait on what this row finds. [migration MG02, MG25; work E28]",
+        "Every leg ends in the plug its part needs. The new head unit and the gauge are not factory parts, so each takes its maker's own lead; what matters today is what is on the car to join them to. [D-543; devices DV28, DV44]",
+    ],
+    done_when="Every wire of the head unit, the amplifier and the wideband has a label at the place it joins the car's wiring, a photograph, and a line saying which factory wire colour it joins and how (plug adaptor, crimp, twisted and taped, tap connector, add-a-fuse).",
+    if_not="A wire cannot be followed to its end without cutting tape or a loom: stop at the tape, label it there and say so. A joint looks burnt, green or loose: photograph it and say which circuit - it is a finding for the car's issues list.",
+    record="Tick V-116 in the app and type the list in the answer: for each wire, its colour, what it joins and how. Add anything else found that is not factory. Then the two plug lines - " + plugs.ANSWER + ".",
+    steps=[
+        ("Lay out what S1 took out",
+         "The head unit and the amplifier are out of the dash from S1, still on their wires where the wires allow, or unplugged at their own plugs with labels on. Battery negative stays off. Torch, camera, tape and pen to hand.",
+         "", "Cut nothing and strip no tape from the factory loom."),
+        ("Trace the head unit's power wires",
+         "One at a time: red (ACC), yellow (battery), orange (illumination), black (ground). Follow each from the head unit's plug to where it joins the car. Write the car-side wire's colour and how the two are joined: a plug adaptor into the factory radio plug, a crimp, twisted and taped, or a tap connector. Label the joint with the head unit wire's colour and photograph it.",
+         "Four joints, or an adaptor plug carrying all four.", ""),
+        ("Note any fuse in the head unit's wires",
+         "An inline holder in the red or yellow wire, or a fuse on the back of the unit: write its rating.",
+         "", ""),
+        ("Trace the amplifier",
+         "Its heavy power wire: where it gets its supply (the battery, the fuse block, a tap) and the fuse in it. Its ground: which bolt. The thin blue / white remote wire from the head unit. The speaker wires: whether they go into the factory speaker wiring or are their own runs. Label and photograph each end.",
+         "", ""),
+        ("Trace the wideband gauge",
+         "Find the gauge and follow its harness. The +12 V wire: where it taps the car (a wire colour, a fuse-block tap) and whether it has its own fuse. The ground: which bolt or wire. The lead ending in a small 2-way plug (AEMnet): plugged into anything, or loose. The sensor lead: which grommet it leaves the cabin by. Label and photograph each.",
+         "", ""),
+        ("Look for anything else that is not factory",
+         "Along the loom behind the dash and down both footwells: an alarm or immobiliser box, a kill switch, added relays, tap connectors, wires in colours the loom does not use. For each: photograph it, label it, and follow it one joint in each direction.",
+         "", ""),
+        ("LOOK: the plugs at the radio opening and on the gauge",
+         plugs.LOOK + " At the radio opening: is the factory radio plug (G-04) still on the car's loom, how many ways, and is it whole or cut off? The same for the factory amplifier's plug (G-08). On the gauge: the plug on its back that the power lead goes into, whether AEM's own power lead is fitted, and how the two-wire AEMnet lead ends - a small 2-way plug, or bare wires.\n" + "\n".join(plugs.look(V116_LOOK)),
+         "Two lines for the plug list, and a word each on G-04 and G-08.", ""),
+        ("Enter it",
+         "Tick V-116 in the app. In the answer type one line per wire: its colour, the car wire it joins, how it is joined, any fuse. Then the list of anything else found, and the two plug lines.",
+         "", ""),
+    ],
+))
