@@ -1,0 +1,4 @@
+group,qty,mpn,maker,what,refs,rows,est_unit_usd,price_source,substitute
+6 sealed receptacles,2,DT13-06PA,TE Deutsch,6-way flanged board receptacle,"ICU J1, DCU J1",P122:1 P150:1,7.5,estimate,
+6 sealed receptacles,3,DT13-12PA,TE Deutsch,12-way flanged board receptacle,"ICU J3, DCU J9, upper J1",P122:1 P150:1 P194:1,8.74,TTI's row on Octopart 2026-10-13,
+6 sealed receptacles,1,DT13-08PA,TE Deutsch,8-way flanged board receptacle,DCU J2,P153:1,10.35,"Mouser's price in a search listing, undated",
