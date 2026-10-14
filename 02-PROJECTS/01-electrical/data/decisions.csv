@@ -1825,3 +1825,23 @@ Nobody was asked: each is small under §3. F34's holder is not settled here: it 
 4. **F3 before F5.** The Display Unit runs on its USB lead on the bench and so proves its soldering by working; the Control Unit's power sections cannot be powered before the car (D-541). Building F3 first means a soldering fault is found on one board before it is repeated on three. An order of his work, not a gate: F5 does not wait for F3.
 
 Left on Y47: F34's holder, block raised this run."
+D-559,,"The battery's current, charge and temperature are learned from Ionic's own app: he records its Bluetooth traffic once, the radio then asks exactly what the app asks",2026-10-13,standing,,,,,"**The battery's current, state of charge and temperature are learned from Ionic's own phone app: he records the app's Bluetooth traffic once, the agent decodes it, and the Display Unit's radio then asks the battery exactly what the app asks - nothing else.**
+
+His words (chat, 2026-10-13): ""for the ionic battery can we try to just connect via the esp32 radio just like the phone and pair the device just like a phone does with the app ?""
+
+What it builds on: D-330 already has the radio connecting the way the phone does - pack voltage from the battery's broadcast, the four cell voltages read from FFE1 after connecting, no pairing needed (proven from the car on 2026-09-08). D-330 also said current and state of charge need commands written to FFE1 against a protocol nobody has published, ""decoded here or supplied by Ionic"". This is the decoding: rather than wait on Ionic's reply (W-330b), watch the app. A phone records every Bluetooth byte its apps send and receive (Android's HCI snoop log); with the values the app showed noted beside it, each request and reply can be matched.
+
+The limit, which is the agent's reading and binds the firmware: the radio may write to the battery only the read requests the app was seen to send, byte for byte; never a request that changes a setting, never anything the capture did not show, and never the firmware-update service (FEE7 or anything labelled DFU). A wrong write to the battery that runs the car can brick it. If the capture shows the app pairing or sending a password, the radio does the same; if it shows nothing beyond what D-330 reads, the battery cannot report current and the shunt D-551 accepted as a fallback stands.
+
+Also: the battery likely takes one connection at a time, so while the radio is connected the phone may not get in (the broadcast pack voltage still reaches both). The radio connects briefly when detail is wanted and lets go, as D-330 already has it.
+
+Nothing waits on this: D-551 took the Ionic rows out of the design review. W-330b's email stays worth sending (the heater, cold charging and charge-limit asks are not in any app screen).
+
+In the data: work W-330c (his: the capture at the car) and W-330d (the agent's: decode it, then the radio firmware and the CAN fields 0x220 / 0x221 that wait for current, charge and temperature); icu_channels IC24's note; W-330b's note."
+D-560,,One Blue Sea 2151 dual MRBF block on the disconnect's output stud holds the starter's fuse and the amplifier's F34,2026-10-13,standing,,,01.52,,"**One Blue Sea 2151 dual MRBF terminal fuse block on the master disconnect's output stud replaces the two 5191s: the starter cable C04 on one fuse, the amplifier feed C13 (F34) on the other, one base on the stud.**
+
+His answer (block 01.52, desktop, 2026-10-13), option (a), no words added: ""(a) One Blue Sea 2151 dual MRBF terminal fuse block on the output stud instead of the two 5191s: the starter cable on one fuse, the amplifier feed on the other, one base on the stud. About the price of two 5191s (confirm at the cart). Forecloses nothing.""
+
+Reasoning: the output stud already carries the Class-T feed's lug (C01) and the starter's holder; stacking a second 5191 base may leave no thread for the nut, and S-507 states no maximum number of 5191 bases on one stud. One dual base removes the question. The recommendation's flip conditions (the 2151 much dearer than two 5191s, or not clearing the battery's boot in the bin) are checked at the cart and at E41.02 with the part in hand; if either fails, the fallback is option (c), a surface-mount MRBF for F34, which is then a new block (money).
+
+Consequences in the data: P051 becomes one Blue Sea 2151 (qty 1, price to confirm at the cart); F34's location is the second fuse of that block; E41.02 fits the 2151's second way empty instead of stacking a holder; Y47 loses its F34 holder item; E41's gate on 01.52 is met."
