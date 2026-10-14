@@ -12,3 +12,4 @@ windows-mirrors.md,Power windows and remote mirrors,body electrical,S-001,
 interior-hatch-accessories.md,"Interior lamps, doors, hatch, fuel door and accessories",body electrical,S-001,
 blower-ac-defroster-audio.md,"Blower, A/C, defroster, audio and power antenna",climate electrical,S-001,
 FAULT-K008-analysis.md,Fault K-008: the blinker upsets the fuel pump and tachometer,electrical lighting fuel,S-001,a known fault traced through the diagram
+README.md,"The diagram's page map, wire colour codes, fuse and bus map, ground points",electrical,S-001,the index the write-ups were decoded under

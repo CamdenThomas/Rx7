@@ -1,0 +1,471 @@
+id,circuit,n,section,kind,ref,what,wire,from,to,fuse,where,note,page
+README.002,README.md,2,,text,,,,,,,,"One file per circuit. Each is the **functional definition** of what the circuit is supposed to be, not a forensic trace of the scan. Every wire and connector is being replaced, so these exist to capture *logic, devices, and feed topology* — the things that survive a rewire.",
+README.003,README.md,3,,text,,,,,,,,"Source: [`1982RX7WiringDiagram.pdf`](1982RX7WiringDiagram.pdf) (31 pages, scanned, no text layer). Factory connector codes are a letter and two digits (`F-11`); they are not project IDs.",
+README.005,README.md,5,Section → page map,fact,,Component list,,,,,,schematic pg: 4–5,
+README.006,README.md,6,Section → page map,device,O,How to use / symbols,,,,,,schematic pg: 6–8,
+README.007,README.md,7,Section → page map,device,W,Electrical wiring schematic (whole car),,,,,,schematic pg: 9,
+README.008,README.md,8,Section → page map,device,A,"Charging, starting",,,,,,schematic pg: 10; harness routing pg: 11,
+README.009,README.md,9,Section → page map,device,B,"Emission, ignition, cruise, kickdown, fuel pump",,,,,,schematic pg: 12–14; harness routing pg: 15,
+README.010,README.md,10,Section → page map,device,C,Meters & warning lights,,,,,,schematic pg: 16; harness routing pg: 17,
+README.011,README.md,11,Section → page map,device,D,Front + rear wiper & washer,,,,,,schematic pg: 18; harness routing pg: 19,
+README.012,README.md,12,Section → page map,device,E,"Headlights, illumination, headlight cleaner",,,,,,schematic pg: 20; harness routing pg: 21,
+README.013,README.md,13,Section → page map,device,F,"Turn/hazard, back-up, stop, license, horn, side marker, front parking, tail",,,,,,schematic pg: 22; harness routing pg: 23,
+README.014,README.md,14,Section → page map,device,G,"Stereo, power antenna, heater & A/C, rear defroster",,,,,,schematic pg: 24; harness routing pg: 25,
+README.015,README.md,15,Section → page map,device,H,"Glove box, seat belt, lighter, key buzzer, interior/spot, clock, hatch release, fuel door",,,,,,schematic pg: 26; harness routing pg: 27,
+README.016,README.md,16,Section → page map,device,I,"Remote mirror, power window",,,,,,schematic pg: 28; harness routing pg: 29,
+README.017,README.md,17,Section → page map,device,X,Common connector list,,,,,,schematic pg: 30,
+README.018,README.md,18,"Decode process (established, repeatable)",text,,,,,,,,1. `pdftoppm -r 300 -f <pg> -l <pg> -png <pdf> out` — rasterize the one page.,
+README.019,README.md,19,"Decode process (established, repeatable)",text,,,,,,,,"2. Crop to the circuit block with Pillow, view.",
+README.020,README.md,20,"Decode process (established, repeatable)",text,,,,,,,,"3. Read the connector detail table at the bottom of the same page — it gives every connector's pin layout and wire color, which removes most guesswork.",
+README.021,README.md,21,"Decode process (established, repeatable)",text,,,,,,,,4. Write the circuit file to this folder using the template in [`horn.md`](horn.md).,
+README.022,README.md,22,"Decode process (established, repeatable)",text,,,,,,,,Rasterizing one page at 300 dpi and cropping twice is enough for any single circuit on these sheets. Do not rasterize the whole document.,
+README.023,README.md,23,Mazda wire color codes,text,,,,,,,,"First letter = base, second = tracer. `GY` on these sheets is **green/yellow**, not gray — a real trap.",
+README.024,README.md,24,Mazda wire color codes,fact,,,Black,,,,,code: B; code: Lg; color: Light green,
+README.025,README.md,25,Mazda wire color codes,fact,,,White,,,,,code: W; code: Gy; color: Gray,
+README.026,README.md,26,Mazda wire color codes,fact,,,Red,,,,,code: R; code: Br; color: Brown,
+README.027,README.md,27,Mazda wire color codes,fact,,,Green,,,,,code: G; code: O; color: Orange,
+README.028,README.md,28,Mazda wire color codes,fact,,,Yellow,,,,,code: Y; code: P; color: Pink,
+README.029,README.md,29,Mazda wire color codes,fact,,,Blue,,,,,code: L; code: V; color: Violet,
+README.030,README.md,30,Master fuse & bus map (all sections),text,,,,,,,,"Every protected bus in the factory car, decoded. This is the sheet to check before assuming a circuit is independent — several are not.",
+README.031,README.md,31,Master fuse & bus map (all sections),wire,,,**WR**,Battery via 1.25 sq fusible link,Everything constant,,,,
+README.032,README.md,32,Master fuse & bus map (all sections),wire,,,,WR,Headlights,0.3 sq link ×2,,,
+README.033,README.md,33,Master fuse & bus map (all sections),wire,,,,WR,Ignition switch feed,0.5 sq link,,,
+README.034,README.md,34,Master fuse & bus map (all sections),wire,,,**WG**,WR,Hazard flasher; remote mirrors,10 A,,,
+README.035,README.md,35,Master fuse & bus map (all sections),wire,,,**GW**,WR,**Horn + stop lights** (shared),15 A,,,
+README.036,README.md,36,Master fuse & bus map (all sections),wire,,,**R**,WR,Tail / park / marker / license (via light switch),10 A,,,
+README.037,README.md,37,Master fuse & bus map (all sections),wire,,,**LY**,WR,"Interior, spot, lighter, clock, luggage, ign switch light",15 A,,,
+README.038,README.md,38,Master fuse & bus map (all sections),wire,,,**LO**,WR,"Glove box light, seat belt warning",20 A,,,
+README.039,README.md,39,Master fuse & bus map (all sections),wire,,,**LR**,WR,"Hatch release, fuel-door release; audio",20 A,,,
+README.040,README.md,40,Master fuse & bus map (all sections),wire,,,**GY**,IG,**Turn signals + back-up + instrument cluster** (shared),10 A,,,
+README.041,README.md,41,Master fuse & bus map (all sections),wire,,,**BW**,IG,Alternator excitation,7.5 A,,,
+README.042,README.md,42,Master fuse & bus map (all sections),wire,,,**BLg**,IG,**Fuel pump**,10 A,,,
+README.043,README.md,43,Master fuse & bus map (all sections),wire,,,**LB**,IG,Front wiper & washer,10 A,,,
+README.044,README.md,44,Master fuse & bus map (all sections),wire,,,**L**,IG,Rear wiper & washer,10 A,,,
+README.045,README.md,45,Master fuse & bus map (all sections),wire,,,**LO**,IG,Blower motor,20 A,,,
+README.046,README.md,46,Master fuse & bus map (all sections),wire,,,**Y**,IG,Rear window defroster,15 A,,,
+README.047,README.md,47,Master fuse & bus map (all sections),wire,,,**BL**,IG,Power windows,30 A,,,
+README.048,README.md,48,Shared-fuse pairs worth knowing,text,,,,,,,,- **Horn and stop lights** share one 15 A. A shorted horn kills your brake lights.,
+README.049,README.md,49,Shared-fuse pairs worth knowing,text,,,,,,,,"- **Turn signals, back-up lights and the whole instrument cluster** share one 10 A. This is half of fault K-008.",
+README.050,README.md,50,Ground point map,device,X-13,,,,"Instrument cluster, flasher & control processing unit, emission control unit, front lamps, illumination, mirrors, windows, wipers",,Front / dash area,,
+README.051,README.md,51,Ground point map,device,X-14,,,,"RH headlight, RH front lamps",,Front RH,,
+README.052,README.md,52,Ground point map,device,X-15,,,,"**Fuel pump**, rear lamps, stop lamps, defroster, hatch and fuel-door solenoids",,Rear,,
+README.053,README.md,53,Ground point map,text,,,,,,,,X-13 is doing far too much: it is the single busiest ground node in the car and where fault K-008 traces to (the FAULT-K008-analysis circuit).,
+OEM-RECORD.001,OEM-RECORD.md,1,,text,,,,,,,,"**FROZEN. Do not edit.** This is the archival record of the car as it left the factory, decoded from `1982RX7WiringDiagram.pdf`. Design work happens in `02-PROJECTS/`; corrections to this file only happen if the *diagram* was misread, never to reflect a design change.",
+OEM-RECORD.002,OEM-RECORD.md,2,,text,,,,,,,,"Pin labels were read from 170-300 dpi scans and are not yet checked against them. Wire colours: first letter base, second tracer. GY = green/yellow, not gray.",
+OEM-RECORD.003,OEM-RECORD.md,3,Master component list,device,A-01,Starting motor,BW (A/T),,,,Engine,Solenoid trigger,
+OEM-RECORD.004,OEM-RECORD.md,4,Master component list,device,A-02,Fusible link 0.5 sq,LW,,,,Engine,Ignition feed protection,
+OEM-RECORD.005,OEM-RECORD.md,5,Master component list,device,A-03,Hot start relay,"LW, GR, LW, B",,,,Engine,Carb-era cold start,
+OEM-RECORD.006,OEM-RECORD.md,6,Master component list,device,A-04,Hot start motor,GR,,,,Engine,Carb-era cold start,
+OEM-RECORD.007,OEM-RECORD.md,7,Master component list,device,A-05,Sub-zero motor (non-CA),"BW, Blg",,,,Engine,Carb-era cold start,
+OEM-RECORD.008,OEM-RECORD.md,8,Master component list,device,A-06,Inhibitor switch (A/T),"BY, GY, BW, RW",,,,Engine,Park/neutral interlock + back-up,
+OEM-RECORD.009,OEM-RECORD.md,9,Master component list,device,A-07,Sub-zero sensor (non-CA),Blg,,,,Engine,Carb-era cold start,
+OEM-RECORD.010,OEM-RECORD.md,10,Master component list,device,A-08,Alternator w/ regulator,"BW, WB",,,,Engine,Charging,
+OEM-RECORD.011,OEM-RECORD.md,11,Master component list,device,A-09,Alternator B+,WR,,,,Engine,Charge output,
+OEM-RECORD.012,OEM-RECORD.md,12,Master component list,device,B-01,Emission control unit,20+,,,,Engine,Carb emissions logic,
+OEM-RECORD.013,OEM-RECORD.md,13,Master component list,device,B-02,Relief solenoid valve,"BrW, B",,,,Engine,Emissions,
+OEM-RECORD.014,OEM-RECORD.md,14,Master component list,device,B-03,Throttle sensor,"O, BR, GR",,,,Engine,Emissions,
+OEM-RECORD.015,OEM-RECORD.md,15,Master component list,device,B-04,Shutter valve solenoid,"LgY, B",,,,Engine,Emissions,
+OEM-RECORD.016,OEM-RECORD.md,16,Master component list,device,B-05,Connector of check,"LgY, GY",,,,Engine,Diagnostic,
+OEM-RECORD.017,OEM-RECORD.md,17,Master component list,device,B-07,Air-con solenoid valve,"GW, B",,,,Engine,A/C idle-up,
+OEM-RECORD.018,OEM-RECORD.md,18,Master component list,device,B-08,Switching solenoid valve,"Lg, B",,,,Engine,Emissions,
+OEM-RECORD.019,OEM-RECORD.md,19,Master component list,device,B-10,Vacuum control solenoid,"G, B",,,,Engine,Emissions,
+OEM-RECORD.020,OEM-RECORD.md,20,Master component list,device,B-11,No.2 water temp switch (rad),"LB, LY",,,,Engine,Emissions,
+OEM-RECORD.021,OEM-RECORD.md,21,Master component list,device,B-12,No.1 water temp switch (eng),"LB, LW",,,,Engine,Emissions,
+OEM-RECORD.022,OEM-RECORD.md,22,Master component list,device,B-13,Heat hazard sensor,LB,,,,Engine,Emissions,
+OEM-RECORD.023,OEM-RECORD.md,23,Master component list,device,B-14,Choke switch & magnet,"BR, LR",,,,Engine,Carb,
+OEM-RECORD.024,OEM-RECORD.md,24,Master component list,device,B-15,Choke and check relay,"BW, YL, BW, LR",,,,Engine,Carb,
+OEM-RECORD.025,OEM-RECORD.md,25,Master component list,device,B-16,Carburetor heater,Br,,,,Engine,Carb,
+OEM-RECORD.026,OEM-RECORD.md,26,Master component list,device,B-17,Air vent valve,BW,,,,Engine,Carb,
+OEM-RECORD.027,OEM-RECORD.md,27,Master component list,device,B-18,Ignition coil (T) trailing,"YG, BW",,,,Engine,Ignition,
+OEM-RECORD.028,OEM-RECORD.md,28,Master component list,device,B-19,Ignition coil (L) leading,"YL, BW",,,,Engine,Ignition,
+OEM-RECORD.029,OEM-RECORD.md,29,Master component list,device,B-20,Igniter (T),"YG, BW",,,,Engine,Ignition,
+OEM-RECORD.030,OEM-RECORD.md,30,Master component list,device,B-21,Igniter (L),"YL, BW",,,,Engine,Ignition,
+OEM-RECORD.031,OEM-RECORD.md,31,Master component list,device,B-22,Condenser,BW,,,,Engine,Ignition,
+OEM-RECORD.032,OEM-RECORD.md,32,Master component list,device,B-24,Fuel pump,"BLg, B",,,,Rear,Fuel,
+OEM-RECORD.033,OEM-RECORD.md,33,Master component list,device,B-25,Cruise control unit,14,,,,Dash,Cruise,
+OEM-RECORD.034,OEM-RECORD.md,34,Master component list,device,B-26,Stop switch (cruise),"Br, RY",,,,Dash,Cruise cancel,
+OEM-RECORD.035,OEM-RECORD.md,35,Master component list,device,B-27,Clutch switch (cruise),"Br, RY",,,,Dash,Cruise cancel,
+OEM-RECORD.036,OEM-RECORD.md,36,Master component list,device,B-28,Actuator solenoid valve,"BrR, BrB",,,,Engine,Cruise,
+OEM-RECORD.037,OEM-RECORD.md,37,Master component list,device,B-29,Vehicle speed switch,BR,,,,Dash,Cruise,
+OEM-RECORD.038,OEM-RECORD.md,38,Master component list,device,B-32,Kick down switch,BR,,,,Dash,A/T kickdown,
+OEM-RECORD.039,OEM-RECORD.md,39,Master component list,device,B-33,Kick down solenoid,BR,,,,Engine,A/T kickdown,
+OEM-RECORD.040,OEM-RECORD.md,40,Master component list,device,C-01,Fuel gauge tank unit,"B, Y",,,,Rear,Resistive sender,
+OEM-RECORD.041,OEM-RECORD.md,41,Master component list,device,C-02,Water temp gauge unit,YW,,,,Engine,Resistive sender,
+OEM-RECORD.042,OEM-RECORD.md,42,Master component list,device,C-03,Brake warning light checker,"BR, B",,,,Dash,Warning logic,
+OEM-RECORD.043,OEM-RECORD.md,43,Master component list,device,C-04,Parking brake switch,BR,,,,Dash,Closure,
+OEM-RECORD.044,OEM-RECORD.md,44,Master component list,device,C-05,Brake fluid level sensor,"BR, B",,,,Engine,Closure,
+OEM-RECORD.045,OEM-RECORD.md,45,Master component list,device,C-06,Oil level sensor,BG,,,,Engine,Closure,
+OEM-RECORD.046,OEM-RECORD.md,46,Master component list,device,C-07,Coolant level unit,"YB, YL, GY, Br, B",,,,Engine,Warning logic,
+OEM-RECORD.047,OEM-RECORD.md,47,Master component list,device,C-08,Coolant level sensor,Br,,,,Engine,Closure,
+OEM-RECORD.048,OEM-RECORD.md,48,Master component list,device,C-09,Oil pressure gauge unit,BrY,,,,Engine,Resistive sender,
+OEM-RECORD.049,OEM-RECORD.md,49,Master component list,device,C-10,Oscillator (chime),"G, YB, LR, YR, B",,,,Dash,Warning audio,
+OEM-RECORD.050,OEM-RECORD.md,50,Master component list,device,D-01,Front washer motor,"LY, LB",,,,Front,Pump,
+OEM-RECORD.051,OEM-RECORD.md,51,Master component list,device,D-02,Front wiper motor,"L, LB, B, LW, LR",,,,Front/cowl,2-speed + park,
+OEM-RECORD.052,OEM-RECORD.md,52,Master component list,device,D-03,Combination switch — wiper,"B, LO, LY, LR, LG, LW",,,,Dash,5-position + one-touch,
+OEM-RECORD.053,OEM-RECORD.md,53,Master component list,device,D-04,Rear washer motor,"LB, L",,,,Rear,Pump,
+OEM-RECORD.054,OEM-RECORD.md,54,Master component list,device,D-05,Rear wiper motor,"L, BG",,,,Rear,Motor,
+OEM-RECORD.055,OEM-RECORD.md,55,Master component list,device,D-06,Rear wiper & washer switch,"B, BG, LW",,,,Dash,Switch,
+OEM-RECORD.056,OEM-RECORD.md,56,Master component list,device,E-01,Combination switch — light/dimmer/passing,"R, WG, RL, RY, RG, RW, GL",,,,Dash,3-position + dimmer,
+OEM-RECORD.057,OEM-RECORD.md,57,Master component list,device,E-02,Retractable headlight switch,"RW, WG, LY, RY, R, B",,,,Dash,Pop-up control,
+OEM-RECORD.058,OEM-RECORD.md,58,Master component list,device,E-03,Retractable headlight motor LH,"WR, YG, R, RY",,,,Front,Motor + internal limits,
+OEM-RECORD.059,OEM-RECORD.md,59,Master component list,device,E-04,Retractable headlight motor RH,"WR, YG, R, RY",,,,Front,Motor + internal limits,
+OEM-RECORD.060,OEM-RECORD.md,60,Master component list,device,E-05,Instrument panel light control,"RL, RG, B",,,,Dash,Rheostat dimmer,
+OEM-RECORD.061,OEM-RECORD.md,61,Master component list,device,E-06,Heater illumination light,"RL, B",,,,Dash,1.4 W,
+OEM-RECORD.062,OEM-RECORD.md,62,Master component list,device,E-07,Select lever illumination (A/T),"RL, B",,,,Dash,3.4 W,
+OEM-RECORD.063,OEM-RECORD.md,63,Master component list,device,E-08,Headlight LH,"RY, RL, B",,,,Front,50/40 W sealed beam,
+OEM-RECORD.064,OEM-RECORD.md,64,Master component list,device,E-09,Headlight RH,"RY, RL, B",,,,Front,50/40 W sealed beam,
+OEM-RECORD.065,OEM-RECORD.md,65,Master component list,device,E-10,Switch panel illumination,"RL, B",,,,Dash,3.4 W,
+OEM-RECORD.066,OEM-RECORD.md,66,Master component list,device,E-11,Headlight cleaner motor,"R, LY",,,,Front,Pump,
+OEM-RECORD.067,OEM-RECORD.md,67,Master component list,device,F-01,Back-up light switch (M/T),"GY, RW",,,,Engine,Not used — car is A/T,
+OEM-RECORD.068,OEM-RECORD.md,68,Master component list,device,F-02,Combination switch — hazard/turn,"WG, GW, GY, GR, GO, GB",,,,Dash,Turn + hazard,
+OEM-RECORD.069,OEM-RECORD.md,69,Master component list,device,F-03,Stop light checker,"W, GL, B, G",,,,Rear,Filament monitor,
+OEM-RECORD.070,OEM-RECORD.md,70,Master component list,device,F-04,License light,"RG, B",,,,Rear,6 W ×2,
+OEM-RECORD.071,OEM-RECORD.md,71,Master component list,device,F-05,Front turn & parking LH,"RG, GR, B",,,,Front,27 W + 8 W,
+OEM-RECORD.072,OEM-RECORD.md,72,Master component list,device,F-06,Front turn & parking RH,"RG, GO, B",,,,Front,27 W + 8 W,
+OEM-RECORD.073,OEM-RECORD.md,73,Master component list,device,F-07,Rear combination light LH,"GR, RW, G, RG, B",,,,Rear,Turn/backup/stop/tail,
+OEM-RECORD.074,OEM-RECORD.md,74,Master component list,device,F-08,Rear combination light RH,"GO, RW, G, RG, B",,,,Rear,Turn/backup/stop/tail,
+OEM-RECORD.075,OEM-RECORD.md,75,Master component list,device,F-09,Horn LH,GY,,,,Front,"Single wire, case ground",
+OEM-RECORD.076,OEM-RECORD.md,76,Master component list,device,F-10,Horn RH,GY,,,,Front,"Single wire, case ground",
+OEM-RECORD.077,OEM-RECORD.md,77,Master component list,device,F-11,Stop light switch,"GW, W",,,,Dash,Pedal closure,
+OEM-RECORD.078,OEM-RECORD.md,78,Master component list,device,F-12,Front side marker LH,"B, RG",,,,Front,3.8 W,
+OEM-RECORD.079,OEM-RECORD.md,79,Master component list,device,F-13,Front side marker RH,"B, RG",,,,Front,3.8 W,
+OEM-RECORD.080,OEM-RECORD.md,80,Master component list,device,F-14,Rear side marker LH,"B, RG",,,,Rear,3.8 W,
+OEM-RECORD.081,OEM-RECORD.md,81,Master component list,device,F-15,Rear side marker RH,"B, RG",,,,Rear,3.8 W,
+OEM-RECORD.082,OEM-RECORD.md,82,Master component list,device,F-16,Horn relay,"GY, GW, GL",,,,Front,Ground-side triggered,
+OEM-RECORD.083,OEM-RECORD.md,83,Master component list,device,,Control Processing Unit,"X-16, many",,,,Dash,Flasher + wiper INT + chime + belt + key reminder,
+OEM-RECORD.084,OEM-RECORD.md,84,Master component list,device,G-01,Power antenna relay,"LR, R, LY, B, LG, L",,,,Dash,Antenna control,
+OEM-RECORD.085,OEM-RECORD.md,85,Master component list,device,G-02,Power antenna motor,"L, LY, R",,,,Rear,Motor,
+OEM-RECORD.086,OEM-RECORD.md,86,Master component list,device,G-03,Stereo,"LR, LgW, RG",,,,Dash,Head unit,
+OEM-RECORD.087,OEM-RECORD.md,87,Master component list,device,G-04,Radio,"LW, LR, LgW, LG, LY, RG",,,,Dash,Head unit,
+OEM-RECORD.088,OEM-RECORD.md,88,Master component list,device,G-05,Front speaker LH,"LG, LW",,,,Dash,Audio,
+OEM-RECORD.089,OEM-RECORD.md,89,Master component list,device,G-06,Front speaker RH,"LY, LR",,,,Dash,Audio,
+OEM-RECORD.090,OEM-RECORD.md,90,Master component list,device,G-08,Main amp,"LO, LB, LR, LW, L",,,,Dash,Audio,
+OEM-RECORD.091,OEM-RECORD.md,91,Master component list,device,G-09,Rear speaker LH,"LR, LO",,,,Rear,Audio,
+OEM-RECORD.092,OEM-RECORD.md,92,Master component list,device,G-10,Rear speaker RH,"LW, LB",,,,Rear,Audio,
+OEM-RECORD.093,OEM-RECORD.md,93,Master component list,device,G-13,Power antenna switch,"B, LG",,,,Dash,Switch,
+OEM-RECORD.094,OEM-RECORD.md,94,Master component list,device,G-14,Blower motor & resistor,"LO, LR, LY, LW",,,,Dash,3-speed via resistor,
+OEM-RECORD.095,OEM-RECORD.md,95,Master component list,device,G-15,Blower motor switch,"LW, LY, LG, LR, LB",,,,Dash,OFF/LO/MI/HI,
+OEM-RECORD.096,OEM-RECORD.md,96,Master component list,device,G-18,No.1 A/C relay,"LB, LR, YL, BW",,,,Engine,Clutch control,
+OEM-RECORD.097,OEM-RECORD.md,97,Master component list,device,G-19,Magnet clutch,BW,,,,Engine,A/C compressor,
+OEM-RECORD.098,OEM-RECORD.md,98,Master component list,device,G-21,Refrigerant pressure switch,"YL, YR",,,,Engine,Safety interlock,
+OEM-RECORD.099,OEM-RECORD.md,99,Master component list,device,G-22,Frost warning temp switch,"LG, YR",,,,Engine,Safety interlock,
+OEM-RECORD.100,OEM-RECORD.md,100,Master component list,device,G-23,Diode (A/C harness),"LB, YL",,,,Engine,Flyback,
+OEM-RECORD.101,OEM-RECORD.md,101,Master component list,device,G-24,Rear window defroster switch,"Y, LG",,,,Dash,Switch + 3.4 W indicator,
+OEM-RECORD.102,OEM-RECORD.md,102,Master component list,device,G-25,Rear window defroster grid,"LG, B",,,,Rear,Resistance grid,
+OEM-RECORD.103,OEM-RECORD.md,103,Master component list,device,H-01,Glove box light,"LO, BL",,,,Dash,3.4 W,
+OEM-RECORD.104,OEM-RECORD.md,104,Master component list,device,H-02,Glove box light switch,"BL, B",,,,Dash,Closure,
+OEM-RECORD.105,OEM-RECORD.md,105,Master component list,device,H-03,Ignition key reminder switch,"G, LY",,,,Dash,Closure,
+OEM-RECORD.106,OEM-RECORD.md,106,Master component list,device,H-04,Seat belt switch,"Br, BrW",,,,Cabin,Closure,
+OEM-RECORD.107,OEM-RECORD.md,107,Master component list,device,H-05,Ignition switch light,"LY, GL",,,,Dash,3.4 W,
+OEM-RECORD.108,OEM-RECORD.md,108,Master component list,device,H-06,Interior & spot light,"LY, RY",,,,Cabin,5 W,
+OEM-RECORD.109,OEM-RECORD.md,109,Master component list,device,H-07,Door switch RH,RY,,,,Door,Switch to ground,
+OEM-RECORD.110,OEM-RECORD.md,110,Master component list,device,H-08,Door switch LH,RY,,,,Door,Switch to ground,
+OEM-RECORD.111,OEM-RECORD.md,111,Master component list,device,H-09,Cigarette lighter,"LY, RL, B",,,,Dash,Heating element,
+OEM-RECORD.112,OEM-RECORD.md,112,Master component list,device,H-10,Auto clock,"B, RG, LY, GY",,,,Dash,Constant draw,
+OEM-RECORD.113,OEM-RECORD.md,113,Master component list,device,H-11,Luggage compartment light,"LY, RB",,,,Rear,Lamp,
+OEM-RECORD.114,OEM-RECORD.md,114,Master component list,device,H-12,Luggage compartment light switch,RB,,,,Rear,Closure,
+OEM-RECORD.115,OEM-RECORD.md,115,Master component list,device,H-13,Glass hatch release switch,"LR, GR",,,,Dash,Momentary,
+OEM-RECORD.116,OEM-RECORD.md,116,Master component list,device,H-14,Glass hatch release solenoid,"GR, B",,,,Rear,Solenoid,
+OEM-RECORD.117,OEM-RECORD.md,117,Master component list,device,H-15,Fuel-door release switch,"LR, GB",,,,Dash,Momentary,
+OEM-RECORD.118,OEM-RECORD.md,118,Master component list,device,H-16,Fuel-door release solenoid,"GB, B",,,,Rear,Solenoid,
+OEM-RECORD.119,OEM-RECORD.md,119,Master component list,device,I-01,Remote control mirror switch,"B, WG, LgR, Lg, LgB, LgY",,,,Dash,Select + direction,
+OEM-RECORD.120,OEM-RECORD.md,120,Master component list,device,I-03,Remote control mirror LH,"LgY, Lg, B, LgB",,,,Door,2 motors,
+OEM-RECORD.121,OEM-RECORD.md,121,Master component list,device,I-05,Remote control mirror RH,"LgY, Lg, B, LgB",,,,Door,2 motors,
+OEM-RECORD.122,OEM-RECORD.md,122,Master component list,device,I-06,Power window switch LH,"RL, B, GL, BL",,,,Door/dash,DPDT reverser,
+OEM-RECORD.123,OEM-RECORD.md,123,Master component list,device,I-07,Power window switch RH,"R, B, G, BL",,,,Door/dash,DPDT reverser,
+OEM-RECORD.124,OEM-RECORD.md,124,Master component list,device,I-09,Power window motor LH,"R, G",,,,Door,Reversible,
+OEM-RECORD.125,OEM-RECORD.md,125,Master component list,device,I-11,Power window motor RH,"R, G",,,,Door,Reversible,
+OEM-RECORD.126,OEM-RECORD.md,126,Master component list,device,,Ignition switch,"WR, BY, BW, WR",,,,Dash,OFF/ACC/IG/ST,
+OEM-RECORD.127,OEM-RECORD.md,127,Master component list,fact,,Battery,,,,,Engine bay,Factory location,
+OEM-RECORD.128,OEM-RECORD.md,128,Master component list,device,,Fusible link 1.25 sq (X-07),WR,,,,Engine bay,Main protection,
+OEM-RECORD.129,OEM-RECORD.md,129,Master component list,fact,,Fuse block (X-04),,,,,Dash,15 positions,
+OEM-RECORD.130,OEM-RECORD.md,130,Fuse & bus map — as built,wire,,,WR,Battery via 1.25 sq link,All constant,,,,
+OEM-RECORD.131,OEM-RECORD.md,131,Fuse & bus map — as built,wire,,,,WR,Headlights,0.3 sq link ×2,,,
+OEM-RECORD.132,OEM-RECORD.md,132,Fuse & bus map — as built,wire,,,,WR,Ignition switch,0.5 sq link,,,
+OEM-RECORD.133,OEM-RECORD.md,133,Fuse & bus map — as built,wire,,,WG,WR,Hazard flasher; remote mirrors,10 A,,,
+OEM-RECORD.134,OEM-RECORD.md,134,Fuse & bus map — as built,wire,,,GW,WR,**Horn + stop lights**,15 A,,,
+OEM-RECORD.135,OEM-RECORD.md,135,Fuse & bus map — as built,wire,,,R,WR,Tail/park/marker/license via light switch,10 A,,,
+OEM-RECORD.136,OEM-RECORD.md,136,Fuse & bus map — as built,wire,,,LY,WR,"Interior, spot, lighter, clock, luggage, ign switch light",15 A,,,
+OEM-RECORD.137,OEM-RECORD.md,137,Fuse & bus map — as built,wire,,,LO,WR,"Glove box, seat belt warning",20 A,,,
+OEM-RECORD.138,OEM-RECORD.md,138,Fuse & bus map — as built,wire,,,LR,WR,"Hatch release, fuel-door release, audio",20 A,,,
+OEM-RECORD.139,OEM-RECORD.md,139,Fuse & bus map — as built,wire,,,GY,IG,**Turn + back-up + instrument cluster**,10 A,,,
+OEM-RECORD.140,OEM-RECORD.md,140,Fuse & bus map — as built,wire,,,BW,IG,Alternator excitation,7.5 A,,,
+OEM-RECORD.141,OEM-RECORD.md,141,Fuse & bus map — as built,wire,,,BLg,IG,Fuel pump,10 A,,,
+OEM-RECORD.142,OEM-RECORD.md,142,Fuse & bus map — as built,wire,,,LB,IG,Front wiper & washer,10 A,,,
+OEM-RECORD.143,OEM-RECORD.md,143,Fuse & bus map — as built,wire,,,L,IG,Rear wiper & washer,10 A,,,
+OEM-RECORD.144,OEM-RECORD.md,144,Fuse & bus map — as built,wire,,,LO,IG,Blower,20 A,,,
+OEM-RECORD.145,OEM-RECORD.md,145,Fuse & bus map — as built,wire,,,Y,IG,Rear defroster,15 A,,,
+OEM-RECORD.146,OEM-RECORD.md,146,Fuse & bus map — as built,wire,,,BL,IG,Power windows,30 A,,,
+OEM-RECORD.147,OEM-RECORD.md,147,Ground node map — as built,device,X-13,,,,"Cluster, CPU/flasher, emission control unit, front lamps, illumination, mirrors, windows, wipers",,Front / dash,,
+OEM-RECORD.148,OEM-RECORD.md,148,Ground node map — as built,device,X-14,,,,"RH headlight, RH front lamps",,Front RH,,
+OEM-RECORD.149,OEM-RECORD.md,149,Ground node map — as built,device,X-15,,,,"Fuel pump, rear lamps, stop lamps, defroster, hatch + fuel-door solenoids",,Rear,,
+OEM-RECORD.150,OEM-RECORD.md,150,Ground node map — as built,text,,,,,,,,X-13 is the busiest node in the car and the prime suspect for fault K-008.,
+charging-starting.001,charging-starting.md,1,,text,,,,,,,,"**Source:** Section A, page 10.",10
+charging-starting.002,charging-starting.md,2,Charging,device,A-08,Alternator with integral regulator,"BW, WB",,,,2-pin,,10
+charging-starting.003,charging-starting.md,3,Charging,device,A-09,Alternator B+ output,WR,,,,ring/eyelet,,10
+charging-starting.004,charging-starting.md,4,Charging,wire,,,WR,Alternator B+ (A-09),WR constant bus,,,Main charge path,10
+charging-starting.005,charging-starting.md,5,Charging,wire,,,BW,Ignition IG → X-04 **7.5 A** → X-01,Alternator (A-08),,,Field excitation / lamp,10
+charging-starting.006,charging-starting.md,6,Charging,wire,,,WB,Alternator (A-08),"Choke and check relay (Section B), via X-01",,,Charge indicator sense,10
+charging-starting.007,charging-starting.md,7,Charging,text,,,,,,,,Fusible link **0.5 sq** at X-09 protects the ignition-side feed.,10
+charging-starting.008,charging-starting.md,8,Starting,device,A-01,Starting motor,BY (M/T) or **BW (A/T)**,,,,1-pin,,10
+charging-starting.009,charging-starting.md,9,Starting,device,A-06,Inhibitor switch (A/T),"BY, GY, BW, RW",,,,4-pin,,10
+charging-starting.010,charging-starting.md,10,Starting,device,A-02,Fusible link 0.5 sq,LW,,,,,,10
+charging-starting.011,charging-starting.md,11,Starting,wire,,,WR,Battery via fusible link,Ignition switch (X-08),,,,10
+charging-starting.012,charging-starting.md,12,Starting,wire,,,BY,Ignition switch **ST** terminal,Inhibitor switch A-06,,,,10
+charging-starting.013,charging-starting.md,13,Starting,wire,,,BW,Inhibitor switch A-06,Starting motor solenoid (A-01),,,,10
+charging-starting.014,charging-starting.md,14,Starting,wire,,,BY,Ignition switch ST,Also to emission control unit and cruise control unit (Section B),,,,10
+charging-starting.015,charging-starting.md,15,Starting,text,,,,,,,,"**This car is A/T** — cranking passes through the inhibitor switch (A-06, BY in / BW out). That switch is the park/neutral interlock and also carries the back-up light circuit on its GY/RW pins.",10
+charging-starting.016,charging-starting.md,16,Cold-start hardware (present on this diagram),device,A-03,Hot start relay,,,,,,"LW, GR, LW, B",10
+charging-starting.017,charging-starting.md,17,Cold-start hardware (present on this diagram),device,A-04,Hot start motor,,,,,,GR,10
+charging-starting.018,charging-starting.md,18,Cold-start hardware (present on this diagram),device,A-05,Sub-zero motor,,,,,,"Except California. BW, Blg",10
+charging-starting.019,charging-starting.md,19,Cold-start hardware (present on this diagram),device,A-07,Sub-zero sensor,,,,,,Except California. Blg,10
+charging-starting.020,charging-starting.md,20,Cold-start hardware (present on this diagram),text,,,,,,,,"None of these remain on the car: with the Weber conversion the sub-zero and hot-start assist hardware, which served the factory carburettor, is gone - confirm.",10
+meters-ignition-fuelpump.001,meters-ignition-fuelpump.md,1,,text,,,,,,,,"**Source:** Section C page 16, Section B pages 12–13.",16
+meters-ignition-fuelpump.002,meters-ignition-fuelpump.md,2,Instrument panel,device,C-01,Fuel gauge tank unit,"B, Y",,,,,,16
+meters-ignition-fuelpump.003,meters-ignition-fuelpump.md,3,Instrument panel,device,C-02,Water temp gauge unit,YW,,,,,,16
+meters-ignition-fuelpump.004,meters-ignition-fuelpump.md,4,Instrument panel,device,C-03,Brake warning light checker,"BR, B",,,,,,16
+meters-ignition-fuelpump.005,meters-ignition-fuelpump.md,5,Instrument panel,device,C-04,Parking brake switch,BR,,,,,,16
+meters-ignition-fuelpump.006,meters-ignition-fuelpump.md,6,Instrument panel,device,C-05,Brake fluid level sensor,"BR, B",,,,,,16
+meters-ignition-fuelpump.007,meters-ignition-fuelpump.md,7,Instrument panel,device,C-06,Oil level sensor,BG,,,,,,16
+meters-ignition-fuelpump.008,meters-ignition-fuelpump.md,8,Instrument panel,device,C-07,Coolant level unit,"YB, YL, GY, Br, B",,,,,,16
+meters-ignition-fuelpump.009,meters-ignition-fuelpump.md,9,Instrument panel,device,C-08,Coolant level sensor,Br,,,,,,16
+meters-ignition-fuelpump.010,meters-ignition-fuelpump.md,10,Instrument panel,device,C-09,Oil pressure gauge unit,BrY,,,,,,16
+meters-ignition-fuelpump.011,meters-ignition-fuelpump.md,11,Instrument panel,device,C-10,Oscillator (warning chime),"G, YB, LR, YR, B",,,,,,16
+meters-ignition-fuelpump.012,meters-ignition-fuelpump.md,12,Instrument panel,fact,,Feed,,,,,,Ignition **IG** → BY → X-04 **10 A** → **GY** bus,16
+meters-ignition-fuelpump.013,meters-ignition-fuelpump.md,13,Instrument panel,fact,,Internal,,,,,,A voltage regulator inside the cluster steadies the gauge supply,16
+meters-ignition-fuelpump.014,meters-ignition-fuelpump.md,14,Instrument panel,fact,,Ground,,,,,,**X-13** throughout,16
+meters-ignition-fuelpump.015,meters-ignition-fuelpump.md,15,Senders and signals,wire,,,Y,"C-01 tank unit, resistive",,,,signal: Fuel level,16
+meters-ignition-fuelpump.016,meters-ignition-fuelpump.md,16,Senders and signals,wire,,,YW,"C-02 sender, resistive",,,,signal: Water temp,16
+meters-ignition-fuelpump.017,meters-ignition-fuelpump.md,17,Senders and signals,wire,,,BrY,"C-09 sender, resistive",,,,signal: Oil pressure,16
+meters-ignition-fuelpump.018,meters-ignition-fuelpump.md,18,Senders and signals,wire,,,**YG**,"Ignition coil (T), B-18 — Section B",,,,signal: **Tachometer**,16
+meters-ignition-fuelpump.019,meters-ignition-fuelpump.md,19,Senders and signals,wire,,,BW,Emission control unit / choke & check relay,,,,signal: Alternator warning,16
+meters-ignition-fuelpump.020,meters-ignition-fuelpump.md,20,Senders and signals,wire,,,GL,F-03 stop light checker,,,,signal: Stop light warning,16
+meters-ignition-fuelpump.021,meters-ignition-fuelpump.md,21,Senders and signals,wire,,,YB / YL / Br,C-07 unit,,,,signal: Coolant level,16
+meters-ignition-fuelpump.022,meters-ignition-fuelpump.md,22,Senders and signals,text,,,,,,,,"Warning lamps are 1.4 W. The tach reads the **coil primary** on YG — a low-level signal referenced to X-13, which is why K-008 shows up there.",16
+meters-ignition-fuelpump.023,meters-ignition-fuelpump.md,23,Ignition,device,B-18,Ignition coil (T) — trailing,"YG, BW",,,,,,16
+meters-ignition-fuelpump.024,meters-ignition-fuelpump.md,24,Ignition,device,B-19,Ignition coil (L) — leading,"YL, BW",,,,,,16
+meters-ignition-fuelpump.025,meters-ignition-fuelpump.md,25,Ignition,device,B-20,Igniter (T),"YG, BW",,,,,,16
+meters-ignition-fuelpump.026,meters-ignition-fuelpump.md,26,Ignition,device,B-21,Igniter (L),"YL, BW",,,,,,16
+meters-ignition-fuelpump.027,meters-ignition-fuelpump.md,27,Ignition,device,B-22,Condenser,BW,,,,,,16
+meters-ignition-fuelpump.028,meters-ignition-fuelpump.md,28,Ignition,device,,Pick-up coil,in distributor,,,,,,16
+meters-ignition-fuelpump.029,meters-ignition-fuelpump.md,29,Ignition,text,,,,,,,,"Twin coils, twin igniters — leading and trailing, standard 12A rotary. Feed is **BW** from ignition IG.",16
+meters-ignition-fuelpump.030,meters-ignition-fuelpump.md,30,Fuel pump,fact,,Feed,,,,,,Ignition **IG** → BW → X-04 **10 A** → **BLg**,16
+meters-ignition-fuelpump.031,meters-ignition-fuelpump.md,31,Fuel pump,fact,,Pump,,,,,,B-24,16
+meters-ignition-fuelpump.032,meters-ignition-fuelpump.md,32,Fuel pump,fact,,Ground,,,,,,**X-15**,16
+meters-ignition-fuelpump.033,meters-ignition-fuelpump.md,33,Fuel pump,text,,,,,,,,"Simple key-on circuit. No prime logic, no oil-pressure interlock, no inertia cutoff. K-008 — the pump grounds at X-15 alongside the rear turn lamps.",16
+headlights-popups-illumination.001,headlights-popups-illumination.md,1,,text,,,,,,,,"**Source:** Section E, page 20. The most complex sheet in the book.",20
+headlights-popups-illumination.002,headlights-popups-illumination.md,2,Devices,device,E-01,"Combination switch — LIGHT, DIMMER, PASSING","R, WG / RL, RY, RG, RW, GL",,,,,,20
+headlights-popups-illumination.003,headlights-popups-illumination.md,3,Devices,device,E-02,Retractable headlight switch,"RW, WG, LY / RY, R, B",,,,,,20
+headlights-popups-illumination.004,headlights-popups-illumination.md,4,Devices,device,E-03,Retractable headlight motor LH,"WR, YG, R, RY",,,,,,20
+headlights-popups-illumination.005,headlights-popups-illumination.md,5,Devices,device,E-04,Retractable headlight motor RH,"WR, YG, R, RY",,,,,,20
+headlights-popups-illumination.006,headlights-popups-illumination.md,6,Devices,device,E-05,Instrument panel light control (dimmer),"RL, RG, B",,,,,,20
+headlights-popups-illumination.007,headlights-popups-illumination.md,7,Devices,device,E-08,Headlight LH,"RY, RL, B",,,,,,20
+headlights-popups-illumination.008,headlights-popups-illumination.md,8,Devices,device,E-09,Headlight RH,"RY, RL, B",,,,,,20
+headlights-popups-illumination.009,headlights-popups-illumination.md,9,Devices,device,E-11,Headlight cleaner motor,"R, LY",,,,,,20
+headlights-popups-illumination.010,headlights-popups-illumination.md,10,Headlight feed,fact,,Fusible links,,,,,,**0.3 sq ×2** plus the 1.25 sq main — headlights get their own links,20
+headlights-popups-illumination.011,headlights-popups-illumination.md,11,Headlight feed,fact,,Bulbs,,,,,,Sealed beam **50 W / 40 W** (halogen option 60/50 W),20
+headlights-popups-illumination.012,headlights-popups-illumination.md,12,Headlight feed,fact,,Low beam,,,,,,**RL**,20
+headlights-popups-illumination.013,headlights-popups-illumination.md,13,Headlight feed,fact,,High beam,,,,,,**RY**,20
+headlights-popups-illumination.014,headlights-popups-illumination.md,14,Headlight feed,fact,,Switch,,,,,,E-01 LIGHT section (OFF/PARK/HEAD) feeds DIMMER section,20
+headlights-popups-illumination.015,headlights-popups-illumination.md,15,Headlight feed,fact,,Passing,,,,,,Separate DIMMER contact — flash-to-pass works independent of LIGHT position,20
+headlights-popups-illumination.016,headlights-popups-illumination.md,16,Headlight feed,fact,,High beam indicator,,,,,,3.4 W on RY,20
+headlights-popups-illumination.017,headlights-popups-illumination.md,17,Headlight feed,fact,,Ground,,,,,,B → X-13 (LH) / X-14 (RH),20
+headlights-popups-illumination.018,headlights-popups-illumination.md,18,Headlight feed,text,,,,,,,,"Headlights are fed from fusible links, **not** from the 10 A fuse that runs the parking/tail circuit. Two independent protection paths.",20
+headlights-popups-illumination.019,headlights-popups-illumination.md,19,Pop-up motors,fact,,Motors,,,,,,"E-03 (LH), E-04 (RH) — each has **4 wires**: WR, YG, R, RY",20
+headlights-popups-illumination.020,headlights-popups-illumination.md,20,Pop-up motors,fact,,Drive,,,,,,"Sheet reads as reversible (R and RY commands), but **Camden observed the motor spinning one direction only** - an ohm check at E-03 settles it.",20
+headlights-popups-illumination.021,headlights-popups-illumination.md,21,Pop-up motors,fact,,Control,,,,,,"E-02 retractable headlight switch, separate from the light switch",20
+headlights-popups-illumination.022,headlights-popups-illumination.md,22,Pop-up motors,fact,,Indicator,,,,,,3.4 W retractor indicator light on YG,20
+headlights-popups-illumination.023,headlights-popups-illumination.md,23,Pop-up motors,fact,,Feed,,,,,,WR constant + R from the light switch,20
+headlights-popups-illumination.024,headlights-popups-illumination.md,24,Pop-up motors,text,,,,,,,,"**Confirms A-003** (A-003 → confirmed here) — each side needs two motor legs forward, so four heavy conductors to the nose. The limit switches are internal to the motor, which means the position ladder on A4/A5 has to pick up those internal contacts.",20
+headlights-popups-illumination.025,headlights-popups-illumination.md,25,Illumination bus,text,,,,,,,,E-05 instrument panel light control is a **rheostat dimmer**. It takes RG in and outputs **RL** to every illuminated item:,20
+headlights-popups-illumination.026,headlights-popups-illumination.md,26,Illumination bus,fact,,Meter,,,,,,3.4,20
+headlights-popups-illumination.027,headlights-popups-illumination.md,27,Illumination bus,fact,,Heater panel,,,,,,1.4,20
+headlights-popups-illumination.028,headlights-popups-illumination.md,28,Illumination bus,fact,,Select lever (A/T),,,,,,3.4,20
+headlights-popups-illumination.029,headlights-popups-illumination.md,29,Illumination bus,fact,,Switch panel,,,,,,3.4,20
+headlights-popups-illumination.030,headlights-popups-illumination.md,30,Illumination bus,fact,,Cigarette lighter,,,,,,3.4,20
+headlights-popups-illumination.031,headlights-popups-illumination.md,31,Illumination bus,fact,,Radio,,,,,,3.4,20
+headlights-popups-illumination.032,headlights-popups-illumination.md,32,Illumination bus,fact,,Stereo,,,,,,1.4,20
+headlights-popups-illumination.033,headlights-popups-illumination.md,33,Illumination bus,text,,,,,,,,Ground B → X-13.,20
+stop-tail-marker-backup.001,stop-tail-marker-backup.md,1,,text,,,,,,,,"**Source:** Section F, page 22. All five share this sheet.",22
+stop-tail-marker-backup.002,stop-tail-marker-backup.md,2,Stop lights,fact,,Feed,,,,,,WR constant → X-04 **15 A** → GW,22
+stop-tail-marker-backup.003,stop-tail-marker-backup.md,3,Stop lights,fact,,Fuse shared with,,,,,,**Horn**,22
+stop-tail-marker-backup.004,stop-tail-marker-backup.md,4,Stop lights,fact,,Switch,,,,,,"F-11 stop light switch, at the pedal. GW in, W out",22
+stop-tail-marker-backup.005,stop-tail-marker-backup.md,5,Stop lights,fact,,Also feeds,,,,,,Cruise control unit (Section B) via W,22
+stop-tail-marker-backup.006,stop-tail-marker-backup.md,6,Stop lights,fact,,Checker,,,,,,"F-03 stop light checker — monitors filament, reports to meter (Section C) via G",22
+stop-tail-marker-backup.007,stop-tail-marker-backup.md,7,Stop lights,fact,,Lamps,,,,,,"Rear combination, 27/8 W dual filament ×2 (27 W is the stop element)",22
+stop-tail-marker-backup.008,stop-tail-marker-backup.md,8,Stop lights,fact,,Ground,,,,,,B → X-15,22
+stop-tail-marker-backup.009,stop-tail-marker-backup.md,9,Stop lights,text,,,,,,,,"Stop lights are **constant-hot** — they work with the key off, as they must.",22
+stop-tail-marker-backup.010,stop-tail-marker-backup.md,10,Tail / parking / side marker / license,text,,,,,,,,"One switched circuit, all on **RG**.",22
+stop-tail-marker-backup.011,stop-tail-marker-backup.md,11,Tail / parking / side marker / license,fact,,Feed,,,,,,WR constant → X-04 **10 A** → R,22
+stop-tail-marker-backup.012,stop-tail-marker-backup.md,12,Tail / parking / side marker / license,fact,,Switch,,,,,,"E-01 combination switch, LIGHT section (OFF / PARK / HEAD)",22
+stop-tail-marker-backup.013,stop-tail-marker-backup.md,13,Tail / parking / side marker / license,fact,,Output,,,,,,RG — a single bus feeding every marker lamp on the car,22
+stop-tail-marker-backup.014,stop-tail-marker-backup.md,14,Tail / parking / side marker / license,fact,,Ground,,,,,,"B → X-13 (front), X-14 / X-15 (rear)",22
+stop-tail-marker-backup.015,stop-tail-marker-backup.md,15,Tail / parking / side marker / license,device,F-05 / F-06,,,,,,,8; lamp: Front parking; qty: 2,22
+stop-tail-marker-backup.016,stop-tail-marker-backup.md,16,Tail / parking / side marker / license,device,F-12 / F-13,,,,,,,3.8; lamp: Front side marker; qty: 2,22
+stop-tail-marker-backup.017,stop-tail-marker-backup.md,17,Tail / parking / side marker / license,device,F-14 / F-15,,,,,,,3.8; lamp: Rear side marker; qty: 2,22
+stop-tail-marker-backup.018,stop-tail-marker-backup.md,18,Tail / parking / side marker / license,device,F-04,,,,,,,6; lamp: License; qty: 2,22
+stop-tail-marker-backup.019,stop-tail-marker-backup.md,19,Tail / parking / side marker / license,device,F-07 / F-08,,,,,,,8; lamp: Tail; qty: 2,22
+stop-tail-marker-backup.020,stop-tail-marker-backup.md,20,Tail / parking / side marker / license,text,,,,,,,,"Total roughly 55 W, ~4.6 A. RG stays on in both PARK and HEAD positions.",22
+stop-tail-marker-backup.021,stop-tail-marker-backup.md,21,Back-up lights,fact,,Feed,,,,,,Ignition IG → BY → X-04 **10 A** → **GY** bus (shared with turn signals),22
+stop-tail-marker-backup.022,stop-tail-marker-backup.md,22,Back-up lights,fact,,"Switch, A/T",,,,,,"Inhibitor switch via A-06. GY in, RY out",22
+stop-tail-marker-backup.023,stop-tail-marker-backup.md,23,Back-up lights,fact,,"Switch, M/T",,,,,,"Back-up light switch F-01. GY in, RW out",22
+stop-tail-marker-backup.024,stop-tail-marker-backup.md,24,Back-up lights,fact,,Output,,,,,,"RW → rear combination lights, via X-10 / X-03",22
+stop-tail-marker-backup.025,stop-tail-marker-backup.md,25,Back-up lights,fact,,Lamps,,,,,,27 W ×2,22
+stop-tail-marker-backup.026,stop-tail-marker-backup.md,26,Back-up lights,fact,,Ground,,,,,,B → X-15,22
+stop-tail-marker-backup.027,stop-tail-marker-backup.md,27,Back-up lights,text,,,,,,,,"**This car is automatic** — the inhibitor switch is the active path (A-06), not the M/T switch.",22
+turn-hazard.001,turn-hazard.md,1,,text,,,,,,,,"**Source:** Section F, page 22. **Type:** Turn = ignition-switched. Hazard = constant-hot (works key-off). **Relevant to fault K-008.**",22
+turn-hazard.002,turn-hazard.md,2,Devices,device,F-02,Combination switch (hazard + turn sections),"WG, GW, GY, GR, GO, GB",,,,6-pin,,22
+turn-hazard.003,turn-hazard.md,3,Devices,device,,Control Processing Unit (flasher/hazard module),"GW, GB, B",,,,X-16,,22
+turn-hazard.004,turn-hazard.md,4,Devices,device,F-05,Front turn & parking light LH (dual filament),"RG, GR, B",,,,3-pin,,22
+turn-hazard.005,turn-hazard.md,5,Devices,device,F-06,Front turn & parking light RH,"RG, GO, B",,,,3-pin,,22
+turn-hazard.006,turn-hazard.md,6,Devices,device,F-07,Rear combination light LH,"GR, RW, G, RG, B",,,,multi,,22
+turn-hazard.007,turn-hazard.md,7,Devices,device,F-08,Rear combination light RH,"GO, RW, G, RG, B",,,,multi,,22
+turn-hazard.008,turn-hazard.md,8,Devices,device,X-04,"Fuse block — 10 A turn, 10 A hazard",,,,,,,22
+turn-hazard.009,turn-hazard.md,9,Feed topology,fact,,,WR,,,,,path: Battery → fusible link 1.25 sq → **WR** constant bus,22
+turn-hazard.010,turn-hazard.md,10,Feed topology,fact,,,WG,,,,,Constant — hazards work with key out; path: WR → X-04 **10 A** → WG → F-02 hazard section,22
+turn-hazard.011,turn-hazard.md,11,Feed topology,fact,,,GY,,,,,Ignition-switched; path: Ignition switch **IG** → BY → X-04 **10 A** → **GY** bus → F-02 turn section,22
+turn-hazard.012,turn-hazard.md,12,Feed topology,fact,,,GY,,,,,Shared bus — see [`stop-tail-marker-backup.md`](stop-tail-marker-backup.md); path: GY bus also feeds the back-up light circuit,22
+turn-hazard.013,turn-hazard.md,13,Signal path,wire,,,GW,F-02 combination switch,Control Processing Unit,,,,22
+turn-hazard.014,turn-hazard.md,14,Signal path,wire,,,GB,F-02 combination switch,Control Processing Unit,,,,22
+turn-hazard.015,turn-hazard.md,15,Signal path,wire,,,B,Control Processing Unit,Ground via X-13,,,,22
+turn-hazard.016,turn-hazard.md,16,Signal path,wire,,,GR,F-02 turn LEFT out,"Front LH (F-05), rear LH (F-07), LH indicator",,,,22
+turn-hazard.017,turn-hazard.md,17,Signal path,wire,,,GO,F-02 turn RIGHT out,"Front RH (F-06), rear RH (F-08), RH indicator",,,,22
+turn-hazard.018,turn-hazard.md,18,Signal path,wire,,,B,All lamps,Ground via X-13 / X-14 / X-15,,,,22
+turn-hazard.019,turn-hazard.md,19,Lamp loads (factory incandescent),fact,,,,,,,,lamp: Front turn; w each: 27; qty: 2,22
+turn-hazard.020,turn-hazard.md,20,Lamp loads (factory incandescent),fact,,,,,,,,lamp: Rear turn; w each: 27; qty: 2,22
+turn-hazard.021,turn-hazard.md,21,Lamp loads (factory incandescent),fact,,,,,,,,lamp: Dash indicator; w each: 3.4; qty: 2,22
+turn-hazard.022,turn-hazard.md,22,Lamp loads (factory incandescent),text,,,,,,,,"Roughly 55 W per side flashing, ~4.5 A. This is the number the flasher and any bulb-out logic was designed around.",22
+turn-hazard.023,turn-hazard.md,23,Fault K-008 — why this circuit is the suspect,text,,,,,,,,"Turn signal current is pulsing and returns to ground through X-13. If that ground point is corroded or shared with the tach and fuel pump returns, every blinker pulse lifts the local ground reference and both circuits see it. The Control Processing Unit's own ground (B → X-13) is the first thing to test.",22
+horn.001,horn.md,1,,text,,,,,,,,"**Source:** Section F, page 22 (schematic), page 23 (harness routing). **Type:** Constant-hot, relay-switched, ground-side triggered. **Shares its fuse with:** stop lights (both on the same 15 A).",22
+horn.002,horn.md,2,Devices,device,F-16,Horn relay,"GW, GY, GL",,,,Engine bay / cowl,connector: 3-pin,22
+horn.003,horn.md,3,Devices,device,F-09,"Horn, LH",GY,,,,"Behind front bumper, LH",connector: 1-pin,22
+horn.004,horn.md,4,Devices,device,F-10,"Horn, RH",GY,,,,"Behind front bumper, RH",connector: 1-pin,22
+horn.005,horn.md,5,Devices,device,,Horn switch,GL,,,,Steering wheel pad,connector: via E-01,22
+horn.006,horn.md,6,Devices,device,X-07,"Fusible link, 1.25 sq",,,,,At battery,,22
+horn.007,horn.md,7,Devices,device,X-04,"Fuse block, 15 A position",,,,,Under dash,,22
+horn.008,horn.md,8,Devices,device,E-01,Combination switch / column connector,,,,,Steering column,,22
+horn.009,horn.md,9,Devices,text,,,,,,,,Both horns are **single-wire** — they ground through their mounting bracket to the body. The horn switch also grounds through the column.,22
+horn.010,horn.md,10,Wire runs,wire,,Battery +,,Battery,X-07 fusible link,,,1.25 sq,22
+horn.011,horn.md,11,Wire runs,wire,,White/red — constant hot,WR,X-07,X-04 fuse block,,,"Main constant bus, feeds many circuits",22
+horn.012,horn.md,12,Wire runs,wire,,Green/white — fused constant,GW,X-04 (15 A),F-16 relay,,,Feeds relay coil **and** contact together,22
+horn.013,horn.md,13,Wire runs,wire,,Green/blue — coil ground path,GL,F-16 relay,Horn switch via E-01,,,Switch closes to ground → relay pulls in,22
+horn.014,horn.md,14,Wire runs,wire,,Green/yellow — switched output,GY,F-16 relay,F-09 and F-10 (parallel),,,Splices to both horns,22
+horn.015,horn.md,15,Wire runs,wire,,Ground,,"F-09, F-10",Body via bracket,,,Not a wire,22
+horn.016,horn.md,16,Wire runs,wire,,Ground,,Horn switch,Column / body,,,Not a wire,22
+horn.017,horn.md,17,Logic,text,,,,,,,,"Relay coil and contact share one feed (GW). The coil's other end (GL) runs up the column to the horn switch, which is a simple momentary switch to ground. Press it → coil energises → contacts close → GY goes hot → both horns sound.",22
+horn.018,horn.md,18,Logic,text,,,,,,,,"This is a **ground-side switched** circuit. The horn switch never carries horn current, only coil current, which is why a thin wire and a slip ring survive it.",22
+wipers-washers.001,wipers-washers.md,1,,text,,,,,,,,"**Source:** Section D, page 18.",18
+wipers-washers.002,wipers-washers.md,2,Devices,device,D-01,Front washer motor,"LY, LB",,,,,,18
+wipers-washers.003,wipers-washers.md,3,Devices,device,D-02,Front wiper motor,"L, LB, B / LW, LR",,,,,,18
+wipers-washers.004,wipers-washers.md,4,Devices,device,D-03,Combination switch — wiper + washer + one-touch,"B, LO, LY / LR, LG, LW",,,,,,18
+wipers-washers.005,wipers-washers.md,5,Devices,device,D-04,Rear washer motor,"LB, L",,,,,,18
+wipers-washers.006,wipers-washers.md,6,Devices,device,D-05,Rear wiper motor,"L, BG",,,,,,18
+wipers-washers.007,wipers-washers.md,7,Devices,device,D-06,Rear wiper & washer switch,"B, BG, LW",,,,,,18
+wipers-washers.008,wipers-washers.md,8,Devices,device,D-07,Connector to rear wiper,"B, LB, BG, L",,,,,,18
+wipers-washers.009,wipers-washers.md,9,Devices,device,,Control Processing Unit (intermittent timer),X-16,,,,,,18
+wipers-washers.010,wipers-washers.md,10,Front wiper,fact,,Feed,,,,,,Ignition **IG** → X-04 **10 A** → **LB** bus,18
+wipers-washers.011,wipers-washers.md,11,Front wiper,fact,,Speeds,,,,,,**Separate LOW and HIGH brushes** — motor has LO and HI terminals,18
+wipers-washers.012,wipers-washers.md,12,Front wiper,fact,,Motor wires,,,,,,"L, LB (park/common), LW (low), LR (high)",18
+wipers-washers.013,wipers-washers.md,13,Front wiper,fact,,Park,,,,,,"Internal park switch in the motor, on LB",18
+wipers-washers.014,wipers-washers.md,14,Front wiper,fact,,Intermittent,,,,,,"Control Processing Unit (X-16), the same module family as the flasher",18
+wipers-washers.015,wipers-washers.md,15,Front wiper,fact,,Switch positions,,,,,,"OFF / INT / LO / HI, plus WASHER and a one-touch position",18
+wipers-washers.016,wipers-washers.md,16,Front wiper,fact,,Ground,,,,,,B → X-13,18
+wipers-washers.017,wipers-washers.md,17,Front wiper,text,,,,,,,,"**Confirms A-001** (A-001 → confirmed here) — the motor genuinely needs two outputs. O8 (with braking) for LOW, O9 for HIGH, per SPEC.",18
+wipers-washers.018,wipers-washers.md,18,Rear wiper & washer,fact,,Feed,,,,,,Separate **10 A** fuse off the L bus,18
+wipers-washers.019,wipers-washers.md,19,Rear wiper & washer,fact,,Switch,,,,,,"D-06, in the cabin. BG and LW",18
+wipers-washers.020,wipers-washers.md,20,Rear wiper & washer,fact,,Motor,,,,,,"D-05 rear wiper, D-04 rear washer",18
+wipers-washers.021,wipers-washers.md,21,Rear wiper & washer,fact,,Ground,,,,,,"B → X-13, via X-11 / X-02",18
+wipers-washers.022,wipers-washers.md,22,Rear wiper & washer,text,,,,,,,,The rear wiper is gone from the car.,18
+windows-mirrors.001,windows-mirrors.md,1,,text,,,,,,,,"**Source:** Section I, page 28.",28
+windows-mirrors.002,windows-mirrors.md,2,Power windows,device,I-06,Power window switch LH,"RL, B / GL, BL",,,,,,28
+windows-mirrors.003,windows-mirrors.md,3,Power windows,device,I-07,Power window switch RH,"R, B / G, BL",,,,,,28
+windows-mirrors.004,windows-mirrors.md,4,Power windows,device,I-09,Power window motor LH,"R, G",,,,,,28
+windows-mirrors.005,windows-mirrors.md,5,Power windows,device,I-11,Power window motor RH,"R, G",,,,,,28
+windows-mirrors.006,windows-mirrors.md,6,Power windows,device,I-08,Front↔door harness connector LH,RL/GL → R/G,,,,,,28
+windows-mirrors.007,windows-mirrors.md,7,Power windows,device,I-10,Inpane↔door harness connector RH,R/G,,,,,,28
+windows-mirrors.008,windows-mirrors.md,8,Power windows,fact,,Feed,,,,,,Ignition **IG** → BW → X-04 **30 A** → **BL**,28
+windows-mirrors.009,windows-mirrors.md,9,Power windows,fact,,Motors,,,,,,"**2 wires each** (R, G) — polarity reversal drives up/down",28
+windows-mirrors.010,windows-mirrors.md,10,Power windows,fact,,Switch topology,,,,,,Each switch is a **DPDT reverser** — both motor legs land on the switch,28
+windows-mirrors.011,windows-mirrors.md,11,Power windows,fact,,Ground,,,,,,"BL common, B → X-13",28
+windows-mirrors.012,windows-mirrors.md,12,Power windows,text,,,,,,,,"Two conductors per motor, four in all into the doors; the factory switches do the reversing directly. The car has no window motors now.",28
+windows-mirrors.013,windows-mirrors.md,13,Power windows,text,,,,,,,,"Note the factory feed is a single **30 A** fuse for both windows. That is the number to size the motor bus against, not two separate loads.",28
+windows-mirrors.014,windows-mirrors.md,14,Remote control mirrors,device,I-01,Remote control mirror switch,"B, WG, LgR / Lg, LgB, LgY",,,,,,28
+windows-mirrors.015,windows-mirrors.md,15,Remote control mirrors,device,I-03,Remote control mirror LH,"LgY, Lg, B, LgB",,,,,,28
+windows-mirrors.016,windows-mirrors.md,16,Remote control mirrors,device,I-05,Remote control mirror RH,"LgY, Lg, B, LgB",,,,,,28
+windows-mirrors.017,windows-mirrors.md,17,Remote control mirrors,fact,,Feed,,,,,,WR constant → X-04 **10 A** → WG,28
+windows-mirrors.018,windows-mirrors.md,18,Remote control mirrors,fact,,Motors,,,,,,"Two motors per mirror (horizontal + vertical), 4 wires per side",28
+windows-mirrors.019,windows-mirrors.md,19,Remote control mirrors,fact,,Select,,,,,,The switch does LH/RH selection **and** direction,28
+windows-mirrors.020,windows-mirrors.md,20,Remote control mirrors,fact,,Ground,,,,,,B → X-13,28
+windows-mirrors.021,windows-mirrors.md,21,Remote control mirrors,text,,,,,,,,"These are **motor-driven mirrors, not heated mirrors.** SPEC allocates C5-B3 and C5-B4 to *heated* mirrors off the comfort bus, and C5-B5…B8 as spares for mirror motors. Four wires per side means the spares are exactly consumed — there is no margin left in C5 if both functions are wanted.",28
+interior-hatch-accessories.001,interior-hatch-accessories.md,1,,text,,,,,,,,"**Source:** Section H, page 26.",26
+interior-hatch-accessories.002,interior-hatch-accessories.md,2,Devices,device,H-01,Glove box light (3.4 W),"LO, BL",,,,,,26
+interior-hatch-accessories.003,interior-hatch-accessories.md,3,Devices,device,H-02,Glove box light switch,"BL, B",,,,,,26
+interior-hatch-accessories.004,interior-hatch-accessories.md,4,Devices,device,H-03,Ignition key reminder switch,"G, LY",,,,,,26
+interior-hatch-accessories.005,interior-hatch-accessories.md,5,Devices,device,H-04,Seat belt switch,"Br, BrW",,,,,,26
+interior-hatch-accessories.006,interior-hatch-accessories.md,6,Devices,device,H-05,Ignition switch light (3.4 W),"LY, GL",,,,,,26
+interior-hatch-accessories.007,interior-hatch-accessories.md,7,Devices,device,H-06,Interior & spot light (5 W),"LY, RY",,,,,,26
+interior-hatch-accessories.008,interior-hatch-accessories.md,8,Devices,device,H-07,"Door switch, RH",RY,,,,,,26
+interior-hatch-accessories.009,interior-hatch-accessories.md,9,Devices,device,H-08,"Door switch, LH",RY,,,,,,26
+interior-hatch-accessories.010,interior-hatch-accessories.md,10,Devices,device,H-09,Cigarette lighter,"LY, RL, B",,,,,,26
+interior-hatch-accessories.011,interior-hatch-accessories.md,11,Devices,device,H-10,Auto clock,"B, RG, LY, GY",,,,,,26
+interior-hatch-accessories.012,interior-hatch-accessories.md,12,Devices,device,H-11,Luggage compartment light,"LY, RB",,,,,,26
+interior-hatch-accessories.013,interior-hatch-accessories.md,13,Devices,device,H-12,Luggage compartment light switch,RB,,,,,,26
+interior-hatch-accessories.014,interior-hatch-accessories.md,14,Devices,device,H-13,Glass hatch release switch,"LR, GR",,,,,,26
+interior-hatch-accessories.015,interior-hatch-accessories.md,15,Devices,device,H-14,Glass hatch release solenoid,"GR, B",,,,,,26
+interior-hatch-accessories.016,interior-hatch-accessories.md,16,Devices,device,H-15,Fuel-door release switch,"LR, GB",,,,,,26
+interior-hatch-accessories.017,interior-hatch-accessories.md,17,Devices,device,H-16,Fuel-door release solenoid,"GB, B",,,,,,26
+interior-hatch-accessories.018,interior-hatch-accessories.md,18,Feeds,wire,,,**LY**,WR constant → X-04 15 A,"Interior light, spot light, lighter, clock, luggage light, ignition switch light",15 A,,,26
+interior-hatch-accessories.019,interior-hatch-accessories.md,19,Feeds,wire,,,**LO**,WR constant → X-04 20 A,"Glove box light, seat belt warning",20 A,,,26
+interior-hatch-accessories.020,interior-hatch-accessories.md,20,Feeds,wire,,,**LR**,WR constant → X-04 20 A,"Hatch release, fuel-door release",20 A,,,26
+interior-hatch-accessories.021,interior-hatch-accessories.md,21,Feeds,wire,,,**GY**,IG → X-04 10 A,"Seat belt warning, key reminder, clock",10 A,,,26
+interior-hatch-accessories.022,interior-hatch-accessories.md,22,Feeds,wire,,,**RG**,Dimmer bus (Section E),Lighter and clock illumination,,,,26
+interior-hatch-accessories.023,interior-hatch-accessories.md,23,Feeds,text,,,,,,,,"The interior lighting bus is **constant-hot** — it must work with the key out. Door switches (H-07 / H-08) are **switch-to-ground on RY**, exactly the topology the PMU wants.",26
+interior-hatch-accessories.024,interior-hatch-accessories.md,24,Control Processing Unit,text,,,,,,,,"The same X-16 module family that runs the flasher and wiper intermittent also handles: seat belt warning, key reminder buzzer, lights-off reminder chime. It takes GY, GB, G, GL, RY, Br, BrW and drives the chime and warning lamps.",26
+interior-hatch-accessories.025,interior-hatch-accessories.md,25,Control Processing Unit,text,,,,,,,,**All of this collapses into PMU software.** The module disappears.,26
+interior-hatch-accessories.026,interior-hatch-accessories.md,26,Hatch and fuel door,text,,,,,,,,"Both are solenoid pulls on a 20 A constant feed, switched by a dash button:",26
+interior-hatch-accessories.027,interior-hatch-accessories.md,27,Hatch and fuel door,fact,,,GR,,,,,path: LR → H-13 hatch switch → GR → H-14 solenoid → B → X-15,26
+interior-hatch-accessories.028,interior-hatch-accessories.md,28,Hatch and fuel door,fact,,,GB,,,,,path: LR → H-15 fuel-door switch → GB → H-16 solenoid → B → X-15,26
+blower-ac-defroster-audio.001,blower-ac-defroster-audio.md,1,,text,,,,,,,,"**Source:** Section G, page 24.",24
+blower-ac-defroster-audio.002,blower-ac-defroster-audio.md,2,Blower & heater,device,G-14,Blower motor & resistor,"LO, LR / LY, LW",,,,,,24
+blower-ac-defroster-audio.003,blower-ac-defroster-audio.md,3,Blower & heater,device,G-15,Blower motor switch,"LW, LY / LG, LR, LB",,,,,,24
+blower-ac-defroster-audio.004,blower-ac-defroster-audio.md,4,Blower & heater,fact,,Feed,,,,,,Ignition **IG** → L bus → X-04 **20 A** → LO,24
+blower-ac-defroster-audio.005,blower-ac-defroster-audio.md,5,Blower & heater,fact,,Speed control,,,,,,**Resistor pack** with MI / HI / LO / OFF positions on the switch,24
+blower-ac-defroster-audio.006,blower-ac-defroster-audio.md,6,Blower & heater,fact,,Ground,,,,,,X-15,24
+blower-ac-defroster-audio.007,blower-ac-defroster-audio.md,7,Blower & heater,text,,,,,,,,**Confirms A-002** (A-002 → confirmed here) — factory resistor pack sets speed. The PMU supplies the feed on O16 and the existing switch/resistor stack does the rest.,24
+blower-ac-defroster-audio.008,blower-ac-defroster-audio.md,8,Air conditioning,device,G-18,No.1 A/C relay,"LB, LR / YL, BW",,,,,,24
+blower-ac-defroster-audio.009,blower-ac-defroster-audio.md,9,Air conditioning,device,G-19,Magnet clutch,BW,,,,,,24
+blower-ac-defroster-audio.010,blower-ac-defroster-audio.md,10,Air conditioning,device,G-21,Refrigerant pressure switch,"YL, YR",,,,,,24
+blower-ac-defroster-audio.011,blower-ac-defroster-audio.md,11,Air conditioning,device,G-22,Frost warning temp switch,"LG, YR",,,,,,24
+blower-ac-defroster-audio.012,blower-ac-defroster-audio.md,12,Air conditioning,device,G-23,Diode (in the A/C harness),"LB, YL",,,,,,24
+blower-ac-defroster-audio.013,blower-ac-defroster-audio.md,13,Air conditioning,text,,,,,,,,Chain: A/C switch → frost switch → pressure switch → No.1 A/C relay → magnet clutch. There is also a No.2 A/C relay in Section B that talks to the emission control unit for idle-up.,24
+blower-ac-defroster-audio.015,blower-ac-defroster-audio.md,15,Rear window defroster,device,G-24,Defroster switch,"Y, LG",,,,,,24
+blower-ac-defroster-audio.016,blower-ac-defroster-audio.md,16,Rear window defroster,device,G-25,Defroster grid,"LG, B",,,,,,24
+blower-ac-defroster-audio.017,blower-ac-defroster-audio.md,17,Rear window defroster,fact,,Feed,,,,,,Ignition **IG** → X-04 **15 A** → Y,24
+blower-ac-defroster-audio.018,blower-ac-defroster-audio.md,18,Rear window defroster,fact,,Indicator,,,,,,3.4 W in the switch,24
+blower-ac-defroster-audio.019,blower-ac-defroster-audio.md,19,Rear window defroster,fact,,Ground,,,,,,X-13 / X-15,24
+blower-ac-defroster-audio.020,blower-ac-defroster-audio.md,20,Rear window defroster,text,,,,,,,,No timer in the factory circuit - it is on until switched off.,24
+blower-ac-defroster-audio.021,blower-ac-defroster-audio.md,21,Audio & power antenna,device,G-03,Stereo,"LR, LgW, RG",,,,,,24
+blower-ac-defroster-audio.022,blower-ac-defroster-audio.md,22,Audio & power antenna,device,G-04,Radio,"LW, LR, LgW / LG, LY, RG",,,,,,24
+blower-ac-defroster-audio.023,blower-ac-defroster-audio.md,23,Audio & power antenna,device,G-08,Main amp,"LO, LB, LR, LW, L",,,,,,24
+blower-ac-defroster-audio.024,blower-ac-defroster-audio.md,24,Audio & power antenna,device,G-01,Power antenna relay,"LR, R, LY, B / LG, L",,,,,,24
+blower-ac-defroster-audio.025,blower-ac-defroster-audio.md,25,Audio & power antenna,device,G-02,Power antenna motor,"L, LY, R",,,,,,24
+blower-ac-defroster-audio.026,blower-ac-defroster-audio.md,26,Audio & power antenna,device,G-05/06,Front speakers,"LG/LW, LY/LR",,,,,,24
+blower-ac-defroster-audio.027,blower-ac-defroster-audio.md,27,Audio & power antenna,device,G-09/10,Rear speakers,"LR/LO, LW/LB",,,,,,24
+blower-ac-defroster-audio.028,blower-ac-defroster-audio.md,28,Audio & power antenna,fact,,Feed,,,,,,X-04 **20 A** → LR,24
+blower-ac-defroster-audio.029,blower-ac-defroster-audio.md,29,Audio & power antenna,fact,,Illumination,,,,,,RG from the dimmer bus,24
+FAULT-K008-analysis.001,FAULT-K008-analysis.md,1,,text,,,,,,,,"> This fault belongs to the factory harness: a shared-ground problem in two body studs. It is kept as the worked example of reading the factory diagram, not as a work item.",
+FAULT-K008-analysis.002,FAULT-K008-analysis.md,2,,text,,,,,,,,"**Decoded from the factory diagram. This is a shared-ground fault, and the diagram shows exactly where.**",
+FAULT-K008-analysis.003,FAULT-K008-analysis.md,3,What the diagram says,fact,,,,,,10 A,,"circuit: Turn signals; feed: IG → BY → GY bus; ground point: Front lamps **X-13**, rear lamps **X-15**",
+FAULT-K008-analysis.004,FAULT-K008-analysis.md,4,What the diagram says,fact,,,,,,,,circuit: Control Processing Unit (flasher); feed: GW / GB from combo switch; ground point: **X-13**,
+FAULT-K008-analysis.005,FAULT-K008-analysis.md,5,What the diagram says,fact,,,,,,10 A,,circuit: Instrument panel incl. **tachometer**; feed: IG → BY → GY bus; ground point: **X-13**,
+FAULT-K008-analysis.006,FAULT-K008-analysis.md,6,What the diagram says,fact,,,,,,10 A,,circuit: **Fuel pump**; feed: IG → BW → BLg; ground point: **X-15**,
+FAULT-K008-analysis.007,FAULT-K008-analysis.md,7,What the diagram says,fact,,,,,,,,circuit: Emission control unit; feed: various; ground point: **X-13**,
+FAULT-K008-analysis.008,FAULT-K008-analysis.md,8,The mechanism,text,,,,,,,,"Two separate shared returns, and the blinker sits on both:",
+FAULT-K008-analysis.009,FAULT-K008-analysis.md,9,The mechanism,text,,,,,,,,"**X-13** carries the flasher's own ground, the instrument panel ground (tach included), and the emission control unit ground. Every flash pulses ~4.5 A through X-13. If that stud is corroded, each pulse lifts the local ground by a few hundred millivolts — and the tach, which reads a low-level coil signal referenced to that same ground, moves with it.",
+FAULT-K008-analysis.010,FAULT-K008-analysis.md,10,The mechanism,text,,,,,,,,"**X-15** carries the rear turn lamp grounds *and* the fuel pump ground. Same mechanism, different stud: blinker current modulates the fuel pump's ground reference.",
+FAULT-K008-analysis.011,FAULT-K008-analysis.md,11,The mechanism,text,,,,,,,,"The tach and fuel pump are not electrically related to each other. They're related to the blinker through **ground**, which is why the symptom looks mysterious and why chasing feed wires would waste your time.",
+FAULT-K008-analysis.012,FAULT-K008-analysis.md,12,Also worth knowing,text,,,,,,,,"Turn signals and the instrument panel are both fed from the **GY** bus, which originates at the same ignition switch IG terminal through two 10 A fuses. Even with perfect grounds, a marginal IG contact in a 44-year-old ignition switch would produce the same symptom on the supply side.",
+FAULT-K008-analysis.014,FAULT-K008-analysis.md,14,"How to test it, if it shows again",text,,,,,,,,1. **Voltage-drop test X-13 and X-15** with the blinker running. Meter from the stud to a known-good chassis point. Anything above ~0.1 V under load is your fault. Do this first — it is a five-minute test.,
+FAULT-K008-analysis.015,FAULT-K008-analysis.md,15,"How to test it, if it shows again",text,,,,,,,,"2. If the studs are clean, drop-test the **IG feed** at the ignition switch under blinker load.",
+FAULT-K008-analysis.016,FAULT-K008-analysis.md,16,"How to test it, if it shows again",text,,,,,,,,3. Only then look for a PO splice (K-002) or a chafe.,
+FAULT-K008-analysis.019,FAULT-K008-analysis.md,19,"Observed behaviour, 2026-08",text,,,,,,,,"The fuel pump changes note with the blinker; **engine running does not change.** That is consistent with the ground-modulation theory and it bounds the severity: the pump is seeing voltage ripple, but not enough to pull delivery below the regulator setpoint. Nothing downstream of the regulator notices.",

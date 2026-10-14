@@ -211,7 +211,7 @@ connector_dims,wedgelock,str,no,,the wedgelock's TE part number; blank for a DT1
 connector_dims,cad,str,no,cad,"the vendor model's cad row, when one is recorded"
 connector_dims,source,text,yes,,where the figures were read: the cad row or the TE document and page
 connector_dims,note,text,yes,,which figures are estimated and how; always ends confirm (R11)
-circuits,file,key,yes,,the file name in 01-INTAKE/factory-circuits
+circuits,file,key,yes,,"the circuit's key: the name its write-up had in 01-INTAKE/factory-circuits, whose text is its circuit_paths rows now (D-522); for the scan, its file name under the source's local_path"
 circuits,title,text,yes,,
 circuits,systems,list,yes,systems,"systems ids, space-separated; the first is where the Manual files it"
 circuits,source,text,no,,the source it was decoded from (S- ids)
@@ -224,3 +224,17 @@ procedure_steps,how,text,no,,"exactly how: the place, the order, the figure and 
 procedure_steps,expect,text,no,,what is seen or measured when the step went right
 procedure_steps,caution,text,no,,"the one thing that hurts him or the car at this step, if any"
 procedure_steps,page,str,no,,the page of the procedure's source the step was read from
+circuit_paths,id,key,yes,,"<circuit, its file name less .md>.<three digits>, in order"
+circuit_paths,circuit,str,yes,circuits,the circuit (its circuits row) the line belongs to
+circuit_paths,n,int,yes,,"its place in the circuit's write-up, 1 first"
+circuit_paths,section,str,no,,the heading it sits under
+circuit_paths,kind,enum(device|wire|fact|text),yes,,"device: a factory component (ref, what, where, its wires); wire: one run (wire, from, to, fuse); fact: a table line of another kind (a bus, a ground node, a colour code, a page); text: the decode's own words"
+circuit_paths,ref,str,no,,"the factory code as the diagram prints it (A-08, X-13) - not a project id"
+circuit_paths,what,text,no,,"the device, or what the wire carries"
+circuit_paths,wire,str,no,,"the factory wire colour code or codes (S-001's), first letter the base, second the tracer"
+circuit_paths,from,text,no,,
+circuit_paths,to,text,no,,
+circuit_paths,fuse,str,no,,the fuse or fusible link it runs through
+circuit_paths,where,text,no,,"where the device sits, its connector"
+circuit_paths,note,text,no,,
+circuit_paths,page,str,no,,the page of S-001 it was read from

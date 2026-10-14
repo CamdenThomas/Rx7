@@ -131,8 +131,8 @@ BLOCK_ID_RE = re.compile(r"^(\d{2}|CAR|REF|APP|VER)\.(\d{2,3})$")
 BLOCK_PREFIX_FIXED = {"00-CAR": "CAR", "01-REFERENCE": "REF", "02-APP": "APP", "00-verify": "VER"}
 # The reference is the intake now, not a home (D-519): its tables (sources, catalogue, cad,
 # suppliers, connector_dims, circuits) are 00-CAR's, and so are his photos (06-intake T2). The
-# factory-circuit files `circuits` names ride in 01-INTAKE until block 06.01 rules them -
-# these two paths, from the tree root, and nowhere else.
+# factory-circuit write-ups are circuit_paths rows (D-522); CIRCUITS_DIR is read only for a
+# write-up not yet parsed. These two paths, from the tree root, and nowhere else.
 PHOTOS_DIR = "00-CAR/photos"
 CIRCUITS_DIR = "01-INTAKE/factory-circuits"
 # Block ids were renumbered on 2026-09-25 (D-427, D-428). A decision dated before that closes
@@ -2152,6 +2152,40 @@ def procedure_body(steps: list) -> str:
                 out.append(f"   {label}{s[col]}")
     return "\n".join(out)
 
+CIRCUIT_COLS = {"device": [("ref", "Ref"), ("what", "Device"), ("where", "Where"), ("wire", "Wires"), ("note", "Note")],
+                "wire": [("wire", "Wire"), ("what", "Carries"), ("from", "From"), ("to", "To"), ("fuse", "Fuse"), ("note", "Note")],
+                "fact": [("ref", "Ref"), ("what", "What"), ("wire", "Wire"), ("from", "From"), ("to", "To"),
+                         ("fuse", "Fuse"), ("where", "Where"), ("note", "Note")]}
+
+
+def circuit_body(rows: list) -> str:
+    """A factory circuit's write-up as the app renders it, built from its circuit_paths rows (in
+    order, D-522): each section a heading, a run of devices, wires or facts a table with only the
+    columns that hold something, a text row a paragraph."""
+    out, section, i = [], None, 0
+    while i < len(rows):
+        r = rows[i]
+        if r.get("section", "") != section:
+            section = r.get("section", "")
+            if section:
+                out += ["", f"## {section}", ""]
+        if r["kind"] == "text":
+            out += [r.get("note", ""), ""]
+            i += 1
+            continue
+        j = i
+        while j < len(rows) and rows[j]["kind"] == r["kind"] and rows[j].get("section", "") == section:
+            j += 1
+        cols = [(c, h) for c, h in CIRCUIT_COLS[r["kind"]] if any(x.get(c) for x in rows[i:j])]
+        out.append("| " + " | ".join(h for _, h in cols) + " |")
+        out.append("|" + "---|" * len(cols))
+        for x in rows[i:j]:
+            out.append("| " + " | ".join(x.get(c, "") or "—" for c, _ in cols) + " |")
+        out.append("")
+        i = j
+    return "\n".join(out).strip() + "\n"
+
+
 def manual_view(today_iso: str = "") -> dict:
     """The Manual, computed. Reads 00-CAR vehicle, systems, zones, parts, specs, service, terminals,
     intervals, issues, drives, procedures and procedure_steps (and data/procedures/<id>.md), parts_history, catalogue
@@ -2255,17 +2289,27 @@ def manual_view(today_iso: str = "") -> dict:
     sources = {r["id"]: {"title": (r.get("title") or "").strip(), "url": (r.get("url") or "").strip(),
                          "local_path": (r.get("local_path") or "").strip()}
                for r in read_table(car, "sources")[1]} if (car / "data" / "sources.csv").exists() else {}
-    # each circuit write-up with the systems it is filed under; a Markdown one carries its
-    # text, since the app reads the tree only through this export
+    # each circuit with the systems it is filed under and its text, since the app reads the tree
+    # only through this export: built from its circuit_paths rows (D-522), else a Markdown file
+    # still in CIRCUITS_DIR; the scan itself is found through its source's local_path
+    cpaths = {}
+    if (car / "data" / "circuit_paths.csv").exists():
+        for s in map(clean, read_table(car, "circuit_paths")[1]):
+            cpaths.setdefault(s["circuit"], []).append(s)
     circuits = []
     if (car / "data" / "circuits.csv").exists():
         for r in map(clean, read_table(car, "circuits")[1]):
             f = ROOT / CIRCUITS_DIR / r["file"]
             if not f.exists():
+                lp = sources.get(r.get("source", "").split()[0] if r.get("source") else "", {}).get("local_path", "")
+                f = ROOT / lp if lp.endswith(r["file"]) else f
+            rows_ = sorted(cpaths.get(r["file"], []), key=lambda s: _int(s["n"]) or 0)
+            if not rows_ and not f.exists():
                 continue
-            circuits.append({"file": r["file"], "path": rel(f), "title": r["title"], "systems": r["systems"].split(),
-                             "source": r.get("source", ""), "note": r.get("note", ""),
-                             "body": f.read_text(encoding="utf-8") if f.suffix.lower() == ".md" else ""})
+            body = circuit_body(rows_) if rows_ else (f.read_text(encoding="utf-8") if f.suffix.lower() == ".md" else "")
+            circuits.append({"file": r["file"], "path": rel(f) if f.exists() else "", "title": r["title"],
+                             "systems": r["systems"].split(), "source": r.get("source", ""), "note": r.get("note", ""),
+                             "body": body})
 
     return {"today": today_d.isoformat(), "odometer": odo,
             "vehicle": [r for r in shown["vehicle"] if r.get("key") != "mileage"],
@@ -3594,7 +3638,11 @@ def cmd_selftest(args):
         (d / "catalogue.csv").write_text(csvtext(["id", "part_no"], [["EC-1-1", ""], ["EC-1-2", "8851-13-350"]]), encoding="utf-8")
         (d / "sources.csv").write_text(csvtext(["id", "title", "url", "local_path"], [["S-001", "Wiring", "", ""]]), encoding="utf-8")
         (d / "circuits.csv").write_text(csvtext(["file", "title", "systems", "source", "note"],
-                                                [["a.md", "Lamps", "SY-LAMP", "S-001", ""], ["gone.md", "Gone", "SY-LAMP", "", ""]]), encoding="utf-8")
+                                                [["a.md", "Lamps", "SY-LAMP", "S-001", ""], ["gone.md", "Gone", "SY-LAMP", "", ""],
+                                                 ["horn.md", "Horn", "SY-LAMP", "S-001", ""]]), encoding="utf-8")
+        (d / "circuit_paths.csv").write_text(csvtext(["id", "circuit", "n", "section", "kind", "ref", "what", "wire", "from", "to", "note"],
+                                                     [["horn.002", "horn.md", "2", "Wires", "wire", "", "", "GW", "X-04", "F-16", ""],
+                                                      ["horn.001", "horn.md", "1", "Devices", "device", "F-16", "Horn relay", "", "", "", ""]]), encoding="utf-8")
         (root / CIRCUITS_DIR).mkdir(parents=True)
         (root / CIRCUITS_DIR / "a.md").write_text("# Lamps\n", encoding="utf-8")
         old = _use_tree(root)
@@ -3607,8 +3655,11 @@ def cmd_selftest(args):
                oem.get("PT001") == "8851-13-350")
         expect("a typed Mazda number is kept over the catalogue's", oem.get("PT002") == "N3A1-99")
         expect("the Manual's sources are 00-CAR's", list(mv.get("sources", {})) == ["S-001"])
+        hb = next((c["body"] for c in mv.get("circuits", []) if c["file"] == "horn.md"), "")
+        expect("a circuit with circuit_paths rows and no file is built from them, in order, empty columns left out (D-522)",
+               hb.index("## Devices") < hb.index("## Wires") and "| F-16 | Horn relay |" in hb and "| GW | X-04 | F-16 |" in hb)
         expect("a circuit is read from 00-CAR with its file's text, a missing file left out",
-               [(c["file"], c["body"]) for c in mv.get("circuits", [])] == [("a.md", "# Lamps\n")])
+               [(c["file"], c["body"]) for c in mv.get("circuits", []) if c["file"] != "horn.md"] == [("a.md", "# Lamps\n")])
         expect("a procedure with no Markdown file gets its body from its steps, in order",
                procedure_body([{"do": "Block the wheels", "page": "p.G-2"},
                                {"do": "Jack", "how": "at the crossmember", "caution": "stands"}])

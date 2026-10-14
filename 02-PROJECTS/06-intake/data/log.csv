@@ -21,3 +21,4 @@ L-0019,2026-10-13,plan,P13 D-523 D-544,"P13: 1985 manual Section 11 Braking pars
 L-0020,2026-10-13,plan,P14 D-523 D-544,"P14: 1985 manual Section 13 Suspension parsed - 8 specs, 10 procedures (96 steps); PDF out of git"
 L-0021,2026-10-13,plan,P15 D-523 D-544,"P15: 1985 manual Section 14 Body parsed - 1 spec, 15 procedures (130 steps); PDF out of git"
 L-0022,2026-10-13,plan,P16 D-523 D-544,"P16: 1985 manual Section 15 Body Electrical parsed - 1 spec, 29 procedures (163 steps); PDF out of git"
+L-0023,2026-10-14,plan,D-564 P65,P65: the factory-circuit write-ups into circuit_paths rows; the scan to the ignored library

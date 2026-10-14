@@ -22,9 +22,8 @@ reading. Neither is ever typed.
 
 **Files that stay files.** `CLAUDE.md`. `02-APP/README.md`, where the app's design is
 pitched, at his request. Code and drawings with the READMEs that belong to them: the
-firmware, the KiCad boards, the tools, the app. The factory-circuit write-ups in
-`01-INTAKE/factory-circuits` (until block 06.01 rules their form) and `00-CAR/data/procedures/`
-wait for the Manual's plan (D-407). And `99-ARCHIVE`.
+firmware, the KiCad boards, the tools, the app. `00-CAR/data/procedures/` waits for the Manual's
+plan (D-407); the factory-circuit write-ups are `00-CAR` `circuit_paths` rows (D-522). And `99-ARCHIVE`.
 `01-INTAKE` is not an area and no row names it as a home (D-519): it was `01-REFERENCE`, whose
 tables - sources, catalogue, cad, suppliers, connector_dims, circuits - are `00-CAR`'s, and
 `blend` `05-cad`'s; its record's shell is `99-ARCHIVE/2026-10-13_01-REFERENCE`. His photos

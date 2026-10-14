@@ -45,3 +45,10 @@ Nothing about what a row must be changes: the declared columns, the types, the r
 In the tool: `rows_from_file` reads the file, `cmd_add` checks and writes; three selftests cover the reader.
 
 Undoing this is deleting one option from the tool; nothing is bought, cut or wired."
+D-564,,"The factory-circuit write-ups become circuit_paths rows, the export renders them",2026-10-14,standing,,,,P65,"**The factory-circuit write-ups are `00-CAR` `circuit_paths` rows: one row per device, wire run, bus, ground node or line of the decode, in the write-up's order, with a `kind` (device, wire, fact, text) and the columns ref, what, wire, from, to, fuse, where, note, page. The export builds each circuit's text from its rows, so the app's Diagrams page shows it as before.**
+
+Decided by the agent (CLAUDE.md §3, small; nobody was asked), carrying out D-522: block 06.01's option (a) named the columns loosely (circuit, step order, part, terminal, wire colour, fuse, ground, note). The thirteen write-ups and the folder's index are mostly tables of devices (factory ref, device, location, connector, wires) and of wire runs (colour, from, to, fuse), plus a fuse and bus map, a ground-node map, a colour-code key and the decode's own paragraphs; a part column would stay empty, since the factory refs are not 00-CAR parts ids (6 of 976 parts carry a factory code). So the row holds the factory ref, and `kind` says which of the four it is.
+
+What was not carried over: each write-up's ""What this means for the rebuild"" and ""Unknowns"" sections (pointers to v2 documents and old question ids) and the rebuild commentary in the K-008 analysis and the index - 00-CAR states what the car is and cites no decision. The 1982 scan (S-001) went to the intake's ignored library (`01-INTAKE/model/library/docs/wiring-1982/`), its sources row following; the circuits row keeps its name and the export finds the scan through the source.
+
+In the tool: `circuit_body` renders the rows; `manual_view` uses it for any circuit that has rows; a selftest covers it. Undoing this is restoring fourteen files from git and deleting rows; nothing is bought, cut or wired."
