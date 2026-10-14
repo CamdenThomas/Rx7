@@ -20,7 +20,7 @@ before each). It needs `freecadcmd` (FreeCAD 1.1; `FREECADCMD` overrides). It wr
 
 - `<model>.glb` - one per model, git-ignored like the other glb files; 47 models, about 8 MB.
 - `manifest.json` - committed. One entry per device (`DV46`) or common part (`P003`; another
-  area's qualified like a gate, `03-luxury:LP58`, `00-CAR:P-002`): `glb`, `name` (the record's
+  area's qualified like a gate, `04-luxury:LP58`, `00-CAR:P-002`): `glb`, `name` (the record's
   words), `kind` (`device` or `module`), `node` (the scene.json part it sits at), `count` there
   and `also` (other nodes and counts), `size_mm` (the glb's box, measured), `origin`, `standin`,
   `cad` (the 00-CAR cad row of a found model, else null), `confirm` (always true), `source`,

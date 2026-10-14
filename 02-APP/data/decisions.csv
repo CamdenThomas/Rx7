@@ -507,3 +507,15 @@ How the merge is done:
 - **Elsewhere.** 00-CAR K-007 and planned P-009 point at `03-luxury`; luxury's stage S8 and part LP44 name the bumper's sensor windows as block 04.13 without the old area; `CLAUDE.md` and `tools/doc/ids.md` list the projects as they are now; the archive README gets the folder's row.
 
 Undoing it is moving rows back; nothing is bought, cut or wired."
+D-572,,"The projects renumbered: 02-cad, 03-engine, 04-luxury",2026-10-14,standing,,,,D-427 D-570,"**The projects are renumbered in the order Camden gave: `02-PROJECTS/02-cad` (was `05-cad`), `03-engine` (was `02-engine`), `04-luxury` (was `03-luxury`, beauty already in it, D-570). Electrical stays `01-electrical`.**
+
+Camden's words (chat, 2026-10-14): ""and cad should be 02-cad (then 03-engine, 04-luxury)"".
+
+How it is done, as D-427 did it on 2026-09-25:
+
+- **Folders** move with `git mv`; ignored files inside them (cad's `model/out`) move with them on this Mac. On the Fedora PC, git moves the tracked files; ignored files under an old folder name have to be moved by hand there.
+- **References** in every live file - tables (work gates such as `03-engine:DS01`, notes, briefs, schema notes), code, scripts, docs, the app's tests and scenes - are rewritten to the new names. Decisions and logs are not edited (R4): a name in one of them is the name of its day.
+- **Blocks.** No block was open in any of the three, so no id changes. Each closed block keeps its id; the project that closed it names its old prefix under `inherits_blocks` in its `_project` (02-cad: 05, 03-engine: 02, 04-luxury: 03 and beauty's 04, its own now). `rx7.py` lets a prefix an area owns today win over one another area inherits, so `03.NN` from now on is engine's; new ids are numbered past every id ever used (next: 02.18, 03.15, 04.15). Selftested.
+- **The app** reads areas from the export and hard-codes no project; its tests and screenshot script use the new names. The installed desktop app needs no rebuild for this; the phone app picks the new folders up on its next sync.
+
+Undoing it is the same moves backwards; nothing is bought, cut or wired."

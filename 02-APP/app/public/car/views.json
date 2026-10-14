@@ -1,5 +1,5 @@
 {
- "about": "clip = matrix @ [x, y, z, 1] for a point in mm (02-PROJECTS/05-cad/model/found/README.md frame); pixel x = (clip.x / clip.w + 1) / 2 * width, y = (1 - clip.y / clip.w) / 2 * height (D-421)",
+ "about": "clip = matrix @ [x, y, z, 1] for a point in mm (02-PROJECTS/02-cad/model/found/README.md frame); pixel x = (clip.x / clip.w + 1) / 2 * width, y = (1 - clip.y / clip.w) / 2 * height (D-421)",
  "views": {
   "side": {
    "height": 900,

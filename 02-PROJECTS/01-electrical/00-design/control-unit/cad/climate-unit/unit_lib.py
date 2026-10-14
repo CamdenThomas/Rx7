@@ -26,7 +26,7 @@ Frame: X across the face (0 = left seen from the cabin), Y back from the facepla
 from the faceplate's bottom edge. With the face set in from the body (a negative BEZEL_OVERLAP,
 the head unit's way) the body's left side and underside are at negative X and Z. Owns no fact in
 the record: the parts are 01-electrical P152, P194, P195; the head unit the case follows is
-03-luxury parts LP55, and its published sizes are the HEAD_UNIT_* rows of `unit_params.py`.
+04-luxury parts LP55, and its published sizes are the HEAD_UNIT_* rows of `unit_params.py`.
 
 `build_case` and the helpers are also the CUR mock-up's (`../cur-unit/unit_lib.py` imports this
 file): what they read from P or D beyond what that unit gives has a fallback (`.get`).

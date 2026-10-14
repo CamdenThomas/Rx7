@@ -1,8 +1,0 @@
-key,value
-name,05-cad
-kind,model
-goal,"One complete model of the car that can be assembled part by part, every dimension with a stated origin, shown in the app's Manual as service visuals and interactive views of the car and its systems"
-phase,PROPOSED
-opened,2026-10-11
-icon,car
-title,CAD

@@ -48,7 +48,7 @@ const record = (): RecordView => ({
       ['X1.01', 'X1', '1', 'A step of a row with no brief', '', '', ''],
     ]),
   ],
-  work: [{ area: AREA, id: 'E7' }, { area: AREA, id: 'E8' }, { area: AREA, id: 'E9' }, { area: '03-luxury', id: 'F-012' }],
+  work: [{ area: AREA, id: 'E7' }, { area: AREA, id: 'E8' }, { area: AREA, id: 'E9' }, { area: '04-luxury', id: 'F-012' }],
   blocks: [{ area: AREA, id: '01.27' }],
 });
 
@@ -100,11 +100,11 @@ describe('a know line - the fact and where it comes from', () => {
     const rec = record();
     const all = indexManuals({
       ...rec,
-      tables: rec.tables.map((t) => (t.table === 'briefs' ? { ...t, rows: [['E8', 'g', '', '', '', '', '', 'a [00-CAR specs SP012]\nb [03-luxury:F-012]', 'd', '', '']] } : t)),
+      tables: rec.tables.map((t) => (t.table === 'briefs' ? { ...t, rows: [['E8', 'g', '', '', '', '', '', 'a [00-CAR specs SP012]\nb [04-luxury:F-012]', 'd', '', '']] } : t)),
     });
     const k = all.get(AREA)!.rows.get('E8')!.brief!.know;
     expect(k[0].sources[0]).toEqual({ text: '00-CAR specs SP012', kind: 'row', href: '#/row/00-CAR/specs/SP012' });
-    expect(k[1].sources[0]).toEqual({ text: '03-luxury:F-012', kind: 'work', href: '#/p/03-luxury/todo/F-012' });
+    expect(k[1].sources[0]).toEqual({ text: '04-luxury:F-012', kind: 'work', href: '#/p/04-luxury/todo/F-012' });
   });
 });
 
@@ -144,9 +144,9 @@ describe('a brief - parts by name, lists by line', () => {
     expect([...all.keys()]).toEqual([AREA]);
     expect(all.get('00-CAR')).toBeUndefined();
     // declared and empty: an entry, and nothing in it - the page reads as it always has
-    const empty = indexManuals({ tables: [table('02-engine', 'briefs', BRIEFS, []), table('02-engine', 'steps', STEPS, [])], work: [], blocks: [] });
-    expect(empty.get('02-engine')).toMatchObject({ briefs: 0 });
-    expect(empty.get('02-engine')!.rows.size).toBe(0);
+    const empty = indexManuals({ tables: [table('03-engine', 'briefs', BRIEFS, []), table('03-engine', 'steps', STEPS, [])], work: [], blocks: [] });
+    expect(empty.get('03-engine')).toMatchObject({ briefs: 0 });
+    expect(empty.get('03-engine')!.rows.size).toBe(0);
   });
   it('links the area\'s own part ids in a line, on top of inlineMd', () => {
     const h = rich('Crimp with **P037** per D-280, not P999 or F12.', m.partHref);

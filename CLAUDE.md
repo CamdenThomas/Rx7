@@ -60,9 +60,9 @@ The record is CSV, and it describes itself (`rx7.py doc record` has the long for
 An **area** is any directory holding `data/_tables.csv`, at `ROOT/<area>` or
 `ROOT/02-PROJECTS/<project>`: `00-CAR` (the car: its state and every truth about it - parts,
 specs, sources, the catalogue, the found models, the circuits - PERMANENT), `02-APP` (the Rx7 app
-and its own work, D-428), and each project under `02-PROJECTS` (`01-electrical`, `02-engine`,
-`03-luxury` - the fancy parts, the body and paint, the interior; it took in `04-beauty` on
-2026-10-14, D-570 - and `05-cad`). **Three homes** (D-519): CAR holds state and
+and its own work, D-428), and each project under `02-PROJECTS` (`01-electrical`, `02-cad`,
+`03-engine`, `04-luxury` - the fancy parts, the body and paint, the interior; it took in
+`04-beauty` on 2026-10-14, D-570; numbered in this order since D-572). **Three homes** (D-519): CAR holds state and
 truth, APP the app and the view of everything, PROJECTS the work in progress until it merges into
 the car. `01-INTAKE` (the old `01-REFERENCE`, renamed 2026-10-13) is none of them: it is the
 **intake** - bulk to be processed (a manual, a
@@ -125,7 +125,7 @@ met before the row can start; an empty gate is met; they resolve across the whol
 | `D-274`           | that decision is standing or inherited                                |
 | `01.07`           | that block is gone from `blocks` and a decision names it in `closes` |
 | `A5` · `F-012`    | that work row is done or dropped, in this area                        |
-| `03-luxury:F-012` | the same, in another area — **always qualify across areas**           |
+| `04-luxury:F-012` | the same, in another area — **always qualify across areas**           |
 | `phase:SOURCING`  | this area is at that phase or past it                                 |
 
 **READY** is every open row whose gate is met; `status` prints it. Work is taken from READY

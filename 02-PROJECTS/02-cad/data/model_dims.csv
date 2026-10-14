@@ -1,0 +1,271 @@
+id,part,dim,value_mm,how,source,date,note
+MD-0001,PT525-FL,"wheel centre, across",710.0,factory,"02-cad DT02 (SP-132, S-004 p.14)",,params corner/wheel_x. front track 1419.9 / 2; the tyre's centre plane
+MD-0002,PT525-FL,wheel centre height,294.5,derived,02-cad DT02,,params skin/wheel_z. unloaded
+MD-0003,PT525-FL,rim bead seat diameter,330.2,factory,"SP-1513 (S-038 T:6), SP-126",,params corner/rim_dia. 13 in bead seat
+MD-0004,PT525-FL,rim width between flanges,127.0,factory,SP-1513 (5-J x 13),,params corner/rim_width. 5 in between the flanges
+MD-0005,PT525-FL,rim flange height,17.5,catalogue,ETRTO J flange (catalogue figure),,params corner/flange_h. the J contour's flange height; not measured
+MD-0006,PT525-FL,wheel offset ET,20.0,catalogue,"SP-1520 (S-020, secondary)",,params corner/offset. mounting face outboard of the rim centre line
+MD-0007,PT042-FL,wheel offset ET,20.0,catalogue,"SP-1520 (S-020, secondary)",,params corner/offset. mounting face outboard of the rim centre line
+MD-0008,PT525-FL,bolt circle (PCD),110.0,catalogue,"SP-1519 (S-021, secondary)",,params corner/pcd. 4 studs
+MD-0009,PT526-FL,bolt circle (PCD),110.0,catalogue,"SP-1519 (S-021, secondary)",,params corner/pcd. 4 studs
+MD-0010,PT042-FL,bolt circle (PCD),110.0,catalogue,"SP-1519 (S-021, secondary)",,params corner/pcd. 4 studs
+MD-0011,PT526-FL,stud count,4,catalogue,SP-1519 (4 x 110),,params corner/studs. 
+MD-0012,PT525-FL,centre bore,60.0,guess,,,params corner/bore. centre bore; not in the record
+MD-0013,PT525-FL,disc thickness,4.0,guess,,,params corner/disc_t. pressed steel disc thickness
+MD-0014,PT525-FL,rim thickness,3.0,guess,,,params corner/rim_t. rim sheet thickness
+MD-0015,PT525-FL,drop centre depth,24.0,guess,,,params corner/drop_depth. well depth below the bead seat
+MD-0016,PT530-FL,tyre section width,185.0,factory,SP-128 (S-004 p.14-15),,params corner/tyre_w. section width
+MD-0017,PT530-FL,tyre aspect ratio,70.0,factory,SP-128,,params corner/tyre_aspect. per cent
+MD-0018,PT530-FL,tyre outside diameter,589.2,derived,"SP-128, SP-1513",,params corner/tyre_od. 13 in + 2 x 70 % of 185; DT02's 589
+MD-0019,PT526-FL,nut across flats,19.0,catalogue,00-CAR PT526 note (Mazdatrix M12x1.5 19 mm),,params corner/nut_af. 
+MD-0020,PT526-FL,nut height,22.0,guess,,,params corner/nut_h. open-top nut height
+MD-0021,PT526-FL,stud thread,12.0,factory,SP-124 (M12 x 1.5),,params corner/nut_thread. 
+MD-0022,PT042-FL,brake disc effective diameter,202.0,factory,SP-113 (S-002 p.11-2),,params corner/disc_eff. effective diameter
+MD-0023,PT042-FL,brake disc outside diameter,228.0,guess,,,"params corner/disc_od. outside diameter, from the effective 202 + pad height"
+MD-0024,PT042-FL,brake disc thickness,18.0,factory,SP-113,,params corner/disc_th. new; limit 17
+MD-0025,PT042-FL,hub flange diameter,140.0,guess,,,params corner/hub_flange. 
+MD-0026,PT042-FL,hub barrel diameter,76.0,guess,,,params corner/hub_barrel. bearing barrel
+MD-0027,PT042-FL,hub length,95.0,guess,,,params corner/hub_len. flange face to the inner bearing end
+MD-0028,PT768-R,wheelbase,2420.0,factory,"DT03 (SP-131, S-004 p.14)",,params unibody/wheelbase. 
+MD-0029,PT768-L,wheelbase,2420.0,factory,"DT03 (SP-131, S-004 p.14)",,params unibody/wheelbase. 
+MD-0030,PT777-R,wheelbase,2420.0,factory,"DT03 (SP-131, S-004 p.14)",,params unibody/wheelbase. 
+MD-0031,PT777-L,wheelbase,2420.0,factory,"DT03 (SP-131, S-004 p.14)",,params unibody/wheelbase. 
+MD-0032,PT777-R,wheel centre height,294.5,derived,"DT02 (tyre size, unloaded)",,params unibody/wheel_z. confirm at the ride height
+MD-0033,PT777-L,wheel centre height,294.5,derived,"DT02 (tyre size, unloaded)",,params unibody/wheel_z. confirm at the ride height
+MD-0034,PT778,overall length,4320.5,factory,"DT04 (SP-133, S-004 p.15)",,params unibody/length. bumpers included; the shell is shorter Governs the whole shell.
+MD-0035,PT768-R,overall half-width,834.4,factory,"DT05 (SP-134, S-004 p.15)",,params unibody/half_w. reading: the widest point is the rear-arch lip of the quarter panel; with side protector mouldings - confirm where
+MD-0036,PT768-L,overall half-width,834.4,factory,"DT05 (SP-134, S-004 p.15)",,params unibody/half_w. reading: the widest point is the rear-arch lip of the quarter panel; with side protector mouldings - confirm where
+MD-0037,PT774,overall height,1259.8,factory,"DT06 (SP-135, S-004 p.15)",,params unibody/height. unladen; the roof's top
+MD-0038,PT778,ground clearance,144.8,factory,"DT07 (SP-136, S-004 p.15)",,"params unibody/ground_clear. the lowest point of the car - a mechanical part, not the shell; the shell stays above it Governs the whole shell."
+MD-0039,PT755-R,"hole A, across",400.0,factory,"DT10 (SP-234, FSM)",,"params unibody/a_half. front frame basic holes A, 800 apart"
+MD-0040,PT755-L,"hole A, across",400.0,factory,"DT10 (SP-234, FSM)",,"params unibody/a_half. front frame basic holes A, 800 apart"
+MD-0041,PT755-R,hole A above the datum,220.0,factory,"DT10 (SP-239, FSM)",,params unibody/a_z_rel. above the underbody datum line
+MD-0042,PT755-L,hole A above the datum,220.0,factory,"DT10 (SP-239, FSM)",,params unibody/a_z_rel. above the underbody datum line
+MD-0043,PT780-R,"hole B, across",397.5,factory,"DT11 (SP-235, FSM)",,"params unibody/b_half. rear frame basic holes B, 795 apart"
+MD-0044,PT780-L,"hole B, across",397.5,factory,"DT11 (SP-235, FSM)",,"params unibody/b_half. rear frame basic holes B, 795 apart"
+MD-0045,PT755-R,"hole A to hole B, lengthwise",2250.0,factory,"DT11 (SP-236, FSM)",,params unibody/a_to_b. lengthwise
+MD-0046,PT755-L,"hole A to hole B, lengthwise",2250.0,factory,"DT11 (SP-236, FSM)",,params unibody/a_to_b. lengthwise
+MD-0047,PT780-R,"hole A to hole B, lengthwise",2250.0,factory,"DT11 (SP-236, FSM)",,params unibody/a_to_b. lengthwise
+MD-0048,PT780-L,"hole A to hole B, lengthwise",2250.0,factory,"DT11 (SP-236, FSM)",,params unibody/a_to_b. lengthwise
+MD-0049,PT780-R,"hole C, across",445.0,factory,"DT12 (SP-237, FSM)",,"params unibody/c_half. rear frame holes C, 890 apart"
+MD-0050,PT780-L,"hole C, across",445.0,factory,"DT12 (SP-237, FSM)",,"params unibody/c_half. rear frame holes C, 890 apart"
+MD-0051,PT780-R,"hole F, across",524.0,factory,"DT13 (SP-238, FSM)",,"params unibody/f_half. rear upper arm fixing holes F, 1048 apart"
+MD-0052,PT780-L,"hole F, across",524.0,factory,"DT13 (SP-238, FSM)",,"params unibody/f_half. rear upper arm fixing holes F, 1048 apart"
+MD-0053,PT754-R,"fender fixing nuts, across",662.0,factory,"DT14 (SP-239, FSM)",,"params unibody/nut_half. front fender fixing nuts, 1324 apart"
+MD-0054,PT754-L,"fender fixing nuts, across",662.0,factory,"DT14 (SP-239, FSM)",,"params unibody/nut_half. front fender fixing nuts, 1324 apart"
+MD-0055,PT754-R,front wheel centre to fender line,364.0,factory,SP-1280 (S-038 T:7),,params unibody/fender_line_f. wheel centre to the front fender line (arch top)
+MD-0056,PT754-L,front wheel centre to fender line,364.0,factory,SP-1280 (S-038 T:7),,params unibody/fender_line_f. wheel centre to the front fender line (arch top)
+MD-0057,PT768-R,rear wheel centre to fender line,358.0,factory,"DT08 (SP-106, S-003 T:7)",,params unibody/fender_line_r. read as SP-1280 reads the front figure: wheel centre to the rear fender line (the 1980 spec)
+MD-0058,PT768-L,rear wheel centre to fender line,358.0,factory,"DT08 (SP-106, S-003 T:7)",,params unibody/fender_line_r. read as SP-1280 reads the front figure: wheel centre to the rear fender line (the 1980 spec)
+MD-0059,PT777-R,rear wheel centre to fender line,358.0,factory,"DT08 (SP-106, S-003 T:7)",,params unibody/fender_line_r. read as SP-1280 reads the front figure: wheel centre to the rear fender line (the 1980 spec)
+MD-0060,PT777-L,rear wheel centre to fender line,358.0,factory,"DT08 (SP-106, S-003 T:7)",,params unibody/fender_line_r. read as SP-1280 reads the front figure: wheel centre to the rear fender line (the 1980 spec)
+MD-0061,PT778,underbody datum line above the ground,60.0,guess,S-002 p.14-24 (FSM body checking dimensions); DT09,,params unibody/z_datum. the datum line's height above the ground is not in the record; 60 puts the floor's underside at the blueprint's sill bottom Governs the whole shell.
+MD-0062,PT755-R,hole A forward of the front axle,580.0,guess,S-002 p.14-24 (FSM body checking dimensions) plan view,,params unibody/y_a. hole A's lengthwise place is not in the record (DT10). The plan view puts the strut-tower circle at the hole 580 behind A; read as the tower over the front axle (caster ignored)
+MD-0063,PT755-L,hole A forward of the front axle,580.0,guess,S-002 p.14-24 (FSM body checking dimensions) plan view,,params unibody/y_a. hole A's lengthwise place is not in the record (DT10). The plan view puts the strut-tower circle at the hole 580 behind A; read as the tower over the front axle (caster ignored)
+MD-0064,PT780-R,"hole A to hole C, lengthwise",3445.0,derived,"S-002 p.14-24 (FSM body checking dimensions) diagonals 2990.4, 3095.6, 1466.2, 1190.9 (plan, A+460 hole to C; B to C)",,params unibody/a_to_c. the four give 3438-3450; the mean
+MD-0065,PT780-L,"hole A to hole C, lengthwise",3445.0,derived,"S-002 p.14-24 (FSM body checking dimensions) diagonals 2990.4, 3095.6, 1466.2, 1190.9 (plan, A+460 hole to C; B to C)",,params unibody/a_to_c. the four give 3438-3450; the mean
+MD-0066,PT780-R,"hole E, across",530.0,guess,S-002 p.14-24 (FSM body checking dimensions) plan view,,params unibody/e_half. E sits a hair outboard of F on the drawing
+MD-0067,PT780-L,"hole E, across",530.0,guess,S-002 p.14-24 (FSM body checking dimensions) plan view,,params unibody/e_half. E sits a hair outboard of F on the drawing
+MD-0068,PT780-R,"hole A to hole E, lengthwise",2519.0,derived,"S-002 p.14-24 (FSM body checking dimensions) diagonal E to the opposite C 1343.6, with e_half and a_to_c",,params unibody/a_to_e. 
+MD-0069,PT780-L,"hole A to hole E, lengthwise",2519.0,derived,"S-002 p.14-24 (FSM body checking dimensions) diagonal E to the opposite C 1343.6, with e_half and a_to_c",,params unibody/a_to_e. 
+MD-0070,PT780-R,"hole A to hole F, lengthwise",2784.0,derived,"S-002 p.14-24 (FSM body checking dimensions) plan view, F's line interpolated between B (2250) and C (3445) at 2.543 mm/px",,params unibody/a_to_f. not dimensioned on the page
+MD-0071,PT780-L,"hole A to hole F, lengthwise",2784.0,derived,"S-002 p.14-24 (FSM body checking dimensions) plan view, F's line interpolated between B (2250) and C (3445) at 2.543 mm/px",,params unibody/a_to_f. not dimensioned on the page
+MD-0072,PT780-R,hole C above the datum,345.0,factory,S-002 p.14-24 (FSM body checking dimensions) side view,,params unibody/c_z_rel. reading: the 345 (13.58) on the side view is C's height above the datum
+MD-0073,PT780-L,hole C above the datum,345.0,factory,S-002 p.14-24 (FSM body checking dimensions) side view,,params unibody/c_z_rel. reading: the 345 (13.58) on the side view is C's height above the datum
+MD-0074,PT780-R,hole E above the datum,110.0,factory,S-002 p.14-24 (FSM body checking dimensions) side view,,params unibody/e_z_rel. reading: the 110 (4.33) is E's height above the datum
+MD-0075,PT780-L,hole E above the datum,110.0,factory,S-002 p.14-24 (FSM body checking dimensions) side view,,params unibody/e_z_rel. reading: the 110 (4.33) is E's height above the datum
+MD-0076,PT780-R,hole F above the datum,339.4,factory,S-002 p.14-24 (FSM body checking dimensions) side view,,params unibody/f_z_rel. reading: the 339.4 (13.36) is F's height above the datum (it may instead be E to F) - confirm on the page
+MD-0077,PT780-L,hole F above the datum,339.4,factory,S-002 p.14-24 (FSM body checking dimensions) side view,,params unibody/f_z_rel. reading: the 339.4 (13.36) is F's height above the datum (it may instead be E to F) - confirm on the page
+MD-0078,PT754-R,fender fixing nut above hole A,435.0,factory,SP-1281 (FSM section G-G),,params unibody/nut_z_rel_a. reading: the fender nut's height above hole A
+MD-0079,PT754-L,fender fixing nut above hole A,435.0,factory,SP-1281 (FSM section G-G),,params unibody/nut_z_rel_a. reading: the fender nut's height above hole A
+MD-0080,PT755-R,front rail tip ahead of hole A,150.0,derived,S-002 p.14-24 (FSM body checking dimensions) plan view (50 px x 2.98 mm/px),,params unibody/rail_tip. the front rail's end ahead of hole A
+MD-0081,PT755-L,front rail tip ahead of hole A,150.0,derived,S-002 p.14-24 (FSM body checking dimensions) plan view (50 px x 2.98 mm/px),,params unibody/rail_tip. the front rail's end ahead of hole A
+MD-0082,PT753,front rail tip ahead of hole A,150.0,derived,S-002 p.14-24 (FSM body checking dimensions) plan view (50 px x 2.98 mm/px),,params unibody/rail_tip. the front rail's end ahead of hole A
+MD-0083,PT754-R,"strut tower centre, across",510.0,derived,"S-002 p.14-24 (FSM body checking dimensions) plan view (the tower circle, 40 px outboard of the rail at 2.7 mm/px)",,params unibody/strut_half. 
+MD-0084,PT754-L,"strut tower centre, across",510.0,derived,"S-002 p.14-24 (FSM body checking dimensions) plan view (the tower circle, 40 px outboard of the rail at 2.7 mm/px)",,params unibody/strut_half. 
+MD-0085,PT778,front overhang,928.4,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/front_oh. its front end with its trim; with rear_oh the overhangs still sum to DT04 less DT03 (was 981.5, derived) Governs the whole shell."
+MD-0086,PT778,rear overhang,972.1,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/rear_oh. its rear end with its trim (was 919.0, derived) Governs the whole shell."
+MD-0087,PT764,"windshield base, lengthwise",-700.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/ws_base_y. the windshield glass starts at -700 on the centreline (was -720.0, found)"
+MD-0088,PT770-R,"windshield base, lengthwise",-700.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/ws_base_y. the windshield glass starts at -700 on the centreline (was -720.0, found)"
+MD-0089,PT770-L,"windshield base, lengthwise",-700.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/ws_base_y. the windshield glass starts at -700 on the centreline (was -720.0, found)"
+MD-0090,PT764,windshield base height,900.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/ws_base_z. the glass is 902 high at -700 (was 880.0, found)"
+MD-0091,PT770-R,"A-pillar top, lengthwise",-1180.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/ws_corner_y. the side glass is full width (696) and the roof begins near -1200; at -980 the body edge is only 963 high (was -980.0, guess)"
+MD-0092,PT770-L,"A-pillar top, lengthwise",-1180.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/ws_corner_y. the side glass is full width (696) and the roof begins near -1200; at -980 the body edge is only 963 high (was -980.0, guess)"
+MD-0093,PT770-R,A-pillar top height,1130.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/ws_corner_z. the body edge at |x| 600-700 reaches about 1140 by -1150 (was 1150.0, guess)"
+MD-0094,PT770-L,A-pillar top height,1130.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/ws_corner_z. the body edge at |x| 600-700 reaches about 1140 by -1150 (was 1150.0, guess)"
+MD-0095,PT774,"roof front edge, lengthwise",-1200.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/roof_front_y. the windshield top, 1196 at -1200 (was -1150.0, found)"
+MD-0096,PT773-front,"roof front edge, lengthwise",-1200.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/roof_front_y. the windshield top, 1196 at -1200 (was -1150.0, found)"
+MD-0097,PT773-rear,"roof front edge, lengthwise",-1200.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/roof_front_y. the windshield top, 1196 at -1200 (was -1150.0, found)"
+MD-0098,PT774,"roof's highest point, lengthwise",-1600.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/roof_peak_y. 1260 at -1600 (DT06) (was -1540.0, found)"
+MD-0099,PT774,"roof rear edge (hatch hinge line), lengthwise",-2230.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/roof_rear_y. the roof ends between -2200 (1199 high) and the hatch glass at -2300 (was -2220.0, found)"
+MD-0100,PT773-front,"roof rear edge (hatch hinge line), lengthwise",-2230.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/roof_rear_y. the roof ends between -2200 (1199 high) and the hatch glass at -2300 (was -2220.0, found)"
+MD-0101,PT773-rear,"roof rear edge (hatch hinge line), lengthwise",-2230.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/roof_rear_y. the roof ends between -2200 (1199 high) and the hatch glass at -2300 (was -2220.0, found)"
+MD-0102,PT767-R,"roof rear edge (hatch hinge line), lengthwise",-2230.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/roof_rear_y. the roof ends between -2200 (1199 high) and the hatch glass at -2300 (was -2220.0, found)"
+MD-0103,PT767-L,"roof rear edge (hatch hinge line), lengthwise",-2230.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/roof_rear_y. the roof ends between -2200 (1199 high) and the hatch glass at -2300 (was -2220.0, found)"
+MD-0104,PT774,roof rear edge height,1190.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/roof_rear_z. the roof's rear edge height (was 1200.0, found)"
+MD-0105,PT773-front,roof rear edge height,1190.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/roof_rear_z. the roof's rear edge height (was 1200.0, found)"
+MD-0106,PT773-rear,roof rear edge height,1190.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/roof_rear_z. the roof's rear edge height (was 1200.0, found)"
+MD-0107,PT774,roof half-width,560.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/roof_half. above 1150 the body is 520-540 each side, 610-630 at 1000-1100: the roof tumbles in; 690 was the side glass lower down (was 690.0, found)"
+MD-0108,PT767-R,roof half-width,560.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/roof_half. above 1150 the body is 520-540 each side, 610-630 at 1000-1100: the roof tumbles in; 690 was the side glass lower down (was 690.0, found)"
+MD-0109,PT767-L,roof half-width,560.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/roof_half. above 1150 the body is 520-540 each side, 610-630 at 1000-1100: the roof tumbles in; 690 was the side glass lower down (was 690.0, found)"
+MD-0110,PT773-front,roof half-width,560.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/roof_half. above 1150 the body is 520-540 each side, 610-630 at 1000-1100: the roof tumbles in; 690 was the side glass lower down (was 690.0, found)"
+MD-0111,PT773-rear,roof half-width,560.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/roof_half. above 1150 the body is 520-540 each side, 610-630 at 1000-1100: the roof tumbles in; 690 was the side glass lower down (was 690.0, found)"
+MD-0112,PT774,roof camber,100.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/roof_camber. 1260 at the centre, about 1160 at the edge (was 45.0, guess)"
+MD-0113,PT772-R,"hatch aperture bottom, lengthwise",-3020.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/tail_y. the hatch glass ends near -3020 (was -2990.0, found)"
+MD-0114,PT772-L,"hatch aperture bottom, lengthwise",-3020.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/tail_y. the hatch glass ends near -3020 (was -2990.0, found)"
+MD-0115,PT768-R,"hatch aperture bottom, lengthwise",-3020.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/tail_y. the hatch glass ends near -3020 (was -2990.0, found)"
+MD-0116,PT768-L,"hatch aperture bottom, lengthwise",-3020.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/tail_y. the hatch glass ends near -3020 (was -2990.0, found)"
+MD-0117,PT772-R,hatch aperture bottom height,860.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/tail_z. the glass is 845-868 high at -3000 (was 850.0, found)"
+MD-0118,PT772-L,hatch aperture bottom height,860.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/tail_z. the glass is 845-868 high at -3000 (was 850.0, found)"
+MD-0119,PT768-R,hatch aperture bottom height,860.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/tail_z. the glass is 845-868 high at -3000 (was 850.0, found)"
+MD-0120,PT768-L,hatch aperture bottom height,860.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/tail_z. the glass is 845-868 high at -3000 (was 850.0, found)"
+MD-0121,PT768-R,belt line height,855.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/belt_z. the side glass's lowest point, 853-855 (was 870.0, found)"
+MD-0122,PT768-L,belt line height,855.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/belt_z. the side glass's lowest point, 853-855 (was 870.0, found)"
+MD-0123,PT769-R,belt line height,855.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/belt_z. the side glass's lowest point, 853-855 (was 870.0, found)"
+MD-0124,PT769-L,belt line height,855.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/belt_z. the side glass's lowest point, 853-855 (was 870.0, found)"
+MD-0125,PT771-R,sill bottom height,205.0,found,blueprint the-blueprints 83684 row 617 -> 210; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 205,,params unibody/sill_bottom. won: the found shell (205; the blueprint's 210 is the rocker moulding). 
+MD-0126,PT771-L,sill bottom height,205.0,found,blueprint the-blueprints 83684 row 617 -> 210; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 205,,params unibody/sill_bottom. won: the found shell (205; the blueprint's 210 is the rocker moulding). 
+MD-0127,PT783-R,sill bottom height,205.0,found,blueprint the-blueprints 83684 row 617 -> 210; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 205,,params unibody/sill_bottom. won: the found shell (205; the blueprint's 210 is the rocker moulding). 
+MD-0128,PT783-L,sill bottom height,205.0,found,blueprint the-blueprints 83684 row 617 -> 210; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 205,,params unibody/sill_bottom. won: the found shell (205; the blueprint's 210 is the rocker moulding). 
+MD-0129,PT768-R,sill bottom height,205.0,found,blueprint the-blueprints 83684 row 617 -> 210; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 205,,params unibody/sill_bottom. won: the found shell (205; the blueprint's 210 is the rocker moulding). 
+MD-0130,PT768-L,sill bottom height,205.0,found,blueprint the-blueprints 83684 row 617 -> 210; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut -> 205,,params unibody/sill_bottom. won: the found shell (205; the blueprint's 210 is the rocker moulding). 
+MD-0131,PT769-R,"door opening front, lengthwise",-728.0,found,blueprint the-blueprints 83684 px 993,,params unibody/door_front_y. won: the blueprint alone (the found shell's door cut is not modelled). 
+MD-0132,PT769-L,"door opening front, lengthwise",-728.0,found,blueprint the-blueprints 83684 px 993,,params unibody/door_front_y. won: the blueprint alone (the found shell's door cut is not modelled). 
+MD-0133,PT976-R,"door opening rear, lengthwise",-1927.0,found,blueprint the-blueprints 83684 px 1653,,params unibody/door_rear_y. won: the blueprint alone. 
+MD-0134,PT976-L,"door opening rear, lengthwise",-1927.0,found,blueprint the-blueprints 83684 px 1653,,params unibody/door_rear_y. won: the blueprint alone. 
+MD-0135,PT768-R,"door opening rear, lengthwise",-1927.0,found,blueprint the-blueprints 83684 px 1653,,params unibody/door_rear_y. won: the blueprint alone. 
+MD-0136,PT768-L,"door opening rear, lengthwise",-1927.0,found,blueprint the-blueprints 83684 px 1653,,params unibody/door_rear_y. won: the blueprint alone. 
+MD-0137,PT976-R,"centre pillar top, lengthwise",-2010.0,found,blueprint the-blueprints 83684 px 1700,,params unibody/bpillar_top_y. won: the blueprint alone. the door glass's rear top corner
+MD-0138,PT976-L,"centre pillar top, lengthwise",-2010.0,found,blueprint the-blueprints 83684 px 1700,,params unibody/bpillar_top_y. won: the blueprint alone. the door glass's rear top corner
+MD-0139,PT976-R,"sail rear edge, lengthwise",-2266.0,found,blueprint the-blueprints 83684 px 1840,,"params unibody/sail_rear_y. won: the blueprint alone. the sail panel's rear edge, at the quarter glass"
+MD-0140,PT976-L,"sail rear edge, lengthwise",-2266.0,found,blueprint the-blueprints 83684 px 1840,,"params unibody/sail_rear_y. won: the blueprint alone. the sail panel's rear edge, at the quarter glass"
+MD-0141,PT768-R,wheel arch radius,351.0,found,blueprint the-blueprints 83684 front arch 193 px,,params unibody/arch_r. won: the blueprint alone (the found shell carries flares). the arch opening's radius; the rear taken the same
+MD-0142,PT768-L,wheel arch radius,351.0,found,blueprint the-blueprints 83684 front arch 193 px,,params unibody/arch_r. won: the blueprint alone (the found shell carries flares). the arch opening's radius; the rear taken the same
+MD-0143,PT754-R,wheel arch radius,351.0,found,blueprint the-blueprints 83684 front arch 193 px,,params unibody/arch_r. won: the blueprint alone (the found shell carries flares). the arch opening's radius; the rear taken the same
+MD-0144,PT754-L,wheel arch radius,351.0,found,blueprint the-blueprints 83684 front arch 193 px,,params unibody/arch_r. won: the blueprint alone (the found shell carries flares). the arch opening's radius; the rear taken the same
+MD-0145,PT754-R,hood line at the front axle,816.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/hood_z0. the centreline top at the front axle (was 847.0, found)"
+MD-0146,PT754-L,hood line at the front axle,816.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/hood_z0. the centreline top at the front axle (was 847.0, found)"
+MD-0147,PT753,"radiator support, lengthwise",600.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/rad_y. the nose is 677 high at 600; at 720 it is only 620 (was 720.0, guess)"
+MD-0148,PT752,"radiator support, lengthwise",600.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/rad_y. the nose is 677 high at 600; at 720 it is only 620 (was 720.0, guess)"
+MD-0149,PT761-R,"radiator support, lengthwise",600.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/rad_y. the nose is 677 high at 600; at 720 it is only 620 (was 720.0, guess)"
+MD-0150,PT761-L,"radiator support, lengthwise",600.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/rad_y. the nose is 677 high at 600; at 720 it is only 620 (was 720.0, guess)"
+MD-0151,PT756,"firewall, lengthwise",-640.0,found,"00-CAR zones engine_bay / dash boundary -642 (the combined model, D-421)",,params unibody/firewall_y. 
+MD-0152,PT757,"firewall, lengthwise",-640.0,found,"00-CAR zones engine_bay / dash boundary -642 (the combined model, D-421)",,params unibody/firewall_y. 
+MD-0153,PT762,"firewall, lengthwise",-640.0,found,"00-CAR zones engine_bay / dash boundary -642 (the combined model, D-421)",,params unibody/firewall_y. 
+MD-0154,PT766-R,"firewall, lengthwise",-640.0,found,"00-CAR zones engine_bay / dash boundary -642 (the combined model, D-421)",,params unibody/firewall_y. 
+MD-0155,PT766-L,"firewall, lengthwise",-640.0,found,"00-CAR zones engine_bay / dash boundary -642 (the combined model, D-421)",,params unibody/firewall_y. 
+MD-0156,PT756,"toe board foot, lengthwise",-850.0,guess,,,params unibody/firewall_foot_y. the toe board's foot
+MD-0157,PT778,"toe board foot, lengthwise",-850.0,guess,,,params unibody/firewall_foot_y. the toe board's foot
+MD-0158,PT775,"rear end panel, lengthwise",-3150.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/rear_panel_y. the tail is 800 high at -3150 and falls to 550 by -3300 (was -3260.0, guess)"
+MD-0159,PT776,"rear end panel, lengthwise",-3150.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/rear_panel_y. the tail is 800 high at -3150 and falls to 550 by -3300 (was -3260.0, guess)"
+MD-0160,PT779,"rear end panel, lengthwise",-3150.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/rear_panel_y. the tail is 800 high at -3150 and falls to 550 by -3300 (was -3260.0, guess)"
+MD-0161,PT780-R,"rear end panel, lengthwise",-3150.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/rear_panel_y. the tail is 800 high at -3150 and falls to 550 by -3300 (was -3260.0, guess)"
+MD-0162,PT780-L,"rear end panel, lengthwise",-3150.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/rear_panel_y. the tail is 800 high at -3150 and falls to 550 by -3300 (was -3260.0, guess)"
+MD-0163,PT778,front floor above the datum,150.0,guess,S-002 p.14-24 (FSM body checking dimensions) side view (the floor runs 120-150 above the datum),,params unibody/floor_rel. floor underside above the datum
+MD-0164,PT779,rear (cargo) floor height,520.0,guess,,,"params unibody/rear_floor_z. the cargo floor, clear of the axle (DT03) and the tank"
+MD-0165,PT778,"floor kick-up, lengthwise",-1950.0,guess,,,"params unibody/kick_y. where the front floor steps up to the rear floor, behind the seats"
+MD-0166,PT779,"floor kick-up, lengthwise",-1950.0,guess,,,"params unibody/kick_y. where the front floor steps up to the rear floor, behind the seats"
+MD-0167,PT781,"floor kick-up, lengthwise",-1950.0,guess,,,"params unibody/kick_y. where the front floor steps up to the rear floor, behind the seats"
+MD-0168,PT771-R,"sill inner face, across",690.0,guess,,,params unibody/sill_in. the inner sill's face
+MD-0169,PT771-L,"sill inner face, across",690.0,guess,,,params unibody/sill_in. the inner sill's face
+MD-0170,PT783-R,"sill inner face, across",690.0,guess,,,params unibody/sill_in. the inner sill's face
+MD-0171,PT783-L,"sill inner face, across",690.0,guess,,,params unibody/sill_in. the inner sill's face
+MD-0172,PT778,"sill inner face, across",690.0,guess,,,params unibody/sill_in. the inner sill's face
+MD-0173,PT771-R,"sill outer face, across",800.0,guess,blueprint the-blueprints 83684 plan (the rocker sits inside the door skin),,params unibody/sill_out. 
+MD-0174,PT771-L,"sill outer face, across",800.0,guess,blueprint the-blueprints 83684 plan (the rocker sits inside the door skin),,params unibody/sill_out. 
+MD-0175,PT771-R,sill top height,330.0,guess,,,params unibody/sill_top. 
+MD-0176,PT771-L,sill top height,330.0,guess,,,params unibody/sill_top. 
+MD-0177,PT783-R,sill top height,330.0,guess,,,params unibody/sill_top. 
+MD-0178,PT783-L,sill top height,330.0,guess,,,params unibody/sill_top. 
+MD-0179,PT769-R,sill top height,330.0,guess,,,params unibody/sill_top. 
+MD-0180,PT769-L,sill top height,330.0,guess,,,params unibody/sill_top. 
+MD-0181,PT778,tunnel width at the floor,380.0,guess,,,params unibody/tunnel_base. 
+MD-0182,PT778,tunnel width at the top,240.0,guess,,,params unibody/tunnel_top. 
+MD-0183,PT778,tunnel height,250.0,guess,,,params unibody/tunnel_h. 
+MD-0184,PT755-R,front rail width,75.0,guess,,,params unibody/frail_w. 
+MD-0185,PT755-L,front rail width,75.0,guess,,,params unibody/frail_w. 
+MD-0186,PT755-R,front rail depth,107.0,factory,"S-002 p.14-24 (FSM body checking dimensions) detail K, b = 107",,params unibody/frail_h. reading: b is the rail's depth at hole A - confirm
+MD-0187,PT755-L,front rail depth,107.0,factory,"S-002 p.14-24 (FSM body checking dimensions) detail K, b = 107",,params unibody/frail_h. reading: b is the rail's depth at hole A - confirm
+MD-0188,PT780-R,rear rail width,70.0,guess,,,params unibody/rrail_w. 
+MD-0189,PT780-L,rear rail width,70.0,guess,,,params unibody/rrail_w. 
+MD-0190,PT780-R,rear rail depth,100.0,guess,,,params unibody/rrail_h. 
+MD-0191,PT780-L,rear rail depth,100.0,guess,,,params unibody/rrail_h. 
+MD-0192,PT755-R,rail depth under the floor,50.0,guess,,,params unibody/under_h. the rails' depth under the floor
+MD-0193,PT755-L,rail depth under the floor,50.0,guess,,,params unibody/under_h. the rails' depth under the floor
+MD-0194,PT780-R,rail depth under the floor,50.0,guess,,,params unibody/under_h. the rails' depth under the floor
+MD-0195,PT780-L,rail depth under the floor,50.0,guess,,,params unibody/under_h. the rails' depth under the floor
+MD-0196,PT754-R,strut tower radius,90.0,guess,,,params unibody/strut_r. 
+MD-0197,PT754-L,strut tower radius,90.0,guess,,,params unibody/strut_r. 
+MD-0198,PT754-R,strut tower top height,754.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/strut_top. the hood line (816) less 62, as before (was 785.0, guess)"
+MD-0199,PT754-L,strut tower top height,754.0,found,"the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)",,"params unibody/strut_top. the hood line (816) less 62, as before (was 785.0, guess)"
+MD-0200,PT777-R,"rear wheelhouse inner face, across",560.0,guess,,,params unibody/wh_in. 
+MD-0201,PT777-L,"rear wheelhouse inner face, across",560.0,guess,,,params unibody/wh_in. 
+MD-0202,PT779,"rear wheelhouse inner face, across",560.0,guess,,,params unibody/wh_in. 
+MD-0203,PT784-R,"rear wheelhouse inner face, across",560.0,guess,,,params unibody/wh_in. 
+MD-0204,PT784-L,"rear wheelhouse inner face, across",560.0,guess,,,params unibody/wh_in. 
+MD-0205,PT777-R,rear wheelhouse radius,375.0,guess,,,params unibody/wh_r. clears the 589 tyre with travel
+MD-0206,PT777-L,rear wheelhouse radius,375.0,guess,,,params unibody/wh_r. clears the 589 tyre with travel
+MD-0207,PT778,sheet thickness,1.0,guess,,,params unibody/t_sheet. panel steel Governs the whole shell.
+MD-0208,PT755-R,rail sheet thickness,1.6,guess,,,params unibody/t_rail. rail and sill steel
+MD-0209,PT755-L,rail sheet thickness,1.6,guess,,,params unibody/t_rail. rail and sill steel
+MD-0210,PT780-R,rail sheet thickness,1.6,guess,,,params unibody/t_rail. rail and sill steel
+MD-0211,PT780-L,rail sheet thickness,1.6,guess,,,params unibody/t_rail. rail and sill steel
+MD-0212,PT771-R,rail sheet thickness,1.6,guess,,,params unibody/t_rail. rail and sill steel
+MD-0213,PT771-L,rail sheet thickness,1.6,guess,,,params unibody/t_rail. rail and sill steel
+MD-0214,PT525-FR,"wheel centre, across",710.0,factory,"02-cad DT02 (SP-132, S-004 p.14)",,params corner/wheel_x. front track 1419.9 / 2; the tyre's centre plane
+MD-0215,PT525-RL,"wheel centre, across",710.0,factory,"02-cad DT02 (SP-132, S-004 p.14)",,params corner/wheel_x. front track 1419.9 / 2; the tyre's centre plane
+MD-0216,PT525-RR,"wheel centre, across",710.0,factory,"02-cad DT02 (SP-132, S-004 p.14)",,params corner/wheel_x. front track 1419.9 / 2; the tyre's centre plane
+MD-0217,PT525-FR,wheel centre height,294.5,derived,"02-cad DT02 (tyre size, unloaded)",,params corner/wheel_z. the unloaded tyre radius; loaded it is less - confirm at the ride height
+MD-0218,PT525-RL,wheel centre height,294.5,derived,"02-cad DT02 (tyre size, unloaded)",,params corner/wheel_z. the unloaded tyre radius; loaded it is less - confirm at the ride height
+MD-0219,PT525-RR,wheel centre height,294.5,derived,"02-cad DT02 (tyre size, unloaded)",,params corner/wheel_z. the unloaded tyre radius; loaded it is less - confirm at the ride height
+MD-0220,PT525-FR,rim bead seat diameter,330.2,factory,"SP-1513 (S-038 T:6), SP-126",,params corner/rim_dia. 13 in bead seat
+MD-0221,PT525-RL,rim bead seat diameter,330.2,factory,"SP-1513 (S-038 T:6), SP-126",,params corner/rim_dia. 13 in bead seat
+MD-0222,PT525-RR,rim bead seat diameter,330.2,factory,"SP-1513 (S-038 T:6), SP-126",,params corner/rim_dia. 13 in bead seat
+MD-0223,PT525-FR,rim width between flanges,127.0,factory,SP-1513 (5-J x 13),,params corner/rim_width. 5 in between the flanges
+MD-0224,PT525-RL,rim width between flanges,127.0,factory,SP-1513 (5-J x 13),,params corner/rim_width. 5 in between the flanges
+MD-0225,PT525-RR,rim width between flanges,127.0,factory,SP-1513 (5-J x 13),,params corner/rim_width. 5 in between the flanges
+MD-0226,PT525-FR,rim flange height,17.5,catalogue,ETRTO J flange (catalogue figure),,params corner/flange_h. the J contour's flange height; not measured
+MD-0227,PT525-RL,rim flange height,17.5,catalogue,ETRTO J flange (catalogue figure),,params corner/flange_h. the J contour's flange height; not measured
+MD-0228,PT525-RR,rim flange height,17.5,catalogue,ETRTO J flange (catalogue figure),,params corner/flange_h. the J contour's flange height; not measured
+MD-0229,PT525-FR,wheel offset ET,20.0,catalogue,"SP-1520 (S-020, secondary)",,params corner/offset. mounting face outboard of the rim centre line
+MD-0230,PT525-RL,wheel offset ET,20.0,catalogue,"SP-1520 (S-020, secondary)",,params corner/offset. mounting face outboard of the rim centre line
+MD-0231,PT525-RR,wheel offset ET,20.0,catalogue,"SP-1520 (S-020, secondary)",,params corner/offset. mounting face outboard of the rim centre line
+MD-0232,PT525-FR,bolt circle (PCD),110.0,catalogue,"SP-1519 (S-021, secondary)",,params corner/pcd. 4 studs
+MD-0233,PT525-RL,bolt circle (PCD),110.0,catalogue,"SP-1519 (S-021, secondary)",,params corner/pcd. 4 studs
+MD-0234,PT525-RR,bolt circle (PCD),110.0,catalogue,"SP-1519 (S-021, secondary)",,params corner/pcd. 4 studs
+MD-0235,PT525-FR,centre bore,60.0,guess,,,params corner/bore. centre bore; not in the record
+MD-0236,PT525-RL,centre bore,60.0,guess,,,params corner/bore. centre bore; not in the record
+MD-0237,PT525-RR,centre bore,60.0,guess,,,params corner/bore. centre bore; not in the record
+MD-0238,PT525-FR,disc thickness,4.0,guess,,,params corner/disc_t. pressed steel disc thickness
+MD-0239,PT525-RL,disc thickness,4.0,guess,,,params corner/disc_t. pressed steel disc thickness
+MD-0240,PT525-RR,disc thickness,4.0,guess,,,params corner/disc_t. pressed steel disc thickness
+MD-0241,PT525-FR,rim thickness,3.0,guess,,,params corner/rim_t. rim sheet thickness
+MD-0242,PT525-RL,rim thickness,3.0,guess,,,params corner/rim_t. rim sheet thickness
+MD-0243,PT525-RR,rim thickness,3.0,guess,,,params corner/rim_t. rim sheet thickness
+MD-0244,PT525-FR,drop centre depth,24.0,guess,,,params corner/drop_depth. well depth below the bead seat
+MD-0245,PT525-RL,drop centre depth,24.0,guess,,,params corner/drop_depth. well depth below the bead seat
+MD-0246,PT525-RR,drop centre depth,24.0,guess,,,params corner/drop_depth. well depth below the bead seat
+MD-0247,PT530-FR,tyre section width,185.0,factory,SP-128 (S-004 p.14-15),,params corner/tyre_w. section width
+MD-0248,PT530-RL,tyre section width,185.0,factory,SP-128 (S-004 p.14-15),,params corner/tyre_w. section width
+MD-0249,PT530-RR,tyre section width,185.0,factory,SP-128 (S-004 p.14-15),,params corner/tyre_w. section width
+MD-0250,PT530-FR,tyre aspect ratio,70.0,factory,SP-128,,params corner/tyre_aspect. per cent
+MD-0251,PT530-RL,tyre aspect ratio,70.0,factory,SP-128,,params corner/tyre_aspect. per cent
+MD-0252,PT530-RR,tyre aspect ratio,70.0,factory,SP-128,,params corner/tyre_aspect. per cent
+MD-0253,PT530-FR,tyre outside diameter,589.2,derived,"SP-128, SP-1513",,params corner/tyre_od. 13 in + 2 x 70 % of 185; DT02's 589
+MD-0254,PT530-RL,tyre outside diameter,589.2,derived,"SP-128, SP-1513",,params corner/tyre_od. 13 in + 2 x 70 % of 185; DT02's 589
+MD-0255,PT530-RR,tyre outside diameter,589.2,derived,"SP-128, SP-1513",,params corner/tyre_od. 13 in + 2 x 70 % of 185; DT02's 589
+MD-0256,PT525-FL,"front wheel centre, across",710.0,factory,02-cad DT02 (SP-132),,params skin/wheel_x_f.
+MD-0257,PT525-FR,"front wheel centre, across",710.0,factory,02-cad DT02 (SP-132),,params skin/wheel_x_f.
+MD-0258,PT525-RL,"front wheel centre, across",710.0,factory,02-cad DT02 (SP-132),,params skin/wheel_x_f.
+MD-0259,PT525-RR,"front wheel centre, across",710.0,factory,02-cad DT02 (SP-132),,params skin/wheel_x_f.
+MD-0260,PT525-FL,"rear wheel centre, across",699.8,factory,02-cad DT03 (SP-132),,params skin/wheel_x_r.
+MD-0261,PT525-FR,"rear wheel centre, across",699.8,factory,02-cad DT03 (SP-132),,params skin/wheel_x_r.
+MD-0262,PT525-RL,"rear wheel centre, across",699.8,factory,02-cad DT03 (SP-132),,params skin/wheel_x_r.
+MD-0263,PT525-RR,"rear wheel centre, across",699.8,factory,02-cad DT03 (SP-132),,params skin/wheel_x_r.
+MD-0264,PT525-FL,wheelbase,2420.0,factory,02-cad DT03 (SP-131),,params skin/wheelbase.
+MD-0265,PT525-FR,wheelbase,2420.0,factory,02-cad DT03 (SP-131),,params skin/wheelbase.
+MD-0266,PT525-RL,wheelbase,2420.0,factory,02-cad DT03 (SP-131),,params skin/wheelbase.
+MD-0267,PT525-RR,wheelbase,2420.0,factory,02-cad DT03 (SP-131),,params skin/wheelbase.
+MD-0268,PT525-FR,wheel centre height,294.5,derived,02-cad DT02,,params skin/wheel_z. unloaded
+MD-0269,PT525-RL,wheel centre height,294.5,derived,02-cad DT02,,params skin/wheel_z. unloaded
+MD-0270,PT525-RR,wheel centre height,294.5,derived,02-cad DT02,,params skin/wheel_z. unloaded

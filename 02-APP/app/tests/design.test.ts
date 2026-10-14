@@ -487,7 +487,7 @@ describe('the layers', () => {
   });
 });
 
-// ------------------------------------------------------------------ the car (05-cad D-518, MG1)
+// ------------------------------------------------------------------ the car (02-cad D-518, MG1)
 
 const pc = parseScene(rawCar);
 if (!pc.ok) throw new Error(pc.reason);

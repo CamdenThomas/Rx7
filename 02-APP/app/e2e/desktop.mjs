@@ -41,7 +41,7 @@ git('commit', '-q', '-m', `Electrical: test block ${BLOCK} for the desktop e2e`)
 git('push', '-q');
 const PICK = (() => {
   // A proposed pick for the phone-answer check: the first one the record has, else the test makes one.
-  const out = rx7('sql', '02-PROJECTS/03-luxury', "select id from picks where verdict='proposed' limit 1");
+  const out = rx7('sql', '02-PROJECTS/04-luxury', "select id from picks where verdict='proposed' limit 1");
   return out.split('\n')[1]?.trim() || null;
 })();
 
@@ -125,16 +125,16 @@ try {
   // A phone answer arrives on GitHub; Sync brings it in.
   const other = join(home, 'phone');
   execFileSync('git', ['clone', '-q', origin, other]);
-  mkdirSync(join(other, '02-PROJECTS/03-luxury/data/inbox'), { recursive: true });
-  writeFileSync(join(other, `02-PROJECTS/03-luxury/data/inbox/${PICK}~phone.csv`),
+  mkdirSync(join(other, '02-PROJECTS/04-luxury/data/inbox'), { recursive: true });
+  writeFileSync(join(other, `02-PROJECTS/04-luxury/data/inbox/${PICK}~phone.csv`),
     `id,target,kind,choice,text,context,device,at\n${PICK}~phone,${PICK},pick,yes,,,phone,2026-09-24T20:00:00-06:00\n`);
   execFileSync('git', ['-C', other, 'add', '-A']);
   execFileSync('git', ['-C', other, '-c', 'user.name=p', '-c', 'user.email=p@p', 'commit', '-q', '-m', `Camden answered ${PICK} (phone)`]);
   execFileSync('git', ['-C', other, 'push', '-q']);
   await js("document.querySelector('.sync').click()");
-  await js("location.hash = '#/p/03-luxury/picks'");
+  await js("location.hash = '#/p/04-luxury/picks'");
   await until('the phone\'s answer arrives with Sync', "return [...document.querySelectorAll('.chip')].some((c) => c.textContent.trim() === 'Yes')");
-  check('the phone\'s answer arrives with Sync', existsSync(join(tree, `02-PROJECTS/03-luxury/data/inbox/${PICK}~phone.csv`)));
+  check('the phone\'s answer arrives with Sync', existsSync(join(tree, `02-PROJECTS/04-luxury/data/inbox/${PICK}~phone.csv`)));
   await shot('picks');
 
   // Withdraw his desktop answer: the file goes, in its own commit.

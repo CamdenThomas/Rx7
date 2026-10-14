@@ -162,7 +162,7 @@ function parseSource(ref: string, area: string, look: Lookup): Source {
     scope = first;
     body = text.slice(first.length).trim();
   }
-  // A work row of another area, qualified the way a gate writes it: "03-luxury:F-012".
+  // A work row of another area, qualified the way a gate writes it: "04-luxury:F-012".
   const q = body.match(/^([\w-]+):(\S+)$/);
   if (q && look.isWork(q[1], q[2])) return as('work', todoHref(q[1], q[2]));
   // A row of a table: "<table> <key>" - the whole rest as the key, else its first word.

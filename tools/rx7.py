@@ -82,7 +82,7 @@ def waiting(rows):
 # Columns whose vocabulary THIS TOOL owns, not the project. Every area's _schema.csv must
 # declare exactly these, so the same column cannot mean different things in two projects.
 # (Inferring them per project from the values that happened to exist produced four false
-# refusals on 2026-09-11 - `blocked` work, a `standing` 02-engine decision. R7.)
+# refusals on 2026-09-11 - `blocked` work, a `standing` 03-engine decision. R7.)
 VOCAB = {
     ("decisions", "status"): "enum(" + "|".join(sorted(DEC_STATUS)) + ")",
     ("work", "state"): "enum(" + "|".join(sorted(WORK_STATE)) + ")",
@@ -112,7 +112,7 @@ DATE_RE = re.compile(r"^\d{4}-\d{2}(-\d{2})?$")
 DATETIME_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:\d{2})?$")
 ID_RE = re.compile(r"^[A-Z]{1,4}-\d{1,4}$")
 # Blocks are numbered per project, <prefix>.<n>: `01.12` is the twelfth block raised for
-# 02-PROJECTS/01-electrical, `03.07` the seventh for 03-luxury (D-356). The prefix is
+# 02-PROJECTS/01-electrical, `03.07` the seventh for 04-luxury (D-356). The prefix is
 # the project directory's two-digit number; 00-CAR and 01-REFERENCE (an area until
 # 2026-10-13, D-519) would collide with 00 and 01, so theirs are CAR and REF. The number has at least two digits, so no id is
 # shorter than `00.01` — but a bare `13.80` in prose is a voltage, so a block id is only
@@ -421,16 +421,22 @@ def block_prefix(area: Path):
 
 def block_prefixes(area: Path) -> list:
     """Every block-id prefix an area answers for: its own, then those of projects merged into
-    it, which its `_project` names under `inherits_blocks` (space-separated, e.g. 03-luxury's
-    `04` since 04-beauty merged in, D-570) - their blocks' decisions moved with them."""
+    it or that it carried before a renumbering, which its `_project` names under
+    `inherits_blocks` (space-separated: 04-luxury's `03`, its number until D-572, and the merged
+    04-beauty's `04`, D-570) - those blocks' closing decisions are its own."""
     own = block_prefix(area)
     extra = project_kv(area).get("inherits_blocks", "").split() if (area / "data" / "_project.csv").exists() else []
     return ([own] if own else []) + [x for x in extra if x != own]
 
 
 def prefix_areas():
-    """{prefix: area} — the only map from a block id to the project it belongs to."""
-    return {p: a for a in areas() for p in block_prefixes(a)}
+    """{prefix: area} — the only map from a block id to the project it belongs to. A prefix an
+    area owns today wins over the same prefix inherited by another (D-572)."""
+    own = {p: a for a in areas() if (p := block_prefix(a))}
+    for a in areas():
+        for p in block_prefixes(a)[1:]:
+            own.setdefault(p, a)
+    return own
 
 
 def parse_options(cell: str):
@@ -606,7 +612,7 @@ def split_choices(cell: str):
 #   01.07                 met when that block is gone from `blocks` and a decision names it
 #                         in `closes` — i.e. it has been answered and applied
 #   A5                    met when that work row is done or dropped, in this area
-#   03-luxury:F-012  the same, in another area (work ids are only unique per area)
+#   04-luxury:F-012  the same, in another area (work ids are only unique per area)
 #   phase:SOURCING        met when the owning area is at that phase or past it
 #
 # An empty gate is met. READY is every open row whose gate is met; that list is the only
@@ -3216,7 +3222,7 @@ def cmd_selftest(args):
     puts the planner to work on something that is not ready, and one that wrongly calls
     it 'unmet' stops the project with no error anywhere. Both fail silently (R7). The same
     goes for the writer of his answers: one that loses a character loses his words (R3)."""
-    A, B = "01-electrical", "03-luxury"
+    A, B = "01-electrical", "04-luxury"
     fails = []
 
     def mk(rows, phase="PLANNING", blocks=None):
@@ -3254,7 +3260,7 @@ def cmd_selftest(args):
     amb = mk([("A1", "", "open")])
     amb["work_ids"]["A1"].append(B)
     amb["work"][(B, "A1")] = "open"
-    expect("an ambiguous unqualified work id is refused", gate_state("A1", "02-engine", amb)[2])
+    expect("an ambiguous unqualified work id is refused", gate_state("A1", "03-engine", amb)[2])
 
     expect("a dependency ring is found",
            gate_cycles(mk([("A1", "A2", "open"), ("A2", "A3", "open"), ("A3", "A1", "open")])))
@@ -3543,6 +3549,9 @@ def cmd_selftest(args):
             (root / one / "_project.csv").write_text(csvtext(["key", "value"], [["name", "01-one"], ["phase", "PLANNING"], ["inherits_blocks", "07"]]), encoding="utf-8")
             expect("a merged project's block, closed by the project it merged into, opens the gate (D-570)",
                    gate_ref_state("07.02", "01-one", tree_index(fresh=True))[0] and prefix_areas().get("07", Path()).name == "01-one")
+            (root / one / "_project.csv").write_text(csvtext(["key", "value"], [["name", "01-one"], ["phase", "PLANNING"], ["inherits_blocks", "07 02"]]), encoding="utf-8")
+            expect("an inherited prefix never takes the block ids of the area that owns it now (D-572)",
+                   prefix_areas().get("02", Path()).name == "02-two" and prefix_areas().get("07", Path()).name == "01-one")
             (root / one / "work.csv").write_text(csvtext(["id", "item", "owner", "state", "gate", "note", "reply", "choices", "unit", "due", "part"],
                                                           [["A10", "ten", "agent", "open", "", "", "", "", "", "", ""], ["A2", "two", "agent", "open", "", "", "", "", "", "", ""]]), encoding="utf-8")
             tree_index(fresh=True)

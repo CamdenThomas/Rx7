@@ -18,6 +18,10 @@ On 2026-09-26 (plan P21) `00-verify` took the fixed prefix `VER`, so its blocks 
 decision of the area whose prefix it carries; decisions dated before that close whatever id
 they name.
 
-On 2026-10-14 `04-beauty` merged into `03-luxury` (D-570): beauty's `04.NN` blocks and the
-decisions that closed them are luxury's now, which its `_project` says with `inherits_blocks =
-04`; a new luxury block is `03.NN`, and no new `04.NN` is issued.
+On 2026-10-14 `04-beauty` merged into luxury (D-570), and the same day the projects took the
+order Camden gave them (D-572): `05-cad` became `02-cad`, `02-engine` `03-engine`, `03-luxury`
+`04-luxury`. No block was open in any of them, so no id changed: each closed block keeps its id,
+and the project that closed it names the old prefix in its `_project` under `inherits_blocks`
+(`02-cad` 05, `03-engine` 02, `04-luxury` 03 - and 04, its own now, for beauty's). A new block
+takes the project's present number and is numbered past every id ever used, so `03.NN` from now
+on is engine's and never repeats a luxury id.

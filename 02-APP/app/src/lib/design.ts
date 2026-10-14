@@ -52,7 +52,7 @@ export interface Part {
   leg: string;
   mate: string | null;
   cavities: Cavity[];
-  // the car's scene (05-cad D-518, 02-APP MG1); empty elsewhere
+  // the car's scene (02-cad D-518, 02-APP MG1); empty elsewhere
   system: string;
   zone: string;
   made_from: string;
@@ -121,7 +121,7 @@ export interface Scene {
   missing: Missing[];
   notes: string[];
   legs: Leg[];
-  /** the car itself (05-cad D-518): every part a separate solid, drawn on its own */
+  /** the car itself (02-cad D-518): every part a separate solid, drawn on its own */
   car: boolean;
   systems: { id: string; name: string }[];
 }
@@ -569,7 +569,7 @@ export const LEG_COLOURS = [0x98c1d9, 0xee6c4d, 0xe9c46a, 0x8fd694, 0xb39ddb] as
 export const legColour = (s: Scene, id: string) => LEG_COLOURS[Math.max(0, s.legs.findIndex((l) => l.id === id)) % LEG_COLOURS.length];
 export const legColourCss = (s: Scene, id: string) => `#${legColour(s, id).toString(16).padStart(6, '0')}`;
 
-// ------------------------------------------------------------------ the car (05-cad D-518, MG1)
+// ------------------------------------------------------------------ the car (02-cad D-518, MG1)
 
 /** What a part rides on when the car is taken apart: its parent, else what it is held to. */
 export function carrierOf(s: Scene, id: string): string | null {

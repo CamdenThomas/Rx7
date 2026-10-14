@@ -799,7 +799,7 @@
    }
   }
  },
- "03-luxury:LP58": {
+ "04-luxury:LP58": {
   "glb": "devices/speaker-165.glb",
   "name": "Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen)",
   "kind": "device",
@@ -844,7 +844,7 @@
    }
   }
  },
- "03-luxury:LP59": {
+ "04-luxury:LP59": {
   "glb": "devices/speaker-165.glb",
   "name": "Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen)",
   "kind": "device",
@@ -889,7 +889,7 @@
    }
   }
  },
- "03-luxury:LP60": {
+ "04-luxury:LP60": {
   "glb": "devices/speaker-100.glb",
   "name": "Speaker, 4 in class (luxury LP60 centre - not chosen)",
   "kind": "device",
@@ -927,7 +927,7 @@
    }
   }
  },
- "03-luxury:LP44": {
+ "04-luxury:LP44": {
   "glb": "devices/radar-receiver.glb",
   "name": "Radar receiver, concealed (luxury LP44, Escort MAX Ci 360c class, D-502)",
   "kind": "device",
@@ -2684,7 +2684,7 @@
   "work": "Y28",
   "ruling": "D-515",
   "frame": "every glb in mm, z up, in the part's own frame (00-design README §13); each entry's origin says where its zero is",
-  "keys": "an entry per device (01-electrical devices DVxx) or part (01-electrical parts Pxxx; another area's qualified, 03-luxury:LP58); keys starting _ are not entries",
+  "keys": "an entry per device (01-electrical devices DVxx) or part (01-electrical parts Pxxx; another area's qualified, 04-luxury:LP58); keys starting _ are not entries",
   "node": "the scene.json part the entry sits at; `also` lists further places",
   "none": {
    "DV09": "a ground strap: a cable, the harness's (routes), not a device",

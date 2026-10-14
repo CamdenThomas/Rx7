@@ -159,7 +159,7 @@ test('follow the recommendation is one tap, and next unanswered moves on', async
 });
 
 test('a pick needs a reason for no', async ({ page }) => {
-  await open(page, '#/p/03-luxury/picks/PK021');
+  await open(page, '#/p/04-luxury/picks/PK021');
   await page.getByRole('radio', { name: /No/ }).click();
   const save = page.getByRole('button', { name: 'Save', exact: true });
   await expect(save).toBeDisabled();

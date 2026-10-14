@@ -1,9 +1,0 @@
-key,value
-name,03-luxury
-kind,finish
-goal,"Everything that makes the car fancy, after it drives on the new harness: the fancy parts bought and fitted - the loads the DCU drives (blower, servos, seats, mirrors, windows), lighting second pass, radar, audio; the body work and the paint job - rust and body repair, the reshaped body, Dark Metallic Emerald Green, window tint (from 04-beauty, merged in 2026-10-14, D-570); and every interior plastic custom-made for one sleek look, upholstered in black leather with green stitching (D-571)"
-phase,PLANNING
-opened,2026-09-02
-icon,armchair
-title,Luxury
-inherits_blocks,04

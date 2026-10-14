@@ -85,7 +85,7 @@ glb('v2/pmu.glb', [{ name: 'body', at: [0, 0, 20], size: [110, 130, 40], color: 
 // a DT06-12S stand-in: mating face on the origin, mate along +Y, wires along -Y
 glb('v2/connectors/DT06-12S.glb', [{ name: 'body', at: [0, -12, 0], size: [30, 24, 20], color: [0.15, 0.15, 0.16, 1] }]);
 
-// The car (05-cad D-518, MG1): a floor pan and what is bolted to it, mm, z up.
+// The car (02-cad D-518, MG1): a floor pan and what is bolted to it, mm, z up.
 mkdirSync(new URL('car/', import.meta.url), { recursive: true });
 glb('car/floor-pan.glb', [{ name: 'pan', at: [0, 0, 0], size: [1400, 2000, 40], color: [0.55, 0.57, 0.6, 1] }]);
 glb('car/crossmember.glb', [{ name: 'beam', at: [0, 0, 0], size: [1100, 120, 90], color: [0.3, 0.32, 0.35, 1] }]);

@@ -1,5 +1,5 @@
 <!--
-  One three.js view of a project's design (D-505), or of the car itself (05-cad D-518, the
+  One three.js view of a project's design (D-505), or of the car itself (02-cad D-518, the
   Manual's model page): the assembly, a part, or a board. The
   drawing is lib/designView.ts, loaded on demand like CarModel's three.js; this holds its
   canvas, passes it what the page selects, and says plainly when the device cannot draw.

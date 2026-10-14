@@ -460,7 +460,7 @@ export class DesignView {
     return (!!this.focus && !this.focus.parts.has(id)) || this.dimmed.has(id);
   }
 
-  /** The Systems and Zone filters: these parts fade (05-cad D-518, MG1). */
+  /** The Systems and Zone filters: these parts fade (02-cad D-518, MG1). */
   setDimmed(ids: Set<string>) {
     this.dimmed = new Set(ids);
     this.applyFocus();

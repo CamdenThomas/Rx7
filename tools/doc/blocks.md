@@ -22,7 +22,7 @@ options=@opts.txt recommend=… stops=…`). Long fields go through `@file`. Nev
 that asks him to weigh a list the agent has not produced yet: do the research row first.
 
 **Block ids are `<project>.<number>`** (D-356): `01.12` is the twelfth block raised for
-`02-PROJECTS/01-electrical`, `03.07` the seventh for `03-luxury`. The prefix is the project
+`02-PROJECTS/01-electrical`, `04.07` the seventh for `04-luxury`. The prefix is the project
 directory's two-digit number; `00-CAR` and `02-APP` use `CAR` and `APP`, because they are not
 numbered projects (the archived `01-REFERENCE` and `00-verify` used `REF` and `VER`). Never
 `BLK-`: this car's factory diagrams already use `B-12` and `D-01` as component codes, and an id

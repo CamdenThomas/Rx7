@@ -26,10 +26,10 @@ firmware, the KiCad boards, the tools, the app. `00-CAR/data/procedures/` waits 
 plan (D-407); the factory-circuit write-ups are `00-CAR` `circuit_paths` rows (D-522). And `99-ARCHIVE`.
 `01-INTAKE` is not an area and no row names it as a home (D-519): it was `01-REFERENCE`, whose
 tables - sources, catalogue, cad, suppliers, connector_dims, circuits - are `00-CAR`'s, and
-`blend` `05-cad`'s; its record's shell is `99-ARCHIVE/2026-10-13_01-REFERENCE`. His photos
+`blend` `02-cad`'s; its record's shell is `99-ARCHIVE/2026-10-13_01-REFERENCE`. His photos
 are `00-CAR/photos`; the PMU's and the EVE board's vendor files are under
 `01-electrical/00-design` (`pmu/vendor`, `display-unit/vendor`); the found-model scripts are
-`05-cad/model/found`, whose `paths.py` names the library's folder (06-intake T2). Everything the
+`02-cad/model/found`, whose `paths.py` names the library's folder (06-intake T2). Everything the
 intake held has been parsed into the car's tables and taken out of git; `06-intake`, the project
 that did it, is archived (`99-ARCHIVE/2026-10-14_06-intake`, D-569). A new file landing in the
 intake is parsed by a run in the project that wants it, into `00-CAR`'s tables, and leaves git.
@@ -105,7 +105,7 @@ tree, so one area can wait on another:
 | `D-274`           | that decision is standing or inherited                                                                   |
 | `01.07`           | that block is gone from `blocks` and a decision names it in `closes` (its own area's, for ids after 2026-09-25) |
 | `A5` · `F-012`    | that work row is done or dropped, in this area                                                           |
-| `03-luxury:F-012` | the same, in another area — **always qualify across areas**, because work ids are only unique within one |
+| `04-luxury:F-012` | the same, in another area — **always qualify across areas**, because work ids are only unique within one |
 | `phase:SOURCING`  | this area is at that phase or past it                                                                    |
 
 **READY** is every open row whose gate is met. `status` prints every READY agent row and,

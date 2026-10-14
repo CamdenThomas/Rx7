@@ -9107,7 +9107,7 @@
    "id": "dev-03-luxury-lp44-1",
    "name": "Radar receiver, concealed (luxury LP44, Escort MAX Ci 360c class, D-502) (1 of 2)",
    "kind": "module",
-   "device": "03-luxury:LP44",
+   "device": "04-luxury:LP44",
    "node": "nose-bumper",
    "glb": "devices/radar-receiver.glb",
    "bytes": 3708,
@@ -9133,13 +9133,13 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json 03-luxury:LP44 (drawn here (build_devices.py STANDINS['radar-receiver']): Radar receiver, concealed (luxury LP44, Escort MAX Ci 360c class, D-502))"
+   "source": "devices/manifest.json 04-luxury:LP44 (drawn here (build_devices.py STANDINS['radar-receiver']): Radar receiver, concealed (luxury LP44, Escort MAX Ci 360c class, D-502))"
   },
   {
    "id": "dev-03-luxury-lp44-2",
    "name": "Radar receiver, concealed (luxury LP44, Escort MAX Ci 360c class, D-502) (2 of 2)",
    "kind": "module",
-   "device": "03-luxury:LP44",
+   "device": "04-luxury:LP44",
    "node": "rear-node",
    "glb": "devices/radar-receiver.glb",
    "bytes": 3708,
@@ -9165,13 +9165,13 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json 03-luxury:LP44 (drawn here (build_devices.py STANDINS['radar-receiver']): Radar receiver, concealed (luxury LP44, Escort MAX Ci 360c class, D-502))"
+   "source": "devices/manifest.json 04-luxury:LP44 (drawn here (build_devices.py STANDINS['radar-receiver']): Radar receiver, concealed (luxury LP44, Escort MAX Ci 360c class, D-502))"
   },
   {
    "id": "dev-03-luxury-lp58-1",
    "name": "Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen) (1 of 2)",
    "kind": "module",
-   "device": "03-luxury:LP58",
+   "device": "04-luxury:LP58",
    "node": "kick-driver",
    "glb": "devices/speaker-165.glb",
    "bytes": 45340,
@@ -9197,13 +9197,13 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json 03-luxury:LP58 (drawn here (build_devices.py STANDINS['speaker-165']): Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen))"
+   "source": "devices/manifest.json 04-luxury:LP58 (drawn here (build_devices.py STANDINS['speaker-165']): Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen))"
   },
   {
    "id": "dev-03-luxury-lp58-2",
    "name": "Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen) (2 of 2)",
    "kind": "module",
-   "device": "03-luxury:LP58",
+   "device": "04-luxury:LP58",
    "node": "kick-passenger",
    "glb": "devices/speaker-165.glb",
    "bytes": 45340,
@@ -9229,13 +9229,13 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json 03-luxury:LP58 (drawn here (build_devices.py STANDINS['speaker-165']): Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen))"
+   "source": "devices/manifest.json 04-luxury:LP58 (drawn here (build_devices.py STANDINS['speaker-165']): Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen))"
   },
   {
    "id": "dev-03-luxury-lp59-1",
    "name": "Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen) (1 of 2)",
    "kind": "module",
-   "device": "03-luxury:LP59",
+   "device": "04-luxury:LP59",
    "node": "quarter-driver",
    "glb": "devices/speaker-165.glb",
    "bytes": 45340,
@@ -9261,13 +9261,13 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json 03-luxury:LP59 (drawn here (build_devices.py STANDINS['speaker-165']): Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen))"
+   "source": "devices/manifest.json 04-luxury:LP59 (drawn here (build_devices.py STANDINS['speaker-165']): Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen))"
   },
   {
    "id": "dev-03-luxury-lp59-2",
    "name": "Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen) (2 of 2)",
    "kind": "module",
-   "device": "03-luxury:LP59",
+   "device": "04-luxury:LP59",
    "node": "quarter-passenger",
    "glb": "devices/speaker-165.glb",
    "bytes": 45340,
@@ -9293,13 +9293,13 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json 03-luxury:LP59 (drawn here (build_devices.py STANDINS['speaker-165']): Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen))"
+   "source": "devices/manifest.json 04-luxury:LP59 (drawn here (build_devices.py STANDINS['speaker-165']): Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen))"
   },
   {
    "id": "dev-03-luxury-lp60",
    "name": "Speaker, 4 in class (luxury LP60 centre - not chosen)",
    "kind": "module",
-   "device": "03-luxury:LP60",
+   "device": "04-luxury:LP60",
    "node": "console",
    "glb": "devices/speaker-100.glb",
    "bytes": 36340,
@@ -9325,7 +9325,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json 03-luxury:LP60 (drawn here (build_devices.py STANDINS['speaker-100']): Speaker, 4 in class (luxury LP60 centre - not chosen))"
+   "source": "devices/manifest.json 04-luxury:LP60 (drawn here (build_devices.py STANDINS['speaker-100']): Speaker, 4 in class (luxury LP60 centre - not chosen))"
   },
   {
    "id": "dev-dv01",

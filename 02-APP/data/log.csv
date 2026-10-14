@@ -48,3 +48,4 @@ L-0046,2026-10-13,session,D-514 M3D2,M3D2 done - the Design page at scene versio
 L-0047,2026-10-13,session,D-518 MG1,MG1 done on the real car scene; the Mac bundle rebuilt with the car's model and the harness scene
 L-0048,2026-10-13,session,D-533 TD1,"TD1 done: the TODO page as the step-by-step manual, verified on the real electrical rows"
 L-0049,2026-10-14,session,D-570,04-beauty merged into 03-luxury (D-570); rx7.py reads inherits_blocks so beauty's closed blocks keep their gates met
+L-0050,2026-10-14,session,D-572,"Projects renumbered (D-572): 05-cad to 02-cad, 02-engine to 03-engine, 03-luxury to 04-luxury; live references rewritten, inherits_blocks keeps closed blocks closed"

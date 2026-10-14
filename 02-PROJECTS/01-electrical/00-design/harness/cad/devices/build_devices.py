@@ -12,7 +12,7 @@ It writes, into 02-APP/app/public/design/01-electrical/ (--out DIR for elsewhere
                          converted by FreeCAD, or - where none was found - a dimensioned stand-in
                          drawn here from the PARAMS of its recipe, every number with its source
   devices/manifest.json  every device (01-electrical devices, DVxx) and common part (parts Pxxx,
-                         another area's qualified, 03-luxury:LP58) with its glb, the scene node it
+                         another area's qualified, 04-luxury:LP58) with its glb, the scene node it
                          sits at, its size and origin, whether it is a stand-in, its cad row
 
 Every glb is in millimetres, z up, in the part's own frame, as export_glb.py's are (00-design
@@ -579,7 +579,7 @@ STANDINS = {
 
 # ================================================================ what goes where: entries ==
 # key: the device (DVxx), the part (Pxxx), or another area's part qualified like a gate
-# ("03-luxury:LP58"). node: the scene's part id it sits at (scene.json). count: how many at that
+# ("04-luxury:LP58"). node: the scene's part id it sits at (scene.json). count: how many at that
 # node (`also` adds other nodes); a function of the record where the record says (relays,
 # fuses, parts.qty), else the record's own words.
 def _count_relays(rec, where):
@@ -648,15 +648,15 @@ ENTRIES = {
              "node_note": "the ICU's radio co-processor on its header (D-267)"},
     "P117": {"model": "bt817-me817ev", "kind": "module", "node": "display-unit", "count": 1,
              "node_note": "inside the display unit, where its placeholder block is"},
-    "03-luxury:LP58": {"model": "speaker-165", "kind": "device", "node": "kick-driver",
+    "04-luxury:LP58": {"model": "speaker-165", "kind": "device", "node": "kick-driver",
                        "count": 1, "node_note": "the fronts (L3-SPF-L / -R)",
                        "also": [("kick-passenger", 1, "the right front")]},
-    "03-luxury:LP59": {"model": "speaker-165", "kind": "device", "node": "quarter-driver",
+    "04-luxury:LP59": {"model": "speaker-165", "kind": "device", "node": "quarter-driver",
                        "count": 1, "node_note": "the surrounds (L4-SPR-L / -R)",
                        "also": [("quarter-passenger", 1, "the right surround")]},
-    "03-luxury:LP60": {"model": "speaker-100", "kind": "device", "node": "console", "count": 1,
+    "04-luxury:LP60": {"model": "speaker-100", "kind": "device", "node": "console", "count": 1,
                        "node_note": "the centre, between the seats (L3-CTR)"},
-    "03-luxury:LP44": {"model": "radar-receiver", "kind": "device", "node": "nose-bumper",
+    "04-luxury:LP44": {"model": "radar-receiver", "kind": "device", "node": "nose-bumper",
                        "count": 1, "node_note": "front on L2-RDR",
                        "also": [("rear-node", 1, "rear on L4-RDR")]},
     # the devices
@@ -876,7 +876,7 @@ def manifest_of(rec, models, built):
         "frame": "every glb in mm, z up, in the part's own frame (00-design README §13); "
                  "each entry's origin says where its zero is",
         "keys": "an entry per device (01-electrical devices DVxx) or part (01-electrical "
-                "parts Pxxx; another area's qualified, 03-luxury:LP58); keys starting _ are "
+                "parts Pxxx; another area's qualified, 04-luxury:LP58); keys starting _ are "
                 "not entries",
         "node": "the scene.json part the entry sits at; `also` lists further places",
         "none": {k: NO_MODEL[k] for k in sorted(NO_MODEL)},
