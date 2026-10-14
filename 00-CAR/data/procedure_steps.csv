@@ -103,7 +103,7 @@ PR-024.06,PR-024,6,"When the tester has warmed up, switch it on to feed the reco
 PR-024.07,PR-024,7,Hold the throttle wide open and crank the engine for 5 to 10 seconds,,The pressure of each chamber is plotted on the sheet.,,p.1-11
 PR-024.08,PR-024,8,Stop cranking and switch off the sheet feed,,,,p.1-11
 PR-024.09,PR-024,9,Measure the other rotor the same way,,,,p.1-11
-PR-024.10,PR-024,10,Judge the lowest pressure and the spread between the highest and the lowest,Limits SP-015 and SP-016. Cranking speed comes from the number of peaks plotted in 5 seconds; the graphs on p.1-12 correct for cranking speed and altitude.,,,p.1-12
+PR-024.10,PR-024,10,Judge the lowest pressure and the spread between the highest and the lowest,Limits SP-015 and SP-016. Cranking speed comes from the number of peaks plotted in 5 seconds; correct the limit for cranking speed with SP-1809 and for altitude with SP-1810.,,,p.1-12
 PR-025.01,PR-025,1,Apply the parking brake and block the wheels,,,,p.1-18
 PR-025.02,PR-025,2,"Drain the engine oil, then clean and refit the drain plug",,,,p.1-18
 PR-025.03,PR-025,3,Remove the engine under cover,,,,p.1-18
@@ -127,7 +127,7 @@ PR-025.20,PR-025,20,Remove the radiator and shroud assembly,,,,p.1-19
 PR-025.21,PR-025,21,Disconnect the power brake vacuum hose,,,,p.1-19
 PR-025.22,PR-025,22,Disconnect the air pipe from the rear end of the intake manifold,,,,p.1-19
 PR-025.23,PR-025,23,Disconnect the choke heater lead connectors,,,,p.1-19
-PR-025.24,PR-025,24,"Disconnect the throttle sensor, idle richer solenoid and port air solenoid valve connectors, and the fourth the page lists",The OCR text garbles the name of the fourth valve.,,,p.1-19
+PR-025.24,PR-025,24,"Disconnect the throttle sensor, MAB solenoid valve, idle richer solenoid and port air solenoid valve connectors",Read from the page image 2026-10-14: the fourth is the MAB (main air bleed) solenoid valve.,,,p.1-19
 PR-025.25,PR-025,25,"Disconnect the accelerator cable, choke cable and hot start assist cable",,,,p.1-19
 PR-025.26,PR-025,26,Disconnect the cruise control cable if fitted,,,,p.1-19
 PR-025.27,PR-025,27,Disconnect the fuel main and return hoses,,,,p.1-19
@@ -170,7 +170,7 @@ PR-027.10,PR-027,10,"Remove the bearing housing, needle bearing, spacer and thru
 PR-027.11,PR-027,11,Fit the counter weight stopper to the rear housing and remove the drive plate,,,,p.1-27
 PR-027.12,PR-027,12,Remove the counter weight nut with box wrench 49 0820 035,,,,p.1-27
 PR-027.13,PR-027,13,"Pull the counter weight with the puller, turning its handle and tapping its head lightly, then remove the key",,,Do not drop the counter weight.,p.1-27
-PR-027.14,PR-027,14,"Loosen the tension bolts in the sequence of the figure, in two or three passes, and remove them",The 12A has no bolt No. 6 in the loosening sequence: skip it. The sequence figure was not read.,,Never loosen the bolts all at once.,p.1-27
+PR-027.14,PR-027,14,"Loosen the tension bolts in the sequence of the figure, in two or three passes, and remove them",Order SP-1812. The 12A has no bolt No. 6 in the loosening sequence: skip it.,,Never loosen the bolts all at once.,p.1-27
 PR-027.15,PR-027,15,Lift the rear housing off the shaft and put any seals stuck to it back in their places on the rotor,,,,p.1-28
 PR-027.16,PR-027,16,"Rear rotor housing: remove the sealing rubbers and O-ring, pull the tubular dowels with puller 49 0813 215A while holding the housing down, lift the housing off, then remove the rubbers and O-ring from its front side",,,Do not let the apex seals and side pieces drop off the rotor.,p.1-28
 PR-027.17,PR-027,17,"Put the side pieces, apex seals and springs of the rear rotor into seal case 49 0813 250 by the numbers beside each groove",,,,p.1-28
@@ -194,7 +194,7 @@ PR-029.02,PR-029,2,Side housings: check the rotor sliding surface for stepped we
 PR-029.03,PR-029,3,"Stationary gears: check for cracked, scored, worn or chipped teeth",,,,p.1-32
 PR-029.04,PR-029,4,"Main bearings: check for wear, scratching and flaking, and work out the clearance from the bearing bore and the main journal diameter","SP-809, limit SP-810.",,,p.1-32
 PR-029.05,PR-029,5,Rotor housings: check the chromium plated surface for scoring and flaking,,,,p.1-34
-PR-029.06,PR-029,6,Rotor housings: measure the width with a micrometer at four points,SP-1560.,,,p.1-34
+PR-029.06,PR-029,6,Rotor housings: measure the width with a micrometer at four points,"SP-1560: A at the top of the bore, B, C and D low on one side.",,,p.1-34
 PR-029.07,PR-029,7,"Rotors: inspect for wear and damage, and the internal gear for cracked, scored, worn or chipped teeth",,,,p.1-35
 PR-029.08,PR-029,8,Rotors: work out the side housing to rotor clearance from the rotor housing width at point A and the largest of three rotor width readings,"SP-839, limit SP-840 (the 1985 standard is SP-841). Too much: replace the rotor assembly. Too little: the internal gear has crept out - tap it back lightly with a plastic hammer and measure again.",,,p.1-35
 PR-029.09,PR-029,9,Rotors: check the corner seal bores with the bore gauge,SP-870.,,,p.1-35
@@ -226,18 +226,18 @@ PR-031.03,PR-031,3,"Fit the outer oil seal the same way, pressing slowly with th
 PR-031.04,PR-031,4,"Front rotor, internal gear up: put the apex seals in their grooves without spring or side piece, the side-piece end toward the rear face of the rotor",,,,p.1-42
 PR-031.05,PR-031,5,"Fit the soft seals into the corner seals, then corner seal springs and corner seals, side seal springs and side seals into their grooves",,Each seal moves smoothly when its head is pressed.,,p.1-42
 PR-031.06,PR-031,6,Put a rubber ring round the rotor so the apex seals cannot drop out,,,,p.1-42
-PR-031.07,PR-031,7,"Mount the front housing on the stand and set the front rotor on it, the gears meshed with one apex at one of the four positions of the figure",The figure was not read.,,Do not drop a seal into the port.,p.1-43
+PR-031.07,PR-031,7,"Mount the front housing on the stand and set the front rotor on it, the gears meshed with one apex at one of the four positions of the figure","The four positions (photo 47U01X-114, read 2026-10-14) are the housing's two axes: one apex pointing straight at 12, 3, 6 or 9 o'clock. The photo has it at 6 o'clock.",,Do not drop a seal into the port.,p.1-43
 PR-031.08,PR-031,8,Oil the front rotor journal and the main journal and insert the eccentric shaft,,,Do not damage the rotor bearing or the main bearing.,p.1-43
-PR-031.09,PR-031,9,"Sealing agent on the front side of the front rotor housing, then a new O-ring and new sealing rubbers",SP-1563.,,,p.1-44
+PR-031.09,PR-031,9,"Sealing agent on the front side of the front rotor housing, then a new O-ring and new sealing rubbers","SP-1563: the inner rubber's wider white line to the combustion chamber, its seam between 12 and 10 o'clock on the water port side.",,,p.1-44
 PR-031.10,PR-031,10,"Turn the rotor housing over onto the front housing without losing the rubbers, oil the tubular dowels and push them through into the front housing",,,,p.1-45
 PR-031.11,PR-031,11,"Rear face of the rotor: apex seal springs with both ends under the back of the seal, corner seals, side seals, and each side piece in its original place with its spring seated",,Each seal moves smoothly when its head is pressed.,,p.1-45
 PR-031.12,PR-031,12,"Sealing agent, new O-ring, sealing rubbers and protector on the rear side of the front rotor housing, then engine oil on the seals and the sliding surface",SP-1563.,,No foreign matter in the rotor housing.,p.1-46
 PR-031.13,PR-031,13,Lift the eccentric shaft a little and fit the intermediate housing over it,SP-1561.,,,p.1-46
 PR-031.14,PR-031,14,Fit the rear rotor and the rear rotor housing the same way as the front,,,,p.1-46
 PR-031.15,PR-031,15,Oil the stationary gear and main bearing well and fit the rear housing,,,,p.1-47
-PR-031.16,PR-031,16,"Oil the tension bolt threads, fit the bolts and tighten them gradually in the sequence of the figure",Torque SP-161. The 12A has no bolt No. 11 in the tightening sequence: skip it. New sealing washers at an overhaul. The sequence figure was not read.,The eccentric shaft turns lightly and smoothly.,,p.1-47
+PR-031.16,PR-031,16,"Oil the tension bolt threads, fit the bolts and tighten them gradually in the sequence of the figure","Order SP-1811, torque SP-161. The 12A has no bolt No. 11 in the tightening sequence: skip it. New sealing washers at an overhaul.",The eccentric shaft turns lightly and smoothly.,,p.1-47
 PR-031.17,PR-031,17,"Oil the oil seal in the rear housing, fit the key and the counter weight, put sealing agent on the lock nut face, hold with stopper 49 1881 055 and tighten the nut with box wrench 49 0820 035",Torque SP-162.,,,p.1-48
-PR-031.18,PR-031,18,Fit the drive plate with its hole and the counter weight placed as the figure shows,The figure was not read.,,,p.1-49
+PR-031.18,PR-031,18,Fit the drive plate with its hole and the counter weight placed as the figure shows,"Photo 47U01X-137 (read 2026-10-14): the small hole in the drive plate and the counter weight's mark both straight above the shaft centre, in line - the plate's at its outer ring, the weight's at the hub.",,,p.1-49
 PR-031.19,PR-031,19,"Slide the thrust plate (chamfer down), spacer and needle bearing onto the shaft and oil them, then fit the bearing housing to the front housing and tighten its bolts",,,,p.1-49
 PR-031.20,PR-031,20,"Slide on the second needle bearing, oiled, then the balance weight with the thrust washer",,,,p.1-49
 PR-031.21,PR-031,21,"Fit the oil pump to the front housing and the key to its shaft, put the chain on both sprockets and slide them on together with key and keyway in line",,,,p.1-49
