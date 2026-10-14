@@ -88,3 +88,6 @@ PR-086,Electrical,"Check the starter on the car, remove and refit it (1985 manua
 PR-087,Electrical,"Overhaul the starter, reduction type (1985 manual)",starter fault traced to the motor,"bearing puller, circuit tester, dial gauge and V blocks, spring balance, 12 V battery, voltmeter, ammeter",S-002,
 PR-088,Ignition,"Remove, strip, inspect and refit the distributor (1985 manual)",ignition fault or distributor wear,"puller, small drift, punch, ohmmeter, DC ammeter (1 mA), feeler gauge",S-002,
 PR-089,Ignition,"Check the igniters, the ignition coils and the high-tension leads (1985 manual)",misfire or no spark,"12 V test lamp under 10 W, battery, switch, ohmmeter",S-002,
+PR-090,Transmission,"Check the kick-down solenoid and the vacuum diaphragm on the car (1985 manual, L4N71B)","excessive shift shock, or gears not shifting properly","12 V supply, vacuum pump",S-002,other-car
+PR-091,Transmission,"Find the line pressure cutback point (1985 manual, L4N71B)",shift faults the line pressure test does not explain,"two oil pressure gauges 49 0378 400A, vacuum pump with gauge",S-002,other-car
+PR-092,Transmission,"Check and wash the torque converter (1985 manual, L4N71B)",transmission overhaul,compressed air,S-002,other-car

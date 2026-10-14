@@ -790,3 +790,22 @@ PR-089.06,PR-089,6,Remove the high-tension leads from both coils,,,,p.5-37
 PR-089.07,PR-089,7,Remove the bracket bolt and the coils; fit in the reverse order,,,,p.5-37
 PR-089.08,PR-089,8,Measure each high-tension lead's resistance,SP-044.,,Never pierce a lead with a probe (SP-574).,p.5-37
 PR-089.09,PR-089,9,"Take a lead off a plug by gripping and twisting the moulded cap, then pulling the cap",,,Pulling on the lead parts the wire inside the cap.,p.5-38
+PR-090.01,PR-090,1,Apply 12 V to the kick-down solenoid,SP-1129.,A click is heard.,,p.7B-16
+PR-090.02,PR-090,2,Pull the vacuum pipe off the diaphragm and look inside it,SP-1159.,No transmission fluid in the pipe.,,p.7B-16
+PR-090.03,PR-090,3,Apply vacuum to the diaphragm,SP-1159.,The diaphragm rod moves.,,p.7B-16
+PR-090.04,PR-090,4,Draw off transmission fluid before the diaphragm is unscrewed,"About a litre, SP-1160.",,,p.7B-16
+PR-090.05,PR-090,5,"If the diaphragm is sound, fit a rod of another length","Lengths SP-1167; chosen by the N dimension, SP-1669.",,,p.7B-16
+PR-091.01,PR-091,1,Fit oil pressure gauges to the line pressure and the governor pressure holes of the case,Gauge and adaptor SP-1647. Lay the gauges by the driver's seat.,,,p.7B-23
+PR-091.02,PR-091,2,Pull the vacuum pipe off the diaphragm and plug the pipe,,,,p.7B-23
+PR-091.03,PR-091,3,Connect the vacuum pump to the diaphragm,Bring the pump to the driver's seat.,,,p.7B-23
+PR-091.04,PR-091,4,"With the pump at 0 mmHg, accelerate gently in D and read the governor pressure where the line pressure drops sharply",,SP-1161.,,p.7B-23
+PR-091.05,PR-091,5,Repeat with the pump holding 200 mmHg,,SP-1162.,,p.7B-23
+PR-091.06,PR-091,6,"If a reading is off standard, check the diaphragm rod and the control valve",SP-1641.,,,p.7B-23
+PR-092.01,PR-092,1,Lift the torque converter out of the converter housing,,,Fluid spills from the converter as it comes out.,p.7B-38
+PR-092.02,PR-092,2,Check the outside of the converter for damage and cracks,,None; replace the converter if there is any.,,p.7B-38
+PR-092.03,PR-092,3,Check the pilot and the boss for rust,Remove all of it.,,,p.7B-38
+PR-092.04,PR-092,4,Drain the fluid left in the converter,,,,p.7B-38
+PR-092.05,PR-092,5,Pour in white gasoline or kerosene,The amount: SP-1655.,,,p.7B-38
+PR-092.06,PR-092,6,"Shake the converter, then pour the solvent out",,,,p.7B-38
+PR-092.07,PR-092,7,Blow the inside out with compressed air,,The inside is completely empty.,,p.7B-38
+PR-092.08,PR-092,8,"Pour in transmission fluid, shake, and pour it out",Fluid SP-093.,,,p.7B-38
