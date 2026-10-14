@@ -674,3 +674,119 @@ PR-080.10,PR-080,10,Disconnect the vacuum sensing tubes from the leading vacuum 
 PR-080.11,PR-080,11,Turn the air conditioner switch off and disconnect the air conditioner solenoid valve connector,,,,p.4A-66
 PR-080.12,PR-080,12,Put battery power on one terminal of the valve and ground the other,SP-1598.,The opener works and the speed rises to 1200 +/- 50 rpm in neutral.,,p.4A-66
 PR-080.13,PR-080,13,"If it is out, turn the opener's adjusting screw",,,,p.4A-66
+PR-081.01,PR-081,1,Look at the indicator on top of the battery,,"Blue: the battery is normal. Not blue: the electrolyte is low, the charge is low, or both.",,p.5-5
+PR-081.02,PR-081,2,Check the electrolyte lies between the upper and lower lines and top it up with distilled water,,,Do not overfill.,p.5-5
+PR-081.03,PR-081,3,"If the level is right and the indicator is still not blue, recharge the battery",Quick charge with the battery out of the car and the vent caps off (SP-326); slow charge with the caps on (SP-1620).,,Accessories off and engine stopped first; the negative cable comes off first and goes on last (SP-338).,p.5-5
+PR-081.04,PR-081,4,"Check the terminals are tight, clean them and coat them with grease",,,,p.5-5
+PR-081.05,PR-081,5,Inspect the cables for corrosion and fraying and the rubber protector on the positive terminal for coverage,,,,p.5-5
+PR-081.06,PR-081,6,"If the indicator is not blue after charging, measure the specific gravity with a hydrometer",SP-327.,Under 1.220: charge again. Normal with no blue sign: the indicator may be faulty.,,p.5-5
+PR-082.01,PR-082,1,"Before any test, read the cautions",Battery voltage is always on the alternator's B terminal.,,"Never reverse the battery connections or use a megger (either destroys the rectifier), never ground the L terminal with the engine running, never start the engine with the L and R coupler off.",p.5-6
+PR-082.02,PR-082,2,"Test 1: measure the B terminal voltage at idle, then at about 2000 rpm",,Higher at 2000 rpm: go to the output test (step 7). No change: go on.,,p.5-7
+PR-082.03,PR-082,3,"Test 2: engine stopped and key ON, measure the L terminal voltage",SP-259.,0 to 1 V: go on. Near battery voltage: step 6. 1 to 3 V: step 7.,,p.5-7
+PR-082.04,PR-082,4,Test 3: join the alternator's B and R terminals with a separate lead and repeat test 2,,"1 to 3 V now: poor contact in the car's wiring, key switch included. Still 0 to 1 V: go on.",,p.5-7
+PR-082.05,PR-082,5,Test 4: disconnect the alternator's connector and check continuity between the L and R terminals,SP-277. The chart's two outcomes both read IC regulator fault in the OCR text; the page was not read.,,,p.5-7
+PR-082.06,PR-082,6,"Test 5: engine stopped and key ON, measure the F terminal voltage",SP-1614. Touch the test lead to the terminal only briefly.,,,p.5-8
+PR-082.07,PR-082,7,"Test 6: put an ammeter of 60 A or more between the B terminal and its wire, start the engine with every electrical load on, raise it suddenly to 2500 to 3000 rpm and read the peak",SP-257.,90% or more of nominal output: the alternator is normal. 70 to 90%: go on. 70% or less: the alternator is faulty.,,p.5-8
+PR-082.08,PR-082,8,Test 7: discharge the battery a little and repeat test 6; check the wiring between the B terminal and battery positive for a poor contact,SP-257.,90% or more: normal. Less: remove the alternator and inspect it.,,p.5-9
+PR-082.09,PR-082,9,"Test 8: put an ammeter of 50 A or more between the battery's positive cable and the battery, start the engine and read the charging current at about 2500 rpm",,Under 5 A: go on. 5 A or more: charge longer or fit a charged battery and repeat.,Short the ammeter's terminals before cranking so starter current does not pass through it.,p.5-9
+PR-082.10,PR-082,10,"With the current under 5 A, measure the L terminal voltage",SP-278.,14.7 +/- 0.5 V at 20 C: the IC regulator is normal.,,p.5-9
+PR-083.01,PR-083,1,Measure the B terminal voltage while raising the engine slowly from idle,SP-1613.,Stays under 15.5 V: go on. 15.5 V or more: the IC regulator is faulty.,,p.5-10
+PR-083.02,PR-083,2,Compare the F terminal voltage at idle and at about 3000 rpm,It may not rise while the battery is discharging.,Higher at 3000 rpm: go on. No change: the IC regulator is faulty.,,p.5-10
+PR-083.03,PR-083,3,"With the battery fully charged (charging current 5 A or less at 2500 rpm), measure the L terminal voltage at about 2500 rpm",SP-278.,14.7 +/- 0.5 V at 20 C: the alternator is normal.,,p.5-10
+PR-084.01,PR-084,1,Disconnect the battery's negative terminal,,,,p.5-11
+PR-084.02,PR-084,2,Remove the alternator's bolts,The figure marks them; it was not read.,,,p.5-11
+PR-084.03,PR-084,3,Disconnect the wiring and the connector from the alternator,,,,p.5-11
+PR-084.04,PR-084,4,"Remove the V-belt, then the alternator",,,,p.5-11
+PR-084.05,PR-084,5,Refit in the reverse order and set the V-belt tension,SP-025; this page's own figures are SP-1612.,,,p.5-11
+PR-085.01,PR-085,1,Heat the rear bearing box with the soldering iron,SP-286.,,"Unheated, the rear bearing will not come out of the rear bracket.",p.5-12
+PR-085.02,PR-085,2,"Pull out the three bolts, put a flat screwdriver between the stator core and the front bracket and separate them",,,Do not push the screwdriver in far: it scratches the coil.,p.5-12
+PR-085.03,PR-085,3,Separate the rear part from the front part,,,Do not lose the stopper spring round the rear bearing.,p.5-12
+PR-085.04,PR-085,4,"Remove the pulley nut and take the pulley, rotor and front bracket apart",,,,p.5-12
+PR-085.05,PR-085,5,"Front bearing, if replaced: press the new one in evenly with a socket that fits its outer race",SP-270.,,,p.5-13
+PR-085.06,PR-085,6,"Rear bearing, if replaced: pull it with a bearing puller and press the new one on",SP-273.,The groove round its circumference faces the slip rings.,,p.5-13
+PR-085.07,PR-085,7,"Remove the B terminal's nut and insulation bushing, the two rectifier screws and the brush holder screw, and separate the rear bracket from the stator",,,,p.5-13
+PR-085.08,PR-085,8,Remove the IC regulator,,,,p.5-13
+PR-085.09,PR-085,9,Melt the solder joining the rectifier to the stator coil leads,SP-265.,,Be quick: heat held on the joint damages the rectifier.,p.5-14
+PR-085.10,PR-085,10,"Brushes, if replaced: melt the pigtail's solder, remove the brush and solder the new one in",SP-284.,,,p.5-14
+PR-085.11,PR-085,11,Measure the resistance between the slip rings,SP-082.,"2.0 to 2.6 ohm; if not, replace the rotor.",,p.5-15
+PR-085.12,PR-085,12,Check continuity between a slip ring and the rotor core,SP-267.,None; continuity means a new rotor.,,p.5-15
+PR-085.13,PR-085,13,Check the slip ring surface; true a rough one on a lathe or with fine sandpaper,,,,p.5-15
+PR-085.14,PR-085,14,"Check continuity between the stator coil leads, then between the leads and the core",SP-264.,Continuity between the leads and none to the core; otherwise replace the stator.,,p.5-15
+PR-085.15,PR-085,15,Check the brush length,SP-083.,Replace a brush worn to or near its limit line.,,p.5-16
+PR-085.16,PR-085,16,Measure the brush spring force with the brush pushed in until its tip projects 2 mm,SP-283.,,,p.5-16
+PR-085.17,PR-085,17,"Check the bearings for noise, looseness and lack of oil",,,,p.5-16
+PR-085.18,PR-085,18,"Check the positive diodes, the negative diodes and the diode trio for continuity in each direction",SP-275.,Each conducts one way only.,,p.5-16
+PR-085.19,PR-085,19,"Assemble in the reverse order, nothing lubricated; fit the stopper spring into the eccentric groove round the rear bearing","Its protruding part goes in the deepest part of the groove, whose edge is chamfered.",,,p.5-18
+PR-085.20,PR-085,20,"Push each brush into its holder and pin it with a 2 mm wire, 40 to 50 mm long, through the hole",The figure shows the hole; it was not read.,,Pull the wire out when assembly is finished.,p.5-18
+PR-085.21,PR-085,21,Heat the rear bracket before pressing the rear bearing into it,SP-286.,,,p.5-18
+PR-085.22,PR-085,22,Turn the pulley by hand,,The rotor turns lightly.,,p.5-18
+PR-086.01,PR-086,1,Measure the battery's specific gravity,,Full or nearly full charge.,,p.5-20
+PR-086.02,PR-086,2,"If the magnet switch does not act: key at START, measure the voltage between the S terminal and ground",SP-300. A hot magnet switch may not act even with the voltage there.,8 V or more: the starter is at fault. Less: the wiring.,,p.5-20
+PR-086.03,PR-086,3,"If the starter will not crank or cranks slowly, suspect the starter or its wiring",Cranking speed depends much on the engine oil's viscosity.,,,p.5-20
+PR-086.04,PR-086,4,"To remove, disconnect the battery's negative cable, disconnect the wiring from the starter and remove the starter",,,,p.5-20
+PR-086.05,PR-086,5,Refit in the reverse order,,,,p.5-20
+PR-087.01,PR-087,1,"Remove the nut of the switch's M terminal and the connector, then the two switch screws, the switch and any adjustment shim",,,,p.5-23
+PR-087.02,PR-087,2,"Remove the two brush holder screws and the two through-bolts, then the rear bracket",,,,p.5-23
+PR-087.03,PR-087,3,"Lift the brush springs, take out the two positive brushes and remove the brush holder",Lift a spring with a flat screwdriver or a piece of 2 mm piano wire.,,,p.5-23
+PR-087.04,PR-087,4,Remove the yoke and the armature,,,,p.5-24
+PR-087.05,PR-087,5,"Remove the two cover screws, the cover, the C washer and the adjustment washer",,,,p.5-24
+PR-087.06,PR-087,6,Remove the centre bracket bolt and the centre bracket,,,,p.5-24
+PR-087.07,PR-087,7,"Remove the adjustment washer and the reduction gear, then the packing and spring",,,,p.5-24
+PR-087.08,PR-087,8,Remove the lever,,,,p.5-25
+PR-087.09,PR-087,9,"Tap the stop ring down until the ring that holds it shows, put a nail in the ring's gap and pry the ring off",,,,p.5-25
+PR-087.10,PR-087,10,Check continuity between the commutator and the armature core,SP-311.,None; continuity means a new armature.,,p.5-25
+PR-087.11,PR-087,11,"With the armature on V blocks, measure the commutator's runout with a dial gauge",SP-309. Check first that the bearing has no play.,"At the limit, true it on a lathe or replace the armature.",,p.5-26
+PR-087.12,PR-087,12,Measure the commutator's outer diameter,SP-310.,,,p.5-26
+PR-087.13,PR-087,13,Wipe a dirty commutator; true a rough one on a lathe or with fine sandpaper,,,,p.5-26
+PR-087.14,PR-087,14,Check the mold between the segments and undercut it if it has shrunk,SP-1617; depth SP-307.,,,p.5-26
+PR-087.15,PR-087,15,Check continuity between the field connector and a brush,SP-319.,Continuity; none means a new yoke assembly.,,p.5-26
+PR-087.16,PR-087,16,Check continuity between the field connector and the yoke,SP-320.,None.,,p.5-27
+PR-087.17,PR-087,17,Check the field coil and core are tight in the yoke,,Loose: replace the yoke assembly.,,p.5-27
+PR-087.18,PR-087,18,Check the brush length,"SP-071; new, SP-1615.",Replace a brush worn to or near the limit.,,p.5-27
+PR-087.19,PR-087,19,Measure the brush spring force at the moment the spring leaves the brush,"SP-305; new, SP-1616.",,,p.5-27
+PR-087.20,PR-087,20,"Check continuity between each insulated brush and the plate, and that the brushes slide freely in the holder",SP-306.,None.,,p.5-27
+PR-087.21,PR-087,21,Turn the pinion shaft by hand each way,SP-316.,"Free one way, locked the other; otherwise replace the pinion shaft assembly.",,p.5-28
+PR-087.22,PR-087,22,Check continuity between the switch's M terminal and its body,,Continuity; none means a new switch.,,p.5-28
+PR-087.23,PR-087,23,"Check the pinion for wear or damage; if it is badly damaged, check the ring gear too",,,,p.5-28
+PR-087.24,PR-087,24,"Check the armature bearings for noise, play and lubrication; pull a bad one with a bearing puller and press the new one on",SP-313.,,,p.5-28
+PR-087.25,PR-087,25,Check the front bracket's bearing,It is replaced only together with the front bracket.,,,p.5-28
+PR-087.26,PR-087,26,"Assemble in the reverse order, greasing the armature shaft gear, the reduction gear, both armature bearings, the pinion shaft's C washer, the lever's sliding part, the front bracket's metal and, very lightly, the plunger","SP-317, SP-318.",,,p.5-29
+PR-087.27,PR-087,27,"Put the spring, pinion and stop ring on the pinion shaft, seat the ring in the shaft's groove and pull the stop ring up over it with a bearing puller",Tap the ring with a flat screwdriver if it will not seat.,,Never re-use a scarred ring.,p.5-29
+PR-087.28,PR-087,28,Fit the lever facing the right way,The figure shows the direction; it was not read.,,,p.5-29
+PR-087.29,PR-087,29,"Fit the washer and C washer on the end of the pinion shaft, tighten the centre bracket bolt and measure the shaft's end play; set it with the adjusting washer",SP-315.,,,p.5-30
+PR-087.30,PR-087,30,"Fit the brush holder and the rear bracket, minding where the through-bolts pass",Both are symmetrical and go on either way round.,,,p.5-30
+PR-087.31,PR-087,31,"Connect the starter to a battery so the pinion shifts out, push the pinion shaft back by hand and measure its movement; set it with shims between the switch and the front bracket","SP-314. More shims, less movement.",0.5 to 2.0 mm.,Current for no longer than SP-1618 gives.,p.5-30
+PR-087.32,PR-087,32,"No-load test: wire a voltmeter and an ammeter to the starter with thick leads and tight terminals, close the switch and let the starter run up",SP-068.,"11.5 V and 100 A or less at speed; if not, inspect again.",,p.5-31
+PR-088.01,PR-088,1,Disconnect the high-tension leads and the vacuum sensing tubes from the distributor,,,,p.5-32
+PR-088.02,PR-088,2,Disconnect the igniters' couplers and the condenser lead,,,,p.5-32
+PR-088.03,PR-088,3,Remove the distributor lock nut and pull the distributor out,,,,p.5-32
+PR-088.04,PR-088,4,"Remove the cap, the rotor and the seal cover",,,,p.5-32
+PR-088.05,PR-088,5,Undo the screws holding each igniter to the housing and remove the igniters,,,,p.5-32
+PR-088.06,PR-088,6,"Remove the clips on the vacuum diaphragm links, then the screws, the vacuum control units and the condenser",,,,p.5-32
+PR-088.07,PR-088,7,Remove the signal rotor shaft screw and the coil base bearing screws,,,,p.5-33
+PR-088.08,PR-088,8,"Lift the signal rotor, rotor shaft, pick-up coils and coil base bearing assembly out through the top of the drive shaft",,,,p.5-33
+PR-088.09,PR-088,9,Pull the signal rotor off the rotor shaft with a puller and remove the spring pin,,,,p.5-33
+PR-088.10,PR-088,10,Unhook the springs and remove the governors,,,,p.5-33
+PR-088.11,PR-088,11,"Drive the lock pin out of the driven gear with a small drift, remove the gear and washers and take the shaft out through the top of the housing",,,,p.5-33
+PR-088.12,PR-088,12,Inspect the cap and the rotor,"SP-570, SP-572.",,,p.5-33
+PR-088.13,PR-088,13,Measure each pick-up coil's resistance at its coupler,SP-042.,,,p.5-34
+PR-088.14,PR-088,14,"Put the 1 mA ammeter on each pick-up coil's coupler terminals, lay a screwdriver on the coil's magnet core and snatch it away",SP-566.,The needle moves.,,p.5-34
+PR-088.15,PR-088,15,Turn the bearing's outer race slowly by hand,,No roughness.,,p.5-34
+PR-088.16,PR-088,16,Assemble in the reverse order: fit the signal rotor shaft on the drive shaft with its slots on the governor pins,,,,p.5-34
+PR-088.17,PR-088,17,"Fit the pick-up coil and coil base bearing assembly and tighten its screws, then the signal rotor on its shaft",,,,p.5-34
+PR-088.18,PR-088,18,Drive the spring pin in with a punch to lock the signal rotor,,,,p.5-35
+PR-088.19,PR-088,19,Turn the drive shaft until a signal rotor protrusion faces a pick-up coil core and measure the air gap with a feeler gauge,SP-045; SP-567 if it is out.,0.5 to 0.9 mm.,,p.5-35
+PR-088.20,PR-088,20,"To refit, set the leading (yellow) timing mark on the eccentric shaft pulley at the indicator pin on the front cover",SP-565.,,,p.5-35
+PR-088.21,PR-088,21,Align the tally marks on the distributor housing and the driven gear and fit the distributor and its lock nut,,,,p.5-35
+PR-088.22,PR-088,22,Turn the housing until a signal rotor protrusion faces the pick-up coil core and tighten the lock nut,,,,p.5-35
+PR-088.23,PR-088,23,"Connect the high-tension leads, the igniter couplers, the condenser lead and the vacuum sensing tubes",,,,p.5-35
+PR-088.24,PR-088,24,Set the ignition timing,PR-023.,,,p.5-36
+PR-089.01,PR-089,1,"Remove the igniter and wire it to a battery, a switch and the test lamp",SP-568. The figure shows the circuit; it was not read.,,,p.5-37
+PR-089.02,PR-089,2,Flick the switch on and off quickly,,"The lamp flashes; if not, replace the igniter. Test both igniters.",,p.5-37
+PR-089.03,PR-089,3,Warm the coils to normal operating temperature and measure each one's primary resistance,SP-043; the 1985 coil's figure is SP-1619.,,,p.5-37
+PR-089.04,PR-089,4,"To replace the coils, disconnect the battery's negative cable",,,,p.5-37
+PR-089.05,PR-089,5,"Pull the couplers off the coils' negative terminals, undo the nuts on the positive terminals and remove the wire terminals",,,,p.5-37
+PR-089.06,PR-089,6,Remove the high-tension leads from both coils,,,,p.5-37
+PR-089.07,PR-089,7,Remove the bracket bolt and the coils; fit in the reverse order,,,,p.5-37
+PR-089.08,PR-089,8,Measure each high-tension lead's resistance,SP-044.,,Never pierce a lead with a probe (SP-574).,p.5-37
+PR-089.09,PR-089,9,"Take a lead off a plug by gripping and twisting the moulded cap, then pulling the cap",,,Pulling on the lead parts the wire inside the cap.,p.5-38

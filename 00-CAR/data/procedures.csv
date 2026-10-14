@@ -79,3 +79,12 @@ PR-077,Fuel,"Check the carburettor heater, choke diaphragms and choke delay valv
 PR-078,Fuel,"Adjust the idle mixture (1985 manual, factory carburettor)",after a carburettor overhaul only,tachometer,S-002,replaced
 PR-079,Fuel,"Check the automatic choke release and the hot start assist (1985 manual, factory carburettor)","choke not releasing, or hard hot starting","tachometer, ohmmeter, battery",S-002,replaced
 PR-080,Fuel,"Check and adjust the throttle opener and the air conditioning solenoid valve (1985 manual, factory carburettor)",idle drops with the air conditioner on,"tachometer, voltmeter, battery",S-002,replaced
+PR-081,Electrical,Check and charge the battery (1985 manual),"slow cranking, or at service","hydrometer, battery charger",S-002,
+PR-082,Electrical,Find a charging fault on the car: battery running down (1985 manual),battery discharging,"voltmeter, ammeter of 60 A or more",S-002,other-car
+PR-083,Electrical,Find a charging fault on the car: battery overcharging (1985 manual),battery overcharging,voltmeter,S-002,other-car
+PR-084,Electrical,Remove and refit the alternator (1985 manual),alternator overhaul or replacement,,S-002,
+PR-085,Electrical,Overhaul the alternator (1985 manual),charging fault traced to the alternator,"200 W soldering iron, bearing puller, press, circuit tester, spring pressure gauge",S-002,
+PR-086,Electrical,"Check the starter on the car, remove and refit it (1985 manual)",starter does not turn or turns slowly,"voltmeter, hydrometer",S-002,
+PR-087,Electrical,"Overhaul the starter, reduction type (1985 manual)",starter fault traced to the motor,"bearing puller, circuit tester, dial gauge and V blocks, spring balance, 12 V battery, voltmeter, ammeter",S-002,
+PR-088,Ignition,"Remove, strip, inspect and refit the distributor (1985 manual)",ignition fault or distributor wear,"puller, small drift, punch, ohmmeter, DC ammeter (1 mA), feeler gauge",S-002,
+PR-089,Ignition,"Check the igniters, the ignition coils and the high-tension leads (1985 manual)",misfire or no spark,"12 V test lamp under 10 W, battery, switch, ohmmeter",S-002,
