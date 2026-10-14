@@ -1519,3 +1519,13 @@ SP-1532,Wheels,Temporary spare wheel size,4-T x 15,,S-038,PDF p8 (T:6),primary,w
 SP-1533,Wheels,Temporary spare tyre size,T135/70 D 15,,S-038,PDF p8 (T:6),primary,wheels,PT533,,
 SP-1534,Wheels,Temporary spare tyre inflation pressure,420,kPa,S-038,PDF p8 (T:6),primary,wheels,PT533,,60 psi
 SP-1535,Wheels,Replacement Bridgestone Tracompa T135/70D15: load index and speed rating,99M,,S-476,,secondary,wheels,PT533,,Listing showed all sizes out of stock
+SP-1536,Body,"Jack position, front",at the centre of the crossmember,,S-002,p.G-6,primary,body,,,"1985 manual; the FB body is the 1981-85 body. Wheels blocked, specified positions only (p.G-2)."
+SP-1537,Body,"Safety stand positions, front",on both sides of the body frame,,S-002,p.G-6,primary,body,,,1985 manual; the FB body is the 1981-85 body.
+SP-1538,Body,"Jack position, rear",at the differential,,S-002,p.G-6,primary,body,,,1985 manual; the FB body is the 1981-85 body.
+SP-1539,Body,"Safety stand positions, rear",on both sides of the body frame,,S-002,p.G-6,primary,body,,,1985 manual; the FB body is the 1981-85 body.
+SP-1540,Body,"Two-post lift support positions, front","frame, or side sills (front)",,S-002,p.G-7,primary,body,,,1985 manual; the FB body is the 1981-85 body. The drawings carry the exact pads; they are not text and were not read.
+SP-1541,Body,"Two-post lift support positions, rear","frame, or side sills (rear)",,S-002,p.G-7,primary,body,,,1985 manual; the FB body is the 1981-85 body. The drawings carry the exact pads; they are not text and were not read.
+SP-1542,Body,Towing set-up,"parking brake released, selector in neutral, ignition key at ACC; drive (rear) wheels off the ground as a rule, raised or on dollies",,S-002,p.G-8,primary,body,,,1985 manual; the FB body is the 1981-85 body. Never backward with the drive wheels on the ground. Brake assist does not work with the engine off.
+SP-1543,Body,Towing limit with all four wheels on the ground (1985 manual),forward only; 56 km/h (35 mph) max for 80 km (50 miles) max,,S-002,p.G-8,primary,body,,other-car,"Written for the 1985 gearboxes (L4N71B automatic, 5-speed); no 1982 source in the record gives the 3N71B's limit. Past either figure: rear wheels on dollies or raised."
+SP-1544,Body,Towing hooks,"pull straight away from the hook, no sideways force, take up slack slowly; the rear hook is for emergency recovery only (ditch, snowbank, mud)",,S-002,p.G-8,primary,body,,,"1985 manual; the FB body is the 1981-85 body. Hook positions are drawings on p.G-7 and G-8, not text; not read."
+SP-1545,General,Parts renewed whenever removed,"oil seals, gaskets, O-rings, lock washers, cotter pins, nylon nuts",,S-002,p.G-4,primary,,,,"1985 manual, fundamental procedures."

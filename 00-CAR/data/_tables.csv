@@ -22,3 +22,4 @@ cad,"every free 3D model, scan and dimensioned drawing found for the car and the
 suppliers,"who sells or supports parts for this car: one row per company, named by parts.supplier"
 connector_dims,"the outer dimensions of each DEUTSCH DT, DTP and DT13 housing the harness uses, one row per variant, with where each figure was read (a vendor model, a TE document) or that it was estimated; every figure confirm until a part in hand is measured. Drawn by 01-electrical/00-design/harness/cad/connectors"
 circuits,"each factory circuit write-up in factory-circuits/ and the wiring diagram itself, with the 00-CAR systems it belongs to, so the Manual's Diagrams page can group them"
+procedure_steps,"the numbered steps of a procedure, in order, one row each: what to do, exactly how, what to expect and the caution that belongs to that step; a figure in a step names the specs row that holds it (R2). The Manual shows them as the procedure's body"

@@ -2120,9 +2120,20 @@ def manual_terminals(terms, pid):
     rows = [{k: (x.get(k) or "").strip() for k in keys} for x in terms if (x.get("part") or "").strip() == pid]
     return sorted(rows, key=lambda r: (len(r["terminal"]), r["terminal"]))
 
+def procedure_body(steps: list) -> str:
+    """A procedure's body as the app renders it, built from its procedure_steps rows (in order)
+    when it has no Markdown file: the numbered action, then how, expect, caution and the page."""
+    out = []
+    for i, s in enumerate(steps, 1):
+        out.append(f"{i}. **{s.get('do', '')}**" + (f" ({s['page']})" if s.get("page") else ""))
+        for label, col in (("", "how"), ("Expect: ", "expect"), ("**Caution:** ", "caution")):
+            if s.get(col):
+                out.append(f"   {label}{s[col]}")
+    return "\n".join(out)
+
 def manual_view(today_iso: str = "") -> dict:
     """The Manual, computed. Reads 00-CAR vehicle, systems, zones, parts, specs, service, terminals,
-    intervals, issues, drives, procedures (and data/procedures/<id>.md), parts_history, catalogue
+    intervals, issues, drives, procedures and procedure_steps (and data/procedures/<id>.md), parts_history, catalogue
     (a part's Mazda number), sources and circuits (and the files they name, under CIRCUITS_DIR).
     Writes nothing (D-417)."""
     car = ROOT / "00-CAR"
@@ -2211,9 +2222,14 @@ def manual_view(today_iso: str = "") -> dict:
     rank = {"overdue": 0, "soon": 1, "never": 2, "ok": 3, "each": 4}
     intervals.sort(key=lambda iv: (rank[iv["due"]["status"]], iv["due"].get("next_date") or "9999"))
 
+    psteps = {}
+    if (car / "data" / "procedure_steps.csv").exists():
+        for s in map(clean, read_table(car, "procedure_steps")[1]):
+            psteps.setdefault(s["procedure"], []).append(s)
     for pr in shown["procedures"]:
         f = car / "data" / "procedures" / f"{pr['id']}.md"
-        pr["body"] = f.read_text(encoding="utf-8") if f.exists() else ""
+        pr["steps"] = sorted(psteps.get(pr["id"], []), key=lambda s: _int(s["n"]) or 0)
+        pr["body"] = f.read_text(encoding="utf-8") if f.exists() else procedure_body(pr["steps"])
 
     sources = {r["id"]: {"title": (r.get("title") or "").strip(), "url": (r.get("url") or "").strip(),
                          "local_path": (r.get("local_path") or "").strip()}
@@ -3515,6 +3531,10 @@ def cmd_selftest(args):
         expect("the Manual's sources are 00-CAR's", list(mv.get("sources", {})) == ["S-001"])
         expect("a circuit is read from 00-CAR with its file's text, a missing file left out",
                [(c["file"], c["body"]) for c in mv.get("circuits", [])] == [("a.md", "# Lamps\n")])
+        expect("a procedure with no Markdown file gets its body from its steps, in order",
+               procedure_body([{"do": "Block the wheels", "page": "p.G-2"},
+                               {"do": "Jack", "how": "at the crossmember", "caution": "stands"}])
+               == "1. **Block the wheels** (p.G-2)\n2. **Jack**\n   at the crossmember\n   **Caution:** stands")
 
     n = len(passes) + len(fails)
     print(f"\n{len(fails)} failure(s) of {n}" if fails else f"\nselftest: all {n} pass")

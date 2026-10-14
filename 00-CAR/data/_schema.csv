@@ -215,3 +215,11 @@ circuits,title,text,yes,,
 circuits,systems,list,yes,systems,"systems ids, space-separated; the first is where the Manual files it"
 circuits,source,text,no,,the source it was decoded from (S- ids)
 circuits,note,text,no,,
+procedure_steps,id,key,yes,,"<procedure id>.<two digits>, in order"
+procedure_steps,procedure,str,yes,procedures,the procedure it belongs to
+procedure_steps,n,int,yes,,"its place in the procedure, 1 first"
+procedure_steps,do,str,yes,,"the action, one short imperative line"
+procedure_steps,how,text,no,,"exactly how: the place, the order, the figure and the specs row that holds it"
+procedure_steps,expect,text,no,,what is seen or measured when the step went right
+procedure_steps,caution,text,no,,"the one thing that hurts him or the car at this step, if any"
+procedure_steps,page,str,no,,the page of the procedure's source the step was read from

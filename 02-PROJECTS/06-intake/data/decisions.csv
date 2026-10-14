@@ -20,3 +20,12 @@ Camden's answer to block 06.03 (2026-10-13, desktop): option (a), no words added
 Reasoning: the recommendation was (a); it stops the redistribution of copyrighted manuals without rewriting history (no force-push).
 
 Consequences: a LICENSE file (all rights reserved) is added at the repository root in this pass; switching the repository to private is a GitHub setting only Camden can change (the tool cannot), and the phone's token must have read access to it. No manuals are moved or history rewritten; the intake's bulk still leaves git by parse row (T2)."
+D-544,,"Procedure steps are rows: a procedure_steps table in 00-CAR, shown by the Manual from the rows",2026-10-13,standing,,,,,"**A procedure parsed from a manual is rows, not a document: `00-CAR` gets a `procedure_steps` table (id `<procedure>.<two digits>`, procedure, n, do, how, expect, caution, page), one row per step, and the Manual shows a procedure's steps from those rows when it has no Markdown body.**
+
+Decided by the agent (CLAUDE.md §3, small; nobody was asked): D-523 rules every procedure step into the car's tables and the parse rows say ""one row per step"", but `procedures` held only a heading and a Markdown body, and D-519 says a new document is not written. The columns are the ones `01-electrical`'s `steps` table already uses (D-533), so a step reads the same in both places; `page` is the page of the procedure's `source`.
+
+In the tool: `export` gives each procedure its `steps` in order and, where there is no `data/procedures/<id>.md`, builds the body the app already renders from them - nothing in the app changes. The two hand-written procedures (PR-001, PR-002) keep their Markdown bodies until they are rewritten as steps.
+
+A step is where a figure is used, never its home (R2): a figure in a step names the `specs` row that holds it, and another year's figure stays marked as such there.
+
+Undoing this is deleting rows and one table declaration; nothing is bought, cut or wired."

@@ -1,0 +1,11 @@
+id,procedure,n,do,how,expect,caution,page
+PR-003.01,PR-003,1,Block the wheels that stay on the ground,,,,p.G-2
+PR-003.02,PR-003,2,Front: jack at the centre of the crossmember,SP-1536.,,Use only the specified jacking positions (p.G-2).,p.G-6
+PR-003.03,PR-003,3,Front: set a safety stand under each side of the body frame and lower onto them,SP-1537.,,"The car is supported on safety stands, not on the jack (p.G-2).",p.G-6
+PR-003.04,PR-003,4,Rear: jack at the differential,SP-1538.,,,p.G-6
+PR-003.05,PR-003,5,Rear: set a safety stand under each side of the body frame and lower onto them,SP-1539.,,,p.G-6
+PR-003.06,PR-003,6,Clear the engine bay of tools and people before starting the engine,,,,p.G-2
+PR-004.01,PR-004,1,"Release the parking brake, put the selector in neutral and set the key to ACC",SP-1542.,,Brake assist does not work with the engine off.,p.G-8
+PR-004.02,PR-004,2,"Tow with the rear wheels off the ground: raised, or on dollies",SP-1542. The rear wheels are the drive wheels.,,Never tow backward with the drive wheels on the ground.,p.G-8
+PR-004.03,PR-004,3,"If all four wheels must stay on the ground, tow forward only, slowly and for a short distance","The 1985 manual's limit is SP-1543 (another gearbox); no figure for this car's 3N71B is in the record, so keep the rear wheels up whenever it can be done.",,,p.G-8
+PR-004.04,PR-004,4,"On a hook, pull straight away from it and take up the slack slowly",SP-1544.,,The rear hook is for emergency recovery only.,p.G-8
