@@ -736,7 +736,7 @@ Torque figures for the busbar studs, the PMU stud and the relay socket screws ar
 E15,"The wake strip carries its seven diodes and bleed resistor, the two wake sense stages are built on the perfboard to the wake_stages table, the two bias resistors are fitted, and every check that needs no power is read on the bench. The powered checks are taken in the car.",bench,half a day - confirm,"Soldering iron and solder (P044)
 Flush cutters, needle-nose pliers (P043)
 Multimeter: ohms, diode test, DC volts (P045)
-Heat gun (P042)",P071 P072 P069 P158 P160 P161 P134 P068 P011 P019 P008,"E14 - the strip and perfboard are mounted
+Heat gun (P042)",P071 P072 P069 P158 P160 P161 P212 P134 P068 P011 P019 P008,"E14 - the strip and perfboard are mounted
 A10 - the stage values are in the record (they are: the wake_stages table)
 Eye protection while soldering and clipping leads","The PMU wakes when pin 7 (+12V SW) goes high. Seven sources are OR-ed onto it through one diode each, so no source can feed another [pins 7]
 Strip inputs: 1 ACC (L3-S1 12) · 2 RUN (L3-S2 1) · 3 door stage · 4 horn / hazard / wink stage · 5 O22 keep-alive (pin 8) · 6 brake plunger (L3-S1 7) · 7 DCU wake request (DP-DCU 6) [node_conductors N33-N37, N63, N76]
