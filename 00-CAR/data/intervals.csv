@@ -12,3 +12,27 @@ wheel_nuts,Wheel nut torque check,15000,15,9–11 m-kg (65–80 ft-lb),SP-125; S
 battery,Battery state of charge,,1,,,not-fitted,Ionic S9 care - the Ionic belongs to 02-PROJECTS/01-electrical and is not fitted; the car runs on its lead-acid battery. Check monthly on its app and keep it above BMS cutoff while it waits (PR-002); applies to the car once the Ionic is fitted
 premix,Premix - two-stroke oil in the fuel,,,two-stroke oil,systems engine,,"Every fill-up, without exception: with the metering pump removed and its ports blocked off, this is the only oil the apex seals get. The ratio is not recorded."
 wheel_bearings,Front wheel bearings - clean and repack,30000,30,lithium base NLGI No. 2 (SP-1552),SP-1552; S-002 p.0-14 and p.0-23,,"The table row carries two L marks, taken as 30,000 and 60,000 mi the way its other two-mark rows read (coolant, rear axle oil); the columns come from OCR text, not from the page - confirm against the page (06-intake P83)"
+choke,Choke system - inspect,15000,15,,S-002,replaced,p.0-13; the factory carburettor's
+idle,Idle speed - inspect,15000,15,,S-002,,"p.0-13, at 15,000, 30,000, 45,000 and 60,000"
+cooling_check,"Cooling system - inspect hoses, clamps and radiator",15000,15,,S-002,,p.0-13
+oil_warning,Engine oil level warning system - inspect,15000,15,,S-002,,p.0-13; PR-189
+coolant_warning,Engine coolant level warning system - inspect,30000,30,,S-002,,p.0-13
+subzero,Sub-zero starting assist system - check its operation,,,,S-002,not-fitted,p.0-13: seasonally
+clutch_pedal,Clutch pedal - inspect,15000,15,,S-002,other-car,p.0-13; a manual car's
+clutch_fluid,Clutch fluid - inspect,30000,30,,S-002,other-car,p.0-13; a manual car's
+brake_lines,"Brake lines, hoses and connections - inspect",15000,15,,S-002,,p.0-13
+brake_pedal,Brake pedal - inspect,15000,15,,S-002,,p.0-13
+parking_brake,Parking brake - inspect,15000,15,,S-002,,p.0-13
+power_brake,Power brake unit and hoses - inspect,30000,30,,S-002,,p.0-14
+disc_brakes,Disc brakes - inspect,7500,7.5,,S-002,,p.0-14
+drum_brakes,Drum brakes - inspect,15000,15,,S-002,,p.0-14
+power_steering,Power steering fluid and lines - inspect,15000,15,,S-002,not-fitted,p.0-14; the car has manual steering
+steering_oil,Manual steering gear oil level - check,15000,15,,S-002,,p.0-14; SP-1550
+steering_operation,Steering operation and gear housing - inspect,15000,15,,S-002,,p.0-14
+steering_linkage,"Steering linkages, tie rod ends and arms - inspect",15000,15,,S-002,,p.0-14
+ball_joints,Front suspension ball joints - inspect,30000,30,,S-002,,p.0-14
+mt_oil,Manual transmission oil - replace,30000,30,,S-002,other-car,p.0-14; a manual car's
+atf_level,Automatic transmission fluid level - check,30000,30,,S-002,,"p.0-14; also at the first 7,500; PR-196"
+chassis_bolts,Bolts and nuts on chassis and body - tighten,15000,15,,S-002,,p.0-14
+heat_shield,Exhaust system heat shield - inspect,30000,30,,S-002,,p.0-14
+seat_belts,"Seat belts, buckles, retractors and anchors - inspect",15000,15,,S-002,,p.0-14
