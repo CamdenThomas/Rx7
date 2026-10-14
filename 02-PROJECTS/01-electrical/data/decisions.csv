@@ -1789,3 +1789,10 @@ Why these homes: export_glb.py already ties every top-level scene part to one re
 Small by §3: rows and code only, nothing bought or cut; undone by deleting the column. A device or connector he moves (no `place` column on its row yet) gets the column when the first such answer arrives (the apply playbook says how).
 
 In the data: `_schema.csv` parts.place and modules.place; inbox.kind gains `place` in every area (the tool owns that vocabulary); tools/rx7.py `place` type, kind and selftests; export_glb.py `_saved_place` with its selftest, `place_from: 01-electrical <table> <id>`; the 00-design README's scene contract; the apply playbook; 02-APP M3D3's note carries the answer's shape. Work Y29 (electrical)."
+D-555,,"Soldering tools for the desk build: he owns none, all join the first order",2026-10-13,standing,,,01.49,,"**Block 01.49: he owns none of the soldering tools for the desk build; they join the first (bench) order.**
+
+His answer, option (a) in full: ""I own none of it. The iron and solder (P044) and the meter (P045) move from the Amazon cart into the first order, and rows are added for a hot-air station, solder paste, flux, fine tweezers and a magnifier. About 75 USD moved and about 90 to 130 USD added, est. Closes off nothing."" He typed no further words.
+
+Reading: ""the first order"" is the bench order (Y16, Y18) that is bought before the freeze for the F3 / F5 board builds; P044 and P045 take store Bench, status cart, as P151 did (D-490). Prices are estimates; the hot-air station, paste, flux, tweezers and magnifier are new rows P214-P218, store Bench, section Tools, basis est, spec with confirm.
+
+Consequences: P044, P045 leave the Amazon cart (about 75 USD less there); five rows added (about 117 USD est). F3 and F5 no longer wait on this block."
