@@ -1394,3 +1394,166 @@ PR-154.06,PR-154,6,"Prepare the frame, bond the new dam to the glass, prime the 
 PR-154.07,PR-154,7,"Lay the sealant round the whole glass, fit the glass and let the sealant harden",As PR-153 steps 9 to 13.,,,p.14-23
 PR-154.08,PR-154,8,"Fit the glass's attaching nut, the centre pillar trim and the rear side pillar trim",,,,p.14-23
 PR-154.09,PR-154,9,"Connect the damper stay's end to the body, fit the glass plate's screw and the garnish",,,,p.14-23
+PR-155.01,PR-155,1,Disconnect the battery negative terminal,,,,p.15-14
+PR-155.02,PR-155,2,Remove the steering column covers,,,,p.15-14
+PR-155.03,PR-155,3,Unplug the ignition switch's connectors and check the continuity of its terminals in each key position,"Ohmmeter on the switch side, probe from the harness side of a connector. The 1985 switch's terminal letters: SP-543 to SP-546; S-001 holds this car's wiring.",Continuity exactly as the table; otherwise a new switch.,,p.15-14
+PR-155.04,PR-155,4,Loosen the switch's attaching screw and take the switch off the key cylinder,,,,p.15-14
+PR-155.05,PR-155,5,Fit the new switch in the reverse order,,,,p.15-14
+PR-156.01,PR-156,1,Test the speedometer on a speedometer tester,Read it at each standard speed: SP-434 to SP-437. Tyre wear and wrong tyre pressure add to the error.,Within the allowable range; the odometer counts.,,p.15-18
+PR-156.02,PR-156,2,Watch the speedometer for needle fluctuation and listen for noise,"If it fluctuates badly or does not move, take off the speedometer cable: a good cable means a new speedometer.",,,p.15-18
+PR-156.03,PR-156,3,Connect a tachometer to the ignition coil's negative terminal and start the engine,,,,p.15-18
+PR-156.04,PR-156,4,Compare the tester with the car's tachometer,SP-427 to SP-433.,Within the allowable range; otherwise a new tachometer.,Do not drop or knock the tachometer when it is out.,p.15-18
+PR-156.05,PR-156,5,Connect a voltage tester across the battery terminals and start the engine,,,,p.15-18
+PR-156.06,PR-156,6,Compare the tester with the car's voltmeter,Scale SP-424.,Within SP-425; otherwise a new voltmeter.,,p.15-18
+PR-157.01,PR-157,1,Unplug the sender of the gauge being checked,Fuel: the fuel tank unit's connector. Water temperature: the gauge unit's connector. Oil pressure: the oil pressure gauge unit's connector.,,,p.15-19 to 15-21
+PR-157.02,PR-157,2,Connect the checker's red lead to the harness connector and its black lead to body ground,Checker SP-426.,,,p.15-19
+PR-157.03,PR-157,3,Set the checker to each resistance in turn and switch the ignition on,Fuel: SP-1083. Oil pressure: SP-787. Hold each setting at least two minutes before judging.,The needle shows each value within twice the needle's width.,,p.15-19 to 15-21
+PR-157.04,PR-157,4,Judge where the fault is,Readings right: the fault is in the sender (PR-158 for the fuel tank unit and the water temperature unit). Readings wrong: the fault is in the meter.,,,p.15-19
+PR-158.01,PR-158,1,Connect an ohmmeter to the fuel tank unit,,,,p.15-19
+PR-158.02,PR-158,2,Move the unit's arm slowly from E to F and read the resistance,SP-1080 to SP-1082.,Within the range at each point; otherwise a new unit.,,p.15-19
+PR-158.03,PR-158,3,Remove the water temperature gauge unit,,,,p.15-20
+PR-158.04,PR-158,4,Stand the unit in a container of water and heat the water to 80 C,,,,p.15-20
+PR-158.05,PR-158,5,Measure the unit's resistance,SP-767.,Within the figure; otherwise a new unit.,,p.15-20
+PR-159.01,PR-159,1,Disconnect the battery cables,,,,p.15-21
+PR-159.02,PR-159,2,Remove the horn cap and the steering wheel,,,,p.15-21
+PR-159.03,PR-159,3,"Remove the column covers, the combination switch and the cluster switches",,,,p.15-21
+PR-159.04,PR-159,4,Remove the meter hood and take out the combination meter,Press each connector's retaining clip to unplug it from the meter.,,,"p.15-21, p.15-22"
+PR-159.05,PR-159,5,Strip the meter in order,"Front lens, plate, voltmeter and oil pressure gauge, tachometer, speedometer, fuel and water temperature gauge, warning lights lens, meter case, printed plate, bulbs and sockets.",,,p.15-22
+PR-159.06,PR-159,6,Check the printed circuit board,"Look for damage or rust, then check continuity between each connector terminal and its warning light with an ohmmeter.","No damage, rust or open track.",,p.15-23
+PR-159.07,PR-159,7,Assemble and refit in the reverse order,,,,"p.15-21, p.15-22"
+PR-160.01,PR-160,1,Release the parking brake fully and unplug the brake fluid level sensor,,,,p.15-24
+PR-160.02,PR-160,2,Jump the sensor's harness terminal to the ground terminal and start the engine,SP-389 (1985 wire colours BR and B; S-001 holds this car's).,BRAKE lights.,,p.15-24
+PR-160.03,PR-160,3,"If it does not light, check the fuse, the bulb and the harness",,,,p.15-24
+PR-160.04,PR-160,4,Connect an ohmmeter across the sensor's terminals and move the float up and down,SP-387 and SP-388.,"Continuity with the float below MIN, none above MAX; otherwise a new sensor.",,p.15-24
+PR-161.01,PR-161,1,Unplug the coolant level sensor and start the engine,,The coolant level light comes on within SP-771 of starting.,,p.15-24
+PR-161.02,PR-161,2,"If it does not light, check the fuse, the bulb, the sensor unit and the harness",,,,p.15-24
+PR-161.03,PR-161,3,"Check the sensor: take it out of the radiator, plug it back in and start the engine with it clear of the body",SP-770.,The light comes on.,,p.15-24
+PR-161.04,PR-161,4,Ground the sensor's threaded part,SP-770.,The light stays on; otherwise a new sensor.,,p.15-24
+PR-161.05,PR-161,5,Remove the coolant level sensor unit and wire it to a battery with a test bulb and a switch,As the figure on p.15-25.,,,p.15-25
+PR-161.06,PR-161,6,"Close the switch, then open it",SP-771.,The bulb stays out with the switch closed and lights SP-771 after it opens; otherwise a new unit.,,p.15-25
+PR-162.01,PR-162,1,Unplug the driver's seat belt buckle switch,,,,p.15-25
+PR-162.02,PR-162,2,Ground the harness terminal and start the engine,1985 wire colour Br; S-001 holds this car's.,BELT lights for SP-408.,,p.15-25
+PR-162.03,PR-162,3,"If it does not light, check the fuse, the bulb, the central processing unit and the harness",,,,p.15-25
+PR-162.04,PR-162,4,"Check the buckle switch with an ohmmeter, belt latched and unlatched",SP-1316 and SP-1317.,As the two rows; otherwise a new switch.,,p.15-25
+PR-163.01,PR-163,1,Unplug the stop light checker and ground the harness terminal (GL in 1985),S-001 holds this car's colour.,,,p.15-25
+PR-163.02,PR-163,2,Start the engine,,STOP LIGHT warning lights.,,p.15-25
+PR-163.03,PR-163,3,"With the engine running, check for voltage on the checker connector's GL wire, and on its W wire with the brake pedal pressed",,Voltage on both.,,p.15-26
+PR-163.04,PR-163,4,Check continuity from the checker connector's B wire to body ground,,Continuity.,,p.15-26
+PR-163.05,PR-163,5,"With both good, unplug either rear combination lamp's 6-pin connector",,The stop light warning lights; otherwise a new checker.,,p.15-26
+PR-164.01,PR-164,1,Unplug the choke and check relay's 4-pin connector and ground its YL terminal (1985 colour),S-001 holds this car's.,,,p.15-26
+PR-164.02,PR-164,2,Start the engine,,The charge warning light lights.,,p.15-26
+PR-164.03,PR-164,3,Wire the relay to a battery through a switch with an ohmmeter on each contact,As the figure on p.15-26.,,,p.15-26
+PR-164.04,PR-164,4,"Switch the coil to battery negative, then to battery positive","Each ohmmeter changes, one to continuity and one to none, as the coil is switched.",Both change; otherwise a new relay.,,p.15-26
+PR-165.01,PR-165,1,"Unplug the oil level sensor, ground its harness terminal and start the engine",SP-906.,"OIL LEVEL lights; if not, check the fuse, the bulb and the harness.",,p.15-26
+PR-165.02,PR-165,2,Check the oil level sensor with an ohmmeter while moving its float,SP-905.,"No continuity with the float up, continuity with it down; otherwise a new sensor.",,p.15-27
+PR-165.03,PR-165,3,"Unplug the washer fluid level sensor, jump its harness terminal to ground and start the engine",1985 colours LB and B; S-001 holds this car's.,"WASHER lights; if not, check the fuse, the bulb and the harness.",,p.15-27
+PR-165.04,PR-165,4,Connect the washer fluid level sensor to a tester and move its float up and down,,Continuity with the float at its lowest.,,p.15-27
+PR-165.05,PR-165,5,"Unplug the fuel tank unit, ground its YL terminal (1985 colour) and start the engine",S-001 holds this car's colour.,"FUEL lights; if not, check the fuse, the warning light and the harness.",,p.15-27
+PR-166.01,PR-166,1,"If neither the light switch nor the retractor switch works the headlights, check the retractor fusible link",,,,p.15-29
+PR-166.02,PR-166,2,"With the link good, read the voltage on the retractor motor connector's R wire with either switch at UP",SP-586.,"Battery voltage: the motor's ground or the motor is at fault. None: the wiring, the cluster switch or the light switch.",,p.15-29
+PR-166.03,PR-166,3,"If the retractor switch works them but the light switch does not, read the R wire of the 6-pin connector with the light switch at headlights",SP-679.,Battery voltage: the wiring is at fault. None: check the light switch.,,p.15-29
+PR-166.04,PR-166,4,"If the light switch works them but the retractor switch does not, check the cluster switch's feeds: WG with the switch at UP, RY at DOWN",SP-583.,Voltage on both.,,p.15-30
+PR-166.05,PR-166,5,"With the feeds good, check the outputs: R at UP, RY at DOWN",SP-583.,Voltage on both: the wiring to the motor is at fault. Either missing: a new cluster switch.,,p.15-30
+PR-166.06,PR-166,6,"If the headlights rise but will not lower, check the fusible links and fuses","A blown one points to a short between the light switch's RG line and the tail, side marker or illumination lights. None blown: the light switch, the retractor switch or the wiring.",,,p.15-30
+PR-167.01,PR-167,1,"If no headlight lights, check the fusible links",,,,p.15-30
+PR-167.02,PR-167,2,Read the headlight connector's RY and RL lines with the light switch on,,Battery voltage: the headlamp or its ground is at fault. None: check the light switch.,,p.15-30
+PR-167.03,PR-167,3,"If no tail light lights, check the fusible link and the fuse",,,,p.15-30
+PR-167.04,PR-167,4,Read the light switch connector's RG line with the switch at tail,"SP-678; the 1985 path continues through X-06, SP-637.",None: check the light switch. Voltage: poor contact at the front-to-rear harness connector.,,p.15-30
+PR-168.01,PR-168,1,"If the stop lights do not light, check the fuse",,,,p.15-31
+PR-168.02,PR-168,2,Test-light the stop light switch connector's W line to ground with the pedal pressed,SP-599.,"Lights. If not, test the GW line: lit there means the switch is faulty or misadjusted (pedal height SP-596).",,p.15-31
+PR-168.03,PR-168,3,"If W lit, test-light the stop light checker connector's G line with the pedal pressed",SP-602.,Lit: the stop lamps' ground is at fault. Not lit: the checker.,,p.15-31
+PR-168.04,PR-168,4,"If the instrument illumination does not light, read the panel light control connector's RL line with the light switch at tail",,Voltage: the illumination lights' ground is at fault. None: read the RG line - voltage there means the panel light control is faulty.,,p.15-31
+PR-168.05,PR-168,5,Wire the panel light control to a battery and a test bulb and turn its knob,As the figure on p.15-31.,The bulb dims and brightens; otherwise a new control.,,p.15-31
+PR-169.01,PR-169,1,"If no turn signal works, check the fusible link and the fuse",,,,p.15-32
+PR-169.02,PR-169,2,"Ignition on, turn switch on: read the central processing unit's GW line",SP-406.,Battery voltage; none means the hazard switch is at fault.,,p.15-32
+PR-169.03,PR-169,3,"With GW live, probe the unit's GB line",SP-406.,A flashing signal; none means the unit or its ground (SP-405).,,p.15-32
+PR-169.04,PR-169,4,"With the unit good, probe the turn switch connector's GB line with the switch on",,Flashing: check the turn switch.,,p.15-32
+PR-169.05,PR-169,5,"If the signals work one way only, check the turn switch and that side's lamp grounds",,,,p.15-32
+PR-169.06,PR-169,6,"If turn signals work but hazards do not, check the hazard fuse and probe the cluster switch connector's GB line with the hazard switch on",,No flashing: check the GB line from the unit to the switch. Flashing: check the hazard switch.,,p.15-33
+PR-169.07,PR-169,7,"If neither works, check the METER, BACK fuse, then read the cluster switch's LY and GY lines with the ignition on",,"None: the wiring from the fuse. Voltage: read GW - none means the hazard switch, voltage means the flasher in the unit or the unit's ground (SP-405).",,p.15-33
+PR-169.08,PR-169,8,"If the back-up lights do not light, check the METER, BACK fuse and test-light the rear combination lamp connector's RW line, ignition on, in reverse",,Lit: the lamps' ground. Not lit: the back-up switch and the wiring.,,p.15-33
+PR-170.01,PR-170,1,"If only one of the two lights works, check the dead one's bulb and its connector",,,,p.15-34
+PR-170.02,PR-170,2,"If neither lights, check the fuse, then jump the central processing unit connector's W line to ground",1985 colours; S-001 holds this car's.,Both light: the door handle switch or the door-to-front harness contact is at fault.,,p.15-34
+PR-170.03,PR-170,3,"If neither lights with W grounded, read the LY and GL lines",,None: the wiring. Voltage: the unit or its ground (SP-405).,,p.15-34
+PR-170.04,PR-170,4,Unplug the door lock cylinder light and the handle switch and put an ohmmeter on the switch,,,,p.15-34
+PR-170.05,PR-170,5,Work the outer handle,,The switch makes and breaks; otherwise a new switch.,,p.15-34
+PR-171.01,PR-171,1,Check the defroster switch with an ohmmeter,SP-395.,"Continuity pressed on, none off; otherwise a new switch.",,p.15-35
+PR-171.02,PR-171,2,"Switch the defroster on and put the voltmeter's positive lead on the middle of each grid line, negative to the body",SP-397.,About SP-397. Higher: the break is on the negative side. Low or nothing: between the middle and the positive side.,,p.15-35
+PR-171.03,PR-171,3,Clean the broken part of the line,Thinner or ethyl alcohol.,,Never petrol or other solvents.,p.15-35
+PR-171.04,PR-171,4,"Mask both sides of the break, leaving the line exposed",,,,p.15-35
+PR-171.05,PR-171,5,Paint across the break with a fine brush or drafting pen,Silver paint SP-398.,,,p.15-35
+PR-171.06,PR-171,6,Let it dry completely,SP-399.,,Do not switch the defroster on until the paint is fully dry.,p.15-35
+PR-172.01,PR-172,1,"Unplug the power window switch and read its BL line, ignition on",,Battery voltage; none means the fuse or the harness (SP-482).,,p.15-37
+PR-172.02,PR-172,2,Check the switch connector's B line to body ground,,Continuity.,,p.15-37
+PR-172.03,PR-172,3,"Check the continuity of each switch terminal at UP, OFF and DOWN",The table on p.15-37 (not read: the OCR text scrambled it).,As the table; otherwise a new switch.,,p.15-37
+PR-172.04,PR-172,4,"Unplug the window motor and put battery voltage straight on its connector, then reverse it",,The glass rises one way and lowers the other; otherwise a new motor.,"Do not short the leads to the body, and keep hands out of the door.",p.15-37
+PR-173.01,PR-173,1,Unplug the fuel-door release switch and read its LR line to ground,,Battery voltage; none means the fuse or the harness.,,p.15-38
+PR-173.02,PR-173,2,Check the switch with an ohmmeter,SP-468.,"Continuity pulled on, none off; otherwise a new switch.",,p.15-39
+PR-173.03,PR-173,3,Wire the solenoid straight to a battery,SP-1245.,It works; otherwise a new solenoid.,,p.15-39
+PR-174.01,PR-174,1,Unplug the glass hatch release switch and read its LR line to ground,,Battery voltage; none means the fuse or the harness.,,p.15-40
+PR-174.02,PR-174,2,Check the switch with an ohmmeter,,"Continuity pressed on, none off; otherwise a new switch.",,p.15-40
+PR-174.03,PR-174,3,Wire the solenoid straight to a battery,SP-1243.,It works; otherwise a new solenoid.,,p.15-41
+PR-175.01,PR-175,1,Unplug the mirror and check continuity between the terminals of its connector,SP-466.,As the row; otherwise a new mirror.,,p.15-41
+PR-175.02,PR-175,2,"Unplug the mirror switch and check continuity in each position, left and right mirror selected",SP-464 and SP-465.,As the rows; otherwise a new switch.,,p.15-42
+PR-176.01,PR-176,1,"Unplug the wiper motor and read its L line, ignition on",,Battery voltage; none means the fuse or the harness.,,p.15-44
+PR-176.02,PR-176,2,Check the motor connector's B line to body ground,,Continuity.,,p.15-44
+PR-176.03,PR-176,3,Put battery positive on motor terminal A and negative on B,,The motor runs at low speed.,,p.15-45
+PR-176.04,PR-176,4,Move the negative lead to terminal C,,The motor runs at high speed.,,p.15-45
+PR-176.05,PR-176,5,Ground the central processing unit's LO line and switch the ignition on,SP-407.,The wipers run intermittently.,,p.15-45
+PR-176.06,PR-176,6,"If they do not, read the unit's L and LW lines",,12 V: check the unit's ground or the wiper motor. None: a new unit.,,p.15-45
+PR-176.07,PR-176,7,"Read the washer motor's L line, ignition on",SP-510.,Battery voltage; none means the fuse or the harness.,,p.15-45
+PR-176.08,PR-176,8,Ground the washer motor's LY line,SP-510.,The motor runs; otherwise a new washer motor.,,p.15-45
+PR-177.01,PR-177,1,"Read the rear wiper motor's L line, ignition on",SP-528.,Battery voltage; none means the fuse or the harness.,,p.15-46
+PR-177.02,PR-177,2,Put battery positive on motor terminal A and negative on B and C,SP-527.,The motor turns.,,p.15-46
+PR-177.03,PR-177,3,Check the rear wiper switch's continuity in each position,The table on p.15-46.,As the table; otherwise a new switch.,,p.15-46
+PR-177.04,PR-177,4,"Read the rear washer motor's LB line, ignition on",SP-553.,Battery voltage; none means the fuse or the harness.,,p.15-46
+PR-177.05,PR-177,5,Ground the rear washer motor's L line,SP-554.,The motor runs; otherwise a new washer motor.,,p.15-46
+PR-178.01,PR-178,1,"Switch off the ignition and the main switch, unplug the control unit's connector and plug it into the ACC checker",,,,p.15-51
+PR-178.02,PR-178,2,"Check the actuator inner cable's play, pressing it lightly, and set it with the adjusting nut",SP-485.,,,p.15-51
+PR-178.03,PR-178,3,Work through check items 1 to 7 of the check table with the ignition and main switch on,"Main switch, inhibitor switch, brake switch, clutch switch, then SET, COAST and RESUME of the combination switch.",Each check light as the table; a wrong light names the switch and harness to check.,,p.15-52
+PR-178.04,PR-178,4,Start the engine with the lever at N,,,,p.15-53
+PR-178.05,PR-178,5,Set the slide switch to H and hold the check switch on,SP-484.,"Engine speed rises to SP-484 and holds; if not, the actuator, its cable play or its harness.",Release the check switch at once if the engine passes 4000 rpm.,"p.15-51, p.15-53"
+PR-178.06,PR-178,6,"At idle, drive the car slowly",,"The GENERATOR light flashes; if not, the speed sensor or its harness.",,p.15-53
+PR-178.07,PR-178,7,Measure the actuator solenoid's resistances,SP-483.,Within the figure.,,p.15-53
+PR-178.08,PR-178,8,"If every check passes and the system still misbehaves, fit a new control unit",,,,p.15-53
+PR-179.01,PR-179,1,"Unplug the overdrive cancel solenoid and read its B line, ignition on",,Battery voltage; none means the fuse or the harness.,,p.15-56
+PR-179.02,PR-179,2,Put 12 V on the cancel solenoid,,Its oil passage closes with current and opens without.,,p.15-56
+PR-179.03,PR-179,3,"Unplug the overdrive switch and read its GY line, ignition on",,Battery voltage; none means the fuse or the harness.,,p.15-56
+PR-179.04,PR-179,4,Check the overdrive switch with an ohmmeter,,"Continuity off, none pressed on; otherwise a new switch.",,p.15-56
+PR-179.05,PR-179,5,Press the 4-3 and kick-down switch's plunger and check its two contacts,4-3 (A-B) SP-1630; kick-down (C-D) SP-1221.,Each makes at its travel.,,p.15-57
+PR-179.06,PR-179,6,"Hold the accelerator fully down, run the switch's stopper to touch the pedal and lock it with the lock nut",,,,p.15-57
+PR-179.07,PR-179,7,Put 12 V on the kick-down solenoid,,It clicks.,,p.15-57
+PR-179.08,PR-179,8,"Wire the kick-down relay to a battery with an ohmmeter on its contact, then take the leads off",,"Continuity with the coil fed, none without; otherwise a new relay (it is the same part as the stop light check relay).",,p.15-57
+PR-179.09,PR-179,9,Check the transmission oil pressure switch with air pressure,SP-1633.,,,p.15-58
+PR-179.10,PR-179,10,"Wire a voltmeter to the A/T control unit's speed sensor terminal, start the engine and drive slowly at idle",,The reading alternates between about 0 and 12 V.,,p.15-58
+PR-180.01,PR-180,1,"Key at ACC, aerial fully out, volume full up, power on",,A pop from the speakers.,,p.15-67
+PR-180.02,PR-180,2,"If there is no pop and no hiss, check the radio fuse, then the supply voltage at the unit",,Fuse blown: renew it and find the short. Supply good: a faulty unit. No supply: the harness.,,p.15-67
+PR-180.03,PR-180,3,"If it pops but gives no station, check the aerial and its feeder with an ohmmeter",,Feeder good; otherwise a new aerial.,,p.15-67
+PR-180.04,PR-180,4,Check each speaker: meter between the same channel's + and -,,The meter reads the speaker's rated impedance and the speaker clicks; otherwise a new speaker.,,p.15-67
+PR-180.05,PR-180,5,"With speakers good, check the harness from the radio to the speakers for shorts and opens",,Harness good: a faulty unit.,,p.15-67
+PR-180.06,PR-180,6,"To set the AM trimmer: aerial fully out, key at ACC, radio on AM",,,,p.15-66
+PR-180.07,PR-180,7,"Tune a distant weak station, or static if there is none",Near SP-492.,,,p.15-66
+PR-180.08,PR-180,8,Turn the trimmer screw left and right to the loudest point,A screwdriver through the trimmer hole.,"Sensitivity peaks. No change means the station is too strong, or the aerial or its wire is faulty.",,"p.15-66, p.15-71"
+PR-181.01,PR-181,1,"If the antenna will not move, check the radio or antenna fuse",,,,p.15-75
+PR-181.02,PR-181,2,"Unplug the antenna and read the harness side with the key at ACC, radio on and then off",SP-507 and SP-508.,"L live with the radio on, R live with it off; otherwise a new antenna relay.",,p.15-75
+PR-181.03,PR-181,3,Feed the antenna motor straight from a battery each way,SP-505 and SP-506.,The mast goes up and down.,,p.15-75
+PR-181.04,PR-181,4,Check the relay's continuity,SP-367 to SP-369.,As the rows; otherwise a new relay. All good and still dead: the harness or the radio.,,p.15-75
+PR-181.05,PR-181,5,"To remove it, take off the right rear trunk side trim, unplug the feeder and connector and remove the nuts",,,,p.15-76
+PR-181.06,PR-181,6,"Remove antenna bracket No.2 and the drive mechanism cover, then the 4 screws of the drive mechanism",,,,"p.15-76, p.15-77"
+PR-181.07,PR-181,7,Open the drive mechanism's notch where the cable is fixed and pull the cable out,A punch.,,,p.15-77
+PR-181.08,PR-181,8,Loosen the band screw and separate the motor drive unit from the pole,,,,p.15-77
+PR-181.09,PR-181,9,"Fit the band under the pole, feed the cable into the motor drive unit and clamp the pole to it with the band",,,,p.15-77
+PR-181.10,PR-181,10,Push the cable tip through the drive mechanism's notch to its stopper and rivet it there with a punch,,,,p.15-77
+PR-181.11,PR-181,11,Screw the drive mechanism together and pull the pole fully out by hand,,,,p.15-78
+PR-181.12,PR-181,12,Turn the drive mechanism left until the cable has no play and engage it with the motor drive gear,,,,p.15-78
+PR-181.13,PR-181,13,"Fit the cover and bracket No.2, mount the antenna, connect it, check it works and refit the trim",,,,p.15-78
+PR-182.01,PR-182,1,Check the blower switch's continuity in each position,The table on p.15-85 (not read: the OCR text scrambled it).,As the table; otherwise a new switch.,,p.15-85
+PR-182.02,PR-182,2,Check the blower's B line to body ground,,Continuity.,,p.15-86
+PR-182.03,PR-182,3,"Unplug the blower resistor and read its LW line, ignition on",,"Battery voltage; none means the HEATER fuse, the blower motor or the harness.",,p.15-86
+PR-182.04,PR-182,4,Check continuity between the resistor's terminals a and 1,,Continuity; otherwise a new resistor.,,p.15-86
+PR-183.01,PR-183,1,"Set the mode knob to VENT, pull the heater unit's mode lever fully rearward and clamp the wire",SP-744.,,,p.15-95
+PR-183.02,PR-183,2,Run the blower on its highest speed with the temperature at COLD,,No air from the floor outlets.,,p.15-95
+PR-183.03,PR-183,3,"Turn the temperature knob fully left, push the selector lever down to COLD and clamp the wire",SP-745.,The lever runs its full stroke COLD to HOT.,,p.15-95
+PR-183.04,PR-183,4,Press the fresh-recirculate switch to run the motor and stop its crank at REC,,,,p.15-95
+PR-183.05,PR-183,5,"Unclip the door's connecting rod, push the lever fully toward the motor and refit the rod",,,,p.15-95
+PR-183.06,PR-183,6,Check the door and the motor work,,The rack stops as the figure on p.15-94.,,"p.15-94, p.15-95"

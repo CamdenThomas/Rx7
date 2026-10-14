@@ -153,3 +153,32 @@ PR-151,Body,Replace a headlight retractor motor and linkage and adjust the lid (
 PR-152,Body,Remove and refit the windshield wiper motor (1985 manual),failed wiper motor or linkage,,S-002,
 PR-153,Body,Replace the windshield glass (1985 manual),cracked or leaking windshield,"window service tool set, piano wire, knife, primer, sealant gun, spatula, adhesive tape",S-002,
 PR-154,Body,Replace a side window glass (1985 manual),cracked or leaking side window,"window service tool set, piano wire, primer, sealant gun",S-002,
+PR-155,Electrical,Check and replace the ignition switch (1985 manual),starting or accessory faults traced to the key switch,ohmmeter,S-002,
+PR-156,Electrical,"Check the speedometer, tachometer and voltmeter on the car (1985 manual)",a meter reads wrong or not at all,"speedometer tester, tachometer, voltage tester",S-002,
+PR-157,Electrical,"Check the fuel, water temperature and oil pressure gauges with the checker (1985 manual)",a gauge reads wrong or not at all,gauge checker 49 0839 285,S-002,
+PR-158,Electrical,Check the fuel tank unit and the water temperature gauge unit (1985 manual),the gauge checks good but the reading is wrong,"ohmmeter, container of water, thermometer",S-002,
+PR-159,Electrical,"Remove, strip and refit the combination meter (1985 manual)","a meter, gauge or warning bulb to replace",ohmmeter,S-002,
+PR-160,Electrical,Check the brake warning light and the brake fluid level sensor (1985 manual),"BRAKE light never lights, or lights with fluid full and the parking brake off","jump wire, ohmmeter",S-002,
+PR-161,Cooling,"Check the coolant level warning light, sensor and unit (1985 manual)","coolant level light never lights, or stays lit with the radiator full","ohmmeter, test bulb, battery leads",S-002,
+PR-162,Electrical,Check the seat belt warning light and the driver's buckle switch (1985 manual),BELT light or buzzer does not work,ohmmeter,S-002,
+PR-163,Electrical,Check the stop light warning light and the stop light checker (1985 manual),STOP LIGHT warning wrong,"ohmmeter, voltmeter",S-002,
+PR-164,Electrical,Check the alternator warning light and the choke and check relay (1985 manual),charge light never lights at key on,"ohmmeter, battery leads",S-002,
+PR-165,Electrical,"Check the oil level, washer fluid level and low fuel warning lights and their sensors (1985 manual)",one of these lights never lights,"jump wire, ohmmeter",S-002,
+PR-166,Electrical,Find a fault in the retractable headlight system (1985 manual),headlights will not raise or lower,voltmeter,S-002,
+PR-167,Electrical,Find why the headlights or the tail lights do not light (1985 manual),"no headlights, or no tail lights",voltmeter,S-002,
+PR-168,Electrical,"Find a fault in the stop lights and the instrument illumination, and check the panel light control (1985 manual)",stop lights or dash lighting out,"test light, voltmeter, battery, test bulb",S-002,
+PR-169,Electrical,"Find a fault in the turn signals, hazard lights and back-up lights (1985 manual)","turn signals, hazards or back-up lights out","voltmeter, test light, ohmmeter",S-002,
+PR-170,Electrical,"Find a fault in the door lock cylinder and ignition key cylinder lights, and check the door handle switch (1985 manual)",key lights do not come on when the outer handle is lifted,"jump wire, voltmeter, ohmmeter",S-002,
+PR-171,Electrical,"Check the rear window defroster switch and grid, and repair a broken grid line (1985 manual)",part or all of the rear glass does not clear,"ohmmeter, voltmeter, thinner or ethyl alcohol, masking tape, fine brush or drafting pen, silver paint",S-002,
+PR-172,Electrical,"Check the power window circuit, switches and motors (1985 manual)",a power window does not work,"voltmeter, ohmmeter, battery leads",S-002,not-fitted
+PR-173,Body,"Check the remote fuel-door release circuit, switch and solenoid (1985 manual)",the fuel door will not release,"voltmeter, ohmmeter, battery leads",S-002,
+PR-174,Body,"Check the remote glass hatch release circuit, switch and solenoid (1985 manual)",the hatch will not release from the switch,"voltmeter, ohmmeter, battery leads",S-002,
+PR-175,Body,Check the remote control mirrors and their switch (1985 manual),a mirror will not move,ohmmeter,S-002,
+PR-176,Electrical,"Check the windshield wiper motor, the intermittent wiper relay and the washer motor (1985 manual)","wipers, intermittent or washer do not work","voltmeter, ohmmeter, jump wire, battery leads",S-002,
+PR-177,Electrical,"Check the rear wiper motor, its switch and the rear washer motor (1985 manual)",rear wiper or washer does not work,"voltmeter, ohmmeter, battery leads",S-002,not-fitted
+PR-178,Electrical,Check the cruise control system with the ACC checker (1985 manual),"cruise control does not set, hold or cancel","ACC checker 49 9200 010, ohmmeter",S-002,not-fitted
+PR-179,Transmission,"Check the overdrive electrical parts (1985 manual, L4N71B)","no overdrive, no 4-3 or no kick-down","voltmeter, ohmmeter, battery leads, air supply",S-002,other-car
+PR-180,Electrical,"Find why the radio gives no sound, and adjust the AM antenna trimmer (1985 manual)","no sound, or weak AM reception","voltmeter, ohmmeter, small screwdriver",S-002,
+PR-181,Electrical,"Check, remove and overhaul the power antenna (1985 manual)",the antenna will not raise or lower,"voltmeter, ohmmeter, battery leads, punch",S-002,not-fitted
+PR-182,Climate,"Check the blower switch, its ground and the blower resistor (1985 manual)",blower dead or stuck on one speed,"ohmmeter, voltmeter",S-002,
+PR-183,Climate,Connect the heater control wires and set the fresh-recirculate door (1985 manual),after the heater unit or its controls have been out,screwdriver,S-002,other-car
