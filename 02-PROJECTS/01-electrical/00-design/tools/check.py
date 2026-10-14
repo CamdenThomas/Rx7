@@ -30,7 +30,9 @@ s-expression itself (no packages beyond the standard library, Python 3.9) and ch
   * the two rules CONVENTIONS.md §5 asks for: the two 12 V inputs share no part (and on the
     DCU no part but the INA180 touches both GND and PGND), and every BAT54S has A on GND and
     K on +3V3;
-  * each functional-block symbol's pin number -> name against pin_tables.csv;
+  * each functional-block symbol's pin number -> name against pin_tables.csv, and each
+    transistor's and each tabled diode's the same way (Y42: a SOT-23 FET's gate / source / drain,
+    a SOT-23 zener's anode / unused / cathode, a one-way TVS's cathode on the footprint's mark);
   * on the upper connector board (Y15, no processor), DP-DCU-D and DP-DCU-E cavity by cavity: wired
     or a plug as `state` says, no two cavities joined, and on the header `src_note` names - the
     carrier header's lead (J6-J8, J5, J3) pin for pin, or the panel_ribbon line, named as that line;
@@ -1246,10 +1248,15 @@ def norm_part(s):
 
 
 def check_pin_tables(rep, nl, tables):
-    """Each functional-block symbol's pin number -> name against the vendor table."""
+    """Each functional-block symbol's pin number -> name against the vendor table. A transistor
+    or a diode (Q, D) is held to its table too when pin_tables.csv has one for its value (Y42:
+    a P-FET drawn gate / drain / source on a SOT-23, a zener's cathode on the package's unused
+    pin and six one-way TVS diodes drawn with two anodes were each found by hand); one with no
+    table: a transistor is noted, as an IC is (its pin order is the thing that goes wrong); a
+    diode is passed over - most are two-pin parts whose direction the netlist checks hold."""
     keys = sorted(tables, key=len, reverse=True)
     for ref in sorted(nl.comps, key=lambda r: (prefix(r), int(re.sub(r"\D", "", r) or 0))):
-        if prefix(ref) != "U":
+        if prefix(ref) not in ("U", "Q", "D"):
             continue
         value, part = nl.comps[ref]["value"], nl.comps[ref]["part"]
         hit = None
@@ -1258,7 +1265,8 @@ def check_pin_tables(rep, nl, tables):
                 hit = k
                 break
         if hit is None:
-            rep.note("%s (%s) has no pin table in pin_tables.csv" % (ref, value))
+            if prefix(ref) in ("U", "Q"):
+                rep.note("%s (%s) has no pin table in pin_tables.csv" % (ref, value))
             continue
         rows = tables[hit]
         package = rows[0]["package"]

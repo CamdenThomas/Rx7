@@ -6,7 +6,7 @@
 	(paper "A0")
 	(title_block
 		(title "DCU carrier - H-002")
-		(rev "0.04")
+		(rev "0.05")
 		(company "RX-7 FB electrical build")
 		(comment 1 "Drawn from the record: 02-PROJECTS/01-electrical/data/dcu_channels.csv, panel_ribbon.csv and cavities DP-DCU / -B / -C. Where this sheet and a row disagree, the row is right.")
 		(comment 2 "Conventions: cad/dcu-carrier/CONVENTIONS.md. Teensy pads are real (dcu_channels.teensy_pin). Module pin numbers are the datasheets' (pin_tables.csv, Y5); footprints assigned, outline provisional until V-102.")
@@ -455,172 +455,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "dcu-carrier:D_TVS"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "D"
-				(at 0 2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "D_TVS"
-				(at 0 -2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Bidirectional transient-voltage-suppression diode"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "diode TVS thyrector"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "D_TVS_0_1"
-				(polyline
-					(pts
-						(xy -2.54 1.27) (xy -2.54 -1.27) (xy 2.54 1.27) (xy 2.54 -1.27) (xy -2.54 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.508 1.27) (xy 0 1.27) (xy 0 -1.27) (xy -0.508 -1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 0) (xy -1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "D_TVS_1_1"
-				(pin passive line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "A1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 0 180)
-					(length 2.54)
-					(name "A2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
+		(symbol "dcu-carrier:D_TVS_Uni" (pin_numbers (hide yes)) (pin_names (offset 1.016) (hide yes)) (exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (duplicate_pin_numbers_are_jumpers no) (property "Reference" "D" (at 0 2.54 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Value" "D_TVS_Uni" (at 0 -2.54 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Footprint" "" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (property "Datasheet" "" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (property "Description" "Unidirectional transient-voltage-suppression diode: pin 1 the cathode (the banded end), pin 2 the anode" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (property "ki_keywords" "diode TVS thyrector" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (symbol "D_TVS_Uni_0_1" (polyline (pts (xy -1.27 1.27) (xy -1.27 -1.27) (xy 1.27 0) (xy -1.27 1.27)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy 1.778 1.27) (xy 1.27 1.27) (xy 1.27 -1.27) (xy 0.762 -1.27)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy -1.27 0) (xy 1.27 0)) (stroke (width 0) (type default)) (fill (type none)))) (symbol "D_TVS_Uni_1_1" (pin passive line (at -3.81 0 0) (length 2.54) (name "A" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27))))) (pin passive line (at 3.81 0 180) (length 2.54) (name "K" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))) (embedded_fonts no))
 		(symbol "dcu-carrier:C"
 			(pin_numbers
 				(hide yes)
@@ -1999,307 +1834,7 @@
 				(pin passive line (at 7.62 0.0 180) (length 2.54) (name "S" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
 			)
 		)
-		(symbol "dcu-carrier:Q_PMOS_GDS"
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "Q"
-				(at 5.08 1.905 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "Q_PMOS_GDS"
-				(at 5.08 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 5.08 2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "P-MOSFET transistor, gate/drain/source"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "transistor PMOS P-MOS P-MOSFET"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "Q_PMOS_GDS_0_1"
-				(polyline
-					(pts
-						(xy 0.254 1.905) (xy 0.254 -1.905)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.254 0) (xy -2.54 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 2.286) (xy 0.762 1.27)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 1.778) (xy 3.302 1.778) (xy 3.302 -1.778) (xy 0.762 -1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 0.508) (xy 0.762 -0.508)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 -1.27) (xy 0.762 -2.286)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 1.651 0)
-					(radius 2.794)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.286 0) (xy 1.27 0.381) (xy 1.27 -0.381) (xy 2.286 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 2.54) (xy 2.54 1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.54 1.778)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(circle
-					(center 2.54 -1.778)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.921 -0.381) (xy 3.683 -0.381)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 3.302 -0.381) (xy 2.921 0.254) (xy 3.683 0.254) (xy 3.302 -0.381)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "Q_PMOS_GDS_1_1"
-				(pin input line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "G"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 5.08 270)
-					(length 2.54)
-					(name "D"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(name "S"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
+		(symbol "dcu-carrier:Q_PMOS_GSD" (pin_names (offset 0) (hide yes)) (exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (duplicate_pin_numbers_are_jumpers no) (property "Reference" "Q" (at 5.08 1.905 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left))) (property "Value" "Q_PMOS_GSD" (at 5.08 0 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)) (justify left))) (property "Footprint" "" (at 5.08 2.54 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (property "Datasheet" "" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (property "Description" "P-MOSFET transistor, gate/source/drain" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (property "ki_keywords" "transistor PMOS P-MOS P-MOSFET" (at 0 0 0) (show_name no) (do_not_autoplace no) (hide yes) (effects (font (size 1.27 1.27)))) (symbol "Q_PMOS_GSD_0_1" (polyline (pts (xy 0.254 1.905) (xy 0.254 -1.905)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy 0.254 0) (xy -2.54 0)) (stroke (width 0) (type default)) (fill (type none))) (polyline (pts (xy 0.762 2.286) (xy 0.762 1.27)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy 0.762 1.778) (xy 3.302 1.778) (xy 3.302 -1.778) (xy 0.762 -1.778)) (stroke (width 0) (type default)) (fill (type none))) (polyline (pts (xy 0.762 0.508) (xy 0.762 -0.508)) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy 0.762 -1.27) (xy 0.762 -2.286)) (stroke (width 0.254) (type default)) (fill (type none))) (circle (center 1.651 0) (radius 2.794) (stroke (width 0.254) (type default)) (fill (type none))) (polyline (pts (xy 2.286 0) (xy 1.27 0.381) (xy 1.27 -0.381) (xy 2.286 0)) (stroke (width 0) (type default)) (fill (type outline))) (polyline (pts (xy 2.54 2.54) (xy 2.54 1.778)) (stroke (width 0) (type default)) (fill (type none))) (circle (center 2.54 1.778) (radius 0.254) (stroke (width 0) (type default)) (fill (type outline))) (circle (center 2.54 -1.778) (radius 0.254) (stroke (width 0) (type default)) (fill (type outline))) (polyline (pts (xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)) (stroke (width 0) (type default)) (fill (type none))) (polyline (pts (xy 2.921 -0.381) (xy 3.683 -0.381)) (stroke (width 0) (type default)) (fill (type none))) (polyline (pts (xy 3.302 -0.381) (xy 2.921 0.254) (xy 3.683 0.254) (xy 3.302 -0.381)) (stroke (width 0) (type default)) (fill (type none)))) (symbol "Q_PMOS_GSD_1_1" (pin input line (at -5.08 0 0) (length 2.54) (name "G" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27))))) (pin passive line (at 2.54 5.08 270) (length 2.54) (name "D" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27))))) (pin passive line (at 2.54 -5.08 90) (length 2.54) (name "S" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))) (embedded_fonts no))
 		(symbol "dcu-carrier:MMBT3904"
 			(pin_names
 				(offset 0)
@@ -2917,7 +2452,7 @@
 	(global_label "+12V_LOGIC" (shape passive) (at 107.95 40.64 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "21ce8a96-4b37-4dd8-b4e5-ee0a07c3e1d4"))
 	(wire (pts (xy 118.11 40.64) (xy 120.65 40.64)) (stroke (width 0) (type default)) (uuid "7a06b453-c405-4a8d-b94a-c8b1b7fb1d99"))
 	(label "V12L_RAW" (at 120.65 40.64 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "e7e81a4f-53a6-4a06-bcca-38b3fedc6c97"))
-	(symbol (lib_id "dcu-carrier:D_TVS") (at 165.1 40.64 0) (unit 1) (body_style 1)
+	(symbol (lib_id "dcu-carrier:D_TVS_Uni") (at 165.1 40.64 0) (unit 1) (body_style 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
 		(uuid "adf56119-a0b2-4aec-8596-431edf6c8843")
 		(property "Reference" "D2" (at 168.1 39.44 0) (effects (font (size 1.1 1.1)) (justify left)))
@@ -2936,7 +2471,7 @@
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
 		(uuid "1f4ac3a8-1dd7-41cc-8805-3046ee943d76")
 		(property "Reference" "C1" (at 208.74 62.3 0) (effects (font (size 1.1 1.1)) (justify left)))
-		(property "Value" "100u 63V" (at 208.74 65.1 0) (effects (font (size 1.1 1.1)) (justify left)))
+		(property "Value" "68u 63V" (at 208.74 65.1 0) (effects (font (size 1.1 1.1)) (justify left)))
 		(property "Footprint" "Capacitor_SMD:CP_Elec_8x10" (at 205.74 63.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(property "Datasheet" "" (at 205.74 63.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(pin "1" (uuid "f8616394-836a-4034-8d81-184f32a9ad6a"))
@@ -3308,7 +2843,7 @@
 	(global_label "+12V_CMF" (shape passive) (at 110.49 104.14 180) (effects (font (size 1.27 1.27)) (justify right)) (uuid "17b1dd08-e875-48de-afb8-b307c782ef66"))
 	(wire (pts (xy 120.65 104.14) (xy 123.19 104.14)) (stroke (width 0) (type default)) (uuid "f52ff966-7077-4ece-8fee-5293dde35ba3"))
 	(label "V12C_RAW" (at 123.19 104.14 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "2f993249-fcd8-4485-bdf0-0744cb01c71f"))
-	(symbol (lib_id "dcu-carrier:D_TVS") (at 185.42 104.14 0) (unit 1) (body_style 1)
+	(symbol (lib_id "dcu-carrier:D_TVS_Uni") (at 185.42 104.14 0) (unit 1) (body_style 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
 		(uuid "762f8c50-3d97-4d62-8331-898ff087e106")
 		(property "Reference" "D4" (at 188.42 102.94 0) (effects (font (size 1.1 1.1)) (justify left)))
@@ -3327,7 +2862,7 @@
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
 		(uuid "e7647517-2a92-4d64-bf01-a45cf89e5b7c")
 		(property "Reference" "C8" (at 226.52 123.26 0) (effects (font (size 1.1 1.1)) (justify left)))
-		(property "Value" "100u 63V" (at 226.52 126.06 0) (effects (font (size 1.1 1.1)) (justify left)))
+		(property "Value" "68u 63V" (at 226.52 126.06 0) (effects (font (size 1.1 1.1)) (justify left)))
 		(property "Footprint" "Capacitor_SMD:CP_Elec_8x10" (at 223.52 124.46 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(property "Datasheet" "" (at 223.52 124.46 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(pin "1" (uuid "f647606e-d3e9-400c-b5d0-bbde61c45ce8"))
@@ -4964,7 +4499,7 @@
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
 		(uuid "07bfebce-c067-493c-aa61-743c486c5e24")
 		(property "Reference" "C29" (at 165.56 549.98 0) (effects (font (size 1.1 1.1)) (justify left)))
-		(property "Value" "100u 63V" (at 165.56 552.78 0) (effects (font (size 1.1 1.1)) (justify left)))
+		(property "Value" "68u 63V" (at 165.56 552.78 0) (effects (font (size 1.1 1.1)) (justify left)))
 		(property "Footprint" "Capacitor_SMD:CP_Elec_8x10" (at 162.56 551.18 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(property "Datasheet" "" (at 162.56 551.18 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(pin "1" (uuid "7dd730d8-5f3b-494e-b1dc-62784f693d27"))
@@ -5103,7 +4638,7 @@
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
 		(uuid "671be11e-759c-415c-aa11-91065c06711a")
 		(property "Reference" "Q1" (at 43.18 621.03 0) (effects (font (size 1.1 1.1))))
-		(property "Value" "PMV37ENEA" (at 43.18 631.19 0) (effects (font (size 1.1 1.1))))
+		(property "Value" "SQ2362CES / PMV37ENEA" (at 43.18 631.19 0) (effects (font (size 1.1 1.1))))
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 43.18 627.38 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(property "Datasheet" "" (at 43.18 627.38 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(pin "1" (uuid "6d890954-60ad-4496-8bdd-82858efc1564"))
@@ -5157,7 +4692,7 @@
 		(pin "1" (uuid "848fc2c1-67b8-45e6-8e85-ce55b7d218fc"))
 		(instances (project "dcu-carrier" (path "/9652d84f-b171-4144-b035-f61cf665afb4" (reference "#PWR069") (unit 1))))
 	)
-	(symbol (lib_id "dcu-carrier:D_TVS") (at 127 619.76 0) (unit 1) (body_style 1)
+	(symbol (lib_id "dcu-carrier:D_TVS_Uni") (at 127 619.76 0) (unit 1) (body_style 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
 		(uuid "f53df682-564a-4d6e-bf5b-3e51bd11fb6d")
 		(property "Reference" "D7" (at 130 618.56 0) (effects (font (size 1.1 1.1)) (justify left)))
@@ -5176,7 +4711,7 @@
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
 		(uuid "bf8ac6f5-1f4c-4946-9d2b-e9ceba20ab9e")
 		(property "Reference" "Q2" (at 200.66 621.03 0) (effects (font (size 1.1 1.1))))
-		(property "Value" "PMV37ENEA" (at 200.66 631.19 0) (effects (font (size 1.1 1.1))))
+		(property "Value" "SQ2362CES / PMV37ENEA" (at 200.66 631.19 0) (effects (font (size 1.1 1.1))))
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 200.66 627.38 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(property "Datasheet" "" (at 200.66 627.38 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(pin "1" (uuid "f771d7cd-466e-4fd5-b115-aaa7449fe64d"))
@@ -5230,7 +4765,7 @@
 		(pin "1" (uuid "6a8f8c4e-80b7-4080-9a2f-8ef69b62d44a"))
 		(instances (project "dcu-carrier" (path "/9652d84f-b171-4144-b035-f61cf665afb4" (reference "#PWR070") (unit 1))))
 	)
-	(symbol (lib_id "dcu-carrier:D_TVS") (at 281.94 619.76 0) (unit 1) (body_style 1)
+	(symbol (lib_id "dcu-carrier:D_TVS_Uni") (at 281.94 619.76 0) (unit 1) (body_style 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
 		(uuid "e2914793-b66a-45ae-90f2-5a028e2e1438")
 		(property "Reference" "D8" (at 284.94 618.56 0) (effects (font (size 1.1 1.1)) (justify left)))
@@ -5246,11 +4781,11 @@
 	(wire (pts (xy 285.75 619.76) (xy 288.29 619.76)) (stroke (width 0) (type default)) (uuid "6ea21f6c-a2dd-4ba7-87fd-7f7791872f7a"))
 	(label "REL_FUEL" (at 288.29 619.76 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "bb3136f9-bef3-46ca-b807-7a0979e1e1f6"))
 	(text "SN21  wake request: sources 12 V into the PMU wake strip (a diode-OR of 12 V inputs, D-350) - the ICU backlight stage" (exclude_from_sim no) (at 338.67 610.95 0) (effects (font (size 1.5 1.5) (bold yes)) (justify left top)) (uuid "5d13ec11-7a0e-4895-8091-c4871bc43d55"))
-	(symbol (lib_id "dcu-carrier:Q_PMOS_GDS") (at 360.68 640.08 0) (unit 1) (body_style 1)
+	(symbol (lib_id "dcu-carrier:Q_PMOS_GSD") (at 360.68 640.08 0) (unit 1) (body_style 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
 		(uuid "6993ad30-575a-480c-bdfe-f2059c815f08")
 		(property "Reference" "Q3" (at 363.68 638.88 0) (effects (font (size 1.1 1.1)) (justify left)))
-		(property "Value" "SQ2351ES class, >= 40 V  confirm" (at 363.68 641.68 0) (effects (font (size 1.1 1.1)) (justify left)))
+		(property "Value" "SQ2361ES" (at 363.68 641.68 0) (effects (font (size 1.1 1.1)) (justify left)))
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23" (at 360.68 640.08 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(property "Datasheet" "" (at 360.68 640.08 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(pin "1" (uuid "5ee76db9-934f-44a2-ab49-23323e3c4da4"))
@@ -5462,7 +4997,7 @@
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
 		(uuid "e10cc652-cc71-4c06-b876-01f0904679d9")
 		(property "Reference" "C31" (at 188.42 710 0) (effects (font (size 1.1 1.1)) (justify left)))
-		(property "Value" "470u 10V" (at 188.42 712.8 0) (effects (font (size 1.1 1.1)) (justify left)))
+		(property "Value" "470u 16V" (at 188.42 712.8 0) (effects (font (size 1.1 1.1)) (justify left)))
 		(property "Footprint" "Capacitor_SMD:CP_Elec_8x10" (at 185.42 711.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(property "Datasheet" "" (at 185.42 711.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(pin "1" (uuid "7a3c274b-8076-44fd-bf7a-a444aa452d56"))
@@ -5529,7 +5064,7 @@
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
 		(uuid "dadc143a-2a60-47bc-a68e-93648daeb587")
 		(property "Reference" "C32" (at 279.86 710 0) (effects (font (size 1.1 1.1)) (justify left)))
-		(property "Value" "470u 10V" (at 279.86 712.8 0) (effects (font (size 1.1 1.1)) (justify left)))
+		(property "Value" "470u 16V" (at 279.86 712.8 0) (effects (font (size 1.1 1.1)) (justify left)))
 		(property "Footprint" "Capacitor_SMD:CP_Elec_8x10" (at 276.86 711.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(property "Datasheet" "" (at 276.86 711.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(pin "1" (uuid "13673dbd-e8f0-4daa-9be3-48c55e3c0c3a"))
@@ -5596,7 +5131,7 @@
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
 		(uuid "776bd87f-ac4f-419f-afda-fbdbcd0ab575")
 		(property "Reference" "C33" (at 371.3 710 0) (effects (font (size 1.1 1.1)) (justify left)))
-		(property "Value" "470u 10V" (at 371.3 712.8 0) (effects (font (size 1.1 1.1)) (justify left)))
+		(property "Value" "470u 16V" (at 371.3 712.8 0) (effects (font (size 1.1 1.1)) (justify left)))
 		(property "Footprint" "Capacitor_SMD:CP_Elec_8x10" (at 368.3 711.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(property "Datasheet" "" (at 368.3 711.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(pin "1" (uuid "088fd113-8b34-447a-811c-35a6ac7d84de"))

@@ -1237,7 +1237,7 @@
 				)
 			)
 		)
-		(property "Confirm" "6 x 6 mm THT tactile, 13 mm actuator under the faceplate's cap (luxury D-488, P155); actuator height confirm (LP20)"
+		(property "Confirm" "Same Sky TS02-66-130-BK-160-LCR-D (P155, luxury D-488): 6 x 6 mm THT tactile, its top 13.0 mm above the board, 160 gf. The footprint is the maker's drawing rev 1.03: 6.5 x 4.5 mm, four 1.0 mm holes, pins 1-2 and 3-4 joined. The mock-up puts the cap's front 13 mm from the board (8 + 3 + 2): the cap's own top adds to that, or the 12.0 mm TS02-66-120-BK-160-LCR-D leaves it 1 mm - confirm with the cap (LP20)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -5557,7 +5557,7 @@
 				)
 			)
 		)
-		(property "Confirm" "6 x 6 mm THT tactile, 13 mm actuator under the faceplate's cap (luxury D-488, P155); actuator height confirm (LP20)"
+		(property "Confirm" "Same Sky TS02-66-130-BK-160-LCR-D (P155, luxury D-488): 6 x 6 mm THT tactile, its top 13.0 mm above the board, 160 gf. The footprint is the maker's drawing rev 1.03: 6.5 x 4.5 mm, four 1.0 mm holes, pins 1-2 and 3-4 joined. The mock-up puts the cap's front 13 mm from the board (8 + 3 + 2): the cap's own top adds to that, or the 12.0 mm TS02-66-120-BK-160-LCR-D leaves it 1 mm - confirm with the cap (LP20)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -7059,7 +7059,7 @@
 				)
 			)
 		)
-		(property "Confirm" "6 x 6 mm THT tactile, 13 mm actuator under the faceplate's cap (luxury D-488, P155); actuator height confirm (LP20)"
+		(property "Confirm" "Same Sky TS02-66-130-BK-160-LCR-D (P155, luxury D-488): 6 x 6 mm THT tactile, its top 13.0 mm above the board, 160 gf. The footprint is the maker's drawing rev 1.03: 6.5 x 4.5 mm, four 1.0 mm holes, pins 1-2 and 3-4 joined. The mock-up puts the cap's front 13 mm from the board (8 + 3 + 2): the cap's own top adds to that, or the 12.0 mm TS02-66-120-BK-160-LCR-D leaves it 1 mm - confirm with the cap (LP20)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -8246,7 +8246,7 @@
 				)
 			)
 		)
-		(property "Confirm" "6 x 6 mm THT tactile, 13 mm actuator under the faceplate's cap (luxury D-488, P155); actuator height confirm (LP20)"
+		(property "Confirm" "Same Sky TS02-66-130-BK-160-LCR-D (P155, luxury D-488): 6 x 6 mm THT tactile, its top 13.0 mm above the board, 160 gf. The footprint is the maker's drawing rev 1.03: 6.5 x 4.5 mm, four 1.0 mm holes, pins 1-2 and 3-4 joined. The mock-up puts the cap's front 13 mm from the board (8 + 3 + 2): the cap's own top adds to that, or the 12.0 mm TS02-66-120-BK-160-LCR-D leaves it 1 mm - confirm with the cap (LP20)"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)

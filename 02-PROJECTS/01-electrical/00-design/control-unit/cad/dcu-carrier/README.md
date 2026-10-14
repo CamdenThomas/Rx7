@@ -1,10 +1,38 @@
 # DCU carrier — the KiCad project
 
-*Rev 2026-10-11 (sheet rev 0.04 - D-458, D-465; board rev 0.04 provisional - Y12) · owns: what this KiCad project
+*Rev 2026-10-13 (sheet and board rev 0.05 provisional - Y42; rev 0.04 was D-458, D-465, Y12) · owns: what this KiCad project
 is for, what it may claim, and how to start. The board's design is `../../../../data/dcu_channels.csv`.
 That is the record, and this is a drawing of it. Read `../../../README.md` first: it is the fence.*
 
 ## Where it stands
+
+**2026-10-13 (Y42): rev 0.05 - what pricing the order found, made right before the boards are ordered (D-541).**
+`fab/` is bench revision A re-issued from this board: the zip keeps its name, and the rev 0.04 package must not be
+ordered. ERC 0 / 0; DRC 0 violations, 0 unconnected, 0 parity; `check.py --board dcu` 171 checks, 0 mismatches.
+
+- **Q3, the wake switch, was drawn gate / drain / source on a SOT-23.** Every SOT-23 P-FET is gate 1, source 2,
+  drain 3 (Vishay 66894, top view), so the part would have sat drain to `+12V_LOGIC` and source to `WAKE_OUT`:
+  its body diode holds the wake line at 12 V and the car never sleeps. The symbol is `Q_PMOS_GSD` now, pad 2 is
+  `+12V_LOGIC` and pad 3 `WAKE_OUT`; the two short runs at its pads were re-laid and the `WAKE_OUT` via moved
+  1.9 mm, to (152.15, 44.75). The part is **SQ2361ES** (60 V): its source sits on a rail the SMBJ33A clamps at
+  53.3 V, so D-273's rule asks 60 V, and the SQ2351ES the sheet named is a 20 V part.
+- **D2, D4 (SMBJ33A) and D7, D8 (SMAJ40A) are one-way parts and were drawn with two anodes**, pad 1 - the end
+  the silkscreen marks as the cathode - on ground. Fitted to the mark they conduct forward: D2 / D4 short their
+  inputs, D7 / D8 hold the hatch and fuel-door relays on. The symbol is `D_TVS_Uni` (pin 1 the cathode) and each
+  footprint is turned half a turn in place: the same copper, the mark at the rail or drain end.
+- **C1, C8, C29 are 68 µF 63 V** (Panasonic EEE-FK1J680UP), not 100 µF. Each sits across an SMBJ33A, so the same
+  rule asks more than 53.3 V and a 50 V part is out; in the FK series 100 µF 63 V is a 10 × 10.2 can (size G, lands
+  4.1 × 2.0 with 4.6 between) and the footprint drawn is the 8 × 10.2 one (size F), whose largest 63 V value is
+  68 µF. The record names no value for this capacitor (`dcu_channels` gives the buck's ceramics), so the value
+  moved and the board did not; 100 µF needs the 10 mm footprint and room it does not have here without a re-lay.
+- **Values that follow the cart**: C31-C33 470 µF 16 V (the same can as 10 V); Q1 / Q2 SQ2362CES or PMV37ENEA
+  (Nexperia lists PMV37ENEA in production, but four distributors had none; Vishay 62424 is the same package and
+  pins, 60 V, 4.3 A).
+- **Not changed, to rule on**: Q3's gate sees ten elevenths of the rail while the wake is asserted (R42 10 k,
+  R43 1 k) and the part allows ±20 V - past about 22 V on the rail that is exceeded. A value change, no copper.
+
+These four boards have no generator (only the left plate does): the change was made by two scripts on the sheet and
+the board themselves - nodes replaced in the `.kicad_sch` / `.kicad_sym`, the board through KiCad's `pcbnew`.
 
 **2026-10-12 (Y17): bench revision A (board rev 0.04) is packaged under `fab/`** - gerbers, Excellon drill
 (PTH / NPTH, maps), `dcu-carrier-revA-gerbers.zip` and `dcu-carrier-revA-bom.csv` (MPNs `confirm` where the sheet

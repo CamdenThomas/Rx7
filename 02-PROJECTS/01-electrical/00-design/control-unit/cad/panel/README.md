@@ -187,7 +187,14 @@ address must differ from the driver's 0x3C (0x3D on most).
   its supply (`JP1`) and pull-ups, its address (P201).
 - **The encoders:** `panel:RotaryEncoder_Bourns_Vertical_PEC11R-4xxxF-Sxxxx` (Y6's, read from a model,
   not the Bourns drawing); S1 / S2 empty on the two N-type seat knobs.
-- **The keys:** the 13 mm actuator against the faceplate and caps (LP20).
+- **The keys** (Y42, 2026-10-13): **Same Sky TS02-66-130-BK-160-LCR-D** - 6 × 6 mm, its top 13.0 mm above the
+  board, 160 gf. `SW_PUSH_6mm_H13mm` was held to the maker's drawing (TS02 rev 1.03): pins on 6.5 × 4.5 mm, four
+  1.0 mm holes (1.1 drawn), 1-2 and 3-4 joined inside, as the footprint's two pads "1" and two pads "2". The
+  mock-up puts the cap's front 13 mm from the board (`PANEL_GAP` 8 + `FACE_T` 3 + `KEY_PROUD` 2), so a 13 mm
+  switch reaches it bare: the cap's own top adds to `KEY_PROUD`, or the 12.0 mm TS02-66-120-BK-160-LCR-D leaves
+  it 1 mm - confirm with the cap (LP20). The part is named in SW1-SW4's `Confirm` field on the sheet and the
+  board; no copper or silkscreen moved, so `fab/panel-revA-gerbers.zip` is as it was (re-plotted and compared:
+  every layer and drill file the same but its date).
 - **The LEDs:** colours (blue cool, red heat, the rest LP20's), brightness on the bench, part numbers.
 - **`U2`'s footprint** (KiCad's TQFP-48 7 × 7, EP 4.11, as Lumissil p.17) and the passives' part numbers.
 

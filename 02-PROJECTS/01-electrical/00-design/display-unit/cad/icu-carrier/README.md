@@ -1,10 +1,32 @@
 # ICU carrier — the KiCad project
 
-*Rev 2026-10-09 (sheet rev 0.03, board rev 0.03) · owns: what this KiCad project is for, what it
+*Rev 2026-10-13 (sheet and board rev 0.04 - Y42; rev 0.03 was 2026-10-09) · owns: what this KiCad project is for, what it
 may claim, and how to start. The board's design is `../../../../data/icu_channels.csv` — that is the
 record; this is a drawing of it. Read `../../../README.md` first: it is the fence.*
 
 ## Where it stands
+
+**2026-10-13 (Y42): rev 0.04 - what pricing the order found, made right before the boards are ordered (D-541).**
+`fab/` is bench revision A re-issued from this board: the zip keeps its name, and the rev 0.03 package must not be
+ordered. ERC 0 / 0; DRC 0 violations, 0 unconnected, 0 parity; `check.py --board icu` 98 checks, 0 mismatches.
+
+- **D24 and D26 (SMBJ33A) are one-way parts and were drawn with two anodes**, pad 1 - the end the silkscreen
+  marks as the cathode - on ground: fitted to the mark they short both 12 V inputs. The symbol is `D_TVS_Uni`
+  (pin 1 the cathode) and each footprint is turned half a turn in place: the same copper, the mark at the rail end.
+- **D20, the tach node's 5.1 V zener, was a two-pin symbol on a SOT-23**: its anode pad on ground, the node on the
+  package's unused pin 2, and the cathode, pin 3, on nothing (onsemi BZX84C2V4LT1/D: 1 anode, 2 no connection,
+  3 cathode). The symbol is `D_Zener_SOT23`; pad 3 is joined to the node by one 2 mm track beside pad 2. D21
+  clamps the node first either way, so nothing the bench saw changes.
+- **C1 is 68 µF 63 V** (Panasonic EEE-FK1J680UP), not 100 µF: it sits across D24, whose clamp is 53.3 V, so D-273's
+  rule asks more than a 50 V part; 100 µF 63 V is a 10 × 10.2 can and the footprint is the 8 × 10.2 one, whose
+  largest 63 V value is 68 µF. C1's courtyard is 0.2 mm from the board's edge with C3, C4 and R5 0.2 to 0.6 mm
+  from it: the 10 mm can (2.7 mm longer, 1.9 wider) needs the buck's corner laid again, which is F11's.
+- **Not changed, to rule on**: Q1's gate sees ten elevenths of the backlight rail while it is on (R1 10 k, R2 1 k)
+  and the part allows ±20 V - past about 22 V that is exceeded. Q3's part, DMG3415U, is marked not for new designs
+  by its maker, who names DMP2045U (the same pins); the cart carries both.
+
+This board has no generator: the change was made by two scripts on the sheet and the board themselves - nodes
+replaced in the `.kicad_sch` / `.kicad_sym`, the board through KiCad's `pcbnew`.
 
 **2026-10-12 (Y17): bench revision A is packaged under `fab/`** - gerbers, Excellon drill (PTH / NPTH, maps),
 `icu-carrier-revA-gerbers.zip` and `icu-carrier-revA-bom.csv` (MPNs `confirm` where the sheet does not name them),

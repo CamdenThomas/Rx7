@@ -5,7 +5,7 @@ group,qty,mpn,maker,what,refs,rows,est_unit_usd,price_source,substitute
 1 DU kit,1,CR2032,Panasonic,CR2032 lithium coin cell,clock cell,P202:1,0.5,estimate,any CR2032
 2 DU carrier,1,4517,Adafruit,LSM6DSOX + LIS3MDL motion sensor board,ICU U7,P109:1,19.95,maker's page 2026-10-13,
 2 DU carrier,1,SQD50P06-15L_GE3,Vishay,"P-FET 60 V TO-252, backlight switch",ICU Q1,P107:1,3.59,another distributor's price on Octopart 2026-10-13,
-2 DU carrier,2,DMG3415U-7,Diodes Inc,"P-FET 20 V SOT-23, radio VBUS switch",ICU Q3,P169:1,0.52,Digi-Key's row on Octopart 2026-10-13,
+2 DU carrier,2,DMG3415U-7,Diodes Inc,"P-FET 20 V SOT-23, radio VBUS switch",ICU Q3,P169:1,0.52,Digi-Key's row on Octopart 2026-10-13,"Diodes Inc DMP2045U-7: the maker marks DMG3415U not for new designs and names this one - the same SOT-23 pins, 20 V, 8 V gate"
 2 DU carrier,1,LM393DR,Texas Instruments,dual comparator SOIC-8,ICU U4,P107:1,0.35,estimate,
 2 DU carrier,1,SN74LVC1G17DBVR,Texas Instruments,Schmitt buffer SOT-23-5,ICU U5,P169:1,0.35,estimate,
 2 DU carrier,2,BZX84C5V1LT1G,onsemi,5.1 V zener SOT-23,ICU D20,P107:1,0.2,another distributor's price on Octopart 2026-10-13,
@@ -30,14 +30,14 @@ group,qty,mpn,maker,what,refs,rows,est_unit_usd,price_source,substitute
 3 CU carrier,1,BTT62004ESAXUMA1,Infineon,quad high-side switch TSDSO-24,DCU U10,P149:1,4.8,estimate,
 3 CU carrier,1,DRV8962QDDWRQ1,Texas Instruments,quad half-bridge HTSSOP-44,DCU U11,P149:1,7.5,estimate,
 3 CU carrier,2,TCA9539QPWRQ1,Texas Instruments,I2C expander TSSOP-24,DCU U12 U13,P149:2,2.1,estimate,
-3 CU carrier,2,PMV37ENEAR,Nexperia,N-FET 60 V SOT-23,DCU Q1 Q2,P149:2,0.45,estimate,none in stock at four distributors on Octopart: Diodes DMN6140L-7 (60 V N-FET SOT-23) - confirm
-3 CU carrier,1,SQ2361ES-T1_GE3,Vishay,P-FET 60 V SOT-23,DCU Q3 (the sheet's SQ2351ES is a 20 V part),P170:1,0.8,estimate,Vishay SQ2319ADS-T1_GE3 (40 V)
+3 CU carrier,2,SQ2362CES-T1_GE3,Vishay,"N-FET 60 V 4.3 A SOT-23, gate 1 source 2 drain 3",DCU Q1 Q2,P149:2,0.45,estimate,"Nexperia PMV37ENEAR (the part D-379 named: in production, none in stock at four distributors on Octopart 2026-10-13) or PMV37ENER - the same package and pins, 60 V 3.5 A"
+3 CU carrier,1,SQ2361ES-T1_GE3,Vishay,"P-FET 60 V SOT-23, gate 1 source 2 drain 3",DCU Q3,P170:1,0.8,estimate,nothing under 60 V: its rail is clamped at 53 V (D-273). Vishay SQ2361CES-T1_GE3 is the later version - confirm 60 V and SOT-23 on its page
 3 CU carrier,2,XAL7030-682MEC,Coilcraft,6.8 uH inductor 7 x 7 mm,"DCU L2, one fitted one spare",P177:2,3.6,estimate,
 3 CU carrier,2,B560C-13-F,Diodes Inc,60 V 5 A Schottky SMC,DCU D3 D5,P149:2,0.8,another distributor's price on Octopart 2026-10-13,
-3 CU carrier,2,SMAJ40A,Littelfuse,40 V TVS SMA,DCU D7 D8,P170:2,0.45,another distributor's price on Octopart 2026-10-13,
+3 CU carrier,2,SMAJ40A,Littelfuse,"40 V TVS SMA, one-way (not the CA): the banded end to the mark",DCU D7 D8,P170:2,0.45,another distributor's price on Octopart 2026-10-13,
 3 CU carrier,2,1206L050YR,Littelfuse,0.5 A resettable fuse 1206,DCU F1,P193:1,0.65,another distributor's price on Octopart 2026-10-13,
 3 CU carrier,2,CRA2512-FZ-R010ELF,Bourns,10 mOhm 1 % 3 W 2512 sense resistor,DCU R15 R16,P149:2,0.75,estimate,any 10 mOhm 1 % 2512 of 2 W or more
-3 CU carrier,3,EEE-FK1C471P,Panasonic,470 uF 16 V aluminium 8 x 10.2,DCU C31 C32 C33 (the sheet says 10 V; 16 V is the same can),P170:3,1.0,another distributor's price on Octopart 2026-10-13,
+3 CU carrier,3,EEE-FK1C471P,Panasonic,470 uF 16 V aluminium 8 x 10.2,DCU C31 C32 C33,P170:3,1.0,another distributor's price on Octopart 2026-10-13,
 3 CU carrier,2,GRM32ER71A476KE15L,Murata,47 uF 10 V X7R 1210,DCU C14 C15,P170:2,0.95,another distributor's price on Octopart 2026-10-13,low stock on Octopart: Murata GRM32ER61A476KE20L (X5R)
 3 CU carrier,5,C0805C104K1RACTU,KEMET,100 nF 100 V X7R 0805,DCU C25 C30,P170:2,0.41,another distributor's price on Octopart 2026-10-13,
 3 CU carrier,5,C0805C223K1RACTU,KEMET,22 nF 100 V X7R 0805,DCU C27,P170:1,0.16,another distributor's price on Octopart 2026-10-13,
@@ -59,8 +59,8 @@ group,qty,mpn,maker,what,refs,rows,est_unit_usd,price_source,substitute
 4 both carriers,15,BAT54SLT1G,onsemi,dual Schottky clamp SOT-23,"ICU D1-D10 D21 D22, DCU D6",P107:12 P170:1,0.15,another distributor's price on Octopart 2026-10-13,
 4 both carriers,5,MMBT3904LT1G,onsemi,NPN SOT-23,"ICU Q2 Q4, DCU Q4",P107:1 P169:1 P170:1,0.14,another distributor's price on Octopart 2026-10-13,
 4 both carriers,4,B340A-13-F,Diodes Inc,"40 V 3 A Schottky, SMA","ICU D23 D25, DCU D1 (the sheet's SS34, in the SMA case)",P106:2 P147:1,0.5,another distributor's price on Octopart 2026-10-13,
-4 both carriers,4,SMBJ33A,Littelfuse,"33 V load-dump TVS, SMB","ICU D24 D26, DCU D2 D4",P106:2 P147:2,0.45,another distributor's price on Octopart 2026-10-13,
-4 both carriers,4,EEE-FK1J101P,Panasonic,"100 uF 63 V aluminium, 10 x 10.2 mm","ICU C1, DCU C1 C8 C29 - the boards draw an 8 x 10 can: see the step",P106:1 P170:3,1.27,another distributor's price on Octopart 2026-10-13,
+4 both carriers,4,SMBJ33A,Littelfuse,"33 V load-dump TVS, SMB, one-way (not the CA): the banded end to the mark","ICU D24 D26, DCU D2 D4",P106:2 P147:2,0.45,another distributor's price on Octopart 2026-10-13,
+4 both carriers,4,EEE-FK1J680UP,Panasonic,"68 uF 63 V aluminium, 8 x 10.2 mm","ICU C1, DCU C1 C8 C29",P106:1 P170:3,1.27,estimate,"Panasonic EEE-FK1J470P (47 uF 63 V, the same can). Not the 100 uF EEE-FK1J101P: a 10 mm can, it does not fit the boards"
 4 both carriers,5,CGA6M3X7S2A475K200AB,TDK,4.7 uF 100 V X7S 1210,"ICU C20, DCU C2 C9 C10",P159:1 P170:3,0.95,estimate,any 4.7 uF 100 V X7R or X7S 1210
 4 both carriers,5,C0805C224K1RACTU,KEMET,220 nF 100 V X7R 0805,"ICU C21 C22, DCU C3",P159:2 P170:1,0.63,another distributor's price on Octopart 2026-10-13,
 4 both carriers,4,CL31A226KOHNNNE,Samsung,22 uF 16 V X5R 1206,"ICU C2 C23, DCU C7",P169:1 P159:1 P170:1,0.45,estimate,an X7R 22 uF 16 V 1206 if the cart offers one
@@ -84,7 +84,7 @@ group,qty,mpn,maker,what,refs,rows,est_unit_usd,price_source,substitute
 5 CU panel and upper board,1,PEC11R-4220F-S0024,Bourns,"encoder, detents, push, 20 mm shaft",panel SW7 centre knob,P155:1,1.9,estimate,
 5 CU panel and upper board,2,PEC11R-4220F-N0024,Bourns,"encoder, detents, no push, 20 mm shaft",panel SW8 SW9 seat knobs,P155:2,1.6,estimate,
 5 CU panel and upper board,2,B28AP,NKK,"sprung DPDT toggle (ON)-OFF-(ON), PC pins",panel SW5 SW6 window switches,P155:2,9.5,estimate,
-5 CU panel and upper board,5,TS02-66-130-BK-160-LCR-D,Same Sky (CUI),"6 x 6 mm key, 13 mm tall",panel SW1-SW4,P155:4,0.22,estimate,"any 6 x 6 mm through-hole key 13 mm tall; Omron B3F-1070 is 9.5 mm, not this"
+5 CU panel and upper board,5,TS02-66-130-BK-160-LCR-D,Same Sky (CUI),"6 x 6 mm key, 13 mm tall",panel SW1-SW4,P155:4,0.22,estimate,"any 6 x 6 mm through-hole key 13 mm tall on 6.5 x 4.5 mm pins; TS02-66-120-BK-160-LCR-D (12 mm) if the cap's top is 1 mm thick; Omron B3F-1070 is 9.5 mm, not this"
 5 CU panel and upper board,10,1N4148W-7-F,Diodes Inc,matrix diode SOD-123,panel D1-D8,P155:8,0.108,Digi-Key's row on Octopart 2026-10-13,
 5 CU panel and upper board,15,LTST-C191TGKT,Lite-On,green LED 0603,panel LED1-LED12,P192:12,0.3,estimate,
 5 CU panel and upper board,8,LTST-C191TBKT,Lite-On,blue LED 0603,"panel seat cool LEDs, six",P192:6,0.3,estimate,

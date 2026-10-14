@@ -1,6 +1,6 @@
 {
  "version": 2,
- "built": "2026-10-13T18:24:36-06:00",
+ "built": "2026-10-13T19:03:35-06:00",
  "project": "01-electrical",
  "frame": {
   "units": "mm",
@@ -262,7 +262,7 @@
    "name": "DCU carrier PCB H-002",
    "kind": "pcb",
    "glb": "dcu-carrier.glb",
-   "bytes": 13461948,
+   "bytes": 13463840,
    "parent": "control-unit",
    "place": {
     "x": 180.5,
@@ -367,7 +367,7 @@
    "name": "ICU carrier PCB H-001",
    "kind": "pcb",
    "glb": "icu-carrier.glb",
-   "bytes": 9209972,
+   "bytes": 9210300,
    "parent": "display-unit",
    "place": {
     "x": -91.75,
@@ -13908,7 +13908,7 @@
    "id": "dcu-carrier",
    "kind": "pcb",
    "glb": "dcu-carrier.glb",
-   "bytes": 13461948,
+   "bytes": 13463840,
    "bbox": [
     [
      0.0,
@@ -13921,8 +13921,8 @@
      37.128
     ]
    ],
-   "vertices": 613732,
-   "triangles": 603567,
+   "vertices": 613818,
+   "triangles": 603653,
    "nodes": {
     "board": [
      "pcb:board"
@@ -13947,7 +13947,7 @@
     "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "533454113458eb2b"
+   "stamp": "01ea5d654a229a7d"
   },
   "panel": {
    "id": "panel",
@@ -13990,7 +13990,7 @@
     "TQFP-48-1EP_7x7mm_P0.5mm_EP4.11x4.11mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "4b59b17d54f11049"
+   "stamp": "250b96dad8b5a753"
   },
   "upper-board": {
    "id": "upper-board",
@@ -14088,7 +14088,7 @@
    "id": "icu-carrier",
    "kind": "pcb",
    "glb": "icu-carrier.glb",
-   "bytes": 9209972,
+   "bytes": 9210300,
    "bbox": [
     [
      97.75,
@@ -14101,8 +14101,8 @@
      37.128
     ]
    ],
-   "vertices": 420440,
-   "triangles": 409355,
+   "vertices": 420456,
+   "triangles": 409367,
    "nodes": {
     "board": [
      "pcb:board"
@@ -14125,7 +14125,7 @@
     "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "e58d89c6f6f71f3b"
+   "stamp": "d373d3d75e7c6463"
   },
   "control-unit": {
    "problems": [],

@@ -1,24 +1,24 @@
 refs,qty,value,footprint,mpn,supplier,supplier_pn,record_part,status
-C1,1,100u 63V,Capacitor_SMD:CP_Elec_8x10,"class: aluminium electrolytic SMD 100 uF 63 V, 8 x 10 mm, 105 C low-ESR",Digi-Key,,P106,confirm
-C2,1,22u 16V,Capacitor_SMD:C_1206_3216Metric,"class: MLCC 22 uF 16 V X7R (X5R) 1206",Digi-Key,,P169,confirm
+C1,1,68u 63V,Capacitor_SMD:CP_Elec_8x10,EEE-FK1J680UP,Digi-Key,,P106,confirm
+C2,1,22u 16V,Capacitor_SMD:C_1206_3216Metric,CL31A226KOHNNNE,Digi-Key,,P169,confirm
 "C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,C13,C14,C15,C16,C17,C18,C24",17,100n / 100n 16V,Capacitor_SMD:C_0805_2012Metric,CL21B104KBCNNNC,Digi-Key,,P169 (C24: P159),confirm
-C19,1,10u,Capacitor_SMD:C_0805_2012Metric,CL21A106KOQNNNE,Digi-Key,,P169,confirm
-C20,1,4.7u 100V X7R,Capacitor_SMD:C_1210_3225Metric,"class: MLCC 4.7 uF 100 V X7R 1210",Digi-Key,,P159,confirm
-"C21,C22",2,220n 100V,Capacitor_SMD:C_0805_2012Metric,"class: MLCC 220 nF 100 V X7R 0805",Digi-Key,,P159,confirm
-C23,1,22u 10V X7R,Capacitor_SMD:C_1206_3216Metric,"class: MLCC 22 uF 10 V X7R 1206",Digi-Key,,P159,confirm
-C25,1,1u 16V,Capacitor_SMD:C_0805_2012Metric,"class: MLCC 1 uF 16 V X7R 0805",Digi-Key,,P159,confirm
-C26,1,20p C0G,Capacitor_SMD:C_0805_2012Metric,"class: MLCC 20 pF 50 V C0G 0805",Digi-Key,,P159,confirm
+C19,1,10u,Capacitor_SMD:C_0805_2012Metric,CL21B106KOQNNNE,Digi-Key,,P169,confirm
+C20,1,4.7u 100V X7R,Capacitor_SMD:C_1210_3225Metric,CGA6M3X7S2A475K200AB,Digi-Key,,P159,confirm
+"C21,C22",2,220n 100V,Capacitor_SMD:C_0805_2012Metric,C0805C224K1RACTU,Digi-Key,,P159,confirm
+C23,1,22u 10V X7R,Capacitor_SMD:C_1206_3216Metric,CL31A226KOHNNNE,Digi-Key,,P159,confirm
+C25,1,1u 16V,Capacitor_SMD:C_0805_2012Metric,CL21B105KAFNNNE,Digi-Key,,P159,confirm
+C26,1,20p C0G,Capacitor_SMD:C_0805_2012Metric,CL21C200JBANNNC,Digi-Key,,P159,confirm
 "D1,D2,D3,D4,D5,D6,D7,D8,D9,D10,D21,D22",12,BAT54S,Package_TO_SOT_SMD:SOT-23,BAT54SLT1G,Digi-Key,,P107,confirm
 D20,1,BZX84C5V1,Package_TO_SOT_SMD:SOT-23,BZX84C5V1LT1G,Digi-Key,,P107,confirm
-"D23,D25",2,SS34,Diode_SMD:D_SMA,"class: SS34 3 A 40 V Schottky - must be the SMA (DO-214AC) package, some SS34s are SMC",Digi-Key,,P106,confirm
+"D23,D25",2,SS34,Diode_SMD:D_SMA,B340A-13-F,Digi-Key,,P106,confirm
 "D24,D26",2,SMBJ33A,Diode_SMD:D_SMB,SMBJ33A,Digi-Key,,P106,from schematic
 F1,1,4 A,Fuse:Fuse_1206_3216Metric,0466004.NR,Digi-Key,,P107,confirm
 J1,1,DT13-06PA,icu-carrier:DT13-06PA,DT13-06PA,TE Deutsch (Mouser / Ladd),,P122,from record
 J3,1,DT13-12PA,icu-carrier:DT13-12PA,DT13-12PA,TE Deutsch (Mouser / Ladd),,P122,from record
-"J2,JP1,JP2,JP3,JP8A1,JP8B1",6,1x2 pin header (J2 backlight out 2.5 A; jumpers),Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,"class: 2.54 mm male pin header 1 x 2 vertical, 3 A pins, cut from a 1 x 40 strip",Digi-Key,,P169,confirm
-"JP1,JP2,JP8A1|JP8B1",3,jumper shunt (JP1 and JP2 fitted; one of J8A / J8B),-,"class: 2.54 mm jumper shunt",Digi-Key,,none,confirm
-J4,1,ME817EV CN8 - 2x8 host header,Connector_PinSocket_2.54mm:PinSocket_2x08_P2.54mm_Vertical,"class: 2.54 mm female socket header 2 x 8 vertical",Digi-Key,,P176,confirm
-J5,1,Teensy 4.1 socket - 2 x 24 female headers,icu-carrier:Teensy41_Socket,"class: 2.54 mm female header 1 x 24, two per socket, standard (not machined) pins",Digi-Key,,P110,confirm
+"J2,JP1,JP2,JP3,JP8A1,JP8B1",6,1x2 pin header (J2 backlight out 2.5 A; jumpers),Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical,PRPC040SAAN-RC,Digi-Key,,P169,confirm
+"JP1,JP2,JP8A1|JP8B1",3,jumper shunt (JP1 and JP2 fitted; one of J8A / J8B),-,QPC02SXGN-RC,Digi-Key,,none,confirm
+J4,1,ME817EV CN8 - 2x8 host header,Connector_PinSocket_2.54mm:PinSocket_2x08_P2.54mm_Vertical,PPPC082LFBN-RC,Digi-Key,,P176,confirm
+J5,1,Teensy 4.1 socket - 2 x 24 female headers,icu-carrier:Teensy41_Socket,PPPC241LFBN-RC,Digi-Key,,P110,confirm
 J5 (module),1,Teensy 4.1,-,Teensy 4.1 with pins,PJRC,,P142,from record
 L2,1,2.2u XAL4020-222,Inductor_SMD:L_Coilcraft_XAL4020-XXX,XAL4020-222MEC,Digi-Key / Coilcraft,,P159,from record
 Q1,1,"SQD50P06 class, >= 60 V",Package_TO_SOT_SMD:TO-252-2,SQD50P06-15L_GE3,Digi-Key,,P107,confirm
@@ -30,7 +30,7 @@ R2,1,1k,Resistor_SMD:R_0805_2012Metric,RC0805FR-071KL,Digi-Key,,P107,confirm
 "R6,R11",2,100R 1W,Resistor_SMD:R_2512_6332Metric,RC2512FK-07100RL,Digi-Key,,P107,confirm
 "R7,R9,R12,R19",4,15k,Resistor_SMD:R_0805_2012Metric,RC0805FR-0715KL,Digi-Key,,P107,confirm
 "R14,R16,R21,R23,R25,R27",6,47k,Resistor_SMD:R_0805_2012Metric,RC0805FR-0747KL,Digi-Key,,P107,confirm
-R18,1,1k - 2.2k 1%  ?,Resistor_SMD:R_0805_2012Metric,"class: 0805 1 % - VALUE OPEN on the sheet (1k to 2.2k, the oil-temp pull-up, waits on Q-308)",Digi-Key,,P107,confirm
+R18,1,1k - 2.2k 1%  ?,Resistor_SMD:R_0805_2012Metric,"RC0805FR-071KL / RC0805FR-071K5L / RC0805FR-072K2L (one of the three, Q-308)",Digi-Key,,P107,confirm
 "R29,R30",2,100k 0.5W,Resistor_SMD:R_1210_3225Metric,RC1210FR-07100KL,Digi-Key,,P107,confirm
 R31,1,39k,Resistor_SMD:R_0805_2012Metric,RC0805FR-0739KL,Digi-Key,,P107,confirm
 R32,1,12k,Resistor_SMD:R_0805_2012Metric,RC0805FR-0712KL,Digi-Key,,P107,confirm
@@ -43,10 +43,10 @@ U1,1,LMR36015FSCQ-Q1,Package_DFN_QFN:Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_
 U3,1,TCAN1042HVDRQ1,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm,TCAN1042HVDRQ1,Digi-Key,,P104,from schematic
 U4,1,LM393,Package_SO:SOIC-8_3.9x4.9mm_P1.27mm,LM393DR,Digi-Key,,P107,confirm
 U5,1,74LVC1G17,Package_TO_SOT_SMD:SOT-23-5,SN74LVC1G17DBVR,Digi-Key,,P169,confirm
-U7,1,Adafruit 4517 LSM6DSOX+LIS3MDL,icu-carrier:IMU_Adafruit_4517_Socket,Adafruit 4517,Adafruit,4517,P109,from schematic
-U7 (sockets),1,1x6 + 1x5 female headers,icu-carrier:IMU_Adafruit_4517_Socket,"class: 2.54 mm female header 1 x 6 and 1 x 5",Digi-Key,,P176,confirm
-U8,1,XIAO ESP32C3,icu-carrier:XIAO_ESP32C3_Socket_2x07,Seeed XIAO ESP32C3,Seeed,113991054,P116,confirm
-U8 (sockets),1,2 x 1x7 female headers,icu-carrier:XIAO_ESP32C3_Socket_2x07,"class: 2.54 mm female header 1 x 7, two",Digi-Key,,P176,confirm
+U7,1,Adafruit 4517 LSM6DSOX+LIS3MDL,icu-carrier:IMU_Adafruit_4517_Socket,4517,Adafruit,4517,P109,from schematic
+U7 (sockets),1,1x6 + 1x5 female headers,icu-carrier:IMU_Adafruit_4517_Socket,PPPC061LFBN-RC + PPPC051LFBN-RC,Digi-Key,,P176,confirm
+U8,1,XIAO ESP32C3,icu-carrier:XIAO_ESP32C3_Socket_2x07,113991054,Seeed,113991054,P116,confirm
+U8 (sockets),1,2 x 1x7 female headers,icu-carrier:XIAO_ESP32C3_Socket_2x07,PPPC071LFBN-RC,Digi-Key,,P176,confirm
 
 NOT FITTED (DNP),,,,,,,,
 L1,1,common-mode choke - DNP; fit only with R44 / R45 removed,Inductor_SMD:L_CommonModeChoke_Coilank_ACM2012,-,,,,DNP (no termination and no filtering on this board - D-079 / D-346)

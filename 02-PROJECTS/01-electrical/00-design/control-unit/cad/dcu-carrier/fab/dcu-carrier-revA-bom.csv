@@ -1,21 +1,21 @@
 refs,qty,value,footprint,mpn,supplier,supplier_pn,record_part,status
-"C1,C8,C29",3,100u 63V,Capacitor_SMD:CP_Elec_8x10,"class: aluminium electrolytic SMD 100 uF 63 V, 8 x 10 mm, 105 C low-ESR",Digi-Key,,P170,confirm
-"C2,C9,C10",3,4.7u 100V X7R,Capacitor_SMD:C_1210_3225Metric,"class: MLCC 4.7 uF 100 V X7R 1210",Digi-Key,,P170,confirm
-C3,1,220n 100V,Capacitor_SMD:C_0805_2012Metric,"class: MLCC 220 nF 100 V X7R 0805",Digi-Key,,P170,confirm
+"C1,C8,C29",3,68u 63V,Capacitor_SMD:CP_Elec_8x10,EEE-FK1J680UP,Digi-Key,,P170,confirm
+"C2,C9,C10",3,4.7u 100V X7R,Capacitor_SMD:C_1210_3225Metric,CGA6M3X7S2A475K200AB,Digi-Key,,P170,confirm
+C3,1,220n 100V,Capacitor_SMD:C_0805_2012Metric,C0805C224K1RACTU,Digi-Key,,P170,confirm
 "C4,C11,C16,C17,C18,C19,C20,C21,C22,C23,C24,C34,C35,C38",14,100n / 100n 16V,Capacitor_SMD:C_0805_2012Metric,CL21B104KBCNNNC,Digi-Key,,P170,confirm
-C5,1,1u 16V,Capacitor_SMD:C_0805_2012Metric,"class: MLCC 1 uF 16 V X7R 0805",Digi-Key,,P170,confirm
-C6,1,20p C0G,Capacitor_SMD:C_0805_2012Metric,"class: MLCC 20 pF 50 V C0G 0805",Digi-Key,,P170,confirm
-C7,1,22u 16V X7R,Capacitor_SMD:C_1206_3216Metric,"class: MLCC 22 uF 16 V X7R 1206",Digi-Key,,P170,confirm
-C12,1,4.7n  confirm,Capacitor_SMD:C_0805_2012Metric,"class: MLCC 4.7 nF 50 V X7R 0805 - value confirm on the sheet",Digi-Key,,P170,confirm
-C13,1,47p  confirm,Capacitor_SMD:C_0805_2012Metric,"class: MLCC 47 pF 50 V C0G 0805 - value confirm on the sheet",Digi-Key,,P170,confirm
-"C14,C15",2,47u 10V X7R,Capacitor_SMD:C_1210_3225Metric,"class: MLCC 47 uF 10 V X7R 1210",Digi-Key,,P170,confirm
-"C25,C30",2,100n 100V,Capacitor_SMD:C_0805_2012Metric,"class: MLCC 100 nF 100 V X7R 0805",Digi-Key,,P170,confirm
-C26,1,1u 25V  confirm,Capacitor_SMD:C_0805_2012Metric,"class: MLCC 1 uF 25 V X7R 0805",Digi-Key,,P170,confirm
-C27,1,22n 100V  confirm,Capacitor_SMD:C_0805_2012Metric,"class: MLCC 22 nF 100 V X7R 0805",Digi-Key,,P170,confirm
-C28,1,1u,Capacitor_SMD:C_0805_2012Metric,"class: MLCC 1 uF X7R 0805 - voltage not on the sheet, take 25 V",Digi-Key,,P170,confirm
-"C31,C32,C33",3,470u 10V,Capacitor_SMD:CP_Elec_8x10,"class: aluminium electrolytic SMD 470 uF 10 V, 8 x 10 mm, 105 C low-ESR",Digi-Key,,P170,confirm
-"C36,C37",2,10n 100V,Capacitor_SMD:C_0805_2012Metric,"class: MLCC 10 nF 100 V X7R 0805",Digi-Key,,P170,confirm
-D1,1,SS34,Diode_SMD:D_SMA,"class: SS34 3 A 40 V Schottky - must be the SMA (DO-214AC) package, some SS34s are SMC",Digi-Key,,P147,confirm
+C5,1,1u 16V,Capacitor_SMD:C_0805_2012Metric,CL21B105KAFNNNE,Digi-Key,,P170,confirm
+C6,1,20p C0G,Capacitor_SMD:C_0805_2012Metric,CL21C200JBANNNC,Digi-Key,,P170,confirm
+C7,1,22u 16V X7R,Capacitor_SMD:C_1206_3216Metric,CL31A226KOHNNNE,Digi-Key,,P170,confirm
+C12,1,4.7n  confirm,Capacitor_SMD:C_0805_2012Metric,CL21B472KBANNNC,Digi-Key,,P170,confirm
+C13,1,47p  confirm,Capacitor_SMD:C_0805_2012Metric,CL21C470JBANNNC,Digi-Key,,P170,confirm
+"C14,C15",2,47u 10V X7R,Capacitor_SMD:C_1210_3225Metric,GRM32ER71A476KE15L,Digi-Key,,P170,confirm
+"C25,C30",2,100n 100V,Capacitor_SMD:C_0805_2012Metric,C0805C104K1RACTU,Digi-Key,,P170,confirm
+C26,1,1u 25V  confirm,Capacitor_SMD:C_0805_2012Metric,CL21B105KAFNNNE,Digi-Key,,P170,confirm
+C27,1,22n 100V  confirm,Capacitor_SMD:C_0805_2012Metric,C0805C223K1RACTU,Digi-Key,,P170,confirm
+C28,1,1u,Capacitor_SMD:C_0805_2012Metric,CL21B105KAFNNNE,Digi-Key,,P170,confirm
+"C31,C32,C33",3,470u 16V,Capacitor_SMD:CP_Elec_8x10,EEE-FK1C471P,Digi-Key,,P170,confirm
+"C36,C37",2,10n 100V,Capacitor_SMD:C_0805_2012Metric,C0805C103K1RACTU,Digi-Key,,P170,confirm
+D1,1,SS34,Diode_SMD:D_SMA,B340A-13-F,Digi-Key,,P147,confirm
 "D2,D4",2,SMBJ33A,Diode_SMD:D_SMB,SMBJ33A,Digi-Key,,P147,from schematic
 "D3,D5",2,B560C 60V 5A (D3 comfort input; D5 servo-buck catch),Diode_SMD:D_SMC,B560C-13-F,Digi-Key,,P149 (D5 also in P146),confirm
 D6,1,BAT54S,Package_TO_SOT_SMD:SOT-23,BAT54SLT1G,Digi-Key,,P170,confirm
@@ -25,14 +25,14 @@ J1,1,DP-DCU  DT13-06PA,dcu-carrier:DT13-06PA,DT13-06PA,TE Deutsch (Mouser / Ladd
 J2,1,DP-DCU-C  DT13-08PA,dcu-carrier:DT13-08PA,DT13-08PA,TE Deutsch (Mouser / Ladd),,P153,from record
 J9,1,DP-DCU-B  DT13-12PA,dcu-carrier:DT13-12PA,DT13-12PA,TE Deutsch (Mouser / Ladd),,P150,from record
 "J3,J5",2,cabin NTC lead / blower pigtail,Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical,B2B-XH-A(LF)(SN),Digi-Key,,P178,confirm
-J4,1,"panel ribbon 2x13 IDC, keyed",Connector_IDC:IDC-Header_2x13_P2.54mm_Vertical,"class: 2.54 mm 2 x 13 shrouded box header, keyed, vertical",Digi-Key,,P157,confirm
-"J6,J7,J8",3,servo header,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,"class: 2.54 mm male pin header 1 x 3 vertical, cut from a 1 x 40 strip",Digi-Key,,P149,confirm
-J10,1,Teensy 4.1 socket - 2 x 24 female headers,dcu-carrier:Teensy41_Socket,"class: 2.54 mm female header 1 x 24, two per socket, standard (not machined) pins",Digi-Key,,P148,confirm
+J4,1,"panel ribbon 2x13 IDC, keyed",Connector_IDC:IDC-Header_2x13_P2.54mm_Vertical,SBH11-PBPC-D13-ST-BK,Digi-Key,,P157,confirm
+"J6,J7,J8",3,servo header,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical,PRPC040SAAN-RC,Digi-Key,,P149,confirm
+J10,1,Teensy 4.1 socket - 2 x 24 female headers,dcu-carrier:Teensy41_Socket,PPPC241LFBN-RC,Digi-Key,,P148,confirm
 J10 (module),1,Teensy 4.1,-,Teensy 4.1 with pins,PJRC,,P142,from record
 L1,1,2.2u XAL4020-222,Inductor_SMD:L_Coilcraft_XAL4020-XXX,XAL4020-222MEC,Digi-Key / Coilcraft,,P170,from record
 L2,1,6.8u  Isat >= 7 A,Inductor_SMD:L_Coilcraft_XAL7030-682,XAL7030-682MEC,Digi-Key / Coilcraft,,P177,confirm
-"Q1,Q2",2,PMV37ENEA,Package_TO_SOT_SMD:SOT-23,PMV37ENEAR,Digi-Key,,P149,confirm
-Q3,1,"SQ2351ES class, >= 40 V",Package_TO_SOT_SMD:SOT-23,"class: P-MOSFET SOT-23, VDS >= 40 V (the sheet names SQ2351ES class - check that part's VDS against 40 V before buying it)",Digi-Key,,P170,confirm
+"Q1,Q2",2,SQ2362CES / PMV37ENEA,Package_TO_SOT_SMD:SOT-23,SQ2362CES-T1_GE3,Digi-Key,,P149,confirm
+Q3,1,SQ2361ES,Package_TO_SOT_SMD:SOT-23,SQ2361ES-T1_GE3,Digi-Key,,P170,confirm
 Q4,1,MMBT3904,Package_TO_SOT_SMD:SOT-23,MMBT3904LT1G,Digi-Key,,P170,confirm
 "R1,R3,R35,R45",4,100k / 100k 1%,Resistor_SMD:R_0805_2012Metric,RC0805FR-07100KL,Digi-Key,,P170,confirm
 R2,1,24.9k 1%,Resistor_SMD:R_0805_2012Metric,RC0805FR-0724K9L,Digi-Key,,P170,confirm
@@ -41,7 +41,7 @@ R5,1,52.3k 1%,Resistor_SMD:R_0805_2012Metric,RC0805FR-0752K3L,Digi-Key,,P170,con
 "R6,R8,R11,R12,R13,R14,R17,R18,R19,R20,R22,R36,R39,R41,R42,R44,R47,R53,R54,R58",20,10k / 10k 1%,Resistor_SMD:R_0805_2012Metric,RC0805FR-0710KL,Digi-Key,,P170 (R39/R41: P149),confirm
 R7,1,16.9k  confirm,Resistor_SMD:R_0805_2012Metric,RC0805FR-0716K9L,Digi-Key,,P170,confirm
 "R9,R10",2,0R (in place of the choke),Resistor_SMD:R_0805_2012Metric,RC0805JR-070RL,Digi-Key,,P170,confirm
-"R15,R16",2,10m 2512 3W,Resistor_SMD:R_2512_6332Metric,"class: current-sense 10 mOhm 1 % 2512, >= 2 W (sheet: 3 W)",Digi-Key,,P149,confirm
+"R15,R16",2,10m 2512 3W,Resistor_SMD:R_2512_6332Metric,CRA2512-FZ-R010ELF,Digi-Key,,P149,confirm
 "R21,R23,R26,R27,R28,R29,R30,R31,R32,R51,R52",11,4.7k,Resistor_SMD:R_0805_2012Metric,RC0805FR-074K7L,Digi-Key,,P170,confirm
 "R24,R33",2,1.2k (IS unread),Resistor_SMD:R_0805_2012Metric,RC0805FR-071K2L,Digi-Key,,P170,confirm
 "R25,R34",2,47R (PROFET ground),Resistor_SMD:R_0805_2012Metric,RC0805FR-0747RL,Digi-Key,,P170,confirm
