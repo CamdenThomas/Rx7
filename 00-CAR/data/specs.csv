@@ -1687,3 +1687,11 @@ SP-1700,Brakes,"Rear disc brake: disc thickness, standard / limit; run-out limit
 SP-1701,Brakes,Rear disc brake: caliper attaching bolt torque,30-42,N·m,S-002,p.11-13,primary,brakes,,not-fitted,22-30 ft-lb. This car has rear drums (SP-112).
 SP-1702,Brakes,Rear disc brake: play between piston and sleeve nut,0.3-0.5,mm,S-002,p.11-15,primary,brakes,,not-fitted,This car has rear drums (SP-112).
 SP-1703,Brakes,Rear disc brake: service tools - piston wrench; valve spring lifter arm; spring compressor; removing plate,49 FA18 602; 49 0636 100A; 49 FA18 601; 49 E301 144,,S-002,"p.11-12, p.11-14",primary,brakes,,not-fitted,This car has rear drums (SP-112).
+SP-1704,Suspension,Front coil spring wire diameter; free length left / right (1985),12.0; 327 / 325,mm,S-002,p.13-3,primary,suspension,PT505,other-car,"The 1982 lengths: SP-1457, SP-1458."
+SP-1705,Suspension,"Knuckle arm to shock absorber, and ball joint to knuckle arm, tightening torque (1985)",95-119,N·m,S-002,"p.13-8, p.13-10",unverified,suspension,PT512,other-car,"As the OCR text reads; its own ft-lb figure, 43-51, is 58-69 N·m. The 1982 data: SP-1475, SP-1502. Goes to P83."
+SP-1706,Suspension,"Steering knuckle to caliper mounting adaptor, tightening torque (1985)",35-45,N·m,S-002,p.13-8,primary,suspension,PT496,other-car,25-33 ft-lb.
+SP-1707,Suspension,"Caliper mounting adaptor to caliper bracket, tightening torque (1985)",45-55,N·m,S-002,p.13-8,primary,suspension,PT496,other-car,33-40 ft-lb.
+SP-1708,Suspension,"Adjusting plates between mounting block and suspension tower, most on one side",2,,S-002,p.13-8,primary,suspension,PT508,other-car,"They level the headlamp heights, SP-1472; plate SP-1474."
+SP-1709,Suspension,"Service tools, front shock absorber: coil spring compressor; pilot for the piston rod's threads",49 0223 640B with 49 0370 641; 49 0259 590,,S-002,"p.13-5, p.13-7",primary,suspension,PT504,other-car,
+SP-1710,Suspension,"Service tool: puller, knuckle arm from the ball joint",49 0727 575,,S-002,p.13-9,primary,suspension,PT514,other-car,The tie-rod end comes off with SP-1449.
+SP-1711,Suspension,"Service tool: puller and installer, front suspension arm bushing",49 0419 530,,S-002,p.13-10,primary,suspension,PT515,other-car,"Pressed out toward the front and in from the front, with no lubricant on the bushing or the bore."

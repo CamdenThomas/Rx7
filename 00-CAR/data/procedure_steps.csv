@@ -1168,3 +1168,99 @@ PR-129.03,PR-129,3,Connect the fluid pipes by the identification marks on the va
 PR-129.04,PR-129,4,Bleed the brakes,PR-126.,,,p.11-26
 PR-129.05,PR-129,5,"With the foot brake applied, inspect every brake line for leaks",,None.,,p.11-26
 PR-129.06,PR-129,6,"Check every pipe, hose and connection",,"No chafing, deterioration or other damage.",,p.11-26
+PR-130.01,PR-130,1,Raise the front and support it on stands,,,,p.13-5
+PR-130.02,PR-130,2,Remove the wheel hub assembly from the shock absorber,PR-095.,,,p.13-5
+PR-130.03,PR-130,3,Remove the backing plate,,,,p.13-5
+PR-130.04,PR-130,4,Remove the flexible hose's attaching clip,,,,p.13-5
+PR-130.05,PR-130,5,Remove the bolts holding the knuckle arm to the shock absorber,,,,p.13-5
+PR-130.06,PR-130,6,"Note where the triangle mark on the mounting block sits, then remove the block's nuts and take the shock absorber assembly out",,,The mark's position is needed at refitting: it sets camber and caster.,p.13-5
+PR-130.07,PR-130,7,Hold the mounting block in a vice and loosen the lock nut a few turns,,,Do not remove the lock nut yet.,p.13-5
+PR-130.08,PR-130,8,Compress the coil spring,Compressor SP-1709.,,,p.13-5
+PR-130.09,PR-130,9,"Take off in order: lock nut and washer, mounting block and adjusting plate, seat, thrust bearing, spring upper seat, coil spring, dust boot, bound bumper",,,,p.13-6
+PR-131.01,PR-131,1,Hold the shock absorber upright and work the piston rod through its full travel four or five times,,"Strong hydraulic resistance. No resistance, or a sudden free movement, means the shock absorber is repaired.",,p.13-6
+PR-131.02,PR-131,2,Look for fluid on the outside,,None in excess; otherwise the shock absorber is repaired.,,p.13-6
+PR-131.03,PR-131,3,Clamp the reservoir tube in a vice with soft jaws,,,,p.13-6
+PR-131.04,PR-131,4,Remove the cap nut and seal assembly from the reservoir tube,Spanner SP-1464.,,,p.13-6
+PR-131.05,PR-131,5,Remove the O-ring from the piston rod guide,,,,p.13-6
+PR-131.06,PR-131,6,Pull the piston rod and pressure tube assembly out of the reservoir tube,,,Do not take the base valve off the pressure tube or the piston off the rod.,p.13-6
+PR-131.07,PR-131,7,Inspect the reservoir tube and the mounting block,,"No deformation, cracks, deterioration or damage.",,p.13-6
+PR-131.08,PR-131,8,Turn the mounting bearing,,No slackness and no abnormal noise.,,p.13-6
+PR-131.09,PR-131,9,Inspect the coil spring,,"No signs of fatigue, cracks or damage.",,p.13-6
+PR-131.10,PR-131,10,Inspect the cap nut's threads and the oil seal's lip,,"Threads sound, lip not worn or damaged.",,p.13-6
+PR-131.11,PR-131,11,Fill the reservoir tube with shock absorber fluid,SP-1462. Steps 11 to 15 are not needed with a cartridge type damper.,,,p.13-7
+PR-131.12,PR-131,12,Put the pilot over the piston rod's threads,Pilot SP-1709.,,,p.13-7
+PR-131.13,PR-131,13,Grease the oil seal's lip and pass the new cap nut over the pilot onto the piston rod,,,The cap nut and oil seal assembly is always a new one.,p.13-7
+PR-131.14,PR-131,14,"With the piston rod fully extended, nip the cap nut",,,,p.13-7
+PR-131.15,PR-131,15,Lower the piston rod fully and torque the cap nut,SP-1463.,,,p.13-7
+PR-131.16,PR-131,16,"With a cartridge type damper, torque its cap nut instead",SP-1466.,,,p.13-7
+PR-132.01,PR-132,1,Assemble the spring and the upper parts on the shock absorber in the reverse order,A thin coat of rubber grease on both sides of the thrust bearing. Piston rod to mounting block SP-1470.,The lower end of the coil spring butts against the shoulder formed in the spring seat.,,p.13-8
+PR-132.02,PR-132,2,Fit the mounting block to the car with its triangle mark where it was,Nuts SP-1471.,,"If the mounting block was replaced, the wheel alignment is adjusted, PR-115.",p.13-8
+PR-132.03,PR-132,3,Bolt the knuckle arm to the shock absorber,SP-1475; the 1985 page's figure is SP-1705.,,,p.13-8
+PR-132.04,PR-132,4,"Refit the backing plate, the caliper adaptor and the hub","Adaptor torques SP-1706, SP-1707.",,,p.13-8
+PR-132.05,PR-132,5,Set the front wheel bearing preload,PR-096.,,,p.13-8
+PR-132.06,PR-132,6,"On level ground, measure from the ground to each headlamp",,The two sides differ by no more than SP-1472.,,p.13-8
+PR-132.07,PR-132,7,"If they differ by more, fit an adjusting plate between the mounting block and the suspension tower",,,No more than SP-1708 on one side.,p.13-8
+PR-133.01,PR-133,1,"Raise the front, support it on stands and remove the front wheel",,,,p.13-8
+PR-133.02,PR-133,2,Remove the bolts holding the knuckle arm to the steering knuckle,,,,p.13-8
+PR-133.03,PR-133,3,Disconnect the tie-rod end,Puller SP-1449.,,,p.13-9
+PR-133.04,PR-133,4,Disconnect the stabilizer bar and the tension rod from the arm,,,,p.13-9
+PR-133.05,PR-133,5,Disconnect the knuckle arm from the ball joint,Puller SP-1710.,,,p.13-9
+PR-133.06,PR-133,6,Remove the suspension arm's attaching bolt and the arm,,,,p.13-9
+PR-133.07,PR-133,7,"Inspect the arm and its bushing, the ball joint's dust boot and the knuckle arm",,"No deformation, cracks, wear, flaws or damage.",,p.13-9
+PR-133.08,PR-133,8,"Hold the arm in a vice, fit the knuckle arm to the ball joint and turn the ball stud a few turns to settle it",,,,p.13-9
+PR-133.09,PR-133,9,"Hook a spring scale in the knuckle arm's tie-rod hole, steady the arm with a finger and pull",,At least SP-1503; under it the whole arm is replaced.,The arm and its ball joint do not come apart: either one defective means a new assembly.,p.13-9
+PR-133.10,PR-133,10,"To replace the arm's bushing, press the old one out toward the front and the new one in from the front",Tool SP-1711.,,No lubricant on the bushing or in the arm's bore.,p.13-10
+PR-133.11,PR-133,11,"To replace the ball joint's dust boot, take the old one off, fill the new one with lithium grease and press it on",Installer SP-1451.,,,p.13-10
+PR-133.12,PR-133,12,Refit the arm in the reverse order with its cross member bolt only lightly tightened,Ball joint to knuckle arm SP-1502; tension rod SP-1504; knuckle arm to shock absorber SP-1475. The 1985 page's figure for the first and last is SP-1705.,,,p.13-10
+PR-133.13,PR-133,13,Fit the stabilizer bar to the arm and set its nut,"SP-1510, then SP-1509.",,,p.13-10
+PR-133.14,PR-133,14,"Lower the car, bounce it a few times to settle the suspension, then torque the arm's cross member bolt",SP-1501.,,,p.13-10
+PR-134.01,PR-134,1,Raise the front and support it on stands,,,,p.13-11
+PR-134.02,PR-134,2,Remove the engine under cover,,,,p.13-11
+PR-134.03,PR-134,3,Remove the tension rods' attaching nuts and the tension rods,,,,p.13-11
+PR-134.04,PR-134,4,Disconnect both ends of the stabilizer bar from the right and left control links,,,,p.13-11
+PR-134.05,PR-134,5,Remove the stabilizer bar's support plates and rubber bushings,,,,p.13-11
+PR-134.06,PR-134,6,"Remove the right and left brackets that carry the tension rods and the stabilizer bar, with the bar",,,,p.13-11
+PR-134.07,PR-134,7,Inspect the removed parts,,"No cracks, deformation, damage or weakness.",,p.13-11
+PR-134.08,PR-134,8,Fit the brackets to the frame with the stabilizer bar and torque their bolts,SP-1507.,,,p.13-12
+PR-134.09,PR-134,9,Fit both ends of the stabilizer bar to the control links and set the nuts,"SP-1510, then SP-1509.",,,p.13-12
+PR-134.10,PR-134,10,"Fit the stabilizer's rubber bushings and support plates with each bushing's open end toward the front, bolts only nipped",,,,p.13-12
+PR-134.11,PR-134,11,"Fit each tension rod's front end to its bracket, set nut A, then torque nut B",Nut A SP-1506; nut B SP-1505. The flat face of the rubber bushing goes toward the bracket.,,,p.13-12
+PR-134.12,PR-134,12,Fit each tension rod's rear end to the suspension arm and torque its nuts,SP-1504.,,,p.13-12
+PR-134.13,PR-134,13,"Lower the car, bounce it a few times, then torque the stabilizer's support plates",SP-1508.,,,p.13-12
+PR-135.01,PR-135,1,"Raise the rear and support it under the lower link brackets, front side, on stands",,,,p.13-13
+PR-135.02,PR-135,2,Remove the rear wheel,,,,p.13-13
+PR-135.03,PR-135,3,Remove the side trim in the luggage compartment and undo the shock absorber's upper end,,,,p.13-13
+PR-135.04,PR-135,4,Undo the lower end and take the shock absorber out,,,,p.13-13
+PR-135.05,PR-135,5,Inspect the shock absorber,,"Works, quiet, no fluid leak, bushings not worn; otherwise it is replaced.",,p.13-13
+PR-135.06,PR-135,6,Fit the shock absorber and torque its lower end,SP-1482. On the left side the lower bolt goes in with its head toward the inside.,,,p.13-13
+PR-135.07,PR-135,7,Tighten the upper nut to its setting,SP-1484; torque SP-1483.,,,p.13-13
+PR-136.01,PR-136,1,"Raise the rear and support it under the lower link brackets, front sides, on stands; take the rear axle casing's weight on a jack",,,,p.13-14
+PR-136.02,PR-136,2,Remove the rear wheels,,,,p.13-14
+PR-136.03,PR-136,3,"Disconnect from the axle casing: the shock absorbers' lower ends, the lower links' rear ends, the upper links' rear ends, the stabilizer bar's front ends, and both Watt links",,,,p.13-14
+PR-136.04,PR-136,4,Lower the axle casing carefully on the jack and take out the coil springs and their rubber seats,,,,p.13-14
+PR-136.05,PR-136,5,Check each coil spring,,No cracks or damage; otherwise a new spring.,,p.13-14
+PR-136.06,PR-136,6,Fit each spring with its painted mark toward the rear axle casing,,,,p.13-14
+PR-136.07,PR-136,7,"Reconnect the links, the shock absorbers' lower ends and the Watt links with their bolts and nuts only nipped",On the left side the shock absorber's lower bolt goes in with its head toward the inside.,,,p.13-14
+PR-136.08,PR-136,8,Fit the stabilizer bar's ends and set their nuts,"SP-1498 (the page points at 13-12, the front bar's figure; the rear bar's is on 13-17).",,,p.13-14
+PR-136.09,PR-136,9,Lower the car and torque everything that was nipped,"Links SP-1488, SP-1490; Watt links SP-1493; shock absorbers SP-1482.",,,p.13-14
+PR-137.01,PR-137,1,"Raise the rear and support it under the lower link brackets, front sides, on stands; take the rear axle casing's weight on a jack",,,,p.13-15
+PR-137.02,PR-137,2,"Disconnect the right Watt link, then the left one, from the body frame",,,,p.13-15
+PR-137.03,PR-137,3,Remove the Watt link bracket's attaching nut and take the bracket off with both links,,,,p.13-15
+PR-137.04,PR-137,4,Take each link off the bracket,,,,p.13-15
+PR-137.05,PR-137,5,Inspect the removed parts,,"No cracks, deformation or damage.",,p.13-15
+PR-137.06,PR-137,6,"Refit in the reverse order, each link with its painted mark toward the front and the outside, everything only nipped",,,,p.13-15
+PR-137.07,PR-137,7,Lower the car and torque the links and the bracket,"Links at both ends SP-1493, SP-1494; bracket to axle casing SP-1492.",,,p.13-15
+PR-138.01,PR-138,1,"Raise the rear and support it under the lower link brackets, front sides, on stands; take the rear axle casing's weight on a jack",,,,p.13-16
+PR-138.02,PR-138,2,Disconnect both ends of the stabilizer bar,,,,p.13-16
+PR-138.03,PR-138,3,Remove the bar's mounting brackets if necessary,,,,p.13-16
+PR-138.04,PR-138,4,"Remove the support plates and rubber bushings, then the bar",,,,p.13-16
+PR-138.05,PR-138,5,Inspect the removed parts,,"No cracks, deformation or damage.",,p.13-16
+PR-138.06,PR-138,6,"Fit the rubber bushings and support plates with each bushing's open end toward the rear, bolts only nipped",SP-1500.,,,p.13-16
+PR-138.07,PR-138,7,Fit both ends of the bar to their brackets and set the nuts,"SP-1498, then SP-1497. Mounting brackets to the body frame SP-1499.",,,p.13-17
+PR-138.08,PR-138,8,Lower the car and torque the support plates,SP-1496.,,,p.13-17
+PR-139.01,PR-139,1,"Raise the rear and support it under the lower link brackets, front side, on stands; take the rear axle casing's weight on a jack",,,,p.13-17
+PR-139.02,PR-139,2,Remove the rear wheel,,,,p.13-17
+PR-139.03,PR-139,3,Remove the links' bolts and nuts and take the upper and lower links off,,,,p.13-17
+PR-139.04,PR-139,4,Inspect the links,,"No cracks, deformation or damage.",,p.13-17
+PR-139.05,PR-139,5,Fit the links with their bolts and nuts only nipped,The upper link's rear bolt goes in with its head toward the inside.,,,p.13-17
+PR-139.06,PR-139,6,Lower the car and torque the links' bolts and nuts,SP-1488 to SP-1491.,,,p.13-17
