@@ -1429,7 +1429,7 @@ PR-161.01,PR-161,1,Unplug the coolant level sensor and start the engine,,The coo
 PR-161.02,PR-161,2,"If it does not light, check the fuse, the bulb, the sensor unit and the harness",,,,p.15-24
 PR-161.03,PR-161,3,"Check the sensor: take it out of the radiator, plug it back in and start the engine with it clear of the body",SP-770.,The light comes on.,,p.15-24
 PR-161.04,PR-161,4,Ground the sensor's threaded part,SP-770.,The light stays on; otherwise a new sensor.,,p.15-24
-PR-161.05,PR-161,5,Remove the coolant level sensor unit and wire it to a battery with a test bulb and a switch,As the figure on p.15-25.,,,p.15-25
+PR-161.05,PR-161,5,Remove the coolant level sensor unit and wire it to a battery with a test bulb and a switch,"Drawing 47U15X-038 (read 2026-10-14): battery positive to terminal b and, through a 1.4 W test bulb, to terminal a; battery negative to terminal f, and through the switch to the middle terminal (d as drawn; the lead passes close to c - check the part). Terminals b, d, f top row, a, c, e bottom row. Good if the bulb stays dark with the switch closed and lights 9-16 s after it opens (SP-771).",,,p.15-25
 PR-161.06,PR-161,6,"Close the switch, then open it",SP-771.,The bulb stays out with the switch closed and lights SP-771 after it opens; otherwise a new unit.,,p.15-25
 PR-162.01,PR-162,1,Unplug the driver's seat belt buckle switch,,,,p.15-25
 PR-162.02,PR-162,2,Ground the harness terminal and start the engine,1985 wire colour Br; S-001 holds this car's.,BELT lights for SP-408.,,p.15-25
@@ -1442,7 +1442,7 @@ PR-163.04,PR-163,4,Check continuity from the checker connector's B wire to body 
 PR-163.05,PR-163,5,"With both good, unplug either rear combination lamp's 6-pin connector",,The stop light warning lights; otherwise a new checker.,,p.15-26
 PR-164.01,PR-164,1,Unplug the choke and check relay's 4-pin connector and ground its YL terminal (1985 colour),S-001 holds this car's.,,,p.15-26
 PR-164.02,PR-164,2,Start the engine,,The charge warning light lights.,,p.15-26
-PR-164.03,PR-164,3,Wire the relay to a battery through a switch with an ohmmeter on each contact,As the figure on p.15-26.,,,p.15-26
+PR-164.03,PR-164,3,Wire the relay to a battery through a switch with an ohmmeter on each contact,"Drawing 47U15X-044 (read 2026-10-14): one ohmmeter across each pair of contacts, the coil's two terminals to the battery through a switch; with the coil fed (switch on the negative or the positive terminal) each reading changes - one contact to continuity, the other to none (SP-1594).",,,p.15-26
 PR-164.04,PR-164,4,"Switch the coil to battery negative, then to battery positive","Each ohmmeter changes, one to continuity and one to none, as the coil is switched.",Both change; otherwise a new relay.,,p.15-26
 PR-165.01,PR-165,1,"Unplug the oil level sensor, ground its harness terminal and start the engine",SP-906.,"OIL LEVEL lights; if not, check the fuse, the bulb and the harness.",,p.15-26
 PR-165.02,PR-165,2,Check the oil level sensor with an ohmmeter while moving its float,SP-905.,"No continuity with the float up, continuity with it down; otherwise a new sensor.",,p.15-27
@@ -1485,7 +1485,7 @@ PR-171.05,PR-171,5,Paint across the break with a fine brush or drafting pen,Silv
 PR-171.06,PR-171,6,Let it dry completely,SP-399.,,Do not switch the defroster on until the paint is fully dry.,p.15-35
 PR-172.01,PR-172,1,"Unplug the power window switch and read its BL line, ignition on",,Battery voltage; none means the fuse or the harness (SP-482).,,p.15-37
 PR-172.02,PR-172,2,Check the switch connector's B line to body ground,,Continuity.,,p.15-37
-PR-172.03,PR-172,3,"Check the continuity of each switch terminal at UP, OFF and DOWN",The table on p.15-37 (not read: the OCR text scrambled it).,As the table; otherwise a new switch.,,p.15-37
+PR-172.03,PR-172,3,"Check the continuity of each switch terminal at UP, OFF and DOWN","SP-1823 (the table, read on the page image 2026-10-14).",As the table; otherwise a new switch.,,p.15-37
 PR-172.04,PR-172,4,"Unplug the window motor and put battery voltage straight on its connector, then reverse it",,The glass rises one way and lowers the other; otherwise a new motor.,"Do not short the leads to the body, and keep hands out of the door.",p.15-37
 PR-173.01,PR-173,1,Unplug the fuel-door release switch and read its LR line to ground,,Battery voltage; none means the fuse or the harness.,,p.15-38
 PR-173.02,PR-173,2,Check the switch with an ohmmeter,SP-468.,"Continuity pulled on, none off; otherwise a new switch.",,p.15-39
@@ -1505,7 +1505,7 @@ PR-176.07,PR-176,7,"Read the washer motor's L line, ignition on",SP-510.,Battery
 PR-176.08,PR-176,8,Ground the washer motor's LY line,SP-510.,The motor runs; otherwise a new washer motor.,,p.15-45
 PR-177.01,PR-177,1,"Read the rear wiper motor's L line, ignition on",SP-528.,Battery voltage; none means the fuse or the harness.,,p.15-46
 PR-177.02,PR-177,2,Put battery positive on motor terminal A and negative on B and C,SP-527.,The motor turns.,,p.15-46
-PR-177.03,PR-177,3,Check the rear wiper switch's continuity in each position,The table on p.15-46.,As the table; otherwise a new switch.,,p.15-46
+PR-177.03,PR-177,3,Check the rear wiper switch's continuity in each position,SP-1824.,As the table; otherwise a new switch.,,p.15-46
 PR-177.04,PR-177,4,"Read the rear washer motor's LB line, ignition on",SP-553.,Battery voltage; none means the fuse or the harness.,,p.15-46
 PR-177.05,PR-177,5,Ground the rear washer motor's L line,SP-554.,The motor runs; otherwise a new washer motor.,,p.15-46
 PR-178.01,PR-178,1,"Switch off the ignition and the main switch, unplug the control unit's connector and plug it into the ACC checker",,,,p.15-51
@@ -1547,7 +1547,7 @@ PR-181.10,PR-181,10,Push the cable tip through the drive mechanism's notch to it
 PR-181.11,PR-181,11,Screw the drive mechanism together and pull the pole fully out by hand,,,,p.15-78
 PR-181.12,PR-181,12,Turn the drive mechanism left until the cable has no play and engage it with the motor drive gear,,,,p.15-78
 PR-181.13,PR-181,13,"Fit the cover and bracket No.2, mount the antenna, connect it, check it works and refit the trim",,,,p.15-78
-PR-182.01,PR-182,1,Check the blower switch's continuity in each position,The table on p.15-85 (not read: the OCR text scrambled it).,As the table; otherwise a new switch.,,p.15-85
+PR-182.01,PR-182,1,Check the blower switch's continuity in each position,"SP-1825 (the table, read on the page image 2026-10-14).",As the table; otherwise a new switch.,,p.15-85
 PR-182.02,PR-182,2,Check the blower's B line to body ground,,Continuity.,,p.15-86
 PR-182.03,PR-182,3,"Unplug the blower resistor and read its LW line, ignition on",,"Battery voltage; none means the HEATER fuse, the blower motor or the harness.",,p.15-86
 PR-182.04,PR-182,4,Check continuity between the resistor's terminals a and 1,,Continuity; otherwise a new resistor.,,p.15-86
