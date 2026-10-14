@@ -12,10 +12,12 @@
  * Pins: pins.h, which is dcu_channels.teensy_pin (D-452). All 42 edge pins
  * are used; the slow lines - the DRV8962 mirror driver, the PROFETs' DEN /
  * DSEL, CAN STB and the buck's power-good - are on the TCA9539-Q1 expander
- * on Wire (18 / 19, INT 12, RESET 13), driven through tca9539.h.
+ * U12 on Wire (18 / 19, INT 12, RESET 13), and the wake request and the
+ * BTS3011TE STATUS lines on the second, U13 (Y11, D-577), through tca9539.h.
  */
 
-#define DCU_FW_VERSION "0.6.0-dev"   /* D-492 (F-018): the 4 x 3 matrix, the centre knob's modes, the mirror-defog key, the mirror select, the lights, the screen's content */
+#define DCU_FW_VERSION "0.7.0-dev"   /* D-577 / D-578 (F-019): the dash-light stage on 11 at 200 Hz, the wake request and the STATUS lines on U13, 0x300 byte 6, the level on the centre knob's held push */
+/* 0.6.0-dev: D-492 (F-018): the 4 x 3 matrix, the centre knob's modes, the mirror-defog key, the mirror select, the lights, the screen's content */
 /* 0.5.0-dev: D-465: a release only with the car stopped (0x200 road speed 0, fresh), the select dropped 1.5 s after it is raised */
 /* 0.4.0-dev: D-452 pin map: expander on Wire, fan encoder 40 / 41, CAN STB held low, DRV8962 fault clear (F-017) */
 
@@ -37,8 +39,8 @@ static_assert(sizeof PIN_SERVO / sizeof PIN_SERVO[0] == SRV_COUNT, "one pin per 
 static_assert(sizeof PIN_COMFORT / sizeof PIN_COMFORT[0] == CMF_COUNT, "one pin per comfort channel");
 static_assert(sizeof PIN_ROW / sizeof PIN_ROW[0] == PANEL_ROWS && sizeof PIN_COL / sizeof PIN_COL[0] == PANEL_COLS,
               "the matrix is 4 x 3 (D-492)");
-#define WAKE_ACTIVE HIGH            /* HIGH turns the NPN on, which turns the 12 V PMOS on (SN21);
-                                     * confirm against the wake strip's input */
+/* The wake request (SN21) is U13 P02: high turns the NPN on, which turns the 12 V
+ * PMOS on; confirm against the wake strip's input. */
 
 /* ---- commissioning values (F6) ---- */
 static stick_cal_t stick;           /* stick_defaults() until commissioned */
@@ -46,6 +48,7 @@ static const uint16_t CURRENT_ZERO = 0;   /* SN13 no-load reading */
 
 Servo         servo[SRV_COUNT];
 tca9539_t     exp_io;               /* U12 */
+tca9539_t     exp_io2;              /* U13: the wake request, the STATUS lines */
 drv_guard_t   drv;                  /* the DRV8962 behind it */
 dcu_state_t   dcu;
 panel_t       panel;
@@ -117,6 +120,7 @@ static void send_climate() {
     m.cabin_c    = dcu.cabin_c;
     m.ac_request = 0;                    /* compressor is factory (D-012) */
     m.outside_c  = outside_c;            /* SN12, blank when implausible */
+    m.dash_pct   = dash_clamp(dcu.mem.dash_pct);   /* SN31: what the stage runs at (D-577) */
     m.counter    = tx_counter_300++;
     send_frame(ID_DCU_CLIMATE, &m);
 }
@@ -203,21 +207,38 @@ static volatile uint8_t exp_int = 0;                     /* INT: an input change
 static void exp_isr() { exp_int = 1; }
 static uint32_t exp_last_read = 0, exp_last_init = 0;
 
-/* Inputs on INT or every EXP_POLL_MS; a silent expander is reset and re-tried
- * every EXP_RETRY_MS (the DRV8962 sleeps on its pull-down meanwhile). */
+/* Both expanders from a reset: the RESET line is shared, so U13 is set up
+ * after every pulse - boot, a silent U12, the DRV8962's fault clear. */
+static void exp_init_both() {
+    if (!exp_reset_init(&exp_io)) Serial.println("TCA9539 U12 silent - mirrors off, retrying");
+    if (!exp2_init(&exp_io2))     Serial.println("TCA9539 U13 silent - no wake request, retrying");
+}
+
+/* A STATUS line falling (BTS3011TE: latched over-temperature or a short).
+ * Read and reported, not acted on - which seat tripped is not told apart, and
+ * the dash stage clears itself with IN low each PWM period (confirm, S-487). */
+static void status_edges(uint16_t was, uint16_t now_in) {
+    uint16_t fell = (uint16_t)(was & ~now_in);
+    if (fell & EXP2_SEAT_STATUS) Serial.println("seat switch STATUS low (U13 P00)");
+    if (fell & EXP2_DASH_STATUS) Serial.println("dash-light stage STATUS low (U13 P03)");
+}
+
+/* Inputs on INT (wired-OR: both are read, which clears both) or every
+ * EXP_POLL_MS. A silent U12 is reset with U13 every EXP_RETRY_MS (the DRV8962
+ * sleeps on its pull-down meanwhile); a silent U13 alone is re-set-up without
+ * a reset, so the mirrors are not put to sleep for it. */
 static void exp_service(uint32_t now) {
-    if (!exp_io.ok) {
-        if (now - exp_last_init >= EXP_RETRY_MS) {
-            exp_last_init = now;
-            if (!exp_reset_init(&exp_io)) Serial.println("TCA9539 silent - mirrors off");
-        }
-        return;
+    if (now - exp_last_init >= EXP_RETRY_MS) {
+        if (!exp_io.ok) { exp_last_init = now; exp_init_both(); }
+        else if (!exp_io2.ok) { exp_last_init = now; exp2_init(&exp_io2); }
     }
     if (exp_int || now - exp_last_read >= EXP_POLL_MS) {
         exp_int = 0; exp_last_read = now;
         uint16_t was = exp_io.in;
-        if (tca_read_inputs(&exp_io) && ((was ^ exp_io.in) & EXP_PG_5V) && !(exp_io.in & EXP_PG_5V))
+        if (exp_io.ok && tca_read_inputs(&exp_io) && ((was ^ exp_io.in) & EXP_PG_5V) && !(exp_io.in & EXP_PG_5V))
             Serial.println("logic buck power-good low");
+        uint16_t was2 = exp_io2.in;
+        if (exp_io2.ok && exp2_read_inputs(&exp_io2)) status_edges(was2, exp_io2.in);
     }
 }
 
@@ -227,6 +248,7 @@ static void all_outputs_off() {
     for (int i = 0; i < 4; i++) digitalWrite(PIN_WIN[i], LOW);
     digitalWrite(PIN_REL_HATCH, LOW); digitalWrite(PIN_REL_FUEL, LOW);
     exp_write_outputs(&exp_io, 0);      /* DRV8962 asleep, every EN off, STB low */
+    exp2_write_outputs(&exp_io2, 0);    /* the wake request off */
     drv.awake = 0;
     analogWrite(PIN_BLOWER, 0);
 }
@@ -236,6 +258,7 @@ static void apply_outputs(uint32_t now) {
     for (int i = 0; i < CMF_COUNT; i++)
         digitalWrite(PIN_COMFORT[i], (ok && dcu.comfort_on[i]) ? HIGH : LOW);
     analogWrite(PIN_BLOWER, (int)blower_duty_pct(dcu.mem.blower) * 255 / 100);
+    analogWrite(PIN_DASH, dash_pwm(dcu.mem.dash_pct));       /* SN31; re-muxes the pin after a sleep */
 
     int i = servo_seq_step(&servo_seq, dcu.mem.cal, now);   /* one servo at a time (D-379) */
     if (i >= 0) {
@@ -251,7 +274,9 @@ static void col_isr() { key_woke = 1; }
 
 static void dcu_sleep() {
     all_outputs_off();
-    digitalWrite(PIN_WAKE, !WAKE_ACTIVE);
+    pinMode(PIN_DASH, INPUT);           /* the stage's IN left to its 10 kOhm pull-up: full, as
+                                         * in a reset, and no PWM to clock at 24 MHz - O20 is off
+                                         * with the PMU asleep, so the lamps are dark anyway */
     is31_reg(LED_PANEL_ADDR, IS3236_SHUTDOWN, 0x00);   /* both LED drivers into shutdown;
                                                          * re-initialised on the way back */
     is31_reg(LED_PLATE_ADDR, IS3218_SHUTDOWN, 0x00);
@@ -290,8 +315,9 @@ void setup() {
                          PIN_WIN[0], PIN_WIN[1], PIN_WIN[2], PIN_WIN[3], PIN_REL_HATCH, PIN_REL_FUEL,
                          PIN_BLOWER };
     for (int p : outs) { pinMode(p, OUTPUT); digitalWrite(p, LOW); }
-    pinMode(PIN_WAKE, OUTPUT); digitalWrite(PIN_WAKE, !WAKE_ACTIVE);
     analogWriteFrequency(PIN_BLOWER, 25000);
+    analogWriteFrequency(PIN_DASH, DASH_PWM_HZ);   /* QuadTimer1 ch 2 - pin 10's ch 0 keeps 25 kHz */
+    analogWrite(PIN_DASH, dash_pwm(DASH_PCT_MAX)); /* full until the memory is read, as in a reset */
     for (int k = 0; k < PANEL_ROWS; k++) pinMode(PIN_ROW[k], INPUT);
     for (int c = 0; c < PANEL_COLS; c++) pinMode(PIN_COL[c], INPUT_PULLUP);
     pinMode(PIN_JOY_PRESS, INPUT_PULLUP);
@@ -316,7 +342,7 @@ void setup() {
                                          * (confirm on the bench); was 400 kHz, expander only */
     pinMode(PIN_EXP_INT, INPUT_PULLUP); /* open drain, pulled up on the carrier as well */
     exp_last_init = millis();
-    if (!exp_reset_init(&exp_io)) Serial.println("TCA9539 silent - mirrors off, retrying");
+    exp_init_both();
     attachInterrupt(digitalPinToInterrupt(PIN_EXP_INT), exp_isr, FALLING);
     lights.t_init = millis();
     if (!lights_init_panel(&lights)) Serial.println("panel LED driver (0x3C) silent - retrying");
@@ -346,11 +372,13 @@ void loop() {
     if (pressed) last_activity = now;
     digitalWrite(PIN_REL_HATCH, panel.rel_sel == PK_HATCH     ? HIGH : LOW);
     digitalWrite(PIN_REL_FUEL,  panel.rel_sel == PK_FUEL_DOOR ? HIGH : LOW);
-    digitalWrite(PIN_WAKE, panel.wake_req ? WAKE_ACTIVE : !WAKE_ACTIVE);
+    exp2_write_outputs(&exp_io2, panel.wake_req ? EXP2_WAKE : 0);   /* SN21 on U13 P02 (D-577) */
     panel_keys_t pk;
     if (dcu.pmu_alive && panel_frame_due(&keys_tx, down, held, now, &pk)) send_frame(ID_PANEL_KEYS, &pk);
 
-    /* knobs and climate keys: the centre knob's modes, the seat knobs (D-492) */
+    /* knobs and climate keys: the centre knob's modes, the seat knobs (D-492);
+     * its push held a second sets the dash-light level (D-578) */
+    knob_hold(&knob, held, now);
     panel_apply(&dcu, &knob, pressed, enc_take(ENC_CENTRE),
                 enc_take(ENC_SEAT_DRV), enc_take(ENC_SEAT_PASS), now);
     mirror_defog_step(&mdefog, &dcu, pressed, now);         /* its own key (D-492) */
@@ -369,6 +397,7 @@ void loop() {
     light_in.seat_drv        = seat_pos(&dcu.mem, 0);
     light_in.seat_pass       = seat_pos(&dcu.mem, 2);
     light_in.wink_l = light_in.wink_r = 0;                  /* the PMU's A8 export, F-009 */
+    light_in.dash_pct        = dcu.mem.dash_pct;            /* one level with the lamps (D-577) */
     lights_step(&light_in, &light_out);
     lights_write(&lights, &light_out, now);
     dcu.bus_current_ca = comfort_current_ca((uint16_t)analogRead(PIN_CURRENT), CURRENT_ZERO);
@@ -388,7 +417,7 @@ void loop() {
     if (drv_guard_step(&drv, nfault, body, axis == AXIS_NONE, now) == DRV_CLEAR) {
         Serial.println("DRV8962 fault - cleared through the expander reset");
         exp_last_init = now;
-        exp_reset_init(&exp_io);
+        exp_init_both();                /* the reset is U13's too: the wake request re-set-up */
     }
     uint8_t live = (uint8_t)(exp_io.ok && drv_live(&drv, now));
     mirror_step(&mirror, pressed, axis, dir, (uint8_t)(body && live), now, &mo);

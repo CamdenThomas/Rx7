@@ -27,8 +27,13 @@
 static const int PIN_SERVO[3]   = { 2, 3, 4 };       /* SN15 mode · blend · recirc (climate.h order) */
 static const int PIN_COMFORT[5] = { 5, 6, 7, 8, 9 }; /* SN16 seat heat DRV · PASS, seat cool DRV · PASS
                                                       * (BTS3011TE low side) · mirror heat IN (BTT6050) */
-static const int PIN_BLOWER      = 10;               /* SN14, PWM 25 kHz, own timer */
-static const int PIN_WAKE        = 11;               /* SN21, NPN into a 12 V PMOS -> DP-DCU 6 */
+static const int PIN_BLOWER      = 10;               /* SN14, PWM 25 kHz, QuadTimer1 channel 0 */
+static const int PIN_DASH        = 11;               /* SN31, the dash-light stage's IN, PWM 200 Hz on
+                                                      * QuadTimer1 channel 2 - its own prescaler and
+                                                      * compare, so pin 10's 25 kHz is not touched
+                                                      * (the core's pwm.c table, confirm on the bench);
+                                                      * 10 kOhm to 3V3: lamps at full in a reset (D-577).
+                                                      * The wake request (SN21) was here: U13 P02 now */
 static const int PIN_EXP_INT     = 12;               /* SN17, TCA9539 INT, open drain, pulled up */
 static const int PIN_EXP_RESET   = 13;               /* SN17, TCA9539 RESET, active low, pulled down
                                                       * (also the Teensy's LED: it lights while released) */
@@ -84,11 +89,26 @@ static const int PIN_CENTRE_PUSH = 34;               /* SN20, ribbon 11: the cen
 #define EXP_MH_DEN         EXP_P(1, 4)   /* BTT6050 diagnosis enable - IS unread */
 #define EXP_CAN_STB        EXP_P(1, 5)   /* TCAN1042 STB: low = normal; R8 holds it low through a reset */
 #define EXP_PG_5V          EXP_P(1, 6)   /* input, the logic buck's power-good */
-#define EXP_P17            EXP_P(1, 7)   /* input. D-452 calls it spare; the sheet wires the four
-                                          * BTS3011TE STATUS pins to it (SEAT_STATUS) - read, not
-                                          * acted on, until the record names it (confirm) */
+#define EXP_P17            EXP_P(1, 7)   /* the A/C clutch stage's IN (SN28, U14, DNP until engine
+                                          * 02.15 (b)): an output, held low - nothing raises it
+                                          * (Y11 moved SEAT_STATUS to U13 P00) */
 
-#define EXP_INPUTS   ((uint16_t)(EXP_MIR_NFAULT | EXP_PG_5V | EXP_P17))
+#define EXP_INPUTS   ((uint16_t)(EXP_MIR_NFAULT | EXP_PG_5V))
 #define EXP_OUTPUTS  ((uint16_t)~EXP_INPUTS)
+
+/* ------------------------- the second TCA9539-Q1 (U13, Y11, D-577) -------------------------
+ * 0x75 (A0 high, A1 low), on the same Wire, INT (wired-OR, R53) and RESET (R54)
+ * as U12: a reset holds both expanders' ports as inputs. dcu_channels: SN16
+ * "SEAT_STATUS on U13 P00", SN30 "the radar alert on P01" (DNP), SN21 "the wake
+ * request on U13 P02", SN31 "STATUS to U13 P03". The other ports are left inputs. */
+#define EXP2_SEAT_STATUS   EXP_P(0, 0)   /* input, the four seat BTS3011TE STATUS, wired-OR, low
+                                          * = one latched over-temperature (which is not told) */
+#define EXP2_RADAR         EXP_P(0, 1)   /* input, the radar alert (SN30, DNP until Z-002)  */
+#define EXP2_WAKE          EXP_P(0, 2)   /* output, the wake request: NPN base, pulled down, so
+                                          * no request while U13 is held in reset            */
+#define EXP2_DASH_STATUS   EXP_P(0, 3)   /* input, the dash-light stage's STATUS, own pull-up */
+
+#define EXP2_OUTPUTS ((uint16_t)EXP2_WAKE)
+#define EXP2_INPUTS  ((uint16_t)~EXP2_OUTPUTS)
 
 #endif /* DCU_PINS_H */

@@ -28,8 +28,9 @@
 /* Bump on every change that alters behaviour; log it in bringup_log and tag the
  * commit. Printed over serial at boot. ICU_FW_NUM is the same version for the link's
  * INFO record (LL03): major*10000 + minor*100 + patch. */
-#define ICU_FW_VERSION "0.6.0-dev"   /* the log link: the card's three logs, Serial2 at 921600, the file side of log_link (BT3) */
-#define ICU_FW_NUM     600
+#define ICU_FW_VERSION "0.7.0-dev"   /* D-577 (F-019): the backlight follows the dash - IC14 on A7, the level from 0x300 byte 6 */
+/* 0.6.0-dev: the log link: the card's three logs, Serial2 at 921600, the file side of log_link (BT3) */
+#define ICU_FW_NUM     700
 
 #include <SD.h>
 #include "cluster_core.h"
@@ -38,6 +39,10 @@
 #include "radio_link.h"
 #include "log_link.h"
 #include "log_store.h"
+#include "can_map.h"
+#include "dimming.h"
+
+static const int PIN_IC14 = 21;  /* icu_channels IC14: A7, the O20 reference through its divider */
 
 EXTMEM Framebuffer fb;          /* 614 KB — PSRAM only */
 Cluster      cluster;
@@ -143,6 +148,18 @@ ll_rx_t      rx;
 radio_bat_t  g_bat;
 uint32_t     g_bat_ms = 0;
 bool         g_have_bat = false;
+dim_t        g_dim = {};         /* the backlight (dimming.h, D-577) */
+
+/* Every 0x300 the ICU receives comes here once CAN is wired (F14): the dash level. */
+void on_dcu_climate(const dcu_climate_t &m) { dim_on_frame(&g_dim, m.dash_pct); }
+
+/* IC14 read and the backlight written, only on a change. */
+static void dim_service() {
+    static uint8_t sent = DIM_PWM_FULL;
+    dim_on_ic14(&g_dim, (uint16_t)analogRead(PIN_IC14));
+    uint8_t duty = dim_duty(&g_dim);
+    if (display.ok && duty != sent) { display.wr8(REG_PWM_DUTY, duty); sent = duty; }
+}
 
 static uint8_t s2_tx[4096];   /* a whole credit window of DATA queues without blocking */
 static uint8_t s2_rx[1024];
@@ -237,6 +254,8 @@ void setup() {
     else
         Serial.println("BT817: no answer on SPI — running headless");
 
+    analogReadResolution(12);               /* IC14 (dimming.h's thresholds are 12-bit) */
+
     /* the radio link (D-493: 921600) and the card */
     Serial2.addMemoryForWrite(s2_tx, sizeof s2_tx);
     Serial2.addMemoryForRead(s2_rx, sizeof s2_rx);
@@ -312,7 +331,8 @@ void loop() {
         if (now - tSec >= 1000) tSec = now;
         tracker.tick(state, now);
         log_thin_t r;
-        thin.finish(now, odo_x10(), 0 /* IC14 not read yet */, (uint8_t)cluster.page, &r);
+        dim_service();                       /* IC14 and the backlight, once a second */
+        thin.finish(now, odo_x10(), dim_pct(&g_dim), (uint8_t)cluster.page, &r);
         store.add_second(r);
     }
     if (now - tSum >= LOG_SUMMARY_MS) {      /* the summary, every minute */

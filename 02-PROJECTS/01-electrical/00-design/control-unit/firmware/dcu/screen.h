@@ -20,7 +20,8 @@
  *   SCR_TEMP  the set temperature alone, large   (the knob turned, setting it)
  *   SCR_FAN   the fan bars alone                 (after a push)
  *   SCR_MODE  the mode word alone                (after the fan-mode key)
- * The page follows the centre knob (panel.h knob_t): FAN and MODE while it sets
+ *   SCR_DASH  the dash-light level alone, "10".."100" (after the push held, D-578)
+ * The page follows the centre knob (panel.h knob_t): FAN, MODE and DASH while it sets
  * them, TEMP while the temperature was turned within SCREEN_REST_MS, REST once
  * the knob has rested that long. A field not on the page is empty ("" or -1).
  * Units (°C) and the bars' drawing are the renderer's; the strings carry the
@@ -37,7 +38,7 @@
 #include "climate.h"
 #include "panel.h"
 
-enum { SCR_REST = 0, SCR_TEMP, SCR_FAN, SCR_MODE };
+enum { SCR_REST = 0, SCR_TEMP, SCR_FAN, SCR_MODE, SCR_DASH };
 
 typedef struct {
     uint8_t page;          /* SCR_*                                                    */
@@ -47,6 +48,7 @@ typedef struct {
     char    mode[8];       /* "VENT" / "HEAT" / "DEFROST"; "" when not on the page     */
     char    outside[5];    /* outside air, "-40".."85"; "--" when the sensor is blank;
                             * "" when not on the page                                  */
+    char    dash[4];       /* the dash-light level, % - "" when not on the page        */
 } screen_t;
 
 static inline const char *mode_word(uint8_t mode)
@@ -64,6 +66,7 @@ static inline uint8_t screen_page(const knob_t *k)
 {
     if (k->mode == KNOB_FAN)  return SCR_FAN;
     if (k->mode == KNOB_MODE) return SCR_MODE;
+    if (k->mode == KNOB_DASH) return SCR_DASH;
     return k->temp_active ? SCR_TEMP : SCR_REST;
 }
 
@@ -83,6 +86,8 @@ static inline void screen_build(screen_t *s, const knob_t *k, const climate_mem_
         s->fan_bars = (int8_t)b;
     if (s->page == SCR_REST || s->page == SCR_MODE)
         snprintf(s->mode, sizeof s->mode, "%s", mode_word(m->mode));
+    if (s->page == SCR_DASH)
+        snprintf(s->dash, sizeof s->dash, "%u", (unsigned)dash_clamp(m->dash_pct));
     if (s->page == SCR_REST) {
         if (outside_c == TEMP_INVALID) snprintf(s->outside, sizeof s->outside, "--");
         else snprintf(s->outside, sizeof s->outside, "%d", (int)outside_c);

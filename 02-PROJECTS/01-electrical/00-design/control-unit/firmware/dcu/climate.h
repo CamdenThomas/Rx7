@@ -49,6 +49,21 @@ static inline uint8_t blower_duty_pct(uint8_t level)
     return (uint8_t)((level * 100u + 1u) / 3u);   /* 0, 33, 67, 100 */
 }
 
+/* ------------- the dash-light level (SN31, D-577, D-578) -------------
+ * One level for the dash lamps (the stage on pin 11), the panel's own lights
+ * (lights.h) and the Display Unit (0x300 byte 6). Set from the centre knob
+ * after a one-second hold of its push (panel.h); kept in the climate memory,
+ * so it survives a sleep and a key cycle. Never below DASH_PCT_MIN: the knob
+ * cannot put the dash out at night. */
+#define DASH_PCT_MAX     100      /* full - the default and what a reset gives (D-577) */
+#define DASH_PCT_MIN      10      /* confirm on the car: the dimmest still readable    */
+#define DASH_PCT_STEP      5      /* a detent; 19 detents from dimmest to full         */
+
+static inline uint8_t dash_clamp(int pct)
+{
+    return (uint8_t)(pct < DASH_PCT_MIN ? DASH_PCT_MIN : (pct > DASH_PCT_MAX ? DASH_PCT_MAX : pct));
+}
+
 /* ------------- persistent state (mirrors the SD file) ------------- */
 typedef struct {
     uint8_t  mode;         /* climate_mode_t                  */
@@ -57,6 +72,9 @@ typedef struct {
     uint8_t  recirc;       /* 0 fresh, 1 recirc               */
     uint8_t  seat_heat;    /* b0-1 drv level, b2-3 pass       */
     uint8_t  seat_cool;    /* b0-1 drv, b2-3 pass             */
+    uint8_t  dash_pct;     /* the dash-light level, DASH_PCT_MIN..100 (D-578); a file
+                            * from before it is the wrong size and loads the defaults */
+    uint8_t  _pad;
     servo_cal_t cal[SRV_COUNT];
     uint32_t crc;
 } climate_mem_t;
@@ -149,7 +167,7 @@ static inline uint32_t mem_crc(const climate_mem_t *m)
 static inline void mem_defaults(climate_mem_t *m)
 {
     memset(m, 0, sizeof *m);
-    m->mode = CLIM_VENT; m->target_c = 21;
+    m->mode = CLIM_VENT; m->target_c = 21; m->dash_pct = DASH_PCT_MAX;
     for (int i = 0; i < SRV_COUNT; i++) { m->cal[i].us_min = 1000; m->cal[i].us_max = 2000; }
 }
 

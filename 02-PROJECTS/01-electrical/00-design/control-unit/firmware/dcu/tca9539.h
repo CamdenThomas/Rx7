@@ -14,8 +14,10 @@
  *
  * Owns (R6), from 02-PROJECTS/01-electrical/data:
  *   dcu_channels   SN17 (DRV8962 on P00-P10, INT 12, RESET 13), SN22 / SN16 (DEN,
- *                  DSEL on P11-P14), SN26 (STB on P15), SN24 (power-good on P16)
- * Rulings: D-360, D-379, D-452.
+ *                  DSEL on P11-P14), SN26 (STB on P15), SN24 (power-good on P16),
+ *                  SN28 (P17, held low); on U13 (0x75, Y11): SN16 SEAT_STATUS P00,
+ *                  SN30 radar P01, SN21 wake P02, SN31 dash STATUS P03
+ * Rulings: D-360, D-379, D-452, D-577.
  *
  * TCA9539 registers (TI datasheet): input 0x00 / 0x01, output 0x02 / 0x03,
  * polarity 0x04 / 0x05, configuration 0x06 / 0x07 (1 = input). After a
@@ -39,6 +41,7 @@ void    exp_hal_delay_us(uint32_t us);
 /* A0 (pin 21) and A1 (pin 2) are tied to GND on the sheet, which is 0x74.
  * No record row states the strap: confirm when dcu_channels names it.     */
 #define TCA9539_ADDR        0x74
+#define TCA9539_ADDR2       0x75      /* U13: A0 high, A1 low (SN17's Y11 note) */
 
 #define TCA_REG_INPUT0      0x00
 #define TCA_REG_OUTPUT0     0x02
@@ -68,22 +71,27 @@ typedef struct {
 
 /* A register pair in one transaction: the TCA9539 moves to the pair's other
  * register after the first data byte. */
-static inline uint8_t tca_write16(tca9539_t *x, uint8_t reg, uint16_t v)
+static inline uint8_t tca_write16_at(tca9539_t *x, uint8_t addr, uint8_t reg, uint16_t v)
 {
     const uint8_t b[3] = { reg, (uint8_t)(v & 0xFF), (uint8_t)(v >> 8) };
-    uint8_t ack = exp_hal_write(TCA9539_ADDR, b, 3);
+    uint8_t ack = exp_hal_write(addr, b, 3);
     if (!ack) x->ok = 0;
     return ack;
 }
+static inline uint8_t tca_write16(tca9539_t *x, uint8_t reg, uint16_t v)
+{
+    return tca_write16_at(x, TCA9539_ADDR, reg, v);
+}
 
-/* Reads both input ports, which also clears INT. */
-static inline uint8_t tca_read_inputs(tca9539_t *x)
+/* Reads both input ports, which also clears that expander's INT. */
+static inline uint8_t tca_read_inputs_at(tca9539_t *x, uint8_t addr)
 {
     uint8_t b[2] = { 0, 0 };
-    if (!exp_hal_read(TCA9539_ADDR, TCA_REG_INPUT0, b, 2)) { x->ok = 0; return 0; }
+    if (!exp_hal_read(addr, TCA_REG_INPUT0, b, 2)) { x->ok = 0; return 0; }
     x->in = (uint16_t)(b[0] | (b[1] << 8));
     return 1;
 }
+static inline uint8_t tca_read_inputs(tca9539_t *x) { return tca_read_inputs_at(x, TCA9539_ADDR); }
 
 /* Boot, a silent expander, and the DRV8962's latched over-current all come
  * here: RESET pulsed, outputs written low (nSLEEP low, every EN off, STB low
@@ -126,6 +134,32 @@ static inline uint8_t exp_write_outputs(tca9539_t *x, uint16_t next)
     x->out = next;
     return 1;
 }
+
+/* ------------------------- the second expander (U13, Y11, D-577) -------------------------
+ * It shares U12's RESET, so every exp_reset_init() - boot, a silent U12, the
+ * DRV8962's fault clear - leaves U13 all inputs too: the host calls exp2_init()
+ * after each one. No reset of its own: pulsing RESET for U13 would put the
+ * DRV8962 to sleep. Its one output is the wake request (EXP2_WAKE); its inputs
+ * are read with U12's, on the shared INT or the poll. */
+static inline uint8_t exp2_init(tca9539_t *x)
+{
+    x->ok = 1;
+    x->out = 0;
+    tca_write16_at(x, TCA9539_ADDR2, TCA_REG_OUTPUT0, 0);     /* the wake request off first */
+    tca_write16_at(x, TCA9539_ADDR2, TCA_REG_POLARITY0, 0);
+    tca_write16_at(x, TCA9539_ADDR2, TCA_REG_CONFIG0, EXP2_INPUTS);
+    tca_read_inputs_at(x, TCA9539_ADDR2);
+    return x->ok;
+}
+static inline uint8_t exp2_write_outputs(tca9539_t *x, uint16_t next)
+{
+    next &= EXP2_OUTPUTS;
+    if (next == x->out) return 1;
+    if (!tca_write16_at(x, TCA9539_ADDR2, TCA_REG_OUTPUT0, next)) return 0;
+    x->out = next;
+    return 1;
+}
+static inline uint8_t exp2_read_inputs(tca9539_t *x) { return tca_read_inputs_at(x, TCA9539_ADDR2); }
 
 /* ------------------------- the DCU's word ------------------------- */
 static inline uint16_t hb_bits(uint8_t hb, uint16_t in, uint16_t en)

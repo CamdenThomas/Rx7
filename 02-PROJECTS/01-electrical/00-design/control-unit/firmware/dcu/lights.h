@@ -15,12 +15,14 @@
  *                    driver and its five symbol LEDs)
  *   panel_ribbon     22 / 24 the I2C pair, 26 +5V_PNL the LED anodes
  *   can_fields       0x100 byte 3 (headlight state), 0x120 O4 (the rear defogger)
+ *   dcu_channels     SN31 the dash-light stage's PWM (dash_pwm, D-577)
  *   ideas            I-001, I-004, I-005, I-006 (what glows when), kept by D-492
  *
  * The rules (D-458 as D-492 amends it; I-004, I-005):
  *   - the knob's ring, the four key symbols, the two window symbols and the two
  *     seat symbols glow only with the lights on - 0x100 byte 3 PARK or HEAD on a
- *     live PMU, as the dash is lit (L3-S1 8) - at the dimmed backlight level;
+ *     live PMU, as the dash is lit (L3-S1 8) - at the backlight level, which
+ *     follows the dash-light level the DCU's own stage runs at (D-577);
  *   - a key's symbol is at full whenever its function is on, lights or not:
  *     rear defog (O4 in a fresh 0x120), mirror defog, recirculate, and the
  *     fan-mode key while the centre knob sets the mode;
@@ -67,6 +69,7 @@
 #include <stdint.h>
 #include <string.h>
 #include "can_map.h"
+#include "climate.h"
 
 /* ------------------------- the drivers ------------------------- */
 #define LED_PANEL_ADDR     0x3C   /* IS31FL3236A, AD to GND (P192, panel_ribbon 22) */
@@ -109,10 +112,26 @@
 
 /* ------------------------- levels (PWM, 0-255) ------------------------- */
 #define LIGHT_FULL         255    /* a function on, a seat level; confirm on the faceplate */
-#define LIGHT_BACK          40    /* confirm: "dimmed with the dash" (D-458, D-462). The
-                                   * dash dimmer's duty (O20) is not on CAN, so the DCU
-                                   * cannot follow the knob: a fixed night level until
-                                   * the PMU exports it                                  */
+#define LIGHT_BACK          40    /* the backlight with the dash at full; confirm against
+                                   * the dash lamps on the faceplate (D-458, D-462). It
+                                   * dims with the dash-light level (D-577): light_back() */
+
+/* The backlight at a dash-light level: LIGHT_BACK scaled by the level, never
+ * below 1 while the lights are on - one setting for the lamps and the panel. */
+static inline uint8_t light_back(uint8_t dash_pct)
+{
+    uint16_t v = (uint16_t)((LIGHT_BACK * (uint16_t)dash_clamp(dash_pct) + 50) / 100);
+    return (uint8_t)(v ? v : 1);
+}
+
+/* The dash-light stage's PWM (SN31): analogWrite's 8-bit value for a level, IN
+ * high = the lamps' return sunk = lit. 100 % is 255, held high. */
+#define DASH_PWM_HZ        200    /* invisible on filament bulbs, slow beside the
+                                   * BTS3011TE's edges (confirm against S-487)     */
+static inline uint8_t dash_pwm(uint8_t dash_pct)
+{
+    return (uint8_t)(((uint16_t)dash_clamp(dash_pct) * 255u + 50u) / 100u);
+}
 
 typedef struct {
     uint8_t pmu_alive;             /* 0x100's counter advancing                      */
@@ -124,6 +143,7 @@ typedef struct {
     uint8_t fan_mode_active;       /* the centre knob sets the mode (KNOB_MODE)      */
     int8_t  seat_drv, seat_pass;   /* -3 .. +3, seat_pos() (panel.h)                 */
     uint8_t wink_l, wink_r;        /* pressed - 0 until the PMU exports A8 (F-009)   */
+    uint8_t dash_pct;              /* the dash-light level, climate memory (D-577)  */
 } lights_in_t;
 
 typedef struct {
@@ -151,7 +171,7 @@ static inline void seat_arc(uint8_t *arc, int8_t pos)
 static inline void lights_step(const lights_in_t *in, lights_out_t *out)
 {
     memset(out, 0, sizeof *out);
-    uint8_t back  = lights_on(in) ? LIGHT_BACK : 0;
+    uint8_t back  = lights_on(in) ? light_back(in->dash_pct) : 0;
     uint8_t awake = (uint8_t)(in->pmu_alive && in->key_pos != KEY_OFF);
     uint8_t *p = out->panel;
 

@@ -21,7 +21,8 @@
  *                    mirror select), I-003 (the seat knob), kept by D-492
  * Rulings: D-355 D-359 (luxury), D-360 D-363 D-369 D-370 D-379, the behaviour
  * choices of D-442 as D-492 amends them, D-465 / D-484 (a release only with the
- * car stopped, the select dropped after 1.5 s), D-492 (the control set).
+ * car stopped, the select dropped after 1.5 s), D-492 (the control set), D-578
+ * (the dash-light level on the centre knob, held push).
  *
  * Every number marked `confirm` is a bench or car figure nobody has measured
  * (R11); F6 commissions it.
@@ -300,6 +301,11 @@ static inline void seat_set(climate_mem_t *m, uint8_t shift, int pos)
  * MODE: the push always means fan, the key always means mode, a second of the
  * same goes home. Each press restarts the rest, so a push not followed by a
  * turn returns to TEMP after the same KNOB_REST_MS.
+ *   DASH  after the push is held KNOB_DASH_HOLD_MS (D-578) - the dash-light
+ *         level, DASH_PCT_STEP a detent, DASH_PCT_MIN..100 (climate.h), shown
+ *         on the screen; back to TEMP after the same KNOB_REST_MS. The push's
+ *         press still means fan, so a hold shows the fan for its first second
+ *         and then the level; a push in DASH is a fan push like any other.
  * The screen reads knob_t: mode is what the knob sets now, temp_active that
  * the temperature was turned within SCREEN_REST_MS (screen.h).              */
 #define KNOB_REST_MS     3000     /* confirm: I-001 "until you don't adjust for a moment";
@@ -310,13 +316,28 @@ static inline void seat_set(climate_mem_t *m, uint8_t shift, int pos)
 #define TEMP_MAX_C         30
 #define FAN_LEVELS          3     /* blower 0 (off) .. 3, D-442 */
 
-enum { KNOB_TEMP = 0, KNOB_FAN, KNOB_MODE };
+#define KNOB_DASH_HOLD_MS  KEY_HELD_MS   /* D-578: "hold its push for one second" - the 0x400
+                                          * held bit's own second, so the two agree */
+
+enum { KNOB_TEMP = 0, KNOB_FAN, KNOB_MODE, KNOB_DASH };
 
 typedef struct {
     uint8_t  mode;                /* KNOB_* : what a detent sets now              */
     uint8_t  temp_active;         /* the temperature turned, not yet rested       */
     uint32_t t_last;              /* the last detent or press                     */
+    uint8_t  push_held;           /* the push's held bit last scan (knob_hold)    */
 } knob_t;
+
+/* The push held KNOB_DASH_HOLD_MS: the knob sets the dash-light level (D-578).
+ * held: panel_keys_step's held bits, which the debounced push carries once it
+ * has been down KEY_HELD_MS. On the bit's rise only, so a push kept down goes
+ * to DASH once and the rest is timed from there. Call before panel_apply. */
+static inline void knob_hold(knob_t *k, uint16_t held, uint32_t now)
+{
+    uint8_t h = (uint8_t)((held & PK_CENTRE_PUSH) != 0);
+    if (h && !k->push_held) { k->mode = KNOB_DASH; k->temp_active = 0; k->t_last = now; }
+    k->push_held = h;
+}
 
 /* The knob's mode for this scan. pressed: the debounced key edges (PK_CENTRE_PUSH,
  * PK_FAN_MODE); detents: signed, since the last call. */
@@ -369,6 +390,9 @@ static inline void panel_apply(dcu_state_t *s, knob_t *k, uint16_t pressed,
     case KNOB_MODE:
         for (; centre > 0; centre--) s->mem.mode = mode_turn(s->mem.mode, +1);
         for (; centre < 0; centre++) s->mem.mode = mode_turn(s->mem.mode, -1);
+        break;
+    case KNOB_DASH:
+        s->mem.dash_pct = dash_clamp((int)dash_clamp(s->mem.dash_pct) + centre * DASH_PCT_STEP);
         break;
     }
     mode_to_servos(s);

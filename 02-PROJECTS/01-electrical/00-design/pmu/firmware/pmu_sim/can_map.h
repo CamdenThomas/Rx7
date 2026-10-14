@@ -270,7 +270,8 @@ typedef struct __attribute__((packed)) {
     int8_t  cabin_c;        /* degC, plain signed, no offset */
     uint8_t ac_request;     /* the A/C request to the ECU, which owns the clutch (engine D-489); 0 until the swap (D-211) */
     int8_t  outside_c;      /* degC; TEMP_INVALID until read */
-    uint8_t _rsv;
+    uint8_t dash_pct;       /* the dash-light level, % 0..100, 100 = full (SN31, D-577):
+                             * the Display Unit dims to it while IC14 reads on */
     uint8_t counter;
 } dcu_climate_t;
 

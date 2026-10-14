@@ -12,7 +12,10 @@
  * the logic rows' terms the DCU supplies over 0x400, from logic_vectors.h; and
  * F-018 (D-492): the centre knob's modes and their rest, the fan-mode key, the
  * seat knobs, the mirror select, the mirror-defog key, the window switches as
- * paired contacts, the lights (lights.h) and the screen's pages (screen.h).
+ * paired contacts, the lights (lights.h) and the screen's pages (screen.h); F-019
+ * (D-577, D-578): the dash-light level - its PWM, the backlight with it, the
+ * held push on the centre knob, the screen - and the second expander U13 with
+ * the wake request and the STATUS lines.
  *
  * Build (g++ on PATH):
  *   g++ test_dcu.cpp -o test_dcu -std=c++17 -O2 -I../control-unit/firmware/dcu && ./test_dcu
@@ -47,7 +50,7 @@ uint8_t lights_hal_write(uint8_t addr, const uint8_t *buf, uint8_t n) {
  * records what each PIN is: an output port drives its register bit, an
  * input port floats to what is on it - nSLEEP (R35) and STB (R8) pulled
  * down, the DRV8962's IN / EN and the PROFETs' DEN / DSEL on their internal
- * pull-downs; nFAULT (R36), power-good (R3) and P17 (R58) pulled up. */
+ * pull-downs; nFAULT (R36) and power-good (R3) pulled up; P17 (SN28's IN) on R60. */
 struct ExpModel {
     uint16_t out = 0xFFFF, pol = 0, cfg = 0xFFFF, in = 0xFFFF;
     bool nack = false, in_reset = false;
@@ -55,40 +58,51 @@ struct ExpModel {
     std::vector<uint8_t> regs_written;           /* the register byte of each write */
     std::vector<uint16_t> pins;                  /* pin levels after each transaction */
 };
-static ExpModel g_exp;
-static uint16_t exp_pin_levels() {
-    const uint16_t pulled_down = EXP_OUTPUTS;
-    uint16_t floating = (uint16_t)(g_exp.in_reset ? 0xFFFF : g_exp.cfg);
-    uint16_t driven = (uint16_t)(g_exp.out & ~floating);
+static ExpModel g_exp;                           /* U12, 0x74                          */
+static ExpModel g_exp2;                          /* U13, 0x75 (Y11): the same RESET line,
+                                                  * the wake request pulled down (NPN base) */
+static uint16_t exp_pin_levels_of(const ExpModel &x, uint16_t pulled_down) {
+    uint16_t floating = (uint16_t)(x.in_reset ? 0xFFFF : x.cfg);
+    uint16_t driven = (uint16_t)(x.out & ~floating);
     return (uint16_t)(driven | (floating & ~pulled_down));
 }
+static uint16_t exp_pin_levels()  { return exp_pin_levels_of(g_exp, EXP_OUTPUTS); }
+static uint16_t exp2_pin_levels() { return exp_pin_levels_of(g_exp2, EXP2_OUTPUTS); }
+static ExpModel *exp_at(uint8_t addr) {
+    return addr == TCA9539_ADDR ? &g_exp : addr == TCA9539_ADDR2 ? &g_exp2 : nullptr;
+}
 uint8_t exp_hal_write(uint8_t addr, const uint8_t *buf, uint8_t n) {
-    if (g_exp.nack || g_exp.in_reset || addr != TCA9539_ADDR || n < 1) return 0;
+    ExpModel *x = exp_at(addr);
+    if (!x || x->nack || x->in_reset || n < 1) return 0;
     uint8_t reg = buf[0];
-    g_exp.regs_written.push_back(reg);
+    x->regs_written.push_back(reg);
     for (uint8_t i = 1; i < n; i++) {
         uint8_t r = (uint8_t)((reg & 0xFE) | ((reg + i - 1) & 1));
-        uint16_t *pair = r >= 6 ? &g_exp.cfg : r >= 4 ? &g_exp.pol : r >= 2 ? &g_exp.out : nullptr;
+        uint16_t *pair = r >= 6 ? &x->cfg : r >= 4 ? &x->pol : r >= 2 ? &x->out : nullptr;
         if (!pair) continue;                     /* the input registers ignore writes */
         if (r & 1) *pair = (uint16_t)((*pair & 0x00FF) | (buf[i] << 8));
         else       *pair = (uint16_t)((*pair & 0xFF00) | buf[i]);
     }
-    g_exp.pins.push_back(exp_pin_levels());
+    x->pins.push_back(x == &g_exp ? exp_pin_levels() : exp2_pin_levels());
     return 1;
 }
 uint8_t exp_hal_read(uint8_t addr, uint8_t reg, uint8_t *buf, uint8_t n) {
-    if (g_exp.nack || g_exp.in_reset || addr != TCA9539_ADDR || reg != TCA_REG_INPUT0 || n != 2) return 0;
-    g_exp.reads++;
-    buf[0] = (uint8_t)(g_exp.in & 0xFF); buf[1] = (uint8_t)(g_exp.in >> 8);
+    ExpModel *x = exp_at(addr);
+    if (!x || x->nack || x->in_reset || reg != TCA_REG_INPUT0 || n != 2) return 0;
+    x->reads++;
+    buf[0] = (uint8_t)(x->in & 0xFF); buf[1] = (uint8_t)(x->in >> 8);
     return 1;
 }
-void exp_hal_reset(uint8_t asserted) {
-    g_exp.in_reset = asserted != 0;
-    if (asserted) { g_exp.resets++; g_exp.out = 0xFFFF; g_exp.pol = 0; g_exp.cfg = 0xFFFF; }
+void exp_hal_reset(uint8_t asserted) {                /* one line, both expanders */
+    for (ExpModel *x : { &g_exp, &g_exp2 }) {
+        x->in_reset = asserted != 0;
+        if (asserted) { x->resets++; x->out = 0xFFFF; x->pol = 0; x->cfg = 0xFFFF; }
+    }
     g_exp.pins.push_back(exp_pin_levels());
+    g_exp2.pins.push_back(exp2_pin_levels());
 }
 void exp_hal_delay_us(uint32_t) {}
-static void exp_model_fresh() { g_exp = ExpModel(); }
+static void exp_model_fresh() { g_exp = ExpModel(); g_exp2 = ExpModel(); }
 
 static int g_pass = 0, g_fail = 0;
 #define CHECK(cond, msg) do { \
@@ -594,7 +608,7 @@ int main() {
         use(PIN_CAN_RX); use(PIN_CAN_TX);
         for (int p : PIN_SERVO) use(p);
         for (int p : PIN_COMFORT) use(p);
-        use(PIN_BLOWER); use(PIN_WAKE); use(PIN_EXP_INT); use(PIN_EXP_RESET);
+        use(PIN_BLOWER); use(PIN_DASH); use(PIN_EXP_INT); use(PIN_EXP_RESET);
         use(PIN_CABIN_NTC); use(PIN_OAT_NTC); use(PIN_CURRENT); use(PIN_JOY_PRESS);
         use(PIN_I2C_SDA); use(PIN_I2C_SCL); use(PIN_JOY_X); use(PIN_JOY_Y);
         for (int p : PIN_WIN) use(p);
@@ -626,8 +640,8 @@ int main() {
               "matrix rows 28-30 and 35, columns 31-33 (SN19)");
         CHECK(PIN_JOY_X == 20 && PIN_JOY_Y == 21 && PIN_JOY_PRESS == 17, "thumbstick A6 / A7, press 17 (SN18)");
         CHECK(PIN_WIN[0] == 22 && PIN_WIN[1] == 23 && PIN_WIN[2] == 24 && PIN_WIN[3] == 25, "windows 22-25 (SN22)");
-        CHECK(PIN_REL_HATCH == 26 && PIN_REL_FUEL == 27 && PIN_WAKE == 11 && PIN_BLOWER == 10,
-              "release 26 / 27 (SN23), wake 11 (SN21), blower 10 (SN14)");
+        CHECK(PIN_REL_HATCH == 26 && PIN_REL_FUEL == 27 && PIN_DASH == 11 && PIN_BLOWER == 10,
+              "release 26 / 27 (SN23), the dash-light stage 11 (SN31, D-577 - was the wake), blower 10 (SN14)");
         CHECK(PIN_COMFORT[CMF_SEAT_HEAT_DRV] == 5 && PIN_COMFORT[CMF_SEAT_HEAT_PASS] == 6
               && PIN_COMFORT[CMF_SEAT_COOL_DRV] == 7 && PIN_COMFORT[CMF_SEAT_COOL_PASS] == 8
               && PIN_COMFORT[CMF_MIRROR_HEAT] == 9, "comfort 5-9 in climate.h's order (SN16)");
@@ -649,7 +663,10 @@ int main() {
         CHECK(EXP_WIN_DEN == 0x0200 && EXP_WIN_DSEL0 == 0x0400 && EXP_WIN_DSEL1 == 0x0800 && EXP_MH_DEN == 0x1000,
               "P11-P13 window DEN / DSEL0 / DSEL1, P14 mirror-heat DEN");
         CHECK(EXP_CAN_STB == 0x2000 && EXP_PG_5V == 0x4000 && EXP_P17 == 0x8000, "P15 CAN STB, P16 power-good, P17");
-        CHECK(EXP_INPUTS == 0xC100, "inputs: nFAULT, power-good, P17 - every other port drives");
+        CHECK(EXP_INPUTS == 0x4100, "inputs: nFAULT, power-good - every other port drives, P17 (SN28's IN) held low");
+        CHECK(TCA9539_ADDR2 == 0x75 && EXP2_SEAT_STATUS == 0x0001 && EXP2_RADAR == 0x0002 && EXP2_WAKE == 0x0004
+              && EXP2_DASH_STATUS == 0x0008, "U13 at 0x75: P00 seat STATUS, P01 radar, P02 wake, P03 dash STATUS (Y11, D-577)");
+        CHECK(EXP2_OUTPUTS == EXP2_WAKE && EXP2_INPUTS == (uint16_t)~EXP2_WAKE, "U13 drives the wake request only");
 
         mirror_out_t mo; memset(&mo, 0, sizeof mo);
         CHECK(exp_word(&mo, 0, 0) == 0, "asleep: nothing but low");
@@ -694,7 +711,7 @@ int main() {
               && g_exp.regs_written[1] == TCA_REG_POLARITY0 && g_exp.regs_written[2] == TCA_REG_CONFIG0,
               "outputs written low BEFORE the directions (they reset to 0xFF)");
         CHECK(g_exp.out == 0 && g_exp.cfg == EXP_INPUTS && g_exp.pol == 0 && g_exp.reads == 1,
-              "after init: outputs low, three inputs, plain polarity, INT cleared by a read");
+              "after init: outputs low, two inputs, plain polarity, INT cleared by a read");
         bool quiet = true;
         for (uint16_t p : g_exp.pins)
             if (p & (EXP_MIR_NSLEEP | EXP_MIR_EN1 | EXP_MIR_EN2 | EXP_MIR_EN3 | EXP_MIR_EN4 | EXP_CAN_STB)) quiet = false;
@@ -1083,6 +1100,7 @@ int main() {
     {
         lights_in_t in; memset(&in, 0, sizeof in); lights_out_t o;
         in.pmu_alive = 1; in.key_pos = KEY_RUN; in.headlight = HL_OFF;
+        in.dash_pct = DASH_PCT_MAX;            /* the dash at full: the backlight is LIGHT_BACK (section 26 dims it) */
         lights_step(&in, &o);
         bool dark = true;
         for (int i = 0; i < LED_PANEL_CH; i++) if (o.panel[i]) dark = false;
@@ -1259,6 +1277,164 @@ int main() {
             if (sc.page > SCR_MODE) ok = false;
         }
         CHECK(ok, "50k random scans: rest shows all four, an adjusting page exactly one");
+    }
+
+    /* ================= 26. the dash-light level (SN31, D-577, D-578) ================= */
+    {
+        climate_mem_t m; mem_defaults(&m);
+        CHECK(m.dash_pct == DASH_PCT_MAX, "a fresh memory: the dash at full, as a reset leaves the stage");
+        CHECK(dash_clamp(0) == DASH_PCT_MIN && dash_clamp(250) == DASH_PCT_MAX && dash_clamp(55) == 55,
+              "the level is held to 10..100 - the knob cannot put the dash out");
+        CHECK(dash_pwm(100) == 255 && dash_pwm(50) == 128 && dash_pwm(0) == dash_pwm(DASH_PCT_MIN) && dash_pwm(DASH_PCT_MIN) > 0,
+              "the stage's PWM: 255 at full, half at 50 %, never below the minimum");
+        CHECK(DASH_PWM_HZ == 200, "200 Hz (SN31)");
+        CHECK(light_back(100) == LIGHT_BACK && light_back(50) == (LIGHT_BACK + 1) / 2 && light_back(DASH_PCT_MIN) >= 1,
+              "the panel's backlight scales with the same level, never dark while the lights are on");
+        bool mono = true;
+        for (int p = DASH_PCT_MIN; p < DASH_PCT_MAX; p++)
+            if (dash_pwm((uint8_t)(p + 1)) < dash_pwm((uint8_t)p) || light_back((uint8_t)(p + 1)) < light_back((uint8_t)p)) mono = false;
+        CHECK(mono, "both rise with the level, never fall");
+
+        lights_in_t in; memset(&in, 0, sizeof in); lights_out_t o;
+        in.pmu_alive = 1; in.key_pos = KEY_RUN; in.headlight = HL_HEAD; in.dash_pct = 30; in.recirc = 1;
+        lights_step(&in, &o);
+        CHECK(o.panel[LP_RING0] == light_back(30) && o.plate[LQ_MIRROR] == light_back(30) && o.panel[LP_RECIRC] == LIGHT_FULL,
+              "lights on at 30 %: the backlights at 30 %, a function that is on still at full");
+        in.headlight = HL_OFF; lights_step(&in, &o);
+        CHECK(o.panel[LP_RING0] == 0, "lights off: the backlights dark whatever the level");
+
+        /* the centre knob: hold the push a second, turn, rest */
+        dcu_state_t s = fresh(); knob_t k; memset(&k, 0, sizeof k); panel_t p; memset(&p, 0, sizeof p);
+        screen_t sc; uint16_t down = 0, held = 0; uint32_t t = 800000; uint8_t seen_fan = 0;
+        uint8_t target = s.mem.target_c, blower = s.mem.blower;
+        for (int i = 0; i < 400 && k.mode != KNOB_DASH; i++, t += 5) {     /* the push down, held */
+            uint16_t pr = panel_keys_step(&p, PK_CENTRE_PUSH, 1, t, &down, &held);
+            knob_hold(&k, held, t);
+            panel_apply(&s, &k, pr, 0, 0, 0, t);
+            if (k.mode == KNOB_FAN) seen_fan = 1;
+        }
+        CHECK(seen_fan && k.mode == KNOB_DASH, "held: the fan first (the press), then the dash level");
+        CHECK((held & PK_CENTRE_PUSH) && (uint32_t)(t - 800000) >= KNOB_DASH_HOLD_MS && (uint32_t)(t - 800000) < KNOB_DASH_HOLD_MS + 100,
+              "after one second of the push, as 0x400's held bit");
+        screen_build(&sc, &k, &s.mem, 12);
+        CHECK(sc.page == SCR_DASH && !strcmp(sc.dash, "100") && !sc.temp[0] && sc.fan_bars == -1 && !sc.mode[0] && !sc.outside[0],
+              "the screen shows the level alone");
+        for (int i = 0; i < 100; i++, t += 5) {                             /* still held: stays, no re-entry */
+            uint16_t pr = panel_keys_step(&p, PK_CENTRE_PUSH, 1, t, &down, &held);
+            knob_hold(&k, held, t); panel_apply(&s, &k, pr, 0, 0, 0, t);
+        }
+        for (int i = 0; i < 10; i++, t += 5) {                              /* let go */
+            uint16_t pr = panel_keys_step(&p, 0, 1, t, &down, &held);
+            knob_hold(&k, held, t); panel_apply(&s, &k, pr, 0, 0, 0, t);
+        }
+        CHECK(k.mode == KNOB_DASH, "let go: still setting the level");
+        knob_hold(&k, 0, t); panel_apply(&s, &k, 0, -4, 0, 0, t += 10);
+        CHECK(s.mem.dash_pct == 100 - 4 * DASH_PCT_STEP && s.mem.target_c == target && s.mem.blower == blower,
+              "four detents down: 80 %, the temperature and the fan untouched");
+        screen_build(&sc, &k, &s.mem, 12);
+        CHECK(!strcmp(sc.dash, "80"), "the screen follows");
+        panel_apply(&s, &k, 0, -50, 0, 0, t += 10);
+        CHECK(s.mem.dash_pct == DASH_PCT_MIN, "turned far down: stops at the minimum");
+        panel_apply(&s, &k, 0, 50, 0, 0, t += 10);
+        CHECK(s.mem.dash_pct == DASH_PCT_MAX, "and at full");
+        panel_apply(&s, &k, 0, -2, 0, 0, t += 10);
+        panel_apply(&s, &k, 0, 0, 0, 0, t + KNOB_REST_MS - 1);
+        CHECK(k.mode == KNOB_DASH, "1 ms short of the rest: still the level");
+        panel_apply(&s, &k, 0, 0, 0, 0, t += KNOB_REST_MS);
+        CHECK(k.mode == KNOB_TEMP && s.mem.dash_pct == 90, "rested 3 s: back to the temperature, the level kept");
+        panel_apply(&s, &k, 0, 1, 0, 0, t += 10);
+        CHECK(s.mem.dash_pct == 90 && s.mem.target_c == target + 1, "and a detent sets the temperature again");
+
+        knob_hold(&k, PK_CENTRE_PUSH, t += 10);
+        CHECK(k.mode == KNOB_DASH, "knob_hold: the held bit's rise enters the level");
+        panel_apply(&s, &k, PK_CENTRE_PUSH, 0, 0, 0, t += 10);
+        CHECK(k.mode == KNOB_FAN, "a push while setting the level is a fan push, as everywhere");
+        knob_hold(&k, 0, t);
+
+        s.mem.dash_pct = 3;                                                 /* a corrupt memory */
+        knob_hold(&k, PK_CENTRE_PUSH, t += 10);
+        panel_apply(&s, &k, 0, 1, 0, 0, t += 10);
+        CHECK(s.mem.dash_pct == DASH_PCT_MIN + DASH_PCT_STEP, "a level below the range is read as the minimum first");
+
+        /* the memory file: the new field is covered by the CRC */
+        climate_mem_t a; mem_defaults(&a); a.crc = mem_crc(&a);
+        climate_mem_t b = a; b.dash_pct = 50;
+        CHECK(mem_crc(&b) != a.crc, "the level is in the CRC: a changed level is a changed file");
+
+        /* random: the level stays in range, a rest always ends it */
+        bool ok = true; uint32_t seed = 4242, last_ev = t;
+        s = fresh(); memset(&k, 0, sizeof k);
+        for (int i = 0; i < 100000 && ok; i++) {
+            seed = seed * 1103515245u + 12345u;
+            uint16_t pr = ((seed >> 16) & 31) == 0 ? PK_CENTRE_PUSH : 0;
+            uint16_t hd = ((seed >> 21) & 63) == 0 ? PK_CENTRE_PUSH : 0;
+            int det = ((seed >> 26) & 3) == 0 ? (int)((seed >> 12) % 9) - 4 : 0;
+            t += (seed >> 3) & 511;
+            knob_hold(&k, hd, t);
+            panel_apply(&s, &k, pr, det, 0, 0, t);
+            if (s.mem.dash_pct < DASH_PCT_MIN || s.mem.dash_pct > DASH_PCT_MAX) ok = false;
+            if (pr || det || hd) last_ev = t;
+            if ((uint32_t)(t - last_ev) >= KNOB_REST_MS && k.mode != KNOB_TEMP) ok = false;
+        }
+        CHECK(ok, "100k random holds, pushes and turns: the level in 10..100, home to the temperature after every rest");
+    }
+
+    /* ================= 27. the second expander U13: the wake request, the STATUS lines (Y11, D-577) ================= */
+    {
+        exp_model_fresh();
+        tca9539_t u12, u13; memset(&u12, 0, sizeof u12); memset(&u13, 0, sizeof u13);
+        exp_hal_reset(1);
+        CHECK(!(exp2_pin_levels() & EXP2_WAKE), "in reset the wake request sits on its pull-down: no request");
+        CHECK(exp_reset_init(&u12) == 1 && exp2_init(&u13) == 1, "boot: U12 reset and set up, then U13");
+        CHECK(g_exp2.regs_written.size() == 3 && g_exp2.regs_written[0] == TCA_REG_OUTPUT0 && g_exp2.regs_written[2] == TCA_REG_CONFIG0
+              && g_exp2.out == 0 && g_exp2.cfg == EXP2_INPUTS && g_exp2.reads == 1,
+              "U13: outputs low before the directions, only the wake an output, INT cleared by a read");
+        bool quiet = true;
+        for (uint16_t q : g_exp2.pins) if (q & EXP2_WAKE) quiet = false;
+        CHECK(quiet, "the wake request never rises during the reset or the set-up");
+        CHECK(g_exp.cfg == EXP_INPUTS && g_exp.out == 0, "U12 untouched by U13's set-up");
+
+        int r0 = g_exp.resets;
+        CHECK(exp2_write_outputs(&u13, EXP2_WAKE) && (exp2_pin_levels() & EXP2_WAKE), "the wake request raised on P02");
+        CHECK(g_exp.resets == r0 && g_exp2.regs_written.size() == 4, "one write, no reset");
+        CHECK(exp2_write_outputs(&u13, EXP2_WAKE) && g_exp2.regs_written.size() == 4, "none for no change");
+        CHECK(exp2_write_outputs(&u13, 0xFFFF) && g_exp2.out == EXP2_WAKE, "no other U13 port is ever driven");
+        CHECK(exp2_write_outputs(&u13, 0) && !(exp2_pin_levels() & EXP2_WAKE), "and dropped");
+
+        /* the wake request from the key path: asleep, a key pulls it; the PMU answers, it drops */
+        panel_t p; memset(&p, 0, sizeof p); uint16_t down = 0, held = 0; uint32_t t = 900000;
+        for (int i = 0; i < 6; i++, t += 5) {
+            panel_keys_step(&p, PK_RECIRC, 0, t, &down, &held);
+            exp2_write_outputs(&u13, p.wake_req ? EXP2_WAKE : 0);
+        }
+        CHECK(p.wake_req && (exp2_pin_levels() & EXP2_WAKE), "a key with the car asleep: the request on U13 P02");
+        for (int i = 0; i < 2; i++, t += 5) {
+            panel_keys_step(&p, PK_RECIRC, 1, t, &down, &held);
+            exp2_write_outputs(&u13, p.wake_req ? EXP2_WAKE : 0);
+        }
+        CHECK(!p.wake_req && !(exp2_pin_levels() & EXP2_WAKE), "the PMU alive: dropped");
+
+        /* the shared RESET: U12's fault clear drops U13's request, the set-up after it restores the port */
+        exp2_write_outputs(&u13, EXP2_WAKE);
+        g_exp2.pins.clear();
+        exp_reset_init(&u12);
+        bool dropped = false;
+        for (uint16_t q : g_exp2.pins) if (!(q & EXP2_WAKE)) dropped = true;
+        CHECK(dropped && g_exp2.cfg == 0xFFFF, "U12's reset pulse is U13's too: every port an input, the request on its pull-down");
+        CHECK(exp2_init(&u13) == 1 && g_exp2.cfg == EXP2_INPUTS && u13.out == 0, "set up again after it, the request off until the next scan");
+
+        /* the STATUS lines read */
+        g_exp2.in = (uint16_t)(0xFFFF & ~EXP2_DASH_STATUS);
+        CHECK(exp2_read_inputs(&u13) && !(u13.in & EXP2_DASH_STATUS) && (u13.in & EXP2_SEAT_STATUS),
+              "the dash stage's STATUS low is seen, the seats' high");
+
+        /* a silent U13: its own failure, U12 carries on */
+        g_exp2.nack = true;
+        CHECK(exp2_write_outputs(&u13, EXP2_WAKE) == 0 && u13.ok == 0 && u12.ok == 1, "U13 silent: known, U12 unaffected");
+        CHECK(exp2_init(&u13) == 0, "re-set-up fails until it answers");
+        g_exp2.nack = false;
+        int r1 = g_exp.resets;
+        CHECK(exp2_init(&u13) == 1 && g_exp.resets == r1, "answers again: set up without a reset - the mirrors are not put to sleep for it");
     }
 
     printf("\n passed %d   failed %d\n", g_pass, g_fail);
