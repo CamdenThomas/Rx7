@@ -248,6 +248,7 @@ modules,heavy_power,text,no,,
 modules,drops,str,no,,
 modules,state,text,no,,
 modules,owns,text,no,,
+modules,place,place,no,,"where the module sits in the car, x y z mm and rx ry rz degrees in the car's frame (D-418) - its scene part's place on the Design page; written only from his Save place answer (kind=place, D-520, R3), never typed; blank = export_glb.py's provisional spot; stays confirm until the car is measured (R11)"
 panel_ribbon,pin,key,yes,,
 panel_ribbon,signal,str,no,,
 panel_ribbon,dcu_side,text,no,,what the DCU carrier does with it
@@ -271,7 +272,7 @@ blocks,recommend,text,yes,,"names the option it recommends first, e.g. (a), unle
 blocks,stops,text,yes,,what cannot proceed until it is answered
 inbox,id,key,yes,,<target>~<device>; the row is the file data/inbox/<id>.csv (D-405)
 inbox,target,str,yes,,"what it answers: a block, pick or work id; a workflow for kind=run; a name for kind=project"
-inbox,kind,enum(block|drive|note|pick|project|run|work),yes,,vocabulary owned by tools/rx7.py
+inbox,kind,enum(block|drive|note|pick|place|project|run|work),yes,,vocabulary owned by tools/rx7.py
 inbox,choice,str,no,,the option letter; yes/no/question; done; a value; a choice - empty when he only wrote words
 inbox,text,text,no,,"his words, verbatim"
 inbox,context,text,no,,"the key points of a Discuss chat, carried into the decision with his words (D-406)"
@@ -341,6 +342,7 @@ steps,expect,text,no,,what he should see or measure when the step went right
 steps,caution,text,no,,"the one thing that hurts him or the car at this step, if any"
 inputs,pull,enum(up|down|off),no,,"the PMU's software-selectable 10 kΩ on this input, as E25 enters it: up = to +5 V, down = to ground, off = neither (00-CAR S-028 section 2.8); blank on a pin configured as an output (Y32, 2026-10-13)"
 parts,torque_nm,num,no,,"the maker's tightening figure for this part's stud or screw, N·m - from the maker's page, or read off the sheet in the box at D1; blank = not known yet, and rules torque says what to do (Y32, 2026-10-13)"
+parts,place,place,no,,"where the part sits in the car, x y z mm and rx ry rz degrees in the car's frame (D-418) - its scene part's place on the Design page; written only from his Save place answer (kind=place, D-520, R3), never typed; blank = export_glb.py's provisional spot; stays confirm until the car is measured (R11)"
 checks,value,text,no,,"the reading as taken, with its unit - the home of every check's result that is not a work row's own (R10: a home for every reading; Y32, 2026-10-13)"
 checks,taken,date,no,,the day the reading in value was taken
 migration,measured_a,num,no,,"the circuit's live current read in the client when it moved (E28 loop step 4), amps; it seeds loads.measured_a and CK01's baseline (Y32, 2026-10-13)"

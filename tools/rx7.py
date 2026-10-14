@@ -39,6 +39,7 @@ import csv
 import datetime
 import io
 import json
+import math
 import os
 import re
 import sys
@@ -57,8 +58,12 @@ WORK_STATE = ("open", "done", "blocked", "dropped")
 WORK_OWNER = ("agent", "camden")
 # How Camden answers a work row in the app (D-406): a check, a measured value, or a choice.
 WORK_REPLY = ("check", "value", "choice")
-INBOX_KIND = ("block", "pick", "work", "run", "project", "drive", "note")
+INBOX_KIND = ("block", "pick", "work", "run", "project", "drive", "note", "place")
 INBOX_DEVICE = ("desktop", "phone")
+# Save place on the Design page (D-520): the target is the scene part he moved (scene.json's id,
+# like `cur`), the choice its place in the car's frame - the `place` type below. The apply
+# playbook writes it into the `place` cell of the row that part names.
+PLACE_TARGET_RE = re.compile(r"^[a-z0-9][a-z0-9:-]*$")
 RUN_WORKFLOWS = ("apply", "plan", "review", "parts")
 # Log drive and Set odo in the Manual (D-417): the target names the moment, the choice is the
 # odometer reading. drive- is a drive he logged; odo- is a reading with nothing else known.
@@ -382,6 +387,14 @@ def bad_value(typ: str, v: str):
     elif typ == "id":
         if not ID_RE.match(v):
             return "is not an id (like D-123)"
+    elif typ == "place":
+        # x y z in mm and rx ry rz in degrees (three.js Euler XYZ), the car's frame (D-418, D-520)
+        try:
+            ok = len(v.split()) == 6 and all(math.isfinite(float(n)) for n in v.split())
+        except ValueError:
+            ok = False
+        if not ok:
+            return "is not a place (x y z mm, rx ry rz degrees: six numbers)"
     elif typ.startswith("enum(") and typ.endswith(")"):
         allowed = typ[5:-1].split("|")
         if v not in allowed:
@@ -525,6 +538,12 @@ def resolve_target(area: Path, target: str, kind: str = ""):
         if not (area / "data" / "parts.csv").exists():
             raise ValueError(f"{rel(area)} holds no Manual - notes belong to 00-CAR")
         return "note", {}
+    if kind == "place":
+        if not PLACE_TARGET_RE.match(target):
+            raise ValueError("a place names a part of the Design page's scene, like cur")
+        if "place" not in (read_table(area, "parts")[0] if (area / "data" / "parts.csv").exists() else []):
+            raise ValueError(f"{rel(area)} keeps no places - its parts table has no place column")
+        return "place", {}
     if BLOCK_ID_RE.match(target):
         for r in read_table(area, "blocks")[1]:
             if (r.get("id") or "").strip() == target:
@@ -543,6 +562,8 @@ def check_choice(kind: str, row: dict, choice: str):
     c = (choice or "").strip()
     if kind == "drive" and not c:
         return "a drive needs the odometer reading"
+    if kind == "place":
+        return bad_value("place", c) and "a place is x y z mm, rx ry rz degrees: six numbers"
     if not c:
         return None
     if kind == "block":
@@ -3328,6 +3349,13 @@ def cmd_selftest(args):
     expect("an ISO date parses", days_since("2026-09-01") is not None)
     expect("a non-date does not", days_since("soon") is None)
     expect("a date and time is a datetime", not bad_value("datetime", "2026-09-24T21:05:00-06:00"))
+    # a saved place (D-520, Y29): six numbers, the car's frame
+    expect("a place of six numbers is taken", not bad_value("place", "-310.5 1200 640 90 0 -5"))
+    expect("a place of three numbers is refused", bad_value("place", "-310.5 1200 640"))
+    expect("a place with a word in it is refused", bad_value("place", "-310 1200 640 90 0 left"))
+    expect("a place that is not finite is refused", bad_value("place", "nan 1200 640 90 0 0"))
+    expect("a place answer checks its numbers", check_choice("place", {}, "1 2 3"))
+    expect("a good place answer is taken", check_choice("place", {}, "1 2 3 0 0 90") is None)
 
     # --- the checker itself, on a scratch tree (plan P23): one refusal per class ---
     # Until now every gate test used a hand-built index and check_area had no test at all,

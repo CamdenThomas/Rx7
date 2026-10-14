@@ -31,9 +31,11 @@ most 65535 vertices, 16-bit indices), float positions and 8-bit normals (KHR_mes
 which three.js reads natively).
 
 Reads the record only through `rx7.py export` (00-CAR zones and parts, 01-electrical housings,
-cavities, modules and parts) and writes nothing to it. Owns no fact: every place it cannot find
-in a row is `place_from: provisional` and `confirm: true`; the far ends' and the units' spots are
-judgement, one line each in WHERE and TOP below.
+cavities, modules and parts) and writes nothing to it. Owns no fact: a top-level part whose row
+(UNITS, PMU) has a `place` - his Save place on the Design page, 01-electrical parts.place or
+modules.place (D-520, Y29) - is put there, `place_from: 01-electrical <table> <id>`; every place
+it cannot find in a row is `place_from: provisional`; all stay `confirm: true` until measured.
+The far ends' and the units' provisional spots are judgement, one line each in WHERE and TOP.
 
 Exit 0 built (or, with --check, current) - 1 a source is inconsistent (a board the scene names
 has no glb, a mock-up refuses its parameters, a scene that breaks the contract, a stale asset
@@ -159,7 +161,8 @@ TOP = {
 # Drops whose far end is not the dash post: the record's rulings, one line each.
 FAR_END = {
     "DP-DCU-D": ("hvac-case", "D-480: the door servos and the blower stage at the HVAC case"),
-    "DP-DCU-E": ("left-plate", "D-492: the left plate's link"),
+    "DP-DCU-E": ("cur", "D-492: the left plate's link, to the CUR's DP-CUR (D-521)"),
+    "DP-CUR": ("control-unit", "D-521: the same cable from the CUR's end, to DP-DCU-E"),
 }
 
 
@@ -169,7 +172,8 @@ FAR_END = {
 CONNECTORS_BUILDER = os.path.join(DESIGN, "harness", "cad", "connectors", "build_connectors.py")
 DEVICES_BUILDER = os.path.join(DESIGN, "harness", "cad", "devices", "build_devices.py")
 STEPS = ["connectors", "devices"]
-UNIT_OF = {"ICU unit": "display-unit", "Climate unit": "control-unit"}   # housings.where -> unit
+UNIT_OF = {"ICU unit": "display-unit", "Climate unit": "control-unit",    # housings.where -> unit
+           "CUR": "cur"}
 
 # Nodes no housings.where names, judgement: (zone, box, fx fy fz, name, why).
 NODES_EXTRA = {
@@ -692,6 +696,27 @@ def _selftest_footprint_at():
     return bad
 
 
+def _selftest_saved_place():
+    """_saved_place on a three-row parts table: a saved place is taken as the part's place, a blank
+    cell gives None (the provisional spot stands), a bad place is refused. What came out wrong."""
+    rec = {("01-electrical", "parts"): [{"id": "P1", "place": "-310.5 1200 640 90 0 -5"},
+                                        {"id": "P2", "place": ""},
+                                        {"id": "P3", "place": "-310 1200 640"}]}
+    bad = []
+    got = _saved_place(rec, "parts", "P1")
+    if not got or got[0] != _place(-310.5, 1200, 640, 90, 0, -5) or \
+            got[1] != "01-electrical parts P1":
+        bad.append("a saved place gave %s" % (got,))
+    if _saved_place(rec, "parts", "P2") is not None:
+        bad.append("a blank place was not None")
+    try:
+        _saved_place(rec, "parts", "P3")
+        bad.append("a place of three numbers was taken")
+    except Fail:
+        pass
+    return bad
+
+
 def build_board(bid, out):
     pcb = os.path.join(DESIGN, BOARDS[bid][0])
     if not os.path.exists(pcb):
@@ -859,6 +884,25 @@ def _place(x=0.0, y=0.0, z=0.0, rx=0.0, ry=0.0, rz=0.0):
             "rx": rx, "ry": ry, "rz": rz}
 
 
+def _saved_place(rec, table, key):
+    """(place, place_from, place_note) from 01-electrical <table> <key>.place - his Save place
+    on the Design page (D-520), the car's frame - or None while the cell is blank."""
+    for r in rec[("01-electrical", table)]:
+        if r.get("id") == key and (r.get("place") or "").strip():
+            v = r["place"].split()
+            try:
+                n = [float(x) for x in v]
+            except ValueError:
+                n = []
+            if len(n) != 6:
+                raise Fail("01-electrical %s %s: place %r is not six numbers" % (table, key,
+                                                                                 r["place"]))
+            return (_place(*n), "01-electrical %s %s" % (table, key),
+                    "saved on the Design page (D-520): 01-electrical %s %s.place, confirm until "
+                    "the car is measured (R11)" % (table, key))
+    return None
+
+
 def _rot(p, place):
     """A point in a child's frame -> its parent's, by `place` (three.js Euler XYZ, degrees)."""
     x, y, z = p
@@ -908,14 +952,18 @@ def assemble(rec, metas, built, out=None):
         anchor = _in_zone(rec, "dash", TOP[uid][0])
         fw, fh = m["face"]
         pl = _place(anchor[0] - fw / 2.0, anchor[1], anchor[2] - fh / 2.0)
+        pfrom, pnote = "provisional", ("inside 00-CAR zones dash: %s, the face's centre there"
+                                       % TOP[uid][1])
+        saved = _saved_place(rec, *u["row"])
+        if saved:
+            pl, pfrom, pnote = saved
         conns = [{"code": c["code"], "at": {"x": round(c["at"][0], 2), "y": round(c["at"][1], 2),
                                             "z": round(c["at"][2], 2)},
                   "face": "rear", "note": c.get("note", "")} for c in m["connectors"]]
         parts[uid] = {
             "id": uid, "name": name, "kind": "unit", "glb": m["glb"], "bytes": m["bytes"],
-            "parent": None, "place": pl, "place_from": "provisional", "confirm": True,
-            "place_note": "inside 00-CAR zones dash: %s, the face's centre there" % TOP[uid][1],
-            "size_mm": _size(m),
+            "parent": None, "place": pl, "place_from": pfrom, "confirm": True,
+            "place_note": pnote, "size_mm": _size(m),
             "origin": "the mock-up's frame: the face's front, bottom-left corner seen from the "
                       "cabin; x across the face, y back into the dash (= the car's forward), z up",
             "connectors": conns, "children": list(u["children"]), "source": m["source"],
@@ -962,6 +1010,9 @@ def assemble(rec, metas, built, out=None):
                       "model lies" % TOP["pmu"][1],
         "size_mm": _size(pm), "origin": "the vendor STEP's own origin (ECUMaster's frame)",
         "connectors": [], "children": [], "source": pm["source"], "nodes": pm["nodes"]}
+    saved = _saved_place(rec, *PMU["row"])
+    if saved:
+        parts["pmu"]["place"], parts["pmu"]["place_from"], parts["pmu"]["place_note"] = saved
 
     # ---- links: one per housing, and the nodes their far ends need
     nodes = {}
@@ -981,7 +1032,7 @@ def assemble(rec, metas, built, out=None):
     cav_by = {}
     for cv in rec[("01-electrical", "cavities")]:
         cav_by.setdefault(cv["housing"], []).append(cv)
-    unit_of = {"ICU unit": "display-unit", "Climate unit": "control-unit"}
+    unit_of = UNIT_OF
     links, post = [], []
     for h in rec[("01-electrical", "housings")]:
         code, where = h["code"], (h.get("where") or "").strip()
@@ -1458,9 +1509,6 @@ def harness_v2(rec, scene, metas, out):
                  "1.2 x the root of the sum of their squared diameters (TXL-class, confirm). The "
                  "door drops are L4's branches through the sill node; the Audio runs (RT30-RT32) "
                  "are a leg of their own from the centre stack.")
-    if any(p["housing"].startswith("DP-CUR") for p in new if p["kind"] == "connector"):
-        notes.append("The CUR's two receptacles (DP-CUR, DP-CUR-B) have no housings row yet "
-                     "(block 01.41): drawn from its mock-up with their plugs, no cavities.")
 
     order = [p["id"] for p in scene["parts"]]
     scene["parts"] = [parts[k] for k in order] + new
@@ -1674,6 +1722,12 @@ def selftest(path):
         print("  footprint: " + b)
     print("  %-34s %s" % ("footprint places, two footprints", "FAIL" if fp_bad else "ok"))
     if fp_bad:
+        return 1
+    pl_bad = _selftest_saved_place()
+    for b in pl_bad:
+        print("  place: " + b)
+    print("  %-34s %s" % ("saved places (D-520)", "FAIL" if pl_bad else "ok"))
+    if pl_bad:
         return 1
     probs = validate_scene(path)
     if probs:

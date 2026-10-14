@@ -417,7 +417,9 @@ A board's 3D model that this machine's KiCad library lacks is listed in `missing
   `node` - a place with no model, such as a leg's far end), `glb` (relative, null for a node),
   `bytes`, `parent` (a board inside a unit names it), `place` (x y z mm, rx ry rz degrees, three.js
   Euler XYZ; the car's frame, D-418, for a top-level part, the parent's frame for a child),
-  `place_from` (`mock-up report`, `00-CAR zones <id>`, `00-CAR parts <id>` or `provisional`),
+  `place_from` (`mock-up report`, `00-CAR zones <id>`, `00-CAR parts <id>`, `01-electrical
+  parts <id>` / `01-electrical modules <id>` - his Save place, that row's `place`, D-520 - or
+  `provisional`),
   `confirm`, `size_mm` (the glb's box, measured), `origin` (where the glb's origin sits),
   `connectors[]` (`code`, `at` in the part's frame, `face`, `note`), `children`, `source`, `nodes`
   (the named node groups). Added: `place_note`, saying what a provisional place stands for.
