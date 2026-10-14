@@ -1,6 +1,6 @@
 # DCU carrier — the KiCad project
 
-*Rev 2026-10-13 (sheet and board rev 0.05 provisional - Y42; rev 0.04 was D-458, D-465, Y12) · owns: what this KiCad project
+*Rev 2026-10-13 (sheet rev 0.06 - Y44, one value; sheet and board rev 0.05 provisional - Y42; rev 0.04 was D-458, D-465, Y12) · owns: what this KiCad project
 is for, what it may claim, and how to start. The board's design is `../../../../data/dcu_channels.csv`.
 That is the record, and this is a drawing of it. Read `../../../README.md` first: it is the fence.*
 
@@ -28,8 +28,12 @@ ordered. ERC 0 / 0; DRC 0 violations, 0 unconnected, 0 parity; `check.py --board
 - **Values that follow the cart**: C31-C33 470 µF 16 V (the same can as 10 V); Q1 / Q2 SQ2362CES or PMV37ENEA
   (Nexperia lists PMV37ENEA in production, but four distributors had none; Vishay 62424 is the same package and
   pins, 60 V, 4.3 A).
-- **Not changed, to rule on**: Q3's gate sees ten elevenths of the rail while the wake is asserted (R42 10 k,
-  R43 1 k) and the part allows ±20 V - past about 22 V on the rail that is exceeded. A value change, no copper.
+- **Q3's gate divider (Y44, sheet rev 0.06, a value only): R43 is 18 k, was 1 k** (R42, gate to source, stays
+  10 k). With 1 k the gate saw ten elevenths of the rail while the wake is asserted, past the part's ±20 V once
+  the rail passed 22 V. Now it sees 10 / 28: 3.2 V at 9 V, 4.3 at 12, 5.1 at 14.4, 8.6 at 24 and 19.0 V at the
+  SMBJ33A's 53.3 V clamp. Q3 carries milliamps (a diode into the wake strip's bleed resistor), and Vishay 66894
+  gives a threshold of 2.5 V at most and about 0.6 A at 3 V, so 3.2 V is on for that load. No copper, mask,
+  silkscreen or drill changed: `fab/` was re-plotted and compared, every file the same but its date.
 
 These four boards have no generator (only the left plate does): the change was made by two scripts on the sheet and
 the board themselves - nodes replaced in the `.kicad_sch` / `.kicad_sym`, the board through KiCad's `pcbnew`.

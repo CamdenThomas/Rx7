@@ -6,7 +6,7 @@
 	(paper "A0")
 	(title_block
 		(title "DCU carrier - H-002")
-		(rev "0.05")
+		(rev "0.06")
 		(company "RX-7 FB electrical build")
 		(comment 1 "Drawn from the record: 02-PROJECTS/01-electrical/data/dcu_channels.csv, panel_ribbon.csv and cavities DP-DCU / -B / -C. Where this sheet and a row disagree, the row is right.")
 		(comment 2 "Conventions: cad/dcu-carrier/CONVENTIONS.md. Teensy pads are real (dcu_channels.teensy_pin). Module pin numbers are the datasheets' (pin_tables.csv, Y5); footprints assigned, outline provisional until V-102.")
@@ -4827,7 +4827,7 @@
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
 		(uuid "28eea1a1-e3ca-4616-b41e-f235b5712688")
 		(property "Reference" "R43" (at 427.18 636.34 0) (effects (font (size 1.1 1.1)) (justify left)))
-		(property "Value" "1k" (at 427.18 639.14 0) (effects (font (size 1.1 1.1)) (justify left)))
+		(property "Value" "18k" (at 427.18 639.14 0) (effects (font (size 1.1 1.1)) (justify left)))
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 424.18 637.54 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(property "Datasheet" "" (at 424.18 637.54 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(pin "1" (uuid "31da7c18-c415-49b8-8fbd-41b936594e4a"))

@@ -6,7 +6,7 @@
 	(paper "A0")
 	(title_block
 		(title "ICU carrier - H-001")
-		(rev "0.04")
+		(rev "0.05")
 		(company "RX-7 FB electrical build")
 		(comment 1 "Drawn by hand. The record is 02-PROJECTS/01-electrical/data/icu_channels.csv - where this sheet and a row disagree, the row is right.")
 		(comment 2 "Conventions: cad/icu-carrier/CONVENTIONS.md. Drawing list: TARGET.md. The board is icu-carrier.kicad_pcb (F9): a PROVISIONAL outline until C4 measures the binnacle (F11).")
@@ -12282,7 +12282,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "10k"
 			(at 122.58 128.4 0)
 			(show_name no)
 			(do_not_autoplace no)

@@ -65,7 +65,7 @@
 "R35","100k  asleep at reset","Resistor_SMD:R_0805_2012Metric","1",""
 "R37,R55-R57","1.5k  confirm vs stall (W-332)","Resistor_SMD:R_0805_2012Metric","4",""
 "R38,R40,R46,R71,R72","100R","Resistor_SMD:R_0805_2012Metric","5",""
-"R43","1k","Resistor_SMD:R_0805_2012Metric","1",""
+"R43","18k","Resistor_SMD:R_0805_2012Metric","1",""
 "R47","10k  off through a reset","Resistor_SMD:R_0805_2012Metric","1",""
 "R48-R50","330R","Resistor_SMD:R_0805_2012Metric","3",""
 "R54","10k  held in reset until the firmware lets go","Resistor_SMD:R_0805_2012Metric","1",""

@@ -1,6 +1,6 @@
 {
  "version": 2,
- "built": "2026-10-13T19:03:35-06:00",
+ "built": "2026-10-13T19:17:29-06:00",
  "project": "01-electrical",
  "frame": {
   "units": "mm",
@@ -13947,7 +13947,7 @@
     "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "01ea5d654a229a7d"
+   "stamp": "26760aa8ba4e1e6f"
   },
   "panel": {
    "id": "panel",
@@ -14125,7 +14125,7 @@
     "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "d373d3d75e7c6463"
+   "stamp": "b6eac8b3be4b36e7"
   },
   "control-unit": {
    "problems": [],
@@ -15275,5 +15275,5 @@
   "connectors": "connectors/manifest.json",
   "devices": "devices/manifest.json"
  },
- "record_stamp": "a45d551b9e4c7bbf"
+ "record_stamp": "d253cb943828086f"
 }

@@ -27801,7 +27801,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "18k"
 			(at 0 1.65 0)
 			(layer "F.Fab")
 			(uuid "3e204182-df71-40b5-aa89-6d56e152d611")

@@ -1,6 +1,6 @@
 # ICU carrier — the KiCad project
 
-*Rev 2026-10-13 (sheet and board rev 0.04 - Y42; rev 0.03 was 2026-10-09) · owns: what this KiCad project is for, what it
+*Rev 2026-10-13 (sheet rev 0.05 - Y44, one value; sheet and board rev 0.04 - Y42; rev 0.03 was 2026-10-09) · owns: what this KiCad project is for, what it
 may claim, and how to start. The board's design is `../../../../data/icu_channels.csv` — that is the
 record; this is a drawing of it. Read `../../../README.md` first: it is the fence.*
 
@@ -9,6 +9,7 @@ record; this is a drawing of it. Read `../../../README.md` first: it is the fenc
 **2026-10-13 (Y42): rev 0.04 - what pricing the order found, made right before the boards are ordered (D-541).**
 `fab/` is bench revision A re-issued from this board: the zip keeps its name, and the rev 0.03 package must not be
 ordered. ERC 0 / 0; DRC 0 violations, 0 unconnected, 0 parity; `check.py --board icu` 98 checks, 0 mismatches.
+Y44 changed one value after it and no fab file: re-plotted and compared, every file the same but its date.
 
 - **D24 and D26 (SMBJ33A) are one-way parts and were drawn with two anodes**, pad 1 - the end the silkscreen
   marks as the cathode - on ground: fitted to the mark they short both 12 V inputs. The symbol is `D_TVS_Uni`
@@ -21,9 +22,16 @@ ordered. ERC 0 / 0; DRC 0 violations, 0 unconnected, 0 parity; `check.py --board
   rule asks more than a 50 V part; 100 µF 63 V is a 10 × 10.2 can and the footprint is the 8 × 10.2 one, whose
   largest 63 V value is 68 µF. C1's courtyard is 0.2 mm from the board's edge with C3, C4 and R5 0.2 to 0.6 mm
   from it: the 10 mm can (2.7 mm longer, 1.9 wider) needs the buck's corner laid again, which is F11's.
-- **Not changed, to rule on**: Q1's gate sees ten elevenths of the backlight rail while it is on (R1 10 k, R2 1 k)
-  and the part allows ±20 V - past about 22 V that is exceeded. Q3's part, DMG3415U, is marked not for new designs
-  by its maker, who names DMP2045U (the same pins); the cart carries both.
+- **Q1's gate divider (Y44, sheet rev 0.05, a value only): R2 is 10 k, was 1 k** (R1, gate to source, stays
+  10 k). The gate now sees half the backlight rail: 4.5 V at 9 V, 6.0 at 12, 7.2 at 14.4, 12.0 at 24 - inside the
+  part's ±20 V up to 40 V on the rail, where 1 k passed it at 22 V. **It is not the whole answer**: at the
+  SMBJ33A's 53.3 V clamp it is 26.7 V. No pair of values does both ends: Q1 carries the backlight's 2.5 A (about
+  3.3 A at 9 V), Vishay 69098 gives its on-resistance no lower than 4.5 V on the gate (20 mΩ), and 4.5 V at 9 V is
+  half the rail, where 20 V at 53.3 V is three eighths. The rest is a 12 V zener from gate to source, cathode to
+  the source: on R1's own pads at (179.0, 79.3) a SOD-323 part fits beside or on the resistor, and through R2's
+  10 k it carries 4 mA at the clamp. That is a part the board does not draw - not made, to rule on.
+- Q3's part, DMG3415U, is marked not for new designs by its maker, who names DMP2045U (the same pins); the cart
+  carries both.
 
 This board has no generator: the change was made by two scripts on the sheet and the board themselves - nodes
 replaced in the `.kicad_sch` / `.kicad_sym`, the board through KiCad's `pcbnew`.
