@@ -47,3 +47,4 @@ L-0045,2026-10-13,session,D-505 D-511 D-512 D-513 M3D1 CI1 CI2 MB2 E2,"D-505 app
 L-0046,2026-10-13,session,D-514 M3D2,M3D2 done - the Design page at scene version 2 verified on the real electrical export; the Mac bundle rebuilt and installed
 L-0047,2026-10-13,session,D-518 MG1,MG1 done on the real car scene; the Mac bundle rebuilt with the car's model and the harness scene
 L-0048,2026-10-13,session,D-533 TD1,"TD1 done: the TODO page as the step-by-step manual, verified on the real electrical rows"
+L-0049,2026-10-14,session,D-570,04-beauty merged into 03-luxury (D-570); rx7.py reads inherits_blocks so beauty's closed blocks keep their gates met

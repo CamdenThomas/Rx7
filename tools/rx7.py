@@ -419,9 +419,18 @@ def block_prefix(area: Path):
     return m.group(1) if m and area.parent.name == "02-PROJECTS" else None
 
 
+def block_prefixes(area: Path) -> list:
+    """Every block-id prefix an area answers for: its own, then those of projects merged into
+    it, which its `_project` names under `inherits_blocks` (space-separated, e.g. 03-luxury's
+    `04` since 04-beauty merged in, D-570) - their blocks' decisions moved with them."""
+    own = block_prefix(area)
+    extra = project_kv(area).get("inherits_blocks", "").split() if (area / "data" / "_project.csv").exists() else []
+    return ([own] if own else []) + [x for x in extra if x != own]
+
+
 def prefix_areas():
     """{prefix: area} — the only map from a block id to the project it belongs to."""
-    return {p: a for a in areas() if (p := block_prefix(a))}
+    return {p: a for a in areas() for p in block_prefixes(a)}
 
 
 def parse_options(cell: str):
@@ -660,7 +669,7 @@ def tree_index(fresh: bool = False):
             continue
         ci, si = hdr.index("closes"), hdr.index("status")
         di = hdr.index("date") if "date" in hdr else None
-        px = block_prefix(a) or ""
+        pxs = block_prefixes(a) or [""]
         for row in _b:
             if row[si].strip() not in GATE_LIVE_DEC:
                 continue
@@ -668,7 +677,7 @@ def tree_index(fresh: bool = False):
             for t in re.split(r"[\s,;·]+", row[ci]):
                 if BLOCK_ID_RE.match(t):
                     closed.add(t)
-                    closed_by.setdefault(t, set()).add("*" if old else px)
+                    closed_by.setdefault(t, set()).update({"*"} if old else set(pxs))
     for f in (ROOT / "99-ARCHIVE").rglob("decisions.csv"):
         hdr, _b = read_csv_rows(f)
         if "closes" not in hdr or "status" not in hdr:
@@ -3527,6 +3536,13 @@ def cmd_selftest(args):
             expect("a retired term in plain prose is still caught", all(rp.search(x) for x in ("block 01.11", "block 01.11, ok", "(01.11)", "01.11")))
             expect("the next decision id is one past the tree and the archive's pages", next_decision_id() == "D-121")
             expect("a v2 DECISIONS.md page resolves a cite", "D-120" in archived_decision_ids())
+            # a project merged into another (D-570): its blocks' closing decisions move with it
+            (root / one / "decisions.csv").write_text(csvtext(list(TOOL_COLUMNS["decisions"]), [["D-001", "s", "one", "2026-10-14", "standing", "", "", "07.02", "", "**Decision.** one"]]), encoding="utf-8")
+            expect("a block of another prefix, closed here, does not open a gate here",
+                   not gate_ref_state("07.02", "01-one", tree_index(fresh=True))[0])
+            (root / one / "_project.csv").write_text(csvtext(["key", "value"], [["name", "01-one"], ["phase", "PLANNING"], ["inherits_blocks", "07"]]), encoding="utf-8")
+            expect("a merged project's block, closed by the project it merged into, opens the gate (D-570)",
+                   gate_ref_state("07.02", "01-one", tree_index(fresh=True))[0] and prefix_areas().get("07", Path()).name == "01-one")
             (root / one / "work.csv").write_text(csvtext(["id", "item", "owner", "state", "gate", "note", "reply", "choices", "unit", "due", "part"],
                                                           [["A10", "ten", "agent", "open", "", "", "", "", "", "", ""], ["A2", "two", "agent", "open", "", "", "", "", "", "", ""]]), encoding="utf-8")
             tree_index(fresh=True)

@@ -1,6 +1,6 @@
 # 99-ARCHIVE
 
-_Rev 2026-10-14 (plan P54; D-569). Nothing here is current. It is kept because the reasoning is
+_Rev 2026-10-14 (plan P54; D-569, D-570). Nothing here is current. It is kept because the reasoning is
 useful, and because ids derive from it: `rx7.py` reads every `decisions.csv`, `retired.csv`
 and rendered `DECISIONS.md` under this folder so no decision or block number is ever handed
 out twice._
@@ -19,6 +19,7 @@ out twice._
 | `2026-10-13_00-verify/` | The verify project's record, complete: every held-back Manual fact checked or marked not this car | its trim-code row carried to `04-beauty` (D-498) |
 | `2026-10-13_01-REFERENCE/` | The reference's record once its tables had moved: the shell, an empty `blocks`, the `REF` retired row | `00-CAR` and `05-cad` hold its tables; the folder is `01-INTAKE` (D-519) |
 | `2026-10-14_06-intake/` | The intake project's record, complete: every manual, catalogue, diagram and found model in the reference parsed into `00-CAR`'s tables and taken out of git (87 rows; the last three read from page images) | `00-CAR` (specs, procedures and their steps, intervals, terminals, circuits and circuit_paths, sources, catalogue, cad); the files in the ignored library (D-569) |
+| `2026-10-14_04-beauty/` | The beauty project's shell once it merged into luxury: its project file, schema, empty blocks table and log | `03-luxury` holds its work rows (stage P), decisions and retired terms (D-570) |
 
 Never load anything here into a Claude Project or a prompt as current knowledge. If the record
 and an archived page disagree, the record is right; the page says how it used to read.

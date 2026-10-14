@@ -17,3 +17,7 @@ On 2026-09-26 (plan P21) `00-verify` took the fixed prefix `VER`, so its blocks 
 `00` with electrical's history, and a block id issued from 2026-09-25 on is closed only by a
 decision of the area whose prefix it carries; decisions dated before that close whatever id
 they name.
+
+On 2026-10-14 `04-beauty` merged into `03-luxury` (D-570): beauty's `04.NN` blocks and the
+decisions that closed them are luxury's now, which its `_project` says with `inherits_blocks =
+04`; a new luxury block is `03.NN`, and no new `04.NN` is issued.

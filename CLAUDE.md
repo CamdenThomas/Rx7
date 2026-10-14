@@ -61,7 +61,8 @@ An **area** is any directory holding `data/_tables.csv`, at `ROOT/<area>` or
 `ROOT/02-PROJECTS/<project>`: `00-CAR` (the car: its state and every truth about it - parts,
 specs, sources, the catalogue, the found models, the circuits - PERMANENT), `02-APP` (the Rx7 app
 and its own work, D-428), and each project under `02-PROJECTS` (`01-electrical`, `02-engine`,
-`03-luxury`, `04-beauty`, `05-cad`). **Three homes** (D-519): CAR holds state and
+`03-luxury` - the fancy parts, the body and paint, the interior; it took in `04-beauty` on
+2026-10-14, D-570 - and `05-cad`). **Three homes** (D-519): CAR holds state and
 truth, APP the app and the view of everything, PROJECTS the work in progress until it merges into
 the car. `01-INTAKE` (the old `01-REFERENCE`, renamed 2026-10-13) is none of them: it is the
 **intake** - bulk to be processed (a manual, a

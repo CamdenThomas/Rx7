@@ -49,7 +49,7 @@ stages,prerequisites,text,no,,
 stages,plugs_into,str,no,,
 stages,outcome,text,no,,
 work,id,key,yes,,
-work,stage,enum(A|B|C|I|V|X),no,,"V added 2026-09-11: the verify/measure/do items carried over from the v2 question list; I added 2026-09-22: the install steps, one row per step (X-008, electrical D-372)"
+work,stage,enum(A|B|C|I|P|V|X),no,,"V added 2026-09-11: the verify/measure/do items carried over from the v2 question list; I added 2026-09-22: the install steps, one row per step (X-008, electrical D-372); P added 2026-10-14: the body and paint rows that came from 04-beauty when it merged in (D-570)"
 work,stage_title,str,no,,
 work,item,text,no,,
 work,owner,enum(agent|camden),no,,

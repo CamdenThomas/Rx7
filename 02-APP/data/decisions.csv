@@ -496,3 +496,14 @@ The complete playbook: the as-built facts are already `00-CAR`'s (nothing of 06-
 Text that named the live project is brought up to date: `CLAUDE.md` (the project list, the intake paragraph, the files that stay files - the factory-circuit write-ups are rows, D-522), `tools/doc/record.md`, `01-INTAKE/README.md`, `05-cad/model/README.md` (block 06.03 was closed by D-524), and `99-ARCHIVE/README.md` gets the folder's row.
 
 A file that lands in the intake from now on is parsed by a run in the project that wants it, into `00-CAR`'s tables, and moves to the ignored library like the rest - no standing project is needed for it."
+D-570,,"Beauty merges into luxury: one project for the fancy parts, the body and paint, and the interior",2026-10-14,standing,,,,03-luxury D-424 D-425 D-475 D-527,"**04-beauty merges into 03-luxury, which keeps its name: one project that buys the fancy parts, does the fancy body work and the paint job, and makes the interior.** Beauty's 13 work rows, its 4 decisions and its 14 retired terms move into `03-luxury`; its shell (project file, schema, an empty blocks table and its log) is archived at `99-ARCHIVE/2026-10-14_04-beauty/`.
+
+Camden's words (chat, 2026-10-14): ""next luxury should be comined wit beauty (stay names luxury) one project that buys the fancy parts, does the fancy body work and paint job, and all the interior plastic custome made for perfect sleak look (black leather apulstered with green stitching.""
+
+How the merge is done:
+
+- **Work.** Beauty's rows keep their ids (B01-B03, C01-C10: none collides with luxury's B1-B4 and C1) and take a new stage, `P` (body and paint), added to luxury's stage enum; their titles say which beauty stage each came from. Gates that crossed between the two become local: beauty C08's `03-luxury:V-063` is `V-063`, luxury X-009's `04-beauty:C08` is `C08`.
+- **Blocks.** Beauty's blocks were `04.NN`; the decisions that closed them (D-475, D-527) move with them, so their gates stay met. `rx7.py` learns that a project may answer for a merged project's prefix: luxury's `_project` carries `inherits_blocks = 04`, read by `block_prefixes` (selftested). New blocks of the merged project are `03.NN`.
+- **Elsewhere.** 00-CAR K-007 and planned P-009 point at `03-luxury`; luxury's stage S8 and part LP44 name the bumper's sensor windows as block 04.13 without the old area; `CLAUDE.md` and `tools/doc/ids.md` list the projects as they are now; the archive README gets the folder's row.
+
+Undoing it is moving rows back; nothing is bought, cut or wired."
