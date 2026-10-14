@@ -1771,3 +1771,14 @@ D-552,,Start relay socket terminals and seals on the parts list; other plugs as 
 His answer (block 01.48), option (a), no words added: ""(a) Add the start relay socket's terminals and seals to the parts list now, on the Waytek cart beside the socket - a few dollars. Each other connector is added to its own part's line when that part is chosen or its plug has been seen, without a new question unless one costs more than about 20 USD. Closes off nothing.""
 
 In the data: two parts rows for P005's five terminals and five seals, confirm until the Waytek page is read; Y43 closes the list of mating connectors after the strip looks."
+D-553,,"The bench kit row is ticked on the kit and the display; the bridge board is ordered in its own row, so the Display Unit's build does not wait on it",2026-10-13,standing,,,,,"**The bench kit row (Y16) is ticked when the kit's lines and the display are ordered. The display's bridge board is ordered later in a row of its own, added when the board is drawn (Y46), so the Display Unit's build (F3), which waits on Y16, no longer waits on a board that does not exist yet.**
+
+Why: F3's gate is Y16, and Y16's text said not to tick it until the display and the bridge were both ordered. After D-550 the display can be ordered now and the bridge only after the agent has drawn it and a fab has made it, so the build he ordered first (D-541) would have stood behind the bridge for weeks. F3's own text already says the row is done without the real display.
+
+With it, what D-550 left open in the bench rows:
+- **The display's listings.** One search found the HannStar HSD123KPW2-D10 kit with an HDMI board at Newegg (VSDISPLAY, VS-56S2 board, $237.99 as listed) and on VSDISPLAY's own eBay listing ($171.88 as listed). Neither page was read; P118 carries both as est and confirm, at the dearer price. The same panel is sold with VGA / DVI and Type-C boards, so Y16's step has him confirm the HDMI input before paying.
+- **Y16's and F3's briefs and steps** still said the display and bridge waited on block 01.46; they now say what D-550 ruled.
+- **Soldering tools.** The iron and meter (P044, P045) are in the Amazon cart, paid after the freeze, and no row holds solder paste, flux or hot air, which the chips with a pad underneath need. What he owns is not in the record: block 01.49 asks, and F3 and F5 wait on it. The orders do not.
+- The Digi-Key cart row's total follows the cart file: 98 lines, $224.56.
+
+In the data: work Y16 (item), Y46 (note: its order row comes with it), F3 and F5 (gate, note); parts P118; devices DV46; carts Digi-Key; briefs and steps Y16, F3."

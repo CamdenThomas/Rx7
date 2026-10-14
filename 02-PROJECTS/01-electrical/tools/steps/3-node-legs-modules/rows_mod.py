@@ -9,13 +9,13 @@ FIT = 'A part that does not sit on its pads: stop, photograph it against the cal
 
 # ------------------------------------------------------------------ F3
 brief('F3',
-      goal='The Display Unit\'s carrier is built, flashed and proved on the bench on USB power: the Teensy boots and prints its version, the DRIVE page draws through the BT817 board, the gauges follow live bus and sensor inputs and the radio reads the battery. The real bar display and its bridge are lit once block 01.46 has chosen them.',
+      goal='The Display Unit\'s carrier is built, flashed and proved on the bench on USB power: the Teensy boots and prints its version, the DRIVE page draws through the BT817 board, the gauges follow live bus and sensor inputs and the radio reads the battery. The real bar display is lit once its bridge board is back from the fab.',
       where='bench', time='two weekends - confirm',
       tools=['Soldering iron with a fine tip, solder, flux, tweezers (P044)', 'Hot-air or a hot-plate for the small packages if you have one', 'Magnifier', 'Multimeter (P045)',
              'Digital calipers, 0.01 mm, for holding each part against its footprint', 'The Mac with the Arduino IDE (Teensyduino) and the tree',
              'USB leads for the Teensy and the XIAO: on the bench the unit runs from USB, no 12 V supply is used', 'A potentiometer and jumper wires'],
       parts='P103 P169 P104 P105 P106 P107 P109 P110 P159 P176 P203 P122 P116 P108 P142 P143 P117 P118 P119 P120 P151 P202 P070',
-      before=['Y16 - the bench kit has arrived; the display (P118) and its bridge (P119) only once block 01.46 has chosen them',
+      before=['Y16 - the bench kit has arrived; the bridge board (P119) only once it has been drawn (Y46) and ordered - the row does not wait for it',
               'Y18 - the ICU carrier boards and their parts have arrived', 'T-048 - bench Teensys 2 and 3 are flashed and labelled: the PMU simulator and the tach simulator',
               'The host suites pass on the Mac (run.sh, exit code 0)', 'An anti-static mat or at least a grounded bench', 'Eye protection while soldering'],
       know=['The Display Unit (ICU in the tables) is the instrument cluster: a Teensy 4.1 socketed on its carrier, a BT817 display bridge, a 12.3-inch bar display and an ESP32-C3 radio, all in one housing behind the binnacle [modules ICU, D-491]',
@@ -24,7 +24,7 @@ brief('F3',
             USB_RAIL + ' [ICU carrier README: the socket\'s VIN on +5V]',
             'What waits for the car\'s 12 V, all of it during E28: the 12 V to 5 V buck and its input protection when the unit first boots on O10 (MG02); the illumination reference on DP-ICU-A 2 (MG03); the turn and high-beam tell-tales on DP-ICU-B 10, 11, 12 (MG10, MG11, MG14); the backlight feed on DP-ICU-A 6 through F16 (MG21); the real senders and tach (MG22) [migration MG02, MG03, MG21, MG22; icu_channels IC12, IC13]',
             'It has two plugs: DP-ICU-A (6-way: 1 logic +12 V, 2 illumination, 3 ground, 4 CAN2 H, 5 CAN2 L, 6 backlight +12 V) and DP-ICU-B (12-way: senders, tach, lamp lines) [cavities DP-ICU-A 1, DP-ICU-B 1]',
-            'Block 01.46 is open: no shop sells the 900 to 1000 nit bar and no ready-made bridge board exists, so the screen and its bridge are not chosen. Everything else is built and run here; the BT817 eval board (P117, in hand) stands in as the display [blocks 01.46; parts P117, P118, P119]',
+            'The screen is the 850 nit HannStar HSD123KPW2-D10 panel with an HDMI driver board, your ruling of 2026-10-13; its bridge is a small board the agent draws and you order with the next boards. Until that board is back, everything else is built and run here and the BT817 eval board (P117) stands in as the display [D-550; work Y46; parts P117, P118, P119]',
             'Display wiring to the BT817 board, single-lane SPI: CS 10, MOSI 11, MISO 12, SCK 13, PD 9, INT 24 [icu_channels IC21]',
             'Each part is held against its footprint before it is soldered - this replaces the separate measurement pass. Expected: DT13 pin pitch 4.445 and 6.35 mm; flange face to pin field 18.675 mm; three flange holes, the 12-way\'s centre hole above all; Teensy header rows 15.24 mm apart; XIAO castellation rows 15.24 mm apart; each within 0.2 mm [checks CK25; D-542]',
             'The first fit check on paper found the 6-way receptacle\'s model 1.54 mm off its pin field, and the ICU and DCU boards placing the DT13 flange differently (on the board edge against 3.955 mm beyond it): one of the two is wrong, and the part in your hand says which [checks CK27]',
@@ -38,7 +38,7 @@ brief('F3',
             'No assembly order, reflow profile or per-part test point list is in the record. The board prints no part references: the two assembly drawings in the carrier\'s fab folder, front and back, show each reference where it sits, and the BOM csv gives its value [work Y17; D-549]'],
       done_when='On the bench, on USB: about 5 V on the +5V rail and 3.3 V on +3V3, the Teensy boots and prints its version, the DRIVE page draws on the eval board, rpm / temperature / pressure / fuel follow the simulator and the potentiometer, pulling the PMU simulator blanks only the volts, the radio reports the battery, and the note says which of the real display, its bridge and the odometer proof were not done and why.',
       if_not='No 5 V on the rail from USB: unplug, look for a bridge at the buck and the socket before trying again, and note whether the Teensy itself ran. A blank screen with a booted Teensy: check the six display wires against the list. If the WHOLE cluster blanks when the PMU simulator is unplugged, the failure isolation is not there: raise a note. ' + FIT + ' Anything else unexpected: raise it in the app as a note with the serial output.',
-      record='Tick the row. Add a note with the firmware version printed at boot, what was proved, any part that did not match its footprint, and what was left for later (the real display if block 01.46 is still open; the odometer proof if F-007 is not in the version flashed), so the agent can add the bring-up log row.')
+      record='Tick the row. Add a note with the firmware version printed at boot, what was proved, any part that did not match its footprint, and what was left for later (the real display if its bridge board is not back; the odometer proof if F-007 is not in the version flashed), so the agent can add the bring-up log row.')
 step('F3', 'Check what arrived against the BOM', 'The ICU carrier BOM csv, line by line, against the bags. Boards: look at both sides for scratches.', 'Every line present.')
 step('F3', 'Hold every part against its footprint before any solder',
      ['On a bare board, dry, one part at a time, with the calipers:',
@@ -87,10 +87,10 @@ step('F3', 'Zero the IMU and check the battery path', 'Board flat and still: zer
 step('F3', 'Prove the odometer persists, if the firmware has it',
      'Only if the version flashed carries F-007. Run tach_simulator\'s speed channel into DP-ICU-B 8 until the odometer moves. Note the figure. Unplug the USB lead, wait, plug it in again. Then check the card (P151) holds it too.',
      'The same odometer figure after the power cycle, and on the card - or a line in the note that the firmware flashed does not have it yet.')
-step('F3', 'Bring up the real bar display, once block 01.46 has chosen it',
-     ['If block 01.46 is still open, or the panel (P118) and its bridge (P119) are not in hand: skip this step, say so in the note, and the row is still done.',
-      'Otherwise connect the chain as the block\'s answer set it and run the timing check V-084: pixel clock and sync polarity against the panel. The panel\'s backlight needs its own supply: read its sheet first.'],
-     'A stable full-width picture, no tearing or rolling - or a note that the display waits on block 01.46.', 'Do not buy a panel to finish this step: the block decides which one.')
+step('F3', 'Bring up the real bar display, once its bridge board is back',
+     ['If the panel (P118) or its bridge board (P119) is not in hand: skip this step, say so in the note, and the row is still done.',
+      'Otherwise connect the chain: the BT817 board\'s 50-pin cable into the bridge board, an HDMI lead from the bridge to the panel\'s driver board. Then run the timing check V-084: pixel clock and sync polarity against the panel. The panel\'s backlight needs its own supply: read its sheet first.'],
+     'A stable full-width picture, no tearing or rolling - or a note that the display waits on its bridge board.', 'The driver board\'s supply voltage is on its listing, not in the record: read it before applying power.')
 step('F3', 'Record it', 'Note the version, what was proved, what did not match its footprint and what was left for later, in the app.', 'A note the agent can turn into a bring-up log row. With F6 done as well, the strip (S1) opens.')
 
 # ------------------------------------------------------------------ F5
