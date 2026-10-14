@@ -29,7 +29,7 @@ README.029,README.md,29,Mazda wire color codes,fact,,,Blue,,,,,code: L; code: V;
 README.030,README.md,30,Master fuse & bus map (all sections),text,,,,,,,,"Every protected bus in the factory car, decoded. This is the sheet to check before assuming a circuit is independent — several are not.",
 README.031,README.md,31,Master fuse & bus map (all sections),wire,,,**WR**,Battery via 1.25 sq fusible link,Everything constant,,,,
 README.032,README.md,32,Master fuse & bus map (all sections),wire,,,,WR,Headlights,0.3 sq link ×2,,,
-README.033,README.md,33,Master fuse & bus map (all sections),wire,,,,WR,Ignition switch feed,0.5 sq link,,,
+README.033,README.md,33,Master fuse & bus map (all sections),wire,,,BY,Ignition switch ST,"Inhibitor switch (A/T) and starter, through X-09",0.5 sq link,,Corrected 2026-10-14 from S-001 p.9 and p.10: the 0.5 sq link is in the start lead; the switch itself is fed from the WR bus behind the 1.25 sq main link.,
 README.034,README.md,34,Master fuse & bus map (all sections),wire,,,**WG**,WR,Hazard flasher; remote mirrors,10 A,,,
 README.035,README.md,35,Master fuse & bus map (all sections),wire,,,**GW**,WR,**Horn + stop lights** (shared),15 A,,,
 README.036,README.md,36,Master fuse & bus map (all sections),wire,,,**R**,WR,Tail / park / marker / license (via light switch),10 A,,,
@@ -37,7 +37,7 @@ README.037,README.md,37,Master fuse & bus map (all sections),wire,,,**LY**,WR,"I
 README.038,README.md,38,Master fuse & bus map (all sections),wire,,,**LO**,WR,"Glove box light, seat belt warning",20 A,,,
 README.039,README.md,39,Master fuse & bus map (all sections),wire,,,**LR**,WR,"Hatch release, fuel-door release; audio",20 A,,,
 README.040,README.md,40,Master fuse & bus map (all sections),wire,,,**GY**,IG,**Turn signals + back-up + instrument cluster** (shared),10 A,,,
-README.041,README.md,41,Master fuse & bus map (all sections),wire,,,**BW**,IG,Alternator excitation,7.5 A,,,
+README.041,README.md,41,Master fuse & bus map (all sections),wire,,,**BW**,IG,Alternator excitation,15 A,,"X-04, 15 A on the scan (read at 500 dpi 2026-10-14); also feeds the emission control system",
 README.042,README.md,42,Master fuse & bus map (all sections),wire,,,**BLg**,IG,**Fuel pump**,10 A,,,
 README.043,README.md,43,Master fuse & bus map (all sections),wire,,,**LB**,IG,Front wiper & washer,10 A,,,
 README.044,README.md,44,Master fuse & bus map (all sections),wire,,,**L**,IG,Rear wiper & washer,10 A,,,
@@ -181,7 +181,7 @@ OEM-RECORD.128,OEM-RECORD.md,128,Master component list,device,,Fusible link 1.25
 OEM-RECORD.129,OEM-RECORD.md,129,Master component list,fact,,Fuse block (X-04),,,,,Dash,15 positions,
 OEM-RECORD.130,OEM-RECORD.md,130,Fuse & bus map — as built,wire,,,WR,Battery via 1.25 sq link,All constant,,,,
 OEM-RECORD.131,OEM-RECORD.md,131,Fuse & bus map — as built,wire,,,,WR,Headlights,0.3 sq link ×2,,,
-OEM-RECORD.132,OEM-RECORD.md,132,Fuse & bus map — as built,wire,,,,WR,Ignition switch,0.5 sq link,,,
+OEM-RECORD.132,OEM-RECORD.md,132,Fuse & bus map — as built,wire,,,BY,Ignition switch ST,"Inhibitor switch (A/T) and starter, through X-09",0.5 sq link,,Corrected 2026-10-14 from S-001 p.9 and p.10: the 0.5 sq link is in the start lead; the switch itself is fed from the WR bus behind the 1.25 sq main link.,
 OEM-RECORD.133,OEM-RECORD.md,133,Fuse & bus map — as built,wire,,,WG,WR,Hazard flasher; remote mirrors,10 A,,,
 OEM-RECORD.134,OEM-RECORD.md,134,Fuse & bus map — as built,wire,,,GW,WR,**Horn + stop lights**,15 A,,,
 OEM-RECORD.135,OEM-RECORD.md,135,Fuse & bus map — as built,wire,,,R,WR,Tail/park/marker/license via light switch,10 A,,,
@@ -189,7 +189,7 @@ OEM-RECORD.136,OEM-RECORD.md,136,Fuse & bus map — as built,wire,,,LY,WR,"Inter
 OEM-RECORD.137,OEM-RECORD.md,137,Fuse & bus map — as built,wire,,,LO,WR,"Glove box, seat belt warning",20 A,,,
 OEM-RECORD.138,OEM-RECORD.md,138,Fuse & bus map — as built,wire,,,LR,WR,"Hatch release, fuel-door release, audio",20 A,,,
 OEM-RECORD.139,OEM-RECORD.md,139,Fuse & bus map — as built,wire,,,GY,IG,**Turn + back-up + instrument cluster**,10 A,,,
-OEM-RECORD.140,OEM-RECORD.md,140,Fuse & bus map — as built,wire,,,BW,IG,Alternator excitation,7.5 A,,,
+OEM-RECORD.140,OEM-RECORD.md,140,Fuse & bus map — as built,wire,,,BW,IG,Alternator excitation,15 A,,"X-04, 15 A on the scan (read at 500 dpi 2026-10-14); also feeds the emission control system",
 OEM-RECORD.141,OEM-RECORD.md,141,Fuse & bus map — as built,wire,,,BLg,IG,Fuel pump,10 A,,,
 OEM-RECORD.142,OEM-RECORD.md,142,Fuse & bus map — as built,wire,,,LB,IG,Front wiper & washer,10 A,,,
 OEM-RECORD.143,OEM-RECORD.md,143,Fuse & bus map — as built,wire,,,L,IG,Rear wiper & washer,10 A,,,
@@ -204,9 +204,9 @@ charging-starting.001,charging-starting.md,1,,text,,,,,,,,"**Source:** Section A
 charging-starting.002,charging-starting.md,2,Charging,device,A-08,Alternator with integral regulator,"BW, WB",,,,2-pin,,10
 charging-starting.003,charging-starting.md,3,Charging,device,A-09,Alternator B+ output,WR,,,,ring/eyelet,,10
 charging-starting.004,charging-starting.md,4,Charging,wire,,,WR,Alternator B+ (A-09),WR constant bus,,,Main charge path,10
-charging-starting.005,charging-starting.md,5,Charging,wire,,,BW,Ignition IG → X-04 **7.5 A** → X-01,Alternator (A-08),,,Field excitation / lamp,10
+charging-starting.005,charging-starting.md,5,Charging,wire,,,BW,Ignition IG (BY) → X-04 **15 A** → X-01,Alternator (A-08),,,"15 A read on the scan at 500 dpi, 2026-10-14 (the earlier decode had 7.5 A); the same 15 A fuse is the W page's BW line to the emission control system.",10
 charging-starting.006,charging-starting.md,6,Charging,wire,,,WB,Alternator (A-08),"Choke and check relay (Section B), via X-01",,,Charge indicator sense,10
-charging-starting.007,charging-starting.md,7,Charging,text,,,,,,,,Fusible link **0.5 sq** at X-09 protects the ignition-side feed.,10
+charging-starting.007,charging-starting.md,7,Charging,text,,,,,,,,"Fusible link **0.5 sq** at X-09 sits in the **ST** lead (BY) from the ignition switch to the inhibitor switch and starter, as both the W page (p.9) and this page draw it (read 2026-10-14); it does not protect the IG feed.",10
 charging-starting.008,charging-starting.md,8,Starting,device,A-01,Starting motor,BY (M/T) or **BW (A/T)**,,,,1-pin,,10
 charging-starting.009,charging-starting.md,9,Starting,device,A-06,Inhibitor switch (A/T),"BY, GY, BW, RW",,,,4-pin,,10
 charging-starting.010,charging-starting.md,10,Starting,device,A-02,Fusible link 0.5 sq,LW,,,,,,10

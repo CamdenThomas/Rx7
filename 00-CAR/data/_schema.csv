@@ -216,6 +216,7 @@ circuits,title,text,yes,,
 circuits,systems,list,yes,systems,"systems ids, space-separated; the first is where the Manual files it"
 circuits,source,text,no,,the source it was decoded from (S- ids)
 circuits,note,text,no,,
+circuits,applies,enum(not-fitted|other-car|replaced),no,,"as specs.applies: blank is this car; another year's diagram read against S-001 (the 1983 and 1985 differences) is other-car, held back from the Manual (06-intake P17, P66)"
 procedure_steps,id,key,yes,,"<procedure id>.<two digits>, in order"
 procedure_steps,procedure,str,yes,procedures,the procedure it belongs to
 procedure_steps,n,int,yes,,"its place in the procedure, 1 first"

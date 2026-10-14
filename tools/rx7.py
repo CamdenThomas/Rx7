@@ -2299,6 +2299,13 @@ def manual_view(today_iso: str = "") -> dict:
     circuits = []
     if (car / "data" / "circuits.csv").exists():
         for r in map(clean, read_table(car, "circuits")[1]):
+            # another year's diagram read against this car's is held back like any other-car row
+            why = manual_hold("circuits", r)
+            if why != "shown":
+                if why != "gone":
+                    held.append({"table": "circuits", "key": r["file"], "label": r["title"],
+                                 "reason": why, "why": HELD_WHY[why]})
+                continue
             f = ROOT / CIRCUITS_DIR / r["file"]
             if not f.exists():
                 lp = sources.get(r.get("source", "").split()[0] if r.get("source") else "", {}).get("local_path", "")
@@ -3637,12 +3644,14 @@ def cmd_selftest(args):
                                              [["PT001", "Pump", "EC-1-1 EC-1-2", ""], ["PT002", "Valve", "EC-1-1", "N3A1-99"]]), encoding="utf-8")
         (d / "catalogue.csv").write_text(csvtext(["id", "part_no"], [["EC-1-1", ""], ["EC-1-2", "8851-13-350"]]), encoding="utf-8")
         (d / "sources.csv").write_text(csvtext(["id", "title", "url", "local_path"], [["S-001", "Wiring", "", ""]]), encoding="utf-8")
-        (d / "circuits.csv").write_text(csvtext(["file", "title", "systems", "source", "note"],
-                                                [["a.md", "Lamps", "SY-LAMP", "S-001", ""], ["gone.md", "Gone", "SY-LAMP", "", ""],
-                                                 ["horn.md", "Horn", "SY-LAMP", "S-001", ""]]), encoding="utf-8")
+        (d / "circuits.csv").write_text(csvtext(["file", "title", "systems", "source", "note", "applies"],
+                                                [["a.md", "Lamps", "SY-LAMP", "S-001", "", ""], ["gone.md", "Gone", "SY-LAMP", "", "", ""],
+                                                 ["horn.md", "Horn", "SY-LAMP", "S-001", "", ""],
+                                                 ["y83.md", "1983 differences", "SY-LAMP", "S-041", "", "other-car"]]), encoding="utf-8")
         (d / "circuit_paths.csv").write_text(csvtext(["id", "circuit", "n", "section", "kind", "ref", "what", "wire", "from", "to", "note"],
                                                      [["horn.002", "horn.md", "2", "Wires", "wire", "", "", "GW", "X-04", "F-16", ""],
-                                                      ["horn.001", "horn.md", "1", "Devices", "device", "F-16", "Horn relay", "", "", "", ""]]), encoding="utf-8")
+                                                      ["horn.001", "horn.md", "1", "Devices", "device", "F-16", "Horn relay", "", "", "", ""],
+                                                      ["y83.001", "y83.md", "1", "", "text", "", "", "", "", "", "differs"]]), encoding="utf-8")
         (root / CIRCUITS_DIR).mkdir(parents=True)
         (root / CIRCUITS_DIR / "a.md").write_text("# Lamps\n", encoding="utf-8")
         old = _use_tree(root)
@@ -3660,6 +3669,9 @@ def cmd_selftest(args):
                hb.index("## Devices") < hb.index("## Wires") and "| F-16 | Horn relay |" in hb and "| GW | X-04 | F-16 |" in hb)
         expect("a circuit is read from 00-CAR with its file's text, a missing file left out",
                [(c["file"], c["body"]) for c in mv.get("circuits", []) if c["file"] != "horn.md"] == [("a.md", "# Lamps\n")])
+        expect("another year's circuit (applies other-car) is held back from the Manual, not shown (06-intake P66)",
+               "y83.md" not in [c["file"] for c in mv.get("circuits", [])]
+               and any(h["table"] == "circuits" and h["key"] == "y83.md" and h["reason"] == "other-car" for h in mv.get("held", [])))
         expect("a procedure with no Markdown file gets its body from its steps, in order",
                procedure_body([{"do": "Block the wheels", "page": "p.G-2"},
                                {"do": "Jack", "how": "at the crossmember", "caution": "stands"}])
