@@ -122,8 +122,7 @@ one document after another.
 
 The forecast today (all 1,229 parse items): Haiku 73.1 M input tokens (nearly all cached reads),
 3.3 M output, **$4.44 predicted**; Sonnet 17.5 M in, 0.7 M out, **$16.16**; together **$20.60**, with
-every cap summing to $91.47 (the worst case if every single worker looped). Merges are priced when
-`--merge` builds them (they depend on how many facts there are): about $0.19 a Sonnet merge of 25 facts.
+every cap summing to $91.47 (the worst case if every single worker looped). The overhaul is priced when parsing is done (it depends on how many facts there are).
 
 ## A session
 
@@ -155,6 +154,16 @@ ledger replaces them.
    is fixed in the parse playbook's worker text - the only lever on the workers.
 4. `build_queue.py --review` for the failed items.
 
+## The store until the overhaul (D-576)
+
+Parsing only stores; nothing is merged while it runs. Everything a page says lives in 05-library's
+`facts` table - one row per fact, citing its page, in plain text the app and any agent can read -
+and the page's `kind`, `topic`, `scope` and `status` in 00-CAR's `pages`. That is the whole
+non-PDF copy of the library. The overhaul (phase 3) reads only these tables, never a PDF, so it
+can be planned, priced and run as one job with the full picture: duplicates across documents and
+years are visible together, which a merge done item by item could not see. The PDFs stay on disk
+until the overhaul and the app's References page are done (L6 waits on L3).
+
 ## Phases and when each is done
 
 | Phase | Work rows | Done when |
@@ -162,7 +171,7 @@ ledger replaces them.
 | 0 Structure | L0 | tables, checks, tools, playbooks, this plan - **done 2026-10-14** |
 | 1 Inventory | L1 | every PDF a docs row, every page a pages row, cited pages marked, the queue built - **done 2026-10-14** |
 | 2 Parse | L2 | no parse / index / catalogue / diagnosis / figure / review item open, claimed or failed; every page parsed, held, indexed, duplicate or empty |
-| 3 Merge and cross-check | L3 | `build_queue.py --merge` emptied: every fact merged, duplicate, rejected or raised; every conflict a block; `rx7.py dups` clean (then made a refusal); every `confirm` that only a page could settle re-checked; each page's `rows` naming its home rows |
+| 3 The overhaul | L3 | one separate task after every page is parsed (D-576), planned and priced then: every staged fact cross-referenced against the car and the other facts, combined, conflicts raised as blocks, merged into 00-CAR and the projects in one pass, each page linked to its home rows, `rx7.py dups` clean and made a refusal |
 | 4 The app | L4 | the Manual's References page (every source: link, pages, coverage, the rows each page became), sources on part and system pages, a Diagnosis view; desktop rebuilt |
 | 5 Remove | L5, L6 | the offline copy made and named in `docs.offline` (Camden: where); every finished doc's file deleted and marked `gone`; the OCR text and raw research folded or deleted; the 5 tracked vendor PDFs out of git; `check` clean with no PDF in the tree |
 
