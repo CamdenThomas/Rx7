@@ -1845,3 +1845,19 @@ His answer (block 01.52, desktop, 2026-10-13), option (a), no words added: ""(a)
 Reasoning: the output stud already carries the Class-T feed's lug (C01) and the starter's holder; stacking a second 5191 base may leave no thread for the nut, and S-507 states no maximum number of 5191 bases on one stud. One dual base removes the question. The recommendation's flip conditions (the 2151 much dearer than two 5191s, or not clearing the battery's boot in the bin) are checked at the cart and at E41.02 with the part in hand; if either fails, the fallback is option (c), a surface-mount MRBF for F34, which is then a new block (money).
 
 Consequences in the data: P051 becomes one Blue Sea 2151 (qty 1, price to confirm at the cart); F34's location is the second fuse of that block; E41.02 fits the 2151's second way empty instead of stacking a holder; Y47 loses its F34 holder item; E41's gate on 01.52 is met."
+D-561,,"The display bridge board drawn: a TFP410 from the BT817 board's flat cable to an HDMI socket, two layers, its parts a file of their own",2026-10-13,standing,,,,,"**The display bridge board is drawn (Y46): a TI TFP410 takes the BT817 board's 24-bit RGB from a 50-way flat cable and sends DVI on an HDMI socket to the panel kit's driver board, on a 62 x 46 mm two-layer board; its parts are a separate Digi-Key file so they can ride in tonight's cart or follow it.**
+
+What was decided, each the small path (D-550 ruled the board; these are how it is drawn):
+- **The cable and the pin mapping.** CN1 on the ME817EV is bottom-contact (S-500), and so is J1 (Hirose FH12-50S-0.5SH). A 50-way 0.5 mm flat cable with contacts on the same side at both ends, the two connectors mouth to mouth, puts CN1 pin n on J1 pin 51 - n; the sheet is drawn that way and names its nets by CN1's pins. A reversed cable would short BT817 outputs to ground, so the build steps meter one ground before power.
+- **The TFP410 set by its pins, no I2C** (TI SLDS145D): 24-bit single edge, 3.3 V CMOS inputs, rising-edge latch with a solder jumper for falling, de-skew off, always on with a jumper to follow the BT817's DISP line; RTFADJ 510 ohm.
+- **DVI on HDMI with no DDC:** the TMDS pairs straight to the socket, +5V on pin 18, HPD to a test point; nothing reads the panel's EDID because the BT817 sends one fixed mode.
+- **Power:** 5 V in on a JST XH 2-way and an AP2112K-3.3 for the TFP410 (about 0.1 A). Where the 5 V comes from inside the Display Unit is not drawn yet - confirm with the unit's layout.
+- **Two layers, not four:** the TMDS pairs are about 15.5 mm and matched within 0.2 mm, but not a controlled 100 ohm impedance; at 1920 x 720 and 60 Hz a run this short works in practice, and a 4-layer revision is the fix if it does not.
+
+Also found, not new but worth saying: the ME817EV's own sheet rates its RGB port to 1024 x 600 (S-500 p.1), and the panel is 1920 x 720. Whether the BT817's pixel clock reaches about 100 MHz is V-084's bench check, before anything else depends on the panel.
+
+Proof: ERC 0; DRC 0 violations, 0 unconnected, 0 sheet-to-board differences; routed by freerouting 1.9.0 through the DSN / SES round trip (gen_bridge.py and board_bridge.py rebuild it). Fab package, assembly drawings and BOM beside it.
+
+Money: the parts file is 14 lines, $37.92 by estimates (nothing read on Digi-Key's page), and five boards at the fab about $5 more - P119 carries the sum. His row to order it is Y48; it can be added to Y18's carts if they are not paid yet.
+
+In data: parts P119; work Y46 done, Y48 added (his, with brief and steps)."

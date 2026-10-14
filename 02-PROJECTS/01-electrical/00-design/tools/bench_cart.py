@@ -133,9 +133,29 @@ M.append(("6 sealed receptacles", 2, "DT13-06PA", "TE Deutsch", "6-way flanged b
 M.append(("6 sealed receptacles", 3, "DT13-12PA", "TE Deutsch", "12-way flanged board receptacle", "ICU J3, DCU J9, upper J1", "P122:1 P150:1 P194:1", 8.74, "TTI's row on Octopart 2026-10-13", ""))
 M.append(("6 sealed receptacles", 1, "DT13-08PA", "TE Deutsch", "8-way flanged board receptacle", "DCU J2", "P153:1", 10.35, "Mouser's price in a search listing, undated", ""))
 
+# The display bridge board (Y46, D-550, D-561): its own Digi-Key file, so Y18's steps keep their lines;
+# loaded into the same cart when both are bought the same night
+BR = []
+G = "7 bridge board"
+BR.append((G, 2, "TFP410PAP", "Texas Instruments", "DVI transmitter HTQFP-64", "bridge U1, one spare", "P119:2", 9.00, EST, "TFP410PAPR (the reel) is the same part"))
+BR.append((G, 2, "FH12-50S-0.5SH(55)", "Hirose", "50-way 0.5 mm FPC connector, bottom contact", "bridge J1, one spare", "P119:2", 2.80, EST, "only a bottom-contact 50-way 0.5 mm FPC connector on the same footprint: J1's pin mapping assumes it"))
+BR.append((G, 2, "0150200506", "Molex", "50-way 0.5 mm flat cable, contacts on the same side (type A), about 100 mm", "BT817 board CN1 to bridge J1", "P119:2", 3.50, EST, "any 50-way 0.5 mm FFC with contacts on the SAME side at both ends, 0.3 mm thick, long enough for the two boards' places - confirm the part number's type on its drawing"))
+BR.append((G, 2, "2086581001", "Molex", "HDMI type A receptacle, horizontal", "bridge J2, one spare", "P119:2", 1.60, EST, ""))
+BR.append((G, 2, "AP2112K-3.3TRG1", "Diodes Inc", "3.3 V 600 mA LDO SOT-23-5", "bridge U2, one spare", "P119:2", 0.40, EST, ""))
+BR.append((G, 10, "CL10B104KB8NNNC", "Samsung", "100 nF 50 V X7R 0603", "bridge C3-C8", "P119:6", 0.02, EST, ""))
+BR.append((G, 10, "CL10B105KA8NNNC", "Samsung", "1 uF 25 V X7R 0603", "bridge C1 C9", "P119:2", 0.03, EST, ""))
+BR.append((G, 2, "CL21B106KOQNNNE", "Samsung", "10 uF 16 V X7R 0805", "bridge C2", "P119:1", 0.49, MOO, ""))
+BR.append((G, 10, "RC0603FR-07510RL", "Yageo", "510 R 1 % 0603", "bridge R1 (TFADJ)", "P119:1", 0.02, EST, "any 510 R 1 % 0603"))
+BR.append((G, 10, "RC0603FR-074K7L", "Yageo", "4.7 k 1 % 0603", "bridge R2", "P119:1", 0.02, EST, ""))
+BR.append((G, 10, "RC0603FR-0710KL", "Yageo", "10 k 1 % 0603", "bridge R3 R4", "P119:2", 0.02, EST, ""))
+BR.append((G, 2, "B2B-XH-A(LF)(SN)", "JST", "XH 2-way header", "bridge J3, one spare", "P119:1", 0.17, EST, ""))
+BR.append((G, 2, "XHP-2", "JST", "XH 2-way plug housing", "the 5 V lead to J3", "P119:1", 0.10, EST, ""))
+BR.append((G, 1, "ASXHSXH22K152", "JST", "XH lead, crimped both ends, 22 AWG 6 in", "the 5 V lead to J3", "P119:1", 0.70, EST, ""))
+
 H = ["group", "qty", "mpn", "maker", "what", "refs", "rows", "est_unit_usd", "price_source", "substitute"]
 out = sys.argv[1]
-for name, rows in (("bench-revA-digikey-cart.csv", L), ("bench-revA-mouser-cart.csv", M)):
+for name, rows in (("bench-revA-digikey-cart.csv", L), ("bench-revA-mouser-cart.csv", M),
+                   ("bench-revA-bridge-digikey-cart.csv", BR)):
     seen = set()
     for r in rows:
         assert r[2] not in seen, r[2]

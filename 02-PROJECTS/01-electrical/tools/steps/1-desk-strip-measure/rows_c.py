@@ -421,3 +421,49 @@ ROWS.append(dict(
          "Eleven blocks of readings in the app.", ""),
     ],
 ))
+
+
+# ------------------------------------------------------------------ Y48 (D-561): the display bridge board's order
+BR = _csv("00-design", "bench-revA-bridge-digikey-cart.csv")
+ROWS.append(dict(
+    id="Y48",
+    goal="The display bridge board and its parts are ordered: five boards from the fab and the fourteen lines of its Digi-Key file - in the same carts as Y18 if those are not paid yet.",
+    where="desk",
+    time="20 min",
+    tools=["a browser and a card"],
+    parts="P119",
+    before=[
+        "Y46 is done: the bridge board is drawn and its fab zip is in the tree",
+        "Pull the tree first so the zip and the parts file are the latest",
+    ],
+    know=[
+        "The bridge joins the BT817 board's flat-cable picture output to the HDMI input of the panel kit you chose: a TI TFP410 on a 62 x 46 mm two-layer board. [D-550; D-561; parts P119]",
+        "Its fab zip is bridge-board-revA-gerbers.zip in the bridge board's fab folder under the design folder; its parts are bench-revA-bridge-digikey-cart.csv beside the design README: %d lines, %s by the file's estimates of %s. [D-561; the bridge's cart file]" % (len(BR), _money(_usd(BR)), PRICED),
+        "Five boards is the least the fab sells; at this size they are about $5 before shipping, by estimate. [parts P119]",
+        "The flat cable must have its contacts on the SAME side at both ends (type A). The other kind reverses every pin, and powering a reversed cable shorts the BT817 board's outputs. [D-561; the bridge README]",
+        "The connector J1 must be the bottom-contact Hirose FH12-50S-0.5SH(55) or one with the same footprint and contact side: the pin mapping assumes it. [D-561]",
+        "An HDMI lead from the bridge to the panel's driver board is not in the file: the panel kit may bring one; otherwise any short HDMI lead. [D-561; parts P118]",
+    ],
+    done_when="The fab order and the Digi-Key lines are paid for and the row is ticked.",
+    if_not="A line out of stock: take the substitute the step names; where it names none, leave it out, pay for the rest and write the part number in the app. The fab's preview shows a wrong size or one copper layer: do not pay; tell the agent.",
+    record="Tick Y48 when both are ordered. In words: what each came to, any substitute, and the delivery dates.",
+    steps=[
+        ("Pull the tree and find the two files",
+         "git pull in ~/dev/Rx7. Under " + DESIGN + " the display unit's bridge-board folder has a fab folder with bridge-board-revA-gerbers.zip; beside the README in " + DESIGN + " is bench-revA-bridge-digikey-cart.csv.",
+         "One zip and one parts file.", ""),
+        ("Add the board at the fab",
+         "On jlcpcb.com, in the same cart as Y18's boards if that order is not paid yet: add the zip, PCB Qty 5, 2 layers, 1.6 mm, 1 oz, green, HASL, Remove Mark - the same settings as the other four.",
+         "A preview of a 62 x 46 mm board, 2 layers.",
+         "A preview of another size means the wrong file: stop."),
+        ("Load the parts at Digi-Key",
+         "In the same cart as Y18's lines if it is not paid yet: upload bench-revA-bridge-digikey-cart.csv the same way (qty and mpn columns), or type each line: " + _list(BR) + ".",
+         "%d lines, %s by the file's estimates." % (len(BR), _money(_usd(BR))),
+         "The flat cable must be type A, contacts on the same side at both ends: read it on the listing before paying."),
+        ("Take the substitutes where the cart has none",
+         _subs(BR) + ".",
+         "No line left at zero stock without a substitute or a note.", ""),
+        ("Pay and enter it",
+         "Pay both. Tick Y48 and write what each came to, any substitute and the delivery dates.",
+         "Y48 ticked.", ""),
+    ],
+))

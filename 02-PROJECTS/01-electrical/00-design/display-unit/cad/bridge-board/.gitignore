@@ -1,0 +1,9 @@
+# Built from the board, never committed: router round-trip files, DRC reports, renders, the STEP.
+*.dsn
+*.ses
+*-drc.rpt
+*-erc.rpt
+*.step
+*-top.png
+*-bottom.png
+__pycache__/
