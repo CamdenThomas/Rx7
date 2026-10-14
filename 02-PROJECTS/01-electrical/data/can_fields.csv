@@ -73,10 +73,9 @@ id,msg,bytes,field,encoding,note
 0x320/3–6,0x320,3–6,reserved,,
 0x320/7,0x320,7,counter,,
 0x400/0,0x400,0,"Keys down, first eight","bitfield: b0 rear defog · b1 hatch release · b2 fuel-door release · b3 fan mode (was HVAC mode, D-492) · b4 recirculate · b5 window DRV up · b6 window DRV down · b7 window PASS up - the window bits are the two contacts of one sprung switch (D-492); both closed reports neither","1 while the key is held (F-016); the order is the panel's key matrix, H-007"
-0x400/1,0x400,1,"Keys down, the rest","bitfield: b0 window PASS down · b1 mirror stick press · b2 mirror defog · b3 spare (ROW4 C2) · b4 spare (ROW4 C3) · b5 centre knob push · b6-7 reserved (D-492, F-018; F-016 assigned b0-b1)",the thumbstick press is also read locally - it toggles LEFT / RIGHT (D-359); it is here for logging
+0x400/1,0x400,1,"Keys down, the rest","bitfield: b0 window PASS down · b1 mirror stick press · b2 mirror defog · b3 spare (ROW4 C2) · b4 spare (ROW4 C3) · b5 centre knob push · b6 screen knob push (D-580) · b7 reserved (D-492, F-018; F-016 assigned b0-b1)",the thumbstick press is also read locally - it toggles LEFT / RIGHT (D-359); it is here for logging
 0x400/2,0x400,2,"Held ≥ 1 s, first eight","bitfield, same bits as byte 0",
 0x400/3,0x400,3,"Held ≥ 1 s, the rest","bitfield, same bits as byte 1",
-0x400/4–6,0x400,4–6,reserved,,
 0x400/7,0x400,7,counter,,
 0x180 ext/0–1,0x180 ext,0–1,Lambda,"uint16, 0.0001 λ per bit, big-endian — 0 to 6.5535",AFR = λ × 14.65 (gasoline); confirmed D-266
 0x180 ext/2–3,0x180 ext,2–3,Oxygen,"int16, 0.001 % per bit, big-endian — −32.768 to 32.767 %",confirmed D-266
@@ -85,3 +84,6 @@ id,msg,bytes,field,encoding,note
 0x180 ext/6–7,0x180 ext,6–7,Flags (AEM),byte 6: bit 1 LSU4.9 detected · bit 5 free-air cal in use · bit 7 lambda data valid; byte 7: bit 6 sensor fault; other bits reserved,"no rolling counter — AEM's frame, not ours; render dashes unless valid = 1 and fault = 0 (D-153); confirmed D-266"
 0x210/3,0x210,3,Tell-tales and warnings,bitfield: b0 charge lamp (IC05) · b1 brake warning (IC06) · b2 turn L (IC09) · b3 turn R (IC10) · b4 high beam (IC11) · b5-7 reserved,Y10 2026-10-09: IC05 / IC06 claimed a 0x210 flag that had no field; can_map.h follows (Y8)
 0x210/4–6,0x210,4–6,reserved,,
+0x400/4,0x400,4,Screen knob detents,"int8, a rolling count of the screen knob's detents while it is on pages, clockwise up, wrapping","D-580: the Display Unit steps its page by the difference from the last frame, so a lost frame loses no step; turns while the knob is on brightness do not count here"
+0x400/5,0x400,5,Display level,"uint8, % 10-100 - the Display Unit's own brightness, set from the screen knob after a click","D-580: the display runs at its day level times this; with IC14 on, 0x300 byte 6 scales it too (D-579). On a timeout the Display Unit keeps its last level"
+0x400/6,0x400,6,reserved,,

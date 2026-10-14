@@ -51,4 +51,4 @@ LC49,Panel keys held,0x400/2–3,2,"bitfield, OR of the second",
 LC50,"IMU acceleration, mean",IC23,6,"int16 × 3, 0.01 g (lateral, longitudinal, vertical), 1 s mean",
 LC51,IMU peaks,IC23,6,"int16 × 3, 0.01 g: the second's peak lateral, acceleration and braking","what stats.h already tracks (maxLatG, maxAccelG, maxBrakeG)"
 LC52,Illumination,IC14,1,"uint8, % of the dimmer reference",
-LC53,Cluster page,IC22,1,"uint8, the page shown",
+LC53,Cluster page,SN32,1,"uint8, the page shown","the page the Display Unit shows, stepped by the climate unit's screen knob over 0x400 byte 4 (D-580; was IC22, the page button)"
