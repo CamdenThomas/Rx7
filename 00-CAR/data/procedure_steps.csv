@@ -1629,3 +1629,77 @@ PR-193.01,PR-193,1,Move the heater lever between max and bi-level,Heater control
 PR-193.02,PR-193,2,Move it from bi-level to heat,Listen for the switch,the switch clicks (actuated),,step 22b
 PR-193.03,PR-193,3,Adjust if it does not,Slide the switch bracket in its slotted hole,,,step 22c
 PR-193.04,PR-193,4,Tighten the bracket,The bracket's screws to the heater once it works,,a misadjusted switch runs the compressor in heat and defrost and spoils defrosting,step 22d
+PR-194.01,PR-194,1,Make the car safe and disconnect the battery,"Parking brake on, wheels blocked; battery negative off",,,7A:1
+PR-194.02,PR-194,2,Free the top of the gearbox,Unplug the inhibitor switch coupler; remove the converter housing upper cover; pull the vacuum diaphragm's sensing tube; disconnect the air pipe; remove the thermal reactor cover; remove the upper transmission-to-engine bolts,,,7A:1
+PR-194.03,PR-194,3,Raise the car and take out the propeller shaft,On stands; propeller shaft out (Section 8); the turning holder 49 0259 440 into the extension housing,,without the holder the fluid runs out of the extension,7A:1
+PR-194.04,PR-194,4,Clear the exhaust air ducts,"Air pipe (thermal reactor to air duct) off; the air duct's nuts at the thermal reactor, its hanger and its joint at the silencer",,,7A:2
+PR-194.05,PR-194,5,Take out the starter and the lower cover,"Starter wires off, bracket and starter out; converter housing lower cover off",,,7A:2
+PR-194.06,PR-194,6,Unbolt the converter from the drive plate,Mark the drive plate and converter for realignment; turn the engine to reach each bolt and remove them with the wrench 49 0877 435,,,7A:2
+PR-194.07,PR-194,7,Support the gearbox and engine,A jack under the transmission and one under the engine; remove the remaining transmission-to-engine bolts,,,7A:2
+PR-194.08,PR-194,8,Disconnect the last connections,Speedometer cable; the select rod at the select lever; the transmission support's nuts to the body; lower the gearbox enough to reach and disconnect the fluid pipes,,,7A:2
+PR-194.09,PR-194,9,Slide the gearbox out,"Rearward until the input shaft clears the eccentric shaft's end, then lower the transmission and converter together",the converter stays on the gearbox,keep the converter from falling off the front,7A:2
+PR-195.01,PR-195,1,Refit in the reverse order of PR-194,,,,7A:18
+PR-195.02,PR-195,2,Bolt the converter to the drive plate on its marks,"Align the painted marks; bolts 35-50 N m (3.5-5.0 m-kg, 25-36 ft-lb) (S-038 T:7 rows)",,,7A:18
+PR-195.03,PR-195,3,Fill and test,"Fill with ATF to the level (PR-196; capacity and type SP-1753); then the stall test (PR-199), a road test (PR-200) and the line pressure check (PR-197)",,,7A:18
+PR-196.01,PR-196,1,Park level with the brake on,"Level ground, parking brake firmly on",,,7A:18
+PR-196.02,PR-196,2,Warm the engine,"To working temperature, with a steady idle",,,7A:18
+PR-196.03,PR-196,3,Run the selector through every position,"Through all drive positions, then leave it in P",the engine stays running for the check,,7A:18
+PR-196.04,PR-196,4,Wipe and reinsert the dipstick,"Wipe the cap clean, pull the dipstick, wipe it and push it fully home",,,7A:18
+PR-196.05,PR-196,5,Read the level,Pull it again,between the L and F marks; top up with ATF Type F (SP-093),,7A:18
+PR-197.01,PR-197,1,Warm the fluid and check the basics,Fluid at working temperature; fluid level (PR-196) and idle speed within specification,,,7A:18
+PR-197.02,PR-197,2,Fit the gauge,"Pressure gauge 49 0378 400A on the pressure outlet at the right rear of the case, placed so it is read from the driver's seat",,,7A:18
+PR-197.03,PR-197,3,Block the car,"Chocks front and rear, parking brake on",,press the brake pedal firmly with the left foot before touching the accelerator,7A:18
+PR-197.04,PR-197,4,Read the idle pressure in D,"Selector in D, engine idling",300-400 kPa (S-038 T:5 line pressure row),,7A:18
+PR-197.05,PR-197,5,Read the stall pressure in D,"Press the accelerator slowly to wide open, watching the pressure rise smoothly, and read it at stall",900-1100 kPa,no more than 5 s from pressing to releasing,7A:18
+PR-197.06,PR-197,6,Cool the converter,"Selector to N, idle for more than a minute",,,7A:18
+PR-197.07,PR-197,7,"Repeat for R, 2 and 1","Same way, cooling between each","R 400-700 / 1600-1900, 2 800-1200 / 800-1200, 1 300-400 / 900-1100 kPa (S-038 T:5)",,7A:18
+PR-198.01,PR-198,1,Fit the gauge,Fluid level checked; gauge 49 0378 400A on the pressure outlet,,,7A:19
+PR-198.02,PR-198,2,Read it at the set road speeds,"Drive at 20, 35 and 55 mph and read the pressure","80-130, 160-230, 340-450 kPa (S-038 T:5 governor rows); out of range: take out and check the governor valve",,7A:19
+PR-199.01,PR-199,1,Warm the fluid and check its level,Working temperature; PR-196,,,7A:19
+PR-199.02,PR-199,2,Fit a tachometer and block the car,"Chocks front and rear, parking brake on",,left foot hard on the brake before the accelerator,7A:19
+PR-199.03,PR-199,3,Read the stall speed in D,"Selector in D, accelerator to the floor, read the engine speed",2350-2600 rpm after break-in (S-038 T:4),no more than 5 s,7A:19
+PR-199.04,PR-199,4,Cool the converter,"N, idle more than a minute",,,7A:19
+PR-199.05,PR-199,5,"Repeat in 2, 1 and R","Same way, cooling between each",the same stall speed in each,,7A:19
+PR-200.01,PR-200,1,Drive in D,Pull away and accelerate,D1 to D2 to D3 changes,,7A:19
+PR-200.02,PR-200,2,Check reverse,In R the engine speed does not run away,,,7A:19
+PR-200.03,PR-200,3,Check kick-down,Floor the accelerator in D3 at a speed below the kick-down limit,it changes down,,7A:19
+PR-200.04,PR-200,4,Shift from D to 1 on the move,Selector D to 1,"D3 to 2 (12) to 11, with engine braking in 12 and 11",,7A:19
+PR-200.05,PR-200,5,Check 1 and 2 held,In 1 the speed does not rise past first; in 2 it stays in second,,,7A:19
+PR-200.06,PR-200,6,Check P holds the car,Park on a slope in P,the car does not move,,7A:19
+PR-200.07,PR-200,7,Check the shift speeds,Against the table (SP-1756 for 1982),,,7A:19
+PR-201.01,PR-201,1,"Selector to N, car on stands",Idle speed already correct,,,7A:20
+PR-201.02,PR-201,2,Disconnect the T-joint,From the lower end of the selector lever operating arm,,,7A:20
+PR-201.03,PR-201,3,Put the gearbox lever in N,"The transmission's range lever to N, the third detent from the rear",,,7A:20
+PR-201.04,PR-201,4,Set the T-joint,Loosen its nuts and adjust it until it enters the operating arm's hole freely; tighten the nuts,,,7A:20
+PR-201.05,PR-201,5,Reconnect and check,Connect and secure the T-joint; lower the car; try every selector position,each position engages,,7A:20
+PR-202.01,PR-202,1,"Lever in N or D, loosen the knob",Loosen the knob's lock nut and screw the knob lightly fully in,,,7A:20
+PR-202.02,PR-202,2,Back it out one turn,So the push button faces the driver,,,7A:20
+PR-202.03,PR-202,3,Check P with the button,"Push the button: the lever goes into P; if not, screw the knob in one turn",,,7A:20
+PR-202.04,PR-202,4,Check the lock without the button,"Without the button the lever does not go N to R or D to 2; if it does, screw the knob out",,,7A:20
+PR-202.05,PR-202,5,Tighten and check the start lock,Lock nut 15-20 N m (1.5-2.0 m-kg); the starter turns only in N and P,,,7A:20
+PR-203.01,PR-203,1,Free the switch,Unplug its connectors; loosen the lock nut and screw the switch out a few turns,,,7A:20
+PR-203.02,PR-203,2,Floor the accelerator,Hold the pedal fully down,,,7A:20
+PR-203.03,PR-203,3,Screw the switch in to the click,"Gradually, until it clicks, then half a turn more",,,7A:20
+PR-203.04,PR-203,4,Lock it and reconnect,Tighten the lock nut; connectors back on,,,7A:20
+PR-204.01,PR-204,1,"Selector to N, car on stands",,,,7A:21
+PR-204.02,PR-204,2,Loosen the switch,Loosen its attaching bolts; remove the screw in the switch body,,,7A:21
+PR-204.03,PR-204,3,Align it with a pin,Move the switch until the screw hole lines up with the small hole inside; check with a 2.0 mm pin through both,,,7A:21
+PR-204.04,PR-204,4,Fix it,"Snug the bolts, pull the pin, refit the screw, tighten the bolts (5-7 N m, S-038 T:7)",the starter turns only in N and P,,7A:21
+PR-205.01,PR-205,1,Drain and mount the gearbox,Drain the ATF; on the stand 49 0378 320A; converter and converter housing off; input shaft out of the pump; extension housing and oil pan off,,,7A:3
+PR-205.02,PR-205,2,Take off the outside parts,"Downshift solenoid, vacuum diaphragm and rod, control valve body, inhibitor switch; parking lever snap ring and lever, parking rod; manual plate nut, then the manual shaft and plate",,,7A:3
+PR-205.03,PR-205,3,Take out the pump and the front train,"Servo cover off; loosen the piston stem lock nut and snug the stem to hold the front clutch drum; pump out with the puller 49 0378 390; band retaining bolt out, stem loosened, band strut out; band, front clutch, rear clutch, front planet carrier and sun gear out together",,,7A:3-4
+PR-205.04,PR-205,4,Take out the rear train,"Rear carrier's large snap ring and carrier; output shaft snap ring (pliers 49 8000 015) and internal drive flange; low and reverse connecting drum with the one-way clutch, turning it counter-clockwise; output shaft; governor and oil distributor; the distributor's needle bearing and race",,,7A:4-5
+PR-205.05,PR-205,5,Take out the low and reverse brake and servo,"The large snap ring, retaining plate, drive and driven plates; the one-way clutch inner race bolts (hex wrench 49 0378 346) and the inner race, spring ring, return spring and thrust ring; blow air into the passage for the piston; servo retainer bolts out and air to remove the servo",,do not drop the parts inside the case,7A:5
+PR-205.06,PR-205,6,Strip and check each clutch,"Snap ring, retaining plate, plates and dished plate out; compress the springs (49 0378 375) and take the snap ring (pliers 49 8000 025); air to the passage for the piston; check plates for wear and burning, springs for weakness",plate thickness limit 1.4 mm (S-038 T:4),new seals always,7A:6-7
+PR-205.07,PR-205,7,Reassemble the clutches and set their clearances,"Parts dipped in ATF; feeler gauge between retaining plate and snap ring: front clutch 1.6-1.8 mm, rear clutch 0.8-1.5 mm; correct with the retaining plate's thickness",,,7A:7
+PR-205.08,PR-205,8,Rebuild the low and reverse brake,"Inner race bolts 13-18 N m (1.3-1.8 m-kg) with 49 0378 346; retaining plate to snap ring 0.8-1.05 mm, chosen from retaining plates 7.8 to 8.8 mm thick",friction plate limit 1.8 mm (S-038 T:4),,7A:8
+PR-205.09,PR-205,9,Check the servo,"Bore for cracks, piston for wear, stem for free movement, spring for weakness, band lining for wear and burning; new seals",,,7A:9
+PR-205.10,PR-205,10,Service the governor and oil distributor,Valves and bores free of scores and sliding freely; distributor seal ring side clearance 0.04-0.16 mm; do not swap the primary and secondary springs; governor body bolts 5-7 N m (0.5-0.7 m-kg),,,7A:10
+PR-205.11,PR-205,11,Service the oil pump,"Mark the gears' tops before removal; gear side clearance 0.02-0.04 (limit 0.08); outer gear to crescent 0.14-0.21 (limit 0.25); outer gear to housing 0.05-0.20 (limit 0.25); seal ring side clearance 0.04-0.16 mm; on assembly cover run-out under 0.07 mm, tapped true; cover bolts 6-8 N m (0.6-0.8 m-kg)",,,7A:11-12
+PR-205.12,PR-205,12,Service the control valve body,"Strainer and body bolts out (loosen evenly); manual valve out; each side plate and its valves and springs out in order; clean, check bores for burrs and springs against the spring table (S-038 T:4, T:5); side plate screws 2.5-3.5 N m (0.25-0.35 m-kg) with the torque driver, reamer bolts 5-7",,,7A:12-13
+PR-205.13,PR-205,13,"Check the planet carriers, one-way clutch and extension","Pinion washer to carrier 0.2-0.7 mm (limit 0.8); one-way races and rollers free of scores and wear; extension housing, its oil seal and the parking pawl and ball",,,7A:14-15
+PR-205.14,PR-205,14,Assemble and set the front clutch drum end play,"Sealant on the converter housing face, bolts 45-55 N m (4.5-5.5 m-kg); front clutch drum end play 0.5-0.8 mm, set by the front clutch thrust washer",,,7A:16
+PR-205.15,PR-205,15,Set the total end play,"Dial indicator on the input shaft: 0.25-0.50 mm, set with the pump cover bearing race",,,7A:16
+PR-205.16,PR-205,16,Adjust the band,"Tighten the servo piston stem to 12-15 N m (1.2-1.5 m-kg) with the socket 49 0378 345, back it off two turns, hold it and tighten the lock nut to 15-40 N m",,,7A:16
+PR-205.17,PR-205,17,Fit the valve body and choose the diaphragm rod,"Valve body bolts 5.5-7.5 N m; push the vacuum throttle valve fully in and measure its depth: under 25.6 mm takes the 29.0 mm rod, 25.7-26.1 and 26.7-27.1 mm take the longer rods the table gives",,,7A:17
+PR-205.18,PR-205,18,Finish the assembly,"Extension housing, oil pan, inhibitor switch (PR-204), downshift solenoid and the vacuum diaphragm; then PR-195",,,7A:17-18
