@@ -87,3 +87,170 @@ PR-022.02,PR-022,2,Idle the engine for about two minutes,,,,p.0-24
 PR-022.03,PR-022,3,Move the selector through every position and leave it in P,,,,p.0-24
 PR-022.04,PR-022,4,Read the dipstick,SP-1553.,Level between L and F.,,p.0-24
 PR-022.05,PR-022,5,Add fluid through the filler tube if it is low,Fluid SP-093.,,Do not overfill.,p.0-24
+PR-023.01,PR-023,1,Warm the engine thoroughly and connect a tachometer,,,,p.1-8
+PR-023.02,PR-023,2,Connect a timing light to the plug lead of the front leading plug,,,,p.1-8
+PR-023.03,PR-023,3,Run the engine at its idle speed,SP-018.,,,p.1-8
+PR-023.04,PR-023,4,Aim the light at the timing indicator pin on the front cover,Leading timing SP-036.,The yellow mark on the pulley sits at the pin.,,p.1-8
+PR-023.05,PR-023,5,"If the leading timing is off, loosen the distributor lock nut, turn the distributor housing until it is right, tighten and recheck",SP-564.,,,p.1-8
+PR-023.06,PR-023,6,Move the timing light to the lead of the front trailing plug and check the trailing timing,Trailing timing SP-037.,The red mark on the pulley sits at the pin.,,p.1-8
+PR-023.07,PR-023,7,"If the trailing timing is off, loosen the screws of the trailing vacuum unit, move the unit until it is right, tighten and recheck",SP-564.,,,p.1-8
+PR-024.01,PR-024,1,Check the battery is fully charged,,,,p.1-11
+PR-024.02,PR-024,2,"Warm the engine thoroughly, stop it and let it sit about ten minutes",The wait lets the catalytic converter cool. Conditions: SP-1559.,,,p.1-11
+PR-024.03,PR-024,3,Remove the trailing plug of the rotor being measured and no other,,,Never both trailing plugs out on a 12A: unburned mixture blows out of the plug holes.,p.1-11
+PR-024.04,PR-024,4,Disconnect the primary wires of both the trailing and the leading coil,,,,p.1-11
+PR-024.05,PR-024,5,Connect the tester hose to the plug hole and its wires to the battery,A piston-engine tester will not do: SP-1559.,,,p.1-11
+PR-024.06,PR-024,6,"When the tester has warmed up, switch it on to feed the recording sheet",,A line 20-30 mm long is drawn to mark zero.,,p.1-11
+PR-024.07,PR-024,7,Hold the throttle wide open and crank the engine for 5 to 10 seconds,,The pressure of each chamber is plotted on the sheet.,,p.1-11
+PR-024.08,PR-024,8,Stop cranking and switch off the sheet feed,,,,p.1-11
+PR-024.09,PR-024,9,Measure the other rotor the same way,,,,p.1-11
+PR-024.10,PR-024,10,Judge the lowest pressure and the spread between the highest and the lowest,Limits SP-015 and SP-016. Cranking speed comes from the number of peaks plotted in 5 seconds; the graphs on p.1-12 correct for cranking speed and altitude.,,,p.1-12
+PR-025.01,PR-025,1,Apply the parking brake and block the wheels,,,,p.1-18
+PR-025.02,PR-025,2,"Drain the engine oil, then clean and refit the drain plug",,,,p.1-18
+PR-025.03,PR-025,3,Remove the engine under cover,,,,p.1-18
+PR-025.04,PR-025,4,Disconnect the battery negative cable and remove the hood,,,,p.1-18
+PR-025.05,PR-025,5,Disconnect the high-tension leads at the ignition coils,,,,p.1-18
+PR-025.06,PR-025,6,Disconnect the pick-up coil wiring connectors and the condenser lead,,,,p.1-18
+PR-025.07,PR-025,7,Disconnect the oil level sensor connector,,,,p.1-18
+PR-025.08,PR-025,8,Disconnect the water temperature gauge unit connector,,,,p.1-18
+PR-025.09,PR-025,9,Disconnect the oil pressure gauge unit connector,,,,p.1-18
+PR-025.10,PR-025,10,Disconnect the oil thermo sensor connector (not on California cars),,,,p.1-18
+PR-025.11,PR-025,11,Disconnect the vacuum sensing tube of the transmission vacuum diaphragm (automatic) and the evaporative hose,,,,p.1-18
+PR-025.12,PR-025,12,Disconnect the coolant level sensor connector,,,,p.1-18
+PR-025.13,PR-025,13,Disconnect the coolant reservoir hose,,,,p.1-18
+PR-025.14,PR-025,14,Remove the air cleaner assembly,,,,p.1-18
+PR-025.15,PR-025,15,Disconnect the No. 2 water temperature switch connector,,,,p.1-18
+PR-025.16,PR-025,16,Drain the cooling system by taking the lower hose off the radiator,,,,p.1-19
+PR-025.17,PR-025,17,Disconnect the upper hose from the radiator,,,,p.1-19
+PR-025.18,PR-025,18,Disconnect the transmission oil pipes from the radiator (automatic only),,,,p.1-19
+PR-025.19,PR-025,19,Remove the cooling fan and fan drive assembly,,,,p.1-19
+PR-025.20,PR-025,20,Remove the radiator and shroud assembly,,,,p.1-19
+PR-025.21,PR-025,21,Disconnect the power brake vacuum hose,,,,p.1-19
+PR-025.22,PR-025,22,Disconnect the air pipe from the rear end of the intake manifold,,,,p.1-19
+PR-025.23,PR-025,23,Disconnect the choke heater lead connectors,,,,p.1-19
+PR-025.24,PR-025,24,"Disconnect the throttle sensor, idle richer solenoid and port air solenoid valve connectors, and the fourth the page lists",The OCR text garbles the name of the fourth valve.,,,p.1-19
+PR-025.25,PR-025,25,"Disconnect the accelerator cable, choke cable and hot start assist cable",,,,p.1-19
+PR-025.26,PR-025,26,Disconnect the cruise control cable if fitted,,,,p.1-19
+PR-025.27,PR-025,27,Disconnect the fuel main and return hoses,,,,p.1-19
+PR-025.28,PR-025,28,Disconnect the sub-zero start assist fluid hose (not on California cars),,,,p.1-19
+PR-025.29,PR-025,29,Disconnect the connector and the battery lead at the rear of the alternator,,,,p.1-19
+PR-025.30,PR-025,30,"Disconnect the No. 1 water temperature switch, air vent solenoid valve, vacuum switch, three way valve and the engine earth",,,,p.1-19
+PR-025.31,PR-025,31,Disconnect the water hoses,,,,p.1-19
+PR-025.32,PR-025,32,Unbolt the A/C compressor from the engine if fitted,,,,p.1-19
+PR-025.33,PR-025,33,Disconnect the wiring and remove the starter motor,,,,p.1-19
+PR-025.34,PR-025,34,Remove the bolts holding the transmission to the rear of the engine,,,,p.1-19
+PR-025.35,PR-025,35,Remove the exhaust pipe front cover,,,,p.1-20
+PR-025.36,PR-025,36,Loosen the nuts holding the exhaust pipe to the exhaust manifold,,,,p.1-20
+PR-025.37,PR-025,37,Support the monolith converter so it cannot drop,,,,p.1-20
+PR-025.38,PR-025,38,Support the front of the transmission with a jack,,,,p.1-20
+PR-025.39,PR-025,39,Remove the nuts from the right and left engine mountings,,,,p.1-20
+PR-025.40,PR-025,40,"Fit a lifting sling to the engine hanger brackets, hook it to a hoist and take up the slack",,,,p.1-20
+PR-025.41,PR-025,41,"Pull the engine forward until it is clear of the transmission, then lift it out",,,,p.1-20
+PR-025.42,PR-025,42,Fit hanger 49 1114 005 to engine stand 49 0107 680A and mount the engine on it,,,,p.1-20
+PR-025.43,PR-025,43,Remove the valve and piping assemblies from the engine,,,,p.1-20
+PR-025.44,PR-025,44,"Installation is the reverse; then refill coolant and oil, tune the engine and check the hood closes properly",,,,p.1-18
+PR-026.01,PR-026,1,"Air pump: disconnect the air outlet hose, remove the strap bolt, slip the belt off and remove the pump",,,,p.1-23
+PR-026.02,PR-026,2,"Alternator: remove the strap bolt, slip the belt off and remove the alternator",,,,p.1-23
+PR-026.03,PR-026,3,Disconnect the connecting rod at the metering oil pump and the oil hoses at its outlets,,,,p.1-23
+PR-026.04,PR-026,4,Remove the exhaust manifold cover,,,,p.1-23
+PR-026.05,PR-026,5,"Remove the intake manifold and carburettor assembly, then the gasket and O-rings",,,,p.1-23
+PR-026.06,PR-026,6,"Remove the exhaust manifold, its gasket and the engine mount",,,,p.1-24
+PR-026.07,PR-026,7,Remove the distributor lock nut and the distributor,,,,p.1-24
+PR-026.08,PR-026,8,"Remove the oil pipe, the water hose, the oil cooler with the oil filter, and the O-rings",,,Leave the filter cartridge on the oil cooler unless it is being replaced.,p.1-24
+PR-026.09,PR-026,9,Remove the A/C compressor pulley and the water pump,,,,p.1-24
+PR-027.01,PR-027,1,Remove the oil pan,SP-1564.,,Do not damage the oil pan or the housings.,p.1-25
+PR-027.02,PR-027,2,Remove the oil strainer and its gasket,,,,p.1-25
+PR-027.03,PR-027,3,"Fit counter weight stopper 49 1881 055 to the counter weight, then remove the eccentric shaft pulley bolt and the pulley",,,,p.1-25
+PR-027.04,PR-027,4,"Remove the front cover and gasket, and the O-ring on the oil passage",,,,p.1-25
+PR-027.05,PR-027,5,Slide the distributor drive gear off the shaft,,,,p.1-25
+PR-027.06,PR-027,6,Straighten the lock washer tab and remove the oil pump sprocket nut and lock washer,,,,p.1-25
+PR-027.07,PR-027,7,Slide both sprockets and the chain off the eccentric shaft and the oil pump shaft together,,,,p.1-25
+PR-027.08,PR-027,8,Remove the oil pump,,,,p.1-25
+PR-027.09,PR-027,9,"Remove the key, balance weight, thrust washer and needle bearing",,,,p.1-26
+PR-027.10,PR-027,10,"Remove the bearing housing, needle bearing, spacer and thrust plate",,,,p.1-26
+PR-027.11,PR-027,11,Fit the counter weight stopper to the rear housing and remove the drive plate,,,,p.1-27
+PR-027.12,PR-027,12,Remove the counter weight nut with box wrench 49 0820 035,,,,p.1-27
+PR-027.13,PR-027,13,"Pull the counter weight with the puller, turning its handle and tapping its head lightly, then remove the key",,,Do not drop the counter weight.,p.1-27
+PR-027.14,PR-027,14,"Loosen the tension bolts in the sequence of the figure, in two or three passes, and remove them",The 12A has no bolt No. 6 in the loosening sequence: skip it. The sequence figure was not read.,,Never loosen the bolts all at once.,p.1-27
+PR-027.15,PR-027,15,Lift the rear housing off the shaft and put any seals stuck to it back in their places on the rotor,,,,p.1-28
+PR-027.16,PR-027,16,"Rear rotor housing: remove the sealing rubbers and O-ring, pull the tubular dowels with puller 49 0813 215A while holding the housing down, lift the housing off, then remove the rubbers and O-ring from its front side",,,Do not let the apex seals and side pieces drop off the rotor.,p.1-28
+PR-027.17,PR-027,17,"Put the side pieces, apex seals and springs of the rear rotor into seal case 49 0813 250 by the numbers beside each groove",,,,p.1-28
+PR-027.18,PR-027,18,"Remove the corner seals with their soft seals, the corner seal springs, side seals and side seal springs into the seal case",,,,p.1-28
+PR-027.19,PR-027,19,Lift the rear rotor off and lay it internal gear down on a clean rubber pad or cloth,,,,p.1-28
+PR-027.20,PR-027,20,Remove the seals and springs of the other face into the seal case,,,,p.1-28
+PR-027.21,PR-027,21,"With a protector over the inner oil seal lip, remove the outer oil seal with remover 49 0813 225, then the inner oil seal and the oil seal springs; repeat on the other face",,,Never lever at one place only: the oil seal deforms.,p.1-29
+PR-027.22,PR-027,22,Mark the rear rotor so it goes back in its own place,,,,p.1-29
+PR-027.23,PR-027,23,"Pull the tubular dowels of the intermediate housing and remove it, sliding it past the rear rotor journal while holding it up and pushing the eccentric shaft up",,,,p.1-29
+PR-027.24,PR-027,24,Remove the eccentric shaft,,,Do not damage the rotor bearing or the main bearing.,p.1-29
+PR-027.25,PR-027,25,Remove the front rotor housing and the front rotor the same way as the rear,,,,p.1-29
+PR-028.01,PR-028,1,Side housings: remove the carbon with extra fine emery paper,,,A carbon scraper must not mark the finished surfaces.,p.1-30
+PR-028.02,PR-028,2,Side housings: remove the old sealing agent with a cloth or brush soaked in ketone or thinner,,,,p.1-30
+PR-028.03,PR-028,3,"Rotor housing: before cleaning, look for traces of gas or water leakage along the inner margin of each side face",,,,p.1-30
+PR-028.04,PR-028,4,"Rotor housing: wipe the carbon off the inner surface with a cloth, soaked in ketone or thinner if it is stubborn",,,,p.1-30
+PR-028.05,PR-028,5,"Rotor housing: clear deposits and rust from the water passages, and wipe off the old sealing agent",,,,p.1-30
+PR-028.06,PR-028,6,"Rotor: remove the carbon with carbon remover or emery paper, wash it in cleaning solution and blow it dry",,,Do not damage the soft coating on the side surfaces of the rotor.,p.1-30
+PR-028.07,PR-028,7,Seals and springs: remove all carbon and wash them in cleaning solution,,,Never emery paper on the seals.,p.1-30
+PR-029.01,PR-029,1,Side housings: check for warp with a straight edge,Limit SP-792; over it the housing is replaced.,,,p.1-31
+PR-029.02,PR-029,2,Side housings: check the rotor sliding surface for stepped wear with a dial indicator on gauge body 49 0727 570,"Limits SP-793, and SP-794 (the 1985 manual's finer figures).",,,p.1-31
+PR-029.03,PR-029,3,"Stationary gears: check for cracked, scored, worn or chipped teeth",,,,p.1-32
+PR-029.04,PR-029,4,"Main bearings: check for wear, scratching and flaking, and work out the clearance from the bearing bore and the main journal diameter","SP-809, limit SP-810.",,,p.1-32
+PR-029.05,PR-029,5,Rotor housings: check the chromium plated surface for scoring and flaking,,,,p.1-34
+PR-029.06,PR-029,6,Rotor housings: measure the width with a micrometer at four points,SP-1560.,,,p.1-34
+PR-029.07,PR-029,7,"Rotors: inspect for wear and damage, and the internal gear for cracked, scored, worn or chipped teeth",,,,p.1-35
+PR-029.08,PR-029,8,Rotors: work out the side housing to rotor clearance from the rotor housing width at point A and the largest of three rotor width readings,"SP-839, limit SP-840 (the 1985 standard is SP-841). Too much: replace the rotor assembly. Too little: the internal gear has crept out - tap it back lightly with a plastic hammer and measure again.",,,p.1-35
+PR-029.09,PR-029,9,Rotors: check the corner seal bores with the bore gauge,SP-870.,,,p.1-35
+PR-029.10,PR-029,10,"Rotor bearings: check for wear, flaking and scoring, and work out the clearance from the bearing bore and the rotor journal diameter","SP-842, limit SP-843.",,,p.1-35
+PR-029.11,PR-029,11,"Rotor oil seals: check for wear, free movement in the groove under a finger, lip width and protrusion",SP-873 and SP-874; low protrusion means a new oil seal spring.,,,p.1-36
+PR-029.12,PR-029,12,"Apex seals and side pieces: check for wear and cracks, and measure the seal height at two positions","SP-848, limit SP-849.",,,p.1-37
+PR-029.13,PR-029,13,Apex seals: check warp as the gap between the top surfaces of two seals from the same rotor,SP-852; over it all three seals of that rotor are replaced.,,,p.1-37
+PR-029.14,PR-029,14,"Apex seals: measure the clearance to the rotor groove, the feeler gauge pushed to the bottom of the groove","SP-850, limit SP-851.",,,p.1-37
+PR-029.15,PR-029,15,Apex seal springs: check for wear and measure the free height,Limit SP-856.,,,p.1-38
+PR-029.16,PR-029,16,"Side seals: check free movement, protrusion and the clearance to the groove","SP-864; SP-860, limit SP-861. Low protrusion means a new side seal spring.",,,p.1-38
+PR-029.17,PR-029,17,"Side seals: measure the clearance to the corner seal, both fitted on the rotor","SP-862, limit SP-863. A new side seal is fitted by filing one end to the round of the corner seal.",,,p.1-38
+PR-029.18,PR-029,18,"Corner seals, soft seals and springs: check for wear, cracks and heat damage, free movement and protrusion",SP-869; low protrusion means a new corner seal spring.,,,p.1-39
+PR-029.19,PR-029,19,"Eccentric shaft: check for cracks, scratches and wear and that the oil passages are open, then measure the run-out",Half the largest swing of the dial indicator. Limit SP-824.,,,p.1-39
+PR-029.20,PR-029,20,"Eccentric shaft: check the blind plug in the shaft end for leaks or looseness, and the oil jets for a weak spring or a sticking or damaged ball",A leaking plug comes out with a hexagon key for a new O-ring.,,,p.1-39
+PR-029.21,PR-029,21,"Check the needle bearing, bearing housing and thrust plate for wear or damage",,,,p.1-40
+PR-029.22,PR-029,22,"Front and rear eccentric shaft oil seals: if worn, pull the seal, clean the bore and tap a new one home through a block of hardwood",,,No lubricant or sealer on the outside of the seal; never the hammer directly on it.,p.1-40
+PR-029.23,PR-029,23,"Oil pump drive: check the chain for broken links and both sprockets for cracks and worn or damaged teeth",,,,p.1-40
+PR-030.01,PR-030,1,Front main bearing: remove the stationary gear and bearing with puller and installer 49 0813 235,,,,p.1-33
+PR-030.02,PR-030,2,Press the bearing out with the tool without its adaptor ring,,,,p.1-33
+PR-030.03,PR-030,3,"With the adaptor ring fitted and the bearing lug in line with the slot of the gear, press the new bearing in until the adaptor touches the gear flange",,,,p.1-33
+PR-030.04,PR-030,4,"Fit the stationary gear to the front housing, the slot of its flange on the dowel pin of the housing",,,,p.1-33
+PR-030.05,PR-030,5,"Rear main bearing: remove the stationary gear bolts, pull the gear with the same tool and change the bearing as in steps 2 and 3",,,,p.1-33
+PR-030.06,PR-030,6,"Rear: a new O-ring with a thin coat of vaseline in the gear groove, sealing agent on the gear flange, the gear onto the rear housing with its slot on the dowel pin, and the bolts tightened",,,Do not damage the O-ring.,p.1-34
+PR-030.07,PR-030,7,"Rotor bearing: rotor on a support with the internal gear down, press the bearing out with tool 49 0813 240 without its adaptor ring",,,Do not damage the internal gear.,p.1-36
+PR-030.08,PR-030,8,"Turn the rotor gear up, set the new bearing with its lug in line with the slot of the rotor bore, and press it in with the adaptor ring until it is flush with the rotor boss",,,,p.1-36
+PR-031.01,PR-031,1,"Rotor on a clean rubber pad or cloth: fit the oil seal springs, the round end of each in the stopper hole of its groove",Colours SP-1562.,,,p.1-41
+PR-031.02,PR-031,2,"Fit a new O-ring in each oil seal, place the inner oil seal with the square edge of the spring in its stopper notch, and press it down with a used inner oil seal",Depth SP-875.,,Do not deform the lip of the oil seal.,p.1-41
+PR-031.03,PR-031,3,"Fit the outer oil seal the same way, pressing slowly with the fingers, then do the other face of the rotor",,Each oil seal moves smoothly when pressed.,,p.1-41
+PR-031.04,PR-031,4,"Front rotor, internal gear up: put the apex seals in their grooves without spring or side piece, the side-piece end toward the rear face of the rotor",,,,p.1-42
+PR-031.05,PR-031,5,"Fit the soft seals into the corner seals, then corner seal springs and corner seals, side seal springs and side seals into their grooves",,Each seal moves smoothly when its head is pressed.,,p.1-42
+PR-031.06,PR-031,6,Put a rubber ring round the rotor so the apex seals cannot drop out,,,,p.1-42
+PR-031.07,PR-031,7,"Mount the front housing on the stand and set the front rotor on it, the gears meshed with one apex at one of the four positions of the figure",The figure was not read.,,Do not drop a seal into the port.,p.1-43
+PR-031.08,PR-031,8,Oil the front rotor journal and the main journal and insert the eccentric shaft,,,Do not damage the rotor bearing or the main bearing.,p.1-43
+PR-031.09,PR-031,9,"Sealing agent on the front side of the front rotor housing, then a new O-ring and new sealing rubbers",SP-1563.,,,p.1-44
+PR-031.10,PR-031,10,"Turn the rotor housing over onto the front housing without losing the rubbers, oil the tubular dowels and push them through into the front housing",,,,p.1-45
+PR-031.11,PR-031,11,"Rear face of the rotor: apex seal springs with both ends under the back of the seal, corner seals, side seals, and each side piece in its original place with its spring seated",,Each seal moves smoothly when its head is pressed.,,p.1-45
+PR-031.12,PR-031,12,"Sealing agent, new O-ring, sealing rubbers and protector on the rear side of the front rotor housing, then engine oil on the seals and the sliding surface",SP-1563.,,No foreign matter in the rotor housing.,p.1-46
+PR-031.13,PR-031,13,Lift the eccentric shaft a little and fit the intermediate housing over it,SP-1561.,,,p.1-46
+PR-031.14,PR-031,14,Fit the rear rotor and the rear rotor housing the same way as the front,,,,p.1-46
+PR-031.15,PR-031,15,Oil the stationary gear and main bearing well and fit the rear housing,,,,p.1-47
+PR-031.16,PR-031,16,"Oil the tension bolt threads, fit the bolts and tighten them gradually in the sequence of the figure",Torque SP-161. The 12A has no bolt No. 11 in the tightening sequence: skip it. New sealing washers at an overhaul. The sequence figure was not read.,The eccentric shaft turns lightly and smoothly.,,p.1-47
+PR-031.17,PR-031,17,"Oil the oil seal in the rear housing, fit the key and the counter weight, put sealing agent on the lock nut face, hold with stopper 49 1881 055 and tighten the nut with box wrench 49 0820 035",Torque SP-162.,,,p.1-48
+PR-031.18,PR-031,18,Fit the drive plate with its hole and the counter weight placed as the figure shows,The figure was not read.,,,p.1-49
+PR-031.19,PR-031,19,"Slide the thrust plate (chamfer down), spacer and needle bearing onto the shaft and oil them, then fit the bearing housing to the front housing and tighten its bolts",,,,p.1-49
+PR-031.20,PR-031,20,"Slide on the second needle bearing, oiled, then the balance weight with the thrust washer",,,,p.1-49
+PR-031.21,PR-031,21,"Fit the oil pump to the front housing and the key to its shaft, put the chain on both sprockets and slide them on together with key and keyway in line",,,,p.1-49
+PR-031.22,PR-031,22,"Line up the keyways of the shaft sprocket and the balance weight and fit the key, then slide on the distributor drive gear with its F mark to the front",,,,p.1-50
+PR-031.23,PR-031,23,"Fit the pulley and tighten its bolt, then measure the eccentric shaft end play with a dial indicator on the rear housing against the counter weight","Bolt SP-160. End play SP-825, limit SP-826; corrected with a thicker or thinner spacer, SP-829.",,,p.1-50
+PR-031.24,PR-031,24,"Take the pulley off, tighten the oil pump sprocket nut and bend the lock washer tab, then check the chain slack with a finger",Nut SP-892. Slack limit SP-893.,,,p.1-50
+PR-031.25,PR-031,25,"New O-ring on the oil passage, gasket and front cover on and bolted, oil on the front cover seal, then the pulley with a new washer under its bolt",Bolt SP-160.,,,p.1-51
+PR-031.26,PR-031,26,"Fit the oil strainer and gasket, trim the gaskets flush with the pan face, clean the faces, lay the sealer bead on the oil pan and tighten its bolts little by little in turn",Sealer SP-820. Torque SP-166.,,,p.1-51
+PR-032.01,PR-032,1,"Put two O-rings on the oil filter body, fit the filter body and oil cooler and connect the water hose",,,Never take the oil cooler apart from its body: it will leak oil.,p.1-54
+PR-032.02,PR-032,2,"Set the leading (yellow) mark of the pulley at the indicator pin, line up the tally marks of the distributor housing and driven gear, and fit the distributor and lock nut",,,,p.1-54
+PR-032.03,PR-032,3,"Turn the distributor housing until the projection of the signal rotor lines up with the core of the leading pick-up coil, tighten the lock nut and fit the rotor and cap",,,,p.1-54
+PR-032.04,PR-032,4,"Fit the engine mount, then the gasket and the exhaust manifold",Torque SP-878.,,,p.1-55
+PR-032.05,PR-032,5,"Place the O-rings and gasket and fit the intake manifold and carburettor assembly, in the reverse order of removal",,,,p.1-55
+PR-032.06,PR-032,6,"Fit the alternator to its bracket, then the belt, and set the belt tension",SP-025.,,,p.1-55
+PR-032.07,PR-032,7,Fit the air pump and its belt and set the belt tension,SP-761.,,,p.1-55
+PR-032.08,PR-032,8,"With the engine off the stand, fit the oil cooler oil pipe with its sealing washers, both ends partly tightened, then tighten the front cover nut and after it the cooler bolt",SP-1565.,,The cooler-side bolt first leaves the front cover joint leaking.,p.1-56

@@ -21,3 +21,13 @@ PR-019,Electrical,Check the oil level warning system (1985 manual),at the schedu
 PR-020,Electrical,Check the coolant level warning system (1985 manual),at the scheduled electrical check,,S-002,other-car
 PR-021,Engine,"Check the sub-zero starting assist system (12A, factory carburettor)",seasonally,,S-002,replaced
 PR-022,Transmission,"Check the automatic transmission fluid level (1985 manual, L4N71B)","at 7,500 mi, then every 30,000 mi / 30 months (interval atf)",,S-002,other-car
+PR-023,Ignition,Check and set the ignition timing (12A),at every tune-up,"tachometer, timing light",S-002,
+PR-024,Engine,Check the compression with a rotary compression tester,"when compression is in doubt: hard starting, rough idle, low power",rotary compression tester 49 0820 280K,S-002,
+PR-025,Engine,Remove the 12A engine from the car (1985 manual),before an engine overhaul,"hoist and lifting sling, jack, engine stand 49 0107 680A with hanger 49 1114 005",S-002,other-car
+PR-026,Engine,Strip the auxiliary parts from the 12A engine (1985 manual),"engine on the stand, before the internals",,S-002,other-car
+PR-027,Engine,Disassemble the 12A engine internals,"engine on the stand, auxiliary parts off","counter weight stopper 49 1881 055, box wrench 49 0820 035, counter weight puller, dowel puller 49 0813 215A, seal case 49 0813 250, oil seal remover 49 0813 225",S-002,
+PR-028,Engine,Clean the engine parts after disassembly,before inspection,"extra fine emery paper, ketone or thinner, cloth, brush, compressed air",S-002,
+PR-029,Engine,"Inspect the housings, rotors, seals and eccentric shaft",engine apart and clean,"straight edge, feeler gauges, dial indicator on gauge body 49 0727 570, micrometer, corner seal bore gauge",S-002,
+PR-030,Engine,Replace a main bearing or a rotor bearing,"bearing worn, or its clearance over the limit","main bearing puller and installer 49 0813 235, rotor bush puller and installer 49 0813 240, press",S-002,
+PR-031,Engine,Assemble the 12A engine internals,"parts inspected; new O-rings, sealing rubbers and gaskets to hand","engine stand, used inner oil seal as a press tool, rubber ring, dial indicator, torque wrench, box wrench 49 0820 035, counter weight stopper 49 1881 055",S-002,
+PR-032,Engine,Fit the auxiliary parts to the 12A engine (1985 manual),internals assembled,,S-002,other-car
