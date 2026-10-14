@@ -1796,3 +1796,19 @@ His answer, option (a) in full: ""I own none of it. The iron and solder (P044) a
 Reading: ""the first order"" is the bench order (Y16, Y18) that is bought before the freeze for the F3 / F5 board builds; P044 and P045 take store Bench, status cart, as P151 did (D-490). Prices are estimates; the hot-air station, paste, flux, tweezers and magnifier are new rows P214-P218, store Bench, section Tools, basis est, spec with confirm.
 
 Consequences: P044, P045 leave the Amazon cart (about 75 USD less there); five rows added (about 117 USD est). F3 and F5 no longer wait on this block."
+D-556,,The tach shield crosses L1-S1 cavity 5 to the node's ground,2026-10-13,standing,,,01.50,,"**The engine-side shield of the tach wire is carried through L1-S1 cavity 5 to the dash node's GND bus: one continuous shield, grounded at the node only.**
+
+His answer to block 01.50, option (a): ""Carry the engine-side shield through the spare cavity 5 of the plug and on to the node's ground with the dash-side one: one continuous shield grounded at the node only. Costs one size-16 contact from the kits already on the list; cavity 5 is no longer a spare (it frees again at the LS swap, when the tach wire itself goes)."" No words typed.
+
+Reasoning: the shield was cut back at the coil and had no path at the plug, so it floated at both ends and did nothing. Grounding at the node end only keeps the engine block, the noisiest ground, out of the shield (rules emc-routing).
+
+Supersedes the standing ""L1-S1 5 stays a sealing plug"" of R8 (2026-10-09) for this one cavity; D-316's other plugs (7, 8, 12) are untouched.
+
+Consequences in the data: cavities L1-S1 5 becomes LIVE (the drain); new node conductor N113, receptacle L1-S1 5 to the GND bus; N48 and L1-S1 6 notes; the E23 and E17 know lines and steps (pin, cut, test); the E16 gate on Y47 stays until Y47's other items are done. At the LS swap cavity 5 frees for the ECU coolant sensor LW15 (engine HO06) when the tach wire goes."
+D-557,,The boxed factory harness is kept after the shakedown,2026-10-13,standing,,,01.51,,"**After the shakedown the boxed factory harness is kept: labelled, bagged and boxed with the car, as the way back to stock and the reference for any factory connector.**
+
+His answer to block 01.51, option (a): ""Keep it: labelled, bagged and boxed with the car, the way back to stock and the reference for any factory connector later. Costs a box of shelf space; forecloses nothing."" No words typed.
+
+Reasoning: it forecloses nothing and costs shelf space only. D-411's ""keep it until after shakedown"" becomes ""keep it"".
+
+Consequences in the data: E48.06 (the decision step) and E48's know line are rewritten to a keep step; E30.10's box instruction gains the keep."

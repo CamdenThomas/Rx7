@@ -106,3 +106,4 @@ N109,K15 terminal 87,"Receptacle L3-SPM 1 - a tail from the node along RT11, the
 N110,PMU pin 27 (O15) tap,K14 terminal 86 · K15 terminal 86,14,RED,"The seat relays' coils (D-469) - about 0.2 A, but behind O15's 25 A soft fuse, so 14 AWG as N09",
 N111,K14 terminal 85 · K15 terminal 85,GND bus,16,BLK,Seat relay coil returns (D-469),
 N112,Receptacles L3-SDM 2 · L3-SPM 2,GND bus - the dash ground bus (G42),12,BLK,"The seat motors' returns, back along their feeds to the star, never the seat frame or the logic ground (D-469, D-382)",
+N113,Receptacle L1-S1 5 (the engine-side tach shield),GND bus - joined with the N48 shield,16,BLK,"The engine-side shield of the tach cable, carried through L1-S1 5 so the whole shield is grounded once, at the node (D-556). At the swap the tach wire goes and L1-S1 5 frees for the ECU coolant sensor (engine HO06).",

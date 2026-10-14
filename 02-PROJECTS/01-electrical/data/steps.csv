@@ -822,7 +822,7 @@ L1-S1 (DT04-12P, wedge W12P):
 2 · Alternator excitation (field feed) · RED 16 AWG ← F15 inline (7.5 A) off the O12 splice (N19)
 3 · Water temperature sender · GRY 16 AWG ← across the node to DP-ICU-B 1 (N46)
 4 · Oil pressure sender · GRY 16 AWG ← across the node to DP-ICU-B 2, with the 100 Ω 1 W pull-up to pin 15 and the tap to pin 32, A7 (N47, N39, N45)
-5 · sealing plug, size 16
+5 · Tachometer shield (drain) · 16 AWG BLK ← the GND bus, joined with the DP-ICU-B 4 cable's shield (N113, D-556)
 6 · Tachometer pulse — SHIELDED · shielded cable, 16 AWG core (P074) ← shielded, across the node to DP-ICU-B 4; the shield to the GND bus at this end only (N48)
 7 · sealing plug, size 16
 8 · sealing plug, size 16
@@ -1629,17 +1629,16 @@ E23.04,E23,4,Pin the L1-S1 plug,"L1-S1 is a DT06-12S, the 12-way plug (kit P115)
 2 · Alternator excitation (field feed) · RED 16 AWG → Alternator plug A-08, terminal BW
 3 · Water temperature sender · GRY 16 AWG → Sender C-02, spade — factory wire YW
 4 · Oil pressure sender · GRY 16 AWG → Sender C-09, spade — factory wire BrY
-5 · sealing plug, size 16
-6 · Tachometer pulse — SHIELDED · shielded cable, 16 AWG core (P074) → Coil T (B-18) negative terminal — factory wire YG. Shield grounded at the dash node end only (N48, colours): the engine end of the shield is cut back and insulated, so …
+5 · Tachometer shield (drain) · the tach cable's own drain, 16 AWG tail → no device: the shield is cut back and insulated at the coil, and this carries it to the dash node's GND bus (N113, D-556)
+6 · Tachometer pulse — SHIELDED · shielded cable, 16 AWG core (P074) → Coil T (B-18) negative terminal — factory wire YG. Shield grounded at the dash node end only (N48, N113): the engine end of the shield is cut back and insulated at the coil.
 7 · sealing plug, size 16
 8 · sealing plug, size 16
 9 · sealing plug, size 16
 10 · sealing plug, size 16
-11 · Inhibitor switch — P/N contact (crank interlock) · GRY 16 AWG → Inhibitor A-06: 8.2 kΩ in the lead to terminal BY; terminal BW → block ground. The 47 kΩ baseline from this lead to the block ground at the switch (D-487: it sat at the …
+11 · Inhibitor switch — P/N contact (crank interlock) · GRY 16 AWG → Inhibitor A-06: 8.2 kΩ in the lead to terminal BY; terminal BW → block ground. The 47 kΩ baseline from this lead to the block ground at the switch (D-487)
 12 · sealing plug, size 16
-Cavity 6 is the shielded cable's core: strip the jacket back, fold the drain and shield back out of the way, crimp the core only.
-How the drain is bonded at this plug is not in the record: leave 150 mm of drain here, insulated, and raise a note before trimming it.
-Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; 6 sealing plugs fitted; the wedgelock snaps in flush; the code L1-S1 is on the shell.,A shield strand in the crimp shorts the tach to ground.
+Cavity 6 is the shielded cable's core: strip the jacket back, crimp the core only. Cavity 5 takes the drain and shield of the same cable: twist the strands, crimp a size-16 contact on them (a 16 AWG tail spliced on if the drain is too thin to hold the die), insulate the rest; the core and the drain never touch (D-556).
+Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; 5 sealing plugs fitted; the wedgelock snaps in flush; the code L1-S1 is on the shell.,A shield strand in the crimp of cavity 6 shorts the tach to ground; the core and the drain never touch.
 E23.05,E23,5,Pin the L1-S2 plug,"L1-S2 is a DT06-12S, the 12-way plug (kit P115): size-16 socket contacts: P022 for 16-18 AWG, P024 for 14 AWG; wedgelock W12S.
 1 · Brake fluid level switch · GRY 16 AWG → Reservoir switch C-05: terminal BR; terminal B → block ground
 2 · sealing plug, size 16
@@ -1660,7 +1659,7 @@ The YL (leading pulse) wire is not used.
 How each of these ends is made (D-543):
 DV01 Coils + igniters keeps its factory plug: the harness half is cut off the old harness with 150 mm of lead when this circuit moves (E28) and spliced onto the new wires, colour to colour (D-537). Its plug: Igniters B-20 and B-21: factory connector, 2 wires each on the diagram (YG, BW and YL, BW). Coils B-18 and B-19: one single-way connector each (YG, YL) plus a ring terminal for BW; housing style, colour and which half is on the part: not known - confirm",L1-P 1 beeps to all four BW ends and to the capacitor lead.,"This is the ignition feed: every joint here is a sealed crimp, tugged."
 E23.07,E23,7,End the tach cable at the coil,"Core → coil T (B-18) negative terminal, factory wire YG.
-At this end cut the shield and drain back and seal the end with adhesive heat-shrink so no strand shows.
+At this end cut the shield and drain back and seal the end with adhesive heat-shrink so no strand shows: the shield is grounded at the dash node only, through L1-S1 5 (D-556).
 Lay the cable so it crosses the coil and igniter leads at 90 degrees and is never within 50 mm parallel to one.",Core to shield reads open; the core beeps end to end.,
 E23.08,E23,8,Wire the K9 socket,"Weatherproof 5-pin socket (P005):
 86 ← L1-S1 1 (16 AWG RED)
@@ -1959,7 +1958,7 @@ E30.06,E30,6,"Take out the front harness with the fuse box, relays and control u
 E30.07,E30,7,Take out the engine harness,"Free it from the engine and the firewall. Every sender, coil and alternator plug has already been moved. Anything left on it is emission or choke equipment the new harness does not serve: note what it was on before unplugging.",Engine harness out in one piece,
 E30.08,E30,8,Take out the rear and transmission harnesses,"Rear harness: from X-03 rearward, off its ground points. Transmission harness: its plugs at X-10 and X-17 are already parted; free it from the transmission and lift it out.",Both out in one piece,
 E30.09,E30,9,Check what stays is untouched,"Walk the new harness: every Deutsch plug latched, every device end still joined, the wideband gauge still on F20 and CAN2, the A/C compressor's clutch plug still unplugged and nothing else of the A/C disturbed.",Nothing of the new harness moved,
-E30.10,E30,10,Box the factory harness,"Coil each harness loosely, connectors labelled, fuse block and cluster padded. One box. Write the date on it and keep it until the shakedown is passed (E34).","One box, nothing cut, nothing kinked",
+E30.10,E30,10,Box the factory harness,"Coil each harness loosely, connectors labelled, fuse block and cluster padded. One box. Write the date on it. It is kept for good (D-557); until the shakedown is passed (E34) it is also the fallback.","One box, nothing cut, nothing kinked",
 E30.11,E30,11,Close the disconnect and prove the car,"Disconnect ON. Start the engine. Run through lights, pop-ups, wipers, turn signals, brake lamps and horn once.",Everything works exactly as at E29,Garage door open.
 E2.01,E2,1,Find the factory cluster,"It was unplugged at the strip (S1) and plugged back at E12 so the meters read. It is wherever E12 left it, with the dash out.","Cluster in hand, face up",
 E2.02,E2,2,Read the odometer,"Read the main odometer, not the trip counter. Read every digit left to right, including the tenths wheel if it has one.","One figure, in miles",
@@ -2123,6 +2122,6 @@ E48.02,E48,2,Check no question is open,The app's blocks for electrical: none ope
 E48.03,E48,3,Check each test against its pass mark,"From your notes and the record: sleeping current 50 mA or under (E29). Charging 14.6 V or under (E12, E31). Ground offset under 50 mV and stuck-on outputs at zero (E31). Limp-home proven (E29). Crank log clean and pop-up cycle clean (E28). A measured current for every output (E32). Cranking drops under 0.5 V after the heat cycles (E33).","Every one passes, and each figure is in the record, not only in a note",
 E48.04,E48,4,Check the as-built is saved,"The final configuration file is in the PMU, on the laptop, in the glovebox and in the project (E34). The photographs of the finished runs exist (E35). Every place where the car differs from the record - a wire re-routed, a fuse rating changed, a cavity moved, a capped end left somewhere else - has been sent as a note and applied.",The record describes the car as it is,
 E48.05,E48,5,Check the kit is in the car,"Limp-home bag, printed tables, spare contacts, tools and fuses (E34).",All there,
-E48.06,E48,6,Decide about the boxed factory harness,"The shakedown is passed, so its job as the fallback is over. Keep it, sell it or scrap it: the record does not say. Write your choice in a note.",Note saved,
+E48.06,E48,6,Label and put away the boxed factory harness,"The shakedown is passed, so its job as the fallback is over, and it is kept (D-557): bag each harness, check every connector is labelled, close the box, write the date and 'factory harness 1982' on it and shelve it with the car's papers. It is the way back to stock and the reference for any factory connector.",Box labelled and shelved,
 E48.07,E48,7,Look at the car once more,"Walk round it with the key out, then at RUN: no warning on the display, nothing capped hanging loose, the disconnect reachable from the hatch, the laptop port reachable in the glovebox.",Nothing to add,
 E48.08,E48,8,Tick E48,Tick this row in the app. Then start the fold from the app when you are ready.,Electrical is ruled done,

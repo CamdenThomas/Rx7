@@ -952,17 +952,16 @@ Every run ends in the plug its part needs. The device rows name that plug and ho
 A device that keeps its factory plug: the plug is cut off the old harness in the car at E28, one circuit at a time, with 150 mm of its lead, and each lead is spliced to its new wire there with a sealed butt splice, staggered and sleeved. At the bench that end is left cut to length, labelled and insulated [D-537; rules device-end]
 No plug named here has been seen yet unless its line says seen: it is the 1982 diagram's wire count or a maker's sheet. Your looks at the car (S1, V-115, V-116) come first; an end that needs a connector bought is finished only once that connector is in hand [devices plug_seen; R11]
 L1 has three plugs at the post: L1-P (power), L1-S1 and L1-S2 (signal). They leave the post together through the firewall grommet, passenger side [housings, routes RT01]
-Only ten wires run in this leg; every other cavity is a sealing plug [cavities L1-S1 5, L1-S2 2]
+Eleven contacts run in this leg (ten wires and the tach shield's drain); every other cavity is a sealing plug [cavities L1-S1 5, L1-S2 2]
 The swap reserves are pinned at the post only: L1-P 2 and 3, L1-S2 9 and 11 carry sealing plugs in these plugs [cavities L1-P 2, D-271]
 L1-S1 9 / 10 are sealing plugs: CAN2 never enters the engine bay [cavities L1-S1 9, D-318]
-Tach: shielded cable (P074) from L1-S1 6 to coil T negative (factory wire YG). The shield is cut back and insulated at the coil end; it is grounded at the dash node only [cavities L1-S1 6, node_conductors N48]
+Tach: shielded cable (P074) from L1-S1 6 to coil T negative (factory wire YG). The shield is cut back and insulated at the coil end and carried through L1-S1 5 to the dash node's GND bus: grounded at the dash node only [cavities L1-S1 5, L1-S1 6, node_conductors N48, N113; D-556]
 The tach cable crosses ignition leads at 90 degrees and never runs parallel to one within 50 mm [rules emc-routing]
 K9, the start relay, is a sealed relay (P004) in a weatherproof socket (P005) on the inner fender; its contact wires are 10 AWG from F17 (30 A, at the starter B+ stud) to the starter S terminal [relays K9, fuses F17]
 Alternator plug A-08: BW is excitation → L1-S1 2; WB is the charge-lamp sense → L1-S2 8 [devices DV04]
 The ignition suppression capacitor (P135) goes on the coil branch at the coil bracket [parts P135, D-281]
 Inhibitor switch A-06: 8.2 kΩ in each signal lead and a 47 kΩ baseline from each lead to block ground at the switch [cavities L1-S1 11, L1-S2 7, D-487]
 Water-temp sender C-02 (factory wire YW) is in the rear housing directly below the oil-pressure sender C-09 (BrY) [devices DV06, DV07]
-How the leg-side tach shield is carried across the L1-S1 connector is not in the record: cavity 5 stays a sealing plug [gap]
 K9 and F17 are fitted in the car at E27; here the K9 socket is wired onto the leg [work E27]","Every L1 cavity is continuous to its own far end and nothing else, isolation is open, each inhibitor lead reads 47 kΩ to its ground end with the contact open, the tach shield is open to the core, and the leg is bundled but not wrapped.",Tach core shorted to its shield: the strip nicked the insulation - cut back and redo. An inhibitor reading off by more than 2 %: measure the resistor alone.,Tick the row.
 F3,"The Display Unit's carrier is built, flashed and proved on the bench on USB power: the Teensy boots and prints its version, the DRIVE page draws through the BT817 board, the gauges follow live bus and sensor inputs and the radio reads the battery. The real bar display is lit once its bridge board is back from the fab.",bench,two weekends - confirm,"Soldering iron with a fine tip, solder, flux, tweezers (P044)
 Hot-air or a hot-plate for the small packages if you have one
@@ -1447,6 +1446,6 @@ After it a run folds the project into the car: the as-built harness, fuses, chan
 The list cannot have gone vague on the way here: every row before this one had to be done for this one to open [D-533]
 What 'passed' means for each check: sleeping current 50 mA or under; charging 14.6 V or under; block-to-dash ground offset under 50 mV; stuck-on outputs read zero; the limp-home procedure proven once; the crank log clean with block offset under 0.74 V; the pop-up cycle clean; a measured baseline for every output [checks CK02, CK03, CK05, CK07, CK11, CK14, CK16, CK01]
 Cranking drops under 0.5 V on both sides, first and after the heat cycles [work E43, E44, E33]
-The boxed factory harness was kept as the fallback until shakedown was passed. What happens to it afterwards is not in the record - confirm [D-411]
+The boxed factory harness is kept, labelled and bagged, with the car: the way back to stock and the reference for any factory connector [D-557]
 Still capped and waiting for other projects, and not part of this ruling: the window fuses, the seats, the heater servos and blower, the radar, the amplifier and speakers, the swap's reserved outputs [fuses F8, F34; pins 1, 14; housings L3-SD]
 Open questions only you can answer live in the app's blocks. None may be open in electrical when you tick [D-533]","Every item in the steps is true, and E48 is ticked in the app.","Any item is not true: do not tick. Fix it, or raise it in the app as a note so it becomes a row - the fold copies whatever the record says into the car's baseline, wrong or right. A difference between the car and the record that you know about but never wrote down: write it now.",Tick E48 in the app. That is the ruling. Nothing else is entered; the fold (E49) is then started from the app.
