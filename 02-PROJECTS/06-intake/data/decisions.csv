@@ -29,3 +29,10 @@ In the tool: `export` gives each procedure its `steps` in order and, where there
 A step is where a figure is used, never its home (R2): a figure in a step names the `specs` row that holds it, and another year's figure stays marked as such there.
 
 Undoing this is deleting rows and one table declaration; nothing is bought, cut or wired."
+D-545,,Install poppler on the Mac so scanned manual pages can be read,2026-10-13,standing,,,06.04,,"**The agent may install poppler on the Mac with Homebrew, so a run can read scanned manual pages as images.**
+
+His answer, option (a): ""Yes: the agent installs poppler on the Mac with Homebrew (brew install poppler). Free, about a minute, removed again with brew uninstall poppler. Scanned pages can then be read as images on the Mac. Forecloses nothing."" No further words.
+
+Reasoning: costs nothing, reversible with brew uninstall poppler, and unblocks drawings and mark tables (e.g. the 1985 maintenance table intervals, P83) that OCR text cannot give.
+
+Consequences: poppler is installed on the Mac (pdftoppm available); scanned sections are parsed with the page looked at, not text alone; P83 and the drawings/mark tables skipped earlier may be re-taken by the plan run."
