@@ -1,0 +1,9 @@
+table,purpose
+decisions,"every ruling, permanent, newest last; the body is its full text"
+log,"what happened, one row per action"
+retired,terms that must no longer appear anywhere
+work,the work list; owner says who does it - the phases of the library plan (tools/doc/library.md)
+blocks,"open questions only Camden can answer, one row each; deleted once a decision closes it (§4, D-405)"
+inbox,"his answers waiting to be applied, one file per answer per device (D-405)"
+queue,"the parsing agents' work list: one small item each (a few pages of one document, or one merge), claimed and finished through rx7.py claim / finish under the write lock; built by tools/build_queue.py, never by hand (D-574)"
+facts,"what a parsing agent read off a page, before it is merged: one row per fact, citing its page; the merge (phase 3) moves each into its home table and records where (D-574)"

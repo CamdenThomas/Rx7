@@ -1,0 +1,77 @@
+table,column,type,required,ref,note
+decisions,id,key,yes,,
+decisions,system,str,no,,
+decisions,title,str,no,,
+decisions,date,str,no,,
+decisions,status,enum(inherited|standing|superseded|withdrawn),no,,vocabulary owned by tools/rx7.py - do not narrow it per project (2026-09-11)
+decisions,supersedes,str,no,,
+decisions,superseded_by,str,no,,
+decisions,closes,str,no,,
+decisions,also,str,no,,
+log,id,key,yes,,
+log,date,str,no,,
+log,workflow,str,no,,
+log,ids,str,no,,
+log,summary,str,no,,
+retired,term,key,yes,,
+retired,retired_by,str,no,,
+retired,note,str,no,,
+work,id,key,yes,,
+work,stage,str,no,,
+work,stage_title,str,no,,
+work,item,str,no,,
+work,owner,enum(agent|camden),no,,vocabulary owned by tools/rx7.py - do not narrow it per project (2026-09-11)
+work,state,enum(blocked|done|dropped|open),no,,vocabulary owned by tools/rx7.py - do not narrow it per project (2026-09-11)
+work,gate,str,no,,"references only - D-###, a block id like 00.18, a work id in this area, <area>:<work id>, or phase:<PHASE>; all must be met before the row can start, an empty cell is met, and prose belongs in note (2026-09-12)"
+work,note,str,no,,
+blocks,id,key,yes,,"<prefix>.<nn>, issued by rx7.py block (D-356)"
+blocks,title,str,yes,,
+blocks,opened,date,yes,,
+blocks,ask,text,yes,,"one sentence, answerable on its own"
+blocks,why,text,yes,,what changes depending on the answer
+blocks,options,text,yes,,"one per line, each starting (a) , (b) … - the app shows each as a button"
+blocks,recommend,text,yes,,"names the option it recommends first, e.g. (a), unless …"
+blocks,stops,text,yes,,what cannot proceed until it is answered
+inbox,id,key,yes,,<target>~<device>; the row is the file data/inbox/<id>.csv (D-405)
+inbox,target,str,yes,,"what it answers: a block, pick or work id; a workflow for kind=run; a name for kind=project"
+inbox,kind,enum(block|drive|note|pick|place|project|run|work),yes,,vocabulary owned by tools/rx7.py
+inbox,choice,str,no,,the option letter; yes/no/question; done; a value; a choice - empty when he only wrote words
+inbox,text,text,no,,"his words, verbatim"
+inbox,context,text,no,,"the key points of a Discuss chat, carried into the decision with his words (D-406)"
+inbox,device,enum(desktop|phone),yes,,vocabulary owned by tools/rx7.py
+inbox,at,datetime,yes,,when he saved it
+decisions,body,text,no,,"the decision's full text: the ruling in bold, his words, the reasoning, the consequences (D-405)"
+work,reply,enum(check|choice|value),no,,"how he answers his row in the app: check (the default), value or choice (D-406)"
+work,choices,str,no,,"for reply=choice: the choices, separated by |"
+work,unit,str,no,,for reply=value: the unit the value is in
+work,result,str,no,,"his answer as rx7.py apply set it: done, the value (in unit), or the choice (2026-09-26, plan P07)"
+work,settles,str,no,,"rows his answer flips, as <area>:<table>:<key> separated by spaces; blank means the PT ids named in item (2026-09-26, plan P07)"
+queue,id,key,yes,,"Q-00001, issued by build_queue.py"
+queue,priority,int,yes,,"higher first: the document's tier, the page kind and topic, and what is still unread (tools/doc/library.md)"
+queue,kind,enum(parse|figure|diagnosis|catalogue|index|merge|review),yes,,"what the item asks: read pages into facts (parse), decode a drawing (figure), a troubleshooting table (diagnosis), parts-catalogue figure pages (catalogue), only say what each page is (index), move facts into their home table (merge), a stronger agent's look at a hard item (review)"
+queue,doc,str,no,00-CAR:docs,the document; empty for a merge
+queue,pages,str,no,,"PDF page numbers, e.g. 12-14 or 7 9 11"
+queue,section,str,no,,"the section or topic, as the pages print it"
+queue,brief,text,yes,,"what to take and where it goes, in one or two lines"
+queue,after,str,no,,"queue ids that must be done first, space-separated"
+queue,state,enum(open|claimed|done|skipped|failed),yes,,open - claimed (by claim) - done / skipped / failed (by finish)
+queue,agent,str,no,,who claimed it
+queue,claimed,str,no,,"when, ISO time; a claim older than --stale minutes counts as abandoned"
+queue,finished,str,no,,"when, ISO time"
+queue,result,text,no,,"one line: what was taken, or why skipped / failed"
+queue,rows,text,no,,"the facts ids written (or, for a merge, the home rows), space-separated ranges allowed"
+facts,id,key,yes,,F-000001; add with id=next
+facts,page,str,yes,00-CAR:pages,the page it was read from
+facts,kind,enum(spec|step|procedure|terminal|circuit|diagnosis|interval|part|catalogue|dimension|figure|issue|note),yes,,which home table it is headed for
+facts,system,str,no,00-CAR:systems,
+facts,subject,text,yes,,"the thing it is about: a part, a system, a procedure's title"
+facts,item,text,yes,,"what is stated: the spec's name, the step's action, the terminal, the symptom"
+facts,value,text,no,,"the figure or the answer, as printed"
+facts,unit,str,no,,
+facts,context,text,no,,"condition, model, year, gearbox, step number, figure id - whatever the value depends on"
+facts,applies,enum(this-car|other-year|other-model|unknown),yes,,as the page says: 1982 12A automatic GS is this-car; another FB year is other-year; another model is other-model
+facts,quote,text,no,,"the line as printed, short, when the wording matters"
+facts,state,enum(new|merged|duplicate|conflict|rejected),yes,,"new until the merge: merged into target, duplicate of target, conflict (raised as a block), rejected (why in note)"
+facts,target,str,no,,"the home row, area:table:key or table:key in 00-CAR"
+facts,queue,str,no,,the queue item that wrote it
+facts,note,text,no,,

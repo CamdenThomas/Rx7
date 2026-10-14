@@ -35,6 +35,7 @@ is the machine-readable view of everything.
 from __future__ import annotations
 
 import argparse
+import contextlib
 import csv
 import datetime
 import io
@@ -42,7 +43,9 @@ import json
 import math
 import os
 import re
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -1660,10 +1663,59 @@ def run_check(sel=None):
                             "their block ids would collide; renumber one directory")
         elif px:
             seen_prefix[px] = a
+    problems += check_library(keyidx)
     for stray in ("BLOCKS.md", "DECISIONS.md"):
         if (ROOT / stray).exists():
             problems.append(f"{stray} exists - blocks and decisions live in the record now (D-405)")
     return problems
+
+
+PAGE_ROW_RE = re.compile(r"^(?:(?P<area>[0-9A-Za-z-]+):)?(?P<table>[a-z_]+):(?P<key>\S+)$")
+PAGE_FINAL = ("parsed", "held", "indexed", "duplicate", "empty")
+
+
+def check_library(keyidx):
+    """The library's own rules (D-574), when 00-CAR has `docs` and `pages`:
+    - a page's `rows` name only rows that exist (`table:key`, or `area:table:key` elsewhere);
+    - a page's id is its doc and its number, `<doc>.<nnn>`;
+    - a doc marked `gone` has every page finished, and its file is no longer on disk;
+    - a queue item that is claimed says by whom and when; a done one says when."""
+    car = ROOT / "00-CAR"
+    p = []
+    if (car / "data" / "docs.csv").exists() and (car / "data" / "pages.csv").exists():
+        docs = {(d.get("id") or "").strip(): d for d in read_table(car, "docs")[1]}
+        open_pages = {}
+        for r in read_table(car, "pages")[1]:
+            pid, doc = (r.get("id") or "").strip(), (r.get("doc") or "").strip()
+            n = _int(r.get("n"))
+            if n is None or pid != f"{doc}.{n:03d}":
+                p.append(f"00-CAR:pages:{pid}: its id is not <doc>.<nnn> for doc {doc!r} page {r.get('n')!r}")
+            if (r.get("status") or "").strip() not in PAGE_FINAL:
+                open_pages[doc] = open_pages.get(doc, 0) + 1
+            for t in (r.get("rows") or "").split():
+                m = PAGE_ROW_RE.match(t)
+                if not m:
+                    p.append(f"00-CAR:pages:{pid}: rows {t!r} is not table:key or area:table:key")
+                    continue
+                area = m.group("area") or "00-CAR"
+                if m.group("key") not in keyidx.get((area, m.group("table")), set()):
+                    p.append(f"00-CAR:pages:{pid}: rows {t!r} names no row")
+        for did, d in docs.items():
+            if (d.get("file") or "").strip() == "gone":
+                if open_pages.get(did):
+                    p.append(f"00-CAR:docs:{did}: marked gone with {open_pages[did]} page(s) not finished")
+                if (d.get("path") or "").strip() and (ROOT / d["path"].strip()).exists():
+                    p.append(f"00-CAR:docs:{did}: marked gone but {d['path'].strip()} is still on disk")
+    for a in areas():
+        if not (a / "data" / "queue.csv").exists():
+            continue
+        for r in read_table(a, "queue")[1]:
+            st, qid = (r.get("state") or "").strip(), (r.get("id") or "").strip()
+            if st == "claimed" and not ((r.get("agent") or "").strip() and (r.get("claimed") or "").strip()):
+                p.append(f"{rel(a)}:queue:{qid}: claimed, but by whom or when is missing")
+            if st == "done" and not (r.get("finished") or "").strip():
+                p.append(f"{rel(a)}:queue:{qid}: done, but finished is empty")
+    return p
 
 
 def check_supersedes():
@@ -2550,6 +2602,51 @@ def _pairs(items):
     return out
 
 
+# ------------------------------------------------------------------ many writers (D-574)
+#
+# Many small agents parse the library at once (05-library's queue). Every command that writes
+# takes one exclusive lock on the tree for its whole read-change-write, so two writers never
+# read the same table and each write over the other's row. Readers take no lock.
+
+WRITE_CMDS = {"set", "add", "del", "new", "answer", "apply", "block", "log", "claim", "finish"}
+_LOCK = None
+
+
+def take_write_lock():
+    """Block until this process holds the tree's write lock; released when the process exits."""
+    global _LOCK
+    if _LOCK is not None:
+        return
+    try:
+        import fcntl
+    except ImportError:  # no flock (Windows): one writer at a time is then the caller's job
+        return
+    d = ROOT / ".git" if (ROOT / ".git").is_dir() else ROOT
+    _LOCK = open(d / "rx7.lock", "a")
+    fcntl.flock(_LOCK.fileno(), fcntl.LOCK_EX)
+
+
+NEXT_KEY_RE = re.compile(r"^(?P<pre>.*?)(?P<num>\d+)$")
+
+
+def next_keys(existing, n):
+    """`n` fresh keys after the most common `<prefix><digits>` pattern among `existing`, padded
+    to its widest number: SP-1826 -> SP-1827, Q-0099 -> Q-0100. For `add id=next` (D-574): an
+    agent never reads the table to pick a key, so two agents never pick the same one."""
+    pats = {}
+    for k in existing:
+        m = NEXT_KEY_RE.match(k)
+        if m:
+            pre, num = m.group("pre"), m.group("num")
+            c = pats.setdefault(pre, [0, 0, 0])
+            c[0] += 1; c[1] = max(c[1], int(num)); c[2] = max(c[2], len(num))
+    if not pats:
+        return None
+    pre = max(pats, key=lambda x: (pats[x][0], x))
+    top, width = pats[pre][1], pats[pre][2]
+    return [f"{pre}{top + i:0{width}d}" for i in range(1, n + 1)]
+
+
 def cmd_set(args):
     a = resolve_area(args.area)
     _, cols = schema(a)
@@ -2633,6 +2730,18 @@ def cmd_add(args):
     hdr, rows = read_table(a, args.table)
     hdr = hdr or declared
     have = {(r.get(kc) or "").strip() for r in rows}
+    want = [v for v in many if (v.get(kc) or "").strip().lower() == "next"]
+    if want:
+        seed = set(have)
+        if not seed:  # an empty table: its key column's note shows the first key, e.g. F-000001
+            m = re.search(r"\b([A-Z][A-Z0-9]*-)(\d+)\b", next((c.get("note") or "" for c in spec if c["column"] == kc), ""))
+            if m:
+                seed = {f"{m.group(1)}{0:0{len(m.group(2))}d}"}
+        fresh = next_keys(seed, len(want))
+        if not fresh:
+            die(f"{args.table} has no numbered key to follow - name {kc}= yourself (nothing was written)")
+        for v, k in zip(want, fresh):
+            v[kc] = k
     keys = load_keys()
     bad, new = [], []
     for vals in many:
@@ -2659,6 +2768,109 @@ def cmd_add(args):
     else:
         print(f"{args.table}: {len(new)} rows added, {new[0][kc]} to {new[-1][kc]}")
     return RC_OK
+
+
+def _now_iso():
+    return datetime.datetime.now().replace(microsecond=0).isoformat()
+
+
+def cmd_claim(args):
+    """Hand the caller the next item of an area's `queue` and mark it claimed, under the write
+    lock, so any number of agents can call it at once and never get the same item (D-574).
+    Picks the highest priority open item whose `after` items are all done; a claim older than
+    --stale minutes is treated as open again (its agent died). rc 2 when nothing is left."""
+    a = resolve_area(args.area)
+    hdr, rows = read_table(a, "queue")
+    if not hdr:
+        die(f"{rel(a)} has no queue table")
+    now = datetime.datetime.now()
+    done = {(r.get("id") or "").strip() for r in rows if (r.get("state") or "").strip() in ("done", "skipped")}
+
+    def stale(r):
+        try:
+            t = datetime.datetime.fromisoformat((r.get("claimed") or "").strip())
+        except ValueError:
+            return True
+        return (now - t).total_seconds() > args.stale * 60
+
+    def ready(r):
+        st = (r.get("state") or "").strip()
+        if st not in ("open", "claimed") or (st == "claimed" and not stale(r)):
+            return False
+        if args.kind and (r.get("kind") or "").strip() != args.kind:
+            return False
+        return all(x in done for x in (r.get("after") or "").split())
+
+    pick = sorted((r for r in rows if ready(r)), key=lambda r: (-(_int(r.get("priority")) or 0), r.get("id") or ""))
+    if not pick:
+        print("nothing to claim")
+        return RC_WAITING
+    r = pick[0]
+    r.update({"state": "claimed", "agent": args.agent or f"pid{os.getpid()}", "claimed": now.replace(microsecond=0).isoformat()})
+    write_table(a, "queue", hdr, rows)
+    doc = {}
+    car = ROOT / "00-CAR"
+    if (car / "data" / "docs.csv").exists():
+        doc = next((d for d in read_table(car, "docs")[1] if (d.get("id") or "").strip() == (r.get("doc") or "").strip()), {})
+    for k in ("id", "priority", "kind", "doc", "pages", "section", "brief", "rows"):
+        if r.get(k, "") or k in ("id", "kind", "brief"):
+            print(f"{k:9} {r.get(k, '')}")
+    for k in ("source", "path", "text"):
+        if doc.get(k):
+            print(f"{'doc.' + k:9} {doc[k]}")
+    book = "merge" if (r.get("kind") or "") == "merge" else "parse"
+    print(f"then     python3 tools/rx7.py finish {rel(a)} {r['id']} result=\"...\"  (playbook: rx7.py playbook {book})")
+    return RC_OK
+
+
+def cmd_finish(args):
+    """Close a claimed queue item: state (done unless named), finished = now, and any col=value
+    pairs (result, rows). Under the write lock, like claim."""
+    a = resolve_area(args.area)
+    hdr, rows = read_table(a, "queue")
+    hit = next((r for r in rows if (r.get("id") or "").strip() == args.key), None)
+    if hit is None:
+        die(f"queue:{args.key} has no row")
+    vals = _pairs(args.pairs)
+    vals.setdefault("state", "done")
+    vals["finished"] = _now_iso()
+    stray = [k for k in vals if k not in hdr]
+    if stray:
+        die(f"queue has no column {stray[0]!r} (nothing was written)")
+    _, cols = schema(a)
+    trial = dict(hit, **vals)
+    bad = value_problems(a, "queue", cols["queue"], trial, args.key, load_keys(), only=set(vals))
+    if bad:
+        for x in bad:
+            print(x)
+        die(f"{len(bad)} problem(s) - nothing was written", RC_INVALID)
+    hit.update(vals)
+    write_table(a, "queue", hdr, rows)
+    print(f"queue:{args.key} {vals['state']}")
+    return RC_OK
+
+
+def dup_specs():
+    """Specs that state the same fact twice: one item, one value, one `applies` (R2). Advisory
+    until 05-library's merge closes them (D-574); then `check` refuses them."""
+    car = ROOT / "00-CAR"
+    if not (car / "data" / "specs.csv").exists():
+        return []
+    norm = lambda x: re.sub(r"[^a-z0-9.]+", " ", (x or "").lower()).strip()
+    seen = {}
+    for r in read_table(car, "specs")[1]:
+        k = (norm(r.get("item")), norm(r.get("value")), (r.get("applies") or "").strip())
+        if k[0] and k[1]:
+            seen.setdefault(k, []).append((r.get("id") or "").strip())
+    return [ids for ids in seen.values() if len(ids) > 1]
+
+
+def cmd_dups(args):
+    d = dup_specs()
+    for ids in d:
+        print(" ".join(ids))
+    print(f"{len(d)} fact(s) held more than once" if d else "no fact is held twice")
+    return RC_WAITING if d else RC_OK
 
 
 def cmd_del(args):
@@ -3702,6 +3914,69 @@ def cmd_selftest(args):
                                {"do": "Jack", "how": "at the crossmember", "caution": "stands"}])
                == "1. **Block the wheels** (p.G-2)\n2. **Jack**\n   at the crossmember\n   **Caution:** stands")
 
+    # --- the library's many writers (D-574): next keys, the queue's claim and finish, the lock ---
+    expect("next keys follow the commonest numbered pattern, padded", next_keys({"Q-0098", "Q-0099", "X"}, 2) == ["Q-0100", "Q-0101"])
+    expect("an empty table's first next key comes from its key column's note", next_keys({"F-000000"}, 1) == ["F-000001"])
+    expect("next keys keep a wider old number's width", next_keys({"SP-099", "SP-1826"}, 1) == ["SP-1827"])
+    with tempfile.TemporaryDirectory() as td:
+        root = fixture(td)
+        d = root / "02-PROJECTS" / "01-one" / "data"
+        (d / "_tables.csv").write_text((d / "_tables.csv").read_text(encoding="utf-8") + "queue,queue\n", encoding="utf-8")
+        qcols = [["queue", "id", "key", "yes", "", ""], ["queue", "priority", "int", "no", "", ""], ["queue", "kind", "str", "no", "", ""],
+                 ["queue", "doc", "str", "no", "", ""], ["queue", "pages", "str", "no", "", ""], ["queue", "section", "str", "no", "", ""],
+                 ["queue", "brief", "text", "no", "", ""], ["queue", "after", "str", "no", "", ""],
+                 ["queue", "state", "enum(open|claimed|done|skipped|failed)", "yes", "", ""], ["queue", "agent", "str", "no", "", ""],
+                 ["queue", "claimed", "str", "no", "", ""], ["queue", "finished", "str", "no", "", ""], ["queue", "result", "text", "no", "", ""],
+                 ["queue", "rows", "text", "no", "", ""]]
+        (d / "_schema.csv").write_text((d / "_schema.csv").read_text(encoding="utf-8") + csvtext(["table", "column", "type", "required", "ref", "note"], qcols).split("\n", 1)[1], encoding="utf-8")
+        qh = [c[1] for c in qcols]
+        blank = lambda **k: [k.get(c, "") for c in qh]
+        (d / "queue.csv").write_text(csvtext(qh, [blank(id="Q-001", priority="10", state="open"), blank(id="Q-002", priority="90", state="open", after="Q-001"),
+                                                  blank(id="Q-003", priority="50", state="open"), blank(id="Q-004", priority="99", state="done", finished="x")]), encoding="utf-8")
+        old = _use_tree(root)
+        try:
+            ns = lambda **k: argparse.Namespace(area="02-PROJECTS/01-one", agent=k.get("agent"), kind=None, stale=90, key=k.get("key"), pairs=k.get("pairs", []))
+            with contextlib.redirect_stdout(io.StringIO()):
+                cmd_claim(ns(agent="a1")); cmd_claim(ns(agent="a2"))
+            q = {r["id"]: r for r in read_table(root / "02-PROJECTS" / "01-one", "queue")[1]}
+            expect("claim takes the highest priority open item whose after-items are done, then the next",
+                   q["Q-003"]["agent"] == "a1" and q["Q-001"]["agent"] == "a2" and q["Q-002"]["state"] == "open")
+            with contextlib.redirect_stdout(io.StringIO()):
+                rc = cmd_claim(ns(agent="a3"))
+            expect("claim waits (rc 2) while the only open item waits on an unfinished one", rc == RC_WAITING)
+            with contextlib.redirect_stdout(io.StringIO()):
+                cmd_finish(ns(key="Q-001", pairs=["result=ok"])); cmd_claim(ns(agent="a3"))
+            q = {r["id"]: r for r in read_table(root / "02-PROJECTS" / "01-one", "queue")[1]}
+            expect("finish marks done with a time, and frees what waited on it",
+                   q["Q-001"]["state"] == "done" and q["Q-001"]["finished"] and q["Q-002"]["agent"] == "a3")
+            expect("a claim with no agent is refused by check",
+                   names(refusals(root, lambda r: (r / "02-PROJECTS/01-one/data/queue.csv").write_text(csvtext(qh, [blank(id="Q-9", state="claimed")]), encoding="utf-8")), "claimed, but"))
+        finally:
+            _use_tree(old)
+        def lib(r, pages, file="on-disk", path=""):
+            c = r / "00-CAR" / "data"
+            (c / "docs.csv").write_text(csvtext(["id", "path", "file"], [["DOC-001", path, file]]), encoding="utf-8")
+            (c / "pages.csv").write_text(csvtext(["id", "doc", "n", "status", "rows"], pages), encoding="utf-8")
+        expect("a page naming a row that does not exist is refused",
+               names(refusals(root, lambda r: lib(r, [["DOC-001.001", "DOC-001", "1", "parsed", "parts:PT999"]])), "names no row"))
+        expect("a page naming a row that exists passes",
+               not names(refusals(root, lambda r: lib(r, [["DOC-001.001", "DOC-001", "1", "parsed", "parts:PT001"]])), "DOC-001"))
+        expect("a page whose id is not <doc>.<nnn> is refused",
+               names(refusals(root, lambda r: lib(r, [["DOC-001.1", "DOC-001", "1", "parsed", ""]])), "is not <doc>.<nnn>"))
+        expect("a doc marked gone with an unfinished page is refused",
+               names(refusals(root, lambda r: lib(r, [["DOC-001.001", "DOC-001", "1", "open", ""]], file="gone")), "not finished"))
+        expect("a doc marked gone whose file is still on disk is refused",
+               names(refusals(root, lambda r: lib(r, [["DOC-001.001", "DOC-001", "1", "parsed", ""]], file="gone", path="00-CAR/data/parts.csv")), "still on disk"))
+        # The lock, for real: eight processes add id=next to one table at once; all eight land.
+        (root / "tools").mkdir(exist_ok=True)
+        (root / "tools" / "rx7.py").write_text(Path(__file__).read_text(encoding="utf-8"), encoding="utf-8")
+        procs = [subprocess.Popen([sys.executable, str(root / "tools" / "rx7.py"), "add", "02-PROJECTS/01-one", "work", "id=next", "item=x", "owner=agent", "state=open"],
+                                  stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL) for _ in range(8)]
+        rcs = [pr.wait() for pr in procs]
+        ids = [l.split(",")[0] for l in (d / "work.csv").read_text(encoding="utf-8").splitlines()[1:]]
+        expect("eight agents adding at once under the lock: every row lands, no id twice",
+               rcs == [0] * 8 and len(ids) == 10 and len(set(ids)) == 10 and "A10" in ids)
+
     n = len(passes) + len(fails)
     print(f"\n{len(fails)} failure(s) of {n}" if fails else f"\nselftest: all {n} pass")
     return RC_INVALID if fails else RC_OK
@@ -3809,8 +4084,8 @@ def main(argv=None):
     p.add_argument("-p", "--area")
     p.set_defaults(fn=cmd_apply)
 
-    for name, hlp in (("playbook", "print one playbook (plan, apply, source, build, review, complete, service, new, parts)"),
-                      ("doc", "print one description (record, work, blocks, ids, machine)")):
+    for name, hlp in (("playbook", "print one playbook (plan, apply, source, build, review, complete, service, new, parts, parse, merge)"),
+                      ("doc", "print one description (record, work, blocks, ids, machine, library)")):
         p = sub.add_parser(name, help=hlp)
         p.add_argument("name", nargs="?")
         p.set_defaults(fn=cmd_doc)
@@ -3838,11 +4113,22 @@ def main(argv=None):
     p.add_argument("-v", "--verbose", action="store_true")
     p.set_defaults(fn=cmd_selftest)
 
+    p = sub.add_parser("claim", help="take the next item of an area's queue and mark it claimed (D-574; rc 2 when none is left)")
+    p.add_argument("area"); p.add_argument("--agent"); p.add_argument("--kind")
+    p.add_argument("--stale", type=int, default=90, help="minutes after which a claim counts as abandoned")
+    p.set_defaults(fn=cmd_claim)
+    p = sub.add_parser("finish", help="close a claimed queue item: state (default done), finished, result=, rows=")
+    p.add_argument("area"); p.add_argument("key"); p.add_argument("pairs", nargs="*")
+    p.set_defaults(fn=cmd_finish)
+    p = sub.add_parser("dups", help="advisory: specs that hold the same fact twice (rc 2 if any)")
+    p.set_defaults(fn=cmd_dups)
     p = sub.add_parser("log", help="append a log row (several refs allowed)")
     p.add_argument("area"); p.add_argument("kind"); p.add_argument("what"); p.add_argument("refs", nargs="*")
     p.set_defaults(fn=cmd_log)
 
     args = ap.parse_args(argv)
+    if args.cmd in WRITE_CMDS:
+        take_write_lock()
     try:
         return args.fn(args) or RC_OK
     except RecordFileError as e:

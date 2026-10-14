@@ -239,3 +239,39 @@ circuit_paths,fuse,str,no,,the fuse or fusible link it runs through
 circuit_paths,where,text,no,,"where the device sits, its connector"
 circuit_paths,note,text,no,,
 circuit_paths,page,str,no,,the page of S-001 it was read from
+docs,id,key,yes,,DOC-001
+docs,source,str,yes,sources,"the sources row it is (several files can be one source, e.g. S-002's sections)"
+docs,path,str,no,,"where the file is, from the tree root, out of git; empty once gone"
+docs,title,text,no,,the file's own title or section
+docs,pages,int,no,,
+docs,md5,str,no,,the file's checksum: two docs with one md5 are one file
+docs,text,enum(yes|ocr|no),no,,yes: a text layer; ocr: an OCR text file (ocr column); no: page images only
+docs,ocr,str,no,,"the OCR text file, when text=ocr"
+docs,owner,str,no,,"the area whose tables take its facts: 00-CAR, or the project that uses the part"
+docs,tier,int,no,,1 most valuable to this car .. 5 index only (tools/doc/library.md)
+docs,scope,enum(this-car|other-year|other-model|mixed),no,,"whom the document describes: this car (1982 12A), another FB year, another model, or a mix"
+docs,file,enum(on-disk|offline|gone),no,,"on-disk: still in the tree; offline: also on the offline copy; gone: deleted from the tree (every page finished, check)"
+docs,offline,str,no,,"where the offline copy is, once made"
+docs,duplicate_of,str,no,docs,the doc with the same md5 that is kept
+docs,note,text,no,,
+pages,id,key,yes,,"<doc>.<nnn>, the PDF page number (check)"
+pages,doc,str,yes,docs,
+pages,n,int,yes,,"the PDF page number, 1 first"
+pages,printed,str,no,,"the page number the page prints, e.g. 4A-16"
+pages,kind,enum(text|table|figure|photo|mixed|cover|blank|index|unknown),no,,from the text layer when there is one; unknown until an agent looks
+pages,topic,text,no,,"what the page covers, in a few words (its heading)"
+pages,scope,enum(this-car|other-year|other-model|none|unknown),no,,whom the page describes
+pages,status,enum(open|cited|parsed|held|indexed|duplicate|empty),yes,,"open: unread; cited: some rows cite it, not proven complete; parsed: every fact taken; held: taken as another year's (held back); indexed: other model, only described; duplicate; empty"
+pages,rows,text,no,,"the rows that hold its facts, table:key or area:table:key, space-separated (check)"
+pages,note,text,no,,
+diagnosis,id,key,yes,,DG-001
+diagnosis,system,str,no,systems,
+diagnosis,symptom,text,yes,,what he notices
+diagnosis,cause,text,no,,the likely cause the table gives
+diagnosis,check,text,no,,"how to tell: the test, the specs row it uses"
+diagnosis,remedy,text,no,,"what fixes it, a procedures row when there is one"
+diagnosis,part,str,no,parts,
+diagnosis,source,str,no,,S- ids
+diagnosis,page,str,no,,
+diagnosis,applies,enum(not-fitted|other-car|replaced),no,,as specs.applies: blank is this car now
+diagnosis,note,text,no,,
