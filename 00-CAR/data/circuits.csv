@@ -13,3 +13,5 @@ interior-hatch-accessories.md,"Interior lamps, doors, hatch, fuel door and acces
 blower-ac-defroster-audio.md,"Blower, A/C, defroster, audio and power antenna",climate electrical,S-001,,
 FAULT-K008-analysis.md,Fault K-008: the blinker upsets the fuel pump and tachometer,electrical lighting fuel,S-001,a known fault traced through the diagram,
 README.md,"The diagram's page map, wire colour codes, fuse and bus map, ground points",electrical,S-001,the index the write-ups were decoded under,
+differences-1983.md,How the 1983 diagram differs from this car's 1982 one,electrical,S-041,06-intake P66.,other-car
+differences-1985.md,How the 1985 diagram differs from this car's 1982 one,electrical,S-002,06-intake P17; Section 50 of the 1985 workshop manual.,other-car
