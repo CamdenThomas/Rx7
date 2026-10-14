@@ -8,3 +8,4 @@ L-0006,2026-10-13,plan,P01 D-523,"P01: 1985 manual contents page checked against
 L-0007,2026-10-13,plan,P02 D-544 D-523,"P02: 1985 manual Section G parsed - 10 specs, 2 procedures as 10 procedure_steps rows (table declared, export carries steps); PDF out of git"
 L-0008,2026-10-13,plan,P03 P83 06.04 D-544 D-523,"P03: 1985 manual Section 0 parsed - 11 specs, 1 interval, 18 procedures (77 steps); block 06.04 raised for a PDF renderer, P83 waits on it; PDF out of git"
 L-0009,2026-10-13,plan,P04 P83 D-544 D-523,"P04: 1985 manual Section 1 Engine parsed - 9 specs, 10 procedures (167 steps); figures left to P83; PDF out of git"
+L-0010,2026-10-13,plan,P05 D-544 D-523,"P05: 1985 manual Section 2 Lubrication parsed - 5 specs, 6 procedures (37 steps); PDF out of git"

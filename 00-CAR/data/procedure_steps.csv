@@ -254,3 +254,40 @@ PR-032.05,PR-032,5,"Place the O-rings and gasket and fit the intake manifold and
 PR-032.06,PR-032,6,"Fit the alternator to its bracket, then the belt, and set the belt tension",SP-025.,,,p.1-55
 PR-032.07,PR-032,7,Fit the air pump and its belt and set the belt tension,SP-761.,,,p.1-55
 PR-032.08,PR-032,8,"With the engine off the stand, fit the oil cooler oil pipe with its sealing washers, both ends partly tightened, then tighten the front cover nut and after it the cooler bolt",SP-1565.,,The cooler-side bolt first leaves the front cover joint leaking.,p.1-56
+PR-033.01,PR-033,1,Disconnect the connector from the oil pressure gauge unit on the rear housing,,,,p.2-5
+PR-033.02,PR-033,2,Remove the gauge unit and screw oil pressure gauge 49 0187 280 into its hole,,,,p.2-5
+PR-033.03,PR-033,3,Start the engine and warm it to normal operating temperature,,,,p.2-5
+PR-033.04,PR-033,4,"Read the pressure at idle (in D) and at 3000 rpm",Idle SP-019 (the 1985 manual gives SP-1566); 3000 rpm SP-020.,Both readings inside their ranges.,,p.2-5
+PR-033.05,PR-033,5,"If a reading is out, check the oil level is between F and L, then the pressure regulator and the pressure control valve, then the oil pump",Control valve: PR-038. Oil pump: PR-037.,,,p.2-5
+PR-034.01,PR-034,1,Remove the water hoses from the inlet and outlet sides of the cooler,,,,p.2-6
+PR-034.02,PR-034,2,Remove the oil pipe and its sealing washer,,,,p.2-6
+PR-034.03,PR-034,3,"Remove the oil cooler and the oil filter cartridge together as one unit, then the O-rings",The cooler is replaced as an assembly.,,,p.2-7
+PR-034.04,PR-034,4,"Fit in the reverse order with a new filter cartridge, new O-rings and a new sealing washer",Oil pipe torques SP-1565.,,,p.2-7
+PR-034.05,PR-034,5,Add engine oil and coolant,,,,p.2-7
+PR-034.06,PR-034,6,Start the engine and check for oil and water leaks,,No leak at the cooler or the pipe.,,p.2-7
+PR-035.01,PR-035,1,Check the metering oil pump and its hoses for leaks and the lever to washer clearance,SP-1569.,,,p.2-8
+PR-035.02,PR-035,2,Connect a tachometer and warm the engine to normal operating temperature,,,,p.2-8
+PR-035.03,PR-035,3,Disconnect the two metering oil hoses at the carburettor,,,,p.2-8
+PR-035.04,PR-035,4,Hold the engine at 2000 rpm with the two hoses in a measuring cylinder,,,Add clean engine oil into the carburettor while measuring: the engine is getting none.,p.2-8
+PR-035.05,PR-035,5,Stop the engine after 6 minutes and read the amount of oil,SP-1569; out of range the pump is replaced.,,,p.2-8
+PR-036.01,PR-036,1,Drain the engine oil and remove the engine under cover,,,,p.2-8
+PR-036.02,PR-036,2,Disconnect the oil level sensor connector,,,,p.2-8
+PR-036.03,PR-036,3,Disconnect the connector of the oil thermo unit (not on California cars),,,,p.2-8
+PR-036.04,PR-036,4,Remove the oil pan,SP-1564.,,,p.2-8
+PR-036.05,PR-036,5,Check the oil pan for cracks and damaged drain plug threads and straighten its mating face if it needs it,,,,p.2-8
+PR-036.06,PR-036,6,Clean the mating faces of the housings and the oil pan,,,,p.2-9
+PR-036.07,PR-036,7,"Lay a continuous, overlapped bead of sealer on the mounting face of the oil pan; with a silicone sealer use the gasket too, sealer on both of its sides",SP-820.,,,p.2-9
+PR-036.08,PR-036,8,Fit the oil pan and tighten its bolts little by little in turn,Torque SP-166.,,,p.2-9
+PR-037.01,PR-037,1,Remove the oil pump from the front housing,,,,p.2-9
+PR-037.02,PR-037,2,"Take it apart in order: snap ring, rear outer rotor, rear inner rotor, key, screw, middle plate, front outer rotor, front inner rotor, key, shaft",,,,p.2-9
+PR-037.03,PR-037,3,Measure the clearance between the lobes of the rotors with a feeler gauge,"SP-885, limit SP-886; over the limit both rotors are replaced.",,,p.2-9
+PR-037.04,PR-037,4,Measure the clearance between the outer rotor and the pump body,"SP-887, limit SP-888; over the limit the rotor or the body is replaced.",,,p.2-10
+PR-037.05,PR-037,5,"Measure the end float of the rotors: a straight edge across the pump body for the gap to the rotor, then across the mating face of the front housing for the gap to the housing","SP-889, limit SP-890; over the limit the pump body is ground.",,,p.2-10
+PR-037.06,PR-037,6,Fit the front inner rotor with the shaft and the front outer rotor into the pump body,Marks SP-1570.,,,p.2-10
+PR-037.07,PR-037,7,"Fit the middle plate, then the set screw in line with the recess of the plate, and caulk the screw",SP-1570.,,,p.2-10
+PR-037.08,PR-037,8,"Fit the rear inner and outer rotors, marks the same way, and the snap ring on the shaft",SP-1570.,,,p.2-11
+PR-037.09,PR-037,9,"Prime the pump with engine oil, bolt it to the front housing and turn the shaft by hand",,The shaft turns smoothly.,,p.2-11
+PR-037.10,PR-037,10,Check the oil pressure once the engine runs,PR-033.,,,p.2-11
+PR-038.01,PR-038,1,Remove the pressure control valve from the front cover,,,,p.2-11
+PR-038.02,PR-038,2,Examine the spring and the plunger for corrosion or damage; replace them if it is severe,,,,p.2-11
+PR-038.03,PR-038,3,Measure the free length of the spring and replace the spring if it is out,SP-805 (the 1985 12A spring is SP-806).,,,p.2-11

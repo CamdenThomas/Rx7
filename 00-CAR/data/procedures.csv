@@ -31,3 +31,9 @@ PR-029,Engine,"Inspect the housings, rotors, seals and eccentric shaft",engine a
 PR-030,Engine,Replace a main bearing or a rotor bearing,"bearing worn, or its clearance over the limit","main bearing puller and installer 49 0813 235, rotor bush puller and installer 49 0813 240, press",S-002,
 PR-031,Engine,Assemble the 12A engine internals,"parts inspected; new O-rings, sealing rubbers and gaskets to hand","engine stand, used inner oil seal as a press tool, rubber ring, dial indicator, torque wrench, box wrench 49 0820 035, counter weight stopper 49 1881 055",S-002,
 PR-032,Engine,Fit the auxiliary parts to the 12A engine (1985 manual),internals assembled,,S-002,other-car
+PR-033,Engine,Check the oil pressure,"oil pressure in doubt, and after the oil pump has been off",oil pressure gauge 49 0187 280,S-002,
+PR-034,Engine,"Replace the oil cooler (1985 12A, cooler under the oil filter)",cooler damaged or leaking,"new oil filter cartridge, O-rings and sealing washers",S-002,other-car
+PR-035,Engine,Measure the metering oil pump discharge (1985 12A),metering pump output in doubt,"tachometer, measuring cylinder",S-002,other-car
+PR-036,Engine,Remove and refit the oil pan with the engine in the car,"oil pan leaking or damaged, or the oil strainer to be cleaned","scraper (SP-1564), oil pan sealer or silicone sealer and gasket",S-002,
+PR-037,Engine,Overhaul the oil pump,oil pressure low and the valves found good,"feeler gauges, straight edge",S-002,
+PR-038,Engine,Check the oil pressure control valve,oil pressure out of range,rule,S-002,
