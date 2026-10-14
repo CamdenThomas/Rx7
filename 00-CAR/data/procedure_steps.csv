@@ -211,7 +211,7 @@ PR-029.19,PR-029,19,"Eccentric shaft: check for cracks, scratches and wear and t
 PR-029.20,PR-029,20,"Eccentric shaft: check the blind plug in the shaft end for leaks or looseness, and the oil jets for a weak spring or a sticking or damaged ball",A leaking plug comes out with a hexagon key for a new O-ring.,,,p.1-39
 PR-029.21,PR-029,21,"Check the needle bearing, bearing housing and thrust plate for wear or damage",,,,p.1-40
 PR-029.22,PR-029,22,"Front and rear eccentric shaft oil seals: if worn, pull the seal, clean the bore and tap a new one home through a block of hardwood",,,No lubricant or sealer on the outside of the seal; never the hammer directly on it.,p.1-40
-PR-029.23,PR-029,23,"Oil pump drive: check the chain for broken links and both sprockets for cracks and worn or damaged teeth",,,,p.1-40
+PR-029.23,PR-029,23,Oil pump drive: check the chain for broken links and both sprockets for cracks and worn or damaged teeth,,,,p.1-40
 PR-030.01,PR-030,1,Front main bearing: remove the stationary gear and bearing with puller and installer 49 0813 235,,,,p.1-33
 PR-030.02,PR-030,2,Press the bearing out with the tool without its adaptor ring,,,,p.1-33
 PR-030.03,PR-030,3,"With the adaptor ring fitted and the bearing lug in line with the slot of the gear, press the new bearing in until the adaptor touches the gear flange",,,,p.1-33
@@ -257,7 +257,7 @@ PR-032.08,PR-032,8,"With the engine off the stand, fit the oil cooler oil pipe w
 PR-033.01,PR-033,1,Disconnect the connector from the oil pressure gauge unit on the rear housing,,,,p.2-5
 PR-033.02,PR-033,2,Remove the gauge unit and screw oil pressure gauge 49 0187 280 into its hole,,,,p.2-5
 PR-033.03,PR-033,3,Start the engine and warm it to normal operating temperature,,,,p.2-5
-PR-033.04,PR-033,4,"Read the pressure at idle (in D) and at 3000 rpm",Idle SP-019 (the 1985 manual gives SP-1566); 3000 rpm SP-020.,Both readings inside their ranges.,,p.2-5
+PR-033.04,PR-033,4,Read the pressure at idle (in D) and at 3000 rpm,Idle SP-019 (the 1985 manual gives SP-1566); 3000 rpm SP-020.,Both readings inside their ranges.,,p.2-5
 PR-033.05,PR-033,5,"If a reading is out, check the oil level is between F and L, then the pressure regulator and the pressure control valve, then the oil pump",Control valve: PR-038. Oil pump: PR-037.,,,p.2-5
 PR-034.01,PR-034,1,Remove the water hoses from the inlet and outlet sides of the cooler,,,,p.2-6
 PR-034.02,PR-034,2,Remove the oil pipe and its sealing washer,,,,p.2-6
@@ -291,3 +291,55 @@ PR-037.10,PR-037,10,Check the oil pressure once the engine runs,PR-033.,,,p.2-11
 PR-038.01,PR-038,1,Remove the pressure control valve from the front cover,,,,p.2-11
 PR-038.02,PR-038,2,Examine the spring and the plunger for corrosion or damage; replace them if it is severe,,,,p.2-11
 PR-038.03,PR-038,3,Measure the free length of the spring and replace the spring if it is out,SP-805 (the 1985 12A spring is SP-806).,,,p.2-11
+PR-039.01,PR-039,1,"Engine cold, turn the fan by hand",SP-765.,Resistance is felt.,,p.3-4
+PR-039.02,PR-039,2,"Check the fan drive clutch for fluid leaks, the bimetal for deformation and the bearing for play or grease leaks",,,,p.3-4
+PR-039.03,PR-039,3,"To replace the clutch, remove the fan and fan drive assembly, undo the fan bolts and separate the fan from the drive",,,,p.3-4
+PR-039.04,PR-039,4,Assemble the fan to the new drive and refit in the reverse order,,,,p.3-4
+PR-040.01,PR-040,1,Drain the cooling system by disconnecting the radiator lower hose,,,,p.3-4
+PR-040.02,PR-040,2,Remove the air cleaner,,,,p.3-4
+PR-040.03,PR-040,3,Disconnect the radiator upper hose,,,,p.3-4
+PR-040.04,PR-040,4,"Remove the thermostat cover and its gasket, and lift out the thermostat",,,,p.3-4
+PR-040.05,PR-040,5,Put the thermostat in water with a thermometer and heat the water gradually,,,,p.3-4
+PR-040.06,PR-040,6,"Note the temperature at which it starts to open and at which it is fully open, and measure the lift fully open",Opening SP-748 and lift SP-749; the 1985 manual's figures are SP-051.,,,p.3-4
+PR-040.07,PR-040,7,Fit the thermostat with its jiggle pin on the upper side,SP-750.,,"Pin elsewhere, the opening temperature changes.",p.3-5
+PR-040.08,PR-040,8,"Fit the thermostat cover, connect the upper hose, refit the air cleaner and connect the lower hose",,,,p.3-5
+PR-040.09,PR-040,9,Fill the radiator with coolant,Mixture SP-1572.,,,p.3-5
+PR-041.01,PR-041,1,Put the radiator cap on a tester and raise the pressure gradually,SP-052.,The cap holds within its range.,,p.3-5
+PR-041.02,PR-041,2,Wait about 10 seconds and see whether the pressure has dropped,SP-753. A cap that does not reach the bottom of the range or goes over the top is replaced.,,,p.3-5
+PR-041.03,PR-041,3,"Examine the radiator for leaks; any leak, however small, is soldered fully or the radiator replaced",,,,p.3-5
+PR-041.04,PR-041,4,Blow the outside of the core clean with compressed air and check the rubber gasket of the cap,A cap with a damaged gasket is replaced.,,,p.3-5
+PR-041.05,PR-041,5,"Take the cap off, add coolant if it is low and fit the cap tester to the radiator",,,To take a cap off hot: SP-1575.,p.3-5
+PR-041.06,PR-041,6,Warm the engine to normal operating temperature and stop it,,,,p.3-5
+PR-041.07,PR-041,7,Pump the system up and watch the gauge for about a minute,Pressure SP-755; never over SP-1547.,The pressure holds.,,p.3-5
+PR-041.08,PR-041,8,"If the pressure drops, look over every hose and fitting for an external leak",,,,p.3-5
+PR-042.01,PR-042,1,Disconnect the No. 2 water temperature switch connector and the coolant level sensor lead,,,,p.3-6
+PR-042.02,PR-042,2,Disconnect the water hose to the reservoir,,,,p.3-6
+PR-042.03,PR-042,3,Remove the cooling fan and fan drive assembly,,,,p.3-6
+PR-042.04,PR-042,4,Disconnect the radiator lower hose and drain the cooling system,,,,p.3-6
+PR-042.05,PR-042,5,Disconnect the heater hose and the radiator upper hose,,,,p.3-6
+PR-042.06,PR-042,6,Disconnect the transmission oil hoses (automatic),,,,p.3-6
+PR-042.07,PR-042,7,Remove the radiator shroud and the radiator,,,,p.3-6
+PR-042.08,PR-042,8,Refit in the reverse order and fill the cooling system,Mixture SP-1572.,,,p.3-6
+PR-043.01,PR-043,1,Remove the alternator belt and the air pump belt,,,,p.3-6
+PR-043.02,PR-043,2,Remove the cooling fan,,,,p.3-6
+PR-043.03,PR-043,3,"Check the pump for cracks, bearing noise, coolant leaks or other visible damage",Any of them: the pump is repaired or replaced.,,,p.3-6
+PR-043.04,PR-043,4,Fit a dial indicator to the alternator bracket with its tip on the water pump pulley,,,,p.3-6
+PR-043.05,PR-043,5,Move the pulley up and down by hand and read the play,Limit SP-757.,,Do not turn the pulley: the reading goes false.,p.3-6
+PR-044.01,PR-044,1,Remove the air cleaner and disconnect the water temperature switch connector,,,,p.3-7
+PR-044.02,PR-044,2,Slip off the A/C compressor and power steering belts if fitted,,,,p.3-7
+PR-044.03,PR-044,3,"Remove the air pump and the alternator, slipping off their belts",,,,p.3-7
+PR-044.04,PR-044,4,Remove the cooling fan and fan drive assembly and the A/C compressor pulley,,,,p.3-7
+PR-044.05,PR-044,5,Disconnect the radiator lower hose to drain the system and the upper hose,,,,p.3-7
+PR-044.06,PR-044,6,Remove the water pump,,,,p.3-7
+PR-044.07,PR-044,7,"Bolt adapter 49 1975 145 to the pulley boss, support it on the press and press the shaft slowly out of the boss",SP-764.,,,p.3-7
+PR-044.08,PR-044,8,"Remove the snap ring, then support the pump body and press the shaft and bearing out through the front",,,,p.3-8
+PR-044.09,PR-044,9,Remove the impeller and tap the seal out with a piece of pipe,,,,p.3-8
+PR-044.10,PR-044,10,"Inspect the bearing for roughness or end play, the seal seat on the impeller for pits or scoring, and the body and impeller for cracks or wear",SP-762. A scored seat means a new impeller. Rust on the shaft comes off with emery cloth.,,,p.3-8
+PR-044.11,PR-044,11,Press the new seal in straight with a piece of pipe and coat its lip with coolant,SP-763.,The seal lip moves smoothly under a finger.,Do not mark the seal face.,p.3-8
+PR-044.12,PR-044,12,Press in the shaft and bearing with a piece of pipe and fit the snap ring,,The shaft turns smoothly.,,p.3-9
+PR-044.13,PR-044,13,Press on the impeller and the pulley boss,,,,p.3-9
+PR-044.14,PR-044,14,"Fit the gasket and the shims, then the pump, and tighten evenly in order",SP-1574. Torque SP-168.,,,p.3-9
+PR-044.15,PR-044,15,"Connect both radiator hoses and refit the pulleys, the fan and fan drive, the alternator and the air pump with their belts",,,,p.3-9
+PR-044.16,PR-044,16,Set the tension of each belt,Alternator SP-025; air pump SP-761; A/C SP-1001.,,,p.3-10
+PR-044.17,PR-044,17,"Reconnect the water temperature switch, refit the air cleaner and fill the cooling system",Mixture SP-1572.,,,p.3-10
+PR-009.03,PR-009,3,"Start the engine, bleed the air from the coolant passages and top up",The engine itself drains at SP-1573; close and tighten that plug before filling. Recommended mixture SP-1572.,,,p.3-3

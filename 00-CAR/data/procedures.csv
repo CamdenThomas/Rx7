@@ -37,3 +37,9 @@ PR-035,Engine,Measure the metering oil pump discharge (1985 12A),metering pump o
 PR-036,Engine,Remove and refit the oil pan with the engine in the car,"oil pan leaking or damaged, or the oil strainer to be cleaned","scraper (SP-1564), oil pan sealer or silicone sealer and gasket",S-002,
 PR-037,Engine,Overhaul the oil pump,oil pressure low and the valves found good,"feeler gauges, straight edge",S-002,
 PR-038,Engine,Check the oil pressure control valve,oil pressure out of range,rule,S-002,
+PR-039,Cooling,Check the fan drive and replace its clutch (1985 manual),"overheating, or fan noise",,S-002,other-car
+PR-040,Cooling,"Remove, test and refit the thermostat",overheating or slow warm-up,"thermometer, pan of water, new gasket",S-002,
+PR-041,Cooling,Check the radiator and cap and pressure-test the cooling system,coolant loss or overheating,"radiator cap tester, compressed air",S-002,
+PR-042,Cooling,Remove and refit the radiator (1985 manual),radiator leaking or to be cleaned,,S-002,other-car
+PR-043,Cooling,Check the water pump on the engine,"coolant leak at the pump, or bearing noise",dial indicator,S-002,
+PR-044,Cooling,"Remove, overhaul and refit the water pump (1985 manual)","pump shaft play over the limit, leaking seal or rough bearing","press, pulley boss adapter 49 1975 145, pieces of pipe, new gasket",S-002,other-car
