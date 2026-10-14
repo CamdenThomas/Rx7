@@ -1861,3 +1861,8 @@ Proof: ERC 0; DRC 0 violations, 0 unconnected, 0 sheet-to-board differences; rou
 Money: the parts file is 14 lines, $37.92 by estimates (nothing read on Digi-Key's page), and five boards at the fab about $5 more - P119 carries the sum. His row to order it is Y48; it can be added to Y18's carts if they are not paid yet.
 
 In data: parts P119; work Y46 done, Y48 added (his, with brief and steps)."
+D-562,,The panel's final re-lay waits for the built panel at its faceplate; the bench revision is Y20's board as ordered,2026-10-13,standing,,,,,"**The control panel's final re-lay (H-008) waits until the built panel has been held to its faceplate (F6); the bench revision is Y20's board as packaged for the order (Y18).**
+
+Why: H-008 asked for the final board laid by hand from Y20's grid-routed one. The positions already follow the sketch (D-492), and Y20's board is clean (DRC 0 / 0 / 0, check 79 / 0) and in the fab package Y18 orders. A freerouting re-lay was tried on a copy: 49 vias against 110, every net routed except the LED driver's supply pin 41, which ground had enclosed - not taken. A re-lay now would also be drawn before anything has been held against the real faceplate or the climate unit's case; after F6 it is drawn once, with what the bench showed.
+
+In the data: work H-008 gated on F6 (it stays open, the agent's)."
