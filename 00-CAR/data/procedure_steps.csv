@@ -346,7 +346,7 @@ PR-009.03,PR-009,3,"Start the engine, bleed the air from the coolant passages an
 PR-045.01,PR-045,1,Warm the engine and let it idle,,,,p.4A-9
 PR-045.02,PR-045,2,Connect a tachometer,,,,p.4A-9
 PR-045.03,PR-045,3,Set the idle speed with the throttle adjust screw,SP-018; 750 rpm in neutral on a manual car.,,,p.4A-9
-PR-045.04,PR-045,4,Disconnect the brown connector and put the two test lamps between the green checking connector (LgY and GY) and the battery,The figure shows the connectors; it was not read.,,,p.4A-9
+PR-045.04,PR-045,4,Disconnect the brown connector and put the two test lamps between the green checking connector (LgY and GY) and the battery,"Drawings 47U04A-002 to -004 (read 2026-10-14): the brown connector is the throttle sensor's, at the carburettor; the green checking connector is a 2-pin coupler (LgY and GY) by the air cleaner. Each lamp (12 V 3.4 W) goes from one of its pins to the battery positive.",,,p.4A-9
 PR-045.05,PR-045,5,Drop the engine quickly from 3000 rpm to idle and watch the lamps,SP-1549.,Both lamps light at the same moment.,,p.4A-9
 PR-045.06,PR-045,6,"If they do not, take the cap off the throttle sensor adjusting screw, turn the screw and repeat",,,,p.4A-10
 PR-045.07,PR-045,7,"Refit the cap, remove the test lamps and reconnect the brown connector",,,,p.4A-10
@@ -536,7 +536,7 @@ PR-064.01,PR-064,1,Warm the engine and connect a tachometer,,,,p.4A-41
 PR-064.02,PR-064,2,Disconnect the vacuum sensing tube (leading vacuum advance diaphragm to pipe) at the pipe and put a finger over the pipe,,No air is sucked in at idle.,,p.4A-41
 PR-064.03,PR-064,3,Raise the engine speed slowly,SP-1584.,Air is sucked into the pipe from 1000 to 1200 rpm up.,,p.4A-41
 PR-064.04,PR-064,4,Drop the engine quickly from 4000 rpm,,No air is sucked in while decelerating.,,p.4A-41
-PR-064.05,PR-064,5,Automatic: let the engine idle with a drive range selected,SP-1584. The page names the lever positions; the OCR text lost two of them.,Air is sucked into the pipe.,,p.4A-41
+PR-064.05,PR-064,5,Automatic: let the engine idle with a drive range selected,"SP-1584. Read from the page 2026-10-14: the lever in R, D, D1 or D2 (the 1985 L4N71B's ranges).",Air is sucked into the pipe.,,p.4A-41
 PR-064.06,PR-064,6,Disconnect the No.1 water temperature switch connector and jumper both its terminals,,,,p.4A-42
 PR-064.07,PR-064,7,Pull the choke knob out about 15 mm (0.6 in),SP-1584.,No air is sucked in at any engine speed.,,p.4A-42
 PR-064.08,PR-064,8,Stop the engine and disconnect the No.2 water temperature switch connector on the radiator,,,,p.4A-42
@@ -546,7 +546,7 @@ PR-064.11,PR-064,11,Each valve: disconnect the vacuum sensing tubes from the sol
 PR-064.12,PR-064,12,"Disconnect the valve's connector, put battery power on its terminals and blow into tube B again",SP-1590.,Air comes out of port A.,,p.4A-43
 PR-065.01,PR-065,1,Disconnect the ventilation hose from the canister and connect the U-tube gauge to it,,,,p.4A-45
 PR-065.02,PR-065,2,Feed in low-pressure air slowly until the water levels differ by the test figure,SP-957.,356 +/- 12 mm of water.,,p.4A-45
-PR-065.03,PR-065,3,Blank off the U-tube's inlet and leave it five minutes,SP-958.,The level stays within the band the page's figure shows; the figure was not read.,,p.4A-45
+PR-065.03,PR-065,3,Blank off the U-tube's inlet and leave it five minutes,SP-958; it passes if the column falls no more than 25 mm (SP-957).,The level stays within the band the page's figure shows; the figure was not read.,,p.4A-45
 PR-065.04,PR-065,4,"If it drops further, look for a leaking or loose evaporative line, a leaking fuel tank, a leaking or loose fuel line or a leaking filler cap",,,,p.4A-45
 PR-066.01,PR-066,1,Remove the check and cut valve,,,,p.4A-45
 PR-066.02,PR-066,2,Connect a pressure gauge to the fuel tank passage and blow through the valve,"SP-1085. Hold the valve horizontal: tilted, its own weight closes the passage.",It opens at 5.5 to 7 kPa.,,p.4A-45
@@ -563,7 +563,7 @@ PR-067.06,PR-067,6,Turn the ignition on and blow again,,No air passes.,,p.4A-46
 PR-068.01,PR-068,1,Confirm the fuel filter was changed within its interval,,,,p.4A-47
 PR-068.02,PR-068,2,Remove the air cleaner assembly and disconnect the fuel main hose at the carburettor,,,Spilled fuel can ignite.,p.4A-47
 PR-068.03,PR-068,3,"Connect a pressure gauge, a restrictor and hoses so the fuel discharges into a graduated container",,,,p.4A-47
-PR-068.04,PR-068,4,Disconnect the fuel pump cut relay connector and fit a jumper wire,The figure shows the terminals; it was not read.,,,p.4A-47
+PR-068.04,PR-068,4,Disconnect the fuel pump cut relay connector and fit a jumper wire,Drawing 47U04A-104 (read 2026-10-14): the relay's 6-pin connector has LW and BY on the outer top pins and BW and RW on the bottom middle and right; the jumper joins LW to BW. The relay is among those under the dash beside the steering column.,,,p.4A-47
 PR-068.05,PR-068,5,Turn the ignition on and open the restrictor for a moment to vent the system into the container,,,,p.4A-47
 PR-068.06,PR-068,6,"Close the restrictor, let the pressure settle and read it",SP-029.,20 to 25 kPa.,,p.4A-47
 PR-068.07,PR-068,7,"With the pressure in range, open the restrictor, time the fuel into the container, then close it",SP-1596.,1400 cc or more within one minute.,,p.4A-47
@@ -619,7 +619,7 @@ PR-076.03,PR-076,3,"Remove the bimetal spring housing and bracket assembly, the 
 PR-076.04,PR-076,4,"Remove the No.2 choke diaphragm, the air horn attaching screws and the air horn assembly",,,,p.4A-55
 PR-076.05,PR-076,5,"From the air horn, remove the float pin, float, needle valve and hook spring, spring and valve stem",,,,p.4A-55
 PR-076.06,PR-076,6,"Main body: free the accelerator pump rod and the secondary throttle valve rod (split pins), remove the throttle sensor, undo the main body attaching bolts and lift the main body off",,,,p.4A-55
-PR-076.07,PR-076,7,"From the main body, remove the diaphragm cover, return spring, clip, diaphragm, housing and lever and gasket, then the accelerator pump lever, its cover, diaphragm and return spring",Items 1 to 12 are partly lost in the OCR text and the figure was not read.,,,p.4A-56
+PR-076.07,PR-076,7,"From the main body, remove the diaphragm cover, return spring, clip, diaphragm, housing and lever and gasket, then the accelerator pump lever, its cover, diaphragm and return spring","Figures 47U04A-138 and -139 (read 2026-10-14): items 6-12 are the diaphragm unit on the side of the main body - attaching screws, cover, return spring, clip, diaphragm, housing and lever, gasket; items 13-18 the accelerator pump - clip, washers and shaft, pump lever, attaching screws, cover, diaphragm, return spring. Items 1-5 are on p.4A-55 (step 6).",,,p.4A-56
 PR-076.08,PR-076,8,"Remove the pump nozzle screw, nozzle and gasket, the weights, the outlet and inlet check valves and the check valve seat",,,,p.4A-56
 PR-076.09,PR-076,9,"Remove the retainer, blind plug and washer, then the primary and secondary main jets",,,,p.4A-56
 PR-076.10,PR-076,10,"Remove the secondary No.2 step air bleed, secondary step jet, secondary and primary main air bleeds, primary slow jet, primary No.2 slow air bleed and air bleed, and on a manual car the richer air bleed, jet and blind plug",,,,p.4A-57
@@ -652,8 +652,8 @@ PR-078.06,PR-078,6,Screw the mixture adjust screw in,SP-1606.,750 rpm manual; 84
 PR-078.07,PR-078,7,Automatic: select D and set the idle with the throttle adjust screw,SP-018.,750 rpm in D.,,p.4A-63
 PR-078.08,PR-078,8,"Fit a new idle limiter cap on the mixture adjust screw, then adjust the throttle sensor",PR-017.,,,p.4A-63
 PR-079.01,PR-079,1,Engine cold and ignition off: pull the choke knob fully out,,It returns by itself.,,p.4A-63
-PR-079.02,PR-079,2,"Connect a tachometer, start the engine and hold 2000 rpm on the choke knob",The page's step 3 is lost in the OCR text.,,,p.4A-64
-PR-079.03,PR-079,3,Leave it running and watch the knob,,It returns fully by itself when the temperature gauge reaches the range the page's figure shows; the figure was not read.,,p.4A-64
+PR-079.02,PR-079,2,"Connect a tachometer, start the engine and hold 2000 rpm on the choke knob",The manual has no step 3: it runs from 2 at the foot of p.4A-63 to 4 at the head of p.4A-64 (checked on the page images 2026-10-14).,,,p.4A-64
+PR-079.03,PR-079,3,Leave it running and watch the knob,"Drawing 47U04A-169 (read 2026-10-14): the knob must return fully by itself once the temperature needle is in the low part of the scale, between the first and the second mark above C.",It returns fully by itself when the temperature gauge reaches the range the page's figure shows; the figure was not read.,,p.4A-64
 PR-079.04,PR-079,4,Disconnect the choke switch connector and check terminals 6 and 8,SP-1593.,Continuity (the choke magnet).,,p.4A-64
 PR-079.05,PR-079,5,"Hot start: check the linkage is fitted right, does not stick or bind and returns fully",,,,p.4A-64
 PR-079.06,PR-079,6,"Warm the engine, stop it and disconnect the leading and trailing primary wires from the ignition coils",,,,p.4A-64
