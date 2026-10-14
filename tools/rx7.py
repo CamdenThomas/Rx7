@@ -2502,7 +2502,26 @@ def cmd_set(args):
     return RC_OK
 
 
+def rows_from_file(text: str, sep: str, consts: dict):
+    """The rows of an `add --rows` file: its first line names the columns, every later line is
+    one row split on `sep`; a blank line and a line starting with // are skipped. `consts` are
+    the col=value pairs of the command line and go on every row. Returns (rows, problem)."""
+    lines = [ln for ln in text.split("\n") if ln.strip() and not ln.startswith("//")]
+    if len(lines) < 2:
+        return [], "no rows under the header line"
+    hdr = [h.strip() for h in lines[0].split(sep)]
+    out = []
+    for i, ln in enumerate(lines[1:], 2):
+        f = [x.strip() for x in ln.split(sep)]
+        if len(f) != len(hdr):
+            return [], f"row {i} has {len(f)} fields, the header has {len(hdr)}: {ln[:60]!r}"
+        out.append(dict(consts, **dict(zip(hdr, f))))
+    return out, ""
+
+
 def cmd_add(args):
+    """One row from col=value pairs, or many from a file (`--rows FILE`, D-546): every row is
+    checked before any is written, so a refused row leaves the table as it was."""
     a = resolve_area(args.area)
     _, cols = schema(a)
     spec = cols.get(args.table)
@@ -2510,25 +2529,48 @@ def cmd_add(args):
         die(f"{args.table!r} is not a declared table in {rel(a)}")
     declared = [c["column"] for c in spec]
     kc = key_column(spec)
-    vals = _pairs(args.pairs)
-    for k in vals:
-        if k not in declared:
-            die(f"{args.table} has no declared column {k!r} - add it to _schema.csv first")
-    if not (vals.get(kc) or "").strip():
-        die(f"{args.table} needs {kc}=<key>")
+    src = getattr(args, "rows", None) or []
+    # col=value pairs written after the file name land in --rows; they are the same pairs.
+    consts = _pairs(list(args.pairs) + src[1:])
+    if src:
+        p = Path(src[0]).expanduser()
+        if not p.is_file():
+            die(f"--rows {src[0]}: no such file (nothing was written)")
+        many, why = rows_from_file(p.read_text(encoding="utf-8"), args.sep, consts)
+        if why:
+            die(f"--rows {src[0]}: {why} (nothing was written)")
+    elif consts:
+        many = [consts]
+    else:
+        die("add needs col=value pairs, or --rows FILE")
     hdr, rows = read_table(a, args.table)
     hdr = hdr or declared
-    if any((r.get(kc) or "").strip() == vals[kc] for r in rows):
-        die(f"{args.table}:{vals[kc]} already exists - use `set`")
-    row = {c: vals.get(c, "") for c in hdr}
-    bad = value_problems(a, args.table, spec, row, vals[kc], load_keys())
+    have = {(r.get(kc) or "").strip() for r in rows}
+    keys = load_keys()
+    bad, new = [], []
+    for vals in many:
+        for k in vals:
+            if k not in declared:
+                die(f"{args.table} has no declared column {k!r} - add it to _schema.csv first")
+        key = (vals.get(kc) or "").strip()
+        if not key:
+            die(f"{args.table} needs {kc}=<key>")
+        if key in have:
+            die(f"{args.table}:{key} already exists - use `set` (nothing was written)")
+        have.add(key)
+        row = {c: vals.get(c, "") for c in hdr}
+        bad += value_problems(a, args.table, spec, row, key, keys)
+        new.append(row)
     if bad:
         for x in bad:
             print(x)
         die(f"{len(bad)} problem(s) - nothing was written", RC_INVALID)
-    rows.append(row)
+    rows.extend(new)
     write_table(a, args.table, hdr, rows)
-    print(f"{args.table}:{vals[kc]} added")
+    if len(new) == 1:
+        print(f"{args.table}:{new[0][kc]} added")
+    else:
+        print(f"{args.table}: {len(new)} rows added, {new[0][kc]} to {new[-1][kc]}")
     return RC_OK
 
 
@@ -3160,6 +3202,14 @@ def cmd_selftest(args):
     expect("a block that became a decision opens its gate", gate_state("00.91", A, ok)[0])
     expect("an open block does not", gate_state("00.90", A, ok)[0], want=False)
     expect("a block that never existed is refused", gate_state("00.94", A, ok)[2])
+
+    many, why = rows_from_file("id|item\nSP-1|a\n\n// a note\nSP-2|b|c\n", "|", {})
+    expect("add --rows refuses a row with the wrong number of fields", why and not many)
+    many, why = rows_from_file("id|item\nSP-1| a \n\nSP-2|b\n", "|", {"source": "S-1"})
+    expect("add --rows reads every row and puts the command line's pairs on each",
+           not why and many == [{"source": "S-1", "id": "SP-1", "item": "a"},
+                                {"source": "S-1", "id": "SP-2", "item": "b"}])
+    expect("add --rows refuses a file with no rows", rows_from_file("id|item\n", "|", {})[1])
     expect("the phase reached opens its gate", gate_state("phase:PLANNING", A, ok)[0])
     expect("a later phase does not", gate_state("phase:BUILDING", A, ok)[0], want=False)
     expect("several references, one unmet, stays shut", gate_state("D-900 A1", A, ok)[0], want=False)
@@ -3596,8 +3646,10 @@ def main(argv=None):
     p.add_argument("--amend", action="store_true", help="finish a decision body that was already written (R4 otherwise refuses)")
     p.set_defaults(fn=cmd_set)
 
-    p = sub.add_parser("add", help="add a row (col=@file reads a file)")
-    p.add_argument("area"); p.add_argument("table"); p.add_argument("pairs", nargs="+")
+    p = sub.add_parser("add", help="add a row (col=@file reads a file), or many rows from --rows FILE; refuses a bad value")
+    p.add_argument("area"); p.add_argument("table"); p.add_argument("pairs", nargs="*")
+    p.add_argument("--rows", nargs="+", metavar="FILE", help="a file of rows: the first line names the columns, each later line is one row; the col=value pairs go on every row; all are checked before any is written")
+    p.add_argument("--sep", default="|", help="what separates the fields of a --rows line (default |)")
     p.set_defaults(fn=cmd_add)
 
     p = sub.add_parser("del", help="delete a row (a block only once a decision closes it or --replaced-by; an answer only once its words are saved)")

@@ -36,3 +36,12 @@ His answer, option (a): ""Yes: the agent installs poppler on the Mac with Homebr
 Reasoning: costs nothing, reversible with brew uninstall poppler, and unblocks drawings and mark tables (e.g. the 1985 maintenance table intervals, P83) that OCR text cannot give.
 
 Consequences: poppler is installed on the Mac (pdftoppm available); scanned sections are parsed with the page looked at, not text alone; P83 and the drawings/mark tables skipped earlier may be re-taken by the plan run."
+D-546,,rx7.py add takes many rows from a file (--rows),2026-10-13,standing,,,,,"**`rx7.py add` takes many rows from a file: `add AREA TABLE --rows FILE [col=value ...]`. The file's first line names the columns, every later line is one row split on `|` (`--sep` changes it), and the col=value pairs of the command line go on every row. Every row passes the same checks as a single `add`, and all are checked before any is written.**
+
+Decided by the agent (CLAUDE.md §3, small; nobody was asked): D-523 rules every spec and procedure step of every manual into the car's tables, a section is some hundreds of rows, and `add` took one row per call. A run started from the app may run `rx7.py` and nothing else, so a scratch loader script is refused by the harness; the rows could only have gone in as hundreds of `add` calls joined in one command. §7 says calls are the cost.
+
+Nothing about what a row must be changes: the declared columns, the types, the references and the key are checked by the code that checked them before (`value_problems`), a key that already exists or repeats in the file is refused, and a refusal writes nothing. Ids in the file are the next free ones of their table, read from the table before the file is written; `new` and `block` still issue every D- and block id.
+
+In the tool: `rows_from_file` reads the file, `cmd_add` checks and writes; three selftests cover the reader.
+
+Undoing this is deleting one option from the tool; nothing is bought, cut or wired."
