@@ -6,7 +6,7 @@
 	(paper "A0")
 	(title_block
 		(title "ICU carrier - H-001")
-		(rev "0.05")
+		(rev "0.06")
 		(company "RX-7 FB electrical build")
 		(comment 1 "Drawn by hand. The record is 02-PROJECTS/01-electrical/data/icu_channels.csv - where this sheet and a row disagree, the row is right.")
 		(comment 2 "Conventions: cad/icu-carrier/CONVENTIONS.md. Drawing list: TARGET.md. The board is icu-carrier.kicad_pcb (F9): a PROVISIONAL outline until C4 measures the binnacle (F11).")
@@ -8034,9 +8034,9 @@
 		)
 		(uuid "d61eac72-570c-40f2-8ea6-c3c645926824")
 	)
-	(text "J8A pulls the node to +3V3 for an open-collector sensor. J8B makes a 10 k / 4.7 k divider\nfor a push-pull output, which lands at 12 x 4.7/14.7 = 3.84 V - above the rail, which is\nexactly why the BAT54S is there and is not optional. Pulses per mile is a config value,\ntrued once against a measured mile (D-272)."
+	(text "R36 (10 k) is in series with the input. J8A pulls the input to +3V3 for an open-collector sensor.\nJ8B grounds R37 to make a 10 k / 4.7 k divider for a push-pull 12 V output, which lands at\n12 x 4.7/14.7 = 3.84 V - above the rail, which is exactly why the BAT54S is there and is not\noptional. Fit one jumper, never both. Pulses per mile is a config value, trued once against a\nmeasured mile (D-272)."
 		(exclude_from_sim no)
-		(at 304.8 452.12 0)
+		(at 304.8 463.55 0)
 		(effects
 			(font
 				(size 1.25 1.25)
@@ -8577,16 +8577,6 @@
 			(justify left bottom)
 		)
 		(uuid "2119a5af-3dd7-48d7-8526-b24026982f57")
-	)
-	(label "ICU_B8"
-		(at 363.22 406.4 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "21563041-0e1e-46a9-8e21-92891c9b3600")
 	)
 	(label "PG_5V"
 		(at 154.94 40.64 0)
@@ -11657,7 +11647,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "MMBT3904"
+		(property "Value" "MMBT5551"
 			(at 130.2 141.1 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12282,7 +12272,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "4.7k"
 			(at 122.58 128.4 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -15787,7 +15777,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47k"
+		(property "Value" "22k"
 			(at 850.9 261.75 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18149,7 +18139,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47k"
+		(property "Value" "22k"
 			(at 754.38 261.75 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18953,7 +18943,7 @@
 	)
 	(symbol
 		(lib_id "icu-carrier:SW_Push")
-		(at 363.22 414.02 90)
+		(at 363.22 450.85 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -18963,7 +18953,7 @@
 		(dnp no)
 		(uuid "78b7c120-336a-4b35-94ea-c983d77bc708")
 		(property "Reference" "JP8B1"
-			(at 367.03 410.08 90)
+			(at 367.03 446.91 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18974,7 +18964,7 @@
 			)
 		)
 		(property "Value" "J8B  push-pull"
-			(at 367.03 412.88 90)
+			(at 367.03 449.71 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18985,7 +18975,7 @@
 			)
 		)
 		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical"
-			(at 363.22 414.02 0)
+			(at 363.22 450.85 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18996,7 +18986,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 363.22 414.02 0)
+			(at 363.22 450.85 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -19006,7 +18996,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 363.22 414.02 0)
+			(at 363.22 450.85 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -22942,7 +22932,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47k"
+		(property "Value" "22k"
 			(at 657.86 261.75 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23021,7 +23011,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SS34"
+		(property "Value" "SL310A"
 			(at 54.61 103 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23312,83 +23302,6 @@
 			(project "icu-carrier"
 				(path "/c75d3432-4fb5-46c2-a0c1-15c6416c4dd0"
 					(reference "R40")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "icu-carrier:GND")
-		(at 462.28 278.13 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "b43bc89e-1e9a-4494-9109-311fe5309896")
-		(property "Reference" "#PWR088"
-			(at 465.48 276.73 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.1 1.1)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "GND"
-			(at 465.48 279.53 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.1 1.1)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 462.28 278.13 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 462.28 278.13 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 462.28 278.13 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "51f37d95-dc12-4369-8450-bd7395038e02")
-		)
-		(instances
-			(project "icu-carrier"
-				(path "/c75d3432-4fb5-46c2-a0c1-15c6416c4dd0"
-					(reference "#PWR088")
 					(unit 1)
 				)
 			)
@@ -24463,7 +24376,7 @@
 	)
 	(symbol
 		(lib_id "icu-carrier:R")
-		(at 363.22 424.18 0)
+		(at 351.79 431.8 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -24473,7 +24386,7 @@
 		(dnp no)
 		(uuid "cd315d2c-1524-4ebc-a8a2-82c0b4949843")
 		(property "Reference" "R36"
-			(at 367.03 422.78 0)
+			(at 346.71 426.59 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -24484,7 +24397,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 367.03 425.58 0)
+			(at 346.71 429.39 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -24495,7 +24408,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 363.22 424.18 0)
+			(at 351.79 431.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -24506,7 +24419,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 363.22 424.18 0)
+			(at 351.79 431.8 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -24516,7 +24429,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 363.22 424.18 0)
+			(at 351.79 431.8 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -25147,7 +25060,7 @@
 	)
 	(symbol
 		(lib_id "icu-carrier:GND")
-		(at 363.22 447.04 0)
+		(at 363.22 458.47 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -25157,7 +25070,7 @@
 		(dnp no)
 		(uuid "d11e08ea-4b9e-4be8-916b-fa90554f8b4c")
 		(property "Reference" "#PWR165"
-			(at 366.42 445.64 0)
+			(at 366.42 457.07 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25169,7 +25082,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 366.42 448.44 0)
+			(at 366.42 459.87 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25181,7 +25094,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 363.22 447.04 0)
+			(at 363.22 458.47 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -25191,7 +25104,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 363.22 447.04 0)
+			(at 363.22 458.47 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -25201,7 +25114,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 363.22 447.04 0)
+			(at 363.22 458.47 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -26022,7 +25935,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47k"
+		(property "Value" "1k"
 			(at 464.82 261.75 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27745,7 +27658,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "SS34"
+		(property "Value" "SL310A"
 			(at 54.61 38.23 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28568,10 +28481,6 @@
 		(stroke (width 0) (type default))
 		(uuid "637aa2a1-4594-448e-b272-23408246d363")
 	)
-	(wire (pts (xy 90.1700 107.9500) (xy 109.2200 107.9500))
-		(stroke (width 0) (type default))
-		(uuid "90c47b61-063a-405d-bfbb-fbeeb309e944")
-	)
 	(wire (pts (xy 93.9800 424.1800) (xy 93.9800 429.2600))
 		(stroke (width 0) (type default))
 		(uuid "a004bd38-4211-4a7f-9b26-6e90d80c948c")
@@ -28988,10 +28897,6 @@
 		(stroke (width 0) (type default))
 		(uuid "589c1d1e-8e40-4a3e-b651-cf6538f5818f")
 	)
-	(wire (pts (xy 340.3600 431.8000) (xy 363.2200 431.8000))
-		(stroke (width 0) (type default))
-		(uuid "c7aba4f3-622b-434b-add3-56b27e24e59f")
-	)
 	(wire (pts (xy 341.6300 406.4000) (xy 341.6300 419.1000))
 		(stroke (width 0) (type default))
 		(uuid "930e5d5c-6a40-4762-88f5-cf05f247db5f")
@@ -29004,33 +28909,9 @@
 		(stroke (width 0) (type default))
 		(uuid "aee43450-969c-48e8-ab74-264fdefaf2a7")
 	)
-	(wire (pts (xy 363.2200 406.4000) (xy 364.4900 406.4000))
-		(stroke (width 0) (type default))
-		(uuid "4734ecd4-929e-4536-88c3-f92b47307c67")
-	)
-	(wire (pts (xy 363.2200 408.9400) (xy 363.2200 420.3700))
-		(stroke (width 0) (type default))
-		(uuid "ae12964c-d863-49c0-9222-2207ac6603f3")
-	)
-	(wire (pts (xy 363.2200 419.1000) (xy 364.4900 419.1000))
-		(stroke (width 0) (type default))
-		(uuid "24a4d61d-4475-417c-b86a-06372b51ebde")
-	)
-	(wire (pts (xy 363.2200 427.9900) (xy 363.2200 431.8000))
-		(stroke (width 0) (type default))
-		(uuid "b5bd7a67-b471-4664-a5bf-65b7dd726ec1")
-	)
 	(wire (pts (xy 363.2200 431.8000) (xy 363.2200 435.6100))
 		(stroke (width 0) (type default))
 		(uuid "a0bdbe20-6f48-49b9-871e-acb52bff32f8")
-	)
-	(wire (pts (xy 363.2200 431.8000) (xy 381.0000 431.8000))
-		(stroke (width 0) (type default))
-		(uuid "d2491765-4a5d-42de-a8f6-378b295ca9a8")
-	)
-	(wire (pts (xy 363.2200 443.2300) (xy 363.2200 447.0400))
-		(stroke (width 0) (type default))
-		(uuid "36094d9d-5aab-4d32-8863-ca408cabe23c")
 	)
 	(wire (pts (xy 364.4900 265.4300) (xy 364.4900 284.4800))
 		(stroke (width 0) (type default))
@@ -29043,10 +28924,6 @@
 	(wire (pts (xy 364.4900 284.4800) (xy 365.7600 284.4800))
 		(stroke (width 0) (type default))
 		(uuid "61629987-3510-44d7-85c6-984f9e4d0f15")
-	)
-	(wire (pts (xy 364.4900 406.4000) (xy 364.4900 419.1000))
-		(stroke (width 0) (type default))
-		(uuid "220d9da6-9e8a-4e23-9cba-0a7bd3527022")
 	)
 	(wire (pts (xy 365.7600 255.2700) (xy 365.7600 256.5400))
 		(stroke (width 0) (type default))
@@ -31413,6 +31290,101 @@
 			(justify left top)
 		)
 		(uuid "a3c9116e-41bb-460e-af26-b16193d9add9")
+	)
+	(wire (pts (xy 340.3600 431.8000) (xy 347.9800 431.8000))
+		(stroke (width 0) (type default))
+		(uuid "d7baf081-7ffd-58e8-952d-538f73388c49")
+	)
+	(wire (pts (xy 355.6000 431.8000) (xy 363.2200 431.8000))
+		(stroke (width 0) (type default))
+		(uuid "445fc956-3612-5c47-af62-f42ff777198c")
+	)
+	(wire (pts (xy 363.2200 443.2300) (xy 363.2200 445.7700))
+		(stroke (width 0) (type default))
+		(uuid "20200c19-43b7-5393-bc36-e7c0dfffd151")
+	)
+	(wire (pts (xy 363.2200 455.9300) (xy 363.2200 458.4700))
+		(stroke (width 0) (type default))
+		(uuid "b3a05082-c14f-59a6-8188-da4200c3563d")
+	)
+	(wire (pts (xy 363.2200 431.8000) (xy 368.3000 431.8000))
+		(stroke (width 0) (type default))
+		(uuid "a6a42d07-4769-5906-aee2-435fbe0213bd")
+	)
+	(wire (pts (xy 368.3000 431.8000) (xy 381.0000 431.8000))
+		(stroke (width 0) (type default))
+		(uuid "e9b87255-8d49-59b7-be08-8c4f48b384f7")
+	)
+	(label "IC08_IN"
+		(at 368.3 431.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d9e53163-0dbd-5f8a-9ced-6cbdb50393d9")
+	)
+	(wire (pts (xy 90.1700 107.9500) (xy 101.6000 107.9500))
+		(stroke (width 0) (type default))
+		(uuid "97bde622-dd17-5888-9995-a2ba1f47ba99")
+	)
+	(wire (pts (xy 101.6000 107.9500) (xy 109.2200 107.9500))
+		(stroke (width 0) (type default))
+		(uuid "a27e2057-3ca4-5be9-be31-b6db14bc7324")
+	)
+	(junction
+		(at 101.6 107.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d2a86c1b-e53d-50f4-baf5-265272b6b8ae")
+	)
+	(symbol (lib_id "icu-carrier:D_TVS_Uni") (at 101.6 111.76 90) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no) (uuid "73fbae27-e79f-582d-b339-242888b0d826") (property "Reference" "D27" (at 104.14 114.17 90) (show_name no) (do_not_autoplace no) (effects (font (size 1.1 1.1)) (justify left))) (property "Value" "MM3Z15VT1G" (at 104.14 116.97 90) (show_name no) (do_not_autoplace no) (effects (font (size 1.1 1.1)) (justify left))) (property "Footprint" "Diode_SMD:D_SOD-323" (at 101.6 111.76 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Datasheet" "" (at 101.6 111.76 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Description" "" (at 101.6 111.76 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (pin "1" (uuid "47d4e273-34b4-5984-8360-4c5adeec5436")) (pin "2" (uuid "466ee6d0-f9c8-5b4b-89ae-5288d3116a48")) (instances (project "icu-carrier" (path "/c75d3432-4fb5-46c2-a0c1-15c6416c4dd0" (reference "D27") (unit 1)))))
+	(wire (pts (xy 101.6000 115.5700) (xy 101.6000 123.1900))
+		(stroke (width 0) (type default))
+		(uuid "3748c04d-88c0-5b47-9a4d-a022ea7853d9")
+	)
+	(wire (pts (xy 101.6000 123.1900) (xy 118.1100 123.1900))
+		(stroke (width 0) (type default))
+		(uuid "b39d18b4-ab50-5bc5-bd82-6f6726b3acc7")
+	)
+	(junction
+		(at 118.11 123.19)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "69759131-1896-5e0b-9171-537721ee419c")
+	)
+	(label "BL_FUSED"
+		(at 109.22 105.41 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f6d8f3c3-20fc-567e-a91d-fa3f4feba739")
+	)
+	(label "BL_GATE"
+		(at 101.6 123.19 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f659a070-c721-5680-ac10-53ee1e7ffbf4")
+	)
+	(symbol (lib_id "icu-carrier:+3V3") (at 462.28 278.13 180) (unit 1) (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no) (uuid "b5a328e4-e7ba-5634-b5d7-0f195c527da6") (property "Reference" "#PWR306" (at 465.48 276.73 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.1 1.1)) (justify left))) (property "Value" "+3V3" (at 465.48 279.53 0) (hide yes) (show_name no) (do_not_autoplace no) (effects (font (size 1.1 1.1)) (justify left))) (property "Footprint" "" (at 462.28 278.13 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Datasheet" "" (at 462.28 278.13 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (property "Description" "" (at 462.28 278.13 0) (show_name no) (do_not_autoplace no) (effects (font (size 1.27 1.27)))) (pin "1" (uuid "cfc4148a-168a-5868-9651-2b79bc7f211f")) (instances (project "icu-carrier" (path "/c75d3432-4fb5-46c2-a0c1-15c6416c4dd0" (reference "#PWR306") (unit 1)))))
+	(text "R17 pulls the node UP to +3V3 (the arrow under it is the +3V3 rail).\nBoth switches open: 3.3 V. Either closed: 0.30 V = warn (IC06)."
+		(exclude_from_sim no)
+		(at 476.25 279.4 0)
+		(effects
+			(font
+				(size 1.25 1.25)
+			)
+			(justify left top)
+		)
+		(uuid "39123942-12ba-5b8d-8f90-cca8ffddf366")
 	)
 	(sheet_instances
 		(path "/"

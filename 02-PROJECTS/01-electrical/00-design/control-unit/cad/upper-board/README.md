@@ -7,6 +7,12 @@ project is for and what it may claim. Its design is the record's cavities `DP-DC
 
 ## What it is
 
+`fab/` also holds two hand-assembly drawings, `upper-board-revA-assembly-top.svg` and `-bottom.svg` (the back mirrored, to read
+as you look at it): the outline, every part's outline and pads, and its reference in the middle of the part; the
+values are in `fab/upper-board-revA-bom.csv` by reference. `../../../tools/assembly.py` rebuilds them (KiCad's Python);
+`../../../tools/fabpack.py` re-plots the gerbers and drill files and writes the zip.
+The board itself did not change at Y44 (D-549): its zip is the one Y17 issued.
+
 The climate unit's second connector row (D-480): a small board standing above the DCU carrier,
 its two DT13-12PA receptacles in the unit's rear wall above `DP-DCU-B`, the part `P195`.
 

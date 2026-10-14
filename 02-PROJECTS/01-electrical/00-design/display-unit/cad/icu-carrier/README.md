@@ -1,10 +1,48 @@
 # ICU carrier — the KiCad project
 
-*Rev 2026-10-13 (sheet rev 0.05 - Y44, one value; sheet and board rev 0.04 - Y42; rev 0.03 was 2026-10-09) · owns: what this KiCad project is for, what it
+*Rev 2026-10-13 (sheet and board rev 0.06 - Y44's fix pass, D-549; rev 0.05 was Y44's one value, 0.04 Y42, 0.03 2026-10-09) · owns: what this KiCad project is for, what it
 may claim, and how to start. The board's design is `../../../../data/icu_channels.csv` — that is the
 record; this is a drawing of it. Read `../../../README.md` first: it is the fence.*
 
 ## Where it stands
+
+**2026-10-13 (Y44, D-549): rev 0.06 - what the independent read found (D-548), fixed before the boards are ordered.**
+`fab/` is bench revision A re-issued again from this board under the same names: no earlier zip may be ordered.
+ERC 0 / 0; DRC 0 violations, 0 unconnected, 0 parity; `check.py --board icu` 99 checks, 0 mismatches.
+
+- **Road speed, IC08.** Cavity 8 went straight to U5 and D22, R36 sat in a loop on that one net and R37 was
+  always in circuit. Now `ICU_B8` - R36 (10 k) - the node `IC08_IN` with D22, U5 and R37 on it; R35 / J8A pull the
+  cavity side to +3V3 (open-collector sensor); J8B is in R37's ground leg and makes the 10 k / 4.7 k divider (12 V
+  push-pull: 3.84 V, the BAT54S takes 0.07 mA). **One jumper, never both; a 5 V push-pull sensor takes neither.**
+- **Q1's gate.** D27, a 15 V zener (onsemi MM3Z15VT1G, SOD-323), gate to source with its cathode on the source,
+  on the back under R1 / R2; R2 is 4.7 k. The gate has 6.1 V at 9 V on the rail, 8.2 at 12, 9.8 at 14.4, and is
+  held at 15 V (15.8 at most) from 22 V to the SMBJ33A's 53.3 V clamp, where the zener carries 6.6 mA (0.1 W of
+  0.3 W). The two nets are named on the sheet, `BL_FUSED` (F1 to the source; the project's PWR_BL net class
+  names it) and `BL_GATE`, so the diode does not rename them.
+- **The backlight path** (J1.6 - D25 - F1 - Q1 - J2, 2.5 A behind a 4 A fuse) changed layer through one
+  0.6 / 0.3 mm via at each of four places; each is now four, on a 0.9 mm square inside the 2.2 mm track.
+- **Brake warning, IC06 - found while these changes were read back.** The switches pull cavity 6 to ground and
+  low means warn, but the stage was a divider to ground and nothing pulled the line up: it read low always.
+  R17 (10 k) now goes from the node to +3V3 and R16 is 1 k: 3.3 V with both switches open, 0.30 V with either
+  closed (the i.MX RT1062 reads low under 0.99 V); a short to 14.4 V puts 10.8 mA through D5. R17 moved to
+  (135.96, 87.35) on the back, pad 1 on the node's track and pad 2 on the +3V3 via there: a via beside its old
+  place would stand 1.85 mm from the tach's series resistors, whose net class keeps 2.5 mm.
+- **The three tell-tale dividers** R21, R23, R25 (IC09-IC11) are 22 k over 10 k, were 47 k: 2.81 V at 9 V on
+  the lamp against the 2.31 V the processor guarantees as high (NXP IMXRT1060CEC rev 4: 0.7 x NVCC); at 16 V
+  the BAT54S takes 0.2 mA. R14 and R27, the analogue dividers, stay 47 k.
+- **On the rails the TVS clamps at 53 V** (D-273): Q2 is MMBT5551 (160 V, the same SOT-23 pins as the MMBT3904
+  it was; Q4, on +5V, stays MMBT3904); D23 and D25 are SL310A (MCC, 100 V 3 A, SMA, 0.60 V at 3 A - about 0.25 W
+  more in D25 at 2.5 A than the 40 V part).
+- **Not changed, to know at the bench:** the screw at H1 sits over `ICU_B1` and `ICU_B3` (tracks 2.15 and 2.69 mm
+  from the hole's centre, and 1.8 mm from the board's edge on the other side, so they do not move): **a nylon
+  washer under that screw's head**. A USB plug in the Teensy stands over C1 (the can is 10.2 mm tall): use a
+  lead with a slim plug, or the Teensy's own pins raise it enough - confirm at F3. The DT13 pad numbering is as
+  it was and waits on the part in hand (D-548, V-117).
+
+`fab/` also holds two hand-assembly drawings, `icu-carrier-revA-assembly-top.svg` and `-bottom.svg` (the back mirrored, to read
+as you look at it): the outline, every part's outline and pads, and its reference in the middle of the part; the
+values are in `fab/icu-carrier-revA-bom.csv` by reference. `../../../tools/assembly.py` rebuilds them (KiCad's Python);
+`../../../tools/fabpack.py` re-plots the gerbers and drill files and writes the zip.
 
 **2026-10-13 (Y42): rev 0.04 - what pricing the order found, made right before the boards are ordered (D-541).**
 `fab/` is bench revision A re-issued from this board: the zip keeps its name, and the rev 0.03 package must not be
@@ -29,7 +67,7 @@ Y44 changed one value after it and no fab file: re-plotted and compared, every f
   3.3 A at 9 V), Vishay 69098 gives its on-resistance no lower than 4.5 V on the gate (20 mΩ), and 4.5 V at 9 V is
   half the rail, where 20 V at 53.3 V is three eighths. The rest is a 12 V zener from gate to source, cathode to
   the source: on R1's own pads at (179.0, 79.3) a SOD-323 part fits beside or on the resistor, and through R2's
-  10 k it carries 4 mA at the clamp. That is a part the board does not draw - not made, to rule on.
+  10 k it carries 4 mA at the clamp. That part is drawn since rev 0.06 (above): D27, 15 V, with R2 at 4.7 k.
 - Q3's part, DMG3415U, is marked not for new designs by its maker, who names DMP2045U (the same pins); the cart
   carries both.
 
@@ -61,7 +99,7 @@ ERC is 0 / 0; `../../../tools/check.py --board icu` is 0 mismatches. Nothing her
   keep-out 4 mm in from it. Four M3 holes: the bottom two 4 mm from the corners, the top two 29.8
   mm down because the DT13 housings cover the top corners. **C4 (the space behind the binnacle)
   sets the real outline at F11, and the board will shrink or grow** (D-455).
-- **Placement** follows `TARGET.md`'s blocks: power entry at J1 (SS34 + SMBJ33A on each 12 V pin,
+- **Placement** follows `TARGET.md`'s blocks: power entry at J1 (SL310A + SMBJ33A on each 12 V pin,
   the 4 A fuse and Q1 on the backlight path, the two inputs never sharing copper); the 5 V buck at
   the right edge in a HotRod layout (an input cap across each VIN / PGND pair, L2 straight up from
   the centre SW pad, the feedback parts under FB); CAN (U3, the R44 / R45 links, L1 DNP) under J1;

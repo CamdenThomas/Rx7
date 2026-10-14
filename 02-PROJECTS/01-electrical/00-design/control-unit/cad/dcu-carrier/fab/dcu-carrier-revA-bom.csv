@@ -9,13 +9,12 @@ C7,1,22u 16V X7R,Capacitor_SMD:C_1206_3216Metric,CL31A226KOHNNNE,Digi-Key,,P170,
 C12,1,4.7n  confirm,Capacitor_SMD:C_0805_2012Metric,CL21B472KBANNNC,Digi-Key,,P170,confirm
 C13,1,47p  confirm,Capacitor_SMD:C_0805_2012Metric,CL21C470JBANNNC,Digi-Key,,P170,confirm
 "C14,C15",2,47u 10V X7R,Capacitor_SMD:C_1210_3225Metric,GRM32ER71A476KE15L,Digi-Key,,P170,confirm
-"C25,C30",2,100n 100V,Capacitor_SMD:C_0805_2012Metric,C0805C104K1RACTU,Digi-Key,,P170,confirm
+"C25,C27,C30",3,100n 100V,Capacitor_SMD:C_0805_2012Metric,C0805C104K1RACTU,Digi-Key,,P170,confirm
 C26,1,1u 25V  confirm,Capacitor_SMD:C_0805_2012Metric,CL21B105KAFNNNE,Digi-Key,,P170,confirm
-C27,1,22n 100V  confirm,Capacitor_SMD:C_0805_2012Metric,C0805C223K1RACTU,Digi-Key,,P170,confirm
 C28,1,1u,Capacitor_SMD:C_0805_2012Metric,CL21B105KAFNNNE,Digi-Key,,P170,confirm
 "C31,C32,C33",3,470u 16V,Capacitor_SMD:CP_Elec_8x10,EEE-FK1C471P,Digi-Key,,P170,confirm
 "C36,C37",2,10n 100V,Capacitor_SMD:C_0805_2012Metric,C0805C103K1RACTU,Digi-Key,,P170,confirm
-D1,1,SS34,Diode_SMD:D_SMA,B340A-13-F,Digi-Key,,P147,confirm
+D1,1,SL310A,Diode_SMD:D_SMA,SL310A-TP,Digi-Key,,P147,confirm
 "D2,D4",2,SMBJ33A,Diode_SMD:D_SMB,SMBJ33A,Digi-Key,,P147,from schematic
 "D3,D5",2,B560C 60V 5A (D3 comfort input; D5 servo-buck catch),Diode_SMD:D_SMC,B560C-13-F,Digi-Key,,P149 (D5 also in P146),confirm
 D6,1,BAT54S,Package_TO_SOT_SMD:SOT-23,BAT54SLT1G,Digi-Key,,P170,confirm
@@ -31,9 +30,9 @@ J10,1,Teensy 4.1 socket - 2 x 24 female headers,dcu-carrier:Teensy41_Socket,PPPC
 J10 (module),1,Teensy 4.1,-,Teensy 4.1 with pins,PJRC,,P142,from record
 L1,1,2.2u XAL4020-222,Inductor_SMD:L_Coilcraft_XAL4020-XXX,XAL4020-222MEC,Digi-Key / Coilcraft,,P170,from record
 L2,1,6.8u  Isat >= 7 A,Inductor_SMD:L_Coilcraft_XAL7030-682,XAL7030-682MEC,Digi-Key / Coilcraft,,P177,confirm
-"Q1,Q2",2,SQ2362CES / PMV37ENEA,Package_TO_SOT_SMD:SOT-23,SQ2362CES-T1_GE3,Digi-Key,,P149,confirm
+"Q1,Q2",2,SQ2364EES,Package_TO_SOT_SMD:SOT-23,SQ2364EES-T1_GE3,Digi-Key,,P149,confirm
 Q3,1,SQ2361ES,Package_TO_SOT_SMD:SOT-23,SQ2361ES-T1_GE3,Digi-Key,,P170,confirm
-Q4,1,MMBT3904,Package_TO_SOT_SMD:SOT-23,MMBT3904LT1G,Digi-Key,,P170,confirm
+Q4,1,MMBT5551,Package_TO_SOT_SMD:SOT-23,MMBT5551LT1G,Digi-Key,,P170,confirm
 "R1,R3,R35,R45",4,100k / 100k 1%,Resistor_SMD:R_0805_2012Metric,RC0805FR-07100KL,Digi-Key,,P170,confirm
 R2,1,24.9k 1%,Resistor_SMD:R_0805_2012Metric,RC0805FR-0724K9L,Digi-Key,,P170,confirm
 R4,1,243k 1%,Resistor_SMD:R_0805_2012Metric,RC0805FR-07243KL,Digi-Key,,P170,confirm

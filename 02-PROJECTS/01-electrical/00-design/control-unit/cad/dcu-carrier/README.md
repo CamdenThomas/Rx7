@@ -1,10 +1,34 @@
 # DCU carrier — the KiCad project
 
-*Rev 2026-10-13 (sheet rev 0.06 - Y44, one value; sheet and board rev 0.05 provisional - Y42; rev 0.04 was D-458, D-465, Y12) · owns: what this KiCad project
+*Rev 2026-10-13 (sheet rev 0.07 - Y44's fix pass, D-549, values only; rev 0.06 was Y44's one value, 0.05 Y42, 0.04 D-458, D-465, Y12) · owns: what this KiCad project
 is for, what it may claim, and how to start. The board's design is `../../../../data/dcu_channels.csv`.
 That is the record, and this is a drawing of it. Read `../../../README.md` first: it is the fence.*
 
 ## Where it stands
+
+**2026-10-13 (Y44, D-549): sheet rev 0.07 - what the independent read found (D-548), values only.** No copper,
+mask, silkscreen or drill changed: `fab/` was plotted again and every file is the same but its date, so the zip
+is the one Y42 issued. ERC 0 / 0; DRC 0 violations, 0 unconnected, 0 parity; `check.py --board dcu` 171 checks,
+0 mismatches.
+
+- **Q1 / Q2, the release selects, are Vishay SQ2364EES** (75975: 60 V, 0.245 ohm at 1.5 V on the gate, threshold
+  0.46-1.0 V, gate +-8 V, SOT-23 G1 S2 D3). They are switched from Teensy pins at 3.3 V through 100 R with a 10 k
+  pull-down, and the SQ2362CES named before has no on-resistance given under 4.5 V. D7 / D8 clamp the drains
+  under 50 V.
+- **Q4, the wake switch's driver, is MMBT5551** (160 V): its collector stands at the rail through R43, and the
+  rail is clamped at 53 V. **D1, the logic input diode, is SL310A** (100 V 3 A, SMA), for the same reason.
+- **C27, the DRV8962's charge-pump capacitor (CPH - CPL), is 100 nF 100 V**, the part on C25 / C30: TI's pin
+  table (SLVSHN2A) asks 0.1 uF, VM-rated; 22 nF was drawn.
+- **Not changed, to know at the bench:** a +3V3 track on the back passes 2.88 mm from H1's centre: **a nylon
+  washer, or a nylon standoff, at H1**. The ribbon plug on J4 stands 4.9 mm in front of the Teensy's USB port:
+  plug the USB lead in before the ribbon. GND and PGND meet only in the harness (D-382): with DP-DCU unplugged
+  and DP-DCU-C live, the servo buck's input has no return but through the driver ICs' pins, so plug DP-DCU
+  first and unplug it last. The DT13 pad numbering waits on the part in hand (D-548, V-117).
+
+`fab/` also holds two hand-assembly drawings, `dcu-carrier-revA-assembly-top.svg` and `-bottom.svg` (the back mirrored, to read
+as you look at it): the outline, every part's outline and pads, and its reference in the middle of the part; the
+values are in `fab/dcu-carrier-revA-bom.csv` by reference. `../../../tools/assembly.py` rebuilds them (KiCad's Python);
+`../../../tools/fabpack.py` re-plots the gerbers and drill files and writes the zip.
 
 **2026-10-13 (Y42): rev 0.05 - what pricing the order found, made right before the boards are ordered (D-541).**
 `fab/` is bench revision A re-issued from this board: the zip keeps its name, and the rev 0.04 package must not be
@@ -25,9 +49,9 @@ ordered. ERC 0 / 0; DRC 0 violations, 0 unconnected, 0 parity; `check.py --board
   4.1 × 2.0 with 4.6 between) and the footprint drawn is the 8 × 10.2 one (size F), whose largest 63 V value is
   68 µF. The record names no value for this capacitor (`dcu_channels` gives the buck's ceramics), so the value
   moved and the board did not; 100 µF needs the 10 mm footprint and room it does not have here without a re-lay.
-- **Values that follow the cart**: C31-C33 470 µF 16 V (the same can as 10 V); Q1 / Q2 SQ2362CES or PMV37ENEA
-  (Nexperia lists PMV37ENEA in production, but four distributors had none; Vishay 62424 is the same package and
-  pins, 60 V, 4.3 A).
+- **Values that follow the cart**: C31-C33 470 µF 16 V (the same can as 10 V); Q1 / Q2 were SQ2362CES or PMV37ENEA
+  here (Nexperia lists PMV37ENEA in production, but four distributors had none) and are SQ2364EES since rev 0.07,
+  above.
 - **Q3's gate divider (Y44, sheet rev 0.06, a value only): R43 is 18 k, was 1 k** (R42, gate to source, stays
   10 k). With 1 k the gate saw ten elevenths of the rail while the wake is asserted, past the part's ±20 V once
   the rail passed 22 V. Now it sees 10 / 28: 3.2 V at 9 V, 4.3 at 12, 5.1 at 14.4, 8.6 at 24 and 19.0 V at the

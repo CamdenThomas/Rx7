@@ -13,11 +13,13 @@ group,qty,mpn,maker,what,refs,rows,est_unit_usd,price_source,substitute
 2 DU carrier,2,RC2512FK-07100RL,Yageo,100 R 1 W 2512,ICU R6 R11,P107:2,0.35,estimate,
 2 DU carrier,2,RC1210FR-07100KL,Yageo,100 k 0.5 W 1210,ICU R29 R30,P107:2,0.2,estimate,
 2 DU carrier,10,RC0805FR-0715KL,Yageo,15 k 1 % 0805,ICU R7 R9 R12 R19,P107:4,0.03,estimate,
-2 DU carrier,10,RC0805FR-0747KL,Yageo,47 k 1 % 0805,ICU R14 R16 R21 R23 R25 R27,P107:6,0.03,estimate,
+2 DU carrier,10,RC0805FR-0747KL,Yageo,47 k 1 % 0805,ICU R14 R27,P107:2,0.03,estimate,
+2 DU carrier,10,RC0805FR-0722KL,Yageo,22 k 1 % 0805,"ICU R21 R23 R25, the three tell-tale dividers",P107:3,0.03,estimate,any 22 k 1 % 0805
+2 DU carrier,5,MM3Z15VT1G,onsemi,"15 V zener SOD-323, the backlight switch's gate clamp: the banded end toward F1",ICU D27,P107:1,0.15,estimate,"any 15 V 5 % zener in SOD-323 of 200 mW or more (BZT52C15S, MM3Z15VST1G)"
 2 DU carrier,10,RC0805FR-0739KL,Yageo,39 k 1 % 0805,ICU R31,P107:1,0.03,estimate,
 2 DU carrier,10,RC0805FR-0712KL,Yageo,12 k 1 % 0805,ICU R32,P107:1,0.03,estimate,
 2 DU carrier,10,RC0805FR-071M2L,Yageo,1.2 M 1 % 0805,ICU R33,P107:1,0.03,estimate,
-2 DU carrier,10,RC0805FR-071KL,Yageo,1 k 1 % 0805,"ICU R18, first of its three values",P203:1,0.03,estimate,
+2 DU carrier,10,RC0805FR-071KL,Yageo,1 k 1 % 0805,"ICU R16 (the brake-warning input), and R18, first of its three values",P107:1 P203:1,0.03,estimate,
 2 DU carrier,10,RC0805FR-072K2L,Yageo,2.2 k 1 % 0805,"ICU R18, third of its three values",P203:1,0.03,estimate,
 2 DU carrier,5,QPC02SXGN-RC,Sullins,2.54 mm jumper shunt,ICU JP1 JP2 and J8A or J8B,P203:3,0.1,Digi-Key's row on Octopart 2026-10-13,
 2 DU carrier,1,PPPC082LFBN-RC,Sullins,2 x 8 socket header,"ICU J4, the BT817 board's CN8",P176:1,0.97,Digi-Key's row on Octopart 2026-10-13,
@@ -31,7 +33,7 @@ group,qty,mpn,maker,what,refs,rows,est_unit_usd,price_source,substitute
 3 CU carrier,1,BTT62004ESAXUMA1,Infineon,quad high-side switch TSDSO-24,DCU U10,P149:1,4.8,estimate,
 3 CU carrier,1,DRV8962QDDWRQ1,Texas Instruments,quad half-bridge HTSSOP-44,DCU U11,P149:1,7.5,estimate,
 3 CU carrier,2,TCA9539QPWRQ1,Texas Instruments,I2C expander TSSOP-24,DCU U12 U13,P149:2,2.1,estimate,
-3 CU carrier,2,SQ2362CES-T1_GE3,Vishay,"N-FET 60 V 4.3 A SOT-23, gate 1 source 2 drain 3",DCU Q1 Q2,P149:2,0.45,estimate,"Nexperia PMV37ENEAR (the part D-379 named: in production, none in stock at four distributors on Octopart 2026-10-13) or PMV37ENER - the same package and pins, 60 V 3.5 A"
+3 CU carrier,2,SQ2364EES-T1_GE3,Vishay,"N-FET 60 V 2 A SOT-23, on-resistance given at 1.5 V on the gate, gate 1 source 2 drain 3",DCU Q1 Q2,P149:2,0.6,estimate,"only a 60 V SOT-23 N-FET whose on-resistance is given at 2.5 V or less: the gate is driven from 3.3 V, so not SQ2362CES or PMV37ENEA (given at 4.5 V and up)"
 3 CU carrier,1,SQ2361ES-T1_GE3,Vishay,"P-FET 60 V SOT-23, gate 1 source 2 drain 3",DCU Q3,P170:1,0.8,estimate,nothing under 60 V: its rail is clamped at 53 V (D-273). Vishay SQ2361CES-T1_GE3 is the later version - confirm 60 V and SOT-23 on its page
 3 CU carrier,2,XAL7030-682MEC,Coilcraft,6.8 uH inductor 7 x 7 mm,"DCU L2, one fitted one spare",P177:2,3.6,estimate,
 3 CU carrier,2,B560C-13-F,Diodes Inc,60 V 5 A Schottky SMC,DCU D3 D5,P149:2,0.8,another distributor's price on Octopart 2026-10-13,
@@ -40,8 +42,7 @@ group,qty,mpn,maker,what,refs,rows,est_unit_usd,price_source,substitute
 3 CU carrier,2,CRA2512-FZ-R010ELF,Bourns,10 mOhm 1 % 3 W 2512 sense resistor,DCU R15 R16,P149:2,0.75,estimate,any 10 mOhm 1 % 2512 of 2 W or more
 3 CU carrier,3,EEE-FK1C471P,Panasonic,470 uF 16 V aluminium 8 x 10.2,DCU C31 C32 C33,P170:3,1.0,another distributor's price on Octopart 2026-10-13,
 3 CU carrier,2,GRM32ER71A476KE15L,Murata,47 uF 10 V X7R 1210,DCU C14 C15,P170:2,0.95,another distributor's price on Octopart 2026-10-13,low stock on Octopart: Murata GRM32ER61A476KE20L (X5R)
-3 CU carrier,5,C0805C104K1RACTU,KEMET,100 nF 100 V X7R 0805,DCU C25 C30,P170:2,0.41,another distributor's price on Octopart 2026-10-13,
-3 CU carrier,5,C0805C223K1RACTU,KEMET,22 nF 100 V X7R 0805,DCU C27,P170:1,0.16,another distributor's price on Octopart 2026-10-13,
+3 CU carrier,5,C0805C104K1RACTU,KEMET,100 nF 100 V X7R 0805,DCU C25 C27 C30,P170:3,0.41,another distributor's price on Octopart 2026-10-13,
 3 CU carrier,5,C0805C103K1RACTU,KEMET,10 nF 100 V X7R 0805,DCU C36 C37,P170:2,0.1,another distributor's price on Octopart 2026-10-13,
 3 CU carrier,10,CL21B472KBANNNC,Samsung,4.7 nF 50 V X7R 0805,DCU C12,P170:1,0.03,estimate,
 3 CU carrier,10,CL21C470JBANNNC,Samsung,47 pF 50 V C0G 0805,DCU C13,P170:1,0.04,estimate,
@@ -59,8 +60,9 @@ group,qty,mpn,maker,what,refs,rows,est_unit_usd,price_source,substitute
 4 both carriers,2,LMR36015FSCQRNXRQ1,Texas Instruments,"1.5 A buck VQFN 2 x 3 mm, logic rail","ICU U1, DCU U1",P105:1 P146:1,3.3,estimate,
 4 both carriers,2,XAL4020-222MEC,Coilcraft,2.2 uH inductor 4 x 4 mm,"ICU L2, DCU L1",P159:1 P170:1,2.6,estimate,
 4 both carriers,15,BAT54SLT1G,onsemi,dual Schottky clamp SOT-23,"ICU D1-D10 D21 D22, DCU D6",P107:12 P170:1,0.15,another distributor's price on Octopart 2026-10-13,
-4 both carriers,5,MMBT3904LT1G,onsemi,NPN SOT-23,"ICU Q2 Q4, DCU Q4",P107:1 P169:1 P170:1,0.14,another distributor's price on Octopart 2026-10-13,
-4 both carriers,4,B340A-13-F,Diodes Inc,"40 V 3 A Schottky, SMA","ICU D23 D25, DCU D1 (the sheet's SS34, in the SMA case)",P106:2 P147:1,0.5,another distributor's price on Octopart 2026-10-13,
+4 both carriers,2,MMBT3904LT1G,onsemi,"NPN 40 V SOT-23, on the 5 V rail only",ICU Q4,P169:1,0.14,another distributor's price on Octopart 2026-10-13,
+4 both carriers,4,MMBT5551LT1G,onsemi,"NPN 160 V SOT-23, the two P-FET gate drivers on the 12 V rails","ICU Q2, DCU Q4",P107:1 P170:1,0.16,estimate,"onsemi MMBTA06LT1G (80 V), the same pins; not a 40 V part (MMBT3904)"
+4 both carriers,4,SL310A-TP,Micro Commercial (MCC),"100 V 3 A Schottky, SMA, 0.60 V at 3 A","ICU D23 D25, DCU D1",P106:2 P147:1,0.45,estimate,"any 100 V 3 A Schottky in the SMA case with 0.70 V or less at 3 A; not a 40 V part (B340A, SS34): it stands ahead of the 53 V clamp"
 4 both carriers,4,SMBJ33A,Littelfuse,"33 V load-dump TVS, SMB, one-way (not the CA): the banded end to the mark","ICU D24 D26, DCU D2 D4",P106:2 P147:2,0.45,another distributor's price on Octopart 2026-10-13,
 4 both carriers,4,EEE-FK1J680UP,Panasonic,"68 uF 63 V aluminium, 8 x 10.2 mm","ICU C1, DCU C1 C8 C29",P106:1 P170:3,1.27,estimate,"Panasonic EEE-FK1J470P (47 uF 63 V, the same can). Not the 100 uF EEE-FK1J101P: a 10 mm can, it does not fit the boards"
 4 both carriers,5,CGA6M3X7S2A475K200AB,TDK,4.7 uF 100 V X7S 1210,"ICU C20, DCU C2 C9 C10",P159:1 P170:3,0.95,estimate,any 4.7 uF 100 V X7R or X7S 1210
@@ -70,8 +72,8 @@ group,qty,mpn,maker,what,refs,rows,est_unit_usd,price_source,substitute
 4 both carriers,10,CL21B105KAFNNNE,Samsung,1 uF 25 V X7R 0805,"ICU C25, DCU C5 C26 C28",P159:1 P170:3,0.05,estimate,
 4 both carriers,10,CL21C200JBANNNC,Samsung,20 pF 50 V C0G 0805,"ICU C26, DCU C6",P159:1 P170:1,0.04,estimate,
 4 both carriers,4,CL21B106KOQNNNE,Samsung,10 uF 16 V X7R 0805,"ICU C19, panel C1",P169:1 P192:1,0.49,Mouser's row on Octopart 2026-10-13,
-4 both carriers,50,RC0805FR-0710KL,Yageo,10 k 1 % 0805,"ICU 19 places, DCU 20 places",P107:17 P169:2 P170:18 P149:2,0.012,estimate,
-4 both carriers,20,RC0805FR-074K7L,Yageo,4.7 k 1 % 0805,"ICU 4 places, DCU 11 places",P107:4 P170:11,0.02,estimate,
+4 both carriers,50,RC0805FR-0710KL,Yageo,10 k 1 % 0805,"ICU 18 places, DCU 20 places",P107:16 P169:2 P170:18 P149:2,0.012,estimate,
+4 both carriers,20,RC0805FR-074K7L,Yageo,4.7 k 1 % 0805,"ICU 5 places, DCU 11 places",P107:5 P170:11,0.02,estimate,
 4 both carriers,10,RC0805FR-07100KL,Yageo,100 k 1 % 0805,"ICU R4 R41 R43, DCU R1 R3 R35 R45",P107:1 P159:2 P170:4,0.03,estimate,
 4 both carriers,10,RC0805FR-071K5L,Yageo,1.5 k 1 % 0805,"ICU R18's second value, DCU R37 R55 R56 R57",P203:1 P170:4,0.03,estimate,
 4 both carriers,10,RC0805FR-0724K9L,Yageo,24.9 k 1 % 0805,"ICU R42, DCU R2",P159:1 P170:1,0.03,estimate,

@@ -10914,7 +10914,7 @@
 				)
 			)
 		)
-		(property "Value" "SQ2362CES / PMV37ENEA"
+		(property "Value" "SQ2364EES"
 			(at 0 2.4 0)
 			(layer "F.Fab")
 			(uuid "fd79e324-c1c0-4e3c-99da-2d10e61444bc")
@@ -13662,7 +13662,7 @@
 				)
 			)
 		)
-		(property "Value" "22n 100V  confirm"
+		(property "Value" "100n 100V"
 			(at 0 1.68 90)
 			(layer "F.Fab")
 			(uuid "88ca587c-3194-4734-937a-d31c8f2d15be")
@@ -21131,7 +21131,7 @@
 				)
 			)
 		)
-		(property "Value" "SS34"
+		(property "Value" "SL310A"
 			(at 0 2.6 270)
 			(layer "F.Fab")
 			(uuid "3f2a86a4-5b74-484a-b20f-be56b1a0306e")
@@ -21939,7 +21939,7 @@
 				)
 			)
 		)
-		(property "Value" "SQ2362CES / PMV37ENEA"
+		(property "Value" "SQ2364EES"
 			(at 0 2.4 0)
 			(layer "F.Fab")
 			(uuid "8e5443a2-15d6-4692-a2f6-3e74ead953d8")
@@ -31691,7 +31691,7 @@
 				)
 			)
 		)
-		(property "Value" "MMBT3904"
+		(property "Value" "MMBT5551"
 			(at 0 2.4 0)
 			(layer "F.Fab")
 			(uuid "5c9b4ce3-a8d0-4426-b66e-7777a08edb4f")

@@ -605,7 +605,7 @@
       },
       {
         "netclass": "PWR_BL",
-        "pattern": "Net-(Q1-S)"
+        "pattern": "/BL_FUSED"
       },
       {
         "netclass": "TACH_HV",

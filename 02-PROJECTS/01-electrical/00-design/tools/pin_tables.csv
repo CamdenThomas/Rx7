@@ -294,3 +294,11 @@ SQD50P06,"TO-252 (top view G D S, the drain is the tab)",3,S,https://www.vishay.
 DMG3415U,"SOT23 (top view: D alone on one side, G and S on the other; the maker marks it not for new designs and names DMP2045U, the same pins)",1,G,https://www.diodes.com/datasheet/download/DMG3415U.pdf#page=1
 DMG3415U,"SOT23 (top view: D alone on one side, G and S on the other; the maker marks it not for new designs and names DMP2045U, the same pins)",2,S,https://www.diodes.com/datasheet/download/DMG3415U.pdf#page=1
 DMG3415U,"SOT23 (top view: D alone on one side, G and S on the other; the maker marks it not for new designs and names DMP2045U, the same pins)",3,D,https://www.diodes.com/datasheet/download/DMG3415U.pdf#page=1
+SQ2364EES,SOT-23 (TO-236),1,G,https://www.vishay.com/docs/75975/sq2364ees.pdf#page=1
+SQ2364EES,SOT-23 (TO-236),2,S,https://www.vishay.com/docs/75975/sq2364ees.pdf#page=1
+SQ2364EES,SOT-23 (TO-236),3,D,https://www.vishay.com/docs/75975/sq2364ees.pdf#page=1
+MMBT5551,SOT-23 (case 318 style 6),1,B,https://www.onsemi.com/pdf/datasheet/mmbt5550lt1-d.pdf#page=1
+MMBT5551,SOT-23 (case 318 style 6),2,E,https://www.onsemi.com/pdf/datasheet/mmbt5550lt1-d.pdf#page=1
+MMBT5551,SOT-23 (case 318 style 6),3,C,https://www.onsemi.com/pdf/datasheet/mmbt5550lt1-d.pdf#page=1
+MM3Z15VT1G,"SOD-323 (case 477 style 1): the band is the cathode, and pad 1 of the D_SOD-323 footprint is the banded end",1,K,https://www.onsemi.com/pdf/datasheet/mm3z2v4t1-d.pdf#page=1
+MM3Z15VT1G,"SOD-323 (case 477 style 1): the band is the cathode, and pad 1 of the D_SOD-323 footprint is the banded end",2,A,https://www.onsemi.com/pdf/datasheet/mm3z2v4t1-d.pdf#page=1

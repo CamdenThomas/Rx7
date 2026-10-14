@@ -1,6 +1,6 @@
 {
  "version": 2,
- "built": "2026-10-13T19:17:29-06:00",
+ "built": "2026-10-13T21:43:46-06:00",
  "project": "01-electrical",
  "frame": {
   "units": "mm",
@@ -297,7 +297,7 @@
    "name": "Control panel",
    "kind": "pcb",
    "glb": "panel.glb",
-   "bytes": 3946172,
+   "bytes": 3946348,
    "parent": "control-unit",
    "place": {
     "x": 0.5,
@@ -367,7 +367,7 @@
    "name": "ICU carrier PCB H-001",
    "kind": "pcb",
    "glb": "icu-carrier.glb",
-   "bytes": 9210300,
+   "bytes": 9325116,
    "parent": "display-unit",
    "place": {
     "x": -91.75,
@@ -13947,13 +13947,13 @@
     "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "26760aa8ba4e1e6f"
+   "stamp": "595a6cfbba84e2e4"
   },
   "panel": {
    "id": "panel",
    "kind": "pcb",
    "glb": "panel.glb",
-   "bytes": 3946172,
+   "bytes": 3946348,
    "bbox": [
     [
      0.0,
@@ -13966,8 +13966,8 @@
      38.095
     ]
    ],
-   "vertices": 180149,
-   "triangles": 174747,
+   "vertices": 180157,
+   "triangles": 174755,
    "nodes": {
     "board": [
      "pcb:board"
@@ -13990,7 +13990,7 @@
     "TQFP-48-1EP_7x7mm_P0.5mm_EP4.11x4.11mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "250b96dad8b5a753"
+   "stamp": "716a8c89ad144197"
   },
   "upper-board": {
    "id": "upper-board",
@@ -14088,7 +14088,7 @@
    "id": "icu-carrier",
    "kind": "pcb",
    "glb": "icu-carrier.glb",
-   "bytes": 9210300,
+   "bytes": 9325116,
    "bbox": [
     [
      97.75,
@@ -14101,8 +14101,8 @@
      37.128
     ]
    ],
-   "vertices": 420456,
-   "triangles": 409367,
+   "vertices": 425698,
+   "triangles": 414523,
    "nodes": {
     "board": [
      "pcb:board"
@@ -14125,7 +14125,7 @@
     "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "b6eac8b3be4b36e7"
+   "stamp": "29f1b061a48c5cce"
   },
   "control-unit": {
    "problems": [],
@@ -15275,5 +15275,5 @@
   "connectors": "connectors/manifest.json",
   "devices": "devices/manifest.json"
  },
- "record_stamp": "d253cb943828086f"
+ "record_stamp": "83cc073d363c85d8"
 }

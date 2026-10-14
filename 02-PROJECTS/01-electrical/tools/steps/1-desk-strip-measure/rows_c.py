@@ -132,7 +132,7 @@ ROWS.append(dict(
 _G3 = _chunks(G3, 16)
 _G4 = _chunks(G4, 14)
 _fab = _fab_usd()
-REBUILT = "2026-10-13"  # the day the two carriers' fab zips were rebuilt after the carriers were corrected (D-547)
+REBUILT = "2026-10-13"  # the day the fab zips were rebuilt: both carriers' after they were corrected (D-547), then the DU carrier's and the panel's again after the read (D-549)
 
 # What a cart line must not be swapped for, said on the step that lists the line (D-547, D-273):
 # the first sentence whose part number the step's lines hold.
@@ -141,6 +141,9 @@ _WATCH = [
     ("SMAJ40A", "SMAJ40A is the one-way type. Never SMAJ40CA, the two-way type: the board is drawn for the one-way part, its banded end at the mark."),
     ("EEE-FK1J680UP", "The capacitor is 68 uF 63 V in the 8 mm can the boards draw. The 100 uF EEE-FK1J101P is a 10 mm can and does not fit; a 50 V part is not enough."),
     ("SMBJ33A", "SMBJ33A is the one-way type. Never SMBJ33CA, the two-way type: the board is drawn for the one-way part, its banded end at the mark."),
+    ("SQ2364", "Q1 and Q2 are SQ2364EES: they are switched from 3.3 V, so take nothing whose on-resistance is given only at 4.5 V or more (SQ2362CES, PMV37ENEA)."),
+    ("MMBT5551", "MMBT5551 is the 160 V transistor: its collector stands on a supply clamped at 53 V, so never the 40 V MMBT3904 in its place."),
+    ("SL310A", "SL310A is the 100 V diode: it stands ahead of the 53 V clamp, so never a 40 V part such as B340A or SS34."),
 ]
 
 
@@ -166,12 +169,15 @@ ROWS.append(dict(
         "No live quote was read: the fab's quote page and Digi-Key's and Mouser's pages refuse automated readers. The fab prices are estimates, and the option names in the steps are JLCPCB's as last known - confirm on the page. Each cart shows its real total before you pay. [work Y37]",
         "The boards: %s. All four are 2 layers, 1.6 mm thick, with 0.2 mm tracks and gaps and a 0.3 mm smallest hole. None needs gold fingers, edge plating, castellated holes or controlled impedance. [parts P103, P144, P175, P195; the fab folders' job files]" % ", ".join("%s %s mm" % (n, s) for _, n, s in BOARDS),
         "Each board's fab folder under 00-design holds one zip of gerbers and one BOM: icu-carrier-revA-gerbers.zip, dcu-carrier-revA-gerbers.zip, panel-revA-gerbers.zip, upper-board-revA-gerbers.zip. [work Y17; the fab folders]",
-        "The two carriers' zips were rebuilt on %s, after both carriers were corrected, and kept their names. Upload only the zips a fresh pull gives. A carrier zip saved or uploaded before that day builds a board that does not work. The panel's and the upper board's zips did not change. [D-547; work Y42; the fab folders]" % REBUILT,
+        "Three zips were rebuilt on %s and kept their names: both carriers' after they were corrected, then the DU carrier's and the panel's again after the boards were read once more. Upload only the zips a fresh pull gives. A zip saved or uploaded before that builds a board that does not work. The upper board's zip did not change. [D-547; D-549; work Y42, Y44; the fab folders]" % REBUILT,
         "The cart file names every part bought by its maker's part number, with what it is, where it goes and the parts row it belongs to. Passives are bought in tens, the rest as the boards count them, for one DU and one CU. [the Digi-Key cart file bench-revA-digikey-cart.csv]",
         "Of the file's %d prices, %d are Digi-Key's or Mouser's own as Octopart listed them, %d are another distributor's, %d are the maker's page and %d are estimates. All are est until the cart shows them. [the Digi-Key cart file, price_source; work Y37]" % (
             len(DK), _src("Digi-Key's row") + _src("Mouser's row"), _src("another distributor"), _src("maker's page"), _src("estimate")),
         "The bulk capacitor at DU C1 and CU C1, C8 and C29 is 68 uF 63 V, Panasonic EEE-FK1J680UP, in the 8 mm can the boards draw. It sits across a diode that clamps at 53 V, so it must be a 63 V part. 100 uF 63 V comes only in a 10 mm can, which does not fit. If the cart has none, the 47 uF 63 V EEE-FK1J470P is the same can. [D-547; D-273; the Digi-Key cart file]",
         "CU transistor Q3 is the 60 V SQ2361ES-T1_GE3. Its supply is clamped at 53 V, so nothing rated under 60 V goes there. [D-547; D-273; the DCU carrier's BOM]",
+        "CU transistors Q1 and Q2 are Vishay SQ2364EES-T1_GE3. They are switched from a 3.3 V pin, so only a part whose on-resistance is given at 2.5 V or less goes there: not SQ2362CES, not PMV37ENEA. [D-549; the DCU carrier's BOM]",
+        "Two more kinds of part stand on a supply clamped at 53 V and are bought above it. The transistors DU Q2 and CU Q4 are the 160 V MMBT5551, never the 40 V MMBT3904 beside it in the cart (that one is DU Q4 alone, on 5 V). The input diodes DU D23, D25 and CU D1 are the 100 V SL310A, never a 40 V B340A or SS34. [D-549; D-273; the Digi-Key cart file]",
+        "Each fab folder also holds two assembly drawings, front and back, that show every part's reference where it sits: the boards print none. They are for the build, not for the fab: upload only the zip. [D-549; the fab folders]",
         "The six TVS diodes are the one-way type: SMBJ33A at DU D24 and D26 and CU D2 and D4, SMAJ40A at CU D7 and D8. The part number ends in A with no C before it. The CA parts are two-way, sit beside them in any cart, and must not be taken: each board is drawn for the one-way part, its banded end at the silkscreen's mark. [D-547; the Digi-Key cart file]",
         "The window switches are NKK B28AP: its maker's drawing gives pins 2.54 mm apart and poles 5.08 mm apart, which is the pattern the panel board draws. The four keys must stand 13 mm tall; Omron's B3F-1070 is 9.5 mm and is not the part. [the panel board; work Y37]",
         "The panel's twelve symbol and ring lights are green, your word for them; the seat arcs are six blue and six red. [ideas I-001, I-004; parts P192]",
@@ -185,7 +191,7 @@ ROWS.append(dict(
         ("Pull the tree and find the files",
          "git pull in ~/dev/Rx7. Under " + DESIGN + " each of the four board folders (icu-carrier, dcu-carrier, panel, upper-board) has a fab folder with one <board>-revA-gerbers.zip. Beside the README in " + DESIGN + " are bench-revA-digikey-cart.csv and bench-revA-mouser-cart.csv.",
          "Four zips and two cart files.",
-         "The two carrier zips were rebuilt on %s under the same names. Use only the ones this pull gives: delete any carrier zip you saved or uploaded before." % REBUILT),
+         "Three zips (both carriers and the panel) were rebuilt on %s under the same names. Use only the ones this pull gives: delete any zip you saved or uploaded before." % REBUILT),
         ("Upload the first zip at the fab",
          "On jlcpcb.com open the quote page and add icu-carrier-revA-gerbers.zip. Let it read the file.",
          "A preview of the board, 110 x 80 mm, 2 layers.",

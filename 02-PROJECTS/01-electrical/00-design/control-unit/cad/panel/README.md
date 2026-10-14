@@ -1,11 +1,24 @@
 # Control panel — the KiCad project
 
-*Rev 2026-10-13 (sheet and board rev 0.04, provisional - Y20, D-492) · owns: what this KiCad project
+*Rev 2026-10-13 (sheet and board rev 0.04, provisional - Y20, D-492; the encoders' lug slots corrected at Y44, D-549) · owns: what this KiCad project
 is for and what it may claim. The panel's design is `../../../../data/panel_ribbon.csv`, the cavities of
 `DP-DCU-E`, `dcu_channels` SN17-SN20 and parts P155, P192, P201 (D-492, D-458, D-459). Read
 `../../../README.md` first: it is the fence.*
 
 ## Where it stands
+
+**2026-10-13 (Y44, D-549): the three encoders' mounting-lug slots are Bourns' own.** SW7, SW8 and SW9 were drawn
+with 1.0 x 3.0 mm slots at +-6.45 mm; the PEC11R-4xxxF-S layout gives 1.8 (+0.2 / -0) x 2.6 (+0.2 / -0) mm slots
+13.2 mm apart, and the lugs are 14.0 mm over their kinks, so they would not have entered. The footprint in
+`panel.pretty` and the three on the board now have 1.8 x 2.6 mm slots at +-6.6 mm in 2.6 x 3.4 mm pads; the five
+pins are right and did not move. `LR3`'s track on the back moved 0.8 mm outward beside SW7's right lug. The
+sheet is unchanged. `fab/panel-revA-gerbers.zip` is re-issued under the same name: the earlier zip must not be
+ordered. DRC 0 violations, 0 unconnected, 0 parity; `check.py --board panel` 79 checks, 0 mismatches.
+
+`fab/` also holds two hand-assembly drawings, `panel-revA-assembly-top.svg` and `-bottom.svg` (the back mirrored, to read
+as you look at it): the outline, every part's outline and pads, and its reference in the middle of the part; the
+values are in `fab/panel-revA-bom.csv` by reference. `../../../tools/assembly.py` rebuilds them (KiCad's Python);
+`../../../tools/fabpack.py` re-plots the gerbers and drill files and writes the zip.
 
 **Rev 0.04 is the sketch's control set (D-492)**, drawn in place of Y6's board (D-380's nine keys,
 four encoders and the thumbstick, superseded). It is the face of the climate unit (D-479, D-481):
@@ -185,16 +198,17 @@ address must differ from the driver's 0x3C (0x3D on most).
   ring encoder with a light pipe; none is chosen, so the symbol LED is beside the knob.
 - **The screen:** `J2`'s pin order, the standoff that puts the glass at the window, the module's size,
   its supply (`JP1`) and pull-ups, its address (P201).
-- **The encoders:** `panel:RotaryEncoder_Bourns_Vertical_PEC11R-4xxxF-Sxxxx` (Y6's, read from a model,
-  not the Bourns drawing); S1 / S2 empty on the two N-type seat knobs.
+- **The encoders:** `panel:RotaryEncoder_Bourns_Vertical_PEC11R-4xxxF-Sxxxx` (Y6's, read from a model;
+  held to the Bourns drawing at Y44: the pins were right, the lug slots were not - above); S1 / S2 empty on the
+  two N-type seat knobs.
 - **The keys** (Y42, 2026-10-13): **Same Sky TS02-66-130-BK-160-LCR-D** - 6 × 6 mm, its top 13.0 mm above the
   board, 160 gf. `SW_PUSH_6mm_H13mm` was held to the maker's drawing (TS02 rev 1.03): pins on 6.5 × 4.5 mm, four
   1.0 mm holes (1.1 drawn), 1-2 and 3-4 joined inside, as the footprint's two pads "1" and two pads "2". The
   mock-up puts the cap's front 13 mm from the board (`PANEL_GAP` 8 + `FACE_T` 3 + `KEY_PROUD` 2), so a 13 mm
   switch reaches it bare: the cap's own top adds to `KEY_PROUD`, or the 12.0 mm TS02-66-120-BK-160-LCR-D leaves
   it 1 mm - confirm with the cap (LP20). The part is named in SW1-SW4's `Confirm` field on the sheet and the
-  board; no copper or silkscreen moved, so `fab/panel-revA-gerbers.zip` is as it was (re-plotted and compared:
-  every layer and drill file the same but its date).
+  board; no copper or silkscreen moved, so `fab/panel-revA-gerbers.zip` did not change then (re-plotted and compared:
+  every layer and drill file the same but its date); Y44 re-issued it for the encoders' slots.
 - **The LEDs:** colours (blue cool, red heat, the rest LP20's), brightness on the bench, part numbers.
 - **`U2`'s footprint** (KiCad's TQFP-48 7 × 7, EP 4.11, as Lumissil p.17) and the passives' part numbers.
 
