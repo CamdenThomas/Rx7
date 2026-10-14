@@ -817,3 +817,124 @@ PR-093.05,PR-093,5,Plug the extension housing,"Main shaft turning holder, SP-164
 PR-093.06,PR-093,6,Inspect the shaft for damage and rust,,,,p.8-3
 PR-093.07,PR-093,7,Check each universal joint for play along its axes and across them,,None. With any play the propeller shaft assembly is replaced.,,p.8-3
 PR-093.08,PR-093,8,Measure the shaft's run-out,Limit SP-1393.,Within the limit; beyond it the shaft is replaced.,,p.8-3
+PR-094.01,PR-094,1,Raise the front until the wheels clear the ground and support it on stands,,,,p.9-4
+PR-094.02,PR-094,2,Grip each front tyre and shake it sideways,,No considerable play. Play means rough bearings: adjust them (PR-096) or replace them (PR-095).,,p.9-4
+PR-094.03,PR-094,3,"Raise the rear, support it on safety stands and remove the wheel and the brake drum",,,,p.9-4
+PR-094.04,PR-094,4,Mount a dial gauge and push and pull the axle shaft,,End play within SP-1354.,,p.9-4
+PR-095.01,PR-095,1,"Raise the front, support it on stands and remove the wheel",,,,p.9-5
+PR-095.02,PR-095,2,Remove the caliper's lower attaching bolt and lift the caliper away,Hang the caliper from the coil spring with a piece of wire.,,Never let the caliper hang from the brake hose.,p.9-5
+PR-095.03,PR-095,3,"Remove the anti-rattle spring, the pads and their shims",,,,p.9-5
+PR-095.04,PR-095,4,Remove the caliper bracket,,,,p.9-5
+PR-095.05,PR-095,5,"Remove the grease cap, the split pin, the nut lock and the adjusting nut",,,,p.9-5
+PR-095.06,PR-095,6,Remove the washer and the outer bearing,,,,p.9-5
+PR-095.07,PR-095,7,Remove the grease seal and the inner bearing,,,,p.9-5
+PR-095.08,PR-095,8,Drive a bearing outer race out only if it is to be replaced,A drift in the slots made for it.,,A sound outer race stays in the hub.,p.9-6
+PR-095.09,PR-095,9,Clean the grease off both outer races with solvent and inspect them,,"No scratches, pits or excessive wear.",,p.9-6
+PR-095.10,PR-095,10,Clean the bearings in solvent and dry them thoroughly,,,Do not spin the bearings with compressed air.,p.9-6
+PR-095.11,PR-095,11,Inspect the bearing rollers,,No damage or wear; otherwise the bearing is replaced.,,p.9-6
+PR-095.12,PR-095,12,Clean all the old grease off the spindle and out of the hub,,,,p.9-6
+PR-095.13,PR-095,13,Repack the bearings with grease,Grease SP-1552.,,Do not overpack.,p.9-6
+PR-095.14,PR-095,14,Fill the hub cavity with the same grease,,,,p.9-6
+PR-095.15,PR-095,15,Refit the hub and bearings in the reverse order,,,,p.9-6
+PR-095.16,PR-095,16,Set the bearing preload,PR-096.,,,p.9-6
+PR-096.01,PR-096,1,Tighten the adjusting nut,SP-1367.,,,p.9-6
+PR-096.02,PR-096,2,Turn the hub a few times to seat the bearings,,,,p.9-6
+PR-096.03,PR-096,3,Loosen the adjusting nut until it turns by hand,,,,p.9-6
+PR-096.04,PR-096,4,Hook a spring scale on a hub bolt and pull it squarely,Turn the hub a few times first.,The pull at which the hub starts to turn is the oil seal's drag: note it.,,p.9-6
+PR-096.05,PR-096,5,Turn the adjusting nut slowly until the pull is the seal's drag plus the preload,Preload SP-1366.,,,p.9-6
+PR-096.06,PR-096,6,Fit the nut lock with its slots on the spindle hole and fit a new split pin,"If the hole does not line up, tighten the adjusting nut to the next castellation.",,,p.9-7
+PR-096.07,PR-096,7,Fit the grease cap,,,,p.9-7
+PR-097.01,PR-097,1,Raise the rear and support the axle housing on stands,,,,p.9-7
+PR-097.02,PR-097,2,Remove the wheel,,,,p.9-7
+PR-097.03,PR-097,3,"Remove the brake drum, the return spring and the brake shoe assembly",,,,p.9-7
+PR-097.04,PR-097,4,Remove the backing plate's attaching nuts,,,,p.9-7
+PR-097.05,PR-097,5,Remove the parking brake cable's clip and the cable,,,,p.9-7
+PR-097.06,PR-097,6,Disconnect the brake pipe,,,,p.9-7
+PR-097.07,PR-097,7,Pull the axle shaft and the backing plate out together,Puller and attachment SP-1674.,,Do not scratch the oil seal as the shaft comes out.,p.9-7
+PR-097.08,PR-097,8,Remove the oil seal from the housing only if it is to be replaced,,,,p.9-8
+PR-097.09,PR-097,9,Fit the new oil seal into the axle housing,Installer SP-1676.,,,p.9-10
+PR-097.10,PR-097,10,Grease the oil seal's lip,,,,p.9-10
+PR-097.11,PR-097,11,Refit the axle shaft assembly in the reverse order,,,Do not damage the oil seal's lip.,p.9-10
+PR-097.12,PR-097,12,Bleed the brake line,,,,p.9-11
+PR-098.01,PR-098,1,Remove the axle shaft,PR-097.,,,p.9-8
+PR-098.02,PR-098,2,Grind one part of the bearing collar down to a thin wall,What is left: SP-1403.,,Keep the grinder off the shaft.,p.9-8
+PR-098.03,PR-098,3,Break that part with a chisel and take the collar off the shaft,,,Do not mark the shaft with the chisel.,p.9-8
+PR-098.04,PR-098,4,Support the spacer and press the axle shaft out of the bearing,Tools SP-1675.,,,p.9-9
+PR-098.05,PR-098,5,"Inspect the axle shaft for bend, cracks and worn splines",Deflection limit at the centre: SP-1401.,,,p.9-10
+PR-098.06,PR-098,6,Inspect the back plate,,"Not deformed, cracked or damaged.",,p.9-10
+PR-098.07,PR-098,7,Check the bearing's play and rotation,Turn it while pressing from the centre outward.,,Do not clean the bearing with gasoline.,p.9-10
+PR-098.08,PR-098,8,Check the oil seal's lip,,Not worn or damaged.,,p.9-10
+PR-098.09,PR-098,9,Press the bearing onto the shaft,The back plate goes on the shaft first. Attachment SP-1675.,,,p.9-9
+PR-098.10,PR-098,10,Clean the new collar and its seat on the shaft with clean rags,,,No oil or grease on the collar or the shaft.,p.9-9
+PR-098.11,PR-098,11,Press the new collar onto the shaft,Attachment SP-1675.,"The press-fit force is above SP-1402; at that figure or under it, the collar or the shaft is replaced.",,p.9-9
+PR-099.01,PR-099,1,Raise the rear and support it on safety stands,,,,p.9-11
+PR-099.02,PR-099,2,Drain the differential oil,,,,p.9-11
+PR-099.03,PR-099,3,Pull both rear axle shafts,PR-097.,,,p.9-11
+PR-099.04,PR-099,4,Remove the propeller shaft,PR-093.,,,p.9-11
+PR-099.05,PR-099,5,"Undo the carrier's fasteners, leaving two on loosely",The two keep the differential from dropping.,,,p.9-12
+PR-099.06,PR-099,6,Free the carrier with a wooden hammer and lift the differential out,,,,p.9-12
+PR-099.07,PR-099,7,Refit in the reverse order with sealant on the joint,Sealant SP-1405.,,,p.9-11
+PR-099.08,PR-099,8,Bleed the brake line,,,,p.9-11
+PR-099.09,PR-099,9,Fill with differential oil,"Oil SP-087, amount SP-088.",,,p.9-11
+PR-100.01,PR-100,1,Mount the rear axle assembly on the engine stand,Stand and attachments SP-1677.,,,p.9-13
+PR-100.02,PR-100,2,Mark one of the bearing caps,So left and right go back on their own sides.,,,p.9-13
+PR-100.03,PR-100,3,Remove the adjuster lock plates,,,,p.9-13
+PR-100.04,PR-100,4,Remove the bearing caps and the adjusters,,,,p.9-13
+PR-100.05,PR-100,5,Lift out the differential assembly and its bearings,,,Keep each bearing outer race with its own bearing.,p.9-13
+PR-100.06,PR-100,6,Hold the companion flange and remove the drive pinion nut,Holder SP-1678.,,,p.9-13
+PR-100.07,PR-100,7,Pull the companion flange off,Puller set SP-1679.,,,p.9-14
+PR-100.08,PR-100,8,"Take the drive pinion out of the carrier with its spacer, rear bearing and collapsible spacer",,,,p.9-14
+PR-100.09,PR-100,9,Remove the oil seal and the front bearing,,,,p.9-14
+PR-100.10,PR-100,10,Drive the bearing outer races out only if needed,A drift in the slots made for it.,,,p.9-14
+PR-100.11,PR-100,11,Pull the side bearings off the gear case,Puller set SP-1679.,,,p.9-14
+PR-100.12,PR-100,12,Remove the ring gear,,,,p.9-14
+PR-100.13,PR-100,13,Drive the pinion shaft's lock pin out with a drift,,,,p.9-14
+PR-100.14,PR-100,14,"Remove the pinion shaft, the pinion gears, then the side gears and their thrust washers",,,,p.9-14
+PR-100.15,PR-100,15,Wash the parts and inspect the drive pinion and the ring gear,They are replaced only as a set.,"Teeth not damaged, worn or chipped; bearing journals and splines sound.",,p.9-16
+PR-100.16,PR-100,16,Inspect the side gears and the pinion gears,,No cracks or chipped teeth.,,p.9-16
+PR-100.17,PR-100,17,Inspect the differential bearings and the pinion bearings,,No wear or flaking.,,p.9-16
+PR-100.18,PR-100,18,Measure the collapsible spacer's length with a micrometer,,SP-1414.,,p.9-16
+PR-100.19,PR-100,19,Inspect the oil seal and the companion flange,,"Seal not worn; flange not cracked, its splines not worn and its seal surface smooth.",,p.9-16
+PR-101.01,PR-101,1,Check the bearing bores of the carrier are free of dirt and burrs,,,,p.9-18
+PR-101.02,PR-101,2,Fit the front and rear bearing races into the carrier,New ones if needed.,,,p.9-18
+PR-101.03,PR-101,3,"Put the spacer, the rear bearing and collar B on the pinion model and hold them with the O-ring",Tools SP-1680.,,The model's head screws in: check it is not loose.,p.9-18
+PR-101.04,PR-101,4,Fit them in the carrier,,,Never use the collapsible spacer for this measurement.,p.9-18
+PR-101.05,PR-101,5,"Fit the front bearing, collar A, the companion flange and the washer",,,,p.9-18
+PR-101.06,PR-101,6,Tighten the nut until the pinion model turns smoothly,,,,p.9-18
+PR-101.07,PR-101,7,Zero a dial indicator in the gauge body on a surface plate,,,,p.9-18
+PR-101.08,PR-101,8,Put the gauge block on the pinion model and the gauge body on the block,,,,p.9-18
+PR-101.09,PR-101,9,"Read the lowest point of each side bearing seat in the carrier, left and right",,,,p.9-18
+PR-101.10,PR-101,10,Work out the adjustment value and choose the spacer,SP-1682; spacer steps SP-1415.,,,p.9-19
+PR-102.01,PR-102,1,Put the chosen spacer on the drive pinion and press the rear bearing on,,,,p.9-19
+PR-102.02,PR-102,2,Fit the collapsible spacer on the pinion and put them in the carrier,,,,p.9-19
+PR-102.03,PR-102,3,Fit the front bearing on the pinion's front end,,,,p.9-19
+PR-102.04,PR-102,4,Oil the pinion oil seal's lip with gear oil and fit the seal in the carrier,,,,p.9-19
+PR-102.05,PR-102,5,Tap the companion flange onto the pinion with a plastic hammer,,,,p.9-19
+PR-102.06,PR-102,6,"Fit the washer and nut and, before tightening, measure the oil seal's drag with a torque wrench",,,,p.9-19
+PR-102.07,PR-102,7,Tighten the pinion nut to the first figure and check the preload,"SP-1406. A little at a time, with the preload checked after each.",,"Never beyond SP-1407; if the preload is not reached at that torque, fit a new collapsible spacer.",p.9-19
+PR-102.08,PR-102,8,Set the preload,"SP-1416, the seal's drag of step 6 not counted. With a spring scale at the flange's bolt hole: SP-1408.",,,p.9-20
+PR-103.01,PR-103,1,Put a thrust washer on each side gear and fit the gears in the gear case,,,,p.9-20
+PR-103.02,PR-103,2,"Insert the two pinion gears through the case's openings, exactly opposite each other",,,,p.9-20
+PR-103.03,PR-103,3,Turn the gears 90 degrees until their holes line up with the case's pinion shaft holes,,,,p.9-20
+PR-103.04,PR-103,4,Push the pinion shaft through the case and the pinion gears,,,,p.9-20
+PR-103.05,PR-103,5,Check the backlash of the side gears and pinion gears,"Set by the thrust washers' thickness, SP-1419.",SP-1418.,,p.9-20
+PR-103.06,PR-103,6,Fit the pinion shaft's lock pin and stake it with a punch,,,,p.9-21
+PR-103.07,PR-103,7,Apply locking agent to the back of the ring gear and to its bolts,Where the figure shows; it was not read.,,,p.9-21
+PR-103.08,PR-103,8,Fit the ring gear to the case and torque its bolts,SP-1412.,,,p.9-21
+PR-103.09,PR-103,9,Press the side bearings onto the gear case,Pipe SP-1417.,Pressed until the force rises suddenly.,,p.9-21
+PR-104.01,PR-104,1,Put the differential gear assembly in the carrier,,,,p.9-23
+PR-104.02,PR-104,2,"Fit each adjuster on its own side, by its mark",,,,p.9-23
+PR-104.03,PR-104,3,Fit the bearing caps by their marks and start their bolts,,,,p.9-23
+PR-104.04,PR-104,4,Nip one bearing cap bolt on each side,,,,p.9-23
+PR-104.05,PR-104,5,Mark the ring gear at four points about 90 degrees apart and set a dial indicator square on a tooth,,,,p.9-24
+PR-104.06,PR-104,6,Turn both adjusters equally until the backlash is right,Wrench SP-1681.,SP-1409.,,p.9-24
+PR-104.07,PR-104,7,Check the backlash at the other three marks,,Smallest reading above SP-1410; spread within SP-1411.,,p.9-24
+PR-104.08,PR-104,8,Tighten the adjusters equally until the bearing caps' pilots are the set distance apart,SP-1423.,,Do not disturb the backlash.,p.9-24
+PR-104.09,PR-104,9,Torque the bearing cap bolts,SP-1404.,,,p.9-24
+PR-104.10,PR-104,10,Fit the adjuster lock plates on the bearing caps,,,,p.9-24
+PR-105.01,PR-105,1,Coat both faces of six to eight ring gear teeth thinly and evenly with red lead,,,,p.9-25
+PR-105.02,PR-105,2,Rock the ring gear by hand while turning the drive pinion several times,,,,p.9-25
+PR-105.03,PR-105,3,Read the contact pattern on the teeth,,Good contact as the page's figures show it; they were not read.,,p.9-25
+PR-105.04,PR-105,4,Wipe the red lead off if the contact is good,,,,p.9-25
+PR-105.05,PR-105,5,"With toe or flank contact, fit a thinner pinion spacer","The pinion moves outward. Then set the backlash again, PR-104.",,,p.9-25
+PR-105.06,PR-105,6,"With heel or face contact, fit a thicker pinion spacer","The pinion moves inward. Then set the backlash again, PR-104.",,,p.9-25

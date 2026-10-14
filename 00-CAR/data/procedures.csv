@@ -92,3 +92,15 @@ PR-090,Transmission,"Check the kick-down solenoid and the vacuum diaphragm on th
 PR-091,Transmission,"Find the line pressure cutback point (1985 manual, L4N71B)",shift faults the line pressure test does not explain,"two oil pressure gauges 49 0378 400A, vacuum pump with gauge",S-002,other-car
 PR-092,Transmission,"Check and wash the torque converter (1985 manual, L4N71B)",transmission overhaul,compressed air,S-002,other-car
 PR-093,Driveline,Remove and inspect the propeller shaft (1985 manual),driveline noise or vibration; gearbox or rear axle removal,"stands, dial gauge, main shaft turning holder 49 0259 440",S-002,
+PR-094,Suspension,"Check the wheel bearings for play, front and rear (1985 manual)","irregular tyre wear, steering wheel vibration, pulling to one side, instability","stands, dial gauge",S-002,
+PR-095,Suspension,"Remove, inspect and refit a front hub and its bearings (1985 manual)",front bearing play or noise,"stands, wire, drift, solvent, grease",S-002,
+PR-096,Suspension,Adjust the front wheel bearing preload (1985 manual),after a front hub is refitted; excessive steering wheel play,"torque wrench, spring scale, new split pin",S-002,
+PR-097,Driveline,"Remove and refit a rear axle shaft (1985 manual, drum brake)","rear wheel bearing, oil seal or differential work","stands, rear axle shaft puller, oil seal installer",S-002,
+PR-098,Driveline,Replace a rear wheel bearing and its collar (1985 manual),rear wheel bearing play or noise,"grinder, chisel, press, bearing separator",S-002,
+PR-099,Driveline,Remove and refit the differential (1985 manual),differential overhaul,"stands, wooden hammer, sealant",S-002,
+PR-100,Driveline,"Strip and inspect the differential (1985 manual, open type)","differential noise, heat or leakage","engine stand, coupling flange holder, bearing puller set, drift, micrometer",S-002,
+PR-101,Driveline,Set the drive pinion height (1985 manual),differential assembly,"pinion model set, gauge body, gauge block, dial indicator, surface plate",S-002,
+PR-102,Driveline,Fit the drive pinion and set its bearing preload (1985 manual),"differential assembly, after the pinion height is set","press, torque wrench, plastic hammer",S-002,
+PR-103,Driveline,"Assemble the differential gear case (1985 manual, open type)",differential assembly,"punch, locking agent, press, pipe",S-002,
+PR-104,Driveline,Fit the differential in the carrier and set the backlash (1985 manual),differential assembly,"dial indicator, differential wrench, torque wrench",S-002,
+PR-105,Driveline,Check the tooth contact of the drive pinion and ring gear (1985 manual),after the backlash is set,red lead,S-002,
