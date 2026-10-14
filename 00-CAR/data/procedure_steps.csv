@@ -1592,3 +1592,14 @@ PR-188.10,PR-188,10,Check the throttle sensor,"Unplug the brown coupler; two tes
 PR-188.11,PR-188,11,Check No.1 anti-afterburn valve,"Engine stopped, the hose off at the air pump; restart, 3000 rpm, release",a moment of suction at the hose on deceleration,stop the engine to reconnect,revised p.6
 PR-188.12,PR-188,12,Check No.2 anti-afterburn valve,Pull and refit its vacuum hose,a moment of suction at the small hose (No.2 AAV to air cleaner) on reconnecting,,revised p.6
 PR-188.13,PR-188,13,Check the dashpot (M/T only),"About 5000 rpm, release","the rod meets the throttle lever at 3800-4200 rpm (SP-033) and slows the drop to idle; if not, loosen the top lock nut and turn the dashpot body",,revised p.6
+PR-189.01,PR-189,1,Test the oil level sensor off the car,"With the oil drained, take the sensor out of the oil pan; ohmmeter across it, float moved up then down","float UP: no continuity; float DOWN: continuity; if not, replace the sensor",,"bulletin 001/84 Cat.15, p.85"
+PR-189.02,PR-189,2,Refit the sensor and fill the engine with oil,,,,p.86
+PR-189.03,PR-189,3,Check the light with the ignition on,"Ignition ON, engine stopped","the OIL warning light comes on; if not, the bulb, fuse or wiring",,p.86
+PR-189.04,PR-189,4,Check it goes out running,Start the engine,the light goes out,,p.86
+PR-189.05,PR-189,5,Check the circuit by grounding the coupler,"Engine idling, unplug the sensor and ground the harness side of the coupler",the light comes on,,p.86
+PR-189.06,PR-189,6,Reconnect,Plug the sensor back in,the light out at idle,,p.86
+PR-190.01,PR-190,1,Thread the harness through the gasket and base,"Through the hole in the plastic gasket first, then the base",,the order keeps the harness from being pinched,"bulletin 002/84 Cat.15, p.88"
+PR-190.02,PR-190,2,Fit the gasket and base to the door,The 2 screws provided,,,p.88
+PR-190.03,PR-190,3,Thread the harness through the stay and fit the stay,"Harness through the stay, stay to the base with its 2 screws",,,p.88
+PR-190.04,PR-190,4,Connect the mirror and tuck the slack,"Connect the harness to the mirror's; put the extra harness in the space the bulletin shows, clear of the mounting",,a pinched wire shorts the mirror motor,p.89
+PR-190.05,PR-190,5,Fit the mirror and test it,Mirror to the stay with 2 screws; work both directions on both mirrors,the mirror moves both ways,,p.89

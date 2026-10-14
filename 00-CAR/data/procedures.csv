@@ -187,3 +187,5 @@ PR-185,Climate,"Remove the A/C compressor clutch (armature, rotor pulley, field 
 PR-186,Climate,Fit the A/C compressor clutch and set its air gap,after PR-185,"rotor installer ring and driver (or arbor press), armature driver, clutch shims, snap ring pliers, feeler gauges, torque wrench",S-203,
 PR-187,Climate,Match the oil in a replacement compressor to the old one,replacing the compressor without flushing the system,"measuring cup, socket for the armature nut, torque wrench",S-203,
 PR-188,Emissions,Check the emission controls in one pass round the engine bay (1981 revised check guide),"checking the factory emission system, or finding which parts of it the Weber conversion left","tachometer, testlight (3 W or less, two for the throttle sensor), stands for an automatic",S-007,replaced
+PR-189,Electrical,Check the oil level warning system (float-type sensor),"the OIL light misbehaves, after an engine is fitted, or at scheduled maintenance","ohmmeter, jumper to ground",S-008,
+PR-190,Body,Fit an outside electric mirror without pinching its harness,a door mirror comes off or is replaced,screwdriver,S-008,
