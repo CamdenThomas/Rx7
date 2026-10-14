@@ -119,3 +119,5 @@ fixture/
 
 # A raw copy of the Fedora PC model folder (2026-10-13, 5 GB, holds the bought SA model): merged into 01-INTAKE/model, never in git
 01-INTAKE/old_model/
+# The simulation vendors' models and datasheets (00-CAR sources S-491..S-499): their licences keep them out of git
+02-PROJECTS/01-electrical/00-design/sim/vendor/
