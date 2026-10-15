@@ -161,8 +161,8 @@ TOP = {
     "control-unit": ((0.5, 0.12, 0.33), "the centre stack's opening (modules DCU)"),
     "display-unit": ((0.28, 0.1, 0.72), "the binnacle aperture ahead of the driver (modules ICU)"),
     "pmu": ((0.5, 0.8, 0.3), "the dash node, behind the stack at the firewall (modules PMU)"),
-    "left-plate": ((0.12, 0.04, 0.55), "the dash face left of the wheel (P198)"),
-    "cur": ((0.12, 0.04, 0.55), "the dash face left of the wheel (D-514: the left plate as the CUR)"),
+    "left-plate": ((0.43, 0.07, 0.67), "the dash face right of the wheel, high beside the DU (P198, D-586)"),
+    "cur": ((0.43, 0.07, 0.67), "the dash face right of the wheel, high beside the DU (D-514, D-586)"),
 }
 # Drops whose far end is not the dash post: the record's rulings, one line each.
 FAR_END = {

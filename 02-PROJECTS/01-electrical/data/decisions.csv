@@ -1999,3 +1999,30 @@ Reading taken (CLAUDE.md §3, the one that keeps the most open): D-450 / D-451 a
 Scope moves from 04-luxury to 01-electrical, as D-450 moved the rest: the luxury project keeps the parts, their choice, the brackets and the looks.
 
 In the data: work Y58 (the list, feature by feature, and the rows it adds); 04-luxury provisions follow as their rows change."
+D-585,,"The Display Unit's plugs are bottom-back-right from the driver's seat: the carrier at the unit's right wall, the radio's window in the lid",2026-10-14,standing,,,,,"**The Display Unit's two plugs are at the bottom of its back on the right, as the driver sees the unit: the ICU carrier lies against the unit's right wall, the display chain's two other boards move to the left, and the radio's window moves into the lid.**
+
+His words (chat, 2026-10-14): ""for the DU the connector as on now is bottom back left when mounted in the car (from driver seat perspective), it should be back bottom right while mounted from driver perspective"".
+
+What it is: the carrier's DT13-06PA and DT13-12PA already fill its whole 110 mm connector edge, so they cannot move along the board; the carrier itself moves across the unit. In the mock-up (`display-unit/cad/icu-unit`, Y19) CARRIER_X goes from 'left' to 'right', the HDMI bridge and the scaler placeholder (DRIVER_BOARDS) move to the left, and the BT817 board follows J4 to the right as before. The carrier board is not drawn again: nothing on it changes.
+
+What follows from it:
+- **The radio's window goes into the lid.** The XIAO radio sits at the carrier's left edge; with the carrier at the right wall a window in the right wall has the whole carrier between it and the radio, and one in the left wall is about 190 mm away. The lid window is clear and about 105 mm from the radio; the dash top over the unit is plastic - confirm (D-491's rule: the window where the binnacle leaves the radio a view).
+- **The page button is gone from the mock-up**, as D-580 already ruled (the screen knob on the CUR steps the pages, D-581): BUTTON_FITTED False. That is the Display Unit's part of Y51.
+- The face, the body and the depth do not change: 317 x 136.5 over 313 x 132.5. Fit checks clear; the self-test's 34 sets as expected (the old layout kept as _OLD).
+- In the car the DU's tails (DP-ICU-A / -B, RT13) reach the unit's right end instead of its left: they come from the dash post, which is right of the binnacle, so they get shorter - still unmeasured, confirm.
+
+In the data: work Y60 (done), housings DP-ICU-A / -B where, devices DV45 plug."
+D-586,,"The CUR moves right of the steering wheel, high beside the Display Unit, and takes the hazard switch; the column's hazard contact goes unused",2026-10-14,standing,,,,,"**The CUR moves to the right of the steering wheel, high up beside the Display Unit, and it takes the hazard switch: the column's hazard contact is no longer used.**
+
+His words (chat, 2026-10-14): ""also CUR should be moved to the right side of the steering wheel still high up close to the DU, and the CUR should also contain the hazard switch i want to move it.""
+
+**Where.** Right of the wheel as the driver sees it, high on the dash face beside the DU's right end - between the binnacle and the centre stack, so the CUR link to the Control Unit (DP-DCU 36-47 to DP-CUR, P200) gets much shorter than the metre D-492 allowed, and the wink lead's run from the post is shorter too. Every length stays unmeasured: confirm. The CUR itself is unchanged by the move: its board, its face and its two receptacles (D-521); only the text that put it left of the wheel follows.
+
+**The hazard switch on the CUR.** Electrically nothing at the PMU changes: the hazard is still the A8 ladder's HAZARD state, 4.7 kΩ to the ladder wire L3-S1 6 with the 47 kΩ baseline at the switch (D-368), the switch's other side to ground. What moves is the far end:
+- **L3-S1 6 runs in the wink lead** to the CUR (DP-CUR-B 5, a spare cavity) instead of to the column; inside the CUR it reaches the plate board on the header that takes the wink lead (J2, a fifth pin), and the switch's ground is the winks' commons wire (DP-CUR-B 4, G20). No new conductor at the dash post.
+- **The 4.7 kΩ and the 47 kΩ baseline sit on the CUR's board**, beside the switch, as the winks' 18 k and 33 k do (D-499) - not in a bag sub-assembly at the column (E7).
+- **The factory hazard contact on the column's combination switch (F-02, DV21's old place) is left unconnected**; its F-02 cavities are not wired to anything.
+
+**What kind of switch is block 01.58.** The rules lean on a switch that holds: the flasher (`hazard = A8 == HAZARD || A8 == HAZ+HORN`) and the sleep rule (the PMU stays awake while A8 reads HAZARD) both read a contact that stays made, as the column's latching switch does. The choice - a latching push button under a lit cap like the winks', a classic latching hazard switch, or a momentary key the PMU latches - is look, feel and safety, so it is his. Until then the plate board is not changed (Y62).
+
+In the data: housings DP-CUR / DP-CUR-B where; cavities L3-S1 6, DP-CUR-B 5; devices DV21, DV24, DV62; parts P200, P226 (the switch, held for 01.58); work Y61 (done), Y62 (the plate board and the CUR's face, waits on 01.58)."

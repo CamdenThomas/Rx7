@@ -1,6 +1,6 @@
 {
  "version": 2,
- "built": "2026-10-14T18:33:03-06:00",
+ "built": "2026-10-14T19:25:12-06:00",
  "project": "01-electrical",
  "frame": {
   "units": "mm",
@@ -81,10 +81,10 @@
    "name": "Display Unit (DU)",
    "kind": "unit",
    "glb": "display-unit.glb",
-   "bytes": 376400,
+   "bytes": 347772,
    "parent": null,
    "place": {
-    "x": -532.3,
+    "x": -523.3,
     "y": -1047.0,
     "z": 712.95,
     "rx": 0.0,
@@ -95,8 +95,8 @@
    "confirm": true,
    "place_note": "inside 00-CAR zones dash: the binnacle aperture ahead of the driver (modules ICU), the face's centre there",
    "size_mm": {
-    "x": 335.0,
-    "y": 131.09,
+    "x": 317.0,
+    "y": 128.59,
     "z": 136.5
    },
    "origin": "the mock-up's frame: the face's front, bottom-left corner seen from the cabin; x across the face, y back into the dash (= the car's forward), z up",
@@ -104,7 +104,7 @@
     {
      "code": "DP-ICU-B",
      "at": {
-      "x": 39.75,
+      "x": 232.02,
       "y": 126.59,
       "z": 29.48
      },
@@ -114,7 +114,7 @@
     {
      "code": "DP-ICU-A",
      "at": {
-      "x": 93.79,
+      "x": 286.06,
       "y": 126.59,
       "z": 29.45
      },
@@ -136,7 +136,6 @@
     "inside": [
      "inside:bezel plate (P121)",
      "inside:display module (P118, placeholder)",
-     "inside:page button (P120, placeholder)",
      "inside:BT817 board (P117, placeholder)",
      "inside:BT817 parts and CN8 (placeholder)",
      "inside:HDMI bridge (P119, placeholder)",
@@ -152,16 +151,16 @@
    "bytes": 258612,
    "parent": null,
    "place": {
-    "x": -686.229,
-    "y": -1074.0,
-    "z": 669.5,
+    "x": -172.329,
+    "y": -1060.5,
+    "z": 724.7,
     "rx": 0.0,
     "ry": 0.0,
     "rz": 0.0
    },
    "place_from": "provisional",
    "confirm": true,
-   "place_note": "inside 00-CAR zones dash: the dash face left of the wheel (D-514: the left plate as the CUR), the face's centre there",
+   "place_note": "inside 00-CAR zones dash: the dash face right of the wheel, high beside the DU (D-514, D-586), the face's centre there",
    "size_mm": {
     "x": 128.46,
     "y": 108.44,
@@ -293,7 +292,7 @@
    "bytes": 9325116,
    "parent": "display-unit",
    "place": {
-    "x": -91.75,
+    "x": 100.524,
     "y": 173.6,
     "z": 10.0,
     "rx": 0.0,
@@ -2773,7 +2772,7 @@
    "bytes": 1162116,
    "parent": "display-unit",
    "place": {
-    "x": 39.75,
+    "x": 232.024,
     "y": 138.331,
     "z": 29.475,
     "rx": 0.0,
@@ -2892,7 +2891,7 @@
    "bytes": 119536,
    "parent": "display-unit",
    "place": {
-    "x": 39.75,
+    "x": 232.024,
     "y": 138.331,
     "z": 29.475,
     "rx": 0.0,
@@ -3011,7 +3010,7 @@
    "bytes": 662840,
    "parent": "display-unit",
    "place": {
-    "x": 93.787,
+    "x": 286.061,
     "y": 138.331,
     "z": 29.455,
     "rx": 0.0,
@@ -3088,7 +3087,7 @@
    "bytes": 68836,
    "parent": "display-unit",
    "place": {
-    "x": 93.787,
+    "x": 286.061,
     "y": 138.331,
     "z": 29.455,
     "rx": 0.0,
@@ -3451,10 +3450,10 @@
     },
     {
      "cav": 5,
-     "circuit": "spare",
-     "awg": "",
-     "colour": "",
-     "state": "PLUG"
+     "circuit": "Hazard switch - the A8 ladder (L3-S1 6)",
+     "awg": "16",
+     "colour": "GRY",
+     "state": "LIVE"
     },
     {
      "cav": 6,
@@ -3528,10 +3527,10 @@
     },
     {
      "cav": 5,
-     "circuit": "spare",
-     "awg": "",
-     "colour": "",
-     "state": "PLUG"
+     "circuit": "Hazard switch - the A8 ladder (L3-S1 6)",
+     "awg": "16",
+     "colour": "GRY",
+     "state": "LIVE"
     },
     {
      "cav": 6,
@@ -14074,7 +14073,7 @@
     "Wink RIGHT - NC pole",
     "Wink request - the 18 k / 33 k ladder",
     "Wink switch commons - dash ground",
-    "spare",
+    "Hazard switch - the A8 ladder",
     "spare"
    ],
    "confirm": false
@@ -14131,7 +14130,7 @@
   },
   {
    "part": "display-unit",
-   "what": "display module (P118, placeholder), page button (P120, placeholder), BT817 board (P117, placeholder), BT817 parts and CN8 (placeholder), HDMI bridge (P119, placeholder), scaler (P118, placeholder)",
+   "what": "display module (P118, placeholder), BT817 board (P117, placeholder), BT817 parts and CN8 (placeholder), HDMI bridge (P119, placeholder), scaler (P118, placeholder)",
    "why": "placeholder blocks in the mock-up: no model of these parts is in the tree"
   },
   {
@@ -14231,7 +14230,7 @@
     ],
     "why": "D-582: the three DT13s give way to the Control Unit's one CMC 48 header, which the unit's mock-up draws; the board is redrawn at Y54"
    },
-   "stamp": "753d9dfda2b24fc4"
+   "stamp": "2c99b678d6f11578"
   },
   "panel": {
    "id": "panel",
@@ -14274,7 +14273,7 @@
     "TQFP-48-1EP_7x7mm_P0.5mm_EP4.11x4.11mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "1665b29a9ff9162f"
+   "stamp": "b438c86d647476f2"
   },
   "left-plate": {
    "id": "left-plate",
@@ -14317,7 +14316,7 @@
     94.5,
     -21.65
    ],
-   "stamp": "6d3bb9eb10e61f32"
+   "stamp": "e4694e619dd60ddc"
   },
   "icu-carrier": {
    "id": "icu-carrier",
@@ -14360,7 +14359,7 @@
     "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "8e7824885be6bfd0"
+   "stamp": "a2d8f0d389c2006e"
   },
   "control-unit": {
    "problems": [],
@@ -14457,28 +14456,28 @@
    "kind": "unit",
    "glb": "control-unit.glb",
    "source": "control-unit/cad/climate-unit (unit_params.py, unit_lib.py)",
-   "stamp": "f3ffc3feb75f22b0"
+   "stamp": "44bd292f5a855a03"
   },
   "display-unit": {
    "problems": [],
    "notes": [],
-   "bytes": 376400,
+   "bytes": 347772,
    "bbox": [
     [
      0.0,
-     -2.5,
+     0.0,
      0.0
     ],
     [
-     335.0,
+     317.0,
      128.595,
      136.5
     ]
    ],
-   "vertices": 16741,
-   "triangles": 16580,
+   "vertices": 15476,
+   "triangles": 15312,
    "face": [
-    335.0,
+    317.0,
     136.5
    ],
    "nodes": {
@@ -14491,7 +14490,6 @@
     "inside": [
      "inside:bezel plate (P121)",
      "inside:display module (P118, placeholder)",
-     "inside:page button (P120, placeholder)",
      "inside:BT817 board (P117, placeholder)",
      "inside:BT817 parts and CN8 (placeholder)",
      "inside:HDMI bridge (P119, placeholder)",
@@ -14503,7 +14501,7 @@
     {
      "code": "DP-ICU-B",
      "at": [
-      39.75,
+      232.024,
       126.595,
       29.475
      ],
@@ -14514,7 +14512,7 @@
     {
      "code": "DP-ICU-A",
      "at": [
-      93.787,
+      286.06100000000004,
       126.595,
       29.455
      ],
@@ -14526,7 +14524,7 @@
    "boards": {
     "carrier": {
      "move": [
-      -91.75,
+      100.524,
       173.6,
       10.0
      ],
@@ -14535,7 +14533,6 @@
    },
    "placeholders": [
     "display module (P118, placeholder)",
-    "page button (P120, placeholder)",
     "BT817 board (P117, placeholder)",
     "BT817 parts and CN8 (placeholder)",
     "HDMI bridge (P119, placeholder)",
@@ -14545,7 +14542,7 @@
    "kind": "unit",
    "glb": "display-unit.glb",
    "source": "display-unit/cad/icu-unit (unit_params.py, unit_lib.py)",
-   "stamp": "dc6347fe83a921b5"
+   "stamp": "62618ef797e8d814"
   },
   "cur": {
    "problems": [],
@@ -14637,7 +14634,7 @@
    "kind": "unit",
    "glb": "cur.glb",
    "source": "control-unit/cad/cur-unit (unit_params.py, unit_lib.py)",
-   "stamp": "252340e98a50548f"
+   "stamp": "b33ef697e5d21238"
   },
   "pmu": {
    "problems": [],
@@ -14691,7 +14688,7 @@
    "kind": "module",
    "glb": "pmu.glb",
    "source": "02-PROJECTS/01-electrical/00-design/pmu/vendor/PMU CAD info/PMU-24.STEP",
-   "stamp": "dd4a94bbbe24e102"
+   "stamp": "aec7a8b15fd7bb66"
   }
  },
  "legs": [
@@ -17736,6 +17733,26 @@
      "z": 690.0
     },
     {
+     "x": -86.26,
+     "y": -800.0,
+     "z": 690.0
+    },
+    {
+     "x": -137.99,
+     "y": -800.0,
+     "z": 690.0
+    },
+    {
+     "x": -237.24,
+     "y": -800.0,
+     "z": 690.0
+    },
+    {
+     "x": -291.28,
+     "y": -800.0,
+     "z": 690.0
+    },
+    {
      "x": -330.0,
      "y": -800.0,
      "z": 690.0
@@ -17749,21 +17766,6 @@
      "x": -370,
      "y": -800,
      "z": 690
-    },
-    {
-     "x": -438.51,
-     "y": -800.0,
-     "z": 690.0
-    },
-    {
-     "x": -492.55,
-     "y": -800.0,
-     "z": 690.0
-    },
-    {
-     "x": -600.16,
-     "y": -800.0,
-     "z": 690.0
     },
     {
      "x": -640,
@@ -18787,37 +18789,37 @@
      "housing": "DP-ICU-B",
      "path": [
       {
-       "x": -492.55,
+       "x": -291.28,
        "y": -800.0,
        "z": 690.0
       },
       {
-       "x": -492.55,
+       "x": -291.28,
        "y": -846.08,
        "z": 690.0
       },
       {
-       "x": -492.55,
+       "x": -291.28,
        "y": -856.4,
        "z": 691.47
       },
       {
-       "x": -492.55,
+       "x": -291.28,
        "y": -863.77,
        "z": 695.9
       },
       {
-       "x": -492.55,
+       "x": -291.28,
        "y": -868.19,
        "z": 703.27
       },
       {
-       "x": -492.55,
+       "x": -291.28,
        "y": -869.67,
        "z": 713.59
       },
       {
-       "x": -492.55,
+       "x": -291.28,
        "y": -869.67,
        "z": 742.43
       }
@@ -18831,37 +18833,37 @@
      "housing": "DP-ICU-A",
      "path": [
       {
-       "x": -438.51,
+       "x": -237.24,
        "y": -800.0,
        "z": 690.0
       },
       {
-       "x": -438.51,
+       "x": -237.24,
        "y": -846.09,
        "z": 690.0
       },
       {
-       "x": -438.51,
+       "x": -237.24,
        "y": -856.4,
        "z": 691.47
       },
       {
-       "x": -438.51,
+       "x": -237.24,
        "y": -863.77,
        "z": 695.9
       },
       {
-       "x": -438.51,
+       "x": -237.24,
        "y": -868.2,
        "z": 703.27
       },
       {
-       "x": -438.51,
+       "x": -237.24,
        "y": -869.67,
        "z": 713.58
       },
       {
-       "x": -438.51,
+       "x": -237.24,
        "y": -869.67,
        "z": 742.41
       }
@@ -18875,64 +18877,39 @@
      "housing": "DP-CUR",
      "path": [
       {
-       "x": -640,
-       "y": -800,
-       "z": 690
-      },
-      {
-       "x": -640.0,
-       "y": -933.21,
+       "x": -137.99,
+       "y": -800.0,
        "z": 690.0
       },
       {
-       "x": -640.33,
-       "y": -935.55,
+       "x": -137.99,
+       "y": -900.06,
        "z": 690.0
       },
       {
-       "x": -641.34,
-       "y": -937.22,
-       "z": 690.0
+       "x": -137.99,
+       "y": -911.0,
+       "z": 691.56
       },
       {
-       "x": -643.01,
-       "y": -938.22,
-       "z": 690.0
+       "x": -137.99,
+       "y": -918.81,
+       "z": 696.25
       },
       {
-       "x": -645.35,
-       "y": -938.56,
-       "z": 690.0
+       "x": -137.99,
+       "y": -923.5,
+       "z": 704.06
       },
       {
-       "x": -646.54,
-       "y": -938.56,
-       "z": 690.0
+       "x": -137.99,
+       "y": -925.06,
+       "z": 715.0
       },
       {
-       "x": -648.88,
-       "y": -938.56,
-       "z": 690.33
-      },
-      {
-       "x": -650.55,
-       "y": -938.56,
-       "z": 691.34
-      },
-      {
-       "x": -651.56,
-       "y": -938.56,
-       "z": 693.01
-      },
-      {
-       "x": -651.89,
-       "y": -938.56,
-       "z": 695.35
-      },
-      {
-       "x": -651.89,
-       "y": -938.56,
-       "z": 703.0
+       "x": -137.99,
+       "y": -925.06,
+       "z": 758.2
       }
      ],
      "radius_mm": 4.2,
@@ -18944,43 +18921,43 @@
      "housing": "DP-CUR-B",
      "path": [
       {
-       "x": -600.16,
+       "x": -86.26,
        "y": -800.0,
        "z": 690.0
       },
       {
-       "x": -600.16,
-       "y": -932.71,
+       "x": -86.26,
+       "y": -900.06,
        "z": 690.0
       },
       {
-       "x": -600.16,
-       "y": -935.27,
-       "z": 690.37
+       "x": -86.26,
+       "y": -911.0,
+       "z": 691.56
       },
       {
-       "x": -600.16,
-       "y": -937.1,
-       "z": 691.46
+       "x": -86.26,
+       "y": -918.81,
+       "z": 696.25
       },
       {
-       "x": -600.16,
-       "y": -938.19,
-       "z": 693.29
+       "x": -86.26,
+       "y": -923.5,
+       "z": 704.06
       },
       {
-       "x": -600.16,
-       "y": -938.56,
-       "z": 695.85
+       "x": -86.26,
+       "y": -925.06,
+       "z": 715.0
       },
       {
-       "x": -600.16,
-       "y": -938.56,
-       "z": 703.0
+       "x": -86.26,
+       "y": -925.06,
+       "z": 758.2
       }
      ],
      "radius_mm": 3.0,
-     "conductors": 4
+     "conductors": 5
     },
     {
      "to": "dev-dv18",
@@ -19407,7 +19384,7 @@
       }
      ],
      "radius_mm": 14.8,
-     "conductors": 160
+     "conductors": 161
     },
     {
      "path": [
@@ -19472,8 +19449,8 @@
        "z": 595.65
       }
      ],
-     "radius_mm": 14.6,
-     "conductors": 157
+     "radius_mm": 14.7,
+     "conductors": 158
     },
     {
      "path": [
@@ -19488,8 +19465,8 @@
        "z": 670.0
       }
      ],
-     "radius_mm": 12.9,
-     "conductors": 109
+     "radius_mm": 13.0,
+     "conductors": 110
     },
     {
      "path": [
@@ -19505,7 +19482,7 @@
       }
      ],
      "radius_mm": 12.4,
-     "conductors": 99
+     "conductors": 100
     },
     {
      "path": [
@@ -19520,8 +19497,8 @@
        "z": 690.0
       }
      ],
-     "radius_mm": 8.1,
-     "conductors": 46
+     "radius_mm": 8.2,
+     "conductors": 47
     },
     {
      "path": [
@@ -19531,13 +19508,77 @@
        "z": 690.0
       },
       {
-       "x": -330.0,
+       "x": -86.26,
        "y": -800.0,
        "z": 690.0
       }
      ],
      "radius_mm": 8.0,
-     "conductors": 44
+     "conductors": 45
+    },
+    {
+     "path": [
+      {
+       "x": -86.26,
+       "y": -800.0,
+       "z": 690.0
+      },
+      {
+       "x": -137.99,
+       "y": -800.0,
+       "z": 690.0
+      }
+     ],
+     "radius_mm": 7.6,
+     "conductors": 40
+    },
+    {
+     "path": [
+      {
+       "x": -137.99,
+       "y": -800.0,
+       "z": 690.0
+      },
+      {
+       "x": -237.24,
+       "y": -800.0,
+       "z": 690.0
+      }
+     ],
+     "radius_mm": 6.3,
+     "conductors": 28
+    },
+    {
+     "path": [
+      {
+       "x": -237.24,
+       "y": -800.0,
+       "z": 690.0
+      },
+      {
+       "x": -291.28,
+       "y": -800.0,
+       "z": 690.0
+      }
+     ],
+     "radius_mm": 5.6,
+     "conductors": 22
+    },
+    {
+     "path": [
+      {
+       "x": -291.28,
+       "y": -800.0,
+       "z": 690.0
+      },
+      {
+       "x": -330.0,
+       "y": -800.0,
+       "z": 690.0
+      }
+     ],
+     "radius_mm": 4.0,
+     "conductors": 11
     },
     {
      "path": [
@@ -19552,8 +19593,8 @@
        "z": 690.0
       }
      ],
-     "radius_mm": 7.6,
-     "conductors": 40
+     "radius_mm": 3.2,
+     "conductors": 7
     },
     {
      "path": [
@@ -19568,61 +19609,13 @@
        "z": 690
       },
       {
-       "x": -438.51,
-       "y": -800.0,
-       "z": 690.0
-      }
-     ],
-     "radius_mm": 7.1,
-     "conductors": 35
-    },
-    {
-     "path": [
-      {
-       "x": -438.51,
-       "y": -800.0,
-       "z": 690.0
-      },
-      {
-       "x": -492.55,
-       "y": -800.0,
-       "z": 690.0
-      }
-     ],
-     "radius_mm": 6.5,
-     "conductors": 29
-    },
-    {
-     "path": [
-      {
-       "x": -492.55,
-       "y": -800.0,
-       "z": 690.0
-      },
-      {
-       "x": -600.16,
-       "y": -800.0,
-       "z": 690.0
-      }
-     ],
-     "radius_mm": 5.1,
-     "conductors": 18
-    },
-    {
-     "path": [
-      {
-       "x": -600.16,
-       "y": -800.0,
-       "z": 690.0
-      },
-      {
        "x": -640,
        "y": -800,
        "z": 690
       }
      ],
-     "radius_mm": 4.5,
-     "conductors": 14
+     "radius_mm": 3.0,
+     "conductors": 2
     },
     {
      "path": [
@@ -20080,8 +20073,8 @@
      "conductors": 0
     }
    ],
-   "radius_mm": 14.8,
-   "conductors": 162,
+   "radius_mm": 14.9,
+   "conductors": 163,
    "housings": [
     "L3-P",
     "L3-M",
@@ -24983,5 +24976,5 @@
   "connectors": "connectors/manifest.json",
   "devices": "devices/manifest.json"
  },
- "record_stamp": "1249f4d1172aaeeb"
+ "record_stamp": "248dd4b576518fa0"
 }
