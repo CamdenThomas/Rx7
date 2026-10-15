@@ -2233,3 +2233,19 @@ His words (chat, 2026-10-15): ""1: a / 2: no / 3: do it / 4: do it / 5: yes / 6:
 - N8 (the head unit's reverse input from the PMU box) is overtaken: luxury D-605 drops the reverse input.
 
 Consequences in the data: none yet; Y66's freeze carries each."
+D-606,electrical,The PMU box is wired for the LS from day one; today's engine leg is eleven wires in the first of the same plugs,2026-10-15,standing,,,,,"**The PMU box is wired for the LS from the beginning. Every cavity of its engine plugs is wired once, box side, and never rewired: the LS's functions to the PMU, the DU and the ECU's pigtails (the ECU itself goes in at the swap, D-601), and today's engine's own functions to the cavities the LS leaves empty. Today's rotary engine leg is a small harness - eleven wires - in the first of the same large plugs, and it works today. At the swap the new LS leg plugs into all of them and nothing in the box changes.**
+
+His words (chat, 2026-10-15): ""lets look at the pmu box connectors particularyly reuse of them for the swap please clareary lay out the min number of connectors in our family for the ls, then pin it so that there is a way for the current endine leg to pleg in directly to one of the plugs and function now and when i swap i make the new wrie harness engine leg and it plug perfectly into both"" and ""i want the pmu box to be wired for the LS from the begining and our engind leg will be a small wirecount on huge connectors to plug in to same as the ls to work today"".
+
+**What the inserts allow** (TE drawing C-0425-014-2400 rev H, HDP20 / HD30, shell 24; #12 25 A, #16 13 A, #20 7.5 A). The LS leg is 4 heavy circuits and 69 signal conductors, 15 of them optional (engine ls_wires, a query). Seven of today's engine functions carry on in the LS with the same meaning, on the same cavities: the start relay coil, alternator excitation, the charge-lamp sense, oil pressure, brake fluid level, the reverse line on A5, and the phase-2 signal, which becomes the coolant-level switch. Five are today's alone and keep their cavities for good: the P/N contact on A4, the water temperature sender, the tach and its shield drain, and the phase-2 supply.
+- Two plugs, the minimum in the family: E1 24-29 (4 #12, 19 #16, 6 #20) and E2 24-47 (5 #16, 42 #20). They hold everything except two of the optional LS wires, with no spare.
+- Three plugs: E1 24-29, E2 24-31 and E3 24-31 (31 #16 each, keyed apart). They hold every LS wire, options included, with 13 spare: drivers on E2, timing and low-level analog on E3, the body and slow lines with today's functions on E1.
+The count is his choice (money, and two plugs forecloses two options); the agent recommends three, keeping engine D-443's ""room for every option"". The full cavity-by-cavity map for both is in the plan (00-design/dash-overhaul.html) and goes into housings, cavities and engine ls_cavities at Y66.
+
+**Today's leg on E1:** cavity 1 the coil and igniter feed (O12, #12); 5 the start relay coil; 6 excitation; 7 the lamp sense; 8 oil pressure; 9 brake fluid; 10 the inhibitor R contact (A5); 13 the P/N contact (A4); 14 the water temperature sender; 15 the tach pulse; 16 its shield drain. Eleven wires; every other cavity sealed; E2 (and E3) capped.
+
+**A correction to D-604's N4.** O13 still crosses at the swap, because it feeds the injectors (E1-2, LW01). Only the ECU's own supply (LW45) stays inside the box, and it never crossed. The engine plugs keep all four heavy circuits.
+
+**Found in passing:** engine ls_cavities still puts the LS coolant temperature on L1-S1 5, which electrical's D-556 gave to the tach shield. It is moot under this map and is corrected when ls_cavities is rewritten at Y66.
+
+Consequences in the data: none yet; Y66's freeze writes the engine plugs as housings and cavities, rewrites engine ls_cavities onto them, and gives the ECU's pigtails their pins once block APP.05 brings its pinout. Engine K5 stays gated on Y66."
