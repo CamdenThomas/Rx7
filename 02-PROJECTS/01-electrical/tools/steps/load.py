@@ -1,5 +1,5 @@
 """Load one group's draft briefs.csv / steps.csv into 01-electrical (replacing any rows for the same work ids), then check."""
-import csv, subprocess, sys, os
+import re, csv, subprocess, sys, os
 S=sys.argv[1].rstrip('/')+'/'; g=S  # the folder holding the builder's briefs.csv and steps.csv
 E='02-PROJECTS/01-electrical/data/'
 BH=['id','goal','where','time','tools','parts','before','know','done_when','if_not','record']; SH=['id','work','n','do','how','expect','caution']
@@ -15,7 +15,7 @@ for r in nb:
     assert r['goal'].strip() and r['done_when'].strip(), r['id']
 for r in ns: assert r['work'] in ids and r['do'].strip(), r['id']
 for t in nb+ns:
-    for k,v in t.items(): assert 'cad/' not in v, (t['id'],k)
+    for k,v in t.items(): assert not re.search(r'(?<!02-)cad/', v), (t['id'],k)   # an old cad/ path; 02-cad is the project (D-572)
 ob=[r for r in rd(E+'briefs.csv') if r['id'] not in ids]; os_=[r for r in rd(E+'steps.csv') if r['work'] not in ids]
 def wr(p,h,rows):
     with open(p,'w',newline='',encoding='utf-8') as f:

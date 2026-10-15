@@ -85,7 +85,7 @@ ROWS.append(dict(
         "The design's road speed today is a bought Hall sensor on the transmission's speedometer drive, the cable deleted, wired through the tunnel on L4-S 3 and L4-S 4. [D-272; parts P113; cavities L4-S 3, L4-S 4]",
         "The 1982 component list carries a vehicle speed switch, B-29: a reed switch inside the speedometer head that pulses to ground on a single BR wire. It fed cruise control. [work Q-115; 00-CAR PT652-B-25_BR]",
         "This GS left the factory without cruise control, so the switch may not be in this speedometer at all. [00-CAR PT649]",
-        "If it is there and works, road speed needs one wire from behind the dash to the ICU's speed input, and the tunnel run and the bought sensor are not needed. [work Q-115; D-409; cavities DP-ICU-B 8]",
+        "If it is there and works, road speed needs one wire from behind the dash to the ICU's speed input, and the tunnel run and the bought sensor are not needed. [work Q-115; D-409; cavities DP-ICU 14]",
         "A spare cavity for it would be one of L3-S3 5 to 8; L3-S2 12 carries the kick-down switch's supply. [cavities L3-S2 12, L3-S3 5]",
         "The speedometer is driven by a cable from the transmission. [00-CAR PT621, PT622]",
         "Pulses per mile is a setting, trued once against a measured mile; today's count only has to show a clean, repeatable pulse. [D-272]",

@@ -24,8 +24,8 @@ L1-S2 6,L1-S2,6,LW40,alternator set-point command,"body and slow lines - today's
 L1-S2 7,L1-S2,7,LW37,reverse switch,"body and slow lines - today's receptacle, today's functions kept",pinned,"Today's L1-S2 7: the A5 ladder (N41, HO10)"
 L1-S2 8,L1-S2,8,LW29,alternator lamp sense,"body and slow lines - today's receptacle, today's functions kept",pinned,"Today's L1-S2 8: ICU IC05 (N49, HO11)"
 L1-S2 9,L1-S2,9,,"phase-2 sensor supply, +12 V switched (N68)","body and slow lines - today's receptacle, today's functions kept",reserved,"Switched 12 V once its fuse is fitted: only a 12 V-supplied sensor is ever pinned here, never a ground or an ECU line (HO08)"
-L1-S2 10,L1-S2,10,LW36,oil temperature signal,"body and slow lines - today's receptacle, today's functions kept",pinned,The cavity D-264 kept for it: dash side to DP-ICU-B 7 at the swap (HO07)
-L1-S2 11,L1-S2,11,LW49,coolant level switch signal,"body and slow lines - today's receptacle, today's functions kept",pinned,"Today's reserve L1-S2 11 (DP-ICU-B 9, IC17, N67): the coolant level switch (D-501, D-507, HO09). Its dash end moves to an ECU input if the wideband gauge takes IC17 (electrical B2); the cavity stays"
+L1-S2 10,L1-S2,10,LW36,oil temperature signal,"body and slow lines - today's receptacle, today's functions kept",pinned,The cavity D-264 kept for it: dash side to DP-ICU 13 at the swap (HO07)
+L1-S2 11,L1-S2,11,LW49,coolant level switch signal,"body and slow lines - today's receptacle, today's functions kept",pinned,"Today's reserve L1-S2 11 (DP-ICU 15, IC17, N67): the coolant level switch (D-501, D-507, HO09). Its dash end moves to an ECU input if the wideband gauge takes IC17 (electrical B2); the cavity stays"
 L1-S2 12,L1-S2,12,LW36,oil temperature return,"body and slow lines - today's receptacle, today's functions kept",pinned,"Free today; dash side to the ICU's sensor ground, not the block (HO07)"
 L1-S3 1,L1-S3,1,LW02,injector 1 driver,drivers - injectors and throttle motor,pinned,
 L1-S3 2,L1-S3,2,LW02,injector 2 driver,drivers - injectors and throttle motor,pinned,

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Write briefs.csv and steps.csv for group 1 from the rows_*.py drafts, then validate them."""
 import csv
+import re
 import os
 import statistics
 import sys
@@ -57,6 +58,8 @@ if sorted(ids) != sorted(WANT):
 if len(ids) != len(set(ids)):
     problems.append("duplicate brief id")
 parts_ok = None
+# an old cad/ folder path; 02-PROJECTS/02-cad/ is the project's own name since D-572, not one of them
+OLD_CAD = re.compile(r"(?<!02-)cad/")
 if PARTS_CSV:
     parts_ok = {r["id"] for r in csv.DictReader(open(PARTS_CSV, encoding="utf-8", newline=""))}
 for b in B:
@@ -64,7 +67,7 @@ for b in B:
         if not b[col].strip():
             problems.append("%s: empty %s" % (b["id"], col))
     for k, v in b.items():
-        if "cad/" in v:
+        if OLD_CAD.search(v):
             problems.append("%s.%s contains cad/" % (b["id"], k))
     if parts_ok is not None:
         for p in b["parts"].split():
@@ -80,7 +83,7 @@ for s in S:
     if not s["do"].strip():
         problems.append("step %s: empty do" % s["id"])
     for k, v in s.items():
-        if "cad/" in v:
+        if OLD_CAD.search(v):
             problems.append("step %s.%s contains cad/" % (s["id"], k))
     per.setdefault(s["work"], []).append(s)
 for wid in WANT:

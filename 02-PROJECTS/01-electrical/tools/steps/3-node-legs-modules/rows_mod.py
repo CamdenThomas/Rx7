@@ -22,8 +22,8 @@ brief('F3',
             'It is built and run on the bench before the car is stripped: the strip (S1) waits on this row and on the Control Unit (F6), and on nothing else of the design [D-541]',
             'Nothing is bought only to test, so there is no 12 V bench supply: on the bench the unit runs from the Teensy\'s USB lead, which proves everything on the board\'s 5 V and 3.3 V rails [D-541]',
             USB_RAIL + ' [ICU carrier README: the socket\'s VIN on +5V]',
-            'What waits for the car\'s 12 V, all of it during E28: the 12 V to 5 V buck and its input protection when the unit first boots on O10 (MG02); the illumination reference on DP-ICU-A 2 (MG03); the turn and high-beam tell-tales on DP-ICU-B 10, 11, 12 (MG10, MG11, MG14); the backlight feed on DP-ICU-A 6 through F16 (MG21); the real senders and tach (MG22) [migration MG02, MG03, MG21, MG22; icu_channels IC12, IC13]',
-            'It has two plugs: DP-ICU-A (6-way: 1 logic +12 V, 2 illumination, 3 ground, 4 CAN2 H, 5 CAN2 L, 6 backlight +12 V) and DP-ICU-B (12-way: senders, tach, lamp lines) [cavities DP-ICU-A 1, DP-ICU-B 1]',
+            'What waits for the car\'s 12 V, all of it during E28: the 12 V to 5 V buck and its input protection when the unit first boots on O10 (MG02); the illumination reference on DP-ICU 2 (MG03); the turn and high-beam tell-tales on DP-ICU 16, 17, 18 (MG10, MG11, MG14); the backlight feed on DP-ICU 6 through F16 (MG21); the real senders and tach (MG22) [migration MG02, MG03, MG21, MG22; icu_channels IC12, IC13]',
+            'It has one plug, DP-ICU, a 24-way Deutsch DRC: 1 logic +12 V, 2 illumination, 3 ground, 4 CAN2 H, 5 CAN2 L, 6 backlight +12 V, 7-18 senders, tach and lamp lines, 19-24 sealing plugs [cavities DP-ICU 1, DP-ICU 7; D-587]',
             'The screen is the 850 nit HannStar HSD123KPW2-D10 panel with an HDMI driver board, your ruling of 2026-10-13; its bridge is a small board the agent draws and you order with the next boards. Until that board is back, everything else is built and run here and the BT817 eval board (P117) stands in as the display [D-550; work Y46; parts P117, P118, P119]',
             'Display wiring to the BT817 board, single-lane SPI: CS 10, MOSI 11, MISO 12, SCK 13, PD 9, INT 24 [icu_channels IC21]',
             'Each part is held against its footprint before it is soldered - this replaces the separate measurement pass. Expected: DT13 pin pitch 4.445 and 6.35 mm; flange face to pin field 18.675 mm; three flange holes, the 12-way\'s centre hole above all; Teensy header rows 15.24 mm apart; XIAO castellation rows 15.24 mm apart; each within 0.2 mm [checks CK25; D-542]',
@@ -57,7 +57,7 @@ step('F3', 'Solder the board, power parts first',
       'R18 has no value yet: leave it out until a bench result picks one of the three bought (P203).'],
      'Every joint wetted; no bridges under the magnifier.', 'The buck is a 2 x 3 mm leadless package: it needs hot air or a hot plate, and its orientation mark matched to the board.')
 step('F3', 'Check the power section with the meter, unpowered',
-     ['Nothing connected. Meter on ohms: the Teensy socket\'s VIN pad to a ground pad; DP-ICU-A 1 to DP-ICU-A 3; DP-ICU-A 6 to DP-ICU-A 3. None may be a short (a reading that climbs as the capacitors charge is right).',
+     ['Nothing connected. Meter on ohms: the Teensy socket\'s VIN pad to a ground pad; DP-ICU 1 to DP-ICU 3; DP-ICU 6 to DP-ICU 3. None may be a short (a reading that climbs as the capacitors charge is right).',
       'Meter on diode test across each input diode (D23, D25): it conducts from the 12 V pin toward the board and blocks the other way.',
       'The 12 V side is not powered on the bench: its first power is in the car, when the unit boots on O10 at MG02 in E28.'],
      'No short on either rail; both input diodes the right way round.', 'A reversed input diode or a bridged buck is found here with a meter, or in the car with a fuse: find it here.')
@@ -71,21 +71,21 @@ step('F3', 'Flash the radio', 'The icu_radio sketch for the XIAO ESP32C3, over i
      'Never write to the BMS and never touch its FFE7 or DFU service.')
 step('F3', 'Build the bench bus',
      ['Bench Teensy 2 running pmu_sim and Teensy 3 running tach_simulator (T-048), each on its own USB lead.', 'pmu_sim needs an SN65HVD230 module (P143) with its headers soldered; the carrier has its own transceiver.',
-      'One twisted pair between them: CAN H to DP-ICU-A 4, CAN L to DP-ICU-A 5, with a 120 Ω resistor (P070) across the pair at each end.',
+      'One twisted pair between them: CAN H to DP-ICU 4, CAN L to DP-ICU 5, with a 120 Ω resistor (P070) across the pair at each end.',
       'Receiving the PMU\'s frames is the agent\'s firmware row F14: if the version flashed does not have it yet, the diagnostics page shows nothing - note it and go on.'],
      'The ICU\'s diagnostics page shows frames arriving.')
 step('F3', 'Connect the BT817 eval board', 'Six signal wires from the carrier\'s display header to the eval board: CS 10, MOSI 11, MISO 12, SCK 13, PD 9, INT 24, plus power and ground as the eval board\'s sheet shows.',
      'The eval board\'s screen lights and draws the DRIVE page.', 'The eval board\'s own supply pins are on its datasheet, not in the record: read it before applying power.')
 step('F3', 'Feed it the signals that need no 12 V',
-     ['A potentiometer from DP-ICU-B 1, then 2, then 3 to ground stands in for the water-temp, oil-pressure and fuel senders.', 'tach_simulator\'s pulse output into DP-ICU-B 4.',
-      'DP-ICU-B 6 to ground for the brake warning.',
-      'Left for the car, because each needs 12 V on its line: the left turn, right turn and high-beam tell-tales (DP-ICU-B 10, 11, 12), the illumination reference (DP-ICU-A 2) and the backlight feed (DP-ICU-A 6).'],
+     ['A potentiometer from DP-ICU 7, then 8, then 9 to ground stands in for the water-temp, oil-pressure and fuel senders.', 'tach_simulator\'s pulse output into DP-ICU 10.',
+      'DP-ICU 12 to ground for the brake warning.',
+      'Left for the car, because each needs 12 V on its line: the left turn, right turn and high-beam tell-tales (DP-ICU 16, 17, 18), the illumination reference (DP-ICU 2) and the backlight feed (DP-ICU 6).'],
      'Each gauge follows its input; BRAKE shows with cavity 6 low.')
 step('F3', 'Prove the failure isolation', 'Unplug the PMU simulator\'s USB lead.', 'Volts blanks; rpm, temperature, pressure and fuel carry on.',
      'If everything blanks, stop and raise a note: the gauges must not depend on the bus.')
 step('F3', 'Zero the IMU and check the battery path', 'Board flat and still: zero the IMU. With the battery in range: the four cell counts summed agree with the advertised pack millivolts.', 'IMU reads zero at rest; cells sum to the pack figure.')
 step('F3', 'Prove the odometer persists, if the firmware has it',
-     'Only if the version flashed carries F-007. Run tach_simulator\'s speed channel into DP-ICU-B 8 until the odometer moves. Note the figure. Unplug the USB lead, wait, plug it in again. Then check the card (P151) holds it too.',
+     'Only if the version flashed carries F-007. Run tach_simulator\'s speed channel into DP-ICU 14 until the odometer moves. Note the figure. Unplug the USB lead, wait, plug it in again. Then check the card (P151) holds it too.',
      'The same odometer figure after the power cycle, and on the card - or a line in the note that the firmware flashed does not have it yet.')
 step('F3', 'Bring up the real bar display, once its bridge board is back',
      ['If the panel (P118) or its bridge board (P119) is not in hand: skip this step, say so in the note, and the row is still done.',

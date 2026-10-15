@@ -11,7 +11,7 @@ frame_bits_std,112,bits,CAN-MESSAGES bus-load method,"8-byte standard frame with
 frame_bits_ext,132,bits,same method,8-byte extended frame
 icu_logic_draw,~0.8 peak,A,icu_channels IC12,"Teensy, transceiver, IMU, the three sender excitations, the radio co-processor's BLE-scan peaks (D-273); was ~0.5 (Y10)"
 display_draw,1.5–3,A,D-313,a 900–1000-nit panel and its backlight — measure at bring-up
-o10_headroom,~3,A,"D-313, electrical LD15 / D-223","for DP-ICU-A, the only module drop left on O10 (DP-DCU 1 is on F22, D-355)"
+o10_headroom,~3,A,"D-313, electrical LD15 / D-223","for DP-ICU, the only module drop left on O10 (DP-DCU 1 is on F22, D-355)"
 servo_stall,1–2.5 each,A,DCU-CARRIER (archived),why the servo rail is its own buck
 thresholds,split into redline_rpm · hot_water_c · low_oil_bar · tank_gal (2026-10-13),,D-328,The four were one prose cell; code and the app need them one by one (R2: these keys are the home). D-328 is the ruling.
 vdrop_max_v,0.5,V,"usual automotive limit for a lamp or motor feed, out and back","the voltage-drop check's ceiling; a hand figure, confirm"

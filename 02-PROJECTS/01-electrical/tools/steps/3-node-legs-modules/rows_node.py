@@ -8,9 +8,9 @@ DEST = {
     '1': 'receptacle L1-P 2 - the swap reserve, pinned at the post and nothing in the L1 plug (D-271)',
     '2': 'the O12 splice: receptacle L1-P 1 (N18) and the four fused taps F15, F16, F20, F21 (N19, N20, N61, N78)',
     '3': 'receptacle L2-M 3 - horns',
-    '4': 'receptacle L3-M 1 (N23) and the O10 taps: K12 86, DP-ICU-A 1 (N24), L4-S 4 (N73), F33 to K3 / K4 (N85), the capped radar tail (N103)',
+    '4': 'receptacle L3-M 1 (N23) and the O10 taps: K12 86, DP-ICU 1 (N24), L4-S 4 (N73), F33 to K3 / K4 (N85), the capped radar tail (N103)',
     '5': 'receptacle L2-M 2 - wiper HIGH',
-    '6': 'receptacles L2-M 5 and L4-M 5, with the tap to DP-ICU-B 10 (N51)',
+    '6': 'receptacles L2-M 5 and L4-M 5, with the tap to DP-ICU 16 (N51)',
     '7': 'the wake strip common rail (N38)',
     '8': 'wake strip input 5 (N37), K11 terminal 86 (N06) and the 10 kΩ to Q0 base (WS01)',
     '9': 'receptacle L2-M 1 and K12 terminal 30 (N26)',
@@ -30,15 +30,15 @@ DEST = {
     '23': 'DP-DIAG 1, twisted with pin 36 (N56); 120 Ω across 23 / 36 at this connector',
     '24': 'the CAN2 splice at the node, twisted with pin 37 (N55)',
     '25': 'the GND bus, 6 in or less (N57)',
-    '26': 'receptacle L2-P 2, a 16 AWG tap to DP-ICU-B 12 (N53) and one diode of the pop-up coil feed (N09)',
+    '26': 'receptacle L2-P 2, a 16 AWG tap to DP-ICU 18 (N53) and one diode of the pop-up coil feed (N09)',
     '27': 'receptacle L3-P 2 (N17) and the tap to K14 / K15 terminal 86 (N110)',
     '28': 'receptacle L3-P 1 - blower, capped at L3-BLW',
     '29': 'receptacle L3-S1 3 (N96)',
     '30': 'receptacles L3-S1 5, L2-S 3 and L2-S 4, one splice (N42)',
     '31': 'receptacle L1-S2 7 - the inhibitor R contact',
-    '32': 'a tap on the L1-S1 4 to DP-ICU-B 2 conductor (N45)',
-    '33': 'receptacles L2-M 6 and L4-M 6, with the tap to DP-ICU-B 11 (N52)',
-    '34': 'receptacle L3-S1 8 and DP-ICU-A 2 (N22)',
+    '32': 'a tap on the L1-S1 4 to DP-ICU 8 conductor (N45)',
+    '33': 'receptacles L2-M 6 and L4-M 6, with the tap to DP-ICU 17 (N52)',
+    '34': 'receptacle L3-S1 8 and DP-ICU 2 (N22)',
     '35': 'receptacle L3-S1 2 (N98), with the 100 kΩ bias from pin 15',
     '36': 'DP-DIAG 2, twisted with pin 23 (N56)',
     '37': 'the CAN2 splice at the node, twisted with pin 24 (N55)',
@@ -333,7 +333,7 @@ step('E16', 'Bundle the tails loosely', 'Group the wires by where they go (L1, L
 # ------------------------------------------------------------------ E17
 DT_PIN = 'Receptacle contacts are PINS: size 16 for 16-18 AWG (P023), size 16 for 14 AWG (P025), size 12 for the DTP power receptacles (P027). Crimp in the Deutsch 4-indent crimper (P038), push in from the wire side until it clicks, tug.'
 brief('E17',
-      goal='Every node conductor is run, spliced and landed, every receptacle at the post is pinned, plugged and wedge-locked, the ICU tails are made and the Control Unit tail is pinned into its 48-way plug.',
+      goal='Every node conductor is run, spliced and landed, every receptacle at the post is pinned, plugged and wedge-locked, the ICU tail is made and the Control Unit tail is pinned into its 48-way plug.',
       where='bench', time='two days - confirm',
       tools=['Deutsch solid-contact 4-indent crimper, sizes 12 / 16 (P038)', 'Ratchet crimper for heat-shrink terminals and butt splices (P171)',
              'Open-barrel crimper for the relay socket terminals (P039)', 'Wire strippers, flush cutters (P043)', 'Heat gun (P042)', 'Soldering iron (P044)',
@@ -345,15 +345,15 @@ brief('E17',
       know=['A receptacle is the box-side half (DT04 / DTP04, pin contacts); the leg plugs (DT06, socket contacts) are made at E20-E23 [housings]',
             'Every splice at the node is a sealed crimp butt splice with adhesive heat-shrink [work E17, parts P078]',
             'An unfused tap off an output is 14 AWG up to its fuse (the holder\'s own lead), 16 AWG after it [node_conductors N19, N85]',
-            'CAN2 never leaves the dash: one twisted pair from pins 24 / 37 to a splice, pairs on to DP-ICU-A 4 / 5, DP-DCU 12 / 13 and the wideband gauge, and a 120 Ω resistor at the end of the run [node_conductors N55, N74, D-346]',
+            'CAN2 never leaves the dash: one twisted pair from pins 24 / 37 to a splice, pairs on to DP-ICU 4 / 5, DP-DCU 12 / 13 and the wideband gauge, and a 120 Ω resistor at the end of the run [node_conductors N55, N74, D-346]',
             'The A4 and A5 inputs carry the inhibitor switch alone since D-487: pin 17 goes to L1-S1 11 only and pin 31 to L1-S2 7 only. L2-S 1 / 2 are the pop-up up commands now [node_conductors N40, N41; cavities L2-S 1, L2-S 2; pins 17, 31]',
             'The Control Unit plugs in later (E26): its tail\'s seventeen conductors end in cavities 9-25 of its one 48-way plug at the centre stack, dust-capped until then; the comfort, heater-case, CUR and radar breakouts fill the rest of the same plug at E38, E39 and after [housings DP-DCU, D-582, D-472]',
-            'The ICU tails are 150 mm from the post [housings DP-ICU-A, D-270]',
+            'The ICU tail is 150 mm from the post [housings DP-ICU, D-270]',
             'The DCU tail length is the post to centre-stack run RT11 and the DP-DIAG tail is the run to the glovebox RT12: neither is measured - confirm [routes RT11, RT12]',
             'DT size-16 contacts seal on 14-20 AWG and carry 13 A; DTP size-12 contacts seal on 10-14 AWG and carry 25 A [series DT, DTP]',
             'The seat-feed tails (N108, N109, N112) and the comfort grounds (N102) are routed at E38: at this row their relays are wired and the tails left labelled [work E38]',
             'The load-dump TVS (P136) goes across the PMU main feed at the module; no row says which way round or on which studs - read its datasheet [parts P136, gap]'],
-      done_when='Every row of node_conductors is in place and labelled at both ends, every receptacle cavity holds a pin or a sealing plug, every wedgelock is in, the two ICU tails and the two DCU tails end in plugs.',
+      done_when='Every row of node_conductors is in place and labelled at both ends, every receptacle cavity holds a pin or a sealing plug, every wedgelock is in, the ICU tail and the Control Unit tail end in plugs.',
       if_not='A contact in the wrong cavity: release it with the removal tool (P031 / P032), never pull the wire. A conductor with no home in the lists: stop and raise a note - do not improvise a splice.',
       record='Tick the row.')
 step('E17', 'Main power and ground at the node',
@@ -375,9 +375,9 @@ step('E17', 'The O1 pop-up group',
      'Diode test: each output wire to K1 86 conducts one way only. Pin 38 reaches K1 30 and K2 30 only through F37\'s holder.',
      'Do not land these until CK08 has proved the motor matches the factory diagram: if it does not, the whole group is redrawn.')
 step('E17', 'The O12 ignition group', nc_lines(['N18', 'N19', 'N20', 'N61', 'N62', 'N78']),
-     'Pin 2 reaches L1-P 1 direct, and L1-S1 2, DP-ICU-A 6, the gauge +12 V and L3-S2 12 each through its own holder.')
+     'Pin 2 reaches L1-P 1 direct, and L1-S1 2, DP-ICU 6, the gauge +12 V and L3-S2 12 each through its own holder.')
 step('E17', 'The O10 accessory group and the washer relay', nc_lines(['N23', 'N24', 'N73', 'N85', 'N86', 'N88', 'N89', 'N103', 'N25', 'N26', 'N27']),
-     'Pin 4 reaches L3-M 1, K12 86, DP-ICU-A 1, L4-S 4 and, through F33, K3 and K4 terminals 30 and 86. The radar tail is capped and labelled.')
+     'Pin 4 reaches L3-M 1, K12 86, DP-ICU 1, L4-S 4 and, through F33, K3 and K4 terminals 30 and 86. The radar tail is capped and labelled.')
 step('E17', 'The fuel pump back-stop relay K13', nc_lines(['N69', 'N70', 'N71', 'N72'], note=True),
      'Pin 12 reaches K13 30 and nothing else; K13 87 reaches L4-P 2.',
      'K13\'s coil is fed from the ignition switch wire, never from the PMU: that is what makes it a back-stop.')
@@ -391,18 +391,18 @@ step('E17', 'The lamp outputs and every remaining single output',
 step('E17', 'The ladder inputs and the +5 V bias',
      nc_lines(['N96', 'N97', 'N98', 'N99', 'N42', 'N43', 'N44', 'N45', 'N39']) + [
          'Pin 17 (A4) → receptacle L1-S1 11 · pin 31 (A5) → receptacle L1-S2 7, single conductors, no splice (N40, N41).',
-         'The 100 Ω 1 W pull-up (P114) goes from the pin 15 wire to the oil-pressure node, the L1-S1 4 to DP-ICU-B 2 conductor.'],
+         'The 100 Ω 1 W pull-up (P114) goes from the pin 15 wire to the oil-pressure node, the L1-S1 4 to DP-ICU 8 conductor.'],
      'Pin 15 to pin 35: 100 kΩ. Pin 15 to pin 22: 100 kΩ. Pin 15 to receptacle L1-S1 4: 100 Ω.')
 step('E17', 'The wake strip', nc_lines(['N33', 'N34', 'N35', 'N36', 'N63', 'N76', 'N38']),
      'Strip inputs 1-7 each carry their wire; position 8 goes to pin 7.')
 step('E17', 'The sender and lamp lines across the node to the ICU', nc_lines(['N46', 'N47', 'N48', 'N49', 'N50', 'N64', 'N66', 'N67', 'N104']),
-     'Each receptacle cavity reaches its DP-ICU-B cavity. The tach shield reaches the GND bus and is insulated at the DP-ICU-B end.',
+     'Each receptacle cavity reaches its DP-ICU cavity. The tach shield reaches the GND bus and is insulated at the DP-ICU end.',
      'The tach is shielded cable (P074): ground the drain at the GND bus at this end only.')
 step('E17', 'CAN1, CAN2 and the terminator', nc_lines(['N55', 'N56', 'N74']) + [
     'The wideband gauge: cut its AEMnet pigtail (it ends in a DTM 2-way) and butt-splice it onto the CAN2 pair; its 0-5 V output is not used; its sensor lead is never cut (devices DV44).'],
      '120 Ω across the CAN2 pair with nothing plugged in; the pairs stay twisted to each plug.',
      'Keep CAN2 50 mm from the blower, wiper and O1 pop-up wires.')
-step('E17', 'The permitted ground crossings', nc_lines(['N59']), 'DP-DIAG 4, DP-ICU-A 3, DP-DCU 11 and L3-S2 8 each beep to the GND bus.')
+step('E17', 'The permitted ground crossings', nc_lines(['N59']), 'DP-DIAG 4, DP-ICU 3, DP-DCU 11 and L3-S2 8 each beep to the GND bus.')
 step('E17', 'The post links and the DCU tail conductors', nc_lines(['N81', 'N82', 'N77', 'N80', 'N83', 'N84']),
      'L3-S3 1 / 2 / 3 reach L4-S 5 / 6 / 7; L3-S3 4 reaches L4-S2 7; the DCU tail conductors reach L4-M 9-12, L4-S2 1-5 and L4-P 4.')
 step('E17', 'Pin the L1 receptacles', [DT_PIN, 'L1-P (DTP04-4P, wedge WP-4P):'] + node_lines('L1-P') + ['L1-S1 (DT04-12P, wedge W12P):'] + node_lines('L1-S1') + ['L1-S2 (DT04-12P, wedge W12P):'] + node_lines('L1-S2'),
@@ -413,10 +413,10 @@ step('E17', 'Pin the L3 receptacles', ['L3-P (DTP04-2P, wedge WP-2P):'] + node_l
      'Every cavity holds a pin or a sealing plug; wedgelocks in.')
 step('E17', 'Pin the L4 receptacles', ['L4-P (DTP04-4P, wedge WP-4P):'] + node_lines('L4-P') + ['L4-M (DT04-12P, wedge W12P):'] + node_lines('L4-M') + ['L4-S (DT04-8P, wedge W8P):'] + node_lines('L4-S') + ['L4-S2 (DT04-8P, wedge W8P):'] + node_lines('L4-S2'),
      'Every cavity holds a pin or a sealing plug; wedgelocks in.', 'L4-P 4 is a size-12 pin on 14 AWG: 16 AWG does not crimp in it.')
-step('E17', 'Make the two ICU tails',
-     ['150 mm from the post, each ending in a DT06 PLUG with socket contacts (P022): these mate the ICU\'s own DT13 receptacles.',
-      'DP-ICU-A (DT06-6S, wedge W6S):'] + leg_lines('DP-ICU-A') + ['DP-ICU-B (DT06-12S, wedge W12S):'] + leg_lines('DP-ICU-B'),
-     'Two plugs on 150 mm tails; DP-ICU-B 7 holds a sealing plug.')
+step('E17', 'Make the ICU tail',
+     ['150 mm from the post, ending in a Deutsch DRC 24-way PLUG with size-16 socket contacts (P022, P227): it mates the ICU\'s own DRC13-24PA receptacle (D-587).',
+      'DP-ICU (DRC16-24SA, a jackscrew plug - no wedgelock):'] + leg_lines('DP-ICU'),
+     'One plug on a 150 mm tail; DP-ICU 13 and 19-24 hold sealing plugs.')
 step('E17', 'Make the Control Unit tail',
      ['From the node toward the centre stack along RT11 - length not measured, confirm: cut it only once RT11 is measured (1.5 x the route).',
       'Its seventeen conductors end in the Control Unit\'s one 48-way plug, DP-DCU (P221, Molex CMC 48 wire-side half - block 01.57 may change the family; then this step is rewritten). They are 20 AWG: the small terminals (P222) take 0.30-0.50 mm². Crimp with P224, push each in from the wire side through the mat seal until it locks, tug.',
