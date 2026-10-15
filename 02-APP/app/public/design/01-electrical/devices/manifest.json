@@ -1648,7 +1648,7 @@
  },
  "DV21": {
   "glb": "devices/combination-switch.glb",
-  "name": "Hazard switch - F-02 HAZARD (column, kept)",
+  "name": "Hazard switch - On the CUR (D-586): a new switch on the plate board, kind held for block 01.58 (P226); the 4.7 kΩ and the 47 kΩ baseline beside it. The column's F-02 hazard contact is left unconnected",
   "kind": "device",
   "node": "leg-l3",
   "count": 0,
@@ -2810,7 +2810,7 @@
  },
  "_meta": {
   "version": 1,
-  "built": "2026-10-14T18:33:01-06:00",
+  "built": "2026-10-14T19:25:10-06:00",
   "work": "Y28",
   "ruling": "D-515",
   "frame": "every glb in mm, z up, in the part's own frame (00-design README §13); each entry's origin says where its zero is",
