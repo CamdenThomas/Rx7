@@ -2095,3 +2095,12 @@ Reasoning: D-588 chose one Deutsch family and said that if no single-plug right-
 Supersedes the ""50 ways or more"" and single-plug part of D-588 (its Deutsch-everywhere family, the DU's DRC 24-way and the radar DT 12 merge stand) and the CMC 48 of D-582 as the fallback; D-582's one-connector-row, single-DIN rulings stand with the one header now two plugs.
 
 Consequences in the data: Y54 draws the DRC23-64 header in place of J1, J2 and J9 (footprint from TE's drawing, confirm); Y64 moves DP-DCU from the CMC 48 to a DRC 64-way header with a 24-way and a 40-way plug, and drops P220-P225; the cavity map splits over the two plugs (24 + 40 = 64 cavities for 48 conductors, 16 spare); the harness side ends in two plugs on the L3 leg's Control Unit branch; a size-20 die for P038 is still to be confirmed (R11). Block 01.59 is closed, so Y54, Y64 and Y18's gate on it is met."
+D-595,,"The CUR's face is laid out as drawn: hazard and screen knob in a third column, plate 118 mm",2026-10-15,standing,,,01.60,,"**The CUR's face is laid out as drawn: a third column between the keys and the stick, the hazard button top in line with the two winks, the screen knob below it in line with the hatch and fuel-door keys, the stick on the far side; the plate is 118 mm wide (block 01.60, option a).**
+
+His answer: (a), no words added. The option as offered: ""A third column between the keys and the stick: the hazard button top (in line with the two winks), the screen knob below it (in line with the hatch and fuel-door keys), the stick on the far side. The plate grows from 100 to 118 mm wide. This is what is drawn now.""
+
+Reasoning: the layout is already what the CUR board is drawn with, so the ruling needs no redraw; only the face openings of the CUR's mock-up (Y51) follow it.
+
+Supersedes nothing; it fixes the placement left open by D-586 (CUR right of the wheel), D-589 (hazard button) and D-581 (screen knob).
+
+Consequences in the data: none to the board or the plate (already 118 mm); Y51 draws the mock-up's face openings to this layout. Block 01.60 is closed."
