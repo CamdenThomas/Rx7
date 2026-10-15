@@ -2404,3 +2404,33 @@ His words (chat, 2026-10-15): ""please update both cu and cur svg and maybe an o
 - ""Update both cu and cur svg"" is read as making the CU's and the CUR's drawings show the current plan without CAD. Their schematics and views are exports of CAD that this pass may not redraw. So each gets a plan sheet drawn from the record and an OUTDATED banner on the exports.
 - ""Make svg files for the parts where you have the information now"" is read as one plan sheet per box in the record. That includes the PMU box, bin box, bay junction and amplifier dock, which had no drawing.
 - Drawing more from the record widens CLAUDE.md §1's ""one generated file type"" to the leg drawings and the box sheets. That line is edited to match."
+D-614,electrical,"The audit ruled: the seats' return on a #8, the windows and comfort off O1 / O15 onto their own fuses, F42 for the LS clutch feed, TE's drawings first (Y79)",2026-10-15,standing,,,,03-engine,"**The audit after the overhaul, ruled.**
+- The seats' common return goes on a size-8 contact.
+- The window H-bridges and the comfort feed come off the PMU's outputs onto their own fuses from the always-hot bus, with O1 and O15 only enabling them.
+- The LS A/C clutch feed is F42.
+- TE's insert drawings become a desk row before any CAD.
+- The build steps stay held until the build track is rewritten.
+- The blower's box wiring is named.
+- Leg separation and the backbone weekend are set aside.
+
+His words (chat, 2026-10-15), answering the nine audit items with the options laid out: ""skip 4 i tolf you to ignote al leg separation for now / skip 7 for now we will not need to drive the car we mid swap harness comes out full and new harnes drops in full we troubleshoop perfect and then move on the cad / for the rest follow recomendations""
+
+**What each pick put in the record.**
+- **1 (a)** Each seat's plug is a Deutsch HDP20 24-91 (2 #8, 2 #12, 5 #16): L3-SD and L3-SP, 9 cavities each.
+  - The common return is on a #8 contact with 8 AWG, inside a #8's 60 A. It carries about 32 A when a seat moves with heat and cooling on, which was over the DTP contact's 25 A.
+  - The power feed is on a #12, heat and cool on #16s.
+  - The record knows no smaller insert with a #8; Y79 replaces it if TE lists one. The DTP 4-way kits are dropped.
+  - New: series HD8 (60 A), the colour BLK at 8 AWG, and parts P254-P257 (plug and receptacle, size-8 contacts, the size-4/8 crimper, 8 AWG BLK).
+- **2 (a)** The window H-bridges take their current from the always-hot bus through F39 (driver) and F40 (passenger), each 20 A as F8 / F9 were (D-471), in the mini-blade bank.
+  - O1 only enables the bridges through a logic tap (N125), so the PMU still gates the motor power (D-357), and the pop-ups have O1 to themselves.
+- **3 (a)** K16, a smart switch on the PMU box's board, feeds the CU's comfort inlet DP-DCU-P 1 through F41 (25 A, big-fuse bank) from the always-hot bus.
+  - O15 enables K14, K15 and K16 and now carries about 0.5 A.
+- **5 (a)** L1-E1 4, the LS A/C clutch relay's contact feed, is F42 (7.5 A) from O12 in the mini-blade bank, empty until the swap. This settles HO13.
+- **6 (a)** Y79 gets TE's insert and keying drawings and corrects the cavity sizes and keys before Y69 draws. Y69 now waits on it. te.com's drawing server returned HTTP 500 this pass, and the retail listings give no per-cavity map.
+- **8 (a)** The build steps stay held behind Y76.
+- **9 (a)** N124 names the blower's return at the star, and pin 28 (O16) names L3-BLW 1. DP-DIAG 2 was already wired (N56 names ""DP-DIAG 1/2""), so that half of the audit item was a false finding.
+- **4 and 7 skipped.**
+  - Leg separation stays set aside until every wire is placed (D-600, Y78).
+  - His no-driving rule is the Y76 rewrite's frame. The factory harness comes out whole and the new one goes in whole; there is no backbone weekend driven on the factory harness. Y33's question waits with it.
+
+**Also fixed.** ""Always-hot always-hot bus"", a doubled word an earlier swap left in N106, N107 and their kin."

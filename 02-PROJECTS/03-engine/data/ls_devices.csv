@@ -15,7 +15,7 @@ LD13,Electronic throttle body,1,Intake,both,6-pin,ECU,"The accelerator pedal is 
 LD14,Alternator,1,Front of the engine,both,2-pin control plug plus the B+ stud,PMU,"Gen IV trucks regulate by ECU signal (confirm per unit). B+ is today's 6 AWG via F18 (100 A) at the starter stud only until the swap: then a new 2 AWG-or-larger cable and a 200-250 A fuse (electrical D-468), bay only"
 LD15,Starter,1,Block,both,B+ stud and S terminal,bay,B+ is the 1/0 backbone and S comes from K9 on the inner fender - both stay in the bay; only K9's coil crosses
 LD16,Electric cooling fan,1,Radiator,both,"2-pin, or a fan controller",PMU,"Fed from the battery side (the starter B+ stud) through its own relay and fuse in the bay, sized from the fan bought; O14 via L1-E1 3 drives only the relay coil (electrical D-468, HO02); its return is grounded at the front"
-LD17,A/C compressor clutch,1,Front of the engine,both,"1-pin, case grounded",DCU,"Fed through a relay the ECU switches, its supply on L1-E1 4 from the PMU box (settled at electrical Y69) in the bay (D-489; D-324 had the DCU switch it, HO13)"
+LD17,A/C compressor clutch,1,Front of the engine,both,"1-pin, case grounded",DCU,"Fed through a relay the ECU switches, its supply on L1-E1 4 from F42 in the PMU box (electrical D-614) in the bay (D-489; D-324 had the DCU switch it, HO13)"
 LD18,A/C pressure transducer,1,High-side line,both,3-pin,DCU,"To an ECU analog input, on the ECU's 5 V and sensor ground spliced in the bay (D-489; D-324 had it on a DCU input, HO13)"
 LD19,Cam phaser (VVT) solenoid,1,Front cover,option,2-pin,ECU,2010+ LC9 only - or lock the phaser out and leave it unwired
 LD20,EVAP purge solenoid,1,Intake,option,2-pin,ECU,Only if the emissions rules for this car require it (see work J7)

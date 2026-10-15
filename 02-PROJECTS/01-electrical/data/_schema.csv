@@ -70,7 +70,7 @@ grounds,note,text,no,,R11 - a length nobody has measured carries confirm (2026-0
 housings,code,key,yes,,
 housings,leg,str,no,,
 housings,class,enum(Blower|Bundle|Door|Medium|Mixed|Module|Port|Power|Seat|Signal),no,,"Seat added 2026-10-09 (A14): the under-seat receptacles; Bundle and Mixed added 2026-10-15 (D-612): a hard-wired bundle at a box, a mixed-contact circular"
-housings,leg_side,enum(CMC48-64320-1311|DRC16-24SA|DRC26-24SA+DRC26-40SA|DT06-12S|DT06-2S|DT06-4S|DT06-6S|DT06-8S|DTP06-2S|DTP06-4S|HDP26-24-21SE|HDP26-24-29SE|HDP26-24-31SE|hard-wired),no,,"CMC48-64320-1311 added 2026-10-14 (D-582): the Control Unit's one connector, a Molex CMC 48-way wire-side receptacle; DRC16-24SA added 2026-10-14 (D-587): the Display Unit's one plug, a Deutsch DRC 24-way; D-612 (2026-10-15): the HDP20 circulars of the PMU box and the amplifier dock, the Control Unit's two DRC plugs on its 64-way header (D-594), and hard-wired for a bundle with no plug at its box"
+housings,leg_side,enum(CMC48-64320-1311|DRC16-24SA|DRC26-24SA+DRC26-40SA|DT06-12S|DT06-2S|DT06-4S|DT06-6S|DT06-8S|DTP06-2S|DTP06-4S|HDP26-24-21SE|HDP26-24-91SE|HDP26-24-29SE|HDP26-24-31SE|hard-wired),no,,"CMC48-64320-1311 added 2026-10-14 (D-582): the Control Unit's one connector, a Molex CMC 48-way wire-side receptacle; DRC16-24SA added 2026-10-14 (D-587): the Display Unit's one plug, a Deutsch DRC 24-way; D-612 (2026-10-15): the HDP20 circulars of the PMU box and the amplifier dock, the Control Unit's two DRC plugs on its 64-way header (D-594), and hard-wired for a bundle with no plug at its box; HDP26-24-91SE added 2026-10-15 (D-614): the seats' plug with a #8 return"
 housings,box_side,str,no,,
 housings,cavs,int,no,,
 housings,wedgelocks,str,no,,
@@ -359,6 +359,6 @@ boxes,state,enum(planned|drawn|built),no,,"planned: in the record, its CAD the n
 boxes,note,text,no,,
 housings,series,enum(DRC16|DRC20|DT|DTP|HD|HW),no,,"the contact a conductor in it is crimped in (D-612): DT / DTP / DRC16 / DRC20 by the family; HD, a mixed-contact Deutsch circular, takes its size from each cavity's contact; HW, a bundle hard-wired at a box with no plug at the box. Blank: DT, or DTP where a side names a DTP part"
 housings,box,str,no,boxes.id,"the box the housing's box side sits in, where it is one (D-612)"
-cavities,contact,enum(12|16|20),no,,"the contact size in a mixed-contact (HD) housing, from TE's insert drawing C-0425-014-2400 (D-606, D-612); blank elsewhere"
+cavities,contact,enum(12|16|20|8),no,,"the contact size in a mixed-contact (HD) housing, from TE's insert drawing C-0425-014-2400 (D-606, D-612); blank elsewhere; 8 added (D-614): a size-8 contact, 60 A"
 fuses,box,str,no,boxes.id,the box it sits in (D-612)
 relays,box,str,no,boxes.id,the box it sits in (D-612)

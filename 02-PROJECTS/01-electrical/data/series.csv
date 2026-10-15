@@ -7,3 +7,4 @@ HD20,size 20 solid (HD30 / HDP20),16–20 AWG seal - confirm against the contact
 DRC16,size 16 (DRC),14–20 AWG seal,13 A,"DP-ICU and DP-CUR, DRC 24-way (D-587, D-597)"
 DRC20,size 20 (DRC),16–20 AWG seal - confirm against the contact bought,7.5 A,"DP-DCU, the DRC 64-way header's plugs (D-594)"
 HW,none - hard-wired at the box,,,"a bundle soldered or crimped into its box, its far end the device's own plug (D-600)"
+HD8,size 8 solid (HD30 / HDP20),8–10 AWG seal - confirm against the contact bought,60 A,the seats' common return (D-614)

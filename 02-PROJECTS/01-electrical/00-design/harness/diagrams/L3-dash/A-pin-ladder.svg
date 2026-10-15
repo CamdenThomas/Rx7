@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1310" height="2804" viewBox="0 0 1310 2804" font-family="Noto Sans, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1310" height="3144" viewBox="0 0 1310 3144" font-family="Noto Sans, sans-serif">
 <title>L3 Dash - pin ladder</title>
 <rect width="100%" height="100%" fill="#fff"/>
 <text x="30.0" y="40.0" font-size="20" text-anchor="start" font-weight="700" fill="#1f2328">L3 DASH · A · PIN LADDER</text>
@@ -49,440 +49,490 @@
 <text x="406.0" y="343.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-MOD-2  ·  16 AWG BLK  ·  capped at the far end</text>
 <rect x="720.0" y="339.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="730.0" y="357.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">as cavity 1</text>
-<rect x="30.0" y="406.0" width="360.0" height="184.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-<text x="42.0" y="428.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-SD  ·  DTP06-4S  ·  Under the driver's seat</text>
+<rect x="30.0" y="406.0" width="360.0" height="354.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="428.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-SD  ·  HDP26-24-91SE / HDP24-24-91PE · mixed-contact circular  ·  Under the driver's seat</text>
 <line x1="30" y1="440.0" x2="390" y2="440.0" stroke="#d0d7de"/>
-<circle cx="50" cy="457.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="461.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
-<text x="70.0" y="461.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Driver seat power feed</text>
-<text x="380.0" y="461.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K14 87</text>
-<path d="M390.0,457.0 L720.0,457.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M390.0,457.0 L720.0,457.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="447.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SD-1  ·  12 AWG RED  ·  RT27  ·  capped at the far end</text>
-<rect x="720.0" y="443.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<line x1="30" y1="474.0" x2="390" y2="474.0" stroke="#d0d7de"/>
-<circle cx="50" cy="491.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="495.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
-<text x="70.0" y="495.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Driver seat heater +</text>
-<text x="380.0" y="495.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU 1</text>
-<path d="M390.0,491.0 L720.0,491.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M390.0,491.0 L720.0,491.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="481.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SD-2  ·  14 AWG RED  ·  RT27  ·  capped at the far end</text>
-<rect x="720.0" y="477.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<line x1="30" y1="508.0" x2="390" y2="508.0" stroke="#d0d7de"/>
-<circle cx="50" cy="525.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="529.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
-<text x="70.0" y="529.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Driver seat cooling fan +</text>
-<text x="380.0" y="529.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU 3</text>
-<path d="M390.0,525.0 L720.0,525.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M390.0,525.0 L720.0,525.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="515.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SD-3  ·  14 AWG RED  ·  RT27  ·  capped at the far end</text>
-<rect x="720.0" y="511.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<line x1="30" y1="542.0" x2="390" y2="542.0" stroke="#d0d7de"/>
-<circle cx="50" cy="566.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="570.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
-<text x="70.0" y="561.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Driver seat common return - motor, heater and</text>
-<text x="70.0" y="578.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">fan</text>
-<text x="380.0" y="570.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">GND</text>
-<path d="M390.0,566.0 L720.0,566.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M390.0,566.0 L720.0,566.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="556.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SD-4  ·  12 AWG BLK  ·  RT27  ·  capped at the far end</text>
-<rect x="720.0" y="545.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<rect x="30.0" y="626.0" width="360.0" height="184.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-<text x="42.0" y="648.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-SP  ·  DTP06-4S  ·  Under the passenger seat</text>
-<line x1="30" y1="660.0" x2="390" y2="660.0" stroke="#d0d7de"/>
-<circle cx="50" cy="677.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="681.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
-<text x="70.0" y="681.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Passenger seat power feed</text>
-<text x="380.0" y="681.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K15 87</text>
-<path d="M390.0,677.0 L720.0,677.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M390.0,677.0 L720.0,677.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="667.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SP-1  ·  12 AWG RED  ·  RT28  ·  capped at the far end</text>
-<rect x="720.0" y="663.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<line x1="30" y1="694.0" x2="390" y2="694.0" stroke="#d0d7de"/>
-<circle cx="50" cy="711.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="715.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
-<text x="70.0" y="715.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Passenger seat heater +</text>
-<text x="380.0" y="715.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU 2</text>
-<path d="M390.0,711.0 L720.0,711.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M390.0,711.0 L720.0,711.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="701.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SP-2  ·  14 AWG RED  ·  RT28  ·  capped at the far end</text>
-<rect x="720.0" y="697.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<line x1="30" y1="728.0" x2="390" y2="728.0" stroke="#d0d7de"/>
-<circle cx="50" cy="745.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="749.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
-<text x="70.0" y="749.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Passenger seat cooling fan +</text>
-<text x="380.0" y="749.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU 4</text>
-<path d="M390.0,745.0 L720.0,745.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M390.0,745.0 L720.0,745.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="735.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SP-3  ·  14 AWG RED  ·  RT28  ·  capped at the far end</text>
-<rect x="720.0" y="731.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<line x1="30" y1="762.0" x2="390" y2="762.0" stroke="#d0d7de"/>
-<circle cx="50" cy="786.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="790.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
-<text x="70.0" y="781.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Passenger seat common return - motor, heater</text>
-<text x="70.0" y="798.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">and fan</text>
-<text x="380.0" y="790.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">GND</text>
-<path d="M390.0,786.0 L720.0,786.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M390.0,786.0 L720.0,786.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="776.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SP-4  ·  12 AWG BLK  ·  RT28  ·  capped at the far end</text>
-<rect x="720.0" y="765.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<rect x="30.0" y="846.0" width="360.0" height="122.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-<text x="42.0" y="868.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-SPF-L  ·  DT06-2S  ·  Driver kick panel</text>
-<line x1="30" y1="880.0" x2="390" y2="880.0" stroke="#d0d7de"/>
-<circle cx="50" cy="902.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="906.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
-<text x="70.0" y="906.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker front L +</text>
-<text x="380.0" y="906.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier front L +</text>
-<path d="M390.0,902.0 L720.0,902.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M390.0,902.0 L720.0,902.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="892.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SPF-L-1 · 16 AWG speaker · RT30 · capped at the far …</text>
-<rect x="720.0" y="883.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="898.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
-<text x="730.0" y="914.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
-<line x1="30" y1="924.0" x2="390" y2="924.0" stroke="#d0d7de"/>
-<circle cx="50" cy="946.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="950.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
-<text x="70.0" y="950.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker front L −</text>
-<text x="380.0" y="950.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier front L −</text>
-<path d="M390.0,946.0 L720.0,946.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M390.0,946.0 L720.0,946.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="936.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SPF-L-2  ·  16 AWG speaker  ·  capped at the far end</text>
-<rect x="720.0" y="927.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="942.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
-<text x="730.0" y="958.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
-<rect x="30.0" y="1004.0" width="360.0" height="122.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-<text x="42.0" y="1026.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-SPF-R  ·  DT06-2S  ·  Passenger kick panel</text>
-<line x1="30" y1="1038.0" x2="390" y2="1038.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1060.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1064.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
-<text x="70.0" y="1064.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker front R +</text>
-<text x="380.0" y="1064.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier front R +</text>
-<path d="M390.0,1060.0 L720.0,1060.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M390.0,1060.0 L720.0,1060.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="1050.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SPF-R-1 · 16 AWG speaker · RT30 · capped at the far …</text>
-<rect x="720.0" y="1041.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="1056.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
-<text x="730.0" y="1072.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
+<circle cx="50" cy="464.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="468.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="459.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#8 Driver seat common return - motor, heater</text>
+<text x="70.0" y="476.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">and fan</text>
+<text x="380.0" y="468.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">GND</text>
+<path d="M390.0,464.0 L720.0,464.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,464.0 L720.0,464.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="454.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SD-1  ·  8 AWG BLK  ·  RT27  ·  capped at the far end</text>
+<rect x="720.0" y="443.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<line x1="30" y1="488.0" x2="390" y2="488.0" stroke="#d0d7de"/>
+<circle cx="50" cy="505.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="509.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="509.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">#8 sealing plug</text>
+<text x="406.0" y="509.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="522.0" x2="390" y2="522.0" stroke="#d0d7de"/>
+<circle cx="50" cy="539.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="543.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="543.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#12 Driver seat power feed</text>
+<text x="380.0" y="543.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K14 87</text>
+<path d="M390.0,539.0 L720.0,539.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,539.0 L720.0,539.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="529.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SD-3  ·  12 AWG RED  ·  RT27  ·  capped at the far end</text>
+<rect x="720.0" y="525.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<line x1="30" y1="556.0" x2="390" y2="556.0" stroke="#d0d7de"/>
+<circle cx="50" cy="573.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="577.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="577.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">#12 sealing plug</text>
+<text x="406.0" y="577.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="590.0" x2="390" y2="590.0" stroke="#d0d7de"/>
+<circle cx="50" cy="607.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="611.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="611.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Driver seat heater +</text>
+<text x="380.0" y="611.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU 1</text>
+<path d="M390.0,607.0 L720.0,607.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,607.0 L720.0,607.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="597.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SD-5  ·  14 AWG RED  ·  RT27  ·  capped at the far end</text>
+<rect x="720.0" y="593.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<line x1="30" y1="624.0" x2="390" y2="624.0" stroke="#d0d7de"/>
+<circle cx="50" cy="641.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="645.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="645.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Driver seat cooling fan +</text>
+<text x="380.0" y="645.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU 3</text>
+<path d="M390.0,641.0 L720.0,641.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,641.0 L720.0,641.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="631.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SD-6  ·  14 AWG RED  ·  RT27  ·  capped at the far end</text>
+<rect x="720.0" y="627.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<line x1="30" y1="658.0" x2="390" y2="658.0" stroke="#d0d7de"/>
+<circle cx="50" cy="675.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="679.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="679.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">#16 sealing plug</text>
+<text x="406.0" y="679.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="692.0" x2="390" y2="692.0" stroke="#d0d7de"/>
+<circle cx="50" cy="709.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="713.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="713.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">#16 sealing plug</text>
+<text x="406.0" y="713.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="726.0" x2="390" y2="726.0" stroke="#d0d7de"/>
+<circle cx="50" cy="743.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="747.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
+<text x="70.0" y="747.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">#16 sealing plug</text>
+<text x="406.0" y="747.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<rect x="30.0" y="796.0" width="360.0" height="354.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="818.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-SP  ·  HDP26-24-91SE / HDP24-24-91PE · mixed-contact circular  ·  Under the passenger seat</text>
+<line x1="30" y1="830.0" x2="390" y2="830.0" stroke="#d0d7de"/>
+<circle cx="50" cy="854.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="858.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="849.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#8 Passenger seat common return - motor,</text>
+<text x="70.0" y="866.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">heater and fan</text>
+<text x="380.0" y="858.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">GND</text>
+<path d="M390.0,854.0 L720.0,854.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,854.0 L720.0,854.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="844.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SP-1  ·  8 AWG BLK  ·  RT28  ·  capped at the far end</text>
+<rect x="720.0" y="833.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<line x1="30" y1="878.0" x2="390" y2="878.0" stroke="#d0d7de"/>
+<circle cx="50" cy="895.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="899.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="899.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">#8 sealing plug</text>
+<text x="406.0" y="899.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="912.0" x2="390" y2="912.0" stroke="#d0d7de"/>
+<circle cx="50" cy="929.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="933.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="933.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#12 Passenger seat power feed</text>
+<text x="380.0" y="933.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K15 87</text>
+<path d="M390.0,929.0 L720.0,929.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,929.0 L720.0,929.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="919.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SP-3  ·  12 AWG RED  ·  RT28  ·  capped at the far end</text>
+<rect x="720.0" y="915.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<line x1="30" y1="946.0" x2="390" y2="946.0" stroke="#d0d7de"/>
+<circle cx="50" cy="963.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="967.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="967.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">#12 sealing plug</text>
+<text x="406.0" y="967.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="980.0" x2="390" y2="980.0" stroke="#d0d7de"/>
+<circle cx="50" cy="997.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1001.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="1001.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Passenger seat heater +</text>
+<text x="380.0" y="1001.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU 2</text>
+<path d="M390.0,997.0 L720.0,997.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,997.0 L720.0,997.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="987.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SP-5  ·  14 AWG RED  ·  RT28  ·  capped at the far end</text>
+<rect x="720.0" y="983.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<line x1="30" y1="1014.0" x2="390" y2="1014.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1031.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1035.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="1035.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Passenger seat cooling fan +</text>
+<text x="380.0" y="1035.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU 4</text>
+<path d="M390.0,1031.0 L720.0,1031.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1031.0 L720.0,1031.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1021.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SP-6  ·  14 AWG RED  ·  RT28  ·  capped at the far end</text>
+<rect x="720.0" y="1017.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<line x1="30" y1="1048.0" x2="390" y2="1048.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1065.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1069.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="1069.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">#16 sealing plug</text>
+<text x="406.0" y="1069.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
 <line x1="30" y1="1082.0" x2="390" y2="1082.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1104.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1108.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
-<text x="70.0" y="1108.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker front R −</text>
-<text x="380.0" y="1108.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier front R −</text>
-<path d="M390.0,1104.0 L720.0,1104.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M390.0,1104.0 L720.0,1104.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="1094.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SPF-R-2  ·  16 AWG speaker  ·  capped at the far end</text>
-<rect x="720.0" y="1085.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="1100.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
-<text x="730.0" y="1116.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
-<rect x="30.0" y="1162.0" width="360.0" height="122.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-<text x="42.0" y="1184.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-TW-L  ·  DT06-2S  ·  Driver A-pillar base / sail panel</text>
-<line x1="30" y1="1196.0" x2="390" y2="1196.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1218.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1222.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
-<text x="70.0" y="1222.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker tweeter L +</text>
-<text x="380.0" y="1222.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier tweeter L +</text>
-<path d="M390.0,1218.0 L720.0,1218.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M390.0,1218.0 L720.0,1218.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="1208.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-TW-L-1 · 16 AWG speaker · RT30 · capped at the far …</text>
-<rect x="720.0" y="1199.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="1214.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
-<text x="730.0" y="1230.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
-<line x1="30" y1="1240.0" x2="390" y2="1240.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1262.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1266.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
-<text x="70.0" y="1266.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker tweeter L −</text>
-<text x="380.0" y="1266.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier tweeter L −</text>
-<path d="M390.0,1262.0 L720.0,1262.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M390.0,1262.0 L720.0,1262.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="1252.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-TW-L-2  ·  16 AWG speaker  ·  capped at the far end</text>
-<rect x="720.0" y="1243.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="1258.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
-<text x="730.0" y="1274.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
-<rect x="30.0" y="1320.0" width="360.0" height="122.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-<text x="42.0" y="1342.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-TW-R  ·  DT06-2S  ·  Passenger A-pillar base / sail panel</text>
-<line x1="30" y1="1354.0" x2="390" y2="1354.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1376.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1380.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
-<text x="70.0" y="1380.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker tweeter R +</text>
-<text x="380.0" y="1380.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier tweeter R +</text>
-<path d="M390.0,1376.0 L720.0,1376.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M390.0,1376.0 L720.0,1376.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="1366.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-TW-R-1 · 16 AWG speaker · RT30 · capped at the far …</text>
-<rect x="720.0" y="1357.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="1372.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
-<text x="730.0" y="1388.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
-<line x1="30" y1="1398.0" x2="390" y2="1398.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1420.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1424.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
-<text x="70.0" y="1424.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker tweeter R −</text>
-<text x="380.0" y="1424.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier tweeter R −</text>
-<path d="M390.0,1420.0 L720.0,1420.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M390.0,1420.0 L720.0,1420.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="1410.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-TW-R-2  ·  16 AWG speaker  ·  capped at the far end</text>
-<rect x="720.0" y="1401.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="1416.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
-<text x="730.0" y="1432.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
-<rect x="30.0" y="1478.0" width="360.0" height="122.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-<text x="42.0" y="1500.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-CTR  ·  DT06-2S  ·  Console, between the seats</text>
-<line x1="30" y1="1512.0" x2="390" y2="1512.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1534.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1538.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
-<text x="70.0" y="1538.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker centre +</text>
-<text x="380.0" y="1538.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier centre +</text>
-<path d="M390.0,1534.0 L720.0,1534.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M390.0,1534.0 L720.0,1534.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="1524.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-CTR-1 · 16 AWG speaker · RT30 · capped at the far end …</text>
-<rect x="720.0" y="1515.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="1530.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
-<text x="730.0" y="1546.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
-<line x1="30" y1="1556.0" x2="390" y2="1556.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1578.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1582.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
-<text x="70.0" y="1582.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker centre −</text>
-<text x="380.0" y="1582.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier centre −</text>
-<path d="M390.0,1578.0 L720.0,1578.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<path d="M390.0,1578.0 L720.0,1578.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
-<text x="406.0" y="1568.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-CTR-2  ·  16 AWG speaker  ·  capped at the far end</text>
-<rect x="720.0" y="1559.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="1574.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
-<text x="730.0" y="1590.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
-<rect x="30.0" y="1636.0" width="360.0" height="736.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-<text x="42.0" y="1658.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-COL  ·  hard-wired at the box, no plug there  ·  PMU box</text>
-<line x1="30" y1="1670.0" x2="390" y2="1670.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1700.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1704.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
-<text x="70.0" y="1704.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Key ladder</text>
-<text x="380.0" y="1704.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A16</text>
-<path d="M390.0,1700.0 L720.0,1700.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,1700.0 L720.0,1700.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="1690.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-1  ·  16 AWG GRY  ·  RT10</text>
-<rect x="720.0" y="1673.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="1688.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Ignition switch: ACC → 33 kΩ · IG → 15 kΩ · ST → 6.8 kΩ, all summed onto this wire. D-610: its resistors</text>
-<text x="730.0" y="1704.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">and diodes are potted into a short sealed pigtail at the switch - part of the switch, not of the</text>
-<text x="730.0" y="1720.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">harness</text>
-<line x1="30" y1="1730.0" x2="390" y2="1730.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1099.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1103.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="1103.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">#16 sealing plug</text>
+<text x="406.0" y="1103.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="1116.0" x2="390" y2="1116.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1133.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1137.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
+<text x="70.0" y="1137.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">#16 sealing plug</text>
+<text x="406.0" y="1137.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<rect x="30.0" y="1186.0" width="360.0" height="122.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="1208.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-SPF-L  ·  DT06-2S  ·  Driver kick panel</text>
+<line x1="30" y1="1220.0" x2="390" y2="1220.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1242.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1246.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="1246.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker front L +</text>
+<text x="380.0" y="1246.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier front L +</text>
+<path d="M390.0,1242.0 L720.0,1242.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1242.0 L720.0,1242.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1232.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SPF-L-1 · 16 AWG speaker · RT30 · capped at the far …</text>
+<rect x="720.0" y="1223.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1238.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
+<text x="730.0" y="1254.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
+<line x1="30" y1="1264.0" x2="390" y2="1264.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1286.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1290.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="1290.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker front L −</text>
+<text x="380.0" y="1290.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier front L −</text>
+<path d="M390.0,1286.0 L720.0,1286.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1286.0 L720.0,1286.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1276.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SPF-L-2  ·  16 AWG speaker  ·  capped at the far end</text>
+<rect x="720.0" y="1267.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1282.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
+<text x="730.0" y="1298.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
+<rect x="30.0" y="1344.0" width="360.0" height="122.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="1366.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-SPF-R  ·  DT06-2S  ·  Passenger kick panel</text>
+<line x1="30" y1="1378.0" x2="390" y2="1378.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1400.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1404.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="1404.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker front R +</text>
+<text x="380.0" y="1404.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier front R +</text>
+<path d="M390.0,1400.0 L720.0,1400.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1400.0 L720.0,1400.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1390.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SPF-R-1 · 16 AWG speaker · RT30 · capped at the far …</text>
+<rect x="720.0" y="1381.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1396.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
+<text x="730.0" y="1412.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
+<line x1="30" y1="1422.0" x2="390" y2="1422.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1444.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1448.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="1448.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker front R −</text>
+<text x="380.0" y="1448.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier front R −</text>
+<path d="M390.0,1444.0 L720.0,1444.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1444.0 L720.0,1444.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1434.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-SPF-R-2  ·  16 AWG speaker  ·  capped at the far end</text>
+<rect x="720.0" y="1425.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1440.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
+<text x="730.0" y="1456.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
+<rect x="30.0" y="1502.0" width="360.0" height="122.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="1524.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-TW-L  ·  DT06-2S  ·  Driver A-pillar base / sail panel</text>
+<line x1="30" y1="1536.0" x2="390" y2="1536.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1558.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1562.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="1562.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker tweeter L +</text>
+<text x="380.0" y="1562.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier tweeter L +</text>
+<path d="M390.0,1558.0 L720.0,1558.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1558.0 L720.0,1558.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1548.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-TW-L-1 · 16 AWG speaker · RT30 · capped at the far …</text>
+<rect x="720.0" y="1539.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1554.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
+<text x="730.0" y="1570.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
+<line x1="30" y1="1580.0" x2="390" y2="1580.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1602.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1606.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="1606.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker tweeter L −</text>
+<text x="380.0" y="1606.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier tweeter L −</text>
+<path d="M390.0,1602.0 L720.0,1602.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1602.0 L720.0,1602.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1592.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-TW-L-2  ·  16 AWG speaker  ·  capped at the far end</text>
+<rect x="720.0" y="1583.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1598.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
+<text x="730.0" y="1614.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
+<rect x="30.0" y="1660.0" width="360.0" height="122.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="1682.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-TW-R  ·  DT06-2S  ·  Passenger A-pillar base / sail panel</text>
+<line x1="30" y1="1694.0" x2="390" y2="1694.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1716.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1720.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="1720.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker tweeter R +</text>
+<text x="380.0" y="1720.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier tweeter R +</text>
+<path d="M390.0,1716.0 L720.0,1716.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1716.0 L720.0,1716.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1706.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-TW-R-1 · 16 AWG speaker · RT30 · capped at the far …</text>
+<rect x="720.0" y="1697.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1712.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
+<text x="730.0" y="1728.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
+<line x1="30" y1="1738.0" x2="390" y2="1738.0" stroke="#d0d7de"/>
 <circle cx="50" cy="1760.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="1764.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
-<text x="70.0" y="1764.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Headlight ladder</text>
-<text x="380.0" y="1764.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A15</text>
-<path d="M390.0,1760.0 L720.0,1760.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,1760.0 L720.0,1760.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="1750.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-2  ·  16 AWG GRY  ·  RT10</text>
-<rect x="720.0" y="1733.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="1748.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Light switch E-01: PARK → 33 kΩ · HEAD → 15 kΩ · DIMMER-HI → 8.2 kΩ (fed from the HEAD side) ·</text>
-<text x="730.0" y="1764.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">PASS → 3.3 kΩ. D-610: its resistors and diodes are potted into a short sealed pigtail at the switch -</text>
-<text x="730.0" y="1780.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">part of the switch, not of the harness</text>
-<line x1="30" y1="1790.0" x2="390" y2="1790.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1812.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1816.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
-<text x="70.0" y="1816.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Turn stalk ladder</text>
-<text x="380.0" y="1816.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A1</text>
-<path d="M390.0,1812.0 L720.0,1812.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,1812.0 L720.0,1812.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="1802.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-3  ·  16 AWG GRY  ·  RT10</text>
-<rect x="720.0" y="1793.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="1808.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Stalk F-02: LEFT 1.8 kΩ · RIGHT 10 kΩ · OFF 47 kΩ, contacts to column ground. D-610: its resistors and</text>
-<text x="730.0" y="1824.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">diodes are potted into a short sealed pigtail at the switch - part of the switch, not of the harness</text>
-<line x1="30" y1="1834.0" x2="390" y2="1834.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1872.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1876.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
-<text x="70.0" y="1876.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Wiper stalk ladder</text>
-<text x="380.0" y="1876.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A2</text>
-<path d="M390.0,1872.0 L720.0,1872.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,1872.0 L720.0,1872.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="1862.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-4  ·  16 AWG GRY  ·  RT10</text>
-<rect x="720.0" y="1837.0" width="560.0" height="70.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="1852.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Stalk D-03: HIGH 4.7 kΩ · LOW 10 kΩ · INT 18 kΩ · OFF 47 kΩ · WASH 470 Ω + 1N4148 (band toward the</text>
-<text x="730.0" y="1868.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">contact; R12 / Y2, ladder_a2.cir - the 1.8 kΩ + 1N5819 of D-381 leaked hot and lifted OFF past the fault</text>
-<text x="730.0" y="1884.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">line). D-610: its resistors and diodes are potted into a short sealed pigtail at the switch - part of the</text>
-<text x="730.0" y="1900.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">switch, not of the harness</text>
-<line x1="30" y1="1910.0" x2="390" y2="1910.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1932.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1936.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
-<text x="70.0" y="1936.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Brake pedal switch</text>
-<text x="380.0" y="1936.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A3</text>
-<path d="M390.0,1932.0 L720.0,1932.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,1932.0 L720.0,1932.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="1922.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-5  ·  16 AWG GRY  ·  RT14</text>
-<rect x="720.0" y="1913.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="1928.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Pedal switch F-11 through 4.7 kΩ; other terminal → dash ground. D-610: the series resistor sits on</text>
-<text x="730.0" y="1944.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the PMU box's board at this wire's end, not in the harness</text>
-<line x1="30" y1="1954.0" x2="390" y2="1954.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1976.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1980.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
-<text x="70.0" y="1980.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Brake — wake source</text>
-<text x="380.0" y="1980.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">WAKE 6</text>
-<path d="M390.0,1976.0 L720.0,1976.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,1976.0 L720.0,1976.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="1966.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-6  ·  16 AWG BLU  ·  RT14</text>
-<rect x="720.0" y="1957.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="1972.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Spare P084 adjustable plunger switch on the brake pedal, fed from the F3 switch supply branched</text>
-<text x="730.0" y="1988.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">off L3-COL 10 in the leg through F24 (D-278, D-412)</text>
-<line x1="30" y1="1998.0" x2="390" y2="1998.0" stroke="#d0d7de"/>
-<circle cx="50" cy="2036.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="2040.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
-<text x="70.0" y="2040.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Horn + wink request</text>
-<text x="380.0" y="2040.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A8</text>
-<path d="M390.0,2036.0 L720.0,2036.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,2036.0 L720.0,2036.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="2026.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-7  ·  16 AWG GRY  ·  RT10</text>
-<rect x="720.0" y="2001.0" width="560.0" height="70.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="2016.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Horn pad through 8.2 kΩ · wink L NO through 18 kΩ · wink R NO through 33 kΩ — three resistors</text>
-<text x="730.0" y="2032.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">joined onto this wire; the two wink resistors sit on the plate board and reach it on J2 pin 3 through</text>
-<text x="730.0" y="2048.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">DP-CUR 7 (D-499, D-504, D-521). D-610: the horn pad's 8.2 kΩ sits on the PMU box's board; the winks'</text>
-<text x="730.0" y="2064.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">are on the CUR board</text>
-<line x1="30" y1="2074.0" x2="390" y2="2074.0" stroke="#d0d7de"/>
-<circle cx="50" cy="2091.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="2095.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
-<text x="70.0" y="2095.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">ACC — wake source</text>
-<text x="380.0" y="2095.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">WAKE 1</text>
-<path d="M390.0,2091.0 L720.0,2091.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,2091.0 L720.0,2091.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="2081.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-8  ·  16 AWG BLU  ·  RT10</text>
-<rect x="650.0" y="2084.0" width="44.0" height="14.0" rx="3" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="672.0" y="2109.0" font-size="10" text-anchor="middle" font-weight="700" fill="#1f2328">33 kΩ</text>
-<rect x="720.0" y="2077.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="2095.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Ignition switch ACC terminal (raw 12 V)</text>
-<line x1="30" y1="2108.0" x2="390" y2="2108.0" stroke="#d0d7de"/>
-<circle cx="50" cy="2125.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="2129.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
-<text x="70.0" y="2129.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">RUN — wake source</text>
-<text x="380.0" y="2129.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">WAKE 2</text>
-<path d="M390.0,2125.0 L720.0,2125.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,2125.0 L720.0,2125.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="2115.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-9  ·  16 AWG BLU  ·  RT10</text>
-<rect x="650.0" y="2118.0" width="44.0" height="14.0" rx="3" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="672.0" y="2143.0" font-size="10" text-anchor="middle" font-weight="700" fill="#1f2328">15 kΩ</text>
-<rect x="720.0" y="2111.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="2129.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Ignition switch IG terminal (raw 12 V)</text>
-<line x1="30" y1="2142.0" x2="390" y2="2142.0" stroke="#d0d7de"/>
-<circle cx="50" cy="2164.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="2168.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">10</text>
-<text x="70.0" y="2168.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Switch supply +12 V</text>
-<text x="380.0" y="2168.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F3</text>
-<path d="M390.0,2164.0 L720.0,2164.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,2164.0 L720.0,2164.0" fill="none" stroke="#e8559c" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="2154.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-10  ·  16 AWG PNK  ·  RT10</text>
-<rect x="720.0" y="2145.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="2160.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Ignition switch B terminal · light switch E-01 common through F24 in the PMU box after F3, on its</text>
-<text x="730.0" y="2176.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">own wire L3-COL 11 (D-599)</text>
-<line x1="30" y1="2186.0" x2="390" y2="2186.0" stroke="#d0d7de"/>
-<circle cx="50" cy="2210.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="2214.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">11</text>
-<text x="70.0" y="2205.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Light switch common and the brake-wake</text>
-<text x="70.0" y="2222.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">plunger - their own supply (D-599)</text>
-<text x="380.0" y="2214.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F24</text>
-<path d="M390.0,2210.0 L720.0,2210.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,2210.0 L720.0,2210.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="2200.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-11  ·  16 AWG RED  ·  RT10</text>
-<rect x="720.0" y="2189.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="2214.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Light switch E-01 common and the brake plunger (DV19, DV25)</text>
-<line x1="30" y1="2234.0" x2="390" y2="2234.0" stroke="#d0d7de"/>
-<circle cx="50" cy="2256.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="2260.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">12</text>
-<text x="70.0" y="2260.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Washer relay K12 coil return</text>
-<text x="380.0" y="2260.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K12 85</text>
-<path d="M390.0,2256.0 L720.0,2256.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,2256.0 L720.0,2256.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="2246.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-12  ·  16 AWG BLU  ·  RT10</text>
-<rect x="720.0" y="2237.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="2252.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Wiper stalk D-03 WASH contact (same terminal as the WASH ladder leg); contact's other side →</text>
-<text x="730.0" y="2268.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">column ground</text>
-<line x1="30" y1="2278.0" x2="390" y2="2278.0" stroke="#d0d7de"/>
-<circle cx="50" cy="2295.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="2299.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">13</text>
-<text x="70.0" y="2299.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Parking brake switch → brake warning lamp</text>
-<path d="M390.0,2295.0 L720.0,2295.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,2295.0 L720.0,2295.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="2285.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-13  ·  16 AWG GRY  ·  RT11</text>
-<rect x="720.0" y="2281.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="2299.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Parking brake switch C-04 terminal BR (switch body grounds through the lever bracket)</text>
-<line x1="30" y1="2312.0" x2="390" y2="2312.0" stroke="#d0d7de"/>
-<circle cx="50" cy="2342.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="2346.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">14</text>
-<text x="70.0" y="2346.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Kick-down switch supply +12 V</text>
-<text x="380.0" y="2346.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F21</text>
-<path d="M390.0,2342.0 L720.0,2342.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,2342.0 L720.0,2342.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="2332.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-14  ·  16 AWG RED  ·  RT14</text>
-<rect x="720.0" y="2315.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="2330.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Kick-down switch B-32 at the throttle pedal, one terminal. Ignition-fed off O12 through its own</text>
-<text x="730.0" y="2346.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">inline fuse - never off F3, whose 5 A also carries the ignition switch, the light switch and the wake</text>
-<text x="730.0" y="2362.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">stages (D-320 / W-320)</text>
-<rect x="30.0" y="2408.0" width="360.0" height="128.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-<text x="42.0" y="2430.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-DASH  ·  hard-wired at the box, no plug there  ·  PMU box</text>
-<line x1="30" y1="2442.0" x2="390" y2="2442.0" stroke="#d0d7de"/>
-<circle cx="50" cy="2472.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="2476.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
-<text x="70.0" y="2476.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Illumination bus</text>
-<text x="380.0" y="2476.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O20</text>
-<path d="M390.0,2472.0 L720.0,2472.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,2472.0 L720.0,2472.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="2462.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-DASH-1  ·  16 AWG RED  ·  RT11</text>
-<rect x="720.0" y="2445.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="2460.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Dash illumination lamps E-06, E-07, E-10 (RL) + head unit illumination wire - O20 is the illumination</text>
-<text x="730.0" y="2476.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">bus only, on with PARK / HEAD, plain on/off; the lamps are dimmed through their return on</text>
-<text x="730.0" y="2492.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">DP-DCU 35 (D-462, D-567, D-577)</text>
-<line x1="30" y1="2502.0" x2="390" y2="2502.0" stroke="#d0d7de"/>
-<circle cx="50" cy="2519.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="2523.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
-<text x="70.0" y="2523.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Courtesy — glove box lamp</text>
-<text x="380.0" y="2523.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F19</text>
-<path d="M390.0,2519.0 L720.0,2519.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,2519.0 L720.0,2519.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="2509.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-DASH-2  ·  16 AWG RED  ·  RT12</text>
-<rect x="720.0" y="2505.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="2523.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Glove box lamp H-01 +; lamp − → lid switch H-02 → dash ground</text>
-<rect x="30.0" y="2572.0" width="360.0" height="136.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-<text x="42.0" y="2594.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-HU  ·  hard-wired at the box, no plug there  ·  PMU box</text>
-<line x1="30" y1="2606.0" x2="390" y2="2606.0" stroke="#d0d7de"/>
-<circle cx="50" cy="2623.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="2627.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
-<text x="70.0" y="2627.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Accessory — head unit ACC + USB-C</text>
-<text x="380.0" y="2627.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O10</text>
-<path d="M390.0,2623.0 L720.0,2623.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,2623.0 L720.0,2623.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="2613.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-HU-1  ·  14 AWG ORN  ·  RT11</text>
-<rect x="720.0" y="2609.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="2627.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Head unit red (ACC) wire; USB-C module +</text>
-<line x1="30" y1="2640.0" x2="390" y2="2640.0" stroke="#d0d7de"/>
-<circle cx="50" cy="2657.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="2661.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
-<text x="70.0" y="2661.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Head unit memory / constant</text>
-<text x="380.0" y="2661.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F1</text>
-<path d="M390.0,2657.0 L720.0,2657.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,2657.0 L720.0,2657.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="2647.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-HU-2  ·  14 AWG RED  ·  RT11</text>
-<rect x="720.0" y="2643.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="2661.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Head unit yellow (BATT) wire</text>
-<line x1="30" y1="2674.0" x2="390" y2="2674.0" stroke="#d0d7de"/>
-<circle cx="50" cy="2691.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="2695.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
-<text x="70.0" y="2695.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Head unit parking-brake input</text>
-<text x="380.0" y="2695.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-COL 13</text>
-<path d="M390.0,2691.0 L720.0,2691.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,2691.0 L720.0,2691.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="2681.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-HU-3  ·  16 AWG GRY  ·  RT11</text>
-<rect x="720.0" y="2677.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="2695.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Head unit light-green lead</text>
-<path d="M30.0,2754.0 L66.0,2754.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M30.0,2754.0 L66.0,2754.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
-<text x="76.0" y="2758.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">RED</text>
-<path d="M123.6,2754.0 L159.6,2754.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M123.6,2754.0 L159.6,2754.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="169.6" y="2758.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRY</text>
-<path d="M217.3,2754.0 L253.3,2754.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M217.3,2754.0 L253.3,2754.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
-<text x="263.3" y="2758.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLU</text>
-<path d="M310.9,2754.0 L346.9,2754.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M310.9,2754.0 L346.9,2754.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
-<text x="356.9" y="2758.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ORN</text>
-<path d="M407.6,2754.0 L443.6,2754.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M407.6,2754.0 L443.6,2754.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
-<text x="453.6" y="2758.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLK</text>
-<path d="M500.2,2754.0 L536.2,2754.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M500.2,2754.0 L536.2,2754.0" fill="none" stroke="#e8559c" stroke-width="5" stroke-linejoin="round"/>
-<text x="546.2" y="2758.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">PNK</text>
-<text x="30.0" y="2784.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">Solid wire: live. Dashed: run and capped at the far end. A box on a wire is a resistor potted into the switch's pigtail (D-610); #12 / #16 / #20 is a circular's contact size. Generated by rx7.py diagrams - do not edit.</text>
+<text x="70.0" y="1764.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker tweeter R −</text>
+<text x="380.0" y="1764.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier tweeter R −</text>
+<path d="M390.0,1760.0 L720.0,1760.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1760.0 L720.0,1760.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1750.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-TW-R-2  ·  16 AWG speaker  ·  capped at the far end</text>
+<rect x="720.0" y="1741.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1756.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
+<text x="730.0" y="1772.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
+<rect x="30.0" y="1818.0" width="360.0" height="122.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="1840.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-CTR  ·  DT06-2S  ·  Console, between the seats</text>
+<line x1="30" y1="1852.0" x2="390" y2="1852.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1874.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1878.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="1878.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker centre +</text>
+<text x="380.0" y="1878.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier centre +</text>
+<path d="M390.0,1874.0 L720.0,1874.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1874.0 L720.0,1874.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1864.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-CTR-1 · 16 AWG speaker · RT30 · capped at the far end …</text>
+<rect x="720.0" y="1855.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1870.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
+<text x="730.0" y="1886.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
+<line x1="30" y1="1896.0" x2="390" y2="1896.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1918.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1922.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="1922.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Speaker centre −</text>
+<text x="380.0" y="1922.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier centre −</text>
+<path d="M390.0,1918.0 L720.0,1918.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1918.0 L720.0,1918.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1908.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-CTR-2  ·  16 AWG speaker  ·  capped at the far end</text>
+<rect x="720.0" y="1899.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1914.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The speaker's lead through the mating DT06-2S, capped until luxury picks it (A17). Twisted with its</text>
+<text x="730.0" y="1930.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pair; never shares a chassis ground - the amplifier's outputs are bridged</text>
+<rect x="30.0" y="1976.0" width="360.0" height="736.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="1998.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-COL  ·  hard-wired at the box, no plug there  ·  PMU box</text>
+<line x1="30" y1="2010.0" x2="390" y2="2010.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2040.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2044.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="2044.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Key ladder</text>
+<text x="380.0" y="2044.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A16</text>
+<path d="M390.0,2040.0 L720.0,2040.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2040.0 L720.0,2040.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2030.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-1  ·  16 AWG GRY  ·  RT10</text>
+<rect x="720.0" y="2013.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2028.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Ignition switch: ACC → 33 kΩ · IG → 15 kΩ · ST → 6.8 kΩ, all summed onto this wire. D-610: its resistors</text>
+<text x="730.0" y="2044.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">and diodes are potted into a short sealed pigtail at the switch - part of the switch, not of the</text>
+<text x="730.0" y="2060.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">harness</text>
+<line x1="30" y1="2070.0" x2="390" y2="2070.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2100.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2104.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="2104.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Headlight ladder</text>
+<text x="380.0" y="2104.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A15</text>
+<path d="M390.0,2100.0 L720.0,2100.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2100.0 L720.0,2100.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2090.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-2  ·  16 AWG GRY  ·  RT10</text>
+<rect x="720.0" y="2073.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2088.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Light switch E-01: PARK → 33 kΩ · HEAD → 15 kΩ · DIMMER-HI → 8.2 kΩ (fed from the HEAD side) ·</text>
+<text x="730.0" y="2104.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">PASS → 3.3 kΩ. D-610: its resistors and diodes are potted into a short sealed pigtail at the switch -</text>
+<text x="730.0" y="2120.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">part of the switch, not of the harness</text>
+<line x1="30" y1="2130.0" x2="390" y2="2130.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2152.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2156.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="2156.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Turn stalk ladder</text>
+<text x="380.0" y="2156.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A1</text>
+<path d="M390.0,2152.0 L720.0,2152.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2152.0 L720.0,2152.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2142.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-3  ·  16 AWG GRY  ·  RT10</text>
+<rect x="720.0" y="2133.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2148.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Stalk F-02: LEFT 1.8 kΩ · RIGHT 10 kΩ · OFF 47 kΩ, contacts to column ground. D-610: its resistors and</text>
+<text x="730.0" y="2164.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">diodes are potted into a short sealed pigtail at the switch - part of the switch, not of the harness</text>
+<line x1="30" y1="2174.0" x2="390" y2="2174.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2212.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2216.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="2216.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Wiper stalk ladder</text>
+<text x="380.0" y="2216.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A2</text>
+<path d="M390.0,2212.0 L720.0,2212.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2212.0 L720.0,2212.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2202.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-4  ·  16 AWG GRY  ·  RT10</text>
+<rect x="720.0" y="2177.0" width="560.0" height="70.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2192.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Stalk D-03: HIGH 4.7 kΩ · LOW 10 kΩ · INT 18 kΩ · OFF 47 kΩ · WASH 470 Ω + 1N4148 (band toward the</text>
+<text x="730.0" y="2208.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">contact; R12 / Y2, ladder_a2.cir - the 1.8 kΩ + 1N5819 of D-381 leaked hot and lifted OFF past the fault</text>
+<text x="730.0" y="2224.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">line). D-610: its resistors and diodes are potted into a short sealed pigtail at the switch - part of the</text>
+<text x="730.0" y="2240.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">switch, not of the harness</text>
+<line x1="30" y1="2250.0" x2="390" y2="2250.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2272.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2276.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="2276.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Brake pedal switch</text>
+<text x="380.0" y="2276.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A3</text>
+<path d="M390.0,2272.0 L720.0,2272.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2272.0 L720.0,2272.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2262.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-5  ·  16 AWG GRY  ·  RT14</text>
+<rect x="720.0" y="2253.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2268.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Pedal switch F-11 through 4.7 kΩ; other terminal → dash ground. D-610: the series resistor sits on</text>
+<text x="730.0" y="2284.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the PMU box's board at this wire's end, not in the harness</text>
+<line x1="30" y1="2294.0" x2="390" y2="2294.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2316.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2320.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="2320.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Brake — wake source</text>
+<text x="380.0" y="2320.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">WAKE 6</text>
+<path d="M390.0,2316.0 L720.0,2316.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2316.0 L720.0,2316.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2306.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-6  ·  16 AWG BLU  ·  RT14</text>
+<rect x="720.0" y="2297.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2312.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Spare P084 adjustable plunger switch on the brake pedal, fed from the F3 switch supply branched</text>
+<text x="730.0" y="2328.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">off L3-COL 10 in the leg through F24 (D-278, D-412)</text>
+<line x1="30" y1="2338.0" x2="390" y2="2338.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2376.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2380.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="2380.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Horn + wink request</text>
+<text x="380.0" y="2380.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A8</text>
+<path d="M390.0,2376.0 L720.0,2376.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2376.0 L720.0,2376.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2366.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-7  ·  16 AWG GRY  ·  RT10</text>
+<rect x="720.0" y="2341.0" width="560.0" height="70.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2356.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Horn pad through 8.2 kΩ · wink L NO through 18 kΩ · wink R NO through 33 kΩ — three resistors</text>
+<text x="730.0" y="2372.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">joined onto this wire; the two wink resistors sit on the plate board and reach it on J2 pin 3 through</text>
+<text x="730.0" y="2388.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">DP-CUR 7 (D-499, D-504, D-521). D-610: the horn pad's 8.2 kΩ sits on the PMU box's board; the winks'</text>
+<text x="730.0" y="2404.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">are on the CUR board</text>
+<line x1="30" y1="2414.0" x2="390" y2="2414.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2431.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2435.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="2435.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">ACC — wake source</text>
+<text x="380.0" y="2435.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">WAKE 1</text>
+<path d="M390.0,2431.0 L720.0,2431.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2431.0 L720.0,2431.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2421.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-8  ·  16 AWG BLU  ·  RT10</text>
+<rect x="650.0" y="2424.0" width="44.0" height="14.0" rx="3" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="672.0" y="2449.0" font-size="10" text-anchor="middle" font-weight="700" fill="#1f2328">33 kΩ</text>
+<rect x="720.0" y="2417.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2435.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Ignition switch ACC terminal (raw 12 V)</text>
+<line x1="30" y1="2448.0" x2="390" y2="2448.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2465.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2469.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
+<text x="70.0" y="2469.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">RUN — wake source</text>
+<text x="380.0" y="2469.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">WAKE 2</text>
+<path d="M390.0,2465.0 L720.0,2465.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2465.0 L720.0,2465.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2455.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-9  ·  16 AWG BLU  ·  RT10</text>
+<rect x="650.0" y="2458.0" width="44.0" height="14.0" rx="3" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="672.0" y="2483.0" font-size="10" text-anchor="middle" font-weight="700" fill="#1f2328">15 kΩ</text>
+<rect x="720.0" y="2451.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2469.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Ignition switch IG terminal (raw 12 V)</text>
+<line x1="30" y1="2482.0" x2="390" y2="2482.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2504.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2508.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">10</text>
+<text x="70.0" y="2508.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Switch supply +12 V</text>
+<text x="380.0" y="2508.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F3</text>
+<path d="M390.0,2504.0 L720.0,2504.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2504.0 L720.0,2504.0" fill="none" stroke="#e8559c" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2494.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-10  ·  16 AWG PNK  ·  RT10</text>
+<rect x="720.0" y="2485.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2500.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Ignition switch B terminal · light switch E-01 common through F24 in the PMU box after F3, on its</text>
+<text x="730.0" y="2516.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">own wire L3-COL 11 (D-599)</text>
+<line x1="30" y1="2526.0" x2="390" y2="2526.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2550.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2554.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">11</text>
+<text x="70.0" y="2545.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Light switch common and the brake-wake</text>
+<text x="70.0" y="2562.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">plunger - their own supply (D-599)</text>
+<text x="380.0" y="2554.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F24</text>
+<path d="M390.0,2550.0 L720.0,2550.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2550.0 L720.0,2550.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2540.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-11  ·  16 AWG RED  ·  RT10</text>
+<rect x="720.0" y="2529.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2554.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Light switch E-01 common and the brake plunger (DV19, DV25)</text>
+<line x1="30" y1="2574.0" x2="390" y2="2574.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2596.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2600.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">12</text>
+<text x="70.0" y="2600.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Washer relay K12 coil return</text>
+<text x="380.0" y="2600.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K12 85</text>
+<path d="M390.0,2596.0 L720.0,2596.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2596.0 L720.0,2596.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2586.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-12  ·  16 AWG BLU  ·  RT10</text>
+<rect x="720.0" y="2577.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2592.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Wiper stalk D-03 WASH contact (same terminal as the WASH ladder leg); contact's other side →</text>
+<text x="730.0" y="2608.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">column ground</text>
+<line x1="30" y1="2618.0" x2="390" y2="2618.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2635.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2639.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">13</text>
+<text x="70.0" y="2639.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Parking brake switch → brake warning lamp</text>
+<path d="M390.0,2635.0 L720.0,2635.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2635.0 L720.0,2635.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2625.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-13  ·  16 AWG GRY  ·  RT11</text>
+<rect x="720.0" y="2621.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2639.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Parking brake switch C-04 terminal BR (switch body grounds through the lever bracket)</text>
+<line x1="30" y1="2652.0" x2="390" y2="2652.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2682.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2686.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">14</text>
+<text x="70.0" y="2686.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Kick-down switch supply +12 V</text>
+<text x="380.0" y="2686.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F21</text>
+<path d="M390.0,2682.0 L720.0,2682.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2682.0 L720.0,2682.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2672.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-COL-14  ·  16 AWG RED  ·  RT14</text>
+<rect x="720.0" y="2655.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2670.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Kick-down switch B-32 at the throttle pedal, one terminal. Ignition-fed off O12 through its own</text>
+<text x="730.0" y="2686.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">inline fuse - never off F3, whose 5 A also carries the ignition switch, the light switch and the wake</text>
+<text x="730.0" y="2702.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">stages (D-320 / W-320)</text>
+<rect x="30.0" y="2748.0" width="360.0" height="128.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="2770.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-DASH  ·  hard-wired at the box, no plug there  ·  PMU box</text>
+<line x1="30" y1="2782.0" x2="390" y2="2782.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2812.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2816.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="2816.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Illumination bus</text>
+<text x="380.0" y="2816.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O20</text>
+<path d="M390.0,2812.0 L720.0,2812.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2812.0 L720.0,2812.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2802.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-DASH-1  ·  16 AWG RED  ·  RT11</text>
+<rect x="720.0" y="2785.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2800.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Dash illumination lamps E-06, E-07, E-10 (RL) + head unit illumination wire - O20 is the illumination</text>
+<text x="730.0" y="2816.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">bus only, on with PARK / HEAD, plain on/off; the lamps are dimmed through their return on</text>
+<text x="730.0" y="2832.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">DP-DCU 35 (D-462, D-567, D-577)</text>
+<line x1="30" y1="2842.0" x2="390" y2="2842.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2859.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2863.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="2863.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Courtesy — glove box lamp</text>
+<text x="380.0" y="2863.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F19</text>
+<path d="M390.0,2859.0 L720.0,2859.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2859.0 L720.0,2859.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2849.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-DASH-2  ·  16 AWG RED  ·  RT12</text>
+<rect x="720.0" y="2845.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2863.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Glove box lamp H-01 +; lamp − → lid switch H-02 → dash ground</text>
+<rect x="30.0" y="2912.0" width="360.0" height="136.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="2934.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L3-HU  ·  hard-wired at the box, no plug there  ·  PMU box</text>
+<line x1="30" y1="2946.0" x2="390" y2="2946.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2963.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2967.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="2967.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Accessory — head unit ACC + USB-C</text>
+<text x="380.0" y="2967.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O10</text>
+<path d="M390.0,2963.0 L720.0,2963.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2963.0 L720.0,2963.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2953.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-HU-1  ·  14 AWG ORN  ·  RT11</text>
+<rect x="720.0" y="2949.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2967.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Head unit red (ACC) wire; USB-C module +</text>
+<line x1="30" y1="2980.0" x2="390" y2="2980.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2997.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3001.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="3001.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Head unit memory / constant</text>
+<text x="380.0" y="3001.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F1</text>
+<path d="M390.0,2997.0 L720.0,2997.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2997.0 L720.0,2997.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2987.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-HU-2  ·  14 AWG RED  ·  RT11</text>
+<rect x="720.0" y="2983.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="3001.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Head unit yellow (BATT) wire</text>
+<line x1="30" y1="3014.0" x2="390" y2="3014.0" stroke="#d0d7de"/>
+<circle cx="50" cy="3031.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3035.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="3035.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Head unit parking-brake input</text>
+<text x="380.0" y="3035.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L3-COL 13</text>
+<path d="M390.0,3031.0 L720.0,3031.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,3031.0 L720.0,3031.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="3021.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L3-HU-3  ·  16 AWG GRY  ·  RT11</text>
+<rect x="720.0" y="3017.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="3035.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Head unit light-green lead</text>
+<path d="M30.0,3094.0 L66.0,3094.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M30.0,3094.0 L66.0,3094.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="76.0" y="3098.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">RED</text>
+<path d="M123.6,3094.0 L159.6,3094.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M123.6,3094.0 L159.6,3094.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="169.6" y="3098.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRY</text>
+<path d="M217.3,3094.0 L253.3,3094.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M217.3,3094.0 L253.3,3094.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="263.3" y="3098.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLU</text>
+<path d="M310.9,3094.0 L346.9,3094.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M310.9,3094.0 L346.9,3094.0" fill="none" stroke="#ef6c00" stroke-width="5" stroke-linejoin="round"/>
+<text x="356.9" y="3098.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">ORN</text>
+<path d="M407.6,3094.0 L443.6,3094.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M407.6,3094.0 L443.6,3094.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="453.6" y="3098.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLK</text>
+<path d="M500.2,3094.0 L536.2,3094.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M500.2,3094.0 L536.2,3094.0" fill="none" stroke="#e8559c" stroke-width="5" stroke-linejoin="round"/>
+<text x="546.2" y="3098.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">PNK</text>
+<text x="30.0" y="3124.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">Solid wire: live. Dashed: run and capped at the far end. A box on a wire is a resistor potted into the switch's pigtail (D-610); #12 / #16 / #20 is a circular's contact size. Generated by rx7.py diagrams - do not edit.</text>
 </svg>

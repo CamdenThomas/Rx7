@@ -27,7 +27,7 @@
 <path d="M390.0,376.0 L720.0,376.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
 <text x="406.0" y="366.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-1  ·  16 AWG RED</text>
 <rect x="720.0" y="355.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="380.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-SD 2</text>
+<text x="730.0" y="380.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-SD 5</text>
 <line x1="30" y1="400.0" x2="390" y2="400.0" stroke="#d0d7de"/>
 <circle cx="50" cy="424.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="428.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
@@ -38,7 +38,7 @@
 <path d="M390.0,424.0 L720.0,424.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
 <text x="406.0" y="414.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-2  ·  16 AWG RED</text>
 <rect x="720.0" y="403.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="428.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-SP 2</text>
+<text x="730.0" y="428.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-SP 5</text>
 <line x1="30" y1="448.0" x2="390" y2="448.0" stroke="#d0d7de"/>
 <circle cx="50" cy="472.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="476.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
@@ -49,7 +49,7 @@
 <path d="M390.0,472.0 L720.0,472.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
 <text x="406.0" y="462.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-3  ·  16 AWG RED</text>
 <rect x="720.0" y="451.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="476.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-SD 3</text>
+<text x="730.0" y="476.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-SD 6</text>
 <line x1="30" y1="496.0" x2="390" y2="496.0" stroke="#d0d7de"/>
 <circle cx="50" cy="520.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="524.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
@@ -60,7 +60,7 @@
 <path d="M390.0,520.0 L720.0,520.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
 <text x="406.0" y="510.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-4  ·  16 AWG RED</text>
 <rect x="720.0" y="499.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="524.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-SP 3</text>
+<text x="730.0" y="524.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-SP 6</text>
 <line x1="30" y1="544.0" x2="390" y2="544.0" stroke="#d0d7de"/>
 <circle cx="50" cy="561.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="565.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328"></text>
@@ -498,7 +498,7 @@
 <text x="50.0" y="2596.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
 <text x="70.0" y="2587.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Comfort feed: the servo rail, the mirror heat,</text>
 <text x="70.0" y="2604.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the seats' heat and cool (D-612)</text>
-<text x="380.0" y="2596.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O15</text>
+<text x="380.0" y="2596.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K16 87</text>
 <path d="M390.0,2592.0 L720.0,2592.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <path d="M390.0,2592.0 L720.0,2592.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <text x="406.0" y="2582.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-P-1 · 12 AWG RED · RT11 · capped at the far end …</text>
