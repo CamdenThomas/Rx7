@@ -36,7 +36,7 @@ def placement():
     k1, k2, (sx, sy) = G.K1, G.K2, G.STICK
     # U1 on the back, between the hatch key and the stick, turned so OUT1-OUT5 face the keys (-x) and
     # pins 1-6 (R_EXT, VCC, GND, SDA, SCL) face down toward the bus from J1
-    ux, uy = 58.0, 36.0
+    ux, uy = G.K3 + 16.0, 36.0                 # Y62: right of the knob column, clear of the hazard's pins
     jy = 28.0 - 6.35                           # J1 pin 1, so the header is centred on the plate's height
     wy, ky = G.WINK_Y, G.KEY_Y
     return [
@@ -61,15 +61,19 @@ def placement():
         ("R2", ux + 4.5, uy - 0.5, 90, "B"),            # SDB pull-up (pin 24, right side)
         ("D1", k2, 43.75, 0, "B"),                       # hatch diode, under its key
         ("D2", k1, 43.75, 0, "B"),                       # fuel-door diode
+        # Y62 (D-586, D-589): the hazard button in the third column's top row, lit like the winks, its two
+        # resistors behind its body; Y50 (D-581): the knob's lead header below the hatch key
+        ("SW5", G.K3, wy, 0, "F"),
+        ("LED6", G.K3 + G.WINK_LED_DX, wy, 90, "F"),
+        ("R5", G.K3 - 2.25, wy - 7.0, 0, "B"),           # 4.7k
+        ("R6", G.K3 + 2.25, wy - 7.0, 0, "B"),           # 47k baseline
+        ("J4", G.J4_AT[0], G.J4_AT[1], 0, "F"),
     ]
 
 
 BOARD_ONLY = [  # (ref, lib, name, x, y, value)
-    ("H1", "MountingHole", "MountingHole_3.2mm_M3", 4, 4, "M3"),
-    ("H2", "MountingHole", "MountingHole_3.2mm_M3", 96, 4, "M3"),
-    ("H3", "MountingHole", "MountingHole_3.2mm_M3", 4, 52, "M3"),
-    ("H4", "MountingHole", "MountingHole_3.2mm_M3", 96, 52, "M3"),
-]   # Y21's H5 / H6, the P083 clearance holes, went with D-499 (Y22): the winks are parts now
+    ("H%d" % (i + 1), "MountingHole", "MountingHole_3.2mm_M3", x, y, "M3") for i, (x, y) in enumerate(G.HOLES)
+] + [("KN1", "left-plate", "ScreenKnob_P219_Board_Placeholder", G.KNOB[0], G.KNOB[1], "screen knob board (P219)")]   # Y21's H5 / H6, the P083 clearance holes, went with D-499 (Y22): the winks are parts now
 
 
 def lib_path(lib):
@@ -477,6 +481,68 @@ def silk(board, text, x, y, layer, size=1.2):
     board.Add(t)
 
 
+FREEROUTING = os.path.expanduser("~/.local/share/freerouting/freerouting.jar")
+
+
+def finish_with_freerouting(board):
+    """What the grid router leaves, freerouting 1.9 finishes (Y62, 2026-10-14): the tracks already laid are its
+    starting point (it may move them), a 0.6 mm band inside the edge kept free (the router does not read KiCad's edge clearance), the
+    board has no pour yet so GND is routed as a signal, and the router's ends - left a micron apart - are
+    snapped together after the import. Returns the connections still open."""
+    if not os.path.exists(FREEROUTING):
+        return None
+    for t in board.GetTracks():
+        t.SetLocked(False)          # a starting point it may move: locked, the last LED line is boxed in
+    band = []
+    for (x0, y0, x1, y1) in ((0, 0, G.W, 0.6), (0, G.H - 0.6, G.W, G.H), (0, 0, 0.6, G.H), (G.W - 0.6, 0, G.W, G.H)):
+        z = pcbnew.ZONE(board)
+        z.SetIsRuleArea(True)
+        z.SetDoNotAllowTracks(True)
+        z.SetDoNotAllowVias(True)
+        z.SetDoNotAllowZoneFills(False)
+        z.SetDoNotAllowPads(False)
+        z.SetDoNotAllowFootprints(False)
+        ls = pcbnew.LSET()
+        for li in LAYERS:
+            ls.AddLayer(li)
+        z.SetLayerSet(ls)
+        o = z.Outline()
+        o.NewOutline()
+        for (x, y) in ((x0, y0), (x1, y0), (x1, y1), (x0, y1)):
+            o.Append(MM(x), MM(y))
+        board.Add(z)
+        band.append(z)
+    dsn = os.path.join(G.HERE, G.NAME + ".dsn")
+    ses = os.path.join(G.HERE, G.NAME + ".ses")
+    pcbnew.ExportSpecctraDSN(board, dsn)
+    subprocess.call(["java", "-jar", FREEROUTING, "-de", dsn, "-do", ses, "-mp", "60"],
+                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    ok = os.path.exists(ses) and pcbnew.ImportSpecctraSES(board, ses)
+    for f in (dsn, ses):
+        if os.path.exists(f):
+            os.remove(f)
+    for z in band:
+        board.RemoveNative(z)
+    if not ok:
+        return None
+    tol = MM(0.01)
+    tracks = [t for t in board.GetTracks() if t.GetClass() == "PCB_TRACK"]
+    anchors = [(p.GetPosition(), p.GetNetCode()) for fp in board.GetFootprints() for p in fp.Pads()]
+    anchors += [(t.GetPosition(), t.GetNetCode()) for t in board.GetTracks() if t.GetClass() == "PCB_VIA"]
+    for t in tracks:
+        t.SetLocked(False)
+        for get, put in ((t.GetStart, t.SetStart), (t.GetEnd, t.SetEnd)):
+            q = get()
+            for a, net in anchors:
+                if net == t.GetNetCode() and a != q and abs(a.x - q.x) <= tol and abs(a.y - q.y) <= tol:
+                    put(pcbnew.VECTOR2I(a.x, a.y))
+                    break
+    for t in [t for t in tracks if t.GetStart() == t.GetEnd()]:
+        board.RemoveNative(t)
+    board.BuildConnectivity()
+    return board.GetConnectivity().GetUnconnectedCount(False)
+
+
 def build(seed=None, do_pour=True):
     if G.FLIP:
         raise NotImplementedError("FLIP: the board is drawn for the sketch's default only (stick on the wheel side)")
@@ -492,7 +558,7 @@ def build(seed=None, do_pour=True):
     tb.SetRevision(G.REV)
     tb.SetDate(G.DATE)
     tb.SetCompany("RX-7 FB electrical build")
-    tb.SetComment(0, "100 x 56 from the sketch's plate - confirm (R11, nothing measured left of the wheel)")
+    tb.SetComment(0, "%g x %g: the sketch's plate grown for the hazard and the screen knob (Y62, Y50) - confirm (R11)" % (G.W, G.H))
     netobj = {}
     for name in nets:
         n = pcbnew.NETINFO_ITEM(board, name)
@@ -545,10 +611,15 @@ def build(seed=None, do_pour=True):
     outline(board)
     routes, failed = route_board(board, seed)
     nseg, nvia = add_tracks(board, routes)
+    if failed:
+        left = finish_with_freerouting(board)
+        print("  freerouting finished the %d left: %s connection(s) still open" % (len(failed), left))
+        if left == 0:
+            failed = []
     if do_pour:
         pour(board, netobj["GND"])
-    silk(board, "LEFT PLATE  Y22  rev %s" % G.REV, 50.0, 53.4, pcbnew.B_SilkS, 1.0)
-    silk(board, "D-492 D-499 - provisional, confirm", 50.0, 51.6, pcbnew.B_SilkS, 0.8)
+    silk(board, "CUR PLATE  Y62  rev %s" % G.REV, G.W / 2, 53.4, pcbnew.B_SilkS, 1.0)
+    silk(board, "D-492 D-499 D-586 D-589 - provisional, confirm", G.W / 2, 51.6, pcbnew.B_SilkS, 0.8)
     return board, failed, nseg, nvia
 
 

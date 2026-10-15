@@ -6,13 +6,13 @@
 	(paper "A3")
 	(title_block
 		(title "Left plate - the panel's second face, left of the steering wheel (D-492, D-499)")
-		(date "2026-10-13")
-		(rev "0.02")
+		(date "2026-10-14")
+		(rev "0.03")
 		(company "RX-7 FB electrical build")
 		(comment 1 "From the record: DP-DCU-E 1-12, L3-S1 9-11, panel_ribbon, DV24 / DV62, P156 P198-P200 P204. The row wins.")
 		(comment 2 "J1 pin n = DP-DCU-E n; keys on ROW1 via 1N4148W; stick on 17-20; IS31FL3218 at 0x54.")
 		(comment 3 "The winks (P204, D-499): SPDT under lit caps, 18k / 33k on the board, the lead on J2 to the dash post (L3-S1 9 / 10 / 11).")
-		(comment 4 "R11: nothing here has been measured or bought. Rev 0.02 (Y22).")
+		(comment 4 "R11: nothing here has been measured or bought. Rev 0.03 (Y22).")
 	)
 	(lib_symbols
 		(symbol "left-plate:GND"
@@ -302,6 +302,401 @@
 			(pin passive line (at -5.08 0 0) (length 2.54) (name "~" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
 			(pin passive line (at 5.08 0 180) (length 2.54) (name "~" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
 		)
+	)
+		(symbol "left-plate:Conn_01x05"
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "J"
+			(at 0 7.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn_01x05"
+			(at 0 -7.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "connector"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Connector*:*_1x??_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "Conn_01x05_1_1"
+			(rectangle
+				(start -1.27 6.35)
+				(end 1.27 -6.35)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(rectangle
+				(start -1.27 5.207)
+				(end 0 4.953)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 2.667)
+				(end 0 2.413)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 0.127)
+				(end 0 -0.127)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -2.413)
+				(end 0 -2.667)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -4.953)
+				(end 0 -5.207)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 5.08 0)
+				(length 3.81)
+				(name "Pin_1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 2.54 0)
+				(length 3.81)
+				(name "Pin_2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 3.81)
+				(name "Pin_3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -2.54 0)
+				(length 3.81)
+				(name "Pin_4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -5.08 0)
+				(length 3.81)
+				(name "Pin_5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "left-plate:SW_SPST"
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "SW"
+			(at 0 3.175 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_SPST"
+			(at 0 -2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Single Pole Single Throw (SPST) switch"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "switch lever"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "SW_SPST_0_0"
+			(circle
+				(center -2.032 0)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.524 0.254) (xy 1.524 1.778)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 2.032 0)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "SW_SPST_1_1"
+			(pin passive line
+				(at -5.08 0 0)
+				(length 2.54)
+				(name "A"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 0 180)
+				(length 2.54)
+				(name "B"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
 	)
 		(symbol "left-plate:IS31FL3218-QF"
 		(exclude_from_sim no)
@@ -1333,16 +1728,17 @@
 	(label "LED_HATCH" (at 294.64 66.04 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "c7f4b87c-2104-5fa2-b22b-07532f769d32"))
 	(wire (pts (xy 292.1 68.58) (xy 294.64 68.58)) (stroke (width 0) (type default)) (uuid "e79bede6-8c66-5130-947c-743e3002de76"))
 	(label "LED_FUEL" (at 294.64 68.58 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "d08ef4c7-4c26-5226-861a-21855cafa3fb"))
-	(wire (pts (xy 292.1 71.12) (xy 294.64 71.12)) (stroke (width 0) (type default)) (uuid "383163f6-0f1f-5c98-9876-67bf722bbd8f"))
-	(label "LED_MIRROR" (at 294.64 71.12 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "901d4caf-d865-5130-8032-8276099f1478"))
-	(no_connect (at 292.1 73.66) (uuid "ef188dd4-f4c2-5da4-88c7-b4423ebb6748"))
+	(no_connect (at 292.1 71.12) (uuid "8752f6b6-2897-5f84-ac4b-df74973d37cf"))
+	(wire (pts (xy 292.1 73.66) (xy 294.64 73.66)) (stroke (width 0) (type default)) (uuid "6c2b706d-c665-551d-9788-9a0dc3775a07"))
+	(label "LED_HAZARD" (at 294.64 73.66 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "431f23fe-803f-5b44-bfa5-62183f2fafd2"))
 	(no_connect (at 292.1 76.2) (uuid "52186d81-fa99-59d8-9cb1-040cf41edc1b"))
 	(no_connect (at 292.1 78.74) (uuid "5c5f17cd-fca3-5322-a1ec-d5336f78aa10"))
 	(no_connect (at 292.1 81.28) (uuid "f42905b5-deb2-5b8e-bd5f-596f6cebf6e7"))
 	(no_connect (at 292.1 83.82) (uuid "1d024cc7-f028-5334-8cfe-95a8355359a4"))
 	(no_connect (at 292.1 86.36) (uuid "a4594ad4-860e-58f6-ba7f-3a046d7994bc"))
 	(no_connect (at 292.1 88.9) (uuid "7b6d88d9-bfaf-56f0-a638-c5c2da0a2664"))
-	(no_connect (at 292.1 91.44) (uuid "045af8d2-40f7-508e-844f-cda4a76be965"))
+	(wire (pts (xy 292.1 91.44) (xy 294.64 91.44)) (stroke (width 0) (type default)) (uuid "daf1720c-3350-587a-9e4c-327421e7e131"))
+	(label "LED_MIRROR" (at 294.64 91.44 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "de5179c0-bcac-50ce-8e8a-7aee38c30b5d"))
 	(no_connect (at 292.1 93.98) (uuid "57a2603e-df88-5345-b6e1-00e4249c2a1f"))
 	(no_connect (at 292.1 96.52) (uuid "0506abcc-60b0-58b7-9fbc-ea66ad025514"))
 	(no_connect (at 292.1 99.06) (uuid "4acb1a01-f6ba-5191-90bb-8065f67b6563"))
@@ -1508,7 +1904,7 @@
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
 		(uuid "c799c224-5491-5da8-9f64-b9c8645f0da2")
 		(property "Reference" "LED5" (at 342.9 105.41 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "LED 0603 - mirror stick symbol (OUT5)" (at 342.9 113.03 0) (effects (font (size 1.1 1.1))))
+		(property "Value" "LED 0603 - mirror stick symbol (OUT13)" (at 342.9 113.03 0) (effects (font (size 1.1 1.1))))
 		(property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 342.9 109.22 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(property "Datasheet" "" (at 342.9 109.22 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(property "Confirm" "colour, brightness and part number - confirm (I-006: the wink faces green; the rest LP20's)" (at 342.9 109.22 0) (effects (font (size 1.1 1.1)) (hide yes)))
@@ -1520,6 +1916,22 @@
 	(label "+5V_PNL" (at 335.28 109.22 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "22e84eba-9674-5e02-8c51-c920a1b9cb8c"))
 	(wire (pts (xy 347.98 109.22) (xy 350.52 109.22)) (stroke (width 0) (type default)) (uuid "b4a035dd-1803-542d-b34c-26343454fbbf"))
 	(label "LED_MIRROR" (at 350.52 109.22 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "3d530fa6-58a3-5d24-a140-602e80aed399"))
+	(symbol (lib_id "left-plate:LED") (at 342.9 121.92 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "34954136-666f-53b3-bbb3-47150a2597d3")
+		(property "Reference" "LED6" (at 342.9 118.11 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "LED 0603 - hazard red triangle (OUT6)" (at 342.9 125.73 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 342.9 121.92 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 342.9 121.92 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "colour, brightness and part number - confirm (I-006: the wink faces green; the rest LP20's)" (at 342.9 121.92 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "2" (uuid "a7c19e00-3e96-57d4-a937-8440348806e9"))
+		(pin "1" (uuid "64325eca-2db9-56fb-b08d-89488d751d25"))
+		(instances (project "left-plate" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "LED6") (unit 1))))
+	)
+	(wire (pts (xy 337.82 121.92) (xy 335.28 121.92)) (stroke (width 0) (type default)) (uuid "f2dac0c5-4036-5fe9-a67c-9e281120f81d"))
+	(label "+5V_PNL" (at 335.28 121.92 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "377e2340-9f96-593b-b22b-8ce4c87e4bd3"))
+	(wire (pts (xy 347.98 121.92) (xy 350.52 121.92)) (stroke (width 0) (type default)) (uuid "acd1b662-70c2-5382-ba02-16015e2efba8"))
+	(label "LED_HAZARD" (at 350.52 121.92 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "dd8fb0a4-3314-55f3-836c-286060b3400c"))
 	(symbol (lib_id "left-plate:SW_Push_SPDT") (at 60.96 177.8 0) (unit 1) (body_style 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
 		(uuid "1d5e5646-d5e8-55e8-ad4b-0f34519aaf19")
@@ -1590,28 +2002,119 @@
 	(label "WINK_R_NO" (at 104.14 203.2 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "fb9189b8-67b7-5c1c-98ee-7be9adae0644"))
 	(wire (pts (xy 116.84 203.2) (xy 119.38 203.2)) (stroke (width 0) (type default)) (uuid "ee4e55b1-194f-56dd-8a6f-2c9bac724f81"))
 	(label "WINK_REQ" (at 119.38 203.2 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "f23dfa84-dc80-5002-96af-df8884837352"))
-	(symbol (lib_id "left-plate:Conn_01x04") (at 165.1 190.5 0) (unit 1) (body_style 1)
+	(symbol (lib_id "left-plate:Conn_01x05") (at 165.1 190.5 0) (unit 1) (body_style 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
 		(uuid "a1a5cb50-e301-5c6f-94ae-efee92970e2e")
-		(property "Reference" "J2" (at 165.1 184.15 0) (effects (font (size 1.27 1.27))))
-		(property "Value" "wink lead header 1x4 (L3-S1 9 / 10 / 11, commons)" (at 165.1 199.39 0) (effects (font (size 1.1 1.1))))
-		(property "Footprint" "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical" (at 165.1 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Reference" "J2" (at 165.1 181.61 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "wink lead header 1x5 (L3-S1 9 / 10 / 11, commons, L3-S1 6)" (at 165.1 199.39 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical" (at 165.1 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(property "Datasheet" "" (at 165.1 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
-		(property "Confirm" "the wink lead's plate end (DV24, D-499): pin 1 = L3-S1 9, 2 = L3-S1 10, 3 = L3-S1 11, 4 = the commons to dash ground (G20); JST XH 4-way, locking - housing and crimps confirm, the lead's run to the dash post not measured" (at 165.1 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "the wink lead's plate end (DV24, D-499, D-586): pin 1 = L3-S1 9, 2 = L3-S1 10, 3 = L3-S1 11, 4 = the commons to dash ground (G20), 5 = L3-S1 6 the hazard; JST XH 5-way, locking - housing and crimps confirm, the lead's run to the dash post not measured" (at 165.1 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(pin "1" (uuid "f4a809dc-f94e-522e-9a2a-782bf45dac3d"))
 		(pin "2" (uuid "ddf5f546-da82-5c46-b275-3e1f8ae889d6"))
 		(pin "3" (uuid "a0f4dbc1-abf4-5b8a-b911-d7dce59a5dfc"))
 		(pin "4" (uuid "247ab705-e94e-5bfe-b6b9-9e3437fd07c9"))
+		(pin "5" (uuid "9dc3d426-8263-582d-aab7-2bd8a2d17b36"))
 		(instances (project "left-plate" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "J2") (unit 1))))
 	)
+	(wire (pts (xy 160.02 185.42) (xy 157.48 185.42)) (stroke (width 0) (type default)) (uuid "8005fdfd-f0c7-58e6-9d13-9a943a6cbf57"))
+	(label "WINK_L_NC" (at 157.48 185.42 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "c2e4ef12-19d4-5c1c-b58a-14e73cb605b1"))
 	(wire (pts (xy 160.02 187.96) (xy 157.48 187.96)) (stroke (width 0) (type default)) (uuid "432b3512-d304-554e-af78-61fb0a5ed5a3"))
-	(label "WINK_L_NC" (at 157.48 187.96 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "4b5dcc12-e3b2-54da-ae2a-9ea9160d5612"))
+	(label "WINK_R_NC" (at 157.48 187.96 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "4324c4c7-fd14-570a-bcda-8b0c5cab92d6"))
 	(wire (pts (xy 160.02 190.5) (xy 157.48 190.5)) (stroke (width 0) (type default)) (uuid "dd2728b7-5095-5207-b3f7-d6349ace8df1"))
-	(label "WINK_R_NC" (at 157.48 190.5 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "a93f48ca-ba64-5e99-8bd2-5a2e038a8d73"))
+	(label "WINK_REQ" (at 157.48 190.5 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "58ada37a-356b-5bfb-b0f5-152dfe3b0967"))
 	(wire (pts (xy 160.02 193.04) (xy 157.48 193.04)) (stroke (width 0) (type default)) (uuid "a0521cfc-1966-525c-a49b-c532b465d64a"))
-	(label "WINK_REQ" (at 157.48 193.04 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "3fad254a-874e-543e-be51-291fd96b3d6b"))
+	(label "WINK_COM" (at 157.48 193.04 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "64479524-cad2-5e21-8fd9-3e6b6acb575a"))
 	(wire (pts (xy 160.02 195.58) (xy 157.48 195.58)) (stroke (width 0) (type default)) (uuid "c8496a73-6167-544a-83c6-1f28f4744e0e"))
-	(label "WINK_COM" (at 157.48 195.58 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "716ff7ef-910d-52f2-85f3-beab2d2e0c44"))
+	(label "HAZ_LADDER" (at 157.48 195.58 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "b182566f-c902-5912-9a2f-cb006339a8d4"))
+	(symbol (lib_id "left-plate:SW_SPST") (at 60.96 228.6 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "acf9de5a-ada0-53e7-9abd-8b42d87eb4fe")
+		(property "Reference" "SW5" (at 60.96 224.79 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "hazard - latching (P226)" (at 60.96 232.41 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "left-plate:HazardSwitch_P226_Latching_Placeholder" (at 60.96 228.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 60.96 228.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "P226: latching push button under a lit red-triangle 17 x 15 cap, board-mounted like the winks - no part chosen; the placeholder footprint's two pins and body from the part's drawing - confirm" (at 60.96 228.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "835de516-cdc2-593e-9176-729c1014f653"))
+		(pin "2" (uuid "01786585-a85a-5cf1-8a3d-4d8d71c39aa2"))
+		(instances (project "left-plate" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "SW5") (unit 1))))
+	)
+	(wire (pts (xy 55.88 228.6) (xy 53.34 228.6)) (stroke (width 0) (type default)) (uuid "8a100346-553d-559c-8811-bbca5802bba9"))
+	(label "HAZ_SW" (at 53.34 228.6 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "85281f2f-0384-53ba-8a96-9691bdb516d3"))
+	(wire (pts (xy 66.04 228.6) (xy 68.58 228.6)) (stroke (width 0) (type default)) (uuid "64e4739d-ac7c-55bf-b316-9f2929f60d7e"))
+	(label "WINK_COM" (at 68.58 228.6 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "04fd2277-5c23-5ef5-84bd-2e2f11b9c83e"))
+	(symbol (lib_id "left-plate:R") (at 111.76 228.6 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "b42297d6-d411-5aa7-b0dc-ce74f52cd328")
+		(property "Reference" "R5" (at 111.76 224.79 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "4.7k" (at 111.76 232.41 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 111.76 228.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 111.76 228.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "the hazard's ladder resistor (DV21, D-368, D-586): HAZARD on A8 when the button is in - 1 %" (at 111.76 228.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "95840cbc-c505-5581-a090-d2867489dee6"))
+		(pin "2" (uuid "0d1b9590-29cc-5590-bc71-9161a1b3b0c4"))
+		(instances (project "left-plate" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "R5") (unit 1))))
+	)
+	(wire (pts (xy 106.68 228.6) (xy 104.14 228.6)) (stroke (width 0) (type default)) (uuid "2fa865cd-21ca-5b21-ac61-434ac042a58b"))
+	(label "HAZ_LADDER" (at 104.14 228.6 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "a07b7ae4-badf-5b86-8e03-3748c1789a8c"))
+	(wire (pts (xy 116.84 228.6) (xy 119.38 228.6)) (stroke (width 0) (type default)) (uuid "639abb6a-d2f0-5029-845e-e89e2fa06e63"))
+	(label "HAZ_SW" (at 119.38 228.6 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "4023e971-8b5d-5307-b21b-df80668168a2"))
+	(symbol (lib_id "left-plate:R") (at 111.76 241.3 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "6a89dfaf-b422-51cb-8e4b-24e0f498229f")
+		(property "Reference" "R6" (at 111.76 237.49 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "47k" (at 111.76 245.11 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 111.76 241.3 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 111.76 241.3 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "the hazard's 47 k baseline (D-368): the PMU reads the wire present with the button out - 1 %" (at 111.76 241.3 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "c42df264-c612-57ff-bcae-8c6d2a646083"))
+		(pin "2" (uuid "0c13b473-b546-5d02-9449-89da3c9c2a52"))
+		(instances (project "left-plate" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "R6") (unit 1))))
+	)
+	(wire (pts (xy 106.68 241.3) (xy 104.14 241.3)) (stroke (width 0) (type default)) (uuid "d89b12e1-a31b-5587-a6f0-36b30932aba0"))
+	(label "HAZ_LADDER" (at 104.14 241.3 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "efa5a36e-309d-5a09-9b62-d50982fae16d"))
+	(wire (pts (xy 116.84 241.3) (xy 119.38 241.3)) (stroke (width 0) (type default)) (uuid "d6951273-896a-5673-b1de-e43b6a428b2e"))
+	(label "WINK_COM" (at 119.38 241.3 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "f9076dfc-fa44-5f02-87f5-fa534a2d40f7"))
+	(symbol (lib_id "left-plate:Conn_01x04") (at 279.4 190.5 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "f21e96be-fb13-504e-9f1d-8e3911977521")
+		(property "Reference" "J4" (at 279.4 184.15 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "screen knob lead header (STEMMA QT, P219)" (at 279.4 199.39 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Connector_JST:JST_SH_BM04B-SRSS-TB_1x04-1MP_P1.00mm_Vertical" (at 279.4 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 279.4 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "the screen knob's I2C encoder board (P219, seesaw 0x36, SN32) on a JST-SH 4-way lead: 1 GND, 2 +3V3 (never +5V_PNL, D-580), 3 PNL_SDA, 4 PNL_SCL - the lead's length set by the plate, confirm" (at 279.4 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "0fc2a40e-200b-50ae-b5ba-473b66d3b4a0"))
+		(pin "2" (uuid "6a452e33-3ed3-5fd4-8cad-ec2abfe785c3"))
+		(pin "3" (uuid "47c16324-539b-5f24-8b1f-a21e915a467e"))
+		(pin "4" (uuid "6ed8167f-ca6f-5ba5-aaa7-2a78fcc49271"))
+		(instances (project "left-plate" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "J4") (unit 1))))
+	)
+	(wire (pts (xy 274.32 187.96) (xy 271.78 187.96)) (stroke (width 0) (type default)) (uuid "5841f9c9-b69d-50a7-8e4a-af12681e7902"))
+	(symbol (lib_id "left-plate:GND") (at 271.78 187.96 270) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "ea0339c5-3004-58e9-bf2d-b62d0f898f22")
+		(property "Reference" "#PWR010" (at 271.78 187.96 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "GND" (at 265.78 188.56 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 271.78 187.96 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 271.78 187.96 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "6760bc32-cf41-5e7a-85ba-1ef39c49ccdb"))
+		(instances (project "left-plate" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR010") (unit 1))))
+	)
+	(wire (pts (xy 274.32 190.5) (xy 271.78 190.5)) (stroke (width 0) (type default)) (uuid "161d2fd5-8938-52ad-b330-a38ec4281921"))
+	(symbol (lib_id "left-plate:+3V3") (at 271.78 190.5 90) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "2faac07d-0dc3-5767-a9a9-5dbc35ee8a73")
+		(property "Reference" "#PWR011" (at 271.78 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "+3V3" (at 265.78 191.1 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 271.78 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 271.78 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "45d9427c-e844-5726-a068-0a36c7d41d3b"))
+		(instances (project "left-plate" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR011") (unit 1))))
+	)
+	(wire (pts (xy 274.32 193.04) (xy 271.78 193.04)) (stroke (width 0) (type default)) (uuid "18ea816f-d129-5de8-b6f7-38f532c6c750"))
+	(label "PNL_SDA" (at 271.78 193.04 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "c6c1e1af-49dc-564c-8d98-b736790be1e7"))
+	(wire (pts (xy 274.32 195.58) (xy 271.78 195.58)) (stroke (width 0) (type default)) (uuid "7194d1cc-3749-56ad-835d-c191798ac798"))
+	(label "PNL_SCL" (at 271.78 195.58 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "49e564c8-e371-503e-a8cd-5d8e9fcac9ec"))
 	(wire (pts (xy 60.96 121.92) (xy 60.96 127)) (stroke (width 0) (type default)) (uuid "991a50da-5642-5989-bad9-0b942e5e1f97"))
 	(symbol (lib_id "left-plate:PWR_FLAG") (at 60.96 121.92 0) (unit 1) (body_style 1)
 		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
@@ -1625,13 +2128,13 @@
 	)
 	(symbol (lib_id "left-plate:GND") (at 60.96 127 0) (unit 1) (body_style 1)
 		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
-		(uuid "ea0339c5-3004-58e9-bf2d-b62d0f898f22")
-		(property "Reference" "#PWR010" (at 60.96 127 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(uuid "edad1a86-e38e-5116-adbd-f490100ede8c")
+		(property "Reference" "#PWR012" (at 60.96 127 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(property "Value" "GND" (at 60.96 131.5 0) (effects (font (size 1.1 1.1))))
 		(property "Footprint" "" (at 60.96 127 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(property "Datasheet" "" (at 60.96 127 0) (effects (font (size 1.1 1.1)) (hide yes)))
-		(pin "1" (uuid "6760bc32-cf41-5e7a-85ba-1ef39c49ccdb"))
-		(instances (project "left-plate" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR010") (unit 1))))
+		(pin "1" (uuid "e059196e-de07-5913-bc41-0f157d2126f6"))
+		(instances (project "left-plate" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR012") (unit 1))))
 	)
 	(wire (pts (xy 76.2 121.92) (xy 76.2 127)) (stroke (width 0) (type default)) (uuid "0ecc3c00-04f9-529a-88a1-5c66651cd039"))
 	(symbol (lib_id "left-plate:PWR_FLAG") (at 76.2 121.92 0) (unit 1) (body_style 1)
@@ -1646,13 +2149,13 @@
 	)
 	(symbol (lib_id "left-plate:+3V3") (at 76.2 127 180) (unit 1) (body_style 1)
 		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
-		(uuid "2faac07d-0dc3-5767-a9a9-5dbc35ee8a73")
-		(property "Reference" "#PWR011" (at 76.2 127 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(uuid "f34348e2-2d95-5589-9cf5-50986981bf97")
+		(property "Reference" "#PWR013" (at 76.2 127 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(property "Value" "+3V3" (at 76.2 131.5 0) (effects (font (size 1.1 1.1))))
 		(property "Footprint" "" (at 76.2 127 0) (effects (font (size 1.1 1.1)) (hide yes)))
 		(property "Datasheet" "" (at 76.2 127 0) (effects (font (size 1.1 1.1)) (hide yes)))
-		(pin "1" (uuid "45d9427c-e844-5726-a068-0a36c7d41d3b"))
-		(instances (project "left-plate" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR011") (unit 1))))
+		(pin "1" (uuid "bc0127a6-c8ec-51a3-b339-33689d668ed1"))
+		(instances (project "left-plate" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR013") (unit 1))))
 	)
 	(wire (pts (xy 91.44 121.92) (xy 91.44 127)) (stroke (width 0) (type default)) (uuid "f08ca03e-604f-57af-9b94-580c485fdfdf"))
 	(symbol (lib_id "left-plate:PWR_FLAG") (at 91.44 121.92 0) (unit 1) (body_style 1)
@@ -1674,12 +2177,17 @@
 	(text "THE MIRROR STICK (P156, placeholder - no part chosen)" (exclude_from_sim no) (at 139.7 81.28 0) (effects (font (size 2.0 2.0) (bold yes)) (justify left top)) (uuid "6d8aa977-29b7-5966-bc57-26cf5599564a"))
 	(text "pots across +3V3 / AGND (D-380: its own return), wipers JOY_X / JOY_Y, the push JOY_PRESS to GND (panel_ribbon 19)" (exclude_from_sim no) (at 139.7 86.36 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "59f41929-b7ab-5cf0-9000-579365d3c839"))
 	(text "THE LIGHTS: IS31FL3218 at 0x54, five symbols at 7.6 mA" (exclude_from_sim no) (at 228.6 25.4 0) (effects (font (size 2.0 2.0) (bold yes)) (justify left top)) (uuid "0aa17e29-c8f8-5286-86ae-f9ab1e9f22af"))
-	(text "OUT1 wink L face, OUT2 wink R face, OUT3 hatch, OUT4 fuel door, OUT5 mirror stick - the DCU firmware's map (lights.h, F-018)" (exclude_from_sim no) (at 228.6 30.48 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "159446d0-e205-52b1-9fb9-1bf8226bc9bd"))
-	(text "OUT6-OUT18 open. The bus pull-ups are on the carrier (R51 / R52, 4.7k to +3V3); none here." (exclude_from_sim no) (at 228.6 34.29 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "67121726-0b06-52a2-92a2-2fd77a4bc399"))
+	(text "OUT1 wink L face, OUT2 wink R face, OUT3 hatch, OUT4 fuel door, OUT6 hazard, OUT13 mirror stick - the DCU firmware's map (lights.h, F-018, Y62)" (exclude_from_sim no) (at 228.6 30.48 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "159446d0-e205-52b1-9fb9-1bf8226bc9bd"))
+	(text "OUT5, OUT7-OUT12, OUT14-OUT18 open. The bus pull-ups are on the carrier (R51 / R52, 4.7k to +3V3); none here." (exclude_from_sim no) (at 228.6 34.29 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "2b822f0b-cf0b-5d6e-bf87-b352889a8f85"))
 	(text "THE WINK SWITCHES (P204, D-499) AND THEIR LEAD J2 TO THE DASH POST" (exclude_from_sim no) (at 25.4 152.4 0) (effects (font (size 2.0 2.0) (bold yes)) (justify left top)) (uuid "c1a79686-e528-5ce2-9fd3-85e116a5c862"))
 	(text "Two SPDT momentary pushbuttons under lit caps (the faces are LED1 / LED2 on the driver). Their lines are the harness's (DV24, D-189, D-482), unchanged:" (exclude_from_sim no) (at 25.4 157.48 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "f5dc3d3a-d075-531b-bfa2-20496019aae1"))
 	(text "NC poles to L3-S1 9 / 10 (J2 pins 1 / 2), NO poles through 18k / 33k joined as WINK_REQ to L3-S1 11 (J2 pin 3), the commons to dash ground (J2 pin 4, G20)." (exclude_from_sim no) (at 25.4 161.29 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "ad0a4384-4634-519a-93dd-c9f55280140a"))
-	(text "WINK_COM is NOT this board's GND: the winks return to the dash post as today, the plate's electronics on DP-DCU-E 8 and 11 (DV62). Symbol pins: 1 A = NC, 2 B = common, 3 C = NO." (exclude_from_sim no) (at 25.4 165.1 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "af8d551b-6d33-5f70-842a-85dd37fe17ba"))
+	(text "WINK_COM is NOT this board's GND: the winks return to the dash post as today, the plate's electronics on DP-DCU 43 and 46 (DV62). Symbol pins: 1 A = NC, 2 B = common, 3 C = NO." (exclude_from_sim no) (at 25.4 165.1 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "af8d551b-6d33-5f70-842a-85dd37fe17ba"))
+	(text "THE HAZARD (P226, D-586, D-589): A LATCHING BUTTON ON THE WINK LEAD" (exclude_from_sim no) (at 25.4 215.9 0) (effects (font (size 2.0 2.0) (bold yes)) (justify left top)) (uuid "dbf1eff6-beb8-56bc-aad6-474f60d6aed3"))
+	(text "L3-S1 6 (J2 pin 5) -> 4.7k -> the button -> the winks' commons (J2 pin 4, G20); 47k across the whole (D-368): the A8 ladder reads HAZARD while it is in." (exclude_from_sim no) (at 25.4 220.98 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "ca069292-4da8-5756-9cdc-88fd02f135c8"))
+	(text "Its red-triangle cap is LED6 on the driver's OUT6. The column's F-02 hazard contact is left unconnected (D-586)." (exclude_from_sim no) (at 25.4 224.79 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "f13d14f8-2c62-5188-91cb-f17eedc30d28"))
+	(text "J4 - THE SCREEN KNOB'S LEAD (P219, D-580, D-581)" (exclude_from_sim no) (at 228.6 177.8 0) (effects (font (size 2.0 2.0) (bold yes)) (justify left top)) (uuid "a5665e15-88b0-5837-b748-281fbcf24619"))
+	(text "STEMMA QT order: 1 GND, 2 +3V3, 3 PNL_SDA, 4 PNL_SCL. The knob's encoder board (seesaw 0x36) stands off the plate's front, its shaft through the faceplate." (exclude_from_sim no) (at 228.6 182.88 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "01ed5aa8-c291-5cae-9263-e8d08a7cfd11"))
 	(sheet_instances
 		(path "/"
 			(page "1")

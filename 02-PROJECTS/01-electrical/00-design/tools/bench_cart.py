@@ -109,12 +109,15 @@ a(G, 10, "RC0805JR-070RL", "Yageo", "0 R link 0805", "ICU R44 R45, DCU R9 R10", 
 a(G, 6, "PPPC241LFBN-RC", "Sullins", "1 x 24 socket header, Teensy socket", "ICU J5, DCU J10, one spare pair", "P110:2 P148:4", 1.53, DKO, "")
 a(G, 2, "PRPC040SAAN-RC", "Sullins", "1 x 40 pin strip, cut to length", "ICU J2 JP1-JP3 J8A J8B, DCU J6-J8, upper J3-J5, panel J2", "P169:12 P149:9 P196:9 P155:4", 1.23, DKO, "")
 a(G, 6, "B2B-XH-A(LF)(SN)", "JST", "XH 2-way header", "ICU SW1, DCU J3 J5, upper J6 J7", "P169:1 P178:2 P196:2", 0.17, EST, "")
-a(G, 6, "XHP-2", "JST", "XH 2-way plug housing", "the two inside leads and the page-button lead", "P178:2 P196:2 P203:1", 0.10, EST, "")
-a(G, 6, "ASXHSXH22K152", "JST", "XH lead, crimped both ends, 22 AWG 6 in", "four for the two inside leads, one cut in half for the page button", "P196:4 P203:1", 0.70, EST, "loose contacts SXH-001T-P0.6 need a small crimper that is in no parts row")
+a(G, 5, "XHP-2", "JST", "XH 2-way plug housing", "the two inside leads (the page-button lead went with D-580)", "P178:2 P196:2", 0.10, EST, "")
+a(G, 5, "ASXHSXH22K152", "JST", "XH lead, crimped both ends, 22 AWG 6 in", "four for the two inside leads, one spare (the page button's went with D-580)", "P196:4", 0.70, EST, "loose contacts SXH-001T-P0.6 need a small crimper that is in no parts row")
 
 G = "5 CU panel and upper board"
 a(G, 1, "IS31FL3236A-TQLS4-TR", "Lumissil", "36-channel LED driver eTQFP-48", "panel U2", "P192:1", 2.60, EST, "")
-a(G, 1, "PEC11R-4220F-S0024", "Bourns", "encoder, detents, push, 20 mm shaft", "panel SW7 centre knob", "P155:1", 1.90, EST, "")
+a(G, 2, "PEC11R-4220F-S0024", "Bourns", "encoder, detents, push, 20 mm shaft", "panel SW7 centre knob; the screen knob on its I2C board (P219, D-580)", "P155:1 P219:1", 1.90, EST, "")
+# the screen knob (D-580, D-581, Y50): its I2C encoder board and its STEMMA QT lead, read by the DCU on the bench
+a(G, 1, "4991", "Adafruit", "I2C QT rotary encoder board (seesaw, 0x36), STEMMA QT", "the screen knob's board, on the CUR (SN32)", "P219:1", 5.95, EST + ", not read - confirm", "")
+a(G, 1, "4210", "Adafruit", "STEMMA QT / Qwiic JST-SH 4-pin cable, 100 mm", "the screen knob's lead to the CUR's J4", "P219:1", 0.95, EST + ", not read - confirm", "length set by the CUR mock-up (Y51) - a 200 mm (4401) if the board sits farther from J4")
 a(G, 2, "PEC11R-4220F-N0024", "Bourns", "encoder, detents, no push, 20 mm shaft", "panel SW8 SW9 seat knobs", "P155:2", 1.60, EST, "")
 a(G, 2, "B28AP", "NKK", "sprung DPDT toggle (ON)-OFF-(ON), PC pins", "panel SW5 SW6 window switches", "P155:2", 9.50, EST, "")
 a(G, 5, "TS02-66-130-BK-160-LCR-D", "Same Sky (CUI)", "6 x 6 mm key, 13 mm tall", "panel SW1-SW4", "P155:4", 0.22, EST, "any 6 x 6 mm through-hole key 13 mm tall on 6.5 x 4.5 mm pins; TS02-66-120-BK-160-LCR-D (12 mm) if the cap's top is 1 mm thick; Omron B3F-1070 is 9.5 mm, not this")
@@ -129,8 +132,11 @@ a(G, 10, "RC0603FR-07100KL", "Yageo", "100 k 1 % 0603", "panel R2", "P192:1", 0.
 a(G, 1, "1950", "Adafruit", "20 jumper wires, a socket each end, 150 mm", "three 3-wire leads, upper J3-J5 to DCU J6-J8", "P196:1", 1.95, MK, "")
 
 M = []
-M.append(("6 sealed receptacles", 2, "DT13-06PA", "TE Deutsch", "6-way flanged board receptacle", "ICU J1, DCU J1", "P122:1 P150:1", 7.50, EST, ""))
-M.append(("6 sealed receptacles", 3, "DT13-12PA", "TE Deutsch", "12-way flanged board receptacle", "ICU J3, DCU J9, upper J1", "P122:1 P150:1 P194:1", 8.74, "TTI's row on Octopart 2026-10-13", ""))
+M.append(("6 sealed receptacles", 1, "DT13-06PA", "TE Deutsch", "6-way flanged board receptacle", "DCU J1", "P150:1", 7.50, EST, ""))
+M.append(("6 sealed receptacles", 2, "DT13-12PA", "TE Deutsch", "12-way flanged board receptacle", "DCU J9, upper J1", "P150:1 P194:1", 8.74, "TTI's row on Octopart 2026-10-13", ""))
+# D-587 / D-590 (Y63): the Display Unit's two DT13s are one DRC 24-way and its plug; no price was read (2026-10-14) - confirm in the cart
+M.append(("6 sealed receptacles", 1, "DRC13-24PA", "TE Deutsch", "24-way 90-degree board receptacle, size 16, key A", "ICU J1", "P227:1", 25.00, EST + ", not read - confirm", ""))
+M.append(("6 sealed receptacles", 1, "DRC16-24SA", "TE Deutsch", "24-way jackscrew plug, size 16, key A, for DRC13-24PA", "DP-ICU, the tail from the dash post", "P227:1", 20.00, EST + ", not read - confirm", ""))
 M.append(("6 sealed receptacles", 1, "DT13-08PA", "TE Deutsch", "8-way flanged board receptacle", "DCU J2", "P153:1", 10.35, "Mouser's price in a search listing, undated", ""))
 
 # The display bridge board (Y46, D-550, D-561): its own Digi-Key file, so Y18's steps keep their lines;

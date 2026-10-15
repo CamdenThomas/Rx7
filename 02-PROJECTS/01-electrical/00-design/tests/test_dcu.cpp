@@ -1122,8 +1122,17 @@ int main() {
         CHECK(o.panel[LP_DEFOG] == LIGHT_BACK && o.panel[LP_MIRROR_DEFOG] == LIGHT_BACK && o.panel[LP_RECIRC] == LIGHT_BACK
               && o.panel[LP_FAN_MODE] == LIGHT_BACK, "the four key symbols dimmed when their function is off");
         bool plate = true;
-        for (int i = 0; i < LQ_USED; i++) if (o.plate[i] != LIGHT_BACK) plate = false;
-        CHECK(plate, "the plate's five symbols follow the lights");
+        const int QS[] = { LQ_WINK_L, LQ_WINK_R, LQ_HATCH, LQ_FUEL_DOOR, LQ_MIRROR, LQ_HAZARD };
+        for (int q : QS) if (o.plate[q] != LIGHT_BACK) plate = false;
+        for (int i = 0; i < LQ_USED; i++) {
+            bool named = false;
+            for (int q : QS) if (q == i) named = true;
+            if (!named && o.plate[i]) plate = false;
+        }
+        CHECK(plate, "the plate's six symbols follow the lights, its unused outputs dark (Y62: OUT6 hazard, OUT13 mirror)");
+        in.hazard = 1; lights_step(&in, &o);
+        CHECK(o.plate[LQ_HAZARD] == LIGHT_FULL && o.plate[LQ_MIRROR] == LIGHT_BACK, "the hazard's triangle full while A8 reads HAZARD (D-589)");
+        in.hazard = 0; lights_step(&in, &o);
         in.headlight = HL_HEAD; lights_step(&in, &o);
         CHECK(o.panel[LP_RING0] == LIGHT_BACK && o.plate[LQ_MIRROR] == LIGHT_BACK, "head lamps: the same");
         in.pmu_alive = 0; lights_step(&in, &o);
@@ -1171,13 +1180,15 @@ int main() {
             in.pmu_alive = (seed >> 8) & 1; in.key_pos = (uint8_t)((seed >> 9) % 5); in.headlight = (uint8_t)((seed >> 12) % 3);
             in.rear_defog = (seed >> 14) & 1; in.mirror_defog = (seed >> 15) & 1; in.recirc = (seed >> 16) & 1;
             in.fan_mode_active = (seed >> 17) & 1; in.seat_drv = (int8_t)((seed >> 18) % 7) - 3;
-            in.seat_pass = (int8_t)((seed >> 21) % 7) - 3; in.wink_l = (seed >> 24) & 1; in.wink_r = (seed >> 25) & 1;
+            in.seat_pass = (int8_t)((seed >> 21) % 7) - 3; in.wink_l = (seed >> 24) & 1; in.wink_r = (seed >> 25) & 1; in.hazard = (seed >> 26) & 1;
             lights_step(&in, &o);
             for (int c = 0; c < LED_PANEL_CH; c++) {
                 if (!used[c] && o.panel[c]) ok = false;
                 if (o.panel[c] != 0 && o.panel[c] != LIGHT_BACK && o.panel[c] != LIGHT_FULL) ok = false;
             }
-            for (int c = LQ_USED; c < LED_PLATE_CH; c++) if (o.plate[c]) ok = false;
+            for (int c = 0; c < LED_PLATE_CH; c++)
+                if (o.plate[c] && c != LQ_WINK_L && c != LQ_WINK_R && c != LQ_HATCH && c != LQ_FUEL_DOOR
+                    && c != LQ_MIRROR && c != LQ_HAZARD) ok = false;
             for (int side = 0; side < 2; side++) {               /* heat and cool never lit together */
                 const uint8_t *a = &o.panel[side ? LP_ARC_PASS0 : LP_ARC_DRV0];
                 if ((a[0] | a[1] | a[2]) && (a[3] | a[4] | a[5])) ok = false;

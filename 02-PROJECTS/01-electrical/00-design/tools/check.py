@@ -158,8 +158,9 @@ EXPECT_EXPANDER = {
 }
 
 BOARDS = {
+    # D-587: the one DRC13-24PA, J1 pin n = DP-ICU cavity n (was DP-ICU-A on J1, DP-ICU-B on J3)
     "icu": dict(sch="display-unit/cad/icu-carrier/icu-carrier.kicad_sch", channels="icu_channels.csv", teensy="J5",
-                drops={"DP-ICU-A": "J1", "DP-ICU-B": "J3"}, rails=("+12V_LOGIC", "+12V_BL"),
+                drops={"DP-ICU": "J1"}, rails=("+12V_LOGIC", "+12V_BL"),
                 grounds=(), ground_bridge=()),
     "dcu": dict(sch="control-unit/cad/dcu-carrier/dcu-carrier.kicad_sch", channels="dcu_channels.csv", teensy="J10",
                 expander="U12", ribbon="J4",
@@ -1200,6 +1201,9 @@ def check_winks(rep, nl, cfg, cavities):
                 rep.bad(hdr, where, "wired (%s)" % frag.strip(), "unconnected")
                 continue
             side = _wside(frag) or _wside(c["circuit"])
+            if re.search(r"\bhazard\b", frag, re.I):
+                check_hazard(rep, nl, hdr, where, hnet, frag, sw, pin_net)
+                continue
             if re.search(r"\bresistors?\b", frag):
                 want = [(m[0][0].upper(), ohms(m[1] + m[2])) for m in _WINK_RES.findall(c["circuit"] + " " + c["lands_on"])]
                 if not want:
@@ -1243,6 +1247,47 @@ def check_winks(rep, nl, cfg, cavities):
     for s, ref in sorted(sw.items()):
         if s not in sides:
             rep.bad(ref, "-", "only the winks %s names" % housing, "also a wink %s" % s)
+
+
+_HAZ_SERIES = re.compile(r"through\s+(\d+(?:\.\d+)?)\s*([kM]?)\s*(?:Ω|ohm)", re.I)
+_HAZ_BASE = re.compile(r"(\d+(?:\.\d+)?)\s*([kM]?)\s*(?:Ω|ohm)\s+baseline", re.I)
+
+
+def check_hazard(rep, nl, hdr, where, hnet, frag, sw, pin_net):
+    """The hazard on the wink lead (D-586, D-589, Y62): the header pin through one resistor of the value the
+    row names ('through 4.7 kΩ') to a two-pin switch whose other side is the winks' commons, and one
+    resistor of the baseline's value ('47 kΩ baseline') from the pin to the commons (D-368)."""
+    m, b = _HAZ_SERIES.search(frag), _HAZ_BASE.search(frag)
+    if not m or not b:
+        rep.bad(hdr, where, "'through <value>' and '<value> baseline' in the hazard's lands_on", repr(frag.strip()))
+        return
+    series, base = ohms(m.group(1) + m.group(2)), ohms(b.group(1) + b.group(2))
+    coms = {pin_net(r, "common") for r in sw.values()} - {None}
+    if len(coms) != 1:
+        rep.bad(hdr, where, "the winks' one commons net for the hazard's return", ", ".join(sorted(bare(c) for c in coms)) or "none")
+        return
+    com = coms.pop()
+    good_series = good_base = None
+    for ref, _n, _pn in parts_on(nl, hnet, "R"):
+        other = [nl.net(ref, k) for k in nl.pins[ref] if nl.net(ref, k) != hnet]
+        if len(nl.pins[ref]) != 2 or len(other) != 1:
+            continue
+        val = ohms(nl.comps[ref]["value"])
+        if other[0] == com and val == base:
+            good_base = ref
+        elif val == series:
+            sws = [r for r, _k, _p in parts_on(nl, other[0], "SW") if len(nl.pins[r]) == 2 and
+                   {nl.net(r, k) for k in nl.pins[r]} == {other[0], com}]
+            if len(sws) == 1 and len(nl.nets.get(other[0], [])) == 2:
+                good_series = (ref, sws[0])
+    if good_series is None:
+        rep.bad(hdr, where, "%g Ω from the hazard's pin to a two-pin switch on the winks' commons" % series, "none")
+    else:
+        rep.ok("%s %s: the hazard through %s %s and %s to %s" % (hdr, where, good_series[0], nl.comps[good_series[0]]["value"], good_series[1], bare(com)))
+    if good_base is None:
+        rep.bad(hdr, where, "a %g Ω baseline from the hazard's pin to the winks' commons" % base, "none")
+    else:
+        rep.ok("%s %s: the hazard's baseline %s %s" % (hdr, where, good_base, nl.comps[good_base]["value"]))
 
 
 def check_conventions(rep, nl, cfg):

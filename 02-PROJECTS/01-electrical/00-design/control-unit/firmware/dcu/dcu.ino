@@ -453,6 +453,7 @@ void loop() {
     light_in.seat_drv        = seat_pos(&dcu.mem, 0);
     light_in.seat_pass       = seat_pos(&dcu.mem, 2);
     light_in.wink_l = light_in.wink_r = 0;                  /* the PMU's A8 export, F-009 */
+    light_in.hazard = 0;                                    /* likewise (D-589's lit triangle) */
     light_in.dash_pct        = dcu.mem.dash_pct;            /* one level with the lamps (D-577) */
     lights_step(&light_in, &light_out);
     lights_write(&lights, &light_out, now);

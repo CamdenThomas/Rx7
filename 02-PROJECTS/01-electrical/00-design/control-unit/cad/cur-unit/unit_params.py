@@ -96,6 +96,17 @@ TABLE = [
     ("STICK_PROUD", 12.0, "mm", "how far the stick's knob stands in front of the face",
      "no P156 part chosen"),
     ("STICK_FLOAT", 0.5, "mm", "gap between the back of the knob and the face", "no knob chosen"),
+    # the screen knob (D-580, D-581, Y51): an encoder on its own I2C board (P219, Adafruit 4991 class)
+    # standing off the plate board's front, its bushing through the face, a knob in front; its room on
+    # the board is KN1 (read from the board)
+    ("KNOB_HOLE_D", 7.5, "mm", "the face's hole for the encoder's M7 bushing", "PEC11R class, no part in hand"),
+    ("KNOB_D", 20.0, "mm", "the screen knob's diameter, in front of the face", "no knob chosen - taste"),
+    ("KNOB_PROUD", 14.0, "mm", "how far the screen knob stands in front of the face", "no knob chosen"),
+    ("KNOB_FLOAT", 0.5, "mm", "gap between the back of the screen knob and the face", "no knob chosen"),
+    ("KNOB_SHAFT_D", 6.0, "mm", "the encoder's shaft", "PEC11R class, 6 mm shaft"),
+    ("KNOB_ENC", (12.5, 13.4, 6.5), "mm", "the encoder's body: wide, tall, deep from its board", "PEC11R class drawing, confirm"),
+    ("KNOB_BOARD_T", 1.6, "mm", "the knob's encoder board", "Adafruit 4991, confirm"),
+    ("KNOB_STANDOFF", 3.0, "mm", "the encoder board's back off the plate board's front", "stand-offs not chosen"),
     ("LED_H", 0.8, "mm", "an 0603 LED's height on the board's front", "0603 class, no part chosen"),
     ("LED_LIT_REACH", 2.0, "mm", "an LED within this of a cap's opening or the stick's well (on "
      "the board, outside its edge) is lit through that opening and gets no window of its own; "
@@ -284,7 +295,7 @@ SELFTEST = [
     ("EAR_Y 200: off the body", {"EAR_Y": 200.0}, "refused"),
     ("EAR_L 4: no room round the ear's screw", {"EAR_L": 4.0}, "refused"),
     ("an opening it slides into", {"RECEPTACLES": _J1_ONLY, "EARS": [],
-                                   "ENVELOPE": {"OPENING_W": 110.0, "OPENING_H": 66.0,
+                                   "ENVELOPE": {"OPENING_W": 128.0, "OPENING_H": 66.0,   # Y62: the plate is 118 wide
                                                 "DEPTH": 220.0}}, "clear"),
     ("an opening too small", {"RECEPTACLES": _J1_ONLY,
                               "ENVELOPE": {"OPENING_W": 90.0, "OPENING_H": 50.0,

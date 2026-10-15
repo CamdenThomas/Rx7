@@ -9,7 +9,7 @@ Owns (R6) nothing in the record; it is drawn FROM these rows of ../../../../data
              P198, P199, P200
   devices    DV24 (the winks' lines and their 18 k / 33 k ladder resistors, on this board since D-499), DV62
 and the DCU firmware's plate channel map (../../firmware/dcu/lights.h): OUT1 wink L, OUT2 wink R,
-OUT3 hatch, OUT4 fuel door, OUT5 mirror. Positions are the sketch's plate (../../../panel-concept.html,
+OUT3 hatch, OUT4 fuel door, OUT6 hazard (Y62), OUT13 mirror (OUT5 until Y62). Positions are the sketch's plate (../../../panel-concept.html,
 plate(): 100 x 56, keys 17 x 15 at (20,19) (39,19) (20,37) (39,37), the stick at (74.5, 28) in a
 14 mm-radius well). Nothing here is measured (R11).
 
@@ -38,8 +38,8 @@ KICAD_SYMS = "/Applications/KiCad/KiCad.app/Contents/SharedSupport/symbols/"
 KICAD_FPS = "/Applications/KiCad/KiCad.app/Contents/SharedSupport/footprints/"
 PANEL_SYM = os.path.join(CAD, "panel", "panel.kicad_sym")
 ROOT_UUID = "6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21"     # fixed so re-runs keep the footprint links
-REV = "0.02"
-DATE = "2026-10-13"
+REV = "0.03"
+DATE = "2026-10-14"
 
 
 def uid(seed):
@@ -50,19 +50,25 @@ def uid(seed):
 # The geometry: millimetres from the plate's top-left corner seen from the front (the driver's
 # side of the board is F.Cu), x toward the steering wheel, y down. The sketch's plate().
 # ============================================================================================
-W, H = 100.0, 56.0
+# Y62 / Y50 (D-586, D-589, D-581): the plate grows 18 mm for a third column - the hazard button above,
+# the screen knob below it - and the stick moves right by as much (block 01.60: the face's layout).
+W, H = 118.0, 56.0
 CORNER_R = 3.0
-HOLES = [(4, 4), (96, 4), (4, 52), (96, 52)]
+HOLES = [(4, 4), (114, 4), (4, 52), (114, 52)]
 K1 = 59.0 if FLIP else 20.0      # first key column (the sketch: k1 = flip ? 610 : 200, /10)
 K2 = K1 + 19.0
+K3 = K2 + 22.0                   # the third column: the hazard button (row 1), the screen knob below it
 WINK_Y, KEY_Y = 19.0, 37.0       # the sketch's two key rows: the winks above, the releases below
-STICK = (25.5 if FLIP else 74.5, 28.0)
+STICK = (25.5 if FLIP else 92.0, 28.0)
+KNOB = (K3, 40.0)                # the screen knob's axis: its I2C encoder board (P219) stands off the
+KNOB_BOARD = 25.4                # plate's front under the faceplate - the board's size, confirm (Adafruit 4991)
+J4_AT = (43.5, 50.5)             # the knob board's STEMMA QT lead header, front, below the hatch key
 WELL_R = 14.0
 KEY_LED_DX = 5.75                # a key's symbol LED inside its 17 x 15 cap, beside the 6 x 6 switch
 WINK_LED_DX = 7.0                # a wink's LED inside its cap, beside the 12 mm placeholder body (confirm)
 WINK_BODY = 12.0                 # the P204 placeholder's body square (confirm: no part chosen)
-J1_X = 6.5 if FLIP else 94.5     # J1's odd-pin column, on the back, at the edge nearest the climate unit
-J2_X, J2_Y = (5.0 if FLIP else 95.0), 44.0   # J2, the wink lead's header: pin 1, on the back, its row
+J1_X = 6.5 if FLIP else 112.5    # J1's odd-pin column, on the back, at the edge nearest the climate unit
+J2_X, J2_Y = (5.0 if FLIP else 111.0), 44.0  # J2, the wink lead's header: pin 1, on the back, its row
                                  # along the bottom of J1's shroud on the same edge, clear of it and of H4
                                  # (confirm: the lead's run to the dash post is not measured)
 
@@ -130,6 +136,8 @@ def symbols():
     out = {}
     for n in ("GND", "+3V3", "PWR_FLAG", "Conn_02x06", "Conn_01x04", "SW_Push", "D", "LED", "R", "C"):
         out[n] = lib_symbol(PANEL_SYM, n)
+    out["Conn_01x05"] = lib_symbol(KICAD_SYMS + "Connector_Generic.kicad_sym", "Conn_01x05")
+    out["SW_SPST"] = lib_symbol(KICAD_SYMS + "Switch.kicad_sym", "SW_SPST")    # the latching hazard button
     out["IS31FL3218-QF"] = lib_symbol(KICAD_SYMS + "Driver_LED.kicad_sym", "IS31FL3218-QF")
     # KiCad's SPDT momentary: pin 1 A = the contact the pole rests on (NC), 2 B = common, 3 C = NO
     out["SW_Push_SPDT"] = lib_symbol(KICAD_SYMS + "Switch.kicad_sym", "SW_Push_SPDT")
@@ -163,7 +171,9 @@ FP_LED = "LED_SMD:LED_0603_1608Metric"
 FP_R = "Resistor_SMD:R_0603_1608Metric"
 FP_C = "Capacitor_SMD:C_0603_1608Metric"
 FP_WINK = "left-plate:WinkSwitch_P204_SPDT_Placeholder"
-FP_J2 = "Connector_JST:JST_XH_B4B-XH-A_1x04_P2.50mm_Vertical"
+FP_J2 = "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical"
+FP_HAZ = "left-plate:HazardSwitch_P226_Latching_Placeholder"
+FP_J4 = "Connector_JST:JST_SH_BM04B-SRSS-TB_1x04-1MP_P1.00mm_Vertical"
 DS_3218 = "https://www.lumissil.com/assets/pdf/core/IS31FL3218_DS.pdf"
 
 # DP-DCU-E cavity n on J1 pin n (cavities.csv src_note -> panel_ribbon signal)
@@ -171,8 +181,13 @@ J1_NETS = {"1": "ROW1", "2": "COL2", "3": "COL3", "4": "JOY_X", "5": "JOY_Y", "6
            "7": "+3V3", "8": "AGND", "9": "PNL_SDA", "10": "PNL_SCL", "11": "GND", "12": "+5V_PNL"}
 
 # the wink lead (DV24, D-499): J2 pin n -> the L3-S1 cavity at the dash post, the commons on pin 4
-J2_NETS = {"1": "WINK_L_NC", "2": "WINK_R_NC", "3": "WINK_REQ", "4": "WINK_COM"}
-J2_CAVS = {"1": "L3-S1 9", "2": "L3-S1 10", "3": "L3-S1 11", "4": "dash ground (G20)"}
+J2_NETS = {"1": "WINK_L_NC", "2": "WINK_R_NC", "3": "WINK_REQ", "4": "WINK_COM", "5": "HAZ_LADDER"}
+J2_CAVS = {"1": "L3-S1 9", "2": "L3-S1 10", "3": "L3-S1 11", "4": "dash ground (G20)", "5": "L3-S1 6"}
+# the hazard (D-586, D-589, DV21): the ladder wire L3-S1 6 through 4.7 k and the latching button to the
+# winks' commons, the 47 k baseline across the whole (D-368)
+HAZ_R, HAZ_BASE = "4.7k", "47k"
+# the screen knob's lead (D-580, D-581, SN32): STEMMA QT order, pin 1 GND, 2 V+, 3 SDA, 4 SCL
+J4_NETS = {"1": "GND", "2": "+3V3", "3": "PNL_SDA", "4": "PNL_SCL", "MP": None}
 WINK_R_OHMS = {"L": "18k", "R": "33k"}       # L3-S1 11: wink L NO through 18 k, wink R NO through 33 k
 
 # the plate's channel map, the firmware's (lights.h LQ_*): OUTn -> (LED ref, what it lights)
@@ -180,7 +195,8 @@ CHANNELS = [(1, "LED1", "wink left face", "LED_WINK_L"),
             (2, "LED2", "wink right face", "LED_WINK_R"),
             (3, "LED3", "hatch release symbol", "LED_HATCH"),
             (4, "LED4", "fuel-door release symbol", "LED_FUEL"),
-            (5, "LED5", "mirror stick symbol", "LED_MIRROR")]
+            (13, "LED5", "mirror stick symbol", "LED_MIRROR"),      # Y62: OUT13, on U1's side toward the stick
+            (6, "LED6", "hazard red triangle", "LED_HAZARD")]        # D-589: the hazard's lit cap
 
 
 def parts():
@@ -230,9 +246,21 @@ def parts():
                   "P204: board-mount SPDT momentary under a lit 17 x 15 cap, C&K 8125 class - no part chosen; the placeholder footprint's pins (1 NC, 2 COM, 3 NO) and body from the part's drawing - confirm"))
         P.append((rref, "R", WINK_R_OHMS[side], FP_R, (111.76, y), {"1": "WINK_%s_NO" % side, "2": "WINK_REQ"},
                   "the wink %s ladder resistor (DV24, L3-S1 11), on the plate since D-499 - 1 %%" % name))
-    P.append(("J2", "Conn_01x04", "wink lead header 1x4 (L3-S1 9 / 10 / 11, commons)", FP_J2, (165.1, 190.5),
+    P.append(("J2", "Conn_01x05", "wink lead header 1x5 (L3-S1 9 / 10 / 11, commons, L3-S1 6)", FP_J2, (165.1, 190.5),
               dict(J2_NETS),
-              "the wink lead's plate end (DV24, D-499): pin 1 = L3-S1 9, 2 = L3-S1 10, 3 = L3-S1 11, 4 = the commons to dash ground (G20); JST XH 4-way, locking - housing and crimps confirm, the lead's run to the dash post not measured"))
+              "the wink lead's plate end (DV24, D-499, D-586): pin 1 = L3-S1 9, 2 = L3-S1 10, 3 = L3-S1 11, 4 = the commons to dash ground (G20), 5 = L3-S1 6 the hazard; JST XH 5-way, locking - housing and crimps confirm, the lead's run to the dash post not measured"))
+    # the hazard (D-586, D-589): a latching push button under a lit red-triangle cap, board-mounted like the winks
+    P.append(("SW5", "SW_SPST", "hazard - latching (P226)", FP_HAZ, (60.96, 228.6),
+              {"1": "HAZ_SW", "2": "WINK_COM"},
+              "P226: latching push button under a lit red-triangle 17 x 15 cap, board-mounted like the winks - no part chosen; the placeholder footprint's two pins and body from the part's drawing - confirm"))
+    P.append(("R5", "R", HAZ_R, FP_R, (111.76, 228.6), {"1": "HAZ_LADDER", "2": "HAZ_SW"},
+              "the hazard's ladder resistor (DV21, D-368, D-586): HAZARD on A8 when the button is in - 1 %"))
+    P.append(("R6", "R", HAZ_BASE, FP_R, (111.76, 241.3), {"1": "HAZ_LADDER", "2": "WINK_COM"},
+              "the hazard's 47 k baseline (D-368): the PMU reads the wire present with the button out - 1 %"))
+    # the screen knob's lead (D-580, D-581)
+    P.append(("J4", "Conn_01x04", "screen knob lead header (STEMMA QT, P219)", FP_J4, (279.4, 190.5),
+              dict(J4_NETS),
+              "the screen knob's I2C encoder board (P219, seesaw 0x36, SN32) on a JST-SH 4-way lead: 1 GND, 2 +3V3 (never +5V_PNL, D-580), 3 PNL_SDA, 4 PNL_SCL - the lead's length set by the plate, confirm"))
     return P
 
 
@@ -363,12 +391,17 @@ def sch_text():
         (139.7, 81.28, 2.0, True, "THE MIRROR STICK (P156, placeholder - no part chosen)"),
         (139.7, 86.36, 1.5, False, "pots across +3V3 / AGND (D-380: its own return), wipers JOY_X / JOY_Y, the push JOY_PRESS to GND (panel_ribbon 19)"),
         (228.6, 25.4, 2.0, True, "THE LIGHTS: IS31FL3218 at 0x54, five symbols at 7.6 mA"),
-        (228.6, 30.48, 1.5, False, "OUT1 wink L face, OUT2 wink R face, OUT3 hatch, OUT4 fuel door, OUT5 mirror stick - the DCU firmware's map (lights.h, F-018)"),
-        (228.6, 34.29, 1.5, False, "OUT6-OUT18 open. The bus pull-ups are on the carrier (R51 / R52, 4.7k to +3V3); none here."),
+        (228.6, 30.48, 1.5, False, "OUT1 wink L face, OUT2 wink R face, OUT3 hatch, OUT4 fuel door, OUT6 hazard, OUT13 mirror stick - the DCU firmware's map (lights.h, F-018, Y62)"),
+        (228.6, 34.29, 1.5, False, "OUT5, OUT7-OUT12, OUT14-OUT18 open. The bus pull-ups are on the carrier (R51 / R52, 4.7k to +3V3); none here."),
         (25.4, 152.4, 2.0, True, "THE WINK SWITCHES (P204, D-499) AND THEIR LEAD J2 TO THE DASH POST"),
         (25.4, 157.48, 1.5, False, "Two SPDT momentary pushbuttons under lit caps (the faces are LED1 / LED2 on the driver). Their lines are the harness's (DV24, D-189, D-482), unchanged:"),
         (25.4, 161.29, 1.5, False, "NC poles to L3-S1 9 / 10 (J2 pins 1 / 2), NO poles through 18k / 33k joined as WINK_REQ to L3-S1 11 (J2 pin 3), the commons to dash ground (J2 pin 4, G20)."),
-        (25.4, 165.1, 1.5, False, "WINK_COM is NOT this board's GND: the winks return to the dash post as today, the plate's electronics on DP-DCU-E 8 and 11 (DV62). Symbol pins: 1 A = NC, 2 B = common, 3 C = NO."),
+        (25.4, 165.1, 1.5, False, "WINK_COM is NOT this board's GND: the winks return to the dash post as today, the plate's electronics on DP-DCU 43 and 46 (DV62). Symbol pins: 1 A = NC, 2 B = common, 3 C = NO."),
+        (25.4, 215.9, 2.0, True, "THE HAZARD (P226, D-586, D-589): A LATCHING BUTTON ON THE WINK LEAD"),
+        (25.4, 220.98, 1.5, False, "L3-S1 6 (J2 pin 5) -> 4.7k -> the button -> the winks' commons (J2 pin 4, G20); 47k across the whole (D-368): the A8 ladder reads HAZARD while it is in."),
+        (25.4, 224.79, 1.5, False, "Its red-triangle cap is LED6 on the driver's OUT6. The column's F-02 hazard contact is left unconnected (D-586)."),
+        (228.6, 177.8, 2.0, True, "J4 - THE SCREEN KNOB'S LEAD (P219, D-580, D-581)"),
+        (228.6, 182.88, 1.5, False, "STEMMA QT order: 1 GND, 2 +3V3, 3 PNL_SDA, 4 PNL_SCL. The knob's encoder board (seesaw 0x36) stands off the plate's front, its shaft through the faceplate."),
     ]
     for x, y, sz, bold, t in notes:
         o.append('\t(text "%s" (exclude_from_sim no) (at %s %s 0) (effects (font (size %s %s)%s) (justify left top)) (uuid "%s"))' % (
@@ -454,6 +487,66 @@ def wink_fp():
        "\n".join(pads))
 
 
+def hazard_fp():
+    """The P226 placeholder (D-589): a latching push button under a lit 17 x 15 red-triangle cap, board-mounted
+    like the winks - the wink placeholder's body and cap with two pins (1 and 2, the one contact), no part chosen."""
+    hb = WINK_BODY / 2
+    pads = []
+    for n, x in ((1, -1.27), (2, 1.27)):
+        shape = "rect" if n == 1 else "circle"
+        pads.append('\t(pad "%d" thru_hole %s (at %s 0) (size 1.7 1.7) (drill 1.0) (layers "*.Cu" "*.Mask") (remove_unused_layers no) (uuid "%s"))' % (
+            n, shape, fmt(x), uid("hazpad%d" % n)))
+    return '''(footprint "HazardSwitch_P226_Latching_Placeholder"
+	(version 20260206)
+	(generator "rx7-y62")
+	(layer "F.Cu")
+	(descr "PLACEHOLDER - confirm. Hazard switch P226 (D-586, D-589): a board-mount latching push button under a lit 17 x 15 red-triangle cap, board-mounted like the winks, no part chosen. Two 1.0 mm holes on 2.54 mm carry the one contact (1, 2); the %s mm square is the body (confirm), the dashed 17 x 15 on F.Fab the cap, lit by the 0603 LED beside the body. Origin = the cap's centre. Replace with the chosen part's drawn footprint. No 3D model")
+	(tags "hazard pushbutton latching placeholder P226")
+	(property "Reference" "REF**" (at 0 -8.5 0) (layer "F.Fab") (uuid "%s") (effects (font (size 1 1) (thickness 0.15))))
+	(property "Value" "HazardSwitch_P226_Latching_Placeholder" (at 0 8.5 0) (layer "F.Fab") (uuid "%s") (effects (font (size 1 1) (thickness 0.15))))
+	(property "Datasheet" "" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "%s") (effects (font (size 1 1) (thickness 0.15))))
+	(property "Description" "PLACEHOLDER - confirm (P226)" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "%s") (effects (font (size 1 1) (thickness 0.15))))
+	(attr through_hole)
+	(fp_rect (start -%s -%s) (end %s %s) (stroke (width 0.1) (type solid)) (fill no) (layer "F.Fab") (uuid "%s"))
+	(fp_rect (start -8.5 -7.5) (end 8.5 7.5) (stroke (width 0.1) (type dash)) (fill no) (layer "F.Fab") (uuid "%s"))
+	(fp_text user "P226 - confirm" (at 0 -4 0) (layer "F.Fab") (uuid "%s") (effects (font (size 1 1) (thickness 0.12))))
+	(fp_text user "${REFERENCE}" (at 0 4 0) (layer "F.Fab") (uuid "%s") (effects (font (size 1 1) (thickness 0.12))))
+	(fp_rect (start -%s -%s) (end %s %s) (stroke (width 0.12) (type solid)) (fill no) (layer "F.SilkS") (uuid "%s"))
+	(fp_rect (start -%s -%s) (end %s %s) (stroke (width 0.05) (type solid)) (fill no) (layer "F.CrtYd") (uuid "%s"))
+%s
+)
+''' % (fmt(WINK_BODY), uid("hz0"), uid("hz1"), uid("hz2"), uid("hz3"),
+       fmt(hb), fmt(hb), fmt(hb), fmt(hb), uid("hz4"), uid("hz5"), uid("hz6"), uid("hz7"),
+       fmt(hb + 0.11), fmt(hb + 0.11), fmt(hb + 0.11), fmt(hb + 0.11), uid("hz8"),
+       fmt(hb + 0.25), fmt(hb + 0.25), fmt(hb + 0.25), fmt(hb + 0.25), uid("hz9"),
+       "\n".join(pads))
+
+
+def knob_fp():
+    """The screen knob's I2C encoder board (P219, Adafruit 4991 class), standing off the plate's front under
+    the faceplate: no pads - a board-only courtyard that keeps the room, and the shaft's axis on F.Fab."""
+    h = KNOB_BOARD / 2
+    return '''(footprint "ScreenKnob_P219_Board_Placeholder"
+	(version 20260206)
+	(generator "rx7-y50")
+	(layer "F.Cu")
+	(descr "PLACEHOLDER - confirm. The screen knob (D-580, D-581): an I2C encoder board (P219, Adafruit I2C QT Rotary Encoder 4991 class) carrying the encoder, on stand-offs off the plate's front, its shaft through the faceplate; its STEMMA QT lead to J4. No pads: the %s mm square keeps the room (the board's size and its stand-offs from the part bought - confirm). Origin = the shaft's axis. No 3D model")
+	(tags "screen knob encoder placeholder P219")
+	(property "Reference" "REF**" (at 0 -%s 0) (layer "F.Fab") (uuid "%s") (effects (font (size 1 1) (thickness 0.15))))
+	(property "Value" "ScreenKnob_P219_Board_Placeholder" (at 0 %s 0) (layer "F.Fab") (uuid "%s") (effects (font (size 1 1) (thickness 0.15))))
+	(property "Datasheet" "" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "%s") (effects (font (size 1 1) (thickness 0.15))))
+	(property "Description" "PLACEHOLDER - confirm (P219)" (at 0 0 0) (layer "F.Fab") (hide yes) (uuid "%s") (effects (font (size 1 1) (thickness 0.15))))
+	(attr board_only exclude_from_pos_files exclude_from_bom)
+	(fp_rect (start -%s -%s) (end %s %s) (stroke (width 0.1) (type solid)) (fill no) (layer "F.Fab") (uuid "%s"))
+	(fp_circle (center 0 0) (end 3.5 0) (stroke (width 0.1) (type dash)) (fill no) (layer "F.Fab") (uuid "%s"))
+	(fp_text user "P219 - confirm" (at 0 -6 0) (layer "F.Fab") (uuid "%s") (effects (font (size 1 1) (thickness 0.12))))
+	(fp_rect (start -%s -%s) (end %s %s) (stroke (width 0.05) (type solid)) (fill no) (layer "F.CrtYd") (uuid "%s"))
+)
+''' % (fmt(KNOB_BOARD), fmt(h + 1.5), uid("kn0"), fmt(h + 1.5), uid("kn1"), uid("kn2"), uid("kn3"),
+       fmt(h), fmt(h), fmt(h), fmt(h), uid("kn4"), uid("kn5"), uid("kn6"),
+       fmt(h + 0.25), fmt(h + 0.25), fmt(h + 0.25), fmt(h + 0.25), uid("kn7"))
+
+
 def write(path, text):
     with open(os.path.join(HERE, path), "w", encoding="utf-8") as f:
         f.write(text)
@@ -464,6 +557,8 @@ def gen_sch():
     write(NAME + ".kicad_sch", sch_text())
     write("left-plate.pretty/Thumbstick_P156_Placeholder_2x04_P2.54mm.kicad_mod", stick_fp())
     write("left-plate.pretty/WinkSwitch_P204_SPDT_Placeholder.kicad_mod", wink_fp())
+    write("left-plate.pretty/HazardSwitch_P226_Latching_Placeholder.kicad_mod", hazard_fp())
+    write("left-plate.pretty/ScreenKnob_P219_Board_Placeholder.kicad_mod", knob_fp())
     write("sym-lib-table", '(sym_lib_table\n\t(version 7)\n\t(lib (name "%s")(type "KiCad")(uri "${KIPRJMOD}/%s.kicad_sym")(options "")(descr "Every symbol this schematic uses, kept with the project"))\n)\n' % (NAME, NAME))
     write("fp-lib-table", '(fp_lib_table\n\t(version 7)\n\t(lib (name "%s")(type "KiCad")(uri "${KIPRJMOD}/%s.pretty")(options "")(descr "Footprints drawn for the plate - the stick and wink switch placeholders"))\n)\n' % (NAME, NAME))
     gen_pro()

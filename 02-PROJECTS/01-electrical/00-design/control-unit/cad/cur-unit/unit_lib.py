@@ -305,7 +305,7 @@ def _plate_parts(P, src, D):
     stick, the LEDs, the holes, the headers on the back. Board coordinates (KiCad's, y down)."""
     B = src["board"]
     fps = B["footprints"]
-    out = NS(caps=[], stick=None, leds=[], holes=[], back=[])
+    out = NS(caps=[], stick=None, knob=None, leds=[], holes=[], back=[])
     capf = fps.get(P["KEY_CAP_FROM"])
     cap_box = (_fab_rects(capf, True) or [None])[0] if capf else None
     if cap_box is None:
@@ -322,7 +322,7 @@ def _plate_parts(P, src, D):
                 out.back.append(NS(ref=ref, value=f["value"], box=cy, h=P["BACK_PARTS"][ref],
                                    ways=len({p["num"] for p in f["pads"] if p["num"]})))
             continue
-        if nm.startswith("WinkSwitch"):
+        if nm.startswith(("WinkSwitch", "HazardSwitch")):    # the hazard's cap is a wink's (D-589, Y62)
             cb = (_fab_rects(f, True) or [None])[0]
             body = _union(_fab_rects(f, False)) if _fab_rects(f, False) else None
             if cb is None or body is None:
@@ -347,6 +347,12 @@ def _plate_parts(P, src, D):
                 continue
             out.stick = NS(ref=ref, value=f["value"], c=f["at"], well_d=2 * circ[0]["r"],
                            body=body)
+        elif nm.startswith("ScreenKnob"):                    # D-581, Y51: KN1, the knob board's room
+            body = (_fab_rects(f, False) or [None])[0]
+            if body is None:
+                D.problems.append("%s (%s) has no board square on F.Fab." % (ref, nm))
+                continue
+            out.knob = NS(ref=ref, value=f["value"], c=f["at"], body=body)
         elif nm.startswith("LED"):
             out.leds.append(NS(ref=ref, value=f["value"], c=f["at"]))
         elif nm.startswith("MountingHole"):
@@ -501,6 +507,14 @@ def derive(P, src):
               Z=D.stick.Z)
     well.seen = well.hole = well.behind = ("circ", st.well_d)
     D.controls.append(well)
+    D.knob = None
+    if pp.knob is not None:                            # the screen knob's hole (D-581, Y51)
+        kb = pp.knob
+        D.knob = NS(ref=kb.ref, value=kb.value, X=bX(kb.c[0]), Z=bZ(kb.c[1]), box=bbox(kb.body))
+        kh = NS(name="%s screen knob" % kb.ref, kind="knob", ref=kb.ref, X=D.knob.X, Z=D.knob.Z)
+        kh.seen = ("circ", P["KNOB_D"])
+        kh.hole = kh.behind = ("circ", P["KNOB_HOLE_D"])
+        D.controls.append(kh)
     D.leds = []
     reach = P["LED_LIT_REACH"]
     for led in pp.leds:
@@ -921,6 +935,19 @@ def build_insides(P, D, src, standin=False):
                     L.cyl_y(P["STICK_KNOB_D"] / 2.0, st.X, st.Z, -P["STICK_PROUD"],
                             -P["STICK_FLOAT"])])
     out.append(_item("control: %s mirror stick (P156 placeholder)" % st.ref, stick))
+
+    # ---- the screen knob: its encoder board off the plate, the encoder, the shaft, the knob in front
+    if D.knob is not None:
+        k, b = D.knob, D.knob.box
+        y_kb1 = D.y_board0 - P["KNOB_STANDOFF"]
+        y_kb0 = y_kb1 - P["KNOB_BOARD_T"]
+        ew, eh, ed = P["KNOB_ENC"]
+        y_enc = max(y_kb0 - ed, D.y_face)
+        knob = L.fuse([L.box(b[0], b[1], y_kb0, y_kb1, b[2], b[3]),
+                       L.box(k.X - ew / 2.0, k.X + ew / 2.0, y_enc, y_kb0, k.Z - eh / 2.0, k.Z + eh / 2.0),
+                       L.cyl_y(P["KNOB_SHAFT_D"] / 2.0, k.X, k.Z, -P["KNOB_FLOAT"], y_enc),
+                       L.cyl_y(P["KNOB_D"] / 2.0, k.X, k.Z, -P["KNOB_PROUD"], -P["KNOB_FLOAT"])])
+        out.append(_item("control: %s screen knob and its encoder board (P219 placeholder)" % k.ref, knob))
 
     # ---- light pipes for the LEDs no opening lights
     for led in D.leds:

@@ -30,7 +30,8 @@
  *     or cool (blue) side for level n, nothing at OFF;
  *   - the plate's five symbols follow the lights; the wink faces go to full
  *     while pressed once the PMU exports A8's state (F-009) - until then the
- *     host passes 0 and they follow the lights only (D-492).
+ *     host passes 0 and they follow the lights only (D-492). The hazard's
+ *     red triangle (D-586, D-589) does the same: full while A8 reads HAZARD.
  *   - "at any time" means the car awake: the PMU alive and the key not OFF.
  *     With the key out, only what follows the lights glows (a parked car with
  *     its park lamps on lights its dash, as the factory did) - confirm.
@@ -48,8 +49,12 @@
  *   OUT2      mirror defog symbol             OUT2  wink right face
  *   OUT3      -                               OUT3  hatch release symbol
  *   OUT4      fan-mode symbol                 OUT4  fuel-door release symbol
- *   OUT5      recirculate symbol              OUT5  mirror stick symbol
- *   OUT6      window DRV symbol (switch cap)  OUT6-18  -
+ *   OUT5      recirculate symbol              OUT5  -  (the mirror's until Y62)
+ *   OUT6      window DRV symbol (switch cap)  OUT6  hazard red triangle (D-589)
+ *                                             OUT7-12  -
+ *                                             OUT13 mirror stick symbol (Y62: the
+ *                                                   driver's pin toward the stick)
+ *                                             OUT14-18  -
  *   OUT7      -
  *   OUT8      window PASS symbol (switch cap)
  *   OUT9      -
@@ -107,8 +112,9 @@
 #define LQ_WINK_R          1
 #define LQ_HATCH           2
 #define LQ_FUEL_DOOR       3
-#define LQ_MIRROR          4
-#define LQ_USED            5
+#define LQ_MIRROR          12     /* plate OUT13 since Y62 (was OUT5): U1's pin on the stick's side */
+#define LQ_HAZARD          5      /* plate OUT6: the hazard's red triangle (D-589, Y62) */
+#define LQ_USED            13     /* OUT1..OUT13 are written; OUT5 and OUT7-12 stay 0 */
 
 /* ------------------------- levels (PWM, 0-255) ------------------------- */
 #define LIGHT_FULL         255    /* a function on, a seat level; confirm on the faceplate */
@@ -143,6 +149,7 @@ typedef struct {
     uint8_t fan_mode_active;       /* the centre knob sets the mode (KNOB_MODE)      */
     int8_t  seat_drv, seat_pass;   /* -3 .. +3, seat_pos() (panel.h)                 */
     uint8_t wink_l, wink_r;        /* pressed - 0 until the PMU exports A8 (F-009)   */
+    uint8_t hazard;                /* A8 reads HAZARD - 0 until the PMU exports A8   */
     uint8_t dash_pct;              /* the dash-light level, climate memory (D-577)  */
 } lights_in_t;
 
@@ -193,6 +200,7 @@ static inline void lights_step(const lights_in_t *in, lights_out_t *out)
     q[LQ_HATCH] = back; q[LQ_FUEL_DOOR] = back; q[LQ_MIRROR] = back;
     q[LQ_WINK_L] = in->wink_l ? LIGHT_FULL : back;
     q[LQ_WINK_R] = in->wink_r ? LIGHT_FULL : back;
+    q[LQ_HAZARD] = in->hazard ? LIGHT_FULL : back;
 }
 
 /* ------------------------- the register writes ------------------------- */

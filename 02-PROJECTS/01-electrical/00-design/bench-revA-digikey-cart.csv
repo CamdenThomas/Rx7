@@ -81,10 +81,12 @@ group,qty,mpn,maker,what,refs,rows,est_unit_usd,price_source,substitute
 4 both carriers,6,PPPC241LFBN-RC,Sullins,"1 x 24 socket header, Teensy socket","ICU J5, DCU J10, one spare pair",P110:2 P148:4,1.53,Digi-Key's row on Octopart 2026-10-13,
 4 both carriers,2,PRPC040SAAN-RC,Sullins,"1 x 40 pin strip, cut to length","ICU J2 JP1-JP3 J8A J8B, DCU J6-J8, upper J3-J5, panel J2",P169:12 P149:9 P196:9 P155:4,1.23,Digi-Key's row on Octopart 2026-10-13,
 4 both carriers,6,B2B-XH-A(LF)(SN),JST,XH 2-way header,"ICU SW1, DCU J3 J5, upper J6 J7",P169:1 P178:2 P196:2,0.17,estimate,
-4 both carriers,6,XHP-2,JST,XH 2-way plug housing,the two inside leads and the page-button lead,P178:2 P196:2 P203:1,0.1,estimate,
-4 both carriers,6,ASXHSXH22K152,JST,"XH lead, crimped both ends, 22 AWG 6 in","four for the two inside leads, one cut in half for the page button",P196:4 P203:1,0.7,estimate,loose contacts SXH-001T-P0.6 need a small crimper that is in no parts row
+4 both carriers,5,XHP-2,JST,XH 2-way plug housing,the two inside leads (the page-button lead went with D-580),P178:2 P196:2,0.1,estimate,
+4 both carriers,5,ASXHSXH22K152,JST,"XH lead, crimped both ends, 22 AWG 6 in","four for the two inside leads, one spare (the page button's went with D-580)",P196:4,0.7,estimate,loose contacts SXH-001T-P0.6 need a small crimper that is in no parts row
 5 CU panel and upper board,1,IS31FL3236A-TQLS4-TR,Lumissil,36-channel LED driver eTQFP-48,panel U2,P192:1,2.6,estimate,
-5 CU panel and upper board,1,PEC11R-4220F-S0024,Bourns,"encoder, detents, push, 20 mm shaft",panel SW7 centre knob,P155:1,1.9,estimate,
+5 CU panel and upper board,2,PEC11R-4220F-S0024,Bourns,"encoder, detents, push, 20 mm shaft","panel SW7 centre knob; the screen knob on its I2C board (P219, D-580)",P155:1 P219:1,1.9,estimate,
+5 CU panel and upper board,1,4991,Adafruit,"I2C QT rotary encoder board (seesaw, 0x36), STEMMA QT","the screen knob's board, on the CUR (SN32)",P219:1,5.95,"estimate, not read - confirm",
+5 CU panel and upper board,1,4210,Adafruit,"STEMMA QT / Qwiic JST-SH 4-pin cable, 100 mm",the screen knob's lead to the CUR's J4,P219:1,0.95,"estimate, not read - confirm",length set by the CUR mock-up (Y51) - a 200 mm (4401) if the board sits farther from J4
 5 CU panel and upper board,2,PEC11R-4220F-N0024,Bourns,"encoder, detents, no push, 20 mm shaft",panel SW8 SW9 seat knobs,P155:2,1.6,estimate,
 5 CU panel and upper board,2,B28AP,NKK,"sprung DPDT toggle (ON)-OFF-(ON), PC pins",panel SW5 SW6 window switches,P155:2,9.5,estimate,
 5 CU panel and upper board,5,TS02-66-130-BK-160-LCR-D,Same Sky (CUI),"6 x 6 mm key, 13 mm tall",panel SW1-SW4,P155:4,0.22,estimate,"any 6 x 6 mm through-hole key 13 mm tall on 6.5 x 4.5 mm pins; TS02-66-120-BK-160-LCR-D (12 mm) if the cap's top is 1 mm thick; Omron B3F-1070 is 9.5 mm, not this"

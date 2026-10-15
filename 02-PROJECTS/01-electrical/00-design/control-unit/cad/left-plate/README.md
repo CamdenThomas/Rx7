@@ -1,11 +1,26 @@
 # Left plate — the KiCad project
 
-*Rev 2026-10-13 (sheet and board rev 0.02, provisional - Y21, Y22, D-492, D-499, D-504) · owns: what this
+*Rev 2026-10-14 (sheet and board rev 0.03, provisional - Y62, Y50: D-586, D-589, D-580, D-581; rev 0.02 Y21, Y22, D-492, D-499, D-504) · owns: what this
 KiCad project is for and what it may claim. The plate's design is the record: the cavities of `DP-DCU-E`
 and `L3-S1` 9-11 (`../../../../data/cavities.csv`), the `panel_ribbon` lines they name, devices `DV24` and
 `DV62`, parts P156, P198, P199, P200 and P204. Read `../../../README.md` first: it is the fence.*
 
 > **D-582 (2026-10-14).** The plate's twelve lines reach the Control Unit as DP-DCU 36-47, the CUR breakout of its branch, not a separate DP-DCU-E; the CUR end (DP-CUR) is unchanged.
+
+> **Rev 0.03 (2026-10-14, Y62 and Y50).** The plate is the CUR, right of the wheel since D-586, and it grows to
+> **118 x 56** for a third column (the face's layout is block 01.60's, drawn here as recommended):
+> - **The hazard** (D-586, D-589): `SW5`, a latching push button under a lit red-triangle cap (P226, placeholder
+>   footprint `HazardSwitch_P226_Latching_Placeholder` - no part chosen), top of the third column beside the
+>   winks; `R5` 4.7 k from `J2` pin 5 (`HAZ_LADDER`, L3-S1 6) to the button, the button's other side on the
+>   winks' commons (`WINK_COM`, J2 pin 4), `R6` 47 k across the whole (D-368). `J2` is a JST XH **5-way** now.
+>   Its cap is `LED6` on the driver's **OUT6**; the mirror symbol `LED5` moved to **OUT13**, the driver's pin on
+>   the stick's side (the DCU's `lights.h` follows: `LQ_HAZARD` 5, `LQ_MIRROR` 12).
+> - **The screen knob** (D-580, D-581): `J4`, a JST-SH 4-way (STEMMA QT order: 1 GND, 2 +3V3, 3 PNL_SDA,
+>   4 PNL_SCL) for the knob's I2C encoder board (P219, seesaw 0x36), which stands off the plate's front below
+>   the hazard, its room kept by the board-only `KN1` (25.4 mm square - confirm against the board bought).
+> - The stick, `U1` and the two headers moved right with the column. `check.py --board left-plate` now also
+>   holds the hazard: the resistor and baseline at the values `L3-S1 6`'s `lands_on` gives, the button between.
+> - The board script finishes any connection its grid router leaves with freerouting (not needed this time).
 
 ## What it is
 
