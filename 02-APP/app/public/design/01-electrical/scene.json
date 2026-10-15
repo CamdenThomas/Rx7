@@ -1,6 +1,6 @@
 {
  "version": 2,
- "built": "2026-10-14T17:58:10-06:00",
+ "built": "2026-10-14T18:33:03-06:00",
  "project": "01-electrical",
  "frame": {
   "units": "mm",
@@ -17,7 +17,7 @@
    "name": "Control Unit (CU)",
    "kind": "unit",
    "glb": "control-unit.glb",
-   "bytes": 362244,
+   "bytes": 337660,
    "parent": null,
    "place": {
     "x": -90.5,
@@ -49,7 +49,8 @@
     }
    ],
    "children": [
-    "dcu-carrier"
+    "dcu-carrier",
+    "panel"
    ],
    "source": "control-unit/cad/climate-unit (unit_params.py, unit_lib.py)",
    "nodes": {
@@ -71,8 +72,6 @@
      "inside:control seat knob right",
      "inside:control window switch left",
      "inside:control window switch right",
-     "inside:panel board",
-     "inside:panel ribbon header",
      "inside:J1 DP-DCU (CMC48-500762-0481, stand-in)"
     ]
    }
@@ -242,6 +241,41 @@
    "connectors": [],
    "children": [],
    "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/dcu-carrier/dcu-carrier.kicad_pcb",
+   "nodes": {
+    "board": [
+     "pcb:board"
+    ],
+    "parts": [
+     "pcb:parts"
+    ]
+   }
+  },
+  {
+   "id": "panel",
+   "name": "Control panel",
+   "kind": "pcb",
+   "glb": "panel.glb",
+   "bytes": 3032004,
+   "parent": "control-unit",
+   "place": {
+    "x": 0.5,
+    "y": 12.6,
+    "z": 53.3,
+    "rx": 90,
+    "ry": 0.0,
+    "rz": 0.0
+   },
+   "place_from": "mock-up report",
+   "confirm": false,
+   "size_mm": {
+    "x": 180.0,
+    "y": 47.3,
+    "z": 47.28
+   },
+   "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
+   "connectors": [],
+   "children": [],
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/panel/panel.kicad_pcb",
    "nodes": {
     "board": [
      "pcb:board"
@@ -14092,11 +14126,6 @@
  "missing": [
   {
    "part": "control-unit",
-   "what": "panel board model",
-   "why": "the drawn panel board is 84.76 tall and the single-DIN face 59.3 (D-582): the mock-up's 180 x 47.3 block stands in until Y55"
-  },
-  {
-   "part": "control-unit",
    "what": "control screen, control centre knob, control key upper left, control key upper right, control key lower left, control key lower right, control seat knob left, control seat knob right, control window switch left, control window switch right",
    "why": "placeholder blocks in the mock-up: no model of these parts is in the tree"
   },
@@ -14126,6 +14155,11 @@
    "why": "kicad-cli found no file for them on this machine (HTSSOP-44-1EP_6.1x14mm_P0.635mm_EP5.2x14mm_Mask4.31x8.26mm.step, Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step); the boards show their pads"
   },
   {
+   "part": "panel",
+   "what": "3D models of U2",
+   "why": "kicad-cli found no file for them on this machine (TQFP-48-1EP_7x7mm_P0.5mm_EP4.11x4.11mm.step); the boards show their pads"
+  },
+  {
    "part": "icu-carrier",
    "what": "3D models of U1",
    "why": "kicad-cli found no file for them on this machine (Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step); the boards show their pads"
@@ -14133,7 +14167,6 @@
  ],
  "notes": [
   "control-unit: REAR_HEADER: one DP-DCU (CMC48-500762-0481) stands in for the carrier's DT13s on its connector edge - a block from the parameter row, not a model (D-582)",
-  "control-unit: the panel board here is 180 x 47.3, the drawn one 180 x 84.76 (../panel/panel.kicad_pcb): this build is for a board still to be drawn",
   "control-unit: the carrier in the mock-up was a stand-in (its STEP was not used)",
   "Every glb is in mm with z up, in the part's own frame; place it at `place` (three.js Euler XYZ, degrees) under its parent, the car's frame for a top-level part (D-418).",
   "No place here is measured: every unit, the PMU, the left plate and every far end is a judgement inside its 00-CAR zone box, confirm until the dash is measured (C4, V-102, V-113).",
@@ -14198,7 +14231,50 @@
     ],
     "why": "D-582: the three DT13s give way to the Control Unit's one CMC 48 header, which the unit's mock-up draws; the board is redrawn at Y54"
    },
-   "stamp": "27f35b65b4f7a2cd"
+   "stamp": "753d9dfda2b24fc4"
+  },
+  "panel": {
+   "id": "panel",
+   "kind": "pcb",
+   "glb": "panel.glb",
+   "bytes": 3032004,
+   "bbox": [
+    [
+     0.0,
+     -47.3,
+     -9.185
+    ],
+    [
+     180.0,
+     0.0,
+     38.095
+    ]
+   ],
+   "vertices": 138579,
+   "triangles": 133355,
+   "nodes": {
+    "board": [
+     "pcb:board"
+    ],
+    "parts": [
+     "pcb:parts"
+    ]
+   },
+   "outline": [
+    0.0,
+    180.0,
+    -47.3,
+    -0.0
+   ],
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/panel/panel.kicad_pcb",
+   "missing_models": [
+    "U2"
+   ],
+   "missing_files": [
+    "TQFP-48-1EP_7x7mm_P0.5mm_EP4.11x4.11mm.step"
+   ],
+   "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
+   "stamp": "1665b29a9ff9162f"
   },
   "left-plate": {
    "id": "left-plate",
@@ -14241,7 +14317,7 @@
     94.5,
     -21.65
    ],
-   "stamp": "dcd7e56e0d56bff8"
+   "stamp": "6d3bb9eb10e61f32"
   },
   "icu-carrier": {
    "id": "icu-carrier",
@@ -14284,16 +14360,15 @@
     "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "ef77cfa5e912eb86"
+   "stamp": "8e7824885be6bfd0"
   },
   "control-unit": {
    "problems": [],
    "notes": [
     "REAR_HEADER: one DP-DCU (CMC48-500762-0481) stands in for the carrier's DT13s on its connector edge - a block from the parameter row, not a model (D-582)",
-    "the panel board here is 180 x 47.3, the drawn one 180 x 84.76 (../panel/panel.kicad_pcb): this build is for a board still to be drawn",
     "the carrier in the mock-up was a stand-in (its STEP was not used)"
    ],
-   "bytes": 362244,
+   "bytes": 337660,
    "bbox": [
     [
      -3.5,
@@ -14306,8 +14381,8 @@
      59.3
     ]
    ],
-   "vertices": 15904,
-   "triangles": 15612,
+   "vertices": 14848,
+   "triangles": 14564,
    "face": [
     181.0,
     59.300000000000004
@@ -14331,12 +14406,10 @@
      "inside:control seat knob right",
      "inside:control window switch left",
      "inside:control window switch right",
-     "inside:panel board",
-     "inside:panel ribbon header",
      "inside:J1 DP-DCU (CMC48-500762-0481, stand-in)"
     ]
    },
-   "left_to_children": 2,
+   "left_to_children": 4,
    "connectors": [
     {
      "code": "DP-DCU",
@@ -14384,7 +14457,7 @@
    "kind": "unit",
    "glb": "control-unit.glb",
    "source": "control-unit/cad/climate-unit (unit_params.py, unit_lib.py)",
-   "stamp": "5f1ac9a8210650bd"
+   "stamp": "f3ffc3feb75f22b0"
   },
   "display-unit": {
    "problems": [],
@@ -14472,7 +14545,7 @@
    "kind": "unit",
    "glb": "display-unit.glb",
    "source": "display-unit/cad/icu-unit (unit_params.py, unit_lib.py)",
-   "stamp": "af2ec21819a04b31"
+   "stamp": "dc6347fe83a921b5"
   },
   "cur": {
    "problems": [],
@@ -14564,7 +14637,7 @@
    "kind": "unit",
    "glb": "cur.glb",
    "source": "control-unit/cad/cur-unit (unit_params.py, unit_lib.py)",
-   "stamp": "300819d25a241e65"
+   "stamp": "252340e98a50548f"
   },
   "pmu": {
    "problems": [],
@@ -14618,7 +14691,7 @@
    "kind": "module",
    "glb": "pmu.glb",
    "source": "02-PROJECTS/01-electrical/00-design/pmu/vendor/PMU CAD info/PMU-24.STEP",
-   "stamp": "fd729ea42c852b7f"
+   "stamp": "dd4a94bbbe24e102"
   }
  },
  "legs": [
@@ -24910,5 +24983,5 @@
   "connectors": "connectors/manifest.json",
   "devices": "devices/manifest.json"
  },
- "record_stamp": "ce287a52d87b979e"
+ "record_stamp": "1249f4d1172aaeeb"
 }

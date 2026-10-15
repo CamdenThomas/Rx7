@@ -5,9 +5,24 @@ is for and what it may claim. The panel's design is `../../../../data/panel_ribb
 `DP-DCU-E`, `dcu_channels` SN17-SN20 and parts P155, P192, P201 (D-492, D-458, D-459). Read
 `../../../README.md` first: it is the fence.*
 
-> **D-582 (2026-10-14): single-DIN.** The face is 181 x 59.3 and the board is redrawn at Y55 to the mock-up's 180 x 47.3, every control where the sketch puts it. The CUR's lines now leave the unit in the carrier's one header (DP-DCU 36-47) through the ribbon, so the plate header J3 (the old DP-DCU-E) is not needed - Y55 decides. Until then this board is as drawn and the scene sets it aside.
-
 ## Where it stands
+
+**2026-10-14 (Y55, D-582): rev 0.05, single-DIN - 180 × 47.3 mm.** The Control Unit's face is 181 × 59.3
+(single-DIN, the sketch's empty bands cropped), so the board is the mock-up's: the face less 6 a side. Every
+control stays where the sketch puts it, so every part moved up by the crop - **board y = sketch y − 4.5**
+(it was + 12.378) - and x did not move. What the crop left off the board was moved onto it: the four M3
+holes to the new corners, the ribbon header `J1` and the plate header `J3` to the top edge (right and left),
+the screen's header `J2` and `JP1` to y 2.6, `TP1` to (60, 3), `C1` beside `J1`'s pin 26, and `LED7` / `LED8`
+(the centre knob's lower ring lights) up 1.0 mm so they clear the edge. Every track was re-routed by
+freerouting 1.9 (`~/.local/share/freerouting`) with `GND` routed as a signal and the pours refilled after,
+inside a 0.6 mm band kept clear of the edge; `U2` pin 41 (`+5V_PNL`) was finished by hand through a via to the
+`F.Cu` supply track, its ground neighbours 40 and 42 taken into the exposed pad as rev 0.04 had them. **DRC
+0 violations, 0 unconnected, 0 footprint errors with schematic parity**; 698 tracks, 55 vias; the sheet is
+unchanged; `check.py --board panel` 79 checks, 0 mismatches (its plate rule now holds `J3` to DP-DCU 36-47,
+D-582). `J3` stays: since D-582 the CUR's lines also reach the carrier's one header through the ribbon (Y54),
+so `J3` is not needed in the car, but it costs nothing on the board and lets a bench CUR plug straight in -
+take it off at `H-008` if it is in the way. The fab package, the assembly drawings and the STEP are rebuilt;
+the zip keeps its name: an earlier `panel-revA-gerbers.zip` must not be ordered.
 
 **2026-10-13 (Y44, D-549): the three encoders' mounting-lug slots are Bourns' own.** SW7, SW8 and SW9 were drawn
 with 1.0 x 3.0 mm slots at +-6.45 mm; the PEC11R-4xxxF-S layout gives 1.8 (+0.2 / -0) x 2.6 (+0.2 / -0) mm slots
@@ -42,35 +57,34 @@ the board stands 8 mm behind the faceplate, inside the unit's enclosure, the DCU
 ## The board, as seen from the faceplate
 
 Millimetres from the board's top-left corner, x to the right, y down. **The outline is the mock-up's,
-`confirm`**: the face is 192 × 96.76 (D-481), the board the face less `PANEL_MARGIN` 6 a side
-(`../climate-unit/unit_params.py`). The sketch's 180 × 60 control block is centred on the face, so
-**board x = sketch x and board y = sketch y + 12.378**. Four M3 holes 4 mm in from the corners:
-(4, 4), (176, 4), (4, 80.76), (176, 80.76).
+`confirm`**: the single-DIN face is 181 × 59.3 (D-582), the board the face less `PANEL_MARGIN` 6 a side,
+180 × 47.3 (`../climate-unit/unit_params.py`). The sketch's control block is anchored top with its empty
+bands cropped, so **board x = sketch x and board y = sketch y − 4.5**. Four M3 holes 4 mm in from the
+corners: (4, 4), (176, 4), (4, 43.3), (176, 43.3). (Rev 0.04 was 180 × 84.76 on a 192 × 96.76 face, y + 12.378.)
 
 | Control | Part | Board (x, y) | On the face (the sketch) |
 |---|---|---|---|
-| screen window | `J2` header for the module, pin 1 at (86.19, 12.0), pins along +x | window centre (90, 27.38) | 44 × 23.6 window |
-| centre knob | `SW7` encoder with push | (90, 54.38) | Ø20 knob |
-| fan-mode key (upper left) | `SW2` | (67.7, 48.88) | 13 × 8 cap |
-| recirculate key (upper right) | `SW3` | (112.3, 48.88) | 13 × 8 cap |
-| rear-defog key (lower left) | `SW1` | (67.7, 59.88) | 13 × 8 cap |
-| mirror-defog key (lower right) | `SW4` | (112.3, 59.88) | 13 × 8 cap |
-| driver seat knob | `SW8` | (40, 42.38) | Ø22 knob |
-| passenger seat knob | `SW9` | (140, 42.38) | Ø22 knob |
-| driver window switch | `SW5` | (12, 42.38) | 12 × 24 slot |
-| passenger window switch | `SW6` | (168, 42.38) | 12 × 24 slot |
+| screen window | `J2` header for the module, pin 1 at (86.19, 2.6), pins along +x | window centre (90, 10.5) | 44 × 23.6 window |
+| centre knob | `SW7` encoder with push | (90, 37.5) | Ø20 knob |
+| fan-mode key (upper left) | `SW2` | (67.7, 32.0) | 13 × 8 cap |
+| recirculate key (upper right) | `SW3` | (112.3, 32.0) | 13 × 8 cap |
+| rear-defog key (lower left) | `SW1` | (67.7, 43.0) | 13 × 8 cap |
+| mirror-defog key (lower right) | `SW4` | (112.3, 43.0) | 13 × 8 cap |
+| driver seat knob | `SW8` | (40, 25.5) | Ø22 knob |
+| passenger seat knob | `SW9` | (140, 25.5) | Ø22 knob |
+| driver window switch | `SW5` | (12, 25.5) | 12 × 24 slot |
+| passenger window switch | `SW6` | (168, 25.5) | 12 × 24 slot |
 
 Key positions are the cap's centre (the `SW_PUSH_6mm` footprint's origin is pad 1, 3.25 / 2.25 mm
 up-left of it). The faceplate's cut-outs are drawn on `Cmts.User`. "Upper / lower, left / right"
 follow I-001: driver side is the left.
 
-**The back** carries the rest: the ribbon header **`J1`** (2 × 13, centre (157, 68.26), pin 1 at
-the right end (172.24, 69.53), toward the carrier's J4 pin 1 - `PANEL_RIBBON_Z` 16.5 above the bottom
-edge, 0.5 more than the mock-up's 16 so `J3` fits under it; the carrier's J4 is straight behind at
-x ≈ 158.4, this one 1.4 mm left of that so its shroud clears the board's edge, `confirm`), the plate header **`J3`** (2 × 6, centre (150, 78.6), pin 1 at the
-right (156.35, 79.87)), the light driver **`U2`** at (90.05, 30.05) behind the screen with **`C2`,
-`C3`, `R1`, `R2`** under it, **`C1`** by `J1` pin 26, the eight matrix diodes beside their switches,
-the screen-supply jumper **`JP1`** at (101, 12) and **`TP1`** (the ribbon's spare) at (128, 80.5).
+**The back** carries the rest: the ribbon header **`J1`** (2 × 13) along the top edge on the right, centre
+(141.87, 6.29), pin 1 at its right end (157.10, 7.04) - the carrier's J4 is behind and below it, the ribbon
+folds down to it (`confirm` on the mock-up); the plate header **`J3`** (2 × 6) along the top edge on the left,
+centre (33.98, 6.29), pin 1 at (40.33, 7.04); the light driver **`U2`** at (90.05, 13.17) behind the screen with
+**`C2`, `C3`, `R1`, `R2`** under it; **`C1`** at (126.62, 13.38) by `J1` pin 26; the eight matrix diodes beside
+their switches; the screen-supply jumper **`JP1`** at (101, 2.6) and **`TP1`** (the ribbon's spare) at (60, 3).
 
 ## The ribbon, J1 (`panel_ribbon`, pin for pin)
 
@@ -108,8 +122,9 @@ If the record re-pins DRV up / down onto one row or one column, an SPDT fits and
 
 ## The plate header, J3 - what the left plate (Y21) carries
 
-`J3` is `DP-DCU-E` 1-12 pin for pin; a lead joins it to the upper connector board's `J8`, which runs
-straight through to the DT13 `DP-DCU-E` in the unit's back wall and on to the plate's cable (P200).
+`J3` is DP-DCU 36-47 pin for pin (pin n = cavity 35 + n; it was `DP-DCU-E` 1-12 before D-582). In the
+car the CUR's lines leave through the carrier's one header (D-582, Y54) over the ribbon, so `J3` is a bench
+convenience: a CUR can plug straight into the panel on the bench (see "Where it stands").
 
 | Pin | Net | panel_ribbon | On the plate |
 |---|---|---|---|

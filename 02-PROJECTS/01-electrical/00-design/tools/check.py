@@ -165,9 +165,9 @@ BOARDS = {
                 expander="U12", ribbon="J4",
                 drops={"DP-DCU": "J1", "DP-DCU-B": "J9", "DP-DCU-C": "J2"}, rails=("+12V_LOGIC", "+12V_CMF"),
                 grounds=("GND", "PGND"), ground_bridge=("U4",)),
-    # The panel board (Y20, D-492): J1 the ribbon; J3 the left plate's header, DP-DCU-E pin for pin
+    # The panel board (Y20, D-492): J1 the ribbon; J3 the left plate's header, DP-DCU 36-47 pin for pin (D-582)
     # (the plate's keys and the stick are reached through it, not drawn here).
-    "panel": dict(sch="control-unit/cad/panel/panel.kicad_sch", ribbon="J1", matrix=True, plate=("DP-DCU-E", "J3")),
+    "panel": dict(sch="control-unit/cad/panel/panel.kicad_sch", ribbon="J1", matrix=True, plate=("DP-DCU", "J3", 36)),
     # The climate unit's upper connector board (Y15, D-480, D-492): no processor, so each housing
     # is held against its cavities' src_note - the carrier header a lead goes to (carrier ref ->
     # this board's header for it), or the panel_ribbon line a conductor is, carried pin for pin.
@@ -177,7 +177,7 @@ BOARDS = {
     # The left plate (Y21, D-492): J1 its cable header, DP-DCU-E pin for pin; the keys a DP-DCU-E
     # cavity names, on their rows and columns through their diodes; the stick on panel_ribbon 1, 17-20.
     # Its winks (Y22, D-499, D-504): J2 the wink lead, held to the L3-S1 cavities whose lands_on name it.
-    "left-plate": dict(sch="control-unit/cad/left-plate/left-plate.kicad_sch", plate_board=("DP-DCU-E", "J1"),
+    "left-plate": dict(sch="control-unit/cad/left-plate/left-plate.kicad_sch", plate_board=("DP-DCU", "J1", 36),
                        winks=("L3-S1", "J2")),
 }
 
@@ -813,26 +813,41 @@ def board_keys(nl):
     return out
 
 
-def plate_keys(cavities, housing, signal):
-    """{key name: (cavity, the panel_ribbon signal it carries)} for each '... - the <name> key' cavity."""
+def _plate(t):
+    """(housing, header, first cavity) from a plate config: header pin n is cavity first + n - 1
+    (D-582: the CUR's lines are DP-DCU 36-47 in the Control Unit's one plug; before it DP-DCU-E 1-12)."""
+    return t[0], t[1], int(t[2]) if len(t) > 2 else 1
+
+
+def _in_plate(c, housing, lo):
+    return c["housing"] == housing and lo <= int(c["cav"]) <= lo + 11
+
+
+def _pin(cav, lo):
+    return str(int(cav) - lo + 1)
+
+
+def plate_keys(cavities, housing, signal, lo=1):
+    """{key name: (header pin, the panel_ribbon signal it carries)} for each '... - the <name> key'
+    cavity."""
     out = {}
     for c in cavities:
-        if c["housing"] != housing:
+        if not _in_plate(c, housing, lo):
             continue
         m = re.search(r"\bthe ([\w -]+?) key\b", c.get("circuit", ""))
         lines = _RIBBON_LINE.findall(c.get("src_note", ""))
         if m and len(lines) == 1:
-            out[_key(m.group(1))] = (c["cav"], signal.get(lines[0]))
+            out[_key(m.group(1))] = (_pin(c["cav"], lo), signal.get(lines[0]))
     return out
 
 
 def check_plate(rep, nl, cfg, cavities, ribbon):
     """The plate header (D-492): pin n is DP-DCU-E cavity n, on the net of the panel_ribbon line its
     src_note names - the same net as that ribbon pin on J1 (AGND stays AGND on the panel)."""
-    housing, conn = cfg["plate"]
+    housing, conn, lo = _plate(cfg["plate"])
     hdr = cfg["ribbon"]
     signal = {r["pin"]: r["signal"] for r in ribbon}
-    rows = sorted((c for c in cavities if c["housing"] == housing), key=lambda c: int(c["cav"]))
+    rows = sorted((c for c in cavities if _in_plate(c, housing, lo)), key=lambda c: int(c["cav"]))
     if conn not in nl.pins:
         rep.bad(conn, "-", "the plate header for %s" % housing, "no such part on the sheet")
         return
@@ -841,21 +856,22 @@ def check_plate(rep, nl, cfg, cavities, ribbon):
         return
     for c in rows:
         cav = c["cav"]
+        pin = _pin(cav, lo)
         lines = _RIBBON_LINE.findall(c.get("src_note", ""))
         if len(lines) != 1 or lines[0] not in signal:
-            rep.bad(conn, cav, "one panel_ribbon line in %s %s's src_note" % (housing, cav), repr(c.get("src_note", "")))
+            rep.bad(conn, pin, "one panel_ribbon line in %s %s's src_note" % (housing, cav), repr(c.get("src_note", "")))
             continue
         want = signal[lines[0]]
-        got = nl.net(conn, cav)
+        got = nl.net(conn, pin)
         if got is None or bare(got) != want:
-            rep.bad(conn, "%s(%s %s)" % (cav, housing, cav), "%s (panel_ribbon %s)" % (want, lines[0]), bare(got) or "unconnected")
+            rep.bad(conn, "%s(%s %s)" % (pin, housing, cav), "%s (panel_ribbon %s)" % (want, lines[0]), bare(got) or "unconnected")
         elif nl.net(hdr, lines[0]) != got:
-            rep.bad(conn, "%s(%s %s)" % (cav, housing, cav), "the same net as %s %s" % (hdr, lines[0]), bare(nl.net(hdr, lines[0])) or "unconnected")
+            rep.bad(conn, "%s(%s %s)" % (pin, housing, cav), "the same net as %s %s" % (hdr, lines[0]), bare(nl.net(hdr, lines[0])) or "unconnected")
         else:
-            rep.ok("%s %s(%s %s) = %s = %s %s" % (conn, cav, housing, cav, want, hdr, lines[0]))
+            rep.ok("%s %s(%s %s) = %s = %s %s" % (conn, pin, housing, cav, want, hdr, lines[0]))
     for num in nl.pins[conn]:
-        if num not in {c["cav"] for c in rows} and nl.net(conn, num) is not None:
-            rep.bad(conn, num, "no cavity row %s %s in the record" % (housing, num), bare(nl.net(conn, num)))
+        if num not in {_pin(c["cav"], lo) for c in rows} and nl.net(conn, num) is not None:
+            rep.bad(conn, num, "no cavity row %s %s in the record" % (housing, int(num) + lo - 1), bare(nl.net(conn, num)))
 
 
 def check_panel(rep, nl, cfg, ribbon, cavities=()):
@@ -863,9 +879,9 @@ def check_panel(rep, nl, cfg, ribbon, cavities=()):
     record puts on the left plate is held to the plate header instead: a DP-DCU-E cavity names it
     ('the hatch key') on the column the record gives it, and the header carries the row too."""
     hdr = cfg["ribbon"]
-    housing, plate = cfg.get("plate", (None, None))
+    housing, plate, lo = _plate(cfg["plate"]) if cfg.get("plate") else (None, None, 1)
     signal = {r["pin"]: r["signal"] for r in ribbon}
-    pkeys = plate_keys(cavities, housing, signal) if housing else {}
+    pkeys = plate_keys(cavities, housing, signal, lo) if housing else {}
     found = board_keys(nl)
     placed = set()
     for row in ribbon:
@@ -875,10 +891,11 @@ def check_panel(rep, nl, cfg, ribbon, cavities=()):
             continue
         if plate:
             for cav in re.findall(r"\b%s\s+(\d+)" % re.escape(housing), side):
-                if nl.net(plate, cav) == net:
-                    rep.ok("%s %s: on %s %s (%s %s)" % (hdr, sig, plate, cav, housing, cav))
+                hp = _pin(cav, lo)
+                if nl.net(plate, hp) == net:
+                    rep.ok("%s %s: on %s %s (%s %s)" % (hdr, sig, plate, hp, housing, cav))
                 else:
-                    rep.bad(plate, cav, "%s (panel_ribbon %s names %s %s)" % (sig, pin, housing, cav), bare(nl.net(plate, cav)) or "unconnected")
+                    rep.bad(plate, hp, "%s (panel_ribbon %s names %s %s)" % (sig, pin, housing, cav), bare(nl.net(plate, hp)) or "unconnected")
         m = re.match(r"keys:\s*(.*)", side)
         enc = re.match(r"(.*?)\s*encoder\s+(A|B|push)\b", _side(side), re.I)
         if m:
@@ -984,9 +1001,9 @@ def check_plate_board(rep, nl, cfg, cavities, ribbon):
     board. Its stick: the pins panel_ribbon gives the thumbstick on the plate (X / Y wiper, the push to
     GND, the pot supply, the pot ground) on those lines. Its lights: the bus lines reach a driver's SDA /
     SCL. The wink switches are check_winks' (J2, D-504)."""
-    housing, conn = cfg["plate_board"]
+    housing, conn, lo = _plate(cfg["plate_board"])
     signal = {r["pin"]: r["signal"] for r in ribbon}
-    rows = sorted((c for c in cavities if c["housing"] == housing), key=lambda c: int(c["cav"]))
+    rows = sorted((c for c in cavities if _in_plate(c, housing, lo)), key=lambda c: int(c["cav"]))
     if conn not in nl.pins:
         rep.bad(conn, "-", "the plate's cable header for %s" % housing, "no such part on the sheet")
         return
@@ -996,8 +1013,8 @@ def check_plate_board(rep, nl, cfg, cavities, ribbon):
     owner = {}
     for c in rows:
         cav = c["cav"]
-        pin = "%s(%s %s)" % (cav, housing, cav)
-        got = nl.net(conn, cav)
+        pin = "%s(%s %s)" % (_pin(cav, lo), housing, cav)
+        got = nl.net(conn, _pin(cav, lo))
         if c["state"] == "PLUG":
             if got is None:
                 rep.ok("%s %s unconnected, a plug" % (conn, pin))
@@ -1017,11 +1034,11 @@ def check_plate_board(rep, nl, cfg, cavities, ribbon):
             rep.ok("%s %s = %s (panel_ribbon %s)" % (conn, pin, want, lines[0]))
         owner[got] = cav
     for num in nl.pins[conn]:
-        if num not in {c["cav"] for c in rows} and nl.net(conn, num) is not None:
-            rep.bad(conn, num, "no cavity row %s %s in the record" % (housing, num), bare(nl.net(conn, num)))
+        if num not in {_pin(c["cav"], lo) for c in rows} and nl.net(conn, num) is not None:
+            rep.bad(conn, num, "no cavity row %s %s in the record" % (housing, int(num) + lo - 1), bare(nl.net(conn, num)))
     on_hdr = {bare(nl.net(conn, n)) for n in nl.pins[conn] if nl.net(conn, n)}
     # the keys
-    pkeys = plate_keys(cavities, housing, signal)
+    pkeys = plate_keys(cavities, housing, signal, lo)
     found = board_keys(nl)
     key_row = {}
     for r in ribbon:

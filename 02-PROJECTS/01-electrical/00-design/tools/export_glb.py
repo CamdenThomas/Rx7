@@ -79,6 +79,7 @@ KICAD_FLAGS = ["--subst-models", "--include-tracks", "--include-pads", "--includ
 # Each board: its KiCad project and the record row that names it (01-electrical parts / modules).
 BOARDS = {
     "dcu-carrier": ("control-unit/cad/dcu-carrier/dcu-carrier.kicad_pcb", "parts", "P144"),
+    "panel": ("control-unit/cad/panel/panel.kicad_pcb", "modules", "PANEL"),
     "left-plate": ("control-unit/cad/left-plate/left-plate.kicad_pcb", "parts", "P198"),
     "icu-carrier": ("display-unit/cad/icu-carrier/icu-carrier.kicad_pcb", "parts", "P103"),
 }
@@ -93,13 +94,8 @@ BOARD_HIDE = {
 UNITS = {
     "control-unit": {"dir": "control-unit/cad/climate-unit", "row": ("modules", "DCU"),
                      "housing": "P152",
-                     "children": {"dcu-carrier": {"kinds": ["carrier"]}},
-                     # the panel board as drawn (180 x 84.76, rev 0.03) is taller than the
-                     # single-DIN face (D-582): the mock-up's own block, cut to the face, stands
-                     # for it until Y55 draws the board again - then "panel" is a child again
-                     "standing_in": {"panel": "the drawn panel board is 84.76 tall and the "
-                                              "single-DIN face 59.3 (D-582): the mock-up's "
-                                              "180 x 47.3 block stands in until Y55"}},
+                     "children": {"dcu-carrier": {"kinds": ["carrier"]},
+                                  "panel": {"names": ["panel board", "panel ribbon header"]}}},
     "display-unit": {"dir": "display-unit/cad/icu-unit", "row": ("modules", "ICU"),
                      "housing": "P111",
                      "children": {"icu-carrier": {"kinds": ["carrier"]}}},

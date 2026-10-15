@@ -24,7 +24,7 @@ DK = _csv("00-design", "bench-revA-digikey-cart.csv")
 MO = _csv("00-design", "bench-revA-mouser-cart.csv")
 _PARTS = {r["id"]: r for r in _csv("data", "parts.csv")}
 BOARDS = [("P103", "icu-carrier", "110 x 80"), ("P144", "dcu-carrier", "180 x 80"),
-          ("P175", "panel", "180 x 84.76"), ("P195", "upper-board", "130 x 36")]
+          ("P175", "panel", "180 x 47.3"), ("P195", "upper-board", "130 x 36")]
 
 
 def _usd(rows):
@@ -215,7 +215,7 @@ ROWS.append(dict(
          "Remove Mark chosen, the rest default.",
          "If removing the mark costs extra, leave the mark: it is only print."),
         ("Save it and add the other three boards",
-         "Save to cart. Then the same six settings for dcu-carrier-revA-gerbers.zip (180 x 80 mm), panel-revA-gerbers.zip (180 x 84.76 mm) and upper-board-revA-gerbers.zip (130 x 36 mm).",
+         "Save to cart. Then the same six settings for dcu-carrier-revA-gerbers.zip (180 x 80 mm), panel-revA-gerbers.zip (180 x 47.3 mm) and upper-board-revA-gerbers.zip (130 x 36 mm).",
          "Four boards in the fab's cart, five of each, each preview at its size.",
          "A preview with the wrong size means the wrong file: stop."),
         ("Choose the shipping and pay the fab",
