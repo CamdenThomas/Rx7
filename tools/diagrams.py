@@ -206,7 +206,8 @@ def device_ends():
     for d in table("devices"):
         for line in re.split(r"<br>|\n", d.get("terminals") or ""):
             term = re.split(r"\s*(?:→|←|->|<-)\s*", line, maxsplit=1)[0].strip()
-            inline = INLINE_RE.findall(line)
+            # a resistor on a board (the PMU box's, the CUR's) is inside its box, not on the wire (D-610)
+            inline = [] if re.search(r"\bboard\b", line) else INLINE_RE.findall(line)
             for h, c, c2 in pat.findall(line):
                 for n in range(int(c), int(c2 or c) + 1):
                     ends.setdefault((h, n), []).append((d, term, inline))
@@ -222,7 +223,7 @@ def load_leg(leg):
 
 
 def route_tree(leg):
-    """The leg's routes as a tree rooted at the dash post: a route hangs under the route whose
+    """The leg's routes as a tree rooted at the PMU box (the dash post before D-596): a route hangs under the route whose
     to_node its from_node begins (RT16 'Rear node' under RT15 'Rear node, cargo bin')."""
     rows = table("routes")
     mine = [r for r in rows if r["leg"] == leg]
@@ -238,12 +239,87 @@ def route_tree(leg):
     parent = {}
     for r in mine:
         for p in mine:
-            if p is not r and r["from_node"] != "Dash post" and p["to_node"].startswith(r["from_node"]):
+            if p is not r and r["from_node"] not in ("Dash post", "PMU box") and p["to_node"].startswith(r["from_node"]):
                 parent[r["id"]] = p["id"]
     return mine, parent
 
 
 # ---------------------------------------------------------------- A: pin ladder
+
+HX, HW, MID, RW = 30, 360, 330, 560
+DX = HX + HW + MID
+
+
+def at_box(h):
+    """A housing whose box side is at the PMU box (D-596, D-612), or at the dash post before it."""
+    return (h.get("box") or "") == "PMU-BOX" or (h.get("where") or "") in ("Dash post", "PMU box")
+
+
+def housing_block(s, h, rows, ends, route_of, used, y):
+    """One housing as a block, one row per cavity, every live wire straight out to where it lands.
+    Shared by the leg sheets (A) and the box sheets. Returns the y under the block."""
+    series = (h.get("series") or "").strip()
+    kind = {"HD": "mixed-contact circular", "HW": "hard-wired at the box, no plug there"}.get(series, h.get("leg_side") or "")
+    if series == "HD":
+        kind = f"{h.get('leg_side')} / {h.get('box_side')} · {kind}"
+    title = f"{h['code']}  ·  {kind}  ·  {h.get('where') or ''}".rstrip(" ·")
+    layout = []
+    for c in rows:
+        size = (c.get("contact") or "").strip()
+        circ = c["circuit"] or ("sealing plug" if c["state"] == "PLUG" else "—")
+        if size:
+            circ = f"#{size}  {circ}"
+        left = wrap(circ, HW - 64 - tw(c["src"] or "", 10), 12)
+        right = wrap(c["lands_on"] or "", RW - 20, 11)
+        layout.append((c, left, right, max(34, 17 * len(left) + 14, 16 * len(right) + 12)))
+    top = y + 34
+    total = sum(r[3] for r in layout)
+    s.rect(HX, y, HW, 34 + total)
+    s.text(HX + 12, y + 22, shorten(title, HW + MID - 24, 13, 700), 13, weight=700)
+    ry = top
+    for c, left, right, rh in layout:
+        s.add(f'<line x1="{HX}" y1="{ry:.1f}" x2="{HX + HW}" y2="{ry:.1f}" stroke="{RULE}"/>')
+        cy = ry + rh / 2
+        live = c["state"] in ("LIVE", "CAPPED")
+        s.add(f'<circle cx="{HX + 20}" cy="{cy:.1f}" r="11" fill="#fff" stroke="{TEXT}"/>')
+        s.text(HX + 20, cy + 4, c["cav"], 11, anchor="middle", weight=700, pad=0)
+        lcol = TEXT if live else FAINT
+        ly0 = cy - (len(left) - 1) * 8.5 + 4
+        for i, t in enumerate(left):
+            s.text(HX + 40, ly0 + 17 * i, t, 12, fill=lcol)
+        if c["src"]:
+            s.text(HX + HW - 10, cy + 4, c["src"], 10, anchor="end", fill=MUTED)
+        if live:
+            colour = c["colour"] or ""
+            used.add(colour)
+            s.wire([(HX + HW, cy), (DX, cy)], colour, dash=c["state"] == "CAPPED")
+            devs = ends.get((c["housing"], int(c["cav"])), [])
+            rts = sorted({route_of.get(d["id"], "") for d, _, _ in devs} - {""}) or \
+                [r for r in [(c.get("route") or "").strip()] if r]
+            awg = (c["awg"] or "").replace(" sh", "")
+            bits = [f"{c['housing']}-{c['cav']}", f"{awg} AWG {colour}".strip()]
+            if rts:
+                bits.append("/".join(rts))
+            if c["state"] == "CAPPED":
+                bits.append("capped at the far end")
+            # the label sits between the housing block and the landing column: shortened to that
+            # width (a cavity on two routes with a long colour name overran it, A17)
+            s.text(HX + HW + 16, cy - 10, shorten("  ·  ".join(bits), MID - 36, 10), 10, fill=MUTED)
+            inline = sorted({p for _, _, parts in devs for p in parts})
+            if len(inline) == 1:
+                bx = DX - 70
+                s.rect(bx, cy - 7, 44, 14, fill="#fff", rx=3)
+                s.text(bx + 22, cy + 18, inline[0], 10, anchor="middle", weight=700)
+            s.rect(DX, ry + 3, RW, rh - 6, fill="#fff")
+        else:
+            label = {"PLUG": "sealing plug", "RESERVED": "reserved - no wire in the leg"}.get(c["state"], c["state"])
+            s.text(HX + HW + 16, cy + 4, label, 10, fill=FAINT)
+        ty0 = cy - (len(right) - 1) * 8 + 4
+        for i, t in enumerate(right):
+            s.text(DX + 10, ty0 + 16 * i, t, 11, fill=TEXT if live else FAINT)
+        ry += rh
+    return top + total + 36
+
 
 def pin_ladder(leg, folder):
     housings, cavs = load_leg(leg)
@@ -252,75 +328,18 @@ def pin_ladder(leg, folder):
     by_h = {}
     for c in cavs:
         by_h.setdefault(c["housing"], []).append(c)
-
-    HX, HW, MID, RW = 30, 360, 330, 560
-    DX = HX + HW + MID
     s = Sheet(f"{leg} - pin ladder")
     s.text(30, 40, f"{leg.upper()} · A · PIN LADDER", 20, weight=700)
     s.text(30, 64, "One block per housing, one row per cavity. Every wire runs straight "
                    "from its cavity to where it lands. Read left to right.", 12, fill=MUTED)
-    y = 110
-    used = set()
+    y, used = 110, set()
     for h in housings:
-        rows = by_h.get(h["code"], [])
-        title = f"{h['code']}  ·  {h['leg_side']}  ·  {h.get('where') or ''}".rstrip(" ·")
-        layout = []
-        for c in rows:
-            left = wrap(c["circuit"] or ("sealing plug" if c["state"] == "PLUG" else "—"),
-                        HW - 64 - tw(c["src"] or "", 10), 12)
-            right = wrap(c["lands_on"] or "", RW - 20, 11)
-            layout.append((c, left, right, max(34, 17 * len(left) + 14, 16 * len(right) + 12)))
-        top = y + 34
-        total = sum(r[3] for r in layout)
-        s.rect(HX, y, HW, 34 + total)
-        s.text(HX + 12, y + 22, title, 13, weight=700)
-        ry = top
-        for c, left, right, rh in layout:
-            s.add(f'<line x1="{HX}" y1="{ry:.1f}" x2="{HX + HW}" y2="{ry:.1f}" stroke="{RULE}"/>')
-            cy = ry + rh / 2
-            live = c["state"] in ("LIVE", "CAPPED")
-            s.add(f'<circle cx="{HX + 20}" cy="{cy:.1f}" r="11" fill="#fff" stroke="{TEXT}"/>')
-            s.text(HX + 20, cy + 4, c["cav"], 11, anchor="middle", weight=700, pad=0)
-            lcol = TEXT if live else FAINT
-            ly0 = cy - (len(left) - 1) * 8.5 + 4
-            for i, t in enumerate(left):
-                s.text(HX + 40, ly0 + 17 * i, t, 12, fill=lcol)
-            if c["src"]:
-                s.text(HX + HW - 10, cy + 4, c["src"], 10, anchor="end", fill=MUTED)
-            if live:
-                colour = c["colour"] or ""
-                used.add(colour)
-                s.wire([(HX + HW, cy), (DX, cy)], colour, dash=c["state"] == "CAPPED")
-                devs = ends.get((c["housing"], int(c["cav"])), [])
-                rts = sorted({route_of.get(d["id"], "") for d, _, _ in devs} - {""}) or \
-                    [r for r in [(c.get("route") or "").strip()] if r]
-                awg = (c["awg"] or "").replace(" sh", "")
-                bits = [f"{c['housing']}-{c['cav']}", f"{awg} AWG {colour}".strip()]
-                if rts:
-                    bits.append("/".join(rts))
-                if c["state"] == "CAPPED":
-                    bits.append("capped at the far end")
-                # the label sits between the housing block and the landing column: shortened to that
-                # width (a cavity on two routes with a long colour name overran it, A17)
-                s.text(HX + HW + 16, cy - 10, shorten("  ·  ".join(bits), MID - 36, 10), 10, fill=MUTED)
-                inline = sorted({p for _, _, parts in devs for p in parts})
-                if len(inline) == 1:
-                    bx = DX - 70
-                    s.rect(bx, cy - 7, 44, 14, fill="#fff", rx=3)
-                    s.text(bx + 22, cy + 18, inline[0], 10, anchor="middle", weight=700)
-                s.rect(DX, ry + 3, RW, rh - 6, fill="#fff")
-            else:
-                label = {"PLUG": "sealing plug", "RESERVED": "reserved - no wire in the leg"}.get(c["state"], c["state"])
-                s.text(HX + HW + 16, cy + 4, label, 10, fill=FAINT)
-            ty0 = cy - (len(right) - 1) * 8 + 4
-            for i, t in enumerate(right):
-                s.text(DX + 10, ty0 + 16 * i, t, 11, fill=TEXT if live else FAINT)
-            ry += rh
-        y = top + total + 36
+        y = housing_block(s, h, by_h.get(h["code"], []), ends, route_of, used, y)
     s.w, s.h = DX + RW + 30, y + 60
     s.legend(30, y + 10, [c for c in INK if c in used])
-    s.text(30, y + 40, "Solid wire: live. Dashed: run and capped at the far end. A box on a wire is an inline "
-                       "resistor. Generated by rx7.py diagrams - do not edit.", 10, fill=MUTED)
+    s.text(30, y + 40, "Solid wire: live. Dashed: run and capped at the far end. A box on a wire is a resistor potted "
+                       "into the switch's pigtail (D-610); #12 / #16 / #20 is a circular's contact size. "
+                       "Generated by rx7.py diagrams - do not edit.", 10, fill=MUTED)
     return s
 
 
@@ -336,9 +355,9 @@ def route_map(leg, folder):
     for r in routes:
         kids.setdefault(parent.get(r["id"], "ROOT"), []).append(r["id"])
 
-    # every wire that leaves the post: which route does it end on? The device's route when the far
+    # every wire that leaves the PMU box: which route does it end on? The device's route when the far
     # end is a device, else the cavity's own (a node, a receptacle, a socket).
-    at_post = {h["code"] for h in housings if h.get("where") == "Dash post"}
+    at_post = {h["code"] for h in housings if at_box(h)}
     wires = {}
     for c in cavs:
         if c["state"] not in ("LIVE", "CAPPED") or c["housing"] not in at_post:
@@ -454,9 +473,9 @@ def route_map(leg, folder):
             used.add(colour)
             s.wire(pts, colour, dash=c["state"] == "CAPPED")
 
-    # the post: one box, each wire named by housing and cavity where it starts
+    # the PMU box (the dash post before D-596): one box, each wire named by housing and cavity where it starts
     s.rect(X0 - 150, sy0 - 34, 150, total + 50)
-    s.text(X0 - 75, sy0 - 14, "Dash post", 13, anchor="middle", weight=700)
+    s.text(X0 - 75, sy0 - 14, "PMU box", 13, anchor="middle", weight=700)
     for (l, i) in stack:
         c = wires[l][i][0]
         s.text(X0 - 10, start_y[(l, i)] + 4, f"{c['housing']} {c['cav']}", 10, anchor="end", weight=700, pad=0)
@@ -504,7 +523,7 @@ def route_map(leg, folder):
     s.w = max(b[2] for b in s.boxes) + 30
     s.h = H + 60
     s.legend(30, H + 10, [c for c in INK if c in used])
-    s.text(30, H + 40, "Solid: live. Dashed: run and capped. Only wires that leave the post are drawn; "
+    s.text(30, H + 40, "Solid: live. Dashed: run and capped. Only wires that leave the PMU box are drawn; "
                        "sealing plugs and reserved cavities are on sheet A. Generated by rx7.py diagrams - do not edit.",
            10, fill=MUTED)
     return s

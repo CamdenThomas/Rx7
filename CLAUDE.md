@@ -89,9 +89,10 @@ reads and answers them. Do not write a Markdown page for him to read or type in:
 not an index, not a summary. Files that stay files: this one, the READMEs beside code and
 drawings (the tool, the firmware, the KiCad boards, the app, `02-APP/README.md`),
 `00-CAR/data/procedures/`, and `99-ARCHIVE`; the factory-circuit write-ups are `00-CAR`
-`circuit_paths` rows (D-522). The one generated
-file type is the harness-leg drawings, rebuilt whole by `rx7.py diagrams` (D-385): run it before
-you report whenever you changed `housings`, `cavities`, `devices` or `routes`.
+`circuit_paths` rows (D-522). The generated
+files are the harness-leg drawings and the boxes' plan sheets, rebuilt whole by `rx7.py diagrams`
+(D-385, D-613): run it before you report whenever you changed `housings`, `cavities`, `devices`,
+`routes`, `boxes`, `fuses`, `relays`, `node_conductors` or `cables`.
 
 **The Manual (D-417)** is the app's view of `00-CAR` as the car is now, computed by `export`:
 only backed facts; a cell saying `confirm`, an `unverified` spec or an `other-car` figure is held

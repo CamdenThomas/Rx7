@@ -3363,13 +3363,16 @@ def cmd_picks(args):
 
 def cmd_diagrams(args):
     """Regenerate the two drawings of every harness leg (D-385): 01-electrical/00-design/harness/diagrams/<leg>/
-    A-pin-ladder.svg and B-route-map.svg. Reads 01-electrical housings, cavities, devices and routes;
+    A-pin-ladder.svg and B-route-map.svg; and the plan sheet of every box with the boxes' overview
+    (D-613): <part>/diagrams/<box>-plan.svg and 00-design/diagrams/boxes-plan.svg. Reads 01-electrical
+    housings, cavities, devices, routes, boxes, fuses, relays, node_conductors, cables and work;
     writes those SVGs and nothing else. A read-only projection: `check` never looks at it and it
     never refuses a commit. rc 2 when a sheet fails the overlap rule and is not written.
-    The drawing code is tools/diagrams.py (it needs Pillow, which this file does not)."""
+    The drawing code is tools/diagrams.py and tools/box_sheets.py (Pillow, which this file does not need)."""
     sys.path.insert(0, str(ROOT / "tools"))
+    import box_sheets
     import diagrams
-    return diagrams.main()
+    return max(diagrams.main(), box_sheets.main())
 
 
 def cmd_cites(args):
