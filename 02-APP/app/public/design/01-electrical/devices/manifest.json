@@ -420,7 +420,7 @@
   "name": "MRBF terminal fuse holder (P051; Blue Sea 5191 class, on the disconnect's stud)",
   "kind": "module",
   "node": "leg-l4",
-  "count": 2,
+  "count": 1,
   "size_mm": {
    "x": 52.0,
    "y": 38.0,
@@ -931,8 +931,8 @@
   "glb": "devices/radar-receiver.glb",
   "name": "Radar receiver, concealed (luxury LP44, Escort MAX Ci 360c class, D-502)",
   "kind": "device",
-  "node": "nose-bumper",
-  "count": 1,
+  "node": "behind-dash",
+  "count": 0,
   "size_mm": {
    "x": 110.0,
    "y": 80.0,
@@ -945,14 +945,7 @@
   "confirm": true,
   "model": "radar-receiver",
   "source": "drawn here (build_devices.py STANDINS['radar-receiver']): Radar receiver, concealed (luxury LP44, Escort MAX Ci 360c class, D-502)",
-  "node_note": "front on L2-RDR",
-  "also": [
-   {
-    "node": "rear-node",
-    "count": 1,
-    "what": "rear on L4-RDR"
-   }
-  ],
+  "node_note": "drawn as its three devices since D-584: the receiver DV63 behind the dash, the sensors DV64 (nose) and DV65 (hatch)",
   "params": {
    "w": {
     "mm": 110.0,
@@ -1845,35 +1838,36 @@
   }
  },
  "DV28": {
-  "glb": "devices/head-unit-1din.glb",
+  "glb": "devices/head-unit-2din.glb",
   "name": "Head unit - Aftermarket",
   "kind": "device",
-  "node": "leg-l3",
+  "node": "centre-stack",
   "count": 1,
   "size_mm": {
    "x": 178.0,
-   "y": 155.0,
-   "z": 50.0
+   "y": 87.0,
+   "z": 100.0
   },
   "bytes": 3708,
   "origin": "z=0 the chassis bottom, centred; the face at -y",
   "standin": true,
   "cad": null,
   "confirm": true,
-  "model": "head-unit-1din",
-  "source": "drawn here (build_devices.py STANDINS['head-unit-1din']): Head unit, aftermarket single DIN (DV28)",
+  "model": "head-unit-2din",
+  "source": "drawn here (build_devices.py STANDINS['head-unit-2din']): Head unit, Pioneer DMH-W4660NEX double DIN (DV28, luxury LP55)",
+  "node_note": "the double-DIN head unit above the Control Unit (luxury LP55)",
   "params": {
    "w": {
     "mm": 178.0,
-    "source": "ISO 7736 single DIN, 180 x 50 aperture"
+    "source": "Pioneer's sheet: chassis 178 x 100 x 87 (luxury LP55, the Control Unit's unit_params HEAD_UNIT block)"
    },
    "d": {
-    "mm": 155.0,
-    "source": "estimate: the chassis depth"
+    "mm": 87.0,
+    "source": "the same line: chassis depth"
    },
    "h": {
-    "mm": 50.0,
-    "source": "ISO 7736"
+    "mm": 100.0,
+    "source": "the same line"
    }
   }
  },
@@ -2678,9 +2672,145 @@
    }
   }
  },
+ "DV63": {
+  "glb": "devices/radar-receiver.glb",
+  "name": "Radar receiver (luxury LP44, Z-002) behind the dash - Unchosen - the Escort MAX Ci 360c class (luxury D-502); built for both options of 03.12 (A16)",
+  "kind": "device",
+  "node": "behind-dash",
+  "count": 1,
+  "size_mm": {
+   "x": 110.0,
+   "y": 80.0,
+   "z": 40.0
+  },
+  "bytes": 3708,
+  "origin": "z=0 the base, centred; the horn faces +y",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "radar-receiver",
+  "source": "drawn here (build_devices.py STANDINS['radar-receiver']): Radar receiver, concealed (luxury LP44, Escort MAX Ci 360c class, D-502)",
+  "node_note": "the receiver at L3-RCV / L3-RDR behind the dash (D-584)",
+  "params": {
+   "w": {
+    "mm": 110.0,
+    "source": "estimate: a concealed radar receiver"
+   },
+   "d": {
+    "mm": 80.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 40.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV64": {
+  "glb": "devices/radar-sensor.glb",
+  "name": "Radar front sensor (luxury LP44) behind the front bumper - Unchosen (Z-002); where the bumper puts it is 04-luxury's (04.13)",
+  "kind": "device",
+  "node": "nose-bumper",
+  "count": 1,
+  "size_mm": {
+   "x": 90.0,
+   "y": 60.0,
+   "z": 45.0
+  },
+  "bytes": 3704,
+  "origin": "z=0 the base, centred; the horn faces +y",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "radar-sensor",
+  "source": "drawn here (build_devices.py STANDINS['radar-sensor']): Radar sensor head, concealed (DV64 / DV65, luxury LP44 class, D-502)",
+  "node_note": "the front sensor at L2-RDR (A16)",
+  "params": {
+   "w": {
+    "mm": 90.0,
+    "source": "estimate: a concealed radar head"
+   },
+   "d": {
+    "mm": 60.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 45.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV65": {
+  "glb": "devices/radar-sensor.glb",
+  "name": "Radar rear sensor (luxury LP44) in the hatch - Unchosen (Z-002)",
+  "kind": "device",
+  "node": "hatch",
+  "count": 1,
+  "size_mm": {
+   "x": 90.0,
+   "y": 60.0,
+   "z": 45.0
+  },
+  "bytes": 3704,
+  "origin": "z=0 the base, centred; the horn faces +y",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "radar-sensor",
+  "source": "drawn here (build_devices.py STANDINS['radar-sensor']): Radar sensor head, concealed (DV64 / DV65, luxury LP44 class, D-502)",
+  "node_note": "the rear sensor at L4-HRD in the hatch (A16)",
+  "params": {
+   "w": {
+    "mm": 90.0,
+    "source": "estimate: a concealed radar head"
+   },
+   "d": {
+    "mm": 60.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 45.0,
+    "source": "estimate"
+   }
+  }
+ },
+ "DV66": {
+  "glb": "devices/upmix-box.glb",
+  "name": "Upmix box (luxury LP56, home-built, D-503) in the passenger-side bin - Home-built: a board or small computer, about $60-200 (luxury D-503) - not built yet",
+  "kind": "device",
+  "node": "cargo-bin-passenger",
+  "count": 1,
+  "size_mm": {
+   "x": 120.0,
+   "y": 90.0,
+   "z": 35.0
+  },
+  "bytes": 3696,
+  "origin": "z=0 the base, centred",
+  "standin": true,
+  "cad": null,
+  "confirm": true,
+  "model": "upmix-box",
+  "source": "drawn here (build_devices.py STANDINS['upmix-box']): Upmix box, home-built (DV66, luxury LP56, D-503)",
+  "node_note": "the upmix box beside the amplifier, on L4-UPX (luxury D-503, D-584)",
+  "params": {
+   "w": {
+    "mm": 120.0,
+    "source": "estimate: a small processor board in a box"
+   },
+   "d": {
+    "mm": 90.0,
+    "source": "estimate"
+   },
+   "h": {
+    "mm": 35.0,
+    "source": "estimate"
+   }
+  }
+ },
  "_meta": {
   "version": 1,
-  "built": "2026-10-13T14:42:43-06:00",
+  "built": "2026-10-14T17:56:57-06:00",
   "work": "Y28",
   "ruling": "D-515",
   "frame": "every glb in mm, z up, in the part's own frame (00-design README §13); each entry's origin says where its zero is",
@@ -2698,7 +2828,9 @@
    "DV45": "the ICU is the display unit and its carrier (display-unit.glb, icu-carrier.glb); its Teensy is P142's entry",
    "DV53": "the control panel is panel.glb, inside the control unit",
    "DV54": "the DCU is the control unit and its carrier (control-unit.glb, dcu-carrier.glb); its Teensy is P142's entry",
-   "DV62": "the left plate is left-plate.glb, being made the CUR (D-514)"
+   "DV62": "the left plate is left-plate.glb, being made the CUR (D-514)",
+   "DV67": "the driver door's window motor and mirror are inside the door, which is not modelled: the harness's door branch ends at the door (D-584, A12)",
+   "DV68": "the passenger door's, as DV67's"
   },
   "models": {
    "aem-gauge-52": {
@@ -2717,7 +2849,7 @@
     ],
     "triangles": 856,
     "standin": true,
-    "stamp": "815ee2abd2910009"
+    "stamp": "855d368ab6643020"
    },
    "alternator": {
     "bytes": 26680,
@@ -2735,7 +2867,7 @@
     ],
     "triangles": 996,
     "standin": true,
-    "stamp": "025e14a31b068843"
+    "stamp": "726126eb115be217"
    },
    "amplifier": {
     "bytes": 12268,
@@ -2753,7 +2885,7 @@
     ],
     "triangles": 108,
     "standin": true,
-    "stamp": "4fd92b4dec04ecbb"
+    "stamp": "9bef4e77ce94a6ce"
    },
    "atc-block-4": {
     "bytes": 1107512,
@@ -2771,7 +2903,7 @@
     ],
     "triangles": 53342,
     "standin": false,
-    "stamp": "cf1984379454f324"
+    "stamp": "2acbf4ec607b1181"
    },
    "battery-ionic-s9": {
     "bytes": 25048,
@@ -2789,7 +2921,7 @@
     ],
     "triangles": 1148,
     "standin": true,
-    "stamp": "897f0cfd6805b61c"
+    "stamp": "c50e9a7f4b69599d"
    },
    "blower-motor": {
     "bytes": 40048,
@@ -2807,7 +2939,7 @@
     ],
     "triangles": 1572,
     "standin": true,
-    "stamp": "a033cb8824173765"
+    "stamp": "183b9f76dcf5362e"
    },
    "bt817-me817ev": {
     "bytes": 10372,
@@ -2825,7 +2957,7 @@
     ],
     "triangles": 84,
     "standin": true,
-    "stamp": "4858a06c6bc4b0e5"
+    "stamp": "e2c0f56a82bf3a5f"
    },
    "busbar-10": {
     "bytes": 79228,
@@ -2843,7 +2975,7 @@
     ],
     "triangles": 3000,
     "standin": true,
-    "stamp": "9586de7f912b54b7"
+    "stamp": "ff6fc7702d75fd02"
    },
    "class-t-block": {
     "bytes": 17192,
@@ -2861,7 +2993,7 @@
     ],
     "triangles": 520,
     "standin": true,
-    "stamp": "cba383a09ff80ee1"
+    "stamp": "fc203f362bb324e6"
    },
    "coil-igniter-set": {
     "bytes": 3712,
@@ -2879,7 +3011,7 @@
     ],
     "triangles": 12,
     "standin": true,
-    "stamp": "5737baba954b2e99"
+    "stamp": "4dc576c13ec756e8"
    },
    "combination-switch": {
     "bytes": 3716,
@@ -2897,7 +3029,7 @@
     ],
     "triangles": 12,
     "standin": true,
-    "stamp": "6dbfa322b901605a"
+    "stamp": "4e0ed4719a6b02af"
    },
    "comfort-block-st6": {
     "bytes": 17556,
@@ -2915,7 +3047,7 @@
     ],
     "triangles": 344,
     "standin": true,
-    "stamp": "985f12feb81f292a"
+    "stamp": "f08aea67cc3a488a"
    },
    "disconnect": {
     "bytes": 10832,
@@ -2933,7 +3065,7 @@
     ],
     "triangles": 304,
     "standin": true,
-    "stamp": "23c7340a639138bc"
+    "stamp": "fa5fce180fdf45e7"
    },
    "display-12p3": {
     "bytes": 3607700,
@@ -2951,7 +3083,7 @@
     ],
     "triangles": 148547,
     "standin": false,
-    "stamp": "4c29c1ef703d203f"
+    "stamp": "f17bf91222016e25"
    },
    "fuel-pump": {
     "bytes": 16800,
@@ -2969,7 +3101,7 @@
     ],
     "triangles": 580,
     "standin": true,
-    "stamp": "d1333e91bcad7044"
+    "stamp": "5eb5949b918b340a"
    },
    "fuel-sender": {
     "bytes": 12000,
@@ -2987,25 +3119,25 @@
     ],
     "triangles": 356,
     "standin": true,
-    "stamp": "734d74bc7d247de9"
+    "stamp": "9d2c247a54dcd247"
    },
-   "head-unit-1din": {
+   "head-unit-2din": {
     "bytes": 3708,
     "bbox": [
      [
       -89.0,
-      -77.5,
+      -43.5,
       0.0
      ],
      [
       89.0,
-      77.5,
-      50.0
+      43.5,
+      100.0
      ]
     ],
     "triangles": 12,
     "standin": true,
-    "stamp": "106a09fc34bf0a8a"
+    "stamp": "b271876a219c650d"
    },
    "headlight-7in": {
     "bytes": 27052,
@@ -3023,7 +3155,7 @@
     ],
     "triangles": 1044,
     "standin": true,
-    "stamp": "30496f72db5e23d8"
+    "stamp": "bdc53523708f95fe"
    },
    "horn": {
     "bytes": 12684,
@@ -3041,7 +3173,7 @@
     ],
     "triangles": 388,
     "standin": true,
-    "stamp": "9d29a0e8d15b75c0"
+    "stamp": "04ab334989084593"
    },
    "ignition-switch": {
     "bytes": 8824,
@@ -3059,7 +3191,7 @@
     ],
     "triangles": 248,
     "standin": true,
-    "stamp": "32cc04a94f71cc06"
+    "stamp": "7006aee53108d2a8"
    },
    "inline-atc-sealed": {
     "bytes": 17224,
@@ -3077,7 +3209,7 @@
     ],
     "triangles": 520,
     "standin": true,
-    "stamp": "a1d8423a626f4385"
+    "stamp": "14956aaa106ff568"
    },
    "inline-maxi-sealed": {
     "bytes": 17168,
@@ -3095,7 +3227,7 @@
     ],
     "triangles": 520,
     "standin": true,
-    "stamp": "78ba1afa16f6abd4"
+    "stamp": "ff155cf396e7bb31"
    },
    "lamp-front-combo": {
     "bytes": 4780,
@@ -3113,7 +3245,7 @@
     ],
     "triangles": 24,
     "standin": true,
-    "stamp": "9facea600ce9439d"
+    "stamp": "e75d3251d21bb655"
    },
    "lamp-rear-combo": {
     "bytes": 4780,
@@ -3131,7 +3263,7 @@
     ],
     "triangles": 24,
     "standin": true,
-    "stamp": "14d6a92e97ba4715"
+    "stamp": "300acf3a89c7b674"
    },
    "lamp-small": {
     "bytes": 4764,
@@ -3149,7 +3281,7 @@
     ],
     "triangles": 24,
     "standin": true,
-    "stamp": "38c7380975228ac3"
+    "stamp": "53b524e249d892ea"
    },
    "midi-block": {
     "bytes": 17184,
@@ -3167,7 +3299,7 @@
     ],
     "triangles": 520,
     "standin": true,
-    "stamp": "83b0e3e2af44d733"
+    "stamp": "ba6741a59af3a446"
    },
    "motor-gear": {
     "bytes": 11116,
@@ -3185,7 +3317,7 @@
     ],
     "triangles": 316,
     "standin": true,
-    "stamp": "8881ccab99e95b18"
+    "stamp": "a66d20dd688960c0"
    },
    "mrbf-holder": {
     "bytes": 17192,
@@ -3203,7 +3335,7 @@
     ],
     "triangles": 520,
     "standin": true,
-    "stamp": "13915bf2837aeba0"
+    "stamp": "8fb2f835a34614d0"
    },
    "pololu-g2-24v21": {
     "bytes": 434052,
@@ -3221,7 +3353,7 @@
     ],
     "triangles": 18764,
     "standin": false,
-    "stamp": "3030d1dc1f395a62"
+    "stamp": "cb81eb7ab3f7e1af"
    },
    "radar-receiver": {
     "bytes": 3708,
@@ -3239,7 +3371,25 @@
     ],
     "triangles": 12,
     "standin": true,
-    "stamp": "d7ee1ec68c7d7dc9"
+    "stamp": "0dfb2645f6214340"
+   },
+   "radar-sensor": {
+    "bytes": 3704,
+    "bbox": [
+     [
+      -45.0,
+      -30.0,
+      0.0
+     ],
+     [
+      45.0,
+      30.0,
+      45.0
+     ]
+    ],
+    "triangles": 12,
+    "standin": true,
+    "stamp": "ffec21ed0f7ecd04"
    },
    "relay-micro-iso": {
     "bytes": 9416,
@@ -3257,7 +3407,7 @@
     ],
     "triangles": 72,
     "standin": true,
-    "stamp": "cf2e6bf5ed31ef6f"
+    "stamp": "edb0c8981456dc9b"
    },
    "relay-mini-iso-sealed": {
     "bytes": 9260,
@@ -3275,7 +3425,7 @@
     ],
     "triangles": 72,
     "standin": true,
-    "stamp": "a45f9aec52b5b160"
+    "stamp": "ef1c36b146e1d07a"
    },
    "seat-module": {
     "bytes": 3700,
@@ -3293,7 +3443,7 @@
     ],
     "triangles": 12,
     "standin": true,
-    "stamp": "b09b4bd0882d0188"
+    "stamp": "0e5409c2bd63ff1c"
    },
    "sender-threaded": {
     "bytes": 10152,
@@ -3311,7 +3461,7 @@
     ],
     "triangles": 268,
     "standin": true,
-    "stamp": "c912966fa156e527"
+    "stamp": "4c30d53155ed34b8"
    },
    "servo-fs5115m": {
     "bytes": 17328,
@@ -3329,7 +3479,7 @@
     ],
     "triangles": 520,
     "standin": true,
-    "stamp": "18aa4e0e0cdb4087"
+    "stamp": "59269a7d9543b839"
    },
    "socket-micro-iso-panel": {
     "bytes": 6956,
@@ -3347,7 +3497,7 @@
     ],
     "triangles": 48,
     "standin": true,
-    "stamp": "19dfbfa68a7c5440"
+    "stamp": "86c54a9b35a68fca"
    },
    "socket-mini-weatherproof": {
     "bytes": 6952,
@@ -3365,7 +3515,7 @@
     ],
     "triangles": 48,
     "standin": true,
-    "stamp": "98b0d7a90382e812"
+    "stamp": "a3ef28619c5c8c79"
    },
    "solenoid": {
     "bytes": 14988,
@@ -3383,7 +3533,7 @@
     ],
     "triangles": 496,
     "standin": true,
-    "stamp": "91b602c0afdd73e4"
+    "stamp": "1fffc1f4bfaa6e1f"
    },
    "speaker-100": {
     "bytes": 36340,
@@ -3401,7 +3551,7 @@
     ],
     "triangles": 1672,
     "standin": true,
-    "stamp": "66dc1687ded7e688"
+    "stamp": "c63141cd2a818996"
    },
    "speaker-165": {
     "bytes": 45340,
@@ -3419,7 +3569,7 @@
     ],
     "triangles": 2158,
     "standin": true,
-    "stamp": "a6b89359f03d015a"
+    "stamp": "b91fd7112d81bdec"
    },
    "starter": {
     "bytes": 12168,
@@ -3437,7 +3587,7 @@
     ],
     "triangles": 364,
     "standin": true,
-    "stamp": "1126e0b79f3a6c22"
+    "stamp": "c2fe961d6afbf2b9"
    },
    "subwoofer-box": {
     "bytes": 47656,
@@ -3455,7 +3605,7 @@
     ],
     "triangles": 2414,
     "standin": true,
-    "stamp": "264999cf0e2369f3"
+    "stamp": "22558dd5d9c01e00"
    },
    "switch-small": {
     "bytes": 3704,
@@ -3473,7 +3623,7 @@
     ],
     "triangles": 12,
     "standin": true,
-    "stamp": "ae2925f04bf2311e"
+    "stamp": "62a97386b19a4d74"
    },
    "teensy41": {
     "bytes": 2223804,
@@ -3491,7 +3641,25 @@
     ],
     "triangles": 96614,
     "standin": false,
-    "stamp": "9e8506bd2eff1bc0"
+    "stamp": "9b5c0985bb57ad8e"
+   },
+   "upmix-box": {
+    "bytes": 3696,
+    "bbox": [
+     [
+      -60.0,
+      -45.0,
+      0.0
+     ],
+     [
+      60.0,
+      45.0,
+      35.0
+     ]
+    ],
+    "triangles": 12,
+    "standin": true,
+    "stamp": "d5d975b5131b7c35"
    },
    "usb-c-module": {
     "bytes": 8820,
@@ -3509,7 +3677,7 @@
     ],
     "triangles": 248,
     "standin": true,
-    "stamp": "265b4614d077b38f"
+    "stamp": "59545ce7b4e685e1"
    },
    "washer-pump": {
     "bytes": 8816,
@@ -3527,7 +3695,7 @@
     ],
     "triangles": 248,
     "standin": true,
-    "stamp": "a9eeda9ce81cfe35"
+    "stamp": "f6aa68f19f4ed60b"
    },
    "xiao-esp32c3": {
     "bytes": 162420,
@@ -3545,7 +3713,7 @@
     ],
     "triangles": 6940,
     "standin": false,
-    "stamp": "412c484e90beafa5"
+    "stamp": "2b3048a30e84dbee"
    }
   }
  }

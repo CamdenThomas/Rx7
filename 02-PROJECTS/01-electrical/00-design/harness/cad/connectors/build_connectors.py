@@ -74,6 +74,7 @@ COLOURS = {   # name: rgba, metallic, roughness - display colours, not TE's
     "DT": ((0.62, 0.63, 0.64, 1.0), 0.0, 0.65),
     "DTP": ((0.07, 0.07, 0.08, 1.0), 0.0, 0.55),
     "DT13": ((0.62, 0.63, 0.64, 1.0), 0.0, 0.65),
+    "CMC": ((0.08, 0.08, 0.09, 1.0), 0.0, 0.55),
     "flange": ((0.36, 0.37, 0.38, 1.0), 0.0, 0.6),
     "wedgelock": ((0.85, 0.45, 0.12, 1.0), 0.0, 0.6),
     "cavities": ((0.03, 0.03, 0.03, 1.0), 0.0, 0.9),
@@ -449,7 +450,7 @@ def _fc_main(job):
         rad = r["cavity_mm"] / 2.0
         cav = cavity_layout(r)
         nodes = {}
-        if r["family"] == "DT13":
+        if r["family"] in ("DT13", "CMC") and r["half"] == "receptacle":
             S, sw, sh = r["shroud_mm"], r["shroud_w_mm"], r["shroud_h_mm"]
             fw, fh, hp, hd = r["flange_w_mm"], r["flange_h_mm"], r["hole_pitch_mm"], r["hole_mm"]
             ft = 3.0                                   # the flange's thickness, drawn
@@ -549,10 +550,10 @@ def _fc_main(job):
             return "shroud" if c > f1 else "flange" if c >= f0 else "body"
         return s, assign
 
-    mats = [G.material("body", *col[fam]) for fam in ("DT", "DTP", "DT13")] + \
+    mats = [G.material("body", *col[fam]) for fam in ("DT", "DTP", "DT13", "CMC")] + \
         [G.material(n, *col[n]) for n in ("flange", "wedgelock", "cavities")]
     mix = {m["name"]: i for i, m in enumerate(mats)}
-    fam_mat = {"DT": 0, "DTP": 1, "DT13": 2}
+    fam_mat = {"DT": 0, "DTP": 1, "DT13": 2, "CMC": 3}
     order = ["body", "latch", "shroud", "flange", "cavities", "wedgelock"]
     meta = {}
     for r in job["rows"]:
@@ -566,7 +567,7 @@ def _fc_main(job):
                 groups.setdefault(node, []).append(prim)
         else:
             for node, solids in standin(r).items():
-                mat = mix.get(node, fam_mat[r["family"]])
+                mat = fam_mat[r["family"]] if node == "body" else mix.get(node, fam_mat[r["family"]])
                 for so in solids:
                     groups.setdefault(node, []).extend(p for _, p in mesh(so, mat, lin, ang))
         nodes = [{"name": n, "prims": groups[n]} for n in order if groups.get(n)]

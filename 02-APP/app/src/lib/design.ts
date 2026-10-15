@@ -78,13 +78,32 @@ export interface Cavity {
   colour: string;
   state: string;
 }
+/** One branch of a leg: a sub-trunk (`kind` trunk, `to` empty) or a breakout to the part it
+ *  feeds - a housing's plug, a device, a door - each with its own thickness (01-electrical D-583). */
+export interface LegBranch {
+  to: string;
+  path: Xyz[];
+  kind: string;
+  radius_mm: number | null;
+  conductors: number | null;
+  housing: string;
+}
+/** A piece of a leg's trunk of one thickness: the trunk thins as each breakout leaves it. */
+export interface LegRun {
+  path: Xyz[];
+  radius_mm: number | null;
+  conductors: number | null;
+}
 /** One harness leg's run (version 2): its main path from the dash post outward and its
- *  branches, each starting on the main path and ending at a far-end node, in the car frame. */
+ *  branches, each starting on the main path or an earlier branch, in the car frame. Since
+ *  D-583 it is drawn as it will be built: `runs` the taped trunk, a breakout per part. */
 export interface Leg {
   id: string;
   name: string;
   path: Xyz[];
-  branches: { to: string; path: Xyz[] }[];
+  branches: LegBranch[];
+  runs: LegRun[];
+  wrap: string;
   radius_mm: number | null;
   conductors: number | null;
   housings: string[];
@@ -280,7 +299,23 @@ export function parseScene(raw: unknown): Parsed {
       path: pts(l.path),
       branches: arr(l.branches)
         .filter(isObj)
-        .map((b) => ({ to: str(b.to), path: pts(b.path) })),
+        .map((b) => ({
+          to: str(b.to),
+          path: pts(b.path),
+          kind: str(b.kind) || 'branch',
+          radius_mm: typeof b.radius_mm === 'number' && b.radius_mm > 0 ? b.radius_mm : null,
+          conductors: typeof b.conductors === 'number' && Number.isFinite(b.conductors) ? b.conductors : null,
+          housing: str(b.housing),
+        })),
+      runs: arr(l.runs)
+        .filter(isObj)
+        .map((r) => ({
+          path: pts(r.path),
+          radius_mm: typeof r.radius_mm === 'number' && r.radius_mm > 0 ? r.radius_mm : null,
+          conductors: typeof r.conductors === 'number' && Number.isFinite(r.conductors) ? r.conductors : null,
+        }))
+        .filter((r) => r.path.length >= 2),
+      wrap: str(l.wrap),
       radius_mm: typeof l.radius_mm === 'number' && l.radius_mm > 0 ? l.radius_mm : null,
       conductors: typeof l.conductors === 'number' && Number.isFinite(l.conductors) ? l.conductors : null,
       housings: strs(l.housings),
@@ -557,6 +592,20 @@ export function legPaths(leg: Leg): Xyz[][] {
   return [leg.path, ...leg.branches.map((b) => b.path)].filter((p) => p.length >= 2);
 }
 
+/** What a leg is drawn as: each piece of its trunk and each breakout at its own thickness
+ *  (D-583); a scene without runs, every path at the leg's one radius. */
+export function legTubes(leg: Leg): { path: Xyz[]; radius: number; trunk: boolean }[] {
+  if (leg.runs.length) {
+    return [
+      ...leg.runs.map((r) => ({ path: r.path, radius: r.radius_mm ?? legRadius(leg), trunk: true })),
+      ...leg.branches
+        .filter((b) => b.kind !== 'trunk' && b.path.length >= 2)
+        .map((b) => ({ path: b.path, radius: b.radius_mm ?? 3, trunk: false })),
+    ];
+  }
+  return legPaths(leg).map((path) => ({ path, radius: legRadius(leg), trunk: true }));
+}
+
 /** A tube's radius: the scene's, else one that grows with the conductors in it (a bundle of
  *  n wires about 1.2 mm across each), never under 3 mm. */
 export function legRadius(leg: Leg): number {
@@ -725,6 +774,12 @@ export interface Toggles {
  *  straight links off (the legs carry the harness); connectors and labels on. */
 export function defaultToggles(s: Scene): Toggles {
   return { legs: s.legs.length > 0, links: s.legs.length === 0, connectors: true, labels: true };
+}
+
+/** A scene with legs draws its harness as the legs, never as straight links (01-electrical
+ *  D-583): a link stays data - what mates what - and is listed, not drawn. */
+export function linksDrawn(s: Scene): boolean {
+  return s.legs.length === 0;
 }
 
 /** What is drawn under the toggles: a layer turned off still shows what is isolated. */

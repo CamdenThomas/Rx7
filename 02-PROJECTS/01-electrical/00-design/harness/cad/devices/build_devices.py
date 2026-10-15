@@ -462,11 +462,22 @@ STANDINS = {
                    "d": (330.0, EST), "h": (300.0, EST),
                    "cone_d": (254.0, EST + ": a 10 in driver"), "mat": ("dark", "")},
         "make": r_box, "origin": "z=0 the base, centred, the driver on top (+z)"},
-    "head-unit-1din": {
-        "what": "Head unit, aftermarket single DIN (DV28)",
-        "params": {"w": (178.0, "ISO 7736 single DIN, 180 x 50 aperture"),
-                   "d": (155.0, EST + ": the chassis depth"), "h": (50.0, "ISO 7736")},
+    "head-unit-2din": {
+        "what": "Head unit, Pioneer DMH-W4660NEX double DIN (DV28, luxury LP55)",
+        "params": {"w": (178.0, "Pioneer's sheet: chassis 178 x 100 x 87 (luxury LP55, the "
+                                "Control Unit's unit_params HEAD_UNIT block)"),
+                   "d": (87.0, "the same line: chassis depth"), "h": (100.0, "the same line")},
         "make": r_box, "origin": "z=0 the chassis bottom, centred; the face at -y"},
+    "upmix-box": {
+        "what": "Upmix box, home-built (DV66, luxury LP56, D-503)",
+        "params": {"w": (120.0, EST + ": a small processor board in a box"), "d": (90.0, EST),
+                   "h": (35.0, EST)},
+        "make": r_box, "origin": "z=0 the base, centred"},
+    "radar-sensor": {
+        "what": "Radar sensor head, concealed (DV64 / DV65, luxury LP44 class, D-502)",
+        "params": {"w": (90.0, EST + ": a concealed radar head"), "d": (60.0, EST),
+                   "h": (45.0, EST), "mat": ("dark", "")},
+        "make": r_box, "origin": "z=0 the base, centred; the horn faces +y"},
     "usb-c-module": {
         "what": "USB-C charging module, aftermarket (DV29)",
         "params": {"d": (29.0, EST + ": the common 1 1/8 in round socket"), "h": (40.0, EST),
@@ -656,9 +667,9 @@ ENTRIES = {
                        "also": [("quarter-passenger", 1, "the right surround")]},
     "04-luxury:LP60": {"model": "speaker-100", "kind": "device", "node": "console", "count": 1,
                        "node_note": "the centre, between the seats (L3-CTR)"},
-    "04-luxury:LP44": {"model": "radar-receiver", "kind": "device", "node": "nose-bumper",
-                       "count": 1, "node_note": "front on L2-RDR",
-                       "also": [("rear-node", 1, "rear on L4-RDR")]},
+    "04-luxury:LP44": {"model": "radar-receiver", "kind": "device", "node": "behind-dash",
+                       "count": 0, "node_note": "drawn as its three devices since D-584: the "
+                       "receiver DV63 behind the dash, the sensors DV64 (nose) and DV65 (hatch)"},
     # the devices
     "DV01": {"model": "coil-igniter-set", "node": "leg-l1"},
     "DV02": {"model": "starter", "node": "leg-l1"},
@@ -688,7 +699,8 @@ ENTRIES = {
     "DV25": {"model": "sender-threaded", "node": "leg-l3"},
     "DV26": {"model": "switch-small", "node": "leg-l3"},
     "DV27": {"model": "blower-motor", "node": "hvac-case"},
-    "DV28": {"model": "head-unit-1din", "node": "leg-l3"},
+    "DV28": {"model": "head-unit-2din", "node": "centre-stack",
+             "node_note": "the double-DIN head unit above the Control Unit (luxury LP55)"},
     "DV29": {"model": "usb-c-module", "node": "leg-l3"},
     "DV31": {"model": "lamp-small", "node": "glovebox"},
     "DV34": {"model": "fuel-pump", "node": "leg-l4"},
@@ -719,6 +731,14 @@ ENTRIES = {
              "node_note": "the passenger-side cargo bin beside the battery (D-449); leg-l4 "
                           "stands for it"},
     "DV61": {"model": "subwoofer-box", "node": "cargo-bin"},
+    "DV63": {"model": "radar-receiver", "node": "behind-dash",
+             "node_note": "the receiver at L3-RCV / L3-RDR behind the dash (D-584)"},
+    "DV64": {"model": "radar-sensor", "node": "nose-bumper",
+             "node_note": "the front sensor at L2-RDR (A16)"},
+    "DV65": {"model": "radar-sensor", "node": "hatch",
+             "node_note": "the rear sensor at L4-HRD in the hatch (A16)"},
+    "DV66": {"model": "upmix-box", "node": "cargo-bin-passenger",
+             "node_note": "the upmix box beside the amplifier, on L4-UPX (luxury D-503, D-584)"},
 }
 
 # Devices with no model of their own, and why. Every devices row is in ENTRIES or here.
@@ -738,6 +758,9 @@ NO_MODEL = {
     "DV54": "the DCU is the control unit and its carrier (control-unit.glb, dcu-carrier.glb); "
             "its Teensy is P142's entry",
     "DV62": "the left plate is left-plate.glb, being made the CUR (D-514)",
+    "DV67": "the driver door's window motor and mirror are inside the door, which is not "
+            "modelled: the harness's door branch ends at the door (D-584, A12)",
+    "DV68": "the passenger door's, as DV67's",
 }
 
 

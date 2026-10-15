@@ -25,7 +25,9 @@ import {
   legPaths,
   legRadius,
   legShown,
+  legTubes,
   linkShown,
+  linksDrawn,
   listedChildren,
   listedTop,
   waysOf,
@@ -465,6 +467,36 @@ describe('version 2: connectors, legs, the CUR', () => {
     expect(legLabelAt({ ...l3, path: [{ x: 0, y: 0, z: 0 }, { x: 100, y: 0, z: 0 }] })).toEqual({ x: 40, y: 0, z: 0 });
     expect(legRadius(s2.legs[0])).toBeGreaterThanOrEqual(3);
     expect(legRadius({ ...s2.legs[0], conductors: 200 })).toBeGreaterThan(legRadius(s2.legs[0]));
+  });
+});
+
+describe('the harness as built (01-electrical D-583)', () => {
+  const p = (x: number) => ({ x, y: 0, z: 0 });
+  const built = {
+    ...s2.legs[0],
+    path: [p(0), p(100), p(200)],
+    runs: [
+      { path: [p(0), p(100)], radius_mm: 6, conductors: 20 },
+      { path: [p(100), p(200)], radius_mm: 4, conductors: 8 },
+    ],
+    branches: [
+      { to: '', kind: 'trunk', path: [p(100), p(150)], radius_mm: 5, conductors: 12, housing: '' },
+      { to: 'X:plug', kind: 'breakout', path: [p(150), p(160)], radius_mm: 3, conductors: 4, housing: 'X' },
+    ],
+  };
+  it('draws each trunk piece and each breakout at its own thickness, the sub-trunks by their runs', () => {
+    const t = legTubes(built);
+    expect(t.map((x) => x.radius)).toEqual([6, 4, 3]);
+    expect(t.map((x) => x.trunk)).toEqual([true, true, false]);
+  });
+  it('a leg with no runs is every path at its one radius, as before', () => {
+    const t = legTubes({ ...built, runs: [] });
+    expect(t).toHaveLength(3);
+    expect(new Set(t.map((x) => x.radius))).toEqual(new Set([legRadius({ ...built, runs: [] })]));
+  });
+  it('draws no straight links when the scene has legs', () => {
+    expect(linksDrawn(s2)).toBe(false);
+    expect(linksDrawn(s)).toBe(true);
   });
 });
 

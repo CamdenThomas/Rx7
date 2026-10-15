@@ -33,7 +33,8 @@ import {
   legColour,
   legLabelAt,
   legPaths,
-  legRadius,
+  legTubes,
+  linksDrawn,
   legShown,
   linkShown,
   modelled,
@@ -339,18 +340,35 @@ export class DesignView {
     return out;
   }
 
-  /** The legs (version 2): each run a tube along its path in the leg's colour, and the leg's
-   *  name near its root. Its route, not a measurement (R11): every point is provisional. */
+  /** The legs (version 2): each piece of the trunk and each breakout a tube at its own
+   *  thickness, taped (01-electrical D-583), the leg's colour a tint in the tape so the legs
+   *  still read apart; the leg's name near its root. Its route, not a measurement (R11). */
   private drawLegs() {
+    const tape = tapeTexture();
     for (const leg of this.s.legs) {
-      const paths = legPaths(leg);
-      if (!paths.length) continue;
+      const tubes = legTubes(leg);
+      if (!tubes.length) continue;
       const colour = legColour(this.s, leg.id);
-      const meshes = paths.map((path) => {
-        const pts = path.map((q) => new THREE.Vector3(q.x, q.y, q.z));
-        const curve = new THREE.CatmullRomCurve3(pts, false, 'centripetal');
-        const geo = new THREE.TubeGeometry(curve, Math.max(8, pts.length * 12), legRadius(leg), 8, false);
-        const mesh = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color: colour, roughness: 0.55, metalness: 0.05 }));
+      const tint = new THREE.Color(0x1f1f22).lerp(new THREE.Color(colour), 0.22);
+      const meshes = tubes.map(({ path, radius }) => {
+        // straight runs with the bends the export already rounded: a polyline, not a spline,
+        // so a bundle never swings out through the air between its points
+        const curve = new THREE.CurvePath<THREE.Vector3>();
+        for (let i = 0; i + 1 < path.length; i++) {
+          const a = new THREE.Vector3(path[i].x, path[i].y, path[i].z);
+          const b = new THREE.Vector3(path[i + 1].x, path[i + 1].y, path[i + 1].z);
+          if (a.distanceTo(b) > 0.01) curve.add(new THREE.LineCurve3(a, b));
+        }
+        const length = curve.curves.length ? curve.getLength() : 0;
+        const map = tape?.clone() ?? null;
+        if (map) {
+          map.needsUpdate = true;
+          map.repeat.set(Math.max(1, length / (radius * 3)), 1);
+        }
+        const geo = length
+          ? new THREE.TubeGeometry(curve, Math.min(3000, Math.max(8, Math.round(length / 4))), radius, 10, false)
+          : new THREE.BufferGeometry();
+        const mesh = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({ color: tint, map, roughness: 0.8, metalness: 0.0 }));
         mesh.userData.legId = leg.id;
         this.legLayer.add(mesh);
         return mesh;
@@ -359,16 +377,17 @@ export class DesignView {
       const label = this.label(leg.name, 'd3-leg', () => this.hooks.pick({ kind: 'leg', id: leg.id }));
       label.element.style.setProperty('--leg', `#${colour.toString(16).padStart(6, '0')}`);
       label.center.set(0.5, 1.3);
-      const at = legLabelAt(leg) ?? paths[0][0];
+      const at = legLabelAt(leg) ?? tubes[0].path[0];
       label.position.set(at.x, at.y, at.z);
       this.legLayer.add(label);
       this.tag(label, 'leg', leg.id);
     }
   }
 
-  /** The harness as straight labelled lines, connector to connector (no route, no length). */
+  /** The harness as straight labelled lines, connector to connector (no route, no length) -
+   *  only for a scene with no legs: a leg draws the wires where they run (D-583). */
   private drawLinks() {
-    if (this.mode.kind !== 'assembly') return;
+    if (this.mode.kind !== 'assembly' || !linksDrawn(this.s)) return;
     const centres = this.centres();
     for (const l of this.s.links) {
       const ends = linkEnds(this.s, l, centres);
@@ -772,4 +791,38 @@ function reason(e: unknown): string {
   if (/404|not found/i.test(m)) return 'the file is not there';
   if (/Unexpected token|JSON|magic|glTF/i.test(m)) return 'the file is not a model';
   return m.slice(0, 120) || 'it did not load';
+}
+
+/** The tape a bundle is wrapped in: overlapping turns of dark cloth tape, drawn once on a
+ *  canvas and repeated along each tube (u runs along it, v round it). Null where no canvas. */
+let tapeCache: THREE.CanvasTexture | null | undefined;
+function tapeTexture(): THREE.CanvasTexture | null {
+  if (tapeCache !== undefined) return tapeCache;
+  if (typeof document === 'undefined') return (tapeCache = null);
+  const c = document.createElement('canvas');
+  c.width = 64;
+  c.height = 64;
+  const g = c.getContext('2d');
+  if (!g) return (tapeCache = null);
+  g.fillStyle = '#d8d8d8';
+  g.fillRect(0, 0, 64, 64);
+  for (let k = -64; k < 128; k += 16) {
+    // each turn's lapped edge: a darker line, a lighter lip beside it
+    g.strokeStyle = '#8c8c8c';
+    g.lineWidth = 3;
+    g.beginPath();
+    g.moveTo(k, 0);
+    g.lineTo(k + 64, 64);
+    g.stroke();
+    g.strokeStyle = '#ffffff';
+    g.lineWidth = 1.5;
+    g.beginPath();
+    g.moveTo(k + 3, 0);
+    g.lineTo(k + 67, 64);
+    g.stroke();
+  }
+  const t = new THREE.CanvasTexture(c);
+  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  t.colorSpace = THREE.SRGBColorSpace;
+  return (tapeCache = t);
 }

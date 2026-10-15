@@ -433,15 +433,17 @@ A board's 3D model that this machine's KiCad library lacks is listed in `missing
 
 **Where things are, and what is judgement.** The children's places come from the mock-up's own
 derive(): the carriers by the move the mock-up gives their STEP (a half turn for the DCU's), the
-panel board on the mock-up's panel block (stood up, top side to the cabin), the upper board on
-its block (its two receptacles land on the mock-up's cut-outs; the export notes it if they do
-not). Nothing in the record places the units, the PMU or the dash post (00-CAR parts has no
+left plate on the CUR's plate block (stood up, top side to the cabin). Since D-582 the upper
+board is gone, the DCU carrier's glb leaves out its J1 / J2 / J9 (`BOARD_HIDE`: the Control
+Unit's one CMC 48 header is the mock-up's block until Y54 redraws the board) and the panel board
+as drawn (84.76 tall) is not placed - the mock-up's block cut to the single-DIN face stands for it
+until Y55 (`standing_in`, listed in `missing`). Nothing in the record places the units, the PMU or the dash post (00-CAR parts has no
 `model_at_mm` for any of them; D-416), so `TOP` in the script puts each inside 00-CAR's `dash`
 zone box by fractions - the centre stack, the binnacle, the dash node, left of the wheel - and
 `WHERE` puts each housing's far end inside its zone (one line each). All of those are
 `provisional` and `confirm` until the dash is measured (C4, V-102, V-113). The links: a housing on
 a unit's rear wall runs to the PMU, which stands for the dash node (modules PMU), unless
-`FAR_END` says otherwise (DP-DCU-D to the HVAC case, D-480; DP-DCU-E to the left plate, D-492); a
+`FAR_END` says otherwise (DP-CUR to the Control Unit's DP-DCU, D-521 / D-582); a
 housing at the dash post runs from the PMU to its leg's far end; any other receptacle runs from
 the PMU to its `where`. The post's receptacles are not modelled; their links start spread along
 the PMU's socket face.
@@ -464,9 +466,14 @@ whole - every field above, the links unchanged - and version 2 only adds:
 - three more nodes: `cargo-bin-passenger` (D-449: the battery, disconnect, Class-T, MRBF holders
   and amplifier, moved there from leg-l4 by `MOVE_DEVICES`), `door-driver`, `door-passenger`.
 - `legs[]`: `id` (`L1`-`L4`, `Audio`), `name`, `path[]` (x y z, car frame, from the dash post
-  outward), `branches[]` (`to`: a part id, `path[]` starting on a point of the main path),
-  `radius_mm`, `conductors`, `housings[]`, `routes[]` (the routes rows whose `leg` is the leg's;
-  `Sill` is L4's), `place_from: "provisional"`, `confirm: true`, `note`.
+  outward: the trunk's main run), `branches[]` (`kind` `trunk` - a sub-trunk, `to` empty - or
+  `breakout` - `to` the part it ends on: a housing's plug, a device, a door's node; `path[]`
+  starting on a point of the main path or of an earlier branch; `radius_mm`, `conductors`,
+  `housing`), `runs[]` (the trunk, main and subs, cut into pieces of one thickness: `path[]`,
+  `radius_mm`, `conductors`), `radius_mm` (at the root), `conductors`, `housings[]`, `routes[]`
+  (the routes rows whose `leg` is the leg's; `Sill` is L4's), `wrap`, `place_from:
+  "provisional"`, `confirm: true`, `note`. The app draws `runs` and the breakouts, taped; a scene
+  with legs draws no straight links (D-583).
 - `unplaced[]` (`device`, `why`): a manifest entry not placed, and why (count 0, or drawn inside
   a board's or a unit's glb). `manifests` (the two manifests' paths).
 
@@ -474,20 +481,27 @@ Where version 2 puts things, all judgement and all `confirm`: a unit's receptacl
 mock-up's cut-outs, at the receptacle's tip, `+Y` out of the rear face; the dash post's
 receptacles (every housing whose `where` is Dash post) as a cluster left of the PMU, a row per
 leg, L1 at the top, `CLUSTER_GAP` 20 mm apart, facing the cabin; every other housing's pair, and
-every device, on a shelf centred on its node (`NODE_GAP` 5 mm, devices `DEVICE_GAP` 10 mm, rows
-wrapping at `ROW_WRAP` 600 mm, kept inside the cabin's width); the dash node's parts on a shelf
-right of the PMU. The legs run through `WAYPOINTS` (the firewall grommet on the passenger side at
-the firewall's plane, the cowl, the dash rail, the tunnel, the sills, the jamb boots, the hinge
-loop), each a fraction across a 00-CAR zone box; `LEGS` says which points each leg and branch
-takes, after its routes' from / to / via. A leg carries the housings at the dash post on its row
-and every housing at a node it reaches; its radius is from the wired conductors (LIVE or CAPPED)
-leaving the post (the Audio leg's, at its far ends): 1.2 x the root of the sum of their squared
-diameters, `AWG_OD` a TXL-class catalogue figure (confirm), never under 3 mm. The connectors and
+a device with a `SPOTS` row where it is fitted (judgement, D-583) and a housing named in such a
+device's `devices.plug` beside it; every other housing's pair and device on a shelf centred on its
+node (`NODE_GAP` 5 mm, devices `DEVICE_GAP` 10 mm, rows wrapping at `ROW_WRAP` 600 mm, kept
+inside the cabin's width); the dash node's parts on a shelf right of the PMU. **The harness is
+drawn as it will be built (D-583):** each leg's trunk follows `TRUNKS` - the firewall's grommets,
+the dash rail behind the dash, down the centre stack to the tunnel's sides, the sills, the inner
+wing and the radiator support, up the C-pillar to the hinge loop - every run squared to the car's
+axes (down first and then along, or along first and up last, so it lies on the lower surface);
+each housing and device its leg feeds gets a breakout from the trunk point nearest it, squared the
+same way and taken up the side wall where it climbs far behind the dash (`WALL_X`, `WALL_RISE`),
+bent round `BREAKOUT_BEND`. A housing's leg is its cavities' route's, else its device's, else its
+`leg`; a unit's plug is L3's. Each piece's thickness is from the wired conductors (LIVE or CAPPED,
+a door's RESERVED too) still in it: 1.2 x the root of the sum of their squared diameters,
+`AWG_OD` a TXL-class catalogue figure (confirm), never under 3 mm - so the trunk thins as each
+breakout leaves it. The connectors and
 devices come from their builders, run as steps of this command (`--only connectors`, `--only
 devices`); `--selftest` also holds version 2: every connector's glb is its family's in the
 manifest, mates name each other, no two parts share a place except a mated pair, every leg and
-branch has two points or more and every branch starts on its leg's path, every manifest entry is
-placed or in `unplaced`.
+branch has two points or more and every branch starts on its leg's path or an earlier branch,
+every breakout ends on a part, every run and branch has a radius, every manifest entry is placed
+or in `unplaced`.
 
 It reads the record only through `rx7.py export` and writes nothing to it. It is a view of the
 design, never a source of facts: a measurement beats the model (R11).

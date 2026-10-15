@@ -189,7 +189,7 @@ suppliers,url,str,no,,
 suppliers,hours,str,no,,
 suppliers,note,text,no,,no personal addresses: a public repository
 connector_dims,id,key,yes,,"the variant as housings.leg_side / housings.box_side name it, e.g. DT06-12S"
-connector_dims,family,enum(DT|DTP|DT13),yes,,DT: size 16 contacts; DTP: size 12; DT13: the flanged PCB header receptacle
+connector_dims,family,enum(CMC|DT|DTP|DT13),yes,,"DT: size 16 contacts; DTP: size 12; DT13: the flanged PCB header receptacle; CMC: Molex's sealed hybrid (0.635 and 1.50 mm terminals), its header drawn as a flanged PCB receptacle (added 2026-10-14)"
 connector_dims,half,enum(plug|receptacle),yes,,"plug: socket contacts, the latch (DT06, DTP06); receptacle: pin contacts, the shroud (DT04, DTP04, DT13)"
 connector_dims,ways,int,yes,,
 connector_dims,rows,int,yes,,rows of cavities on the mating face

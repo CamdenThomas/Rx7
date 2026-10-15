@@ -1096,8 +1096,11 @@ def build_insides(P, D, src, standin=False):
         out.append(_item("carrier board (stand-in)",
                          L.box(D.cx0, D.cx1, D.cy0, D.cy1, D.cz0, D.cz1), "carrier", ref="board"))
         for c in D.lows:
+            # the REAR_HEADER block is not the drawn board's own part (D-582): kind "part", so a
+            # unit export that takes the board from KiCad keeps it in the unit's model
             out.append(_item("%s %s (%s, stand-in)" % (c.ref, c.name, c.part),
-                             _standin_dt13(D, c, D.cz0, D.cz1), "carrier", ref=c.ref,
+                             _standin_dt13(D, c, D.cz0, D.cz1),
+                             "carrier" if P.get("REAR_HEADER") is None else "part", ref=c.ref,
                              dt13=True))
         if D.j4:
             out.append(_item("J4 ribbon header (stand-in)", L.box(*D.j4), "carrier", ref="J4"))
