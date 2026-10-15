@@ -1370,7 +1370,7 @@ Option (a) as he was asked it: ""A second row. The new plug goes above the other
 **The order of work, as he asked.** The design first, which is this decision and its rows. Then a mock-up before any detailed model: a parametric FreeCAD model of the unit's insides and its case, built from one table of numbers so a change rebuilds the whole unit and reports what no longer fits (Y14). The detailed model and the print stay F1, after the measurements.
 
 **In the data.** blocks 01.37 deleted. housings DP-DCU-D and cavities DP-DCU-D 1-12 (new); dcu_channels SN11, SN14, SN15; devices DV54, DV55, DV59; modules DCU; parts P194 (the DT13-12PA), P195 (the upper connector board), P196 (the inside leads), with P115, P028, P140, P152 and P172 following; work Y13 done, Y14 now the mock-up, Y15 the upper board's drawing."
-D-481,Architecture and scope,"The climate unit is one height front to back, about 93 mm, and its face grows to cover it, so it installs from the front like a head unit",2026-10-11,standing,,,,D-480 · D-479,"**The climate unit is one height from its face to its back, about 93 mm, and its face grows to cover it, so it goes in from the front like a head unit. The box that steps up behind a 60 mm face is not the design.**
+D-481,Architecture and scope,"The climate unit is one height front to back, about 93 mm, and its face grows to cover it, so it installs from the front like a head unit",2026-10-11,superseded,,D-602,,D-480 · D-479,"**The climate unit is one height from its face to its back, about 93 mm, and its face grows to cover it, so it goes in from the front like a head unit. The box that steps up behind a 60 mm face is not the design.**
 
 Nobody was asked: this is a reading of D-480's own words against what the mock-up (Y14) found, and it is his to overturn.
 
@@ -2095,7 +2095,7 @@ Reasoning: D-588 chose one Deutsch family and said that if no single-plug right-
 Supersedes the ""50 ways or more"" and single-plug part of D-588 (its Deutsch-everywhere family, the DU's DRC 24-way and the radar DT 12 merge stand) and the CMC 48 of D-582 as the fallback; D-582's one-connector-row, single-DIN rulings stand with the one header now two plugs.
 
 Consequences in the data: Y54 draws the DRC23-64 header in place of J1, J2 and J9 (footprint from TE's drawing, confirm); Y64 moves DP-DCU from the CMC 48 to a DRC 64-way header with a 24-way and a 40-way plug, and drops P220-P225; the cavity map splits over the two plugs (24 + 40 = 64 cavities for 48 conductors, 16 spare); the harness side ends in two plugs on the L3 leg's Control Unit branch; a size-20 die for P038 is still to be confirmed (R11). Block 01.59 is closed, so Y54, Y64 and Y18's gate on it is met."
-D-595,,"The CUR's face is laid out as drawn: hazard and screen knob in a third column, plate 118 mm",2026-10-15,standing,,,01.60,,"**The CUR's face is laid out as drawn: a third column between the keys and the stick, the hazard button top in line with the two winks, the screen knob below it in line with the hatch and fuel-door keys, the stick on the far side; the plate is 118 mm wide (block 01.60, option a).**
+D-595,,"The CUR's face is laid out as drawn: hazard and screen knob in a third column, plate 118 mm",2026-10-15,superseded,,D-602,01.60,,"**The CUR's face is laid out as drawn: a third column between the keys and the stick, the hazard button top in line with the two winks, the screen knob below it in line with the hatch and fuel-door keys, the stick on the far side; the plate is 118 mm wide (block 01.60, option a).**
 
 His answer: (a), no words added. The option as offered: ""A third column between the keys and the stick: the hazard button top (in line with the two winks), the screen knob below it (in line with the hatch and fuel-door keys), the stick on the far side. The plate grows from 100 to 118 mm wide. This is what is drawn now.""
 
@@ -2162,3 +2162,62 @@ His words (chat, 2026-10-15). He asked first: ""the pmu box pwers the whole car 
 **Open, found while settling this:** the swap's engine leg. Engine D-443 put the swap's signal side on the dash post (a DTP 4-way and six DT06-12S, 72 cavities), and D-596 removes the post. The ECU is a dash node (D-318, engine D-325; the EMU PRO, engine D-446), so at the swap the dash zone gains a fifth box, and how its engine harness leaves the dash is the next question for him. Engine K5 (the ECU's pins to the post's cavities) gates on Y66 until then, so no pin is mapped onto a receptacle that is going away.
 
 **Consequences in the data.** None to housings or cavities yet; Y66's freeze and wire list carry the three plugs. Y66 gates on this decision."
+D-601,electrical,At the LS swap the ECU goes inside the PMU box; the engine harness unplugs at the box's circulars,2026-10-15,standing,D-443,,,,"**At the LS swap the ECU (the EMU PRO, engine D-446) goes inside the PMU box: one box holds both ECUMaster units on the same CAN, and the box's engine-direction plugs (mixed-contact Deutsch circulars, D-600) carry the PMU's engine circuits and the ECU's engine harness together. The engine harness unplugs at the box, as the dash post was meant to let it (engine D-443's 72 signal cavities for every option in ls_wires, and its power plug), so D-443's connector form - a DTP 4-way and six DT06-12S at the dash post - is replaced; its capacity is kept.**
+
+His words (chat, 2026-10-15), answering the plan's ""fifth box"" question - (a) the ECU inside the PMU box, (b) its own box beside it, (c) one bulkhead at the firewall: ""1: a"".
+
+**What follows.**
+- The PMU box's mock-up (Y66) leaves room for the EMU PRO from the start, though it goes in at the swap; its heat is counted in the box's heat budget.
+- The engine direction is sized now for the swap: about 85 conductors at the swap (the PMU's 9, the ECU's harness, its supply and grounds) - more than one circular, so the engine side takes two or three mixed circulars, the count and inserts settled at Y66 from engine ls_wires; until the swap the unused shells or cavities are sealed. Confirm.
+- The ECU's own connectors are inside the box, joined to the circulars by hard-wired leads; CAN2 reaches it inside the box.
+- D-318 and engine D-325 (no ECU and no CAN in the bay; the ECU a dash node) stand and are met.
+- Engine K5 (the ECU's pins to their cavities) stays gated on Y66; it maps them to the box's engine circulars instead of the post.
+
+Supersedes engine D-443 (the connector form only)."
+D-602,electrical,"The CU and CUR faces are the concept pages' latest passes (CU eighth, CUR second), written out here",2026-10-15,standing,D-595 D-481,,,,"**The two faces are the concept pages' latest passes: the Control Unit's eighth pass and the CUR's second pass (both 2026-10-15, 00-design/panel-concept.html and cur-concept.html). Each board's outline and control positions follow its face. Every choice those pages tagged as the drawing's guess is now the design until he changes it; every size stays confirm until a control is tried in hand. The pages are not in git (*.html is ignored, D-405), so this body is their record.**
+
+His words (chat, 2026-10-15): ""2: CUR Face Concept and CU Face Concept are the lastest and best faces"".
+
+**The Control Unit's face** (sizes at the starting height, one inch):
+- 171 mm wide, the published width of the DMH-W4660NEX's face, so it sits under the stereo flush (its chassis behind is 178 mm; confirm with the stereo in hand); 25.4 mm tall, 1.6 mm of face above and below the tallest control, 3 mm at each end.
+- Left to right, one equal gap between neighbours (about 5 mm): the driver's window switch, the driver's seat knob, the screen, the four keys stacked, the centre knob, the passenger's seat knob, the passenger's window switch.
+- Window switches: a sprung paddle, 7 x 8 mm, carrying the window symbol, in an 8.5 mm slot as tall as the face allows; pushed up or down, it springs back.
+- Seat knobs: the centre knob's size, turn only, off in the middle; six 1.6 mm level lights in a tight arc above, the three on the left cooling, the three on the right heating, one more lit outward per click.
+- Screen: 2 wide for 1 tall, a 128 x 64 display, window about 41 x 20.6 mm (about 1.8 in); no part chosen.
+- Keys: 11 mm wide, about 5 mm tall each, 0.8 mm apart, the stack exactly the screen's height; top to bottom fan mode, recirculate, rear-glass defog, mirror defog.
+- Centre knob: 17.4 mm, turns and pushes, a 1.4 mm light ring lit only with the lamps and only at the soft level; all three knobs 17.4 mm (up to 19 on a taller face).
+- Lights: with the park or head lamps on, every symbol glows at about 40 % and a key's edge faintly; a key whose function is on is at full brightness with its edge glowing, lamps on or off.
+- The screen at rest shows set temperature, fan speed, where the air goes and outside air, small and unlabelled; while the knob turns it shows only that setting, large; it returns 3 s after the last click.
+- D-578 made exact: a hold is 0.7 s or more. Hold the push and turn: the dash-light level. Hold and let go without turning: the climate switches off - the blower and the compressor stop, the screen and the fan-mode and recirculate keys go dark; the seats, both defoggers and the windows keep working; turning does nothing until a click or another hold brings it back on at the last settings.
+- The easy-to-press floors the face is held to: a key at least 4.5 mm tall, a knob at least 12 mm across, the screen at least 15 mm tall.
+
+**The CUR's face** (sizes at the starting height, 32 mm):
+- About 43.1 x 32 mm; 2.5 mm of face at every edge and one 1.6 mm gap between every neighbour, across and down.
+- Left column, on the steering-wheel side: the screen knob (about 12.7 mm, ticks, a light-bulb symbol in its middle that stays upright while it turns, soft glow with the lamps only) over the mirror stick (a well the knob's size, the stick about 7 mm, no arrows). The knob's top lines up with the hazard's top, the well's bottom with the releases' bottom.
+- Right of them, three rows of keys, each key 1.4 times as wide as tall (about 11 x 8 mm): the hazard on top, as wide as both winks and the gap between them; the left and right winks; the fuel door under the left wink and the hatch on the right.
+- Hazard (D-589): a red triangle, dull red by day, soft red with the lamps, flashing bright red with the flasher (about 90 a minute) while latched, its edge glowing red.
+- Other lights as the CU: soft with the lamps; a wink face lights fully while held, a release key while pressed.
+- Mirror stick: moves the left mirror until pushed; after a push the right mirror until 3 s pass without a movement or it is pushed again; nothing on the face shows which.
+- Screen knob (D-580): turning steps the Display Unit's pages (four, wrapping); a click switches to brightness, left brighter, right dimmer, 10 to 100 % in 5 % steps, back to pages after 3 s or a second click; a 3 s hold pairs a phone for 60 s.
+- The knobs at 12.7 mm sit above the 12 mm floor; matching the CU's 17.4 mm would make the CUR about 41 mm tall.
+
+**Consequences.**
+- D-595 (the CUR's third-column layout, plate 118 mm) is replaced: the plate board is redrawn to this face.
+- D-481 (the climate unit one height front to back, its face grown to cover it, installed from the front) is replaced: a 25.4 mm face cannot cover the box behind it, about 50 mm tall because the carrier and its 64-way header stand about 49 mm (D-582, D-594). How that box is shaped and fitted - taller than the face and fitted from behind, or laid out lower - is open; the plan lists it first among the next improvements.
+- The DCU carrier and the panel board (each drawn 180 mm wide) narrow to fit about 164 mm behind a 171 mm face, the cost D-542 named.
+- The record's other face rulings stand: D-492's control set, D-580, D-581 (the screen knob on the CUR), D-586 (the CUR right of the wheel), D-589.
+
+Supersedes D-595 and D-481."
+D-603,electrical,Every dash return comes back to the PMU box; the chassis bond is a ground point outside it; space assumed until measured,2026-10-15,standing,,,,,"**Every return in the dash zone comes back to the PMU box, the seat heat and cool returns and the blower final stage's return included. The chassis bond itself is outside the box: one ground point on the body, placed where the bond is best, joined to the box by its heavy ground lead, so the box carries no body ground of its own and stays small. The plan assumes the space for the boxes exists; he makes the space and measures when the car is stripped (D-455 already assumes fit). The wideband sensor's lead is long enough to reach the Display Unit.**
+
+His words (chat, 2026-10-15): ""3: bring both back to the pmu box"" and ""4: AFR sensor cable is much longer then needed, assume there is space for now for the box, (the actual cassis ground should be outsude the box for best. placment of casis ground and bulky box with junction, this plan will assume there is sace in the car (i will make space and we will acound for that when the car is striped and i measure later)"".
+
+**Reading taken (CLAUDE.md §3).** ""The actual chassis ground should be outside the box ... placement of chassis ground and bulky box with junction"" is read as: the returns join inside the PMU box (its ground star), and the bond to the body is a separate ground point outside it, so the bond can go where the body is best and the box need not carry the junction's bulk. It keeps both open: the point can be a single stud or a small ground junction, and its place is chosen at the wire list and the fit check. Today's design already bonds the dash ground bus to a chassis dash star point by its own 10 AWG lead (node conductor N58); this keeps that shape.
+
+**What follows.**
+- The seat heat and cool returns run from each seat back to the PMU box: D-597's ""may ground at the seat"" is settled the other way. The CU's + side smart switches still protect the feeds.
+- The blower final stage's return (the blower's 15 A path) runs from the HVAC case back to the PMU box, not to a stud there.
+- The DU, CU and CUR grounds, the seat motors' grounds and every dash device's return land on the box's ground star; the star's one heavy lead goes to the chassis point.
+- C1 keeps its measurements for when the car is stripped; the gauge's lead reach is answered.
+
+Consequences in the data: the grounds table, node conductors and the CU's cavities carry this at Y66's wire list; 00-CAR PT977's note records the lead's length as he gave it."
