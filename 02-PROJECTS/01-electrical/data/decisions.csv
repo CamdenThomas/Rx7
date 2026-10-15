@@ -2249,3 +2249,14 @@ The count is his choice (money, and two plugs forecloses two options); the agent
 **Found in passing:** engine ls_cavities still puts the LS coolant temperature on L1-S1 5, which electrical's D-556 gave to the tach shield. It is moot under this map and is corrected when ls_cavities is rewritten at Y66.
 
 Consequences in the data: none yet; Y66's freeze writes the engine plugs as housings and cavities, rewrites engine ls_cavities onto them, and gives the ECU's pigtails their pins once block APP.05 brings its pinout. Engine K5 stays gated on Y66."
+D-607,electrical,"The PMU box's engine side is three HDP20 plugs: E1 24-29, E2 and E3 24-31 keyed apart",2026-10-15,standing,,,,,"**The PMU box's engine side is three plugs: E1, an HDP20 24-29 (4 #12, 19 #16, 6 #20), the one today's engine leg uses; E2, an HDP20 24-31 (31 #16) for the LS's drivers; and E3, another HDP20 24-31, keyed apart from E2, for the LS's timing and low-level analog. Every LS wire is held, options included, with 13 cavities spare. With the front and rear plugs that makes five on the PMU box, and eight connectors in the dash zone.**
+
+His words (chat, 2026-10-15), offered two plugs (the minimum, giving up two optional LS wires, no spare) or three (every option, 13 spare): ""3"".
+
+**The map** is D-606's, cavity by cavity in the plan (00-design/dash-overhaul.html):
+- E1: the four heavy circuits; the seven functions today's engine and the LS share, on the same cavities; today's five own; and the LS's body and slow lines.
+- E2: injectors, coil triggers, ignition reference grounds, the throttle motor, purge, the O2 heaters and the cam phaser; 6 spare.
+- E3: crank, cam and road speed with their drains, knock, the O2 signals, MAP, the 5 V reference and the sensor grounds; 7 spare.
+Today's leg is eleven wires on E1; E2 and E3 are capped until the swap. Part numbers, keying codes and the cavity sizes against TE's drawing are confirm at Y66, where housings, cavities and engine ls_cavities are written.
+
+Engine D-443's ""room for every option"" is kept."
