@@ -9,3 +9,4 @@ L-0007,2026-10-13,clean,D-518 A04 B01 C01,"A04 and C01 done, B01's unibody core 
 L-0008,2026-10-13,apply,D-525,Block 05.03 answered (a): parts measured by hand; B02 ready
 L-0009,2026-10-13,clean,B03,"B03 done: the bought SA model and the built FB model are on the Mac, merged from his copy; every recorded model path resolves"
 L-0010,2026-10-13,build,D-563 B01,"B01 second pass: the manual's model takes its skin, glass, trim, tail lamps and three wheels from the home page's car; the unibody re-drawn inside it; model tables re-synced"
+L-0011,2026-10-15,plan,B01,"plan run from the app: B01 is the only agent row READY and its remaining work (closures, A-pillars, powertrain) needs the model's build scripts, which the app's harness refuses; left open for a desk session"
