@@ -28,3 +28,10 @@ BLK-026,D-356,renumbered 00.18 - blocks are numbered per project
 theatre fade,D-462,the dome lamp left the PMU for its factory circuit; O20 is illumination only and has no fade
 01.40,01.41,replaced by a plainer block on 2026-10-13; his words are in its why
 01.53,01.54,replaced by a plainer block on 2026-10-14; his words are in its why
+climate unit,D-611,"00-design reorganised by part, 2026-10-15: the Control Unit, du-carrier, cu-carrier, du-assembly, cu-assembly, cur-assembly, du-hdmi-bridge"
+climate-unit,D-611,"00-design reorganised by part, 2026-10-15: the Control Unit, du-carrier, cu-carrier, du-assembly, cu-assembly, cur-assembly, du-hdmi-bridge"
+icu-carrier,D-611,"00-design reorganised by part, 2026-10-15: the Control Unit, du-carrier, cu-carrier, du-assembly, cu-assembly, cur-assembly, du-hdmi-bridge"
+dcu-carrier,D-611,"00-design reorganised by part, 2026-10-15: the Control Unit, du-carrier, cu-carrier, du-assembly, cu-assembly, cur-assembly, du-hdmi-bridge"
+icu-unit,D-611,"00-design reorganised by part, 2026-10-15: the Control Unit, du-carrier, cu-carrier, du-assembly, cu-assembly, cur-assembly, du-hdmi-bridge"
+cur-unit,D-611,"00-design reorganised by part, 2026-10-15: the Control Unit, du-carrier, cu-carrier, du-assembly, cu-assembly, cur-assembly, du-hdmi-bridge"
+bridge-board,D-611,"00-design reorganised by part, 2026-10-15: the Control Unit, du-carrier, cu-carrier, du-assembly, cu-assembly, cur-assembly, du-hdmi-bridge"

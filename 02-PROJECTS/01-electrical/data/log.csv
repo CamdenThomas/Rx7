@@ -196,3 +196,4 @@ L-0184,2026-10-15,session,D-607 Y66,Dash overhaul: three HDP20 engine plugs on t
 L-0185,2026-10-15,session,D-608 Y67,Battery compartment overhaul begun in chat (D-608); Y67
 L-0186,2026-10-15,session,D-609 Y67,"Battery compartment choices B1-B4 taken as the agent picked (D-609); B4 read on the web: emergency-start reserve, no published S9 charge-current limit"
 L-0187,2026-10-15,session,D-610 D-363 Y66,"Legs scanned: sill node removed, ladder parts off the harness, one plug per seat (D-610, supersedes D-363); break points left to M7"
+L-0188,2026-10-15,session,D-611 Y68,"00-design reorganised by part (D-611): 326 files moved, every script in tools/, the old names retired, 128 record cells followed, the app's 3D assets re-exported"
