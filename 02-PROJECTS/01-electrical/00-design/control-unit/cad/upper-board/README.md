@@ -5,6 +5,8 @@ project is for and what it may claim. Its design is the record's cavities `DP-DC
 (`../../../../data/cavities.csv`) and what their `src_note` names: the carrier's headers and the
 `panel_ribbon` lines. Read `../../../README.md` first: it is the fence.*
 
+> **Retired by D-582 (2026-10-14).** The Control Unit is single-DIN tall with one rear connector: every conductor this board carried (DP-DCU-D, DP-DCU-E) is now DP-DCU 26-47 in the one CMC 48 header on the DCU carrier, and parts P194-P196 are dropped. The project stays as it was drawn, for the record; nothing here is ordered (Y18) and the scene no longer places it.
+
 ## What it is
 
 `fab/` also holds two hand-assembly drawings, `upper-board-revA-assembly-top.svg` and `-bottom.svg` (the back mirrored, to read

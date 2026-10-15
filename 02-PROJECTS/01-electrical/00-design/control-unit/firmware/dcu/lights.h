@@ -5,7 +5,7 @@
  * SCL 19, the ribbon's PNL_SDA / PNL_SCL, panel_ribbon 22 / 24):
  *   U2 on the panel board  IS31FL3236A, 36 channels, 0x3C (P192, D-458)
  *   the plate's driver     IS31FL3218 class, 18 channels, 0x54 (P199, D-492),
- *                          reached through DP-DCU-E 9 / 10
+ *                          reached through DP-DCU 44 / 45
  * lights_step() is the rules - which channel glows how much - and is pure;
  * lights_write() turns the result into register writes through one call the
  * host supplies, lights_hal_write() (dcu.ino: Wire; tests: a mock).

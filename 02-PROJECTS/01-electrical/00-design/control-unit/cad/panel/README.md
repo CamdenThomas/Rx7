@@ -5,6 +5,8 @@ is for and what it may claim. The panel's design is `../../../../data/panel_ribb
 `DP-DCU-E`, `dcu_channels` SN17-SN20 and parts P155, P192, P201 (D-492, D-458, D-459). Read
 `../../../README.md` first: it is the fence.*
 
+> **D-582 (2026-10-14): single-DIN.** The face is 181 x 59.3 and the board is redrawn at Y55 to the mock-up's 180 x 47.3, every control where the sketch puts it. The CUR's lines now leave the unit in the carrier's one header (DP-DCU 36-47) through the ribbon, so the plate header J3 (the old DP-DCU-E) is not needed - Y55 decides. Until then this board is as drawn and the scene sets it aside.
+
 ## Where it stands
 
 **2026-10-13 (Y44, D-549): the three encoders' mounting-lug slots are Bourns' own.** SW7, SW8 and SW9 were drawn

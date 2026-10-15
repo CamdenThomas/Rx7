@@ -95,51 +95,48 @@ step('F3', 'Record it', 'Note the version, what was proved, what did not match i
 
 # ------------------------------------------------------------------ F5
 brief('F5',
-      goal='The Control Unit\'s three boards - the DCU carrier, the upper connector board and the panel board - are built from Y18\'s order, every part held against its footprint before it was soldered, the power sections pass their unpowered checks, and the boards are joined ready for F6.',
+      goal='The Control Unit\'s two boards - the DCU carrier and the panel board - are built from Y18\'s order, every part held against its footprint before it was soldered, the power sections pass their unpowered checks, and the boards are joined ready for F6.',
       where='bench', time='two weekends - confirm',
       tools=['Soldering iron with a fine tip, solder, flux, tweezers (P044)', 'Hot-air or a hot-plate for the power packages', 'Magnifier', 'Multimeter (P045)',
              'Digital calipers, 0.01 mm, for holding each part against its footprint'],
-      parts='P144 P170 P145 P146 P147 P148 P149 P150 P153 P157 P177 P178 P193 P175 P195 P194 P196 P155 P173 P192 P142',
+      parts='P144 P170 P145 P146 P147 P148 P149 P220 P157 P177 P178 P193 P175 P155 P173 P192 P142',
       before=['Y18 - the boards and their parts have arrived. The order was placed there: nothing is ordered in this row',
               'An anti-static mat or at least a grounded bench', 'Eye protection while soldering'],
       know=['The Control Unit (DCU in the tables) is the dash and climate unit: a Teensy 4.1 socketed on its carrier, inside one box in the centre-stack opening with the control panel on its face [modules DCU, D-479]',
             'It is built on the bench before the car is stripped; F6 then runs it on USB power, and the strip (S1) waits on F6 and the Display Unit (F3) only [D-541]',
-            'These are the boards as drawn and as ordered at Y18: the carrier at board rev 0.04, 180 x 80 mm, 2 layers, 1.6 mm, 1 oz. No board waits on a measurement of an opening - the dash is rebuilt around the unit [D-542; work Y18]',
-            'Each part is held against its footprint before it is soldered - this replaces the separate measurement pass. Expected on the DT13-06PA, 08PA and 12PA: pin pitch 4.45 and 6.35 mm, the three flange holes on TE\'s pattern, the board edge on each flange\'s rear face [checks CK26; D-542]',
-            'The first fit check on paper found the ICU and DCU boards placing the DT13 flange differently (on the board edge against 3.955 mm beyond it): one of the two is wrong, and the part in your hand says which [checks CK27]',
+            'These are the boards as drawn and as ordered at Y18: the carrier, 180 x 80 mm, 2 layers, 1.6 mm, 1 oz, as Y54 redraws it for the one rear header, and the panel board as Y55 redraws it for the single-DIN face. No board waits on a measurement of an opening - the dash is rebuilt around the unit [D-542 → D-582; work Y18, Y54, Y55]',
+            'Each part is held against its footprint before it is soldered - this replaces the separate measurement pass. Expected on the rear header: the figures of the maker\'s drawing Y54 draws the footprint from - pin pitch, the flange and its holes, the board edge on the flange\'s rear face [checks CK26; D-582]',
             'The sheets were corrected before the order where pricing found a part that did not match its footprint - a capacitor can size, a transistor\'s voltage rating; anything else that does not fit is a finding [work Y42]',
             'Some parts on the sheet are deliberately not fitted (28 on the bench revision): the BOM marks them [work Y17]',
-            'The carrier has three harness receptacles on one edge - DP-DCU (6-way), DP-DCU-B (12-way), DP-DCU-C (8-way comfort) - and the upper board carries DP-DCU-D and DP-DCU-E above them [housings DP-DCU, DP-DCU-C, DP-DCU-D]',
-            'Logic power in the car is constant 12 V on DP-DCU 1 (through F22, 3 A), ground on DP-DCU 3; the servo rail has its own 5 V buck fed from DP-DCU-C 5 [dcu_channels SN24, SN25, SN15, SN27]',
-            'No bench supply is bought, so neither buck is powered here: both are checked with the meter, unpowered, and first run in the car - the logic buck when the unit is plugged in at E26, the servo buck when DP-DCU-C goes in at E38 [D-541; work E26, E38]',
+            'The carrier has one harness header on its rear edge, DP-DCU, 48 ways: 1-8 the comfort breakout, 9-25 the tail to the dash post, 26-35 the heater case, 36-47 the CUR, 48 the radar alert. There is no upper board any more [housings DP-DCU; D-582]',
+            'Logic power in the car is constant 12 V on DP-DCU 9 (through F22, 3 A), ground on DP-DCU 11; the servo rail has its own 5 V buck fed from DP-DCU 5 [dcu_channels SN24, SN25, SN15, SN27]',
+            'No bench supply is bought, so neither buck is powered here: both are checked with the meter, unpowered, and first run in the car - the logic buck when the unit is plugged in at E26, the servo buck when the comfort breakout fills DP-DCU 1-8 at E38 [D-541; work E26, E38]',
             'The panel joins the carrier by a 26-way ribbon whose pin 26 is the carrier\'s +5 V through a 0.5 A self-resetting fuse; the panel has no processor and no 12 V of its own [DCU carrier README; panel README; D-458]',
             'No assembly order or reflow profile is in the record. The boards print no part references: each board\'s fab folder has two assembly drawings, front and back, showing each reference where it sits, and its BOM csv gives the values [work Y17; D-549]'],
-      done_when='All three boards are soldered with every not-fitted part left out; every part matched its footprint or its mismatch is noted; no power rail on the carrier reads as a short and both input diodes are the right way round; the Teensy is socketed and the boards are joined by the ribbon and the inside leads.',
+      done_when='Both boards are soldered with every not-fitted part left out; every part matched its footprint or its mismatch is noted; no power rail on the carrier reads as a short and both input diodes are the right way round; the Teensy is socketed and the boards are joined by the ribbon.',
       if_not=FIT + ' A rail that reads as a dead short: do not go on to F6 - find the bridge or the reversed part under the magnifier first. A part missing from the order: note the BOM line; do not substitute a different rating.',
-      record='Tick the row when the three boards are built, checked and joined. Add a note with any part that did not match its footprint and any line missing from the order.')
-step('F5', 'Check what arrived against the three BOMs', 'The DCU carrier, the upper connector board and the panel board: each BOM csv line by line against the bags, and each bare board against its picture.', 'Every line present; three kinds of board.')
+      record='Tick the row when the two boards are built, checked and joined. Add a note with any part that did not match its footprint and any line missing from the order.')
+step('F5', 'Check what arrived against the two BOMs', 'The DCU carrier and the panel board: each BOM csv line by line against the bags, and each bare board against its picture.', 'Every line present; two kinds of board.')
 step('F5', 'Hold every part against its footprint before any solder',
      ['On the bare boards, dry, one part at a time, with the calipers:',
-      'The DT13 receptacles (P150, P153, P194): pins drop into their holes without springing; pin pitch 4.45 and 6.35 mm; the three flange holes line up; the flange\'s rear face sits on the board edge; the moulded cavity 1 against the board\'s mark.',
+      'The rear header (P220): its pins drop into their holes without springing; its pitch, flange and holes as the maker\'s drawing gives them; the flange\'s rear face sits on the board edge; the moulded cavity 1 against the board\'s mark.',
       'The Teensy 4.1 on its socket headers (P142, P148): rows 15.24 mm apart, USB end at the marked end, and whether a USB plug still reaches it with the ribbon header beside it.',
-      'The 2 x 13 ribbon header and its cable (P157); the small headers (P178) and the inside leads (P196) between the carrier and the upper board.',
+      'The 2 x 13 ribbon header and its cable (P157); the small headers (P178).',
       'The power packages against their pads: the two bucks (P146) and the inductor (P177), the switches and the bridge driver of the comfort stage (P149), each capacitor\'s can against its outline.',
       'On the panel board: one key, one encoder and the LED driver (P155, P173, P192) against their pads; the encoder\'s two side lugs enter their slots.'],
      'Each sits flat on its pads and within 0.2 mm; anything that does not is written down with its reading.', FIT)
-step('F5', 'Solder the carrier, power parts first', ['Input protection and the logic buck first, then the servo buck.', 'Then the small parts by height, the power switches and the bridge driver, then sockets, headers and the DT13 receptacles last.',
+step('F5', 'Solder the carrier, power parts first', ['Input protection and the logic buck first, then the servo buck.', 'Then the small parts by height, the power switches and the bridge driver, then sockets, headers and the rear header last.',
                                                     'Leave out every part the BOM marks not fitted.'],
      'Every joint wetted; no bridges under the magnifier.', 'The power switches have exposed pads underneath: they need hot air or a hot plate.')
 step('F5', 'Check the carrier\'s power sections with the meter, unpowered',
-     ['Nothing connected. Meter on ohms, none of these may be a short: DP-DCU 1 to DP-DCU 3 (logic 12 V); the Teensy socket\'s VIN pad to ground (the 5 V rail); DP-DCU-C 5 to DP-DCU-C 6 (comfort 12 V); the +5 V pin of a servo header to its ground pin (the servo rail).',
+     ['Nothing connected. Meter on ohms, none of these may be a short: DP-DCU 9 to DP-DCU 11 (logic 12 V); the Teensy socket\'s VIN pad to ground (the 5 V rail); DP-DCU 5 to DP-DCU 6 (comfort 12 V); the +5 V pin of a servo header to its ground pin (the servo rail).',
       'Meter on diode test across each input diode: it conducts from the connector pin toward the board and blocks the other way.',
       'Neither buck is powered on the bench: there is no 12 V source here by design.'],
      'Four rails, none shorted; the input diodes the right way round.', 'This is the only check these 12 V sections get before the car: do every reading.')
-step('F5', 'Solder the upper connector board', 'The two DT13-12PA receptacles (DP-DCU-D and DP-DCU-E) and its headers, then the short inside leads (P196) that join it to the carrier\'s servo, blower and sensor headers.',
-     'Upper board built; each inside lead beeps end to end.')
 step('F5', 'Solder the panel board', 'Keys, encoders, the LED driver and its lights, the screen\'s header, and the 2 x 13 ribbon header. Small parts first, the keys and encoders last so they sit square to the faceplate side.',
      'Every key clicks and every encoder turns freely after soldering.')
-step('F5', 'Socket the Teensy and join the boards', 'Press a Teensy 4.1 (P142) into the carrier\'s socket, USB end at the marked end. Ribbon (P157) between the carrier\'s header and the panel\'s, keyed one way. Inside leads between the carrier and the upper board.',
-     'One assembly of three boards, nothing powered yet.', 'A Teensy in backwards puts 5 V on a ground pin.')
+step('F5', 'Socket the Teensy and join the boards', 'Press a Teensy 4.1 (P142) into the carrier\'s socket, USB end at the marked end. Ribbon (P157) between the carrier\'s header and the panel\'s, keyed one way.',
+     'One assembly of two boards, nothing powered yet.', 'A Teensy in backwards puts 5 V on a ground pin.')
 step('F5', 'Note it', 'Tick the row in the app with the footprint findings.', 'Ready for F6.')
 
 # ------------------------------------------------------------------ F6
@@ -151,18 +148,18 @@ brief('F6',
       where='bench', time='a day - confirm',
       tools=['The Mac with the Arduino IDE (Teensyduino) and the tree', 'A USB lead for the Teensy: it is the only supply', 'Multimeter (P045)',
              'A second Teensy with a transceiver module as the PMU simulator, on its own USB lead (P142, P143)', 'A thermometer'],
-      parts='P144 P175 P195 P157 P156 P154 P142 P143 P070',
-      before=['F5 - the three boards are built, checked and joined', 'F-017 - the DCU firmware is written (it is: DCU 0.6.0-dev)', 'The host suites pass on the Mac (run.sh, exit code 0)',
+      parts='P144 P175 P157 P156 P154 P142 P143 P070',
+      before=['F5 - the two boards are built, checked and joined', 'F-017 - the DCU firmware is written (it is: DCU 0.6.0-dev)', 'The host suites pass on the Mac (run.sh, exit code 0)',
               'Nothing from the car and no 12 V source is connected: USB only'],
       know=['Nothing is bought only to test: no bench supply, no test lamps, no spare relay. On USB the unit proves everything that runs from the Teensy\'s 5 V and 3.3 V; every 12 V output is proven in the car, into its real load [D-541]',
             'What USB reaches on the carrier: the Teensy\'s VIN pin is the +5V rail, and +3V3 is the Teensy\'s own output for the light loads - the logic, the I2C bus and the inputs [DCU carrier README: net classes; dcu_channels SN24]',
             'What USB reaches on the panel: all of it. The panel board has no processor, no CAN node and no 12 V - the ribbon\'s +5 V (pin 26, behind a 0.5 A self-resetting fuse on the carrier) and its I2C pair feed the keys, the encoders, the lights and the screen [panel README; DCU carrier README; D-355, D-458]',
             USB_RAIL + ' [DCU carrier README]',
-            'What USB cannot reach, because it hangs on the car\'s 12 V: the window commands on DP-DCU-B 1-4 and the mirror-heat feed on DP-DCU-B 9 (high-side switches on logic 12 V), the mirror driver on DP-DCU-B 5-8, the seat returns on DP-DCU-C 1-4 and the servo rail (comfort 12 V on DP-DCU-C 5), the wake request on DP-DCU 6, and both 5 V bucks [dcu_channels SN15, SN16, SN17, SN21, SN22, SN24, SN27; DCU carrier README]',
+            'What USB cannot reach, because it hangs on the car\'s 12 V: the window commands on DP-DCU 15-18 and the mirror-heat feed on DP-DCU 23 (high-side switches on logic 12 V), the mirror driver on DP-DCU 19-22, the seat returns on DP-DCU 1-4 and the servo rail (comfort 12 V on DP-DCU 5), the wake request on DP-DCU 14, and both 5 V bucks [dcu_channels SN15, SN16, SN17, SN21, SN22, SN24, SN27; DCU carrier README]',
             'Where each of those is proven, in the car: ' + '; '.join(WAITS) + ' [work E26, E36, E37, E38, E39; D-541]',
             'Off at reset is designed in - pull-downs hold every command off while the Teensy is in reset, the two release select gates on 10 kΩ - and is proven on the real lines at E26, before any load hangs on them [DCU carrier README; D-465; dcu_channels SN23]',
             'The release keys are read here as keys only. The rules that refuse a release - car moving, key on - are the firmware\'s and are proven when the releases are wired, at E36 [D-465, D-484; work E36]',
-            'Temperatures: 10 kΩ NTC sensors on DP-DCU-D 8 / 9 (cabin) and DP-DCU 2 (outside air); a one-point check against a thermometer [dcu_channels SN11, SN12]',
+            'Temperatures: 10 kΩ NTC sensors on DP-DCU 33 / 34 (cabin) and DP-DCU 10 (outside air); a one-point check against a thermometer [dcu_channels SN11, SN12]',
             'Asleep on its constant feed the unit should draw about 10 mA: that is read in the car at E26, on F22 [loads LD17; work E26]',
             'How the bench shows each key and encoder reading (serial print or bus frame 0x400) is not written down as a procedure: use the serial monitor, and note what you used [work F-017]'],
       done_when='On USB alone: about 5 V on the +5V rail and at the panel, the version printed at boot, every key, both seat knobs, the centre knob and the stick registering once each, the screen and every light working, frames passing on the bench bus, both temperatures sensible - and the note lists what was left for the car.',
@@ -172,15 +169,15 @@ step('F6', 'Run the host suites', RUN_SH, 'Exit code 0.', 'Never flash on a red 
 step('F6', 'Flash the DCU firmware', [FLASH, 'The sketch is dcu.ino in the control unit\'s firmware folder. The same USB lead powers the unit from here on.'], 'The serial monitor prints the DCU firmware version at boot.')
 step('F6', 'Read the rails on USB', ['Meter on DC volts: the Teensy socket\'s VIN pad to ground; a 3V3 pin to ground; then, at the panel end of the ribbon, pin 26 to pin 21 or 23 (ground).'],
      'About 5 V on VIN and at the panel; 3.3 V on +3V3; nothing warm.', 'If VIN reads nothing with the Teensy running, its USB-to-VIN link is open: stop and note it - do not bridge it without asking.')
-step('F6', 'Connect the bench bus', ['The PMU simulator Teensy with its transceiver module (P143), on its own USB lead: CAN H to DP-DCU 4, CAN L to DP-DCU 5, 120 Ω (P070) across the pair at each end.'],
+step('F6', 'Connect the bench bus', ['The PMU simulator Teensy with its transceiver module (P143), on its own USB lead: CAN H to DP-DCU 12, CAN L to DP-DCU 13, 120 Ω (P070) across the pair at each end.'],
      'The unit\'s frames show on the simulator: the panel-key frame 0x400 about twice a second.', 'If no frame passes on USB power, note it and go on: the bus is proven again in the car at E26.')
-step('F6', 'Read every key', 'Press each panel key in turn: fan mode, recirculate, rear defog, mirror defog, the two window switches up and down, and the left plate\'s hatch and fuel-door keys if the plate is connected (DP-DCU-E).',
+step('F6', 'Read every key', 'Press each panel key in turn: fan mode, recirculate, rear defog, mirror defog, the two window switches up and down, and the CUR\'s hatch and fuel-door keys if the CUR is connected (its link is DP-DCU 36-47).',
      'Each press and release registers once, on its own key. No output moves: none has 12 V.')
 step('F6', 'Read the encoders and the thumbstick', 'Turn the centre knob and press it; turn each seat knob. Move the mirror stick in both axes and press it. Set the stick\'s centre and dead-band.',
      'Each click counts once in the right direction; the stick rests at centre and reads both ways on both axes.')
 step('F6', 'Check the screen and the lights', 'The screen in its window lights and draws. Each lit key and symbol comes on with its function. With the left plate connected, its five symbols too.',
      'A readable screen; every light works, none stuck on.')
-step('F6', 'Check the temperature inputs', 'A 10 kΩ NTC (P154) on DP-DCU-D 8 / 9 and one from DP-DCU 2 to ground: compare each reading with the thermometer.',
+step('F6', 'Check the temperature inputs', 'A 10 kΩ NTC (P154) on DP-DCU 33 / 34 and one from DP-DCU 10 to ground: compare each reading with the thermometer.',
      'Both within a degree or two of the thermometer - confirm. If a reading is absurd on USB power, note it: it is read again in the car at E39.')
 step('F6', 'Restart it a few times', 'Unplug and replug the USB lead three times, then upload the firmware once more, which restarts the Teensy.',
      'It comes back the same way each time: version printed, screen up, no key registering by itself.')

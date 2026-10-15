@@ -4,6 +4,8 @@
 it. Read `../../../README.md` first: it is the fence. The design is the record's (D-514, D-492, D-499,
 D-504, parts P198 / P199 / P204 / P156 / P200, block 01.41); this is a drawing of it.*
 
+> **D-582 (2026-10-14).** The CUR's link to the Control Unit is DP-DCU 36-47 in the unit's one rear connector, not DP-DCU-E; nothing at the CUR's end changes.
+
 ## What it is
 
 D-514 made the left plate a unit of its own: the **Control Unit Remote**, a small sealed box like the

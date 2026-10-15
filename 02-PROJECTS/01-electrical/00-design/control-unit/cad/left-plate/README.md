@@ -5,6 +5,8 @@ KiCad project is for and what it may claim. The plate's design is the record: th
 and `L3-S1` 9-11 (`../../../../data/cavities.csv`), the `panel_ribbon` lines they name, devices `DV24` and
 `DV62`, parts P156, P198, P199, P200 and P204. Read `../../../README.md` first: it is the fence.*
 
+> **D-582 (2026-10-14).** The plate's twelve lines reach the Control Unit as DP-DCU 36-47, the CUR breakout of its branch, not a separate DP-DCU-E; the CUR end (DP-CUR) is unchanged.
+
 ## What it is
 
 The panel's second face (D-492): a small board left of the steering wheel, behind its own faceplate,

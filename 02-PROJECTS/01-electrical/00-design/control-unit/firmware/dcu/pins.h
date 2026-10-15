@@ -46,9 +46,9 @@ static const int PIN_I2C_SCL     = 19;
 static const int PIN_JOY_X       = 20;               /* SN18, A6, ribbon 17 */
 static const int PIN_JOY_Y       = 21;               /* SN18, A7, ribbon 18 */
 static const int PIN_WIN[4]      = { 22, 23, 24, 25 }; /* SN22 BTT6200 IN0-3: DRV up, DRV down, PASS up,
-                                                        * PASS down -> DP-DCU-B 1-4 */
-static const int PIN_REL_HATCH   = 26;               /* SN23, K3 85 via DP-DCU-B 10 */
-static const int PIN_REL_FUEL    = 27;               /* SN23, K4 85 via DP-DCU-B 11. Each drives a
+                                                        * PASS down -> DP-DCU 15-18 */
+static const int PIN_REL_HATCH   = 26;               /* SN23, K3 85 via DP-DCU 24 */
+static const int PIN_REL_FUEL    = 27;               /* SN23, K4 85 via DP-DCU 25. Each drives a
                                                       * PMV37ENEA gate with a pull-down on the board
                                                       * (D-465): a reset or a floating pin cannot
                                                       * select. K3 / K4's 86 is live whenever O10
@@ -72,7 +72,7 @@ static const int PIN_CENTRE_PUSH = 34;               /* SN20, ribbon 11: the cen
  * nSLEEP, P10 nFAULT", SN22 "DEN, DSEL0, DSEL1 on P11-P13", SN16 "mirror heat
  * DEN on P14", SN26 "STB on P15", SN24 "power-good on P16". DRV8962 channel
  * 1 is the motor common, 2 the left motor, 3 the right, 4 the clutch sink
- * (D-360; the sheet's OUT1-4 to DP-DCU-B 5-8).                           */
+ * (D-360; the sheet's OUT1-4 to DP-DCU 19-22).                           */
 #define EXP_P(port, bit)   ((uint16_t)(1u << ((port) * 8 + (bit))))
 #define EXP_MIR_IN1        EXP_P(0, 0)   /* common  - high or low   */
 #define EXP_MIR_EN1        EXP_P(0, 1)   /*           off = open    */

@@ -93,14 +93,14 @@ brief('E20',
       goal='Harness leg L3, the dash leg, is cut, labelled, pinned into its five plugs, ended at its switches and branch receptacles, and tested end to end.',
       where='bench - a board or floor long enough for the full-scale layout', time='a weekend - confirm',
       tools=LEG_TOOLS,
-      parts='P115 P101 P123 P100 P133 P130 P129 P022 P024 P026 P023 P027 P028 P029 P102 P125 P036 P002 P078 P079 P069 P071 P084 P085 P086 P015 P016 P012 P013 P009 P010 P011 P008 P019 P075 P076 P077',
+      parts='P115 P101 P123 P100 P133 P130 P129 P127 P022 P024 P026 P023 P027 P028 P029 P102 P125 P036 P002 P078 P079 P069 P071 P084 P085 P086 P015 P016 P012 P013 P009 P010 P011 P008 P019 P075 P076 P077',
       before=['E18 - the dash node passed continuity and isolation on the bench (it is first powered in the car, at E24)', 'G13 - the cut lengths are derived from the measured routes (C1, M-2)',
               'E7 - the ladder resistor sub-assemblies are built and bagged', 'CK10 read: the ignition switch IG contact holds through START - take it before this leg is crimped',
               'CK17 and CK18 read: the light switch and stalk contact tables - the ladders are built to what they found',
               'E5 - Deutsch practice done', 'Eye protection for crimping and clipping'],
       know=LOOP + [
-          'L3 has five plugs at the post - L3-P, L3-M, L3-S1, L3-S2, L3-S3 - and four branch-end receptacles: L3-BLW at the HVAC case, L3-CMF behind the centre stack, L3-MOD and L3-RDR behind the dash [housings]',
-          'L3-S2 3-6 and L3-S3 5-8 are sealing plugs: the window commands and mirror lines run in the DCU tail from the node, not in this leg [cavities L3-S2 3, L3-S3 5, D-472]',
+          'L3 has five plugs at the post - L3-P, L3-M, L3-S1, L3-S2, L3-S3 - and five branch-end receptacles: L3-BLW at the HVAC case, L3-CMF behind the centre stack, L3-MOD, L3-RDR and L3-RCV behind the dash [housings]',
+          'L3-S2 3 / 4 and L3-S3 5-7 carry the radar receiver\'s feed, ground and front sensor to L3-RCV, and L3-S2 5 / 6 the head unit\'s reverse and speed-pulse inputs; L3-S3 8 is a sealing plug. The window commands and mirror lines run in the Control Unit\'s tail from the node, not in this leg [cavities L3-S2 3-6, L3-S3 5-8; D-472, D-584]',
           'The seat receptacles and comfort-return harness (L3-SD, L3-SP, L3-SDM, L3-SPM) are E38 and the speaker runs are E41: not this row [work E38, E41]',
           'F24, 3 A sealed inline, sits in the leg behind the lower dash where the light-switch and brake-wake branch leaves the L3-S2 2 wire [fuses F24, D-412]',
           'The ignition switch is a new electrical portion (1981-83 type, P086); the light switch, both stalks and the horn pad are the car\'s own, kept [devices DV18, DV19, DV20, DV22, DV23]',
@@ -121,7 +121,8 @@ plug_step('E20', 'L3-S1', ['Cavity 4: the WASH value printed above is the cavity
 plug_step('E20', 'L3-S2')
 plug_step('E20', 'L3-S3')
 rec_step('E20', ['L3-BLW', 'L3-CMF'], 'P102', ['L3-BLW 2 is the 12 AWG BLK return to the dash ground (G15).'])
-rec_step('E20', ['L3-MOD', 'L3-RDR'], 'P125 on L3-MOD, P036 on L3-RDR')
+rec_step('E20', ['L3-MOD', 'L3-RDR', 'L3-RCV'], 'P125 on L3-MOD, P036 on L3-RDR, an 8-way cap on L3-RCV',
+         ['L3-RCV 3, the radar alert, is not in this leg: it arrives from the Control Unit\'s branch (DP-DCU 48) and is pinned when that branch is laid; leave the cavity empty for it until then.'])
 step('E20', 'Build the switch-supply branch and F24',
      ['The L3-S2 2 wire (16 AWG PNK, from F3) runs to the ignition switch B terminal.',
       'Behind the lower dash, butt-splice a branch off it into a sealed inline holder (P002) with a 3 A fuse: F24, label LIGHT-SW.',

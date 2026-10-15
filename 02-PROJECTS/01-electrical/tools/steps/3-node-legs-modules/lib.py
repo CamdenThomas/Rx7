@@ -55,11 +55,13 @@ def plugsize(h):
     return '12' if HOU[h]['leg_side'].startswith('DTP') else '16'
 
 
-def leg_lines(h):
-    """The leg-side plug of housing h, one cavity per line."""
+def leg_lines(h, only=None):
+    """The leg-side plug of housing h, one cavity per line (only: the cavity numbers to list)."""
     out = []
     for r in cavs(h):
         c = r['cav']
+        if only is not None and int(c) not in only:
+            continue
         if r['state'] == 'PLUG':
             out.append('%s · sealing plug, size %s' % (c, plugsize(h)))
         elif r['state'] == 'RESERVED' and HOU[h]['where'] == 'Dash post':
@@ -90,7 +92,7 @@ NODE_SRC = {
     'L2-S 2': 'K2 terminal 87 (N13)',
     'L2-S 3': 'PMU pin 30, A3 - one splice with L3-S1 5 and L2-S 4 (N42)',
     'L2-S 4': 'PMU pin 30, A3 - the same splice as L2-S 3 (N42)',
-    'L2-S 5': 'across the node to DP-DCU 2 (N77)',
+    'L2-S 5': 'across the node to DP-DCU 10 (N77)',
     'L2-S 6': 'K2 terminal 87a (N15)',
     'L2-R 1': 'a capped, labelled tail at the node for the radar receiver (housings L2-R)',
     'L2-R 2': 'a capped, labelled tail at the node, as cavity 1',
@@ -118,14 +120,14 @@ NODE_SRC = {
     'L3-S3 4': 'linked at the post to L4-S2 7 (N82)',
     'L4-P 2': 'K13 terminal 87 (N70)',
     'L4-P 3': 'the O1 splice (N16)',
-    'L4-P 4': 'DP-DCU-B 9 on the DCU tail, 14 AWG RED into this size-12 pin (N84)',
+    'L4-P 4': 'DP-DCU 23 on the DCU tail, 14 AWG RED into this size-12 pin (N84)',
     'L4-M 3': 'K3 terminal 87 (N88)',
     'L4-M 4': 'K4 terminal 87 (N89)',
     'L4-M 8': 'F12 inline (5 A) from the busbar (N21)',
-    'L4-M 9': 'DP-DCU-B 1 on the DCU tail (N80)',
-    'L4-M 10': 'DP-DCU-B 2 on the DCU tail (N80)',
-    'L4-M 11': 'DP-DCU-B 3 on the DCU tail (N80)',
-    'L4-M 12': 'DP-DCU-B 4 on the DCU tail (N80)',
+    'L4-M 9': 'DP-DCU 15 on the DCU tail (N80)',
+    'L4-M 10': 'DP-DCU 16 on the DCU tail (N80)',
+    'L4-M 11': 'DP-DCU 17 on the DCU tail (N80)',
+    'L4-M 12': 'DP-DCU 18 on the DCU tail (N80)',
     'L4-S 1': 'across the node to DP-ICU-B 3 (N64)',
     'L4-S 2': 'PMU pin 18, A6, and the door wake stage (N44)',
     'L4-S 3': 'across the node to DP-ICU-B 8 (N66)',
@@ -134,11 +136,11 @@ NODE_SRC = {
     'L4-S 6': 'linked at the post to L3-S3 2 (N81)',
     'L4-S 7': 'linked at the post to L3-S3 3 (N81)',
     'L4-S 8': 'fuse block A, F19 (N30)',
-    'L4-S2 1': 'DP-DCU-B 5 on the DCU tail (N83)',
-    'L4-S2 2': 'DP-DCU-B 6 on the DCU tail (N83)',
-    'L4-S2 3': 'DP-DCU-B 8 on the DCU tail, spliced to L4-S2 3 and 5 both (N83)',
-    'L4-S2 4': 'DP-DCU-B 7 on the DCU tail (N83)',
-    'L4-S2 5': 'DP-DCU-B 8, the same splice as L4-S2 3 (N83)',
+    'L4-S2 1': 'DP-DCU 19 on the DCU tail (N83)',
+    'L4-S2 2': 'DP-DCU 20 on the DCU tail (N83)',
+    'L4-S2 3': 'DP-DCU 22 on the DCU tail, spliced to L4-S2 3 and 5 both (N83)',
+    'L4-S2 4': 'DP-DCU 21 on the DCU tail (N83)',
+    'L4-S2 5': 'DP-DCU 22, the same splice as L4-S2 3 (N83)',
     'L4-S2 7': 'linked at the post to L3-S3 4 (N82)',
 }
 

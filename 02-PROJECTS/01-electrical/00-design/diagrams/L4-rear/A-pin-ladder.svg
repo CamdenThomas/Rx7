@@ -41,13 +41,13 @@
 <text x="50.0" y="290.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
 <text x="70.0" y="281.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror heat feed → sill (F14), switched by</text>
 <text x="70.0" y="298.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the DCU</text>
-<text x="380.0" y="290.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU-B 9</text>
+<text x="380.0" y="290.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU 23</text>
 <path d="M390.0,286.0 L720.0,286.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <path d="M390.0,286.0 L720.0,286.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <text x="406.0" y="276.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-P-4  ·  12 AWG RED  ·  RT19  ·  capped at the far end</text>
 <rect x="720.0" y="259.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="730.0" y="274.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Lands at the sill node in F14's holder, fitted empty (D-283) — this branch's end (D-274). Fed from the</text>
-<text x="730.0" y="290.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">DCU's high-side mirror-heat switch through DP-DCU-B 9 (D-369, as D-254 meant), no longer the O15</text>
+<text x="730.0" y="290.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">DCU's high-side mirror-heat switch through DP-DCU 23 (D-369, as D-254 meant), no longer the O15</text>
 <text x="730.0" y="306.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">splice</text>
 <rect x="30.0" y="352.0" width="360.0" height="528.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
 <text x="42.0" y="374.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L4-M  ·  DT06-12S  ·  Dash post</text>
@@ -139,7 +139,7 @@
 <circle cx="50" cy="726.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="730.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
 <text x="70.0" y="730.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Window DRV up command → K5 coil</text>
-<text x="380.0" y="730.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU-B 1</text>
+<text x="380.0" y="730.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU 15</text>
 <path d="M390.0,726.0 L720.0,726.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <path d="M390.0,726.0 L720.0,726.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <text x="406.0" y="716.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-M-9  ·  16 AWG BLU  ·  RT19  ·  capped at the far end</text>
@@ -150,7 +150,7 @@
 <circle cx="50" cy="770.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="774.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">10</text>
 <text x="70.0" y="774.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Window DRV down command → K6 coil</text>
-<text x="380.0" y="774.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU-B 2</text>
+<text x="380.0" y="774.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU 16</text>
 <path d="M390.0,770.0 L720.0,770.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <path d="M390.0,770.0 L720.0,770.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <text x="406.0" y="760.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-M-10  ·  16 AWG BLU  ·  RT19  ·  capped at the far end</text>
@@ -161,7 +161,7 @@
 <circle cx="50" cy="814.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="818.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">11</text>
 <text x="70.0" y="818.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Window PASS up command → K7 coil</text>
-<text x="380.0" y="818.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU-B 3</text>
+<text x="380.0" y="818.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU 17</text>
 <path d="M390.0,814.0 L720.0,814.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <path d="M390.0,814.0 L720.0,814.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <text x="406.0" y="804.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-M-11  ·  16 AWG BLU  ·  RT19  ·  capped at the far end</text>
@@ -172,7 +172,7 @@
 <circle cx="50" cy="858.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="862.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">12</text>
 <text x="70.0" y="862.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Window PASS down command → K8 coil</text>
-<text x="380.0" y="862.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU-B 4</text>
+<text x="380.0" y="862.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU 18</text>
 <path d="M390.0,858.0 L720.0,858.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <path d="M390.0,858.0 L720.0,858.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <text x="406.0" y="848.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-M-12  ·  16 AWG BLU  ·  RT19  ·  capped at the far end</text>
@@ -274,7 +274,7 @@
 <circle cx="50" cy="1422.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="1426.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
 <text x="70.0" y="1426.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror motor common (both mirrors)</text>
-<text x="380.0" y="1426.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU-B 5</text>
+<text x="380.0" y="1426.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU 19</text>
 <path d="M390.0,1422.0 L720.0,1422.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <path d="M390.0,1422.0 L720.0,1422.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <text x="406.0" y="1412.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S2-1  ·  16 AWG GRY  ·  RT19  ·  capped at the far end</text>
@@ -285,7 +285,7 @@
 <circle cx="50" cy="1466.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="1470.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
 <text x="70.0" y="1470.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror LEFT motor</text>
-<text x="380.0" y="1470.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU-B 6</text>
+<text x="380.0" y="1470.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU 20</text>
 <path d="M390.0,1466.0 L720.0,1466.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <path d="M390.0,1466.0 L720.0,1466.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <text x="406.0" y="1456.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S2-2  ·  16 AWG GRY  ·  RT19  ·  capped at the far end</text>
@@ -296,7 +296,7 @@
 <circle cx="50" cy="1510.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="1514.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
 <text x="70.0" y="1514.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror LEFT clutch coil</text>
-<text x="380.0" y="1514.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU-B 8</text>
+<text x="380.0" y="1514.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU 22</text>
 <path d="M390.0,1510.0 L720.0,1510.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <path d="M390.0,1510.0 L720.0,1510.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <text x="406.0" y="1500.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S2-3  ·  16 AWG GRY  ·  RT19  ·  capped at the far end</text>
@@ -307,7 +307,7 @@
 <circle cx="50" cy="1554.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="1558.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
 <text x="70.0" y="1558.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror RIGHT motor</text>
-<text x="380.0" y="1558.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU-B 7</text>
+<text x="380.0" y="1558.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU 21</text>
 <path d="M390.0,1554.0 L720.0,1554.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <path d="M390.0,1554.0 L720.0,1554.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <text x="406.0" y="1544.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S2-4  ·  16 AWG GRY  ·  RT19  ·  capped at the far end</text>
@@ -318,7 +318,7 @@
 <circle cx="50" cy="1598.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="1602.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
 <text x="70.0" y="1602.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror RIGHT clutch coil</text>
-<text x="380.0" y="1602.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU-B 8</text>
+<text x="380.0" y="1602.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DP-DCU 22</text>
 <path d="M390.0,1598.0 L720.0,1598.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <path d="M390.0,1598.0 L720.0,1598.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
 <text x="406.0" y="1588.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-S2-5  ·  16 AWG GRY  ·  RT19  ·  capped at the far end</text>

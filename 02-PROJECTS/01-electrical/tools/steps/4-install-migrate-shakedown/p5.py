@@ -28,7 +28,7 @@ brief(
         "Out at the strip: seats, console, centre stack, dash and cluster, glovebox, carpet, kick and sill panels, cargo-bin trim. Back in, by this row: carpet, sill and kick panels, centre stack, dash, cluster, seats, cargo trim [work S1; work E35]",
         "Cabin looms are final-wrapped now, before the dash closes. The engine bay's wait for E33, after the first heat cycles [work E35, E33]",
         "The factory cluster left with the old harness. What goes in the instrument opening is the new instrument unit, on its plate, with two plugs in its rear wall [D-268; housings DP-ICU-A, DP-ICU-B]",
-        "The climate unit sits in the centre-stack opening with up to five plugs in its rear wall: DP-DCU, DP-DCU-B and DP-DCU-C, and in the upper row DP-DCU-D and DP-DCU-E [housings DP-DCU, DP-DCU-B, DP-DCU-C, DP-DCU-D, DP-DCU-E]",
+        "The Control Unit sits in the centre-stack opening, single-DIN tall, with one plug in its rear wall: DP-DCU, 48 ways, at the end of the L3 leg's Control Unit branch [housings DP-DCU; D-582]",
         "Behind the dash, capped and waiting: the future-module receptacle L3-MOD and the radar receptacle L3-RDR. In the glovebox: the laptop port DP-DIAG [housings L3-MOD, L3-RDR, DP-DIAG]",
         "Behind the driver kick panel: the sill node, with D1 and D2, relays K5 to K8 and the fuse holders F8, F9 (empty) and F14. Behind both kick panels: a capped speaker receptacle [devices DV43; housings L3-SPF-L, L3-SPF-R]",
         "Under the carpet: the seat harnesses to four capped receptacles under the seats, the audio cables along both sills, the sill run, and in the tunnel the 2 AWG feed, two 1/0 cables, the rear leg and a pull string [routes RT27, RT28, RT30, RT32, RT19, RT15]",

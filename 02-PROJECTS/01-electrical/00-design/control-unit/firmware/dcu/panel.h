@@ -65,7 +65,7 @@
  * ROW1 rear defog · hatch · fuel door / ROW2 fan mode · recirc · DRV up /
  * ROW3 DRV down · PASS up · PASS down / ROW4 mirror defog · spare · spare
  * (D-492, panel_ribbon 3-5 and 12). The hatch and fuel-door keys are on the
- * left plate, through DP-DCU-E. ROWs 1-3 are the 0x400 bits b0-b8 row-major
+ * left plate, through DP-DCU. ROWs 1-3 are the 0x400 bits b0-b8 row-major
  * as F-016 had them; ROW4 is b10-b12, after the stick press (can_map.h). */
 #define PANEL_ROWS 4
 #define PANEL_COLS 3

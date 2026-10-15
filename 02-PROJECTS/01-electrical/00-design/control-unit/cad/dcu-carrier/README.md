@@ -4,6 +4,8 @@
 is for, what it may claim, and how to start. The board's design is `../../../../data/dcu_channels.csv`.
 That is the record, and this is a drawing of it. Read `../../../README.md` first: it is the fence.*
 
+> **D-582 (2026-10-14): the connector edge changes.** The three DT13s (J1, J2, J9) give way to one CMC 48 header carrying every conductor the unit has, DP-DCU 1-48 - and the nets that went out on the upper board (J3, J5-J8, the dash-light stage) and the CUR's lines (the ribbon's plate nets) come to it too. Y54 draws that, once block 01.57 has picked the connector family; until then this board is as drawn, `check.py --board dcu-carrier` still holds it to the old housings, and the scene hides J1 / J2 / J9.
+
 ## Where it stands
 
 **2026-10-13 (Y44, D-549): sheet rev 0.07 - what the independent read found (D-548), values only.** No copper,
