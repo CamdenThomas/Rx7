@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "du-hdmi-bridge")(type "KiCad")(uri "${KIPRJMOD}/du-hdmi-bridge.kicad_sym")(options "")(descr "Every symbol this schematic uses, kept with the project"))
+)

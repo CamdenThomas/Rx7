@@ -10,9 +10,16 @@ view.json
 outputs/
 !99-ARCHIVE/**/*.html
 !99-ARCHIVE/**/*.svg
-# The harness-leg drawings (D-385) are generated like DECISIONS.md and committed like it:
-# they are the bench copy and the car record. Only this folder is excepted.
-!02-PROJECTS/01-electrical/00-design/diagrams/**/*.svg
+# 00-design's diagrams/ folders (2026-10-15): the harness-leg drawings (D-385), generated and
+# committed as the bench copy and the car record, and each part's drawings - schematic SVGs,
+# assembly views and drawings, and the face concept pages and the overhaul plan, which are design
+# sketches drawn by hand, not views of the record. Only these folders are excepted.
+!02-PROJECTS/01-electrical/00-design/**/diagrams/**/*.svg
+!02-PROJECTS/01-electrical/00-design/**/diagrams/**/*.html
+# ... but a board's renders and a mock-up's report are rebuilt from the board and the parameters
+02-PROJECTS/01-electrical/00-design/**/diagrams/*-top.png
+02-PROJECTS/01-electrical/00-design/**/diagrams/*-bottom.png
+02-PROJECTS/01-electrical/00-design/**/data/*-report.json
 
 # Rendered page names from v2 and v3 - never regenerate these (D-405).
 DESIGN.md
@@ -45,10 +52,10 @@ Thumbs.db
 *.exe
 *.o
 *.obj
-02-PROJECTS/01-electrical/00-design/display-unit/firmware/icu_sim/sim
+02-PROJECTS/01-electrical/00-design/display-unit/firmware/du_sim/sim
 02-PROJECTS/01-electrical/00-design/tests/test
 02-PROJECTS/01-electrical/00-design/tests/test_bt817
-02-PROJECTS/01-electrical/00-design/tests/test_dcu
+02-PROJECTS/01-electrical/00-design/tests/test_cu
 
 # KiCad, under the cad/ folders of 02-PROJECTS/01-electrical/00-design/ only: each part's
 # (control-unit/cad/, display-unit/cad/, D-496, D-497). Those folders are not areas and
@@ -68,7 +75,7 @@ fp-info-cache
 02-PROJECTS/01-electrical/00-design/**/cad/**/*.net
 02-PROJECTS/01-electrical/00-design/**/cad/**/net.txt
 02-PROJECTS/01-electrical/00-design/tests/test_radio
-02-PROJECTS/01-electrical/00-design/display-unit/firmware/icu_sim/renders/
+02-PROJECTS/01-electrical/00-design/display-unit/firmware/du_sim/renders/
 
 # KiCad 10's local history and lock files (per machine, never versioned)
 02-PROJECTS/01-electrical/00-design/**/cad/**/.history/

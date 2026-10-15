@@ -1,9 +1,9 @@
-"""Read a board's geometry from its .kicad_pcb into <unit>/cad/<board>/enclosure/board.json (Y7).
+"""Read a board's geometry from its .kicad_pcb into <part>/data/<board>-board.json (Y7).
 
 Run with KiCad's own Python (it needs `pcbnew`), from anywhere:
 
     /Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/Current/bin/python3 \
-        enclosure_extract.py icu-carrier        # or dcu-carrier, panel
+        enclosure_extract.py du-carrier        # or cu-carrier, cu-face-board
 
 Writes the outline (bounding box, corner radius), the board thickness, every hole of 3 mm or more
 (the M3 mounting holes), and every footprint: reference, value, footprint name, position, rotation,
@@ -15,17 +15,8 @@ import json, os, sys
 import pcbnew
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-DESIGN = os.path.dirname(HERE)
-UNITS = ("control-unit", "display-unit")    # each board lives in its unit's cad/ (D-496)
-
-
-def board_dir(board_name):
-    for unit in UNITS:
-        d = os.path.join(DESIGN, unit, "cad", board_name)
-        if os.path.isdir(d):
-            return d
-    print("no board %s under %s/cad" % (board_name, " or ".join(UNITS)))
-    sys.exit(3)
+sys.path.insert(0, HERE)
+import parts  # noqa: E402
 
 
 def mm(v):
@@ -33,8 +24,10 @@ def mm(v):
 
 
 def main(board_name):
-    bdir = board_dir(board_name)
-    path = os.path.join(bdir, board_name + ".kicad_pcb")
+    if board_name not in parts.BOARDS:
+        print("no board %s: %s" % (board_name, ", ".join(sorted(parts.BOARDS))))
+        sys.exit(3)
+    path = parts.board_file(board_name, "kicad_pcb")
     b = pcbnew.LoadBoard(path)
     xs, ys, radii = [], [], []
     for d in b.GetDrawings():
@@ -78,7 +71,7 @@ def main(board_name):
                                      "plated": p.GetAttribute() == pcbnew.PAD_ATTRIB_PTH})
     out["footprints"].sort(key=lambda f: f["ref"])
     out["holes"].sort(key=lambda h: (h["x"], h["y"]))
-    dst = os.path.join(bdir, "enclosure", "board.json")
+    dst = parts.data_file(board_name, "-board.json")
     with open(dst, "w") as f:
         json.dump(out, f, indent=1)
         f.write("\n")

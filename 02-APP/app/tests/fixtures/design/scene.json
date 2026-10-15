@@ -12,13 +12,13 @@
       "size_mm": { "x": 160, "y": 120, "z": 50 },
       "origin": "A stub: the housing and its carrier as two boxes",
       "connectors": [{ "code": "DP-DCU", "at": { "x": 0, "y": -60, "z": 25 }, "face": "rear", "note": "" }],
-      "children": ["dcu-carrier"],
+      "children": ["cu-carrier"],
       "source": "stub/control-unit.FCStd",
       "nodes": { "case": ["case:body"], "inside": ["inside:carrier"] }
     },
     {
-      "id": "dcu-carrier", "name": "DCU carrier board", "kind": "pcb",
-      "glb": "dcu-carrier.glb", "bytes": 1600, "parent": "control-unit",
+      "id": "cu-carrier", "name": "DCU carrier board", "kind": "pcb",
+      "glb": "cu-carrier.glb", "bytes": 1600, "parent": "control-unit",
       "place": { "x": 0, "y": 0, "z": 10, "rx": 0, "ry": 0, "rz": 90 },
       "place_from": "mock-up report", "confirm": false,
       "size_mm": { "x": 140, "y": 100, "z": 1.6 },
@@ -59,6 +59,6 @@
       "label": "GND-1 · ring", "ways": 1, "carries": ["ground"], "confirm": true
     }
   ],
-  "missing": [{ "part": "left-plate", "what": "housing model", "why": "the plate is not drawn yet" }],
+  "missing": [{ "part": "cur-board", "what": "housing model", "why": "the plate is not drawn yet" }],
   "notes": ["Places are provisional until the dash is measured (C4)."]
 }

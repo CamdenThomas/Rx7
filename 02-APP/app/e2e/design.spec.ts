@@ -40,7 +40,7 @@ test('the stub scene: lists, a model that fails named, isolate, a part alone, a 
   const parts = page.locator('details', { has: page.locator('summary', { hasText: 'Parts' }) });
   for (const n of ['Control unit (DCU)', 'PMU', 'Ground point', 'DCU carrier board']) await expect(parts).toContainText(n);
   await expect(page.getByRole('button', { name: /DP-DCU · DT13 13-way/ })).toBeVisible();
-  await expect(page.getByText('left-plate: housing model')).toBeVisible();
+  await expect(page.getByText('cur-board: housing model')).toBeVisible();
   await expect(page.getByText('Places are provisional until the dash is measured (C4).')).toBeVisible();
 
   // The vendor model is absent: named, and the rest still drawn (or, with no WebGL, said).
@@ -66,7 +66,7 @@ test('the stub scene: lists, a model that fails named, isolate, a part alone, a 
 
   // Its board alone, top and bottom.
   await page.getByRole('link', { name: /DCU carrier board/ }).click();
-  await expect(page).toHaveURL(new RegExp(`#/p/${stub}/design/dcu-carrier$`));
+  await expect(page).toHaveURL(new RegExp(`#/p/${stub}/design/cu-carrier$`));
   await page.getByRole('button', { name: 'Bottom' }).click();
   await expect(page.getByRole('button', { name: 'Bottom' })).toHaveAttribute('aria-pressed', 'true');
 

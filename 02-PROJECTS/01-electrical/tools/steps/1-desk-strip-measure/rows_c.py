@@ -23,7 +23,7 @@ def _csv(*path):
 DK = _csv("00-design", "bench-revA-digikey-cart.csv")
 MO = _csv("00-design", "bench-revA-mouser-cart.csv")
 _PARTS = {r["id"]: r for r in _csv("data", "parts.csv")}
-BOARDS = [("P103", "icu-carrier", "110 x 84"), ("P144", "dcu-carrier", "180 x 80"),
+BOARDS = [("P103", "du-carrier", "110 x 84"), ("P144", "cu-carrier", "180 x 80"),
           ("P175", "panel", "180 x 47.3"), ("P195", "upper-board", "130 x 36")]
 
 
@@ -170,7 +170,7 @@ ROWS.append(dict(
         "The fab is JLCPCB: five is the least it sells of a board. The other fab priced, OSH Park, is %s for three of each of the same four boards by its public price of $5 a square inch, made in the United States. [work Y37; parts P103]" % _money(_oshpark_usd()),
         "No live quote was read: the fab's quote page and Digi-Key's and Mouser's pages refuse automated readers. The fab prices are estimates, and the option names in the steps are JLCPCB's as last known - confirm on the page. Each cart shows its real total before you pay. [work Y37]",
         "The boards: %s. All four are 2 layers, 1.6 mm thick, with 0.2 mm tracks and gaps and a 0.3 mm smallest hole. None needs gold fingers, edge plating, castellated holes or controlled impedance. [parts P103, P144, P175, P195; the fab folders' job files]" % ", ".join("%s %s mm" % (n, s) for _, n, s in BOARDS),
-        "Each board's fab folder under 00-design holds one zip of gerbers and one BOM: icu-carrier-revA-gerbers.zip, dcu-carrier-revA-gerbers.zip, panel-revA-gerbers.zip, upper-board-revA-gerbers.zip. [work Y17; the fab folders]",
+        "Each board's fab folder under 00-design holds one zip of gerbers and one BOM: du-carrier-revA-gerbers.zip, cu-carrier-revA-gerbers.zip, cu-face-board-revA-gerbers.zip, upper-board-revA-gerbers.zip. [work Y17; the fab folders]",
         "Three zips were rebuilt on %s and kept their names: both carriers' after they were corrected, then the DU carrier's and the panel's again after the boards were read once more. Upload only the zips a fresh pull gives. A zip saved or uploaded before that builds a board that does not work. The upper board's zip did not change. [D-547; D-549; work Y42, Y44; the fab folders]" % REBUILT,
         "The cart file names every part bought by its maker's part number, with what it is, where it goes and the parts row it belongs to. Passives are bought in tens, the rest as the boards count them, for one DU and one CU. [the Digi-Key cart file bench-revA-digikey-cart.csv]",
         "Of the file's %d prices, %d are Digi-Key's or Mouser's own as Octopart listed them, %d are another distributor's, %d are the maker's page and %d are estimates. All are est until the cart shows them. [the Digi-Key cart file, price_source; work Y37]" % (
@@ -191,11 +191,11 @@ ROWS.append(dict(
     record="Tick Y18 when the three orders are placed. In words: what each cart came to, any part you substituted or left out, and the delivery dates the carts gave.",
     steps=[
         ("Pull the tree and find the files",
-         "git pull in ~/dev/Rx7. Under " + DESIGN + " each of the four board folders (icu-carrier, dcu-carrier, panel, upper-board) has a fab folder with one <board>-revA-gerbers.zip. Beside the README in " + DESIGN + " are bench-revA-digikey-cart.csv and bench-revA-mouser-cart.csv.",
+         "git pull in ~/dev/Rx7. Under " + DESIGN + " each of the four board folders (du-carrier, cu-carrier, panel, upper-board) has a fab folder with one <board>-revA-gerbers.zip. Beside the README in " + DESIGN + " are bench-revA-digikey-cart.csv and bench-revA-mouser-cart.csv.",
          "Four zips and two cart files.",
          "Three zips (both carriers and the panel) were rebuilt on %s under the same names. Use only the ones this pull gives: delete any zip you saved or uploaded before." % REBUILT),
         ("Upload the first zip at the fab",
-         "On jlcpcb.com open the quote page and add icu-carrier-revA-gerbers.zip. Let it read the file.",
+         "On jlcpcb.com open the quote page and add du-carrier-revA-gerbers.zip. Let it read the file.",
          "A preview of the board, 110 x 84 mm, 2 layers.",
          "A preview with the wrong size or one copper layer means the wrong file: stop."),
         ("Set the quantity to 5",
@@ -215,7 +215,7 @@ ROWS.append(dict(
          "Remove Mark chosen, the rest default.",
          "If removing the mark costs extra, leave the mark: it is only print."),
         ("Save it and add the other three boards",
-         "Save to cart. Then the same six settings for dcu-carrier-revA-gerbers.zip (180 x 80 mm), panel-revA-gerbers.zip (180 x 47.3 mm) and upper-board-revA-gerbers.zip (130 x 36 mm).",
+         "Save to cart. Then the same six settings for cu-carrier-revA-gerbers.zip (180 x 80 mm), cu-face-board-revA-gerbers.zip (180 x 47.3 mm) and upper-board-revA-gerbers.zip (130 x 36 mm).",
          "Four boards in the fab's cart, five of each, each preview at its size.",
          "A preview with the wrong size means the wrong file: stop."),
         ("Choose the shipping and pay the fab",
@@ -438,7 +438,7 @@ ROWS.append(dict(
     ],
     know=[
         "The bridge joins the BT817 board's flat-cable picture output to the HDMI input of the panel kit you chose: a TI TFP410 on a 62 x 46 mm two-layer board. [D-550; D-561; parts P119]",
-        "Its fab zip is bridge-board-revA-gerbers.zip in the bridge board's fab folder under the design folder; its parts are bench-revA-bridge-digikey-cart.csv beside the design README: %d lines, %s by the file's estimates of %s. [D-561; the bridge's cart file]" % (len(BR), _money(_usd(BR)), PRICED),
+        "Its fab zip is du-hdmi-bridge-revA-gerbers.zip in the bridge board's fab folder under the design folder; its parts are bench-revA-bridge-digikey-cart.csv beside the design README: %d lines, %s by the file's estimates of %s. [D-561; the bridge's cart file]" % (len(BR), _money(_usd(BR)), PRICED),
         "Five boards is the least the fab sells; at this size they are about $5 before shipping, by estimate. [parts P119]",
         "The flat cable must have its contacts on the SAME side at both ends (type A). The other kind reverses every pin, and powering a reversed cable shorts the BT817 board's outputs. [D-561; the bridge README]",
         "The connector J1 must be the bottom-contact Hirose FH12-50S-0.5SH(55) or one with the same footprint and contact side: the pin mapping assumes it. [D-561]",
@@ -449,7 +449,7 @@ ROWS.append(dict(
     record="Tick Y48 when both are ordered. In words: what each came to, any substitute, and the delivery dates.",
     steps=[
         ("Pull the tree and find the two files",
-         "git pull in ~/dev/Rx7. Under " + DESIGN + " the display unit's bridge-board folder has a fab folder with bridge-board-revA-gerbers.zip; beside the README in " + DESIGN + " is bench-revA-bridge-digikey-cart.csv.",
+         "git pull in ~/dev/Rx7. Under " + DESIGN + " the display unit's du-hdmi-bridge folder has a fab folder with du-hdmi-bridge-revA-gerbers.zip; beside the README in " + DESIGN + " is bench-revA-bridge-digikey-cart.csv.",
          "One zip and one parts file.", ""),
         ("Add the board at the fab",
          "On jlcpcb.com, in the same cart as Y18's boards if that order is not paid yet: add the zip, PCB Qty 5, 2 layers, 1.6 mm, 1 oz, green, HASL, Remove Mark - the same settings as the other four.",

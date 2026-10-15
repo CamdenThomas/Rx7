@@ -5,9 +5,10 @@ the 470 uF line and the one-way TVS diodes; Y44: the two gate dividers - 18 k fo
 more 10 k, the 1 k line the DU's alone; the fix pass after the independent read: SQ2364EES, MMBT5551, SL310A,
 the 15 V zener, 22 k for the three tell-tale dividers, 1 k for the brake-warning input, DCU C27 on the
 100 nF 100 V line - D-549). Kept in the tree since Y44; it was a scratch file called bill.py.
-Owns: the two cart files beside the design README. Reads no table: each line's `rows` column names
+Owns: the three cart files in 00-design/data/. Reads no table: each line's `rows` column names
 the parts rows it buys for, and tools/fab_bom.py holds the lines to the boards' BOMs.
-usage: bench_cart.py <design folder>   -> bench-revA-digikey-cart.csv, bench-revA-mouser-cart.csv"""
+usage: bench_cart.py [folder]   -> 00-design/data/ (or the folder named): bench-revA-digikey-cart.csv,
+       bench-revA-mouser-cart.csv, bench-revA-bridge-digikey-cart.csv"""
 import csv, os, sys
 
 OCT = "another distributor's price on Octopart 2026-10-13"
@@ -159,7 +160,7 @@ BR.append((G, 2, "XHP-2", "JST", "XH 2-way plug housing", "the 5 V lead to J3", 
 BR.append((G, 1, "ASXHSXH22K152", "JST", "XH lead, crimped both ends, 22 AWG 6 in", "the 5 V lead to J3", "P119:1", 0.70, EST, ""))
 
 H = ["group", "qty", "mpn", "maker", "what", "refs", "rows", "est_unit_usd", "price_source", "substitute"]
-out = sys.argv[1]
+out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
 for name, rows in (("bench-revA-digikey-cart.csv", L), ("bench-revA-mouser-cart.csv", M),
                    ("bench-revA-bridge-digikey-cart.csv", BR)):
     seen = set()

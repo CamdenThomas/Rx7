@@ -3,7 +3,7 @@
 #   test_suite.cpp   - ICU renderer regression, and section 14: the PMU simulator held to the
 #                      record's logic rows (logic_vectors.h, Y8)
 #   test_bt817.cpp   - BT817 display driver, mocked SPI (35)
-#   test_dcu.cpp     - DCU climate, comfort, panel, windows, mirrors, pin map, expander (F-017, D-452),
+#   test_cu.cpp     - DCU climate, comfort, panel, windows, mirrors, pin map, expander (F-017, D-452),
 #                      and section 18: the logic rows' terms the DCU raises over 0x400 (Y8)
 #   test_radio.cpp   - battery path: BMS decoder, C3 line protocol, 0x220/0x221 (F-015)
 #   test_loglink.cpp - the log link: UART framing, CRCs, the card's three logs, list / transfer /
@@ -17,10 +17,10 @@
 # Exit 0 = every suite passed. The binaries are not versioned (.gitignore).
 cd "$(dirname "$0")" || exit 3
 # Each part's sketches live in its own firmware/ folder (D-496, D-497); this folder sits beside them.
-ICU=../display-unit/firmware/icu
-RADIO=../display-unit/firmware/icu_radio
+DU=../display-unit/firmware/du
+RADIO=../display-unit/firmware/du_radio
 TACH=../display-unit/firmware/tach_simulator
-DCU=../control-unit/firmware/dcu
+CU=../control-unit/firmware/cu
 PMU_SIM=../pmu/firmware/pmu_sim
 LADDER=../pmu/firmware/ladder_decode_test
 # Mac (D-454): a CLT 26.6 toolchain beside a MacOSX27.0 SDK cannot link - pin the SDK that
@@ -31,11 +31,11 @@ if ! command -v g++ >/dev/null 2>&1; then
   exit 3
 fi
 
-# The master CAN map and the DCU's copy must be one file (plan P49): a drift here is a node
+# The master CAN map and the CU's copy must be one file (plan P49): a drift here is a node
 # that mis-reads every frame, and nothing else checks it.
-for copy in "$DCU/can_map.h" "$PMU_SIM/can_map.h"; do
-  if ! cmp -s "$ICU/can_map.h" "$copy"; then
-    echo "can_map.h drift: $copy differs from $ICU/can_map.h (the master) - copy the master over it first"
+for copy in "$CU/can_map.h" "$PMU_SIM/can_map.h"; do
+  if ! cmp -s "$DU/can_map.h" "$copy"; then
+    echo "can_map.h drift: $copy differs from $DU/can_map.h (the master) - copy the master over it first"
     exit 1
   fi
 done
@@ -49,7 +49,7 @@ python3 gen_vectors.py || { echo "*** gen_vectors.py FAILED - the record names a
 # ladders, rules and pins it reads) - every input-state combination and the output the record
 # expects, inrush and retry as numbers, the prose it cannot read listed for hand-testing. It
 # fails when a row names a state its ladder does not have; test_suite (the PMU simulator) and
-# test_dcu (the 0x400 terms) then fail on any state or term the firmware does not know.
+# test_cu (the 0x400 terms) then fail on any state or term the firmware does not know.
 python3 gen_logic_vectors.py || { echo "*** gen_logic_vectors.py FAILED - a logic row names a state or a cell the record cannot back ***"; exit 1; }
 
 # The log link held to the record (BT3): log_vectors.h is generated from log_channels.csv,
@@ -76,8 +76,8 @@ suite() {  # name, source, extra flags
 }
 
 suite test       test_suite.cpp
-suite test_bt817 test_bt817.cpp "-I$ICU"
-suite test_dcu   test_dcu.cpp   "-I$DCU"
+suite test_bt817 test_bt817.cpp "-I$DU"
+suite test_cu   test_cu.cpp   "-I$CU"
 suite test_radio test_radio.cpp
 suite test_loglink test_loglink.cpp
 suite test_vectors test_vectors.cpp
@@ -88,7 +88,7 @@ suite test_vectors test_vectors.cpp
 # `arduino-cli core install teensy:avr esp32:esp32` with the PJRC and Espressif index URLs).
 if command -v arduino-cli >/dev/null 2>&1; then
   if arduino-cli core list 2>/dev/null | grep -q '^teensy:avr'; then
-    for dir in "$ICU" "$DCU" "$PMU_SIM" "$TACH" "$LADDER"; do
+    for dir in "$DU" "$CU" "$PMU_SIM" "$TACH" "$LADDER"; do
       sk=$(basename "$dir")
       echo "Compiling $sk for Teensy 4.1 ..."
       arduino-cli compile --fqbn teensy:avr:teensy41:speed=600 --build-path "/tmp/rx7-build-$sk" "$dir" >/dev/null 2>"/tmp/rx7-build-$sk.log" \

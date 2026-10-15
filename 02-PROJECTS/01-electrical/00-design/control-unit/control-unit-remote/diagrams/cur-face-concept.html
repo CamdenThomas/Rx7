@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CUR Face Concept</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one column, the working drawing first with its controls and sizes, then both sizes at
+   real size, the dark, the symbols and the list of guesses. The CU page's look and light rules.
+   The face is a physical object, so its own colours are the same in both themes. */
+:root {
+  --bg: #f1f3ef;
+  --surface: #ffffff;
+  --fg: #17211c;
+  --muted: #58645d;
+  --line: #d3d9d3;
+  --accent: #0e6f40;
+  --guess: #a84a06;
+  --guess-fg: #ffffff;
+  --warn: #b3261e;
+  --btn-bg: #ffffff;
+  --btn-on: #dff1e6;
+
+  /* the object: same in light and dark */
+  --face: #1c1f22;
+  --face-night: #07090a;
+  --key: #2b3034;
+  --key-night: #0e1112;
+  --rim: #32373c;
+  --cap: #454b51;
+  --cap-night: #171b1d;
+  --slot: #0c0e10;
+  --slot-night: #030404;
+  --tick: #5d656c;
+  --legend: #c8cdd2;
+  --legend-night: #1d2124;
+  --led-pure: #2fe57a;
+  --led-yg: #a9e22b;
+  --led: var(--led-pure);
+  --red: #ff3b30;
+  --red-day: #b4504c;
+  --red-night: #2a1414;
+  --cabin-night: #020303;
+  --night-ink: #8a948e;
+  --du: #050607;
+
+  --f-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --f-cond: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1311; --surface: #161c19; --fg: #e5ebe7; --muted: #9ba8a1; --line: #2a332e;
+    --accent: #55cf90; --guess: #f0a04b; --guess-fg: #1b1205; --warn: #ff8a80; --btn-bg: #1c2420; --btn-on: #1f3a2b;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1311; --surface: #161c19; --fg: #e5ebe7; --muted: #9ba8a1; --line: #2a332e;
+  --accent: #55cf90; --guess: #f0a04b; --guess-fg: #1b1205; --warn: #ff8a80; --btn-bg: #1c2420; --btn-on: #1f3a2b;
+  color-scheme: dark;
+}
+
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 16px; line-height: 1.5; }
+main { max-width: 1120px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 56px; display: flex; flex-direction: column; gap: 36px; }
+main[data-green="yg"] { --led: var(--led-yg); }
+section { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+h1, h2, h3 { font-family: var(--f-cond); font-weight: 600; text-wrap: balance; margin: 0; line-height: 1.1; }
+h1 { font-size: 2.3rem; letter-spacing: .01em; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.05rem; font-family: var(--f-body); font-weight: 600; }
+p { margin: 0; max-width: 70ch; }
+.lede { color: var(--muted); }
+.eyebrow { font-family: var(--f-mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+
+.g { display: inline-flex; align-items: center; justify-content: center; min-width: 1.45em; height: 1.45em; padding: 0 .3em;
+     border-radius: 999px; background: var(--guess); color: var(--guess-fg); font-family: var(--f-mono); font-size: .72rem; font-weight: 500; vertical-align: .08em; }
+
+.stage { --stage-bg: var(--surface); --stage-ink: var(--muted); background: var(--stage-bg); border: 1px solid var(--line); border-radius: 6px; overflow-x: auto; }
+.stage.night { --stage-bg: var(--cabin-night); --stage-ink: var(--night-ink); }
+.stage svg { display: block; width: 100%; height: auto; }
+.stage.big svg { min-width: 640px; max-height: 620px; }
+.stage.night svg { max-height: 460px; }
+.stage.real { padding: 20px 16px; display: flex; flex-wrap: wrap; gap: 28px 40px; align-items: flex-end; justify-content: center; }
+.stage.real figure { display: flex; flex-direction: column; gap: 8px; align-items: center; }
+.stage.real svg { width: auto; }
+
+.face { fill: var(--face); }
+.night .face { fill: var(--face-night); }
+.ink { font-family: var(--f-mono); fill: var(--stage-ink); }
+.dim { stroke: var(--stage-ink); stroke-width: 3; fill: none; }
+
+.knob-rim { fill: var(--rim); }
+.knob-cap { fill: var(--cap); }
+.tick { stroke: var(--tick); stroke-width: 4; }
+.night .knob-rim { fill: #101314; }
+.night .knob-cap { fill: #171b1d; }
+.night .tick { stroke: #22282b; }
+
+.pbtn-body { fill: var(--key); }
+.night .pbtn-body { fill: var(--key-night); }
+.pbtn.down .pbtn-body { fill: var(--cap); }
+.night .pbtn.down .pbtn-body { fill: var(--cap-night); }
+
+/* the same two levels as the CU: soft with the lamps, hard while the thing is working */
+.sym { fill: none; stroke: var(--legend); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+.night .sym { stroke: var(--legend-night); }
+.sel .sym { stroke: var(--led); filter: drop-shadow(0 0 6px var(--led)); }
+.lamps .glow .sym { stroke: var(--led); opacity: .42; }
+.night.lamps .glow .sym { opacity: .5; filter: drop-shadow(0 0 3px var(--led)); }
+.glow.on .sym, .lamps .glow.on .sym, .night.lamps .glow.on .sym { stroke: var(--led); opacity: 1; stroke-width: 9; filter: drop-shadow(0 0 10px var(--led)); }
+.lamps .pbtn.glow .pbtn-body { stroke: var(--led); stroke-opacity: .16; stroke-width: 3; }
+.pbtn.on .pbtn-body { stroke: var(--led); stroke-opacity: .9; stroke-width: 4; filter: drop-shadow(0 0 6px var(--led)); }
+
+/* the hazard: a red triangle, soft red with the lamps, flashing with the flasher when latched */
+.haz .sym { stroke: var(--red-day); }
+.night .haz .sym { stroke: var(--red-night); }
+.lamps .haz .sym { stroke: var(--red); opacity: .42; }
+.night.lamps .haz .sym { opacity: .5; filter: drop-shadow(0 0 3px var(--red)); }
+.haz.on .sym, .lamps .haz.on .sym, .night .haz.on .sym { stroke: var(--red); opacity: 1; stroke-width: 9; filter: drop-shadow(0 0 10px var(--red)); animation: flasher .667s steps(1) infinite; }
+.haz.on .pbtn-body, .lamps .haz.on .pbtn-body { fill: var(--cap); stroke: var(--red); stroke-opacity: .9; stroke-width: 4; filter: drop-shadow(0 0 6px var(--red)); }
+@keyframes flasher { 50% { opacity: .12; filter: none; } }
+@media (prefers-reduced-motion: reduce) { .haz.on .sym { animation: none; } }
+
+.slot { fill: var(--slot); }
+.night .slot { fill: var(--slot-night); }
+.arrow { fill: var(--legend); }
+.night .arrow { fill: var(--legend-night); }
+.lamps .glow .arrow { fill: var(--led); opacity: .42; }
+
+.nohit { pointer-events: none; }
+.hit { fill: #ffffff; fill-opacity: 0; cursor: pointer; }
+.hit:hover { fill-opacity: .1; }
+.pbtn[data-act] { cursor: pointer; }
+.pbtn[data-act]:hover .pbtn-body { stroke: var(--legend); stroke-opacity: .6; stroke-width: 3; }
+
+.chip-c { fill: var(--guess); }
+.chip-t { fill: var(--guess-fg); font-family: var(--f-mono); font-weight: 500; }
+.chip-l { stroke: var(--guess); stroke-width: 3; stroke-dasharray: 8 6; fill: none; }
+
+.controls { display: flex; flex-wrap: wrap; gap: 14px 26px; }
+.grp { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.grp > span { font-family: var(--f-mono); font-size: .74rem; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+button.c { font: 500 .9rem var(--f-body); color: var(--fg); background: var(--btn-bg); border: 1px solid var(--line); border-radius: 4px; padding: 6px 11px; cursor: pointer; }
+button.c:hover { border-color: var(--accent); }
+button.c:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.c[aria-pressed="true"] { background: var(--btn-on); border-color: var(--accent); }
+.status { font-family: var(--f-mono); font-size: .88rem; border-left: 3px solid var(--accent); padding: 4px 0 4px 12px; max-width: 80ch; min-height: 2.9em; }
+.du { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; font-family: var(--f-mono); font-size: .86rem; background: var(--du); color: #cfe9da; border-radius: 6px; padding: 10px 14px; }
+.du b { color: var(--led-pure); font-weight: 500; }
+.du .pair { color: #8fc7ff; }
+
+table.sizes { border-collapse: collapse; font-size: .92rem; width: 100%; max-width: 820px; }
+table.sizes th, table.sizes td { text-align: left; padding: 5px 10px 5px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.sizes th { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+table.sizes td.n { font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tablewrap { overflow-x: auto; }
+.cap, figcaption { font-size: .88rem; color: var(--muted); }
+figure { margin: 0; }
+
+.symrow { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px; }
+.symrow figure { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.symrow svg { display: block; width: 100%; height: auto; border-radius: 4px; }
+
+ol.guesses { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; }
+ol.guesses li { display: grid; grid-template-columns: 2em minmax(0, 1fr); gap: 4px; align-items: start; font-size: .95rem; }
+ol.guesses li .g { margin-top: .2em; justify-self: start; }
+ol.guesses b { font-weight: 600; }
+
+@media (max-width: 760px) {
+  h1 { font-size: 1.9rem; }
+  .symrow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  ol.guesses { grid-template-columns: minmax(0, 1fr); }
+}
+input[type=range] { width: min(300px, 100%); accent-color: var(--accent); }
+input[type=range]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.val { font-family: var(--f-mono); font-variant-numeric: tabular-nums; min-width: 4.6em; }
+table.sizes tr.low td { color: var(--warn); }
+.stage.big svg { max-height: 560px; }
+</style>
+</head>
+<body>
+<main id="page" data-green="pure">
+
+  <header style="display:flex;flex-direction:column;gap:10px">
+    <div class="eyebrow">1982 RX-7 · Control Unit Remote (CUR) face · sketch, second pass, 15 October 2026</div>
+    <h1>CUR face, on a grid</h1>
+    <p class="lede">This is your new layout. The screen knob is at the top left with the mirror stick under it, and the two are the same size. Right of them is a grid of keys: the hazard on top, as wide as both winks, then the two winks, then the fuel door and the hatch. The two knobs together are exactly as tall as the three rows of keys, split evenly. One gap size runs everywhere, so the whole face reads as a grid. Every size follows the face's height, and the slider shows how small it can go before something gets hard to press. Only this page changed; the record still has the D-595 layout until you settle this one.</p>
+    <p class="lede">An orange tag <span class="g">n</span> marks a choice the drawing made that you did not state. The list at the bottom says what each one chose.</p>
+  </header>
+
+  <section aria-labelledby="h-face">
+    <h2 id="h-face">The face, enlarged</h2>
+    <p>Click a key, the edge of the stick's well to move it, or the middle of the stick to push it. On the screen knob, click its left or right half to turn it, and its middle to click it. Hold the knob's middle for three seconds to start pairing. The scroll wheel also turns the knob.</p>
+    <div class="stage big" id="stage">
+      <svg id="live" role="img" aria-label="Front view of the CUR face, enlarged, to scale"></svg>
+    </div>
+    <p class="status" id="status" aria-live="polite"></p>
+    <div class="du" id="du" aria-live="polite"></div>
+
+    <div class="controls">
+      <div class="grp" role="group" aria-label="Face height">
+        <span>Face height</span>
+        <div class="row">
+          <input type="range" id="hgt" min="26" max="40" step="0.2" value="32" aria-label="Face height in millimetres">
+          <span class="val" id="v-hgt">32.0 mm</span>
+        </div>
+      </div>
+      <div class="grp" role="group" aria-label="Screen knob">
+        <span>Screen knob</span>
+        <div class="row">
+          <button class="c" data-act="k-l">Turn left</button>
+          <button class="c" data-act="k-p">Click</button>
+          <button class="c" data-act="k-hold">Hold 3 s</button>
+          <button class="c" data-act="k-r">Turn right</button>
+        </div>
+      </div>
+      <div class="grp" role="group" aria-label="Mirror stick">
+        <span>Mirror stick</span>
+        <div class="row">
+          <button class="c" data-act="mir-u">Up</button>
+          <button class="c" data-act="mir-d">Down</button>
+          <button class="c" data-act="mir-l">Left</button>
+          <button class="c" data-act="mir-r">Right</button>
+          <button class="c" data-act="mir-p">Push</button>
+        </div>
+      </div>
+      <div class="grp" role="group" aria-label="Keys">
+        <span>Keys</span>
+        <div class="row">
+          <button class="c" id="b-haz" data-act="haz" aria-pressed="false">Hazard</button>
+          <button class="c" data-act="wink-l">Wink left</button>
+          <button class="c" data-act="wink-r">Wink right</button>
+          <button class="c" data-act="fuel">Fuel door</button>
+          <button class="c" data-act="hatch">Hatch</button>
+        </div>
+      </div>
+      <div class="grp" role="group" aria-label="How the drawing is shown">
+        <span>Show it as</span>
+        <div class="row">
+          <button class="c" id="b-flip" data-act="flip" aria-pressed="false">Knobs on the centre-stack side</button>
+          <button class="c" id="b-lamps" data-act="lamps" aria-pressed="false">Lights on</button>
+          <button class="c" id="b-night" data-act="night" aria-pressed="false">Dark cabin</button>
+          <button class="c" id="b-green" data-act="green" aria-pressed="false">Yellow-green LEDs</button>
+          <button class="c" id="b-markers" data-act="markers" aria-pressed="true">Guess tags</button>
+        </div>
+      </div>
+    </div>
+
+    <h3>What each control comes to at this height</h3>
+    <div class="tablewrap"><table class="sizes" id="sizes"></table></div>
+    <p class="cap">A size shows in red when it falls under the CU's floors for easy pressing: a key at least 4.5 mm tall and a knob at least 12 mm across. They are guesses; try them in hand.</p>
+  </section>
+
+  <section aria-labelledby="h-real">
+    <h2 id="h-real">At about real size</h2>
+    <p>This is set in millimetres, so on most screens it shows at about real size. Hold a ruler to the screen to check. The dashed outline is the 118 × 56 mm plate as ruled today (D-595), for comparison.</p>
+    <div class="stage real" id="stage3">
+      <figure><svg id="real" role="img" aria-label="The CUR at about real size, beside the outline of the plate as ruled"></svg><figcaption id="cap-real"></figcaption></figure>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-night">
+    <h2 id="h-night">In the dark</h2>
+    <p>Here the lights are on and the hazards are on. Every symbol glows softly, the same as the CU's keys. The hazard's red triangle flashes in step with the hazard lamps. A wink face or a release key lights fully only while it is held. <span class="g">7</span> <span class="g">8</span></p>
+    <div class="stage night lamps">
+      <svg id="nightface" role="img" aria-label="The CUR at night with the lights and the hazards on"></svg>
+    </div>
+    <h3>The symbols, lit</h3>
+    <div class="symrow" id="symrow"></div>
+    <p class="cap">First drafts, carried over from the cur-board sketch, plus the hazard triangle.</p>
+  </section>
+
+  <section aria-labelledby="h-guess">
+    <h2 id="h-guess">What the drawing guessed</h2>
+    <p>Everything below was chosen so the sketch would work. Any of it can change.</p>
+    <ol class="guesses">
+      <li><span class="g">1</span><span><b>The layout.</b> As you described it: screen knob over mirror stick on the left, then hazard, winks and releases in a grid. It replaces D-595's three columns once you settle it. The plate board (118 × 56) gets redrawn at the end, with the CU's.</span></li>
+      <li><span class="g">2</span><span><b>The height.</b> Starts at 32 mm, about the least where both knobs stay 12 mm or more across. Below about 30.5 mm the knobs go under the floor; the keys stay above theirs down to about 26 mm.</span></li>
+      <li><span class="g">3</span><span><b>The grid.</b> One 1.6 mm gap between every neighbour, across and down, and 2.5 mm of face at every edge. The knobs line up with the grid: the top of the screen knob with the hazard's top, the bottom of the stick's well with the releases' bottom.</span></li>
+      <li><span class="g">4</span><span><b>The keys.</b> Each key is 1.4 times as wide as it is tall, about 11 × 8 mm at 32 mm. The hazard is the two winks' width plus the gap between them, so its edges line up with theirs. The order is a guess: left wink on the left, fuel door under it, hatch on the right.</span></li>
+      <li><span class="g">5</span><span><b>The two knobs.</b> Each is half the key stack's height less one gap: about 12.7 mm across at 32 mm. That is smaller than the CU's 17.4 mm knobs; matching them would make the CUR about 41 mm tall. The screen knob keeps its ticks and carries a light-bulb symbol in its middle that stays upright while the knob turns. The bulb glows at the soft level with the lights on, never brighter, and is dark with them off.</span></li>
+      <li><span class="g">6</span><span><b>The mirror stick.</b> Its well is the same size as the screen knob, and the stick's knob is a little over half of that, about 7 mm. There are no arrows on the well. It moves the left mirror until pushed; after a push it moves the right mirror until 3 s pass with no movement, or until a second push. Nothing on the face shows which mirror it is on.</span></li>
+      <li><span class="g">7</span><span><b>The hazard's light.</b> A red triangle (D-589). It is dull red by day and soft red with the lights on. While latched it flashes bright red with the flasher, about 90 times a minute, and its edge glows red.</span></li>
+      <li><span class="g">8</span><span><b>The other lights.</b> The CU's two levels: every symbol glows softly with the lights on. A wink face lights fully while held, and a release key while pressed.</span></li>
+      <li><span class="g">9</span><span><b>The screen knob's behaviour.</b> As D-580 has it. Turning steps the Display Unit's pages. A click switches to brightness: left brighter, right dimmer, 10 to 100 % in 5 % steps. After 3 s or a second click it goes back to pages. Holding 3 s pairs a phone for 60 s. The four pages, wrapping round, are a guess.</span></li>
+      <li><span class="g">10</span><span><b>Which side is which.</b> The CUR is right of the wheel (D-586). The knobs are drawn on the steering-wheel side, nearest your hand. The button under the drawing moves them to the centre-stack side and keeps the left wink on the left.</span></li>
+    </ol>
+  </section>
+</main>
+
+<script>
+(function () {
+  /* Every size follows the face's height H (mm). One gap G runs across and down. */
+  var EDGE = 2.5, G = 1.6, KEY_RATIO = 1.4;
+  var FLOOR = { key: 4.5, knob: 12 };
+  var RULED = { W: 118, H: 56 };     /* the plate board's outline, cur-board/gen_left_plate.py */
+  var PAGES = 4;
+  var U = 10;
+  var S = {
+    H: 32, flip: false, lamps: false, night: false, yg: false, markers: true,
+    flash: '', hazard: false, mirSel: 'L', page: 1, bright: 100, kmode: 'pages', angle: 0, pairing: false,
+    msg: 'Nothing touched yet. The screen knob steps the Display Unit’s pages.'
+  };
+  var flashT = null, mirT = null, kT = null, pairT = null, lastWheel = 0;
+  function $(id) { return document.getElementById(id); }
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  function f1(v) { return (Math.round(v * 10) / 10).toFixed(1); }
+
+  /* ---------- where everything goes, in mm from the face's top-left ---------- */
+  function geo(H, flip) {
+    var g = { H: H, edge: EDGE, gap: G };
+    var inner = H - 2 * EDGE;
+    g.keyH = (inner - 2 * G) / 3;
+    g.keyW = g.keyH * KEY_RATIO;
+    g.hazW = 2 * g.keyW + G;
+    g.d = (inner - G) / 2;                 /* each knob: half the key stack less one gap */
+    g.stickD = g.d * 0.56;
+    g.W = 2 * EDGE + g.d + G + g.hazW;
+    var colX = EDGE + g.d / 2, x0 = EDGE + g.d + G;
+    g.knobX = colX; g.knobY = EDGE + g.d / 2;
+    g.stickX = colX; g.stickY = EDGE + g.d + G + g.d / 2;
+    g.k1 = x0 + g.keyW / 2; g.k2 = x0 + g.keyW + G + g.keyW / 2; g.hazX = x0 + g.hazW / 2;
+    g.r0 = EDGE + g.keyH / 2; g.r1 = g.r0 + g.keyH + G; g.r2 = g.r1 + g.keyH + G;
+    if (flip) {
+      var a = g.k1, b = g.k2;
+      g.knobX = g.W - g.knobX; g.stickX = g.W - g.stickX; g.hazX = g.W - g.hazX;
+      g.k1 = g.W - b; g.k2 = g.W - a;
+    }
+    return g;
+  }
+
+  /* ---------- the symbols, drawn about 90 x 60 around their own centre ---------- */
+  function wink(d) {
+    return '<circle class="sym" cx="0" cy="0" r="30"/>' +
+      '<path class="sym" style="stroke-width:5" d="M' + (d * 19) + ' -5 Q' + (d * 12) + ' -13 ' + (d * 5) + ' -5 M-14 9 Q0 22 14 9"/>' +
+      '<circle class="sym" style="stroke-width:5" cx="' + (-d * 12) + '" cy="-8" r="2.5"/>';
+  }
+  var ICON = {
+    winkL: wink(-1),
+    winkR: wink(1),
+    fuel: '<rect class="sym" x="-28" y="-26" width="34" height="52" rx="4"/><rect class="sym" x="-21" y="-19" width="20" height="14" rx="2"/><path class="sym" d="M-34 26 H12 M6 -4 H14 a6 6 0 0 1 6 6 V14 a6 6 0 0 0 12 0 V-12 L22 -22"/>',
+    hatch: '<path class="sym" d="M-46 16 V4 L-22 -2 L-8 -18 H10 M24 0 H46 V16 H-46 M10 -18 L42 -32"/><circle class="sym" cx="-26" cy="18" r="7"/><circle class="sym" cx="26" cy="18" r="7"/>',
+    haz: '<path class="sym" d="M0 -30 L34 26 H-34 Z M0 -10 L15 16 H-15 Z"/>',
+    mirror: '<rect class="sym" x="-24" y="-14" width="44" height="28" rx="10"/><path class="sym" d="M20 2 H32"/>',
+    bulb: '<path class="sym" d="M-9 10 Q-20 0 -20 -11 A20 20 0 0 1 20 -11 Q20 0 9 10 Z M-8 18 H8 M-5 25 H5"/>'
+  };
+  var ICON_NAMES = [['bulb', 'Display dimmer'], ['haz', 'Hazard'], ['winkL', 'Wink left'], ['winkR', 'Wink right'], ['fuel', 'Fuel door'], ['hatch', 'Hatch'], ['mirror', 'Mirrors']];
+  function sym(name, x, y, k) {
+    return '<g transform="translate(' + f1(x) + ' ' + f1(y) + ') scale(' + k.toFixed(3) + ')">' + ICON[name] + '</g>';
+  }
+
+  /* ---------- drawing pieces, 10 units per mm ---------- */
+  function ink(x, y, str, size, anchor, extra) {
+    return '<text x="' + f1(x) + '" y="' + f1(y) + '" font-size="' + (size || 30) + '" text-anchor="' + (anchor || 'middle') + '" class="ink"' + (extra || '') + '>' + str + '</text>';
+  }
+  function chip(n, x, y, tx, ty) {
+    var l = (tx == null) ? '' : '<line x1="' + f1(x) + '" y1="' + f1(y) + '" x2="' + f1(tx) + '" y2="' + f1(ty) + '" class="chip-l"/>';
+    return '<g>' + l + '<circle cx="' + f1(x) + '" cy="' + f1(y) + '" r="22" class="chip-c"/><text x="' + f1(x) + '" y="' + f1(y + 8) + '" font-size="24" text-anchor="middle" class="chip-t">' + n + '</text></g>';
+  }
+  /* a key: cls 'glow' (green symbol) or 'haz' (red); on = lit hard */
+  function key(g, x, y, w, icon, cls, on, act, live, title) {
+    var h = g.keyH * U, kw = g.keyW * U, k = Math.min(h * 0.72 / 60, kw * 0.72 / 92);
+    w = w * U;
+    return '<g class="pbtn ' + cls + (on ? ' on' : '') + (S.flash === act ? ' down' : '') + '"' + (live ? ' data-act="' + act + '"' : '') + '>' +
+      (live ? '<title>' + title + '</title>' : '') +
+      '<rect x="' + f1(x - w / 2) + '" y="' + f1(y - h / 2) + '" width="' + f1(w) + '" height="' + f1(h) + '" rx="' + f1(Math.min(12, h * 0.14)) + '" class="pbtn-body"/>' +
+      sym(icon, x, y, k) + '</g>';
+  }
+  function knob(cx, cy, r, angle, live) {
+    var t = '', i;
+    for (i = 0; i < 24; i++) t += '<line x1="0" y1="' + f1(-r * 0.8) + '" x2="0" y2="' + f1(-r * 0.95) + '" transform="rotate(' + (i * 15) + ')" class="tick"/>';
+    var o = '<g transform="translate(' + f1(cx) + ' ' + f1(cy) + ')"' + (live ? ' data-knob="k"' : '') + '>' +
+      '<circle r="' + f1(r) + '" class="knob-rim"/><g transform="rotate(' + angle + ')">' + t + '</g><circle r="' + f1(r * 0.7) + '" class="knob-cap"/>' +
+      /* the bulb stays upright while the knob turns round it; it only ever glows soft, with the lamps */
+      '<g class="glow nohit">' + sym('bulb', 0, -r * 0.03, r * 0.7 * 0.62 / 30) + '</g>';
+    if (live) {
+      o += '<path d="M0 ' + f1(-r) + ' A' + f1(r) + ' ' + f1(r) + ' 0 0 0 0 ' + f1(r) + ' Z" class="hit" data-act="k-l"><title>Turn left one click</title></path>' +
+        '<path d="M0 ' + f1(-r) + ' A' + f1(r) + ' ' + f1(r) + ' 0 0 1 0 ' + f1(r) + ' Z" class="hit" data-act="k-r"><title>Turn right one click</title></path>' +
+        '<circle r="' + f1(r * 0.45) + '" class="hit" data-act="k-p"><title>Click (hold 3 s to pair)</title></circle>';
+    }
+    return o + '</g>';
+  }
+  function stick(g, s, live) {
+    var cx = g.stickX * U, cy = g.stickY * U, R = g.d * U / 2, kr = g.stickD * U / 2;
+    var d = { 'mir-u': [0, -1], 'mir-d': [0, 1], 'mir-l': [-1, 0], 'mir-r': [1, 0] }[s.flash] || [0, 0];
+    var mv = (R - kr) * 0.45;
+    var o = '<circle cx="' + f1(cx) + '" cy="' + f1(cy) + '" r="' + f1(R) + '" class="slot"/>' +
+      '<g transform="translate(' + f1(d[0] * mv) + ' ' + f1(d[1] * mv) + ')"><circle cx="' + f1(cx) + '" cy="' + f1(cy) + '" r="' + f1(kr) + '" class="knob-rim"/>' +
+      '<circle cx="' + f1(cx) + '" cy="' + f1(cy) + '" r="' + f1(kr * (s.flash === 'mir-p' ? 0.62 : 0.72)) + '" class="knob-cap"/>' +
+      '<g class="glow nohit">' + sym('mirror', cx - kr * 0.05, cy, kr * 0.75 / 32) + '</g></g>';
+    if (live) {
+      var q = R * 0.7071, a = cx - q, b = cx + q, c = cy - q, e = cy + q;
+      o += '<path d="M' + f1(cx) + ' ' + f1(cy) + ' L' + f1(a) + ' ' + f1(c) + ' A' + f1(R) + ' ' + f1(R) + ' 0 0 1 ' + f1(b) + ' ' + f1(c) + ' Z" class="hit" data-act="mir-u"><title>Mirror up</title></path>' +
+        '<path d="M' + f1(cx) + ' ' + f1(cy) + ' L' + f1(b) + ' ' + f1(c) + ' A' + f1(R) + ' ' + f1(R) + ' 0 0 1 ' + f1(b) + ' ' + f1(e) + ' Z" class="hit" data-act="mir-r"><title>Mirror right</title></path>' +
+        '<path d="M' + f1(cx) + ' ' + f1(cy) + ' L' + f1(b) + ' ' + f1(e) + ' A' + f1(R) + ' ' + f1(R) + ' 0 0 1 ' + f1(a) + ' ' + f1(e) + ' Z" class="hit" data-act="mir-d"><title>Mirror down</title></path>' +
+        '<path d="M' + f1(cx) + ' ' + f1(cy) + ' L' + f1(a) + ' ' + f1(e) + ' A' + f1(R) + ' ' + f1(R) + ' 0 0 1 ' + f1(a) + ' ' + f1(c) + ' Z" class="hit" data-act="mir-l"><title>Mirror left</title></path>' +
+        '<circle cx="' + f1(cx) + '" cy="' + f1(cy) + '" r="' + f1(kr * 0.55) + '" class="hit" data-act="mir-p"><title>Push: the next move is the right mirror</title></circle>';
+    }
+    return o;
+  }
+  function face(s, g, o) {
+    var live = !!o.live, W = g.W * U, H = g.H * U;
+    var h = '<rect x="0" y="0" width="' + f1(W) + '" height="' + f1(H) + '" rx="' + f1(Math.min(24, H * 0.08)) + '" class="face"/>';
+    h += knob(g.knobX * U, g.knobY * U, g.d * U / 2, s.angle, live);
+    h += stick(g, s, live);
+    h += key(g, g.hazX * U, g.r0 * U, g.hazW, 'haz', 'haz', s.hazard, 'haz', live, 'Hazard (latching)');
+    h += key(g, g.k1 * U, g.r1 * U, g.keyW, 'winkL', 'glow', s.flash === 'wink-l', 'wink-l', live, 'Wink left');
+    h += key(g, g.k2 * U, g.r1 * U, g.keyW, 'winkR', 'glow', s.flash === 'wink-r', 'wink-r', live, 'Wink right');
+    h += key(g, g.k1 * U, g.r2 * U, g.keyW, 'fuel', 'glow', s.flash === 'fuel', 'fuel', live, 'Fuel-door release');
+    h += key(g, g.k2 * U, g.r2 * U, g.keyW, 'hatch', 'glow', s.flash === 'hatch', 'hatch', live, 'Hatch release');
+    if (o.dims) {
+      var wy = H + 80;
+      h += '<path d="M0 ' + f1(wy) + ' H' + f1(W) + ' M0 ' + f1(wy - 14) + ' V' + f1(wy + 14) + ' M' + f1(W) + ' ' + f1(wy - 14) + ' V' + f1(wy + 14) + '" class="dim"/>' + ink(W / 2, wy + 36, f1(g.W) + ' mm', 24);
+      h += '<path d="M-44 0 V' + f1(H) + ' M-58 0 H-30 M-58 ' + f1(H) + ' H-30" class="dim"/>' + ink(-56, H / 2, f1(g.H) + ' mm', 22, 'middle', ' transform="rotate(-90 -56 ' + f1(H / 2) + ')"');
+      h += ink(0, H + 40, s.flip ? 'CENTRE STACK' : 'WHEEL SIDE', 16, 'start') + ink(W, H + 40, s.flip ? 'WHEEL SIDE' : 'CENTRE STACK', 16, 'end');
+    }
+    if (o.markers) {
+      var cyt = -70;
+      h += chip(9, g.knobX * U, cyt, g.knobX * U, (g.knobY - g.d / 2) * U);
+      h += chip(7, g.hazX * U, cyt, g.hazX * U, (g.r0 - g.keyH / 2) * U);
+      h += chip(10, -56, cyt, -56, -8);
+      h += chip(3, W + 50, H / 2);
+      h += chip(2, W + 50, H + 80);
+    }
+    return h;
+  }
+  function frame(svg, x0, y0, w, h) { svg.setAttribute('viewBox', f1(x0) + ' ' + f1(y0) + ' ' + f1(w) + ' ' + f1(h)); }
+
+  /* ---------- the sizes table ---------- */
+  function sizes(g) {
+    var rows = [
+      ['Face', f1(g.W) + ' × ' + f1(g.H), 'the ruled plate is ' + RULED.W + ' × ' + RULED.H, false],
+      ['Each key (winks, releases)', f1(g.keyW) + ' × ' + f1(g.keyH), 'three rows, ' + f1(G) + ' mm apart', g.keyH < FLOOR.key],
+      ['Hazard', f1(g.hazW) + ' × ' + f1(g.keyH), 'as wide as both winks and the gap between them', g.keyH < FLOOR.key],
+      ['Screen knob', f1(g.d) + ' across', 'half the key stack less one gap', g.d < FLOOR.knob],
+      ['Mirror stick', f1(g.d) + ' well', 'its knob ' + f1(g.stickD) + ' across', g.d < FLOOR.knob],
+      ['Gap', f1(G), 'between every neighbour; ' + f1(EDGE) + ' mm of face at the edges', false]
+    ];
+    var t = '<thead><tr><th>Control</th><th>mm</th><th>Notes</th></tr></thead><tbody>';
+    rows.forEach(function (r) {
+      t += '<tr' + (r[3] ? ' class="low"' : '') + '><td>' + r[0] + '</td><td class="n">' + r[1] + '</td><td>' + r[2] + (r[3] ? ', under the floor' : '') + '</td></tr>';
+    });
+    return t + '</tbody>';
+  }
+
+  /* ---------- behaviour ---------- */
+  var MIR_WORDS = { 'mir-u': 'up', 'mir-d': 'down', 'mir-l': 'left', 'mir-r': 'right' };
+  function press(a, msg, ms) {
+    S.flash = a; S.msg = msg;
+    clearTimeout(flashT);
+    flashT = setTimeout(function () { S.flash = ''; render(); }, ms || 450);
+  }
+  function armMir() {
+    clearTimeout(mirT);
+    mirT = setTimeout(function () { S.mirSel = 'L'; S.msg = 'Three seconds without a movement. The stick is back on the left mirror.'; render(); }, 3000);
+  }
+  function armKnob() {
+    clearTimeout(kT);
+    kT = setTimeout(function () { S.kmode = 'pages'; S.msg = 'Three seconds without a turn. The screen knob is back on pages.'; render(); }, 3000);
+  }
+  function knobTurn(d) {
+    S.angle += d * 15;
+    if (S.kmode === 'bright') {
+      S.bright = clamp(S.bright - d * 5, 10, 100);
+      S.msg = 'Display brightness ' + S.bright + ' % (left brighter, right dimmer).';
+      armKnob();
+    } else {
+      S.page = ((S.page - 1 + d + PAGES) % PAGES) + 1;
+      S.msg = 'Display Unit page ' + S.page + ' of ' + PAGES + '.';
+    }
+  }
+  function pair() {
+    S.pairing = true; S.kmode = 'pages'; clearTimeout(kT);
+    S.msg = 'Push held 3 s without a turn: the ICU is in pairing mode for 60 s. The passkey shows on the cluster (D-580, D-494).';
+    clearTimeout(pairT);
+    pairT = setTimeout(function () { S.pairing = false; S.msg = 'Pairing window closed.'; render(); }, 60000);
+  }
+  function act(a) {
+    switch (a) {
+      case 'k-l': knobTurn(-1); break;
+      case 'k-r': knobTurn(1); break;
+      case 'k-p':
+        if (S.kmode === 'bright') { S.kmode = 'pages'; clearTimeout(kT); S.msg = 'Clicked again: back to pages.'; }
+        else { S.kmode = 'bright'; armKnob(); S.msg = 'Clicked: the knob now sets the display’s brightness, left brighter, right dimmer. Back to pages after 3 s without a turn.'; }
+        break;
+      case 'k-hold': pair(); break;
+      case 'wink-l': press(a, 'Left wink held: its face lights fully while you hold it.', 1400); break;
+      case 'wink-r': press(a, 'Right wink held: its face lights fully while you hold it.', 1400); break;
+      case 'fuel': press(a, 'Fuel-door release pressed.'); break;
+      case 'hatch': press(a, 'Hatch release pressed.'); break;
+      case 'haz':
+        S.hazard = !S.hazard;
+        S.msg = S.hazard ? 'Hazard latched on: the triangle flashes red with the hazard lamps. Press again to release.' : 'Hazard released: the triangle goes back to its soft glow, or dark with the lights off.';
+        break;
+      case 'mir-u': case 'mir-d': case 'mir-l': case 'mir-r':
+        press(a, (S.mirSel === 'R' ? 'Right' : 'Left') + ' mirror moves ' + MIR_WORDS[a] + ' while the stick is held.');
+        if (S.mirSel === 'R') armMir();
+        break;
+      case 'mir-p':
+        if (S.mirSel === 'R') { clearTimeout(mirT); S.mirSel = 'L'; press(a, 'Stick pushed again. Back to the left mirror.'); }
+        else { S.mirSel = 'R'; armMir(); press(a, 'Stick pushed. It now moves the right mirror, and goes back to the left three seconds after the last movement.'); }
+        break;
+      case 'flip': S.flip = !S.flip; break;
+      case 'lamps': S.lamps = !S.lamps; S.msg = S.lamps ? 'Lights on: every symbol glows softly, the hazard triangle soft red.' : 'Lights off: the soft glow goes dark. The hazard still flashes while it is on.'; break;
+      case 'night': S.night = !S.night; if (S.night) S.lamps = true; break;
+      case 'green': S.yg = !S.yg; break;
+      case 'markers': S.markers = !S.markers; break;
+      default: return;
+    }
+    render();
+  }
+
+  var NIGHT = { flash: '', hazard: true, mirSel: 'L', angle: 0, flip: false };
+
+  function render() {
+    var g = geo(S.H, S.flip), W = g.W * U, H = g.H * U;
+    $('page').setAttribute('data-green', S.yg ? 'yg' : 'pure');
+    $('stage').classList.toggle('lamps', S.lamps);
+    $('stage3').classList.toggle('lamps', S.lamps);
+    $('stage').classList.toggle('night', S.night);
+
+    var live = $('live');
+    frame(live, -110, -110, W + 220, H + 260);
+    live.innerHTML = face(S, g, { live: true, dims: true, markers: S.markers });
+
+    NIGHT.flip = S.flip;
+    frame($('nightface'), -30, -30, W + 60, H + 60);
+    $('nightface').innerHTML = face(NIGHT, g, {});
+
+    /* real size: the face, with the ruled plate's outline dashed round the same top-left corner */
+    var r = $('real'), RW = Math.max(g.W, RULED.W), RH = Math.max(g.H, RULED.H);
+    r.setAttribute('width', f1(RW + 2) + 'mm');
+    r.setAttribute('height', f1(RH + 2) + 'mm');
+    frame(r, -10, -10, (RW + 2) * U, (RH + 2) * U);
+    r.innerHTML = '<rect x="0" y="0" width="' + RULED.W * U + '" height="' + RULED.H * U + '" rx="30" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="20 14" style="color:var(--muted)"/>' + face(S, g, {});
+    $('cap-real').textContent = 'This layout, ' + f1(g.W) + ' × ' + f1(g.H) + ' mm, inside the ruled plate’s ' + RULED.W + ' × ' + RULED.H + ' outline';
+
+    $('sizes').innerHTML = sizes(g);
+    $('v-hgt').textContent = f1(S.H) + ' mm';
+    $('status').textContent = S.msg + '  The stick moves the ' + (S.mirSel === 'R' ? 'right' : 'left') + ' mirror.';
+    $('du').innerHTML = '<span>DISPLAY UNIT</span><span>page <b>' + S.page + '</b> of ' + PAGES + '</span><span>brightness <b>' + S.bright + ' %</b></span>' +
+      '<span>knob on <b>' + (S.kmode === 'bright' ? 'brightness' : 'pages') + '</b></span>' + (S.pairing ? '<span class="pair">pairing, 60 s</span>' : '');
+    $('b-haz').setAttribute('aria-pressed', String(S.hazard));
+    $('b-flip').setAttribute('aria-pressed', String(S.flip));
+    $('b-lamps').setAttribute('aria-pressed', String(S.lamps));
+    $('b-night').setAttribute('aria-pressed', String(S.night));
+    $('b-green').setAttribute('aria-pressed', String(S.yg));
+    $('b-markers').setAttribute('aria-pressed', String(S.markers));
+  }
+
+  $('symrow').innerHTML = ICON_NAMES.map(function (n) {
+    return '<figure><svg viewBox="-75 -50 150 100" role="img" aria-label="' + n[1] + ' symbol"><rect x="-75" y="-50" width="150" height="100" class="face"/>' +
+      '<g class="sel' + (n[0] === 'haz' ? ' haz on' : '') + '">' + ICON[n[0]] + '</g></svg><figcaption>' + n[1] + '</figcaption></figure>';
+  }).join('');
+
+  /* holding the screen knob's middle 3 s without a turn pairs; a shorter press is a click */
+  var hold = null, eatClick = false;
+  document.addEventListener('pointerdown', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-act="k-p"]') : null;
+    if (!t) return;
+    hold = { t: setTimeout(function () { hold.long = true; act('k-hold'); }, 3000), long: false };
+  });
+  document.addEventListener('pointerup', function () {
+    if (!hold) return;
+    clearTimeout(hold.t);
+    if (hold.long) { eatClick = true; setTimeout(function () { eatClick = false; }, 60); }
+    hold = null;
+  });
+  document.addEventListener('click', function (e) {
+    if (eatClick) { eatClick = false; return; }
+    var t = e.target.closest ? e.target.closest('[data-act]') : null;
+    if (t) act(t.getAttribute('data-act'));
+  });
+  $('hgt').addEventListener('input', function () {
+    S.H = clamp(parseFloat($('hgt').value), 26, 40);
+    S.msg = 'Face ' + f1(S.H) + ' mm tall. Every control is resized to fit.';
+    render();
+  });
+  $('live').addEventListener('wheel', function (e) {
+    var k = e.target.closest ? e.target.closest('[data-knob]') : null;
+    if (!k) return;
+    e.preventDefault();
+    var now = Date.now();
+    if (now - lastWheel < 110) return;
+    lastWheel = now;
+    if (hold) { clearTimeout(hold.t); hold = null; }
+    act(e.deltaY < 0 ? 'k-r' : 'k-l');
+  }, { passive: false });
+
+  render();
+})();
+</script>
+</body>
+</html>

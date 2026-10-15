@@ -65,7 +65,7 @@ step('F3', 'Fit the PSRAM and socket the Teensy', 'Solder the two 8 MB PSRAM chi
      'Teensy seated square, USB end at the marked end.', 'A Teensy in backwards puts 5 V on a ground pin.')
 step('F3', 'Power it from USB and read the rails', ['USB lead from the Mac to the Teensy: this is the bench supply.', 'Meter on DC volts: the socket\'s VIN pad to ground, then a 3V3 pin to ground.'],
      'About 5 V on VIN and the +5V rail, 3.3 V on +3V3; nothing warm.', 'If VIN reads nothing with the Teensy running, its USB-to-VIN link is open: stop and note it - do not bridge it without asking.')
-step('F3', 'Flash the ICU firmware', [FLASH, 'The sketch is icu.ino in the display unit\'s firmware folder. Do not put the simulator sources in the sketch folder.'],
+step('F3', 'Flash the ICU firmware', [FLASH, 'The sketch is du.ino in the display unit\'s firmware folder. Do not put the simulator sources in the sketch folder.'],
      'The serial monitor prints the firmware version at boot.')
 step('F3', 'Flash the radio', 'The icu_radio sketch for the XIAO ESP32C3, over its own USB. Then seat the XIAO in its socket.', 'It uploads; the ICU later reports battery data from it.',
      'Never write to the BMS and never touch its FFE7 or DFU service.')
@@ -166,7 +166,7 @@ brief('F6',
       if_not='No 5 V at the panel with the carrier\'s rail alive: the ribbon is on backwards or the panel fuse has tripped on a short - unplug the ribbon and look. A key that does not read: check the ribbon seating first. A key that reads by itself, or two keys for one press: a bridge on the matrix - find it now. Anything else: note it in the app with the serial output.',
       record='Tick the row. Add a note with the firmware version, anything that did not behave, and the list of what waits for the car, so the agent can add the bring-up log row.')
 step('F6', 'Run the host suites', RUN_SH, 'Exit code 0.', 'Never flash on a red suite.')
-step('F6', 'Flash the DCU firmware', [FLASH, 'The sketch is dcu.ino in the control unit\'s firmware folder. The same USB lead powers the unit from here on.'], 'The serial monitor prints the DCU firmware version at boot.')
+step('F6', 'Flash the DCU firmware', [FLASH, 'The sketch is cu.ino in the control unit\'s firmware folder. The same USB lead powers the unit from here on.'], 'The serial monitor prints the DCU firmware version at boot.')
 step('F6', 'Read the rails on USB', ['Meter on DC volts: the Teensy socket\'s VIN pad to ground; a 3V3 pin to ground; then, at the panel end of the ribbon, pin 26 to pin 21 or 23 (ground).'],
      'About 5 V on VIN and at the panel; 3.3 V on +3V3; nothing warm.', 'If VIN reads nothing with the Teensy running, its USB-to-VIN link is open: stop and note it - do not bridge it without asking.')
 step('F6', 'Connect the bench bus', ['The PMU simulator Teensy with its transceiver module (P143), on its own USB lead: CAN H to DP-DCU 12, CAN L to DP-DCU 13, 120 Ω (P070) across the pair at each end.'],

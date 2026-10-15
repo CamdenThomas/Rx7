@@ -7,7 +7,7 @@ Reads (never writes) the record's tables - these are the facts it holds the draw
   ../../data/panel_ribbon.csv   pin, signal, panel_side             (DCU J4, the panel's J1, the upper board's J8)
   ../../data/cavities.csv       housing, cav, state, src_note,      (which board-edge pins must be wired, and where to)
                                 circuit, lands_on                   (the left plate's wink lead, L3-S1 9-11)
-and this folder's pin_tables.csv (part, package, pin, name, source_url), the vendor pin tables
+and 00-design/data/pin_tables.csv (part, package, pin, name, source_url), the vendor pin tables
 of every IC whose symbol was drawn as a functional block.
 
 For each sheet it runs `kicad-cli sch export netlist --format kicadsexpr`, parses the
@@ -23,7 +23,7 @@ s-expression itself (no packages beyond the standard library, Python 3.9) and ch
     channel's processor pin; a cavity the record has LIVE or CAPPED is wired, a PLUG is not;
   * the ribbon header, pin by pin, against `panel_ribbon` - net names on both boards, and on
     the panel which keys, encoders and thumbstick pins hang off each conductor;
-  * the panel matrix diodes: cathode to the row, anode toward the column (control-unit/cad/panel/README.md); a
+  * the panel matrix diodes: cathode to the row, anode toward the column (control-unit/cad/cu-face-board/README.md); a
     window switch's poles as two keys (COM_n to its diode, UP_n / DN_n to the column, D-492);
   * the panel's plate header J3, DP-DCU-E cavity n on pin n, as its src_note's panel_ribbon line,
     and the keys the record puts on the left plate held to the cavities that name them (D-492);
@@ -46,7 +46,7 @@ Exit codes: 0 everything matches; 1 any mismatch (each printed as
 `board:ref:pin expected X got Y`); 3 kicad-cli missing or a file unreadable. Notes (things
 worth a look that are not contradictions) print with a `note` prefix and never fail.
 
-    python3 check.py [-v] [--board icu|dcu|panel|left-plate] [--netlists DIR]
+    python3 check.py [-v] [--board du-carrier|cu-carrier|cu-face-board|cur-board] [--netlists DIR]
 
 `--netlists DIR` reads DIR/<board>.net instead of exporting (kicad-cli still runs one sheet
 at a time otherwise). The expected net names below are the sheets' own vocabulary; the
@@ -66,7 +66,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 AREA = os.path.normpath(os.path.join(HERE, "..", ".."))
 DESIGN = os.path.dirname(HERE)          # 00-design: each board's sheet is under its unit (D-496)
 DATA = os.path.join(AREA, "data")
-PIN_TABLES = os.path.join(HERE, "pin_tables.csv")
+PIN_TABLES = os.path.join(DESIGN, "data", "pin_tables.csv")   # the vendor pin tables every board shares
 
 KICAD_CLI_CANDIDATES = [
     "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli",
@@ -95,7 +95,7 @@ TEENSY_PAD_OF = {v: k for k, v in TEENSY_PADS.items() if v not in ("GND", "3V3")
 # A channel absent here with pins in the record is a mismatch, so a new pin cannot slip by.
 # --------------------------------------------------------------------------------------------
 EXPECT = {
-    "icu": {
+    "du-carrier": {
         "IC01": ["IC01_ADC"], "IC02": ["IC02_ADC"], "IC03": ["IC03_ADC"],
         "IC04": [("IC04_CAP", "U4#1")],                 # LM393 comparator 1 output
         "IC05": ["IC05_ADC"], "IC06": ["IC06_DIG"], "IC07": ["IC07_ADC"],
@@ -117,7 +117,7 @@ EXPECT = {
         # the P-FET on VBUS, so RADIO_EN ends at Q4's base; BOOT lands on D9 / GPIO9 (IC24).
         "IC24": [("RADIO_TX", "U8.D6/TX"), ("RADIO_RX", "U8.D7/RX"), ("RADIO_EN", "Q4.B"), ("RADIO_BOOT", "U8.D9/MISO")],
     },
-    "dcu": {
+    "cu-carrier": {
         "SN24": ["+5V"],
         "SN25": [], "SN27": [],
         "SN26": [("CAN_RXD", "U3.RXD"), ("CAN_TXD", "U3.TXD")],
@@ -146,7 +146,7 @@ EXPECT = {
 }
 # Expander ports the record names, in the order it names them (SN17 "P00-P05 IN1/EN1-IN3/EN3" ...).
 EXPECT_EXPANDER = {
-    "dcu": {
+    "cu-carrier": {
         "SN24": [("PG_5V", "U1.PG")],
         "SN26": [("CAN_STB", "U3.STB")],
         "SN16": [("MH_DEN", "U9.DEN")],
@@ -161,10 +161,10 @@ EXPECT_EXPANDER = {
 
 BOARDS = {
     # D-587: the one DRC13-24PA, J1 pin n = DP-ICU cavity n (was DP-ICU-A on J1, DP-ICU-B on J3)
-    "icu": dict(sch="display-unit/cad/icu-carrier/icu-carrier.kicad_sch", channels="icu_channels.csv", teensy="J5",
+    "du-carrier": dict(sch="display-unit/cad/du-carrier/du-carrier.kicad_sch", channels="icu_channels.csv", teensy="J5",
                 drops={"DP-ICU": "J1"}, rails=("+12V_LOGIC", "+12V_BL"),
                 grounds=(), ground_bridge=()),
-    "dcu": dict(sch="control-unit/cad/dcu-carrier/dcu-carrier.kicad_sch", channels="dcu_channels.csv", teensy="J10",
+    "cu-carrier": dict(sch="control-unit/cad/cu-carrier/cu-carrier.kicad_sch", channels="dcu_channels.csv", teensy="J10",
                 expander="U12", ribbon="J4",
                 # D-582: the carrier's three DT13s carry the one plug's cavities until Y54 draws its
                 # header - J1 pins 1-6 = DP-DCU 9-14, J9 1-11 = 15-25, J2 1-8 = 1-8
@@ -173,12 +173,12 @@ BOARDS = {
                 grounds=("GND", "PGND"), ground_bridge=("U4",)),
     # The panel board (Y20, D-492): J1 the ribbon; J3 the left plate's header, DP-DCU 36-47 pin for pin (D-582)
     # (the plate's keys and the stick are reached through it, not drawn here).
-    "panel": dict(sch="control-unit/cad/panel/panel.kicad_sch", ribbon="J1", matrix=True, plate=("DP-DCU", "J3", 36)),
+    "cu-face-board": dict(sch="control-unit/cad/cu-face-board/cu-face-board.kicad_sch", ribbon="J1", matrix=True, plate=("DP-DCU", "J3", 36)),
     # The upper connector board (Y15) was retired by D-582: its conductors are DP-DCU 26-47.
     # The left plate (Y21, D-492): J1 its cable header, DP-DCU-E pin for pin; the keys a DP-DCU-E
     # cavity names, on their rows and columns through their diodes; the stick on panel_ribbon 1, 17-20.
     # Its winks (Y22, D-499, D-504): J2 the wink lead, held to the L3-S1 cavities whose lands_on name it.
-    "left-plate": dict(sch="control-unit/cad/left-plate/left-plate.kicad_sch", plate_board=("DP-DCU", "J1", 36),
+    "cur-board": dict(sch="control-unit/control-unit-remote/cad/cur-board/cur-board.kicad_sch", plate_board=("DP-DCU", "J1", 36),
                        winks=("L3-S1", "J2")),
 }
 
@@ -686,7 +686,7 @@ def check_drops(rep, nl, cfg, rows, cavities, processor_nets):
 def check_ribbon(rep, nl, cfg, ribbon):
     """The ribbon header (26-way since D-458) against panel_ribbon: pin n is on the conductor's signal net."""
     hdr = cfg["ribbon"]
-    on_dcu = rep.board == "dcu"
+    on_dcu = rep.board == "cu-carrier"
     for row in ribbon:
         pin, sig = row["pin"], row["signal"]
         net = nl.net(hdr, pin)

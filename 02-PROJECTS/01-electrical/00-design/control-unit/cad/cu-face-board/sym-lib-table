@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "cu-face-board")(type "KiCad")(uri "${KIPRJMOD}/cu-face-board.kicad_sym")(options "")(descr "Every symbol this schematic uses, kept with the project"))
+)

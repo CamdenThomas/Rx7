@@ -12,11 +12,11 @@
       "id": "cur", "name": "Control Unit Remote (CUR)", "kind": "unit", "glb": "cur.glb", "parent": null,
       "place": { "x": -600, "y": -1050, "z": 700, "rx": 0, "ry": 0, "rz": 0 },
       "place_from": "provisional", "confirm": true, "size_mm": { "x": 120, "y": 60, "z": 40 },
-      "origin": "base centre", "connectors": [], "children": ["left-plate"],
+      "origin": "base centre", "connectors": [], "children": ["cur-board"],
       "nodes": { "case": ["case:shell"], "inside": ["inside:plate"] }
     },
     {
-      "id": "left-plate", "name": "Left plate circuit board", "kind": "pcb", "glb": "left-plate.glb", "parent": "cur",
+      "id": "cur-board", "name": "Left plate circuit board", "kind": "pcb", "glb": "cur-board.glb", "parent": "cur",
       "place": { "x": 0, "y": 0, "z": 8, "rx": 0, "ry": 0, "rz": 0 }, "place_from": "mock-up report", "confirm": false,
       "size_mm": { "x": 100, "y": 50, "z": 1.6 }
     },

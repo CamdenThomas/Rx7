@@ -1,14 +1,14 @@
 // The Ionic battery's advertisement (electrical D-330, icu_channels IC24; 02-APP BL5's proof).
 //
 // D-330: the manufacturer data BEGINS with pack millivolts. The radio reads it as a
-// little-endian uint16 in the first two bytes (icu_radio/ionic_decode.h, ionic_adv_pack_mv) -
+// little-endian uint16 in the first two bytes (du_radio/ionic_decode.h, ionic_adv_pack_mv) -
 // the slot a BLE stack calls the company ID. tauri-plugin-blec, like every platform's
 // stack, hands manufacturer data over as { companyId: bytes after it }, so here the pack
 // millivolts ARE the key. The same plausibility window as the radio: 8.0-16.0 V for a 4S
 // LiFePO4 pack, else no reading (0 is never "0 V"). Read only: nothing here connects to the
 // pack, and its FEE7 / DFU service is never addressed (D-330).
 
-/** the radio's BMS_NAME (icu_radio.ino) - confirm at bring-up, as there */
+/** the radio's BMS_NAME (du_radio.ino) - confirm at bring-up, as there */
 export const BMS_NAME = 'IONIC';
 const MIN_MV = 8000;
 const MAX_MV = 16000;

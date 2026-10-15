@@ -1,6 +1,6 @@
 /*
  * test_radio.cpp — desktop verification of the battery path (F-015):
- * the Ionic BMS decoder (icu_radio/ionic_decode.h) and the C3 -> Teensy line
+ * the Ionic BMS decoder (du_radio/ionic_decode.h) and the C3 -> Teensy line
  * protocol with the 0x220 / 0x221 frames built from it (icu/radio_link.h).
  *
  * Build (g++ on PATH):
@@ -9,8 +9,8 @@
 #include <cstdio>
 #include <cstring>
 #include <cstddef>
-#include "../display-unit/firmware/icu_radio/ionic_decode.h"
-#include "../display-unit/firmware/icu/radio_link.h"
+#include "../display-unit/firmware/du_radio/ionic_decode.h"
+#include "../display-unit/firmware/du/radio_link.h"
 
 static int passed = 0, failed = 0;
 #define CHECK(c, msg) do { if (c) passed++; else { failed++; printf("  FAIL  %s\n", msg); } } while (0)

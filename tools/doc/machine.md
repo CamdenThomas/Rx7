@@ -38,8 +38,8 @@ that once lost a whole answering session are why R3 and R9 read the way they do.
 **The visual layer is the Rx7 app, `02-APP`** (D-399 → D-405; not a project since D-428). It is
 a view and an input over the record that keeps no fact of its own. Nothing else grows a view.
 The generated files are only the harness-leg drawings in
-`02-PROJECTS/01-electrical/00-design/diagrams/` (D-385). The one hand-drawn exception is the
-CAD under `02-PROJECTS/01-electrical/00-design/`: the KiCad projects for the ICU and DCU carriers
+`02-PROJECTS/01-electrical/00-design/harness/diagrams/` (D-385). The one hand-drawn exception is the
+CAD under `02-PROJECTS/01-electrical/00-design/`: the KiCad projects for the DU and CU carriers
 and the control panel, in their units' `control-unit/cad/` and `display-unit/cad/` (D-496), with
 the shared `tools/` holding the check and the library (D-497) — schematic, board layout and 3D model, with
 the method once written as a PCB guide (deleted by Camden on 2026-10-13, the boards drawn) — ruled in by Camden on 2026-09-12, widened on 2026-09-21

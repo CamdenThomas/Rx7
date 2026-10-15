@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""fab_bom.py DESIGN_DIR [--write]  - Y42 (kept in the tree since Y44): hold each carrier's fab BOM (fab/<board>-revA-bom.csv) to
+"""fab_bom.py [--write]  - Y42 (kept in the tree since Y44): hold each carrier's fab BOM (<part>/data/<board>-revA-bom.csv) to
 its sheet's BOM export and to the two cart files, and say what the cart lacks.
 
 For every fitted row of a fab BOM: its refs must be exactly a set of fitted refs of the sheet
@@ -14,9 +14,12 @@ import re
 import shutil
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import parts  # noqa: E402
+
 R = "RC0805FR-07"
 MPN = {
-    "dcu": {
+    "cu-carrier": {
         "C1": "EEE-FK1J680UP", "C2": "CGA6M3X7S2A475K200AB", "C3": "C0805C224K1RACTU", "C4": "CL21B104KBCNNNC",
         "C5": "CL21B105KAFNNNE", "C6": "CL21C200JBANNNC", "C7": "CL31A226KOHNNNE", "C12": "CL21B472KBANNNC",
         "C13": "CL21C470JBANNNC", "C14": "GRM32ER71A476KE15L", "C25": "C0805C104K1RACTU", "C26": "CL21B105KAFNNNE",
@@ -32,7 +35,7 @@ MPN = {
         "U4": "INA180A1QDBVRQ1", "U5": "BTS3011TEATMA1", "U9": "BTT60501ERAXUMA1", "U10": "BTT62004ESAXUMA1",
         "U11": "DRV8962QDDWRQ1", "U12": "TCA9539QPWRQ1",
     },
-    "icu": {
+    "du-carrier": {
         "C1": "EEE-FK1J680UP", "C2": "CL31A226KOHNNNE", "C3": "CL21B104KBCNNNC", "C19": "CL21B106KOQNNNE",
         "C20": "CGA6M3X7S2A475K200AB", "C21": "C0805C224K1RACTU", "C23": "CL31A226KOHNNNE", "C25": "CL21B105KAFNNNE",
         "C26": "CL21C200JBANNNC", "D1": "BAT54SLT1G", "D20": "BZX84C5V1LT1G", "D23": "SL310A-TP", "D24": "SMBJ33A", "D27": "MM3Z15VT1G",
@@ -47,9 +50,9 @@ MPN = {
 }
 # rows of a fab BOM that are not a sheet reference: what they are bought as
 EXTRA = {
-    "icu": {"JP1,JP2,JP8A1|JP8B1": "QPC02SXGN-RC", "U7 (sockets)": "PPPC061LFBN-RC + PPPC051LFBN-RC",
+    "du-carrier": {"JP1,JP2,JP8A1|JP8B1": "QPC02SXGN-RC", "U7 (sockets)": "PPPC061LFBN-RC + PPPC051LFBN-RC",
             "U8 (sockets)": "PPPC071LFBN-RC"},
-    "dcu": {},
+    "cu-carrier": {},
 }
 # the panel's and the upper board's places, by cart part number (their BOMs carry no mpn column)
 OTHER = {
@@ -59,7 +62,6 @@ OTHER = {
     "IS31FL3236A-TQLS4-TR": 1, "DT13-12PA": 1, "B2B-XH-A(LF)(SN)": 2,
 }
 PER_STRIP = {"PRPC040SAAN-RC"}          # bought by the strip, cut to the places
-PATHS = {"dcu": "control-unit/cad/dcu-carrier/dcu-carrier", "icu": "display-unit/cad/icu-carrier/icu-carrier"}
 bad = []
 
 
@@ -86,19 +88,18 @@ def sheet(path):
     return fitted, dnp
 
 
-def cart(d):
+def cart():
     lines = {}
     for name in ("bench-revA-digikey-cart.csv", "bench-revA-mouser-cart.csv"):
-        with open(os.path.join(d, name), newline="", encoding="utf-8") as f:
+        with open(os.path.join(parts.SHARED_DATA, name), newline="", encoding="utf-8") as f:
             for row in csv.DictReader(f):
                 lines[row["mpn"]] = int(row["qty"])
     return lines
 
 
-def board(d, key, need, lines, write):
-    base = os.path.join(d, PATHS[key])
-    fitted, dnp = sheet(base + "-bom.csv")
-    fab = os.path.join(os.path.dirname(base), "fab", os.path.basename(base) + "-revA-bom.csv")
+def board(key, need, lines, write):
+    fitted, dnp = sheet(parts.data_file(key, "-bom.csv"))
+    fab = parts.data_file(key, "-revA-bom.csv")
     with open(fab, newline="", encoding="utf-8") as f:
         rows = list(csv.reader(f))
     head, seen, in_dnp, changed = rows[0], set(), False, 0
@@ -163,22 +164,21 @@ def board(d, key, need, lines, write):
     for r in dnp:
         if r not in seen:
             bad.append("%s fab BOM: DNP %s of the sheet is on no row" % (key, r))
-    print("%s: %d fitted refs, %d DNP, %d cells changed -> %s" % (key, len(fitted), len(dnp), changed, os.path.relpath(fab, d)))
+    print("%s: %d fitted refs, %d DNP, %d cells changed -> %s" % (key, len(fitted), len(dnp), changed, os.path.relpath(fab, parts.DESIGN)))
     if write:
         with open(fab, "w", newline="", encoding="utf-8") as f:
             csv.writer(f, lineterminator="\n").writerows(rows)
 
 
-RESET_VALUE = {"dcu": {"C1", "C31", "Q1", "Q3", "Q4", "D1", "R43"}, "icu": {"C1", "R2", "Q2", "D23", "D27"}}
+RESET_VALUE = {"cu-carrier": {"C1", "C31", "Q1", "Q3", "Q4", "D1", "R43"}, "du-carrier": {"C1", "R2", "Q2", "D23", "D27"}}
 
 
 def main():
-    d = sys.argv[1]
     write = "--write" in sys.argv
-    lines = cart(d)
+    lines = cart()
     need = dict(OTHER)
-    for key in ("dcu", "icu"):
-        board(d, key, need, lines, write)
+    for key in ("cu-carrier", "du-carrier"):
+        board(key, need, lines, write)
     for mp, n in sorted(need.items()):
         have = lines.get(mp)
         if have is None:
@@ -188,9 +188,8 @@ def main():
     spare = sorted(set(lines) - set(need))
     print("cart lines no board BOM row names (%d): %s" % (len(spare), ", ".join(spare)))
     if write:
-        p = os.path.join(d, "control-unit/cad/panel")
-        shutil.copyfile(os.path.join(p, "panel-bom.csv"), os.path.join(p, "fab", "panel-revA-bom.csv"))
-        print("panel: fab/panel-revA-bom.csv = panel-bom.csv")
+        shutil.copyfile(parts.data_file("cu-face-board", "-bom.csv"), parts.data_file("cu-face-board", "-revA-bom.csv"))
+        print("cu-face-board: data/cu-face-board-revA-bom.csv = cu-face-board-bom.csv")
     for b in bad:
         print("BAD", b)
     print("%d disagreements" % len(bad))

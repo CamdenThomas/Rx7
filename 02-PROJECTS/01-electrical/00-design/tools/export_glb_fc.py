@@ -1,7 +1,7 @@
 """FreeCAD's half of export_glb.py (02-APP D-505, work row Y23): run by freecadcmd, never by hand.
 The job is a JSON file named by the environment variable RX7_EXPORT_JOB:
 
-  kind "unit"  one unit's mock-up, built by its own unit_lib (derive, validate, build_insides,
+  kind "unit"  one unit's mock-up, built by its own library tools/<assembly>.py (derive, validate, build_insides,
                build_case - the same calls make_unit.py makes, so no number is typed twice and the
                geometry is the mock-up's), then written as one glb: case:<part> for each case
                part, inside:<name> for each inside solid that no child board's glb stands for.
@@ -85,12 +85,18 @@ def unit_colour(name):
 
 
 def run_unit():
-    d = JOB["unit_dir"]
-    sys.path.insert(0, d)
-    import unit_params as U
-    import unit_lib as K
+    import importlib.util
+
+    def load(modname, path):
+        spec = importlib.util.spec_from_file_location(modname, path)
+        mod = importlib.util.module_from_spec(spec)
+        sys.modules[modname] = mod
+        spec.loader.exec_module(mod)
+        return mod
+    U = load(JOB["assembly"].replace("-", "_") + "_params", JOB["params"])
+    K = load(JOB["assembly"].replace("-", "_"), JOB["lib"])
     meta = {"problems": [], "notes": []}
-    src = K.load_source(os.path.dirname(d), U.P)
+    src = K.load_source(JOB["cad_dir"], U.P)
     if src["problems"]:
         meta["problems"] = src["problems"]
         return meta, 1
@@ -137,7 +143,7 @@ def run_unit():
         if "placeholder" in label or label.startswith("control"):
             placeholders.append(label)
     info = G.write_glb(JOB["glb"], nodes, mats, JOB["id"],
-                       extras={"source": os.path.relpath(d, G.ROOT)})
+                       extras={"source": os.path.relpath(JOB["cad_dir"], G.ROOT)})
 
     conns = []
     for c in D.conns:
@@ -150,7 +156,7 @@ def run_unit():
     boards = {}
     if hasattr(K, "export_boards"):               # a mock-up that says where its boards go (the CUR)
         boards = K.export_boards(D)
-    elif "dcu-carrier" in ch:
+    elif "cu-carrier" in ch:
         boards["carrier"] = {"move": list(D.step_move), "turn": 180}
         boards["panel"] = [D.px0, D.px1, D.y_panel0, D.y_panel1, D.pz0, D.pz1]
         if D.get("ups"):

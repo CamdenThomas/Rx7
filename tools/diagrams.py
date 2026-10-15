@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """diagrams.py - the two drawings of every harness leg (D-385), called by `rx7.py diagrams`.
 
-Writes 02-PROJECTS/01-electrical/00-design/diagrams/<leg>/A-pin-ladder.svg and B-route-map.svg, and nothing
+Writes 02-PROJECTS/01-electrical/00-design/harness/diagrams/<leg>/A-pin-ladder.svg and B-route-map.svg, and nothing
 else. Like DECISIONS.md they are a pure, read-only projection of the record: rebuilt whole, never
 edited, never looked at by `check`, never a reason to refuse a commit.
 
@@ -36,7 +36,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 AREA = ROOT / "02-PROJECTS" / "01-electrical"
-OUT = AREA / "00-design" / "diagrams"
+OUT = AREA / "00-design" / "harness" / "diagrams"
 # One font, kept in the tree (tools/fonts, SIL OFL), so every clone measures a label the same
 # way: a system font differs by machine and version, and a label that wraps one word later on
 # one machine rewrites every sheet on the next. Subset of Noto Sans [wdth,wght] (Latin, Greek,

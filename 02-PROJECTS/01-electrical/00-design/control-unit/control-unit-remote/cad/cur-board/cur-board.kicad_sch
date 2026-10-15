@@ -1,0 +1,2197 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21")
+	(paper "A3")
+	(title_block
+		(title "Left plate - the panel's second face, left of the steering wheel (D-492, D-499)")
+		(date "2026-10-14")
+		(rev "0.03")
+		(company "RX-7 FB electrical build")
+		(comment 1 "From the record: DP-DCU-E 1-12, L3-S1 9-11, panel_ribbon, DV24 / DV62, P156 P198-P200 P204. The row wins.")
+		(comment 2 "J1 pin n = DP-DCU-E n; keys on ROW1 via 1N4148W; stick on 17-20; IS31FL3218 at 0x54.")
+		(comment 3 "The winks (P204, D-499): SPDT under lit caps, 18k / 33k on the board, the lead on J2 to the dash post (L3-S1 9 / 10 / 11).")
+		(comment 4 "R11: nothing here has been measured or bought. Rev 0.03 (Y22).")
+	)
+	(lib_symbols
+		(symbol "cur-board:GND"
+		(power)
+		(pin_names (offset 0) (hide yes))
+		(pin_numbers (hide yes))
+		(exclude_from_sim no) (in_bom no) (on_board yes)
+		(property "Reference" "#PWR" (at 0 -3.81 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "GND" (at 0 -4.50 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(symbol "GND_0_1"
+			(polyline (pts (xy 0 0) (xy 0 -1.27)) (stroke (width 0) (type default)) (fill (type none)))
+			(polyline (pts (xy -1.016 -1.27) (xy 0 -2.54) (xy 1.016 -1.27)) (stroke (width 0) (type default)) (fill (type none)))
+		)
+		(symbol "GND_1_1"
+			(pin power_in line (at 0 0 270) (length 0)
+				(name "GND" (effects (font (size 1.27 1.27))))
+				(number "1" (effects (font (size 1.27 1.27))))
+			)
+		)
+	)
+		(symbol "cur-board:+3V3"
+		(power)
+		(pin_names (offset 0) (hide yes))
+		(pin_numbers (hide yes))
+		(exclude_from_sim no) (in_bom no) (on_board yes)
+		(property "Reference" "#PWR" (at 0 -3.81 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Value" "+3V3" (at 0 4.50 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(symbol "+3V3_0_1"
+			(polyline (pts (xy 0 0) (xy 0 1.27)) (stroke (width 0) (type default)) (fill (type none)))
+			(polyline (pts (xy -1.016 1.27) (xy 0 2.54) (xy 1.016 1.27)) (stroke (width 0) (type default)) (fill (type none)))
+		)
+		(symbol "+3V3_1_1"
+			(pin power_in line (at 0 0 90) (length 0)
+				(name "+3V3" (effects (font (size 1.27 1.27))))
+				(number "1" (effects (font (size 1.27 1.27))))
+			)
+		)
+	)
+		(symbol "cur-board:PWR_FLAG"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#FLG"
+			(at 0 1.905 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 0 3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "flag power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "PWR_FLAG_0_0"
+			(pin power_out line
+				(at 0 0 90)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(symbol "PWR_FLAG_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "cur-board:Conn_02x06"
+		(pin_names (offset 1.016))
+		(exclude_from_sim no) (in_bom yes) (on_board yes)
+		(property "Reference" "J" (at 0 6.35 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "Conn_02x06" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "Generic 2 x 6 connector, odd pins left, even right (IDC numbering)" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(symbol "Conn_02x06_0_1"
+			(rectangle (start -5.08 10.16) (end 5.08 -7.62) (stroke (width 0.254) (type default)) (fill (type background)))
+		)
+		(symbol "Conn_02x06_1_1"
+			(pin passive line (at -7.62 7.62 0) (length 2.54) (name "1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 7.62 7.62 180) (length 2.54) (name "2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -7.62 5.08 0) (length 2.54) (name "3" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 7.62 5.08 180) (length 2.54) (name "4" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -7.62 2.54 0) (length 2.54) (name "5" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 7.62 2.54 180) (length 2.54) (name "6" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -7.62 0 0) (length 2.54) (name "7" (effects (font (size 1.27 1.27)))) (number "7" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 7.62 0 180) (length 2.54) (name "8" (effects (font (size 1.27 1.27)))) (number "8" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -7.62 -2.54 0) (length 2.54) (name "9" (effects (font (size 1.27 1.27)))) (number "9" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 7.62 -2.54 180) (length 2.54) (name "10" (effects (font (size 1.27 1.27)))) (number "10" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -7.62 -5.08 0) (length 2.54) (name "11" (effects (font (size 1.27 1.27)))) (number "11" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 7.62 -5.08 180) (length 2.54) (name "12" (effects (font (size 1.27 1.27)))) (number "12" (effects (font (size 1.27 1.27)))))
+		)
+	)
+		(symbol "cur-board:Conn_01x04"
+		(pin_names (offset 1.016))
+		(exclude_from_sim no) (in_bom yes) (on_board yes)
+		(property "Reference" "J" (at 0 6.35 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "Conn_01x04" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "Generic 1 x 4 connector" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(symbol "Conn_01x04_0_1"
+			(rectangle (start -2.54 3.81) (end 2.54 -6.35) (stroke (width 0.254) (type default)) (fill (type background)))
+		)
+		(symbol "Conn_01x04_1_1"
+			(pin passive line (at -5.08 2.54 0) (length 2.54) (name "Pin_1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -5.08 0 0) (length 2.54) (name "Pin_2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -5.08 -2.54 0) (length 2.54) (name "Pin_3" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -5.08 -5.08 0) (length 2.54) (name "Pin_4" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+		)
+	)
+		(symbol "cur-board:SW_Push"
+		(pin_numbers (hide yes))
+		(pin_names (offset 1.016) (hide yes))
+		(exclude_from_sim no) (in_bom yes) (on_board yes)
+		(property "Reference" "SW" (at 0 6.35 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "SW_Push" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "Push button switch, normally open, two pins" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(symbol "SW_Push_0_1"
+			(circle (center -2.032 0) (radius 0.508) (stroke (width 0) (type default)) (fill (type none)))
+			(circle (center 2.032 0) (radius 0.508) (stroke (width 0) (type default)) (fill (type none)))
+			(polyline (pts (xy 2.54 1.27) (xy -2.54 1.27)) (stroke (width 0) (type default)) (fill (type none)))
+			(polyline (pts (xy 0 1.27) (xy 0 3.048)) (stroke (width 0) (type default)) (fill (type none)))
+		)
+		(symbol "SW_Push_1_1"
+			(pin passive line (at -5.08 0 0) (length 2.54) (name "1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 5.08 0 180) (length 2.54) (name "2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+		)
+	)
+		(symbol "cur-board:D"
+		(pin_names (offset 1.016) (hide yes))
+		(exclude_from_sim no) (in_bom yes) (on_board yes)
+		(property "Reference" "D" (at 0 6.35 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "D" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "Diode: pin 1 K, pin 2 A (KiCad SOD-123 numbering)" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(symbol "D_0_1"
+			(polyline (pts (xy -1.27 1.27) (xy -1.27 -1.27) (xy 1.27 0) (xy -1.27 1.27)) (stroke (width 0.254) (type default)) (fill (type none)))
+			(polyline (pts (xy 1.27 1.27) (xy 1.27 -1.27)) (stroke (width 0.254) (type default)) (fill (type none)))
+		)
+		(symbol "D_1_1"
+			(pin passive line (at -5.08 0 0) (length 2.54) (name "A" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 5.08 0 180) (length 2.54) (name "K" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+		)
+	)
+		(symbol "cur-board:LED"
+		(pin_names (offset 1.016) (hide yes))
+		(exclude_from_sim no) (in_bom yes) (on_board yes)
+		(property "Reference" "LED" (at 0 6.35 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "LED" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "Light-emitting diode: pin 1 K, pin 2 A (KiCad LED_SMD numbering)" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(symbol "LED_0_1"
+			(polyline (pts (xy -1.27 1.27) (xy -1.27 -1.27) (xy 1.27 0) (xy -1.27 1.27)) (stroke (width 0.254) (type default)) (fill (type none)))
+			(polyline (pts (xy 1.27 1.27) (xy 1.27 -1.27)) (stroke (width 0.254) (type default)) (fill (type none)))
+			(polyline (pts (xy 0 1.778) (xy 1.016 2.794)) (stroke (width 0) (type default)) (fill (type none)))
+			(polyline (pts (xy 1.016 1.778) (xy 2.032 2.794)) (stroke (width 0) (type default)) (fill (type none)))
+		)
+		(symbol "LED_1_1"
+			(pin passive line (at -5.08 0 0) (length 2.54) (name "A" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 5.08 0 180) (length 2.54) (name "K" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+		)
+	)
+		(symbol "cur-board:R"
+		(pin_names (offset 1.016) (hide yes))
+		(exclude_from_sim no) (in_bom yes) (on_board yes)
+		(property "Reference" "R" (at 0 6.35 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "R" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "Resistor" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(symbol "R_0_1"
+			(rectangle (start -2.54 1.016) (end 2.54 -1.016) (stroke (width 0.254) (type default)) (fill (type none)))
+		)
+		(symbol "R_1_1"
+			(pin passive line (at -5.08 0 0) (length 2.54) (name "~" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 5.08 0 180) (length 2.54) (name "~" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+		)
+	)
+		(symbol "cur-board:C"
+		(pin_names (offset 1.016) (hide yes))
+		(exclude_from_sim no) (in_bom yes) (on_board yes)
+		(property "Reference" "C" (at 0 6.35 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "C" (at 0 -6.35 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "Capacitor" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(symbol "C_0_1"
+			(polyline (pts (xy -0.508 1.524) (xy -0.508 -1.524)) (stroke (width 0.3) (type default)) (fill (type none)))
+			(polyline (pts (xy 0.508 1.524) (xy 0.508 -1.524)) (stroke (width 0.3) (type default)) (fill (type none)))
+		)
+		(symbol "C_1_1"
+			(pin passive line (at -5.08 0 0) (length 2.54) (name "~" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 5.08 0 180) (length 2.54) (name "~" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+		)
+	)
+		(symbol "cur-board:Conn_01x05"
+		(pin_names
+			(offset 1.016)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "J"
+			(at 0 7.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Conn_01x05"
+			(at 0 -7.62 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x05, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "connector"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "Connector*:*_1x??_*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "Conn_01x05_1_1"
+			(rectangle
+				(start -1.27 6.35)
+				(end 1.27 -6.35)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(rectangle
+				(start -1.27 5.207)
+				(end 0 4.953)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 2.667)
+				(end 0 2.413)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 0.127)
+				(end 0 -0.127)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -2.413)
+				(end 0 -2.667)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(rectangle
+				(start -1.27 -4.953)
+				(end 0 -5.207)
+				(stroke
+					(width 0.1524)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(pin passive line
+				(at -5.08 5.08 0)
+				(length 3.81)
+				(name "Pin_1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 2.54 0)
+				(length 3.81)
+				(name "Pin_2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 3.81)
+				(name "Pin_3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -2.54 0)
+				(length 3.81)
+				(name "Pin_4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 -5.08 0)
+				(length 3.81)
+				(name "Pin_5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "cur-board:SW_SPST"
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "SW"
+			(at 0 3.175 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_SPST"
+			(at 0 -2.54 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Single Pole Single Throw (SPST) switch"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "switch lever"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "SW_SPST_0_0"
+			(circle
+				(center -2.032 0)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy -1.524 0.254) (xy 1.524 1.778)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 2.032 0)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "SW_SPST_1_1"
+			(pin passive line
+				(at -5.08 0 0)
+				(length 2.54)
+				(name "A"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 0 180)
+				(length 2.54)
+				(name "B"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "cur-board:IS31FL3218-QF"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at -10.16 26.035 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Value" "IS31FL3218-QF"
+			(at 2.54 -24.13 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(property "Footprint" "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.7x2.7mm"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "http://www.issi.com/WW/pdf/31FL3218.pdf"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "18 LED matrix driver with 8-bit PWM, QFN-24"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "led matrix pwm"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_fp_filters" "QFN*1EP*4x4mm*P0.5mm*"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "IS31FL3218-QF_0_1"
+			(rectangle
+				(start -10.16 25.4)
+				(end 10.16 -22.86)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+		)
+		(symbol "IS31FL3218-QF_1_1"
+			(pin open_collector line
+				(at 12.7 -20.32 180)
+				(length 2.54)
+				(name "OUT18"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -12.7 12.7 0)
+				(length 2.54)
+				(name "R_EXT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 27.94 270)
+				(length 2.54)
+				(name "VCC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at 0 -25.4 90)
+				(length 2.54)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin bidirectional line
+				(at -12.7 22.86 0)
+				(length 2.54)
+				(name "SDA"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 20.32 0)
+				(length 2.54)
+				(name "SCL"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 22.86 180)
+				(length 2.54)
+				(name "OUT1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 20.32 180)
+				(length 2.54)
+				(name "OUT2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 17.78 180)
+				(length 2.54)
+				(name "OUT3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 15.24 180)
+				(length 2.54)
+				(name "OUT4"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 12.7 180)
+				(length 2.54)
+				(name "OUT5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 10.16 180)
+				(length 2.54)
+				(name "OUT6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 7.62 180)
+				(length 2.54)
+				(name "OUT7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 5.08 180)
+				(length 2.54)
+				(name "OUT8"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "14"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 2.54 180)
+				(length 2.54)
+				(name "OUT9"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "15"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 0 180)
+				(length 2.54)
+				(name "OUT10"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "16"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 -2.54 180)
+				(length 2.54)
+				(name "OUT11"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "17"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 -5.08 180)
+				(length 2.54)
+				(name "OUT12"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "18"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 -7.62 180)
+				(length 2.54)
+				(name "OUT13"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "19"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 -10.16 180)
+				(length 2.54)
+				(name "OUT14"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "20"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 -12.7 180)
+				(length 2.54)
+				(name "OUT15"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "21"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 -15.24 180)
+				(length 2.54)
+				(name "OUT16"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "22"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin open_collector line
+				(at 12.7 -17.78 180)
+				(length 2.54)
+				(name "OUT17"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "23"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 17.78 0)
+				(length 2.54)
+				(name "~{SDB}"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "24"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -25.4 90)
+				(length 2.54)
+				(hide yes)
+				(name "GND"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "25"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "cur-board:SW_Push_SPDT"
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "SW"
+			(at 0 5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_Push_SPDT"
+			(at 0 -5.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Momentary Switch, single pole double throw"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "switch single-pole double-throw spdt ON-ON"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "SW_Push_SPDT_0_0"
+			(circle
+				(center -2.032 0)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 1.016) (xy 0 3.048)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 2.032 -2.54)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "SW_Push_SPDT_0_1"
+			(polyline
+				(pts
+					(xy -1.524 0.2032) (xy 2.3368 1.9812)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(circle
+				(center 2.032 2.54)
+				(radius 0.508)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "SW_Push_SPDT_1_1"
+			(rectangle
+				(start -3.175 3.81)
+				(end 3.175 -3.81)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(pin passive line
+				(at 5.08 2.54 180)
+				(length 2.54)
+				(name "A"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at -5.08 0 0)
+				(length 2.54)
+				(name "B"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 5.08 -2.54 180)
+				(length 2.54)
+				(name "C"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+		(symbol "cur-board:THUMBSTICK_2AXIS_SW"
+		(pin_names (offset 1.016))
+		(exclude_from_sim no) (in_bom yes) (on_board yes)
+		(property "Reference" "JS" (at 0 10.16 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "THUMBSTICK_2AXIS_SW" (at 0 -7.62 0) (effects (font (size 1.27 1.27))))
+		(property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(property "Description" "Two-axis analog thumbstick with push (P156, ALPS RKJXV class): two pots and a normally-open push. Functional block - pin numbers are the placeholder footprint's, not a part's" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
+		(symbol "THUMBSTICK_2AXIS_SW_0_1"
+			(rectangle (start -10.16 7.62) (end 10.16 -5.08) (stroke (width 0.254) (type default)) (fill (type background)))
+		)
+		(symbol "THUMBSTICK_2AXIS_SW_1_1"
+			(pin passive line (at -12.7 5.08 0) (length 2.54) (name "X_VCC" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -12.7 2.54 0) (length 2.54) (name "X_WIPER" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -12.7 0 0) (length 2.54) (name "X_GND" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -12.7 -2.54 0) (length 2.54) (name "Y_VCC" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 12.7 5.08 180) (length 2.54) (name "Y_WIPER" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 12.7 2.54 180) (length 2.54) (name "Y_GND" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 12.7 0 180) (length 2.54) (name "SW_A" (effects (font (size 1.27 1.27)))) (number "7" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 12.7 -2.54 180) (length 2.54) (name "SW_B" (effects (font (size 1.27 1.27)))) (number "8" (effects (font (size 1.27 1.27)))))
+		)
+	)
+	)
+	(symbol (lib_id "cur-board:Conn_02x06") (at 60.96 71.12 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "a4a68cb0-f0dc-5cc1-8a66-056c95e319d0")
+		(property "Reference" "J1" (at 60.96 59.69 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "plate cable header 2x6 shrouded (DP-DCU-E 1-12, P200)" (at 60.96 80.01 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Connector_IDC:IDC-Header_2x06_P2.54mm_Vertical" (at 60.96 71.12 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 60.96 71.12 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "the cable's plate end (P200): pin n = DP-DCU-E n; IDC or crimp 2 x 6, length about 1 m - confirm" (at 60.96 71.12 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "37cfccb6-3162-569f-ae71-b109308726f8"))
+		(pin "2" (uuid "2e5ae0d6-c153-5f3e-b7fc-d424e92c6016"))
+		(pin "3" (uuid "b60a9e4b-d246-56f9-9a6e-a444784073b6"))
+		(pin "4" (uuid "775ad9ce-3bcc-546c-a178-69d5b4606ee3"))
+		(pin "5" (uuid "56f13385-313b-5c42-939f-329849e29c52"))
+		(pin "6" (uuid "2358552c-7dde-596f-8acf-537a9448e19f"))
+		(pin "7" (uuid "dcdcb665-5966-5241-9e36-f03dadf1a333"))
+		(pin "8" (uuid "0c366710-3160-5a8f-ab54-82d7633efb88"))
+		(pin "9" (uuid "8b4200f5-ac30-5527-98e0-cafe77e89e9a"))
+		(pin "10" (uuid "0668e272-cc9b-5d84-b0fc-ae9b2f218fda"))
+		(pin "11" (uuid "8528ca87-1f5f-5efa-b436-7652f130f315"))
+		(pin "12" (uuid "9e5cfa95-bc6f-56ec-ad59-bcde8d78afcb"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "J1") (unit 1))))
+	)
+	(wire (pts (xy 53.34 63.5) (xy 50.8 63.5)) (stroke (width 0) (type default)) (uuid "a01cf8a7-480c-52c4-ba8c-8d364c4d005e"))
+	(label "ROW1" (at 50.8 63.5 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "dfaa6b3d-c0b8-5f09-9883-e7efcf473265"))
+	(wire (pts (xy 68.58 63.5) (xy 71.12 63.5)) (stroke (width 0) (type default)) (uuid "b95a319a-66c5-5aee-974d-ca6a7d7c484f"))
+	(label "COL2" (at 71.12 63.5 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "d93a05d4-5968-50bc-a7d0-72c040059198"))
+	(wire (pts (xy 53.34 66.04) (xy 50.8 66.04)) (stroke (width 0) (type default)) (uuid "99dad75d-5415-5a61-a149-aac7a216b5da"))
+	(label "COL3" (at 50.8 66.04 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "1d58375e-88a2-5094-900b-82c177841a34"))
+	(wire (pts (xy 68.58 66.04) (xy 71.12 66.04)) (stroke (width 0) (type default)) (uuid "1cb06a41-a150-5962-a6a8-d56765f027c9"))
+	(label "JOY_X" (at 71.12 66.04 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "8b0eee8a-af2d-51ad-a016-3f2cc1017e5e"))
+	(wire (pts (xy 53.34 68.58) (xy 50.8 68.58)) (stroke (width 0) (type default)) (uuid "c15a87a8-d1f3-5f88-a0ac-ac7a45cb2582"))
+	(label "JOY_Y" (at 50.8 68.58 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "1e73e446-8627-5601-beb6-5147485ab4d9"))
+	(wire (pts (xy 68.58 68.58) (xy 71.12 68.58)) (stroke (width 0) (type default)) (uuid "1e52a03f-d81e-5911-96f9-a3cdacec4542"))
+	(label "JOY_PRESS" (at 71.12 68.58 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "25659cdb-90a0-5ce9-b59f-fff314db05ce"))
+	(wire (pts (xy 53.34 71.12) (xy 50.8 71.12)) (stroke (width 0) (type default)) (uuid "b34f3a68-6dd5-5b24-9c3b-2fb957fc4d7e"))
+	(symbol (lib_id "cur-board:+3V3") (at 50.8 71.12 90) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "2f7b47f1-e30e-54a0-82d4-9f580b323884")
+		(property "Reference" "#PWR001" (at 50.8 71.12 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "+3V3" (at 44.8 71.72 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 50.8 71.12 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 50.8 71.12 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "3e9e5428-02d7-5f27-8290-c8700054a702"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR001") (unit 1))))
+	)
+	(wire (pts (xy 68.58 71.12) (xy 71.12 71.12)) (stroke (width 0) (type default)) (uuid "938f58bb-a76d-5313-b0ab-2fa6ad1d2cf9"))
+	(label "AGND" (at 71.12 71.12 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "93aff5a3-e59d-5c34-aae7-682aee04afdc"))
+	(wire (pts (xy 53.34 73.66) (xy 50.8 73.66)) (stroke (width 0) (type default)) (uuid "51967938-8de5-5e3f-8dc4-cfdac2b7661e"))
+	(label "PNL_SDA" (at 50.8 73.66 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "4bf3f4ba-342f-5e30-a860-f4af3b8c23fe"))
+	(wire (pts (xy 68.58 73.66) (xy 71.12 73.66)) (stroke (width 0) (type default)) (uuid "911ec2f7-9415-5497-97c7-b616b5e04e5b"))
+	(label "PNL_SCL" (at 71.12 73.66 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "0367b39f-ec52-5caa-9b96-d33841bccf18"))
+	(wire (pts (xy 53.34 76.2) (xy 50.8 76.2)) (stroke (width 0) (type default)) (uuid "40bc6ce0-2caa-5f55-8932-ed15823f29a2"))
+	(symbol (lib_id "cur-board:GND") (at 50.8 76.2 270) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "ad7525e9-669a-5103-8410-43d31abc6b29")
+		(property "Reference" "#PWR002" (at 50.8 76.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "GND" (at 44.8 76.8 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 50.8 76.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 50.8 76.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "47cb1007-35fa-5bb0-83fb-7e782932a634"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR002") (unit 1))))
+	)
+	(wire (pts (xy 68.58 76.2) (xy 71.12 76.2)) (stroke (width 0) (type default)) (uuid "7006f4c8-cb51-57c6-af99-4196e1d7cfbf"))
+	(label "+5V_PNL" (at 71.12 76.2 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "3acd3c98-ebc3-5cdd-9deb-99905589ab5b"))
+	(symbol (lib_id "cur-board:SW_Push") (at 152.4 50.8 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "7617476f-ed1e-5acb-a929-649f2f8ffa7f")
+		(property "Reference" "SW1" (at 152.4 46.99 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "key - hatch" (at 152.4 54.61 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm" (at 152.4 50.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 152.4 50.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "6 x 6 mm THT tactile under the faceplate's 17 x 15 cap (P199, luxury D-488); actuator height against the cap - confirm" (at 152.4 50.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "f8894e99-d577-5565-977c-fad491c01400"))
+		(pin "2" (uuid "bbdd87b6-b07c-501a-ab25-2559477264d8"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "SW1") (unit 1))))
+	)
+	(wire (pts (xy 147.32 50.8) (xy 144.78 50.8)) (stroke (width 0) (type default)) (uuid "fbcfcaa5-0089-5fd6-a0c1-772a2d4ce6e1"))
+	(label "COL2" (at 144.78 50.8 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "a8c95126-0140-50bc-929c-9bf044c110f3"))
+	(wire (pts (xy 157.48 50.8) (xy 160.02 50.8)) (stroke (width 0) (type default)) (uuid "b96d36b2-0c2b-5ec9-96db-1cb358ff6104"))
+	(label "KEY_HATCH" (at 160.02 50.8 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "41798724-ca70-5c39-841c-fcbd5ebce98f"))
+	(symbol (lib_id "cur-board:D") (at 195.58 50.8 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "143e04b9-2ca3-5817-9b93-f9e5baf1ba1c")
+		(property "Reference" "D1" (at 195.58 46.99 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "1N4148W" (at 195.58 54.61 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Diode_SMD:D_SOD-123" (at 195.58 50.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 195.58 50.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "part number - confirm (P199)" (at 195.58 50.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "2" (uuid "2470f01d-d331-5beb-b583-981286040035"))
+		(pin "1" (uuid "adedd012-72a8-5272-a04e-2e46aa44bfee"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "D1") (unit 1))))
+	)
+	(wire (pts (xy 190.5 50.8) (xy 187.96 50.8)) (stroke (width 0) (type default)) (uuid "775a7358-acea-5879-a644-eb70ca60a6c8"))
+	(label "KEY_HATCH" (at 187.96 50.8 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "4aaa7f6c-21a7-51d5-9599-968d2684ec0f"))
+	(wire (pts (xy 200.66 50.8) (xy 203.2 50.8)) (stroke (width 0) (type default)) (uuid "a2583ed1-65d3-558b-85f8-8c6e24249455"))
+	(label "ROW1" (at 203.2 50.8 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "6fce272a-bf6f-511b-8f90-db149d970887"))
+	(symbol (lib_id "cur-board:SW_Push") (at 152.4 63.5 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "18a7c42e-020c-512a-a8af-40eb838dbbf5")
+		(property "Reference" "SW2" (at 152.4 59.69 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "key - fuel door" (at 152.4 67.31 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Button_Switch_THT:SW_PUSH_6mm" (at 152.4 63.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 152.4 63.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "6 x 6 mm THT tactile under the faceplate's 17 x 15 cap (P199, luxury D-488); actuator height against the cap - confirm" (at 152.4 63.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "3e05a9cb-abf8-5636-98a0-9334c8cf548e"))
+		(pin "2" (uuid "0bba0849-2f5b-5401-9b3d-0fb5190dd217"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "SW2") (unit 1))))
+	)
+	(wire (pts (xy 147.32 63.5) (xy 144.78 63.5)) (stroke (width 0) (type default)) (uuid "2fc42cb0-18dd-5fb8-a0d7-730c936f9d03"))
+	(label "COL3" (at 144.78 63.5 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "058ecadc-8a1f-5c39-a929-7392b0c92f12"))
+	(wire (pts (xy 157.48 63.5) (xy 160.02 63.5)) (stroke (width 0) (type default)) (uuid "fb8f3c75-eecf-5fe0-81cd-be9b6bb4c9e0"))
+	(label "KEY_FUEL" (at 160.02 63.5 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "fa422646-b695-5d12-b713-3085690a87bc"))
+	(symbol (lib_id "cur-board:D") (at 195.58 63.5 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "f9577a73-e296-594e-af4a-69edf0adcb69")
+		(property "Reference" "D2" (at 195.58 59.69 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "1N4148W" (at 195.58 67.31 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Diode_SMD:D_SOD-123" (at 195.58 63.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 195.58 63.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "part number - confirm (P199)" (at 195.58 63.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "2" (uuid "7c3f9aa0-d00a-564f-8303-50eb491ea491"))
+		(pin "1" (uuid "44a26701-77f9-5990-bf18-eb7ff2d53115"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "D2") (unit 1))))
+	)
+	(wire (pts (xy 190.5 63.5) (xy 187.96 63.5)) (stroke (width 0) (type default)) (uuid "72b34ec4-242a-546c-aa5b-4b549e9b446c"))
+	(label "KEY_FUEL" (at 187.96 63.5 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "7219eceb-6e5b-5c43-b61d-f04b3fe9f10d"))
+	(wire (pts (xy 200.66 63.5) (xy 203.2 63.5)) (stroke (width 0) (type default)) (uuid "cfb34f3a-e88b-57a3-8981-85aa36af3d3e"))
+	(label "ROW1" (at 203.2 63.5 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "cec83f5b-999a-5b4f-a240-67332b74da54"))
+	(symbol (lib_id "cur-board:THUMBSTICK_2AXIS_SW") (at 165.1 101.6 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "646fcfd6-4d0b-5642-a78c-a91bbc7af2bb")
+		(property "Reference" "JS1" (at 165.1 92.71 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "mirror stick (P156) - placeholder" (at 165.1 107.95 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "cur-board:Thumbstick_P156_Placeholder_2x04_P2.54mm" (at 165.1 101.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 165.1 101.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "no part chosen (P156): ALPS RKJXV class, 2-axis with push; footprint, pins, body and well from the part's drawing - confirm" (at 165.1 101.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "f9526fd1-19e3-51c5-ab2c-e6d54c4b7511"))
+		(pin "2" (uuid "3b981fd8-d153-548a-ba0e-13701ab4b15c"))
+		(pin "3" (uuid "210aed6c-62fe-5227-9b0c-e4acd482b647"))
+		(pin "4" (uuid "39cc3806-c6fd-5257-ade6-d93c13ac27de"))
+		(pin "5" (uuid "76b8b5a7-987b-5233-b148-35249fa97ef6"))
+		(pin "6" (uuid "a19b577e-b446-516a-97db-c9b6ddfa19a0"))
+		(pin "7" (uuid "f1bceb17-9413-5aac-917e-e524d19d85be"))
+		(pin "8" (uuid "18ea1185-0fcd-58ae-893b-76f6e6f62f46"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "JS1") (unit 1))))
+	)
+	(wire (pts (xy 152.4 96.52) (xy 149.86 96.52)) (stroke (width 0) (type default)) (uuid "9491fdca-d944-5399-987d-7c73aea78fda"))
+	(symbol (lib_id "cur-board:+3V3") (at 149.86 96.52 90) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "8a27c83e-9544-5ea5-8a92-9d48cb84ac7e")
+		(property "Reference" "#PWR003" (at 149.86 96.52 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "+3V3" (at 143.86 97.12 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 149.86 96.52 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 149.86 96.52 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "acf469d2-85da-58bf-b81a-9d8c0b199ae9"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR003") (unit 1))))
+	)
+	(wire (pts (xy 152.4 99.06) (xy 149.86 99.06)) (stroke (width 0) (type default)) (uuid "031753b9-2295-58af-a419-cbb02809d0ec"))
+	(label "JOY_X" (at 149.86 99.06 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "6276ad5c-e39b-5f46-a20e-90089027945b"))
+	(wire (pts (xy 152.4 101.6) (xy 149.86 101.6)) (stroke (width 0) (type default)) (uuid "d7806450-3a15-50de-8b2f-3d43a8c54abb"))
+	(label "AGND" (at 149.86 101.6 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "c756844c-944c-558f-b41b-928f3ba15e64"))
+	(wire (pts (xy 152.4 104.14) (xy 149.86 104.14)) (stroke (width 0) (type default)) (uuid "35568b5f-7c08-5f8c-a9fa-12cada156684"))
+	(symbol (lib_id "cur-board:+3V3") (at 149.86 104.14 90) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "85cca482-e4b3-510e-ac42-ee36fced389a")
+		(property "Reference" "#PWR004" (at 149.86 104.14 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "+3V3" (at 143.86 104.74 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 149.86 104.14 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 149.86 104.14 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "82a3c410-f067-5764-9876-1d3e0a51cdc6"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR004") (unit 1))))
+	)
+	(wire (pts (xy 177.8 96.52) (xy 180.34 96.52)) (stroke (width 0) (type default)) (uuid "8cdb5748-2e70-5864-b9c5-e5fb2ace4dcd"))
+	(label "JOY_Y" (at 180.34 96.52 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "00382ae3-f705-517a-a95d-f92e5c8fb4f7"))
+	(wire (pts (xy 177.8 99.06) (xy 180.34 99.06)) (stroke (width 0) (type default)) (uuid "33dee0d6-3da5-5374-ad53-bc4ccde8b5b0"))
+	(label "AGND" (at 180.34 99.06 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "67643e20-ce99-5fe9-b413-75d63aaab8b8"))
+	(wire (pts (xy 177.8 101.6) (xy 180.34 101.6)) (stroke (width 0) (type default)) (uuid "f71f6229-c189-53de-a8f8-9539d653fe44"))
+	(label "JOY_PRESS" (at 180.34 101.6 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "d21fa94c-73d2-5449-8fc2-63d67cd71a4d"))
+	(wire (pts (xy 177.8 104.14) (xy 180.34 104.14)) (stroke (width 0) (type default)) (uuid "fdbb0951-81b9-5a28-948e-5f895784474d"))
+	(symbol (lib_id "cur-board:GND") (at 180.34 104.14 90) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "920220db-ba8d-537a-8ff5-2d67d0027a4e")
+		(property "Reference" "#PWR005" (at 180.34 104.14 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "GND" (at 186.34 104.74 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 180.34 104.14 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 180.34 104.14 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "0a9cff38-726c-5080-b7ff-e502a2a7eda8"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR005") (unit 1))))
+	)
+	(symbol (lib_id "cur-board:IS31FL3218-QF") (at 279.4 83.82 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "1fe78f42-a0c2-55f4-a689-e7c9a584ff5d")
+		(property "Reference" "U1" (at 271.78 57.15 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "IS31FL3218-QFLS2-TR" (at 289.56 118.11 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Package_DFN_QFN:QFN-24-1EP_4x4mm_P0.5mm_EP2.7x2.7mm" (at 279.4 83.82 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "https://www.lumissil.com/assets/pdf/core/IS31FL3218_DS.pdf" (at 279.4 83.82 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "the plate's LED driver (P199): fixed I2C address 0x54; VCC 2.7-5.5 V on +5V_PNL, VIH 1.4 V so the 3.3 V bus reads (Lumissil Rev G p.4); footprint KiCad's QFN-24 4x4 - confirm against the package drawing" (at 279.4 83.82 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "bf2ebc4d-f900-549d-a462-2571dae5c485"))
+		(pin "2" (uuid "8d2e4774-6bd4-50fd-a375-7814102b3f49"))
+		(pin "3" (uuid "51834396-ace4-5b82-ad5f-e5521529496b"))
+		(pin "4" (uuid "6e728c51-092b-5b98-a541-d09545c04d28"))
+		(pin "5" (uuid "93985811-733d-5bb9-b080-f8c7873f4d81"))
+		(pin "6" (uuid "3fd337f6-ad8b-5477-865f-d38cd88bf150"))
+		(pin "7" (uuid "90019a28-b643-51da-afbb-d735b4edea17"))
+		(pin "8" (uuid "7f0a4a36-8b33-5cf2-9ccf-42bffa715088"))
+		(pin "9" (uuid "d9afcdd6-4c74-5acf-8a05-15f1e24fd455"))
+		(pin "10" (uuid "2605f7fd-eb56-5601-9fef-334758538973"))
+		(pin "11" (uuid "dde98ad7-1e83-58b7-89bb-f7217b611010"))
+		(pin "12" (uuid "84b5db85-56fe-5946-9e24-ada9179b5670"))
+		(pin "13" (uuid "c77b4030-da0b-5061-87f1-2ad0ff310980"))
+		(pin "14" (uuid "f8febdd7-d2ce-5b0e-93cb-96a5f82149ba"))
+		(pin "15" (uuid "7e9d4254-aec7-5d41-a3f8-d8b732b8ba7b"))
+		(pin "16" (uuid "ea9bf04f-5f9e-5e69-be6f-9b9b023f1594"))
+		(pin "17" (uuid "22619bb8-96ee-57aa-8294-d83003ff89e1"))
+		(pin "18" (uuid "6066ce26-345e-5470-92e8-37abfb780b67"))
+		(pin "19" (uuid "66a0e8a5-c716-54e0-b9cd-fb3a36733590"))
+		(pin "20" (uuid "ae39336b-5b14-55db-89ba-94d2ae56ae89"))
+		(pin "21" (uuid "c7141fd6-018c-5fd5-a448-bef36ecaac01"))
+		(pin "22" (uuid "b4713fd4-f681-5967-a2fb-8e79bad1df85"))
+		(pin "23" (uuid "94be2e37-0932-56a2-a8d7-d711775dcf5d"))
+		(pin "24" (uuid "1bcb35a6-016f-5437-a1c5-268de2a4b3be"))
+		(pin "25" (uuid "5c492dd3-d8a8-54a2-8d1e-bcf8edffa613"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "U1") (unit 1))))
+	)
+	(no_connect (at 292.1 104.14) (uuid "86cd7ae5-e1da-5c09-b5e6-1c3f3fa4af34"))
+	(wire (pts (xy 266.7 71.12) (xy 264.16 71.12)) (stroke (width 0) (type default)) (uuid "bf7ab161-1f5d-5f8a-8abb-71bc5bf2054c"))
+	(label "LED_REXT" (at 264.16 71.12 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "c55e4998-96dd-5557-bb93-791659106b48"))
+	(wire (pts (xy 279.4 55.88) (xy 279.4 53.34)) (stroke (width 0) (type default)) (uuid "8f7d1665-796a-5c87-85cc-1482eb899c70"))
+	(label "+5V_PNL" (at 279.4 53.34 90) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "4ba32360-6aef-5657-9243-59e0a98e2697"))
+	(wire (pts (xy 279.4 109.22) (xy 279.4 111.76)) (stroke (width 0) (type default)) (uuid "06f9e6a7-1ada-5758-8d53-8880fce4b3cd"))
+	(symbol (lib_id "cur-board:GND") (at 279.4 111.76 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "4f7284a2-b812-56c3-9025-164c17a2ac2c")
+		(property "Reference" "#PWR006" (at 279.4 111.76 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "GND" (at 279.4 116.26 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 279.4 111.76 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 279.4 111.76 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "f4182a78-9489-5f1d-8339-5e07531e4306"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR006") (unit 1))))
+	)
+	(wire (pts (xy 266.7 60.96) (xy 264.16 60.96)) (stroke (width 0) (type default)) (uuid "a3a72865-ed28-5d85-a5c6-36d7aee76c01"))
+	(label "PNL_SDA" (at 264.16 60.96 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "35fd5d85-7fe6-5c44-89d1-e7e251a292c1"))
+	(wire (pts (xy 266.7 63.5) (xy 264.16 63.5)) (stroke (width 0) (type default)) (uuid "c0084e61-1e9a-5633-967c-8a5622b5b9e6"))
+	(label "PNL_SCL" (at 264.16 63.5 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "76b95e82-8137-502b-90fe-f18183e557ba"))
+	(wire (pts (xy 292.1 60.96) (xy 294.64 60.96)) (stroke (width 0) (type default)) (uuid "21ecfaa2-6441-5bca-9960-aa6d6685591f"))
+	(label "LED_WINK_L" (at 294.64 60.96 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "5f4fe3fd-75a0-5088-8440-e9b18d1d9cc4"))
+	(wire (pts (xy 292.1 63.5) (xy 294.64 63.5)) (stroke (width 0) (type default)) (uuid "0e7b7cb4-cb16-58cd-bc78-611816d47fe6"))
+	(label "LED_WINK_R" (at 294.64 63.5 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "bfedafbd-93f2-5122-953a-7ceefa597b3e"))
+	(wire (pts (xy 292.1 66.04) (xy 294.64 66.04)) (stroke (width 0) (type default)) (uuid "c7807586-4ce5-50dd-9dbc-9e70e74f3e5b"))
+	(label "LED_HATCH" (at 294.64 66.04 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "c7f4b87c-2104-5fa2-b22b-07532f769d32"))
+	(wire (pts (xy 292.1 68.58) (xy 294.64 68.58)) (stroke (width 0) (type default)) (uuid "e79bede6-8c66-5130-947c-743e3002de76"))
+	(label "LED_FUEL" (at 294.64 68.58 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "d08ef4c7-4c26-5226-861a-21855cafa3fb"))
+	(no_connect (at 292.1 71.12) (uuid "8752f6b6-2897-5f84-ac4b-df74973d37cf"))
+	(wire (pts (xy 292.1 73.66) (xy 294.64 73.66)) (stroke (width 0) (type default)) (uuid "6c2b706d-c665-551d-9788-9a0dc3775a07"))
+	(label "LED_HAZARD" (at 294.64 73.66 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "431f23fe-803f-5b44-bfa5-62183f2fafd2"))
+	(no_connect (at 292.1 76.2) (uuid "52186d81-fa99-59d8-9cb1-040cf41edc1b"))
+	(no_connect (at 292.1 78.74) (uuid "5c5f17cd-fca3-5322-a1ec-d5336f78aa10"))
+	(no_connect (at 292.1 81.28) (uuid "f42905b5-deb2-5b8e-bd5f-596f6cebf6e7"))
+	(no_connect (at 292.1 83.82) (uuid "1d024cc7-f028-5334-8cfe-95a8355359a4"))
+	(no_connect (at 292.1 86.36) (uuid "a4594ad4-860e-58f6-ba7f-3a046d7994bc"))
+	(no_connect (at 292.1 88.9) (uuid "7b6d88d9-bfaf-56f0-a638-c5c2da0a2664"))
+	(wire (pts (xy 292.1 91.44) (xy 294.64 91.44)) (stroke (width 0) (type default)) (uuid "daf1720c-3350-587a-9e4c-327421e7e131"))
+	(label "LED_MIRROR" (at 294.64 91.44 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "de5179c0-bcac-50ce-8e8a-7aee38c30b5d"))
+	(no_connect (at 292.1 93.98) (uuid "57a2603e-df88-5345-b6e1-00e4249c2a1f"))
+	(no_connect (at 292.1 96.52) (uuid "0506abcc-60b0-58b7-9fbc-ea66ad025514"))
+	(no_connect (at 292.1 99.06) (uuid "4acb1a01-f6ba-5191-90bb-8065f67b6563"))
+	(no_connect (at 292.1 101.6) (uuid "805880bc-f886-52a9-be3d-67fc5218e5e6"))
+	(wire (pts (xy 266.7 66.04) (xy 264.16 66.04)) (stroke (width 0) (type default)) (uuid "4018f100-05f3-5fb0-9ceb-766339bb461c"))
+	(label "LED_SDB" (at 264.16 66.04 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "ace61069-759f-5b39-84ea-6f3494d061d3"))
+	(symbol (lib_id "cur-board:C") (at 238.76 50.8 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "b69b731e-4ed8-564f-9eab-4d35dfa7c57e")
+		(property "Reference" "C1" (at 238.76 46.99 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "1uF" (at 238.76 54.61 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 238.76 50.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 238.76 50.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "X7R 10 V or more - confirm" (at 238.76 50.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "4c87ff4c-9ec8-5c1e-af7f-6d654a0b18e7"))
+		(pin "2" (uuid "80457722-2359-5c8c-826f-868c329a86cc"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "C1") (unit 1))))
+	)
+	(wire (pts (xy 233.68 50.8) (xy 231.14 50.8)) (stroke (width 0) (type default)) (uuid "7346fa40-bfbb-5cf5-8282-c0abfc32a93c"))
+	(label "+5V_PNL" (at 231.14 50.8 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "1a277a1d-bb02-52d4-93ad-20388abff0a0"))
+	(wire (pts (xy 243.84 50.8) (xy 246.38 50.8)) (stroke (width 0) (type default)) (uuid "211a21a5-2ca0-594c-843e-a8f94662010d"))
+	(symbol (lib_id "cur-board:GND") (at 246.38 50.8 90) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "48889735-3030-5d7c-a8c7-cd50e30a1a8c")
+		(property "Reference" "#PWR007" (at 246.38 50.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "GND" (at 252.38 51.4 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 246.38 50.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 246.38 50.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "1363fd0a-149f-5a8f-8e6b-3b9ef0dbc2c3"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR007") (unit 1))))
+	)
+	(symbol (lib_id "cur-board:C") (at 238.76 60.96 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "9b475e32-33f9-5ed2-97a2-45661a5fe3b1")
+		(property "Reference" "C2" (at 238.76 57.15 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "100nF" (at 238.76 64.77 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric" (at 238.76 60.96 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 238.76 60.96 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "X7R - confirm" (at 238.76 60.96 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "f2f7f27a-0aba-57bc-b5e5-3e572bedfc97"))
+		(pin "2" (uuid "14129421-ec0c-5cc9-a972-294fbb087b74"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "C2") (unit 1))))
+	)
+	(wire (pts (xy 233.68 60.96) (xy 231.14 60.96)) (stroke (width 0) (type default)) (uuid "af33b52b-7dc9-55cb-b94d-3a687abcfbb2"))
+	(label "+5V_PNL" (at 231.14 60.96 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "49a1dfd0-a346-5c79-b55c-90547b3350f4"))
+	(wire (pts (xy 243.84 60.96) (xy 246.38 60.96)) (stroke (width 0) (type default)) (uuid "47aeb70d-b300-5079-92e4-cd4c493b3ebe"))
+	(symbol (lib_id "cur-board:GND") (at 246.38 60.96 90) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "e8129bf7-7921-5022-9e9e-aae185935173")
+		(property "Reference" "#PWR008" (at 246.38 60.96 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "GND" (at 252.38 61.56 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 246.38 60.96 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 246.38 60.96 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "8d064145-26ea-538c-886c-c90c10f9c9c0"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR008") (unit 1))))
+	)
+	(symbol (lib_id "cur-board:R") (at 238.76 101.6 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "0561386b-b9ac-5edf-8f59-820bae313953")
+		(property "Reference" "R1" (at 238.76 97.79 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "10k" (at 238.76 105.41 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 238.76 101.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 238.76 101.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "R_EXT: IMAX = 58.5 x 1.3 V / 10k = 7.6 mA a channel (Lumissil p.10), the panel's D-458 current - 1 %" (at 238.76 101.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "a88093ba-af08-52ef-b887-728ad59aab15"))
+		(pin "2" (uuid "e26f36db-6918-5cad-a204-1c7be4f45e75"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "R1") (unit 1))))
+	)
+	(wire (pts (xy 233.68 101.6) (xy 231.14 101.6)) (stroke (width 0) (type default)) (uuid "5c7e4220-9ad7-52ea-a3c8-5acdb5dbf39c"))
+	(label "LED_REXT" (at 231.14 101.6 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "8bb54133-a782-58ab-bd1b-aa42f5879af7"))
+	(wire (pts (xy 243.84 101.6) (xy 246.38 101.6)) (stroke (width 0) (type default)) (uuid "827fd533-1e67-5996-a4fc-3aa519a55f6a"))
+	(symbol (lib_id "cur-board:GND") (at 246.38 101.6 90) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "35866673-a013-5ccb-ae27-15603c7d9ca9")
+		(property "Reference" "#PWR009" (at 246.38 101.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "GND" (at 252.38 102.2 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 246.38 101.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 246.38 101.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "672c86d1-4040-56b8-bca2-e9269c0b97ec"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR009") (unit 1))))
+	)
+	(symbol (lib_id "cur-board:R") (at 238.76 111.76 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "c474ddc5-671e-5ac6-a2c2-cd9f80e130ee")
+		(property "Reference" "R2" (at 238.76 107.95 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "100k" (at 238.76 115.57 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 238.76 111.76 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 238.76 111.76 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "holds SDB high: the driver is on and blank until written, as the panel's U2 - confirm" (at 238.76 111.76 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "ff6cfc3d-3df1-5493-82cb-be56a6b0d1f3"))
+		(pin "2" (uuid "16675008-6b38-5a24-8711-ed4a846fa8d3"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "R2") (unit 1))))
+	)
+	(wire (pts (xy 233.68 111.76) (xy 231.14 111.76)) (stroke (width 0) (type default)) (uuid "4dfb9948-3085-5cbf-a625-a98493c4eaeb"))
+	(label "+5V_PNL" (at 231.14 111.76 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "a74f204f-2a5e-5443-91bb-d63603e20fc0"))
+	(wire (pts (xy 243.84 111.76) (xy 246.38 111.76)) (stroke (width 0) (type default)) (uuid "76b56816-5010-5509-bf78-723b9305f488"))
+	(label "LED_SDB" (at 246.38 111.76 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "160a6a1e-1829-5c22-8bd2-66ae48c15007"))
+	(symbol (lib_id "cur-board:LED") (at 342.9 58.42 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "c1586768-e5a0-5b71-ab14-1ab99f6819f2")
+		(property "Reference" "LED1" (at 342.9 54.61 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "LED 0603 - wink left face (OUT1)" (at 342.9 62.23 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 342.9 58.42 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 342.9 58.42 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "colour, brightness and part number - confirm (I-006: the wink faces green; the rest LP20's)" (at 342.9 58.42 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "2" (uuid "f09035ce-841e-53e9-b21a-fdb329a5a724"))
+		(pin "1" (uuid "48e6e138-7950-558f-a72a-598c86049ca1"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "LED1") (unit 1))))
+	)
+	(wire (pts (xy 337.82 58.42) (xy 335.28 58.42)) (stroke (width 0) (type default)) (uuid "e17e99ef-c0f1-5348-8da6-29f6f0fc9059"))
+	(label "+5V_PNL" (at 335.28 58.42 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "8699872e-6fdb-5f9c-90b4-4aa4768f37e9"))
+	(wire (pts (xy 347.98 58.42) (xy 350.52 58.42)) (stroke (width 0) (type default)) (uuid "302a4a4f-06bf-5778-84b3-6c41e1addf02"))
+	(label "LED_WINK_L" (at 350.52 58.42 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "76e53867-dabd-5013-89ca-fe7474aba63f"))
+	(symbol (lib_id "cur-board:LED") (at 342.9 71.12 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "fc2239a3-4a4c-53ee-bf2b-4fcc0a06908d")
+		(property "Reference" "LED2" (at 342.9 67.31 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "LED 0603 - wink right face (OUT2)" (at 342.9 74.93 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 342.9 71.12 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 342.9 71.12 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "colour, brightness and part number - confirm (I-006: the wink faces green; the rest LP20's)" (at 342.9 71.12 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "2" (uuid "ee8a1771-32ab-5918-935e-a7eb759ddb62"))
+		(pin "1" (uuid "5f061bb4-d172-5db8-abb3-5f2ebe9f45eb"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "LED2") (unit 1))))
+	)
+	(wire (pts (xy 337.82 71.12) (xy 335.28 71.12)) (stroke (width 0) (type default)) (uuid "bb7ba1d3-5136-5065-bcaf-747642864b5c"))
+	(label "+5V_PNL" (at 335.28 71.12 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "aa5e50a0-aa93-571b-9006-ede29d90ecb1"))
+	(wire (pts (xy 347.98 71.12) (xy 350.52 71.12)) (stroke (width 0) (type default)) (uuid "091a206f-242b-5999-8ee7-43ab033ed373"))
+	(label "LED_WINK_R" (at 350.52 71.12 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "9974e6b2-de6a-5cb7-9d4b-bd52de871d15"))
+	(symbol (lib_id "cur-board:LED") (at 342.9 83.82 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "ba1e087e-e623-5b2e-8d50-5565b3f5243d")
+		(property "Reference" "LED3" (at 342.9 80.01 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "LED 0603 - hatch release symbol (OUT3)" (at 342.9 87.63 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 342.9 83.82 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 342.9 83.82 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "colour, brightness and part number - confirm (I-006: the wink faces green; the rest LP20's)" (at 342.9 83.82 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "2" (uuid "17585098-573e-540c-a4a3-cc5010b3f70a"))
+		(pin "1" (uuid "632a115b-db3f-50cd-85a2-38169e2f9b47"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "LED3") (unit 1))))
+	)
+	(wire (pts (xy 337.82 83.82) (xy 335.28 83.82)) (stroke (width 0) (type default)) (uuid "e9283332-96fc-532d-b766-a547b73f160f"))
+	(label "+5V_PNL" (at 335.28 83.82 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "c0e48613-41f2-5df6-bb66-eeaf9aa49dac"))
+	(wire (pts (xy 347.98 83.82) (xy 350.52 83.82)) (stroke (width 0) (type default)) (uuid "ea0e5887-288b-5860-a839-c7625125aae8"))
+	(label "LED_HATCH" (at 350.52 83.82 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "052e8ec5-6df2-57c8-a274-f4235aae36cf"))
+	(symbol (lib_id "cur-board:LED") (at 342.9 96.52 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "b006bbda-3557-5a97-a2f5-902f36e723d8")
+		(property "Reference" "LED4" (at 342.9 92.71 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "LED 0603 - fuel-door release symbol (OUT4)" (at 342.9 100.33 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 342.9 96.52 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 342.9 96.52 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "colour, brightness and part number - confirm (I-006: the wink faces green; the rest LP20's)" (at 342.9 96.52 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "2" (uuid "2180f363-abab-5b4e-8294-e8d16d92ec67"))
+		(pin "1" (uuid "f53f5a89-9a4b-5702-8a36-757c48928b29"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "LED4") (unit 1))))
+	)
+	(wire (pts (xy 337.82 96.52) (xy 335.28 96.52)) (stroke (width 0) (type default)) (uuid "73cb0a12-d7fa-567a-bd1d-26a0c6169401"))
+	(label "+5V_PNL" (at 335.28 96.52 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "10c1709b-aca2-5f1f-9518-a79a39900a45"))
+	(wire (pts (xy 347.98 96.52) (xy 350.52 96.52)) (stroke (width 0) (type default)) (uuid "a9d58e01-38b8-5185-91ab-3365a7afae83"))
+	(label "LED_FUEL" (at 350.52 96.52 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "dac3d074-02b9-589a-b47f-92c00c8436f0"))
+	(symbol (lib_id "cur-board:LED") (at 342.9 109.22 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "c799c224-5491-5da8-9f64-b9c8645f0da2")
+		(property "Reference" "LED5" (at 342.9 105.41 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "LED 0603 - mirror stick symbol (OUT13)" (at 342.9 113.03 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 342.9 109.22 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 342.9 109.22 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "colour, brightness and part number - confirm (I-006: the wink faces green; the rest LP20's)" (at 342.9 109.22 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "2" (uuid "92e028c0-4fcc-5857-a733-db09b808fd1c"))
+		(pin "1" (uuid "bb37d8b9-be9a-5f38-850f-cfe1d947e11d"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "LED5") (unit 1))))
+	)
+	(wire (pts (xy 337.82 109.22) (xy 335.28 109.22)) (stroke (width 0) (type default)) (uuid "ceb4002a-a15f-5502-8879-91b8c01c73ea"))
+	(label "+5V_PNL" (at 335.28 109.22 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "22e84eba-9674-5e02-8c51-c920a1b9cb8c"))
+	(wire (pts (xy 347.98 109.22) (xy 350.52 109.22)) (stroke (width 0) (type default)) (uuid "b4a035dd-1803-542d-b34c-26343454fbbf"))
+	(label "LED_MIRROR" (at 350.52 109.22 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "3d530fa6-58a3-5d24-a140-602e80aed399"))
+	(symbol (lib_id "cur-board:LED") (at 342.9 121.92 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "34954136-666f-53b3-bbb3-47150a2597d3")
+		(property "Reference" "LED6" (at 342.9 118.11 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "LED 0603 - hazard red triangle (OUT6)" (at 342.9 125.73 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric" (at 342.9 121.92 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 342.9 121.92 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "colour, brightness and part number - confirm (I-006: the wink faces green; the rest LP20's)" (at 342.9 121.92 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "2" (uuid "a7c19e00-3e96-57d4-a937-8440348806e9"))
+		(pin "1" (uuid "64325eca-2db9-56fb-b08d-89488d751d25"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "LED6") (unit 1))))
+	)
+	(wire (pts (xy 337.82 121.92) (xy 335.28 121.92)) (stroke (width 0) (type default)) (uuid "f2dac0c5-4036-5fe9-a67c-9e281120f81d"))
+	(label "+5V_PNL" (at 335.28 121.92 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "377e2340-9f96-593b-b22b-8ce4c87e4bd3"))
+	(wire (pts (xy 347.98 121.92) (xy 350.52 121.92)) (stroke (width 0) (type default)) (uuid "acd1b662-70c2-5382-ba02-16015e2efba8"))
+	(label "LED_HAZARD" (at 350.52 121.92 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "dd8fb0a4-3314-55f3-836c-286060b3400c"))
+	(symbol (lib_id "cur-board:SW_Push_SPDT") (at 60.96 177.8 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "1d5e5646-d5e8-55e8-ad4b-0f34519aaf19")
+		(property "Reference" "SW3" (at 60.96 171.45 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "wink - left (P204)" (at 60.96 184.15 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "cur-board:WinkSwitch_P204_SPDT_Placeholder" (at 60.96 177.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 60.96 177.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "P204: board-mount SPDT momentary under a lit 17 x 15 cap, C&K 8125 class - no part chosen; the placeholder footprint's pins (1 NC, 2 COM, 3 NO) and body from the part's drawing - confirm" (at 60.96 177.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "9062c99c-4941-55a3-9278-39336f8bb9e7"))
+		(pin "2" (uuid "019f86f8-45a3-57fd-99b9-2dad506133b7"))
+		(pin "3" (uuid "6ab2b1c5-d0d2-54a5-974c-f1850448c789"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "SW3") (unit 1))))
+	)
+	(wire (pts (xy 66.04 175.26) (xy 68.58 175.26)) (stroke (width 0) (type default)) (uuid "8ad00836-dbe4-5d29-8d78-4bd6c380d364"))
+	(label "WINK_L_NC" (at 68.58 175.26 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "f3d0379c-bc21-5c46-b0dc-97eb1ae3faf9"))
+	(wire (pts (xy 55.88 177.8) (xy 53.34 177.8)) (stroke (width 0) (type default)) (uuid "c640b371-0bd1-5526-8a77-60dc565bbcb2"))
+	(label "WINK_COM" (at 53.34 177.8 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "65a6644b-5103-5ea4-8eed-abcff3b3c31a"))
+	(wire (pts (xy 66.04 180.34) (xy 68.58 180.34)) (stroke (width 0) (type default)) (uuid "a5176a50-0a15-5f91-9a65-c265943dc257"))
+	(label "WINK_L_NO" (at 68.58 180.34 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "4a9d6bb0-def9-54a9-a102-18d546b83d4d"))
+	(symbol (lib_id "cur-board:R") (at 111.76 177.8 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "aa2b138e-20fa-5327-8707-2b14f46f04e2")
+		(property "Reference" "R3" (at 111.76 173.99 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "18k" (at 111.76 181.61 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 111.76 177.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 111.76 177.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "the wink left ladder resistor (DV24, L3-S1 11), on the plate since D-499 - 1 %" (at 111.76 177.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "384cd774-9430-5758-9254-49c9af3d65fa"))
+		(pin "2" (uuid "7f26ca45-1c6e-5320-a0c8-7174f08801ec"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "R3") (unit 1))))
+	)
+	(wire (pts (xy 106.68 177.8) (xy 104.14 177.8)) (stroke (width 0) (type default)) (uuid "c382b7f1-6470-56a2-96ae-435ef5391640"))
+	(label "WINK_L_NO" (at 104.14 177.8 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "37eb9090-c7c8-5cba-978b-0fca94ee4391"))
+	(wire (pts (xy 116.84 177.8) (xy 119.38 177.8)) (stroke (width 0) (type default)) (uuid "116004b0-ba4b-50ba-a6a5-ade9d57ec227"))
+	(label "WINK_REQ" (at 119.38 177.8 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "fb55b6d7-48d1-52b2-b80f-96e8d6057257"))
+	(symbol (lib_id "cur-board:SW_Push_SPDT") (at 60.96 203.2 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "28d7c340-0838-5500-9ab9-aa59900048b6")
+		(property "Reference" "SW4" (at 60.96 196.85 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "wink - right (P204)" (at 60.96 209.55 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "cur-board:WinkSwitch_P204_SPDT_Placeholder" (at 60.96 203.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 60.96 203.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "P204: board-mount SPDT momentary under a lit 17 x 15 cap, C&K 8125 class - no part chosen; the placeholder footprint's pins (1 NC, 2 COM, 3 NO) and body from the part's drawing - confirm" (at 60.96 203.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "05c9d105-c84f-5c90-9583-8f4762760c6c"))
+		(pin "2" (uuid "ae3914e3-9a02-591f-8143-b839d8549441"))
+		(pin "3" (uuid "cd43d944-1a42-5335-8acd-82c503b182c7"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "SW4") (unit 1))))
+	)
+	(wire (pts (xy 66.04 200.66) (xy 68.58 200.66)) (stroke (width 0) (type default)) (uuid "48248a57-d7fe-53f5-b278-611417c2954f"))
+	(label "WINK_R_NC" (at 68.58 200.66 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "7ab7a76a-f480-5f54-9e11-b815cadc992d"))
+	(wire (pts (xy 55.88 203.2) (xy 53.34 203.2)) (stroke (width 0) (type default)) (uuid "979a5658-ad38-574a-97f0-3879fd3968a9"))
+	(label "WINK_COM" (at 53.34 203.2 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "b71bc52a-3c37-54cd-830d-6310a05b4f2a"))
+	(wire (pts (xy 66.04 205.74) (xy 68.58 205.74)) (stroke (width 0) (type default)) (uuid "b7365193-f283-574f-b735-76411f68437a"))
+	(label "WINK_R_NO" (at 68.58 205.74 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "0f2584bf-a9ab-5ff7-9849-1511e7b0a926"))
+	(symbol (lib_id "cur-board:R") (at 111.76 203.2 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "c67244fb-0d9c-51a5-83b1-d276dc23e96b")
+		(property "Reference" "R4" (at 111.76 199.39 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "33k" (at 111.76 207.01 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 111.76 203.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 111.76 203.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "the wink right ladder resistor (DV24, L3-S1 11), on the plate since D-499 - 1 %" (at 111.76 203.2 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "8a3b9bb8-fc3a-52f4-b92e-87ecadd76ee8"))
+		(pin "2" (uuid "3c511ff8-1fb3-56e4-807b-c54958038e4d"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "R4") (unit 1))))
+	)
+	(wire (pts (xy 106.68 203.2) (xy 104.14 203.2)) (stroke (width 0) (type default)) (uuid "9ce30105-08f1-5fe1-a393-da0923459c3d"))
+	(label "WINK_R_NO" (at 104.14 203.2 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "fb9189b8-67b7-5c1c-98ee-7be9adae0644"))
+	(wire (pts (xy 116.84 203.2) (xy 119.38 203.2)) (stroke (width 0) (type default)) (uuid "ee4e55b1-194f-56dd-8a6f-2c9bac724f81"))
+	(label "WINK_REQ" (at 119.38 203.2 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "f23dfa84-dc80-5002-96af-df8884837352"))
+	(symbol (lib_id "cur-board:Conn_01x05") (at 165.1 190.5 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "a1a5cb50-e301-5c6f-94ae-efee92970e2e")
+		(property "Reference" "J2" (at 165.1 181.61 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "wink lead header 1x5 (L3-S1 9 / 10 / 11, commons, L3-S1 6)" (at 165.1 199.39 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Connector_JST:JST_XH_B5B-XH-A_1x05_P2.50mm_Vertical" (at 165.1 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 165.1 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "the wink lead's plate end (DV24, D-499, D-586): pin 1 = L3-S1 9, 2 = L3-S1 10, 3 = L3-S1 11, 4 = the commons to dash ground (G20), 5 = L3-S1 6 the hazard; JST XH 5-way, locking - housing and crimps confirm, the lead's run to the dash post not measured" (at 165.1 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "f4a809dc-f94e-522e-9a2a-782bf45dac3d"))
+		(pin "2" (uuid "ddf5f546-da82-5c46-b275-3e1f8ae889d6"))
+		(pin "3" (uuid "a0f4dbc1-abf4-5b8a-b911-d7dce59a5dfc"))
+		(pin "4" (uuid "247ab705-e94e-5bfe-b6b9-9e3437fd07c9"))
+		(pin "5" (uuid "9dc3d426-8263-582d-aab7-2bd8a2d17b36"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "J2") (unit 1))))
+	)
+	(wire (pts (xy 160.02 185.42) (xy 157.48 185.42)) (stroke (width 0) (type default)) (uuid "8005fdfd-f0c7-58e6-9d13-9a943a6cbf57"))
+	(label "WINK_L_NC" (at 157.48 185.42 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "c2e4ef12-19d4-5c1c-b58a-14e73cb605b1"))
+	(wire (pts (xy 160.02 187.96) (xy 157.48 187.96)) (stroke (width 0) (type default)) (uuid "432b3512-d304-554e-af78-61fb0a5ed5a3"))
+	(label "WINK_R_NC" (at 157.48 187.96 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "4324c4c7-fd14-570a-bcda-8b0c5cab92d6"))
+	(wire (pts (xy 160.02 190.5) (xy 157.48 190.5)) (stroke (width 0) (type default)) (uuid "dd2728b7-5095-5207-b3f7-d6349ace8df1"))
+	(label "WINK_REQ" (at 157.48 190.5 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "58ada37a-356b-5bfb-b0f5-152dfe3b0967"))
+	(wire (pts (xy 160.02 193.04) (xy 157.48 193.04)) (stroke (width 0) (type default)) (uuid "a0521cfc-1966-525c-a49b-c532b465d64a"))
+	(label "WINK_COM" (at 157.48 193.04 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "64479524-cad2-5e21-8fd9-3e6b6acb575a"))
+	(wire (pts (xy 160.02 195.58) (xy 157.48 195.58)) (stroke (width 0) (type default)) (uuid "c8496a73-6167-544a-83c6-1f28f4744e0e"))
+	(label "HAZ_LADDER" (at 157.48 195.58 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "b182566f-c902-5912-9a2f-cb006339a8d4"))
+	(symbol (lib_id "cur-board:SW_SPST") (at 60.96 228.6 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "acf9de5a-ada0-53e7-9abd-8b42d87eb4fe")
+		(property "Reference" "SW5" (at 60.96 224.79 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "hazard - latching (P226)" (at 60.96 232.41 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "cur-board:HazardSwitch_P226_Latching_Placeholder" (at 60.96 228.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 60.96 228.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "P226: latching push button under a lit red-triangle 17 x 15 cap, board-mounted like the winks - no part chosen; the placeholder footprint's two pins and body from the part's drawing - confirm" (at 60.96 228.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "835de516-cdc2-593e-9176-729c1014f653"))
+		(pin "2" (uuid "01786585-a85a-5cf1-8a3d-4d8d71c39aa2"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "SW5") (unit 1))))
+	)
+	(wire (pts (xy 55.88 228.6) (xy 53.34 228.6)) (stroke (width 0) (type default)) (uuid "8a100346-553d-559c-8811-bbca5802bba9"))
+	(label "HAZ_SW" (at 53.34 228.6 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "85281f2f-0384-53ba-8a96-9691bdb516d3"))
+	(wire (pts (xy 66.04 228.6) (xy 68.58 228.6)) (stroke (width 0) (type default)) (uuid "64e4739d-ac7c-55bf-b316-9f2929f60d7e"))
+	(label "WINK_COM" (at 68.58 228.6 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "04fd2277-5c23-5ef5-84bd-2e2f11b9c83e"))
+	(symbol (lib_id "cur-board:R") (at 111.76 228.6 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "b42297d6-d411-5aa7-b0dc-ce74f52cd328")
+		(property "Reference" "R5" (at 111.76 224.79 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "4.7k" (at 111.76 232.41 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 111.76 228.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 111.76 228.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "the hazard's ladder resistor (DV21, D-368, D-586): HAZARD on A8 when the button is in - 1 %" (at 111.76 228.6 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "95840cbc-c505-5581-a090-d2867489dee6"))
+		(pin "2" (uuid "0d1b9590-29cc-5590-bc71-9161a1b3b0c4"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "R5") (unit 1))))
+	)
+	(wire (pts (xy 106.68 228.6) (xy 104.14 228.6)) (stroke (width 0) (type default)) (uuid "2fa865cd-21ca-5b21-ac61-434ac042a58b"))
+	(label "HAZ_LADDER" (at 104.14 228.6 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "a07b7ae4-badf-5b86-8e03-3748c1789a8c"))
+	(wire (pts (xy 116.84 228.6) (xy 119.38 228.6)) (stroke (width 0) (type default)) (uuid "639abb6a-d2f0-5029-845e-e89e2fa06e63"))
+	(label "HAZ_SW" (at 119.38 228.6 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "4023e971-8b5d-5307-b21b-df80668168a2"))
+	(symbol (lib_id "cur-board:R") (at 111.76 241.3 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "6a89dfaf-b422-51cb-8e4b-24e0f498229f")
+		(property "Reference" "R6" (at 111.76 237.49 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "47k" (at 111.76 245.11 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric" (at 111.76 241.3 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 111.76 241.3 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "the hazard's 47 k baseline (D-368): the PMU reads the wire present with the button out - 1 %" (at 111.76 241.3 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "c42df264-c612-57ff-bcae-8c6d2a646083"))
+		(pin "2" (uuid "0c13b473-b546-5d02-9449-89da3c9c2a52"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "R6") (unit 1))))
+	)
+	(wire (pts (xy 106.68 241.3) (xy 104.14 241.3)) (stroke (width 0) (type default)) (uuid "d89b12e1-a31b-5587-a6f0-36b30932aba0"))
+	(label "HAZ_LADDER" (at 104.14 241.3 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "efa5a36e-309d-5a09-9b62-d50982fae16d"))
+	(wire (pts (xy 116.84 241.3) (xy 119.38 241.3)) (stroke (width 0) (type default)) (uuid "d6951273-896a-5673-b1de-e43b6a428b2e"))
+	(label "WINK_COM" (at 119.38 241.3 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "f9076dfc-fa44-5f02-87f5-fa534a2d40f7"))
+	(symbol (lib_id "cur-board:Conn_01x04") (at 279.4 190.5 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "f21e96be-fb13-504e-9f1d-8e3911977521")
+		(property "Reference" "J4" (at 279.4 184.15 0) (effects (font (size 1.27 1.27))))
+		(property "Value" "screen knob lead header (STEMMA QT, P219)" (at 279.4 199.39 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Connector_JST:JST_SH_BM04B-SRSS-TB_1x04-1MP_P1.00mm_Vertical" (at 279.4 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 279.4 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Confirm" "the screen knob's I2C encoder board (P219, seesaw 0x36, SN32) on a JST-SH 4-way lead: 1 GND, 2 +3V3 (never +5V_PNL, D-580), 3 PNL_SDA, 4 PNL_SCL - the lead's length set by the plate, confirm" (at 279.4 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "0fc2a40e-200b-50ae-b5ba-473b66d3b4a0"))
+		(pin "2" (uuid "6a452e33-3ed3-5fd4-8cad-ec2abfe785c3"))
+		(pin "3" (uuid "47c16324-539b-5f24-8b1f-a21e915a467e"))
+		(pin "4" (uuid "6ed8167f-ca6f-5ba5-aaa7-2a78fcc49271"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "J4") (unit 1))))
+	)
+	(wire (pts (xy 274.32 187.96) (xy 271.78 187.96)) (stroke (width 0) (type default)) (uuid "5841f9c9-b69d-50a7-8e4a-af12681e7902"))
+	(symbol (lib_id "cur-board:GND") (at 271.78 187.96 270) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "ea0339c5-3004-58e9-bf2d-b62d0f898f22")
+		(property "Reference" "#PWR010" (at 271.78 187.96 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "GND" (at 265.78 188.56 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 271.78 187.96 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 271.78 187.96 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "6760bc32-cf41-5e7a-85ba-1ef39c49ccdb"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR010") (unit 1))))
+	)
+	(wire (pts (xy 274.32 190.5) (xy 271.78 190.5)) (stroke (width 0) (type default)) (uuid "161d2fd5-8938-52ad-b330-a38ec4281921"))
+	(symbol (lib_id "cur-board:+3V3") (at 271.78 190.5 90) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "2faac07d-0dc3-5767-a9a9-5dbc35ee8a73")
+		(property "Reference" "#PWR011" (at 271.78 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "+3V3" (at 265.78 191.1 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 271.78 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 271.78 190.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "45d9427c-e844-5726-a068-0a36c7d41d3b"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR011") (unit 1))))
+	)
+	(wire (pts (xy 274.32 193.04) (xy 271.78 193.04)) (stroke (width 0) (type default)) (uuid "18ea816f-d129-5de8-b6f7-38f532c6c750"))
+	(label "PNL_SDA" (at 271.78 193.04 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "c6c1e1af-49dc-564c-8d98-b736790be1e7"))
+	(wire (pts (xy 274.32 195.58) (xy 271.78 195.58)) (stroke (width 0) (type default)) (uuid "7194d1cc-3749-56ad-835d-c191798ac798"))
+	(label "PNL_SCL" (at 271.78 195.58 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "49e564c8-e371-503e-a8cd-5d8e9fcac9ec"))
+	(wire (pts (xy 60.96 121.92) (xy 60.96 127)) (stroke (width 0) (type default)) (uuid "991a50da-5642-5989-bad9-0b942e5e1f97"))
+	(symbol (lib_id "cur-board:PWR_FLAG") (at 60.96 121.92 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "8be433c0-8abc-5d55-bded-0aa442a8539a")
+		(property "Reference" "#FLG01" (at 60.96 121.92 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "PWR_FLAG" (at 60.96 117.42 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 60.96 121.92 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 60.96 121.92 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "6c79fe24-d655-5b91-b394-7f428b4f9a25"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#FLG01") (unit 1))))
+	)
+	(symbol (lib_id "cur-board:GND") (at 60.96 127 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "edad1a86-e38e-5116-adbd-f490100ede8c")
+		(property "Reference" "#PWR012" (at 60.96 127 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "GND" (at 60.96 131.5 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 60.96 127 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 60.96 127 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "e059196e-de07-5913-bc41-0f157d2126f6"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR012") (unit 1))))
+	)
+	(wire (pts (xy 76.2 121.92) (xy 76.2 127)) (stroke (width 0) (type default)) (uuid "0ecc3c00-04f9-529a-88a1-5c66651cd039"))
+	(symbol (lib_id "cur-board:PWR_FLAG") (at 76.2 121.92 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "a0c2846b-d285-5496-9358-921990b6c1e8")
+		(property "Reference" "#FLG02" (at 76.2 121.92 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "PWR_FLAG" (at 76.2 117.42 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 76.2 121.92 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 76.2 121.92 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "6aa829dd-9b1d-51f6-807c-2817fc2cd41d"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#FLG02") (unit 1))))
+	)
+	(symbol (lib_id "cur-board:+3V3") (at 76.2 127 180) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "f34348e2-2d95-5589-9cf5-50986981bf97")
+		(property "Reference" "#PWR013" (at 76.2 127 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "+3V3" (at 76.2 131.5 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 76.2 127 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 76.2 127 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "bc0127a6-c8ec-51a3-b339-33689d668ed1"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#PWR013") (unit 1))))
+	)
+	(wire (pts (xy 91.44 121.92) (xy 91.44 127)) (stroke (width 0) (type default)) (uuid "f08ca03e-604f-57af-9b94-580c485fdfdf"))
+	(symbol (lib_id "cur-board:PWR_FLAG") (at 91.44 121.92 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "0704c55f-08fd-5720-9d04-8ed1df337312")
+		(property "Reference" "#FLG03" (at 91.44 121.92 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "PWR_FLAG" (at 91.44 117.42 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 91.44 121.92 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 91.44 121.92 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "cd57c7a8-4342-50a3-b155-4767d35f3f35"))
+		(instances (project "cur-board" (path "/6c1e7a52-3f0d-4b8e-9a2c-1d5e0f7b2a21" (reference "#FLG03") (unit 1))))
+	)
+	(label "+5V_PNL" (at 91.44 127 270) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "935bc474-725d-52fc-ab84-d6ded2de4b84"))
+	(text "J1 - THE CABLE TO DP-DCU-E (P200)" (exclude_from_sim no) (at 25.4 25.4 0) (effects (font (size 2.0 2.0) (bold yes)) (justify left top)) (uuid "2bcd233e-e49a-598b-a3fc-5246c2ba9695"))
+	(text "pin n = cavity n, on the net its panel_ribbon line names" (exclude_from_sim no) (at 25.4 30.48 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "a97e182e-c861-5303-8d83-0bd2278b6034"))
+	(text "THE KEYS (matrix, D-492)" (exclude_from_sim no) (at 139.7 25.4 0) (effects (font (size 2.0 2.0) (bold yes)) (justify left top)) (uuid "20a302b1-504b-5165-8ccf-54186eae9e4d"))
+	(text "ROW1 -> 1N4148W K..A -> key -> column" (exclude_from_sim no) (at 139.7 34.29 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "fdb02c16-49d1-54bb-904b-a2d198e0fc58"))
+	(text "hatch COL2 (DP-DCU-E 2), fuel door COL3 (DP-DCU-E 3)" (exclude_from_sim no) (at 139.7 30.48 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "7e7b21e6-93ce-5d59-bf70-67a915d38b20"))
+	(text "THE MIRROR STICK (P156, placeholder - no part chosen)" (exclude_from_sim no) (at 139.7 81.28 0) (effects (font (size 2.0 2.0) (bold yes)) (justify left top)) (uuid "6d8aa977-29b7-5966-bc57-26cf5599564a"))
+	(text "pots across +3V3 / AGND (D-380: its own return), wipers JOY_X / JOY_Y, the push JOY_PRESS to GND (panel_ribbon 19)" (exclude_from_sim no) (at 139.7 86.36 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "59f41929-b7ab-5cf0-9000-579365d3c839"))
+	(text "THE LIGHTS: IS31FL3218 at 0x54, five symbols at 7.6 mA" (exclude_from_sim no) (at 228.6 25.4 0) (effects (font (size 2.0 2.0) (bold yes)) (justify left top)) (uuid "0aa17e29-c8f8-5286-86ae-f9ab1e9f22af"))
+	(text "OUT1 wink L face, OUT2 wink R face, OUT3 hatch, OUT4 fuel door, OUT6 hazard, OUT13 mirror stick - the DCU firmware's map (lights.h, F-018, Y62)" (exclude_from_sim no) (at 228.6 30.48 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "159446d0-e205-52b1-9fb9-1bf8226bc9bd"))
+	(text "OUT5, OUT7-OUT12, OUT14-OUT18 open. The bus pull-ups are on the carrier (R51 / R52, 4.7k to +3V3); none here." (exclude_from_sim no) (at 228.6 34.29 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "2b822f0b-cf0b-5d6e-bf87-b352889a8f85"))
+	(text "THE WINK SWITCHES (P204, D-499) AND THEIR LEAD J2 TO THE DASH POST" (exclude_from_sim no) (at 25.4 152.4 0) (effects (font (size 2.0 2.0) (bold yes)) (justify left top)) (uuid "c1a79686-e528-5ce2-9fd3-85e116a5c862"))
+	(text "Two SPDT momentary pushbuttons under lit caps (the faces are LED1 / LED2 on the driver). Their lines are the harness's (DV24, D-189, D-482), unchanged:" (exclude_from_sim no) (at 25.4 157.48 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "f5dc3d3a-d075-531b-bfa2-20496019aae1"))
+	(text "NC poles to L3-S1 9 / 10 (J2 pins 1 / 2), NO poles through 18k / 33k joined as WINK_REQ to L3-S1 11 (J2 pin 3), the commons to dash ground (J2 pin 4, G20)." (exclude_from_sim no) (at 25.4 161.29 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "ad0a4384-4634-519a-93dd-c9f55280140a"))
+	(text "WINK_COM is NOT this board's GND: the winks return to the dash post as today, the plate's electronics on DP-DCU 43 and 46 (DV62). Symbol pins: 1 A = NC, 2 B = common, 3 C = NO." (exclude_from_sim no) (at 25.4 165.1 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "af8d551b-6d33-5f70-842a-85dd37fe17ba"))
+	(text "THE HAZARD (P226, D-586, D-589): A LATCHING BUTTON ON THE WINK LEAD" (exclude_from_sim no) (at 25.4 215.9 0) (effects (font (size 2.0 2.0) (bold yes)) (justify left top)) (uuid "dbf1eff6-beb8-56bc-aad6-474f60d6aed3"))
+	(text "L3-S1 6 (J2 pin 5) -> 4.7k -> the button -> the winks' commons (J2 pin 4, G20); 47k across the whole (D-368): the A8 ladder reads HAZARD while it is in." (exclude_from_sim no) (at 25.4 220.98 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "ca069292-4da8-5756-9cdc-88fd02f135c8"))
+	(text "Its red-triangle cap is LED6 on the driver's OUT6. The column's F-02 hazard contact is left unconnected (D-586)." (exclude_from_sim no) (at 25.4 224.79 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "f13d14f8-2c62-5188-91cb-f17eedc30d28"))
+	(text "J4 - THE SCREEN KNOB'S LEAD (P219, D-580, D-581)" (exclude_from_sim no) (at 228.6 177.8 0) (effects (font (size 2.0 2.0) (bold yes)) (justify left top)) (uuid "a5665e15-88b0-5837-b748-281fbcf24619"))
+	(text "STEMMA QT order: 1 GND, 2 +3V3, 3 PNL_SDA, 4 PNL_SCL. The knob's encoder board (seesaw 0x36) stands off the plate's front, its shaft through the faceplate." (exclude_from_sim no) (at 228.6 182.88 0) (effects (font (size 1.5 1.5)) (justify left top)) (uuid "01ed5aa8-c291-5cae-9263-e8d08a7cfd11"))
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

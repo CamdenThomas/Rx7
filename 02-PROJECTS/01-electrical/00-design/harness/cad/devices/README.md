@@ -8,10 +8,10 @@ each device is and where; this folder only draws it.*
 ## What it makes
 
 ```
-python3 02-PROJECTS/01-electrical/00-design/harness/cad/devices/build_devices.py              build all (about 15 s)
-python3 .../build_devices.py --only relay-micro-iso    one model, then the manifest
-python3 .../build_devices.py --check                   are the glb files current?
-python3 .../build_devices.py --selftest                hold the manifest to its contract
+python3 02-PROJECTS/01-electrical/00-design/tools/harness_devices.py              build all (about 15 s)
+python3 .../harness_devices.py --only relay-micro-iso    one model, then the manifest
+python3 .../harness_devices.py --check                   are the glb files current?
+python3 .../harness_devices.py --selftest                hold the manifest to its contract
 ```
 
 From the tree's root (on the Mac, `env DEVELOPER_DIR=/Library/Developer/CommandLineTools`

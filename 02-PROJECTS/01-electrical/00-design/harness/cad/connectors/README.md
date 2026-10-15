@@ -6,7 +6,7 @@ per variant, each figure with where it was read or that it was estimated, every 
 
 ## What it is
 
-`build_connectors.py` reads `connector_dims` through `rx7.py sql` and writes one glb per variant -
+`tools/harness_connectors.py` reads `connector_dims` through `rx7.py sql` and writes one glb per variant -
 the five DT06 plugs, the five DT04 receptacles, the four DTP halves and the three DT13 headers the
 `housings` name - and `manifest.json` beside them. A variant whose `cad` row points at a vendor
 model on this machine, in a frame the builder knows (`FRAMES`), is converted from that model;
@@ -43,10 +43,10 @@ bytes, nodes, stamp}}`. It is committed; the glb files are not (`.gitignore`, as
 ## Rebuild
 
 ```
-python3 02-PROJECTS/01-electrical/00-design/harness/cad/connectors/build_connectors.py               all (about 2 min)
-python3 02-PROJECTS/01-electrical/00-design/harness/cad/connectors/build_connectors.py --only DT06-8S one, merged into the manifest
-python3 02-PROJECTS/01-electrical/00-design/harness/cad/connectors/build_connectors.py --check        are the files current?
-python3 02-PROJECTS/01-electrical/00-design/harness/cad/connectors/build_connectors.py --selftest     hold the files to the rows
+python3 02-PROJECTS/01-electrical/00-design/tools/harness_connectors.py               all (about 2 min)
+python3 02-PROJECTS/01-electrical/00-design/tools/harness_connectors.py --only DT06-8S one, merged into the manifest
+python3 02-PROJECTS/01-electrical/00-design/tools/harness_connectors.py --check        are the files current?
+python3 02-PROJECTS/01-electrical/00-design/tools/harness_connectors.py --selftest     hold the files to the rows
 ```
 
 From the tree's root (on the Mac, `env DEVELOPER_DIR=...` as every python3 call); `--out DIR` for

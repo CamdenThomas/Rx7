@@ -66,9 +66,9 @@ const near = (v: Vector3, x: number, y: number, z: number) => {
 describe('the scene file is read defensively', () => {
   it('reads the stub whole, with nothing to forgive', () => {
     expect(parsed.problems).toEqual([]);
-    expect(s.parts.map((p) => p.id)).toEqual(['control-unit', 'dcu-carrier', 'pmu', 'ground-point']);
+    expect(s.parts.map((p) => p.id)).toEqual(['control-unit', 'cu-carrier', 'pmu', 'ground-point']);
     expect(s.links.map((l) => l.id)).toEqual(['DP-DCU', 'GND-1']);
-    expect(s.missing).toEqual([{ part: 'left-plate', what: 'housing model', why: 'the plate is not drawn yet' }]);
+    expect(s.missing).toEqual([{ part: 'cur-board', what: 'housing model', why: 'the plate is not drawn yet' }]);
     expect(s.notes).toHaveLength(1);
     expect(s.frame.ruling).toBe('D-418');
   });
@@ -122,9 +122,9 @@ describe('the scene file is read defensively', () => {
 describe('the tree', () => {
   it('top level, children, family, root', () => {
     expect(topLevel(s).map((p) => p.id)).toEqual(['control-unit', 'pmu', 'ground-point']);
-    expect(childrenOf(s, 'control-unit').map((p) => p.id)).toEqual(['dcu-carrier']);
-    expect([...family(s, 'control-unit')]).toEqual(['control-unit', 'dcu-carrier']);
-    expect(rootOf(s, 'dcu-carrier')).toBe('control-unit');
+    expect(childrenOf(s, 'control-unit').map((p) => p.id)).toEqual(['cu-carrier']);
+    expect([...family(s, 'control-unit')]).toEqual(['control-unit', 'cu-carrier']);
+    expect(rootOf(s, 'cu-carrier')).toBe('control-unit');
     expect(rootOf(s, 'pmu')).toBe('pmu');
   });
 });
@@ -144,8 +144,8 @@ describe('the frames', () => {
   });
 
   it('a child is placed in its parent frame', () => {
-    near(new Vector3(60, 0, 2).applyMatrix4(worldMatrix(s, 'dcu-carrier')), -200, 460, 612);
-    near(new Vector3(60, 0, 2).applyMatrix4(matrixUnder(s, 'dcu-carrier', 'control-unit')), 0, 60, 12);
+    near(new Vector3(60, 0, 2).applyMatrix4(worldMatrix(s, 'cu-carrier')), -200, 460, 612);
+    near(new Vector3(60, 0, 2).applyMatrix4(matrixUnder(s, 'cu-carrier', 'control-unit')), 0, 60, 12);
   });
 });
 
@@ -191,7 +191,7 @@ describe('isolating', () => {
     const link = focusOf(s, { kind: 'link', id: 'GND-1' })!;
     expect([...link.parts]).toEqual(['pmu', 'ground-point']);
     expect([...link.links]).toEqual(['GND-1']);
-    expect([...focusOf(s, { kind: 'part', id: 'dcu-carrier' })!.parts]).toEqual(['control-unit']);
+    expect([...focusOf(s, { kind: 'part', id: 'cu-carrier' })!.parts]).toEqual(['control-unit']);
     expect(focusOf(s, { kind: 'part', id: 'gone' })).toBeNull();
   });
 });
@@ -282,7 +282,7 @@ describe('what the camera frames', () => {
     const f = fitSet(s, { kind: 'part', id: 'pmu' });
     expect([...f.parts]).toEqual(['pmu']);
     expect(f.links.size).toBe(0);
-    expect([...fitSet(s, { kind: 'part', id: 'dcu-carrier' }).parts]).toEqual(['control-unit']);
+    expect([...fitSet(s, { kind: 'part', id: 'cu-carrier' }).parts]).toEqual(['control-unit']);
   });
   it('an isolated link: its modelled ends and both end points', () => {
     const f = fitSet(s, { kind: 'link', id: 'GND-1' });
@@ -420,11 +420,11 @@ describe('version 2: connectors, legs, the CUR', () => {
 
   it('connectors are drawn on their own but not listed as parts', () => {
     expect(listedTop(s2).map((p) => p.id)).toEqual(['cur', 'pmu', 'dash-post', 'engine-end', 'rear-end']);
-    expect(listedChildren(s2, 'cur').map((p) => p.id)).toEqual(['left-plate']);
+    expect(listedChildren(s2, 'cur').map((p) => p.id)).toEqual(['cur-board']);
     expect(drawnIds(s2)).toContain('L3-S1:receptacle');
-    expect(drawnIds(s2)).not.toContain('left-plate');
+    expect(drawnIds(s2)).not.toContain('cur-board');
     expect(drawnId(s2, 'L3-S1:receptacle')).toBe('L3-S1:receptacle');
-    expect(drawnId(s2, 'left-plate')).toBe('cur');
+    expect(drawnId(s2, 'cur-board')).toBe('cur');
   });
 
   it('a receptacle on a unit sits in the unit frame', () => {
@@ -582,15 +582,15 @@ describe('the car: a scene of separate solids', () => {
   it('the harness merges in as a layer: ids prefixed, models from its own folder, drawn by its rules', () => {
     const m = mergeScenes(sc, s2, 'h:', '/design/01-electrical/', { id: 'harness', name: 'Harness' });
     expect(m.parts).toHaveLength(sc.parts.length + s2.parts.length);
-    const plate = m.parts.find((p) => p.id === 'h:left-plate')!;
-    expect(plate).toMatchObject({ parent: 'h:cur', glb: '/design/01-electrical/left-plate.glb', system: 'harness', layer: 'h:' });
+    const plate = m.parts.find((p) => p.id === 'h:cur-board')!;
+    expect(plate).toMatchObject({ parent: 'h:cur', glb: '/design/01-electrical/cur-board.glb', system: 'harness', layer: 'h:' });
     expect(m.parts.find((p) => p.id === 'h:L1-S1:plug')!.mate).toBe('h:L1-S1:receptacle');
     expect(m.links[0].from.part).toBe('h:pmu');
     expect(m.legs[1].branches[0].to).toBe('h:rear-end');
     expect(m.systems.map((x) => x.id)).toEqual(['body', 'suspension', 'harness']);
     // the car's parts are each drawn; the harness's board stays inside its unit
     expect(drawnIds(m)).toContain('bracket');
-    expect(drawnIds(m)).not.toContain('h:left-plate');
-    expect(drawnId(m, 'h:left-plate')).toBe('h:cur');
+    expect(drawnIds(m)).not.toContain('h:cur-board');
+    expect(drawnId(m, 'h:cur-board')).toBe('h:cur');
   });
 });

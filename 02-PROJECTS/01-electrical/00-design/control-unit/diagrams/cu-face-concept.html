@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CU Face Concept</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600&family=Doto:wght@700;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one column, the working drawing first, its sizes and the height slider under it, then
+   the face at real size under the stereo, the screens, the dark, and the list of guesses.
+   The face is a physical object, so its own colours are the same in both themes. */
+:root {
+  --bg: #f1f3ef;
+  --surface: #ffffff;
+  --fg: #17211c;
+  --muted: #58645d;
+  --line: #d3d9d3;
+  --accent: #0e6f40;          /* the car's emerald */
+  --guess: #a84a06;           /* everything the drawing guessed at */
+  --guess-fg: #ffffff;
+  --warn: #b3261e;
+  --btn-bg: #ffffff;
+  --btn-on: #dff1e6;
+
+  /* the object: same in light and dark */
+  --face: #1c1f22;
+  --face-night: #07090a;
+  --key: #2b3034;
+  --key-night: #0e1112;
+  --rim: #32373c;
+  --cap: #454b51;
+  --cap-night: #171b1d;
+  --slot: #0c0e10;
+  --slot-night: #030404;
+  --tick: #5d656c;
+  --legend: #c8cdd2;
+  --legend-night: #1d2124;
+  --led-off: #2a2e31;
+  --led-off-night: #111415;
+  --led-pure: #2fe57a;
+  --led-yg: #a9e22b;
+  --led: var(--led-pure);
+  --cool: #4aa8ff;
+  --heat: #ff8a3c;
+  --screen-bg: #020503;
+  --cabin-night: #020303;
+  --night-ink: #8a948e;
+  --hu: #121416;
+  --hu-glass: #050607;
+
+  --f-body: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --f-cond: "Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --f-px: "Doto", "Courier New", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1311; --surface: #161c19; --fg: #e5ebe7; --muted: #9ba8a1; --line: #2a332e;
+    --accent: #55cf90; --guess: #f0a04b; --guess-fg: #1b1205; --warn: #ff8a80; --btn-bg: #1c2420; --btn-on: #1f3a2b;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1311; --surface: #161c19; --fg: #e5ebe7; --muted: #9ba8a1; --line: #2a332e;
+  --accent: #55cf90; --guess: #f0a04b; --guess-fg: #1b1205; --warn: #ff8a80; --btn-bg: #1c2420; --btn-on: #1f3a2b;
+  color-scheme: dark;
+}
+
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--f-body); font-size: 16px; line-height: 1.5; }
+main { max-width: 1120px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 56px; display: flex; flex-direction: column; gap: 36px; }
+main[data-green="yg"] { --led: var(--led-yg); }
+section { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+h1, h2, h3 { font-family: var(--f-cond); font-weight: 600; text-wrap: balance; margin: 0; line-height: 1.1; }
+h1 { font-size: 2.3rem; letter-spacing: .01em; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.05rem; font-family: var(--f-body); font-weight: 600; }
+p { margin: 0; max-width: 70ch; }
+.lede { color: var(--muted); }
+.eyebrow { font-family: var(--f-mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+
+.g { display: inline-flex; align-items: center; justify-content: center; min-width: 1.45em; height: 1.45em; padding: 0 .3em;
+     border-radius: 999px; background: var(--guess); color: var(--guess-fg); font-family: var(--f-mono); font-size: .72rem; font-weight: 500; vertical-align: .08em; }
+
+/* the drawing */
+.stage { --stage-bg: var(--surface); --stage-ink: var(--muted); background: var(--stage-bg); border: 1px solid var(--line); border-radius: 6px; overflow-x: auto; }
+.stage.night { --stage-bg: var(--cabin-night); --stage-ink: var(--night-ink); }
+.stage svg { display: block; width: 100%; min-width: 760px; height: auto; }
+.stage.real { padding: 20px 16px; }
+.stage.real svg { width: auto; min-width: 0; margin: 0 auto; }
+
+.face { fill: var(--face); }
+.night .face { fill: var(--face-night); }
+.bezel { fill: #050607; }
+.ink { font-family: var(--f-mono); fill: var(--stage-ink); }
+.dim { stroke: var(--stage-ink); stroke-width: 3; fill: none; }
+.hu-nose { fill: var(--hu); }
+.hu-glass { fill: var(--hu-glass); }
+.hu-t { font-family: var(--f-mono); fill: #5d656c; }
+
+.knob-rim { fill: var(--rim); }
+.knob-cap { fill: var(--cap); }
+.tick { stroke: var(--tick); stroke-width: 4; }
+.night .knob-rim { fill: #101314; }
+.night .knob-cap { fill: #171b1d; }
+.night .tick { stroke: #22282b; }
+/* the ring lights with the lamps and lights nothing else */
+.ring { fill: none; stroke: var(--led-off); }
+.night .ring { stroke: var(--led-off-night); }
+.lamps .ring { stroke: var(--led); opacity: .42; }
+.night.lamps .ring { opacity: .5; filter: drop-shadow(0 0 3px var(--led)); }
+
+.pbtn-body { fill: var(--key); }
+.night .pbtn-body { fill: var(--key-night); }
+
+/* symbols: a line cut through the key, dark until its light is on */
+.sym { fill: none; stroke: var(--legend); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+.night .sym { stroke: var(--legend-night); }
+.sel .sym { stroke: var(--led); filter: drop-shadow(0 0 8px var(--led)); }
+/* two levels on the keys: soft with the lamps, hard while the function is on (with or without the lamps) */
+.lamps .glow .sym { stroke: var(--led); opacity: .42; }
+.night.lamps .glow .sym { opacity: .5; filter: drop-shadow(0 0 3px var(--led)); }
+.glow.on .sym, .lamps .glow.on .sym, .night.lamps .glow.on .sym { stroke: var(--led); opacity: 1; stroke-width: 9; filter: drop-shadow(0 0 10px var(--led)); }
+.lamps .pbtn.glow .pbtn-body { stroke: var(--led); stroke-opacity: .16; stroke-width: 3; }
+.pbtn.on .pbtn-body, .lamps .pbtn.on .pbtn-body { stroke: var(--led); stroke-opacity: .9; stroke-width: 4; filter: drop-shadow(0 0 6px var(--led)); }
+
+.slot { fill: var(--slot); }
+.night .slot { fill: var(--slot-night); }
+.paddle { fill: var(--cap); }
+.night .paddle { fill: var(--cap-night); }
+.arrow { fill: var(--legend); }
+.night .arrow { fill: var(--legend-night); }
+.lamps .glow .arrow { fill: var(--led); opacity: .42; }
+
+.led { fill: var(--led-off); }
+.led.lit { fill: var(--led); filter: drop-shadow(0 0 6px var(--led)); }
+.led.cool { fill: var(--cool); filter: drop-shadow(0 0 6px var(--cool)); }
+.led.heat { fill: var(--heat); filter: drop-shadow(0 0 6px var(--heat)); }
+.night .led { fill: #111415; }
+.night .led.lit { fill: var(--led); }
+.night .led.cool { fill: var(--cool); }
+.night .led.heat { fill: var(--heat); }
+
+.nohit { pointer-events: none; }
+.hit { fill: #ffffff; fill-opacity: 0; cursor: pointer; }
+.hit:hover { fill-opacity: .1; }
+.pbtn[data-act] { cursor: pointer; }
+.pbtn[data-act]:hover .pbtn-body { stroke: var(--legend); stroke-opacity: .6; stroke-width: 3; }
+
+.chip-c { fill: var(--guess); }
+.chip-t { fill: var(--guess-fg); font-family: var(--f-mono); font-weight: 500; }
+.chip-l { stroke: var(--guess); stroke-width: 3; stroke-dasharray: 8 6; fill: none; }
+
+/* the screen */
+.scr-bg { fill: var(--screen-bg); }
+.px { font-family: var(--f-px); font-weight: 700; fill: var(--led); }
+.px.b { font-weight: 900; }
+.px-fill { fill: var(--led); }
+.px-dim { fill: var(--led); opacity: .22; }
+.px-line { fill: none; stroke: var(--led); stroke-width: 1; }
+
+.screens { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 20px; align-items: start; }
+.shot { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.shot svg { display: block; width: 100%; height: auto; border: 6px solid #050607; border-radius: 4px; background: var(--screen-bg); box-sizing: border-box; }
+.shot figcaption, .cap { font-size: .88rem; color: var(--muted); }
+figure { margin: 0; }
+.four { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.seatrow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.seatrow svg { display: block; width: 100%; height: auto; border-radius: 4px; }
+.seatrow figure { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+
+/* controls under the drawing */
+.controls { display: flex; flex-wrap: wrap; gap: 14px 26px; }
+.grp { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.grp > span, .grp > label { font-family: var(--f-mono); font-size: .74rem; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+button.c { font: 500 .9rem var(--f-body); color: var(--fg); background: var(--btn-bg); border: 1px solid var(--line); border-radius: 4px; padding: 6px 11px; cursor: pointer; }
+button.c:hover { border-color: var(--accent); }
+button.c:focus-visible, input[type=range]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.c[aria-pressed="true"] { background: var(--btn-on); border-color: var(--accent); }
+input[type=range] { width: min(320px, 100%); accent-color: var(--accent); }
+.val { font-family: var(--f-mono); font-variant-numeric: tabular-nums; min-width: 4.6em; }
+.status { font-family: var(--f-mono); font-size: .88rem; border-left: 3px solid var(--accent); padding: 4px 0 4px 12px; max-width: 80ch; min-height: 2.9em; }
+
+table.sizes { border-collapse: collapse; font-size: .92rem; width: 100%; max-width: 760px; }
+table.sizes th, table.sizes td { text-align: left; padding: 5px 10px 5px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.sizes th { font-family: var(--f-mono); font-size: .72rem; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+table.sizes td.n { font-family: var(--f-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+table.sizes tr.low td { color: var(--warn); }
+.tablewrap { overflow-x: auto; }
+
+ol.guesses { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; }
+ol.guesses li { display: grid; grid-template-columns: 2em minmax(0, 1fr); gap: 4px; align-items: start; font-size: .95rem; }
+ol.guesses li .g { margin-top: .2em; justify-self: start; }
+ol.guesses b { font-weight: 600; }
+
+@media (max-width: 760px) {
+  h1 { font-size: 1.9rem; }
+  .screens { grid-template-columns: minmax(0, 1fr); }
+  .seatrow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  ol.guesses { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
+</head>
+<body>
+<main id="page" data-green="pure">
+
+  <header style="display:flex;flex-direction:column;gap:10px">
+    <div class="eyebrow">1982 RX-7 · Control Unit face · sketch, eighth pass, 15 October 2026</div>
+    <h1>Control Unit face, one short row</h1>
+    <p class="lede">The face is now exactly as wide as the stereo's face, 171 mm, and as short as the controls allow: one inch, 25.4 mm, to start. Left to right: driver window, driver seat, the screen, the four keys stacked, the centre knob with its ring, passenger seat, passenger window. Every size follows the face's height, so the slider under the drawing shows how short it can go before something gets too small to press. Only this page changed. No board, connector or record row was touched.</p>
+    <p class="lede">An orange tag <span class="g">n</span> marks a choice the drawing made that you did not state. The list at the bottom says what each one chose.</p>
+  </header>
+
+  <section aria-labelledby="h-panel">
+    <h2 id="h-panel">The face, enlarged</h2>
+    <p>Click the controls on the drawing, or use the buttons under it. To turn a knob, click its left or right half. Click the middle of the centre knob to push it. The scroll wheel also turns a knob.</p>
+    <div class="stage" id="stage">
+      <svg id="live" role="img" aria-label="Front view of the Control Unit face, enlarged, to scale"></svg>
+    </div>
+    <p class="status" id="status" aria-live="polite"></p>
+
+    <div class="controls">
+      <div class="grp" role="group" aria-label="Face height">
+        <label for="hgt">Face height</label>
+        <div class="row">
+          <input type="range" id="hgt" min="22" max="32" step="0.2" value="25.4">
+          <span class="val" id="v-hgt">25.4 mm</span>
+          <button class="c" id="b-inch" data-act="inch">1 inch</button>
+        </div>
+      </div>
+      <div class="grp" role="group" aria-label="Centre knob">
+        <span>Centre knob</span>
+        <div class="row">
+          <button class="c" data-act="c-l">Turn left</button>
+          <button class="c" data-act="c-p">Push</button>
+          <button class="c" data-act="c-off">Hold and let go</button>
+          <button class="c" data-act="c-h">Hold and turn</button>
+          <button class="c" data-act="c-r">Turn right</button>
+        </div>
+      </div>
+      <div class="grp" role="group" aria-label="Driver seat knob">
+        <span>Driver seat</span>
+        <div class="row">
+          <button class="c" data-act="sl-l">Left</button>
+          <button class="c" data-act="sl-r">Right</button>
+        </div>
+      </div>
+      <div class="grp" role="group" aria-label="Passenger seat knob">
+        <span>Passenger seat</span>
+        <div class="row">
+          <button class="c" data-act="sr-l">Left</button>
+          <button class="c" data-act="sr-r">Right</button>
+        </div>
+      </div>
+      <div class="grp" role="group" aria-label="Outside air temperature">
+        <span>Outside air</span>
+        <div class="row">
+          <button class="c" data-act="out-dn" aria-label="Outside air 2 degrees cooler">−</button>
+          <span class="val" id="v-out">88°F</span>
+          <button class="c" data-act="out-up" aria-label="Outside air 2 degrees warmer">+</button>
+        </div>
+      </div>
+      <div class="grp" role="group" aria-label="How the drawing is shown">
+        <span>Show it as</span>
+        <div class="row">
+          <button class="c" id="b-lamps" data-act="lamps" aria-pressed="false">Lights on</button>
+          <button class="c" id="b-night" data-act="night" aria-pressed="false">Dark cabin</button>
+          <button class="c" id="b-colour" data-act="colour" aria-pressed="false">Seat lights blue and amber</button>
+          <button class="c" id="b-green" data-act="green" aria-pressed="false">Yellow-green LEDs</button>
+          <button class="c" id="b-markers" data-act="markers" aria-pressed="true">Guess tags</button>
+        </div>
+      </div>
+    </div>
+
+    <h3>What each control comes to at this height</h3>
+    <div class="tablewrap"><table class="sizes" id="sizes"></table></div>
+    <p class="cap">A size is shown in red when it falls under the floor this sketch uses for something easy to press. The floors are guesses (tag <span class="g">10</span>).</p>
+  </section>
+
+  <section aria-labelledby="h-real">
+    <h2 id="h-real">About real size, under the stereo</h2>
+    <p>This drawing is set in millimetres, so on most screens it shows at about real size. Hold a ruler to it to check your screen. The stereo above it is an outline of the Pioneer DMH-W4660NEX's face from Pioneer's published size, 171 × 97 mm. It is not a drawing of the unit itself.</p>
+    <div class="stage real" id="stage3">
+      <svg id="pair" role="img" aria-label="The Control Unit face at about real size, under the stereo's face"></svg>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-screen">
+    <h2 id="h-screen">What the screen shows</h2>
+    <p>The screen is the same as in the last pass. At rest it shows everything the centre knob sets, small, with no labels. While you turn the knob it shows only the one thing being set, large. It goes back to rest three seconds after the last click. The new view is the dash-light level: hold the knob's push and turn it (D-578). Hold the push and let go without turning, and the climate switches off: the blower and the compressor stop and the screen goes completely dark. The seats still work. <span class="g">12</span></p>
+    <div class="screens">
+      <figure class="shot">
+        <svg id="bigscr" viewBox="0 0 128 64" role="img" aria-label="The screen as it is now, enlarged"></svg>
+        <figcaption id="bigcap">The screen now, enlarged. It follows the drawing above.</figcaption>
+      </figure>
+      <div class="four">
+        <figure class="shot"><svg id="sc-rest" viewBox="0 0 128 64" role="img" aria-label="Screen at rest"></svg><figcaption>At rest: set temperature, fan speed, where the air goes, outside air.</figcaption></figure>
+        <figure class="shot"><svg id="sc-fan" viewBox="0 0 128 64" role="img" aria-label="Screen while setting fan speed"></svg><figcaption>After a push of the knob: fan speed.</figcaption></figure>
+        <figure class="shot"><svg id="sc-mode" viewBox="0 0 128 64" role="img" aria-label="Screen while setting fan mode"></svg><figcaption>After the fan-mode key: where the air goes.</figcaption></figure>
+        <figure class="shot"><svg id="sc-dash" viewBox="0 0 128 64" role="img" aria-label="Screen while setting the dash-light level"></svg><figcaption>Holding the push and turning: dash-light level. <span class="g">3</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-night">
+    <h2 id="h-night">In the dark</h2>
+    <p>Here the lights are on, recirculate and the rear-glass defogger are on, the driver seat is cooling at level 2 and the passenger seat is heating at level 1. With the lights on, each key's symbol glows softly. A key whose function is on is fully lit and its edge glows. The ring around the centre knob glows at the same soft level as the symbols and never brighter: the screen shows what the knob is doing. It lights only itself and no longer spills onto the keys. <span class="g">5</span></p>
+    <div class="stage night lamps">
+      <svg id="nightpanel" role="img" aria-label="The face at night with the lights and some functions on"></svg>
+    </div>
+    <h3>A seat knob, four states <span class="g">7</span></h3>
+    <div class="seatrow night lamps" id="seatrow"></div>
+    <p class="cap">The knob is off in the middle and does not push. The six lights sit in a tight arc over the top of the knob. The three on the left are cooling and the three on the right are heating. Each click lights one more, outward from the middle.</p>
+  </section>
+
+  <section aria-labelledby="h-box">
+    <h2 id="h-box">What a short face means for the box behind it</h2>
+    <p>Nothing here is redrawn. This is what the face sets up for the boards later.</p>
+    <p><b>Width.</b> A 171 mm face leaves about 164 mm for the box behind it once the face overlaps its edges. The DCU carrier is drawn 180 mm wide and the panel board 180 mm, so both get narrower when the boards are redrawn. D-542 named exactly this as the cost of matching the stereo's width.</p>
+    <p><b>Height.</b> The box behind the face is single-DIN today, about 50 mm tall, because the carrier and its 64-way header stand about 49 mm tall (D-582, D-594). A face 25 mm tall cannot cover a 50 mm box. The unit could then not slide in from the front the way the stereo does (D-481). One way is a box taller than the face, stepping up behind the dash, fitted from behind. The other is boards laid out for a lower box. Both get settled when you are happy with this face, before the boards are redrawn. <span class="g">11</span></p>
+  </section>
+
+  <section aria-labelledby="h-guess">
+    <h2 id="h-guess">What the drawing guessed</h2>
+    <p>Everything below was chosen so the sketch would work. Any of it can change.</p>
+    <ol class="guesses" id="guesses">
+      <li><span class="g">1</span><span><b>The width, 171 mm.</b> This is the published width of the DMH-W4660NEX's face (the "nose"), from Pioneer's manual. Its chassis behind the face is 178 mm. Nothing has been measured, so check it when the stereo is in hand. The controls are spread to fill the width, with 3 mm left at each end.</span></li>
+      <li><span class="g">2</span><span><b>The height.</b> Starts at one inch, 25.4 mm, with 1.6 mm of face above and below the tallest control. The slider runs from 22 to 32 mm and every control is sized from it.</span></li>
+      <li><span class="g">3</span><span><b>The screen.</b> Two dots wide for every dot tall, a 128 × 64 display as before. Its window is the height of the key stack less a 0.8 mm bezel: about 41 × 20.6 mm at one inch, roughly a 1.8 inch display. No part has been chosen. A wide 256 × 64 display would fill more of the row, if you want the screen bigger rather than the gaps.</span></li>
+      <li><span class="g">4</span><span><b>The four keys.</b> 11 mm wide, stacked 0.8 mm apart, together exactly the screen's height. At one inch each key is about 5 mm tall. The order from the top is a guess: fan mode, recirculate, rear-glass defog, mirror defog.</span></li>
+      <li><span class="g">5</span><span><b>The key lights.</b> With the lights on, a key's symbol glows at about 40 % and its edge faintly. While its function is on, the symbol is at full brightness and the edge glows, with the lights on or off. "The lights" is taken as the park and head lamps, the same as the rest of the dash.</span></li>
+      <li><span class="g">6</span><span><b>The "joystick".</b> Read as the centre knob, since it is the control with the light ring. It still turns and pushes, and its ring is 1.4 mm wide, lit only with the lights and only at the soft level of the other symbols; it has no bright state, because the screen shows what the knob is setting. All three knobs are the same size: 17.4 mm across at one inch, up to 19 mm on a taller face. If you meant a real joystick in place of the knob, say so.</span></li>
+      <li><span class="g">7</span><span><b>The seat knobs.</b> The same size as the centre knob, with the six level lights moved into a tight arc just above the knob, 1.6 mm dots, since there is no room for the old arc. They still turn only, off in the middle.</span></li>
+      <li><span class="g">8</span><span><b>The window switches.</b> A sprung paddle in an 8.5 mm wide slot as tall as the face allows. The paddle is 7 × 8 mm with the window symbol on it, pushed up or down and springing back.</span></li>
+      <li><span class="g">9</span><span><b>The spacing.</b> The same gap between every pair of neighbours, 5 mm at one inch: window, seat, screen, keys, knob, seat, window. The screen and keys are wider than the knob, so the middle three sit slightly left of centre.</span></li>
+      <li><span class="g">10</span><span><b>The "easy to press" floors.</b> A key at least 4.5 mm tall. A knob at least 12 mm across. A screen at least 15 mm tall so the small numbers stay readable from the seat. These are judgement, not measured; try a 4.5 mm key and a 12 mm knob in hand before trusting them.</span></li>
+      <li><span class="g">11</span><span><b>The box behind.</b> Neither way of covering the 50 mm box is chosen; see the section above. Nothing is redrawn until the face is settled.</span></li>
+      <li><span class="g">12</span><span><b>Climate off.</b> A hold is taken as 0.7 s or more. Holding and letting go without turning switches the climate off: the blower and the compressor stop and the screen goes dark. The fan-mode and recirculate keys go dark too, with no soft glow even with the lights on. The seats, both defoggers and the windows keep working. While it is off, turning the knob does nothing, and a click or another hold turns it back on at the last settings. Holding and turning still sets the dash lights; the screen lights only to show the level, then goes dark again. This keeps D-578, which reads "hold its push and turning it". The hold is now hold-and-turn rather than hold, then turn. Recorded once the face is settled.</span></li>
+    </ol>
+  </section>
+</main>
+
+<script>
+(function () {
+  /* The face's width is the head unit's published nose width (cad/cu-assembly/unit_params.py,
+     HEAD_UNIT_NOSE_W); the nose height is only for the outline above it. */
+  var FACE_W = 171, HU_H = 97;
+  var FLOOR = { key: 4.5, knob: 12, screen: 15 };
+  var MODES = ['FACE', 'BI-LEVEL', 'FEET', 'FEET+DEF', 'DEFROST'];
+  var MODE_WORDS = ['the face vents', 'face and feet', 'the feet', 'feet and windscreen', 'the windscreen'];
+  var SEQ = [-3, -2, -1, 1, 2, 3];
+  var ARC = [-75, -55, -35, 35, 55, 75];
+  var S = {
+    H: 25.4, on: true,
+    temp: 72, fan: 3, mode: 0, dash: 70, recirc: false, rear: false, mirror: false, outside: 88,
+    target: 'temp', view: 'rest', angle: 0,
+    seatL: { pos: 0, angle: 0 }, seatR: { pos: 0, angle: 0 },
+    lamps: false, night: false, bicolour: false, yg: false, markers: true, flash: '',
+    msg: 'Nothing touched yet. The knob sets temperature.'
+  };
+  var idle = null, flashT = null, lastWheel = 0;
+  function $(id) { return document.getElementById(id); }
+  function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+  function f1(v) { return (Math.round(v * 10) / 10).toFixed(1); }
+  function acOn(s) { return s.on !== false && s.fan > 0 && s.temp < s.outside; }
+
+  /* ---------- where everything goes, in mm, from the face's height ---------- */
+  function geo(H) {
+    var g = { H: H, W: FACE_W, edge: 1.6, end: 3 };
+    var inner = H - 2 * g.edge;
+    g.inner = inner; g.cy = H / 2;
+    g.bez = 0.8;
+    g.scrH = Math.min(inner - 2 * g.bez, 24); g.scrW = g.scrH * 2;
+    g.bezH = g.scrH + 2 * g.bez; g.bezW = g.scrW + 2 * g.bez;
+    g.keyGap = 0.8; g.keyW = 11; g.keyH = (g.bezH - 3 * g.keyGap) / 4;
+    /* one knob size for all three: the largest that leaves room for the centre knob's ring
+       and for the seat knobs' level lights, which hug the knob 0.8 mm off its edge */
+    g.ringW = 1.4; g.ledDot = 0.8;
+    g.knobR = Math.min(inner / 2 - g.ringW - 0.4, inner / 2 - 2 * g.ledDot - 0.8, 9.5);
+    g.seatKR = g.knobR;
+    g.ringR = g.knobR + 0.4 + g.ringW;
+    g.ledR = g.knobR + 0.8 + g.ledDot;
+    g.seatHalf = Math.max(g.seatKR, g.ledR * Math.sin(75 * Math.PI / 180) + g.ledDot);
+    g.slotW = 8.5; g.slotH = Math.min(inner, 26); g.padW = 7; g.padH = Math.min(8, g.slotH * 0.36);
+    /* seven items, the same gap between every pair */
+    g.gap = (FACE_W - 2 * g.end - 2 * g.slotW - 4 * g.seatHalf - g.bezW - g.keyW - 2 * g.ringR) / 6;
+    g.inGap = g.gap;
+    var x = g.end;
+    g.winLx = x + g.slotW / 2; x += g.slotW + g.gap;
+    g.seatLx = x + g.seatHalf; x += 2 * g.seatHalf + g.gap;
+    g.scrX = x; x += g.bezW + g.gap;
+    g.keyX = x + g.keyW / 2; x += g.keyW + g.gap;
+    g.knobX = x + g.ringR; x += 2 * g.ringR + g.gap;
+    g.seatRx = x + g.seatHalf; x += 2 * g.seatHalf + g.gap;
+    g.winRx = x + g.slotW / 2;
+    return g;
+  }
+
+  /* ---------- the screen, 128 x 64 dots ---------- */
+  function T(x, y, size, str, anchor, bold) {
+    return '<text x="' + x + '" y="' + y + '" font-size="' + size + '" text-anchor="' + (anchor || 'start') + '" class="px' + (bold ? ' b' : '') + '">' + str + '</text>';
+  }
+  function scr(s, view) {
+    var o = '<rect width="128" height="64" class="scr-bg"/>', i, h, a;
+    /* climate off: the screen is dark, except while the dash-light level is being set */
+    if (s.on === false && view !== 'dash') return o;
+    if (view === 'temp') {
+      o += T(64, 40, 36, s.temp + '°F', 'middle', true);
+      o += '<rect x="8" y="50" width="112" height="6" class="px-line"/>';
+      o += '<rect x="8" y="50" width="' + ((s.temp - 60) / 30 * 112).toFixed(1) + '" height="6" class="px-fill"/>';
+    } else if (view === 'fan') {
+      for (i = 0; i < 7; i++) {
+        h = 10 + i * 6;
+        o += '<rect x="' + (6 + i * 12) + '" y="' + (58 - h) + '" width="9" height="' + h + '" class="' + (i < s.fan ? 'px-fill' : 'px-dim') + '"/>';
+      }
+      o += T(124, 58, s.fan === 0 ? 16 : 28, s.fan === 0 ? 'OFF' : String(s.fan), 'end', true);
+    } else if (view === 'mode') {
+      o += T(64, 34, 18, MODES[s.mode], 'middle', true);
+      if (s.mode > 0) o += T(4, 33, 12, '&lt;');
+      if (s.mode < 4) o += T(124, 33, 12, '&gt;', 'end');
+      for (i = 0; i < 5; i++) {
+        o += '<circle cx="' + (44 + i * 10) + '" cy="50" r="' + (i === s.mode ? 3.2 : 2) + '" class="' + (i === s.mode ? 'px-fill' : 'px-dim') + '"/>';
+      }
+    } else if (view === 'dash') {
+      /* a lamp with rays, then the level */
+      o += '<circle cx="16" cy="22" r="6" class="px-line"/>';
+      for (i = 0; i < 8; i++) {
+        a = i * Math.PI / 4;
+        o += '<line x1="' + (16 + 9 * Math.cos(a)).toFixed(1) + '" y1="' + (22 + 9 * Math.sin(a)).toFixed(1) + '" x2="' + (16 + 12 * Math.cos(a)).toFixed(1) + '" y2="' + (22 + 12 * Math.sin(a)).toFixed(1) + '" class="px-line"/>';
+      }
+      o += T(122, 38, 32, s.dash + '%', 'end', true);
+      o += '<rect x="8" y="50" width="112" height="6" class="px-line"/>';
+      o += '<rect x="8" y="50" width="' + (s.dash / 100 * 112).toFixed(1) + '" height="6" class="px-fill"/>';
+    } else {
+      o += T(4, 36, 32, s.temp + '°', 'start', true);
+      o += T(4, 57, 10, 'OUT ' + s.outside + '°');
+      if (s.fan === 0) o += T(66, 13, 9, 'OFF');
+      for (i = 0; i < 7; i++) {
+        h = 6 + i * 4;
+        o += '<rect x="' + (66 + i * 8.5).toFixed(1) + '" y="' + (36 - h) + '" width="6.5" height="' + h + '" class="' + (i < s.fan ? 'px-fill' : 'px-dim') + '"/>';
+      }
+      o += T(66, 57, 12, MODES[s.mode], 'start', true);
+    }
+    return o;
+  }
+
+  /* ---------- the symbols, drawn about 90 x 60 around their own centre ---------- */
+  function wv(x) {
+    return '<path class="sym" d="M' + x + ' 14 q-8 -7 0 -14 t0 -14 t0 -14 M' + (x - 6) + ' -21 L' + x + ' -28 L' + (x + 6) + ' -21"/>';
+  }
+  var ICON = {
+    mode: '<circle class="sym" cx="-14" cy="-20" r="7"/><path class="sym" d="M-16 -9 L-22 10 H0 L6 26 M38 -18 H10 M18 -25 L10 -18 L18 -11 M40 14 H22 M30 7 L22 14 L30 21"/>',
+    recirc: '<path class="sym" d="M-46 20 V0 Q-46 -6 -38 -8 L-24 -28 H18 L34 -8 Q46 -6 46 0 V20 Z M16 8 H-10 a9 9 0 0 1 0 -18 H12 M5 -17 L12 -10 L5 -3"/>',
+    rear: '<rect class="sym" x="-36" y="-16" width="72" height="38" rx="6"/>' + wv(-18) + wv(0) + wv(18),
+    mirror: '<rect class="sym" x="-36" y="-16" width="58" height="38" rx="15"/><path class="sym" d="M22 4 H42 V22"/>' + wv(-17) + wv(3),
+    seat: '<path class="sym" d="M-20 -28 Q-26 -6 -24 8 Q-23 14 -16 14 H24 M-6 2 q-6 -5 0 -10 t0 -10 M10 2 q-6 -5 0 -10 t0 -10 M26 2 q-6 -5 0 -10 t0 -10"/>',
+    window: '<path class="sym" d="M-30 24 V-4 L-10 -24 H30 V24 Z M8 -12 V12 M1 -5 L8 -12 L15 -5 M1 5 L8 12 L15 5"/>'
+  };
+  function sym(name, x, y, k) {
+    return '<g transform="translate(' + f1(x) + ' ' + f1(y) + ') scale(' + k.toFixed(3) + ')">' + ICON[name] + '</g>';
+  }
+
+  /* ---------- drawing pieces, 10 units per mm ---------- */
+  var U = 10;
+  function ink(x, y, str, size, anchor, extra) {
+    return '<text x="' + f1(x) + '" y="' + f1(y) + '" font-size="' + (size || 30) + '" text-anchor="' + (anchor || 'middle') + '" class="ink"' + (extra || '') + '>' + str + '</text>';
+  }
+  function chip(n, x, y, tx, ty) {
+    var l = (tx == null) ? '' : '<line x1="' + f1(x) + '" y1="' + f1(y) + '" x2="' + f1(tx) + '" y2="' + f1(ty) + '" class="chip-l"/>';
+    return '<g>' + l + '<circle cx="' + f1(x) + '" cy="' + f1(y) + '" r="24" class="chip-c"/><text x="' + f1(x) + '" y="' + f1(y + 9) + '" font-size="27" text-anchor="middle" class="chip-t">' + n + '</text></g>';
+  }
+  function knob(cx, cy, r, angle, key, live, nopush) {
+    var t = '', i;
+    for (i = 0; i < 24; i++) t += '<line x1="0" y1="' + f1(-r * 0.8) + '" x2="0" y2="' + f1(-r * 0.95) + '" transform="rotate(' + (i * 15) + ')" class="tick"/>';
+    var g = '<g transform="translate(' + f1(cx) + ' ' + f1(cy) + ')"' + (live ? ' data-knob="' + key + '"' : '') + '>' +
+      '<circle r="' + f1(r) + '" class="knob-rim"/><g transform="rotate(' + angle + ')">' + t + '</g><circle r="' + f1(r * 0.7) + '" class="knob-cap"/>';
+    if (live) {
+      g += '<path d="M0 ' + f1(-r) + ' A' + f1(r) + ' ' + f1(r) + ' 0 0 0 0 ' + f1(r) + ' Z" class="hit" data-act="' + key + '-l"><title>Turn left one click</title></path>' +
+        '<path d="M0 ' + f1(-r) + ' A' + f1(r) + ' ' + f1(r) + ' 0 0 1 0 ' + f1(r) + ' Z" class="hit" data-act="' + key + '-r"><title>Turn right one click</title></path>' +
+        (nopush ? '' : '<circle r="' + f1(r * 0.45) + '" class="hit" data-act="' + key + '-p"><title>Push</title></circle>');
+    }
+    return g + '</g>';
+  }
+  function pbtn(x, y, w, h, icon, on, key, live, title, dark) {
+    var k = Math.min(h * 0.68 / 60, w * 0.72 / 95);
+    return '<g class="pbtn' + (dark ? '' : ' glow') + (on ? ' on' : '') + '"' + (live ? ' data-act="' + key + '"' : '') + '>' +
+      (live ? '<title>' + title + '</title>' : '') +
+      '<rect x="' + f1(x - w / 2) + '" y="' + f1(y - h / 2) + '" width="' + f1(w) + '" height="' + f1(h) + '" rx="' + f1(Math.min(8, h * 0.18)) + '" class="pbtn-body"/>' +
+      sym(icon, x, y, k) + '</g>';
+  }
+  /* one sprung switch per window: the paddle rests in the middle of its slot */
+  function win(g, x, side, s, live) {
+    var cy = g.cy * U, sw = g.slotW * U, sh = g.slotH * U, pw = g.padW * U, ph = g.padH * U;
+    var travel = sh / 2 - ph / 2 - 26;
+    var off = s.flash === 'win-' + side + '-up' ? -travel : s.flash === 'win-' + side + '-dn' ? travel : 0;
+    var top = cy - sh / 2, bot = cy + sh / 2;
+    var o = '<rect x="' + f1(x - sw / 2) + '" y="' + f1(top) + '" width="' + f1(sw) + '" height="' + f1(sh) + '" rx="12" class="slot"/>' +
+      '<g transform="translate(0 ' + f1(off) + ')"><rect x="' + f1(x - pw / 2) + '" y="' + f1(cy - ph / 2) + '" width="' + f1(pw) + '" height="' + f1(ph) + '" rx="8" class="paddle"/>' +
+      '<g class="glow">' + sym('window', x, cy, Math.min(pw * 0.78 / 60, ph * 0.78 / 48)) + '</g></g>';
+    if (live) {
+      o += '<rect x="' + f1(x - sw / 2) + '" y="' + f1(top) + '" width="' + f1(sw) + '" height="' + f1(sh / 2) + '" class="hit" data-act="win-' + side + '-up"><title>Push up: window up</title></rect>' +
+        '<rect x="' + f1(x - sw / 2) + '" y="' + f1(cy) + '" width="' + f1(sw) + '" height="' + f1(sh / 2) + '" class="hit" data-act="win-' + side + '-dn"><title>Push down: window down</title></rect>';
+    }
+    return o;
+  }
+  function seat(g, cx, cy, st, key, live) {
+    var o = '', i, a, lit, cls, R = g.ledR * U, kr = g.seatKR * U;
+    for (i = 0; i < 6; i++) {
+      a = ARC[i] * Math.PI / 180;
+      lit = st.pos < 0 ? (SEQ[i] < 0 && SEQ[i] >= st.pos) : (SEQ[i] > 0 && SEQ[i] <= st.pos);
+      cls = !lit ? 'led' : (S.bicolour ? (SEQ[i] < 0 ? 'led cool' : 'led heat') : 'led lit');
+      o += '<circle cx="' + f1(cx + R * Math.sin(a)) + '" cy="' + f1(cy - R * Math.cos(a)) + '" r="' + f1(g.ledDot * U) + '" class="' + cls + '"/>';
+    }
+    o += knob(cx, cy, kr, st.angle || 0, key, live, true);
+    /* the symbol stays upright in the middle; the knob turns around it */
+    return o + '<g class="glow nohit">' + sym('seat', cx, cy + kr * 0.08, kr * 0.62 / 34) + '</g>';
+  }
+
+  /* the face itself; o.dims adds the measurements, o.markers the guess tags */
+  function panel(s, g, o) {
+    var live = !!o.live, W = g.W * U, H = g.H * U, cy = g.cy * U, i;
+    var h = '<rect x="0" y="0" width="' + W + '" height="' + f1(H) + '" rx="' + f1(Math.min(24, H * 0.1)) + '" class="face"/>';
+    /* the screen, then the keys the same height to its right, then the knob */
+    var bx = g.scrX * U, by = cy - g.bezH * U / 2, k = g.scrW * U / 128;
+    h += '<rect x="' + f1(bx) + '" y="' + f1(by) + '" width="' + f1(g.bezW * U) + '" height="' + f1(g.bezH * U) + '" rx="6" class="bezel"/>';
+    h += '<g transform="translate(' + f1(bx + g.bez * U) + ' ' + f1(by + g.bez * U) + ') scale(' + k.toFixed(4) + ')">' + scr(s, s.view) + '</g>';
+    var KEYS = [['mode', s.on !== false && s.target === 'mode', 'Fan mode'], ['recirc', s.on !== false && s.recirc, 'Recirculate'], ['rear', s.rear, 'Rear-glass defog'], ['mirror', s.mirror, 'Mirror defog']];
+    for (i = 0; i < 4; i++) {
+      h += pbtn(g.keyX * U, by + (i * (g.keyH + g.keyGap) + g.keyH / 2) * U, g.keyW * U, g.keyH * U, KEYS[i][0], KEYS[i][1], KEYS[i][0], live, KEYS[i][2], s.on === false && i < 2);
+    }
+    var rr = (g.ringR - g.ringW / 2) * U;
+    h += '<circle cx="' + f1(g.knobX * U) + '" cy="' + f1(cy) + '" r="' + f1(rr) + '" class="ring" style="stroke-width:' + f1(g.ringW * U) + '"/>';
+    h += knob(g.knobX * U, cy, g.knobR * U, s.angle, 'c', live);
+    h += seat(g, g.seatLx * U, cy, s.seatL, 'sl', live) + seat(g, g.seatRx * U, cy, s.seatR, 'sr', live);
+    h += win(g, g.winLx * U, 'd', s, live) + win(g, g.winRx * U, 'p', s, live);
+
+    if (o.dims) {
+      var wy = H + 130;
+      h += '<path d="M0 ' + f1(wy) + ' H' + W + ' M0 ' + f1(wy - 16) + ' V' + f1(wy + 16) + ' M' + W + ' ' + f1(wy - 16) + ' V' + f1(wy + 16) + '" class="dim"/>' + ink(W / 2, wy + 44, FACE_W + ' mm, the stereo face’s width', 28);
+      h += '<path d="M-50 0 V' + f1(H) + ' M-66 0 H-34 M-66 ' + f1(H) + ' H-34" class="dim"/>' + ink(-64, H / 2, f1(g.H) + ' mm', 26, 'middle', ' transform="rotate(-90 ' + f1(-64) + ' ' + f1(H / 2) + ')"');
+      var ly = H + 46;
+      h += ink(g.winLx * U, ly, 'WINDOW', 20) + ink(g.seatLx * U, ly, 'SEAT', 20) + ink((g.scrX + g.bezW / 2) * U, ly, 'SCREEN', 20) +
+        ink(g.keyX * U, ly, 'KEYS', 20) + ink(g.knobX * U, ly, 'KNOB', 20) + ink(g.seatRx * U, ly, 'SEAT', 20) + ink(g.winRx * U, ly, 'WINDOW', 20);
+      h += ink(0, H + 90, 'DRIVER SIDE (LEFT)', 22, 'start') + ink(W, H + 90, 'PASSENGER SIDE', 22, 'end');
+    }
+    if (o.markers) {
+      var cyt = -150;
+      h += chip(1, W / 2 + 330, H + 162) + chip(2, -64, cyt, -64, -10);
+      h += chip(8, g.winLx * U, cyt, g.winLx * U, (g.cy - g.slotH / 2) * U);
+      h += chip(7, g.seatLx * U, cyt, g.seatLx * U, (g.cy - g.ledR) * U - 8);
+      h += chip(3, (g.scrX + g.bezW / 2) * U, cyt, (g.scrX + g.bezW / 2) * U, by);
+      h += chip(4, g.keyX * U, cyt, g.keyX * U, by);
+      h += chip(6, g.knobX * U, cyt, g.knobX * U, (g.cy - g.ringR) * U);
+      h += chip(9, (g.seatRx + g.seatHalf + g.gap / 2) * U, cyt, (g.seatRx + g.seatHalf + g.gap / 2) * U, cy);
+    }
+    return h;
+  }
+  function frame(svg, x0, y0, w, h) { svg.setAttribute('viewBox', x0 + ' ' + y0 + ' ' + w + ' ' + h); }
+
+  /* ---------- the sizes table ---------- */
+  function sizes(g) {
+    var rows = [
+      ['Face', FACE_W + ' × ' + f1(g.H), 'the stereo face’s width; height from the slider', false],
+      ['Screen window', f1(g.scrW) + ' × ' + f1(g.scrH), 'about a ' + f1(Math.sqrt(g.scrW * g.scrW + g.scrH * g.scrH) / 25.4) + ' inch, 128 × 64 dot display', g.scrH < FLOOR.screen],
+      ['Each key', f1(g.keyW) + ' × ' + f1(g.keyH), 'four stacked, ' + f1(g.keyGap) + ' mm apart', g.keyH < FLOOR.key],
+      ['Centre knob', f1(2 * g.knobR) + ' across', 'ring ' + f1(g.ringW) + ' mm wide, ' + f1(2 * g.ringR) + ' across its outside', 2 * g.knobR < FLOOR.knob],
+      ['Seat knob', f1(2 * g.seatKR) + ' across', 'level lights in an arc ' + f1(2 * g.ledR) + ' across', 2 * g.seatKR < FLOOR.knob],
+      ['Window switch', f1(g.slotW) + ' × ' + f1(g.slotH) + ' slot', 'paddle ' + f1(g.padW) + ' × ' + f1(g.padH), false],
+      ['Gap between items', f1(g.gap), g.gap < 1.5 ? 'too tight: the row is full' : 'the same between every pair of neighbours', g.gap < 1.5]
+    ];
+    var t = '<thead><tr><th>Control</th><th>mm</th><th>Notes</th></tr></thead><tbody>';
+    rows.forEach(function (r) {
+      t += '<tr' + (r[3] ? ' class="low"' : '') + '><td>' + r[0] + '</td><td class="n">' + r[1] + '</td><td>' + r[2] + (r[3] && r[0] !== 'Gap between items' ? ', under the floor' : '') + '</td></tr>';
+    });
+    return t + '</tbody>';
+  }
+
+  /* ---------- behaviour ---------- */
+  function seatWords(st) {
+    if (!st.pos) return 'off';
+    return (st.pos < 0 ? 'cooling' : 'heating') + ' at level ' + Math.abs(st.pos) + ' of 3';
+  }
+  function press(a, msg, ms) {
+    S.flash = a; S.msg = msg;
+    clearTimeout(flashT);
+    flashT = setTimeout(function () { S.flash = ''; render(); }, ms || 450);
+  }
+  function arm() {
+    clearTimeout(idle);
+    idle = setTimeout(function () {
+      S.target = 'temp'; S.view = 'rest';
+      S.msg = 'Three seconds without a turn. The screen is back at rest and the knob sets temperature again.';
+      render();
+    }, 3000);
+  }
+  function rest(msg) { clearTimeout(idle); S.target = 'temp'; S.view = 'rest'; S.msg = msg; }
+  function turn(d) {
+    S.angle += d * 15;
+    if (!S.on && S.target !== 'dash') {
+      S.msg = 'The climate is off, so turning the knob does nothing. A click of the knob, or another hold, turns it back on.';
+      return;
+    }
+    if (S.target === 'fan') {
+      S.fan = clamp(S.fan + d, 0, 7); S.view = 'fan';
+      S.msg = 'Fan speed ' + (S.fan === 0 ? 'off' : S.fan + ' of 7') + '.';
+    } else if (S.target === 'mode') {
+      S.mode = clamp(S.mode + d, 0, 4); S.view = 'mode';
+      S.msg = 'Air to ' + MODE_WORDS[S.mode] + '.';
+    } else if (S.target === 'dash') {
+      S.dash = clamp(S.dash + d * 5, 10, 100); S.view = 'dash';
+      S.msg = 'Dash lights at ' + S.dash + ' %.';
+    } else {
+      S.temp = clamp(S.temp + d, 60, 90); S.view = 'temp';
+      S.msg = 'Set temperature ' + S.temp + '°F, outside ' + S.outside + '°F. A/C ' + (acOn(S) ? 'on' : 'off') + '.';
+    }
+    arm();
+  }
+  function seatTurn(st, d, name) {
+    var p = clamp(st.pos + d, -3, 3);
+    if (p === st.pos) { S.msg = name + ' seat knob is at its last click, ' + seatWords(st) + '.'; return; }
+    st.pos = p; st.angle += d * 15;
+    S.msg = name + ' seat ' + seatWords(st) + (p ? '.' : ': the middle, every light dark.');
+  }
+  function setH(v) {
+    S.H = clamp(Math.round(v * 10) / 10, 22, 32);
+    $('hgt').value = S.H;
+  }
+  function act(a) {
+    switch (a) {
+      case 'c-l': turn(-1); break;
+      case 'c-r': turn(1); break;
+      case 'c-p':
+        if (!S.on) { S.on = true; rest('Knob clicked: the climate is back on at its last temperature, fan speed and mode.'); break; }
+        if (S.target === 'fan') rest('Knob pushed again. Back to temperature.');
+        else { S.target = 'fan'; S.view = 'fan'; arm(); S.msg = 'Knob pushed. It now sets fan speed, and goes back to temperature after three seconds without a turn.'; }
+        break;
+      case 'c-off':
+        S.on = !S.on;
+        rest(S.on ? 'Push held and let go: the climate is back on at its last settings.'
+          : 'Push held and let go: climate off. The blower and the compressor are off and the screen is dark. The fan-mode and recirculate keys go dark. The seats, the defoggers and the windows still work.');
+        break;
+      case 'c-h':
+        S.target = 'dash'; S.view = 'dash'; arm();
+        S.msg = 'Push held and turned: the knob sets the dash-light level (D-578)' + (S.on ? '.' : '. The screen lights only to show it, then goes dark again.');
+        break;
+      case 'mode':
+        if (!S.on) { S.msg = 'The climate is off, so the fan-mode key does nothing. A click of the knob turns it back on.'; break; }
+        if (S.target === 'mode') rest('Fan-mode key pressed again. Back to temperature.');
+        else { S.target = 'mode'; S.view = 'mode'; arm(); S.msg = 'Fan-mode key pressed: it lights fully while the knob picks where the air goes.'; }
+        break;
+      case 'recirc':
+        if (!S.on) { S.msg = 'The climate is off, so recirculate does nothing. A click of the knob turns it back on.'; break; }
+        S.recirc = !S.recirc; S.msg = S.recirc ? 'Recirculate on: its key is fully lit.' : 'Recirculate off: its key goes back to the soft glow, or dark with the lights off.'; break;
+      case 'rear': S.rear = !S.rear; S.msg = 'Rear-glass defogger ' + (S.rear ? 'on.' : 'off.'); break;
+      case 'mirror': S.mirror = !S.mirror; S.msg = 'Mirror defoggers ' + (S.mirror ? 'on.' : 'off.'); break;
+      case 'win-d-up': case 'win-d-dn': case 'win-p-up': case 'win-p-dn':
+        press(a, (a.indexOf('-d-') > 0 ? 'Driver' : 'Passenger') + ' window ' + (a.slice(-2) === 'up' ? 'up' : 'down') + ' while the switch is held. It springs back to the middle when you let go.');
+        break;
+      case 'sl-l': seatTurn(S.seatL, -1, 'Driver'); break;
+      case 'sl-r': seatTurn(S.seatL, 1, 'Driver'); break;
+      case 'sr-l': seatTurn(S.seatR, -1, 'Passenger'); break;
+      case 'sr-r': seatTurn(S.seatR, 1, 'Passenger'); break;
+      case 'out-dn': S.outside = clamp(S.outside - 2, 20, 110); S.msg = 'Outside air ' + S.outside + '°F, set ' + S.temp + '°F. A/C ' + (acOn(S) ? 'on' : 'off') + '.'; break;
+      case 'out-up': S.outside = clamp(S.outside + 2, 20, 110); S.msg = 'Outside air ' + S.outside + '°F, set ' + S.temp + '°F. A/C ' + (acOn(S) ? 'on' : 'off') + '.'; break;
+      case 'inch': setH(25.4); S.msg = 'Face set to one inch, 25.4 mm.'; break;
+      case 'night': S.night = !S.night; if (S.night) S.lamps = true; break;
+      case 'lamps': S.lamps = !S.lamps; S.msg = S.lamps ? 'Lights on: the key symbols glow softly and the knob’s ring lights.' : 'Lights off: the soft glow and the ring go dark. A key whose function is on stays fully lit.'; break;
+      case 'colour': S.bicolour = !S.bicolour; break;
+      case 'green': S.yg = !S.yg; break;
+      case 'markers': S.markers = !S.markers; break;
+      default: return;
+    }
+    render();
+  }
+
+  var NIGHT = {
+    temp: 72, fan: 3, mode: 0, dash: 70, recirc: true, rear: true, mirror: false, outside: 88, target: 'temp', view: 'rest', angle: 0, flash: '',
+    seatL: { pos: -2, angle: -30 }, seatR: { pos: 1, angle: 15 }
+  };
+  var SEATS = [
+    [{ pos: 0 }, 'The middle: off, every light dark.'],
+    [{ pos: -1 }, 'One click left: cooling, level 1.'],
+    [{ pos: -3 }, 'Three clicks left: cooling, level 3.'],
+    [{ pos: 2 }, 'Two clicks right: heating, level 2.']
+  ];
+  var SAMPLE = { temp: 72, fan: 3, mode: 0, dash: 70, recirc: false, outside: 88 };
+
+  function render() {
+    var g = geo(S.H), W = g.W * U, H = g.H * U;
+    $('page').setAttribute('data-green', S.yg ? 'yg' : 'pure');
+    $('stage').classList.toggle('night', S.night);
+    $('stage').classList.toggle('lamps', S.lamps);
+    $('stage3').classList.toggle('lamps', S.lamps);
+    $('b-lamps').setAttribute('aria-pressed', String(S.lamps));
+
+    var live = $('live');
+    frame(live, -140, -200, W + 240, H + 420);
+    live.innerHTML = panel(S, g, { live: true, dims: true, markers: S.markers });
+
+    /* the pair, in real millimetres: the stereo's face, a 3 mm gap, this face */
+    var pair = $('pair'), gapU = 30, ph = HU_H * U + gapU + H;
+    pair.setAttribute('width', FACE_W + 'mm');
+    pair.setAttribute('height', f1(HU_H + 3 + g.H) + 'mm');
+    frame(pair, 0, 0, W, f1(ph));
+    pair.innerHTML = '<rect width="' + W + '" height="' + (HU_H * U) + '" rx="24" class="hu-nose"/>' +
+      '<rect x="70" y="60" width="' + (W - 140) + '" height="' + (HU_H * U - 120) + '" rx="10" class="hu-glass"/>' +
+      '<text x="' + W / 2 + '" y="' + (HU_H * U / 2 + 10) + '" font-size="34" text-anchor="middle" class="hu-t">STEREO FACE, OUTLINE ONLY · 171 × 97</text>' +
+      '<g transform="translate(0 ' + (HU_H * U + gapU) + ')">' + panel(S, g, { id: 'p' }) + '</g>';
+
+    $('nightpanel').innerHTML = panel(NIGHT, g, {});
+    frame($('nightpanel'), -40, -40, W + 80, f1(H + 80));
+
+    $('bigscr').innerHTML = scr(S, S.view);
+    var row = '', i, sg;
+    for (i = 0; i < SEATS.length; i++) {
+      sg = g.seatHalf * U + 30;
+      row += '<figure><svg viewBox="' + f1(-sg) + ' ' + f1(-sg) + ' ' + f1(2 * sg) + ' ' + f1(2 * sg) + '" role="img" aria-label="' + SEATS[i][1] + '"><rect x="' + f1(-sg) + '" y="' + f1(-sg) + '" width="' + f1(2 * sg) + '" height="' + f1(2 * sg) + '" class="face"/>' +
+        seat(g, 0, 0, SEATS[i][0], '', false) + '</svg><figcaption class="cap">' + SEATS[i][1] + '</figcaption></figure>';
+    }
+    $('seatrow').innerHTML = row;
+    $('sizes').innerHTML = sizes(g);
+    $('v-hgt').textContent = f1(S.H) + ' mm';
+    $('status').textContent = S.msg + (S.on ? '' : '  Climate off.') + '  Driver seat ' + seatWords(S.seatL) + ', passenger seat ' + seatWords(S.seatR) + '.';
+    $('v-out').textContent = S.outside + '°F';
+    $('b-night').setAttribute('aria-pressed', String(S.night));
+    $('b-colour').setAttribute('aria-pressed', String(S.bicolour));
+    $('b-green').setAttribute('aria-pressed', String(S.yg));
+    $('b-markers').setAttribute('aria-pressed', String(S.markers));
+    $('bigcap').textContent = 'The screen now, enlarged. The knob is setting ' +
+      ({ fan: 'fan speed', mode: 'fan mode', dash: 'the dash-light level' }[S.target] || 'temperature') + '.';
+  }
+
+  $('sc-rest').innerHTML = scr(SAMPLE, 'rest');
+  $('sc-fan').innerHTML = scr(SAMPLE, 'fan');
+  $('sc-mode').innerHTML = scr(SAMPLE, 'mode');
+  $('sc-dash').innerHTML = scr(SAMPLE, 'dash');
+
+  /* holding the centre knob's middle on the drawing: let go without turning switches the climate
+     off (or back on); scrolling while it is held sets the dash-light level */
+  var hold = null, eatClick = false;
+  document.addEventListener('pointerdown', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-act="c-p"]') : null;
+    if (!t) return;
+    hold = { long: false, turned: false };
+    hold.t = setTimeout(function () {
+      hold.long = true;
+      S.msg = 'Holding the push. Let go to switch the climate ' + (S.on ? 'off' : 'back on') + ', or scroll to set the dash lights.';
+      render();
+    }, 700);
+  });
+  document.addEventListener('pointerup', function () {
+    if (!hold) return;
+    clearTimeout(hold.t);
+    if (hold.long) {
+      eatClick = true;
+      setTimeout(function () { eatClick = false; }, 60);
+      if (!hold.turned) act('c-off');
+    }
+    hold = null;
+  });
+  document.addEventListener('click', function (e) {
+    if (eatClick) { eatClick = false; return; }
+    var t = e.target.closest ? e.target.closest('[data-act]') : null;
+    if (t) act(t.getAttribute('data-act'));
+  });
+  $('hgt').addEventListener('input', function () {
+    setH(parseFloat($('hgt').value));
+    S.msg = 'Face ' + f1(S.H) + ' mm tall. Every control is resized to fit.';
+    render();
+  });
+  $('live').addEventListener('wheel', function (e) {
+    var k = e.target.closest ? e.target.closest('[data-knob]') : null;
+    if (!k) return;
+    e.preventDefault();
+    var now = Date.now();
+    if (now - lastWheel < 110) return;
+    lastWheel = now;
+    if (hold && hold.long && k.getAttribute('data-knob') === 'c') {
+      if (!hold.turned) { hold.turned = true; act('c-h'); }
+      turn(e.deltaY < 0 ? 1 : -1);
+      render();
+      return;
+    }
+    act(k.getAttribute('data-knob') + (e.deltaY < 0 ? '-r' : '-l'));
+  }, { passive: false });
+
+  render();
+})();
+</script>
+</body>
+</html>

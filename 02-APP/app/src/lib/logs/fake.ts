@@ -1,5 +1,5 @@
 // A stand-in ICU behind the LinkTransport interface: the C3 and the Teensy as log_link and the
-// firmware (icu_radio.ino, log_store.h's LogServer) describe them - status on every change,
+// firmware (du_radio.ino, log_store.h's LogServer) describe them - status on every change,
 // DATA chunked at MTU - 7 with its offset, END's CRC-32 of the whole tier, pulled set only on
 // an ACK whose CRC matches, LIST 0 naming the drives whose summary or thin is not pulled. The
 // tests drive the pull against it (a cut link, a bad CRC, a wrong protocol); the browser build

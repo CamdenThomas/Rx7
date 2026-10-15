@@ -1,13 +1,13 @@
 """assembly.py BOARD.kicad_pcb [BOARD.kicad_pcb ...]  - the hand-assembly drawings of a board, into
-the fab/ folder beside it (Y44, D-548's list: no reference designators print on the Control Unit
+its part's diagrams/ folder (Y44, D-548's list: no reference designators print on the Control Unit
 carrier or the panel, and the Display Unit's sit on the fabrication layer only):
 
-    fab/<board>-revA-assembly-top.svg       the front, as you look at it
-    fab/<board>-revA-assembly-bottom.svg    the back, mirrored so it reads as you look at it
+    <part>/diagrams/<board>-revA-assembly-top.svg       the front, as you look at it
+    <part>/diagrams/<board>-revA-assembly-bottom.svg    the back, mirrored so it reads as you look at it
 
 Each drawing is the board's outline, every part's fabrication outline with its pads sketched, and
 its reference designator in the middle of the part, sized to fit it. The values are in the BOM
-beside it (fab/<board>-revA-bom.csv), row by reference.
+in the part's data/ (<board>-revA-bom.csv), row by reference.
 
 The board file is never written: the references are moved onto the fabrication layers in a copy
 held in a temporary folder, and that copy is plotted. Run it with KiCad's own Python (it needs
@@ -23,6 +23,9 @@ import sys
 import tempfile
 
 import pcbnew
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import parts  # noqa: E402
 
 mm = pcbnew.ToMM
 MM = pcbnew.FromMM
@@ -95,16 +98,15 @@ def main():
     for pcb in sys.argv[1:]:
         pcb = os.path.abspath(pcb)
         name = os.path.basename(pcb)[: -len(".kicad_pcb")]
-        fab = os.path.join(os.path.dirname(pcb), "fab")
-        assert os.path.isdir(fab), fab
+        board_name = parts.board_from_path(pcb)
         board = pcbnew.LoadBoard(pcb)
         count = prepare(board)
         with tempfile.TemporaryDirectory() as tmp:
             copy = os.path.join(tmp, name + ".kicad_pcb")
             pcbnew.SaveBoard(copy, board)
-            plot(copy, os.path.join(fab, name + "-revA-assembly-top.svg"), "F.Fab,Edge.Cuts", False)
-            plot(copy, os.path.join(fab, name + "-revA-assembly-bottom.svg"), "B.Fab,Edge.Cuts", True)
-        print("%s: %d parts on the front, %d on the back -> fab/%s-revA-assembly-{top,bottom}.svg"
+            plot(copy, parts.diagram_file(board_name, "-revA-assembly-top.svg"), "F.Fab,Edge.Cuts", False)
+            plot(copy, parts.diagram_file(board_name, "-revA-assembly-bottom.svg"), "B.Fab,Edge.Cuts", True)
+        print("%s: %d parts on the front, %d on the back -> diagrams/%s-revA-assembly-{top,bottom}.svg"
               % (name, count["top"], count["bottom"], name))
 
 

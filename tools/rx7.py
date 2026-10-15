@@ -2063,7 +2063,7 @@ def export_data() -> dict:
     # The generated harness drawings (D-385), one pin ladder and one route map per leg, so the
     # Manual's Diagrams page can show the new harness beside the factory circuits (plan P41).
     out["diagrams"] = []
-    dg = ROOT / "02-PROJECTS" / "01-electrical" / "00-design" / "diagrams"
+    dg = ROOT / "02-PROJECTS" / "01-electrical" / "00-design" / "harness" / "diagrams"
     if dg.is_dir():
         for leg in sorted(p for p in dg.iterdir() if p.is_dir() and (p / "A-pin-ladder.svg").is_file()):
             for sheet, fname in (("pin ladder", "A-pin-ladder.svg"), ("route map", "B-route-map.svg")):
@@ -3346,7 +3346,7 @@ def cmd_picks(args):
 
 
 def cmd_diagrams(args):
-    """Regenerate the two drawings of every harness leg (D-385): 01-electrical/00-design/diagrams/<leg>/
+    """Regenerate the two drawings of every harness leg (D-385): 01-electrical/00-design/harness/diagrams/<leg>/
     A-pin-ladder.svg and B-route-map.svg. Reads 01-electrical housings, cavities, devices and routes;
     writes those SVGs and nothing else. A read-only projection: `check` never looks at it and it
     never refuses a commit. rc 2 when a sheet fails the overlap rule and is not written.

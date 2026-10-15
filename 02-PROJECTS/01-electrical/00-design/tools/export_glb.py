@@ -9,14 +9,14 @@ It writes, into DIR (default 02-APP/app/public/design/01-electrical):
 
   <board>.glb       each KiCad board with its parts' 3D models, tracks, pads, zones, silkscreen
                     and soldermask (kicad-cli pcb export glb), re-packed (see below)
-  control-unit.glb  the climate unit's case and the insides no board stands for, from the
-  display-unit.glb  FreeCAD mock-ups (export_glb_fc.py imports their own unit_lib, so nothing
+  control-unit.glb  the Control Unit's case and the insides no board stands for, from the
+  display-unit.glb  FreeCAD mock-ups (export_glb_fc.py imports their own tools/<assembly>.py, so nothing
                     is drawn twice), one named node per solid: case:<name>, inside:<name>
   pmu.glb           ECUMaster's PMU-24 STEP from pmu/vendor, with its own face colours
-  connectors/       one glb per Deutsch variant and manifest.json, by harness/cad/connectors/
-                    build_connectors.py (Y24), run here as a step
-  devices/          the far ends' devices and common parts and manifest.json, by harness/cad/
-                    devices/build_devices.py (Y28), run here as a step
+  connectors/       one glb per Deutsch variant and manifest.json, by tools/harness_connectors.py
+                    (Y24), run here as a step
+  devices/          the far ends' devices and common parts and manifest.json, by
+                    tools/harness_devices.py (Y28), run here as a step
   scene.json        every part, its place, its connectors, one labelled link per housing; at
                     version 2 (D-514, Y26) both halves of every housing, the devices at their
                     nodes and the legs as paths (the contract is in 00-design/README.md §13)
@@ -59,6 +59,8 @@ import tempfile
 HERE = os.path.dirname(os.path.abspath(__file__))
 DESIGN = os.path.dirname(HERE)                                   # 00-design
 ROOT = os.path.abspath(os.path.join(DESIGN, "..", "..", ".."))  # the tree
+sys.path.insert(0, HERE)
+import parts as layout  # noqa: E402  (where every board, assembly and extract lives)
 OUT_DEFAULT = os.path.join(ROOT, "02-APP", "app", "public", "design", "01-electrical")
 KICAD_CLI = os.environ.get("KICAD_CLI", "/opt/homebrew/bin/kicad-cli")
 FREECADCMD = os.environ.get("FREECADCMD",
@@ -78,36 +80,36 @@ KICAD_FLAGS = ["--subst-models", "--include-tracks", "--include-pads", "--includ
 # ---------------------------------------------------------------------------------- the design --
 # Each board: its KiCad project and the record row that names it (01-electrical parts / modules).
 BOARDS = {
-    "dcu-carrier": ("control-unit/cad/dcu-carrier/dcu-carrier.kicad_pcb", "parts", "P144"),
-    "panel": ("control-unit/cad/panel/panel.kicad_pcb", "modules", "PANEL"),
-    "left-plate": ("control-unit/cad/left-plate/left-plate.kicad_pcb", "parts", "P198"),
-    "icu-carrier": ("display-unit/cad/icu-carrier/icu-carrier.kicad_pcb", "parts", "P103"),
+    "cu-carrier": ("control-unit/cad/cu-carrier/cu-carrier.kicad_pcb", "parts", "P144"),
+    "cu-face-board": ("control-unit/cad/cu-face-board/cu-face-board.kicad_pcb", "modules", "PANEL"),
+    "cur-board": ("control-unit/control-unit-remote/cad/cur-board/cur-board.kicad_pcb", "parts", "P198"),
+    "du-carrier": ("display-unit/cad/du-carrier/du-carrier.kicad_pcb", "parts", "P103"),
 }
 # What a board's glb leaves out, and why: the record has moved past the board as drawn.
 BOARD_HIDE = {
-    "dcu-carrier": {"refs": ("J1", "J2", "J9"),
+    "cu-carrier": {"refs": ("J1", "J2", "J9"),
                     "why": "D-582: the three DT13s give way to the Control Unit's one CMC 48 "
                            "header, which the unit's mock-up draws; the board is redrawn at Y54"},
 }
 # Each unit: its mock-up, the record row that names it, and which of the mock-up's inside solids
 # a child board's glb stands for (those are left out of the unit's glb, so nothing is drawn twice).
 UNITS = {
-    "control-unit": {"dir": "control-unit/cad/climate-unit", "row": ("modules", "DCU"),
+    "control-unit": {"assembly": "cu-assembly", "row": ("modules", "DCU"),
                      "housing": "P152",
-                     "children": {"dcu-carrier": {"kinds": ["carrier"]},
-                                  "panel": {"names": ["panel board", "panel ribbon header"]}}},
-    "display-unit": {"dir": "display-unit/cad/icu-unit", "row": ("modules", "ICU"),
+                     "children": {"cu-carrier": {"kinds": ["carrier"]},
+                                  "cu-face-board": {"names": ["panel board", "panel ribbon header"]}}},
+    "display-unit": {"assembly": "du-assembly", "row": ("modules", "ICU"),
                      "housing": "P111",
-                     "children": {"icu-carrier": {"kinds": ["carrier"]}}},
+                     "children": {"du-carrier": {"kinds": ["carrier"]}}},
     # the left plate made a unit (D-514, Y25): the plate board is its child, placed from the
     # mock-up's export_boards(); no record row names the CUR yet, so its name is given here
-    "cur": {"dir": "control-unit/cad/cur-unit", "row": ("parts", "P198"),
+    "cur": {"assembly": "cur-assembly", "row": ("parts", "P198"),
             "name": "Control Unit Remote (CUR)",
-            "children": {"left-plate": {"kinds": ["plate"]}},
-            "sources": ["control-unit/cad/climate-unit/unit_lib.py",
-                        "control-unit/cad/left-plate/left-plate.kicad_pcb",
-                        "control-unit/cad/dcu-carrier/enclosure/board.json",
-                        "control-unit/cad/dcu-carrier/enclosure/probe.json"]},
+            "children": {"cur-board": {"kinds": ["plate"]}},
+            "sources": ["tools/cu_assembly.py",
+                        "control-unit/control-unit-remote/cad/cur-board/cur-board.kicad_pcb",
+                        "control-unit/data/cu-carrier-board.json",
+                        "control-unit/data/cu-carrier-probe.json"]},
 }
 PMU = {"id": "pmu", "row": ("modules", "PMU")}
 ASSETS = list(BOARDS) + list(UNITS) + ["pmu"]
@@ -161,7 +163,7 @@ TOP = {
     "control-unit": ((0.5, 0.12, 0.33), "the centre stack's opening (modules DCU)"),
     "display-unit": ((0.28, 0.1, 0.72), "the binnacle aperture ahead of the driver (modules ICU)"),
     "pmu": ((0.5, 0.8, 0.3), "the dash node, behind the stack at the firewall (modules PMU)"),
-    "left-plate": ((0.43, 0.07, 0.67), "the dash face right of the wheel, high beside the DU (P198, D-586)"),
+    "cur-board": ((0.43, 0.07, 0.67), "the dash face right of the wheel, high beside the DU (P198, D-586)"),
     "cur": ((0.43, 0.07, 0.67), "the dash face right of the wheel, high beside the DU (D-514, D-586)"),
 }
 # Drops whose far end is not the dash post: the record's rulings, one line each.
@@ -174,8 +176,8 @@ FAR_END = {
 # ------------------------------------------------------------- version 2: the harness (D-514) --
 # The two builders whose glb files and manifests the scene places (Y24, Y28). The export runs them
 # as steps; their own READMEs say how each model is made.
-CONNECTORS_BUILDER = os.path.join(DESIGN, "harness", "cad", "connectors", "build_connectors.py")
-DEVICES_BUILDER = os.path.join(DESIGN, "harness", "cad", "devices", "build_devices.py")
+CONNECTORS_BUILDER = os.path.join(HERE, "harness_connectors.py")
+DEVICES_BUILDER = os.path.join(HERE, "harness_devices.py")
 STEPS = ["connectors", "devices"]
 UNIT_OF = {"ICU unit": "display-unit", "Climate unit": "control-unit",    # housings.where -> unit
            "CUR": "cur"}
@@ -774,7 +776,7 @@ def build_board(bid, out):
                       "z = 0 on the board's underside"}
     if bid in BOARD_HIDE:
         meta["hidden"] = dict(BOARD_HIDE[bid])
-    if bid == "left-plate":
+    if bid == "cur-board":
         meta["j1"] = pcb_footprint_at(pcb, "J1")
     return meta
 
@@ -804,11 +806,15 @@ def run_fc(job):
 
 def build_unit(uid, out):
     u = UNITS[uid]
-    meta = run_fc({"id": uid, "kind": "unit", "unit_dir": os.path.join(DESIGN, u["dir"]),
+    name = u["assembly"]
+    params = os.path.join(layout.data_dir(layout.part_of(name)), name.replace("-", "_") + "_params.py")
+    meta = run_fc({"id": uid, "kind": "unit", "assembly": name, "params": params,
+                   "lib": os.path.join(HERE, name.replace("-", "_") + ".py"), "cad_dir": layout.cad_dir(name),
                    "tools_dir": HERE, "glb": os.path.join(out, uid + ".glb"),
                    "children": u["children"], "linear": UNIT_LINEAR, "angular": UNIT_ANGULAR})
     meta.update({"id": uid, "kind": "unit", "glb": uid + ".glb",
-                 "source": u["dir"] + " (unit_params.py, unit_lib.py)"})
+                 "source": "%s (%s, %s)" % (rel(layout.cad_dir(name)), rel(params),
+                                            rel(os.path.join(HERE, name.replace("-", "_") + ".py")))})
     return meta
 
 
@@ -842,14 +848,14 @@ def source_files(aid):
                          if dp.endswith(".pretty") and f.endswith(".kicad_mod")]
         return mine + files
     if aid in UNITS:
-        d = os.path.join(DESIGN, UNITS[aid]["dir"])
-        files = [os.path.join(d, f) for f in ("unit_params.py", "unit_lib.py")]
+        name = UNITS[aid]["assembly"]
+        files = [os.path.join(layout.data_dir(layout.part_of(name)), name.replace("-", "_") + "_params.py"),
+                 os.path.join(HERE, name.replace("-", "_") + ".py")]
         if "sources" in UNITS[aid]:
             files += [os.path.join(DESIGN, f) for f in UNITS[aid]["sources"]]
         else:
-            car = os.path.join(os.path.dirname(d), [c for c in UNITS[aid]["children"]
-                                                    if "carrier" in c][0])
-            files += [os.path.join(car, "enclosure", f) for f in ("board.json", "probe.json")]
+            car = [c for c in UNITS[aid]["children"] if "carrier" in c][0]
+            files += [layout.data_file(car, s) for s in ("-board.json", "-probe.json")]
         files.append(os.path.join(HERE, "enclosure_lib.py"))
         return mine + [f for f in files if os.path.exists(f)]
     if aid == "pmu":
@@ -1011,20 +1017,20 @@ def assemble(rec, metas, built, out=None):
         notes += ["%s: %s" % (uid, n) for n in m.get("notes", [])]
 
     # ---- the left plate: a board with no housing yet, standing for the plate
-    lm = metas["left-plate"]
-    if "left-plate" not in parts:                 # not a unit's child (the CUR's, D-514)
-        anchor = _in_zone(rec, "dash", TOP["left-plate"][0])
+    lm = metas["cur-board"]
+    if "cur-board" not in parts:                 # not a unit's child (the CUR's, D-514)
+        anchor = _in_zone(rec, "dash", TOP["cur-board"][0])
         o = lm["outline"]
         c = _rot([(o[0] + o[1]) / 2.0, (o[2] + o[3]) / 2.0, 0.0], _place(rx=90))
         lp = _place(anchor[0] - c[0], anchor[1] - c[1], anchor[2] - c[2], rx=90)
-        parts["left-plate"] = board_part(rec, "left-plate", lm, None, lp, "provisional", True)
-        parts["left-plate"]["place_note"] = ("inside 00-CAR zones dash: %s, the board facing "
-                                             "the driver" % TOP["left-plate"][1])
-    if parts["left-plate"]["parent"] is None:     # the CUR is its housing now (D-514)
-        missing.append({"part": "left-plate", "what": "housing model",
+        parts["cur-board"] = board_part(rec, "cur-board", lm, None, lp, "provisional", True)
+        parts["cur-board"]["place_note"] = ("inside 00-CAR zones dash: %s, the board facing "
+                                             "the driver" % TOP["cur-board"][1])
+    if parts["cur-board"]["parent"] is None:     # the CUR is its housing now (D-514)
+        missing.append({"part": "cur-board", "what": "housing model",
                         "why": "no plate housing is drawn yet; the board stands for the plate"})
     if lm.get("j1"):
-        parts["left-plate"]["connectors"] = [{"code": "DP-DCU-E", "at": {
+        parts["cur-board"]["connectors"] = [{"code": "DP-DCU-E", "at": {
             "x": lm["j1"][0], "y": lm["j1"][1], "z": 0.0}, "face": "rear",
             "note": "J1, the cable to DP-DCU-E (D-492), at its footprint's origin"}]
 
@@ -1156,7 +1162,7 @@ def assemble(rec, metas, built, out=None):
             raise Fail("two links share the id %s" % l["id"])
         seen.add(l["id"])
     order = list(dict.fromkeys(list(UNITS) + [k for u in UNITS.values() for k in u["children"]] +
-                               ["left-plate", "pmu"]))
+                               ["cur-board", "pmu"]))
     out_parts = [parts[k] for k in order] + [nodes[k] for k in sorted(nodes)]
     scene = {
         "version": 1,
@@ -1786,11 +1792,11 @@ def child_place(kid, um, km, notes):
     o = km["outline"]
     bc = [(o[0] + o[1]) / 2.0, (o[2] + o[3]) / 2.0]
     b = um["boards"]
-    if kid in ("dcu-carrier", "icu-carrier"):
+    if kid in ("cu-carrier", "du-carrier"):
         mv, turn = b["carrier"]["move"], b["carrier"]["turn"]
         return _place(mv[0], mv[1], mv[2], rz=turn)
-    if kid in ("panel", "left-plate"):            # a board standing behind its unit's face
-        x0, x1, y0, y1, z0, z1 = b["panel" if kid == "panel" else "plate"]
+    if kid in ("cu-face-board", "cur-board"):    # a board standing behind its unit's face
+        x0, x1, y0, y1, z0, z1 = b["panel" if kid == "cu-face-board" else "plate"]
         return _place((x0 + x1) / 2.0 - bc[0], y1, (z0 + z1) / 2.0 - bc[1], rx=90)
     raise Fail("no rule places %s in its unit" % kid)
 

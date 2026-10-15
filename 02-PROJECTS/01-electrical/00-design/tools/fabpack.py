@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-"""fabpack.py BOARD.kicad_pcb  - plot one board's fab package (Y42, kept in the tree since Y44) into the fab/ folder beside it,
+"""fabpack.py BOARD.kicad_pcb  - plot one board's fab package (Y42, kept in the tree since Y44) into the fab/ folder beside it
+(cad/<board>/fab/: only what the board house needs; the assembly drawings and the fab BOM are in the part's
+diagrams/ and data/),
 as bench revision A was plotted (Y17; the options were found by re-plotting the untouched upper
 board and the panel until every file matched but its date lines), and write the zip whole.
 

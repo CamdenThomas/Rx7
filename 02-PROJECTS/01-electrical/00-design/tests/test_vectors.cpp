@@ -7,7 +7,7 @@
  */
 #include <cstdint>
 #include <cstdio>
-#include "../display-unit/firmware/icu/can_map.h"
+#include "../display-unit/firmware/du/can_map.h"
 #include "can_vectors.h"
 
 #define SAME_ID(S)  static_assert(ID_##S == V_ID_##S, "frame id " #S " disagrees with the record")

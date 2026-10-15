@@ -38,11 +38,11 @@ has been parsed into the car's tables; `06-intake`, the project that did it, is 
 project's own vendor folder, R10) and is parsed by a run in the project that wants it.
 
 **The one generated file type left is the harness-leg drawings** (D-385): for each leg,
-`A-pin-ladder.svg` and `B-route-map.svg` in `02-PROJECTS/01-electrical/00-design/diagrams/`,
+`A-pin-ladder.svg` and `B-route-map.svg` in `02-PROJECTS/01-electrical/00-design/harness/diagrams/`,
 a pure projection of `housings`, `cavities`, `devices` and `routes`, read-only, rebuilt whole
 by `rx7.py diagrams`, and never looked at by `check`. The command refuses to write any sheet
 where a label touches a label or sits on a wire (rc 2). Fix that in the layout code, never
-by loosening the check. `00-design/diagrams/README.md` holds the method and the options
+by loosening the check. `00-design/harness/diagrams/README.md` holds the method and the options
 kept in reserve.
 
 **The work list is the `work` table, and the app's TODO page shows it:** what can start

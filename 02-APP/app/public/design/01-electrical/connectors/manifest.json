@@ -33,7 +33,7 @@
    "flange",
    "cavities"
   ],
-  "stamp": "5032b90729ea25a3"
+  "stamp": "611e9f807c37a90c"
  },
  "CMC48-64320-1311": {
   "glb": "connectors/CMC48-64320-1311.glb",
@@ -69,7 +69,7 @@
    "cavities",
    "wedgelock"
   ],
-  "stamp": "a9c068ef69fc5e8e"
+  "stamp": "f8a9028f3244ed8f"
  },
  "DRC13-24PA": {
   "glb": "connectors/DRC13-24PA.glb",
@@ -104,7 +104,7 @@
    "shroud",
    "flange"
   ],
-  "stamp": "0e03908768375f40"
+  "stamp": "a28ef9bfcc1f8ddb"
  },
  "DRC16-24SA": {
   "glb": "connectors/DRC16-24SA.glb",
@@ -140,7 +140,7 @@
    "cavities",
    "wedgelock"
   ],
-  "stamp": "12367fd7c31f74db"
+  "stamp": "39d81f1c59cdbe30"
  },
  "DT04-12P": {
   "glb": "connectors/DT04-12P.glb",
@@ -176,7 +176,7 @@
    "cavities",
    "wedgelock"
   ],
-  "stamp": "d84367b711585e18",
+  "stamp": "f50712620672f669",
   "note": "deutsch-dt04-12pa-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT04-2P": {
@@ -213,7 +213,7 @@
    "cavities",
    "wedgelock"
   ],
-  "stamp": "73d32fb1cfd49a54",
+  "stamp": "9539990824d943e5",
   "note": "deutsch-dt04-2p-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT04-4P": {
@@ -250,7 +250,7 @@
    "cavities",
    "wedgelock"
   ],
-  "stamp": "2aec69da101f4fc1",
+  "stamp": "43afb85ddb9617bf",
   "note": "deutsch-dt04-4p-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT04-6P": {
@@ -287,7 +287,7 @@
    "cavities",
    "wedgelock"
   ],
-  "stamp": "352e290227b6eb45",
+  "stamp": "4524744d15e39814",
   "note": "deutsch-dt04-6p-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT04-8P": {
@@ -324,7 +324,7 @@
    "cavities",
    "wedgelock"
   ],
-  "stamp": "ca31b2052a619ba4",
+  "stamp": "bc32737ba036a951",
   "note": "deutsch-dt04-08pa-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT06-12S": {
@@ -361,7 +361,7 @@
    "cavities",
    "wedgelock"
   ],
-  "stamp": "fdcd5458840bef48",
+  "stamp": "ffb1b7b74c7557e7",
   "note": "deutsch-dt06-12sa-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT06-2S": {
@@ -398,7 +398,7 @@
    "cavities",
    "wedgelock"
   ],
-  "stamp": "572047bb769b8028",
+  "stamp": "aeb71989960ebe8f",
   "note": "deutsch-dt06-2s-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT06-4S": {
@@ -435,7 +435,7 @@
    "cavities",
    "wedgelock"
   ],
-  "stamp": "38c727172810c57f",
+  "stamp": "50a6568861b2bffc",
   "note": "deutsch-dt06-4s-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT06-6S": {
@@ -472,7 +472,7 @@
    "cavities",
    "wedgelock"
   ],
-  "stamp": "c6f3bd0c10b99877",
+  "stamp": "ce5ddce7d901330a",
   "note": "deutsch-dt06-6s-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT06-8S": {
@@ -509,7 +509,7 @@
    "cavities",
    "wedgelock"
   ],
-  "stamp": "3c6eb72d1ba80acc",
+  "stamp": "fdf88d0fc7ee3d6c",
   "note": "deutsch-dt06-08sa-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT13-06PA": {
@@ -545,7 +545,7 @@
    "shroud",
    "flange"
   ],
-  "stamp": "cb0369b8b104c4e7"
+  "stamp": "3a6b95bfdbdb2da7"
  },
  "DT13-08PA": {
   "glb": "connectors/DT13-08PA.glb",
@@ -580,7 +580,7 @@
    "shroud",
    "flange"
   ],
-  "stamp": "a9949ba5684c6c45"
+  "stamp": "3ecfd254488b1858"
  },
  "DT13-12PA": {
   "glb": "connectors/DT13-12PA.glb",
@@ -615,7 +615,7 @@
    "shroud",
    "flange"
   ],
-  "stamp": "f4898eb07b79e0d9"
+  "stamp": "50a0951f4c6012ac"
  },
  "DTP04-2P": {
   "glb": "connectors/DTP04-2P.glb",
@@ -651,7 +651,7 @@
    "cavities",
    "wedgelock"
   ],
-  "stamp": "f24980f01eb00979",
+  "stamp": "43f79755ff1ce38c",
   "note": "deutsch-dtp04-2p-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DTP04-4P": {
@@ -688,7 +688,7 @@
    "cavities",
    "wedgelock"
   ],
-  "stamp": "c1b072db14cbd9f7",
+  "stamp": "7987cdc60d86ad50",
   "note": "deutsch-dtp04-4p-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DTP06-2S": {
@@ -725,7 +725,7 @@
    "cavities",
    "wedgelock"
   ],
-  "stamp": "b1643d15a51bacb8",
+  "stamp": "115965e86963c6a2",
   "note": "deutsch-dtp06-2s-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DTP06-4S": {
@@ -762,7 +762,7 @@
    "cavities",
    "wedgelock"
   ],
-  "stamp": "92c80b246e021087",
+  "stamp": "260c9485b9d06d7e",
   "note": "deutsch-dtp06-4s-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  }
 }

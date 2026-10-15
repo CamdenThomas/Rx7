@@ -1,6 +1,6 @@
 {
  "version": 2,
- "built": "2026-10-14T22:26:28-06:00",
+ "built": "2026-10-15T12:05:36-06:00",
  "project": "01-electrical",
  "frame": {
   "units": "mm",
@@ -17,7 +17,7 @@
    "name": "Control Unit (CU)",
    "kind": "unit",
    "glb": "control-unit.glb",
-   "bytes": 337660,
+   "bytes": 337656,
    "parent": null,
    "place": {
     "x": -90.5,
@@ -49,10 +49,10 @@
     }
    ],
    "children": [
-    "dcu-carrier",
-    "panel"
+    "cu-carrier",
+    "cu-face-board"
    ],
-   "source": "control-unit/cad/climate-unit (unit_params.py, unit_lib.py)",
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/cu-assembly (02-PROJECTS/01-electrical/00-design/control-unit/data/cu_assembly_params.py, 02-PROJECTS/01-electrical/00-design/tools/cu_assembly.py)",
    "nodes": {
     "case": [
      "case:body",
@@ -81,7 +81,7 @@
    "name": "Display Unit (DU)",
    "kind": "unit",
    "glb": "display-unit.glb",
-   "bytes": 341508,
+   "bytes": 341512,
    "parent": null,
    "place": {
     "x": -523.3,
@@ -113,9 +113,9 @@
     }
    ],
    "children": [
-    "icu-carrier"
+    "du-carrier"
    ],
-   "source": "display-unit/cad/icu-unit (unit_params.py, unit_lib.py)",
+   "source": "02-PROJECTS/01-electrical/00-design/display-unit/cad/du-assembly (02-PROJECTS/01-electrical/00-design/display-unit/data/du_assembly_params.py, 02-PROJECTS/01-electrical/00-design/tools/du_assembly.py)",
    "nodes": {
     "case": [
      "case:body",
@@ -138,7 +138,7 @@
    "name": "Control Unit Remote (CUR)",
    "kind": "unit",
    "glb": "cur.glb",
-   "bytes": 279528,
+   "bytes": 279552,
    "parent": null,
    "place": {
     "x": -180.6,
@@ -180,9 +180,9 @@
     }
    ],
    "children": [
-    "left-plate"
+    "cur-board"
    ],
-   "source": "control-unit/cad/cur-unit (unit_params.py, unit_lib.py)",
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/control-unit-remote/cad/cur-assembly (02-PROJECTS/01-electrical/00-design/control-unit/control-unit-remote/data/cur_assembly_params.py, 02-PROJECTS/01-electrical/00-design/tools/cur_assembly.py)",
    "nodes": {
     "case": [
      "case:body",
@@ -208,10 +208,10 @@
    }
   },
   {
-   "id": "dcu-carrier",
+   "id": "cu-carrier",
    "name": "DCU carrier PCB H-002",
    "kind": "pcb",
-   "glb": "dcu-carrier.glb",
+   "glb": "cu-carrier.glb",
    "bytes": 12009348,
    "parent": "control-unit",
    "place": {
@@ -232,7 +232,7 @@
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
    "connectors": [],
    "children": [],
-   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/dcu-carrier/dcu-carrier.kicad_pcb",
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/cu-carrier/cu-carrier.kicad_pcb",
    "nodes": {
     "board": [
      "pcb:board"
@@ -243,11 +243,11 @@
    }
   },
   {
-   "id": "panel",
+   "id": "cu-face-board",
    "name": "Control panel",
    "kind": "pcb",
-   "glb": "panel.glb",
-   "bytes": 3032004,
+   "glb": "cu-face-board.glb",
+   "bytes": 3032020,
    "parent": "control-unit",
    "place": {
     "x": 0.5,
@@ -267,7 +267,7 @@
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
    "connectors": [],
    "children": [],
-   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/panel/panel.kicad_pcb",
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/cu-face-board/cu-face-board.kicad_pcb",
    "nodes": {
     "board": [
      "pcb:board"
@@ -278,11 +278,11 @@
    }
   },
   {
-   "id": "icu-carrier",
+   "id": "du-carrier",
    "name": "ICU carrier PCB H-001",
    "kind": "pcb",
-   "glb": "icu-carrier.glb",
-   "bytes": 8874400,
+   "glb": "du-carrier.glb",
+   "bytes": 8874396,
    "parent": "display-unit",
    "place": {
     "x": 100.524,
@@ -302,7 +302,7 @@
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
    "connectors": [],
    "children": [],
-   "source": "02-PROJECTS/01-electrical/00-design/display-unit/cad/icu-carrier/icu-carrier.kicad_pcb",
+   "source": "02-PROJECTS/01-electrical/00-design/display-unit/cad/du-carrier/du-carrier.kicad_pcb",
    "nodes": {
     "board": [
      "pcb:board"
@@ -313,10 +313,10 @@
    }
   },
   {
-   "id": "left-plate",
+   "id": "cur-board",
    "name": "Left plate circuit board",
    "kind": "pcb",
-   "glb": "left-plate.glb",
+   "glb": "cur-board.glb",
    "bytes": 2361376,
    "parent": "cur",
    "place": {
@@ -348,7 +348,7 @@
     }
    ],
    "children": [],
-   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/left-plate/left-plate.kicad_pcb",
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/control-unit-remote/cad/cur-board/cur-board.kicad_pcb",
    "nodes": {
     "board": [
      "pcb:board"
@@ -9297,7 +9297,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json 00-CAR:P-002 (drawn here (build_devices.py STANDINS['battery-ionic-s9']): Ionic IC-12V40-S9H heated LiFePO4 battery, rear mount (00-CAR planned P-002))"
+   "source": "devices/manifest.json 00-CAR:P-002 (drawn here (harness_devices.py STANDINS['battery-ionic-s9']): Ionic IC-12V40-S9H heated LiFePO4 battery, rear mount (00-CAR planned P-002))"
   },
   {
    "id": "dev-04-luxury-lp58-1",
@@ -9306,7 +9306,7 @@
    "device": "04-luxury:LP58",
    "node": "kick-driver",
    "glb": "devices/speaker-165.glb",
-   "bytes": 45340,
+   "bytes": 45344,
    "parent": null,
    "place": {
     "x": -746.5,
@@ -9329,7 +9329,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json 04-luxury:LP58 (drawn here (build_devices.py STANDINS['speaker-165']): Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen))"
+   "source": "devices/manifest.json 04-luxury:LP58 (drawn here (harness_devices.py STANDINS['speaker-165']): Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen))"
   },
   {
    "id": "dev-04-luxury-lp58-2",
@@ -9338,7 +9338,7 @@
    "device": "04-luxury:LP58",
    "node": "kick-passenger",
    "glb": "devices/speaker-165.glb",
-   "bytes": 45340,
+   "bytes": 45344,
    "parent": null,
    "place": {
     "x": 718.5,
@@ -9361,7 +9361,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json 04-luxury:LP58 (drawn here (build_devices.py STANDINS['speaker-165']): Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen))"
+   "source": "devices/manifest.json 04-luxury:LP58 (drawn here (harness_devices.py STANDINS['speaker-165']): Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen))"
   },
   {
    "id": "dev-04-luxury-lp59-1",
@@ -9370,7 +9370,7 @@
    "device": "04-luxury:LP59",
    "node": "quarter-driver",
    "glb": "devices/speaker-165.glb",
-   "bytes": 45340,
+   "bytes": 45344,
    "parent": null,
    "place": {
     "x": -746.5,
@@ -9393,7 +9393,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json 04-luxury:LP59 (drawn here (build_devices.py STANDINS['speaker-165']): Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen))"
+   "source": "devices/manifest.json 04-luxury:LP59 (drawn here (harness_devices.py STANDINS['speaker-165']): Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen))"
   },
   {
    "id": "dev-04-luxury-lp59-2",
@@ -9402,7 +9402,7 @@
    "device": "04-luxury:LP59",
    "node": "quarter-passenger",
    "glb": "devices/speaker-165.glb",
-   "bytes": 45340,
+   "bytes": 45344,
    "parent": null,
    "place": {
     "x": 718.5,
@@ -9425,7 +9425,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json 04-luxury:LP59 (drawn here (build_devices.py STANDINS['speaker-165']): Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen))"
+   "source": "devices/manifest.json 04-luxury:LP59 (drawn here (harness_devices.py STANDINS['speaker-165']): Speaker, 6.5 in class (luxury LP58 fronts, LP59 surrounds - not chosen))"
   },
   {
    "id": "dev-04-luxury-lp60",
@@ -9434,7 +9434,7 @@
    "device": "04-luxury:LP60",
    "node": "console",
    "glb": "devices/speaker-100.glb",
-   "bytes": 36340,
+   "bytes": 36344,
    "parent": null,
    "place": {
     "x": -14.0,
@@ -9457,7 +9457,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json 04-luxury:LP60 (drawn here (build_devices.py STANDINS['speaker-100']): Speaker, 4 in class (luxury LP60 centre - not chosen))"
+   "source": "devices/manifest.json 04-luxury:LP60 (drawn here (harness_devices.py STANDINS['speaker-100']): Speaker, 4 in class (luxury LP60 centre - not chosen))"
   },
   {
    "id": "dev-dv01",
@@ -9489,7 +9489,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV01 (drawn here (build_devices.py STANDINS['coil-igniter-set']): Ignition coils and igniters (DV01: B-18 to B-21, factory, on their bracket))"
+   "source": "devices/manifest.json DV01 (drawn here (harness_devices.py STANDINS['coil-igniter-set']): Ignition coils and igniters (DV01: B-18 to B-21, factory, on their bracket))"
   },
   {
    "id": "dev-dv02",
@@ -9521,7 +9521,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV02 (drawn here (build_devices.py STANDINS['starter']): Starting motor A-01 (DV02, factory))"
+   "source": "devices/manifest.json DV02 (drawn here (harness_devices.py STANDINS['starter']): Starting motor A-01 (DV02, factory))"
   },
   {
    "id": "dev-dv03",
@@ -9553,7 +9553,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV03 (drawn here (build_devices.py STANDINS['relay-mini-iso-sealed']): Sealed mini ISO relay, Picker PC792E (P004, K9))"
+   "source": "devices/manifest.json DV03 (drawn here (harness_devices.py STANDINS['relay-mini-iso-sealed']): Sealed mini ISO relay, Picker PC792E (P004, K9))"
   },
   {
    "id": "dev-dv04",
@@ -9562,7 +9562,7 @@
    "device": "DV04",
    "node": "leg-l1",
    "glb": "devices/alternator.glb",
-   "bytes": 26680,
+   "bytes": 26684,
    "parent": null,
    "place": {
     "x": -230,
@@ -9585,7 +9585,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV04 (drawn here (build_devices.py STANDINS['alternator']): Alternator (DV04, factory))"
+   "source": "devices/manifest.json DV04 (drawn here (harness_devices.py STANDINS['alternator']): Alternator (DV04, factory))"
   },
   {
    "id": "dev-dv05",
@@ -9617,7 +9617,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV05 (drawn here (build_devices.py STANDINS['switch-small']): A small switch or sender body (the inhibitor, park-brake, kick-down, glove-box and luggage switches; factory))"
+   "source": "devices/manifest.json DV05 (drawn here (harness_devices.py STANDINS['switch-small']): A small switch or sender body (the inhibitor, park-brake, kick-down, glove-box and luggage switches; factory))"
   },
   {
    "id": "dev-dv06",
@@ -9649,7 +9649,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV06 (drawn here (build_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new))"
+   "source": "devices/manifest.json DV06 (drawn here (harness_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new))"
   },
   {
    "id": "dev-dv07",
@@ -9681,7 +9681,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV07 (drawn here (build_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new))"
+   "source": "devices/manifest.json DV07 (drawn here (harness_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new))"
   },
   {
    "id": "dev-dv08",
@@ -9713,7 +9713,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV08 (drawn here (build_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new))"
+   "source": "devices/manifest.json DV08 (drawn here (harness_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new))"
   },
   {
    "id": "dev-dv10-1",
@@ -9745,7 +9745,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV10 (drawn here (build_devices.py STANDINS['headlight-7in']): Headlight, 7 in round sealed beam class (DV10, E-08 / E-09))"
+   "source": "devices/manifest.json DV10 (drawn here (harness_devices.py STANDINS['headlight-7in']): Headlight, 7 in round sealed beam class (DV10, E-08 / E-09))"
   },
   {
    "id": "dev-dv10-2",
@@ -9777,7 +9777,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV10 (drawn here (build_devices.py STANDINS['headlight-7in']): Headlight, 7 in round sealed beam class (DV10, E-08 / E-09))"
+   "source": "devices/manifest.json DV10 (drawn here (harness_devices.py STANDINS['headlight-7in']): Headlight, 7 in round sealed beam class (DV10, E-08 / E-09))"
   },
   {
    "id": "dev-dv11-1",
@@ -9786,7 +9786,7 @@
    "device": "DV11",
    "node": "leg-l2",
    "glb": "devices/motor-gear.glb",
-   "bytes": 11116,
+   "bytes": 11120,
    "parent": null,
    "place": {
     "x": -560,
@@ -9809,7 +9809,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV11 (drawn here (build_devices.py STANDINS['motor-gear']): A geared motor (the pop-up motors E-03 / E-04, the wiper motor D-02; factory))"
+   "source": "devices/manifest.json DV11 (drawn here (harness_devices.py STANDINS['motor-gear']): A geared motor (the pop-up motors E-03 / E-04, the wiper motor D-02; factory))"
   },
   {
    "id": "dev-dv11-2",
@@ -9818,7 +9818,7 @@
    "device": "DV11",
    "node": "leg-l2",
    "glb": "devices/motor-gear.glb",
-   "bytes": 11116,
+   "bytes": 11120,
    "parent": null,
    "place": {
     "x": 560,
@@ -9841,7 +9841,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV11 (drawn here (build_devices.py STANDINS['motor-gear']): A geared motor (the pop-up motors E-03 / E-04, the wiper motor D-02; factory))"
+   "source": "devices/manifest.json DV11 (drawn here (harness_devices.py STANDINS['motor-gear']): A geared motor (the pop-up motors E-03 / E-04, the wiper motor D-02; factory))"
   },
   {
    "id": "dev-dv12-1",
@@ -9873,7 +9873,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV12 (drawn here (build_devices.py STANDINS['lamp-front-combo']): Front combination lamp (DV12, F-05 / F-06, factory))"
+   "source": "devices/manifest.json DV12 (drawn here (harness_devices.py STANDINS['lamp-front-combo']): Front combination lamp (DV12, F-05 / F-06, factory))"
   },
   {
    "id": "dev-dv12-2",
@@ -9905,7 +9905,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV12 (drawn here (build_devices.py STANDINS['lamp-front-combo']): Front combination lamp (DV12, F-05 / F-06, factory))"
+   "source": "devices/manifest.json DV12 (drawn here (harness_devices.py STANDINS['lamp-front-combo']): Front combination lamp (DV12, F-05 / F-06, factory))"
   },
   {
    "id": "dev-dv13-1",
@@ -9914,7 +9914,7 @@
    "device": "DV13",
    "node": "leg-l2",
    "glb": "devices/lamp-small.glb",
-   "bytes": 4764,
+   "bytes": 4768,
    "parent": null,
    "place": {
     "x": -800,
@@ -9937,7 +9937,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV13 (drawn here (build_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory))"
+   "source": "devices/manifest.json DV13 (drawn here (harness_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory))"
   },
   {
    "id": "dev-dv13-2",
@@ -9946,7 +9946,7 @@
    "device": "DV13",
    "node": "leg-l2",
    "glb": "devices/lamp-small.glb",
-   "bytes": 4764,
+   "bytes": 4768,
    "parent": null,
    "place": {
     "x": 800,
@@ -9969,7 +9969,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV13 (drawn here (build_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory))"
+   "source": "devices/manifest.json DV13 (drawn here (harness_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory))"
   },
   {
    "id": "dev-dv14-1",
@@ -9978,7 +9978,7 @@
    "device": "DV14",
    "node": "leg-l2",
    "glb": "devices/horn.glb",
-   "bytes": 12684,
+   "bytes": 12688,
    "parent": null,
    "place": {
     "x": -380,
@@ -10001,7 +10001,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV14 (drawn here (build_devices.py STANDINS['horn']): Horn (DV14, F-09 / F-10, factory))"
+   "source": "devices/manifest.json DV14 (drawn here (harness_devices.py STANDINS['horn']): Horn (DV14, F-09 / F-10, factory))"
   },
   {
    "id": "dev-dv14-2",
@@ -10010,7 +10010,7 @@
    "device": "DV14",
    "node": "leg-l2",
    "glb": "devices/horn.glb",
-   "bytes": 12684,
+   "bytes": 12688,
    "parent": null,
    "place": {
     "x": 380,
@@ -10033,7 +10033,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV14 (drawn here (build_devices.py STANDINS['horn']): Horn (DV14, F-09 / F-10, factory))"
+   "source": "devices/manifest.json DV14 (drawn here (harness_devices.py STANDINS['horn']): Horn (DV14, F-09 / F-10, factory))"
   },
   {
    "id": "dev-dv15",
@@ -10042,7 +10042,7 @@
    "device": "DV15",
    "node": "leg-l2",
    "glb": "devices/motor-gear.glb",
-   "bytes": 11116,
+   "bytes": 11120,
    "parent": null,
    "place": {
     "x": -330,
@@ -10065,7 +10065,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV15 (drawn here (build_devices.py STANDINS['motor-gear']): A geared motor (the pop-up motors E-03 / E-04, the wiper motor D-02; factory))"
+   "source": "devices/manifest.json DV15 (drawn here (harness_devices.py STANDINS['motor-gear']): A geared motor (the pop-up motors E-03 / E-04, the wiper motor D-02; factory))"
   },
   {
    "id": "dev-dv16",
@@ -10097,7 +10097,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV16 (drawn here (build_devices.py STANDINS['washer-pump']): Washer pump D-01 (DV16, factory))"
+   "source": "devices/manifest.json DV16 (drawn here (harness_devices.py STANDINS['washer-pump']): Washer pump D-01 (DV16, factory))"
   },
   {
    "id": "dev-dv18",
@@ -10106,7 +10106,7 @@
    "device": "DV18",
    "node": "leg-l3",
    "glb": "devices/ignition-switch.glb",
-   "bytes": 8824,
+   "bytes": 8828,
    "parent": null,
    "place": {
     "x": -330,
@@ -10129,7 +10129,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV18 (drawn here (build_devices.py STANDINS['ignition-switch']): Ignition switch, electrical portion (DV18, new, 1981-83 FB))"
+   "source": "devices/manifest.json DV18 (drawn here (harness_devices.py STANDINS['ignition-switch']): Ignition switch, electrical portion (DV18, new, 1981-83 FB))"
   },
   {
    "id": "dev-dv19",
@@ -10161,7 +10161,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV19 (drawn here (build_devices.py STANDINS['combination-switch']): Column combination switch (DV19-DV22: light, turn, hazard, wiper; factory))"
+   "source": "devices/manifest.json DV19 (drawn here (harness_devices.py STANDINS['combination-switch']): Column combination switch (DV19-DV22: light, turn, hazard, wiper; factory))"
   },
   {
    "id": "dev-dv25",
@@ -10193,7 +10193,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV25 (drawn here (build_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new))"
+   "source": "devices/manifest.json DV25 (drawn here (harness_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new))"
   },
   {
    "id": "dev-dv26",
@@ -10225,7 +10225,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV26 (drawn here (build_devices.py STANDINS['switch-small']): A small switch or sender body (the inhibitor, park-brake, kick-down, glove-box and luggage switches; factory))"
+   "source": "devices/manifest.json DV26 (drawn here (harness_devices.py STANDINS['switch-small']): A small switch or sender body (the inhibitor, park-brake, kick-down, glove-box and luggage switches; factory))"
   },
   {
    "id": "dev-dv27",
@@ -10234,7 +10234,7 @@
    "device": "DV27",
    "node": "hvac-case",
    "glb": "devices/blower-motor.glb",
-   "bytes": 40048,
+   "bytes": 40052,
    "parent": null,
    "place": {
     "x": 430,
@@ -10257,7 +10257,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV27 (drawn here (build_devices.py STANDINS['blower-motor']): Blower motor, Four Seasons 35483 class, 2-wire (DV27, luxury LP17))"
+   "source": "devices/manifest.json DV27 (drawn here (harness_devices.py STANDINS['blower-motor']): Blower motor, Four Seasons 35483 class, 2-wire (DV27, luxury LP17))"
   },
   {
    "id": "dev-dv28",
@@ -10266,7 +10266,7 @@
    "device": "DV28",
    "node": "centre-stack",
    "glb": "devices/head-unit-2din.glb",
-   "bytes": 3708,
+   "bytes": 3712,
    "parent": null,
    "place": {
     "x": 0,
@@ -10289,7 +10289,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV28 (drawn here (build_devices.py STANDINS['head-unit-2din']): Head unit, Pioneer DMH-W4660NEX double DIN (DV28, luxury LP55))"
+   "source": "devices/manifest.json DV28 (drawn here (harness_devices.py STANDINS['head-unit-2din']): Head unit, Pioneer DMH-W4660NEX double DIN (DV28, luxury LP55))"
   },
   {
    "id": "dev-dv29",
@@ -10321,7 +10321,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV29 (drawn here (build_devices.py STANDINS['usb-c-module']): USB-C charging module, aftermarket (DV29))"
+   "source": "devices/manifest.json DV29 (drawn here (harness_devices.py STANDINS['usb-c-module']): USB-C charging module, aftermarket (DV29))"
   },
   {
    "id": "dev-dv31",
@@ -10330,7 +10330,7 @@
    "device": "DV31",
    "node": "glovebox",
    "glb": "devices/lamp-small.glb",
-   "bytes": 4764,
+   "bytes": 4768,
    "parent": null,
    "place": {
     "x": 399.5,
@@ -10353,7 +10353,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV31 (drawn here (build_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory))"
+   "source": "devices/manifest.json DV31 (drawn here (harness_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory))"
   },
   {
    "id": "dev-dv34",
@@ -10385,7 +10385,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV34 (drawn here (build_devices.py STANDINS['fuel-pump']): Fuel pump, Carter P4070 (DV34))"
+   "source": "devices/manifest.json DV34 (drawn here (harness_devices.py STANDINS['fuel-pump']): Fuel pump, Carter P4070 (DV34))"
   },
   {
    "id": "dev-dv36",
@@ -10417,7 +10417,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV36 (drawn here (build_devices.py STANDINS['fuel-sender']): Fuel level sender C-01 (DV36, factory))"
+   "source": "devices/manifest.json DV36 (drawn here (harness_devices.py STANDINS['fuel-sender']): Fuel level sender C-01 (DV36, factory))"
   },
   {
    "id": "dev-dv37-1",
@@ -10426,7 +10426,7 @@
    "device": "DV37",
    "node": "leg-l4",
    "glb": "devices/lamp-rear-combo.glb",
-   "bytes": 4780,
+   "bytes": 4784,
    "parent": null,
    "place": {
     "x": -560,
@@ -10449,7 +10449,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV37 (drawn here (build_devices.py STANDINS['lamp-rear-combo']): Rear combination lamp (DV37, F-07 / F-08, factory))"
+   "source": "devices/manifest.json DV37 (drawn here (harness_devices.py STANDINS['lamp-rear-combo']): Rear combination lamp (DV37, F-07 / F-08, factory))"
   },
   {
    "id": "dev-dv37-2",
@@ -10458,7 +10458,7 @@
    "device": "DV37",
    "node": "leg-l4",
    "glb": "devices/lamp-rear-combo.glb",
-   "bytes": 4780,
+   "bytes": 4784,
    "parent": null,
    "place": {
     "x": 560,
@@ -10481,7 +10481,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV37 (drawn here (build_devices.py STANDINS['lamp-rear-combo']): Rear combination lamp (DV37, F-07 / F-08, factory))"
+   "source": "devices/manifest.json DV37 (drawn here (harness_devices.py STANDINS['lamp-rear-combo']): Rear combination lamp (DV37, F-07 / F-08, factory))"
   },
   {
    "id": "dev-dv38-1",
@@ -10490,7 +10490,7 @@
    "device": "DV38",
    "node": "leg-l4",
    "glb": "devices/lamp-small.glb",
-   "bytes": 4764,
+   "bytes": 4768,
    "parent": null,
    "place": {
     "x": -90,
@@ -10513,7 +10513,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV38 (drawn here (build_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory))"
+   "source": "devices/manifest.json DV38 (drawn here (harness_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory))"
   },
   {
    "id": "dev-dv38-2",
@@ -10522,7 +10522,7 @@
    "device": "DV38",
    "node": "leg-l4",
    "glb": "devices/lamp-small.glb",
-   "bytes": 4764,
+   "bytes": 4768,
    "parent": null,
    "place": {
     "x": 90,
@@ -10545,7 +10545,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV38 (drawn here (build_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory))"
+   "source": "devices/manifest.json DV38 (drawn here (harness_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory))"
   },
   {
    "id": "dev-dv38-3",
@@ -10554,7 +10554,7 @@
    "device": "DV38",
    "node": "leg-l4",
    "glb": "devices/lamp-small.glb",
-   "bytes": 4764,
+   "bytes": 4768,
    "parent": null,
    "place": {
     "x": -820,
@@ -10577,7 +10577,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV38 (drawn here (build_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory))"
+   "source": "devices/manifest.json DV38 (drawn here (harness_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory))"
   },
   {
    "id": "dev-dv38-4",
@@ -10586,7 +10586,7 @@
    "device": "DV38",
    "node": "leg-l4",
    "glb": "devices/lamp-small.glb",
-   "bytes": 4764,
+   "bytes": 4768,
    "parent": null,
    "place": {
     "x": 820,
@@ -10609,7 +10609,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV38 (drawn here (build_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory))"
+   "source": "devices/manifest.json DV38 (drawn here (harness_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory))"
   },
   {
    "id": "dev-dv39",
@@ -10618,7 +10618,7 @@
    "device": "DV39",
    "node": "leg-l4",
    "glb": "devices/lamp-small.glb",
-   "bytes": 4764,
+   "bytes": 4768,
    "parent": null,
    "place": {
     "x": 0,
@@ -10641,7 +10641,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV39 (drawn here (build_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory))"
+   "source": "devices/manifest.json DV39 (drawn here (harness_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory))"
   },
   {
    "id": "dev-dv40",
@@ -10650,7 +10650,7 @@
    "device": "DV40",
    "node": "leg-l4",
    "glb": "devices/lamp-small.glb",
-   "bytes": 4764,
+   "bytes": 4768,
    "parent": null,
    "place": {
     "x": -620,
@@ -10673,7 +10673,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV40 (drawn here (build_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory))"
+   "source": "devices/manifest.json DV40 (drawn here (harness_devices.py STANDINS['lamp-small']): A small lamp (side markers, licence lamps, glove-box, luggage and the interior lamp; factory))"
   },
   {
    "id": "dev-dv41-1",
@@ -10705,7 +10705,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV41 (drawn here (build_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new))"
+   "source": "devices/manifest.json DV41 (drawn here (harness_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new))"
   },
   {
    "id": "dev-dv41-2",
@@ -10737,7 +10737,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV41 (drawn here (build_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new))"
+   "source": "devices/manifest.json DV41 (drawn here (harness_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new))"
   },
   {
    "id": "dev-dv44",
@@ -10746,7 +10746,7 @@
    "device": "DV44",
    "node": "leg-l3",
    "glb": "devices/aem-gauge-52.glb",
-   "bytes": 23672,
+   "bytes": 23676,
    "parent": null,
    "place": {
     "x": -200,
@@ -10769,7 +10769,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV44 (drawn here (build_devices.py STANDINS['aem-gauge-52']): AEM 30-0300 X-Series wideband gauge, 52 mm (DV44))"
+   "source": "devices/manifest.json DV44 (drawn here (harness_devices.py STANDINS['aem-gauge-52']): AEM 30-0300 X-Series wideband gauge, 52 mm (DV44))"
   },
   {
    "id": "dev-dv47",
@@ -10801,7 +10801,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV47 (drawn here (build_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new))"
+   "source": "devices/manifest.json DV47 (drawn here (harness_devices.py STANDINS['sender-threaded']): A threaded sender or switch (water temp C-02, oil pressure C-09, brake switch F-11, door jamb switches, the speed pulse generator; factory or new))"
   },
   {
    "id": "dev-dv48",
@@ -10810,7 +10810,7 @@
    "device": "DV48",
    "node": "hatch",
    "glb": "devices/solenoid.glb",
-   "bytes": 14988,
+   "bytes": 14992,
    "parent": null,
    "place": {
     "x": 0,
@@ -10833,7 +10833,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV48 (drawn here (build_devices.py STANDINS['solenoid']): A solenoid (hatch and fuel-door releases, the kick-down solenoid; factory))"
+   "source": "devices/manifest.json DV48 (drawn here (harness_devices.py STANDINS['solenoid']): A solenoid (hatch and fuel-door releases, the kick-down solenoid; factory))"
   },
   {
    "id": "dev-dv49",
@@ -10842,7 +10842,7 @@
    "device": "DV49",
    "node": "leg-l4",
    "glb": "devices/solenoid.glb",
-   "bytes": 14988,
+   "bytes": 14992,
    "parent": null,
    "place": {
     "x": -760,
@@ -10865,7 +10865,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV49 (drawn here (build_devices.py STANDINS['solenoid']): A solenoid (hatch and fuel-door releases, the kick-down solenoid; factory))"
+   "source": "devices/manifest.json DV49 (drawn here (harness_devices.py STANDINS['solenoid']): A solenoid (hatch and fuel-door releases, the kick-down solenoid; factory))"
   },
   {
    "id": "dev-dv50",
@@ -10897,7 +10897,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV50 (drawn here (build_devices.py STANDINS['switch-small']): A small switch or sender body (the inhibitor, park-brake, kick-down, glove-box and luggage switches; factory))"
+   "source": "devices/manifest.json DV50 (drawn here (harness_devices.py STANDINS['switch-small']): A small switch or sender body (the inhibitor, park-brake, kick-down, glove-box and luggage switches; factory))"
   },
   {
    "id": "dev-dv51",
@@ -10906,7 +10906,7 @@
    "device": "DV51",
    "node": "leg-l4",
    "glb": "devices/solenoid.glb",
-   "bytes": 14988,
+   "bytes": 14992,
    "parent": null,
    "place": {
     "x": -60,
@@ -10929,7 +10929,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV51 (drawn here (build_devices.py STANDINS['solenoid']): A solenoid (hatch and fuel-door releases, the kick-down solenoid; factory))"
+   "source": "devices/manifest.json DV51 (drawn here (harness_devices.py STANDINS['solenoid']): A solenoid (hatch and fuel-door releases, the kick-down solenoid; factory))"
   },
   {
    "id": "dev-dv55",
@@ -10993,7 +10993,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV56 (drawn here (build_devices.py STANDINS['comfort-block-st6']): Blue Sea 5028 ST blade fuse block, 6 circuits with cover (P164, O15 comfort block C))"
+   "source": "devices/manifest.json DV56 (drawn here (harness_devices.py STANDINS['comfort-block-st6']): Blue Sea 5028 ST blade fuse block, 6 circuits with cover (P164, O15 comfort block C))"
   },
   {
    "id": "dev-dv57",
@@ -11002,7 +11002,7 @@
    "device": "DV57",
    "node": "seat-driver",
    "glb": "devices/seat-module.glb",
-   "bytes": 3700,
+   "bytes": 3704,
    "parent": null,
    "place": {
     "x": -360.1,
@@ -11025,7 +11025,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV57 (drawn here (build_devices.py STANDINS['seat-module']): Seat heat / cool / power module (DV57, DV58; luxury LP52, not chosen))"
+   "source": "devices/manifest.json DV57 (drawn here (harness_devices.py STANDINS['seat-module']): Seat heat / cool / power module (DV57, DV58; luxury LP52, not chosen))"
   },
   {
    "id": "dev-dv58",
@@ -11034,7 +11034,7 @@
    "device": "DV58",
    "node": "seat-passenger",
    "glb": "devices/seat-module.glb",
-   "bytes": 3700,
+   "bytes": 3704,
    "parent": null,
    "place": {
     "x": 303.1,
@@ -11057,7 +11057,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV58 (drawn here (build_devices.py STANDINS['seat-module']): Seat heat / cool / power module (DV57, DV58; luxury LP52, not chosen))"
+   "source": "devices/manifest.json DV58 (drawn here (harness_devices.py STANDINS['seat-module']): Seat heat / cool / power module (DV57, DV58; luxury LP52, not chosen))"
   },
   {
    "id": "dev-dv59-1",
@@ -11066,7 +11066,7 @@
    "device": "DV59",
    "node": "hvac-case",
    "glb": "devices/servo-fs5115m.glb",
-   "bytes": 17328,
+   "bytes": 17332,
    "parent": null,
    "place": {
     "x": 180,
@@ -11089,7 +11089,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV59 (drawn here (build_devices.py STANDINS['servo-fs5115m']): FEETECH FS5115M servo (luxury LP19; the three HVAC door servos, DV59))"
+   "source": "devices/manifest.json DV59 (drawn here (harness_devices.py STANDINS['servo-fs5115m']): FEETECH FS5115M servo (luxury LP19; the three HVAC door servos, DV59))"
   },
   {
    "id": "dev-dv59-2",
@@ -11098,7 +11098,7 @@
    "device": "DV59",
    "node": "hvac-case",
    "glb": "devices/servo-fs5115m.glb",
-   "bytes": 17328,
+   "bytes": 17332,
    "parent": null,
    "place": {
     "x": 260,
@@ -11121,7 +11121,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV59 (drawn here (build_devices.py STANDINS['servo-fs5115m']): FEETECH FS5115M servo (luxury LP19; the three HVAC door servos, DV59))"
+   "source": "devices/manifest.json DV59 (drawn here (harness_devices.py STANDINS['servo-fs5115m']): FEETECH FS5115M servo (luxury LP19; the three HVAC door servos, DV59))"
   },
   {
    "id": "dev-dv59-3",
@@ -11130,7 +11130,7 @@
    "device": "DV59",
    "node": "hvac-case",
    "glb": "devices/servo-fs5115m.glb",
-   "bytes": 17328,
+   "bytes": 17332,
    "parent": null,
    "place": {
     "x": 340,
@@ -11153,7 +11153,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV59 (drawn here (build_devices.py STANDINS['servo-fs5115m']): FEETECH FS5115M servo (luxury LP19; the three HVAC door servos, DV59))"
+   "source": "devices/manifest.json DV59 (drawn here (harness_devices.py STANDINS['servo-fs5115m']): FEETECH FS5115M servo (luxury LP19; the three HVAC door servos, DV59))"
   },
   {
    "id": "dev-dv60",
@@ -11185,7 +11185,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV60 (drawn here (build_devices.py STANDINS['amplifier']): Amplifier / DSP (DV60, luxury LP57, not chosen - the largest class))"
+   "source": "devices/manifest.json DV60 (drawn here (harness_devices.py STANDINS['amplifier']): Amplifier / DSP (DV60, luxury LP57, not chosen - the largest class))"
   },
   {
    "id": "dev-dv61",
@@ -11194,7 +11194,7 @@
    "device": "DV61",
    "node": "cargo-bin",
    "glb": "devices/subwoofer-box.glb",
-   "bytes": 47656,
+   "bytes": 47660,
    "parent": null,
    "place": {
     "x": -520,
@@ -11217,7 +11217,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV61 (drawn here (build_devices.py STANDINS['subwoofer-box']): Subwoofer enclosure in the driver-side cargo bin (DV61, luxury LP62, made))"
+   "source": "devices/manifest.json DV61 (drawn here (harness_devices.py STANDINS['subwoofer-box']): Subwoofer enclosure in the driver-side cargo bin (DV61, luxury LP62, made))"
   },
   {
    "id": "dev-dv63",
@@ -11249,7 +11249,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV63 (drawn here (build_devices.py STANDINS['radar-receiver']): Radar receiver, concealed (luxury LP44, Escort MAX Ci 360c class, D-502))"
+   "source": "devices/manifest.json DV63 (drawn here (harness_devices.py STANDINS['radar-receiver']): Radar receiver, concealed (luxury LP44, Escort MAX Ci 360c class, D-502))"
   },
   {
    "id": "dev-dv64",
@@ -11281,7 +11281,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV64 (drawn here (build_devices.py STANDINS['radar-sensor']): Radar sensor head, concealed (DV64 / DV65, luxury LP44 class, D-502))"
+   "source": "devices/manifest.json DV64 (drawn here (harness_devices.py STANDINS['radar-sensor']): Radar sensor head, concealed (DV64 / DV65, luxury LP44 class, D-502))"
   },
   {
    "id": "dev-dv65",
@@ -11313,7 +11313,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV65 (drawn here (build_devices.py STANDINS['radar-sensor']): Radar sensor head, concealed (DV64 / DV65, luxury LP44 class, D-502))"
+   "source": "devices/manifest.json DV65 (drawn here (harness_devices.py STANDINS['radar-sensor']): Radar sensor head, concealed (DV64 / DV65, luxury LP44 class, D-502))"
   },
   {
    "id": "dev-dv66",
@@ -11322,7 +11322,7 @@
    "device": "DV66",
    "node": "cargo-bin-passenger",
    "glb": "devices/upmix-box.glb",
-   "bytes": 3696,
+   "bytes": 3700,
    "parent": null,
    "place": {
     "x": 560,
@@ -11345,7 +11345,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json DV66 (drawn here (build_devices.py STANDINS['upmix-box']): Upmix box, home-built (DV66, luxury LP56, D-503))"
+   "source": "devices/manifest.json DV66 (drawn here (harness_devices.py STANDINS['upmix-box']): Upmix box, home-built (DV66, luxury LP56, D-503))"
   },
   {
    "id": "dev-p001-1",
@@ -11441,7 +11441,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P002 (drawn here (build_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
+   "source": "devices/manifest.json P002 (drawn here (harness_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
   },
   {
    "id": "dev-p002-2",
@@ -11473,7 +11473,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P002 (drawn here (build_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
+   "source": "devices/manifest.json P002 (drawn here (harness_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
   },
   {
    "id": "dev-p002-3",
@@ -11505,7 +11505,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P002 (drawn here (build_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
+   "source": "devices/manifest.json P002 (drawn here (harness_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
   },
   {
    "id": "dev-p002-4",
@@ -11537,7 +11537,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P002 (drawn here (build_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
+   "source": "devices/manifest.json P002 (drawn here (harness_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
   },
   {
    "id": "dev-p002-5",
@@ -11569,7 +11569,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P002 (drawn here (build_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
+   "source": "devices/manifest.json P002 (drawn here (harness_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
   },
   {
    "id": "dev-p002-6",
@@ -11601,7 +11601,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P002 (drawn here (build_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
+   "source": "devices/manifest.json P002 (drawn here (harness_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
   },
   {
    "id": "dev-p002-7",
@@ -11633,7 +11633,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P002 (drawn here (build_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
+   "source": "devices/manifest.json P002 (drawn here (harness_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
   },
   {
    "id": "dev-p002-8",
@@ -11665,7 +11665,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P002 (drawn here (build_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
+   "source": "devices/manifest.json P002 (drawn here (harness_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
   },
   {
    "id": "dev-p002-9",
@@ -11697,7 +11697,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P002 (drawn here (build_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
+   "source": "devices/manifest.json P002 (drawn here (harness_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
   },
   {
    "id": "dev-p002-10",
@@ -11729,7 +11729,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P002 (drawn here (build_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
+   "source": "devices/manifest.json P002 (drawn here (harness_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
   },
   {
    "id": "dev-p002-11",
@@ -11761,7 +11761,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P002 (drawn here (build_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
+   "source": "devices/manifest.json P002 (drawn here (harness_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
   },
   {
    "id": "dev-p002-12",
@@ -11793,7 +11793,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P002 (drawn here (build_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
+   "source": "devices/manifest.json P002 (drawn here (harness_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
   },
   {
    "id": "dev-p002-13",
@@ -11825,7 +11825,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P002 (drawn here (build_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
+   "source": "devices/manifest.json P002 (drawn here (harness_devices.py STANDINS['inline-atc-sealed']): Sealed inline ATC fuse holder, 14 AWG leads (P002, Waytek 46047))"
   },
   {
    "id": "dev-p003-1",
@@ -11857,7 +11857,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P003 (drawn here (build_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
+   "source": "devices/manifest.json P003 (drawn here (harness_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
   },
   {
    "id": "dev-p003-2",
@@ -11889,7 +11889,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P003 (drawn here (build_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
+   "source": "devices/manifest.json P003 (drawn here (harness_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
   },
   {
    "id": "dev-p003-3",
@@ -11921,7 +11921,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P003 (drawn here (build_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
+   "source": "devices/manifest.json P003 (drawn here (harness_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
   },
   {
    "id": "dev-p003-4",
@@ -11953,7 +11953,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P003 (drawn here (build_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
+   "source": "devices/manifest.json P003 (drawn here (harness_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
   },
   {
    "id": "dev-p003-5",
@@ -11985,7 +11985,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P003 (drawn here (build_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
+   "source": "devices/manifest.json P003 (drawn here (harness_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
   },
   {
    "id": "dev-p003-6",
@@ -12017,7 +12017,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P003 (drawn here (build_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
+   "source": "devices/manifest.json P003 (drawn here (harness_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
   },
   {
    "id": "dev-p003-7",
@@ -12049,7 +12049,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P003 (drawn here (build_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
+   "source": "devices/manifest.json P003 (drawn here (harness_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
   },
   {
    "id": "dev-p003-8",
@@ -12081,7 +12081,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P003 (drawn here (build_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
+   "source": "devices/manifest.json P003 (drawn here (harness_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
   },
   {
    "id": "dev-p003-9",
@@ -12113,7 +12113,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P003 (drawn here (build_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
+   "source": "devices/manifest.json P003 (drawn here (harness_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
   },
   {
    "id": "dev-p003-10",
@@ -12145,7 +12145,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P003 (drawn here (build_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
+   "source": "devices/manifest.json P003 (drawn here (harness_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
   },
   {
    "id": "dev-p003-11",
@@ -12177,7 +12177,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P003 (drawn here (build_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
+   "source": "devices/manifest.json P003 (drawn here (harness_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
   },
   {
    "id": "dev-p003-12",
@@ -12209,7 +12209,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P003 (drawn here (build_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
+   "source": "devices/manifest.json P003 (drawn here (harness_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
   },
   {
    "id": "dev-p003-13",
@@ -12241,7 +12241,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P003 (drawn here (build_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
+   "source": "devices/manifest.json P003 (drawn here (harness_devices.py STANDINS['relay-micro-iso']): ISO micro relay, Song Chuan 871-1C-C-D1 (P003))"
   },
   {
    "id": "dev-p004",
@@ -12273,7 +12273,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P004 (drawn here (build_devices.py STANDINS['relay-mini-iso-sealed']): Sealed mini ISO relay, Picker PC792E (P004, K9))"
+   "source": "devices/manifest.json P004 (drawn here (harness_devices.py STANDINS['relay-mini-iso-sealed']): Sealed mini ISO relay, Picker PC792E (P004, K9))"
   },
   {
    "id": "dev-p005",
@@ -12305,7 +12305,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P005 (drawn here (build_devices.py STANDINS['socket-mini-weatherproof']): Chief weatherproof 5-pin mini relay connector (P005, K9's socket))"
+   "source": "devices/manifest.json P005 (drawn here (harness_devices.py STANDINS['socket-mini-weatherproof']): Chief weatherproof 5-pin mini relay connector (P005, K9's socket))"
   },
   {
    "id": "dev-p006-1",
@@ -12337,7 +12337,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P006 (drawn here (build_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
+   "source": "devices/manifest.json P006 (drawn here (harness_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
   },
   {
    "id": "dev-p006-2",
@@ -12369,7 +12369,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P006 (drawn here (build_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
+   "source": "devices/manifest.json P006 (drawn here (harness_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
   },
   {
    "id": "dev-p006-3",
@@ -12401,7 +12401,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P006 (drawn here (build_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
+   "source": "devices/manifest.json P006 (drawn here (harness_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
   },
   {
    "id": "dev-p006-4",
@@ -12433,7 +12433,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P006 (drawn here (build_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
+   "source": "devices/manifest.json P006 (drawn here (harness_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
   },
   {
    "id": "dev-p006-5",
@@ -12465,7 +12465,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P006 (drawn here (build_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
+   "source": "devices/manifest.json P006 (drawn here (harness_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
   },
   {
    "id": "dev-p006-6",
@@ -12497,7 +12497,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P006 (drawn here (build_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
+   "source": "devices/manifest.json P006 (drawn here (harness_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
   },
   {
    "id": "dev-p006-7",
@@ -12529,7 +12529,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P006 (drawn here (build_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
+   "source": "devices/manifest.json P006 (drawn here (harness_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
   },
   {
    "id": "dev-p006-8",
@@ -12561,7 +12561,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P006 (drawn here (build_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
+   "source": "devices/manifest.json P006 (drawn here (harness_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
   },
   {
    "id": "dev-p006-9",
@@ -12593,7 +12593,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P006 (drawn here (build_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
+   "source": "devices/manifest.json P006 (drawn here (harness_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
   },
   {
    "id": "dev-p006-10",
@@ -12625,7 +12625,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P006 (drawn here (build_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
+   "source": "devices/manifest.json P006 (drawn here (harness_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
   },
   {
    "id": "dev-p006-11",
@@ -12657,7 +12657,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P006 (drawn here (build_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
+   "source": "devices/manifest.json P006 (drawn here (harness_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
   },
   {
    "id": "dev-p006-12",
@@ -12689,7 +12689,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P006 (drawn here (build_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
+   "source": "devices/manifest.json P006 (drawn here (harness_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
   },
   {
    "id": "dev-p006-13",
@@ -12721,7 +12721,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P006 (drawn here (build_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
+   "source": "devices/manifest.json P006 (drawn here (harness_devices.py STANDINS['socket-micro-iso-panel']): Panel-mount micro relay socket (P006, Waytek 75290))"
   },
   {
    "id": "dev-p007",
@@ -12753,7 +12753,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P007 (drawn here (build_devices.py STANDINS['busbar-10']): Blue Sea 2300 busbar, 10-gang 150 A, with cover (P007))"
+   "source": "devices/manifest.json P007 (drawn here (harness_devices.py STANDINS['busbar-10']): Blue Sea 2300 busbar, 10-gang 150 A, with cover (P007))"
   },
   {
    "id": "dev-p047",
@@ -12762,7 +12762,7 @@
    "device": "P047",
    "node": "cargo-bin-passenger",
    "glb": "devices/class-t-block.glb",
-   "bytes": 17192,
+   "bytes": 17196,
    "parent": null,
    "place": {
     "x": 380,
@@ -12785,7 +12785,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P047 (drawn here (build_devices.py STANDINS['class-t-block']): Class-T fuse block with cover, 110-200 A (P047))"
+   "source": "devices/manifest.json P047 (drawn here (harness_devices.py STANDINS['class-t-block']): Class-T fuse block with cover, 110-200 A (P047))"
   },
   {
    "id": "dev-p049",
@@ -12794,7 +12794,7 @@
    "device": "P049",
    "node": "cargo-bin-passenger",
    "glb": "devices/disconnect.glb",
-   "bytes": 10832,
+   "bytes": 10836,
    "parent": null,
    "place": {
     "x": 380,
@@ -12817,7 +12817,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P049 (drawn here (build_devices.py STANDINS['disconnect']): Master battery disconnect switch (P049, not chosen))"
+   "source": "devices/manifest.json P049 (drawn here (harness_devices.py STANDINS['disconnect']): Master battery disconnect switch (P049, not chosen))"
   },
   {
    "id": "dev-p051",
@@ -12826,7 +12826,7 @@
    "device": "P051",
    "node": "cargo-bin-passenger",
    "glb": "devices/mrbf-holder.glb",
-   "bytes": 17192,
+   "bytes": 17196,
    "parent": null,
    "place": {
     "x": 380,
@@ -12849,7 +12849,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P051 (drawn here (build_devices.py STANDINS['mrbf-holder']): MRBF terminal fuse holder (P051; Blue Sea 5191 class, on the disconnect's stud))"
+   "source": "devices/manifest.json P051 (drawn here (harness_devices.py STANDINS['mrbf-holder']): MRBF terminal fuse holder (P051; Blue Sea 5191 class, on the disconnect's stud))"
   },
   {
    "id": "dev-p053-1",
@@ -12858,7 +12858,7 @@
    "device": "P053",
    "node": "leg-l1",
    "glb": "devices/midi-block.glb",
-   "bytes": 17184,
+   "bytes": 17188,
    "parent": null,
    "place": {
     "x": -330,
@@ -12881,7 +12881,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P053 (drawn here (build_devices.py STANDINS['midi-block']): MIDI / AMI fuse block, sealed cover, bolt-down (P053; F17, F18 at the starter))"
+   "source": "devices/manifest.json P053 (drawn here (harness_devices.py STANDINS['midi-block']): MIDI / AMI fuse block, sealed cover, bolt-down (P053; F17, F18 at the starter))"
   },
   {
    "id": "dev-p053-2",
@@ -12890,7 +12890,7 @@
    "device": "P053",
    "node": "leg-l1",
    "glb": "devices/midi-block.glb",
-   "bytes": 17184,
+   "bytes": 17188,
    "parent": null,
    "place": {
     "x": -330,
@@ -12913,7 +12913,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P053 (drawn here (build_devices.py STANDINS['midi-block']): MIDI / AMI fuse block, sealed cover, bolt-down (P053; F17, F18 at the starter))"
+   "source": "devices/manifest.json P053 (drawn here (harness_devices.py STANDINS['midi-block']): MIDI / AMI fuse block, sealed cover, bolt-down (P053; F17, F18 at the starter))"
   },
   {
    "id": "dev-p189-1",
@@ -12922,7 +12922,7 @@
    "device": "P189",
    "node": "pmu",
    "glb": "devices/inline-maxi-sealed.glb",
-   "bytes": 17168,
+   "bytes": 17172,
    "parent": null,
    "place": {
     "x": 538.875,
@@ -12945,7 +12945,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P189 (drawn here (build_devices.py STANDINS['inline-maxi-sealed']): Sealed inline MAXI fuse holder, 10 AWG leads (P189))"
+   "source": "devices/manifest.json P189 (drawn here (harness_devices.py STANDINS['inline-maxi-sealed']): Sealed inline MAXI fuse holder, 10 AWG leads (P189))"
   },
   {
    "id": "dev-p189-2",
@@ -12954,7 +12954,7 @@
    "device": "P189",
    "node": "pmu",
    "glb": "devices/inline-maxi-sealed.glb",
-   "bytes": 17168,
+   "bytes": 17172,
    "parent": null,
    "place": {
     "x": 190.875,
@@ -12977,7 +12977,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P189 (drawn here (build_devices.py STANDINS['inline-maxi-sealed']): Sealed inline MAXI fuse holder, 10 AWG leads (P189))"
+   "source": "devices/manifest.json P189 (drawn here (harness_devices.py STANDINS['inline-maxi-sealed']): Sealed inline MAXI fuse holder, 10 AWG leads (P189))"
   },
   {
    "id": "dev-p189-3",
@@ -12986,7 +12986,7 @@
    "device": "P189",
    "node": "pmu",
    "glb": "devices/inline-maxi-sealed.glb",
-   "bytes": 17168,
+   "bytes": 17172,
    "parent": null,
    "place": {
     "x": 390.875,
@@ -13009,7 +13009,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P189 (drawn here (build_devices.py STANDINS['inline-maxi-sealed']): Sealed inline MAXI fuse holder, 10 AWG leads (P189))"
+   "source": "devices/manifest.json P189 (drawn here (harness_devices.py STANDINS['inline-maxi-sealed']): Sealed inline MAXI fuse holder, 10 AWG leads (P189))"
   },
   {
    "id": "dev-p189-4",
@@ -13018,7 +13018,7 @@
    "device": "P189",
    "node": "pmu",
    "glb": "devices/inline-maxi-sealed.glb",
-   "bytes": 17168,
+   "bytes": 17172,
    "parent": null,
    "place": {
     "x": 590.875,
@@ -13041,7 +13041,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P189 (drawn here (build_devices.py STANDINS['inline-maxi-sealed']): Sealed inline MAXI fuse holder, 10 AWG leads (P189))"
+   "source": "devices/manifest.json P189 (drawn here (harness_devices.py STANDINS['inline-maxi-sealed']): Sealed inline MAXI fuse holder, 10 AWG leads (P189))"
   },
   {
    "id": "dev-p189-5",
@@ -13050,7 +13050,7 @@
    "device": "P189",
    "node": "pmu",
    "glb": "devices/inline-maxi-sealed.glb",
-   "bytes": 17168,
+   "bytes": 17172,
    "parent": null,
    "place": {
     "x": 190.875,
@@ -13073,7 +13073,7 @@
    "children": [],
    "standin": true,
    "cad": null,
-   "source": "devices/manifest.json P189 (drawn here (build_devices.py STANDINS['inline-maxi-sealed']): Sealed inline MAXI fuse holder, 10 AWG leads (P189))"
+   "source": "devices/manifest.json P189 (drawn here (harness_devices.py STANDINS['inline-maxi-sealed']): Sealed inline MAXI fuse holder, 10 AWG leads (P189))"
   }
  ],
  "links": [
@@ -14124,22 +14124,22 @@
    "why": "no model of the post; its links start on the PMU's connector face"
   },
   {
-   "part": "dcu-carrier",
+   "part": "cu-carrier",
    "what": "its J1, J2, J9",
    "why": "D-582: the three DT13s give way to the Control Unit's one CMC 48 header, which the unit's mock-up draws; the board is redrawn at Y54"
   },
   {
-   "part": "dcu-carrier",
+   "part": "cu-carrier",
    "what": "3D models of U1, U11",
    "why": "kicad-cli found no file for them on this machine (HTSSOP-44-1EP_6.1x14mm_P0.635mm_EP5.2x14mm_Mask4.31x8.26mm.step, Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step); the boards show their pads"
   },
   {
-   "part": "panel",
+   "part": "cu-face-board",
    "what": "3D models of U2",
    "why": "kicad-cli found no file for them on this machine (TQFP-48-1EP_7x7mm_P0.5mm_EP4.11x4.11mm.step); the boards show their pads"
   },
   {
-   "part": "icu-carrier",
+   "part": "du-carrier",
    "what": "3D models of U1",
    "why": "kicad-cli found no file for them on this machine (Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step); the boards show their pads"
   }
@@ -14159,10 +14159,10 @@
   "Each leg is drawn as it will be built (D-583): a taped trunk from the dash post along the body - the firewall, the dash rail, the tunnel's sides, the sills, the inner wing, the hinge loop (TRUNKS in export_glb.py, judgement) - and from it a breakout to each housing and device, in straight runs along the car's axes and up the side wall where it climbs behind the dash, bent round 25 mm. A run's thickness is 1.2 x the root of the sum of its conductors' squared diameters (TXL-class, confirm), so the trunk thins as each breakout leaves it. The Audio runs (RT30-RT32) are a leg of their own from the head unit; a link is data (what mates what), not drawn."
  ],
  "assets": {
-  "dcu-carrier": {
-   "id": "dcu-carrier",
+  "cu-carrier": {
+   "id": "cu-carrier",
    "kind": "pcb",
-   "glb": "dcu-carrier.glb",
+   "glb": "cu-carrier.glb",
    "bytes": 12009348,
    "bbox": [
     [
@@ -14192,7 +14192,7 @@
     -80.0,
     -0.0
    ],
-   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/dcu-carrier/dcu-carrier.kicad_pcb",
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/cu-carrier/cu-carrier.kicad_pcb",
    "missing_models": [
     "U1",
     "U11"
@@ -14210,13 +14210,13 @@
     ],
     "why": "D-582: the three DT13s give way to the Control Unit's one CMC 48 header, which the unit's mock-up draws; the board is redrawn at Y54"
    },
-   "stamp": "2c99b678d6f11578"
+   "stamp": "6531d2d68ee836f3"
   },
-  "panel": {
-   "id": "panel",
+  "cu-face-board": {
+   "id": "cu-face-board",
    "kind": "pcb",
-   "glb": "panel.glb",
-   "bytes": 3032004,
+   "glb": "cu-face-board.glb",
+   "bytes": 3032020,
    "bbox": [
     [
      0.0,
@@ -14245,7 +14245,7 @@
     -47.3,
     -0.0
    ],
-   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/panel/panel.kicad_pcb",
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/cu-face-board/cu-face-board.kicad_pcb",
    "missing_models": [
     "U2"
    ],
@@ -14253,12 +14253,12 @@
     "TQFP-48-1EP_7x7mm_P0.5mm_EP4.11x4.11mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "b438c86d647476f2"
+   "stamp": "53308995a3142a15"
   },
-  "left-plate": {
-   "id": "left-plate",
+  "cur-board": {
+   "id": "cur-board",
    "kind": "pcb",
-   "glb": "left-plate.glb",
+   "glb": "cur-board.glb",
    "bytes": 2361376,
    "bbox": [
     [
@@ -14288,7 +14288,7 @@
     -56.0,
     -0.0
    ],
-   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/left-plate/left-plate.kicad_pcb",
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/control-unit-remote/cad/cur-board/cur-board.kicad_pcb",
    "missing_models": [],
    "missing_files": [],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
@@ -14296,13 +14296,13 @@
     112.5,
     -21.65
    ],
-   "stamp": "ade0f992b1fac08c"
+   "stamp": "9fec2bd7970e1f46"
   },
-  "icu-carrier": {
-   "id": "icu-carrier",
+  "du-carrier": {
+   "id": "du-carrier",
    "kind": "pcb",
-   "glb": "icu-carrier.glb",
-   "bytes": 8874400,
+   "glb": "du-carrier.glb",
+   "bytes": 8874396,
    "bbox": [
     [
      97.75,
@@ -14331,7 +14331,7 @@
     -130.0,
     -46.0
    ],
-   "source": "02-PROJECTS/01-electrical/00-design/display-unit/cad/icu-carrier/icu-carrier.kicad_pcb",
+   "source": "02-PROJECTS/01-electrical/00-design/display-unit/cad/du-carrier/du-carrier.kicad_pcb",
    "missing_models": [
     "U1"
    ],
@@ -14339,7 +14339,7 @@
     "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "dcb14774d0378188"
+   "stamp": "dd9a2470cace0f58"
   },
   "control-unit": {
    "problems": [],
@@ -14347,7 +14347,7 @@
     "REAR_HEADER: one DP-DCU (CMC48-500762-0481) stands in for the carrier's DT13s on its connector edge - a block from the parameter row, not a model (D-582)",
     "the carrier in the mock-up was a stand-in (its STEP was not used)"
    ],
-   "bytes": 337660,
+   "bytes": 337656,
    "bbox": [
     [
      -3.5,
@@ -14435,13 +14435,13 @@
    "id": "control-unit",
    "kind": "unit",
    "glb": "control-unit.glb",
-   "source": "control-unit/cad/climate-unit (unit_params.py, unit_lib.py)",
-   "stamp": "1f766a5ce9f6dcc8"
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/cad/cu-assembly (02-PROJECTS/01-electrical/00-design/control-unit/data/cu_assembly_params.py, 02-PROJECTS/01-electrical/00-design/tools/cu_assembly.py)",
+   "stamp": "1de9be7f4e1d134d"
   },
   "display-unit": {
    "problems": [],
    "notes": [],
-   "bytes": 341508,
+   "bytes": 341512,
    "bbox": [
     [
      0.0,
@@ -14510,13 +14510,13 @@
    "id": "display-unit",
    "kind": "unit",
    "glb": "display-unit.glb",
-   "source": "display-unit/cad/icu-unit (unit_params.py, unit_lib.py)",
-   "stamp": "256124b69eb84a70"
+   "source": "02-PROJECTS/01-electrical/00-design/display-unit/cad/du-assembly (02-PROJECTS/01-electrical/00-design/display-unit/data/du_assembly_params.py, 02-PROJECTS/01-electrical/00-design/tools/du_assembly.py)",
+   "stamp": "754f8c84daf40317"
   },
   "cur": {
    "problems": [],
    "notes": [],
-   "bytes": 279528,
+   "bytes": 279552,
    "bbox": [
     [
      -8.0,
@@ -14608,8 +14608,8 @@
    "id": "cur",
    "kind": "unit",
    "glb": "cur.glb",
-   "source": "control-unit/cad/cur-unit (unit_params.py, unit_lib.py)",
-   "stamp": "dfe2a36b6fe2b5fd"
+   "source": "02-PROJECTS/01-electrical/00-design/control-unit/control-unit-remote/cad/cur-assembly (02-PROJECTS/01-electrical/00-design/control-unit/control-unit-remote/data/cur_assembly_params.py, 02-PROJECTS/01-electrical/00-design/tools/cur_assembly.py)",
+   "stamp": "2f2c858802d718cc"
   },
   "pmu": {
    "problems": [],
@@ -14663,7 +14663,7 @@
    "kind": "module",
    "glb": "pmu.glb",
    "source": "02-PROJECTS/01-electrical/00-design/pmu/vendor/PMU CAD info/PMU-24.STEP",
-   "stamp": "aec7a8b15fd7bb66"
+   "stamp": "e6c129af45f3f547"
   }
  },
  "legs": [
@@ -24866,7 +24866,7 @@
   },
   {
    "device": "P116",
-   "why": "inside icu-carrier: that part's glb draws it"
+   "why": "inside du-carrier: that part's glb draws it"
   },
   {
    "device": "P117",
@@ -24874,16 +24874,16 @@
   },
   {
    "device": "P142",
-   "why": "inside icu-carrier: that part's glb draws it"
+   "why": "inside du-carrier: that part's glb draws it"
   },
   {
    "device": "P142",
-   "why": "inside dcu-carrier: that part's glb draws it"
+   "why": "inside cu-carrier: that part's glb draws it"
   }
  ],
  "manifests": {
   "connectors": "connectors/manifest.json",
   "devices": "devices/manifest.json"
  },
- "record_stamp": "2ae928278d342800"
+ "record_stamp": "effa0d174a7a339d"
 }

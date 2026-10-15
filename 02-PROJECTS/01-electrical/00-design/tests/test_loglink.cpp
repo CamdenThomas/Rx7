@@ -17,9 +17,9 @@
 #include <set>
 #include <string>
 #include <vector>
-#include "../display-unit/firmware/icu/log_link.h"
-#include "../display-unit/firmware/icu/log_store.h"
-#include "../display-unit/firmware/icu/radio_link.h"
+#include "../display-unit/firmware/du/log_link.h"
+#include "../display-unit/firmware/du/log_store.h"
+#include "../display-unit/firmware/du/radio_link.h"
 #include "log_vectors.h"
 
 static int passed = 0, failed = 0;
