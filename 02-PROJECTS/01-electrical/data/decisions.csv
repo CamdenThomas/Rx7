@@ -2026,3 +2026,16 @@ His words (chat, 2026-10-14): ""also CUR should be moved to the right side of th
 **What kind of switch is block 01.58.** The rules lean on a switch that holds: the flasher (`hazard = A8 == HAZARD || A8 == HAZ+HORN`) and the sleep rule (the PMU stays awake while A8 reads HAZARD) both read a contact that stays made, as the column's latching switch does. The choice - a latching push button under a lit cap like the winks', a classic latching hazard switch, or a momentary key the PMU latches - is look, feel and safety, so it is his. Until then the plate board is not changed (Y62).
 
 In the data: housings DP-CUR / DP-CUR-B where; cavities L3-S1 6, DP-CUR-B 5; devices DV21, DV24, DV62; parts P200, P226 (the switch, held for 01.58); work Y61 (done), Y62 (the plate board and the CUR's face, waits on 01.58)."
+D-587,,The Display Unit's two plugs become one Deutsch DRC 24-way at the bottom right of its back; the CUR keeps its own,2026-10-14,standing,,,,,"**The Display Unit's two plugs become one: a Deutsch DRC 24-way right-angle header (DRC13-24PA) at the bottom right of its back. The CUR keeps its own two plugs.**
+
+His words (chat, 2026-10-14), after being told both the DU's and the CUR's pairs could each become one: ""can that become one connector?"" then ""no sorry just the two DU connecotr as one tur CUR has its own connector"".
+
+Reading taken (CLAUDE.md §3): ""the CUR has its own connector"" means the CUR is not merged into anything and keeps its two (DP-CUR, DP-CUR-B, D-521); only the DU's pair merges.
+
+**The connector.** DP-ICU-A (6) and DP-ICU-B (12) carry 18 cavities, 16 wired, B 7 kept for the oil-temperature sender (D-264) and B 9 the Phase-2 spare. One Deutsch DRC13-24PA, a 24-way right-angle PCB header with size-16 contacts (13 A), takes them with six spare, mated by a DRC 24-way plug (DRC26-24SA class, confirm). It is the family every option of block 01.57 already gives the DU, so this does not wait on that block: the size-16 solid contacts are the DT plugs' own and the crimper P038 already does them. Part numbers, the plug's code and every dimension are from listings until TE's drawing is read (R11).
+
+**The cavities** (provisional until the drawing): 1-6 what was DP-ICU-A 1-6 (power, illumination, ground, CAN2, the backlight feed), 7-18 what was DP-ICU-B 1-12 (senders, tach, lamp lines, tell-tale senses, the two reserves), 19-24 sealing plugs.
+
+**What it changes.** The ICU carrier's J1 (DT13-06PA) and J3 (DT13-12PA), which fill its connector edge, give way to the one header, about half that width; the carrier is redrawn before Y18 orders it. The two 150 mm tails from the dash post become one. The mock-up's rear plate takes one cut-out, still bottom-right (D-585). Parts P122 (the two DT13s) drop; the header and its plug are added.
+
+In data: work Y63 does it whole - the housing and its cavities re-keyed, the references, the carrier board from TE's drawing (ERC, DRC, check.py, fab package), the mock-up, the scene and the steps - so the record, the board and the model change together. Block 01.57's options no longer merge the CUR."
