@@ -64,6 +64,19 @@ static inline uint8_t dash_clamp(int pct)
     return (uint8_t)(pct < DASH_PCT_MIN ? DASH_PCT_MIN : (pct > DASH_PCT_MAX ? DASH_PCT_MAX : pct));
 }
 
+/* ------------- the display level (SN32, D-580) -------------
+ * The Display Unit's own brightness, set from the screen knob after a click
+ * (screen_knob.h) and sent in 0x400 byte 5; the display runs at its day level
+ * times this. Kept in the climate memory beside the dash level. */
+#define DISP_PCT_MAX     100      /* full - the default (D-580) */
+#define DISP_PCT_MIN      10      /* D-580: 10-100 %            */
+#define DISP_PCT_STEP      5      /* a detent                   */
+
+static inline uint8_t disp_clamp(int pct)
+{
+    return (uint8_t)(pct < DISP_PCT_MIN ? DISP_PCT_MIN : (pct > DISP_PCT_MAX ? DISP_PCT_MAX : pct));
+}
+
 /* ------------- persistent state (mirrors the SD file) ------------- */
 typedef struct {
     uint8_t  mode;         /* climate_mode_t                  */
@@ -74,7 +87,8 @@ typedef struct {
     uint8_t  seat_cool;    /* b0-1 drv, b2-3 pass             */
     uint8_t  dash_pct;     /* the dash-light level, DASH_PCT_MIN..100 (D-578); a file
                             * from before it is the wrong size and loads the defaults */
-    uint8_t  _pad;
+    uint8_t  disp_pct;     /* the Display Unit's level, DISP_PCT_MIN..100, from the screen
+                            * knob (D-580); was padding, so 0 reads as full (disp_level) */
     servo_cal_t cal[SRV_COUNT];
     uint32_t crc;
 } climate_mem_t;
@@ -167,8 +181,14 @@ static inline uint32_t mem_crc(const climate_mem_t *m)
 static inline void mem_defaults(climate_mem_t *m)
 {
     memset(m, 0, sizeof *m);
-    m->mode = CLIM_VENT; m->target_c = 21; m->dash_pct = DASH_PCT_MAX;
+    m->mode = CLIM_VENT; m->target_c = 21; m->dash_pct = DASH_PCT_MAX; m->disp_pct = DISP_PCT_MAX;
     for (int i = 0; i < SRV_COUNT; i++) { m->cal[i].us_min = 1000; m->cal[i].us_max = 2000; }
+}
+
+/* The level the memory holds; 0 is a file written before the field (its padding) - full. */
+static inline uint8_t disp_level(const climate_mem_t *m)
+{
+    return m->disp_pct ? disp_clamp(m->disp_pct) : (uint8_t)DISP_PCT_MAX;
 }
 
 #endif /* CLIMATE_H */

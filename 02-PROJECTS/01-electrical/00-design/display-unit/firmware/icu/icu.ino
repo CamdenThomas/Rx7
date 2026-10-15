@@ -28,9 +28,10 @@
 /* Bump on every change that alters behaviour; log it in bringup_log and tag the
  * commit. Printed over serial at boot. ICU_FW_NUM is the same version for the link's
  * INFO record (LL03): major*10000 + minor*100 + patch. */
-#define ICU_FW_VERSION "0.7.0-dev"   /* D-577 (F-019): the backlight follows the dash - IC14 on A7, the level from 0x300 byte 6 */
+#define ICU_FW_VERSION "0.8.0-dev"   /* D-580 (F-020): the screen knob over 0x400 - pages by its count, its level in the backlight, pairing on a 3 s hold; pin 25 not read */
+/* 0.7.0-dev: D-577 (F-019): the backlight follows the dash - IC14 on A7, the level from 0x300 byte 6 */
 /* 0.6.0-dev: the log link: the card's three logs, Serial2 at 921600, the file side of log_link (BT3) */
-#define ICU_FW_NUM     700
+#define ICU_FW_NUM     800
 
 #include <SD.h>
 #include "cluster_core.h"
@@ -41,6 +42,7 @@
 #include "log_store.h"
 #include "can_map.h"
 #include "dimming.h"
+#include "screen_knob_rx.h"
 
 static const int PIN_IC14 = 21;  /* icu_channels IC14: A7, the O20 reference through its divider */
 
@@ -204,8 +206,9 @@ static log_summary_t build_summary(uint32_t now) {
     return s;
 }
 
-/* Long press of the page button (LL02) - the button is not wired yet, so the bench
- * opens pairing from the USB console: 'p' pairs for 60 s, 'u' forgets every phone. */
+/* Pairing (LL02): a 3 s hold of the screen knob's push, which the DCU reads and sends in
+ * 0x400 (D-580 - the page button is gone); on the bench the USB console too: 'p' pairs for
+ * 60 s, 'u' forgets every phone. */
 static void link_pair(uint8_t window_s) {
     ll_pair_t p = { window_s };
     uint8_t f[16]; size_t n = ll_encode(f, sizeof f, LL_PAIR, &p, sizeof p);
@@ -214,6 +217,20 @@ static void link_pair(uint8_t window_s) {
 static void link_unbond() {
     uint8_t f[16]; size_t n = ll_encode(f, sizeof f, LL_UNBOND, nullptr, 0);
     Serial2.write(f, n);
+}
+
+/* Every 0x400 the ICU receives comes here once CAN is wired (F14): the screen knob (D-580) -
+ * the page by the count's difference, the display level, pairing on a 3 s hold. */
+sknob_rx_t g_sknob = {};
+void on_panel_keys(const panel_keys_t &m) {
+    uint8_t pair;
+    int steps = sknob_rx_frame(&g_sknob, &m, millis(), &pair);
+    if (steps) {
+        int p = ((int)cluster.page + steps) % (int)PAGE_COUNT;
+        cluster.setPage(fb, (Page)(p < 0 ? p + PAGE_COUNT : p));
+    }
+    dim_on_panel(&g_dim, m.disp_pct);
+    if (pair) link_pair(LL_PAIR_WINDOW_S);
 }
 
 /* Everything from the C3: $BAT lines and link frames, one byte at a time. */

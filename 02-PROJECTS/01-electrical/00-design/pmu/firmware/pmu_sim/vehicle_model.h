@@ -392,15 +392,15 @@ private:
         want[O5_FUEL]      = start || prime || engineRuns;         /* logic FUEL_PUMP (D-461) */
         want[O6_TAIL]      = (head == H_PASS) ? chOn[O6_TAIL] : (head >= H_PARK);   /* PASS holds */
         want[O7_BRAKE]     = brake;
-        want[O8_WIPE_LO]   = (wipe == W_LOW || wipe == W_INT);
-        want[O9_WIPE_HI]   = (wipe == W_HIGH);
+        want[O8_WIPE_LO]   = acc && (wipe == W_LOW || wipe == W_INT);   /* the key term (D-538) */
+        want[O9_WIPE_HI]   = acc && (wipe == W_HIGH);
         want[O10_ACC]      = acc || engineRuns;                    /* logic ACCESSORY (D-463); no release pulse here */
         want[O11_HORN]     = horn;
         want[O12_IGN]      = ignWant;
         want[O15_COMFORT]  = run;
         want[O16_BLOWER]   = false;                    /* motor is dead */
-        want[O17_TURN_L]   = turnPhase && (turn == T_LEFT  || turn == T_HAZARD);
-        want[O18_TURN_R]   = turnPhase && (turn == T_RIGHT || turn == T_HAZARD);
+        want[O17_TURN_L]   = turnPhase && ((run && turn == T_LEFT)  || hazard);   /* the stalk needs RUN, */
+        want[O18_TURN_R]   = turnPhase && ((run && turn == T_RIGHT) || hazard);   /* the hazard never (D-538) */
         want[O19_REVERSE]  = reverse && run;
         want[O20_INTERIOR] = (head == H_PASS) ? chOn[O20_INTERIOR] : (head >= H_PARK);  /* logic INTERIOR (D-462) */
         want[O21_START]    = start;

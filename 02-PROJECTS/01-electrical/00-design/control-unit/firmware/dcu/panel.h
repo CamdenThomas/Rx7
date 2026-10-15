@@ -14,7 +14,7 @@
  *                    SN21 wake · SN22 windows · SN23 release select · SN16 mirror
  *                    heat (its own key, D-492) · SN11 / SN12 NTCs · SN13 comfort
  *                    current · SN15 servo sequencing
- *   can_fields       0x400 (sent here); 0x120 bit O4 read for the rear-defog key's
+ *   can_fields       0x400 (sent here; bytes 4-5 from screen_knob.h); 0x120 bit O4 read for the rear-defog key's
  *                    light; 0x200 byte 6 (road speed) read for the release
  *                    interlock (D-465)
  *   ideas            I-001 (the centre knob's modes), I-002 (the window switch, the
@@ -234,17 +234,23 @@ static inline uint16_t panel_keys_step(panel_t *p, uint16_t raw, uint8_t pmu_ali
 }
 
 /* ------------------------- 0x400 sender ------------------------- */
-typedef struct { uint16_t down, held; uint32_t last_tx; uint8_t counter; uint8_t sent; } keys_tx_t;
+typedef struct {
+    uint16_t down, held; int8_t count; uint8_t disp;    /* what the last frame carried */
+    uint32_t last_tx; uint8_t counter; uint8_t sent;
+} keys_tx_t;
 
-/* On change, and every PANEL_TX_HEARTBEAT_MS (0x400: on change + 2 Hz). */
-static inline uint8_t panel_frame_due(keys_tx_t *t, uint16_t down, uint16_t held, uint32_t now,
-                                      panel_keys_t *out)
+/* On change, and every PANEL_TX_HEARTBEAT_MS (0x400: on change + 2 Hz). count and
+ * disp are the screen knob's bytes 4 and 5 (screen_knob.h, D-580): a detent or a
+ * level step is a change like a key. */
+static inline uint8_t panel_frame_due(keys_tx_t *t, uint16_t down, uint16_t held, int8_t count,
+                                      uint8_t disp, uint32_t now, panel_keys_t *out)
 {
-    if (t->sent && down == t->down && held == t->held
+    if (t->sent && down == t->down && held == t->held && count == t->count && disp == t->disp
         && (uint32_t)(now - t->last_tx) < PANEL_TX_HEARTBEAT_MS) return 0;
     memset(out, 0, sizeof *out);
-    out->down = down; out->held = held; out->counter = t->counter++;
-    t->down = down; t->held = held; t->last_tx = now; t->sent = 1;
+    out->down = down; out->held = held; out->screen_count = count; out->disp_pct = disp;
+    out->counter = t->counter++;
+    t->down = down; t->held = held; t->count = count; t->disp = disp; t->last_tx = now; t->sent = 1;
     return 1;
 }
 

@@ -58,7 +58,9 @@ BITS = {
     ("0x400", "1"): {"window pass down": "PK_WIN_PASS_DN", "mirror thumbstick press": "PK_MIRROR_PRESS",
                      "mirror stick press": "PK_MIRROR_PRESS", "mirror defog": "PK_MIRROR_DEFOG",
                      "spare": None, "centre knob push": "PK_CENTRE_PUSH",
-                     "reserved": None},   # F-018 (D-492): b2 mirror defog, b3-4 spare, b5 centre knob push
+                     "screen knob push": "PK_SCREEN_PUSH",
+                     "reserved": None},   # F-018 (D-492): b2 mirror defog, b3-4 spare, b5 centre knob push;
+                                          # F-020 (D-580): b6 screen knob push
 }
 BYTE_OFFSET = {("0x400", "1"): 8}   # byte 1 of the keys continues byte 0's 16-bit field
 

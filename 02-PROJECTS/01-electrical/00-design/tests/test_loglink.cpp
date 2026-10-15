@@ -392,7 +392,7 @@ int main()
         a.on_frame(ID_PMU_OUTPUTS, false, (const uint8_t *)&o, 8, t + 300);
         o.trip_index = 7; o.trip_status = CH_ON;
         a.on_frame(ID_PMU_OUTPUTS, false, (const uint8_t *)&o, 8, t + 500);
-        panel_keys_t pk = { PK_DEFOG, 0, { 0, 0, 0 }, 0 };
+        panel_keys_t pk = { PK_DEFOG, 0, 0, 0, 0, 0 };
         a.on_frame(ID_PANEL_KEYS, false, (const uint8_t *)&pk, 8, t + 100);
         pk.down = PK_FUEL_DOOR; pk.held = PK_FUEL_DOOR;
         a.on_frame(ID_PANEL_KEYS, false, (const uint8_t *)&pk, 8, t + 600);

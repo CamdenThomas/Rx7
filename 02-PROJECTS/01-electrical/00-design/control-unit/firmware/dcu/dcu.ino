@@ -16,7 +16,8 @@
  * BTS3011TE STATUS lines on the second, U13 (Y11, D-577), through tca9539.h.
  */
 
-#define DCU_FW_VERSION "0.7.0-dev"   /* D-577 / D-578 (F-019): the dash-light stage on 11 at 200 Hz, the wake request and the STATUS lines on U13, 0x300 byte 6, the level on the centre knob's held push */
+#define DCU_FW_VERSION "0.8.0-dev"   /* D-580 / D-581 (F-020): the screen knob on the panel bus (0x36) - the Display Unit's pages and level in 0x400 bytes 4-5, its push b14 */
+/* 0.7.0-dev: D-577 / D-578 (F-019): the dash-light stage on 11 at 200 Hz, the wake request and the STATUS lines on U13, 0x300 byte 6, the level on the centre knob's held push */
 /* 0.6.0-dev: D-492 (F-018): the 4 x 3 matrix, the centre knob's modes, the mirror-defog key, the mirror select, the lights, the screen's content */
 /* 0.5.0-dev: D-465: a release only with the car stopped (0x200 road speed 0, fresh), the select dropped 1.5 s after it is raised */
 /* 0.4.0-dev: D-452 pin map: expander on Wire, fan encoder 40 / 41, CAN STB held low, DRV8962 fault clear (F-017) */
@@ -31,6 +32,7 @@
 #include "tca9539.h"
 #include "lights.h"
 #include "screen.h"
+#include "screen_knob.h"
 
 extern "C" uint32_t set_arm_clock(uint32_t frequency);   /* Teensy 4 core */
 
@@ -57,6 +59,7 @@ window_t      win[2];
 mirror_t      mirror;
 servo_seq_t   servo_seq;
 knob_t        knob;                 /* the centre knob's mode (D-492) */
+sknob_t       sknob;                /* the screen knob: pages and the display level (D-580) */
 mirror_defog_t mdefog;              /* the mirror-defog key (D-492) */
 lights_t      lights;               /* the panel's and the plate's LED drivers */
 lights_in_t   light_in;
@@ -203,6 +206,49 @@ uint8_t lights_hal_write(uint8_t addr, const uint8_t *buf, uint8_t n) {
     return Wire.endTransmission() == 0;
 }
 
+/* ---- the screen knob (SN32, D-580): its seesaw board polled on the same Wire. One step a
+ * pass, never waiting: ask for the detents, read them and ask for the push, read the push. ---- */
+static uint8_t  sk_ok = 0, sk_phase = 0, sk_push = 0;
+static int      sk_detents = 0;
+static uint32_t sk_t_init = 0;
+
+static uint8_t sk_write(const uint8_t *b, uint8_t n) {
+    Wire.beginTransmission(SKNOB_ADDR);
+    Wire.write(b, n);
+    return Wire.endTransmission() == 0;
+}
+static uint8_t sk_read4(uint8_t *b) {
+    if (Wire.requestFrom((uint8_t)SKNOB_ADDR, (uint8_t)4) != 4) return 0;
+    for (int i = 0; i < 4; i++) b[i] = (uint8_t)Wire.read();
+    return 1;
+}
+static void sknob_setup() {
+    uint8_t f[6];
+    sk_ok = 1; sk_phase = 0;
+    for (int i = 0; i < 3; i++) { sknob_pin_frame(f, SKNOB_SETUP_REGS[i]); sk_ok &= sk_write(f, 6); }
+}
+static void sknob_service(uint32_t now) {
+    if (!sk_ok) {
+        sk_push = 0;
+        if (now - sk_t_init >= SKNOB_RETRY_MS) { sk_t_init = now; sknob_setup(); }
+        return;
+    }
+    uint8_t b[4];
+    static const uint8_t ASK_DELTA[2] = { SS_ENCODER_BASE, SS_ENCODER_DELTA };
+    static const uint8_t ASK_PUSH[2]  = { SS_GPIO_BASE, SS_GPIO_BULK };
+    switch (sk_phase) {
+    case 0:  sk_ok = sk_write(ASK_DELTA, 2); sk_phase = 1; break;
+    case 1:  sk_ok = sk_read4(b);
+             if (sk_ok) { sk_detents += sknob_delta(b); sk_ok = sk_write(ASK_PUSH, 2); }
+             sk_phase = 2; break;
+    default: sk_ok = sk_read4(b);
+             if (sk_ok) sk_push = sknob_push(b);
+             sk_phase = 0; break;
+    }
+    if (!sk_ok) { sk_push = 0; sk_t_init = now; Serial.println("screen knob (0x36) silent - retrying"); }
+}
+static int sknob_take() { int d = sk_detents; sk_detents = 0; return d; }
+
 static volatile uint8_t exp_int = 0;                     /* INT: an input changed */
 static void exp_isr() { exp_int = 1; }
 static uint32_t exp_last_read = 0, exp_last_init = 0;
@@ -295,6 +341,7 @@ static void dcu_sleep() {
     for (int c = 0; c < PANEL_COLS; c++) detachInterrupt(digitalPinToInterrupt(PIN_COL[c]));
     detachInterrupt(digitalPinToInterrupt(PIN_CENTRE_PUSH));
     lights.t_init = millis() - LIGHTS_RETRY_MS;   /* the LED drivers re-initialised on the next loop */
+    sk_ok = 0; sk_t_init = millis() - SKNOB_RETRY_MS;   /* the screen knob set up again at once */
     for (int r = 0; r < PANEL_ROWS; r++) pinMode(PIN_ROW[r], INPUT);
     enc_timer.begin(enc_isr, 1000);
     attachInterrupt(digitalPinToInterrupt(PIN_EXP_INT), exp_isr, FALLING);
@@ -347,6 +394,9 @@ void setup() {
     lights.t_init = millis();
     if (!lights_init_panel(&lights)) Serial.println("panel LED driver (0x3C) silent - retrying");
     if (!lights_init_plate(&lights)) Serial.println("plate LED driver (0x54) silent - retrying");
+    sk_t_init = millis();
+    sknob_setup();
+    if (!sk_ok) Serial.println("screen knob (0x36) silent - retrying");
 
     ACAN_T4_Settings settings(CAN_BITRATE);
     const uint32_t err = ACAN_T4::can2.begin(settings);
@@ -368,13 +418,19 @@ void loop() {
      * unless the PMU is up and says the key is OFF (D-484: a key-off release). */
     panel.stopped = car_stopped(seen_200, now - last_rx_200, speed_kph, dcu.pmu_alive, dcu.key_pos);
     uint16_t down, held;
-    uint16_t pressed = panel_keys_step(&panel, scan_matrix(), dcu.pmu_alive, now, &down, &held);
+    sknob_service(now);                                     /* the screen knob's push and detents (D-580) */
+    uint16_t raw = (uint16_t)(scan_matrix() | (sk_push ? PK_SCREEN_PUSH : 0));
+    uint16_t pressed = panel_keys_step(&panel, raw, dcu.pmu_alive, now, &down, &held);
     if (pressed) last_activity = now;
+    int sk_d = sknob_take();
+    if (sk_d) last_activity = now;
+    sknob_step(&sknob, &dcu.mem.disp_pct, down, sk_d, now); /* pages, or the display level after a click */
     digitalWrite(PIN_REL_HATCH, panel.rel_sel == PK_HATCH     ? HIGH : LOW);
     digitalWrite(PIN_REL_FUEL,  panel.rel_sel == PK_FUEL_DOOR ? HIGH : LOW);
     exp2_write_outputs(&exp_io2, panel.wake_req ? EXP2_WAKE : 0);   /* SN21 on U13 P02 (D-577) */
     panel_keys_t pk;
-    if (dcu.pmu_alive && panel_frame_due(&keys_tx, down, held, now, &pk)) send_frame(ID_PANEL_KEYS, &pk);
+    if (dcu.pmu_alive && panel_frame_due(&keys_tx, down, held, (int8_t)sknob.count, disp_level(&dcu.mem), now, &pk))
+        send_frame(ID_PANEL_KEYS, &pk);
 
     /* knobs and climate keys: the centre knob's modes, the seat knobs (D-492);
      * its push held a second sets the dash-light level (D-578) */

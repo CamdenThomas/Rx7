@@ -124,7 +124,8 @@ typedef enum { CLIM_OFF = 0, CLIM_VENT, CLIM_HEAT, CLIM_DEFROST, CLIM_AC } clima
 #define BAND_LASER         (1u << 3)
 
 /* panel keys, 0x400 - bit n of `down` / `held` (F-016, F-018). Held = down
- * for >= 1 s. Bytes 0-1 down, 2-3 held (same bits), 4-6 reserved, 7 counter.
+ * for >= 1 s. Bytes 0-1 down, 2-3 held (same bits), 4 the screen knob's
+ * detent count, 5 the display level, 6 reserved, 7 counter (D-580).
  *
  * F-016 (D-380, the 3 x 3 matrix):   F-018 (D-492, the 4 x 3 matrix):
  *   b0  defog                          b0  rear-glass defog       ROW1 C1
@@ -141,7 +142,8 @@ typedef enum { CLIM_OFF = 0, CLIM_VENT, CLIM_HEAT, CLIM_DEFROST, CLIM_AC } clima
  *                                      b11 spare                  ROW4 C2 (no key fitted)
  *                                      b12 spare                  ROW4 C3 (no key fitted)
  *                                      b13 centre knob push       (not matrix, ribbon 11)
- *                                      b14-15 reserved
+ *                                      b14 screen knob push       (not matrix, I2C, D-580)
+ *                                      b15 reserved
  * Append-only: every F-016 bit keeps its place, so a PMU rule or a log
  * decoder built on the old map reads the old keys unchanged. b0-b8 are
  * still the matrix row-major; ROW4 follows the stick press. The two
@@ -161,7 +163,8 @@ typedef enum { CLIM_OFF = 0, CLIM_VENT, CLIM_HEAT, CLIM_DEFROST, CLIM_AC } clima
 #define PK_SPARE_R4C2      (1u << 11)
 #define PK_SPARE_R4C3      (1u << 12)
 #define PK_CENTRE_PUSH     (1u << 13)
-#define PK_COUNT           14
+#define PK_SCREEN_PUSH     (1u << 14)   /* the screen knob's push (SN32, D-580) */
+#define PK_COUNT           15
 
 /* battery freshness flags, 0x220 / 0x221 byte 6 - freshness, not health (D-345) */
 #define BATT_ADV_FRESH     (1u << 0)   /* advertisement < 10 s old   */
@@ -296,7 +299,9 @@ typedef struct __attribute__((packed)) {
 typedef struct __attribute__((packed)) {
     uint16_t down;          /* PK_* bitfield, little-endian  */
     uint16_t held;          /* PK_*, down for >= 1 s         */
-    uint8_t  _rsv[3];
+    int8_t   screen_count;  /* the screen knob's detents on pages, rolling (D-580) */
+    uint8_t  disp_pct;      /* the display level, % 10-100 (D-580) */
+    uint8_t  _rsv;
     uint8_t  counter;
 } panel_keys_t;
 
