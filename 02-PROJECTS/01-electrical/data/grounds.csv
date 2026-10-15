@@ -33,6 +33,6 @@ G36,L3,DCU comfort returns - DP-DCU-P 2 → the PMU box's ground star,14,3,3,"D-
 G37,Sill,"A6 door-jamb 47 kohm baseline -> potted in the driver jamb switch's pigtail, to the body at the jamb (D-610)",16,1,1,far end kept so the PMU still sees a broken wire as a fault (D-610),return,
 G38,L2,Outside-air thermistor return → front star,16,1,3,"The OAT sensor's other lead (L2-OAT, D-329, D-274). confirm — hand estimate, not measured (R8, 2026-10-09)",return,
 G39,L1,"Swap cooling fan (O14) return → its own 12 AWG to the front star, never the block",12,1,4,"At the swap only (D-409, R11): a 20 A fan sharing the engine ground would offset the A4 / A5 ladders (CK14). Not this build. confirm — hand estimate",return,
-G40,Sill,"Door grounds D1 8 / D2 8 -> the PMU box's ground star (D-603, D-610)",16,2,1,"D-274; the splice is N94's. confirm — hand estimate (Y10, 2026-10-09)",return,
+G40,Sill,"Door grounds D1 8 / D2 8 -> the PMU box's ground star (D-603, D-610)",16,2,1,"D-274; joined on the PMU box's star (N123, D-610). confirm — hand estimate (Y10, 2026-10-09)",return,
 G41,L4,Amplifier dock return (C14) -> the bin box's negative bus (D-609),4,1,3,A17; confirm — hand estimate,return,
 G42,L3,Seat motor returns - L3-SD 4 / L3-SP 4 → the PMU box's ground star,12,2,8,"D-469: each seat's motor current returns with its feed (N112). confirm - hand estimate, not measured D-603: every dash return comes back to the PMU box's star.",return,
