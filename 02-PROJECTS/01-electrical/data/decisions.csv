@@ -2221,3 +2221,15 @@ His words (chat, 2026-10-15): ""3: bring both back to the pmu box"" and ""4: AFR
 - C1 keeps its measurements for when the car is stripped; the gauge's lead reach is answered.
 
 Consequences in the data: the grounds table, node conductors and the CU's cavities carry this at Y66's wire list; 00-CAR PT977's note records the lead's length as he gave it."
+D-604,electrical,"Dash overhaul next improvements: CU box fitted from behind, CU keeps its screen, CUR on four wires, swap-time ECU and DU changes",2026-10-15,standing,,,,,"**The dash overhaul's next improvements, settled: the Control Unit's box stays about 50 mm tall behind its 25.4 mm face, stepping up behind the dash and fitted from behind (N1 a); the CU keeps its own screen (N2 declined); the CUR reaches the CU on four wires - data, clock, 5 V and ground - through a small I/O expander and an I2C ADC on the CUR's board, its five wink and hazard lines to the PMU box unchanged (N3); the ECU's feed (O13) stays inside the PMU box at the swap (N4); at the swap the Display Unit takes rpm, water and oil temperature from the ECU on CAN and its direct engine wires go (N5); at the swap the AEM gauge retires if the EMU PRO carries its own wideband controller (N6); and one glovebox diagnostic port serves both ECUMaster units if the EMU PRO configures over a link that port can carry (N7).**
+
+His words (chat, 2026-10-15): ""1: a / 2: no / 3: do it / 4: do it / 5: yes / 6: yes / 7: if it works / 8: we need to talk more"". His numbers are the plan's N1-N8.
+
+**What follows.**
+- N1: the CU installs from behind the dash; D-594's 64-way right-angle header stands. The box's shape behind the face is the CU mock-up's (Y66).
+- N3: the CUR's link to the CU (today DP-DCU 36-47, twelve lines) becomes four; the CUR's single plug (D-597) carries those four and the five lines to the PMU box, so a 12-way fits; its part is chosen at Y66. The two chips go on the CUR board's parts at its redraw (a pick, money).
+- N4 and N5 are drawn into the PMU box's and the DU's contents as ""at the swap"".
+- N6 and N7 wait on the EMU PRO's manual (block APP.05): both are confirm until it is read.
+- N8 (the head unit's reverse input from the PMU box) is overtaken: luxury D-605 drops the reverse input.
+
+Consequences in the data: none yet; Y66's freeze carries each."
