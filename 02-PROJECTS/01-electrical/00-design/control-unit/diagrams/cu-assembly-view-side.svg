@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="233.6mm" height="91.3mm" viewBox="-23.00 -8.00 233.60 91.30">
+<svg xmlns="http://www.w3.org/2000/svg" width="233.6mm" height="105.3160mm" viewBox="-23 -22.016 233.6 105.316" data-rx7-viewbox="-23.00 -8.00 233.60 91.30" data-rx7-width="233.6mm" data-rx7-height="91.3mm">
+<g id="rx7-stamp"><rect x="-23" y="-22.016" width="233.6" height="13.175" fill="#fff4e5" stroke="#a84a06" stroke-width="0.42048"/><text x="-21.3181" y="-16.9702" font-family="Noto Sans, Arial, sans-serif" font-size="3.36384" font-weight="700" fill="#a84a06">OUTDATED (D-612) - redrawn at Y70</text><text x="-21.3181" y="-12.9336" font-family="Noto Sans, Arial, sans-serif" font-size="2.08558" fill="#3b2a1a">The CU's connector is the DRC 64 with a DTP comfort inlet, the seats' heat and cool are its + side switches, the radar receiver is inside it, the face is the eighth pass, the CUR is on four I2C wires.</text><text x="-21.3181" y="-9.90618" font-family="Noto Sans, Arial, sans-serif" font-size="2.08558" fill="#3b2a1a">The current plan: control-unit/diagrams/cu-plan.svg</text></g><!-- rx7-stamp -->
 <title>Climate control unit mock-up - side</title>
 <rect x="-23.00" y="-8.00" width="233.60" height="91.30" fill="white"/>
 <g fill="none" stroke="#9a9a9a" stroke-width="0.12" stroke-dasharray="1.00 1.00">

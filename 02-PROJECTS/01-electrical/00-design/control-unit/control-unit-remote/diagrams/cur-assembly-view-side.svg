@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="194.7mm" height="99.0mm" viewBox="-22.00 -8.00 194.66 99.00">
+<svg xmlns="http://www.w3.org/2000/svg" width="194.7mm" height="110.6796mm" viewBox="-22 -19.6796 194.66 110.68" data-rx7-viewbox="-22.00 -8.00 194.66 99.00" data-rx7-width="194.7mm" data-rx7-height="99.0mm">
+<g id="rx7-stamp"><rect x="-22" y="-19.6796" width="194.66" height="10.9788" fill="#fff4e5" stroke="#a84a06" stroke-width="0.350388"/><text x="-20.5984" y="-15.4749" font-family="Noto Sans, Arial, sans-serif" font-size="2.8031" font-weight="700" fill="#a84a06">OUTDATED (D-612) - redrawn at Y71</text><text x="-20.5984" y="-12.1112" font-family="Noto Sans, Arial, sans-serif" font-size="1.73792" fill="#3b2a1a">The CUR is on one DRC 24 (DP-CUR) with an I/O expander and an ADC for its keys and stick; the left plate's two DT13s and its twelve-line cable are gone.</text><text x="-20.5984" y="-9.58843" font-family="Noto Sans, Arial, sans-serif" font-size="1.73792" fill="#3b2a1a">The current plan: control-unit/control-unit-remote/diagrams/cur-plan.svg</text></g><!-- rx7-stamp -->
 <title>Control Unit Remote (CUR) mock-up - side</title>
 <rect x="-22.00" y="-8.00" width="194.66" height="99.00" fill="white"/>
 <g fill="none" stroke="#9a9a9a" stroke-width="0.12" stroke-dasharray="1.00 1.00">

@@ -1,0 +1,275 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1310" height="1401" viewBox="0 0 1310 1401" font-family="Noto Sans, sans-serif">
+<title>Amplifier dock - plan sheet</title>
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="30.0" y="40.0" font-size="20" text-anchor="start" font-weight="700" fill="#1f2328">AMPLIFIER DOCK · PLAN SHEET</text>
+<text x="30.0" y="64.0" font-size="12" text-anchor="start" font-weight="400" fill="#57606a">State: planned - its CAD is Y73.  Rulings: D-503 D-608 D-609.  Part folder: 00-design/amp-dock/</text>
+<text x="30.0" y="100.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">WHERE IT SITS</text>
+<text x="30.0" y="118.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">against the bin box in the passenger-side cargo bin, its fins in open air away from the battery (D-609)</text>
+<text x="670.0" y="100.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">NOTE</text>
+<text x="670.0" y="118.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Its board waits on the amplifier's pick (luxury X-012), then the CAD pass (Y75).</text>
+<text x="30.0" y="146.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">WHAT IT HOLDS</text>
+<text x="30.0" y="164.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the DSP amplifier (luxury LP57, not picked) and the home-built upmix (LP56) built as its connector board, the digital link between them inside (D-503, D-609)</text>
+<text x="30.0" y="192.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">HOW IT JOINS THE HARNESS</text>
+<text x="30.0" y="210.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">L4-AMP, one HDP20 24-29: every speaker output, the head unit's line-level pair with its drain, the remote; power by two short bolted leads from the bin box (C13 from F34, C14 to the negative bus)</text>
+<text x="30.0" y="238.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">ITS HEAVY CABLES</text>
+<rect x="30.0" y="250.0" width="1250.0" height="26.0" rx="0" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+<text x="38.0" y="267.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Cable</text>
+<text x="108.0" y="267.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Run</text>
+<text x="868.0" y="267.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">AWG</text>
+<text x="938.0" y="267.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Note</text>
+<line x1="30" y1="371.0" x2="1280" y2="371.0" stroke="#d0d7de"/>
+<text x="38.0" y="291.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">C13</text>
+<text x="108.0" y="291.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Amplifier + : F34 in the bin box -&gt; the amplifier dock's bolted + lead</text>
+<text x="868.0" y="291.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">4</text>
+<text x="938.0" y="291.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">4 AWG sized for the largest amplifier class luxury 03.13 leaves</text>
+<text x="938.0" y="308.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">open (about 100 A fused); the run stays inside the bin. Fed</text>
+<text x="938.0" y="325.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">from the disconnect's output, so the disconnect kills the</text>
+<text x="938.0" y="342.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">amplifier (D-466). confirm — hand estimate, not measured</text>
+<text x="938.0" y="359.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">(A17, 2026-10-09)</text>
+<line x1="30" y1="415.0" x2="1280" y2="415.0" stroke="#d0d7de"/>
+<text x="38.0" y="386.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">C14</text>
+<text x="108.0" y="386.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Amplifier - : the amplifier dock -&gt; the bin box's negative bus</text>
+<text x="868.0" y="386.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">4</text>
+<text x="938.0" y="386.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Its own return to the star, never the body panel (D-274,</text>
+<text x="938.0" y="403.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">K-008). confirm — hand estimate (A17)</text>
+<text x="30.0" y="439.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">ITS PLUGS, CAVITY BY CAVITY</text>
+<rect x="30.0" y="455.0" width="360.0" height="850.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="477.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L4-AMP · HDP26-24-29SE / HDP24-24-29PE · mixed-contact circular · Amplifier dock, passenger-side …</text>
+<line x1="30" y1="489.0" x2="390" y2="489.0" stroke="#d0d7de"/>
+<circle cx="50" cy="506.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="510.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="510.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#12 Speaker sub a +</text>
+<text x="380.0" y="510.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier sub a +</text>
+<path d="M390.0,506.0 L720.0,506.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,506.0 L720.0,506.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="496.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-1 · 14 AWG speaker · RT31 · capped at the far …</text>
+<rect x="720.0" y="492.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="510.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L4-SUB 1</text>
+<line x1="30" y1="523.0" x2="390" y2="523.0" stroke="#d0d7de"/>
+<circle cx="50" cy="540.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="544.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="544.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#12 Speaker sub a -</text>
+<text x="380.0" y="544.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier sub a −</text>
+<path d="M390.0,540.0 L720.0,540.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,540.0 L720.0,540.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="530.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-2 · 14 AWG speaker · RT31 · capped at the far …</text>
+<rect x="720.0" y="526.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="544.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L4-SUB 2</text>
+<line x1="30" y1="557.0" x2="390" y2="557.0" stroke="#d0d7de"/>
+<circle cx="50" cy="574.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="578.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="578.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#12 Speaker sub b +</text>
+<text x="380.0" y="578.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier sub b +</text>
+<path d="M390.0,574.0 L720.0,574.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,574.0 L720.0,574.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="564.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-3 · 14 AWG speaker · RT31 · capped at the far …</text>
+<rect x="720.0" y="560.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="578.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L4-SUB 3</text>
+<line x1="30" y1="591.0" x2="390" y2="591.0" stroke="#d0d7de"/>
+<circle cx="50" cy="608.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="612.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="612.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#12 Speaker sub b -</text>
+<text x="380.0" y="612.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier sub b −</text>
+<path d="M390.0,608.0 L720.0,608.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,608.0 L720.0,608.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="598.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-4 · 14 AWG speaker · RT31 · capped at the far …</text>
+<rect x="720.0" y="594.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="612.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L4-SUB 4</text>
+<line x1="30" y1="625.0" x2="390" y2="625.0" stroke="#d0d7de"/>
+<circle cx="50" cy="642.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="646.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="646.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Speaker front l +</text>
+<text x="380.0" y="646.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier front l +</text>
+<path d="M390.0,642.0 L720.0,642.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,642.0 L720.0,642.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="632.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-5 · 16 AWG speaker · RT32 · capped at the far …</text>
+<rect x="720.0" y="628.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="646.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-SPF-L 1</text>
+<line x1="30" y1="659.0" x2="390" y2="659.0" stroke="#d0d7de"/>
+<circle cx="50" cy="676.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="680.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="680.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Speaker front l -</text>
+<text x="380.0" y="680.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier front l −</text>
+<path d="M390.0,676.0 L720.0,676.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,676.0 L720.0,676.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="666.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-6 · 16 AWG speaker · RT32 · capped at the far …</text>
+<rect x="720.0" y="662.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="680.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-SPF-L 2</text>
+<line x1="30" y1="693.0" x2="390" y2="693.0" stroke="#d0d7de"/>
+<circle cx="50" cy="710.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="714.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="714.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Speaker front r +</text>
+<text x="380.0" y="714.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier front r +</text>
+<path d="M390.0,710.0 L720.0,710.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,710.0 L720.0,710.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="700.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-7 · 16 AWG speaker · RT32 · capped at the far …</text>
+<rect x="720.0" y="696.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="714.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-SPF-R 1</text>
+<line x1="30" y1="727.0" x2="390" y2="727.0" stroke="#d0d7de"/>
+<circle cx="50" cy="744.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="748.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="748.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Speaker front r -</text>
+<text x="380.0" y="748.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier front r −</text>
+<path d="M390.0,744.0 L720.0,744.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,744.0 L720.0,744.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="734.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-8 · 16 AWG speaker · RT32 · capped at the far …</text>
+<rect x="720.0" y="730.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="748.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-SPF-R 2</text>
+<line x1="30" y1="761.0" x2="390" y2="761.0" stroke="#d0d7de"/>
+<circle cx="50" cy="778.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="782.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
+<text x="70.0" y="782.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Speaker tweeter l +</text>
+<text x="380.0" y="782.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier tweeter l +</text>
+<path d="M390.0,778.0 L720.0,778.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,778.0 L720.0,778.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="768.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-9 · 16 AWG speaker · RT32 · capped at the far …</text>
+<rect x="720.0" y="764.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="782.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-TW-L 1</text>
+<line x1="30" y1="795.0" x2="390" y2="795.0" stroke="#d0d7de"/>
+<circle cx="50" cy="812.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="816.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">10</text>
+<text x="70.0" y="816.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Speaker tweeter l -</text>
+<text x="380.0" y="816.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier tweeter l −</text>
+<path d="M390.0,812.0 L720.0,812.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,812.0 L720.0,812.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="802.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-10 · 16 AWG speaker · RT32 · capped at the far …</text>
+<rect x="720.0" y="798.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="816.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-TW-L 2</text>
+<line x1="30" y1="829.0" x2="390" y2="829.0" stroke="#d0d7de"/>
+<circle cx="50" cy="846.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="850.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">11</text>
+<text x="70.0" y="850.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Speaker tweeter r +</text>
+<text x="380.0" y="850.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier tweeter r +</text>
+<path d="M390.0,846.0 L720.0,846.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,846.0 L720.0,846.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="836.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-11 · 16 AWG speaker · RT32 · capped at the far …</text>
+<rect x="720.0" y="832.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="850.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-TW-R 1</text>
+<line x1="30" y1="863.0" x2="390" y2="863.0" stroke="#d0d7de"/>
+<circle cx="50" cy="880.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="884.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">12</text>
+<text x="70.0" y="884.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Speaker tweeter r -</text>
+<text x="380.0" y="884.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier tweeter r −</text>
+<path d="M390.0,880.0 L720.0,880.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,880.0 L720.0,880.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="870.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-12 · 16 AWG speaker · RT32 · capped at the far …</text>
+<rect x="720.0" y="866.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="884.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-TW-R 2</text>
+<line x1="30" y1="897.0" x2="390" y2="897.0" stroke="#d0d7de"/>
+<circle cx="50" cy="914.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="918.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">13</text>
+<text x="70.0" y="918.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Speaker centre +</text>
+<text x="380.0" y="918.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier centre +</text>
+<path d="M390.0,914.0 L720.0,914.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,914.0 L720.0,914.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="904.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-13 · 16 AWG speaker · RT32 · capped at the far …</text>
+<rect x="720.0" y="900.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="918.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-CTR 1</text>
+<line x1="30" y1="931.0" x2="390" y2="931.0" stroke="#d0d7de"/>
+<circle cx="50" cy="948.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="952.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">14</text>
+<text x="70.0" y="952.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Speaker centre -</text>
+<text x="380.0" y="952.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier centre −</text>
+<path d="M390.0,948.0 L720.0,948.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,948.0 L720.0,948.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="938.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-14 · 16 AWG speaker · RT32 · capped at the far …</text>
+<rect x="720.0" y="934.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="952.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-CTR 2</text>
+<line x1="30" y1="965.0" x2="390" y2="965.0" stroke="#d0d7de"/>
+<circle cx="50" cy="982.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="986.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">15</text>
+<text x="70.0" y="986.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Speaker surround l +</text>
+<text x="380.0" y="986.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier surround l +</text>
+<path d="M390.0,982.0 L720.0,982.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,982.0 L720.0,982.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="972.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-15 · 16 AWG speaker · RT32 · capped at the far …</text>
+<rect x="720.0" y="968.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="986.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L4-SPR-L 1</text>
+<line x1="30" y1="999.0" x2="390" y2="999.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1016.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1020.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">16</text>
+<text x="70.0" y="1020.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Speaker surround l -</text>
+<text x="380.0" y="1020.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier surround l −</text>
+<path d="M390.0,1016.0 L720.0,1016.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1016.0 L720.0,1016.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1006.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-16 · 16 AWG speaker · RT32 · capped at the far …</text>
+<rect x="720.0" y="1002.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1020.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L4-SPR-L 2</text>
+<line x1="30" y1="1033.0" x2="390" y2="1033.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1050.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1054.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">17</text>
+<text x="70.0" y="1054.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Speaker surround r +</text>
+<text x="380.0" y="1054.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier surround r +</text>
+<path d="M390.0,1050.0 L720.0,1050.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1050.0 L720.0,1050.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1040.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-17 · 16 AWG speaker · RT32 · capped at the far …</text>
+<rect x="720.0" y="1036.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1054.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L4-SPR-R 1</text>
+<line x1="30" y1="1067.0" x2="390" y2="1067.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1084.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1088.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">18</text>
+<text x="70.0" y="1088.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Speaker surround r -</text>
+<text x="380.0" y="1088.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">Amplifier surround r −</text>
+<path d="M390.0,1084.0 L720.0,1084.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1084.0 L720.0,1084.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1074.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-18 · 16 AWG speaker · RT32 · capped at the far …</text>
+<rect x="720.0" y="1070.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1088.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L4-SPR-R 2</text>
+<line x1="30" y1="1101.0" x2="390" y2="1101.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1118.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1122.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">19</text>
+<text x="70.0" y="1122.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Head unit line-level front L</text>
+<text x="380.0" y="1122.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DV28 pre-out</text>
+<path d="M390.0,1118.0 L720.0,1118.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1118.0 L720.0,1118.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1108.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-19 · 20 AWG speaker · RT11/RT30 · capped at the …</text>
+<rect x="720.0" y="1104.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<line x1="30" y1="1135.0" x2="390" y2="1135.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1152.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1156.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">20</text>
+<text x="70.0" y="1156.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Head unit line-level front R</text>
+<text x="380.0" y="1156.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DV28 pre-out</text>
+<path d="M390.0,1152.0 L720.0,1152.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1152.0 L720.0,1152.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1142.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-20 · 20 AWG speaker · RT11/RT30 · capped at the …</text>
+<rect x="720.0" y="1138.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<line x1="30" y1="1169.0" x2="390" y2="1169.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1186.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1190.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">21</text>
+<text x="70.0" y="1190.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Line-level ground</text>
+<text x="380.0" y="1190.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DV28 pre-out ground</text>
+<path d="M390.0,1186.0 L720.0,1186.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1186.0 L720.0,1186.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1176.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-21 · 20 AWG BLK · RT11/RT30 · capped at the far …</text>
+<rect x="720.0" y="1172.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<line x1="30" y1="1203.0" x2="390" y2="1203.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1220.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1224.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">22</text>
+<text x="70.0" y="1224.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Line-level shield drain</text>
+<text x="380.0" y="1224.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">GND</text>
+<path d="M390.0,1220.0 L720.0,1220.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1220.0 L720.0,1220.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1210.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-22 · 20 AWG BLK · RT11/RT30 · capped at the far …</text>
+<rect x="720.0" y="1206.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<line x1="30" y1="1237.0" x2="390" y2="1237.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1254.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1258.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">23</text>
+<text x="70.0" y="1258.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">#16 Remote turn-on</text>
+<text x="380.0" y="1258.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">DV28 REM</text>
+<path d="M390.0,1254.0 L720.0,1254.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,1254.0 L720.0,1254.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="1244.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L4-AMP-23 · 20 AWG BLU · RT11/RT30 · capped at the far …</text>
+<rect x="720.0" y="1240.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<line x1="30" y1="1271.0" x2="390" y2="1271.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1288.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1292.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328"></text>
+<text x="70.0" y="1292.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">#20 24–29: spare, sealing plugs</text>
+<text x="406.0" y="1292.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<path d="M30.0,1341.0 L66.0,1341.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M30.0,1341.0 L66.0,1341.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="76.0" y="1345.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLU</text>
+<path d="M123.6,1341.0 L159.6,1341.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M123.6,1341.0 L159.6,1341.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="169.6" y="1345.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLK</text>
+<text x="30.0" y="1371.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">Solid wire: live. Dashed: run and capped. #12 / #16 / #20: a circular's contact size. Nothing here is measured (R11). Generated by rx7.py diagrams from the record - do not edit.</text>
+</svg>

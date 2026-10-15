@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="333.0mm" height="168.5mm" viewBox="-8.00 -8.00 333.00 168.50">
+<svg xmlns="http://www.w3.org/2000/svg" width="333.0mm" height="188.4800mm" viewBox="-8 -27.98 333 188.48" data-rx7-viewbox="-8.00 -8.00 333.00 168.50" data-rx7-width="333.0mm" data-rx7-height="168.5mm">
+<g id="rx7-stamp"><rect x="-8" y="-27.98" width="333" height="18.7812" fill="#fff4e5" stroke="#a84a06" stroke-width="0.5994"/><text x="-5.6024" y="-20.7872" font-family="Noto Sans, Arial, sans-serif" font-size="4.7952" font-weight="700" fill="#a84a06">OUTDATED (D-612) - redrawn at Y72</text><text x="-5.6024" y="-15.033" font-family="Noto Sans, Arial, sans-serif" font-size="2.97302" fill="#3b2a1a">The AEM wideband gauge goes inside the DU on DP-ICU 18 / 19, with a sealed gland for its sensor lead.</text><text x="-5.6024" y="-10.7173" font-family="Noto Sans, Arial, sans-serif" font-size="2.97302" fill="#3b2a1a">The current plan: display-unit/diagrams/du-plan.svg</text></g><!-- rx7-stamp -->
 <title>ICU unit mock-up - front</title>
 <rect x="-8.00" y="-8.00" width="333.00" height="168.50" fill="white"/>
 <g fill="none" stroke="#9a9a9a" stroke-width="0.12" stroke-dasharray="1.00 1.00">

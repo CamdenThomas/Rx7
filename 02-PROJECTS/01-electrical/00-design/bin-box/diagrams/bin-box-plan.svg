@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1310" height="1038" viewBox="0 0 1310 1038" font-family="Noto Sans, sans-serif">
+<title>Bin box - plan sheet</title>
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="30.0" y="40.0" font-size="20" text-anchor="start" font-weight="700" fill="#1f2328">BIN BOX · PLAN SHEET</text>
+<text x="30.0" y="64.0" font-size="12" text-anchor="start" font-weight="400" fill="#57606a">State: planned - its CAD is Y73.  Rulings: D-608 D-609.  Part folder: 00-design/bin-box/</text>
+<text x="30.0" y="100.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">WHERE IT SITS</text>
+<text x="30.0" y="118.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the passenger-side cargo bin, in the battery tray beside the battery, held down as the battery is (D-063,</text>
+<text x="30.0" y="136.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">D-608)</text>
+<text x="670.0" y="100.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">NOTE</text>
+<text x="670.0" y="118.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Its mock-up round the Ionic S9 and the tray is the CAD pass's (Y73).</text>
+<text x="30.0" y="164.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">WHAT IT HOLDS</text>
+<text x="30.0" y="182.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the master disconnect, its knob through the lid (D-319); the Class-T 150 A; the 2151 dual MRBF block with the starter's 250 A and the amplifier's F34 (D-560); F38; a negative bus</text>
+<text x="30.0" y="210.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">HOW IT JOINS THE HARNESS</text>
+<text x="30.0" y="228.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">two booted battery leads tightened onto the battery's brass terminals (D-235, P095); four bolted studs under the lid: the 2 AWG PMU feed (C03), the 1/0 starter feed (C04), the 1/0 cranking return (C11), the chassis bond</text>
+<text x="30.0" y="246.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">to the rear ground stud (C05); the amplifier dock's two bolted leads (C13, C14) (D-609)</text>
+<text x="30.0" y="274.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">FUSES IN THE BOX</text>
+<rect x="30.0" y="286.0" width="1150.0" height="26.0" rx="0" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+<text x="38.0" y="303.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Fuse</text>
+<text x="128.0" y="303.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Rating</text>
+<text x="218.0" y="303.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Feeds</text>
+<text x="858.0" y="303.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Fed from</text>
+<line x1="30" y1="339.0" x2="1180" y2="339.0" stroke="#d0d7de"/>
+<text x="38.0" y="327.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Class-T</text>
+<text x="128.0" y="327.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">150 A</text>
+<text x="218.0" y="327.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The whole PMU system — 2 AWG from the bin box's stud to the PMU box's feed stud (C03, D-608)</text>
+<text x="858.0" y="327.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Master disconnect output stud (D-319), via C01</text>
+<line x1="30" y1="383.0" x2="1180" y2="383.0" stroke="#d0d7de"/>
+<text x="38.0" y="354.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">MRBF</text>
+<text x="128.0" y="354.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">250 A</text>
+<text x="218.0" y="354.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Starter main cable — 250 A sized to the 1/0 cable D-246 fitted, not to the load (D-321)</text>
+<text x="858.0" y="354.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Master disconnect output stud (D-319): post → C12 →</text>
+<text x="858.0" y="371.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">switch → holder</text>
+<line x1="30" y1="546.0" x2="1180" y2="546.0" stroke="#d0d7de"/>
+<text x="38.0" y="398.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">F34</text>
+<text x="128.0" y="398.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">confirm -</text>
+<text x="128.0" y="415.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">from the</text>
+<text x="128.0" y="432.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">amplifier's</text>
+<text x="128.0" y="449.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">current when</text>
+<text x="128.0" y="466.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">luxury 03.13 /</text>
+<text x="128.0" y="483.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">X-012 picks it,</text>
+<text x="128.0" y="500.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">up to about</text>
+<text x="128.0" y="517.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">100 A on the</text>
+<text x="128.0" y="534.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">4 AWG</text>
+<text x="218.0" y="398.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The amplifier DV60 + through C13 (4 AWG) - the disconnect kills the amplifier too (D-466)</text>
+<text x="858.0" y="398.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Master disconnect output stud (D-319)</text>
+<line x1="30" y1="573.0" x2="1180" y2="573.0" stroke="#d0d7de"/>
+<text x="38.0" y="561.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">F38</text>
+<text x="128.0" y="561.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">3 A</text>
+<text x="218.0" y="561.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The upmix board on the amplifier dock (D-503, D-609), inside the bin box</text>
+<text x="858.0" y="561.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">C13, the amplifier's 4 AWG feed after F34</text>
+<text x="30.0" y="597.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">ITS HEAVY CABLES</text>
+<rect x="30.0" y="609.0" width="1250.0" height="26.0" rx="0" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+<text x="38.0" y="626.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Cable</text>
+<text x="108.0" y="626.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Run</text>
+<text x="868.0" y="626.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">AWG</text>
+<text x="938.0" y="626.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Note</text>
+<line x1="30" y1="662.0" x2="1280" y2="662.0" stroke="#d0d7de"/>
+<text x="38.0" y="650.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">C03</text>
+<text x="108.0" y="650.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Class-T -&gt; the bin box's PMU-feed stud -&gt; the PMU box's feed stud (through the tunnel)</text>
+<text x="868.0" y="650.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">2</text>
+<text x="938.0" y="650.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">confirm — hand estimate, not measured</text>
+<line x1="30" y1="689.0" x2="1280" y2="689.0" stroke="#d0d7de"/>
+<text x="38.0" y="677.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">C04</text>
+<text x="108.0" y="677.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">MRBF -&gt; the bin box's starter stud -&gt; the jump post at the bay junction (forward under the car)</text>
+<text x="868.0" y="677.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">1/0</text>
+<text x="938.0" y="677.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">confirm — hand estimate, not measured</text>
+<line x1="30" y1="767.0" x2="1280" y2="767.0" stroke="#d0d7de"/>
+<text x="38.0" y="704.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">C05</text>
+<text x="108.0" y="704.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Battery - post -&gt; the bin box's - lead -&gt; its negative bus -&gt; the chassis bond stud -&gt; rear ground stud</text>
+<text x="868.0" y="704.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">1/0</text>
+<text x="938.0" y="704.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">confirm — hand estimate, not measured. The only home for</text>
+<text x="938.0" y="721.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">this conductor: the heavy battery and bond cables live here</text>
+<text x="938.0" y="738.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">and are bought from here (P062 / P097); grounds holds the</text>
+<text x="938.0" y="755.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">zone returns (A9, 2026-09-21)</text>
+<line x1="30" y1="845.0" x2="1280" y2="845.0" stroke="#d0d7de"/>
+<text x="38.0" y="782.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">C11</text>
+<text x="108.0" y="782.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The bin box's negative bus -&gt; engine block, at the bay junction's ground post - the dedicated cranking return</text>
+<text x="868.0" y="782.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">1/0</text>
+<text x="938.0" y="782.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">confirm — hand estimate, not measured. The only home for</text>
+<text x="938.0" y="799.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">this conductor: the heavy battery and bond cables live here</text>
+<text x="938.0" y="816.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">and are bought from here (P062 / P097); grounds holds the</text>
+<text x="938.0" y="833.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">zone returns (A9, 2026-09-21)</text>
+<line x1="30" y1="940.0" x2="1280" y2="940.0" stroke="#d0d7de"/>
+<text x="38.0" y="860.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">C13</text>
+<text x="108.0" y="860.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Amplifier + : F34 in the bin box -&gt; the amplifier dock's bolted + lead</text>
+<text x="868.0" y="860.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">4</text>
+<text x="938.0" y="860.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">4 AWG sized for the largest amplifier class luxury 03.13 leaves</text>
+<text x="938.0" y="877.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">open (about 100 A fused); the run stays inside the bin. Fed</text>
+<text x="938.0" y="894.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">from the disconnect's output, so the disconnect kills the</text>
+<text x="938.0" y="911.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">amplifier (D-466). confirm — hand estimate, not measured</text>
+<text x="938.0" y="928.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">(A17, 2026-10-09)</text>
+<line x1="30" y1="984.0" x2="1280" y2="984.0" stroke="#d0d7de"/>
+<text x="38.0" y="955.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">C14</text>
+<text x="108.0" y="955.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Amplifier - : the amplifier dock -&gt; the bin box's negative bus</text>
+<text x="868.0" y="955.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">4</text>
+<text x="938.0" y="955.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Its own return to the star, never the body panel (D-274,</text>
+<text x="938.0" y="972.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">K-008). confirm — hand estimate (A17)</text>
+<text x="30.0" y="1008.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">Solid wire: live. Dashed: run and capped. #12 / #16 / #20: a circular's contact size. Nothing here is measured (R11). Generated by rx7.py diagrams from the record - do not edit.</text>
+</svg>

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1310" height="788" viewBox="0 0 1310 788" font-family="Noto Sans, sans-serif">
+<title>Bay junction - plan sheet</title>
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="30.0" y="40.0" font-size="20" text-anchor="start" font-weight="700" fill="#1f2328">BAY JUNCTION · PLAN SHEET</text>
+<text x="30.0" y="64.0" font-size="12" text-anchor="start" font-weight="400" fill="#57606a">State: planned - its CAD is Y74.  Rulings: D-608 D-609.  Part folder: 00-design/bay-junction/</text>
+<text x="30.0" y="100.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">WHERE IT SITS</text>
+<text x="30.0" y="118.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the engine bay, on the body where the starter feed arrives, so the LS swap leaves it alone (D-609)</text>
+<text x="670.0" y="100.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">NOTE</text>
+<text x="670.0" y="118.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Being jumped or charged through the post: the S9's own emergency-start reserve first, 14.6 V at most,</text>
+<text x="670.0" y="136.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">never used to jump another car until Ionic says so, its charge-current limit asked of Ionic (D-609). Its</text>
+<text x="670.0" y="154.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">mock-up is the CAD pass's (Y74).</text>
+<text x="30.0" y="182.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">WHAT IT HOLDS</text>
+<text x="30.0" y="200.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the covered positive jump post, the ground post beside it, F17 and F18 (MIDI), the start relay K9 (D-609)</text>
+<text x="30.0" y="228.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">HOW IT JOINS THE HARNESS</text>
+<text x="30.0" y="246.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">C04 in from the bin box; C15 on to the starter's B+ stud; the alternator's B+ through F18 (C07); K9's coil from L1-E1 5; the ground post bonded to the engine block</text>
+<text x="30.0" y="274.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">FUSES IN THE BOX</text>
+<rect x="30.0" y="286.0" width="1150.0" height="26.0" rx="0" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+<text x="38.0" y="303.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Fuse</text>
+<text x="128.0" y="303.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Rating</text>
+<text x="218.0" y="303.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Feeds</text>
+<text x="858.0" y="303.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Fed from</text>
+<line x1="30" y1="339.0" x2="1180" y2="339.0" stroke="#d0d7de"/>
+<text x="38.0" y="327.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">F17</text>
+<text x="128.0" y="327.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">30 A</text>
+<text x="218.0" y="327.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Start relay K9 contact 30 (10 AWG)</text>
+<text x="858.0" y="327.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Starter B+ stud</text>
+<line x1="30" y1="400.0" x2="1180" y2="400.0" stroke="#d0d7de"/>
+<text x="38.0" y="354.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">F18</text>
+<text x="128.0" y="354.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">100 A</text>
+<text x="218.0" y="354.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Alternator B+ cable (6 AWG). Swap-time work (D-468): the 160 A alternator (engine D-457) gets a new 2</text>
+<text x="218.0" y="371.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">AWG-or-larger cable and a 200-250 A fuse in place of this 100 A and C07, in the bay that is rebuilt anyway - nothing</text>
+<text x="218.0" y="388.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">bought now changes</text>
+<text x="858.0" y="354.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Starter B+ stud ← alternator</text>
+<text x="30.0" y="424.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">SWITCHES AND RELAYS IN THE BOX</text>
+<rect x="30.0" y="436.0" width="1150.0" height="26.0" rx="0" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+<text x="38.0" y="453.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Id</text>
+<text x="98.0" y="453.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">What it does</text>
+<text x="458.0" y="453.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Kind</text>
+<text x="788.0" y="453.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Control</text>
+<text x="988.0" y="453.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Contact</text>
+<line x1="30" y1="523.0" x2="1180" y2="523.0" stroke="#d0d7de"/>
+<text x="38.0" y="477.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">K9</text>
+<text x="98.0" y="477.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Start relay</text>
+<text x="458.0" y="477.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Sealed mini ISO SPDT, integral diode, weatherproof</text>
+<text x="458.0" y="494.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">socket</text>
+<text x="788.0" y="477.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L1-E1 5 (O21) / block ground</text>
+<text x="988.0" y="477.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">F17 (starter B+ stud, 10 AWG) →</text>
+<text x="988.0" y="494.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">starter solenoid S terminal (10</text>
+<text x="988.0" y="511.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">AWG)</text>
+<text x="30.0" y="547.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">ITS HEAVY CABLES</text>
+<rect x="30.0" y="559.0" width="1250.0" height="26.0" rx="0" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
+<text x="38.0" y="576.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Cable</text>
+<text x="108.0" y="576.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Run</text>
+<text x="868.0" y="576.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">AWG</text>
+<text x="938.0" y="576.0" font-size="11" text-anchor="start" font-weight="700" fill="#1f2328">Note</text>
+<line x1="30" y1="612.0" x2="1280" y2="612.0" stroke="#d0d7de"/>
+<text x="38.0" y="600.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">C04</text>
+<text x="108.0" y="600.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">MRBF -&gt; the bin box's starter stud -&gt; the jump post at the bay junction (forward under the car)</text>
+<text x="868.0" y="600.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">1/0</text>
+<text x="938.0" y="600.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">confirm — hand estimate, not measured</text>
+<line x1="30" y1="690.0" x2="1280" y2="690.0" stroke="#d0d7de"/>
+<text x="38.0" y="627.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">C07</text>
+<text x="108.0" y="627.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Alternator B+ -&gt; F18 (bay junction) -&gt; the jump post</text>
+<text x="868.0" y="627.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">6</text>
+<text x="938.0" y="627.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">confirm — hand estimate, not measured. Swap-time work</text>
+<text x="938.0" y="644.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">(D-468): replaced by a 2 AWG-or-larger cable on a 200-250 A</text>
+<text x="938.0" y="661.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">fuse for the 160 A alternator; F18 / C07 serve the 12A until</text>
+<text x="938.0" y="678.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">then</text>
+<line x1="30" y1="734.0" x2="1280" y2="734.0" stroke="#d0d7de"/>
+<text x="38.0" y="705.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">C15</text>
+<text x="108.0" y="705.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Jump post (bay junction) -&gt; starter B+ stud, a short lead (D-609); at the LS swap only this lead changes</text>
+<text x="868.0" y="705.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">1/0</text>
+<text x="938.0" y="705.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">confirm - not measured; the jump post's place is the CAD</text>
+<text x="938.0" y="722.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">pass's (Y74)</text>
+<text x="30.0" y="758.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">Solid wire: live. Dashed: run and capped. #12 / #16 / #20: a circular's contact size. Nothing here is measured (R11). Generated by rx7.py diagrams from the record - do not edit.</text>
+</svg>

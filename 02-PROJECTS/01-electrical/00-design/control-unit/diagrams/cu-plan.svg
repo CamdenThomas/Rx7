@@ -1,0 +1,537 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1310" height="2746" viewBox="0 0 1310 2746" font-family="Noto Sans, sans-serif">
+<title>Control Unit - plan sheet</title>
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="30.0" y="40.0" font-size="20" text-anchor="start" font-weight="700" fill="#1f2328">CONTROL UNIT · PLAN SHEET</text>
+<text x="30.0" y="64.0" font-size="12" text-anchor="start" font-weight="400" fill="#57606a">State: planned - its CAD is Y70.  Rulings: D-594 D-597 D-602 D-604.  Part folder: 00-design/control-unit/</text>
+<text x="30.0" y="100.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">WHERE IT SITS</text>
+<text x="30.0" y="118.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the centre stack under the stereo, its box stepping up behind the dash and fitted from behind (D-604)</text>
+<text x="670.0" y="100.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">NOTE</text>
+<text x="670.0" y="118.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">The carrier and face board are redrawn at the CAD pass (Y70).</text>
+<text x="30.0" y="146.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">WHAT IT HOLDS</text>
+<text x="30.0" y="164.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the CU carrier (DCU in the tables), the face board behind the eighth-pass face (D-602), the seats' heat and cool on + side smart switches with no fuses (D-597), the radar receiver once picked small enough (D-597), the</text>
+<text x="30.0" y="182.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">CAN2 chain's far-end 120 ohm terminator</text>
+<text x="30.0" y="210.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">HOW IT JOINS THE HARNESS</text>
+<text x="30.0" y="228.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">DP-DCU, the DRC 64-way header with a 24-way and a 40-way plug (D-594); DP-DCU-P, a DTP 2-way power inlet for the comfort feed and its return (D-612)</text>
+<text x="30.0" y="256.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">ALSO IN ITS DIAGRAMS FOLDER</text>
+<text x="30.0" y="274.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">cu-face-concept.html</text>
+<text x="30.0" y="302.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">ITS PLUGS, CAVITY BY CAVITY</text>
+<rect x="30.0" y="318.0" width="360.0" height="2180.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="340.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">DP-DCU  ·  DRC26-24SA+DRC26-40SA  ·  Control Unit rear wall, centre stack</text>
+<line x1="30" y1="352.0" x2="390" y2="352.0" stroke="#d0d7de"/>
+<circle cx="50" cy="376.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="380.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="371.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Seat heat, driver + (the CU's + side switch,</text>
+<text x="70.0" y="388.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">D-597)</text>
+<text x="380.0" y="380.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN16</text>
+<path d="M390.0,376.0 L720.0,376.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,376.0 L720.0,376.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="366.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-1  ·  16 AWG RED</text>
+<rect x="720.0" y="355.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="380.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-SD 2</text>
+<line x1="30" y1="400.0" x2="390" y2="400.0" stroke="#d0d7de"/>
+<circle cx="50" cy="424.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="428.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="419.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Seat heat, passenger + (the CU's + side switch,</text>
+<text x="70.0" y="436.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">D-597)</text>
+<text x="380.0" y="428.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN16</text>
+<path d="M390.0,424.0 L720.0,424.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,424.0 L720.0,424.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="414.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-2  ·  16 AWG RED</text>
+<rect x="720.0" y="403.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="428.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-SP 2</text>
+<line x1="30" y1="448.0" x2="390" y2="448.0" stroke="#d0d7de"/>
+<circle cx="50" cy="472.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="476.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="467.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Seat cool, driver + (the CU's + side switch,</text>
+<text x="70.0" y="484.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">D-597)</text>
+<text x="380.0" y="476.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN16</text>
+<path d="M390.0,472.0 L720.0,472.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,472.0 L720.0,472.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="462.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-3  ·  16 AWG RED</text>
+<rect x="720.0" y="451.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="476.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-SD 3</text>
+<line x1="30" y1="496.0" x2="390" y2="496.0" stroke="#d0d7de"/>
+<circle cx="50" cy="520.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="524.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="515.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Seat cool, passenger + (the CU's + side switch,</text>
+<text x="70.0" y="532.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">D-597)</text>
+<text x="380.0" y="524.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN16</text>
+<path d="M390.0,520.0 L720.0,520.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,520.0 L720.0,520.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="510.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-4  ·  16 AWG RED</text>
+<rect x="720.0" y="499.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="524.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L3-SP 3</text>
+<line x1="30" y1="544.0" x2="390" y2="544.0" stroke="#d0d7de"/>
+<circle cx="50" cy="561.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="565.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328"></text>
+<text x="70.0" y="565.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">5–8: spare, sealing plugs</text>
+<text x="406.0" y="565.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="578.0" x2="390" y2="578.0" stroke="#d0d7de"/>
+<circle cx="50" cy="608.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="612.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
+<text x="70.0" y="612.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">+12 V constant - DCU logic</text>
+<text x="380.0" y="612.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F22</text>
+<path d="M390.0,608.0 L720.0,608.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,608.0 L720.0,608.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="598.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-9  ·  20 AWG RED</text>
+<rect x="720.0" y="581.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="596.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its tail to the PMU box</text>
+<text x="730.0" y="612.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">along RT11. CONSTANT, not switched: the DCU has to be alive with the key out to see a panel press</text>
+<text x="730.0" y="628.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">and pull the wake line (D-350). It was an O10 tap until then</text>
+<line x1="30" y1="638.0" x2="390" y2="638.0" stroke="#d0d7de"/>
+<circle cx="50" cy="662.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="666.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">10</text>
+<text x="70.0" y="657.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Outside-air temperature, from the nose</text>
+<text x="70.0" y="674.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">direct</text>
+<text x="380.0" y="666.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L2-OAT 1</text>
+<path d="M390.0,662.0 L720.0,662.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,662.0 L720.0,662.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="652.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-10  ·  20 AWG GRY</text>
+<rect x="720.0" y="641.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="666.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The outside-air thermistor at the nose, L2-OAT 1 (D-274), its run direct to the CU (D-612)</text>
+<line x1="30" y1="686.0" x2="390" y2="686.0" stroke="#d0d7de"/>
+<circle cx="50" cy="708.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="712.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">11</text>
+<text x="70.0" y="712.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Ground</text>
+<text x="380.0" y="712.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">GND</text>
+<path d="M390.0,708.0 L720.0,708.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,708.0 L720.0,708.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="698.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-11  ·  20 AWG BLK</text>
+<rect x="720.0" y="689.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="704.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its tail to the PMU box</text>
+<text x="730.0" y="720.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">along RT11.</text>
+<line x1="30" y1="730.0" x2="390" y2="730.0" stroke="#d0d7de"/>
+<circle cx="50" cy="752.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="756.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">12</text>
+<text x="70.0" y="756.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">CAN2 H</text>
+<text x="380.0" y="756.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">CAN2H</text>
+<path d="M390.0,752.0 L720.0,752.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,752.0 L720.0,752.0" fill="none" stroke="#f2c318" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="742.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-12  ·  20 tw AWG YEL</text>
+<rect x="720.0" y="733.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="748.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its tail to the PMU box</text>
+<text x="730.0" y="764.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">along RT11.</text>
+<line x1="30" y1="774.0" x2="390" y2="774.0" stroke="#d0d7de"/>
+<circle cx="50" cy="796.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="800.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">13</text>
+<text x="70.0" y="800.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">CAN2 L</text>
+<text x="380.0" y="800.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">CAN2L</text>
+<path d="M390.0,796.0 L720.0,796.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,796.0 L720.0,796.0" fill="none" stroke="#2e8b3e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="786.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-13  ·  20 tw AWG GRN</text>
+<rect x="720.0" y="777.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="792.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its tail to the PMU box</text>
+<text x="730.0" y="808.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">along RT11.</text>
+<line x1="30" y1="818.0" x2="390" y2="818.0" stroke="#d0d7de"/>
+<circle cx="50" cy="848.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="852.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">14</text>
+<text x="70.0" y="852.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">DCU wake request</text>
+<text x="380.0" y="852.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">WAKE 7</text>
+<path d="M390.0,848.0 L720.0,848.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,848.0 L720.0,848.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="838.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-14  ·  20 AWG BLU</text>
+<rect x="720.0" y="821.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="836.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its tail to the PMU box</text>
+<text x="730.0" y="852.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">along RT11. The DCU pulls this to wake the PMU when a panel key is pressed with the car asleep;</text>
+<text x="730.0" y="868.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The seventh diode-OR input on the wake strip (D-350). This was the housing's last spare cavity</text>
+<line x1="30" y1="878.0" x2="390" y2="878.0" stroke="#d0d7de"/>
+<circle cx="50" cy="895.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="899.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">15</text>
+<text x="70.0" y="899.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Window DRV up command</text>
+<text x="380.0" y="899.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN22</text>
+<path d="M390.0,895.0 L720.0,895.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,895.0 L720.0,895.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="885.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-15  ·  20 AWG BLU  ·  RT11</text>
+<rect x="720.0" y="881.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="899.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the PMU box: the windows' H-bridge inputs (D-610)</text>
+<line x1="30" y1="912.0" x2="390" y2="912.0" stroke="#d0d7de"/>
+<circle cx="50" cy="929.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="933.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">16</text>
+<text x="70.0" y="933.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Window DRV down command</text>
+<text x="380.0" y="933.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN22</text>
+<path d="M390.0,929.0 L720.0,929.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,929.0 L720.0,929.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="919.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-16  ·  20 AWG BLU  ·  RT11</text>
+<rect x="720.0" y="915.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="933.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the PMU box: the windows' H-bridge inputs (D-610)</text>
+<line x1="30" y1="946.0" x2="390" y2="946.0" stroke="#d0d7de"/>
+<circle cx="50" cy="963.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="967.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">17</text>
+<text x="70.0" y="967.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Window PASS up command</text>
+<text x="380.0" y="967.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN22</text>
+<path d="M390.0,963.0 L720.0,963.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,963.0 L720.0,963.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="953.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-17  ·  20 AWG BLU  ·  RT11</text>
+<rect x="720.0" y="949.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="967.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the PMU box: the windows' H-bridge inputs (D-610)</text>
+<line x1="30" y1="980.0" x2="390" y2="980.0" stroke="#d0d7de"/>
+<circle cx="50" cy="997.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1001.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">18</text>
+<text x="70.0" y="1001.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Window PASS down command</text>
+<text x="380.0" y="1001.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN22</text>
+<path d="M390.0,997.0 L720.0,997.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,997.0 L720.0,997.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="987.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-18  ·  20 AWG BLU  ·  RT11</text>
+<rect x="720.0" y="983.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1001.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the PMU box: the windows' H-bridge inputs (D-610)</text>
+<line x1="30" y1="1014.0" x2="390" y2="1014.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1031.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1035.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">19</text>
+<text x="70.0" y="1035.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror motor common (both mirrors)</text>
+<text x="380.0" y="1035.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN17</text>
+<path d="M390.0,1031.0 L720.0,1031.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1031.0 L720.0,1031.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1021.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-19  ·  20 AWG GRY</text>
+<rect x="720.0" y="1017.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1035.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the doors' mirror pins, D1 / D2 (D-610)</text>
+<line x1="30" y1="1048.0" x2="390" y2="1048.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1065.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1069.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">20</text>
+<text x="70.0" y="1069.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror LEFT motor</text>
+<text x="380.0" y="1069.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN17</text>
+<path d="M390.0,1065.0 L720.0,1065.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1065.0 L720.0,1065.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1055.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-20  ·  20 AWG GRY</text>
+<rect x="720.0" y="1051.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1069.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the doors' mirror pins, D1 / D2 (D-610)</text>
+<line x1="30" y1="1082.0" x2="390" y2="1082.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1099.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1103.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">21</text>
+<text x="70.0" y="1103.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror RIGHT motor</text>
+<text x="380.0" y="1103.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN17</text>
+<path d="M390.0,1099.0 L720.0,1099.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1099.0 L720.0,1099.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1089.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-21  ·  20 AWG GRY</text>
+<rect x="720.0" y="1085.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1103.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the doors' mirror pins, D1 / D2 (D-610)</text>
+<line x1="30" y1="1116.0" x2="390" y2="1116.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1133.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1137.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">22</text>
+<text x="70.0" y="1137.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror clutch coils (both mirrors)</text>
+<text x="380.0" y="1137.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN17</text>
+<path d="M390.0,1133.0 L720.0,1133.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1133.0 L720.0,1133.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1123.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-22  ·  20 AWG GRY</text>
+<rect x="720.0" y="1119.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1137.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the doors' mirror pins, D1 / D2 (D-610)</text>
+<line x1="30" y1="1150.0" x2="390" y2="1150.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1167.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1171.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">23</text>
+<text x="70.0" y="1171.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Mirror heat feed (DCU high-side)</text>
+<text x="380.0" y="1171.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN16</text>
+<path d="M390.0,1167.0 L720.0,1167.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1167.0 L720.0,1167.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1157.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-23  ·  20 AWG RED</text>
+<rect x="720.0" y="1153.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1171.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">D1 7 · D2 7 - the mirrors' heat (D-610)</text>
+<line x1="30" y1="1184.0" x2="390" y2="1184.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1201.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1205.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">24</text>
+<text x="70.0" y="1205.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Hatch release select - K3 coil return</text>
+<text x="380.0" y="1205.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K3 85</text>
+<path d="M390.0,1201.0 L720.0,1201.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1201.0 L720.0,1201.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1191.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-24  ·  20 AWG BLU</text>
+<rect x="720.0" y="1187.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1205.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the PMU box: K3's smart switch input (D-597)</text>
+<line x1="30" y1="1218.0" x2="390" y2="1218.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1235.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1239.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">25</text>
+<text x="70.0" y="1239.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Fuel-door release select - K4 coil return</text>
+<text x="380.0" y="1239.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K4 85</text>
+<path d="M390.0,1235.0 L720.0,1235.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1235.0 L720.0,1235.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1225.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-25  ·  20 AWG BLU</text>
+<rect x="720.0" y="1221.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1239.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the PMU box: K4's smart switch input (D-597)</text>
+<line x1="30" y1="1252.0" x2="390" y2="1252.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1282.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1286.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">26</text>
+<text x="70.0" y="1286.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Servo signal - mode door</text>
+<text x="380.0" y="1286.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN15</text>
+<path d="M390.0,1282.0 L720.0,1282.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1282.0 L720.0,1282.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1272.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-26  ·  20 AWG BLU  ·  RT14</text>
+<rect x="720.0" y="1255.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1270.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its HVAC breakout</text>
+<text x="730.0" y="1286.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">down RT14. The mode door servo's signal (DV59): joined at the HVAC case to the signal wire of that</text>
+<text x="730.0" y="1302.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">servo's JR lead (P172). The far end stays capped until the luxury package fits the load</text>
+<line x1="30" y1="1312.0" x2="390" y2="1312.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1342.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1346.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">27</text>
+<text x="70.0" y="1346.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Servo signal - blend door</text>
+<text x="380.0" y="1346.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN15</text>
+<path d="M390.0,1342.0 L720.0,1342.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1342.0 L720.0,1342.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1332.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-27  ·  20 AWG BLU  ·  RT14</text>
+<rect x="720.0" y="1315.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1330.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its HVAC breakout</text>
+<text x="730.0" y="1346.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">down RT14. The blend door servo's signal (DV59): joined at the HVAC case to the signal wire of that</text>
+<text x="730.0" y="1362.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">servo's JR lead (P172). The far end stays capped until the luxury package fits the load</text>
+<line x1="30" y1="1372.0" x2="390" y2="1372.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1402.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1406.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">28</text>
+<text x="70.0" y="1406.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Servo signal - recirculate door</text>
+<text x="380.0" y="1406.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN15</text>
+<path d="M390.0,1402.0 L720.0,1402.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1402.0 L720.0,1402.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1392.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-28  ·  20 AWG BLU  ·  RT14</text>
+<rect x="720.0" y="1375.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1390.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its HVAC breakout</text>
+<text x="730.0" y="1406.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">down RT14. The recirculate door servo's signal (DV59): joined at the HVAC case to the signal wire of</text>
+<text x="730.0" y="1422.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">that servo's JR lead (P172). The far end stays capped until the luxury package fits the load</text>
+<line x1="30" y1="1432.0" x2="390" y2="1432.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1470.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1474.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">29</text>
+<text x="70.0" y="1474.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Servo +5 V rail - the three door servos</text>
+<text x="380.0" y="1474.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN15</text>
+<path d="M390.0,1470.0 L720.0,1470.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1470.0 L720.0,1470.0" fill="none" stroke="#e8559c" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1460.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-29  ·  20 AWG PNK  ·  RT14</text>
+<rect x="720.0" y="1435.0" width="560.0" height="70.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1450.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its HVAC breakout</text>
+<text x="730.0" y="1466.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">down RT14. +5 V to all three door servos (DV59): one conductor to the HVAC case, split there to the</text>
+<text x="730.0" y="1482.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">three JR leads (P172). The firmware moves one servo at a time (F-017), so the conductor carries one</text>
+<text x="730.0" y="1498.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">servo's stall current, 1-2.5 A. The far end stays capped until the luxury package fits the load</text>
+<line x1="30" y1="1508.0" x2="390" y2="1508.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1538.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1542.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">30</text>
+<text x="70.0" y="1542.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Servo ground - the three door servos</text>
+<text x="380.0" y="1542.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN15</text>
+<path d="M390.0,1538.0 L720.0,1538.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1538.0 L720.0,1538.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1528.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-30  ·  20 AWG BLK  ·  RT14</text>
+<rect x="720.0" y="1511.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1526.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its HVAC breakout</text>
+<text x="730.0" y="1542.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">down RT14. Ground of all three door servos (DV59): one conductor to the HVAC case, split there to</text>
+<text x="730.0" y="1558.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the three JR leads (P172). The far end stays capped until the luxury package fits the load</text>
+<line x1="30" y1="1568.0" x2="390" y2="1568.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1598.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1602.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">31</text>
+<text x="70.0" y="1602.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Blower duty (PWM)</text>
+<text x="380.0" y="1602.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN14</text>
+<path d="M390.0,1598.0 L720.0,1598.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1598.0 L720.0,1598.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1588.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-31  ·  20 AWG BLU  ·  RT14</text>
+<rect x="720.0" y="1571.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1586.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its HVAC breakout</text>
+<text x="730.0" y="1602.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">down RT14. The blower final stage's PWM input (DV55) at the HVAC case, 25 kHz logic level. The far</text>
+<text x="730.0" y="1618.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">end stays capped until the luxury package fits the load</text>
+<line x1="30" y1="1628.0" x2="390" y2="1628.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1658.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1662.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">32</text>
+<text x="70.0" y="1662.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Blower duty ground</text>
+<text x="380.0" y="1662.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN14</text>
+<path d="M390.0,1658.0 L720.0,1658.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1658.0 L720.0,1658.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1648.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-32  ·  20 AWG BLK</text>
+<rect x="720.0" y="1631.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1646.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its HVAC breakout</text>
+<text x="730.0" y="1662.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">down RT14. The blower final stage's signal ground (DV55). The far end stays capped until the luxury</text>
+<text x="730.0" y="1678.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">package fits the load</text>
+<line x1="30" y1="1688.0" x2="390" y2="1688.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1718.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1722.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">33</text>
+<text x="70.0" y="1722.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Cabin temperature sensor</text>
+<text x="380.0" y="1722.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN11</text>
+<path d="M390.0,1718.0 L720.0,1718.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1718.0 L720.0,1718.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1708.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-33  ·  20 AWG GRY</text>
+<rect x="720.0" y="1691.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1706.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its HVAC breakout</text>
+<text x="730.0" y="1722.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">down RT14. The cabin temperature sensor, a 10 kΩ NTC (P154) at a shaded dash location - where is</text>
+<text x="730.0" y="1738.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">confirm.</text>
+<line x1="30" y1="1748.0" x2="390" y2="1748.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1778.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1782.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">34</text>
+<text x="70.0" y="1782.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Cabin temperature sensor - return</text>
+<text x="380.0" y="1782.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN11</text>
+<path d="M390.0,1778.0 L720.0,1778.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1778.0 L720.0,1778.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1768.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-34  ·  20 AWG BLK</text>
+<rect x="720.0" y="1751.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1766.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its HVAC breakout</text>
+<text x="730.0" y="1782.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">down RT14. The cabin temperature sensor's return, its own conductor so the servo current never</text>
+<text x="730.0" y="1798.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">shares it.</text>
+<line x1="30" y1="1808.0" x2="390" y2="1808.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1846.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1850.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">35</text>
+<text x="70.0" y="1850.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Dash-light return (dimmed, low side)</text>
+<text x="380.0" y="1850.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN31</text>
+<path d="M390.0,1846.0 L720.0,1846.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1846.0 L720.0,1846.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1836.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-35  ·  20 AWG BLU</text>
+<rect x="720.0" y="1811.0" width="560.0" height="70.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1826.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its HVAC breakout</text>
+<text x="730.0" y="1842.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">down RT14. The dash lamps' grounds (DV30: E-07 select lever, E-10 switch panel; E-06 heater panel</text>
+<text x="730.0" y="1858.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">while it stays) joined in one splice behind the centre stack; Their current returns through the</text>
+<text x="730.0" y="1874.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Control Unit's switch to PGND, which dims them (D-567, D-577). BLU, not BLK: a switched return.</text>
+<line x1="30" y1="1884.0" x2="390" y2="1884.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1901.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1905.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328"></text>
+<text x="70.0" y="1905.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">36–43: spare, sealing plugs</text>
+<text x="406.0" y="1905.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="1918.0" x2="390" y2="1918.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1948.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1952.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">44</text>
+<text x="70.0" y="1943.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">PNL_SDA - I2C to the CUR board's</text>
+<text x="70.0" y="1960.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">LED driver</text>
+<text x="380.0" y="1952.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN17 (the I2C bus)</text>
+<path d="M390.0,1948.0 L720.0,1948.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1948.0 L720.0,1948.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1938.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-44  ·  20 AWG GRY</text>
+<rect x="720.0" y="1921.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1936.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its CUR breakout: the</text>
+<text x="730.0" y="1952.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">cable along the dash to DP-CUR at the CUR, left of the wheel (D-521). The plate's driver on the</text>
+<text x="730.0" y="1968.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">panel's I2C bus beside U2 and the screen (D-492)</text>
+<line x1="30" y1="1978.0" x2="390" y2="1978.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2000.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2004.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">45</text>
+<text x="70.0" y="2004.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">PNL_SCL</text>
+<text x="380.0" y="2004.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN17 (the I2C bus)</text>
+<path d="M390.0,2000.0 L720.0,2000.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2000.0 L720.0,2000.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1990.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-45  ·  20 AWG GRY</text>
+<rect x="720.0" y="1981.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1996.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its CUR breakout: the</text>
+<text x="730.0" y="2012.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">cable along the dash to DP-CUR at the CUR, left of the wheel (D-521).</text>
+<line x1="30" y1="2022.0" x2="390" y2="2022.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2052.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2056.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">46</text>
+<text x="70.0" y="2047.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">GND - the CUR board's lights and</text>
+<text x="70.0" y="2064.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">logic return</text>
+<text x="380.0" y="2056.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN17 (the I2C bus)</text>
+<path d="M390.0,2052.0 L720.0,2052.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2052.0 L720.0,2052.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2042.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-46  ·  20 AWG BLK</text>
+<rect x="720.0" y="2025.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2040.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its CUR breakout: the</text>
+<text x="730.0" y="2056.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">cable along the dash to DP-CUR at the CUR, left of the wheel (D-521). The second ground, as D-458</text>
+<text x="730.0" y="2072.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">keeps the lights' current off the stick's and the matrix's returns</text>
+<line x1="30" y1="2082.0" x2="390" y2="2082.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2112.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2116.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">47</text>
+<text x="70.0" y="2107.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">+5V_PNL - the CUR board's LED</text>
+<text x="70.0" y="2124.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">supply</text>
+<text x="380.0" y="2116.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN17 (the I2C bus)</text>
+<path d="M390.0,2112.0 L720.0,2112.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,2112.0 L720.0,2112.0" fill="none" stroke="#e8559c" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="2102.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-47  ·  20 AWG PNK</text>
+<rect x="720.0" y="2085.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2100.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 64's plugs at the end of the L3 leg's Control Unit branch (D-594), in its CUR breakout: the</text>
+<text x="730.0" y="2116.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">cable along the dash to DP-CUR at the CUR, left of the wheel (D-521). Five symbol LEDs at most 7.6</text>
+<text x="730.0" y="2132.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">mA each (D-458)</text>
+<line x1="30" y1="2142.0" x2="390" y2="2142.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2159.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2163.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">48</text>
+<text x="70.0" y="2163.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="2163.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="2176.0" x2="390" y2="2176.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2200.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2204.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">49</text>
+<text x="70.0" y="2195.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Radar front sensor A - to the radar receiver inside</text>
+<text x="70.0" y="2212.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the CU</text>
+<path d="M390.0,2200.0 L720.0,2200.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,2200.0 L720.0,2200.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="2190.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-49 · 20 AWG GRY · RT22/RT29 · capped at the far …</text>
+<rect x="720.0" y="2179.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2204.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L2-RDR 1</text>
+<line x1="30" y1="2224.0" x2="390" y2="2224.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2248.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2252.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">50</text>
+<text x="70.0" y="2243.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Radar front sensor B - to the radar receiver inside</text>
+<text x="70.0" y="2260.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the CU</text>
+<path d="M390.0,2248.0 L720.0,2248.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,2248.0 L720.0,2248.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="2238.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-50  ·  20 AWG GRY  ·  RT22  ·  capped at the far end</text>
+<rect x="720.0" y="2227.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2252.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L2-RDR 2</text>
+<line x1="30" y1="2272.0" x2="390" y2="2272.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2296.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2300.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">51</text>
+<text x="70.0" y="2291.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Radar front sensor C - to the radar receiver inside</text>
+<text x="70.0" y="2308.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the CU</text>
+<path d="M390.0,2296.0 L720.0,2296.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,2296.0 L720.0,2296.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="2286.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-51  ·  20 AWG GRY  ·  RT22  ·  capped at the far end</text>
+<rect x="720.0" y="2275.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2300.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L2-RDR 3</text>
+<line x1="30" y1="2320.0" x2="390" y2="2320.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2344.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2348.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">52</text>
+<text x="70.0" y="2339.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Radar rear sensor A - to the radar receiver inside</text>
+<text x="70.0" y="2356.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the CU</text>
+<path d="M390.0,2344.0 L720.0,2344.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,2344.0 L720.0,2344.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="2334.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-52 · 20 AWG GRY · RT18/RT22 · capped at the far …</text>
+<rect x="720.0" y="2323.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2348.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L4-RDR 1</text>
+<line x1="30" y1="2368.0" x2="390" y2="2368.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2392.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2396.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">53</text>
+<text x="70.0" y="2387.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Radar rear sensor B - to the radar receiver inside</text>
+<text x="70.0" y="2404.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the CU</text>
+<path d="M390.0,2392.0 L720.0,2392.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,2392.0 L720.0,2392.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="2382.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-53  ·  20 AWG GRY  ·  RT22  ·  capped at the far end</text>
+<rect x="720.0" y="2371.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2396.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L4-RDR 2</text>
+<line x1="30" y1="2416.0" x2="390" y2="2416.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2440.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2444.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">54</text>
+<text x="70.0" y="2435.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Radar rear sensor C - to the radar receiver inside</text>
+<text x="70.0" y="2452.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the CU</text>
+<path d="M390.0,2440.0 L720.0,2440.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,2440.0 L720.0,2440.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="2430.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-54  ·  20 AWG GRY  ·  RT22  ·  capped at the far end</text>
+<rect x="720.0" y="2419.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="2444.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L4-RDR 3</text>
+<line x1="30" y1="2464.0" x2="390" y2="2464.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2481.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2485.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328"></text>
+<text x="70.0" y="2485.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">55–64: spare, sealing plugs</text>
+<text x="406.0" y="2485.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<rect x="30.0" y="2534.0" width="360.0" height="116.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="2556.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">DP-DCU-P  ·  DTP06-2S  ·  Control Unit rear wall, beside its header</text>
+<line x1="30" y1="2568.0" x2="390" y2="2568.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2592.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2596.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="2587.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Comfort feed: the servo rail, the mirror heat,</text>
+<text x="70.0" y="2604.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the seats' heat and cool (D-612)</text>
+<text x="380.0" y="2596.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O15</text>
+<path d="M390.0,2592.0 L720.0,2592.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,2592.0 L720.0,2592.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="2582.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-P-1 · 12 AWG RED · RT11 · capped at the far end …</text>
+<rect x="720.0" y="2571.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<line x1="30" y1="2616.0" x2="390" y2="2616.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2633.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2637.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="2637.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Comfort return to the PMU box's ground star</text>
+<text x="380.0" y="2637.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">GND</text>
+<path d="M390.0,2633.0 L720.0,2633.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,2633.0 L720.0,2633.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="2623.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-DCU-P-2  ·  12 AWG BLK  ·  RT11  ·  capped at the far end</text>
+<rect x="720.0" y="2619.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<path d="M30.0,2686.0 L66.0,2686.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M30.0,2686.0 L66.0,2686.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="76.0" y="2690.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">RED</text>
+<path d="M123.6,2686.0 L159.6,2686.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M123.6,2686.0 L159.6,2686.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="169.6" y="2690.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRY</text>
+<path d="M217.3,2686.0 L253.3,2686.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M217.3,2686.0 L253.3,2686.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="263.3" y="2690.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLU</text>
+<path d="M310.9,2686.0 L346.9,2686.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M310.9,2686.0 L346.9,2686.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="356.9" y="2690.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLK</text>
+<path d="M403.5,2686.0 L439.5,2686.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M403.5,2686.0 L439.5,2686.0" fill="none" stroke="#2e8b3e" stroke-width="5" stroke-linejoin="round"/>
+<text x="449.5" y="2690.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRN</text>
+<path d="M499.2,2686.0 L535.2,2686.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M499.2,2686.0 L535.2,2686.0" fill="none" stroke="#f2c318" stroke-width="5" stroke-linejoin="round"/>
+<text x="545.2" y="2690.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">YEL</text>
+<path d="M589.7,2686.0 L625.7,2686.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M589.7,2686.0 L625.7,2686.0" fill="none" stroke="#e8559c" stroke-width="5" stroke-linejoin="round"/>
+<text x="635.7" y="2690.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">PNK</text>
+<text x="30.0" y="2716.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">Solid wire: live. Dashed: run and capped. #12 / #16 / #20: a circular's contact size. Nothing here is measured (R11). Generated by rx7.py diagrams from the record - do not edit.</text>
+</svg>

@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1310" height="876" viewBox="0 0 1310 876" font-family="Noto Sans, sans-serif">
+<title>Control Unit Remote - plan sheet</title>
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="30.0" y="40.0" font-size="20" text-anchor="start" font-weight="700" fill="#1f2328">CONTROL UNIT REMOTE · PLAN SHEET</text>
+<text x="30.0" y="64.0" font-size="12" text-anchor="start" font-weight="400" fill="#57606a">State: planned - its CAD is Y71.  Rulings: D-586 D-597 D-598 D-602 D-604.  Part folder: 00-design/control-unit/control-unit-remote/</text>
+<text x="30.0" y="100.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">WHERE IT SITS</text>
+<text x="30.0" y="118.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">right of the steering wheel, high beside the DU (D-586)</text>
+<text x="670.0" y="100.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">NOTE</text>
+<text x="670.0" y="118.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Its board is redrawn at the CAD pass (Y71).</text>
+<text x="30.0" y="146.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">WHAT IT HOLDS</text>
+<text x="30.0" y="164.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the CUR board: the screen knob, the mirror stick, the hazard, both winks, the fuel-door and hatch keys, an I/O expander and an I2C ADC so the keys and stick ride the I2C bus (D-604)</text>
+<text x="30.0" y="192.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">HOW IT JOINS THE HARNESS</text>
+<text x="30.0" y="210.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">DP-CUR, one DRC 24-way (D-597): four wires to the CU, five to the PMU box</text>
+<text x="30.0" y="238.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">ALSO IN ITS DIAGRAMS FOLDER</text>
+<text x="30.0" y="256.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">cur-face-concept.html</text>
+<text x="30.0" y="284.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">ITS PLUGS, CAVITY BY CAVITY</text>
+<rect x="30.0" y="300.0" width="360.0" height="480.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="322.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">DP-CUR  ·  DRC16-24SA  ·  CUR rear wall, dash right of the steering wheel, high beside the DU (D-586)</text>
+<line x1="30" y1="334.0" x2="390" y2="334.0" stroke="#d0d7de"/>
+<circle cx="50" cy="358.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="362.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="353.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">PNL_SDA - I2C to the CUR board's</text>
+<text x="70.0" y="370.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">LED driver</text>
+<text x="380.0" y="362.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN17 (the I2C bus)</text>
+<path d="M390.0,358.0 L720.0,358.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,358.0 L720.0,358.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="348.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-CUR-1  ·  16 AWG GRY</text>
+<rect x="720.0" y="337.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="354.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 24 plug at the CUR (D-597); one of the four I2C wires from the CU's DP-DCU 44 (D-604),</text>
+<text x="730.0" y="370.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">inside the CUR to the board</text>
+<line x1="30" y1="382.0" x2="390" y2="382.0" stroke="#d0d7de"/>
+<circle cx="50" cy="404.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="408.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="408.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">PNL_SCL</text>
+<text x="380.0" y="408.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN17 (the I2C bus)</text>
+<path d="M390.0,404.0 L720.0,404.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,404.0 L720.0,404.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="394.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-CUR-2  ·  16 AWG GRY</text>
+<rect x="720.0" y="385.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="400.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 24 plug at the CUR (D-597); one of the four I2C wires from the CU's DP-DCU 45 (D-604),</text>
+<text x="730.0" y="416.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">inside the CUR to the board</text>
+<line x1="30" y1="426.0" x2="390" y2="426.0" stroke="#d0d7de"/>
+<circle cx="50" cy="450.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="454.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="445.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">GND - the CUR board's lights and</text>
+<text x="70.0" y="462.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">logic return</text>
+<text x="380.0" y="454.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN17 (the I2C bus)</text>
+<path d="M390.0,450.0 L720.0,450.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,450.0 L720.0,450.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="440.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-CUR-3  ·  16 AWG BLK</text>
+<rect x="720.0" y="429.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="446.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 24 plug at the CUR (D-597); one of the four I2C wires from the CU's DP-DCU 46 (D-604),</text>
+<text x="730.0" y="462.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">inside the CUR to the board</text>
+<line x1="30" y1="474.0" x2="390" y2="474.0" stroke="#d0d7de"/>
+<circle cx="50" cy="498.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="502.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="493.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">+5V_PNL - the CUR board's LED</text>
+<text x="70.0" y="510.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">supply</text>
+<text x="380.0" y="502.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">SN17 (the I2C bus)</text>
+<path d="M390.0,498.0 L720.0,498.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,498.0 L720.0,498.0" fill="none" stroke="#e8559c" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="488.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-CUR-4  ·  16 AWG PNK</text>
+<rect x="720.0" y="477.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="494.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 24 plug at the CUR (D-597); one of the four I2C wires from the CU's DP-DCU 47 (D-604),</text>
+<text x="730.0" y="510.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">inside the CUR to the board</text>
+<line x1="30" y1="522.0" x2="390" y2="522.0" stroke="#d0d7de"/>
+<circle cx="50" cy="544.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="548.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="548.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Wink LEFT - NC pole</text>
+<text x="380.0" y="548.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K2 85</text>
+<path d="M390.0,544.0 L720.0,544.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,544.0 L720.0,544.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="534.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-CUR-5  ·  16 AWG BLU  ·  RT10</text>
+<rect x="720.0" y="525.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="540.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 24 plug at the CUR (D-597); inside the CUR to the wink-left NC pole on the board; the</text>
+<text x="730.0" y="556.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">wire's far end is K2's switch input in the PMU box (D-604)</text>
+<line x1="30" y1="566.0" x2="390" y2="566.0" stroke="#d0d7de"/>
+<circle cx="50" cy="588.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="592.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="592.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Wink RIGHT - NC pole</text>
+<text x="380.0" y="592.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">K1 85</text>
+<path d="M390.0,588.0 L720.0,588.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,588.0 L720.0,588.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="578.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-CUR-6  ·  16 AWG BLU  ·  RT10</text>
+<rect x="720.0" y="569.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="584.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 24 plug at the CUR (D-597); inside the CUR to the wink-right NC pole on the board; the</text>
+<text x="730.0" y="600.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">wire's far end is K1's switch input in the PMU box (D-604)</text>
+<line x1="30" y1="610.0" x2="390" y2="610.0" stroke="#d0d7de"/>
+<circle cx="50" cy="632.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="636.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="636.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Wink request - the 18 k / 33 k ladder</text>
+<text x="380.0" y="636.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A8</text>
+<path d="M390.0,632.0 L720.0,632.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,632.0 L720.0,632.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="622.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-CUR-7  ·  16 AWG GRY  ·  RT10</text>
+<rect x="720.0" y="613.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="628.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 24 plug at the CUR (D-597); inside the CUR to the winks' 18 k / 33 k request on the board;</text>
+<text x="730.0" y="644.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the wire's far end is A8 in the PMU box (D-604)</text>
+<line x1="30" y1="654.0" x2="390" y2="654.0" stroke="#d0d7de"/>
+<circle cx="50" cy="678.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="682.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="673.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Wink and hazard commons - the PMU box's</text>
+<text x="70.0" y="690.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">ground star</text>
+<text x="380.0" y="682.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">GND</text>
+<path d="M390.0,678.0 L720.0,678.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,678.0 L720.0,678.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="668.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-CUR-8  ·  16 AWG BLK  ·  RT10</text>
+<rect x="720.0" y="657.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="674.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 24 plug at the CUR (D-597); inside the CUR to the winks' and the hazard's commons on</text>
+<text x="730.0" y="690.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the board; the wire's far end is the ground star in the PMU box (D-604)</text>
+<line x1="30" y1="702.0" x2="390" y2="702.0" stroke="#d0d7de"/>
+<circle cx="50" cy="724.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="728.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
+<text x="70.0" y="728.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Hazard switch - the A8 ladder</text>
+<text x="380.0" y="728.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A8</text>
+<path d="M390.0,724.0 L720.0,724.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,724.0 L720.0,724.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="714.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-CUR-9  ·  16 AWG GRY  ·  RT10</text>
+<rect x="720.0" y="705.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="720.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">In the DRC 24 plug at the CUR (D-597); inside the CUR to the hazard switch on the board; the wire's</text>
+<text x="730.0" y="736.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">far end is A8 in the PMU box (D-604)</text>
+<line x1="30" y1="746.0" x2="390" y2="746.0" stroke="#d0d7de"/>
+<circle cx="50" cy="763.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="767.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328"></text>
+<text x="70.0" y="767.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">10–24: spare, sealing plugs</text>
+<text x="406.0" y="767.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<path d="M30.0,816.0 L66.0,816.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M30.0,816.0 L66.0,816.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="76.0" y="820.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRY</text>
+<path d="M123.6,816.0 L159.6,816.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M123.6,816.0 L159.6,816.0" fill="none" stroke="#1e63c6" stroke-width="5" stroke-linejoin="round"/>
+<text x="169.6" y="820.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLU</text>
+<path d="M217.3,816.0 L253.3,816.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M217.3,816.0 L253.3,816.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="263.3" y="820.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLK</text>
+<path d="M309.9,816.0 L345.9,816.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M309.9,816.0 L345.9,816.0" fill="none" stroke="#e8559c" stroke-width="5" stroke-linejoin="round"/>
+<text x="355.9" y="820.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">PNK</text>
+<text x="30.0" y="846.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">Solid wire: live. Dashed: run and capped. #12 / #16 / #20: a circular's contact size. Nothing here is measured (R11). Generated by rx7.py diagrams from the record - do not edit.</text>
+</svg>

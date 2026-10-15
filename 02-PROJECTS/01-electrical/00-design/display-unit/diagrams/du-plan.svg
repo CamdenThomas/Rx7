@@ -1,0 +1,262 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1310" height="1272" viewBox="0 0 1310 1272" font-family="Noto Sans, sans-serif">
+<title>Display Unit - plan sheet</title>
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="30.0" y="40.0" font-size="20" text-anchor="start" font-weight="700" fill="#1f2328">DISPLAY UNIT · PLAN SHEET</text>
+<text x="30.0" y="64.0" font-size="12" text-anchor="start" font-weight="400" fill="#57606a">State: planned - its CAD is Y72.  Rulings: D-587 D-596.  Part folder: 00-design/display-unit/</text>
+<text x="30.0" y="100.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">WHERE IT SITS</text>
+<text x="30.0" y="118.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the binnacle aperture</text>
+<text x="670.0" y="100.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">NOTE</text>
+<text x="670.0" y="118.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">The gauge's place and the gland are the CAD pass's (Y72).</text>
+<text x="30.0" y="146.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">WHAT IT HOLDS</text>
+<text x="30.0" y="164.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">the 12.3-inch display, the BT817 board, the DU carrier (ICU in the tables, D-496), the radio; the AEM wideband gauge whole, in its case, on its own feed and ground, its CAN on the DU's CAN2 pair inside (D-596)</text>
+<text x="30.0" y="192.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">HOW IT JOINS THE HARNESS</text>
+<text x="30.0" y="210.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">DP-ICU, a DRC 24-way (D-587); a sealed gland for the gauge's sensor lead</text>
+<text x="30.0" y="238.0" font-size="10" text-anchor="start" font-weight="700" fill="#57606a">ITS PLUGS, CAVITY BY CAVITY</text>
+<rect x="30.0" y="254.0" width="360.0" height="922.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="276.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">DP-ICU · DRC16-24SA · ICU unit rear wall, behind the display, bottom right as the driver sees it …</text>
+<line x1="30" y1="288.0" x2="390" y2="288.0" stroke="#d0d7de"/>
+<circle cx="50" cy="305.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="309.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="309.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">+12 V switched — ICU logic</text>
+<text x="380.0" y="309.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O10</text>
+<path d="M390.0,305.0 L720.0,305.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,305.0 L720.0,305.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="295.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-1  ·  16 AWG RED  ·  RT13</text>
+<rect x="720.0" y="291.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="309.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the ICU tail — the DRC16-24SA plug from the PMU box into the ICU's DRC13-24PA (D-270)</text>
+<line x1="30" y1="322.0" x2="390" y2="322.0" stroke="#d0d7de"/>
+<circle cx="50" cy="344.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="348.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="348.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Illumination — the ICU's dimming reference</text>
+<text x="380.0" y="348.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O20</text>
+<path d="M390.0,344.0 L720.0,344.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,344.0 L720.0,344.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="334.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-2  ·  16 AWG RED</text>
+<rect x="720.0" y="325.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="340.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the ICU tail (D-270, D-587) - the O20 bus, plain on/off with PARK / HEAD: it tells the display the lights</text>
+<text x="730.0" y="356.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">are on; the level comes in 0x300 byte 6 (D-462, D-567, D-577)</text>
+<line x1="30" y1="366.0" x2="390" y2="366.0" stroke="#d0d7de"/>
+<circle cx="50" cy="383.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="387.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="387.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">+12 V ignition — the display's backlight (F16)</text>
+<text x="380.0" y="387.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F16</text>
+<path d="M390.0,383.0 L720.0,383.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,383.0 L720.0,383.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="373.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-3  ·  16 AWG RED</text>
+<rect x="720.0" y="369.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="387.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the ICU tail (D-270, D-587) — the display's backlight feed through the carrier (D-268)</text>
+<line x1="30" y1="400.0" x2="390" y2="400.0" stroke="#d0d7de"/>
+<circle cx="50" cy="417.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="421.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="421.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">CAN2 H</text>
+<text x="380.0" y="421.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">CAN2H</text>
+<path d="M390.0,417.0 L720.0,417.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,417.0 L720.0,417.0" fill="none" stroke="#f2c318" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="407.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-4  ·  16 tw AWG YEL</text>
+<rect x="720.0" y="403.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="421.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the ICU tail (D-270, D-587)</text>
+<line x1="30" y1="434.0" x2="390" y2="434.0" stroke="#d0d7de"/>
+<circle cx="50" cy="451.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="455.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="455.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">CAN2 L</text>
+<text x="380.0" y="455.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">CAN2L</text>
+<path d="M390.0,451.0 L720.0,451.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,451.0 L720.0,451.0" fill="none" stroke="#2e8b3e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="441.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-5  ·  16 tw AWG GRN</text>
+<rect x="720.0" y="437.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="455.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the ICU tail (D-270, D-587)</text>
+<line x1="30" y1="468.0" x2="390" y2="468.0" stroke="#d0d7de"/>
+<circle cx="50" cy="485.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="489.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="489.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Tachometer pulse</text>
+<text x="380.0" y="489.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L1-E1 15</text>
+<path d="M390.0,485.0 L720.0,485.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,485.0 L720.0,485.0" fill="none" stroke="#6b7280" stroke-width="5" stroke-linejoin="round"/>
+<path d="M390.0,485.0 L720.0,485.0" fill="none" stroke="#e5e7eb" stroke-width="2" stroke-dasharray="3 3"/>
+<text x="406.0" y="475.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-6  ·  16 AWG shielded</text>
+<rect x="720.0" y="471.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="489.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the ICU tail (D-270, D-587) — read by the ICU</text>
+<line x1="30" y1="502.0" x2="390" y2="502.0" stroke="#d0d7de"/>
+<circle cx="50" cy="519.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="523.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="523.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Water temp sender</text>
+<text x="380.0" y="523.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L1-E1 14</text>
+<path d="M390.0,519.0 L720.0,519.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,519.0 L720.0,519.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="509.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-7  ·  16 AWG GRY</text>
+<rect x="720.0" y="505.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="523.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the ICU tail (D-270, D-587) — the ICU excites and reads the sender; the display draws it</text>
+<line x1="30" y1="536.0" x2="390" y2="536.0" stroke="#d0d7de"/>
+<circle cx="50" cy="553.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="557.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="557.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Oil-pressure node</text>
+<text x="380.0" y="557.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L1-E1 8</text>
+<path d="M390.0,553.0 L720.0,553.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,553.0 L720.0,553.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="543.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-8  ·  16 AWG GRY</text>
+<rect x="720.0" y="539.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="557.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the ICU tail (D-270, D-587) — a PMU-excited node the ICU reads (D-260); the display draws it</text>
+<line x1="30" y1="570.0" x2="390" y2="570.0" stroke="#d0d7de"/>
+<circle cx="50" cy="587.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="591.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
+<text x="70.0" y="591.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Fuel level sender</text>
+<text x="380.0" y="591.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">the fuel level sender (rear), direct</text>
+<path d="M390.0,587.0 L720.0,587.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,587.0 L720.0,587.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="577.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-9  ·  16 AWG GRY  ·  RT17</text>
+<rect x="720.0" y="573.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="591.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the ICU tail (D-270, D-587) — the ICU excites and reads the sender; the display draws it</text>
+<line x1="30" y1="604.0" x2="390" y2="604.0" stroke="#d0d7de"/>
+<circle cx="50" cy="628.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="632.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">10</text>
+<text x="70.0" y="623.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Brake warning — fluid level +</text>
+<text x="70.0" y="640.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">parking brake</text>
+<text x="380.0" y="632.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L1-E1 9 + L3-COL 13</text>
+<path d="M390.0,628.0 L720.0,628.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,628.0 L720.0,628.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="618.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-10  ·  16 AWG GRY</text>
+<rect x="720.0" y="607.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="624.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the ICU tail (D-270, D-587) — read by the ICU; the display draws one BRAKE tell-tale for both</text>
+<text x="730.0" y="640.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">switches</text>
+<line x1="30" y1="652.0" x2="390" y2="652.0" stroke="#d0d7de"/>
+<circle cx="50" cy="669.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="673.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">11</text>
+<text x="70.0" y="673.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Charge-lamp line (alternator L)</text>
+<text x="380.0" y="673.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L1-E1 7</text>
+<path d="M390.0,669.0 L720.0,669.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,669.0 L720.0,669.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="659.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-11  ·  16 AWG GRY</text>
+<rect x="720.0" y="655.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="673.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the ICU tail (D-270, D-587) — read by the ICU; the display draws the CHARGE tell-tale</text>
+<line x1="30" y1="686.0" x2="390" y2="686.0" stroke="#d0d7de"/>
+<circle cx="50" cy="703.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="707.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">12</text>
+<text x="70.0" y="707.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="707.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="707.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 - spare in the Display Unit's one plug (D-587)</text>
+<line x1="30" y1="720.0" x2="390" y2="720.0" stroke="#d0d7de"/>
+<circle cx="50" cy="742.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="746.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">13</text>
+<text x="70.0" y="746.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Oil temperature (LS option)</text>
+<text x="380.0" y="746.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L1-E1 24</text>
+<text x="406.0" y="746.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="738.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 — the ICU's oil-temperature channel IC07 lands here when the swap's rebuilt</text>
+<text x="730.0" y="754.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">leg brings a sender (D-264)</text>
+<line x1="30" y1="764.0" x2="390" y2="764.0" stroke="#d0d7de"/>
+<circle cx="50" cy="805.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="809.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">14</text>
+<text x="70.0" y="783.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Road speed</text>
+<text x="70.0" y="800.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">— pulse</text>
+<text x="70.0" y="817.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">generator</text>
+<text x="70.0" y="834.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">signal</text>
+<text x="380.0" y="809.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">the road-speed pulse generator (rear), direct</text>
+<path d="M390.0,805.0 L720.0,805.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,805.0 L720.0,805.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="795.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-14  ·  16 AWG GRY  ·  RT21</text>
+<rect x="720.0" y="767.0" width="560.0" height="76.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="809.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the ICU tail (D-270, D-587) — channel IC08; pulses per mile is a config value (D-272)</text>
+<line x1="30" y1="846.0" x2="390" y2="846.0" stroke="#d0d7de"/>
+<circle cx="50" cy="868.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="872.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">15</text>
+<text x="70.0" y="872.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Phase-2 sensor signal spare</text>
+<text x="380.0" y="872.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">L1-E1 11</text>
+<path d="M390.0,868.0 L720.0,868.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<path d="M390.0,868.0 L720.0,868.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round" stroke-dasharray="8 5"/>
+<text x="406.0" y="858.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-15  ·  16 AWG GRY  ·  capped at the far end</text>
+<rect x="720.0" y="849.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="864.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">The ICU's spare input (DRC13 pin 15) — nothing reads it until the swap brings a sensor; wired to</text>
+<text x="730.0" y="880.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L1-E1 11 in the PMU box (D-271)</text>
+<line x1="30" y1="890.0" x2="390" y2="890.0" stroke="#d0d7de"/>
+<circle cx="50" cy="907.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="911.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">16</text>
+<text x="70.0" y="911.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Turn LEFT tell-tale sense</text>
+<text x="380.0" y="911.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O17</text>
+<path d="M390.0,907.0 L720.0,907.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,907.0 L720.0,907.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="897.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-16  ·  16 AWG RED</text>
+<rect x="720.0" y="893.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="911.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the ICU tail (D-270, D-587) — the tell-tale follows the real lamps (D-258); the display draws it</text>
+<line x1="30" y1="924.0" x2="390" y2="924.0" stroke="#d0d7de"/>
+<circle cx="50" cy="941.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="945.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">17</text>
+<text x="70.0" y="945.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Turn RIGHT tell-tale sense</text>
+<text x="380.0" y="945.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O18</text>
+<path d="M390.0,941.0 L720.0,941.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,941.0 L720.0,941.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="931.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-17  ·  16 AWG RED</text>
+<rect x="720.0" y="927.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="945.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the ICU tail (D-270, D-587) — the display draws it</text>
+<line x1="30" y1="958.0" x2="390" y2="958.0" stroke="#d0d7de"/>
+<circle cx="50" cy="982.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="986.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">18</text>
+<text x="70.0" y="977.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">AEM wideband gauge +12 V (its own feed,</text>
+<text x="70.0" y="994.5" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">D-596)</text>
+<text x="380.0" y="986.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F20</text>
+<path d="M390.0,982.0 L720.0,982.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,982.0 L720.0,982.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="972.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-18  ·  16 AWG RED</text>
+<rect x="720.0" y="961.0" width="560.0" height="42.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="986.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the gauge's pin 1 inside the DU</text>
+<line x1="30" y1="1006.0" x2="390" y2="1006.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1023.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1027.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">19</text>
+<text x="70.0" y="1027.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">AEM wideband gauge ground (its own, D-596)</text>
+<text x="380.0" y="1027.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">GND</text>
+<path d="M390.0,1023.0 L720.0,1023.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1023.0 L720.0,1023.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1013.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-19  ·  16 AWG BLK</text>
+<rect x="720.0" y="1009.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1027.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the gauge's pin 2 inside the DU</text>
+<line x1="30" y1="1040.0" x2="390" y2="1040.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1057.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1061.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">20</text>
+<text x="70.0" y="1061.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="1061.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="1061.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 - spare in the Display Unit's one plug (D-587)</text>
+<line x1="30" y1="1074.0" x2="390" y2="1074.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1091.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1095.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">21</text>
+<text x="70.0" y="1095.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Ground</text>
+<text x="380.0" y="1095.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">GND</text>
+<path d="M390.0,1091.0 L720.0,1091.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1091.0 L720.0,1091.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1081.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-21  ·  16 AWG BLK</text>
+<rect x="720.0" y="1077.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1095.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the ICU tail (D-270, D-587)</text>
+<line x1="30" y1="1108.0" x2="390" y2="1108.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1125.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1129.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">22</text>
+<text x="70.0" y="1129.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">High-beam tell-tale sense</text>
+<text x="380.0" y="1129.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O3</text>
+<path d="M390.0,1125.0 L720.0,1125.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,1125.0 L720.0,1125.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="1115.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">DP-ICU-22  ·  16 AWG RED</text>
+<rect x="720.0" y="1111.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="1129.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the ICU tail (D-270, D-587) — the display draws it</text>
+<line x1="30" y1="1142.0" x2="390" y2="1142.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1159.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1163.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328"></text>
+<text x="70.0" y="1163.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">23–24: spare, sealing plugs</text>
+<text x="406.0" y="1163.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="730.0" y="1163.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 - spare in the Display Unit's one plug (D-587)</text>
+<path d="M30.0,1212.0 L66.0,1212.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M30.0,1212.0 L66.0,1212.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="76.0" y="1216.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">RED</text>
+<path d="M123.6,1212.0 L159.6,1212.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M123.6,1212.0 L159.6,1212.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="169.6" y="1216.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRY</text>
+<path d="M217.3,1212.0 L253.3,1212.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M217.3,1212.0 L253.3,1212.0" fill="none" stroke="#1b1b1b" stroke-width="5" stroke-linejoin="round"/>
+<text x="263.3" y="1216.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">BLK</text>
+<path d="M309.9,1212.0 L345.9,1212.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M309.9,1212.0 L345.9,1212.0" fill="none" stroke="#2e8b3e" stroke-width="5" stroke-linejoin="round"/>
+<text x="355.9" y="1216.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRN</text>
+<path d="M405.6,1212.0 L441.6,1212.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M405.6,1212.0 L441.6,1212.0" fill="none" stroke="#f2c318" stroke-width="5" stroke-linejoin="round"/>
+<text x="451.6" y="1216.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">YEL</text>
+<path d="M496.1,1212.0 L532.1,1212.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M496.1,1212.0 L532.1,1212.0" fill="none" stroke="#6b7280" stroke-width="5" stroke-linejoin="round"/>
+<path d="M496.1,1212.0 L532.1,1212.0" fill="none" stroke="#e5e7eb" stroke-width="2" stroke-dasharray="3 3"/>
+<text x="542.1" y="1216.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">shielded core</text>
+<text x="30.0" y="1242.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">Solid wire: live. Dashed: run and capped. #12 / #16 / #20: a circular's contact size. Nothing here is measured (R11). Generated by rx7.py diagrams from the record - do not edit.</text>
+</svg>

@@ -185,9 +185,9 @@ table.sizes tr.low td { color: var(--warn); }
 <main id="page" data-green="pure">
 
   <header style="display:flex;flex-direction:column;gap:10px">
-    <div class="eyebrow">1982 RX-7 · Control Unit Remote (CUR) face · sketch, second pass, 15 October 2026</div>
+    <div class="eyebrow">1982 RX-7 · Control Unit Remote (CUR) face · second pass, ruled D-602, 15 October 2026</div>
     <h1>CUR face, on a grid</h1>
-    <p class="lede">This is your new layout. The screen knob is at the top left with the mirror stick under it, and the two are the same size. Right of them is a grid of keys: the hazard on top, as wide as both winks, then the two winks, then the fuel door and the hatch. The two knobs together are exactly as tall as the three rows of keys, split evenly. One gap size runs everywhere, so the whole face reads as a grid. Every size follows the face's height, and the slider shows how small it can go before something gets hard to press. Only this page changed; the record still has the D-595 layout until you settle this one.</p>
+    <p class="lede">This is your new layout. The screen knob is at the top left with the mirror stick under it, and the two are the same size. Right of them is a grid of keys: the hazard on top, as wide as both winks, then the two winks, then the fuel door and the hatch. The two knobs together are exactly as tall as the three rows of keys, split evenly. One gap size runs everywhere, so the whole face reads as a grid. Every size follows the face's height, and the slider shows how small it can go before something gets hard to press. Ruled as the CUR's face (D-602). The board follows it at the CAD pass (Y71); the box's current plan is cur-plan.svg in this folder.</p>
     <p class="lede">An orange tag <span class="g">n</span> marks a choice the drawing made that you did not state. The list at the bottom says what each one chose.</p>
   </header>
 
@@ -256,7 +256,7 @@ table.sizes tr.low td { color: var(--warn); }
 
   <section aria-labelledby="h-real">
     <h2 id="h-real">At about real size</h2>
-    <p>This is set in millimetres, so on most screens it shows at about real size. Hold a ruler to the screen to check. The dashed outline is the 118 × 56 mm plate as ruled today (D-595), for comparison.</p>
+    <p>This is set in millimetres, so on most screens it shows at about real size. Hold a ruler to the screen to check. The dashed outline is the old 118 × 56 mm plate (D-595, replaced by D-602), for comparison.</p>
     <div class="stage real" id="stage3">
       <figure><svg id="real" role="img" aria-label="The CUR at about real size, beside the outline of the plate as ruled"></svg><figcaption id="cap-real"></figcaption></figure>
     </div>
@@ -270,14 +270,14 @@ table.sizes tr.low td { color: var(--warn); }
     </div>
     <h3>The symbols, lit</h3>
     <div class="symrow" id="symrow"></div>
-    <p class="cap">First drafts, carried over from the cur-board sketch, plus the hazard triangle.</p>
+    <p class="cap">First drafts, carried over from the CUR board's first sketch, plus the hazard triangle.</p>
   </section>
 
   <section aria-labelledby="h-guess">
     <h2 id="h-guess">What the drawing guessed</h2>
     <p>Everything below was chosen so the sketch would work. Any of it can change.</p>
     <ol class="guesses">
-      <li><span class="g">1</span><span><b>The layout.</b> As you described it: screen knob over mirror stick on the left, then hazard, winks and releases in a grid. It replaces D-595's three columns once you settle it. The plate board (118 × 56) gets redrawn at the end, with the CU's.</span></li>
+      <li><span class="g">1</span><span><b>The layout.</b> As you described it: screen knob over mirror stick on the left, then hazard, winks and releases in a grid. It replaced D-595's three columns (D-602). The CUR board is redrawn to it at the CAD pass (Y71), with an I/O expander and an ADC putting the keys and the stick on the I²C bus (D-604), and one DRC 24 on its back (D-597).</span></li>
       <li><span class="g">2</span><span><b>The height.</b> Starts at 32 mm, about the least where both knobs stay 12 mm or more across. Below about 30.5 mm the knobs go under the floor; the keys stay above theirs down to about 26 mm.</span></li>
       <li><span class="g">3</span><span><b>The grid.</b> One 1.6 mm gap between every neighbour, across and down, and 2.5 mm of face at every edge. The knobs line up with the grid: the top of the screen knob with the hazard's top, the bottom of the stick's well with the releases' bottom.</span></li>
       <li><span class="g">4</span><span><b>The keys.</b> Each key is 1.4 times as wide as it is tall, about 11 × 8 mm at 32 mm. The hazard is the two winks' width plus the gap between them, so its edges line up with theirs. The order is a guess: left wink on the left, fuel door under it, hatch on the right.</span></li>
