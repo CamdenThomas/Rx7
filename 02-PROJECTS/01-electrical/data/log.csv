@@ -180,3 +180,4 @@ L-0168,2026-10-14,session,D-582 D-584 Y56,"Y56 done: the steps, briefs, channels
 L-0169,2026-10-14,session,D-582 Y55,"Y55 done: the panel board redrawn for the single-DIN face, 180 x 47.3, re-routed, DRC and check.py clean, fab package rebuilt (D-582)"
 L-0170,2026-10-14,session,D-585 D-586 01.58 Y60 Y61 Y62,"D-585 / D-586: the DU's plugs bottom-back-right (Y60); the CUR right of the wheel beside the DU and the hazard switch on it, L3-S1 6 in the wink lead to DP-CUR-B 5 (Y61); block 01.58 the switch's kind; Y62 the CUR board waits on it"
 L-0171,2026-10-14,session,D-587 Y63 01.57,"D-587: the DU's two plugs become one DRC 24-way (Y63 queued, Y18 waits on it); the CUR keeps its own; block 01.57's options follow"
+L-0172,2026-10-14,answers,D-588 D-589,"Applied 01.57 (a) and 01.58 (a): D-588, D-589; Y64 added, P226 to need"

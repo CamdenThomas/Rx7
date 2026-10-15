@@ -2039,3 +2039,17 @@ Reading taken (CLAUDE.md §3): ""the CUR has its own connector"" means the CUR i
 **What it changes.** The ICU carrier's J1 (DT13-06PA) and J3 (DT13-12PA), which fill its connector edge, give way to the one header, about half that width; the carrier is redrawn before Y18 orders it. The two 150 mm tails from the dash post become one. The mock-up's rear plate takes one cut-out, still bottom-right (D-585). Parts P122 (the two DT13s) drop; the header and its plug are added.
 
 In data: work Y63 does it whole - the housing and its cavities re-keyed, the references, the carrier board from TE's drawing (ERC, DRC, check.py, fab package), the mock-up, the scene and the steps - so the record, the board and the model change together. Block 01.57's options no longer merge the CUR."
+D-588,,Deutsch is the one plug family for the merged unit connectors; the dash post is left as it is,2026-10-14,standing,,,01.57,,"**One plug family for the merged unit connectors: Deutsch, everywhere (block 01.57, option a).** The Control Unit moves from the Molex CMC 48 of D-582 to one Deutsch DRC 50-way or larger header; the Display Unit stays on its DRC 24-way (D-587); the radar receiver's two receptacles (L3-RDR and L3-RCV) merge into one DT 12-way; the dash post's leg plugs stay as they are.
+
+His answer: (a), no words added. The option as offered: ""Deutsch everywhere: the Control Unit on one Deutsch DRC 50-way or larger header, the Display Unit on its DRC 24-way (already ruled, D-587), the radar receiver's two receptacles merged into one DT 12-way, and the dash post left as it is. One contact system for the whole car and your crimper already bought. It may need a size-20 die. The CU's DRC header must be found in right-angle (confirm), and the CMC rows go.""
+
+Reasoning: one contact system and the crimper already bought (P038). Supersedes the connector family of D-582 only (its one-connector, single-DIN-tall, no-upper-board rulings stand).
+
+Consequences: Y54 draws a Deutsch DRC header, not the CMC 48; a right-angle DRC of 50 ways or more is unconfirmed (size-20 contacts, 14 AWG grounds become five 16 AWG) and is found at Y54 - if none is sold, that is a contradiction to raise as a block then, the fallback being CMC 48; P220-P225 (CMC parts and Molex tools) are dropped; the radar merge is new work; a size-20 die for P038 is to be confirmed."
+D-589,,The CUR's hazard switch is a latching push button under a lit red-triangle cap,2026-10-14,standing,,,01.58,,"**The hazard switch on the CUR is a latching push button under a lit red-triangle cap, board-mounted like the winks (block 01.58, option a).**
+
+His answer: (a), no words added. The option as offered: ""A latching push button under a lit red-triangle cap, board-mounted like the winks: same look as the CUR's other buttons, a few dollars, and the PMU's hazard logic unchanged. Forecloses nothing.""
+
+Reasoning: the switch latches as the factory one does, so the A8 ladder, the flasher and the sleep rules of D-464 and D-586 are unchanged: one wire in the wink lead, a 4.7 kOhm and a 47 kOhm on the CUR board.
+
+Consequences: P226 becomes the latching board-mounted button with a lit red-triangle cap; Y62 is ready: the switch, its two resistors, J2 to five pins, the face opening in the winks' style."
