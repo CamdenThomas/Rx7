@@ -1174,9 +1174,20 @@ class _Electrical:
     def leg_of(self, housing):
         return (self.housings.get(housing, {}).get("leg") or "").split(" (")[0].strip()
 
-    def series_of(self, housing):
-        """DTP where the housing's leg_side or box_side names a DTP part, else DT."""
+    def series_of(self, housing, cavity=None):
+        """The contact a conductor is crimped in, as a `series` row id. A housing's own `series`
+        column says it (DT, DTP, DRC16, DRC20, HW for a bundle hard-wired at a box, HD for a
+        mixed-contact Deutsch circular); in an HD housing the cavity's `contact` (12, 16, 20)
+        picks HD12 / HD16 / HD20 (D-600, D-606, D-612). A housing that says nothing is DTP where
+        its leg_side or box_side names a DTP part, else DT, as before."""
         h = self.housings.get(housing, {})
+        s = (h.get("series") or "").strip()
+        if s == "HD":
+            c = self.cavs.get(cavity) if cavity else None
+            size = ((c or {}).get("contact") or "16").strip()
+            return "HD" + size
+        if s:
+            return s
         return "DTP" if "DTP" in ((h.get("leg_side") or "") + " " + (h.get("box_side") or "")) else "DT"
 
     def seal_range(self, series):
@@ -1186,7 +1197,8 @@ class _Electrical:
         return (min(nums), max(nums)) if len(nums) >= 2 else None
 
     def at_post(self, housing):
-        return (self.housings.get(housing, {}).get("where") or "").strip() == "Dash post"
+        """Where a leg leaves the dash: the dash post until the overhaul, the PMU box since (D-596)."""
+        return (self.housings.get(housing, {}).get("where") or "").strip() in ("Dash post", "PMU box")
 
     def protection(self, text, depth=0):
         """(amps, basis) that the device upstream of a conductor lets through: a PMU channel's
@@ -1358,10 +1370,12 @@ def check_electrical(area: Path, rows=None):
         amps, basis = e.protection(c.get("src"))
         if amps is None:
             continue
-        series = e.series_of(c.get("housing") or "")
+        series = e.series_of(c.get("housing") or "", (c.get("id") or "").strip())
         rated = e.series.get(series)
         if rated is not None and amps > rated:
-            report("cavities", cid, c.get("hold"), f"a {series} size-{'12' if series == 'DTP' else '16'} contact is rated {rated:g} A but sits behind {basis}")
+            m = re.search(r"\d+$", series)
+            size = m.group(0) if m else ("12" if series == "DTP" else "16")
+            report("cavities", cid, c.get("hold"), f"a {series} size-{size} contact is rated {rated:g} A but sits behind {basis}")
 
     # E7 - nothing is left out: every live output, fuse and relay contact lands somewhere; every
     # load names a real channel; every live leg conductor has a run to follow.
@@ -1419,18 +1433,20 @@ def check_electrical(area: Path, rows=None):
     for c in rows["cavities"]:
         cid = (c.get("id") or "").strip()
         g = _gauge(c.get("awg"))
-        rng = e.seal_range(e.series_of(c.get("housing") or ""))
+        ser = e.series_of(c.get("housing") or "", (c.get("id") or "").strip())
+        rng = e.seal_range(ser)
         if g and g.isdigit() and rng and (c.get("state") or "") in ("LIVE", "CAPPED") and not rng[0] <= int(g) <= rng[1]:
-            report("cavities", cid, c.get("hold"), f"{g} AWG is outside the {e.series_of(c.get('housing') or '')} contact's {rng[0]}-{rng[1]} AWG seal range")
+            report("cavities", cid, c.get("hold"), f"{g} AWG is outside the {ser} contact's {rng[0]}-{rng[1]} AWG seal range")
     for n in rows["node_conductors"]:
         nid = (n.get("id") or "").strip()
         gs = [int(x) for x in re.findall(r"(?<![\d/])\d{1,2}(?![\d/])", n.get("awg") or "")]
         if not gs or not e.cav_re:
             continue
         for h, cv in e.cav_re.findall(n.get("dst") or ""):
-            rng = e.seal_range(e.series_of(h))
+            ser = e.series_of(h, "%s %d" % (h, int(cv)))
+            rng = e.seal_range(ser)
             if rng and not any(rng[0] <= g <= rng[1] for g in gs):
-                report("node_conductors", nid, n.get("hold"), f"{n.get('awg')} AWG lands in {h} {int(cv)}, a {e.series_of(h)} contact sealing {rng[0]}-{rng[1]} AWG")
+                report("node_conductors", nid, n.get("hold"), f"{n.get('awg')} AWG lands in {h} {int(cv)}, a {ser} contact sealing {rng[0]}-{rng[1]} AWG")
                 break
 
     # E10 - the colour family allows the gauge (colours.gauges).
@@ -3854,6 +3870,14 @@ def cmd_selftest(args):
                          pins=lambda p: [dict(x, est_a="20", inrush_x="1") if x["ch"] == "O1" else x for x in p]), "grounds:G05")[0])
     expect("a contact behind more than its series rating is refused",
            efind(harness(cavities=cav(lambda x: dict(x, src="O1", awg="14") if x["id"] == "L2-M 7" else x), node_conductors=[]), "DT size-16")[0])
+    # a mixed-contact circular (D-612): each cavity is rated by its own contact size
+    hd = dict(housings=lambda h: h + [{"code": "L2-F1", "leg": "L2 Front", "series": "HD", "where": "PMU box"}],
+              series=lambda s: s + [{"id": "HD12", "wire": "10–14 AWG seal", "rated": "25 A"},
+                                    {"id": "HD20", "wire": "16–20 AWG seal", "rated": "7.5 A"}])
+    expect("a size-12 cavity of a circular carries its 25 A",
+           efind(harness(**hd, cavities=cav(lambda x: dict(x, housing="L2-F1", contact="12") if x["id"] == "L2-P 1" else x)), "HD12")[0] == [])
+    expect("a size-20 cavity of the same circular behind 25 A is refused",
+           efind(harness(**hd, cavities=cav(lambda x: dict(x, housing="L2-F1", contact="20") if x["id"] == "L2-P 1" else x)), "HD20 size-20")[0])
     expect("a live output nothing names is refused",
            efind(harness(pins=lambda p: p + [{"ch": "O9", "type": "output", "state": "LIVE", "awg": "14", "est_a": "1",
                                               "enable_a": "7", "hw_max_a": "15", "peak_a": "120", "inrush_x": "1"}]), "pins:O9")[0])
