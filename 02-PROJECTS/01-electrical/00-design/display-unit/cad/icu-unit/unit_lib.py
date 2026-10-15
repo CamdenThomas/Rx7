@@ -271,16 +271,20 @@ def derive(P, src):
         bx = P["BUTTON_X"]
     bz = P["BUTTON_Z"]
     D.button_rel = (bx, bz)
+    # BUTTON_FITTED False (D-580: the page button left the Display Unit): no hole, no solid, no
+    # size it asks of the face or the body, no rule it is held to
+    D.button = bool(P.get("BUTTON_FITTED", True))
+    BTN = (lambda rows: rows) if D.button else (lambda rows: [])
 
     # ---- across (X), measured first from the display's centre: what each side of the face needs
     left = [(dw / 2.0 + BB, "the display + BEZEL_BORDER"),
-            (dw / 2.0 + clr + WL + BZ, "the display's pocket + WALL + BEZEL_OVERLAP"),
+            (dw / 2.0 + clr + WL + BZ, "the display's pocket + WALL + BEZEL_OVERLAP")] + BTN([
             (-bx + hr + edge, "the page button + CONTROL_EDGE"),
-            (-bx + br + G + WL + BZ, "the page button's body inside the wall")]
+            (-bx + br + G + WL + BZ, "the page button's body inside the wall")])
     right = [(dw / 2.0 + BB, "the display + BEZEL_BORDER"),
-             (dw / 2.0 + clr + WL + BZ, "the display's pocket + WALL + BEZEL_OVERLAP"),
+             (dw / 2.0 + clr + WL + BZ, "the display's pocket + WALL + BEZEL_OVERLAP")] + BTN([
              (bx + hr + edge, "the page button + CONTROL_EDGE"),
-             (bx + br + G + WL + BZ, "the page button's body inside the wall")]
+             (bx + br + G + WL + BZ, "the page button's body inside the wall")])
     lft = max(left)[0]
     # the inside, from the left wall: the carrier, the BT817 board, the driver boards
     inner = [(c_right - c_left + 2 * G, "the carrier and the XIAO's overhang, GAP each side")]
@@ -350,9 +354,9 @@ def derive(P, src):
     # ---- up (Z), measured first from the display's centre
     bottom = [(dh / 2.0 + BB, "the display + BEZEL_BORDER"),
               (dh / 2.0 + clr + P["FLEX_ROOM"] + FL + BZ, "the display's pocket, FLEX_ROOM and "
-               "the floor"),
+               "the floor")] + BTN([
               (-bz + hr + edge, "the page button + CONTROL_EDGE"),
-              (-bz + br + G + FL + BZ, "the page button's body above the floor")]
+              (-bz + br + G + FL + BZ, "the page button's body above the floor")])
     bot = max(bottom)[0]
     # heights above the floor's inside face, which do not depend on the face
     D.cz0_f = P["BOSS_H"]
@@ -379,9 +383,9 @@ def derive(P, src):
     def top_for(b):
         dz = b - BZ - FL                               # the display's centre above the floor
         t = [(dh / 2.0 + BB, "the display + BEZEL_BORDER"),
-             (dh / 2.0 + clr + LT + BZ, "the display's pocket and the lid"),
+             (dh / 2.0 + clr + LT + BZ, "the display's pocket and the lid")] + BTN([
              (bz + hr + edge, "the page button + CONTROL_EDGE"),
-             (bz + br + G + b_rim + LT + BZ, "the page button's body under the lid's beam")]
+             (bz + br + G + b_rim + LT + BZ, "the page button's body under the lid's beam")])
         t += [(h - dz + LT + BZ, why) for (h, why) in tops_f]
         return max(t)
     top, top_why = top_for(bot)
@@ -458,7 +462,7 @@ def derive(P, src):
         least.append(D.y_bulk1 + P["CARRIER_FRONT_GAP"])
     else:
         least += [it.y1 + P["CARRIER_FRONT_GAP"] for it in plate_items if it.over_carrier]
-    if _overlap(D.bX - br, D.bX + br, D.kx0 - G, D.kx1 + G) and \
+    if D.button and _overlap(D.bX - br, D.bX + br, D.kx0 - G, D.kx1 + G) and \
             _overlap(D.bZ - br, D.bZ + br, D.zf, D.ktop + G):
         least.append(D.y_button + G)
     D.cy0 = max(least)
@@ -596,28 +600,29 @@ def validate(P, src, U):
             "toward 0 or narrow FLEX_W." % (n(P["FLEX_X"]), n(P["FLEX_W"])))
 
     # ---- the page button: clear of the display, inside the face and the body
-    r = max(P["BUTTON_HEAD_D"], P["BUTTON_BODY_D"]) / 2.0
-    gx = max(D.disp[0] - D.bX, D.bX - D.disp[1], 0.0)
-    gz = max(D.disp[2] - D.bZ, D.bZ - D.disp[3], 0.0)
-    if gx > 0 or gz > 0:
-        gap = math.hypot(gx, gz) - r
-    else:
-        gap = -min(D.bX - D.disp[0], D.disp[1] - D.bX, D.bZ - D.disp[2], D.disp[3] - D.bZ) - r
-    M["the page button to the display's outline"] = gap, P["BUTTON_GAP"]
-    if gap < P["BUTTON_GAP"] - eps:
-        need_x = P["DISP_W"] / 2.0 + P["BUTTON_GAP"] + r
-        need_z = P["DISP_H"] / 2.0 + P["BUTTON_GAP"] + r
-        bad("The page button at BUTTON_X %s, BUTTON_Z %s (from the display's centre) is %s the "
-            "display: its head or body (%s across) must stay BUTTON_GAP %s off the display's "
-            "outline. Move it off the display - BUTTON_X beyond %s (right) or -%s (left), or "
-            "BUTTON_Z beyond %s (above) or -%s (below) - or set BUTTON_X to None (just beside "
-            "the display, on the carrier's side)."
-            % (n(D.button_rel[0]), n(D.button_rel[1]),
-               "over" if gap < -2 * r + eps or (gx == 0 and gz == 0) else "%s mm from" % n(gap),
-               n(2 * r), n(P["BUTTON_GAP"]), n(need_x), n(need_x), n(need_z), n(need_z)))
-    if P["BUTTON_HOLE_D"] > P["BUTTON_HEAD_D"] - eps:
-        bad("BUTTON_HOLE_D %s is not less than BUTTON_HEAD_D %s: the head would fall through the "
-            "bezel - raise BUTTON_HEAD_D." % (n(P["BUTTON_HOLE_D"]), n(P["BUTTON_HEAD_D"])))
+    if D.button:
+        r = max(P["BUTTON_HEAD_D"], P["BUTTON_BODY_D"]) / 2.0
+        gx = max(D.disp[0] - D.bX, D.bX - D.disp[1], 0.0)
+        gz = max(D.disp[2] - D.bZ, D.bZ - D.disp[3], 0.0)
+        if gx > 0 or gz > 0:
+            gap = math.hypot(gx, gz) - r
+        else:
+            gap = -min(D.bX - D.disp[0], D.disp[1] - D.bX, D.bZ - D.disp[2], D.disp[3] - D.bZ) - r
+        M["the page button to the display's outline"] = gap, P["BUTTON_GAP"]
+        if gap < P["BUTTON_GAP"] - eps:
+            need_x = P["DISP_W"] / 2.0 + P["BUTTON_GAP"] + r
+            need_z = P["DISP_H"] / 2.0 + P["BUTTON_GAP"] + r
+            bad("The page button at BUTTON_X %s, BUTTON_Z %s (from the display's centre) is %s the "
+                "display: its head or body (%s across) must stay BUTTON_GAP %s off the display's "
+                "outline. Move it off the display - BUTTON_X beyond %s (right) or -%s (left), or "
+                "BUTTON_Z beyond %s (above) or -%s (below) - or set BUTTON_X to None (just beside "
+                "the display, on the carrier's side)."
+                % (n(D.button_rel[0]), n(D.button_rel[1]),
+                   "over" if gap < -2 * r + eps or (gx == 0 and gz == 0) else "%s mm from" % n(gap),
+                   n(2 * r), n(P["BUTTON_GAP"]), n(need_x), n(need_x), n(need_z), n(need_z)))
+        if P["BUTTON_HOLE_D"] > P["BUTTON_HEAD_D"] - eps:
+            bad("BUTTON_HOLE_D %s is not less than BUTTON_HEAD_D %s: the head would fall through the "
+                "bezel - raise BUTTON_HEAD_D." % (n(P["BUTTON_HOLE_D"]), n(P["BUTTON_HEAD_D"])))
 
     # ---- the carrier inside the walls; what stands on the display plate
     m = min(D.kx0 - D.ix0, D.ix1 - D.kx1)
@@ -644,7 +649,7 @@ def validate(P, src, U):
                     "%s-%s, Z %s-%s / %s-%s): move one of them (BT_X, BT_Z, or the DRIVER_BOARDS "
                     "x0 / z0)." % (a.label, b.label, n(G), n(a.x0), n(a.x1), n(b.x0), n(b.x1), n(a.z0), n(a.z1),
                        n(b.z0), n(b.z1)))
-    if D.y_button > D.y_bulk1 + eps:                   # the button's body reaches past the plate
+    if D.button and D.y_button > D.y_bulk1 + eps:      # the button's body reaches past the plate
         rb = P["BUTTON_BODY_D"] / 2.0
         for it in D.plate_items:
             if _overlap(D.bX - rb, D.bX + rb, it.x0 - G, it.x1 + G) and \
@@ -837,8 +842,9 @@ def build_insides(P, D, src, standin=False):
     # ---- the bezel plate (P121): the window, the button's hole, the screws' holes
     face = L.box(0.0, D.face_w, 0.0, D.y_face, 0.0, D.face_h)
     w = D.window
-    holes = [L.box(w[0], w[1], -oc, D.y_face + oc, w[2], w[3]),
-             L.cyl_y(P["BUTTON_HOLE_D"] / 2.0, D.bX, D.bZ, -oc, D.y_face + oc)]
+    holes = [L.box(w[0], w[1], -oc, D.y_face + oc, w[2], w[3])]
+    if D.button:
+        holes.append(L.cyl_y(P["BUTTON_HOLE_D"] / 2.0, D.bX, D.bZ, -oc, D.y_face + oc))
     holes += [L.cyl_y(P["BEZEL_SCREW_CLEAR"] / 2.0, x, z, -oc, D.y_face + oc)
               for (x, z) in D.bezel_screws]
     out.append(_item("bezel plate (P121)", L.cut(face, holes)))
@@ -848,10 +854,11 @@ def build_insides(P, D, src, standin=False):
     out.append(_item("display module (P118, placeholder)",
                      L.box(d[0], d[1], D.y_disp0, D.y_disp1, d[2], d[3])))
     out.append(_item("keep-out: the display's flex", _bx(D.flex), "keepout"))
-    btn = L.fuse([L.cyl_y(P["BUTTON_HEAD_D"] / 2.0, D.bX, D.bZ, -P["BUTTON_PROUD"], 0.0),
-                  L.cyl_y(P["BUTTON_HOLE_D"] / 2.0 - 0.1, D.bX, D.bZ, 0.0, D.y_face),
-                  L.cyl_y(P["BUTTON_BODY_D"] / 2.0, D.bX, D.bZ, D.y_face, D.y_button)])
-    out.append(_item("page button (P120, placeholder)", btn))
+    if D.button:
+        btn = L.fuse([L.cyl_y(P["BUTTON_HEAD_D"] / 2.0, D.bX, D.bZ, -P["BUTTON_PROUD"], 0.0),
+                      L.cyl_y(P["BUTTON_HOLE_D"] / 2.0 - 0.1, D.bX, D.bZ, 0.0, D.y_face),
+                      L.cyl_y(P["BUTTON_BODY_D"] / 2.0, D.bX, D.bZ, D.y_face, D.y_button)])
+        out.append(_item("page button (P120, placeholder)", btn))
 
     # ---- the BT817 board (P117) and the driver boards, on the display plate
     bt = D.bt
@@ -1012,9 +1019,9 @@ def build_case(P, D):
     s = P["FLEX_SLOT_CLEAR"]
     f = D.flex
     plate_ = L.cut(plate_, [
-        L.box(f[0] - s, f[1] + s, D.y_bulk0 - oc, D.y_bulk1 + oc, f[4] - s, f[5] + s),
+        L.box(f[0] - s, f[1] + s, D.y_bulk0 - oc, D.y_bulk1 + oc, f[4] - s, f[5] + s)] + ([
         L.cyl_y(P["BUTTON_BODY_D"] / 2.0 + P["BUTTON_HOLE_CLEAR"], D.bX, D.bZ, D.y_bulk0 - oc,
-                D.y_bulk1 + oc)])
+                D.y_bulk1 + oc)] if D.button else []))
     adds, bores = [ring, plate_], []
     bt = D.bt
     rr = P["BT_STANDOFF_D"] / 2.0
@@ -1058,9 +1065,11 @@ def metal(P, D):
     for k, (x, z) in enumerate(D.bezel_screws):
         out.append(("bezel screw %d" % (k + 1), [x - r, x + r, 0.0, D.y_face +
                                                 P["BEZEL_PILOT_DEPTH"], z - r, z + r]))
-    out.append(("the page button", [D.bX - P["BUTTON_BODY_D"] / 2.0, D.bX + P["BUTTON_BODY_D"] / 2.0,
-                                    0.0, D.y_button, D.bZ - P["BUTTON_BODY_D"] / 2.0,
-                                    D.bZ + P["BUTTON_BODY_D"] / 2.0]))
+    if D.button:
+        out.append(("the page button", [D.bX - P["BUTTON_BODY_D"] / 2.0,
+                                        D.bX + P["BUTTON_BODY_D"] / 2.0, 0.0, D.y_button,
+                                        D.bZ - P["BUTTON_BODY_D"] / 2.0,
+                                        D.bZ + P["BUTTON_BODY_D"] / 2.0]))
     for c in D.conns:
         out.append(("%s's contacts" % c.name, [c.box[0], c.box[1], c.box[2], c.tip, c.box[4],
                                               c.box[5]]))
@@ -1518,12 +1527,14 @@ def print_report(P, U, res, files, views_note, gone):
             ("display flex, straight line, at least", "%s (bottom edge to the %s)"
              % (n(D.flex_len), P["FLEX_TO"])),
             ("ribbon CN8 - J4, straight line", "%s (header face to header face)" % n(D.ribbon)),
-            ("page button lead to SW1, straight line", n(D.button_lead)),
+            ("page button lead to SW1, straight line", n(D.button_lead) if D.button else
+             "no page button (D-580)"),
             ("RF window", "%s: X %s..%s, Y %s..%s, Z %s..%s, %s from the %s" % (
                 P["RF_WINDOW_ON"], n(rf[0]), n(rf[1]), n(rf[2]), n(rf[3]), n(rf[4]), n(rf[5]),
                 n(D.rf_reach), P["RF_REF"])),
             ("page button", "X %s, Z %s (%s, %s from the display's centre)"
-             % (n(D.bX), n(D.bZ), n(D.button_rel[0]), n(D.button_rel[1]))),
+             % (n(D.bX), n(D.bZ), n(D.button_rel[0]), n(D.button_rel[1])) if D.button else
+             "not fitted (BUTTON_FITTED False, D-580)"),
             ("BT817 board", "X %s..%s, Z %s..%s, front face Y %s" % (
                 n(D.bt.x0), n(D.bt.x1), n(D.bt.z0), n(D.bt.z1), n(D.bt.yb0))),
             ("carrier", "%s; left edge X %s, front edge Y %s, underside Z %s"

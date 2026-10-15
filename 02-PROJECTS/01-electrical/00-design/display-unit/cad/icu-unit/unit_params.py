@@ -33,7 +33,13 @@ ENVELOPE = None                      # C4, M-1 - confirm
 #   (name, what, w across, h up, depth back from the plate incl. mounts and plugs,
 #    x0 = left edge from the inside of the left wall, z0 = bottom above the floor's inside or None
 #    = as low as it goes clear of the carrier)
+# Since D-585 the carrier is at the right wall (its DT13s bottom-back-right from the driver's seat),
+# so the two boards are at the left; _RIGHT_DRIVERS below is where they were with the carrier left.
 DRIVER_BOARDS = [
+    ("HDMI bridge", "TFP410-class HDMI encoder (P119)", 50.0, 40.0, 20.0, 1.0, None),
+    ("scaler", "the display's scaler board, HDMI in, flex out (P118)", 90.0, 60.0, 20.0, 57.0, None),
+]
+_RIGHT_DRIVERS = [
     ("HDMI bridge", "TFP410-class HDMI encoder (P119)", 50.0, 40.0, 20.0, 125.0, None),
     ("scaler", "the display's scaler board, HDMI in, flex out (P118)", 90.0, 60.0, 20.0, 181.0, None),
 ]
@@ -131,9 +137,10 @@ TABLE = [
     ("CARRIER_LAYOUT", "behind", "", "'behind' = the carrier lies flat on the floor behind "
      "everything on the display plate; 'below' = it slides under the BT817 board, which then "
      "stands over its front part (shorter, taller inside)", "depth is C4's to say"),
-    ("CARRIER_X", "left", "", "'left', 'centre', 'right' (against that wall with GAP; 'left' puts "
+    ("CARRIER_X", "right", "", "'left', 'centre', 'right' (against that wall with GAP; 'left' puts "
      "the XIAO's u.FL end at the left wall), or a number: the board's left edge from the inside of "
-     "the left wall", ""),
+     "the left wall. 'right' since D-585: the DT13s bottom-back-right as the driver sees the unit",
+     "his ruling (D-585)"),
     ("CARRIER_STEP", True, "", "use ../icu-carrier/icu-carrier.step when it is there; False = "
      "always the stand-in blocks from probe.json (faster, and what a clone without the STEP gets)",
      ""),
@@ -147,6 +154,8 @@ TABLE = [
     ("BOSS_D", 8.0, "mm", "boss diameter", ""),
 
     # ---------------------------------------------------------------- the page button (P120) --
+    ("BUTTON_FITTED", False, "", "is the page button on the unit? False since D-580: the screen "
+     "knob on the CUR steps the pages (D-581); True draws it with the rows below", ""),
     ("BUTTON_X", None, "mm", "page button's centre right of the DISPLAY's centre (negative = "
      "left); None = just beside the display (BUTTON_GAP off its edge) on the carrier's side, "
      "for the shortest lead to SW1", "taste: his to place (IC22)"),
@@ -163,9 +172,10 @@ TABLE = [
 
     # ------------------------------------------------------------------------ the RF window --
     ("RF_REF", "U8", "", "the radio on the carrier (the XIAO ESP32-C3, IC24)", ""),
-    ("RF_WINDOW_ON", "left", "", "the wall thinned to RF_WALL over the radio's span plus "
+    ("RF_WINDOW_ON", "lid", "", "the wall thinned to RF_WALL over the radio's span plus "
      "RF_KEEPOUT: 'left' / 'right' side wall, 'lid', 'floor' or 'rear' (plate). Its FPC antenna is "
-     "stuck inside it", "where the binnacle leaves the radio a view (D-491)"),
+     "stuck inside it. The lid since D-585 moved the carrier to the right wall: the radio, at the "
+     "carrier's left edge, has the whole board between it and that wall", "where the binnacle leaves the radio a view (D-491); the dash top over the unit is plastic - confirm"),
     ("RF_KEEPOUT", 5.0, "mm", "the radio's keep-out: the window's margin, and no metal nearer the "
      "window than this (IC24)", ""),
     ("RF_WALL", 1.2, "mm", "the window's wall, printed 100 % solid (Y7)", ""),
@@ -254,47 +264,72 @@ _TALL_BRIDGE = [("HDMI bridge", "TFP410-class HDMI encoder (P119)", 50.0, 40.0, 
 _LEFT_DRIVERS = [("HDMI bridge", "TFP410-class HDMI encoder (P119)", 50.0, 40.0, 20.0, 1.0, None),
                  ("scaler", "the display's scaler board, HDMI in, flex out (P118)", 90.0, 60.0,
                   20.0, 57.0, None)]
+# The layout before D-585 / D-580: the carrier at the left wall, the driver boards right, the radio's
+# window in the left wall, the page button fitted. The sets written for it keep it, so each still
+# tests the rule it was written for.
+_OLD = {"CARRIER_X": "left", "DRIVER_BOARDS": _RIGHT_DRIVERS, "RF_WINDOW_ON": "left",
+        "BUTTON_FITTED": True}
+
+
+def _old(**over):
+    return dict(_OLD, **over)
+
+
 SELFTEST = [
-    ("the defaults: carrier behind, one height, front install", {}, "clear"),
+    # ---- D-585: the carrier at the right wall (its DT13s bottom-back-right from the seat), the
+    #      radio's window in the lid, no page button (D-580)
+    ("the defaults: carrier behind at the right wall, one height, front install", {}, "clear"),
     ("a bigger display module, 320 x 130", {"DISP_W": 320.0, "DISP_H": 130.0}, "clear"),
-    ("CARRIER_LAYOUT below: the carrier under the BT817 board", {"CARRIER_LAYOUT": "below"},
-     "clear"),
-    ("CARRIER_LAYOUT beside (not a choice)", {"CARRIER_LAYOUT": "beside"}, "refused"),
     ("WALL 2.5", {"WALL": 2.5}, "clear"),
-    ("WALL 2.5, carrier below", {"WALL": 2.5, "CARRIER_LAYOUT": "below"}, "clear"),
-    ("an aperture it slides into", {"ENVELOPE": {"OPENING_W": 335.0, "OPENING_H": 135.0,
+    ("an aperture it slides into", {"ENVELOPE": {"OPENING_W": 315.0, "OPENING_H": 134.0,
                                                  "DEPTH": 220.0}}, "clear"),
-    ("an aperture too shallow", {"ENVELOPE": {"OPENING_W": 335.0, "OPENING_H": 135.0,
+    ("an aperture too shallow", {"ENVELOPE": {"OPENING_W": 315.0, "OPENING_H": 134.0,
                                               "DEPTH": 120.0}}, "refused"),
-    ("a BT817 board 10 mm taller", {"BT_H": 86.0}, "clear"),
-    ("a BT817 board 10 mm taller, carrier below", {"BT_H": 86.0, "CARRIER_LAYOUT": "below"},
+    ("the RF window in the left wall: nothing between, but about 190 mm from the radio",
+     {"RF_WINDOW_ON": "left"}, "clear"),
+    ("the RF window in the right wall: the carrier between the radio and it",
+     {"RF_WINDOW_ON": "right"}, "fails"),
+    ("CARRIER_LAYOUT below: the BT817 board over the radio, under the lid's window",
+     {"CARRIER_LAYOUT": "below"}, "fails"),
+    ("a BT817 board 10 mm taller: the right side screw boss is in its way", {"BT_H": 86.0},
+     "fails"),
+    ("the drawn carrier without its STEP: the stand-in blocks stand under the lid's window",
+     {"CARRIER_STEP": False}, "fails"),
+    ("the page button fitted again, beside the display on the carrier's side: onto the BT817",
+     {"BUTTON_FITTED": True}, "refused"),
+    ("the page button fitted again, left of the display", {"BUTTON_FITTED": True,
+                                                           "BUTTON_X": -170.0}, "clear"),
+    # ---- the layout before D-585 (_OLD), each set as it was written
+    ("before D-585: carrier left, button fitted", _old(), "clear"),
+    ("CARRIER_LAYOUT below: the carrier under the BT817 board", _old(CARRIER_LAYOUT="below"),
      "clear"),
-    ("the page button over the display", {"BUTTON_X": 100.0}, "refused"),
-    ("the page button right of the display", {"BUTTON_X": 170.0}, "clear"),
+    ("CARRIER_LAYOUT beside (not a choice)", _old(CARRIER_LAYOUT="beside"), "refused"),
+    ("WALL 2.5, carrier below", _old(WALL=2.5, CARRIER_LAYOUT="below"), "clear"),
+    ("a BT817 board 10 mm taller", _old(BT_H=86.0), "clear"),
+    ("a BT817 board 10 mm taller, carrier below", _old(BT_H=86.0, CARRIER_LAYOUT="below"),
+     "clear"),
+    ("the page button over the display", _old(BUTTON_X=100.0), "refused"),
+    ("the page button right of the display", _old(BUTTON_X=170.0), "clear"),
     ("the page button under the display's right end, into the scaler",
-     {"BUTTON_X": 120.0, "BUTTON_Z": -75.0}, "refused"),
-    ("the page button above the display's right end", {"BUTTON_X": 120.0, "BUTTON_Z": 75.0},
+     _old(BUTTON_X=120.0, BUTTON_Z=-75.0), "refused"),
+    ("the page button above the display's right end", _old(BUTTON_X=120.0, BUTTON_Z=75.0),
      "clear"),
-    ("the display centred on the face", {"DISPLAY_CENTRED": True}, "clear"),
-    ("FACE_W 300, narrower than the display", {"FACE_W": 300.0}, "refused"),
+    ("the display centred on the face", _old(DISPLAY_CENTRED=True), "clear"),
+    ("FACE_W 300, narrower than the display", _old(FACE_W=300.0), "refused"),
     ("the carrier centred: the BT817 board follows J4 onto the driver boards",
-     {"CARRIER_X": "centre"}, "refused"),
-    ("the carrier hard right, the driver boards moved left: the button follows onto the BT817",
-     {"CARRIER_X": "right", "DRIVER_BOARDS": _LEFT_DRIVERS}, "refused"),
-    ("the carrier hard right, the driver boards moved left, the button left",
-     {"CARRIER_X": "right", "DRIVER_BOARDS": _LEFT_DRIVERS, "BUTTON_X": -170.0}, "clear"),
-    ("the RF window in the lid", {"RF_WINDOW_ON": "lid"}, "clear"),
-    ("the RF window in the rear plate (DP-ICU-B stands in the way)", {"RF_WINDOW_ON": "rear"},
+     _old(CARRIER_X="centre"), "refused"),
+    ("the RF window in the lid", _old(RF_WINDOW_ON="lid"), "clear"),
+    ("the RF window in the rear plate (DP-ICU-B stands in the way)", _old(RF_WINDOW_ON="rear"),
      "fails"),
     ("the RF window in the floor (the carrier's own copper in the way)",
-     {"RF_WINDOW_ON": "floor"}, "fails"),
-    ("a side screw boss in the RF window", {"SIDE_SCREWS": [(70.0, 20.0), (80.0, 90.0)]},
+     _old(RF_WINDOW_ON="floor"), "fails"),
+    ("a side screw boss in the RF window", _old(SIDE_SCREWS=[(70.0, 20.0), (80.0, 90.0)]),
      "fails"),
     ("no driver boards: the brief's chain, the flex onto the BT817 board",
-     {"DRIVER_BOARDS": [], "FLEX_TO": "BT817"}, "clear"),
-    ("FLEX_TO a board that is not there", {"FLEX_TO": "decoder"}, "refused"),
+     _old(DRIVER_BOARDS=[], FLEX_TO="BT817"), "clear"),
+    ("FLEX_TO a board that is not there", _old(FLEX_TO="decoder"), "refused"),
     ("the HDMI bridge typed over the carrier, carrier below",
-     {"CARRIER_LAYOUT": "below", "DRIVER_BOARDS": _TALL_BRIDGE}, "refused"),
-    ("the drawn carrier without its STEP (stand-in blocks)", {"CARRIER_STEP": False}, "clear"),
+     _old(CARRIER_LAYOUT="below", DRIVER_BOARDS=_TALL_BRIDGE), "refused"),
+    ("the drawn carrier without its STEP (stand-in blocks)", _old(CARRIER_STEP=False), "clear"),
     ("a nonsense value", {"WALL": -3.0}, "refused"),
 ]
