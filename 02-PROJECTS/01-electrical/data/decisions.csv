@@ -2275,3 +2275,22 @@ His words (chat, 2026-10-15): ""now lets examine the batery comaptment to the sa
 **Reading taken (CLAUDE.md §3).** ""Everything that would be in the bin that is loose"" is read as the battery's power parts and their fuses. The amplifier and the upmix are boxes already, and he asked separately to make the amplifier one connector, so docking them is a choice, not taken. The chassis bond is read as D-603's: a ground point on the body outside the box (today's rear star stud, DV42), joined by one heavy lead.
 
 **Consequences in the data.** Y67 is the battery compartment's plan and mock-up; the fuses, cables, grounds and parts change when it freezes. The amplifier's pick (luxury X-012) gains ""its connector board and dock""."
+D-609,electrical,"Battery compartment: heavy runs on bolted studs, the amplifier and upmix docked on one plug, the jump post as the bay's power junction",2026-10-15,standing,,,,,"**The battery compartment's open choices, as the agent picked them.**
+- B1: the four heavy runs leave the bin box on bolted studs under its lid - the 2 AWG PMU feed, the 1/0 starter feed, the 1/0 cranking return and the chassis bond - tightened like the battery leads and undone in reverse.
+- B2: the amplifier and the upmix dock to the bin box. The home-built upmix is built as the amplifier's connector board, carrying one HDP20 24-29 for every speaker output, the head unit's line-level pair with its drain and the remote. The upmix's digital link to the amplifier stays inside. The amplifier's power comes by two short bolted leads from F34 and the box's negative bus.
+- B3: the engine-bay jump post is the bay's power junction. A covered positive post on the body where the 1/0 starter feed arrives, a short 1/0 on to the starter, F17, F18 and the start relay K9 in one small sealed box under it, and a ground post beside it bonded to the block.
+- B4: Ionic's limits on being jumped and charged through the post are read before the post is used.
+
+His words (chat, 2026-10-15): ""1, 2, 3, 4: ypur pick"".
+
+**What follows.**
+- B2's dock is shaped once the amplifier is picked (luxury X-012). That pick now requires a digital input (D-503), screw or plug terminals the connector board can reach, and fins that face open air away from the battery.
+- B3 moves F17 and F18 off the starter's B+ stud and K9 off the inner fender into the junction; the starter, the alternator and K9's coil wire reach it by short leads. At the LS swap only those leads change.
+- Y67 carries all of it.
+
+**B4, read the same day (web, 2026-10-15).** Ionic publishes no S9 manual figure for charge current or jumping; the record already holds its voltage limits: charge to 14.6 V maximum (SP-231), cut-off at 8.0 V (SP-232). A retailer's listing of the 40 Ah S9 (Mealey Marine) says its BMS watches voltage, current and temperature, blocks overcharge and charging in the cold, and keeps 25 % of capacity in reserve for an emergency start, released from Ionic's app or by a long press of the battery's button. Unverified until Ionic's own page or manual says it. So:
+- A flat S9 is first restarted from its own reserve, not the post.
+- Being jumped through the post is sound in principle. The donor's 13-14.5 V is under the S9's 14.6 V; the cells charge back through the 250 A MRBF; the BMS refuses what it must (overcharge, cold).
+- Charging through the post takes a lithium-profile charger, 14.6 V at most, above freezing.
+- Using this car to jump another is not done until Ionic says the S9 may give a jump.
+- The S9's maximum charge current is asked of Ionic before the post is relied on; a retailer's 50 A belongs to Ionic's 125 Ah battery, not this one."
