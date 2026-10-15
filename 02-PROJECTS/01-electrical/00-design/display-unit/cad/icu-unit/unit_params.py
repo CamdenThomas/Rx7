@@ -44,8 +44,9 @@ _RIGHT_DRIVERS = [
     ("scaler", "the display's scaler board, HDMI in, flex out (P118)", 90.0, 60.0, 20.0, 181.0, None),
 ]
 
-# The carrier's two DT13s, by reference, and the record's name for each (housings DP-ICU-A / -B).
-CONNECTOR_NAMES = {"J1": "DP-ICU-A", "J3": "DP-ICU-B"}
+# The carrier's connector, by reference, and the record's name for it: since D-587 one DRC13-24PA,
+# housings DP-ICU (was two DT13s, J1 DP-ICU-A and J3 DP-ICU-B).
+CONNECTOR_NAMES = {"J1": "DP-ICU"}
 
 TABLE = [
     # ----------------------------------------------------------------------- the face (bezel) --
@@ -231,8 +232,9 @@ TABLE = [
     ("OUTLINE_TOL", 0.2, "mm", "a STEP solid no thicker than the board plus this is the board", ""),
     ("COURTYARD_MATCH", 0.5, "mm", "a STEP solid belongs to the footprint whose courtyard holds "
      "its centre, within this (as enclosure_lib.fit_check)", ""),
-    ("SEAL_SQUEEZE_MAX", 0.6, "mm", "an overlap of a DT13 with the plate thinner than this is "
-     "TE's flange seal being squeezed, which is what it is for", ""),
+    ("SEAL_SQUEEZE_MAX", 0.7, "mm", "an overlap of the connector with the plate thinner than this "
+     "is TE's flange seal being squeezed, which is what it is for: 0.6 for the DT13s, 0.7 since the "
+     "DRC13-24PA's seal stands 0.64 proud of its flange in TE's model (D-590)", "the seal's squeeze is TE's to say - confirm"),
     ("DT13_FLANGE_T", 3.0, "mm", "a stand-in DT13's flange thickness (the stand-in only)", ""),
     ("VOLUME_EPS", 1e-4, "mm3", "an overlap smaller than this is numerical noise", ""),
     ("EPS", 1e-6, "mm", "slack when comparing two derived numbers", ""),

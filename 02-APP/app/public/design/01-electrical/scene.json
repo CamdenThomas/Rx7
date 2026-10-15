@@ -1,6 +1,6 @@
 {
  "version": 2,
- "built": "2026-10-14T19:25:12-06:00",
+ "built": "2026-10-14T22:26:28-06:00",
  "project": "01-electrical",
  "frame": {
   "units": "mm",
@@ -81,7 +81,7 @@
    "name": "Display Unit (DU)",
    "kind": "unit",
    "glb": "display-unit.glb",
-   "bytes": 347772,
+   "bytes": 341508,
    "parent": null,
    "place": {
     "x": -523.3,
@@ -96,30 +96,20 @@
    "place_note": "inside 00-CAR zones dash: the binnacle aperture ahead of the driver (modules ICU), the face's centre there",
    "size_mm": {
     "x": 317.0,
-    "y": 128.59,
+    "y": 132.98,
     "z": 136.5
    },
    "origin": "the mock-up's frame: the face's front, bottom-left corner seen from the cabin; x across the face, y back into the dash (= the car's forward), z up",
    "connectors": [
     {
-     "code": "DP-ICU-B",
+     "code": "DP-ICU",
      "at": {
-      "x": 232.02,
-      "y": 126.59,
-      "z": 29.48
+      "x": 255.52,
+      "y": 130.98,
+      "z": 38.48
      },
      "face": "rear",
-     "note": "DT13-12PA, the rear plate's outer face at the cut-out's centre (lower row)"
-    },
-    {
-     "code": "DP-ICU-A",
-     "at": {
-      "x": 286.06,
-      "y": 126.59,
-      "z": 29.45
-     },
-     "face": "rear",
-     "note": "DT13-06PA, the rear plate's outer face at the cut-out's centre (lower row)"
+     "note": "DRC13-24PA, the rear plate's outer face at the cut-out's centre (lower row)"
     }
    ],
    "children": [
@@ -148,10 +138,10 @@
    "name": "Control Unit Remote (CUR)",
    "kind": "unit",
    "glb": "cur.glb",
-   "bytes": 258612,
+   "bytes": 279528,
    "parent": null,
    "place": {
-    "x": -172.329,
+    "x": -180.6,
     "y": -1060.5,
     "z": 724.7,
     "rx": 0.0,
@@ -162,8 +152,8 @@
    "confirm": true,
    "place_note": "inside 00-CAR zones dash: the dash face right of the wheel, high beside the DU (D-514, D-586), the face's centre there",
    "size_mm": {
-    "x": 128.46,
-    "y": 108.44,
+    "x": 145.0,
+    "y": 110.44,
     "z": 67.0
    },
    "origin": "the mock-up's frame: the face's front, bottom-left corner seen from the cabin; x across the face, y back into the dash (= the car's forward), z up",
@@ -171,7 +161,7 @@
     {
      "code": "DP-CUR",
      "at": {
-      "x": 34.34,
+      "x": 42.61,
       "y": 84.66,
       "z": 33.5
      },
@@ -181,7 +171,7 @@
     {
      "code": "DP-CUR-B",
      "at": {
-      "x": 86.07,
+      "x": 94.34,
       "y": 84.66,
       "z": 33.5
      },
@@ -208,7 +198,10 @@
      "inside:control SW3 wink switch (P204 placeholder)",
      "inside:control SW4 wink cap",
      "inside:control SW4 wink switch (P204 placeholder)",
+     "inside:control SW5 wink cap",
+     "inside:control SW5 wink switch (P204 placeholder)",
      "inside:control JS1 mirror stick (P156 placeholder)",
+     "inside:control KN1 screen knob and its encoder board (P219 placeholder)",
      "inside:DP-CUR (DT13-12PA, stand-in)",
      "inside:DP-CUR-B (DT13-06PA, stand-in)"
     ]
@@ -289,7 +282,7 @@
    "name": "ICU carrier PCB H-001",
    "kind": "pcb",
    "glb": "icu-carrier.glb",
-   "bytes": 9325116,
+   "bytes": 8874400,
    "parent": "display-unit",
    "place": {
     "x": 100.524,
@@ -303,8 +296,8 @@
    "confirm": false,
    "size_mm": {
     "x": 112.25,
-    "y": 94.6,
-    "z": 38.93
+    "y": 92.0,
+    "z": 57.05
    },
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
    "connectors": [],
@@ -324,10 +317,10 @@
    "name": "Left plate circuit board",
    "kind": "pcb",
    "glb": "left-plate.glb",
-   "bytes": 1979936,
+   "bytes": 2361376,
    "parent": "cur",
    "place": {
-    "x": 6.229,
+    "x": 5.5,
     "y": 20.6,
     "z": 61.5,
     "rx": 90,
@@ -337,16 +330,16 @@
    "place_from": "mock-up report",
    "confirm": false,
    "size_mm": {
-    "x": 100.0,
+    "x": 118.0,
     "y": 56.0,
-    "z": 15.08
+    "z": 15.1
    },
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
    "connectors": [
     {
      "code": "DP-DCU-E",
      "at": {
-      "x": 94.5,
+      "x": 112.5,
       "y": -21.65,
       "z": 0.0
      },
@@ -394,7 +387,7 @@
      "code": "L1-P",
      "at": {
       "x": -21.75,
-      "y": -32.61,
+      "y": -32.6,
       "z": -0.38
      },
      "face": "connectors",
@@ -404,7 +397,7 @@
      "code": "L1-S1",
      "at": {
       "x": -21.75,
-      "y": -31.14,
+      "y": -31.09,
       "z": -0.38
      },
      "face": "connectors",
@@ -414,7 +407,7 @@
      "code": "L1-S2",
      "at": {
       "x": -21.75,
-      "y": -29.66,
+      "y": -29.58,
       "z": -0.38
      },
      "face": "connectors",
@@ -424,7 +417,7 @@
      "code": "L2-P",
      "at": {
       "x": -21.75,
-      "y": -28.19,
+      "y": -28.07,
       "z": -0.38
      },
      "face": "connectors",
@@ -434,7 +427,7 @@
      "code": "L2-M",
      "at": {
       "x": -21.75,
-      "y": -26.71,
+      "y": -26.56,
       "z": -0.38
      },
      "face": "connectors",
@@ -444,7 +437,7 @@
      "code": "L2-S",
      "at": {
       "x": -21.75,
-      "y": -25.23,
+      "y": -25.05,
       "z": -0.38
      },
      "face": "connectors",
@@ -454,7 +447,7 @@
      "code": "L3-P",
      "at": {
       "x": -21.75,
-      "y": -23.76,
+      "y": -23.54,
       "z": -0.38
      },
      "face": "connectors",
@@ -464,7 +457,7 @@
      "code": "L3-M",
      "at": {
       "x": -21.75,
-      "y": -22.28,
+      "y": -22.03,
       "z": -0.38
      },
      "face": "connectors",
@@ -474,7 +467,7 @@
      "code": "L3-BLW",
      "at": {
       "x": -21.75,
-      "y": -20.81,
+      "y": -20.52,
       "z": -0.38
      },
      "face": "connectors",
@@ -484,7 +477,7 @@
      "code": "L3-S1",
      "at": {
       "x": -21.75,
-      "y": -19.33,
+      "y": -19.01,
       "z": -0.38
      },
      "face": "connectors",
@@ -494,7 +487,7 @@
      "code": "L3-S2",
      "at": {
       "x": -21.75,
-      "y": -17.86,
+      "y": -17.5,
       "z": -0.38
      },
      "face": "connectors",
@@ -504,7 +497,7 @@
      "code": "L3-S3",
      "at": {
       "x": -21.75,
-      "y": -16.38,
+      "y": -16.0,
       "z": -0.38
      },
      "face": "connectors",
@@ -514,7 +507,7 @@
      "code": "L4-P",
      "at": {
       "x": -21.75,
-      "y": -14.91,
+      "y": -14.49,
       "z": -0.38
      },
      "face": "connectors",
@@ -524,7 +517,7 @@
      "code": "L4-M",
      "at": {
       "x": -21.75,
-      "y": -13.43,
+      "y": -12.98,
       "z": -0.38
      },
      "face": "connectors",
@@ -534,7 +527,7 @@
      "code": "L4-S",
      "at": {
       "x": -21.75,
-      "y": -11.95,
+      "y": -11.47,
       "z": -0.38
      },
      "face": "connectors",
@@ -544,7 +537,7 @@
      "code": "L4-S2",
      "at": {
       "x": -21.75,
-      "y": -10.48,
+      "y": -9.96,
       "z": -0.38
      },
      "face": "connectors",
@@ -554,7 +547,7 @@
      "code": "D1",
      "at": {
       "x": -21.75,
-      "y": -9.0,
+      "y": -8.45,
       "z": -0.38
      },
      "face": "connectors",
@@ -564,7 +557,7 @@
      "code": "D2",
      "at": {
       "x": -21.75,
-      "y": -7.53,
+      "y": -6.94,
       "z": -0.38
      },
      "face": "connectors",
@@ -574,27 +567,7 @@
      "code": "DP-DIAG",
      "at": {
       "x": -21.75,
-      "y": -6.05,
-      "z": -0.38
-     },
-     "face": "connectors",
-     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
-    },
-    {
-     "code": "DP-ICU-A",
-     "at": {
-      "x": -21.75,
-      "y": -4.58,
-      "z": -0.38
-     },
-     "face": "connectors",
-     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
-    },
-    {
-     "code": "DP-ICU-B",
-     "at": {
-      "x": -21.75,
-      "y": -3.1,
+      "y": -5.43,
       "z": -0.38
      },
      "face": "connectors",
@@ -604,7 +577,7 @@
      "code": "DP-DCU",
      "at": {
       "x": -21.75,
-      "y": -1.63,
+      "y": -3.92,
       "z": -0.38
      },
      "face": "connectors",
@@ -614,7 +587,7 @@
      "code": "L2-OAT",
      "at": {
       "x": -21.75,
-      "y": -0.15,
+      "y": -2.41,
       "z": -0.38
      },
      "face": "connectors",
@@ -624,7 +597,7 @@
      "code": "L3-CMF",
      "at": {
       "x": -21.75,
-      "y": 1.33,
+      "y": -0.9,
       "z": -0.38
      },
      "face": "connectors",
@@ -634,7 +607,7 @@
      "code": "L3-MOD",
      "at": {
       "x": -21.75,
-      "y": 2.8,
+      "y": 0.6,
       "z": -0.38
      },
      "face": "connectors",
@@ -644,7 +617,7 @@
      "code": "L3-RDR",
      "at": {
       "x": -21.75,
-      "y": 4.28,
+      "y": 2.11,
       "z": -0.38
      },
      "face": "connectors",
@@ -654,7 +627,7 @@
      "code": "L4-RDR",
      "at": {
       "x": -21.75,
-      "y": 5.75,
+      "y": 3.62,
       "z": -0.38
      },
      "face": "connectors",
@@ -664,7 +637,7 @@
      "code": "L3-SD",
      "at": {
       "x": -21.75,
-      "y": 7.23,
+      "y": 5.13,
       "z": -0.38
      },
      "face": "connectors",
@@ -674,7 +647,7 @@
      "code": "L3-SP",
      "at": {
       "x": -21.75,
-      "y": 8.7,
+      "y": 6.64,
       "z": -0.38
      },
      "face": "connectors",
@@ -684,7 +657,7 @@
      "code": "L3-SDM",
      "at": {
       "x": -21.75,
-      "y": 10.18,
+      "y": 8.15,
       "z": -0.38
      },
      "face": "connectors",
@@ -694,7 +667,7 @@
      "code": "L3-SPM",
      "at": {
       "x": -21.75,
-      "y": 11.65,
+      "y": 9.66,
       "z": -0.38
      },
      "face": "connectors",
@@ -704,7 +677,7 @@
      "code": "L4-HRD",
      "at": {
       "x": -21.75,
-      "y": 13.13,
+      "y": 11.17,
       "z": -0.38
      },
      "face": "connectors",
@@ -714,7 +687,7 @@
      "code": "L2-R",
      "at": {
       "x": -21.75,
-      "y": 14.61,
+      "y": 12.68,
       "z": -0.38
      },
      "face": "connectors",
@@ -724,7 +697,7 @@
      "code": "L2-RDR",
      "at": {
       "x": -21.75,
-      "y": 16.08,
+      "y": 14.19,
       "z": -0.38
      },
      "face": "connectors",
@@ -734,7 +707,7 @@
      "code": "L3-SPF-L",
      "at": {
       "x": -21.75,
-      "y": 17.56,
+      "y": 15.7,
       "z": -0.38
      },
      "face": "connectors",
@@ -744,7 +717,7 @@
      "code": "L3-SPF-R",
      "at": {
       "x": -21.75,
-      "y": 19.03,
+      "y": 17.2,
       "z": -0.38
      },
      "face": "connectors",
@@ -754,7 +727,7 @@
      "code": "L3-TW-L",
      "at": {
       "x": -21.75,
-      "y": 20.51,
+      "y": 18.71,
       "z": -0.38
      },
      "face": "connectors",
@@ -764,7 +737,7 @@
      "code": "L3-TW-R",
      "at": {
       "x": -21.75,
-      "y": 21.98,
+      "y": 20.22,
       "z": -0.38
      },
      "face": "connectors",
@@ -774,7 +747,7 @@
      "code": "L3-CTR",
      "at": {
       "x": -21.75,
-      "y": 23.46,
+      "y": 21.73,
       "z": -0.38
      },
      "face": "connectors",
@@ -784,7 +757,7 @@
      "code": "L4-SPR-L",
      "at": {
       "x": -21.75,
-      "y": 24.93,
+      "y": 23.24,
       "z": -0.38
      },
      "face": "connectors",
@@ -794,7 +767,7 @@
      "code": "L4-SPR-R",
      "at": {
       "x": -21.75,
-      "y": 26.41,
+      "y": 24.75,
       "z": -0.38
      },
      "face": "connectors",
@@ -804,7 +777,7 @@
      "code": "L4-SUB",
      "at": {
       "x": -21.75,
-      "y": 27.89,
+      "y": 26.26,
       "z": -0.38
      },
      "face": "connectors",
@@ -814,7 +787,7 @@
      "code": "DP-CUR-B",
      "at": {
       "x": -21.75,
-      "y": 29.36,
+      "y": 27.77,
       "z": -0.38
      },
      "face": "connectors",
@@ -824,7 +797,7 @@
      "code": "L3-RCV",
      "at": {
       "x": -21.75,
-      "y": 30.84,
+      "y": 29.28,
       "z": -0.38
      },
      "face": "connectors",
@@ -834,7 +807,17 @@
      "code": "L4-UPX",
      "at": {
       "x": -21.75,
-      "y": 32.31,
+      "y": 30.79,
+      "z": -0.38
+     },
+     "face": "connectors",
+     "note": "the dash post's receptacle - not modelled; spread along the PMU's connector face (provisional)"
+    },
+    {
+     "code": "DP-ICU",
+     "at": {
+      "x": -21.75,
+      "y": 32.3,
       "z": -0.38
      },
      "face": "connectors",
@@ -2027,7 +2010,7 @@
    "housing": "DP-DCU",
    "leg": "Drop",
    "glb": "connectors/CMC48-500762-0481.glb",
-   "bytes": 157792,
+   "bytes": 157936,
    "parent": "control-unit",
    "place": {
     "x": 90.5,
@@ -2398,7 +2381,7 @@
    "housing": "DP-DCU",
    "leg": "Drop",
    "glb": "connectors/CMC48-64320-1311.glb",
-   "bytes": 423644,
+   "bytes": 423784,
    "parent": "control-unit",
    "place": {
     "x": 90.5,
@@ -2761,20 +2744,20 @@
    "source": "01-electrical housings DP-DCU; connectors/manifest.json CMC48-64320-1311 (stand-in)"
   },
   {
-   "id": "DP-ICU-B:receptacle",
+   "id": "DP-ICU:receptacle",
    "kind": "connector",
-   "name": "DP-ICU-B receptacle · DT13-12PA",
-   "family": "DT13-12PA",
+   "name": "DP-ICU receptacle · DRC13-24PA",
+   "family": "DRC13-24PA",
    "half": "receptacle",
-   "housing": "DP-ICU-B",
+   "housing": "DP-ICU",
    "leg": "Drop",
-   "glb": "connectors/DT13-12PA.glb",
-   "bytes": 1162116,
+   "glb": "connectors/DRC13-24PA.glb",
+   "bytes": 681596,
    "parent": "display-unit",
    "place": {
-    "x": 232.024,
-    "y": 138.331,
-    "z": 29.475,
+    "x": 255.524,
+    "y": 135.688,
+    "z": 38.485,
     "rx": 0.0,
     "ry": 0.0,
     "rz": 0.0
@@ -2783,250 +2766,12 @@
    "confirm": true,
    "place_note": "the mock-up's cut-out at the receptacle's tip (display-unit's rear face)",
    "size_mm": {
-    "x": 59.18,
-    "y": 39.62,
-    "z": 38.63
+    "x": 74.42,
+    "y": 36.32,
+    "z": 57.05
    },
    "origin": "mating face centre; mate along +Y; wires along -Y",
-   "mate": "DP-ICU-B:plug",
-   "cavities": [
-    {
-     "cav": 1,
-     "circuit": "Water temp sender",
-     "awg": "16",
-     "colour": "GRY",
-     "state": "LIVE"
-    },
-    {
-     "cav": 2,
-     "circuit": "Oil-pressure node",
-     "awg": "16",
-     "colour": "GRY",
-     "state": "LIVE"
-    },
-    {
-     "cav": 3,
-     "circuit": "Fuel level sender",
-     "awg": "16",
-     "colour": "GRY",
-     "state": "LIVE"
-    },
-    {
-     "cav": 4,
-     "circuit": "Tachometer pulse",
-     "awg": "16 sh",
-     "colour": "shielded",
-     "state": "LIVE"
-    },
-    {
-     "cav": 5,
-     "circuit": "Charge-lamp line (alternator L)",
-     "awg": "16",
-     "colour": "GRY",
-     "state": "LIVE"
-    },
-    {
-     "cav": 6,
-     "circuit": "Brake warning — fluid level + parking brake",
-     "awg": "16",
-     "colour": "GRY",
-     "state": "LIVE"
-    },
-    {
-     "cav": 7,
-     "circuit": "",
-     "awg": "",
-     "colour": "",
-     "state": "PLUG"
-    },
-    {
-     "cav": 8,
-     "circuit": "Road speed — pulse generator signal",
-     "awg": "16",
-     "colour": "GRY",
-     "state": "LIVE"
-    },
-    {
-     "cav": 9,
-     "circuit": "Phase-2 sensor signal spare",
-     "awg": "16",
-     "colour": "GRY",
-     "state": "CAPPED"
-    },
-    {
-     "cav": 10,
-     "circuit": "Turn LEFT tell-tale sense",
-     "awg": "16",
-     "colour": "RED",
-     "state": "LIVE"
-    },
-    {
-     "cav": 11,
-     "circuit": "Turn RIGHT tell-tale sense",
-     "awg": "16",
-     "colour": "RED",
-     "state": "LIVE"
-    },
-    {
-     "cav": 12,
-     "circuit": "High-beam tell-tale sense",
-     "awg": "16",
-     "colour": "RED",
-     "state": "LIVE"
-    }
-   ],
-   "connectors": [],
-   "children": [],
-   "source": "01-electrical housings DP-ICU-B; connectors/manifest.json DT13-12PA (vendor model)"
-  },
-  {
-   "id": "DP-ICU-B:plug",
-   "kind": "connector",
-   "name": "DP-ICU-B plug · DT06-12S",
-   "family": "DT06-12S",
-   "half": "plug",
-   "housing": "DP-ICU-B",
-   "leg": "Drop",
-   "glb": "connectors/DT06-12S.glb",
-   "bytes": 119536,
-   "parent": "display-unit",
-   "place": {
-    "x": 232.024,
-    "y": 138.331,
-    "z": 29.475,
-    "rx": 0.0,
-    "ry": 0.0,
-    "rz": -180.0
-   },
-   "place_from": "mock-up report",
-   "confirm": true,
-   "place_note": "the mock-up's cut-out at the receptacle's tip (display-unit's rear face)",
-   "size_mm": {
-    "x": 41.0,
-    "y": 31.0,
-    "z": 19.0
-   },
-   "origin": "mating face centre; mate along +Y; wires along -Y",
-   "mate": "DP-ICU-B:receptacle",
-   "cavities": [
-    {
-     "cav": 1,
-     "circuit": "Water temp sender",
-     "awg": "16",
-     "colour": "GRY",
-     "state": "LIVE"
-    },
-    {
-     "cav": 2,
-     "circuit": "Oil-pressure node",
-     "awg": "16",
-     "colour": "GRY",
-     "state": "LIVE"
-    },
-    {
-     "cav": 3,
-     "circuit": "Fuel level sender",
-     "awg": "16",
-     "colour": "GRY",
-     "state": "LIVE"
-    },
-    {
-     "cav": 4,
-     "circuit": "Tachometer pulse",
-     "awg": "16 sh",
-     "colour": "shielded",
-     "state": "LIVE"
-    },
-    {
-     "cav": 5,
-     "circuit": "Charge-lamp line (alternator L)",
-     "awg": "16",
-     "colour": "GRY",
-     "state": "LIVE"
-    },
-    {
-     "cav": 6,
-     "circuit": "Brake warning — fluid level + parking brake",
-     "awg": "16",
-     "colour": "GRY",
-     "state": "LIVE"
-    },
-    {
-     "cav": 7,
-     "circuit": "",
-     "awg": "",
-     "colour": "",
-     "state": "PLUG"
-    },
-    {
-     "cav": 8,
-     "circuit": "Road speed — pulse generator signal",
-     "awg": "16",
-     "colour": "GRY",
-     "state": "LIVE"
-    },
-    {
-     "cav": 9,
-     "circuit": "Phase-2 sensor signal spare",
-     "awg": "16",
-     "colour": "GRY",
-     "state": "CAPPED"
-    },
-    {
-     "cav": 10,
-     "circuit": "Turn LEFT tell-tale sense",
-     "awg": "16",
-     "colour": "RED",
-     "state": "LIVE"
-    },
-    {
-     "cav": 11,
-     "circuit": "Turn RIGHT tell-tale sense",
-     "awg": "16",
-     "colour": "RED",
-     "state": "LIVE"
-    },
-    {
-     "cav": 12,
-     "circuit": "High-beam tell-tale sense",
-     "awg": "16",
-     "colour": "RED",
-     "state": "LIVE"
-    }
-   ],
-   "connectors": [],
-   "children": [],
-   "source": "01-electrical housings DP-ICU-B; connectors/manifest.json DT06-12S (stand-in)"
-  },
-  {
-   "id": "DP-ICU-A:receptacle",
-   "kind": "connector",
-   "name": "DP-ICU-A receptacle · DT13-06PA",
-   "family": "DT13-06PA",
-   "half": "receptacle",
-   "housing": "DP-ICU-A",
-   "leg": "Drop",
-   "glb": "connectors/DT13-06PA.glb",
-   "bytes": 662840,
-   "parent": "display-unit",
-   "place": {
-    "x": 286.061,
-    "y": 138.331,
-    "z": 29.455,
-    "rx": 0.0,
-    "ry": 0.0,
-    "rz": 0.0
-   },
-   "place_from": "mock-up report",
-   "confirm": true,
-   "place_note": "the mock-up's cut-out at the receptacle's tip (display-unit's rear face)",
-   "size_mm": {
-    "x": 42.8,
-    "y": 39.5,
-    "z": 38.58
-   },
-   "origin": "mating face centre; mate along +Y; wires along -Y",
-   "mate": "DP-ICU-A:plug",
+   "mate": "DP-ICU:plug",
    "cavities": [
     {
      "cav": 1,
@@ -3044,9 +2789,9 @@
     },
     {
      "cav": 3,
-     "circuit": "Ground",
+     "circuit": "+12 V ignition — the display's backlight (F16)",
      "awg": "16",
-     "colour": "BLK",
+     "colour": "RED",
      "state": "LIVE"
     },
     {
@@ -3065,31 +2810,157 @@
     },
     {
      "cav": 6,
-     "circuit": "+12 V ignition — the display's backlight (F16)",
+     "circuit": "Tachometer pulse",
+     "awg": "16 sh",
+     "colour": "shielded",
+     "state": "LIVE"
+    },
+    {
+     "cav": 7,
+     "circuit": "Water temp sender",
+     "awg": "16",
+     "colour": "GRY",
+     "state": "LIVE"
+    },
+    {
+     "cav": 8,
+     "circuit": "Oil-pressure node",
+     "awg": "16",
+     "colour": "GRY",
+     "state": "LIVE"
+    },
+    {
+     "cav": 9,
+     "circuit": "Fuel level sender",
+     "awg": "16",
+     "colour": "GRY",
+     "state": "LIVE"
+    },
+    {
+     "cav": 10,
+     "circuit": "Brake warning — fluid level + parking brake",
+     "awg": "16",
+     "colour": "GRY",
+     "state": "LIVE"
+    },
+    {
+     "cav": 11,
+     "circuit": "Charge-lamp line (alternator L)",
+     "awg": "16",
+     "colour": "GRY",
+     "state": "LIVE"
+    },
+    {
+     "cav": 12,
+     "circuit": "",
+     "awg": "",
+     "colour": "",
+     "state": "PLUG"
+    },
+    {
+     "cav": 13,
+     "circuit": "",
+     "awg": "",
+     "colour": "",
+     "state": "PLUG"
+    },
+    {
+     "cav": 14,
+     "circuit": "Road speed — pulse generator signal",
+     "awg": "16",
+     "colour": "GRY",
+     "state": "LIVE"
+    },
+    {
+     "cav": 15,
+     "circuit": "Phase-2 sensor signal spare",
+     "awg": "16",
+     "colour": "GRY",
+     "state": "CAPPED"
+    },
+    {
+     "cav": 16,
+     "circuit": "Turn LEFT tell-tale sense",
      "awg": "16",
      "colour": "RED",
      "state": "LIVE"
+    },
+    {
+     "cav": 17,
+     "circuit": "Turn RIGHT tell-tale sense",
+     "awg": "16",
+     "colour": "RED",
+     "state": "LIVE"
+    },
+    {
+     "cav": 18,
+     "circuit": "",
+     "awg": "",
+     "colour": "",
+     "state": "PLUG"
+    },
+    {
+     "cav": 19,
+     "circuit": "",
+     "awg": "",
+     "colour": "",
+     "state": "PLUG"
+    },
+    {
+     "cav": 20,
+     "circuit": "",
+     "awg": "",
+     "colour": "",
+     "state": "PLUG"
+    },
+    {
+     "cav": 21,
+     "circuit": "Ground",
+     "awg": "16",
+     "colour": "BLK",
+     "state": "LIVE"
+    },
+    {
+     "cav": 22,
+     "circuit": "High-beam tell-tale sense",
+     "awg": "16",
+     "colour": "RED",
+     "state": "LIVE"
+    },
+    {
+     "cav": 23,
+     "circuit": "",
+     "awg": "",
+     "colour": "",
+     "state": "PLUG"
+    },
+    {
+     "cav": 24,
+     "circuit": "",
+     "awg": "",
+     "colour": "",
+     "state": "PLUG"
     }
    ],
    "connectors": [],
    "children": [],
-   "source": "01-electrical housings DP-ICU-A; connectors/manifest.json DT13-06PA (vendor model)"
+   "source": "01-electrical housings DP-ICU; connectors/manifest.json DRC13-24PA (vendor model)"
   },
   {
-   "id": "DP-ICU-A:plug",
+   "id": "DP-ICU:plug",
    "kind": "connector",
-   "name": "DP-ICU-A plug · DT06-6S",
-   "family": "DT06-6S",
+   "name": "DP-ICU plug · DRC16-24SA",
+   "family": "DRC16-24SA",
    "half": "plug",
-   "housing": "DP-ICU-A",
+   "housing": "DP-ICU",
    "leg": "Drop",
-   "glb": "connectors/DT06-6S.glb",
-   "bytes": 68836,
+   "glb": "connectors/DRC16-24SA.glb",
+   "bytes": 221220,
    "parent": "display-unit",
    "place": {
-    "x": 286.061,
-    "y": 138.331,
-    "z": 29.455,
+    "x": 255.524,
+    "y": 135.688,
+    "z": 38.485,
     "rx": 0.0,
     "ry": 0.0,
     "rz": -180.0
@@ -3098,12 +2969,12 @@
    "confirm": true,
    "place_note": "the mock-up's cut-out at the receptacle's tip (display-unit's rear face)",
    "size_mm": {
-    "x": 24.0,
-    "y": 31.0,
-    "z": 20.0
+    "x": 53.34,
+    "y": 40.64,
+    "z": 29.16
    },
    "origin": "mating face centre; mate along +Y; wires along -Y",
-   "mate": "DP-ICU-A:receptacle",
+   "mate": "DP-ICU:receptacle",
    "cavities": [
     {
      "cav": 1,
@@ -3121,9 +2992,9 @@
     },
     {
      "cav": 3,
-     "circuit": "Ground",
+     "circuit": "+12 V ignition — the display's backlight (F16)",
      "awg": "16",
-     "colour": "BLK",
+     "colour": "RED",
      "state": "LIVE"
     },
     {
@@ -3142,15 +3013,141 @@
     },
     {
      "cav": 6,
-     "circuit": "+12 V ignition — the display's backlight (F16)",
+     "circuit": "Tachometer pulse",
+     "awg": "16 sh",
+     "colour": "shielded",
+     "state": "LIVE"
+    },
+    {
+     "cav": 7,
+     "circuit": "Water temp sender",
+     "awg": "16",
+     "colour": "GRY",
+     "state": "LIVE"
+    },
+    {
+     "cav": 8,
+     "circuit": "Oil-pressure node",
+     "awg": "16",
+     "colour": "GRY",
+     "state": "LIVE"
+    },
+    {
+     "cav": 9,
+     "circuit": "Fuel level sender",
+     "awg": "16",
+     "colour": "GRY",
+     "state": "LIVE"
+    },
+    {
+     "cav": 10,
+     "circuit": "Brake warning — fluid level + parking brake",
+     "awg": "16",
+     "colour": "GRY",
+     "state": "LIVE"
+    },
+    {
+     "cav": 11,
+     "circuit": "Charge-lamp line (alternator L)",
+     "awg": "16",
+     "colour": "GRY",
+     "state": "LIVE"
+    },
+    {
+     "cav": 12,
+     "circuit": "",
+     "awg": "",
+     "colour": "",
+     "state": "PLUG"
+    },
+    {
+     "cav": 13,
+     "circuit": "",
+     "awg": "",
+     "colour": "",
+     "state": "PLUG"
+    },
+    {
+     "cav": 14,
+     "circuit": "Road speed — pulse generator signal",
+     "awg": "16",
+     "colour": "GRY",
+     "state": "LIVE"
+    },
+    {
+     "cav": 15,
+     "circuit": "Phase-2 sensor signal spare",
+     "awg": "16",
+     "colour": "GRY",
+     "state": "CAPPED"
+    },
+    {
+     "cav": 16,
+     "circuit": "Turn LEFT tell-tale sense",
      "awg": "16",
      "colour": "RED",
      "state": "LIVE"
+    },
+    {
+     "cav": 17,
+     "circuit": "Turn RIGHT tell-tale sense",
+     "awg": "16",
+     "colour": "RED",
+     "state": "LIVE"
+    },
+    {
+     "cav": 18,
+     "circuit": "",
+     "awg": "",
+     "colour": "",
+     "state": "PLUG"
+    },
+    {
+     "cav": 19,
+     "circuit": "",
+     "awg": "",
+     "colour": "",
+     "state": "PLUG"
+    },
+    {
+     "cav": 20,
+     "circuit": "",
+     "awg": "",
+     "colour": "",
+     "state": "PLUG"
+    },
+    {
+     "cav": 21,
+     "circuit": "Ground",
+     "awg": "16",
+     "colour": "BLK",
+     "state": "LIVE"
+    },
+    {
+     "cav": 22,
+     "circuit": "High-beam tell-tale sense",
+     "awg": "16",
+     "colour": "RED",
+     "state": "LIVE"
+    },
+    {
+     "cav": 23,
+     "circuit": "",
+     "awg": "",
+     "colour": "",
+     "state": "PLUG"
+    },
+    {
+     "cav": 24,
+     "circuit": "",
+     "awg": "",
+     "colour": "",
+     "state": "PLUG"
     }
    ],
    "connectors": [],
    "children": [],
-   "source": "01-electrical housings DP-ICU-A; connectors/manifest.json DT06-6S (stand-in)"
+   "source": "01-electrical housings DP-ICU; connectors/manifest.json DRC16-24SA (stand-in)"
   },
   {
    "id": "DP-CUR:receptacle",
@@ -3161,10 +3158,10 @@
    "housing": "DP-CUR",
    "leg": "Drop",
    "glb": "connectors/DT13-12PA.glb",
-   "bytes": 1162116,
+   "bytes": 1162256,
    "parent": "cur",
    "place": {
-    "x": 34.338,
+    "x": 42.609,
     "y": 96.441,
     "z": 33.5,
     "rx": 0.0,
@@ -3280,10 +3277,10 @@
    "housing": "DP-CUR",
    "leg": "Drop",
    "glb": "connectors/DT06-12S.glb",
-   "bytes": 119536,
+   "bytes": 119680,
    "parent": "cur",
    "place": {
-    "x": 34.338,
+    "x": 42.609,
     "y": 96.441,
     "z": 33.5,
     "rx": 0.0,
@@ -3399,10 +3396,10 @@
    "housing": "DP-CUR-B",
    "leg": "Drop",
    "glb": "connectors/DT13-06PA.glb",
-   "bytes": 662840,
+   "bytes": 662984,
    "parent": "cur",
    "place": {
-    "x": 86.067,
+    "x": 94.338,
     "y": 96.441,
     "z": 33.5,
     "rx": 0.0,
@@ -3476,10 +3473,10 @@
    "housing": "DP-CUR-B",
    "leg": "Drop",
    "glb": "connectors/DT06-6S.glb",
-   "bytes": 68836,
+   "bytes": 68976,
    "parent": "cur",
    "place": {
-    "x": 86.067,
+    "x": 94.338,
     "y": 96.441,
     "z": 33.5,
     "rx": 0.0,
@@ -3553,7 +3550,7 @@
    "housing": "L1-P",
    "leg": "L1 Engine",
    "glb": "connectors/DTP04-4P.glb",
-   "bytes": 44132,
+   "bytes": 44276,
    "parent": null,
    "place": {
     "x": -231.375,
@@ -3616,7 +3613,7 @@
    "housing": "L1-P",
    "leg": "L1 Engine",
    "glb": "connectors/DTP06-4S.glb",
-   "bytes": 51924,
+   "bytes": 52064,
    "parent": null,
    "place": {
     "x": -231.375,
@@ -3679,7 +3676,7 @@
    "housing": "L1-S1",
    "leg": "L1 Engine",
    "glb": "connectors/DT04-12P.glb",
-   "bytes": 89224,
+   "bytes": 89368,
    "parent": null,
    "place": {
     "x": -177.375,
@@ -3798,7 +3795,7 @@
    "housing": "L1-S1",
    "leg": "L1 Engine",
    "glb": "connectors/DT06-12S.glb",
-   "bytes": 119536,
+   "bytes": 119680,
    "parent": null,
    "place": {
     "x": -177.375,
@@ -3917,7 +3914,7 @@
    "housing": "L1-S2",
    "leg": "L1 Engine",
    "glb": "connectors/DT04-12P.glb",
-   "bytes": 89224,
+   "bytes": 89368,
    "parent": null,
    "place": {
     "x": -116.375,
@@ -4036,7 +4033,7 @@
    "housing": "L1-S2",
    "leg": "L1 Engine",
    "glb": "connectors/DT06-12S.glb",
-   "bytes": 119536,
+   "bytes": 119680,
    "parent": null,
    "place": {
     "x": -116.375,
@@ -4155,7 +4152,7 @@
    "housing": "L2-P",
    "leg": "L2 Front",
    "glb": "connectors/DTP04-4P.glb",
-   "bytes": 44132,
+   "bytes": 44276,
    "parent": null,
    "place": {
     "x": -251.375,
@@ -4218,7 +4215,7 @@
    "housing": "L2-P",
    "leg": "L2 Front",
    "glb": "connectors/DTP06-4S.glb",
-   "bytes": 51924,
+   "bytes": 52064,
    "parent": null,
    "place": {
     "x": -251.375,
@@ -4281,7 +4278,7 @@
    "housing": "L2-M",
    "leg": "L2 Front",
    "glb": "connectors/DT04-8P.glb",
-   "bytes": 66692,
+   "bytes": 66832,
    "parent": null,
    "place": {
     "x": -199.375,
@@ -4372,7 +4369,7 @@
    "housing": "L2-M",
    "leg": "L2 Front",
    "glb": "connectors/DT06-8S.glb",
-   "bytes": 85736,
+   "bytes": 85876,
    "parent": null,
    "place": {
     "x": -199.375,
@@ -4463,7 +4460,7 @@
    "housing": "L2-S",
    "leg": "L2 Front",
    "glb": "connectors/DT04-6P.glb",
-   "bytes": 55392,
+   "bytes": 55536,
    "parent": null,
    "place": {
     "x": -148.375,
@@ -4540,7 +4537,7 @@
    "housing": "L2-S",
    "leg": "L2 Front",
    "glb": "connectors/DT06-6S.glb",
-   "bytes": 68836,
+   "bytes": 68976,
    "parent": null,
    "place": {
     "x": -148.375,
@@ -4617,7 +4614,7 @@
    "housing": "L2-R",
    "leg": "L2 Front",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44152,
+   "bytes": 44292,
    "parent": null,
    "place": {
     "x": -105.875,
@@ -4680,7 +4677,7 @@
    "housing": "L2-R",
    "leg": "L2 Front",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51960,
+   "bytes": 52100,
    "parent": null,
    "place": {
     "x": -105.875,
@@ -4743,7 +4740,7 @@
    "housing": "L3-P",
    "leg": "L3 Dash",
    "glb": "connectors/DTP04-2P.glb",
-   "bytes": 32864,
+   "bytes": 33008,
    "parent": null,
    "place": {
     "x": -323.875,
@@ -4792,7 +4789,7 @@
    "housing": "L3-P",
    "leg": "L3 Dash",
    "glb": "connectors/DTP06-2S.glb",
-   "bytes": 35052,
+   "bytes": 35196,
    "parent": null,
    "place": {
     "x": -323.875,
@@ -4841,7 +4838,7 @@
    "housing": "L3-M",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32940,
+   "bytes": 33080,
    "parent": null,
    "place": {
     "x": -283.875,
@@ -4890,7 +4887,7 @@
    "housing": "L3-M",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 35064,
+   "bytes": 35204,
    "parent": null,
    "place": {
     "x": -283.875,
@@ -4939,7 +4936,7 @@
    "housing": "L3-S1",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-12P.glb",
-   "bytes": 89224,
+   "bytes": 89368,
    "parent": null,
    "place": {
     "x": -234.375,
@@ -5058,7 +5055,7 @@
    "housing": "L3-S1",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-12S.glb",
-   "bytes": 119536,
+   "bytes": 119680,
    "parent": null,
    "place": {
     "x": -234.375,
@@ -5177,7 +5174,7 @@
    "housing": "L3-S2",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-12P.glb",
-   "bytes": 89224,
+   "bytes": 89368,
    "parent": null,
    "place": {
     "x": -173.375,
@@ -5296,7 +5293,7 @@
    "housing": "L3-S2",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-12S.glb",
-   "bytes": 119536,
+   "bytes": 119680,
    "parent": null,
    "place": {
     "x": -173.375,
@@ -5415,7 +5412,7 @@
    "housing": "L3-S3",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-8P.glb",
-   "bytes": 66692,
+   "bytes": 66832,
    "parent": null,
    "place": {
     "x": -114.375,
@@ -5506,7 +5503,7 @@
    "housing": "L3-S3",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-8S.glb",
-   "bytes": 85736,
+   "bytes": 85876,
    "parent": null,
    "place": {
     "x": -114.375,
@@ -5597,7 +5594,7 @@
    "housing": "L4-P",
    "leg": "L4 Rear",
    "glb": "connectors/DTP04-4P.glb",
-   "bytes": 44132,
+   "bytes": 44276,
    "parent": null,
    "place": {
     "x": -284.375,
@@ -5660,7 +5657,7 @@
    "housing": "L4-P",
    "leg": "L4 Rear",
    "glb": "connectors/DTP06-4S.glb",
-   "bytes": 51924,
+   "bytes": 52064,
    "parent": null,
    "place": {
     "x": -284.375,
@@ -5723,7 +5720,7 @@
    "housing": "L4-M",
    "leg": "L4 Rear",
    "glb": "connectors/DT04-12P.glb",
-   "bytes": 89224,
+   "bytes": 89368,
    "parent": null,
    "place": {
     "x": -230.375,
@@ -5842,7 +5839,7 @@
    "housing": "L4-M",
    "leg": "L4 Rear",
    "glb": "connectors/DT06-12S.glb",
-   "bytes": 119536,
+   "bytes": 119680,
    "parent": null,
    "place": {
     "x": -230.375,
@@ -5961,7 +5958,7 @@
    "housing": "L4-S",
    "leg": "L4 Rear",
    "glb": "connectors/DT04-8P.glb",
-   "bytes": 66692,
+   "bytes": 66832,
    "parent": null,
    "place": {
     "x": -171.375,
@@ -6052,7 +6049,7 @@
    "housing": "L4-S",
    "leg": "L4 Rear",
    "glb": "connectors/DT06-8S.glb",
-   "bytes": 85736,
+   "bytes": 85876,
    "parent": null,
    "place": {
     "x": -171.375,
@@ -6143,7 +6140,7 @@
    "housing": "L4-S2",
    "leg": "L4 Rear",
    "glb": "connectors/DT04-8P.glb",
-   "bytes": 66692,
+   "bytes": 66832,
    "parent": null,
    "place": {
     "x": -114.375,
@@ -6234,7 +6231,7 @@
    "housing": "L4-S2",
    "leg": "L4 Rear",
    "glb": "connectors/DT06-8S.glb",
-   "bytes": 85736,
+   "bytes": 85876,
    "parent": null,
    "place": {
     "x": -114.375,
@@ -6325,7 +6322,7 @@
    "housing": "L3-BLW",
    "leg": "L3 Dash",
    "glb": "connectors/DTP04-2P.glb",
-   "bytes": 32864,
+   "bytes": 33008,
    "parent": null,
    "place": {
     "x": 315.0,
@@ -6374,7 +6371,7 @@
    "housing": "L3-BLW",
    "leg": "L3 Dash",
    "glb": "connectors/DTP06-2S.glb",
-   "bytes": 35052,
+   "bytes": 35196,
    "parent": null,
    "place": {
     "x": 315.0,
@@ -6423,7 +6420,7 @@
    "housing": "D1",
    "leg": "L4 Rear (sill)",
    "glb": "connectors/DT04-8P.glb",
-   "bytes": 66692,
+   "bytes": 66832,
    "parent": null,
    "place": {
     "x": -611.5,
@@ -6514,7 +6511,7 @@
    "housing": "D1",
    "leg": "L4 Rear (sill)",
    "glb": "connectors/DT06-8S.glb",
-   "bytes": 85736,
+   "bytes": 85876,
    "parent": null,
    "place": {
     "x": -611.5,
@@ -6605,7 +6602,7 @@
    "housing": "D2",
    "leg": "L4 Rear (sill)",
    "glb": "connectors/DT04-8P.glb",
-   "bytes": 66692,
+   "bytes": 66832,
    "parent": null,
    "place": {
     "x": -569.5,
@@ -6696,7 +6693,7 @@
    "housing": "D2",
    "leg": "L4 Rear (sill)",
    "glb": "connectors/DT06-8S.glb",
-   "bytes": 85736,
+   "bytes": 85876,
    "parent": null,
    "place": {
     "x": -569.5,
@@ -6787,7 +6784,7 @@
    "housing": "DP-DIAG",
    "leg": "Drop",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44152,
+   "bytes": 44292,
    "parent": null,
    "place": {
     "x": 469.5,
@@ -6850,7 +6847,7 @@
    "housing": "DP-DIAG",
    "leg": "Drop",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51960,
+   "bytes": 52100,
    "parent": null,
    "place": {
     "x": 469.5,
@@ -6913,7 +6910,7 @@
    "housing": "L2-OAT",
    "leg": "L2 Front",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32940,
+   "bytes": 33080,
    "parent": null,
    "place": {
     "x": 0.0,
@@ -6962,7 +6959,7 @@
    "housing": "L2-OAT",
    "leg": "L2 Front",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 35064,
+   "bytes": 35204,
    "parent": null,
    "place": {
     "x": 0.0,
@@ -7011,7 +7008,7 @@
    "housing": "L3-CMF",
    "leg": "L3 Dash",
    "glb": "connectors/DTP04-2P.glb",
-   "bytes": 32864,
+   "bytes": 33008,
    "parent": null,
    "place": {
     "x": 43.1,
@@ -7060,7 +7057,7 @@
    "housing": "L3-CMF",
    "leg": "L3 Dash",
    "glb": "connectors/DTP06-2S.glb",
-   "bytes": 35052,
+   "bytes": 35196,
    "parent": null,
    "place": {
     "x": 43.1,
@@ -7109,7 +7106,7 @@
    "housing": "L3-MOD",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32940,
+   "bytes": 33080,
    "parent": null,
    "place": {
     "x": -82.9,
@@ -7158,7 +7155,7 @@
    "housing": "L3-MOD",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 35064,
+   "bytes": 35204,
    "parent": null,
    "place": {
     "x": -82.9,
@@ -7207,7 +7204,7 @@
    "housing": "L3-RDR",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44152,
+   "bytes": 44292,
    "parent": null,
    "place": {
     "x": 160.0,
@@ -7270,7 +7267,7 @@
    "housing": "L3-RDR",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51960,
+   "bytes": 52100,
    "parent": null,
    "place": {
     "x": 160.0,
@@ -7333,7 +7330,7 @@
    "housing": "L4-RDR",
    "leg": "L4 Rear",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44152,
+   "bytes": 44292,
    "parent": null,
    "place": {
     "x": 0.0,
@@ -7396,7 +7393,7 @@
    "housing": "L4-RDR",
    "leg": "L4 Rear",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51960,
+   "bytes": 52100,
    "parent": null,
    "place": {
     "x": 0.0,
@@ -7459,7 +7456,7 @@
    "housing": "L3-SD",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44152,
+   "bytes": 44292,
    "parent": null,
    "place": {
     "x": -280.1,
@@ -7522,7 +7519,7 @@
    "housing": "L3-SD",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51960,
+   "bytes": 52100,
    "parent": null,
    "place": {
     "x": -280.1,
@@ -7585,7 +7582,7 @@
    "housing": "L3-SP",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44152,
+   "bytes": 44292,
    "parent": null,
    "place": {
     "x": 383.1,
@@ -7648,7 +7645,7 @@
    "housing": "L3-SP",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51960,
+   "bytes": 52100,
    "parent": null,
    "place": {
     "x": 383.1,
@@ -7711,7 +7708,7 @@
    "housing": "L3-SDM",
    "leg": "L3 Dash",
    "glb": "connectors/DTP04-2P.glb",
-   "bytes": 32864,
+   "bytes": 33008,
    "parent": null,
    "place": {
     "x": -254.1,
@@ -7760,7 +7757,7 @@
    "housing": "L3-SDM",
    "leg": "L3 Dash",
    "glb": "connectors/DTP06-2S.glb",
-   "bytes": 35052,
+   "bytes": 35196,
    "parent": null,
    "place": {
     "x": -254.1,
@@ -7809,7 +7806,7 @@
    "housing": "L3-SPM",
    "leg": "L3 Dash",
    "glb": "connectors/DTP04-2P.glb",
-   "bytes": 32864,
+   "bytes": 33008,
    "parent": null,
    "place": {
     "x": 409.1,
@@ -7858,7 +7855,7 @@
    "housing": "L3-SPM",
    "leg": "L3 Dash",
    "glb": "connectors/DTP06-2S.glb",
-   "bytes": 35052,
+   "bytes": 35196,
    "parent": null,
    "place": {
     "x": 409.1,
@@ -7907,7 +7904,7 @@
    "housing": "L4-HRD",
    "leg": "L4 Rear",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44152,
+   "bytes": 44292,
    "parent": null,
    "place": {
     "x": 90.0,
@@ -7970,7 +7967,7 @@
    "housing": "L4-HRD",
    "leg": "L4 Rear",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51960,
+   "bytes": 52100,
    "parent": null,
    "place": {
     "x": 90.0,
@@ -8033,7 +8030,7 @@
    "housing": "L2-RDR",
    "leg": "L2 Front",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44152,
+   "bytes": 44292,
    "parent": null,
    "place": {
     "x": 90.0,
@@ -8096,7 +8093,7 @@
    "housing": "L2-RDR",
    "leg": "L2 Front",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51960,
+   "bytes": 52100,
    "parent": null,
    "place": {
     "x": 90.0,
@@ -8159,7 +8156,7 @@
    "housing": "L3-SPF-L",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32940,
+   "bytes": 33080,
    "parent": null,
    "place": {
     "x": -645.0,
@@ -8208,7 +8205,7 @@
    "housing": "L3-SPF-L",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 35064,
+   "bytes": 35204,
    "parent": null,
    "place": {
     "x": -645.0,
@@ -8257,7 +8254,7 @@
    "housing": "L3-SPF-R",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32940,
+   "bytes": 33080,
    "parent": null,
    "place": {
     "x": 820.0,
@@ -8306,7 +8303,7 @@
    "housing": "L3-SPF-R",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 35064,
+   "bytes": 35204,
    "parent": null,
    "place": {
     "x": 820.0,
@@ -8355,7 +8352,7 @@
    "housing": "L3-TW-L",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32940,
+   "bytes": 33080,
    "parent": null,
    "place": {
     "x": -779.3,
@@ -8404,7 +8401,7 @@
    "housing": "L3-TW-L",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 35064,
+   "bytes": 35204,
    "parent": null,
    "place": {
     "x": -779.3,
@@ -8453,7 +8450,7 @@
    "housing": "L3-TW-R",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32940,
+   "bytes": 33080,
    "parent": null,
    "place": {
     "x": 779.3,
@@ -8502,7 +8499,7 @@
    "housing": "L3-TW-R",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 35064,
+   "bytes": 35204,
    "parent": null,
    "place": {
     "x": 779.3,
@@ -8551,7 +8548,7 @@
    "housing": "L3-CTR",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32940,
+   "bytes": 33080,
    "parent": null,
    "place": {
     "x": 55.0,
@@ -8600,7 +8597,7 @@
    "housing": "L3-CTR",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 35064,
+   "bytes": 35204,
    "parent": null,
    "place": {
     "x": 55.0,
@@ -8649,7 +8646,7 @@
    "housing": "L4-SPR-L",
    "leg": "L4 Rear",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32940,
+   "bytes": 33080,
    "parent": null,
    "place": {
     "x": -645.0,
@@ -8698,7 +8695,7 @@
    "housing": "L4-SPR-L",
    "leg": "L4 Rear",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 35064,
+   "bytes": 35204,
    "parent": null,
    "place": {
     "x": -645.0,
@@ -8747,7 +8744,7 @@
    "housing": "L4-SPR-R",
    "leg": "L4 Rear",
    "glb": "connectors/DT04-2P.glb",
-   "bytes": 32940,
+   "bytes": 33080,
    "parent": null,
    "place": {
     "x": 820.0,
@@ -8796,7 +8793,7 @@
    "housing": "L4-SPR-R",
    "leg": "L4 Rear",
    "glb": "connectors/DT06-2S.glb",
-   "bytes": 35064,
+   "bytes": 35204,
    "parent": null,
    "place": {
     "x": 820.0,
@@ -8845,7 +8842,7 @@
    "housing": "L4-SUB",
    "leg": "L4 Rear",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44152,
+   "bytes": 44292,
    "parent": null,
    "place": {
     "x": -275.0,
@@ -8908,7 +8905,7 @@
    "housing": "L4-SUB",
    "leg": "L4 Rear",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51960,
+   "bytes": 52100,
    "parent": null,
    "place": {
     "x": -275.0,
@@ -8971,7 +8968,7 @@
    "housing": "L3-RCV",
    "leg": "L3 Dash",
    "glb": "connectors/DT04-8P.glb",
-   "bytes": 66692,
+   "bytes": 66832,
    "parent": null,
    "place": {
     "x": 160.0,
@@ -9062,7 +9059,7 @@
    "housing": "L3-RCV",
    "leg": "L3 Dash",
    "glb": "connectors/DT06-8S.glb",
-   "bytes": 85736,
+   "bytes": 85876,
    "parent": null,
    "place": {
     "x": 160.0,
@@ -9153,7 +9150,7 @@
    "housing": "L4-UPX",
    "leg": "L4 Rear",
    "glb": "connectors/DT04-4P.glb",
-   "bytes": 44152,
+   "bytes": 44292,
    "parent": null,
    "place": {
     "x": 455.0,
@@ -9216,7 +9213,7 @@
    "housing": "L4-UPX",
    "leg": "L4 Rear",
    "glb": "connectors/DT06-4S.glb",
-   "bytes": 51960,
+   "bytes": 52100,
    "parent": null,
    "place": {
     "x": 455.0,
@@ -13522,57 +13519,6 @@
    "confirm": false
   },
   {
-   "id": "DP-ICU-A",
-   "code": "DP-ICU-A",
-   "from": {
-    "part": "display-unit",
-    "connector": "DP-ICU-A"
-   },
-   "to": {
-    "part": "pmu",
-    "connector": "DP-ICU-A"
-   },
-   "label": "DP-ICU-A · DT13 6-way",
-   "ways": 6,
-   "carries": [
-    "+12 V switched — ICU logic",
-    "Illumination — the ICU's dimming reference",
-    "Ground",
-    "CAN2 H",
-    "CAN2 L",
-    "+12 V ignition — the display's backlight"
-   ],
-   "confirm": false
-  },
-  {
-   "id": "DP-ICU-B",
-   "code": "DP-ICU-B",
-   "from": {
-    "part": "display-unit",
-    "connector": "DP-ICU-B"
-   },
-   "to": {
-    "part": "pmu",
-    "connector": "DP-ICU-B"
-   },
-   "label": "DP-ICU-B · DT13 12-way",
-   "ways": 12,
-   "carries": [
-    "Water temp sender",
-    "Oil-pressure node",
-    "Fuel level sender",
-    "Tachometer pulse",
-    "Charge-lamp line",
-    "Brake warning — fluid level + parking brake",
-    "Road speed — pulse generator signal",
-    "Phase-2 sensor signal spare",
-    "Turn LEFT tell-tale sense",
-    "Turn RIGHT tell-tale sense",
-    "High-beam tell-tale sense"
-   ],
-   "confirm": false
-  },
-  {
    "id": "DP-DCU",
    "code": "DP-DCU",
    "from": {
@@ -14120,6 +14066,40 @@
     "Upmix box remote turn-on"
    ],
    "confirm": false
+  },
+  {
+   "id": "DP-ICU",
+   "code": "DP-ICU",
+   "from": {
+    "part": "display-unit",
+    "connector": "DP-ICU"
+   },
+   "to": {
+    "part": "pmu",
+    "connector": "DP-ICU"
+   },
+   "label": "DP-ICU · DRC13 24-way",
+   "ways": 24,
+   "carries": [
+    "+12 V switched — ICU logic",
+    "Illumination — the ICU's dimming reference",
+    "+12 V ignition — the display's backlight",
+    "CAN2 H",
+    "CAN2 L",
+    "Tachometer pulse",
+    "Water temp sender",
+    "Oil-pressure node",
+    "Fuel level sender",
+    "Brake warning — fluid level + parking brake",
+    "Charge-lamp line",
+    "Road speed — pulse generator signal",
+    "Phase-2 sensor signal spare",
+    "Turn LEFT tell-tale sense",
+    "Turn RIGHT tell-tale sense",
+    "Ground",
+    "High-beam tell-tale sense"
+   ],
+   "confirm": false
   }
  ],
  "missing": [
@@ -14135,7 +14115,7 @@
   },
   {
    "part": "cur",
-   "what": "control SW1 key cap, control SW2 key cap, control SW3 wink cap, control SW3 wink switch (P204 placeholder), control SW4 wink cap, control SW4 wink switch (P204 placeholder), control JS1 mirror stick (P156 placeholder)",
+   "what": "control SW1 key cap, control SW2 key cap, control SW3 wink cap, control SW3 wink switch (P204 placeholder), control SW4 wink cap, control SW4 wink switch (P204 placeholder), control SW5 wink cap, control SW5 wink switch (P204 placeholder), control JS1 mirror stick (P156 placeholder), control KN1 screen knob and its encoder board (P219 placeholder)",
    "why": "placeholder blocks in the mock-up: no model of these parts is in the tree"
   },
   {
@@ -14279,7 +14259,7 @@
    "id": "left-plate",
    "kind": "pcb",
    "glb": "left-plate.glb",
-   "bytes": 1979936,
+   "bytes": 2361376,
    "bbox": [
     [
      0.0,
@@ -14287,13 +14267,13 @@
      -9.185
     ],
     [
-     100.0,
+     118.0,
      0.0,
-     5.895
+     5.915
     ]
    ],
-   "vertices": 89932,
-   "triangles": 87864,
+   "vertices": 107387,
+   "triangles": 104889,
    "nodes": {
     "board": [
      "pcb:board"
@@ -14304,7 +14284,7 @@
    },
    "outline": [
     0.0,
-    100.0,
+    118.0,
     -56.0,
     -0.0
    ],
@@ -14313,30 +14293,30 @@
    "missing_files": [],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
    "j1": [
-    94.5,
+    112.5,
     -21.65
    ],
-   "stamp": "e4694e619dd60ddc"
+   "stamp": "ade0f992b1fac08c"
   },
   "icu-carrier": {
    "id": "icu-carrier",
    "kind": "pcb",
    "glb": "icu-carrier.glb",
-   "bytes": 9325116,
+   "bytes": 8874400,
    "bbox": [
     [
      97.75,
      -130.0,
-     -1.805
+     -3.354
     ],
     [
      210.0,
-     -35.4,
-     37.128
+     -37.998,
+     53.694
     ]
    ],
-   "vertices": 425698,
-   "triangles": 414523,
+   "vertices": 407373,
+   "triangles": 388271,
    "nodes": {
     "board": [
      "pcb:board"
@@ -14349,7 +14329,7 @@
     100.0,
     210.0,
     -130.0,
-    -50.0
+    -46.0
    ],
    "source": "02-PROJECTS/01-electrical/00-design/display-unit/cad/icu-carrier/icu-carrier.kicad_pcb",
    "missing_models": [
@@ -14359,7 +14339,7 @@
     "Texas_RNX0012C_VQFN-14-11-1EP_2x3mm_P0.5mm_EP0.25x1.825mm.step"
    ],
    "origin": "KiCad's origin, the board frame of its STEP: x = KiCad x, y = -KiCad y, z = 0 on the board's underside",
-   "stamp": "a2d8f0d389c2006e"
+   "stamp": "dcb14774d0378188"
   },
   "control-unit": {
    "problems": [],
@@ -14456,12 +14436,12 @@
    "kind": "unit",
    "glb": "control-unit.glb",
    "source": "control-unit/cad/climate-unit (unit_params.py, unit_lib.py)",
-   "stamp": "44bd292f5a855a03"
+   "stamp": "1f766a5ce9f6dcc8"
   },
   "display-unit": {
    "problems": [],
    "notes": [],
-   "bytes": 347772,
+   "bytes": 341508,
    "bbox": [
     [
      0.0,
@@ -14470,12 +14450,12 @@
     ],
     [
      317.0,
-     128.595,
+     132.982,
      136.5
     ]
    ],
-   "vertices": 15476,
-   "triangles": 15312,
+   "vertices": 15188,
+   "triangles": 15036,
    "face": [
     317.0,
     136.5
@@ -14499,26 +14479,15 @@
    "left_to_children": 169,
    "connectors": [
     {
-     "code": "DP-ICU-B",
+     "code": "DP-ICU",
      "at": [
-      232.024,
-      126.595,
-      29.475
+      255.524,
+      130.982,
+      38.485
      ],
-     "part": "DT13-12PA",
-     "tip_y": 138.331,
-     "note": "DT13-12PA, the rear plate's outer face at the cut-out's centre (lower row)"
-    },
-    {
-     "code": "DP-ICU-A",
-     "at": [
-      286.06100000000004,
-      126.595,
-      29.455
-     ],
-     "part": "DT13-06PA",
-     "tip_y": 138.331,
-     "note": "DT13-06PA, the rear plate's outer face at the cut-out's centre (lower row)"
+     "part": "DRC13-24PA",
+     "tip_y": 135.688,
+     "note": "DRC13-24PA, the rear plate's outer face at the cut-out's centre (lower row)"
     }
    ],
    "boards": {
@@ -14542,28 +14511,28 @@
    "kind": "unit",
    "glb": "display-unit.glb",
    "source": "display-unit/cad/icu-unit (unit_params.py, unit_lib.py)",
-   "stamp": "62618ef797e8d814"
+   "stamp": "256124b69eb84a70"
   },
   "cur": {
    "problems": [],
    "notes": [],
-   "bytes": 258612,
+   "bytes": 279528,
    "bbox": [
     [
      -8.0,
-     -12.0,
+     -14.0,
      0.0
     ],
     [
-     120.458,
+     137.0,
      96.441,
      67.0
     ]
    ],
-   "vertices": 11344,
-   "triangles": 10972,
+   "vertices": 12220,
+   "triangles": 11804,
    "face": [
-    112.458,
+    129.0,
     67.0
    ],
    "nodes": {
@@ -14581,7 +14550,10 @@
      "inside:control SW3 wink switch (P204 placeholder)",
      "inside:control SW4 wink cap",
      "inside:control SW4 wink switch (P204 placeholder)",
+     "inside:control SW5 wink cap",
+     "inside:control SW5 wink switch (P204 placeholder)",
      "inside:control JS1 mirror stick (P156 placeholder)",
+     "inside:control KN1 screen knob and its encoder board (P219 placeholder)",
      "inside:DP-CUR (DT13-12PA, stand-in)",
      "inside:DP-CUR-B (DT13-06PA, stand-in)"
     ]
@@ -14591,7 +14563,7 @@
     {
      "code": "DP-CUR",
      "at": [
-      34.338,
+      42.609,
       84.655,
       33.5
      ],
@@ -14602,7 +14574,7 @@
     {
      "code": "DP-CUR-B",
      "at": [
-      86.06700000000001,
+      94.338,
       84.655,
       33.5
      ],
@@ -14613,8 +14585,8 @@
    ],
    "boards": {
     "plate": [
-     6.228999999999999,
-     106.229,
+     5.5,
+     123.5,
      19.0,
      20.6,
      5.5,
@@ -14628,13 +14600,16 @@
     "control SW3 wink switch (P204 placeholder)",
     "control SW4 wink cap",
     "control SW4 wink switch (P204 placeholder)",
-    "control JS1 mirror stick (P156 placeholder)"
+    "control SW5 wink cap",
+    "control SW5 wink switch (P204 placeholder)",
+    "control JS1 mirror stick (P156 placeholder)",
+    "control KN1 screen knob and its encoder board (P219 placeholder)"
    ],
    "id": "cur",
    "kind": "unit",
    "glb": "cur.glb",
    "source": "control-unit/cad/cur-unit (unit_params.py, unit_lib.py)",
-   "stamp": "b33ef697e5d21238"
+   "stamp": "dfe2a36b6fe2b5fd"
   },
   "pmu": {
    "problems": [],
@@ -17743,12 +17718,7 @@
      "z": 690.0
     },
     {
-     "x": -237.24,
-     "y": -800.0,
-     "z": 690.0
-    },
-    {
-     "x": -291.28,
+     "x": -267.78,
      "y": -800.0,
      "z": 690.0
     },
@@ -18784,92 +18754,48 @@
      "conductors": 48
     },
     {
-     "to": "DP-ICU-B:plug",
+     "to": "DP-ICU:plug",
      "kind": "breakout",
-     "housing": "DP-ICU-B",
+     "housing": "DP-ICU",
      "path": [
       {
-       "x": -291.28,
+       "x": -267.78,
        "y": -800.0,
        "z": 690.0
       },
       {
-       "x": -291.28,
-       "y": -846.08,
+       "x": -267.78,
+       "y": -837.67,
        "z": 690.0
       },
       {
-       "x": -291.28,
-       "y": -856.4,
-       "z": 691.47
+       "x": -267.78,
+       "y": -848.61,
+       "z": 691.56
       },
       {
-       "x": -291.28,
-       "y": -863.77,
-       "z": 695.9
+       "x": -267.78,
+       "y": -856.42,
+       "z": 696.25
       },
       {
-       "x": -291.28,
-       "y": -868.19,
-       "z": 703.27
+       "x": -267.78,
+       "y": -861.11,
+       "z": 704.06
       },
       {
-       "x": -291.28,
-       "y": -869.67,
-       "z": 713.59
+       "x": -267.78,
+       "y": -862.67,
+       "z": 715.0
       },
       {
-       "x": -291.28,
-       "y": -869.67,
-       "z": 742.43
+       "x": -267.78,
+       "y": -862.67,
+       "z": 751.44
       }
      ],
-     "radius_mm": 4.0,
-     "conductors": 11
-    },
-    {
-     "to": "DP-ICU-A:plug",
-     "kind": "breakout",
-     "housing": "DP-ICU-A",
-     "path": [
-      {
-       "x": -237.24,
-       "y": -800.0,
-       "z": 690.0
-      },
-      {
-       "x": -237.24,
-       "y": -846.09,
-       "z": 690.0
-      },
-      {
-       "x": -237.24,
-       "y": -856.4,
-       "z": 691.47
-      },
-      {
-       "x": -237.24,
-       "y": -863.77,
-       "z": 695.9
-      },
-      {
-       "x": -237.24,
-       "y": -868.2,
-       "z": 703.27
-      },
-      {
-       "x": -237.24,
-       "y": -869.67,
-       "z": 713.58
-      },
-      {
-       "x": -237.24,
-       "y": -869.67,
-       "z": 742.41
-      }
-     ],
-     "radius_mm": 3.0,
-     "conductors": 6
+     "radius_mm": 4.9,
+     "conductors": 17
     },
     {
      "to": "DP-CUR:plug",
@@ -19540,7 +19466,7 @@
        "z": 690.0
       },
       {
-       "x": -237.24,
+       "x": -267.78,
        "y": -800.0,
        "z": 690.0
       }
@@ -19551,23 +19477,7 @@
     {
      "path": [
       {
-       "x": -237.24,
-       "y": -800.0,
-       "z": 690.0
-      },
-      {
-       "x": -291.28,
-       "y": -800.0,
-       "z": 690.0
-      }
-     ],
-     "radius_mm": 5.6,
-     "conductors": 22
-    },
-    {
-     "path": [
-      {
-       "x": -291.28,
+       "x": -267.78,
        "y": -800.0,
        "z": 690.0
       },
@@ -20096,8 +20006,7 @@
     "L3-CTR",
     "L3-RCV",
     "DP-DCU",
-    "DP-ICU-B",
-    "DP-ICU-A",
+    "DP-ICU",
     "DP-CUR",
     "DP-CUR-B"
    ],
@@ -24976,5 +24885,5 @@
   "connectors": "connectors/manifest.json",
   "devices": "devices/manifest.json"
  },
- "record_stamp": "248dd4b576518fa0"
+ "record_stamp": "2ae928278d342800"
 }

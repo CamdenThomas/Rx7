@@ -1,10 +1,39 @@
 # ICU carrier — the KiCad project
 
-*Rev 2026-10-13 (sheet and board rev 0.06 - Y44's fix pass, D-549; rev 0.05 was Y44's one value, 0.04 Y42, 0.03 2026-10-09) · owns: what this KiCad project is for, what it
+*Rev 2026-10-14 (sheet and board rev 0.07 - Y63, the one DRC connector, D-587 / D-590; rev 0.06 was Y44's fix pass, D-549; 0.05 Y44's one value, 0.04 Y42, 0.03 2026-10-09) · owns: what this KiCad project is for, what it
 may claim, and how to start. The board's design is `../../../../data/icu_channels.csv` — that is the
 record; this is a drawing of it. Read `../../../README.md` first: it is the fence.*
 
 ## Where it stands
+
+**2026-10-14 (Y63, D-587 / D-590): rev 0.07 - one Deutsch DRC13-24PA in place of the two DT13s.**
+`fab/` is bench revision A re-issued from this board: no earlier zip may be ordered.
+ERC 0 / 0; DRC 0 violations, 0 unconnected, 0 parity; `check.py --board icu` 105 checks, 0 mismatches.
+
+- **J1 is the DRC13-24PA** (24 size-16 pins, key A), mated by a DRC16-24SA plug; J3 is gone. Pin n is DP-ICU
+  cavity n, mapped so the tach keeps its 2.5 mm (D-592): 1 logic +12 V, 2 illumination, 3 the backlight's
+  +12 V (over D25), 4 / 5 CAN2, **6 the tach, straight over R29 with no live pin in its column**, 7-11 and 14-17
+  the senders and tell-tales, 21 ground, 22 the high-beam tell-tale; 12, 13, 18-20, 23, 24 sealing plugs in the
+  plug. The sheet draws it as one part in three units where J1 and J3 stood, so no wire moved; unit 3 carries
+  no-connect flags. Footprint `icu-carrier.pretty/DRC13-24PA` from TE's drawing DRC13-24P* rev D (pins
+  5.49 x 3.81 mm in two groups of three columns, pegs dia 2.54 at +-17.58 mm); TE's own model
+  (`${RX7_MODELS}/deutsch-drc13-24pa-te`, 00-CAR cad) lands its 24 tails and two pegs on it exactly.
+- **The board grew 4 mm at the connector edge: 110 x 84 mm** (D-591). The DRC reaches about 2 mm further back
+  than the DT13s did, into the row of protection parts behind them; moving the edge out moved nothing else. The
+  connector is centred on that edge (x 155); the GND pours follow the edge.
+- **Re-routed with freerouting under this project's rules** (the connector's nets and every track the new part
+  landed on; the pours kept in the DSN, the router's micron gaps snapped after import). The tach's 7 mm run
+  from pin 6 to R29 is drawn by hand, pad edge to pad edge: R29's own pads sit inside the tach's 2.5 mm, which
+  this rule file excuses and the router cannot know. U4A- and BL_EN keep their rev 0.06 routes; the three
+  nets those crossed were re-routed round them. The backlight feed's two layer changes are four vias on a
+  0.9 mm square each, as D-549 made them. Some GND pour pieces the new tracks fenced off are stitched back.
+- **Trap, for the next script:** a board saved by KiCad's Python without its `.kicad_pro` beside it gets a
+  default project - net classes, TACH_HV's 2.5 mm and the 0.3 mm edge rule gone - and saving it into this
+  folder writes that over `icu-carrier.kicad_pro`. Work on a copy of the whole project folder.
+- **What it means at the bench:** the connector stands 52.6 mm above the board (the DT13s 37.7). Its four
+  #10-32 screws go through the rear wall into the flange's threaded inserts; the wall's cut-out is TE's,
+  56.13 x 32.13 mm with four dia 5.61 holes (sheet 2). The DU mock-up (`../icu-unit`) carries it; the bench
+  enclosure under `enclosure/` reads the same files but is not the part being built.
 
 **2026-10-13 (Y44, D-549): rev 0.06 - what the independent read found (D-548), fixed before the boards are ordered.**
 `fab/` is bench revision A re-issued again from this board under the same names: no earlier zip may be ordered.

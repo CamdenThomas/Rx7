@@ -34,8 +34,26 @@ TE_CUTOUT = {
     "DT13-06PA": {"w": 25.17, "h": 21.84, "r": 6.35, "pitch": 32.89, "hole": 3.94, "page": 7},
     "DT13-08PA": {"w": 37.47, "h": 23.77, "r": 6.35, "pitch": 45.21, "hole": 3.94, "page": 8},
     "DT13-12PA": {"w": 41.58, "h": 23.27, "r": 6.35, "pitch": 49.33, "hole": 3.94, "page": 8},
+    # TE drawing DRC13-24P* rev D sheet 2, "recommended panel cutout" (D-587, D-590): four holes for the
+    # #10-32 screws into the flange's threaded inserts, vpitch apart as well as pitch
+    "DRC13-24PA": {"w": 56.13, "h": 32.13, "r": 3.05, "pitch": 61.93, "vpitch": 37.92, "hole": 5.61,
+                   "page": "DRC13-24P* rev D sheet 2"},
 }
+
+
+def screw_points(te, x, z):
+    """The cut-out's screw holes: two side by side (a DT13), or four at the corners (a DRC)."""
+    dz = te.get("vpitch", 0.0) / 2.0
+    zs = (z - dz, z + dz) if dz else (z,)
+    return [(x + s * te["pitch"] / 2.0, zz) for s in (-1, 1) for zz in zs]
+
+
+def te_source(te):
+    """Where the cut-out's figures were read."""
+    return "114-151046 p.%s" % te["page"] if isinstance(te["page"], int) else "TE " + te["page"]
 TE_PANEL_MAX = 6.25
+SEAL_SQUEEZE_MAX = 0.7   # mm: an overlap with the plate this thin is TE's flange seal squeezed - 0.6 for the DT13s,
+                         # 0.7 since the DRC13-24PA's stands 0.64 proud in TE's model (D-591; confirm TE's squeeze)
 CONTACT = 0.02   # mm: an overlap thinner than this is two faces touching, not an interference
 
 
@@ -64,7 +82,8 @@ def cy_centre(f):
 
 
 def is_dt13(f):
-    return f["footprint"].startswith("DT13-")
+    """A flanged PCB receptacle through the enclosure wall: a DT13, or since D-587 the DRC 24-way."""
+    return f["footprint"].startswith(("DT13-", "DRC13-"))
 
 
 # --------------------------------------------------------------------------------------- probe --
@@ -133,7 +152,8 @@ def probe(board, step_path, cache_path):
             return bb.XLength * bb.ZLength
         top = max(outline(y) for y in faces)
         y_flange = max([y for y in faces if outline(y) >= 0.95 * top], key=lambda y: y * outward)
-        beyond = sorted([y for y in faces if (y - y_flange) * outward > 0.05],
+        # (within 3 mm: the DRC's model has no seal face, and its next face out is the jackscrew boss)
+        beyond = sorted([y for y in faces if 0.05 < (y - y_flange) * outward < 3.0],
                         key=lambda y: abs(y - y_flange))
         y_seal = beyond[0] if beyond else y_flange
         fb, sb = _bb(faces[y_flange]), _bb(faces[y_seal])
@@ -408,8 +428,8 @@ def build_carrier(P, board, pr):
         x = lx(hx)
         pcuts.append(rrect_xz(te["w"] + 2 * P["CUTOUT_CLEAR"], te["h"] + 2 * P["CUTOUT_CLEAR"], te["r"],
                               x, hz, iy1 - 1, iy1 + PT + 1))
-        for s in (-1, 1):
-            pcuts.append(cyl_y(te["hole"] / 2.0, x + s * te["pitch"] / 2.0, hz, iy1 - 1, iy1 + PT + 1))
+        for (sx, sz) in screw_points(te, x, hz):
+            pcuts.append(cyl_y(te["hole"] / 2.0, sx, sz, iy1 - 1, iy1 + PT + 1))
         ci = {"ref": f["ref"], "part": f["footprint"], "x": round(hx, 2), "z": round(hz, 2),
               "w": te["w"], "h": te["h"], "r": te["r"], "pitch": te["pitch"], "hole": te["hole"],
               "page": te["page"], "from": src, "pin_field_x": f["x"]}
@@ -592,7 +612,7 @@ def fit_check(parts, step_path, board, seal_refs=()):
             if v > 1e-4:
                 cb = com.optimalBoundingBox()
                 thin = min(cb.XLength, cb.YLength, cb.ZLength)
-                if ref in seal_refs and thin <= 0.6 and cb.ZLength > 20:
+                if ref in seal_refs and thin <= SEAL_SQUEEZE_MAX and cb.ZLength > 20:
                     seal += v
                     continue
                 if thin < CONTACT:

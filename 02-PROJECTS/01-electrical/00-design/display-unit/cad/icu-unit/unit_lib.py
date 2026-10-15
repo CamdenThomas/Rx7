@@ -490,8 +490,10 @@ def derive(P, src):
         t = c.te
         c.cut = [c.X - t["w"] / 2.0 - cc, c.X + t["w"] / 2.0 + cc,
                  c.Z - t["h"] / 2.0 - cc, c.Z + t["h"] / 2.0 + cc]
-        c.holes = [c.X - t["pitch"] / 2.0, c.X + t["pitch"] / 2.0]
-        c.reach = [c.holes[0] - t["hole"] / 2.0, c.holes[1] + t["hole"] / 2.0, c.cut[2], c.cut[3]]
+        c.holes = L.screw_points(t, c.X, c.Z)          # two for a DT13, four for the DRC (D-587)
+        hz = [z for (_, z) in c.holes]
+        c.reach = [min(x for (x, _) in c.holes) - t["hole"] / 2.0, max(x for (x, _) in c.holes) + t["hole"] / 2.0,
+                   min(c.cut[2], min(hz) - t["hole"] / 2.0), max(c.cut[3], max(hz) + t["hole"] / 2.0)]
         c.plug = [c.X - t["w"] / 2.0 - gr, c.X + t["w"] / 2.0 + gr,
                   c.Z - t["h"] / 2.0 - gr, c.Z + t["h"] / 2.0 + gr]
         c.fl = [c.flange[0] + dx, c.flange[1] + dx, D.cz0 + c.flange[2], D.cz0 + c.flange[3]]
@@ -985,8 +987,8 @@ def build_case(P, D):
         t = c.te
         w, h = c.cut[1] - c.cut[0], c.cut[3] - c.cut[2]
         cuts.append(L.rrect_xz(w, h, t["r"], c.X, c.Z, D.y_plate0 - oc, D.y_plate1 + oc))
-        cuts += [L.cyl_y(t["hole"] / 2.0, x, c.Z, D.y_plate0 - oc, D.y_plate1 + oc)
-                 for x in c.holes]
+        cuts += [L.cyl_y(t["hole"] / 2.0, x, z, D.y_plate0 - oc, D.y_plate1 + oc)
+                 for (x, z) in c.holes]
         feats["rear_plate"].append(("the plate round %s's cut-out" % c.name,
                                     [c.fl[0], c.fl[1], D.y_plate0, D.y_plate1, c.fl[2], c.fl[3]],
                                     "CUTOUT_CLEAR, or the carrier"))
@@ -1269,7 +1271,8 @@ def numbers(P, D):
                       "nearest_metal": list(D.rf_metal) if D.get("rf_metal") else None},
         "cutouts": [{"name": c.name, "ref": c.ref, "part": c.part, "x": c.X, "z": c.Z,
                      "w": c.te["w"], "h": c.te["h"], "r": c.te["r"],
-                     "screw_pitch": c.te["pitch"], "screw_hole": c.te["hole"],
+                     "screw_pitch": c.te["pitch"], "screw_vpitch": c.te.get("vpitch"),
+                     "screw_hole": c.te["hole"],
                      "te_page": c.te["page"]} for c in D.conns],
     }
 
@@ -1548,8 +1551,8 @@ def print_report(P, U, res, files, views_note, gone):
     print("rear plate, seen from behind (X is the unit's, 0 = the face's left from the seat):")
     for c in sorted(D.conns, key=lambda c: -c.X):
         print("  %-9s %-9s X %7s  Z %6s  TE cut-out %s x %s R%s, screws %s apart "
-              "(114-151046 p.%d)" % (c.name, c.part, n(c.X), n(c.Z), n(c.te["w"]), n(c.te["h"]),
-                                     n(c.te["r"]), n(c.te["pitch"]), c.te["page"]))
+              "(%s)" % (c.name, c.part, n(c.X), n(c.Z), n(c.te["w"]), n(c.te["h"]),
+                        n(c.te["r"]), n(c.te["pitch"]), L.te_source(c.te)))
     print()
     print("checks:")
     for c in res["checks"]:

@@ -30,7 +30,7 @@ DEST = {
     '23': 'DP-DIAG 1, twisted with pin 36 (N56); 120 Ω across 23 / 36 at this connector',
     '24': 'the CAN2 splice at the node, twisted with pin 37 (N55)',
     '25': 'the GND bus, 6 in or less (N57)',
-    '26': 'receptacle L2-P 2, a 16 AWG tap to DP-ICU 18 (N53) and one diode of the pop-up coil feed (N09)',
+    '26': 'receptacle L2-P 2, a 16 AWG tap to DP-ICU 22 (N53) and one diode of the pop-up coil feed (N09)',
     '27': 'receptacle L3-P 2 (N17) and the tap to K14 / K15 terminal 86 (N110)',
     '28': 'receptacle L3-P 1 - blower, capped at L3-BLW',
     '29': 'receptacle L3-S1 3 (N96)',
@@ -375,7 +375,7 @@ step('E17', 'The O1 pop-up group',
      'Diode test: each output wire to K1 86 conducts one way only. Pin 38 reaches K1 30 and K2 30 only through F37\'s holder.',
      'Do not land these until CK08 has proved the motor matches the factory diagram: if it does not, the whole group is redrawn.')
 step('E17', 'The O12 ignition group', nc_lines(['N18', 'N19', 'N20', 'N61', 'N62', 'N78']),
-     'Pin 2 reaches L1-P 1 direct, and L1-S1 2, DP-ICU 6, the gauge +12 V and L3-S2 12 each through its own holder.')
+     'Pin 2 reaches L1-P 1 direct, and L1-S1 2, DP-ICU 3, the gauge +12 V and L3-S2 12 each through its own holder.')
 step('E17', 'The O10 accessory group and the washer relay', nc_lines(['N23', 'N24', 'N73', 'N85', 'N86', 'N88', 'N89', 'N103', 'N25', 'N26', 'N27']),
      'Pin 4 reaches L3-M 1, K12 86, DP-ICU 1, L4-S 4 and, through F33, K3 and K4 terminals 30 and 86. The radar tail is capped and labelled.')
 step('E17', 'The fuel pump back-stop relay K13', nc_lines(['N69', 'N70', 'N71', 'N72'], note=True),
@@ -402,7 +402,7 @@ step('E17', 'CAN1, CAN2 and the terminator', nc_lines(['N55', 'N56', 'N74']) + [
     'The wideband gauge: cut its AEMnet pigtail (it ends in a DTM 2-way) and butt-splice it onto the CAN2 pair; its 0-5 V output is not used; its sensor lead is never cut (devices DV44).'],
      '120 Ω across the CAN2 pair with nothing plugged in; the pairs stay twisted to each plug.',
      'Keep CAN2 50 mm from the blower, wiper and O1 pop-up wires.')
-step('E17', 'The permitted ground crossings', nc_lines(['N59']), 'DP-DIAG 4, DP-ICU 3, DP-DCU 11 and L3-S2 8 each beep to the GND bus.')
+step('E17', 'The permitted ground crossings', nc_lines(['N59']), 'DP-DIAG 4, DP-ICU 21, DP-DCU 11 and L3-S2 8 each beep to the GND bus.')
 step('E17', 'The post links and the DCU tail conductors', nc_lines(['N81', 'N82', 'N77', 'N80', 'N83', 'N84']),
      'L3-S3 1 / 2 / 3 reach L4-S 5 / 6 / 7; L3-S3 4 reaches L4-S2 7; the DCU tail conductors reach L4-M 9-12, L4-S2 1-5 and L4-P 4.')
 step('E17', 'Pin the L1 receptacles', [DT_PIN, 'L1-P (DTP04-4P, wedge WP-4P):'] + node_lines('L1-P') + ['L1-S1 (DT04-12P, wedge W12P):'] + node_lines('L1-S1') + ['L1-S2 (DT04-12P, wedge W12P):'] + node_lines('L1-S2'),
@@ -416,7 +416,7 @@ step('E17', 'Pin the L4 receptacles', ['L4-P (DTP04-4P, wedge WP-4P):'] + node_l
 step('E17', 'Make the ICU tail',
      ['150 mm from the post, ending in a Deutsch DRC 24-way PLUG with size-16 socket contacts (P022, P227): it mates the ICU\'s own DRC13-24PA receptacle (D-587).',
       'DP-ICU (DRC16-24SA, a jackscrew plug - no wedgelock):'] + leg_lines('DP-ICU'),
-     'One plug on a 150 mm tail; DP-ICU 13 and 19-24 hold sealing plugs.')
+     'One plug on a 150 mm tail; DP-ICU 12, 13, 18, 19, 20, 23 and 24 hold sealing plugs; the tach is on 6, with no live pin beside it closer than its 2.5 mm (D-592).')
 step('E17', 'Make the Control Unit tail',
      ['From the node toward the centre stack along RT11 - length not measured, confirm: cut it only once RT11 is measured (1.5 x the route).',
       'Its seventeen conductors end in the Control Unit\'s one 48-way plug, DP-DCU (P221, Molex CMC 48 wire-side half - block 01.57 may change the family; then this step is rewritten). They are 20 AWG: the small terminals (P222) take 0.30-0.50 mm². Crimp with P224, push each in from the wire side through the mat seal until it locks, tug.',

@@ -68,13 +68,15 @@ NUMS = {"length_mm", "width_mm", "height_mm", "flange_w_mm", "flange_h_mm", "hol
 # flange top (away from the PCB tails) along +y, so x' = -x, y' = z, z' = y. Only a frame measured
 # against the file goes here; a DT or DTP model (obtained on the PC, never opened on the Mac) is
 # drawn as a stand-in until its frame is read (Y27).
-FRAMES = {"DT13": [[-1, 0, 0], [0, 0, 1], [0, 1, 0]]}
+# TE's DRC models share the frame (DRC13-24PA read 2026-10-14, Y63: its tails land on the footprint so).
+FRAMES = {"DT13": [[-1, 0, 0], [0, 0, 1], [0, 1, 0]], "DRC": [[-1, 0, 0], [0, 0, 1], [0, 1, 0]]}
 
 COLOURS = {   # name: rgba, metallic, roughness - display colours, not TE's
     "DT": ((0.62, 0.63, 0.64, 1.0), 0.0, 0.65),
     "DTP": ((0.07, 0.07, 0.08, 1.0), 0.0, 0.55),
     "DT13": ((0.62, 0.63, 0.64, 1.0), 0.0, 0.65),
     "CMC": ((0.08, 0.08, 0.09, 1.0), 0.0, 0.55),
+    "DRC": ((0.06, 0.06, 0.07, 1.0), 0.0, 0.5),
     "flange": ((0.36, 0.37, 0.38, 1.0), 0.0, 0.6),
     "wedgelock": ((0.85, 0.45, 0.12, 1.0), 0.0, 0.6),
     "cavities": ((0.03, 0.03, 0.03, 1.0), 0.0, 0.9),
@@ -313,10 +315,11 @@ def selftest(out_dir=OUT_DEFAULT):
                          % (v, os.path.getsize(path), e["bytes"]))
         js, _ = G.read_glb(path)
         names = {n.get("name") for n in js["nodes"]}
-        need = {"body"} | ({"flange"} if e["family"] == "DT13" else set()) | \
+        need = {"body"} | ({"flange"} if e["family"] in ("DT13", "DRC") and e["half"] == "receptacle" else set()) | \
             ({"shroud"} if e["half"] == "receptacle" else {"latch"})
         if e["standin"]:
-            need |= {"cavities"} | (set() if e["family"] == "DT13" else {"wedgelock"})
+            need |= {"cavities"} | (set() if e["family"] in ("DT13", "CMC", "DRC") and e["half"] == "receptacle"
+                                    else {"wedgelock"})
         if need - names:
             probs.append("%s: the glb has no node %s" % (v, ", ".join(sorted(need - names))))
         r = rows.get(v)
@@ -450,7 +453,7 @@ def _fc_main(job):
         rad = r["cavity_mm"] / 2.0
         cav = cavity_layout(r)
         nodes = {}
-        if r["family"] in ("DT13", "CMC") and r["half"] == "receptacle":
+        if r["family"] in ("DT13", "CMC", "DRC") and r["half"] == "receptacle":
             S, sw, sh = r["shroud_mm"], r["shroud_w_mm"], r["shroud_h_mm"]
             fw, fh, hp, hd = r["flange_w_mm"], r["flange_h_mm"], r["hole_pitch_mm"], r["hole_mm"]
             ft = 3.0                                   # the flange's thickness, drawn
@@ -550,10 +553,10 @@ def _fc_main(job):
             return "shroud" if c > f1 else "flange" if c >= f0 else "body"
         return s, assign
 
-    mats = [G.material("body", *col[fam]) for fam in ("DT", "DTP", "DT13", "CMC")] + \
+    mats = [G.material("body", *col[fam]) for fam in ("DT", "DTP", "DT13", "CMC", "DRC")] + \
         [G.material(n, *col[n]) for n in ("flange", "wedgelock", "cavities")]
     mix = {m["name"]: i for i, m in enumerate(mats)}
-    fam_mat = {"DT": 0, "DTP": 1, "DT13": 2, "CMC": 3}
+    fam_mat = {"DT": 0, "DTP": 1, "DT13": 2, "CMC": 3, "DRC": 4}
     order = ["body", "latch", "shroud", "flange", "cavities", "wedgelock"]
     meta = {}
     for r in job["rows"]:

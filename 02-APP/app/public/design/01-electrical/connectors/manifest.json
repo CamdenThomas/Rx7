@@ -26,14 +26,14 @@
   "source": "Molex 500762-0481 (CMC 48-circuit right-angle PCB header) by distributor listings read 2026-10-14: Fusion Worldwide 69.9 long, 27 high, 49 deep; RS 2.5 mm pitch, 4 rows; Molex's family sheet: 8 x 1.50 mm and 40 x 0.635 mm terminals. Molex's sales drawing 5007620481_sd.pdf not read",
   "standin": true,
   "cad": null,
-  "bytes": 157792,
+  "bytes": 157936,
   "nodes": [
    "body",
    "shroud",
    "flange",
    "cavities"
   ],
-  "stamp": "478da107ef0f9859"
+  "stamp": "5032b90729ea25a3"
  },
  "CMC48-64320-1311": {
   "glb": "connectors/CMC48-64320-1311.glb",
@@ -62,14 +62,85 @@
   "source": "Molex 64320-1311 (CMC 48-circuit wire-side receptacle, mat-sealed, left wire output) by Waytek's listing read 2026-10-14: 48 circuits, 8 x 1.50 mm and 40 x 0.635 mm terminals; no dimension read",
   "standin": true,
   "cad": null,
-  "bytes": 423644,
+  "bytes": 423784,
   "nodes": [
    "body",
    "latch",
    "cavities",
    "wedgelock"
   ],
-  "stamp": "753bf4769dceea1e"
+  "stamp": "a9c068ef69fc5e8e"
+ },
+ "DRC13-24PA": {
+  "glb": "connectors/DRC13-24PA.glb",
+  "family": "DRC",
+  "half": "receptacle",
+  "ways": 24,
+  "size_mm": {
+   "x": 74.42,
+   "y": 36.32,
+   "z": 57.05
+  },
+  "bbox_mm": [
+   [
+    -37.211,
+    -22.322,
+    -31.839
+   ],
+   [
+    37.211,
+    14.0,
+    25.209
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "deutsch-drc13-24pa-te",
+  "standin": false,
+  "cad": "deutsch-drc13-24pa-te",
+  "bytes": 681596,
+  "nodes": [
+   "body",
+   "shroud",
+   "flange"
+  ],
+  "stamp": "0e03908768375f40"
+ },
+ "DRC16-24SA": {
+  "glb": "connectors/DRC16-24SA.glb",
+  "family": "DRC",
+  "half": "plug",
+  "ways": 24,
+  "size_mm": {
+   "x": 53.34,
+   "y": 40.64,
+   "z": 29.16
+  },
+  "bbox_mm": [
+   [
+    -26.67,
+    -40.64,
+    -13.08
+   ],
+   [
+    26.67,
+    0.0,
+    16.08
+   ]
+  ],
+  "origin": "mating face centre; mate +Y; wires -Y",
+  "confirm": true,
+  "source": "TE DRC Series catalogue p.39: plug 24 (sz. 16) 1.600 x 1.148 x 2.100 in (40.64 x 29.16 x 53.34); the face's pattern as the header it mates (DRC13-24P* rev D)",
+  "standin": true,
+  "cad": null,
+  "bytes": 221220,
+  "nodes": [
+   "body",
+   "latch",
+   "cavities",
+   "wedgelock"
+  ],
+  "stamp": "12367fd7c31f74db"
  },
  "DT04-12P": {
   "glb": "connectors/DT04-12P.glb",
@@ -98,14 +169,14 @@
   "source": "cad deutsch-dt04-12pa-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w12p-te",
   "standin": true,
   "cad": "deutsch-dt04-12pa-te",
-  "bytes": 89224,
+  "bytes": 89368,
   "nodes": [
    "body",
    "shroud",
    "cavities",
    "wedgelock"
   ],
-  "stamp": "f52859575461eb53",
+  "stamp": "d84367b711585e18",
   "note": "deutsch-dt04-12pa-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT04-2P": {
@@ -135,14 +206,14 @@
   "source": "cad deutsch-dt04-2p-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w2p-te",
   "standin": true,
   "cad": "deutsch-dt04-2p-te",
-  "bytes": 32940,
+  "bytes": 33080,
   "nodes": [
    "body",
    "shroud",
    "cavities",
    "wedgelock"
   ],
-  "stamp": "cac9eb8b5ebde8eb",
+  "stamp": "73d32fb1cfd49a54",
   "note": "deutsch-dt04-2p-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT04-4P": {
@@ -172,14 +243,14 @@
   "source": "cad deutsch-dt04-4p-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w4p-te",
   "standin": true,
   "cad": "deutsch-dt04-4p-te",
-  "bytes": 44152,
+  "bytes": 44292,
   "nodes": [
    "body",
    "shroud",
    "cavities",
    "wedgelock"
   ],
-  "stamp": "ed988e9dabb86c0a",
+  "stamp": "2aec69da101f4fc1",
   "note": "deutsch-dt04-4p-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT04-6P": {
@@ -209,14 +280,14 @@
   "source": "cad deutsch-dt04-6p-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w6p-te",
   "standin": true,
   "cad": "deutsch-dt04-6p-te",
-  "bytes": 55392,
+  "bytes": 55536,
   "nodes": [
    "body",
    "shroud",
    "cavities",
    "wedgelock"
   ],
-  "stamp": "e0018ef26f8b88d9",
+  "stamp": "352e290227b6eb45",
   "note": "deutsch-dt04-6p-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT04-8P": {
@@ -246,14 +317,14 @@
   "source": "cad deutsch-dt04-08pa-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w8p-te",
   "standin": true,
   "cad": "deutsch-dt04-08pa-te",
-  "bytes": 66692,
+  "bytes": 66832,
   "nodes": [
    "body",
    "shroud",
    "cavities",
    "wedgelock"
   ],
-  "stamp": "cd8eeb48c5edaae2",
+  "stamp": "ca31b2052a619ba4",
   "note": "deutsch-dt04-08pa-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT06-12S": {
@@ -283,14 +354,14 @@
   "source": "cad deutsch-dt06-12sa-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w12s-te",
   "standin": true,
   "cad": "deutsch-dt06-12sa-te",
-  "bytes": 119536,
+  "bytes": 119680,
   "nodes": [
    "body",
    "latch",
    "cavities",
    "wedgelock"
   ],
-  "stamp": "6a475241279eb51f",
+  "stamp": "fdcd5458840bef48",
   "note": "deutsch-dt06-12sa-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT06-2S": {
@@ -320,14 +391,14 @@
   "source": "cad deutsch-dt06-2s-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w2s-te",
   "standin": true,
   "cad": "deutsch-dt06-2s-te",
-  "bytes": 35064,
+  "bytes": 35204,
   "nodes": [
    "body",
    "latch",
    "cavities",
    "wedgelock"
   ],
-  "stamp": "afba7ecf21d23468",
+  "stamp": "572047bb769b8028",
   "note": "deutsch-dt06-2s-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT06-4S": {
@@ -357,14 +428,14 @@
   "source": "cad deutsch-dt06-4s-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w4s-p012-te (the W4S model would not download; the P012 variant is the same wedge)",
   "standin": true,
   "cad": "deutsch-dt06-4s-te",
-  "bytes": 51960,
+  "bytes": 52100,
   "nodes": [
    "body",
    "latch",
    "cavities",
    "wedgelock"
   ],
-  "stamp": "644d53013e346a2b",
+  "stamp": "38c727172810c57f",
   "note": "deutsch-dt06-4s-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT06-6S": {
@@ -394,14 +465,14 @@
   "source": "cad deutsch-dt06-6s-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w6s-te",
   "standin": true,
   "cad": "deutsch-dt06-6s-te",
-  "bytes": 68836,
+  "bytes": 68976,
   "nodes": [
    "body",
    "latch",
    "cavities",
    "wedgelock"
   ],
-  "stamp": "5565be20f93acdb5",
+  "stamp": "c6f3bd0c10b99877",
   "note": "deutsch-dt06-6s-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT06-8S": {
@@ -431,14 +502,14 @@
   "source": "cad deutsch-dt06-08sa-te (TE customer-view model, bounding box); TE 114-151046 Rev A (DEUTSCH DT Header application spec) p.6, the DT15 straight headers' pin layouts (the mating face's pattern); wedgelock: cad deutsch-w8s-te",
   "standin": true,
   "cad": "deutsch-dt06-08sa-te",
-  "bytes": 85736,
+  "bytes": 85876,
   "nodes": [
    "body",
    "latch",
    "cavities",
    "wedgelock"
   ],
-  "stamp": "4276b216025e234a",
+  "stamp": "3c6eb72d1ba80acc",
   "note": "deutsch-dt06-08sa-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DT13-06PA": {
@@ -468,13 +539,13 @@
   "source": "deutsch-dt13-6p-te",
   "standin": false,
   "cad": "deutsch-dt13-6p-te",
-  "bytes": 662840,
+  "bytes": 662984,
   "nodes": [
    "body",
    "shroud",
    "flange"
   ],
-  "stamp": "0d6210aa0426afae"
+  "stamp": "cb0369b8b104c4e7"
  },
  "DT13-08PA": {
   "glb": "connectors/DT13-08PA.glb",
@@ -503,13 +574,13 @@
   "source": "deutsch-dt13-08pa-te",
   "standin": false,
   "cad": "deutsch-dt13-08pa-te",
-  "bytes": 684044,
+  "bytes": 684184,
   "nodes": [
    "body",
    "shroud",
    "flange"
   ],
-  "stamp": "2b250089a52f34a1"
+  "stamp": "a9949ba5684c6c45"
  },
  "DT13-12PA": {
   "glb": "connectors/DT13-12PA.glb",
@@ -538,13 +609,13 @@
   "source": "deutsch-dt13-12pa-te",
   "standin": false,
   "cad": "deutsch-dt13-12pa-te",
-  "bytes": 1162116,
+  "bytes": 1162256,
   "nodes": [
    "body",
    "shroud",
    "flange"
   ],
-  "stamp": "73e17b616e0f08d1"
+  "stamp": "f4898eb07b79e0d9"
  },
  "DTP04-2P": {
   "glb": "connectors/DTP04-2P.glb",
@@ -573,14 +644,14 @@
   "source": "cad deutsch-dtp04-2p-te (TE customer-view model, bounding box); no TE layout read for the contact pattern; wedgelock: cad deutsch-wp-2p-te",
   "standin": true,
   "cad": "deutsch-dtp04-2p-te",
-  "bytes": 32864,
+  "bytes": 33008,
   "nodes": [
    "body",
    "shroud",
    "cavities",
    "wedgelock"
   ],
-  "stamp": "229982734d5fa6ff",
+  "stamp": "f24980f01eb00979",
   "note": "deutsch-dtp04-2p-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DTP04-4P": {
@@ -610,14 +681,14 @@
   "source": "cad deutsch-dtp04-4p-te (TE customer-view model, bounding box); no TE layout read for the contact pattern; wedgelock: cad deutsch-wp-4p-te",
   "standin": true,
   "cad": "deutsch-dtp04-4p-te",
-  "bytes": 44132,
+  "bytes": 44276,
   "nodes": [
    "body",
    "shroud",
    "cavities",
    "wedgelock"
   ],
-  "stamp": "0defce434af2d4ce",
+  "stamp": "c1b072db14cbd9f7",
   "note": "deutsch-dtp04-4p-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DTP06-2S": {
@@ -647,14 +718,14 @@
   "source": "cad deutsch-dtp06-2s-te (TE customer-view model, bounding box); no TE layout read for the contact pattern; wedgelock: cad deutsch-wp-2s-te",
   "standin": true,
   "cad": "deutsch-dtp06-2s-te",
-  "bytes": 35052,
+  "bytes": 35196,
   "nodes": [
    "body",
    "latch",
    "cavities",
    "wedgelock"
   ],
-  "stamp": "55bc99c0b9281b9b",
+  "stamp": "b1643d15a51bacb8",
   "note": "deutsch-dtp06-2s-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  },
  "DTP06-4S": {
@@ -684,14 +755,14 @@
   "source": "cad deutsch-dtp06-4s-te (TE customer-view model, bounding box); no TE layout read for the contact pattern; wedgelock: cad deutsch-wp-4s-te",
   "standin": true,
   "cad": "deutsch-dtp06-4s-te",
-  "bytes": 51924,
+  "bytes": 52064,
   "nodes": [
    "body",
    "latch",
    "cavities",
    "wedgelock"
   ],
-  "stamp": "0c911d5e22a80fdc",
+  "stamp": "92c80b246e021087",
   "note": "deutsch-dtp06-4s-te's model is on this machine but its frame has not been read (FRAMES): drawn as a stand-in"
  }
 }

@@ -1,12 +1,13 @@
 (version 1)
 
 # TACH_HV (icu_channels IC04: the trailing coil's inductive kick) keeps 2.5 mm from everything
-# on the board (PCB-AND-3D-GUIDE step 3). The one place that cannot hold is inside the DT13
-# itself: TE puts its pins 4.45 mm apart (114-151046), so J3 pin 4's pad sits 1.65 mm from pins
-# 3 and 5. That spacing is the connector's, rated by TE, not the board's: this rule lets the
+# on the board (PCB-AND-3D-GUIDE step 3). The one place that cannot hold is inside the connector
+# itself: since D-587 / D-592 the tach is J1 pin 6 of the DRC13-24PA, whose rows are 3.81 mm apart, so
+# its pad sits 1.0 mm from pin 12's above it (a sealing plug, no contact - D-592 keeps every live pin
+# 2.5 mm away). That spacing is the connector's, rated by TE, not the board's: this rule lets the
 # connector's own through-hole pads keep their pitch and nothing else - vias and tracks on the
-# tach net still keep 2.5 mm (J3 is the only through-hole part on a TACH_HV net).
-(rule "DT13 pin pitch on the tach net"
+# tach net still keep 2.5 mm (J1 is the only through-hole part on a TACH_HV net).
+(rule "connector pin pitch on the tach net"
   (condition "A.Pad_Type == 'Through-hole' && B.Pad_Type == 'Through-hole' && (A.NetClass == 'TACH_HV' || B.NetClass == 'TACH_HV')")
   (constraint clearance (min 1.0mm)))
 

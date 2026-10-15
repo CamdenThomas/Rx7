@@ -23,7 +23,7 @@ def _csv(*path):
 DK = _csv("00-design", "bench-revA-digikey-cart.csv")
 MO = _csv("00-design", "bench-revA-mouser-cart.csv")
 _PARTS = {r["id"]: r for r in _csv("data", "parts.csv")}
-BOARDS = [("P103", "icu-carrier", "110 x 80"), ("P144", "dcu-carrier", "180 x 80"),
+BOARDS = [("P103", "icu-carrier", "110 x 84"), ("P144", "dcu-carrier", "180 x 80"),
           ("P175", "panel", "180 x 47.3"), ("P195", "upper-board", "130 x 36")]
 
 
@@ -196,7 +196,7 @@ ROWS.append(dict(
          "Three zips (both carriers and the panel) were rebuilt on %s under the same names. Use only the ones this pull gives: delete any zip you saved or uploaded before." % REBUILT),
         ("Upload the first zip at the fab",
          "On jlcpcb.com open the quote page and add icu-carrier-revA-gerbers.zip. Let it read the file.",
-         "A preview of the board, 110 x 80 mm, 2 layers.",
+         "A preview of the board, 110 x 84 mm, 2 layers.",
          "A preview with the wrong size or one copper layer means the wrong file: stop."),
         ("Set the quantity to 5",
          "PCB Qty 5. It is the least the fab sells; one is built, the rest are spares.",
