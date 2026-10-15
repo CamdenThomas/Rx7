@@ -46,7 +46,7 @@ Exit codes: 0 everything matches; 1 any mismatch (each printed as
 `board:ref:pin expected X got Y`); 3 kicad-cli missing or a file unreadable. Notes (things
 worth a look that are not contradictions) print with a `note` prefix and never fail.
 
-    python3 check.py [-v] [--board icu|dcu|panel|upper|left-plate] [--netlists DIR]
+    python3 check.py [-v] [--board icu|dcu|panel|left-plate] [--netlists DIR]
 
 `--netlists DIR` reads DIR/<board>.net instead of exporting (kicad-cli still runs one sheet
 at a time otherwise). The expected net names below are the sheets' own vocabulary; the
@@ -163,17 +163,15 @@ BOARDS = {
                 grounds=(), ground_bridge=()),
     "dcu": dict(sch="control-unit/cad/dcu-carrier/dcu-carrier.kicad_sch", channels="dcu_channels.csv", teensy="J10",
                 expander="U12", ribbon="J4",
-                drops={"DP-DCU": "J1", "DP-DCU-B": "J9", "DP-DCU-C": "J2"}, rails=("+12V_LOGIC", "+12V_CMF"),
+                # D-582: the carrier's three DT13s carry the one plug's cavities until Y54 draws its
+                # header - J1 pins 1-6 = DP-DCU 9-14, J9 1-11 = 15-25, J2 1-8 = 1-8
+                drops=[("DP-DCU", "J1", 9, 6), ("DP-DCU", "J9", 15, 11), ("DP-DCU", "J2", 1, 8)],
+                rails=("+12V_LOGIC", "+12V_CMF"),
                 grounds=("GND", "PGND"), ground_bridge=("U4",)),
     # The panel board (Y20, D-492): J1 the ribbon; J3 the left plate's header, DP-DCU 36-47 pin for pin (D-582)
     # (the plate's keys and the stick are reached through it, not drawn here).
     "panel": dict(sch="control-unit/cad/panel/panel.kicad_sch", ribbon="J1", matrix=True, plate=("DP-DCU", "J3", 36)),
-    # The climate unit's upper connector board (Y15, D-480, D-492): no processor, so each housing
-    # is held against its cavities' src_note - the carrier header a lead goes to (carrier ref ->
-    # this board's header for it), or the panel_ribbon line a conductor is, carried pin for pin.
-    "upper": dict(sch="control-unit/cad/upper-board/upper-board.kicad_sch",
-                  relay={"DP-DCU-D": ("J1", {"J6": "J3", "J7": "J4", "J8": "J5", "J5": "J6", "J3": "J7"}),
-                         "DP-DCU-E": ("J2", "J8")}),
+    # The upper connector board (Y15) was retired by D-582: its conductors are DP-DCU 26-47.
     # The left plate (Y21, D-492): J1 its cable header, DP-DCU-E pin for pin; the keys a DP-DCU-E
     # cavity names, on their rows and columns through their diodes; the stick on panel_ribbon 1, 17-20.
     # Its winks (Y22, D-499, D-504): J2 the wink lead, held to the L3-S1 cavities whose lands_on name it.
@@ -585,6 +583,15 @@ def check_processor(rep, nl, cfg, rows):
     return processor_nets
 
 
+def _drops(cfg):
+    """(housing, connector, first cavity, pins) for each board-edge connector: pin n is cavity
+    first + n - 1. A plain {housing: connector} is pin n = cavity n, every pin."""
+    d = cfg["drops"]
+    if isinstance(d, dict):
+        return [(h, c, 1, None) for h, c in d.items()]
+    return [(t[0], t[1], int(t[2]), t[3] if len(t) > 3 else None) for t in d]
+
+
 def check_drops(rep, nl, cfg, rows, cavities, processor_nets):
     """Board-edge connectors against at_the_drop and the cavities table."""
     stop = {cfg["teensy"], cfg.get("expander")} - {None}
@@ -594,23 +601,35 @@ def check_drops(rep, nl, cfg, rows, cavities, processor_nets):
             by_pin.setdefault((housing, cav), []).append(row)
     # Cavities whose src names a channel (DP-DCU-C 1-4 -> SN16) count as that channel's drops.
     ids = {r["id"]: r for r in rows}
+    housings = {t[0] for t in _drops(cfg)}
     for c in cavities:
-        if c["housing"] in cfg["drops"]:
+        if c["housing"] in housings:
             for m in re.findall(r"\b(?:IC|SN)\d\d\b", c.get("src", "") + " " + c.get("circuit", "")):
                 if m in ids and ids[m] not in by_pin.setdefault((c["housing"], c["cav"]), []):
                     by_pin[(c["housing"], c["cav"])].append(ids[m])
-    for housing, conn in cfg["drops"].items():
+    for housing, conn, lo, count in _drops(cfg):
         if conn not in nl.pins:
             rep.bad(conn, "-", "connector %s for %s" % (conn, housing), "no such part on the sheet")
             continue
         states = {c["cav"]: c["state"] for c in cavities if c["housing"] == housing}
         for num in sorted(nl.pins[conn], key=int):
             net = nl.net(conn, num)
-            state = states.get(num)
-            claimants = by_pin.get((housing, num), [])
-            pin = "%s(%s %s)" % (num, housing, num)
+            cav = str(int(num) + lo - 1)
+            if count is not None and int(num) > count:
+                state = None if net is not None else "PLUG"
+            else:
+                state = states.get(cav)
+            claimants = by_pin.get((housing, cav), []) if count is None or int(num) <= count else []
+            pin = "%s(%s %s)" % (num, housing, cav)
+            if count is not None and int(num) > count:
+                if net is not None:
+                    rep.note("%s pin %s is beyond the %d cavities it carries (%s %s-%s) and wired to %s"
+                             % (conn, num, count, housing, lo, lo + count - 1, bare(net)))
+                else:
+                    rep.ok("%s pin %s unconnected, beyond the cavities it carries" % (conn, num))
+                continue
             if state is None:
-                rep.note("%s pin %s: no cavity row %s %s in the record" % (conn, num, housing, num))
+                rep.note("%s pin %s: no cavity row %s %s in the record" % (conn, num, housing, cav))
             elif state == "PLUG":
                 if net is not None and not claimants:
                     rep.bad(conn, pin, "unconnected (the cavity is a sealing plug no channel names)", bare(net))
@@ -640,7 +659,7 @@ def check_drops(rep, nl, cfg, rows, cavities, processor_nets):
                 seen = reach(nl, net, stop, True)
                 # where the record's words tell the channel's pins apart, the cavity must land
                 # on the pin whose words match its circuit best (DRV up on "DRV up", not "DRV down")
-                cav_words = words(next((c["circuit"] for c in cavities if c["housing"] == housing and c["cav"] == num), ""))
+                cav_words = words(next((c["circuit"] for c in cavities if c["housing"] == housing and c["cav"] == cav), ""))
                 score = {n: len(cav_words & w) for n, (_l, w) in targets.items()}
                 hits = sorted(((-score[n], seen[n][2], n) for n in targets if n in seen))
                 if not hits:
