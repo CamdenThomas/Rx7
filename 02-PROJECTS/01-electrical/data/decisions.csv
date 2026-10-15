@@ -2260,3 +2260,18 @@ His words (chat, 2026-10-15), offered two plugs (the minimum, giving up two opti
 Today's leg is eleven wires on E1; E2 and E3 are capped until the swap. Part numbers, keying codes and the cavity sizes against TE's drawing are confirm at Y66, where housings, cavities and engine ls_cavities are written.
 
 Engine D-443's ""room for every option"" is kept."
+D-608,electrical,The battery compartment's loose parts go into one box in the tray beside the battery; a remote jump post in the engine bay; the amplifier on one connector,2026-10-15,standing,,,,,"**The battery compartment gets the dash zone's treatment (D-596). Everything loose in the passenger-side cargo bin goes into one box: the master disconnect, the Class-T block, the 2151 dual MRBF block (the starter's 250 A and the amplifier's F34), F38 and the negative bus. The box sits in the battery tray beside the battery, shaped around it, joined to the battery by two terminal connections tightened like the battery's own and removed in reverse, and it leaves by as few connections as the currents allow. A remote jump post goes in the engine bay. The amplifier is reduced to one connector.**
+
+His words (chat, 2026-10-15): ""now lets examine the batery comaptment to the same idea, (we also need a remote jump post in the engine bay) after the battery is secured to the floor with a metal bracket and tray, can we attach eveything that would be in the bin that is ""loose"" in a box with a connector and two battery connections to sit in the trai cleanly next to the battery easy to reamove clearly deasigned around the battery to be set on and terminal connections tightened smae reversed fore removal. im open to suggections to making the amp one connector (can speaker wire be over connectors with out hurting the signal?)""
+
+**What stands.** D-063 and P057: the battery on a backing plate under the floor, clamped with grade-8 hardware. The box shares the tray and is restrained as the battery is, because a loose mass in a crash is the case D-063 answers. D-319: the disconnect on the positive, now with its knob through the box's lid. D-235: boots on the terminals; the box's two battery leads carry them. D-560: the 2151 dual block. D-466: the amplifier fed from the disconnect's output.
+
+**Open, for the plan to settle with him:**
+- (B1) how the heavy runs leave the box: bolted studs under the lid, or sealed single-pole high-current plugs. They are the 2 AWG PMU feed, the 1/0 starter feed, the 1/0 cranking return and the chassis bond.
+- (B2) the amplifier docked to the box, with the upmix built into its single connector board so the digital link stays inside, or kept apart.
+- (B3) the jump post as the engine bay's power junction, with F17, F18 and K9 beside it, and its ground post.
+- (B4) what the lithium battery accepts when it is jumped or charged through the post: confirm against Ionic's manual before the post is used.
+
+**Reading taken (CLAUDE.md §3).** ""Everything that would be in the bin that is loose"" is read as the battery's power parts and their fuses. The amplifier and the upmix are boxes already, and he asked separately to make the amplifier one connector, so docking them is a choice, not taken. The chassis bond is read as D-603's: a ground point on the body outside the box (today's rear star stud, DV42), joined by one heavy lead.
+
+**Consequences in the data.** Y67 is the battery compartment's plan and mock-up; the fuses, cables, grounds and parts change when it freezes. The amplifier's pick (luxury X-012) gains ""its connector board and dock""."
