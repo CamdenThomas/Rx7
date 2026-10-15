@@ -1,5 +1,7 @@
 # cu-assembly - the Control Unit, mocked up
 
+> **OUTDATED by the overhaul (D-612).** This is the last drawn state from before the boxes: the CU's connector is the DRC 64 with a DTP comfort inlet (D-594, D-612), the seats' heat and cool are its + side switches and the radar receiver is inside it (D-597), the face is the eighth pass (D-602), the CUR is on four I2C wires (D-604). It is kept as it is until row Y70 redraws it; the brief is `00-design/diagrams/overhaul-plan.html`, and the record (`../data/`) is what it must match.
+
 *Rev 2026-10-14 (Y53: single-DIN tall with one rear header, D-582; before it Y40, the case made like
 the head unit, D-542; Y14, the one-height unit) · owns: what this folder is, what it may claim, and
 how to rebuild it. Read `../../../README.md` first: it is the fence. The design is the record's

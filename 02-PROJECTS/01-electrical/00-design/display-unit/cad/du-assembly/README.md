@@ -1,5 +1,7 @@
 # du-assembly - the ICU as one unit, mocked up
 
+> **OUTDATED by the overhaul (D-612).** This is the last drawn state from before the boxes: the AEM wideband gauge goes inside the DU on DP-ICU 18 / 19 with a gland for its sensor lead (D-596). It is kept as it is until row Y72 redraws it; the brief is `00-design/diagrams/overhaul-plan.html`, and the record (`../data/`) is what it must match.
+
 *Rev 2026-10-12 (Y19, first pass) · owns: what this folder is, what it may claim, and how to rebuild
 it. Read `../../../README.md` first: it is the fence. The design is the record's (D-491, D-270, D-268,
 `housings` DP-ICU-A / DP-ICU-B, parts P111 and P117 to P122, `icu_channels` IC21 / IC22 / IC24);

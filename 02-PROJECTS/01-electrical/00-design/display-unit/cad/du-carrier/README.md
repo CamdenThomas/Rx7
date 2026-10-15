@@ -1,5 +1,7 @@
 # ICU carrier — the KiCad project
 
+> **OUTDATED by the overhaul (D-612).** This is the last drawn state from before the boxes: the AEM wideband gauge goes inside the DU on DP-ICU 18 / 19 with a gland for its sensor lead (D-596). It is kept as it is until row Y72 redraws it; the brief is `00-design/diagrams/overhaul-plan.html`, and the record (`../data/`) is what it must match.
+
 *Rev 2026-10-14 (sheet and board rev 0.07 - Y63, the one DRC connector, D-587 / D-590; rev 0.06 was Y44's fix pass, D-549; 0.05 Y44's one value, 0.04 Y42, 0.03 2026-10-09) · owns: what this KiCad project is for, what it
 may claim, and how to start. The board's design is `../../../../data/icu_channels.csv` — that is the
 record; this is a drawing of it. Read `../../../README.md` first: it is the fence.*

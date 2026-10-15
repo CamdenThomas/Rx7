@@ -1,5 +1,7 @@
 # Left plate — the KiCad project
 
+> **OUTDATED by the overhaul (D-612).** This is the last drawn state from before the boxes: the CUR is on one DRC 24 (D-597) with an I/O expander and ADC for its keys and stick (D-604); the left plate's two DT13s and J1's twelve lines are gone. It is kept as it is until row Y71 redraws it; the brief is `00-design/diagrams/overhaul-plan.html`, and the record (`../data/`) is what it must match.
+
 *Rev 2026-10-14 (sheet and board rev 0.03, provisional - Y62, Y50: D-586, D-589, D-580, D-581; rev 0.02 Y21, Y22, D-492, D-499, D-504) · owns: what this
 KiCad project is for and what it may claim. The plate's design is the record: the cavities of `DP-DCU-E`
 and `L3-S1` 9-11 (`../../../../data/cavities.csv`), the `panel_ribbon` lines they name, devices `DV24` and

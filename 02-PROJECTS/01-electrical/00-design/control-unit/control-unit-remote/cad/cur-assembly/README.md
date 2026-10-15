@@ -1,5 +1,7 @@
 # cur-assembly - the Control Unit Remote (CUR), mocked up
 
+> **OUTDATED by the overhaul (D-612).** This is the last drawn state from before the boxes: the CUR is on one DRC 24 (D-597) with an I/O expander and ADC for its keys and stick (D-604); the left plate's two DT13s and J1's twelve lines are gone. It is kept as it is until row Y71 redraws it; the brief is `00-design/diagrams/overhaul-plan.html`, and the record (`../data/`) is what it must match.
+
 *Rev 2026-10-13 (Y25, first pass) · owns: what this folder is, what it may claim, and how to rebuild
 it. Read `../../../README.md` first: it is the fence. The design is the record's (D-514, D-492, D-499,
 D-504, parts P198 / P199 / P204 / P156 / P200, block 01.41); this is a drawing of it.*

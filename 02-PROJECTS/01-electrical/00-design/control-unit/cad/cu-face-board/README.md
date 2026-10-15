@@ -1,5 +1,7 @@
 # Control panel — the KiCad project
 
+> **OUTDATED by the overhaul (D-612).** This is the last drawn state from before the boxes: the CU's connector is the DRC 64 with a DTP comfort inlet (D-594, D-612), the seats' heat and cool are its + side switches and the radar receiver is inside it (D-597), the face is the eighth pass (D-602), the CUR is on four I2C wires (D-604). It is kept as it is until row Y70 redraws it; the brief is `00-design/diagrams/overhaul-plan.html`, and the record (`../data/`) is what it must match.
+
 *Rev 2026-10-13 (sheet and board rev 0.04, provisional - Y20, D-492; the encoders' lug slots corrected at Y44, D-549) · owns: what this KiCad project
 is for and what it may claim. The panel's design is `../../../../data/panel_ribbon.csv`, the cavities of
 `DP-DCU-E`, `dcu_channels` SN17-SN20 and parts P155, P192, P201 (D-492, D-458, D-459). Read

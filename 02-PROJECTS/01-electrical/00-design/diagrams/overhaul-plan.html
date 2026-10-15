@@ -3,13 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dash Overhaul Plan</title>
+<title>Overhaul CAD Pass</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* The dash-zone overhaul's plan (D-596 to D-599, Y65). A concept page under 00-design's fence, like
-   the CU's and the CUR's face concepts: the record wins where they disagree. Same look as those
-   pages. One column: where it stands, the four boxes, the connectors, the gauge, the board's design
-   notes, the improvements as settled, the mock-up order, the record's changes, the face concepts. */
+/* The overhaul's CAD pass (D-612): the brief for rows Y69 to Y78, one section per box. The plan it
+   grew from (D-596 to D-611) is in the record; this page holds no fact of its own - every query it
+   names is the source, and the record wins where they disagree. Same look as the face concepts. */
 :root {
   --bg: #f1f3ef; --surface: #ffffff; --fg: #17211c; --muted: #58645d; --line: #d3d9d3;
   --accent: #0e6f40; --guess: #a84a06; --guess-fg: #ffffff; --warn: #b3261e; --soft: #e6efe9;
@@ -115,430 +114,256 @@ a { color: var(--accent); }
 <main>
 
 <header style="display:flex;flex-direction:column;gap:10px">
-  <div class="eyebrow">1982 RX-7 · electrical · dash zone overhaul · plan, second pass, 15 October 2026</div>
-  <h1>Dash Overhaul Plan</h1>
-  <p class="lede">The dash zone becomes four sealed boxes joined by nothing but wire. Every choice made so far is recorded (D-596 to D-600); what is still open is listed under "Before the CAD". It is still a plan only: no CAD, no board, nothing bought, and no cavity, housing or part changed yet. That happens at the mock-ups (Y66). Where this page and the record disagree, the record is right.</p>
-  <p class="lede">An orange tag <span class="g">?</span> marks a number this page guessed. Nothing on it has been measured (R11).</p>
+  <div class="eyebrow">1982 RX-7 · electrical · the overhaul · phase: CAD pass · 15 October 2026</div>
+  <h1>Overhaul CAD Pass</h1>
+  <p class="lede">The overhaul's plan is done and in the record (D-596 to D-612). This page is the brief for the next pass, which is CAD: one section per box, saying which work row it is, what it reads from the record, what to draw, what must hold, and how it is checked. Every number comes from the record. Where this page and the record disagree, the record is right, and a drawing that needs a pin or a part changed changes the record first.</p>
+  <p class="lede">An orange tag <span class="g">?</span> marks a figure guessed for the drawing. Nothing in the car has been measured, and the space is assumed until it is (D-603, R11).</p>
 </header>
 
 <section>
   <h2>Where it stands</h2>
-  <div class="status">
-    <div><b>9 → 4</b><span>boxes in the dash zone: the PMU box, the Control Unit, the Display Unit and the CUR (D-596; the CUR stays its own box, D-598).</span></div>
-    <div><b>8</b><span>connectors in the whole dash zone: one each on the DU, the CU and the CUR, and five on the PMU box: front, rear, and three for the engine, wired for the LS from day one (D-606, D-607).</span></div>
-    <div><b>0</b><span>loose parts left in the dash: no inline fuse, relay socket, barrier strip or perfboard. Bought devices (switches, head unit, blower) are parts on the end of a wire.</span></div>
-    <div><b>Space</b><span>is assumed for now (D-603): you make room and measure when the car is stripped. The wideband lead is long enough.</span></div>
-  </div>
   <div class="tablewrap"><table>
-    <tr><th>Ruling</th><th>What it settled</th><th>Your words</th></tr>
-    <tr><td class="n">D-596</td><td>Four sealed boxes joined only by wire; legs set aside until every wire is placed; replaces D-214.</td><td>"…nothing but wire in the dash zone only for now."</td></tr>
-    <tr><td class="n">D-597</td><td>CUR on one connector; smart switches for all relays but K13; one fuse bank; no fuses in the CU; the radar receiver inside the CU.</td><td>"1, 2, 3, 4, 6 i like for sure"</td></tr>
-    <tr><td class="n">D-598</td><td>The CUR stays its own box, not the DU's wing.</td><td>"no on 7"</td></tr>
-    <tr><td class="n">D-599</td><td>F24 into the PMU box, after F3, with its own wire to the column; replaces D-412.</td><td>"yes on 5"</td></tr>
-    <tr><td class="n">D-600</td><td>The PMU box's engine, front and rear harnesses unplug at the box on mixed-contact Deutsch circulars; dash-zone wires are hard-wired there.</td><td>"Mixed-contact Deutsch circular"</td></tr>
-    <tr><td class="n">D-601</td><td>At the LS swap the ECU (EMU PRO) goes inside the PMU box; the engine harness unplugs at the box; replaces engine D-443's connector form.</td><td>"1: a"</td></tr>
-    <tr><td class="n">D-602</td><td>The faces are the CU's eighth pass and the CUR's second pass, written out in the ruling; replaces D-595 and D-481.</td><td>"…are the lastest and best faces"</td></tr>
-    <tr><td class="n">D-606</td><td>The PMU box wired for the LS from day one; today's engine leg is eleven wires in E1.</td><td>"wired for the LS from the begining"</td></tr>
-    <tr><td class="n">D-607</td><td>Three HDP20 engine plugs: E1 24-29, E2 and E3 24-31 keyed apart; 13 spare.</td><td>"3"</td></tr>
-    <tr><td class="n">D-608</td><td>The battery compartment gets the same treatment: one box beside the battery, a jump post in the engine bay, the amplifier on one connector.</td><td>"now lets examine the batery comaptment to the same idea"</td></tr>
-    <tr><td class="n">D-610</td><td>The sill node goes (windows on H-bridges in the PMU box), no ladder part in a harness, one plug per seat; replaces D-363.</td><td>"1: yes / 2: yes / 3: one plug / 4: yes"</td></tr>
-    <tr><td class="n">D-603</td><td>Every dash return comes back to the PMU box; the chassis bond is a ground point outside it; space assumed until measured; the AFR lead reaches.</td><td>"bring both back to the pmu box"</td></tr>
+    <tr><th>Phase</th><th>What</th><th>State</th></tr>
+    <tr><td>Plan</td><td>The rulings, D-596 to D-611: the dash as sealed boxes joined by wire, the bin box, the jump post, the amplifier dock, the legs scanned, 00-design by part</td><td><b>done</b></td></tr>
+    <tr><td>Record</td><td>D-612: every ruling in the tables. The new <span class="mono">boxes</span> table; the plugs and every cavity; the PMU box's inside connections; fuses and relays by box; grounds, cables and routes; parts and work. The engine's LS cavities are on the circulars</td><td><b>done</b></td></tr>
+    <tr><td><b>CAD pass</b></td><td>Y69 to Y75, one row per box: boards, enclosures and mock-ups. The existing CAD is marked outdated until its row redraws it</td><td><b>next</b></td></tr>
+    <tr><td>Build track</td><td>Y76: the build rows, briefs and steps rewritten to the boxes. Those rows wait on it</td><td>after the CAD</td></tr>
+    <tr><td>3D</td><td>Y77: the app's scene to the boxes</td><td>after the CAD</td></tr>
+    <tr><td>Break points</td><td>Y78: where the dash's runs split, once every wire is placed (your rule, D-600)</td><td>last</td></tr>
+    <tr><td>Freeze</td><td>The design freeze, SOURCING. It is yours, not this pass's</td><td>yours</td></tr>
   </table></div>
 </section>
 
 <section>
-  <h2>The four boxes</h2>
-  <div class="stage">
-    <svg viewBox="0 0 1000 540" role="img" aria-label="The PMU box on the left joins the Display Unit with 12 wires, the Control Unit with 14 and the CUR with 5; the CUR joins the CU with 12. Each box also has wires out to devices on the car.">
-      <rect class="car" x="6" y="6" width="988" height="528" rx="10"/>
-      <text x="22" y="30" class="t-mono t-muted" font-size="13">DASH ZONE · wire only</text>
-
-      <path class="lk" d="M300 175 L470 120"/>
-      <text x="350" y="128" font-size="15">12</text>
-      <text x="318" y="148" class="t-muted" font-size="12">power · CAN · tell-tales · oil · AFR feed</text>
-
-      <path class="lk" d="M300 330 L470 400"/>
-      <text x="360" y="395" font-size="15">14</text>
-      <text x="300" y="415" class="t-muted" font-size="12">logic · comfort feed ×4 · grounds · CAN · wake · selects</text>
-
-      <path class="lk" d="M800 175 L700 400"/>
-      <text x="768" y="290" font-size="15">12</text>
-      <text x="700" y="312" class="t-muted" font-size="12">keys · stick · I²C</text>
-
-      <path class="lk" d="M830 90 C 830 20, 200 20, 200 120"/>
-      <text x="480" y="44" font-size="15">5</text>
-      <text x="505" y="44" class="t-muted" font-size="12">winks · hazard → A8 · ground</text>
-
-      <path class="lk-car" d="M610 70 L610 14"/>
-      <text x="620" y="40" class="t-muted" font-size="12">7 sensor wires + AFR lead</text>
-      <path class="lk-car" d="M40 250 L6 250"/>
-      <path class="lk-car" d="M170 380 L170 534"/>
-      <text x="180" y="500" class="t-muted" font-size="12">≈69 to engine · front · column · seats · rear · glovebox</text>
-      <path class="lk-car" d="M560 480 L560 534"/>
-      <text x="570" y="512" class="t-muted" font-size="12">seats · sill · HVAC · radar · OAT · dash lamps</text>
-
-      <rect class="bx" x="40" y="120" width="260" height="260" rx="8" stroke="var(--box-pmu)"/>
-      <text x="60" y="152" font-size="22" font-weight="600" fill="var(--box-pmu)">PMU box</text>
-      <text x="60" y="180" font-size="14">PMU-24 · 8 smart switches · K13</text>
-      <text x="60" y="200" font-size="14">big-fuse bank · 16 mini blades</text>
-      <text x="60" y="220" font-size="14">wake circuit · pull-ups · TVS</text>
-      <text x="60" y="240" font-size="14">ground star · ECU at the swap</text>
-      <text x="60" y="350" class="t-mono t-muted" font-size="12">5 plugs: engine ×3 · front · rear</text>
-      <text x="60" y="368" class="t-mono t-muted" font-size="12">feed stud · dash wires hard-wired</text>
-
-      <rect class="bx" x="470" y="70" width="280" height="120" rx="8" stroke="var(--box-du)"/>
-      <text x="490" y="102" font-size="22" font-weight="600" fill="var(--box-du)">Display Unit</text>
-      <text x="490" y="130" font-size="14">display · carrier · radio</text>
-      <text x="490" y="150" font-size="14">+ wideband gauge, whole</text>
-      <text x="490" y="176" class="t-mono t-muted" font-size="12">1 × DRC 24 · 1 gland</text>
-
-      <rect class="bx" x="770" y="90" width="180" height="90" rx="8" stroke="var(--box-cur)"/>
-      <text x="790" y="122" font-size="22" font-weight="600" fill="var(--box-cur)">CUR</text>
-      <text x="790" y="148" font-size="14">keys · knob · stick</text>
-      <text x="790" y="170" class="t-mono t-muted" font-size="12">1 × DRC 24</text>
-
-      <rect class="bx" x="470" y="380" width="280" height="100" rx="8" stroke="var(--box-cu)"/>
-      <text x="490" y="412" font-size="22" font-weight="600" fill="var(--box-cu)">Control Unit</text>
-      <text x="490" y="440" font-size="14">DCU · panel · seat switches · radar rx</text>
-      <text x="490" y="466" class="t-mono t-muted" font-size="12">1 × DRC 64 header (2 plugs)</text>
-    </svg>
+  <h2>How every box is drawn</h2>
+  <div class="notes">
+    <article><h3>Read the record, never this page</h3>
+      <p>A box's contents are its rows. Each section below names the queries. For example:</p>
+      <p class="mono">rx7.py sql 02-PROJECTS/01-electrical "select * from housings where box='PMU-BOX'"</p>
+      <p class="mono">rx7.py sql 02-PROJECTS/01-electrical "select * from cavities where housing='L1-E1'"</p>
+      <p>The box's own row is in <span class="mono">boxes</span>: where it sits, what it holds, how it joins the harness, and its rulings.</p></article>
+    <article><h3>Files go where parts.py says</h3>
+      <p>Each box has a part folder: <span class="mono">pmu/</span>, <span class="mono">display-unit/</span>, <span class="mono">control-unit/</span> (with <span class="mono">control-unit-remote/</span>), <span class="mono">bin-box/</span>, <span class="mono">bay-junction/</span> and <span class="mono">amp-dock/</span>, each with cad, data and diagrams. A new board or mock-up is added to <span class="mono">tools/parts.py</span> (BOARDS, ASSEMBLIES) before its first file, and every tool finds it from there.</p>
+      <p>A mock-up's numbers go in one table, <span class="mono">&lt;part&gt;/data/&lt;name&gt;_params.py</span>, built by <span class="mono">tools/mockup.py</span>. A board is a KiCad project in <span class="mono">cad/&lt;board&gt;/</span>, held to the record by <span class="mono">tools/check.py</span>.</p></article>
+    <article><h3>Record first</h3>
+      <p>If a drawing moves a cavity or changes a part, the record changes in the same pass, through rx7.py, and <span class="mono">rx7.py check</span> stays clean. Then <span class="mono">rx7.py diagrams</span> runs if a housing, cavity, device or route changed. A box is done when its <span class="mono">boxes.state</span> reads <span class="mono">drawn</span>, and the outdated banner leaves its READMEs.</p></article>
+    <article><h3>Nothing measured is final</h3>
+      <p>The space under the dash (C1, M-1), the cargo bin (M-4) and the binnacle are assumed. Every envelope is a parameter marked <span class="mono">confirm</span>, so the mock-ups are rebuilt from the numbers once he measures (D-603, R11).</p></article>
   </div>
+</section>
 
+<section>
+  <h2>The order</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Row</th><th>Box</th><th>Folder</th><th>Waits on</th><th>Starts with</th></tr>
+    <tr><td class="n">Y69</td><td>PMU box</td><td class="mono">pmu/</td><td>—</td><td>the switch parts and the heat budget, then the board, then the enclosure</td></tr>
+    <tr><td class="n">Y70</td><td>Control Unit</td><td class="mono">control-unit/</td><td>—</td><td>Y54, the carrier's DRC 64 edge</td></tr>
+    <tr><td class="n">Y71</td><td>CUR</td><td class="mono">control-unit/control-unit-remote/</td><td>—</td><td>the expander and ADC on the CUR board</td></tr>
+    <tr><td class="n">Y72</td><td>Display Unit</td><td class="mono">display-unit/</td><td>—</td><td>the gauge and its gland in the mock-up</td></tr>
+    <tr><td class="n">Y73</td><td>Bin box</td><td class="mono">bin-box/</td><td>—</td><td>a mock-up around the Ionic S9 and its tray</td></tr>
+    <tr><td class="n">Y74</td><td>Bay junction</td><td class="mono">bay-junction/</td><td>—</td><td>the plate: the jump post, the ground post, the MIDI block and K9</td></tr>
+    <tr><td class="n">Y75</td><td>Amplifier dock</td><td class="mono">amp-dock/</td><td>luxury X-012, the amplifier's pick</td><td>the upmix connector board</td></tr>
+    <tr><td class="n">Y76</td><td>The build track</td><td>—</td><td>Y69 to Y74</td><td>the PMU box's build rows, in place of E13 to E18</td></tr>
+    <tr><td class="n">Y77</td><td>The app's 3D</td><td class="mono">tools/export_glb.py</td><td>Y69 to Y72</td><td>the boxes into the scene, the dash post out</td></tr>
+    <tr><td class="n">Y78</td><td>Break points</td><td>—</td><td>Y76</td><td>with every wire placed</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>PMU box · Y69</h2>
   <div class="boxes">
     <div class="card" style="--c: var(--box-pmu)">
-      <h3>PMU box</h3>
+      <h3>Reads</h3>
       <ul>
-        <li>The PMU-24 DL on its own 39-way plug inside (a sealed module: it unplugs, it is never soldered). Its aluminium case is one outside wall of the box, so it keeps cooling.</li>
-        <li>One bussed bank for the five large fuses (F30, F31, F32, F35, F36). Every small fuse is a mini blade on the board under one lid, the map inside it: F1, F2, F3, F5 (empty), F12, F13 (empty), F15, F16, F19, F20 (5 A for the gauge), F21, F22, F23, F24, F33, F37.</li>
-        <li>Eight smart high-side switches where K1–K4, K11, K12, K14 and K15 were. K13, the fuel pump's series relay, stays a mechanical relay in a socket (D-352).</li>
-        <li>The wake circuit, the A15 / A16 pull-ups, the oil-pressure pull-up and the A7 tap, the pop-up diodes, the main-feed TVS (P136), the ground star.</li>
-        <li>The 2 AWG feed from the Class-T on a stud. The ground star inside, every dash return on it; its one heavy lead goes out to a chassis ground point outside the box, placed where the body bond is best (D-603).</li>
-        <li>At the LS swap, the ECU (the EMU PRO) inside too, on the same CAN; room is left for it from the start (D-601).</li>
+        <li><span class="mono">boxes</span> PMU-BOX</li>
+        <li><span class="mono">housings</span> and <span class="mono">cavities</span> where box = PMU-BOX: L1-E1, L1-E2, L1-E3, L2-F1, L4-R1, and the hard-wired L3-COL, L3-DASH, L3-HU</li>
+        <li><span class="mono">node_conductors</span>, the box's inside connection list, every row</li>
+        <li><span class="mono">fuses</span> and <span class="mono">relays</span> where box = PMU-BOX</li>
+        <li><span class="mono">pins</span>, <span class="mono">wake_stages</span>, <span class="mono">loads</span>, <span class="mono">logic</span>, <span class="mono">ladders</span></li>
       </ul>
-      <div class="conn"><span>connectors</span><s>open node, 16 post receptacles</s><b>5 plugs + feed stud</b></div>
     </div>
+    <div class="card" style="--c: var(--box-pmu)">
+      <h3>Draw</h3>
+      <ul>
+        <li><b>The board.</b> Eight smart high-side switches (P239) where K1–K4, K11, K12, K14 and K15 were. The two window H-bridges (P240, K5–K8). K13 in a socket. The wake circuit as <span class="mono">wake_stages</span> has it. The A15 / A16 pull-ups, the oil-pressure pull-up and A7's tap. The pop-up diodes (N09), the main-feed TVS (P136), the CAN2 splice and the ground star. The series ladder resistors whose switch has its own wire (D-610).</li>
+        <li><b>The fuse banks.</b> Big fuses F30, F31, F32, F35 and F36 at the feed stud (P241). Sixteen mini blades under the lid (P242), with the map inside the lid.</li>
+        <li><b>The enclosure (P243).</b> The PMU-24 as one outside wall. The five HDP20 jam-nut receptacles face down or sideways (the water rule), with L1-E2 / L1-E3 and L2-F1 / L4-R1 keyed apart. Glands for the hard-wired bundles. The 2 AWG feed stud and one heavy ground lead out to the chassis point (D-603). Room for the EMU PRO on its pigtails (D-601).</li>
+        <li><b>The heat budget.</b> Each switch's and bridge's dissipation at <span class="mono">loads</span>' design currents, plus the PMU's own. It decides between the two shapes: stacked, about 112 × 175 × 55 <span class="g">?</span>, or flat, about 112 × 250 × 45 <span class="g">?</span>.</li>
+      </ul>
+    </div>
+    <div class="card" style="--c: var(--box-pmu)">
+      <h3>Must hold</h3>
+      <ul>
+        <li>Each switch does exactly what its relay did. High-side ones (K11 on O22, K14 / K15 on O15) take a PMU output. Low-side ones (K3 / K4 from the CU, K12 from the stalk's WASH contact, K1 / K2 through each wink's NC pole) take a ground. The pop-ups are two switches a side, interlocked, with "up" following the lamps while the wink pole is closed. A switch that fails on must still be stopped by its fuse.</li>
+        <li>F24 is fed from F3's output, so a light-side short blows only F24 (D-599).</li>
+        <li>Every dash return lands on the star (D-603). CAN2 runs PMU box → DU → CU, with the 120 Ω at the CU end (N74).</li>
+        <li>L1-E1 1–16 serve today's engine leg. The box sides of L1-E2 / L1-E3 and of L1-E1 17–29 are wired from day one to where the ECU's pigtails will land; the ECU end waits on its pinout (block APP.05).</li>
+        <li>The roadside recovery (<span class="mono">recovery</span>, D-322) still works with switches under a lid. Re-check it.</li>
+      </ul>
+    </div>
+    <div class="card" style="--c: var(--box-pmu)">
+      <h3>Checked by, and open</h3>
+      <ul>
+        <li>ERC and DRC at zero. <span class="mono">tools/check.py --board pmu-board</span> (a new board in parts.py) agrees with node_conductors and the cavities. The mock-up's self-test passes.</li>
+        <li>The switches and the pop-up interlock simulated like the wake decks (<span class="mono">sim/</span>). The wake pulse capacitor is 4.7 µF X7R if ceramic.</li>
+        <li>Open: which insert numbers are #12, #16 and #20 (TE C-0425-014-2400 rev H) <span class="g">?</span>; the key codes; the switch part per channel; L1-E1 4's source in the box (the A/C clutch, LW32).</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
+<section>
+  <h2>Control Unit · Y70</h2>
+  <div class="boxes">
     <div class="card" style="--c: var(--box-cu)">
-      <h3>Control Unit</h3>
+      <h3>Reads</h3>
       <ul>
-        <li>The DCU carrier and panel as drawn, with the seat heat and cool stage changed to + side smart switches that protect their own wires: no fuses inside, no service door (D-597).</li>
-        <li>The comfort feed (O15, about 21 A) in on four size-20 cavities in parallel, the way the three power grounds already return it <span class="g">?</span> (TE's word on paralleling to confirm).</li>
-        <li>The radar receiver inside, once it is picked small enough (LP44): its front and rear sensor leads come to the CU, and its alert, power and ground become internal.</li>
-        <li>The CAN chain's far-end 120 Ω terminator.</li>
-        <li>Its face is the eighth pass (D-602): 171 × 25.4 mm under the stereo. The box behind is about 50 mm tall, so it no longer slides in from the front behind its face; how it is shaped and fitted is next-improvement N1.</li>
+        <li><span class="mono">boxes</span> CU; <span class="mono">modules</span> DCU; <span class="mono">dcu_channels</span></li>
+        <li><span class="mono">cavities</span> DP-DCU 1–64 and DP-DCU-P 1–2; <span class="mono">panel_ribbon</span></li>
+        <li>The face: <a href="../control-unit/diagrams/cu-face-concept.html">cu-face-concept.html</a>, the eighth pass (D-602)</li>
       </ul>
-      <div class="conn"><span>connectors</span><s>header + comfort box + radar receiver + L3-CMF + L3-RCV</s><b>1 header, 2 plugs</b></div>
     </div>
-
-    <div class="card" style="--c: var(--box-du)">
-      <h3>Display Unit</h3>
+    <div class="card" style="--c: var(--box-cu)">
+      <h3>Draw</h3>
       <ul>
-        <li>The AEM wideband gauge whole, in its case, on its own power and ground cavities, its CAN soldered to the DU's pair inside.</li>
-        <li>Its sensor lead out through one sealed gland, uncut.</li>
-        <li>The tach cable's shield now ends here, grounded once (the tach runs engine to DU).</li>
+        <li><b>cu-carrier.</b> The rear edge to the DRC 64 right-angle header (Y54, P248), with the DTP04-2P comfort inlet DP-DCU-P beside it. The seats' heat and cool on + side switches out of DP-DCU 1–4, fed from DP-DCU-P 1 (D-597). The CUR's four I²C wires on 44–47 (D-604). The radar sensor runs on 49–54, the receiver's power and space inside (D-597), and the 120 Ω across CAN2. The DT13s, J9 and the upper board's links go.</li>
+        <li><b>cu-face-board.</b> To the eighth-pass face.</li>
+        <li><b>cu-assembly.</b> The box about 50 mm tall, stepping up behind the dash and fitted from behind (D-604).</li>
       </ul>
-      <div class="conn"><span>connectors</span><s>DU + separate gauge</s><b>1 × DRC 24 + gland</b></div>
     </div>
+    <div class="card" style="--c: var(--box-cu)">
+      <h3>Checked by</h3>
+      <ul>
+        <li><span class="mono">check.py --board cu-carrier</span> and <span class="mono">--board cu-face-board</span>: 0 mismatches.</li>
+        <li>The mock-up's self-test and the enclosure fit check (<span class="mono">tools/enclosure.py --pass cu-carrier</span>).</li>
+        <li>Open: whether the radar receiver fits (luxury Z-002); the DRC part numbers from the maker's drawing.</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
+<section>
+  <h2>CUR · Y71</h2>
+  <div class="boxes">
     <div class="card" style="--c: var(--box-cur)">
-      <h3>CUR</h3>
+      <h3>Reads and draws</h3>
       <ul>
-        <li>Its own box beside the DU, as D-586 placed it (D-598).</li>
-        <li>17 live lines on one DRC 24, the DU's part, 7 spare (D-597).</li>
-        <li>Its face is the second pass (D-602): about 43 × 32 mm, the two knobs on the wheel side, the key grid beside them.</li>
+        <li><span class="mono">boxes</span> CUR; <span class="mono">cavities</span> DP-CUR 1–24; devices DV21, DV24, DV62</li>
+        <li>The face: <a href="../control-unit/control-unit-remote/diagrams/cur-face-concept.html">cur-face-concept.html</a>, the second pass (D-602)</li>
+        <li><b>cur-board</b>, regenerated by <span class="mono">tools/cur_board_sch.py</span> then <span class="mono">_pcb.py</span>. One DRC13-24PA (P249). An I/O expander and an I²C ADC (P250) put the keys and the mirror stick on the I²C bus. The hazard (latching) and the winks with their 18 k / 33 k, the screen knob, the lit symbols.</li>
+        <li><b>cur-assembly</b> to the face.</li>
       </ul>
-      <div class="conn"><span>connectors</span><s>2</s><b>1 × DRC 24</b></div>
+    </div>
+    <div class="card" style="--c: var(--box-cur)">
+      <h3>Checked by</h3>
+      <ul>
+        <li>ERC and DRC at zero; <span class="mono">check.py --board cur-board</span> at 0 mismatches, its wink check included; cur-assembly's self-test.</li>
+        <li>The CU firmware reads the keys and stick over I²C (F-017's tests extended).</li>
+      </ul>
     </div>
   </div>
 </section>
 
 <section>
-  <h2>Connectors on each box</h2>
-  <p>Counted from the record's cavities today, each wire traced to where it would start and end with the legs set aside. A wire that only passed through the dash post (the kick-down switch to its solenoid) becomes a plain wire with no box in it.</p>
-  <div class="tablewrap"><table>
-    <tr><th>Box</th><th>Connectors</th><th>Cavities</th><th>What is on them</th></tr>
-    <tr><td>Display Unit</td><td class="n">1 + gland</td><td class="n">19 + 2 reserved of 24</td><td>12 from the PMU box: logic, lamps, backlight, CAN pair, ground, both turns, high beam, oil node, the gauge's feed and ground. 7 straight from sensors: water temperature, tach and its shield, fuel level, brake warning, charge lamp, road speed. Oil temperature and the phase-2 sensor reserved. 3 spare.</td></tr>
-    <tr><td>Control Unit</td><td class="n">1 header, 2 plugs</td><td class="n">≈56 of 64</td><td>14 from the PMU box · 12 to the CUR · 6 radar sensor leads · the seats, the sill (window commands, mirrors, mirror heat), HVAC (servos, blower command, cabin sensor), outside air, dash-lamp dimming. About 8 spare, or 4 if the seat returns come back to the CU (settled in the wire list).</td></tr>
-    <tr><td>CUR</td><td class="n">1</td><td class="n">17 of 24</td><td>12 to the CU (keys, stick, I²C, its supply) · 5 to the PMU box (two wink poles, the wink and hazard ladder lines, ground). 7 spare.</td></tr>
-    <tr><td>PMU box</td><td class="n">5 + feed stud</td><td class="n">≈100 wires</td><td><b>On plugs</b>, the three harnesses that leave the dash: engine 9 today (3 heavy), 73 at the swap with the ECU inside, on three circulars E1–E3 (D-606, D-607) · front 17 (3 heavy) · rear 14 (3 heavy). <b>Hard-wired at the box</b>, with a plug only at the far end: column and dash 21 · seats 4 · glovebox diagnostic port 4 · DU 12 · CU 14 · CUR 5.</td></tr>
-    <tr class="total"><td>Dash zone</td><td class="n">8</td><td></td><td>Plus the gland, the studs and each device's own plug at the far end. The dash post alone has 16 receptacles today.</td></tr>
-  </table></div>
-  <p><b>Why there.</b> The PMU box feeds the whole car, but most of its wires never leave the dash. The DU, the CU, the CUR, the column switches, the seats and the diagnostic port are all within reach, and each already has a plug at its own end, so those wires are hard-wired at the box. The engine, front and rear harnesses are different: each must come off with the parts it serves. The engine harness is replaced at the LS swap, and the front comes off with the nose. So each of those gets a plug on the box. Those plugs are what the dash post's 16 receptacles were, moved onto the box, and the jumper wires between the post and the node go.</p>
-  <p><b>Plug type: mixed-contact Deutsch circulars (D-600).</b> Each direction carries three heavy 12 AWG circuits and 6 to 14 lighter ones. Engine: ignition and the two LS reserves. Front: both headlamps and the pop-up feed. Rear: defog, fuel pump and the window motor bus. A mixed-contact Deutsch circular (the HD30 / HDP20 family, size-12 and size-16 contacts in one shell <span class="g">?</span>, the exact insert to confirm) does each direction in one plug, two or three for the engine once it carries the swap's ECU harness. The break-point step (M7) can still add a split, at the firewall or the column, where installing needs one.</p>
-</section>
-
-<section>
-  <h2>The engine plugs: wired for the LS from day one</h2>
-  <p>Your rule: the PMU box is wired for the LS from the start, and today's engine leg is a few wires in the same big plugs. Every cavity on the box side is wired once and never changes. Today's leg fills only the cavities it uses, and the LS leg fills the rest. Inserts are from TE's drawing C-0425-014-2400 rev H (HDP20 / HD30, shell 24). Size #12 takes 25 A, #16 takes 13 A, #20 takes 7.5 A.</p>
-  <div class="tablewrap"><table>
-    <tr><th>Plugs</th><th>Inserts</th><th>Holds</th><th>Spare</th></tr>
-    <tr><td class="n">2, the minimum</td><td>E1 24-29 (4 #12, 19 #16, 6 #20) + E2 24-47 (5 #16, 42 #20)</td><td>Every LS wire except two of the optional ones</td><td class="n">0</td></tr>
-    <tr><td class="n">3, taken (D-607)</td><td>E1 24-29 + E2 24-31 (31 #16) + E3 24-31, keyed apart</td><td>Every LS wire, options included (69 signal + 4 power); drivers on E2, timing and low-level analog on E3</td><td class="n">13</td></tr>
-  </table></div>
-  <p><b>Why two is short.</b> The box keeps five cavities that only today's engine uses (the P/N interlock, the water temperature sender, the tach and its shield, the phase-2 supply). Wired once, they cannot carry an LS wire later, and that costs the two-plug layout its last two places.</p>
-  <h3>E1 · HDP20 24-29 · the only plug today's leg uses</h3>
-  <div class="tablewrap"><table><tr><th>Cavity</th><th>Size</th><th>Today (rotary leg)</th><th>At the swap (LS leg)</th><th>Box side, wired from day one</th></tr><tr><td class="n">1</td><td class="n">#12</td><td>Coil and igniter feed, O12</td><td>Coil feed, O12 (LW03)</td><td>PMU O12</td></tr><tr><td class="n">2</td><td class="n">#12</td><td>—</td><td>Injector feed, O13 (LW01)</td><td>PMU O13</td></tr><tr><td class="n">3</td><td class="n">#12</td><td>—</td><td>Fan relay feed, O14 (LW31)</td><td>PMU O14</td></tr><tr><td class="n">4</td><td class="n">#12</td><td>—</td><td>A/C clutch feed (LW32)</td><td>its source in the box, to settle <span class="g">?</span></td></tr><tr><td class="n">5</td><td class="n">#16</td><td>Start relay K9 coil</td><td>Start relay K9 coil (LW30)</td><td>PMU O21</td></tr><tr><td class="n">6</td><td class="n">#16</td><td>Alternator excitation</td><td>Alternator excitation (LW29)</td><td>F15</td></tr><tr><td class="n">7</td><td class="n">#16</td><td>Charge-lamp sense</td><td>Alternator lamp sense (LW29)</td><td>DU charge lamp (IC05)</td></tr><tr><td class="n">8</td><td class="n">#16</td><td>Oil pressure</td><td>Oil pressure (LW16)</td><td>PMU A7 + its pull-up, and the DU (IC02)</td></tr><tr><td class="n">9</td><td class="n">#16</td><td>Brake fluid level</td><td>Brake fluid level (LW41)</td><td>DU brake warning (IC06)</td></tr><tr><td class="n">10</td><td class="n">#16</td><td>Inhibitor R contact</td><td>Reverse switch (LW37)</td><td>PMU A5</td></tr><tr><td class="n">11</td><td class="n">#16</td><td>reserved (phase-2 signal)</td><td>Coolant level switch (LW49)</td><td>DU spare input (IC17)</td></tr><tr><td class="n">12</td><td class="n">#16</td><td>reserved (phase-2 supply)</td><td>reserved</td><td>F5 (no fuse yet)</td></tr><tr><td class="n">13</td><td class="n">#16</td><td>Inhibitor P/N contact</td><td>— left empty</td><td>PMU A4</td></tr><tr><td class="n">14</td><td class="n">#16</td><td>Water temperature sender</td><td>— left empty</td><td>DU water temperature (IC01)</td></tr><tr><td class="n">15</td><td class="n">#16</td><td>Tach pulse (shielded)</td><td>— left empty</td><td>DU tach (IC04)</td></tr><tr><td class="n">16</td><td class="n">#16</td><td>Tach shield drain</td><td>— left empty</td><td>ground star</td></tr><tr><td class="n">17</td><td class="n">#16</td><td>—</td><td>Reverse switch return (LW37)</td><td>PMU signal ground</td></tr><tr><td class="n">18</td><td class="n">#16</td><td>—</td><td>Throttle position 1 (LW17)</td><td>ECU</td></tr><tr><td class="n">19</td><td class="n">#16</td><td>—</td><td>Throttle position 2 (LW17)</td><td>ECU</td></tr><tr><td class="n">20</td><td class="n">#16</td><td>—</td><td>Throttle 5 V (LW18)</td><td>ECU</td></tr><tr><td class="n">21</td><td class="n">#16</td><td>—</td><td>Throttle ground (LW18)</td><td>ECU</td></tr><tr><td class="n">22</td><td class="n">#16</td><td>—</td><td>IAT (LW14)</td><td>ECU</td></tr><tr><td class="n">23</td><td class="n">#16</td><td>—</td><td>Coolant temperature, ECU (LW15)</td><td>ECU</td></tr><tr><td class="n">24</td><td class="n">#20</td><td>—</td><td>Oil temperature signal (LW36, option)</td><td>DU oil temperature (IC07)</td></tr><tr><td class="n">25</td><td class="n">#20</td><td>—</td><td>Oil temperature return (LW36, option)</td><td>DU sensor ground</td></tr><tr><td class="n">26</td><td class="n">#20</td><td>—</td><td>Alternator set-point (LW40, option)</td><td>ECU</td></tr><tr><td class="n">27</td><td class="n">#20</td><td>—</td><td>Neutral switch (LW38, option)</td><td>ECU</td></tr><tr><td class="n">28</td><td class="n">#20</td><td>—</td><td>Neutral switch return (LW38, option)</td><td>ECU input ground</td></tr><tr><td class="n">29</td><td class="n">#20</td><td>—</td><td>MAF signal (LW24, option)</td><td>ECU</td></tr></table></div>
-  <p>Today's leg: <b>11 wires</b> (cavities 1, 5–10 and 13–16), with every other cavity sealed. E2 and E3 wear dust caps until the swap.</p>
-  <h3>E2 · HDP20 24-31 · LS drivers</h3>
-  <div class="tablewrap"><table><tr><th>Cavity</th><th>Size</th><th>Today (rotary leg)</th><th>At the swap (LS leg)</th><th>Box side, wired from day one</th></tr><tr><td class="n">1–8</td><td class="n">#16</td><td>—</td><td>Injector drivers 1–8 (LW02)</td><td>ECU</td></tr><tr><td class="n">9–16</td><td class="n">#16</td><td>—</td><td>Coil triggers 1–8 (LW04)</td><td>ECU</td></tr><tr><td class="n">17–18</td><td class="n">#16</td><td>—</td><td>Ignition reference grounds (LW06)</td><td>ECU</td></tr><tr><td class="n">19–20</td><td class="n">#16</td><td>—</td><td>Throttle motor + / − (LW19), twisted</td><td>ECU</td></tr><tr><td class="n">21</td><td class="n">#16</td><td>—</td><td>Purge (LW35, option)</td><td>ECU</td></tr><tr><td class="n">22–23</td><td class="n">#16</td><td>—</td><td>O2 heater drivers 1–2 (LW28, option)</td><td>ECU</td></tr><tr><td class="n">24–25</td><td class="n">#16</td><td>—</td><td>Cam phaser a / b (LW34, option)</td><td>ECU</td></tr><tr><td class="n">26–31</td><td class="n">#16</td><td>—</td><td>spare</td><td>—</td></tr></table></div>
-  <h3>E3 · HDP20 24-31 · LS timing and low-level analog, keyed apart from E2</h3>
-  <div class="tablewrap"><table><tr><th>Cavity</th><th>Size</th><th>Today (rotary leg)</th><th>At the swap (LS leg)</th><th>Box side, wired from day one</th></tr><tr><td class="n">1–4</td><td class="n">#16</td><td>—</td><td>Crank signal, supply, ground, drain (LW07–09)</td><td>ECU</td></tr><tr><td class="n">5–8</td><td class="n">#16</td><td>—</td><td>Cam signal, supply, ground, drain (LW10–12)</td><td>ECU</td></tr><tr><td class="n">9–11</td><td class="n">#16</td><td>—</td><td>Road speed signal, return, drain (LW39, LW48)</td><td>ECU</td></tr><tr><td class="n">12–16</td><td class="n">#16</td><td>—</td><td>Knock 1–4 and drain (LW22, LW23)</td><td>ECU</td></tr><tr><td class="n">17–20</td><td class="n">#16</td><td>—</td><td>O2 signals and lows 1–2 (LW25, LW26, option)</td><td>ECU</td></tr><tr><td class="n">21</td><td class="n">#16</td><td>—</td><td>MAP (LW13)</td><td>ECU</td></tr><tr><td class="n">22</td><td class="n">#16</td><td>—</td><td>Sensor 5 V reference (LW20)</td><td>ECU</td></tr><tr><td class="n">23–24</td><td class="n">#16</td><td>—</td><td>Sensor grounds a / b (LW21)</td><td>ECU</td></tr><tr><td class="n">25–31</td><td class="n">#16</td><td>—</td><td>spare</td><td>—</td></tr></table></div>
-  <ul>
-    <li><b>At the swap, nothing in the box is rewired.</b> The ECU drops into its place and plugs onto pigtails that were wired from day one, and the new leg plugs into E1, E2 and E3. The ECU end of those pigtails waits on its pinout (block APP.05).</li>
-    <li>Cavities 13–16 stay wired to A4 and the DU; the LS leg simply leaves them empty. The clutch interlock reads A4 inside the dash (LW42).</li>
-    <li>Cavity numbers follow TE's drawing. Which cavities are #12, #16 and #20 is to be checked against the drawing, and each group is laid on neighbouring cavities, at Y66 <span class="g">?</span>.</li>
-    <li>The box side has pins, as the DT receptacles at the post did, and the leg side has sockets. HDP20 (plastic shell) rather than HD30 (metal).</li>
-    <li>Contacts: #12 and #16 are the same solid contacts as the DT and DTP parts, crimped by P038. E1's six #20 cavities need the size-20 die the CU's header already does (D-594).</li>
-    <li>A correction to N4: O13 still leaves the box, because it feeds the injectors (E1-2, LW01). Only the ECU's own supply stays inside, and that never crossed anyway.</li>
-  </ul>
-</section>
-
-<section>
-  <h2>The wideband gauge inside the Display Unit</h2>
-  <p>It fits whole: a 52 mm cup, 61 mm bezel and 21 mm deep, plus its 10-way plug (00-CAR SP-1737). The DU's body is about 313 × 132 mm across and 180–200 mm deep in its mock-up. Keeping the case is the safe way: it is the gauge's shield and support, and opening it voids it for a few millimetres.</p>
-  <div class="tablewrap"><table>
-    <tr><th>What</th><th>How, inside the DU</th><th>Why</th></tr>
-    <tr><td>Power</td><td>Its own cavity from F20 at 5 A, as AEM's sheet asks (SP-1734; it is 7.5 A in the record today), straight to the gauge's pin 1.</td><td>The sensor heater pulls 1.5 A, 3 A peak, in pulses. On the carrier's supply that would be noise next to the tach input and the display.</td></tr>
-    <tr><td>Ground</td><td>Its own cavity to the gauge's pin 2, joined to the DU's ground only at the plug.</td><td>The heater's return stays off the carrier's ground plane.</td></tr>
-    <tr><td>CAN</td><td>Pins 3 / 4 soldered to the DU's CAN2 pair inside; the gauge has no terminator of its own (PT977-P3).</td><td>The DU already reads the gauge's AEMnet frame (0x180).</td></tr>
-    <tr><td>Sensor lead</td><td>AEM's sensor cable out through a sealed gland in the rear wall, uncut.</td><td>Through the DRC 24 instead would need six cavities; this keeps the kit's harness whole.</td></tr>
-  </table></div>
-  <p><b>The lead reaches:</b> it is much longer than it needs to be (your word; D-603, 00-CAR PT977).</p>
-</section>
-
-<section>
-  <h2>Design notes found in this pass</h2>
-  <p>Going over the plan again turned these up. None changes a choice; each is something the board, the wire list or the mock-up has to get right.</p>
-  <div class="notes">
-    <article><h3>The smart switches must reproduce the relays' control logic exactly</h3>
-      <p>Each relay is switched today by one of two kinds of control.</p>
+  <h2>Display Unit · Y72</h2>
+  <div class="boxes">
+    <div class="card" style="--c: var(--box-du)">
+      <h3>Reads and draws</h3>
       <ul>
-        <li><b>High side:</b> the coil is fed by a PMU output. K11 (O22) and K14 / K15 (O15) are this kind.</li>
-        <li><b>Low side:</b> something grounds the coil's other end. K3 / K4 (the CU's release selects), K12 (the washer contact on the stalk) and K1 / K2 (through each wink's NC pole) are this kind.</li>
+        <li><span class="mono">boxes</span> DU; <span class="mono">cavities</span> DP-ICU; <span class="mono">icu_channels</span>; 00-CAR SP-1734 and SP-1737 (the AEM gauge)</li>
+        <li><b>du-assembly</b> with the gauge whole, in its case: a 52 mm cup, 61 mm bezel and 21 mm deep, plus its 10-way plug. Its own feed and ground on DP-ICU 18 / 19 (F20, 5 A) go straight to its pins 1 and 2. Its AEMnet pins 3 / 4 go onto the DU's CAN2 pair inside.</li>
+        <li>The sensor lead leaves through a sealed gland (P251) in the rear wall, uncut.</li>
+        <li><b>du-carrier</b> is re-checked with the gauge in place. Its connector is unchanged (D-587).</li>
       </ul>
-      <p>The board turns each into its switch's input with one of two small circuits, so every switch does exactly what its relay did. The pop-ups need the most care. Each side becomes two switches (up to R, down to RY), interlocked so both are never on, and "up" follows the lamps' command while the wink pole is closed, as the relay did.</p></article>
-    <article><h3>F24 stays after F3 inside the box</h3>
-      <p>F24 (3 A) is fed from F3's output (5 A) on the board, so a light-side short still blows only F24 and the key's fuse stands (D-599).</p></article>
-    <article><h3>The CAN chain and its two ends</h3>
-      <p>CAN2 runs PMU box → DU (the gauge rides on it inside) → CU. Its ends are the PMU's own termination and a 120 Ω resistor in the CU, which takes over from the node's resistor (D-346). The diagnostic port is CAN1, the PMU's other bus, unchanged.</p></article>
-    <article><h3>One ground star</h3>
-      <p>Every return in the dash comes back to the PMU box's ground star: the DU, CU and CUR, the seat heat and cool returns, the seat motors, and the blower final stage's return from the HVAC case. The star's one heavy lead goes to a chassis ground point outside the box, where the body bond is best (D-603).</p></article>
-    <article><h3>The oil-pressure line has two readers</h3>
-      <p>The sender's wire comes to the PMU box (its pull-up and the PMU's A7, the fuel-pump gate, D-260), and the box sends it on to the DU. The tach, water temperature, fuel level, charge lamp, brake warning and road speed go straight to the DU.</p></article>
-    <article><h3>Splices that stay wire</h3>
-      <p>The head unit's reverse, road-speed and parking-brake taps are splices in the wire, not parts, and so is the horn pad sharing A8 with the CUR's wink and hazard lines. The wire list puts each splice where it can be reached.</p></article>
+    </div>
+    <div class="card" style="--c: var(--box-du)">
+      <h3>Checked by</h3>
+      <ul>
+        <li>du-assembly's self-test with the gauge and the gland; the fit inside about 313 × 132 × 180–200 mm <span class="g">?</span>.</li>
+        <li><span class="mono">check.py --board du-carrier</span> still at 0.</li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <section>
-  <h2>The improvements, as settled</h2>
-  <div class="imp">
-    <article><div class="num">1</div><div><h3>The CUR on one connector <span class="pick taken">D-597</span></h3><p>17 lines on a DRC 24, the DU's part.</p></div></article>
-    <article><div class="num">2</div><div><h3>Smart switches for eight relays <span class="pick taken">D-597</span></h3><p>All but K13, which stays mechanical as the fuel pump's back-stop.</p></div></article>
-    <article><div class="num">3</div><div><h3>One big-fuse bank, mini blades on the board <span class="pick taken">D-597</span></h3><p>Replaces the busbar, blocks A and B and the inline holders.</p></div></article>
-    <article><div class="num">4</div><div><h3>The comfort feed on the CU's one header <span class="pick">mine</span></h3><p>Four cavities in parallel once TE's sheet allows it; else a 2-way power plug.</p></div></article>
-    <article><div class="num">5</div><div><h3>No fuses in the CU <span class="pick taken">D-597</span></h3><p>+ side smart switches protect the seat wires.</p></div></article>
-    <article><div class="num">6</div><div><h3>F24 into the PMU box <span class="pick taken">D-599</span></h3><p>Its own wire to the column; the light-side short still spares F3.</p></div></article>
-    <article><div class="num">7</div><div><h3>Tell-tales over CAN, later <span class="pick">mine</span></h3><p>The turns and high beam leave DP-ICU once F-009 proves the PMU's CAN export.</p></div></article>
-    <article><div class="num">8</div><div><h3>The radar receiver inside the CU <span class="pick taken">D-597</span></h3><p>"Fits in the CU" joins LP44's pick; L3-RCV goes.</p></div></article>
-    <article><div class="num">9</div><div><h3>The PMU is a wall of its box <span class="pick">mine</span></h3><p>Stacked (about 112 × 175 × 55 mm with the smart switches <span class="g">?</span>) or flat (about 112 × 250 × 45 <span class="g">?</span>); C1 picks.</p></div></article>
-    <article><div class="num">10</div><div><h3>One ground star, one CAN chain <span class="pick">mine</span></h3><p>See the design notes.</p></div></article>
-    <article><div class="num">11</div><div><h3>What stays a device <span class="pick">mine</span></h3><p>The blower's final stage in the HVAC air stream, the diagnostic port at the glovebox, the head unit, the switches, the lamps.</p></div></article>
-    <article><div class="num">12</div><div><h3>The CUR as the DU's wing <span class="pick no">declined, D-598</span></h3><p>Sketched and declined; the CUR stays its own box.</p></div></article>
-  </div>
-</section>
-
-<section>
-  <h2>Before the CAD: what is still to dial in</h2>
-  <p>Each of these, missed, would send a mock-up or a board back to the start. The first four are settled (D-601 to D-603); 5 to 10 are mine and can start now.</p>
-  <div class="notes">
-    <article><h3>1 · The fifth box: the LS swap's ECU <span class="pick taken">(a), D-601</span></h3>
-      <p>The ECU (the EMU PRO, engine D-446) is a dash node (D-318, D-325), so at the swap the dash gains a fifth box with about 72 engine wires. Engine D-443 planned them on six 12-way DT plugs at the dash post, and the post is gone (D-596). There are three ways to go:</p>
-      <ul>
-        <li>(a) The ECU goes inside the PMU box: both are ECUMaster parts on the same CAN, and the box's engine plug grows to carry both. The fewest boxes and plugs, but a bigger box.</li>
-        <li>(b) The ECU is its own box beside the PMU box, and its engine harness runs from its own plugs.</li>
-        <li>(c) One bulkhead connector at the firewall that both engine harnesses pass through.</li>
-      </ul>
-      <p>The PMU box's mock-up has to leave room for whichever it is.</p></article>
-    <article><h3>2 · The two faces <span class="pick taken">D-602</span></h3>
-      <p>The CU face (eighth pass) and the CUR face (second pass) are still concept pages; the record holds the older layouts (D-595). Each board's outline and key positions follow its face, so both settle before their boards are redrawn.</p></article>
-    <article><h3>3 · Where the grounds land <span class="pick taken">D-603</span></h3>
-      <p>Two returns are still open. The seat heat and cool returns can ground at each seat or come back to the CU. The blower final stage's return can go to the PMU box's star or a stud at the HVAC case. A ground is safety, so it is your call; I would bring both back to the star, so the dash keeps one ground point.</p></article>
-    <article><h3>4 · Measure the space (C1) <span class="pick taken">assumed, D-603</span></h3>
-      <p>The space under the dash, the binnacle's depth and the AFR sensor lead's length. Also where the PMU box can sit: its lid reachable for the fuses, its three plugs facing down or sideways (the water rule), and close to where the engine harness crosses the firewall.</p></article>
-    <article><h3>5 · The PMU box's heat <span class="pick">mine</span></h3>
-      <p>A sealed box with the PMU, eight smart switches and about twenty fuses inside. The heat each one gives off at the record's currents decides whether the PMU wall is enough, or the box needs fins, vents or more size.</p></article>
-    <article><h3>6 · The smart switches, proved <span class="pick">mine</span></h3>
-      <p>Pick the parts, draw the two control circuits and the pop-up interlock, and simulate them like the wake decks. That includes what each one does if it fails switched on: a release solenoid left powered must still be stopped by its fuse.</p></article>
-    <article><h3>7 · The roadside recovery table <span class="pick">mine</span></h3>
-      <p>The steps of the PMU-fault recovery (D-322) and the glovebox kit's jumpers, checked against relays that are now switches on a board under a lid.</p></article>
-    <article><h3>8 · Connector inserts, contacts and tools <span class="pick">mine</span></h3>
-      <p>The three circulars' inserts, with spare cavities for growth; whether they take the same contacts and crimper (P038) as the DT parts; and TE's word on four size-20 cavities in parallel for the CU's comfort feed.</p></article>
-    <article><h3>9 · The price, before anything is drawn <span class="pick">mine</span></h3>
-      <p>The boxes' parts against what is in the carts today (nothing for the node is ordered yet), so you see the money before the CAD commits to it.</p></article>
-    <article><h3>10 · The bench test of each box <span class="pick">mine</span></h3>
-      <p>Each box is built and proved whole on the bench before it goes in the car: continuity, isolation, then powered through a current limit with every output exercised.</p></article>
-    <article><h3>11 · After the dash <span class="pick">yours, later</span></h3>
-      <p>The same idea fits the zones outside the dash: the sill node (the window relays, F8, F9, F14), the rear star node, and the engine bay's start relay and MIDI fuses. Not now; when the dash is drawn.</p></article>
-  </div>
-</section>
-
-<section>
-  <h2>The next improvements</h2>
-  <p>A second pass over the dash, with every answer so far in place. All settled (D-604, luxury D-605). Same rule as before: <span class="pick">mine</span> is a small call I can make; <span class="pick">yours</span> is money, safety, taste or one of your rulings.</p>
-  <div class="notes">
-    <article><h3>N1 · The CU's box behind its short face <span class="pick taken">(a), D-604</span></h3>
-      <p>The 25.4 mm face cannot cover the box behind it. That box is about 50 mm tall because the carrier and its 64-way header stand about 49 mm (D-594).</p>
-      <ul>
-        <li>(a) The box stays about 50 mm tall and steps up behind the dash, fitted from behind. No connector change, and the dash comes apart for the build anyway.</li>
-        <li>(b) The boards are laid out for a box about 25 mm tall, so the face covers it and it slides in from the front like the stereo. That needs a lower connector than the right-angle 64-way, which reopens D-594.</li>
-      </ul>
-      <p>My pick: (a).</p></article>
-    <article><h3>N2 · The CU's screen moves to the Display Unit <span class="pick no">declined, D-604</span></h3>
-      <p>Drop the CU's small screen. The DU shows the climate setting large while a knob turns, then goes back to its page. The CU already sends its state on CAN.</p>
-      <ul>
-        <li>Gain: about 41 mm of the face back, so bigger knobs and keys at 25.4 mm, and one part and its cable gone.</li>
-        <li>Cost: you read the set temperature on the cluster, not under your hand.</li>
-      </ul>
-      <p>Taste, so yours. I'd try it.</p></article>
-    <article><h3>N3 · The CUR to the CU on four wires, not twelve <span class="pick taken">D-604</span></h3>
-      <p>Put a small I/O expander and an I²C ADC on the CUR's board, so its keys and stick ride the I²C bus that already runs to it. The 12-line link becomes 4: data, clock, 5 V and ground. The five wink and hazard lines to the PMU box stay as they are, because they wake the car when it is asleep.</p>
-      <ul>
-        <li>Gain: 8 fewer wires, and the CUR's plug could be a 12-way.</li>
-        <li>Cost: two small chips, about $3 <span class="g">?</span>, and firmware.</li>
-      </ul>
-      <p>My pick: do it.</p></article>
-    <article><h3>N4 · The ECU's feed never leaves the box <span class="pick taken">D-604</span></h3>
-      <p>With the ECU inside the PMU box (D-601), its own supply is wired inside the box. Corrected: O13 still leaves the box, because it feeds the injectors (E1-2), so the engine plugs keep all four heavy circuits.</p></article>
-    <article><h3>N5 · At the swap, the DU's engine wires become CAN <span class="pick taken">D-604</span></h3>
-      <p>The EMU PRO reads rpm and water temperature itself and sends them on CAN (engine HO05 already plans rpm from the ECU). The DU's direct tach, water-temperature and oil-temperature wires go at the swap, freeing DU cavities. The DU's engine inputs are drawn as "until the swap".</p></article>
-    <article><h3>N6 · At the swap, the AEM gauge may retire <span class="pick taken">D-604, if it has one</span></h3>
-      <p>ECUMaster's ECUs usually carry their own LSU 4.9 wideband controller <span class="g">?</span>; the EMU PRO's manual is not read yet (block APP.05). If it does, the sensor plugs into the ECU in the PMU box at the swap and the gauge comes out of the DU. It stays in the DU until then.</p></article>
-    <article><h3>N7 · One diagnostic port for both ECUMaster units <span class="pick taken">D-604, if it works</span></h3>
-      <p>The glovebox port carries the PMU's configuration bus (CAN1). With the ECU in the same box, one port serves both, if the EMU PRO configures over the same kind of link <span class="g">?</span> (its manual again).</p></article>
-    <article><h3>N8 · The head unit: maps, music and a microphone, no cameras <span class="pick taken">luxury D-605</span></h3>
-      <p>A head unit's reverse input only exists to switch its screen to a rear-view camera. With no camera it is not connected, so the screen never changes in reverse. The speed-pulse input feeds built-in navigation this unit does not have; its maps come from the phone over CarPlay and Android Auto, so it goes too (confirm in the manual). The parking-brake input stays, because such units lock some setup screens without it (confirm), and the microphone to the A-pillar stays as planned. Two fewer wires and two fewer splices in the dash.</p></article>
-  </div>
-</section>
-
-<section>
-  <h2>The mock-up plan</h2>
-  <p>In order. No CAD of any board until M6 passes.</p>
-  <ol class="steps">
-    <li><b>Measure the space (C1, yours, when the car is stripped).</b> Until then the plan assumes it (D-603): the mock-ups are built to fit as drawn and checked when the numbers come. <span class="who">holds nothing up now</span></li>
-    <li class="done"><b>Settle the choices (yours): done.</b> D-597, D-598, D-599.</li>
-    <li><b>Freeze each box's contents (mine).</b> One list per box from the record, every item naming its row; F20 to 5 A and F24 to D-599 in the same pass.</li>
-    <li><b>The box-to-box wire list (mine).</b> Every conductor from today's node conductors, cavities and channels, rewritten from box to box: both ends, gauge and colour, the splices placed, the grounds to the star. The counts above become exact here.</li>
-    <li><b>Parametric mock-ups (mine).</b> FreeCAD, the same method as the climate unit, DU and CUR mock-ups:
-      <ul>
-        <li>the PMU box, new, in both shapes</li>
-        <li>the DU with the gauge and the gland</li>
-        <li>the CU with its feed, its seat switches and a stand-in for the radar receiver</li>
-        <li>the CUR on one DRC 24</li>
-      </ul>
-      Each one is checked against C1 once measured.</li>
-    <li><b>Try them in the car (yours).</b> Printed or cardboard at real size under the dash. D-214's old worry, a sealed box too bulky for the footwell, is answered here, or the PMU box splits.</li>
-    <li><b>Place the break points (together).</b> With every wire placed, choose where runs split for installing and servicing, and any split beyond the PMU box's three plugs.</li>
-    <li><b>Then the CAD (mine).</b> The PMU box's board first: the fuses, the smart switches with their control circuits, K13, and the wake circuit. The wake circuit is proved by the existing simulations; its pulse capacitor becomes 4.7 µF X7R if ceramic, because 2.2 µF ceramic loses too much at 12 V and fails the cold corner. Then the CU's and the DU's changes.</li>
-  </ol>
-</section>
-
-<section>
-  <h2>What will change in the record</h2>
-  <ul>
-    <li><b>Done:</b> D-596 to D-599; D-214 and D-412 superseded; Y65 (this plan) done; Y66 (the mock-ups) open and gated on all four rulings; E13, the open-panel node layout, waits on Y66, so E13–E18 wait for the boxes.</li>
-    <li><b>At M3–M4:</b> the fuses (F20, F24 and every location), the relays (eight become switches), the node conductors (each box's inside wiring plus the box-to-box list), the dash-post receptacles, L3-CMF, L3-RCV and DP-CUR / DP-CUR-B, and the new cavities on DP-ICU and DP-DCU.</li>
-    <li><b>At M6:</b> the parts. The busbar, fuse blocks, inline holders, relay sockets, barrier strips, perfboard, panel stock and comfort block (P001, P002, P006, P007, P068, P090, P134, P164, P189) give way to the boxes' parts, each a pick for you.</li>
-    <li><b>At M8:</b> E13–E18 are rewritten as "build and test each box, then the wires", with their briefs and steps.</li>
-  </ul>
-</section>
-
-<section>
-  <h2>Zone 2 · The battery compartment (D-608, D-609)</h2>
-  <p>B1 to B4 are settled as picked (D-609): studs, the amplifier docked on one plug, the jump post as the bay's junction, Ionic's limits read. Same idea as the dash: the passenger-side cargo bin holds the battery, one box beside it, and wire. The battery stays clamped on its backing plate (D-063). The box sits in the same tray, shaped around the battery and held down the same way.</p>
+  <h2>Bin box · Y73</h2>
   <div class="boxes">
     <div class="card" style="--c: var(--box-pmu)">
-      <h3>The bin box</h3>
+      <h3>Reads and draws</h3>
       <ul>
-        <li>The master disconnect, its knob through the lid (D-319).</li>
-        <li>The Class-T block and its 150 A fuse (the PMU's feed).</li>
-        <li>The 2151 dual MRBF block: the starter's 250 A and the amplifier's F34 (D-560).</li>
-        <li>F38, the upmix's 3 A fuse.</li>
-        <li>A negative bus: the cranking return, the amplifier's and upmix's grounds.</li>
+        <li><span class="mono">boxes</span> BIN-BOX; <span class="mono">fuses</span> where box = BIN-BOX; <span class="mono">cables</span> C01–C05, C11–C14; <span class="mono">backbone</span></li>
+        <li>A mock-up around the Ionic S9 and its tray, held down the way the battery is (D-063). The master disconnect's knob comes through the lid. Inside: the Class-T, the 2151 dual MRBF (the starter's 250 A and F34), F38 and the negative bus.</li>
+        <li>Four bolted studs under the lid: the PMU feed C03, the starter feed C04, the cranking return C11 and the chassis bond C05. The two booted battery leads go onto the brass terminals (P095). The dock's two leads are C13 and C14.</li>
       </ul>
-      <div class="k">Joins</div>
-      <ul>
-        <li>Two battery leads with boots (D-235), tightened onto the battery's brass terminals; removed in reverse.</li>
-        <li>Four heavy runs out (B1): the 2 AWG PMU feed, the 1/0 starter feed, the 1/0 cranking return, and the chassis bond to the rear ground stud on the body.</li>
-      </ul>
-      <div class="conn"><span>today</span><s>switch, two fuse blocks, inline fuse, loose cables</s><b>1 box, 2 battery leads, 4 heavy runs</b></div>
     </div>
-    <div class="card" style="--c: var(--box-du)">
-      <h3>The amplifier on one connector (B2)</h3>
+    <div class="card" style="--c: var(--box-pmu)">
+      <h3>Must hold</h3>
       <ul>
-        <li>The home-built upmix becomes the amplifier's connector board, bolted to the amplifier: its single sealed Deutsch plug, the head unit's input, and the digital link to the amplifier, all inside (D-503).</li>
-        <li>Power comes by two short bolted leads from the bin box (F34 and the negative bus); the amplifier docks against it.</li>
-        <li>The one plug, an HDP20 24-29: every speaker output (fronts, tweeters, centre, rears, the sub on #12), the head unit's line-level pair with its shield drain, and the remote. About 21 of 29 cavities.</li>
-        <li>The amplifier's fins stay in open air, away from the battery: lithium cells must not run hot.</li>
+        <li>The box sets on beside the battery and its terminals tighten; removal is the reverse.</li>
+        <li>Every exposed lug is booted. The disconnect is on the positive side (D-319).</li>
+        <li>Open: the cargo bin's space (M-4, V-088) <span class="g">?</span>.</li>
       </ul>
-      <div class="conn"><span>today</span><s>power, RCAs, remote, ~16 speaker wires</s><b>1 plug + 2 bolted leads</b></div>
-    </div>
-    <div class="card" style="--c: var(--box-cur)">
-      <h3>The engine-bay jump post (B3)</h3>
-      <ul>
-        <li>A covered positive post where the 1/0 starter feed arrives in the bay, mounted on the body rather than the engine, so the LS swap leaves it alone. A short 1/0 runs from the post to the starter.</li>
-        <li>A ground post beside it, bonded to the block by the existing strap and the cranking return.</li>
-        <li>It is protected by the starter's 250 A MRBF at the battery end; it is live whenever the master switch is on.</li>
-        <li>Suggested: the post becomes the bay's power junction, with F17, F18 and the start relay K9 in one small sealed box under it. The bay then has one power point.</li>
-      </ul>
-      <div class="conn"><span>B4</span><b>the S9's own emergency-start reserve first; jumped through the post under 14.6 V; never used to jump others until Ionic says so; its charge-current limit asked of Ionic</b></div>
     </div>
   </div>
-  <p><b>Speaker wire through connectors:</b> yes. A Deutsch contact adds a few thousandths of an ohm against a 4 Ω speaker, far below anything audible, and factory cars run speakers through two or three connectors. The low-level line signals are the sensitive ones: they ride in a shielded pair with the drain on its own cavity, grounded at one end. Docking the upmix on the amplifier keeps the digital link, which may be optical, from passing through any connector.</p>
 </section>
 
 <section>
-  <h2>Zone 3 · The legs: a scan for loose parts</h2>
-  <p>Every leg read device by device. Most of what the legs hold is already right: a device on the end of a wire, plus splices, which are wire. These are the parts that are not.</p>
+  <h2>Bay junction · Y74</h2>
+  <div class="boxes">
+    <div class="card" style="--c: var(--box-cur)">
+      <h3>Reads and draws</h3>
+      <ul>
+        <li><span class="mono">boxes</span> BAY-JCT; <span class="mono">fuses</span> F17, F18; <span class="mono">relays</span> K9; <span class="mono">cables</span> C04, C07–C09, C11, C15</li>
+        <li>One plate on the body where the starter feed arrives. It carries the covered positive jump post, the ground post bonded to the block, the MIDI block (F17, F18) and K9's socket. C15 is a short 1/0 lead to the starter's B+ stud, and at the LS swap only that lead changes.</li>
+      </ul>
+    </div>
+    <div class="card" style="--c: var(--box-cur)">
+      <h3>Must hold</h3>
+      <ul>
+        <li>B4 (D-609): use the S9's own emergency-start reserve first; jump through the post at 14.6 V at most; never jump another car from it until Ionic says so; ask Ionic the charge-current limit.</li>
+        <li>C15's length is measured. Today it is a confirm.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Amplifier dock · Y75</h2>
+  <div class="boxes">
+    <div class="card" style="--c: var(--box-du)">
+      <h3>Reads and draws</h3>
+      <ul>
+        <li><span class="mono">boxes</span> AMP-DOCK; <span class="mono">cavities</span> L4-AMP 1–29; devices DV60, DV66; luxury LP56, LP57</li>
+        <li>The upmix connector board (P247), bolted to the amplifier, with L4-AMP's receptacle and the digital link inside. It docks against the bin box with two bolted leads.</li>
+        <li>The subs are on #12. The other speakers, the head unit's line-level pair with its drain on its own cavity, and the remote are on #16.</li>
+      </ul>
+    </div>
+    <div class="card" style="--c: var(--box-du)">
+      <h3>Must hold</h3>
+      <ul>
+        <li>The amplifier's fins stay in open air, away from the battery.</li>
+        <li>It waits on the amplifier's pick (luxury X-012).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>After the boxes</h2>
   <div class="notes">
-    <article><h3>L1 · The sill node goes <span class="pick taken">D-610</span></h3>
-      <p>The last loose node in the car, under the driver's sill: the window relays K5–K8, three fuses (F8, F9, F14), five splices and a ground stud. The windows move to two H-bridges on the PMU box's board (30 A half-bridge class <span class="g">?</span>). The CU's four window commands, which went to the relay coils, go to those instead, a shorter run inside the dash. The door wires run from the boxes to D1 and D2, a short way through the A-pillar. F8 and F9 become the board's own protection; F14 goes into the CU, which already switches the mirror heat (DP-DCU 23).</p>
-      <ul>
-        <li>Gain: the node, 4 relays, 3 fuses, 5 splices and a stud gone. The bridges can sense motor current, which makes one-touch and stop-on-stall possible later.</li>
-        <li>Cost: the PMU box's board grows by two bridges and their heat. It replaces D-363 (the relays as two reversing pairs).</li>
-      </ul></article>
-    <article><h3>L2 · The ladder resistors and diodes stop hanging in the harness <span class="pick taken">D-610</span></h3>
-      <p>Several switches carry their resistor or diode heat-shrunk into the leg:</p>
-      <ul>
-        <li>the inhibitor's 8.2 kΩ pair</li>
-        <li>the wiper park's 12 kΩ, and its 47 kΩ at the L2-S plug</li>
-        <li>the door jambs' 24 kΩ / 8.2 kΩ with their 1N4148s and the lamp's 1N4007s (D-486)</li>
-        <li>the door ladder's 47 kΩ at the sill splice</li>
-      </ul>
-      <p>Where a switch has its own wire to the box, its series resistor moves onto the PMU box's board. A resistor that must stay at the far end, so the PMU still sees a broken wire as a fault (the 47 kΩ baselines), is potted into a short sealed pigtail at its switch. That pigtail becomes part of the switch, not of the harness.</p></article>
-    <article><h3>L3 · One plug per seat <span class="pick taken">D-610, one plug</span></h3>
-      <p>Each seat has two plugs today: L3-SD (4-way: heat and cool) and L3-SDM (2-way: power). That becomes one Deutsch DTP 4-way, size 12, 25 A: power feed, heat feed, cool feed and one common return to the PMU box's star (D-603). The seat comes out with one unplug.</p>
-      <ul>
-        <li>Cost: three circuits share one 12 AWG return. That is about 32 A in the moment the seat moves with heat and cooling on, so the return is a ground choice and yours. The other way is two returns on a DT 6-way plus the power DTP, which is two plugs again.</li>
-      </ul></article>
-    <article><h3>L4 · The engine bay's small grounds <span class="pick taken">D-610</span></h3>
-      <p>K9's coil, the inhibitor and the brake fluid switch return to the engine block today on three 16 AWG drops. K9 is now inside the bay junction (D-609), so its ground is the junction's. The other two stay at the block: they are the switches' own ground on the engine.</p></article>
-    <article><h3>L5 · Break points, settled at M7 <span class="pick">last, at M7</span></h3>
-      <p>Where a body part comes off with its wiring, one plug lets it go:</p>
-      <ul>
-        <li>The nose at the core support: headlamps, pop-ups, turns, horns, wiper, washer, radar and outside air. The nose clip comes off with one unplug.</li>
-        <li>The hatch at its hinge: the defog grid, luggage lamp, release solenoid and rear radar.</li>
-        <li>The doors at the A-pillar: D1 and D2, already in the record.</li>
-      </ul>
-      <p>The engine needs none: its harness unplugs at the PMU box (D-601).</p></article>
-    <article><h3>Already right, no change</h3>
-      <p>The ground studs (front star, rear star, the dash's chassis point) are body fixtures, not parts. The lamp, horn and coil splices are wire. The kick-down switch and solenoid leave with the automatic at the swap, and their pass-through is plain wire. The fuel pump's return has its own 12 AWG, and the road-speed sensor is a device.</p></article>
+    <article><h3>Y76 · The build track</h3>
+      <p>New rows build and bench-test each box whole before it goes in the car: continuity, isolation, then power through a current limit with every output exercised. They replace E13 to E18. The rows gated on Y76 (E6, E7, E9 to E11, E20 to E24, E26, E36, E41) are rewritten with their briefs and steps, every figure from a row (D-533).</p></article>
+    <article><h3>Y77 · The app's 3D</h3>
+      <p><span class="mono">tools/export_glb.py</span> exports the boxes as drawn, and the scene drops the dash post and the old unit outlines.</p></article>
+    <article><h3>Y78 · Break points</h3>
+      <p>With every wire placed, choose where the dash's runs split for installing and servicing. The nose at the core support, the hatch at its hinge and the doors at the A-pillar are the natural ones.</p></article>
   </div>
 </section>
 
 <section>
   <h2>The face concepts</h2>
-  <p>The two concept pages, as they stand today, in each part's <span class="mono">diagrams/</span> folder. Neither is in the record yet.</p>
+  <p>Both faces as ruled (D-602). The CU's and the CUR's boards follow them.</p>
   <div class="frame">
     <iframe src="../control-unit/diagrams/cu-face-concept.html" title="Control Unit face concept, eighth pass" loading="lazy"></iframe>
     <p><b>Control Unit face, eighth pass:</b> 171 × 25.4 mm under the stereo. <a href="../control-unit/diagrams/cu-face-concept.html">Open on its own</a>.</p>

@@ -1,5 +1,7 @@
 # DCU carrier — the KiCad project
 
+> **OUTDATED by the overhaul (D-612).** This is the last drawn state from before the boxes: the CU's connector is the DRC 64 with a DTP comfort inlet (D-594, D-612), the seats' heat and cool are its + side switches and the radar receiver is inside it (D-597), the face is the eighth pass (D-602), the CUR is on four I2C wires (D-604). It is kept as it is until row Y70 redraws it; the brief is `00-design/diagrams/overhaul-plan.html`, and the record (`../data/`) is what it must match.
+
 *Rev 2026-10-13 (sheet rev 0.07 - Y44's fix pass, D-549, values only; rev 0.06 was Y44's one value, 0.05 Y42, 0.04 D-458, D-465, Y12) · owns: what this KiCad project
 is for, what it may claim, and how to start. The board's design is `../../../../data/dcu_channels.csv`.
 That is the record, and this is a drawing of it. Read `../../../README.md` first: it is the fence.*

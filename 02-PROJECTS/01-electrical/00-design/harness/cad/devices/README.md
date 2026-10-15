@@ -1,5 +1,7 @@
 # harness/cad/devices — the devices at the legs' far ends, in 3D
 
+> **OUTDATED by the overhaul (D-612).** This is the last drawn state from before the boxes: the post's DT and DTP housings are gone; the PMU box's HDP20 circulars, the hard-wired bundles, the DRC plugs and the boxes themselves are new (D-600, D-606, D-612). It is kept as it is until row Y77 redraws it; the brief is `00-design/diagrams/overhaul-plan.html`, and the record (`../data/`) is what it must match.
+
 *Rev 2026-10-13 (D-515, work row Y28) · owns: how the devices and the harness's common parts are
 modelled for the app's Design page - which were found online, which are drawn here and from what
 numbers, and the manifest the export reads. It owns no fact about the car: the record says what

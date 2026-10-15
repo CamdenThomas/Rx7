@@ -14,8 +14,10 @@ of its own, so the layout is written once, here.
       tools/                  every script (this file)
 
 The parts are the Display Unit (du), the Control Unit (cu), the Control Unit Remote (cur, a part of
-the CU), the PMU box (pmu) and the harness. Nothing here reads the record: the record is
-../data/*.csv, and these files only draw it (00-design/README.md, the fence).
+the CU), the PMU box (pmu), the bin box (bin), the bay junction (bay), the amplifier dock (amp) and
+the harness - one per row of the record's `boxes` table, plus the harness (D-612). Nothing here
+reads the record: the record is ../data/*.csv, and these files only draw it (00-design/README.md,
+the fence).
 """
 import os
 
@@ -30,7 +32,10 @@ PARTS = {
     "du": "display-unit",
     "cu": "control-unit",
     "cur": os.path.join("control-unit", "control-unit-remote"),
-    "pmu": "pmu",
+    "pmu": "pmu",                   # the PMU box, not only the PMU (D-596)
+    "bin": "bin-box",               # the battery bin's box (D-608)
+    "bay": "bay-junction",          # the engine bay's jump post and power junction (D-609)
+    "amp": "amp-dock",              # the amplifier and upmix dock (D-609)
     "harness": "harness",
 }
 
