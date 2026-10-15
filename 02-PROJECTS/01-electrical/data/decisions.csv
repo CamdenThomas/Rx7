@@ -2330,3 +2330,50 @@ His words (chat, 2026-10-15): ""the organization need an touch up, i have been m
 - The three assembly libraries (`tools/du_assembly.py`, `cu_assembly.py`, `cur_assembly.py`) share 16 functions by name but none line for line. Folding their common code into one library is a refactor of its own, not a move.
 - The board generators and assembly parameter tables are still Python; turning the tables into CSV is a further step.
 - The app's Rust file server and its end-to-end test were edited but not rebuilt here."
+D-612,electrical,"The overhaul in the record: the boxes, their plugs and cavities, the PMU box's connections, parts and work; CAD marked outdated and the CAD pass next",2026-10-15,standing,,,,03-engine 04-luxury,"**The overhaul is in the record and the electrical plan's next phase is the CAD pass.** Every ruling from D-596 to D-611 that is not drawing is now in the tables. The dash zone is boxes joined by wire: the PMU box, the DU, the CU and the CUR. The battery bin has its box, the engine bay its junction, and the amplifier its dock. Each box is a `boxes` row with a part folder in `00-design`, and the fuses, switches and plugs name their box. What is CAD (boards, enclosures, mock-ups, the app's 3D, the build steps that depend on them) is marked outdated and is the next pass, rows Y69 to Y78. The project's phase stays PLANNING: the freeze is his.
+
+His words (chat, 2026-10-15): ""now please do every aspect of the ovehall plan to the data prossess every detail of the plan you can that is not cad and leave cad noted ad outdated, please overhall and fix everything to match the new plan, make new part folders for the new boxes we desided on then factor that to be the one electrcal plan and design then refactor the overhall instructions to be cad instructions for the next pass after all the data is factored in and the plan is set to the new phase""
+
+**What the record now says** (01-electrical unless named).
+- `boxes` is new: PMU-BOX, DU, CU, CUR, BIN-BOX, BAY-JCT and AMP-DOCK. Each row gives its part folder, where it sits (assumed until he measures, D-603), what it holds, how it joins the harness, and the rulings it comes from. `fuses.box`, `relays.box` and `housings.box` name a box.
+- `housings.series` and `cavities.contact` are new. The mixed-contact circulars (series HD) take each cavity's contact size from TE's insert drawing. rx7.py's E6 and E9 checks now read the rating and seal range per cavity, and `series` gains HD12, HD16, HD20, DRC16, DRC20 and HW. A cavity at the PMU box counts as being at the post for E7.
+- The post's 23 DT and DTP housings are gone; the record keeps them only through the remap. In their place:
+  - At the PMU box, the HDP20 circulars: L1-E1 (24-29), L1-E2 and L1-E3 (24-31), wired for the LS from day one with today's engine on L1-E1's shared cavities (D-606, D-607); L2-F1 and L4-R1 (24-21).
+  - Bundles hard-wired at the box with no plug there (D-600): L3-COL, L3-DASH and L3-HU.
+  - L4-AMP, the dock's 24-29 (D-609).
+  - DP-DCU as the DRC 64 (D-594, which closes Y64).
+  - DP-CUR, one DRC 24 (D-597, D-604).
+  - DP-DCU-P, a DTP 2-way comfort inlet. The DRC header's size-20 contacts are 7.5 A, so O15's 25 A cannot use them.
+  - L3-SD and L3-SP, one DTP 4-way per seat (D-610).
+  - DP-ICU 18 and 19, the wideband gauge's own feed and ground (D-596).
+- Every cavity, internal connection and table that named an old cavity now names where that conductor lands; the old-to-new map is the migration script's.
+  - node_conductors is the PMU box's internal connection list. Rows that served the post, the sill node, the comfort block or the head unit's reverse and speed inputs are gone (N64, N66, N77, N80-N84, N90-N95, N103, N114-N117). N118-N123 add the windows' H-bridges, their commands and grounds, and F24's own wire (D-599, D-610).
+  - fuses: F8, F9 and F14 are gone (the H-bridges and the CU's high side limit their own current), and so are F25-F29 (the comfort block, D-597). F20 is 5 A (AEM's sheet). F24 sits after F3.
+  - relays: K1-K4, K11, K12, K14 and K15 are smart switches. K5-K8 are H-bridge halves. K13 is a socketed relay in the box. K9 is at the bay junction.
+  - grounds: G33 is gone. G37 is potted at the jamb, and every dash return goes to the box's star (D-603).
+  - cables: C15 (jump post to starter) is added and the backbone runs through the bin box and the jump post. routes: the Dash post node is now the PMU box, RT19 runs to the doors, and RT20 is gone. devices: DV43 and DV56 are gone.
+- Parts: the parts the boxes replaced are dropped (P001, P007, P060, P068, P090, P091, P134, P140, P164, P189, P205, P220-P225, and the DT 12-way and 6-way kits). The remaining DT and DTP kits are recounted from housings. P228-P253 add the boxes' parts: the circulars, their contacts and caps (counted from cavities.contact), the smart switches, the H-bridges, the fuse banks, each box's enclosure and board, the DRC 64 and DRC 24, the CUR's expander and ADC, the gauge's gland, potting and a size-20 removal tool. Rows whose part the CAD pass picks are ""later"".
+- 03-engine: ls_cavities sits on L1-E1 to L1-E3 per D-606. Every conductor of the old swap-leg plugs (L1-S1 to L1-S7) maps to its new cavity, wire by wire. handover, ls_wires, ls_devices and parts follow.
+- 04-luxury: provisions, features, stages, picks, parts and work name the new cavities. PV134 and PV135 are gone (luxury D-605). The radar's rows point at the receiver inside the CU.
+
+**The work list.**
+- Y64, Y66 and Y67 are done. Their record halves are here, and their mock-ups move to the CAD pass.
+- E13-E18 (building the dash node on panels) and E38 (the O15 comfort block) are dropped.
+- The build rows the boxes change (E6, E7, E9-E11, E20-E24, E26, E36, E41) now gate on Y76. Y76 rewrites the build track, with each brief and its steps, once the boxes are drawn.
+- Y69-Y75 are the CAD pass, one row per box. Y77 is the app's 3D, and Y78 the dash's break points, last (his ""after we place every wire we will place break spots"").
+
+**Readings taken (CLAUDE.md §3).**
+- ""Leave cad noted as outdated"" is read as a banner on every CAD README and in 00-design's status column. Nothing is deleted. The boards, mock-ups and enclosures stay as the last drawn state until their CAD row replaces them.
+- ""Make new part folders for the new boxes"": `00-design/bin-box`, `bay-junction` and `amp-dock`, each with cad, data and diagrams, beside `pmu` (the PMU box). DU, CU and CUR already had theirs (D-611).
+- ""Factor that to be the one electrical plan"" is read as the record, not a page: the boxes table and the rows above.
+- ""Refactor the overhaul instructions to be CAD instructions"": `00-design/diagrams/overhaul-plan.html` is rewritten as the CAD pass's brief, one section per box, each naming its row, inputs, what to draw and what checks it.
+- ""The plan is set to the new phase"" is read as the plan's own phase (planned to CAD pass) and the work rows. The project's phase is not moved, because the freeze (SOURCING) is his.
+- Choices made within the small list:
+  - The comfort inlet DP-DCU-P exists because the 25 A feed cannot go through size-20 contacts.
+  - L2-F1 and L4-R1 are 24-21.
+  - The window bus leaves on the box's H-bridges rather than a cavity.
+  - The outside-air and radar runs go to the CU direct.
+  - The amplifier dock's pin order.
+  - Contact sizes per cavity are numbered from the drawing's size groups. Which number is which size is a confirm against TE's drawing at the CAD pass.
+
+**Left, said so.** The build track's 66 open steps and briefs still describe the post and the sill node until Y76 rewrites them. Their rows wait on it, so nothing he reads is current-and-wrong. The 3D in the app (Y77) shows the old units."

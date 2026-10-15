@@ -1,3 +1,9 @@
 id,contact,wire,rated,used_for
 DTP,size 12,10–14 AWG seal,25 A,All `-P` housings
 DT,size 16,"14–20 AWG seal, insulation OD 1.35–3.05 mm (TE DT catalogue .053–.120 in)",13 A,"All `-M` and `-S` housings, D1 / D2, every DP- drop"
+HD12,size 12 solid (HD30 / HDP20),10–14 AWG seal,25 A,"the #12 cavities of the PMU box's and the amplifier dock's circulars (D-600, D-612)"
+HD16,size 16 solid (HD30 / HDP20),14–20 AWG seal,13 A,their #16 cavities
+HD20,size 20 solid (HD30 / HDP20),16–20 AWG seal - confirm against the contact bought,7.5 A,their #20 cavities
+DRC16,size 16 (DRC),14–20 AWG seal,13 A,"DP-ICU and DP-CUR, DRC 24-way (D-587, D-597)"
+DRC20,size 20 (DRC),16–20 AWG seal - confirm against the contact bought,7.5 A,"DP-DCU, the DRC 64-way header's plugs (D-594)"
+HW,none - hard-wired at the box,,,"a bundle soldered or crimped into its box, its far end the device's own plug (D-600)"

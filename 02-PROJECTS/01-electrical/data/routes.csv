@@ -1,32 +1,31 @@
 id,leg,from_node,to_node,via,ft,model_ft,note
-RT01,L1 Engine,Dash post,Engine-bay junction,"Firewall grommet, passenger side",,,the four L1 housings leave the post together
-RT02,L1 Engine,Engine-bay junction,Coils and igniters B-18 to B-21,along the upper rear housing,,,carries the L1-P 1 trunk and the shielded tach core - rules emc-routing governs how
+RT01,L1 Engine,PMU box,Engine-bay junction,"Firewall grommet, passenger side",,,"the engine's plugs L1-E1 to L1-E3 leave the PMU box together (D-606, D-607)"
+RT02,L1 Engine,Engine-bay junction,Coils and igniters B-18 to B-21,along the upper rear housing,,,carries the L1-E1 1 trunk and the shielded tach core - rules emc-routing governs how
 RT03,L1 Engine,Engine-bay junction,Alternator A-08,down the front of the block,,,excitation and lamp sense; the 6 AWG B+ is C07 and is measured separately
 RT04,L1 Engine,Engine-bay junction,Water temp C-02 and oil pressure C-09,"rear housing, gauge ports",,,"two senders in the same place, one below the other"
 RT05,L1 Engine,Engine-bay junction,"Starter, K9 and the inhibitor A-06",under the intake,,,signal only - the heavy cable is C08 / C09
-RT06,L2 Front,Dash post,Nose splice,"Cowl grommet, then along the inner wing",,11.4,the longest front run and the one that sets the L2 cut list
+RT06,L2 Front,PMU box,Nose splice,"Cowl grommet, then along the inner wing",,11.4,the longest front run and the one that sets the L2 cut list
 RT07,L2 Front,Nose splice,Each headlight bucket and pop-up motor,across the radiator support,,3.4,measure one side; the other is that plus the crossing
 RT08,L2 Front,Nose splice,"Front combo lamps, side markers, horns",radiator support and both inner wings,,6.1,
 RT09,L2 Front,Nose splice,Wiper motor D-02 and washer pump D-01,back along the cowl,,,"the wiper motor sits at the cowl, so this run doubles back"
-RT10,L3 Dash,Dash post,Steering column,behind the lower dash,,,"every ladder: ignition switch, light switch, both stalks, horn pad"
-RT11,L3 Dash,Dash post,Centre stack,across the dash rail,,,"head unit, USB-C, illumination, the L3-CMF comfort receptacle, and the Control Unit's tail from the dash node - DP-DCU 9-25 (power, OAT, CAN, wake, the window commands and mirror lines included since D-472, no longer through L3-S2 / L3-S3), part of the L3 leg's Control Unit branch that ends in its one CMC 48 plug (D-582); the comfort breakout's three grounds back to the dash ground bus (N102, D-470) and the seat feed tails N108 / N109 / N112 on their way to RT27 / RT28 (D-469). Its length, measured at M-2 (C1), is the check that the node sits close enough to the centre stack for a short tail (D-472, R11)"
-RT12,L3 Dash,Dash post,Glovebox,"across the dash rail, passenger side",,,the DP-DIAG laptop port and the glovebox lamp
-RT13,L3 Dash,Dash post,Binnacle,up behind the cluster aperture,,,"the two ICU tails are 150 mm from the post (D-270) - this is the run to the post, not the tails"
-RT14,L3 Dash,Dash post,HVAC case and pedal box,down the centre,,,"blower receptacle, brake switch, the kick-down switch B-32"
-RT15,L4 Rear,Dash post,"Rear node, cargo bin",Tunnel,,7.7,"the tunnel carries three heavy cables beside this bundle (C03, C04, C11) - measure it for the bundle, not one wire"
+RT10,L3 Dash,PMU box,Steering column,behind the lower dash,,,"every ladder: ignition switch, light switch, both stalks, horn pad"
+RT11,L3 Dash,PMU box,Centre stack,across the dash rail,,,"The head unit, the USB-C module and the illumination (L3-HU, L3-DASH, hard-wired at the PMU box, D-600), and the CU's links from the box: DP-DCU 9-25 (power, outside air, CAN, wake, the window commands, mirror lines and selects) and its comfort inlet DP-DCU-P (D-612). Its length, measured at M-2 (C1), is the check that the box sits close enough to the centre stack (D-472, R11)"
+RT12,L3 Dash,PMU box,Glovebox,"across the dash rail, passenger side",,,the DP-DIAG laptop port and the glovebox lamp
+RT13,L3 Dash,PMU box,Binnacle,up behind the cluster aperture,,,"The PMU box's links up to the binnacle: DP-ICU (the DU, D-587) and DP-CUR's five wires to the winks and the hazard (D-604); the CU's four I2C wires to DP-CUR come along RT11 and up"
+RT14,L3 Dash,PMU box,HVAC case and pedal box,down the centre,,,"blower receptacle, brake switch, the kick-down switch B-32"
+RT15,L4 Rear,PMU box,"Rear node, cargo bin",Tunnel,,7.7,"the tunnel carries three heavy cables beside this bundle (C03, C04, C11) - measure it for the bundle, not one wire"
 RT16,L4 Rear,Rear node,"Tail lamps, licence lamps, rear markers","along the quarter, both sides",,9.1,
 RT17,L4 Rear,Rear node,Fuel pump and tank sender,under the floor to the tank,,,
 RT18,L4 Rear,Rear node,"Hatch release, luggage lamp, the radar pass-through",through the hinge loop,,7.8,the hinge loop is a flex point - measure with the hatch open
-RT19,L4 Rear,Dash post,"Sill node, driver kick panel",along the sill,,3.8,"window bus, comfort feed, mirror commands"
-RT20,Sill,Sill node,Each door,through the jamb boot,,7.5,"the door plugs are RESERVED at E22 - sealing plugs, nothing through the jamb boot yet; the door harness is cut and run at E37, once A12 and luxury W-332 fix its pins (D-451)"
-RT21,L4 Rear,Dash post,Transmission speedo boss and kick-down solenoid,"Tunnel, with RT15",,,road speed L4-S 3 / 4 and the kick-down L4-S2 7 share this run
-RT22,L3 Dash,Dash post,Behind the dash,along the dash rail beside the post,,,"The held receptacles that sit behind the dash and nowhere else: L3-MOD (L3-S2 7/8), L3-RDR (L3-S3 1-3) and, since D-584, L3-RCV at the radar receiver (L3-S2 3/4, L3-S3 5-7, and DP-DCU 48 from the Control Unit's branch). Short; measured at M-2 like the rest (Y1, 2026-10-09)."
+RT19,L4 Rear,PMU box,"Each door, at the A-pillar boot","under the dash to the A-pillar, then the door's boot",,3.8,"D-610: the sill node is gone; the window motors' legs, the mirrors, their heat and the doors' grounds run from the boxes to D1 / D2"
+RT21,L4 Rear,PMU box,Transmission speedo boss and kick-down solenoid,"Tunnel, with RT15",,,road speed DP-ICU 14 · L4-R1 14 and the kick-down the kick-down switch's own wire share this run
+RT22,L3 Dash,PMU box,Behind the dash,along the dash rail beside the PMU box,,,"What sits behind the dash and nowhere else: L3-MOD (L3-MOD 1 / 2) and the radar's front and rear sensor runs to the CU (DP-DCU 49-54); the radar receiver is inside the CU (D-597). Short; measured at M-2 like the rest (Y1, 2026-10-09)."
 RT23,L4 Rear,Rear node,"Roof rail, interior lamp",up the C-pillar trim,,,"The interior / spot lamp (DV39) and its roof-rail ground (G31). Measured at M-2 (R8, 2026-10-09)."
 RT24,L4 Rear,Rear node,"Hatch glass, defog grid",through the hatch hinge loop with the tail-lamp conductors,,,"The defog grid's feed and its rear-star return (DV33, G25). Measured at M-2 (R8)."
 RT25,L4 Rear,Rear node,"Fuel-door solenoid, quarter trim",behind the driver-side quarter trim,,,The fuel-door release solenoid (DV49). Measured at M-2 (R8).
 RT26,L1 Engine,Engine-bay junction,"Master cylinder, brake-fluid switch",along the firewall to the reservoir,,,The brake-fluid level switch (DV08). Measured at M-2 (R8).
-RT27,L3 Dash,Centre stack,Under the driver's seat,down the tunnel side and under the carpet,,,"The comfort-return harness, driver side: L3-SD and L3-SDM (A14) - with the seat motor feed and return tails N108 / N112 from the node (D-469). Measured at M-2"
-RT28,L3 Dash,Centre stack,Under the passenger seat,down the tunnel side and under the carpet,,,"The comfort-return harness, passenger side: L3-SP and L3-SPM (A14) - with N109 / N112 (D-469). Measured at M-2"
+RT27,L3 Dash,PMU box and the CU,Under the driver's seat,down the tunnel side and under the carpet,,,"The driver seat's one plug, L3-SD (D-610): the power feed from the PMU box (K14), heat and cool from the CU, the common return to the PMU box's star. Measured at M-2"
+RT28,L3 Dash,PMU box and the CU,Under the passenger seat,down the tunnel side and under the carpet,,,"The passenger seat's one plug, L3-SP (D-610): as RT27, with K15. Measured at M-2"
 RT29,L2 Front,Nose splice,"Front bumper, radar sensor",along the bumper beam,,,The front radar sensor's receptacle L2-RDR (A16); beauty 04.13 decides the bumper. Measured at M-2
 RT30,Audio,Centre stack,"Passenger-side cargo bin, the amplifier",along the passenger sill under the carpet,,,"The remote turn-on, the pre-amp multicore and the microphone lead (A17, P168); apart from the L4 leg's bundle (rules emc-routing). Measured at M-2"
 RT31,Audio,Passenger-side cargo bin,"Driver-side cargo bin, the sub",across the cargo floor behind the seats,,,The two sub pairs (A17). Measured at M-2

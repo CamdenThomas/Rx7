@@ -1,10 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1310" height="1464" viewBox="0 0 1310 1464" font-family="Noto Sans, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" width="1310" height="3664" viewBox="0 0 1310 3664" font-family="Noto Sans, sans-serif">
 <title>L1 Engine - pin ladder</title>
 <rect width="100%" height="100%" fill="#fff"/>
 <text x="30.0" y="40.0" font-size="20" text-anchor="start" font-weight="700" fill="#1f2328">L1 ENGINE · A · PIN LADDER</text>
 <text x="30.0" y="64.0" font-size="12" text-anchor="start" font-weight="400" fill="#57606a">One block per housing, one row per cavity. Every wire runs straight from its cavity to where it lands. Read left to right.</text>
-<rect x="30.0" y="110.0" width="360.0" height="190.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-<text x="42.0" y="132.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L1-P  ·  DTP06-4S  ·  Dash post</text>
+<rect x="30.0" y="110.0" width="360.0" height="1210.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="132.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L1-E1  ·  HDP26-24-29SE  ·  PMU box</text>
 <line x1="30" y1="144.0" x2="390" y2="144.0" stroke="#d0d7de"/>
 <circle cx="50" cy="161.0" r="11" fill="#fff" stroke="#1f2328"/>
 <text x="50.0" y="165.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
@@ -12,7 +12,7 @@
 <text x="380.0" y="165.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O12</text>
 <path d="M390.0,161.0 L720.0,161.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
 <path d="M390.0,161.0 L720.0,161.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="151.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-P-1  ·  12 AWG RED  ·  RT02</text>
+<text x="406.0" y="151.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-E1-1  ·  12 AWG RED  ·  RT02</text>
 <rect x="720.0" y="147.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
 <text x="730.0" y="165.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Splice at the coil bracket → BW of coil T, coil L, igniter T, igniter L</text>
 <line x1="30" y1="178.0" x2="390" y2="178.0" stroke="#d0d7de"/>
@@ -21,7 +21,7 @@
 <text x="70.0" y="204.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">LS swap reserve — ECU + injectors</text>
 <text x="380.0" y="204.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O13</text>
 <text x="406.0" y="204.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
-<text x="730.0" y="196.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">O13 pinned to the receptacle at the post (12 AWG from pin); the L1 plug carries a size-12 sealing</text>
+<text x="730.0" y="196.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">O13 pinned to the receptacle in the PMU box (12 AWG from pin); the L1 plug carries a size-12 sealing</text>
 <text x="730.0" y="212.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">plug — the swap's rebuilt leg pins it (D-271)</text>
 <line x1="30" y1="222.0" x2="390" y2="222.0" stroke="#d0d7de"/>
 <circle cx="50" cy="244.0" r="11" fill="#fff" stroke="#1f2328"/>
@@ -29,220 +29,525 @@
 <text x="70.0" y="248.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">LS swap reserve — cooling fan</text>
 <text x="380.0" y="248.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O14</text>
 <text x="406.0" y="248.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
-<text x="730.0" y="240.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">O14 pinned to the receptacle at the post (12 AWG from pin); size-12 sealing plug in the L1 plug</text>
+<text x="730.0" y="240.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">O14 pinned to the receptacle in the PMU box (12 AWG from pin); size-12 sealing plug in the L1 plug</text>
 <text x="730.0" y="256.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">(D-271)</text>
 <line x1="30" y1="266.0" x2="390" y2="266.0" stroke="#d0d7de"/>
-<circle cx="50" cy="283.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="287.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
-<text x="70.0" y="287.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="406.0" y="287.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="730.0" y="287.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 12</text>
-<rect x="30.0" y="336.0" width="360.0" height="524.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-<text x="42.0" y="358.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L1-S1  ·  DT06-12S  ·  Dash post</text>
-<line x1="30" y1="370.0" x2="390" y2="370.0" stroke="#d0d7de"/>
-<circle cx="50" cy="387.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="391.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
-<text x="70.0" y="391.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Start relay K9 coil</text>
-<text x="380.0" y="391.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O21</text>
-<path d="M390.0,387.0 L720.0,387.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,387.0 L720.0,387.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="377.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S1-1  ·  16 AWG RED  ·  RT05</text>
-<rect x="720.0" y="373.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="391.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">K9 terminal 86 (inner fender)</text>
-<line x1="30" y1="404.0" x2="390" y2="404.0" stroke="#d0d7de"/>
-<circle cx="50" cy="421.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="425.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
-<text x="70.0" y="425.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Alternator excitation (field feed)</text>
-<text x="380.0" y="425.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F15</text>
-<path d="M390.0,421.0 L720.0,421.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,421.0 L720.0,421.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="411.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S1-2  ·  16 AWG RED  ·  RT03</text>
-<rect x="720.0" y="407.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="425.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Alternator plug A-08, terminal BW</text>
-<line x1="30" y1="438.0" x2="390" y2="438.0" stroke="#d0d7de"/>
-<circle cx="50" cy="455.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="459.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
-<text x="70.0" y="459.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Water temperature sender</text>
-<path d="M390.0,455.0 L720.0,455.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,455.0 L720.0,455.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="445.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S1-3  ·  16 AWG GRY  ·  RT04</text>
-<rect x="720.0" y="441.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="459.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Sender C-02, spade — factory wire YW</text>
-<line x1="30" y1="472.0" x2="390" y2="472.0" stroke="#d0d7de"/>
-<circle cx="50" cy="489.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="493.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
-<text x="70.0" y="493.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Oil pressure sender</text>
-<path d="M390.0,489.0 L720.0,489.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,489.0 L720.0,489.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="479.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S1-4  ·  16 AWG GRY  ·  RT04</text>
-<rect x="720.0" y="475.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="493.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Sender C-09, spade — factory wire BrY</text>
-<line x1="30" y1="506.0" x2="390" y2="506.0" stroke="#d0d7de"/>
-<circle cx="50" cy="528.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="532.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
-<text x="70.0" y="532.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Tachometer shield (drain)</text>
-<path d="M390.0,528.0 L720.0,528.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,528.0 L720.0,528.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="518.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S1-5  ·  16 drain AWG bare  ·  RT02</text>
-<rect x="720.0" y="509.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="524.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">No device: the tach cable's shield and drain, cut back and insulated at the coil (L1-S1 6), carried</text>
-<text x="730.0" y="540.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">through here to the dash node's GND bus (N113, D-556). The shield is grounded at the node only.</text>
-<line x1="30" y1="550.0" x2="390" y2="550.0" stroke="#d0d7de"/>
-<circle cx="50" cy="580.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="584.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
-<text x="70.0" y="584.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Tachometer pulse — SHIELDED</text>
-<path d="M390.0,580.0 L720.0,580.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,580.0 L720.0,580.0" fill="none" stroke="#6b7280" stroke-width="5" stroke-linejoin="round"/>
-<path d="M390.0,580.0 L720.0,580.0" fill="none" stroke="#e5e7eb" stroke-width="2" stroke-dasharray="3 3"/>
-<text x="406.0" y="570.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S1-6  ·  16 AWG shielded  ·  RT02</text>
-<rect x="720.0" y="553.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="568.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Coil T (B-18) negative terminal — factory wire YG. Shield grounded at the dash node end only (N48,</text>
-<text x="730.0" y="584.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">N113): the engine end of the shield is cut back and insulated at the coil, and carried through L1-S1 5</text>
-<text x="730.0" y="600.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">(D-556)</text>
-<line x1="30" y1="610.0" x2="390" y2="610.0" stroke="#d0d7de"/>
-<circle cx="50" cy="627.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="631.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
-<text x="70.0" y="631.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="406.0" y="631.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="730.0" y="631.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16</text>
-<line x1="30" y1="644.0" x2="390" y2="644.0" stroke="#d0d7de"/>
-<circle cx="50" cy="661.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="665.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
-<text x="70.0" y="665.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="406.0" y="665.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="730.0" y="665.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16</text>
-<line x1="30" y1="678.0" x2="390" y2="678.0" stroke="#d0d7de"/>
-<circle cx="50" cy="700.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="704.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
-<text x="70.0" y="704.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="406.0" y="704.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="730.0" y="696.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 — the CAN2 engine-bay drop is released; a future ECU is a dash node (D-318,</text>
-<text x="730.0" y="712.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">swap D-325)</text>
-<line x1="30" y1="722.0" x2="390" y2="722.0" stroke="#d0d7de"/>
-<circle cx="50" cy="744.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="748.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">10</text>
-<text x="70.0" y="748.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="406.0" y="748.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="730.0" y="740.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 — the CAN2 engine-bay drop is released; a future ECU is a dash node (D-318,</text>
-<text x="730.0" y="756.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">swap D-325)</text>
-<line x1="30" y1="766.0" x2="390" y2="766.0" stroke="#d0d7de"/>
-<circle cx="50" cy="796.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="800.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">11</text>
-<text x="70.0" y="800.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Inhibitor switch — P/N contact (crank interlock)</text>
-<text x="380.0" y="800.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A4</text>
-<path d="M390.0,796.0 L720.0,796.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,796.0 L720.0,796.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="786.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S1-11  ·  16 AWG GRY  ·  RT05</text>
-<rect x="650.0" y="789.0" width="44.0" height="14.0" rx="3" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="672.0" y="814.0" font-size="10" text-anchor="middle" font-weight="700" fill="#1f2328">8.2 kΩ</text>
-<rect x="720.0" y="769.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="784.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Inhibitor A-06: 8.2 kΩ in the lead to terminal BY; terminal BW → block ground. The 47 kΩ baseline</text>
-<text x="730.0" y="800.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">from this lead to the block ground at the switch (D-487: it sat at the nose on the transit contact until</text>
-<text x="730.0" y="816.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">then, D-368 pattern)</text>
-<line x1="30" y1="826.0" x2="390" y2="826.0" stroke="#d0d7de"/>
-<circle cx="50" cy="843.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="847.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">12</text>
-<text x="70.0" y="847.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="406.0" y="847.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="730.0" y="847.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16</text>
-<rect x="30.0" y="896.0" width="360.0" height="472.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
-<text x="42.0" y="918.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L1-S2  ·  DT06-12S  ·  Dash post</text>
-<line x1="30" y1="930.0" x2="390" y2="930.0" stroke="#d0d7de"/>
-<circle cx="50" cy="947.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="951.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
-<text x="70.0" y="951.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Brake fluid level switch</text>
-<path d="M390.0,947.0 L720.0,947.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,947.0 L720.0,947.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="937.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S2-1  ·  16 AWG GRY  ·  RT26</text>
-<rect x="720.0" y="933.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="951.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Reservoir switch C-05: terminal BR; terminal B → block ground</text>
-<line x1="30" y1="964.0" x2="390" y2="964.0" stroke="#d0d7de"/>
-<circle cx="50" cy="981.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="985.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
-<text x="70.0" y="985.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="406.0" y="985.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="730.0" y="985.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16</text>
-<line x1="30" y1="998.0" x2="390" y2="998.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1015.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1019.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
-<text x="70.0" y="1019.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="406.0" y="1019.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="730.0" y="1019.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16</text>
-<line x1="30" y1="1032.0" x2="390" y2="1032.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1049.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1053.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
-<text x="70.0" y="1053.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="406.0" y="1053.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="730.0" y="1053.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 — pinned at the swap, when a sensor has a destination (D-271)</text>
-<line x1="30" y1="1066.0" x2="390" y2="1066.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1083.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1087.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
-<text x="70.0" y="1087.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="406.0" y="1087.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="730.0" y="1087.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 — pinned at the swap, when a sensor has a destination (D-271)</text>
-<line x1="30" y1="1100.0" x2="390" y2="1100.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1117.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1121.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
-<text x="70.0" y="1121.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="406.0" y="1121.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="730.0" y="1121.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 — pinned at the swap, when a sensor has a destination (D-271)</text>
-<line x1="30" y1="1134.0" x2="390" y2="1134.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1156.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1160.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
-<text x="70.0" y="1160.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Inhibitor switch — R contact (reverse lamps)</text>
-<text x="380.0" y="1160.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A5</text>
-<path d="M390.0,1156.0 L720.0,1156.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,1156.0 L720.0,1156.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="1146.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S2-7  ·  16 AWG GRY  ·  RT05</text>
-<rect x="650.0" y="1149.0" width="44.0" height="14.0" rx="3" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="672.0" y="1174.0" font-size="10" text-anchor="middle" font-weight="700" fill="#1f2328">8.2 kΩ</text>
-<rect x="720.0" y="1137.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="1152.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Inhibitor A-06: 8.2 kΩ in the lead to terminal GY; terminal RW → block ground. The 47 kΩ baseline</text>
-<text x="730.0" y="1168.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">from this lead to the block ground at the switch (D-487)</text>
-<line x1="30" y1="1178.0" x2="390" y2="1178.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1195.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1199.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
-<text x="70.0" y="1199.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Alternator charge-lamp sense</text>
-<path d="M390.0,1195.0 L720.0,1195.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M390.0,1195.0 L720.0,1195.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="406.0" y="1185.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-S2-8  ·  16 AWG GRY  ·  RT03</text>
-<rect x="720.0" y="1181.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
-<text x="730.0" y="1199.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Alternator plug A-08, terminal WB</text>
-<line x1="30" y1="1212.0" x2="390" y2="1212.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1234.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1238.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
-<text x="70.0" y="1238.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Phase-2 sensor supply — +12 V switched</text>
-<text x="406.0" y="1238.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
-<text x="730.0" y="1230.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">The spare block-B fuse position is wired to the receptacle cavity (N68), no fuse fitted; sealing plug in</text>
-<text x="730.0" y="1246.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">the L1 plug (D-271)</text>
-<line x1="30" y1="1256.0" x2="390" y2="1256.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1273.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1277.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">10</text>
-<text x="70.0" y="1277.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="406.0" y="1277.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="730.0" y="1277.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16 — no oil-temp sender on the 12A and no conductor run for one (D-264)</text>
-<line x1="30" y1="1290.0" x2="390" y2="1290.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1312.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1316.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">11</text>
-<text x="70.0" y="1316.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Phase-2 sensor signal spare</text>
-<text x="406.0" y="1316.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
-<text x="730.0" y="1308.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Wired across the dash node to DP-ICU 15 (N67) — the ICU's spare input reaches the post; sealing</text>
-<text x="730.0" y="1324.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">plug in the L1 plug (D-271)</text>
-<line x1="30" y1="1334.0" x2="390" y2="1334.0" stroke="#d0d7de"/>
-<circle cx="50" cy="1351.0" r="11" fill="#fff" stroke="#1f2328"/>
-<text x="50.0" y="1355.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">12</text>
-<text x="70.0" y="1355.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="406.0" y="1355.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
-<text x="730.0" y="1355.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Sealing plug, size 16</text>
-<path d="M30.0,1414.0 L66.0,1414.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M30.0,1414.0 L66.0,1414.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
-<text x="76.0" y="1418.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">RED</text>
-<path d="M123.6,1414.0 L159.6,1414.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M123.6,1414.0 L159.6,1414.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
-<text x="169.6" y="1418.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRY</text>
-<path d="M217.3,1414.0 L253.3,1414.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
-<path d="M217.3,1414.0 L253.3,1414.0" fill="none" stroke="#6b7280" stroke-width="5" stroke-linejoin="round"/>
-<path d="M217.3,1414.0 L253.3,1414.0" fill="none" stroke="#e5e7eb" stroke-width="2" stroke-dasharray="3 3"/>
-<text x="263.3" y="1418.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">shielded core</text>
-<text x="30.0" y="1444.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">Solid wire: live. Dashed: run and capped at the far end. A box on a wire is an inline resistor. Generated by rx7.py diagrams - do not edit.</text>
+<circle cx="50" cy="290.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="294.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="285.5" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">A/C clutch feed (LS, LW32) - its source in the box is</text>
+<text x="70.0" y="302.5" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">settled at the CAD pass</text>
+<text x="406.0" y="294.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="314.0" x2="390" y2="314.0" stroke="#d0d7de"/>
+<circle cx="50" cy="331.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="335.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="335.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Start relay K9 coil</text>
+<text x="380.0" y="335.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">O21</text>
+<path d="M390.0,331.0 L720.0,331.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,331.0 L720.0,331.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="321.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-E1-5  ·  16 AWG RED  ·  RT05</text>
+<rect x="720.0" y="317.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="335.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">K9 terminal 86 (inner fender)</text>
+<line x1="30" y1="348.0" x2="390" y2="348.0" stroke="#d0d7de"/>
+<circle cx="50" cy="365.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="369.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="369.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Alternator excitation (field feed)</text>
+<text x="380.0" y="369.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">F15</text>
+<path d="M390.0,365.0 L720.0,365.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,365.0 L720.0,365.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="355.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-E1-6  ·  16 AWG RED  ·  RT03</text>
+<rect x="720.0" y="351.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="369.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Alternator plug A-08, terminal BW</text>
+<line x1="30" y1="382.0" x2="390" y2="382.0" stroke="#d0d7de"/>
+<circle cx="50" cy="399.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="403.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="403.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Alternator charge-lamp sense</text>
+<path d="M390.0,399.0 L720.0,399.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,399.0 L720.0,399.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="389.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-E1-7  ·  16 AWG GRY  ·  RT03</text>
+<rect x="720.0" y="385.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="403.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Alternator plug A-08, terminal WB</text>
+<line x1="30" y1="416.0" x2="390" y2="416.0" stroke="#d0d7de"/>
+<circle cx="50" cy="433.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="437.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="437.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Oil pressure sender</text>
+<path d="M390.0,433.0 L720.0,433.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,433.0 L720.0,433.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="423.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-E1-8  ·  16 AWG GRY  ·  RT04</text>
+<rect x="720.0" y="419.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="437.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Sender C-09, spade — factory wire BrY</text>
+<line x1="30" y1="450.0" x2="390" y2="450.0" stroke="#d0d7de"/>
+<circle cx="50" cy="467.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="471.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
+<text x="70.0" y="471.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Brake fluid level switch</text>
+<path d="M390.0,467.0 L720.0,467.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,467.0 L720.0,467.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="457.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-E1-9  ·  16 AWG GRY  ·  RT26</text>
+<rect x="720.0" y="453.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="471.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Reservoir switch C-05: terminal BR; terminal B → block ground</text>
+<line x1="30" y1="484.0" x2="390" y2="484.0" stroke="#d0d7de"/>
+<circle cx="50" cy="522.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="526.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">10</text>
+<text x="70.0" y="526.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Inhibitor switch — R contact (reverse lamps)</text>
+<text x="380.0" y="526.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A5</text>
+<path d="M390.0,522.0 L720.0,522.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,522.0 L720.0,522.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="512.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-E1-10  ·  16 AWG GRY  ·  RT05</text>
+<rect x="650.0" y="515.0" width="44.0" height="14.0" rx="3" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="672.0" y="540.0" font-size="10" text-anchor="middle" font-weight="700" fill="#1f2328">8.2 kΩ</text>
+<rect x="720.0" y="487.0" width="560.0" height="70.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="502.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Inhibitor A-06: 8.2 kΩ in the lead to terminal GY; terminal RW → block ground. The 47 kΩ baseline</text>
+<text x="730.0" y="518.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">from this lead to the block ground at the switch (D-487). D-610: the series resistor sits on the PMU</text>
+<text x="730.0" y="534.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">box's board at this wire's end, not in the harness; D-610: the 47 kΩ baseline stays at the far end,</text>
+<text x="730.0" y="550.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">potted into the switch's sealed pigtail, so a broken wire still reads as a fault</text>
+<line x1="30" y1="560.0" x2="390" y2="560.0" stroke="#d0d7de"/>
+<circle cx="50" cy="582.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="586.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">11</text>
+<text x="70.0" y="586.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Phase-2 sensor signal spare</text>
+<text x="406.0" y="586.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="578.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">Wired across the PMU box to DP-ICU 15 (N67) — the ICU's spare input reaches the post; sealing plug</text>
+<text x="730.0" y="594.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">in the L1 plug (D-271)</text>
+<line x1="30" y1="604.0" x2="390" y2="604.0" stroke="#d0d7de"/>
+<circle cx="50" cy="626.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="630.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">12</text>
+<text x="70.0" y="630.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Phase-2 sensor supply — +12 V switched</text>
+<text x="406.0" y="630.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<text x="730.0" y="622.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">The spare block-B fuse position is wired to the receptacle cavity (N68), no fuse fitted; sealing plug in</text>
+<text x="730.0" y="638.0" font-size="11" text-anchor="start" font-weight="400" fill="#8c959f">the L1 plug (D-271)</text>
+<line x1="30" y1="648.0" x2="390" y2="648.0" stroke="#d0d7de"/>
+<circle cx="50" cy="694.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="698.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">13</text>
+<text x="70.0" y="698.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Inhibitor switch — P/N contact (crank interlock)</text>
+<text x="380.0" y="698.0" font-size="10" text-anchor="end" font-weight="400" fill="#57606a">A4</text>
+<path d="M390.0,694.0 L720.0,694.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,694.0 L720.0,694.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="684.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-E1-13  ·  16 AWG GRY  ·  RT05</text>
+<rect x="650.0" y="687.0" width="44.0" height="14.0" rx="3" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="672.0" y="712.0" font-size="10" text-anchor="middle" font-weight="700" fill="#1f2328">8.2 kΩ</text>
+<rect x="720.0" y="651.0" width="560.0" height="86.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="666.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Inhibitor A-06: 8.2 kΩ in the lead to terminal BY; terminal BW → block ground. The 47 kΩ baseline</text>
+<text x="730.0" y="682.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">from this lead to the block ground at the switch (D-487: it sat at the nose on the transit contact until</text>
+<text x="730.0" y="698.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">then, D-368 pattern). D-610: the series resistor sits on the PMU box's board at this wire's end, not in</text>
+<text x="730.0" y="714.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">the harness; D-610: the 47 kΩ baseline stays at the far end, potted into the switch's sealed pigtail, so</text>
+<text x="730.0" y="730.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">a broken wire still reads as a fault</text>
+<line x1="30" y1="740.0" x2="390" y2="740.0" stroke="#d0d7de"/>
+<circle cx="50" cy="757.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="761.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">14</text>
+<text x="70.0" y="761.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Water temperature sender</text>
+<path d="M390.0,757.0 L720.0,757.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,757.0 L720.0,757.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="747.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-E1-14  ·  16 AWG GRY  ·  RT04</text>
+<rect x="720.0" y="743.0" width="560.0" height="28.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="761.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Sender C-02, spade — factory wire YW</text>
+<line x1="30" y1="774.0" x2="390" y2="774.0" stroke="#d0d7de"/>
+<circle cx="50" cy="804.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="808.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">15</text>
+<text x="70.0" y="808.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Tachometer pulse — SHIELDED</text>
+<path d="M390.0,804.0 L720.0,804.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,804.0 L720.0,804.0" fill="none" stroke="#6b7280" stroke-width="5" stroke-linejoin="round"/>
+<path d="M390.0,804.0 L720.0,804.0" fill="none" stroke="#e5e7eb" stroke-width="2" stroke-dasharray="3 3"/>
+<text x="406.0" y="794.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-E1-15  ·  16 AWG shielded  ·  RT02</text>
+<rect x="720.0" y="777.0" width="560.0" height="54.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="792.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">Coil T (B-18) negative terminal — factory wire YG. Shield grounded in the PMU box end only (N48,</text>
+<text x="730.0" y="808.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">N113): the engine end of the shield is cut back and insulated at the coil, and carried through L1-E1</text>
+<text x="730.0" y="824.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">16 (D-556)</text>
+<line x1="30" y1="834.0" x2="390" y2="834.0" stroke="#d0d7de"/>
+<circle cx="50" cy="856.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="860.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">16</text>
+<text x="70.0" y="860.0" font-size="12" text-anchor="start" font-weight="400" fill="#1f2328">Tachometer shield (drain)</text>
+<path d="M390.0,856.0 L720.0,856.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M390.0,856.0 L720.0,856.0" fill="none" stroke="#b8bec6" stroke-width="5" stroke-linejoin="round"/>
+<text x="406.0" y="846.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">L1-E1-16  ·  16 drain AWG bare  ·  RT02</text>
+<rect x="720.0" y="837.0" width="560.0" height="38.0" rx="5" fill="#fff" stroke="#1f2328" stroke-width="1.5"/>
+<text x="730.0" y="852.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">No device: the tach cable's shield and drain, cut back and insulated at the coil (L1-E1 15), carried</text>
+<text x="730.0" y="868.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">through here to the PMU box's GND bus (N113, D-556). The shield is grounded at the node only.</text>
+<line x1="30" y1="878.0" x2="390" y2="878.0" stroke="#d0d7de"/>
+<circle cx="50" cy="895.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="899.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">17</text>
+<text x="70.0" y="899.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Reverse switch return (LS, LW37)</text>
+<text x="406.0" y="899.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="912.0" x2="390" y2="912.0" stroke="#d0d7de"/>
+<circle cx="50" cy="929.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="933.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">18</text>
+<text x="70.0" y="933.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Throttle position 1 (LS, LW17)</text>
+<text x="406.0" y="933.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="946.0" x2="390" y2="946.0" stroke="#d0d7de"/>
+<circle cx="50" cy="963.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="967.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">19</text>
+<text x="70.0" y="967.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Throttle position 2 (LS, LW17)</text>
+<text x="406.0" y="967.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="980.0" x2="390" y2="980.0" stroke="#d0d7de"/>
+<circle cx="50" cy="997.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1001.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">20</text>
+<text x="70.0" y="1001.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Throttle 5 V (LS, LW18)</text>
+<text x="406.0" y="1001.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1014.0" x2="390" y2="1014.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1031.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1035.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">21</text>
+<text x="70.0" y="1035.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Throttle ground (LS, LW18)</text>
+<text x="406.0" y="1035.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1048.0" x2="390" y2="1048.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1065.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1069.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">22</text>
+<text x="70.0" y="1069.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">IAT (LS, LW14)</text>
+<text x="406.0" y="1069.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1082.0" x2="390" y2="1082.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1099.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1103.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">23</text>
+<text x="70.0" y="1103.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Coolant temperature, ECU (LS, LW15)</text>
+<text x="406.0" y="1103.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1116.0" x2="390" y2="1116.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1133.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1137.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">24</text>
+<text x="70.0" y="1137.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Oil temperature signal (LS option, LW36)</text>
+<text x="406.0" y="1137.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1150.0" x2="390" y2="1150.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1167.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1171.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">25</text>
+<text x="70.0" y="1171.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Oil temperature return (LS option, LW36)</text>
+<text x="406.0" y="1171.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1184.0" x2="390" y2="1184.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1201.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1205.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">26</text>
+<text x="70.0" y="1205.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Alternator set-point (LS option, LW40)</text>
+<text x="406.0" y="1205.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1218.0" x2="390" y2="1218.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1235.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1239.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">27</text>
+<text x="70.0" y="1239.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Neutral switch (LS option, LW38)</text>
+<text x="406.0" y="1239.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1252.0" x2="390" y2="1252.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1269.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1273.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">28</text>
+<text x="70.0" y="1273.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Neutral switch return (LS option, LW38)</text>
+<text x="406.0" y="1273.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1286.0" x2="390" y2="1286.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1303.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1307.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">29</text>
+<text x="70.0" y="1307.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">MAF signal (LS option, LW24)</text>
+<text x="406.0" y="1307.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<rect x="30.0" y="1356.0" width="360.0" height="1088.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="1378.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L1-E2  ·  HDP26-24-31SE  ·  PMU box</text>
+<line x1="30" y1="1390.0" x2="390" y2="1390.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1407.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1411.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="1411.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Injector 1 driver (LS, LW02)</text>
+<text x="406.0" y="1411.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1424.0" x2="390" y2="1424.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1441.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1445.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="1445.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Injector 2 driver (LS, LW02)</text>
+<text x="406.0" y="1445.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1458.0" x2="390" y2="1458.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1475.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1479.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="1479.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Injector 3 driver (LS, LW02)</text>
+<text x="406.0" y="1479.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1492.0" x2="390" y2="1492.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1509.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1513.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="1513.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Injector 4 driver (LS, LW02)</text>
+<text x="406.0" y="1513.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1526.0" x2="390" y2="1526.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1543.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1547.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="1547.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Injector 5 driver (LS, LW02)</text>
+<text x="406.0" y="1547.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1560.0" x2="390" y2="1560.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1577.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1581.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="1581.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Injector 6 driver (LS, LW02)</text>
+<text x="406.0" y="1581.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1594.0" x2="390" y2="1594.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1611.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1615.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="1615.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Injector 7 driver (LS, LW02)</text>
+<text x="406.0" y="1615.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1628.0" x2="390" y2="1628.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1645.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1649.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="1649.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Injector 8 driver (LS, LW02)</text>
+<text x="406.0" y="1649.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1662.0" x2="390" y2="1662.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1679.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1683.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
+<text x="70.0" y="1683.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Coil 1 trigger (LS, LW04)</text>
+<text x="406.0" y="1683.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1696.0" x2="390" y2="1696.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1713.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1717.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">10</text>
+<text x="70.0" y="1717.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Coil 2 trigger (LS, LW04)</text>
+<text x="406.0" y="1717.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1730.0" x2="390" y2="1730.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1747.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1751.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">11</text>
+<text x="70.0" y="1751.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Coil 3 trigger (LS, LW04)</text>
+<text x="406.0" y="1751.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1764.0" x2="390" y2="1764.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1781.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1785.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">12</text>
+<text x="70.0" y="1785.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Coil 4 trigger (LS, LW04)</text>
+<text x="406.0" y="1785.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1798.0" x2="390" y2="1798.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1815.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1819.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">13</text>
+<text x="70.0" y="1819.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Coil 5 trigger (LS, LW04)</text>
+<text x="406.0" y="1819.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1832.0" x2="390" y2="1832.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1849.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1853.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">14</text>
+<text x="70.0" y="1853.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Coil 6 trigger (LS, LW04)</text>
+<text x="406.0" y="1853.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1866.0" x2="390" y2="1866.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1883.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1887.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">15</text>
+<text x="70.0" y="1887.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Coil 7 trigger (LS, LW04)</text>
+<text x="406.0" y="1887.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1900.0" x2="390" y2="1900.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1917.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1921.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">16</text>
+<text x="70.0" y="1921.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Coil 8 trigger (LS, LW04)</text>
+<text x="406.0" y="1921.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1934.0" x2="390" y2="1934.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1951.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1955.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">17</text>
+<text x="70.0" y="1955.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Ignition reference ground a (LS, LW06)</text>
+<text x="406.0" y="1955.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="1968.0" x2="390" y2="1968.0" stroke="#d0d7de"/>
+<circle cx="50" cy="1985.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="1989.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">18</text>
+<text x="70.0" y="1989.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Ignition reference ground b (LS, LW06)</text>
+<text x="406.0" y="1989.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2002.0" x2="390" y2="2002.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2019.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2023.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">19</text>
+<text x="70.0" y="2023.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Throttle motor + (LS, LW19), twisted</text>
+<text x="406.0" y="2023.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2036.0" x2="390" y2="2036.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2053.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2057.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">20</text>
+<text x="70.0" y="2057.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Throttle motor - (LS, LW19), twisted</text>
+<text x="406.0" y="2057.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2070.0" x2="390" y2="2070.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2087.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2091.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">21</text>
+<text x="70.0" y="2091.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Purge (LS option, LW35)</text>
+<text x="406.0" y="2091.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2104.0" x2="390" y2="2104.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2121.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2125.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">22</text>
+<text x="70.0" y="2125.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">O2 heater driver 1 (LS option, LW28)</text>
+<text x="406.0" y="2125.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2138.0" x2="390" y2="2138.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2155.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2159.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">23</text>
+<text x="70.0" y="2159.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">O2 heater driver 2 (LS option, LW28)</text>
+<text x="406.0" y="2159.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2172.0" x2="390" y2="2172.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2189.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2193.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">24</text>
+<text x="70.0" y="2193.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Cam phaser a (LS option, LW34)</text>
+<text x="406.0" y="2193.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2206.0" x2="390" y2="2206.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2223.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2227.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">25</text>
+<text x="70.0" y="2227.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Cam phaser b (LS option, LW34)</text>
+<text x="406.0" y="2227.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2240.0" x2="390" y2="2240.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2257.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2261.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">26</text>
+<text x="70.0" y="2261.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="2261.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="2274.0" x2="390" y2="2274.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2291.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2295.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">27</text>
+<text x="70.0" y="2295.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="2295.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="2308.0" x2="390" y2="2308.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2325.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2329.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">28</text>
+<text x="70.0" y="2329.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="2329.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="2342.0" x2="390" y2="2342.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2359.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2363.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">29</text>
+<text x="70.0" y="2363.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="2363.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="2376.0" x2="390" y2="2376.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2393.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2397.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">30</text>
+<text x="70.0" y="2397.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="2397.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="2410.0" x2="390" y2="2410.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2427.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2431.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">31</text>
+<text x="70.0" y="2431.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="2431.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<rect x="30.0" y="2480.0" width="360.0" height="1088.0" rx="5" fill="#f6f8fa" stroke="#1f2328" stroke-width="1.5"/>
+<text x="42.0" y="2502.0" font-size="13" text-anchor="start" font-weight="700" fill="#1f2328">L1-E3  ·  HDP26-24-31SE  ·  PMU box</text>
+<line x1="30" y1="2514.0" x2="390" y2="2514.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2531.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2535.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">1</text>
+<text x="70.0" y="2535.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Crank signal (LS, LW07)</text>
+<text x="406.0" y="2535.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2548.0" x2="390" y2="2548.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2565.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2569.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">2</text>
+<text x="70.0" y="2569.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Crank supply (LS, LW08)</text>
+<text x="406.0" y="2569.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2582.0" x2="390" y2="2582.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2599.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2603.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">3</text>
+<text x="70.0" y="2603.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Crank ground (LS, LW08)</text>
+<text x="406.0" y="2603.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2616.0" x2="390" y2="2616.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2633.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2637.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">4</text>
+<text x="70.0" y="2637.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Crank shield drain (LS, LW09)</text>
+<text x="406.0" y="2637.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2650.0" x2="390" y2="2650.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2667.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2671.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">5</text>
+<text x="70.0" y="2671.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Cam signal (LS, LW10)</text>
+<text x="406.0" y="2671.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2684.0" x2="390" y2="2684.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2701.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2705.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">6</text>
+<text x="70.0" y="2705.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Cam supply (LS, LW11)</text>
+<text x="406.0" y="2705.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2718.0" x2="390" y2="2718.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2735.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2739.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">7</text>
+<text x="70.0" y="2739.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Cam ground (LS, LW11)</text>
+<text x="406.0" y="2739.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2752.0" x2="390" y2="2752.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2769.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2773.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">8</text>
+<text x="70.0" y="2773.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Cam shield drain (LS, LW12)</text>
+<text x="406.0" y="2773.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2786.0" x2="390" y2="2786.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2803.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2807.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">9</text>
+<text x="70.0" y="2807.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Road speed signal (LS, LW39)</text>
+<text x="406.0" y="2807.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2820.0" x2="390" y2="2820.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2837.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2841.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">10</text>
+<text x="70.0" y="2841.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Road speed return (LS, LW39)</text>
+<text x="406.0" y="2841.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2854.0" x2="390" y2="2854.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2871.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2875.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">11</text>
+<text x="70.0" y="2875.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Road speed shield drain (LS, LW48)</text>
+<text x="406.0" y="2875.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2888.0" x2="390" y2="2888.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2905.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2909.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">12</text>
+<text x="70.0" y="2909.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Knock 1 (LS, LW22)</text>
+<text x="406.0" y="2909.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2922.0" x2="390" y2="2922.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2939.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2943.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">13</text>
+<text x="70.0" y="2943.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Knock 2 (LS, LW22)</text>
+<text x="406.0" y="2943.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2956.0" x2="390" y2="2956.0" stroke="#d0d7de"/>
+<circle cx="50" cy="2973.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="2977.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">14</text>
+<text x="70.0" y="2977.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Knock 3 (LS, LW22)</text>
+<text x="406.0" y="2977.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="2990.0" x2="390" y2="2990.0" stroke="#d0d7de"/>
+<circle cx="50" cy="3007.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3011.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">15</text>
+<text x="70.0" y="3011.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Knock 4 (LS, LW22)</text>
+<text x="406.0" y="3011.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="3024.0" x2="390" y2="3024.0" stroke="#d0d7de"/>
+<circle cx="50" cy="3041.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3045.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">16</text>
+<text x="70.0" y="3045.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Knock shield drain (LS, LW23)</text>
+<text x="406.0" y="3045.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="3058.0" x2="390" y2="3058.0" stroke="#d0d7de"/>
+<circle cx="50" cy="3075.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3079.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">17</text>
+<text x="70.0" y="3079.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">O2 signal 1 (LS option, LW25)</text>
+<text x="406.0" y="3079.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="3092.0" x2="390" y2="3092.0" stroke="#d0d7de"/>
+<circle cx="50" cy="3109.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3113.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">18</text>
+<text x="70.0" y="3113.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">O2 signal 2 (LS option, LW25)</text>
+<text x="406.0" y="3113.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="3126.0" x2="390" y2="3126.0" stroke="#d0d7de"/>
+<circle cx="50" cy="3143.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3147.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">19</text>
+<text x="70.0" y="3147.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">O2 low 1 (LS option, LW26)</text>
+<text x="406.0" y="3147.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="3160.0" x2="390" y2="3160.0" stroke="#d0d7de"/>
+<circle cx="50" cy="3177.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3181.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">20</text>
+<text x="70.0" y="3181.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">O2 low 2 (LS option, LW26)</text>
+<text x="406.0" y="3181.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="3194.0" x2="390" y2="3194.0" stroke="#d0d7de"/>
+<circle cx="50" cy="3211.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3215.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">21</text>
+<text x="70.0" y="3215.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">MAP (LS, LW13)</text>
+<text x="406.0" y="3215.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="3228.0" x2="390" y2="3228.0" stroke="#d0d7de"/>
+<circle cx="50" cy="3245.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3249.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">22</text>
+<text x="70.0" y="3249.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Sensor 5 V reference (LS, LW20)</text>
+<text x="406.0" y="3249.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="3262.0" x2="390" y2="3262.0" stroke="#d0d7de"/>
+<circle cx="50" cy="3279.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3283.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">23</text>
+<text x="70.0" y="3283.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Sensor ground a (LS, LW21)</text>
+<text x="406.0" y="3283.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="3296.0" x2="390" y2="3296.0" stroke="#d0d7de"/>
+<circle cx="50" cy="3313.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3317.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">24</text>
+<text x="70.0" y="3317.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">Sensor ground b (LS, LW21)</text>
+<text x="406.0" y="3317.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">reserved - no wire in the leg</text>
+<line x1="30" y1="3330.0" x2="390" y2="3330.0" stroke="#d0d7de"/>
+<circle cx="50" cy="3347.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3351.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">25</text>
+<text x="70.0" y="3351.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="3351.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="3364.0" x2="390" y2="3364.0" stroke="#d0d7de"/>
+<circle cx="50" cy="3381.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3385.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">26</text>
+<text x="70.0" y="3385.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="3385.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="3398.0" x2="390" y2="3398.0" stroke="#d0d7de"/>
+<circle cx="50" cy="3415.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3419.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">27</text>
+<text x="70.0" y="3419.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="3419.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="3432.0" x2="390" y2="3432.0" stroke="#d0d7de"/>
+<circle cx="50" cy="3449.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3453.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">28</text>
+<text x="70.0" y="3453.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="3453.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="3466.0" x2="390" y2="3466.0" stroke="#d0d7de"/>
+<circle cx="50" cy="3483.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3487.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">29</text>
+<text x="70.0" y="3487.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="3487.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="3500.0" x2="390" y2="3500.0" stroke="#d0d7de"/>
+<circle cx="50" cy="3517.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3521.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">30</text>
+<text x="70.0" y="3521.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="3521.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<line x1="30" y1="3534.0" x2="390" y2="3534.0" stroke="#d0d7de"/>
+<circle cx="50" cy="3551.0" r="11" fill="#fff" stroke="#1f2328"/>
+<text x="50.0" y="3555.0" font-size="11" text-anchor="middle" font-weight="700" fill="#1f2328">31</text>
+<text x="70.0" y="3555.0" font-size="12" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<text x="406.0" y="3555.0" font-size="10" text-anchor="start" font-weight="400" fill="#8c959f">sealing plug</text>
+<path d="M30.0,3614.0 L66.0,3614.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M30.0,3614.0 L66.0,3614.0" fill="none" stroke="#d32f2f" stroke-width="5" stroke-linejoin="round"/>
+<text x="76.0" y="3618.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">RED</text>
+<path d="M123.6,3614.0 L159.6,3614.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M123.6,3614.0 L159.6,3614.0" fill="none" stroke="#8d949e" stroke-width="5" stroke-linejoin="round"/>
+<text x="169.6" y="3618.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">GRY</text>
+<path d="M217.3,3614.0 L253.3,3614.0" fill="none" stroke="#1f2328" stroke-width="7" stroke-linejoin="round"/>
+<path d="M217.3,3614.0 L253.3,3614.0" fill="none" stroke="#6b7280" stroke-width="5" stroke-linejoin="round"/>
+<path d="M217.3,3614.0 L253.3,3614.0" fill="none" stroke="#e5e7eb" stroke-width="2" stroke-dasharray="3 3"/>
+<text x="263.3" y="3618.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">shielded core</text>
+<text x="30.0" y="3644.0" font-size="10" text-anchor="start" font-weight="400" fill="#57606a">Solid wire: live. Dashed: run and capped at the far end. A box on a wire is an inline resistor. Generated by rx7.py diagrams - do not edit.</text>
 </svg>

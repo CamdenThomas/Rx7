@@ -113,13 +113,13 @@ work,choices,str,no,,"for reply=choice: the choices, separated by |"
 work,unit,str,no,,for reply=value: the unit the value is in
 work,result,str,no,,"his answer as rx7.py apply set it: done, the value (in unit), or the choice (2026-09-26, plan P07)"
 work,settles,str,no,,"rows his answer flips, as <area>:<table>:<key> separated by spaces; blank means the PT ids named in item (2026-09-26, plan P07)"
-ls_cavities,id,key,yes,,"housing and cavity, e.g. L1-S3 4"
-ls_cavities,housing,str,yes,,"L1-P, L1-S1 to L1-S6 (D-443) or the 6-way L1-S7 (D-500, D-506) of the swap leg, not today's 12A leg; L1-S1 and L1-S2 are today's receptacles at the post, so their cavities keep today's functions (K6)"
+ls_cavities,id,key,yes,,"housing and cavity, e.g. L1-E2 4"
+ls_cavities,housing,str,yes,,"L1-E1, L1-E2 or L1-E3, the PMU box's three engine circulars (electrical D-606, D-607): L1-E1 carries today's engine functions on the cavities the LS keeps, so today's leg and the LS leg plug into the same receptacle; L1-E2 the drivers, L1-E3 the timing and low-level analog"
 ls_cavities,cavity,int,yes,,
 ls_cavities,wire,str,no,ls_wires.id,the ls_wires row it carries - empty only on a reserved row (K6)
 ls_cavities,conductor,str,yes,,"which of the wire row's crossing conductors; on a reserved row, the dash-node conductor its receptacle already carries"
 ls_cavities,noise,str,no,,the housing's noise class
-ls_cavities,state,enum(free|pinned|reserved),no,,"pinned = the swap leg carries this conductor; reserved = a sealing plug in the swap leg on a cavity whose receptacle already carries a dash-node conductor today - never given a swap conductor (K6); free = a swap-leg cavity with no conductor since D-489 freed it - the next function to need one takes it (2026-10-12)"
+ls_cavities,state,enum(free|pinned|reserved),no,,"pinned = the LS leg carries this conductor; reserved = a cavity of L1-E1 wired in the PMU box to one of today's functions for good, so the LS leg leaves it empty (electrical D-606); free = no conductor yet"
 ls_cavities,note,text,no,,
 parts,id,key,yes,,
 parts,system,str,yes,,"what it belongs to: fuel, cooling, clutch, ..."

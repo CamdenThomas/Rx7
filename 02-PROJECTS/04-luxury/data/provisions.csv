@@ -1,40 +1,40 @@
 id,kind,ref,feature,role,expect,note
-PV31,cavity,L2-S 5,FT15,"outside-air thermistor at the nose, grounded at the front star — ends in the L2-OAT receptacle (electrical D-274)",CAPPED,
-PV38,cavity,L3-BLW 1,FT12,blower motor + (O16 via L3-P 1),CAPPED,
+PV31,cavity,DP-DCU 10,FT15,"outside-air thermistor at the nose, grounded at the front star — ends in the L2-OAT receptacle (electrical D-274)",CAPPED,
+PV38,cavity,L3-BLW 1,FT12,blower motor + (O16 via L3-BLW 1),CAPPED,
 PV39,cavity,L3-BLW 2,FT12,blower return — the final stage inserts here,CAPPED,
 PV40,housing,L3-BLW,FT12,DTP-2 at the HVAC case,,
 PV41,pin,O16,FT12,"blower feed — configured, DISABLED until the motor exists",LIVE,
-PV42,cavity,L3-P 2,FT31,"O15 comfort bus, 12 AWG — electrical's comfort fuse block plugs into the L3-CMF receptacle behind the centre stack (electrical D-274)",CAPPED,
+PV42,cavity,DP-DCU-P 1,FT31,"O15 comfort feed, 12 AWG - the CU's own DTP 2-way inlet (electrical D-612); the comfort fuse block is gone, the CU's + side switches split it (electrical D-597)",CAPPED,
 PV43,pin,O15,FT31,"comfort bus, 25 A, ON in RUN",LIVE,
-PV44,cavity,L4-P 4,FT23,"DCU → sill feed for mirror heat: the DCU's high-side switch via DP-DCU 23, linked at the post onto L4-P 4, landed in F14's holder (electrical D-369)",CAPPED,electrical D-254 → D-369
+PV44,cavity,DP-DCU 23,FT23,"the CU's mirror-heat high side, DP-DCU 23, run straight to the doors' D1 7 / D2 7 (electrical D-369, D-610)",CAPPED,electrical D-254 → D-369 → D-610
 PV45,fuse,F14,FT23,"mirror-heat fuse at the sill - a sealed inline holder; electrical fits the fuse too (D-450, 01-electrical D-451), rating confirm - sized after V-101",,"electrical D-283; rated 5 A by electrical D-382 (fuses F14), R11"
 PV46,pin,O4,FT16,"defog output — wired to the grid, configured, live from electrical MG27 (D-374, D-442; R10)",LIVE,
-PV47,cavity,L4-P 1,FT16,the grid feed,LIVE,
-PV48,cavity,L4-M 3,FT17,"hatch solenoid — the conductor reaches the existing factory solenoid; the post end is electrical's trigger now (01-electrical A11, D-450) (D-180, electrical D-274)",CAPPED,
-PV49,cavity,L4-M 4,FT18,"fuel-door solenoid — the conductor reaches the existing factory solenoid; the post end is electrical's trigger now (01-electrical A11, D-450) (D-180, electrical D-274)",CAPPED,
-PV51,cavity,D1 4,FT23,"mirror motor common, shared by both mirrors (spliced at the sill to L4-S2 1) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
-PV52,cavity,D1 5,FT23,"LEFT mirror motor (L4-S2 2) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
-PV53,cavity,D1 6,FT23,"LEFT mirror clutch coil (L4-S2 3) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
-PV54,cavity,D2 4,FT23,"mirror motor common, shared by both mirrors (spliced at the sill to L4-S2 1) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
-PV55,cavity,D2 5,FT23,"RIGHT mirror motor (L4-S2 4) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
-PV56,cavity,D2 6,FT23,"RIGHT mirror clutch coil (L4-S2 5) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
+PV47,cavity,L4-R1 1,FT16,the grid feed,LIVE,
+PV48,cavity,L4-R1 7,FT17,"hatch solenoid — the conductor reaches the existing factory solenoid; the post end is electrical's trigger now (01-electrical A11, D-450) (D-180, electrical D-274)",CAPPED,
+PV49,cavity,L4-R1 8,FT18,"fuel-door solenoid — the conductor reaches the existing factory solenoid; the post end is electrical's trigger now (01-electrical A11, D-450) (D-180, electrical D-274)",CAPPED,
+PV51,cavity,D1 4,FT23,"mirror motor common, shared by both mirrors (spliced at the sill to DP-DCU 19) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
+PV52,cavity,D1 5,FT23,"LEFT mirror motor (DP-DCU 20) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
+PV53,cavity,D1 6,FT23,"LEFT mirror clutch coil (DP-DCU 22) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
+PV54,cavity,D2 4,FT23,"mirror motor common, shared by both mirrors (spliced at the sill to DP-DCU 19) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
+PV55,cavity,D2 5,FT23,"RIGHT mirror motor (DP-DCU 21) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
+PV56,cavity,D2 6,FT23,"RIGHT mirror clutch coil (DP-DCU 22) - RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274). Pin function inside the door is confirm - W-332",RESERVED,"D-359, electrical D-360"
 PV57,cavity,D1 7,FT23,"mirror heat — RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274)",RESERVED,
 PV58,cavity,D2 7,FT23,"mirror heat — RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274)",RESERVED,
-PV59,cavity,L4-S2 1,FT23,"DCU mirror line - motor common, both mirrors: from DP-DCU 19 by the DCU tail, linked at the dash node (electrical D-472), capped there; spliced at the sill to D1 4 and D2 4",CAPPED,electrical D-255 / D-360 / D-472
-PV60,cavity,L4-S2 2,FT23,"DCU mirror line - LEFT motor: from DP-DCU 20 by the DCU tail (electrical D-472), capped there; sill → D1 5",CAPPED,electrical D-255 / D-360 / D-472
-PV61,cavity,L4-S2 3,FT23,"DCU mirror line - LEFT clutch coil: from DP-DCU 22 by the DCU tail, spliced at the dash node (electrical D-472), capped there; sill → D1 6",CAPPED,electrical D-255 / D-360 / D-472
-PV62,cavity,L4-S2 4,FT23,"DCU mirror line - RIGHT motor: from DP-DCU 21 by the DCU tail (electrical D-472), capped there; sill → D2 5",CAPPED,electrical D-255 / D-360 / D-472
-PV63,cavity,L4-S2 5,FT23,"DCU mirror line - RIGHT clutch coil: from DP-DCU 22 by the DCU tail, spliced at the dash node (electrical D-472), capped there; sill → D2 6",CAPPED,electrical D-255 / D-360 / D-472
-PV64,housing,L4-S2,FT23,DT-8 - the DCU's mirror lines at the post (D-360),,
-PV65,cavity,DP-DCU 15,FT24,"Window DRV up command - DP-DCU 15, the DCU tail from the dash node to L4-M 9 (electrical D-472; it no longer passes L3-S2); the DCU drives it from the panel key (D-355). The L3-WIN console receptacle is deleted",LIVE,electrical D-350 / D-362 / D-472
-PV66,cavity,DP-DCU 16,FT24,"Window DRV down command - DP-DCU 16, the DCU tail to L4-M 10 (electrical D-472); the DCU drives it from the panel key (D-355)",LIVE,electrical D-350 / D-362 / D-472
-PV67,cavity,DP-DCU 17,FT24,"Window PASS up command - DP-DCU 17, the DCU tail to L4-M 11 (electrical D-472); the DCU drives it from the panel key (D-355)",LIVE,electrical D-350 / D-362 / D-472
-PV68,cavity,DP-DCU 18,FT24,"Window PASS down command - DP-DCU 18, the DCU tail to L4-M 12 (electrical D-472); the DCU drives it from the panel key (D-355)",LIVE,electrical D-350 / D-362 / D-472
-PV69,cavity,L4-M 9,FT24,"window command → K5–K8 coil sockets at the sill, landed in the empty socket (electrical D-274)",CAPPED,
-PV70,cavity,L4-M 10,FT24,"window command → K5–K8 coil sockets at the sill, landed in the empty socket (electrical D-274)",CAPPED,
-PV71,cavity,L4-M 11,FT24,"window command → K5–K8 coil sockets at the sill, landed in the empty socket (electrical D-274)",CAPPED,
-PV72,cavity,L4-M 12,FT24,"window command → K5–K8 coil sockets at the sill, landed in the empty socket (electrical D-274)",CAPPED,
-PV73,cavity,L4-P 3,FT24,window motor bus feed (O1) → K5–K8 commons,CAPPED,
+PV59,cavity,DP-DCU 19,FT23,"DCU mirror line - motor common, both mirrors: from DP-DCU 19 by the DCU tail, linked in the PMU box (electrical D-472), capped there; spliced at the sill to D1 4 and D2 4",CAPPED,electrical D-255 / D-360 / D-472
+PV60,cavity,DP-DCU 20,FT23,"DCU mirror line - LEFT motor: from DP-DCU 20 by the DCU tail (electrical D-472), capped there; sill → D1 5",CAPPED,electrical D-255 / D-360 / D-472
+PV61,cavity,DP-DCU 22,FT23,"DCU mirror line - LEFT clutch coil: from DP-DCU 22 by the DCU tail, spliced in the PMU box (electrical D-472), capped there; sill → D1 6",CAPPED,electrical D-255 / D-360 / D-472
+PV62,cavity,DP-DCU 21,FT23,"DCU mirror line - RIGHT motor: from DP-DCU 21 by the DCU tail (electrical D-472), capped there; sill → D2 5",CAPPED,electrical D-255 / D-360 / D-472
+PV63,cavity,DP-DCU 22,FT23,"DCU mirror line - RIGHT clutch coil: from DP-DCU 22 by the DCU tail, spliced in the PMU box (electrical D-472), capped there; sill → D2 6",CAPPED,electrical D-255 / D-360 / D-472
+PV64,housing,DP-DCU,FT23,"the CU's mirror lines on DP-DCU 19-22, run to the doors through the A-pillar boots (electrical D-610)",,
+PV65,cavity,DP-DCU 15,FT24,"Window DRV up command - DP-DCU 15, the DCU tail from the PMU box to DP-DCU 15 (electrical D-472; it no longer passes L3-S2); the DCU drives it from the panel key (D-355). The L3-WIN console receptacle is deleted",LIVE,electrical D-350 / D-362 / D-472
+PV66,cavity,DP-DCU 16,FT24,"Window DRV down command - DP-DCU 16, the DCU tail to DP-DCU 16 (electrical D-472); the DCU drives it from the panel key (D-355)",LIVE,electrical D-350 / D-362 / D-472
+PV67,cavity,DP-DCU 17,FT24,"Window PASS up command - DP-DCU 17, the DCU tail to DP-DCU 17 (electrical D-472); the DCU drives it from the panel key (D-355)",LIVE,electrical D-350 / D-362 / D-472
+PV68,cavity,DP-DCU 18,FT24,"Window PASS down command - DP-DCU 18, the DCU tail to DP-DCU 18 (electrical D-472); the DCU drives it from the panel key (D-355)",LIVE,electrical D-350 / D-362 / D-472
+PV69,cavity,DP-DCU 15,FT24,"window command → K5–K8 coil sockets at the sill, landed in the empty socket (electrical D-274)",CAPPED,
+PV70,cavity,DP-DCU 16,FT24,"window command → K5–K8 coil sockets at the sill, landed in the empty socket (electrical D-274)",CAPPED,
+PV71,cavity,DP-DCU 17,FT24,"window command → K5–K8 coil sockets at the sill, landed in the empty socket (electrical D-274)",CAPPED,
+PV72,cavity,DP-DCU 18,FT24,"window command → K5–K8 coil sockets at the sill, landed in the empty socket (electrical D-274)",CAPPED,
+PV73,relay,K5,FT24,"window motor bus feed (O1) → the PMU box's two H-bridges (K5-K8, electrical D-610)",CAPPED,
 PV74,cavity,D1 1,FT24,"window motor leg — RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274)",RESERVED,
 PV75,cavity,D1 2,FT24,"window motor leg — RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274)",RESERVED,
 PV76,cavity,D2 1,FT24,"window motor leg — RESERVED at the sill: pinned on the node side, the door harness is electrical's (01-electrical A12, D-450) (electrical D-274)",RESERVED,
@@ -45,45 +45,43 @@ PV80,relay,K7,FT24,"window relay socket at the sill, fitted empty",,
 PV81,relay,K8,FT24,"window relay socket at the sill, fitted empty",,
 PV82,fuse,F8,FT24,window branch fuse position at the sill,,
 PV83,fuse,F9,FT24,window branch fuse position at the sill,,
-PV84,cavity,L3-S3 1,FT28,dash ↔ hatch pass-through — ends in the L3-RDR receptacle (electrical D-274),CAPPED,
-PV85,cavity,L3-S3 2,FT28,dash ↔ hatch pass-through — ends in the L3-RDR receptacle (electrical D-274),CAPPED,
-PV86,cavity,L3-S3 3,FT28,dash ↔ hatch pass-through — ends in the L3-RDR receptacle (electrical D-274),CAPPED,
-PV87,cavity,L4-S 5,FT28,dash ↔ hatch pass-through — ends in the L4-RDR receptacle (electrical D-274),CAPPED,
-PV88,cavity,L4-S 6,FT28,dash ↔ hatch pass-through — ends in the L4-RDR receptacle (electrical D-274),CAPPED,
-PV89,cavity,L4-S 7,FT28,dash ↔ hatch pass-through — ends in the L4-RDR receptacle (electrical D-274),CAPPED,
-PV90,cavity,L3-S2 7,FT32,future module +12 V switched — ends in the L3-MOD receptacle (electrical D-274),CAPPED,
-PV91,cavity,L3-S2 8,FT32,future module ground — ends in the L3-MOD receptacle (electrical D-274),CAPPED,
-PV92,cavity,L3-M 1,FT29,head unit ACC + USB-C,LIVE,
-PV93,cavity,L3-M 2,FT29,head unit memory constant (F1),LIVE,
-PV94,cavity,L3-S1 8,FT29,illumination bus — the head unit's dimmer wire,LIVE,
-PV95,cavity,L3-S2 11,FT30,parking-brake switch → the brake-warning node,LIVE,
+PV84,cavity,DP-DCU 52,FT28,dash ↔ hatch pass-through — ends in the L3-RDR receptacle (electrical D-274),CAPPED,
+PV85,cavity,DP-DCU 53,FT28,dash ↔ hatch pass-through — ends in the L3-RDR receptacle (electrical D-274),CAPPED,
+PV86,cavity,DP-DCU 54,FT28,dash ↔ hatch pass-through — ends in the L3-RDR receptacle (electrical D-274),CAPPED,
+PV87,cavity,DP-DCU 52,FT28,dash ↔ hatch pass-through — ends in the L4-RDR receptacle (electrical D-274),CAPPED,
+PV88,cavity,DP-DCU 53,FT28,dash ↔ hatch pass-through — ends in the L4-RDR receptacle (electrical D-274),CAPPED,
+PV89,cavity,DP-DCU 54,FT28,dash ↔ hatch pass-through — ends in the L4-RDR receptacle (electrical D-274),CAPPED,
+PV90,cavity,L3-MOD 1,FT32,future module +12 V switched — ends in the L3-MOD receptacle (electrical D-274),CAPPED,
+PV91,cavity,L3-MOD 2,FT32,future module ground — ends in the L3-MOD receptacle (electrical D-274),CAPPED,
+PV92,cavity,L3-HU 1,FT29,head unit ACC + USB-C,LIVE,
+PV93,cavity,L3-HU 2,FT29,head unit memory constant (F1),LIVE,
+PV94,cavity,L3-DASH 1,FT29,illumination bus — the head unit's dimmer wire,LIVE,
+PV95,cavity,L3-COL 13,FT30,parking-brake switch → the brake-warning node,LIVE,
 PV96,pin,CAN2H,FT31,"the vehicle bus, 500 kbps — software termination at the PMU, 120 Ω at both physical ends inside the dash (D-318: CAN never leaves the dashboard); the DCU is its next node, and the panel is not a node (D-355)",LIVE,
 PV97,pin,CAN2L,FT31,the vehicle bus,LIVE,
 PV99,cavity,L2-OAT 1,FT15,Outside-air thermistor — signal — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
-PV100,cavity,L3-CMF 1,FT31,"O15 comfort bus — electrical's comfort fuse block plugs in here (01-electrical A13, D-450) (electrical D-274)",CAPPED,
+PV100,cavity,DP-DCU-P 1,FT31,O15 comfort feed into the CU (electrical D-612); no comfort fuse block any more (electrical D-597),CAPPED,
 PV106,cavity,L3-MOD 1,FT32,Future module +12 V switched — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
 PV107,cavity,L3-MOD 2,FT32,Future module ground — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
-PV108,cavity,L3-RDR 1,FT28,Radar pass-through A — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
-PV109,cavity,L3-RDR 2,FT28,Radar pass-through B — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
-PV110,cavity,L3-RDR 3,FT28,Radar pass-through C — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
+PV108,cavity,DP-DCU 52,FT28,Radar pass-through A — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
+PV109,cavity,DP-DCU 53,FT28,Radar pass-through B — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
+PV110,cavity,DP-DCU 54,FT28,Radar pass-through C — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
 PV111,cavity,L4-RDR 1,FT28,Radar pass-through A — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
 PV112,cavity,L4-RDR 2,FT28,Radar pass-through B — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
 PV113,cavity,L4-RDR 3,FT28,Radar pass-through C — the branch-end receptacle this project plugs into (electrical D-274),CAPPED,
-PV123,cavity,DP-DCU 19,FT23,"Mirror motor common, both mirrors - the DCU tail from the dash node to L4-S2 1 (electrical D-472; it no longer passes L3-S3)",LIVE,"D-359, electrical D-360 / D-472"
-PV124,cavity,DP-DCU 20,FT23,Mirror LEFT motor - the DCU tail to L4-S2 2 (electrical D-472),LIVE,"D-359, electrical D-360 / D-472"
-PV125,cavity,DP-DCU 21,FT23,Mirror RIGHT motor - the DCU tail to L4-S2 4 (electrical D-472),LIVE,"D-359, electrical D-360 / D-472"
-PV126,cavity,DP-DCU 22,FT23,"Mirror clutch coils, both mirrors - the DCU tail, spliced at the dash node to L4-S2 3 and L4-S2 5 (electrical D-472)",LIVE,"D-359, electrical D-360 / D-472"
-PV127,housing,L3-RCV,FT28,"the radar receiver's receptacle behind the dash - power, ground, the alert line and the front sensor's run end at the receiver, not at the node (electrical D-584)",,electrical D-584
-PV128,cavity,L3-RCV 1,FT28,radar receiver +12 V accessory (O10 tap through L3-S2 3),CAPPED,electrical D-584
-PV129,cavity,L3-RCV 2,FT28,radar receiver ground (through L3-S2 4),CAPPED,electrical D-584
-PV130,cavity,L3-RCV 3,FT28,radar alert out to the Control Unit's DP-DCU 48 (SN30),CAPPED,electrical D-582 / D-584
-PV131,cavity,L3-RCV 4,FT28,radar front sensor A - from L2-RDR through L2-R and L3-S3 5,CAPPED,electrical D-584
-PV132,cavity,L3-RCV 5,FT28,radar front sensor B - through L3-S3 6,CAPPED,electrical D-584
-PV133,cavity,L3-RCV 6,FT28,radar front sensor C - through L3-S3 7,CAPPED,electrical D-584
-PV134,cavity,L3-S2 5,FT29,"head unit reverse input (violet / white), an O19 tap",LIVE,electrical D-584
-PV135,cavity,L3-S2 6,FT29,"head unit speed-pulse input (pink), a tap of the road-speed line",LIVE,electrical D-584
-PV136,housing,L4-UPX,FT29,the upmix box's receptacle in the passenger-side bin (D-503),,electrical D-584
-PV137,cavity,L4-UPX 1,FT29,"upmix box +12 V through F38, 3 A, at a tap of the amplifier's feed",CAPPED,electrical D-584
-PV138,cavity,L4-UPX 2,FT29,upmix box ground to the rear star G41,CAPPED,electrical D-584
-PV139,cavity,L4-UPX 3,FT29,"upmix box remote, spliced onto the head unit's remote lead",CAPPED,electrical D-584
+PV123,cavity,DP-DCU 19,FT23,"Mirror motor common, both mirrors - the DCU tail from the PMU box to DP-DCU 19 (electrical D-472; it no longer passes L3-S3)",LIVE,"D-359, electrical D-360 / D-472"
+PV124,cavity,DP-DCU 20,FT23,Mirror LEFT motor - the DCU tail to DP-DCU 20 (electrical D-472),LIVE,"D-359, electrical D-360 / D-472"
+PV125,cavity,DP-DCU 21,FT23,Mirror RIGHT motor - the DCU tail to DP-DCU 21 (electrical D-472),LIVE,"D-359, electrical D-360 / D-472"
+PV126,cavity,DP-DCU 22,FT23,"Mirror clutch coils, both mirrors - the DCU tail, spliced in the PMU box to DP-DCU 22 and DP-DCU 22 (electrical D-472)",LIVE,"D-359, electrical D-360 / D-472"
+PV127,housing,DP-DCU,FT28,the radar receiver inside the CU (electrical D-597): its front and rear sensor runs on DP-DCU 49-54,,electrical D-584 → D-597
+PV128,cavity,DP-DCU 9,FT28,"radar receiver power - from the CU's carrier, inside the CU (electrical D-597)",CAPPED,electrical D-584 → D-597
+PV129,cavity,DP-DCU 11,FT28,radar receiver ground - the CU's carrier,CAPPED,electrical D-584 → D-597
+PV130,cavity,DP-DCU 48,FT28,radar alert - inside the CU to SN30 (electrical D-597),CAPPED,electrical D-584 → D-597
+PV131,cavity,DP-DCU 49,FT28,radar front sensor A - L2-RDR 1 to the CU direct,CAPPED,electrical D-584 → D-597
+PV132,cavity,DP-DCU 50,FT28,radar front sensor B - L2-RDR 2 to the CU direct,CAPPED,electrical D-584 → D-597
+PV133,cavity,DP-DCU 51,FT28,radar front sensor C - L2-RDR 3 to the CU direct,CAPPED,electrical D-584 → D-597
+PV136,housing,L4-AMP,FT29,"the amplifier dock's one plug in the passenger-side bin; the upmix is its connector board (D-503, electrical D-609)",,electrical D-584 → D-609
+PV137,housing,L4-AMP,FT29,"upmix box +12 V through F38, 3 A, at a tap of the amplifier's feed",CAPPED,electrical D-584 → D-609
+PV138,housing,L4-AMP,FT29,upmix box ground to the rear star G41,CAPPED,electrical D-584 → D-609
+PV139,cavity,L4-AMP 23,FT29,"upmix box remote, spliced onto the head unit's remote lead",CAPPED,electrical D-584 → D-609
 PV140,fuse,F38,FT29,"the upmix box's fuse in the bin, 3 A, confirm once the box is built",,electrical D-584
