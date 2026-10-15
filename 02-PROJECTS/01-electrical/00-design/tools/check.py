@@ -135,7 +135,8 @@ EXPECT = {
         "SN20": [("ENC_CENTRE_A", "J4.9"), ("ENC_CENTRE_B", "J4.10"), ("ENC_CENTRE_PUSH", "J4.11"),
                  ("ENC_SEAT_DRV_A", "J4.13"), ("ENC_SEAT_DRV_B", "J4.14"), ("ENC_SEAT_PASS_A", "J4.15"),
                  ("ENC_SEAT_PASS_B", "J4.16")],
-        "SN21": [("WAKE_T", "Q4.B")],
+        "SN21": [],                                    # D-577: on U13 P02 now (EXPECT_EXPANDER)
+        "SN31": [("DASH_PWM", "U17.IN")],              # D-577 (Y49): Teensy 11 into the dash stage through R73
         "SN22": [("WIN_IN0", "U10.IN0"), ("WIN_IN1", "U10.IN1"), ("WIN_IN2", "U10.IN2"), ("WIN_IN3", "U10.IN3")],
         "SN23": [("REL_HATCH_T", "Q1.G"), ("REL_FUEL_T", "Q2.G")],
         # Y11 provisions: the A/C clutch stage is driven from expander U12 P17 only; the pressure
@@ -154,6 +155,7 @@ EXPECT_EXPANDER = {
                  ("MIR_nSLEEP", "U11.nSLEEP"), ("MIR_nFAULT", "U11.nFAULT")],
         "SN22": [("WIN_DEN", "U10.DEN"), ("WIN_DSEL0", "U10.DSEL0"), ("WIN_DSEL1", "U10.DSEL1")],
         "SN28": [("AC_CLUTCH_CMD", "U14.IN")],
+        "SN21": [("WAKE_T", "Q4.B")],                  # on the second expander, U13, as the cell names it
     },
 }
 
@@ -520,6 +522,9 @@ def check_processor(rep, nl, cfg, rows):
         cid = row["id"]
         pins = record_pins(row.get("teensy_pin", ""))
         ports = record_ports(row.get("teensy_pin", "")) if exp else []
+        # a cell that names a second expander (Y11, D-577: "U13 P02") is read on that one
+        m_exp = re.search(r"\b(U\d+) P\d{2}\b", _COMMENT.sub(" ", row.get("teensy_pin", "")))
+        exp_row = m_exp.group(1) if (exp and m_exp and m_exp.group(1) in nl.pins) else exp
         pin_words = record_pin_words(row.get("teensy_pin", ""))
         want, want_x = expect.get(cid), expect_x.get(cid, [])
         nets = {}
@@ -549,17 +554,18 @@ def check_processor(rep, nl, cfg, rows):
             else:
                 for port, (net, far) in zip(ports, want_x):
                     pnum = None
-                    for num, (name, _t) in nl.pins.get(exp, {}).items():
+                    for num, (name, _t) in nl.pins.get(exp_row, {}).items():
                         if name == port:
                             pnum = num
                     if pnum is None:
-                        rep.bad(exp, port, "a port pin named %s" % port, "none")
+                        rep.bad(exp_row, port, "a port pin named %s" % port, "none")
                         continue
-                    if port in claimed_ports:
-                        rep.bad(exp, port, "one channel", "%s and %s" % (claimed_ports[port], cid))
-                    claimed_ports[port] = cid
-                    if check_pin_on_net(rep, nl, exp, pnum, port, net, far):
-                        nets[nl.net(exp, pnum)] = (exp + " " + port, set())
+                    key = port if exp_row == exp else exp_row + " " + port
+                    if key in claimed_ports:
+                        rep.bad(exp_row, port, "one channel", "%s and %s" % (claimed_ports[key], cid))
+                    claimed_ports[key] = cid
+                    if check_pin_on_net(rep, nl, exp_row, pnum, port, net, far):
+                        nets[nl.net(exp_row, pnum)] = (exp_row + " " + port, set())
         processor_nets[cid] = nets
     # Pads the sheet wires that no channel claims, and the DCU's self-naming pads (24_WIN_IN2).
     for pad, label in TEENSY_PADS.items():

@@ -4,6 +4,14 @@
 is for, what it may claim, and how to start. The board's design is `../../../../data/dcu_channels.csv`.
 That is the record, and this is a drawing of it. Read `../../../README.md` first: it is the fence.*
 
+> **Y49 / D-593 (2026-10-14): the dash-light stage is on the sheet, not yet on the board.** U17, a fifth BTS3011TE
+> (IN from Teensy 11 through R73 100 R, R74 10 k to +3V3; STATUS on U13 P03 with R75 10 k; GND to PGND after the
+> comfort shunt; OUT on `DASH_OUT`, class DRIVE, to TP2 until the header), and the wake request moved from Teensy 11
+> to U13 P02. ERC 0; `check.py --board dcu` 172 / 0. The board is rev 0.06 until Y54 places the stage beside the new
+> header: its `--schematic-parity` DRC names exactly U17, R73-R75 and TP2 missing and J10 pad 13 / U13 pads 6-7 on
+> their old nets. **Edit a copy of this whole folder** - a board saved by KiCad's Python without its .kicad_pro beside
+> it gets default rules and writes them over this project's.
+
 > **D-582 (2026-10-14): the connector edge changes.** The three DT13s (J1, J2, J9) give way to one CMC 48 header carrying every conductor the unit has, DP-DCU 1-48 - and the nets that went out on the upper board (J3, J5-J8, the dash-light stage) and the CUR's lines (the ribbon's plate nets) come to it too. Y54 draws that, once block 01.57 has picked the connector family; until then this board is as drawn, `check.py --board dcu-carrier` still holds it to the old housings, and the scene hides J1 / J2 / J9.
 
 ## Where it stands

@@ -720,6 +720,10 @@
       {
         "netclass": "CLUTCH",
         "pattern": "/AC_CLUTCH"
+      },
+      {
+        "netclass": "DRIVE",
+        "pattern": "/DASH_OUT"
       }
     ]
   },

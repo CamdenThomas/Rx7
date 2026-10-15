@@ -2409,6 +2409,65 @@
 	)
 	(text "POWER  -  two supplies that never meet on this board (D-273, D-382)" (exclude_from_sim no) (at 13 23 0) (effects (font (size 3.2 3.2) (bold yes)) (justify left top)) (uuid "e67f4c7e-f17f-458d-b518-0ff9607c546d"))
 	(text "DP-DCU - DT13-06PA in the enclosure wall (D-362)" (exclude_from_sim no) (at 14 32 0) (effects (font (size 1.5 1.5) (bold yes)) (justify left top)) (uuid "0f11376a-0440-4664-8c2a-cf4e83eecf7d"))
+	(symbol (lib_id "dcu-carrier:BTS3011TE") (at 152.4 431.8 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "b36abc85-b422-4957-8d21-87b8b4b2b59b")
+		(property "Reference" "U17" (at 152.4 425.45 0) (effects (font (size 1.1 1.1))))
+		(property "Value" "BTS3011TE" (at 152.4 438.15 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "Package_TO_SOT_SMD:TO-252-5_TabPin6" (at 152.4 431.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "https://www.infineon.com/assets/row/public/documents/10/49/infineon-bts3011te-datasheet-en.pdf" (at 152.4 431.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "e372ce76-ea07-4da3-8bf2-cd924c2563d4"))
+		(pin "2" (uuid "01af4092-9595-482e-8c89-139f4581970f"))
+		(pin "4" (uuid "77e1862b-2689-4b53-b30b-72193e3ded96"))
+		(pin "3" (uuid "22f2b672-de78-4c71-9e4d-303b27847b7f"))
+		(pin "6" (uuid "962c4ad9-d2fd-418f-a728-590ac4a56fbd"))
+		(pin "5" (uuid "8810cd50-b98a-47aa-98f4-f07b1072effd"))
+		(instances (project "dcu-carrier" (path "/9652d84f-b171-4144-b035-f61cf665afb4" (reference "U17") (unit 1))))
+	)
+	(symbol (lib_id "dcu-carrier:R") (at 121.92 429.26 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "5853560e-bb16-4f40-bef3-4dbfddd0d02f")
+		(property "Reference" "R73" (at 124.92 428.06 0) (effects (font (size 1.1 1.1)) (justify left)))
+		(property "Value" "100  dash IN series (SN31)" (at 124.92 430.86 0) (effects (font (size 1.1 1.1)) (justify left)))
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 121.92 429.26 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 121.92 429.26 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "338cf1b4-9883-4e85-b027-2d05b1c572e1"))
+		(pin "2" (uuid "5ab14822-9ff8-4d19-b24e-bb096802df97"))
+		(instances (project "dcu-carrier" (path "/9652d84f-b171-4144-b035-f61cf665afb4" (reference "R73") (unit 1))))
+	)
+	(symbol (lib_id "dcu-carrier:R") (at 132.08 419.1 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "d85b2856-0fed-4980-a93b-25afd40b564f")
+		(property "Reference" "R74" (at 135.08 417.9 0) (effects (font (size 1.1 1.1)) (justify left)))
+		(property "Value" "10k  dash IN pull-up: full at reset (SN31)" (at 135.08 420.7 0) (effects (font (size 1.1 1.1)) (justify left)))
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 132.08 419.1 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 132.08 419.1 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "30e57113-d84b-42ea-a2a2-f042e8b66533"))
+		(pin "2" (uuid "85c84857-b77d-4669-b3b3-c8813b513e06"))
+		(instances (project "dcu-carrier" (path "/9652d84f-b171-4144-b035-f61cf665afb4" (reference "R74") (unit 1))))
+	)
+	(symbol (lib_id "dcu-carrier:R") (at 132.08 444.5 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "900e36a0-1fca-4be4-9960-31363b4f0afb")
+		(property "Reference" "R75" (at 135.08 443.3 0) (effects (font (size 1.1 1.1)) (justify left)))
+		(property "Value" "10k  dash STATUS pull-up (BTS3011TE p.40)" (at 135.08 446.1 0) (effects (font (size 1.1 1.1)) (justify left)))
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric" (at 132.08 444.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 132.08 444.5 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "f2aefd96-2715-4ee6-a8d1-3c84c01bcec9"))
+		(pin "2" (uuid "4f3fd38a-b13b-4e42-8248-eb47ec12afc7"))
+		(instances (project "dcu-carrier" (path "/9652d84f-b171-4144-b035-f61cf665afb4" (reference "R75") (unit 1))))
+	)
+	(symbol (lib_id "dcu-carrier:TestPoint") (at 177.8 431.8 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "a80b5d0e-c3d8-4ada-8981-0e7ec263261e")
+		(property "Reference" "TP2" (at 180.8 430.6 0) (effects (font (size 1.1 1.1)) (justify left)))
+		(property "Value" "DASH_OUT - to DP-DCU 35 at Y54" (at 180.8 433.4 0) (effects (font (size 1.1 1.1)) (justify left)))
+		(property "Footprint" "TestPoint:TestPoint_Pad_2.5x2.5mm" (at 177.8 431.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 177.8 431.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Note" "D-458: ribbon pin 25, unused, wired end to end" (at 177.8 431.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "4a2f6f62-2b6e-4931-a102-31e4d300b16e"))
+		(instances (project "dcu-carrier" (path "/9652d84f-b171-4144-b035-f61cf665afb4" (reference "TP2") (unit 1))))
+	)
 	(symbol (lib_id "dcu-carrier:Conn_01x06") (at 40.64 53.34 0) (unit 1) (body_style 1)
 		(exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
 		(uuid "fa3b116c-6303-492c-b9d1-28b8a30b7f0f")
@@ -5289,7 +5348,7 @@
 	(wire (pts (xy 607.06 73.66) (xy 604.52 73.66)) (stroke (width 0) (type default)) (uuid "7cb35481-8fb1-40aa-892f-e4bc7ab8b4ab"))
 	(label "BLOWER_T" (at 604.52 73.66 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "2e94625f-192e-42f6-a888-6461182dccda"))
 	(wire (pts (xy 607.06 76.2) (xy 604.52 76.2)) (stroke (width 0) (type default)) (uuid "9e8d9cbc-5039-4f4c-9fb9-85818146ee23"))
-	(label "WAKE_T" (at 604.52 76.2 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "f8289517-475b-49f6-8a12-b3f67e375abb"))
+	(label "DASH_PWM" (at 604.52 76.2 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "f8289517-475b-49f6-8a12-b3f67e375abb"))
 	(wire (pts (xy 607.06 78.74) (xy 604.52 78.74)) (stroke (width 0) (type default)) (uuid "6cbe7eaa-fd47-4ace-988a-f9721b4f6b14"))
 	(label "EXP_INT" (at 604.52 78.74 180) (effects (font (size 1.27 1.27)) (justify right bottom)) (uuid "e1c80c20-5d3b-4285-be85-6ee859304af0"))
 	(wire (pts (xy 607.06 81.28) (xy 604.52 81.28)) (stroke (width 0) (type default)) (uuid "cffa4781-97f5-4529-b9b7-49640fd79b3b"))
@@ -6115,8 +6174,6 @@
 	(label "SEAT_STATUS" (at 635 269.24 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "da48ef3d-f9f5-4ac9-98c1-74ac643f2403"))
 	(wire (pts (xy 632.46 271.78) (xy 635 271.78)) (stroke (width 0) (type default)) (uuid "41822099-50b6-4236-bb25-672513b682b5"))
 	(label "RADAR_ALERT" (at 635 271.78 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "7691fab3-fbc4-49d4-aa9b-60a9c480c617"))
-	(no_connect (at 632.46 274.32) (uuid "50dd9cc1-5a0d-48e2-a7e2-adfb531dfa0a"))
-	(no_connect (at 632.46 276.86) (uuid "d9259818-c073-424c-8a68-39a7d13cbda4"))
 	(no_connect (at 632.46 279.4) (uuid "ffebd035-6439-451e-b191-da1077425e4c"))
 	(no_connect (at 632.46 281.94) (uuid "246f6911-a1b7-45ff-8d61-acf4fd4d5363"))
 	(no_connect (at 632.46 284.48) (uuid "b83a7cb8-1820-486c-a64a-52d77d49f6e8"))
@@ -6913,6 +6970,306 @@
 	)
 	(label "SPARE" (at 722.63 533.40 0) (effects (font (size 1.27 1.27)) (justify left bottom)) (uuid "ecae3c53-9bdb-40fd-9954-49a4cd745700"))
 	(rectangle (start 580 493) (end 1040 545) (stroke (width 0.2032) (type dash)) (fill (type none)) (uuid "2e90020b-3448-4304-975b-7352a866957f"))
+	(wire
+		(pts
+			(xy 632.46 274.32) (xy 635 274.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cfadf2f1-c7a0-47dc-aeed-672742f93ad7")
+	)
+	(label "WAKE_T"
+		(at 635 274.32 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "2331feb3-c373-4b33-b182-e2ac578c8640")
+	)
+	(wire
+		(pts
+			(xy 632.46 276.86) (xy 635 276.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b8b6edf5-b015-4bcd-8291-606e444b16aa")
+	)
+	(label "DASH_STATUS"
+		(at 635 276.86 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d8b10901-09a2-4cc9-b238-092df5d1ce4c")
+	)
+	(wire
+		(pts
+			(xy 139.7 429.26) (xy 137.16 429.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ade38f50-923a-4a90-b8ef-84bb14143c31")
+	)
+	(label "DASH_IN"
+		(at 137.16 429.26 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e0806ff7-8dc9-4c3b-a150-5fe44c9e7729")
+	)
+	(wire
+		(pts
+			(xy 139.7 431.8) (xy 137.16 431.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c583ba3f-05ab-4871-8a24-9e1c0410a4b9")
+	)
+	(symbol (lib_id "dcu-carrier:+3V3") (at 137.16 431.8 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "2def56a2-2b27-48bb-a430-32cc97d50002")
+		(property "Reference" "#PWR901" (at 137.16 431.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "+3V3" (at 137.16 427.3 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 137.16 431.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 137.16 431.8 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "de719f03-f63a-46e5-aa96-d35598d7f862"))
+		(instances (project "dcu-carrier" (path "/9652d84f-b171-4144-b035-f61cf665afb4" (reference "#PWR901") (unit 1))))
+	)
+	(wire
+		(pts
+			(xy 139.7 434.34) (xy 137.16 434.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e6df3f4d-349e-4828-904e-0fbdfaa504a8")
+	)
+	(label "DASH_STATUS"
+		(at 137.16 434.34 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "53d29943-d700-43b1-b780-486ed9a7c399")
+	)
+	(wire
+		(pts
+			(xy 165.1 429.26) (xy 167.64 429.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "678abfb2-33ab-47ea-ba43-3f0930327cad")
+	)
+	(label "DASH_OUT"
+		(at 167.64 429.26 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fd9c46ca-30b4-459a-b6a4-e726b4139e65")
+	)
+	(wire
+		(pts
+			(xy 165.1 431.8) (xy 167.64 431.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4fc8081c-a016-4458-854c-83a6f8297a11")
+	)
+	(label "DASH_OUT"
+		(at 167.64 431.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9deefde5-84f3-4f5e-956c-41de8f19a3c7")
+	)
+	(wire
+		(pts
+			(xy 165.1 434.34) (xy 167.64 434.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1d45aeb4-0c68-4c4a-974f-30188ebab6f7")
+	)
+	(symbol (lib_id "dcu-carrier:PGND") (at 167.64 434.34 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "864d597a-21e1-4e7c-8826-2e91d6743e09")
+		(property "Reference" "#PWR902" (at 167.64 434.34 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "PGND" (at 167.64 438.84 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 167.64 434.34 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 167.64 434.34 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "1f4a75e0-8a29-4621-a96d-2281587b40cc"))
+		(instances (project "dcu-carrier" (path "/9652d84f-b171-4144-b035-f61cf665afb4" (reference "#PWR902") (unit 1))))
+	)
+	(wire
+		(pts
+			(xy 121.92 425.45) (xy 121.92 422.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0322f28f-053c-48de-a5f1-d4bb3dbbcafe")
+	)
+	(label "DASH_PWM"
+		(at 121.92 422.91 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "33d43b90-19b0-411e-aabc-f05f55dfbf51")
+	)
+	(wire
+		(pts
+			(xy 121.92 433.07) (xy 121.92 435.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8c94ce98-3186-4ecc-b1c3-0ed2ebd41a48")
+	)
+	(label "DASH_IN"
+		(at 121.92 435.61 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "d81ff8e6-32f2-4968-8af6-66a6278bdbf5")
+	)
+	(wire
+		(pts
+			(xy 132.08 415.29) (xy 132.08 412.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8a209010-a0c5-4ec0-9a4d-7009a8da5c22")
+	)
+	(label "DASH_IN"
+		(at 132.08 412.75 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e72f9b63-898e-4633-950a-16f4c2b2e19e")
+	)
+	(wire
+		(pts
+			(xy 132.08 422.91) (xy 132.08 425.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2dccfab2-5c10-4acd-abfb-98bb42c51224")
+	)
+	(symbol (lib_id "dcu-carrier:+3V3") (at 132.08 425.45 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "fb5c4036-8a14-4adf-a7e3-3cde1ff3c156")
+		(property "Reference" "#PWR903" (at 132.08 425.45 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "+3V3" (at 132.08 420.95 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 132.08 425.45 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 132.08 425.45 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "14c31653-e1b5-45a2-8a5b-294c92337b00"))
+		(instances (project "dcu-carrier" (path "/9652d84f-b171-4144-b035-f61cf665afb4" (reference "#PWR903") (unit 1))))
+	)
+	(wire
+		(pts
+			(xy 132.08 440.69) (xy 132.08 438.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4561824b-ac67-4c0a-a293-3349d8e83c5c")
+	)
+	(label "DASH_STATUS"
+		(at 132.08 438.15 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "60fb690c-a48f-434e-90be-f6716d35f999")
+	)
+	(wire
+		(pts
+			(xy 132.08 448.31) (xy 132.08 450.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "76abc7a1-f1d1-4825-977d-2db0c74338d3")
+	)
+	(symbol (lib_id "dcu-carrier:+3V3") (at 132.08 450.85 0) (unit 1) (body_style 1)
+		(exclude_from_sim no) (in_bom no) (on_board yes) (in_pos_files yes) (dnp no)
+		(uuid "bc2ae4f3-6026-4d9e-b457-6fbcde00ac7c")
+		(property "Reference" "#PWR904" (at 132.08 450.85 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Value" "+3V3" (at 132.08 446.35 0) (effects (font (size 1.1 1.1))))
+		(property "Footprint" "" (at 132.08 450.85 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(property "Datasheet" "" (at 132.08 450.85 0) (effects (font (size 1.1 1.1)) (hide yes)))
+		(pin "1" (uuid "3d2cabab-eae4-4f76-9b88-bf6657ba0a83"))
+		(instances (project "dcu-carrier" (path "/9652d84f-b171-4144-b035-f61cf665afb4" (reference "#PWR904") (unit 1))))
+	)
+	(wire
+		(pts
+			(xy 177.8 431.8) (xy 177.8 434.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "47034d8f-7fad-48c2-95d3-4da99ad39388")
+	)
+	(label "DASH_OUT"
+		(at 177.8 434.34 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "9b3cffe2-bc89-45b2-8d09-131832e4d07b")
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")
