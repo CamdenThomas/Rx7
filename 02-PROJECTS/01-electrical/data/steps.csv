@@ -1324,12 +1324,12 @@ E22.20,E22,20,Test: the ladder check,"L4-S 2 to sill ground: BOTH 24k + 1N4148 �
 The branches carry diodes, so an ohmmeter reads only the 47 kΩ baseline true; check each resistor alone and each diode on diode test, then press each plunger and see the reading fall.",47 kΩ with both doors' switches open; lower with either pressed.,
 E22.21,E22,21,"Tug, bundle, cap",Tug every crimp once more. Tie the bundle every 150 mm with loose ties. Do NOT final-wrap: the cabin looms are wrapped at E35 and the engine-bay looms at E33. Dust caps on every branch-end receptacle; bag the plugs so no dirt gets in the sockets.,"A leg that lies flat on its layout, every end labelled, nothing taped.",
 E23.01,E23,1,Lay the leg out full-scale,"On the board or floor, mark the dash post at one end and each node and device along the measured runs:
-RT01 Dash post → Engine-bay junction, Firewall grommet, passenger side: NOT measured - confirm
-RT02 Engine-bay junction → Coils and igniters B-18 to B-21, along the upper rear housing: NOT measured - confirm
-RT03 Engine-bay junction → Alternator A-08, down the front of the block: NOT measured - confirm
-RT04 Engine-bay junction → Water temp C-02 and oil pressure C-09, rear housing, gauge ports: NOT measured - confirm
-RT05 Engine-bay junction → Starter, K9 and the inhibitor A-06, under the intake: NOT measured - confirm
-RT26 Engine-bay junction → Master cylinder, brake-fluid switch, along the firewall to the reservoir: NOT measured - confirm
+RT01 Dash post → Engine-bay breakout, Firewall grommet, passenger side: NOT measured - confirm
+RT02 Engine-bay breakout → Coils and igniters B-18 to B-21, along the upper rear housing: NOT measured - confirm
+RT03 Engine-bay breakout → Alternator A-08, down the front of the block: NOT measured - confirm
+RT04 Engine-bay breakout → Water temp C-02 and oil pressure C-09, rear housing, gauge ports: NOT measured - confirm
+RT05 Engine-bay breakout → Starter, K9 and the inhibitor A-06, under the intake: NOT measured - confirm
+RT26 Engine-bay breakout → Master cylinder, brake-fluid switch, along the firewall to the reservoir: NOT measured - confirm
 A run marked NOT measured has no cut length yet: that wire waits until C1's M-2 has measured it and G13 has derived the length. Do not cut from the 3D-model guess.
 The leg's pin ladder and route map are in the app's Diagrams.","Every run has a measured length written beside it on the board, or is marked WAIT.","A wire cut short cannot be stretched: no measured route, no cut."
 E23.02,E23,2,Cut and label every wire,"Cut each wire to 1.5 x its run (add the runs joined by +). Print and wrap both labels before the next wire is cut.

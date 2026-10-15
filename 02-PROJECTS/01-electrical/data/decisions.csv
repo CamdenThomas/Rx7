@@ -2377,3 +2377,30 @@ His words (chat, 2026-10-15): ""now please do every aspect of the ovehall plan t
   - Contact sizes per cavity are numbered from the drawing's size groups. Which number is which size is a confirm against TE's drawing at the CAD pass.
 
 **Left, said so.** The build track's 66 open steps and briefs still describe the post and the sill node until Y76 rewrites them. Their rows wait on it, so nothing he reads is current-and-wrong. The 3D in the app (Y77) shows the old units."
+D-613,electrical,"Every SVG to the current plan: a plan sheet per box drawn from the record, the CAD's drawings stamped OUTDATED, the leg sheets rooted at the PMU box",2026-10-15,standing,,,,,"**Every SVG shows the current plan. A box has a plan sheet drawn from the record, the CAD's drawings carry an OUTDATED banner, and the leg drawings start at the PMU box.** `rx7.py diagrams` now draws, besides the leg sheets, one plan sheet per `boxes` row and one overview of all the boxes. Each sheet shows where the box sits, what it holds, its fuses and switches, every plug cavity by cavity (the leg sheets' own block), its heavy cables, and for the PMU box every inside connection. They are a read-only projection like the leg sheets: rebuilt whole, never edited, under the same overlap rule. The CAD's exports (schematics, assembly drawings, mock-up views) cannot be redrawn until their CAD-pass rows (Y70 to Y72), so each carries a banner naming what changed, its row and its plan sheet. No CAD was touched.
+
+His words (chat, 2026-10-15): ""please update both cu and cur svg and maybe an overhall of all svg files to ensure the show most current plan and make svg files for the parts where you have the information now. no cad yet but all svg's get a ovehall touch up to current""
+
+**What changed.**
+- New `tools/box_sheets.py`, called by `rx7.py diagrams`, writes the plan sheets:
+  - `<part>/diagrams/<box>-plan.svg` for the PMU box, DU, CU, CUR, bin box, bay junction and amplifier dock.
+  - `00-design/diagrams/boxes-plan.svg`, the overview. Its counts are the record's live and capped cavities whose far end is in the other box; its cables are those whose run names two boxes.
+- `tools/diagrams.py`:
+  - The leg sheets now start at the PMU box rather than the dash post.
+  - Its housing block is shared with the box sheets and shows a circular's contact size.
+  - A resistor on a board (the PMU box's, the CUR's) is no longer drawn as if it were in the harness (D-610).
+- New `00-design/tools/stamp_outdated.py` stamps the 22 CAD drawings of the CU, the CUR and the DU's assembly as OUTDATED. The DU carrier is stamped ""re-check at Y72"". The stamp sits in new space above the drawing, comes off byte for byte with `--clear`, and is dropped by a re-export. The DU's HDMI bridge is current and is not stamped.
+- The CU and CUR face pages now say they are ruled (D-602) and that D-604 settled the CU's box behind its face. Their drawings were already the ruled faces.
+- What the sheets showed still said ""dash node"". Those cells now say what the boxes are:
+  - the always-hot bus and the mini-blade bank in place of the busbar and blocks A and B;
+  - the window H-bridges in place of ""at the sill"";
+  - K9 in the bay junction;
+  - the doors at the A-pillar boot;
+  - the CUR board in place of ""the plate"";
+  - each own-wire ladder resistor on the PMU box's board, written into its device's terminals.
+- The route node ""Engine-bay junction"" is now ""Engine-bay breakout"", so it is not mistaken for the Bay junction box.
+
+**Readings taken (CLAUDE.md §3).**
+- ""Update both cu and cur svg"" is read as making the CU's and the CUR's drawings show the current plan without CAD. Their schematics and views are exports of CAD that this pass may not redraw. So each gets a plan sheet drawn from the record and an OUTDATED banner on the exports.
+- ""Make svg files for the parts where you have the information now"" is read as one plan sheet per box in the record. That includes the PMU box, bin box, bay junction and amplifier dock, which had no drawing.
+- Drawing more from the record widens CLAUDE.md §1's ""one generated file type"" to the leg drawings and the box sheets. That line is edited to match."

@@ -1,9 +1,9 @@
 id,leg,from_node,to_node,via,ft,model_ft,note
-RT01,L1 Engine,PMU box,Engine-bay junction,"Firewall grommet, passenger side",,,"the engine's plugs L1-E1 to L1-E3 leave the PMU box together (D-606, D-607)"
-RT02,L1 Engine,Engine-bay junction,Coils and igniters B-18 to B-21,along the upper rear housing,,,carries the L1-E1 1 trunk and the shielded tach core - rules emc-routing governs how
-RT03,L1 Engine,Engine-bay junction,Alternator A-08,down the front of the block,,,excitation and lamp sense; the 6 AWG B+ is C07 and is measured separately
-RT04,L1 Engine,Engine-bay junction,Water temp C-02 and oil pressure C-09,"rear housing, gauge ports",,,"two senders in the same place, one below the other"
-RT05,L1 Engine,Engine-bay junction,"Starter, K9 and the inhibitor A-06",under the intake,,,signal only - the heavy cable is C08 / C09
+RT01,L1 Engine,PMU box,Engine-bay breakout,"Firewall grommet, passenger side",,,"the engine's plugs L1-E1 to L1-E3 leave the PMU box together (D-606, D-607)"
+RT02,L1 Engine,Engine-bay breakout,Coils and igniters B-18 to B-21,along the upper rear housing,,,carries the L1-E1 1 trunk and the shielded tach core - rules emc-routing governs how
+RT03,L1 Engine,Engine-bay breakout,Alternator A-08,down the front of the block,,,excitation and lamp sense; the 6 AWG B+ is C07 and is measured separately
+RT04,L1 Engine,Engine-bay breakout,Water temp C-02 and oil pressure C-09,"rear housing, gauge ports",,,"two senders in the same place, one below the other"
+RT05,L1 Engine,Engine-bay breakout,"Starter, K9 and the inhibitor A-06",under the intake,,,signal only - the heavy cable is C08 / C09
 RT06,L2 Front,PMU box,Nose splice,"Cowl grommet, then along the inner wing",,11.4,the longest front run and the one that sets the L2 cut list
 RT07,L2 Front,Nose splice,Each headlight bucket and pop-up motor,across the radiator support,,3.4,measure one side; the other is that plus the crossing
 RT08,L2 Front,Nose splice,"Front combo lamps, side markers, horns",radiator support and both inner wings,,6.1,
@@ -23,7 +23,7 @@ RT22,L3 Dash,PMU box,Behind the dash,along the dash rail beside the PMU box,,,"W
 RT23,L4 Rear,Rear node,"Roof rail, interior lamp",up the C-pillar trim,,,"The interior / spot lamp (DV39) and its roof-rail ground (G31). Measured at M-2 (R8, 2026-10-09)."
 RT24,L4 Rear,Rear node,"Hatch glass, defog grid",through the hatch hinge loop with the tail-lamp conductors,,,"The defog grid's feed and its rear-star return (DV33, G25). Measured at M-2 (R8)."
 RT25,L4 Rear,Rear node,"Fuel-door solenoid, quarter trim",behind the driver-side quarter trim,,,The fuel-door release solenoid (DV49). Measured at M-2 (R8).
-RT26,L1 Engine,Engine-bay junction,"Master cylinder, brake-fluid switch",along the firewall to the reservoir,,,The brake-fluid level switch (DV08). Measured at M-2 (R8).
+RT26,L1 Engine,Engine-bay breakout,"Master cylinder, brake-fluid switch",along the firewall to the reservoir,,,The brake-fluid level switch (DV08). Measured at M-2 (R8).
 RT27,L3 Dash,PMU box and the CU,Under the driver's seat,down the tunnel side and under the carpet,,,"The driver seat's one plug, L3-SD (D-610): the power feed from the PMU box (K14), heat and cool from the CU, the common return to the PMU box's star. Measured at M-2"
 RT28,L3 Dash,PMU box and the CU,Under the passenger seat,down the tunnel side and under the carpet,,,"The passenger seat's one plug, L3-SP (D-610): as RT27, with K15. Measured at M-2"
 RT29,L2 Front,Nose splice,"Front bumper, radar sensor",along the bumper beam,,,The front radar sensor's receptacle L2-RDR (A16); beauty 04.13 decides the bumper. Measured at M-2
