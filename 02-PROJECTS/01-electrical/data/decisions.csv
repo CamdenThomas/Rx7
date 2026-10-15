@@ -610,7 +610,7 @@ D-361,The record itself,"cad/ holds a step-by-step layout and 3D guide for both 
 - **Stale rows corrected against standing decisions:** luxury `V-083` (it still named the LMR33630, seven FETs and six half-bridges; D-273, D-329, D-360), `SN16` (it listed the cancelled nozzle and de-icer, D-329), and `LP14`.
 
 **In the data.** Luxury: `work` `V-100`, `V-101` added; `V-083` note; `H-002` and `B3` gates now include `01.08 V-100 V-101`; `sensors` `SN16`; `parts` `LP14`. Outside the record: `cad/PCB-AND-3D-GUIDE.md` new, and `cad/README.md` and `cad/icu-carrier/README.md` updated. Nothing in `data/` cites a file in `cad/` (the fence)."
-D-363,"Outputs, soft fuses and logic","Window relays K5–K8 are two textbook reversing pairs: motor leg on 30, fused feed on 87, 87a and 85 to ground; the DCU drives 86 high-side",2026-09-21,standing,,,,,"**D-363 — Window relays K5–K8 are two textbook reversing pairs: the motor leg on 30, the fused feed on 87, 87a and 85 to ground; the DCU drives 86 high-side.** Agent, 2026-09-21, a small call under §3: the record already fixed every other terminal, and a two-relay reversing circuit only works one way. Closes luxury `V-100`.
+D-363,"Outputs, soft fuses and logic","Window relays K5–K8 are two textbook reversing pairs: motor leg on 30, fused feed on 87, 87a and 85 to ground; the DCU drives 86 high-side",2026-09-21,superseded,,D-610,,,"**D-363 — Window relays K5–K8 are two textbook reversing pairs: the motor leg on 30, the fused feed on 87, 87a and 85 to ground; the DCU drives 86 high-side.** Agent, 2026-09-21, a small call under §3: the record already fixed every other terminal, and a two-relay reversing circuit only works one way. Closes luxury `V-100`.
 
 **What the record already said.** `L4-M 9–12` land each window command on **terminal 86** of K5–K8. `L4-P 3` feeds ""the K5–K8 contact feed through the F8 / F9 holders"". `D1 1–2` and `D2 1–2` name K5/K6 and K7/K8 as the two legs of each motor. What was blank was which contact takes which, and where 85 and 87a go. The full-folder scan of 2026-09-21 found the blank.
 
@@ -2294,3 +2294,15 @@ His words (chat, 2026-10-15): ""1, 2, 3, 4: ypur pick"".
 - Charging through the post takes a lithium-profile charger, 14.6 V at most, above freezing.
 - Using this car to jump another is not done until Ionic says the S9 may give a jump.
 - The S9's maximum charge current is asked of Ionic before the post is relied on; a retailer's 50 A belongs to Ionic's 125 Ah battery, not this one."
+D-610,electrical,"The legs: the sill node goes (windows on H-bridges in the PMU box), no ladder part in a harness, one plug per seat",2026-10-15,standing,D-363,,,,"**The legs, scanned for loose parts and settled.**
+- L1, the sill node goes. The window relays K5-K8 become two H-bridges on the PMU box's board (30 A half-bridge class, confirm). The CU's four window commands (DP-DCU 15-18) go to those bridges inside the dash, not to relay coils at the sill. The door wires run from the boxes through the A-pillar to D1 and D2. F8 and F9 become the board's own protection, and F14 goes into the CU, which already switches the mirror heat (DP-DCU 23). The node's five splices and its ground stud go with it.
+- L2, no ladder part hangs in a harness. A switch's series resistor goes onto the PMU box's board wherever the switch has its own wire. A part that must stay at the far end is potted into a short sealed pigtail at its switch, so the pigtail is part of the switch. The far-end parts are the 47 kΩ baselines, which let the PMU see a broken wire as a fault, and the door jambs' diodes (D-486).
+- L3, one plug per seat: a Deutsch DTP 4-way, size 12, 25 A, carrying the power feed, the heat feed, the cool feed and one common 12 AWG return to the PMU box's star (D-603). It replaces L3-SD and L3-SDM (and L3-SP and L3-SPM). The shared return carries about 32 A at the moment the seat moves with heat and cooling on.
+- L4, the start relay's ground is the bay junction's (D-609); the inhibitor's and the brake fluid switch's grounds stay at the block.
+- L5, the break points (nose, hatch, doors) are left until last, the M7 step.
+
+His words (chat, 2026-10-15): ""1: yes / 2: yes / 3: one plug / 4: yes / 5: we will do last ignore for now"".
+
+**What follows.** The window bridges and their heat go into the PMU box's contents and heat budget (Y66). The bridges' current sense makes one-touch and stop-on-stall possible; neither is ruled. D-486's diodes and the A6, A3 and A4 / A5 ladder values are unchanged: only where each part sits changes, and each step that quotes a part's place is rewritten at the freeze. The door grounds (D1 8, D2 8) return to the PMU box's star with the rest (D-603).
+
+Supersedes D-363 (the window relays as two reversing pairs at the sill)."
