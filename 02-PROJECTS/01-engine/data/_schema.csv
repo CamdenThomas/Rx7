@@ -132,3 +132,4 @@ parts,usd_high,int,no,,
 parts,work,str,no,,the design row that chose it and the build row that fits it
 parts,note,text,no,,
 work,track,enum(build|design),no,,"which list the row lives in (D-625): design = plan, sourcing the donors and parts, and the CAD model with its clearance proof - everything before the car is changed; build = the bench work and everything that changes the car, which waits on the clearance proof CD06"
+sightings,part,enum(engine|transmission|axle),no,,"which donor the car is a lead for (2026-10-16): the engine (code and block from the VIN), the CD009, or the Explorer 8.8; blank on rows from before is engine"

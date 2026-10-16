@@ -407,3 +407,29 @@ His words (chat, 2026-10-16): ""the first step in the plan should not be to buy 
 - New CD08 re-measures the engine (BD01), the CD009 (BD06), the axle (BR07) and the bought accessories, updates the model, and repeats CD06's numbers. CP03-CP10 and IN01 wait on it.
 - BD01 and BD06 go back to the build track.
 - Pulling the dead 12A (CP01) and measuring the empty bay (M01) cost no money and stay in the virtual phase."
+D-627,engine,Donors: only the essentials are pulled - the pull lists - and today's yard search recorded,2026-10-16,standing,,,,D-622 D-623 D-624 D-626,"**From the donors only the essentials are pulled: what the plan reuses and is worth reconditioning. Anything that takes as much effort to restore as buying new, or that the plan already replaces, is left on the car. The pull lists are fixed below. Today's donor search, the first live one since 2026-09-23, is recorded in sightings SG17-SG32.**
+
+His words (chat, 2026-10-16): ""i would like to only bull the essentials worth fixing up. parts that are as much efort to fix and resore and make look/function new i will just buy new. the engine/transmission/rearaxle's that i actually find might change things""
+
+**Engine donor (BR02).**
+- **Take:** the long block with its intake manifold; the drive-by-wire throttle body and the cab's accelerator pedal (same generation); the fuel rails and injectors; the coils, their brackets and sub-harness; the crank, cam, knock, MAP, coolant and oil-pressure sensors; the engine harness whole (K4 reads the pin letters off it); the O2 sensors, the EVAP canister and purge valve, and the PCV parts (D-622).
+- **Read before paying:** the VIN's 8th digit, the odometer, the oil on the dipstick, compression if the yard allows it.
+- **Leave:** the accessories (ICT drive, D-624); the truck oil pan (DS02); the exhaust manifolds (custom headers, DS03); the flexplate and torque converter (Sikky flywheel); the ECM (EMU PRO, D-446); the radiator and fans (CO01, CO02); the mounts; the automatic. Gaskets, seals and the timing set are new at the rebuild (RB rows).
+
+**Axle donor (BR07).**
+- **Take:** the complete disc-brake rear end: axle shafts, rotors, calipers and brackets, the parking-brake shoes and cable ends, the hard lines on the housing, the diff cover with its tag.
+- **Read:** the ratio and the limited-slip from the tag (one wheel spun: the other turns the same way with a limited-slip); the spline count from the shaft if it is out.
+- **Leave:** springs, shackles, U-bolts, shocks and the driveshaft.
+
+**CD009 (BR03).** None is in any Front Range U-Pull, so it is bought used and shipped: with its bellhousing, shifter, slave cylinder, release bearing and fork, and the hard line. The clutch is new (CL05).
+
+**What today's search found** (U-Pull-&-Pay's three yards, read through their inventory service; LKQ's two refuse automated reads):
+- No L33 anywhere.
+- One LM4, at Colorado Springs (SG17).
+- Eleven AFM aluminum 5.3s (LC9, LH6), so the AFM delete already planned (RB01) is the likely path.
+- Four V8 AWD Explorers and Mountaineers (SG28-SG31).
+- No 350Z; one G35 coupe with its gearbox unknown (SG32).
+
+The engine actually bought may change the plan (Gen III or Gen IV, AFM, VVT): ls_wires already covers both generations, and the AFM delete and VVT are rows.
+
+When the donors may be bought is his question, block 01.65."
