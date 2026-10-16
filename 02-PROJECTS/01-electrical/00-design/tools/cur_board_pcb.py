@@ -1,4 +1,4 @@
-"""cur_board_pcb.py - the left plate's board (Y21, Y22): placement from the sketch, a small grid
+"""cur_board_pcb.py - the CUR board (Y71, D-615): placement from the ruled face (D-602), a small grid
 router (no freerouting on this machine), the GND pour. Called as `cur_board_sch.py pcb` with
 KiCad's own Python; reads the netlist kicad-cli exports from cur-board.kicad_sch, so the board's
 footprints, values and nets are the sheet's (schematic parity), and writes cur-board.kicad_pcb.
@@ -29,51 +29,51 @@ def V(x, y):
 
 
 # --------------------------------------------------------------------------------------------
-# Placement: (ref, x, y, rotation, side). Keys by their cap's centre (the footprint origin is
-# pad 1, 3.25 / 2.25 mm up-left of it); everything else by its footprint origin.
+# Placement: (ref, x, y, rotation, side). Every switch on its cap's centre (the footprints' origin),
+# from the face's geometry (cur_board_sch.py, D-602); the chips behind, clear of every through-hole pin.
 # --------------------------------------------------------------------------------------------
 def placement():
-    k1, k2, (sx, sy) = G.K1, G.K2, G.STICK
-    # U1 on the back, between the hatch key and the stick, turned so OUT1-OUT5 face the keys (-x) and
-    # pins 1-6 (R_EXT, VCC, GND, SDA, SCL) face down toward the bus from J1
-    ux, uy = G.K3 + 16.0, 36.0                 # Y62: right of the knob column, clear of the hazard's pins
-    jy = 28.0 - 6.35                           # J1 pin 1, so the header is centred on the plate's height
-    wy, ky = G.WINK_Y, G.KEY_Y
+    k1, k2, (sx, sy), (kx, ky), (hx, hy) = G.K1, G.K2, G.STICK, G.KNOB, G.HAZ
+    wy, ry = G.WINK_Y, G.KEY_Y
+    d = G.CAP_LED_DX
     return [
-        ("SW3", k1, wy, 0, "F"),                         # wink left (the sketch: k1, row 1) - cap centre
-        ("SW4", k2, wy, 0, "F"),                         # wink right (k2, row 1)
-        ("SW1", k2 - 3.25, ky - 2.25, 0, "F"),          # hatch key (the sketch: k2, row 2)
-        ("SW2", k1 - 3.25, ky - 2.25, 0, "F"),          # fuel-door key (k1, row 2)
-        ("JS1", sx, sy, 0, "F"),
-        ("LED1", k1 + G.WINK_LED_DX, wy, 90, "F"),       # wink left face, inside its cap beside the body
-        ("LED2", k2 + G.WINK_LED_DX, wy, 90, "F"),       # wink right face
-        ("LED3", k2 + G.KEY_LED_DX, ky, 90, "F"),        # hatch symbol, inside the hatch cap
-        ("LED4", k1 + G.KEY_LED_DX, ky, 90, "F"),        # fuel-door symbol, inside its cap
-        ("LED5", sx, sy - G.WELL_R - 1.5, 0, "F"),       # mirror symbol, at the top of the stick's well
-        ("R3", k1, wy - 7.0, 0, "B"),                    # 18k, behind the wink left body
-        ("R4", k2, wy - 7.0, 0, "B"),                    # 33k, behind the wink right body
-        ("J1", G.J1_X, jy, 0, "B"),
-        ("J2", G.J2_X, G.J2_Y, 0, "B"),                  # the wink lead's header, below J1 on the same edge
-        ("U1", ux, uy, 90, "B"),
-        ("C2", ux + 0.25, uy + 5.0, 0, "B"),            # 100 nF at VCC (pin 3, below)
-        ("C1", ux + 0.25, uy + 7.0, 0, "B"),            # 1 uF
-        ("R1", ux + 4.5, uy + 3.5, 90, "B"),            # R_EXT (pin 2)
-        ("R2", ux + 4.5, uy - 0.5, 90, "B"),            # SDB pull-up (pin 24, right side)
-        ("D1", k2, 43.75, 0, "B"),                       # hatch diode, under its key
-        ("D2", k1, 43.75, 0, "B"),                       # fuel-door diode
-        # Y62 (D-586, D-589): the hazard button in the third column's top row, lit like the winks, its two
-        # resistors behind its body; Y50 (D-581): the knob's lead header below the hatch key
-        ("SW5", G.K3, wy, 0, "F"),
-        ("LED6", G.K3 + G.WINK_LED_DX, wy, 90, "F"),
-        ("R5", G.K3 - 2.25, wy - 7.0, 0, "B"),           # 4.7k
-        ("R6", G.K3 + 2.25, wy - 7.0, 0, "B"),           # 47k baseline
-        ("J4", G.J4_AT[0], G.J4_AT[1], 0, "F"),
+        # the face's controls (F.Cu, toward the driver)
+        ("ENC1", kx, ky, 0, "F"),                        # the screen knob's encoder, its shaft on the knob's axis
+        ("SW6", sx, sy, 0, "F"),                         # the mirror control, in its well
+        ("SW5", hx, hy, 0, "F"),                         # the hazard, under the top row's wide cap
+        ("SW3", k1, wy, 0, "F"),                         # wink left
+        ("SW4", k2, wy, 0, "F"),                         # wink right
+        ("SW2", k1, ry, 0, "F"),                         # fuel door, below wink left
+        ("SW1", k2, ry, 0, "F"),                         # hatch, below wink right
+        ("LED1", k1 + d, wy, 90, "F"),                   # wink left face, inside its cap
+        ("LED2", k2 + d, wy, 90, "F"),
+        ("LED4", k1 + d, ry, 90, "F"),                   # fuel-door symbol
+        ("LED3", k2 + d, ry, 90, "F"),                   # hatch symbol
+        ("LED5", sx, sy - 5.0, 0, "F"),                  # mirror symbol, inside the control's well
+        ("LED6", hx + G.HAZ_LED_DX, hy, 90, "F"),        # the hazard's red triangle
+        # the pigtail's pads, on the row between the winks and the keys, wired from the back
+        ("J1", G.J1_AT[0] + 8 * G.J1_PITCH, G.J1_AT[1], 0, "B"),   # on the back the row mirrors: pad 1 at the right, seen from the front
+        # behind (B.Cu): the regulator under the knob, the LED driver and the expander under the top row
+        ("U3", kx - 1.0, ky - 2.0, 0, "B"),
+        ("C4", kx - 4.0, ky + 2.5, 90, "B"),
+        ("C5", kx + 2.0, ky + 2.5, 90, "B"),
+        # the LED driver beside the LEDs it drives (top right), the expander beside the switches it reads (behind the
+        # mirror control, bottom left), so neither's lines cross the board; chips on the 0.25 mm routing grid
+        ("U1", 31.0, 6.5, 0, "B"),
+        ("R1", 34.75, 5.0, 90, "B"),                     # R_EXT straight beside its pin (pad 2)
+        ("C2", 34.75, 8.5, 90, "B"),                     # 100 nF at VCC (pad 3)
+        ("R2", 33.0, 2.0, 0, "B"),                       # SDB (pad 24)
+        ("C1", 28.0, 10.25, 0, "B"),                     # 1 uF on +5V_PNL
+        ("U2", 6.0, 20.5, 0, "B"),
+        ("C3", 4.5, 15.25, 0, "B"),                      # U2's VDD decoupler, above its VDD pin (24)
+        ("R3", 15.8, 25.4, 0, "B"),                      # 18k, wink left
+        ("R4", 20.6, 25.4, 0, "B"),                      # 33k, wink right
+        ("R5", 26.6, 25.4, 0, "B"),                      # 4.7k, the hazard
+        ("R6", 31.4, 25.4, 0, "B"),                      # 47k, the hazard's baseline
     ]
 
 
-BOARD_ONLY = [  # (ref, lib, name, x, y, value)
-    ("H%d" % (i + 1), "MountingHole", "MountingHole_3.2mm_M3", x, y, "M3") for i, (x, y) in enumerate(G.HOLES)
-] + [("KN1", "cur-board", "ScreenKnob_P219_Board_Placeholder", G.KNOB[0], G.KNOB[1], "screen knob board (P219)")]   # Y21's H5 / H6, the P083 clearance holes, went with D-499 (Y22): the winks are parts now
+BOARD_ONLY = []   # no mounting holes: the board sits on a ledge in the case's walls, the rear cover's posts hold it (D-615)
 
 
 def lib_path(lib):
@@ -101,16 +101,18 @@ def read_netlist(path):
 # --------------------------------------------------------------------------------------------
 # The router
 # --------------------------------------------------------------------------------------------
-GRID = 0.25
-TW = 0.25            # track width
-VIA_D, VIA_DRILL = 0.6, 0.3
-CLR = 0.2            # copper clearance
-HCLR = 0.25          # copper to hole
+GRID = 0.125                         # fine enough for 0.2 mm tracks at 0.15 mm space between THT pins (Y71)
+TW = 0.2             # track width - the CUR's own rules (cur_board_sch.gen_pro, Y71)
+VIA_D, VIA_DRILL = 0.5, 0.25
+CLR = 0.15           # copper clearance
+HCLR = 0.2           # copper to hole
 EDGE = 0.5           # copper to edge
 MARGIN = 0.02
 NX, NY = int(G.W / GRID), int(G.H / GRID)
 FREE, BLOCK = -1, -2
-LAYERS = (pcbnew.F_Cu, pcbnew.B_Cu)
+LAYERS = (pcbnew.F_Cu, pcbnew.B_Cu)          # the routing layers; the two inner ones are planes (Y71)
+PLANE_NETS = {"GND": pcbnew.In1_Cu, "/+5V_PNL": pcbnew.In2_Cu}
+FIRST = ()                                   # nets routed before the rest (none: span order did best)
 
 
 def dist(shape, x, y):
@@ -301,12 +303,13 @@ def route_board(board, order_seed=None, verbose=True):
     def span(code):
         pts = [(s[1], s[2]) for k in groups[code].values() for li, s in k]
         return max(abs(a[0] - b[0]) + abs(a[1] - b[1]) for a in pts for b in pts)
-    order = sorted((c for c in groups if len(groups[c]) > 1), key=span)
-    late = [c for c in order if names[c] in ("GND", "/ROW1")]
-    order = [c for c in order if c not in late] + late
-    if order_seed is not None:
-        rnd = random.Random(order_seed)
-        rnd.shuffle(order)
+    order = sorted((c for c in groups if len(groups[c]) > 1 and names[c] not in PLANE_NETS), key=span)
+    first = [c for c in order if names[c] in FIRST]                # the bus crosses the board: before the local nets
+    order = first + [c for c in order if c not in first]
+    if order_seed is not None:                                     # another order for the rest, the bus still first
+        rest = [c for c in order if c not in first]
+        random.Random(order_seed).shuffle(rest)
+        order = first + rest
     routes = []
     failed = []
     for code in order:
@@ -449,7 +452,26 @@ def outline(board):
     arc((r, r), 180)
 
 
+def plane(board, net, layer):
+    z = pcbnew.ZONE(board)
+    z.SetLayer(layer)
+    z.SetNet(net)
+    z.SetIsRuleArea(False)
+    ol = z.Outline()
+    ol.NewOutline()
+    for x, y in ((0.3, 0.3), (G.W - 0.3, 0.3), (G.W - 0.3, G.H - 0.3), (0.3, G.H - 0.3)):
+        ol.Append(MM(x), MM(y))
+    z.SetLocalClearance(MM(0.3))
+    z.SetMinThickness(MM(0.25))
+    z.SetPadConnection(pcbnew.ZONE_CONNECTION_THERMAL)
+    z.SetThermalReliefGap(MM(0.3))
+    z.SetThermalReliefSpokeWidth(MM(0.3))
+    board.Add(z)
+
+
 def pour(board, gnd):
+    for name, layer in PLANE_NETS.items():           # the two inner planes, whole-board
+        plane(board, board.FindNet(name), layer)
     for layer in LAYERS:
         z = pcbnew.ZONE(board)
         z.SetLayer(layer)
@@ -482,6 +504,9 @@ def silk(board, text, x, y, layer, size=1.2):
 
 
 FREEROUTING = os.path.expanduser("~/.local/share/freerouting/freerouting.jar")
+FR_ONLY = False                      # the grid router first, freerouting and the grid finish after (Y71)
+FR_PASSES = "8"
+FR_TIMEOUT = 900
 
 
 def finish_with_freerouting(board):
@@ -515,8 +540,11 @@ def finish_with_freerouting(board):
     dsn = os.path.join(G.HERE, G.NAME + ".dsn")
     ses = os.path.join(G.HERE, G.NAME + ".ses")
     pcbnew.ExportSpecctraDSN(board, dsn)
-    subprocess.call(["java", "-jar", FREEROUTING, "-de", dsn, "-do", ses, "-mp", "60"],
-                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    try:                                    # its optimiser can run on for half an hour: five minutes, then the next try
+        subprocess.call(["java", "-jar", FREEROUTING, "-de", dsn, "-do", ses, "-mp", FR_PASSES],
+                        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=FR_TIMEOUT)
+    except subprocess.TimeoutExpired:
+        subprocess.call(["pkill", "-f", "freerouting.jar"])
     ok = os.path.exists(ses) and pcbnew.ImportSpecctraSES(board, ses)
     for f in (dsn, ses):
         if os.path.exists(f):
@@ -543,22 +571,257 @@ def finish_with_freerouting(board):
     return board.GetConnectivity().GetUnconnectedCount(False)
 
 
+def _copper(board):
+    """Every copper item by net: [(layer index, shape, kind)] - pads, tracks, vias - in grid millimetres."""
+    out = {}
+    for fp in board.GetFootprints():
+        for pad in fp.Pads():
+            code = pad.GetNetCode()
+            if code <= 0 or pad.GetNetname().startswith("unconnected-"):
+                continue
+            for li in range(2):
+                if pad.IsOnLayer(LAYERS[li]):
+                    out.setdefault(code, []).append((li, pad_shape(pad, li), "pad"))
+    for t in board.GetTracks():
+        code = t.GetNetCode()
+        if t.GetClass() == "PCB_VIA":
+            p = t.GetPosition()
+            for li in range(2):
+                out.setdefault(code, []).append((li, ("circ", TOMM(p.x), TOMM(p.y), TOMM(t.GetWidth(pcbnew.F_Cu)) / 2), "via"))
+        else:
+            a, b = t.GetStart(), t.GetEnd()
+            li = LAYERS.index(t.GetLayer())
+            out.setdefault(code, []).append((li, ("seg", TOMM(a.x), TOMM(a.y), TOMM(b.x), TOMM(b.y), TOMM(t.GetWidth()) / 2), "track"))
+    return out
+
+
+def _touch(a, b):
+    """Two copper shapes on one layer meet: sample a's outline-ish points against b."""
+    pts = []
+    k = a[0]
+    if k == "seg":
+        _, x1, y1, x2, y2, hw = a
+        pts = [(x1, y1), (x2, y2), ((x1 + x2) / 2, (y1 + y2) / 2)]
+        r = hw
+    elif k == "circ":
+        pts, r = [(a[1], a[2])], a[3]
+    else:
+        pts, r = [(a[1], a[2])], min(a[3], a[4])
+    return any(dist(b, x, y) <= r + 0.01 for x, y in pts) or (b[0] != "seg" and dist(a, b[1], b[2]) <= 0.01)
+
+
+def finish_with_grid(board, verbose=True):
+    """What freerouting leaves (Y71): each net's copper grouped by contact, the groups joined by the grid router's
+    A* through every other net's copper. Returns the joins it could not make."""
+    grid = Grid()
+    cop = _copper(board)
+    for code, items in cop.items():
+        for li, shp, kind in items:
+            grid.mark(li, shp, code, CLR)
+    for fp in board.GetFootprints():
+        for pad in fp.Pads():
+            if pad.GetNetCode() <= 0 or pad.GetNetname().startswith("unconnected-"):
+                for li in range(2):                       # a pin no net uses is still copper: nothing crosses it
+                    if pad.IsOnLayer(LAYERS[li]):
+                        grid.mark(li, pad_shape(pad, li), BLOCK, CLR)
+            if pad.HasHole():
+                q = pad.GetPosition()
+                for li in range(2):
+                    grid.mark(li, ("circ", TOMM(q.x), TOMM(q.y), TOMM(pad.GetDrillSize().x) / 2), BLOCK if pad.GetNetCode() <= 0 else pad.GetNetCode(), HCLR)
+    failed = []
+    added = []
+    for code, items in sorted(cop.items()):
+        if board.FindNet(code).GetNetname() in PLANE_NETS:
+            continue                                    # a plane's net: its pins reach their plane by fanout()
+        n = len(items)
+        parent = list(range(n))
+
+        def find(i):
+            while parent[i] != i:
+                parent[i] = parent[parent[i]]
+                i = parent[i]
+            return i
+        for i in range(n):
+            for j in range(i + 1, n):
+                li, a, ka = items[i]
+                lj, b, kb = items[j]
+                same_spot = ka in ("via", "pad") and kb in ("via", "pad") and a[0] != "seg" and b[0] != "seg" and \
+                    abs(a[1] - b[1]) < 0.01 and abs(a[2] - b[2]) < 0.01           # one via / THT pad on both layers
+                if same_spot or (li == lj and (_touch(a, b) or _touch(b, a))):
+                    parent[find(i)] = find(j)
+        groups = {}
+        for i in range(n):
+            groups.setdefault(find(i), []).append(i)
+        clusters = list(groups.values())
+        if len(clusters) < 2:
+            continue
+
+        def cells(idx):
+            out = set()
+            for i in idx:
+                li, shp, _k = items[i]
+                got = grid.inside(shp)
+                if not got and shp[0] != "seg":           # a pad smaller than a cell: the cell at its centre
+                    got = [int(round(shp[2] / GRID)) * NX + int(round(shp[1] / GRID))]
+                for c in got:
+                    out.add((li, c))
+                if shp[0] == "seg":                     # a thin track: its centre line's cells
+                    _, x1, y1, x2, y2, _hw = shp
+                    steps = max(1, int(max(abs(x2 - x1), abs(y2 - y1)) / GRID))
+                    for s in range(steps + 1):
+                        x, y = x1 + (x2 - x1) * s / steps, y1 + (y2 - y1) * s / steps
+                        out.add((li, int(round(y / GRID)) * NX + int(round(x / GRID))))
+            return out
+        tree = cells(clusters[0])
+        rest = clusters[1:]
+        while rest:
+            tgt = set()
+            for cl in rest:
+                tgt |= cells(cl)
+            tpts = list({(c % NX, c // NX) for _l, c in tgt})[:200]
+            path = astar(grid, code, tree, tgt, tpts) if tpts and tree else None
+            if path is None:
+                failed.append(board.FindNet(code).GetNetname())
+                if verbose:
+                    print("  grid finish FAILED %s" % board.FindNet(code).GetNetname())
+                break
+            end = path[-1]
+            hit = next(cl for cl in rest if end in cells(cl))
+            rest.remove(hit)
+            tree |= cells(hit)
+            for (la, ca), (lb, cb) in zip(path, path[1:]):
+                xa, ya = (ca % NX) * GRID, (ca // NX) * GRID
+                xb, yb = (cb % NX) * GRID, (cb // NX) * GRID
+                if la == lb:
+                    grid.mark(la, ("seg", xa, ya, xb, yb, TW / 2), code, CLR)
+                else:
+                    for k in (0, 1):
+                        grid.mark(k, ("circ", xa, ya, VIA_D / 2), code, CLR)
+            tree |= set(path)
+            added.append((code, path))
+    nseg, nvia = add_tracks(board, added)
+    if verbose:
+        print("  grid finish: %d joins, %d segments, %d vias, %d failed %s" % (len(added), nseg, nvia, len(failed), failed))
+    return failed
+
+
+def fanout(board, verbose=True):
+    """Every surface pin of a plane's net (GND, +5V_PNL) gets a short stub to a via of its own beside it, the via
+    landing on the net's inner plane (In1 GND, In2 +5V_PNL); through-hole pins meet their plane directly."""
+    grid = Grid()
+    for code, items in _copper(board).items():
+        for li, shp, kind in items:
+            grid.mark(li, shp, code, CLR)
+    for fp in board.GetFootprints():
+        for pad in fp.Pads():
+            if pad.GetNetCode() <= 0 or pad.GetNetname().startswith("unconnected-"):
+                for li in range(2):
+                    if pad.IsOnLayer(LAYERS[li]):
+                        grid.mark(li, pad_shape(pad, li), BLOCK, CLR)
+            if pad.HasHole():
+                q = pad.GetPosition()
+                for li in range(2):
+                    grid.mark(li, ("circ", TOMM(q.x), TOMM(q.y), TOMM(pad.GetDrillSize().x) / 2), BLOCK if pad.GetNetCode() <= 0 else pad.GetNetCode(), HCLR)
+    added, missed, vias = [], [], set()
+    for fp in board.GetFootprints():
+        for pad in fp.Pads():
+            name = pad.GetNetname()
+            if name not in PLANE_NETS or pad.HasHole():
+                continue
+            code = pad.GetNetCode()
+            li = 0 if pad.IsOnLayer(pcbnew.F_Cu) else 1
+            p = pad.GetPosition()
+            px, py = TOMM(p.x), TOMM(p.y)
+            starts = set((li, c) for c in grid.inside(pad_shape(pad, li))) or \
+                {(li, int(round(py / GRID)) * NX + int(round(px / GRID)))}
+            best = None
+            r = int(2.5 / GRID)
+            cx, cy = int(round(px / GRID)), int(round(py / GRID))
+            cands = sorted(((dx * dx + dy * dy, cx + dx, cy + dy) for dx in range(-r, r + 1) for dy in range(-r, r + 1)
+                            if 0 <= cx + dx < NX and 0 <= cy + dy < NY), key=lambda z: z[0])
+            for _d, x, y in cands:
+                c = y * NX + x
+                if not all(grid.via[k][c] in (FREE, code) for k in (0, 1)) or grid.trk[1 - li][c] not in (FREE, code):
+                    continue
+                path = astar(grid, code, starts, {(li, c)}, [(x, y)])
+                if path is not None and len(path) <= 2 * r + 4 and all(l_ == li for l_, _c in path):
+                    best = (c, path)
+                    break
+            if best is None:
+                missed.append("%s.%s" % (fp.GetReference(), pad.GetNumber()))
+                continue
+            c, path = best
+            for (la, ca), (lb, cb) in zip(path, path[1:]):
+                grid.mark(la, ("seg", (ca % NX) * GRID, (ca // NX) * GRID, (cb % NX) * GRID, (cb // NX) * GRID, TW / 2), code, CLR)
+            for k in (0, 1):
+                grid.mark(k, ("circ", (c % NX) * GRID, (c // NX) * GRID, VIA_D / 2), code, CLR)
+            added.append((code, path + ([] if c in vias else [(1 - li, c)])))     # a via already there is shared
+            vias.add(c)
+    nseg, nvia = add_tracks(board, added)
+    if verbose:
+        print("  fanout: %d pins to their planes, %d segments, %d vias; missed %s" % (len(added), nseg, nvia, missed or "none"))
+    return missed
+
+
+def stitch(board, gnd, pitch=3.0):
+    """GND vias on a lattice wherever one clears every other net's copper and the edge, so the two pours join
+    (main() drops any the fill leaves dangling). Freerouting's boards have none of their own."""
+    items = []
+    for t in board.GetTracks():
+        if t.GetNetCode() == gnd.GetNetCode() and t.GetClass() != "PCB_VIA":
+            continue                                    # its own tracks it may touch; no via sits on another
+        if t.GetClass() == "PCB_VIA":
+            p = t.GetPosition()
+            items.append(("circ", TOMM(p.x), TOMM(p.y), TOMM(t.GetWidth(pcbnew.F_Cu)) / 2))
+        else:
+            a, b = t.GetStart(), t.GetEnd()
+            items.append(("seg", TOMM(a.x), TOMM(a.y), TOMM(b.x), TOMM(b.y), TOMM(t.GetWidth()) / 2))
+    for fp in board.GetFootprints():
+        for pad in fp.Pads():
+            if pad.GetNetCode() == gnd.GetNetCode() and not pad.HasHole():
+                continue
+            for li in range(2):
+                if pad.IsOnLayer(LAYERS[li]) or pad.HasHole():
+                    items.append(pad_shape(pad, li))
+            if pad.HasHole():
+                q = pad.GetPosition()
+                items.append(("circ", TOMM(q.x), TOMM(q.y), TOMM(pad.GetDrillSize().x) / 2 + HCLR))
+    need = VIA_D / 2 + CLR + MARGIN
+    y = pitch / 2
+    n = 0
+    while y < G.H - EDGE - VIA_D / 2:
+        x = pitch / 2
+        while x < G.W - EDGE - VIA_D / 2:
+            if min(x, y, G.W - x, G.H - y) >= EDGE + VIA_D / 2 and all(dist(s, x, y) > need for s in items):
+                v = pcbnew.PCB_VIA(board)
+                v.SetPosition(V(x, y))
+                v.SetDrill(MM(VIA_DRILL))
+                v.SetWidth(MM(VIA_D))
+                v.SetNet(gnd)
+                board.Add(v)
+                items.append(("circ", x, y, VIA_D / 2))
+                n += 1
+            x += pitch
+        y += pitch
+    return n
+
+
 def build(seed=None, do_pour=True):
-    if G.FLIP:
-        raise NotImplementedError("FLIP: the board is drawn for the sketch's default only (stick on the wheel side)")
     sch = os.path.join(G.HERE, G.NAME + ".kicad_sch")
     netf = os.path.join(G.HERE, G.NAME + ".net")
     subprocess.check_call([KICAD_CLI, "sch", "export", "netlist", "--format", "kicadsexpr", "-o", netf, sch])
     comps, nets = read_netlist(netf)
     os.remove(netf)
     board = pcbnew.NewBoard(os.path.join(G.HERE, G.NAME + ".kicad_pcb"))
-    board.SetCopperLayerCount(2)
+    board.SetCopperLayerCount(4)                 # In1 the GND plane, In2 the +5V_PNL plane (Y71)
+    for layer in PLANE_NETS.values():
+        board.SetLayerType(layer, pcbnew.LT_POWER)   # freerouting reads them as planes, never routes on them
     tb = board.GetTitleBlock()
-    tb.SetTitle("Left plate (D-492, D-499, Y22) - provisional")
+    tb.SetTitle("CUR board (D-597, D-602, D-604, D-615, Y71) - placeholders confirm")
     tb.SetRevision(G.REV)
     tb.SetDate(G.DATE)
     tb.SetCompany("RX-7 FB electrical build")
-    tb.SetComment(0, "%g x %g: the sketch's plate grown for the hazard and the screen knob (Y62, Y50) - confirm (R11)" % (G.W, G.H))
+    tb.SetComment(0, "%.2f x %.2f: the D-602 face's control area; nothing measured (R11)" % (G.W, G.H))
     netobj = {}
     for name in nets:
         n = pcbnew.NETINFO_ITEM(board, name)
@@ -609,17 +872,29 @@ def build(seed=None, do_pour=True):
         fp.SetPosition(V(x, y))
         fp.Reference().SetLayer(pcbnew.F_Fab)
     outline(board)
-    routes, failed = route_board(board, seed)
-    nseg, nvia = add_tracks(board, routes)
+    if FR_ONLY:                      # Y71: the CUR's 38 x 27 board, populated both sides, is freerouting's from the start
+        routes, failed, nseg, nvia = [], ["everything"], 0, 0
+    else:
+        routes, failed = route_board(board, seed)
+        nseg, nvia = add_tracks(board, routes)
+    missed = fanout(board)           # every power pin to its plane first: the routers then see the planes' vias
     if failed:
+        failed = finish_with_grid(board)
+    if failed:
+        for name, layer in PLANE_NETS.items():      # the planes, so freerouting's design knows the pins joined
+            plane(board, board.FindNet(name), layer)
         left = finish_with_freerouting(board)
+        for z in [z for z in board.Zones() if z.GetLayer() in PLANE_NETS.values()]:
+            board.RemoveNative(z)
         print("  freerouting finished the %d left: %s connection(s) still open" % (len(failed), left))
-        if left == 0:
-            failed = []
+        board.BuildConnectivity()
+        failed = finish_with_grid(board)
+    failed = failed + missed
     if do_pour:
+        stitch(board, netobj["GND"])
         pour(board, netobj["GND"])
-    silk(board, "CUR PLATE  Y62  rev %s" % G.REV, G.W / 2, 53.4, pcbnew.B_SilkS, 1.0)
-    silk(board, "D-492 D-499 D-586 D-589 - provisional, confirm", G.W / 2, 51.6, pcbnew.B_SilkS, 0.8)
+    silk(board, "CUR rev %s" % G.REV, 6.4, 25.6, pcbnew.B_SilkS, 0.8)
+    silk(board, "DP-CUR 1-9", G.J1_AT[0] + 4 * G.J1_PITCH, G.J1_AT[1] + 2.0, pcbnew.B_SilkS, 0.8)
     return board, failed, nseg, nvia
 
 

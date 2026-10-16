@@ -153,6 +153,10 @@ WHERE = {
     "Driver-side cargo bin": ("cargo-bin", "cargo", (0.15, 0.5, 0.15), "Driver-side cargo bin"),
     "Passenger-side cargo bin": ("cargo-bin-passenger", "cargo", (0.85, 0.5, 0.15),
                                  "Passenger-side cargo bin"),
+    # the overhaul's places (D-610, D-609): the doors' plugs at the A-pillar boot, the amplifier's dock
+    "Door, at the A-pillar boot": ("pillar-driver", "dash", (0.03, 0.15, 0.95), "Driver A-pillar base"),
+    "Amplifier dock, passenger-side cargo bin": ("cargo-bin-passenger", "cargo", (0.85, 0.5, 0.15),
+                                                 "Passenger-side cargo bin"),
 }
 # The top-level parts: no row places any of them yet (00-CAR parts has no model_at_mm for the
 # cluster, the radio or the PMU, and D-416 says nothing places the dash node), so each is a
@@ -179,8 +183,8 @@ FAR_END = {
 CONNECTORS_BUILDER = os.path.join(HERE, "harness_connectors.py")
 DEVICES_BUILDER = os.path.join(HERE, "harness_devices.py")
 STEPS = ["connectors", "devices"]
-UNIT_OF = {"ICU unit": "display-unit", "Climate unit": "control-unit",    # housings.where -> unit
-           "CUR": "cur"}
+UNIT_OF = {"ICU unit": "display-unit", "Control Unit": "control-unit",   # housings.where -> unit
+           "CUR": "cur", "On the CUR's pigtail": "cur"}                  # D-615: the CUR's DRC 24 on its pigtail
 
 # Nodes no housings.where names, judgement: (zone, box, fx fy fz, name, why).
 NODES_EXTRA = {
@@ -1093,7 +1097,7 @@ def assemble(rec, metas, built, out=None):
             else:
                 to = {"part": "pmu", "connector": code}
                 post.append(code)
-        elif where == "Dash post":
+        elif where in ("Dash post", "PMU box"):        # the PMU box's plugs and bundles run where the post's did (D-600)
             frm = {"part": "pmu", "connector": code}
             post.append(code)
             leg = (h.get("leg") or "").strip()

@@ -178,8 +178,10 @@ BOARDS = {
     # The left plate (Y21, D-492): J1 its cable header, DP-DCU-E pin for pin; the keys a DP-DCU-E
     # cavity names, on their rows and columns through their diodes; the stick on panel_ribbon 1, 17-20.
     # Its winks (Y22, D-499, D-504): J2 the wink lead, held to the L3-S1 cavities whose lands_on name it.
-    "cur-board": dict(sch="control-unit/control-unit-remote/cad/cur-board/cur-board.kicad_sch", plate_board=("DP-DCU", "J1", 36),
-                       winks=("L3-S1", "J2")),
+    # The CUR board (Y71, D-615): J1 the pigtail's pads, DP-CUR pin for pin - 1-4 the CU's I2C link, 5-9 the winks'
+    # and the hazard's lines (check_winks, held to the DP-CUR cavities whose lands_on name J1's pins).
+    "cur-board": dict(sch="control-unit/control-unit-remote/cad/cur-board/cur-board.kicad_sch", cur_link=("DP-CUR", "J1"),
+                       winks=("DP-CUR", "J1")),
 }
 
 # Symbol pin names and datasheet pin names that mean the same pin.
@@ -1140,6 +1142,70 @@ def check_plate_board(rep, nl, cfg, cavities, ribbon):
             rep.bad("-", sig, "the plate's LED driver %s" % pname, "nothing")
 
 
+_NET_TOKEN = re.compile(r"^\s*([+\w]+)\s+-\s")
+
+
+def check_cur_link(rep, nl, cfg, cavities):
+    """The CUR board (Y71, D-604, D-615). Its I2C link: every cavity of the housing whose lands_on names a pin of
+    the pigtail's pads and whose circuit starts with a net ('PNL_SDA - ...', 'GND - ...') is on that net there, each
+    a net of its own. Its keys: every switch that is not a wink or the hazard (the releases, the mirror control's
+    four directions and push, the knob's push and quadrature) closes from an expander's IO pin to GND, and nothing
+    else is on that line. Its bus: PNL_SDA / PNL_SCL reach every chip's SDA / SCL."""
+    housing, hdr = cfg["cur_link"]
+    if hdr not in nl.pins:
+        rep.bad(hdr, "-", "the pigtail's pads for %s" % housing, "no such part on the sheet")
+        return
+    owner = {}
+    for c in sorted((c for c in cavities if c["housing"] == housing), key=lambda c: int(c["cav"])):
+        m = _NET_TOKEN.match(c["circuit"])
+        hits = [p for h, p in _HDR_PIN.findall(c.get("lands_on", "")) if h == hdr]
+        if not m or len(hits) != 1:
+            continue
+        want, pin = m.group(1), hits[0]
+        got = nl.net(hdr, pin)
+        where = "%s(%s %s)" % (pin, housing, c["cav"])
+        if got is None or bare(got) != want:
+            rep.bad(hdr, where, want, bare(got) or "unconnected")
+        elif got in owner:
+            rep.bad(hdr, where, "a net of its own", "%s, joined to %s" % (bare(got), owner[got]))
+        else:
+            rep.ok("%s %s = %s" % (hdr, where, want))
+            owner[got] = where
+    # the inputs: each switch contact from an expander IO pin to GND
+    io_nets = {}
+    for ref in nl.comps:
+        for num, (pn, _t) in nl.pins.get(ref, {}).items():
+            if prefix(ref) == "U" and re.match(r"IO\d_\d$", pn) and nl.net(ref, num):
+                io_nets[nl.net(ref, num)] = "%s.%s" % (ref, pn)
+    for ref in sorted(nl.comps):
+        if prefix(ref) not in ("SW", "ENC"):
+            continue
+        val = nl.comps[ref]["value"].lower()
+        if "wink" in val or "hazard" in val:
+            continue
+        nets = {nl.net(ref, k) for k in nl.pins[ref]} - {None}
+        gnd = {x for x in nets if bare(x) == "GND"}
+        lines = nets - gnd
+        if not gnd or not lines:
+            rep.bad(ref, "-", "its contacts between expander lines and GND", ", ".join(sorted(bare(x) for x in nets)) or "unconnected")
+            continue
+        for ln in sorted(lines):
+            if ln not in io_nets:
+                rep.bad(ref, "-", "%s on an expander IO pin" % bare(ln), "not on one")
+            elif len(nl.nets.get(ln, [])) != 2:
+                rep.bad(ref, "-", "only %s and %s on %s" % (ref, io_nets[ln], bare(ln)), "%d pins" % len(nl.nets.get(ln, [])))
+            else:
+                rep.ok("%s %s on %s, to GND" % (ref, bare(ln), io_nets[ln]))
+    for sig, pname in (("PNL_SDA", "SDA"), ("PNL_SCL", "SCL")):
+        net = next((x for x in nl.nets if bare(x) == sig), None)
+        chips = {ref for ref in nl.comps if prefix(ref) == "U" and pname in {pn for pn, _t in nl.pins[ref].values()}}
+        hit = {ref for ref, _n, pn in (parts_on(nl, net, "U") if net else []) if pn == pname}
+        if chips and hit == chips:
+            rep.ok("%s reaches %s" % (sig, ", ".join("%s.%s" % (r, pname) for r in sorted(hit))))
+        else:
+            rep.bad("-", sig, "every chip's %s (%s)" % (pname, ", ".join(sorted(chips))), ", ".join(sorted(hit)) or "none")
+
+
 # The wink switches' contacts, as KiCad's SW_Push_SPDT draws them: the pole B rests on A (NC), C is NO.
 SPDT_ROLE = {"NC": "A", "common": "B", "NO": "C"}
 _HDR_PIN = re.compile(r"\b(J\d+) pin (\d+)\b")
@@ -1202,6 +1268,8 @@ def check_winks(rep, nl, cfg, cavities):
             pin = hits[0]
             where = "%s(%s %s)" % (pin, housing, c["cav"])
             named.add(pin)
+            if not re.search(r"\b(winks?|hazard|resistors?)\b", frag, re.I):
+                continue                          # the CUR's I2C link on the same pads (check_cur_link)
             hnet = nl.net(hdr, pin)
             if hnet is None:
                 rep.bad(hdr, where, "wired (%s)" % frag.strip(), "unconnected")
@@ -1473,6 +1541,8 @@ def main(argv=None):
                 check_relay(rep, nl, cfg, cavities, ribbon)
             if cfg.get("plate_board"):
                 check_plate_board(rep, nl, cfg, cavities, ribbon)
+            if cfg.get("cur_link"):
+                check_cur_link(rep, nl, cfg, cavities)
             if cfg.get("winks"):
                 check_winks(rep, nl, cfg, cavities)
             check_conventions(rep, nl, cfg)

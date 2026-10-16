@@ -11,6 +11,7 @@ board and the panel until every file matched but its date lines), and write the 
   <board>-revA-gerbers.zip = the fourteen files, flat
 """
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -27,22 +28,26 @@ def main():
     pcb = os.path.abspath(sys.argv[1])
     name = os.path.basename(pcb)[: -len(".kicad_pcb")]
     fab = os.path.join(os.path.dirname(pcb), "fab")
-    assert os.path.isdir(fab), fab
+    os.makedirs(fab, exist_ok=True)
+    # a four-layer board (the CUR's, Y71) carries its inner planes too: In1.Cu (.g1), In2.Cu (.g2)
+    inner = sorted(set(re.findall(r'\((\d+) "(In\d+\.Cu)" (?:signal|power|mixed)\)', open(pcb, encoding="utf-8").read())), key=lambda x: int(x[0]))
+    layers = LAYERS + "".join("," + nm for _n, nm in inner)
+    files = FILES + ["-%s.g%d" % (nm.replace(".", "_"), i + 1) for i, (_n, nm) in enumerate(inner)]
     for cmd in ([CLI, "pcb", "export", "gerbers", "--no-x2", "--no-netlist", "--subtract-soldermask",
-                 "--layers", LAYERS, "-o", fab + "/", pcb],
+                 "--layers", layers, "-o", fab + "/", pcb],
                 [CLI, "pcb", "export", "drill", "--format", "excellon", "--excellon-separate-th",
                  "--generate-map", "--map-format", "gerberx2", "-o", fab + "/", pcb]):
         r = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         assert r.returncode == 0, (cmd, r.stderr[-400:])
     z = os.path.join(fab, name + "-revA-gerbers.zip")
     with zipfile.ZipFile(z, "w", zipfile.ZIP_DEFLATED) as out:
-        for suffix in FILES:
+        for suffix in files:
             p = os.path.join(fab, name + suffix)
             assert os.path.getmtime(p) >= os.path.getmtime(pcb), p + " is older than the board"
             out.write(p, name + suffix)
     with zipfile.ZipFile(z) as chk:
-        assert chk.testzip() is None and len(chk.namelist()) == len(FILES)
-    print("%s: %d files, %d bytes" % (os.path.relpath(z), len(FILES), os.path.getsize(z)))
+        assert chk.testzip() is None and len(chk.namelist()) == len(files)
+    print("%s: %d files, %d bytes" % (os.path.relpath(z), len(files), os.path.getsize(z)))
 
 
 main()

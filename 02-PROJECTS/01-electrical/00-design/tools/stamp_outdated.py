@@ -24,7 +24,7 @@ import parts as layout  # noqa: E402
 CU = ("OUTDATED (D-612) - redrawn at Y70", "The CU's connector is the DRC 64 with a DTP comfort inlet, the seats' heat and cool are its "
       "+ side switches, the radar receiver is inside it, the face is the eighth pass, the CUR is on four I2C wires.",
       "The current plan: control-unit/diagrams/cu-plan.svg")
-CUR = ("OUTDATED (D-612) - redrawn at Y71", "The CUR is on one DRC 24 (DP-CUR) with an I/O expander and an ADC for its keys and stick; "
+CUR = ("OUTDATED (D-612) - redrawn at Y71",       # no longer used: the CUR was redrawn at Y71 (D-615) "The CUR is on one DRC 24 (DP-CUR) with an I/O expander and an ADC for its keys and stick; "
        "the left plate's two DT13s and its twelve-line cable are gone.",
        "The current plan: control-unit/control-unit-remote/diagrams/cur-plan.svg")
 DU = ("OUTDATED (D-612) - redrawn at Y72", "The AEM wideband gauge goes inside the DU on DP-ICU 18 / 19, with a sealed gland for its sensor lead.",
@@ -33,7 +33,6 @@ DUC = ("RE-CHECK AT Y72 (D-612)", "DP-ICU 18 / 19 now carry the AEM gauge's own 
        "The current plan: display-unit/diagrams/du-plan.svg")
 STAMPS = {
     ("cu", "cu-carrier*.svg"): CU, ("cu", "cu-face-board*.svg"): CU, ("cu", "cu-assembly-view-*.svg"): CU,
-    ("cur", "cur-board*.svg"): CUR, ("cur", "cur-assembly-view-*.svg"): CUR,
     ("du", "du-assembly-view-*.svg"): DU, ("du", "du-carrier*.svg"): DUC,
 }
 ROOT_RE = re.compile(r"<svg\b[^>]*>", re.S)
