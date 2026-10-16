@@ -394,3 +394,16 @@ None is converted, measured or placed. The scale models and the mis-scaled ones 
 - New rows SR01-SR04 (the CD009 and 8.8 searches, the drive's price, a parts round), BR07 (the 8.8), BR08 (the FC hubs) and CD01-CD07. CD07 hands the swap to 03-cad's car model.
 - DS02, DS03 and DS07 now design from CD01-CD03.
 - CD06's proposed minimums: 12 mm static, 20 mm where the engine rocks, 25 mm from the exhaust to lines and wiring. They are confirmed in that row."
+D-626,engine,"Nothing is bought before the freeze: the swap is proven virtually first (CD06), and re-checked on the parts in hand (CD08) before the car is changed",2026-10-16,standing,,,,D-625,"**Nothing is bought before the design is frozen. The swap is planned, sourced on paper and proven virtually first: the CAD's clearance proof (CD06) is made from published dimensions, the found CAD and measurements of the car itself, and it gates the freeze (DS11). Every purchase, the donors included, waits on the freeze. A second CAD check after buying (CD08) re-measures the parts in hand, and it gates every row that changes the car.**
+
+His words (chat, 2026-10-16): ""the first step in the plan should not be to buy anything, we must make a dialed detailed plan with enough sourced parts and done design to know for sure we will buy anything. please help me with the plan here first, what of an engine swap can we dial and verify and perfect virtually on the computer before a cent is spent""
+
+**What it corrects.** D-625 let the CD009 be bought once J4 showed it fits, and made the clearance proof wait on the donors measured on stands (BD01, BD06), so money came before the freeze. Both are reversed. ""Sourced"" now means found, priced and confirmed to fit (SR01-SR04), not bought. Supersedes D-625 in those two clauses only; the rest of D-625 stands.
+
+**In the data.**
+- BR01, BR02, BR03, BR07 and BR08 wait on DS11. BR03's early gate goes.
+- CD04 models the 8.8 from published dimensions; it no longer waits on BR07.
+- CD06 waits on CD04 and CD05 only.
+- New CD08 re-measures the engine (BD01), the CD009 (BD06), the axle (BR07) and the bought accessories, updates the model, and repeats CD06's numbers. CP03-CP10 and IN01 wait on it.
+- BD01 and BD06 go back to the build track.
+- Pulling the dead 12A (CP01) and measuring the empty bay (M01) cost no money and stay in the virtual phase."
