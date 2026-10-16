@@ -330,3 +330,46 @@ His words (chat, 2026-10-16): ""please help me dive into the engine swap project
 **Phase.** PLANNING. The project is the first one now (D-618), and planning has begun in earnest. The freeze (DS11) still moves it to SOURCING.
 
 **Left for the next plan run.** K5 (the ECU's pins at the dash: the EMU PRO's pinout is still not read). J5 (the donor search, run before a yard trip). DS02, DS07 and DS09 wait on M01 and DS13. DS10 (the budget) waits on all of them."
+D-622,exhaust,"Emissions: the LS keeps the donor's converters, O2 sensors and EVAP so it passes as its engine's year",2026-10-16,standing,,,01.62,,"**The LS keeps its donor's whole emissions system: both catalytic converters in the new exhaust, every O2 sensor, the EVAP canister and purge, and PCV, all run by the ECU, so the car passes Colorado's test as a car of the engine's year. Block 01.62, option (a).**
+
+His answer (desktop app, 2026-10-16): choice (a), no words. In chat the same day: ""please follow recomendetions on all blocks for the engine project"".
+
+The option in full: ""(a) Keep the donor's whole emissions system: both catalytic converters in the new exhaust, every O2 sensor, the EVAP canister and purge, PCV. The ECU runs them. Costs the converters (about $200-600 for two direct-fit universal ones, confirm) plus the donor's own sensors and canister, pulled with the engine. Forecloses nothing, and the car registers.""
+
+**Why.** After an engine change, Regulation 11 tests the newest of the vehicle and the engine (D-621, K2). The collector exemption is not pursued; it would need collector plates held since before 2009-09-01, and nothing says the car has them.
+
+**In the data.**
+- ls_devices LD11 (the upstream O2 sensors) and LD20 (EVAP purge) are no longer optional. Their notes say so; whether LD11's narrowbands or the wideband drive the fuelling is still the ECU's (K5).
+- DS03 designs in two converters and the downstream O2 bungs.
+- BR02 pulls the donor's O2 sensors, EVAP canister, purge valve and PCV parts with the engine.
+- parts EM01 (two converters; whether Colorado requires CARB- or EPA-approved aftermarket units is confirm) and EM02 (the donor's O2 sensors, canister and purge parts).
+- TU06 takes the car to a referee station with form DR2365."
+D-623,axle,"Rear axle: a yard Explorer 8.8 with discs on Drifting Dad's FB brackets, and the front goes 5-lug",2026-10-16,standing,,,01.63,,"**The LS's rear axle is a yard 1995-2001 Explorer Ford 8.8 with rear discs, on Drifting Dad's weld-on FB brackets with their panhard bar or Watts bars. The front goes 5-lug with their FC-hub kit. Block 01.63, option (a).**
+
+His answer (desktop app, 2026-10-16): choice (a), no words. In chat the same day: ""please follow recomendetions on all blocks for the engine project"".
+
+The option in full: ""(a) A 1995-2001 Explorer Ford 8.8 from a yard, which has rear discs and 31-spline axles, on Drifting Dad's weld-on FB brackets ($300) with their panhard bar ($220) or Watts bars ($300). The front goes 5-lug with their FC-hub kit ($300 plus FC hubs, bearings and brakes). About $1,000-2,000 all in (confirm the axle's price and whether it must be narrowed for the FB's track). Needs welding. Forecloses 4x110 wheels.""
+
+**Readings taken (CLAUDE.md §3).**
+- The option leaves panhard or Watts open. It is chosen in CAD, at the axle's clearance check against the exhaust and tank, since both are bought later and cost about the same.
+- The donor's ratio and limited-slip are looked for at the yard (3.73 with a limited-slip preferred, from the tag); a ratio is not worth a second axle.
+
+**In the data.**
+- DS08 is done by this ruling. Its open questions (narrowing for the FB's track, panhard or Watts, the brake lines and proportioning) go to the CAD rows.
+- OP41 and OP45 are the plan.
+- parts AX01-AX05 (the axle, the brackets, the panhard or Watts bars, the 5-lug kit, the FC front hubs, bearings and brakes).
+- A sourcing row finds the axle.
+- **Every wheel is 5x4.5 in (5x114.3) from now on.** Luxury C10, which sizes the wide body from the chosen wheels, is told so in its note."
+D-624,engine,Accessory drive: ICT Billet's compact kit with A/C and a 160 A alternator,2026-10-16,standing,,,01.64,,"**The LS runs ICT Billet's compact accessory drive with A/C, Corvette balancer spacing, with their 160 A ACDelco alternator option; the steering pump is left off or idled. Block 01.64, option (a).**
+
+His answer (desktop app, 2026-10-16): choice (a), no words. In chat the same day: ""please follow recomendetions on all blocks for the engine project"".
+
+The option in full: ""(a) ICT Billet's compact LS swap drive with A/C, Corvette balancer spacing, built for tight front clearance, with their 160 A ACDelco alternator option. Its price with A/C was not readable on 2026-10-16 (confirm). The steering pump is left off or replaced by an idler.""
+
+**Reading taken (CLAUDE.md §3).** The recommendation's flip condition (""unless its price with A/C comes in above Holley's - then (b), checked against the hood line at M01"") is kept. The first sourcing pass reads ICT Billet's price with A/C; if it is above Holley 20-138's, that is a new block, not a silent switch.
+
+**In the data.**
+- DS01 is done by this ruling. The hood-line and frame-rail fit is proven in CAD (the clearance row), not assumed.
+- OP70 is the plan.
+- parts AC01 (the kit with A/C) and AC02 (the 160 A ACDelco 335-1196, confirm).
+- Whether that alternator is commanded (LW40) or excited (L1-E1 6) is read off its sheet at sourcing, for electrical Y83 and K7."
