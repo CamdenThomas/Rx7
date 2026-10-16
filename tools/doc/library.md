@@ -64,6 +64,16 @@ with no finish time.
 393 pages in 13 duplicate files (one copy kept), 3,036 open. Queue: 1,229 items - 1,055 parse,
 113 parts-catalogue, 28 troubleshooting, 21 drawing, 12 index-only.
 
+**Engine material is skipped (D-620, 2026-10-16).** The 12A never runs again (D-616, D-617), so
+nothing that leaves with it is read: the rotary, its carburettor and fuel delivery, emissions,
+ignition, charging and starting, cooling, exhaust, the automatic, the propeller shaft and the A/C
+compressor. `build_queue.py` holds the rule (`ENGINE_DOCS` for whole documents, `ENGINE_TOPIC` /
+`KEEP_TOPIC` for pages of mixed ones, catalogue groups 1000A-2599A), born-skipped for new items and
+`--sweep` for the queue as it stands (it also re-opens anything the rules stop calling engine
+material, and re-prices every open item by today's tier). After the sweep: 406 items skipped,
+823 open - 674 parse, 102 parts-catalogue, 18 troubleshooting, 17 drawing, 12 index-only. The LS
+swap's own documents stay and moved from tier 4 to 2 (the engine project comes first).
+
 ## The priority (why the most valuable pages go first, across all PDFs)
 
 `build_queue.py` scores every item; `claim` always hands out the highest:
@@ -81,8 +91,8 @@ technical data, the bulletins, the body shop, training and emissions manuals, th
 fitted parts' datasheets [00-CAR]; the PMU, display and simulation vendor sheets [02-electrical].
 **3** - the replaced carburettor's manuals, the overhaul criteria, Yamamoto, the setup book,
 brochures, the TE catalogue, the 1983 diagram (already read) [00-CAR / 02-electrical]; the model
-library's electrical drawings [02-electrical]. **4** - the swap documents [01-engine], other
-model-library sheets [03-cad]. **5** - model-kit print guides, index only [03-cad].
+library's electrical drawings [02-electrical]. The swap documents [01-engine] are **2** since D-620.
+**4** - other model-library sheets [03-cad]. **5** - model-kit print guides, index only [03-cad].
 
 So the head of the queue is every troubleshooting table, then the 1981-83 data and the catalogue,
 then the 1985 and 1983 manuals' unread tables, and so on - each document's best pages early, not

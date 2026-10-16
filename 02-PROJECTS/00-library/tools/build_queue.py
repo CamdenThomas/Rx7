@@ -4,6 +4,7 @@
     python3 02-PROJECTS/00-library/tools/build_queue.py --merge [--dry]   merge items (phase 3)
     python3 02-PROJECTS/00-library/tools/build_queue.py --review [--dry]  a review item per failed one
     python3 02-PROJECTS/00-library/tools/build_queue.py --reprice [--dry] predictions and caps of every open item
+    python3 02-PROJECTS/00-library/tools/build_queue.py --sweep [--dry]   skip engine material, re-prioritise by tier (D-620)
 
 Every page of 00-CAR `pages` that is not finished (open or cited) lands in exactly one queue
 item: a few consecutive pages of one document that share a heading. Each item gets a kind, a
@@ -36,6 +37,57 @@ DRY = "--dry" in sys.argv
 TIER = {1: 500, 2: 350, 3: 200, 4: 100, 5: 20}
 SCOPE = {"this-car": 40, "mixed": 20, "unknown": 20, "other-year": 0, "other-model": -60, "none": -60}
 TROUBLE = re.compile(r"troubl|diagnos|symptom|possible cause|fault find", re.I)
+
+# Engine material is skipped (D-620, 2026-10-16): the 12A never runs again and leaves with its
+# automatic, its carburettor and fuel delivery, its emissions, ignition, charging and starting,
+# cooling, exhaust, propeller shaft and A/C compressor; the LS swap's own documents stay. A whole
+# document is skipped by its path; in a mixed one a page is skipped when its topic is engine
+# material and nothing in it is a part that stays (KEEP wins). Parts-catalogue groups 1000A-2599A
+# (engine to propeller shaft) are engine material.
+ENGINE_DOCS = (
+    "00-CAR/library/datasheets/PT006/", "00-CAR/library/datasheets/PT007/", "00-CAR/library/datasheets/PT008/",
+    "00-CAR/library/datasheets/PT054/", "00-CAR/library/datasheets/PT230/",
+    "00-CAR/library/docs/carburetor-manuals/", "00-CAR/library/docs/rotary-overhaul-criteria-1979/",
+    "00-CAR/library/docs/book-yamamoto-rotary-1981/", "00-CAR/library/docs/emissions-check-1981/",
+    "00-CAR/library/docs/ac-dealer-install/1980_ac_comp_repair",
+    "00-CAR/library/docs/fsm-1980-sections/80RX7_1A_Emissions", "00-CAR/library/docs/fsm-1980-sections/80RX7_4_Fuel_Inlet_Exh",
+    "00-CAR/library/docs/fsm-1980-sections/80RX7_5_Engine_Electric", "00-CAR/library/docs/fsm-1980-sections/80RX7_7A_Auto_Trans",
+    "00-CAR/library/docs/fsm-1985-sections/1985_RX-7_Workshop_Manual_Section_1_Engine",
+    "00-CAR/library/docs/fsm-1985-sections/1985_RX-7_Workshop_Manual_Section_2_Lubrication",
+    "00-CAR/library/docs/fsm-1985-sections/1985_RX-7_Workshop_Manual_Section_3_Cooling",
+    "00-CAR/library/docs/fsm-1985-sections/1985_RX-7_Workshop_Manual_Section_5_Engine_Electrical",
+    "00-CAR/library/docs/fsm-1985-sections/1985_RX-7_Workshop_Manual_Section_7B_Automatic_Transmission",
+    "00-CAR/library/docs/fsm-1985-sections/1985_RX-7_Workshop_Manual_Section_8_Propeller_Shaft",
+)
+ENGINE_TOPIC = re.compile(
+    r"rotary|\brotor|apex|eccentric|carbur|choke|emission|air injection|secondary air|catalys|thermal reactor|"
+    r"deceleration control|idle compensation|mixture control|throttle opener|shutter valve|tune-up|spark plug|"
+    r"ignition (system|control|coil)|igniter|distributor|alternator|starter|charging|oil pump|metering oil|"
+    r"lubrication|oil cooler|oil leak|stationary gear|radiator|water pump|thermostat|cooling|coolant|"
+    r"\beng(ine)?\b|long block|\ba/t\b|automatic trans|torque converter|kick ?down|inhibitor|governor|"
+    r"propeller|exhaust|muffler|intake|fuel pump|fuel filter|compression|compressor|"
+    r"\b(1\d|2[0-5])\d\dA", re.I)
+KEEP_TOPIC = re.compile(
+    r"ignition switch|fuel tank|fuel line|fuel gauge|sender|wiring diagram|component locator|fuse|instrument|"
+    r"wiper|washer|lamp|light|heat|blower|evaporator|condenser|receiver drier|body|door|window|seat|brake|"
+    r"steer|suspension|wheel|tire|paint|rust|noise|audio|horn|clutch|m/t|manual trans|drive axle|pinion|"
+    r"differential|jack|\ba/c\b(?![^/]*compressor)|refrigerant|air condition(?![^/]*compressor)", re.I)
+SKIP_RESULT = "skipped: engine material that leaves with the 12A (D-620)"
+
+
+def engine_doc(d):
+    return (d.get("path") or "").startswith(ENGINE_DOCS)
+
+
+def engine_pages(d, run):
+    """Whether these pages of one document are engine material: the whole document is, or every
+    page with a topic names engine material and nothing that stays."""
+    if engine_doc(d):
+        return True
+    topics = [(p.get("topic") or "").strip() for p in run]
+    named = [t for t in topics if t]
+    return bool(named) and all(ENGINE_TOPIC.search(t) and not KEEP_TOPIC.search(t) for t in named)
+
 
 BRIEF = {
     "parse": ("Read every page; put each fact as a facts row (spec, step, terminal, circuit, interval, part, "
@@ -293,6 +345,8 @@ def main():
         return review_items()
     if "--reprice" in sys.argv:
         return reprice()
+    if "--sweep" in sys.argv:
+        return sweep()
     rx7.take_write_lock()
     docs = {d["id"]: d for d in rx7.read_table(CAR, "docs")[1]}
     pages = rx7.read_table(CAR, "pages")[1]
@@ -335,8 +389,10 @@ def main():
             brief = BRIEF[kind] + (f" Already cited by the record: {' '.join(cited)} - read them for what is still missing; "
                                    "the page's rows column lists what is held." if cited else "")
             brief += f" Facts go to {d.get('owner') or '00-CAR'} at the merge."
+            skip = engine_pages(d, run)
             new.append({"priority": str(pr), "kind": kind, "doc": did, "pages": span([int(p["n"]) for p in run]),
-                        "section": (run[0].get("topic") or "")[:70], "brief": brief, "after": "", "state": "open"})
+                        "section": (run[0].get("topic") or "")[:70], "brief": brief, "after": "",
+                        "state": "skipped" if skip else "open", "result": SKIP_RESULT if skip else ""})
     pages_by_id = {p["id"]: p for p in pages}
     for r in new:
         price_item(r, docs, pages_by_id)
@@ -349,6 +405,49 @@ def main():
         print(f"  {k:10} {sum(1 for r in new if r['kind'] == k)}")
     if not DRY and new:
         rx7.write_table(LIB, "queue", qh, queue + new)
+    return 0
+
+
+def sweep():
+    """Re-apply the rules to every open item already queued (D-620): engine material is skipped,
+    and each item's priority is recomputed from its document's tier today (the swap's documents
+    moved up when the engine project came first). Never touches an item an agent has claimed."""
+    rx7.take_write_lock()
+    docs = {d["id"]: d for d in rx7.read_table(CAR, "docs")[1]}
+    pages_by_id = {p["id"]: p for p in rx7.read_table(CAR, "pages")[1]}
+    qh, queue = rx7.read_table(LIB, "queue")
+    skipped = moved = 0
+    reopened = 0
+    for q in queue:
+        if not q.get("doc"):
+            continue
+        d = docs.get(q["doc"], {})
+        run = [pages_by_id[f"{q['doc']}.{n:03d}"] for n in pages_in(q.get("pages") or "") if f"{q['doc']}.{n:03d}" in pages_by_id]
+        if q.get("state") == "skipped" and q.get("result") == SKIP_RESULT and not engine_pages(d, run):
+            q["state"], q["result"] = "open", ""   # the rules no longer call it engine material
+            reopened += 1
+        if q.get("state") != "open":
+            continue
+        if engine_pages(d, run):
+            q["state"], q["result"] = "skipped", SKIP_RESULT
+            skipped += 1
+            continue
+        if not run:
+            continue
+        tier = int(d.get("tier") or 3)
+        scope = d.get("scope") if d.get("scope") != "mixed" else (run[0].get("scope") or "mixed")
+        kinds = {p.get("kind") for p in run}
+        pr = TIER.get(tier, 200) + SCOPE.get(scope, 0)
+        pr += 60 if any(p["status"] == "open" for p in run) else 0
+        pr += {"diagnosis": 80, "figure": 20}.get(q.get("kind"), 0) + (40 if "table" in kinds else 0)
+        pr -= int(run[0]["n"]) // 25
+        if str(pr) != q.get("priority"):
+            q["priority"] = str(pr)
+            moved += 1
+    print(f"sweep: {skipped} items skipped as engine material, {reopened} reopened, {moved} re-prioritised; "
+          f"{sum(1 for q in queue if q.get('state') == 'open')} open")
+    if not DRY:
+        rx7.write_table(LIB, "queue", qh, queue)
     return 0
 
 

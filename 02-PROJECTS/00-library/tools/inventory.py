@@ -57,10 +57,10 @@ RULES = [
     ("00-CAR/library/docs/te-catalogue-2018/", "02-electrical", 3, "other-model"),
     ("02-PROJECTS/02-electrical/", "02-electrical", 2, "this-car"),
     ("02-PROJECTS/03-cad/model/library/electrical/", "02-electrical", 3, "this-car"),
-    ("02-PROJECTS/03-cad/model/library/swap/nissan-", "01-engine", 4, "other-model"),
+    ("02-PROJECTS/03-cad/model/library/swap/nissan-", "01-engine", 2, "other-model"),  # 2 since D-620: the engine swap comes first
     ("02-PROJECTS/03-cad/model/library/swap/chevy-", "03-cad", 5, "other-model"),
     ("02-PROJECTS/03-cad/model/library/swap/ls3-v8-engine-moving-model", "03-cad", 5, "other-model"),
-    ("02-PROJECTS/03-cad/model/library/swap/", "01-engine", 4, "other-model"),
+    ("02-PROJECTS/03-cad/model/library/swap/", "01-engine", 2, "other-model"),  # 2 since D-620
     ("02-PROJECTS/03-cad/model/library/rotary/", "03-cad", 5, "other-model"),
     ("02-PROJECTS/03-cad/model/library/", "03-cad", 4, "other-model"),
 ]
