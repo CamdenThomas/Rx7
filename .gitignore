@@ -125,3 +125,6 @@ keystore.properties
 02-PROJECTS/02-cad/model/fedora-copy/
 # The simulation vendors' models and datasheets (00-CAR sources S-491..S-499): their licences keep them out of git
 02-PROJECTS/01-electrical/00-design/sim/vendor/
+
+# His working photo dumps (2026-10-16): photos stay out of git; the agent sorts them into the record by hand
+today-temp/
