@@ -8,3 +8,34 @@ id,title,opened,ask,why,options,recommend,stops
 A donor in hand also makes the CAD exact (R11: a measured part beats a model). The engine family (D-393) and the axle (D-623) are already ruled, and every FB V8 build found fits an LS.","(a) Buy the engine and axle donors now, from today's sightings - the LM4 if it is still there, otherwise the freshest LC9 - plus a V8 Explorer's 8.8. About $430 plus cores at U-Pull-&-Pay's posted prices ($250.99 engine without accessories, $180.99 disc rear end), and a day's trip. They are measured for the CAD. The CD009 (about $1,650-2,150 shipped) still waits on the clearance proof (CD06). Forecloses nothing: the parts are cheap and resellable.
 (b) Find and track only (D-626 as it stands). Re-run the search before each decision; buy after the freeze. Costs nothing now. The LM4 will almost certainly be gone, and the CAD is built from figures until then.
 (c) Buy all three now, the CD009 included. The CAD is exact soonest, but about $2,100-2,600 is spent before any clearance is proven.","(a), unless you want no money spent at all before the freeze - then (b).","BR02 (the engine pull), BR07 (the axle), and when the CAD becomes exact (CD08's measurements)."
+01.66,"Engine: stay LS, or an inline-six, the Lexus V8, or a diesel",2026-10-16,"Should the swap stay with the LS 5.3 V8, or switch to an inline-six (Toyota 2JZ or BMW M54), the Lexus 1UZ V8, or a diesel that runs biodiesel?","Camden, 2026-10-16: ""so not to poop on the ls what is really arround me at local pick and pulls that might intrest me, ive always actually prefered i6 engines for smoothness, we also talked before about deasil engines for possible biodeasle use all i am saying is lets not throw all egs at the ls lets look are all good realiable simple engines that i could make baller and work perfect with the rx7 plan rwd manual fun to drive!""
+
+D-393 chose the aluminum LS 5.3 on power, weight, price and FB precedent. Nothing has been bought (D-626), so changing engines now costs only design time. Later it costs money.
+
+What the three U-Pull-&-Pay yards held on 2026-10-16 (sightings SG33-SG42):
+- one Toyota 2JZ, a 2001 IS300 in Denver
+- five rear-drive BMW sixes: a Z3 2.8, a 330Ci, a 528i, a 328i and the 335i's
+- three Lexus V8s (GS400, LS400, LS430) in Aurora
+- two modern diesels (an X5 35d and a 328d)
+- more than 25 GM Atlas 4.2 sixes and many Jeep 4.0s; both are poor fits for a light FB (options OP85, OP86)
+
+None of them came with a manual gearbox that suits the FB. These yards price an engine by part type, so the engine costs about the same whichever one is pulled.
+
+On smoothness: a cross-plane V8 like the LS and an inline-six are both fully balanced, so neither shakes. What a six changes is its sound and the way it revs. The Lexus 1UZ is the V8 known for running like a six.
+
+On biodiesel: only old mechanical diesels run B100. None was at these yards, and every one is heavier and slower than the LS (option OP88). The diesels the yards do have must keep their filters under Colorado's swap rule and are not rated for B100 (option OP87).
+
+What stays whichever engine is picked:
+- the Explorer 8.8 rear axle and its 5-lug conversion (D-623)
+- the EMU PRO standalone ECU, which runs any of these engines
+- the fuel pump and lines, the electrical project and the cooling plan
+
+What a different engine changes:
+- engine mounts, oil pan, headers and accessory drive (DS01-DS03, DS07, D-624)
+- the engine end of the swap wiring (tables ls_cavities, ls_devices, ls_wires)
+- the engine CAD model (CD01-CD03)
+- for the BMW or Lexus engines, the gearbox too: the CD009 and its Sikky adapter go","(a) Keep the LS 5.3 V8 as planned (D-393). No added cost and the most power for the weight and the money. It is the only one here with several FB builds behind it and a CD009 adapter already chosen. It rules out the sound of a six and the biodiesel idea.
+(b) Switch to a Toyota 2JZ-GE inline-six (IS300 or GS300 donor; its turbo parts bolt on later), keeping the CD009 through a Collins adapter. The engine-side design is redone; the gearbox, axle, ECU and fuel stay. The iron block is heavier and sits further forward, the firewall and hood are likely cut, and there is one donor in range today. It is the only six with RX-7 builds behind it, one of them an FB-generation car.
+(c) Switch to a BMW M52 or M54 inline-six (Z3, 330Ci or 528i donor), with a BMW manual gearbox bought in place of the CD009 and its adapter. It is the lightest and smoothest six, with the most donors and the cheapest engine. It has less power than the LS, no FB build was found, and the mounts, gearbox and tunnel are all custom.
+(d) Switch to a Lexus 1UZ or 3UZ V8: aluminum, very durable and as smooth as a six. It never came with a manual, so it needs a gearbox adapter. In another RX-7 it needed a new crossmember and pan to clear in height, and no FB build was found.
+(e) Switch to a diesel that runs biodiesel: an old mechanical engine (Mercedes OM606 or OM617, VW 1.9 TDI ALH, Cummins 4BT) bought privately, since none is in these yards. At 600-850 lb it is the heaviest choice and the slowest, and it turns the FB into a torquey cruiser. Colorado's diesel inspection for a swapped engine is still to confirm.","(a), unless the sound and feel of a six is worth a heavier nose, a firewall and hood cut and redoing the engine-side design - then (b), the only six with RX-7 builds behind it that keeps the CD009","Buying an engine donor (block 01.65, J5): a donor bought first may be the wrong engine. Everything else goes on the LS plan (D-393) meanwhile"

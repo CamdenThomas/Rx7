@@ -31,3 +31,13 @@ SG29,YD03,"2000 Ford Explorer, 5.0 V8, AWD",1FMDU84P2YZA78228,P,5.0 V8,unknown,c
 SG30,YD06,"1999 Mercury Mountaineer, 5.0 V8, AWD",4M2ZU55P3XUJ13968,P,5.0 V8,unknown,confirmed,32,2026-09-25,2026-10-16,,Same axle as the Explorer V8,axle
 SG31,YD06,"1996 Ford Explorer, 5.0 V8, AWD",1FMDU35P6TZB37923,P,5.0 V8,unknown,confirmed,41,2026-09-15,2026-10-16,,Set 31 days - may go soon,axle
 SG32,YD04,2006 Infiniti G35 coupe,JNKCV54E66M700980,,,unknown,probable,226,2026-09-09,2026-10-16,,The only coupe in range; the yard's record does not say manual or automatic - call. A 2006 6-speed would be a CD009 (read the tag). Set 37 days,transmission
+SG33,YD03,2001 Lexus IS300,JTHBD182910032809,,2JZ-GE 3.0 I6,iron,confirmed,22,2026-10-02,2026-10-16,,"""The only 2JZ in range (option OP80). VIN decoded by NHTSA: 2JZ-GE, RWD; the yard lists it automatic""",engine
+SG34,YD03,1998 BMW Z3 2.8,4USCJ3327WLC09586,,M52 2.8 I6,aluminum,probable,24,2026-10-05,2026-10-16,,"""Option OP82. RWD; the yard's record does not say manual or automatic - a Z3 is the likeliest manual BMW donor in range (call, or read the shifter)""",engine
+SG35,YD03,2002 BMW 330Ci,WBABS53402JU91968,,M54 3.0 I6,aluminum,confirmed,28,2026-10-12,2026-10-16,,"""Option OP82. RWD coupe; manual or automatic not listed. The MS43 DME is the easy one""",engine
+SG36,YD04,2000 BMW 528i,WBADM6346YGU22121,,M52TU 2.8 I6,aluminum,confirmed,212,2026-10-15,2026-10-16,,Option OP82. RWD; manual or automatic not listed,engine
+SG37,YD03,1999 BMW 328i convertible,WBABK833XXEY90668,,M52 2.8 I6,aluminum,confirmed,40,2026-09-23,2026-10-16,,Option OP82. The yard lists it 4-speed automatic,engine
+SG38,YD04,1998 Lexus GS400,JT8BH68X8W0013530,,1UZ-FE 4.0 V8,aluminum,confirmed,226,2026-09-09,2026-10-16,,"""Option OP84. VIN decoded by NHTSA: 1UZ-FE, RWD, 5-speed automatic. Set 37 days - may go soon""",engine
+SG39,YD04,1999 Lexus LS400,JT8BH28F2X0144616,,1UZ-FE 4.0 V8,aluminum,confirmed,226,2026-09-09,2026-10-16,,"""Option OP84. VVT-i 1UZ, RWD, 5-speed automatic. Set 37 days - may go soon""",engine
+SG40,YD04,2002 Lexus LS430,JTHBN30F520083779,,3UZ-FE 4.3 V8,aluminum,confirmed,229,2026-09-16,2026-10-16,,"""Option OP84. RWD, 5-speed automatic""",engine
+SG41,YD03,2011 BMW X5 xDrive35d,5UXZW0C56BL370902,,M57 3.0 I6 diesel,aluminum,confirmed,7,2026-10-05,2026-10-16,,"""Option OP87. AWD, 6-speed automatic, particulate filter and urea injection""",engine
+SG42,YD06,2015 BMW 328d,WBA3D3C58FK158249,,N47 2.0 I4 diesel,aluminum,confirmed,23,2026-10-03,2026-10-16,,"""Option OP87. RWD; the N47's rear timing chain is its known weak point""",engine
