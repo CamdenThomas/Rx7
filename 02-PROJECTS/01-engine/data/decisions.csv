@@ -373,3 +373,24 @@ The option in full: ""(a) ICT Billet's compact LS swap drive with A/C, Corvette 
 - OP70 is the plan.
 - parts AC01 (the kit with A/C) and AC02 (the 160 A ACDelco 335-1196, confirm).
 - Whether that alternator is commanded (LW40) or excited (L1-E1 6) is read off its sheet at sourcing, for electrical Y83 and K7."
+D-625,engine,"The engine TODO is plan, sourcing and a CAD model that proves every clearance before the car is changed; the swap's CAD files saved",2026-10-16,standing,,,,D-621 D-622 D-623 D-624 D-518,"**The engine project's TODO is about the plan, sourcing the parts, and a CAD model that proves every clearance before the car is changed. The swap's CAD files are saved, unprocessed, in the engine project's own CAD folder.**
+
+His words (chat, 2026-10-16): ""then find any cad files relevant to the plan for the engine or the transmission or any accesorys, do not prosses any of then please just save all the cad files that you say are relvant into the engine/cad folder. then please rework the todo to be all about plan and sounrsing parts and gurrenteeing clearence and making a perfect cad model (as cad is critical for a project to be merged to car) this should include finding all main doner parts, engine transmission and rear axle.""
+
+**The CAD files.** `02-PROJECTS/01-engine/cad/` holds:
+- copies of the found models from 03-cad's library that are real size and useful: the LS3 envelope, block, heads and crank; two LS blocks; an LS with accessories; an LS with a gearbox; the LS7 engineering CAD; the LS header flange and a header mock kit; an FB electric-fan shroud; a generic radiator;
+- the CD009 adapter and 350Z clutch documents, Holley's LS oil-pan sheets, the LS install guides and dimension pages, and the EMU PRO CAD;
+- Wilwood's dimensioned compact-master drawing, from the maker.
+
+None is converted, measured or placed. The scale models and the mis-scaled ones were left out. The folder is git-ignored like the library; its README (tracked) lists each item and what it is for. Not found free: the CD009, a Ford 8.8, the SD7, a SPAL 16 in fan, the AD244 / CS130D alternator, the Sikky plate and the ICT Billet drive. They sit behind an account, are only on request, or are unpublished. Each is modelled from published figures and then from the part in hand (R11).
+
+**Readings taken (CLAUDE.md §3).**
+- ""All about plan, sourcing, clearance and CAD"" is read as the front of the list, not as deleting the rest. The bench and car rows (breakdown, polish, paint, rebuild, car prep, install, tune) stay, on a build track behind it. That keeps every row already planned, and none of it can start before its gate.
+- ""CAD is critical for a project to be merged to car"" is read as a gate: every row that changes the car (CP03-CP10, IN01), the car-prep buy (BR06) and the freeze (DS11) wait on CD06, the clearance proof.
+- ""Finding all main donor parts"" covers the three donors by name: the engine (J1, J2, J5, BR02), the CD009 (SR01, BR03) and the Explorer 8.8 (SR02, BR07), plus the FC front hubs (BR08). The CD009 may now be bought once J4 shows it fits, not after the freeze, because the CAD needs the real unit measured (BD06). It is the first money spent before the freeze on a part other than the engine, and he asked for it by name.
+
+**In the data.**
+- work gains a `track` column (design | build): P Plan, S Source and C CAD, plus BD01 and BD06 (the donor measurements), are design; the rest is build.
+- New rows SR01-SR04 (the CD009 and 8.8 searches, the drive's price, a parts round), BR07 (the 8.8), BR08 (the FC hubs) and CD01-CD07. CD07 hands the swap to 03-cad's car model.
+- DS02, DS03 and DS07 now design from CD01-CD03.
+- CD06's proposed minimums: 12 mm static, 20 mm where the engine rocks, 25 mm from the exhaust to lines and wiring. They are confirmed in that row."

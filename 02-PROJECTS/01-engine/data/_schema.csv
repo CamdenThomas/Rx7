@@ -131,3 +131,4 @@ parts,usd_low,int,no,,
 parts,usd_high,int,no,,
 parts,work,str,no,,the design row that chose it and the build row that fits it
 parts,note,text,no,,
+work,track,enum(build|design),no,,"which list the row lives in (D-625): design = plan, sourcing the donors and parts, and the CAD model with its clearance proof - everything before the car is changed; build = the bench work and everything that changes the car, which waits on the clearance proof CD06"

@@ -128,3 +128,7 @@ keystore.properties
 
 # His working photo dumps (2026-10-16): photos stay out of git; the agent sorts them into the record by hand
 today-temp/
+
+# The engine swap's CAD files (2026-10-16, D-625): copies of the found models it uses and vendor drawings, kept on this PC like the model library; only the README is tracked
+02-PROJECTS/01-engine/cad/*
+!02-PROJECTS/01-engine/cad/README.md

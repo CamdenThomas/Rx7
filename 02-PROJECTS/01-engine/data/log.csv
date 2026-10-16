@@ -18,3 +18,4 @@ L-0016,2026-10-12,answers,D-489 HO13 LW33,"Block 02.15 answered (a) in chat: the
 L-0017,2026-10-13,apply,D-500 D-501,"Applied 02.16 (a) D-500, 02.17 (a) D-501"
 L-0018,2026-10-13,plan,K6 D-506 D-507,"K6 finished: L1-S7 for the optional wires (D-506, applies D-500), the coolant level switch LD30 / LW49 on L1-S2 11 (D-507, applies D-501); parts EL01 and CL01; HO09 and HO14 updated"
 L-0019,2026-10-16,plan,D-617 D-618 D-619 D-620 D-621,"Engine first: projects renumbered (D-618), 01.61 closed LS-first (D-617), electrical off the 12A (D-619), library skips engine material (D-620), the swap's first design pass (D-621) - blocks 01.62-01.64 raised"
+L-0020,2026-10-16,plan,D-622 D-623 D-624 D-625,"Blocks 01.62-01.64 applied (D-622-D-624); CAD files saved to the engine's cad folder; TODO reworked to plan, sourcing and CAD with clearance proof CD06 gating the car (D-625)"
