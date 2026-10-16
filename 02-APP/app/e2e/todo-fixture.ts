@@ -1,6 +1,6 @@
 // A project that exists only in the tests: the copy of the record the browser build reads
 // (fixture/export.json) with one more area laid over it, `90-manual`, whose rows carry briefs
-// and steps (01-electrical D-533). Nothing here is ever written to the tree: todo.spec.ts
+// and steps (02-electrical D-533). Nothing here is ever written to the tree: todo.spec.ts
 // hands the patched export to the page with page.route, so the TODO manual is tested on rows
 // that do not move when the real record does.
 

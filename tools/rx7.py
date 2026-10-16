@@ -85,7 +85,7 @@ def waiting(rows):
 # Columns whose vocabulary THIS TOOL owns, not the project. Every area's _schema.csv must
 # declare exactly these, so the same column cannot mean different things in two projects.
 # (Inferring them per project from the values that happened to exist produced four false
-# refusals on 2026-09-11 - `blocked` work, a `standing` 03-engine decision. R7.)
+# refusals on 2026-09-11 - `blocked` work, a `standing` 01-engine decision. R7.)
 VOCAB = {
     ("decisions", "status"): "enum(" + "|".join(sorted(DEC_STATUS)) + ")",
     ("work", "state"): "enum(" + "|".join(sorted(WORK_STATE)) + ")",
@@ -115,7 +115,7 @@ DATE_RE = re.compile(r"^\d{4}-\d{2}(-\d{2})?$")
 DATETIME_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:\d{2})?$")
 ID_RE = re.compile(r"^[A-Z]{1,4}-\d{1,4}$")
 # Blocks are numbered per project, <prefix>.<n>: `01.12` is the twelfth block raised for
-# 02-PROJECTS/01-electrical, `03.07` the seventh for 04-luxury (D-356). The prefix is
+# 02-PROJECTS/02-electrical, `03.07` the seventh for 04-luxury (D-356). The prefix is
 # the project directory's two-digit number; 00-CAR and 01-REFERENCE (an area until
 # 2026-10-13, D-519) would collide with 00 and 01, so theirs are CAR and REF. The number has at least two digits, so no id is
 # shorter than `00.01` — but a bare `13.80` in prose is a voltage, so a block id is only
@@ -2079,7 +2079,7 @@ def export_data() -> dict:
     # The generated harness drawings (D-385), one pin ladder and one route map per leg, so the
     # Manual's Diagrams page can show the new harness beside the factory circuits (plan P41).
     out["diagrams"] = []
-    dg = ROOT / "02-PROJECTS" / "01-electrical" / "00-design" / "harness" / "diagrams"
+    dg = ROOT / "02-PROJECTS" / "02-electrical" / "00-design" / "harness" / "diagrams"
     if dg.is_dir():
         for leg in sorted(p for p in dg.iterdir() if p.is_dir() and (p / "A-pin-ladder.svg").is_file()):
             for sheet, fname in (("pin ladder", "A-pin-ladder.svg"), ("route map", "B-route-map.svg")):
@@ -2620,7 +2620,7 @@ def _pairs(items):
 
 # ------------------------------------------------------------------ many writers (D-574)
 #
-# Many small agents parse the library at once (05-library's queue). Every command that writes
+# Many small agents parse the library at once (00-library's queue). Every command that writes
 # takes one exclusive lock on the tree for its whole read-change-write, so two writers never
 # read the same table and each write over the other's row. Readers take no lock.
 
@@ -2870,7 +2870,7 @@ def cmd_finish(args):
 
 def dup_specs():
     """Specs that state the same fact twice: one item, one value, one `applies` (R2). Advisory
-    until 05-library's merge closes them (D-574); then `check` refuses them."""
+    until 00-library's merge closes them (D-574); then `check` refuses them."""
     car = ROOT / "00-CAR"
     if not (car / "data" / "specs.csv").exists():
         return []
@@ -2951,7 +2951,7 @@ def words_saved(words: str) -> bool:
 
 def cmd_sql(args):
     """A read-only query over one area, or with AREA `-` over the whole tree (plan P22): each
-    area is a schema named after it (`"01-electrical".work`), and the tables every area shares
+    area is a schema named after it (`"02-electrical".work`), and the tables every area shares
     - work, decisions, blocks, inbox, log, picks, parts - are also one view each with an
     `area` column."""
     import sqlite3  # here, not at the top: the phone runs this file without sqlite3
@@ -3362,9 +3362,9 @@ def cmd_picks(args):
 
 
 def cmd_diagrams(args):
-    """Regenerate the two drawings of every harness leg (D-385): 01-electrical/00-design/harness/diagrams/<leg>/
+    """Regenerate the two drawings of every harness leg (D-385): 02-electrical/00-design/harness/diagrams/<leg>/
     A-pin-ladder.svg and B-route-map.svg; and the plan sheet of every box with the boxes' overview
-    (D-613): <part>/diagrams/<box>-plan.svg and 00-design/diagrams/boxes-plan.svg. Reads 01-electrical
+    (D-613): <part>/diagrams/<box>-plan.svg and 00-design/diagrams/boxes-plan.svg. Reads 02-electrical
     housings, cavities, devices, routes, boxes, fuses, relays, node_conductors, cables and work;
     writes those SVGs and nothing else. A read-only projection: `check` never looks at it and it
     never refuses a commit. rc 2 when a sheet fails the overlap rule and is not written.
@@ -3455,7 +3455,7 @@ def cmd_selftest(args):
     puts the planner to work on something that is not ready, and one that wrongly calls
     it 'unmet' stops the project with no error anywhere. Both fail silently (R7). The same
     goes for the writer of his answers: one that loses a character loses his words (R3)."""
-    A, B = "01-electrical", "04-luxury"
+    A, B = "02-electrical", "04-luxury"
     fails = []
 
     def mk(rows, phase="PLANNING", blocks=None):
@@ -3493,7 +3493,7 @@ def cmd_selftest(args):
     amb = mk([("A1", "", "open")])
     amb["work_ids"]["A1"].append(B)
     amb["work"][(B, "A1")] = "open"
-    expect("an ambiguous unqualified work id is refused", gate_state("A1", "03-engine", amb)[2])
+    expect("an ambiguous unqualified work id is refused", gate_state("A1", "01-engine", amb)[2])
 
     expect("a dependency ring is found",
            gate_cycles(mk([("A1", "A2", "open"), ("A2", "A3", "open"), ("A3", "A1", "open")])))
@@ -3849,7 +3849,7 @@ def cmd_selftest(args):
     def cav(rows_fn):
         return lambda c: [rows_fn(x) for x in c]
 
-    earea = ROOT / "02-PROJECTS" / "01-electrical"
+    earea = ROOT / "02-PROJECTS" / "02-electrical"
 
     def efind(rows, needle):
         probs, waits = check_electrical(earea, rows=rows)

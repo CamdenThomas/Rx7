@@ -1,6 +1,6 @@
 id,system,title,when,tools,source,applies
 PR-001,Climate,Recover the refrigerant before opening the A/C system,"before the compressor, condenser or lines are disturbed",a shop with recovery equipment,K-015,
-PR-002,Electrical,Keep a stored lithium battery above its BMS cutoff,monthly while the Ionic S9 waits unfitted,the Ionic app,Ionic battery care - 02-PROJECTS/01-electrical,
+PR-002,Electrical,Keep a stored lithium battery above its BMS cutoff,monthly while the Ionic S9 waits unfitted,the Ionic app,Ionic battery care - 02-PROJECTS/02-electrical,
 PR-003,Body,Jack the car and set it on safety stands,before any work under the car,"floor jack, safety stands, wheel chocks",S-002,
 PR-004,Body,Tow the car,whenever the car is moved by a tow truck or a rope,"tow truck with a wheel lift, or wheel dollies",S-002,
 PR-005,Engine,Change the engine oil and filter,"oil every 7,500 mi / 7.5 months, filter every 15,000 mi / 15 months (interval oil)","drain pan, band-type filter wrench",S-002,

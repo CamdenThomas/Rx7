@@ -1,7 +1,7 @@
 # The two tracks, and the car coming apart once (was CLAUDE.md §1)
 
 **A project whose `work` has a `track` column has two lists** (D-386 → D-405; today
-`01-electrical`). Each row's `track` says which:
+`02-electrical`). Each row's `track` says which:
 
 - **design**: his checklist in working order and every agent row, ready or blocked and by
   what, then the open blocks. Its last two rows are the design review (the review playbook)
@@ -22,7 +22,7 @@ apart, and Part 4 starts at E35. A row's part is derived from its gate, never ty
 that needs the car apart gates on S1. What S1 itself waits on is block `01.12` (2026-09-26).
 
 **His rows are a manual, not a list** (D-533). A project that declares `briefs` and `steps`
-(today `01-electrical`) holds, for every open row of his:
+(today `02-electrical`) holds, for every open row of his:
 
 - one `briefs` row keyed by the work id: `goal` (what is true when it is done), `where`,
   `time`, `tools` (one per line), `parts` (ids of the project's `parts`), `before` (one per

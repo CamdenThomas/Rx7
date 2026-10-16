@@ -108,7 +108,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/corner (SP-113, SP-1519; corner/params.py)",
+   "source": "02-PROJECTS/03-cad/model/corner (SP-113, SP-1519; corner/params.py)",
    "record": "PT042",
    "record_name": "Front rotor hubs",
    "side": "FL",
@@ -219,7 +219,7 @@
     "PT530-FL",
     "PT526-FL"
    ],
-   "source": "02-PROJECTS/02-cad/model/corner (SP-1513, SP-1520, SP-1519; corner/params.py)",
+   "source": "02-PROJECTS/03-cad/model/corner (SP-1513, SP-1520, SP-1519; corner/params.py)",
    "record": "PT525",
    "record_name": "Road wheels",
    "side": "FL",
@@ -232,13 +232,13 @@
      "dim": "wheel centre, across",
      "value_mm": 710.0,
      "how": "factory",
-     "source": "02-cad DT02 (SP-132, S-004 p.14)"
+     "source": "03-cad DT02 (SP-132, S-004 p.14)"
     },
     {
      "dim": "wheel centre height",
      "value_mm": 294.5,
      "how": "derived",
-     "source": "02-cad DT02 (tyre size, unloaded)"
+     "source": "03-cad DT02 (tyre size, unloaded)"
     },
     {
      "dim": "rim bead seat diameter",
@@ -343,7 +343,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/corner (SP-128; corner/params.py)",
+   "source": "02-PROJECTS/03-cad/model/corner (SP-128; corner/params.py)",
    "record": "PT530",
    "record_name": "Tyres",
    "side": "FL",
@@ -419,7 +419,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/corner (SP-124, SP-1519, PT526 note; corner/params.py)",
+   "source": "02-PROJECTS/03-cad/model/corner (SP-124, SP-1519, PT526 note; corner/params.py)",
    "record": "PT526",
    "record_name": "Wheel nuts",
    "side": "FL",
@@ -561,7 +561,7 @@
     "hp-front-end",
     "hp-rear-end"
    ],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT704",
    "record_name": "Body shell (welded unit body)",
    "side": null,
@@ -620,7 +620,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT778",
    "record_name": "Front floor pan",
    "side": null,
@@ -726,7 +726,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT779",
    "record_name": "Rear floor pan",
    "side": null,
@@ -751,7 +751,7 @@
      "dim": "rear end panel, lengthwise",
      "value_mm": -3150.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "rear wheelhouse inner face, across",
@@ -808,7 +808,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT781",
    "record_name": "Floor cross members",
    "side": null,
@@ -884,7 +884,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT755",
    "record_name": "Front side frames, R and L",
    "side": "R",
@@ -996,7 +996,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT780",
    "record_name": "Rear side frames, R and L",
    "side": "R",
@@ -1126,7 +1126,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT782",
    "record_name": "Torque boxes, R and L",
    "side": "R",
@@ -1202,7 +1202,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (blueprint the-blueprints 83684)",
+   "source": "02-PROJECTS/03-cad/model/unibody (blueprint the-blueprints 83684)",
    "record": "PT771",
    "record_name": "Side sill panels, R and L",
    "side": "R",
@@ -1290,7 +1290,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT783",
    "record_name": "Inner side sill panels, R and L",
    "side": "R",
@@ -1366,7 +1366,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (blueprint the-blueprints 83684)",
+   "source": "02-PROJECTS/03-cad/model/unibody (blueprint the-blueprints 83684)",
    "record": "PT769",
    "record_name": "Hinge pillars, inner and outer, R and L",
    "side": "R",
@@ -1391,7 +1391,7 @@
      "dim": "belt line height",
      "value_mm": 855.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -1442,7 +1442,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (blueprint the-blueprints 83684)",
+   "source": "02-PROJECTS/03-cad/model/unibody (blueprint the-blueprints 83684)",
    "record": "PT770",
    "record_name": "Front pillars, inner, R and L",
    "side": "R",
@@ -1455,31 +1455,31 @@
      "dim": "A-pillar top, lengthwise",
      "value_mm": -1180.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "A-pillar top height",
      "value_mm": 1130.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof front edge, lengthwise",
      "value_mm": -1200.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof half-width",
      "value_mm": 560.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "belt line height",
      "value_mm": 855.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -1530,7 +1530,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (blueprint the-blueprints 83684)",
+   "source": "02-PROJECTS/03-cad/model/unibody (blueprint the-blueprints 83684)",
    "record": "PT976",
    "record_name": "Centre pillars (B-pillar and sail), R and L",
    "side": "R",
@@ -1567,7 +1567,7 @@
      "dim": "roof half-width",
      "value_mm": 560.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -1618,7 +1618,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (blueprint the-blueprints 83684)",
+   "source": "02-PROJECTS/03-cad/model/unibody (blueprint the-blueprints 83684)",
    "record": "PT767",
    "record_name": "Roof rails, inner and outer, R and L",
    "side": "R",
@@ -1631,25 +1631,25 @@
      "dim": "roof half-width",
      "value_mm": 560.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof front edge, lengthwise",
      "value_mm": -1200.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof rear edge (hatch hinge line), lengthwise",
      "value_mm": -2230.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof's highest point, lengthwise",
      "value_mm": -1600.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -1700,7 +1700,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (blueprint the-blueprints 83684; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut)",
+   "source": "02-PROJECTS/03-cad/model/unibody (blueprint the-blueprints 83684; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut)",
    "record": "PT768",
    "record_name": "Quarter panels, R and L",
    "side": "R",
@@ -1737,19 +1737,19 @@
      "dim": "belt line height",
      "value_mm": 855.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "hatch aperture bottom, lengthwise",
      "value_mm": -3020.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "hatch aperture bottom height",
      "value_mm": 860.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "door opening rear, lengthwise",
@@ -1761,7 +1761,7 @@
      "dim": "rear end panel, lengthwise",
      "value_mm": -3150.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "sill bottom height",
@@ -1818,7 +1818,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT777",
    "record_name": "Rear fender panels, R and L",
    "side": "R",
@@ -1900,7 +1900,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT784",
    "record_name": "Floor decks, R and L",
    "side": "R",
@@ -1925,7 +1925,7 @@
      "dim": "rear end panel, lengthwise",
      "value_mm": -3150.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -1976,7 +1976,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT754",
    "record_name": "Front wheel aprons, R and L",
    "side": "R",
@@ -2001,7 +2001,7 @@
      "dim": "strut tower top height",
      "value_mm": 754.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "fender fixing nuts, across",
@@ -2031,7 +2031,7 @@
      "dim": "radiator support, lengthwise",
      "value_mm": 600.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "firewall, lengthwise",
@@ -2100,7 +2100,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT766",
    "record_name": "Cowl side panels, R and L",
    "side": "R",
@@ -2125,7 +2125,7 @@
      "dim": "belt line height",
      "value_mm": 855.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -2176,7 +2176,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT761",
    "record_name": "Engine bay side panels, R and L",
    "side": "R",
@@ -2189,7 +2189,7 @@
      "dim": "radiator support, lengthwise",
      "value_mm": 600.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": "8871-56-370: read as the panel between the apron and the core support - confirm what it is"
@@ -2240,7 +2240,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (blueprint the-blueprints 83684)",
+   "source": "02-PROJECTS/03-cad/model/unibody (blueprint the-blueprints 83684)",
    "record": "PT772",
    "record_name": "Rain rails, R and L",
    "side": "R",
@@ -2253,31 +2253,31 @@
      "dim": "roof half-width",
      "value_mm": 560.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof rear edge (hatch hinge line), lengthwise",
      "value_mm": -2230.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof rear edge height",
      "value_mm": 1190.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "hatch aperture bottom, lengthwise",
      "value_mm": -3020.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "hatch aperture bottom height",
      "value_mm": 860.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": "reading: the rain rails are the hatch opening's side gutters; with the rear roof header and the rear end panel's top they make the hatch aperture"
@@ -2328,7 +2328,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT755",
    "record_name": "Front side frames, R and L",
    "side": "L",
@@ -2440,7 +2440,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT780",
    "record_name": "Rear side frames, R and L",
    "side": "L",
@@ -2570,7 +2570,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT782",
    "record_name": "Torque boxes, R and L",
    "side": "L",
@@ -2646,7 +2646,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (blueprint the-blueprints 83684)",
+   "source": "02-PROJECTS/03-cad/model/unibody (blueprint the-blueprints 83684)",
    "record": "PT771",
    "record_name": "Side sill panels, R and L",
    "side": "L",
@@ -2734,7 +2734,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT783",
    "record_name": "Inner side sill panels, R and L",
    "side": "L",
@@ -2810,7 +2810,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (blueprint the-blueprints 83684)",
+   "source": "02-PROJECTS/03-cad/model/unibody (blueprint the-blueprints 83684)",
    "record": "PT769",
    "record_name": "Hinge pillars, inner and outer, R and L",
    "side": "L",
@@ -2835,7 +2835,7 @@
      "dim": "belt line height",
      "value_mm": 855.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -2886,7 +2886,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (blueprint the-blueprints 83684)",
+   "source": "02-PROJECTS/03-cad/model/unibody (blueprint the-blueprints 83684)",
    "record": "PT770",
    "record_name": "Front pillars, inner, R and L",
    "side": "L",
@@ -2899,31 +2899,31 @@
      "dim": "A-pillar top, lengthwise",
      "value_mm": -1180.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "A-pillar top height",
      "value_mm": 1130.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof front edge, lengthwise",
      "value_mm": -1200.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof half-width",
      "value_mm": 560.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "belt line height",
      "value_mm": 855.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -2974,7 +2974,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (blueprint the-blueprints 83684)",
+   "source": "02-PROJECTS/03-cad/model/unibody (blueprint the-blueprints 83684)",
    "record": "PT976",
    "record_name": "Centre pillars (B-pillar and sail), R and L",
    "side": "L",
@@ -3011,7 +3011,7 @@
      "dim": "roof half-width",
      "value_mm": 560.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -3062,7 +3062,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (blueprint the-blueprints 83684)",
+   "source": "02-PROJECTS/03-cad/model/unibody (blueprint the-blueprints 83684)",
    "record": "PT767",
    "record_name": "Roof rails, inner and outer, R and L",
    "side": "L",
@@ -3075,25 +3075,25 @@
      "dim": "roof half-width",
      "value_mm": 560.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof front edge, lengthwise",
      "value_mm": -1200.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof rear edge (hatch hinge line), lengthwise",
      "value_mm": -2230.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof's highest point, lengthwise",
      "value_mm": -1600.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -3144,7 +3144,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (blueprint the-blueprints 83684; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut)",
+   "source": "02-PROJECTS/03-cad/model/unibody (blueprint the-blueprints 83684; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut)",
    "record": "PT768",
    "record_name": "Quarter panels, R and L",
    "side": "L",
@@ -3181,19 +3181,19 @@
      "dim": "belt line height",
      "value_mm": 855.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "hatch aperture bottom, lengthwise",
      "value_mm": -3020.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "hatch aperture bottom height",
      "value_mm": 860.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "door opening rear, lengthwise",
@@ -3205,7 +3205,7 @@
      "dim": "rear end panel, lengthwise",
      "value_mm": -3150.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "sill bottom height",
@@ -3262,7 +3262,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT777",
    "record_name": "Rear fender panels, R and L",
    "side": "L",
@@ -3344,7 +3344,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT784",
    "record_name": "Floor decks, R and L",
    "side": "L",
@@ -3369,7 +3369,7 @@
      "dim": "rear end panel, lengthwise",
      "value_mm": -3150.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -3420,7 +3420,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT754",
    "record_name": "Front wheel aprons, R and L",
    "side": "L",
@@ -3445,7 +3445,7 @@
      "dim": "strut tower top height",
      "value_mm": 754.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "fender fixing nuts, across",
@@ -3475,7 +3475,7 @@
      "dim": "radiator support, lengthwise",
      "value_mm": 600.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "firewall, lengthwise",
@@ -3544,7 +3544,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT766",
    "record_name": "Cowl side panels, R and L",
    "side": "L",
@@ -3569,7 +3569,7 @@
      "dim": "belt line height",
      "value_mm": 855.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -3620,7 +3620,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT761",
    "record_name": "Engine bay side panels, R and L",
    "side": "L",
@@ -3633,7 +3633,7 @@
      "dim": "radiator support, lengthwise",
      "value_mm": 600.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": "8871-56-370: read as the panel between the apron and the core support - confirm what it is"
@@ -3684,7 +3684,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (blueprint the-blueprints 83684)",
+   "source": "02-PROJECTS/03-cad/model/unibody (blueprint the-blueprints 83684)",
    "record": "PT772",
    "record_name": "Rain rails, R and L",
    "side": "L",
@@ -3697,31 +3697,31 @@
      "dim": "roof half-width",
      "value_mm": 560.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof rear edge (hatch hinge line), lengthwise",
      "value_mm": -2230.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof rear edge height",
      "value_mm": 1190.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "hatch aperture bottom, lengthwise",
      "value_mm": -3020.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "hatch aperture bottom height",
      "value_mm": 860.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": "reading: the rain rails are the hatch opening's side gutters; with the rear roof header and the rear end panel's top they make the hatch aperture"
@@ -3772,7 +3772,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT756",
    "record_name": "Dash panel, lower (firewall)",
    "side": null,
@@ -3854,7 +3854,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT757",
    "record_name": "Dash panel, upper",
    "side": null,
@@ -3873,7 +3873,7 @@
      "dim": "windshield base height",
      "value_mm": 900.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -3924,7 +3924,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT762",
    "record_name": "Upper cowling panel",
    "side": null,
@@ -3943,7 +3943,7 @@
      "dim": "hood line at the front axle",
      "value_mm": 816.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -3994,7 +3994,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (blueprint the-blueprints 83684; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut)",
+   "source": "02-PROJECTS/03-cad/model/unibody (blueprint the-blueprints 83684; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut)",
    "record": "PT764",
    "record_name": "Cowl panel",
    "side": null,
@@ -4007,13 +4007,13 @@
      "dim": "windshield base, lengthwise",
      "value_mm": -700.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "windshield base height",
      "value_mm": 900.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "firewall, lengthwise",
@@ -4070,7 +4070,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (blueprint the-blueprints 83684)",
+   "source": "02-PROJECTS/03-cad/model/unibody (blueprint the-blueprints 83684)",
    "record": "PT773",
    "record_name": "Roof headers, front and rear",
    "side": null,
@@ -4083,13 +4083,13 @@
      "dim": "roof front edge, lengthwise",
      "value_mm": -1200.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof half-width",
      "value_mm": 560.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -4140,7 +4140,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (blueprint the-blueprints 83684)",
+   "source": "02-PROJECTS/03-cad/model/unibody (blueprint the-blueprints 83684)",
    "record": "PT773",
    "record_name": "Roof headers, front and rear",
    "side": null,
@@ -4153,19 +4153,19 @@
      "dim": "roof rear edge (hatch hinge line), lengthwise",
      "value_mm": -2230.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof rear edge height",
      "value_mm": 1190.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof half-width",
      "value_mm": 560.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -4216,7 +4216,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (blueprint the-blueprints 83684; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut)",
+   "source": "02-PROJECTS/03-cad/model/unibody (blueprint the-blueprints 83684; found model fb-rx7-gsl-se-85-3dwarehouse-blastronaut)",
    "record": "PT774",
    "record_name": "Roof panel",
    "side": null,
@@ -4235,37 +4235,37 @@
      "dim": "roof's highest point, lengthwise",
      "value_mm": -1600.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof front edge, lengthwise",
      "value_mm": -1200.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof rear edge (hatch hinge line), lengthwise",
      "value_mm": -2230.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof rear edge height",
      "value_mm": 1190.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof half-width",
      "value_mm": 560.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "roof camber",
      "value_mm": 100.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": "origin at the roof's highest point, on DT06"
@@ -4316,7 +4316,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT753",
    "record_name": "Radiator shroud panel (core support)",
    "side": null,
@@ -4329,7 +4329,7 @@
      "dim": "radiator support, lengthwise",
      "value_mm": 600.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "front rail tip ahead of hole A",
@@ -4392,7 +4392,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT752",
    "record_name": "Nose panel",
    "side": null,
@@ -4405,13 +4405,13 @@
      "dim": "radiator support, lengthwise",
      "value_mm": 600.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "front overhang",
      "value_mm": 928.4,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -4462,7 +4462,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT775",
    "record_name": "Rear end panel",
    "side": null,
@@ -4475,19 +4475,19 @@
      "dim": "rear end panel, lengthwise",
      "value_mm": -3150.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "rear overhang",
      "value_mm": 972.1,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     },
     {
      "dim": "hatch aperture bottom height",
      "value_mm": 860.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -4538,7 +4538,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (unibody/params.py)",
+   "source": "02-PROJECTS/03-cad/model/unibody (unibody/params.py)",
    "record": "PT776",
    "record_name": "Rear skirt panel",
    "side": null,
@@ -4551,7 +4551,7 @@
      "dim": "rear end panel, lengthwise",
      "value_mm": -3150.0,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": ""
@@ -4589,7 +4589,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (datum DT10)",
+   "source": "02-PROJECTS/03-cad/model/unibody (datum DT10)",
    "record": null,
    "record_name": null,
    "side": null,
@@ -4644,7 +4644,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (datum DT11)",
+   "source": "02-PROJECTS/03-cad/model/unibody (datum DT11)",
    "record": null,
    "record_name": null,
    "side": null,
@@ -4699,7 +4699,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (datum DT12)",
+   "source": "02-PROJECTS/03-cad/model/unibody (datum DT12)",
    "record": null,
    "record_name": null,
    "side": null,
@@ -4754,7 +4754,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (FSM S-002 p.14-24)",
+   "source": "02-PROJECTS/03-cad/model/unibody (FSM S-002 p.14-24)",
    "record": null,
    "record_name": null,
    "side": null,
@@ -4809,7 +4809,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (datum DT13)",
+   "source": "02-PROJECTS/03-cad/model/unibody (datum DT13)",
    "record": null,
    "record_name": null,
    "side": null,
@@ -4864,7 +4864,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (datum DT14)",
+   "source": "02-PROJECTS/03-cad/model/unibody (datum DT14)",
    "record": null,
    "record_name": null,
    "side": null,
@@ -4919,7 +4919,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (datum DT03)",
+   "source": "02-PROJECTS/03-cad/model/unibody (datum DT03)",
    "record": null,
    "record_name": null,
    "side": null,
@@ -4968,7 +4968,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (datum DT10)",
+   "source": "02-PROJECTS/03-cad/model/unibody (datum DT10)",
    "record": null,
    "record_name": null,
    "side": null,
@@ -5023,7 +5023,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (datum DT11)",
+   "source": "02-PROJECTS/03-cad/model/unibody (datum DT11)",
    "record": null,
    "record_name": null,
    "side": null,
@@ -5078,7 +5078,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (datum DT12)",
+   "source": "02-PROJECTS/03-cad/model/unibody (datum DT12)",
    "record": null,
    "record_name": null,
    "side": null,
@@ -5133,7 +5133,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (FSM S-002 p.14-24)",
+   "source": "02-PROJECTS/03-cad/model/unibody (FSM S-002 p.14-24)",
    "record": null,
    "record_name": null,
    "side": null,
@@ -5188,7 +5188,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (datum DT13)",
+   "source": "02-PROJECTS/03-cad/model/unibody (datum DT13)",
    "record": null,
    "record_name": null,
    "side": null,
@@ -5243,7 +5243,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (datum DT14)",
+   "source": "02-PROJECTS/03-cad/model/unibody (datum DT14)",
    "record": null,
    "record_name": null,
    "side": null,
@@ -5298,7 +5298,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (datum DT03)",
+   "source": "02-PROJECTS/03-cad/model/unibody (datum DT03)",
    "record": null,
    "record_name": null,
    "side": null,
@@ -5347,7 +5347,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (datum DT02)",
+   "source": "02-PROJECTS/03-cad/model/unibody (datum DT02)",
    "record": null,
    "record_name": null,
    "side": null,
@@ -5396,7 +5396,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (datum DT04)",
+   "source": "02-PROJECTS/03-cad/model/unibody (datum DT04)",
    "record": null,
    "record_name": null,
    "side": null,
@@ -5407,7 +5407,7 @@
      "dim": "front overhang",
      "value_mm": 928.4,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": "on PT704"
@@ -5445,7 +5445,7 @@
    "state": "rough",
    "mate": null,
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/unibody (datum DT04)",
+   "source": "02-PROJECTS/03-cad/model/unibody (datum DT04)",
    "record": null,
    "record_name": null,
    "side": null,
@@ -5456,7 +5456,7 @@
      "dim": "rear overhang",
      "value_mm": 972.1,
      "how": "found",
-     "source": "the home-page FB model, sliced (02-cad skin/stations.py, 2026-10-13)"
+     "source": "the home-page FB model, sliced (03-cad skin/stations.py, 2026-10-13)"
     }
    ],
    "note": "on PT704"
@@ -5507,7 +5507,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/skin (found model 02-PROJECTS/02-cad/model/sa/rx7-fb.glb (found/blend.py))",
+   "source": "02-PROJECTS/03-cad/model/skin (found model 02-PROJECTS/03-cad/model/sa/rx7-fb.glb (found/blend.py))",
    "record": "PT704",
    "record_name": "Body shell (welded unit body)",
    "side": null,
@@ -5520,13 +5520,13 @@
      "dim": "found model, cm to mm",
      "value_mm": 10.0,
      "how": "found",
-     "source": "found model 02-PROJECTS/02-cad/model/sa/rx7-fb.glb (found/blend.py)"
+     "source": "found model 02-PROJECTS/03-cad/model/sa/rx7-fb.glb (found/blend.py)"
     },
     {
      "dim": "found model, front axle to y 0",
      "value_mm": -1210.0,
      "how": "derived",
-     "source": "02-cad DT02 (front axle y = 0)"
+     "source": "03-cad DT02 (front axle y = 0)"
     }
    ],
    "note": "one piece as the found model has it: the hood, fenders, doors and hatch are not yet parts of their own (PT744 and the rest)"
@@ -5577,7 +5577,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/skin (found model 02-PROJECTS/02-cad/model/sa/rx7-fb.glb (found/blend.py))",
+   "source": "02-PROJECTS/03-cad/model/skin (found model 02-PROJECTS/03-cad/model/sa/rx7-fb.glb (found/blend.py))",
    "record": "PT729",
    "record_name": "Windshield glass",
    "side": null,
@@ -5590,13 +5590,13 @@
      "dim": "found model, cm to mm",
      "value_mm": 10.0,
      "how": "found",
-     "source": "found model 02-PROJECTS/02-cad/model/sa/rx7-fb.glb (found/blend.py)"
+     "source": "found model 02-PROJECTS/03-cad/model/sa/rx7-fb.glb (found/blend.py)"
     },
     {
      "dim": "found model, front axle to y 0",
      "value_mm": -1210.0,
      "how": "derived",
-     "source": "02-cad DT02 (front axle y = 0)"
+     "source": "03-cad DT02 (front axle y = 0)"
     }
    ],
    "note": "all the glass in one piece under the windshield's row; the hatch glass has no 00-CAR row yet"
@@ -5647,7 +5647,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/skin (found model 02-PROJECTS/02-cad/model/sa/rx7-fb.glb (found/blend.py))",
+   "source": "02-PROJECTS/03-cad/model/skin (found model 02-PROJECTS/03-cad/model/sa/rx7-fb.glb (found/blend.py))",
    "record": "PT704",
    "record_name": "Body shell (welded unit body)",
    "side": null,
@@ -5660,13 +5660,13 @@
      "dim": "found model, cm to mm",
      "value_mm": 10.0,
      "how": "found",
-     "source": "found model 02-PROJECTS/02-cad/model/sa/rx7-fb.glb (found/blend.py)"
+     "source": "found model 02-PROJECTS/03-cad/model/sa/rx7-fb.glb (found/blend.py)"
     },
     {
      "dim": "found model, front axle to y 0",
      "value_mm": -1210.0,
      "how": "derived",
-     "source": "02-cad DT02 (front axle y = 0)"
+     "source": "03-cad DT02 (front axle y = 0)"
     }
    ],
    "note": "the model's other surfaces: bumper rubbers, garnishes, mirrors, seals and a rough cabin"
@@ -5717,7 +5717,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/skin (found model 02-PROJECTS/02-cad/model/sa/rx7-fb.glb (found/blend.py))",
+   "source": "02-PROJECTS/03-cad/model/skin (found model 02-PROJECTS/03-cad/model/sa/rx7-fb.glb (found/blend.py))",
    "record": "PT601",
    "record_name": "Rear combination lamp, R and L",
    "side": "L",
@@ -5730,13 +5730,13 @@
      "dim": "found model, cm to mm",
      "value_mm": 10.0,
      "how": "found",
-     "source": "found model 02-PROJECTS/02-cad/model/sa/rx7-fb.glb (found/blend.py)"
+     "source": "found model 02-PROJECTS/03-cad/model/sa/rx7-fb.glb (found/blend.py)"
     },
     {
      "dim": "found model, front axle to y 0",
      "value_mm": -1210.0,
      "how": "derived",
-     "source": "02-cad DT02 (front axle y = 0)"
+     "source": "03-cad DT02 (front axle y = 0)"
     }
    ],
    "note": ""
@@ -5787,7 +5787,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/skin (found model 02-PROJECTS/02-cad/model/sa/rx7-fb.glb (found/blend.py))",
+   "source": "02-PROJECTS/03-cad/model/skin (found model 02-PROJECTS/03-cad/model/sa/rx7-fb.glb (found/blend.py))",
    "record": "PT601",
    "record_name": "Rear combination lamp, R and L",
    "side": "R",
@@ -5800,13 +5800,13 @@
      "dim": "found model, cm to mm",
      "value_mm": 10.0,
      "how": "found",
-     "source": "found model 02-PROJECTS/02-cad/model/sa/rx7-fb.glb (found/blend.py)"
+     "source": "found model 02-PROJECTS/03-cad/model/sa/rx7-fb.glb (found/blend.py)"
     },
     {
      "dim": "found model, front axle to y 0",
      "value_mm": -1210.0,
      "how": "derived",
-     "source": "02-cad DT02 (front axle y = 0)"
+     "source": "03-cad DT02 (front axle y = 0)"
     }
    ],
    "note": ""
@@ -5861,7 +5861,7 @@
    "children": [
     "PT530-FR"
    ],
-   "source": "02-PROJECTS/02-cad/model/skin (found model 02-PROJECTS/02-cad/model/sa/rx7-fb.glb (found/blend.py))",
+   "source": "02-PROJECTS/03-cad/model/skin (found model 02-PROJECTS/03-cad/model/sa/rx7-fb.glb (found/blend.py))",
    "record": "PT525",
    "record_name": "Road wheels",
    "side": "FR",
@@ -5874,19 +5874,19 @@
      "dim": "front wheel centre, across",
      "value_mm": 710.0,
      "how": "factory",
-     "source": "02-cad DT02 (SP-132)"
+     "source": "03-cad DT02 (SP-132)"
     },
     {
      "dim": "wheel centre height",
      "value_mm": 294.5,
      "how": "derived",
-     "source": "02-cad DT02"
+     "source": "03-cad DT02"
     },
     {
      "dim": "wheelbase",
      "value_mm": 2420.0,
      "how": "factory",
-     "source": "02-cad DT03 (SP-131)"
+     "source": "03-cad DT03 (SP-131)"
     }
    ],
    "note": "the SA model's wheel; the FL corner is built from factory figures. The found brakes are discs all round; the car's rears are drums (PT047)"
@@ -5937,7 +5937,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/skin (found model 02-PROJECTS/02-cad/model/sa/rx7-fb.glb (found/blend.py))",
+   "source": "02-PROJECTS/03-cad/model/skin (found model 02-PROJECTS/03-cad/model/sa/rx7-fb.glb (found/blend.py))",
    "record": "PT530",
    "record_name": "Tyres",
    "side": "FR",
@@ -5950,7 +5950,7 @@
      "dim": "wheel centre height",
      "value_mm": 294.5,
      "how": "derived",
-     "source": "02-cad DT02"
+     "source": "03-cad DT02"
     }
    ],
    "note": ""
@@ -6005,7 +6005,7 @@
    "children": [
     "PT530-RL"
    ],
-   "source": "02-PROJECTS/02-cad/model/skin (found model 02-PROJECTS/02-cad/model/sa/rx7-fb.glb (found/blend.py))",
+   "source": "02-PROJECTS/03-cad/model/skin (found model 02-PROJECTS/03-cad/model/sa/rx7-fb.glb (found/blend.py))",
    "record": "PT525",
    "record_name": "Road wheels",
    "side": "RL",
@@ -6018,19 +6018,19 @@
      "dim": "rear wheel centre, across",
      "value_mm": 699.8,
      "how": "factory",
-     "source": "02-cad DT03 (SP-132)"
+     "source": "03-cad DT03 (SP-132)"
     },
     {
      "dim": "wheel centre height",
      "value_mm": 294.5,
      "how": "derived",
-     "source": "02-cad DT02"
+     "source": "03-cad DT02"
     },
     {
      "dim": "wheelbase",
      "value_mm": 2420.0,
      "how": "factory",
-     "source": "02-cad DT03 (SP-131)"
+     "source": "03-cad DT03 (SP-131)"
     }
    ],
    "note": "the SA model's wheel; the FL corner is built from factory figures. The found brakes are discs all round; the car's rears are drums (PT047)"
@@ -6081,7 +6081,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/skin (found model 02-PROJECTS/02-cad/model/sa/rx7-fb.glb (found/blend.py))",
+   "source": "02-PROJECTS/03-cad/model/skin (found model 02-PROJECTS/03-cad/model/sa/rx7-fb.glb (found/blend.py))",
    "record": "PT530",
    "record_name": "Tyres",
    "side": "RL",
@@ -6094,7 +6094,7 @@
      "dim": "wheel centre height",
      "value_mm": 294.5,
      "how": "derived",
-     "source": "02-cad DT02"
+     "source": "03-cad DT02"
     }
    ],
    "note": ""
@@ -6149,7 +6149,7 @@
    "children": [
     "PT530-RR"
    ],
-   "source": "02-PROJECTS/02-cad/model/skin (found model 02-PROJECTS/02-cad/model/sa/rx7-fb.glb (found/blend.py))",
+   "source": "02-PROJECTS/03-cad/model/skin (found model 02-PROJECTS/03-cad/model/sa/rx7-fb.glb (found/blend.py))",
    "record": "PT525",
    "record_name": "Road wheels",
    "side": "RR",
@@ -6162,19 +6162,19 @@
      "dim": "rear wheel centre, across",
      "value_mm": 699.8,
      "how": "factory",
-     "source": "02-cad DT03 (SP-132)"
+     "source": "03-cad DT03 (SP-132)"
     },
     {
      "dim": "wheel centre height",
      "value_mm": 294.5,
      "how": "derived",
-     "source": "02-cad DT02"
+     "source": "03-cad DT02"
     },
     {
      "dim": "wheelbase",
      "value_mm": 2420.0,
      "how": "factory",
-     "source": "02-cad DT03 (SP-131)"
+     "source": "03-cad DT03 (SP-131)"
     }
    ],
    "note": "the SA model's wheel; the FL corner is built from factory figures. The found brakes are discs all round; the car's rears are drums (PT047)"
@@ -6225,7 +6225,7 @@
     }
    },
    "children": [],
-   "source": "02-PROJECTS/02-cad/model/skin (found model 02-PROJECTS/02-cad/model/sa/rx7-fb.glb (found/blend.py))",
+   "source": "02-PROJECTS/03-cad/model/skin (found model 02-PROJECTS/03-cad/model/sa/rx7-fb.glb (found/blend.py))",
    "record": "PT530",
    "record_name": "Tyres",
    "side": "RR",
@@ -6238,7 +6238,7 @@
      "dim": "wheel centre height",
      "value_mm": 294.5,
      "how": "derived",
-     "source": "02-cad DT02"
+     "source": "03-cad DT02"
     }
    ],
    "note": ""

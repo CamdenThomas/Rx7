@@ -1,6 +1,6 @@
 # The library plan - every document read into the record, then no PDFs (D-574)
 
-_Rev 2026-10-14. Project `02-PROJECTS/05-library`. **To run an hour: `rx7.py playbook session`.** This is the whole plan: what exists, who
+_Rev 2026-10-14. Project `02-PROJECTS/00-library`. **To run an hour: `rx7.py playbook session`.** This is the whole plan: what exists, who
 does what, in what order, how an agent takes its next piece and marks it done, and when a phase
 is finished. Workers read only their playbook (`rx7.py playbook parse` / `merge`); the
 orchestrator reads this._
@@ -10,7 +10,7 @@ orchestrator reads this._
 Every fact in every document the record draws on - manuals, catalogues, bulletins, datasheets,
 vendor sheets - lives as a row in a table, once, citing its source and page, cross-checked
 against the car. Then the PDFs leave the tree. What stays: `00-CAR/data` (facts),
-`00-CAR/photos`, 02-cad's models, and an offline copy of the PDFs outside the tree. The app's
+`00-CAR/photos`, 03-cad's models, and an offline copy of the PDFs outside the tree. The app's
 Manual gets a References page linking every source and showing which rows each page became.
 
 ## Camden's rulings (D-574, all as recommended)
@@ -21,7 +21,7 @@ Manual gets a References page linking every source and showing which rows each p
 | B | A figure becomes **rows plus a link to its page**; a small cropped image (kept like a photo) only where the picture is the information. |
 | C | **Scope**: everything about this car, and other 1979-85 RX-7 years as held-back rows (`applies=other-car`); other models' pages are only **indexed** (kind and topic), taking a fact only where a part this car or a project uses is named. |
 | D | **The same rule everywhere**: project and model-library PDFs are read into their owning project's tables and leave too. CAD files (STEP, GLB, STL) stay - they are models. |
-| E | The 3D model library **stays in 02-cad** (D-573). |
+| E | The 3D model library **stays in 03-cad** (D-573). |
 | F | **Git history is left alone**; the repository goes private as D-524 already ruled - a GitHub setting only Camden can change. |
 
 ## What exists (phases 0 and 1, done 2026-10-14)
@@ -33,14 +33,14 @@ Manual gets a References page linking every source and showing which rows each p
 | `docs` | 00-CAR | PDF file (163) | source (S-), path, pages, md5, text (yes / ocr / no), owner area, tier 1-5, scope, file (on-disk / offline / gone), duplicate_of |
 | `pages` | 00-CAR | page (4,116) | doc, n, printed, kind, topic, scope, status, rows (the home rows holding its facts) |
 | `diagnosis` | 00-CAR | symptom-cause pair | system, symptom, cause, check, remedy, part, source, page, applies |
-| `queue` | 05-library | small work item (1,229 now) | priority, kind, doc, pages, brief, after, state, agent, claimed, finished, result, rows |
-| `facts` | 05-library | fact a worker read (staging) | page, kind, system, subject, item, value, unit, context, applies, quote, state, target |
+| `queue` | 00-library | small work item (1,229 now) | priority, kind, doc, pages, brief, after, state, agent, claimed, finished, result, rows |
+| `facts` | 00-library | fact a worker read (staging) | page, kind, system, subject, item, value, unit, context, applies, quote, state, target |
 
 **Page status** (`pages.status`): `open` unread - `cited` some rows cite it, not proven complete -
 `parsed` every fact taken - `held` taken as another year's - `indexed` another model, described
 only - `duplicate` - `empty`. Finished = parsed, held, indexed, duplicate or empty.
 
-**Tools** (all in `02-PROJECTS/05-library/tools/`, each re-runnable, each taking rx7.py's write lock):
+**Tools** (all in `02-PROJECTS/00-library/tools/`, each re-runnable, each taking rx7.py's write lock):
 
 | Tool | Does |
 |---|---|
@@ -78,11 +78,11 @@ Tiers (set by `inventory.py`'s RULES, owner in brackets): **1** - the 1982 wirin
 technical data, the 1981-83 parts catalogue, the 1983 Mitchell manual, the 1985 workshop manual
 sections, the 1985 Section 12, the 1980 body section [00-CAR]. **2** - the 1980 sections and
 technical data, the bulletins, the body shop, training and emissions manuals, the A/C install, the
-fitted parts' datasheets [00-CAR]; the PMU, display and simulation vendor sheets [01-electrical].
+fitted parts' datasheets [00-CAR]; the PMU, display and simulation vendor sheets [02-electrical].
 **3** - the replaced carburettor's manuals, the overhaul criteria, Yamamoto, the setup book,
-brochures, the TE catalogue, the 1983 diagram (already read) [00-CAR / 01-electrical]; the model
-library's electrical drawings [01-electrical]. **4** - the swap documents [03-engine], other
-model-library sheets [02-cad]. **5** - model-kit print guides, index only [02-cad].
+brochures, the TE catalogue, the 1983 diagram (already read) [00-CAR / 02-electrical]; the model
+library's electrical drawings [02-electrical]. **4** - the swap documents [01-engine], other
+model-library sheets [03-cad]. **5** - model-kit print guides, index only [03-cad].
 
 So the head of the queue is every troubleshooting table, then the 1981-83 data and the catalogue,
 then the 1985 and 1983 manuals' unread tables, and so on - each document's best pages early, not
@@ -127,8 +127,8 @@ every cap summing to $91.47 (the worst case if every single worker looped). The 
 ## A session
 
 ```
-python3 02-PROJECTS/05-library/tools/run_session.py --dry                     # the next hour's items, predicted $ and worst case
-python3 02-PROJECTS/05-library/tools/run_session.py --minutes 60 --workers 6  # run it
+python3 02-PROJECTS/00-library/tools/run_session.py --dry                     # the next hour's items, predicted $ and worst case
+python3 02-PROJECTS/00-library/tools/run_session.py --minutes 60 --workers 6  # run it
 ```
 
 - For `--minutes` it keeps `--workers` workers running, most valuable item first. After that it starts
@@ -148,7 +148,7 @@ ledger replaces them.
 
 ## After each session (the orchestrator, a few minutes)
 
-1. Read the ledger and `rx7.py sql 02-PROJECTS/05-library "select model, count(*), sum(est_usd), sum(cost_usd), sum(tok_in), sum(tok_out) from queue where state in ('done','failed') group by model"`.
+1. Read the ledger and `rx7.py sql 02-PROJECTS/00-library "select model, count(*), sum(est_usd), sum(cost_usd), sum(tok_in), sum(tok_out) from queue where state in ('done','failed') group by model"`.
 2. If actual cost runs above the prediction, raise the constants in `build_queue.py` and `--reprice`.
 3. Spot-check three finished items: their pages against their facts. A pattern of misses or inventions
    is fixed in the parse playbook's worker text - the only lever on the workers.
@@ -156,7 +156,7 @@ ledger replaces them.
 
 ## The store until the overhaul (D-576)
 
-Parsing only stores; nothing is merged while it runs. Everything a page says lives in 05-library's
+Parsing only stores; nothing is merged while it runs. Everything a page says lives in 00-library's
 `facts` table - one row per fact, citing its page, in plain text the app and any agent can read -
 and the page's `kind`, `topic`, `scope` and `status` in 00-CAR's `pages`. That is the whole
 non-PDF copy of the library. The overhaul (phase 3) reads only these tables, never a PDF, so it

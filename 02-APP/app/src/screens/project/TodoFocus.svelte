@@ -1,7 +1,7 @@
 <!--
   One work row: what it is, what it waits on, its note, and — if it is his — his answer.
 
-  A row that carries a brief (01-electrical D-533) opens as a page of the manual instead: the
+  A row that carries a brief (02-electrical D-533) opens as a page of the manual instead: the
   goal, where and how long, what must be true first, the tools, the parts by name, what to
   know with where each fact comes from, the numbered steps, how he knows it is done, and
   what to record — with his answer below it all, through the same control as ever. A step's

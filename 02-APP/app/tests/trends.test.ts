@@ -58,7 +58,7 @@ describe('the drift rule', () => {
 describe('the out-of-range flags', () => {
   it('reads the limits from the record, never from the code', () => {
     const t: RawTable = {
-      area: '01-electrical', table: 'params', columns: ['key', 'value', 'unit'],
+      area: '02-electrical', table: 'params', columns: ['key', 'value', 'unit'],
       rows: [['redline_rpm', '6500', ''], ['hot_water_c', '100', ''], ['low_oil_bar', '1.2', '']],
     };
     expect(limitsFrom([t])).toEqual({ redline_rpm: 6500, hot_water_c: 100, low_oil_bar: 1.2 });

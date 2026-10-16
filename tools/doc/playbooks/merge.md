@@ -1,6 +1,6 @@
-# Playbook: merge - one merge item of 05-library (D-574, phase 3)
+# Playbook: merge - one merge item of 00-library (D-574, phase 3)
 
-You move a batch of staged facts (05-library `facts`, state new) into their home tables, one
+You move a batch of staged facts (00-library `facts`, state new) into their home tables, one
 fact once. This needs judgement: run it on a stronger model than the parse workers.
 
 **Not for you:** CLAUDE.md §0, §6, §8 - no pull, commit, push or report; never run git; never
@@ -10,14 +10,14 @@ R1, R2, R5, R11.
 ## 1. Claim
 
 ```
-python3 tools/rx7.py claim 02-PROJECTS/05-library --kind merge --agent <name>
+python3 tools/rx7.py claim 02-PROJECTS/00-library --kind merge --agent <name>
 ```
 
 It prints `section` (the home area, system and kind), `brief` and `rows` (the facts, a range).
 Read them:
 
 ```
-python3 tools/rx7.py sql 02-PROJECTS/05-library "select * from facts where id between 'F-000101' and 'F-000134'"
+python3 tools/rx7.py sql 02-PROJECTS/00-library "select * from facts where id between 'F-000101' and 'F-000134'"
 ```
 
 ## 2. Each fact, in order
@@ -39,7 +39,7 @@ python3 tools/rx7.py sql 02-PROJECTS/05-library "select * from facts where id be
      or a page contradicts a measured or checked row: change nothing - fact `state=conflict`
      with the two rows in `note`. The orchestrator raises conflicts as blocks.
    - **nothing worth keeping** (an advert, another model's part nobody uses) -> `state=rejected` and why in `note`.
-3. **Link the page**: `python3 02-PROJECTS/05-library/tools/link.py DOC-048.027 specs:SP-0123` -
+3. **Link the page**: `python3 02-PROJECTS/00-library/tools/link.py DOC-048.027 specs:SP-0123` -
    adds the row to the page's `rows`.
 
 One fact once (R2): when two facts in your batch are the same, merge the first and mark the
@@ -49,7 +49,7 @@ second `duplicate` of the same target. Never type a D- or block id; never cite a
 ## 3. Finish
 
 ```
-python3 tools/rx7.py finish 02-PROJECTS/05-library Q-01300 "result=34 facts: 12 merged, 19 duplicate, 2 rejected, 1 conflict (F-000120)" "rows=specs:SP-1830..SP-1841"
+python3 tools/rx7.py finish 02-PROJECTS/00-library Q-01300 "result=34 facts: 12 merged, 19 duplicate, 2 rejected, 1 conflict (F-000120)" "rows=specs:SP-1830..SP-1841"
 ```
 
 Then stop, with one line.

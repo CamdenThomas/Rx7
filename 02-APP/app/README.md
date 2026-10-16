@@ -21,7 +21,7 @@ src/                    the interface (Svelte 5 + TypeScript), shared by both ap
     transport.ts          the only file that imports the Bluetooth plugin; its one write is guarded
     pull.ts · pipeline.ts the pull's state machine; drives -> kind=drive answers and digests
     fake.ts · synth.ts    a stand-in ICU and a synthetic drive (tests; the browser build's ?ble=fake)
-  lib/briefs.ts         the TODO page as a step-by-step manual (01-electrical D-533), pure
+  lib/briefs.ts         the TODO page as a step-by-step manual (02-electrical D-533), pure
                         TypeScript: a project's briefs and steps tables read into each row's
                         brief, steps in order, parts by name and sources as links
   lib/steps.svelte.ts   that index, rebuilt once per snapshot, and the step ticks - kept on the

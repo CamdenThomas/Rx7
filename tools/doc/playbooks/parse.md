@@ -1,4 +1,4 @@
-# Playbook: parse - one queue item of 05-library (D-574)
+# Playbook: parse - one queue item of 00-library (D-574)
 
 `run_session.py` hands this text, the item's brief, the pages' text and the names of the page
 images to a small worker (`claude -p`, Haiku or Sonnet), started in an empty folder: the worker

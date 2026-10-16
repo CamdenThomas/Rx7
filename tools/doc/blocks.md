@@ -21,8 +21,9 @@ Raise it in one go, every field at once (`rx7.py block -p AREA ask=… why=@why.
 options=@opts.txt recommend=… stops=…`). Long fields go through `@file`. Never raise a block
 that asks him to weigh a list the agent has not produced yet: do the research row first.
 
-**Block ids are `<project>.<number>`** (D-356): `01.12` is the twelfth block raised for
-`02-PROJECTS/01-electrical`, `04.07` the seventh for `04-luxury`. The prefix is the project
+**Block ids are `<project>.<number>`** (D-356): `02.12` is the twelfth block raised for
+`02-PROJECTS/02-electrical`, `04.07` the seventh for `04-luxury` (since 2026-10-16, D-618; before
+it electrical's were `01.NN`, `rx7.py doc ids`). The prefix is the project
 directory's two-digit number; `00-CAR` and `02-APP` use `CAR` and `APP`, because they are not
 numbered projects (the archived `01-REFERENCE` and `00-verify` used `REF` and `VER`). Never
 `BLK-`: this car's factory diagrams already use `B-12` and `D-01` as component codes, and an id

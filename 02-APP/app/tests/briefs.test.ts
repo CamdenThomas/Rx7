@@ -1,4 +1,4 @@
-// The TODO manual's view model (01-electrical D-533): a project's briefs and steps tables,
+// The TODO manual's view model (02-electrical D-533): a project's briefs and steps tables,
 // read into what a row's page shows. No record is touched: the tables below are the fixture.
 
 import { describe, expect, it } from 'vitest';
@@ -7,7 +7,7 @@ import type { RawTable } from '../src/lib/model';
 import { href, parse } from '../src/lib/router.svelte';
 import { inlineMd } from '../src/lib/text';
 
-const AREA = '01-electrical';
+const AREA = '02-electrical';
 const table = (area: string, name: string, columns: string[], rows: string[][]): RawTable => ({ area, table: name, columns, rows });
 
 const BRIEFS = ['id', 'goal', 'where', 'time', 'tools', 'parts', 'before', 'know', 'done_when', 'if_not', 'record'];
@@ -58,7 +58,7 @@ describe('a know line - the fact and where it comes from', () => {
 
   it('peels the bracketed source off the end of the fact', () => {
     expect(know[0].text).toBe('Cavity 9 is the headlight feed, red 18 AWG');
-    expect(know[0].sources).toEqual([{ text: 'cavities L3-S1 9', kind: 'row', href: '#/row/01-electrical/cavities/L3-S1%209' }]);
+    expect(know[0].sources).toEqual([{ text: 'cavities L3-S1 9', kind: 'row', href: '#/row/02-electrical/cavities/L3-S1%209' }]);
     expect(know[0].confirm).toBe(false);
   });
   it('links a 00-CAR part, a source with its page, and a decision where inlineMd links them', () => {
@@ -70,13 +70,13 @@ describe('a know line - the fact and where it comes from', () => {
   it('takes several brackets, and several sources in one split on a semicolon', () => {
     expect(know[4].text).toBe('The fuse is 10 A');
     expect(know[4].sources.map((s) => [s.kind, s.href])).toEqual([
-      ['row', '#/row/01-electrical/fuses/F12'],
+      ['row', '#/row/02-electrical/fuses/F12'],
       ['decision', '#/d/D-278'], // a superseded decision cited with its closer leads to the closer
-      ['block', '#/p/01-electrical/blocks/01.27'], // an open block has a page
+      ['block', '#/p/02-electrical/blocks/01.27'], // an open block has a page
     ]);
   });
   it('reads a closing "- confirm" as a flag, and a bare work id as that row', () => {
-    expect(know[5]).toEqual({ text: 'The stud is M6', confirm: true, sources: [{ text: 'E7', kind: 'work', href: '#/p/01-electrical/todo/E7' }] });
+    expect(know[5]).toEqual({ text: 'The stud is M6', confirm: true, sources: [{ text: 'E7', kind: 'work', href: '#/p/02-electrical/todo/E7' }] });
   });
   it('leaves a fact with no source whole', () => {
     expect(know[6]).toEqual({ text: 'Nobody knows the clip count', sources: [], confirm: false });
@@ -116,7 +116,7 @@ describe('a brief - parts by name, lists by line', () => {
     expect(brief.parts.map((p) => p.id)).toEqual(['P001', 'P037', 'P999']);
     expect(brief.parts[0]).toEqual({
       id: 'P001', found: true, name: 'ATC fuse block, 4-position', spec: 'bussed input', qty: '2', unit: 'ea',
-      supplier: 'Waytek', partNo: '45643', href: '#/row/01-electrical/parts/P001',
+      supplier: 'Waytek', partNo: '45643', href: '#/row/02-electrical/parts/P001',
     });
     expect(brief.parts[1]).toMatchObject({ found: true, name: 'Deutsch size-16 crimper', qty: '1', unit: '', supplier: '', partNo: '' });
   });
@@ -144,13 +144,13 @@ describe('a brief - parts by name, lists by line', () => {
     expect([...all.keys()]).toEqual([AREA]);
     expect(all.get('00-CAR')).toBeUndefined();
     // declared and empty: an entry, and nothing in it - the page reads as it always has
-    const empty = indexManuals({ tables: [table('03-engine', 'briefs', BRIEFS, []), table('03-engine', 'steps', STEPS, [])], work: [], blocks: [] });
-    expect(empty.get('03-engine')).toMatchObject({ briefs: 0 });
-    expect(empty.get('03-engine')!.rows.size).toBe(0);
+    const empty = indexManuals({ tables: [table('01-engine', 'briefs', BRIEFS, []), table('01-engine', 'steps', STEPS, [])], work: [], blocks: [] });
+    expect(empty.get('01-engine')).toMatchObject({ briefs: 0 });
+    expect(empty.get('01-engine')!.rows.size).toBe(0);
   });
   it('links the area\'s own part ids in a line, on top of inlineMd', () => {
     const h = rich('Crimp with **P037** per D-280, not P999 or F12.', m.partHref);
-    expect(h).toBe('Crimp with <strong><a href="#/row/01-electrical/parts/P037" class="cite">P037</a></strong> per <a href="#/d/D-280" class="cite">D-280</a>, not P999 or F12.');
+    expect(h).toBe('Crimp with <strong><a href="#/row/02-electrical/parts/P037" class="cite">P037</a></strong> per <a href="#/d/D-280" class="cite">D-280</a>, not P999 or F12.');
     expect(rich('<b>P037</b>')).toBe('&lt;b&gt;P037&lt;/b&gt;');
   });
 });

@@ -60,14 +60,14 @@ The record is CSV, and it describes itself (`rx7.py doc record` has the long for
 An **area** is any directory holding `data/_tables.csv`, at `ROOT/<area>` or
 `ROOT/02-PROJECTS/<project>`: `00-CAR` (the car: its state and every truth about it - parts,
 specs, sources, the catalogue, the found models, the circuits - PERMANENT), `02-APP` (the Rx7 app
-and its own work, D-428), and each project under `02-PROJECTS` (`01-electrical`, `02-cad`,
-`03-engine`, `04-luxury` - the fancy parts, the body and paint, the interior; it took in
-`04-beauty` on 2026-10-14, D-570; numbered in this order since D-572). **Three homes** (D-519): CAR holds state and
+and its own work, D-428), and each project under `02-PROJECTS` (`00-library`, `01-engine` - the LS swap, first since the
+12A died, `02-electrical`, `03-cad`, `04-luxury` - the fancy parts, the body and paint, the
+interior; it took in `04-beauty` on 2026-10-14, D-570; numbered in this order since D-618). **Three homes** (D-519): CAR holds state and
 truth, APP the app and the view of everything, PROJECTS the work in progress until it merges into
 the car. There is no intake folder any more (D-573): a manual, catalogue or datasheet is kept
 out of git in `00-CAR/library` (`docs/`, `datasheets/`, `research/`), each `sources` row's
-`local_path` naming its file; the found 3D models and the bought SA model are `02-cad`'s, in
-`02-PROJECTS/02-cad/model/library` and `model/sa`. A new file goes straight there and is
+`local_path` naming its file; the found 3D models and the bought SA model are `03-cad`'s, in
+`02-PROJECTS/03-cad/model/library` and `model/sa`. A new file goes straight there and is
 parsed into the car's tables by the project that wants it. A car-level ruling that belongs to no project is a decision in `00-CAR`;
 `00-CAR`'s other tables state what **is** and never cite a `D-` or a block id.
 
@@ -107,7 +107,7 @@ declares `briefs` and `steps`, every open row of his has a `briefs` row (goal, w
 parts, before, know, done_when, if_not, record) and numbered `steps` rows (do, how, expect,
 caution) - `check` refuses one without. Add a row for him and you write both in the same pass;
 change a table a step quotes and you rewrite that step. A step is where a fact is used, never
-its home: every figure comes from a row and says which (`rx7.py doc work`). `01-electrical` has two tracks, design and build, split at the
+its home: every figure comes from a row and says which (`rx7.py doc work`). `02-electrical` has two tracks, design and build, split at the
 strip (`S1`) and the refit (`E35`); every build row gates on `phase:SOURCING`, which only the
 freeze moves, and the freeze does not close design (`rx7.py doc work`).
 
@@ -210,8 +210,8 @@ line, lettered `(a)`, `(b)` … in order, each with what it costs and forecloses
 names the option first: `(a), unless <what would flip it>` (the app's "follow the
 recommendation" reads that letter); **stops** — what cannot proceed until it is answered.
 
-**Ids are `<prefix>.<number>`** (D-356): the project directory's two digits (`01.12` is
-electrical's twelfth), or `CAR`, `REF`, `APP`, `VER` for the areas that are not numbered
+**Ids are `<prefix>.<number>`** (D-356): the project directory's two digits (`02.12` would be
+electrical's twelfth; ids raised before 2026-10-16 carry the number the project had then), or `CAR`, `REF`, `APP`, `VER` for the areas that are not numbered
 projects. Never `BLK-`. In prose write `block 01.12`; a bare `13.80` is a voltage. Ids in
 decisions dated before 2026-09-25 use the old numbering (`rx7.py doc ids`).
 
@@ -271,7 +271,7 @@ Every run is one playbook: **plan** (§3 small work from READY, blocks for the r
 **parts** (a parts round), **session** (an hour of the library's parsing), **parse** and **merge** (its workers). `rx7.py playbook <name>` prints it; read it before step 1. Planning is
 open in every project at every phase (D-398). Every run starts with §0 and ends the same way:
 `check` clean, `rx7.py diagrams` if a harness table changed, a `log` row, commits and a push,
-and the §8 report. **Queue workers** (playbooks **parse** and **merge**, 05-library, D-574) are the
+and the §8 report. **Queue workers** (playbooks **parse** and **merge**, 00-library, D-574) are the
 exception: one small item each, launched by an orchestrating run that does §0, the commits and the
 report for them; a worker never pulls, commits or reports (`rx7.py doc library`).
 

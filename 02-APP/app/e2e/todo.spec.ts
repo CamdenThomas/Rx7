@@ -1,4 +1,4 @@
-// The TODO page as a step-by-step manual (01-electrical D-533), driven the way he would, at
+// The TODO page as a step-by-step manual (02-electrical D-533), driven the way he would, at
 // desktop and phone size. The rows are a test project laid over the copy of the record
 // (todo-fixture.ts) and handed to the page here: nothing is written to the tree.
 

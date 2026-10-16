@@ -65,9 +65,9 @@ export interface Limits {
   low_oil_bar: number | null;
 }
 
-/** One 01-electrical params value as a number, or null when the record has none. */
+/** One 02-electrical params value as a number, or null when the record has none. */
 export function param(tables: RawTable[] | undefined, key: string): number | null {
-  const t = tables?.find((x) => x.area === '01-electrical' && x.table === 'params');
+  const t = tables?.find((x) => x.area === '02-electrical' && x.table === 'params');
   if (!t) return null;
   const row = t.rows.find((r) => r[0] === key);
   const v = Number(row?.[t.columns.indexOf('value')]);

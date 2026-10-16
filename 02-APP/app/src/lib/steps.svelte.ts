@@ -1,4 +1,4 @@
-// The TODO manual's two pieces of state (01-electrical D-533): every project's briefs and
+// The TODO manual's two pieces of state (02-electrical D-533): every project's briefs and
 // steps, indexed once per snapshot (briefs.ts does the reading), and the step ticks, which
 // live on this device only.
 //

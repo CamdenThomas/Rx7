@@ -14,12 +14,12 @@ outputs/
 # committed as the bench copy and the car record, and each part's drawings - schematic SVGs,
 # assembly views and drawings, and the face concept pages and the overhaul plan, which are design
 # sketches drawn by hand, not views of the record. Only these folders are excepted.
-!02-PROJECTS/01-electrical/00-design/**/diagrams/**/*.svg
-!02-PROJECTS/01-electrical/00-design/**/diagrams/**/*.html
+!02-PROJECTS/02-electrical/00-design/**/diagrams/**/*.svg
+!02-PROJECTS/02-electrical/00-design/**/diagrams/**/*.html
 # ... but a board's renders and a mock-up's report are rebuilt from the board and the parameters
-02-PROJECTS/01-electrical/00-design/**/diagrams/*-top.png
-02-PROJECTS/01-electrical/00-design/**/diagrams/*-bottom.png
-02-PROJECTS/01-electrical/00-design/**/data/*-report.json
+02-PROJECTS/02-electrical/00-design/**/diagrams/*-top.png
+02-PROJECTS/02-electrical/00-design/**/diagrams/*-bottom.png
+02-PROJECTS/02-electrical/00-design/**/data/*-report.json
 
 # Rendered page names from v2 and v3 - never regenerate these (D-405).
 DESIGN.md
@@ -52,17 +52,17 @@ Thumbs.db
 *.exe
 *.o
 *.obj
-02-PROJECTS/01-electrical/00-design/display-unit/firmware/du_sim/sim
-02-PROJECTS/01-electrical/00-design/tests/test
-02-PROJECTS/01-electrical/00-design/tests/test_bt817
-02-PROJECTS/01-electrical/00-design/tests/test_cu
+02-PROJECTS/02-electrical/00-design/display-unit/firmware/du_sim/sim
+02-PROJECTS/02-electrical/00-design/tests/test
+02-PROJECTS/02-electrical/00-design/tests/test_bt817
+02-PROJECTS/02-electrical/00-design/tests/test_cu
 
-# KiCad, under the cad/ folders of 02-PROJECTS/01-electrical/00-design/ only: each part's
+# KiCad, under the cad/ folders of 02-PROJECTS/02-electrical/00-design/ only: each part's
 # (control-unit/cad/, display-unit/cad/, D-496, D-497). Those folders are not areas and
 # not the view layer (see 00-design/README.md): each is a CAD tool drawing one board. The exported
 # schematic SVG is the exception to the *.svg rule above, because a hardware change is
 # unreviewable without a picture - an S-expression diff of coordinate tuples is not one.
-!02-PROJECTS/01-electrical/00-design/**/cad/**/*.svg
+!02-PROJECTS/02-electrical/00-design/**/cad/**/*.svg
 *.kicad_prl
 *-backups/
 *.kicad_sch-bak
@@ -71,15 +71,15 @@ _autosave-*
 fp-info-cache
 *-erc.rpt
 *-drc.rpt
-02-PROJECTS/01-electrical/00-design/**/cad/**/*.pdf
-02-PROJECTS/01-electrical/00-design/**/cad/**/*.net
-02-PROJECTS/01-electrical/00-design/**/cad/**/net.txt
-02-PROJECTS/01-electrical/00-design/tests/test_radio
-02-PROJECTS/01-electrical/00-design/display-unit/firmware/du_sim/renders/
+02-PROJECTS/02-electrical/00-design/**/cad/**/*.pdf
+02-PROJECTS/02-electrical/00-design/**/cad/**/*.net
+02-PROJECTS/02-electrical/00-design/**/cad/**/net.txt
+02-PROJECTS/02-electrical/00-design/tests/test_radio
+02-PROJECTS/02-electrical/00-design/display-unit/firmware/du_sim/renders/
 
 # KiCad 10's local history and lock files (per machine, never versioned)
-02-PROJECTS/01-electrical/00-design/**/cad/**/.history/
-02-PROJECTS/01-electrical/00-design/**/cad/**/~*.lck
+02-PROJECTS/02-electrical/00-design/**/cad/**/.history/
+02-PROJECTS/02-electrical/00-design/**/cad/**/~*.lck
 
 # The Rx7 app (02-APP/app) is source code: its own HTML and SVG are tracked.
 # Its dependencies and build output are not.
@@ -96,7 +96,7 @@ fp-info-cache
 02-APP/app/public/pyodide/
 02-APP/app/public/core/
 # The design in 3D (D-505, Y23): the glb files are rebuilt from the boards, the mock-ups and the
-# PMU's STEP by 02-PROJECTS/01-electrical/00-design/tools/export_glb.py - 48 MB the set, over the
+# PMU's STEP by 02-PROJECTS/02-electrical/00-design/tools/export_glb.py - 48 MB the set, over the
 # 20 MB the row allows in git. scene.json beside them is committed.
 02-APP/app/public/design/**/*.glb
 *.keystore
@@ -109,22 +109,22 @@ keystore.properties
 # vendors' copyrights keep them out of a public repository.
 00-CAR/library/
 
-# The purchased 3D model (S-037) and what is built from it stay on this PC, in 02-cad/model/sa:
+# The purchased 3D model (S-037) and what is built from it stay on this PC, in 03-cad/model/sa:
 # the repository is public and the model's licence does not allow passing it on. The renders in
 # 02-APP/app/public/car are committed; the model itself never is.
-02-PROJECTS/02-cad/model/sa/
+02-PROJECTS/03-cad/model/sa/
 
-# The free CAD library (02-cad/model/library): every downloaded model stays on this PC. Their
+# The free CAD library (03-cad/model/library): every downloaded model stays on this PC. Their
 # licences vary (CC-BY, CC-BY-NC, 3D Warehouse, manufacturer terms) and the repository is public,
 # so none is passed on. The catalogue is the record (00-CAR's cad table); the scripts that read
 # the files are committed.
-02-PROJECTS/02-cad/model/library/
+02-PROJECTS/03-cad/model/library/
 
 # The raw copy of the Fedora PC model folder (2026-10-13, holds the bought SA model and a 1.6 GB
 # library.zip backup), merged into the folders above: never in git
-02-PROJECTS/02-cad/model/fedora-copy/
+02-PROJECTS/03-cad/model/fedora-copy/
 # The simulation vendors' models and datasheets (00-CAR sources S-491..S-499): their licences keep them out of git
-02-PROJECTS/01-electrical/00-design/sim/vendor/
+02-PROJECTS/02-electrical/00-design/sim/vendor/
 
 # His working photo dumps (2026-10-16): photos stay out of git; the agent sorts them into the record by hand
 today-temp/

@@ -22,7 +22,7 @@
   const kb = (n: number) => (n >= 1e6 ? `${(n / 1e6).toFixed(1)} MB` : `${Math.max(0, n / 1000).toFixed(n < 10_000 ? 1 : 0)} kB`);
   // the pull's rate budget (electrical params ble_kbps, confirm at BT4), for the full log's estimate
   const kbps = $derived.by(() => {
-    const t = app.snapshot?.tables.find((x) => x.area === '01-electrical' && x.table === 'params');
+    const t = app.snapshot?.tables.find((x) => x.area === '02-electrical' && x.table === 'params');
     const row = t?.rows.find((r) => r[0] === 'ble_kbps');
     const v = Number(row?.[t!.columns.indexOf('value')]);
     return Number.isFinite(v) && v > 0 ? v : null;

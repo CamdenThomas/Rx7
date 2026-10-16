@@ -18,8 +18,8 @@
 #include <string>
 #include <vector>
 #include <sys/stat.h>
-#include "../../../02-PROJECTS/01-electrical/00-design/display-unit/firmware/du/log_link.h"
-#include "../../../02-PROJECTS/01-electrical/00-design/display-unit/firmware/du/log_store.h"
+#include "../../../02-PROJECTS/02-electrical/00-design/display-unit/firmware/du/log_link.h"
+#include "../../../02-PROJECTS/02-electrical/00-design/display-unit/firmware/du/log_store.h"
 
 /* the card, in memory (as tests/test_loglink.cpp's MemFs) */
 struct MemFs : LogFs {

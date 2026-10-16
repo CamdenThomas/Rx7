@@ -32,11 +32,11 @@ writeFileSync(join(home, '.gitconfig'), '[user]\n\tname = Camden Thomas\n\temail
 // The block this test answers is raised in the sandbox itself, so the test never depends on
 // what Camden has answered in the real record (a block he answers is deleted; plan P43).
 const rx7 = (...a) => execFileSync('python3', [join(tree, 'tools', 'rx7.py'), ...a], { cwd: tree, encoding: 'utf8' }).trim();
-const raised = rx7('block', '-p', '02-PROJECTS/01-electrical', 'title=A test block', 'ask=Which way does the test go?',
+const raised = rx7('block', '-p', '02-PROJECTS/02-electrical', 'title=A test block', 'ask=Which way does the test go?',
   'why=The desktop e2e answers this block and checks that the answer arrives byte for byte.',
   'options=(a) Left - nothing else changes.\n(b) Right - nothing else changes.', 'recommend=(a), unless the test says otherwise.', 'stops=Nothing.');
 const BLOCK = raised.match(/(\d{2}\.\d{2,3})/)[1];
-git('add', '-A', '02-PROJECTS/01-electrical/data/blocks.csv');
+git('add', '-A', '02-PROJECTS/02-electrical/data/blocks.csv');
 git('commit', '-q', '-m', `Electrical: test block ${BLOCK} for the desktop e2e`);
 git('push', '-q');
 const PICK = (() => {
@@ -96,7 +96,7 @@ try {
   await sleep(1200);
   await shot('home');
 
-  await js(`location.hash = '#/p/01-electrical/blocks/${BLOCK}'`);
+  await js(`location.hash = '#/p/02-electrical/blocks/${BLOCK}'`);
   await until('the block opens', "return !!document.querySelector('.opt')");
   await js("document.querySelectorAll('.opt')[1].click()");
   const words = 'Toggles in a box — “belt and braces”.\nSecond line.';
@@ -108,7 +108,7 @@ try {
   await js("[...document.querySelectorAll('.answer .btn.primary')].find((b) => b.textContent.includes('Save answer')).click()");
   await until('the answer shows as saved', "return !!document.querySelector('.saved')");
 
-  const file = join(tree, `02-PROJECTS/01-electrical/data/inbox/${BLOCK}~desktop.csv`);
+  const file = join(tree, `02-PROJECTS/02-electrical/data/inbox/${BLOCK}~desktop.csv`);
   check('rx7.py answer wrote the inbox file', existsSync(file));
   check('his words are in it byte for byte', existsSync(file) && readFileSync(file, 'utf8').includes('"Toggles in a box — “belt and braces”.\nSecond line."'));
   check('it was committed alone, with his message', git('log', '-1', '--format=%s') === `Camden answered ${BLOCK} (desktop)` && git('show', '--stat', '--format=', 'HEAD').split('\n').length === 2);
@@ -138,7 +138,7 @@ try {
   await shot('picks');
 
   // Withdraw his desktop answer: the file goes, in its own commit.
-  await js(`location.hash = '#/p/01-electrical/blocks/${BLOCK}'`);
+  await js(`location.hash = '#/p/02-electrical/blocks/${BLOCK}'`);
   await until('the saved answer shows', "return !!document.querySelector('.saved')");
   await js("[...document.querySelectorAll('.saved .btn')].find((b) => b.textContent.includes('Withdraw')).click()");
   await until('withdrawn in the app', "return !document.querySelector('.saved')");

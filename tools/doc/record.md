@@ -25,20 +25,20 @@ pitched, at his request. Code and drawings with the READMEs that belong to them:
 firmware, the KiCad boards, the tools, the app. `00-CAR/data/procedures/` waits for the Manual's
 plan (D-407); the factory-circuit write-ups are `00-CAR` `circuit_paths` rows (D-522). And `99-ARCHIVE`.
 The old `01-REFERENCE` (then `01-INTAKE`) is gone (D-519, D-573): its tables - sources,
-catalogue, cad, suppliers, connector_dims, circuits - are `00-CAR`'s, and `blend` `02-cad`'s; its
+catalogue, cad, suppliers, connector_dims, circuits - are `00-CAR`'s, and `blend` `03-cad`'s; its
 record's shell is `99-ARCHIVE/2026-10-13_01-REFERENCE`. Its files are out of git: the documents in
 `00-CAR/library` (`docs/`, `datasheets/`, `research/`, each named by a `sources` row's
-`local_path`), the found models in `02-PROJECTS/02-cad/model/library` (named by `cad.local_path`)
-and the bought SA model and what is built from it in `02-cad/model/sa`. His photos
+`local_path`), the found models in `02-PROJECTS/03-cad/model/library` (named by `cad.local_path`)
+and the bought SA model and what is built from it in `03-cad/model/sa`. His photos
 are `00-CAR/photos`; the PMU's and the EVE board's vendor files are under
-`01-electrical/00-design` (`pmu/vendor`, `display-unit/vendor`); the found-model scripts are
-`02-cad/model/found`, whose `paths.py` names the library's folder. Everything the intake held
+`02-electrical/00-design` (`pmu/vendor`, `display-unit/vendor`); the found-model scripts are
+`03-cad/model/found`, whose `paths.py` names the library's folder. Everything the intake held
 has been parsed into the car's tables; `06-intake`, the project that did it, is archived
 (`99-ARCHIVE/2026-10-14_06-intake`, D-569). A new file goes straight to `00-CAR/library` (or a
 project's own vendor folder, R10) and is parsed by a run in the project that wants it.
 
 **The one generated file type left is the harness-leg drawings** (D-385): for each leg,
-`A-pin-ladder.svg` and `B-route-map.svg` in `02-PROJECTS/01-electrical/00-design/harness/diagrams/`,
+`A-pin-ladder.svg` and `B-route-map.svg` in `02-PROJECTS/02-electrical/00-design/harness/diagrams/`,
 a pure projection of `housings`, `cavities`, `devices` and `routes`, read-only, rebuilt whole
 by `rx7.py diagrams`, and never looked at by `check`. The command refuses to write any sheet
 where a label touches a label or sits on a wire (rc 2). Fix that in the layout code, never

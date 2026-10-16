@@ -1,6 +1,6 @@
 <!--
   The car in 3D (D-415, D-420): the FB body from the free CAD library, scaled to the factory
-  size, on the bought 1978 model's wheels, built by 02-PROJECTS/02-cad/model/found/blend.py. Turned with
+  size, on the bought 1978 model's wheels, built by 02-PROJECTS/03-cad/model/found/blend.py. Turned with
   the mouse, repainted from the swatch (materials named carpaint). Desktop only — the model
   stays on the PC and out of git, so the phone shows the renders instead. It is low-poly and
   has no interior, and nothing is measured from it here.
@@ -93,7 +93,7 @@
 <div class="model">
   <div class="canvas" bind:this={host}></div>
   {#if status === 'loading'}<p class="note faint">Loading the model…</p>{/if}
-  {#if status === 'failed'}<p class="note faint">The model is not built on this PC — 02-PROJECTS/02-cad/model/found/README.md.</p>{/if}
+  {#if status === 'failed'}<p class="note faint">The model is not built on this PC — 02-PROJECTS/03-cad/model/found/README.md.</p>{/if}
   {#if status === 'ready'}
     <div class="paint">
       <label title="Paint"><input type="color" bind:value={paint} aria-label="Paint colour" /></label>

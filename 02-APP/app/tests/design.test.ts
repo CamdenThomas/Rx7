@@ -470,7 +470,7 @@ describe('version 2: connectors, legs, the CUR', () => {
   });
 });
 
-describe('the harness as built (01-electrical D-583)', () => {
+describe('the harness as built (02-electrical D-583)', () => {
   const p = (x: number) => ({ x, y: 0, z: 0 });
   const built = {
     ...s2.legs[0],
@@ -519,7 +519,7 @@ describe('the layers', () => {
   });
 });
 
-// ------------------------------------------------------------------ the car (02-cad D-518, MG1)
+// ------------------------------------------------------------------ the car (03-cad D-518, MG1)
 
 const pc = parseScene(rawCar);
 if (!pc.ok) throw new Error(pc.reason);
@@ -580,10 +580,10 @@ describe('the car: a scene of separate solids', () => {
   });
 
   it('the harness merges in as a layer: ids prefixed, models from its own folder, drawn by its rules', () => {
-    const m = mergeScenes(sc, s2, 'h:', '/design/01-electrical/', { id: 'harness', name: 'Harness' });
+    const m = mergeScenes(sc, s2, 'h:', '/design/02-electrical/', { id: 'harness', name: 'Harness' });
     expect(m.parts).toHaveLength(sc.parts.length + s2.parts.length);
     const plate = m.parts.find((p) => p.id === 'h:cur-board')!;
-    expect(plate).toMatchObject({ parent: 'h:cur', glb: '/design/01-electrical/cur-board.glb', system: 'harness', layer: 'h:' });
+    expect(plate).toMatchObject({ parent: 'h:cur', glb: '/design/02-electrical/cur-board.glb', system: 'harness', layer: 'h:' });
     expect(m.parts.find((p) => p.id === 'h:L1-S1:plug')!.mate).toBe('h:L1-S1:receptacle');
     expect(m.links[0].from.part).toBe('h:pmu');
     expect(m.legs[1].branches[0].to).toBe('h:rear-end');

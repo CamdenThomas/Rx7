@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """diagrams.py - the two drawings of every harness leg (D-385), called by `rx7.py diagrams`.
 
-Writes 02-PROJECTS/01-electrical/00-design/harness/diagrams/<leg>/A-pin-ladder.svg and B-route-map.svg, and nothing
+Writes 02-PROJECTS/02-electrical/00-design/harness/diagrams/<leg>/A-pin-ladder.svg and B-route-map.svg, and nothing
 else. Like DECISIONS.md they are a pure, read-only projection of the record: rebuilt whole, never
 edited, never looked at by `check`, never a reason to refuse a commit.
 
@@ -12,7 +12,7 @@ edited, never looked at by `check`, never a reason to refuse a commit.
                  stacked in the order its branch leaves the bundle, so wires peel off the outside
                  and never cross. 45-degree bends only.
 
-Owns no facts. Reads (01-electrical):
+Owns no facts. Reads (02-electrical):
   housings   code, leg, leg_side, where          which housings make up a leg
   cavities   housing, cav, circuit, src, awg,    every row of the ladder; colour is the ink
              colour, state, lands_on
@@ -35,7 +35,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-AREA = ROOT / "02-PROJECTS" / "01-electrical"
+AREA = ROOT / "02-PROJECTS" / "02-electrical"
 OUT = AREA / "00-design" / "harness" / "diagrams"
 # One font, kept in the tree (tools/fonts, SIL OFL), so every clone measures a label the same
 # way: a system font differs by machine and version, and a label that wraps one word later on

@@ -3,7 +3,7 @@
   after what it waits on. Tracks and parts follow the record (D-386, D-387 → D-405). His
   rows are answered right here, each the way its kind needs.
 
-  A project whose rows carry briefs (01-electrical D-533) reads as the manual's contents: his
+  A project whose rows carry briefs (02-electrical D-533) reads as the manual's contents: his
   rows numbered as one sequence from the first to the last, each with its goal, where, how
   long and how many of its steps are ticked on this device, and Start here on the first row
   he can do now. A project without briefs reads as it always has.

@@ -187,7 +187,7 @@ test('search finds a decision by its words and opens it', async ({ page, isMobil
 });
 
 test('a Claude run shows its feed and its report', async ({ page }) => {
-  await open(page, '#/p/01-electrical/run');
+  await open(page, '#/p/02-electrical/run');
   await page.locator('.offer').filter({ hasText: 'Plan' }).getByRole('button', { name: 'Run' }).click();
   await expect(page.locator('.report').first()).toContainText('PUSHED', { timeout: 15_000 });
   await expect(page.getByText('python3 tools/rx7.py status')).toBeVisible();

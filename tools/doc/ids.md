@@ -25,3 +25,13 @@ and the project that closed it names the old prefix in its `_project` under `inh
 (`02-cad` 05, `03-engine` 02, `04-luxury` 03 - and 04, its own now, for beauty's). A new block
 takes the project's present number and is numbered past every id ever used, so `03.NN` from now
 on is engine's and never repeats a luxury id.
+
+On 2026-10-16 the projects took the order Camden gave for the engine swap (D-618): `05-library`
+became `00-library`, `03-engine` `01-engine`, `01-electrical` `02-electrical`, `02-cad` `03-cad`;
+`04-luxury` kept its number. The one open block, electrical's `01.61`, was closed the same day
+(D-617), so no open id changed. Each project names the prefixes it carried before under
+`inherits_blocks` (`00-library` 05, `01-engine` 03 and 02, `02-electrical` 01, `03-cad` 02 and 05,
+`04-luxury` 03 and 04). A prefix an area owns today wins, so `01.NN` from now on is engine's,
+`02.NN` electrical's and `03.NN` cad's; every new id is numbered past every id ever used, so
+none repeats an old one (next: `01.62`, and so on). A block id in a decision or log written
+before 2026-10-16 keeps the project it had then.

@@ -273,18 +273,18 @@ mod tests {
     #[test]
     fn area_path_finds_top_level_and_project_areas() {
         let d = tempfile::tempdir().unwrap();
-        for a in ["00-CAR", "02-PROJECTS/01-electrical"] {
+        for a in ["00-CAR", "02-PROJECTS/02-electrical"] {
             let data = d.path().join(a).join("data");
             fs::create_dir_all(&data).unwrap();
             fs::write(data.join("_tables.csv"), "table,purpose\n").unwrap();
         }
         assert_eq!(area_path(d.path(), "00-CAR").unwrap(), "00-CAR");
-        assert_eq!(area_path(d.path(), "01-electrical").unwrap(), "02-PROJECTS/01-electrical");
+        assert_eq!(area_path(d.path(), "02-electrical").unwrap(), "02-PROJECTS/02-electrical");
         assert!(area_path(d.path(), "09-nowhere").is_err());
     }
 }
 
-/// `02-PROJECTS/01-electrical` for `01-electrical`, the way rx7.py names areas.
+/// `02-PROJECTS/02-electrical` for `02-electrical`, the way rx7.py names areas.
 fn area_path(root: &Path, area: &str) -> Result<String, String> {
     for base in [root.to_path_buf(), root.join("02-PROJECTS")] {
         let p = base.join(area);

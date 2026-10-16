@@ -1,4 +1,4 @@
-// The TODO page as a step-by-step manual (01-electrical D-533): a project's `briefs` and
+// The TODO page as a step-by-step manual (02-electrical D-533): a project's `briefs` and
 // `steps` tables turned into what each of his rows shows - the brief, its steps in order, its
 // parts by name, and where every fact comes from. Pure: no Svelte, no state of its own.
 //

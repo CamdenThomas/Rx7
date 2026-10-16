@@ -17,9 +17,9 @@ loads from about 10,800 tokens to about 3,600.
 | `rx7.py playbook service` | `playbooks/service.md` | §6.7 Log a service act |
 | `rx7.py playbook new` | `playbooks/new.md` | §6.8 New project |
 | `rx7.py playbook parts` | `playbooks/parts.md` | §6.9 A parts round |
-| `rx7.py playbook session` | `playbooks/session.md` | 05-library: run one hour of parsing (start here) |
-| `rx7.py playbook parse` | `playbooks/parse.md` | 05-library: one queue item read into staged facts (D-574) |
-| `rx7.py playbook merge` | `playbooks/merge.md` | 05-library: staged facts into their home tables (D-574) |
+| `rx7.py playbook session` | `playbooks/session.md` | 00-library: run one hour of parsing (start here) |
+| `rx7.py playbook parse` | `playbooks/parse.md` | 00-library: one queue item read into staged facts (D-574) |
+| `rx7.py playbook merge` | `playbooks/merge.md` | 00-library: staged facts into their home tables (D-574) |
 | `rx7.py doc record` | `record.md` | §1 in full: pages, the Manual, drawings, tracks, the tool |
 | `rx7.py doc work` | `work.md` | the two tracks and the car coming apart once |
 | `rx7.py doc blocks` | `blocks.md` | §4 in full |

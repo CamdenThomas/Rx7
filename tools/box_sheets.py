@@ -9,7 +9,7 @@ rebuilt whole, never edited, never looked at by `check`, the same overlap rule.
                                        cables, and for the PMU box every inside connection
   00-design/diagrams/boxes-plan.svg    every box in its zone, the wires and cables between them
 
-Owns no facts. Reads (01-electrical): boxes (the sheet per row; `part` is the folder), housings
+Owns no facts. Reads (02-electrical): boxes (the sheet per row; `part` is the folder), housings
 (box, series), cavities, devices, fuses (box), relays (box), node_conductors, cables, work (the
 box's CAD-pass row: an open agent row whose item starts 'CAD pass' and names the box).
 """

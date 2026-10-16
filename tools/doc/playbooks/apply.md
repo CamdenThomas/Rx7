@@ -38,7 +38,7 @@ words** by the build playbook; **his drives** by the service playbook.
 **His saved places** (`kind=place`, D-520): `target` is the Design page's part (scene.json's
 `id`), `choice` its place, six numbers (x y z mm, rx ry rz degrees, the car's frame). Find the
 row that part names - `UNITS[...]["row"]` or `PMU["row"]` in `00-design/tools/export_glb.py`,
-a `parts` or `modules` row of 01-electrical - `get` it, `set … place=<choice>`, then rebuild
+a `parts` or `modules` row of 02-electrical - `get` it, `set … place=<choice>`, then rebuild
 the scene (`export_glb.py --only scene`) and delete the inbox row; a later save of the same
 part replaces the earlier one (his newest wins, the old one is in git). A part whose row has no
 `place` column yet (a device, a connector) gets the column (§3: a fact with no column) and the

@@ -1,5 +1,5 @@
 /**
- * The Design page's drawing (D-505, M3D1; version 2 for 01-electrical D-514, M3D2): one
+ * The Design page's drawing (D-505, M3D1; version 2 for 02-electrical D-514, M3D2): one
  * three.js view of a scene - the assembly, one part with its children, or one board - over a
  * canvas, with the labels as DOM elements (CSS2DRenderer: plain HTML, so they read the same
  * in Android's WebView as on the desktop). Everything placed is built in the car frame under
@@ -341,7 +341,7 @@ export class DesignView {
   }
 
   /** The legs (version 2): each piece of the trunk and each breakout a tube at its own
-   *  thickness, taped (01-electrical D-583), the leg's colour a tint in the tape so the legs
+   *  thickness, taped (02-electrical D-583), the leg's colour a tint in the tape so the legs
    *  still read apart; the leg's name near its root. Its route, not a measurement (R11). */
   private drawLegs() {
     const tape = tapeTexture();
@@ -479,7 +479,7 @@ export class DesignView {
     return (!!this.focus && !this.focus.parts.has(id)) || this.dimmed.has(id);
   }
 
-  /** The Systems and Zone filters: these parts fade (02-cad D-518, MG1). */
+  /** The Systems and Zone filters: these parts fade (03-cad D-518, MG1). */
   setDimmed(ids: Set<string>) {
     this.dimmed = new Set(ids);
     this.applyFocus();

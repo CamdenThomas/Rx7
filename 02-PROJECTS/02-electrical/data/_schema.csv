@@ -1,0 +1,364 @@
+table,column,type,required,ref,note
+backbone,id,key,yes,,
+backbone,run,str,no,,
+backbone,cable,str,no,,
+backbone,protection,str,no,,
+backbone,why,text,no,,
+cables,id,key,yes,,
+cables,run,str,no,,
+cables,awg,enum(1/0|10|2|4|6),no,,4 added 2026-10-09 (A17): the amplifier's feed and return
+cables,ft,num,no,,
+cables,colour,enum(BLK|RED),no,,
+cables,note,text,no,,R11 - a length nobody has measured carries confirm (2026-09-21)
+carts,store,key,yes,,
+carts,total_usd,num,no,,
+carts,lines_txt,str,no,,
+carts,url,str,no,,
+carts,note,str,no,,
+cavities,id,key,yes,,
+cavities,housing,str,no,housings.code,
+cavities,cav,int,no,,
+cavities,circuit,str,no,,
+cavities,src,str,no,,
+cavities,src_note,str,no,,
+cavities,awg,str,no,,
+cavities,colour,str,no,,
+cavities,state,enum(CAPPED|LIVE|PLUG|RESERVED),no,,
+cavities,lands_on,text,no,,
+cavities,route,str,no,routes.id,"the run this conductor follows from the post - ONLY for a conductor with no device at its far end (a node, a receptacle, a socket); otherwise devices.route is the home (D-385)"
+colours,id,key,yes,,
+colours,family,text,no,,
+colours,gauges,str,no,,
+decisions,id,key,yes,,
+decisions,system,str,no,,
+decisions,title,text,no,,
+decisions,date,date,no,,
+decisions,status,enum(inherited|standing|superseded|withdrawn),no,,vocabulary owned by tools/rx7.py - do not narrow it per project (2026-09-11)
+decisions,supersedes,str,no,,
+decisions,superseded_by,id,no,,
+decisions,closes,str,no,,
+decisions,also,str,no,,
+devices,id,key,yes,,
+devices,zone,enum(Drop|L1|L2|L3|L4|Sill),no,,
+devices,device,str,no,,
+devices,ident,text,no,,
+devices,terminals,text,no,,
+devices,ground,text,no,,
+devices,route,str,no,routes.id,the run this device's conductors follow from the post - set only where routes.to_node names the device; blank means the record does not say yet (D-385)
+devices,plug,text,no,,"the connector the part takes (D-543): its style or family, its ways and which half sits on the part, and what is not known; it says confirm until plug_seen holds his look at the car (R11)"
+devices,plug_from,enum(catalogue|diagram|look|maker|record|unknown),no,,"how plug is known: diagram - the 1982 wiring diagram S-001 and its write-ups; catalogue - the parts catalogue S-005; maker - the maker's sheet or page; record - our own design (housings, cavities, a decision); look - Camden saw it (plug_seen); unknown - no source says"
+devices,leg_end,enum(factory-plug|new-connector|no-leg|our-deutsch|ring-or-spade),no,,"how the leg end at this part is made (D-543): factory-plug - the factory half cut off the old harness with 150 mm of lead and spliced on at E28 (D-537); new-connector - a mating connector bought; ring-or-spade - the part's own stud, screw or tab; our-deutsch - one of our own Deutsch pairs in housings; no-leg - nothing on the harness reaches it"
+devices,plug_note,text,no,,"where plug was read (source ids and pages, terminals rows, a page address), the part's other terminations, why a new connector, and the mating part number where a source gives one"
+devices,plug_seen,text,no,,"what Camden found when he looked at the plug on the car: ways, colour, any maker's mark, which half is on the part, sound or damaged, the photo's name - his words from the answer to S1, V-115 or V-116, filed by the apply run"
+devices,plug_seen_on,date,no,,"the day of that look; with it set, plug_seen is the plug and plug's confirm no longer holds"
+fuses,id,key,yes,,
+fuses,rating,str,no,,
+fuses,location,str,no,,
+fuses,block,enum(A|B|C),no,,C added 2026-10-09 (A13): the O15 comfort block P164 behind the centre stack
+fuses,pos,int,no,,
+fuses,feeds,str,no,,
+fuses,fed_from,str,no,,
+fuses,state,enum(EMPTY|LIVE),no,,
+fuses,label,str,no,,
+grounds,id,key,yes,,
+grounds,zone,enum(L1|L2|L3|L4|Sill),no,,
+grounds,return,str,no,,
+grounds,awg,enum(1/0|10|12|14|16|2|4|6),no,,4 and 6 added 2026-10-09 (A17): the amplifier's return
+grounds,qty,int,no,,
+grounds,ft,int,no,,
+grounds,note,text,no,,R11 - a length nobody has measured carries confirm (2026-09-21)
+housings,code,key,yes,,
+housings,leg,str,no,,
+housings,class,enum(Blower|Bundle|Door|Medium|Mixed|Module|Port|Power|Seat|Signal),no,,"Seat added 2026-10-09 (A14): the under-seat receptacles; Bundle and Mixed added 2026-10-15 (D-612): a hard-wired bundle at a box, a mixed-contact circular"
+housings,leg_side,enum(CMC48-64320-1311|DRC16-24SA|DRC26-24SA+DRC26-40SA|DT06-12S|DT06-2S|DT06-4S|DT06-6S|DT06-8S|DTP06-2S|DTP06-4S|HDP26-24-21SE|HDP26-24-91SE|HDP26-24-29SE|HDP26-24-31SE|hard-wired),no,,"CMC48-64320-1311 added 2026-10-14 (D-582): the Control Unit's one connector, a Molex CMC 48-way wire-side receptacle; DRC16-24SA added 2026-10-14 (D-587): the Display Unit's one plug, a Deutsch DRC 24-way; D-612 (2026-10-15): the HDP20 circulars of the PMU box and the amplifier dock, the Control Unit's two DRC plugs on its 64-way header (D-594), and hard-wired for a bundle with no plug at its box; HDP26-24-91SE added 2026-10-15 (D-614): the seats' plug with a #8 return"
+housings,box_side,str,no,,
+housings,cavs,int,no,,
+housings,wedgelocks,str,no,,
+housings,where,str,no,,
+housings,note,text,no,,
+icu_channels,id,key,yes,,
+icu_channels,kind,enum(bus|display|input|power|radio|sensor),no,,
+icu_channels,signal,str,no,,
+icu_channels,at_the_drop,text,no,,
+icu_channels,on_the_wire,text,no,,
+icu_channels,carrier_stage,text,no,,
+icu_channels,teensy_pin,str,no,,
+icu_channels,calibration,text,no,,
+icu_channels,can,str,no,,
+icu_channels,note,text,no,,
+inputs,id,key,yes,,
+inputs,title,str,no,,
+inputs,kind,enum(12v|ground|output),no,,output = the pin is configured as one of O17-O24 and is not an input at all; widened 2026-09-12 so this table can describe the real channel set (D-331 / W-331)
+inputs,window,int,no,,± half-width in counts around the live reading (D-142); how it is applied is decode
+inputs,fault_rule,str,no,,
+inputs,decode,enum(conductance|upward|window),no,,how the states are told apart - rules ladder-decode; added 2026-09-24 by R3 (D-408)
+ladders,id,key,yes,,
+ladders,input,str,no,inputs.id,
+ladders,state,str,no,,
+ladders,r,str,no,,
+loads,id,key,yes,,
+loads,circuit,text,no,,
+loads,ch,str,no,,
+loads,rated,str,no,,
+loads,design_a,str,no,,
+loads,measured_a,str,no,,
+loads,basis,str,no,,
+log,id,key,yes,,
+log,date,date,no,,
+log,workflow,enum(answers|clean|closed|repair|session),no,,
+log,ids,text,no,,
+log,summary,text,no,,
+logic,id,key,yes,,
+logic,channel,str,no,,
+logic,expression,text,no,,
+logic,inrush,str,no,,
+logic,retry,str,no,,
+logic,retry_class,enum(conditional|critical|guarded|lamp|motor|none),no,,names the retry behaviour; the parameters are in rules retry-class (D-279). conditional added 2026-09-21 for MOTOR_BUS (D-357)
+migration,id,key,yes,,
+migration,seq,int,no,,
+migration,circuit,text,no,,
+migration,ch,str,no,,
+node_conductors,id,key,yes,,
+node_conductors,src,str,no,,
+node_conductors,dst,text,no,,
+node_conductors,awg,str,no,,
+node_conductors,colour,str,no,,
+node_conductors,note,text,no,,
+params,key,key,yes,,
+params,value,str,no,,
+params,unit,enum(A|KB|bits|kbps|ms|px|V),no,,from the luxury package's params (D-374); empty on the rows that carry their unit in the key; V added 2026-10-09 for vdrop_max_v (Y1)
+params,source,str,no,,
+params,note,text,no,,
+parts,id,key,yes,,
+parts,store,str,no,,
+parts,section,str,no,,
+parts,sku,str,no,,
+parts,item,text,no,,
+parts,spec,text,no,,
+parts,qty,num,no,,a number; the unit is in unit (P45)
+parts,unit,enum(ea|ft|pair|pk|roll|set),no,,
+parts,unit_usd,num,no,,"US dollars per unit, cents allowed (P45)"
+parts,basis,enum(cart|est),no,,
+parts,used_for,text,no,,
+parts,status,str,no,,
+parts,need_rule,str,no,,
+parts,target,str,no,,
+pins,pin,key,yes,,
+pins,cav_size,enum(L|M|S|stud),no,,
+pins,ch,str,no,,
+pins,name,str,no,,
+pins,type,enum(CAN1|CAN2|GND|MAIN|REF|WAKE|input|output),no,,
+pins,awg,str,no,,
+pins,colour,enum(BLK|BLU|GRN|GRY|ORN|PNK|RED|YEL),no,,
+pins,circuit,text,no,,
+pins,goes_to_fixed,str,no,,
+pins,est_a,num,no,,the running current the design expects; CK01's baseline_a replaces it in the health band
+pins,enable_a,num,no,,
+pins,enable_basis,str,no,,
+pins,inrush_x,num,no,,"the load's start-up current as a multiple of est_a, for inrush_ms; the PMU soft fuse's Inrush Current / Inrush Time are set from it (S-028 p.134), and Y1 holds inrush_x x est_a under the pin's peak_a (R11)"
+pins,inrush_ms,int,no,,
+pins,state,enum(CAPPED|LIVE),no,,
+pins,note,str,no,,
+pins,baseline_a,num,no,,"measured live at shakedown (CK01) - the health band is derived from it, never typed (rules health-band)"
+relays,id,key,yes,,
+relays,function,str,no,,
+relays,type,str,no,,
+relays,location,str,no,,
+relays,c86,str,no,,
+relays,c85,str,no,,
+relays,c30,str,no,,
+relays,c87,str,no,,
+relays,c87a,str,no,,
+relays,state,enum(LIVE|SPARE),no,,
+relays,label,str,no,,
+retired,term,key,yes,,
+retired,retired_by,str,no,,"a decision id or the block that replaced it (CLAUDE.md §4, del --replaced-by); was `id` and refused block ids - widened 2026-10-13 to match every other area"
+retired,note,str,no,,
+rules,id,key,yes,,
+rules,rule,str,no,,
+rules,definition,text,no,,
+series,id,key,yes,,
+series,contact,str,no,,
+series,wire,str,no,,
+series,rated,str,no,,
+series,used_for,str,no,,
+work,id,key,yes,,
+work,stage,enum(A|B|C|D|E|F|G|R|S|V|Y|Z),no,,V added 2026-09-11: the verify/measure/do items carried over from the v2 question list; R and Z added 2026-09-23 (D-386): the risk-review rows and the design freeze; S (D-387): the interior strip; Y added 2026-10-08: the proof stage - checks
+work,stage_title,str,no,,
+work,item,text,no,,
+work,owner,enum(agent|camden),no,,
+work,state,enum(blocked|done|dropped|open),no,,vocabulary owned by tools/rx7.py - do not narrow it per project (2026-09-11)
+work,gate,str,no,,"references only - D-###, a block id like 00.18, a work id in this area, <area>:<work id>, or phase:<PHASE>; all must be met before the row can start, an empty cell is met, and prose belongs in note (2026-09-12)"
+work,note,text,no,,
+work,track,enum(build|design),no,,"which list the row lives in (D-386 → D-405): design = everything up to the verified design; build = all of it gated on phase:SOURCING, the design freeze"
+checks,id,key,yes,,
+checks,when,str,no,,"the step it belongs to - M-1, shakedown, install 2.14, PMU client 5.4"
+checks,subject,str,no,,
+checks,method,text,no,,"how to take it, precisely enough to take it once"
+checks,expect,text,no,,"the number or band, and what a reading outside it means"
+checks,feeds,str,no,,the rows and decisions that consume the reading
+checks,note,text,no,,
+recovery,id,key,yes,,
+recovery,seq,int,no,,
+recovery,situation,enum(always|dead module|soft fault),no,,
+recovery,step,text,no,,
+recovery,detail,text,no,,
+routes,id,key,yes,,
+routes,leg,str,no,,
+routes,from_node,str,no,,
+routes,to_node,str,no,,
+routes,via,str,no,,the grommet or path the tape follows
+routes,ft,num,no,,"measured route length, feet - blank until M-2; the cut length is 1.5x this (D-202)"
+routes,model_ft,num,no,,"planning estimate from the 3D body (00-CAR S-037, 02-PROJECTS/03-cad/model/found/estimate.py) with assumed node positions - never a cut length, never read by the wire schedule; ft is the measured figure (D-416)"
+routes,note,text,no,,
+dcu_channels,id,key,yes,,
+dcu_channels,kind,enum(bus|input|output|power|sensor),no,,
+dcu_channels,signal,str,no,,
+dcu_channels,at_the_drop,text,no,,
+dcu_channels,on_the_wire,text,no,,
+dcu_channels,carrier_stage,text,no,,
+dcu_channels,teensy_pin,str,no,,"pin class until H-002 assigns numbers; the number is promoted here, never kept only in KiCad"
+dcu_channels,calibration,text,no,,
+dcu_channels,can,str,no,,
+dcu_channels,note,text,no,,
+bringup_log,date,key,yes,,
+bringup_log,board,str,no,,
+bringup_log,firmware,str,no,,
+bringup_log,event,str,no,,
+can_fields,id,key,yes,,
+can_fields,msg,str,no,can_messages.id,
+can_fields,bytes,str,no,,
+can_fields,field,str,no,,
+can_fields,encoding,text,no,,
+can_fields,note,text,no,,
+can_messages,id,key,yes,,
+can_messages,name,str,no,,
+can_messages,sender,enum(DCU|ICU|PANEL|PMU|WBO),no,modules.id,
+can_messages,rate_hz,str,no,,
+can_messages,timeout_ms,int,no,,
+can_messages,on_timeout,str,no,,
+can_messages,status,str,no,,
+can_messages,note,text,no,,
+modules,id,key,yes,,
+modules,module,str,no,,
+modules,board,str,no,,
+modules,location,str,no,,
+modules,logic_power,str,no,,
+modules,heavy_power,text,no,,
+modules,drops,str,no,,
+modules,state,text,no,,
+modules,owns,text,no,,
+modules,place,place,no,,"where the module sits in the car, x y z mm and rx ry rz degrees in the car's frame (D-418) - its scene part's place on the Design page; written only from his Save place answer (kind=place, D-520, R3), never typed; blank = export_glb.py's provisional spot; stays confirm until the car is measured (R11)"
+panel_ribbon,pin,key,yes,,
+panel_ribbon,signal,str,no,,
+panel_ribbon,dcu_side,text,no,,what the DCU carrier does with it
+panel_ribbon,panel_side,text,no,,what it lands on at the panel
+panel_ribbon,note,text,no,,
+wake_stages,id,key,yes,,
+wake_stages,side,enum(door|A8|shared),no,,"door = stage 1 on A6, A8 = stage 2 on A8"
+wake_stages,part,str,no,,
+wake_stages,value,str,no,,
+wake_stages,from,str,no,,one end
+wake_stages,to,str,no,,the other end
+wake_stages,role,text,no,,
+wake_stages,note,text,no,,
+blocks,id,key,yes,,"<prefix>.<nn>, issued by rx7.py block (D-356)"
+blocks,title,str,yes,,
+blocks,opened,date,yes,,
+blocks,ask,text,yes,,"one sentence, answerable on its own"
+blocks,why,text,yes,,what changes depending on the answer
+blocks,options,text,yes,,"one per line, each starting (a) , (b) … - the app shows each as a button"
+blocks,recommend,text,yes,,"names the option it recommends first, e.g. (a), unless …"
+blocks,stops,text,yes,,what cannot proceed until it is answered
+inbox,id,key,yes,,<target>~<device>; the row is the file data/inbox/<id>.csv (D-405)
+inbox,target,str,yes,,"what it answers: a block, pick or work id; a workflow for kind=run; a name for kind=project"
+inbox,kind,enum(block|drive|note|pick|place|project|run|work),yes,,vocabulary owned by tools/rx7.py
+inbox,choice,str,no,,the option letter; yes/no/question; done; a value; a choice - empty when he only wrote words
+inbox,text,text,no,,"his words, verbatim"
+inbox,context,text,no,,"the key points of a Discuss chat, carried into the decision with his words (D-406)"
+inbox,device,enum(desktop|phone),yes,,vocabulary owned by tools/rx7.py
+inbox,at,datetime,yes,,when he saved it
+decisions,body,text,no,,"the decision's full text: the ruling in bold, his words, the reasoning, the consequences (D-405)"
+work,reply,enum(check|choice|value),no,,"how he answers his row in the app: check (the default), value or choice (D-406)"
+work,choices,str,no,,"for reply=choice: the choices, separated by |"
+work,unit,str,no,,for reply=value: the unit the value is in
+work,result,str,no,,"his answer as rx7.py apply set it: done, the value (in unit), or the choice (2026-09-26, plan P07)"
+work,settles,str,no,,"rows his answer flips, as <area>:<table>:<key> separated by spaces; blank means the PT ids named in item (2026-09-26, plan P07)"
+awg,awg,key,yes,,"gauge as written in the wire columns: 1/0, 2, 4 ... 20"
+awg,ohm_per_kft,num,no,,"copper at 20 C, ohms per 1000 ft (00-CAR S-478)"
+awg,amp_air,num,no,,"maximum amps for chassis wiring, one wire in air (S-478's conservative column)"
+awg,amp_bundle,num,no,,"amp_air x 0.6 for a conductor inside a leg's bundle - the usual harness derating for 7+ conductors; a hand figure, confirm against SAE J1128 / the insulation's rating when the spools are chosen (A6)"
+awg,source,str,no,,the sources row the figures come from
+pins,hw_max_a,num,no,,"the pin's hardware maximum continuous current per the PMU manual's pinout (S-028 p.11-12): 25, 15 or 7"
+pins,peak_a,num,no,,"the pin's hardware peak current per the PMU manual (S-028 p.8): 120 A for the 25 A and 15 A outputs, 70 A for the 7 A outputs"
+pins,hold,str,no,blocks.id,an open block that already holds this row's electrical finding: the check reports it as waiting (rc 2) instead of refusing; cleared when the block closes
+cavities,hold,str,no,blocks.id,as pins.hold
+node_conductors,hold,str,no,blocks.id,as pins.hold
+grounds,kind,enum(stud|return),no,,"stud: the one conductor from a star stud to the chassis, sized for the leg's whole return; return: a device's own return to the star"
+grounds,hold,str,no,blocks.id,as pins.hold
+fuses,hold,str,no,blocks.id,as pins.hold
+relays,hold,str,no,blocks.id,as pins.hold
+loads,hold,str,no,blocks.id,as pins.hold
+ideas,id,key,yes,,
+ideas,date,date,no,,
+ideas,by,enum(camden|agent),no,,who raised it; an agent's idea is a suggestion until Camden keeps it
+ideas,about,str,no,,"what it concerns: a module, table or work id of this area - prose belongs in note"
+ideas,idea,text,no,,"Camden's words verbatim when by=camden, whole; never edited - a later version is a new row"
+ideas,status,enum(raw|kept|merged|dropped),no,,raw until he rules; it leaves raw only by a decision that carries his words
+ideas,note,text,no,,the agent's reading: what stands meanwhile and what the idea would touch if he ruled it
+log_channels,id,key,yes,,
+log_channels,channel,str,no,,
+log_channels,source,str,no,,the can_fields id(s) or icu_channels id the value comes from; a local value names the firmware that makes it
+log_channels,bytes,int,no,,width in the 1 Hz record
+log_channels,encoding,str,no,,
+log_channels,note,text,no,,
+log_link,id,key,yes,,
+log_link,item,str,no,,"a characteristic, an opcode on the control characteristic, or a UART frame type"
+log_link,side,enum(ble|uart|both),no,,ble = between the phone and the C3; uart = between the C3 and the Teensy; both = a rule that spans the link (widened 2026-10-12 for the timing row)
+log_link,direction,str,no,,
+log_link,payload,text,no,,"every byte, little-endian; strings are UTF-8 with a length byte"
+log_link,note,text,no,,
+log_files,id,key,yes,,
+log_files,file,str,yes,,
+log_files,layout,text,yes,,"every byte, little-endian, offsets from the start of the file or record"
+log_files,note,text,no,,
+briefs,id,key,yes,work,the work row's id
+briefs,goal,text,yes,,"what is true when the row is done, one sentence"
+briefs,where,str,no,,"desk, bench, or the place on the car"
+briefs,time,str,no,,"an honest estimate: 20 min, 2 h, a weekend"
+briefs,tools,text,no,,one per line; a tool that is a parts row names its id
+briefs,parts,list,no,parts,"the parts rows used, by id; the app shows their names and quantities"
+briefs,before,text,no,,"what must be true before starting, safety included; one per line"
+briefs,know,text,no,,"what to know about the car and the situation, one fact per line, each ending with where it comes from in square brackets (a row id, a source and page); an unmeasured one says confirm"
+briefs,done_when,text,yes,,the acceptance: what he sees or measures that says it is finished
+briefs,if_not,text,no,,what to do when a result is not what the steps expect
+briefs,record,text,no,,what to enter in the app when it is done
+steps,id,key,yes,,"<work id>.<two digits>, in order"
+steps,work,str,yes,work,the work row it belongs to
+steps,n,int,yes,,"its place in the row, 1 first"
+steps,do,str,yes,,"the action, one short imperative line"
+steps,how,text,no,,"exactly how: the place, the housing and cavity, the colour and gauge, the torque, the order"
+steps,expect,text,no,,what he should see or measure when the step went right
+steps,caution,text,no,,"the one thing that hurts him or the car at this step, if any"
+inputs,pull,enum(up|down|off),no,,"the PMU's software-selectable 10 kΩ on this input, as E25 enters it: up = to +5 V, down = to ground, off = neither (00-CAR S-028 section 2.8); blank on a pin configured as an output (Y32, 2026-10-13)"
+parts,torque_nm,num,no,,"the maker's tightening figure for this part's stud or screw, N·m - from the maker's page, or read off the sheet in the box at D1; blank = not known yet, and rules torque says what to do (Y32, 2026-10-13)"
+parts,place,place,no,,"where the part sits in the car, x y z mm and rx ry rz degrees in the car's frame (D-418) - its scene part's place on the Design page; written only from his Save place answer (kind=place, D-520, R3), never typed; blank = export_glb.py's provisional spot; stays confirm until the car is measured (R11)"
+checks,value,text,no,,"the reading as taken, with its unit - the home of every check's result that is not a work row's own (R10: a home for every reading; Y32, 2026-10-13)"
+checks,taken,date,no,,the day the reading in value was taken
+migration,measured_a,num,no,,"the circuit's live current read in the client when it moved (E28 loop step 4), amps; it seeds loads.measured_a and CK01's baseline (Y32, 2026-10-13)"
+migration,drop_v,num,no,,"busbar voltage minus the voltage at the device under load (E28 loop step 5), volts - 0.5 or under"
+migration,return_v,num,no,,"the device's ground terminal against the star it returns to, under load (E28 loop step 5), volts - 0.3 or under"
+boxes,id,key,yes,,
+boxes,name,str,no,,
+boxes,part,str,no,,"its folder in 02-electrical/00-design, where its CAD, data and drawings are"
+boxes,where,str,no,,where it sits; every place assumed until he measures (D-603)
+boxes,holds,text,no,,"what is inside it, by the record's ids"
+boxes,joins,text,no,,"how it meets the harness: its plugs (housings), its hard-wired bundles, its studs and leads"
+boxes,decided,str,no,,the rulings it comes from
+boxes,state,enum(planned|drawn|built),no,,"planned: in the record, its CAD the next pass; drawn: CAD done; built: in hand"
+boxes,note,text,no,,
+housings,series,enum(DRC16|DRC20|DT|DTP|HD|HW),no,,"the contact a conductor in it is crimped in (D-612): DT / DTP / DRC16 / DRC20 by the family; HD, a mixed-contact Deutsch circular, takes its size from each cavity's contact; HW, a bundle hard-wired at a box with no plug at the box. Blank: DT, or DTP where a side names a DTP part"
+housings,box,str,no,boxes.id,"the box the housing's box side sits in, where it is one (D-612)"
+cavities,contact,enum(12|16|20|8),no,,"the contact size in a mixed-contact (HD) housing, from TE's insert drawing C-0425-014-2400 (D-606, D-612); blank elsewhere; 8 added (D-614): a size-8 contact, 60 A"
+fuses,box,str,no,boxes.id,the box it sits in (D-612)
+relays,box,str,no,boxes.id,the box it sits in (D-612)

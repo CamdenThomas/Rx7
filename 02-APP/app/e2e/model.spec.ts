@@ -1,4 +1,4 @@
-// The Manual's model page (02-cad D-518, 02-APP MG1) on the web build: no car scene says so
+// The Manual's model page (03-cad D-518, 02-APP MG1) on the web build: no car scene says so
 // plainly and the part pages offer no link; the car stub (tests/fixtures/design/car, served
 // as the car's design folder) shows its systems and zones, filters, comes apart on the
 // slider, isolates a part, opens one alone with how it is held, and the part page links in.

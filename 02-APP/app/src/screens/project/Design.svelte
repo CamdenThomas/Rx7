@@ -1,11 +1,11 @@
 <!--
   The project's design in 3D (D-505, work row M3D1): the assembly with its labelled
   connector-to-connector links, any part isolated by a tap; each part's own view with its
-  insides toggled; each board top and bottom. At scene version 2 (01-electrical D-514, M3D2)
+  insides toggled; each board top and bottom. At scene version 2 (02-electrical D-514, M3D2)
   the harness too: the legs as tubes, every connector at its place, a Connectors list by leg
   that opens a housing's cavities, and toggles for each layer. Everything comes from
   public/design/<project>/scene.json and its models, exported from the design by
-  01-electrical Y23 - a view of the design, never a source of facts (R11), and nothing on it
+  02-electrical Y23 - a view of the design, never a source of facts (R11), and nothing on it
   is typed back into the record.
 -->
 <script lang="ts">

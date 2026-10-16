@@ -1,5 +1,5 @@
 // How he last filtered each project's TODO, so the one-at-a-time view steps through the same
-// rows he was looking at. A project whose rows carry briefs (01-electrical D-533) opens as his
+// rows he was looking at. A project whose rows carry briefs (02-electrical D-533) opens as his
 // own list, whole, from the first row to the last.
 
 import { app } from '../../lib/app.svelte';

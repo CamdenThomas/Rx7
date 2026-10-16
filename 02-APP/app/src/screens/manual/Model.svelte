@@ -1,5 +1,5 @@
 <!--
-  The car as a model (02-cad D-477, D-518; 02-APP MG1): the whole car part by part, every
+  The car as a model (03-cad D-477, D-518; 02-APP MG1): the whole car part by part, every
   part a solid of its own - taken apart and put back together with a slider, filtered by
   system and zone, any part isolated or looked at alone with what holds it. It reads
   public/design/00-CAR/scene.json (the same contract as a project's Design page, plus the
@@ -36,7 +36,7 @@
 
   let { id, alone = false }: { id?: string; alone?: boolean } = $props();
 
-  const HARNESS_BASE = '/design/01-electrical/';
+  const HARNESS_BASE = '/design/02-electrical/';
   let load = $state<Load>({ state: 'loading' });
   let harness = $state<Scene | null>(null); // the electrical scene, when it is exported
   let harnessOn = $state(false);

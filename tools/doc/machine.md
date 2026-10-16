@@ -20,7 +20,7 @@ w64devkit) is stale; so is "the one Fedora machine" — that was true from 2026-
 | Teensy upload | Teensyduino or `arduino-cli` with the Teensy core; no udev | the same, plus PJRC's udev rule (`00-design/README.md`, building for the Teensy) |
 | Diagrams | Pillow (`python3 -m pip install --user pillow`); the font is in the tree, `tools/fonts/` | Pillow (`python3-pillow`); same font |
 | The Rx7 app | **built and installed 2026-10-09 (`F3`)**: Rust 1.99 through rustup in `~/.cargo` (its env line in `~/.zshenv`), Node 24 via fnm, `npm install`, `npx tauri build --bundles app` with `SDKROOT` pinned to the 26.5 SDK (the pin applies to cargo too); ad hoc signed, not notarized, at `/Applications/Rx7.app`. `tauri-driver` (the desktop e2e) is Linux/Windows only — the browser tests run | installed (RPM); Node 22, Rust in `~/.cargo`, the Tauri libraries, JDK 21 in `~/.local/jdk`, the Android SDK/NDK in `~/Android/Sdk` (app README) |
-| Only here | — | the bought SA model (`02-PROJECTS/02-cad/model/sa/1978-mazda-rx-7-mk1-sa.zip`, its `rx7.glb` and `landmarks.json`; a copy is on the Mac too since 2026-10-13, and the raw Fedora copy it came in is `02-cad/model/fedora-copy`), the research downloads, the Android signing key — `P55` names their second home. The 3 GB free model library (`02-PROJECTS/02-cad/model/library`) is on both machines since 2026-10-13 (Camden copied it to the Mac; merged by hand, 2796 files, 22 duplicates identical); the research waves' raw output is its `research/` folder, out of git since 06-intake T2 |
+| Only here | — | the bought SA model (`02-PROJECTS/03-cad/model/sa/1978-mazda-rx-7-mk1-sa.zip`, its `rx7.glb` and `landmarks.json`; a copy is on the Mac too since 2026-10-13, and the raw Fedora copy it came in is `03-cad/model/fedora-copy`), the research downloads, the Android signing key — `P55` names their second home. The 3 GB free model library (`02-PROJECTS/03-cad/model/library`) is on both machines since 2026-10-13 (Camden copied it to the Mac; merged by hand, 2796 files, 22 duplicates identical); the research waves' raw output is its `research/` folder, out of git since 06-intake T2 |
 | Claude Code | `~/.local/bin/claude` | `~/.local/bin/claude` |
 
 The car's diagnostic port `DP-DIAG` takes Camden's Windows laptop, which runs ECUMaster's PMU
@@ -38,8 +38,8 @@ that once lost a whole answering session are why R3 and R9 read the way they do.
 **The visual layer is the Rx7 app, `02-APP`** (D-399 → D-405; not a project since D-428). It is
 a view and an input over the record that keeps no fact of its own. Nothing else grows a view.
 The generated files are only the harness-leg drawings in
-`02-PROJECTS/01-electrical/00-design/harness/diagrams/` (D-385). The one hand-drawn exception is the
-CAD under `02-PROJECTS/01-electrical/00-design/`: the KiCad projects for the DU and CU carriers
+`02-PROJECTS/02-electrical/00-design/harness/diagrams/` (D-385). The one hand-drawn exception is the
+CAD under `02-PROJECTS/02-electrical/00-design/`: the KiCad projects for the DU and CU carriers
 and the control panel, in their units' `control-unit/cad/` and `display-unit/cad/` (D-496), with
 the shared `tools/` holding the check and the library (D-497) — schematic, board layout and 3D model, with
 the method once written as a PCB guide (deleted by Camden on 2026-10-13, the boards drawn) — ruled in by Camden on 2026-09-12, widened on 2026-09-21

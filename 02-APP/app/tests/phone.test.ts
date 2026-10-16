@@ -4,11 +4,11 @@ import { overlay, settled, type Outgoing, type Sent } from '../src/lib/platform/
 import type { Answer, Snapshot } from '../src/lib/model';
 
 const answer = (target: string, extra: Partial<Answer> = {}): Answer => ({
-  area: '01-electrical', id: `${target}~phone`, target, kind: 'block', choice: 'a', text: '', context: '', device: 'phone', at: '2026-09-24T20:00:00-06:00', ...extra,
+  area: '02-electrical', id: `${target}~phone`, target, kind: 'block', choice: 'a', text: '', context: '', device: 'phone', at: '2026-09-24T20:00:00-06:00', ...extra,
 });
 const snap = (inbox: Answer[]): Snapshot => ({
   version: 1, generated: '', record: { valid: true, problems: [] }, areas: [], picks: [], work: [], decisions: [], log: [], tables: [], photos: [],
-  inbox, blocks: ['01.29', '01.30'].map((id) => ({ area: '01-electrical', id, answered: false }) as Snapshot['blocks'][number]),
+  inbox, blocks: ['01.29', '01.30'].map((id) => ({ area: '02-electrical', id, answered: false }) as Snapshot['blocks'][number]),
 });
 
 describe('the phone lays its unsent answers over the record', () => {
@@ -56,15 +56,15 @@ describe('a sent answer stays in view until the published export holds it (D-511
 describe('what the phone fetches', () => {
   it('fetches rx7.py, every table and inbox file, and only the archive ids it needs', () => {
     expect(wanted('tools/rx7.py')).toBe('text');
-    expect(wanted('02-PROJECTS/01-electrical/data/work.csv')).toBe('text');
+    expect(wanted('02-PROJECTS/02-electrical/data/work.csv')).toBe('text');
     expect(wanted('02-APP/data/work.csv')).toBe('text');
     expect(wanted('02-APP/app/src/main.ts')).toBeNull();
-    expect(wanted('02-PROJECTS/01-electrical/data/inbox/01.29~phone.csv')).toBe('text');
+    expect(wanted('02-PROJECTS/02-electrical/data/inbox/01.29~phone.csv')).toBe('text');
     expect(wanted('00-CAR/data/vehicle.csv')).toBe('text');
     expect(wanted('99-ARCHIVE/Electrical/data/decisions.csv')).toBe('text');
     expect(wanted('99-ARCHIVE/x/D-123.md')).toBe('name');
     expect(wanted('00-CAR/library/docs/big.pdf')).toBeNull();
-    expect(wanted('02-PROJECTS/01-electrical/00-design/firmware/main.cpp')).toBeNull();
+    expect(wanted('02-PROJECTS/02-electrical/00-design/firmware/main.cpp')).toBeNull();
   });
   it('sends his words as UTF-8, whatever they hold', () => {
     const words = 'µ ✓ “quotes” — 55.2 mm 🚗';
