@@ -306,3 +306,27 @@ His words (chat, 2026-10-16): ""safe to say the engine in blown. i had 3 psi at 
 **What is known and what is not (R11).** Known: no rebuild. Not known: where the noise comes from. A starter that does not mesh with the flexplate also screeches, and nobody has turned the engine by hand or tested its compression. This ruling does not depend on which it is.
 
 **What follows.** CP01 (the 12A, its automatic, the Weber and the exhaust come out, boxed or sold) stands. Whether the new wiring is first started on the 12A or waits for the LS is electrical's block 01.61, raised the same day; it also settles whether the 12A is sold running or dead. No row changes here."
+D-621,engine,"The swap's first design pass: J3, K2, DS04, DS06 done; emissions, rear axle and accessory drive asked; the dead 12A comes out without waiting on the freeze",2026-10-16,standing,,,,D-616 D-617 D-618 D-393 D-445 D-457 D-113,"**The engine swap's first design pass with the 12A gone. Four design rows are done (J3, K2, DS04, DS06). Three choices that spend money are his, as blocks 01.62 (emissions), 01.63 (rear axle) and 01.64 (accessory drive). The FB-specific findings sit on the rows that use them. The dead 12A no longer waits on the freeze to come out. The project moves from PROPOSED to PLANNING.**
+
+His words (chat, 2026-10-16): ""please help me dive into the engine swap project ... please adjust the gates as well ... please refactor and do a first pass on engine swap to acueally put some real meat into that project.""
+
+**What was found** (web, 2026-10-16; every figure confirm until checked on the part, R11):
+- **CD009 (J3).** No published drawing. A builder's eyeballed figures on an uncut unit (HybridZ): about 40 in overall, about 29 in from the bellhousing face to the output, about 27 in to the mount, the shifter hole about 32-34 in back once relocated or shortened. Sikky's adapter (TAK-CD, $1,724.97) keeps the Nissan bellhousing and brings its own flywheel (CDFW-01) and a low-profile starter (SK-02). The 350Z clutch and a Nissan pilot bearing are bought apart; ARP 244-2902 bolts are required.
+- **Emissions (K2).** Larimer County is in the program, and a 1982 car is tested every two years. After an engine change, the limits and the equipment checked follow whichever is newest, the vehicle or the engine (Regulation 11, 5 CCR 1001-13, form DR2365). Collector plates waive the test for a 1976-1985 car only if it was so registered before 2009-09-01 and never lapsed. This is block 01.62.
+- **Clutch (DS06).** The CD009 keeps its external Nissan slave. A Wilwood compact master on the FB firewall (Sikky's own CD009 kit uses 7/8 in) feeds it through a braided line and a fitting into the Nissan slave. The pedals come from a 1981-85 FB 5-speed box, or are the car's own with a clutch pedal and a longer pivot bolt (RX7Club, an FB owner). Parts CL02-CL06. The start interlock's clutch switch is electrical Y81.
+- **Cooling (DS04).** FB V8 builds ran a Howe shelf 342AA (27 x 16.5 x 3 in, front tension-rod brackets removed) or a Granny's Radiator on a custom spreader bar, with a JTR steam vent tee. The fan has its own fuse and relay (electrical D-468). Parts CO01-CO04.
+- **FB V8 builds** (LS1Tech, an 1984 FB with an LS3 / T56 / 8.8; RX7Club, an 1985 FB with an LT1 / T5):
+  - Mounts: the crossmember drilled to set the engine about 1.5 in back, to clear the balancer from the sway bar (OP51); a custom transmission crossmember, because an automatic FB's mounts differ from a manual's (OP52).
+  - Oil pan: an F-body pan, or the pan modified to clear the steering centre link.
+  - Headers: made by hand, and they fit only with the starter out.
+  - Driveshaft: shortened.
+  - Rear axle: a Ford 8.8 with a Watts link.
+  - Front: 5-lug with FC or Turbo II hubs.
+- **Rear axle (DS08).** Drifting Dad sells weld-on FB 8.8 brackets ($300), a panhard bar ($220) or Watts bars ($300), a complete Ford 9 ($3,500, 6+ months) and a front 5-lug kit for FC hubs ($300). An Explorer 8.8 brings rear discs and 5x4.5 in hubs, so the front and the wheels go 5-lug. This is block 01.63; options OP41, OP43 and OP45.
+- **Accessory drive (DS01).** It carries a 160 A or larger alternator (D-457), the water pump and the A/C compressor, and no steering pump (the GS steers manually). The candidates are ICT Billet's compact Corvette-spaced kit (its with-A/C price unread), Holley's 20-138 (about $1,850-2,070, a high mount), or a junkyard F-body or C5 set with an aftermarket alternator. This is block 01.64; options OP70-OP72. The `options.system` enum gains `accessory` (CLAUDE.md §3: widened deliberately).
+
+**Gates.** CP01 (the 12A out) drops DS11 and waits only on DS13 (weigh the front first). The empty bay is what the new Camden row M01 measures, and DS07 now waits on M01. DS01, DS03 and DS08 also wait on their blocks.
+
+**Phase.** PLANNING. The project is the first one now (D-618), and planning has begun in earnest. The freeze (DS11) still moves it to SOURCING.
+
+**Left for the next plan run.** K5 (the ECU's pins at the dash: the EMU PRO's pinout is still not read). J5 (the donor search, run before a yard trip). DS02, DS07 and DS09 wait on M01 and DS13. DS10 (the budget) waits on all of them."

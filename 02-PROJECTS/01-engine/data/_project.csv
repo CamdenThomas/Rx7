@@ -1,8 +1,8 @@
 key,value
 name,01-engine
 kind,mechanical
-goal,"Everything that changes with the engine — the engine leg rebuilt around the new engine, ECU, fuel, transmission, axle, A/C"
-phase,PROPOSED
+goal,"The LS swap, first since the 12A died (D-616): a light aluminium 5.3 LS (D-393) with a CD009 six-speed in the 1982 FB - mounts, oil pan, accessory drive, cooling, fuel, exhaust and emissions, clutch, driveshaft, rear axle and brakes, the EMU PRO at the dash; the new wiring's first start is the LS's (D-617)"
+phase,PLANNING
 opened,2026-09-02
 icon,cog
 title,Engine
