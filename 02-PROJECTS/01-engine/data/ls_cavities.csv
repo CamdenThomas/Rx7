@@ -10,11 +10,11 @@ L1-E1 8,L1-E1,8,LW16,oil pressure signal,body and slow lines - today's functions
 L1-E1 9,L1-E1,9,LW41,brake fluid level switch,body and slow lines - today's functions on today's cavities,pinned,D-606: today's engine uses it too
 L1-E1 10,L1-E1,10,LW37,reverse switch,body and slow lines - today's functions on today's cavities,pinned,D-606: today's engine uses it too
 L1-E1 11,L1-E1,11,LW49,coolant level switch signal,body and slow lines - today's functions on today's cavities,pinned,D-606: the LS leg's
-L1-E1 12,L1-E1,12,,"phase-2 sensor supply, +12 V switched (F5)",body and slow lines - today's functions on today's cavities,reserved,D-606: wired in the box to today's function for good; the LS leg leaves it empty
-L1-E1 13,L1-E1,13,,inhibitor P/N - PMU A4 (today's engine only),body and slow lines - today's functions on today's cavities,reserved,D-606: wired in the box to today's function for good; the LS leg leaves it empty
-L1-E1 14,L1-E1,14,,water temperature gauge - DU IC01 (today's engine only),body and slow lines - today's functions on today's cavities,reserved,D-606: wired in the box to today's function for good; the LS leg leaves it empty
-L1-E1 15,L1-E1,15,,tachometer - DU IC04 (today's engine only),body and slow lines - today's functions on today's cavities,reserved,D-606: wired in the box to today's function for good; the LS leg leaves it empty
-L1-E1 16,L1-E1,16,,tach shield drain (today's engine only),body and slow lines - today's functions on today's cavities,reserved,D-606: wired in the box to today's function for good; the LS leg leaves it empty
+L1-E1 12,L1-E1,12,,"free - phase-2 sensor supply, +12 V switched (F5) was today's engine's only",body and slow lines - today's functions on today's cavities,free,"electrical D-619: the 12A never reaches the new wiring, so the cavity is free for the LS"
+L1-E1 13,L1-E1,13,,free - inhibitor P/N - PMU A4 was today's engine's only,body and slow lines - today's functions on today's cavities,free,"electrical D-619: the 12A never reaches the new wiring, so the cavity is free for the LS"
+L1-E1 14,L1-E1,14,,free - water temperature gauge - DU IC01 was today's engine's only,body and slow lines - today's functions on today's cavities,free,"electrical D-619: the 12A never reaches the new wiring, so the cavity is free for the LS"
+L1-E1 15,L1-E1,15,,free - tachometer - DU IC04 was today's engine's only,body and slow lines - today's functions on today's cavities,free,"electrical D-619: the 12A never reaches the new wiring, so the cavity is free for the LS"
+L1-E1 16,L1-E1,16,,free - tach shield drain was today's engine's only,body and slow lines - today's functions on today's cavities,free,"electrical D-619: the 12A never reaches the new wiring, so the cavity is free for the LS"
 L1-E1 17,L1-E1,17,LW37,reverse switch return,body and slow lines - today's functions on today's cavities,pinned,D-606: the LS leg's
 L1-E1 18,L1-E1,18,LW17,throttle position 1,body and slow lines - today's functions on today's cavities,pinned,D-606: the LS leg's
 L1-E1 19,L1-E1,19,LW17,throttle position 2,body and slow lines - today's functions on today's cavities,pinned,D-606: the LS leg's
