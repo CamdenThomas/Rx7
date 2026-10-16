@@ -1,4 +1,4 @@
 (fp_lib_table
 	(version 7)
-	(lib (name "cur-board")(type "KiCad")(uri "${KIPRJMOD}/cur-board.pretty")(options "")(descr "Footprints drawn for the plate - the stick and wink switch placeholders"))
+	(lib (name "cur-board")(type "KiCad")(uri "${KIPRJMOD}/cur-board.pretty")(options "")(descr "Footprints drawn for the CUR - placeholders for the parts not yet chosen, and the pigtail pads"))
 )

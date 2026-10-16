@@ -24,10 +24,10 @@
 <rect x="860.0" y="130.0" width="290.0" height="150.0" rx="8" fill="#fff" stroke="#1f2328" stroke-width="2.5"/>
 <text x="874.0" y="156.0" font-size="16" text-anchor="start" font-weight="700" fill="#1f2328">Control Unit Remote</text>
 <text x="874.0" y="178.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">DP-CUR · DRC16-24SA · 9 of 24 in use</text>
-<text x="874.0" y="198.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">the CUR board: the screen knob, the mirror</text>
-<text x="874.0" y="214.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">stick, the hazard, both winks, the fuel-door and</text>
-<text x="874.0" y="230.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">hatch keys, an I/O expander and an I2C ADC so</text>
-<text x="874.0" y="246.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">the keys and stick ride the I2C bus (D-604)</text>
+<text x="874.0" y="198.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">the CUR board (the CUR board, rev 1.00, D-615):</text>
+<text x="874.0" y="214.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">the hazard, both winks, the hatch and fuel-door</text>
+<text x="874.0" y="230.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">keys, the 4-way mirror control, the 9 mm</text>
+<text x="874.0" y="246.0" font-size="11" text-anchor="start" font-weight="400" fill="#57606a">screen-knob encoder; an IS31FL3218 for the</text>
 <rect x="420.0" y="430.0" width="330.0" height="230.0" rx="8" fill="#fff" stroke="#1f2328" stroke-width="2.5"/>
 <text x="434.0" y="456.0" font-size="16" text-anchor="start" font-weight="700" fill="#1f2328">PMU box</text>
 <text x="434.0" y="478.0" font-size="11" text-anchor="start" font-weight="400" fill="#1f2328">L1-E1 · circular · 11 of 29 in use</text>
