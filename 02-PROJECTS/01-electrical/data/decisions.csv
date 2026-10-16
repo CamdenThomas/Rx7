@@ -2434,3 +2434,32 @@ His words (chat, 2026-10-15), answering the nine audit items with the options la
   - His no-driving rule is the Y76 rewrite's frame. The factory harness comes out whole and the new one goes in whole; there is no backbone weekend driven on the factory harness. Y33's question waits with it.
 
 **Also fixed.** ""Always-hot always-hot bus"", a doubled word an earlier swap left in N106, N107 and their kin."
+D-615,electrical,"The CUR's CAD to the ruled face: one DRC 24 on a sealed pigtail, a 4-way mirror switch, the board redrawn on a PCA9555 and a 9 mm encoder (Y71)",2026-10-15,standing,,,,,"**The CUR's CAD to the ruled face.**
+- **The connection.** The CUR keeps one DRC 24 (D-597), but on a sealed pigtail: nine wires from the board through a grommet in the rear cover to an inline DRC 24 receptacle, about 150 mm out, which mates the harness's DP-CUR plug. A PCB-mount DRC 24 is 74 mm wide and cannot sit behind a 43 x 32 mm face.
+- **The mirror control.** It is an ALPS SKRH-class 4-direction switch with centre push in the face's 12.7 mm well. A proportional 2-axis stick does not fit the well, and the mirror motors are on / off anyway. The CUR's I/O expander reads it, so there is no ADC (D-604 had one).
+- **The board.** The CUR board is redrawn (Y71):
+  - 38.11 x 27.0 mm, the face's control area, every switch on its cap's centre;
+  - an IS31FL3218 for the lights, a PCA9555 with its own 3.3 V regulator for the keys, and a 9 mm encoder for the screen knob;
+  - the winks' and the hazard's own lines to the PMU box on the pigtail.
+- **The box.** A front shell with a ledge the board rests on, and a rear cover whose posts hold the board, with the pigtail through its grommet.
+
+His words (chat, 2026-10-15): ""please compthe all cad of the CUR i want that part perfect in detail nin cad ready then update all the svg files and show me how to actuallu open it in cad"". Asked the two choices the drawing forced, he picked ""Pigtail to inline DRC 24 (Recommended)"" and ""4-way switch + push (Recommended)"".
+
+**What the drawing found.** The face D-602 rules is 43.11 x 32.0 mm. It is the CUR face concept's geo() at 32 mm: knobs 12.7, keys 11.1 x 7.9, the hazard 23.8 wide, one 1.6 mm gap, 2.5 mm edges. That leaves a board of 38.11 x 27.0 mm behind it, so every part had to come down to a class that fits:
+- the winks: a subminiature SPDT (Omron D2FS class), still changeover (D-499);
+- the hazard: a 5.8 mm self-locking switch;
+- the releases: TL3342-class 4.2 x 3.2 tactiles;
+- the screen knob: a 9 mm encoder with push (PEC09 / EC09 class) on the board itself, its bushing through the face with a nut. It replaces the Adafruit I2C encoder board (P219), which is 25 mm square. That bushing also sets the board's depth behind the face;
+- the board has no mounting holes, because its caps cover all of it: it rests on a ledge in the walls.
+
+**Readings (CLAUDE.md §3).**
+- The expander is a PCA9555 (built-in 100 k pull-ups) at 0x20, on 3.3 V from an AP2112K so its inputs read the CU's 3.3 V bus. It has no INT wire, because the link is four wires (D-604): the CU polls it.
+- The knob's bulb symbol, lit while it turns (the face concept), needs a hollow-shaft encoder or a light pipe. It is not drawn: confirm at the part's pick.
+- Every part on the board is a class, not a part number (confirm, R11).
+
+**The record follows.**
+- DP-CUR's box side is the inline receptacle on the pigtail. Its cavities name the board's J1 pads.
+- DV21, DV24 and DV62 are rewritten. CUR's state is drawn.
+- P156, P198-P200, P204, P219, P226, P249 and P250 are rewritten to the classes above.
+- tools/check.py holds the new board to DP-CUR (check_cur_link), and the winks and hazard through check_winks.
+- New row Y80: the CU's firmware reads the CUR's expander."
