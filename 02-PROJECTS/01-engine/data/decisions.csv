@@ -715,7 +715,7 @@ The option in full: ""(a) The lean path as listed: about $3,600-5,500. The Phant
 - DS11, K7 and BP04 now gate on 01.72 in place of 01.71, whose ruling this supersedes.
 - Handover HO11 and HO12 follow the alternator and the pump.
 - The fuel pump's soft fuse is re-set from the Walbro's measured draw (HO12)."
-D-642,engine,"The engine computer is the ECUMaster EMU Black (about $1,299): its own MAP sensor, the AEM wideband already in the car feeding it",2026-10-17,standing,D-446,,01.73,,"**The BP's engine computer is the ECUMaster EMU Black (about $1,299), in place of the EMU PRO ruled for the LS (supersedes D-446). Its built-in 4-bar MAP sensor reads the manifold through a hose, now and at the turbo stage, so the external MAP-400 (AI04) is dropped. The AEM 30-0300 wideband already in the car stays the car's wideband and feeds the EMU Black, by its 0-5 V output or on CAN; the EMU Black's own wideband controller is a spare.**
+D-642,engine,"The engine computer is the ECUMaster EMU Black (about $1,299): its own MAP sensor, the AEM wideband already in the car feeding it",2026-10-17,superseded,D-446,D-649,01.73,,"**The BP's engine computer is the ECUMaster EMU Black (about $1,299), in place of the EMU PRO ruled for the LS (supersedes D-446). Its built-in 4-bar MAP sensor reads the manifold through a hose, now and at the turbo stage, so the external MAP-400 (AI04) is dropped. The AEM 30-0300 wideband already in the car stays the car's wideband and feeds the EMU Black, by its 0-5 V output or on CAN; the EMU Black's own wideband controller is a spare.**
 
 His words, 2026-10-17, in chat: ""a again for the electrical and the emu black is looks good""
 
@@ -803,3 +803,44 @@ His words, 2026-10-17, in chat: ""i think we can dial it back sligtly, stage one
 - W3 and W4 are provisional; the CU's header and blower and DCU power kits are W3 (P248, P100, P133), the door kits W4 (P101, P127).
 
 **Supersedes nothing:** it narrows D-647's W1, and the engine waves table is rewritten (its W2 was the turbo stage)."
+D-649,engine,"Every saving applied: the rusEFI uaEFI 121 for the EMU Black, the electrical extras skipped or borrowed, the cheap side of every engine either-or",2026-10-17,standing,D-642,,,D-641 D-648,"**Every saving of the list is applied to wave 1.**
+
+**1. The engine computer is the rusEFI uaEFI 121, about $400-520 all in, in place of the EMU Black (supersedes D-642).**
+- shop.rusefi.com lists it from $375 (2026-10-17).
+- A metal enclosure with one sealed 121-pin connector; 6 injector and 6 smart-coil outputs; an on-board LSU 4.9 wideband controller; one CAN bus.
+- Its MAP sensor (an MPXH6400AC) is populated on the board, and read through a hose.
+- The IGBT coil-driver option is added only if the BP's coil pack has no igniter (BP05, confirm).
+- The AEM 30-0300 stays the car's wideband.
+
+**2. The electrical extras:**
+- the lithium charger (P067) is skipped unless no lithium-safe charger is owned;
+- the 12 V bench supply (P209) is dropped; the PMU is powered off the car's battery.
+
+**3. Tools:**
+- the hydraulic lug crimper is a Harbor Freight-class one or a borrowed one (P037, about $30);
+- the two torque wrenches are borrowed (P207, P046);
+- the Deutsch crimper (P038) is still bought.
+
+**4. The cheap side of every engine either-or:**
+- freight to a terminal;
+- the yard FB pedal box and master;
+- a plain braided clutch line;
+- the FB driveshaft modified with a yard Miata yoke;
+- the mount plates shop-welded;
+- a universal fan and hoses;
+- the FB radiator flushed;
+- a yard Miata automatic's throttle sensor;
+- a Walbro 255 on a universal hanger;
+- the stand bought, the hoist rented.
+
+His words, 2026-10-17, in chat, quoting the list of savings: ""please factor in all these ways to make it cheeper""
+
+**What item 1 costs beyond money, as the list said:**
+- The PMU and the ECU are no longer the same maker. The PMU reads the uaEFI's broadcast frames, or frames built in its Lua, as CAN inputs; the ICU reads the same at W2. Electrical Y87 now records the uaEFI's pins and CAN, and Y88 the AEM's feed.
+- Tuning is in rusEFI's console or TunerStudio.
+- Support is the open-source community rather than a vendor.
+
+**In the data:**
+- Parts EC01 is re-specified.
+- About 30 live rows that named the EMU Black name the uaEFI 121.
+- The electrical extras and the engine ranges are re-priced, with each note saying why."

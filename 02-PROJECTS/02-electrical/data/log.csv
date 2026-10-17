@@ -204,3 +204,4 @@ L-0192,2026-10-15,session,D-614 Y79 Y69 Y76,"The audit's picks (D-614): seats on
 L-0193,2026-10-15,session,D-615 Y71 Y80,"The CUR's CAD (Y71, D-615): board rev 1.00 four layers, ERC 0 / DRC 0 / check 26-0, fab package; the box mock-up clear, self-test 13/13; every CUR drawing current; the record to the pigtail and the 4-way"
 L-0194,2026-10-17,repair,D-645,"Deep scan (D-645): wave-1 gates freed (E26 E28 E35 Y76 Z1), 27 cells de-LS'd, Y84-Y88 added"
 L-0195,2026-10-17,repair,D-648,"Wave 1 narrowed (01-engine D-648): L2 and the road parts to W2, CU kits W3, door kits W4; W3 and W4 provisional"
+L-0196,2026-10-17,repair,D-649,"Savings (01-engine D-649): the uaEFI 121 for the EMU Black in live rows, P067 skipped unless needed, P209 dropped, P037 cheap, P207 P046 borrowed"
