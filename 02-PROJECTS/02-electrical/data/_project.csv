@@ -1,7 +1,7 @@
 key,value
 name,02-electrical
 kind,electrical
-goal,"Replace the factory electrical system: PMU-24 DL, rear lithium battery, four modular harness legs, every switch a ladder, and both custom modules - the ICU and the DCU, with their firmware; the car first starts and drives on it with the LS, built alongside the engine swap - the 12A never runs on it (D-617)"
+goal,"Replace the factory electrical system: PMU-24 DL, rear lithium battery, four modular harness legs, every switch a ladder, and both custom modules - the ICU and the DCU, with their firmware; the car first starts and drives on it with the BP (01-engine D-629), built alongside the engine swap - the 12A never runs on it (D-617)"
 phase,PLANNING
 opened,2026-08
 car_apart,S1
