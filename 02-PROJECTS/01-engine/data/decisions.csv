@@ -786,3 +786,20 @@ His words, 2026-10-17, in chat: ""also one side not we will not be using the old
 - Parts FP03 (about $90-180), FP04 (about $60-120) and FP06 (about $30-60) are re-specified.
 - fb_items FI011, FI089, FI144 and FI145 are out.
 - BP08 routes the new lines (DR02)."
+D-648,engine,"Wave 1 narrowed to the proof: engine leg, fuel pump and key-on only, the exhaust ending after the O2 bungs; W2 road legal; later waves provisional",2026-10-17,standing,,,,02-electrical:D-647 D-644,"**Wave 1 is narrowed to the proof of concept in the car: the engine runs and the car drives, off the road. The exhaust ends at a short stub after the manifold carrying the O2 and wideband bungs (EX02). The intake is a filter on a short tube (AI01). The only circuits connected are the engine leg, the fuel pump and key-on from the dash. W2 is road legal. The later waves are provisional, to be planned.**
+
+His words, 2026-10-17, in chat: ""i think we can dial it back sligtly, stage one just proves concept in car no ehaust needed bast O2 sensors, also no lights or anthninng but fuel pulp and enginge leg and key on from the dash, im sure there can be ways to lower first cost. first wave proves run and drive concept, wave 2 is road legal, the rest will be determined as we keeep plannin""
+
+**How the build-once rule (D-643, D-647) is kept.** The legs that run through the cabin (L1 at the PMU box, L3 the dash, L4 the rear with the fuel pump) are still built once in W1 to the full plan, every later conductor capped and labelled, because the interior comes apart once (D-387) and comes apart in W1. The front leg L2 (lights, horn, wipers, pop-ups) runs outside the cabin, so it is built and fitted in W2 (E21) without a second strip. Nothing is spliced and nothing temporary stays in the car.
+
+**Engine:**
+- W1 is the proof.
+- W2 is road legal: the exhaust from the stub back (EX01), the converter (EM01), the EVAP parts (EM02), and the road test, dyno, alignment, emissions and registration (TU03-TU07).
+- W3 is the later stages, the turbo and the luxury items, to be planned.
+
+**Electrical:**
+- W1 is the backbone, the PMU box, the EMU Black with the AEM, and L1, L3 and L4.
+- W2 is L2 and the road circuits, the wake stages and switches, and the Display Unit. The board-building tools, the enclosures and the parts these need move to W2 with them (P179-P184, P215-P218, P158, P160, P161, P072, P212, P084, P085, P074, P139, P252, P251).
+- W3 and W4 are provisional; the CU's header and blower and DCU power kits are W3 (P248, P100, P133), the door kits W4 (P101, P127).
+
+**Supersedes nothing:** it narrows D-647's W1, and the engine waves table is rewritten (its W2 was the turbo stage)."

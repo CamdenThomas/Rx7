@@ -203,3 +203,4 @@ L-0191,2026-10-15,session,D-612 D-613,"Ten-minute audit of the electrical plan a
 L-0192,2026-10-15,session,D-614 Y79 Y69 Y76,"The audit's picks (D-614): seats on an HDP20 24-91 with the return on a #8, windows on F39 / F40 and comfort on K16 / F41 off O1 / O15, F42 for the LS clutch feed, the blower's box wiring, Y79 for TE's drawings before Y69"
 L-0193,2026-10-15,session,D-615 Y71 Y80,"The CUR's CAD (Y71, D-615): board rev 1.00 four layers, ERC 0 / DRC 0 / check 26-0, fab package; the box mock-up clear, self-test 13/13; every CUR drawing current; the record to the pigtail and the 4-way"
 L-0194,2026-10-17,repair,D-645,"Deep scan (D-645): wave-1 gates freed (E26 E28 E35 Y76 Z1), 27 cells de-LS'd, Y84-Y88 added"
+L-0195,2026-10-17,repair,D-648,"Wave 1 narrowed (01-engine D-648): L2 and the road parts to W2, CU kits W3, door kits W4; W3 and W4 provisional"
