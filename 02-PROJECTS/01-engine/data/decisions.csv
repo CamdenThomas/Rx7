@@ -673,3 +673,34 @@ His words, 2026-10-17, in chat: ""id also prefer to leave the 12a in as long as 
 - The car runs and can be driven until the swap is ready to go in, and every design choice stays open that long.
 
 **Changes:** M01's gate was CP01 and is now empty; CP01's gate was DS13 and is now DS13 DS11 DB01 BR06; CD08 adds M02; M02 is new."
+D-640,engine,"The BP and 5-speed are trusted as delivered: home checks only, the clutch and flywheel kept, the swap designed for an easy later clutch job",2026-10-17,standing,,,,D-629 D-630,"**The BP and its 5-speed are trusted as delivered. The clutch and flywheel are kept, and the swap is designed so the later clutch job is as easy as an FB can make it.**
+
+**Before money goes into the car around it, the engine and gearbox get the checks a home shop can do:**
+- compression on all four (BD01);
+- the oil and coolant looked at (BD02);
+- the timing belt seen with the upper cover off, and the engine turned by hand (BD03);
+- the gearbox shifted through every gear, with the slave pressed to watch the release (BD06, RB07).
+
+A failed check means the smallest fix it calls for, ruled at BD08.
+
+His words, 2026-10-17, in chat: ""the engine should not need service other then fluids and sensor clean and minor things it just ot overhalled and is verified i know i void the warrentee but id expect that means the engine and transmission as a unit are done for this other the accessory adjusments. we need to try to be as budget as we can, they say its verified good i say we trust it keep the clutch anf flywheel and such and hopfully design it for easy maintenece later (as easy as a clutch job can be) we should attemt to verify parts that are easy to verify myself in a home shop, but as a general notion we will we trust the verified engine as working in all cepacities ready. i dont want to do half assed work but this needs to be achevable with budget including the wiring costs wich is also another 10k or more.""
+
+**A correction, recorded so it is not lost.** The listing (S-612) says the engine was multi-point inspected and compression-tested at about 61,000 miles. It does not say overhauled.
+
+The belt is the one part whose age is unknown. The engine may be 30 years old, and a Miata's belt interval is usually given as 60,000 miles or a number of years (BP03 reads Mazda's figure). The BP is commonly called non-interference (confirm in Mazda's manual), so a snapped belt would strand the car, not wreck the engine. BD03 looks at it for free, and RB02 renews it (about $50-120) only if BD08 says so.
+
+**What changed:**
+- BD05 (pan off), PO02 and PO04 are dropped.
+- The turbo-return bung moves to the turbo stage, because the pan stays on.
+- RB02 and RB04-RB07 become fluids, thermostat, sensors and the oil-pressure tee.
+- BR05 buys only what the checks call for.
+- Parts CL05 and CL06 are kept for the later clutch job; EN03, EN04 and CL07 are conditional; OL02 is removed.
+
+**Designed for the later clutch job** (DS03, DS07 and BP09 carry it):
+- The gearbox comes out from below with the engine in place.
+- The gearbox crossmember bolts in.
+- The driveshaft unbolts at the FB's flange and slides off the slip yoke.
+- The exhaust splits at a joint behind the downpipe.
+- The shifter lifts out from inside.
+- The slave unbolts with its line still on.
+- The starter can be reached."
