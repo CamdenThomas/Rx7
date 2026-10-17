@@ -2,7 +2,7 @@ id,zone,item,fate,why,then,note
 BI01,bp,"Cylinder block, head, crank, pistons, cams and lash adjusters",keep,The engine itself; opened further only if BD07 calls for it,Serviced per DR06,
 BI02,bp,"Timing belt, tensioner, idler, water pump, cam and crank seals",replace,Wear parts; the seller's terms and good practice both require them at install,EN03 (DR06),
 BI03,bp,"Front engine cover, timing covers, crank pulley",keep,,Cleaned; pulley checked for wobble,
-BI04,bp,Cam angle sensor (CAS) on the intake cam's rear,keep,"It is the engine's trigger: the EMU PRO reads it (SGT and SGC signals, S-623 tests with codes)",Its pin-out and pattern go to BP05,A 1996-97 BP adds a crank sensor at the crank pulley - which year is BP01
+BI04,bp,Cam angle sensor (CAS) on the intake cam's rear,keep,"It is the engine's trigger: the EMU Black reads it (SGT and SGC signals, S-623 tests with codes)",Its pin-out and pattern go to BP05,A 1996-97 BP adds a crank sensor at the crank pulley - which year is BP01
 BI05,bp,Engine harness pieces and their cut pigtails,replace,The ECU and harness stay in the electrical project; the new leg is BP05,The pigtails are saved for their connector bodies,
 BI06,bp,Alternator (Miata),replace,D-633: the FD RX-7 100 A on the BP's bracket,AC02,The Miata unit is kept as a spare or sold
 BI07,bp,"Power-steering pump, its bracket and belt",provision,"Luxury's power steering (04-luxury C12, D-636)","Runs unloaded until luxury plumbs it, or comes off with the bracket kept if luxury picks electric",
@@ -17,23 +17,23 @@ BI15,bp/oil,Oil filter and dipstick tube,keep,,Filter access checked in DS02,
 BI16,radiator,"Water pump, thermostat and housing, coolant outlets",keep,The pump and thermostat are renewed (DR06),BP07 plans the hoses; the rear-outlet reroute is an option,
 BI17,radiator,Coolant temperature sensor (ECU) and gauge sender,keep,The ECU reads its own sensor; the ICU takes coolant temperature from the ECU on CAN (HO06),The gauge sender is plugged or left unwired,
 BI18,radiator,Radiator fan thermo-switch,delete,The ECU switches the fan (HO02),The port is plugged,If fitted on the engine
-BI19,intake,Vane airflow meter (with the intake air temperature sensor inside it),delete,The EMU PRO runs speed-density on MAP; the meter restricts the intake,A separate IAT sensor in the intake tube (DR04) and a MAP signal,
+BI19,intake,Vane airflow meter (with the intake air temperature sensor inside it),delete,The EMU Black runs speed-density on MAP; the meter restricts the intake,A separate IAT sensor in the intake tube (DR04) and a MAP signal,
 BI20,intake,"Air cleaner box, resonance chamber and intake hose",replace,The FB's own cold-air path (DR04),AI01,
 BI21,intake,Throttle body,keep,,,
-BI22,intake,Throttle position sensor (manual-gearbox type: an idle switch only),replace,"The M/T TP sensor has only idle contacts (S-623, TP sensor continuity M/T), and the EMU PRO needs a linear signal","A linear TP sensor: the Miata automatic's or an NB one, with an adapter (DR04)",Confirm which one the engine has at BD01
-BI23,intake,Idle speed control valve,keep,"The EMU PRO drives it (code 34, idle speed control, S-623)",,
-BI24,intake,Fast-idle air valve (coolant-heated),keep,Helps cold idle; the EMU PRO's idle control can make it unnecessary,Kept until the tune shows it is not needed,
+BI22,intake,Throttle position sensor (manual-gearbox type: an idle switch only),replace,"The M/T TP sensor has only idle contacts (S-623, TP sensor continuity M/T), and the EMU Black needs a linear signal","A linear TP sensor: the Miata automatic's or an NB one, with an adapter (DR04)",Confirm which one the engine has at BD01
+BI23,intake,Idle speed control valve,keep,"The EMU Black drives it (code 34, idle speed control, S-623)",,
+BI24,intake,Fast-idle air valve (coolant-heated),keep,Helps cold idle; the EMU Black's idle control can make it unnecessary,Kept until the tune shows it is not needed,
 BI25,intake,Intake manifold and its supports,keep,,,
 BI26,intake,Throttle cable bracket on the intake,keep,The FB pedal's cable is fitted to it (DR04),,
 BI27,intake,Cruise control cable bracket,delete,No cruise on the FB's engine,,If fitted
 BI28,fuel/lines,"Fuel rail, injectors, pressure regulator",keep,Return-style with the manifold-referenced regulator (D-630),Injectors cleaned and flow-tested (RB05),
-BI29,fuel/lines,Pressure regulator control (PRC) solenoid,delete,A hot-restart aid the EMU PRO does not need,The regulator's vacuum line goes straight to the manifold,
+BI29,fuel/lines,Pressure regulator control (PRC) solenoid,delete,A hot-restart aid the EMU Black does not need,The regulator's vacuum line goes straight to the manifold,
 BI30,exhaust,Exhaust manifold and heat shield,keep,"Kept if it clears the FB's steering box (DS03, CD06)",,
 BI31,exhaust,Upstream O2 sensor (heated),keep,"Emissions (D-622's rule, kept by D-630); the wideband is separate",A 1996-97 engine also has a downstream one,
 BI32,exhaust,"EGR valve, EGR vacuum and vent solenoids, EGR function sensor",check,"The 1994 tests list EGR codes (16, 28, 29, S-623) but the 1994 vacuum diagram shows no EGR, so it is likely a California or automatic fit","If fitted, kept and run by the ECU so the car passes as its year (BP02 asks)",
 BI33,exhaust,Purge solenoid and its hoses (EVAP),keep,Emissions (D-630),The canister is the FB's or a yard Miata's (J6),
 BI34,exhaust,PCV valve and breather hoses,keep,Required crankcase ventilation,Re-routed to the new intake tube (DR04),
-BI35,bp,"Coil pack, plug wires, spark plugs",keep,The plugs are renewed (DR06),Whether an igniter is needed with the EMU PRO is BP05's,
+BI35,bp,"Coil pack, plug wires, spark plugs",keep,The plugs are renewed (DR06),Whether an igniter is needed with the EMU Black is BP05's,
 BI36,trans,5-speed gearbox,keep,Serviced per BD06,TR01,
 BI37,trans,"Flywheel, clutch disc and pressure plate (inside the bellhousing)",replace,A used clutch is renewed while it is apart; the flywheel is resurfaced,"CL05, CL06",Present per the photos (the gearbox is bolted on) - confirm at BD06
 BI38,trans,Clutch slave cylinder and release fork,check,If on the gearbox (BP01) the slave is kept or renewed with the release bearing,BP10,

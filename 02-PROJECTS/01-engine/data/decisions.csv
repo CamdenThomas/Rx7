@@ -197,7 +197,7 @@ Everything at once is about 160 A. A cold wet night (no fan, brakes off) is abou
 **The regulator.** An LS alternator's set-point is commanded (Gen III: the L / field lines; Gen IV trucks: a PWM command). The ECU chosen at K1 must drive LW29 so the set-point holds at or under 14.6 V; an uncommanded unit's default voltage is confirmed on the bench before it is fitted.
 
 **In the data.** DS01's note carries the 160 A floor; K1's note adds alternator control to what each ECU must offer."
-D-446,,Engine computer: ECUMaster EMU PRO,2026-09-27,standing,,,02.13,,"**The LS swap is designed around the ECUMaster EMU PRO (option OP60).**
+D-446,,Engine computer: ECUMaster EMU PRO,2026-09-27,superseded,,D-642,02.13,,"**The LS swap is designed around the ECUMaster EMU PRO (option OP60).**
 
 His answer to block 02.13: option (a), no words added. Option (a) in full: ""ECUMaster EMU PRO, about $1,800-2,400 (confirm): the same maker and the same laptop software family as the power unit (PMU), sends any CAN message we define, reads either crank signal so any engine on the list works, built to take our own harness through the dash post. Forecloses nothing; the dearest option but one.""
 
@@ -715,3 +715,25 @@ The option in full: ""(a) The lean path as listed: about $3,600-5,500. The Phant
 - DS11, K7 and BP04 now gate on 01.72 in place of 01.71, whose ruling this supersedes.
 - Handover HO11 and HO12 follow the alternator and the pump.
 - The fuel pump's soft fuse is re-set from the Walbro's measured draw (HO12)."
+D-642,engine,"The engine computer is the ECUMaster EMU Black (about $1,299): its own MAP sensor, the AEM wideband already in the car feeding it",2026-10-17,standing,D-446,,01.73,,"**The BP's engine computer is the ECUMaster EMU Black (about $1,299), in place of the EMU PRO ruled for the LS (supersedes D-446). Its built-in 4-bar MAP sensor reads the manifold through a hose, now and at the turbo stage, so the external MAP-400 (AI04) is dropped. The AEM 30-0300 wideband already in the car stays the car's wideband and feeds the EMU Black, by its 0-5 V output or on CAN; the EMU Black's own wideband controller is a spare.**
+
+His words, 2026-10-17, in chat: ""a again for the electrical and the emu black is looks good""
+
+The option in full (block 01.73): ""(a) EMU Black, about $1,299 plus a Bosch LSU 4.9 sensor (about $80-110). Its own MAP sensor and wideband controller mean no external MAP-400 and no separate AEM controller: the Display Unit shows lambda from the ECU on CAN. About $750-1,000 less than (b) all told. Forecloses only an engine needing more outputs than 6 injectors and 6 coils, which no planned stage has.""
+
+**A correction to the option, taken in the reading that spends least.** The AEM 30-0300 is already in the car (electrical module WBO). So no LSU 4.9 sensor is bought, and the AEM is not retired. The saving against the EMU PRO is its price difference (about $550-765) plus the MAP-400.
+
+**Why the EMU Black fits:**
+- The BP needs 4 injector and 2 coil outputs, idle, purge, fan, pump and A/C now, and boost and VVT-class spares later. The EMU Black covers them.
+- It is the same maker as the PMU-24 DL and talks to it over CAN (D-325).
+
+**Confirm before buying:**
+- whether it drives the BP's coil pack directly (BP05);
+- the price at the day of purchase;
+- its connector and pin list for K5.
+
+**In the data:**
+- Parts EC01 (the EMU Black) is new.
+- AI04 is deleted.
+- Every live row that named the EMU PRO now names the EMU Black.
+- K1's note records the change."
