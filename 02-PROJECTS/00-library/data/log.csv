@@ -3,3 +3,4 @@ L-0001,2026-10-14,session,L0 L1,"Phases 0 and 1 of the library plan (D-574): tab
 L-0002,2026-10-17,plan,D-632,"Miata manuals read first, LS documents skipped; claim and run_session take --owner; the 1990 Miata workshop manual inventoried (DOC-164, 1,273 pages, 637 items); sources S-614-S-622"
 L-0003,2026-10-17,plan,D-634,"The BP's manuals in: the 1994 workshop manual (his download), 16 1994 and 11 1997 mellens.net sections, 5 extras; scoped to the swap's pages (D-634); 318 engine items open"
 L-0004,2026-10-17,session,Q-01867,"run_session s10171148: 316 items done, 2 failed, 15483 facts, $9.69"
+L-0005,2026-10-17,session,D-574,"s10171148: 316 items done, 2 failed (belt-routing figures with no image - review items queued), 15,483 facts, $9.69 against $10.72 predicted; Haiku ran 1.97x its estimate, so FACT_TOKENS 76->110 and THINK 1.45->2.0, queue repriced; spot-check DOC-197.122 faithful"
