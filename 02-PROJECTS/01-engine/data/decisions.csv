@@ -880,3 +880,8 @@ His words, 2026-10-17, in chat: ""what more can you do today to make this plan p
 **What is still settled after the purchase:** the freeze (DS11) still follows the parts in hand, with the model re-checked on them (CD08) before anything else is bought or cut.
 
 **This changes D-629's buy timing** (the package after the system plan and the two calls). The engine is now bought only after the whole plan is proven on paper and in CAD."
+D-652,engine,"The tunnel is measured when the automatic is out; the CAD starts from the bay and the factory body with a margin, so the plan's loop is broken",2026-10-17,standing,,,,D-639 D-651,"**The tunnel is measured (J4) the day the 12A and the automatic come out, not before the engine is bought. The CAD (CD01) starts from the bay measurement (M01) and 03-cad's factory body for the tunnel, with a 15 mm margin. The tunnel is risk RK06, settled at J4 before any cut (CP03). VL1 no longer waits on J4; the freeze (DS11) still does.**
+
+His words, 2026-10-17, in chat: ""i will do my best to measyre the engine bay as best as i can trans tunnel will likely have to weight for things comming out of the way""
+
+**Why.** With the 12A out last (D-639), J4 gating CD01 made a loop: no CAD before the tunnel, no tunnel before the 12A, no 12A out before the freeze, no freeze before the CAD. The factory body breaks it on the safe side."
