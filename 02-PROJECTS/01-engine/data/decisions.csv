@@ -627,3 +627,10 @@ Reasoning: no bolt-in unit above about 100-110 A exists for the BP (S-613); unti
 D-457 is not superseded: its 160 A floor stands for the full luxury load (about 163 A) and is met at the luxury/turbo stage, not on day one. D-630's open point (the alternator's rating) is settled for the engine stage.
 
 Consequences: AC02 is the FD RX-7 100 A on the BP's bracket now; BP04 designs the front drive around it; K7 caps charge current for the 100 A unit now and is revisited at 160 A when the luxury stage arrives."
+D-635,,The BP must pass emissions as its engine's year (BP02),2026-10-17,standing,,,,,"**The BP swap must pass Colorado emissions tested as the engine's year (1994-97 Miata BP); BP02 is closed on that rule. How the referee sets a JDM engine's year, tailpipe versus OBD, and whether the EMU PRO passes were not answered and are not assumed.**
+
+His words on work BP02 (done): ""Must pass for the year of the engine"".
+
+Reading (§3, keeps most options open): this fixes the requirement D-630 already assumed - the car is held to the engine's year and must pass - not a report of the call to the referee. It rules out any plan that only works if the car is tested as a 1982. It does not say a test method or that an aftermarket ECU is accepted, so no plan may rely on either until a referee or the first test says so; the BP exhaust keeps its converter and O2 sensors, and the ECU choice stays open.
+
+Consequences: BP02 done with the rule as its result. Nothing is bought on the strength of an ECU passing. Any later finding that the BP cannot pass is a contradiction and a block."
