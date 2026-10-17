@@ -57,7 +57,7 @@ RULES = [
     ("00-CAR/library/docs/te-catalogue-2018/", "02-electrical", 3, "other-model"),
     ("02-PROJECTS/02-electrical/", "02-electrical", 2, "this-car"),
     ("02-PROJECTS/03-cad/model/library/electrical/", "02-electrical", 3, "this-car"),
-    ("02-PROJECTS/03-cad/model/library/swap/nissan-", "01-engine", 2, "other-model"),  # 2 since D-620: the engine swap comes first
+    ("00-CAR/library/docs/miata-", "01-engine", 1, "other-model"),  # the BP and its 5-speed's own manuals (D-632)    ("02-PROJECTS/03-cad/model/library/swap/nissan-", "01-engine", 2, "other-model"),  # 2 since D-620: the engine swap comes first
     ("02-PROJECTS/03-cad/model/library/swap/chevy-", "03-cad", 5, "other-model"),
     ("02-PROJECTS/03-cad/model/library/swap/ls3-v8-engine-moving-model", "03-cad", 5, "other-model"),
     ("02-PROJECTS/03-cad/model/library/swap/", "01-engine", 2, "other-model"),  # 2 since D-620
@@ -81,7 +81,8 @@ def all_pdfs():
     out = []
     for base in (CAR / "library", ROOT / "02-PROJECTS"):
         for p in base.rglob("*"):
-            if p.suffix.lower() == ".pdf" and "node_modules" not in p.parts and p.is_file():
+            # a project's cad/ folder is its drawings, which the record never cites (check)
+            if p.suffix.lower() == ".pdf" and "node_modules" not in p.parts and "cad" not in p.parts and p.is_file():
                 out.append(p.relative_to(ROOT).as_posix())
     return sorted(out)
 

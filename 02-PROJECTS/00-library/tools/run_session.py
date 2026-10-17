@@ -2,7 +2,7 @@
 a model: it spends no tokens itself.
 
     python3 02-PROJECTS/00-library/tools/run_session.py [--minutes 60] [--workers 6]
-            [--max-usd N] [--kind K] [--model haiku|sonnet] [--dry] [--no-git]
+            [--max-usd N] [--kind K] [--model haiku|sonnet] [--owner AREA] [--dry] [--no-git]
     python3 02-PROJECTS/00-library/tools/run_session.py --ingest Q-00042 ANSWER.txt   (a hand-run worker's answer)
 
 For --minutes it keeps --workers workers running. Each one: claim the next item (most valuable
@@ -72,9 +72,10 @@ def pages_in(spec):
     return out
 
 
-def claim(agent, kind=None, model=None):
-    """Claim the next item, for one model or kind when the session is restricted to it."""
+def claim(agent, kind=None, model=None, owner=None):
+    """Claim the next item, for one model, kind or owning area when the session is restricted to it."""
     cmd = RX7 + ["claim", "02-PROJECTS/00-library", "--agent", agent] + (["--kind", kind] if kind else []) + (["--model", model] if model else [])
+    cmd += ["--owner", owner] if owner else []
     r = sh(cmd)
     if r.returncode != 0:
         return None
@@ -248,6 +249,7 @@ def main():
     ap.add_argument("--max-usd", type=float, default=0)
     ap.add_argument("--kind")
     ap.add_argument("--model", choices=sorted(MODELS))
+    ap.add_argument("--owner", help="only the documents this area owns (00-CAR docs.owner), e.g. 01-engine (D-632)")
     ap.add_argument("--dry", action="store_true")
     ap.add_argument("--no-git", action="store_true")
     ap.add_argument("--ingest", nargs=2, metavar=("QID", "FILE"))
@@ -258,8 +260,10 @@ def main():
         print(ingest(q, Path(a.ingest[1]).read_text(encoding="utf-8"), {}))
         return 0
     if a.dry:
+        owned = {d["id"] for d in rx7.read_table(CAR, "docs")[1] if d.get("owner") == a.owner} if a.owner else None
         qs = [q for q in rx7.read_table(LIB, "queue")[1] if q.get("state") == "open"
-              and (not a.kind or q.get("kind") == a.kind) and (not a.model or q.get("model") == a.model)]
+              and (not a.kind or q.get("kind") == a.kind) and (not a.model or q.get("model") == a.model)
+              and (owned is None or q.get("doc") in owned)]
         qs.sort(key=lambda q: -int(q.get("priority") or 0))
         per = {"haiku": 60, "sonnet": 120, "opus": 150}   # seconds per item, a guess until the first session
         t, spend, n = 0.0, 0.0, 0
@@ -285,7 +289,7 @@ def main():
         can_start = time.time() < stop_at and (not a.max_usd or spent + caps < a.max_usd)
         while can_start and len(running) < a.workers:
             k += 1
-            q = claim(f"{session}-w{k}", a.kind, a.model)
+            q = claim(f"{session}-w{k}", a.kind, a.model, a.owner)
             if not q:
                 can_start = False
                 break

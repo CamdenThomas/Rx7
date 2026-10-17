@@ -73,6 +73,19 @@ KEEP_TOPIC = re.compile(
     r"steer|suspension|wheel|tire|paint|rust|noise|audio|horn|clutch|m/t|manual trans|drive axle|pinion|"
     r"differential|jack|\ba/c\b(?![^/]*compressor)|refrigerant|air condition(?![^/]*compressor)", re.I)
 SKIP_RESULT = "skipped: engine material that leaves with the 12A (D-620)"
+# The LS swap's documents are reference only since the BP replaced it (D-629, D-632): the LS, its
+# CD009 and 350Z gearbox, the T56, the Holley LS pan, the Ford axles. Skipped like the 12A's.
+LS_DOCS = ("02-PROJECTS/03-cad/model/library/swap/",)
+LS_RESULT = "skipped: the LS swap's documents, reference only since the BP (D-632)"
+SKIPPED = (SKIP_RESULT, LS_RESULT)
+
+
+def ls_doc(d):
+    return (d.get("path") or "").startswith(LS_DOCS)
+
+
+def skip_result(d):
+    return LS_RESULT if ls_doc(d) else SKIP_RESULT
 
 
 def engine_doc(d):
@@ -81,7 +94,13 @@ def engine_doc(d):
 
 def engine_pages(d, run):
     """Whether these pages of one document are engine material: the whole document is, or every
-    page with a topic names engine material and nothing that stays."""
+    page with a topic names engine material and nothing that stays. The swap's own documents
+    (owner 01-engine: the BP and its 5-speed, D-632) are never engine material - they are the engine;
+    the LS swap's documents are skipped (LS_DOCS)."""
+    if ls_doc(d):
+        return True
+    if (d.get("owner") or "") == "01-engine":
+        return False
     if engine_doc(d):
         return True
     topics = [(p.get("topic") or "").strip() for p in run]
@@ -389,10 +408,14 @@ def main():
             brief = BRIEF[kind] + (f" Already cited by the record: {' '.join(cited)} - read them for what is still missing; "
                                    "the page's rows column lists what is held." if cited else "")
             brief += f" Facts go to {d.get('owner') or '00-CAR'} at the merge."
+            if d.get("owner") == "01-engine" and "miata" in (d.get("path") or "").lower():
+                brief += (" This is the swap's own engine and gearbox (the Miata BP 1.8 and its 5-speed going into this car, "
+                          "D-632): take every fact as fully as for this car - specs, torques, clearances, steps - with "
+                          "applies=other-model and context naming the Miata model year; status parsed, never indexed.")
             skip = engine_pages(d, run)
             new.append({"priority": str(pr), "kind": kind, "doc": did, "pages": span([int(p["n"]) for p in run]),
                         "section": (run[0].get("topic") or "")[:70], "brief": brief, "after": "",
-                        "state": "skipped" if skip else "open", "result": SKIP_RESULT if skip else ""})
+                        "state": "skipped" if skip else "open", "result": skip_result(d) if skip else ""})
     pages_by_id = {p["id"]: p for p in pages}
     for r in new:
         price_item(r, docs, pages_by_id)
@@ -423,13 +446,13 @@ def sweep():
             continue
         d = docs.get(q["doc"], {})
         run = [pages_by_id[f"{q['doc']}.{n:03d}"] for n in pages_in(q.get("pages") or "") if f"{q['doc']}.{n:03d}" in pages_by_id]
-        if q.get("state") == "skipped" and q.get("result") == SKIP_RESULT and not engine_pages(d, run):
+        if q.get("state") == "skipped" and q.get("result") in SKIPPED and not engine_pages(d, run):
             q["state"], q["result"] = "open", ""   # the rules no longer call it engine material
             reopened += 1
         if q.get("state") != "open":
             continue
         if engine_pages(d, run):
-            q["state"], q["result"] = "skipped", SKIP_RESULT
+            q["state"], q["result"] = "skipped", skip_result(d)
             skipped += 1
             continue
         if not run:

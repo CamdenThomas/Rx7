@@ -41,3 +41,24 @@ His words (chat, 2026-10-16): ""also 00-library. please adjust the library plan 
 - Result: 406 items skipped, 823 open, about $27 predicted for what is left. A page whose topic is blank is still read: it cannot be told apart until an agent looks at it.
 
 **Not changed.** The plan's phases (L2 still waits on his L8). The skipped documents' files stay where they are: the offline copy and the deletion (L5, L6) handle them like any other."
+D-632,library,"The BP's manuals are read first and the LS's skipped: Miata docs owner 01-engine tier 1, never skipped as engine material; claim and run_session take --owner",2026-10-17,standing,,,,D-629,"**The library reads the BP's manuals first and the LS's not at all.**
+
+- The Miata manuals go in 00-CAR/library/docs/miata-*: owner 01-engine, tier 1, scope other-model.
+- Their pages are never skipped as engine material.
+- Their items' brief tells the worker these are the swap's own engine and gearbox: take every fact as fully as for this car, applies=other-model, context naming the Miata year, never indexed.
+- The LS swap's documents (03-cad's model/library/swap/, and 01-engine/cad/'s docs, oil-pan and transmission copies) are skipped as reference.
+- rx7.py claim and run_session.py take --owner AREA, so a session can parse only one project's documents (--owner 01-engine).
+
+His words, 2026-10-17, in chat: ""now can you please. dial a plan for us today to gather as much information and make every detail of this plan, you should find all the possible manuals i could possibly need for the engine and for the transmission for rverything. when we have everydetail ebout both the transmission and the engine to deside what we perfect next (im thinking oil pan + lines). but first this is first gather every possible detail you can find about these parts from measurmetns specs sizes weights requiremnts bolt patters torque specs every servise prosedure the full owrks every detail""
+
+**Why.**
+- D-620 skipped engine pages because the 12A leaves. A Miata manual's engine pages would have been skipped by the same topic rule, and the BP is the engine he is buying (01-engine D-629).
+- Tier 1 and --owner let the engine's pages be read before the car's backlog, without spending on the whole library.
+- The LS documents would otherwise have taken engine sessions' money for an engine that is not coming.
+
+**Sources** (00-CAR sources S-614 to S-622):
+- On disk: the 1990 Miata workshop manual (Internet Archive) and the rusEFI 1994 pin-out.
+- Behind a free account at mazdaclub.cz: the 1994 workshop manual (1,708 pages), the 1997 one and the 1994, 1995 and 1997 parts catalogues - 01-engine BP12.
+- Forum dimensions and weights, to be replaced by measurements (BD15, R11).
+
+Parsing still needs his go: 00-library L8. Merging stays the overhaul's (D-576), except what 01-engine BP03 takes into the engine's design from the staged facts."

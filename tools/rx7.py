@@ -2794,13 +2794,20 @@ def cmd_claim(args):
     """Hand the caller the next item of an area's `queue` and mark it claimed, under the write
     lock, so any number of agents can call it at once and never get the same item (D-574).
     Picks the highest priority open item whose `after` items are all done; a claim older than
-    --stale minutes is treated as open again (its agent died). rc 2 when nothing is left."""
+    --stale minutes is treated as open again (its agent died). --owner takes only items whose
+    document (00-CAR docs.owner) belongs to that area, e.g. 01-engine's manuals first (D-632).
+    rc 2 when nothing is left."""
     a = resolve_area(args.area)
     hdr, rows = read_table(a, "queue")
     if not hdr:
         die(f"{rel(a)} has no queue table")
     now = datetime.datetime.now()
     done = {(r.get("id") or "").strip() for r in rows if (r.get("state") or "").strip() in ("done", "skipped")}
+    owner_docs = None
+    if getattr(args, "owner", None):
+        docs_csv = ROOT / "00-CAR" / "data" / "docs.csv"
+        owner_docs = {(d.get("id") or "").strip() for d in (read_table(ROOT / "00-CAR", "docs")[1] if docs_csv.exists() else [])
+                      if (d.get("owner") or "").strip() == args.owner}
 
     def stale(r):
         try:
@@ -2816,6 +2823,8 @@ def cmd_claim(args):
         if args.kind and (r.get("kind") or "").strip() != args.kind:
             return False
         if getattr(args, "model", None) and (r.get("model") or "").strip() != args.model:
+            return False
+        if owner_docs is not None and (r.get("doc") or "").strip() not in owner_docs:
             return False
         return all(x in done for x in (r.get("after") or "").split())
 
@@ -4144,6 +4153,7 @@ def main(argv=None):
 
     p = sub.add_parser("claim", help="take the next item of an area's queue and mark it claimed (D-574; rc 2 when none is left)")
     p.add_argument("area"); p.add_argument("--agent"); p.add_argument("--kind"); p.add_argument("--model")
+    p.add_argument("--owner", help="only items of documents this area owns (00-CAR docs.owner), e.g. 01-engine")
     p.add_argument("--stale", type=int, default=90, help="minutes after which a claim counts as abandoned")
     p.set_defaults(fn=cmd_claim)
     p = sub.add_parser("finish", help="close a claimed queue item: state (default done), finished, result=, rows=")
