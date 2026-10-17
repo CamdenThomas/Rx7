@@ -885,3 +885,13 @@ D-652,engine,"The tunnel is measured when the automatic is out; the CAD starts f
 His words, 2026-10-17, in chat: ""i will do my best to measyre the engine bay as best as i can trans tunnel will likely have to weight for things comming out of the way""
 
 **Why.** With the 12A out last (D-639), J4 gating CD01 made a loop: no CAD before the tunnel, no tunnel before the 12A, no 12A out before the freeze, no freeze before the CAD. The factory body breaks it on the safe side."
+D-654,cooling,"The radiator may move forward into the 254 mm ahead of it; the engine's length is settled by the radiator, not the engine; the cooling design is drawn with luxury's front scoop",2026-10-17,standing,,,,D-630 04-luxury:C09,"**The radiator may move forward into the bay ahead of it (about 254 mm, SP-1915), and the fitment may be creative. The engine's length against the firewall-to-radiator distance (RK16) is therefore settled by moving the radiator first, then the pusher fan, then the set-back - not by the engine.**
+
+The front scoop he is considering is luxury's front-bumper intake (04-luxury C09, block 04.10); a scoop opening the nose frees still more room in front of the radiator, so the cooling design (BP07) and C09 are drawn together.
+
+His words, 2026-10-17, in chat: ""the radiator can defenetly be moved forwards for sure thats why i got the measurment past it to the end of the actual bay. the front is shart because of the dart like nose but i was already considdering a front scoop, so that would free up the front and open even more space for the radiator, id be shocked if there wasnt space and i am more then happy to get creative on fitment.""
+
+**In the data:**
+- RK16's fallback and odds are changed.
+- BP07's note carries the radiator's freedom.
+- 04-luxury C09 is linked."
