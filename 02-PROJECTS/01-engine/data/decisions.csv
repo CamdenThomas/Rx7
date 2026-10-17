@@ -22,7 +22,7 @@ D-325,What the electrical build reserves for the swap,The swap ECU is a dash nod
 The electrical build's counterpart is **D-318**. The consequence here is that `HO03` changes shape: CAN2 no longer reaches the bay, `L1-S1 9` and `10` return to sealing plugs, and the far-end 120 Ω terminator moves to the dash node. A future ECU joins the bus **at the dash**, at 0x500+ as luxury's CAN map already allocates, and what leaves the dash for the engine is only the sensor and actuator branches the rebuilt leg pins.
 
 **What this asks of the swap.** The ECU must be one that tolerates a cabin mounting and a longer sensor harness — which is the normal case for every ECU worth fitting, and is how the factory mounted its own control units. Long runs to crank and cam sensors are shielded, as `L1-S1 6` already is for the tach. Nothing about this reserves less: O13 and O14 stay the ECU and fan channels (D-007), and the leg still ends at the firewall grommet (D-211)."
-D-393,Engine and transmission,"The swap engine is a light, aluminum-block 5.3 LS - L33 first, then LM4, then an LH6 or LC9 with AFM deleted; an iron LM7 is the fallback",2026-09-23,standing,,,,,"**D-393 — The swap engine is a light, aluminum-block 5.3 LS.** The order of preference:
+D-393,Engine and transmission,"The swap engine is a light, aluminum-block 5.3 LS - L33 first, then LM4, then an LH6 or LC9 with AFM deleted; an iron LM7 is the fallback",2026-09-23,superseded,,D-629,,,"**D-393 — The swap engine is a light, aluminum-block 5.3 LS.** The order of preference:
 1. **L33:** aluminum, no AFM.
 2. **LM4:** aluminum, no AFM.
 3. **LH6 or LC9:** aluminum, with AFM deleted.
@@ -211,7 +211,7 @@ His answer to block 02.14: option (a), no words added. Option (a) in full: ""Aer
 Reasoning: it matches the recommendation; the margin for later power outweighs the 3 A over option (b). The tank cut is irreversible, so DS12 (measuring the tank top first) must be done before any cutting; the choice authorises the design, not the cut.
 
 Consequences: DS05's parts list is built on the Phantom 340; the fuel pump's soft fuse on O5 is sized to about 12.2 A (D-173) at 58 psi (V-040); DS10 carries the pump line; CP06 (fuel work) is designed for a cut tank. Prices stay `confirm` until checked (BR06). DS05 and DS12 no longer wait on 02.14."
-D-448,fuel,"The swap's fuel system: Phantom 340 in the tank, a 58 psi filter-regulator by the tank, one 3/8 in feed to the rail; its parts are the new parts table",2026-09-27,standing,,,,D-447,"**The swap's fuel system is the Phantom 340 in the tank feeding a 58 psi filter-regulator mounted by the tank, one 3/8 in (-6) feed forward to the rail and a short return back into the tank; its parts are rows FP01-FP06 in the new table `parts`, every part number, price and length `confirm`.**
+D-448,fuel,"The swap's fuel system: Phantom 340 in the tank, a 58 psi filter-regulator by the tank, one 3/8 in feed to the rail; its parts are the new parts table",2026-09-27,superseded,,D-630,,D-447,"**The swap's fuel system is the Phantom 340 in the tank feeding a 58 psi filter-regulator mounted by the tank, one 3/8 in (-6) feed forward to the rail and a short return back into the tank; its parts are rows FP01-FP06 in the new table `parts`, every part number, price and length `confirm`.**
 
 Work DS05, released by D-447 (block 02.14). Small under §3: paper and rows only. The layout (LS returnless at 58 psi, a Corvette-style filter-regulator, one feed line) was already settled in DS05's note; the pump is his ruling; nothing is bought until the freeze (DS11) and BR06.
 
@@ -330,7 +330,7 @@ His words (chat, 2026-10-16): ""please help me dive into the engine swap project
 **Phase.** PLANNING. The project is the first one now (D-618), and planning has begun in earnest. The freeze (DS11) still moves it to SOURCING.
 
 **Left for the next plan run.** K5 (the ECU's pins at the dash: the EMU PRO's pinout is still not read). J5 (the donor search, run before a yard trip). DS02, DS07 and DS09 wait on M01 and DS13. DS10 (the budget) waits on all of them."
-D-622,exhaust,"Emissions: the LS keeps the donor's converters, O2 sensors and EVAP so it passes as its engine's year",2026-10-16,standing,,,01.62,,"**The LS keeps its donor's whole emissions system: both catalytic converters in the new exhaust, every O2 sensor, the EVAP canister and purge, and PCV, all run by the ECU, so the car passes Colorado's test as a car of the engine's year. Block 01.62, option (a).**
+D-622,exhaust,"Emissions: the LS keeps the donor's converters, O2 sensors and EVAP so it passes as its engine's year",2026-10-16,superseded,,D-630,01.62,,"**The LS keeps its donor's whole emissions system: both catalytic converters in the new exhaust, every O2 sensor, the EVAP canister and purge, and PCV, all run by the ECU, so the car passes Colorado's test as a car of the engine's year. Block 01.62, option (a).**
 
 His answer (desktop app, 2026-10-16): choice (a), no words. In chat the same day: ""please follow recomendetions on all blocks for the engine project"".
 
@@ -344,7 +344,7 @@ The option in full: ""(a) Keep the donor's whole emissions system: both catalyti
 - BR02 pulls the donor's O2 sensors, EVAP canister, purge valve and PCV parts with the engine.
 - parts EM01 (two converters; whether Colorado requires CARB- or EPA-approved aftermarket units is confirm) and EM02 (the donor's O2 sensors, canister and purge parts).
 - TU06 takes the car to a referee station with form DR2365."
-D-623,axle,"Rear axle: a yard Explorer 8.8 with discs on Drifting Dad's FB brackets, and the front goes 5-lug",2026-10-16,standing,,,01.63,,"**The LS's rear axle is a yard 1995-2001 Explorer Ford 8.8 with rear discs, on Drifting Dad's weld-on FB brackets with their panhard bar or Watts bars. The front goes 5-lug with their FC-hub kit. Block 01.63, option (a).**
+D-623,axle,"Rear axle: a yard Explorer 8.8 with discs on Drifting Dad's FB brackets, and the front goes 5-lug",2026-10-16,superseded,,D-630,01.63,,"**The LS's rear axle is a yard 1995-2001 Explorer Ford 8.8 with rear discs, on Drifting Dad's weld-on FB brackets with their panhard bar or Watts bars. The front goes 5-lug with their FC-hub kit. Block 01.63, option (a).**
 
 His answer (desktop app, 2026-10-16): choice (a), no words. In chat the same day: ""please follow recomendetions on all blocks for the engine project"".
 
@@ -360,7 +360,7 @@ The option in full: ""(a) A 1995-2001 Explorer Ford 8.8 from a yard, which has r
 - parts AX01-AX05 (the axle, the brackets, the panhard or Watts bars, the 5-lug kit, the FC front hubs, bearings and brakes).
 - A sourcing row finds the axle.
 - **Every wheel is 5x4.5 in (5x114.3) from now on.** Luxury C10, which sizes the wide body from the chosen wheels, is told so in its note."
-D-624,engine,Accessory drive: ICT Billet's compact kit with A/C and a 160 A alternator,2026-10-16,standing,,,01.64,,"**The LS runs ICT Billet's compact accessory drive with A/C, Corvette balancer spacing, with their 160 A ACDelco alternator option; the steering pump is left off or idled. Block 01.64, option (a).**
+D-624,engine,Accessory drive: ICT Billet's compact kit with A/C and a 160 A alternator,2026-10-16,superseded,,D-630,01.64,,"**The LS runs ICT Billet's compact accessory drive with A/C, Corvette balancer spacing, with their 160 A ACDelco alternator option; the steering pump is left off or idled. Block 01.64, option (a).**
 
 His answer (desktop app, 2026-10-16): choice (a), no words. In chat the same day: ""please follow recomendetions on all blocks for the engine project"".
 
@@ -394,7 +394,7 @@ None is converted, measured or placed. The scale models and the mis-scaled ones 
 - New rows SR01-SR04 (the CD009 and 8.8 searches, the drive's price, a parts round), BR07 (the 8.8), BR08 (the FC hubs) and CD01-CD07. CD07 hands the swap to 03-cad's car model.
 - DS02, DS03 and DS07 now design from CD01-CD03.
 - CD06's proposed minimums: 12 mm static, 20 mm where the engine rocks, 25 mm from the exhaust to lines and wiring. They are confirmed in that row."
-D-626,engine,"Nothing is bought before the freeze: the swap is proven virtually first (CD06), and re-checked on the parts in hand (CD08) before the car is changed",2026-10-16,standing,,,,D-625,"**Nothing is bought before the design is frozen. The swap is planned, sourced on paper and proven virtually first: the CAD's clearance proof (CD06) is made from published dimensions, the found CAD and measurements of the car itself, and it gates the freeze (DS11). Every purchase, the donors included, waits on the freeze. A second CAD check after buying (CD08) re-measures the parts in hand, and it gates every row that changes the car.**
+D-626,engine,"Nothing is bought before the freeze: the swap is proven virtually first (CD06), and re-checked on the parts in hand (CD08) before the car is changed",2026-10-16,superseded,,D-629,,D-625,"**Nothing is bought before the design is frozen. The swap is planned, sourced on paper and proven virtually first: the CAD's clearance proof (CD06) is made from published dimensions, the found CAD and measurements of the car itself, and it gates the freeze (DS11). Every purchase, the donors included, waits on the freeze. A second CAD check after buying (CD08) re-measures the parts in hand, and it gates every row that changes the car.**
 
 His words (chat, 2026-10-16): ""the first step in the plan should not be to buy anything, we must make a dialed detailed plan with enough sourced parts and done design to know for sure we will buy anything. please help me with the plan here first, what of an engine swap can we dial and verify and perfect virtually on the computer before a cent is spent""
 
@@ -407,7 +407,7 @@ His words (chat, 2026-10-16): ""the first step in the plan should not be to buy 
 - New CD08 re-measures the engine (BD01), the CD009 (BD06), the axle (BR07) and the bought accessories, updates the model, and repeats CD06's numbers. CP03-CP10 and IN01 wait on it.
 - BD01 and BD06 go back to the build track.
 - Pulling the dead 12A (CP01) and measuring the empty bay (M01) cost no money and stay in the virtual phase."
-D-627,engine,Donors: only the essentials are pulled - the pull lists - and today's yard search recorded,2026-10-16,standing,,,,D-622 D-623 D-624 D-626,"**From the donors only the essentials are pulled: what the plan reuses and is worth reconditioning. Anything that takes as much effort to restore as buying new, or that the plan already replaces, is left on the car. The pull lists are fixed below. Today's donor search, the first live one since 2026-09-23, is recorded in sightings SG17-SG32.**
+D-627,engine,Donors: only the essentials are pulled - the pull lists - and today's yard search recorded,2026-10-16,superseded,,D-629,,D-622 D-623 D-624 D-626,"**From the donors only the essentials are pulled: what the plan reuses and is worth reconditioning. Anything that takes as much effort to restore as buying new, or that the plan already replaces, is left on the car. The pull lists are fixed below. Today's donor search, the first live one since 2026-09-23, is recorded in sightings SG17-SG32.**
 
 His words (chat, 2026-10-16): ""i would like to only bull the essentials worth fixing up. parts that are as much efort to fix and resore and make look/function new i will just buy new. the engine/transmission/rearaxle's that i actually find might change things""
 
@@ -433,7 +433,7 @@ His words (chat, 2026-10-16): ""i would like to only bull the essentials worth f
 The engine actually bought may change the plan (Gen III or Gen IV, AFM, VVT): ls_wires already covers both generations, and the AFM delete and VVT are rows.
 
 When the donors may be bought is his question, block 01.65."
-D-628,engine,"Engine: the junkyard LS trio, restored at home to a remanufacturer's standard and dressed for a clean bay",2026-10-16,standing,,,01.67 01.68,,"Camden, 2026-10-16, in chat, after blocks 01.67 and 01.68 were raised: ""lets keep working the junk yard ls and go through what id do when i got my hands on it fleas fill the ls with all the infomation to the ls, and make a plan about an at home full restore look like new painted and everything perfect dresses LS. as close as i can get to a remanned engine at home, paited, with custom hose,electrical routing for ultimate sleak engine bay look. custom air intake and custom exhaust. as simplified as we can make the ls with optimized routing for everything""
+D-628,engine,"Engine: the junkyard LS trio, restored at home to a remanufacturer's standard and dressed for a clean bay",2026-10-16,superseded,,D-629,01.67 01.68,,"Camden, 2026-10-16, in chat, after blocks 01.67 and 01.68 were raised: ""lets keep working the junk yard ls and go through what id do when i got my hands on it fleas fill the ls with all the infomation to the ls, and make a plan about an at home full restore look like new painted and everything perfect dresses LS. as close as i can get to a remanned engine at home, paited, with custom hose,electrical routing for ultimate sleak engine bay look. custom air intake and custom exhaust. as simplified as we can make the ls with optimized routing for everything""
 
 Block 01.67 (the trio) is answered (a): the LS trio. That is an aluminum 5.3 donor, the CD009 on the Sikky adapter, and the Explorer V8 8.8. D-393 stands. The six-cylinder, Lexus V8, Mustang and diesel options stay in options as reference.
 
@@ -464,3 +464,157 @@ The LM4's published figures are now 00-CAR specs (applies not-fitted):
 - firing order, priming and break-in from Chevrolet Performance's LS manual (S-587)
 
 Each is marked secondary or confirm until SR05 or a measurement replaces it (R11). Nothing is bought before the freeze (D-626). Block 01.65 (buying donors early) stays open."
+D-629,engine,"The engine is a Miata BP 1.8 and 5-speed from JDM Alliance (BP-711698) unless cheaper; the project ends at stable, safe running and driving with every engine-out job done; the show finish and the turbo come later with luxury",2026-10-17,standing,D-393 D-628 D-626 D-627,,01.70 01.65,,"**The FB's engine is a Miata BP 1.8 with its 5-speed manual, bought as JDM Alliance LA's package BP-711698 unless the same engine and 5-speed is found cheaper. The engine project ends when the car runs and drives stable, safe and sturdy, with every job that needs the engine out done. The show finish (paint, dressing, hidden routing) and the turbo come later, with the luxury stage. The BP is built turbo-ready wherever that costs little. Block 01.70, option (e), with the source he named; block 01.65 is overtaken.**
+
+His words, 2026-10-17, in chat:
+- ""i am leaning bp build i dont need to break rear traction i need it to feel fast and fun to drive, the smaller bp will probally fit better then the LS anyways""
+- Then: ""please refactor the plan for this cheeper engine https://jdmalliancela.com/collections/all/products/jdm-94-97-mazda-miata-bp-1-8l-dohc-engine-5-speed-manual-transmission-mx5 from this source as where i buy it unless you can find a cheeper one with the 5 speed manual. please scavvange every detail of information on this engine and transission and factor the plan about what i would need to do to make it extreemly happy. the paint and show car perfection comes with luxury with the turbo. engine just gests it in the sar stable safe strudy running and driving (with everything id need the enging out for done) pplan than there will be a turbo and take steps to make the turbo job easier without making this project overbudget. we need to detail the cooling system the oil system fuel system the intake the exhaust the mounts and the drive shaft all perfect in plan before that engine sells and the price increases. lets just focus on the broad plan start to finish make sure all the files are fully updated cosistantly so you dont waste memory and everything is stored written down in the files""
+
+And earlier the same day: ""what the bp offers that temps me is the separation geting a cheep realiable build bp now so the car drives again on a college student budget but then there is a tubo prodect around the time of luxury to make the car faster. we can map the bp now for a turbo so its ready but not actully burn dough i dont have on speed. this was always suposed to be a ""forever"" project.""
+
+The option as raised in block 01.70: ""(e) A Miata BP 1.8 and its gearbox from a local yard Miata now, designed turbo-ready, with the turbo as a later project. About $7,000-12,000 to a running car, about 130 hp. The stock FB axle stays. The wiring leg, the CAD and the rebuild leave room for the turbo, intercooler, boost sensors and oil lines, but none of those parts are bought. The turbo stage later is about $5,000-10,000 with a stronger gearbox and the 8.8 axle, for about 200-220 hp. Forecloses a V8 unless you change course again. The LS rows become reference, and D-393 and D-628 are superseded.""
+His words narrow it: he buys from JDM Alliance rather than a yard.
+
+Block 01.65 asked whether to buy the LS and axle donors before the freeze. With no LS and no axle, it is closed by this ruling. His answer to it is the words above: the BP from JDM Alliance replaces both donors.
+
+**The source.** The listing was read on 2026-10-17 (S-612):
+- $1,849, serial BP-711698, about 61,000 miles.
+- A 1994-97 NA 1.8, non-VVT, with its 5-speed RWD gearbox.
+- Included: the block and head, fuel rail, injectors, intake and exhaust manifolds, sensors, throttle body, power-steering pump, coil packs, alternator, A/C compressor, and ""anything else shown in the photos"".
+- Excluded: the ECU and harness (the EMU PRO, D-446, replaces both).
+- Not stated: the flywheel, clutch, starter, slave cylinder, shifter and PPF.
+- The page contradicts itself on three points: ""the cost of the long block only"" against the included list, a 90-day against a 30-day engine warranty, and ""all sales final"" against the warranty's refund language.
+- The warranty is void unless a certified mechanic installs it. He installs it himself, so treat it as no warranty.
+- Freight is not priced. Pickup is in Vernon CA.
+
+BP01 asks JDM Alliance these questions before he buys.
+
+**Cheaper ones searched, 2026-10-17:**
+- SoCal JDM, 1994-97 with 5-speed: $2,499.
+- Tier1 JDM, 2001-05 VVT with 5-speed: $2,050.
+- eBay asks $2,700-3,200.
+- TopClass JDM listed $1,500, but its domain no longer resolves, so it is treated as gone.
+- A Front Range yard Miata would be cheaper (about $260-276 for the engine plus a gearbox), but older, of unknown mileage, and unseen; the yards' online inventories block reading.
+
+So JDM Alliance stands as the source. A yard Miata is the runner-up and is searched for the small parts (J6).
+
+**When the engine is bought (supersedes D-626 for the engine alone).** His words put buying the package after the plan, not after the whole freeze: ""all perfect in plan before that engine sells"". So BR09 (buy it) waits on:
+- the seller's answers (BP01);
+- the emissions call (BP02);
+- the seven systems drafted (DS02 oil, DS03 exhaust, BP07 cooling, BP08 fuel, DR04 intake, DS07 mounts, BP09 driveshaft).
+
+It does not wait on the CAD clearance proof. The risk is small: an inline-four is narrow, a BP resells easily, and the engine in hand makes the CAD exact. Everything else is still bought after the freeze (DS11). The car is still not changed before the clearance proof on the parts in hand (CD06, CD08).
+
+**The scope split.**
+- The engine project: buy, inspect, service everything that needs the engine out, fit, plumb, wire, tune and register.
+- The show finish moves to 04-luxury and the turbo stage: paint and powder (the old PA rows), the finish schedule (DR07), the polished bay, and hidden show routing.
+- The turbo stage is a planned change with no project yet (00-CAR planned P-010). The Explorer 8.8, the 5-lug front and the rear discs move there with it.
+- The reman-depth teardown (BD09-BD14, RB10, D-628) is dropped. The engine is opened further only if the compression, leak-down or pan inspection calls for it (BD07, BD08).
+
+**Supersedes:**
+- D-393 (the aluminum 5.3).
+- D-628 (the junkyard LS restored to a reman standard).
+- D-626 for the engine package's timing only; its rule stands for everything else.
+- D-627 (the LS donor pull lists).
+
+The LS tables (ls_devices, ls_cavities, ls_wires, ls_lines), the LS options and the sightings stay as reference."
+D-630,engine,"The BP swap's plan system by system - cooling, oil, fuel (return-style), intake, exhaust (one converter), mounts, driveshaft, front drive, clutch, wiring - each turbo-ready where it costs little",2026-10-17,standing,D-448 D-622 D-623 D-624,,,D-629,"**The BP swap's plan, system by system: what is kept, what is made, what is bought, and what is left ready for the turbo. It is the design rows' starting point, frozen by his ruling at DS11.** Every figure is secondary or confirm until Mazda's own manual (BP03) or a measurement on the parts in hand (BD01, CD08) replaces it (R11).
+
+**The engine (00-CAR specs, not fitted).**
+- 1.8 L DOHC 16-valve inline-four: iron block, aluminum head, 83 x 85 mm, 9.0:1.
+- 128 hp and 110 lb-ft in 1994-95, 133 hp and 114 lb-ft in 1996-97 (US ratings).
+- Timing belt with hydraulic lash adjusters.
+- Oil about 3.8 qt, or 4.0 qt with the filter. Coolant about 6.3 qt.
+- At about 5,000 ft it makes roughly 15% less, about 105-115 hp at the wheels.
+
+The gearbox: 5-speed, 3.136 / 1.888 / 1.330 / 1.000 / 0.814, about 2.1 qt of GL-4 gear oil (S-611). The car is an automatic today, so it needs a clutch pedal, a master cylinder and a line to the Miata's slave (DS06's rows carry over).
+
+**Turbo-ready, rule for every system.** Do it now only if it is cheap, and only because doing it later would mean taking the engine out or undoing a finished job. Buy no boost parts.
+
+**Cooling (BP07).**
+- An aluminum radiator in the FB's support, sized for the turbo stage so it is bought once.
+- Hose necks matched to the BP. One electric puller fan on its own relay and fuse (D-468, HO02).
+- Heater hoses to the FB's heater core. An expansion tank with the level switch (D-501, D-507).
+- A new thermostat and hoses.
+- The BP's known hot No. 4 cylinder: the rear-outlet coolant reroute is offered as an option at BP07 (about $150-250), because doing it later re-plumbs the upper hose.
+- Turbo-ready: the radiator's size, and a capped coolant tap for a water-cooled turbo if the reroute housing has one.
+
+**Oil (DS02).**
+- The BP's own wet sump, pan and pickup, checked against the FB's crossmember and steering linkage in CAD.
+- The filter's access is checked against the frame rail; a filter relocation only if it is blocked.
+- Oil-pressure sensor to the ECU, and the PMU's fuel-pump gate (HO04).
+- Turbo-ready: a tee at the pressure-sender port with a plugged feed outlet (about $20-50). A -10 return bung welded into the pan above the oil level while the pan is off for its gasket (about $15-30; the welder is rented anyway), plugged.
+- No dry sump: it adds the most plumbing of anything on the engine, and a street FB does not need it.
+
+**Fuel (BP08, supersedes D-448).**
+- The Phantom 340 in the tank stays (D-447; already big enough for a turbo).
+- The rail returns to a return-style system: the BP's own rail and its manifold-referenced regulator (boost-referenced once there is boost), and the FB's existing steel return pipe (00-CAR PT177).
+- The 58 psi filter-regulator by the tank is no longer needed.
+- The carburettor-era return check valve (PT120) is checked for restriction or removed.
+- New EFI-rated hose from the frame lines to the rail, a filter, and the O5 soft fuse as planned (HO12).
+- Turbo-ready: the regulator and the pump. Only the injectors change later.
+
+**Intake (DR04).**
+- A filter in a cold-air box fed from outside air, away from the radiator and the manifold.
+- A tube to the BP's throttle body, with an IAT sensor boss and the PCV fresh-air port.
+- The vane airflow meter is deleted; the EMU PRO runs speed-density on MAP.
+- The idle valve is kept. The throttle cable from the FB's pedal is fitted to the BP's throttle body.
+- Turbo-ready: the filter box's position is chosen so that later the turbo's inlet takes it, and the tube becomes the charge pipe's last length.
+
+**Exhaust (DS03, supersedes D-622's two-converter LS layout; the rule is unchanged).**
+- The BP's own manifold (kept, if it clears the steering box in CAD), then a downpipe with a flex section.
+- Then one converter with the upstream and downstream O2 sensors, then 2.5 in pipe to one muffler.
+- EVAP canister and purge, and PCV, kept and run by the ECU. The car is tested as a car of the engine's year (D-622's rule; BP02 confirms how a JDM BP is tested).
+- Turbo-ready: everything after the downpipe joint is reused, and the converter is sized for the turbo's flow.
+
+**Mounts (DS07).**
+- The BP's own side brackets on the block. Fabricated adapter plates to the FB crossmember's mount positions, on rubber mounts.
+- The engine sits as far back and low as the clearance proof allows, to keep the FB's balance.
+- The gearbox is held by a fabricated crossmember from the gearbox's PPF bosses to the FB's transmission-mount points. The Miata's PPF itself does not fit the FB's axle.
+- The shifter's position against the FB's tunnel opening is J4.
+- Turbo-ready: nothing sits where the turbo and downpipe will go.
+
+**Driveshaft (BP09).**
+- Made to length by a driveshaft shop once the mock-up gives the measured length.
+- The front is a slip yoke on the Miata gearbox's output spline (from a yard Miata's shaft, J6). The rear is a flange to the FB's companion flange (00-CAR PT435). It is balanced.
+- Turbo-ready: a tube and joints rated above the turbo's torque.
+
+**Front drive and alternator (BP04).**
+- The Miata's alternator and water-pump drive stay.
+- The power-steering pump and its belt go: the FB's box is manual.
+- The A/C compressor stays on its bracket with its belt; its hoses, condenser and charge come with the luxury stage (D-489 still holds at that stage).
+- The alternator's rating is block 01.71. The 163 A target (D-457) cannot be met by a bolt-in BP alternator.
+
+**Clutch (BP10).**
+- The FB manual pedal box and master (CL02, CL03), and a line to the Miata's slave.
+- A Miata 1.8 clutch kit with a pilot and release bearing, and the flywheel resurfaced.
+- Turbo-ready: a clutch rated above the turbo's torque, if it costs little more than stock.
+
+**The engine wiring leg (BP05, then K5).**
+- The BP's devices replace the LS's: 4 injectors, the coil pack (and its igniter if that year needs one), the cam and crank sensors of its year, the idle valve, TPS, coolant sensor, a new IAT, MAP, the O2 sensors, purge, oil pressure, the alternator, the starter, and the reverse and neutral switches.
+- Road speed comes from the gearbox's speedometer drive (electrical Y82).
+- The crank interlock is the clutch pedal switch (electrical Y81).
+- Turbo-ready: the boost-control solenoid output, a second IAT and an oil-temperature input are wired and plugged now.
+
+**Supersedes:**
+- D-448 (returnless 58 psi).
+- D-622 (the LS emissions layout; the BP keeps the same rule).
+- D-623 (the Explorer 8.8 and 5-lug front, now the turbo stage's; the FB axle stays, since the BP makes about the 12A's torque).
+- D-624 (ICT's LS front drive).
+
+The parts table, options, specs and work rows are changed in the same pass. The budget stays a query over parts (DS10), never a typed total."
+D-631,engine,"The engine project is worked in zones - bp, oil, trans, fuel (tank, pump, lines), radiator (hoses), intake, exhaust, mounts, wiring - a zones table, a zone on every work and parts row, one folder per zone",2026-10-17,standing,,,,D-629,"**The engine project is worked in zones: a zones table, a zone column on work and parts, and one folder per zone under 02-PROJECTS/01-engine holding that zone's cad/ and its files. The zones are bp (with bp/oil), trans, fuel (fuel/tank, fuel/pump, fuel/lines), radiator (with radiator/hoses), intake, exhaust, mounts and wiring.**
+
+His words, 2026-10-17, in chat: ""plese separate the engine project into its areas so we can work on zones there is fouders for my suggestions of the split""
+
+**His folders.** He made bp/, trans/, fuel/tank, fuel/pump, fuel/lines, radiator/ and radiator/hoses, each with cad/ and data/. Each becomes a zones row with its folder as its id.
+
+**The zones he had no folder for.** The systems D-630 plans are added: intake, exhaust, mounts and wiring, and bp/oil inside the engine. Their folders are made the same way. A .gitkeep keeps each folder in git, so it reaches the other clones.
+
+**Reading taken.** A zone is not a separate area. rx7.py finds an area only at ROOT/<area> or 02-PROJECTS/<project> (CLAUDE.md section 1). Splitting the project's tables into one record per folder would break the gates across them and the one home per fact (R2).
+
+So the record stays the project's one set of tables, and each row names its zone. A zone's data/ folder holds the files that are not the record: measurements as photos, vendor sheets, drawings. Its cad/ holds its models.
+
+This is small (section 3): only rows change, and it can be undone by editing rows. If he meant one separate record per zone, that is a tool change for 02-APP and a new block.
+
+The old top-level cad/ folder keeps the LS reference models (D-625)."

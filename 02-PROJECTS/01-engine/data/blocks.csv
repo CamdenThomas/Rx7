@@ -1,35 +1,13 @@
 id,title,opened,ask,why,options,recommend,stops
-01.65,"Buy the engine and axle donors now, before the freeze?",2026-10-16,"Should the engine and rear-axle donors be bought now from today's yards (about $430), before the design freeze, while the CD009 still waits on the clearance proof?","Self-service yards crush cars 30-90 days after they are set. D-626 says nothing is bought before the design freeze (DS11), which is weeks of CAD and calculation away. By then today's donors are gone. Today's search (sightings SG17-SG32) found:
-- one aluminum 5.3 without AFM in all of the Front Range: an LM4 in a 2004 Envoy XL at Colorado Springs, set 21 days ago;
-- eleven AFM 5.3s (LC9, LH6), which keep arriving;
-- four V8 AWD Explorers and Mountaineers with the solid 8.8;
-- no 350Z, and one G35 coupe whose gearbox is unknown.
+01.71,"BP alternator: 100 A now and 160 A at the luxury stage, 160 A now, or …",2026-10-17,"Should the BP run the FD RX-7's 100 A alternator now and get the 160 A unit when the luxury loads go in (a), a custom-bracketed 160 A unit now (b), or the stock Miata alternator (c)?","D-457 sizes the swap's alternator at 160 A or more for about 163 A of load, and that figure counts every luxury comfort load (H-001). The car's own alternator today is about 55 A class.
 
-A donor in hand also makes the CAD exact (R11: a measured part beats a model). The engine family (D-393) and the axle (D-623) are already ruled, and every FB V8 build found fits an LS.","(a) Buy the engine and axle donors now, from today's sightings - the LM4 if it is still there, otherwise the freshest LC9 - plus a V8 Explorer's 8.8. About $430 plus cores at U-Pull-&-Pay's posted prices ($250.99 engine without accessories, $180.99 disc rear end), and a day's trip. They are measured for the CAD. The CD009 (about $1,650-2,150 shipped) still waits on the clearance proof (CD06). Forecloses nothing: the parts are cheap and resellable.
-(b) Find and track only (D-626 as it stands). Re-run the search before each decision; buy after the freeze. Costs nothing now. The LM4 will almost certainly be gone, and the CAD is built from figures until then.
-(c) Buy all three now, the CD009 included. The CAD is exact soonest, but about $2,100-2,600 is spent before any clearance is proven.","(a), unless you want no money spent at all before the freeze - then (b).","BR02 (the engine pull), BR07 (the axle), and when the CAD becomes exact (CD08's measurements)."
-01.70,"Swap: the LS, an F-body donor, a turbo-ready Miata BP now, a …",2026-10-17,"Should the FB get the LS as planned (a), a running F-body's LS1 and T56 (b), be sold for another car (c), wait (d), or get a Miata BP 1.8 now, designed turbo-ready, with the turbo as a later project (e)?","Camden, 2026-10-16: ""then this begs the question is the swap with it, i am roughly 6k into the car as of now. is there a car i could find for a reasonable price that would be a good starting point for my optimized perfected design that i could get for less then that? then i just have to rework some of the ends of the wireing project and the space and everything changes but a lot transitions over without needed to remanufacture the whole car for 30k""
+No bolt-in alternator above about 100-110 A was found for the BP (S-613):
+- the FD RX-7's 100 A unit fits the BP's bracket, with some work;
+- a Kia 1.8 unit claimed at 110 A also fits, with some work;
+- no 160 A unit was found.
 
-Camden, 2026-10-17, in chat, after comparing a Miata BP 1.8 with the LS: ""what the bp offers that temps me is the separation geting a cheep realiable build bp now so the car drives again on a college student budget but then there is a tubo prodect around the time of luxury to make the car faster. we can map the bp now for a turbo so its ready but not actully burn dough i dont have on speed. this was always suposed to be a ""forever"" project. and this follows electicals efforts to build the frameworks of the dream car but not every feature is actally unlucked untill i can afford that end step.""
+Until the luxury loads go in, the car's load is the engine, the fuel pump (about 12.2 A, V-040), one electric fan (about 20-25 A), lights and the basics.
 
-This replaces block 01.69, adding option (e), the BP.
-
-The answer decides which engine the CAD, the engine wiring leg, the sourcing and the engine rows are designed for. Nothing for the engine is bought yet (D-626), so changing course costs only rows.
-
-Cost to a running car, you doing the labour (estimates, confirm with live listings):
-- (a) LS as planned: about $17,000-32,000, about 300 hp.
-- (b) F-body donor: about $12,000-24,000, about 300 hp.
-- (e) Miata BP now: about $7,000-12,000, about 130 hp (the 12A made about 100). A turbo later adds about $5,000-10,000 with a stronger gearbox and axle, for about 200-220 hp.
-
-What the BP keeps: the stock FB rear axle (it makes about the 12A's torque), the brakes and the car's weight balance. The EMU PRO (D-446) and the Phantom 340 pump (D-447) carry over and are already big enough for a turbo. The regulator drops to the BP's pressure. Like the LS, it still needs a clutch pedal and master cylinder (the car is an automatic), a converter, O2 sensors and EVAP for the test (D-622), and an alternator big enough for the electrical load (D-457).
-
-What the BP costs:
-- No documented BP-in-FB build was found, so the mounts, the gearbox mount (the Miata's PPF) and the driveshaft are made for this car.
-- The Miata gearboxes are known to be weak above stock power, so the turbo stage brings a stronger gearbox and the Explorer 8.8 axle (D-623) back.
-- The LS design rows (ls_devices, ls_cavities, ls_wires, ls_lines) are set aside as reference.
-
-Where to buy (e): from a local yard Miata, not the JDM Alliance package ($1,849 plus freight, all sales final, its warranty void unless a certified mechanic installs it). A yard car gives the engine, gearbox, PPF, flywheel, clutch and US emissions parts, and its engine's year is known for the test.","(a) Keep the swap as planned (D-628): a junkyard aluminum 5.3, the CD009 on the Sikky adapter, the Explorer 8.8. About $17,000-32,000 to a running car, about 300 hp. The fastest result and the most-documented FB swap. The most money and the most time before it drives.
-(b) Keep the FB but take the drivetrain from one running 1998-2002 Camaro / Firebird LS1 6-speed. About $12,000-24,000 to a running car after selling what is left of the donor, about 300 hp. The T56 needs no adapter. Its fit in the FB tunnel is still to prove, and the CD009 plan and D-628's donor are reworked.
-(c) Sell the FB as it stands and buy a car that is already close to what you want (an LS-swapped FC or FB, a 350Z, an E46 330Ci, an LS1 F-body), about $7,000-15,000. Driving soonest. The FB, the $6,000 in it and the FB-specific half of the electrical, luxury and CAD work are left behind.
-(d) Pause the engine and finish the other projects first; decide the drivetrain later. No engine money now. The car does not run until it is decided.
-(e) A Miata BP 1.8 and its gearbox from a local yard Miata now, designed turbo-ready, with the turbo as a later project. About $7,000-12,000 to a running car, about 130 hp. The stock FB axle stays. The wiring leg, the CAD and the rebuild leave room for the turbo, intercooler, boost sensors and oil lines, but none of those parts are bought. The turbo stage later is about $5,000-10,000 with a stronger gearbox and the 8.8 axle, for about 200-220 hp. Forecloses a V8 unless you change course again. The LS rows become reference, and D-393 and D-628 are superseded.","(e), unless you want about 300 hp the first time it drives - then (a)","Buying anything for the engine (block 01.65, J5, SR01, SR03, SR04) and the engine-side design that depends on the engine and gearbox (CD02, CD03, DR01, DR06, K5, J4, DS07). The car's other projects go on"
+The answer decides which alternator the BP's front drive is designed around (BP04), its wire size and fuse (electrical), and K7's charge-current cap.","(a) The FD RX-7 100 A alternator now, on the BP's own bracket, about $100-250 used or rebuilt. Enough for the engine-stage car. A 160 A unit on a custom bracket comes with the luxury and turbo stage, when the luxury loads arrive. Forecloses nothing; the 100 A unit is sold or kept as a spare then.
+(b) A 160 A or larger unit now, a GM-type or a Mechman-style custom, on a fabricated bracket and belt line. About $300-600 plus the bracket. Meets D-457 on day one, but it is fabrication and money spent before any luxury load exists.
+(c) Keep the stock Miata alternator that comes with the package, about 70 A (confirm on its tag). Costs nothing. It may not hold the fan, the pump and the lights at idle on a hot night.","(a), unless the luxury comfort loads go into the car before the turbo stage - then (b)",BP04 (the BP's front drive) and K7 (the charge-current cap); the alternator's parts row AC02

@@ -145,3 +145,9 @@ ls_lines,ends,text,no,,the fittings at each end
 ls_lines,finish,text,no,,"how it looks: colour and surface, matched to DR07"
 ls_lines,fate,enum(keep|new|delete|optional),yes,,keep = the donor part refitted; new = made or bought for the swap; delete = the truck had it and the FB does not (DR01)
 ls_lines,note,text,no,,every length and position is confirm until measured (R11)
+zones,id,key,yes,,"the zone's folder under 02-PROJECTS/01-engine, holding its cad/ and its files; a sub-zone is parent/child (D-631)"
+zones,name,str,yes,,
+zones,parent,str,no,zones,"the zone it sits inside, blank at the top"
+zones,covers,text,no,,"what belongs to the zone: its parts, lines, devices and work"
+work,zone,str,no,zones,which zone the row works on (D-631); blank for a whole-swap row
+parts,zone,str,no,zones,which zone the part belongs to (D-631)

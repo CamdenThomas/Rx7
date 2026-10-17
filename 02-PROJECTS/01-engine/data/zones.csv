@@ -1,0 +1,14 @@
+id,name,parent,covers
+bp,The BP engine,,"Block, head, timing belt, water pump, gaskets and seals, sensors on the engine, the front drive and alternator, the compression, leak-down and service work"
+trans,Gearbox and driveline,,"The Miata 5-speed, clutch, flywheel, pilot and release bearing, the clutch pedal, master and line, the shifter against the tunnel, the gearbox crossmember, the driveshaft"
+fuel,Fuel system,,Everything from the tank to the rail; its parts sit in the three sub-zones
+radiator,Cooling,,"Radiator, electric fan and shroud, thermostat, expansion tank and its level switch"
+intake,Intake,,"Cold-air box and duct, filter, the tube to the throttle body, the IAT boss, the PCV fresh-air port, the throttle cable from the FB pedal"
+exhaust,Exhaust,,"The BP manifold, downpipe and flex, the converter and both O2 bungs, the 2.5 in pipe, muffler and hangers"
+mounts,Engine mounts,,"The BP side brackets, adapter plates to the FB crossmember, the rubber mounts, where the engine sits (set back and low)"
+wiring,Engine wiring leg,,"The BP leg from the ECU at the dash to every engine device, with the plugged turbo spares; designed with 02-electrical"
+bp/oil,Oil system,bp,"Pan and pickup against the FB crossmember, filter access, the pressure sender and its plugged turbo-feed tee, the plugged turbo-return bung in the pan"
+fuel/tank,Fuel tank,fuel,"The tank and its top opening for the pump (DS12), the vent, the EVAP canister and purge line"
+fuel/pump,Fuel pump,fuel,"The Phantom 340 in the tank, its feed wire and soft fuse (HO12)"
+fuel/lines,Fuel lines,fuel,"Feed and return from the tank to the rail, the filter, the old return check valve, the BP rail and its regulator fittings"
+radiator/hoses,Coolant hoses,radiator,"Upper and lower radiator hoses, heater hoses to the FB core, the bypass, the optional rear-outlet reroute"

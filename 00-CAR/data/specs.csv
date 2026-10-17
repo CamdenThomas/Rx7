@@ -1854,3 +1854,13 @@ SP-1867,Engine,LS tightening torque: harmonic balancer bolt,"not settled - the t
 SP-1868,Engine,LS main bearing clearance (production),0.020-0.052,mm,,,unverified,engine,,not-fitted,0.0008-0.0021 in; from GM tables for the LS1/LS6 and LS3 reproduced on LS1Tech and G8Nation - LM4 figure from SR05
 SP-1869,Engine,LS rod bearing clearance (production / service limit),0.015-0.063 / 0.076,mm,,,unverified,engine,,not-fitted,0.0006-0.0025 / 0.003 in; LS1/LS6 table - LM4 figure from SR05
 SP-1870,Engine,LS piston ring end gap,"top 0.17-0.38, second 0.32-0.63, oil 0.22-0.79",mm,,,unverified,engine,,not-fitted,LS3 production figures; new rings are filed to the ring maker's gap for a 96 mm bore - confirm
+SP-1871,Engine,BP swap engine: type,"1.8 L DOHC 16-valve inline-four, iron block, aluminum head, timing belt, hydraulic lash adjusters; 1994-97 NA, non-VVT",,S-612,,secondary,engine,,not-fitted,The package for sale is serial BP-711698
+SP-1872,Engine,BP bore x stroke,83 x 85,mm,S-611,,secondary,engine,,not-fitted,
+SP-1873,Engine,BP displacement,1839,cc,S-611,,secondary,engine,,not-fitted,"Computed from 83 x 85 mm, four cylinders"
+SP-1874,Engine,BP compression ratio,9.0:1,,S-611,,secondary,engine,,not-fitted,
+SP-1875,Engine,BP rated power and torque (US),"1994-95: 128 hp, 110 lb-ft; 1996-97: 133 hp, 114 lb-ft",,S-611,,secondary,engine,,not-fitted,"At Fort Collins' altitude, about 15 percent less - confirm on a dyno"
+SP-1876,Engine,BP oil capacity,"3.8 without the filter, 4.0 with it",US qt,S-611,,secondary,engine,,not-fitted,
+SP-1877,Cooling,BP-era Miata coolant capacity,6.3,US qt,S-611,,secondary,cooling,,not-fitted,The Miata's own system; the FB's radiator and hoses change it
+SP-1878,Transmission,Miata 5-speed gear ratios,"3.136, 1.888, 1.330, 1.000, 0.814",,S-611,,secondary,transmission,,not-fitted,
+SP-1879,Transmission,Miata 5-speed oil,About 2.1 US qt (2.0 L) of GL-4 gear oil,,S-611,,secondary,transmission,,not-fitted,Grade confirm against the Mazda manual
+SP-1880,Engine,BP firing order,1-3-4-2,,,,unverified,engine,,not-fitted,Confirm in the Mazda workshop manual
