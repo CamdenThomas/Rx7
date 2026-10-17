@@ -189,3 +189,12 @@ waves,after,text,no,,what has to be true before it starts
 work,wave,str,no,waves,"which wave it belongs to (D-643, D-644)"
 parts,wave,str,no,waves,"which wave it belongs to (D-643, D-644)"
 bp_items,wave,str,no,waves,"which wave it belongs to (D-643, D-644)"
+risks,id,key,yes,,RK + number
+risks,zone,str,yes,zones
+risks,risk,text,yes,,what could be wrong
+risks,settles_at,str,no,,the work row where the parts in hand settle it
+risks,fallback,text,yes,,what is done if it goes wrong - agreed before the engine is bought
+risks,usd_low,int,no,,"the fallback's cost, low"
+risks,usd_high,int,no,,"the fallback's cost, high - the ceiling"
+risks,odds,enum(low|medium|high),no,,"how likely it is to happen, the agent's judgement with its reason in note"
+risks,note,text,no

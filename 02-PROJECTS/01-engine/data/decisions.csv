@@ -803,7 +803,7 @@ His words, 2026-10-17, in chat: ""i think we can dial it back sligtly, stage one
 - W3 and W4 are provisional; the CU's header and blower and DCU power kits are W3 (P248, P100, P133), the door kits W4 (P101, P127).
 
 **Supersedes nothing:** it narrows D-647's W1, and the engine waves table is rewritten (its W2 was the turbo stage)."
-D-649,engine,"Every saving applied: the rusEFI uaEFI 121 for the EMU Black, the electrical extras skipped or borrowed, the cheap side of every engine either-or",2026-10-17,standing,D-642,,,D-641 D-648,"**Every saving of the list is applied to wave 1.**
+D-649,engine,"Every saving applied: the rusEFI uaEFI 121 for the EMU Black, the electrical extras skipped or borrowed, the cheap side of every engine either-or",2026-10-17,superseded,D-642,D-650,,D-641 D-648,"**Every saving of the list is applied to wave 1.**
 
 **1. The engine computer is the rusEFI uaEFI 121, about $400-520 all in, in place of the EMU Black (supersedes D-642).**
 - shop.rusefi.com lists it from $375 (2026-10-17).
@@ -844,3 +844,39 @@ His words, 2026-10-17, in chat, quoting the list of savings: ""please factor in 
 - Parts EC01 is re-specified.
 - About 30 live rows that named the EMU Black name the uaEFI 121.
 - The electrical extras and the engine ranges are re-priced, with each note saying why."
+D-650,engine,The final plan keeps the EMU Black; cost cuts that change the finished car wait until the plan is verified (uaEFI 121 kept as option OP97),2026-10-17,standing,D-649,,,,"**The final plan's engine computer is the ECUMaster EMU Black again (D-642's choice). Cost cuts that would change the finished car are weighed only after the plan is verified. The rusEFI uaEFI 121 is kept as option OP97, about $800-950 less, for that moment.**
+
+**D-649's other savings stand, because none of them changes the finished car:**
+- the lithium charger skipped unless none is owned (P067);
+- the bench supply dropped (P209);
+- a cheap or borrowed lug crimper and borrowed torque wrenches (P037, P207, P046);
+- the cheap side of the engine's either-ors: freight to a terminal, the yard FB pedal box and master, a plain braided line, the FB driveshaft modified with a yard Miata yoke, shop-welded plates, a universal fan and hoses, the FB radiator flushed, a yard Miata automatic's throttle sensor, the Walbro on a universal hanger, the stand bought and the hoist rented.
+
+His words, 2026-10-17, in chat: ""okay before we go crazy cutting costs lets consider staying with emu black, and left perfect the final plan first before the cost cutting so we accadentally do dmage the final vison.""
+
+**Reading taken.** ""Consider staying"" is read as the plan staying with the EMU Black until he rules otherwise, because that keeps the final vision whole. The uaEFI stays open as an option, so the reading forecloses nothing.
+
+**In the data:**
+- Parts EC01 is the EMU Black.
+- The live rows that named the uaEFI 121 name the EMU Black.
+- Options OP97 is new.
+- Supersedes D-649, whose kept savings are restated above."
+D-651,engine,"The verification limit: the engine is bought only after the plan is proven on paper and in CAD (VL), with every unknown that only the parts can settle held as a risk with a fallback",2026-10-17,standing,,,,D-629,"**Before the engine is bought, the plan must reach a verification limit (VL, his row), and BR09 waits on it, not only on the seller's and the emissions answers as D-629 had it.**
+
+**VL holds when:**
+1. every W1 and W2 design row is done;
+2. an independent four-reader review of the plan (RV1) leaves no open Blocker or Major finding;
+3. every clearance in the CAD proof (CD06) has a margin larger than its inputs' uncertainty - 15 mm on forum or scan figures, 5 mm on measured or Mazda's;
+4. nothing that decides a purchase or a cut still says confirm, except what only the parts in hand can settle, and each of those is a risks row with a fallback and a cost ceiling;
+5. the W1 and W2 budget is a query with no unpriced row in the W1 cart;
+6. the medium-odds fallbacks' ceilings (about $1,500 today) are held as a contingency;
+7. the seller's answers are in writing and the emissions path is known;
+8. his measurements are in: the bay around the 12A, the tunnel, the tank top, the front axle's weight.
+
+His words, 2026-10-17, in chat: ""what more can you do today to make this plan perfect and verfied ready for me to work through help me make a clear verification limmit that must be reached to preve plan success in totallity before i buy the engine first""
+
+**The new risks table** holds the 15 unknowns only the parts in hand can settle, each with where it is settled, the fallback agreed now and its cost. Their ceilings sum to about $4,600; the medium-odds ones to about $1,480.
+
+**What is still settled after the purchase:** the freeze (DS11) still follows the parts in hand, with the model re-checked on them (CD08) before anything else is bought or cut.
+
+**This changes D-629's buy timing** (the package after the system plan and the two calls). The engine is now bought only after the whole plan is proven on paper and in CAD."
