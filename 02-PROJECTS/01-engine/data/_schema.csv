@@ -133,3 +133,15 @@ parts,work,str,no,,the design row that chose it and the build row that fits it
 parts,note,text,no,,
 work,track,enum(build|design),no,,"which list the row lives in (D-625): design = plan, sourcing the donors and parts, and the CAD model with its clearance proof - everything before the car is changed; build = the bench work and everything that changes the car, which waits on the clearance proof CD06"
 sightings,part,enum(engine|transmission|axle),no,,"which donor the car is a lead for (2026-10-16): the engine (code and block from the VIN), the CD009, or the Explorer 8.8; blank on rows from before is engine"
+ls_lines,id,key,yes,,
+ls_lines,system,enum(fuel|coolant|vapor|vacuum|crankcase|oil|ac|clutch|air|exhaust),yes,,
+ls_lines,line,str,yes,,what it is
+ls_lines,from_end,text,no,,where it starts
+ls_lines,to_end,text,no,,where it ends
+ls_lines,route,text,no,,"the planned path, hidden where it can be - proven in the CAD model (CD06, DR02) before anything is bought"
+ls_lines,material,text,no,,
+ls_lines,size,str,no,,AN size or hose bore in mm
+ls_lines,ends,text,no,,the fittings at each end
+ls_lines,finish,text,no,,"how it looks: colour and surface, matched to DR07"
+ls_lines,fate,enum(keep|new|delete|optional),yes,,keep = the donor part refitted; new = made or bought for the swap; delete = the truck had it and the FB does not (DR01)
+ls_lines,note,text,no,,every length and position is confirm until measured (R11)

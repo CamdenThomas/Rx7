@@ -433,3 +433,34 @@ His words (chat, 2026-10-16): ""i would like to only bull the essentials worth f
 The engine actually bought may change the plan (Gen III or Gen IV, AFM, VVT): ls_wires already covers both generations, and the AFM delete and VVT are rows.
 
 When the donors may be bought is his question, block 01.65."
+D-628,engine,"Engine: the junkyard LS trio, restored at home to a remanufacturer's standard and dressed for a clean bay",2026-10-16,standing,,,01.67 01.68,,"Camden, 2026-10-16, in chat, after blocks 01.67 and 01.68 were raised: ""lets keep working the junk yard ls and go through what id do when i got my hands on it fleas fill the ls with all the infomation to the ls, and make a plan about an at home full restore look like new painted and everything perfect dresses LS. as close as i can get to a remanned engine at home, paited, with custom hose,electrical routing for ultimate sleak engine bay look. custom air intake and custom exhaust. as simplified as we can make the ls with optimized routing for everything""
+
+Block 01.67 (the trio) is answered (a): the LS trio. That is an aluminum 5.3 donor, the CD009 on the Sikky adapter, and the Explorer V8 8.8. D-393 stands. The six-cylinder, Lexus V8, Mustang and diesel options stay in options as reference.
+
+Block 01.68 (engine source) is answered with a junkyard engine, fully restored at home to the standard of a remanufactured engine:
+- It is torn down to the bare block, crack-checked and measured against GM's figures.
+- Every wear part is replaced as a remanufacturer would: bearings, rings, timing set, oil pump, lifters, springs, seals, gaskets, single-use bolts.
+- It is cleaned, painted and dressed so it looks new.
+
+Of the options raised, this is closest to (c) and (d) together. Reading his words the way that keeps the most open: he does the work at home, and a machine shop does only what home cannot - the hone or overbore, a valve job, a resurface. Whether any machining is needed is ruled at BD08 from his measurements (BD11-BD14), not now. The crate and the reman long block (options OP08, OP09) remain as the fallback if the block or heads fail inspection.
+
+The plan this rules (work rows):
+- The teardown goes to reman depth: BD09 full teardown, BD10 crack check, BD11-BD14 measurements answered as numbers.
+- Short-block assembly is added: RB10.
+- A design pass makes the bay simple and clean before the freeze:
+  - DR01: what every truck part becomes - kept, deleted, replaced or hidden. EVAP, converters and O2 sensors stay (D-622).
+  - DR02: every hose and line routed hidden in the new ls_lines table.
+  - DR03: the wiring tuck.
+  - DR04: a custom air intake.
+  - DR05: a custom exhaust after the headers.
+  - DR06: the reman-standard parts list.
+  - DR07: each surface's finish.
+- DS11 (the freeze) waits on these.
+- SR05 obtains GM's own engine-mechanical figures for the LM4, so the rebuild measures against GM rather than secondary sources.
+
+The LM4's published figures are now 00-CAR specs (applies not-fitted):
+- build data from the psiconversion LM4 sheet
+- the torques from Summit's GM table
+- firing order, priming and break-in from Chevrolet Performance's LS manual (S-587)
+
+Each is marked secondary or confirm until SR05 or a measurement replaces it (R11). Nothing is bought before the freeze (D-626). Block 01.65 (buying donors early) stays open."

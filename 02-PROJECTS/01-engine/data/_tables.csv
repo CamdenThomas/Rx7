@@ -13,3 +13,4 @@ ls_wires,"each device's wires, what is joined in the bay, and how many conductor
 ls_cavities,"the LS leg at the PMU box, cavity by cavity (electrical D-606, D-607): every conductor of ls_wires that crosses, on the three HDP20 circulars L1-E1 (power, body and slow lines, today's engine on the same cavities), L1-E2 (the drivers) and L1-E3 (shielded timing and low-level analog)"
 blocks,"open questions only Camden can answer, one row each; deleted once a decision closes it (§4, D-405)"
 inbox,"his answers waiting to be applied, one file per answer per device (D-405)"
+ls_lines,"Every fluid, vapor and air line of the swap with its hidden route, material, fittings and finish - the plumbing half of the clean bay (D-628); the wiring half is ls_wires"
