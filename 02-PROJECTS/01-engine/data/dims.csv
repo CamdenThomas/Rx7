@@ -3,7 +3,7 @@ DM01,bp,Bellhousing face to the back of the crank pulley,432,secondary,S-621,"Ab
 DM02,bp,"Widest point across the manifolds, throttle-cable mount and heat shield",584,secondary,S-621,About 23 in
 DM03,bp,"Block length, front face to rear face",497,secondary,S-621,19.6 in
 DM04,bp,Oil pan bottom to cam cover top,613,secondary,S-621,About 24.1 in
-DM05,trans,Clutch disc diameter (1994-2005 1.8),225,secondary,S-622,The 1.6's is 200 mm
+DM05,trans,Clutch disc diameter (1994-2005 1.8),215,factory,S-615,Mazda's 1994 figure (SP-1906); a vendor listing gave 225 mm (S-622) - measured at BD06
 DM06,trans,Bellhousing face to the gear lever's centre,724,estimate,S-621,28.5 in measured on a Miata 6-speed; owners put the 5-speed's lever about the same distance back - confirm at BD15
 DM07,bp,Bore,83,factory,S-611,
 DM08,bp,Stroke,85,factory,S-611,

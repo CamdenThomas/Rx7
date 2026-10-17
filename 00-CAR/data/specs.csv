@@ -1866,3 +1866,31 @@ SP-1879,Transmission,Miata 5-speed oil,About 2.1 US qt (2.0 L) of GL-4 gear oil,
 SP-1880,Engine,BP firing order,1-3-4-2,,,,unverified,engine,,not-fitted,Confirm in the Mazda workshop manual
 SP-1881,Engine,"BP dressed weight (manifolds, alternator, starter, flywheel and clutch)",275-320,lb,S-621,,secondary,engine,,not-fitted,Forum figures; weigh the engine in hand (BD15)
 SP-1882,Transmission,BP stock flywheel mass,19,lb,S-622,,secondary,transmission,,not-fitted,
+SP-1883,Engine,"BP compression pressure: standard, minimum, maximum difference between cylinders (at 300 rpm)","1,255 (182 psi); 883 (128 psi); 196 (28 psi)",kPa,S-615,TD p.1110,primary,engine,,not-fitted,The BD01 home check: below the minimum or past the difference is risk RK01
+SP-1884,Engine,"BP valve timing: IN opens / closes, EX opens / closes",5 BTDC / 48 ABDC; 56 BBDC / 14 ATDC,deg,S-615,TD p.1110,primary,engine,,not-fitted,"Hydraulic lash adjusters, no valve adjustment"
+SP-1885,Engine,"BP oil pressure at 1,000 and 3,000 rpm (hot)",98-196 (15-28 psi); 295-392 (43-56 psi),kPa,S-615,TD p.1113,primary,engine,,not-fitted,The oil-pressure sensor's commissioning range (HO04)
+SP-1886,Engine,BP oil capacity: oil and filter change; oil pan,3.75 (4.0 US qt); 4.0,L,S-615,"TD p.1113, p.30",primary,engine,,not-fitted,Oil pump relief 344-441 kPa (50-63 psi); oil filter bypass 74-117 kPa
+SP-1887,Engine,BP oil drain plug and oil pressure switch tightening torque,30-41; 12-17,N·m,S-615,"p.128, p.127",primary,engine,,not-fitted,
+SP-1888,Engine,BP oil pan bolts tightening torque,7.9-10.7,N·m,S-615,"p.105, p.133",primary,engine,,not-fitted,
+SP-1889,Engine,BP timing belt: replacement interval; deflection at 98 N between pulleys; tensioner lock bolt torque,"60,000 mi; 9.0-11.5 mm; 38-51 N·m",,S-623,"specs p.1; S-615 TD p.1112, p.112",primary,engine,,not-fitted,The BD03 belt look
+SP-1890,Engine,BP crankshaft pulley bolts; water pump pulley bolts tightening torque,13-17; 7.9-10.7,N·m,S-615,p.113,primary,engine,,not-fitted,
+SP-1891,Engine,BP flywheel bolts tightening torque,97-102 (71-75.9 ft-lbf),N·m,S-615,p.351,primary,engine,,not-fitted,Flywheel runout max 0.2 mm (p.354)
+SP-1892,Engine,BP intake manifold and thermostat housing tightening torque,19-25,N·m,S-615,"p.117, p.108",primary,engine,,not-fitted,
+SP-1893,Engine,BP engine mount: bracket to block bolts; mount nut,37-53; 57-78,N·m,S-615,"p.116, p.118, p.120",primary,engine,,not-fitted,The adapter plates are sized for these (DS07)
+SP-1894,Engine,"BP spark plugs: type, gap, torque",NGK BKR5E-11 or BKR6E-11; 1.0 mm; 18 N·m (13 ft-lb),,S-623,specs p.3,secondary,ignition,,not-fitted,
+SP-1895,Engine,BP ignition coil resistance: primary; secondary,"0.78-0.94 ohm; 8,700-12,900 ohm",,S-623,specs p.2,secondary,ignition,,not-fitted,A passive coil: the EMU Black drives it directly (RK04)
+SP-1896,Engine,"BP base ignition timing and idle speed (M/T, factory ECU)",10 BTDC at 850 rpm,,S-623,specs p.3,secondary,ignition,,not-fitted,The base map's starting point (TU01)
+SP-1897,Engine,BP regulated fuel pressure at idle: with manifold vacuum; without,31-38 psi; 38-46 psi,,S-623,specs p.4,secondary,fuel,,not-fitted,The BP's own rail regulator is kept on the swap; the in-tank pump's draw is measured at this pressure
+SP-1898,Engine,BP fuel injector resistance,12-16,ohm,S-623,specs p.4,secondary,fuel,,not-fitted,High impedance: driven straight by the ECU
+SP-1899,Engine,BP coolant temperature sensor resistance at 20 and 80 C; torque,2.21-2.69 kOhm; 0.287-0.349 kOhm; 25-29 N·m,,S-615,"p.235, p.303",primary,cooling,,not-fitted,The EMU Black's calibration for the factory sensor
+SP-1900,Engine,BP intake air temperature sensor resistance at 20 C,2.21-2.69,kOhm,S-615,"p.236, p.301",primary,fuel,,not-fitted,The factory sensor sat in the airflow meter; the new IAT (AI03) has its own curve
+SP-1901,Cooling,"BP thermostat: main valve opening, sub valve opening, full open",86.5-89.5 C; 83.5-86.5 C; 100 C,,S-615,"p.139, p.145",primary,cooling,,not-fitted,"Two-stage wax; lift 8.0 mm main, 1.5 mm sub minimum"
+SP-1902,Cooling,BP-era Miata radiator cap opening pressure,73.6-102 (10.7-14.9 psi),kPa,S-615,"TD p.1113, p.143",primary,cooling,,not-fitted,"The FB's cap is 75-105 kPa (SP-052), so the FB's radiator keeps its cap"
+SP-1903,Electrical,BP alternator (M/T): output; regulated voltage,65 A at 12 V; 14.3-14.9 V,,S-615,"p.310, TD p.1115",primary,electrical,,not-fitted,"65 A, not 70; its regulator's top exceeds the Ionic's 14.6 V ceiling (SP-231) - BP15, RK10"
+SP-1904,Electrical,BP starter (M/T): type and output; no-load current limit,"direct drive, 0.95 kW; 60 A max at 11.5 V",,S-615,"p.310, p.330",primary,electrical,,not-fitted,Starter fastening torques 38-51 N·m (p.329)
+SP-1905,Transmission,Miata 5-speed (M15M-D): engine-to-transmission bolts; PPF bolts,64-89; 104-123,N·m,S-615,p.400,primary,transmission,,not-fitted,The PPF bosses carry the fabricated crossmember (DS07) at the same torque
+SP-1906,Transmission,"Miata 1.8 clutch: disc outer / inner diameter, set load, cover bolts torque","215 / 150 mm; 4,310 N; 18-26 N·m",,S-615,"p.338, TD p.1116, p.352",primary,transmission,,not-fitted,"Mazda's 1994 figure is 215 mm, not the 225 mm a vendor listing gave (S-622); measured at BD06"
+SP-1907,Transmission,Miata clutch: release (slave) cylinder bore; pedal height and free play (Miata pedal),19.05 mm (0.750 in); 175-185 mm; 0.6-3.1 mm,,S-615,"p.338, p.340",primary,transmission,,not-fitted,The FB master's bore is sized against the 19.05 mm slave at BP10
+SP-1908,Transmission,Miata 5-speed oil: capacity and grade,"2.0 L (2.1 US qt); SAE 75W-90, 80W-90 above 10 C",,S-623,specs p.1,secondary,transmission,,not-fitted,
+SP-1909,Transmission,"Miata 1.8 propeller shaft (BP DOHC, M/T): length, tube diameter, runout limit, flange torque","1,001 mm; 60.5 mm; 0.4 mm; 50-58 N·m",,S-615,"p.583, p.585",primary,driveline,,not-fitted,The tube and runout the FB-length shaft is built to (BP09)
+SP-1910,Engine,BP intake manifold vacuum at idle,more than 450 mmHg (17.7 inHg),,S-615,p.176,primary,engine,,not-fitted,A healthy-engine check at the first start (IN06)
