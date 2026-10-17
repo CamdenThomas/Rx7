@@ -204,7 +204,7 @@ His answer to block 02.13: option (a), no words added. Option (a) in full: ""ECU
 Reasoning: it matches the recommendation; it keeps the engine hunt open to both crank generations in D-393's list, gives our own CAN frames at 0x500+ without a translator, and keeps one software family with the PMU.
 
 Consequences: K1 (ECU research) and K5 (pinning the leg at the dash) are no longer waiting on 02.13 and go to the plan playbook. The price, output count, built-in wideband and the alternator set-point output for LW29 (D-445) stay `confirm` until checked, before anything is bought (BR06). DS10 carries the ECU line at OP60's range; DS11 no longer waits on this."
-D-447,,Fuel pump: Aeromotive Phantom 340 in-tank,2026-09-27,standing,,,02.14,,"**The LS swap's fuel pump is the Aeromotive Phantom 340, in the tank.**
+D-447,,Fuel pump: Aeromotive Phantom 340 in-tank,2026-09-27,superseded,,D-641,02.14,,"**The LS swap's fuel pump is the Aeromotive Phantom 340, in the tank.**
 
 His answer to block 02.14: option (a), no words added. Option (a) in full: ""Aeromotive Phantom 340, the candidate already named in HO12: a universal in-tank pump with its own baffle, fitted through a hole cut in the top of the existing tank. About 12.2 A, leaving O5 about half its 25 A spare. Carries a stock 5.3 easily and leaves room for a lot more power later. The tank is cut, and that cannot be undone.""
 
@@ -618,7 +618,7 @@ So the record stays the project's one set of tables, and each row names its zone
 This is small (section 3): only rows change, and it can be undone by editing rows. If he meant one separate record per zone, that is a tool change for 02-APP and a new block.
 
 The old top-level cad/ folder keeps the LS reference models (D-625)."
-D-633,,"BP alternator: the FD RX-7's 100 A now on the BP's bracket, 160 A at the luxury/turbo stage",2026-10-17,standing,,,01.71,,"**The BP runs the FD RX-7's 100 A alternator on the BP's own bracket for the engine-stage car; the 160 A unit on a custom bracket comes with the luxury and turbo stage.** Block 01.71 answered (a).
+D-633,,"BP alternator: the FD RX-7's 100 A now on the BP's bracket, 160 A at the luxury/turbo stage",2026-10-17,superseded,,D-641,01.71,,"**The BP runs the FD RX-7's 100 A alternator on the BP's own bracket for the engine-stage car; the 160 A unit on a custom bracket comes with the luxury and turbo stage.** Block 01.71 answered (a).
 
 His answer, option (a) in full: ""The FD RX-7 100 A alternator now, on the BP's own bracket, about $100-250 used or rebuilt. Enough for the engine-stage car. A 160 A unit on a custom bracket comes with the luxury and turbo stage, when the luxury loads arrive. Forecloses nothing; the 100 A unit is sold or kept as a spare then."" He typed no further words.
 
@@ -704,3 +704,14 @@ The belt is the one part whose age is unknown. The engine may be 30 years old, a
 - The shifter lifts out from inside.
 - The slave unbolts with its line still on.
 - The starter can be reached."
+D-641,engine,"Lean path (a): the Walbro 255, the BP's own alternator until luxury, the FB's radiator, steel fuel pipes and driveshaft reused; about $3,600-5,500",2026-10-17,standing,D-447 D-633,,01.72,,"**Block 01.72 is answered (a), the lean path. The swap's parts drop to about $3,600-5,500. The Phantom 340 gives way to a Walbro 255 in a universal in-tank hanger (supersedes D-447). The BP keeps its own alternator until the luxury loads arrive (supersedes D-633's FD 100 A now; the 160 A of D-457 still comes with luxury). The FB's radiator, steel fuel pipes and driveshaft are reused. The external MAP sensor and a new radiator move to the turbo stage.**
+
+His words, 2026-10-17, in chat: ""i like lean path A""
+
+The option in full: ""(a) The lean path as listed: about $3,600-5,500. The Phantom 340 (D-447) and the FD alternator (D-633) give way to a Walbro 255 and the BP's own alternator; the FB's radiator, driveshaft and fuel lines are reused; the external MAP sensor and a new radiator move to the turbo stage. Forecloses nothing: every pushed item has its stage.""
+
+**In the data:**
+- Parts FP01, FP03, FP05, AC02, CO01, CO02, AI02, AI04, DSF01, CL02, CL03 and TL01 are re-specified and re-priced.
+- DS11, K7 and BP04 now gate on 01.72 in place of 01.71, whose ruling this supersedes.
+- Handover HO11 and HO12 follow the alternator and the pump.
+- The fuel pump's soft fuse is re-set from the Walbro's measured draw (HO12)."
