@@ -28,3 +28,52 @@ Power figures are factory ratings. Weights and the engines' fit in the FB bay ar
 (b) The Toyota six trio, in one Denver trip: the 2JZ-GE from the 2001 IS300 (row 22) and the Explorer V8 8.8 (row 2), with a CD009 bought (or the Aurora G35's) and a Collins 2JZ adapter. For: the six with the biggest aftermarket and RX-7 builds behind it, about 215 hp now and turbo parts later, and it keeps the CD009. Against: the only one in range, from an automatic car; the iron block sits heavier and further forward; the firewall and hood are likely cut; less power than the LS until boosted.
 (c) The BMW six trio, possibly all from the Denver yard: the M52 2.8 from the 1998 Z3 (row 24) or the M54 3.0 from the 2002 330Ci convertible (row 28), plus the Explorer V8 8.8 (row 2). If either car is a manual, its 5-speed, clutch, flywheel and shifter come with it; if neither is, a used BMW manual box is bought. For: the lightest and smoothest, the cheapest, and the bellhousing is part of the BMW box, so no adapter. Against: 190-225 hp, the least power; no FB build was found; the CD009 and Sikky plan is dropped; the BMW's aging cooling parts are bought new.
 (d) The Mustang GT trio, all from one car: the 2000 GT in Colorado Springs (row 32) or the 2006 GT in Aurora (row 300). If it is a manual, the 4.6 V8, the 5-speed and the rear-disc 8.8 all come from it. For: the only true one-car trio and the cheapest total. Against: the iron 4.6 is wide and tall, the worst fit in the FB bay; not a six; less power than the LS; the axle's width is to confirm.","(a), unless a six matters more than power - then (c) if the Z3 or the 330Ci turns out to be a manual (the whole trio from the Denver yard), otherwise (b)","Buying an engine donor (block 01.65, J5): a donor bought first may be the wrong engine. Everything else goes on the LS plan (D-393) meanwhile"
+01.68,Engine: new LS3 crate or a junkyard LS made like new,2026-10-16,"If the swap is the LS, should the engine be a new GM LS3 crate (a), a remanufactured 5.3 long block (b), a junkyard 5.3 machine-shop rebuilt (c) or a junkyard 5.3 refreshed at home (d)?","Camden, 2026-10-16: ""okay and with all the work to make the engine look and run like new cost less then buying a crate ls enging brand new? please look at junking ls full cost for geting it here, cleaning it, painting it, deressing it with accessorys that have the same question (cost to resotore vs buyy new) the new engine would feel so much more safe throwing money at""
+
+This applies only if block 01.67 picks the LS. It is the only path that can be bought brand new.
+
+The same in every option, so left out of the totals below:
+- the ECU (EMU PRO)
+- the accessory drive with its new 160 A alternator and A/C compressor (ICT, D-624)
+- the headers
+- the Sikky flywheel and clutch
+- the starter
+- the gearbox and the axle
+
+Estimated engine cost, ready to drop in (2026-10-16 prices; anything not in options is an estimate to confirm):
+- Junkyard LM4, refreshed at home, about $2,500-4,000.
+  - Getting it home, about $450: $276 at the yard plus a $57 core (yards), a trailer and fuel for Colorado Springs, hoist access.
+  - New parts, about $1,300-2,200: gaskets, head bolts, timing set, oil pump, valve springs, lifters, water pump, sensors, plugs, injectors cleaned and flow-tested.
+  - Oil pan and balancer, about $500-800: a new FB-clearing pan (DS02) and a new balancer.
+  - Cleaning and paint, about $150-600.
+  - The bottom end is not opened, so its bearings and rings stay unknown.
+- Junkyard LM4, fully rebuilt by a machine shop, about $4,500-7,000: the refresh plus about $1,500-2,500 of machine work (hot tank, inspection, hone, bearings, rings, valve job). That is as good as new inside.
+- Remanufactured aluminum 5.3 long block with a warranty (OP09), about $4,500-7,500: about $2,700-5,800 plus a core, with the donor's intake, injectors and coils cleaned and refitted, and the same new pan, balancer, water pump and sensors. AFM is deleted.
+- New GM LS3 crate (OP08), about $10,300-12,700 plus freight: everything above comes with it, new, including an F-body pan, and it makes 430 hp against the LM4's 290.
+
+Junkyard parts versus new:
+
+Reused after cleaning:
+- intake
+- throttle body
+- fuel rail
+- coils
+- valve covers
+
+Bought new, whatever the engine:
+- water pump
+- balancer
+- sensors
+- oil pan
+- alternator, compressor and drive (already new)
+- headers
+- flywheel
+
+The truck harness and truck pan do not suit the FB at all. A refresh costs about four solo weekends: the pull, teardown, cleaning and paint, reassembly. A crate costs none.
+
+A crate also removes the race against the crusher. Block 01.65 would then be about the axle only, and the engine is ordered after the freeze (D-626).
+
+The LS3's 58x trigger, the drive's balancer spacing and the header flanges are checked before the order (OP08).","(a) A new GM LS3 430 hp crate (OP08), about $10,300-12,700 plus freight. Brand new, complete down to the F-body pan, a GM warranty, 140 hp more, no yard trips and no rebuild weekends. Costs about $6,000-9,000 more than a yard engine, and puts the Explorer 8.8 near its power limit.
+(b) A remanufactured aluminum 5.3 long block with a warranty (OP09), with the yard donor's intake, injectors and coils refitted, about $4,500-7,500. New-equivalent inside with a warranty, about half the crate. Still one yard pull for the top end and the core, AFM to delete, and 290 hp.
+(c) The yard LM4 fully rebuilt by a machine shop, about $4,500-7,000. As good as new inside and the cheapest way to know every bearing. About four of his weekends plus shop time, no warranty, and it waits on the LM4 surviving at the yard.
+(d) The yard LM4 refreshed at home, without opening the bottom end, about $2,500-4,000. The cheapest. The bearings and rings stay unknown, there is no warranty, and it costs the same weekends.","(a), unless the roughly $6,000-9,000 difference is needed elsewhere in the car - then (b), which keeps a warranty for about half the price","The engine donor or order (block 01.65, J5) and the engine-side design that follows the engine chosen (DS02, DS03, CD01-CD03). Answered after block 01.67, and only if that picks the LS"
