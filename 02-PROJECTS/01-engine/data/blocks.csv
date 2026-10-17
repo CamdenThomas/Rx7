@@ -1,1 +1,13 @@
 id,title,opened,ask,why,options,recommend,stops
+01.73,Engine computer: EMU Black or the EMU PRO already ruled,2026-10-17,"Should the BP run an ECUMaster EMU Black at about $1,299 with its own MAP sensor and wideband controller (a), or the EMU PRO 8 ruled in D-446 at about $1,849-2,064 (b)?","Camden, 2026-10-17: ""now for electrocal do the same the plan must still acount for everything on the base level ... consider lean paths that keep a very clean end finish along with the plan but with the more waves as budget allows""
+
+D-446 chose the EMU PRO when the engine was an LS. Its price, output count, built-in wideband and alternator output were left confirm. The engine is now a 4-cylinder BP, NA now and turbo later.
+
+Read 2026-10-17 at ECUMaster USA's list prices:
+- EMU Black $1,299: a built-in 4-bar MAP sensor (to about 43 psi of boost) and a built-in wideband controller for a Bosch LSU 4.2 or 4.9 sensor; drives up to 6 passive or 12 smart coils.
+- EMU PRO 8 $2,064 (Katech $1,849): 31 outputs and 24 inputs, two internal LSU 4.9 controllers; a built-in MAP sensor not confirmed.
+
+Both are ECUMaster, so both talk to the PMU-24 over CAN as the plan wants (D-325). The BP needs 4 injector and 2 coil outputs, plus idle, purge, fan, pump, boost and A/C, which the EMU Black covers with room for the turbo.
+
+The answer decides the dash side of the BP leg (K5: ECU pin to cavity) and whether the external MAP-400 (01-engine AI04) and the AEM wideband controller in the Display Unit (electrical WBO) are needed at all.","(a) EMU Black, about $1,299 plus a Bosch LSU 4.9 sensor (about $80-110). Its own MAP sensor and wideband controller mean no external MAP-400 and no separate AEM controller: the Display Unit shows lambda from the ECU on CAN. About $750-1,000 less than (b) all told. Forecloses only an engine needing more outputs than 6 injectors and 6 coils, which no planned stage has.
+(b) EMU PRO 8 as D-446 ruled, about $1,849-2,064, with an external MAP sensor if it has none inside. More inputs and outputs than the BP will ever use.","(a), unless you expect an engine with more than six cylinders one day - then (b)","K5 (the dash side of the BP leg), BP05's ECU pins, and whether parts AI04 and electrical's WBO are bought"
