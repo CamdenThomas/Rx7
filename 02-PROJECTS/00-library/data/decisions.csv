@@ -62,3 +62,23 @@ His words, 2026-10-17, in chat: ""now can you please. dial a plan for us today t
 - Forum dimensions and weights, to be replaced by measurements (BD15, R11).
 
 Parsing still needs his go: 00-library L8. Merging stays the overhaul's (D-576), except what 01-engine BP03 takes into the engine's design from the staged facts."
+D-634,library,"The BP's manuals are read only where the swap needs them: the 1994 manual in four ranges, the 1990 scan skipped, the mellens sections whole",2026-10-17,standing,,,,D-632,"**The BP's manuals are read only where the swap needs them.**
+
+- The 1994 Miata manual (DOC-197, S-615) is three books in one PDF: the workshop manual, the body repair manual and the parts catalogue.
+- Its pages are read in four ranges, found from its page labels and the catalogue's group numbers:
+  - 1-401: general information, engine, lubrication, cooling, fuel and emission, engine electrical, clutch, manual transmission.
+  - 582-585: the propeller shaft.
+  - 1109-1140: technical data and special tools.
+  - 1351-1456: the parts catalogue's groups 10-25, engine to propeller shaft.
+- Skipped: the automatic, axles, steering, brakes, suspension, body, body electrical, HVAC, body repair and the chassis catalogue. They are the Miata's, not the swap's.
+- The 1990 scan (DOC-164) is skipped whole: its engine is the 1.6, and the 1994 manual covers its gearbox with a text layer.
+- The mellens.net 1994 and 1997 sections and the extras are read whole.
+
+His words, 2026-10-17, in chat: ""i could not find the manuals you refrenced on the website youreferenced but i found many 1994 manuals and a million more i dont wna to download them all please reverence https://www.mellens.net/mazda/ you should dinf every miata manual under the sun please compare with the listing to find the exact versin we have and strat pulling all the needed pdfs ot of that webside you should be able to download and if not read them and tell me acavtly which to download (the ones i downloaded already ae still in the downloads folder""
+
+**Matching the listing.**
+- BP-711698 is a 1994-97 NA BP, non-VVT. Which year it is (1994-95, cam sensor only; or 1996-97, OBD-II with a crank sensor) is BP01 and BD01.
+- So both are kept: the 1994 manual and sections for the 1994-95 engine; the 1997 sections, the 1995-96 engine, the 1996 timing belt and the 1996 wiring for the later one; the 1990-97 supplement for both.
+- The separate parts catalogues (S-617 to S-619) are not needed, since the 1994 PDF carries its own.
+
+build_queue.py holds the rule (MIATA_KEEP). A range is widened there if a design finds a gap."

@@ -77,15 +77,29 @@ SKIP_RESULT = "skipped: engine material that leaves with the 12A (D-620)"
 # CD009 and 350Z gearbox, the T56, the Holley LS pan, the Ford axles. Skipped like the 12A's.
 LS_DOCS = ("02-PROJECTS/03-cad/model/library/swap/",)
 LS_RESULT = "skipped: the LS swap's documents, reference only since the BP (D-632)"
-SKIPPED = (SKIP_RESULT, LS_RESULT)
+# The BP swap reads only the pages its engine and gearbox need (D-634). A whole Miata manual is
+# read in these page ranges and nothing else (the automatic, axles, steering, brakes, suspension,
+# body, body electrical, HVAC and body repair are the Miata's, not the swap's); a path mapped to
+# () is skipped whole (the 1990 scan: the 1.6, and the 1994 manual covers its gearbox).
+MIATA_KEEP = {
+    "00-CAR/library/docs/miata-wm-1994/": ((1, 401), (582, 585), (1109, 1140), (1351, 1456)),
+    "00-CAR/library/docs/miata-wm-1990/": (),
+}
+MIATA_RESULT = "skipped: not a page the BP swap needs (D-634)"
+SKIPPED = (SKIP_RESULT, LS_RESULT, MIATA_RESULT)
 
 
 def ls_doc(d):
     return (d.get("path") or "").startswith(LS_DOCS)
 
 
+def miata_keep(d):
+    path = d.get("path") or ""
+    return next((v for k, v in MIATA_KEEP.items() if path.startswith(k)), None)
+
+
 def skip_result(d):
-    return LS_RESULT if ls_doc(d) else SKIP_RESULT
+    return LS_RESULT if ls_doc(d) else MIATA_RESULT if miata_keep(d) is not None else SKIP_RESULT
 
 
 def engine_doc(d):
@@ -99,6 +113,9 @@ def engine_pages(d, run):
     the LS swap's documents are skipped (LS_DOCS)."""
     if ls_doc(d):
         return True
+    keep = miata_keep(d)
+    if keep is not None:
+        return not any(a <= int(p["n"]) <= b for p in run for a, b in keep)
     if (d.get("owner") or "") == "01-engine":
         return False
     if engine_doc(d):

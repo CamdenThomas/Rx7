@@ -1,3 +1,4 @@
 id,date,workflow,ids,summary
 L-0001,2026-10-14,session,L0 L1,"Phases 0 and 1 of the library plan (D-574): tables, checks, lock, queue tools and playbooks; 163 docs, 4,116 pages, 1,229 queue items"
 L-0002,2026-10-17,plan,D-632,"Miata manuals read first, LS documents skipped; claim and run_session take --owner; the 1990 Miata workshop manual inventoried (DOC-164, 1,273 pages, 637 items); sources S-614-S-622"
+L-0003,2026-10-17,plan,D-634,"The BP's manuals in: the 1994 workshop manual (his download), 16 1994 and 11 1997 mellens.net sections, 5 extras; scoped to the swap's pages (D-634); 318 engine items open"
