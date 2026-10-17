@@ -663,3 +663,13 @@ D-638,engine,"The FB side of the swap ruled part by part: fb_items, 337 parts ou
   - J4 and CP03: the shift-lever boot and floor seal.
 
 The rules are by part name (the 12A's and the automatic's parts out; the named exceptions checked). A wrong ruling is fixed in the row. The FB's electrical parts in the bay stay 02-electrical's."
+D-639,engine,"The 12A stays in until the BP is ready, the design frozen and the parts in hand; the bay is measured around it (M01) and re-checked the day it comes out (M02)",2026-10-17,standing,,,,D-629,"**The 12A stays in the car as long as possible. It comes out (CP01) only when three things are true: the BP is serviced and assembled on its stand (DB01), the design is frozen (DS11) and the car-prep parts are in hand (BR06). The bay is measured around the 12A (M01, now gated on nothing), and what it hides is re-measured the day it comes out (M02, which CD08 now waits on).**
+
+His words, 2026-10-17, in chat: ""id also prefer to leave the 12a in as long as possible for changes in the plan""
+
+**Why it works:**
+- The 12A is small, so the crossmember, mount pads, rails, steering box, firewall and tunnel can all be measured from above and below with it in place.
+- Only the floor between the rails and the tunnel mouth stay hidden, and M02 takes those the day it comes out, before any cutting (CP03 and CP04 wait on CD08).
+- The car runs and can be driven until the swap is ready to go in, and every design choice stays open that long.
+
+**Changes:** M01's gate was CP01 and is now empty; CP01's gate was DS13 and is now DS13 DS11 DB01 BR06; CD08 adds M02; M02 is new."
