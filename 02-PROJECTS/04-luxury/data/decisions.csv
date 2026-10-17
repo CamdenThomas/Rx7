@@ -561,3 +561,17 @@ His words (chat, 2026-10-15), asked why the head unit needs a reverse signal: ""
 **Reading taken (CLAUDE.md §3).** ""No cameras"" is read as no camera of any kind on the head unit (rear, front, dash), now or planned; a camera is a new feature if he wants one later.
 
 **Consequences.** Provisions PV134 (the reverse input) and PV135 (the speed-pulse input) leave FT29; electrical's N114 and N115, their cavities L3-S2 5 and 6, and the steps that quote them (E17, E20) follow at electrical Y66's freeze, where the dash's wiring is redrawn anyway (electrical D-596). The dash overhaul's N8 (the reverse input fed from the PMU box) is withdrawn with it (electrical D-604)."
+D-636,steering,"Power steering is luxury's: it plans and fits it; the engine keeps the BP's power-steering pump, bracket and belt path as the provision",2026-10-17,standing,,,,D-630,"**Power steering is a luxury feature: 04-luxury plans and fits it. The engine keeps the BP's power-steering pump, its bracket and its belt path, so luxury can choose hydraulic assist without undoing engine work. This changes 01-engine D-630's front drive, which had deleted the pump and its belt.**
+
+His words, 2026-10-17, in chat: ""quicly add to luxury that power steering is in the luxury project i want it""
+
+**What luxury chooses (C12):**
+- Hydraulic: the BP's own pump (in the package, S-612) driving a power steering box in place of the FB's manual recirculating-ball box.
+- Electric: a column-assist unit, which needs no engine pump.
+
+Either way, the FB's box carries the pre-1983 non-hardened sector shaft (00-CAR planned P-004), so the steering box question is answered there.
+
+**In the engine project:**
+- DR01 and BP04 keep the pump, its bracket and its belt on the BP.
+- The pump runs unloaded until luxury plumbs it, or it is removed with the bracket kept if luxury picks electric.
+- The CAD reserves the pump's hoses' path (CD05)."
