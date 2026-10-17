@@ -2520,3 +2520,18 @@ His words, 2026-10-17, in chat: ""no temp spedometer set up when the first wave 
 - E31 and the engine's TU03 wait on E29.
 - Y85 now also recasts the migration table as W2's connection order and rewrites the briefs and steps of E2, E12, E27, E28, E29 and E30.
 - Both waves tables are rewritten."
+D-653,electrical,"The engine circulars re-planned for the BP: 46 cavities used, each naming its device and EMU Black pin; the rest sealed (Y84)",2026-10-17,standing,,,,01-engine:D-650 D-606 D-607,"**The engine circulars L1-E1, L1-E2 and L1-E3 are re-planned from the LS's assignment to the BP's.** The housings, inserts, contact sizes and keying are unchanged (D-606, D-607): only what each cavity carries changes. 46 cavities are in use - LIVE today's functions, RESERVED the swap's, each with its wave - and the rest are sealed spares.
+
+**What each cavity carries.** Each names its 01-engine bp_devices device and its EMU Black pin (01-engine ecu_pins), so the box side's conductors to the ECU's pigtails are traceable pin to cavity.
+
+**What stays as it was:**
+- L1-E1's live cavities keep their functions, now on the BP's parts: the coil feed, the start relay coil, the alternator's excitation and lamp sense, the oil pressure signal, the brake fluid switch, reverse, the coolant level switch.
+- The O13, O14 and A/C reserves stay.
+
+**Where things go:**
+- **L1-E2:** the four injectors, the coil pack's two triggers, purge, both O2 heaters, the idle valve and the boost spare.
+- **L1-E3:** the trigger (the CAS, or the crank sensor on a 1996-97), road speed, the knock spare, both O2 signals, the sensor supplies and grounds.
+- **MAP:** no cavity; it is a hose to the ECU's own sensor (D-650).
+- **Downstream O2 heater (1996-97):** a spare injector output (grey 24 pin 14).
+
+This is design work in rows (section 3, small); electrical Y84. Nothing is bought or cut. The pin letters on the parts are read at 01-engine K4, and the tails' lengths to the ECU are K5's with the PMU box's CAD (Y69)."

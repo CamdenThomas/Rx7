@@ -51,7 +51,7 @@ G10,grey24,10,H-Bridge #1 winding B,,,W3,Spare
 G11,grey24,11,H-Bridge #2 winding B,,,W3,Spare
 G12,grey24,12,AUX 5,"Boost control solenoid, turbo stage",DV22,W3,Built-in flyback diode
 G13,grey24,13,AUX 2 / Injector #8,"A/C clutch relay coil, luxury stage",DV21,W3,D-489: the ECU owns the A/C clutch
-G14,grey24,14,Injector #5,,,W3,Spare
+G14,grey24,14,Injector #5,"Downstream O2 heater driver, a 1996-97 engine",DV12,W2,"A spare injector output drives the heater (5 A low side, Y84)"
 G15,grey24,15,Injector #2,Injector cylinder 2,DV01,W1,
 G16,grey24,16,Ignition coil #2,"Coil pack, cylinders 2 and 3",DV02,W1,
 G17,grey24,17,Power Ground,Power ground,,W1,
