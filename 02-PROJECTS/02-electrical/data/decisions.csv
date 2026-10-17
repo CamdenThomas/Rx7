@@ -2486,3 +2486,22 @@ No new words from Camden; his words are in D-617. This decision is its applicati
 - **New design rows.** Y81: the crank interlock and the neutral and reverse inputs for the CD009 (the clutch pedal switch in the start path, its neutral and reverse switches) in place of the automatic's inhibitor on A4 and A5. It covers the ladders, the logic, CK14, and the PMU box conductors that served the freed cavities. Y82: road speed for the ICU from the CD009 or the ECU, in place of the 3N71B speedometer-drive sensor (P113, D-272, CK28, Q-115). Y83: every device, load, pin limit and migration row that serves a 12A part (the coils and igniters, the senders, the inhibitor and kick-down, the Carter pump, the 12A's starter and alternator) re-pointed to its LS part in engine `ls_devices`.
 
 **Not changed.** D-607's three plugs and the LS map; the PMU box, CU, DU and CUR; everything in the cabin, nose and rear that is the car's. Engine's `handover` table (written for an electrical build that came before the swap) is read at Y83 for what still holds."
+D-643,electrical,"The electrical build goes in four waves: W1 run-drive-legal with every box and leg built to the full plan, W2 the Display Unit, W3 the Control Unit, W4 the luxury wiring",2026-10-17,standing,,,02.18,01-engine:D-642,"**The electrical build goes in four waves (block 02.18, option (a)). The waves are the new waves table; every work and parts row names its wave.**
+
+- **W1, run, drive, legal:** every box and leg built once to the full plan, the backbone, the EMU Black (01-engine D-642) and the circuits that run the car. The factory cluster stays on its harness, with an interim 52 mm GPS speedometer.
+- **W2, the Display Unit:** the meters cutover.
+- **W3, the Control Unit:** with its panel and the CUR.
+- **W4, the luxury wiring:** doors, HVAC, releases, radar, audio.
+
+His words, 2026-10-17, in chat: ""a again for the electrical and the emu black is looks good. please reform both project to fully aknowlegde the wale like structure""
+
+The option in full: ""(a) Four waves, as listed. Wave 1 runs the car on the factory cluster with a small interim GPS speedometer (a 52 mm gauge, about $50), mounted where the Display Unit's bezel will hide its hole. The Display Unit, the Control Unit and the luxury wiring follow as money allows, each plugging into what wave 1 left ready. Cheapest start, and the firmware bench is off the critical path.""
+
+**The base rule, binding on every W1 row.** Every housing fitted, every unused cavity sealed, every later conductor run now and capped and labelled, the later modules' dash-post plugs blanked, the PMU's later outputs configured off. No later wave re-opens a loom or a box.
+
+**Consequences:**
+- W1 runs the turn, hazard and wiper stalks on the PMU's own ladders (A1, A2, A8), so it needs neither the CU nor the CUR.
+- E30 (factory harness out) leaves the cluster's branch until the meters cutover (D-268).
+- P253, the interim speedometer, is new.
+- The wave of each row was set by rule (02-PROJECTS/00-library is not involved): the luxury installs and adapter leads W4; the CU, its carrier, panel, CUR and their CAD and firmware W3; the DU, its bench kit, boards, firmware, log link and road speed W2; everything else W1. A wrong one is fixed in its row.
+- The parts table's priced, not-yet-bought rows come to about $2,660 (W1), $660 (W2), $210 (W3) and $220 (W4), before about 90 unpriced rows (contacts, plugs, wire), which Y41's parts round prices."

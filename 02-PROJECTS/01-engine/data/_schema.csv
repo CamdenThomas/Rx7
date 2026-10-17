@@ -181,3 +181,11 @@ bp_devices,conductors,int,no,,"conductors that cross the firewall to the dash fo
 bp_devices,serves,enum(ECU|PMU|DCU|ICU|bay),no,,what at the dash reads or drives it; bay = never leaves the engine bay
 bp_devices,ecu_1994,str,no,,"the 1994 Miata ECU pin that served it (S-620), for reading the factory wiring"
 bp_devices,note,text,no
+waves,id,key,yes,,W + number
+waves,name,str,yes,,
+waves,what,text,no,,what the wave builds
+waves,money,text,no,,the estimate when it was ruled
+waves,after,text,no,,what has to be true before it starts
+work,wave,str,no,waves,"which wave it belongs to (D-643, D-644)"
+parts,wave,str,no,waves,"which wave it belongs to (D-643, D-644)"
+bp_items,wave,str,no,waves,"which wave it belongs to (D-643, D-644)"

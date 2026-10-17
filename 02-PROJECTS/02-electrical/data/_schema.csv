@@ -362,3 +362,10 @@ housings,box,str,no,boxes.id,"the box the housing's box side sits in, where it i
 cavities,contact,enum(12|16|20|8),no,,"the contact size in a mixed-contact (HD) housing, from TE's insert drawing C-0425-014-2400 (D-606, D-612); blank elsewhere; 8 added (D-614): a size-8 contact, 60 A"
 fuses,box,str,no,boxes.id,the box it sits in (D-612)
 relays,box,str,no,boxes.id,the box it sits in (D-612)
+waves,id,key,yes,,W + number
+waves,name,str,yes,,
+waves,what,text,no,,what the wave builds
+waves,money,text,no,,the estimate when it was ruled
+waves,after,text,no,,what has to be true before it starts
+work,wave,str,no,waves,"which wave it belongs to (D-643, D-644)"
+parts,wave,str,no,waves,"which wave it belongs to (D-643, D-644)"

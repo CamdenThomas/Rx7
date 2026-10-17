@@ -737,3 +737,14 @@ The option in full (block 01.73): ""(a) EMU Black, about $1,299 plus a Bosch LSU
 - AI04 is deleted.
 - Every live row that named the EMU PRO now names the EMU Black.
 - K1's note records the change."
+D-644,engine,"The engine project is worked in waves too: W1 run-drive-register (this list), W2 the turbo stage, W3 the luxury stage",2026-10-17,standing,,,,02-electrical:D-643,"**The engine project is worked in the same waves as the electrical one. The waves are the new waves table; every work, parts and bp_items row names its wave.**
+
+- **W1, run, drive, register:** this project's whole work list, with electrical W1 at the same time.
+- **W2, the turbo stage:** 00-CAR planned P-010.
+- **W3, the luxury stage:** the show finish (04-luxury C11), power steering (C12) and the A/C's hoses and charge.
+
+His words, 2026-10-17, in chat: ""please reform both project to fully aknowlegde the wale like structure""
+
+**Tagging:** every work and parts row today is W1, since the turbo and luxury items were already moved out (D-640, D-641). In bp_items the power-steering pump (BI07) and the A/C compressor (BI08) are W3 provisions. The turbo spares are bp_devices rows with year turbo.
+
+**Correction to D-643:** it named the interim speedometer part P253; the part is P258."
