@@ -25,3 +25,4 @@ L-0023,2026-10-16,plan,01.67,"Donor trios: BMW gearboxes decoded (528i, 328i aut
 L-0024,2026-10-16,plan,01.68,"New crate vs junkyard LS costed: options OP08 (LS3 crate), OP09 (reman aluminum 5.3); the choice asked"
 L-0025,2026-10-16,source,01.68,"Reman 5.3 listings sourced (GM 19209698, 19260743, ATK, Jasper) and GM's warranty read: parts-only at home, 12/12k non-catalogued, engine-control changes excluded; OP08, OP09 and block 01.68 corrected"
 L-0026,2026-10-16,plan,D-628,"Junkyard LS restore plan (D-628): LM4 specs SP-1827-SP-1870 with sources S-609, S-610; ls_lines LL01-LL20; work SR05, DR01-DR07, BD09-BD14, RB10, DB01; freeze re-gated"
+L-0027,2026-10-16,plan,01.69,"Whole-swap cost set against the market; the path asked (as planned, running F-body donor, a different car, or wait)"
