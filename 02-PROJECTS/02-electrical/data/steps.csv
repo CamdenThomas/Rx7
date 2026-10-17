@@ -522,8 +522,8 @@ N84 · Receptacle DP-DCU 23 → Receptacle L4-P 4 · 14 AWG RED","L3-S3 1 / 2 / 
 E17.17,E17,17,Pin the L1 receptacles,"Receptacle contacts are PINS: size 16 for 16-18 AWG (P023), size 16 for 14 AWG (P025), size 12 for the DTP power receptacles (P027). Crimp in the Deutsch 4-indent crimper (P038), push in from the wire side until it clicks, tug.
 L1-P (DTP04-4P, wedge WP-4P):
 1 · Ignition feed — coils and igniters · RED 12 AWG ← PMU pin 2, O12
-2 · LS swap reserve — ECU + injectors · RED 12 AWG · RESERVED ← PMU pin 1, O13
-3 · LS swap reserve — cooling fan · RED 12 AWG · RESERVED ← PMU pin 14, O14
+2 · engine swap reserve — ECU + injectors · RED 12 AWG · RESERVED ← PMU pin 1, O13
+3 · engine swap reserve — cooling fan · RED 12 AWG · RESERVED ← PMU pin 14, O14
 4 · sealing plug, size 12
 L1-S1 (DT04-12P, wedge W12P):
 1 · Start relay K9 coil · RED 16 AWG ← PMU pin 21, O21
@@ -1352,8 +1352,8 @@ RUN RT01 + RT26:
 K9's two 10 AWG RED contact wires (F17 → K9 30, K9 87 → starter S) are cables C08 / C09: their lengths are hand estimates - cut to the measured run along RT05.","One labelled wire per line of the list, laid along its run on the board.",
 E23.03,E23,3,Pin the L1-P plug,"L1-P is a DTP06-4S, the 4-way plug (kit P131): size-12 socket contacts (P026); wedgelock WP-4S.
 1 · Ignition feed — coils and igniters · RED 12 AWG → Splice at the coil bracket → BW of coil T, coil L, igniter T, igniter L
-2 · sealing plug, size 12, in this plug - RESERVED: LS swap reserve — ECU + injectors is pinned on the receptacle only
-3 · sealing plug, size 12, in this plug - RESERVED: LS swap reserve — cooling fan is pinned on the receptacle only
+2 · sealing plug, size 12, in this plug - RESERVED: engine swap reserve — ECU + injectors is pinned on the receptacle only
+3 · sealing plug, size 12, in this plug - RESERVED: engine swap reserve — cooling fan is pinned on the receptacle only
 4 · sealing plug, size 12
 Each wire: strip, crimp the socket in the 4-indent crimper, push in from the wire side until it clicks, tug. Work in cavity order. Then the sealing plugs, then the wedgelock.",Every contact clicked and tugged; 3 sealing plugs fitted; the wedgelock snaps in flush; the code L1-P is on the shell.,"Cavities 2, 3 and 4 take size-12 sealing plugs (P029), not the size-16 ones."
 E23.04,E23,4,Pin the L1-S1 plug,"L1-S1 is a DT06-12S, the 12-way plug (kit P115): size-16 socket contacts: P022 for 16-18 AWG, P024 for 14 AWG; wedgelock W12S.

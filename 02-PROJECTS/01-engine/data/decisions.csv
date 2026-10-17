@@ -748,3 +748,33 @@ His words, 2026-10-17, in chat: ""please reform both project to fully aknowlegde
 **Tagging:** every work and parts row today is W1, since the turbo and luxury items were already moved out (D-640, D-641). In bp_items the power-steering pump (BI07) and the A/C compressor (BI08) are W3 provisions. The turbo spares are bp_devices rows with year turbo.
 
 **Correction to D-643:** it named the interim speedometer part P253; the part is P258."
+D-645,engine,"Deep scan after the BP, lean and wave rulings: wave-1 faults fixed, stale LS-era wording fixed, the remaining work written as rows",2026-10-17,standing,,,,D-643 D-644,"**A deep scan of the engine and electrical projects (and the rows of luxury, cad and 00-CAR that point at them) after the BP, lean and wave rulings. What was stale or wrong is fixed in the rows; what needs work is written down as rows for the next session.**
+
+His words, 2026-10-17, in chat: ""then do a deep scan through both projects to ensure the plan has no faults or stail information while noting any areas you can fill and writing them down for the next session""
+
+**Faults fixed:**
+- Wave 1 waited on later waves in five places (electrical E26, E28, E35, Y76, Z1). Each now stands alone.
+- The interior comes apart once (D-387): the radar and audio runs (E40, E41) are laid capped in W1 under the base rule.
+- V-117 is W2 and Y77 is W3.
+
+**Stale wording fixed in live rows:**
+- EMU PRO is now EMU Black everywhere live (D-642).
+- The Phantom 340 is now the Walbro 255 (fb_items, zones, CP06, BP08).
+- CD009, the Explorer 8.8 and the AFM delete are gone from stage titles and notes.
+- Handover HO04, HO09, HO10, HO14 and HO15 are rewritten for the BP.
+- 27 electrical cells (boxes, cables, checks, fuses, node conductors, parts, pins, steps, work) say the BP or the engine swap, not the LS.
+- The engine and electrical goals name the BP.
+- Luxury C09 gates on BP04 (the BP's front drive), not the LS accessory drive.
+
+**Kept on purpose, as reference (D-629):** the LS options, the ls_* tables, the LS sightings, the LS documents' sources and pages, and 00-CAR's LM4 specs (SP-1827 to SP-1870) - true facts about an engine not chosen, cited by the LS documents' library pages.
+
+**For the next session (rows):**
+- 01-engine BP03: Mazda's figures from the 15,483 staged facts; now ready.
+- 01-engine BP15: the W1 electrical load against the BP's own alternator. A rough sum is about 65-70 A before charging the lithium battery, close to a 70 A unit.
+- 02-electrical Y84: the engine leg's cavities re-planned for the BP. About 140 cavities rows still carry the LS plan.
+- 02-electrical Y85: the briefs and steps of the rows the waves changed.
+- 02-electrical Y86: the carts split by wave, after Y41 prices the about 90 unpriced rows.
+- 02-electrical Y87: the EMU Black's pin list and CAN.
+- 02-electrical Y88: how the AEM wideband feeds it.
+- 03-cad C10: the combined model's LS3 replaced by the BP.
+- 02-PROJECTS/00-library: two review items for the belt-routing figures the session could not read."

@@ -29,4 +29,4 @@ F38,3 A,"Bin box (D-608): Passenger-side cargo bin, sealed inline, at a tap of C
 F39,20 A,"PMU box, the mini-blade bank under the lid (D-614)",,,The driver window's H-bridge (K5 / K6) - N16; F8's rating carried (D-471),The always-hot bus,LIVE,,,PMU-BOX
 F40,20 A,"PMU box, the mini-blade bank under the lid (D-614)",,,The passenger window's H-bridge (K7 / K8) - N16; F9's rating carried (D-471),The always-hot bus,LIVE,,,PMU-BOX
 F41,25 A,"PMU box, the big-fuse bank at the feed stud (D-614)",,,"K16, the comfort switch, → DP-DCU-P 1, the CU's comfort inlet (N126, N17)",The always-hot bus,LIVE,,,PMU-BOX
-F42,7.5 A,"PMU box, the mini-blade bank under the lid (D-614)",,,L1-E1 4 - the LS A/C clutch relay's contact feed (N127); no fuse fitted until the swap,O12,EMPTY,,,PMU-BOX
+F42,7.5 A,"PMU box, the mini-blade bank under the lid (D-614)",,,L1-E1 4 - the A/C clutch relay's contact feed (N127); no fuse fitted until the swap,O12,EMPTY,,,PMU-BOX

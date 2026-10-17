@@ -225,13 +225,13 @@ P228,,,,"Deutsch HDP24-24-21PE receptacle, jam-nut, shell 24, insert 21 (4 #12, 
 P229,,,,"Deutsch HDP26-24-21SE plug, shell 24, insert 21",,2,ea,,est,"L2-F1 and L4-R1, the front and rear legs' plugs (D-612)",to add,,,,,W1
 P230,,,,"Deutsch HDP24-24-29PE receptacle, jam-nut, shell 24, insert 29 (4 #12, 19 #16, 6 #20)",,2,ea,,est,L1-E1 in the PMU box wall (D-606) and L4-AMP on the amplifier dock (D-609),to add,,,,,W4
 P231,,,,"Deutsch HDP26-24-29SE plug, shell 24, insert 29",,2,ea,,est,"L1-E1, today's engine leg (D-607), and L4-AMP",to add,,,,,W1
-P232,,,,"Deutsch HDP24-24-31PE receptacle, jam-nut, shell 24, insert 31 (31 #16)",,2,ea,,est,"L1-E2 and L1-E3 in the PMU box wall, wired for the LS from day one (D-606, D-607); keyed apart",to add,,,,,W1
-P233,,,,"Deutsch HDP26-24-31SE plug, shell 24, insert 31",,2,ea,,est,"L1-E2 and L1-E3, the LS leg's plugs - bought with the LS leg at the swap",later,,,,,W1
+P232,,,,"Deutsch HDP24-24-31PE receptacle, jam-nut, shell 24, insert 31 (31 #16)",,2,ea,,est,"L1-E2 and L1-E3 in the PMU box wall, wired for the swap from day one (D-606, D-607); keyed apart",to add,,,,,W1
+P233,,,,"Deutsch HDP26-24-31SE plug, shell 24, insert 31",,2,ea,,est,"L1-E2 and L1-E3, the BP leg's plugs - bought with the BP leg at the swap",later,,,,,W1
 P234,,,,"Deutsch solid contacts size 12, pins and sockets (0460-204-12141 / 0462-203-12141 class)",,38,ea,,est,"the #12 cavities in use in the HDP20 circulars, both halves (14 each) + 10 spares - counted from cavities.contact (D-612)",to add,,,,,W1
 P235,,,,"Deutsch solid contacts size 16, pins and sockets (0460-202-16141 / 0462-201-16141 class)",,242,ea,,est,"the #16 cavities in use in the HDP20 circulars, both halves (111 each) + 20 spares; the DT kits carry their own",to add,,,,,W1
 P236,,,,"Deutsch solid contacts size 20, pins and sockets (0460-202-20141 / 0462-201-20141 class)",,22,ea,,est,the #20 cavities in use in the HDP20 circulars (6 each) + 10 spares; the DRC header's are in P248,to add,,,,,W1
 P237,,,,"Deutsch HD cavity sealing plugs, sizes 12 / 16 / 20 (114017 / 0413-204-2005 / 0413-003-1605 class)",,31,ea,,est,"every empty cavity of the PMU box's and the dock's circulars, leg side (2 at #12, 23 at #16, 6 at #20) - confirm each part against TE's sheet",to add,,,,,W1
-P238,,,,"Deutsch HDP20 shell-24 receptacle dust caps (HDC16-24 class), with lanyard",,2,ea,,est,L1-E2 and L1-E3 until the LS leg plugs in (D-606),to add,,,,,W1
+P238,,,,"Deutsch HDP20 shell-24 receptacle dust caps (HDC16-24 class), with lanyard",,2,ea,,est,L1-E2 and L1-E3 until the BP leg plugs in (D-606),to add,,,,,W1
 P239,,,,"Smart high-side switches, PROFET class, automotive, with current sense",,10,ea,,est,"K1-K4, K11, K12, K14, K15, K16 on the PMU box's board (D-597) + one spare; the part and its current per channel are chosen at the CAD pass (Y69)",later,,,,,W1
 P240,,,,"Half-bridge drivers, BTN8982 class (or a dual H-bridge), automotive",,5,ea,,est,"the windows' two H-bridges, K5-K8 in the tables, on the PMU box's board (D-610) + one spare; chosen at Y69",later,,,,,W4
 P241,,,,Big-fuse bank - board- or bolt-mount MAXI holders,,6,ea,,est,"F30, F31, F32, F35, F36, F41 at the PMU box's feed stud (D-597); the part is the CAD pass's (Y69); fuses P190 / P191",later,,,,,W1

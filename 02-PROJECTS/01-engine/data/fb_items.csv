@@ -5,7 +5,7 @@ FI003,bp,PT003,Oil filter,out,"Leaves with the 12A: kept as a spare set, sold or
 FI004,bp,PT004,Oil pressure sender,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
 FI005,bp,PT005,Alternator belt,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
 FI006,intake,PT006,Weber 45 DCOE carburettor kit,out,"Carburettor equipment, gone with fuel injection"
-FI007,fuel/pump,PT007,Fuel pump,out,The Phantom 340 in the tank replaces the external Carter (D-447)
+FI007,fuel/pump,PT007,Fuel pump,out,The Walbro 255 in the tank replaces the external Carter (D-641)
 FI008,fuel/lines,PT008,Fuel pressure regulator,out,The BP's own regulator on its rail (D-630)
 FI009,fuel/lines,PT009,Fuel filter,out,A new EFI-rated filter (BP08)
 FI010,fuel/tank,PT010,Fuel cut-off,keep,
@@ -134,7 +134,7 @@ FI132,exhaust,PT163,Canister purge valve,out,The BP's purge solenoid run by the 
 FI133,intake,PT164,Accelerator pedal and arm,keep,
 FI134,intake,PT165,Accelerator pedal pad,keep,
 FI135,intake,PT166,Accelerator cable,check,Reused or replaced to reach the BP's throttle body (DR04)
-FI136,fuel/tank,PT167,Fuel tank,modify,"Its top is cut for the Phantom 340 (DS12, CP06)"
+FI136,fuel/tank,PT167,Fuel tank,modify,"Its top is cut for the Walbro 255's hanger (DS12, CP06)"
 FI137,fuel/tank,PT168,"Fuel tank bands, left and right",keep,
 FI138,fuel/tank,PT169,Fuel gauge sender unit,keep,
 FI139,fuel/tank,PT170,Fuel filler pipe,keep,

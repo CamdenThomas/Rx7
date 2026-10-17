@@ -9,6 +9,6 @@ mounts,Engine mounts,,"The BP side brackets, adapter plates to the FB crossmembe
 wiring,Engine wiring leg,,"The BP leg from the ECU at the dash to every engine device, with the plugged turbo spares; designed with 02-electrical"
 bp/oil,Oil system,bp,"Pan and pickup against the FB crossmember, filter access, the pressure sender and its plugged turbo-feed tee, the plugged turbo-return bung in the pan"
 fuel/tank,Fuel tank,fuel,"The tank and its top opening for the pump (DS12), the vent, the EVAP canister and purge line"
-fuel/pump,Fuel pump,fuel,"The Phantom 340 in the tank, its feed wire and soft fuse (HO12)"
+fuel/pump,Fuel pump,fuel,"The Walbro 255 in the tank, its feed wire and soft fuse (HO12)"
 fuel/lines,Fuel lines,fuel,"Feed and return from the tank to the rail, the filter, the old return check valve, the BP rail and its regulator fittings"
 radiator/hoses,Coolant hoses,radiator,"Upper and lower radiator hoses, heater hoses to the FB core, the bypass, the optional rear-outlet reroute"
