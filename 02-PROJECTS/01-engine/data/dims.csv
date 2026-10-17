@@ -1,5 +1,5 @@
 id,zone,dimension,value_mm,confidence,source,note
-DM01,bp,Bellhousing face to the back of the crank pulley,432,secondary,S-621,"About 17 in, a LocostUSA builder's tape"
+DM01,bp,Bellhousing face to the back of the crank pulley,432,secondary,S-621,"About 17 in, a LocostUSA builder's tape - it conflicts with DM03 (the block alone 497 mm), so one of the two is wrong; neither is used until the NB2 scan is aligned (CD02) or BD15 measures"
 DM02,bp,"Widest point across the manifolds, throttle-cable mount and heat shield",584,secondary,S-621,About 23 in
 DM03,bp,"Block length, front face to rear face",497,secondary,S-621,19.6 in
 DM04,bp,Oil pan bottom to cam cover top,613,secondary,S-621,About 24.1 in
