@@ -1,1 +1,16 @@
 id,title,opened,ask,why,options,recommend,stops
+01.74,"Alternator: the stock one guarded for W1, then the final 160 A once …",2026-10-17,"Should W1 run the BP's own 65 A alternator with the PMU guarding its voltage and W2 fit the final 160 A ECU-regulated unit once (a), W2 fit the FD 100 A and luxury the 160 A (b), or the FD 100 A go on already in W1 (c)?","BP15's sum (2026-10-17, from electrical's loads table; night, rain, idle):
+- W1 (the proof): the fuel pump about 10 A, the coils about 5 A, the ECU and injectors about 7 A, the fan about 18 A, the PMU about 1 A - about 40 A.
+- W2 (road legal) adds high beam 8.9 A, tails 5.4 A, wipers 5.5 A, illumination 1.5 A, the accessory bus up to 10 A, the Display Unit about 2 A, and the brake lamps 7.8 A while held - about 75-82 A.
+- The luxury stage adds the blower 12-18 A and the rear defog 10-13 A - over 100 A, which is what D-457's 160 A was sized for.
+
+Mazda's manual (SP-1903): the BP's M/T alternator is 65 A, and its regulator holds 14.3-14.9 V. An alternator gives well under its rating at idle. The Ionic's ceiling is 14.6 V (SP-231).
+
+So:
+- The BP's own unit carries W1's current but not W2's.
+- Its regulator can push the lithium battery past its ceiling - in W1 too.
+- D-641 kept the stock unit until luxury, measured only against the 163 A luxury figure; this is the correction.
+
+The voltage has a fix that costs nothing: the PMU already switches the alternator's excitation (HO11, F15). It can drop the excitation above 14.5 V and restore it below 14.2 V, holding the battery under its ceiling with any alternator. The planned 160 A unit has its set-point on an ECU line (D-457).","(a) W1 on the BP's own alternator with the PMU's over-voltage guard on its excitation; at W2 the final alternator goes on once - the 160 A class unit with its set-point on the ECU (D-457) on a fabricated bracket, about $300-600 plus the bracket. One alternator bought, the final one; W1 costs nothing more.
+(b) W1 as (a); at W2 the FD 100 A on the BP's bracket (about $120-250, its fitting work known), and the 160 A at the luxury stage. Cheaper at W2, but two alternators are bought, and 100 A is tight once W2 and comfort loads overlap.
+(c) The FD 100 A already in W1, the 160 A at luxury. Spends about $120-250 before the proof for current W1 does not need.","(a), unless the 160 A bracket proves hard to make before W2 - then (b)",W2's alternator purchase and BP04's bracket; nothing in W1 (the guard is configuration)
