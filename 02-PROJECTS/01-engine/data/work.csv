@@ -68,7 +68,7 @@ IN05,07,"07 Install - in the car, connected, fluids, first start","Before the fi
 IN06,07,"07 Install - in the car, connected, fluids, first start","First start and first run: watch oil pressure, leaks, temperature and charging",camden,open,IN05,,,,,,,build,,W1
 TU01,08,"08 Fine-tune - the tune, the shakedown, emissions, the record","Base tune on the EMU Black: idle, fuelling on the wideband, timing, speed-density on MAP",camden,open,IN06,,,,,,,build,,W1
 TU02,08,"08 Fine-tune - the tune, the shakedown, emissions, the record","CAN integration: the ECU's frames at 0x500+ to the ICU (tach, coolant, road speed), the PMU's rpm terms (D-183), the soft-fuse limits for O12, O13 and O14 from measured currents",agent,open,IN06,"Handover HO03, HO05, HO06, HO15",,,,,,build,,W1
-TU03,08,"08 Fine-tune - the tune, the shakedown, emissions, the record",Road test with logging: a hot-day cooling check and a charging check with every comfort load on (H-001),camden,open,TU01,,,,,,,build,,W1
+TU03,08,"08 Fine-tune - the tune, the shakedown, emissions, the record",Road test with logging (after electrical W2's road circuits and full check): a hot-day cooling check and a charging check with the loads on,camden,open,TU01 02-electrical:E29,,,,,,,build,,W1
 TU04,08,"08 Fine-tune - the tune, the shakedown, emissions, the record",A professional or dyno tune,camden,open,TU03,,,,,,,build,,W1
 TU05,08,"08 Fine-tune - the tune, the shakedown, emissions, the record",Alignment and corner balance,camden,open,TU03,,,,,,,build,,W1
 TU06,08,"08 Fine-tune - the tune, the shakedown, emissions, the record","Emissions test and registration, per K2",camden,open,TU04 BP02,D-622: at a referee station with form DR2365 - tested as a car of the engine's year,,,,,,build,,W1

@@ -778,3 +778,11 @@ His words, 2026-10-17, in chat: ""then do a deep scan through both projects to e
 - 02-electrical Y88: how the AEM wideband feeds it.
 - 03-cad C10: the combined model's LS3 replaced by the BP.
 - 02-PROJECTS/00-library: two review items for the belt-routing figures the session could not read."
+D-646,fuel,New fuel lines end to end: 3/8 feed and 5/16 return in nylon EFI line with flex ends; the FB's steel pipes come out,2026-10-17,standing,,,,D-641,"**The swap's fuel lines are new, end to end: a 3/8 in feed and a 5/16 in return in SAE J2044 nylon EFI line along the floor, with quick-connect ends and short PTFE-lined flex sections at the pump hanger and the rail. The FB's steel feed and return pipes, the old 3/8 line and the carburettor-era return check valve come out. This changes D-641's reuse of the steel pipes; the rest of the lean path stands.**
+
+His words, 2026-10-17, in chat: ""also one side not we will not be using the old hard fuel line we will be using new lines""
+
+**In the data:**
+- Parts FP03 (about $90-180), FP04 (about $60-120) and FP06 (about $30-60) are re-specified.
+- fb_items FI011, FI089, FI144 and FI145 are out.
+- BP08 routes the new lines (DR02)."

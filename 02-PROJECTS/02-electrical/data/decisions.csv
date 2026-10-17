@@ -2505,3 +2505,18 @@ The option in full: ""(a) Four waves, as listed. Wave 1 runs the car on the fact
 - P253, the interim speedometer, is new.
 - The wave of each row was set by rule (02-PROJECTS/00-library is not involved): the luxury installs and adapter leads W4; the CU, its carrier, panel, CUR and their CAD and firmware W3; the DU, its bench kit, boards, firmware, log link and road speed W2; everything else W1. A wrong one is fixed in its row.
 - The parts table's priced, not-yet-bought rows come to about $2,660 (W1), $660 (W2), $210 (W3) and $220 (W4), before about 90 unpriced rows (contacts, plugs, wire), which Y41's parts round prices."
+D-647,electrical,"Wave 1 is a headless off-road run-and-drive proof: the factory harness out whole, no interim speedometer; the road circuits and the cluster are W2",2026-10-17,standing,,,,D-643 D-268,"**Wave 1 is a headless, off-road proof that the car runs and drives. The factory harness comes out whole in W1, the cluster included: nothing spliced, nothing of it left in the car. There is no interim speedometer (P258 dropped); the laptop on the PMU and the EMU Black is the dash. Only what runs and drives the car is connected. The legs and boxes are still built once to the full plan, every later conductor capped and labelled.**
+
+**The road moves to W2:** the lights, brakes, turns, reverse, wipers and washer, pop-ups, horn and illumination are connected on the legs W1 laid (E28), together with the Display Unit as the cluster. The full function check (E29), the road shakedowns (E31-E34), and the engine's road test and registration (01-engine TU03-TU06) follow. W3 (the Control Unit) and W4 (the luxury wiring) are unchanged.
+
+His words, 2026-10-17, in chat: ""no temp spedometer set up when the first wave of engine and elecrical go in all other elcrtical is out and in headless and will not drive on the road just to prove runs and drives before we keep progressing with the rest of everything (but the whole perfect plan with no splicing and no remnance of the old parts stays true.""
+
+**This changes D-643's W1** (the factory cluster kept with an interim speedometer) **and D-268's clause** that the factory cluster stays alive until the meters cutover: it now leaves with the harness in W1. The odometer is read before it goes (E2).
+
+**In the data:**
+- Electrical E2 and E30 are W1, gated on the interior strip, so the whole harness is out before the new legs go in.
+- E27 connects only the run-and-drive loads.
+- E28, E29 and E31-E34 are W2; E48 and E49 are W4.
+- E31 and the engine's TU03 wait on E29.
+- Y85 now also recasts the migration table as W2's connection order and rewrites the briefs and steps of E2, E12, E27, E28, E29 and E30.
+- Both waves tables are rewritten."

@@ -9,7 +9,7 @@ FI007,fuel/pump,PT007,Fuel pump,out,The Walbro 255 in the tank replaces the exte
 FI008,fuel/lines,PT008,Fuel pressure regulator,out,The BP's own regulator on its rail (D-630)
 FI009,fuel/lines,PT009,Fuel filter,out,A new EFI-rated filter (BP08)
 FI010,fuel/tank,PT010,Fuel cut-off,keep,
-FI011,fuel/lines,PT011,"Fuel line, 3/8 in",check,Its run is checked against BP08's routing
+FI011,fuel/lines,PT011,"Fuel line, 3/8 in",out,New lines (D-646)
 FI012,bp,PT012,Vacuum lines and fittings,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
 FI013,bp,PT013,"Ignition coils, leading and trailing",out,The 12A's ignition; the BP's coil pack and the ECU replace it
 FI014,bp,PT014,Distributor,out,The 12A's ignition; the BP's coil pack and the ECU replace it
@@ -87,7 +87,7 @@ FI085,mounts,PT116,"Engine mount rubber, left",check,DS07 decides whether the FB
 FI086,mounts,PT117,Transmission mount member,check,DS07 decides whether the FB's mount member positions carry the 5-speed's fabricated crossmember
 FI087,mounts,PT118,Transmission mount rubber,check,DS07 decides whether the FB's mount member positions carry the 5-speed's fabricated crossmember
 FI088,mounts,PT119,"Transmission mount insulators, upper and lower",check,DS07 decides whether the FB's mount member positions carry the 5-speed's fabricated crossmember
-FI089,fuel/lines,PT120,Fuel return check valve,check,Checked for restriction or removed (BP08)
+FI089,fuel/lines,PT120,Fuel return check valve,out,Gone with the old return pipe (D-646)
 FI090,fuel/lines,PT121,"Fuel hoses, engine bay (main and return)",out,"EFI-rated hose to the rail (FP03, FP04)"
 FI091,intake,PT122,Carburettor insulator (to intake manifold),out,"Carburettor equipment, gone with fuel injection"
 FI092,intake,PT123,Idle switch cap,out,"Carburettor equipment, gone with fuel injection"
@@ -142,8 +142,8 @@ FI140,fuel/tank,PT171,Fuel filler hose,keep,
 FI141,fuel/tank,PT172,Fuel filler cap,keep,
 FI142,fuel/tank,PT174,Fuel tank vent check valve,keep,
 FI143,fuel/tank,PT175,Fuel tank vent and breather hoses,keep,
-FI144,fuel/lines,PT176,"Fuel main pipe (steel, tank to engine)",check,Reused if sound and clean inside (BP08)
-FI145,fuel/lines,PT177,Fuel return pipe (steel),check,Reused if sound and clean inside (BP08)
+FI144,fuel/lines,PT176,"Fuel main pipe (steel, tank to engine)",out,"New nylon EFI lines replace it (D-646, FP03)"
+FI145,fuel/lines,PT177,Fuel return pipe (steel),out,"New nylon EFI lines replace it (D-646, FP04)"
 FI146,exhaust,PT178,Evaporation pipes (steel),check,"The FB's EVAP is kept if it connects to the BP's purge (BP08, DS03)"
 FI147,fuel/tank,PT179,"Fuel hoses, tank and pump",modify,Renewed in EFI-rated hose with the in-tank pump (CP06)
 FI148,fuel/tank,PT180,Fuel cut valve (factory),keep,
