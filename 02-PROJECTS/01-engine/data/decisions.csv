@@ -634,3 +634,18 @@ His words on work BP02 (done): ""Must pass for the year of the engine"".
 Reading (§3, keeps most options open): this fixes the requirement D-630 already assumed - the car is held to the engine's year and must pass - not a report of the call to the referee. It rules out any plan that only works if the car is tested as a 1982. It does not say a test method or that an aftermarket ECU is accepted, so no plan may rely on either until a referee or the first test says so; the BP exhaust keeps its converter and O2 sensors, and the ECU choice stays open.
 
 Consequences: BP02 done with the rule as its result. Nothing is bought on the strength of an ECU passing. Any later finding that the BP cannot pass is a contradiction and a block."
+D-637,engine,"DR01: every BP and 5-speed part ruled keep, delete, replace, provision or check (bp_items BI01-BI42); the M/T throttle sensor is an idle switch and is replaced by a linear one",2026-10-17,standing,,,,D-630 D-636,"**DR01 done: every part on the BP and its 5-speed is ruled in bp_items (BI01-BI42) - keep, delete, replace, provision for luxury or the turbo, or check on the engine in hand.**
+
+**Findings the plan did not have (S-623, the 1994 sections):**
+- The manual-gearbox throttle position sensor is an idle switch only (terminals E and IDL), and the EMU PRO needs a linear one. The Miata automatic's TP sensor or an NB one on an adapter replaces it: parts AI02.
+- The vane airflow meter carries the intake air temperature sensor, so deleting the meter needs a separate IAT in the intake tube: parts AI03.
+- The 1994 BP has a coolant-to-oil cooler at the filter, which is kept.
+- The 1994 tests list EGR codes, but the 1994 vacuum diagram has no EGR. It is ruled check: if the engine in hand has EGR, it is kept for the emissions test (BP02).
+- The pressure regulator control solenoid (a hot-restart aid) is deleted; the regulator's line goes straight to the manifold.
+- The cam angle sensor on the intake cam is the trigger. A 1996-97 engine adds a crank sensor (BP01 asks the year).
+
+**Provisions:** the power-steering pump, bracket and belt (luxury's power steering, D-636); the A/C compressor (luxury's A/C).
+
+**Replaced:** the alternator (the FD 100 A, D-633), the oil-pressure switch (a sensor on a tee with the plugged turbo feed), the intake (DR04), the PPF (a fabricated crossmember, DS07), and the clutch (renewed).
+
+Every figure and fit is confirm until BD01, BD06 and BD15 on the parts in hand (R11)."

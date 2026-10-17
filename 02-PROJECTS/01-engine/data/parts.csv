@@ -32,3 +32,5 @@ DSF01,driveline,Driveshaft made to length and balanced,"A Miata slip yoke at the
 TR01,transmission,Gearbox fluid and seals,About 2.1 qt GL-4 gear oil (S-611); input and output seals if BD06 finds them weeping,1,set,30,80,BD06 RB07,,trans
 YM01,driveline,Yard Miata small parts,"The driveshaft (its yoke), the PPF (a template), the harness's connector pigtails, the EVAP canister - and the shifter or slave if the package lacks them",1,set,50,200,J6,D-630,trans
 TL01,tools,Tool rentals,"An engine stand, the hoist when it goes in, the welder",1,set,200,450,BR01,Estimate; Fort Collins rental yards,
+AI02,intake,Linear throttle position sensor,"The 1994-97 Miata automatic TP sensor, or an NB one on an adapter plate (a printed NA-to-NB adapter exists, Thingiverse 3414132 and 4773854) - the M/T one is an idle switch only",1,ea,30,90,DR01 DR04,bp_items BI22; which one fits the BP in hand is confirm,intake
+AI03,intake,Intake air temperature sensor and its boss,A 2-wire GM-style open-element IAT in a weld-in or clamp-on boss in the intake tube,1,ea,20,45,DR01 DR04,bp_items BI19: it replaces the one inside the deleted airflow meter,intake

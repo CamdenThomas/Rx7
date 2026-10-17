@@ -15,3 +15,4 @@ blocks,"open questions only Camden can answer, one row each; deleted once a deci
 inbox,"his answers waiting to be applied, one file per answer per device (D-405)"
 ls_lines,"Every fluid, vapor and air line of the swap with its hidden route, material, fittings and finish - the plumbing half of the clean bay (D-628); the wiring half is ls_wires"
 zones,"the swap's zones - the engine, the gearbox, fuel, cooling, intake, exhaust, mounts and the wiring leg - one row each, with the folder that holds the zone's CAD and files; work and parts rows name their zone (D-631)"
+bp_items,"every part on the BP and its 5-speed as delivered, ruled keep, delete, replace, provision or check for the FB (DR01); the parts bought are parts rows"

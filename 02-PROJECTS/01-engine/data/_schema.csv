@@ -151,3 +151,10 @@ zones,parent,str,no,zones,"the zone it sits inside, blank at the top"
 zones,covers,text,no,,"what belongs to the zone: its parts, lines, devices and work"
 work,zone,str,no,zones,which zone the row works on (D-631); blank for a whole-swap row
 parts,zone,str,no,zones,which zone the part belongs to (D-631)
+bp_items,id,key,yes,,BI + number
+bp_items,zone,str,yes,zones,
+bp_items,item,str,yes,,the part as Mazda names it
+bp_items,fate,enum(keep|delete|replace|provision|check),yes,,"keep = refitted as is; delete = off the engine for good; replace = a different part does its job; provision = kept for a later stage (luxury, turbo); check = depends on what is on the engine in hand"
+bp_items,why,text,no,,
+bp_items,then,text,no,,"what replaces it, what the deletion changes, or what the provision waits for"
+bp_items,note,text,no,,sources and what is confirm
