@@ -1,0 +1,338 @@
+id,zone,part,name,fate,then
+FI001,bp,PT001,12A rotary engine,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI002,bp,PT002,Oil metering pump,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI003,bp,PT003,Oil filter,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI004,bp,PT004,Oil pressure sender,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI005,bp,PT005,Alternator belt,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI006,intake,PT006,Weber 45 DCOE carburettor kit,out,"Carburettor equipment, gone with fuel injection"
+FI007,fuel/pump,PT007,Fuel pump,out,The Phantom 340 in the tank replaces the external Carter (D-447)
+FI008,fuel/lines,PT008,Fuel pressure regulator,out,The BP's own regulator on its rail (D-630)
+FI009,fuel/lines,PT009,Fuel filter,out,A new EFI-rated filter (BP08)
+FI010,fuel/tank,PT010,Fuel cut-off,keep,
+FI011,fuel/lines,PT011,"Fuel line, 3/8 in",check,Its run is checked against BP08's routing
+FI012,bp,PT012,Vacuum lines and fittings,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI013,bp,PT013,"Ignition coils, leading and trailing",out,The 12A's ignition; the BP's coil pack and the ECU replace it
+FI014,bp,PT014,Distributor,out,The 12A's ignition; the BP's coil pack and the ECU replace it
+FI015,bp,PT015,Distributor cap,out,The 12A's ignition; the BP's coil pack and the ECU replace it
+FI016,bp,PT016,Distributor rotor,out,The 12A's ignition; the BP's coil pack and the ECU replace it
+FI017,bp,PT017,Spark plug wires,out,The 12A's ignition; the BP's coil pack and the ECU replace it
+FI018,bp,PT018,Coil wires,out,The 12A's ignition; the BP's coil pack and the ECU replace it
+FI019,bp,PT019,Spark plugs,out,The 12A's ignition; the BP's coil pack and the ECU replace it
+FI020,radiator,PT020,Radiator,out,"The new radiator and hoses (BP07, CO01, CO04)"
+FI021,radiator,PT021,Water pump,out,"The 12A's pump, fan and thermostat; the BP has its own"
+FI022,radiator,PT022,Thermostat,out,"The 12A's pump, fan and thermostat; the BP has its own"
+FI023,radiator,PT023,Water temperature gauge sender,out,"The 12A's pump, fan and thermostat; the BP has its own"
+FI024,bp,PT028,Wideband O2 gauge and sensor,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI025,trans,PT054,Automatic transmission,out,Leaves with the automatic
+FI026,,PT055,Rear axle and differential,keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI027,intake,PT058,Air filter,out,"The BP's cold-air intake replaces it (DR04, AI01)"
+FI028,bp,PT059,Engine overhaul gasket set,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI029,bp,PT060,Engine overhaul O-ring set,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI030,bp,PT061,Rotor housings,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI031,bp,PT062,Intermediate housing,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI032,bp,PT063,Front housing,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI033,bp,PT064,Rear housing,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI034,bp,PT065,Oil control plunger valve,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI035,bp,PT066,Front stationary gear,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI036,bp,PT067,Rear stationary gear,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI037,bp,PT068,"Main bearing, front",out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI038,bp,PT069,"Main bearing, rear",out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI039,bp,PT070,Rear oil seal,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI040,bp,PT071,Front cover,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI041,bp,PT072,Front oil seal,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI042,bp,PT073,Timing top indicator pin,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI043,bp,PT074,Oil filler pipe,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI044,bp,PT075,Oil filler cap,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI045,bp,PT076,Oil dipstick,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI046,bp,PT077,Oil pan,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI047,bp,PT078,Oil drain plug,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI048,bp,PT079,Eccentric shaft,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI049,bp,PT080,Eccentric shaft oil jets,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI050,bp,PT081,Eccentric shaft thrust needle bearings,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI051,bp,PT082,Eccentric shaft end-play spacer,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI052,bp,PT083,Front balance weight,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI053,bp,PT084,Distributor drive gear,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI054,bp,PT085,Oil pump drive sprocket,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI055,bp,PT086,Eccentric shaft pulley,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI056,bp,PT087,Flywheel,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI057,bp,PT088,"Rotors, front and rear",out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI058,bp,PT089,Rotor bearings,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI059,bp,PT090,Apex seals,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI060,bp,PT091,Apex seal side pieces,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI061,bp,PT092,Apex seal springs,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI062,bp,PT093,Side seals,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI063,bp,PT094,Side seal springs,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI064,bp,PT095,Corner seals,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI065,bp,PT096,Corner seal plugs,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI066,bp,PT097,Corner seal springs,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI067,bp,PT098,Rotor oil seal sets,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI068,bp,PT099,Rotor oil seal springs,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI069,intake,PT100,Intake manifold (factory),out,The 12A's; the BP has its own
+FI070,exhaust,PT101,Exhaust manifold,out,The 12A's; the BP's own manifold replaces it
+FI071,exhaust,PT102,Exhaust manifold heat insulator,check,Kept if the new exhaust (DS03) runs where they shield the floor; else off
+FI072,bp,PT103,Hot air duct,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI073,bp,PT104,Oil pump,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI074,bp,PT105,Oil pump rotor sets,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI075,bp,PT106,Oil pump sprocket,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI076,bp,PT107,Oil pump drive chain,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI077,bp,PT108,Oil strainer,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI078,bp,PT109,Oil pressure regulator,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI079,bp,PT110,Oil filter body,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI080,bp,PT111,Metering pump driven gear,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI081,bp,PT112,Metering oil tubes,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI082,bp,PT113,Metering pump control linkage,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI083,mounts,PT114,Engine mounting bracket,check,DS07 decides whether the FB crossmember's brackets and rubbers carry the BP's plates or new ones are made
+FI084,mounts,PT115,"Engine mount rubber, right",check,DS07 decides whether the FB crossmember's brackets and rubbers carry the BP's plates or new ones are made
+FI085,mounts,PT116,"Engine mount rubber, left",check,DS07 decides whether the FB crossmember's brackets and rubbers carry the BP's plates or new ones are made
+FI086,mounts,PT117,Transmission mount member,check,DS07 decides whether the FB's mount member positions carry the 5-speed's fabricated crossmember
+FI087,mounts,PT118,Transmission mount rubber,check,DS07 decides whether the FB's mount member positions carry the 5-speed's fabricated crossmember
+FI088,mounts,PT119,"Transmission mount insulators, upper and lower",check,DS07 decides whether the FB's mount member positions carry the 5-speed's fabricated crossmember
+FI089,fuel/lines,PT120,Fuel return check valve,check,Checked for restriction or removed (BP08)
+FI090,fuel/lines,PT121,"Fuel hoses, engine bay (main and return)",out,"EFI-rated hose to the rail (FP03, FP04)"
+FI091,intake,PT122,Carburettor insulator (to intake manifold),out,"Carburettor equipment, gone with fuel injection"
+FI092,intake,PT123,Idle switch cap,out,"Carburettor equipment, gone with fuel injection"
+FI093,exhaust,PT124,Charcoal canister,check,"The FB's EVAP is kept if it connects to the BP's purge (BP08, DS03)"
+FI094,exhaust,PT125,Evaporative and canister hoses,check,"The FB's EVAP is kept if it connects to the BP's purge (BP08, DS03)"
+FI095,intake,PT126,Air cleaner assembly (factory),out,"The BP's cold-air intake replaces it (DR04, AI01)"
+FI096,intake,PT127,Air cleaner element (factory),out,"The BP's cold-air intake replaces it (DR04, AI01)"
+FI097,intake,PT128,Air cleaner temperature compensator,out,"The BP's cold-air intake replaces it (DR04, AI01)"
+FI098,intake,PT129,Air intake pipe (snorkel),out,"The BP's cold-air intake replaces it (DR04, AI01)"
+FI099,intake,PT130,Hot air hose,out,"The BP's cold-air intake replaces it (DR04, AI01)"
+FI100,intake,PT131,Air cleaner ventilation hose,out,"The BP's cold-air intake replaces it (DR04, AI01)"
+FI101,intake,PT132,Starting assist motor,out,"Carburettor equipment, gone with fuel injection"
+FI102,intake,PT133,Starting assist cable,out,"Carburettor equipment, gone with fuel injection"
+FI103,intake,PT134,Starting fluid tank,out,"Carburettor equipment, gone with fuel injection"
+FI104,intake,PT135,Starting assist thermo unit,out,"Carburettor equipment, gone with fuel injection"
+FI105,intake,PT136,Carburettor (factory Nikki 4-barrel),out,"Carburettor equipment, gone with fuel injection"
+FI106,intake,PT137,Carburettor repair kit,out,"Carburettor equipment, gone with fuel injection"
+FI107,intake,PT138,Air horn,out,"Carburettor equipment, gone with fuel injection"
+FI108,intake,PT139,Throttle chamber,out,"Carburettor equipment, gone with fuel injection"
+FI109,intake,PT140,Secondary diaphragm chamber,out,"Carburettor equipment, gone with fuel injection"
+FI110,intake,PT141,Carburettor solenoid valve,out,"Carburettor equipment, gone with fuel injection"
+FI111,intake,PT142,"Floats, front and rear",out,"Carburettor equipment, gone with fuel injection"
+FI112,intake,PT143,Float needle valves,out,"Carburettor equipment, gone with fuel injection"
+FI113,intake,PT144,Jets and air bleeds,out,"Carburettor equipment, gone with fuel injection"
+FI114,intake,PT145,Accelerator pump,out,"Carburettor equipment, gone with fuel injection"
+FI115,intake,PT146,Idle and throttle adjust screws,out,"Carburettor equipment, gone with fuel injection"
+FI116,intake,PT147,Semi-automatic choke,out,"Carburettor equipment, gone with fuel injection"
+FI117,intake,PT148,Choke bi-metal and holder,out,"Carburettor equipment, gone with fuel injection"
+FI118,bp,PT149,Air pump,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI119,bp,PT150,Air pump pulley,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI120,bp,PT151,Air pump V-belt,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI121,bp,PT152,Air control valve,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI122,exhaust,PT153,Air injection hoses,out,The 12A's; the BP's own manifold replaces it
+FI123,exhaust,PT154,Air injection check valve,out,The 12A's; the BP's own manifold replaces it
+FI124,bp,PT155,Shutter valve actuator (diaphragm),out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI125,bp,PT156,Three-way solenoid valves (vacuum switching),out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI126,bp,PT157,Emission vacuum pipe assembly,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI127,bp,PT158,Emission vacuum hoses and tubes,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI128,bp,PT159,Vacuum actuator,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI129,bp,PT160,Anti-afterburn valve,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI130,bp,PT161,Vacuum delay valve,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI131,intake,PT162,Altitude compensator,out,"Carburettor equipment, gone with fuel injection"
+FI132,exhaust,PT163,Canister purge valve,out,The BP's purge solenoid run by the ECU replaces it (bp_items BI33)
+FI133,intake,PT164,Accelerator pedal and arm,keep,
+FI134,intake,PT165,Accelerator pedal pad,keep,
+FI135,intake,PT166,Accelerator cable,check,Reused or replaced to reach the BP's throttle body (DR04)
+FI136,fuel/tank,PT167,Fuel tank,modify,"Its top is cut for the Phantom 340 (DS12, CP06)"
+FI137,fuel/tank,PT168,"Fuel tank bands, left and right",keep,
+FI138,fuel/tank,PT169,Fuel gauge sender unit,keep,
+FI139,fuel/tank,PT170,Fuel filler pipe,keep,
+FI140,fuel/tank,PT171,Fuel filler hose,keep,
+FI141,fuel/tank,PT172,Fuel filler cap,keep,
+FI142,fuel/tank,PT174,Fuel tank vent check valve,keep,
+FI143,fuel/tank,PT175,Fuel tank vent and breather hoses,keep,
+FI144,fuel/lines,PT176,"Fuel main pipe (steel, tank to engine)",check,Reused if sound and clean inside (BP08)
+FI145,fuel/lines,PT177,Fuel return pipe (steel),check,Reused if sound and clean inside (BP08)
+FI146,exhaust,PT178,Evaporation pipes (steel),check,"The FB's EVAP is kept if it connects to the BP's purge (BP08, DS03)"
+FI147,fuel/tank,PT179,"Fuel hoses, tank and pump",modify,Renewed in EFI-rated hose with the in-tank pump (CP06)
+FI148,fuel/tank,PT180,Fuel cut valve (factory),keep,
+FI149,radiator,PT181,Radiator cap,out,"The new radiator and hoses (BP07, CO01, CO04)"
+FI150,radiator,PT182,"Radiator hose, upper",out,"The new radiator and hoses (BP07, CO01, CO04)"
+FI151,radiator,PT183,"Radiator hose, lower",out,"The new radiator and hoses (BP07, CO01, CO04)"
+FI152,radiator,PT184,Radiator fan shroud (cowling),check,Kept or replaced to suit the electric fan (BP07)
+FI153,radiator,PT185,Water pump shaft bearings,out,"The 12A's pump, fan and thermostat; the BP has its own"
+FI154,radiator,PT186,Water pump seal,out,"The 12A's pump, fan and thermostat; the BP has its own"
+FI155,radiator,PT187,Water pump baffle plate,out,"The 12A's pump, fan and thermostat; the BP has its own"
+FI156,radiator,PT188,Water pump cover,out,"The 12A's pump, fan and thermostat; the BP has its own"
+FI157,radiator,PT189,Water pump pulley boss,out,"The 12A's pump, fan and thermostat; the BP has its own"
+FI158,radiator,PT190,Water pump pulley,out,"The 12A's pump, fan and thermostat; the BP has its own"
+FI159,radiator,PT191,Cooling fan and fan drive,out,"The 12A's pump, fan and thermostat; the BP has its own"
+FI160,radiator,PT192,Cooling fan,out,"The 12A's pump, fan and thermostat; the BP has its own"
+FI161,radiator,PT193,Fan drive (viscous coupling),out,"The 12A's pump, fan and thermostat; the BP has its own"
+FI162,radiator,PT194,Thermostat cover,out,"The 12A's pump, fan and thermostat; the BP has its own"
+FI163,radiator,PT195,Coolant sub tank,check,"The expansion tank with its level switch (D-501, D-507); the FB's tank and sensor are kept if they serve (BP07)"
+FI164,radiator,PT196,Coolant sub tank cap,check,"The expansion tank with its level switch (D-501, D-507); the FB's tank and sensor are kept if they serve (BP07)"
+FI165,radiator,PT197,Coolant sub tank hose,check,"The expansion tank with its level switch (D-501, D-507); the FB's tank and sensor are kept if they serve (BP07)"
+FI166,bp/oil,PT198,Engine oil cooler,out,The 12A's cooler and lines; the BP has its own coolant-to-oil cooler (bp_items BI14)
+FI167,bp/oil,PT199,Oil cooler thermo pellet (bypass valve),out,The 12A's cooler and lines; the BP has its own coolant-to-oil cooler (bp_items BI14)
+FI168,bp/oil,PT200,Oil cooler hose (1011-14-720),out,The 12A's cooler and lines; the BP has its own coolant-to-oil cooler (bp_items BI14)
+FI169,bp/oil,PT201,Oil cooler hose (8871-14-730),out,The 12A's cooler and lines; the BP has its own coolant-to-oil cooler (bp_items BI14)
+FI170,bp,PT256,Distributor pick-up coil set,out,The 12A's ignition; the BP's coil pack and the ECU replace it
+FI171,bp,PT257,Distributor signal rotor (reluctor) set,out,The 12A's ignition; the BP's coil pack and the ECU replace it
+FI172,bp,PT258,"Igniters, leading and trailing",out,The 12A's ignition; the BP's coil pack and the ECU replace it
+FI173,bp,PT259,Distributor centrifugal governor set,out,The 12A's ignition; the BP's coil pack and the ECU replace it
+FI174,bp,PT260,Distributor vacuum units,out,The 12A's ignition; the BP's coil pack and the ECU replace it
+FI175,bp,PT261,Distributor condenser,out,The 12A's ignition; the BP's coil pack and the ECU replace it
+FI176,bp,PT262,Distributor drive coupling set,out,The 12A's ignition; the BP's coil pack and the ECU replace it
+FI177,bp,PT263,Distributor contact,out,The 12A's ignition; the BP's coil pack and the ECU replace it
+FI178,bp/oil,PT291,Oil level sensor,out,A 12A sensor
+FI179,radiator,PT292,Coolant level sensor,check,"The expansion tank with its level switch (D-501, D-507); the FB's tank and sensor are kept if they serve (BP07)"
+FI180,radiator,PT293,Coolant level warning unit,check,"The expansion tank with its level switch (D-501, D-507); the FB's tank and sensor are kept if they serve (BP07)"
+FI181,bp,PT294,Temperature switch,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI182,bp,PT295,Thermo switch (18 890),out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI183,bp,PT296,Emission control unit,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI184,bp,PT297,Throttle sensor,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI185,trans,PT298,Inhibitor switch (neutral safety and reverse lamp),out,Leaves with the automatic
+FI186,trans,PT299,Downshift (kickdown) solenoid,out,Leaves with the automatic
+FI187,bp,PT306,Choke and check relay,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI188,trans,PT326,Drive plate (flexplate) with adapter,out,Leaves with the automatic
+FI189,trans,PT327,Converter housing under cover,out,Leaves with the automatic
+FI190,trans,PT328,Converter housing side cover,out,Leaves with the automatic
+FI191,trans,PT329,Converter housing top cover,out,Leaves with the automatic
+FI192,trans,PT330,Torque converter,out,Leaves with the automatic
+FI193,trans,PT331,Converter housing,out,Leaves with the automatic
+FI194,trans,PT332,Transmission oil pump,out,Leaves with the automatic
+FI195,trans,PT333,Front pump oil seal (converter seal),out,Leaves with the automatic
+FI196,trans,PT334,Oil pump cover,out,Leaves with the automatic
+FI197,trans,PT335,Oil pump cover seal rings,out,Leaves with the automatic
+FI198,trans,PT336,Input shaft,out,Leaves with the automatic
+FI199,trans,PT337,Vacuum diaphragm pipe and hose,out,Leaves with the automatic
+FI200,trans,PT338,ATF cooler pipes,out,Leaves with the automatic
+FI201,trans,PT339,ATF cooler hoses,out,Leaves with the automatic
+FI202,trans,PT340,Transmission case,out,Leaves with the automatic
+FI203,trans,PT341,Extension housing rear oil seal,out,Leaves with the automatic
+FI204,trans,PT342,Band anchor-end bolt (band adjuster),out,Leaves with the automatic
+FI205,trans,PT343,Transmission air breather,out,Leaves with the automatic
+FI206,trans,PT344,Band servo,out,Leaves with the automatic
+FI207,trans,PT345,Band servo seals,out,Leaves with the automatic
+FI208,trans,PT346,Speedometer driven gear,out,Leaves with the automatic
+FI209,trans,PT347,Speedometer driven gear sleeve,out,Leaves with the automatic
+FI210,trans,PT348,Speedometer sleeve oil seal,out,Leaves with the automatic
+FI211,trans,PT349,Extension housing,out,Leaves with the automatic
+FI212,trans,PT350,Extension housing gasket,out,Leaves with the automatic
+FI213,trans,PT351,Control valve body,out,Leaves with the automatic
+FI214,trans,PT352,Manual valve,out,Leaves with the automatic
+FI215,trans,PT353,Transmission oil strainer (filter),out,Leaves with the automatic
+FI216,trans,PT354,Vacuum diaphragm (modulator),out,Leaves with the automatic
+FI217,trans,PT355,Vacuum diaphragm rod (selective length),out,Leaves with the automatic
+FI218,trans,PT356,Oil pan gasket,out,Leaves with the automatic
+FI219,trans,PT357,Transmission oil pan,out,Leaves with the automatic
+FI220,trans,PT358,ATF filler/level tube,out,Leaves with the automatic
+FI221,trans,PT359,ATF dipstick,out,Leaves with the automatic
+FI222,trans,PT360,Brake band (kickdown band),out,Leaves with the automatic
+FI223,trans,PT361,Front clutch,out,Leaves with the automatic
+FI224,trans,PT362,Front clutch drum,out,Leaves with the automatic
+FI225,trans,PT363,Clutch pistons (front and rear),out,Leaves with the automatic
+FI226,trans,PT364,Clutch piston seals,out,Leaves with the automatic
+FI227,trans,PT365,Clutch piston return springs,out,Leaves with the automatic
+FI228,trans,PT366,Clutch dished plates,out,Leaves with the automatic
+FI229,trans,PT367,Clutch driven plates (steels),out,Leaves with the automatic
+FI230,trans,PT368,Clutch drive plates (frictions),out,Leaves with the automatic
+FI231,trans,PT369,Front clutch retaining plate (selective),out,Leaves with the automatic
+FI232,trans,PT370,Rear clutch,out,Leaves with the automatic
+FI233,trans,PT371,Rear clutch drum,out,Leaves with the automatic
+FI234,trans,PT372,Rear clutch retaining plate,out,Leaves with the automatic
+FI235,trans,PT373,Rear clutch hubs,out,Leaves with the automatic
+FI236,trans,PT374,Front planetary carrier,out,Leaves with the automatic
+FI237,trans,PT375,Sun gear and connecting shell,out,Leaves with the automatic
+FI238,trans,PT376,Sun gear,out,Leaves with the automatic
+FI239,trans,PT377,Connecting shell,out,Leaves with the automatic
+FI240,trans,PT378,Rear planetary carrier,out,Leaves with the automatic
+FI241,trans,PT379,Thrust needle bearings and races,out,Leaves with the automatic
+FI242,trans,PT380,"Pump cover thrust race (selective, end play)",out,Leaves with the automatic
+FI243,trans,PT381,Front clutch thrust washer (selective),out,Leaves with the automatic
+FI244,trans,PT382,Transmission overhaul repair kit,out,Leaves with the automatic
+FI245,trans,PT383,Output shaft,out,Leaves with the automatic
+FI246,trans,PT384,Speedometer drive gear,out,Leaves with the automatic
+FI247,trans,PT385,Output flange and drive flange,out,Leaves with the automatic
+FI248,trans,PT386,Connecting drum (low and reverse),out,Leaves with the automatic
+FI249,trans,PT387,Low one-way clutch,out,Leaves with the automatic
+FI250,trans,PT388,One-way clutch outer race,out,Leaves with the automatic
+FI251,trans,PT389,One-way clutch inner race,out,Leaves with the automatic
+FI252,trans,PT390,Low and reverse brake,out,Leaves with the automatic
+FI253,trans,PT391,Low and reverse brake piston,out,Leaves with the automatic
+FI254,trans,PT392,Low and reverse piston seals,out,Leaves with the automatic
+FI255,trans,PT393,Low and reverse piston return spring,out,Leaves with the automatic
+FI256,trans,PT394,Low and reverse dished plate,out,Leaves with the automatic
+FI257,trans,PT395,Low and reverse driven plates (steels),out,Leaves with the automatic
+FI258,trans,PT396,Low and reverse drive plates (frictions),out,Leaves with the automatic
+FI259,trans,PT397,Low and reverse retaining plate (selective),out,Leaves with the automatic
+FI260,trans,PT398,Oil distributor,out,Leaves with the automatic
+FI261,trans,PT399,Oil distributor seal rings,out,Leaves with the automatic
+FI262,trans,PT400,Governor,out,Leaves with the automatic
+FI263,trans,PT401,Governor valves and springs,out,Leaves with the automatic
+FI264,trans,PT402,Transmission select lever (on the case),out,Leaves with the automatic
+FI265,trans,PT403,Manual shaft dust seal,out,Leaves with the automatic
+FI266,trans,PT404,Manual shaft,out,Leaves with the automatic
+FI267,trans,PT405,Manual (detent) plate,out,Leaves with the automatic
+FI268,trans,PT406,Parking rod,out,Leaves with the automatic
+FI269,trans,PT407,Parking actuator support,out,Leaves with the automatic
+FI270,trans,PT408,Parking pawl,out,Leaves with the automatic
+FI271,trans,PT409,Parking pawl return spring,out,Leaves with the automatic
+FI272,trans,PT410,Shift lever (automatic selector),out,Leaves with the automatic
+FI273,trans,PT411,Selector lever push rod,out,Leaves with the automatic
+FI274,trans,PT412,Shift knob,out,Leaves with the automatic
+FI275,trans,PT413,Shift knob push button,out,Leaves with the automatic
+FI276,trans,PT414,Selector lever detent lever,out,Leaves with the automatic
+FI277,trans,PT415,Shift lever boot,check,"The floor opening moves for the 5-speed's lever (J4, CP03); a new boot and seal fit the new opening"
+FI278,trans,PT416,Shift lever floor seal rubber,check,"The floor opening moves for the 5-speed's lever (J4, CP03); a new boot and seal fit the new opening"
+FI279,trans,PT417,Shift lever bracket,out,Leaves with the automatic
+FI280,trans,PT418,Shift counter lever,out,Leaves with the automatic
+FI281,trans,PT419,Shift adjusting lever,out,Leaves with the automatic
+FI282,trans,PT420,Shift linkage rod,out,Leaves with the automatic
+FI283,trans,PT421,Shift linkage bushings,out,Leaves with the automatic
+FI284,trans,PT422,Propeller shaft,out,"A new shaft made to length (BP09, DSF01)"
+FI285,trans,PT423,Propeller shaft universal joint set,out,"A new shaft made to length (BP09, DSF01)"
+FI286,trans,PT424,Propeller shaft front yoke (universal joint yoke),out,"A new shaft made to length (BP09, DSF01)"
+FI287,trans,PT425,Propeller shaft yoke,out,"A new shaft made to length (BP09, DSF01)"
+FI288,,PT426,Rear axle casing,keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI289,,PT427,Rear axle oil level (filler) plug,keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI290,,PT428,Rear axle magnetic drain plug,keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI291,,PT429,Rear axle breather,keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI292,,PT430,Rear axle shafts,keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI293,,PT431,Rear axle bearing collars,keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI294,,PT432,Rear axle shaft oil seals,keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI295,,PT433,Rear axle bearing spacers,keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI296,,PT434,Differential carrier,keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI297,trans,PT435,Differential companion flange,keep,The new driveshaft bolts to it (BP09)
+FI298,,PT436,Differential pinion oil seal,keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI299,,PT437,Final drive gear set (ring gear and drive pinion),keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI300,,PT438,Drive pinion front bearing,keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI301,,PT439,Drive pinion rear bearing,keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI302,,PT440,Differential case,keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI303,,PT441,Differential side gears,keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI304,,PT442,Differential pinion gears,keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI305,,PT443,Differential pinion shaft,keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI306,,PT444,Differential side bearings,keep,The FB axle stays at the BP stage (D-630); the 8.8 is the turbo stage's
+FI307,exhaust,PT537,Exhaust front pipe,out,"The new exhaust (DS03, EX01); the old converters go for their core value"
+FI308,exhaust,PT538,Monolith catalytic converter,out,"The new exhaust (DS03, EX01); the old converters go for their core value"
+FI309,exhaust,PT539,Catalytic converter,out,"The new exhaust (DS03, EX01); the old converters go for their core value"
+FI310,exhaust,PT540,Exhaust intermediate pipe,out,"The new exhaust (DS03, EX01); the old converters go for their core value"
+FI311,exhaust,PT541,Main silencer (muffler),out,"The new exhaust (DS03, EX01); the old converters go for their core value"
+FI312,exhaust,PT542,Exhaust tail funnel,out,"The new exhaust (DS03, EX01); the old converters go for their core value"
+FI313,exhaust,PT543,Exhaust hangers,check,Reused where the new 2.5 in pipe (DS03) passes them
+FI314,exhaust,PT544,Air injection check valve,out,The 12A's; the BP's own manifold replaces it
+FI315,exhaust,PT545,Air injection pipe,out,The 12A's; the BP's own manifold replaces it
+FI316,exhaust,PT546,Air injection hose,out,The 12A's; the BP's own manifold replaces it
+FI317,exhaust,PT547,Pre-air pipe,out,The 12A's; the BP's own manifold replaces it
+FI318,exhaust,PT548,Exhaust heat protector No. 1,check,Kept if the new exhaust (DS03) runs where they shield the floor; else off
+FI319,exhaust,PT549,Exhaust heat protector No. 2,check,Kept if the new exhaust (DS03) runs where they shield the floor; else off
+FI320,exhaust,PT550,"Exhaust heat protector, upper",check,Kept if the new exhaust (DS03) runs where they shield the floor; else off
+FI321,exhaust,PT551,Exhaust heat protector No. 4,check,Kept if the new exhaust (DS03) runs where they shield the floor; else off
+FI322,trans,PT643,Kick-down switch,out,Leaves with the automatic
+FI323,intake,PT836,Choke cable and knob (factory),out,"Carburettor equipment, gone with fuel injection"
+FI324,trans,PT854,Automatic shift position indicator panel,out,Leaves with the automatic
+FI325,fuel/tank,PT972,Fuel label,keep,
+FI326,bp,PT973,Emission control label,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI327,bp,PT974,Vacuum hose routing label,out,"Leaves with the 12A: kept as a spare set, sold or scrapped"
+FI328,intake,PT978,Weber 45 DCOE main jets,out,"Carburettor equipment, gone with fuel injection"
+FI329,intake,PT979,Weber 45 DCOE idle jets,out,"Carburettor equipment, gone with fuel injection"
+FI330,intake,PT980,Weber 45 DCOE air corrector jets,out,"Carburettor equipment, gone with fuel injection"
+FI331,intake,PT981,Weber 45 DCOE emulsion tubes,out,"Carburettor equipment, gone with fuel injection"
+FI332,intake,PT982,Weber 45 DCOE pump jets with gaskets,out,"Carburettor equipment, gone with fuel injection"
+FI333,intake,PT983,Weber 45 DCOE needle valve with gasket,out,"Carburettor equipment, gone with fuel injection"
+FI334,intake,PT984,Weber 45 DCOE float with fulcrum pin,out,"Carburettor equipment, gone with fuel injection"
+FI335,intake,PT985,Weber 45 DCOE chokes (main venturis) and auxiliary venturis,out,"Carburettor equipment, gone with fuel injection"
+FI336,intake,PT986,Weber 45 DCOE starter jets and starter valves,out,"Carburettor equipment, gone with fuel injection"
+FI337,intake,PT987,Weber 45 DCOE cover gasket and jets inspection cover gasket,out,"Carburettor equipment, gone with fuel injection"

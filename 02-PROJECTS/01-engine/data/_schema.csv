@@ -165,3 +165,9 @@ dims,value_mm,num,no
 dims,confidence,enum(measured|factory|secondary|estimate),yes,,"measured = on the part in hand; factory = Mazda's manual; secondary = a forum or vendor figure; estimate = reasoned, not read"
 dims,source,str,no,,00-CAR sources id
 dims,note,text,no
+fb_items,id,key,yes,,FI + number
+fb_items,zone,str,no,zones,blank for a part outside the zones (the axle)
+fb_items,part,str,yes,,00-CAR parts id
+fb_items,name,str,yes,,as 00-CAR names it
+fb_items,fate,enum(out|keep|modify|check),yes,,"out = comes off with the 12A or the automatic; keep = stays as it is; modify = stays, changed; check = the design row named in then decides"
+fb_items,then,text,no,,what replaces it or which row decides

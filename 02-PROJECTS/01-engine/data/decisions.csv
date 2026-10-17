@@ -649,3 +649,17 @@ D-637,engine,"DR01: every BP and 5-speed part ruled keep, delete, replace, provi
 **Replaced:** the alternator (the FD 100 A, D-633), the oil-pressure switch (a sensor on a tee with the plugged turbo feed), the intake (DR04), the PPF (a fabricated crossmember, DS07), and the clutch (renewed).
 
 Every figure and fit is confirm until BD01, BD06 and BD15 on the parts in hand (R11)."
+D-638,engine,"The FB side of the swap ruled part by part: fb_items, 337 parts out, kept, modified or checked by a named row",2026-10-17,standing,,,,D-630,"**The FB side of the swap is ruled part by part in fb_items: every 00-CAR part of the engine, transmission, driveline, fuel, ignition and cooling - 337 parts.**
+
+- **Out (275):** the 12A and everything on it, the automatic and its selector, the propeller shaft, the carburettor and air cleaner equipment, the external fuel pump and regulator, the 12A's ignition, radiator, fan and pump, the old exhaust.
+- **Keep (32):** the rear axle and differential (the 8.8 is the turbo stage's), the companion flange the new shaft bolts to, the tank's fittings, the accelerator pedal.
+- **Modify (2):** the tank (its top cut for the Phantom 340) and its hoses.
+- **Check (28):** decided by the row named in each:
+  - DS07: the engine and transmission mounts.
+  - DS03: the heat shields and hangers.
+  - BP08: the steel fuel pipes, the return check valve and EVAP.
+  - BP07: the sub tank, level sensor and shroud.
+  - DR04: the throttle cable.
+  - J4 and CP03: the shift-lever boot and floor seal.
+
+The rules are by part name (the 12A's and the automatic's parts out; the named exceptions checked). A wrong ruling is fixed in the row. The FB's electrical parts in the bay stay 02-electrical's."

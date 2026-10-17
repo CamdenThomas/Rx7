@@ -17,3 +17,4 @@ ls_lines,"Every fluid, vapor and air line of the swap with its hidden route, mat
 zones,"the swap's zones - the engine, the gearbox, fuel, cooling, intake, exhaust, mounts and the wiring leg - one row each, with the folder that holds the zone's CAD and files; work and parts rows name their zone (D-631)"
 bp_items,"every part on the BP and its 5-speed as delivered, ruled keep, delete, replace, provision or check for the FB (DR01); the parts bought are parts rows"
 dims,"the BP's and the 5-speed's governing dimensions for the CAD envelopes (CD02, CD03) and the mounts, each with how it is known - a measurement on the parts in hand (BD15) replaces every other value (R11)"
+fb_items,"every FB part the swap touches (00-CAR parts of the engine, transmission, driveline, fuel, ignition and cooling), ruled out, keep, modify or check, so the 12A's removal (CP01) and the bay's preparation (CP02) have a complete list"
