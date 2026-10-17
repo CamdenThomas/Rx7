@@ -171,3 +171,13 @@ fb_items,part,str,yes,,00-CAR parts id
 fb_items,name,str,yes,,as 00-CAR names it
 fb_items,fate,enum(out|keep|modify|check),yes,,"out = comes off with the 12A or the automatic; keep = stays as it is; modify = stays, changed; check = the design row named in then decides"
 fb_items,then,text,no,,what replaces it or which row decides
+bp_devices,id,key,yes,,DV + number
+bp_devices,zone,str,yes,zones
+bp_devices,device,str,yes
+bp_devices,qty,int,no
+bp_devices,where,text,no,,where it sits on the engine or the gearbox
+bp_devices,year,enum(both|9495|9697|option|turbo),yes,,"9495 = a 1994-95 BP only (cam sensor only); 9697 = a 1996-97 BP only (OBD-II, crank sensor); option = only if the engine in hand has it; turbo = a plugged spare for the turbo stage"
+bp_devices,conductors,int,no,,"conductors that cross the firewall to the dash for this device (all of them, qty included); grounds made in the bay are not counted"
+bp_devices,serves,enum(ECU|PMU|DCU|ICU|bay),no,,what at the dash reads or drives it; bay = never leaves the engine bay
+bp_devices,ecu_1994,str,no,,"the 1994 Miata ECU pin that served it (S-620), for reading the factory wiring"
+bp_devices,note,text,no

@@ -1,0 +1,25 @@
+id,zone,device,qty,where,year,conductors,serves,ecu_1994,note
+DV01,fuel/lines,Fuel injectors,4,"Fuel rail, intake side",both,5,ECU,2U 2V 2Y 2Z,"Four low-side drives plus one switched +12 V feed (O13, HO01) spliced to the four in the bay"
+DV02,bp,"Coil pack (cylinders 1 and 4, 2 and 3)",1,Rear of the head,both,3,ECU,1G 1H,Two drives plus +12 V; whether the EMU PRO's outputs drive it directly or need an igniter is confirm (BI35)
+DV03,bp,Cam angle sensor (CAS) on the intake cam,1,"Rear of the head, intake cam",both,4,ECU,2E 2G,Two signals (crank angle 1 and 2: SGT and SGC) plus its supply and ground; the trigger pattern is read off the engine in hand (K4)
+DV04,bp,Crankshaft position sensor at the crank pulley,1,Front of the block,9697,2,ECU,,Only on a 1996-97 BP; BP01 asks the year
+DV05,intake,"Throttle position sensor, linear (replacing the M/T idle switch)",1,Throttle body,both,3,ECU,2K 2M,"5 V reference, signal, sensor ground (AI02)"
+DV06,intake,"Intake air temperature sensor (new, in the intake tube)",1,Intake tube (DR04),both,2,ECU,2P,Replaces the one inside the deleted airflow meter (AI03)
+DV07,intake,MAP sensor,1,Bay or the ECU's own internal sensor,both,3,ECU,,"If the EMU PRO's internal MAP sensor is used, a vacuum hose runs to the dash instead of three conductors - decided at DR04"
+DV08,radiator,Coolant temperature sensor (ECU),1,Thermostat housing,both,2,ECU,2Q,The ICU takes coolant temperature from the ECU on CAN (HO06)
+DV09,intake,Idle speed control valve,1,Intake manifold,both,2,ECU,2W,+12 V and a low-side drive
+DV10,exhaust,Purge solenoid,1,Intake manifold,both,2,ECU,2X,+12 V and a low-side drive
+DV11,exhaust,Upstream heated O2 sensor,1,Exhaust manifold,both,4,ECU,2N,"Signal, signal ground, heater +12 V and heater drive"
+DV12,exhaust,Downstream heated O2 sensor,1,After the converter,9697,4,ECU,,A 1996-97 BP's OBD-II sensor; on a 1994-95 the bung is added only if the test wants it (BP02)
+DV13,exhaust,EGR vacuum and vent solenoids and the EGR function sensor,1,Intake side,option,7,ECU,2J,"Only if the engine in hand has EGR (bp_items BI32): two solenoids at 2 conductors each, the sensor at 3"
+DV14,bp/oil,"Oil pressure sensor (replacing the switch, on the turbo-feed tee)",1,Oil filter housing,both,3,ECU,,"5 V, signal, ground; the PMU's fuel-pump gate and the ICU take it from the ECU on CAN (HO04)"
+DV15,bp/oil,Oil temperature sensor,1,Sandwich plate or pan,turbo,2,ECU,,Wired and plugged now (HO07)
+DV16,bp,Alternator (FD 100 A),1,"Front of the engine, its bracket",both,2,PMU,,Excitation and the L line (HO11); the B+ cable is the electrical project's own run
+DV17,bp,Starter solenoid,1,Bellhousing,both,1,PMU,,The solenoid wire; the battery cable is the electrical project's
+DV18,trans,Neutral switch,1,Gearbox case,both,2,PMU,,The crank interlock and the ECU's idle strategy (electrical Y81)
+DV19,trans,Reverse lamp switch,1,Gearbox case,both,2,PMU,,Electrical Y81
+DV20,trans,Road speed sensor on the speedometer drive,1,Gearbox tail housing,both,3,ICU,1M,A Hall sensor on the drive boss (D-272's method) or the ECU on CAN (electrical Y82)
+DV21,bp,A/C compressor clutch,1,Front of the engine,both,1,ECU,1J,"Unplugged until the luxury stage's A/C (bp_items BI08, D-489)"
+DV22,bp,Boost control solenoid,1,Near the turbo,turbo,2,ECU,,Wired and plugged now (D-630)
+DV23,intake,Second intake air temperature sensor (after the intercooler),1,Charge pipe,turbo,2,ECU,,Wired and plugged now (D-630)
+DV24,exhaust,Wideband O2 sensor,1,Downpipe,both,6,ECU,,The tune's wideband (TU01); its controller and wiring are the electrical project's

@@ -18,3 +18,4 @@ zones,"the swap's zones - the engine, the gearbox, fuel, cooling, intake, exhaus
 bp_items,"every part on the BP and its 5-speed as delivered, ruled keep, delete, replace, provision or check for the FB (DR01); the parts bought are parts rows"
 dims,"the BP's and the 5-speed's governing dimensions for the CAD envelopes (CD02, CD03) and the mounts, each with how it is known - a measurement on the parts in hand (BD15) replaces every other value (R11)"
 fb_items,"every FB part the swap touches (00-CAR parts of the engine, transmission, driveline, fuel, ignition and cooling), ruled out, keep, modify or check, so the 12A's removal (CP01) and the bay's preparation (CP02) have a complete list"
+bp_devices,"every electrical device on the BP and its 5-speed that the leg must reach, with the conductors that cross to the dash (BP05; the cavities are planned with 02-electrical at K5) - the successor of ls_devices for the BP"
