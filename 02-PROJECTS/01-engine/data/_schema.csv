@@ -158,3 +158,10 @@ bp_items,fate,enum(keep|delete|replace|provision|check),yes,,"keep = refitted as
 bp_items,why,text,no,,
 bp_items,then,text,no,,"what replaces it, what the deletion changes, or what the provision waits for"
 bp_items,note,text,no,,sources and what is confirm
+dims,id,key,yes,,DM + number
+dims,zone,str,yes,zones
+dims,dimension,str,yes,,"what is measured, from where to where"
+dims,value_mm,num,no
+dims,confidence,enum(measured|factory|secondary|estimate),yes,,"measured = on the part in hand; factory = Mazda's manual; secondary = a forum or vendor figure; estimate = reasoned, not read"
+dims,source,str,no,,00-CAR sources id
+dims,note,text,no
