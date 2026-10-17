@@ -1,13 +1,1 @@
 id,title,opened,ask,why,options,recommend,stops
-01.71,"BP alternator: 100 A now and 160 A at the luxury stage, 160 A now, or …",2026-10-17,"Should the BP run the FD RX-7's 100 A alternator now and get the 160 A unit when the luxury loads go in (a), a custom-bracketed 160 A unit now (b), or the stock Miata alternator (c)?","D-457 sizes the swap's alternator at 160 A or more for about 163 A of load, and that figure counts every luxury comfort load (H-001). The car's own alternator today is about 55 A class.
-
-No bolt-in alternator above about 100-110 A was found for the BP (S-613):
-- the FD RX-7's 100 A unit fits the BP's bracket, with some work;
-- a Kia 1.8 unit claimed at 110 A also fits, with some work;
-- no 160 A unit was found.
-
-Until the luxury loads go in, the car's load is the engine, the fuel pump (about 12.2 A, V-040), one electric fan (about 20-25 A), lights and the basics.
-
-The answer decides which alternator the BP's front drive is designed around (BP04), its wire size and fuse (electrical), and K7's charge-current cap.","(a) The FD RX-7 100 A alternator now, on the BP's own bracket, about $100-250 used or rebuilt. Enough for the engine-stage car. A 160 A unit on a custom bracket comes with the luxury and turbo stage, when the luxury loads arrive. Forecloses nothing; the 100 A unit is sold or kept as a spare then.
-(b) A 160 A or larger unit now, a GM-type or a Mechman-style custom, on a fabricated bracket and belt line. About $300-600 plus the bracket. Meets D-457 on day one, but it is fabrication and money spent before any luxury load exists.
-(c) Keep the stock Miata alternator that comes with the package, about 70 A (confirm on its tag). Costs nothing. It may not hold the fan, the pump and the lights at idle on a hot night.","(a), unless the luxury comfort loads go into the car before the turbo stage - then (b)",BP04 (the BP's front drive) and K7 (the charge-current cap); the alternator's parts row AC02

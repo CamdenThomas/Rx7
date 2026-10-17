@@ -618,3 +618,12 @@ So the record stays the project's one set of tables, and each row names its zone
 This is small (section 3): only rows change, and it can be undone by editing rows. If he meant one separate record per zone, that is a tool change for 02-APP and a new block.
 
 The old top-level cad/ folder keeps the LS reference models (D-625)."
+D-633,,"BP alternator: the FD RX-7's 100 A now on the BP's bracket, 160 A at the luxury/turbo stage",2026-10-17,standing,,,01.71,,"**The BP runs the FD RX-7's 100 A alternator on the BP's own bracket for the engine-stage car; the 160 A unit on a custom bracket comes with the luxury and turbo stage.** Block 01.71 answered (a).
+
+His answer, option (a) in full: ""The FD RX-7 100 A alternator now, on the BP's own bracket, about $100-250 used or rebuilt. Enough for the engine-stage car. A 160 A unit on a custom bracket comes with the luxury and turbo stage, when the luxury loads arrive. Forecloses nothing; the 100 A unit is sold or kept as a spare then."" He typed no further words.
+
+Reasoning: no bolt-in unit above about 100-110 A exists for the BP (S-613); until the luxury loads go in the load is the engine, the pump (about 12.2 A, V-040), one fan and the basics, which 100 A covers. The recommendation's flip condition (luxury comfort loads before the turbo stage) is not met by anything in the record today.
+
+D-457 is not superseded: its 160 A floor stands for the full luxury load (about 163 A) and is met at the luxury/turbo stage, not on day one. D-630's open point (the alternator's rating) is settled for the engine stage.
+
+Consequences: AC02 is the FD RX-7 100 A on the BP's bracket now; BP04 designs the front drive around it; K7 caps charge current for the 100 A unit now and is revisited at 160 A when the luxury stage arrives."
