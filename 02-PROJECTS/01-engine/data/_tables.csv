@@ -21,3 +21,4 @@ fb_items,"every FB part the swap touches (00-CAR parts of the engine, transmissi
 bp_devices,"every electrical device on the BP and its 5-speed that the leg must reach, with the conductors that cross to the dash (BP05; the cavities are planned with 02-electrical at K5) - the successor of ls_devices for the BP"
 waves,"the project's waves: what each builds, its money and what it waits on - every work and parts row names its wave (D-643, D-644)"
 risks,"the unknowns only the parts in hand can settle, each with where it is settled, the fallback agreed now and its cost ceiling - the verification limit (VL) is reached only when every one has a fallback the budget holds (D-651)"
+ecu_pins,"every pin of the EMU Black's two connectors (black 39-way, grey 24-way) and what the BP uses it for, or that it is spare - the ECU side of the engine leg (K5, electrical Y84, Y87), from ECUMaster's pinout (S-626)"

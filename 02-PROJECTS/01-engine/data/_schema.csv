@@ -198,3 +198,11 @@ risks,usd_low,int,no,,"the fallback's cost, low"
 risks,usd_high,int,no,,"the fallback's cost, high - the ceiling"
 risks,odds,enum(low|medium|high),no,,"how likely it is to happen, the agent's judgement with its reason in note"
 risks,note,text,no
+ecu_pins,id,key,yes,,B (black 39) or G (grey 24) and the pin number
+ecu_pins,connector,enum(black39|grey24),yes
+ecu_pins,pin,int,yes
+ecu_pins,function,str,yes,,as ECUMaster names it
+ecu_pins,use,text,no,,what the BP connects to it; blank when spare
+ecu_pins,device,str,no,,01-engine bp_devices id
+ecu_pins,wave,str,no,waves,when it is first connected
+ecu_pins,note,text,no

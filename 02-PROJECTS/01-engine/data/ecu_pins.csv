@@ -1,0 +1,64 @@
+id,connector,pin,function,use,device,wave,note
+B01,black39,1,Ignition coil #5,,,W3,Spare
+B02,black39,2,EGT in #1,Turbo stage exhaust temperature,,W3,Spare until the turbo
+B03,black39,3,Knock Sensor in #1,"Knock sensor, turbo stage",,W3,The NA BP has none; a knock sensor comes with boost
+B04,black39,4,Analog In #2,Oil pressure sensor,DV14,W1,0-5 V transducer on the ECU's +5 V and sensor ground; the PMU's A7 gate reads it at the node too (HO04)
+B05,black39,5,CLT In,Coolant temperature sensor,DV08,W1,"Mazda's curve: 2.21-2.69 kOhm at 20 C, 0.287-0.349 at 80 C (SP-1899)"
+B06,black39,6,WBO Vs,,,W1,Spare: the AEM 30-0300 is the wideband (D-650)
+B07,black39,7,Camsync In #2,,,W3,Spare (a VVT engine's second cam)
+B08,black39,8,Primary trigger,"Cam angle sensor SGT signal (1994-95), or the crank position sensor (1996-97)",DV03,W1,"Which signal is primary is set by the engine's year (BP01, RK03); ECUMaster's trigger how-to (S-626)"
+B09,black39,9,Flex Fuel In,,,W3,Spare
+B10,black39,10,Switch #1 In,Clutch pedal switch (launch and flat-shift later),,W2,Its crank interlock is the PMU's (HO10); this is a second contact or a CAN copy
+B11,black39,11,RS232 TXD,,,W1,Unused
+B12,black39,12,CAN H,"CAN2, the car's bus at 500 kbps",,W1,Its stream from base ID 0x600 (S-626); termination per the bus plan
+B13,black39,13,Battery +12V,Constant feed,,W1,Required for proper operation (ECUMaster); from the PMU box
+B14,black39,14,Ignition coil #4,,,W3,Spare
+B15,black39,15,EGT in #2,,,W3,Spare
+B16,black39,16,Knock Sensor in #2,,,W3,Spare
+B17,black39,17,Analog In #3,"AEM 30-0300 wideband, its 0-5 V output",WBO,W1,Electrical Y88 confirms analog or CAN
+B18,black39,18,TPS In,Linear throttle position sensor,DV05,W1,AI02
+B19,black39,19,WBO Ip,,,W1,Spare
+B20,black39,20,VSS In,Road speed from the 5-speed's drive,DV20,W2,The ICU takes speed on CAN at W2 (Y82)
+B21,black39,21,Camsync In #1,Cam angle sensor SGC (cam) signal,DV03,W1,With B08
+B22,black39,22,WBO Rcal,,,W1,Spare
+B23,black39,23,Switch #2 In,Neutral switch,DV18,W1,The idle strategy; reverse is the PMU's (HO10)
+B24,black39,24,RS232 RXD,,,W1,Unused
+B25,black39,25,CAN L,CAN2,,,With B12
+B26,black39,26,+5V supply,"Sensor supply: TPS, oil pressure",,W1,
+B27,black39,27,Power Ground,Power ground to the engine block star,,W1,
+B28,black39,28,Ecu Ground,ECU ground,,W1,
+B29,black39,29,Sensor Ground,"Sensor ground: TPS, oil pressure",,W1,
+B30,black39,30,Analog In #4,Downstream O2 sensor signal (a 1996-97 engine),DV12,W2,Free on a 1994-95 engine
+B31,black39,31,Analog In #1,Upstream O2 sensor signal,DV11,W1,
+B32,black39,32,IAT In,Intake air temperature sensor,DV06,W1,"AI03, its own curve entered"
+B33,black39,33,WBO VGND,,,W1,Spare
+B34,black39,34,+5V supply,"Sensor supply, spare",,W1,
+B35,black39,35,Analog In #5,"Oil temperature, turbo stage",DV15,W3,Wired and plugged now
+B36,black39,36,Switch #3 In,"A/C request, luxury stage",,W3,Or the DCU's request on CAN (D-489)
+B37,black39,37,Analog In #6,"A/C pressure, or the second IAT at the turbo stage",DV23,W3,One of the two; the other moves to the PMU or CAN - decided when the turbo and the A/C are planned
+B38,black39,38,Sensor Ground,"Sensor ground: CLT, IAT, O2",,W1,
+B39,black39,39,Sensor Ground,"Sensor ground, spare",,W1,
+G01,grey24,1,Ignition coil #6,,,W3,Spare
+G02,grey24,2,H-Bridge #1 Winding A,,,W3,Spare
+G03,grey24,3,H-Bridge #2 Winding A,,,W3,Spare
+G04,grey24,4,AUX 6,Idle speed control valve,DV09,W1,Built-in flyback diode
+G05,grey24,5,AUX 3,Purge solenoid,DV10,W2,Built-in flyback diode; EVAP is W2's (EM02)
+G06,grey24,6,Injector #4,Injector cylinder 4,DV01,W1,Mazda 12-16 ohm high impedance (SP-1898)
+G07,grey24,7,Injector #1,Injector cylinder 1,DV01,W1,
+G08,grey24,8,Ignition coil #1,"Coil pack, cylinders 1 and 4",DV02,W1,"Passive coil, driven directly (SP-1895, RK04); 7 A, 15 A peak"
+G09,grey24,9,Ignition coil #3,,,W3,Spare
+G10,grey24,10,H-Bridge #1 winding B,,,W3,Spare
+G11,grey24,11,H-Bridge #2 winding B,,,W3,Spare
+G12,grey24,12,AUX 5,"Boost control solenoid, turbo stage",DV22,W3,Built-in flyback diode
+G13,grey24,13,AUX 2 / Injector #8,"A/C clutch relay coil, luxury stage",DV21,W3,D-489: the ECU owns the A/C clutch
+G14,grey24,14,Injector #5,,,W3,Spare
+G15,grey24,15,Injector #2,Injector cylinder 2,DV01,W1,
+G16,grey24,16,Ignition coil #2,"Coil pack, cylinders 2 and 3",DV02,W1,
+G17,grey24,17,Power Ground,Power ground,,W1,
+G18,grey24,18,Ignition +12V,"Switched feed, key on",,W1,From the PMU box
+G19,grey24,19,WBO Heater,,,W1,Spare
+G20,grey24,20,AUX 4 / Tacho,"Tach output, if the Display Unit wants a wire rather than CAN",,W2,Spare until W2 decides
+G21,grey24,21,AUX 1 / Injector #7,Upstream O2 heater drive,DV11,W1,
+G22,grey24,22,Injector #6,,,W3,Spare
+G23,grey24,23,Injector #3,Injector cylinder 3,DV01,W1,
+G24,grey24,24,Power Ground,Power ground,,W1,
